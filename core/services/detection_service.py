@@ -57,8 +57,8 @@ class DetectionService:
         content: str,
         context: GenerationContext,
         iteration: int = 1,
-        temperature: float = 0.3,
-        timeout: int = 60,
+        temperature: float = None,
+        timeout: int = None,
         temperature_config: Optional[TemperatureConfig] = None,
     ) -> AIScore:
         """
@@ -66,6 +66,14 @@ class DetectionService:
         
         SCORING: Low scores (0-25%) = GOOD (minimal AI patterns)
         """
+        # Set defaults from config if not provided
+        if temperature is None:
+            from config.global_config import get_config
+            temperature = get_config().get_detection_temperature()
+        if timeout is None:
+            from config.global_config import get_config
+            timeout = get_config().get_api_timeout()
+            
         self.logger.info(f"🧠 AI Detection - Starting analysis (iteration {iteration})")
         
         # Get adaptive temperature if available
@@ -101,8 +109,8 @@ class DetectionService:
         content: str,
         context: GenerationContext,
         iteration: int = 1,
-        temperature: float = 0.3,
-        timeout: int = 60,
+        temperature: float = None,
+        timeout: int = None,
         temperature_config: Optional[TemperatureConfig] = None,
     ) -> AIScore:
         """
@@ -110,6 +118,14 @@ class DetectionService:
         
         SCORING: Mid-range scores (15-25%) = EXCELLENT (authentic professional voice)
         """
+        # Set defaults from config if not provided
+        if temperature is None:
+            from config.global_config import get_config
+            temperature = get_config().get_detection_temperature()
+        if timeout is None:
+            from config.global_config import get_config
+            timeout = get_config().get_api_timeout()
+            
         self.logger.info(f"👤 Natural Voice - Starting analysis (iteration {iteration})")
         
         # Get adaptive temperature if available
@@ -154,6 +170,10 @@ class DetectionService:
         
         Returns unified results with clear scoring interpretation and recommendations.
         """
+        # Get timeout from config for internal method calls
+        from config.global_config import get_config
+        timeout = get_config().get_api_timeout()
+        
         self.logger.info(f"🔍 Comprehensive Detection - Starting analysis (iteration {iteration})")
         
         results = {
@@ -169,7 +189,7 @@ class DetectionService:
         try:
             # Run AI Detection
             ai_score = self.detect_ai_patterns(
-                content, context, iteration, timeout=get_config().get_api_timeout(), temperature_config=temperature_config
+                content, context, iteration, timeout=timeout, temperature_config=temperature_config
             )
             ai_interpretation = self.scoring_system.interpret_ai_score(ai_score.score)
             ai_passes = ai_score.score <= ai_threshold
@@ -184,7 +204,7 @@ class DetectionService:
             
             # Run Natural Voice Detection  
             nv_score = self.detect_natural_voice_authenticity(
-                content, context, iteration, timeout=get_config().get_api_timeout(), temperature_config=temperature_config
+                content, context, iteration, timeout=timeout, temperature_config=temperature_config
             )
             nv_interpretation = self.scoring_system.interpret_natural_voice_score(nv_score.score)
             nv_passes = nv_score.score <= natural_voice_threshold

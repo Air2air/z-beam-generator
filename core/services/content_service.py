@@ -676,12 +676,23 @@ class ContentGenerationService(IContentGenerator):
         prompt_manager,
         ai_detection_threshold: int,
         human_detection_threshold: int,
-        iterations_per_section: int = 3,
-        temperature: float = 0.6,
-        timeout: int = 60,
+        iterations_per_section: int = None,
+        temperature: float = None,
+        timeout: int = None,
         temperature_config: Optional[TemperatureConfig] = None,
     ) -> dict:
         """Generate content for a specific section (interface compatibility method)."""
+        # Set defaults from config if not provided
+        if iterations_per_section is None:
+            from config.global_config import get_config
+            iterations_per_section = get_config().get_iterations_per_section()
+        if temperature is None:
+            from config.global_config import get_config
+            temperature = get_config().get_content_temperature()
+        if timeout is None:
+            from config.global_config import get_config
+            timeout = get_config().get_api_timeout()
+            
         # This is a legacy interface method - redirect to the main generation flow
         from generator.core.domain.models import GenerationRequest, GenerationContext
 
