@@ -40,7 +40,7 @@ class LegacyContentGeneratorAdapter:
         ai_detection_threshold: int,
         human_detection_threshold: int,
         ai_detect: bool = True,
-        iterations_per_section: int = 3,
+        iterations_per_section: int = None,
         generator_model_settings: Optional[Dict] = None,
         detection_provider: Optional[str] = None,
         detection_model_settings: Optional[Dict] = None,
@@ -49,6 +49,10 @@ class LegacyContentGeneratorAdapter:
         Legacy interface for content generation.
         Returns: (content, ai_score, threshold_met)
         """
+        # Set default from config if not provided
+        if iterations_per_section is None:
+            from config.global_config import get_config
+            iterations_per_section = get_config().get_iterations_per_section()
         try:
             logger.info(
                 f"Legacy adapter generating content for section: {section_name}"

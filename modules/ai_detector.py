@@ -116,7 +116,10 @@ def generate_content(
         match = re.search(r"(\d+)-(\d+)", section_length_str)
         if match:
             max_words = int(match.group(2))
-            api_config["max_output_tokens"] = max(500, max_words * 2)
+            # Use config for max article words instead of hardcoded value
+            from config.global_config import get_config
+            min_tokens = get_config().get_max_article_words() // 3  # Rough estimate: 3 words per token
+            api_config["max_output_tokens"] = max(min_tokens, max_words * 2)
 
     try:
         response_text = api_client.call_ai_api(
@@ -314,13 +317,17 @@ def evaluate_human_likeness_incremental(
     api_keys: dict,
     prompt_templates_dict: dict,
     max_attempts: int = 5,
-    threshold: int = 50,
+    threshold: int = None,
     section_name: str = None,
 ) -> tuple[str, int]:
     """
     Iteratively improve content to lower AI-likeness using feedback and prompt variation.
     Returns (final_content, ai_likeness_score)
     """
+    # Set threshold from config if not provided
+    if threshold is None:
+        from config.global_config import get_config
+        threshold = get_config().get_ai_detection_threshold()
     logger = get_logger("ai_detector", context=section_name)
     prompt_file_name = "ai_detection_prompt.txt"
     prompt_template = prompt_templates_dict.get(
@@ -356,12 +363,16 @@ def evaluate_human_likeness_incremental(
             "ai_likeness_evaluation",
         )
         try:
+            # Use config for temperature instead of hardcoded value
+            from config.global_config import get_config
+            detection_temp = get_config().get_detection_temperature()
+            
             response = api_client.call_ai_api(
                 prompt=filled_prompt,
                 provider=provider,
                 model=model,
                 api_keys=api_keys,
-                temperature=0.0,
+                temperature=detection_temp,
                 max_tokens=50,
             )
             if response:

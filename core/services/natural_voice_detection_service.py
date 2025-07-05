@@ -69,8 +69,8 @@ class NaturalVoiceDetectionService:
         content: str,
         context: GenerationContext,
         iteration: int = 1,
-        temperature: float = 0.3,
-        timeout: int = 60,
+        temperature: float = None,
+        timeout: int = None,
         temperature_config: Optional[TemperatureConfig] = None,
     ) -> AIScore:
         """
@@ -80,6 +80,14 @@ class NaturalVoiceDetectionService:
         - Low score (15-25%) = Good (authentic professional voice)
         - High score (75-100%) = Poor (exaggerated humanization or artificial voice)
         """
+        # Set defaults from config if not provided
+        if temperature is None:
+            from config.global_config import get_config
+            temperature = get_config().get_detection_temperature()
+        if timeout is None:
+            from config.global_config import get_config
+            timeout = get_config().get_api_timeout()
+            
         section_name = context.get_variable("section_name", "Unknown")
         
         # Get optimal Natural Voice detection prompt for this iteration and section
