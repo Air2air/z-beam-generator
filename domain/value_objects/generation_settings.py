@@ -191,26 +191,56 @@ class GenerationSettings:
     @classmethod
     def create_default(cls, provider: Provider = Provider.GEMINI) -> 'GenerationSettings':
         """Create default generation settings."""
+        # Import config to avoid hardcoding - even in domain defaults
+        try:
+            from config.global_config import get_config
+            config = get_config()
+            
+            # Use config values instead of hardcoding
+            timeout_seconds = config.get_api_timeout()
+            max_tokens = config.get_max_api_tokens()
+            ai_threshold = float(config.get_ai_detection_threshold())
+            nv_threshold = float(config.get_natural_voice_threshold())
+            content_temp = config.get_content_temperature()
+            detection_temp = config.get_detection_temperature()
+            improvement_temp = config.get_improvement_temperature()
+            summary_temp = config.get_summary_temperature()
+            metadata_temp = config.get_metadata_temperature()
+            max_iterations = config.get_iterations_per_section()
+        except (ImportError, RuntimeError):
+            # Fallback to hardcoded defaults only if config unavailable
+            # These are EMERGENCY FALLBACKS - config should always be available
+            timeout_seconds = 30  # FALLBACK: normal timeout
+            max_tokens = 3000  # FALLBACK: reasonable token limit
+            ai_threshold = 25.0  # FALLBACK: balanced AI detection
+            nv_threshold = 25.0  # FALLBACK: balanced voice detection
+            content_temp = 0.6  # FALLBACK: balanced creativity
+            detection_temp = 0.3  # FALLBACK: consistent detection
+            improvement_temp = 0.7  # FALLBACK: creative improvements
+            summary_temp = 0.4  # FALLBACK: moderate summarization
+            metadata_temp = 0.2  # FALLBACK: consistent metadata
+            max_iterations = 5  # FALLBACK: reasonable iteration count
+        
         temperature_settings = TemperatureSettings(
-            content_generation=0.6,
-            ai_detection=0.3,
-            human_detection=0.3,
-            improvement=0.7,
-            summary=0.4,
-            metadata=0.2
+            content_generation=content_temp,
+            ai_detection=detection_temp,
+            human_detection=detection_temp,
+            improvement=improvement_temp,
+            summary=summary_temp,
+            metadata=metadata_temp
         )
         
         threshold_settings = ThresholdSettings(
-            ai_threshold=25.0,
-            human_threshold=25.0,
-            confidence_threshold=0.8
+            ai_threshold=ai_threshold,
+            human_threshold=nv_threshold,
+            confidence_threshold=0.8  # This one can remain hardcoded as it's a domain constant
         )
         
         api_settings = APISettings(
             provider=provider,
-            timeout_seconds=30,
-            max_retries=3,
-            max_tokens=3000
+            timeout_seconds=timeout_seconds,
+            max_retries=3,  # Domain default - retry logic is business rule, not config
+            max_tokens=max_tokens
         )
         
         return cls(
@@ -218,7 +248,7 @@ class GenerationSettings:
             threshold_settings=threshold_settings,
             api_settings=api_settings,
             detection_mode=DetectionMode.COMPREHENSIVE,
-            max_iterations_per_section=5,
+            max_iterations_per_section=max_iterations,
             enable_caching=True,
             enable_logging=True,
             debug_mode=False

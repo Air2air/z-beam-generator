@@ -19,7 +19,8 @@ class APIClient(IAPIClient):
     ):
         self._provider = provider.upper()
         self._api_key = api_key
-        self._config = base_config or {}
+        # Note: base_config parameter retained for backwards compatibility but unused
+        # All configuration now comes from the provider models configuration
         self._setup_provider_config()
 
     def _setup_provider_config(self) -> None:
@@ -46,7 +47,7 @@ class APIClient(IAPIClient):
         prompt: str,
         model: str,
         temperature: float = None,
-        max_tokens: int = 2048,
+        max_tokens: int = None,
         timeout: int = None,
         **kwargs,
     ) -> str:
@@ -54,15 +55,16 @@ class APIClient(IAPIClient):
         if not prompt or not prompt.strip():
             raise APIError("Prompt cannot be empty", self._provider)
 
-        # Set defaults from config if not provided
+        # Set defaults from config if not provided - NO HARDCODING!
         if temperature is None:
             from config.global_config import get_config
-
             temperature = get_config().get_content_temperature()
         if timeout is None:
             from config.global_config import get_config
-
             timeout = get_config().get_api_timeout()
+        if max_tokens is None:
+            from config.global_config import get_config
+            max_tokens = get_config().get_max_api_tokens()
 
         # Minimal API logging
         try:
@@ -226,7 +228,8 @@ class APIClient(IAPIClient):
         **kwargs,
     ) -> str:
         """Call xAI Grok API."""
-        url = "https://api.x.ai/v1/chat/completions"
+        # NO HARDCODING: Get URL from provider configuration
+        url = self._provider_config["url_template"]
 
         headers = {
             "Content-Type": "application/json",
@@ -271,8 +274,8 @@ class APIClient(IAPIClient):
         **kwargs,
     ) -> str:
         """Call DeepSeek API."""
-        # Get URL from configuration instead of hardcoding
-        url = self._base_config.get("url", "https://api.deepseek.com/v1/chat/completions")
+        # NO HARDCODING: Get URL from provider configuration
+        url = self._provider_config["url_template"]
 
         headers = {
             "Content-Type": "application/json",
@@ -318,15 +321,18 @@ class APIClient(IAPIClient):
         prompt: str,
         model: str = None,
         temperature: float = None,
-        max_tokens: int = 3000,
+        max_tokens: int = None,
         timeout: int = None,
     ) -> str:
         """Legacy method name for backward compatibility."""
-        # Set defaults from config if not provided
+        # Set defaults from config if not provided - NO HARDCODING!
         if temperature is None:
             from config.global_config import get_config
             temperature = get_config().get_content_temperature()
         if timeout is None:
             from config.global_config import get_config
             timeout = get_config().get_api_timeout()
+        if max_tokens is None:
+            from config.global_config import get_config
+            max_tokens = get_config().get_max_api_tokens()
         return self.call_api(prompt, model, temperature, max_tokens, timeout)
