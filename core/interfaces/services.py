@@ -5,7 +5,8 @@ These interfaces define the contracts that implementations must follow.
 
 from abc import ABC, abstractmethod
 from typing import Dict, Any, Optional, List
-from generator.core.domain.models import (
+from config.global_config import get_config
+from core.domain.models import (
     GenerationRequest,
     GenerationContext,
     GenerationResult,
@@ -49,8 +50,8 @@ class IDetectionService(ABC):
         content: str,
         context: GenerationContext,
         iteration: int = 1,
-        temperature: float = 0.3,
-        timeout: int = 60,
+        temperature: float = None,  # Will use get_config().get_detection_temperature()
+        timeout: int = None,  # Will use get_config().get_api_timeout()
         temperature_config: Optional[TemperatureConfig] = None,
     ) -> AIScore:
         """Detect Natural Voice characteristics in content."""
@@ -62,8 +63,8 @@ class IDetectionService(ABC):
         content: str,
         context: GenerationContext,
         iteration: int = 1,
-        temperature: float = 0.3,
-        timeout: int = 60,
+        temperature: float = None,  # Will use get_config().get_detection_temperature()
+        timeout: int = None,  # Will use get_config().get_api_timeout()
         temperature_config: Optional[TemperatureConfig] = None,
     ) -> AIScore:
         """Detect AI-generated patterns in content (new method)."""
@@ -75,8 +76,8 @@ class IDetectionService(ABC):
         content: str,
         context: GenerationContext,
         iteration: int = 1,
-        temperature: float = 0.3,
-        timeout: int = 60,
+        temperature: float = None,  # Will use get_config().get_detection_temperature()
+        timeout: int = None,  # Will use get_config().get_api_timeout()
         temperature_config: Optional[TemperatureConfig] = None,
     ) -> AIScore:
         """Detect Natural Voice authenticity in content (new method)."""
@@ -104,9 +105,9 @@ class IAPIClient(ABC):
         self,
         prompt: str,
         model: str = None,
-        temperature: float = 0.7,
+        temperature: float = None,  # Will use get_config().get_content_temperature()
         max_tokens: int = 3000,
-        timeout: int = 60,
+        timeout: int = None,  # Will use get_config().get_api_timeout()
     ) -> str:
         """Call the AI API with the given parameters."""
         pass
@@ -116,9 +117,9 @@ class IAPIClient(ABC):
         self,
         prompt: str,
         model: str = None,
-        temperature: float = 0.7,
+        temperature: float = None,  # Will use get_config().get_content_temperature()
         max_tokens: int = 3000,
-        timeout: int = 60,
+        timeout: int = None,  # Will use get_config().get_api_timeout()
     ) -> str:
         """Legacy method name for backward compatibility."""
         pass
@@ -175,9 +176,9 @@ class IContentGenerator(ABC):
         prompt_manager: IPromptManager,
         ai_detection_threshold: int,
         human_detection_threshold: int,
-        iterations_per_section: int = 3,
-        temperature: float = 0.6,
-        timeout: int = 60,
+        iterations_per_section: int = None,  # Will use get_config().get_iterations_per_section()
+        temperature: float = None,  # Will use get_config().get_content_temperature()
+        timeout: int = None,  # Will use get_config().get_api_timeout()
         temperature_config: Optional[TemperatureConfig] = None,
     ) -> Dict[str, Any]:
         """Generate content for a specific section."""
@@ -193,10 +194,10 @@ class IArticleGenerator(ABC):
         config: Any,
         ai_detection_threshold: int,
         human_detection_threshold: int,
-        iterations_per_section: int = 3,
+        iterations_per_section: int = None,  # Will use get_config().get_iterations_per_section()
         force_regenerate: bool = False,
-        max_article_words: int = 1200,
-        api_timeout: int = 60,
+        max_article_words: int = None,  # Will use get_config().get_max_article_words()
+        api_timeout: int = None,  # Will use get_config().get_api_timeout()
         temperature_config: Optional[TemperatureConfig] = None,
     ) -> Any:
         """Generate a complete article."""

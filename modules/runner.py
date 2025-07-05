@@ -1,14 +1,14 @@
-from generator.config.settings import AppConfig, GenerationConfig
-from generator.modules.page_generator import ArticleGenerator
-from generator.exceptions import ConfigurationError, GenerationError
-from generator.core.domain.models import TemperatureConfig
-from dataclasses import dataclass, field
+from config.settings import AppConfig, GenerationConfig
+from modules.page_generator import ArticleGenerator
+from exceptions import ConfigurationError, GenerationError
+from core.domain.models import TemperatureConfig
+from dataclasses import dataclass
 from typing import Optional
 import os
 import sys
 from pathlib import Path
 from dotenv import load_dotenv
-from generator.modules.logger import get_logger
+from modules.logger import get_logger
 
 
 @dataclass
@@ -26,15 +26,28 @@ class RunConfiguration:
     ai_detection_threshold: int
     human_detection_threshold: int  # Add human threshold
     generator_model_settings: dict  # <-- Add this line
-    iterations_per_section: int = 3  # Add this field with default
+    iterations_per_section: int = None  # Will be set from config
     detection_provider: str = None
     detection_model_settings: dict = None
-    max_article_words: int = 1200  # Total word budget for article
-    api_timeout: int = 60  # API request timeout in seconds
-    detection_temperature: float = 0.3  # Temperature for detection calls
+    max_article_words: int = None  # Will be set from config
+    api_timeout: int = None  # Will be set from config
+    detection_temperature: float = None  # Will be set from config
     temperature_config: Optional[TemperatureConfig] = None
 
     def __post_init__(self):
+        # Import here to avoid circular imports
+        from config.global_config import get_config
+        
+        # Set defaults from configuration if not provided
+        if self.iterations_per_section is None:
+            self.iterations_per_section = get_config().get_iterations_per_section()
+        if self.max_article_words is None:
+            self.max_article_words = get_config().get_max_article_words()
+        if self.api_timeout is None:
+            self.api_timeout = get_config().get_api_timeout()
+        if self.detection_temperature is None:
+            self.detection_temperature = get_config().get_detection_temperature()
+            
         missing = []
         for field_name in [
             "material",

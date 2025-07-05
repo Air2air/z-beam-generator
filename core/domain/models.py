@@ -8,6 +8,16 @@ from typing import Optional, Dict, Any, List
 from enum import Enum
 
 
+def _get_config_value(config_method_name, default_value):
+    """Helper to safely get config values with fallback."""
+    try:
+        from config.global_config import get_config
+        config = get_config()
+        return getattr(config, config_method_name)()
+    except Exception:
+        return default_value
+
+
 @dataclass(frozen=True)
 class TemperatureConfig:
     """Configuration for temperature settings in different contexts.
@@ -18,28 +28,44 @@ class TemperatureConfig:
     - High (0.8+): Creative, varied, potentially less focused
     """
 
-    content_temp: float  # For generating article content
-    detection_temp: float  # For detection analysis
+    content_temp: float = None  # For generating article content
+    detection_temp: float = None  # For detection analysis
     improvement_temp: float = None  # For improvement iterations
     summary_temp: float = None  # For summary generation
     metadata_temp: float = None  # For structured metadata
 
     def __post_init__(self):
-        # Set default values for optional fields if not provided
+        # Set default values from config if not provided
+        if self.content_temp is None:
+            object.__setattr__(
+                self,
+                "content_temp",
+                _get_config_value('get_content_temperature', 0.6),
+            )
+        if self.detection_temp is None:
+            object.__setattr__(
+                self,
+                "detection_temp",
+                _get_config_value('get_detection_temperature', 0.3),
+            )
         if self.improvement_temp is None:
             object.__setattr__(
-                self, "improvement_temp", self.content_temp * 1.1
-            )  # Slightly higher than content
-
+                self,
+                "improvement_temp",
+                _get_config_value('get_improvement_temperature', 0.7),
+            )
         if self.summary_temp is None:
             object.__setattr__(
-                self, "summary_temp", self.content_temp * 0.8
-            )  # Lower for more consistency
-
+                self,
+                "summary_temp",
+                _get_config_value('get_summary_temperature', 0.4),
+            )
         if self.metadata_temp is None:
             object.__setattr__(
-                self, "metadata_temp", self.content_temp * 0.5
-            )  # Much lower for structure
+                self,
+                "metadata_temp",
+                _get_config_value('get_metadata_temperature', 0.2),
+            )
 
         # Validate all temperatures are in valid range
         for name, value in [
@@ -143,17 +169,25 @@ class GenerationRequest:
     model: str
     ai_detection_threshold: int
     human_detection_threshold: int
-    iterations_per_section: int = 3
-    temperature: float = 1.0  # Legacy field, maintained for backward compatibility
+    iterations_per_section: int = None  # Will use get_config().get_iterations_per_section()
+    temperature: float = None  # Legacy field, will use config
     max_tokens: int = 6144
     force_regenerate: bool = False
-    api_timeout: int = 60
-    detection_temperature: float = (
-        0.3  # Legacy field, maintained for backward compatibility
-    )
+    api_timeout: int = None  # Will use get_config().get_api_timeout()
+    detection_temperature: float = None  # Legacy field, will use config
     temperature_config: Optional[TemperatureConfig] = None
 
     def __post_init__(self):
+        # Set defaults from config if not provided
+        if self.iterations_per_section is None:
+            self.iterations_per_section = _get_config_value('get_iterations_per_section', 3)
+        if self.temperature is None:
+            self.temperature = _get_config_value('get_content_temperature', 1.0)
+        if self.api_timeout is None:
+            self.api_timeout = _get_config_value('get_api_timeout', 60)
+        if self.detection_temperature is None:
+            self.detection_temperature = _get_config_value('get_detection_temperature', 0.3)
+            
         if not self.material.strip():
             raise ValueError("Material cannot be empty")
         if not self.sections:
