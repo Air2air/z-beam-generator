@@ -3,8 +3,8 @@ Service registration and application bootstrap.
 """
 
 from typing import Optional
-from generator.core.container import ServiceContainer
-from generator.core.interfaces.services import (
+from core.container import ServiceContainer
+from core.interfaces.services import (
     IContentGenerator,
     IDetectionService,
     IAPIClient,

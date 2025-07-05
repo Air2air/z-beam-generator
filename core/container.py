@@ -4,7 +4,7 @@ Manages service registration and resolution.
 """
 
 from typing import Dict, Any, Type, TypeVar, Callable, Optional
-from generator.core.exceptions import ConfigurationError, ErrorContext
+from core.exceptions import ConfigurationError, ErrorContext
 
 T = TypeVar("T")
 
