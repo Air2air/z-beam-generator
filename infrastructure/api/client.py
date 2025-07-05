@@ -4,9 +4,9 @@ Enhanced API client with proper interface implementation.
 
 import requests
 from typing import Dict, Any, Optional
-from generator.core.interfaces.services import IAPIClient
-from generator.core.exceptions import APIError
-from generator.modules.logger import get_logger
+from core.interfaces.services import IAPIClient
+from core.exceptions import APIError
+from modules.logger import get_logger
 
 logger = get_logger("api_client")
 
@@ -45,14 +45,24 @@ class APIClient(IAPIClient):
         self,
         prompt: str,
         model: str,
-        temperature: float = 1.0,
+        temperature: float = None,
         max_tokens: int = 2048,
-        timeout: int = 60,
+        timeout: int = None,
         **kwargs,
     ) -> str:
         """Make an API call to the AI provider."""
         if not prompt or not prompt.strip():
             raise APIError("Prompt cannot be empty", self._provider)
+
+        # Set defaults from config if not provided
+        if temperature is None:
+            from config.global_config import get_config
+
+            temperature = get_config().get_content_temperature()
+        if timeout is None:
+            from config.global_config import get_config
+
+            timeout = get_config().get_api_timeout()
 
         # Minimal API logging
         try:
@@ -307,9 +317,16 @@ class APIClient(IAPIClient):
         self,
         prompt: str,
         model: str = None,
-        temperature: float = 0.7,
+        temperature: float = None,
         max_tokens: int = 3000,
-        timeout: int = 60,
+        timeout: int = None,
     ) -> str:
         """Legacy method name for backward compatibility."""
+        # Set defaults from config if not provided
+        if temperature is None:
+            from config.global_config import get_config
+            temperature = get_config().get_content_temperature()
+        if timeout is None:
+            from config.global_config import get_config
+            timeout = get_config().get_api_timeout()
         return self.call_api(prompt, model, temperature, max_tokens, timeout)

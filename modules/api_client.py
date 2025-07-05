@@ -8,16 +8,18 @@ from typing import Dict, Any, Optional, Tuple
 from dataclasses import dataclass
 from enum import Enum
 
-from generator.modules.logger import get_logger
-from generator.config.settings import AppConfig
+from modules.logger import get_logger
+from config.settings import AppConfig
 
 logger = get_logger("api_client")
 config = AppConfig()
 
 
+# Note: Provider constants kept for backward compatibility
+# In production, use get_config().get_provider() instead
 class APIProvider(Enum):
-    GEMINI = "GEMINI"
-    OPENAI = "OPENAI"
+    GEMINI = "GEMINI"  # Use get_config().get_provider() in new code
+    OPENAI = "OPENAI"  # Use get_config().get_provider() in new code
     XAI = "XAI"
     DEEPSEEK = "DEEPSEEK"
 
@@ -44,13 +46,21 @@ def call_ai_api(
     provider: str,
     model: str,
     api_keys: Dict[str, str],
-    temperature: float = 0.7,
+    temperature: float = None,
     max_tokens: int = 1000,
     retries: int = 3,
     backoff_factor: float = 0.5,
-    timeout: int = 30,
+    timeout: int = None,
     url_template: str = None,
 ) -> Optional[str]:
+    # Set defaults from config if not provided
+    if temperature is None:
+        from config.global_config import get_config
+        temperature = get_config().get_content_temperature()
+    if timeout is None:
+        from config.global_config import get_config
+        timeout = get_config().get_api_timeout()
+        
     try:
         provider_enum = APIProvider(provider.upper())
     except ValueError:
