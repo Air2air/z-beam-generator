@@ -146,7 +146,10 @@ class ArticleGenerator:
         detection_service = DetectionService(detection_api_client, prompt_repository)
 
         # Initialize efficient content service with word budget
-        max_article_words = getattr(gen_config, "max_article_words", 1200)
+        max_article_words = getattr(gen_config, "max_article_words", None)
+        if max_article_words is None:
+            from config.global_config import get_config
+            max_article_words = get_config().get_max_article_words()
         self.content_generator = EfficientContentGenerationService(
             api_client=api_client,
             detection_service=detection_service,
@@ -220,7 +223,10 @@ class ArticleGenerator:
 
     def _display_generation_summary(self, gen_config: GenerationConfig) -> None:
         """Display a summary of the generation process including efficiency metrics."""
-        max_words = getattr(gen_config, "max_article_words", 1200)
+        max_words = getattr(gen_config, "max_article_words", None)
+        if max_words is None:
+            from config.global_config import get_config
+            max_words = get_config().get_max_article_words()
         budget_manager = self.content_generator.word_budget_manager
 
         print(f"\n{'=' * 60}")

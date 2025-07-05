@@ -69,8 +69,13 @@ class EfficientContentGenerationService(ContentGenerationService):
         api_client: IAPIClient,
         detection_service: IDetectionService,
         prompt_repository: IPromptRepository,
-        max_article_words: int = 1200,
+        max_article_words: int = None,
     ):
+        # Set default from config if not provided
+        if max_article_words is None:
+            from config.global_config import get_config
+            max_article_words = get_config().get_max_article_words()
+            
         super().__init__(api_client, detection_service, prompt_repository)
         self.word_budget_manager = WordBudgetManager(max_article_words)
         self.logger = logger
