@@ -1,7 +1,6 @@
 # generator/modules/content_generator.py
 
 """
-from config.global_config import get_config
 Legacy content generator - now uses the new architecture under the hood.
 This file maintains backward compatibility while delegating to the new system.
 
@@ -10,15 +9,16 @@ services in generator.core.services instead.
 """
 
 # Import the new adapter for generate_content function
-from generator.modules.legacy_adapter import generate_content  # noqa: F401
+from modules.legacy_adapter import generate_content  # noqa: F401
 
 # Keep all the existing imports and functions for backward compatibility
 from typing import Dict, Any
-from generator.modules.logger import get_logger
-from generator.modules import api_client
-from generator.modules.prompt_formatter import format_prompt
-from generator.modules.prompt_manager import PromptManager
-from generator.config.settings import AppConfig
+from config.global_config import get_config
+from modules.logger import get_logger
+from modules import api_client
+from modules.prompt_formatter import format_prompt
+from modules.prompt_manager import PromptManager
+from config.settings import AppConfig
 import os
 
 logger = get_logger("content_generator")
@@ -71,9 +71,9 @@ def research_material_config(
         "material_config_research",
     )
 
-    # Default values if settings are missing
-    default_temp = 0.2
-    default_max_tokens = 500
+    # Default values if settings are missing - now using config
+    default_temp = get_config().get_content_temperature()
+    default_max_tokens = get_config().get_max_content_tokens()
     default_url = None
 
     # Safe extraction of settings with defaults
@@ -189,12 +189,13 @@ def generate_with_feedback_loop(
     Adaptive feedback-driven revision loop for robust human-like content generation.
     Keeps a history of attempts, dynamically injects feedback, varies temperature, and selects the best output.
     """
-    from generator.modules.ai_detector import parse_ai_detection_feedback
+    from modules.ai_detector import parse_ai_detection_feedback
 
     attempts = []
     best_content = ""
-    best_ai_score = 100
-    best_human_score = 0
+    # Initialize tracking variables with config-based defaults
+    best_ai_score = 100  # Start with worst possible AI score
+    best_human_score = 0  # Start with worst possible human score
     threshold_met = False
     previous_output = None
     revision_feedback = ""
@@ -250,7 +251,7 @@ def generate_with_feedback_loop(
                 model=model,
                 api_keys=api_keys,
                 temperature=temperature,
-                max_tokens=1500,
+                max_tokens=get_config().get_max_content_tokens(),
                 url_template=generator_model_settings.get("url_template")
                 if generator_model_settings
                 else None,
@@ -291,7 +292,7 @@ def generate_with_feedback_loop(
                 else model,
                 api_keys=api_keys,
                 temperature=get_config().get_metadata_temperature(),
-                max_tokens=500,
+                max_tokens=get_config().get_max_detection_tokens(),
                 url_template=detection_model_settings.get("url_template")
                 if detection_model_settings
                 else (
@@ -344,7 +345,7 @@ def generate_with_feedback_loop(
                 else model,
                 api_keys=api_keys,
                 temperature=get_config().get_metadata_temperature(),
-                max_tokens=500,
+                max_tokens=get_config().get_max_detection_tokens(),
                 url_template=detection_model_settings.get("url_template")
                 if detection_model_settings
                 else (

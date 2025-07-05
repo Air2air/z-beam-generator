@@ -1,15 +1,16 @@
-# generator/modules/content_generator.py
+# modules/ai_detector.py
 
 import json
 import re
 from typing import Dict, Any, Tuple
 from datetime import datetime
 import logging
+from config.global_config import get_config
 
-from generator.modules.logger import get_logger
-from generator.modules import api_client
-from generator.modules.prompt_formatter import format_prompt
-from generator.config.settings import AppConfig
+from modules.logger import get_logger
+from modules import api_client
+from modules.prompt_formatter import format_prompt
+from config.settings import AppConfig
 
 logger = get_logger("ai_detector")
 config = AppConfig()
@@ -373,7 +374,7 @@ def evaluate_human_likeness_incremental(
                 model=model,
                 api_keys=api_keys,
                 temperature=detection_temp,
-                max_tokens=50,
+                max_tokens=get_config().get_max_tiny_response_tokens(),
             )
             if response:
                 match = re.search(r"Percentage:\s*(\d+)%", response)

@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
-from config.global_config import get_config
 Content generation test functions for regular validation.
 """
 
 import sys
 import os
 from typing import Dict, Any
+from config.global_config import get_config
 
 # Setup paths for imports
 import setup_paths
@@ -22,17 +22,17 @@ from core.domain.models import (
     ProviderType,
     TemperatureConfig,
 )
-from generator.modules.logger import get_logger
+from modules.logger import get_logger
 
 
 def run_content_test(
     material: str = "aluminum",
     section: str = "introduction",
-    word_limit: int = 300,
-    ai_threshold: int = 25,
-    human_threshold: int = 25,
-    max_iterations: int = 3,
-    max_tokens: int = 3000,
+    word_limit: int = None,  # Will use get_config().get_max_article_words()
+    ai_threshold: int = None,  # Will use get_config().get_ai_detection_threshold()
+    human_threshold: int = None,  # Will use get_config().get_natural_voice_threshold()
+    max_iterations: int = None,  # Will use get_config().get_iterations_per_section()
+    max_tokens: int = None,  # Will use get_config().get_max_api_tokens()
 ) -> Dict[str, Any]:
     """
     Run a content generation test with AI detection iteration.
@@ -43,6 +43,18 @@ def run_content_test(
     from pathlib import Path
 
     logger = get_logger(__name__)
+    
+    # Resolve config values if not provided
+    if word_limit is None:
+        word_limit = get_config().get_max_article_words()
+    if ai_threshold is None:
+        ai_threshold = get_config().get_ai_detection_threshold()
+    if human_threshold is None:
+        human_threshold = get_config().get_natural_voice_threshold()
+    if max_iterations is None:
+        max_iterations = get_config().get_iterations_per_section()
+    if max_tokens is None:
+        max_tokens = get_config().get_max_api_tokens()
 
     # Get project root and find section templates
     project_root = Path(__file__).parent
@@ -305,11 +317,11 @@ def run_detector_validation_test() -> bool:
         result = run_content_test(
             material=test_case["material"],
             section=test_case["section"],
-            word_limit=250,
-            ai_threshold=20,  # Very strict AI detection threshold
-            human_threshold=20,  # Very strict human detection threshold
+            word_limit=get_config().get_max_article_words() // 5,  # Smaller test size
+            ai_threshold=get_config().get_ai_detection_threshold() - 5,  # Stricter AI detection threshold
+            human_threshold=get_config().get_natural_voice_threshold() - 5,  # Stricter human detection threshold
             max_iterations=get_config().get_iterations_per_section(),  # More iterations to test prompt optimization
-            max_tokens=5000,
+            max_tokens=get_config().get_max_large_response_tokens(),
         )
 
         success = result.get("success", False) and result.get("overall_passed", False)
@@ -342,7 +354,7 @@ def run_detector_validation_test() -> bool:
 
     # Show prompt optimization stats if available
     try:
-        from generator.core.services.prompt_optimizer_compatible import (
+        from core.services.prompt_optimizer_compatible import (
             PromptOptimizerCompatible,
         )
 

@@ -5,13 +5,14 @@ Enhanced content generation service with proper interface implementation.
 import json
 import re
 from typing import Optional
-from generator.core.interfaces.services import (
+from config.global_config import get_config
+from core.interfaces.services import (
     IContentGenerator,
     IAPIClient,
     IDetectionService,
     IPromptRepository,
 )
-from generator.core.domain.models import (
+from core.domain.models import (
     GenerationRequest,
     GenerationContext,
     SectionConfig,
@@ -19,8 +20,8 @@ from generator.core.domain.models import (
     AIScore,
     TemperatureConfig,
 )
-from generator.core.exceptions import ContentGenerationError
-from generator.modules.logger import get_logger
+from core.exceptions import ContentGenerationError
+from modules.logger import get_logger
 
 logger = get_logger("content_service")
 
@@ -503,20 +504,23 @@ class ContentGenerationService(IContentGenerator):
         # Default strategy
         strategy = "initial_prompt"
 
+        # Get scoring thresholds from config instead of hardcoding
+        thresholds = get_config().get_content_scoring_thresholds()
+
         # If AI score is high but human score is low - focus on reducing AI patterns
-        if ai_score.score > 50 and human_score.score <= 30:
+        if ai_score.score > thresholds["high_ai"] and human_score.score <= thresholds["low_quality"]:
             strategy = "reduce_ai_patterns"
 
         # If human score is high but AI score is low - focus on improving human-like qualities
-        elif human_score.score > 50 and ai_score.score <= 30:
+        elif human_score.score > thresholds["high_ai"] and ai_score.score <= thresholds["low_quality"]:
             strategy = "increase_human_qualities"
 
         # If both scores are high - try a balanced approach
-        elif ai_score.score > 40 and human_score.score > 40:
+        elif ai_score.score > thresholds["moderate_quality"] and human_score.score > thresholds["moderate_quality"]:
             strategy = "balanced_improvement"
 
         # If both scores are already good, use light touch improvements
-        elif ai_score.score <= 30 and human_score.score <= 30:
+        elif ai_score.score <= thresholds["low_quality"] and human_score.score <= thresholds["low_quality"]:
             strategy = "light_refinement"
 
         # Fall back to default if the selected strategy doesn't exist
@@ -530,9 +534,10 @@ class ContentGenerationService(IContentGenerator):
         Create targeted feedback based on detection scores to guide improvement.
         """
         feedback_parts = []
+        thresholds = get_config().get_content_scoring_thresholds()
 
         # Add AI detection feedback with priority weighting
-        if ai_score.score > 50:
+        if ai_score.score > thresholds["high_ai"]:
             feedback_parts.append(
                 f"CRITICAL - AI Detection Feedback: {ai_score.feedback}"
             )
@@ -540,7 +545,7 @@ class ContentGenerationService(IContentGenerator):
             feedback_parts.append(f"AI Detection Feedback: {ai_score.feedback}")
 
         # Add human detection feedback with priority weighting
-        if human_score.score > 50:
+        if human_score.score > thresholds["high_ai"]:
             feedback_parts.append(
                 f"CRITICAL - Human Detection Feedback: {human_score.feedback}"
             )
@@ -567,33 +572,34 @@ class ContentGenerationService(IContentGenerator):
         """
         # Base guidance
         guidance = "Make targeted improvements to the content."
+        thresholds = get_config().get_content_scoring_thresholds()
 
         # Adaptive guidance based on score patterns
-        if ai_score.score > 70:
+        if ai_score.score > thresholds["very_high"]:
             guidance = (
                 "The content appears highly AI-generated. Break up repetitive structures, "
                 "vary sentence patterns significantly, add more informal language, and "
                 "incorporate practical insights that feel like personal experience."
             )
-        elif ai_score.score > 40:
+        elif ai_score.score > thresholds["moderate_quality"]:
             guidance = (
                 "The content has some AI-like patterns. Add more natural transitions, "
                 "vary your phrasing, and include a few colloquial expressions or industry jargon "
                 "that would come from practical experience."
             )
-        elif human_score.score > 70:
+        elif human_score.score > thresholds["very_high"]:
             guidance = (
                 "The content lacks human-like qualities. Add some personal perspective, "
                 "use more varied vocabulary, include an occasional conversational aside, "
                 "and vary your sentence structures more naturally."
             )
-        elif human_score.score > 40:
+        elif human_score.score > thresholds["moderate_quality"]:
             guidance = (
                 "The content needs more human-like attributes. Include some informal language, "
                 "add a few professional insights, and vary your writing rhythm with some "
                 "shorter sentences mixed with longer explanations."
             )
-        elif ai_score.score <= 30 and human_score.score <= 30:
+        elif ai_score.score <= thresholds["low_quality"] and human_score.score <= thresholds["low_quality"]:
             guidance = (
                 "The content is already quite good. Make minor refinements to further "
                 "enhance readability and natural flow, but preserve the overall structure "
@@ -694,7 +700,7 @@ class ContentGenerationService(IContentGenerator):
             timeout = get_config().get_api_timeout()
             
         # This is a legacy interface method - redirect to the main generation flow
-        from generator.core.domain.models import GenerationRequest, GenerationContext
+        from core.domain.models import GenerationRequest, GenerationContext
 
         # Create proper request and context objects
         request = GenerationRequest(

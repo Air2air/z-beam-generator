@@ -1,17 +1,18 @@
 """
-from config.global_config import get_config
 Enhanced Detection Service - Coordinator for AI and Natural Voice Detection
 Refactored to use discrete, non-overlapping detection services with clear scoring logic.
 """
 
-from generator.core.domain.models import AIScore, GenerationContext, TemperatureConfig
-from generator.core.interfaces.services import IAPIClient, IPromptRepository
-from generator.core.exceptions import DetectionError
-from generator.core.services.ai_detection_service import AIDetectionService
-from generator.core.services.natural_voice_detection_service import NaturalVoiceDetectionService
-from generator.core.services.detection_scoring_system import DetectionScoringSystem
-from generator.core.services.adaptive_temperature_manager import AdaptiveTemperatureManager
-from generator.modules.logger import get_logger
+from config.global_config import get_config
+
+from core.domain.models import AIScore, GenerationContext, TemperatureConfig
+from core.interfaces.services import IAPIClient, IPromptRepository
+from core.exceptions import DetectionError
+from core.services.ai_detection_service import AIDetectionService
+from core.services.natural_voice_detection_service import NaturalVoiceDetectionService
+from core.services.detection_scoring_system import DetectionScoringSystem
+from core.services.adaptive_temperature_manager import AdaptiveTemperatureManager
+from modules.logger import get_logger
 from typing import Optional, Dict, List
 import time
 
@@ -282,12 +283,15 @@ class DetectionService:
             else:
                 recommendations.append("MINOR VOICE ADJUSTMENT: Fine-tune professional authenticity")
         
+        # Get thresholds from config instead of hardcoding
+        thresholds = get_config().get_score_balance_thresholds()
+        
         # Scoring-specific guidance
-        if ai_score <= 25 and 15 <= nv_score <= 25:
+        if ai_score <= thresholds["excellent_ai"] and thresholds["low_nv"] <= nv_score <= thresholds["high_nv"]:
             recommendations.append("EXCELLENT: Content achieves optimal AI/Natural Voice balance")
-        elif ai_score <= 25 and nv_score < 15:
+        elif ai_score <= thresholds["excellent_ai"] and nv_score < thresholds["low_nv"]:
             recommendations.append("GOOD AI, LOW NV: Add more authentic professional voice elements")
-        elif ai_score > 25 and 15 <= nv_score <= 25:
+        elif ai_score > thresholds["excellent_ai"] and thresholds["low_nv"] <= nv_score <= thresholds["high_nv"]:
             recommendations.append("GOOD NV, HIGH AI: Reduce robotic patterns while preserving voice")
         
         return recommendations

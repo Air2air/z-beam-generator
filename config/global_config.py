@@ -119,6 +119,91 @@ class GlobalConfigManager:
         """Get metadata temperature - NO HARDCODING!"""
         return self.get_temperature_config().metadata_temp
     
+    # Max tokens configuration - NO HARDCODING!
+    def get_max_content_tokens(self) -> int:
+        """Get max tokens for content generation - NO HARDCODING!"""
+        return self._config.get("max_content_tokens", 1500)
+    
+    def get_max_detection_tokens(self) -> int:
+        """Get max tokens for detection responses - NO HARDCODING!"""
+        return self._config.get("max_detection_tokens", 500)
+    
+    def get_max_metadata_tokens(self) -> int:
+        """Get max tokens for metadata generation - NO HARDCODING!"""
+        return self._config.get("max_metadata_tokens", 500)
+    
+    def get_max_api_tokens(self) -> int:
+        """Get default max tokens for API calls - NO HARDCODING!"""
+        return self._config.get("max_api_tokens", 3000)
+    
+    def get_max_small_response_tokens(self) -> int:
+        """Get max tokens for small responses (research, etc.) - NO HARDCODING!"""
+        return self._config.get("max_small_response_tokens", 500)
+    
+    def get_max_tiny_response_tokens(self) -> int:
+        """Get max tokens for tiny responses (detection scores, etc.) - NO HARDCODING!"""
+        return self._config.get("max_tiny_response_tokens", 50)
+    
+    def get_max_large_response_tokens(self) -> int:
+        """Get max tokens for large responses (natural voice detection, etc.) - NO HARDCODING!"""
+        return self._config.get("max_large_response_tokens", 4000)
+    
+    def get_max_improvement_tokens(self) -> int:
+        """Get max tokens for content improvement - NO HARDCODING!"""
+        return self._config.get("max_improvement_tokens", 8192)
+    
+    # Detection threshold configuration - NO HARDCODING!
+    def get_excellent_ai_threshold(self) -> int:
+        """Get threshold for excellent AI detection scores - NO HARDCODING!"""
+        return self._config.get("excellent_ai_threshold", 25)
+    
+    def get_low_natural_voice_threshold(self) -> int:
+        """Get low threshold for natural voice detection - NO HARDCODING!"""
+        return self._config.get("low_natural_voice_threshold", 15)
+    
+    def get_high_natural_voice_threshold(self) -> int:
+        """Get high threshold for natural voice detection - NO HARDCODING!"""
+        return self._config.get("high_natural_voice_threshold", 25)
+    
+    def get_voice_imbalance_threshold(self) -> int:
+        """Get threshold for voice imbalance detection - NO HARDCODING!"""
+        return self._config.get("voice_imbalance_threshold", 30)
+    
+    def get_score_balance_thresholds(self) -> Dict[str, int]:
+        """Get all score balance thresholds - NO HARDCODING!"""
+        return {
+            "excellent_ai": self.get_excellent_ai_threshold(),
+            "low_nv": self.get_low_natural_voice_threshold(),
+            "high_nv": self.get_high_natural_voice_threshold(),
+            "voice_imbalance": self.get_voice_imbalance_threshold()
+        }
+    
+    # Content scoring thresholds - NO HARDCODING!
+    def get_high_ai_score_threshold(self) -> int:
+        """Get threshold for high AI scores - NO HARDCODING!"""
+        return self._config.get("high_ai_score_threshold", 50)
+    
+    def get_low_quality_threshold(self) -> int:
+        """Get threshold for low quality content - NO HARDCODING!"""
+        return self._config.get("low_quality_threshold", 30)
+    
+    def get_moderate_quality_threshold(self) -> int:
+        """Get threshold for moderate quality content - NO HARDCODING!"""
+        return self._config.get("moderate_quality_threshold", 40)
+    
+    def get_very_high_score_threshold(self) -> int:
+        """Get threshold for very high scores - NO HARDCODING!"""
+        return self._config.get("very_high_score_threshold", 70)
+    
+    def get_content_scoring_thresholds(self) -> Dict[str, int]:
+        """Get all content scoring thresholds - NO HARDCODING!"""
+        return {
+            "high_ai": self.get_high_ai_score_threshold(),
+            "low_quality": self.get_low_quality_threshold(),
+            "moderate_quality": self.get_moderate_quality_threshold(),
+            "very_high": self.get_very_high_score_threshold()
+        }
+    
     # Provider configuration
     def get_generator_provider(self) -> str:
         """Get generator provider - NO HARDCODING!"""
