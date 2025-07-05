@@ -1,0 +1,65 @@
+As a globally recognized leader in laser cleaning technology with over 15 years of experience and a Ph.D. in Materials Science, I’ve simplified the Z-Beam pricing table prompt while preserving its core intent and functionality. The revised version reduces complexity, streamlines language, and maintains accuracy for Northern California’s industrial clients, focusing on laser cleaning industry data and a 30% regional premium.
+
+---
+
+## Simplified Pricing Table Prompt
+
+Craft a clear pricing table for Z-Beam, a mobile laser cleaning service in Northern California, based on substrates and contamination levels within the laser cleaning industry. Output in HTML format.
+
+### Content Guidelines  
+- **Objective**: Create a pricing table for Z-Beam’s website targeting industrial clients, facility managers, and decision-makers in Northern California, showing cost ranges by substrate and contamination level.  
+- **Structure**:  
+  - **Table**: Include columns: Substrate, Per sq ft (Range for Light to Heavy Contamination), Difficulty (Rating for Light to Heavy Contamination).  
+  - **Rows**: Group these substrates by cleaning effort:  
+    - Light Metals: Aluminum, Magnesium  
+    - Standard Metals: Brass, Copper  
+    - Ferrous Metals: Cast Iron, Carbon Steel, Galvanized Steel, Stainless Steel, Tool Steel  
+    - Heavy Alloys: Cobalt Chromium, Molybdenum, Lead, Nickel Alloy, Titanium  
+    - Masonry: Stone, Concrete, Masonry  
+    - Wood & Organics: Wood, Other Organics (e.g., bamboo, rubber)  
+    with each row showing per sq ft ranges and difficulty for Light (e.g., dust) to Heavy (e.g., thick coatings) contamination.  
+  - **Note**: Add a short paragraph below explaining pricing (e.g., contamination and size impact), a custom quote call-to-action, and the difficulty scale (1–5).  
+- **Research Basis**:  
+  - Use laser cleaning industry sources (e.g., Photonics Media, Industrial Laser Solutions, Laser Focus World, Mordor Intelligence, SPIE) for substrates, trends, and national per sq ft rates.  
+  - Exclude non-laser cleaning data (e.g., Homewyse).  
+  - Apply a 30% premium for Northern California costs, reflecting labor (e.g., $30–$50/hour, BLS), fuel (e.g., $4.50/gallon), and demand (e.g., tech, preservation).  
+
+### Content Specifications  
+- **Substrates**: Group materials by contaminants and effort (e.g., ferrous metals: rust, moderate; light metals: oxides, easy).  
+- **Contamination**: Light (e.g., dust, minimal effort) to Heavy (e.g., thick coatings, high effort).  
+- **Pricing**:  
+  - Start with laser industry national rates. 
+  - Add 30% for Northern California, adjusting per substrate for Light to Heavy contamination.  
+  - Use simple per sq ft ranges per group.  
+- **Difficulty**: Rate 1–5 (1 = Easy, 5 = Hard) per group, spanning Light to Heavy (e.g., 2–4).  
+- Keep it tied to substrates, contamination, and Northern California costs.  
+
+### Output Specifications  
+- **Format**: Use this HTML structure:  
+  ```html
+  <div class="content-section" style="background: hsla(var(--accent-hsl), 1);">
+  <h3>Pricing</h3>
+  <p>
+  <table class="content-table">
+    <tr>
+      <th class="content-table-th">Substrate</th>
+      <th class="content-table-th">Per sq ft</th>
+      <th class="content-table-th">Difficulty</th>
+    </tr>
+    <tr>
+      <td class="content-table-td">[value]</td>
+      <td class="content-table-td" style="text-align: center;">[value]</td>
+      <td class="content-table-td" style="text-align: right;">[value]</td>
+    </tr>
+  </table>
+  </p>
+  </div>
+  ```
+- **Clarity**:  
+  - Per sq ft ranges cover Light to Heavy contamination, center-aligned.  
+  - Difficulty ranges (e.g., 1–3) are right-aligned.  
+  - Note explains pricing variation, difficulty (1 = Easy, 5 = Hard), and prompts for quotes.  
+- **Length**: Table with substrate rows, plus a 2–3 sentence note (~50 words).  
+- **Validation**: Ensure pricing reflects a 30% Northern California premium, matches laser industry data, and aligns with effort; keep ranges practical and aligned.  
+
+Generate a pricing table showing Z-Beam’s mobile laser cleaning value in Northern California with simple, accurate ranges based on substrates and contamination.

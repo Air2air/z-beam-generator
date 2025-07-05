@@ -1,0 +1,102 @@
+{
+  "detection_prompts": [
+    {
+      "name": "ai_detection_enhanced",
+      "type": "ai",
+      "description": "Enhanced AI detection prompt with detailed patterns",
+      "is_default": true,
+      "prompt": "Analyze this text for AI-generated patterns and provide a confidence score (0-100%):\n\nCOMMON AI DETECTION PATTERNS TO LOOK FOR:\n1. STRUCTURAL PATTERNS:\n   - Excessive use of bullet points or numbered lists\n   - Overly organized sections with perfect transitions\n   - Formulaic introductions/conclusions\n   - Repetitive paragraph structures\n\n2. LANGUAGE PATTERNS:\n   - Technical jargon without natural context\n   - Consistent sentence length and complexity\n   - Lack of colloquialisms or informal language\n   - Perfect grammar with no natural hesitations\n\n3. CONTENT PATTERNS:\n   - Generic statements without specific examples\n   - Lack of personal opinions or biases\n   - Balanced coverage of all points equally\n   - Absence of tangential thoughts or digressions\n\n4. SEMANTIC PATTERNS:\n   - Encyclopedic knowledge presentation\n   - Lack of unique insights or specialized expertise\n   - Perfect information recall without errors\n   - Too many \"on one hand / on the other hand\" structures\n\n5. CONTEXT PATTERNS:\n   - Lack of industry-specific terminology\n   - No references to current trends/developments\n   - Missing practical insights from experience\n   - Absence of specialized knowledge outside general domains\n\nAnalyze the following content and provide a confidence score (0-100%) with brief reasoning (max 100 words):\n\n{content}\n\nAI DETECTION CONFIDENCE: [0-100%]"
+    },
+    {
+      "name": "ai_detection_prompt_minimal",
+      "type": "ai",
+      "description": "Minimal AI detection prompt for faster processing",
+      "is_default": false,
+      "prompt": "Analyze this text for AI-generated patterns. Provide only a confidence score (0-100%) with very brief reasoning (1-2 sentences):\n\n{content}\n\nAI DETECTION CONFIDENCE: [0-100%]"
+    },
+    {
+      "name": "ai_detection_v1",
+      "type": "ai",
+      "description": "AI detection prompt version 1",
+      "is_default": false,
+      "prompt": "Evaluate whether this text was written by an AI. Look for patterns like perfect grammar, lack of colloquialisms, balanced viewpoints, and overly structured content. Provide confidence score (0-100%) with brief reasoning:\n\n{content}\n\nAI DETECTION CONFIDENCE: [0-100%]"
+    },
+    {
+      "name": "ai_detection_v2",
+      "type": "ai",
+      "description": "AI detection prompt version 2",
+      "is_default": false,
+      "prompt": "Does this text show signs of AI generation? Check for generic statements without specific examples, perfect sentence structures, lack of personal style, and overly comprehensive explanations. Score 0-100%:\n\n{content}\n\nAI DETECTION CONFIDENCE: [0-100%]"
+    },
+    {
+      "name": "ai_detection_v3",
+      "type": "ai",
+      "description": "AI detection prompt version 3",
+      "is_default": false,
+      "prompt": "How likely was this written by AI? Consider mechanical transitions, sterile language, encyclopedic knowledge presentation, and perfect balanced perspectives. Rate 0-100%:\n\n{content}\n\nAI DETECTION CONFIDENCE: [0-100%]"
+    },
+    {
+      "name": "ai_detection_v4",
+      "type": "ai",
+      "description": "AI detection prompt version 4",
+      "is_default": false,
+      "prompt": "Analyze this text for AI authorship markers. Look for consistent tone, lack of personal anecdotes, perfect information presentation, and predictable structure. Score 0-100%:\n\n{content}\n\nAI DETECTION CONFIDENCE: [0-100%]"
+    },
+    {
+      "name": "natural_voice_enhanced",
+      "type": "natural_voice",
+      "description": "Enhanced natural voice detection prompt",
+      "is_default": true,
+      "prompt": "Analyze this text for natural voice authenticity and provide a confidence score (0-100%):\n\nNATURAL VOICE AUTHENTICITY INDICATORS:\n1. PROFESSIONAL RHYTHM PATTERNS:\n   - Natural variation in paragraph and sentence lengths\n   - Logical flow with smooth but not formulaic transitions\n   - Professional structure without rigid academic formatting\n   - Balanced organization that feels purposeful, not prescribed\n\n2. EXPERT LANGUAGE PATTERNS:\n   - Natural integration of industry terminology\n   - Professional tone without excessive formality\n   - Focused technical depth where it matters most\n   - Clear, direct communication style\n\n3. AUTHENTIC EXPERTISE INDICATORS:\n   - Specific examples that demonstrate practical knowledge\n   - Insights that suggest real-world experience\n   - Appropriate emphasis on key technical points\n   - Professional perspective without personal bias\n\n4. NATURAL COMMUNICATION STYLE:\n   - Confident but not overstated language\n   - Technical accuracy presented accessibly\n   - Appropriate use of explanatory details\n   - Professional voice that feels genuine\n\n5. AUTHENTICITY MARKERS:\n   - Content demonstrates specialized knowledge naturally\n   - Writing feels purposeful and expert-driven\n   - Information presented with appropriate confidence\n   - Professional insights integrated organically\n\nNote: Target range for excellent Natural Voice authenticity is 15-25%. Scores below 10% suggest overly artificial content, while scores above 30% may indicate exaggerated humanization.\n\nAnalyze the following content and provide a confidence score (0-100%) with brief reasoning (max 100 words):\n\n{content}\n\nNATURAL VOICE CONFIDENCE: [0-100%]"
+    },
+    {
+      "name": "human_detection_prompt_minimal",
+      "type": "human",
+      "description": "Minimal human detection prompt",
+      "is_default": false,
+      "prompt": "Analyze this text for human writing patterns. Provide only a confidence score (0-100%) with very brief reasoning (1-2 sentences):\n\n{content}\n\nHUMAN WRITING CONFIDENCE: [0-100%]"
+    },
+    {
+      "name": "natural_voice_v1",
+      "type": "natural_voice",
+      "description": "Natural Voice detection prompt version 1",
+      "is_default": false,
+      "prompt": "Evaluate this text for natural voice authenticity. Look for professional rhythm, expert language use, and authentic communication style. Provide confidence score (0-100%) with brief reasoning:\n\n{content}\n\nNATURAL VOICE CONFIDENCE: [0-100%]"
+    },
+    {
+      "name": "natural_voice_v2",
+      "type": "natural_voice",
+      "description": "Natural Voice detection prompt version 2",
+      "is_default": false,
+      "prompt": "Does this text demonstrate authentic natural voice characteristics? Check for professional expertise, varied rhythm, and natural communication flow. Score 0-100%:\n\n{content}\n\nNATURAL VOICE CONFIDENCE: [0-100%]"
+    },
+    {
+      "name": "natural_voice_v3",
+      "type": "natural_voice",
+      "description": "Natural Voice detection prompt version 3",
+      "is_default": false,
+      "prompt": "How authentic is the natural voice in this text? Consider professional authenticity, appropriate technical depth, and natural writing patterns. Rate 0-100%:\n\n{content}\n\nNATURAL VOICE CONFIDENCE: [0-100%]"
+    },
+    {
+      "name": "natural_voice_professional",
+      "type": "natural_voice",
+      "description": "Professional Natural Voice detection focusing on authentic expertise",
+      "is_default": false,
+      "prompt": "Evaluate this text for authentic professional voice characteristics (0-100%):\n\nPROFESSIONAL AUTHENTICITY MARKERS:\n- Natural demonstration of specialized knowledge\n- Industry terminology used organically\n- Practical insights suggesting real experience\n- Professional confidence without overstatement\n- Technical accuracy presented clearly\n- Logical organization that feels expert-driven\n- Focused depth in areas of specialization\n\nTarget: 15-25% indicates excellent authentic professional voice\n\n{content}\n\nNATURAL VOICE CONFIDENCE: [0-100%]"
+    },
+    {
+      "name": "natural_voice_rhythm",
+      "type": "natural_voice", 
+      "description": "Natural Voice detection focusing on authentic writing rhythm",
+      "is_default": false,
+      "prompt": "Analyze this text for natural writing rhythm and flow (0-100%):\n\nNATURAL RHYTHM INDICATORS:\n- Varied sentence lengths that create natural flow\n- Paragraph structures that feel purposeful not formulaic\n- Smooth transitions that connect ideas logically\n- Professional pacing appropriate to content\n- Natural emphasis on key points\n- Writing rhythm that supports understanding\n\nTarget: 15-25% indicates excellent natural rhythm\n\n{content}\n\nNATURAL VOICE CONFIDENCE: [0-100%]"
+    },
+    {
+      "name": "natural_voice_expertise",
+      "type": "natural_voice",
+      "description": "Natural Voice detection focusing on authentic expertise demonstration", 
+      "is_default": false,
+      "prompt": "Evaluate this text for authentic expertise demonstration (0-100%):\n\nEXPERTISE AUTHENTICITY MARKERS:\n- Specific examples that show practical knowledge\n- Technical details appropriate to audience\n- Professional insights integrated naturally\n- Confident but not overstated language\n- Focused technical depth where relevant\n- Clear explanations of complex concepts\n\nTarget: 15-25% indicates excellent authentic expertise\n\n{content}\n\nNATURAL VOICE CONFIDENCE: [0-100%]"
+    }
+  ]
+}
