@@ -6,6 +6,7 @@ This provides the same interface as the old PromptOptimizer while using the impr
 from typing import List, Optional, Dict, Tuple
 from datetime import datetime
 import asyncio
+from config.global_config import get_config
 
 from generator.core.domain.prompt_optimization import (
     PromptUsage,
@@ -273,7 +274,7 @@ class PromptOptimizerCompatible:
                         selection_ctx, available_prompts, in_memory_repo
                     ),
                 )
-                result = future.result(timeout=10)  # 10 second timeout
+                result = future.result(timeout=get_config().get_prompt_selection_timeout())  # Configurable timeout
                 return result
 
         except Exception as e:

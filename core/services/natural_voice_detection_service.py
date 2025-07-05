@@ -20,6 +20,7 @@ from generator.core.services.prompt_optimizer_compatible import PromptOptimizerC
 from generator.modules.logger import get_logger
 from typing import Optional
 import time
+from config.global_config import get_config
 
 logger = get_logger("natural_voice_detection_service")
 
@@ -82,10 +83,8 @@ class NaturalVoiceDetectionService:
         """
         # Set defaults from config if not provided
         if temperature is None:
-            from config.global_config import get_config
             temperature = get_config().get_detection_temperature()
         if timeout is None:
-            from config.global_config import get_config
             timeout = get_config().get_api_timeout()
             
         section_name = context.get_variable("section_name", "Unknown")
@@ -132,7 +131,7 @@ class NaturalVoiceDetectionService:
                     prompt=formatted_prompt,
                     model=self._model,
                     temperature=temperature,
-                    max_tokens=4000,
+                    max_tokens=get_config().get_max_large_response_tokens(),
                     timeout=timeout,
                 )
                 duration = time.time() - start_time
@@ -155,7 +154,7 @@ class NaturalVoiceDetectionService:
 
             # Track Natural Voice detection performance
             # Success for Natural Voice = score in optimal range (15-25%)
-            success = 15 <= score <= 25
+            success = get_config().get_low_natural_voice_threshold() <= score <= get_config().get_high_natural_voice_threshold()
             self._optimizer.track_performance(
                 prompt_name, "natural_voice", score, iteration, success, section_name
             )
@@ -205,14 +204,15 @@ class NaturalVoiceDetectionService:
         # Visual progress bar for Natural Voice detection
         progress_blocks = "■" * (score // 10) + "□" * (10 - score // 10)
         
-        # Natural Voice scoring logic: 15-25% is optimal range
-        if 15 <= score <= 25:
+        # Natural Voice scoring logic: configurable optimal range
+        nv_thresholds = get_config().get_score_balance_thresholds()
+        if nv_thresholds["low_nv"] <= score <= nv_thresholds["high_nv"]:
             status = "✅ EXCELLENT"
             color = "🟢"
-        elif 10 <= score <= 30:
+        elif (nv_thresholds["low_nv"] - 5) <= score <= (nv_thresholds["high_nv"] + 5):
             status = "✅ GOOD"
             color = "🟡"
-        elif score < 10:
+        elif score < (nv_thresholds["low_nv"] - 5):
             status = "⚠️ TOO ARTIFICIAL"
             color = "🔵"
         else:

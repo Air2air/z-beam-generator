@@ -8,6 +8,7 @@ import os
 import re
 from typing import Dict, Any, Optional, List, Tuple
 from dataclasses import dataclass
+from config.global_config import get_config
 import yaml
 
 from generator.config.settings import AppConfig, GenerationConfig
@@ -148,7 +149,6 @@ class ArticleGenerator:
         # Initialize efficient content service with word budget
         max_article_words = getattr(gen_config, "max_article_words", None)
         if max_article_words is None:
-            from config.global_config import get_config
             max_article_words = get_config().get_max_article_words()
         self.content_generator = EfficientContentGenerationService(
             api_client=api_client,
@@ -225,7 +225,6 @@ class ArticleGenerator:
         """Display a summary of the generation process including efficiency metrics."""
         max_words = getattr(gen_config, "max_article_words", None)
         if max_words is None:
-            from config.global_config import get_config
             max_words = get_config().get_max_article_words()
         budget_manager = self.content_generator.word_budget_manager
 
@@ -460,7 +459,7 @@ class ArticleGenerator:
             human_detection_threshold=human_detection_threshold,
             iterations_per_section=gen_config.iterations_per_section,
             temperature=gen_config.temperature,
-            max_tokens=8192,  # Will be managed by budget
+            max_tokens=get_config().get_max_improvement_tokens(),  # Will be managed by budget
             force_regenerate=gen_config.force_regenerate,
         )
 
@@ -587,7 +586,7 @@ class ArticleGenerator:
                 human_detection_threshold=human_detection_threshold,
                 iterations_per_section=gen_config.iterations_per_section,
                 temperature=gen_config.temperature,
-                max_tokens=8192,  # Will be managed by word budget
+                max_tokens=get_config().get_max_improvement_tokens(),  # Will be managed by word budget
                 force_regenerate=gen_config.force_regenerate,
             )
 

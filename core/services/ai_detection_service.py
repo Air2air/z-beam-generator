@@ -2,12 +2,12 @@
 Separate AI Detection Service - focused solely on detecting AI-generated patterns.
 """
 
-from generator.core.domain.models import AIScore, GenerationContext, TemperatureConfig
-from generator.core.interfaces.services import IAPIClient, IPromptRepository
-from generator.core.exceptions import DetectionError
-from generator.core.services.prompt_optimizer_compatible import PromptOptimizerCompatible
-from generator.modules.logger import get_logger
-from generator.config.global_config import get_config, requires_config
+from core.domain.models import AIScore, GenerationContext, TemperatureConfig
+from core.interfaces.services import IAPIClient, IPromptRepository
+from core.exceptions import DetectionError
+from core.services.prompt_optimizer_compatible import PromptOptimizerCompatible
+from modules.logger import get_logger
+from config.global_config import get_config, requires_config
 from typing import Optional
 import time
 
@@ -122,7 +122,7 @@ class AIDetectionService:
                     prompt=formatted_prompt,
                     model=self._model,
                     temperature=temperature,
-                    max_tokens=4000,
+                    max_tokens=get_config().get_max_large_response_tokens(),
                     timeout=timeout,
                 )
                 duration = time.time() - start_time

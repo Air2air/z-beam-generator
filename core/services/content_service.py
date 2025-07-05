@@ -304,7 +304,7 @@ class ContentGenerationService(IContentGenerator):
                 prompt=formatted_prompt,
                 model=request.model,
                 temperature=improvement_temp,
-                max_tokens=8192,  # Increase max_tokens for improvement step
+                max_tokens=get_config().get_max_improvement_tokens(),  # Increase max_tokens for improvement step
                 timeout=request.api_timeout,
             )
 

@@ -14,7 +14,7 @@ class GlobalConfigManager:
     Centralized configuration manager to prevent hardcoding.
     
     This is the SINGLE SOURCE OF TRUTH for all configuration values.
-    If you need a config value, get it from here - DO NOT HARDCODE!
+    If you need a config value, get it from here - DO NOT HARDCODING!
     """
     
     _instance: Optional['GlobalConfigManager'] = None
@@ -151,6 +151,11 @@ class GlobalConfigManager:
     def get_max_improvement_tokens(self) -> int:
         """Get max tokens for content improvement - NO HARDCODING!"""
         return self._config.get("max_improvement_tokens", 8192)
+    
+    # Operation timeout configuration - NO HARDCODING!
+    def get_prompt_selection_timeout(self) -> int:
+        """Get timeout for prompt selection operations - NO HARDCODING!"""
+        return self._config.get("prompt_selection_timeout", 10)
     
     # Detection threshold configuration - NO HARDCODING!
     def get_excellent_ai_threshold(self) -> int:

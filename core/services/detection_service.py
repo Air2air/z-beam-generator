@@ -264,21 +264,22 @@ class DetectionService:
     ) -> List[str]:
         """Generate specific improvement recommendations based on detection results."""
         recommendations = []
+        thresholds = get_config().get_content_scoring_thresholds()
         
         # AI-specific recommendations
         if ai_score > ai_threshold:
-            if ai_score > 50:
+            if ai_score > thresholds["high_ai"]:
                 recommendations.append("HIGH AI DETECTED: Add more natural variations, conversational elements")
-            elif ai_score > 30:
+            elif ai_score > thresholds["low_quality"]:
                 recommendations.append("MODERATE AI: Incorporate industry-specific terminology and examples")
             else:
                 recommendations.append("MILD AI: Minor adjustments to sentence structure needed")
         
         # Natural Voice specific recommendations  
         if nv_score > nv_threshold:
-            if nv_score > 50:
+            if nv_score > thresholds["high_ai"]:
                 recommendations.append("OVER-HUMANIZED: Reduce excessive casual language, maintain professionalism")
-            elif nv_score > 30:
+            elif nv_score > thresholds["low_quality"]:
                 recommendations.append("VOICE IMBALANCE: Balance technical expertise with conversational tone")
             else:
                 recommendations.append("MINOR VOICE ADJUSTMENT: Fine-tune professional authenticity")
