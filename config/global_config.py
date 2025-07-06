@@ -34,11 +34,13 @@ class GlobalConfigManager:
         instance._config = user_config.copy()
         instance._provider_models = provider_models or {}
         
+        default_content_temp = instance._config.get("content_temp", 0.6)
+
         # Set intelligent defaults for optimization values if not provided
         optimization_defaults = {
             "ai_detection_threshold": 25,      # 25% max AI detection
             "natural_voice_threshold": 25,    # 25% max for natural voice
-            "content_temp": 0.6,              # Balanced creativity for content
+            "content_temp": default_content_temp,              # Default content creativity
             "detection_temp": 0.3,            # Low variance for detection
             "improvement_temp": 0.7,          # Higher creativity for improvements
             "summary_temp": 0.4,              # Moderate for summaries
@@ -91,7 +93,7 @@ class GlobalConfigManager:
     def get_api_timeout(self) -> int:
         """Get API timeout - NO HARDCODING!"""
         return self._config.get("api_timeout", 60)
-    
+
     def get_temperature_config(self) -> TemperatureConfig:
         """Get temperature configuration - NO HARDCODING!"""
         if self._temperature_config is None:
@@ -238,6 +240,29 @@ class GlobalConfigManager:
     def get_force_regenerate(self) -> bool:
         """Get force regenerate flag - NO HARDCODING!"""
         return self._config.get("force_regenerate", True)
+    
+    def get_api_key(self, provider: str) -> str:
+        """Get API key for a provider from environment variables - NO HARDCODING!"""
+        import os
+        provider_upper = provider.upper()
+        key_name = f"{provider_upper}_API_KEY"
+        
+        api_key = os.getenv(key_name)
+        if not api_key:
+            # For TEST provider, return a test key
+            if provider_upper == "TEST":
+                return "test-api-key"  # FALLBACK for testing only
+            raise ValueError(f"No API key configured for provider: {provider}. Set environment variable {key_name}")
+        
+        return api_key
+    
+    def validate_api_key(self, provider: str) -> bool:
+        """Validate that API key exists for provider - NO HARDCODING!"""
+        try:
+            self.get_api_key(provider)
+            return True
+        except ValueError:
+            return False
     
     # API Provider Configuration - NO HARDCODING!
     def get_available_providers(self) -> Dict[str, Any]:

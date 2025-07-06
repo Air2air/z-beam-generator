@@ -11,15 +11,12 @@ import os
 def show_optimization_settings():
     """Display current optimization settings from GlobalConfigManager."""
     try:
-        # Add generator directory to path
-        sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'generator'))
-        
         # Initialize config
         parent_dir = os.path.dirname(os.path.abspath(__file__))
         sys.path.insert(0, parent_dir)
         from run import USER_CONFIG, PROVIDER_MODELS
         
-        from generator.config.global_config import GlobalConfigManager
+        from config.global_config import GlobalConfigManager
         GlobalConfigManager.initialize(USER_CONFIG, PROVIDER_MODELS)
         
         config = GlobalConfigManager.get_instance()

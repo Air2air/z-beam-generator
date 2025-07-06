@@ -26,10 +26,12 @@ def show_usage():
     print("Code Quality:")
     print("  python3 workflow.py detect       # Detect hardcoded config values")
     print("  python3 workflow.py autofix      # Auto-fix common hardcoding violations")
+    print("  python3 test_dynamic_optimization.py # Test dynamic optimization compliance")
     print()
     print("Training Integration:")
     print("  python3 workflow.py apply-training # Apply training insights to production")
     print("  python3 workflow.py show-recommendations # Show training-based recommendations")
+    print("  python3 workflow.py test-dynamic-optimization # Test dynamic optimization compliance")
     print("  python3 show_config.py           # Show current optimization settings")
     print()
     print("Or use individual files:")
@@ -111,6 +113,24 @@ def show_recommendations():
     except Exception as e:
         print(f"Error reading recommendations: {e}")
 
+def run_dynamic_optimization_test():
+    """Run dynamic optimization compliance tests."""
+    print("🎛️ Running Dynamic Optimization Tests...")
+    import subprocess
+    import sys
+    
+    try:
+        result = subprocess.run([sys.executable, "test_dynamic_optimization.py"], 
+                              capture_output=False, text=True)
+        if result.returncode == 0:
+            print("✅ All dynamic optimization tests passed!")
+        else:
+            print("❌ Some dynamic optimization tests failed!")
+            sys.exit(1)
+    except Exception as e:
+        print(f"Error running dynamic optimization tests: {e}")
+        sys.exit(1)
+
 def main():
     """Main workflow entry point."""
     if len(sys.argv) < 2:
@@ -134,6 +154,8 @@ def main():
             apply_training()
         elif command == "show-recommendations":
             show_recommendations()
+        elif command == "test-dynamic-optimization":
+            run_dynamic_optimization_test()
         else:
             print(f"❌ Unknown command: {command}")
             show_usage()

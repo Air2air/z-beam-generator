@@ -35,7 +35,7 @@ USER_CONFIG = {
     "force_regenerate": True,  # Always regenerate content
     "iterations_per_section": 5,  # Number of iterations to improve detection scores
     "max_article_words": 800,  # Maximum article word count
-    "api_timeout": 40,  # API request timeout in seconds
+    "api_timeout": 60,  # API request timeout in seconds
     
     # Note: Optimization values (thresholds, temperatures) are now managed
     # dynamically by the GlobalConfigManager with intelligent defaults.

@@ -104,7 +104,54 @@ class ApplicationConfig:
     deepseek_api_key: str = ""
     anthropic_api_key: str = ""
     xai_api_key: str = ""
-
+    
+    def get_generator_provider(self) -> str:
+        """Get the configured generator provider."""
+        # Return provider as uppercase string as expected by legacy code
+        provider_enum = self.generation_settings.api_settings.provider
+        return provider_enum.value.upper()
+    
+    def get_detection_provider(self) -> str:
+        """Get the configured detection provider."""
+        # By default, use the same provider for detection as for generation
+        # In a real app, this might come from a separate configuration
+        return self.get_generator_provider()
+        
+    def get_provider_model(self, provider: str) -> str:
+        """Get the model for the given provider."""
+        # For backward compatibility, accept string provider names
+        current_provider = self.generation_settings.api_settings.provider.value.upper()
+        if provider.upper() == current_provider:
+            return self.generation_settings.api_settings.model
+        return "default-model"
+    
+    def get_max_content_tokens(self) -> int:
+        """Get the maximum number of tokens for content generation."""
+        return self.generation_settings.api_settings.max_tokens
+    
+    def get_detection_temperature(self) -> float:
+        """Get the temperature for AI detection operations."""
+        return self.generation_settings.temperature_settings.ai_detection
+    
+    def get_max_detection_tokens(self) -> int:
+        """Get the maximum number of tokens for AI detection operations."""
+        # Typically we use fewer tokens for detection than for content generation
+        return max(1000, self.generation_settings.api_settings.max_tokens // 2)
+    
+    def get_api_timeout(self) -> int:
+        """Get the API timeout in seconds."""
+        return self.generation_settings.api_settings.timeout_seconds
+    
+    def get_max_large_response_tokens(self) -> int:
+        """Get the maximum number of tokens for large responses."""
+        # Typically use more tokens for large responses like article generation
+        return min(12000, self.generation_settings.api_settings.max_tokens * 4)
+    
+    def get_max_improvement_tokens(self) -> int:
+        """Get the maximum number of tokens for content improvement operations."""
+        # Typically use medium-sized tokens for improvement prompts
+        return min(8000, self.generation_settings.api_settings.max_tokens * 2)
+        
 
 class ConfigProvider:
     """Environment-aware configuration provider with validation."""
@@ -440,6 +487,42 @@ class ConfigProvider:
         """Get cache configuration."""
         return self.get_config().cache
     
+    def get_generator_provider(self) -> str:
+        """Get the configured generator provider."""
+        return self.get_config().get_generator_provider()
+    
+    def get_detection_provider(self) -> str:
+        """Get the configured detection provider."""
+        return self.get_config().get_detection_provider()
+    
+    def get_provider_model(self, provider: str) -> str:
+        """Get the model for the given provider."""
+        return self.get_config().get_provider_model(provider)
+    
+    def get_max_content_tokens(self) -> int:
+        """Get the maximum number of tokens for content generation."""
+        return self.get_config().get_max_content_tokens()
+    
+    def get_detection_temperature(self) -> float:
+        """Get the temperature for AI detection operations."""
+        return self.get_config().get_detection_temperature()
+    
+    def get_max_detection_tokens(self) -> int:
+        """Get the maximum number of tokens for AI detection operations."""
+        return self.get_config().get_max_detection_tokens()
+    
+    def get_api_timeout(self) -> int:
+        """Get the API timeout in seconds."""
+        return self.get_config().get_api_timeout()
+    
+    def get_max_large_response_tokens(self) -> int:
+        """Get the maximum number of tokens for large responses."""
+        return self.get_config().get_max_large_response_tokens()
+    
+    def get_max_improvement_tokens(self) -> int:
+        """Get the maximum number of tokens for content improvement operations."""
+        return self.get_config().get_max_improvement_tokens()
+        
     def reload_config(self) -> None:
         """Reload configuration from source."""
         self._loaded = False

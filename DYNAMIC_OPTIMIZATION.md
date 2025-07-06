@@ -230,4 +230,31 @@ service.adjust_threshold("ai_detection", 20)
 service.adjust_temperature("content", 0.7)
 ```
 
+## System Requirements
+
+### Core Principles
+
+#### ✅ Anti-Hardcoding Compliance
+- All configuration values MUST come from `GlobalConfigManager`
+- NO magic numbers, hardcoded URLs, or API keys in code
+- Use `get_config()` methods for ALL parameter access
+
+#### ✅ Clean Architecture
+- Strict separation of domain, application, and infrastructure layers
+- Dependency injection for all services
+- Interface-based design for testability
+
+#### ✅ NO FALLBACKS POLICY
+- **CRITICAL**: The system must NEVER generate content when production content already exists
+- Training modes must ONLY use existing, pre-generated production content
+- No automatic generation as fallback - fail fast with clear error messages
+- If content doesn't exist, user must run production generation first
+- This ensures training evaluates actual production output, not synthetic content
+
+#### ✅ Production Content Integrity
+- Training systems evaluate final, optimized production content only
+- Content must have completed full iteration cycles and optimization
+- Word budgets and detection scores must reflect production pipeline results
+- Section extraction works only with existing content structure
+
 The dynamic optimization system ensures that **every training session makes the production system better** by automatically applying learned insights to the optimization parameters that control content generation quality.

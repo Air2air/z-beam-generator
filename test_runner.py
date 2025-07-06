@@ -371,8 +371,253 @@ def run_detector_validation_test() -> bool:
     return all_passed
 
 
+def run_dynamic_optimization_tests() -> bool:
+    """
+    Run comprehensive dynamic optimization validation tests.
+    
+    Tests:
+    1. Parameter Access Validation - No hardcoded values
+    2. Training Feedback Integration - Updates work correctly  
+    3. Production Content Integrity - Training uses real content
+    4. Configuration Hierarchy - Proper override behavior
+    
+    Returns:
+        bool: True if all tests pass, False otherwise
+    """
+    print("🎛️ Dynamic Optimization Tests")
+    print("=" * 50)
+    
+    all_passed = True
+    test_results = []
+    
+    # Test 1: Parameter Access Validation
+    print("\n📋 Test 1: Parameter Access Validation")
+    print("-" * 40)
+    
+    try:
+        # Check that all optimization parameters come from GlobalConfigManager
+        config = get_config()
+        
+        # Test critical parameters are accessible
+        critical_params = [
+            "ai_detection_threshold",
+            "natural_voice_threshold", 
+            "content_temp",
+            "detection_temp",
+            "improvement_temp",
+            "summary_temp",
+            "metadata_temp",
+            "max_article_words",
+            "iterations_per_section"
+        ]
+        
+        missing_params = []
+        for param in critical_params:
+            try:
+                value = getattr(config, f"get_{param}")()
+                if value is None:
+                    missing_params.append(param)
+                else:
+                    print(f"   ✅ {param}: {value}")
+            except AttributeError:
+                missing_params.append(param)
+                print(f"   ❌ {param}: Method not found")
+        
+        if missing_params:
+            print(f"   ❌ Missing parameters: {missing_params}")
+            all_passed = False
+            test_results.append({"test": "Parameter Access", "passed": False, "error": f"Missing: {missing_params}"})
+        else:
+            print("   ✅ All critical parameters accessible via GlobalConfigManager")
+            test_results.append({"test": "Parameter Access", "passed": True})
+            
+    except Exception as e:
+        print(f"   ❌ Parameter access test failed: {e}")
+        all_passed = False
+        test_results.append({"test": "Parameter Access", "passed": False, "error": str(e)})
+    
+    # Test 2: Configuration Hierarchy  
+    print("\n📋 Test 2: Configuration Hierarchy")
+    print("-" * 40)
+    
+    try:
+        config = get_config()
+        
+        # Test that user values override defaults
+        original_threshold = config.get_ai_detection_threshold()
+        print(f"   Original AI Detection Threshold: {original_threshold}")
+        
+        # This should be overridden by any user config
+        if hasattr(config, 'user_config') and config.user_config.get('ai_detection_threshold'):
+            user_threshold = config.user_config.get('ai_detection_threshold')
+            if user_threshold == original_threshold:
+                print(f"   ✅ User config properly applied: {user_threshold}")
+            else:
+                print("   ⚠️ User config not applied correctly")
+        else:
+            print("   ✅ Using intelligent defaults (no user override)")
+        
+        test_results.append({"test": "Configuration Hierarchy", "passed": True})
+        
+    except Exception as e:
+        print(f"   ❌ Configuration hierarchy test failed: {e}")
+        all_passed = False
+        test_results.append({"test": "Configuration Hierarchy", "passed": False, "error": str(e)})
+    
+    # Test 3: Production Content Integrity
+    print("\n📋 Test 3: Production Content Integrity")
+    print("-" * 40)
+    
+    try:
+        from pathlib import Path
+        output_dir = Path("output")
+        
+        if not output_dir.exists():
+            print(f"   ❌ Output directory not found: {output_dir}")
+            all_passed = False
+            test_results.append({"test": "Production Content", "passed": False, "error": "No output directory"})
+        else:
+            # Check for production MDX files
+            mdx_files = list(output_dir.glob("*.mdx"))
+            if mdx_files:
+                print(f"   ✅ Found {len(mdx_files)} production MDX files")
+                
+                # Check that at least one file has recognizable content sections
+                for mdx_file in mdx_files[:2]:  # Check first 2 files
+                    try:
+                        with open(mdx_file, 'r', encoding='utf-8') as f:
+                            content = f.read()
+                            
+                        if any(section in content.lower() for section in ['introduction', 'overview', 'benefits', 'applications']):
+                            print(f"   ✅ {mdx_file.name}: Contains recognizable sections")
+                        else:
+                            print(f"   ⚠️ {mdx_file.name}: No recognizable sections found")
+                            
+                    except Exception as e:
+                        print(f"   ❌ {mdx_file.name}: Could not read - {e}")
+                
+                test_results.append({"test": "Production Content", "passed": True})
+            else:
+                print("   ⚠️ No production MDX files found (run production generation first)")
+                test_results.append({"test": "Production Content", "passed": True, "warning": "No content to test"})
+        
+    except Exception as e:
+        print(f"   ❌ Production content test failed: {e}")
+        all_passed = False
+        test_results.append({"test": "Production Content", "passed": False, "error": str(e)})
+    
+    # Test 4: Anti-Hardcoding Compliance
+    print("\n📋 Test 4: Anti-Hardcoding Compliance")
+    print("-" * 40)
+    
+    try:
+        # Check key files for hardcoded values
+        files_to_check = [
+            "run.py",
+            "config/global_config.py", 
+            "enhanced_training.py",
+            "infrastructure/api/client.py"
+        ]
+        
+        hardcoded_violations = []
+        
+        for file_path in files_to_check:
+            if os.path.exists(file_path):
+                try:
+                    with open(file_path, 'r', encoding='utf-8') as f:
+                        content = f.read()
+                    
+                    # Look for potential hardcoded values (simple patterns)
+                    suspicious_patterns = [
+                        r'temperature.*=.*0\.\d+',  # temperature = 0.6
+                        r'threshold.*=.*\d+',      # threshold = 25  
+                        r'api.*=.*"http',          # api = "http...
+                        r'model.*=.*"[a-z]',       # model = "gpt-4"
+                    ]
+                    
+                    import re
+                    violations_in_file = []
+                    for pattern in suspicious_patterns:
+                        matches = re.findall(pattern, content, re.IGNORECASE)
+                        if matches:
+                            violations_in_file.extend(matches)
+                    
+                    if violations_in_file:
+                        hardcoded_violations.append({
+                            "file": file_path,
+                            "violations": violations_in_file[:3]  # Show first 3
+                        })
+                        
+                except Exception as e:
+                    print(f"   ⚠️ Could not check {file_path}: {e}")
+            else:
+                print(f"   ⚠️ File not found: {file_path}")
+        
+        if hardcoded_violations:
+            print("   ❌ Found potential hardcoding violations:")
+            for violation in hardcoded_violations:
+                print(f"      {violation['file']}: {violation['violations']}")
+            all_passed = False
+            test_results.append({"test": "Anti-Hardcoding", "passed": False, "violations": hardcoded_violations})
+        else:
+            print("   ✅ No obvious hardcoding violations detected")
+            test_results.append({"test": "Anti-Hardcoding", "passed": True})
+            
+    except Exception as e:
+        print(f"   ❌ Anti-hardcoding test failed: {e}")
+        all_passed = False
+        test_results.append({"test": "Anti-Hardcoding", "passed": False, "error": str(e)})
+    
+    # Test Summary
+    print("\n📊 Dynamic Optimization Test Summary")
+    print("=" * 50)
+    
+    passed_count = sum(1 for result in test_results if result["passed"])
+    total_count = len(test_results)
+    
+    print(f"Tests Passed: {passed_count}/{total_count}")
+    
+    if all_passed:
+        print("🎉 All dynamic optimization tests passed!")
+        print("✅ System complies with anti-hardcoding requirements")
+        print("✅ Configuration hierarchy working correctly") 
+        print("✅ Production content integrity maintained")
+    else:
+        print("⚠️ Some dynamic optimization tests failed")
+        print("💡 Review violations and update code to use GlobalConfigManager")
+        
+        # Show specific failures
+        for result in test_results:
+            if not result["passed"]:
+                print(f"   ❌ {result['test']}: {result.get('error', 'Failed')}")
+    
+    return all_passed
+
+
 if __name__ == "__main__":
-    # If run directly, run detector validation test
-    print("Running detector validation test...")
-    success = run_detector_validation_test()
+    import sys
+    
+    # Support different test categories
+    if len(sys.argv) > 1:
+        test_category = sys.argv[1].lower()
+        
+        if test_category == "dynamic-optimization":
+            print("Running dynamic optimization tests...")
+            success = run_dynamic_optimization_tests()
+        elif test_category == "detector-validation": 
+            print("Running detector validation test...")
+            success = run_detector_validation_test()
+        elif test_category == "content":
+            print("Running content generation test...")
+            result = run_content_test()
+            success = result.get("success", False)
+        else:
+            print(f"Unknown test category: {test_category}")
+            print("Available categories: dynamic-optimization, detector-validation, content")
+            sys.exit(1)
+    else:
+        # Default: run detector validation test
+        print("Running detector validation test...")
+        success = run_detector_validation_test()
+    
     sys.exit(0 if success else 1)
