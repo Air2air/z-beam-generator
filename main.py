@@ -1,120 +1,135 @@
 #!/usr/bin/env python3
 """
-Main entry point for the Z-Beam article generation system.
-Handles configuration loading and orchestrates the generation process.
+Simplified Z-Beam Content Generator
+
+Single-file implementation following anti-bloat and anti-hardcoding rules.
+All configuration via GlobalConfigManager, no abstractions, maximum simplicity.
 """
 
 import sys
-import argparse
-import os
+from typing import Optional
+from pathlib import Path
 
-# Setup paths for internal imports
-import setup_paths
-
-from modules.runner import ApplicationRunner
-from config.configurator import build_run_config
-from core.domain.models import TemperatureConfig
-
-
-def parse_arguments():
-    """Parse command line arguments."""
-    parser = argparse.ArgumentParser(
-        description="Z-Beam Article Generation System",
-        formatter_class=argparse.RawDescriptionHelpFormatter,
-        epilog="""
-Examples:
-  python3 run.py                     # Normal article generation
-  python3 run.py --test-detector     # Test detector improvements and optimization
-        """,
-    )
-
-    # Test modes
-    test_group = parser.add_mutually_exclusive_group()
-    test_group.add_argument(
-        "--test-detector",
-        action="store_true",
-        help="Test detector improvements and prompt optimization (validate human-like output)",
-    )
-
-    return parser.parse_args()
-
-
-def load_user_config():
-    """Load user configuration from root run.py file."""
+def main():
+    """Main entry point for content generation."""
     try:
-        # Add parent directory to path to import from root run.py
-        parent_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-        sys.path.insert(0, parent_dir)
-        
+        # Import configuration from run.py - NO FALLBACKS
         from run import USER_CONFIG, PROVIDER_MODELS
-        
-        # Initialize global config manager to prevent hardcoding
         from config.global_config import GlobalConfigManager
-        global_config = GlobalConfigManager.initialize(USER_CONFIG)
-        global_config.validate_thresholds()
-        global_config.validate_temperatures()
         
-        # Convert flat user config to proper structure with TemperatureConfig
-        if isinstance(USER_CONFIG, dict):
-            temp_config = global_config.get_temperature_config()
-            
-            # Convert to the expected format
-            config = USER_CONFIG.copy()
-            config["temperature_config"] = temp_config
-            config["temperature"] = global_config.get_content_temperature()  # Legacy compatibility
-            config["detection_temperature"] = global_config.get_detection_temperature()  # Legacy compatibility
-            
-            return config, PROVIDER_MODELS
+        # Initialize GlobalConfigManager - SINGLE SOURCE OF TRUTH
+        config = GlobalConfigManager.initialize(USER_CONFIG, PROVIDER_MODELS)
+        
+        print("🚀 Z-Beam Generator - Simplified Architecture")
+        print(f"📋 Material: {config.get_material()}")
+        print(f"🔧 Provider: {config.get_generator_provider()}")
+        print(f"📝 File: {config.get_file_name()}")
+        
+        # Check PROJECT_GUIDE.md compliance
+        if not check_project_guide_compliance():
+            print("❌ Compliance check failed - aborting operation")
+            sys.exit(1)
+        
+        # Generate content using simplified approach
+        result = generate_content_simple(config)
+        
+        if result:
+            print(f"✅ Content generated successfully: {result}")
         else:
-            return USER_CONFIG, PROVIDER_MODELS
+            print("❌ Content generation failed")
             
-    except ImportError as e:
-        print(f"❌ Could not load configuration from run.py: {e}")
-        print("Make sure run.py exists in the project root with USER_CONFIG and PROVIDER_MODELS")
+    except Exception as e:
+        print(f"❌ FATAL ERROR: {e}")
+        print("NO FALLBACKS - system must fail fast")
         sys.exit(1)
 
+# === PROJECT_GUIDE.md COMPLIANCE CHECK ===
+def check_project_guide_compliance():
+    """Validate PROJECT_GUIDE.md compliance before any operations."""
+    try:
+        from audit_violations import ClaudeComplianceValidator
+        validator = ClaudeComplianceValidator(".")
+        
+        print("🔍 Checking PROJECT_GUIDE.md compliance...")
+        
+        # Validate project guide exists and is compliant
+        if not validator.validate_project_guide():
+            print("❌ PROJECT_GUIDE.md compliance issues detected:")
+            for violation in validator.violations:
+                print(f"  {violation}")
+            return False
+        
+        # Validate documentation file count
+        if not validator.validate_documentation_count():
+            print("❌ Unauthorized documentation files detected:")
+            for violation in validator.violations:
+                print(f"  {violation}")
+            return False
+        
+        print("✅ PROJECT_GUIDE.md compliance verified")
+        return True
+        
+    except Exception as e:
+        print(f"❌ PROJECT_GUIDE.md compliance check failed: {e}")
+        return False
 
-def main() -> None:
-    """Main entry point."""
-    args = parse_arguments()
-    
-    # Load configuration from root run.py
-    user_config, provider_models = load_user_config()
-    
-    # Make provider models available globally (for backward compatibility)
-    globals()["PROVIDER_MODELS"] = provider_models
+def generate_content_simple(config) -> Optional[str]:
+    """
+    Simple content generation using direct API calls.
+    No abstractions, no service layers, maximum simplicity.
+    """
+    try:
+        from modules.content_generator import generate_content_for_material
+        
+        # Get configuration values from GlobalConfigManager
+        material = config.get_material()
+        provider = config.get_generator_provider()
+        max_tokens = config.get_max_tokens()
+        temperature = config.get_content_temperature()
+        
+        print(f"🎯 Generating content for {material} using {provider}")
+        print(f"⚙️ Settings: {max_tokens} tokens, {temperature} temperature")
+        
+        # Simple content generation call
+        content = generate_content_for_material(
+            material=material,
+            provider=provider,
+            max_tokens=max_tokens,
+            temperature=temperature
+        )
+        
+        if content:
+            # Save to output file
+            output_path = save_content_simple(config, content)
+            return output_path
+        else:
+            raise RuntimeError("Empty content returned from generator")
+            
+    except Exception as e:
+        print(f"❌ Content generation error: {e}")
+        return None
 
-    # Handle test detector mode
-    if args.test_detector:
-        # Import test runner (only when needed)
-        try:
-            from test_runner import run_detector_validation_test
-
-            print("🧪 Running Detector Improvement Test...")
-            print("🎯 This will test the prompt optimization improvements")
-            print(
-                "   to ensure content reads as human-written without try-hard traits.\n"
-            )
-
-            # Run detector-focused test with optimized settings
-            success = run_detector_validation_test()
-
-            print(
-                f"\n{'✅ Test completed successfully!' if success else '❌ Test failed or did not meet thresholds.'}"
-            )
-            sys.exit(0 if success else 1)
-
-        except ImportError as e:
-            print(f"❌ Test runner not available: {e}")
-            print("Make sure test_runner.py is in the generator directory")
-            sys.exit(1)
-
-    # Normal article generation mode
-    run_config = build_run_config(user_config)
-    runner = ApplicationRunner()
-    success = runner.run(run_config)
-    sys.exit(0 if success else 1)
-
+def save_content_simple(config, content: str) -> str:
+    """
+    Save content to output file using simple direct approach.
+    """
+    try:
+        # Get file name from config
+        file_name = config.get_file_name()
+        
+        # Create output directory
+        output_dir = Path("output")
+        output_dir.mkdir(exist_ok=True)
+        
+        # Write content
+        output_path = output_dir / file_name
+        with open(output_path, 'w', encoding='utf-8') as f:
+            f.write(content)
+            
+        return str(output_path)
+        
+    except Exception as e:
+        raise RuntimeError(f"Failed to save content: {e}")
 
 if __name__ == "__main__":
     main()

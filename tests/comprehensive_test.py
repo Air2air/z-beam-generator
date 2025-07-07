@@ -3,7 +3,7 @@
 Comprehensive test for MDX validation patterns.
 """
 
-from generator.modules.mdx_validator import validate_mdx_output
+from modules.content_generator import validate_mdx_output
 
 
 def test_comprehensive_patterns():

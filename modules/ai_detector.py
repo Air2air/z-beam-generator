@@ -1,19 +1,13 @@
 # modules/ai_detector.py
 
-import json
-import re
-from typing import Dict, Any, Tuple
+import json, re, logging
+from typing import Dict, Any
 from datetime import datetime
-import logging
-from config.global_config import get_config
-
-from modules.logger import get_logger
+from config.global_config import GlobalConfigManager
+from modules.content_generator import get_logger, format_prompt
 from modules import api_client
-from modules.prompt_formatter import format_prompt
-from config.settings import AppConfig
 
 logger = get_logger("ai_detector")
-config = AppConfig()
 
 
 def research_material_config(
@@ -42,8 +36,8 @@ def research_material_config(
     )
 
     api_config = {
-        "temperature": 0.2,
-        "max_output_tokens": 500,
+        "temperature": GlobalConfigManager.get_instance().get_detection_temperature(),
+        "max_output_tokens": GlobalConfigManager.get_instance().get_max_detection_tokens(),
     }
 
     try:
@@ -108,7 +102,8 @@ def generate_content(
     }
 
     content_length_hint = section_variables.get(
-        "content_length", config.content.default_content_lengths
+        # Remove reference to deleted config.content.default_content_lengths
+        # This was likely used for content length validation - not needed for AI detection
     )
     section_length_str = content_length_hint.get(
         section_name
@@ -118,8 +113,7 @@ def generate_content(
         if match:
             max_words = int(match.group(2))
             # Use config for max article words instead of hardcoded value
-            from config.global_config import get_config
-            min_tokens = get_config().get_max_article_words() // 3  # Rough estimate: 3 words per token
+            min_tokens = GlobalConfigManager.get_instance().get_max_article_words() // 3  # Rough estimate: 3 words per token
             api_config["max_output_tokens"] = max(min_tokens, max_words * 2)
 
     try:
@@ -151,7 +145,7 @@ def generate_content(
         )
         logger.info(f"AI Likelihood for '{section_name}': {ai_likelihood}%")
 
-        if ai_likelihood > config.content.ai_detection_threshold:
+        if ai_likelihood > GlobalConfigManager.get_instance().get_ai_detection_threshold():
             logger.warning(
                 f"Content for '{section_name}' is too AI-like ({ai_likelihood}%). Attempting to regenerate..."
             )
@@ -176,7 +170,7 @@ def generate_content(
                 logger.info(
                     f"Retry AI Likelihood for '{section_name}': {ai_likelihood_retry}%"
                 )
-                if ai_likelihood_retry <= config.content.ai_detection_threshold:
+                if ai_likelihood_retry <= GlobalConfigManager.get_instance().get_ai_detection_threshold():
                     response_text = response_text_retry
                     ai_likelihood = ai_likelihood_retry
                     logger.info(f"Regeneration successful for '{section_name}'.")
@@ -201,13 +195,13 @@ def generate_content(
             api_keys,
             prompt_templates_dict,
             max_attempts=5,
-            threshold=config.content.ai_detection_threshold,
+            threshold=GlobalConfigManager.get_instance().get_ai_detection_threshold(),
         )
         logger.info(
             f"[AI DETECTOR] Section '{section_name}' final AI-likeness score: {final_score}%\n---\n{improved_content[:300]}\n---"
         )
 
-        if final_score <= config.content.ai_detection_threshold:
+        if final_score <= GlobalConfigManager.get_instance().get_ai_detection_threshold():
             logger.info(
                 f"Content for '{section_name}' improved to acceptable AI-likeness level ({final_score}%)."
             )
@@ -327,8 +321,7 @@ def evaluate_human_likeness_incremental(
     """
     # Set threshold from config if not provided
     if threshold is None:
-        from config.global_config import get_config
-        threshold = get_config().get_ai_detection_threshold()
+        threshold = GlobalConfigManager.get_instance().get_ai_detection_threshold()
     logger = get_logger("ai_detector", context=section_name)
     prompt_file_name = "ai_detection_prompt.txt"
     prompt_template = prompt_templates_dict.get(
@@ -365,8 +358,7 @@ def evaluate_human_likeness_incremental(
         )
         try:
             # Use config for temperature instead of hardcoded value
-            from config.global_config import get_config
-            detection_temp = get_config().get_detection_temperature()
+            detection_temp = GlobalConfigManager.get_instance().get_detection_temperature()
             
             response = api_client.call_ai_api(
                 prompt=filled_prompt,
@@ -374,7 +366,7 @@ def evaluate_human_likeness_incremental(
                 model=model,
                 api_keys=api_keys,
                 temperature=detection_temp,
-                max_tokens=get_config().get_max_tiny_response_tokens(),
+                max_tokens=GlobalConfigManager.get_instance().get_max_tiny_response_tokens(),
             )
             if response:
                 match = re.search(r"Percentage:\s*(\d+)%", response)

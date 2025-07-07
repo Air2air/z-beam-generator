@@ -6,7 +6,61 @@ All config values MUST come through this manager - NO HARDCODING ALLOWED!
 """
 
 from typing import Any, Optional, Dict
-from core.domain.models import TemperatureConfig
+from dataclasses import dataclass
+
+# === EXCEPTIONS (merged from exceptions.py) ===
+class ArticleGenerationError(Exception):
+    """Base exception for article generation errors."""
+    pass
+
+class ConfigurationError(ArticleGenerationError):
+    """Raised when there's a configuration-related error."""
+    pass
+
+class APIError(ArticleGenerationError):
+    """Raised when there's an API-related error."""
+    def __init__(self, message: str, provider: str = None, status_code: int = None):
+        super().__init__(message)
+        self.provider = provider
+        self.status_code = status_code
+
+class PromptError(ArticleGenerationError):
+    """Raised when there's a prompt-related error."""
+    pass
+
+class ContentGenerationError(ArticleGenerationError):
+    """Raised when content generation fails."""
+    pass
+
+class FileOperationError(ArticleGenerationError):
+    """Raised when file operations fail."""
+    pass
+
+class GenerationError(ArticleGenerationError):
+    """General generation process error."""
+    pass
+
+# Import logger when needed to avoid circular imports
+def _get_logger():
+    from modules.content_generator import get_logger
+    return get_logger("global_config")
+
+
+@dataclass
+class TemperatureConfig:
+    """Simple temperature configuration - consolidated from deleted domain model."""
+    content_temp: float = 0.6
+    detection_temp: float = 0.3
+    improvement_temp: float = 0.7
+    summary_temp: float = 0.4
+    metadata_temp: float = 0.2
+    
+    def __post_init__(self):
+        """Validate temperature values are in range 0.0-2.0."""
+        for field_name in ['content_temp', 'detection_temp', 'improvement_temp', 'summary_temp', 'metadata_temp']:
+            value = getattr(self, field_name)
+            if not 0.0 <= value <= 2.0:
+                raise ValueError(f"Temperature {field_name}={value} must be between 0.0 and 2.0")
 
 
 class GlobalConfigManager:
@@ -45,6 +99,15 @@ class GlobalConfigManager:
             "improvement_temp": 0.7,          # Higher creativity for improvements
             "summary_temp": 0.4,              # Moderate for summaries
             "metadata_temp": 0.2,             # Very consistent for metadata
+            # Token limits compatible with DeepSeek API (max 8192)
+            "max_content_tokens": 1500,       # Content generation
+            "max_detection_tokens": 500,      # Detection responses  
+            "max_metadata_tokens": 400,       # Metadata generation
+            "max_api_tokens": 2000,           # Default API calls
+            "max_small_response_tokens": 500, # Small responses
+            "max_tiny_response_tokens": 50,   # Tiny responses 
+            "max_large_response_tokens": 3000, # Large responses (reduced from 4000)
+            "max_improvement_tokens": 4000,   # Content improvement (reduced from 8192)
         }
         
         # Apply defaults for missing optimization values
@@ -94,6 +157,41 @@ class GlobalConfigManager:
         """Get API timeout - NO HARDCODING!"""
         return self._config.get("api_timeout", 60)
 
+    def get_overall_timeout(self) -> int:
+        """Get overall operation timeout - NO HARDCODING!"""
+        return self._config.get("overall_timeout", 300)
+
+    # Basic configuration getters - NO HARDCODING!
+    def get_material(self) -> str:
+        """Get material from USER_CONFIG - NO HARDCODING!"""
+        material = self._config.get("material")
+        if not material:
+            raise ConfigurationError(
+                "Material not specified in USER_CONFIG. "
+                "NO FALLBACKS - system must fail fast."
+            )
+        return material
+    
+    def get_generator_provider(self) -> str:
+        """Get generator provider from USER_CONFIG - NO HARDCODING!"""
+        provider = self._config.get("generator_provider")
+        if not provider:
+            raise ConfigurationError(
+                "Generator provider not specified in USER_CONFIG. "
+                "NO FALLBACKS - system must fail fast."
+            )
+        return provider
+    
+    def get_file_name(self) -> str:
+        """Get file name from USER_CONFIG - NO HARDCODING!"""
+        file_name = self._config.get("file_name")
+        if not file_name:
+            raise ConfigurationError(
+                "File name not specified in USER_CONFIG. "
+                "NO FALLBACKS - system must fail fast."
+            )
+        return file_name
+
     def get_temperature_config(self) -> TemperatureConfig:
         """Get temperature configuration - NO HARDCODING!"""
         if self._temperature_config is None:
@@ -122,6 +220,9 @@ class GlobalConfigManager:
         return self.get_temperature_config().metadata_temp
     
     # Max tokens configuration - NO HARDCODING!
+    def get_max_tokens(self) -> int:
+        """Get max tokens per API request from USER_CONFIG - NO HARDCODING!"""
+        return self._config.get("max_tokens", 4000)
     def get_max_content_tokens(self) -> int:
         """Get max tokens for content generation - NO HARDCODING!"""
         return self._config.get("max_content_tokens", 1500)
@@ -148,11 +249,11 @@ class GlobalConfigManager:
     
     def get_max_large_response_tokens(self) -> int:
         """Get max tokens for large responses (natural voice detection, etc.) - NO HARDCODING!"""
-        return self._config.get("max_large_response_tokens", 4000)
+        return self._config.get("max_large_response_tokens", 3000)
     
     def get_max_improvement_tokens(self) -> int:
         """Get max tokens for content improvement - NO HARDCODING!"""
-        return self._config.get("max_improvement_tokens", 8192)
+        return self._config.get("max_improvement_tokens", 4000)
     
     # Operation timeout configuration - NO HARDCODING!
     def get_prompt_selection_timeout(self) -> int:
@@ -213,80 +314,123 @@ class GlobalConfigManager:
     
     # Provider configuration
     def get_generator_provider(self) -> str:
-        """Get generator provider - NO HARDCODING!"""
-        return self._config.get("generator_provider", "DEEPSEEK")
+        """Get the generator provider."""
+        provider = self._config.get("generator_provider")
+        if not provider:
+            raise ConfigurationError(
+                "Generator provider not configured in USER_CONFIG. "
+                "NO FALLBACKS - system must fail fast."
+            )
+        return provider
     
     def get_detection_provider(self) -> str:
         """Get detection provider - NO HARDCODING!"""
         return self._config.get("detection_provider", "DEEPSEEK")
     
-    # Material and content settings
+    # === Content Generation Parameters ===
+    
     def get_material(self) -> str:
-        """Get material - NO HARDCODING!"""
-        return self._config.get("material", "Unknown")
+        """Get the material for content generation."""
+        material = self._config.get("material")
+        if not material:
+            raise ConfigurationError(
+                "Material not configured in USER_CONFIG. "
+                "NO FALLBACKS - system must fail fast."
+            )
+        return material
     
     def get_category(self) -> str:
-        """Get category - NO HARDCODING!"""
-        return self._config.get("category", "Material")
+        """Get the content category."""
+        category = self._config.get("category")
+        if not category:
+            raise ConfigurationError(
+                "Category not configured in USER_CONFIG. "
+                "NO FALLBACKS - system must fail fast."
+            )
+        return category
     
-    def get_file_name(self) -> str:
-        """Get output file name - NO HARDCODING!"""
-        return self._config.get("file_name", "output.mdx")
+    def get_filename(self) -> str:
+        """Get the output filename."""
+        filename = self._config.get("file_name")
+        if not filename:
+            raise ConfigurationError(
+                "File name not configured in USER_CONFIG. "
+                "NO FALLBACKS - system must fail fast."
+            )
+        return filename
     
     def get_author(self) -> str:
-        """Get author - NO HARDCODING!"""
-        return self._config.get("author", "default_author.mdx")
+        """Get the author for content generation."""
+        author = self._config.get("author")
+        if not author:
+            raise ConfigurationError(
+                "Author not configured in USER_CONFIG. "
+                "NO FALLBACKS - system must fail fast."
+            )
+        return author
     
-    def get_force_regenerate(self) -> bool:
-        """Get force regenerate flag - NO HARDCODING!"""
-        return self._config.get("force_regenerate", True)
-    
-    def get_api_key(self, provider: str) -> str:
-        """Get API key for a provider from environment variables - NO HARDCODING!"""
+    def get_generator_model(self) -> str:
+        """Get the generator model from provider models."""
+        provider = self.get_generator_provider()
+        if provider not in self._provider_models:
+            raise ConfigurationError(
+                f"Provider '{provider}' not found in PROVIDER_MODELS. "
+                "NO FALLBACKS - system must fail fast."
+            )
+        
+        model = self._provider_models[provider].get("model")
+        if not model:
+            raise ConfigurationError(
+                f"Model not configured for provider '{provider}'. "
+                "NO FALLBACKS - system must fail fast."
+            )
+        return model
+
+    def get_api_key_mappings(self) -> Dict[str, str]:
+        """Get API key environment variable mappings."""
+        mappings = self._config.get("api_key_mappings")
+        if not mappings:
+            raise ConfigurationError(
+                "API key mappings not configured in USER_CONFIG. "
+                "NO FALLBACKS - system must fail fast."
+            )
+        return mappings
+
+    def get_api_keys(self) -> Dict[str, str]:
+        """Get API keys from environment variables using configured mappings."""
         import os
-        provider_upper = provider.upper()
-        key_name = f"{provider_upper}_API_KEY"
         
-        api_key = os.getenv(key_name)
-        if not api_key:
-            # For TEST provider, return a test key
-            if provider_upper == "TEST":
-                return "test-api-key"  # FALLBACK for testing only
-            raise ValueError(f"No API key configured for provider: {provider}. Set environment variable {key_name}")
+        mappings = self.get_api_key_mappings()
+        api_keys = {}
         
-        return api_key
-    
-    def validate_api_key(self, provider: str) -> bool:
-        """Validate that API key exists for provider - NO HARDCODING!"""
-        try:
-            self.get_api_key(provider)
-            return True
-        except ValueError:
-            return False
-    
-    # API Provider Configuration - NO HARDCODING!
-    def get_available_providers(self) -> Dict[str, Any]:
-        """Get all available providers and models - NO HARDCODING!"""
-        return self._provider_models.copy()
-    
-    def get_provider_model(self, provider: str) -> str:
-        """Get model name for a provider - NO HARDCODING!"""
-        provider_config = self._provider_models.get(provider.upper(), {})
-        return provider_config.get("model", "unknown-model")
-    
-    def get_provider_url(self, provider: str) -> str:
-        """Get API URL template for a provider - NO HARDCODING!"""
-        provider_config = self._provider_models.get(provider.upper(), {})
-        return provider_config.get("url_template", "")
-    
-    def get_provider_config(self, provider: str) -> Dict[str, Any]:
-        """Get full configuration for a provider - NO HARDCODING!"""
-        return self._provider_models.get(provider.upper(), {})
-    
-    def validate_provider(self, provider: str) -> bool:
-        """Validate that a provider is configured - NO HARDCODING!"""
-        return provider.upper() in self._provider_models
-    
+        for provider_key, env_var in mappings.items():
+            api_key = os.environ.get(env_var)
+            if api_key:
+                api_keys[provider_key] = api_key
+            else:
+                # Use lazy logger import to avoid circular imports
+                logger = _get_logger()
+                logger.warning(f"API key not found in environment: {env_var}")
+        
+        return api_keys
+
+    def get_generator_url_template(self) -> str:
+        """Get the URL template for the generator provider."""
+        provider = self.get_generator_provider()
+        if provider not in self._provider_models:
+            raise ConfigurationError(
+                f"Provider '{provider}' not found in PROVIDER_MODELS. "
+                "NO FALLBACKS - system must fail fast."
+            )
+        
+        url_template = self._provider_models[provider].get("url_template")
+        if not url_template:
+            raise ConfigurationError(
+                f"URL template not configured for provider '{provider}'. "
+                "NO FALLBACKS - system must fail fast."
+            )
+        return url_template
+
     # Generic getter for any config value
     def get(self, key: str, default: Any = None) -> Any:
         """Get any configuration value - NO HARDCODING!"""
@@ -384,6 +528,86 @@ class GlobalConfigManager:
         self.validate_thresholds()
         self.validate_temperatures()
         self.validate_providers()
+
+    # === Single-Pass Template Architecture Configuration ===
+    
+    def get_generator_version(self) -> str:
+        """Get the current generator version."""
+        return self._config.get("generator_version", "2.0.0-single-pass")
+    
+    def get_default_section_words(self) -> int:
+        """Get default word target for sections."""
+        return self._config.get("default_section_words", 150)
+    
+    def get_section_order(self) -> list:
+        """Get the preferred order for assembling sections."""
+        default_order = [
+            "introduction",
+            "technical_overview", 
+            "applications",
+            "safety_guidelines",
+            "conclusion"
+        ]
+        return self._config.get("section_order", default_order)
+    
+    def get_supported_categories(self) -> list:
+        """Get list of supported content categories."""
+        default_categories = ["application", "author", "material", "region", "thesaurus"]
+        return self._config.get("supported_categories", default_categories)
+    
+    def get_thesaurus_terms(self) -> list:
+        """Get thesaurus terms for crosslinking."""
+        default_terms = [
+            "laser cleaning", "ablation", "surface preparation", "contaminant removal",
+            "oxide removal", "rust removal", "paint stripping", "coating removal",
+            "precision cleaning", "non-contact cleaning", "eco-friendly cleaning"
+        ]
+        return self._config.get("thesaurus_terms", default_terms)
+    
+    def get_content_quality_threshold(self) -> float:
+        """Get minimum content quality threshold (0.0 to 1.0)."""
+        return self._config.get("content_quality_threshold", 0.8)
+    
+    def get_technical_depth_level(self) -> str:
+        """Get technical depth level for content."""
+        return self._config.get("technical_depth_level", "intermediate")
+    
+    def get_retry_count(self) -> int:
+        """Get API retry count."""
+        return self._config.get("retry_count", 3)
+    
+    # === OPTIMIZATION MODE CONFIGURATION ===
+    def get_optimization_mode(self) -> str:
+        """Get optimization mode: speed_focused or quality_focused."""
+        return self._config.get("optimization_mode", "speed_focused")
+    
+    def is_real_time_optimization_enabled(self) -> bool:
+        """Check if real-time optimization during production is enabled."""
+        return self._config.get("enable_real_time_optimization", False)
+    
+    def get_quality_retry_attempts(self) -> int:
+        """Get number of retry attempts if quality is below threshold."""
+        return self._config.get("quality_retry_attempts", 1)
+    
+    def is_section_scoring_enabled(self) -> bool:
+        """Check if section-level scoring during generation is enabled."""
+        return self._config.get("enable_section_scoring", False)
+    
+    def get_scoring_threshold_ai(self) -> int:
+        """Get AI detection threshold for quality optimization."""
+        return self._config.get("scoring_threshold_ai", 25)
+    
+    def get_scoring_threshold_nv(self) -> int:
+        """Get natural voice threshold for quality optimization."""
+        return self._config.get("scoring_threshold_nv", 20)
+    
+    def is_quality_focused_mode(self) -> bool:
+        """Check if system is in quality-focused mode (slower but better)."""
+        return self.get_optimization_mode() == "quality_focused"
+    
+    def is_speed_focused_mode(self) -> bool:
+        """Check if system is in speed-focused mode (faster but simpler)."""
+        return self.get_optimization_mode() == "speed_focused"
 
 
 # Convenience function for getting the global config manager

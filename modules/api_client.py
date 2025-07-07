@@ -1,18 +1,13 @@
 # generator/modules/api_client.py
 
-import requests
-import json
-import time
-import random
+import requests, json, time, random
 from typing import Dict, Any, Optional, Tuple
 from dataclasses import dataclass
 from enum import Enum
-
-from modules.logger import get_logger
-from config.settings import AppConfig
+from modules.content_generator import get_logger
+from config.global_config import GlobalConfigManager
 
 logger = get_logger("api_client")
-config = AppConfig()
 
 
 # Note: Provider constants kept for backward compatibility
@@ -47,20 +42,23 @@ def call_ai_api(
     model: str,
     api_keys: Dict[str, str],
     temperature: float = None,
-    max_tokens: int = 1000,
-    retries: int = 3,
+    max_tokens: int = None,
+    retries: int = None,
     backoff_factor: float = 0.5,
     timeout: int = None,
     url_template: str = None,
 ) -> Optional[str]:
     # Set defaults from config if not provided
+    config = GlobalConfigManager.get_instance()
     if temperature is None:
-        from config.global_config import get_config
-        temperature = get_config().get_content_temperature()
+        temperature = config.get_content_temperature()
+    if max_tokens is None:
+        max_tokens = config.get_max_tokens()
     if timeout is None:
-        from config.global_config import get_config
-        timeout = get_config().get_api_timeout()
-        
+        timeout = config.get_api_timeout()
+    if retries is None:
+        retries = config.get_retry_count()
+
     try:
         provider_enum = APIProvider(provider.upper())
     except ValueError:

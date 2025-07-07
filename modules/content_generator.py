@@ -1,30 +1,177 @@
-# generator/modules/content_generator.py
-
 """
-Legacy content generator - now uses the new architecture under the hood.
-This file maintains backward compatibility while delegating to the new system.
-
-DEPRECATION NOTICE: This module is being refactored. New code should use the
-services in generator.core.services instead.
+Simplified content generator following anti-bloat principles.
+All configuration via GlobalConfigManager, no abstractions.
+Includes MDX validation functionality and prompt management.
 """
 
-# Import the new adapter for generate_content function
-from modules.legacy_adapter import generate_content  # noqa: F401
-
-# Keep all the existing imports and functions for backward compatibility
+import re, os, logging
 from typing import Dict, Any
-from config.global_config import get_config
-from modules.logger import get_logger
+from pathlib import Path
+from config.global_config import GlobalConfigManager
 from modules import api_client
-from modules.prompt_formatter import format_prompt
-from modules.prompt_manager import PromptManager
-from config.settings import AppConfig
-import os
+
+# === SIMPLE LOGGING (inlined from utils.py) ===
+def get_logger(name: str):
+    """Simple logger setup - replaces entire logger.py module."""
+    logger = logging.getLogger(name)
+    if not logger.handlers:
+        handler = logging.StreamHandler()
+        formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+        handler.setFormatter(formatter)
+        logger.addHandler(handler)
+        logger.setLevel(logging.INFO)
+    return logger
 
 logger = get_logger("content_generator")
-config = AppConfig()
 
+
+# === PROMPT MANAGEMENT (merged from prompt_manager.py) ===
+
+class PromptManager:
+    """Centralized loader and cache for all prompt templates."""
+
+    def __init__(self, base_dir: str = None):
+        if base_dir:
+            self.base_dir = base_dir
+        else:
+            # Default to sections directory relative to project root
+            project_root = Path(__file__).parent.parent
+            self.base_dir = str(project_root / "sections")
+        self.cache: Dict[str, str] = {}
+
+    def load_prompt(self, prompt_name: str, subdir: str = "") -> str:
+        key = f"{subdir}/{prompt_name}" if subdir else prompt_name
+        if key in self.cache:
+            return self.cache[key]
+        path = (
+            os.path.join(self.base_dir, subdir, prompt_name)
+            if subdir
+            else os.path.join(self.base_dir, prompt_name)
+        )
+        try:
+            with open(path, "r", encoding="utf-8") as f:
+                content = f.read()
+                self.cache[key] = content
+                return content
+        except Exception as e:
+            logger.error(f"Prompt not found: {path} ({e})")
+            raise FileNotFoundError(f"Prompt not found: {path} ({e})")
+
+    def load_all_prompts(self, subdir: str = "") -> Dict[str, str]:
+        dir_path = os.path.join(self.base_dir, subdir) if subdir else self.base_dir
+        prompt_templates = {}
+        logger.info(f"Loading prompt templates from: {dir_path}")
+
+        os.makedirs(dir_path, exist_ok=True)
+
+        if not os.path.exists(dir_path):
+            logger.error(f"Prompt directory not found after attempt to create: {dir_path}")
+            raise FileNotFoundError(f"Prompt directory not found: {dir_path}")
+
+        try:
+            for filename in os.listdir(dir_path):
+                if filename.endswith(".txt"):
+                    file_path = os.path.join(dir_path, filename)
+                    try:
+                        with open(file_path, "r", encoding="utf-8") as f:
+                            content = f.read()
+                            prompt_templates[filename] = content
+                            self.cache[filename] = content  # Add to cache
+                        logger.debug(f"Loaded prompt: {filename}")
+                    except IOError as e:
+                        logger.warning(f"Could not read prompt file {filename}: {e}")
+                    except Exception as e:
+                        logger.error(f"An unexpected error occurred reading prompt {filename}: {e}")
+            logger.info(f"Successfully loaded {len(prompt_templates)} prompt templates.")
+        except Exception as e:
+            logger.critical(f"Failed to list or read files in prompt directory {dir_path}: {e}")
+            raise
+
+        return prompt_templates
+
+
+# Initialize global prompt manager
 prompt_manager = PromptManager(os.path.join(os.path.dirname(__file__), "../prompts"))
+
+
+# === MDX VALIDATION FUNCTIONS (merged from mdx_validator.py) ===
+
+def validate_mdx_output(content: str) -> str:
+    """
+    Simplified MDX validation - fixes most common issues without over-engineering.
+    Returns cleaned content ready for Next.js.
+    """
+    if not content:
+        return content
+    
+    # Fix the most critical MDX parsing issues
+    fixed = content
+    
+    # Fix HTML entities in tags (e.g., <td&gt; -> <td>&gt;)
+    fixed = re.sub(r"<([a-zA-Z][a-zA-Z0-9]*)((?:&[a-zA-Z0-9]+;|&#[0-9]+;|&#x[0-9a-fA-F]+;))", r"<\1>\2", fixed)
+    
+    # Fix comparison operators with numbers
+    fixed = re.sub(r"<(\d+\.?\d*)", r"&lt;\1", fixed)
+    fixed = re.sub(r">(\d+\.?\d*)", r"&gt;\1", fixed)
+    fixed = re.sub(r"<=(\d+\.?\d*)", r"&le;\1", fixed)
+    fixed = re.sub(r">=(\d+\.?\d*)", r"&ge;\1", fixed)
+    
+    # Fix unescaped ampersands
+    fixed = re.sub(r"&(?![a-zA-Z0-9#]+;)", r"&amp;", fixed)
+    
+    # Fix basic YAML frontmatter issues
+    if fixed.startswith("---"):
+        parts = fixed.split("---", 2)
+        if len(parts) >= 3:
+            frontmatter = parts[1]
+            # Fix malformed quotes in YAML
+            frontmatter = re.sub(r'^\s*-\s*"-\s*"([^"]+)""', r'  - "\1"', frontmatter, flags=re.MULTILINE)
+            fixed = f"---{frontmatter}---{parts[2]}"
+    
+    return fixed
+
+
+# === PROMPT FORMATTING ===
+
+def format_prompt(prompt, format_vars, prompt_file, section_name):
+    """Format prompt, handle missing variables with strict placeholder validation.
+
+    Args:
+        prompt (str): Raw prompt text.
+        format_vars (dict): Variables to insert into the prompt.
+        prompt_file (str): Path to the prompt file.
+        section_name (str): Name of the section.
+
+    Returns:
+        str: Formatted prompt.
+    """
+    # Match placeholders outside JSON example blocks
+    placeholders = re.findall(r"\{(\w+)\}(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", prompt)
+    missing_vars = [var for var in placeholders if var not in format_vars]
+    try:
+        if missing_vars:
+            logger.warning(
+                f"Prompt {prompt_file} has undefined variables {missing_vars}. Using manual replacement."
+            )
+            formatted = prompt
+            for key, value in format_vars.items():
+                formatted = formatted.replace(f"{{{key}}}", str(value))
+        else:
+            logger.debug(f"Raw prompt for {section_name}: {prompt[:500]}...")
+            formatted = prompt.format(**format_vars)
+            logger.debug(f"Formatted prompt for {section_name}: {formatted[:500]}...")
+        return formatted
+    except KeyError as e:
+        logger.warning(
+            f"Warning: Prompt {prompt_file} has undefined variable {e}. Using manual replacement."
+        )
+        formatted = prompt
+        for key, value in format_vars.items():
+            formatted = formatted.replace(f"{{{key}}}", str(value))
+        logger.debug(
+            f"Manually formatted prompt for {section_name}: {formatted[:500]}..."
+        )
+        return formatted
 
 
 def load_rewrite_prompt():
@@ -72,8 +219,9 @@ def research_material_config(
     )
 
     # Default values if settings are missing - now using config
-    default_temp = get_config().get_content_temperature()
-    default_max_tokens = get_config().get_max_content_tokens()
+    config = GlobalConfigManager.get_instance()
+    default_temp = config.get_content_temperature()
+    default_max_tokens = config.get_max_content_tokens()
     default_url = None
 
     # Safe extraction of settings with defaults
@@ -162,292 +310,110 @@ def _strip_revision_instruction(response_text: str) -> str:
     """
     Remove the prepended revision instruction and feedback from the model's response, if present.
     """
-    import re
-
     # Remove up to and including the first blank line (\n\n) after the instruction/feedback
     pattern = r"^(Revise the following section based on this feedback to make it more human-like and less AI-detectable\.\nFeedback:.*?\n\n)"
     return re.sub(pattern, "", response_text, flags=re.DOTALL)
 
 
-def generate_with_feedback_loop(
+def generate_content(
     section_name: str,
     prompt_template: str,
     section_variables: dict,
     generator_provider: str,
     model: str,
     api_keys: dict,
-    prompt_templates_dict: dict,
-    prompt_file_name: str,
-    ai_detection_threshold: int,
-    human_detection_threshold: int,
-    iterations_per_section: int,
     generator_model_settings: dict = None,
-    detection_provider: str = None,
-    detection_model_settings: dict = None,
-) -> tuple[str, int, bool]:
+) -> str:
     """
-    Adaptive feedback-driven revision loop for robust human-like content generation.
-    Keeps a history of attempts, dynamically injects feedback, varies temperature, and selects the best output.
+    Single-pass, template-driven content generation for a section.
+    No feedback loop, no dynamic optimization, no fallbacks.
+    Strictly uses centralized config for all parameters.
     """
-    from modules.ai_detector import parse_ai_detection_feedback
-
-    attempts = []
-    best_content = ""
-    # Initialize tracking variables with config-based defaults
-    best_ai_score = 100  # Start with worst possible AI score
-    best_human_score = 0  # Start with worst possible human score
-    threshold_met = False
-    previous_output = None
-    revision_feedback = ""
-    detection_prompt_template = prompt_manager.load_prompt(
-        "ai_detection_prompt.txt", "detection"
+    logger.info(f"Generating content for section: {section_name}")
+    filled_prompt = format_prompt(
+        prompt_template,
+        section_variables,
+        f"{section_name}.txt",
+        section_name,
     )
-    base_temperature = section_variables.get("temperature", 0.7)
-    for i in range(iterations_per_section):
-        temperature = base_temperature + (0.1 * i if i > 0 else 0)
-        # Always revise previous output after the first iteration
-        if i > 0 and previous_output:
-            section_variables_with_feedback = dict(section_variables)
-            # Use feedback if available, otherwise use initial_prompt.txt for first iteration
-            if revision_feedback:
-                section_variables_with_feedback["revision_feedback"] = revision_feedback
-                revision_instruction = (
-                    "Revise the following section based on this feedback to make it more human-like and less AI-detectable.\n"
-                    "Feedback: {revision_feedback}\n\n"
-                )
-            else:
-                # For first iteration or when no feedback available, use initial_prompt.txt
-                initial_prompt = prompt_manager.load_prompt(
-                    "initial_prompt.txt", "detection"
-                )
-                section_variables_with_feedback["revision_feedback"] = initial_prompt
-                revision_instruction = (
-                    "Revise the following section to make it more human-like and less AI-detectable.\n"
-                    "Guidelines: {revision_feedback}\n\n"
-                )
-            revision_instruction += (
-                "Previous Output:\n" + previous_output.strip() + "\n\n"
-            )
-            filled_prompt = format_prompt(
-                revision_instruction + prompt_template,
-                section_variables_with_feedback,
-                prompt_file_name,
-                section_name,
-            )
-        else:
-            filled_prompt = format_prompt(
-                prompt_template,
-                section_variables,
-                prompt_file_name,
-                section_name,
-            )
-        logger.debug(
-            f"[FEEDBACK LOOP] Iteration {i + 1} for '{section_name}':\nFeedback: {revision_feedback}\nPrompt: {filled_prompt[:1000]}\n---END PROMPT---"
+    # Centralized config
+    config = GlobalConfigManager.get_instance()
+    temperature = config.get_content_temperature()
+    max_tokens = config.get_max_content_tokens()
+    url_template = None
+    if generator_model_settings:
+        url_template = generator_model_settings.get("url_template")
+    try:
+        response_text = api_client.call_ai_api(
+            prompt=filled_prompt,
+            provider=generator_provider,
+            model=model,
+            api_keys=api_keys,
+            temperature=temperature,
+            max_tokens=max_tokens,
+            url_template=url_template,
+            backoff_factor=2.0,
         )
-        try:
-            response_text = api_client.call_ai_api(
-                prompt=filled_prompt,
-                provider=generator_provider,
-                model=model,
-                api_keys=api_keys,
-                temperature=temperature,
-                max_tokens=get_config().get_max_content_tokens(),
-                url_template=generator_model_settings.get("url_template")
-                if generator_model_settings
-                else None,
-                backoff_factor=2.0,
-            )
-        except Exception as e:
-            logger.error(
-                f"API request failed for section '{section_name}' (iteration {i + 1}): {e}"
-            )
-            continue
         if not response_text or not response_text.strip():
-            logger.warning(
-                f"Empty response for section '{section_name}' (iteration {i + 1})"
-            )
-            continue
-        cleaned_response = _strip_revision_instruction(response_text)
-        previous_output = cleaned_response
-        # --- AI DETECTION CALL ---
-        detection_vars = {
-            "content": cleaned_response,
-            "content_type": section_name.replace("_", " "),
-            "audience_level": section_variables.get("audience_level", "general"),
+            logger.warning(f"Empty response for section '{section_name}'")
+            return ""
+        return response_text.strip()
+    except Exception as e:
+        logger.error(f"API request failed for section '{section_name}': {e}")
+        return ""
+
+
+def generate_content_for_material(material: str, provider: str, max_tokens: int, temperature: float) -> str:
+    """
+    Simplified content generation function for the main interface.
+    Generates content for a material using the specified provider and settings.
+    """
+    try:
+        # Get configuration 
+        config_manager = GlobalConfigManager()
+        api_keys = config_manager.get_api_keys()
+        
+        # Load prompt template for the material
+        prompt_template = prompt_manager.load_prompt("prompt_material.txt")
+        if not prompt_template:
+            logger.error("No prompt template found for material generation")
+            return ""
+        
+        # Create section variables for the material
+        section_variables = {
+            "material": material,
+            "provider": provider,
+            "max_words": "1200",  # Default word count
+            "category": "metals"  # Default category, could be made configurable
         }
+        
+        # Set up generator model settings
+        generator_model_settings = {
+            "max_tokens": max_tokens,
+            "temperature": temperature
+        }
+        
+        # Generate content using the existing function
+        content = generate_content(
+            section_name="material_content",
+            prompt_template=prompt_template,
+            section_variables=section_variables,
+            generator_provider=provider,
+            model=config_manager.get_generator_model(),
+            api_keys=api_keys,
+            generator_model_settings=generator_model_settings
+        )
+        
+        return content
+        
+    except Exception as e:
+        logger.error(f"Content generation failed for material {material}: {e}")
+        return ""
 
-        # AI Detection
-        ai_detection_prompt = format_prompt(
-            detection_prompt_template,
-            detection_vars,
-            "ai_detection_prompt.txt",
-            section_name,
-        )
-        try:
-            ai_detection_response = api_client.call_ai_api(
-                prompt=ai_detection_prompt,
-                provider=detection_provider or generator_provider,
-                model=detection_model_settings.get("model")
-                if detection_model_settings
-                else model,
-                api_keys=api_keys,
-                temperature=get_config().get_metadata_temperature(),
-                max_tokens=get_config().get_max_detection_tokens(),
-                url_template=detection_model_settings.get("url_template")
-                if detection_model_settings
-                else (
-                    generator_model_settings.get("url_template")
-                    if generator_model_settings
-                    else None
-                ),
-                backoff_factor=2.0,
-            )
-        except Exception as e:
-            logger.error(
-                f"AI detection request failed for section '{section_name}' (iteration {i + 1}): {e}"
-            )
-            continue
-        logger.info(
-            f"[RAW AI DETECTION OUTPUT] Iteration {i + 1} for '{section_name}': {ai_detection_response}"
-        )
-        ai_score, ai_feedback = parse_ai_detection_feedback(
-            ai_detection_response or "",
-            detection_provider or generator_provider,
-            detection_model_settings.get("model")
-            if detection_model_settings
-            else model,
-            section_name,
-            section_variables.get("audience_level", "general"),
-            api_keys,
-            prompt_templates_dict,
-        )
-        logger.info(
-            f"[AI FEEDBACK] Iteration {i + 1} for '{section_name}': {ai_feedback}"
-        )
 
-        # --- HUMAN DETECTION CALL ---
-        # Load human detection prompt template
-        human_detection_template = prompt_manager.load_prompt(
-            "human_detection_prompt.txt", "detection"
-        )
-        human_detection_prompt = format_prompt(
-            human_detection_template,
-            detection_vars,
-            "human_detection_prompt.txt",
-            section_name,
-        )
-        try:
-            human_detection_response = api_client.call_ai_api(
-                prompt=human_detection_prompt,
-                provider=detection_provider or generator_provider,
-                model=detection_model_settings.get("model")
-                if detection_model_settings
-                else model,
-                api_keys=api_keys,
-                temperature=get_config().get_metadata_temperature(),
-                max_tokens=get_config().get_max_detection_tokens(),
-                url_template=detection_model_settings.get("url_template")
-                if detection_model_settings
-                else (
-                    generator_model_settings.get("url_template")
-                    if generator_model_settings
-                    else None
-                ),
-                backoff_factor=2.0,
-            )
-        except Exception as e:
-            logger.error(
-                f"Human detection request failed for section '{section_name}' (iteration {i + 1}): {e}"
-            )
-            continue
-        logger.info(
-            f"[RAW HUMAN DETECTION OUTPUT] Iteration {i + 1} for '{section_name}': {human_detection_response}"
-        )
-        human_score, human_feedback = parse_ai_detection_feedback(
-            human_detection_response or "",
-            detection_provider or generator_provider,
-            detection_model_settings.get("model")
-            if detection_model_settings
-            else model,
-            section_name,
-            section_variables.get("audience_level", "general"),
-            api_keys,
-            prompt_templates_dict,
-        )
-        logger.info(
-            f"[HUMAN FEEDBACK] Iteration {i + 1} for '{section_name}': {human_feedback}"
-        )
-        # Combine feedback from both detectors
-        combined_feedback = (
-            f"AI Detection: {ai_feedback}\nHuman Detection: {human_feedback}"
-        )
-
-        attempts.append(
-            {
-                "iteration": i + 1,
-                "content": cleaned_response,
-                "ai_score": ai_score,
-                "human_score": human_score,
-                "ai_feedback": ai_feedback,
-                "human_feedback": human_feedback,
-                "combined_feedback": combined_feedback,
-            }
-        )
-
-        # Log both scores for this iteration
-        logger.info(
-            f"[SCORES] Iteration {i + 1} for '{section_name}': "
-            f"AI Score: {ai_score}%, Human Score: {human_score}%"
-        )
-
-        # Track best (lowest combined score)
-        combined_score = (ai_score + human_score) / 2
-        best_combined_score = (best_ai_score + best_human_score) / 2
-        if combined_score < best_combined_score or (
-            combined_score == best_combined_score and ai_score < best_ai_score
-        ):
-            best_content = cleaned_response
-            best_ai_score = ai_score
-            best_human_score = human_score
-
-        # Check if both scores are below their thresholds (CORRECT LOGIC)
-        if (
-            ai_score <= ai_detection_threshold
-            and human_score <= human_detection_threshold
-        ):
-            threshold_met = True
-            logger.info(
-                f"Section '{section_name}' passed on iteration {i + 1} "
-                f"(AI: {ai_score}% <= {ai_detection_threshold}%, "
-                f"Human: {human_score}% <= {human_detection_threshold}%)"
-            )
-            break
-
-        # If feedback is unchanged for 2+ attempts, escalate by increasing temperature
-        if (
-            i > 0
-            and attempts[-1]["combined_feedback"] == attempts[-2]["combined_feedback"]
-        ):
-            logger.info(
-                "Escalating: feedback unchanged, increasing temperature for next attempt."
-            )
-
-        # Use combined feedback for next iteration
-        revision_feedback = combined_feedback or ""
-        logger.info(
-            f"Section '{section_name}' failed iteration {i + 1} "
-            f"(AI: {ai_score}% > {ai_detection_threshold}% OR "
-            f"Human: {human_score}% > {human_detection_threshold}%)"
-        )
-    if not best_content:
-        logger.error(
-            f"No valid content generated for section '{section_name}' after {iterations_per_section} iterations. Returning default values."
-        )
-        return "", 100, False
-    # Optionally, log all attempts for diagnostics
-    logger.info(f"[ATTEMPTS SUMMARY] Section '{section_name}': {attempts}")
-    return best_content, best_ai_score, threshold_met
-
+# Remove the entire feedback loop and related legacy logic
+def generate_with_feedback_loop(*args, **kwargs):
+    raise NotImplementedError("Iterative feedback loop is deprecated. Use generate_content for single-pass generation.")
 
 # All legacy functions are now handled by the new architecture
 # The generate_content function is imported from legacy_adapter

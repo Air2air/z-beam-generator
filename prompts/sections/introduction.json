@@ -1,0 +1,10 @@
+{
+    "prompt_template": "Write a compelling introduction for an article about laser cleaning {material} surfaces. Target audience: {target_audience} in {industry_focus}.\n\nRequirements:\n- Exactly {word_target} words\n- Natural, engaging tone (natural voice target: {natural_voice_target})\n- Include key benefits of laser cleaning for {material}\n- Mention technical precision without being overly technical (depth level: {technical_depth})\n- Hook the reader with practical value\n- Do not include headers or titles\n- Focus on real-world applications\n\nContent quality must meet threshold: {content_quality_threshold}",
+    "word_target": 120,
+    "temperature_override": 0.7,
+    "required_elements": [
+        "laser cleaning",
+        "benefits",
+        "applications"
+    ]
+}
