@@ -1,13 +1,39 @@
 # modules/ai_detector.py
 
-import json, re, logging
+import json
+import re
+import logging
 from typing import Dict, Any
 from datetime import datetime
 from config.global_config import GlobalConfigManager
-from modules.content_generator import get_logger, format_prompt
 from modules import api_client
 
+# === SIMPLE LOGGING (inlined) ===
+def get_logger(name: str):
+    """Simple logger setup."""
+    logger = logging.getLogger(name)
+    if not logger.handlers:
+        handler = logging.StreamHandler()
+        formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+        handler.setFormatter(formatter)
+        logger.addHandler(handler)
+        logger.setLevel(logging.INFO)
+    return logger
+
 logger = get_logger("ai_detector")
+
+# === PROMPT FORMATTING (inlined) ===
+def format_prompt(template: str, variables: Dict[str, Any]) -> str:
+    """Simple prompt formatting."""
+    try:
+        return template.format(**variables)
+    except KeyError as e:
+        logger.warning(f"Missing variable in template: {e}")
+        # Manual replacement as fallback
+        result = template
+        for key, value in variables.items():
+            result = result.replace(f"{{{key}}}", str(value))
+        return result
 
 
 def research_material_config(

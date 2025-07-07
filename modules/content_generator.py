@@ -4,23 +4,18 @@ All configuration via GlobalConfigManager, no abstractions.
 Includes MDX validation functionality and prompt management.
 """
 
-import re, os, logging
+import re
+import os
+import logging
+import json
 from typing import Dict, Any
 from pathlib import Path
 from config.global_config import GlobalConfigManager
 from modules import api_client
-
-# === SIMPLE LOGGING (inlined from utils.py) ===
-def get_logger(name: str):
-    """Simple logger setup - replaces entire logger.py module."""
-    logger = logging.getLogger(name)
-    if not logger.handlers:
-        handler = logging.StreamHandler()
-        formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-        handler.setFormatter(formatter)
-        logger.addHandler(handler)
-        logger.setLevel(logging.INFO)
-    return logger
+from modules.api_client import get_logger  # Import the enhanced logger
+import signal
+from contextlib import contextmanager
+from modules.optimization_orchestrator import OptimizationOrchestrator
 
 logger = get_logger("content_generator")
 
@@ -34,28 +29,39 @@ class PromptManager:
         if base_dir:
             self.base_dir = base_dir
         else:
-            # Default to sections directory relative to project root
+            # UPDATE: Changed from sections to prompts directory
             project_root = Path(__file__).parent.parent
-            self.base_dir = str(project_root / "sections")
+            self.base_dir = str(project_root / "prompts")  # CHANGED FROM "sections" 
         self.cache: Dict[str, str] = {}
 
     def load_prompt(self, prompt_name: str, subdir: str = "") -> str:
-        key = f"{subdir}/{prompt_name}" if subdir else prompt_name
-        if key in self.cache:
-            return self.cache[key]
-        path = (
-            os.path.join(self.base_dir, subdir, prompt_name)
-            if subdir
-            else os.path.join(self.base_dir, prompt_name)
-        )
+        """Load a prompt template from file"""
+        
+        cache_key = f"{subdir}/{prompt_name}" if subdir else prompt_name
+        
+        if cache_key in self.cache:
+            return self.cache[cache_key]
+        
+        # Build file path - now looks in prompts directory
+        if subdir:
+            file_path = Path(self.base_dir) / subdir / f"{prompt_name}.txt"
+        else:
+            file_path = Path(self.base_dir) / f"{prompt_name}.txt"
+        
         try:
-            with open(path, "r", encoding="utf-8") as f:
-                content = f.read()
-                self.cache[key] = content
-                return content
+            with open(file_path, 'r', encoding='utf-8') as f:
+                prompt_content = f.read().strip()
+            
+            self.cache[cache_key] = prompt_content
+            logger.info(f"📋 Loaded prompt: {cache_key}")
+            return prompt_content
+            
+        except FileNotFoundError:
+            logger.error(f"❌ Prompt file not found: {file_path}")
+            raise
         except Exception as e:
-            logger.error(f"Prompt not found: {path} ({e})")
-            raise FileNotFoundError(f"Prompt not found: {path} ({e})")
+            logger.error(f"❌ Failed to load prompt {cache_key}: {e}")
+            raise
 
     def load_all_prompts(self, subdir: str = "") -> Dict[str, str]:
         dir_path = os.path.join(self.base_dir, subdir) if subdir else self.base_dir
@@ -363,60 +369,219 @@ def generate_content(
         return ""
 
 
-def generate_content_for_material(material: str, provider: str, max_tokens: int, temperature: float) -> str:
-    """
-    Simplified content generation function for the main interface.
-    Generates content for a material using the specified provider and settings.
-    """
+def load_sections_from_json(config):
+    """Load section configurations from JSON file"""
+    
+    # UPDATE PATH: Changed from sections/sections.json to prompts/sections.json
+    sections_file = Path("prompts") / "sections.json"
+    
     try:
-        # Get configuration 
-        config_manager = GlobalConfigManager()
-        api_keys = config_manager.get_api_keys()
+        if not sections_file.exists():
+            logger.error(f"❌ Sections file not found: {sections_file}")
+            raise FileNotFoundError(f"Sections file not found: {sections_file}")
         
-        # Load prompt template for the material
-        prompt_template = prompt_manager.load_prompt("prompt_material.txt")
-        if not prompt_template:
-            logger.error("No prompt template found for material generation")
-            return ""
+        with open(sections_file, 'r', encoding='utf-8') as f:
+            sections_data = json.load(f)
         
-        # Create section variables for the material
-        section_variables = {
-            "material": material,
-            "provider": provider,
-            "max_words": "1200",  # Default word count
-            "category": "metals"  # Default category, could be made configurable
-        }
+        sections = sections_data.get('sections', [])
         
-        # Set up generator model settings
-        generator_model_settings = {
-            "max_tokens": max_tokens,
-            "temperature": temperature
-        }
+        if not sections:
+            logger.error(f"❌ No sections found in {sections_file}")
+            raise ValueError(f"No sections found in {sections_file}")
         
-        # Generate content using the existing function
-        content = generate_content(
-            section_name="material_content",
-            prompt_template=prompt_template,
-            section_variables=section_variables,
-            generator_provider=provider,
-            model=config_manager.get_generator_model(),
-            api_keys=api_keys,
-            generator_model_settings=generator_model_settings
-        )
+        # Sort sections by order
+        sections.sort(key=lambda x: x.get('order', 999))
         
-        return content
+        logger.info(f"📋 Loaded {len(sections)} sections from prompts/sections.json")
+        return sections
         
     except Exception as e:
-        logger.error(f"Content generation failed for material {material}: {e}")
+        logger.error(f"❌ Failed to load sections from {sections_file}: {e}")
+        raise
+
+
+def check_api_health(provider, model, api_keys, base_url, temperature, max_tokens):
+    """Check API health before starting generation - fail fast if issues exist"""
+    logger.info(f"🔍 Checking API health for {provider}...")
+    
+    test_prompt = "Hello, this is a quick test. Please respond with 'API is working'."
+    
+    try:
+        response = api_client.call_ai_api(
+            prompt=test_prompt,
+            provider=provider,
+            model=model,
+            api_keys=api_keys,
+            temperature=temperature,
+            max_tokens=50,  # Small response for quick test
+            url_template=f"{base_url}/v1/chat/completions",
+            backoff_factor=1.0  # No retry for health check
+        )
+        
+        if response and response.strip():
+            logger.info(f"✅ API health check passed for {provider}")
+            return True
+        else:
+            logger.error(f"❌ API health check failed: Empty response from {provider}")
+            return False
+            
+    except Exception as e:
+        logger.error(f"❌ API health check failed for {provider}: {e}")
+        return False
+
+
+@contextmanager
+def timeout_handler(seconds):
+    """Context manager for timing out operations"""
+    def timeout_signal(signum, frame):
+        raise TimeoutError(f"Operation timed out after {seconds} seconds")
+    
+    # Set the signal handler and alarm
+    signal.signal(signal.SIGALRM, timeout_signal)
+    signal.alarm(seconds)
+    
+    try:
+        yield
+    finally:
+        # Disable the alarm
+        signal.alarm(0)
+
+def enhance_section_prompt_with_generation_requirements(section, material, config):
+    """Enhance section prompt with generation enhancement requirements (order 0) - FULLY DYNAMIC"""
+    
+    # Load generation enhancement requirements dynamically
+    generation_requirements = load_generation_enhancement_requirements()
+    
+    # Format base prompt
+    base_prompt = section['prompt'].format(material=material)
+    word_limit = config.get('default_section_words', 150)
+    
+    # Combine all elements
+    enhanced_prompt = f"""{base_prompt}
+
+{generation_requirements}
+
+WORD LIMIT: Write approximately {word_limit} words maximum. Do not exceed this limit."""
+    
+    return enhanced_prompt
+
+def load_generation_enhancement_requirements():
+    """Load generation enhancement requirements (order 0) dynamically - NO HARDCODING"""
+    
+    with open("prompts/optimizations.json", 'r', encoding='utf-8') as f:
+        optimizations_data = json.load(f)
+    
+    # FIND GENERATION ENHANCEMENT STEP DYNAMICALLY
+    generation_step = None
+    for key, config in optimizations_data.items():
+        if (config.get('type') == 'generation_enhancement' and 
+            config.get('order') == 0):
+            generation_step = config
+            break
+    
+    if not generation_step:
+        logger.warning("⚠️ No generation enhancement step found (type='generation_enhancement', order=0)")
         return ""
+    
+    # USE 'requirements' FIELD FOR GENERATION ENHANCEMENT
+    requirements = generation_step.get('requirements', '')
+    if not requirements:
+        logger.warning(f"⚠️ Generation enhancement step '{generation_step.get('name', 'unknown')}' has no 'requirements' field")
+        return ""
+    
+    logger.info(f"📋 Loaded {generation_step.get('name', 'unknown')} v{generation_step.get('version', 'unversioned')} for generation")
+    return requirements
 
-
-# Remove the entire feedback loop and related legacy logic
-def generate_with_feedback_loop(*args, **kwargs):
-    raise NotImplementedError("Iterative feedback loop is deprecated. Use generate_content for single-pass generation.")
-
-# All legacy functions are now handled by the new architecture
-# The generate_content function is imported from legacy_adapter
-
-# Track which sections have had their metadata logged (for backward compatibility)
-section_metadata_logged = set()
+def generate_content_for_material(material, provider, max_tokens, temperature):
+    """Generate content with fully dynamic optimization pipeline - SUPPORTS MULTIPLE STEPS"""
+    
+    # Initialize config from GlobalConfigManager
+    from config.global_config import GlobalConfigManager
+    config = GlobalConfigManager.get_instance()
+    
+    # FAIL FAST - NO OUTER TRY/CATCH, LET ERRORS BUBBLE UP
+    with timeout_handler(config.get('overall_timeout', 300)):
+        # Load sections from JSON
+        sections = load_sections_from_json(config)
+        logger.info(f"📋 Loaded {len(sections)} sections for material: {material}")
+        
+        # Format API keys
+        api_key_mappings = config.get("api_key_mappings", {})
+        api_keys = {}
+        for prov, env_var in api_key_mappings.items():
+            import os
+            key = os.getenv(env_var)
+            if key:
+                api_keys[env_var] = key
+        
+        if not api_keys:
+            logger.error(f"❌ GENERATION FAILED: No API keys configured")
+            raise RuntimeError("No API keys available for content generation")
+        
+        model = config.get_model()
+        base_url = config.get_base_url()
+        
+        # HEALTH CHECK - FAIL FAST
+        if not check_api_health(provider, model, api_keys, base_url, temperature, max_tokens):
+            logger.error(f"❌ GENERATION FAILED: API health check failed for {provider}")
+            raise RuntimeError(f"API health check failed for provider: {provider}")
+        
+        # Initialize orchestrator ONCE (auto-detects optimization steps)
+        orchestrator = OptimizationOrchestrator(config)
+        
+        # Generate each section - FAIL ON ANY SECTION FAILURE
+        full_content = f"# Laser Cleaning for {material}\n\n"
+        
+        for section in sections:
+            logger.info(f"🔧 Generating section: {section['name']} ({section['title']})")
+            
+            # 1. CREATE SINGLE COMBINED PROMPT (Section + Generation Enhancement)
+            combined_prompt = enhance_section_prompt_with_generation_requirements(section, material, config)
+            
+            # 2. SINGLE API CALL - GENERATES ENHANCED CONTENT DIRECTLY
+            logger.info(f"📡 Making generation API call for section with enhancement requirements")
+            
+            enhanced_content = api_client.call_ai_api(
+                prompt=combined_prompt,
+                provider=provider,
+                model=model,
+                api_keys=api_keys,
+                temperature=temperature,
+                max_tokens=max_tokens,
+                url_template=f"{base_url}/v1/chat/completions",
+                backoff_factor=2.0
+            )
+            
+            # STRICT VALIDATION - FAIL IF NO CONTENT
+            if not enhanced_content or not enhanced_content.strip():
+                logger.error(f"❌ GENERATION FAILED: Empty content for section '{section['name']}'")
+                raise RuntimeError(f"Failed to generate content for section: {section['name']}")
+            
+            logger.info(f"✅ Generated {len(enhanced_content.split())} words for: {section['name']}")
+            
+            # 3. RUN OPTIMIZATION PIPELINE (automatically detects and runs ALL optimization steps)
+            logger.info(f"🎯 Starting optimization pipeline for section: {section['name']}")
+            
+            optimized_content = orchestrator.optimize_section(
+                content=enhanced_content,
+                section_name=section['name'],
+                section_type=section.get('type', section['title']),  # Use title as fallback
+                material=material
+            )
+            
+            logger.info(f"🎯 Optimization pipeline complete for section: {section['name']}")
+            
+            # 4. ADD TO ARTICLE
+            word_count = len(optimized_content.strip().split())
+            full_content += f"\n## {section['title']}\n\n{optimized_content.strip()}\n"
+            logger.info(f"✅ Section complete: {word_count} words for '{section['name']}'")
+        
+        # FINAL VALIDATION
+        total_words = len(full_content.strip().split())
+        min_article_words = config.get('min_article_words', 100)
+        if total_words < min_article_words:
+            logger.error(f"❌ GENERATION FAILED: Article too short ({total_words} words, minimum {min_article_words})")
+            raise RuntimeError(f"Generated article too short: {total_words} words")
+        
+        logger.info(f"✅ GENERATION SUCCESS: Complete article with {total_words} words")
+        return full_content

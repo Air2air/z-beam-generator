@@ -1,11 +1,46 @@
 # generator/modules/api_client.py
 
-import requests, json, time, random
+import requests
+import json
+import time
+import random
+import logging
 from typing import Dict, Any, Optional, Tuple
 from dataclasses import dataclass
 from enum import Enum
-from modules.content_generator import get_logger
 from config.global_config import GlobalConfigManager
+
+# === ENHANCED LOGGER WITH time_operation ===
+def get_logger(name: str):
+    """Enhanced logger with time_operation support."""
+    logger = logging.getLogger(name)
+    if not logger.handlers:
+        handler = logging.StreamHandler()
+        formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+        handler.setFormatter(formatter)
+        logger.addHandler(handler)
+        logger.setLevel(logging.INFO)
+    
+    # Add time_operation method
+    def time_operation(operation_name):
+        import time
+        class Timer:
+            def __init__(self, name):
+                self.name = name
+                self.start_time = None
+            
+            def __enter__(self):
+                self.start_time = time.time()
+                return self
+            
+            def __exit__(self, exc_type, exc_val, exc_tb):
+                duration = time.time() - self.start_time
+                logger.debug(f"{self.name} completed in {duration:.2f}s")
+        
+        return Timer(operation_name)
+    
+    logger.time_operation = time_operation
+    return logger
 
 logger = get_logger("api_client")
 
@@ -78,12 +113,10 @@ def call_ai_api(
     )
 
     if response.success:
-        logger.log_api_response(provider_enum.value, success=True)
+        logger.info(f"API request successful for {provider_enum.value}")
         return response.content
     else:
-        logger.log_api_response(
-            provider_enum.value, success=False, error=response.error_message
-        )
+        logger.error(f"API request failed for {provider_enum.value}: {response.error_message}")
         return None
 
 
@@ -111,14 +144,8 @@ def _make_api_request(
         provider, model, api_key, prompt, temperature, max_tokens, url_template
     )
 
-    # Use centralized API logging
-    logger.log_api_request(
-        provider=provider.value,
-        model=model,
-        prompt_length=len(prompt),
-        temperature=temperature,
-        max_tokens=max_tokens,
-    )
+    # Log API request
+    logger.info(f"Making API request to {provider.value} with model {model} (prompt: {len(prompt)} chars)")
 
     with logger.time_operation(f"API call to {provider.value}"):
         for attempt in range(retries):

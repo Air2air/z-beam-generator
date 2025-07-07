@@ -1,0 +1,19 @@
+{
+  "human_naturalness": {
+    "name": "Human Naturalness Enhancement",
+    "description": "Reduces AI-detectability and enhances natural human writing patterns",
+    "version": "1.0",
+    "type": "naturalness",
+    "order": 1,
+    "prompt": "You are an expert editor specializing in making AI-generated content sound naturally human-written to pass AI detection tools.\n\nCONTENT TO HUMANIZE:\nTopic: {material} laser cleaning\nSection: {section_type}\n\nORIGINAL CONTENT:\n{content}\n\nHUMANIZATION REQUIREMENTS:\n\n1. NATURAL LANGUAGE PATTERNS:\n   - Vary sentence length and structure (mix short and long sentences)\n   - Use natural transitions and connectors\n   - Include occasional minor imperfections that humans make\n   - Add natural hesitations or qualifiers (\"perhaps\", \"generally\", \"often\")\n\n2. HUMAN WRITING CHARACTERISTICS:\n   - Use contractions where appropriate (\"it's\", \"don't\", \"we've\")\n   - Include personal observations and anecdotal references\n   - Vary vocabulary (avoid repetitive AI-typical word choices)\n   - Add subtle personality and voice\n\n3. ANTI-AI-DETECTION:\n   - Break up overly structured patterns\n   - Avoid AI-typical phrases and constructions\n   - Use more natural, conversational flow\n   - Include industry slang or colloquialisms where appropriate\n\n4. MAINTAIN QUALITY:\n   - Preserve all technical accuracy\n   - Keep expert-level insights\n   - Maintain approximately the same word count\n   - Ensure content remains authoritative\n\nCRITICAL OUTPUT REQUIREMENTS:\n- Return ONLY the humanized content itself\n- Do NOT include any meta-commentary, explanations, or descriptions\n- Do NOT add phrases like \"Here's the humanized version\" or \"This version keeps...\"\n- Do NOT include separators like \"---\" or introductory text\n- Do NOT explain what you changed or why\n- Start directly with the actual content\n\nINSTRUCTIONS:\nReturn the humanized content immediately without any preamble, commentary, or explanation. The response should start with the actual article content and contain nothing else."
+  },
+  
+  "eat_requirements": {
+    "name": "Google E-A-T Content Requirements",
+    "description": "E-A-T requirements to be integrated into initial generation prompts",
+    "version": "1.0",
+    "type": "generation_enhancement",
+    "order": 0,
+    "requirements": "\nCONTENT QUALITY REQUIREMENTS:\n\n1. EXPERTISE (E):\n   - Add specific technical details and measurements\n   - Include industry-standard terminology\n   - Reference specific processes, equipment, or standards\n   - Show deep understanding of the subject matter\n\n2. AUTHORITATIVENESS (A):\n   - Use confident, declarative statements\n   - Include specific examples from real applications\n   - Reference industry best practices\n   - Demonstrate experience-based insights\n\n3. TRUSTWORTHINESS (T):\n   - Provide balanced perspectives (pros AND cons)\n   - Include safety considerations where relevant\n   - Use precise language, avoid overgeneralization\n   - Acknowledge limitations or challenges\n\nSTYLE REQUIREMENTS:\n- Maintain conversational expert tone\n- Preserve all technical accuracy\n- Use first-person experience where appropriate (\"I've seen...\")\n- Include specific industry examples"
+  }
+}

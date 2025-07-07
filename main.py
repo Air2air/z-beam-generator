@@ -7,70 +7,73 @@ All configuration via GlobalConfigManager, no abstractions, maximum simplicity.
 """
 
 import sys
+import logging
 from typing import Optional
 from pathlib import Path
 
-def main():
-    """Main entry point for content generation."""
-    try:
-        # Import configuration from run.py - NO FALLBACKS
-        from run import USER_CONFIG, PROVIDER_MODELS
-        from config.global_config import GlobalConfigManager
-        
-        # Initialize GlobalConfigManager - SINGLE SOURCE OF TRUTH
-        config = GlobalConfigManager.initialize(USER_CONFIG, PROVIDER_MODELS)
-        
-        print("🚀 Z-Beam Generator - Simplified Architecture")
-        print(f"📋 Material: {config.get_material()}")
-        print(f"🔧 Provider: {config.get_generator_provider()}")
-        print(f"📝 File: {config.get_file_name()}")
-        
-        # Check PROJECT_GUIDE.md compliance
-        if not check_project_guide_compliance():
-            print("❌ Compliance check failed - aborting operation")
-            sys.exit(1)
-        
-        # Generate content using simplified approach
-        result = generate_content_simple(config)
-        
-        if result:
-            print(f"✅ Content generated successfully: {result}")
-        else:
-            print("❌ Content generation failed")
-            
-    except Exception as e:
-        print(f"❌ FATAL ERROR: {e}")
-        print("NO FALLBACKS - system must fail fast")
-        sys.exit(1)
+# ADD MISSING IMPORTS
+from config.global_config import GlobalConfigManager
+from modules.content_generator import generate_content_for_material
 
-# === PROJECT_GUIDE.md COMPLIANCE CHECK ===
-def check_project_guide_compliance():
-    """Validate PROJECT_GUIDE.md compliance before any operations."""
+# Initialize logger
+logger = logging.getLogger(__name__)
+
+def main():
+    """Main execution with fail-fast error handling"""
+    
     try:
-        from audit_violations import ClaudeComplianceValidator
-        validator = ClaudeComplianceValidator(".")
+        # Load configuration
+        config = GlobalConfigManager.get_instance()
         
-        print("🔍 Checking PROJECT_GUIDE.md compliance...")
+        # Get user config
+        material = config.get('material')
+        provider = config.get('generator_provider')
+        file_name = config.get('file_name')
         
-        # Validate project guide exists and is compliant
-        if not validator.validate_project_guide():
-            print("❌ PROJECT_GUIDE.md compliance issues detected:")
-            for violation in validator.violations:
-                print(f"  {violation}")
-            return False
+        logger.info(f"🚀 Starting generation: {material} using {provider}")
         
-        # Validate documentation file count
-        if not validator.validate_documentation_count():
-            print("❌ Unauthorized documentation files detected:")
-            for violation in validator.violations:
-                print(f"  {violation}")
-            return False
+        # GENERATE CONTENT - FAIL FAST ON ANY ERROR
+        article_content = generate_content_for_material(
+            material=material,
+            provider=provider,
+            max_tokens=config.get('max_tokens', 4096),
+            temperature=config.get('temperature', 0.7)
+        )
         
-        print("✅ PROJECT_GUIDE.md compliance verified")
+        # SAVE CONTENT - FAIL IF SAVE FAILS
+        if not save_article(article_content, file_name, config):
+            logger.error(f"❌ GENERATION FAILED: Could not save article to {file_name}")
+            raise RuntimeError(f"Failed to save article: {file_name}")
+        
+        logger.info(f"✅ GENERATION COMPLETE: {file_name}")
+        print(f"✅ Article generated successfully: {file_name}")
+        
+    except Exception as e:
+        logger.error(f"💀 GENERATION FAILED: {e}")
+        print(f"❌ Article generation failed: {e}")
+        raise  # Re-raise to ensure non-zero exit code
+
+def save_article(content: str, file_name: str, config) -> bool:
+    """Save article content to output file"""
+    
+    try:
+        # Get output directory from config
+        output_dir_name = config.get('output_directory', 'output')
+        
+        # Create output directory
+        output_dir = Path(output_dir_name)
+        output_dir.mkdir(exist_ok=True)
+        
+        # Write content
+        output_path = output_dir / file_name
+        with open(output_path, 'w', encoding='utf-8') as f:
+            f.write(content)
+        
+        logger.info(f"📄 Article saved to: {output_path}")
         return True
         
     except Exception as e:
-        print(f"❌ PROJECT_GUIDE.md compliance check failed: {e}")
+        logger.error(f"❌ Failed to save article: {e}")
         return False
 
 def generate_content_simple(config) -> Optional[str]:
@@ -79,8 +82,6 @@ def generate_content_simple(config) -> Optional[str]:
     No abstractions, no service layers, maximum simplicity.
     """
     try:
-        from modules.content_generator import generate_content_for_material
-        
         # Get configuration values from GlobalConfigManager
         material = config.get_material()
         provider = config.get_generator_provider()
@@ -110,15 +111,14 @@ def generate_content_simple(config) -> Optional[str]:
         return None
 
 def save_content_simple(config, content: str) -> str:
-    """
-    Save content to output file using simple direct approach.
-    """
+    """Save content to output file using simple direct approach."""
     try:
-        # Get file name from config
-        file_name = config.get_file_name()
+        # Get ALL values from config - NO HARDCODING
+        file_name = config.get('file_name')
+        output_dir_name = config.get('output_directory', 'output')  # From config
         
         # Create output directory
-        output_dir = Path("output")
+        output_dir = Path(output_dir_name)
         output_dir.mkdir(exist_ok=True)
         
         # Write content

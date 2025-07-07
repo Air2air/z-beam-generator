@@ -1,0 +1,61 @@
+{
+  "sections": [
+    {
+      "name": "comparison",
+      "title": "Comparison Section",
+      "ai_detect": true,
+      "order": 1,
+      "section_type": "TEXT",
+      "prompt": "Compare laser cleaning with one traditional cleaning method for {material}. Write naturally, as if discussing this with a colleague.\n\nWRITING APPROACH:\n- Focus on practical, real-world differences\n- Include specific examples from industry experience\n- Use conversational tone with varied sentence structures\n- Mention actual challenges technicians face\n- Avoid perfectly balanced pros/cons lists\n- Include some informal language or industry terminology\n- Share insights about when each method works best\n- Add context about costs, time, or practical considerations\n\nWrite from experience, not from a manual."
+    },
+    {
+      "name": "chart",
+      "title": "Chart Section",
+      "ai_detect": false,
+      "order": 2,
+      "section_type": "CHART",
+      "prompt": "Write a chart for {material} comparing at least 4 common cleaning methods, including laser cleaning. The chart should compare efficiency (e.g., m²/hour or another relevant metric). If specific data is unavailable, use plausible, research-based estimates and clearly label each method. Do NOT return placeholders, requests for more information, or incomplete outputs—always generate a complete, context-rich chart suitable for publication.\n\nYour output must be a ready-to-use <script> code block for a bar chart. Use the template structure provided below, but replace the sample data (labels, data values, title) with actual values appropriate for {material}. Maintain the same styling and chart configuration.\n\nFocus on creating realistic, research-based efficiency comparisons that show laser cleaning's advantages while presenting credible data for traditional methods.",
+      "template_file": "templates/chart_efficiency.txt"
+    },
+    {
+      "name": "contaminants",
+      "title": "Contaminants Section",
+      "ai_detect": true,
+      "order": 3,
+      "section_type": "TEXT",
+      "prompt": "Discuss the typical contaminants found on {material} that require cleaning. Write conversationally, drawing from practical experience.\n\nWRITING APPROACH:\n- Focus on real contaminants you'd actually encounter\n- Explain why these contaminants are problematic in specific situations\n- Use varied sentence structures and lengths\n- Include industry-specific terminology naturally\n- Mention practical challenges or observations\n- Avoid generic lists - provide context about each contaminant\n- Write as if sharing knowledge with a peer\n- Include some informal language where appropriate\n\nShare insights about which contaminants are most challenging and why."
+    },
+    {
+      "name": "introduction",
+      "title": "Introduction Section",
+      "ai_detect": true,
+      "order": 0,
+      "section_type": "TEXT",
+      "prompt": "Write a natural, conversational introduction about {material} and laser cleaning. \n\nWRITING STYLE GUIDELINES:\n- Use varied sentence lengths and structures\n- Include some informal language or contractions where appropriate\n- Add specific, real-world examples or scenarios\n- Avoid overly technical jargon without context\n- Write as if explaining to a colleague, not a textbook\n- Include occasional personal observations or industry insights\n- Use natural transitions, not formulaic ones\n\nFocus on practical applications and real industry challenges rather than generic benefits."
+    },
+    {
+      "name": "material_research",
+      "title": "Material Research Section",
+      "ai_detect": false,
+      "order": 4,
+      "section_type": "METADATA",
+      "prompt": "Given the material: {material}\nProvide the following information as a list of key: value pairs, one per line. Use the exact field names below. If a value is unknown, write \"N/A\". Do NOT write a paragraph or any explanation. Only output the list as shown.\n\nname:\natomicNumber:\nchemicalSymbol:\nmaterialType:\nmetalClass:\ncrystalStructure:\nprimaryApplication:\nindustries: (comma-separated)\nkeywords: (comma-separated)\napplications: (comma-separated)\nmaterial_description:"
+    },
+    {
+      "name": "substrates",
+      "title": "Substrates Section",
+      "ai_detect": true,
+      "order": 5,
+      "section_type": "TEXT",
+      "prompt": "Explain the key substrates or base materials associated with {material} in industrial contexts. Write naturally and conversationally.\n\nWRITING STYLE:\n- Use varied sentence structures and natural flow\n- Include practical context about why these substrates matter\n- Share industry insights or common applications\n- Avoid rigid numbered lists - integrate information naturally\n- Use conversational tone with some informal language\n- Provide specific examples where helpful\n- Explain relationships between substrates and {material}\n- Write as if discussing with a knowledgeable colleague\n\nFocus on practical relevance rather than encyclopedic completeness."
+    },
+    {
+      "name": "table",
+      "title": "Table Section",
+      "ai_detect": false,
+      "order": 6,
+      "section_type": "TABLE",
+      "prompt": "Create a table with properties of {material} pertinent to laser cleaning.  Example:\n\n<div class=\"content-section-dark\" id=\"cleaning-performance-metrics\">\n<h3>Cleaning Performance Metrics for Tin</h3>\n<table class=\"content-table\">\n  <tr>\n    <th>Metric</th>\n    <th>Value</th>\n    <th>Consideration</th>\n  </tr>\n  <tr>\n    <td>Removal Rate</td>\n    <td>7-10 m²/hour</td>\n    <td>Varies with coating thickness</td>\n  </tr>\n  <tr>\n    <td>Pulse Energy</td>\n    <td>0.5-2.0 mJ</td>\n    <td>Lower energy preserves tin substrate</td>\n  </tr>\n  <tr>\n    <td>Wavelength</td>\n    <td>1064 nm</td>\n    <td>Optimal for most tin contaminants</td>\n  </tr>\n  <tr>\n    <td>Cleaning Depth</td>\n    <td>5-50 μm</td>\n    <td>Adjustable based on contamination level</td>\n  </tr>\n  <tr>\n    <td>Heat-Affected Zone</td>\n    <td>Minimal (&lt;5 μm)</td>\n    <td>Preserves tin's low melting point properties</td>\n  </tr>\n</table>\n</div>"
+    }
+  ]
+}

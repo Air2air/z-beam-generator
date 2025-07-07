@@ -396,21 +396,22 @@ class GlobalConfigManager:
             )
         return mappings
 
-    def get_api_keys(self) -> Dict[str, str]:
-        """Get API keys from environment variables using configured mappings."""
+    def get_api_keys(self) -> dict:
+        """Get all API keys properly formatted for api_client - NO HARDCODING!"""
         import os
         
-        mappings = self.get_api_key_mappings()
+        # Get API key mappings from config
+        api_key_mappings = self._config.get("api_key_mappings", {})
         api_keys = {}
         
-        for provider_key, env_var in mappings.items():
-            api_key = os.environ.get(env_var)
+        # Load all API keys from environment using mappings
+        for provider, env_var in api_key_mappings.items():
+            api_key = os.getenv(env_var)
             if api_key:
-                api_keys[provider_key] = api_key
-            else:
-                # Use lazy logger import to avoid circular imports
-                logger = _get_logger()
-                logger.warning(f"API key not found in environment: {env_var}")
+                api_keys[provider] = api_key
+        
+        if not api_keys:
+            raise ConfigurationError("No API keys found in environment")
         
         return api_keys
 
@@ -429,6 +430,62 @@ class GlobalConfigManager:
                 f"URL template not configured for provider '{provider}'. "
                 "NO FALLBACKS - system must fail fast."
             )
+        return url_template
+
+    # === API CONFIGURATION METHODS - NO HARDCODING! ===
+    def get_api_key(self) -> str:
+        """Get API key from environment using provider mapping - NO HARDCODING!"""
+        import os
+        
+        # Get current provider from config
+        provider = self._config.get("generator_provider")
+        if not provider:
+            raise ConfigurationError("generator_provider not specified in USER_CONFIG")
+        
+        # Get API key mapping from config
+        api_key_mappings = self._config.get("api_key_mappings", {})
+        env_var = api_key_mappings.get(provider)
+        if not env_var:
+            raise ConfigurationError(f"No API key mapping found for provider {provider}")
+        
+        # Get from environment
+        api_key = os.getenv(env_var)
+        if not api_key:
+            raise ConfigurationError(f"{env_var} not found in .env file")
+        return api_key
+    
+    def get_model(self) -> str:
+        """Get model name from provider config - NO HARDCODING!"""
+        provider = self._config.get("generator_provider")
+        if not provider:
+            raise ConfigurationError("generator_provider not specified in USER_CONFIG")
+        
+        # Get from PROVIDER_MODELS in run.py
+        provider_models = self._config.get("provider_models", {})
+        provider_config = provider_models.get(provider, {})
+        model = provider_config.get("model")
+        
+        if not model:
+            raise ConfigurationError(f"Model not found for provider {provider}")
+        return model
+    
+    def get_base_url(self) -> str:
+        """Get API base URL from provider config - NO HARDCODING!"""
+        provider = self._config.get("generator_provider")
+        if not provider:
+            raise ConfigurationError("generator_provider not specified in USER_CONFIG")
+        
+        # Get from PROVIDER_MODELS in run.py
+        provider_models = self._config.get("provider_models", {})
+        provider_config = provider_models.get(provider, {})
+        url_template = provider_config.get("url_template")
+        
+        if not url_template:
+            raise ConfigurationError(f"URL template not found for provider {provider}")
+        
+        # Extract base URL (remove /v1/chat/completions part)
+        if "/v1/chat/completions" in url_template:
+            return url_template.replace("/v1/chat/completions", "")
         return url_template
 
     # Generic getter for any config value
