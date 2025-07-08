@@ -1,320 +1,245 @@
-# generator/modules/api_client.py
+#!/usr/bin/env python3
+"""
+API Client - Handles AI API calls with provider abstraction
+"""
 
-import requests
 import json
-import time
-import random
 import logging
-from typing import Dict, Any, Optional, Tuple
-from dataclasses import dataclass
-from enum import Enum
-from config.global_config import GlobalConfigManager
+import time
+import requests
+from typing import Dict, Any, Optional
 
-# === ENHANCED LOGGER WITH time_operation ===
-def get_logger(name: str):
-    """Enhanced logger with time_operation support."""
-    logger = logging.getLogger(name)
-    if not logger.handlers:
-        handler = logging.StreamHandler()
-        formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-        handler.setFormatter(formatter)
-        logger.addHandler(handler)
-        logger.setLevel(logging.INFO)
-    
-    # Add time_operation method
-    def time_operation(operation_name):
-        import time
-        class Timer:
-            def __init__(self, name):
-                self.name = name
-                self.start_time = None
-            
-            def __enter__(self):
-                self.start_time = time.time()
-                return self
-            
-            def __exit__(self, exc_type, exc_val, exc_tb):
-                duration = time.time() - self.start_time
-                logger.debug(f"{self.name} completed in {duration:.2f}s")
-        
-        return Timer(operation_name)
-    
-    logger.time_operation = time_operation
-    return logger
-
-logger = get_logger("api_client")
-
-
-# Note: Provider constants kept for backward compatibility
-# In production, use get_config().get_provider() instead
-class APIProvider(Enum):
-    GEMINI = "GEMINI"  # Use get_config().get_provider() in new code
-    OPENAI = "OPENAI"  # Use get_config().get_provider() in new code
-    XAI = "XAI"
-    DEEPSEEK = "DEEPSEEK"
-
-
-@dataclass
-class APIResponse:
-    content: Optional[str]
-    success: bool
-    error_message: Optional[str] = None
-    status_code: Optional[int] = None
-    tokens_used: Optional[int] = None
-
-
-class RateLimitError(Exception):
-    pass
-
-
-class APIClientError(Exception):
-    pass
-
+logger = logging.getLogger(__name__)
 
 def call_ai_api(
     prompt: str,
     provider: str,
     model: str,
     api_keys: Dict[str, str],
-    temperature: float = None,
-    max_tokens: int = None,
-    retries: int = None,
-    backoff_factor: float = 0.5,
-    timeout: int = None,
-    url_template: str = None,
+    temperature: float = 0.7,
+    max_tokens: int = 4096,
+    url_template: str = "",
+    backoff_factor: float = 2.0,
+    max_retries: int = 3,
+    timeout: int = 60
 ) -> Optional[str]:
-    # Set defaults from config if not provided
-    config = GlobalConfigManager.get_instance()
-    if temperature is None:
-        temperature = config.get_content_temperature()
-    if max_tokens is None:
-        max_tokens = config.get_max_tokens()
-    if timeout is None:
-        timeout = config.get_api_timeout()
-    if retries is None:
-        retries = config.get_retry_count()
+    """
+    Make API call to specified AI provider with retry logic
+    
+    Args:
+        prompt: The prompt to send
+        provider: Provider name (DEEPSEEK, GEMINI, etc.)
+        model: Model name for the provider
+        api_keys: Dictionary of API keys
+        temperature: Temperature for generation
+        max_tokens: Maximum tokens to generate
+        url_template: URL template for the provider
+        backoff_factor: Backoff factor for retries
+        max_retries: Maximum number of retry attempts
+        timeout: Request timeout in seconds
+        
+    Returns:
+        Generated content or None if failed
+    """
+    
+    logger.info(f"🌐 Making API call to {provider} with model {model}")
+    
+    for attempt in range(max_retries):
+        try:
+            if provider == "DEEPSEEK":
+                return _call_deepseek_api(prompt, model, api_keys, temperature, max_tokens, url_template, timeout)
+            elif provider == "GEMINI":
+                return _call_gemini_api(prompt, model, api_keys, temperature, max_tokens, url_template, timeout)
+            elif provider == "XAI":
+                return _call_xai_api(prompt, model, api_keys, temperature, max_tokens, url_template, timeout)
+            elif provider == "OPENAI":
+                return _call_openai_api(prompt, model, api_keys, temperature, max_tokens, url_template, timeout)
+            elif provider == "CLAUDE":
+                return _call_claude_api(prompt, model, api_keys, temperature, max_tokens, url_template, timeout)
+            else:
+                logger.error(f"❌ Unsupported provider: {provider}")
+                return None
+                
+        except Exception as e:
+            logger.warning(f"⚠️ API call attempt {attempt + 1} failed for {provider}: {e}")
+            if attempt < max_retries - 1:
+                wait_time = backoff_factor ** attempt
+                logger.info(f"🔄 Retrying in {wait_time}s...")
+                time.sleep(wait_time)
+            else:
+                logger.error(f"❌ All {max_retries} attempts failed for {provider}")
+                return None
 
-    try:
-        provider_enum = APIProvider(provider.upper())
-    except ValueError:
-        raise APIClientError(f"Unsupported provider: {provider}")
-
-    response = _make_api_request(
-        prompt=prompt,
-        provider=provider_enum,
-        model=model,
-        api_keys=api_keys,
-        temperature=temperature,
-        max_tokens=max_tokens,
-        retries=retries,
-        backoff_factor=backoff_factor,
-        timeout=timeout,
-        url_template=url_template,
-    )
-
-    if response.success:
-        logger.info(f"API request successful for {provider_enum.value}")
-        return response.content
-    else:
-        logger.error(f"API request failed for {provider_enum.value}: {response.error_message}")
-        return None
-
-
-def _make_api_request(
-    prompt: str,
-    provider: APIProvider,
-    model: str,
-    api_keys: Dict[str, str],
-    temperature: float,
-    max_tokens: int,
-    retries: int,
-    backoff_factor: float,
-    timeout: int,
-    url_template: str = None,
-) -> APIResponse:
-    api_key = _get_api_key(provider, api_keys)
+def _call_deepseek_api(prompt, model, api_keys, temperature, max_tokens, url_template, timeout):
+    """Call DeepSeek API with enhanced error handling"""
+    api_key = api_keys.get("DEEPSEEK_API_KEY")
     if not api_key:
-        return APIResponse(
-            content=None,
-            success=False,
-            error_message=f"API key not found for {provider.value}",
-        )
+        raise ValueError("DEEPSEEK_API_KEY not found in api_keys")
+    
+    headers = {
+        "Authorization": f"Bearer {api_key}",
+        "Content-Type": "application/json"
+    }
+    
+    payload = {
+        "model": model,
+        "messages": [{"role": "user", "content": prompt}],
+        "temperature": temperature,
+        "max_tokens": max_tokens
+    }
+    
+    logger.debug(f"📡 DeepSeek API request: {url_template}")
+    response = requests.post(url_template, headers=headers, json=payload, timeout=timeout)
+    response.raise_for_status()
+    
+    data = response.json()
+    
+    # Enhanced error checking
+    if "choices" not in data or not data["choices"]:
+        raise ValueError("Invalid response structure: missing choices")
+    
+    content = data["choices"][0]["message"]["content"]
+    if not content or not content.strip():
+        raise ValueError("Empty content returned from API")
+    
+    logger.debug(f"✅ DeepSeek API response: {len(content)} characters")
+    return content
 
-    url, headers, params, data = _build_request_config(
-        provider, model, api_key, prompt, temperature, max_tokens, url_template
-    )
-
-    # Log API request
-    logger.info(f"Making API request to {provider.value} with model {model} (prompt: {len(prompt)} chars)")
-
-    with logger.time_operation(f"API call to {provider.value}"):
-        for attempt in range(retries):
-            try:
-                logger.debug(
-                    f"API attempt {attempt + 1}/{retries} for {provider.value}"
-                )
-
-                response = requests.post(
-                    url=url, headers=headers, params=params, json=data, timeout=timeout
-                )
-
-                if response.status_code == 429:
-                    # Respect Retry-After header if present
-                    retry_after = response.headers.get("Retry-After")
-                    if retry_after:
-                        try:
-                            wait_time = float(retry_after)
-                        except ValueError:
-                            wait_time = backoff_factor * (2**attempt)
-                    else:
-                        # Exponential backoff with jitter
-                        base = backoff_factor * (2**attempt)
-                        wait_time = base + (
-                            base * 0.5 * (2 * random.random() - 1)
-                        )  # ±50% jitter
-                    logger.warning(f"Rate limited. Waiting {wait_time:.2f}s...")
-                    time.sleep(max(wait_time, 0))
-                    continue
-                elif response.status_code >= 500:
-                    logger.warning(f"Server error {response.status_code}. Retrying...")
-                    time.sleep(backoff_factor)
-                    continue
-                elif response.status_code >= 400:
-                    return APIResponse(
-                        content=None,
-                        success=False,
-                        error_message=f"Client error {response.status_code}: {response.text}",
-                        status_code=response.status_code,
-                    )
-
-                response.raise_for_status()
-                return _parse_response(provider, response)
-
-            except requests.exceptions.Timeout:
-                logger.warning(f"Request timeout on attempt {attempt + 1}")
-                if attempt == retries - 1:
-                    return APIResponse(
-                        content=None,
-                        success=False,
-                        error_message="Request timed out after all retries",
-                    )
-            except requests.exceptions.ConnectionError as e:
-                logger.warning(f"Connection error on attempt {attempt + 1}: {e}")
-                if attempt == retries - 1:
-                    return APIResponse(
-                        content=None,
-                        success=False,
-                        error_message=f"Connection failed: {e}",
-                    )
-            except Exception as e:
-                logger.error(f"Unexpected error: {e}")
-                return APIResponse(
-                    content=None, success=False, error_message=f"Unexpected error: {e}"
-                )
-
-    return APIResponse(
-        content=None, success=False, error_message="All retry attempts failed"
-    )
-
-
-def _get_api_key(provider: APIProvider, api_keys: Dict[str, str]) -> Optional[str]:
-    key_name = f"{provider.value}_API_KEY"
-    return api_keys.get(key_name)
-
-
-def _build_request_config(
-    provider: APIProvider,
-    model: str,
-    api_key: str,
-    prompt: str,
-    temperature: float,
-    max_tokens: int,
-    url_template: str = None,
-) -> Tuple[str, Dict[str, str], Optional[Dict[str, str]], Dict[str, Any]]:
-    headers = {"Content-Type": "application/json"}
-    params = None
-
-    # Use url_template if provided, else fallback to config
-    if provider == APIProvider.GEMINI:
-        url = url_template.format(model=model) if url_template else None
-        params = {"key": api_key}
-        data = {
-            "contents": [{"parts": [{"text": prompt}]}],
-            "generationConfig": {
-                "temperature": temperature,
-                "maxOutputTokens": max_tokens,
-            },
-        }
-    elif provider == APIProvider.OPENAI:
-        url = url_template if url_template else None
-        headers["Authorization"] = f"Bearer {api_key}"
-        data = {
-            "model": model,
-            "messages": [{"role": "user", "content": prompt}],
+def _call_gemini_api(prompt, model, api_keys, temperature, max_tokens, url_template, timeout):
+    """Call Gemini API with enhanced error handling"""
+    api_key = api_keys.get("GEMINI_API_KEY")
+    if not api_key:
+        raise ValueError("GEMINI_API_KEY not found in api_keys")
+    
+    url = f"{url_template}?key={api_key}"
+    
+    payload = {
+        "contents": [{"parts": [{"text": prompt}]}],
+        "generationConfig": {
             "temperature": temperature,
-            "max_tokens": max_tokens,
+            "maxOutputTokens": max_tokens
         }
-    elif provider == APIProvider.XAI:
-        url = url_template  # Always use url_template from run.py
-        headers["Authorization"] = f"Bearer {api_key}"
-        data = {
-            "model": model,
-            "messages": [{"role": "user", "content": prompt}],
-            "temperature": temperature,
-            "max_tokens": max_tokens,
-        }
-    elif provider == APIProvider.DEEPSEEK:
-        url = url_template if url_template else None
-        headers["Authorization"] = f"Bearer {api_key}"
-        data = {
-            "model": model,
-            "messages": [{"role": "user", "content": prompt}],
-            "temperature": temperature,
-            "max_tokens": max_tokens,
-        }
+    }
+    
+    logger.debug(f"📡 Gemini API request: {url}")
+    response = requests.post(url, json=payload, timeout=timeout)
+    response.raise_for_status()
+    
+    data = response.json()
+    
+    # Enhanced error checking
+    if "candidates" not in data or not data["candidates"]:
+        raise ValueError("Invalid response structure: missing candidates")
+    
+    content = data["candidates"][0]["content"]["parts"][0]["text"]
+    if not content or not content.strip():
+        raise ValueError("Empty content returned from API")
+    
+    logger.debug(f"✅ Gemini API response: {len(content)} characters")
+    return content
 
-    return url, headers, params, data
+def _call_xai_api(prompt, model, api_keys, temperature, max_tokens, url_template, timeout):
+    """Call XAI (Grok) API with enhanced error handling"""
+    api_key = api_keys.get("XAI_API_KEY")
+    if not api_key:
+        raise ValueError("XAI_API_KEY not found in api_keys")
+    
+    headers = {
+        "Authorization": f"Bearer {api_key}",
+        "Content-Type": "application/json"
+    }
+    
+    payload = {
+        "model": model,
+        "messages": [{"role": "user", "content": prompt}],
+        "temperature": temperature,
+        "max_tokens": max_tokens
+    }
+    
+    logger.debug(f"📡 XAI API request: {url_template}")
+    response = requests.post(url_template, headers=headers, json=payload, timeout=timeout)
+    response.raise_for_status()
+    
+    data = response.json()
+    
+    # Enhanced error checking
+    if "choices" not in data or not data["choices"]:
+        raise ValueError("Invalid response structure: missing choices")
+    
+    content = data["choices"][0]["message"]["content"]
+    if not content or not content.strip():
+        raise ValueError("Empty content returned from API")
+    
+    logger.debug(f"✅ XAI API response: {len(content)} characters")
+    return content
 
+def _call_openai_api(prompt, model, api_keys, temperature, max_tokens, url_template, timeout):
+    """Call OpenAI API with enhanced error handling"""
+    api_key = api_keys.get("OPENAI_API_KEY")
+    if not api_key:
+        raise ValueError("OPENAI_API_KEY not found in api_keys")
+    
+    headers = {
+        "Authorization": f"Bearer {api_key}",
+        "Content-Type": "application/json"
+    }
+    
+    payload = {
+        "model": model,
+        "messages": [{"role": "user", "content": prompt}],
+        "temperature": temperature,
+        "max_tokens": max_tokens
+    }
+    
+    logger.debug(f"📡 OpenAI API request: {url_template}")
+    response = requests.post(url_template, headers=headers, json=payload, timeout=timeout)
+    response.raise_for_status()
+    
+    data = response.json()
+    
+    # Enhanced error checking
+    if "choices" not in data or not data["choices"]:
+        raise ValueError("Invalid response structure: missing choices")
+    
+    content = data["choices"][0]["message"]["content"]
+    if not content or not content.strip():
+        raise ValueError("Empty content returned from API")
+    
+    logger.debug(f"✅ OpenAI API response: {len(content)} characters")
+    return content
 
-def _parse_response(provider: APIProvider, response: requests.Response) -> APIResponse:
-    try:
-        # Log the full raw response for XAI for debugging (now at DEBUG level to reduce terminal clutter)
-        if provider == APIProvider.XAI:
-            logger.debug(f"Raw XAI response: {response.text}")
-        response_json = response.json()
-
-        if provider == APIProvider.GEMINI:
-            candidates = response_json.get("candidates", [])
-            if candidates and candidates[0].get("content", {}).get("parts"):
-                content = candidates[0]["content"]["parts"][0]["text"]
-                return APIResponse(content=content, success=True)
-            else:
-                return APIResponse(
-                    content=None,
-                    success=False,
-                    error_message="Invalid Gemini response structure",
-                )
-
-        elif provider in [APIProvider.OPENAI, APIProvider.XAI, APIProvider.DEEPSEEK]:
-            choices = response_json.get("choices", [])
-            if choices and choices[0].get("message", {}).get("content"):
-                content = choices[0]["message"]["content"]
-                tokens_used = response_json.get("usage", {}).get("total_tokens")
-                return APIResponse(
-                    content=content, success=True, tokens_used=tokens_used
-                )
-            else:
-                return APIResponse(
-                    content=None,
-                    success=False,
-                    error_message=f"Invalid {provider.value} response structure",
-                )
-
-    except json.JSONDecodeError as e:
-        return APIResponse(
-            content=None, success=False, error_message=f"JSON decode error: {e}"
-        )
-    except Exception as e:
-        return APIResponse(
-            content=None, success=False, error_message=f"Response parsing error: {e}"
-        )
+def _call_claude_api(prompt, model, api_keys, temperature, max_tokens, url_template, timeout):
+    """Call Claude API with enhanced error handling"""
+    api_key = api_keys.get("ANTHROPIC_API_KEY")
+    if not api_key:
+        raise ValueError("ANTHROPIC_API_KEY not found in api_keys")
+    
+    headers = {
+        "x-api-key": api_key,
+        "Content-Type": "application/json",
+        "anthropic-version": "2023-06-01"
+    }
+    
+    payload = {
+        "model": model,
+        "max_tokens": max_tokens,
+        "temperature": temperature,
+        "messages": [{"role": "user", "content": prompt}]
+    }
+    
+    logger.debug(f"📡 Claude API request: {url_template}")
+    response = requests.post(url_template, headers=headers, json=payload, timeout=timeout)
+    response.raise_for_status()
+    
+    data = response.json()
+    
+    # Enhanced error checking
+    if "content" not in data or not data["content"]:
+        raise ValueError("Invalid response structure: missing content")
+    
+    content = data["content"][0]["text"]
+    if not content or not content.strip():
+        raise ValueError("Empty content returned from API")
+    
+    logger.debug(f"✅ Claude API response: {len(content)} characters")
+    return content
