@@ -16,12 +16,12 @@ def call_ai_api(
     provider: str,
     model: str,
     api_keys: Dict[str, str],
-    temperature: float = 0.7,
-    max_tokens: int = 4096,
-    url_template: str = "",
-    backoff_factor: float = 2.0,
-    max_retries: int = 3, # Ensure this default matches run.py if it's set in config
-    timeout: int = 60
+    temperature: float,  # ✅ No default - must come from config
+    max_tokens: int,     # ✅ No default - must come from config
+    url_template: str,
+    backoff_factor: float,  # ✅ No default - must come from config
+    max_retries: int,       # ✅ No default - must come from config
+    timeout: int            # ✅ No default - must come from config
 ) -> Optional[str]:
     """
     Make API call to specified AI provider with retry logic
@@ -253,3 +253,45 @@ def _call_claude_api(prompt, model, api_keys, temperature, max_tokens, url_templ
     
     logger.debug(f"✅ Claude API response: {len(content)} characters")
     return content
+
+class APIClient:
+    """Wrapper class for API client functionality"""
+    
+    def __init__(self, config):
+        self.config = config
+        self.api_keys = self._get_api_keys()
+        
+    def _get_api_keys(self):
+        """Extract API keys from environment using config mappings"""
+        import os
+        api_keys = {}
+        
+        api_key_mappings = self.config.get("api_key_mappings", {})
+        for provider, env_var in api_key_mappings.items():
+            api_key = os.getenv(env_var)
+            if api_key:
+                api_keys[f"{provider}_API_KEY"] = api_key
+            else:
+                logger.warning(f"⚠️ API key not found for {provider} (env: {env_var})")
+        
+        return api_keys
+    
+    def generate_content(self, prompt, provider, temperature=None, max_tokens=None):
+        """Generate content using the specified provider"""
+        provider_config = self.config.get("provider_models", {}).get(provider, {})
+        model = provider_config.get("model", "")
+        url_template = provider_config.get("url_template", "")
+        
+        # Always use config values - no defaults allowed
+        return call_ai_api(
+            prompt=prompt,
+            provider=provider,
+            model=model,
+            api_keys=self.api_keys,
+            temperature=temperature or self.config.get("generation_temperature", 0.7),
+            max_tokens=max_tokens or self.config.get("max_tokens", 4000),
+            url_template=url_template,
+            backoff_factor=self.config.get("backoff_factor", 2.0),
+            max_retries=self.config.get("max_retries", 3),
+            timeout=self.config.get("timeout", 60)
+        )

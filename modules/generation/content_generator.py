@@ -8,6 +8,8 @@ from .health_checker import APIHealthChecker
 from .section_generator import SectionGenerator
 from .sections_loader import SectionsLoader
 from .article_composer import ArticleComposer
+from modules.pipeline_orchestrator import PipelineOrchestrator
+from modules.api_client import APIClient
 from modules.optimization.orchestrator import OptimizationOrchestrator
 
 logger = logging.getLogger(__name__)
@@ -17,99 +19,95 @@ class ContentGenerator:
     
     def __init__(self, config):
         self.config = config
-        
-        # Initialize components
+        self.api_client = APIClient(config)
         self.health_checker = APIHealthChecker(config)
-        self.section_generator = SectionGenerator(config)
         self.sections_loader = SectionsLoader(config)
-        self.article_composer = ArticleComposer()
+        self.section_generator = SectionGenerator(config)
+        self.article_composer = ArticleComposer()  # ✅ Remove (config) parameter
+        self.optimization_orchestrator = OptimizationOrchestrator(config)
         
-        # Initialize optimization orchestrator
-        self.optimizer = OptimizationOrchestrator(config)
+        # Initialize pipeline orchestrator for metadata
+        self.orchestrator = PipelineOrchestrator(config)
         
-        # Load E-A-T requirements from optimization pipeline
-        self.eat_requirements = self._load_eat_requirements()
-        if self.eat_requirements:
-            logger.info(f"📋 Loaded E-A-T requirements for generation enhancement")
-        else:
-            logger.info(f"📋 No E-A-T requirements found - using standard generation")
-    
-    def _load_eat_requirements(self):
-        """Load E-A-T requirements from optimization pipeline"""
-        try:
-            # Reuse pipeline manager to avoid duplication
-            from modules.optimization.pipeline_manager import OptimizationPipelineManager
-            pipeline_manager = OptimizationPipelineManager(self.config)
-            steps = pipeline_manager.load_optimization_pipeline()
-            
-            # Find step with requirements
-            for step in steps:
-                config = step['config']
-                if 'requirements' in config:
-                    logger.info(f"📋 Found E-A-T requirements in step: {config.get('name', step['key'])}")
-                    return config.get('requirements', '')
-            
-            return None
-            
-        except Exception as e:
-            logger.warning(f"⚠️ Could not load E-A-T requirements: {e}")
-            return None
-    
-    def generate_article(self, material):
-        """Generate complete article for specified material - NO METADATA"""
-        logger.info(f"🚀 Starting article generation for material: {material}")
+        # Initialize optimization settings
+        self.eat_requirements = config.get("eat_requirements", None)
+        self.optimizer = self.optimization_orchestrator
+
+    def generate_article(self, context):
+        """Generate article with metadata and content"""
+        logger.info("🚀 Starting article generation...")
+        
+        # Health check API FIRST - before any expensive operations
+        logger.info("🏥 Performing API health check...")
+        self.health_checker.check_api_health()
+        
+        # Execute pre-generation modules (metadata)
+        pre_results = self.orchestrator.execute_stage("pre_generation", context)
+        
+        # Extract materialType for existing logic
+        material = context["materialType"]
         
         # Load sections configuration
         sections = self.sections_loader.load_sections()
         material_sections = self.sections_loader.get_material_sections(sections, material)
         
-        # Health check API before generation
-        self.health_checker.check_api_health()
-        
-        # Generate each section (ALL TEXT SECTIONS ONLY)
+        # Generate sections
+        logger.info("📝 Generating article sections...")
         generated_sections = []
         
         for section in material_sections:
-            section_name = section['name']
-            section_title = section['title']
+            logger.info(f"🔄 Generating section: {section['name']}")
             
-            logger.info(f"🔧 Generating section: {section_name} ({section_title})")
-            
-            # Generate base content
+            # Generate section content - USE THE CORRECT METHOD NAME
             if self.eat_requirements:
                 content = self.section_generator.generate_section_with_enhancement(
-                    section, material, self.eat_requirements
+                    section=section,
+                    material=material,
+                    eat_requirements=self.eat_requirements
                 )
             else:
-                content = self.section_generator.generate_section_standard(section, material)
-            
-            if not content or not content.strip():
-                raise RuntimeError(f"Failed to generate content for section: {section_name}")
-            
-            logger.info(f"✅ Generated {len(content.split())} words for: {section_name}")
-            
-            # Apply optimization pipeline (ALL sections get optimized)
-            try:
-                optimized_content = self.optimizer.optimize_section(
-                    content=content,
-                    section_name=section_name,
-                    section_type=section_title,
+                content = self.section_generator.generate_section_standard(
+                    section=section,
                     material=material
                 )
-                content = optimized_content
-            except Exception as e:
-                raise RuntimeError(f"Optimization failed for section {section_name}: {e}")
             
-            # Format section (NO METADATA TYPE CHECKING)
+            # Format the section
             formatted_section = self.article_composer.format_section(
-                section_name, section_title, content
+                section_name=section["name"],
+                section_title=section["title"],
+                content=content
             )
+            
             generated_sections.append(formatted_section)
         
-        # Combine all sections
-        article = self.article_composer.combine_sections(generated_sections, material)
+        # Combine sections into final article
+        logger.info("📋 Combining sections into final article...")
+        article_body = self.article_composer.combine_sections(generated_sections, material)
         
-        logger.info(f"🎉 Article generation complete for {material}")
-        logger.info(f"📊 Total article length: {len(article.split())} words")
+        # Apply optimization if enabled
+        if self.eat_requirements:
+            logger.info("🎯 Applying optimization pipeline...")
+            article_body = self.optimizer.optimize_content(article_body, self.eat_requirements)
         
-        return article
+        # Combine metadata and content
+        if "metadata" in pre_results:
+            metadata = pre_results["metadata"]
+            final_article = f"{metadata}\n\n{article_body}"
+        else:
+            final_article = article_body
+        
+        logger.info("✅ Article generation completed successfully!")
+        return final_article
+    
+    def _assemble_final_article(self, pre_results, optimized_content):
+        """Combine metadata and optimized content"""
+        final_article = ""
+        
+        # Add metadata if available
+        if "metadata" in pre_results:
+            final_article += pre_results["metadata"] + "\n\n"
+        
+        # Add optimized content
+        final_article += optimized_content
+        
+        return final_article

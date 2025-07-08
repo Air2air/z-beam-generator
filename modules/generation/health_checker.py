@@ -32,7 +32,7 @@ class APIHealthChecker:
         if not api_keys:
             raise RuntimeError("No API keys configured for generation")
         
-        # Simple health check
+        # Simple health check with ALL required parameters
         test_result = api_client.call_ai_api(
             prompt=self.config.get('health_check_prompt', "Respond with 'OK' if you can process this request."),
             provider=generation_provider,
@@ -40,7 +40,10 @@ class APIHealthChecker:
             api_keys=api_keys,
             temperature=self.config.get('health_check_temperature', 0.1),
             max_tokens=self.config.get('health_check_max_tokens', 10),
-            url_template=provider_config.get('url_template')
+            url_template=provider_config.get('url_template'),
+            backoff_factor=self.config.get('backoff_factor', 2.0),  # ✅ Added
+            max_retries=self.config.get('max_retries', 3),          # ✅ Added
+            timeout=self.config.get('timeout', 60)                  # ✅ Added
         )
         
         if not test_result or 'OK' not in test_result.upper():
@@ -55,5 +58,5 @@ class APIHealthChecker:
         for prov, env_var in api_key_mappings.items():
             key = os.getenv(env_var)
             if key:
-                api_keys[env_var] = key
+                api_keys[f"{prov}_API_KEY"] = key  # ✅ Fixed key format to match api_client expectations
         return api_keys

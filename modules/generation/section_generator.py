@@ -50,22 +50,25 @@ TARGET: Generate approximately {self.config.get('default_section_words', 150)} w
         for prov, env_var in api_key_mappings.items():
             key = os.getenv(env_var)
             if key:
-                api_keys[env_var] = key
+                api_keys[f"{prov}_API_KEY"] = key  # ✅ Fix key format
         
         if not api_keys:
             raise RuntimeError("No API keys configured for generation")
         
         logger.info(f"📡 Making generation API call for section: {section_name}")
         
-        # Make API call
+        # Make API call with ALL required parameters
         result = api_client.call_ai_api(
             prompt=prompt,
             provider=generation_provider,
             model=provider_config.get('model'),
             api_keys=api_keys,
             temperature=self.config.get('generation_temperature', 0.7),
-            max_tokens=self.config.get('max_tokens', 4096),
-            url_template=provider_config.get('url_template')
+            max_tokens=self.config.get('max_tokens', 4000),
+            url_template=provider_config.get('url_template'),
+            backoff_factor=self.config.get('backoff_factor', 2.0),  # ✅ Added
+            max_retries=self.config.get('max_retries', 3),          # ✅ Added
+            timeout=self.config.get('timeout', 60)                  # ✅ Added
         )
         
         if not result or not result.strip():

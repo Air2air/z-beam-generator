@@ -9,6 +9,11 @@ from pathlib import Path
 
 from modules.generation.content_generator import ContentGenerator
 
+# PRIMARY USER SETTINGS - DON'T EVER CHANGE THIS
+material = "oak wood" # "copper", "oak wood", "plastic", "brick", "quartzite", "beryllium"
+authorId = 2 #1,2,3,4
+articleType = "material" #"region", "application", "thesaurus"  # ✅ Changed from article_type
+
 # Configure logging
 logging.basicConfig(
     level=logging.INFO,
@@ -19,7 +24,6 @@ logger = logging.getLogger(__name__)
 def main():
     """Main entry point for Z-Beam Generator"""
     
-    # SIMPLIFIED CONFIGURATION - NO METADATA
     config = {
         # Core settings
         "prompts_directory": "prompts",
@@ -29,7 +33,7 @@ def main():
         "generation_provider": "DEEPSEEK",
         "generation_temperature": 0.7,
         "default_section_words": 150,
-        "max_tokens": 200,
+        "max_tokens": 4000,
         
         # Optimization settings
         "optimization_provider": "DEEPSEEK",
@@ -64,19 +68,45 @@ def main():
         # Retry settings
         "backoff_factor": 2.0,
         "max_retries": 3,
-        "timeout": 60
+        "timeout": 60,
+        
+        # Metadata module settings
+        "metadata_enabled": True,
+        "metadata_provider": "DEEPSEEK",
+        "metadata_temperature": 0.3,
+        "metadata_prompt": "prompts/metadata.md",
+        
+        # Pipeline control
+        "pipeline_modules": {
+            "metadata": {
+                "enabled": True,
+                "stage": "pre_generation",
+                "provider": "DEEPSEEK"
+            }
+        },
+        
+        # Health check settings
+        "health_check_prompt": "Respond with 'OK' if you can process this request.",
+        "health_check_temperature": 0.1,
+        "health_check_max_tokens": 10,
     }
     
     try:
-        logger.info("🚀 Starting Z-Beam Generator - No Metadata Mode")
+        logger.info("🚀 Starting Z-Beam Generator - With Metadata")
         logger.info("✅ Configuration initialized")
         
         # Create content generator
         generator = ContentGenerator(config)
         
-        # Generate article for aluminum (no metadata)
-        material = "Aluminum"
-        article = generator.generate_article(material)
+        # Pass PRIMARY USER SETTINGS to generator
+        context = {
+            "materialType": material,
+            "authorId": authorId,
+            "articleType": articleType  # ✅ Changed from article_type
+        }
+        
+        # Generate article with metadata
+        article = generator.generate_article(context)
         
         # Save output
         output_dir = Path(config["output_directory"])
