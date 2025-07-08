@@ -114,5 +114,36 @@ compliance/
 └── validation_rules.py   # Centralized compliance rules
 ```
 
+## Section Management
+
+**CRITICAL: Sections are only defined in `prompts/sections.json`**
+
+- Sections are **dynamic** and loaded at runtime
+- Do **NOT** hardcode section names in other files
+- Do **NOT** store section lists in configuration files
+- Do **NOT** reference specific sections in optimization prompts
+
+**Why:** Section names, count, and structure can change based on:
+- Material type
+- Article type  
+- Future feature additions
+- A/B testing different structures
+
+**Current Implementation:**
+- `SectionsLoader` reads `prompts/sections.json`
+- `get_material_sections()` dynamically filters sections
+- Content generation loops through whatever sections are loaded
+
+**Example of what NOT to do:**
+```python
+# ❌ BAD - hardcoded sections
+sections = ["Introduction", "Comparison", "Contaminants", "Substrates"]
+
+# ✅ GOOD - dynamic sections
+sections = self.sections_loader.get_material_sections(material)
+```
+
+This ensures the system remains flexible and maintainable.
+
 ---
 **🔥 FINAL RULE**: If Claude violates ANY rule, stop and start over with compliant approach. File count should serve functionality, not arbitrary metrics.

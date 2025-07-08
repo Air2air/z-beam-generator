@@ -58,7 +58,7 @@ class ContentGenerator:
         for section in material_sections:
             logger.info(f"🔄 Generating section: {section['name']}")
             
-            # Generate section content - USE THE CORRECT METHOD NAME
+            # Generate section content
             if self.eat_requirements:
                 content = self.section_generator.generate_section_with_enhancement(
                     section=section,
@@ -70,6 +70,15 @@ class ContentGenerator:
                     section=section,
                     material=material
                 )
+            
+            # ✅ OPTIMIZE EACH SECTION INDIVIDUALLY
+            logger.info(f"🎯 Optimizing section: {section['name']}")
+            content = self.optimizer.optimize_section(
+                content=content,
+                section_name=section['name'],
+                section_type=section.get('type', 'standard'),
+                material=material
+            )
             
             # Format the section
             formatted_section = self.article_composer.format_section(

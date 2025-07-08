@@ -56,7 +56,8 @@ class OptimizationOrchestrator:
                     "type": section_type,
                     "material": material,
                     "previous_steps": optimization_history.copy(),
-                    "target_words": self.config.get('default_section_words', 150)
+                    "target_words": self.config.get('default_section_words'),  # ✅ No hardcoded fallback
+                    "max_total_words": self.config.get('max_total_words')  # ✅ No hardcoded fallback
                 }
             )
             

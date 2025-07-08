@@ -9,7 +9,7 @@ Based on these inputs, generate a comprehensive JSON object with the following r
 1. The JSON describes an article titled "Laser Cleaning {{materialType}}", focusing on laser cleaning of the specified material for applications in relevant industries (e.g., aerospace, construction, restoration).
 2. Include exactly the following 35 metadata fields (34 original fields plus `generalClassifier`) with the specified instructions, substituting {{materialType}} with the input `materialType` where applicable. For each field, research and validate values using scientific literature, industry standards, or reliable sources (e.g., NIST, MatWeb, ASTM standards, laser cleaning studies). For non-elemental or composite materials (e.g., Stone, Wood), use representative values (e.g., granite for Stone) and set `atomicNumber` and `chemicalSymbol` to null. If specific data is unavailable, use reasonable estimates based on similar materials and note the assumption.
    - **title**: Set to "Laser Cleaning {{materialType}}" (string, e.g., "Laser Cleaning Aluminum").
-   - **contentCategory**: Use the input `articleType` (string, e.g., "laser_cleaning", "material", "region", "application").
+   - **articleType**: Use the input `articleType` (string, e.g., "laser_cleaning", "material", "region", "application").
    - **nameShort**: Set to the input `materialType` (string, e.g., "Aluminum").
    - **description**: Set to "Explore how laser cleaning removes contaminants from {{materialType}}, enhancing performance and safety in relevant industries such as Aerospace, Construction, Restoration, Manufacturing, or others." (string, substituting {{materialType}}).
    - **publishedAt**: Set to "2025-07-01" (string, YYYY-MM-DD format, fixed publication date).
@@ -73,7 +73,7 @@ Expected format:
 <xaiArtifact artifact_id="3abf1ab9-000d-455d-aa26-602a37b335c7" title="{{materialType | lower | replace(' ', '_')}}_metadata.json" contentType="application/json">
 {
   "title": "Laser Cleaning {{materialType}}",
-  "contentCategory": "{{articleType}}",
+  "articleType": "{{articleType}}",
   "nameShort": "{{materialType}}",
   // ... all 35 fields as specified above ...
 }

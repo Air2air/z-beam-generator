@@ -33,6 +33,7 @@ def main():
         "generation_provider": "DEEPSEEK",
         "generation_temperature": 0.7,
         "default_section_words": 150,
+        "max_total_words": 700,  # ✅ Add this
         "max_tokens": 4000,
         
         # Optimization settings

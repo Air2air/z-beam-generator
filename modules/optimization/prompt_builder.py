@@ -22,7 +22,8 @@ class OptimizationPromptBuilder:
             'material': section_context.get('material', 'Unknown'),
             'section_type': section_context.get('type', 'Unknown'),
             'section_name': section_context.get('name', 'Unknown'),
-            'target_words': section_context.get('target_words', 150),
+            'target_words': section_context.get('target_words'),  # ✅ No hardcoded fallback
+            'max_total_words': section_context.get('max_total_words'),  # ✅ No hardcoded fallback
             'previous_steps': ', '.join(section_context.get('previous_steps', [])) or 'None'
         }
         
