@@ -1,44 +1,36 @@
 {
   "sections": [
     {
-      "name": "comparison",
-      "title": "Comparison Section",
-      "ai_detect": true,
+      "name": "introduction",
+      "title": "Introduction",
       "order": 1,
       "section_type": "TEXT",
-      "prompt": "Compare laser cleaning with one traditional cleaning method for {material}. Write naturally, as if discussing this with a colleague.\n\nWRITING APPROACH:\n- Focus on practical, real-world differences\n- Include specific examples from industry experience\n- Use conversational tone with varied sentence structures\n- Mention actual challenges technicians face\n- Avoid perfectly balanced pros/cons lists\n- Include some informal language or industry terminology\n- Share insights about when each method works best\n- Add context about costs, time, or practical considerations\n\nWrite from experience, not from a manual."
+      "materials": ["Aluminum", "Steel", "Copper", "Titanium"],
+      "prompt": "Write an engaging introduction about laser cleaning for {material}..."
+    },
+    {
+      "name": "comparison",
+      "title": "Comparison with Traditional Methods",
+      "order": 2,
+      "section_type": "TEXT",
+      "materials": ["Aluminum", "Steel", "Copper", "Titanium"],
+      "prompt": "Compare laser cleaning with traditional methods for {material}..."
     },
     {
       "name": "contaminants",
-      "title": "Contaminants Section",
-      "ai_detect": true,
+      "title": "Contaminants Removed",
       "order": 3,
       "section_type": "TEXT",
-      "prompt": "Discuss the typical contaminants found on {material} that require cleaning. Write conversationally, drawing from practical experience.\n\nWRITING APPROACH:\n- Focus on real contaminants you'd actually encounter\n- Explain why these contaminants are problematic in specific situations\n- Use varied sentence structures and lengths\n- Include industry-specific terminology naturally\n- Mention practical challenges or observations\n- Avoid generic lists - provide context about each contaminant\n- Write as if sharing knowledge with a peer\n- Include some informal language where appropriate\n\nShare insights about which contaminants are most challenging and why."
-    },
-    {
-      "name": "introduction",
-      "title": "Introduction Section",
-      "ai_detect": true,
-      "order": 0,
-      "section_type": "TEXT",
-      "prompt": "Write a natural, conversational introduction about {material} and laser cleaning. \n\nWRITING STYLE GUIDELINES:\n- Use varied sentence lengths and structures\n- Include some informal language or contractions where appropriate\n- Add specific, real-world examples or scenarios\n- Avoid overly technical jargon without context\n- Write as if explaining to a colleague, not a textbook\n- Include occasional personal observations or industry insights\n- Use natural transitions, not formulaic ones\n\nFocus on practical applications and real industry challenges rather than generic benefits."
-    },
-    {
-      "name": "material_research",
-      "title": "Material Research Section",
-      "ai_detect": false,
-      "order": 4,
-      "section_type": "METADATA",
-      "prompt": "Given the material: {material}\nProvide the following information as a list of key: value pairs, one per line. Use the exact field names below. If a value is unknown, write \"N/A\". Do NOT write a paragraph or any explanation. Only output the list as shown.\n\nname:\natomicNumber:\nchemicalSymbol:\nmaterialType:\nmetalClass:\ncrystalStructure:\nprimaryApplication:\nindustries: (comma-separated)\nkeywords: (comma-separated)\napplications: (comma-separated)\nmaterial_description:"
+      "materials": ["Aluminum", "Steel", "Copper", "Titanium"],
+      "prompt": "Detail the specific contaminants that laser cleaning removes from {material}..."
     },
     {
       "name": "substrates",
-      "title": "Substrates Section",
-      "ai_detect": true,
-      "order": 5,
+      "title": "Substrate Applications",
+      "order": 4,
       "section_type": "TEXT",
-      "prompt": "Explain the key substrates or base materials associated with {material} in industrial contexts. Write naturally and conversationally.\n\nWRITING STYLE:\n- Use varied sentence structures and natural flow\n- Include practical context about why these substrates matter\n- Share industry insights or common applications\n- Avoid rigid numbered lists - integrate information naturally\n- Use conversational tone with some informal language\n- Provide specific examples where helpful\n- Explain relationships between substrates and {material}\n- Write as if discussing with a knowledgeable colleague\n\nFocus on practical relevance rather than encyclopedic completeness."
+      "materials": ["Aluminum", "Steel", "Copper", "Titanium"],
+      "prompt": "Discuss how laser cleaning works with {material} in various substrate combinations..."
     }
   ]
 }

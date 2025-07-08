@@ -56,7 +56,7 @@ class ContentGenerator:
             return None
     
     def generate_article(self, material):
-        """Generate complete article for specified material"""
+        """Generate complete article for specified material - NO METADATA"""
         logger.info(f"🚀 Starting article generation for material: {material}")
         
         # Load sections configuration
@@ -66,13 +66,12 @@ class ContentGenerator:
         # Health check API before generation
         self.health_checker.check_api_health()
         
-        # Generate each section
+        # Generate each section (ALL TEXT SECTIONS ONLY)
         generated_sections = []
         
         for section in material_sections:
             section_name = section['name']
             section_title = section['title']
-            section_type = section.get('section_type', 'TEXT')
             
             logger.info(f"🔧 Generating section: {section_name} ({section_title})")
             
@@ -89,22 +88,21 @@ class ContentGenerator:
             
             logger.info(f"✅ Generated {len(content.split())} words for: {section_name}")
             
-            # Apply optimization pipeline if enabled
-            if section.get('ai_detect', True):
-                try:
-                    optimized_content = self.optimizer.optimize_section(
-                        content=content,
-                        section_name=section_name,
-                        section_type=section_title,
-                        material=material
-                    )
-                    content = optimized_content
-                except Exception as e:
-                    raise RuntimeError(f"Optimization failed for section {section_name}: {e}")
+            # Apply optimization pipeline (ALL sections get optimized)
+            try:
+                optimized_content = self.optimizer.optimize_section(
+                    content=content,
+                    section_name=section_name,
+                    section_type=section_title,
+                    material=material
+                )
+                content = optimized_content
+            except Exception as e:
+                raise RuntimeError(f"Optimization failed for section {section_name}: {e}")
             
-            # Format section
+            # Format section (NO METADATA TYPE CHECKING)
             formatted_section = self.article_composer.format_section(
-                section_name, section_title, content, section_type
+                section_name, section_title, content
             )
             generated_sections.append(formatted_section)
         
