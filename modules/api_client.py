@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+# modules/api_client.py
 """
 API Client - Handles AI API calls with provider abstraction
 """
@@ -20,7 +20,7 @@ def call_ai_api(
     max_tokens: int = 4096,
     url_template: str = "",
     backoff_factor: float = 2.0,
-    max_retries: int = 3,
+    max_retries: int = 3, # Ensure this default matches run.py if it's set in config
     timeout: int = 60
 ) -> Optional[str]:
     """
@@ -33,7 +33,7 @@ def call_ai_api(
         api_keys: Dictionary of API keys
         temperature: Temperature for generation
         max_tokens: Maximum tokens to generate
-        url_template: URL template for the provider
+        url_template: URL template for the provider (e.g., "https://.../{model}:generateContent")
         backoff_factor: Backoff factor for retries
         max_retries: Maximum number of retry attempts
         timeout: Request timeout in seconds
@@ -49,6 +49,7 @@ def call_ai_api(
             if provider == "DEEPSEEK":
                 return _call_deepseek_api(prompt, model, api_keys, temperature, max_tokens, url_template, timeout)
             elif provider == "GEMINI":
+                # Pass the model name to _call_gemini_api for template resolution
                 return _call_gemini_api(prompt, model, api_keys, temperature, max_tokens, url_template, timeout)
             elif provider == "XAI":
                 return _call_xai_api(prompt, model, api_keys, temperature, max_tokens, url_template, timeout)
@@ -111,7 +112,11 @@ def _call_gemini_api(prompt, model, api_keys, temperature, max_tokens, url_templ
     if not api_key:
         raise ValueError("GEMINI_API_KEY not found in api_keys")
     
-    url = f"{url_template}?key={api_key}"
+    # MODIFIED: First, substitute the model name into the URL template
+    resolved_url_base = url_template.replace("{model}", model)
+    
+    # MODIFIED: Then, append the API key as a query parameter to the resolved URL
+    url = f"{resolved_url_base}?key={api_key}"
     
     payload = {
         "contents": [{"parts": [{"text": prompt}]}],
@@ -131,7 +136,12 @@ def _call_gemini_api(prompt, model, api_keys, temperature, max_tokens, url_templ
     if "candidates" not in data or not data["candidates"]:
         raise ValueError("Invalid response structure: missing candidates")
     
-    content = data["candidates"][0]["content"]["parts"][0]["text"]
+    # MODIFIED: Safely access 'parts' using .get()
+    content_parts = data["candidates"][0]["content"].get("parts")
+    if not content_parts:
+        raise ValueError("Invalid response structure: missing content parts in candidate")
+    
+    content = content_parts[0]["text"]
     if not content or not content.strip():
         raise ValueError("Empty content returned from API")
     
@@ -217,7 +227,7 @@ def _call_claude_api(prompt, model, api_keys, temperature, max_tokens, url_templ
     headers = {
         "x-api-key": api_key,
         "Content-Type": "application/json",
-        "anthropic-version": "2023-06-01"
+        "anthropic-version": "2023-06-01" # Required for Claude API
     }
     
     payload = {
