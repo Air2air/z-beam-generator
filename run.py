@@ -32,10 +32,10 @@ def get_config():
     
     # User settings
     context = {
-        "material": "titanium", 
+        "material": "hafnium", 
         "author_id": 2, 
         "article_type": "material"
-        }
+    }
 
     # Initialize configuration
     config = {
@@ -47,8 +47,8 @@ def get_config():
         
         # Optimization settings
         "optimization_method": "writing_samples",  # or "iterative"
-        "iterative_optimizer_file": "iterative_optimizer.py",
-        "writing_samples_optimizer_file": "writing_samples_optimizer.py",
+        "iterative_optimizer_file": "optimizers/iterative_optimizer.py",
+        "writing_samples_optimizer_file": "optimizers/writing_samples_optimizer.py",
         
         "prompts_dir": "prompts",
         "output_dir": "output",
@@ -136,74 +136,32 @@ def extract_content_from_markdown(article_content):
     return content
 
 def main():
-    """Main function with integrated AI detection"""
+    """Main execution function"""
+    # Get config and context first
     config, context = get_config()
     
-    # Initialize logging
+    # Setup logging and get logger
     logger = setup_logging(config)
     logger.info(f"🔧 ZBeamGenerator initialized - {config['provider']}/{config['model']}")
+    
     logger.info("🚀 STARTING ARTICLE GENERATION")
     logger.info(f"📄 Material: {context['material']} | Author: {context['author_id']} | Type: {context['article_type']}")
     
-    # Generate article
-    from generator import ZBeamGenerator
-    
-    generator = ZBeamGenerator(config, context)
-    article = generator.generate_article()
-    
-    # Save output first
-    output_dir = Path(config["output_dir"])
-    output_dir.mkdir(exist_ok=True)
-    
-    output_file = output_dir / f"{context['material'].replace(' ', '_')}_laser_cleaning.md"
-    with open(output_file, 'w') as f:
-        f.write(article)
-    
-    logger.info(f"✅ Article saved to: {output_file}")
-    
-    # Now run AI detection on the generated content
-    print("\n" + "="*60)
-    print("🤖 RUNNING AI DETECTION ANALYSIS")
-    print("="*60)
-    
-    # Import and run AI detector
-    from detectors import AIDetector
-    
-    # Extract content (skip frontmatter)
-    content_to_test = extract_content_from_markdown(article)
-    
-    print(f"📖 Testing generated content")
-    print(f"📊 Content length: {len(content_to_test)} characters, {len(content_to_test.split())} words")
-    print()
-    
-    # Configure and run detector
-    detector = AIDetector(config)
-    results = detector.score_content(content_to_test)
-    
-    # Print detailed report
-    detector.print_detailed_report(results)
-    
-    # Show content sample
-    print("\n" + "="*60)
-    print("📝 CONTENT SAMPLE (first 300 chars):")
-    print("="*60)
-    sample = content_to_test[:300] + "..." if len(content_to_test) > 300 else content_to_test
-    print(sample)
-    print("="*60)
-    
-    # Final summary
-    summary = results.get("summary", {})
-    if summary.get("services_count", 0) > 0:
-        avg_score = summary.get("average_ai_score", 0)
-        target = config["target_ai_score"]
+    try:
+        # Import and call the generate_article function
+        from generator import generate_article
         
-        if summary.get("passed_threshold", False):
-            print(f"🎉 SUCCESS: AI detection score {avg_score:.1f}% is below target {target}%")
-        else:
-            print(f"⚠️  NEEDS IMPROVEMENT: AI detection score {avg_score:.1f}% is above target {target}%")
-            print("💡 Consider using more aggressive humanization in your optimization prompts")
-    
-    print(f"\n📁 Full article saved to: {output_file}")
+        # Generate the article
+        output_file = generate_article(context, config)
+        
+        logger.info(f"✅ ARTICLE GENERATION COMPLETED")
+        logger.info(f"📁 Output: {output_file}")
+        
+        return output_file
+        
+    except Exception as e:
+        logger.error(f"❌ ARTICLE GENERATION FAILED: {e}")
+        raise
 
 if __name__ == "__main__":
     main()

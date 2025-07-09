@@ -12,42 +12,71 @@ class ArticleOrchestrator:
     def __init__(self, config):
         self.config = config
     
-    def orchestrate_article(self, optimized_sections, metadata, author_data):
-        """Orchestrate final article"""
-        logger.info("🎼 ORCHESTRATING FINAL ARTICLE")
+    def orchestrate_article(self, sections, metadata, tags):
+        """Orchestrate final article assembly with separate tags input"""
+        logger.info("🎼 Assembling final article with discrete components")
         
-        article_parts = []
+        # Add tags to metadata for YAML generation
+        metadata_with_tags = metadata.copy()
+        metadata_with_tags["tags"] = tags
         
-        # Add YAML frontmatter
-        logger.info("🎼 Adding YAML frontmatter...")
-        article_parts.append("---")
-        for key, value in metadata.items():
-            if key == "tags" and isinstance(value, list):
-                tags_str = "[" + ", ".join(f"'{tag}'" for tag in value) + "]"
-                article_parts.append(f'{key}: {tags_str}')
+        # Ensure proper data types for YAML output
+        metadata_with_tags = self._ensure_proper_yaml_types(metadata_with_tags)
+        
+        # Create YAML frontmatter
+        frontmatter = "---\n"
+        for key, value in metadata_with_tags.items():
+            if isinstance(value, list):
+                frontmatter += f"{key}:\n"
+                for item in value:
+                    frontmatter += f"  - \"{item}\"\n"
+            elif isinstance(value, dict):
+                frontmatter += f"{key}:\n"
+                for k, v in value.items():
+                    frontmatter += f"  {k}: \"{v}\"\n"
+            elif isinstance(value, str):
+                frontmatter += f"{key}: \"{value}\"\n"
             else:
-                article_parts.append(f'{key}: "{value}"')
-        article_parts.append("---")
-        article_parts.append("")
+                frontmatter += f"{key}: {value}\n"
+        frontmatter += "---\n\n"
         
-        # Add main title
-        article_parts.append(f"# {metadata['title']}")
-        article_parts.append("")
+        # Assemble article content
+        article_content = frontmatter
+        article_content += f"# {metadata['title']}\n\n"
         
-        # Handle single optimized article
-        if len(optimized_sections) == 1 and optimized_sections[0]['name'] == 'optimized_article':
-            logger.info("🎼 Using single optimized article")
-            article_parts.append(optimized_sections[0]['content'])
-        else:
-            # Multiple sections - assemble normally
-            logger.info(f"🎼 Adding {len(optimized_sections)} sections...")
-            for section in optimized_sections:
-                article_parts.append(f"## {section['title']}")
-                article_parts.append("")
-                article_parts.append(section['content'])
-                article_parts.append("")
+        for section in sections:
+            article_content += f"## {section['title']}\n"
+            article_content += f"{section['content']}\n\n"
         
-        final_article = "\n".join(article_parts)
-        logger.info(f"✅ Article orchestrated - {len(final_article)} chars")
+        logger.info("✅ Article orchestration completed with discrete tag integration")
+        return article_content
+
+    def _ensure_proper_yaml_types(self, metadata):
+        """Ensure all metadata has proper types for YAML output"""
+        import ast
         
-        return final_article
+        # Fields that should be arrays
+        array_fields = ["processingChallenges", "alternativeMethods", "costFactors", "tags"]
+        
+        # Fields that should be objects
+        object_fields = ["laserCleaningParameters", "performanceMetrics"]
+        
+        # Convert string arrays to actual arrays
+        for field in array_fields:
+            if field in metadata and isinstance(metadata[field], str):
+                try:
+                    metadata[field] = ast.literal_eval(metadata[field])
+                    logger.info(f"✅ Converted {field} from string to array")
+                except (ValueError, SyntaxError):
+                    logger.warning(f"⚠️ Failed to convert {field} to array: {metadata[field]}")
+        
+        # Convert string objects to actual objects
+        for field in object_fields:
+            if field in metadata and isinstance(metadata[field], str):
+                try:
+                    metadata[field] = ast.literal_eval(metadata[field])
+                    logger.info(f"✅ Converted {field} from string to object")
+                except (ValueError, SyntaxError):
+                    logger.warning(f"⚠️ Failed to convert {field} to object: {metadata[field]}")
+        
+        return metadata

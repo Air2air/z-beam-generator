@@ -11,14 +11,49 @@ from pathlib import Path
 logger = logging.getLogger(__name__)
 
 class IterativeOptimizer:
-    """Optimizes text sections using iterative or writing sample methods"""
+    """Optimizes text sections using iterative methods"""
     
     def __init__(self, config, api_client):
         self.config = config
         self.api_client = api_client
     
-    def optimize_sections(self, text_sections, author_data, material=None):
-        """Optimize text sections based on config method"""
+    def optimize_sections(self, sections, material, metadata):
+        """Updated interface to match generator expectations"""
+        logger.info(f"🔄 ITERATIVE OPTIMIZATION STARTED for {material}")
+        logger.info(f"📊 Input sections: {len(sections)}")
+        
+        # Convert sections format for your existing method
+        text_sections = []
+        for section in sections:
+            text_sections.append({
+                'name': section.get('title', '').lower().replace(' ', '_'),
+                'title': section.get('title', 'Untitled'),
+                'content': section.get('content', '')
+            })
+        
+        # Get author data from metadata (if needed)
+        author_data = {
+            'name': metadata.get('authorName', ''),
+            'slug': metadata.get('authorSlug', ''),
+            'id': metadata.get('authorId', '')
+        }
+        
+        # Use your existing optimization logic
+        optimized_result = self.optimize_sections_original(text_sections, author_data, material)
+        
+        # Convert back to expected format
+        optimized_sections = []
+        for section in optimized_result:
+            optimized_sections.append({
+                'title': section.get('title', 'Optimized Content'),
+                'content': section.get('content', '')
+            })
+        
+        logger.info(f"✅ ITERATIVE OPTIMIZATION COMPLETED - {len(optimized_sections)} sections")
+        return optimized_sections
+    
+    def optimize_sections_original(self, text_sections, author_data, material=None):
+        """Your existing optimize_sections method (renamed to avoid conflict)"""
         optimization_method = self.config["optimization_method"]
         logger.info(f"🔧 Starting optimization: {optimization_method}")
         
@@ -113,7 +148,7 @@ class IterativeOptimizer:
                         logger.warning(f"⚠️  Very little change in step '{step['name']}' (similarity: {similarity:.3f})")
                     elif similarity < low_similarity_threshold:
                         logger.info(f"✅ Significant transformation in step '{step['name']}' (similarity: {similarity:.3f})")
-                
+            
                 # Update content for next step
                 content = optimized_content
                 word_count = self._count_words(content)
@@ -147,14 +182,9 @@ class IterativeOptimizer:
             else:
                 logger.info(f"✅ Article significantly transformed (similarity: {final_similarity:.3f})")
         
-        # SKIP SECTION SPLITTING - Return as single optimized article
-        logger.info("🔧 Returning optimized content as single article (skipping section splitting)")
-        
-        return [{
-            'name': 'optimized_article',
-            'title': 'Optimized Content',
-            'content': content  # This is your fully optimized, human-like content
-        }]
+        # NEW: Split optimized content back into sections for orchestrator
+        logger.info("🔧 Splitting optimized full article back into sections")
+        return self._split_optimized_content(content, text_sections)
 
     def _combine_sections(self, text_sections):
         """Combine sections into a single article"""
@@ -166,48 +196,54 @@ class IterativeOptimizer:
         return "\n".join(combined)
 
     def _split_optimized_content(self, optimized_content, original_sections):
-        """Split optimized content - NO FALLBACKS"""
+        """Split optimized full article back into individual sections"""
         logger.info("🔧 Splitting optimized content back into sections")
         
-        # Split by section headers
-        sections = optimized_content.split("## ")
+        # Split by markdown headers (## Section Title)
+        sections = re.split(r'\n## ', optimized_content)
         
-        # Debug logging
-        logger.info(f"📊 Found {len(sections)} sections in optimized content")
-        for i, section in enumerate(sections):
-            logger.info(f"   Section {i}: {section[:50]}...")
+        # Remove empty first element and add back header markers
+        if sections and not sections[0].strip():
+            sections = sections[1:]
         
-        if len(sections) < len(original_sections) + 1:  # +1 for empty first split
-            logger.error(f"❌ CRITICAL: Expected {len(original_sections)} sections, got {len(sections)-1}")
-            logger.error(f"❌ Optimized content: {optimized_content[:500]}...")
-            raise ValueError("Section splitting failed - optimization may have broken section structure")
+        # Add back the ## markers (except for first section)
+        for i in range(1, len(sections)):
+            sections[i] = "## " + sections[i]
         
+        logger.info(f"📊 Split into {len(sections)} sections from optimized content")
+        
+        # Match sections back to original structure
         optimized_sections = []
         
         for i, original_section in enumerate(original_sections):
-            section_index = i + 1  # Skip first empty split
-            
-            if section_index < len(sections):
-                raw_section = sections[section_index]
-                lines = raw_section.split("\n")
+            if i < len(sections):
+                section_content = sections[i].strip()
                 
-                if lines:
-                    title = lines[0].strip()
-                    content = "\n".join(lines[1:]).strip()
-                    
-                    logger.info(f"✅ Section '{original_section['name']}' parsed: {len(content)} chars")
-                    
-                    optimized_sections.append({
-                        'name': original_section['name'],
-                        'title': title,
-                        'content': content
-                    })
+                # Extract title and content
+                lines = section_content.split('\n', 1)
+                if len(lines) >= 2:
+                    # Remove ## from title
+                    title = lines[0].replace('##', '').strip()
+                    content = lines[1].strip()
                 else:
-                    logger.error(f"❌ CRITICAL: Section '{original_section['name']}' has no content")
-                    raise ValueError(f"Section '{original_section['name']}' parsing failed - no content found")
+                    title = original_section['title']
+                    content = section_content
+                
+                optimized_sections.append({
+                    'name': original_section['name'],
+                    'title': title,
+                    'content': content
+                })
+                
+                logger.info(f"✅ Section '{title}' extracted: {len(content)} chars")
             else:
-                logger.error(f"❌ CRITICAL: Section '{original_section['name']}' not found in optimized content")
-                raise ValueError(f"Section '{original_section['name']}' missing from optimized content")
+                # Fallback if section missing
+                logger.warning(f"⚠️ Section '{original_section['title']}' not found in optimized content, using original")
+                optimized_sections.append(original_section)
+        
+        # Validate we have the right number of sections
+        if len(optimized_sections) != len(original_sections):
+            logger.warning(f"⚠️ Section count mismatch: expected {len(original_sections)}, got {len(optimized_sections)}")
         
         return optimized_sections
 

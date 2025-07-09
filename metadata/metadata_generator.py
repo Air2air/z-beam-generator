@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """
-Metadata Generator - Generates structured metadata without AI prompts
+Metadata Generator - Generates structured metadata without tags
 """
-import json
 import logging
-from pathlib import Path
+import json
 from datetime import datetime
+from pathlib import Path  # Add this import
 
 logger = logging.getLogger(__name__)
 
@@ -16,18 +16,19 @@ class MetadataGenerator:
         self.config = config
         self.api_client = api_client
         self.authors_data = self._load_authors_data()
-        
+        # REMOVED: self.tag_generator = TagGenerator(api_client)
+    
     def generate_metadata(self, material, author_id, article_type):
         """Generate metadata using structured data with AI-generated material properties"""
         logger.info(f"📊 Generating metadata for {material} by author ID {author_id}")
         
-        # Get author data
+        # Get author data - FAIL if not found
         author_data = self._get_author_data(author_id)
         
-        # Generate material properties via AI
+        # Generate material properties via AI - FAIL if unable
         material_data = self._generate_material_properties(material)
         
-        # Generate all required fields
+        # Generate all required fields (NO TAGS)
         metadata = {
             # Basic article info
             "title": f"Laser Cleaning {material}",
@@ -39,60 +40,96 @@ class MetadataGenerator:
             "image": f"/images/Material/material_{material.lower()}.jpg",
             "lastUpdated": datetime.now().strftime("%Y-%m-%d"),
             
-            # Author fields
-            "authorName": author_data.get("name"),
-            "authorSlug": author_data.get("slug"),
-            "authorImage": author_data.get("image"),
-            "authorTitle": author_data.get("title"),
-            "authorBio": author_data.get("bio"),
-            "authorCountry": author_data.get("country"),
+            # Author fields - required
+            "authorName": author_data["name"],
+            "authorSlug": author_data["slug"],
+            "authorImage": author_data["image"],
+            "authorTitle": author_data["title"],
+            "authorCountry": author_data["country"],
             
-            # Material properties (AI-generated)
-            **material_data,
+            # Material properties (AI-generated) - required
+            "atomicNumber": material_data["atomicNumber"],
+            "chemicalSymbol": material_data["chemicalSymbol"],
+            "generalClassifier": material_data["generalClassifier"],
+            "materialClass": material_data["materialClass"],
+            "crystalStructure": material_data["crystalStructure"],
+            "density": material_data["density"],
+            "meltingPoint": material_data["meltingPoint"],
+            "thermalConductivity": material_data["thermalConductivity"],
+            "reflectivityIr": material_data["reflectivityIr"],
+            "reflectivityWavelength": material_data["reflectivityWavelength"],
+            "hardnessMohs": material_data["hardnessMohs"],
+            "youngsModulus": material_data["youngsModulus"],
+            "specificHeatCapacity": material_data["specificHeatCapacity"],
+            "materialPurity": material_data["materialPurity"],
+            "materialType": material_data["materialType"],
             
-            # Fixed values
-            "alternativeMethods": ["Chemical etching", "Mechanical polishing", "Ultrasonic cleaning"],
-            "costFactors": ["Equipment investment", "Energy consumption", "Safety compliance"],
+            # Keep only non-redundant fields (not already in tags)
+            "environmentalImpact": material_data["environmentalImpact"],
             
-            # Generated tags
-            "tags": self._generate_tags(material, material_data)
+            # Ensure proper data types - arrays and objects, NOT strings
+            "processingChallenges": material_data["processingChallenges"],         
+            "laserCleaningParameters": material_data["laserCleaningParameters"],   
+            "performanceMetrics": material_data["performanceMetrics"],             
+            "alternativeMethods": ["Chemical etching", "Mechanical polishing", "Ultrasonic cleaning"],  
+            "costFactors": ["Equipment investment", "Energy consumption", "Safety compliance"],          
+            
+            # REMOVED: "tags": self.tag_generator.generate_tags(material, material_data)
         }
         
-        logger.info(f"✅ Metadata generated with {len(metadata)} fields for author: {author_data.get('name', 'Unknown')}")
-        return metadata
+        logger.info(f"✅ Metadata generated for {material}")
+        return metadata, material_data  # Return both metadata and material_data for tags
     
     def _generate_material_properties(self, material):
-        """Generate material properties via AI prompt"""
+        """Generate material properties via AI prompt - FAIL if unable"""
         logger.info(f"🔬 Generating material properties for {material}")
         
-        prompt = f"""Generate comprehensive material properties for {material} in JSON format. Include exactly these fields:
+        prompt = f"""Generate comprehensive material properties for {material} in JSON format. 
 
-- atomicNumber: atomic number (string) or null for non-elemental materials
-- chemicalSymbol: chemical symbol (string) or null for non-elemental materials  
-- generalClassifier: "metal", "ceramic", "polymer", "composite", etc.
-- materialClass: specific class like "Transition Metal", "Thermoplastic", etc.
-- crystalStructure: crystal structure or "Amorphous" for non-crystalline
-- density: density with units (string)
-- meltingPoint: melting point with units (string)
-- thermalConductivity: thermal conductivity with units (string)
-- reflectivityIr: IR reflectivity percentage (string)
-- reflectivityWavelength: wavelength specification (string, default "10.6 µm")
-- hardnessMohs: Mohs hardness (string or number)
-- youngsModulus: Young's modulus with units (string)
-- specificHeatCapacity: specific heat capacity with units (string)
-- materialPurity: typical purity percentage (string)
+CRITICAL: Return valid JSON with proper data types:
+- Arrays must be actual JSON arrays: ["item1", "item2"] NOT string representations
+- Objects must be actual JSON objects: {{"key": "value"}} NOT string representations
+- Do not wrap arrays or objects in quotes
+
+Required fields with exact data types:
+
+- atomicNumber: string or null
+- chemicalSymbol: string or null  
+- generalClassifier: string ("metal", "ceramic", "polymer", "composite")
+- materialClass: string (e.g., "Transition Metal", "Thermoplastic")
+- crystalStructure: string
+- density: string with units
+- meltingPoint: string with units
+- thermalConductivity: string with units
+- reflectivityIr: string percentage
+- reflectivityWavelength: string (default "10.6 µm")
+- hardnessMohs: string or number
+- youngsModulus: string with units
+- specificHeatCapacity: string with units
+- materialPurity: string percentage
 - materialType: "{material}"
-- applications: array of 3-4 main applications
-- safetyConsiderations: array of 3-4 safety considerations for laser cleaning
-- industryStandards: array of 2-3 relevant industry standards
-- environmentalImpact: brief environmental impact description
-- processingChallenges: array of 2-3 laser cleaning challenges
-- relatedMaterials: array of 3-4 similar materials
-- regulatoryCompliance: array of 2-3 relevant regulations
-- laserCleaningParameters: object with wavelength, pulseDuration, powerDensity, pulseFrequency, scanningSpeed, spotSize, fluence, pulsesPerSpot, beamProfile, ambientConditions
-- performanceMetrics: object with contaminantRemovalEfficiency, surfaceRoughnessReduction, processingTime
+- applications: ARRAY of 3-4 strings (NOT a string)
+- safetyConsiderations: ARRAY of 3-4 strings (NOT a string)
+- industryStandards: ARRAY of 2-3 strings (NOT a string)
+- environmentalImpact: string description
+- processingChallenges: ARRAY of 2-3 strings (NOT a string)
+- relatedMaterials: ARRAY of 3-4 strings (NOT a string)
+- regulatoryCompliance: ARRAY of 2-3 strings (NOT a string)
+- laserCleaningParameters: OBJECT with keys: wavelength, pulseDuration, powerDensity, pulseFrequency, scanningSpeed, spotSize, fluence, pulsesPerSpot, beamProfile, ambientConditions (NOT a string)
+- performanceMetrics: OBJECT with keys: contaminantRemovalEfficiency, surfaceRoughnessReduction, processingTime (NOT a string)
 
-Output only valid JSON. Use realistic, technically accurate values."""
+Example format:
+{{
+  "applications": ["Aerospace structures", "Medical implants", "Automotive parts"],
+  "safetyConsiderations": ["Avoid dust inhalation", "Use eye protection", "Ensure ventilation"],
+  "laserCleaningParameters": {{
+    "wavelength": "1064 nm",
+    "pulseDuration": "100 ns",
+    "powerDensity": "5 kW/cm²"
+  }}
+}}
+
+Output ONLY valid JSON. Use realistic, technically accurate values."""
 
         try:
             response = self.api_client.call(prompt, "material-properties")
@@ -104,147 +141,105 @@ Output only valid JSON. Use realistic, technically accurate values."""
                 response = response[3:-3]
             
             material_data = json.loads(response)
+            
+            # Validate and convert string arrays/objects if needed
+            material_data = self._fix_data_types(material_data)
+            
+            # Validate required fields are present
+            required_fields = [
+                "atomicNumber", "chemicalSymbol", "generalClassifier", "materialClass",
+                "crystalStructure", "density", "meltingPoint", "thermalConductivity",
+                "reflectivityIr", "reflectivityWavelength", "hardnessMohs", "youngsModulus",
+                "specificHeatCapacity", "materialPurity", "materialType", "applications",
+                "safetyConsiderations", "industryStandards", "environmentalImpact",
+                "processingChallenges", "relatedMaterials", "regulatoryCompliance",
+                "laserCleaningParameters", "performanceMetrics"
+            ]
+            
+            missing_fields = [field for field in required_fields if field not in material_data]
+            if missing_fields:
+                raise ValueError(f"Missing required fields in material data: {missing_fields}")
+            
             logger.info(f"✅ Material properties generated for {material}")
             return material_data
             
         except json.JSONDecodeError as e:
             logger.error(f"❌ Failed to parse material properties JSON: {e}")
-            return self._get_default_material_data(material)
+            raise RuntimeError(f"Failed to generate valid material properties JSON for {material}: {e}")
         except Exception as e:
             logger.error(f"❌ Failed to generate material properties: {e}")
-            return self._get_default_material_data(material)
-    
-    def _get_default_material_data(self, material):
-        """Return default material data if AI generation fails"""
-        logger.warning(f"⚠️ Using default material data for {material}")
+            raise RuntimeError(f"Failed to generate material properties for {material}: {e}")
+
+    def _fix_data_types(self, material_data):
+        """Fix data types if AI returned strings instead of arrays/objects"""
+        import ast
         
-        return {
-            "atomicNumber": None,
-            "chemicalSymbol": None,
-            "generalClassifier": "unknown",
-            "materialClass": "Unknown",
-            "crystalStructure": "Unknown",
-            "density": "Unknown",
-            "meltingPoint": "Unknown",
-            "thermalConductivity": "Unknown",
-            "reflectivityIr": "Unknown",
-            "reflectivityWavelength": "10.6 µm",
-            "hardnessMohs": "Unknown",
-            "youngsModulus": "Unknown",
-            "specificHeatCapacity": "Unknown",
-            "materialPurity": "Unknown",
-            "materialType": material,
-            "applications": [],
-            "safetyConsiderations": ["Laser radiation protection"],
-            "industryStandards": [],
-            "environmentalImpact": "Unknown",
-            "processingChallenges": [],
-            "relatedMaterials": [],
-            "regulatoryCompliance": [],
-            "laserCleaningParameters": {
-                "wavelength": "1064 nm",
-                "pulseDuration": "nanoseconds",
-                "powerDensity": "10^6–10^7 W/cm²",
-                "pulseFrequency": "10–30 kHz",
-                "scanningSpeed": "500–1500 mm/s",
-                "spotSize": "0.3 mm",
-                "fluence": "0.3–1.5 J/cm²",
-                "pulsesPerSpot": "1–5",
-                "beamProfile": "Gaussian",
-                "ambientConditions": "Ambient air"
-            },
-            "performanceMetrics": {
-                "contaminantRemovalEfficiency": "98%",
-                "surfaceRoughnessReduction": "0.2 µm",
-                "processingTime": "seconds"
-            }
-        }
+        # Fields that should be arrays
+        array_fields = ["applications", "safetyConsiderations", "industryStandards", "processingChallenges", "relatedMaterials", "regulatoryCompliance"]
+        
+        # Fields that should be objects
+        object_fields = ["laserCleaningParameters", "performanceMetrics"]
+        
+        # Fix arrays
+        for field in array_fields:
+            if field in material_data and isinstance(material_data[field], str):
+                try:
+                    # Try to parse string representation of array
+                    material_data[field] = ast.literal_eval(material_data[field])
+                    logger.warning(f"⚠️ Converted string to array for field: {field}")
+                except (ValueError, SyntaxError):
+                    logger.error(f"❌ Failed to convert string to array for field: {field}")
+                    raise ValueError(f"Invalid array format for field: {field}")
+        
+        # Fix objects
+        for field in object_fields:
+            if field in material_data and isinstance(material_data[field], str):
+                try:
+                    # Try to parse string representation of object
+                    material_data[field] = ast.literal_eval(material_data[field])
+                    logger.warning(f"⚠️ Converted string to object for field: {field}")
+                except (ValueError, SyntaxError):
+                    logger.error(f"❌ Failed to convert string to object for field: {field}")
+                    raise ValueError(f"Invalid object format for field: {field}")
+        
+        return material_data
     
     def _load_authors_data(self):
-        """Load authors data from JSON file"""
+        """Load authors data from JSON file - FAIL if unable"""
         authors_file = Path(self.config.get("authors_file", "prompts/authors/authors.json"))
         
         if not authors_file.exists():
-            logger.error(f"❌ Authors file not found: {authors_file}")
-            return []
+            raise FileNotFoundError(f"Authors file not found: {authors_file}")
         
         try:
             with open(authors_file, 'r', encoding='utf-8') as f:
                 authors = json.load(f)
+            
+            if not authors:
+                raise ValueError("Authors file is empty")
+                
             logger.info(f"✅ Loaded {len(authors)} authors from {authors_file}")
             return authors
+            
         except json.JSONDecodeError as e:
-            logger.error(f"❌ Failed to parse authors JSON: {e}")
-            return []
+            raise RuntimeError(f"Failed to parse authors JSON: {e}")
         except Exception as e:
-            logger.error(f"❌ Failed to load authors file: {e}")
-            return []
+            raise RuntimeError(f"Failed to load authors file: {e}")
     
     def _get_author_data(self, author_id):
-        """Get author data by ID"""
+        """Get author data by ID - FAIL if not found"""
         # Find author by ID
         for author in self.authors_data:
             if author.get("id") == author_id:
-                logger.info(f"✅ Found author: {author.get('name')} (ID: {author_id})")
+                # Validate required author fields
+                required_fields = ["name", "slug", "image", "title", "country"]
+                missing_fields = [field for field in required_fields if not author.get(field)]
+                
+                if missing_fields:
+                    raise ValueError(f"Author {author_id} missing required fields: {missing_fields}")
+                
+                logger.info(f"✅ Found author: {author['name']} (ID: {author_id})")
                 return author
         
-        # Return default if not found
-        logger.warning(f"⚠️ Author ID {author_id} not found, using defaults")
-        return {
-            "name": "Unknown Author",
-            "slug": "unknown-author",
-            "image": "/images/Site/Author/default.jpg",
-            "title": "Laser Cleaning Expert",
-            "bio": "Laser cleaning expert specializing in industrial applications.",
-            "country": "Unknown"
-        }
-    
-    def _generate_tags(self, material, material_data):
-        """Generate high-quality tags"""
-        
-        # Base tags
-        base_tags = ["Laser Cleaning", "Aerospace", "Construction", "Manufacturing", "Restoration"]
-        
-        # Collect from material data
-        collected_tags = []
-        source_fields = [
-            "safetyConsiderations", "processingChallenges", "applications", 
-            "industryStandards", "relatedMaterials", "regulatoryCompliance"
-        ]
-        
-        for field in source_fields:
-            values = material_data.get(field, [])
-            if isinstance(values, list):
-                collected_tags.extend(values)
-        
-        # Add fixed tags
-        collected_tags.extend(["Chemical etching", "Mechanical polishing", "Ultrasonic cleaning"])
-        collected_tags.extend(["Equipment investment", "Energy consumption", "Safety compliance"])
-        
-        # Shorten and clean tags
-        shortened_tags = [self._shorten_tag(tag) for tag in collected_tags]
-        
-        # Combine and deduplicate
-        all_tags = base_tags + [tag for tag in shortened_tags if tag]
-        unique_tags = []
-        for tag in all_tags:
-            if tag and tag not in unique_tags:
-                unique_tags.append(tag)
-        
-        return unique_tags
-    
-    def _shorten_tag(self, tag):
-        """Shorten tag names for better readability"""
-        shortenings = {
-            "Laser radiation protection": "Radiation Protection",
-            "Metal vapor exposure": "Vapor Exposure",
-            "Equipment investment": "Equipment Cost",
-            "Energy consumption": "Energy Cost",
-            "Safety compliance": "Safety Standards",
-            "Oxide layer removal": "Oxide Removal",
-            "Surface finish improvement": "Surface Finishing",
-            "OSHA Metal Dust Standards": "OSHA Standards",
-            "EPA Air Quality Guidelines": "EPA Guidelines"
-        }
-        
-        return shortenings.get(tag, tag)
+        # FAIL if author not found
+        raise ValueError(f"Author ID {author_id} not found in authors database")

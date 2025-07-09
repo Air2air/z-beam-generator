@@ -11,38 +11,76 @@ logger = logging.getLogger(__name__)
 class WritingSamplesOptimizer:
     """Optimizer that rewrites content to match specific author writing styles"""
     
-    def __init__(self, config: Dict[str, Any], context: Dict[str, Any], api_client):
+    def __init__(self, config, api_client):
+        """Initialize with simplified interface"""
         self.config = config
-        self.context = context
         self.api_client = api_client
-        self.prompts_dir = Path(config["prompts_dir"])
+        self.prompts_dir = Path(config.get("prompts_dir", "prompts"))
         
         # Load authors data
         self.authors = self._load_authors()
         
-        logger.info(f"📝 WritingSamplesOptimizer initialized for author_id: {context.get('author_id')}")
+        logger.info(f"📝 WritingSamplesOptimizer initialized")
     
-    def optimize_sections(self, text_sections, author_data):
-        """Optimize text sections by rewriting to match author's style"""
-        logger.info("🎨 WRITING SAMPLES OPTIMIZATION STARTED")
-        logger.info(f"📊 Input sections: {len(text_sections)}")
+    def optimize_sections(self, sections, material, metadata):
+        """Simplified interface for writing samples optimization"""
+        logger.info(f"🎨 WRITING SAMPLES OPTIMIZATION STARTED for {material}")
+        logger.info(f"📊 Input sections: {len(sections)}")
         
-        # Log input sections
-        for i, section in enumerate(text_sections):
-            logger.info(f"📄 Section {i+1}: {section.get('name', 'unnamed')} - {len(section.get('content', ''))} chars")
+        # Convert sections format if needed
+        text_sections = []
+        for section in sections:
+            text_sections.append({
+                'name': section.get('title', '').lower().replace(' ', '_'),
+                'title': section.get('title', 'Untitled'),
+                'content': section.get('content', '')
+            })
         
-        author_id = self.context.get("author_id")
+        # Get author data from metadata
+        author_data = {
+            'name': metadata.get('authorName', ''),
+            'slug': metadata.get('authorSlug', ''),
+            'id': metadata.get('authorId', '')
+        }
         
+        # SIMPLIFIED: Go directly to writing sample optimization
+        result = self._apply_writing_sample_optimization(text_sections, author_data)
+        
+        # Convert back to expected format
+        optimized_sections = []
+        for section in result:
+            optimized_sections.append({
+                'title': section.get('title', 'Optimized Content'),
+                'content': section.get('content', '')
+            })
+        
+        return optimized_sections
+
+    def _apply_writing_sample_optimization(self, text_sections, author_data):
+        """Apply writing sample optimization to all sections"""
+        logger.info("🎨 APPLYING WRITING SAMPLE OPTIMIZATION")
+        
+        # GET AUTHOR_ID FROM AUTHOR_DATA instead of self.context
+        author_id = author_data.get("id")
         if not author_id:
-            logger.error("❌ No author_id provided in context")
-            return text_sections
+            logger.error("❌ No author_id provided in author_data")
+            raise ValueError("author_id is required for writing sample optimization")
+        
+        # Convert to int if it's a string
+        try:
+            author_id = int(author_id)
+        except (ValueError, TypeError):
+            logger.error(f"❌ Invalid author_id format: {author_id}")
+            raise ValueError(f"author_id must be a valid integer: {author_id}")
+        
+        logger.info(f"👤 Using author ID: {author_id}")
         
         # Load writing sample
         writing_sample = self._load_writing_sample(author_id)
         
         if not writing_sample:
             logger.error(f"❌ Could not load writing sample for author {author_id}")
-            return text_sections
+            raise FileNotFoundError(f"Writing sample not found for author {author_id}")
         
         # Get author info for logging
         author = self.authors.get(author_id)
