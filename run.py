@@ -32,8 +32,9 @@ def get_config():
         "default_material": "titanium",
         
         # Debug settings
-        "debug_prompts": False,
-        "debug_deltas": True,
+        "debug_prompts": True,      # Show actual prompts being sent
+        "debug_responses": True,    # Show API responses
+        "debug_content_flow": True, # Track content changes
         
         # Similarity thresholds for delta analysis
         "high_similarity_threshold": 0.95,  # Warn if step changes very little

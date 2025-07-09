@@ -163,7 +163,7 @@ class ContentOptimizer:
         return "\n".join(combined)
 
     def _split_optimized_content(self, optimized_content, original_sections):
-        """Split optimized content back into sections"""
+        """Split optimized content"""
         # This is a simplified approach - you might need more sophisticated parsing
         sections = optimized_content.split("## ")
         optimized_sections = []
