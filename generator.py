@@ -9,7 +9,6 @@ from setup_logging import setup_logging
 from run import get_config
 from api_client import APIClient
 from content_generator import ContentGenerator
-from optimizer import ContentOptimizer
 from orchestrator import ArticleOrchestrator
 
 # Setup logging
@@ -25,10 +24,21 @@ class ZBeamGenerator:
         # Initialize components
         self.api_client = APIClient(config)
         self.content_generator = ContentGenerator(config, self.api_client)
-        self.optimizer = ContentOptimizer(config, self.api_client)
+        
+        # Optimization method selection - NO FALLBACKS
+        if config["optimization_method"] == "iterative":
+            from iterative_optimizer import IterativeOptimizer
+            self.optimizer = IterativeOptimizer(config, context, self.api_client)
+        elif config["optimization_method"] == "writing_samples":
+            from writing_samples_optimizer import WritingSamplesOptimizer
+            self.optimizer = WritingSamplesOptimizer(config, context, self.api_client)
+        else:
+            raise ValueError(f"Invalid optimization_method: {config['optimization_method']}. Must be 'iterative' or 'writing_samples'")
+        
         self.orchestrator = ArticleOrchestrator(config)
         
         logger.info(f"🔧 ZBeamGenerator initialized - {config['provider']}/{config['model']}")
+        logger.info(f"🎯 Optimization method: {config['optimization_method']}")
     
     def generate_article(self):
         """Main pipeline: Generate → Optimize → Orchestrate"""

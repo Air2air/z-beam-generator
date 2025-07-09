@@ -14,6 +14,11 @@ class ContentGenerator:
     def __init__(self, config, api_client):
         self.config = config
         self.api_client = api_client
+        
+        # Extract word limits from config - NO HARDCODED DEFAULTS
+        self.max_section_words = config["max_section_words"]
+        self.target_section_words = config["target_section_words"]
+        self.max_total_words = config["max_total_words"]
     
     def generate_text_sections(self, material, article_type):
         """Generate text sections from config"""
@@ -26,11 +31,15 @@ class ContentGenerator:
         for i, section in enumerate(sections_config, 1):
             logger.info(f"📄 [{i}/{len(sections_config)}] GENERATING SECTION: {section['name']}")
             
-            # Load section prompt from JSON
+            # Load section prompt from JSON and add word limit
             prompt = self._load_section_prompt(section, material)
             
+            # Add word limit instruction to prompt
+            word_limit_instruction = f"\n\nCRITICAL: This section must be EXACTLY {self.max_section_words} words or less. Count every word carefully. Be direct and technical."
+            full_prompt = prompt + word_limit_instruction
+            
             # Generate via API
-            content = self.api_client.call(prompt, f"section-{section['name']}")
+            content = self.api_client.call(full_prompt, f"section-{section['name']}")
             
             generated_sections.append({
                 'name': section['name'],

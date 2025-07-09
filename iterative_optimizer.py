@@ -10,7 +10,7 @@ from pathlib import Path
 
 logger = logging.getLogger(__name__)
 
-class ContentOptimizer:
+class IterativeOptimizer:
     """Optimizes text sections using iterative or writing sample methods"""
     
     def __init__(self, config, api_client):

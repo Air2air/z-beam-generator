@@ -55,33 +55,58 @@ class AIDetector:
         logger.info("🔍 Checking ZeroGPT...")
         
         try:
+            # ZeroGPT API endpoint
             url = "https://api.zerogpt.com/api/detect/detectText"
+            
+            # Load API key from environment
+            import os
+            api_key = os.getenv("ZEROGPT_API_KEY")
+            
+            if not api_key:
+                logger.error("❌ ZEROGPT_API_KEY not found in environment")
+                return {"success": False, "error": "No API key"}
+            
+            # Prepare headers and payload
+            headers = {
+                "Content-Type": "application/json",
+                "ApiKey": api_key  # ZeroGPT uses 'ApiKey' header
+            }
             
             payload = {
                 "input_text": text[:5000]  # Limit to 5000 chars
             }
             
-            response = requests.post(url, json=payload, timeout=30)
+            logger.info(f"📡 Sending to ZeroGPT: {len(payload['input_text'])} chars")
+            
+            response = requests.post(url, headers=headers, json=payload, timeout=30)
+            
+            logger.info(f"🌐 ZeroGPT Response Status: {response.status_code}")
+            logger.info(f"📨 ZeroGPT Response: {response.text[:200]}...")
             
             if response.status_code == 200:
                 result = response.json()
+                logger.info(f"📊 ZeroGPT Raw Result: {result}")
                 
+                # Extract AI score
                 ai_score = result.get("fakePercentage", 0)
                 human_score = 100 - ai_score
+                
+                logger.info(f"🎯 ZeroGPT AI Score: {ai_score}%")
                 
                 return {
                     "success": True,
                     "ai_probability": ai_score,
                     "human_probability": human_score,
                     "is_human": result.get("isHuman", False),
-                    "service": "ZeroGPT"
+                    "service": "ZeroGPT",
+                    "raw_response": result  # Debug info
                 }
             else:
-                logger.warning(f"ZeroGPT API error: {response.status_code}")
-                return {"success": False, "error": f"HTTP {response.status_code}"}
+                logger.error(f"❌ ZeroGPT API error: {response.status_code} - {response.text}")
+                return {"success": False, "error": f"HTTP {response.status_code}: {response.text}"}
                 
         except Exception as e:
-            logger.error(f"ZeroGPT error: {e}")
+            logger.error(f"❌ ZeroGPT error: {e}")
             return {"success": False, "error": str(e)}
     
     def _check_sapling(self, text: str) -> Dict[str, Any]:

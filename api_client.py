@@ -6,6 +6,7 @@ import os
 import json
 import logging
 import requests
+import time
 from typing import Dict, Any
 
 logger = logging.getLogger(__name__)
@@ -108,7 +109,9 @@ class APIClient:
         return content
     
     def _call_gemini(self, prompt: str) -> str:
-        """Google Gemini API call"""
+        """Google Gemini API call with rate limiting"""
+        time.sleep(1)  # Wait 1 second between requests
+        
         url = f"{self.base_url}/models/{self.model}:generateContent"
         
         headers = {
@@ -129,20 +132,41 @@ class APIClient:
             }
         }
         
-        response = requests.post(
-            url,
-            headers=headers,
-            params=params,
-            json=data,
-            timeout=120
-        )
-        
-        response.raise_for_status()
-        result = response.json()
-        content = result["candidates"][0]["content"]["parts"][0]["text"]
-        
-        logger.info(f"✅ API call successful - Response: {len(content)} chars")
-        return content
+        try:
+            response = requests.post(
+                url,
+                headers=headers,
+                params=params,
+                json=data,
+                timeout=120
+            )
+            
+            response.raise_for_status()
+            result = response.json()
+            content = result["candidates"][0]["content"]["parts"][0]["text"]
+            
+            logger.info(f"✅ API call successful - Response: {len(content)} chars")
+            return content
+        except requests.exceptions.HTTPError as e:
+            if e.response.status_code == 429:
+                logger.warning("⏳ Rate limit hit, waiting 5 seconds...")
+                time.sleep(5)
+                # Retry once
+                response = requests.post(
+                    url,
+                    headers=headers,
+                    params=params,
+                    json=data,
+                    timeout=120
+                )
+                response.raise_for_status()
+                result = response.json()
+                content = result["candidates"][0]["content"]["parts"][0]["text"]
+                
+                logger.info(f"✅ API call successful - Response: {len(content)} chars")
+                return content
+            else:
+                raise
     
     def _call_deepseek(self, prompt: str) -> str:
         """DeepSeek API call"""

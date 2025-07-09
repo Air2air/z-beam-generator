@@ -31,24 +31,33 @@ def get_config():
     """Get configuration and context for generator"""
     
     # User settings
-    context = {"material": "titanium", "author_id": 2, "article_type": "material"}
+    context = {
+        "material": "titanium", 
+        "author_id": 2, 
+        "article_type": "material"
+        }
 
     # Initialize configuration
     config = {
-        "provider": "DEEPSEEK",
-        "model": "deepseek-chat",
-        "temperature": 0.7,
+        "provider": "OPENAI",  # Options: OPENAI, XAI, GEMINI, DEEPSEEK
+        "model": "gpt-4-turbo",
+        "temperature": 0.3,  # Lower from 0.7 to reduce AI-sounding language
         "metadata_temperature": 0.3,
         "max_tokens": 4000,
-        "optimization_method": "iterative",
+        
+        # Optimization settings
+        "optimization_method": "writing_samples",  # or "iterative"
+        "iterative_optimizer_file": "iterative_optimizer.py",
+        "writing_samples_optimizer_file": "writing_samples_optimizer.py",
+        
         "prompts_dir": "prompts",
         "output_dir": "output",
         "authors_file": "prompts/authors/authors.json",
         "sections_file": "prompts/text/sections.json",
         
         # Section length limits
-        "max_section_words": 150,
-        "target_section_words": 150,
+        "max_section_words": 75,
+        "target_section_words": 75,
         "max_total_words": 800,
         
         # AI Detection Settings - ADDED:
