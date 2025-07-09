@@ -31,9 +31,15 @@ The generated section is sent to the api in multiple prompt steps (prompts/optim
 ## Writing Sample
 A "Rewriting prompt" that includes the generated section is run through a prompt with a "Target example" writing sample (prompts/optimizations/writing_samples/style_english.md).
 
+## Metadata component
+The metadata example and generator is in (prompts/metadata/metadata.json).
+
 ## Orchestration
 After all optimization steps are complete, the Text Sections and Article Components are orchestrated into a single article.
 The flow is Generate → Optimize → Orchestrate.  However only Text Sections are run through the optimization pipeline.  Other Article Components are passed through as is.
+
+## File output
+Name convention is (material)_laser_cleaning.md
 
 ## Build philosophy
 Avoid bloat and unnecessary complexity.
@@ -41,3 +47,4 @@ Research the simplest methods first.
 Prioritize reworking of existing code instead of adding new code.
 The previous code from Claude has been overcomplex and very brittle.
 **NEVER** hardcode configs anywhere but in run.py.
+**NEVER** use fallbacks.  Always fail fast.
