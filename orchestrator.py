@@ -34,13 +34,18 @@ class ArticleOrchestrator:
         article_parts.append(f"# {metadata['title']}")
         article_parts.append("")
         
-        # Add optimized sections
-        logger.info(f"🎼 Adding {len(optimized_sections)} sections...")
-        for section in optimized_sections:
-            article_parts.append(f"## {section['title']}")
-            article_parts.append("")
-            article_parts.append(section['content'])
-            article_parts.append("")
+        # Handle single optimized article
+        if len(optimized_sections) == 1 and optimized_sections[0]['name'] == 'optimized_article':
+            logger.info("🎼 Using single optimized article")
+            article_parts.append(optimized_sections[0]['content'])
+        else:
+            # Multiple sections - assemble normally
+            logger.info(f"🎼 Adding {len(optimized_sections)} sections...")
+            for section in optimized_sections:
+                article_parts.append(f"## {section['title']}")
+                article_parts.append("")
+                article_parts.append(section['content'])
+                article_parts.append("")
         
         final_article = "\n".join(article_parts)
         logger.info(f"✅ Article orchestrated - {len(final_article)} chars")

@@ -46,31 +46,33 @@ def get_config():
 
 
 def main():
-    """Main function - can run generator or just return config"""
+    """Main function with debug output"""
     config, context = get_config()
-
-    #Optionally run the generator directly from here
-    #Uncomment these lines if you want run.py to actually generate articles:
-
+    config["debug_content_at_each_step"] = True  # Add this flag
+    
     from generator import ZBeamGenerator
+    
+    generator = ZBeamGenerator(config, context)
+    article = generator.generate_article()
+    
+    # Debug: Print first 500 chars of final content
+    print("\n🔍 FINAL CONTENT PREVIEW:")
+    content_start = article.find("# Laser Cleaning")
+    if content_start != -1:
+        preview = article[content_start:content_start+500]
+        print(preview)
+    
+    # Save output
     from pathlib import Path
     
-    try:
-        generator = ZBeamGenerator(config, context)
-        article = generator.generate_article()
+    output_dir = Path(config["output_dir"])
+    output_dir.mkdir(exist_ok=True)
     
-        # Save output
-        output_dir = Path(config["output_dir"])
-        output_dir.mkdir(exist_ok=True)
+    output_file = output_dir / f"{context['material'].replace(' ', '_')}_laser_cleaning.md"
+    with open(output_file, 'w') as f:
+        f.write(article)
     
-        output_file = output_dir / f"{context['material'].replace(' ', '_')}_laser_cleaning.md"
-        with open(output_file, 'w') as f:
-            f.write(article)
-    
-        print(f"✅ Article saved to: {output_file}")
-    
-    except Exception as e:
-        print(f"❌ Generation failed: {e}")
+    print(f"✅ Article saved to: {output_file}")
 
 
 if __name__ == "__main__":

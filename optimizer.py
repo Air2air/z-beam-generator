@@ -122,10 +122,10 @@ class ContentOptimizer:
             except KeyError as e:
                 logger.error(f"❌ Step {step['name']} failed - missing template variable: {e}")
                 logger.error(f"❌ Available variables: {list(template_vars.keys())}")
-                continue
+                raise  # NO FALLBACK - fail fast
             except Exception as e:
                 logger.error(f"❌ Step {step['name']} failed: {e}")
-                continue
+                raise  # NO FALLBACK - fail fast
         
         # FINAL DELTA ANALYSIS (original vs final)
         if self.config.get('debug_deltas', False):
@@ -147,11 +147,14 @@ class ContentOptimizer:
             else:
                 logger.info(f"✅ Article significantly transformed (similarity: {final_similarity:.3f})")
         
-        # Split optimized content back into sections
-        optimized_sections = self._split_optimized_content(content, text_sections)
+        # SKIP SECTION SPLITTING - Return as single optimized article
+        logger.info("🔧 Returning optimized content as single article (skipping section splitting)")
         
-        logger.info(f"✅ Full article optimized with {len(iterative_steps)} steps")
-        return optimized_sections
+        return [{
+            'name': 'optimized_article',
+            'title': 'Optimized Content',
+            'content': content  # This is your fully optimized, human-like content
+        }]
 
     def _combine_sections(self, text_sections):
         """Combine sections into a single article"""
@@ -163,31 +166,48 @@ class ContentOptimizer:
         return "\n".join(combined)
 
     def _split_optimized_content(self, optimized_content, original_sections):
-        """Split optimized content"""
-        # This is a simplified approach - you might need more sophisticated parsing
+        """Split optimized content - NO FALLBACKS"""
+        logger.info("🔧 Splitting optimized content back into sections")
+        
+        # Split by section headers
         sections = optimized_content.split("## ")
+        
+        # Debug logging
+        logger.info(f"📊 Found {len(sections)} sections in optimized content")
+        for i, section in enumerate(sections):
+            logger.info(f"   Section {i}: {section[:50]}...")
+        
+        if len(sections) < len(original_sections) + 1:  # +1 for empty first split
+            logger.error(f"❌ CRITICAL: Expected {len(original_sections)} sections, got {len(sections)-1}")
+            logger.error(f"❌ Optimized content: {optimized_content[:500]}...")
+            raise ValueError("Section splitting failed - optimization may have broken section structure")
+        
         optimized_sections = []
         
         for i, original_section in enumerate(original_sections):
-            if i + 1 < len(sections):  # Skip first empty split
-                content = sections[i + 1]
-                # Remove title from content
-                lines = content.split("\n")
+            section_index = i + 1  # Skip first empty split
+            
+            if section_index < len(sections):
+                raw_section = sections[section_index]
+                lines = raw_section.split("\n")
+                
                 if lines:
                     title = lines[0].strip()
                     content = "\n".join(lines[1:]).strip()
+                    
+                    logger.info(f"✅ Section '{original_section['name']}' parsed: {len(content)} chars")
+                    
+                    optimized_sections.append({
+                        'name': original_section['name'],
+                        'title': title,
+                        'content': content
+                    })
                 else:
-                    title = original_section['title']
-                    content = original_section['content']
+                    logger.error(f"❌ CRITICAL: Section '{original_section['name']}' has no content")
+                    raise ValueError(f"Section '{original_section['name']}' parsing failed - no content found")
             else:
-                title = original_section['title']
-                content = original_section['content']
-            
-            optimized_sections.append({
-                'name': original_section['name'],
-                'title': title,
-                'content': content
-            })
+                logger.error(f"❌ CRITICAL: Section '{original_section['name']}' not found in optimized content")
+                raise ValueError(f"Section '{original_section['name']}' missing from optimized content")
         
         return optimized_sections
 
