@@ -61,7 +61,7 @@ def get_config():
         "max_total_words": 800,
         
         # AI Detection Settings - ADDED:
-        "zerogpt_enabled": True,
+        "zerogpt_enabled": False,
         "target_ai_score": 30,
         "sapling_api_key": None,
         "winston_api_key": None,

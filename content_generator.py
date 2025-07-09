@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """
-Content Generator - Generates text sections and metadata
+Content Generator - Generates text sections only (metadata moved to MetadataGenerator)
 """
 import json
 import logging
 from pathlib import Path
+from metadata.metadata_generator import MetadataGenerator
 
 logger = logging.getLogger(__name__)
 
@@ -14,6 +15,7 @@ class ContentGenerator:
     def __init__(self, config, api_client):
         self.config = config
         self.api_client = api_client
+        self.metadata_generator = MetadataGenerator(config, api_client)
         
         # Extract word limits from config - NO HARDCODED DEFAULTS
         self.max_section_words = config["max_section_words"]
@@ -52,39 +54,9 @@ class ContentGenerator:
         return generated_sections
     
     def generate_metadata(self, material, author_id, article_type):
-        """Generate metadata"""
+        """Generate metadata using new modular MetadataGenerator"""
         logger.info("📊 GENERATING METADATA")
-        
-        # Load metadata prompt
-        metadata_prompt = self._load_metadata_prompt(material, author_id, article_type)
-        
-        # Generate via API
-        response = self.api_client.call(metadata_prompt, "metadata")
-        
-        # Parse JSON response - FAIL FAST if invalid
-        try:
-            # Handle xaiArtifact wrapper
-            if '<xaiArtifact' in response:
-                start = response.find('>')
-                end = response.rfind('</xaiArtifact>')
-                if start != -1 and end != -1:
-                    response = response[start+1:end].strip()
-                    logger.info("📊 Extracted JSON from xaiArtifact wrapper")
-            
-            # Handle code blocks
-            if response.startswith('```json'):
-                response = response[7:-3]
-            elif response.startswith('```'):
-                response = response[3:-3]
-            
-            metadata = json.loads(response)
-            logger.info(f"✅ Metadata parsed - Keys: {list(metadata.keys())}")
-            return metadata
-            
-        except json.JSONDecodeError as e:
-            logger.error(f"❌ Failed to parse metadata JSON: {e}")
-            logger.error(f"❌ Raw response: {response}")
-            raise ValueError(f"Failed to parse metadata JSON: {e}")
+        return self.metadata_generator.generate_metadata(material, author_id, article_type)
     
     def load_author_data(self, author_id):
         """Load author data - FAIL FAST if missing"""
@@ -124,19 +96,3 @@ class ContentGenerator:
         
         # Format the prompt template with the material
         return section["prompt"].format(material=material)
-    
-    def _load_metadata_prompt(self, material, author_id, article_type):
-        """Load metadata prompt - FAIL FAST if missing"""
-        prompt_file = Path(self.config["prompts_dir"]) / "metadata" / "metadata.md"
-        
-        if not prompt_file.exists():
-            raise FileNotFoundError(f"Metadata prompt not found: {prompt_file}")
-        
-        template = prompt_file.read_text()
-        
-        # Replace template variables
-        prompt = template.replace("{{materialType}}", material)
-        prompt = prompt.replace("{{authorId}}", str(author_id))
-        prompt = prompt.replace("{{articleType}}", article_type)
-        
-        return prompt
