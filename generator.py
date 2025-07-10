@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Simplified Z-Beam Generator
+Z-Beam Article Generator
 """
 import logging
 from typing import Dict, Any
@@ -10,25 +10,38 @@ from datetime import datetime
 logger = logging.getLogger(__name__)
 
 def generate_article(context: Dict[str, Any], config: Dict[str, Any]) -> str:
-    """Generate article with simplified orchestration"""
-    
-    # 1. Generate base content
+    """Generate article with optimizations"""
     logger.info("🚀 Generating base content...")
-    base_content = _generate_base_content(context, config)
     
-    # 2. Apply optimizations (simplified)
-    current_content = base_content
+    # Generate base content
+    current_content = _generate_base_content(context, config)
+    logger.info(f"📝 Base content generated: {len(current_content.split())} words")
+    
+    # Apply optimizations in order
     optimization_order = config.get("optimization_order", [])
+    logger.info(f"🎛️ Optimization order: {optimization_order}")
     
-    for optimizer_name in optimization_order:
-        logger.info(f"🔧 Applying {optimizer_name}...")
+    if not optimization_order:
+        logger.warning("⚠️ No optimizations configured!")
+    
+    for i, optimizer_name in enumerate(optimization_order, 1):
+        logger.info(f"🔧 Step {i}: Applying {optimizer_name}...")
+        
+        # Store previous content length for comparison
+        prev_length = len(current_content.split())
+        
+        # Apply optimizer
         current_content = _apply_optimizer(optimizer_name, current_content, context, config)
+        
+        # Log changes
+        new_length = len(current_content.split())
+        logger.info(f"✅ {optimizer_name} applied: {prev_length} → {new_length} words")
     
-    # 3. Generate metadata and save
-    logger.info("📝 Generating metadata...")
+    # Finalize with metadata
+    logger.info("📝 Adding comprehensive metadata...")
     final_article = _finalize_article(current_content, context, config)
     
-    # 4. Save to file
+    # Save article
     output_path = _save_article(final_article, context)
     
     return output_path
@@ -40,39 +53,49 @@ def _generate_base_content(context: Dict[str, Any], config: Dict[str, Any]) -> s
     api_client = APIClient(config)
     material = context.get("material", "unknown")
     
-    # Single, comprehensive base generation prompt
+    # Get word limit from simple config
+    simple_config = config.get("simple_config", {})
+    word_limit = simple_config.get("word_limit", 1200)
+    
+    # Calculate section word distribution
+    section_words = word_limit // 4  # 300 words per section for 4 sections
+    
+    # Enhanced base generation with better word distribution
     base_prompt = f"""Write a technical article about {material} laser cleaning.
 
-STRUCTURE:
-## Introduction
-- What is {material} and why laser cleaning matters
-- Key benefits over traditional methods
-- Brief technical overview
+STRUCTURE WITH WORD LIMITS:
+## Introduction ({section_words} words)
+- Brief overview of {material} laser cleaning
+- Key benefits and applications
 
-## Comparison with Traditional Methods  
-- Laser vs mechanical/chemical cleaning
+## Comparison with Traditional Methods ({section_words} words)  
+- Compare laser vs mechanical/chemical cleaning
 - Advantages and limitations
 - Efficiency comparisons
 
-## Contaminants Removed
+## Contaminants Removed ({section_words} words)
 - Types of contaminants on {material}
 - How laser cleaning removes them
 - Process parameters
 
-## Substrate Applications
+## Substrate Applications ({section_words} words)
 - Industries using {material}
 - Specific applications
 - Success stories
 
 REQUIREMENTS:
+- TOTAL: {word_limit} words (approximately {section_words} words per section)
 - Technical but readable
-- 1200 words total (~300 per section)
 - Include specific measurements where relevant
-- Use casual, professional tone
+- Use casual, conversational tone
 - Focus on practical benefits
+- Each section should be roughly equal in length
+
+CRITICAL: Ensure each section is approximately {section_words} words. Do not exceed {word_limit} total words.
 
 Write the complete article:"""
     
+    logger.info(f"📝 Generating base content: {word_limit} words ({section_words} per section)")
     return api_client.call(base_prompt, "base-generation")
 
 def _apply_optimizer(optimizer_name: str, content: str, context: Dict[str, Any], config: Dict[str, Any]) -> str:
@@ -83,13 +106,13 @@ def _apply_optimizer(optimizer_name: str, content: str, context: Dict[str, Any],
     api_client = APIClient(config)
     
     if optimizer_name == "writing_samples":
-        return apply_writing_style(content, context, api_client)
+        return apply_writing_style(content, context, api_client, config)
     
     elif optimizer_name == "technical_authenticity":
-        return add_technical_depth(content, context, api_client)
+        return add_technical_depth(content, context, api_client, config)
     
     elif optimizer_name == "iterative":
-        return humanize_content(content, context, api_client)
+        return humanize_content(content, context, api_client, config)
     
     logger.warning(f"⚠️ Unknown optimizer: {optimizer_name}")
     return content
@@ -98,6 +121,7 @@ def _finalize_article(content: str, context: Dict[str, Any], config: Dict[str, A
     """Add metadata and finalize article"""
     from api_client import APIClient
     from tags.tag_generator import TagGenerator
+    from metadata.metadata_generator import generate_metadata
     
     api_client = APIClient(config)
     
@@ -105,7 +129,7 @@ def _finalize_article(content: str, context: Dict[str, Any], config: Dict[str, A
     tag_generator = TagGenerator(config, api_client)
     material = context.get("material", "unknown")
     
-    # Simple material metadata (you can expand this)
+    # Simple material metadata for tags
     material_data = {
         "material": material,
         "density": "Unknown",
@@ -114,20 +138,30 @@ def _finalize_article(content: str, context: Dict[str, Any], config: Dict[str, A
     }
     
     tags = tag_generator.generate_tags(material, material_data)
-    
-    # Format tags
     formatted_tags = _format_tags(tags)
     
-    # Create final article with metadata
+    # Get optimization info
+    optimization_order = config.get("optimization_order", [])
+    optimization_summary = " → ".join(optimization_order) if optimization_order else "None"
+    
+    # Add optimization method to config for metadata generator
+    config["optimization_method"] = optimization_summary
+    
+    # ✅ GENERATE COMPREHENSIVE METADATA using metadata_generator
+    logger.info("📊 Generating comprehensive metadata...")
+    metadata = generate_metadata(material, context.get("author_id", 1), config, api_client)
+    
+    # Format metadata as YAML (assuming you have this function)
+    try:
+        from metadata.metadata_generator import _format_metadata_as_yaml
+        metadata_yaml = _format_metadata_as_yaml(metadata)
+    except ImportError:
+        # Fallback to simple formatting
+        metadata_yaml = _format_metadata_simple(metadata)
+    
+    # Create final article with researched metadata
     final_article = f"""---
-title: "Laser Cleaning {material}"
-articleType: "material"
-nameShort: "{material}"
-description: "Explore how laser cleaning removes contaminants from {material}, enhancing performance and safety."
-publishedAt: "{datetime.now().strftime('%Y-%m-%d')}"
-authorId: "{context.get('author_id', 1)}"
-generation_timestamp: "{datetime.now().isoformat()}"
-model_used: "{config.get('provider', 'unknown')}/{config.get('model', 'unknown')}"
+{metadata_yaml}
 ---
 
 ## Tags
@@ -143,17 +177,36 @@ model_used: "{config.get('provider', 'unknown')}/{config.get('model', 'unknown')
     
     return final_article
 
+def _format_metadata_simple(metadata: dict) -> str:
+    """Simple metadata formatting if YAML formatter not available"""
+    lines = []
+    for key, value in metadata.items():
+        if isinstance(value, list):
+            lines.append(f"{key}:")
+            for item in value:
+                lines.append(f"  - \"{item}\"")
+        elif isinstance(value, dict):
+            lines.append(f"{key}:")
+            for k, v in value.items():
+                lines.append(f"  {k}: \"{v}\"")
+        else:
+            lines.append(f"{key}: \"{value}\"")
+    return "\n".join(lines)
+
 def _format_tags(tags: list) -> str:
-    """Format tags for output"""
+    """Format tags for display"""
     if not tags:
-        return ""
+        return "#LaserCleaning, #SurfacePreparation, #IndustrialCleaning"
     
-    # Format as two lines of hashtags
+    # Format as hashtags
     hashtags = [f"#{tag}" for tag in tags]
+    
+    # Split into two lines for better formatting
     mid_point = len(hashtags) // 2
     line1 = ", ".join(hashtags[:mid_point])
     line2 = ", ".join(hashtags[mid_point:])
-    return f"{line1}\n{line2}"
+    
+    return f"{line1}\n{line2}" if line2 else line1
 
 def _save_article(article: str, context: Dict[str, Any]) -> str:
     """Save article to file"""

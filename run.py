@@ -8,15 +8,23 @@ Z-Beam Generator - Simplified execution script
 # Article Context
 context = {
     "material": "hafnium", 
-    "author_id": 3,  # Use Todd Dunning (US) for more casual tone
+    "author_id": 3,
     "article_type": "material"
 }
 
-# Simple Optimization Order (0=skip, 1=first, 2=second, 3=third)
+# Optimization Order (0=skip, 1=first, 2=second)
 optimization_config = {
-    'iterative': 0,                # Skip complex iterative
-    'writing_samples': 1,          # Apply author style first
-    'technical_authenticity': 0    # Skip technical enhancement
+    'writing_samples': 1,          # Author style
+    'iterative': 0,                # Humanization
+    'technical_authenticity': 2    # Technical depth
+}
+
+# Simple Controls
+simple_config = {
+    "word_limit": 1200,           # Total words
+    "style_intensity": "moderate", # light, moderate, heavy
+    "technical_depth": "moderate", # light, moderate, deep
+    "temperature": 0.7            # AI creativity (0.3-0.9)
 }
 
 # ===== END EDITABLE SECTION =====
@@ -28,20 +36,20 @@ from setup_logging import setup_logging
 
 def main():
     """Main function to generate article"""
-    # Setup logging
     logger = setup_logging()
     
     # Get simple config
     config = CONFIG.get_full_config()
-    config["optimization_order"] = [name for name, order in optimization_config.items() if order > 0]
-    config["use_simple_ordering"] = True
+    config.update({
+        "optimization_order": [name for name, order in optimization_config.items() if order > 0],
+        "simple_config": simple_config
+    })
     
     logger.info("🚀 STARTING ARTICLE GENERATION")
-    logger.info(f"📄 Material: {context['material']} | Author: {context['author_id']}")
-    logger.info(f"🎛️ Optimizations: {' → '.join(config['optimization_order'])}")
+    logger.info(f"📄 {context['material']} | Author: {context['author_id']}")
+    logger.info(f"🎛️ {' → '.join(config['optimization_order'])}")
     
     try:
-        # Generate article
         output_file = generate_article(context, config)
         logger.info(f"✅ COMPLETED: {output_file}")
         
