@@ -5,260 +5,287 @@ Iterative Optimizer - Applies multiple optimization passes to content
 import difflib
 import re
 import json
-import logging
 from pathlib import Path
-from typing import List, Dict
+from typing import Dict, List, Any
 from .base_optimizer import BaseOptimizer
+import logging
 
 logger = logging.getLogger(__name__)
 
 class IterativeOptimizer(BaseOptimizer):
-    """Optimizes text sections using iterative methods"""
+    """Iterative content optimizer using JSON-defined steps"""
     
-    def __init__(self, config, api_client):
+    def __init__(self, config: Dict[str, Any], api_client):
         """Initialize iterative optimizer"""
         super().__init__(config, api_client)
         
-        # Load optimization steps configuration
+        # Load optimization steps from JSON - NO FALLBACKS
         self.optimization_steps = self._load_optimization_steps()
         
-        logger.info(f"🔄 IterativeOptimizer initialized with {len(self.optimization_steps)} steps")
+        logger.info(f"🔧 IterativeOptimizer initialized with {len(self.optimization_steps)} steps")
     
-    def optimize_sections(self, sections: List[Dict], material: str, metadata: Dict) -> List[Dict]:
-        """Apply iterative optimization to content"""
-        logger.info(f"🔄 ITERATIVE OPTIMIZATION STARTED for {material}")
+    def _load_optimization_steps(self) -> List[Dict]:
+        """Load optimization steps from iterative.json - NO FALLBACKS"""
+        
+        # Load from the JSON file
+        json_path = Path("optimizers/iterative.json")
+        
+        if not json_path.exists():
+            raise FileNotFoundError(f"❌ Required iterative steps file not found: {json_path}")
+        
+        with open(json_path, 'r', encoding='utf-8') as f:
+            steps_data = json.load(f)
+        
+        # Convert JSON structure to list of steps
+        steps = []
+        for key, step_config in steps_data.items():
+            step = {
+                "name": step_config.get("name", key),
+                "description": step_config.get("description", ""),
+                "order": step_config.get("order", 0),
+                "prompt": step_config.get("prompt", ""),
+                "type": step_config.get("type", "general")
+            }
+            steps.append(step)
+        
+        # Sort by order
+        steps.sort(key=lambda x: x["order"])
+        
+        logger.info(f"✅ Loaded {len(steps)} optimization steps from iterative.json")
+        for step in steps:
+            logger.info(f"   📋 Step {step['order']}: {step['name']}")
+        
+        return steps
+    
+    def optimize_sections(self, sections: List[Dict], context: Dict, config: Dict) -> List[Dict]:
+        """Apply iterative optimization to content sections"""
+        logger.info(f"🎯 ITERATIVE OPTIMIZATION STARTED for {context.get('material', 'unknown')}")
         logger.info(f"📊 Input sections: {len(sections)}")
+        logger.info(f"🔧 Optimization steps: {len(self.optimization_steps)}")
         
-        # Validate input sections (inherited from BaseOptimizer)
-        if not self._validate_sections(sections):
-            raise ValueError("Invalid sections provided")
+        # Combine all sections into single content for iterative processing
+        combined_content = self._combine_sections(sections)
+        logger.info(f"📄 Combined content length: {len(combined_content)} chars")
         
-        # Convert sections to internal format (inherited from BaseOptimizer)
-        text_sections = self._convert_sections_to_internal(sections)
-        self._log_section_details(text_sections, "Input")
+        # Apply each optimization step
+        optimized_content = combined_content
         
-        # Apply iterative optimization
-        optimized_sections = self._apply_iterative_optimization(text_sections, material)
-        self._log_section_details(optimized_sections, "Output")
+        for i, step in enumerate(self.optimization_steps):
+            logger.info(f"🔄 Applying step {i+1}/{len(self.optimization_steps)}: {step['name']}")
+            
+            # Format the prompt with current content and context
+            formatted_prompt = self._format_prompt(step["prompt"], optimized_content, context, config)
+            
+            # Apply optimization step - NO ERROR HANDLING FALLBACK
+            optimized_content = self.api_client.call(
+                formatted_prompt, 
+                f"iterative-step-{i+1}-{step['name'].lower().replace(' ', '-')}"
+            )
+            logger.info(f"✅ Step {i+1} completed: {len(optimized_content)} chars")
         
-        # Ensure word limits (inherited from BaseOptimizer)
-        optimized_sections = self._ensure_word_limits(optimized_sections)
+        # Split optimized content back into sections
+        optimized_sections = self._split_content_into_sections(optimized_content, sections)
         
-        # Convert back to expected format (inherited from BaseOptimizer)
-        result = self._convert_sections_to_output(optimized_sections)
+        # REMOVED: No word limits applied here - let optimization determine final length
+        # final_sections = self._apply_word_limits(optimized_sections, config)
         
-        logger.info(f"✅ ITERATIVE OPTIMIZATION COMPLETED - {len(result)} sections")
-        return result
+        logger.info(f"✅ ITERATIVE OPTIMIZATION COMPLETED")
+        return optimized_sections
     
-    def _count_words(self, text):
-        """Simple word count"""
-        return len(text.split())
+    def _format_prompt(self, prompt_template: str, content: str, context: Dict, config: Dict) -> str:
+        """Format prompt template with variables"""
+        return prompt_template.format(
+            content=content,
+            material=context.get('material', 'unknown'),
+            target_words=config.get('target_section_words', 120),
+            max_total_words=config.get('max_total_words', 1200)
+        )
     
-    def _calculate_text_similarity(self, text1, text2):
-        """Calculate similarity between two texts (0-1 scale)"""
-        # Remove extra whitespace and normalize
-        text1_clean = re.sub(r'\s+', ' ', text1.strip())
-        text2_clean = re.sub(r'\s+', ' ', text2.strip())
+    def _combine_sections(self, sections: List[Dict]) -> str:
+        """Combine sections into single content block"""
+        combined_parts = []
         
-        # Calculate similarity using difflib
-        similarity = difflib.SequenceMatcher(None, text1_clean, text2_clean).ratio()
-        return similarity
+        for section in sections:
+            combined_parts.append(f"## {section['title']}")
+            combined_parts.append(section['content'])
+            combined_parts.append("")  # Empty line between sections
+        
+        return "\n".join(combined_parts)
     
-    def _calculate_word_change_percentage(self, text1, text2):
-        """Calculate percentage of words changed between two texts"""
-        words1 = set(text1.lower().split())
-        words2 = set(text2.lower().split())
+    def _split_content_into_sections(self, content: str, original_sections: List[Dict]) -> List[Dict]:
+        """Split optimized content back into sections with robust fallback"""
+        logger.info(f"🔧 Splitting optimized content back into sections")
         
-        total_words = len(words1.union(words2))
-        if total_words == 0:
-            return 0
+        # Method 1: Try to find section headers (## format)
+        sections = self._try_split_by_headers(content)
         
-        changed_words = len(words1.symmetric_difference(words2))
-        return (changed_words / total_words) * 100
+        if sections:
+            logger.info(f"✅ Split by headers into {len(sections)} sections")
+            return sections
+        
+        # Method 2: Try to find section titles without ## prefix
+        sections = self._try_split_by_titles(content, original_sections)
+        
+        if sections:
+            logger.info(f"✅ Split by titles into {len(sections)} sections")
+            return sections
+        
+        # Method 3: Split content evenly based on original section count
+        sections = self._split_content_evenly(content, original_sections)
+        
+        logger.info(f"✅ Split evenly into {len(sections)} sections")
+        return sections
 
-    def _apply_iterative_optimization(self, text_sections, material):
-        """Apply iterative optimization steps to the full article"""
-        logger.info("🔄 APPLYING ITERATIVE OPTIMIZATION")
+    def _try_split_by_headers(self, content: str) -> List[Dict]:
+        """Try to split content by ## headers"""
+        lines = content.split('\n')
+        current_section = None
+        current_content = []
+        sections = []
         
-        # Load iterative steps
-        iterative_steps = self._load_iterative_config()
-        logger.info(f"🔄 Found {len(iterative_steps)} optimization steps")
+        for line in lines:
+            if line.startswith('## '):
+                # Save previous section
+                if current_section and current_content:
+                    sections.append({
+                        'title': current_section,
+                        'content': '\n'.join(current_content).strip(),
+                        'order': len(sections) + 1
+                    })
+                
+                # Start new section
+                current_section = line[3:].strip()  # Remove '## '
+                current_content = []
+            elif current_section:
+                # Add to current section content
+                if line.strip():  # Skip empty lines
+                    current_content.append(line)
         
-        # Combine all sections into one article
-        full_article = self._combine_sections(text_sections)
-        original_content = full_article
-        original_word_count = self._count_words(full_article)
-        logger.info(f"📊 Original total word count: {original_word_count}")
+        # Add final section
+        if current_section and current_content:
+            sections.append({
+                'title': current_section,
+                'content': '\n'.join(current_content).strip(),
+                'order': len(sections) + 1
+            })
         
-        # Apply each step sequentially to the full article
-        content = full_article
-        for step_idx, step in enumerate(iterative_steps, 1):
-            logger.info(f"🔧 [{step_idx}/{len(iterative_steps)}] Step: {step['name']} (Full Article)")
-            
-            try:
-                # Store content before this step
-                content_before_step = content
-                
-                # Prepare all possible template variables from config
-                template_vars = {
-                    'material': material or self.config.get('default_material', 'titanium'),
-                    'content': content,
-                    'max_total_words': self.config.get('max_total_words'),
-                    'target_words': self.config.get('target_section_words'),
-                    'max_section_words': self.config.get('max_section_words')
-                }
-                
-                # Format prompt with all variables
-                prompt = step['prompt'].format(**template_vars)
-                
-                # Log the word limits being applied (from config)
-                logger.info(f"📏 Word limits: target={template_vars['target_words']}, max={template_vars['max_section_words']}, total_max={template_vars['max_total_words']}")
-                
-                optimized_content = self.api_client.call(prompt, f"optimize-full-article-{step['name']}")
-                
-                # CALCULATE DELTA AFTER THIS STEP
-                if self.config.get('debug_deltas', False):
-                    similarity = self._calculate_text_similarity(content_before_step, optimized_content)
-                    word_change_pct = self._calculate_word_change_percentage(content_before_step, optimized_content)
-                    
-                    logger.info(f"📊 STEP DELTA ANALYSIS:")
-                    logger.info(f"   • Text similarity: {similarity:.3f} (1.0 = identical)")
-                    logger.info(f"   • Word change: {word_change_pct:.1f}% of vocabulary")
-                    logger.info(f"   • Word count: {self._count_words(content_before_step)} → {self._count_words(optimized_content)}")
-                    
-                    # Use configurable thresholds for similarity warnings
-                    high_similarity_threshold = self.config.get('high_similarity_threshold', 0.95)
-                    low_similarity_threshold = self.config.get('low_similarity_threshold', 0.7)
-                    
-                    if similarity > high_similarity_threshold:
-                        logger.warning(f"⚠️  Very little change in step '{step['name']}' (similarity: {similarity:.3f})")
-                    elif similarity < low_similarity_threshold:
-                        logger.info(f"✅ Significant transformation in step '{step['name']}' (similarity: {similarity:.3f})")
-            
-                # Update content for next step
-                content = optimized_content
-                word_count = self._count_words(content)
-                logger.info(f"✅ Step {step['name']} completed - {len(content)} chars, {word_count} words")
-                
-            except KeyError as e:
-                logger.error(f"❌ Step {step['name']} failed - missing template variable: {e}")
-                logger.error(f"❌ Available variables: {list(template_vars.keys())}")
-                raise  # NO FALLBACK - fail fast
-            except Exception as e:
-                logger.error(f"❌ Step {step['name']} failed: {e}")
-                raise  # NO FALLBACK - fail fast
-        
-        # FINAL DELTA ANALYSIS (original vs final)
-        if self.config.get('debug_deltas', False):
-            final_similarity = self._calculate_text_similarity(original_content, content)
-            final_word_change = self._calculate_word_change_percentage(original_content, content)
-            final_word_count = self._count_words(content)
-            
-            logger.info(f"📊 FINAL ARTICLE ANALYSIS:")
-            logger.info(f"   • Overall similarity: {final_similarity:.3f}")
-            logger.info(f"   • Overall word change: {final_word_change:.1f}%")
-            logger.info(f"   • Word count change: {original_word_count} → {final_word_count}")
-            logger.info(f"   • Target: {self.config.get('max_total_words')} words")
-            
-            # Use configurable threshold for final similarity check
-            final_similarity_threshold = self.config.get('final_similarity_threshold', 0.85)
-            
-            if final_similarity > final_similarity_threshold:
-                logger.warning(f"⚠️  Article may still appear AI-generated (similarity: {final_similarity:.3f})")
-            else:
-                logger.info(f"✅ Article significantly transformed (similarity: {final_similarity:.3f})")
-        
-        # NEW: Split optimized content back into sections for orchestrator
-        logger.info("🔧 Splitting optimized full article back into sections")
-        return self._split_optimized_content(content, text_sections)
+        return sections if len(sections) > 0 else []
 
-    def _combine_sections(self, text_sections):
-        """Combine sections into a single article"""
-        combined = []
-        for section in text_sections:
-            combined.append(f"## {section['title']}")
-            combined.append(section['content'])
-            combined.append("")  # Empty line between sections
-        return "\n".join(combined)
+    def _try_split_by_titles(self, content: str, original_sections: List[Dict]) -> List[Dict]:
+        """Try to split content by finding original section titles"""
+        # Remove the redundant import here since re is already imported at module level
+    
+        # Get original section titles
+        original_titles = [section['title'] for section in original_sections]
+        
+        # Try to find these titles in the content (case insensitive)
+        sections = []
+        content_lower = content.lower()
+        
+        for i, title in enumerate(original_titles):
+            title_lower = title.lower()
+            
+            # Look for the title in various formats
+            patterns = [
+                rf'\b{re.escape(title_lower)}\b',
+                rf'^{re.escape(title_lower)}',
+                rf'{re.escape(title_lower)}:',
+                rf'#{1,3}\s*{re.escape(title_lower)}'
+            ]
+            
+            for pattern in patterns:
+                matches = list(re.finditer(pattern, content_lower, re.MULTILINE))
+                if matches:
+                    # Found the title, extract content
+                    start_pos = matches[0].start()
+                    
+                    # Find end position (next section or end of content)
+                    end_pos = len(content)
+                    if i + 1 < len(original_titles):
+                        next_title = original_titles[i + 1].lower()
+                        for next_pattern in patterns:
+                            next_pattern_formatted = next_pattern.replace(re.escape(title_lower), re.escape(next_title))
+                            next_matches = list(re.finditer(next_pattern_formatted, content_lower, re.MULTILINE))
+                            if next_matches:
+                                end_pos = next_matches[0].start()
+                                break
+                
+                    # Extract content
+                    section_content = content[start_pos:end_pos].strip()
+                    
+                    # Clean up the content (remove title line)
+                    lines = section_content.split('\n')
+                    if lines:
+                        # Remove first line if it contains the title
+                        if title_lower in lines[0].lower():
+                            lines = lines[1:]
+                
+                    clean_content = '\n'.join(lines).strip()
+                    
+                    if clean_content:
+                        sections.append({
+                            'title': title,
+                            'content': clean_content,
+                            'order': i + 1
+                        })
+                    break
+        
+        return sections if len(sections) == len(original_titles) else []
 
-    def _split_optimized_content(self, optimized_content, original_sections):
-        """Split optimized full article back into individual sections"""
-        logger.info("🔧 Splitting optimized content back into sections")
+    def _split_content_evenly(self, content: str, original_sections: List[Dict]) -> List[Dict]:
+        """Split content evenly based on original section count"""
+        logger.info(f"🔄 Splitting content evenly into {len(original_sections)} sections")
         
-        # Split by markdown headers (## Section Title)
-        sections = re.split(r'\n## ', optimized_content)
+        # Remove any remaining headers or formatting
+        clean_content = re.sub(r'^#+\s*.*$', '', content, flags=re.MULTILINE)
+        clean_content = re.sub(r'\n\s*\n\s*\n+', '\n\n', clean_content)  # Remove excessive newlines
+        clean_content = clean_content.strip()
         
-        # Remove empty first element and add back header markers
-        if sections and not sections[0].strip():
-            sections = sections[1:]
+        # Split into paragraphs
+        paragraphs = [p.strip() for p in clean_content.split('\n\n') if p.strip()]
         
-        # Add back the ## markers (except for first section)
-        for i in range(1, len(sections)):
-            sections[i] = "## " + sections[i]
+        if not paragraphs:
+            # If no paragraphs, split by sentences
+            sentences = re.split(r'(?<=[.!?])\s+', clean_content)
+            paragraphs = [s.strip() for s in sentences if s.strip()]
         
-        logger.info(f"📊 Split into {len(sections)} sections from optimized content")
-        
-        # Match sections back to original structure
-        optimized_sections = []
+        # Distribute paragraphs evenly across sections
+        sections = []
+        paragraphs_per_section = max(1, len(paragraphs) // len(original_sections))
         
         for i, original_section in enumerate(original_sections):
-            if i < len(sections):
-                section_content = sections[i].strip()
-                
-                # Extract title and content
-                lines = section_content.split('\n', 1)
-                if len(lines) >= 2:
-                    # Remove ## from title
-                    title = lines[0].replace('##', '').strip()
-                    content = lines[1].strip()
-                else:
-                    title = original_section['title']
-                    content = section_content
-                
-                optimized_sections.append({
-                    'name': original_section['name'],
-                    'title': title,
-                    'content': content
-                })
-                
-                logger.info(f"✅ Section '{title}' extracted: {len(content)} chars")
-            else:
-                # Fallback if section missing
-                logger.warning(f"⚠️ Section '{original_section['title']}' not found in optimized content, using original")
-                optimized_sections.append(original_section)
-        
-        # Validate we have the right number of sections
-        if len(optimized_sections) != len(original_sections):
-            logger.warning(f"⚠️ Section count mismatch: expected {len(original_sections)}, got {len(optimized_sections)}")
-        
-        return optimized_sections
-
-    def _load_iterative_config(self):
-        """Load iterative optimization steps - FAIL FAST if missing"""
-        iterative_file = Path(self.config["prompts_dir"]) / "optimizations" / "iterative.json"
-        
-        if not iterative_file.exists():
-            raise FileNotFoundError(f"Iterative config not found: {iterative_file}")
-        
-        with open(iterative_file, 'r') as f:
-            data = json.load(f)
-        
-        # Handle your specific structure - convert object to array sorted by order
-        if isinstance(data, dict):
-            steps = []
-            for key, value in data.items():
-                if isinstance(value, dict) and "prompt" in value:
-                    step = {
-                        "name": value.get("name", key),
-                        "prompt": value["prompt"],
-                        "order": value.get("order", 0)
-                    }
-                    steps.append(step)
+            start_idx = i * paragraphs_per_section
+            end_idx = start_idx + paragraphs_per_section
             
-            # Sort by order
-            steps.sort(key=lambda x: x["order"])
-            return steps
-        elif isinstance(data, list):
-            return data
-        else:
-            raise ValueError(f"Invalid iterative config structure in {iterative_file}")
+            # For the last section, include any remaining paragraphs
+            if i == len(original_sections) - 1:
+                end_idx = len(paragraphs)
+            
+            section_paragraphs = paragraphs[start_idx:end_idx]
+            section_content = '\n\n'.join(section_paragraphs)
+            
+            if section_content:
+                sections.append({
+                    'title': original_section['title'],
+                    'content': section_content,
+                    'order': i + 1
+                })
+            else:
+                # Fallback: use a portion of the entire content
+                total_chars = len(clean_content)
+                chars_per_section = total_chars // len(original_sections)
+                start_char = i * chars_per_section
+                end_char = start_char + chars_per_section
+                
+                if i == len(original_sections) - 1:
+                    end_char = total_chars
+                
+                fallback_content = clean_content[start_char:end_char].strip()
+                
+                sections.append({
+                    'title': original_section['title'],
+                    'content': fallback_content,
+                    'order': i + 1
+                })
+        
+        return sections

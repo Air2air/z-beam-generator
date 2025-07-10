@@ -6,7 +6,7 @@ import logging
 import json
 from datetime import datetime
 from pathlib import Path
-from typing import Dict
+from typing import Dict, List
 
 logger = logging.getLogger(__name__)
 
@@ -56,27 +56,19 @@ def generate_metadata(material: str, author_id: int, config: Dict, api_client) -
     
     return metadata
 
-def _load_authors_data(config: Dict) -> list:
+def _load_authors_data(config: Dict) -> List[Dict]:
     """Load authors data from JSON file"""
-    authors_file = Path(config.get("authors_file", "prompts/authors/authors.json"))
+    # Use new top-level authors path
+    authors_file = Path("authors/authors.json")
     
     if not authors_file.exists():
+        logger.error(f"❌ Authors file not found: {authors_file}")
         raise FileNotFoundError(f"Authors file not found: {authors_file}")
     
-    try:
-        with open(authors_file, 'r', encoding='utf-8') as f:
-            authors = json.load(f)
-        
-        if not authors:
-            raise ValueError("Authors file is empty")
-            
-        logger.info(f"✅ Loaded {len(authors)} authors from {authors_file}")
-        return authors
-        
-    except json.JSONDecodeError as e:
-        raise RuntimeError(f"Failed to parse authors JSON: {e}")
-    except Exception as e:
-        raise RuntimeError(f"Failed to load authors file: {e}")
+    with open(authors_file, 'r', encoding='utf-8') as f:
+        authors_data = json.load(f)
+        logger.info(f"✅ Loaded {len(authors_data)} authors from {authors_file}")
+        return authors_data
 
 def _get_author_data(author_id: int, authors_data: list) -> Dict:
     """Get author data by ID"""

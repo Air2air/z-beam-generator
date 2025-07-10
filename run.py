@@ -60,14 +60,13 @@ def get_config():
         "metadata_temperature": 0.3,
         "max_tokens": 4000,
         
-        # Optimization settings
-        "optimization_method": "writing_samples",  # or "iterative"
-        "iterative_optimizer_file": "optimizers/iterative_optimizer.py",
-        "writing_samples_optimizer_file": "optimizers/writing_samples_optimizer.py",
+        # Optimization settings - SIMPLIFIED
+        "optimization_method": "iterative",           # "writing_samples" or "iterative"
+        "apply_writing_samples_final": True,          # Apply writing samples as final step
         
         "prompts_dir": "prompts",
         "output_dir": "output",
-        "authors_file": "prompts/authors/authors.json",
+        "authors_file": "authors/authors.json",
         "sections_file": "prompts/text/sections.json",
         
         # Section length limits
@@ -140,12 +139,12 @@ def get_config():
             "style": "hashtag",           # Options: hashtag, plain, bullet, numbered
             "separator": ", ",            # Options: ", ", " | ", " • ", "\n"
             "case_format": "title",       # Options: title, lower, upper, camel
-            "remove_spaces": True,        # Remove spaces from hashtags
+            "remove_spaces": False,        # Remove spaces from hashtags
             "prefix": "#",                # Prefix for each tag
             "suffix": "",                 # Suffix for each tag  
             "max_tags_per_line": 6,       # Tags per line before wrapping
             "sort_tags": True,            # Sort alphabetically
-            "group_by_category": False,   # Group related tags together
+            "group_by_category": True,   # Group related tags together
         },
         
         # TAG CONTENT CONFIGURATION  

@@ -5,25 +5,35 @@ Z-Beam Generator - Main orchestrator (simplified)
 import logging
 import json
 from pathlib import Path
-from typing import Dict, List
+from typing import Dict, List, Any
 
 from api_client import APIClient
+from optimizers.base_optimizer import BaseOptimizer
 from optimizers.iterative_optimizer import IterativeOptimizer
 from optimizers.writing_samples_optimizer import WritingSamplesOptimizer
+from optimizers.hybrid_optimizer import HybridOptimizer
 from utils.tag_formatter import format_tags_for_article
 
 logger = logging.getLogger(__name__)
 
-def get_optimizer(config, api_client):
-    """Return appropriate optimizer based on configuration"""
-    optimization_method = config.get("optimization_method", "writing_samples")
+def get_optimizer(config: Dict[str, Any], api_client) -> BaseOptimizer:
+    """Get the appropriate optimizer based on configuration"""
     
+    # Check if we need hybrid optimization
+    apply_writing_samples_final = config.get("apply_writing_samples_final", False)
+    
+    # Use HybridOptimizer if writing samples final step is enabled
+    if apply_writing_samples_final:
+        return HybridOptimizer(config, api_client)
+    
+    # Otherwise use single optimizer
+    optimization_method = config.get("optimization_method", "iterative")
     if optimization_method == "iterative":
         return IterativeOptimizer(config, api_client)
     elif optimization_method == "writing_samples":
         return WritingSamplesOptimizer(config, api_client)
     else:
-        raise ValueError(f"Unknown optimization method: {optimization_method}")
+        raise ValueError(f"Unsupported optimization method: {optimization_method}")
 
 def generate_content_sections(material: str, config: Dict, api_client) -> List[Dict]:
     """Generate content sections using sections.json configuration"""
@@ -303,7 +313,8 @@ def generate_article(context: Dict, config: Dict) -> str:
     # Phase 2: Optimize content
     logger.info("🔄 PHASE 2: OPTIMIZATION")
     optimizer = get_optimizer(config, api_client)
-    optimized_sections = optimizer.optimize_sections(sections, material, metadata)
+    # Use optimize_sections method (the abstract method)
+    optimized_sections = optimizer.optimize_sections(sections, context, config)
     logger.info(f"✅ Optimized {len(optimized_sections)} sections")
     
     # Phase 3: Assemble final article

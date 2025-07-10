@@ -13,43 +13,40 @@ logger = logging.getLogger(__name__)
 class BaseOptimizer(ABC):
     """Base class for all content optimizers"""
     
-    def __init__(self, config, api_client):
-        """Initialize optimizer with config and API client"""
+    def __init__(self, config: Dict[str, Any], api_client):
+        """Initialize base optimizer"""
         self.config = config
         self.api_client = api_client
         
-        # Load authors data (available to all optimizers)
+        # Load authors from new top-level location
         self.authors = self._load_authors()
         
-        logger.info(f"🔧 {self.__class__.__name__} initialized")
+        logger.info(f"📚 Loading authors from: authors/authors.json")
+        logger.info(f"✅ Loaded {len(self.authors)} authors")
+        for author in self.authors:
+            logger.info(f"👤 Author {author['id']}: {author['name']} ({author['country']})")
     
     @abstractmethod
     def optimize_sections(self, sections: List[Dict], material: str, metadata: Dict) -> List[Dict]:
         """Abstract method for optimizing sections - must be implemented by subclasses"""
         pass
     
-    def _load_authors(self) -> Dict:
-        """Load authors from JSON file"""
-        authors_file = Path(self.config.get("authors_file", "prompts/authors/authors.json"))
-        logger.info(f"📚 Loading authors from: {authors_file}")
+    def _load_authors(self) -> List[Dict]:
+        """Load authors from top-level authors directory"""
+        authors_file = Path("authors/authors.json")
         
         if not authors_file.exists():
             logger.error(f"❌ Authors file not found: {authors_file}")
-            raise FileNotFoundError(f"Authors file not found: {authors_file}")
+            raise FileNotFoundError(f"Required authors file missing: {authors_file}")
         
-        with open(authors_file, 'r') as f:
-            authors_data = json.load(f)
-        
-        # Convert list to dict by ID for easy lookup
-        authors = {}
-        for author in authors_data:
-            authors[author["id"]] = author
-        
-        logger.info(f"✅ Loaded {len(authors)} authors")
-        for author_id, author in authors.items():
-            logger.info(f"👤 Author {author_id}: {author['name']} ({author.get('country', 'Unknown')})")
-        
-        return authors
+        try:
+            with open(authors_file, 'r', encoding='utf-8') as f:
+                authors = json.load(f)
+                logger.info(f"✅ Loaded {len(authors)} authors from {authors_file}")
+                return authors
+        except Exception as e:
+            logger.error(f"❌ Error loading authors: {e}")
+            raise RuntimeError(f"Failed to load authors: {e}")
     
     def _load_writing_sample(self, author_id: int) -> Optional[str]:
         """Load writing sample for specific author using authors.json configuration"""
