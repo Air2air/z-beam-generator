@@ -54,6 +54,17 @@ def generate_metadata(material: str, author_id: int, config: Dict, api_client) -
     logger.info(f"🔧 Using optimization method: {metadata['optimization_method']}")
     logger.info(f"🤖 Model: {metadata['model_used']}")
     
+    # Format complex objects properly
+    if 'laserCleaningParameters' in metadata:
+        metadata['laserCleaningParameters'] = _format_laser_parameters(
+            metadata['laserCleaningParameters']
+        )
+    
+    if 'performanceMetrics' in metadata:
+        metadata['performanceMetrics'] = _format_performance_metrics(
+            metadata['performanceMetrics']
+        )
+    
     return metadata
 
 def _load_authors_data(config: Dict) -> List[Dict]:
@@ -210,3 +221,61 @@ def _fix_data_types(material_data):
                 raise ValueError(f"Invalid object format for field: {field}")
     
     return material_data
+
+def _format_metadata_as_yaml(metadata: Dict) -> str:
+    """Format metadata as proper YAML - NO FALLBACKS"""
+    import yaml
+    
+    try:
+        # Convert Python dict/list strings back to proper structures
+        formatted_metadata = {}
+        
+        for key, value in metadata.items():
+            if isinstance(value, str) and value.startswith('{') and value.endswith('}'):
+                # Parse dict strings into proper YAML structures
+                try:
+                    import ast
+                    parsed_value = ast.literal_eval(value)
+                    formatted_metadata[key] = parsed_value
+                except:
+                    formatted_metadata[key] = value
+            else:
+                formatted_metadata[key] = value
+        
+        # Generate clean YAML
+        yaml_output = yaml.dump(
+            formatted_metadata, 
+            default_flow_style=False, 
+            allow_unicode=True,
+            sort_keys=False
+        )
+        
+        return yaml_output.strip()
+        
+    except Exception as e:
+        logger.error(f"❌ Failed to format metadata as YAML: {e}")
+        raise RuntimeError(f"YAML formatting failed: {e}")
+
+def _format_laser_parameters(params: Dict) -> Dict:
+    """Format laser parameters as proper nested dict for YAML"""
+    if isinstance(params, str):
+        try:
+            import ast
+            # Parse string representation back to dict
+            parsed = ast.literal_eval(params)
+            return parsed
+        except:
+            return {"raw": params}
+    return params
+
+def _format_performance_metrics(metrics: Dict) -> Dict:
+    """Format performance metrics as proper nested dict for YAML"""
+    if isinstance(metrics, str):
+        try:
+            import ast
+            # Parse string representation back to dict
+            parsed = ast.literal_eval(metrics)
+            return parsed
+        except:
+            return {"raw": metrics}
+    return metrics

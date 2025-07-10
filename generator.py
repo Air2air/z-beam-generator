@@ -1,328 +1,172 @@
 #!/usr/bin/env python3
 """
-Z-Beam Generator - Main orchestrator (simplified)
+Simplified Z-Beam Generator
 """
 import logging
-import json
+from typing import Dict, Any
 from pathlib import Path
-from typing import Dict, List, Any
-
-from api_client import APIClient
-from optimizers.base_optimizer import BaseOptimizer
-from optimizers.iterative_optimizer import IterativeOptimizer
-from optimizers.writing_samples_optimizer import WritingSamplesOptimizer
-from optimizers.hybrid_optimizer import HybridOptimizer
-from utils.tag_formatter import format_tags_for_article
+from datetime import datetime
 
 logger = logging.getLogger(__name__)
 
-def get_optimizer(config: Dict[str, Any], api_client) -> BaseOptimizer:
-    """Get the appropriate optimizer based on configuration"""
+def generate_article(context: Dict[str, Any], config: Dict[str, Any]) -> str:
+    """Generate article with simplified orchestration"""
     
-    # Check if we need hybrid optimization
-    apply_writing_samples_final = config.get("apply_writing_samples_final", False)
+    # 1. Generate base content
+    logger.info("🚀 Generating base content...")
+    base_content = _generate_base_content(context, config)
     
-    # Use HybridOptimizer if writing samples final step is enabled
-    if apply_writing_samples_final:
-        return HybridOptimizer(config, api_client)
+    # 2. Apply optimizations (simplified)
+    current_content = base_content
+    optimization_order = config.get("optimization_order", [])
     
-    # Otherwise use single optimizer
-    optimization_method = config.get("optimization_method", "iterative")
-    if optimization_method == "iterative":
-        return IterativeOptimizer(config, api_client)
-    elif optimization_method == "writing_samples":
-        return WritingSamplesOptimizer(config, api_client)
-    else:
-        raise ValueError(f"Unsupported optimization method: {optimization_method}")
+    for optimizer_name in optimization_order:
+        logger.info(f"🔧 Applying {optimizer_name}...")
+        current_content = _apply_optimizer(optimizer_name, current_content, context, config)
+    
+    # 3. Generate metadata and save
+    logger.info("📝 Generating metadata...")
+    final_article = _finalize_article(current_content, context, config)
+    
+    # 4. Save to file
+    output_path = _save_article(final_article, context)
+    
+    return output_path
 
-def generate_content_sections(material: str, config: Dict, api_client) -> List[Dict]:
-    """Generate content sections using sections.json configuration"""
-    logger.info(f"📝 Generating content sections for {material}")
+def _generate_base_content(context: Dict[str, Any], config: Dict[str, Any]) -> str:
+    """Generate base article content"""
+    from api_client import APIClient
     
-    # Load sections configuration
-    sections_file = Path(config.get("sections_file", "prompts/text/sections.json"))
+    api_client = APIClient(config)
+    material = context.get("material", "unknown")
     
-    if not sections_file.exists():
-        logger.error(f"❌ Sections file not found: {sections_file}")
-        raise FileNotFoundError(f"Sections file not found: {sections_file}")
-    
-    try:
-        with open(sections_file, 'r') as f:
-            sections_data = json.load(f)
-        
-        # Extract sections array from the nested structure
-        if "sections" in sections_data:
-            sections_config = sections_data["sections"]
-        else:
-            # Fallback for direct array format
-            sections_config = sections_data
-        
-        logger.info(f"📚 Loaded {len(sections_config)} section configurations")
-        
-    except json.JSONDecodeError as e:
-        logger.error(f"❌ Invalid JSON in sections file: {e}")
-        raise
-    except Exception as e:
-        logger.error(f"❌ Failed to load sections file: {e}")
-        raise
-    
-    # Filter and sort sections
-    applicable_sections = []
-    for section in sections_config:
-        # Check if section applies to this material
-        section_materials = section.get("materials", [])
-        
-        # If no materials specified, or material is in the list, or material is close match
-        if (not section_materials or 
-            material.title() in section_materials or 
-            material.lower() in [m.lower() for m in section_materials] or
-            any(material.lower() in m.lower() for m in section_materials)):
-            
-            applicable_sections.append(section)
-            logger.info(f"✅ Section '{section.get('title')}' applies to {material}")
-        else:
-            logger.info(f"⏭️ Section '{section.get('title')}' skipped (materials: {section_materials})")
-    
-    # Sort by order if specified
-    applicable_sections.sort(key=lambda x: x.get("order", 999))
-    
-    if not applicable_sections:
-        logger.warning(f"⚠️ No applicable sections found for {material}, using all sections")
-        applicable_sections = sections_config
-    
-    # Generate sections
-    sections = []
-    for section_config in applicable_sections:
-        section_name = section_config.get("name", "unknown")
-        section_title = section_config.get("title", "Unknown Section")
-        section_type = section_config.get("section_type", "TEXT")
-        
-        logger.info(f"📄 Generating section: {section_title} (type: {section_type})")
-        
-        # Get custom prompt or create default
-        if "prompt" in section_config:
-            # Use custom prompt and substitute material
-            base_prompt = section_config["prompt"]
-            custom_prompt = base_prompt.format(material=material)
-            
-            # Enhance with additional requirements
-            prompt = f"""{custom_prompt}
+    # Single, comprehensive base generation prompt
+    base_prompt = f"""Write a technical article about {material} laser cleaning.
 
-Requirements:
-- Write approximately 75 words
-- Focus on technical accuracy and specific details about {material}
-- Use professional, technical language suitable for industrial applications
-- Include relevant technical parameters where applicable
-- Do not include section headers or titles in the content
-- Ensure content is specific to {material} properties and characteristics
+STRUCTURE:
+## Introduction
+- What is {material} and why laser cleaning matters
+- Key benefits over traditional methods
+- Brief technical overview
 
-Generate only the content for this section:"""
-            
-        else:
-            # Create default prompt
-            prompt = f"""Generate a detailed section about laser cleaning of {material}.
+## Comparison with Traditional Methods  
+- Laser vs mechanical/chemical cleaning
+- Advantages and limitations
+- Efficiency comparisons
 
-Section Title: {section_title}
-Section Type: {section_type}
+## Contaminants Removed
+- Types of contaminants on {material}
+- How laser cleaning removes them
+- Process parameters
 
-Requirements:
-- Write approximately 75 words
-- Focus on technical accuracy
-- Include specific details about {material}
-- Use professional, technical language
-- Do not include section headers or titles
+## Substrate Applications
+- Industries using {material}
+- Specific applications
+- Success stories
 
-Generate only the content for this section:"""
-        
-        # Generate section content
-        try:
-            content = api_client.call(prompt, f"section-{section_name}")
-            
-            sections.append({
-                "name": section_name,
-                "title": section_title,
-                "content": content.strip(),
-                "type": section_type,
-                "order": section_config.get("order", 999)
-            })
-            
-            logger.info(f"✅ Generated section '{section_title}': {len(content)} chars")
-            
-        except Exception as e:
-            logger.error(f"❌ Failed to generate section '{section_title}': {e}")
-            # Add placeholder content to maintain structure
-            sections.append({
-                "name": section_name,
-                "title": section_title,
-                "content": f"Content for {section_title} section about {material} laser cleaning.",
-                "type": section_type,
-                "order": section_config.get("order", 999)
-            })
-    
-    logger.info(f"✅ Generated {len(sections)} sections for {material}")
-    
-    # Log section summary
-    for section in sections:
-        words = len(section['content'].split())
-        logger.info(f"📊 Section '{section['title']}': {words} words, order {section.get('order', 'N/A')}")
-    
-    return sections
+REQUIREMENTS:
+- Technical but readable
+- 1200 words total (~300 per section)
+- Include specific measurements where relevant
+- Use casual, professional tone
+- Focus on practical benefits
 
-def generate_tags(material: str, metadata: Dict, config: Dict, api_client) -> List[str]:
-    """Generate optimized tags for the material"""
-    logger.info(f"🏷️ Generating tags for {material}")
+Write the complete article:"""
     
-    # Create prompt for tag generation
-    prompt = f"""Generate 10-12 relevant tags for a laser cleaning article about {material}.
+    return api_client.call(base_prompt, "base-generation")
 
-Material: {material}
-Material Properties: {metadata.get('materialClass', 'Unknown')}
-Density: {metadata.get('density', 'Unknown')}
-Melting Point: {metadata.get('meltingPoint', 'Unknown')}
-
-Focus on:
-- Material properties (density, temperature, structure)
-- Processing characteristics
-- Safety considerations
-- Applications
-- Industry relevance
-
-Return only a JSON array of strings, no other text:
-["tag1", "tag2", "tag3", ...]"""
+def _apply_optimizer(optimizer_name: str, content: str, context: Dict[str, Any], config: Dict[str, Any]) -> str:
+    """Apply single optimizer using simplified functions"""
+    from api_client import APIClient
+    from optimizers.simple_optimizers import apply_writing_style, add_technical_depth, humanize_content
     
-    # Generate tags
-    tags_response = api_client.call(prompt, "tag-generation")
-    
-    try:
-        # Parse JSON response
-        tags = json.loads(tags_response)
-        if not isinstance(tags, list):
-            raise ValueError("Tags response is not a list")
-        
-        # Clean and validate tags
-        clean_tags = []
-        for tag in tags:
-            if isinstance(tag, str) and tag.strip():
-                clean_tags.append(tag.strip())
-        
-        logger.info(f"✅ Generated {len(clean_tags)} tags for {material}")
-        return clean_tags
-        
-    except (json.JSONDecodeError, ValueError) as e:
-        logger.error(f"❌ Failed to parse tags response: {e}")
-        # Return fallback tags
-        fallback_tags = [
-            "High Temperature", "Metal Processing", "Laser Cleaning",
-            "Surface Treatment", "Industrial Applications", "Precision Cleaning"
-        ]
-        logger.info(f"🔄 Using fallback tags: {len(fallback_tags)} tags")
-        return fallback_tags
-
-def assemble_final_article(material: str, metadata: Dict, tags: List[str], sections: List[Dict], config: Dict) -> str:
-    """Assemble final markdown article with configurable tag formatting"""
-    logger.info(f"🔧 Assembling final article for {material}")
-    
-    # Create output directory
-    output_dir = Path(config.get("output_dir", "output"))
-    output_dir.mkdir(exist_ok=True)
-    
-    # Create output filename
-    output_file = output_dir / f"{material}_laser_cleaning.md"
-    
-    # Build markdown content
-    content_lines = []
-    
-    # Add YAML frontmatter (excluding tags)
-    content_lines.append("---")
-    for key, value in metadata.items():
-        # Skip tags in metadata - we'll add them separately below
-        if key == "tags":
-            continue
-            
-        if isinstance(value, str):
-            content_lines.append(f'{key}: "{value}"')
-        elif isinstance(value, list):
-            content_lines.append(f"{key}:")
-            for item in value:
-                content_lines.append(f'  - "{item}"')
-        else:
-            content_lines.append(f"{key}: {value}")
-    
-    content_lines.append("---")
-    content_lines.append("")
-    
-    # Add tags section with configurable formatting
-    if tags:
-        content_lines.append("## Tags")
-        content_lines.append("")
-        
-        # Format tags according to configuration
-        formatted_tags = format_tags_for_article(tags, config)
-        content_lines.append(formatted_tags)
-        
-        content_lines.append("")
-        content_lines.append("---")
-        content_lines.append("")
-    
-    # Add title
-    content_lines.append(f"# {metadata.get('title', f'Laser Cleaning {material}')}")
-    content_lines.append("")
-    
-    # Add sections
-    for section in sections:
-        content_lines.append(f"## {section['title']}")
-        content_lines.append(section['content'])
-        content_lines.append("")
-    
-    # Write to file
-    final_content = "\n".join(content_lines)
-    
-    with open(output_file, 'w', encoding='utf-8') as f:
-        f.write(final_content)
-    
-    logger.info(f"✅ Article assembled: {output_file}")
-    return str(output_file)
-
-def generate_article(context: Dict, config: Dict) -> str:
-    """Generate complete article with metadata, tags, and content"""
-    material = context["material"]
-    author_id = context["author_id"]
-    article_type = context["article_type"]
-    
-    logger.info(f"🚀 Starting article generation for {material}")
-    logger.info(f"📋 Context: {context}")
-    logger.info(f"⚙️ Config: {config}")
-    
-    # Initialize API client
     api_client = APIClient(config)
     
-    # Phase 1: Generate content
-    logger.info("🔄 PHASE 1: GENERATION")
-    sections = generate_content_sections(material, config, api_client)
-    logger.info(f"✅ Generated {len(sections)} content sections")
+    if optimizer_name == "writing_samples":
+        return apply_writing_style(content, context, api_client)
     
-    # Generate metadata using function-based approach
-    from metadata.metadata_generator import generate_metadata
-    metadata = generate_metadata(material, author_id, config, api_client)
-    logger.info(f"✅ Generated metadata with {len(metadata)} fields")
+    elif optimizer_name == "technical_authenticity":
+        return add_technical_depth(content, context, api_client)
+    
+    elif optimizer_name == "iterative":
+        return humanize_content(content, context, api_client)
+    
+    logger.warning(f"⚠️ Unknown optimizer: {optimizer_name}")
+    return content
+
+def _finalize_article(content: str, context: Dict[str, Any], config: Dict[str, Any]) -> str:
+    """Add metadata and finalize article"""
+    from api_client import APIClient
+    from tags.tag_generator import TagGenerator
+    
+    api_client = APIClient(config)
     
     # Generate tags
-    tags = generate_tags(material, metadata, config, api_client)
-    logger.info(f"✅ Generated {len(tags)} optimized tags")
+    tag_generator = TagGenerator(config, api_client)
+    material = context.get("material", "unknown")
     
-    # Phase 2: Optimize content
-    logger.info("🔄 PHASE 2: OPTIMIZATION")
-    optimizer = get_optimizer(config, api_client)
-    # Use optimize_sections method (the abstract method)
-    optimized_sections = optimizer.optimize_sections(sections, context, config)
-    logger.info(f"✅ Optimized {len(optimized_sections)} sections")
+    # Simple material metadata (you can expand this)
+    material_data = {
+        "material": material,
+        "density": "Unknown",
+        "melting_point": "Unknown",
+        "applications": ["Industrial cleaning", "Surface preparation"]
+    }
     
-    # Phase 3: Assemble final article
-    logger.info("🔄 PHASE 3: ASSEMBLY")
-    output_file = assemble_final_article(material, metadata, tags, optimized_sections, config)
-    logger.info(f"✅ Article assembled: {output_file}")
+    tags = tag_generator.generate_tags(material, material_data)
     
-    return output_file
+    # Format tags
+    formatted_tags = _format_tags(tags)
+    
+    # Create final article with metadata
+    final_article = f"""---
+title: "Laser Cleaning {material}"
+articleType: "material"
+nameShort: "{material}"
+description: "Explore how laser cleaning removes contaminants from {material}, enhancing performance and safety."
+publishedAt: "{datetime.now().strftime('%Y-%m-%d')}"
+authorId: "{context.get('author_id', 1)}"
+generation_timestamp: "{datetime.now().isoformat()}"
+model_used: "{config.get('provider', 'unknown')}/{config.get('model', 'unknown')}"
+---
+
+## Tags
+
+{formatted_tags}
+
+---
+
+# Laser Cleaning {material}
+
+{content}
+"""
+    
+    return final_article
+
+def _format_tags(tags: list) -> str:
+    """Format tags for output"""
+    if not tags:
+        return ""
+    
+    # Format as two lines of hashtags
+    hashtags = [f"#{tag}" for tag in tags]
+    mid_point = len(hashtags) // 2
+    line1 = ", ".join(hashtags[:mid_point])
+    line2 = ", ".join(hashtags[mid_point:])
+    return f"{line1}\n{line2}"
+
+def _save_article(article: str, context: Dict[str, Any]) -> str:
+    """Save article to file"""
+    material = context.get("material", "unknown")
+    output_dir = Path("output")
+    output_dir.mkdir(exist_ok=True)
+    
+    output_file = output_dir / f"{material}_laser_cleaning.md"
+    
+    with open(output_file, "w", encoding="utf-8") as f:
+        f.write(article)
+    
+    return str(output_file)
 
 if __name__ == "__main__":
     from run import context, config

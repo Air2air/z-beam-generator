@@ -1,15 +1,16 @@
 """
-Writing Samples Optimizer - Rewrites content to match author's writing style
+Writing Sample Optimizer - Matches author writing style
 """
 import logging
-from typing import Dict, List
-from .base_optimizer import BaseOptimizer
+from typing import Dict, List, Any
 from pathlib import Path
-import json
+
+# Fix the import path - BaseOptimizer is one level up
+from ..base_optimizer import BaseOptimizer
 
 logger = logging.getLogger(__name__)
 
-class WritingSamplesOptimizer(BaseOptimizer):
+class WritingSampleOptimizer(BaseOptimizer):
     """Optimizer that rewrites content to match specific author writing styles"""
     
     def __init__(self, config, api_client):
@@ -19,17 +20,17 @@ class WritingSamplesOptimizer(BaseOptimizer):
         
         # Validate that authors were loaded properly
         if not hasattr(self, 'authors') or not self.authors:
-            logger.error("❌ Authors not loaded in WritingSamplesOptimizer")
+            logger.error("❌ Authors not loaded in WritingSampleOptimizer")
             raise RuntimeError("Authors not loaded properly from BaseOptimizer")
         
         # Validate writing samples exist for all authors
-        self._validate_writing_samples()
+        self._validate_writing_sample()
         
-        logger.info(f"📝 WritingSamplesOptimizer initialized with {len(self.authors)} authors")
+        logger.info(f"📝 WritingSampleOptimizer initialized with {len(self.authors)} authors")
     
     def _load_rewrite_prompt_template(self) -> str:
         """Load the rewrite prompt template from markdown file - NO FALLBACKS"""
-        template_path = Path("optimizers/writing_samples/rewrite_prompt.md")
+        template_path = Path("optimizers/writing_sample/rewrite_prompt.md")
         
         if not template_path.exists():
             logger.error(f"❌ Required rewrite prompt template not found: {template_path}")
@@ -67,12 +68,12 @@ class WritingSamplesOptimizer(BaseOptimizer):
         logger.info(f"✅ Found author: {author['name']} ({author['country']})")
         
         # Load writing samples - REQUIRED
-        writing_samples = self._load_writing_samples(author_id)
-        if not writing_samples:
+        writing_sample = self._load_writing_sample(author_id)
+        if not writing_sample:
             logger.error(f"❌ No writing samples found for author {author_id}")
             raise ValueError(f"No writing samples found for author {author_id}")
         
-        logger.info(f"📚 Loaded {len(writing_samples)} writing samples")
+        logger.info(f"📚 Loaded {len(writing_sample)} writing samples")
         
         # Process each section
         optimized_sections = []
@@ -81,7 +82,7 @@ class WritingSamplesOptimizer(BaseOptimizer):
             logger.info(f"🔄 Processing section {i+1}/{len(sections)}: {section['title']}")
             
             # Select writing samples for this section
-            selected_samples = self._select_samples_for_section(writing_samples, section, config)
+            selected_samples = self._select_samples_for_section(writing_sample, section, config)
             
             # Generate optimization prompt - WILL FAIL IF TEMPLATE MISSING
             prompt = self._generate_writing_style_prompt(
@@ -158,27 +159,30 @@ class WritingSamplesOptimizer(BaseOptimizer):
             logger.error(f"❌ No writing samples provided for section '{section['title']}'")
             raise ValueError(f"No writing samples available for section '{section['title']}'")
         
-        # Build the complete prompt
+        # Build the complete prompt - REMOVE TEMPLATE ARTIFACTS
         prompt_parts = [
             prompt_template,
             "",
             "**WRITING SAMPLE**:",
             "",
-            samples[0].strip(),  # Use first sample as primary style reference
+            samples[0].strip(),
             "",
             "**TARGET CONTENT TO REWRITE**:",
             "",
-            f"Section: {section['title']}",
-            f"Material: {context.get('material', 'unknown material')} laser cleaning",
+            section['content'],  # REMOVED: Section metadata lines
             "",
-            section['content'],
+            "**INSTRUCTIONS**:",
+            "- Rewrite in the author's exact style",
+            "- Remove any template artifacts (Section:, Material: lines)",
+            "- Start directly with the content",
+            "- Maintain all technical information",
             "",
             "**REWRITTEN CONTENT**:"
         ]
         
         return "\n".join(prompt_parts)
     
-    def _load_writing_samples(self, author_id: int) -> List[str]:
+    def _load_writing_sample(self, author_id: int) -> List[str]:
         """Load writing samples for specific author using writing_sample_file path"""
         
         # Get author info to find the writing sample file path
@@ -188,7 +192,20 @@ class WritingSamplesOptimizer(BaseOptimizer):
         
         writing_sample_file = author.get('writing_sample_file')
         if not writing_sample_file:
-            raise ValueError(f"No writing_sample_file specified for author {author_id}")
+            # Build the path manually if not specified
+            nationality_map = {
+                'Taiwan': 'taiwanese',
+                'Italy': 'italian', 
+                'United States': 'english',
+                'Indonesia': 'indonesian'
+            }
+            
+            nationality = author.get('nationality', author.get('country', ''))
+            filename_suffix = nationality_map.get(nationality, nationality.lower())
+            filename = f"style_{filename_suffix}.md"
+            
+            # Use the correct path - files are in writing_sample/ (singular)
+            writing_sample_file = f"optimizers/writing_sample/{filename}"
         
         sample_path = Path(writing_sample_file)
         
@@ -214,7 +231,7 @@ class WritingSamplesOptimizer(BaseOptimizer):
             logger.error(f"❌ Error loading writing sample from {sample_path}: {e}")
             raise RuntimeError(f"Failed to load writing sample: {e}")
 
-    def _validate_writing_samples(self):
+    def _validate_writing_sample(self):
         """Validate that writing samples exist for all authors using writing_sample_file paths"""
         missing_authors = []
         
@@ -224,8 +241,20 @@ class WritingSamplesOptimizer(BaseOptimizer):
             writing_sample_file = author.get('writing_sample_file')
             
             if not writing_sample_file:
-                missing_authors.append(f"{author_name} (ID: {author_id}) - No writing_sample_file specified")
-                continue
+                # If no writing_sample_file specified, build the path manually
+                nationality_map = {
+                    'Taiwan': 'taiwanese',
+                    'Italy': 'italian', 
+                    'United States': 'english',
+                    'Indonesia': 'indonesian'
+                }
+                
+                nationality = author.get('nationality', author.get('country', ''))
+                filename_suffix = nationality_map.get(nationality, nationality.lower())
+                filename = f"style_{filename_suffix}.md"
+                
+                # CORRECT PATH: Use writing_sample/ (singular) not writing_sample/ (plural)
+                writing_sample_file = f"optimizers/writing_sample/{filename}"
             
             sample_path = Path(writing_sample_file)
             
@@ -247,12 +276,12 @@ class WritingSamplesOptimizer(BaseOptimizer):
         
         logger.info(f"✅ Writing samples validated for all {len(self.authors)} authors")
     
-    def _select_samples_for_section(self, writing_samples: List[str], section: Dict, config: Dict) -> List[str]:
+    def _select_samples_for_section(self, writing_sample: List[str], section: Dict, config: Dict) -> List[str]:
         """Select appropriate writing samples for the current section"""
         # For now, return all samples. In the future, could implement smart selection
         # based on section type, content similarity, etc.
-        max_samples = config.get('max_writing_samples', 1)  # Use 1 sample by default
-        selected = writing_samples[:max_samples]
+        max_samples = config.get('max_writing_sample', 1)  # Use 1 sample by default
+        selected = writing_sample[:max_samples]
         logger.info(f"📋 Selected {len(selected)} samples for section '{section['title']}'")
         return selected
 
@@ -270,3 +299,39 @@ class WritingSamplesOptimizer(BaseOptimizer):
         
         logger.warning(f"⚠️ Author not found for ID: {author_id}")
         return None
+    
+    def _get_writing_sample_path(self, author_id: int) -> Path:
+        """Get the path to the writing sample file for an author"""
+        author = self.authors.get(author_id)
+        if not author:
+            raise ValueError(f"Author ID {author_id} not found")
+        
+        # Map nationality to filename
+        nationality_map = {
+            'Taiwan': 'taiwanese',
+            'Italy': 'italian', 
+            'United States': 'english',
+            'Indonesia': 'indonesian'
+        }
+        
+        nationality = author['nationality']
+        filename_suffix = nationality_map.get(nationality, nationality.lower())
+        filename = f"style_{filename_suffix}.md"
+        
+        # Use the correct path - files are in the same directory as this optimizer
+        return Path(__file__).parent / filename
+    
+    def optimize(self, content: str, metadata: Dict[str, Any]) -> str:
+        """Apply author writing style (simplified)"""
+        author_id = metadata.get("author_id", 1)
+        
+        # Simple style application
+        style_prompt = f"""Rewrite this content in the writing style of author {author_id}.
+        Keep it under 1200 words total, casual and human-like.
+        Use contractions, personal observations, and natural flow.
+        
+        Content: {content}
+        
+        Return only the rewritten content."""
+        
+        return self.api_client.call(style_prompt, "style-application")

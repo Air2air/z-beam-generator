@@ -1,348 +1,298 @@
 # Z-Beam Generator
 
-A sophisticated laser cleaning article generator that creates high-quality, technical content with human-like writing patterns.
+A sophisticated AI-powered content generation system for laser cleaning articles. Generates comprehensive, human-like articles with configurable optimization pipelines.
 
-## Overview
+## 🚀 Quick Start
 
-The Z-Beam Generator uses a **four-phase modular pipeline** to create comprehensive laser cleaning articles:
+1. **Edit Configuration** (top of `run.py`):
+```python
+# Article Context
+context = {
+    "material": "hafnium",     # Material to write about
+    "author_id": 2,           # Author style (1-4)
+    "article_type": "material"
+}
 
-1. **PHASE 1: GENERATION** - Create content sections, metadata, and tags
-2. **PHASE 2: OPTIMIZATION** - Apply AI-powered content optimization  
-3. **PHASE 3: ORCHESTRATION** - Assemble final structured article
-4. **PHASE 4: OUTPUT** - Generate markdown file with YAML frontmatter
-
-## Features
-
-### 🎯 **Content Generation**
-- **Material-specific content** for laser cleaning applications
-- **Section-based generation** (introduction, comparisons, contaminants, substrates)
-- **Technical accuracy** with proper laser parameters and specifications
-
-### 🔧 **Advanced Optimization**
-- **Writing Samples Optimizer** - Matches specific author writing styles
-- **Iterative Optimizer** - Sequential AI-powered content refinement
-- **Full-article optimization** for coherent flow and natural language patterns
-
-### 📊 **Rich Metadata**
-- **34+ metadata fields** including material properties, laser parameters
-- **Performance metrics** (efficiency, processing time, surface quality)
-- **Technical specifications** (wavelength, power density, fluence)
-- **Safety and environmental data**
-
-### 🏷️ **Intelligent Tagging**
-- **Property-derived tags** from material analysis
-- **AI-optimized tag shortening** for better searchability
-- **Multi-level tag hierarchy** (properties, applications, safety)
-
-### 👥 **Author Management**
-- **Multiple author profiles** with distinct writing styles
-- **Author-specific writing samples** for style matching
-- **Professional author metadata** (title, country, expertise)
-
-## Architecture
-
-### Core Components
-
-```
-📁 Z-Beam Generator/
-├── 🔧 generator.py              # Main pipeline orchestrator
-├── 📝 content_generator.py      # Section content generation
-├── 📊 metadata/                 # Metadata generation
-│   └── metadata_generator.py
-├── 🏷️ tags/                     # Tag generation and optimization
-│   └── tag_generator.py
-├── 🎨 optimizers/               # Content optimization
-│   ├── base_optimizer.py        # Base class for optimizers
-│   ├── writing_samples_optimizer.py
-│   └── iterative_optimizer.py
-├── 🎭 orchestrator.py           # Final article assembly
-├── 🌐 api_client.py             # AI API interface
-└── 🚀 run.py                    # Entry point
+# Optimization Order (0=skip, 1=first, 2=second, 3=third)
+optimization_config = {
+    'iterative': 1,                # Structural improvements
+    'writing_sample': 2,          # Author voice matching
+    'technical_authenticity': 3    # Technical expertise injection
+}
 ```
 
-### Pipeline Flow
-
-```
-Material Input → Content Generation → Metadata Generation → Tag Generation
-                        ↓                      ↓                ↓
-                 Section Content        Material Properties    Optimized Tags
-                        ↓                      ↓                ↓
-                 ═══════════════════════════════════════════════════
-                            OPTIMIZATION PHASE
-                 ═══════════════════════════════════════════════════
-                        ↓
-              Writing Samples OR Iterative Optimization
-                        ↓
-                 Optimized Content
-                        ↓
-                 Article Orchestration
-                        ↓
-                 📄 Final Markdown Article
-```
-
-## Quick Start
-
-### 1. Installation
-
-```bash
-# Clone repository
-git clone [repository-url]
-cd z-beam-generator
-
-# Create virtual environment
-python3 -m venv .venv
-source .venv/bin/activate  # On Windows: .venv\Scripts\activate
-
-# Install dependencies
-pip install -r requirements.txt
-```
-
-### 2. Configuration
-
-Set your API key:
-```bash
-export OPENAI_API_KEY="your-api-key-here"
-```
-
-### 3. Run Generation
-
+2. **Run Generation**:
 ```bash
 python3 run.py
 ```
 
-## Configuration
+3. **Check Output**: Article generated in `output/` directory
 
-### Basic Settings (`run.py`)
+## 🏗️ System Architecture
 
+### **Phase 1: Content Generation**
+- **Sections**: Creates Introduction, Comparison, Contaminants, Substrates using `prompts/text/sections.json`
+- **Metadata**: Generates 34+ metadata fields (SEO, social, technical)
+- **Tags**: Creates optimized tags for article classification
+
+### **Phase 2: Optimization Pipeline**
+Three configurable optimizers run in sequence:
+
+#### **1. Iterative Optimizer** (`optimizers/iterative/`)
+- **6-step refinement process** using `iterative.json`
+- **Human naturalness** enhancement 
+- **Authority & technical** credibility
+- **Conversational tone** injection
+
+#### **2. Writing Sample Optimizer** (`optimizers/writing_sample/`)
+- **Author voice matching** using writing samples
+- **Style consistency** across sections
+- **Personal tone** adaptation
+
+#### **3. Technical Authenticity Optimizer** (`optimizers/technical_authenticity/`)
+- **Dynamic LLM research** for material-specific facts
+- **Real equipment** and manufacturer references
+- **Industry standards** (ASTM, ISO, ANSI)
+- **Authentic applications** and case studies
+
+### **Phase 3: Assembly**
+- **YAML frontmatter** with metadata
+- **Markdown formatting** 
+- **Final article** output
+
+## 🎛️ Configuration Examples
+
+### **All Three Optimizers (Full Treatment)**
 ```python
-# Material and Author
-context = {
-    "material": "hafnium",      # Target material
-    "author_id": 2,             # Author profile ID
-    "article_type": "material"  # Article type
-}
-
-# AI Settings
-config = {
-    "provider": "OPENAI",           # AI provider
-    "model": "gpt-4-turbo",         # Model selection
-    "temperature": 0.3,             # Creativity level
-    "optimization_method": "writing_samples",  # Optimizer choice
+optimization_config = {
+    'iterative': 1,                # First: structural improvements
+    'writing_sample': 2,          # Second: author voice
+    'technical_authenticity': 3    # Third: technical expertise
 }
 ```
 
-### Advanced Configuration
-
+### **Technical-First Approach**
 ```python
-# Content Limits
-"max_section_words": 75,        # Words per section
-"target_section_words": 75,     # Target section length
-"max_total_words": 800,         # Total article limit
-
-# Optimization Settings
-"high_similarity_threshold": 0.95,   # AI detection thresholds
-"low_similarity_threshold": 0.7,
-"final_similarity_threshold": 0.85,
-
-# Debug Settings
-"debug_prompts": True,          # Log AI prompts
-"debug_responses": True,        # Log AI responses
-"debug_content_flow": True,     # Log content flow
+optimization_config = {
+    'technical_authenticity': 1,   # First: inject technical facts
+    'iterative': 2,               # Second: humanize
+    'writing_sample': 3          # Third: author style
+}
 ```
 
-## Optimization Methods
-
-### Writing Samples Optimizer
-- **Author-specific style matching** using writing samples
-- **Full-article optimization** for coherent flow
-- **Style consistency** across all sections
-- **Professional tone matching**
-
-**Use when:** You want content that matches a specific author's writing style
-
-### Iterative Optimizer  
-- **Multi-step refinement** process
-- **Sequential improvements** with configurable steps
-- **Delta analysis** to track changes
-- **Human-like transformation** patterns
-
-**Use when:** You want maximum content transformation and refinement
-
-## Output Structure
-
-### Generated Article Format
-
-```markdown
----
-title: "Laser Cleaning hafnium"
-authorName: "Mario Jordan"
-materialType: "hafnium"
-atomicNumber: "72"
-density: "13.31 g/cm³"
-laserCleaningParameters:
-  wavelength: "1064 nm"
-  powerDensity: "4.5 kW/cm²"
-  fluence: "2.5 J/cm²"
-tags: [...]
----
-
-# Laser Cleaning hafnium
-
-## Introduction
-[Technical introduction with material-specific content...]
-
-## Comparison with Traditional Methods  
-[Detailed comparison analysis...]
-
-## Contaminants Removed
-[Specific contaminant types and removal efficiency...]
-
-## Substrate Applications
-[Application scenarios and technical parameters...]
+### **Two-Step Optimization**
+```python
+optimization_config = {
+    'iterative': 0,               # Skip
+    'writing_sample': 1,         # First
+    'technical_authenticity': 2   # Second
+}
 ```
 
-### Key Output Features
-
-- ✅ **Complete YAML frontmatter** with 30+ metadata fields
-- ✅ **Technical accuracy** with proper laser parameters  
-- ✅ **Material-specific content** tailored to the target material
-- ✅ **Professional formatting** with consistent structure
-- ✅ **SEO-optimized tags** for searchability
-
-## File Structure
-
-### Required Directories
-
-```
-📁 prompts/
-├── 📝 text/
-│   └── sections.json           # Section generation prompts
-├── 👥 authors/
-│   ├── authors.json            # Author profiles
-│   ├── author_1_sample.txt     # Writing samples
-│   └── author_2_sample.txt
-├── 🔧 optimizations/
-│   └── iterative.json          # Iterative optimization steps
-└── 🏷️ tags/
-    └── tag_prompts.json        # Tag generation prompts
-
-📁 output/                      # Generated articles
-📁 logs/                        # Application logs
+### **Single Optimizer Testing**
+```python
+optimization_config = {
+    'iterative': 1,               # Only iterative
+    'writing_sample': 0,         # Skip
+    'technical_authenticity': 0   # Skip
+}
 ```
 
-### Sample Files
-
-**authors.json:**
-```json
-[
-  {
-    "id": 1,
-    "name": "Dr. Sarah Chen",
-    "title": "Senior Laser Engineer",
-    "country": "USA"
-  }
-]
+### **No Optimization (Baseline)**
+```python
+optimization_config = {
+    'iterative': 0,               # Skip all
+    'writing_sample': 0,         # Skip all
+    'technical_authenticity': 0   # Skip all
+}
 ```
 
-**sections.json:**
+## 📁 Project Structure
+
+```
+z-beam-generator/
+├── run.py                          # Main entry point with configuration
+├── generator.py                    # Core generation logic
+├── api_client.py                   # Multi-provider API client
+├── orchestrator.py                 # Article assembly
+├── 
+├── config/
+│   ├── constants.py               # Configuration management
+│   └── credentials.json           # API credentials
+├── 
+├── optimizers/
+│   ├── base_optimizer.py          # Base optimizer class
+│   ├── simple_order_optimizer.py  # Orchestrates optimization order
+│   ├── iterative/
+│   │   ├── iterative_optimizer.py
+│   │   └── iterative.json         # 6-step optimization prompts
+│   ├── writing_sample/
+│   │   ├── writing_sample_optimizer.py
+│   │   └── samples/               # Author writing samples
+│   └── technical_authenticity/
+│       ├── technical_authenticity_optimizer.py
+│       ├── technical_facts.json   # Dynamic knowledge base
+│       ├── equipment.json
+│       └── specifications.json
+├── 
+├── prompts/
+│   ├── text/
+│   │   └── sections.json          # Section generation prompts
+│   └── optimizations/
+│       └── iterative.json         # Optimization prompts
+├── 
+├── authors/
+│   └── authors.json               # Author profiles & styles
+├── 
+├── metadata/
+│   └── metadata_generator.py      # Metadata generation
+├── 
+├── output/                        # Generated articles
+└── logs/                          # Execution logs
+```
+
+## 🔧 Authors System
+
+Four distinct author profiles with unique writing styles:
+
+- **Author 1**: Technical expert with formal tone
+- **Author 2**: Conversational industry veteran  
+- **Author 3**: Educational focus with clear explanations
+- **Author 4**: Practical field experience emphasis
+
+Each author has writing samples that the system uses to match voice and style.
+
+## 🤖 API Support
+
+Supports multiple AI providers:
+- **OpenAI** (GPT-4, GPT-3.5)
+- **Google Gemini** (Gemini Pro)
+- **XAI** (Grok)
+- **DeepSeek** (DeepSeek-V2)
+
+Configure in `config/credentials.json`:
 ```json
 {
-  "introduction": {
-    "title": "Introduction",
-    "prompt": "Generate introduction for {material} laser cleaning..."
-  }
+  "provider": "openai",
+  "openai_api_key": "your-key-here",
+  "model": "gpt-4-turbo-preview"
 }
 ```
 
-## Advanced Features
+## 📊 Output Format
 
-### Multi-Provider Support
-- **OpenAI** (GPT-4, GPT-3.5)
-- **Anthropic Claude** (ready for integration)
-- **Google Gemini** (ready for integration)
-- **XAI Grok** (ready for integration)
+Generated articles include:
+- **YAML frontmatter** with comprehensive metadata
+- **Structured sections** (Introduction, Comparison, Contaminants, Substrates)
+- **SEO-optimized** titles and descriptions
+- **Social media** ready content
+- **Technical accuracy** with real references
 
-### Quality Assurance
-- **Delta analysis** tracking content transformation
-- **Similarity thresholds** for AI detection avoidance
-- **Word count management** with configurable limits
-- **Error handling** with fail-fast approach
+## 🔬 Technical Authenticity Features
 
-### Extensibility
-- **Modular optimizer system** - easy to add new optimizers
-- **Plugin architecture** for new content types
-- **Configurable prompt system** for easy customization
-- **Multi-language support** ready for international use
+The Technical Authenticity Optimizer dynamically researches:
+- **Material-specific** technical properties
+- **Real equipment** models and manufacturers
+- **Industry standards** (ASTM, ISO, ANSI numbers)
+- **Authentic applications** and case studies
+- **Processing parameters** and challenges
 
-## Troubleshooting
+Example injected content:
+- "Hafnium's thermal conductivity of 23 W/m·K affects laser processing"
+- "IPG Photonics YLR-1000 fiber laser system"
+- "ASTM B776 - Standard Specification for Hafnium Alloys"
 
-### Common Issues
+## 🎯 Use Cases
 
-**ImportError: Cannot import name 'ZBeamGenerator'**
+### **Content Marketing**
+- **Blog posts** for laser cleaning companies
+- **Technical articles** for industry publications
+- **Educational content** for training materials
+
+### **SEO Content**
+- **Material-specific** landing pages
+- **Comparison articles** vs traditional methods
+- **Technical guides** for different substrates
+
+### **Research & Development**
+- **Baseline content** for technical documentation
+- **Market research** article generation
+- **Competitive analysis** content
+
+## 🧪 Testing & Experimentation
+
+### **A/B Testing Optimizers**
 ```bash
-# Solution: Use function-based import
-from generator import generate_article
+# Test individual optimizers
+python3 run.py  # iterative only
+python3 run.py  # writing_sample only
+python3 run.py  # technical_authenticity only
 ```
 
-**Missing author writing sample**
+### **Order Testing**
 ```bash
-# Ensure file exists:
-prompts/authors/author_2_sample.txt
+# Different optimization orders
+python3 run.py  # 1→2→3
+python3 run.py  # 3→1→2
+python3 run.py  # 2→3→1
 ```
 
-**API key not set**
-```bash
-export OPENAI_API_KEY="your-key-here"
-```
-
-### Debug Mode
-
-Enable comprehensive logging:
+### **Material Testing**
 ```python
-config = {
-    "debug_prompts": True,
-    "debug_responses": True,
-    "debug_content_flow": True
-}
+# Test different materials
+context = {"material": "titanium", "author_id": 1}
+context = {"material": "aluminum", "author_id": 2}
+context = {"material": "steel", "author_id": 3}
 ```
 
-## Contributing
+## 🔍 Logging & Monitoring
 
-### Development Setup
+Comprehensive logging shows:
+- **Step-by-step** optimization progress
+- **Word count** changes per section
+- **API call** tracking
+- **Error handling** with detailed messages
+- **Performance metrics** for each phase
 
-1. **Fork and clone** the repository
-2. **Create feature branch**: `git checkout -b feature/new-optimizer`
-3. **Install dev dependencies**: `pip install -r requirements-dev.txt`
-4. **Run tests**: `python -m pytest tests/`
-5. **Submit pull request`
+Log files saved to `logs/` with timestamps.
 
-### Adding New Optimizers
+## 🚀 Performance
 
-1. **Inherit from BaseOptimizer**
-2. **Implement optimize_sections method**
-3. **Add to optimizer factory in generator.py**
-4. **Update configuration options**
+- **Caching**: Material research cached to avoid repeated API calls
+- **Parallel processing**: Multiple sections processed efficiently
+- **Error recovery**: Graceful fallbacks for API failures
+- **Optimization**: Smart content selection based on section relevance
 
-```python
-from optimizers.base_optimizer import BaseOptimizer
+## 📈 Scalability
 
-class CustomOptimizer(BaseOptimizer):
-    def optimize_sections(self, sections, material, metadata):
-        # Your optimization logic here
-        return optimized_sections
-```
+- **Multi-material**: Automatically adapts to any material
+- **Dynamic knowledge**: LLM-researched technical facts
+- **Configurable**: Easy to add new optimizers
+- **Modular**: Each component independently testable
 
-## License
+## 🛠️ Development
 
-MIT License - see LICENSE file for details.
+### **Adding New Optimizers**
+1. Create optimizer class extending `BaseOptimizer`
+2. Add to `simple_order_optimizer.py`
+3. Update `optimization_config` in `run.py`
 
-## Support
+### **Adding New Authors**
+1. Add profile to `authors/authors.json`
+2. Add writing samples to `optimizers/writing_sample/samples/`
+3. Update author references in context
 
-- 📧 **Email**: [support-email]
-- 📖 **Documentation**: [docs-url]
-- 🐛 **Issues**: [github-issues-url]
-- 💬 **Discussions**: [github-discussions-url]
+### **Adding New Materials**
+No code changes needed - system dynamically researches any material.
+
+## 🎯 Roadmap
+
+- **Multi-language** support
+- **Custom prompts** per material type
+- **Batch processing** for multiple articles
+- **Performance analytics** dashboard
+- **Custom author** creation tools
 
 ---
 
-**🚀 Generate professional laser cleaning articles with advanced AI optimization and human-like writing patterns!**
+**Z-Beam Generator: Sophisticated AI content generation with human-like authenticity and technical precision.**

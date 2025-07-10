@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """
-Iterative Optimizer - Applies multiple optimization passes to content
+Iterative Optimizer - Applies multiple iterative improvements
 """
 import difflib
 import re
 import json
 from pathlib import Path
 from typing import Dict, List, Any
-from .base_optimizer import BaseOptimizer
+from ..base_optimizer import BaseOptimizer
 import logging
 
 logger = logging.getLogger(__name__)
@@ -25,37 +25,28 @@ class IterativeOptimizer(BaseOptimizer):
         logger.info(f"🔧 IterativeOptimizer initialized with {len(self.optimization_steps)} steps")
     
     def _load_optimization_steps(self) -> List[Dict]:
-        """Load optimization steps from iterative.json - NO FALLBACKS"""
-        
-        # Load from the JSON file
-        json_path = Path("optimizers/iterative.json")
+        """Load optimization steps from JSON file"""
+        # Fix the path - look for iterative.json in the same folder as this optimizer
+        json_path = Path(__file__).parent / "iterative.json"  # ← Fixed path
         
         if not json_path.exists():
             raise FileNotFoundError(f"❌ Required iterative steps file not found: {json_path}")
         
-        with open(json_path, 'r', encoding='utf-8') as f:
-            steps_data = json.load(f)
-        
-        # Convert JSON structure to list of steps
-        steps = []
-        for key, step_config in steps_data.items():
-            step = {
-                "name": step_config.get("name", key),
-                "description": step_config.get("description", ""),
-                "order": step_config.get("order", 0),
-                "prompt": step_config.get("prompt", ""),
-                "type": step_config.get("type", "general")
-            }
-            steps.append(step)
-        
-        # Sort by order
-        steps.sort(key=lambda x: x["order"])
-        
-        logger.info(f"✅ Loaded {len(steps)} optimization steps from iterative.json")
-        for step in steps:
-            logger.info(f"   📋 Step {step['order']}: {step['name']}")
-        
-        return steps
+        try:
+            with open(json_path, 'r') as f:
+                data = json.load(f)
+            
+            steps = data.get("optimization_steps", [])
+            if not steps:
+                raise ValueError("❌ No optimization steps found in iterative.json")
+            
+            logger.info(f"📚 Loaded {len(steps)} optimization steps")
+            return steps
+            
+        except json.JSONDecodeError as e:
+            raise ValueError(f"❌ Invalid JSON in iterative steps file: {e}")
+        except Exception as e:
+            raise RuntimeError(f"❌ Failed to load iterative steps: {e}")
     
     def optimize_sections(self, sections: List[Dict], context: Dict, config: Dict) -> List[Dict]:
         """Apply iterative optimization to content sections"""
@@ -289,3 +280,73 @@ class IterativeOptimizer(BaseOptimizer):
                 })
         
         return sections
+
+    def _split_into_sections(self, content: str, target_sections: int) -> List[Dict]:
+        """Split content into exactly target_sections - NO EXTRA SECTIONS"""
+    
+        # Use the configured required sections
+        from config.constants import CONFIG
+        required_sections = CONFIG.generation["required_sections"]
+    
+        if len(required_sections) != target_sections:
+            logger.warning(f"⚠️ Required sections ({len(required_sections)}) != target ({target_sections})")
+    
+        # Force exact section count
+        sections = []
+        paragraphs = [p.strip() for p in content.split('\n\n') if p.strip()]
+    
+        if len(paragraphs) < target_sections:
+            logger.error(f"❌ Not enough content paragraphs ({len(paragraphs)}) for {target_sections} sections")
+            raise ValueError(f"Insufficient content for {target_sections} sections")
+    
+        # Distribute paragraphs evenly across required sections
+        paragraphs_per_section = len(paragraphs) // target_sections
+        extra_paragraphs = len(paragraphs) % target_sections
+    
+        para_idx = 0
+        for i, section_title in enumerate(required_sections[:target_sections]):
+            # Calculate paragraphs for this section
+            section_para_count = paragraphs_per_section + (1 if i < extra_paragraphs else 0)
+            
+            # Get paragraphs for this section
+            section_paragraphs = paragraphs[para_idx:para_idx + section_para_count]
+            para_idx += section_para_count
+            
+            sections.append({
+                'title': section_title,
+                'content': '\n\n'.join(section_paragraphs),
+                'order': i + 1
+            })
+    
+        logger.info(f"✅ Split content into exactly {len(sections)} sections as required")
+        return sections
+
+    def _enforce_word_limits(self, content: str, config: Dict) -> str:
+        """Enforce word limits on content"""
+        max_total = config.get("max_total_words", 1200)
+        max_section = config.get("max_section_words", 250)
+        
+        # Count total words
+        total_words = len(content.split())
+        if total_words > max_total:
+            logger.warning(f"⚠️ Content exceeds limit: {total_words}/{max_total} words")
+            
+            # Add word limit enforcement prompt
+            trim_prompt = f"""Trim this content to under {max_total} words total, with each section under {max_section} words. Keep the most important technical information.
+
+CONTENT TO TRIM:
+{content}
+
+Requirements:
+- Total: under {max_total} words
+- Each section: under {max_section} words  
+- Keep technical accuracy
+- Maintain section headers
+
+Return ONLY the trimmed content."""
+            
+            trimmed_content = self.api_client.call(trim_prompt, "word-limit-enforcement")
+            logger.info(f"✅ Content trimmed: {len(trimmed_content.split())} words")
+            return trimmed_content
+        
+        return content
