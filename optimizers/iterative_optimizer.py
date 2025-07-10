@@ -1,68 +1,54 @@
 #!/usr/bin/env python3
 """
-Content Optimizer - Handles iterative and writing sample optimization
+Iterative Optimizer - Applies multiple optimization passes to content
 """
 import difflib
 import re
 import json
 import logging
 from pathlib import Path
+from typing import List, Dict
+from .base_optimizer import BaseOptimizer
 
 logger = logging.getLogger(__name__)
 
-class IterativeOptimizer:
+class IterativeOptimizer(BaseOptimizer):
     """Optimizes text sections using iterative methods"""
     
     def __init__(self, config, api_client):
-        self.config = config
-        self.api_client = api_client
+        """Initialize iterative optimizer"""
+        super().__init__(config, api_client)
+        
+        # Load optimization steps configuration
+        self.optimization_steps = self._load_optimization_steps()
+        
+        logger.info(f"🔄 IterativeOptimizer initialized with {len(self.optimization_steps)} steps")
     
-    def optimize_sections(self, sections, material, metadata):
-        """Updated interface to match generator expectations"""
+    def optimize_sections(self, sections: List[Dict], material: str, metadata: Dict) -> List[Dict]:
+        """Apply iterative optimization to content"""
         logger.info(f"🔄 ITERATIVE OPTIMIZATION STARTED for {material}")
         logger.info(f"📊 Input sections: {len(sections)}")
         
-        # Convert sections format for your existing method
-        text_sections = []
-        for section in sections:
-            text_sections.append({
-                'name': section.get('title', '').lower().replace(' ', '_'),
-                'title': section.get('title', 'Untitled'),
-                'content': section.get('content', '')
-            })
+        # Validate input sections (inherited from BaseOptimizer)
+        if not self._validate_sections(sections):
+            raise ValueError("Invalid sections provided")
         
-        # Get author data from metadata (if needed)
-        author_data = {
-            'name': metadata.get('authorName', ''),
-            'slug': metadata.get('authorSlug', ''),
-            'id': metadata.get('authorId', '')
-        }
+        # Convert sections to internal format (inherited from BaseOptimizer)
+        text_sections = self._convert_sections_to_internal(sections)
+        self._log_section_details(text_sections, "Input")
         
-        # Use your existing optimization logic
-        optimized_result = self.optimize_sections_original(text_sections, author_data, material)
+        # Apply iterative optimization
+        optimized_sections = self._apply_iterative_optimization(text_sections, material)
+        self._log_section_details(optimized_sections, "Output")
         
-        # Convert back to expected format
-        optimized_sections = []
-        for section in optimized_result:
-            optimized_sections.append({
-                'title': section.get('title', 'Optimized Content'),
-                'content': section.get('content', '')
-            })
+        # Ensure word limits (inherited from BaseOptimizer)
+        optimized_sections = self._ensure_word_limits(optimized_sections)
         
-        logger.info(f"✅ ITERATIVE OPTIMIZATION COMPLETED - {len(optimized_sections)} sections")
-        return optimized_sections
-    
-    def optimize_sections_original(self, text_sections, author_data, material=None):
-        """Your existing optimize_sections method (renamed to avoid conflict)"""
-        optimization_method = self.config["optimization_method"]
-        logger.info(f"🔧 Starting optimization: {optimization_method}")
+        # Convert back to expected format (inherited from BaseOptimizer)
+        result = self._convert_sections_to_output(optimized_sections)
         
-        if optimization_method == "iterative":
-            return self._apply_iterative_optimization(text_sections, material)
-        elif optimization_method == "writing_sample":
-            return self._apply_writing_sample_optimization(text_sections, author_data)
-        else:
-            raise ValueError(f"Unknown optimization method: {optimization_method}")
+        logger.info(f"✅ ITERATIVE OPTIMIZATION COMPLETED - {len(result)} sections")
+        return result
     
     def _count_words(self, text):
         """Simple word count"""
@@ -276,8 +262,3 @@ class IterativeOptimizer:
             return data
         else:
             raise ValueError(f"Invalid iterative config structure in {iterative_file}")
-
-    def _apply_writing_sample_optimization(self, text_sections, author_data):
-        """Apply writing sample optimization (if needed)"""
-        # Placeholder for writing sample optimization
-        return text_sections

@@ -2,8 +2,10 @@
 """
 Z-Beam Generator - Simplified with GlobalConfigManager
 """
+import argparse
 import logging
 from pathlib import Path
+from generator import generate_article
 
 def setup_logging(config):
     """Setup logging configuration"""
@@ -26,6 +28,19 @@ def setup_logging(config):
     logger = logging.getLogger("setup_logging")
     logger.info(f"📝 Logging initialized - File: {log_file}")
     return logger
+
+def parse_arguments():
+    """Parse command line arguments"""
+    parser = argparse.ArgumentParser(description="Generate Z-Beam articles")
+    parser.add_argument("--material", "-m", help="Material to generate article for")
+    parser.add_argument("--author", "-a", type=int, help="Author ID (1-4)")
+    parser.add_argument("--optimization", "-o", choices=["writing_samples", "iterative"], 
+                       help="Optimization method")
+    return parser.parse_args()
+
+def load_config():
+    """Load configuration - for now returns the hardcoded config"""
+    return get_config()[0]
 
 def get_config():
     """Get configuration and context for generator"""
@@ -56,9 +71,9 @@ def get_config():
         "sections_file": "prompts/text/sections.json",
         
         # Section length limits
-        "max_section_words": 75,
-        "target_section_words": 75,
-        "max_total_words": 800,
+        "max_section_words": 150,
+        "target_section_words": 120,
+        "max_total_words": 1200,
         
         # AI Detection Settings - ADDED:
         "zerogpt_enabled": False,
@@ -123,41 +138,45 @@ def get_config():
 
     return config, context
 
-def extract_content_from_markdown(article_content):
-    """Extract main content from markdown, skipping frontmatter"""
-    content = article_content.strip()
-    
-    # Skip frontmatter if present
-    if content.startswith("---"):
-        parts = content.split("---", 2)
-        if len(parts) >= 3:
-            content = parts[2].strip()
-    
-    return content
-
 def main():
-    """Main execution function"""
-    # Get config and context first
+    """Main function to generate article"""
+    # Initialize configuration first
     config, context = get_config()
     
     # Setup logging and get logger
     logger = setup_logging(config)
-    logger.info(f"🔧 ZBeamGenerator initialized - {config['provider']}/{config['model']}")
-    
-    logger.info("🚀 STARTING ARTICLE GENERATION")
-    logger.info(f"📄 Material: {context['material']} | Author: {context['author_id']} | Type: {context['article_type']}")
     
     try:
-        # Import and call the generate_article function
-        from generator import generate_article
+        # Parse command line arguments
+        args = parse_arguments()
         
-        # Generate the article
+        # Override config with command line arguments
+        if args.material:
+            config["default_material"] = args.material
+            context["material"] = args.material
+        if args.author:
+            config["default_author"] = args.author
+            context["author_id"] = args.author
+        if args.optimization:
+            config["optimization_method"] = args.optimization
+        
+        logger.info("🔧 ZBeamGenerator initialized - {}/{}".format(
+            config.get('provider', 'unknown'), 
+            config.get('model', 'unknown')
+        ))
+        
+        # Log start
+        logger.info("🚀 STARTING ARTICLE GENERATION")
+        logger.info(f"📄 Material: {context['material']} | Author: {context['author_id']} | Type: {context['article_type']}")
+        logger.info(f"🔧 Optimization method: {config.get('optimization_method', 'unknown')}")
+        logger.info(f"🤖 Model: {config.get('provider', 'unknown')}/{config.get('model', 'unknown')}")
+        
+        # Generate article
         output_file = generate_article(context, config)
         
+        # Success
         logger.info(f"✅ ARTICLE GENERATION COMPLETED")
-        logger.info(f"📁 Output: {output_file}")
-        
-        return output_file
+        logger.info(f"📁 Output file: {output_file}")
         
     except Exception as e:
         logger.error(f"❌ ARTICLE GENERATION FAILED: {e}")
