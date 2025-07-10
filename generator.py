@@ -10,6 +10,7 @@ from typing import Dict, List
 from api_client import APIClient
 from optimizers.iterative_optimizer import IterativeOptimizer
 from optimizers.writing_samples_optimizer import WritingSamplesOptimizer
+from utils.tag_formatter import format_tags_for_article
 
 logger = logging.getLogger(__name__)
 
@@ -208,7 +209,7 @@ Return only a JSON array of strings, no other text:
         return fallback_tags
 
 def assemble_final_article(material: str, metadata: Dict, tags: List[str], sections: List[Dict], config: Dict) -> str:
-    """Assemble final markdown article"""
+    """Assemble final markdown article with configurable tag formatting"""
     logger.info(f"🔧 Assembling final article for {material}")
     
     # Create output directory
@@ -221,9 +222,13 @@ def assemble_final_article(material: str, metadata: Dict, tags: List[str], secti
     # Build markdown content
     content_lines = []
     
-    # Add YAML frontmatter
+    # Add YAML frontmatter (excluding tags)
     content_lines.append("---")
     for key, value in metadata.items():
+        # Skip tags in metadata - we'll add them separately below
+        if key == "tags":
+            continue
+            
         if isinstance(value, str):
             content_lines.append(f'{key}: "{value}"')
         elif isinstance(value, list):
@@ -233,13 +238,21 @@ def assemble_final_article(material: str, metadata: Dict, tags: List[str], secti
         else:
             content_lines.append(f"{key}: {value}")
     
-    # Add tags
-    content_lines.append("tags:")
-    for tag in tags:
-        content_lines.append(f'  - "{tag}"')
-    
     content_lines.append("---")
     content_lines.append("")
+    
+    # Add tags section with configurable formatting
+    if tags:
+        content_lines.append("## Tags")
+        content_lines.append("")
+        
+        # Format tags according to configuration
+        formatted_tags = format_tags_for_article(tags, config)
+        content_lines.append(formatted_tags)
+        
+        content_lines.append("")
+        content_lines.append("---")
+        content_lines.append("")
     
     # Add title
     content_lines.append(f"# {metadata.get('title', f'Laser Cleaning {material}')}")

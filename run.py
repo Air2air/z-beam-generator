@@ -56,7 +56,7 @@ def get_config():
     config = {
         "provider": "OPENAI",  # Options: OPENAI, XAI, GEMINI, DEEPSEEK
         "model": "gpt-4-turbo",
-        "temperature": 0.3,  # Lower from 0.7 to reduce AI-sounding language
+        "temperature": 0.9,  # Lower from 0.7 to reduce AI-sounding language
         "metadata_temperature": 0.3,
         "max_tokens": 4000,
         
@@ -133,7 +133,31 @@ def get_config():
                     "deepseek-reasoner": "deepseek-reasoner"
                 }
             }
-        }
+        },
+        
+        # TAG FORMATTING CONFIGURATION
+        "tag_formatting": {
+            "style": "hashtag",           # Options: hashtag, plain, bullet, numbered
+            "separator": ", ",            # Options: ", ", " | ", " • ", "\n"
+            "case_format": "title",       # Options: title, lower, upper, camel
+            "remove_spaces": True,        # Remove spaces from hashtags
+            "prefix": "#",                # Prefix for each tag
+            "suffix": "",                 # Suffix for each tag  
+            "max_tags_per_line": 6,       # Tags per line before wrapping
+            "sort_tags": True,            # Sort alphabetically
+            "group_by_category": False,   # Group related tags together
+        },
+        
+        # TAG CONTENT CONFIGURATION  
+        "tag_generation": {
+            "max_tags": 12,               # Maximum number of tags
+            "min_tags": 8,                # Minimum number of tags
+            "include_material": True,     # Include material-specific tags
+            "include_technical": True,    # Include technical process tags
+            "include_industry": True,     # Include industry application tags
+            "include_safety": True,       # Include safety-related tags
+            "avoid_generic": True,        # Avoid generic tags like "Technology"
+        },
     }
 
     return config, context
