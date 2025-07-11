@@ -134,7 +134,7 @@ Format as valid JSON only."""
             if "default_image_url" in config:
                 content["image"] = config["default_image_url"]
             else:
-                content["image"] = "https://example.com/default-image.jpg"
+                content["image"] = "https://z-beam.com/default-image.jpg"
         
         return content
         

@@ -62,7 +62,7 @@ def load_config() -> Dict[str, Any]:
     
     # Add environment defaults
     config.update({
-        'api_base_url': os.getenv('API_BASE_URL', 'https://api.example.com'),
+        'api_base_url': os.getenv('API_BASE_URL', 'https://api.z-beam.com'),
         'api_key': os.getenv('API_KEY', ''),
         'api_timeout': int(os.getenv('API_TIMEOUT', '30')),
         'default_author_id': int(os.getenv('DEFAULT_AUTHOR_ID', '1')),
@@ -70,7 +70,7 @@ def load_config() -> Dict[str, Any]:
         'create_directories': True,
         'log_level': 'INFO',
         'model_name': os.getenv('MODEL_NAME', 'DEEPSEEK/deepseek-chat'),
-        'default_image_url': os.getenv('DEFAULT_IMAGE_URL', 'https://example.com/laser-cleaning-image.jpg'),
+        'default_image_url': os.getenv('DEFAULT_IMAGE_URL', 'https://z-beam.com/laser-cleaning-image.jpg'),
         'default_encoding': 'utf-8'
     })
     

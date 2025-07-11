@@ -1,18 +1,17 @@
-```yaml
 schemaVersion: "1.0"
-schemaType: "LaserCleaningMaterialProfile"
+schemaType: "MaterialProfile"
 materialProfile:
   # Core material information
-  materialName: "{{materialName}}" # Placeholder for dynamic material name
+  name: "{{materialName}}" # Placeholder for dynamic material name
   description:
     type: string
     description: "Overview of laser cleaning for the material"
     example: "Laser cleaning of {{materialName}} removes oxides and residues, preserving structural integrity and biocompatibility for aerospace and medical applications."
-  materialClass:
+  class:
     type: string
     description: "Class of the material (e.g., Metal, Alloy)"
     example: "Metal"
-  materialType:
+  type:
     type: string
     description: "Type of material (e.g., General, Specialized)"
     example: "Specialized"
@@ -30,6 +29,20 @@ materialProfile:
       type: string
     description: "Industries where the material is commonly cleaned"
     example: ["Aerospace", "Medical Implants", "High-Performance Alloys"]
+  keywords:
+    type: array
+    items:
+      type: string
+    description: "Keywords for SEO, tagging, and JSON-LD"
+    example: ["laser cleaning {{materialName}}", "oxide removal", "aerospace materials"]
+  schemaOrgType:
+    type: string
+    description: "Schema.org type for JSON-LD"
+    example: "TechArticle"
+  url:
+    type: string
+    description: "Canonical URL for the material page"
+    example: "https://z-beam.com/materials/{{materialName | slugify}}"
 
   # Material substrates
   substrates:
@@ -37,7 +50,7 @@ materialProfile:
     items:
       type: object
       properties:
-        substrateName:
+        name:
           type: string
           description: "Name of the substrate or material variant"
           example: "Pure {{materialName}}"
@@ -51,16 +64,16 @@ materialProfile:
           type: string
           description: "Specific considerations for cleaning the substrate"
           example: "Use short pulses to avoid thermal cracking"
-      example:
-        - substrateName: "Pure {{materialName}}"
-          properties: ["High hardness (5.0 Mohs)", "Magnetic"]
-          cleaningConsiderations: "Use short pulses to avoid thermal cracking"
-        - substrateName: "{{materialName}}-Chromium Alloys"
-          properties: ["Corrosion-resistant", "High strength"]
-          cleaningConsiderations: "Adjust wavelength for alloy absorption"
-        - substrateName: "Stellite ({{materialName}}-Based)"
-          properties: ["Extreme wear resistance", "High melting point"]
-          cleaningConsiderations: "High scan speed to reduce heat-affected zones"
+    example:
+      - name: "Pure {{materialName}}"
+        properties: ["High hardness (5.0 Mohs)", "Magnetic"]
+        cleaningConsiderations: "Use short pulses to avoid thermal cracking"
+      - name: "{{materialName}}-Chromium Alloys"
+        properties: ["Corrosion-resistant", "High strength"]
+        cleaningConsiderations: "Adjust wavelength for alloy absorption"
+      - name: "Stellite ({{materialName}}-Based)"
+        properties: ["Extreme wear resistance", "High melting point"]
+        cleaningConsiderations: "High scan speed to reduce heat-affected zones"
 
   # Successful cleaning outcomes
   outcomes:
@@ -68,7 +81,7 @@ materialProfile:
     items:
       type: object
       properties:
-        outcome:
+        name:
           type: string
           description: "Name of the outcome"
           example: "Effective Contaminant Removal"
@@ -76,13 +89,13 @@ materialProfile:
           type: string
           description: "Description of the outcome"
           example: "Achieves 98% removal of oxides and residues from {{materialName}}, ensuring consistency."
-      example:
-        - outcome: "Effective Contaminant Removal"
-          description: "Achieves 98% removal of oxides and residues from {{materialName}}, ensuring consistency."
-        - outcome: "Substrate Integrity"
-          description: "Preserves {{materialName}}’s surface hardness and biocompatibility, critical for medical implants."
-        - outcome: "Eco-Friendly Process"
-          description: "Eliminates chemical solvents, reducing environmental footprint for {{materialName}} cleaning."
+    example:
+      - name: "Effective Contaminant Removal"
+        description: "Achieves 98% removal of oxides and residues from {{materialName}}, ensuring consistency."
+      - name: "Substrate Integrity"
+        description: "Preserves {{materialName}}’s surface hardness and biocompatibility, critical for medical implants."
+      - name: "Eco-Friendly Process"
+        description: "Eliminates chemical solvents, reducing environmental footprint for {{materialName}} cleaning."
 
   # Challenges
   challenges:
@@ -90,7 +103,7 @@ materialProfile:
     items:
       type: object
       properties:
-        challenge:
+        name:
           type: string
           description: "Name of the challenge"
           example: "Oxide Layer Tenacity"
@@ -98,13 +111,13 @@ materialProfile:
           type: string
           description: "Description of the challenge"
           example: "{{materialName}}’s oxide films resist removal, requiring higher pulse energies and precise wavelengths."
-      example:
-        - challenge: "Oxide Layer Tenacity"
-          description: "{{materialName}}’s oxide films resist removal, requiring higher pulse energies and precise wavelengths."
-        - challenge: "Thermal Sensitivity"
-          description: "Excessive heat risks microcracking in {{materialName}}, mitigated by real-time thermal monitoring."
-        - challenge: "Calibration Precision"
-          description: "Laser alignment errors reduce efficiency for {{materialName}}, necessitating skilled operators."
+    example:
+      - name: "Oxide Layer Tenacity"
+        description: "{{materialName}}’s oxide films resist removal, requiring higher pulse energies and precise wavelengths."
+      - name: "Thermal Sensitivity"
+        description: "Excessive heat risks microcracking in {{materialName}}, mitigated by real-time thermal monitoring."
+      - name: "Calibration Precision"
+        description: "Laser alignment errors reduce efficiency for {{materialName}}, necessitating skilled operators."
 
   # Cleaning efficiency comparison
   cleaningEfficiencyComparison:
@@ -147,9 +160,6 @@ materialProfile:
             type: string
             description: "Source of efficiency data"
             example: "Industry testing reports, 2024"
-        example:
-          type: "bar"
-          dataSource: "Industry testing reports, 2024"
 
   # Risks of traditional cleaning methods
   risksOfTraditionalMethods:
@@ -167,16 +177,16 @@ materialProfile:
             type: string
           description: "Risks associated with the method for the material"
           example: ["Surface abrasion compromising {{materialName}}’s wear resistance", "Damage to biocompatibility"]
-      example:
-        - method: "Abrasive Blasting"
-          risks: ["Surface abrasion compromising {{materialName}}’s wear resistance", "Damage to biocompatibility"]
-        - method: "Chemical Cleaning"
-          risks: ["Etching of {{materialName}} surfaces", "Residue interference with coating adhesion"]
-        - method: "Manual Scraping"
-          risks: ["Scratches on {{materialName}}", "Inconsistent cleaning results"]
+    example:
+      - method: "Abrasive Blasting"
+        risks: ["Surface abrasion compromising {{materialName}}’s wear resistance", "Damage to biocompatibility"]
+      - method: "Chemical Cleaning"
+        risks: ["Etching of {{materialName}} surfaces", "Residue interference with coating adhesion"]
+      - method: "Manual Scraping"
+        risks: ["Scratches on {{materialName}}", "Inconsistent cleaning results"]
 
   # Cleaning performance metrics
-  cleaningPerformanceMetrics:
+  performanceMetrics:
     type: object
     properties:
       description:
@@ -262,12 +272,9 @@ materialProfile:
             type: string
             description: "Source of cost data"
             example: "Surface Engineering Journal, 2022"
-        example:
-          type: "bar"
-          dataSource: "Surface Engineering Journal, 2022"
 
   # Laser cleaning parameters
-  laserCleaningParameters:
+  laserParameters:
     type: object
     properties:
       energyDensity:
@@ -315,30 +322,34 @@ materialProfile:
   author:
     type: object
     properties:
-      authorId:
+      id:
         type: string
         description: "Unique identifier for the author"
         example: "4"
-      authorName:
+      name:
         type: string
         description: "Full name of the author"
         example: "Ikmanda Roswati"
-      authorTitle:
+      title:
         type: string
         description: "Professional title of the author"
         example: "Laser Cleaning Expert"
-      authorCountry:
+      country:
         type: string
         description: "Country of the author"
         example: "Indonesia"
-      authorImage:
+      image:
         type: string
         description: "URL of the author's image"
         example: "/images/authors/ikmanda-roswati.jpg"
-      authorSlug:
+      slug:
         type: string
         description: "Slug for the author's profile page"
         example: "ikmanda-roswati"
+      url:
+        type: string
+        description: "URL for the author's profile"
+        example: "https://z-beam.com/authors/ikmanda-roswati"
 
   # Content management information
   contentManagement:
@@ -381,9 +392,125 @@ materialProfile:
         url:
           type: string
           description: "URL of related content"
-          example: "https://example.com/articles/laser-cleaning-aerospace-cobalt"
+          example: "https://z-beam.com/articles/laser-cleaning-aerospace-cobalt"
         type:
           type: string
           description: "Type of related content"
           example: "article"
-```
+
+  generatorConfig:
+    tags:
+      includeMaterialCategories: true
+      includeApplications: true
+      primaryKeywords: ["material properties", "industrial materials"]
+    jsonld:
+      schemaType: "Product"
+      includeProperties: true
+      includeSpecifications: true
+    metadata:
+      includeDescription: true
+      includeCategory: true
+
+  sections:
+    overview:
+      required: true
+      prompt: "Write a comprehensive overview paragraph about the material {subject}. Include what it is, its basic properties, discovery, and primary uses. Focus on factual information and keep it concise but informative (150-200 words)."
+    properties:
+      required: true
+      prompt: "Describe the key properties of {subject} in paragraph form. Include physical properties (appearance, density, melting point), chemical properties, mechanical properties, and any unique characteristics. Be specific with technical details and measurements where appropriate. Write 200-250 words in paragraph format."
+    applications:
+      required: true
+      prompt: "Explain the main applications and uses of {subject} in paragraph form. Cover different industries that use this material, specific products or components, and why this material is chosen for these applications. Include both common and specialized applications. Write 200-250 words in paragraph format."
+    specifications:
+      required: true
+      prompt: "Describe the standard specifications, grades, and quality metrics for {subject} in paragraph form. Include industry standards, common alloys or formulations if applicable, testing methods, and quality control considerations. Be specific about standards organizations (ASTM, ISO, etc.) where relevant. Write 150-200 words in paragraph format."
+
+  materialProfile:
+    name:
+      type: string
+      required: true
+      description: "Name of the material"
+    description:
+      type: string
+      required: true
+      description: "Overview of the material"
+    category:
+      type: string
+      required: true
+      description: "Category of material (metal, polymer, ceramic, etc.)"
+    keywords:
+      type: array
+      items: {"type": "string"}
+      required: true
+      description: "Keywords for SEO, tagging, and JSON-LD"
+    physicalProperties:
+      type: object
+      required: true
+      properties:
+        density:
+          type: string
+          required: true
+          description: "Density of the material"
+        meltingPoint:
+          type: string
+          required: false
+          description: "Melting point of the material"
+        boilingPoint:
+          type: string
+          required: false
+          description: "Boiling point of the material"
+    mechanicalProperties:
+      type: object
+      required: false
+      properties:
+        tensileStrength:
+          type: string
+          required: false
+          description: "Tensile strength of the material"
+        hardness:
+          type: string
+          required: false
+          description: "Hardness of the material"
+    applications:
+      type: array
+      items: {"type": "string"}
+      required: true
+      description: "Applications where this material is used"
+    specifications:
+      type: array
+      items: {"type": "string"}
+      required: true
+      description: "Industry standards and specifications"
+    contentManagement:
+      type: object
+      required: true
+      properties:
+        articleType: {"type": "string", "required": true, "default": "material-profile"}
+        publishedAt: {"type": "string", "format": "date", "required": false}
+        lastUpdated: {"type": "string", "format": "date", "required": false}
+
+  jsonLD:
+    "@type": "Product"
+    requiredProperties:
+      - "name"
+      - "description"
+    recommendedProperties:
+      - "category"
+      - "manufacturer"
+      - "material"
+
+  validation:
+    requiredSections:
+      - "Overview"
+      - "Properties"
+      - "Applications"
+      - "Specifications"
+    jsonLD:
+      "@type": "Product"
+      requiredProperties:
+        - "name"
+        - "description"
+      recommendedProperties:
+        - "category"
+        - "manufacturer"
+        - "material"

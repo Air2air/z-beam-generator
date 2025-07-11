@@ -1,144 +1,137 @@
 #!/usr/bin/env python3
 """
-JSON-LD Generator - No fallbacks, 100% schema-driven, pure dynamic
+JSON-LD Generator - Creates structured data
 """
-import logging
 import json
-from typing import Dict, Any, List
-
-logger = logging.getLogger(__name__)
+import logging
+from typing import Dict, Any
 
 class JSONLDGenerator:
-    """JSON-LD generator - 100% schema-driven, no defaults or hardcoding"""
+    """Base class for JSON-LD generators"""
     
-    def __init__(self, jsonld_rules: Dict[str, Any]):
-        if not jsonld_rules:
-            raise ValueError("JSON-LD rules are required - no defaults provided")
+    def __init__(self, api_client=None, logger=None):
+        self.api_client = api_client
+        self.logger = logger or logging.getLogger(__name__)
         
-        self.jsonld_rules = jsonld_rules
-        self._validate_jsonld_rules()
+    def generate(self, data: Dict[str, Any]) -> str:
+        """Generate JSON-LD"""
+        raise NotImplementedError("Subclasses must implement generate()")
+
+class DynamicJSONLDGenerator(JSONLDGenerator):
+    """Dynamic JSON-LD generator for structured data"""
     
-    def _validate_jsonld_rules(self):
-        """Validate JSON-LD rules - no fallbacks"""
-        required_rule_fields = ["required_fields", "structure", "field_mapping"]
-        
-        for field in required_rule_fields:
-            if field not in self.jsonld_rules:
-                raise ValueError(f"JSON-LD rules missing required field: {field}")
-        
-        # Validate structure
-        if not isinstance(self.jsonld_rules["structure"], dict):
-            raise ValueError("JSON-LD rules structure must be a dictionary")
-        
-        # Validate field mapping
-        if not isinstance(self.jsonld_rules["field_mapping"], dict):
-            raise ValueError("JSON-LD rules field_mapping must be a dictionary")
+    def __init__(self, api_client, config=None):
+        super().__init__(api_client)
+        self.config = config or {}
+        self.max_prompt_size = 8000  # Set a safer limit for API calls
     
-    def generate_jsonld(self, metadata: Dict[str, Any]) -> Dict[str, Any]:
-        """Generate JSON-LD from metadata - no fallbacks"""
-        logger.info("📊 Generating JSON-LD from metadata")
-        
-        # Validate required fields
-        required_fields = self.jsonld_rules["required_fields"]
-        for field in required_fields:
-            if field not in metadata:
-                raise ValueError(f"Required metadata field for JSON-LD not found: {field}")
-        
-        # Build JSON-LD structure
-        jsonld = self._build_jsonld_structure(metadata)
-        
-        logger.info("📊 JSON-LD generated successfully")
-        return jsonld
-    
-    def _build_jsonld_structure(self, metadata: Dict[str, Any]) -> Dict[str, Any]:
-        """Build JSON-LD structure from schema rules"""
-        jsonld = {}
-        
-        # Apply base structure from rules
-        base_structure = self.jsonld_rules["structure"]
-        jsonld.update(base_structure)
-        
-        # Apply field mapping
-        field_mapping = self.jsonld_rules["field_mapping"]
-        
-        for metadata_field, jsonld_path in field_mapping.items():
-            if metadata_field in metadata:
-                self._set_nested_field(jsonld, jsonld_path, metadata[metadata_field])
-        
-        # Apply conditional rules if present
-        if "conditional_rules" in self.jsonld_rules:
-            self._apply_conditional_rules(jsonld, metadata)
-        
-        return jsonld
-    
-    def _set_nested_field(self, jsonld: Dict[str, Any], field_path: str, value: Any):
-        """Set nested field in JSON-LD structure"""
-        parts = field_path.split(".")
-        current = jsonld
-        
-        # Navigate to the parent of the final field
-        for part in parts[:-1]:
-            if part not in current:
-                current[part] = {}
-            current = current[part]
-        
-        # Set the final field
-        current[parts[-1]] = value
-    
-    def _apply_conditional_rules(self, jsonld: Dict[str, Any], metadata: Dict[str, Any]):
-        """Apply conditional rules based on metadata"""
-        conditional_rules = self.jsonld_rules["conditional_rules"]
-        
-        for rule in conditional_rules:
-            if not isinstance(rule, dict):
-                continue
+    def generate(self, data: Dict[str, Any]) -> str:
+        """Generate JSON-LD from data - SINGLE IMPLEMENTATION with NO FALLBACKS"""
+        if not self.api_client:
+            raise RuntimeError("Cannot generate JSON-LD: API client is not available")
             
-            # Check condition
-            condition_field = rule.get("condition_field")
-            condition_value = rule.get("condition_value")
-            
-            if not condition_field or not condition_value:
-                continue
-            
-            if metadata.get(condition_field) == condition_value:
-                # Apply transformations
-                transformations = rule.get("transformations", {})
-                for field_path, transformation in transformations.items():
-                    if isinstance(transformation, dict):
-                        if "set_value" in transformation:
-                            self._set_nested_field(jsonld, field_path, transformation["set_value"])
-                        elif "use_metadata_field" in transformation:
-                            metadata_field = transformation["use_metadata_field"]
-                            if metadata_field in metadata:
-                                self._set_nested_field(jsonld, field_path, metadata[metadata_field])
-                    else:
-                        self._set_nested_field(jsonld, field_path, transformation)
+        # Prepare a simplified data structure for the prompt
+        simplified_data = self._simplify_data(data)
+        
+        # Create prompt
+        prompt = self._create_jsonld_prompt(simplified_data)
+        
+        # Check if prompt is too long and truncate if necessary
+        if len(prompt) > self.max_prompt_size:
+            self.logger.warning(f"JSON-LD prompt too long ({len(prompt)} chars), truncating")
+            prompt = prompt[:self.max_prompt_size] + "\n\nPlease generate JSON-LD with available information."
+        
+        # Make API call
+        self.logger.info("📊 Generating JSON-LD dynamically from metadata")
+        response = self.api_client.call(prompt, "json_ld_generation")
+        
+        # Extract JSON-LD from response
+        json_ld_text = self._extract_jsonld_from_response(response)
+        
+        # Format the JSON-LD for output
+        return f"""
+<script type="application/ld+json">
+{json_ld_text}
+</script>
+"""
     
-    def format_jsonld(self, jsonld: Dict[str, Any]) -> str:
-        """Format JSON-LD for output"""
-        if not jsonld:
-            raise ValueError("No JSON-LD data provided for formatting")
+    def _simplify_data(self, data: Dict[str, Any]) -> Dict[str, Any]:
+        """Simplify data structure to reduce prompt size"""
+        simplified = {}
         
-        # Get format rules
-        format_rules = self.jsonld_rules.get("format_rules", {})
+        # Extract only what's needed for JSON-LD
+        if "context" in data:
+            simplified["context"] = {
+                "subject": data["context"].get("subject", ""),
+                "author": data["context"].get("author", {}).get("name", "")
+            }
         
-        # Apply formatting
-        try:
-            indent = format_rules.get("indent", 2)
-            ensure_ascii = format_rules.get("ensure_ascii", False)
-            
-            formatted = json.dumps(jsonld, indent=indent, ensure_ascii=ensure_ascii)
-            
-            # Apply wrapper if specified
-            wrapper = format_rules.get("wrapper", "script")
-            if wrapper == "script":
-                return f'<script type="application/ld+json">\n{formatted}\n</script>'
-            elif wrapper == "json":
-                return formatted
-            elif wrapper == "none":
-                return formatted
-            else:
-                raise ValueError(f"Unknown JSON-LD wrapper format: {wrapper}")
+        if "schema_type" in data:
+            simplified["schema_type"] = data["schema_type"]
+        
+        # Include basic profile data but limit nested structures
+        for profile_key in ["application_profile", "material_profile", "region_profile", "thesaurus_profile"]:
+            if profile_key in data:
+                simplified[profile_key] = {}
+                profile = data[profile_key]
                 
-        except Exception as e:
-            raise ValueError(f"Failed to format JSON-LD: {e}")
+                # Copy top-level simple attributes
+                for key, value in profile.items():
+                    if isinstance(value, (str, int, float, bool)):
+                        simplified[profile_key][key] = value
+        
+        return simplified
+    
+    def _create_jsonld_prompt(self, data: Dict[str, Any]) -> str:
+        """Create a prompt for JSON-LD generation"""
+        schema_type = data.get("schema_type", "")
+        subject = data.get("context", {}).get("subject", "")
+        
+        # Map schema types to correct Schema.org types
+        type_mapping = {
+            "application": "TechnicalArticle",
+            "material": "Product",
+            "region": "Place",
+            "thesaurus": "DefinedTerm"
+        }
+        
+        schema_org_type = type_mapping.get(schema_type, "Article")
+        
+        prompt = f"""Generate valid JSON-LD for a {schema_type} about {subject}.
+        
+Data:
+{json.dumps(data, indent=2)}
+
+The JSON-LD should:
+1. Use https://schema.org as the context
+2. Use '@type': '{schema_org_type}' (THIS IS REQUIRED)
+3. Include all relevant properties from the data
+4. Be properly nested and formatted
+5. Return ONLY the JSON-LD code without explanations
+
+JSON-LD:
+"""
+        return prompt
+    
+    def _extract_jsonld_from_response(self, response: str) -> str:
+        """Extract JSON-LD from API response"""
+        # Try to find JSON-LD code block
+        if "```json" in response:
+            start = response.find("```json") + 7
+            end = response.find("```", start)
+            json_ld_text = response[start:end].strip()
+        elif "```" in response:
+            start = response.find("```") + 3
+            end = response.find("```", start)
+            json_ld_text = response[start:end].strip()
+        else:
+            # Just use the whole response
+            json_ld_text = response.strip()
+        
+        # Validate it's proper JSON
+        try:
+            json_obj = json.loads(json_ld_text)
+            return json.dumps(json_obj, indent=2)
+        except json.JSONDecodeError:
+            self.logger.error("Invalid JSON-LD generated")
+            raise ValueError("Generated JSON-LD is not valid JSON")

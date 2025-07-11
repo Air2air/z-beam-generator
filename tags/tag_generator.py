@@ -1,125 +1,70 @@
 #!/usr/bin/env python3
 """
-Tag Generator - No fallbacks, 100% schema-driven
+Tags Generator
+Generates tags based on schema definitions
 """
-import logging
+
 from typing import Dict, Any, List
+import logging
 
-logger = logging.getLogger(__name__)
-
-class TagGenerator:
-    """Tag generator - 100% schema-driven, no defaults"""
+class TagsGenerator:
+    """Generates tags for articles"""
     
-    def __init__(self, tag_rules: Dict[str, Any]):
-        self.tag_rules = tag_rules
-        self._validate_tag_rules()
+    def __init__(self, api_client=None, logger=None):
+        self.api_client = api_client
+        self.logger = logger or logging.getLogger(__name__)
     
-    def _validate_tag_rules(self):
-        """Validate tag rules - no fallbacks"""
-        required_fields = ["base_tags", "metadata_fields", "search_fields", "max_tags", "format"]
-        
-        for field in required_fields:
-            if field not in self.tag_rules:
-                raise ValueError(f"Tag rules missing required field: {field}")
-        
-        # Validate field types
-        if not isinstance(self.tag_rules["base_tags"], list):
-            raise ValueError("Tag rules base_tags must be a list")
-        
-        if not isinstance(self.tag_rules["metadata_fields"], list):
-            raise ValueError("Tag rules metadata_fields must be a list")
-        
-        if not isinstance(self.tag_rules["search_fields"], list):
-            raise ValueError("Tag rules search_fields must be a list")
-        
-        if not isinstance(self.tag_rules["max_tags"], int):
-            raise ValueError("Tag rules max_tags must be an integer")
-        
-        if self.tag_rules["format"] not in ["hash", "plain", "array"]:
-            raise ValueError("Tag rules format must be 'hash', 'plain', or 'array'")
-    
-    def generate_tags(self, metadata: Dict[str, Any]) -> List[str]:
-        """Generate tags from metadata - no fallbacks"""
-        logger.info("🏷️ Generating tags from metadata")
-        
-        tags = set()
-        
-        # Add base tags
-        tags.update(self.tag_rules["base_tags"])
-        
-        # Add tags from metadata fields
-        for field_name in self.tag_rules["metadata_fields"]:
-            if field_name not in metadata:
-                raise ValueError(f"Required metadata field for tags not found: {field_name}")
+    def generate(self, data: Dict[str, Any]) -> List[str]:
+        """Generate tags based on schema"""
+        if not self.api_client:
+            self.logger.error("Cannot generate tags: No API client available")
+            # Return minimal tags
+            subject = data.get("context", {}).get("subject", "")
+            schema_type = data.get("schema_type", "")
+            return [subject, schema_type]
             
-            field_value = metadata[field_name]
-            if isinstance(field_value, str):
-                tags.add(field_value)
-            elif isinstance(field_value, list):
-                tags.update(field_value)
-            else:
-                tags.add(str(field_value))
-        
-        # Add search-based tags
-        self._add_search_tags(tags, metadata)
-        
-        # Apply term mapping
-        self._apply_term_mapping(tags, metadata)
-        
-        # Limit tags
-        tag_list = list(tags)
-        if len(tag_list) > self.tag_rules["max_tags"]:
-            tag_list = tag_list[:self.tag_rules["max_tags"]]
-        
-        logger.info(f"🏷️ Generated {len(tag_list)} tags")
-        return tag_list
-    
-    def _add_search_tags(self, tags: set, metadata: Dict[str, Any]):
-        """Add tags based on search fields"""
-        for field_name in self.tag_rules["search_fields"]:
-            if field_name not in metadata:
-                raise ValueError(f"Required search field for tags not found: {field_name}")
+        try:
+            prompt = self._create_tags_prompt(data)
+            response = self.api_client.call(prompt, "tags_generation")
             
-            field_value = str(metadata[field_name]).lower()
+            # Process response to get tags
+            tags = self._process_tags_response(response)
+            return tags
             
-            # Search for matches in term mapping
-            if "term_mapping" in self.tag_rules:
-                for term, mapped_tags in self.tag_rules["term_mapping"].items():
-                    if term.lower() in field_value:
-                        if isinstance(mapped_tags, list):
-                            tags.update(mapped_tags)
-                        else:
-                            tags.add(mapped_tags)
+        except Exception as e:
+            self.logger.error(f"Error generating tags: {e}")
+            # Return minimal tags on error
+            subject = data.get("context", {}).get("subject", "")
+            schema_type = data.get("schema_type", "")
+            return [subject, schema_type]
     
-    def _apply_term_mapping(self, tags: set, metadata: Dict[str, Any]):
-        """Apply term mapping transformations"""
-        if "term_mapping" not in self.tag_rules:
-            return
+    def _create_tags_prompt(self, data: Dict[str, Any]) -> str:
+        """Create a prompt for tags generation"""
+        subject = data.get("context", {}).get("subject", "")
+        schema_type = data.get("schema_type", "")
         
-        # Create a copy to avoid modifying set during iteration
-        current_tags = tags.copy()
+        prompt = f"""Generate 5-10 relevant hashtags for a {schema_type} article about {subject}.
+Include both general and specific tags that would help with content discovery.
+Format as a comma-separated list without # symbols.
+Example: technology, artificial intelligence, machine learning, neural networks, deep learning"""
         
-        for tag in current_tags:
-            tag_lower = tag.lower()
-            if tag_lower in self.tag_rules["term_mapping"]:
-                mapped_tags = self.tag_rules["term_mapping"][tag_lower]
-                if isinstance(mapped_tags, list):
-                    tags.update(mapped_tags)
-                else:
-                    tags.add(mapped_tags)
+        return prompt
     
-    def format_tags(self, tags: List[str]) -> str:
-        """Format tags according to schema rules"""
-        if not tags:
-            raise ValueError("No tags provided for formatting")
-        
-        tag_format = self.tag_rules["format"]
-        
-        if tag_format == "hash":
-            return " ".join(f"#{tag}" for tag in tags)
-        elif tag_format == "plain":
-            return " ".join(tags)
-        elif tag_format == "array":
-            return str(tags)
+    def _process_tags_response(self, response: str) -> List[str]:
+        """Process API response to extract tags"""
+        if not response:
+            return []
+            
+        # Split by commas or newlines
+        if "," in response:
+            tags = [tag.strip() for tag in response.split(",")]
         else:
-            raise ValueError(f"Unknown tag format: {tag_format}")
+            tags = [tag.strip() for tag in response.split("\n")]
+            
+        # Filter out empty tags
+        tags = [tag for tag in tags if tag]
+        
+        # Add # to tags that don't have it
+        tags = [f"#{tag}" if not tag.startswith("#") else tag for tag in tags]
+        
+        return tags
