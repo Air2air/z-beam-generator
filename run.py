@@ -1,39 +1,61 @@
 #!/usr/bin/env python3
 """
-Z-Beam Generator - Schema-Driven Article Generation
+Simplified Run - Uses existing authors.json file
 """
 
-# ===== EDIT THESE VALUES =====
-context = {
-    "article_type": "material",     # Options: material, application, region, thesaurus
-    "subject": "managanese",             # Subject matches article type (material name, app name, city, term)
-    "author_id": 2,
-    "provider": "DEEPSEEK",
-}
-# ===== END EDITABLE SECTION =====
-
 import logging
-from generator import generate_article
-from config.constants import CONFIG
-from setup_logging import setup_logging
+from pathlib import Path
+from datetime import datetime
+
+
+def setup_logging():
+    """Setup logging configuration"""
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    log_dir = Path("logs")
+    log_dir.mkdir(exist_ok=True)
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+        handlers=[
+            logging.StreamHandler(),
+            logging.FileHandler(log_dir / f"zbeam_{timestamp}.log"),
+        ],
+    )
+
+    logger = logging.getLogger(__name__)
+    logger.info("🚀 Starting Z-Beam article generation")
+    return logger
 
 
 def main():
-    """Generate article with schema-driven context"""
+    """Main execution function"""
     logger = setup_logging()
 
-    config = CONFIG.get_full_config()
-    config["provider"] = context.get("provider", "DEEPSEEK")
+    # Simple context - article generation parameters
+    context = {
+        "article_type": "material",
+        "subject": "copper",
+        "author_id": 4,  # Mario Jordan from authors/authors.json
+    }
 
-    logger.info("🚀 STARTING SCHEMA-DRIVEN ARTICLE GENERATION")
-    logger.info(f"📄 {context['article_type'].upper()}: {context['subject']}")
-    logger.info(f"🎯 Article Type: {context['article_type']} | Subject: {context['subject']}")
+    # Clean config - only API settings (authors loaded from file)
+    config = {
+        "api": {
+            "provider": "deepseek",
+            "model": "deepseek-chat",
+            "temperature": 0.7,
+        }
+    }
 
     try:
+        from generator import generate_article
+
         output_file = generate_article(context, config)
-        logger.info(f"✅ COMPLETED: {output_file}")
+        logger.info(f"✅ Article generated: {output_file}")
+
     except Exception as e:
-        logger.error(f"❌ FAILED: {e}")
+        logger.error(f"❌ Generation failed: {e}")
         raise
 
 
