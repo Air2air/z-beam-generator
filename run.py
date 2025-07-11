@@ -6,8 +6,8 @@ Z-Beam Generator - Schema-Driven Article Generation
 # ===== EDIT THESE VALUES =====
 context = {
     "article_type": "material",     # Options: material, application, region, thesaurus
-    "subject": "steel",             # Subject matches article type (material name, app name, city, term)
-    "author_id": 3,
+    "subject": "managanese",             # Subject matches article type (material name, app name, city, term)
+    "author_id": 2,
     "provider": "DEEPSEEK",
 }
 # ===== END EDITABLE SECTION =====
