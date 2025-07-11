@@ -1,123 +1,185 @@
 #!/usr/bin/env python3
 """
-Pure Schema-Driven Generator - Zero fallbacks, zero hardcoded values
+Generator - Updated for fully dynamic components
 """
 import logging
-import json
 from typing import Dict, Any
 from pathlib import Path
 
 logger = logging.getLogger(__name__)
 
-def generate_article(context: Dict[str, Any], config: Dict[str, Any]) -> str:
-    """Generate article - pure schema-driven, no fallbacks"""
-    logger.info("🚀 Generating schema-driven article...")
+def _get_tag_generator(article_type: str, config: Dict[str, Any], api_client):
+    """Get dynamic tag generator - no rules required"""
+    from tags.dynamic_tag_generator import DynamicTagGenerator
     
-    # Get schema for article type
+    return DynamicTagGenerator(api_client, config)
+
+def _get_jsonld_generator(config: Dict[str, Any], api_client):
+    """Get dynamic JSON-LD generator - no rules required"""
+    from jsonld.dynamic_jsonld_generator import DynamicJSONLDGenerator
+    
+    return DynamicJSONLDGenerator(api_client, config)
+
+def generate_article(context: Dict[str, Any], config: Dict[str, Any]) -> str:
+    """Generate article with fully dynamic components"""
+    logger.info("🚀 Generating article...")
+    
+    # Get schema
     schema = _get_schema(context["article_type"])
     
-    # Generate metadata using schema
-    metadata = _generate_metadata(context, config, schema)
+    # Get schema fields for metadata generation
+    schema_fields = _get_schema_fields(schema, context)
     
-    # Generate tags using schema
-    tags = _generate_tags_from_schema(schema, metadata)
+    # Generate metadata with schema context
+    metadata = _generate_metadata(context, config, schema_fields)
     
-    # Generate JSON-LD using schema
-    jsonld = _generate_jsonld_from_schema(schema, metadata)
+    # Let schema enhance metadata with additional fields
+    metadata = schema.enhance_metadata(metadata, context)
     
-    # Create article using schema
-    article = _create_article_from_schema(schema, metadata, tags, jsonld)
+    # Create API client for dynamic generation
+    from api_client import APIClient
+    api_client = APIClient(config)
+    
+    # Create fully dynamic generators - no rules required
+    tag_generator = _get_tag_generator(context["article_type"], config, api_client)
+    jsonld_generator = _get_jsonld_generator(config, api_client)
+    
+    # Generate components
+    tags = tag_generator.generate_tags(metadata)
+    jsonld = jsonld_generator.generate_jsonld(metadata)
+    
+    # Create article
+    article = _create_article(schema, metadata, tags, jsonld, tag_generator, jsonld_generator)
     
     # Save article
-    output_file = _save_article(context, article)
+    output_file = _save_article(schema, context, article)
     
-    logger.info(f"✅ Schema-driven article generated: {output_file}")
+    logger.info(f"✅ Article generated: {output_file}")
     return output_file
 
-def _get_schema(article_type: str):
-    """Get schema - no fallbacks"""
-    if article_type == "material":
-        from schemas.material_schema import MaterialSchema
-        return MaterialSchema()
-    elif article_type == "application":
-        from schemas.application_schema import ApplicationSchema
-        return ApplicationSchema()
-    elif article_type == "region":
-        from schemas.region_schema import RegionSchema
-        return RegionSchema()
-    elif article_type == "thesaurus":
-        from schemas.thesaurus_schema import ThesaurusSchema
-        return ThesaurusSchema()
-    else:
-        raise ValueError(f"Unsupported article type: {article_type}")
+def _get_schema_fields(schema, context: Dict[str, Any]) -> Dict[str, Any]:
+    """Get schema fields for metadata generation"""
+    schema_fields = {"articleType": schema.schema_type}
+    
+    if hasattr(schema, 'prompt_config') and schema.prompt_config:
+        metadata_fields = schema.prompt_config.get("metadataFields", {})
+        
+        for field_name, field_config in metadata_fields.items():
+            if isinstance(field_config, dict):
+                if "default" in field_config:
+                    schema_fields[field_name] = field_config["default"]
+                elif field_config.get("useSubject", False):
+                    schema_fields[field_name] = context["subject"]
+                elif field_config.get("useContext"):
+                    context_key = field_config["useContext"]
+                    if context_key in context:
+                        schema_fields[field_name] = context[context_key]
+                    else:
+                        raise ValueError(f"Schema field {field_name} requires context key '{context_key}' but not found")
+            elif isinstance(field_config, str):
+                schema_fields[field_name] = field_config
+            else:
+                raise ValueError(f"Invalid field configuration for {field_name}")
+    
+    return schema_fields
 
-def _generate_metadata(context: Dict[str, Any], config: Dict[str, Any], schema) -> Dict[str, Any]:
-    """Generate metadata - enhanced by schema"""
+def _generate_metadata(context: Dict[str, Any], config: Dict[str, Any], schema_fields: Dict[str, Any]) -> Dict[str, Any]:
+    """Generate base metadata with schema fields"""
     from api_client import APIClient
     from metadata.metadata_generator import generate_metadata
     
-    # Get material requirement from schema
-    material = schema.get_material_requirement(context)
+    subject = context["subject"]
+    author_id = context.get("author_id", 1)
     
-    # Generate base metadata
     api_client = APIClient(config)
-    metadata = generate_metadata(material, context.get("author_id", 1), config, api_client)
-    
-    # Enhance metadata with schema context
-    metadata = schema.enhance_metadata(metadata, context)
+    metadata = generate_metadata(subject, author_id, config, api_client, schema_fields)
     
     return metadata
 
-def _generate_tags_from_schema(schema, metadata: Dict[str, Any]) -> list:
-    """Generate tags purely from schema - no hardcoded values"""
-    return schema.generate_tags(metadata)
+def _get_schema(article_type: str):
+    """Get schema for article type"""
+    from schemas.schema_registry import get_schema
+    return get_schema(article_type)
 
-def _generate_jsonld_from_schema(schema, metadata: Dict[str, Any]) -> Dict[str, Any]:
-    """Generate JSON-LD purely from schema - no hardcoded values"""
-    return schema.generate_jsonld(metadata)
-
-def _create_article_from_schema(schema, metadata: Dict[str, Any], tags: list, jsonld: Dict[str, Any]) -> str:
-    """Create article structure from schema"""
-    from metadata.metadata_generator import format_metadata_as_yaml
-    
-    # Get article template from schema
-    template = schema.get_article_template()
+def _create_article(schema, metadata, tags, jsonld, tag_generator, jsonld_generator):
+    """Create article content - no separate title parameter"""
+    import yaml
     
     # Format components
-    metadata_yaml = format_metadata_as_yaml(metadata)
-    formatted_tags = schema.format_tags(tags)
-    formatted_jsonld = f"```json\n{json.dumps(jsonld, indent=2)}\n```"
+    metadata_yaml = yaml.dump(metadata, default_flow_style=False, sort_keys=False)
+    formatted_tags = tag_generator.format_tags(tags)
+    formatted_jsonld = jsonld_generator.format_jsonld(jsonld)
     
-    # Get title from schema
-    title = schema.generate_title(metadata)
+    # Get article template
+    template = schema.get_article_template()
     
-    # Populate template
-    return template.format(
+    # Fill template with metadata only (title is in metadata)
+    article = template.format(
         metadata_yaml=metadata_yaml,
         formatted_tags=formatted_tags,
         formatted_jsonld=formatted_jsonld,
-        title=title,
-        article_type=metadata.get("articleType", ""),
-        subject=metadata.get("subject", "")
+        **metadata
     )
+    
+    return article
 
-def _save_article(context: Dict[str, Any], article: str) -> str:
-    """Save article - filename from schema"""
-    schema = _get_schema(context["article_type"])
-    filename = schema.generate_filename(context)
+def _save_article(schema, context, article):
+    """Save article to file"""
+    # Get output rules
+    output_rules = schema.get_output_rules()
     
-    output_dir = Path("output")
-    output_dir.mkdir(exist_ok=True)
+    # Create output directory
+    output_dir = Path(output_rules["directory"])
+    if output_rules.get("create_dirs", True):
+        output_dir.mkdir(parents=True, exist_ok=True)
     
+    # Generate filename
+    filename_template = schema.get_filename_template()
+    logger.info(f"🔧 Filename template: {filename_template}")
+    logger.info(f"🔧 Context keys: {list(context.keys())}")
+    
+    try:
+        filename = filename_template.format(**context)
+    except KeyError as e:
+        logger.error(f"🚨 Missing key in context: {e}")
+        logger.error(f"🚨 Template: {filename_template}")
+        logger.error(f"🚨 Context: {context}")
+        raise
+    
+    # Save file
     output_file = output_dir / filename
+    encoding = output_rules.get("encoding", "utf-8")
     
-    with open(output_file, "w", encoding="utf-8") as f:
+    with open(output_file, 'w', encoding=encoding) as f:
         f.write(article)
     
     return str(output_file)
 
 if __name__ == "__main__":
-    from run import context, config
+    # Remove circular import
+    import sys
+    if len(sys.argv) > 1:
+        article_type = sys.argv[1]
+        subject = sys.argv[2] if len(sys.argv) > 2 else "default"
+        author_id = int(sys.argv[3]) if len(sys.argv) > 3 else 1
+    else:
+        article_type = "material"
+        subject = "copper"
+        author_id = 4
+    
+    context = {
+        "article_type": article_type,
+        "subject": subject,
+        "author_id": author_id
+    }
+    
+    config = {
+        "api": {
+            "provider": "deepseek",
+            "model": "deepseek-chat",
+            "temperature": 0.7
+        }
+    }
     
     # Setup logging
     logging.basicConfig(
@@ -125,7 +187,7 @@ if __name__ == "__main__":
         format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
         handlers=[
             logging.StreamHandler(),
-            logging.FileHandler(f'logs/generation_{context["article_type"]}_{context["subject"]}.log')
+            logging.FileHandler(f'logs/generation_{article_type}_{subject}.log')
         ]
     )
     

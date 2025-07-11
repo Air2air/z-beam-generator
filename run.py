@@ -1,58 +1,57 @@
 #!/usr/bin/env python3
 """
-Simplified Run - Uses existing authors.json file
+Z-Beam Generator - Main entry point
 """
 
 import logging
+import sys
 from pathlib import Path
-from datetime import datetime
+
+# Add project root to path
+project_root = Path(__file__).parent
+sys.path.insert(0, str(project_root))
+
+from generator import generate_article
+from schemas.schema_registry import list_available_schemas, get_available_types
+from config import load_config
 
 
-def setup_logging():
-    """Setup logging configuration"""
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    log_dir = Path("logs")
-    log_dir.mkdir(exist_ok=True)
-
-    logging.basicConfig(
-        level=logging.INFO,
-        format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-        handlers=[
-            logging.StreamHandler(),
-            logging.FileHandler(log_dir / f"zbeam_{timestamp}.log"),
-        ],
-    )
-
-    logger = logging.getLogger(__name__)
-    logger.info("🚀 Starting Z-Beam article generation")
-    return logger
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+)
+logger = logging.getLogger(__name__)
 
 
 def main():
-    """Main execution function"""
-    logger = setup_logging()
+    """Main entry point"""
+    logger.info("🚀 Starting Z-Beam article generation")
 
-    # Simple context - article generation parameters
+    # Load configuration
+    config = load_config()
+
+    # Show available schemas
+    available_schemas = list_available_schemas()
+    logger.info(f"📋 Available article types: {get_available_types()}")
+
+    # Test context
     context = {
-        "article_type": "material",
+        "article_type": "thesaurus",
         "subject": "copper",
-        "author_id": 4,  # Mario Jordan from authors/authors.json
-    }
-
-    # Clean config - only API settings (authors loaded from file)
-    config = {
-        "api": {
-            "provider": "deepseek",
-            "model": "deepseek-chat",
-            "temperature": 0.7,
-        }
+        "author_id": 4,
     }
 
     try:
-        from generator import generate_article
-
+        # Generate article
         output_file = generate_article(context, config)
-        logger.info(f"✅ Article generated: {output_file}")
+
+        logger.info(f"✅ Article generated successfully: {output_file}")
+
+        # Show file contents
+        with open(output_file, "r", encoding="utf-8") as f:
+            content = f.read()
+            logger.info(f"📄 Generated content:\n{content[:500]}...")
 
     except Exception as e:
         logger.error(f"❌ Generation failed: {e}")
