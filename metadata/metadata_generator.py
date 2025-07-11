@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
 """
-Metadata Generator - Generates structured metadata without tags
+Metadata Generator - Simple, clean metadata generation
 """
 import logging
 import json
 from datetime import datetime
-from pathlib import Path
-from typing import Dict, List
+from typing import Dict, Any
 
 logger = logging.getLogger(__name__)
 
@@ -14,16 +13,13 @@ def generate_metadata(material: str, author_id: int, config: Dict, api_client) -
     """Generate comprehensive metadata for the article"""
     logger.info(f"📊 Generating metadata for {material} by author ID {author_id}")
     
-    # Load authors data
-    authors_data = _load_authors_data(config)
-    
-    # Find author
-    author = _get_author_data(author_id, authors_data)
+    # Get author from config (already loaded)
+    author = _get_author_from_config(author_id, config)
     
     # Generate material properties
     material_properties = _generate_material_properties(material, api_client)
     
-    # Create metadata with optimization method
+    # Create complete metadata
     metadata = {
         # Article metadata
         "title": f"Laser Cleaning {material}",
@@ -41,241 +37,77 @@ def generate_metadata(material: str, author_id: int, config: Dict, api_client) -
         "image": f"/images/Material/material_{material}.jpg",
         
         # Processing metadata
-        "optimization_method": config.get("optimization_method", "unknown"),
         "generation_timestamp": datetime.now().isoformat(),
-        "model_used": f"{config.get('provider', 'unknown')}/{config.get('model', 'unknown')}",
-        "temperature": config.get("temperature", 0.3),
+        "model_used": f"{config.get('provider', 'unknown')}/{_get_model_from_config(config)}",
+        "temperature": config.get("temperature", 0.7),
         
         # Material properties
         **material_properties
     }
     
     logger.info(f"✅ Metadata generated for {material}")
-    logger.info(f"🔧 Using optimization method: {metadata['optimization_method']}")
-    logger.info(f"🤖 Model: {metadata['model_used']}")
-    
-    # Format complex objects properly
-    if 'laserCleaningParameters' in metadata:
-        metadata['laserCleaningParameters'] = _format_laser_parameters(
-            metadata['laserCleaningParameters']
-        )
-    
-    if 'performanceMetrics' in metadata:
-        metadata['performanceMetrics'] = _format_performance_metrics(
-            metadata['performanceMetrics']
-        )
-    
     return metadata
 
-def _load_authors_data(config: Dict) -> List[Dict]:
-    """Load authors data from JSON file"""
-    # Use new top-level authors path
-    authors_file = Path("authors/authors.json")
+def _get_author_from_config(author_id: int, config: Dict) -> Dict:
+    """Get author from already-loaded config"""
+    authors = config.get("authors", [])
     
-    if not authors_file.exists():
-        logger.error(f"❌ Authors file not found: {authors_file}")
-        raise FileNotFoundError(f"Authors file not found: {authors_file}")
-    
-    with open(authors_file, 'r', encoding='utf-8') as f:
-        authors_data = json.load(f)
-        logger.info(f"✅ Loaded {len(authors_data)} authors from {authors_file}")
-        return authors_data
-
-def _get_author_data(author_id: int, authors_data: list) -> Dict:
-    """Get author data by ID"""
-    # Find author by ID
-    for author in authors_data:
+    for author in authors:
         if author.get("id") == author_id:
-            # Validate required author fields
-            required_fields = ["name", "slug", "image", "title", "country"]
-            missing_fields = [field for field in required_fields if not author.get(field)]
-            
-            if missing_fields:
-                raise ValueError(f"Author {author_id} missing required fields: {missing_fields}")
-            
             logger.info(f"✅ Found author: {author['name']} (ID: {author_id})")
             return author
     
-    raise ValueError(f"Author ID {author_id} not found in authors database")
+    raise ValueError(f"Author ID {author_id} not found in config")
+
+def _get_model_from_config(config: Dict) -> str:
+    """Get model name from config"""
+    provider = config.get("provider", "unknown")
+    providers = config.get("providers", {})
+    
+    if provider in providers:
+        return providers[provider].get("model", "unknown")
+    
+    return config.get("model", "unknown")
 
 def _generate_material_properties(material: str, api_client) -> Dict:
-    """Generate material properties via AI prompt"""
-    logger.info(f"🔬 Generating material properties for {material}")
+    """Generate material properties - simplified"""
     
-    prompt = f"""Generate comprehensive material properties for {material} in JSON format. 
+    prompt = f"""Generate comprehensive material properties for {material}.
 
-CRITICAL: Return valid JSON with proper data types:
-- Arrays must be actual JSON arrays: ["item1", "item2"] NOT string representations
-- Objects must be actual JSON objects: {{"key": "value"}} NOT string representations
-- Do not wrap arrays or objects in quotes
+Return ONLY a JSON object with these fields:
+- atomicNumber, chemicalSymbol, generalClassifier, materialClass
+- crystalStructure, density, meltingPoint, thermalConductivity
+- reflectivityIr, reflectivityWavelength, hardnessMohs, youngsModulus
+- specificHeatCapacity, materialPurity, materialType
+- applications (array), safetyConsiderations (array), industryStandards (array)
+- environmentalImpact, processingChallenges (array), relatedMaterials (array)
+- regulatoryCompliance (array)
+- laserCleaningParameters (object), performanceMetrics (object)
 
-Required fields with exact data types:
-
-- atomicNumber: string or null
-- chemicalSymbol: string or null  
-- generalClassifier: string ("metal", "ceramic", "polymer", "composite")
-- materialClass: string (e.g., "Transition Metal", "Thermoplastic")
-- crystalStructure: string
-- density: string with units
-- meltingPoint: string with units
-- thermalConductivity: string with units
-- reflectivityIr: string percentage
-- reflectivityWavelength: string (default "10.6 µm")
-- hardnessMohs: string or number
-- youngsModulus: string with units
-- specificHeatCapacity: string with units
-- materialPurity: string percentage
-- materialType: "{material}"
-- applications: ARRAY of 3-4 strings (NOT a string)
-- safetyConsiderations: ARRAY of 3-4 strings (NOT a string)
-- industryStandards: ARRAY of 2-3 strings (NOT a string)
-- environmentalImpact: string description
-- processingChallenges: ARRAY of 2-3 strings (NOT a string)
-- relatedMaterials: ARRAY of 3-4 strings (NOT a string)
-- regulatoryCompliance: ARRAY of 2-3 strings (NOT a string)
-- laserCleaningParameters: OBJECT with keys: wavelength, pulseDuration, powerDensity, pulseFrequency, scanningSpeed, spotSize, fluence, pulsesPerSpot, beamProfile, ambientConditions (NOT a string)
-- performanceMetrics: OBJECT with keys: contaminantRemovalEfficiency, surfaceRoughnessReduction, processingTime (NOT a string)
-
-Example format:
-{{
-  "applications": ["Aerospace structures", "Medical implants", "Automotive parts"],
-  "safetyConsiderations": ["Avoid dust inhalation", "Use eye protection", "Ensure ventilation"],
-  "laserCleaningParameters": {{
-    "wavelength": "1064 nm",
-    "pulseDuration": "100 ns",
-    "powerDensity": "5 kW/cm²"
-  }}
-}}
-
-Output ONLY valid JSON. Use realistic, technically accurate values."""
-
+Return ONLY valid JSON. No markdown, no explanations."""
+    
+    result = api_client.call(prompt, "material-properties")
+    
+    # Simple JSON parsing with basic cleanup
+    cleaned = result.strip()
+    if cleaned.startswith('```'):
+        # Remove any markdown wrapping
+        lines = cleaned.split('\n')
+        cleaned = '\n'.join(line for line in lines if not line.startswith('```'))
+    
     try:
-        response = api_client.call(prompt, "material-properties")
-        
-        # Clean response
-        if response.startswith('```json'):
-            response = response[7:-3]
-        elif response.startswith('```'):
-            response = response[3:-3]
-        
-        material_data = json.loads(response)
-        
-        # Validate and convert string arrays/objects if needed
-        material_data = _fix_data_types(material_data)
-        
-        # Validate required fields are present
-        required_fields = [
-            "atomicNumber", "chemicalSymbol", "generalClassifier", "materialClass",
-            "crystalStructure", "density", "meltingPoint", "thermalConductivity",
-            "reflectivityIr", "reflectivityWavelength", "hardnessMohs", "youngsModulus",
-            "specificHeatCapacity", "materialPurity", "materialType", "applications",
-            "safetyConsiderations", "industryStandards", "environmentalImpact",
-            "processingChallenges", "relatedMaterials", "regulatoryCompliance",
-            "laserCleaningParameters", "performanceMetrics"
-        ]
-        
-        missing_fields = [field for field in required_fields if field not in material_data]
-        if missing_fields:
-            raise ValueError(f"Missing required fields in material data: {missing_fields}")
-        
-        logger.info(f"✅ Material properties generated for {material}")
-        return material_data
-        
+        return json.loads(cleaned)
     except json.JSONDecodeError as e:
-        logger.error(f"❌ Failed to parse material properties JSON: {e}")
-        raise RuntimeError(f"Failed to generate valid material properties JSON for {material}: {e}")
-    except Exception as e:
-        logger.error(f"❌ Failed to generate material properties: {e}")
-        raise RuntimeError(f"Failed to generate material properties for {material}: {e}")
+        logger.error(f"❌ Invalid JSON response for {material}: {e}")
+        logger.error(f"❌ Response: {result}")
+        raise RuntimeError(f"Material properties generation failed for {material}")
 
-def _fix_data_types(material_data):
-    """Fix data types if AI returned strings instead of arrays/objects"""
-    import ast
-    
-    # Fields that should be arrays
-    array_fields = ["applications", "safetyConsiderations", "industryStandards", "processingChallenges", "relatedMaterials", "regulatoryCompliance"]
-    
-    # Fields that should be objects
-    object_fields = ["laserCleaningParameters", "performanceMetrics"]
-    
-    # Fix arrays
-    for field in array_fields:
-        if field in material_data and isinstance(material_data[field], str):
-            try:
-                # Try to parse string representation of array
-                material_data[field] = ast.literal_eval(material_data[field])
-                logger.warning(f"⚠️ Converted string to array for field: {field}")
-            except (ValueError, SyntaxError):
-                logger.error(f"❌ Failed to convert string to array for field: {field}")
-                raise ValueError(f"Invalid array format for field: {field}")
-    
-    # Fix objects
-    for field in object_fields:
-        if field in material_data and isinstance(material_data[field], str):
-            try:
-                # Try to parse string representation of object
-                material_data[field] = ast.literal_eval(material_data[field])
-                logger.warning(f"⚠️ Converted string to object for field: {field}")
-            except (ValueError, SyntaxError):
-                logger.error(f"❌ Failed to convert string to object for field: {field}")
-                raise ValueError(f"Invalid object format for field: {field}")
-    
-    return material_data
-
-def _format_metadata_as_yaml(metadata: Dict) -> str:
-    """Format metadata as proper YAML - NO FALLBACKS"""
+def format_metadata_as_yaml(metadata: Dict) -> str:
+    """Simple YAML formatting"""
     import yaml
     
     try:
-        # Convert Python dict/list strings back to proper structures
-        formatted_metadata = {}
-        
-        for key, value in metadata.items():
-            if isinstance(value, str) and value.startswith('{') and value.endswith('}'):
-                # Parse dict strings into proper YAML structures
-                try:
-                    import ast
-                    parsed_value = ast.literal_eval(value)
-                    formatted_metadata[key] = parsed_value
-                except:
-                    formatted_metadata[key] = value
-            else:
-                formatted_metadata[key] = value
-        
-        # Generate clean YAML
-        yaml_output = yaml.dump(
-            formatted_metadata, 
-            default_flow_style=False, 
-            allow_unicode=True,
-            sort_keys=False
-        )
-        
-        return yaml_output.strip()
-        
+        return yaml.dump(metadata, default_flow_style=False, allow_unicode=True)
     except Exception as e:
-        logger.error(f"❌ Failed to format metadata as YAML: {e}")
+        logger.error(f"❌ YAML formatting failed: {e}")
         raise RuntimeError(f"YAML formatting failed: {e}")
-
-def _format_laser_parameters(params: Dict) -> Dict:
-    """Format laser parameters as proper nested dict for YAML"""
-    if isinstance(params, str):
-        try:
-            import ast
-            # Parse string representation back to dict
-            parsed = ast.literal_eval(params)
-            return parsed
-        except:
-            return {"raw": params}
-    return params
-
-def _format_performance_metrics(metrics: Dict) -> Dict:
-    """Format performance metrics as proper nested dict for YAML"""
-    if isinstance(metrics, str):
-        try:
-            import ast
-            # Parse string representation back to dict
-            parsed = ast.literal_eval(metrics)
-            return parsed
-        except:
-            return {"raw": metrics}
-    return metrics

@@ -1,10 +1,24 @@
 {
-  "provider": "DEEPSEEK",
-  "model": "deepseek-chat",
-  "temperature": 0.9,
-  "metadata_temperature": 0.3,
   "max_tokens": 4000,
-  "timeout": 60,
-  "retry_attempts": 3,
-  "retry_delay": 2
+  "temperature": 0.7,
+  "timeout": 30,
+  "max_retries": 3,
+  "providers": {
+    "DEEPSEEK": {
+      "base_url": "https://api.deepseek.com/v1",
+      "model": "deepseek-chat"
+    },
+    "OPENAI": {
+      "base_url": "https://api.openai.com/v1",
+      "model": "gpt-4"
+    },
+    "XAI": {
+      "base_url": "https://api.x.ai/v1",
+      "model": "grok-beta"
+    },
+    "GEMINI": {
+      "base_url": "https://generativelanguage.googleapis.com/v1beta",
+      "model": "gemini-1.5-flash"
+    }
+  }
 }
