@@ -1,117 +1,196 @@
-import os
-import requests
-import logging
+"""Unified API client for multiple AI providers."""
 
-logger = logging.getLogger("zbeam.api")
+import os
+import logging
+import requests
+import json
+from typing import Dict, Any, Optional
+from time import sleep
+
+logger = logging.getLogger(__name__)
 
 class APIClient:
-    def __init__(self):
-        self.provider = os.getenv("PROVIDER", "openai")
-        self.model = os.getenv("MODEL", "gpt-4")
-        self.api_keys = {
-            "openai": os.getenv("OPENAI_API_KEY"),
-            "deepseek": os.getenv("DEEPSEEK_API_KEY"),
-            "gemini": os.getenv("GEMINI_API_KEY"),
-            "xai": os.getenv("XAI_API_KEY"),
-            "anthropic": os.getenv("ANTHROPIC_API_KEY")
+    """Unified client for XAI, Gemini, DeepSeek, and OpenAI APIs."""
+    
+    def __init__(self, provider: str = "openai"):
+        self.provider = provider.lower()
+        self.api_key = self._get_api_key()
+        self.base_url = self._get_base_url()
+        self.model = self._get_model()
+        
+        if not self.api_key:
+            raise ValueError(f"No API key found for provider: {provider}")
+        
+        logger.info(f"API Client initialized for {provider} with model {self.model}")
+    
+    def _get_api_key(self) -> Optional[str]:
+        """Get API key for the selected provider."""
+        key_mapping = {
+            "openai": "OPENAI_API_KEY",
+            "xai": "XAI_API_KEY",
+            "gemini": "GEMINI_API_KEY",
+            "deepseek": "DEEPSEEK_API_KEY"
         }
-
-    def call_llm(self, prompt: str) -> str:
-        if self.provider == "openai":
-            url = "https://api.openai.com/v1/chat/completions"
-            headers = {
-                "Authorization": f"Bearer {self.api_keys['openai']}",
-                "Content-Type": "application/json"
-            }
-            data = {
-                "model": self.model,
-                "messages": [{"role": "user", "content": prompt}],
-                "max_tokens": 1024
-            }
-            logger.info("Sending request to OpenAI API...")
-            response = requests.post(url, headers=headers, json=data)
-            logger.info("OpenAI response status: %s", response.status_code)
+        return os.getenv(key_mapping.get(self.provider))
+    
+    def _get_base_url(self) -> str:
+        """Get base URL for the selected provider."""
+        urls = {
+            "openai": "https://api.openai.com/v1",
+            "xai": "https://api.x.ai/v1",
+            "gemini": "https://generativelanguage.googleapis.com/v1beta",
+            "deepseek": "https://api.deepseek.com/v1"
+        }
+        return urls.get(self.provider, "")
+    
+    def _get_model(self) -> str:
+        """Get model name for the selected provider."""
+        models = {
+            "openai": "gpt-4",
+            "xai": "grok-beta",
+            "gemini": "gemini-pro",
+            "deepseek": "deepseek-chat"
+        }
+        return models.get(self.provider, "")
+    
+    def _make_openai_request(self, prompt: str, max_tokens: int = 1000) -> Optional[str]:
+        """Make request to OpenAI API."""
+        headers = {
+            "Authorization": f"Bearer {self.api_key}",
+            "Content-Type": "application/json"
+        }
+        
+        payload = {
+            "model": self.model,
+            "messages": [{"role": "user", "content": prompt}],
+            "max_tokens": max_tokens,
+            "temperature": 0.7
+        }
+        
+        try:
+            response = requests.post(
+                f"{self.base_url}/chat/completions",
+                headers=headers,
+                json=payload,
+                timeout=30
+            )
             response.raise_for_status()
-            result = response.json()
-            logger.debug("OpenAI raw response: %s", result)
-            return result["choices"][0]["message"]["content"]
-
-        elif self.provider == "deepseek":
-            url = "https://api.deepseek.com/v1/chat/completions"
-            headers = {
-                "Authorization": f"Bearer {self.api_keys['deepseek']}",
-                "Content-Type": "application/json"
-            }
-            data = {
-                "model": self.model,
-                "messages": [{"role": "user", "content": prompt}],
-                "max_tokens": 1024
-            }
-            logger.info("Sending request to DeepSeek API...")
-            response = requests.post(url, headers=headers, json=data)
-            logger.info("DeepSeek response status: %s", response.status_code)
+            return response.json()["choices"][0]["message"]["content"]
+        except Exception as e:
+            logger.error(f"OpenAI API request failed: {e}")
+            return None
+    
+    def _make_xai_request(self, prompt: str, max_tokens: int = 1000) -> Optional[str]:
+        """Make request to XAI API."""
+        headers = {
+            "Authorization": f"Bearer {self.api_key}",
+            "Content-Type": "application/json"
+        }
+        
+        payload = {
+            "model": self.model,
+            "messages": [{"role": "user", "content": prompt}],
+            "max_tokens": max_tokens,
+            "temperature": 0.7
+        }
+        
+        try:
+            response = requests.post(
+                f"{self.base_url}/chat/completions",
+                headers=headers,
+                json=payload,
+                timeout=30
+            )
             response.raise_for_status()
-            result = response.json()
-            logger.debug("DeepSeek raw response: %s", result)
-            return result["choices"][0]["message"]["content"]
-
-        elif self.provider == "gemini":
-            url = f"https://generativelanguage.googleapis.com/v1beta/models/{self.model}:generateContent?key={self.api_keys['gemini']}"
-            headers = {
-                "Content-Type": "application/json"
+            return response.json()["choices"][0]["message"]["content"]
+        except Exception as e:
+            logger.error(f"XAI API request failed: {e}")
+            return None
+    
+    def _make_gemini_request(self, prompt: str, max_tokens: int = 1000) -> Optional[str]:
+        """Make request to Gemini API."""
+        url = f"{self.base_url}/models/{self.model}:generateContent?key={self.api_key}"
+        
+        payload = {
+            "contents": [{"parts": [{"text": prompt}]}],
+            "generationConfig": {
+                "maxOutputTokens": max_tokens,
+                "temperature": 0.7
             }
-            data = {
-                "contents": [{"parts": [{"text": prompt}]}]
-            }
-            logger.info("Sending request to Gemini API...")
-            response = requests.post(url, headers=headers, json=data)
-            logger.info("Gemini response status: %s", response.status_code)
+        }
+        
+        try:
+            response = requests.post(url, json=payload, timeout=30)
             response.raise_for_status()
-            result = response.json()
-            logger.debug("Gemini raw response: %s", result)
-            # Gemini's response structure may vary; adjust as needed
-            return result.get("candidates", [{}])[0].get("content", {}).get("parts", [{}])[0].get("text", "")
-
-        elif self.provider == "xai":
-            url = "https://api.xai.com/v1/chat/completions"
-            headers = {
-                "Authorization": f"Bearer {self.api_keys['xai']}",
-                "Content-Type": "application/json"
-            }
-            data = {
-                "model": self.model,
-                "messages": [{"role": "user", "content": prompt}],
-                "max_tokens": 1024
-            }
-            logger.info("Sending request to XAI API...")
-            response = requests.post(url, headers=headers, json=data)
-            logger.info("XAI response status: %s", response.status_code)
+            return response.json()["candidates"][0]["content"]["parts"][0]["text"]
+        except Exception as e:
+            logger.error(f"Gemini API request failed: {e}")
+            return None
+    
+    def _make_deepseek_request(self, prompt: str, max_tokens: int = 1000) -> Optional[str]:
+        """Make request to DeepSeek API."""
+        headers = {
+            "Authorization": f"Bearer {self.api_key}",
+            "Content-Type": "application/json"
+        }
+        
+        payload = {
+            "model": self.model,
+            "messages": [{"role": "user", "content": prompt}],
+            "max_tokens": max_tokens,
+            "temperature": 0.7
+        }
+        
+        try:
+            response = requests.post(
+                f"{self.base_url}/chat/completions",
+                headers=headers,
+                json=payload,
+                timeout=30
+            )
             response.raise_for_status()
-            result = response.json()
-            logger.debug("XAI raw response: %s", result)
-            return result["choices"][0]["message"]["content"]
-
-        elif self.provider == "anthropic":
-            url = "https://api.anthropic.com/v1/messages"
-            headers = {
-                "x-api-key": self.api_keys["anthropic"],
-                "Content-Type": "application/json",
-                "anthropic-version": "2023-06-01"
-            }
-            data = {
-                "model": self.model,
-                "max_tokens": 1024,
-                "messages": [{"role": "user", "content": prompt}]
-            }
-            logger.info("Sending request to Anthropic API...")
-            response = requests.post(url, headers=headers, json=data)
-            logger.info("Anthropic response status: %s", response.status_code)
-            response.raise_for_status()
-            result = response.json()
-            logger.debug("Anthropic raw response: %s", result)
-            # Adjust extraction based on Claude's response format
-            return result.get("content", "")
-
-        else:
-            logger.error("Unsupported provider: %s", self.provider)
-            raise ValueError(f"Unsupported provider: {self.provider}")
+            return response.json()["choices"][0]["message"]["content"]
+        except Exception as e:
+            logger.error(f"DeepSeek API request failed: {e}")
+            return None
+    
+    def generate(self, prompt: str, max_tokens: int = 2000, retries: int = 3) -> Optional[str]:
+        """Generate content using the selected AI provider."""
+        # Validate max_tokens for different providers
+        provider_limits = {
+            "openai": 4000,
+            "xai": 3000, 
+            "gemini": 4000,
+            "deepseek": 4000
+        }
+        
+        max_allowed = provider_limits.get(self.provider, 2000)
+        if max_tokens > max_allowed:
+            logger.warning(f"Reducing max_tokens from {max_tokens} to {max_allowed} for {self.provider}")
+            max_tokens = max_allowed
+        
+        for attempt in range(retries):
+            try:
+                if self.provider == "openai":
+                    result = self._make_openai_request(prompt, max_tokens)
+                elif self.provider == "xai":
+                    result = self._make_xai_request(prompt, max_tokens)
+                elif self.provider == "gemini":
+                    result = self._make_gemini_request(prompt, max_tokens)
+                elif self.provider == "deepseek":
+                    result = self._make_deepseek_request(prompt, max_tokens)
+                else:
+                    logger.error(f"Unknown provider: {self.provider}")
+                    return None
+                
+                if result:
+                    logger.info(f"Successfully generated content using {self.provider}")
+                    return result
+                
+            except Exception as e:
+                logger.warning(f"Attempt {attempt + 1} failed: {e}")
+                if attempt < retries - 1:
+                    sleep(2 ** attempt)  # Exponential backoff
+        
+        logger.error(f"All {retries} attempts failed for {self.provider}")
+        return None
