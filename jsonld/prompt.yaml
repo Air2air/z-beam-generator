@@ -1,0 +1,33 @@
+name: "JSON-LD Schema Generator"
+description: "Generates comprehensive JSON-LD structured data for technical articles"
+version: "1.0.0"
+
+template: |
+  Generate JSON-LD for a {article_type} article about {subject}.
+
+  Use the schema fields below:
+
+  {schema_template}
+
+  REQUIREMENTS:
+  - Generate valid Schema.org JSON-LD
+  - Use TechnicalArticle type
+  - Include headline, description, keywords, author
+  - Base all content on schema fields above
+  - Replace all placeholders with "{subject}"
+  
+  Generate the JSON-LD now:
+
+parameters:
+  max_tokens: 3000
+  temperature: 0.7
+  expected_format: "json"
+
+validation:
+  required_fields:
+    - "@context"
+    - "@type"
+    - "headline"
+    - "description"
+  min_length: 200
+  schema_org_type: "TechnicalArticle"  # ✅ Match what DeepSeek is returning

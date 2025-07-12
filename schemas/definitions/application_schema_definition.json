@@ -56,40 +56,47 @@
     "name": {
       "type": "string",
       "required": true,
-      "description": "Name of the laser cleaning application"
+      "description": "Name of the laser cleaning application",
+      "example": "{{applicationName}}"
     },
     "description": {
       "type": "string",
       "required": true,
-      "description": "Overview of the laser cleaning application"
+      "description": "Overview of the laser cleaning application",
+      "example": "{{applicationName}} is a precision laser cleaning technique that removes contaminants from surfaces while preserving substrate integrity."
     },
     "primaryAudience": {
       "type": "string",
       "required": true,
-      "description": "Primary target audience for the application"
+      "description": "Primary target audience for the application",
+      "example": "Manufacturing Engineers"
     },
     "secondaryAudience": {
       "type": "string",
       "required": false,
-      "description": "Secondary target audience for the application"
+      "description": "Secondary target audience for the application",
+      "example": "Quality Control Technicians"
     },
     "industries": {
       "type": "array",
       "items": { "type": "string" },
       "required": true,
-      "description": "Industries where the application is commonly used"
+      "description": "Industries where the application is commonly used",
+      "example": ["Automotive", "Aerospace", "Electronics"]
     },
     "substrates": {
       "type": "array",
       "items": { "type": "string" },
       "required": true,
-      "description": "Substrates commonly cleaned in this application"
+      "description": "Substrates commonly cleaned in this application",
+      "example": ["Steel", "Aluminum", "Composite Materials"]
     },
     "keywords": {
       "type": "array",
       "items": { "type": "string" },
       "required": true,
-      "description": "Keywords for SEO, tagging, and JSON-LD"
+      "description": "Keywords for SEO, tagging, and JSON-LD",
+      "example": ["laser {{applicationName}}", "{{applicationName}} cleaning", "industrial surface preparation"]
     },
     "schemaOrgType": {
       "type": "string",

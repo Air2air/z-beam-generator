@@ -1,0 +1,40 @@
+name: "Metadata YAML Generator"
+description: "Generates comprehensive YAML metadata for technical articles"
+version: "1.0.0"
+
+template: |
+  Generate comprehensive YAML metadata for a {article_type} article about {subject}.
+
+  Use the schema fields below and replace all placeholders with "{subject}":
+
+  {schema_template}
+
+  CRITICAL REQUIREMENTS:
+  - Use ONLY fields from the schema above
+  - Replace ALL placeholders with "{subject}"
+  - Return comprehensive, detailed values for each field
+  - Generate 3000+ characters of detailed content
+  - Include technical specifications, applications, and industry context
+  - Use professional technical language throughout
+  - NO abbreviations or short descriptions
+  - Provide complete, publication-ready metadata
+
+  OUTPUT FORMAT:
+  - Return ONLY valid YAML format
+  - NO document separators (---)
+  - NO comments (# lines)
+  - NO markdown formatting
+  - Complete YAML structure with all fields populated
+
+  Generate the complete comprehensive YAML metadata now:
+
+parameters:
+  max_tokens: 4000
+  temperature: 0.7
+
+validation:
+  min_length: 100
+  required_fields:
+    - name        # Changed from 'title' to 'name'
+    - description
+    - keywords

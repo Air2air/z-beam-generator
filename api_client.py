@@ -1,196 +1,218 @@
-"""Unified API client for multiple AI providers."""
+"""API client for multiple AI providers - SCHEMA-DRIVEN ONLY."""
 
 import os
 import logging
 import requests
 import json
 from typing import Dict, Any, Optional
-from time import sleep
 
 logger = logging.getLogger(__name__)
 
 class APIClient:
-    """Unified client for XAI, Gemini, DeepSeek, and OpenAI APIs."""
+    """Unified API client for multiple AI providers."""
     
-    def __init__(self, provider: str = "openai"):
+    def __init__(self, provider: str):
         self.provider = provider.lower()
+        self.base_urls = {
+            "openai": "https://api.openai.com/v1/chat/completions",
+            "xai": "https://api.x.ai/v1/chat/completions",
+            "gemini": "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent",
+            "deepseek": "https://api.deepseek.com/v1/chat/completions"
+        }
+        
+        self.models = {
+            "openai": "gpt-4o-mini",
+            "xai": "grok-beta",
+            "gemini": "gemini-1.5-flash-latest",
+            "deepseek": "deepseek-chat"  # Keeping as you confirmed
+        }
+        
+        # Get API key
         self.api_key = self._get_api_key()
-        self.base_url = self._get_base_url()
-        self.model = self._get_model()
-        
         if not self.api_key:
-            raise ValueError(f"No API key found for provider: {provider}")
+            logger.error(f"No API key found for {provider}")
+            raise ValueError(f"Missing API key for {provider}")
         
-        logger.info(f"API Client initialized for {provider} with model {self.model}")
+        logger.info(f"API Client initialized for {provider} with model {self.models[self.provider]}")
     
     def _get_api_key(self) -> Optional[str]:
-        """Get API key for the selected provider."""
-        key_mapping = {
+        """Get API key for the current provider."""
+        key_map = {
             "openai": "OPENAI_API_KEY",
-            "xai": "XAI_API_KEY",
+            "xai": "XAI_API_KEY", 
             "gemini": "GEMINI_API_KEY",
             "deepseek": "DEEPSEEK_API_KEY"
         }
-        return os.getenv(key_mapping.get(self.provider))
+        
+        return os.getenv(key_map.get(self.provider))
     
-    def _get_base_url(self) -> str:
-        """Get base URL for the selected provider."""
-        urls = {
-            "openai": "https://api.openai.com/v1",
-            "xai": "https://api.x.ai/v1",
-            "gemini": "https://generativelanguage.googleapis.com/v1beta",
-            "deepseek": "https://api.deepseek.com/v1"
-        }
-        return urls.get(self.provider, "")
+    def generate(self, prompt: str, max_tokens: int = 2000) -> Optional[str]:
+        """Generate content using the configured provider."""
+        try:
+            if self.provider == "gemini":
+                return self._generate_gemini(prompt, max_tokens)
+            else:
+                return self._generate_openai_format(prompt, max_tokens)
+        except Exception as e:
+            logger.error(f"Generation failed: {e}")
+            return None
     
-    def _get_model(self) -> str:
-        """Get model name for the selected provider."""
-        models = {
-            "openai": "gpt-4",
-            "xai": "grok-beta",
-            "gemini": "gemini-pro",
-            "deepseek": "deepseek-chat"
-        }
-        return models.get(self.provider, "")
-    
-    def _make_openai_request(self, prompt: str, max_tokens: int = 1000) -> Optional[str]:
-        """Make request to OpenAI API."""
+    def _generate_openai_format(self, prompt: str, max_tokens: int) -> Optional[str]:
+        """Generate using OpenAI-compatible format (OpenAI, XAI, DeepSeek)."""
         headers = {
             "Authorization": f"Bearer {self.api_key}",
             "Content-Type": "application/json"
         }
         
-        payload = {
-            "model": self.model,
-            "messages": [{"role": "user", "content": prompt}],
-            "max_tokens": max_tokens,
+        # Base data structure
+        data = {
+            "model": self.models[self.provider],
+            "messages": [
+                {
+                    "role": "user",
+                    "content": prompt
+                }
+            ],
             "temperature": 0.7
         }
         
-        try:
-            response = requests.post(
-                f"{self.base_url}/chat/completions",
-                headers=headers,
-                json=payload,
-                timeout=30
-            )
-            response.raise_for_status()
-            return response.json()["choices"][0]["message"]["content"]
-        except Exception as e:
-            logger.error(f"OpenAI API request failed: {e}")
-            return None
+        # Provider-specific adjustments
+        if self.provider == "deepseek":
+            # DeepSeek specific parameters - they're picky about format
+            data["max_tokens"] = min(max_tokens, 4000)  # Conservative limit
+            data["stream"] = False
+            data["stop"] = None
+            # DeepSeek doesn't like certain OpenAI parameters
+            
+        elif self.provider == "openai":
+            data["max_tokens"] = max_tokens
+            
+        elif self.provider == "xai":
+            data["max_tokens"] = max_tokens
+            
+        else:
+            # Default OpenAI format
+            data["max_tokens"] = max_tokens
+        
+        url = self.base_urls[self.provider]
+        
+        # Retry logic with better error handling
+        for attempt in range(3):
+            try:
+                logger.info(f"Attempt {attempt + 1}: Sending request to {self.provider}")
+                
+                response = requests.post(
+                    url, 
+                    headers=headers, 
+                    json=data, 
+                    timeout=60
+                )
+                
+                # Log request details for debugging
+                logger.debug(f"Request URL: {url}")
+                logger.debug(f"Request headers: {headers}")
+                logger.debug(f"Request data: {json.dumps(data, indent=2)}")
+                
+                if response.status_code == 200:
+                    result = response.json()
+                    
+                    if "choices" in result and len(result["choices"]) > 0:
+                        content = result["choices"][0]["message"]["content"]
+                        logger.info(f"Successfully generated content with {self.provider}")
+                        return content
+                    else:
+                        logger.error(f"No choices in response: {result}")
+                        return None
+                        
+                elif response.status_code == 422:
+                    # Unprocessable Entity - usually parameter issues
+                    logger.error(f"DeepSeek 422 Error - Invalid parameters")
+                    logger.error(f"Request data: {json.dumps(data, indent=2)}")
+                    logger.error(f"Response: {response.text}")
+                    
+                    # For DeepSeek, try with minimal parameters
+                    if self.provider == "deepseek" and attempt == 0:
+                        logger.info("Trying with minimal DeepSeek parameters...")
+                        data = {
+                            "model": "deepseek-chat",
+                            "messages": [
+                                {
+                                    "role": "user",
+                                    "content": prompt
+                                }
+                            ]
+                        }
+                        continue
+                    
+                else:
+                    logger.error(f"{self.provider.title()} API request failed: {response.status_code} {response.reason}")
+                    logger.error(f"Response: {response.text}")
+                    
+                    if attempt < 2:  # Don't sleep on last attempt
+                        import time
+                        time.sleep(2)
+                    
+            except requests.exceptions.RequestException as e:
+                logger.error(f"Request error on attempt {attempt + 1}: {e}")
+                if attempt < 2:
+                    import time
+                    time.sleep(2)
+        
+        logger.error(f"All 3 attempts failed for {self.provider}")
+        return None
     
-    def _make_xai_request(self, prompt: str, max_tokens: int = 1000) -> Optional[str]:
-        """Make request to XAI API."""
+    def _generate_gemini(self, prompt: str, max_tokens: int) -> Optional[str]:
+        """Generate using Gemini format."""
         headers = {
-            "Authorization": f"Bearer {self.api_key}",
             "Content-Type": "application/json"
         }
         
-        payload = {
-            "model": self.model,
-            "messages": [{"role": "user", "content": prompt}],
-            "max_tokens": max_tokens,
-            "temperature": 0.7
-        }
-        
-        try:
-            response = requests.post(
-                f"{self.base_url}/chat/completions",
-                headers=headers,
-                json=payload,
-                timeout=30
-            )
-            response.raise_for_status()
-            return response.json()["choices"][0]["message"]["content"]
-        except Exception as e:
-            logger.error(f"XAI API request failed: {e}")
-            return None
-    
-    def _make_gemini_request(self, prompt: str, max_tokens: int = 1000) -> Optional[str]:
-        """Make request to Gemini API."""
-        url = f"{self.base_url}/models/{self.model}:generateContent?key={self.api_key}"
-        
-        payload = {
-            "contents": [{"parts": [{"text": prompt}]}],
+        data = {
+            "contents": [
+                {
+                    "parts": [
+                        {
+                            "text": prompt
+                        }
+                    ]
+                }
+            ],
             "generationConfig": {
                 "maxOutputTokens": max_tokens,
                 "temperature": 0.7
             }
         }
         
-        try:
-            response = requests.post(url, json=payload, timeout=30)
-            response.raise_for_status()
-            return response.json()["candidates"][0]["content"]["parts"][0]["text"]
-        except Exception as e:
-            logger.error(f"Gemini API request failed: {e}")
-            return None
-    
-    def _make_deepseek_request(self, prompt: str, max_tokens: int = 1000) -> Optional[str]:
-        """Make request to DeepSeek API."""
-        headers = {
-            "Authorization": f"Bearer {self.api_key}",
-            "Content-Type": "application/json"
-        }
+        url = f"{self.base_urls[self.provider]}?key={self.api_key}"
         
-        payload = {
-            "model": self.model,
-            "messages": [{"role": "user", "content": prompt}],
-            "max_tokens": max_tokens,
-            "temperature": 0.7
-        }
-        
-        try:
-            response = requests.post(
-                f"{self.base_url}/chat/completions",
-                headers=headers,
-                json=payload,
-                timeout=30
-            )
-            response.raise_for_status()
-            return response.json()["choices"][0]["message"]["content"]
-        except Exception as e:
-            logger.error(f"DeepSeek API request failed: {e}")
-            return None
-    
-    def generate(self, prompt: str, max_tokens: int = 2000, retries: int = 3) -> Optional[str]:
-        """Generate content using the selected AI provider."""
-        # Validate max_tokens for different providers
-        provider_limits = {
-            "openai": 4000,
-            "xai": 3000, 
-            "gemini": 4000,
-            "deepseek": 4000
-        }
-        
-        max_allowed = provider_limits.get(self.provider, 2000)
-        if max_tokens > max_allowed:
-            logger.warning(f"Reducing max_tokens from {max_tokens} to {max_allowed} for {self.provider}")
-            max_tokens = max_allowed
-        
-        for attempt in range(retries):
+        # Retry logic
+        for attempt in range(3):
             try:
-                if self.provider == "openai":
-                    result = self._make_openai_request(prompt, max_tokens)
-                elif self.provider == "xai":
-                    result = self._make_xai_request(prompt, max_tokens)
-                elif self.provider == "gemini":
-                    result = self._make_gemini_request(prompt, max_tokens)
-                elif self.provider == "deepseek":
-                    result = self._make_deepseek_request(prompt, max_tokens)
+                response = requests.post(url, headers=headers, json=data, timeout=60)
+                
+                if response.status_code == 200:
+                    result = response.json()
+                    
+                    if "candidates" in result and len(result["candidates"]) > 0:
+                        content = result["candidates"][0]["content"]["parts"][0]["text"]
+                        logger.info(f"Successfully generated content with {self.provider}")
+                        return content
+                    else:
+                        logger.error(f"No candidates in response: {result}")
+                        return None
                 else:
-                    logger.error(f"Unknown provider: {self.provider}")
-                    return None
-                
-                if result:
-                    logger.info(f"Successfully generated content using {self.provider}")
-                    return result
-                
-            except Exception as e:
-                logger.warning(f"Attempt {attempt + 1} failed: {e}")
-                if attempt < retries - 1:
-                    sleep(2 ** attempt)  # Exponential backoff
+                    logger.error(f"Gemini API request failed: {response.status_code} {response.reason}")
+                    logger.error(f"Response: {response.text}")
+                    
+                    if attempt < 2:
+                        import time
+                        time.sleep(2)
+                    
+            except requests.exceptions.RequestException as e:
+                logger.error(f"Request error on attempt {attempt + 1}: {e}")
+                if attempt < 2:
+                    import time
+                    time.sleep(2)
         
-        logger.error(f"All {retries} attempts failed for {self.provider}")
+        logger.error(f"All 3 attempts failed for {self.provider}")
         return None

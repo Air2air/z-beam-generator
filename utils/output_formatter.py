@@ -1,85 +1,47 @@
-"""Output formatter for assembling final markdown files."""
+"""Output formatter - SCHEMA-DRIVEN ONLY."""
 
-import yaml
-import json
 import logging
-from typing import Dict, Any, Union, List
+import json
+import yaml
+from typing import Dict, Any, List
 
 logger = logging.getLogger(__name__)
 
-def assemble_markdown(metadata: Union[str, Dict], tags: Union[str, List], jsonld: Union[str, Dict]) -> str:
-    """Assemble the final markdown output with proper error handling."""
+def assemble_markdown(metadata: Dict[str, Any], tags: List[str], jsonld: Dict[str, Any]) -> str:
+    """Assemble final markdown output - NO FALLBACKS."""
     
-    # Parse metadata
-    if isinstance(metadata, str):
-        metadata_dict = safe_yaml_parse(metadata)
-    else:
-        metadata_dict = metadata or {}
+    if not metadata:
+        logger.error("Metadata is required for output assembly")
+        return None
     
-    # Parse tags
-    if isinstance(tags, str):
-        try:
-            tags_dict = safe_yaml_parse(tags)
-            if isinstance(tags_dict, dict) and 'tags' in tags_dict:
-                tags_list = tags_dict['tags']
-            else:
-                tags_list = []
-        except:
-            tags_list = []
-    else:
-        tags_list = tags or []
+    if not tags:
+        logger.error("Tags are required for output assembly")
+        return None
     
-    # Parse JSON-LD
-    if isinstance(jsonld, str):
-        jsonld_dict = safe_json_parse(jsonld)
-    else:
-        jsonld_dict = jsonld or {}
+    if not jsonld:
+        logger.error("JSON-LD is required for output assembly")
+        return None
     
-    # Format frontmatter
     try:
-        frontmatter = yaml.dump(metadata_dict, default_flow_style=False, allow_unicode=True)
+        output_parts = []
+        
+        # Add YAML frontmatter
+        output_parts.append("---")
+        output_parts.append(yaml.dump(metadata, default_flow_style=False, sort_keys=False))
+        output_parts.append("---")
+        output_parts.append("")
+        
+        # Add tags section (separate from frontmatter for compatibility)
+        output_parts.append(f"Tags: {', '.join(tags)}")
+        output_parts.append("")
+        
+        # Add JSON-LD structured data
+        output_parts.append('<script type="application/ld+json">')
+        output_parts.append(json.dumps(jsonld, indent=2))
+        output_parts.append('</script>')
+        
+        return "\n".join(output_parts)
+        
     except Exception as e:
-        logger.error(f"Failed to format metadata as YAML: {e}")
-        frontmatter = "# Error formatting metadata\n"
-    
-    # Format tags section
-    if tags_list:
-        tags_section = f"Tags: {', '.join(tags_list)}\n"
-    else:
-        tags_section = ""
-    
-    # Format JSON-LD
-    if jsonld_dict:
-        try:
-            jsonld_block = f'<script type="application/ld+json">\n{json.dumps(jsonld_dict, indent=2, ensure_ascii=False)}\n</script>\n'
-        except Exception as e:
-            logger.error(f"Failed to format JSON-LD: {e}")
-            jsonld_block = "<!-- Error formatting JSON-LD -->\n"
-    else:
-        jsonld_block = ""
-    
-    # Assemble final markdown
-    markdown_content = f"""---
-{frontmatter}---
-
-{tags_section}
-{jsonld_block}
-"""
-    
-    return markdown_content.strip() + "\n"
-
-def safe_yaml_parse(content: str) -> Dict[str, Any]:
-    """Safely parse YAML content with error handling."""
-    try:
-        return yaml.safe_load(content) or {}
-    except yaml.YAMLError as e:
-        logger.error(f"Failed to parse YAML: {e}")
-        return {}
-
-def safe_json_parse(content: str) -> Dict[str, Any]:
-    """Safely parse JSON content with error handling."""
-    try:
-        return json.loads(content) if isinstance(content, str) else content
-    except json.JSONDecodeError as e:
-        logger.error(f"Failed to parse JSON: {e}")
-        return {}
+        logger.error(f"Failed to assemble markdown: {e}", exc_info=True)
+        return None

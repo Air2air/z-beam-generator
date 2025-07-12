@@ -1,0 +1,29 @@
+name: "Comprehensive Tags Generator"
+description: "Generates comprehensive tag lists for technical articles"
+version: "1.0.0"
+
+template: |
+  Generate comprehensive tags for a {article_type} article about {subject}.
+
+  Use the schema fields below to generate relevant tags:
+
+  {schema_template}
+
+  REQUIREMENTS:
+  - Generate 25-35 tags in kebab-case format
+  - Include technical terms, industry applications, and related concepts
+  - Base tags on the schema fields provided above
+  - Replace all placeholders with "{subject}"
+  - Include both specific and general laser cleaning terms
+  - Cover safety, regulations, and technical specifications
+  - Return only the tags, one per line, in kebab-case format
+
+  Generate the tags now:
+
+parameters:
+  max_tokens: 2000
+  temperature: 0.7
+
+validation:
+  min_length: 100
+  max_tags: 35

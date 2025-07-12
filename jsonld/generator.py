@@ -1,14 +1,16 @@
-"""JSON-LD generator for schema-driven structured data."""
+"""Simplified JSON-LD generator - SCHEMA-DRIVEN ONLY."""
 
 import logging
 import json
+import yaml
+from pathlib import Path
 from typing import Dict, Any, Optional
 from api_client import APIClient
 
 logger = logging.getLogger(__name__)
 
 class JsonLdGenerator:
-    """Generates JSON-LD structured data based on schema definitions."""
+    """Generates JSON-LD ONLY from schema definitions."""
     
     def __init__(self, context: Dict[str, Any], schema: Dict[str, Any], ai_provider: str):
         self.context = context
@@ -16,196 +18,202 @@ class JsonLdGenerator:
         self.ai_provider = ai_provider
         self.api_client = APIClient(ai_provider)
         
-        logger.info(f"JSON-LD generator initialized for {context.get('article_type')}")
+        # NO DEFAULT VALUES - Must come from context
+        self.subject = context["subject"]  # Will fail if not provided
+        self.article_type = context["article_type"]  # Will fail if not provided
+        
+        # Load prompt template
+        self.prompt_config = self._load_prompt_template()
+        
+        logger.info(f"JsonLdGenerator initialized for {self.article_type}: {self.subject}")
     
     def generate(self) -> Optional[Dict[str, Any]]:
-        """Generate JSON-LD using AI provider."""
+        """Generate JSON-LD using schema-driven approach."""
         try:
-            # Build schema-driven prompt
-            prompt = self._build_schema_driven_jsonld_prompt()
+            prompt = self._build_prompt()
             
-            # Generate using API with more tokens
-            response = self.api_client.generate(prompt, max_tokens=2500)
+            if not prompt:
+                logger.error("Failed to build prompt - no schema fields available")
+                return None
+            
+            # Use prompt config for parameters
+            max_tokens = self.prompt_config.get("parameters", {}).get("max_tokens", 3000)
+            response = self.api_client.generate(prompt, max_tokens=max_tokens)
             
             if not response:
                 logger.error("Failed to generate JSON-LD")
                 return None
             
-            # Parse JSON response
-            try:
-                # Clean response (remove potential markdown formatting)
-                clean_response = self._clean_json_response(response)
-                
-                jsonld_data = json.loads(clean_response)
-                logger.info("Successfully generated and parsed JSON-LD")
-                return jsonld_data
-                
-            except json.JSONDecodeError as e:
-                logger.error(f"Failed to parse JSON-LD response: {e}")
-                logger.error(f"Response: {repr(response)}")
+            # Clean and parse response
+            cleaned_response = self._clean_response(response)
+            jsonld_data = json.loads(cleaned_response)
+            
+            # Validate response
+            if not self._validate_jsonld(jsonld_data):
+                logger.error("JSON-LD validation failed")
                 return None
-                
+            
+            logger.info("Successfully generated schema-driven JSON-LD")
+            return jsonld_data
+            
+        except json.JSONDecodeError as e:
+            logger.error(f"Failed to parse JSON-LD response: {e}")
+            return None
         except Exception as e:
             logger.error(f"JSON-LD generation failed: {e}", exc_info=True)
             return None
     
-    def _clean_json_response(self, response: str) -> str:
-        """Clean JSON response from AI."""
-        clean_response = response.strip()
-        
-        # Remove markdown code blocks
-        if clean_response.startswith("```json"):
-            clean_response = clean_response[7:]
-        if clean_response.startswith("```"):
-            clean_response = clean_response[3:]
-        if clean_response.endswith("```"):
-            clean_response = clean_response[:-3]
-        
-        return clean_response.strip()
+    def _load_prompt_template(self) -> Dict[str, Any]:
+        """Load prompt template from YAML file."""
+        try:
+            prompt_path = Path(__file__).parent / "prompt.yaml"
+            with open(prompt_path, 'r') as f:
+                return yaml.safe_load(f)
+        except Exception as e:
+            logger.error(f"Failed to load prompt template: {e}")
+            return {}
     
-    def _build_schema_driven_jsonld_prompt(self) -> str:
-        """Build JSON-LD prompt using actual schema structure."""
-        subject = self.context.get("subject")
-        article_type = self.context.get("article_type")
+    def _build_prompt(self) -> str:
+        """Build JSON-LD prompt using template."""
+        schema_template = self._build_schema_template()
         
-        # Extract schema fields for JSON-LD
-        schema_fields = self._extract_schema_fields()
+        if not schema_template:
+            logger.error("No schema fields available for JSON-LD generation")
+            return None
         
-        # Build JSON-LD structure from schema
-        jsonld_structure = self._build_jsonld_structure(schema_fields, subject)
+        # Use template from prompt config
+        template = self.prompt_config.get("template", "")
+        if not template:
+            logger.error("No prompt template found")
+            return None
         
-        prompt = f"""Generate JSON-LD structured data for a laser cleaning article about {subject}.
-
-Use this exact structure based on the schema definition:
-
-{jsonld_structure}
-
-CRITICAL REQUIREMENTS:
-- Return ONLY valid JSON format
-- No explanations, no markdown formatting
-- Replace all placeholders with "{subject}"
-- Use Schema.org standards
-- Include ALL fields shown above
-- Professional technical language
-
-Generate the complete JSON-LD now:"""
-        
-        return prompt
+        return template.format(
+            article_type=self.article_type,
+            subject=self.subject,
+            schema_template=schema_template
+        )
     
-    def _extract_schema_fields(self) -> Dict[str, Any]:
-        """Extract relevant fields from schema for JSON-LD."""
-        schema_fields = {}
+    def _build_schema_template(self) -> str:
+        """Build template using schema structure."""
+        # Get the profile section based on article type
+        profile_key = f"{self.article_type}Profile"
         
-        # Get all top-level fields from schema
-        for field_name, field_def in self.schema.items():
-            if isinstance(field_def, dict):
-                schema_fields[field_name] = field_def
+        print(f"🔍 DEBUG JSON-LD: Looking for profile key: {profile_key}")
+        print(f"🔍 DEBUG JSON-LD: Schema keys: {list(self.schema.keys())}")
         
-        return schema_fields
+        if profile_key in self.schema:
+            profile = self.schema[profile_key]
+            print(f"✅ DEBUG JSON-LD: Found profile with {len(profile)} fields")
+            return self._build_schema_template_from_profile(profile)
+        else:
+            print(f"❌ DEBUG JSON-LD: Profile key {profile_key} not found")
+            return None  # NO FALLBACK - FAIL FAST
     
-    def _build_jsonld_structure(self, schema_fields: Dict[str, Any], subject: str) -> str:
-        """Build JSON-LD structure from schema fields."""
-        # Extract key information from schema
-        title = self._get_schema_value(schema_fields, "name", f"{subject} Laser Cleaning")
-        description = self._get_schema_value(schema_fields, "description", f"Laser cleaning guide for {subject}")
-        keywords = self._get_schema_array(schema_fields, "keywords", [subject.lower(), "laser cleaning"])
-        industries = self._get_schema_array(schema_fields, "industries", ["Manufacturing", "Aerospace"])
-        author_info = self._get_schema_object(schema_fields, "author", {"name": "Expert", "title": "Engineer"})
+    def _build_schema_template_from_profile(self, profile: Dict[str, Any]) -> str:
+        """Build JSON-LD template from profile structure."""
+        json_parts = []
         
-        # Build comprehensive JSON-LD structure
-        jsonld_template = {
-            "@context": "https://schema.org",
-            "@type": "TechArticle",
-            "headline": self._replace_placeholders_in_string(title, subject),
-            "description": self._replace_placeholders_in_string(description, subject),
-            "keywords": self._replace_placeholders_in_array(keywords, subject),
-            "author": {
-                "@type": "Person",
-                "name": author_info.get("name", "Technical Expert"),
-                "jobTitle": author_info.get("title", "Senior Engineer"),
-                "worksFor": {
-                    "@type": "Organization",
-                    "name": "Z-Beam Technologies"
-                }
-            },
-            "publisher": {
-                "@type": "Organization",
-                "name": "Z-Beam Technologies",
-                "url": "https://z-beam.com"
-            },
-            "datePublished": self.context.get("publishedAt", "2024-01-01"),
-            "dateModified": self.context.get("lastUpdated", "2024-01-01"),
-            "url": f"https://z-beam.com/materials/{subject.lower().replace(' ', '-')}",
-            "articleSection": "Materials",
-            "about": {
-                "@type": "Thing",
-                "name": f"{subject} Laser Cleaning",
-                "description": f"Industrial laser cleaning process for {subject} surfaces"
-            },
-            "applicationCategory": self._replace_placeholders_in_array(industries, subject),
-            "mainEntity": {
-                "@type": "Product",
-                "name": subject,
-                "description": f"Material used in industrial applications requiring laser cleaning",
-                "category": "Industrial Material",
-                "material": subject
-            }
+        # Add context and type
+        json_parts.append('"@context": "https://schema.org"')
+        json_parts.append('"@type": "TechnicalArticle"')
+        
+        for field_name, field_def in profile.items():
+            if isinstance(field_def, dict) and "example" in field_def:
+                example = field_def["example"]
+                
+                # Map schema fields to JSON-LD properties
+                jsonld_field = self._map_to_jsonld_field(field_name)
+                if jsonld_field:
+                    if isinstance(example, str):
+                        processed_value = self._replace_placeholders(example)
+                        json_parts.append(f'"{jsonld_field}": "{processed_value}"')
+                    elif isinstance(example, list):
+                        processed_items = [self._replace_placeholders(str(item)) for item in example]
+                        json_parts.append(f'"{jsonld_field}": {processed_items}')
+        
+        return '{\n  ' + ',\n  '.join(json_parts) + '\n}' if json_parts else None
+    
+    def _map_to_jsonld_field(self, schema_field: str) -> str:
+        """Map schema field names to JSON-LD property names."""
+        mapping = {
+            "name": "headline",
+            "description": "description",
+            "keywords": "keywords",
+            "industries": "industry",
+            "primaryAudience": "audience",
+            "author": "author"
+        }
+        return mapping.get(schema_field)
+    
+    def _replace_placeholders(self, value: str) -> str:
+        """Replace schema placeholders."""
+        placeholder_map = {
+            "materialName": self.subject,
+            "applicationName": self.subject,
+            "regionName": self.subject,
+            "term": self.subject,
+            "{{materialName}}": self.subject,
+            "{{applicationName}}": self.subject,
+            "{{regionName}}": self.subject,
+            "{{term}}": self.subject
         }
         
-        # Add schema-specific fields if they exist
-        if "outcomes" in schema_fields:
-            outcomes = schema_fields["outcomes"].get("example", [])
-            if outcomes:
-                jsonld_template["mentions"] = []
-                for outcome in outcomes[:3]:  # Limit to 3 mentions
-                    if isinstance(outcome, dict):
-                        jsonld_template["mentions"].append({
-                            "@type": "Thing",
-                            "name": self._replace_placeholders_in_string(outcome.get("name", ""), subject),
-                            "description": self._replace_placeholders_in_string(outcome.get("description", ""), subject)
-                        })
+        for placeholder, replacement in placeholder_map.items():
+            value = value.replace(placeholder, replacement)
         
-        return json.dumps(jsonld_template, indent=2)
-    
-    def _get_schema_value(self, schema_fields: Dict[str, Any], field_name: str, default: str) -> str:
-        """Get a string value from schema fields."""
-        if field_name in schema_fields:
-            field_def = schema_fields[field_name]
-            if isinstance(field_def, dict):
-                return field_def.get("example", default)
-        return default
-    
-    def _get_schema_array(self, schema_fields: Dict[str, Any], field_name: str, default: list) -> list:
-        """Get an array value from schema fields."""
-        if field_name in schema_fields:
-            field_def = schema_fields[field_name]
-            if isinstance(field_def, dict):
-                example = field_def.get("example", default)
-                if isinstance(example, list):
-                    return example
-        return default
-    
-    def _get_schema_object(self, schema_fields: Dict[str, Any], field_name: str, default: dict) -> dict:
-        """Get an object value from schema fields."""
-        if field_name in schema_fields:
-            field_def = schema_fields[field_name]
-            if isinstance(field_def, dict):
-                example = field_def.get("example", default)
-                if isinstance(example, dict):
-                    return example
-        return default
-    
-    def _replace_placeholders_in_string(self, value: str, subject: str) -> str:
-        """Replace placeholders in a string."""
-        if isinstance(value, str):
-            value = value.replace("{{materialName}}", subject)
-            value = value.replace("{{applicationName}}", subject)
-            value = value.replace("{{regionName}}", subject)
-            value = value.replace("{{term}}", subject)
         return value
     
-    def _replace_placeholders_in_array(self, value: list, subject: str) -> list:
-        """Replace placeholders in an array."""
-        if isinstance(value, list):
-            return [self._replace_placeholders_in_string(str(item), subject) for item in value]
-        return value
+    def _clean_response(self, response: str) -> str:
+        """Clean JSON response."""
+        print(f"🔍 DEBUG JSON-LD: Raw response:\n{response}")
+        
+        cleaned = response.strip()
+        
+        # Remove markdown code blocks
+        if cleaned.startswith("```json"):
+            cleaned = cleaned[7:]
+        elif cleaned.startswith("```"):
+            cleaned = cleaned[3:]
+        
+        if cleaned.endswith("```"):
+            cleaned = cleaned[:-3]
+        
+        # Find JSON content between explanatory text
+        lines = cleaned.split('\n')
+        json_start = -1
+        json_end = -1
+        
+        for i, line in enumerate(lines):
+            if line.strip().startswith('{'):
+                json_start = i
+                break
+        
+        for i in range(len(lines)-1, -1, -1):
+            if lines[i].strip().endswith('}'):
+                json_end = i + 1
+                break
+        
+        if json_start != -1 and json_end != -1:
+            cleaned = '\n'.join(lines[json_start:json_end])
+        
+        print(f"🔍 DEBUG JSON-LD: Cleaned response:\n{cleaned}")
+        
+        return cleaned.strip()
+    
+    def _validate_jsonld(self, jsonld_data: Dict[str, Any]) -> bool:
+        """Validate JSON-LD structure."""
+        validation_config = self.prompt_config.get("validation", {})
+        required_fields = validation_config.get("required_fields", [])
+        
+        for field in required_fields:
+            if field not in jsonld_data:
+                logger.error(f"Missing required JSON-LD field: {field}")
+                return False
+        
+        # Check Schema.org type
+        expected_type = validation_config.get("schema_org_type")
+        if expected_type and jsonld_data.get("@type") != expected_type:
+            logger.error(f"Invalid Schema.org type: {jsonld_data.get('@type')}")
+            return False
+        
+        return True
