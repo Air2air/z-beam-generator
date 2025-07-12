@@ -25,7 +25,7 @@ logger.info("Starting Z-Beam Generator")
 logger.info("Loaded context: %s", ARTICLE_CONTEXT)
 
 def main():
-    schema_path = f"schemas/definitions/{ARTICLE_CONTEXT['article_type']}_schema_definition.md"
+    schema_path = f"schemas/definitions/{ARTICLE_CONTEXT['article_type']}_schema_definition.json"
     logger.info("Loading schema from: %s", schema_path)
     with open(schema_path, "r") as f:
         schema = json.loads(f.read())
