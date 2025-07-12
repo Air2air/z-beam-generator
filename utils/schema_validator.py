@@ -6,7 +6,10 @@ import re
 import json
 import yaml
 import logging
+import jsonschema
 from typing import Dict, Any, List, Tuple
+
+logger = logging.getLogger("zbeam.validator")
 
 class SchemaValidator:
     """Validates generated articles against their schema definitions"""
@@ -203,3 +206,13 @@ class SchemaValidator:
             "thesaurus": "DefinedTerm"
         }
         return type_mapping.get(schema_type, "Article")
+
+def validate_output(output: dict, schema: dict) -> bool:
+    logger.info("Validating output against schema...")
+    try:
+        jsonschema.validate(instance=output, schema=schema)
+        logger.info("Output is valid.")
+        return True
+    except jsonschema.ValidationError as e:
+        logger.error("Output validation failed: %s", e.message)
+        return False
