@@ -2,7 +2,7 @@
   "name": "region",
   "version": "1.0",
   "schemaType": "RegionProfile",
-  
+
   "generatorConfig": {
     "tags": {
       "includeCountries": true,
@@ -56,13 +56,13 @@
     },
     "countries": {
       "type": "array",
-      "items": {"type": "string"},
+      "items": { "type": "string" },
       "required": true,
       "description": "Countries within the region"
     },
     "keywords": {
       "type": "array",
-      "items": {"type": "string"},
+      "items": { "type": "string" },
       "required": true,
       "description": "Keywords for SEO, tagging, and JSON-LD"
     },
@@ -77,7 +77,7 @@
         },
         "majorIndustries": {
           "type": "array",
-          "items": {"type": "string"},
+          "items": { "type": "string" },
           "required": true,
           "description": "Major industries in the region"
         }
@@ -88,8 +88,8 @@
       "items": {
         "type": "object",
         "properties": {
-          "name": {"type": "string", "required": true},
-          "description": {"type": "string", "required": true}
+          "name": { "type": "string", "required": true },
+          "description": { "type": "string", "required": true }
         }
       },
       "required": true,
@@ -99,24 +99,25 @@
       "type": "object",
       "required": true,
       "properties": {
-        "articleType": {"type": "string", "required": true, "default": "region-profile"},
-        "publishedAt": {"type": "string", "format": "date", "required": false},
-        "lastUpdated": {"type": "string", "format": "date", "required": false}
+        "articleType": {
+          "type": "string",
+          "required": true,
+          "default": "region-profile"
+        },
+        "publishedAt": {
+          "type": "string",
+          "format": "date",
+          "required": false
+        },
+        "lastUpdated": { "type": "string", "format": "date", "required": false }
       }
     }
   },
 
   "jsonLD": {
     "@type": "Place",
-    "requiredProperties": [
-      "name",
-      "description"
-    ],
-    "recommendedProperties": [
-      "geo",
-      "containsPlace",
-      "mainEntityOfPage"
-    ]
+    "requiredProperties": ["name", "description"],
+    "recommendedProperties": ["geo", "containsPlace", "mainEntityOfPage"]
   },
 
   "validation": {
@@ -129,15 +130,8 @@
     ],
     "jsonLD": {
       "@type": "Place",
-      "requiredProperties": [
-        "name",
-        "description"
-      ],
-      "recommendedProperties": [
-        "geo",
-        "containsPlace",
-        "mainEntityOfPage"
-      ]
+      "requiredProperties": ["name", "description"],
+      "recommendedProperties": ["geo", "containsPlace", "mainEntityOfPage"]
     }
   }
 }

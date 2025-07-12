@@ -20,8 +20,8 @@ class TagsGenerator:
     def generate(self) -> Optional[List[str]]:
         """Generate comprehensive tags using AI provider."""
         try:
-            # Build comprehensive prompt using full schema
-            prompt = self._build_comprehensive_tags_prompt()
+            # Build schema-driven prompt
+            prompt = self._build_schema_driven_tags_prompt()
             
             # Generate using API with more tokens
             response = self.api_client.generate(prompt, max_tokens=1500)
@@ -37,18 +37,8 @@ class TagsGenerator:
                 logger.error("No valid tags extracted from response")
                 return None
             
-            # Remove duplicates and validate
-            unique_tags = []
-            seen = set()
-            
-            for tag in tags:
-                tag_clean = tag.strip().lower()
-                if tag_clean and tag_clean not in seen and len(tag_clean) > 1:
-                    seen.add(tag_clean)
-                    unique_tags.append(tag.strip())
-            
-            # Limit to reasonable number (15-25 tags)
-            final_tags = unique_tags[:20]
+            # Process and validate tags
+            final_tags = self._process_tags(tags)
             
             logger.info(f"Successfully generated {len(final_tags)} tags")
             return final_tags
@@ -79,12 +69,10 @@ class TagsGenerator:
                 
             # Handle different formats
             if line.startswith('- '):
-                # Bullet list format
                 tag = line[2:].strip()
                 if tag:
                     tags.append(tag)
             elif line.startswith('* '):
-                # Asterisk list format
                 tag = line[2:].strip()
                 if tag:
                     tags.append(tag)
@@ -98,128 +86,120 @@ class TagsGenerator:
         
         return tags
     
-    def _build_comprehensive_tags_prompt(self) -> str:
-        """Build comprehensive tags prompt using schema structure."""
+    def _process_tags(self, tags: List[str]) -> List[str]:
+        """Process and validate tags."""
+        processed_tags = []
+        seen = set()
+        
+        for tag in tags:
+            # Clean tag
+            clean_tag = tag.strip().lower()
+            
+            # Convert to kebab-case
+            clean_tag = clean_tag.replace(' ', '-').replace('_', '-')
+            
+            # Remove special characters except hyphens
+            clean_tag = ''.join(c for c in clean_tag if c.isalnum() or c == '-')
+            
+            # Validate tag
+            if clean_tag and len(clean_tag) > 1 and clean_tag not in seen:
+                seen.add(clean_tag)
+                processed_tags.append(clean_tag)
+        
+        # Limit to reasonable number
+        return processed_tags[:25]
+    
+    def _build_schema_driven_tags_prompt(self) -> str:
+        """Build tags prompt using actual schema structure."""
         subject = self.context.get("subject")
         article_type = self.context.get("article_type")
         
-        # Extract schema information for richer tagging
-        profile_section = None
-        for key, value in self.schema.items():
-            if "profile" in key.lower() and isinstance(value, dict):
-                profile_section = value
-                break
+        # Extract schema fields for tag generation
+        schema_fields = self._extract_schema_fields()
         
-        # Get schema-based context
-        industries = []
-        keywords = []
-        applications = []
+        # Build tag categories from schema
+        tag_categories = self._build_tag_categories(schema_fields, subject)
         
-        if profile_section:
-            industries = profile_section.get("industries", {}).get("example", [])
-            keywords = profile_section.get("keywords", {}).get("example", [])
-            
-            # Extract applications from outcomes or other sections
-            outcomes = profile_section.get("outcomes", {}).get("example", [])
-            if outcomes:
-                applications = [outcome.get("name", "") for outcome in outcomes if outcome.get("name")]
-        
-        prompt = f"""Generate comprehensive tags for a professional laser cleaning article about {subject}.
+        prompt = f"""Generate comprehensive tags for a laser cleaning article about {subject}.
 
-Create a diverse set of tags covering all relevant aspects:
+Based on the schema definition, create tags for these categories:
 
-ARTICLE CONTEXT:
-- Subject: {subject}
-- Type: Technical Article
-- Industries: {', '.join(industries) if industries else 'Aerospace, Manufacturing, Medical Devices'}
-- Target Audience: Materials Engineers, Technicians, Industrial Professionals
+{tag_categories}
 
-REQUIRED TAG CATEGORIES:
+REQUIREMENTS:
+- Generate 15-25 relevant tags
+- Use kebab-case format (lowercase-with-hyphens)
+- Include both general and specific tags
+- Focus on technical accuracy and searchability
+- Include subject-specific variations
 
-CORE MATERIAL TAGS:
-- {subject}
-- {subject.lower()}
-- {subject.lower()}-laser-cleaning
-- {subject.lower()}-surface-treatment
-- {subject.lower()}-oxide-removal
-
-PROCESS & TECHNIQUE TAGS:
-- laser-cleaning
-- laser-ablation
-- surface-preparation
-- precision-cleaning
-- contaminant-removal
-- surface-treatment
-- industrial-cleaning
-- non-contact-cleaning
-- eco-friendly-cleaning
-
-TECHNICAL PARAMETER TAGS:
-- laser-parameters
-- pulse-energy
-- wavelength-optimization
-- scan-speed
-- thermal-management
-- process-control
-- quality-assurance
-
-INDUSTRY APPLICATION TAGS:
-- aerospace-cleaning
-- manufacturing-processes
-- medical-device-cleaning
-- electronics-cleaning
-- automotive-applications
-- defense-applications
-
-MATERIAL PROPERTY TAGS:
-- metal-cleaning
-- oxide-removal
-- corrosion-prevention
-- surface-integrity
-- material-properties
-- substrate-preservation
-
-SAFETY & COMPLIANCE TAGS:
-- laser-safety
-- environmental-compliance
-- industrial-standards
-- operator-safety
-- regulatory-compliance
-
-COMPARISON & ANALYSIS TAGS:
-- traditional-methods-comparison
-- cost-effectiveness
-- efficiency-analysis
-- performance-metrics
-- quality-improvement
-
-TECHNICAL SPECIFICATIONS:
-- equipment-specifications
-- system-requirements
-- operational-parameters
-- maintenance-procedures
-
-GENERATE 15-20 RELEVANT TAGS:
-Create a focused list of the most relevant tags for this {subject} laser cleaning article.
-Focus on tags that would be useful for:
-- SEO optimization
-- Content categorization
-- Technical search
-- Industry-specific filtering
-
-Format as a simple list, one tag per line:
+Format as a simple list:
 - tag-name-1
 - tag-name-2
 - tag-name-3
 
-CRITICAL REQUIREMENTS:
-- Use kebab-case (lowercase with hyphens)
-- No special characters except hyphens
-- Each tag should be 2-4 words maximum
-- Include both general and specific tags
-- Focus on technical accuracy
-- Ensure tags are searchable and meaningful
-
 Generate the comprehensive tag list now:"""
         
         return prompt
+    
+    def _extract_schema_fields(self) -> Dict[str, Any]:
+        """Extract relevant fields from schema for tag generation."""
+        schema_fields = {}
+        
+        # Get all top-level fields from schema
+        for field_name, field_def in self.schema.items():
+            if isinstance(field_def, dict):
+                schema_fields[field_name] = field_def
+        
+        return schema_fields
+    
+    def _build_tag_categories(self, schema_fields: Dict[str, Any], subject: str) -> str:
+        """Build tag categories from schema fields."""
+        categories = []
+        
+        # Core subject tags
+        categories.append(f"CORE TAGS:\n- {subject.lower()}\n- {subject.lower()}-laser-cleaning\n- laser-cleaning")
+        
+        # Industry tags from schema
+        if "industries" in schema_fields:
+            industries = schema_fields["industries"].get("example", [])
+            if industries:
+                industry_tags = [f"- {industry.lower().replace(' ', '-')}" for industry in industries]
+                categories.append(f"INDUSTRY TAGS:\n" + "\n".join(industry_tags))
+        
+        # Keywords from schema
+        if "keywords" in schema_fields:
+            keywords = schema_fields["keywords"].get("example", [])
+            if keywords:
+                keyword_tags = [f"- {kw.lower().replace(' ', '-')}" for kw in keywords if isinstance(kw, str)]
+                categories.append(f"KEYWORD TAGS:\n" + "\n".join(keyword_tags))
+        
+        # Process/outcome tags from schema
+        if "outcomes" in schema_fields:
+            outcomes = schema_fields["outcomes"].get("example", [])
+            if outcomes:
+                outcome_tags = []
+                for outcome in outcomes[:5]:  # Limit to 5
+                    if isinstance(outcome, dict) and "name" in outcome:
+                        tag = outcome["name"].lower().replace(' ', '-')
+                        outcome_tags.append(f"- {tag}")
+                if outcome_tags:
+                    categories.append(f"PROCESS TAGS:\n" + "\n".join(outcome_tags))
+        
+        # Challenge/technical tags from schema
+        if "challenges" in schema_fields:
+            challenges = schema_fields["challenges"].get("example", [])
+            if challenges:
+                challenge_tags = []
+                for challenge in challenges[:3]:  # Limit to 3
+                    if isinstance(challenge, dict) and "name" in challenge:
+                        tag = challenge["name"].lower().replace(' ', '-')
+                        challenge_tags.append(f"- {tag}")
+                if challenge_tags:
+                    categories.append(f"TECHNICAL TAGS:\n" + "\n".join(challenge_tags))
+        
+        # Safety/standards tags from schema
+        if "safetyConsiderations" in schema_fields:
+            categories.append("SAFETY TAGS:\n- laser-safety\n- operator-safety\n- industrial-standards")
+        
+        return "\n\n".join(categories)

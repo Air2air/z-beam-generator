@@ -2,7 +2,7 @@
   "name": "thesaurus",
   "version": "1.0",
   "schemaType": "LaserCleaningThesaurusProfile",
-  
+
   "generatorConfig": {
     "tags": {
       "includeIndustries": true,
@@ -72,7 +72,7 @@
     },
     "keywords": {
       "type": "array",
-      "items": {"type": "string"},
+      "items": { "type": "string" },
       "required": true,
       "description": "Keywords for SEO, tagging, and JSON-LD"
     },
@@ -98,19 +98,19 @@
         },
         "industries": {
           "type": "array",
-          "items": {"type": "string"},
+          "items": { "type": "string" },
           "required": true,
           "description": "Industries where the term is relevant"
         },
         "applications": {
           "type": "array",
-          "items": {"type": "string"},
+          "items": { "type": "string" },
           "required": true,
           "description": "Laser cleaning applications where the term is used"
         },
         "materials": {
           "type": "array",
-          "items": {"type": "string"},
+          "items": { "type": "string" },
           "required": true,
           "description": "Materials where the term is relevant"
         }
@@ -118,7 +118,7 @@
     },
     "synonyms": {
       "type": "array",
-      "items": {"type": "string"},
+      "items": { "type": "string" },
       "required": false,
       "description": "Synonyms or near-synonyms for the term"
     },
@@ -127,8 +127,8 @@
       "items": {
         "type": "object",
         "properties": {
-          "name": {"type": "string", "required": true},
-          "description": {"type": "string", "required": true}
+          "name": { "type": "string", "required": true },
+          "description": { "type": "string", "required": true }
         }
       },
       "required": true,
@@ -149,10 +149,10 @@
           "items": {
             "type": "object",
             "properties": {
-              "name": {"type": "string", "required": true},
-              "unit": {"type": "string", "required": true},
-              "typicalValues": {"type": "string", "required": true},
-              "optimalContext": {"type": "string", "required": false}
+              "name": { "type": "string", "required": true },
+              "unit": { "type": "string", "required": true },
+              "typicalValues": { "type": "string", "required": true },
+              "optimalContext": { "type": "string", "required": false }
             }
           }
         },
@@ -165,8 +165,8 @@
           "type": "object",
           "required": false,
           "properties": {
-            "type": {"type": "string", "required": false},
-            "dataSource": {"type": "string", "required": false}
+            "type": { "type": "string", "required": false },
+            "dataSource": { "type": "string", "required": false }
           }
         }
       }
@@ -177,20 +177,20 @@
       "items": {
         "type": "object",
         "properties": {
-          "name": {"type": "string", "required": true},
-          "description": {"type": "string", "required": true}
+          "name": { "type": "string", "required": true },
+          "description": { "type": "string", "required": true }
         }
       }
     },
     "safetyConsiderations": {
       "type": "array",
-      "items": {"type": "string"},
+      "items": { "type": "string" },
       "required": true,
       "description": "Safety requirements related to the term in laser cleaning"
     },
     "regulatoryStandards": {
       "type": "array",
-      "items": {"type": "string"},
+      "items": { "type": "string" },
       "required": true,
       "description": "Industry standards relevant to the term"
     },
@@ -198,24 +198,40 @@
       "type": "object",
       "required": true,
       "properties": {
-        "id": {"type": "string", "required": true},
-        "name": {"type": "string", "required": true},
-        "title": {"type": "string", "required": false},
-        "country": {"type": "string", "required": false},
-        "image": {"type": "string", "required": false},
-        "slug": {"type": "string", "required": false},
-        "url": {"type": "string", "required": false}
+        "id": { "type": "string", "required": true },
+        "name": { "type": "string", "required": true },
+        "title": { "type": "string", "required": false },
+        "country": { "type": "string", "required": false },
+        "image": { "type": "string", "required": false },
+        "slug": { "type": "string", "required": false },
+        "url": { "type": "string", "required": false }
       }
     },
     "contentManagement": {
       "type": "object",
       "required": true,
       "properties": {
-        "articleType": {"type": "string", "required": true, "default": "thesaurus-profile"},
-        "publishedAt": {"type": "string", "format": "date", "required": false},
-        "lastUpdated": {"type": "string", "format": "date", "required": false},
-        "generationTimestamp": {"type": "string", "format": "date-time", "required": false},
-        "modelUsed": {"type": "string", "required": false}
+        "articleType": {
+          "type": "string",
+          "required": true,
+          "default": "thesaurus-profile"
+        },
+        "publishedAt": {
+          "type": "string",
+          "format": "date",
+          "required": false
+        },
+        "lastUpdated": {
+          "type": "string",
+          "format": "date",
+          "required": false
+        },
+        "generationTimestamp": {
+          "type": "string",
+          "format": "date-time",
+          "required": false
+        },
+        "modelUsed": { "type": "string", "required": false }
       }
     },
     "relatedContent": {
@@ -224,9 +240,9 @@
       "items": {
         "type": "object",
         "properties": {
-          "title": {"type": "string", "required": true},
-          "url": {"type": "string", "required": true},
-          "type": {"type": "string", "required": true}
+          "title": { "type": "string", "required": true },
+          "url": { "type": "string", "required": true },
+          "type": { "type": "string", "required": true }
         }
       }
     }
@@ -234,15 +250,8 @@
 
   "jsonLD": {
     "@type": "DefinedTerm",
-    "requiredProperties": [
-      "name",
-      "description",
-      "termCode"
-    ],
-    "recommendedProperties": [
-      "inDefinedTermSet",
-      "url"
-    ]
+    "requiredProperties": ["name", "description", "termCode"],
+    "recommendedProperties": ["inDefinedTermSet", "url"]
   },
 
   "validation": {
@@ -254,15 +263,8 @@
     ],
     "jsonLD": {
       "@type": "DefinedTerm",
-      "requiredProperties": [
-        "name",
-        "description",
-        "termCode"
-      ],
-      "recommendedProperties": [
-        "inDefinedTermSet",
-        "url"
-      ]
+      "requiredProperties": ["name", "description", "termCode"],
+      "recommendedProperties": ["inDefinedTermSet", "url"]
     }
   }
 }
