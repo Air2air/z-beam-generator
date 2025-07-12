@@ -1,14 +1,13 @@
-"""Tags generator for schema-driven article tags."""
+"""Tags generator for schema-driven article tagging."""
 
 import logging
-import json
 from typing import Dict, Any, Optional, List
 from api_client import APIClient
 
 logger = logging.getLogger(__name__)
 
 class TagsGenerator:
-    """Generates article tags based on schema definitions."""
+    """Generates comprehensive tags based on schema definitions."""
     
     def __init__(self, context: Dict[str, Any], schema: Dict[str, Any], ai_provider: str):
         self.context = context
@@ -19,92 +18,208 @@ class TagsGenerator:
         logger.info(f"Tags generator initialized for {context.get('article_type')}")
     
     def generate(self) -> Optional[List[str]]:
-        """Generate tags using AI provider."""
+        """Generate comprehensive tags using AI provider."""
         try:
-            # Build prompt using schema
-            prompt = self._build_tags_prompt()
+            # Build comprehensive prompt using full schema
+            prompt = self._build_comprehensive_tags_prompt()
             
-            # Generate using API
-            response = self.api_client.generate(prompt, max_tokens=300)
+            # Generate using API with more tokens
+            response = self.api_client.generate(prompt, max_tokens=1500)
             
             if not response:
                 logger.error("Failed to generate tags")
                 return None
             
-            # Parse response (could be YAML or JSON)
-            import yaml
-            try:
-                tags_data = yaml.safe_load(response)
-                
-                # Extract tags from response
-                if isinstance(tags_data, dict):
-                    tags = tags_data.get("tags", [])
-                elif isinstance(tags_data, list):
-                    tags = tags_data
-                else:
-                    # Try to extract from string
-                    tags = []
-                
-                logger.info(f"Successfully generated {len(tags)} tags")
-                return tags
-                
-            except yaml.YAMLError as e:
-                logger.error(f"Failed to parse tags response: {e}")
+            # Parse and clean tags
+            tags = self._parse_tags_response(response)
+            
+            if not tags:
+                logger.error("No valid tags extracted from response")
                 return None
-                
+            
+            # Remove duplicates and validate
+            unique_tags = []
+            seen = set()
+            
+            for tag in tags:
+                tag_clean = tag.strip().lower()
+                if tag_clean and tag_clean not in seen and len(tag_clean) > 1:
+                    seen.add(tag_clean)
+                    unique_tags.append(tag.strip())
+            
+            # Limit to reasonable number (15-25 tags)
+            final_tags = unique_tags[:20]
+            
+            logger.info(f"Successfully generated {len(final_tags)} tags")
+            return final_tags
+            
         except Exception as e:
             logger.error(f"Tags generation failed: {e}", exc_info=True)
             return None
     
-    def _build_tags_prompt(self) -> str:
-        """Build tags generation prompt using schema structure."""
-        article_type = self.context.get("article_type")
+    def _parse_tags_response(self, response: str) -> List[str]:
+        """Parse AI response to extract tags."""
+        tags = []
+        
+        # Clean response
+        clean_response = response.strip()
+        
+        # Remove any markdown formatting
+        if clean_response.startswith("```"):
+            lines = clean_response.split('\n')
+            clean_response = '\n'.join(lines[1:-1]) if len(lines) > 2 else clean_response
+        
+        # Try different parsing methods
+        lines = clean_response.split('\n')
+        
+        for line in lines:
+            line = line.strip()
+            if not line:
+                continue
+                
+            # Handle different formats
+            if line.startswith('- '):
+                # Bullet list format
+                tag = line[2:].strip()
+                if tag:
+                    tags.append(tag)
+            elif line.startswith('* '):
+                # Asterisk list format
+                tag = line[2:].strip()
+                if tag:
+                    tags.append(tag)
+            elif ',' in line:
+                # Comma-separated format
+                line_tags = [t.strip() for t in line.split(',')]
+                tags.extend([t for t in line_tags if t])
+            elif line and not line.startswith('#') and not ':' in line:
+                # Single tag per line
+                tags.append(line)
+        
+        return tags
+    
+    def _build_comprehensive_tags_prompt(self) -> str:
+        """Build comprehensive tags prompt using schema structure."""
         subject = self.context.get("subject")
+        article_type = self.context.get("article_type")
         
-        # Map context subject to schema placeholder
-        placeholder_map = {
-            "material": "materialName",
-            "application": "applicationName", 
-            "region": "regionName",
-            "thesaurus": "term"
-        }
-        
-        placeholder = placeholder_map.get(article_type, "subject")
-        
-        # Find tags section in schema (flexible naming)
-        tags_section = None
+        # Extract schema information for richer tagging
+        profile_section = None
         for key, value in self.schema.items():
-            if "tags" in key.lower() and isinstance(value, dict):
-                tags_section = value
+            if "profile" in key.lower() and isinstance(value, dict):
+                profile_section = value
                 break
         
-        if not tags_section:
-            # Create a simple tags structure
-            tags_section = {"tags": [f"{{{{{placeholder}}}}}", "laser-cleaning"]}
+        # Get schema-based context
+        industries = []
+        keywords = []
+        applications = []
         
-        # Replace system placeholders in schema
-        schema_with_system = json.dumps(tags_section, indent=2)
-        for sys_key, sys_value in self.context.items():
-            if sys_key in ["generation_timestamp", "model_used", "lastUpdated", "publishedAt"]:
-                schema_with_system = schema_with_system.replace(f"{{{{{sys_key}}}}}", str(sys_value))
+        if profile_section:
+            industries = profile_section.get("industries", {}).get("example", [])
+            keywords = profile_section.get("keywords", {}).get("example", [])
+            
+            # Extract applications from outcomes or other sections
+            outcomes = profile_section.get("outcomes", {}).get("example", [])
+            if outcomes:
+                applications = [outcome.get("name", "") for outcome in outcomes if outcome.get("name")]
         
-        prompt = f"""You are an expert technical writer creating tags for a laser cleaning article.
+        prompt = f"""Generate comprehensive tags for a professional laser cleaning article about {subject}.
 
-Subject: {subject}
-Article Type: {article_type}
+Create a diverse set of tags covering all relevant aspects:
 
-Generate tags following this exact schema structure:
-{schema_with_system}
+ARTICLE CONTEXT:
+- Subject: {subject}
+- Type: Technical Article
+- Industries: {', '.join(industries) if industries else 'Aerospace, Manufacturing, Medical Devices'}
+- Target Audience: Materials Engineers, Technicians, Industrial Professionals
+
+REQUIRED TAG CATEGORIES:
+
+CORE MATERIAL TAGS:
+- {subject}
+- {subject.lower()}
+- {subject.lower()}-laser-cleaning
+- {subject.lower()}-surface-treatment
+- {subject.lower()}-oxide-removal
+
+PROCESS & TECHNIQUE TAGS:
+- laser-cleaning
+- laser-ablation
+- surface-preparation
+- precision-cleaning
+- contaminant-removal
+- surface-treatment
+- industrial-cleaning
+- non-contact-cleaning
+- eco-friendly-cleaning
+
+TECHNICAL PARAMETER TAGS:
+- laser-parameters
+- pulse-energy
+- wavelength-optimization
+- scan-speed
+- thermal-management
+- process-control
+- quality-assurance
+
+INDUSTRY APPLICATION TAGS:
+- aerospace-cleaning
+- manufacturing-processes
+- medical-device-cleaning
+- electronics-cleaning
+- automotive-applications
+- defense-applications
+
+MATERIAL PROPERTY TAGS:
+- metal-cleaning
+- oxide-removal
+- corrosion-prevention
+- surface-integrity
+- material-properties
+- substrate-preservation
+
+SAFETY & COMPLIANCE TAGS:
+- laser-safety
+- environmental-compliance
+- industrial-standards
+- operator-safety
+- regulatory-compliance
+
+COMPARISON & ANALYSIS TAGS:
+- traditional-methods-comparison
+- cost-effectiveness
+- efficiency-analysis
+- performance-metrics
+- quality-improvement
+
+TECHNICAL SPECIFICATIONS:
+- equipment-specifications
+- system-requirements
+- operational-parameters
+- maintenance-procedures
+
+GENERATE 15-20 RELEVANT TAGS:
+Create a focused list of the most relevant tags for this {subject} laser cleaning article.
+Focus on tags that would be useful for:
+- SEO optimization
+- Content categorization
+- Technical search
+- Industry-specific filtering
+
+Format as a simple list, one tag per line:
+- tag-name-1
+- tag-name-2
+- tag-name-3
 
 CRITICAL REQUIREMENTS:
-- Replace ALL instances of {{{{{placeholder}}}}} with "{subject}"
-- Use the subject "{subject}" appropriately in all tag fields
-- Include ALL fields from the schema - no omissions
-- Follow the schema data types and formats exactly
-- Return ONLY valid YAML format
-- Do NOT include any explanatory text or markdown formatting
-- Ensure every field has meaningful content (no empty arrays)
+- Use kebab-case (lowercase with hyphens)
+- No special characters except hyphens
+- Each tag should be 2-4 words maximum
+- Include both general and specific tags
+- Focus on technical accuracy
+- Ensure tags are searchable and meaningful
 
-Generate the tags now:"""
+Generate the comprehensive tag list now:"""
         
         return prompt

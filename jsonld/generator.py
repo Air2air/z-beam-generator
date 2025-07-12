@@ -21,11 +21,11 @@ class JsonLdGenerator:
     def generate(self) -> Optional[Dict[str, Any]]:
         """Generate JSON-LD using AI provider."""
         try:
-            # Build prompt using schema
-            prompt = self._build_jsonld_prompt()
+            # Build comprehensive prompt using full schema
+            prompt = self._build_comprehensive_jsonld_prompt()
             
-            # Generate using API
-            response = self.api_client.generate(prompt, max_tokens=800)
+            # Generate using API with more tokens
+            response = self.api_client.generate(prompt, max_tokens=2500)
             
             if not response:
                 logger.error("Failed to generate JSON-LD")
@@ -46,67 +46,124 @@ class JsonLdGenerator:
                 
             except json.JSONDecodeError as e:
                 logger.error(f"Failed to parse JSON-LD response: {e}")
+                logger.error(f"Response: {repr(response)}")
                 return None
                 
         except Exception as e:
             logger.error(f"JSON-LD generation failed: {e}", exc_info=True)
             return None
     
-    def _build_jsonld_prompt(self) -> str:
-        """Build JSON-LD generation prompt using schema structure."""
-        article_type = self.context.get("article_type")
+    def _build_comprehensive_jsonld_prompt(self) -> str:
+        """Build comprehensive JSON-LD prompt using schema structure."""
         subject = self.context.get("subject")
+        article_type = self.context.get("article_type")
         
-        # Map context subject to schema placeholder
-        placeholder_map = {
-            "material": "materialName",
-            "application": "applicationName", 
-            "region": "regionName",
-            "thesaurus": "term"
-        }
-        
-        placeholder = placeholder_map.get(article_type, "subject")
-        
-        # Find JSON-LD section in schema (flexible naming)
-        jsonld_section = None
-        for key, value in self.schema.items():
-            if "jsonld" in key.lower() or "structured" in key.lower():
-                jsonld_section = value
-                break
-        
-        if not jsonld_section:
-            # Create a basic JSON-LD structure
-            jsonld_section = {
-                "@context": "https://schema.org",
-                "@type": "Article",
-                "headline": f"{{{{{placeholder}}}}} Laser Cleaning",
-                "description": f"Guide to {{{{{placeholder}}}}} laser cleaning"
-            }
-        
-        # Replace system placeholders in schema
-        schema_with_system = json.dumps(jsonld_section, indent=2)
-        for sys_key, sys_value in self.context.items():
-            if sys_key in ["generation_timestamp", "model_used", "lastUpdated", "publishedAt"]:
-                schema_with_system = schema_with_system.replace(f"{{{{{sys_key}}}}}", str(sys_value))
-        
-        prompt = f"""You are an expert technical writer creating JSON-LD structured data for a laser cleaning article.
+        prompt = f"""Generate comprehensive JSON-LD structured data for a professional laser cleaning article about {subject}.
 
-Subject: {subject}
-Article Type: {article_type}
+Create detailed Schema.org structured data following these requirements:
 
-Generate JSON-LD following this exact schema structure:
-{schema_with_system}
+ARTICLE INFORMATION:
+- Subject: {subject}
+- Type: Technical Article
+- Audience: Materials Engineers, Industrial Professionals
+
+REQUIRED JSON-LD STRUCTURE:
+
+{{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "{subject} Laser Cleaning: Complete Technical Guide",
+  "description": "Comprehensive guide to laser cleaning {subject} surfaces, including optimal parameters, techniques, safety considerations, and industrial applications for aerospace, manufacturing, and medical device industries",
+  "keywords": [
+    "{subject.lower()}",
+    "laser cleaning",
+    "surface preparation",
+    "industrial cleaning",
+    "{subject.lower()} oxide removal",
+    "laser ablation",
+    "precision cleaning",
+    "contaminant removal",
+    "surface treatment"
+  ],
+  "author": {{
+    "@type": "Person",
+    "name": "Dr. Sarah Chen",
+    "jobTitle": "Senior Materials Engineer",
+    "worksFor": {{
+      "@type": "Organization",
+      "name": "Z-Beam Technologies",
+      "specialization": "Laser Surface Processing"
+    }}
+  }},
+  "publisher": {{
+    "@type": "Organization",
+    "name": "Z-Beam Technologies",
+    "url": "https://z-beam.com"
+  }},
+  "datePublished": "{self.context.get('publishedAt', '2024-01-01')}",
+  "dateModified": "{self.context.get('lastUpdated', '2024-01-01')}",
+  "url": "https://z-beam.com/materials/{subject.lower().replace(' ', '-')}",
+  "image": "https://z-beam.com/images/materials/{subject.lower().replace(' ', '-')}-laser-cleaning.jpg",
+  "articleSection": "Materials",
+  "about": {{
+    "@type": "Thing",
+    "name": "{subject} Laser Cleaning",
+    "description": "Industrial laser cleaning process for {subject} surfaces"
+  }},
+  "mentions": [
+    {{
+      "@type": "Thing",
+      "name": "Laser Ablation",
+      "description": "Physical process of removing material using laser energy"
+    }},
+    {{
+      "@type": "Thing", 
+      "name": "Surface Preparation",
+      "description": "Process of cleaning and preparing surfaces for coating or bonding"
+    }},
+    {{
+      "@type": "Thing",
+      "name": "{subject} Oxide Removal",
+      "description": "Specific application of laser cleaning for removing oxides from {subject}"
+    }}
+  ],
+  "audience": {{
+    "@type": "Audience",
+    "audienceType": "Professional",
+    "name": "Materials Engineers and Technicians"
+  }},
+  "educationalLevel": "Intermediate",
+  "learningResourceType": "Technical Guide",
+  "applicationCategory": [
+    "Aerospace",
+    "Manufacturing",
+    "Medical Devices",
+    "Electronics",
+    "Automotive"
+  ],
+  "mainEntity": {{
+    "@type": "Product",
+    "name": "{subject}",
+    "description": "Metal material commonly used in aerospace and manufacturing applications",
+    "category": "Industrial Material",
+    "material": "{subject}",
+    "applicationCategory": "Surface Cleaning"
+  }},
+  "potentialAction": {{
+    "@type": "ReadAction",
+    "target": "https://z-beam.com/materials/{subject.lower().replace(' ', '-')}"
+  }}
+}}
 
 CRITICAL REQUIREMENTS:
-- Replace ALL instances of {{{{{placeholder}}}}} with "{subject}"
-- Use the subject "{subject}" appropriately in all JSON-LD fields
-- Include ALL fields from the schema - no omissions
-- Follow the schema data types and formats exactly
 - Return ONLY valid JSON format
-- Do NOT include any explanatory text or markdown formatting
-- Ensure every field has meaningful content (no empty strings)
-- Follow Schema.org standards for structured data
+- No explanations, no markdown formatting
+- Use "{subject}" throughout all relevant fields
+- Follow Schema.org standards exactly
+- Include ALL fields shown above
+- Use professional, technical language
+- Ensure all URLs and references are realistic
 
-Generate the JSON-LD now:"""
+Generate the comprehensive JSON-LD now:"""
         
         return prompt
