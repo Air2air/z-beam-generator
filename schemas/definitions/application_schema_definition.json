@@ -2,7 +2,7 @@
   "name": "application",
   "version": "1.0",
   "schemaType": "LaserCleaningApplicationProfile",
-  
+
   "generatorConfig": {
     "tags": {
       "includeIndustries": true,
@@ -75,19 +75,19 @@
     },
     "industries": {
       "type": "array",
-      "items": {"type": "string"},
+      "items": { "type": "string" },
       "required": true,
       "description": "Industries where the application is commonly used"
     },
     "substrates": {
       "type": "array",
-      "items": {"type": "string"},
+      "items": { "type": "string" },
       "required": true,
       "description": "Substrates commonly cleaned in this application"
     },
     "keywords": {
       "type": "array",
-      "items": {"type": "string"},
+      "items": { "type": "string" },
       "required": true,
       "description": "Keywords for SEO, tagging, and JSON-LD"
     },
@@ -117,12 +117,12 @@
           "items": {
             "type": "object",
             "properties": {
-              "name": {"type": "string", "required": true},
-              "unit": {"type": "string", "required": true},
-              "optimalRange": {"type": "string", "required": true},
+              "name": { "type": "string", "required": true },
+              "unit": { "type": "string", "required": true },
+              "optimalRange": { "type": "string", "required": true },
               "fullRanges": {
                 "type": "array",
-                "items": {"type": "string"},
+                "items": { "type": "string" },
                 "required": false
               }
             }
@@ -141,8 +141,8 @@
       "items": {
         "type": "object",
         "properties": {
-          "name": {"type": "string", "required": true},
-          "description": {"type": "string", "required": true}
+          "name": { "type": "string", "required": true },
+          "description": { "type": "string", "required": true }
         }
       }
     },
@@ -152,8 +152,8 @@
       "items": {
         "type": "object",
         "properties": {
-          "name": {"type": "string", "required": true},
-          "description": {"type": "string", "required": true}
+          "name": { "type": "string", "required": true },
+          "description": { "type": "string", "required": true }
         }
       }
     },
@@ -161,40 +161,40 @@
       "type": "object",
       "required": true,
       "properties": {
-        "description": {"type": "string", "required": true},
+        "description": { "type": "string", "required": true },
         "metrics": {
           "type": "array",
           "required": true,
           "items": {
             "type": "object",
             "properties": {
-              "name": {"type": "string", "required": true},
-              "unit": {"type": "string", "required": true},
-              "optimalRange": {"type": "string", "required": true},
+              "name": { "type": "string", "required": true },
+              "unit": { "type": "string", "required": true },
+              "optimalRange": { "type": "string", "required": true },
               "fullRanges": {
                 "type": "array",
-                "items": {"type": "string"},
+                "items": { "type": "string" },
                 "required": false
               }
             }
           }
         },
-        "dataSource": {"type": "string", "required": false}
+        "dataSource": { "type": "string", "required": false }
       }
     },
     "cleaningSpeedComparison": {
       "type": "object",
       "required": true,
       "properties": {
-        "description": {"type": "string", "required": true},
+        "description": { "type": "string", "required": true },
         "methods": {
           "type": "array",
           "required": true,
           "items": {
             "type": "object",
             "properties": {
-              "method": {"type": "string", "required": true},
-              "speed": {"type": "string", "required": true}
+              "method": { "type": "string", "required": true },
+              "speed": { "type": "string", "required": true }
             }
           }
         },
@@ -202,8 +202,8 @@
           "type": "object",
           "required": false,
           "properties": {
-            "type": {"type": "string", "required": false},
-            "dataSource": {"type": "string", "required": false}
+            "type": { "type": "string", "required": false },
+            "dataSource": { "type": "string", "required": false }
           }
         }
       }
@@ -212,15 +212,15 @@
       "type": "object",
       "required": true,
       "properties": {
-        "description": {"type": "string", "required": true},
+        "description": { "type": "string", "required": true },
         "methods": {
           "type": "array",
           "required": true,
           "items": {
             "type": "object",
             "properties": {
-              "method": {"type": "string", "required": true},
-              "cost": {"type": "string", "required": true}
+              "method": { "type": "string", "required": true },
+              "cost": { "type": "string", "required": true }
             }
           }
         },
@@ -228,8 +228,8 @@
           "type": "object",
           "required": false,
           "properties": {
-            "type": {"type": "string", "required": false},
-            "dataSource": {"type": "string", "required": false}
+            "type": { "type": "string", "required": false },
+            "dataSource": { "type": "string", "required": false }
           }
         }
       }
@@ -237,35 +237,51 @@
     "safetyConsiderations": {
       "type": "array",
       "required": true,
-      "items": {"type": "string"}
+      "items": { "type": "string" }
     },
     "regulatoryStandards": {
       "type": "array",
       "required": true,
-      "items": {"type": "string"}
+      "items": { "type": "string" }
     },
     "author": {
       "type": "object",
       "required": true,
       "properties": {
-        "id": {"type": "string", "required": true},
-        "name": {"type": "string", "required": true},
-        "title": {"type": "string", "required": false},
-        "country": {"type": "string", "required": false},
-        "image": {"type": "string", "required": false},
-        "slug": {"type": "string", "required": false},
-        "url": {"type": "string", "required": false}
+        "id": { "type": "string", "required": true },
+        "name": { "type": "string", "required": true },
+        "title": { "type": "string", "required": false },
+        "country": { "type": "string", "required": false },
+        "image": { "type": "string", "required": false },
+        "slug": { "type": "string", "required": false },
+        "url": { "type": "string", "required": false }
       }
     },
     "contentManagement": {
       "type": "object",
       "required": true,
       "properties": {
-        "articleType": {"type": "string", "required": true, "default": "application-profile"},
-        "publishedAt": {"type": "string", "format": "date", "required": false},
-        "lastUpdated": {"type": "string", "format": "date", "required": false},
-        "generationTimestamp": {"type": "string", "format": "date-time", "required": false},
-        "modelUsed": {"type": "string", "required": false}
+        "articleType": {
+          "type": "string",
+          "required": true,
+          "default": "application-profile"
+        },
+        "publishedAt": {
+          "type": "string",
+          "format": "date",
+          "required": false
+        },
+        "lastUpdated": {
+          "type": "string",
+          "format": "date",
+          "required": false
+        },
+        "generationTimestamp": {
+          "type": "string",
+          "format": "date-time",
+          "required": false
+        },
+        "modelUsed": { "type": "string", "required": false }
       }
     },
     "relatedContent": {
@@ -274,9 +290,9 @@
       "items": {
         "type": "object",
         "properties": {
-          "title": {"type": "string", "required": true},
-          "url": {"type": "string", "required": true},
-          "type": {"type": "string", "required": true}
+          "title": { "type": "string", "required": true },
+          "url": { "type": "string", "required": true },
+          "type": { "type": "string", "required": true }
         }
       }
     }
@@ -284,11 +300,7 @@
 
   "jsonLD": {
     "@type": "TechnicalArticle",
-    "requiredProperties": [
-      "headline",
-      "description",
-      "author"
-    ],
+    "requiredProperties": ["headline", "description", "author"],
     "recommendedProperties": [
       "datePublished",
       "dateModified",
@@ -310,11 +322,7 @@
     ],
     "jsonLD": {
       "@type": "TechnicalArticle",
-      "requiredProperties": [
-        "headline",
-        "description",
-        "author"
-      ],
+      "requiredProperties": ["headline", "description", "author"],
       "recommendedProperties": [
         "datePublished",
         "dateModified",

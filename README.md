@@ -2,15 +2,17 @@
 
 A sophisticated AI-powered content generation system for laser cleaning articles. Generates comprehensive articles using discrete schema-driven templates.
 
+---
+
 ## 🚨 CRITICAL REQUIREMENT: SCHEMA-DRIVEN GENERATION
 
 **⚠️ ABSOLUTE RULE: ALL FIELDS MUST BE SCHEMA-DRIVEN**
 
-- **NO DEFAULT VALUES** - Every field must come from the schema
-- **NO FALLBACKS** - If a field isn't in the schema, it should not exist
-- **NO HARDCODED METADATA** - All metadata, tags, and JSON-LD must be schema-defined
-- **DYNAMIC ONLY** - All content must be dynamically generated from schema templates
-- **SCHEMA IS THE SOURCE OF TRUTH** - No code should add, modify, or override schema content
+- **NO DEFAULT VALUES** – Every field must come from the schema
+- **NO FALLBACKS** – If a field isn't in the schema, it should not exist
+- **NO HARDCODED METADATA** – All metadata, tags, and JSON-LD must be schema-defined
+- **DYNAMIC ONLY** – All content must be dynamically generated from schema templates
+- **SCHEMA IS THE SOURCE OF TRUTH** – No code should add, modify, or override schema content
 
 **❌ ABSOLUTELY FORBIDDEN:**
 - Default titles, descriptions, or metadata
@@ -21,196 +23,136 @@ A sophisticated AI-powered content generation system for laser cleaning articles
 - Additional processing of schema output
 
 **✅ REQUIRED:**
-- All fields sourced from schema YAML definitions
+- All fields sourced from schema definition.json files (see below)
 - Dynamic placeholder replacement (e.g., `{{materialName}}`, `{{term}}`)
 - Schema-defined metadata structures
 - Template-driven content generation
 - Pure schema passthrough
 
+---
+
 ## 🎯 Schema-First Architecture
 
-### **Complete Schema Control**
-- **Schemas define EVERYTHING** - structure, content, metadata, tags, JSON-LD
-- **Code only replaces placeholders** - no content generation in code
-- **Output = Schema output** - no additional processing
+- **Schemas define EVERYTHING** – structure, content, metadata, tags, JSON-LD
+- **Code only replaces placeholders** – no content generation in code
+- **Output = Schema output** – no additional processing
 
-### **Zero Code Intervention**
-- Generator only processes schema templates
-- Orchestrator only returns schema output
-- No metadata generation in code
-- No hardcoded values anywhere
-
-## 🚀 Quick Start
-
-1. **Edit Configuration** (top of `run.py`):
-```python
-# Article Context
-context = {
-    "subject": "hafnium",         # Subject to write about
-    "author_id": 2,              # Author style (1-4)
-    "article_type": "material"   # application, material, region, thesaurus
-}
-```
-
-2. **Run Generation**:
-```bash
-python3 run.py
-```
-
-3. **Check Output**: Article generated in `output/` directory
+---
 
 ## 📋 Article Types & Schema Files
 
-### **Application Articles** (`application`)
-- **Schema**: `schemas/application_schema_prompt.md`
-- **Purpose**: Industry-specific use cases and applications
-- **Placeholder**: `{{applicationName}}`
+All schema definitions are stored in the `schemas/definitions/` directory as `*definition.json` files.  
+**Format:** Each file contains a valid JSON object.
 
-### **Material Articles** (`material`)
-- **Schema**: `schemas/material_schema_prompt.md`
-- **Purpose**: Material-specific laser cleaning guides
-- **Placeholder**: `{{materialName}}`
+| Article Type | Schema File                                 | Placeholder        |
+|--------------|---------------------------------------------|--------------------|
+| application  | application_schema_definition.json          | `{{applicationName}}` |
+| material     | material_schema_definition.json             | `{{materialName}}`    |
+| region       | region_schema_definition.json               | `{{regionName}}`      |
+| thesaurus    | thesaurus_schema_definition.json            | `{{term}}`            |
 
-### **Region Articles** (`region`)
-- **Schema**: `schemas/region_schema_prompt.md`
-- **Purpose**: Geographic and regional applications
-- **Placeholder**: `{{regionName}}`
+**The system is fully dynamic and driven only by these schema definitions.**  
+No content, field, or logic is hardcoded—every output and validation step is determined by the active schema file.
 
-### **Thesaurus Articles** (`thesaurus`)
-- **Schema**: `schemas/thesaurus_schema_prompt.md`
-- **Purpose**: Comprehensive terminology and definitions
-- **Placeholder**: `{{term}}`
-
-## 🔧 Schema Placeholder System
-
-### **Dynamic Replacements**
-```
-{{materialName}} → "hafnium"
-{{applicationName}} → "automotive_restoration"
-{{regionName}} → "southeast_asia"
-{{term}} → "fluence"
-{{authorName}} → "Mario Jordan"
-{{authorTitle}} → "Senior Laser Applications Engineer"
-{{authorCountry}} → "Italy"
-```
-
-### **System Placeholders**
-```
-{{generation_timestamp}} → Current ISO timestamp
-{{model_used}} → API provider/model
-{{lastUpdated}} → Current date
-{{publishedAt}} → Current date
-```
-
-## 🚨 Validation Rules
-
-### **Schema Compliance**
-- Every field in output must exist in schema
-- No fields should be added by code
-- All content must be schema-generated
-- Placeholders must be completely replaced
-
-### **Forbidden Patterns**
-```python
-# ❌ NEVER DO THIS
-title = f"Guide to {subject}"
-metadata = {"default": "value"}
-tags = ["#Default", "#Tags"]
-```
-
-### **Required Patterns**
-```python
-# ✅ ONLY DO THIS
-content = api_client.call(schema_with_placeholders)
-return content  # No modifications
-```
-
-## 🏗️ System Flow
-
-```
-1. Load Schema → 2. Replace Placeholders → 3. Send to LLM → 4. Return Output
-```
-
-**NO additional steps, processing, or modifications**
-
-## 📊 Schema Validation
-
-### **Output Verification**
-- Compare generated output with schema template
-- Verify all placeholders are replaced
-- Ensure no code-generated content exists
-- Check all metadata comes from schema
-
-### **Common Violations**
-- Adding metadata not in schema
-- Generating tags outside schema
-- Creating JSON-LD not defined in schema
-- Any code-based content generation
-
-## Output Structure
-
-The generated output is a Markdown file containing **only** the following components:
-
-- **Metadata** (YAML frontmatter): Generated by a dedicated metadata generator, which uses the selected schema and its own prompt formatting.
-- **Tags**: Generated by a standalone tag generator, which uses its own schema-driven prompt and logic. The tag generator produces the tags, and these are then orchestrated into the final article output.
-- **JSON-LD**: Generated by a dedicated JSON-LD generator, which uses the selected schema and its own prompt formatting.
-
-**No headings, sections, or additional content** are included.  
-The output is strictly limited to metadata, tags, and JSON-LD as defined by the schema and context.
+To add or change article types, simply add or update schema files in `schemas/definitions/`.  
+**Only the context in `run.py` needs updating to use a new type. No changes to generator or orchestrator code are required.**
 
 ---
 
-## Generation Process
+## 🔧 Placeholder Mapping Logic
 
-1. The context in `run.py` determines the `article_type` (application, material, region, or thesaurus), which selects the appropriate schema.
-2. Dedicated generators for metadata, tags, and JSON-LD each send API requests that include the schema and their specific formatting requirements.
-3. The three outputs (metadata, tags, JSON-LD) are assembled into the final Markdown article file.
-4. A validator ensures that all schema fields are completed and the output matches the schema exactly.
+The context key `"subject"` is generic and must be mapped to the correct schema placeholder for each article type:
+
+| article_type | Placeholder        |
+|--------------|-------------------|
+| material     | materialName      |
+| application  | applicationName   |
+| region       | regionName        |
+| thesaurus    | term              |
+
+All generators and prompt builders must replace schema placeholders with the value of `"subject"` from context, mapped according to `article_type`.
+
+Prompt builders are responsible for mapping context keys to schema placeholders and inserting system placeholders.
+
+System placeholders such as `{{generation_timestamp}}`, `{{model_used}}`, `{{lastUpdated}}`, and `{{publishedAt}}` are replaced by code in the orchestrator before sending the prompt to the LLM.
 
 ---
 
-**⚠️ REMEMBER: Schemas are the ONLY source of truth. Code must never add, modify, or override schema content.**
+## 🏗️ End-to-End System Flow
 
-## API Setup
+1. **Load Context & Schema:**  
+   - `run.py` sets the context (`ARTICLE_CONTEXT`) and loads the appropriate schema from `schemas/definitions/`.
+2. **Orchestration:**  
+   - `orchestrator.py` creates dedicated generator instances for metadata, tags, and JSON-LD.
+3. **Generation:**  
+   - Each generator (`metadata/generator.py`, `tags/generator.py`, `jsonld/generator.py`) uses its own prompt builder and submits its own LLM API call, strictly following the schema and context mapping logic.
+4. **Formatting & Output:**  
+   - Tags are normalized with `utils/tag_formatter.py`.
+   - Output is assembled into Markdown using `utils/output_formatter.py`.
+   - The final file is saved to the `output/` directory.
+5. **Validation:**  
+   - Output is validated against the schema using `utils/schema_validator.py`.
+   - If validation fails, no output is written and an error is logged.
 
-Add your LLM API keys to the `.env` file in the project root.  
-Supported providers: `openai`, `deepseek`, `gemini`, `xai`, `anthropic`.  
-Select the provider and model by setting `PROVIDER` and `MODEL` in `.env` or via environment variables.
+**At no point does code generate content; it only replaces placeholders and assembles schema-driven output.**
 
-## Schema Definitions
+---
 
-Each file in `schemas/definitions/` defines the output structure for one article type:  
-`application`, `material`, `region`, or `thesaurus`.  
-All metadata, tags, and JSON-LD must be present in the schema.
+## Error Handling & Logging
 
-## Running the Generator
+- All major steps and errors are logged using Python's logging module.
+- If required context fields or API keys are missing, generation fails with a clear error.
+- Output validation failures halt the process and log the issue.
 
-1. Install dependencies:  
-   `pip install -r requirements.txt`
-2. Edit `run.py` to set your article context.
-3. Run:  
-   `python run.py`
+---
 
 ## Directory Structure
 
-- `schemas/definitions/` — Schema files for each article type
-- `output/` — Generated Markdown files
-- `.env` — API keys and provider/model selection
+```
+z-beam-generator/
+├── run.py
+├── orchestrator.py
+├── api_client.py
+├── metadata/
+│   ├── generator.py
+│   └── prompt.py
+├── tags/
+│   ├── generator.py
+│   └── prompt.py
+├── jsonld/
+│   ├── generator.py
+│   └── prompt.py
+├── utils/
+│   ├── setup_logging.py
+│   ├── schema_validator.py
+│   ├── tag_formatter.py
+│   └── output_formatter.py
+├── authors/
+│   ├── author_utils.py
+│   └── authors.json
+├── schemas/
+│   └── definitions/
+│       ├── application_schema_definition.json
+│       ├── material_schema_definition.json
+│       ├── region_schema_definition.json
+│       └── thesaurus_schema_definition.json
+├── output/
+└── tests/
+    └── test_generator.py
+```
 
-## Error Handling
+---
 
-- The generator will fail if required context fields or API keys are missing.
-- Output is validated against the schema; any mismatch will cause generation to fail.
+## Extending the System
 
-## Logging
+- To add a new article type, create a new schema file in `schemas/definitions/` (as JSON).
+- Update context in `run.py` to use the new type.
+- No changes to generator or orchestrator code are required; only context and schema files need updating.
+- The system will dynamically adapt to the new schema without code changes.
 
-Comprehensive logging is enabled for every major step:
-- Context loading
-- Schema selection
-- API requests and responses for metadata, tags, and JSON-LD
-- Output assembly
-- Validation
-- Errors
+---
 
-Logging is configured in `utils/setup_logging.py`.  
-You can adjust log level and output file as needed.
+**⚠️ REMEMBER:**  
+Schemas in `schemas/definitions/` are the ONLY source of truth.  
+Code must never add, modify, or override schema content.  
+The system is fully dynamic and adapts to any valid schema definition, using context mapping as described

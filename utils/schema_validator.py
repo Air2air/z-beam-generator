@@ -215,4 +215,4 @@ def validate_output(output: dict, schema: dict) -> bool:
         return True
     except jsonschema.ValidationError as e:
         logger.error("Output validation failed: %s", e.message)
-        return False
+        return

@@ -2,27 +2,33 @@
 Tag formatting utilities for Z-Beam Generator
 """
 import re
+import logging
 from typing import List, Dict, Any
+
+logger = logging.getLogger("zbeam.tag_formatter")
+
+def format_tags(tags: List[str]) -> List[str]:
+    """
+    Simple tag formatter: lowercase, strip, deduplicate.
+    Returns a sorted list of tags.
+    """
+    logger.info("Formatting tags: %s", tags)
+    formatted = sorted({str(tag).strip().lower() for tag in tags if tag})
+    logger.info("Formatted tags: %s", formatted)
+    return formatted
 
 class TagFormatter:
     """Format tags according to configuration"""
-    
     def __init__(self, config: Dict[str, Any]):
         self.config = config.get("tag_formatting", {})
-        
+
     def format_tags(self, tags: List[str]) -> str:
-        """Format tags according to configuration"""
-        
-        # Apply case formatting
-        formatted_tags = [self._format_case(tag) for tag in tags]
-        
-        # Sort if requested
+        logger.info("Formatting tags with config: %s", self.config)
+        formatted = list({str(tag).strip().lower() for tag in tags if tag})
+        formatted_tags = [self._format_case(tag) for tag in formatted]
         if self.config.get("sort_tags", True):
             formatted_tags.sort()
-        
-        # Apply style formatting
         style = self.config.get("style", "hashtag")
-        
         if style == "hashtag":
             return self._format_hashtag_style(formatted_tags)
         elif style == "plain":
@@ -33,11 +39,9 @@ class TagFormatter:
             return self._format_numbered_style(formatted_tags)
         else:
             return self._format_hashtag_style(formatted_tags)
-    
+
     def _format_case(self, tag: str) -> str:
-        """Apply case formatting to tag"""
         case_format = self.config.get("case_format", "title")
-        
         if case_format == "title":
             return tag.title()
         elif case_format == "lower":
@@ -48,26 +52,21 @@ class TagFormatter:
             return self._to_camel_case(tag)
         else:
             return tag
-    
+
     def _to_camel_case(self, text: str) -> str:
-        """Convert to camelCase"""
         words = re.split(r'[\s\-_]+', text)
         return words[0].lower() + ''.join(word.capitalize() for word in words[1:])
-    
+
     def _format_hashtag_style(self, tags: List[str]) -> str:
-        """Format as hashtags"""
         prefix = self.config.get("prefix", "#")
         suffix = self.config.get("suffix", "")
         remove_spaces = self.config.get("remove_spaces", True)
         separator = self.config.get("separator", ", ")
         max_per_line = self.config.get("max_tags_per_line", 6)
-        
         formatted = []
         for tag in tags:
             clean_tag = tag.replace(" ", "") if remove_spaces else tag
             formatted.append(f"{prefix}{clean_tag}{suffix}")
-        
-        # Group by max_per_line
         if max_per_line and len(formatted) > max_per_line:
             lines = []
             for i in range(0, len(formatted), max_per_line):
@@ -76,21 +75,18 @@ class TagFormatter:
             return "\n".join(lines)
         else:
             return separator.join(formatted)
-    
+
     def _format_plain_style(self, tags: List[str]) -> str:
-        """Format as plain text"""
         separator = self.config.get("separator", ", ")
         return separator.join(tags)
-    
+
     def _format_bullet_style(self, tags: List[str]) -> str:
-        """Format as bullet list"""
         return "\n".join([f"• {tag}" for tag in tags])
-    
+
     def _format_numbered_style(self, tags: List[str]) -> str:
-        """Format as numbered list"""
         return "\n".join([f"{i+1}. {tag}" for i, tag in enumerate(tags)])
 
 def format_tags_for_article(tags: List[str], config: Dict[str, Any]) -> str:
-    """Format tags for article output"""
+    """Format tags for article output using TagFormatter"""
     formatter = TagFormatter(config)
     return formatter.format_tags(tags)

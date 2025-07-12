@@ -12,6 +12,8 @@ logger = logging.getLogger("zbeam")
 import json
 import os
 from orchestrator import ArticleOrchestrator
+from utils.output_formatter import assemble_markdown
+from utils.tag_formatter import format_tags
 
 ARTICLE_CONTEXT = {
     "subject": "hafnium",
@@ -30,10 +32,13 @@ def main():
     orchestrator = ArticleOrchestrator(ARTICLE_CONTEXT, schema)
     output = orchestrator.run()
     if output:
+        # Format tags before output
+        output["tags"] = format_tags(output["tags"])
+        markdown = assemble_markdown(output["metadata"], output["tags"], output["jsonld"])
         output_path = f"output/{ARTICLE_CONTEXT['article_type']}_{ARTICLE_CONTEXT['subject']}.md"
         logger.info("Writing output to: %s", output_path)
         with open(output_path, "w") as out_file:
-            out_file.write(str(output))
+            out_file.write(markdown)
         logger.info("Article generation complete.")
         return 0
     else:
