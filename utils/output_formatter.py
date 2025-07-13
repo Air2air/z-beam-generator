@@ -3,57 +3,19 @@
 import logging
 import json
 import yaml
+import re
 from typing import Dict, Any, List, Optional
 
 logger = logging.getLogger(__name__)
-
-def assemble_markdown(metadata: Dict[str, Any], tags: List[str], jsonld: Dict[str, Any]) -> str:
-    """Assemble final markdown output - NO FALLBACKS."""
-    
-    if not metadata:
-        logger.error("Metadata is required for output assembly")
-        return None
-    
-    if not tags:
-        logger.error("Tags are required for output assembly")
-        return None
-    
-    if not jsonld:
-        logger.error("JSON-LD is required for output assembly")
-        return None
-    
-    try:
-        output_parts = []
-        
-        # Add YAML frontmatter
-        output_parts.append("---")
-        output_parts.append(yaml.dump(metadata, default_flow_style=False, sort_keys=False))
-        output_parts.append("---")
-        output_parts.append("")
-        
-        # Add tags section (separate from frontmatter for compatibility)
-        output_parts.append(f"Tags: {', '.join(tags)}")
-        output_parts.append("")
-        
-        # Add JSON-LD structured data
-        output_parts.append('<script type="application/ld+json">')
-        output_parts.append(json.dumps(jsonld, indent=2))
-        output_parts.append('</script>')
-        
-        return "\n".join(output_parts)
-        
-    except Exception as e:
-        logger.error(f"Failed to assemble markdown: {e}", exc_info=True)
-        return None
 
 def format_output(metadata: str, tags: str, jsonld: str) -> Optional[str]:
     """
     Format the complete markdown output with proper formatting.
     
     Args:
-        metadata_content: YAML frontmatter content
-        tags_content: Tag string content
-        json_ld_content: JSON-LD content
+        metadata: YAML frontmatter content as string
+        tags: Tag string content
+        jsonld: JSON-LD content as string
         
     Returns:
         Properly formatted complete markdown string
@@ -77,6 +39,7 @@ def format_output(metadata: str, tags: str, jsonld: str) -> Optional[str]:
         markdown += clean_jsonld
         markdown += "\n</script>"
         
+        logger.info(f"Successfully formatted output: {len(markdown)} characters")
         return markdown
     except Exception as e:
         logger.error(f"Output formatting failed: {e}", exc_info=True)
@@ -105,12 +68,27 @@ def format_yaml(content: str) -> str:
     return content
 
 def format_tags(tags: str) -> str:
-    """Convert character-by-character tags to proper format."""
+    """Format tags with proper separators."""
     if not tags:
         return ""
+    
+    # If tags contain kebab-case format
+    if "-" in tags:
+        # Case 1: Tags are running together without separators
+        if "," not in tags:
+            # Improved regex to catch kebab-case words properly
+            pattern = r'([a-z0-9]+-[a-z0-9-]+)(?=[a-z])'
+            formatted = re.sub(pattern, r'\1, ', tags)
+            # Handle case where regex didn't add a comma at the end
+            if not formatted.endswith(", ") and formatted != tags:
+                return formatted
         
-    # Fix the character-by-character tag format
-    # Original format: r, u, s, t, -, r, e, m, o, v, a, l, ,, ...
+        # Case 2: Tags may already be separated by commas
+        if "," in tags:
+            parts = [p.strip() for p in tags.split(",")]
+            return ", ".join(parts)
+    
+    # Case 3: Character-by-character format (r, u, s, t, -, r, e, m, o, v, a, l)
     formatted_tags = []
     current_tag = ""
     
@@ -142,7 +120,7 @@ def format_jsonld(content: str) -> str:
     """Fix JSON-LD formatting by removing extra quotes."""
     if not content:
         return "{}"
-        
+    
     # Remove extra quotes at the beginning if they exist
     if content.startswith('"'):
         content = content[1:]
@@ -151,4 +129,11 @@ def format_jsonld(content: str) -> str:
     if content.endswith('"') and not content.endswith('\\\"'):
         content = content[:-1]
     
-    return content
+    # Try to format as valid JSON with pretty-printing
+    try:
+        json_obj = json.loads(content)
+        return json.dumps(json_obj, indent=2)
+    except json.JSONDecodeError:
+        # If parsing fails, return as is
+        logger.warning("Could not parse JSON-LD as valid JSON, returning as-is")
+        return content

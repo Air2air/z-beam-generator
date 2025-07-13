@@ -6,6 +6,7 @@ from pathlib import Path
 from typing import Dict, Any, Optional, List
 from api_client import APIClient
 import re
+import json
 
 logger = logging.getLogger(__name__)
 
@@ -239,39 +240,42 @@ class TagsGenerator:
         
         return True
     
-    def process_tags(self, tags_string: str) -> str:
+    def process_tags(self, raw_tags: str) -> List[str]:
         """
-        Process raw tags into a properly formatted string.
+        Process raw tags from the API into a clean list of tags.
         
         Args:
-            tags_string: Raw tags string from the API
+            raw_tags: Raw tags string from API
             
         Returns:
-            Properly formatted tags string
+            List of cleaned tag strings
         """
-        formatted_tags = []
-        current_tag = ""
+        # Handle empty input
+        if not raw_tags:
+            return []
+            
+        # Try to parse as JSON if it looks like a JSON array
+        if raw_tags.strip().startswith('[') and raw_tags.strip().endswith(']'):
+            try:
+                tags_list = json.loads(raw_tags)
+                if isinstance(tags_list, list):
+                    return [t.strip().lower().replace(' ', '-') for t in tags_list if t.strip()]
+            except json.JSONDecodeError:
+                pass
         
-        # Split by commas
-        parts = tags_string.split(',')
+        # Process as comma-separated string
+        tags_list = []
+        
+        # Split by commas and process each tag
+        parts = raw_tags.split(',')
         for part in parts:
             part = part.strip()
             if part:
-                # Skip the spaces that were added as individual characters
+                # Skip spaces as individual characters
                 if part == " ":
-                    current_tag += "-" if current_tag else ""
-                else:
-                    current_tag += part
-            else:
-                # Empty part after comma indicates end of tag
-                if current_tag:
-                    formatted_tags.append(current_tag)
-                    current_tag = ""
+                    continue
+                # Convert spaces to dashes for kebab-case
+                tags_list.append(part.lower().replace(' ', '-'))
         
-        # Add the last tag if there is one
-        if current_tag:
-            formatted_tags.append(current_tag)
-        
-        # Remove duplicate tags and join with commas
-        unique_tags = list(dict.fromkeys(formatted_tags))
-        return ", ".join(unique_tags)
+        # Return unique tags
+        return list(dict.fromkeys(tags_list))
