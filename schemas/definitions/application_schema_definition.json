@@ -1,69 +1,99 @@
 {
   "name": "application",
-  "version": "1.0",
+  "version": "1.1",
   "schemaType": "LaserCleaningApplicationProfile",
-
   "generatorConfig": {
     "tags": {
       "includeIndustries": true,
       "includeSubstrates": true,
-      "primaryKeywords": ["laser cleaning", "surface preparation"]
+      "includeApplications": true,
+      "primaryKeywords": [
+        "laser cleaning",
+        "{subject}",
+        "surface preparation",
+        "industrial cleaning",
+        "laser technology",
+        "manufacturing"
+      ]
     },
     "jsonld": {
-      "schemaType": "TechnicalArticle",
+      "schemaType": "TechArticle",
       "includeIndustries": true,
-      "includeSubstrates": true
+      "includeSubstrates": true,
+      "includeApplications": true,
+      "additionalProperties": [
+        {
+          "name": "applicationCategory",
+          "value": "Laser cleaning application"
+        },
+        {
+          "name": "technicalContext",
+          "value": "Parameters and outcomes of {subject}"
+        }
+      ]
     },
     "metadata": {
       "includeDescription": true,
       "includeAuthor": true,
+      "includeKeywords": true,
+      "includePublicationDate": true,
       "category": "LaserApplications"
     }
   },
-
   "sections": {
     "overview": {
       "required": true,
-      "prompt": "Write a comprehensive overview of {subject} application. Include what it is, how it works, and its primary benefits. Focus on factual information and keep it concise but informative (200-250 words)."
+      "prompt": "Write a comprehensive overview of the {subject} laser cleaning application. Include its definition, mechanism, primary benefits, and relevance to industries. Keep it concise but informative (200-250 words), emphasizing technical, scientific, and business value."
     },
     "parameters": {
       "required": true,
-      "prompt": "Describe the key laser parameters for {subject} application, including optimal settings for scan speed, fluence, pulse duration, and power output. Include specific ranges with units and explain how each parameter affects cleaning results."
+      "prompt": "Describe the key laser parameters for the {subject} application, including optimal settings for wavelength, power output, pulse duration, repetition rate, scan speed, fluence, spot size, and beam profile. Provide specific ranges with units, explain their impact on cleaning results, and reference standards (e.g., ASTM, ISO) where applicable."
     },
     "outcomes": {
       "required": true,
-      "prompt": "Explain the successful outcomes of using {subject} application, including substrate preservation, efficiency, and environmental benefits. Provide specific examples where possible."
+      "prompt": "Explain the successful outcomes of the {subject} application, including substrate preservation, cleaning efficiency, environmental benefits, and operational advantages. Provide specific examples, quantitative results (e.g., removal rates, energy savings), and industry applications."
     },
     "challenges": {
       "required": true,
-      "prompt": "Discuss the main challenges associated with {subject} application, such as parameter sensitivity, equipment costs, and operator expertise requirements. Include potential solutions for each challenge."
+      "prompt": "Discuss the main challenges of the {subject} application, such as parameter sensitivity, equipment costs, operator expertise, or substrate limitations. Provide potential solutions, mitigation strategies, and examples of successful implementations."
     },
     "performance": {
       "required": true,
-      "prompt": "Detail the performance metrics for {subject} application, including cycle time, surface roughness, energy consumption, and cleaning efficiency. Use specific values with units and cite relevant data sources."
+      "prompt": "Detail the performance metrics for the {subject} application, including cycle time, surface roughness, energy consumption, cleaning efficiency, removal rate, and process window. Use specific values with units, cite data sources (e.g., industry reports, ASTM standards), and include comparative benchmarks where possible."
     },
     "comparison": {
       "required": true,
-      "prompt": "Compare {subject} to traditional cleaning methods in terms of speed, cost, and effectiveness. Include quantitative data where possible and explain the advantages laser cleaning offers over alternatives."
+      "prompt": "Compare the {subject} application to traditional cleaning methods (e.g., mechanical, chemical) and other laser-based methods in terms of speed, cost, effectiveness, and environmental impact. Include quantitative data, advantages of laser cleaning, and industry-specific benefits."
     },
     "safety": {
       "required": true,
-      "prompt": "Outline the safety considerations and regulatory standards applicable to {subject} application, including required protective equipment, facility requirements, and industry regulations."
+      "prompt": "Outline the safety considerations and regulatory standards for the {subject} application, including protective equipment, facility requirements, operator training, and compliance with OSHA, ANSI, or ISO standards. Address region-specific regulations if applicable."
+    },
+    "caseStudies": {
+      "required": false,
+      "prompt": "Provide real-world case studies or examples of the {subject} application in action. Include specific industries, substrates, outcomes (e.g., efficiency gains, cost savings), and any quantitative results or certifications achieved."
+    },
+    "innovations": {
+      "required": false,
+      "prompt": "Discuss recent innovations or technological advancements related to the {subject} application, such as new laser systems, automation, or parameter optimization techniques. Highlight contributions from research or industry and their impact on performance."
+    },
+    "businessImplications": {
+      "required": false,
+      "prompt": "Analyze the business implications of the {subject} application, including cost-benefit analysis, scalability, market adoption trends, and competitive advantages. Discuss how it influences decision-making in industries adopting laser cleaning."
     }
   },
-
   "applicationProfile": {
     "name": {
       "type": "string",
       "required": true,
       "description": "Name of the laser cleaning application",
-      "example": "{{applicationName}}"
+      "example": "Cleaning for weld surface preparation"
     },
     "description": {
       "type": "string",
       "required": true,
       "description": "Overview of the laser cleaning application",
-      "example": "{{applicationName}} is a precision laser cleaning technique that removes contaminants from surfaces while preserving substrate integrity."
+      "example": "Cleaning for weld surface preparation is a precision laser cleaning technique that removes contaminants from surfaces to ensure high-quality welds."
     },
     "primaryAudience": {
       "type": "string",
@@ -82,27 +112,27 @@
       "items": { "type": "string" },
       "required": true,
       "description": "Industries where the application is commonly used",
-      "example": ["Automotive", "Aerospace", "Electronics"]
+      "example": ["Automotive", "Aerospace", "Shipbuilding"]
     },
     "substrates": {
       "type": "array",
       "items": { "type": "string" },
       "required": true,
       "description": "Substrates commonly cleaned in this application",
-      "example": ["Steel", "Aluminum", "Composite Materials"]
+      "example": ["Steel", "Aluminum", "Titanium"]
     },
     "keywords": {
       "type": "array",
       "items": { "type": "string" },
       "required": true,
       "description": "Keywords for SEO, tagging, and JSON-LD",
-      "example": ["laser {{applicationName}}", "{{applicationName}} cleaning", "industrial surface preparation"]
+      "example": ["laser cleaning", "weld surface preparation", "industrial cleaning"]
     },
     "schemaOrgType": {
       "type": "string",
       "required": true,
       "description": "Schema.org type for JSON-LD",
-      "default": "TechnicalArticle"
+      "default": "TechArticle"
     },
     "url": {
       "type": "string",
@@ -131,14 +161,15 @@
                 "type": "array",
                 "items": { "type": "string" },
                 "required": false
-              }
+              },
+              "source": { "type": "string", "required": false, "description": "Source of parameter data" }
             }
           }
         },
         "dataSource": {
           "type": "string",
           "required": false,
-          "description": "Source of parameter data"
+          "description": "Primary source of parameter data (e.g., ASTM standards, manufacturer specs)"
         }
       }
     },
@@ -149,7 +180,8 @@
         "type": "object",
         "properties": {
           "name": { "type": "string", "required": true },
-          "description": { "type": "string", "required": true }
+          "description": { "type": "string", "required": true },
+          "quantitativeResult": { "type": "string", "required": false, "description": "Quantitative outcome (e.g., 95% removal rate)" }
         }
       }
     },
@@ -160,7 +192,8 @@
         "type": "object",
         "properties": {
           "name": { "type": "string", "required": true },
-          "description": { "type": "string", "required": true }
+          "description": { "type": "string", "required": true },
+          "solution": { "type": "string", "required": false, "description": "Proposed or implemented solution" }
         }
       }
     },
@@ -168,7 +201,11 @@
       "type": "object",
       "required": true,
       "properties": {
-        "description": { "type": "string", "required": true },
+        "description": {
+          "type": "string",
+          "required": true,
+          "description": "Overview of performance metrics for the application"
+        },
         "metrics": {
           "type": "array",
           "required": true,
@@ -182,18 +219,27 @@
                 "type": "array",
                 "items": { "type": "string" },
                 "required": false
-              }
+              },
+              "source": { "type": "string", "required": false, "description": "Source of metric data" }
             }
           }
         },
-        "dataSource": { "type": "string", "required": false }
+        "dataSource": {
+          "type": "string",
+          "required": false,
+          "description": "Primary source of metric data (e.g., industry reports, testing protocols)"
+        }
       }
     },
     "cleaningSpeedComparison": {
       "type": "object",
       "required": true,
       "properties": {
-        "description": { "type": "string", "required": true },
+        "description": {
+          "type": "string",
+          "required": true,
+          "description": "Overview of cleaning speed comparison"
+        },
         "methods": {
           "type": "array",
           "required": true,
@@ -201,7 +247,8 @@
             "type": "object",
             "properties": {
               "method": { "type": "string", "required": true },
-              "speed": { "type": "string", "required": true }
+              "speed": { "type": "string", "required": true },
+              "source": { "type": "string", "required": false, "description": "Source of speed data" }
             }
           }
         },
@@ -219,7 +266,11 @@
       "type": "object",
       "required": true,
       "properties": {
-        "description": { "type": "string", "required": true },
+        "description": {
+          "type": "string",
+          "required": true,
+          "description": "Overview of cost comparison"
+        },
         "methods": {
           "type": "array",
           "required": true,
@@ -227,7 +278,8 @@
             "type": "object",
             "properties": {
               "method": { "type": "string", "required": true },
-              "cost": { "type": "string", "required": true }
+              "cost": { "type": "string", "required": true },
+              "source": { "type": "string", "required": false, "description": "Source of cost data" }
             }
           }
         },
@@ -241,15 +293,82 @@
         }
       }
     },
+    "environmentalImpact": {
+      "type": "object",
+      "required": true,
+      "properties": {
+        "description": {
+          "type": "string",
+          "required": true,
+          "description": "Overview of environmental impact of the application"
+        },
+        "metrics": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string", "required": true },
+              "value": { "type": "string", "required": true },
+              "unit": { "type": "string", "required": false }
+            }
+          },
+          "required": false,
+          "description": "Quantitative environmental metrics (e.g., waste reduction, energy use)"
+        }
+      }
+    },
     "safetyConsiderations": {
       "type": "array",
+      "items": { "type": "string" },
       "required": true,
-      "items": { "type": "string" }
+      "description": "Safety requirements for the application (e.g., protective equipment, training)"
     },
     "regulatoryStandards": {
       "type": "array",
+      "items": { "type": "string" },
       "required": true,
-      "items": { "type": "string" }
+      "description": "Relevant industry standards (e.g., OSHA, ISO, ANSI)"
+    },
+    "researchData": {
+      "type": "object",
+      "required": false,
+      "properties": {
+        "studies": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "title": { "type": "string", "required": true },
+              "authors": { "type": "array", "items": { "type": "string" }, "required": false },
+              "publication": { "type": "string", "required": false },
+              "year": { "type": "string", "required": false },
+              "url": { "type": "string", "required": false }
+            }
+          },
+          "description": "Key research studies or papers related to the application"
+        },
+        "patents": {
+          "type": "array",
+          "items": { "type": "string" },
+          "required": false,
+          "description": "Relevant patents related to the application"
+        }
+      }
+    },
+    "caseStudies": {
+      "type": "array",
+      "required": false,
+      "items": {
+        "type": "object",
+        "properties": {
+          "title": { "type": "string", "required": true },
+          "description": { "type": "string", "required": true },
+          "url": { "type": "string", "required": false },
+          "industry": { "type": "string", "required": false },
+          "outcome": { "type": "string", "required": false }
+        }
+      },
+      "description": "Real-world examples of the application"
     },
     "author": {
       "type": "object",
@@ -301,22 +420,15 @@
           "url": { "type": "string", "required": true },
           "type": { "type": "string", "required": true }
         }
-      }
+      },
+      "description": "Related articles, videos, or resources"
     }
   },
-
   "jsonLD": {
-    "@type": "TechnicalArticle",
-    "requiredProperties": ["headline", "description", "author"],
-    "recommendedProperties": [
-      "datePublished",
-      "dateModified",
-      "publisher",
-      "keywords",
-      "industry"
-    ]
+    "@type": "TechArticle",
+    "requiredProperties": ["headline", "description", "author", "datePublished"],
+    "recommendedProperties": ["dateModified", "publisher", "keywords", "industry", "applicationCategory"]
   },
-
   "validation": {
     "requiredSections": [
       "Overview",
@@ -325,18 +437,13 @@
       "Challenges",
       "Performance",
       "Comparison",
-      "Safety"
+      "Safety",
+      "Environmental Impact"
     ],
     "jsonLD": {
-      "@type": "TechnicalArticle",
-      "requiredProperties": ["headline", "description", "author"],
-      "recommendedProperties": [
-        "datePublished",
-        "dateModified",
-        "publisher",
-        "keywords",
-        "industry"
-      ]
+      "@type": "TechArticle",
+      "requiredProperties": ["headline", "description", "author", "datePublished"],
+      "recommendedProperties": ["dateModified", "publisher", "keywords", "industry", "applicationCategory"]
     }
   }
 }

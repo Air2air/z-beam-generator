@@ -37,7 +37,7 @@ class JsonLdGenerator:
                 return None
             
             # Use prompt config for parameters
-            max_tokens = self.prompt_config.get("parameters", {}).get("max_tokens", 3000)
+            max_tokens = self.prompt_config.get("parameters", {}).get("max_tokens", 4000)
             response = self.api_client.generate(prompt, max_tokens=max_tokens)
             
             if not response:
@@ -98,52 +98,54 @@ class JsonLdGenerator:
         # Get the profile section based on article type
         profile_key = f"{self.article_type}Profile"
         
-        print(f"🔍 DEBUG JSON-LD: Looking for profile key: {profile_key}")
-        print(f"🔍 DEBUG JSON-LD: Schema keys: {list(self.schema.keys())}")
-        
         if profile_key in self.schema:
             profile = self.schema[profile_key]
-            print(f"✅ DEBUG JSON-LD: Found profile with {len(profile)} fields")
             return self._build_schema_template_from_profile(profile)
         else:
-            print(f"❌ DEBUG JSON-LD: Profile key {profile_key} not found")
             return None  # NO FALLBACK - FAIL FAST
     
     def _build_schema_template_from_profile(self, profile: Dict[str, Any]) -> str:
-        """Build JSON-LD template from profile structure."""
-        json_parts = []
+        """Build dynamic schema template with field-specific instructions."""
+        template_parts = []
         
-        # Add context and type
-        json_parts.append('"@context": "https://schema.org"')
-        json_parts.append('"@type": "TechnicalArticle"')
+        # Add header with field count
+        field_count = len(profile)
+        template_parts.append(f"TOTAL FIELDS FOR JSON-LD MAPPING: {field_count}")
+        template_parts.append("=" * 50)
         
+        field_index = 1
         for field_name, field_def in profile.items():
             if isinstance(field_def, dict) and "example" in field_def:
-                example = field_def["example"]
+                # Add field header
+                template_parts.append(f"\nFIELD {field_index}/{field_count}: {field_name}")
+                template_parts.append("-" * 30)
                 
-                # Map schema fields to JSON-LD properties
-                jsonld_field = self._map_to_jsonld_field(field_name)
-                if jsonld_field:
-                    if isinstance(example, str):
-                        processed_value = self._replace_placeholders(example)
-                        json_parts.append(f'"{jsonld_field}": "{processed_value}"')
-                    elif isinstance(example, list):
-                        processed_items = [self._replace_placeholders(str(item)) for item in example]
-                        json_parts.append(f'"{jsonld_field}": {processed_items}')
+                # Add field type and description
+                field_type = field_def.get("type", "unknown")
+                field_description = field_def.get("description", "No description")
+                template_parts.append(f"Type: {field_type}")
+                template_parts.append(f"Description: {field_description}")
+                
+                # Add example with JSON-LD mapping instruction
+                example = field_def["example"]
+                if isinstance(example, str):
+                    processed_value = self._replace_placeholders(example)
+                    template_parts.append(f"Example: {processed_value}")
+                    template_parts.append(f"REQUIRED: Map {field_name} to JSON-LD property")
+                elif isinstance(example, list):
+                    processed_items = [self._replace_placeholders(str(item)) for item in example]
+                    template_parts.append(f"Examples: {processed_items}")
+                    template_parts.append(f"REQUIRED: Map ALL {field_name} values to JSON-LD array")
+                
+                template_parts.append("")  # Add spacing
+                field_index += 1
         
-        return '{\n  ' + ',\n  '.join(json_parts) + '\n}' if json_parts else None
-    
-    def _map_to_jsonld_field(self, schema_field: str) -> str:
-        """Map schema field names to JSON-LD property names."""
-        mapping = {
-            "name": "headline",
-            "description": "description",
-            "keywords": "keywords",
-            "industries": "industry",
-            "primaryAudience": "audience",
-            "author": "author"
-        }
-        return mapping.get(schema_field)
+        # Add validation footer
+        template_parts.append("=" * 50)
+        template_parts.append(f"JSON-LD MAPPING: Map ALL {field_count} fields above to JSON-LD properties")
+        template_parts.append("ALL FIELDS MUST BE REPRESENTED IN JSON-LD OUTPUT")
+        
+        return '\n'.join(template_parts)
     
     def _replace_placeholders(self, value: str) -> str:
         """Replace schema placeholders."""
@@ -169,14 +171,21 @@ class JsonLdGenerator:
         
         cleaned = response.strip()
         
-        # Remove markdown code blocks
-        if cleaned.startswith("```json"):
-            cleaned = cleaned[7:]
-        elif cleaned.startswith("```"):
-            cleaned = cleaned[3:]
-        
-        if cleaned.endswith("```"):
-            cleaned = cleaned[:-3]
+        # Remove markdown code blocks more aggressively
+        if "```json" in cleaned:
+            start = cleaned.find("```json")
+            if start != -1:
+                start = cleaned.find('\n', start) + 1
+                end = cleaned.rfind('```')
+                if end > start:
+                    cleaned = cleaned[start:end]
+        elif "```" in cleaned:
+            start = cleaned.find("```")
+            if start != -1:
+                start = cleaned.find('\n', start) + 1
+                end = cleaned.rfind('```')
+                if end > start:
+                    cleaned = cleaned[start:end]
         
         # Find JSON content between explanatory text
         lines = cleaned.split('\n')

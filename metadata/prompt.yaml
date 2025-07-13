@@ -1,40 +1,73 @@
-name: "Metadata YAML Generator"
+name: "Metadata Generator"
 description: "Generates comprehensive YAML metadata for technical articles"
-version: "1.0.0"
+version: "2.0.0"
 
 template: |
   Generate comprehensive YAML metadata for a {article_type} article about {subject}.
 
-  Use the schema fields below and replace all placeholders with "{subject}":
+  🚨 CRITICAL: You MUST generate content for EVERY SINGLE schema field listed below.
 
+  SCHEMA FIELDS TO PROCESS:
   {schema_template}
 
-  CRITICAL REQUIREMENTS:
-  - Use ONLY fields from the schema above
-  - Replace ALL placeholders with "{subject}"
-  - Return comprehensive, detailed values for each field
-  - Generate 3000+ characters of detailed content
-  - Include technical specifications, applications, and industry context
-  - Use professional technical language throughout
-  - NO abbreviations or short descriptions
-  - Provide complete, publication-ready metadata
+  🚨 FIELD ENFORCEMENT STRATEGY:
+  Process EVERY field above in this exact order:
+  1. Read the field name
+  2. Read the field description
+  3. Read the field example
+  4. Generate comprehensive content for that field
+  5. Move to next field
+  6. Repeat until ALL fields are processed
 
-  OUTPUT FORMAT:
-  - Return ONLY valid YAML format
-  - NO document separators (---)
-  - NO comments (# lines)
-  - NO markdown formatting
-  - Complete YAML structure with all fields populated
+  🚨 MANDATORY FIELD REQUIREMENTS:
+  - ALL fields must appear in YAML output
+  - String fields: 300-500 characters minimum
+  - Array fields: 5-10 detailed entries minimum
+  - Object fields: Complete structured data
+  - Technical precision in all content
+  - Industry-specific terminology
+  - Quantitative data where applicable
 
-  Generate the complete comprehensive YAML metadata now:
+  🚨 VALIDATION CHECKLIST:
+  Before submitting, verify you have generated content for:
+  ✓ name
+  ✓ description  
+  ✓ primaryAudience
+  ✓ secondaryAudience
+  ✓ industries
+  ✓ substrates
+  ✓ keywords
+  ✓ laserParameters
+  ✓ outcomes
+  ✓ challenges
+  ✓ performanceMetrics
+  ✓ cleaningSpeedComparison
+  ✓ costComparison
+  ✓ safetyConsiderations
+  ✓ regulatoryStandards
+  ✓ author
+  ✓ contentManagement
+  ✓ relatedContent
+  ✓ url
+  ✓ schemaOrgType
+
+  🚨 OUTPUT FORMAT REQUIREMENTS:
+  - Return ONLY valid YAML
+  - NO markdown code blocks
+  - NO explanatory text
+  - Start immediately with field names
+  - EVERY field from checklist above MUST be present
+  - Minimum 8000 characters total
+
+  🚨 CRITICAL: If ANY field is missing, your output will be rejected.
+
+  Generate complete YAML metadata with ALL fields:
 
 parameters:
-  max_tokens: 4000
+  max_tokens: 12000
   temperature: 0.7
 
 validation:
-  min_length: 100
-  required_fields:
-    - name        # Changed from 'title' to 'name'
-    - description
-    - keywords
+  min_length: 5000
+  required_schema_coverage: 100
+  required_fields: ["name", "description", "primaryAudience", "secondaryAudience", "industries", "substrates", "keywords", "laserParameters", "outcomes", "challenges", "performanceMetrics", "cleaningSpeedComparison", "costComparison", "safetyConsiderations", "regulatoryStandards", "author", "contentManagement", "relatedContent", "url", "schemaOrgType"]

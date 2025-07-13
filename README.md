@@ -410,16 +410,17 @@ schemas/definitions/
 
 ### Generator Organization
 ```
-generators/
-├── metadata/
-│   ├── generator.py      # Schema-driven metadata generation
-│   └── prompt.yaml       # Metadata prompt template
-├── tags/
-│   ├── generator.py      # Schema-driven tags generation  
-│   └── prompt.yaml       # Tags prompt template
-└── jsonld/
-    ├── generator.py      # Schema-driven JSON-LD generation
-    └── prompt.yaml       # JSON-LD prompt template
+metadata/
+├── generator.py
+└── prompt.yaml        # Metadata-specific prompt
+
+tags/
+├── generator.py
+└── prompt.yaml        # Tags-specific prompt
+
+jsonld/
+├── generator.py
+└── prompt.yaml        # JSON-LD-specific prompt
 ```
 
 ## Output Quality Standards ✅ **EXCEEDED**
@@ -495,3 +496,23 @@ The Z-Beam Generator is now production-ready with:
 - **✅ Industry-standard content quality**
 
 **Result**: A fully functional content generation system that produces comprehensive, professional technical documentation suitable for publication.
+
+---
+
+# REQUIRED OUTPUT STRUCTURE - ALL FIELDS MANDATORY:
+name: "[from name field]"
+description: "[from description field - 500+ chars]"
+primaryAudience: "[from primaryAudience field]"
+secondaryAudience: "[from secondaryAudience field]"
+industries: "[from industries field - ALL entries expanded]"
+substrates: "[from substrates field - ALL entries expanded]"
+keywords: "[from keywords field - ALL entries expanded]"
+laserParameters: "[from laserParameters field - MISSING]"
+outcomes: "[from outcomes field - MISSING]"
+challenges: "[from challenges field - MISSING]"
+performanceMetrics: "[from performanceMetrics field - MISSING]"
+cleaningSpeedComparison: "[from cleaningSpeedComparison field - MISSING]"
+costComparison: "[from costComparison field - MISSING]"
+safetyConsiderations: "[from safetyConsiderations field - MISSING]"
+regulatoryStandards: "[from regulatoryStandards field - MISSING]"
+# ... ALL 20 fields MUST be present

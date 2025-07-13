@@ -1,80 +1,127 @@
 {
   "name": "thesaurus",
-  "version": "1.0",
+  "version": "1.2",
   "schemaType": "LaserCleaningThesaurusProfile",
-
   "generatorConfig": {
     "tags": {
       "includeIndustries": true,
       "includeApplications": true,
-      "primaryKeywords": ["laser cleaning terms", "technical terminology"]
+      "includeMaterials": true,
+      "primaryKeywords": [
+        "laser cleaning",
+        "{subject}",
+        "technical terminology",
+        "industrial cleaning",
+        "laser technology",
+        "manufacturing",
+        "surface preparation"
+      ]
     },
     "jsonld": {
       "schemaType": "DefinedTerm",
+      "includeDefinition": true,
       "includeIndustries": true,
-      "includeDefinition": true
+      "includeApplications": true,
+      "includeMaterials": true,
+      "additionalProperties": [
+        {
+          "name": "relatedApplications",
+          "value": "Applications of the term in laser cleaning"
+        },
+        {
+          "name": "technicalContext",
+          "value": "Technical significance in laser cleaning"
+        },
+        {
+          "name": "applicationCategory",
+          "value": "Laser cleaning terminology"
+        }
+      ]
     },
     "metadata": {
       "includeDescription": true,
-      "includeAuthor": true
+      "includeAuthor": true,
+      "includeKeywords": true,
+      "includePublicationDate": true
     }
   },
-
   "sections": {
     "definition": {
       "required": true,
-      "prompt": "Write a comprehensive technical definition of {subject} as used in the context of laser cleaning and related applications. Include its significance and how it relates to the laser cleaning process."
+      "prompt": "Write a comprehensive technical definition of {subject} in the context of laser cleaning. Include its scientific basis, significance in the laser cleaning process, relevant physical or chemical principles, and any applicable equations or standards (e.g., ASTM, ISO). Keep it precise and informative (150-200 words)."
     },
     "usage": {
       "required": true,
-      "prompt": "Explain how the term {subject} is used in practical laser cleaning applications. Include relevant industries, materials, and specific contexts where this term is important."
+      "prompt": "Explain how the term {subject} is applied in practical laser cleaning scenarios. Include specific industries (e.g., automotive, aerospace), materials (e.g., metals, composites), and contexts where the term is critical. Provide examples of its role in processes or outcomes, with quantitative data where possible (200-250 words)."
     },
     "technicalDetails": {
       "required": true,
-      "prompt": "Provide detailed technical information about {subject}, including measurements, ranges, and quantitative data where applicable. Include scientific principles related to this concept."
+      "prompt": "Provide detailed technical information about {subject}, including quantitative metrics (e.g., ranges, units), scientific principles, and its influence on laser cleaning performance. Include relevant equations, standards (e.g., ASTM D7091, ISO), or testing protocols, and cite data sources (200-250 words)."
     },
     "relatedTerms": {
       "required": true,
-      "prompt": "Describe terms related to {subject} in the context of laser cleaning, including how they connect to this concept and why understanding these relationships is important."
+      "prompt": "Describe terms related to {subject} in the context of laser cleaning, including their definitions, relationships to {subject}, and importance for understanding the concept. Provide examples of how these terms interact in practical applications, with references to standards or research where applicable (150-200 words)."
+    },
+    "practicalExamples": {
+      "required": true,
+      "prompt": "Provide real-world examples or case studies where {subject} plays a critical role in laser cleaning applications. Include specific industries, materials, processes, and quantitative outcomes (e.g., efficiency improvements, cost savings). Highlight any certifications or standards achieved (200-250 words)."
+    },
+    "environmentalImpact": {
+      "required": false,
+      "prompt": "Analyze the environmental impact of {subject} in laser cleaning, including its role in reducing chemical waste, improving energy efficiency, or supporting sustainability goals. Provide quantitative metrics (e.g., waste reduction percentages) and examples where possible (150-200 words)."
+    },
+    "researchContext": {
+      "required": false,
+      "prompt": "Discuss the research context of {subject} in laser cleaning, including key studies, papers, or patents. Highlight contributions from academic or industry research, ongoing developments, and their impact on the field (150-200 words)."
+    },
+    "businessImplications": {
+      "required": false,
+      "prompt": "Analyze the business implications of {subject} in laser cleaning, including its impact on cost, efficiency, scalability, or market adoption. Discuss how understanding this term influences decision-making in industries adopting laser cleaning (150-200 words)."
     }
   },
-
   "termProfile": {
     "name": {
       "type": "string",
       "required": true,
-      "description": "Name of the term"
+      "description": "Name of the thesaurus term",
+      "example": "Fluence"
     },
-    "definition": {
+    "description": {
       "type": "string",
       "required": true,
-      "description": "Technical definition of the term in the context of laser cleaning"
+      "description": "Technical definition of the term in the context of laser cleaning",
+      "example": "Fluence is the energy delivered per unit area (J/cm²) in laser cleaning, critical for controlling ablation efficiency."
     },
     "pronunciation": {
       "type": "string",
       "required": false,
-      "description": "Phonetic pronunciation of the term"
+      "description": "Phonetic pronunciation of the term",
+      "example": "/ˈfluːəns/"
     },
     "partOfSpeech": {
       "type": "string",
       "required": true,
-      "description": "Part of speech (e.g., noun, verb)"
+      "description": "Part of speech (e.g., noun, verb)",
+      "example": "Noun"
     },
     "primaryAudience": {
       "type": "string",
       "required": true,
-      "description": "Primary target audience for the term"
+      "description": "Primary target audience",
+      "example": "Laser cleaning engineers"
     },
     "secondaryAudience": {
       "type": "string",
       "required": false,
-      "description": "Secondary target audience for the term"
+      "description": "Secondary target audience",
+      "example": "Business managers"
     },
     "keywords": {
       "type": "array",
       "items": { "type": "string" },
       "required": true,
-      "description": "Keywords for SEO, tagging, and JSON-LD"
+      "description": "Keywords for SEO, tagging, and JSON-LD",
+      "example": ["laser cleaning", "fluence", "industrial cleaning"]
     },
     "schemaOrgType": {
       "type": "string",
@@ -94,25 +141,28 @@
         "description": {
           "type": "string",
           "required": true,
-          "description": "Explanation of how the term is used in laser cleaning"
+          "description": "Detailed explanation of how the term is used in laser cleaning"
         },
         "industries": {
           "type": "array",
           "items": { "type": "string" },
           "required": true,
-          "description": "Industries where the term is relevant"
+          "description": "Industries where the term is relevant",
+          "example": ["Automotive", "Aerospace"]
         },
         "applications": {
           "type": "array",
           "items": { "type": "string" },
           "required": true,
-          "description": "Laser cleaning applications where the term is used"
+          "description": "Laser cleaning applications where the term is used",
+          "example": ["Surface preparation", "Rust removal"]
         },
         "materials": {
           "type": "array",
           "items": { "type": "string" },
           "required": true,
-          "description": "Materials where the term is relevant"
+          "description": "Materials where the term is relevant",
+          "example": ["Metals", "Composites"]
         }
       }
     },
@@ -120,7 +170,8 @@
       "type": "array",
       "items": { "type": "string" },
       "required": false,
-      "description": "Synonyms or near-synonyms for the term"
+      "description": "Synonyms or near-synonyms for the term",
+      "example": ["Energy density"]
     },
     "relatedTerms": {
       "type": "array",
@@ -128,11 +179,19 @@
         "type": "object",
         "properties": {
           "name": { "type": "string", "required": true },
-          "description": { "type": "string", "required": true }
+          "description": { "type": "string", "required": true },
+          "relationship": { "type": "string", "required": false, "description": "How the term relates to {subject}" }
         }
       },
       "required": true,
-      "description": "Terms related to this concept"
+      "description": "Terms related to this concept in laser cleaning",
+      "example": [
+        {
+          "name": "Ablation threshold",
+          "description": "Minimum energy required to remove material",
+          "relationship": "Fluence must exceed the ablation threshold for effective cleaning"
+        }
+      ]
     },
     "technicalMetrics": {
       "type": "object",
@@ -152,33 +211,39 @@
               "name": { "type": "string", "required": true },
               "unit": { "type": "string", "required": true },
               "typicalValues": { "type": "string", "required": true },
-              "optimalContext": { "type": "string", "required": false }
+              "optimalContext": { "type": "string", "required": false },
+              "source": { "type": "string", "required": false, "description": "Source of the metric data" }
             }
           }
         },
         "dataSource": {
           "type": "string",
           "required": false,
-          "description": "Source of technical metrics"
-        },
-        "chartConfig": {
-          "type": "object",
-          "required": false,
-          "properties": {
-            "type": { "type": "string", "required": false },
-            "dataSource": { "type": "string", "required": false }
-          }
+          "description": "Primary source of technical metrics"
         }
       }
     },
-    "considerations": {
-      "type": "array",
-      "required": true,
-      "items": {
-        "type": "object",
-        "properties": {
-          "name": { "type": "string", "required": true },
-          "description": { "type": "string", "required": true }
+    "environmentalImpact": {
+      "type": "object",
+      "required": false,
+      "properties": {
+        "description": {
+          "type": "string",
+          "required": true,
+          "description": "Overview of environmental impact of the term in laser cleaning"
+        },
+        "metrics": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string", "required": true },
+              "value": { "type": "string", "required": true },
+              "unit": { "type": "string", "required": false }
+            }
+          },
+          "required": false,
+          "description": "Quantitative environmental metrics"
         }
       }
     },
@@ -186,13 +251,62 @@
       "type": "array",
       "items": { "type": "string" },
       "required": true,
-      "description": "Safety requirements related to the term in laser cleaning"
+      "description": "Safety requirements related to the term in laser cleaning",
+      "example": ["Laser-safe goggles", "Ventilation for vaporized contaminants"]
     },
     "regulatoryStandards": {
       "type": "array",
       "items": { "type": "string" },
       "required": true,
-      "description": "Industry standards relevant to the term"
+      "description": "Industry standards relevant to the term",
+      "example": ["ISO 11554", "ASTM D7091"]
+    },
+    "researchData": {
+      "type": "object",
+      "required": false,
+      "properties": {
+        "studies": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "title": { "type": "string", "required": true },
+              "authors": { "type": "array", "items": { "type": "string" }, "required": false },
+              "publication": { "type": "string", "required": false },
+              "year": { "type": "string", "required": false },
+              "url": { "type": "string", "required": false }
+            }
+          },
+          "description": "Key research studies or papers related to the term"
+        },
+        "patents": {
+          "type": "array",
+          "items": { "type": "string" },
+          "required": false,
+          "description": "Relevant patents related to the term"
+        }
+      }
+    },
+    "businessImpact": {
+      "type": "object",
+      "required": false,
+      "properties": {
+        "costImplications": {
+          "type": "string",
+          "required": false,
+          "description": "Impact of the term on cost in laser cleaning operations"
+        },
+        "efficiencyGains": {
+          "type": "string",
+          "required": false,
+          "description": "Efficiency improvements driven by the term"
+        },
+        "marketAdoption": {
+          "type": "string",
+          "required": false,
+          "description": "Influence on market adoption of laser cleaning technologies"
+        }
+      }
     },
     "author": {
       "type": "object",
@@ -244,27 +358,28 @@
           "url": { "type": "string", "required": true },
           "type": { "type": "string", "required": true }
         }
-      }
+      },
+      "description": "Related articles, videos, or resources"
     }
   },
-
   "jsonLD": {
     "@type": "DefinedTerm",
-    "requiredProperties": ["name", "description", "termCode"],
-    "recommendedProperties": ["inDefinedTermSet", "url"]
+    "requiredProperties": ["name", "description", "termCode", "inDefinedTermSet"],
+    "recommendedProperties": ["url", "relatedTerms", "keywords", "applicationCategory"]
   },
-
   "validation": {
     "requiredSections": [
       "Definition",
       "Usage",
       "TechnicalDetails",
-      "RelatedTerms"
+      "RelatedTerms",
+      "PracticalExamples",
+      "Safety"
     ],
     "jsonLD": {
       "@type": "DefinedTerm",
-      "requiredProperties": ["name", "description", "termCode"],
-      "recommendedProperties": ["inDefinedTermSet", "url"]
+      "requiredProperties": ["name", "description", "termCode", "inDefinedTermSet"],
+      "recommendedProperties": ["url", "relatedTerms", "keywords", "applicationCategory"]
     }
   }
 }

@@ -36,7 +36,7 @@ class TagsGenerator:
                 return None
             
             # Use prompt config for parameters
-            max_tokens = self.prompt_config.get("parameters", {}).get("max_tokens", 2000)
+            max_tokens = self.prompt_config.get("parameters", {}).get("max_tokens", 3000)
             response = self.api_client.generate(prompt, max_tokens=max_tokens)
             
             if not response:
@@ -93,29 +93,77 @@ class TagsGenerator:
         # Get the profile section based on article type
         profile_key = f"{self.article_type}Profile"
         
+        print(f"🔍 DEBUG TAGS: Looking for profile key: {profile_key}")
+        print(f"🔍 DEBUG TAGS: Schema keys: {list(self.schema.keys())}")
+        
         if profile_key in self.schema:
             profile = self.schema[profile_key]
+            print(f"✅ DEBUG TAGS: Found profile with {len(profile)} fields")
             return self._build_schema_template_from_profile(profile)
         else:
-            # ✅ NO FALLBACK - FAIL FAST
-            return None
+            print(f"❌ DEBUG TAGS: Profile key {profile_key} not found")
+            return None  # NO FALLBACK - FAIL FAST
     
     def _build_schema_template_from_profile(self, profile: Dict[str, Any]) -> str:
-        """Build template from profile structure."""
+        """Build dynamic schema template with field-specific instructions."""
         template_parts = []
         
+        # Add header with field count
+        field_count = len(profile)
+        template_parts.append(f"TOTAL FIELDS FOR TAG EXTRACTION: {field_count}")
+        template_parts.append("=" * 50)
+        
+        field_index = 1
         for field_name, field_def in profile.items():
             if isinstance(field_def, dict) and "example" in field_def:
-                example = field_def["example"]
+                # Add field header
+                template_parts.append(f"\nFIELD {field_index}/{field_count}: {field_name}")
+                template_parts.append("-" * 30)
                 
+                # Add field type and description
+                field_type = field_def.get("type", "unknown")
+                field_description = field_def.get("description", "No description")
+                template_parts.append(f"Type: {field_type}")
+                template_parts.append(f"Description: {field_description}")
+                
+                # Add example with tag extraction instruction
+                example = field_def["example"]
                 if isinstance(example, str):
                     processed_value = self._replace_placeholders(example)
-                    template_parts.append(f'{field_name}: "{processed_value}"')
+                    template_parts.append(f"Example: {processed_value}")
+                    template_parts.append(f"REQUIRED: Extract 3-5 technical tags from {field_name}")
                 elif isinstance(example, list):
                     processed_items = [self._replace_placeholders(str(item)) for item in example]
-                    template_parts.append(f'{field_name}: {processed_items}')
+                    template_parts.append(f"Examples: {processed_items}")
+                    template_parts.append(f"REQUIRED: Extract tags from ALL examples in {field_name}")
+                
+                template_parts.append("")  # Add spacing
+                field_index += 1
         
-        return '\n'.join(template_parts) if template_parts else None
+        # Add validation footer
+        template_parts.append("=" * 50)
+        template_parts.append(f"TAG EXTRACTION: Generate tags from ALL {field_count} fields above")
+        template_parts.append("MINIMUM 3-5 TAGS PER FIELD - NO FIELD SHOULD BE IGNORED")
+        
+        return '\n'.join(template_parts)
+    
+    def _replace_placeholders(self, value: str) -> str:
+        """Replace schema placeholders."""
+        placeholder_map = {
+            "materialName": self.subject,
+            "applicationName": self.subject,
+            "regionName": self.subject,
+            "term": self.subject,
+            "{{materialName}}": self.subject,
+            "{{applicationName}}": self.subject,
+            "{{regionName}}": self.subject,
+            "{{term}}": self.subject
+        }
+        
+        for placeholder, replacement in placeholder_map.items():
+            value = value.replace(placeholder, replacement)
+        
+        return value
     
     def _clean_response(self, response: str) -> List[str]:
         """Clean and parse tags from response."""
@@ -123,22 +171,27 @@ class TagsGenerator:
         
         # Remove markdown code blocks
         cleaned = response.strip()
-        if cleaned.startswith("```") or "```" in cleaned:
-            # Extract content between code blocks
+        if "```" in cleaned:
             start = cleaned.find('```')
             if start != -1:
                 start = cleaned.find('\n', start) + 1
                 end = cleaned.rfind('```')
                 if end > start:
                     cleaned = cleaned[start:end]
-    
-        # Extract tags from various formats
-        tags = []
+        
+        # Remove explanatory text
         lines = cleaned.split('\n')
+        tags = []
         
         for line in lines:
             line = line.strip()
-            if not line or line.startswith('#') or line.startswith('Here are'):
+            # Skip explanatory lines
+            if (not line or 
+                line.startswith('Here are') or 
+                line.startswith('These tags') or
+                line.startswith('#') or
+                line.startswith('Tags:') or
+                line.startswith('Generated')):
                 continue
                 
             # Remove prefixes and clean
@@ -146,34 +199,18 @@ class TagsGenerator:
             tag = tag.strip()
             
             # Valid tag check: must be kebab-case format
-            if tag and len(tag) > 2 and '-' in tag and tag.replace('-', '').isalnum():
+            if tag and len(tag) > 2 and '-' in tag and tag.replace('-', '').replace('_', '').isalnum():
                 tags.append(tag)
         
         print(f"🔍 DEBUG TAGS: Extracted {len(tags)} clean tags: {tags[:10]}...")
         
         return tags
     
-    def _process_tags(self, tags: List[str]) -> List[str]:
-        """Process tags to kebab-case."""
-        processed = []
-        seen = set()
-        
-        for tag in tags:
-            clean_tag = tag.lower().replace(' ', '-').replace('_', '-')
-            clean_tag = ''.join(c for c in clean_tag if c.isalnum() or c == '-')
-            clean_tag = clean_tag.strip('-')
-            
-            if clean_tag and len(clean_tag) > 1 and clean_tag not in seen:
-                seen.add(clean_tag)
-                processed.append(clean_tag)
-        
-        return processed
-    
     def _validate_tags(self, tags: List[str]) -> bool:
-        """Validate tags against config."""
+        """Validate tags."""
         validation_config = self.prompt_config.get("validation", {})
-        min_tags = validation_config.get("min_tags", 25)
-        max_tags = validation_config.get("max_tags", 35)
+        min_tags = validation_config.get("min_tags", 75)
+        max_tags = validation_config.get("max_tags", 100)
         
         if len(tags) < min_tags:
             logger.error(f"Too few tags: {len(tags)} < {min_tags}")
@@ -184,8 +221,3 @@ class TagsGenerator:
             tags = tags[:max_tags]
         
         return True
-    
-    def _replace_placeholders(self, text: str) -> str:
-        """Replace placeholders in the text with actual values."""
-        # Simple placeholder replacement logic
-        return text.replace("{subject}", self.subject).replace("{article_type}", self.article_type)

@@ -1,29 +1,51 @@
-name: "Comprehensive Tags Generator"
-description: "Generates comprehensive tag lists for technical articles"
-version: "1.0.0"
+name: "Tags Generator"
+description: "Generates comprehensive tags for technical articles"
+version: "2.0.0"
 
 template: |
   Generate comprehensive tags for a {article_type} article about {subject}.
 
-  Use the schema fields below to generate relevant tags:
+  🚨 CRITICAL: You MUST generate tags from ALL schema fields listed below.
 
+  SCHEMA FIELDS FOR TAG EXTRACTION:
   {schema_template}
 
-  REQUIREMENTS:
-  - Generate 25-35 tags in kebab-case format
-  - Include technical terms, industry applications, and related concepts
-  - Base tags on the schema fields provided above
-  - Replace all placeholders with "{subject}"
-  - Include both specific and general laser cleaning terms
-  - Cover safety, regulations, and technical specifications
-  - Return only the tags, one per line, in kebab-case format
+  🚨 MANDATORY TAG EXTRACTION FROM EACH FIELD:
+  Extract 3-5 tags from EVERY field above:
+  - String fields: Extract core concept tags and technical terms
+  - Array fields: Extract tags from EACH array element
+  - Object fields: Extract tags from ALL object properties
+  - Include technical specifications (wavelengths, standards, metrics)
+  - Include industry applications and use cases
+  - Include safety and regulatory compliance terms
+  - Include material and substrate specifics
+  - Include process parameters and performance metrics
 
-  Generate the tags now:
+  🚨 OUTPUT FORMAT REQUIREMENTS:
+  - Return ONLY tags, one per line
+  - NO markdown code blocks, explanatory text, numbering, bullets
+  - Kebab-case format only
+  - Start immediately with tags
+  - NO categories or grouping
+
+  🚨 TAG REQUIREMENTS:
+  - Extract from ALL schema fields above
+  - Minimum 75+ tags total (3-5 per field × 20 fields)
+  - Technical precision throughout
+  - Industry-specific terminology
+  - SEO-optimized for laser cleaning
+
+  🚨 VALIDATION REQUIREMENT:
+  Your output will be rejected if tags don't cover ALL schema fields.
+
+  Generate the comprehensive tag list from ALL fields now:
 
 parameters:
-  max_tokens: 2000
+  max_tokens: 3000
   temperature: 0.7
 
 validation:
-  min_length: 100
-  max_tags: 35
+  min_tags: 75
+  max_tags: 100
+  required_schema_coverage: 100
+  unique_tags: true

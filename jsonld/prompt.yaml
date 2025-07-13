@@ -1,33 +1,70 @@
-name: "JSON-LD Schema Generator"
-description: "Generates comprehensive JSON-LD structured data for technical articles"
-version: "1.0.0"
+name: "JSON-LD Generator"
+description: "Generates comprehensive JSON-LD for technical articles"
+version: "2.0.0"
 
 template: |
-  Generate JSON-LD for a {article_type} article about {subject}.
+  Generate comprehensive JSON-LD for a {article_type} article about {subject}.
 
-  Use the schema fields below:
+  🚨 CRITICAL: Map schema fields to VALID Schema.org properties only.
 
+  SCHEMA FIELDS FOR JSON-LD MAPPING:
   {schema_template}
 
-  REQUIREMENTS:
-  - Generate valid Schema.org JSON-LD
-  - Use TechnicalArticle type
-  - Include headline, description, keywords, author
-  - Base all content on schema fields above
-  - Replace all placeholders with "{subject}"
-  
-  Generate the JSON-LD now:
+  🚨 MANDATORY JSON-LD MAPPING STRATEGY:
+  Map schema fields to appropriate Schema.org properties:
+  # Core mappings - all valid Schema.org properties:
+  - name → headline                    # ✅ Perfect mapping
+  - description → description          # ✅ Direct mapping
+  - primaryAudience → audience.name    # ✅ Nested object
+  - industries → industry (array)      # ✅ Array handling
+  - substrates → material (array)      # ✅ Technical materials
+  - keywords → keywords (array)        # ✅ SEO optimized
+  - author → author                    # ✅ Direct mapping
+  - url → url                         # ✅ Direct mapping
+
+  # Technical field mappings - creative but valid:
+  - outcomes → about.description
+  - challenges → mentions
+  - safetyConsiderations → about.description
+  - performanceMetrics → about.measurementTechnique  # ✅ Technical data
+  - laserParameters → about.additionalProperty       # ✅ Technical specs
+  - regulatoryStandards → about.legislationApplied   # ✅ Legal compliance
+  - costComparison → about.costBenefit               # ✅ Economic data
+  - cleaningSpeedComparison → about.performanceParameter # ✅ Performance metrics
+
+  🚨 SCHEMA.ORG COMPLIANCE:
+  - Use ONLY valid Schema.org properties
+  - Create nested objects for complex relationships
+  - Use arrays for multi-value properties
+  - Include technical specifications in 'about' or 'description'
+  - Map specialized fields to closest Schema.org equivalents
+
+  🚨 OUTPUT FORMAT REQUIREMENTS:
+  - Return ONLY valid JSON-LD
+  - Include @context: "https://schema.org"
+  - Use @type: "TechnicalArticle"
+  - NO custom properties outside Schema.org vocabulary
+  - Maintain semantic web standards compliance
+
+  Generate Schema.org compliant JSON-LD:
 
 parameters:
-  max_tokens: 3000
+  max_tokens: 4000
   temperature: 0.7
-  expected_format: "json"
 
 validation:
-  required_fields:
-    - "@context"
-    - "@type"
-    - "headline"
-    - "description"
-  min_length: 200
-  schema_org_type: "TechnicalArticle"  # ✅ Match what DeepSeek is returning
+  required_fields: ["@context", "@type", "headline", "description", "about"]
+  min_length: 1500
+  schema_org_type: "TechnicalArticle"
+  required_schema_coverage: 65  # Slightly higher with enhanced mappings
+  schema_org_compliance: true
+  valid_properties_only: true
+
+about: {
+  "@type": "Thing",
+  "name": "[process name]",
+  "description": "[technical details]",
+  "additionalProperty": "[laser parameters]",
+  "safety": "[safety considerations]",
+  "measurementTechnique": "[performance metrics]"
+}
