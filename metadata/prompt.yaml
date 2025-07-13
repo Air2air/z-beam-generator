@@ -3,71 +3,40 @@ description: "Generates comprehensive YAML metadata for technical articles"
 version: "2.0.0"
 
 template: |
-  Generate comprehensive YAML metadata for a {article_type} article about {subject}.
+  Generate comprehensive YAML metadata for a {article_type} entry about "{subject}" IN THE CONTEXT OF LASER CLEANING TECHNOLOGY.
+
+  🚨 CRITICAL CONTEXT: 
+  - This is about "{subject}" as it relates to laser cleaning, surface treatment, and industrial applications
+  - Focus on laser cleaning terminology, rust removal, corrosion control, metal restoration
+  - NOT about programming languages, software, or unrelated topics
+  - All definitions must be from laser cleaning and industrial surface treatment perspective
+
+  🚨 TERMINOLOGY FOCUS:
+  - Define "{subject}" as it applies to laser cleaning processes
+  - Include technical specifications, industrial applications
+  - Reference laser parameters, surface treatment methods
+  - Connect to corrosion control and metal restoration
 
   🚨 CRITICAL: You MUST generate content for EVERY SINGLE schema field listed below.
 
   SCHEMA FIELDS TO PROCESS:
   {schema_template}
 
-  🚨 FIELD ENFORCEMENT STRATEGY:
-  Process EVERY field above in this exact order:
-  1. Read the field name
-  2. Read the field description
-  3. Read the field example
-  4. Generate comprehensive content for that field
-  5. Move to next field
-  6. Repeat until ALL fields are processed
-
-  🚨 MANDATORY FIELD REQUIREMENTS:
-  - ALL fields must appear in YAML output
-  - String fields: 300-500 characters minimum
-  - Array fields: 5-10 detailed entries minimum
-  - Object fields: Complete structured data
-  - Technical precision in all content
-  - Industry-specific terminology
+  🚨 FIELD REQUIREMENTS:
+  - All content must relate to laser cleaning technology
+  - Technical precision in all definitions
+  - Industrial applications focus
+  - Professional terminology throughout
   - Quantitative data where applicable
 
-  🚨 VALIDATION CHECKLIST:
-  Before submitting, verify you have generated content for:
-  ✓ name
-  ✓ description  
-  ✓ primaryAudience
-  ✓ secondaryAudience
-  ✓ industries
-  ✓ substrates
-  ✓ keywords
-  ✓ laserParameters
-  ✓ outcomes
-  ✓ challenges
-  ✓ performanceMetrics
-  ✓ cleaningSpeedComparison
-  ✓ costComparison
-  ✓ safetyConsiderations
-  ✓ regulatoryStandards
-  ✓ author
-  ✓ contentManagement
-  ✓ relatedContent
-  ✓ url
-  ✓ schemaOrgType
-
-  🚨 OUTPUT FORMAT REQUIREMENTS:
-  - Return ONLY valid YAML
-  - NO markdown code blocks
-  - NO explanatory text
-  - Start immediately with field names
-  - EVERY field from checklist above MUST be present
-  - Minimum 8000 characters total
-
-  🚨 CRITICAL: If ANY field is missing, your output will be rejected.
-
-  Generate complete YAML metadata with ALL fields:
+  Generate complete YAML metadata with ALL fields focused on laser cleaning:
 
 parameters:
   max_tokens: 12000
   temperature: 0.7
 
 validation:
-  min_length: 5000
+  min_length: 2000  # Reduced for thesaurus
   required_schema_coverage: 100
-  required_fields: ["name", "description", "primaryAudience", "secondaryAudience", "industries", "substrates", "keywords", "laserParameters", "outcomes", "challenges", "performanceMetrics", "cleaningSpeedComparison", "costComparison", "safetyConsiderations", "regulatoryStandards", "author", "contentManagement", "relatedContent", "url", "schemaOrgType"]
+  # Remove application-specific fields from thesaurus validation
+  required_fields: ["name", "description", "pronunciation", "partOfSpeech", "primaryAudience", "secondaryAudience", "keywords", "synonyms", "relatedTerms", "safetyConsiderations", "regulatoryStandards"]

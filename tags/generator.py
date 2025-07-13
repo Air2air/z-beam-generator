@@ -90,18 +90,25 @@ class TagsGenerator:
     
     def _build_schema_template(self) -> str:
         """Build template using schema structure."""
-        # Get the profile section based on article type
-        profile_key = f"{self.article_type}Profile"
+        # Handle different profile naming conventions
+        profile_keys = [
+            f"{self.article_type}Profile",  # Standard: "applicationProfile"
+            "termProfile",                   # Thesaurus: "termProfile"
+            f"{self.article_type}_profile",  # Snake case
+            f"{self.article_type.title()}Profile"  # Title case
+        ]
         
-        print(f"🔍 DEBUG TAGS: Looking for profile key: {profile_key}")
-        print(f"🔍 DEBUG TAGS: Schema keys: {list(self.schema.keys())}")
+        profile = None
+        for key in profile_keys:
+            if key in self.schema:
+                profile = self.schema[key]
+                logger.info(f"✅ Found profile using key: {key}")
+                break
         
-        if profile_key in self.schema:
-            profile = self.schema[profile_key]
-            print(f"✅ DEBUG TAGS: Found profile with {len(profile)} fields")
+        if profile:
             return self._build_schema_template_from_profile(profile)
         else:
-            print(f"❌ DEBUG TAGS: Profile key {profile_key} not found")
+            logger.error(f"❌ No profile found. Tried keys: {profile_keys}")
             return None  # NO FALLBACK - FAIL FAST
     
     def _build_schema_template_from_profile(self, profile: Dict[str, Any]) -> str:

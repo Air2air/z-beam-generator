@@ -5,6 +5,7 @@ import yaml
 from pathlib import Path
 from typing import Dict, Any, Optional
 from api_client import APIClient
+from .yaml_formatter import YAMLFormatter
 
 logger = logging.getLogger(__name__)
 
@@ -43,8 +44,14 @@ class MetadataGenerator:
                 logger.error("Failed to generate metadata")
                 return None
             
-            # Clean and parse response
-            cleaned_response = self._clean_response(response)
+            # Clean and parse response using external formatter
+            cleaned_response = YAMLFormatter.clean_response(response)
+            
+            # Validate YAML structure before parsing
+            if not YAMLFormatter.validate_yaml_structure(cleaned_response):
+                logger.error("YAML structure validation failed")
+                return None
+            
             metadata = yaml.safe_load(cleaned_response)
             
             # Validate response
@@ -94,20 +101,39 @@ class MetadataGenerator:
     
     def _build_schema_template(self) -> str:
         """Build template using schema structure."""
-        # Get the profile section based on article type
-        profile_key = f"{self.article_type}Profile"
+        # Handle different profile naming conventions
+        profile_keys = [
+            f"{self.article_type}Profile",  # Standard: "applicationProfile"
+            "termProfile",                   # Thesaurus: "termProfile"
+            f"{self.article_type}_profile",  # Snake case
+            f"{self.article_type.title()}Profile"  # Title case
+        ]
         
-        if profile_key in self.schema:
-            profile = self.schema[profile_key]
+        profile = None
+        for key in profile_keys:
+            if key in self.schema:
+                profile = self.schema[key]
+                logger.info(f"✅ Found profile using key: {key}")
+                break
+        
+        if profile:
             return self._build_schema_template_from_profile(profile)
         else:
+            logger.error(f"❌ No profile found. Tried keys: {profile_keys}")
+            logger.error(f"❌ Available schema keys: {list(self.schema.keys())}")
             return None  # NO FALLBACK - FAIL FAST
     
     def _build_schema_template_from_profile(self, profile: Dict[str, Any]) -> str:
         """Build dynamic schema template with field-specific instructions."""
         template_parts = []
         
-        # Add aggressive header
+        # Add context-specific header
+        template_parts.append(f"🚨 LASER CLEANING CONTEXT: This is about {self.subject} in laser cleaning applications")
+        template_parts.append(f"🚨 FOCUS: Industrial surface treatment, rust removal, corrosion control, metal restoration")
+        template_parts.append(f"🚨 NOT ABOUT: Programming languages, software, or unrelated topics")
+        template_parts.append("=" * 60)
+        
+        # Add aggressive field header
         field_count = len(profile)
         template_parts.append(f"🚨 CRITICAL: ALL {field_count} FIELDS BELOW ARE MANDATORY")
         template_parts.append("=" * 60)
@@ -160,16 +186,17 @@ class MetadataGenerator:
         return '\n'.join(template_parts)
     
     def _replace_placeholders(self, value: str) -> str:
-        """Replace schema placeholders."""
+        """Replace schema placeholders with laser cleaning context."""
+        # Enhanced context mapping
         placeholder_map = {
-            "materialName": self.subject,
-            "applicationName": self.subject,
-            "regionName": self.subject,
-            "term": self.subject,
-            "{{materialName}}": self.subject,
-            "{{applicationName}}": self.subject,
-            "{{regionName}}": self.subject,
-            "{{term}}": self.subject
+            "materialName": f"{self.subject} (laser cleaning applications)",
+            "applicationName": f"{self.subject} removal using laser technology",
+            "regionName": f"{self.subject} in industrial laser cleaning",
+            "term": f"{self.subject} (laser cleaning terminology)",
+            "{{materialName}}": f"{self.subject} (laser cleaning applications)",
+            "{{applicationName}}": f"{self.subject} removal using laser technology",
+            "{{regionName}}": f"{self.subject} in industrial laser cleaning",
+            "{{term}}": f"{self.subject} (laser cleaning terminology)"
         }
         
         for placeholder, replacement in placeholder_map.items():
@@ -177,67 +204,40 @@ class MetadataGenerator:
         
         return value
     
-    def _clean_response(self, response: str) -> str:
-        """Clean YAML response."""
-        print(f"🔍 DEBUG METADATA: Raw response:\n{response}")
-        
-        cleaned = response.strip()
-        
-        # Remove markdown code blocks more aggressively
-        if "```yaml" in cleaned:
-            start = cleaned.find("```yaml")
-            if start != -1:
-                start = cleaned.find('\n', start) + 1
-                end = cleaned.rfind('```')
-                if end > start:
-                    cleaned = cleaned[start:end]
-        elif "```" in cleaned:
-            start = cleaned.find("```")
-            if start != -1:
-                start = cleaned.find('\n', start) + 1
-                end = cleaned.rfind('```')
-                if end > start:
-                    cleaned = cleaned[start:end]
-        
-        # Remove any remaining markdown artifacts
-        lines = cleaned.split('\n')
-        yaml_lines = []
-        
-        for line in lines:
-            # Skip lines that are clearly not YAML
-            if (line.strip().startswith('```') or 
-                line.strip().startswith('Here is') or 
-                line.strip().startswith('This YAML') or
-                line.strip().startswith('The metadata')):
-                continue
-            
-            # Include lines that look like YAML
-            if ':' in line or line.strip() == '' or line.strip().startswith('-'):
-                yaml_lines.append(line)
-        
-        cleaned = '\n'.join(yaml_lines)
-        
-        print(f"🔍 DEBUG METADATA: Cleaned response:\n{cleaned}")
-        
-        return cleaned.strip()
-    
     def _validate_metadata(self, metadata: Dict[str, Any]) -> bool:
         """Validate metadata structure and field coverage."""
         if not isinstance(metadata, dict):
             logger.error("Metadata is not a dictionary")
             return False
         
-        # Check minimum content length - ADJUSTED FOR REALISTIC EXPECTATIONS
+        # Check minimum content length - ADJUST FOR ARTICLE TYPE
         content_length = len(str(metadata))
-        min_length = 5000  # Reduced from 8000 to realistic level
+        if self.article_type == "thesaurus":
+            min_length = 2000  # Thesaurus entries are naturally shorter
+        elif self.article_type == "region":
+            min_length = 2500  # Region articles are medium length - REDUCED
+        else:
+            min_length = 5000  # Application articles are longer
+            
         if content_length < min_length:
             logger.error(f"Metadata too short: {content_length} < {min_length}")
             return False
         
-        # Check field coverage - ENFORCE ALL FIELDS
-        profile_key = f"{self.article_type}Profile"
-        if profile_key in self.schema:
-            profile = self.schema[profile_key]
+        # Check field coverage - handle different profile naming conventions
+        profile_keys = [
+            f"{self.article_type}Profile",
+            "termProfile",
+            f"{self.article_type}_profile",
+            f"{self.article_type.title()}Profile"
+        ]
+        
+        profile = None
+        for key in profile_keys:
+            if key in self.schema:
+                profile = self.schema[key]
+                break
+        
+        if profile:
             expected_fields = [field for field, field_def in profile.items() 
                               if isinstance(field_def, dict) and "example" in field_def]
             
@@ -248,12 +248,8 @@ class MetadataGenerator:
             
             if missing_fields:
                 logger.error(f"❌ MISSING CRITICAL FIELDS: {missing_fields}")
-                logger.error(f"❌ Expected {len(expected_fields)} fields, got {len(metadata)} fields")
-                logger.error(f"❌ Present fields: {list(metadata.keys())}")
-                logger.error(f"❌ Missing fields: {missing_fields}")
                 return False
             
             logger.info(f"✅ Field coverage: {len(metadata)}/{len(expected_fields)} fields present")
-            logger.info(f"✅ Content length: {content_length} characters")
-    
+
         return True

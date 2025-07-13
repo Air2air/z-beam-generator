@@ -95,14 +95,26 @@ class JsonLdGenerator:
     
     def _build_schema_template(self) -> str:
         """Build template using schema structure."""
-        # Get the profile section based on article type
-        profile_key = f"{self.article_type}Profile"
+        # Handle different profile naming conventions
+        profile_keys = [
+            f"{self.article_type}Profile",  # Standard: "applicationProfile"
+            "termProfile",                   # Thesaurus: "termProfile"
+            f"{self.article_type}_profile",  # Snake case
+            f"{self.article_type.title()}Profile"  # Title case
+        ]
         
-        if profile_key in self.schema:
-            profile = self.schema[profile_key]
+        profile = None
+        for key in profile_keys:
+            if key in self.schema:
+                profile = self.schema[key]
+                logger.info(f"✅ Found profile using key: {key}")
+                break
+        
+        if profile:
             return self._build_schema_template_from_profile(profile)
         else:
-            return None  # NO FALLBACK - FAIL FAST
+            logger.error(f"❌ No profile found. Tried keys: {profile_keys}")
+            return None
     
     def _build_schema_template_from_profile(self, profile: Dict[str, Any]) -> str:
         """Build dynamic schema template with field-specific instructions."""
