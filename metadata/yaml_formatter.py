@@ -3,6 +3,7 @@
 import re
 import yaml
 import logging
+from typing import Optional
 
 logger = logging.getLogger(__name__)
 
@@ -241,3 +242,33 @@ class YAMLFormatter:
         except Exception as e:
             logger.error(f"YAML validation error: {e}")
             return False
+    
+def format_yaml_content(content: str) -> str:
+    """
+    Format YAML content to remove excessive escape characters.
+    
+    Args:
+        content: The raw YAML content with escape characters
+        
+    Returns:
+        Properly formatted YAML string
+    """
+    if not content:
+        return ""
+    
+    # Remove the wrapping quotes if they exist
+    if content.startswith('"') and content.endswith('"'):
+        content = content[1:-1]
+    
+    # Replace escaped newlines with actual newlines
+    content = content.replace('\\n', '\n')
+    
+    # Replace escaped quotes with regular quotes
+    content = content.replace('\\"', '"')
+    
+    # Fix special characters
+    content = content.replace('\\xB2', '²')
+    content = content.replace('\\u03BCm', 'μm')
+    content = content.replace('\\xC2\\xB0', '°')
+    
+    return content

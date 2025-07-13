@@ -3,40 +3,78 @@ description: "Generates comprehensive YAML metadata for technical articles"
 version: "2.0.0"
 
 template: |
-  Generate comprehensive YAML metadata for a {article_type} entry about "{subject}" IN THE CONTEXT OF LASER CLEANING TECHNOLOGY.
-
-  🚨 CRITICAL CONTEXT: 
-  - This is about "{subject}" as it relates to laser cleaning, surface treatment, and industrial applications
-  - Focus on laser cleaning terminology, rust removal, corrosion control, metal restoration
-  - NOT about programming languages, software, or unrelated topics
-  - All definitions must be from laser cleaning and industrial surface treatment perspective
-
-  🚨 TERMINOLOGY FOCUS:
-  - Define "{subject}" as it applies to laser cleaning processes
-  - Include technical specifications, industrial applications
-  - Reference laser parameters, surface treatment methods
-  - Connect to corrosion control and metal restoration
-
-  🚨 CRITICAL: You MUST generate content for EVERY SINGLE schema field listed below.
-
-  SCHEMA FIELDS TO PROCESS:
+  Generate COMPREHENSIVE AND EXTENSIVE metadata for "{subject}" in laser cleaning applications.
+  
+  🚨 CRITICAL LENGTH REQUIREMENT:
+  - YOU MUST GENERATE AT LEAST 5,000 CHARACTERS of detailed technical metadata
+  - This is a HARD REQUIREMENT - shorter responses will be rejected automatically
+  - Create DETAILED and EXTENSIVE content for EACH field in the schema
+  - Add MORE ITEMS to arrays (15+ items for simple arrays like keywords)
+  - For complex arrays with name/description fields, include AT LEAST 8-10 ITEMS
+  - Write LONGER DESCRIPTIONS for each field - aim for 250+ characters per description
+  - Include SPECIFIC TECHNICAL DETAILS wherever possible
+  
+  🚨 IMPORTANT CONSTRAINTS:
+  - If generating a region article, ONLY use locations within California, USA
+  - For region articles, the "countries" field MUST ONLY contain "United States" - no other countries
+  - All geographic data must reference California locations exclusively
+  - Any manufacturing centers, organizations, or facilities must be physically located in California
+  - ALWAYS use "https://www.z-beam.com" for ALL website URLs (NEVER use example.com or any other domain)
+  
+  🚨 GEOGRAPHIC CONTEXT REQUIREMENTS:
+  - For region articles, ALWAYS include:
+    1. The specific county where the city is located (e.g., "Santa Clara County")
+    2. At least 3 immediately adjacent/neighboring cities (must be actual neighboring cities)
+    3. The broader region of California (e.g., "Bay Area", "Silicon Valley", "Southern California")
+    4. Explicitly state "California" as the state
+  - Example: "Mountain View is located in Santa Clara County, California, in the heart of Silicon Valley. 
+    It borders Palo Alto, Sunnyvale, and Los Altos."
+  
+  🚨 URL FORMATTING RULES:
+  - ALL URLs must use the www.z-beam.com domain
+  - Format: https://www.z-beam.com/[subject-with-dashes]-laser-cleaning
+  - Example: https://www.z-beam.com/mountain-view-laser-cleaning or https://www.z-beam.com/aluminum-laser-cleaning
+  - NEVER use example.com, placeholder.com, or any domain without the "www." prefix
+  - ALWAYS include "www." in the domain (use https://www.z-beam.com NOT https://z-beam.com)
+  - DO NOT include article type in the URL (e.g., NO /regions/ or /materials/ path segments)
+  
+  🚨 CRITICAL ARRAY FORMATTING RULES:
+  - Simple arrays (like keywords, countries, etc.) must use this format:
+    keywords:
+      - "first keyword"
+      - "second keyword"
+      - "third keyword"
+    
+  - Complex arrays with objects must use this format:
+    arrayName:
+      - name: "Item name"
+        description: "Item description with extensive detail that thoroughly explains the concept in at least 2-3 sentences."
+        property: "Another property"
+      - name: "Second item name"
+        description: "Second item description with thorough explanation and technical specifics that provide comprehensive understanding."
+        property: "Another property"
+  
+  Generate YAML for: {article_type} = {subject}
+  
+  Required fields:
   {schema_template}
-
-  🚨 FIELD REQUIREMENTS:
-  - All content must relate to laser cleaning technology
-  - Technical precision in all definitions
-  - Industrial applications focus
-  - Professional terminology throughout
-  - Quantitative data where applicable
-
-  Generate complete YAML metadata with ALL fields focused on laser cleaning:
+  
+  🚨 CONTENT EXPANSION REQUIREMENTS:
+  1. Geographic data must include precise coordinates and detailed context
+  2. Manufacturing centers must include full facility descriptions (100+ words each)
+  3. Regulatory standards must include specific code references and applicability notes
+  4. Include at least 20-25 detailed keywords with regional/technical specificity
+  5. Description must be comprehensive (300+ words) covering all technical aspects
+  6. For array fields with descriptions, write 100+ words per description
+  7. For challenges/outcomes sections, provide detailed technical explanations
+  8. Include specific equipment models, parameters, and technical specifications
+  9. GENERATE AT LEAST 5,000 CHARACTERS TOTAL - longer is better
 
 parameters:
-  max_tokens: 12000
+  max_tokens: 15000
   temperature: 0.7
 
 validation:
-  min_length: 2000  # Reduced for thesaurus
+  min_length: 5000
   required_schema_coverage: 100
-  # Remove application-specific fields from thesaurus validation
-  required_fields: ["name", "description", "pronunciation", "partOfSpeech", "primaryAudience", "secondaryAudience", "keywords", "synonyms", "relatedTerms", "safetyConsiderations", "regulatoryStandards"]
+  required_fields: ["name", "description", "category", "keywords"]

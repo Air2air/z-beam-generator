@@ -5,7 +5,8 @@ from typing import Dict, Any, Optional
 from metadata.generator import MetadataGenerator
 from jsonld.generator import JsonLdGenerator
 from tags.generator import TagsGenerator
-from utils.output_formatter import assemble_markdown
+from utils.output_formatter import format_output
+import re
 
 logger = logging.getLogger(__name__)
 
@@ -63,7 +64,7 @@ class ArticleOrchestrator:
 
             # Assemble final output
             logger.info("Assembling final output...")
-            output = assemble_markdown(metadata, tags, jsonld)
+            output = format_output(metadata, tags, jsonld)
 
             if not output:
                 logger.error("Output assembly failed")
@@ -77,10 +78,20 @@ class ArticleOrchestrator:
             return None
 
     def save_article(self, output: str) -> Optional[str]:
-        """Save article to file - FAIL if subject not provided."""
+        """Save article to file with standardized dash-based naming."""
         try:
             subject = self.context["subject"]  # Will fail if not provided
-            filename = f"{subject.lower().replace(' ', '_')}_laser_cleaning.md"
+            
+            # Enhanced filename normalization
+            normalized = subject.lower()
+            # Remove special characters and punctuation
+            normalized = re.sub(r'[,\'"!@#$%^&*()+=]', '', normalized)
+            # Replace spaces and underscores with dashes
+            normalized = re.sub(r'[\s_]+', '-', normalized)
+            # Remove any extra dashes
+            normalized = re.sub(r'-+', '-', normalized)
+            
+            filename = f"{normalized}-laser-cleaning.md"
             filepath = f"output/{filename}"
 
             with open(filepath, 'w', encoding='utf-8') as f:

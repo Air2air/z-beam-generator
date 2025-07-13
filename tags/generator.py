@@ -5,6 +5,7 @@ import yaml
 from pathlib import Path
 from typing import Dict, Any, Optional, List
 from api_client import APIClient
+import re
 
 logger = logging.getLogger(__name__)
 
@@ -26,8 +27,8 @@ class TagsGenerator:
         
         logger.info(f"TagsGenerator initialized for {self.article_type}: {self.subject}")
     
-    def generate(self) -> Optional[List[str]]:
-        """Generate tags using schema-driven approach."""
+    def generate(self) -> Optional[str]:
+        """Generate tags for an article."""
         try:
             prompt = self._build_prompt()
             
@@ -44,18 +45,26 @@ class TagsGenerator:
                 return None
             
             # Clean and parse response
-            tags = self._clean_response(response)
+            tags = self._clean_response(response)  # This returns a list of tags
             
-            # Validate response
-            if not self._validate_tags(tags):
-                logger.error("Tags validation failed")
+            # Simple minimum tags check
+            if len(tags) < 5:
+                logger.error(f"Too few tags generated: {len(tags)} < 5")
                 return None
             
+            # LIMIT TAGS TO 15 - this is the only place we need to truncate
+            MAX_TAGS = 15
+            if len(tags) > MAX_TAGS:
+                logger.warning(f"Too many tags: {len(tags)} > {MAX_TAGS}, truncating")
+                tags = tags[:MAX_TAGS]
+            
             logger.info(f"Successfully generated {len(tags)} schema-driven tags")
-            return tags
+            
+            # Return as comma-separated string
+            return ', '.join(tags)
             
         except Exception as e:
-            logger.error(f"Tags generation failed: {e}", exc_info=True)
+            logger.error(f"Tags generation failed: {e}")
             return None
     
     def _load_prompt_template(self) -> Dict[str, Any]:
@@ -173,51 +182,52 @@ class TagsGenerator:
         return value
     
     def _clean_response(self, response: str) -> List[str]:
-        """Clean and parse tags from response."""
-        print(f"🔍 DEBUG TAGS: Raw response:\n{response}")
-        
-        # Remove markdown code blocks
-        cleaned = response.strip()
-        if "```" in cleaned:
-            start = cleaned.find('```')
-            if start != -1:
-                start = cleaned.find('\n', start) + 1
-                end = cleaned.rfind('```')
-                if end > start:
-                    cleaned = cleaned[start:end]
-        
-        # Remove explanatory text
-        lines = cleaned.split('\n')
-        tags = []
-        
-        for line in lines:
-            line = line.strip()
-            # Skip explanatory lines
-            if (not line or 
-                line.startswith('Here are') or 
-                line.startswith('These tags') or
-                line.startswith('#') or
-                line.startswith('Tags:') or
-                line.startswith('Generated')):
-                continue
-                
-            # Remove prefixes and clean
-            tag = line.lstrip('0123456789.- •*')
-            tag = tag.strip()
+        """Clean the API response to extract tags."""
+        try:
+            # Split the response by lines and cleanup
+            lines = response.strip().split('\n')
             
-            # Valid tag check: must be kebab-case format
-            if tag and len(tag) > 2 and '-' in tag and tag.replace('-', '').replace('_', '').isalnum():
-                tags.append(tag)
-        
-        print(f"🔍 DEBUG TAGS: Extracted {len(tags)} clean tags: {tags[:10]}...")
-        
-        return tags
+            # Extract tags (one per line or comma-separated)
+            tags = []
+            for line in lines:
+                line = line.strip()
+                if not line:
+                    continue
+                    
+                # Split by comma if present (handles both formats)
+                if ',' in line:
+                    parts = [p.strip() for p in line.split(',')]
+                    tags.extend([p for p in parts if p])
+                else:
+                    # Remove bullet points or other markers
+                    line = re.sub(r'^[-•*]\s*', '', line)
+                    if line:
+                        tags.append(line)
+            
+            # Clean up any remaining issues
+            clean_tags = []
+            for tag in tags:
+                # Remove quotes and formatting
+                tag = tag.strip('"\'')
+                tag = re.sub(r'\s+', '-', tag)
+                
+                # CRITICAL: Ensure we're not adding characters individually
+                if len(tag) > 1:  # Only add tags longer than a single character
+                    clean_tags.append(tag)
+            
+            logger.debug(f"Extracted {len(clean_tags)} clean tags: {clean_tags[:10]}...")
+            return clean_tags
+            
+        except Exception as e:
+            logger.error(f"Error cleaning tags: {e}")
+            return []
     
     def _validate_tags(self, tags: List[str]) -> bool:
         """Validate tags."""
+        # Update the defaults here to match your new requirements
         validation_config = self.prompt_config.get("validation", {})
-        min_tags = validation_config.get("min_tags", 75)
-        max_tags = validation_config.get("max_tags", 100)
+        min_tags = validation_config.get("min_tags", 5)  # Changed from 75 to 5
+        max_tags = validation_config.get("max_tags", 15)  # Changed from 100 to 15
         
         if len(tags) < min_tags:
             logger.error(f"Too few tags: {len(tags)} < {min_tags}")
@@ -225,6 +235,43 @@ class TagsGenerator:
         
         if len(tags) > max_tags:
             logger.warning(f"Too many tags: {len(tags)} > {max_tags}, truncating")
-            tags = tags[:max_tags]
+            tags = tags[:max_tags]  # This truncation happens here, but doesn't affect the original list
         
         return True
+    
+    def process_tags(self, tags_string: str) -> str:
+        """
+        Process raw tags into a properly formatted string.
+        
+        Args:
+            tags_string: Raw tags string from the API
+            
+        Returns:
+            Properly formatted tags string
+        """
+        formatted_tags = []
+        current_tag = ""
+        
+        # Split by commas
+        parts = tags_string.split(',')
+        for part in parts:
+            part = part.strip()
+            if part:
+                # Skip the spaces that were added as individual characters
+                if part == " ":
+                    current_tag += "-" if current_tag else ""
+                else:
+                    current_tag += part
+            else:
+                # Empty part after comma indicates end of tag
+                if current_tag:
+                    formatted_tags.append(current_tag)
+                    current_tag = ""
+        
+        # Add the last tag if there is one
+        if current_tag:
+            formatted_tags.append(current_tag)
+        
+        # Remove duplicate tags and join with commas
+        unique_tags = list(dict.fromkeys(formatted_tags))
+        return ", ".join(unique_tags)
