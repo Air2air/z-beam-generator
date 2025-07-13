@@ -78,42 +78,60 @@ class YAMLFormatter:
     
     @staticmethod
     def _fix_malformed_array_objects(text: str) -> str:
-        """Fix malformed objects with dash on separate line."""
-        lines = text.split('\n')
-        fixed_lines = []
-        i = 0
+        """Fix malformed objects with dash on separate line using comprehensive regex."""
+        import re
         
-        while i < len(lines):
-            line = lines[i]
+        # Step 1: Find all malformed array blocks
+        # Pattern: array_name: followed by malformed items
+        array_pattern = r'(\w+):\s*\n((?:\s*-\s*\n(?:\s*\w+:\s*"[^"]*"\s*\n?)+)+)'
+        
+        def fix_array_block(match):
+            array_name = match.group(1)
+            array_content = match.group(2)
             
-            # Check if this is an array marker line followed by object properties
-            if (line.strip() == '-' and 
-                i + 1 < len(lines) and 
-                lines[i + 1].strip() and
-                ':' in lines[i + 1] and
-                not lines[i + 1].strip().startswith('-')):
-                
-                # This is a malformed array object
-                fixed_lines.append('  -')  # Proper array marker
-                i += 1
-                
-                # Process the object properties
-                while i < len(lines) and lines[i].strip() and not lines[i].strip().startswith('-'):
-                    prop_line = lines[i]
-                    if ':' in prop_line:
-                        # Ensure proper indentation for object properties
-                        fixed_lines.append('    ' + prop_line.strip())
-                    else:
-                        fixed_lines.append(prop_line)
-                    i += 1
-                
-                # Don't increment i again since we handled it in the loop
-                continue
-            else:
-                fixed_lines.append(line)
-                i += 1
+            # Split into individual array items
+            items = []
+            current_item = []
+            
+            for line in array_content.split('\n'):
+                line = line.strip()
+                if line == '-':
+                    if current_item:
+                        items.append(current_item)
+                        current_item = []
+                elif line and ':' in line:
+                    current_item.append(line)
+            
+            # Don't forget the last item
+            if current_item:
+                items.append(current_item)
+            
+            # Rebuild with proper YAML formatting
+            result = [f"{array_name}:"]
+            for item in items:
+                if item:  # Only add non-empty items
+                    result.append('  -')
+                    for prop in item:
+                        result.append('    ' + prop)
+            
+            return '\n'.join(result)
         
-        return '\n'.join(fixed_lines)
+        # Apply the fix
+        fixed_text = re.sub(array_pattern, fix_array_block, text, flags=re.MULTILINE)
+        
+        # Count fixes applied
+        matches = re.findall(array_pattern, text, flags=re.MULTILINE)
+        fixes_applied = len(matches)
+        
+        print(f"✅ Applied {fixes_applied} array block fixes via regex")
+        
+        # Debug output
+        if fixes_applied > 0:
+            print("🔧 Fixed array sections:")
+            for match in matches:
+                print(f"  → {match[0]}:")
+        
+        return fixed_text
     
     @staticmethod
     def _fix_quoted_objects(text: str) -> str:
