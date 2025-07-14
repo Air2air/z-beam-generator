@@ -42,9 +42,10 @@ class ArticleOrchestrator:
             if not metadata:
                 logger.error("Metadata generation failed")
                 return None
-            
-            # Pass metadata to tags generator
-            tags_gen = TagsGenerator(self.context, self.schema, self.ai_provider, metadata=metadata)
+
+            # Create a metadata summary for tags
+            metadata_summary = self._summarize_metadata(metadata)
+            tags_gen = TagsGenerator(self.context, self.schema, self.ai_provider, metadata=metadata, metadata_summary=metadata_summary)
             tags = tags_gen.generate()
             if not tags:
                 logger.error("Tags generation failed")
@@ -98,3 +99,22 @@ class ArticleOrchestrator:
         except Exception as e:
             logger.error(f"Failed to save article: {e}", exc_info=True)
             return None
+
+    def _summarize_metadata(self, metadata: str) -> str:
+        # Example: extract facility names, technologies, standards, and unique uses
+        # You can use regex or yaml parsing for structured metadata
+        summary_lines = []
+        # Extract manufacturing centers
+        centers = re.findall(r'name:\s*"([^"]+)"', metadata)
+        if centers:
+            summary_lines.append("Facilities: " + ", ".join(centers))
+        # Extract regulatory standards
+        standards = re.findall(r'regulatoryStandards:\s*\n((?:\s*-\s*".*?"\n)+)', metadata)
+        if standards:
+            summary_lines.append("Regulatory Standards: " + ", ".join(re.findall(r'"([^"]+)"', standards[0])))
+        # Extract keywords
+        keywords = re.findall(r'keywords:\s*\n((?:\s*-\s*".*?"\n)+)', metadata)
+        if keywords:
+            summary_lines.append("Keywords: " + ", ".join(re.findall(r'"([^"]+)"', keywords[0])))
+        # Add more as needed
+        return "\n".join(summary_lines)

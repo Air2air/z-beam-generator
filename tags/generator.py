@@ -13,7 +13,7 @@ logger = logging.getLogger(__name__)
 class TagsGenerator:
     """Generates tags ONLY from schema definitions."""
     
-    def __init__(self, context: Dict[str, Any], schema: Dict[str, Any], ai_provider: str, metadata: Optional[str] = None):
+    def __init__(self, context: Dict[str, Any], schema: Dict[str, Any], ai_provider: str, metadata: Optional[str] = None, metadata_summary: Optional[str] = None):
         # Existing initialization
         self.context = context
         self.schema = schema
@@ -22,6 +22,7 @@ class TagsGenerator:
         
         # Store metadata if provided
         self.metadata = metadata
+        self.metadata_summary = metadata_summary
 
         # NO DEFAULT VALUES - Must come from context
         self.subject = context["subject"]  # Will fail if not provided
@@ -121,7 +122,8 @@ class TagsGenerator:
         return template.format(
             article_type=self.article_type,
             subject=self.subject,
-            schema_template=schema_template
+            schema_template=schema_template,
+            metadata_summary=self.metadata_summary or ""
         )
     
     def _build_prompt(self) -> str:

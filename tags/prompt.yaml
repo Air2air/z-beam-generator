@@ -5,20 +5,21 @@ version: "2.0.0"
 # Main prompt template for generating initial tags
 template: |
   You are a specialized AI assistant for generating tags for technical articles about laser cleaning applications.
-  
+
   ARTICLE TYPE: {article_type}
   SUBJECT: {subject}
-  
-  SCHEMA FIELDS:
-  {schema_template}
-  
+
+  METADATA SUMMARY:
+  {metadata_summary}
+
   INSTRUCTIONS:
-  1. Generate 30-40 high-quality, professional kebab-case tags for this technical article
-  2. Ensure tags are relevant to the laser cleaning industry and the specific subject
-  3. Include a mix of technical, application, industry, and audience-specific tags
-  4. Format all tags in kebab-case (lowercase with hyphens between words)
-  5. DO NOT include any explanations or additional text
-  6. Return ONLY a comma-separated list of tags
+  1. Generate 30-40 high-quality, professional kebab-case tags for this technical article.
+  2. Use details from the metadata, including facility names, technologies, regulatory standards, and unique applications.
+  3. Include tags for specific locations, industries, and innovations mentioned.
+  4. Avoid generic tags; prefer those that would help experts, manufacturers, or enthusiasts discover this article.
+  5. Format all tags in kebab-case (lowercase with hyphens between words).
+  6. DO NOT include any explanations or additional text.
+  7. Return ONLY a comma-separated list of tags
 
 # New audience selection prompt template
 audience_selection_template: |
