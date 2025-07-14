@@ -36,27 +36,22 @@ class ArticleOrchestrator:
         try:
             logger.info("Starting article generation process")
 
-            # Initialize generators
+            # Generate metadata first
             metadata_gen = MetadataGenerator(self.context, self.schema, self.ai_provider)
-            jsonld_gen = JsonLdGenerator(self.context, self.schema, self.ai_provider)
-            tags_gen = TagsGenerator(self.context, self.schema, self.ai_provider)
-
-            # Generate metadata
-            logger.info("Generating metadata...")
             metadata = metadata_gen.generate()
             if not metadata:
                 logger.error("Metadata generation failed")
                 return None
-
-            # Generate tags
-            logger.info("Generating tags...")
+            
+            # Pass metadata to tags generator
+            tags_gen = TagsGenerator(self.context, self.schema, self.ai_provider, metadata=metadata)
             tags = tags_gen.generate()
             if not tags:
                 logger.error("Tags generation failed")
                 return None
-
-            # Generate JSON-LD
-            logger.info("Generating JSON-LD...")
+                
+            # Continue with jsonld...
+            jsonld_gen = JsonLdGenerator(self.context, self.schema, self.ai_provider)
             jsonld = jsonld_gen.generate()
             if not jsonld:
                 logger.error("JSON-LD generation failed")

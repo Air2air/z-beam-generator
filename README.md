@@ -516,3 +516,98 @@ costComparison: "[from costComparison field - MISSING]"
 safetyConsiderations: "[from safetyConsiderations field - MISSING]"
 regulatoryStandards: "[from regulatoryStandards field - MISSING]"
 # ... ALL 20 fields MUST be present
+
+# Adding a New Generator Component
+
+## Overview
+Z-Beam uses a standardized pattern for all generator components. Follow these steps to add a new component with minimal errors.
+
+## Step 1: Create Component Directory Structure
+```
+<userPrompt>
+Provide the fully rewritten file, incorporating the suggested code change. You must produce the complete file.
+</userPrompt>
+````````
+This is the code block that represents the suggested code change:
+````markdown
+## Step 2: Implement Generator Class
+Your generator class must follow this structure:
+```python
+class YourComponentGenerator:
+    def __init__(self, context, schema, ai_provider):
+        # Initialize with standard parameters
+        self.context = context
+        self.schema = schema
+        self.ai_provider = ai_provider
+        self.api_client = APIClient(ai_provider)
+        
+        # Extract required fields from context (no fallbacks)
+        self.subject = context["subject"]
+        self.article_type = context["article_type"]
+        
+        # Load prompt template
+        self.prompt_config = self._load_prompt_template()
+        
+    def generate(self):
+        # Main entry point - must return processed output
+        # Always include error handling
+        try:
+            prompt = self._build_prompt()
+            if not prompt:
+                return None
+            
+            response = self.api_client.generate(prompt)
+            if not response:
+                return None
+                
+            # Process response
+            processed_output = self._process_response(response)
+            
+            # Validate output
+            if not self._validate_output(processed_output):
+                return None
+                
+            return processed_output
+        except Exception as e:
+            logger.error(f"{self.__class__.__name__} generation failed: {e}")
+            return None
+            
+    def _load_prompt_template(self):
+        # Standard method for loading prompt config
+        # Must be implemented by all generators
+        try:
+            prompt_path = Path(__file__).parent / "prompt.yaml"
+            with open(prompt_path, 'r') as f:
+                return yaml.safe_load(f)
+        except Exception as e:
+            logger.error(f"Failed to load prompt template: {e}")
+            return {}
+```
+<userPrompt>
+Provide the fully rewritten file, incorporating the suggested code change. You must the complete file.
+</userPrompt>
+`````````
+This is the code block that represents the suggested code change:
+````markdown
+# Tag Generation
+
+## Two-Stage Audience-Targeted Tag Generation
+
+Z-Beam Generator now employs a two-stage tag generation approach that leverages article metadata to produce higher-quality, audience-relevant tags.
+
+### Process Overview
+
+1. **Candidate Generation**: The system first generates 30-40 candidate tags based on the article schema and subject
+2. **Audience-Targeted Selection**: Using metadata (especially audience and industry information), it then selects exactly 15 tags most relevant to the target audience
+
+### Implementation Details
+
+The tag generation process now requires metadata input:
+
+```python
+# Orchestrator passes metadata to the tag generator
+tags_gen = TagsGenerator(context, schema, ai_provider, metadata=metadata)
+````
+<userPrompt>
+Provide the fully rewritten file, incorporating the suggested code change. You must the complete file.
+</userPrompt>

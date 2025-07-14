@@ -2,52 +2,63 @@ name: "Tags Generator"
 description: "Generates comprehensive tags for technical articles"
 version: "2.0.0"
 
+# Main prompt template for generating initial tags
 template: |
-  Generate comprehensive tags for a {article_type} article about {subject} IN THE CONTEXT OF LASER CLEANING TECHNOLOGY.
-
-  🚨 CRITICAL CONTEXT: This is about "{subject}" as it relates to laser cleaning, not programming languages or other topics.
-
-  🚨 CRITICAL: You MUST generate tags from ALL schema fields listed below.
-
-  SCHEMA FIELDS FOR TAG EXTRACTION:
+  You are a specialized AI assistant for generating tags for technical articles about laser cleaning applications.
+  
+  ARTICLE TYPE: {article_type}
+  SUBJECT: {subject}
+  
+  SCHEMA FIELDS:
   {schema_template}
+  
+  INSTRUCTIONS:
+  1. Generate 30-40 high-quality, professional kebab-case tags for this technical article
+  2. Ensure tags are relevant to the laser cleaning industry and the specific subject
+  3. Include a mix of technical, application, industry, and audience-specific tags
+  4. Format all tags in kebab-case (lowercase with hyphens between words)
+  5. DO NOT include any explanations or additional text
+  6. Return ONLY a comma-separated list of tags
 
-  🚨 MANDATORY TAG EXTRACTION FROM EACH FIELD:
-  Extract 3-5 tags from EVERY field above:
-  - String fields: Extract core concept tags and technical terms
-  - Array fields: Extract tags from EACH array element
-  - Object fields: Extract tags from ALL object properties
-  - Include technical specifications (wavelengths, standards, metrics)
-  - Include industry applications and use cases
-  - Include safety and regulatory compliance terms
-  - Include material and substrate specifics
-  - Include process parameters and performance metrics
+# New audience selection prompt template
+audience_selection_template: |
+  You are a specialized AI assistant for selecting the most relevant tags for technical articles.
 
-  🚨 OUTPUT FORMAT REQUIREMENTS:
-  - Return ONLY tags, one per line
-  - NO markdown code blocks, explanatory text, numbering, bullets
-  - Kebab-case format only
-  - Start immediately with tags
-  - NO categories or grouping
+  ARTICLE TYPE: {article_type}
+  SUBJECT: {subject}
 
-  🚨 TAG REQUIREMENTS:
-  - Extract from ALL schema fields above
-  - Minimum 75+ tags total (3-5 per field × 20 fields)
-  - Technical precision throughout
-  - Industry-specific terminology
-  - SEO-optimized for laser cleaning
+  AUDIENCE INFORMATION:
+  {audience_info}
 
-  🚨 VALIDATION REQUIREMENT:
-  Your output will be rejected if tags don't cover ALL schema fields.
+  CANDIDATE TAGS:
+  {tags_list}
 
-  Generate the comprehensive tag list from ALL fields now:
+  TASK:
+  Select EXACTLY 15 tags from the candidates that would be most relevant and valuable to the audience described above.
+
+  SELECTION CRITERIA:
+  1. Prioritize tags that match the technical interests of the primary audience
+  2. Include tags relevant to the industry sectors listed
+  3. Balance general and specific technical terms
+  4. Choose tags that would help the audience discover this content in searches
+  5. Ensure tags represent different aspects (equipment, process, application, audience)
+
+  INSTRUCTIONS:
+  - Return EXACTLY 15 tags, no more and no less
+  - Format all tags in kebab-case (lowercase with hyphens)
+  - Separate tags with commas
+  - DO NOT include any explanations or additional text
+  - DO NOT number or bullet the tags
+
+  SELECTED TAGS (15 tags only):
 
 parameters:
-  max_tokens: 3000
-  temperature: 0.7
+  temperature: 0.1
+  max_tokens: 1000
+  top_p: 0.95
+  frequency_penalty: 0.0
+  presence_penalty: 0.0
 
 validation:
-  min_tags: 75
-  max_tags: 100
-  required_schema_coverage: 100
-  unique_tags: true
+  min_tags: 5
+  max_tags: 15

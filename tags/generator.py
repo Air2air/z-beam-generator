@@ -13,12 +13,16 @@ logger = logging.getLogger(__name__)
 class TagsGenerator:
     """Generates tags ONLY from schema definitions."""
     
-    def __init__(self, context: Dict[str, Any], schema: Dict[str, Any], ai_provider: str):
+    def __init__(self, context: Dict[str, Any], schema: Dict[str, Any], ai_provider: str, metadata: Optional[str] = None):
+        # Existing initialization
         self.context = context
         self.schema = schema
         self.ai_provider = ai_provider
         self.api_client = APIClient(ai_provider)
         
+        # Store metadata if provided
+        self.metadata = metadata
+
         # NO DEFAULT VALUES - Must come from context
         self.subject = context["subject"]  # Will fail if not provided
         self.article_type = context["article_type"]  # Will fail if not provided
@@ -29,54 +33,96 @@ class TagsGenerator:
         logger.info(f"TagsGenerator initialized for {self.article_type}: {self.subject}")
     
     def generate(self) -> Optional[str]:
-        """Generate tags for an article."""
+        """Generate tags for an article using metadata when available."""
         try:
-            prompt = self._build_prompt()
-            
-            if not prompt:
-                logger.error("Failed to build prompt - no schema fields available")
-                return None
-            
-            # Use prompt config for parameters
-            max_tokens = self.prompt_config.get("parameters", {}).get("max_tokens", 3000)
-            response = self.api_client.generate(prompt, max_tokens=max_tokens)
-            
-            if not response:
-                logger.error("Failed to generate tags")
-                return None
-            
-            # Clean and parse response
-            tags = self._clean_response(response)  # This returns a list of tags
-            
-            # Simple minimum tags check
-            if len(tags) < 5:
-                logger.error(f"Too few tags generated: {len(tags)} < 5")
-                return None
-            
-            # LIMIT TAGS TO 15 - this is the only place we need to truncate
-            MAX_TAGS = 15
-            if len(tags) > MAX_TAGS:
-                logger.warning(f"Too many tags: {len(tags)} > {MAX_TAGS}, truncating")
-                tags = tags[:MAX_TAGS]
-            
-            logger.info(f"Successfully generated {len(tags)} schema-driven tags")
-            
-            # Return as comma-separated string
-            return ', '.join(tags)
-            
+            # Check if we should use the two-stage process (requires metadata)
+            if self.metadata:
+                logger.info("Using two-stage tag generation process with metadata")
+                
+                # Generate candidate tags first (30-40)
+                candidate_tags = self._generate_candidate_tags()
+                if not candidate_tags or len(candidate_tags) < 5:
+                    logger.error("Failed to generate sufficient candidate tags")
+                    return None
+                    
+                logger.info(f"Generated {len(candidate_tags)} candidate tags")
+                
+                # Select the best tags based on audience
+                final_tags = self._select_audience_relevant_tags(candidate_tags)
+                logger.info(f"Selected {len(final_tags)} audience-relevant tags")
+                
+                return ', '.join(final_tags)
+            else:
+                # Fall back to standard generation if no metadata
+                logger.info("Using standard tag generation (no metadata provided)")
+                prompt = self._build_prompt()
+                
+                if not prompt:
+                    logger.error("Failed to build prompt - no schema fields available")
+                    return None
+                
+                # Use prompt config for parameters
+                max_tokens = self.prompt_config.get("parameters", {}).get("max_tokens", 1000)
+                response = self.api_client.generate(prompt, max_tokens=max_tokens)
+                
+                if not response:
+                    logger.error("Failed to generate tags")
+                    return None
+                
+                # Process tags from response
+                tags = self._process_response(response)
+                
+                return tags
+                
         except Exception as e:
             logger.error(f"Tags generation failed: {e}")
             return None
+
+    def _generate_candidate_tags(self) -> List[str]:
+        """Generate 30-40 candidate tags."""
+        prompt = self._build_candidate_tags_prompt()
+        if not prompt:
+            return []
+            
+        # Generate response
+        response = self.api_client.generate(prompt, max_tokens=2000)
+        if not response:
+            return []
+        
+        # FIXED APPROACH:
+        # 1. First get the raw response as a string
+        raw_response = response
     
-    def _load_prompt_template(self) -> Dict[str, Any]:
-        """Load prompt template from YAML file."""
-        try:
-            prompt_path = Path(__file__).parent / "prompt.yaml"
-            with open(prompt_path, 'r') as f:
-                return yaml.safe_load(f)
-        except Exception as e:
-            logger.error(f"Failed to load prompt template: {e}")
-            return {}
+        # 2. Process the string into a list of tags
+        # (Either using process_tags directly if it handles strings properly)
+        return self.process_tags(raw_response)
+    
+        # OR if you want to use _clean_response:
+        # tags_list = self._clean_response(raw_response)
+        # return tags_list
+    
+    def _build_candidate_tags_prompt(self) -> str:
+        """Build prompt for generating candidate tags."""
+        schema_template = self._build_schema_template()
+        
+        if not schema_template:
+            logger.error("No schema fields available for tag generation")
+            return None
+        
+        # Use template from prompt config
+        template = self.prompt_config.get("template", "")
+        if not template:
+            logger.error("No prompt template found")
+            return None
+        
+        # No need for replacement - YAML already has the right instructions!
+        # Remove the entire template.replace() section
+        
+        return template.format(
+            article_type=self.article_type,
+            subject=self.subject,
+            schema_template=schema_template
+        )
     
     def _build_prompt(self) -> str:
         """Build tags prompt using template."""
@@ -279,3 +325,130 @@ class TagsGenerator:
         
         # Return unique tags
         return list(dict.fromkeys(tags_list))
+    
+    def _process_response(self, response: str) -> str:
+        """Process the API response to extract tags."""
+        try:
+            # Extract tags from response
+            cleaned_response = self._clean_response(response)
+            
+            # Split by commas and clean each tag
+            tags_list = [tag.strip() for tag in cleaned_response.split(',') if tag.strip()]
+            
+            # Ensure we have exactly 15 tags
+            if len(tags_list) < 15:
+                logger.warning(f"Not enough tags: {len(tags_list)} < 15, using what we have")
+            elif len(tags_list) > 15:
+                logger.warning(f"Too many tags: {len(tags_list)} > 15, using only first 15")
+                tags_list = tags_list[:15]
+            else:
+                logger.info(f"Successfully generated exactly 15 schema-driven tags")
+            
+            # Validate tags
+            valid_tags = []
+            for tag in tags_list:
+                if self._is_valid_tag(tag):
+                    valid_tags.append(tag)
+            
+            # Return comma-separated string of tags
+            return ", ".join(valid_tags)
+        except Exception as e:
+            logger.error(f"Failed to process tags response: {e}")
+            return None
+    
+    def _is_valid_tag(self, tag: str) -> bool:
+        """Check if a tag is valid based on custom criteria."""
+        # Example criteria: tag must be alphanumeric and between 3 to 30 characters
+        if re.match(r'^[a-zA-Z0-9-]{3,30}$', tag):
+            return True
+        else:
+            logger.warning(f"Invalid tag skipped: {tag}")
+            return False
+    
+    def _extract_audience_info(self) -> str:
+        """Extract audience information from metadata."""
+        if not self.metadata:
+            return ""
+            
+        # Simple extraction using regex
+        audience_info = []
+        
+        # Extract primary audience
+        primary_match = re.search(r'primaryAudience:\s*(.*?)(?=\n\w+:|$)', self.metadata, re.DOTALL)
+        if primary_match:
+            audience_info.append(f"PRIMARY AUDIENCE: {primary_match.group(1).strip()}")
+            
+        # Extract secondary audience
+        secondary_match = re.search(r'secondaryAudience:\s*(.*?)(?=\n\w+:|$)', self.metadata, re.DOTALL)
+        if secondary_match:
+            audience_info.append(f"SECONDARY AUDIENCE: {secondary_match.group(1).strip()}")
+            
+        # Extract industries
+        industries_match = re.search(r'industries:\s*((?:-.*?\n)+)', self.metadata, re.DOTALL)
+        if industries_match:
+            audience_info.append(f"INDUSTRIES: {industries_match.group(1).strip()}")
+        
+        return "\n".join(audience_info)
+
+    def _select_audience_relevant_tags(self, candidate_tags: List[str]) -> List[str]:
+        """Select exactly 15 tags that are most relevant to the audience."""
+        if not candidate_tags:
+            return []
+            
+        # Extract audience information from metadata
+        audience_info = self._extract_audience_info()
+        
+        # If we couldn't extract audience info, just return first 15 tags
+        if not audience_info:
+            logger.warning("No audience information found in metadata, using first 15 tags")
+            return candidate_tags[:15]
+        
+        # Get audience selection prompt template from YAML
+        template = self.prompt_config.get("audience_selection_template", "")
+        if not template:
+            logger.warning("No audience selection template found, using first 15 tags")
+            return candidate_tags[:15]
+        
+        # Format the prompt with dynamic content
+        tags_str = ", ".join(candidate_tags)
+        prompt = template.format(
+            article_type=self.article_type,
+            subject=self.subject,
+            audience_info=audience_info,
+            tags_list=tags_str
+        )
+        
+        # Get selected tags
+        response = self.api_client.generate(prompt, max_tokens=1000)
+        if not response:
+            logger.warning("Failed to get audience-relevant tags, using first 15 tags")
+            return candidate_tags[:15]
+        
+        # Parse response into tags
+        cleaned_response = self._clean_response(response)
+        selected_tags = self.process_tags(cleaned_response)
+        
+        # Ensure we have exactly 15 tags
+        if len(selected_tags) > 15:
+            selected_tags = selected_tags[:15]
+        elif len(selected_tags) < 15:
+            # Fill in with remaining candidate tags
+            remaining = 15 - len(selected_tags)
+            for tag in candidate_tags:
+                if tag not in selected_tags:
+                    selected_tags.append(tag)
+                    remaining -= 1
+                    if remaining <= 0:
+                        break
+        
+        return selected_tags
+
+    def _load_prompt_template(self) -> Dict[str, Any]:
+        """Load prompt template from YAML file."""
+        try:
+            prompt_path = Path(__file__).parent / "prompt.yaml"
+            with open(prompt_path, 'r') as f:
+                return yaml.safe_load(f)
+        except Exception as e:
+            logger.error(f"Failed to load prompt template: {e}")
+            return {}
