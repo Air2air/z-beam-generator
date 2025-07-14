@@ -13,13 +13,14 @@ template: |
   {metadata_summary}
 
   INSTRUCTIONS:
-  1. Generate 30-40 high-quality, professional kebab-case tags for this technical article.
+  1. Generate EXACTLY 15 short, high-quality, kebab-case tags (each tag must be 1-2 words only) for this technical article.
   2. Use details from the metadata, including facility names, technologies, regulatory standards, and unique applications.
-  3. Include tags for specific locations, industries, and innovations mentioned.
-  4. Avoid generic tags; prefer those that would help experts, manufacturers, or enthusiasts discover this article.
-  5. Format all tags in kebab-case (lowercase with hyphens between words).
-  6. DO NOT include any explanations or additional text.
-  7. Return ONLY a comma-separated list of tags
+  3. Include tags that match common subjects and categories found on the laser cleaning website (e.g., equipment types, processes, industries, regulatory standards).
+  4. If the article type is "region", include tags for immediately adjacent cities and the parent county (e.g., "san-carlos", "redwood-city", "foster-city", "san-mateo-county").
+  5. Avoid generic tags; prefer those that would help experts, manufacturers, or enthusiasts discover this article.
+  6. Format all tags in kebab-case (lowercase with hyphens between words).
+  7. DO NOT include any explanations or additional text.
+  8. Return ONLY a comma-separated list of tags
 
 # New audience selection prompt template
 audience_selection_template: |

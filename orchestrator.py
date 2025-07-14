@@ -6,7 +6,9 @@ from metadata.generator import MetadataGenerator
 from jsonld.generator import JsonLdGenerator
 from tags.generator import TagsGenerator
 from utils.output_formatter import format_output
+from table.generator import TableGenerator
 import re
+import yaml
 
 logger = logging.getLogger(__name__)
 
@@ -43,6 +45,13 @@ class ArticleOrchestrator:
                 logger.error("Metadata generation failed")
                 return None
 
+            # Parse metadata string to dict for table generation
+            metadata_dict = yaml.safe_load(metadata)
+
+            # Generate table
+            table_gen = TableGenerator(self.context, self.schema, metadata_dict)
+            markdown_table = table_gen.generate()
+
             # Create a metadata summary for tags
             metadata_summary = self._summarize_metadata(metadata)
             tags_gen = TagsGenerator(self.context, self.schema, self.ai_provider, metadata=metadata, metadata_summary=metadata_summary)
@@ -58,9 +67,10 @@ class ArticleOrchestrator:
                 logger.error("JSON-LD generation failed")
                 return None
 
+
             # Assemble final output
             logger.info("Assembling final output...")
-            output = format_output(metadata, tags, jsonld)
+            output = format_output(metadata, tags, jsonld, markdown_table)
 
             if not output:
                 logger.error("Output assembly failed")

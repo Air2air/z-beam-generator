@@ -8,7 +8,7 @@ from typing import Dict, Any, List, Optional
 
 logger = logging.getLogger(__name__)
 
-def format_output(metadata: str, tags: str, jsonld: str) -> Optional[str]:
+def format_output(metadata: str, tags: str, jsonld: str, table: str = "") -> Optional[str]:
     """
     Format the complete markdown output with proper formatting.
     
@@ -38,6 +38,9 @@ def format_output(metadata: str, tags: str, jsonld: str) -> Optional[str]:
         markdown += "<script type=\"application/ld+json\">\n"
         markdown += clean_jsonld
         markdown += "\n</script>"
+        
+        if table:
+            markdown += table + "\n\n"
         
         logger.info(f"Successfully formatted output: {len(markdown)} characters")
         return markdown
