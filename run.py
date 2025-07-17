@@ -1,139 +1,65 @@
 #!/usr/bin/env python3
-"""Main run script - SCHEMA-DRIVEN ONLY."""
+"""Minimal entry point with hardcoded article context."""
 
 import os
 import sys
-import logging
-import json
-from pathlib import Path
-from typing import Dict, Any, Optional
 
-# Manual environment loading (no python-dotenv fallback)
-def load_env_file():
-    """Load .env file manually."""
-    env_path = Path(".env")
-    if env_path.exists():
-        with open(env_path, 'r') as f:
-            for line in f:
-                line = line.strip()
-                if line and not line.startswith('#') and '=' in line:
-                    key, value = line.split('=', 1)
-                    os.environ[key] = value
+# Define absolute path to output directory
+OUTPUT_DIR = "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/output"
 
-load_env_file()
+# Create output directory if it doesn't exist
+try:
+    os.makedirs(OUTPUT_DIR, exist_ok=True)
+    print(f"✅ Output directory created/verified: {OUTPUT_DIR}")
+    
+    # Test write permissions with a small file
+    test_file = os.path.join(OUTPUT_DIR, ".test_write")
+    with open(test_file, "w") as f:
+        f.write("Test write access")
+    print("✅ Write permissions confirmed")
+    os.remove(test_file)  # Clean up test file
+except Exception as e:
+    print(f"❌ ERROR: Could not create/write to output directory: {e}", file=sys.stderr)
+    sys.exit(1)
 
-from orchestrator import ArticleOrchestrator
-
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-)
-logger = logging.getLogger(__name__)
-
-def load_schema(article_type: str) -> Optional[Dict[str, Any]]:
-    """Load schema for article type - NO FALLBACKS."""
-    schema_path = f"schemas/definitions/{article_type}_schema_definition.json"
-    
-    if not Path(schema_path).exists():
-        logger.error(f"Schema file not found: {schema_path}")
-        return None
-    
-    try:
-        with open(schema_path, 'r') as f:
-            schema = json.load(f)
-        
-        if not schema:
-            logger.error(f"Empty schema file: {schema_path}")
-            return None
-        
-        logger.info(f"Schema loaded from {schema_path}")
-        return schema
-        
-    except Exception as e:
-        logger.error(f"Failed to load schema: {e}")
-        return None
-
-def main():
-    """Main execution function - FAIL FAST approach."""
-    
-    # Get required arguments - NO FALLBACKS
-    if len(sys.argv) < 5:
-        logger.error("Usage: python run.py --article-type <type> --subject <subject>")
-        sys.exit(1)
-    
-    article_type = None
-    subject = None
-    
-    for i, arg in enumerate(sys.argv):
-        if arg == "--article-type" and i + 1 < len(sys.argv):
-            article_type = sys.argv[i + 1]
-        elif arg == "--subject" and i + 1 < len(sys.argv):
-            subject = sys.argv[i + 1]
-    
-    if not article_type or not subject:
-        logger.error("Both --article-type and --subject are required")
-        sys.exit(1)
-    
-    # Validate article type - NO FALLBACKS
-    valid_types = ["material", "application", "region", "thesaurus"]
-    if article_type not in valid_types:
-        logger.error(f"Invalid article type. Must be one of: {valid_types}")
-        sys.exit(1)
-    
-    # Load schema - NO FALLBACKS
-    schema = load_schema(article_type)
-    if not schema:
-        logger.error("Failed to load schema")
-        sys.exit(1)
-    
-    # Get AI provider - DEFAULT TO DEEPSEEK
-    ai_provider = os.getenv("AI_PROVIDER", "deepseek")
-    
-    # Validate AI provider
-    valid_providers = ["openai", "xai", "gemini", "deepseek"]
-    if ai_provider not in valid_providers:
-        logger.error(f"Invalid AI provider: {ai_provider}. Must be one of: {valid_providers}")
-        sys.exit(1)
-    
-    # Create context - NO DEFAULTS
-    context = {
-        "article_type": article_type,
-        "subject": subject,
-        "publishedAt": "2024-01-15T10:00:00Z",
-        "lastUpdated": "2024-01-15T10:00:00Z"
-    }
-    
-    print(f"🚀 Starting Z-Beam Generator")
-    print(f"Article Type: {article_type}")
-    print(f"Subject: {subject}")
-    print(f"AI Provider: {ai_provider}")
-    
-    try:
-        # Initialize orchestrator
-        orchestrator = ArticleOrchestrator(context, schema, ai_provider)
-        
-        # Generate article
-        print("🔄 Generating article...")
-        output = orchestrator.generate_article()
-        
-        if not output:
-            logger.error("Article generation failed")
-            sys.exit(1)
-        
-        # Save article
-        filepath = orchestrator.save_article(output)
-        
-        if not filepath:
-            logger.error("Failed to save article")
-            sys.exit(1)
-        
-        print("✅ Article generated successfully!")
-        print(f"📄 Output saved to: {filepath}")
-        
-    except Exception as e:
-        logger.error(f"Application failed: {e}", exc_info=True)
-        sys.exit(1)
+# Define your article context here - edit this for each generation
+ARTICLE_CONTEXT = {
+    "subject": "Hafnium Laser Cleaning",
+    "author_id": 3,
+    "article_type": "application",
+    "output_dir": OUTPUT_DIR,
+    "ai_provider": "deepseek"  # Options: openai, deepseek, xai, gemini
+}
 
 if __name__ == "__main__":
-    main()
+    # Print existing files in output directory
+    files = os.listdir(OUTPUT_DIR)
+    print(f"\n📂 Current files in output directory ({len(files)} found):")
+    for file in files:
+        print(f"  - {file}")
+    
+    # Import here to avoid polluting the global namespace
+    from generator import generate_article
+    
+    # Generate the article
+    success = generate_article(ARTICLE_CONTEXT)
+    
+    # Verify file was created after generation
+    if success:
+        new_files = os.listdir(OUTPUT_DIR)
+        print(f"\n📂 Files in output directory after generation ({len(new_files)} found):")
+        for file in new_files:
+            print(f"  - {file}")
+            
+        # Check specifically for our expected file
+        expected_file = "hafnium-laser-cleaning.md"
+        if expected_file in new_files:
+            full_path = os.path.join(OUTPUT_DIR, expected_file)
+            print(f"\n✅ SUCCESS: File created at {full_path}")
+            print(f"File size: {os.path.getsize(full_path)} bytes")
+        else:
+            print(f"\n❓ WARNING: Expected file '{expected_file}' not found, but generation reported success.", file=sys.stderr)
+            print("  This could mean the file was saved with a different name.")
+            print("  Files found:", ", ".join(new_files))
+    else:
+        print("\n❌ Generation reported failure")

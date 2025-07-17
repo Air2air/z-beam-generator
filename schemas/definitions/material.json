@@ -1,0 +1,465 @@
+{
+  "materialProfile": {
+    "name": "material",
+    "version": "1.2",
+    "schemaType": "MaterialProfile",
+    "generatorConfig": {
+      "tags": {
+        "includeMaterialCategories": true,
+        "includeApplications": true,
+        "includeIndustries": true,
+        "primaryKeywords": [
+          "material properties",
+          "surface cleaning",
+          "laser technology"
+        ]
+      },
+      "jsonld": {
+        "schemaType": "TechArticle",
+        "includeProperties": true,
+        "includeSpecifications": true,
+        "includeApplications": true,
+        "additionalProperties": [
+          {
+            "name": "materialCategory",
+            "value": "Category of the material (e.g., metal)"
+          },
+          {
+            "name": "laserCleaningContext",
+            "value": "Key applications and outcomes for {subject}"
+          }
+        ]
+      },
+      "metadata": {
+        "category": "MaterialProperties"
+      }
+    },
+    "sections": {
+      "overview": {
+        "required": true,
+        "prompt": "Write a 100-150 word overview of {subject}, its properties, uses, and laser cleaning relevance, focusing on key technical value."
+      },
+      "properties": {
+        "required": true,
+        "prompt": "Summarize key properties of {subject} (physical, chemical, mechanical, thermal, optical), with essential measurements, units, and laser impact (150-200 words)."
+      },
+      "applications": {
+        "required": true,
+        "prompt": "Briefly explain applications of {subject} in industries, with laser cleaning examples (100-150 words)."
+      },
+      "specifications": {
+        "required": true,
+        "prompt": "Outline specifications, grades, standards for {subject}, relevant to laser cleaning (100-150 words)."
+      },
+      "laserCleaningApplications": {
+        "required": false,
+        "prompt": "Summarize laser cleaning for {subject}, with parameters and outcomes (100-150 words)."
+      },
+      "challenges": {
+        "required": false,
+        "prompt": "Outline challenges in laser cleaning {subject}, with solutions (100-150 words)."
+      },
+      "performanceMetrics": {
+        "required": false,
+        "prompt": "Summarize metrics for laser cleaning {subject}, with key values (100-150 words)."
+      }
+    },
+    "materialProfile": {
+      "category": {
+        "type": "string",
+        "required": true
+      },
+      "physicalProperties": {
+        "type": "object",
+        "required": true,
+        "properties": {
+          "description": {
+            "type": "string",
+            "required": true
+          },
+          "properties": {
+            "type": "array",
+            "required": true,
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "required": true
+                },
+                "value": {
+                  "type": "string",
+                  "required": true
+                },
+                "unit": {
+                  "type": "string",
+                  "required": true
+                },
+                "source": {
+                  "type": "string",
+                  "required": false
+                }
+              }
+            }
+          }
+        }
+      },
+      "chemicalProperties": {
+        "type": "object",
+        "required": false,
+        "properties": {
+          "description": {
+            "type": "string",
+            "required": true
+          },
+          "properties": {
+            "type": "array",
+            "required": true,
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "required": true
+                },
+                "value": {
+                  "type": "string",
+                  "required": true
+                },
+                "unit": {
+                  "type": "string",
+                  "required": false
+                },
+                "source": {
+                  "type": "string",
+                  "required": false
+                }
+              }
+            }
+          }
+        }
+      },
+      "mechanicalProperties": {
+        "type": "object",
+        "required": false,
+        "properties": {
+          "description": {
+            "type": "string",
+            "required": true
+          },
+          "properties": {
+            "type": "array",
+            "required": true,
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "required": true
+                },
+                "value": {
+                  "type": "string",
+                  "required": true
+                },
+                "unit": {
+                  "type": "string",
+                  "required": true
+                },
+                "source": {
+                  "type": "string",
+                  "required": false
+                }
+              }
+            }
+          }
+        }
+      },
+      "thermalProperties": {
+        "type": "object",
+        "required": false,
+        "properties": {
+          "description": {
+            "type": "string",
+            "required": true
+          },
+          "properties": {
+            "type": "array",
+            "required": true,
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "required": true
+                },
+                "value": {
+                  "type": "string",
+                  "required": true
+                },
+                "unit": {
+                  "type": "string",
+                  "required": true
+                },
+                "source": {
+                  "type": "string",
+                  "required": false
+                }
+              }
+            }
+          }
+        }
+      },
+      "opticalProperties": {
+        "type": "object",
+        "required": false,
+        "properties": {
+          "description": {
+            "type": "string",
+            "required": true
+          },
+          "properties": {
+            "type": "array",
+            "required": true,
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "required": true
+                },
+                "value": {
+                  "type": "string",
+                  "required": true
+                },
+                "unit": {
+                  "type": "string",
+                  "required": false
+                },
+                "source": {
+                  "type": "string",
+                  "required": false
+                }
+              }
+            }
+          }
+        }
+      },
+      "applications": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "required": true
+      },
+      "specifications": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "required": true
+      },
+      "laserCleaningApplications": {
+        "type": "object",
+        "required": false,
+        "properties": {
+          "description": {
+            "type": "string",
+            "required": true
+          },
+          "applications": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "required": true
+                },
+                "laserType": {
+                  "type": "string",
+                  "required": false
+                },
+                "parameters": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "required": true
+                      },
+                      "value": {
+                        "type": "string",
+                        "required": true
+                      },
+                      "unit": {
+                        "type": "string",
+                        "required": true
+                      }
+                    }
+                  }
+                },
+                "outcomes": {
+                  "type": "string",
+                  "required": false
+                }
+              }
+            }
+          }
+        }
+      },
+      "outcomes": {
+        "type": "array",
+        "required": true,
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "required": true
+            },
+            "description": {
+              "type": "string",
+              "required": true
+            },
+            "quantitativeResult": {
+              "type": "string",
+              "required": false
+            }
+          }
+        }
+      },
+      "challenges": {
+        "type": "array",
+        "required": false,
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "required": true
+            },
+            "description": {
+              "type": "string",
+              "required": true
+            },
+            "solution": {
+              "type": "string",
+              "required": false
+            }
+          }
+        }
+      },
+      "performanceMetrics": {
+        "type": "object",
+        "required": false,
+        "properties": {
+          "description": {
+            "type": "string",
+            "required": true
+          },
+          "metrics": {
+            "type": "array",
+            "required": true,
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "required": true
+                },
+                "value": {
+                  "type": "string",
+                  "required": true
+                },
+                "unit": {
+                  "type": "string",
+                  "required": true
+                },
+                "source": {
+                  "type": "string",
+                  "required": false
+                }
+              }
+            }
+          }
+        }
+      },
+      "cleaningEfficiencyComparison": {
+        "type": "object",
+        "required": false,
+        "properties": {
+          "description": {
+            "type": "string",
+            "required": true
+          },
+          "methods": {
+            "type": "array",
+            "required": true,
+            "items": {
+              "type": "object",
+              "properties": {
+                "method": {
+                  "type": "string",
+                  "required": true
+                },
+                "efficiency": {
+                  "type": "string",
+                  "required": true
+                },
+                "source": {
+                  "type": "string",
+                  "required": false
+                }
+              }
+            }
+          }
+        }
+      },
+      "costComparison": {
+        "type": "object",
+        "required": false,
+        "properties": {
+          "description": {
+            "type": "string",
+            "required": true
+          },
+          "methods": {
+            "type": "array",
+            "required": true,
+            "items": {
+              "type": "object",
+              "properties": {
+                "method": {
+                  "type": "string",
+                  "required": true
+                },
+                "cost": {
+                  "type": "string",
+                  "required": true
+                },
+                "source": {
+                  "type": "string",
+                  "required": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "jsonLD": {
+      "@type": "TechArticle",
+      "recommendedProperties": ["materialCategory"]
+    },
+    "validation": {
+      "requiredSections": [
+        "Overview",
+        "Properties",
+        "Applications",
+        "Specifications",
+        "Safety"
+      ]
+    }
+  }
+}

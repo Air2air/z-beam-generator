@@ -1,0 +1,248 @@
+{
+  "regionProfile": {
+    "name": "region",
+    "version": "1.3",
+    "schemaType": "RegionProfile",
+    "generatorConfig": {
+      "tags": {
+        "includeCountries": true,
+        "includeIndustries": true,
+        "includeApplications": true,
+        "primaryKeywords": [
+          "regional profile",
+          "industrial cleaning",
+          "laser technology"
+        ]
+      },
+      "jsonld": {
+        "schemaType": "Place",
+        "includeGeo": true,
+        "includeIndustries": true,
+        "includeApplications": true,
+        "additionalProperties": [
+          {
+            "name": "keyIndustries",
+            "value": "Industries using laser cleaning"
+          },
+          {
+            "name": "technologyFocus",
+            "value": "Laser cleaning advancements"
+          }
+        ]
+      },
+      "metadata": {
+        "includeLocation": true
+      }
+    },
+    "sections": {
+      "overview": {
+        "required": true,
+        "prompt": "Write a 100-150 word overview of {subject} region, its economy, industries, and laser cleaning relevance."
+      },
+      "economy": {
+        "required": true,
+        "prompt": "Summarize economic landscape of {subject}, key industries, and laser cleaning role."
+      },
+      "industries": {
+        "required": true,
+        "prompt": "Outline major industries in {subject}, laser cleaning uses, and benefits."
+      },
+      "infrastructure": {
+        "required": true,
+        "prompt": "Summarize infrastructure in {subject} for laser cleaning."
+      },
+      "workforce": {
+        "required": true,
+        "prompt": "Outline workforce in {subject}, skills for laser cleaning."
+      },
+      "laserCleaningAdoption": {
+        "required": true,
+        "prompt": "Briefly analyze laser cleaning adoption in {subject}, barriers, and outlook."
+      },
+      "caseStudies": {
+        "required": false,
+        "prompt": "Provide brief case studies of laser cleaning in {subject}."
+      },
+      "technicalInsights": {
+        "required": false,
+        "prompt": "Summarize technical details on laser cleaning in {subject}."
+      },
+      "researchAndDevelopment": {
+        "required": false,
+        "prompt": "Outline R&D in laser cleaning in {subject}."
+      }
+    },
+    "regionProfile": {
+      "countries": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "required": true
+      },
+      "geoCoordinates": {
+        "type": "object",
+        "required": true,
+        "properties": {
+          "latitude": {
+            "type": "string",
+            "required": true
+          },
+          "longitude": {
+            "type": "string",
+            "required": true
+          }
+        }
+      },
+      "economicData": {
+        "type": "object",
+        "required": true,
+        "properties": {
+          "gdp": {
+            "type": "string",
+            "required": false
+          },
+          "majorIndustries": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "required": true
+          },
+          "tradePartners": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "required": false
+          }
+        }
+      },
+      "manufacturingCenters": {
+        "type": "array",
+        "required": true,
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "required": true
+            },
+            "description": {
+              "type": "string",
+              "required": true
+            },
+            "laserCleaningUsage": {
+              "type": "string",
+              "required": false
+            }
+          }
+        }
+      },
+      "laserCleaningData": {
+        "type": "object",
+        "required": true,
+        "properties": {
+          "adoptionRate": {
+            "type": "string",
+            "required": false
+          },
+          "keyApplications": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "required": true
+          },
+          "supportivePolicies": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "required": false
+          },
+          "researchInstitutions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "required": false
+          },
+          "adoptionStatistics": {
+            "type": "string",
+            "required": false
+          },
+          "digitalAdoptionIndex": {
+            "type": "object",
+            "required": false,
+            "properties": {
+              "score": {
+                "type": "number"
+              },
+              "year": {
+                "type": "string"
+              }
+            }
+          },
+          "eventsAndExhibitions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "required": false
+          }
+        }
+      },
+      "caseStudies": {
+        "type": "array",
+        "required": false,
+        "items": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string",
+              "required": true
+            },
+            "description": {
+              "type": "string",
+              "required": true
+            },
+            "url": {
+              "type": "string",
+              "required": false
+            },
+            "industry": {
+              "type": "string",
+              "required": false
+            },
+            "outcome": {
+              "type": "string",
+              "required": false
+            }
+          }
+        }
+      }
+    },
+    "jsonLD": {
+      "@type": "Place",
+      "requiredProperties": ["name", "description", "geo", "address"],
+      "recommendedProperties": [
+        "containsPlace",
+        "mainEntityOfPage",
+        "keywords",
+        "additionalProperty"
+      ]
+    },
+    "validation": {
+      "requiredSections": [
+        "Overview",
+        "Economy",
+        "Industries",
+        "Infrastructure",
+        "Workforce",
+        "Laser Cleaning Adoption"
+      ]
+    }
+  }
+}
+

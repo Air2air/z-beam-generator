@@ -5,7 +5,7 @@ from typing import Dict, Any, Optional
 from metadata.generator import MetadataGenerator
 from jsonld.generator import JsonLdGenerator
 from tags.generator import TagsGenerator
-from utils.output_formatter import format_output
+from utils.output_formatter import format_output, force_write_output
 from table.generator import TableGenerator
 import re
 import yaml
@@ -33,7 +33,7 @@ class ArticleOrchestrator:
 
         logger.info(f"Orchestrator initialized for {context['article_type']}: {context['subject']}")
 
-    def generate_article(self) -> Optional[str]:
+    def generate_article(self) -> bool:
         """Generate complete article - FAIL if any component fails."""
         try:
             logger.info("Starting article generation process")
@@ -43,7 +43,7 @@ class ArticleOrchestrator:
             metadata = metadata_gen.generate()
             if not metadata:
                 logger.error("Metadata generation failed")
-                return None
+                return False
 
             # Parse metadata string to dict for table generation
             metadata_dict = yaml.safe_load(metadata)
@@ -58,14 +58,14 @@ class ArticleOrchestrator:
             tags = tags_gen.generate()
             if not tags:
                 logger.error("Tags generation failed")
-                return None
+                return False
                 
             # Continue with jsonld...
             jsonld_gen = JsonLdGenerator(self.context, self.schema, self.ai_provider)
             jsonld = jsonld_gen.generate()
             if not jsonld:
                 logger.error("JSON-LD generation failed")
-                return None
+                return False
 
 
             # Assemble final output
@@ -74,41 +74,54 @@ class ArticleOrchestrator:
 
             if not output:
                 logger.error("Output assembly failed")
-                return None
+                return False
+
+            # Save the article to file
+            success = self.save_article(output)
+            if not success:
+                logger.error("Failed to save article")
+                return False
 
             logger.info("Article generated successfully")
-            return output
+            return True
 
         except Exception as e:
             logger.error(f"Article generation failed: {e}", exc_info=True)
-            return None
+            return False
 
-    def save_article(self, output: str) -> Optional[str]:
+    def save_article(self, output: str) -> bool:
         """Save article to file with standardized dash-based naming."""
         try:
-            subject = self.context["subject"]  # Will fail if not provided
+            # Use the slug that was already generated
+            filename = f"{self.context['slug']}.md"
+            output_dir = self.context["output_dir"]
             
-            # Enhanced filename normalization
-            normalized = subject.lower()
-            # Remove special characters and punctuation
-            normalized = re.sub(r'[,\'"!@#$%^&*()+=]', '', normalized)
-            # Replace spaces and underscores with dashes
-            normalized = re.sub(r'[\s_]+', '-', normalized)
-            # Remove any extra dashes
-            normalized = re.sub(r'-+', '-', normalized)
+            # Print detailed debug info
+            print(f"\n📄 Saving article to:")
+            print(f"   - Directory: {output_dir}")
+            print(f"   - Filename: {filename}")
+            print(f"   - Content length: {len(output)} characters")
             
-            filename = f"{normalized}-laser-cleaning.md"
-            filepath = f"output/{filename}"
-
+            # Make directory if it doesn't exist
+            import os
+            os.makedirs(output_dir, exist_ok=True)
+            
+            # Write file directly
+            filepath = os.path.join(output_dir, filename)
             with open(filepath, 'w', encoding='utf-8') as f:
                 f.write(output)
-
-            logger.info(f"Article saved to {filepath}")
-            return filepath
+                
+            # Verify file was written
+            if os.path.exists(filepath) and os.path.getsize(filepath) > 0:
+                print(f"   ✅ File successfully written ({os.path.getsize(filepath)} bytes)")
+                return True
+            else:
+                print(f"   ❌ File verification failed")
+                return False
 
         except Exception as e:
             logger.error(f"Failed to save article: {e}", exc_info=True)
-            return None
+            return False
 
     def _summarize_metadata(self, metadata: str) -> str:
         # Example: extract facility names, technologies, standards, and unique uses

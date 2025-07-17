@@ -1,18 +1,18 @@
 name: "Metadata Generator"
-description: "Generates comprehensive YAML metadata for technical articles"
-version: "2.0.0"
+description: "Generates concise YAML metadata for all article types"
+version: "2.2.0"
 
 template: |
-  Generate COMPREHENSIVE AND EXTENSIVE metadata for "{subject}" in laser cleaning applications.
+  Generate CONCISE AND EFFICIENT metadata for the {article_type} "{subject}" in laser cleaning contexts.
   
   🚨 CRITICAL LENGTH REQUIREMENT:
-  - YOU MUST GENERATE AT LEAST 5,000 CHARACTERS of detailed technical metadata
-  - This is a HARD REQUIREMENT - shorter responses will be rejected automatically
-  - Create DETAILED and EXTENSIVE content for EACH field in the schema
-  - Add MORE ITEMS to arrays (15+ items for simple arrays like keywords)
-  - For complex arrays with name/description fields, include AT LEAST 8-10 ITEMS
-  - Write LONGER DESCRIPTIONS for each field - aim for 250+ characters per description
-  - Include SPECIFIC TECHNICAL DETAILS wherever possible
+  - YOU MUST GENERATE BETWEEN 2,000-3,000 CHARACTERS of focused technical metadata
+  - This is a HARD REQUIREMENT - longer responses will be rejected automatically
+  - Create BRIEF and TARGETED content for EACH field in the schema
+  - Add FEWER ITEMS to arrays (5-10 items for simple arrays like keywords)
+  - For complex arrays with name/description fields, include AT MOST 4-6 ITEMS
+  - Write SHORTER DESCRIPTIONS for each field - aim for 100-150 characters per description
+  - Include ESSENTIAL TECHNICAL DETAILS only
   
   🚨 IMPORTANT CONSTRAINTS:
   - If generating a region article, ONLY use locations within California, USA
@@ -24,11 +24,11 @@ template: |
   🚨 GEOGRAPHIC CONTEXT REQUIREMENTS:
   - For region articles, ALWAYS include:
     1. The specific county where the city is located (e.g., "Santa Clara County")
-    2. At least 3 immediately adjacent/neighboring cities (must be actual neighboring cities)
+    2. At least 2 immediately adjacent/neighboring cities (must be actual neighboring cities)
     3. The broader region of California (e.g., "Bay Area", "Silicon Valley", "Southern California")
     4. Explicitly state "California" as the state
   - Example: "Mountain View is located in Santa Clara County, California, in the heart of Silicon Valley. 
-    It borders Palo Alto, Sunnyvale, and Los Altos."
+    It borders Palo Alto and Sunnyvale."
   
   🚨 URL FORMATTING RULES:
   - ALL URLs must use the www.z-beam.com domain
@@ -48,10 +48,10 @@ template: |
   - Complex arrays with objects must use this format:
     arrayName:
       - name: "Item name"
-        description: "Item description with extensive detail that thoroughly explains the concept in at least 2-3 sentences."
+        description: "Brief item description in 1-2 sentences."
         property: "Another property"
       - name: "Second item name"
-        description: "Second item description with thorough explanation and technical specifics that provide comprehensive understanding."
+        description: "Short explanation with key technical specifics."
         property: "Another property"
   
   Generate YAML for: {article_type} = {subject}
@@ -60,21 +60,21 @@ template: |
   {schema_template}
   
   🚨 CONTENT EXPANSION REQUIREMENTS:
-  1. Geographic data must include precise coordinates and detailed context
-  2. Manufacturing centers must include full facility descriptions (100+ words each)
-  3. Regulatory standards must include specific code references and applicability notes
-  4. Include at least 20-25 detailed keywords with regional/technical specificity
-  5. Description must be comprehensive (300+ words) covering all technical aspects
-  6. For array fields with descriptions, write 100+ words per description
-  7. For challenges/outcomes sections, provide detailed technical explanations
-  8. Include specific equipment models, parameters, and technical specifications
-  9. GENERATE AT LEAST 5,000 CHARACTERS TOTAL - longer is better
+  1. Geographic data must include precise coordinates and basic context when applicable
+  2. Manufacturing centers must include short facility descriptions (50-75 words each) when applicable
+  3. Regulatory standards must include key code references and brief notes when applicable
+  4. Include at least 10-15 focused keywords with technical specificity
+  5. Description must be succinct (150-200 words) covering core technical aspects
+  6. For array fields with descriptions, write 50-100 words per description
+  7. For challenges/outcomes sections, provide brief technical explanations when applicable
+  8. Include essential equipment parameters and specifications when applicable
+
 
 parameters:
-  max_tokens: 15000
+  max_tokens: 5000
   temperature: 0.7
 
 validation:
-  min_length: 5000
+  min_length: 2000
   required_schema_coverage: 100
-  required_fields: ["name", "description", "category", "keywords"]
+  required_fields: ["name", "description", "keywords"]

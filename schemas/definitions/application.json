@@ -1,0 +1,323 @@
+{
+  "applicationProfile": {
+    "name": "application",
+    "version": "1.2",
+    "schemaType": "LaserCleaningApplicationProfile",
+    "generatorConfig": {
+      "tags": {
+        "includeIndustries": true,
+        "includeSubstrates": true,
+        "includeApplications": true,
+        "primaryKeywords": [
+          "surface preparation",
+          "industrial cleaning",
+          "laser technology"
+        ]
+      },
+      "jsonld": {
+        "schemaType": "TechArticle",
+        "includeIndustries": true,
+        "includeSubstrates": true,
+        "includeApplications": true,
+        "additionalProperties": [
+          {
+            "name": "technicalContext",
+            "value": "Key parameters and outcomes of {subject}"
+          }
+        ]
+      },
+      "metadata": {
+        "category": "LaserApplications"
+      }
+    },
+    "sections": {
+      "overview": {
+        "required": true,
+        "prompt": "Write a 100-150 word overview of {subject} laser cleaning application, focusing on definition, benefits, and key industries, emphasizing efficiency and value."
+      },
+      "parameters": {
+        "required": true,
+        "prompt": "Summarize key laser parameters for {subject}, including wavelength, power, pulse duration, with essential ranges and units."
+      },
+      "outcomes": {
+        "required": true,
+        "prompt": "Briefly explain outcomes of {subject}, including main benefits and examples."
+      },
+      "challenges": {
+        "required": true,
+        "prompt": "Outline main challenges of {subject}, with concise solutions."
+      },
+      "performance": {
+        "required": true,
+        "prompt": "Summarize performance metrics for {subject}, like removal rate and roughness, with key values and units."
+      },
+      "comparison": {
+        "required": true,
+        "prompt": "Briefly compare {subject} to traditional methods in speed, cost, and effectiveness, with key advantages."
+      },
+      "safety": {
+        "required": true,
+        "prompt": "Summarize safety considerations and key standards for {subject}."
+      },
+      "caseStudies": {
+        "required": false,
+        "prompt": "Provide brief case studies of {subject}, with industries and outcomes."
+      },
+      "innovations": {
+        "required": false,
+        "prompt": "Outline key innovations in {subject}."
+      }
+    },
+    "applicationProfile": {
+      "primaryAudience": {
+        "type": "string",
+        "required": true
+      },
+      "secondaryAudience": {
+        "type": "string",
+        "required": false
+      },
+      "industries": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "required": true
+      },
+      "substrates": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "required": true
+      },
+      "schemaOrgType": {
+        "type": "string",
+        "required": true,
+        "default": "TechArticle"
+      },
+      "url": {
+        "type": "string",
+        "required": false
+      },
+      "laserParameters": {
+        "type": "object",
+        "required": true,
+        "properties": {
+          "description": {
+            "type": "string",
+            "required": true
+          },
+          "parameters": {
+            "type": "array",
+            "required": true,
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "required": true
+                },
+                "unit": {
+                  "type": "string",
+                  "required": true
+                },
+                "optimalRange": {
+                  "type": "string",
+                  "required": true
+                },
+                "source": {
+                  "type": "string",
+                  "required": false
+                }
+              }
+            }
+          }
+        }
+      },
+      "outcomes": {
+        "type": "array",
+        "required": true,
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "required": true
+            },
+            "description": {
+              "type": "string",
+              "required": true
+            },
+            "quantitativeResult": {
+              "type": "string",
+              "required": false
+            }
+          }
+        }
+      },
+      "challenges": {
+        "type": "array",
+        "required": true,
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "required": true
+            },
+            "description": {
+              "type": "string",
+              "required": true
+            },
+            "solution": {
+              "type": "string",
+              "required": false
+            }
+          }
+        }
+      },
+      "performanceMetrics": {
+        "type": "object",
+        "required": true,
+        "properties": {
+          "description": {
+            "type": "string",
+            "required": true
+          },
+          "metrics": {
+            "type": "array",
+            "required": true,
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "required": true
+                },
+                "unit": {
+                  "type": "string",
+                  "required": true
+                },
+                "optimalRange": {
+                  "type": "string",
+                  "required": true
+                },
+                "source": {
+                  "type": "string",
+                  "required": false
+                }
+              }
+            }
+          }
+        }
+      },
+      "cleaningSpeedComparison": {
+        "type": "object",
+        "required": true,
+        "properties": {
+          "description": {
+            "type": "string",
+            "required": true
+          },
+          "methods": {
+            "type": "array",
+            "required": true,
+            "items": {
+              "type": "object",
+              "properties": {
+                "method": {
+                  "type": "string",
+                  "required": true
+                },
+                "speed": {
+                  "type": "string",
+                  "required": true
+                },
+                "source": {
+                  "type": "string",
+                  "required": false
+                }
+              }
+            }
+          }
+        }
+      },
+      "costComparison": {
+        "type": "object",
+        "required": true,
+        "properties": {
+          "description": {
+            "type": "string",
+            "required": true
+          },
+          "methods": {
+            "type": "array",
+            "required": true,
+            "items": {
+              "type": "object",
+              "properties": {
+                "method": {
+                  "type": "string",
+                  "required": true
+                },
+                "cost": {
+                  "type": "string",
+                  "required": true
+                },
+                "source": {
+                  "type": "string",
+                  "required": false
+                }
+              }
+            }
+          }
+        }
+      },
+      "caseStudies": {
+        "type": "array",
+        "required": false,
+        "items": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string",
+              "required": true
+            },
+            "description": {
+              "type": "string",
+              "required": true
+            },
+            "url": {
+              "type": "string",
+              "required": false
+            },
+            "industry": {
+              "type": "string",
+              "required": false
+            },
+            "outcome": {
+              "type": "string",
+              "required": false
+            }
+          }
+        }
+      }
+    },
+    "jsonLD": {
+      "@type": "TechArticle",
+      "recommendedProperties": ["industry", "applicationCategory"]
+    },
+    "validation": {
+      "requiredSections": [
+        "Overview",
+        "Parameters",
+        "Outcomes",
+        "Challenges",
+        "Performance",
+        "Comparison",
+        "Safety"
+      ]
+    }
+  }
+}

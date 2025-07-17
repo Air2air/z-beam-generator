@@ -140,3 +140,34 @@ def format_jsonld(content: str) -> str:
         # If parsing fails, return as is
         logger.warning("Could not parse JSON-LD as valid JSON, returning as-is")
         return content
+
+def force_write_output(directory, filename, content):
+    """Force write content to file with extensive error checking."""
+    import os
+    import logging
+    
+    logger = logging.getLogger("z-beam")
+    
+    # Ensure directory exists
+    os.makedirs(directory, exist_ok=True)
+    
+    # Create full path
+    full_path = os.path.join(directory, filename)
+    
+    # Try to write the file
+    try:
+        with open(full_path, 'w', encoding='utf-8') as f:
+            f.write(content)
+        
+        # Verify file was written
+        if os.path.exists(full_path):
+            file_size = os.path.getsize(full_path)
+            logger.info(f"✅ File successfully written to {full_path} (size: {file_size} bytes)")
+            return True
+        else:
+            logger.error(f"❌ File does not exist after writing: {full_path}")
+            return False
+    
+    except Exception as e:
+        logger.error(f"❌ Error writing file to {full_path}: {str(e)}")
+        return False

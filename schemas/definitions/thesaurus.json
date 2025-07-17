@@ -1,0 +1,230 @@
+{
+  "thesaurusProfile": {
+    "name": "thesaurus",
+    "version": "1.3",
+    "schemaType": "ThesaurusProfile",
+    "generatorConfig": {
+      "tags": {
+        "includeIndustries": true,
+        "includeApplications": true,
+        "includeMaterials": true,
+        "primaryKeywords": [
+          "technical terminology",
+          "laser cleaning",
+          "surface preparation"
+        ]
+      },
+      "jsonld": {
+        "schemaType": "DefinedTerm",
+        "includeDefinition": true,
+        "includeIndustries": true,
+        "includeApplications": true,
+        "includeMaterials": true,
+        "additionalProperties": [
+          {
+            "name": "relatedApplications",
+            "value": "Term applications in laser cleaning"
+          },
+          {
+            "name": "technicalContext",
+            "value": "Significance in laser cleaning"
+          }
+        ]
+      }
+    },
+    "sections": {
+      "definition": {
+        "required": true,
+        "prompt": "Write a 100-150 word technical definition of {subject} in laser cleaning, with basis, principles, and standards."
+      },
+      "usage": {
+        "required": true,
+        "prompt": "Summarize usage of {subject} in laser cleaning scenarios, industries, materials, with examples (100-150 words)."
+      },
+      "technicalDetails": {
+        "required": true,
+        "prompt": "Provide key technical details on {subject}, metrics, principles, standards (100-150 words)."
+      },
+      "relatedTerms": {
+        "required": true,
+        "prompt": "Outline related terms to {subject}, definitions, relationships (100-150 words)."
+      },
+      "practicalExamples": {
+        "required": true,
+        "prompt": "Provide examples where {subject} is key in laser cleaning, with industries and outcomes (100-150 words)."
+      },
+      "researchContext": {
+        "required": false,
+        "prompt": "Outline research on {subject} in laser cleaning, key studies and developments (100-150 words)."
+      }
+    },
+    "termProfile": {
+      "pronunciation": {
+        "type": "string",
+        "required": false
+      },
+      "partOfSpeech": {
+        "type": "string",
+        "required": true
+      },
+      "primaryAudience": {
+        "type": "string",
+        "required": true
+      },
+      "secondaryAudience": {
+        "type": "string",
+        "required": false
+      },
+      "schemaOrgType": {
+        "type": "string",
+        "required": true,
+        "default": "DefinedTerm"
+      },
+      "url": {
+        "type": "string",
+        "required": false
+      },
+      "usage": {
+        "type": "object",
+        "required": true,
+        "properties": {
+          "description": {
+            "type": "string",
+            "required": true
+          },
+          "industries": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "required": true
+          },
+          "applications": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "required": true
+          },
+          "materials": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "required": true
+          }
+        }
+      },
+      "synonyms": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "required": false
+      },
+      "relatedTerms": {
+        "type": "array",
+        "required": true,
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "required": true
+            },
+            "description": {
+              "type": "string",
+              "required": true
+            },
+            "relationship": {
+              "type": "string",
+              "required": false
+            }
+          }
+        }
+      },
+      "technicalMetrics": {
+        "type": "object",
+        "required": true,
+        "properties": {
+          "description": {
+            "type": "string",
+            "required": true
+          },
+          "metrics": {
+            "type": "array",
+            "required": true,
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "required": true
+                },
+                "unit": {
+                  "type": "string",
+                  "required": true
+                },
+                "typicalValues": {
+                  "type": "string",
+                  "required": true
+                },
+                "optimalContext": {
+                  "type": "string",
+                  "required": false
+                },
+                "source": {
+                  "type": "string",
+                  "required": false
+                }
+              }
+            }
+          }
+        }
+      },
+      "businessImpact": {
+        "type": "object",
+        "required": false,
+        "properties": {
+          "costImplications": {
+            "type": "string",
+            "required": false
+          },
+          "efficiencyGains": {
+            "type": "string",
+            "required": false
+          },
+          "marketAdoption": {
+            "type": "string",
+            "required": false
+          }
+        }
+      }
+    },
+    "jsonLD": {
+      "@type": "DefinedTerm",
+      "requiredProperties": [
+        "name",
+        "description",
+        "termCode",
+        "inDefinedTermSet"
+      ],
+      "recommendedProperties": [
+        "url",
+        "relatedTerms",
+        "keywords",
+        "applicationCategory"
+      ]
+    },
+    "validation": {
+      "requiredSections": [
+        "Definition",
+        "Usage",
+        "TechnicalDetails",
+        "RelatedTerms",
+        "PracticalExamples"
+      ]
+    }
+  }
+}
+
