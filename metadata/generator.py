@@ -417,3 +417,21 @@ class MetadataGenerator:
         except Exception as e:
             logger.error(f"Error expanding metadata: {e}")
             return metadata  # Return original if expansion fails
+    
+def fix_special_characters(text):
+    """Fix common encoding issues in text."""
+    replacements = {
+        r"\xC2\xB0": "°",  # Degree symbol
+        r"\xB0": "°",      # Another encoding of degree
+        r"\u00b0": "°",    # Unicode escape for degree
+        r"\u03BC": "μ",    # Unicode escape for micro
+        r"\xB2": "²",      # Superscript 2
+        r"\u00b2": "²",    # Unicode escape for superscript 2
+        r"\xB3": "³",      # Superscript 3
+        r"\u00b3": "³"     # Unicode escape for superscript 3
+    }
+    
+    for encoded, char in replacements.items():
+        text = text.replace(encoded, char)
+    
+    return text

@@ -116,7 +116,22 @@ qualityStandards:
 
 ---
 
-Tags: hafnium-cleaning, laser-cleaning, surface-treatment, industrial-lasers, precision-cleaning, metal-restoration, aerospace-cleaning, laser-technology, contamination-removal, oxide-removal, non-abrasive-cleaning, high-power-lasers, material-preservation, industrial-applications, laser-safety
+tags:
+- hafnium-cleaning
+- laser-cleaning
+- surface-treatment
+- industrial-lasers
+- precision-cleaning
+- metal-restoration
+- aerospace-cleaning
+- laser-technology
+- contamination-removal
+- oxide-removal
+- non-abrasive-cleaning
+- high-power-lasers
+- material-preservation
+- industrial-applications
+- laser-safety
 
 <script type="application/ld+json">
 {

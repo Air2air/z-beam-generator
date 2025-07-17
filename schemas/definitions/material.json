@@ -62,6 +62,10 @@
       "performanceMetrics": {
         "required": false,
         "prompt": "Summarize metrics for laser cleaning {subject}, with key values (100-150 words)."
+      },
+      "environmentalImpact": {
+        "required": true,
+        "prompt": "Summarize environmental impact of laser cleaning for {subject}, including benefits like reduced waste and energy efficiency (100-150 words)."
       }
     },
     "materialProfile": {
@@ -446,6 +450,37 @@
             }
           }
         }
+      },
+      "environmentalImpact": {
+        "type": "object",
+        "required": true,
+        "properties": {
+          "description": {
+            "type": "string",
+            "required": true
+          },
+          "metrics": {
+            "type": "array",
+            "required": false,
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "required": true
+                },
+                "value": {
+                  "type": "string",
+                  "required": true
+                },
+                "unit": {
+                  "type": "string",
+                  "required": false
+                }
+              }
+            }
+          }
+        }
       }
     },
     "jsonLD": {
@@ -458,6 +493,7 @@
         "Properties",
         "Applications",
         "Specifications",
+        "Environmental Impact",
         "Safety"
       ]
     }

@@ -7,6 +7,15 @@ import sys
 # Define absolute path to output directory
 OUTPUT_DIR = "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/output"
 
+# Define your article context here - edit this for each generation
+ARTICLE_CONTEXT = {
+    "subject": "Fluence",
+    "author_id": 3,
+    "article_type": "thesaurus", # Options: application, material, region, thesaurus
+    "output_dir": OUTPUT_DIR,
+    "ai_provider": "deepseek"  # Options: openai, deepseek, xai, gemini
+}
+
 # Create output directory if it doesn't exist
 try:
     os.makedirs(OUTPUT_DIR, exist_ok=True)
@@ -22,16 +31,18 @@ except Exception as e:
     print(f"❌ ERROR: Could not create/write to output directory: {e}", file=sys.stderr)
     sys.exit(1)
 
-# Define your article context here - edit this for each generation
-ARTICLE_CONTEXT = {
-    "subject": "Hafnium Laser Cleaning",
-    "author_id": 3,
-    "article_type": "application",
-    "output_dir": OUTPUT_DIR,
-    "ai_provider": "deepseek"  # Options: openai, deepseek, xai, gemini
-}
 
 if __name__ == "__main__":
+    # Determine expected filename based on article type and subject
+    subject = ARTICLE_CONTEXT["subject"].lower().replace(" ", "-")
+    
+    if ARTICLE_CONTEXT["article_type"] == "region":
+        expected_file = f"{subject}-laser-cleaning.md"
+    else:
+        expected_file = f"{subject}.md"
+    
+    print(f"Expected output filename: {expected_file}")
+    
     # Print existing files in output directory
     files = os.listdir(OUTPUT_DIR)
     print(f"\n📂 Current files in output directory ({len(files)} found):")
@@ -48,11 +59,10 @@ if __name__ == "__main__":
     if success:
         new_files = os.listdir(OUTPUT_DIR)
         print(f"\n📂 Files in output directory after generation ({len(new_files)} found):")
-        for file in new_files:
+        for file in files:
             print(f"  - {file}")
             
         # Check specifically for our expected file
-        expected_file = "hafnium-laser-cleaning.md"
         if expected_file in new_files:
             full_path = os.path.join(OUTPUT_DIR, expected_file)
             print(f"\n✅ SUCCESS: File created at {full_path}")

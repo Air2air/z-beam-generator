@@ -8,45 +8,29 @@ from typing import Dict, Any, List, Optional
 
 logger = logging.getLogger(__name__)
 
-def format_output(metadata: str, tags: str, jsonld: str, table: str = "") -> Optional[str]:
-    """
-    Format the complete markdown output with proper formatting.
+def format_output(metadata, tags, jsonld, table_content=None):
+    """Format the complete output including all components."""
     
-    Args:
-        metadata: YAML frontmatter content as string
-        tags: Tag string content
-        jsonld: JSON-LD content as string
-        
-    Returns:
-        Properly formatted complete markdown string
-    """
-    try:
-        # Clean up metadata (YAML)
-        clean_metadata = format_yaml(metadata)
-        
-        # Clean up tags
-        clean_tags = format_tags(tags)
-        
-        # Clean up JSON-LD
-        clean_jsonld = format_jsonld(jsonld)
-        
-        # Assemble the markdown
-        markdown = "---\n"
-        markdown += clean_metadata
-        markdown += "\n---\n\n"
-        markdown += f"Tags: {clean_tags}\n\n"
-        markdown += "<script type=\"application/ld+json\">\n"
-        markdown += clean_jsonld
-        markdown += "\n</script>"
-        
-        if table:
-            markdown += table + "\n\n"
-        
-        logger.info(f"Successfully formatted output: {len(markdown)} characters")
-        return markdown
-    except Exception as e:
-        logger.error(f"Output formatting failed: {e}", exc_info=True)
-        return None
+    # Format tags properly
+    tags_section = format_tags(tags)
+    
+    # Assemble the output
+    parts = [
+        metadata.strip(),
+        "---",
+        "",
+        tags_section,
+        "",
+        f'<script type="application/ld+json">',
+        jsonld,
+        '</script>'
+    ]
+    
+    # Add table if present
+    if table_content:
+        parts.append(table_content)
+    
+    return "\n".join(parts)
 
 def format_yaml(content: str) -> str:
     """Remove excessive escape characters from YAML output."""
@@ -70,54 +54,37 @@ def format_yaml(content: str) -> str:
     
     return content
 
-def format_tags(tags: str) -> str:
-    """Format tags with proper separators."""
+def format_tags(tags):
+    """Format tags as a proper YAML array."""
     if not tags:
-        return ""
+        return "tags: []"
     
-    # If tags contain kebab-case format
-    if "-" in tags:
-        # Case 1: Tags are running together without separators
-        if "," not in tags:
-            # Improved regex to catch kebab-case words properly
-            pattern = r'([a-z0-9]+-[a-z0-9-]+)(?=[a-z])'
-            formatted = re.sub(pattern, r'\1, ', tags)
-            # Handle case where regex didn't add a comma at the end
-            if not formatted.endswith(", ") and formatted != tags:
-                return formatted
-        
-        # Case 2: Tags may already be separated by commas
-        if "," in tags:
-            parts = [p.strip() for p in tags.split(",")]
-            return ", ".join(parts)
-    
-    # Case 3: Character-by-character format (r, u, s, t, -, r, e, m, o, v, a, l)
-    formatted_tags = []
-    current_tag = ""
-    
-    # Split by commas
-    parts = tags.split(',')
-    for part in parts:
-        part = part.strip()
-        if part:
-            # Skip the spaces that were added as individual characters
-            if part == " ":
-                current_tag += "-" if current_tag else ""
-            else:
-                current_tag += part
+    # Make sure we have a list of tags, not a string
+    if isinstance(tags, str):
+        # Split by commas if it's a comma-separated string
+        if ',' in tags:
+            tag_list = [tag.strip() for tag in tags.split(',')]
+        # Split by spaces if it's a space-separated string
+        elif ' ' in tags:
+            tag_list = [tag.strip() for tag in tags.split()]
+        # Otherwise just use the whole string as one tag
         else:
-            # Empty part after comma indicates end of tag
-            if current_tag:
-                formatted_tags.append(current_tag)
-                current_tag = ""
+            tag_list = [tags.strip()]
+    else:
+        tag_list = tags
     
-    # Add the last tag if there is one
-    if current_tag:
-        formatted_tags.append(current_tag)
+    # Create YAML formatted tag list
+    formatted_tags = "tags:"
+    for tag in tag_list:
+        # Skip empty tags
+        if not tag or tag.isspace():
+            continue
+        # Remove any internal newlines and normalize spacing
+        clean_tag = tag.replace('\n', ' ').strip()
+        if clean_tag:
+            formatted_tags += f"\n- {clean_tag}"
     
-    # Remove duplicate tags and join with commas
-    unique_tags = list(dict.fromkeys(formatted_tags))
-    return ", ".join(unique_tags)
+    return formatted_tags
 
 def format_jsonld(content: str) -> str:
     """Fix JSON-LD formatting by removing extra quotes."""

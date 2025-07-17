@@ -328,6 +328,54 @@ class TagsGenerator:
         # Return unique tags
         return list(dict.fromkeys(tags_list))
     
+    def process_response(self, response):
+        """Process the raw response from the LLM."""
+        if not response:
+            return []
+        
+        try:
+            # Check if response is already a list
+            if isinstance(response, list):
+                return response
+            
+            # Clean up the response
+            lines = response.strip().split('\n')
+            tags = []
+            
+            for line in lines:
+                # Skip empty lines
+                if not line.strip():
+                    continue
+                    
+                # Handle bullet points or numbered lists
+                if line.strip().startswith('-') or line.strip().startswith('*'):
+                    tag = line.strip()[1:].strip()
+                    tags.append(tag)
+                    continue
+                    
+                # If it's not a list item, check for comma separation
+                if ',' in line:
+                    parts = [part.strip() for part in line.split(',')]
+                    tags.extend(parts)
+                    continue
+                    
+                # Otherwise, assume it's a single tag
+                tags.append(line.strip())
+            
+            # Final cleanup - remove any empty tags
+            tags = [tag for tag in tags if tag and not tag.isspace()]
+            
+            # Remove any "tags:" header if present
+            tags = [tag for tag in tags if tag.lower() != "tags:" and not tag.lower().startswith("tags:")]
+            
+            # Log the number of tags found
+            logger.info(f"Generated {len(tags)} candidate tags")
+            
+            return tags
+        except Exception as e:
+            logger.error(f"Error processing tags: {e}", exc_info=True)
+            return []
+    
     def _process_response(self, response: str) -> str:
         """Process the API response to extract tags."""
         try:
