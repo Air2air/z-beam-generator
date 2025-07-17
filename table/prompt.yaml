@@ -1,120 +1,25 @@
 name: "Table Generator"
-description: "Generates comprehensive markdown tables for technical laser cleaning articles"
-version: "2.0.0"
+description: "Ensures no tables are generated in the content section for laser cleaning articles, relying on frontmatter fields."
+version: "2.0.1"
+template: |
+  Do NOT generate any tables in the content section for the {article_type} "{subject}" in laser cleaning contexts.
 
-templates:
-  material:
-    technical_specifications: |
-      ## Technical Specifications
-      
-      | Parameter | Value |
-      |-----------|-------|
-      | Power Range | 20W - 1000W |
-      | Wavelength | 1064nm |
-      | Pulse Duration | 100ns |
-      | Repetition Rate | 10-50 kHz |
-      | Scan Speed | 100-5000 mm/s |
-      | Spot Size | 50-200μm |
-    
-    applications: |
-      ## Applications
-      
-      | Application | Description | Benefits |
-      |-------------|-------------|----------|
-      | Rust Removal | Precision removal of surface rust | No chemical waste, selective treatment |
-      | Coating Ablation | Removal of paint and coatings | No damage to substrate, environmentally friendly |
-      | Surface Preparation | Cleaning before welding or bonding | Improved adhesion, no contamination |
-    
-    manufacturing_centers: |
-      ## Manufacturing Centers
-      
-      | Facility Name | Usage | Address |
-      |--------------|-------|---------|
-      | Z-Beam San Francisco | R&D Center | 123 Innovation Dr, San Francisco, CA |
-      | Z-Beam Production | Manufacturing | 456 Industry Way, Fremont, CA |
-  
-  application:
-    parameters: |
-      ## Process Parameters
-      
-      | Parameter | Typical Value | Range | Unit |
-      |-----------|---------------|-------|------|
-      | Power | 500 | 100-1000 | W |
-      | Pulse Frequency | 20 | 10-50 | kHz |
-      | Scan Speed | 1000 | 500-5000 | mm/s |
-      | Pass Count | 2 | 1-5 | passes |
-      | Standoff Distance | 150 | 100-200 | mm |
-    
-    benefits_challenges: |
-      ## Benefits & Challenges
-      
-      | Type | Description | Mitigation |
-      |------|-------------|------------|
-      | Benefit | No chemical waste produced | N/A |
-      | Benefit | Selective material removal | N/A |
-      | Challenge | Initial equipment cost | Lease options available |
-      | Challenge | Operator training required | Certified training program |
-    
-    equipment: |
-      ## Equipment Requirements
-      
-      | Equipment Type | Specifications | Purpose |
-      |---------------|----------------|---------|
-      | Laser Source | 500W fiber laser | Primary energy source |
-      | Scanning Head | F-theta lens, 160mm focal length | Beam delivery |
-      | Ventilation | HEPA filtration | Fume extraction |
-      | Control System | Industrial PC with touchscreen | Process management |
-  
-  thesaurus:
-    related_terms: |
-      ## Related Terms
-      
-      | Term | Relationship | Description |
-      |------|--------------|-------------|
-      | Laser Ablation | Parent term | Removal of material with laser energy |
-      | Fluence | Technical parameter | Energy density measurement |
-      | Pulse Width | Technical parameter | Duration of laser pulse |
-    
-    industry_standards: |
-      ## Industry Standards
-      
-      | Standard | Description | Requirements |
-      |----------|-------------|--------------|
-      | ISO 11553 | Safety of machinery - Laser processing machines | Regular maintenance, safety interlocks |
-      | ANSI Z136.1 | Safe Use of Lasers | PPE, training, engineering controls |
-      | ASTM B578 | Standard for Evaluation of Surface Cleaning | Cleanliness measurement methods |
-    
-    facilities: |
-      ## Facility Information
-      
-      | Facility Name | Usage | Address |
-      |--------------|-------|---------|
-      | Z-Beam Training Center | Technical education | 789 Learning Lane, San Jose, CA |
-  
-  region:
-    facilities: |
-      ## Regional Facilities
-      
-      | Facility Name | Usage | Address |
-      |--------------|-------|---------|
-      | Z-Beam Western Operations | R&D and Production | 123 Innovation Dr, San Francisco, CA |
-      | Z-Beam Training Center | Technical education | 789 Learning Lane, San Jose, CA |
-    
-    regulations: |
-      ## Regional Regulations
-      
-      | Regulation | Description | Compliance Requirements |
-      |------------|-------------|-------------------------|
-      | CA Air Resources Board | Air quality regulations | HEPA filtration, emissions monitoring |
-      | OSHA 1910.1450 | Occupational exposure to hazardous chemicals | PPE, training, ventilation |
+  🚨 CRITICAL REQUIREMENTS:
+  - Return an EMPTY string to avoid content section tables.
+  - Rely on frontmatter fields (e.g., facilities, regulatoryStandards) for structured data.
+  - Tables like 'Regional Facilities' or 'Regional Regulations' are REDUNDANT and must be avoided.
 
+  🚨 CONSTRAINTS:
+  - For region articles, ensure facility data is in frontmatter.facilities with California-only locations.
+  - No content section output is allowed to prevent parsing overhead.
+
+  Generate for: {article_type} = {subject}
+
+  Example:
+  ""  # Empty string
+
+parameters:
+  max_tokens: 100
+  temperature: 0.0
 validation:
-  required_table_count:
-    material: 1
-    application: 1
-    thesaurus: 1
-    region: 1
-  max_rows: 20
-  min_rows: 1
-  formatting: "markdown"
-  required_headers: true
+  required_output: ""

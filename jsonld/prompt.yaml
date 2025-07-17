@@ -1,62 +1,91 @@
 name: "JSON-LD Generator"
-description: "Generates comprehensive, Schema.org-compliant JSON-LD for laser cleaning technical articles."
-version: "3.0.0"
+description: "Generates concise, Schema.org-compliant JSON-LD for laser cleaning articles, optimized for SEO and E-A-T."
+version: "3.0.1"
 template: |
-  Generate COMPREHENSIVE, Schema.org-compliant JSON-LD for a {article_type} article about {subject} IN THE CONTEXT OF LASER CLEANING TECHNOLOGY, using ALL provided frontmatter fields.
+  Generate CONCISE, Schema.org-compliant JSON-LD for a {article_type} article about {subject} IN THE CONTEXT OF LASER CLEANING TECHNOLOGY, using ALL provided frontmatter fields.
 
-  🚨 CRITICAL CONTEXT: This is about "{subject}" in the professional laser cleaning industry context.
+  🚨 CRITICAL CONTEXT: This is about "{表情}subject}" in the professional laser cleaning industry context.
 
-  🚨 CRITICAL: Map ALL frontmatter fields to VALID Schema.org properties with MAXIMUM technical detail:
-  - name → name/headline (based on schema type)
-  - description → description (use FULL technical description, don't abbreviate)
+  🚨 CRITICAL: Map ALL frontmatter fields to VALID Schema.org properties:
+  {article_type == 'thesaurus' ? '
+  - name → name
+  - description → description
   - website → url
   - author.name → author.name
-  - author.credentials → author.description (include COMPLETE credentials for E-A-T)
-  - keywords → keywords (include ALL technical keywords)
+  - author.credentials → author.description
+  - keywords → keywords
   - tags → about.category
-  - applications → inDefinedTermSet/hasPart (include DETAILED technical application descriptions)
-  - technicalSpecifications → about.additionalProperty (include COMPLETE technical parameters with units)
-  - facilities → about.location/publisher.location (include FULL California facility details)
-  - regulatoryStandards → about.legislationApplied (include ALL regulatory standards with descriptions)
-  - challenges → mentions (include COMPREHENSIVE technical challenges and solutions)
-  - outcomes → about.potentialAction (include DETAILED measurable outcomes with metrics)
-  - relatedTerms → relatedLink (include ALL related terms with descriptions)
-  - environmentalImpact.description → about.environmentalImpact (include COMPLETE environmental impact details)
-  - environmentalImpact.metrics → about.potentialAction (include ALL environmental metrics with values)
-
-  🚨 DEPTH REQUIREMENTS:
-  - Use DETAILED nested objects for complex properties
-  - Include ALL numerical values and units from technical specifications
-  - Incorporate COMPREHENSIVE technical terminology
-  - Create RICH property structures with multiple levels where appropriate
-  - MAXIMIZE structured data coverage for SEO value
-  - Output 1,500–2,000 characters minimum for completeness
+  - applications → inDefinedTermSet
+  - technicalSpecifications → about.additionalProperty
+  - facilities → about.location
+  - regulatoryStandards → about.legislationApplied
+  - challenges → mentions
+  - outcomes → about.potentialAction
+  - relatedTerms → relatedLink
+  - environmentalImpact.description → about.environmentalImpact
+  - environmentalImpact.metrics → about.potentialAction
+  ' : article_type == 'region' ? '
+  - name → name
+  - description → description
+  - website → url
+  - author.name → author.name
+  - author.credentials → author.description
+  - keywords → keywords
+  - tags → about.category
+  - geoCoordinates → geo
+  - county → address.addressRegion
+  - region → address.addressLocality
+  - adjacentCities → relatedLink
+  - applications → hasPart
+  - facilities → containsPlace
+  - regulatoryStandards → about.legislationApplied
+  - challenges → mentions
+  - outcomes → about.potentialAction
+  - environmentalImpact.description → about.environmentalImpact
+  - environmentalImpact.metrics → about.potentialAction
+  ' : '
+  - name → headline
+  - description → description
+  - website → url
+  - author.name → author.name
+  - author.credentials → author.description
+  - keywords → keywords
+  - tags → about.category
+  - applications → hasPart
+  - technicalSpecifications → about.additionalProperty
+  - facilities → publisher.location
+  - regulatoryStandards → about.legislationApplied
+  - challenges → mentions
+  - outcomes → about.potentialAction
+  - environmentalImpact.description → about.environmentalImpact
+  - environmentalImpact.metrics → about.potentialAction
+  '}
 
   🚨 SCHEMA.ORG COMPLIANCE:
-  - Use ONLY valid Schema.org properties
-  - Ensure facilities reflect California locations only
-  - Use Schema.org property nesting appropriately (3+ levels where applicable)
-  - Include proper @type declarations for ALL nested objects
+  - Use ONLY valid Schema.org properties.
+  - Ensure facilities reflect California locations only.
+  - Use https://www.z-beam.com/[subject]-laser-cleaning for URLs.
+  - Output 1,000–2,000 characters.
 
   🚨 E-A-T AND SEO OPTIMIZATION:
-  - Include COMPLETE author.credentials for trustworthiness
-  - Use ALL keywords (10–12) and tags (5–8) from frontmatter
-  - Include technical measurement units and precise values wherever possible
-  - Reference industry standards with proper identifiers (e.g., ISO, ASTM, etc.)
+  - Use frontmatter.author.credentials for trustworthiness.
+  - Limit keywords to 10–12 and tags to 5–8 from frontmatter.
+  - Include precise measurement units and standards (e.g., ASTM, ISO).
+  - For region articles, include geoCoordinates, county, region, adjacentCities.
 
   Frontmatter fields:
   {schema_template}
 
-  Generate COMPREHENSIVE Schema.org-compliant JSON-LD for: {article_type} = {subject}
+  Generate Schema.org-compliant JSON-LD for: {article_type} = {subject}
 parameters:
-  max_tokens: 4000
+  max_tokens: 2500
   temperature: 0.6
   top_p: 0.9
 validation:
-  required_fields: ["@context", "@type", "name", "description", "author", "url", "keywords"]
-  min_length: 1500
-  max_length: 4000
-  schema_org_type: "DefinedTerm"
-  required_schema_coverage: 95
+  required_fields: ["@context", "@type", "{article_type == 'thesaurus' ? 'name' : article_type == 'region' ? 'name' : 'headline'}", "description", "author", "url", "keywords"]
+  min_length: 1000
+  max_length: 2000
+  schema_org_type: "{article_type == 'thesaurus' ? 'DefinedTerm' : article_type == 'region' ? 'Place' : 'TechnicalArticle'}"
+  required_schema_coverage: 85
   schema_org_compliance: true
   valid_properties_only: true

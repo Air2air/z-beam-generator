@@ -9,9 +9,9 @@ OUTPUT_DIR = "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/output"
 
 # Define your article context here - edit this for each generation
 ARTICLE_CONTEXT = {
-    "subject": "Fairfield",
+    "subject": "Titanium",
     "author_id": 3,
-    "article_type": "region", # Options: application, material, region, thesaurus
+    "article_type": "thesaurus", # Options: application, material, region, thesaurus
     "output_dir": OUTPUT_DIR,
     "ai_provider": "deepseek"  # Options: openai, deepseek, xai, gemini
 }

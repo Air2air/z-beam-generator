@@ -46,7 +46,37 @@ class ArticleOrchestrator:
                 return False
 
             # Parse frontmatter string to dict for table generation
-            frontmatter_dict = yaml.safe_load(frontmatter)
+            frontmatter_dict = {}
+            try:
+                # Extract just the first YAML document if there are multiple documents
+                def extract_yaml_content(text):
+                    """Extract the YAML content between or before --- markers."""
+                    if text.startswith('---'):
+                        parts = text.split('---', 2)
+                        if len(parts) >= 2:
+                            return parts[1].strip()
+                    return text
+
+                # Preprocess to handle multiple YAML documents
+                yaml_content = extract_yaml_content(frontmatter)
+                
+                # Try to parse the YAML content
+                frontmatter_dict = yaml.safe_load(yaml_content)
+                
+            except Exception as e:
+                logger.error(f"Failed to parse frontmatter: {e}")
+                # Last resort fallback - try parsing with load_all
+                try:
+                    docs = list(yaml.safe_load_all(frontmatter))
+                    if docs:
+                        frontmatter_dict = docs[0]
+                        logger.info("Successfully parsed frontmatter using safe_load_all")
+                    else:
+                        logger.error("No valid YAML documents found in frontmatter")
+                        return False
+                except Exception as e2:
+                    logger.error(f"All frontmatter parsing attempts failed: {e2}")
+                    return False
 
             # Generate table
             table_gen = TableGenerator(self.context, self.schema, frontmatter_dict)
