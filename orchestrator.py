@@ -141,3 +141,23 @@ class ArticleOrchestrator:
             summary_lines.append("Keywords: " + ", ".join(re.findall(r'"([^"]+)"', keywords[0])))
         # Add more as needed
         return "\n".join(summary_lines)
+
+    def _generate_table(self, metadata_dict):
+        """Generate a table using the table generator."""
+        
+        # Log the available metadata for debugging
+        logger.debug(f"Available metadata keys: {list(metadata_dict.keys())}")
+        
+        # Create and configure the table generator
+        table_gen = TableGenerator(self.context, self.schema, metadata_dict)
+        
+        # Generate the table
+        table = table_gen.generate()
+        
+        # Validate table output
+        if table and "|" in table:
+            logger.info("Generated table successfully")
+        else:
+            logger.warning("Table generation produced empty or invalid output")
+        
+        return table

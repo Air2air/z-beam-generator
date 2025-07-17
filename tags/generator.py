@@ -328,93 +328,106 @@ class TagsGenerator:
         # Return unique tags
         return list(dict.fromkeys(tags_list))
     
-    def process_response(self, response):
-        """Process the raw response from the LLM."""
-        if not response:
-            return []
-        
-        try:
-            # Check if response is already a list
-            if isinstance(response, list):
-                return response
-            
-            # Clean up the response
-            lines = response.strip().split('\n')
-            tags = []
-            
-            for line in lines:
-                # Skip empty lines
-                if not line.strip():
-                    continue
-                    
-                # Handle bullet points or numbered lists
-                if line.strip().startswith('-') or line.strip().startswith('*'):
-                    tag = line.strip()[1:].strip()
-                    tags.append(tag)
-                    continue
-                    
-                # If it's not a list item, check for comma separation
-                if ',' in line:
-                    parts = [part.strip() for part in line.split(',')]
-                    tags.extend(parts)
-                    continue
-                    
-                # Otherwise, assume it's a single tag
-                tags.append(line.strip())
-            
-            # Final cleanup - remove any empty tags
-            tags = [tag for tag in tags if tag and not tag.isspace()]
-            
-            # Remove any "tags:" header if present
-            tags = [tag for tag in tags if tag.lower() != "tags:" and not tag.lower().startswith("tags:")]
-            
-            # Log the number of tags found
-            logger.info(f"Generated {len(tags)} candidate tags")
-            
-            return tags
-        except Exception as e:
-            logger.error(f"Error processing tags: {e}", exc_info=True)
-            return []
-    
-    def _process_response(self, response: str) -> str:
+    def process_response(self, response: str) -> List[str]:
         """Process the API response to extract tags."""
+        if not response:
+            return self._generate_fallback()
+            
         try:
-            # Extract tags from response
+            # Clean the response
             cleaned_response = self._clean_response(response)
             
-            # Split by commas and clean each tag
-            tags_list = [tag.strip() for tag in cleaned_response.split(',') if tag.strip()]
-            
-            # Ensure we have exactly 15 tags
-            if len(tags_list) < 15:
-                logger.warning(f"Not enough tags: {len(tags_list)} < 15, using what we have")
-            elif len(tags_list) > 15:
-                logger.warning(f"Too many tags: {len(tags_list)} > 15, using only first 15")
-                tags_list = tags_list[:15]
+            # Extract tags using the best method based on response format
+            if cleaned_response.strip().startswith('[') and cleaned_response.strip().endswith(']'):
+                # Looks like JSON
+                try:
+                    tags_list = json.loads(cleaned_response)
+                    if isinstance(tags_list, list):
+                        tags = [t.strip() for t in tags_list if t.strip()]
+                    else:
+                        # Fall back to text processing if not a proper list
+                        tags = self._extract_from_text(cleaned_response)
+                except json.JSONDecodeError:
+                    # Not valid JSON, fall back to text processing
+                    tags = self._extract_from_text(cleaned_response)
             else:
-                logger.info(f"Successfully generated exactly 15 schema-driven tags")
+                # Process as plain text
+                tags = self._extract_from_text(cleaned_response)
             
-            # Validate tags
-            valid_tags = []
-            for tag in tags_list:
-                if self._is_valid_tag(tag):
-                    valid_tags.append(tag)
+            # Clean up tags
+            tags = [tag.lower().replace(' ', '-') for tag in tags if tag and len(tag) > 1]
             
-            # Return comma-separated string of tags
-            return ", ".join(valid_tags)
+            # Remove duplicates while preserving order
+            seen = set()
+            unique_tags = []
+            for tag in tags:
+                if tag not in seen and tag.strip():
+                    seen.add(tag)
+                    unique_tags.append(tag)
+            
+            # Ensure we have the right number of tags
+            if len(unique_tags) < 5:
+                logger.warning(f"Not enough tags: {len(unique_tags)} < 5, using fallback")
+                return self._generate_fallback()
+            elif len(unique_tags) > 15:
+                logger.warning(f"Too many tags: {len(unique_tags)} > 15, using only first 15")
+                unique_tags = unique_tags[:15]
+            
+            return unique_tags
         except Exception as e:
-            logger.error(f"Failed to process tags response: {e}")
-            return None
+            logger.error(f"Error processing tags: {e}")
+            return self._generate_fallback()
     
-    def _is_valid_tag(self, tag: str) -> bool:
-        """Check if a tag is valid based on custom criteria."""
-        # Example criteria: tag must be alphanumeric and between 3 to 30 characters
-        if re.match(r'^[a-zA-Z0-9-]{3,30}$', tag):
-            return True
-        else:
-            logger.warning(f"Invalid tag skipped: {tag}")
-            return False
+    def _extract_from_text(self, text: str) -> List[str]:
+        """Extract tags from text response."""
+        tags = []
+        
+        # Split by lines first
+        lines = text.strip().split('\n')
+        
+        for line in lines:
+            line = line.strip()
+            if not line:
+                continue
+                
+            # Handle bullet points or numbered lists
+            if line.startswith('-') or line.startswith('*'):
+                tag = line[1:].strip()
+                tags.append(tag)
+                continue
+                
+            # Handle comma-separated values
+            if ',' in line:
+                parts = [part.strip() for part in line.split(',')]
+                tags.extend([part for part in parts if part])
+                continue
+                
+            # Otherwise it's a single tag
+            tags.append(line)
+        
+        return tags
     
+    def _generate_fallback(self) -> List[str]:
+        """Generate fallback tags in case of failure."""
+        logger.warning("Generating fallback tags")
+        
+        # Simple fallback: use subject and article type
+        fallback_tags = [self.subject, self.article_type]
+        
+        # Add common categories based on article type
+        if self.article_type == "guide":
+            fallback_tags.extend(["how-to", "tutorial", "guide"])
+        elif self.article_type == "reference":
+            fallback_tags.extend(["reference", "api", "docs"])
+        elif self.article_type == "blog":
+            fallback_tags.extend(["blog", "article", "opinion"])
+        
+        # Ensure uniqueness and limit to 15 tags
+        fallback_tags = list(dict.fromkeys(fallback_tags))[:15]
+        
+        logger.info(f"Fallback tags generated: {fallback_tags}")
+        return fallback_tags
+
     def _extract_audience_info(self) -> str:
         """Extract audience information from frontmatter."""
         if not self.frontmatter:

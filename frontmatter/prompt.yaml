@@ -1,80 +1,121 @@
 name: "Frontmatter Generator"
-description: "Generates concise YAML frontmatter for all article types"
-version: "2.2.0"
+description: "Generates concise YAML frontmatter for laser cleaning articles, optimized for SEO, E-A-T, and on-site tagging."
+version: "2.2.2"
 
 template: |
-  Generate CONCISE AND EFFICIENT frontmatter for the {article_type} "{subject}" in laser cleaning contexts.
-  
+  Generate CONCISE AND EFFICIENT YAML frontmatter for the {article_type} "{subject}" in laser cleaning contexts, optimized for E-A-T, searchability, and on-site tagging.
+
   🚨 CRITICAL LENGTH REQUIREMENT:
-  - YOU MUST GENERATE BETWEEN 2,000-3,000 CHARACTERS of focused technical frontmatter
-  - This is a HARD REQUIREMENT - longer responses will be rejected automatically
-  - Create BRIEF and TARGETED content for EACH field in the schema
-  - Add FEWER ITEMS to arrays (5-10 items for simple arrays like keywords)
-  - For complex arrays with name/description fields, include AT MOST 4-6 ITEMS
-  - Write SHORTER DESCRIPTIONS for each field - aim for 100-150 characters per description
-  - Include ESSENTIAL TECHNICAL DETAILS only
-  
+  - Generate BETWEEN 2,000–3,000 CHARACTERS of focused, technical frontmatter.
+  - This is a HARD REQUIREMENT—longer responses will be rejected.
+  - Use BRIEF, TARGETED content for EACH field.
+  - Include 10–12 UNIQUE, TECHNICAL keywords for search/SEO (avoid duplicates).
+  - Include 5–8 SHORT, HYPHENATED tags for on-site display/navigation (e.g., laser-cleaning).
+  - For complex arrays (e.g., applications, facilities), include 3–4 ITEMS with descriptions of 50–75 words.
+  - Write descriptions of 100–150 characters for simple fields, 150–200 words for main description.
+
   🚨 IMPORTANT CONSTRAINTS:
-  - If generating a region article, ONLY use locations within California, USA
-  - For region articles, the "countries" field MUST ONLY contain "United States" - no other countries
-  - All geographic data must reference California locations exclusively
-  - Any manufacturing centers, organizations, or facilities must be physically located in California
-  - ALWAYS use "https://www.z-beam.com" for ALL website URLs (NEVER use example.com or any other domain)
-  
+  - For region articles, use ONLY California, USA locations.
+  - For region articles, set "countries" to ["United States"]—no other countries.
+  - All geographic data must reference California locations exclusively.
+  - Manufacturing centers, organizations, or facilities must be in California.
+  - Use "https://www.z-beam.com" for ALL website URLs.
+
   🚨 GEOGRAPHIC CONTEXT REQUIREMENTS:
-  - For region articles, ALWAYS include:
-    1. The specific county where the city is located (e.g., "Santa Clara County")
-    2. At least 2 immediately adjacent/neighboring cities (must be actual neighboring cities)
-    3. The broader region of California (e.g., "Bay Area", "Silicon Valley", "Southern California")
-    4. Explicitly state "California" as the state
-  - Example: "Mountain View is located in Santa Clara County, California, in the heart of Silicon Valley. 
-    It borders Palo Alto and Sunnyvale."
-  
+  - For region articles, include:
+    1. Specific county (e.g., "Santa Clara County").
+    2. 2–3 immediately adjacent cities (verify real neighbors).
+    3. Broader California region (e.g., "Bay Area", "Southern California").
+    4. Explicitly state "California" as the state.
+  - Example: "Mountain View, Santa Clara County, California, in Silicon Valley, borders Palo Alto and Sunnyvale."
+
   🚨 URL FORMATTING RULES:
-  - ALL URLs must use the www.z-beam.com domain
-  - Format: https://www.z-beam.com/[subject-with-dashes]-laser-cleaning
-  - Example: https://www.z-beam.com/mountain-view-laser-cleaning or https://www.z-beam.com/aluminum-laser-cleaning
-  - NEVER use example.com, placeholder.com, or any domain without the "www." prefix
-  - ALWAYS include "www." in the domain (use https://www.z-beam.com NOT https://z-beam.com)
-  - DO NOT include article type in the URL (e.g., NO /regions/ or /materials/ path segments)
-  
-  🚨 CRITICAL ARRAY FORMATTING RULES:
-  - Simple arrays (like keywords, countries, etc.) must use this format:
+  - Use https://www.z-beam.com/[subject-with-dashes]-laser-cleaning.
+  - Example: https://www.z-beam.com/mountain-view-laser-cleaning.
+  - NEVER use example.com or other domains; ALWAYS include "www.".
+  - Exclude article type from URL (e.g., no /regions/).
+
+  🚨 ARRAY FORMATTING RULES:
+  - Simple arrays (e.g., keywords, tags, countries):
     keywords:
-      - "first keyword"
-      - "second keyword"
-      - "third keyword"
-    
-  - Complex arrays with objects must use this format:
+      - "keyword one"
+      - "keyword two"
+    tags:
+      - "tag-one"
+      - "tag-two"
+  - Complex arrays (e.g., applications, facilities):
     arrayName:
       - name: "Item name"
-        description: "Brief item description in 1-2 sentences."
-        property: "Another property"
-      - name: "Second item name"
-        description: "Short explanation with key technical specifics."
-        property: "Another property"
-  
-  Generate YAML for: {article_type} = {subject}
-  
-  Required fields:
-  {schema_template}
-  
-  🚨 CONTENT EXPANSION REQUIREMENTS:
-  1. Geographic data must include precise coordinates and basic context when applicable
-  2. Manufacturing centers must include short facility descriptions (50-75 words each) when applicable
-  3. Regulatory standards must include key code references and brief notes when applicable
-  4. Include at least 10-15 focused keywords with technical specificity
-  5. Description must be succinct (150-200 words) covering core technical aspects
-  6. For array fields with descriptions, write 50-100 words per description
-  7. For challenges/outcomes sections, provide brief technical explanations when applicable
-  8. Include essential equipment parameters and specifications when applicable
+        description: "Brief 50–75 word description with technical specifics."
+        property: "Relevant property"
 
+  🚨 E-A-T AND SEO REQUIREMENTS:
+  - Include an author field with credentials to enhance trustworthiness (e.g., "Laser Technology Institute, Industry Leader").
+  - Ensure keywords are specific, technical, and non-repetitive for search/SEO.
+  - Ensure tags are short, hyphenated, and user-friendly for on-site display (minimal overlap with keywords).
+  - Map description to SEO meta description (150–160 characters).
+  - Avoid redundancy (e.g., no overlapping keywords/tags or specs).
+
+  Generate YAML for: {article_type} = {subject}
+
+  Required fields:
+  name: "{subject}"
+  description: "150–200 word technical summary of {subject} in laser cleaning."
+  website: "https://www.z-beam.com/[subject-with-dashes]-laser-cleaning"
+  author:
+    name: "Laser Technology Institute"
+    credentials: "Industry Leader in Laser Cleaning Technology"
+  keywords:
+    - "10–12 specific, technical terms (e.g., hafnium-doped laser, industrial cleaning)"
+  tags:
+    - "5–8 short, hyphenated terms for on-site use (e.g., laser-cleaning, rust-removal)"
+  applications:
+    - name: "Application 1"
+      description: "50–75 word technical use case."
+    - name: "Application 2"
+      description: "50–75 word technical use case."
+    # Max 3–4 items
+  technicalSpecifications:
+    laserType: "e.g., Hafnium-doped fiber"
+    wavelength: "e.g., 1064nm ±5nm"
+    powerRange: "e.g., 20–500W"
+    # Essential specs only
+  facilities: # For region articles
+    - name: "Facility name"
+      location: "City, County, California"
+      coordinates: "e.g., 37.7749° N, 122.4194° W"
+      description: "50–75 word facility description."
+    # Max 3–4 items
+  regulatoryStandards:
+    - code: "e.g., ANSI Z136.1"
+      description: "Brief compliance note (50–75 words)."
+    # Max 3–4 items
+  challenges:
+    - issue: "Technical challenge"
+      solution: "50–75 word solution."
+    # Max 3–4 items
+  outcomes:
+    - result: "e.g., 99% contaminant removal"
+      metric: "e.g., ASTM D3359"
+    # Max 3–4 items
+
+  🚨 CONTENT EXPANSION REQUIREMENTS:
+  - Include precise coordinates and context for geographic data (California only).
+  - Describe facilities in 50–75 words for region articles.
+  - Reference key regulatory codes with brief notes.
+  - Ensure 10–12 focused, non-redundant keywords for search/SEO.
+  - Ensure 5–8 user-friendly tags for on-site display/navigation.
+  - Keep main description succinct (150–200 words).
+  - Limit complex array descriptions to 50–75 words.
+  - Include essential equipment parameters (e.g., wavelength, power).
+  - Generate JSON-LD dynamically from frontmatter (do not include in content).
 
 parameters:
-  max_tokens: 5000
-  temperature: 0.7
+  max_tokens: 4000
+  temperature: 0.6
 
 validation:
   min_length: 2000
+  max_length: 3000
   required_schema_coverage: 100
-  required_fields: ["name", "description", "keywords"]
+  required_fields: ["name", "description", "keywords", "tags", "author", "website"]

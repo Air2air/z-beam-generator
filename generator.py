@@ -23,19 +23,23 @@ from utils.slug_generator import generate_slug
 from orchestrator import ArticleOrchestrator
 
 def ensure_output_directory(directory):
-    """Make sure the output directory exists."""
+    """Ensure output directory exists and is writeable."""
+    if not directory:
+        directory = "output"  # Default if none provided
+        
     try:
         # Create directory if it doesn't exist
         os.makedirs(directory, exist_ok=True)
-        logger.info(f"Ensuring output directory exists: {directory}")
         
-        # Test if we can write to it
-        test_file = os.path.join(directory, ".write_test")
+        # Test if directory is writable
+        test_file = os.path.join(directory, '.write_test')
         try:
-            with open(test_file, "w") as f:
-                f.write("test")
+            with open(test_file, 'w') as f:
+                f.write('test')
             os.remove(test_file)
-            return True
+            logger.info(f"✅ Output directory created/verified: {directory}")
+            logger.info("✅ Write permissions confirmed")
+            return directory
         except PermissionError:
             logger.error(f"No write permission for output directory: {directory}")
             return False

@@ -1,72 +1,108 @@
 name: "JSON-LD Generator"
-description: "Generates comprehensive JSON-LD for technical articles"
-version: "2.0.0"
+description: "Generates concise, Schema.org-compliant JSON-LD for laser cleaning articles, fully mapping frontmatter fields for SEO and E-A-T."
+version: "2.0.2"
 
 template: |
-  Generate comprehensive JSON-LD for a {article_type} article about {subject} IN THE CONTEXT OF LASER CLEANING TECHNOLOGY.
+  Generate concise, Schema.org-compliant JSON-LD for a {article_type} article about {subject} IN THE CONTEXT OF LASER CLEANING TECHNOLOGY, using ALL relevant frontmatter fields.
 
   🚨 CRITICAL CONTEXT: This is about "{subject}" as it relates to laser cleaning, not programming languages or other topics.
 
-  🚨 CRITICAL: Map schema fields to VALID Schema.org properties only.
-
-  SCHEMA FIELDS FOR JSON-LD MAPPING:
-  {schema_template}
+  🚨 CRITICAL: Map frontmatter fields to VALID Schema.org properties only, maximizing use of available frontmatter data.
 
   🚨 MANDATORY JSON-LD MAPPING STRATEGY:
-  Map schema fields to appropriate Schema.org properties:
-  # Core mappings - all valid Schema.org properties:
-  - name → headline                    # ✅ Perfect mapping
-  - description → description          # ✅ Direct mapping
-  - primaryAudience → audience.name    # ✅ Nested object
-  - industries → industry (array)      # ✅ Array handling
-  - substrates → material (array)      # ✅ Technical materials
-  - keywords → keywords (array)        # ✅ SEO optimized
-  - author → author                    # ✅ Direct mapping
-  - url → url                         # ✅ Direct mapping
+  Map frontmatter fields to Schema.org properties, using the following mappings:
+  # Core mappings:
+  - name → headline                    # Article title
+  - description → description          # Main summary
+  - website → url                     # https://www.z-beam.com/[subject]-laser-cleaning
+  - author.name → author.name         # Author name
+  - author.credentials → author.description  # Credentials for E-A-T
+  - keywords → keywords               # SEO-optimized keywords
+  - tags → about.category             # User-facing tags for categorization
 
-  # Technical field mappings - creative but valid:
-  - outcomes → about.description
-  - challenges → mentions
-  - safetyConsiderations → about.description
-  - performanceMetrics → about.measurementTechnique  # ✅ Technical data
-  - laserParameters → about.additionalProperty       # ✅ Technical specs
-  - regulatoryStandards → about.legislationApplied   # ✅ Legal compliance
-  - costComparison → about.costBenefit               # ✅ Economic data
-  - cleaningSpeedComparison → about.performanceParameter # ✅ Performance metrics
+  # Technical and contextual mappings:
+  - applications → hasPart            # Applications as sub-articles
+    - applications.name → hasPart.name
+    - applications.description → hasPart.description
+  - technicalSpecifications → about.additionalProperty  # Technical specs
+    - e.g., laserType → additionalProperty.name: "Laser Type", value: "Hafnium-doped fiber"
+  - facilities → publisher.location    # California facilities
+    - facilities.name → location.name
+    - facilities.location → location.address
+    - facilities.coordinates → location.geo.coordinates
+    - facilities.description → location.description
+  - regulatoryStandards → about.legislationApplied  # Compliance standards
+    - regulatoryStandards.code → legislationApplied.identifier
+    - regulatoryStandards.description → legislationApplied.description
+  - challenges → mentions             # Challenges as mentions
+    - challenges.issue → mentions.name
+    - challenges.solution → mentions.description
+  - outcomes → about.potentialAction  # Measurable results
+    - outcomes.result → potentialAction.result
+    - outcomes.metric → potentialAction.instrument
 
   🚨 SCHEMA.ORG COMPLIANCE:
-  - Use ONLY valid Schema.org properties
-  - Create nested objects for complex relationships
-  - Use arrays for multi-value properties
-  - Include technical specifications in 'about' or 'description'
-  - Map specialized fields to closest Schema.org equivalents
+  - Use ONLY valid Schema.org properties (e.g., headline, description, hasPart).
+  - Create nested objects for complex relationships (e.g., author, hasPart).
+  - Use arrays for multi-value properties (e.g., keywords, hasPart).
+  - Map technical details to about.additionalProperty or hasPart.
+  - Ensure facilities reflect California locations only (e.g., San Diego, Santa Clara County).
 
   🚨 OUTPUT FORMAT REQUIREMENTS:
-  - Return ONLY valid JSON-LD
-  - Include @context: "https://schema.org"
-  - Use @type: "TechnicalArticle"
-  - NO custom properties outside Schema.org vocabulary
-  - Maintain semantic web standards compliance
+  - Return ONLY valid JSON-LD.
+  - Include @context: "https://schema.org".
+  - Use @type: "TechnicalArticle".
+  - NO custom properties outside Schema.org vocabulary.
+  - Use frontmatter fields to populate ALL relevant Schema.org properties.
+  - Ensure url uses https://www.z-beam.com/[subject-with-dashes]-laser-cleaning.
+  - Maintain semantic web standards compliance.
 
-  Generate Schema.org compliant JSON-LD:
+  🚨 E-A-T AND SEO OPTIMIZATION:
+  - Include author.credentials to enhance trustworthiness.
+  - Use keywords (10–12) and tags (5–8) from frontmatter for SEO and categorization, avoiding redundancy.
+  - Map applications, technicalSpecifications, and facilities to deepen content relevance.
+  - Ensure concise output (1,000–2,000 characters) to align with frontmatter’s 2,000–3,000 limit.
+
+  Generate Schema.org-compliant JSON-LD for: {article_type} = {subject}
 
 parameters:
-  max_tokens: 4000
-  temperature: 0.7
+  max_tokens: 2500  # Reduced for conciseness
+  temperature: 0.6  # For precision
+  top_p: 0.9
 
 validation:
-  required_fields: ["@context", "@type", "headline", "description", "about"]
-  min_length: 1500
+  required_fields: ["@context", "@type", "headline", "description", "author", "url", "keywords", "about"]
+  min_length: 1000
+  max_length: 2000
   schema_org_type: "TechnicalArticle"
-  required_schema_coverage: 65  # Slightly higher with enhanced mappings
+  required_schema_coverage: 85  # Increased to ensure comprehensive frontmatter use
   schema_org_compliance: true
   valid_properties_only: true
 
 about: {
   "@type": "Thing",
-  "name": "[process name]",
-  "description": "[technical details]",
-  "additionalProperty": "[laser parameters]",
-  "safety": "[safety considerations]",
-  "measurementTechnique": "[performance metrics]"
+  "name": "{subject}",
+  "description": "{frontmatter.description}",
+  "category": "{frontmatter.tags}",
+  "additionalProperty": [
+    {
+      "@type": "PropertyValue",
+      "name": "{technicalSpecifications.key}",
+      "value": "{technicalSpecifications.value}"
+    }
+  ],
+  "legislationApplied": [
+    {
+      "@type": "Legislation",
+      "identifier": "{regulatoryStandards.code}",
+      "description": "{regulatoryStandards.description}"
+    }
+  ],
+  "potentialAction": [
+    {
+      "@type": "Action",
+      "result": "{outcomes.result}",
+      "instrument": "{outcomes.metric}"
+    }
+  ]
 }
