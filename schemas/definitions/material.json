@@ -1,316 +1,249 @@
 {
   "materialProfile": {
     "name": "material",
-    "version": "1.2",
+    "version": "1.3",
     "schemaType": "MaterialProfile",
     "generatorConfig": {
       "tags": {
-        "includeMaterialCategories": true,
-        "includeApplications": true,
-        "includeIndustries": true,
-        "primaryKeywords": [
-          "material properties",
-          "surface cleaning",
-          "laser technology"
-        ]
+        "includeTags": true,
+        "maxTags": 8,
+        "maxKeywords": 12,
+        "primaryKeywords": ["laser cleaning", "{subject} laser cleaning"]
       },
       "jsonld": {
-        "schemaType": "TechArticle",
-        "includeProperties": true,
-        "includeSpecifications": true,
-        "includeApplications": true,
+        "schemaType": "TechnicalArticle",
         "additionalProperties": [
           {
             "name": "materialCategory",
-            "value": "Category of the material (e.g., metal)"
-          },
-          {
-            "name": "laserCleaningContext",
-            "value": "Key applications and outcomes for {subject}"
+            "value": "Laser Cleaning Material"
           }
-        ]
+        ],
+        "requiredProperties": ["@context", "@type", "headline", "description", "author", "url", "keywords", "about"],
+        "recommendedProperties": ["hasPart", "publisher", "mentions", "datePublished", "dateModified"]
       },
       "frontmatter": {
-        "category": "MaterialProperties"
+        "category": "MaterialProperties",
+        "minLength": 2000,
+        "maxLength": 3000
       }
     },
     "sections": {
       "overview": {
         "required": true,
-        "prompt": "Write a 100-150 word overview of {subject}, its properties, uses, and laser cleaning relevance, focusing on key technical value."
+        "prompt": "Write a 150–200 word technical overview of {subject} in laser cleaning, focusing on properties, uses, and benefits."
       },
-      "properties": {
+      "technicalSpecifications": {
         "required": true,
-        "prompt": "Summarize key properties of {subject} (physical, chemical, mechanical, thermal, optical), with essential measurements, units, and laser impact (150-200 words)."
+        "prompt": "Summarize key properties (physical, chemical, mechanical, thermal, optical) and laser cleaning parameters for {subject} (100–150 words)."
       },
       "applications": {
         "required": true,
-        "prompt": "Briefly explain applications of {subject} in industries, with laser cleaning examples (100-150 words)."
+        "prompt": "Provide 3–4 laser cleaning applications for {subject}, with name and 50–75 word description."
       },
-      "specifications": {
+      "outcomes": {
         "required": true,
-        "prompt": "Outline specifications, grades, standards for {subject}, relevant to laser cleaning (100-150 words)."
-      },
-      "laserCleaningApplications": {
-        "required": false,
-        "prompt": "Summarize laser cleaning for {subject}, with parameters and outcomes (100-150 words)."
+        "prompt": "Provide 2–3 measurable outcomes for laser cleaning {subject}, with result and metric (e.g., ASTM standards)."
       },
       "challenges": {
-        "required": false,
-        "prompt": "Outline challenges in laser cleaning {subject}, with solutions (100-150 words)."
-      },
-      "performanceMetrics": {
-        "required": false,
-        "prompt": "Summarize metrics for laser cleaning {subject}, with key values (100-150 words)."
+        "required": true,
+        "prompt": "Outline 1–3 technical challenges for laser cleaning {subject}, with 50–75 word solutions."
       },
       "environmentalImpact": {
         "required": true,
-        "prompt": "Summarize environmental impact of laser cleaning for {subject}, including benefits like reduced waste and energy efficiency (100-150 words)."
+        "prompt": "Summarize environmental impact of laser cleaning {subject}, focusing on waste reduction and energy efficiency (100–150 words)."
       }
     },
-    "materialProfile": {
-      "category": {
+    "profile": {
+      "name": {
         "type": "string",
-        "required": true
+        "required": true,
+        "description": "Material name (e.g., 'Aluminum')",
+        "example": "{subject}"
       },
-      "physicalProperties": {
+      "description": {
+        "type": "string",
+        "required": true,
+        "description": "Technical overview (150–200 words)",
+        "example": "Aluminum is a lightweight metal used in aerospace..."
+      },
+      "website": {
+        "type": "string",
+        "required": true,
+        "description": "URL (https://www.z-beam.com/[subject]-laser-cleaning)",
+        "example": "https://www.z-beam.com/aluminum-laser-cleaning"
+      },
+      "author": {
         "type": "object",
         "required": true,
         "properties": {
-          "description": {
+          "name": {
             "type": "string",
-            "required": true
-          },
-          "properties": {
-            "type": "array",
             "required": true,
-            "items": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": "string",
-                  "required": true
-                },
-                "value": {
-                  "type": "string",
-                  "required": true
-                },
-                "unit": {
-                  "type": "string",
-                  "required": true
-                },
-                "source": {
-                  "type": "string",
-                  "required": false
-                }
-              }
-            }
+            "description": "Author or organization name",
+            "example": "Laser Technology Institute"
+          },
+          "credentials": {
+            "type": "string",
+            "required": true,
+            "description": "Credentials for E-A-T",
+            "example": "Industry Leader in Laser Cleaning Technology"
           }
         }
       },
-      "chemicalProperties": {
-        "type": "object",
-        "required": false,
-        "properties": {
-          "description": {
-            "type": "string",
-            "required": true
-          },
-          "properties": {
-            "type": "array",
-            "required": true,
-            "items": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": "string",
-                  "required": true
-                },
-                "value": {
-                  "type": "string",
-                  "required": true
-                },
-                "unit": {
-                  "type": "string",
-                  "required": false
-                },
-                "source": {
-                  "type": "string",
-                  "required": false
-                }
-              }
-            }
-          }
-        }
+      "keywords": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "required": true,
+        "description": "10–12 technical keywords for SEO and search",
+        "example": ["aluminum laser cleaning", "surface preparation", "material properties"]
       },
-      "mechanicalProperties": {
-        "type": "object",
-        "required": false,
-        "properties": {
-          "description": {
-            "type": "string",
-            "required": true
-          },
-          "properties": {
-            "type": "array",
-            "required": true,
-            "items": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": "string",
-                  "required": true
-                },
-                "value": {
-                  "type": "string",
-                  "required": true
-                },
-                "unit": {
-                  "type": "string",
-                  "required": true
-                },
-                "source": {
-                  "type": "string",
-                  "required": false
-                }
-              }
-            }
-          }
-        }
+      "tags": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "required": true,
+        "description": "5–8 hyphenated tags for on-site navigation",
+        "example": ["aluminum-cleaning", "laser-cleaning", "surface-treatment"]
       },
-      "thermalProperties": {
+      "technicalSpecifications": {
         "type": "object",
-        "required": false,
+        "required": true,
         "properties": {
-          "description": {
+          "density": {
             "type": "string",
-            "required": true
+            "description": "Material density",
+            "example": "2.7 g/cm³"
           },
-          "properties": {
-            "type": "array",
-            "required": true,
-            "items": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": "string",
-                  "required": true
-                },
-                "value": {
-                  "type": "string",
-                  "required": true
-                },
-                "unit": {
-                  "type": "string",
-                  "required": true
-                },
-                "source": {
-                  "type": "string",
-                  "required": false
-                }
-              }
-            }
-          }
-        }
-      },
-      "opticalProperties": {
-        "type": "object",
-        "required": false,
-        "properties": {
-          "description": {
+          "meltingPoint": {
             "type": "string",
-            "required": true
+            "description": "Melting point",
+            "example": "660°C"
           },
-          "properties": {
-            "type": "array",
-            "required": true,
-            "items": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": "string",
-                  "required": true
-                },
-                "value": {
-                  "type": "string",
-                  "required": true
-                },
-                "unit": {
-                  "type": "string",
-                  "required": false
-                },
-                "source": {
-                  "type": "string",
-                  "required": false
-                }
-              }
-            }
+          "thermalConductivity": {
+            "type": "string",
+            "description": "Thermal conductivity",
+            "example": "237 W/m·K"
+          },
+          "laserType": {
+            "type": "string",
+            "description": "Laser type for cleaning",
+            "example": "Hafnium-doped fiber"
+          },
+          "wavelength": {
+            "type": "string",
+            "description": "Laser wavelength",
+            "example": "1064nm ±2nm"
+          },
+          "fluenceRange": {
+            "type": "string",
+            "description": "Fluence range",
+            "example": "0.1–15 J/cm²"
           }
-        }
+        },
+        "description": "Physical, chemical, and laser cleaning parameters"
       },
       "applications": {
         "type": "array",
+        "required": true,
         "items": {
-          "type": "string"
-        },
-        "required": true
-      },
-      "specifications": {
-        "type": "array",
-        "items": {
-          "type": "string"
-        },
-        "required": true
-      },
-      "laserCleaningApplications": {
-        "type": "object",
-        "required": false,
-        "properties": {
-          "description": {
-            "type": "string",
-            "required": true
-          },
-          "applications": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": "string",
-                  "required": true
-                },
-                "laserType": {
-                  "type": "string",
-                  "required": false
-                },
-                "parameters": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "name": {
-                        "type": "string",
-                        "required": true
-                      },
-                      "value": {
-                        "type": "string",
-                        "required": true
-                      },
-                      "unit": {
-                        "type": "string",
-                        "required": true
-                      }
-                    }
-                  }
-                },
-                "outcomes": {
-                  "type": "string",
-                  "required": false
-                }
-              }
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "required": true,
+              "description": "Application name",
+              "example": "Aerospace Component Cleaning"
+            },
+            "description": {
+              "type": "string",
+              "required": true,
+              "description": "Application description (50–75 words)",
+              "example": "Cleans aluminum aerospace components with 2–10 J/cm²..."
             }
           }
-        }
+        },
+        "description": "3–4 laser cleaning applications"
+      },
+      "facilities": {
+        "type": "array",
+        "required": false,
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "required": true,
+              "description": "Facility name",
+              "example": "Z-Beam Tech Center"
+            },
+            "location": {
+              "type": "string",
+              "required": true,
+              "description": "California city, county, state",
+              "example": "San Diego, San Diego County, California"
+            },
+            "coordinates": {
+              "type": "string",
+              "required": true,
+              "description": "Geographic coordinates",
+              "example": "32.7157° N, 117.1611° W"
+            },
+            "description": {
+              "type": "string",
+              "required": true,
+              "description": "Facility description (50–75 words)",
+              "example": "R&D hub for material cleaning..."
+            }
+          }
+        },
+        "description": "1–3 California facilities"
+      },
+      "regulatoryStandards": {
+        "type": "array",
+        "required": true,
+        "items": {
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string",
+              "required": true,
+              "description": "Standard code",
+              "example": "ANSI Z136.1"
+            },
+            "description": {
+              "type": "string",
+              "required": true,
+              "description": "Compliance description (50–75 words)",
+              "example": "Class IV laser safety, requiring interlocks..."
+            }
+          }
+        },
+        "description": "2–3 compliance standards"
+      },
+      "challenges": {
+        "type": "array",
+        "required": true,
+        "items": {
+          "type": "object",
+          "properties": {
+            "issue": {
+              "type": "string",
+              "required": true,
+              "description": "Technical challenge",
+              "example": "Thermal Damage"
+            },
+            "solution": {
+              "type": "string",
+              "required": true,
+              "description": "Solution (50–75 words)",
+              "example": "Pulse shaping adjusts fluence..."
+            }
+          }
+        },
+        "description": "1–3 challenges and solutions"
       },
       "outcomes": {
         "type": "array",
@@ -318,138 +251,21 @@
         "items": {
           "type": "object",
           "properties": {
-            "name": {
+            "result": {
               "type": "string",
-              "required": true
+              "required": true,
+              "description": "Measurable result",
+              "example": "99.7% contaminant removal"
             },
-            "description": {
+            "metric": {
               "type": "string",
-              "required": true
-            },
-            "quantitativeResult": {
-              "type": "string",
-              "required": false
+              "required": true,
+              "description": "Measurement standard",
+              "example": "ASTM D3359"
             }
           }
-        }
-      },
-      "challenges": {
-        "type": "array",
-        "required": false,
-        "items": {
-          "type": "object",
-          "properties": {
-            "name": {
-              "type": "string",
-              "required": true
-            },
-            "description": {
-              "type": "string",
-              "required": true
-            },
-            "solution": {
-              "type": "string",
-              "required": false
-            }
-          }
-        }
-      },
-      "performanceMetrics": {
-        "type": "object",
-        "required": false,
-        "properties": {
-          "description": {
-            "type": "string",
-            "required": true
-          },
-          "metrics": {
-            "type": "array",
-            "required": true,
-            "items": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": "string",
-                  "required": true
-                },
-                "value": {
-                  "type": "string",
-                  "required": true
-                },
-                "unit": {
-                  "type": "string",
-                  "required": true
-                },
-                "source": {
-                  "type": "string",
-                  "required": false
-                }
-              }
-            }
-          }
-        }
-      },
-      "cleaningEfficiencyComparison": {
-        "type": "object",
-        "required": false,
-        "properties": {
-          "description": {
-            "type": "string",
-            "required": true
-          },
-          "methods": {
-            "type": "array",
-            "required": true,
-            "items": {
-              "type": "object",
-              "properties": {
-                "method": {
-                  "type": "string",
-                  "required": true
-                },
-                "efficiency": {
-                  "type": "string",
-                  "required": true
-                },
-                "source": {
-                  "type": "string",
-                  "required": false
-                }
-              }
-            }
-          }
-        }
-      },
-      "costComparison": {
-        "type": "object",
-        "required": false,
-        "properties": {
-          "description": {
-            "type": "string",
-            "required": true
-          },
-          "methods": {
-            "type": "array",
-            "required": true,
-            "items": {
-              "type": "object",
-              "properties": {
-                "method": {
-                  "type": "string",
-                  "required": true
-                },
-                "cost": {
-                  "type": "string",
-                  "required": true
-                },
-                "source": {
-                  "type": "string",
-                  "required": false
-                }
-              }
-            }
-          }
-        }
+        },
+        "description": "2–3 measurable outcomes"
       },
       "environmentalImpact": {
         "type": "object",
@@ -457,7 +273,9 @@
         "properties": {
           "description": {
             "type": "string",
-            "required": true
+            "required": true,
+            "description": "Environmental impact summary (100–150 words)",
+            "example": "Laser cleaning of aluminum reduces chemical waste by 90%..."
           },
           "metrics": {
             "type": "array",
@@ -467,15 +285,18 @@
               "properties": {
                 "name": {
                   "type": "string",
-                  "required": true
+                  "required": true,
+                  "example": "Waste Reduction"
                 },
                 "value": {
                   "type": "string",
-                  "required": true
+                  "required": true,
+                  "example": "90%"
                 },
                 "unit": {
                   "type": "string",
-                  "required": false
+                  "required": false,
+                  "example": "%"
                 }
               }
             }
@@ -484,18 +305,41 @@
       }
     },
     "jsonLD": {
-      "@type": "TechArticle",
-      "recommendedProperties": ["materialCategory"]
+      "@type": "TechnicalArticle",
+      "requiredProperties": ["@context", "@type", "headline", "description", "author", "url", "keywords", "about"],
+      "recommendedProperties": ["hasPart", "publisher", "mentions", "datePublished", "dateModified"],
+      "mappings": {
+        "name": "headline",
+        "description": "description",
+        "website": "url",
+        "author.name": "author.name",
+        "author.credentials": "author.description",
+        "keywords": "keywords",
+        "tags": "about.category",
+        "technicalSpecifications": "about.additionalProperty",
+        "applications": "hasPart",
+        "facilities": "publisher.location",
+        "regulatoryStandards": "about.legislationApplied",
+        "challenges": "mentions",
+        "outcomes": "about.potentialAction",
+        "environmentalImpact.description": "about.environmentalImpact",
+        "environmentalImpact.metrics": "about.potentialAction"
+      }
     },
     "validation": {
-      "requiredSections": [
-        "Overview",
-        "Properties",
-        "Applications",
-        "Specifications",
-        "Environmental Impact",
-        "Safety"
-      ]
+      "requiredSections": ["overview", "technicalSpecifications", "applications", "outcomes", "challenges", "environmentalImpact"],
+      "jsonLD": {
+        "minLength": 1000,
+        "maxLength": 2000,
+        "schemaOrgType": "TechnicalArticle",
+        "schemaOrgCompliance": true,
+        "validPropertiesOnly": true
+      },
+      "frontmatter": {
+        "requiredFields": ["name", "description", "website", "author", "keywords", "tags", "technicalSpecifications", "applications", "regulatoryStandards", "outcomes", "environmentalImpact"],
+        "minLength": 2000,
+        "maxLength": 3000
+      }
     }
   }
 }

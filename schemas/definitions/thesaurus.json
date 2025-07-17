@@ -1,128 +1,122 @@
 {
   "thesaurusProfile": {
     "name": "thesaurus",
-    "version": "1.3",
+    "version": "1.4",
     "schemaType": "ThesaurusProfile",
     "generatorConfig": {
       "tags": {
-        "includeIndustries": true,
-        "includeApplications": true,
-        "includeMaterials": true,
-        "primaryKeywords": [
-          "technical terminology",
-          "laser cleaning",
-          "surface preparation"
-        ]
+        "includeTags": true,
+        "maxTags": 8,
+        "maxKeywords": 12,
+        "primaryKeywords": ["laser cleaning", "{subject} laser cleaning"]
       },
       "jsonld": {
         "schemaType": "DefinedTerm",
-        "includeDefinition": true,
-        "includeIndustries": true,
-        "includeApplications": true,
-        "includeMaterials": true,
         "additionalProperties": [
           {
-            "name": "relatedApplications",
-            "value": "Term applications in laser cleaning"
-          },
-          {
-            "name": "technicalContext",
-            "value": "Significance in laser cleaning"
+            "name": "applicationCategory",
+            "value": "Laser Cleaning Technology"
           }
-        ]
+        ],
+        "requiredProperties": ["@context", "@type", "name", "description", "author", "url", "keywords"],
+        "recommendedProperties": ["inDefinedTermSet", "relatedLink", "mentions", "datePublished", "dateModified"]
+      },
+      "frontmatter": {
+        "category": "TechnicalTerminology",
+        "minLength": 2000,
+        "maxLength": 3000
       }
     },
     "sections": {
-      "definition": {
+      "overview": {
         "required": true,
-        "prompt": "Write a 100-150 word technical definition of {subject} in laser cleaning, with basis, principles, and standards."
+        "prompt": "Write a 150–200 word technical overview of {subject} in laser cleaning, covering definition, principles, and applications."
       },
-      "usage": {
+      "applications": {
         "required": true,
-        "prompt": "Summarize usage of {subject} in laser cleaning scenarios, industries, materials, with examples (100-150 words)."
+        "prompt": "Provide 3–4 applications of {subject} in laser cleaning, with name and 50–75 word description."
       },
-      "technicalDetails": {
+      "technicalSpecifications": {
         "required": true,
-        "prompt": "Provide key technical details on {subject}, metrics, principles, standards (100-150 words)."
+        "prompt": "Summarize technical details of {subject} in laser cleaning, including metrics and parameters (100–150 words)."
       },
       "relatedTerms": {
         "required": true,
-        "prompt": "Outline related terms to {subject}, definitions, relationships (100-150 words)."
+        "prompt": "Provide 2–3 related terms to {subject}, with term and 50–75 word description."
       },
-      "practicalExamples": {
+      "regulatoryStandards": {
         "required": true,
-        "prompt": "Provide examples where {subject} is key in laser cleaning, with industries and outcomes (100-150 words)."
+        "prompt": "Provide 2–3 regulatory standards for {subject} in laser cleaning, with code and 50–75 word description."
       },
-      "researchContext": {
-        "required": false,
-        "prompt": "Outline research on {subject} in laser cleaning, key studies and developments (100-150 words)."
+      "challenges": {
+        "required": true,
+        "prompt": "Outline 1–3 technical challenges for {subject} in laser cleaning, with 50–75 word solutions."
+      },
+      "outcomes": {
+        "required": true,
+        "prompt": "Provide 2–3 measurable outcomes for {subject} in laser cleaning, with result and metric."
+      },
+      "environmentalImpact": {
+        "required": true,
+        "prompt": "Summarize environmental impact of {subject} in laser cleaning, focusing on waste reduction and energy efficiency (100–150 words)."
       }
     },
-    "termProfile": {
-      "pronunciation": {
-        "type": "string",
-        "required": false
-      },
-      "partOfSpeech": {
-        "type": "string",
-        "required": true
-      },
-      "primaryAudience": {
-        "type": "string",
-        "required": true
-      },
-      "secondaryAudience": {
-        "type": "string",
-        "required": false
-      },
-      "schemaOrgType": {
+    "profile": {
+      "name": {
         "type": "string",
         "required": true,
-        "default": "DefinedTerm"
+        "description": "Technical term (e.g., 'Fluence')",
+        "example": "{subject}"
       },
-      "url": {
+      "description": {
         "type": "string",
-        "required": false
+        "required": true,
+        "description": "Technical overview of the term (150–200 words)",
+        "example": "Fluence (J/cm²) is critical for precision laser cleaning..."
       },
-      "usage": {
+      "website": {
+        "type": "string",
+        "required": true,
+        "description": "URL (https://www.z-beam.com/[subject]-laser-cleaning)",
+        "example": "https://www.z-beam.com/fluence-laser-cleaning"
+      },
+      "author": {
         "type": "object",
         "required": true,
         "properties": {
-          "description": {
+          "name": {
             "type": "string",
-            "required": true
+            "required": true,
+            "description": "Author or organization name",
+            "example": "Laser Technology Institute"
           },
-          "industries": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "required": true
-          },
-          "applications": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "required": true
-          },
-          "materials": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "required": true
+          "credentials": {
+            "type": "string",
+            "required": true,
+            "description": "Credentials for E-A-T",
+            "example": "Industry Leader in Laser Cleaning Technology"
           }
         }
       },
-      "synonyms": {
+      "keywords": {
         "type": "array",
         "items": {
           "type": "string"
         },
-        "required": false
+        "required": true,
+        "description": "10–12 technical keywords for SEO and search",
+        "example": ["laser fluence calibration", "pulsed laser ablation", "surface preparation"]
       },
-      "relatedTerms": {
+      "tags": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "required": true,
+        "description": "5–8 hyphenated tags for on-site navigation",
+        "example": ["fluence-calibration", "laser-cleaning", "surface-treatment"]
+      },
+      "applications": {
         "type": "array",
         "required": true,
         "items": {
@@ -130,101 +124,248 @@
           "properties": {
             "name": {
               "type": "string",
-              "required": true
+              "required": true,
+              "description": "Application name",
+              "example": "Aerospace Coating Removal"
             },
             "description": {
               "type": "string",
-              "required": true
-            },
-            "relationship": {
-              "type": "string",
-              "required": false
+              "required": true,
+              "description": "Application description (50–75 words)",
+              "example": "Fluence of 2–10 J/cm² removes coatings..."
             }
           }
-        }
+        },
+        "description": "3–4 applications of the term"
       },
-      "technicalMetrics": {
+      "technicalSpecifications": {
+        "type": "object",
+        "required": true,
+        "properties": {
+          "laserType": {
+            "type": "string",
+            "description": "Laser type",
+            "example": "Hafnium-doped fiber"
+          },
+          "wavelength": {
+            "type": "string",
+            "description": "Wavelength",
+            "example": "1064nm ±2nm"
+          },
+          "powerRange": {
+            "type": "string",
+            "description": "Power range",
+            "example": "50–1000W pulsed"
+          },
+          "fluenceRange": {
+            "type": "string",
+            "description": "Fluence range",
+            "example": "0.1–15 J/cm²"
+          },
+          "pulseDuration": {
+            "type": "string",
+            "description": "Pulse duration",
+            "example": "10–200ns"
+          }
+        },
+        "description": "Technical parameters of the term"
+      },
+      "relatedTerms": {
+        "type": "array",
+        "required": true,
+        "items": {
+          "type": "object",
+          "properties": {
+            "term": {
+              "type": "string",
+              "required": true,
+              "description": "Related term",
+              "example": "Ablation Threshold"
+            },
+            "description": {
+              "type": "string",
+              "required": true,
+              "description": "Term description (50–75 words)",
+              "example": "Minimum energy density required for material removal..."
+            }
+          }
+        },
+        "description": "2–3 related terms"
+      },
+      "facilities": {
+        "type": "array",
+        "required": false,
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "required": true,
+              "description": "Facility name",
+              "example": "Z-Beam Tech Center"
+            },
+            "location": {
+              "type": "string",
+              "required": true,
+              "description": "California city, county, state",
+              "example": "San Diego, San Diego County, California"
+            },
+            "coordinates": {
+              "type": "string",
+              "required": true,
+              "description": "Geographic coordinates",
+              "example": "32.7157° N, 117.1611° W"
+            },
+            "description": {
+              "type": "string",
+              "required": true,
+              "description": "Facility description (50–75 words)",
+              "example": "R&D hub for laser cleaning..."
+            }
+          }
+        },
+        "description": "1–3 California facilities"
+      },
+      "regulatoryStandards": {
+        "type": "array",
+        "required": true,
+        "items": {
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string",
+              "required": true,
+              "description": "Standard code",
+              "example": "ANSI Z136.1"
+            },
+            "description": {
+              "type": "string",
+              "required": true,
+              "description": "Compliance description (50–75 words)",
+              "example": "Class IV laser safety, requiring interlocks..."
+            }
+          }
+        },
+        "description": "2–3 compliance standards"
+      },
+      "challenges": {
+        "type": "array",
+        "required": true,
+        "items": {
+          "type": "object",
+          "properties": {
+            "issue": {
+              "type": "string",
+              "required": true,
+              "description": "Technical challenge",
+              "example": "Thermal Damage"
+            },
+            "solution": {
+              "type": "string",
+              "required": true,
+              "description": "Solution (50–75 words)",
+              "example": "Pulse shaping adjusts fluence..."
+            }
+          }
+        },
+        "description": "1–3 challenges and solutions"
+      },
+      "outcomes": {
+        "type": "array",
+        "required": true,
+        "items": {
+          "type": "object",
+          "properties": {
+            "result": {
+              "type": "string",
+              "required": true,
+              "description": "Measurable result",
+              "example": "99.7% contaminant removal"
+            },
+            "metric": {
+              "type": "string",
+              "required": true,
+              "description": "Measurement standard",
+              "example": "ASTM D3359"
+            }
+          }
+        },
+        "description": "2–3 measurable outcomes"
+      },
+      "environmentalImpact": {
         "type": "object",
         "required": true,
         "properties": {
           "description": {
             "type": "string",
-            "required": true
+            "required": true,
+            "description": "Environmental impact summary (100–150 words)",
+            "example": "Fluence-based laser cleaning reduces chemical waste..."
           },
           "metrics": {
             "type": "array",
-            "required": true,
+            "required": false,
             "items": {
               "type": "object",
               "properties": {
                 "name": {
                   "type": "string",
-                  "required": true
+                  "required": true,
+                  "example": "Waste Reduction"
+                },
+                "value": {
+                  "type": "string",
+                  "required": true,
+                  "example": "90%"
                 },
                 "unit": {
                   "type": "string",
-                  "required": true
-                },
-                "typicalValues": {
-                  "type": "string",
-                  "required": true
-                },
-                "optimalContext": {
-                  "type": "string",
-                  "required": false
-                },
-                "source": {
-                  "type": "string",
-                  "required": false
+                  "required": false,
+                  "example": "%"
                 }
               }
             }
-          }
-        }
-      },
-      "businessImpact": {
-        "type": "object",
-        "required": false,
-        "properties": {
-          "costImplications": {
-            "type": "string",
-            "required": false
-          },
-          "efficiencyGains": {
-            "type": "string",
-            "required": false
-          },
-          "marketAdoption": {
-            "type": "string",
-            "required": false
           }
         }
       }
     },
     "jsonLD": {
       "@type": "DefinedTerm",
-      "requiredProperties": [
-        "name",
-        "description",
-        "termCode",
-        "inDefinedTermSet"
-      ],
-      "recommendedProperties": [
-        "url",
-        "relatedTerms",
-        "keywords",
-        "applicationCategory"
-      ]
+      "requiredProperties": ["@context", "@type", "name", "description", "author", "url", "keywords"],
+      "recommendedProperties": ["inDefinedTermSet", "relatedLink", "mentions", "datePublished", "dateModified"],
+      "mappings": {
+        "name": "name",
+        "description": "description",
+        "website": "url",
+        "author.name": "author.name",
+        "author.credentials": "author.description",
+        "keywords": "keywords",
+        "tags": "about.category",
+        "applications": "inDefinedTermSet",
+        "technicalSpecifications": "about.additionalProperty",
+        "facilities": "about.location",
+        "regulatoryStandards": "about.legislationApplied",
+        "challenges": "mentions",
+        "outcomes": "about.potentialAction",
+        "relatedTerms": "relatedLink",
+        "environmentalImpact.description": "about.environmentalImpact",
+        "environmentalImpact.metrics": "about.potentialAction"
+      }
     },
     "validation": {
-      "requiredSections": [
-        "Definition",
-        "Usage",
-        "TechnicalDetails",
-        "RelatedTerms",
-        "PracticalExamples"
-      ]
+      "requiredSections": ["overview", "applications", "technicalSpecifications", "relatedTerms", "regulatoryStandards", "challenges", "outcomes", "environmentalImpact"],
+      "jsonLD": {
+        "minLength": 1000,
+        "maxLength": 2000,
+        "schemaOrgType": "DefinedTerm",
+        "schemaOrgCompliance": true,
+        "validPropertiesOnly": true
+      },
+      "frontmatter": {
+        "requiredFields": ["name", "description", "website", "author", "keywords", "tags", "applications", "technicalSpecifications", "regulatoryStandards", "challenges", "outcomes", "environmentalImpact"],
+        "minLength": 2000,
+        "maxLength": 3000
+      }
     }
   }
 }
-

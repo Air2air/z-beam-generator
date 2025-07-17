@@ -1,141 +1,114 @@
 {
   "applicationProfile": {
     "name": "application",
-    "version": "1.2",
+    "version": "1.3",
     "schemaType": "LaserCleaningApplicationProfile",
     "generatorConfig": {
       "tags": {
-        "includeIndustries": true,
-        "includeSubstrates": true,
-        "includeApplications": true,
-        "primaryKeywords": [
-          "surface preparation",
-          "industrial cleaning",
-          "laser technology"
-        ]
+        "includeTags": true,
+        "maxTags": 8,
+        "maxKeywords": 12,
+        "primaryKeywords": ["laser cleaning", "{subject} laser cleaning"]
       },
       "jsonld": {
-        "schemaType": "TechArticle",
-        "includeIndustries": true,
-        "includeSubstrates": true,
-        "includeApplications": true,
+        "schemaType": "TechnicalArticle",
         "additionalProperties": [
           {
-            "name": "technicalContext",
-            "value": "Key parameters and outcomes of {subject}"
+            "name": "applicationCategory",
+            "value": "Laser Cleaning Technology"
           }
-        ]
+        ],
+        "requiredProperties": ["@context", "@type", "headline", "description", "author", "url", "keywords", "about"],
+        "recommendedProperties": ["hasPart", "publisher", "mentions", "datePublished", "dateModified"]
       },
       "frontmatter": {
-        "category": "LaserApplications"
+        "category": "LaserApplications",
+        "minLength": 2000,
+        "maxLength": 3000
       }
     },
     "sections": {
       "overview": {
         "required": true,
-        "prompt": "Write a 100-150 word overview of {subject} laser cleaning application, focusing on definition, benefits, and key industries, emphasizing efficiency and value."
+        "prompt": "Write a 150–200 word technical overview of {subject} laser cleaning application, focusing on definition, benefits, and key industries."
       },
-      "parameters": {
+      "applications": {
         "required": true,
-        "prompt": "Summarize key laser parameters for {subject}, including wavelength, power, pulse duration, with essential ranges and units."
+        "prompt": "Provide 3–4 use cases for {subject}, with name and 50–75 word description, emphasizing technical outcomes."
+      },
+      "technicalSpecifications": {
+        "required": true,
+        "prompt": "Summarize key laser parameters for {subject}, including wavelength, power, and fluence, with essential ranges and units."
       },
       "outcomes": {
         "required": true,
-        "prompt": "Briefly explain outcomes of {subject}, including main benefits and examples."
+        "prompt": "Provide 2–3 measurable outcomes for {subject}, with result and metric (e.g., ASTM standards)."
       },
       "challenges": {
         "required": true,
-        "prompt": "Outline main challenges of {subject}, with concise solutions."
+        "prompt": "Outline 1–3 technical challenges for {subject}, with 50–75 word solutions."
       },
-      "performance": {
+      "environmentalImpact": {
         "required": true,
-        "prompt": "Summarize performance metrics for {subject}, like removal rate and roughness, with key values and units."
-      },
-      "comparison": {
-        "required": true,
-        "prompt": "Briefly compare {subject} to traditional methods in speed, cost, and effectiveness, with key advantages."
-      },
-      "safety": {
-        "required": true,
-        "prompt": "Summarize safety considerations and key standards for {subject}."
-      },
-      "caseStudies": {
-        "required": false,
-        "prompt": "Provide brief case studies of {subject}, with industries and outcomes."
-      },
-      "innovations": {
-        "required": false,
-        "prompt": "Outline key innovations in {subject}."
+        "prompt": "Summarize environmental impact of {subject}, focusing on waste reduction and energy efficiency (100–150 words)."
       }
     },
-    "applicationProfile": {
-      "primaryAudience": {
-        "type": "string",
-        "required": true
-      },
-      "secondaryAudience": {
-        "type": "string",
-        "required": false
-      },
-      "industries": {
-        "type": "array",
-        "items": {
-          "type": "string"
-        },
-        "required": true
-      },
-      "substrates": {
-        "type": "array",
-        "items": {
-          "type": "string"
-        },
-        "required": true
-      },
-      "schemaOrgType": {
+    "profile": {
+      "name": {
         "type": "string",
         "required": true,
-        "default": "TechArticle"
+        "description": "Application name (e.g., 'Aerospace Coating Removal')",
+        "example": "{subject}"
       },
-      "url": {
+      "description": {
         "type": "string",
-        "required": false
+        "required": true,
+        "description": "Technical overview (150–200 words)",
+        "example": "Aerospace coating removal uses laser cleaning to strip epoxy..."
       },
-      "laserParameters": {
+      "website": {
+        "type": "string",
+        "required": true,
+        "description": "URL (https://www.z-beam.com/[subject]-laser-cleaning)",
+        "example": "https://www.z-beam.com/aerospace-coating-removal-laser-cleaning"
+      },
+      "author": {
         "type": "object",
         "required": true,
         "properties": {
-          "description": {
+          "name": {
             "type": "string",
-            "required": true
-          },
-          "parameters": {
-            "type": "array",
             "required": true,
-            "items": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": "string",
-                  "required": true
-                },
-                "unit": {
-                  "type": "string",
-                  "required": true
-                },
-                "optimalRange": {
-                  "type": "string",
-                  "required": true
-                },
-                "source": {
-                  "type": "string",
-                  "required": false
-                }
-              }
-            }
+            "description": "Author or organization name",
+            "example": "Laser Technology Institute"
+          },
+          "credentials": {
+            "type": "string",
+            "required": true,
+            "description": "Credentials for E-A-T",
+            "example": "Industry Leader in Laser Cleaning Technology"
           }
         }
       },
-      "outcomes": {
+      "keywords": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "required": true,
+        "description": "10–12 technical keywords for SEO and search",
+        "example": ["aerospace coating removal", "laser cleaning", "surface preparation"]
+      },
+      "tags": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "required": true,
+        "description": "5–8 hyphenated tags for on-site navigation",
+        "example": ["coating-removal", "laser-cleaning", "aerospace"]
+      },
+      "applications": {
         "type": "array",
         "required": true,
         "items": {
@@ -143,18 +116,107 @@
           "properties": {
             "name": {
               "type": "string",
-              "required": true
+              "required": true,
+              "description": "Use case name",
+              "example": "Turbine Blade Cleaning"
             },
             "description": {
               "type": "string",
-              "required": true
-            },
-            "quantitativeResult": {
-              "type": "string",
-              "required": false
+              "required": true,
+              "description": "Use case description (50–75 words)",
+              "example": "Fluence of 2–10 J/cm² removes coatings from turbine blades..."
             }
           }
-        }
+        },
+        "description": "3–4 specific use cases"
+      },
+      "technicalSpecifications": {
+        "type": "object",
+        "required": true,
+        "properties": {
+          "laserType": {
+            "type": "string",
+            "description": "Type of laser",
+            "example": "Hafnium-doped fiber"
+          },
+          "wavelength": {
+            "type": "string",
+            "description": "Wavelength",
+            "example": "1064nm ±2nm"
+          },
+          "powerRange": {
+            "type": "string",
+            "description": "Power range",
+            "example": "50–1000W pulsed"
+          },
+          "fluenceRange": {
+            "type": "string",
+            "description": "Fluence range",
+            "example": "0.1–15 J/cm²"
+          },
+          "pulseDuration": {
+            "type": "string",
+            "description": "Pulse duration",
+            "example": "10–200ns"
+          }
+        },
+        "description": "Key technical parameters"
+      },
+      "facilities": {
+        "type": "array",
+        "required": false,
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "required": true,
+              "description": "Facility name",
+              "example": "Z-Beam Tech Center"
+            },
+            "location": {
+              "type": "string",
+              "required": true,
+              "description": "California city, county, state",
+              "example": "San Diego, San Diego County, California"
+            },
+            "coordinates": {
+              "type": "string",
+              "required": true,
+              "description": "Geographic coordinates",
+              "example": "32.7157° N, 117.1611° W"
+            },
+            "description": {
+              "type": "string",
+              "required": true,
+              "description": "Facility description (50–75 words)",
+              "example": "R&D hub for laser cleaning applications..."
+            }
+          }
+        },
+        "description": "1–3 California facilities"
+      },
+      "regulatoryStandards": {
+        "type": "array",
+        "required": true,
+        "items": {
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string",
+              "required": true,
+              "description": "Standard code",
+              "example": "ANSI Z136.1"
+            },
+            "description": {
+              "type": "string",
+              "required": true,
+              "description": "Compliance description (50–75 words)",
+              "example": "Class IV laser safety, requiring interlocks..."
+            }
+          }
+        },
+        "description": "2–3 compliance standards"
       },
       "challenges": {
         "type": "array",
@@ -162,162 +224,117 @@
         "items": {
           "type": "object",
           "properties": {
-            "name": {
+            "issue": {
               "type": "string",
-              "required": true
-            },
-            "description": {
-              "type": "string",
-              "required": true
+              "required": true,
+              "description": "Technical challenge",
+              "example": "Thermal Damage"
             },
             "solution": {
               "type": "string",
-              "required": false
+              "required": true,
+              "description": "Solution (50–75 words)",
+              "example": "Pulse shaping adjusts fluence..."
             }
           }
-        }
+        },
+        "description": "1–3 challenges and solutions"
       },
-      "performanceMetrics": {
+      "outcomes": {
+        "type": "array",
+        "required": true,
+        "items": {
+          "type": "object",
+          "properties": {
+            "result": {
+              "type": "string",
+              "required": true,
+              "description": "Measurable result",
+              "example": "99.7% coating removal"
+            },
+            "metric": {
+              "type": "string",
+              "required": true,
+              "description": "Measurement standard",
+              "example": "ASTM D3359"
+            }
+          }
+        },
+        "description": "2–3 measurable outcomes"
+      },
+      "environmentalImpact": {
         "type": "object",
         "required": true,
         "properties": {
           "description": {
             "type": "string",
-            "required": true
+            "required": true,
+            "description": "Environmental impact summary (100–150 words)",
+            "example": "Laser cleaning reduces chemical waste by 90%..."
           },
           "metrics": {
             "type": "array",
-            "required": true,
+            "required": false,
             "items": {
               "type": "object",
               "properties": {
                 "name": {
                   "type": "string",
-                  "required": true
+                  "required": true,
+                  "example": "Waste Reduction"
+                },
+                "value": {
+                  "type": "string",
+                  "required": true,
+                  "example": "90%"
                 },
                 "unit": {
                   "type": "string",
-                  "required": true
-                },
-                "optimalRange": {
-                  "type": "string",
-                  "required": true
-                },
-                "source": {
-                  "type": "string",
-                  "required": false
+                  "required": false,
+                  "example": "%"
                 }
               }
-            }
-          }
-        }
-      },
-      "cleaningSpeedComparison": {
-        "type": "object",
-        "required": true,
-        "properties": {
-          "description": {
-            "type": "string",
-            "required": true
-          },
-          "methods": {
-            "type": "array",
-            "required": true,
-            "items": {
-              "type": "object",
-              "properties": {
-                "method": {
-                  "type": "string",
-                  "required": true
-                },
-                "speed": {
-                  "type": "string",
-                  "required": true
-                },
-                "source": {
-                  "type": "string",
-                  "required": false
-                }
-              }
-            }
-          }
-        }
-      },
-      "costComparison": {
-        "type": "object",
-        "required": true,
-        "properties": {
-          "description": {
-            "type": "string",
-            "required": true
-          },
-          "methods": {
-            "type": "array",
-            "required": true,
-            "items": {
-              "type": "object",
-              "properties": {
-                "method": {
-                  "type": "string",
-                  "required": true
-                },
-                "cost": {
-                  "type": "string",
-                  "required": true
-                },
-                "source": {
-                  "type": "string",
-                  "required": false
-                }
-              }
-            }
-          }
-        }
-      },
-      "caseStudies": {
-        "type": "array",
-        "required": false,
-        "items": {
-          "type": "object",
-          "properties": {
-            "title": {
-              "type": "string",
-              "required": true
-            },
-            "description": {
-              "type": "string",
-              "required": true
-            },
-            "url": {
-              "type": "string",
-              "required": false
-            },
-            "industry": {
-              "type": "string",
-              "required": false
-            },
-            "outcome": {
-              "type": "string",
-              "required": false
             }
           }
         }
       }
     },
     "jsonLD": {
-      "@type": "TechArticle",
-      "recommendedProperties": ["industry", "applicationCategory"]
+      "@type": "TechnicalArticle",
+      "requiredProperties": ["@context", "@type", "headline", "description", "author", "url", "keywords", "about"],
+      "recommendedProperties": ["hasPart", "publisher", "mentions", "datePublished", "dateModified"],
+      "mappings": {
+        "name": "headline",
+        "description": "description",
+        "website": "url",
+        "author.name": "author.name",
+        "author.credentials": "author.description",
+        "keywords": "keywords",
+        "tags": "about.category",
+        "applications": "hasPart",
+        "technicalSpecifications": "about.additionalProperty",
+        "facilities": "publisher.location",
+        "regulatoryStandards": "about.legislationApplied",
+        "challenges": "mentions",
+        "outcomes": "about.potentialAction",
+        "environmentalImpact.description": "about.environmentalImpact",
+        "environmentalImpact.metrics": "about.potentialAction"
+      }
     },
     "validation": {
-      "requiredSections": [
-        "Overview",
-        "Parameters",
-        "Outcomes",
-        "Challenges",
-        "Performance",
-        "Comparison",
-        "Safety"
-      ]
+      "requiredSections": ["overview", "applications", "technicalSpecifications", "outcomes", "challenges", "environmentalImpact"],
+      "jsonLD": {
+        "minLength": 1000,
+        "maxLength": 2000,
+        "schemaOrgType": "TechnicalArticle",
+        "schemaOrgCompliance": true,
+        "validPropertiesOnly": true
+      },
+      "frontmatter": {
+        "requiredFields": ["name", "description", "website", "author", "keywords", "tags", "applications", "technicalSpecifications", "regulatoryStandards", "outcomes", "environmentalImpact"],
+        "minLength": 2000,
+        "maxLength": 3000
+      }
     }
   }
 }

@@ -1,16 +1,17 @@
-"""Simplified frontmatter generator - SCHEMA-DRIVEN ONLY."""
+"""Frontmatter generator updated for new schema structures."""
 
 import logging
 import yaml
+import re
 from pathlib import Path
 from typing import Dict, Any, Optional
 from api_client import APIClient
-from .yaml_formatter import YAMLFormatter
+from utils.yaml_formatter import YAMLFormatter
 
 logger = logging.getLogger(__name__)
 
 class FrontmatterGenerator:
-    """Generates frontmatter ONLY from schema definitions."""
+    """Generates frontmatter from schema definitions with support for new schema structures."""
     
     def __init__(self, context: Dict[str, Any], schema: Dict[str, Any], ai_provider: str):
         self.context = context
@@ -32,46 +33,39 @@ class FrontmatterGenerator:
         try:
             prompt = self._build_prompt()
             
-            if not prompt:
-                logger.error("Failed to build prompt - no schema fields available")
+            # Generate content using API
+            # Change from 'generate_content' to 'generate' which is likely the actual method name
+            response = self.api_client.generate(prompt)
+            
+            # Clean and format the response
+            frontmatter = YAMLFormatter.clean_response(response)
+            
+            # Check if we need to expand the content
+            if len(frontmatter) < 3500:
+                logger.warning(f"Frontmatter too short ({len(frontmatter)} chars), expanding content...")
+                try:
+                    # Apply extract_first_document_only before expanding
+                    frontmatter = YAMLFormatter.extract_first_document_only(frontmatter)
+                    expanded = self._expand_frontmatter_content(frontmatter)
+                    logger.info(f"Expanded to {len(expanded)} characters")
+                    frontmatter = expanded
+                except Exception as e:
+                    logger.error(f"Error expanding frontmatter: {e}")
+                    # Continue with original frontmatter
+        
+            # Validate the frontmatter
+            try:
+                # Apply extract_first_document_only again before parsing
+                clean_frontmatter = YAMLFormatter.extract_first_document_only(frontmatter)
+                # Test parse to ensure it's valid
+                parsed = yaml.safe_load(YAMLFormatter.extract_first_document_only(
+                    re.sub(r'^---\s*|\s*---$', '', clean_frontmatter)
+                ))
+                return frontmatter
+            except yaml.YAMLError as e:
+                logger.error(f"Failed to parse YAML response: {e}")
                 return None
             
-            # Use prompt config for parameters
-            max_tokens = self.prompt_config.get("parameters", {}).get("max_tokens", 8000)
-            response = self.api_client.generate(prompt, max_tokens=max_tokens)
-            
-            if not response:
-                logger.error("Failed to generate frontmatter")
-                return None
-            
-            # Clean and parse response using external formatter
-            cleaned_response = YAMLFormatter.clean_response(response)
-            
-            # Validate YAML structure before parsing
-            if not YAMLFormatter.validate_yaml_structure(cleaned_response):
-                logger.error("YAML structure validation failed")
-                return None
-                
-            # CHECK LENGTH AND EXPAND IF NEEDED - BEFORE VALIDATION
-            yaml_length = len(cleaned_response)
-            if yaml_length < 5000:
-                logger.warning(f"Frontmatter too short ({yaml_length} chars), expanding content...")
-                cleaned_response = self._expand_frontmatter_content(cleaned_response)
-                logger.info(f"Expanded to {len(cleaned_response)} characters")
-            
-            # Now validate the expanded content
-            frontmatter = yaml.safe_load(cleaned_response)
-            if not self._validate_frontmatter(frontmatter):
-                logger.error("Frontmatter validation failed even after expansion")
-                # OVERRIDE: Return expanded content anyway
-                return cleaned_response
-            
-            logger.info("Successfully generated and expanded schema-driven frontmatter")
-            return cleaned_response
-            
-        except yaml.YAMLError as e:
-            logger.error(f"Failed to parse YAML response: {e}")
-            return None
         except Exception as e:
             logger.error(f"Frontmatter generation failed: {e}", exc_info=True)
             return None
@@ -107,13 +101,14 @@ class FrontmatterGenerator:
         )
     
     def _build_schema_template(self) -> str:
-        """Build template using schema structure."""
-        # Handle different profile naming conventions
+        """Build template using updated schema structure."""
+        # Updated profile key handling for new schema organization
         profile_keys = [
             f"{self.article_type}Profile",  # Standard: "applicationProfile"
-            "termProfile",                   # Thesaurus: "termProfile"
-            f"{self.article_type}_profile",  # Snake case
-            f"{self.article_type.title()}Profile"  # Title case
+            "termProfile",                  # Thesaurus: "termProfile"
+            f"{self.article_type}_profile", # Snake case
+            f"{self.article_type.title()}Profile",  # Title case
+            "schema"                        # New unified schema key
         ]
         
         profile = None
@@ -124,14 +119,158 @@ class FrontmatterGenerator:
                 break
         
         if profile:
-            return self._build_schema_template_from_profile(profile)
+            # Check if we have a nested structure with fieldsets
+            if "fieldsets" in profile:
+                return self._build_template_from_fieldsets(profile["fieldsets"])
+            # Check if we have a nested structure with fields
+            elif "fields" in profile:
+                return self._build_template_from_fields(profile["fields"])
+            # Otherwise use the existing profile approach
+            else:
+                return self._build_schema_template_from_profile(profile)
         else:
             logger.error(f"❌ No profile found. Tried keys: {profile_keys}")
             logger.error(f"❌ Available schema keys: {list(self.schema.keys())}")
             return None  # NO FALLBACK - FAIL FAST
     
+    def _build_template_from_fieldsets(self, fieldsets: Dict[str, Any]) -> str:
+        """Build template from the new fieldset-based schema structure."""
+        template_parts = []
+        
+        # Add context-specific header
+        template_parts.append(f"🚨 LASER CLEANING CONTEXT: This is about {self.subject} in laser cleaning applications")
+        template_parts.append(f"🚨 FOCUS: Industrial surface treatment, rust removal, corrosion control, metal restoration")
+        template_parts.append(f"🚨 NOT ABOUT: Programming languages, software, or unrelated topics")
+        template_parts.append("=" * 60)
+        
+        # Count total fields across all fieldsets
+        total_fields = 0
+        for fieldset_name, fieldset in fieldsets.items():
+            if "fields" in fieldset:
+                total_fields += len(fieldset["fields"])
+        
+        template_parts.append(f"🚨 CRITICAL: ALL {total_fields} FIELDS BELOW ARE MANDATORY")
+        template_parts.append("=" * 60)
+        
+        # Process each fieldset
+        field_index = 1
+        for fieldset_name, fieldset in fieldsets.items():
+            template_parts.append(f"\n## FIELDSET: {fieldset_name}")
+            template_parts.append("-" * 50)
+            
+            if "description" in fieldset:
+                template_parts.append(f"Purpose: {fieldset['description']}")
+                
+            if "fields" in fieldset:
+                for field_name, field_def in fieldset["fields"].items():
+                    template_parts.append(f"\n🚨 MANDATORY FIELD {field_index}/{total_fields}: {field_name}")
+                    template_parts.append("=" * 50)
+                    template_parts.append(f"🚨 THIS FIELD IS REQUIRED - MUST APPEAR IN OUTPUT")
+                    
+                    # Add field type and description
+                    field_type = field_def.get("type", "unknown")
+                    field_description = field_def.get("description", "No description")
+                    template_parts.append(f"Type: {field_type}")
+                    template_parts.append(f"Description: {field_description}")
+                    
+                    # Add example with processing instruction
+                    if "example" in field_def:
+                        example = field_def["example"]
+                        if isinstance(example, str):
+                            processed_value = self._replace_placeholders(example)
+                            template_parts.append(f"Example: {processed_value}")
+                            template_parts.append(f"🚨 GENERATE: Comprehensive 300-500 character content for {field_name}")
+                        elif isinstance(example, list):
+                            processed_items = [self._replace_placeholders(str(item)) for item in example]
+                            template_parts.append(f"Examples: {processed_items}")
+                            template_parts.append(f"🚨 GENERATE: Expanded array with 5-10 entries for {field_name}")
+                    
+                    template_parts.append(f"🚨 FAILURE TO INCLUDE {field_name} WILL RESULT IN REJECTION")
+                    template_parts.append("")  # Add spacing
+                    field_index += 1
+        
+        # Add validation footer
+        template_parts.append("=" * 60)
+        template_parts.append("🚨 FINAL VALIDATION CHECKLIST:")
+        template_parts.append("Before submitting, verify ALL required fields are in your YAML:")
+        
+        # Create a list of all fields across fieldsets for validation
+        all_fields = []
+        for fieldset_name, fieldset in fieldsets.items():
+            if "fields" in fieldset:
+                all_fields.extend(fieldset["fields"].keys())
+        
+        for field in all_fields:
+            template_parts.append(f"✓ {field}")
+        
+        template_parts.append(f"🚨 TOTAL REQUIRED FIELDS: {len(all_fields)}")
+        template_parts.append("🚨 ALL FIELDS MUST BE PRESENT OR OUTPUT WILL BE REJECTED")
+        template_parts.append("=" * 60)
+        
+        return '\n'.join(template_parts)
+    
+    def _build_template_from_fields(self, fields: Dict[str, Any]) -> str:
+        """Build template from direct fields structure."""
+        template_parts = []
+        
+        # Add context-specific header
+        template_parts.append(f"🚨 LASER CLEANING CONTEXT: This is about {self.subject} in laser cleaning applications")
+        template_parts.append(f"🚨 FOCUS: Industrial surface treatment, rust removal, corrosion control, metal restoration")
+        template_parts.append(f"🚨 NOT ABOUT: Programming languages, software, or unrelated topics")
+        template_parts.append("=" * 60)
+        
+        # Add header with field count
+        field_count = len(fields)
+        template_parts.append(f"🚨 CRITICAL: ALL {field_count} FIELDS BELOW ARE MANDATORY")
+        template_parts.append("=" * 60)
+        template_parts.append("EVERY FIELD MUST BE PROCESSED - NO EXCEPTIONS")
+        template_parts.append("=" * 60)
+        
+        # Process each field
+        field_index = 1
+        for field_name, field_def in fields.items():
+            template_parts.append(f"\n🚨 MANDATORY FIELD {field_index}/{field_count}: {field_name}")
+            template_parts.append("=" * 50)
+            template_parts.append(f"🚨 THIS FIELD IS REQUIRED - MUST APPEAR IN OUTPUT")
+            
+            # Add field type and description
+            field_type = field_def.get("type", "unknown")
+            field_description = field_def.get("description", "No description")
+            template_parts.append(f"Type: {field_type}")
+            template_parts.append(f"Description: {field_description}")
+            
+            # Add example with processing instruction
+            if "example" in field_def:
+                example = field_def["example"]
+                if isinstance(example, str):
+                    processed_value = self._replace_placeholders(example)
+                    template_parts.append(f"Example: {processed_value}")
+                    template_parts.append(f"🚨 GENERATE: Comprehensive 300-500 character content for {field_name}")
+                elif isinstance(example, list):
+                    processed_items = [self._replace_placeholders(str(item)) for item in example]
+                    template_parts.append(f"Examples: {processed_items}")
+                    template_parts.append(f"🚨 GENERATE: Expanded array with 5-10 entries for {field_name}")
+            
+            template_parts.append(f"🚨 FAILURE TO INCLUDE {field_name} WILL RESULT IN REJECTION")
+            template_parts.append("")  # Add spacing
+            field_index += 1
+        
+        # Add validation footer
+        template_parts.append("=" * 60)
+        template_parts.append("🚨 FINAL VALIDATION CHECKLIST:")
+        template_parts.append("Before submitting, verify ALL fields below are in your YAML:")
+        
+        for field_name in fields:
+            template_parts.append(f"✓ {field_name}")
+        
+        template_parts.append(f"🚨 TOTAL REQUIRED FIELDS: {field_count}")
+        template_parts.append("🚨 ALL FIELDS MUST BE PRESENT OR OUTPUT WILL BE REJECTED")
+        template_parts.append("=" * 60)
+        
+        return '\n'.join(template_parts)
+    
     def _build_schema_template_from_profile(self, profile: Dict[str, Any]) -> str:
-        """Build dynamic schema template with field-specific instructions."""
+        """Build dynamic schema template with field-specific instructions (legacy method)."""
         template_parts = []
         
         # Add context-specific header
@@ -212,7 +351,7 @@ class FrontmatterGenerator:
         return value
     
     def _validate_frontmatter(self, frontmatter: Dict[str, Any]) -> bool:
-        """Validate frontmatter structure and field coverage."""
+        """Validate frontmatter against updated schema structure."""
         if not isinstance(frontmatter, dict):
             logger.error("Frontmatter is not a dictionary")
             return False
@@ -222,32 +361,55 @@ class FrontmatterGenerator:
         if self.article_type == "thesaurus":
             min_length = 2000  # Thesaurus entries are naturally shorter
         elif self.article_type == "region":
-            min_length = 2500  # Region articles are medium length - REDUCED
+            min_length = 2500  # Region articles are medium length
         else:
-            min_length = 5000  # Application articles are longer
-            
+            min_length = 5000  # Application and material articles are longer
+                
         if content_length < min_length:
             logger.error(f"Frontmatter too short: {content_length} < {min_length}")
             return False
         
-        # Check field coverage - handle different profile naming conventions
+        # Check field coverage - handle different schema structures
+        profile = None
+        
+        # Try to find the profile using various keys
         profile_keys = [
             f"{self.article_type}Profile",
             "termProfile",
             f"{self.article_type}_profile",
-            f"{self.article_type.title()}Profile"
+            f"{self.article_type.title()}Profile",
+            "schema"
         ]
         
-        profile = None
         for key in profile_keys:
             if key in self.schema:
                 profile = self.schema[key]
                 break
         
-        if profile:
+        if not profile:
+            logger.error("No profile found for validation")
+            return False
+        
+        # Get expected fields based on schema structure
+        expected_fields = []
+        
+        # Handle fieldset-based structure
+        if "fieldsets" in profile:
+            for fieldset_name, fieldset in profile["fieldsets"].items():
+                if "fields" in fieldset:
+                    expected_fields.extend(fieldset["fields"].keys())
+        
+        # Handle direct fields structure
+        elif "fields" in profile:
+            expected_fields = list(profile["fields"].keys())
+        
+        # Handle legacy structure
+        else:
             expected_fields = [field for field, field_def in profile.items() 
                               if isinstance(field_def, dict) and "example" in field_def]
-            
+        
+        # Check for missing fields
+        if expected_fields:
             missing_fields = []
             for field in expected_fields:
                 if field not in frontmatter:
@@ -261,75 +423,26 @@ class FrontmatterGenerator:
 
         return True
     
-    def _validate_and_enhance_frontmatter(self, frontmatter_yaml):
-        """Validate frontmatter length and expand it if necessary."""
-        try:
-            # Check if the content meets minimum length requirements
-            if len(frontmatter_yaml) < 5000:
-                logger.warning(f"Frontmatter too short: {len(frontmatter_yaml)} < 5000, attempting expansion...")
-                
-                # Parse the frontmatter to enhance it
-                frontmatter = yaml.safe_load(frontmatter_yaml)
-                
-                # 1. Fix keywords format if needed
-                if "keywords" in frontmatter and isinstance(frontmatter["keywords"], list):
-                    # Check if keywords need reformatting (if they contain dictionaries)
-                    needs_reformatting = any(isinstance(k, dict) for k in frontmatter["keywords"])
-                    if needs_reformatting:
-                        # Extract just the keyword values
-                        fixed_keywords = []
-                        for k in frontmatter["keywords"]:
-                            if isinstance(k, dict) and "name" in k:
-                                fixed_keywords.append(k["name"])
-                            elif isinstance(k, str):
-                                fixed_keywords.append(k)
-                        frontmatter["keywords"] = fixed_keywords
-                
-                # 2. Expand description if it exists
-                if "description" in frontmatter:
-                    original_desc = frontmatter["description"]
-                    if len(original_desc) < 500:  # If description is too short
-                        frontmatter["description"] = original_desc + "\n\n" + \
-                            f"Located in California, {frontmatter.get('name', 'this region')} offers " + \
-                            "advanced laser cleaning services for industrial applications. " + \
-                            "With state-of-the-art facilities and specialized expertise in surface " + \
-                            "preparation, the area has become a hub for precision cleaning technologies. " + \
-                            "Local manufacturing centers utilize cutting-edge equipment for optimal results " + \
-                            "across various industrial sectors including aerospace, automotive, and electronics."
-                
-                # 3. Add technical details section if missing
-                if "technicalDetails" not in frontmatter:
-                    frontmatter["technicalDetails"] = {
-                        "laserTypes": ["Fiber", "Nd:YAG", "CO2", "Pulsed"],
-                        "powerRange": "20W - 1000W",
-                        "wavelengthRange": "532nm - 10.6μm",
-                        "pulseFrequency": "10Hz - 50kHz",
-                        "scanningSpeed": "100-5000 mm/s",
-                        "spotSize": "50-200μm"
-                    }
-                
-                # Convert back to YAML
-                enhanced_yaml = yaml.dump(frontmatter, default_flow_style=False)
-                
-                # Check if we've reached the minimum length
-                if len(enhanced_yaml) >= 5000:
-                    logger.info(f"Successfully expanded frontmatter to {len(enhanced_yaml)} characters")
-                    return enhanced_yaml
-                else:
-                    logger.warning(f"Frontmatter still too short after expansion: {len(enhanced_yaml)} < 5000")
-                    return enhanced_yaml  # Return what we have anyway
-            
-            return frontmatter_yaml
-            
-        except Exception as e:
-            logger.error(f"Error enhancing frontmatter: {e}")
-            return frontmatter_yaml
-    
-    def _expand_frontmatter_content(self, frontmatter):
+    def _expand_frontmatter_content(self, frontmatter: str) -> str:
         """Expand frontmatter content to meet minimum length requirements."""
         try:
-            # Parse the frontmatter
-            parsed = yaml.safe_load(frontmatter)
+            # First, strip the frontmatter markers for parsing
+            if frontmatter.startswith('---'):
+                # Find the second marker
+                second_marker = frontmatter.find('---', 3)
+                if second_marker > 0:
+                    # Extract just the content between markers
+                    yaml_content = frontmatter[3:second_marker].strip()
+                else:
+                    yaml_content = frontmatter[3:].strip()
+            else:
+                yaml_content = frontmatter
+
+            # Clean any potential embedded document markers before parsing
+            yaml_content = re.sub(r'---+', '\n', yaml_content)
+            
+            # Parse the YAML content
+            parsed = yaml.safe_load(yaml_content)
             original_length = len(frontmatter)
             
             logger.info(f"Expanding frontmatter content from {original_length} characters")
@@ -416,22 +529,5 @@ class FrontmatterGenerator:
         
         except Exception as e:
             logger.error(f"Error expanding frontmatter: {e}")
-            return frontmatter  # Return original if expansion fails
-    
-def fix_special_characters(text):
-    """Fix common encoding issues in text."""
-    replacements = {
-        r"\xC2\xB0": "°",  # Degree symbol
-        r"\xB0": "°",      # Another encoding of degree
-        r"\u00b0": "°",    # Unicode escape for degree
-        r"\u03BC": "μ",    # Unicode escape for micro
-        r"\xB2": "²",      # Superscript 2
-        r"\u00b2": "²",    # Unicode escape for superscript 2
-        r"\xB3": "³",      # Superscript 3
-        r"\u00b3": "³"     # Unicode escape for superscript 3
-    }
-    
-    for encoded, char in replacements.items():
-        text = text.replace(encoded, char)
-    
-    return text
+            # Apply the extract_first_document_only method as a last resort
+            return YAMLFormatter.extract_first_document_only(frontmatter)

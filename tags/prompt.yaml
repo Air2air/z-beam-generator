@@ -1,66 +1,357 @@
 name: "Tags Generator"
-description: "Generates comprehensive tags for technical articles"
+description: "Generates relevant tags for technical articles about laser cleaning"
 version: "2.0.0"
 
-# Main prompt template for generating initial tags
-template: |
-  You are a specialized AI assistant for generating tags for technical articles about laser cleaning applications.
-
-  ARTICLE TYPE: {article_type}
-  SUBJECT: {subject}
-
-  METADATA SUMMARY:
-  {frontmatter_summary}
-
-  INSTRUCTIONS:
-  1. Generate EXACTLY 15 short, high-quality, kebab-case tags (each tag must be 1-2 words only) for this technical article.
-  2. Use details from the frontmatter, including facility names, technologies, regulatory standards, and unique applications.
-  3. Include tags that match common subjects and categories found on the laser cleaning website (e.g., equipment types, processes, industries, regulatory standards).
-  4. If the article type is "region", include tags for immediately adjacent cities and the parent county (e.g., "san-carlos", "redwood-city", "foster-city", "san-mateo-county").
-  5. Avoid generic tags; prefer those that would help experts, manufacturers, or enthusiasts discover this article.
-  6. Format all tags in kebab-case (lowercase with hyphens between words).
-  7. DO NOT include any explanations or additional text.
-  8. Return ONLY a comma-separated list of tags
-
-# New audience selection prompt template
-audience_selection_template: |
-  You are a specialized AI assistant for selecting the most relevant tags for technical articles.
-
-  ARTICLE TYPE: {article_type}
-  SUBJECT: {subject}
-
-  AUDIENCE INFORMATION:
-  {audience_info}
-
-  CANDIDATE TAGS:
-  {tags_list}
-
-  TASK:
-  Select EXACTLY 15 tags from the candidates that would be most relevant and valuable to the audience described above.
-
-  SELECTION CRITERIA:
-  1. Prioritize tags that match the technical interests of the primary audience
-  2. Include tags relevant to the industry sectors listed
-  3. Balance general and specific technical terms
-  4. Choose tags that would help the audience discover this content in searches
-  5. Ensure tags represent different aspects (equipment, process, application, audience)
-
-  INSTRUCTIONS:
-  - Return EXACTLY 15 tags, no more and no less
-  - Format all tags in kebab-case (lowercase with hyphens)
-  - Separate tags with commas
-  - DO NOT include any explanations or additional text
-  - DO NOT number or bullet the tags
-
-  SELECTED TAGS (15 tags only):
-
-parameters:
-  temperature: 0.1
-  max_tokens: 1000
-  top_p: 0.95
-  frequency_penalty: 0.0
-  presence_penalty: 0.0
+templates:
+  material:
+    technical:
+      - "material properties"
+      - "surface characteristics"
+      - "thermal conductivity"
+      - "reflectivity"
+      - "ablation threshold"
+      - "absorption coefficient"
+      - "melting point"
+      - "material composition"
+      - "surface roughness"
+      - "material science"
+      - "material density"
+      - "material hardness"
+      - "optical properties"
+      - "material response"
+      - "material integrity"
+    
+    application:
+      - "surface preparation"
+      - "rust removal"
+      - "oxide removal"
+      - "coating removal"
+      - "paint stripping"
+      - "contaminant removal"
+      - "selective cleaning"
+      - "surface restoration"
+      - "surface treatment"
+      - "precision cleaning"
+      - "conservation"
+      - "restoration"
+      - "heritage preservation"
+      - "automotive applications"
+      - "aerospace applications"
+    
+    industry:
+      - "manufacturing"
+      - "automotive"
+      - "aerospace"
+      - "electronics"
+      - "medical devices"
+      - "art restoration"
+      - "construction"
+      - "marine industry"
+      - "power generation"
+      - "oil and gas"
+      - "nuclear industry"
+      - "semiconductor"
+      - "transportation"
+      - "defense industry"
+      - "infrastructure"
+    
+    process:
+      - "non-contact process"
+      - "dry cleaning method"
+      - "environmentally friendly"
+      - "chemical-free"
+      - "precision process"
+      - "selective removal"
+      - "controlled ablation"
+      - "surface treatment"
+      - "non-abrasive"
+      - "non-destructive"
+      - "waste reduction"
+      - "energy efficient"
+      - "automation compatible"
+      - "process optimization"
+      - "quality control"
+  
+  application:
+    technical:
+      - "laser parameters"
+      - "power density"
+      - "fluence"
+      - "pulse duration"
+      - "scan speed"
+      - "wavelength selection"
+      - "beam profile"
+      - "spot size"
+      - "energy density"
+      - "repetition rate"
+      - "beam quality"
+      - "focal length"
+      - "standoff distance"
+      - "ablation rate"
+      - "cleaning efficiency"
+    
+    application:
+      - "surface preparation"
+      - "rust removal"
+      - "oxide removal"
+      - "coating removal"
+      - "paint stripping"
+      - "decontamination"
+      - "selective cleaning"
+      - "surface restoration"
+      - "surface treatment"
+      - "precision cleaning"
+      - "conservation"
+      - "restoration"
+      - "degreasing"
+      - "descaling"
+      - "adhesion improvement"
+    
+    industry:
+      - "manufacturing"
+      - "automotive"
+      - "aerospace"
+      - "electronics"
+      - "medical devices"
+      - "art restoration"
+      - "construction"
+      - "marine industry"
+      - "power generation"
+      - "oil and gas"
+      - "nuclear industry"
+      - "semiconductor"
+      - "transportation"
+      - "defense industry"
+      - "infrastructure"
+    
+    process:
+      - "process parameters"
+      - "optimization"
+      - "energy efficiency"
+      - "process speed"
+      - "cost effectiveness"
+      - "quality assurance"
+      - "process control"
+      - "automation"
+      - "validation"
+      - "repeatability"
+      - "scalability"
+      - "integration"
+      - "quality standards"
+      - "process safety"
+      - "training requirements"
+  
+  thesaurus:
+    technical:
+      - "terminology"
+      - "technical term"
+      - "definition"
+      - "laser parameter"
+      - "measurement unit"
+      - "technical concept"
+      - "physics concept"
+      - "optical term"
+      - "material science term"
+      - "engineering terminology"
+      - "scientific definition"
+      - "technical standard"
+      - "industry jargon"
+      - "technical vocabulary"
+      - "measurement terminology"
+    
+    application:
+      - "practical application"
+      - "industry usage"
+      - "technical usage"
+      - "contextual meaning"
+      - "applied physics"
+      - "practical significance"
+      - "industrial relevance"
+      - "practical implementation"
+      - "field application"
+      - "technical context"
+      - "operational meaning"
+      - "technical application"
+      - "industry standard usage"
+      - "technical practice"
+      - "technical specification"
+    
+    industry:
+      - "laser industry"
+      - "manufacturing sector"
+      - "industrial cleaning"
+      - "technical field"
+      - "engineering discipline"
+      - "scientific community"
+      - "industrial standards"
+      - "technical education"
+      - "professional jargon"
+      - "industry communication"
+      - "technical literature"
+      - "research terminology"
+      - "educational material"
+      - "technical writing"
+      - "industrial nomenclature"
+    
+    process:
+      - "terminology standardization"
+      - "definition process"
+      - "technical clarification"
+      - "knowledge sharing"
+      - "concept explanation"
+      - "technical communication"
+      - "term disambiguation"
+      - "glossary development"
+      - "technical documentation"
+      - "educational reference"
+      - "technical specification"
+      - "term classification"
+      - "technical reference"
+      - "industry standardization"
+      - "technical language"
+  
+  region:
+    technical:
+      - "regional implementation"
+      - "geographic adaptation"
+      - "local technical standards"
+      - "regional compliance"
+      - "area-specific techniques"
+      - "regional technology adoption"
+      - "local technical expertise"
+      - "regional technical infrastructure"
+      - "area technical resources"
+      - "local technical training"
+      - "regional industry capacity"
+      - "geographic technical needs"
+      - "local technical requirements"
+      - "regional technical constraints"
+      - "area-specific solutions"
+    
+    application:
+      - "regional applications"
+      - "local industry needs"
+      - "area-specific usage"
+      - "regional implementation"
+      - "geographic deployment"
+      - "local application methods"
+      - "regional case studies"
+      - "area demonstration projects"
+      - "local success stories"
+      - "regional application examples"
+      - "geographic use cases"
+      - "local industry adoption"
+      - "regional market penetration"
+      - "area-specific benefits"
+      - "local application challenges"
+    
+    industry:
+      - "regional industries"
+      - "local manufacturing"
+      - "area businesses"
+      - "regional industrial base"
+      - "local economic sectors"
+      - "area industrial clusters"
+      - "regional manufacturing hubs"
+      - "local industry leaders"
+      - "area industrial infrastructure"
+      - "regional supply chains"
+      - "local industry standards"
+      - "area business networks"
+      - "regional industrial policies"
+      - "local industrial development"
+      - "area industry associations"
+    
+    process:
+      - "regional implementation"
+      - "local process adaptation"
+      - "area-specific methodologies"
+      - "regional deployment strategies"
+      - "local integration approaches"
+      - "area process optimization"
+      - "regional quality standards"
+      - "local regulatory compliance"
+      - "area certification processes"
+      - "regional training programs"
+      - "local expertise development"
+      - "area technical support"
+      - "regional maintenance practices"
+      - "local operational procedures"
+      - "area-specific workflows"
+  
+  audience:
+    technical:
+      - "engineering application"
+      - "technical specification"
+      - "material science"
+      - "process optimization"
+      - "technical parameters"
+      - "performance metrics"
+      - "technical standards"
+      - "engineering design"
+      - "material properties"
+      - "technical data"
+      - "scientific analysis"
+      - "quantitative results"
+      - "analytical method"
+      - "technical validation"
+      - "empirical testing"
+    
+    business:
+      - "cost efficiency"
+      - "ROI analysis"
+      - "business implementation"
+      - "operational benefits"
+      - "productivity improvement"
+      - "investment opportunity"
+      - "competitive advantage"
+      - "market application"
+      - "business case"
+      - "cost reduction"
+      - "operational efficiency"
+      - "implementation strategy"
+      - "economic benefits"
+      - "business solution"
+      - "operational excellence"
+    
+    educational:
+      - "learning resource"
+      - "educational material"
+      - "technical training"
+      - "knowledge base"
+      - "learning reference"
+      - "educational content"
+      - "training resource"
+      - "educational guide"
+      - "technical education"
+      - "learning module"
+      - "educational reference"
+      - "instructional material"
+      - "teaching resource"
+      - "academic reference"
+      - "educational tool"
+    
+    consumer:
+      - "practical benefits"
+      - "consumer application"
+      - "everyday use"
+      - "consumer education"
+      - "practical guide"
+      - "consumer information"
+      - "user-friendly overview"
+      - "consumer benefits"
+      - "practical implementation"
+      - "consumer awareness"
+      - "daily applications"
+      - "consumer insight"
+      - "practical knowledge"
+      - "consumer relevance"
+      - "practical advice"
 
 validation:
   min_tags: 5
   max_tags: 15
+  required_tags:
+    - "laser cleaning"
+  format: "lowercase"
+  remove_duplicates: true
