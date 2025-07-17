@@ -54,7 +54,7 @@ class ArticleOrchestrator:
 
             # Create a frontmatter summary for tags
             frontmatter_summary = self._summarize_frontmatter(frontmatter)
-            tags_gen = TagsGenerator(self.context, self.schema, frontmatter)
+            tags_gen = TagsGenerator(self.context, self.schema, frontmatter_dict)
             tags = tags_gen.generate()
             if not tags:
                 logger.error("Tags generation failed")

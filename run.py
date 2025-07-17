@@ -9,9 +9,9 @@ OUTPUT_DIR = "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/output"
 
 # Define your article context here - edit this for each generation
 ARTICLE_CONTEXT = {
-    "subject": "Fluence",
+    "subject": "Fairfield",
     "author_id": 3,
-    "article_type": "thesaurus", # Options: application, material, region, thesaurus
+    "article_type": "region", # Options: application, material, region, thesaurus
     "output_dir": OUTPUT_DIR,
     "ai_provider": "deepseek"  # Options: openai, deepseek, xai, gemini
 }
@@ -38,8 +38,10 @@ if __name__ == "__main__":
     
     if ARTICLE_CONTEXT["article_type"] == "region":
         expected_file = f"{subject}-laser-cleaning.md"
+        ARTICLE_CONTEXT["slug"] = f"{subject}-laser-cleaning"  # Add this line
     else:
         expected_file = f"{subject}.md"
+        ARTICLE_CONTEXT["slug"] = subject  # Add this line
     
     print(f"Expected output filename: {expected_file}")
     

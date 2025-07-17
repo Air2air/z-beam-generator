@@ -11,10 +11,19 @@ logger = logging.getLogger(__name__)
 class TagsGenerator:
     """Generates relevant tags for technical articles from schema and frontmatter."""
 
-    def __init__(self, context: Dict[str, Any], schema: Dict[str, Any], frontmatter: Optional[Dict[str, Any]] = None):
+    def __init__(self, context: Dict[str, Any], schema: Dict[str, Any], frontmatter: Optional[Any] = None):
         self.context = context
         self.schema = schema
-        self.frontmatter = frontmatter or {}
+        
+        # Handle frontmatter whether it's a string or dict
+        if isinstance(frontmatter, str):
+            try:
+                self.frontmatter = yaml.safe_load(frontmatter)
+            except Exception as e:
+                logger.error(f"Failed to parse frontmatter string: {e}")
+                self.frontmatter = {}
+        else:
+            self.frontmatter = frontmatter or {}
         
         # Critical context values
         self.article_type = context.get("article_type", "material")

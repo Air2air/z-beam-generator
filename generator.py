@@ -57,7 +57,12 @@ def generate_article(context):
     connectivity_results = check_api_connectivity(context["ai_provider"])
     
     # Generate slug from subject
-    slug = generate_slug(context["subject"])
+    if "slug" in context:
+        # Use the slug already in the context
+        slug = context["slug"]
+    else:
+        # Generate slug from subject
+        slug = generate_slug(context["subject"])
     
     # Load schema and author data
     schema = load_schema(context["article_type"])
