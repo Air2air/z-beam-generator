@@ -8,7 +8,7 @@ from typing import Dict, Any, List, Optional
 
 logger = logging.getLogger(__name__)
 
-def format_output(metadata, tags, jsonld, table_content=None):
+def format_output(frontmatter, tags, jsonld, table_content=None):
     """Format the complete output including all components."""
     
     # Format tags properly
@@ -16,7 +16,7 @@ def format_output(metadata, tags, jsonld, table_content=None):
     
     # Assemble the output
     parts = [
-        metadata.strip(),
+        frontmatter.strip(),
         "---",
         "",
         tags_section,

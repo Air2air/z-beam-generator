@@ -6,7 +6,7 @@ I have a prompt that I need you to optimize.  The prompt is used to generate {co
 2. Field Extraction: Extracts all fields from [articleType]Profile section
 3. Prompt Building: Dynamically builds field-specific instructions for each generator
 4. LLM Processing: Sends prompts to AI provider (DeepSeek) via API
-5. Content Generation: LLM returns structured content (YAML metadata, tags list, JSON-LD)
+5. Content Generation: LLM returns structured content (YAML frontmatter, tags list, JSON-LD)
 6. File Output: Saves 3 components to local files in output directory
 
 The output of the prompt must adhere to latest and best practices for {component}.

@@ -2,7 +2,7 @@
 
 import logging
 from typing import Dict, Any, Optional
-from metadata.generator import MetadataGenerator
+from frontmatter.generator import FrontmatterGenerator
 from jsonld.generator import JsonLdGenerator
 from tags.generator import TagsGenerator
 from utils.output_formatter import format_output, force_write_output
@@ -38,23 +38,23 @@ class ArticleOrchestrator:
         try:
             logger.info("Starting article generation process")
 
-            # Generate metadata first
-            metadata_gen = MetadataGenerator(self.context, self.schema, self.ai_provider)
-            metadata = metadata_gen.generate()
-            if not metadata:
-                logger.error("Metadata generation failed")
+            # Generate frontmatter first
+            frontmatter_gen = FrontmatterGenerator(self.context, self.schema, self.ai_provider)
+            frontmatter = frontmatter_gen.generate()
+            if not frontmatter:
+                logger.error("Frontmatter generation failed")
                 return False
 
-            # Parse metadata string to dict for table generation
-            metadata_dict = yaml.safe_load(metadata)
+            # Parse frontmatter string to dict for table generation
+            frontmatter_dict = yaml.safe_load(frontmatter)
 
             # Generate table
-            table_gen = TableGenerator(self.context, self.schema, metadata_dict)
+            table_gen = TableGenerator(self.context, self.schema, frontmatter_dict)
             markdown_table = table_gen.generate()
 
-            # Create a metadata summary for tags
-            metadata_summary = self._summarize_metadata(metadata)
-            tags_gen = TagsGenerator(self.context, self.schema, self.ai_provider, metadata=metadata, metadata_summary=metadata_summary)
+            # Create a frontmatter summary for tags
+            frontmatter_summary = self._summarize_frontmatter(frontmatter)
+            tags_gen = TagsGenerator(self.context, self.schema, self.ai_provider, frontmatter=frontmatter, frontmatter_summary=frontmatter_summary)
             tags = tags_gen.generate()
             if not tags:
                 logger.error("Tags generation failed")
@@ -70,7 +70,7 @@ class ArticleOrchestrator:
 
             # Assemble final output
             logger.info("Assembling final output...")
-            output = format_output(metadata, tags, jsonld, markdown_table)
+            output = format_output(frontmatter, tags, jsonld, markdown_table)
 
             if not output:
                 logger.error("Output assembly failed")
@@ -123,20 +123,20 @@ class ArticleOrchestrator:
             logger.error(f"Failed to save article: {e}", exc_info=True)
             return False
 
-    def _summarize_metadata(self, metadata: str) -> str:
+    def _summarize_frontmatter(self, frontmatter: str) -> str:
         # Example: extract facility names, technologies, standards, and unique uses
-        # You can use regex or yaml parsing for structured metadata
+        # You can use regex or yaml parsing for structured frontmatter
         summary_lines = []
         # Extract manufacturing centers
-        centers = re.findall(r'name:\s*"([^"]+)"', metadata)
+        centers = re.findall(r'name:\s*"([^"]+)"', frontmatter)
         if centers:
             summary_lines.append("Facilities: " + ", ".join(centers))
         # Extract regulatory standards
-        standards = re.findall(r'regulatoryStandards:\s*\n((?:\s*-\s*".*?"\n)+)', metadata)
+        standards = re.findall(r'regulatoryStandards:\s*\n((?:\s*-\s*".*?"\n)+)', frontmatter)
         if standards:
             summary_lines.append("Regulatory Standards: " + ", ".join(re.findall(r'"([^"]+)"', standards[0])))
         # Extract keywords
-        keywords = re.findall(r'keywords:\s*\n((?:\s*-\s*".*?"\n)+)', metadata)
+        keywords = re.findall(r'keywords:\s*\n((?:\s*-\s*".*?"\n)+)', frontmatter)
         if keywords:
             summary_lines.append("Keywords: " + ", ".join(re.findall(r'"([^"]+)"', keywords[0])))
         # Add more as needed

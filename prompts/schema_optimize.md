@@ -33,7 +33,7 @@ This schema is for a page defining one word, with the {article_type} article typ
       "includeIndustries": true,
       "includeDefinition": true
     },
-    "metadata": {
+    "frontmatter": {
       "includeDescription": true,
       "includeAuthor": true
     }

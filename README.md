@@ -23,22 +23,22 @@ A schema-driven content generation system for laser cleaning technology articles
 
 - **NO DEFAULT VALUES** – Every field must come from the schema
 - **NO FALLBACKS** – If a field isn't in the schema, it should not exist
-- **NO HARDCODED METADATA** – All metadata, tags, and JSON-LD must be schema-defined
+- **NO HARDCODED METADATA** – All frontmatter, tags, and JSON-LD must be schema-defined
 - **DYNAMIC ONLY** – All content must be dynamically generated from schema templates
 - **SCHEMA IS THE SOURCE OF TRUTH** – No code should add, modify, or override schema content
 
 **❌ ABSOLUTELY FORBIDDEN:**
-- Default titles, descriptions, or metadata
+- Default titles, descriptions, or frontmatter
 - Hardcoded tag lists
 - Generic JSON-LD structures
 - Fallback values of any kind
-- Code-generated metadata
+- Code-generated frontmatter
 - Additional processing of schema output
 
 **✅ REQUIRED:**
 - All fields sourced from schema definition.json files (see below)
 - Dynamic placeholder replacement (e.g., `{{materialName}}`, `{{term}}`)
-- Schema-defined metadata structures
+- Schema-defined frontmatter structures
 - Template-driven content generation
 - Pure schema passthrough
 
@@ -46,7 +46,7 @@ A schema-driven content generation system for laser cleaning technology articles
 
 ## 🎯 Schema-First Architecture
 
-- **Schemas define EVERYTHING** – structure, content, metadata, tags, JSON-LD
+- **Schemas define EVERYTHING** – structure, content, frontmatter, tags, JSON-LD
 - **Code only replaces placeholders** – no content generation in code
 - **Output = Schema output** – no additional processing
 
@@ -162,7 +162,7 @@ def debug_ai_response(response):
 ### **🔍 Response Length Issues (High Priority)**
 **Problem**: Generated responses are too short and lack comprehensive content depth
 **Current Status**: 
-- Metadata: Basic fields only, missing detailed technical specifications
+- Frontmatter: Basic fields only, missing detailed technical specifications
 - Tags: Limited scope, missing industry-specific and technical depth
 - JSON-LD: Minimal structure, lacks comprehensive schema utilization
 - Overall: Content feels abbreviated rather than comprehensive
@@ -181,13 +181,13 @@ def debug_ai_response(response):
 ### **📊 Current vs. Target Output Analysis**
 
 **Current Output Characteristics:**
-- Metadata: ~25 fields with basic values
+- Frontmatter: ~25 fields with basic values
 - Tags: ~20 tags, mostly generic
 - JSON-LD: Standard Schema.org structure
 - Total Content: Abbreviated professional level
 
 **Target Output Characteristics:**
-- Metadata: ~40+ fields with detailed technical specifications
+- Frontmatter: ~40+ fields with detailed technical specifications
 - Tags: ~30+ tags covering all technical aspects
 - JSON-LD: Rich Schema.org structure with comprehensive mentions
 - Total Content: In-depth technical documentation quality
@@ -201,7 +201,7 @@ def debug_ai_response(response):
 4. **Schema Utilization**: Ensure all available schema fields are fully utilized
 
 **Phase 2: Advanced Features**
-1. **Content Body Generation**: Add actual article content (not just metadata)
+1. **Content Body Generation**: Add actual article content (not just frontmatter)
 2. **Technical Specifications**: Detailed laser parameters, safety protocols, standards
 3. **Industry Case Studies**: Real-world application examples
 4. **Comparative Analysis**: Performance vs. traditional cleaning methods
@@ -268,7 +268,7 @@ Making the generated content comprehensive enough for professional technical doc
 Generated articles should be comprehensive enough for professional technical publication, with rich technical detail, comprehensive coverage of all relevant aspects, and industry-standard depth.
 
 **📊 Quality Metrics Achieved:**
-- **Metadata**: 3000+ characters of detailed technical content
+- **Frontmatter**: 3000+ characters of detailed technical content
 - **Tags**: 35+ professional kebab-case tags with industry precision
 - **JSON-LD**: Valid Schema.org structured data for rich results
 - **Total Generation Time**: ~49 seconds per article
@@ -310,10 +310,10 @@ All schemas must follow this pattern:
 
 ### Core Components ✅ **ALL WORKING**
 
-#### 1. Metadata Generator
-- **Purpose**: Generate comprehensive YAML metadata from schema examples
+#### 1. Frontmatter Generator
+- **Purpose**: Generate comprehensive YAML frontmatter from schema examples
 - **Input**: Schema with `example` fields in `[articleType]Profile` section
-- **Output**: Rich technical metadata (3000+ characters)
+- **Output**: Rich technical frontmatter (3000+ characters)
 - **Performance**: ~25 seconds generation time
 - **Compliance**: ✅ Schema-driven only, no fallbacks
 
@@ -406,7 +406,7 @@ if profile_key in self.schema:
 - **Quality**: Produces professional-grade technical content
 
 ### Response Quality Analysis
-- **Metadata**: Rich technical descriptions with industry terminology
+- **Frontmatter**: Rich technical descriptions with industry terminology
 - **Tags**: Perfect kebab-case formatting with technical precision
 - **JSON-LD**: Valid Schema.org structure with proper field mapping
 
@@ -423,9 +423,9 @@ schemas/definitions/
 
 ### Generator Organization
 ```
-metadata/
+frontmatter/
 ├── generator.py
-└── prompt.yaml        # Metadata-specific prompt
+└── prompt.yaml        # Frontmatter-specific prompt
 
 tags/
 ├── generator.py
@@ -445,7 +445,7 @@ jsonld/
 - **Industry Alignment**: Proper sector-specific language
 
 ### SEO and Discoverability
-- **Rich Metadata**: Comprehensive YAML frontmatter
+- **Rich Frontmatter**: Comprehensive YAML frontmatter
 - **Professional Tags**: 35+ kebab-case tags for categorization
 - **Structured Data**: Valid JSON-LD for search engines
 - **Industry Keywords**: Precise technical terminology
@@ -473,13 +473,13 @@ python run.py --article-type region --subject "North America"
 ## Performance Metrics ✅ **OPTIMAL**
 
 ### Generation Times
-- **Metadata**: ~25 seconds (comprehensive technical content)
+- **Frontmatter**: ~25 seconds (comprehensive technical content)
 - **Tags**: ~13 seconds (35+ professional tags)
 - **JSON-LD**: ~11 seconds (valid structured data)
 - **Total**: ~49 seconds per complete article
 
 ### Quality Metrics
-- **Metadata Character Count**: 3000+ characters
+- **Frontmatter Character Count**: 3000+ characters
 - **Tag Count**: 35+ kebab-case tags
 - **JSON-LD Validity**: 100% Schema.org compliant
 - **Technical Accuracy**: Industry-standard terminology
@@ -593,20 +593,20 @@ This is the code block that represents the suggested code change:
 
 ## Two-Stage Audience-Targeted Tag Generation
 
-Z-Beam Generator now employs a two-stage tag generation approach that leverages article metadata to produce higher-quality, audience-relevant tags.
+Z-Beam Generator now employs a two-stage tag generation approach that leverages article frontmatter to produce higher-quality, audience-relevant tags.
 
 ### Process Overview
 
 1. **Candidate Generation**: The system first generates 30-40 candidate tags based on the article schema and subject
-2. **Audience-Targeted Selection**: Using metadata (especially audience and industry information), it then selects exactly 15 tags most relevant to the target audience
+2. **Audience-Targeted Selection**: Using frontmatter (especially audience and industry information), it then selects exactly 15 tags most relevant to the target audience
 
 ### Implementation Details
 
-The tag generation process now requires metadata input:
+The tag generation process now requires frontmatter input:
 
 ```python
-# Orchestrator passes metadata to the tag generator
-tags_gen = TagsGenerator(context, schema, ai_provider, metadata=metadata)
+# Orchestrator passes frontmatter to the tag generator
+tags_gen = TagsGenerator(context, schema, ai_provider, frontmatter=frontmatter)
 ````
 <userPrompt>
 Provide the fully rewritten file, incorporating the suggested code change. You must the complete file.

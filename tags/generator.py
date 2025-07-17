@@ -13,16 +13,16 @@ logger = logging.getLogger(__name__)
 class TagsGenerator:
     """Generates tags ONLY from schema definitions."""
     
-    def __init__(self, context: Dict[str, Any], schema: Dict[str, Any], ai_provider: str, metadata: Optional[str] = None, metadata_summary: Optional[str] = None):
+    def __init__(self, context: Dict[str, Any], schema: Dict[str, Any], ai_provider: str, frontmatter: Optional[str] = None, frontmatter_summary: Optional[str] = None):
         # Existing initialization
         self.context = context
         self.schema = schema
         self.ai_provider = ai_provider
         self.api_client = APIClient(ai_provider)
         
-        # Store metadata if provided
-        self.metadata = metadata
-        self.metadata_summary = metadata_summary
+        # Store frontmatter if provided
+        self.frontmatter = frontmatter
+        self.frontmatter_summary = frontmatter_summary
 
         # NO DEFAULT VALUES - Must come from context
         self.subject = context["subject"]  # Will fail if not provided
@@ -34,11 +34,11 @@ class TagsGenerator:
         logger.info(f"TagsGenerator initialized for {self.article_type}: {self.subject}")
     
     def generate(self) -> Optional[str]:
-        """Generate tags for an article using metadata when available."""
+        """Generate tags for an article using frontmatter when available."""
         try:
-            # Check if we should use the two-stage process (requires metadata)
-            if self.metadata:
-                logger.info("Using two-stage tag generation process with metadata")
+            # Check if we should use the two-stage process (requires frontmatter)
+            if self.frontmatter:
+                logger.info("Using two-stage tag generation process with frontmatter")
                 
                 # Generate candidate tags first (30-40)
                 candidate_tags = self._generate_candidate_tags()
@@ -54,8 +54,8 @@ class TagsGenerator:
                 
                 return ', '.join(final_tags)
             else:
-                # Fall back to standard generation if no metadata
-                logger.info("Using standard tag generation (no metadata provided)")
+                # Fall back to standard generation if no frontmatter
+                logger.info("Using standard tag generation (no frontmatter provided)")
                 prompt = self._build_prompt()
                 
                 if not prompt:
@@ -123,7 +123,7 @@ class TagsGenerator:
             article_type=self.article_type,
             subject=self.subject,
             schema_template=schema_template,
-            metadata_summary=self.metadata_summary or ""
+            frontmatter_summary=self.frontmatter_summary or ""
         )
     
     def _build_prompt(self) -> str:
@@ -416,25 +416,25 @@ class TagsGenerator:
             return False
     
     def _extract_audience_info(self) -> str:
-        """Extract audience information from metadata."""
-        if not self.metadata:
+        """Extract audience information from frontmatter."""
+        if not self.frontmatter:
             return ""
             
         # Simple extraction using regex
         audience_info = []
         
         # Extract primary audience
-        primary_match = re.search(r'primaryAudience:\s*(.*?)(?=\n\w+:|$)', self.metadata, re.DOTALL)
+        primary_match = re.search(r'primaryAudience:\s*(.*?)(?=\n\w+:|$)', self.frontmatter, re.DOTALL)
         if primary_match:
             audience_info.append(f"PRIMARY AUDIENCE: {primary_match.group(1).strip()}")
             
         # Extract secondary audience
-        secondary_match = re.search(r'secondaryAudience:\s*(.*?)(?=\n\w+:|$)', self.metadata, re.DOTALL)
+        secondary_match = re.search(r'secondaryAudience:\s*(.*?)(?=\n\w+:|$)', self.frontmatter, re.DOTALL)
         if secondary_match:
             audience_info.append(f"SECONDARY AUDIENCE: {secondary_match.group(1).strip()}")
             
         # Extract industries
-        industries_match = re.search(r'industries:\s*((?:-.*?\n)+)', self.metadata, re.DOTALL)
+        industries_match = re.search(r'industries:\s*((?:-.*?\n)+)', self.frontmatter, re.DOTALL)
         if industries_match:
             audience_info.append(f"INDUSTRIES: {industries_match.group(1).strip()}")
         
@@ -445,12 +445,12 @@ class TagsGenerator:
         if not candidate_tags:
             return []
             
-        # Extract audience information from metadata
+        # Extract audience information from frontmatter
         audience_info = self._extract_audience_info()
         
         # If we couldn't extract audience info, just return first 15 tags
         if not audience_info:
-            logger.warning("No audience information found in metadata, using first 15 tags")
+            logger.warning("No audience information found in frontmatter, using first 15 tags")
             return candidate_tags[:15]
         
         # Get audience selection prompt template from YAML

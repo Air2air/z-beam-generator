@@ -1,4 +1,4 @@
-"""Simplified metadata generator - SCHEMA-DRIVEN ONLY."""
+"""Simplified frontmatter generator - SCHEMA-DRIVEN ONLY."""
 
 import logging
 import yaml
@@ -9,8 +9,8 @@ from .yaml_formatter import YAMLFormatter
 
 logger = logging.getLogger(__name__)
 
-class MetadataGenerator:
-    """Generates metadata ONLY from schema definitions."""
+class FrontmatterGenerator:
+    """Generates frontmatter ONLY from schema definitions."""
     
     def __init__(self, context: Dict[str, Any], schema: Dict[str, Any], ai_provider: str):
         self.context = context
@@ -25,10 +25,10 @@ class MetadataGenerator:
         # Load prompt template
         self.prompt_config = self._load_prompt_template()
         
-        logger.info(f"MetadataGenerator initialized for {self.article_type}: {self.subject}")
+        logger.info(f"FrontmatterGenerator initialized for {self.article_type}: {self.subject}")
     
     def generate(self) -> Optional[str]:
-        """Generate comprehensive metadata."""
+        """Generate comprehensive frontmatter."""
         try:
             prompt = self._build_prompt()
             
@@ -41,7 +41,7 @@ class MetadataGenerator:
             response = self.api_client.generate(prompt, max_tokens=max_tokens)
             
             if not response:
-                logger.error("Failed to generate metadata")
+                logger.error("Failed to generate frontmatter")
                 return None
             
             # Clean and parse response using external formatter
@@ -55,25 +55,25 @@ class MetadataGenerator:
             # CHECK LENGTH AND EXPAND IF NEEDED - BEFORE VALIDATION
             yaml_length = len(cleaned_response)
             if yaml_length < 5000:
-                logger.warning(f"Metadata too short ({yaml_length} chars), expanding content...")
-                cleaned_response = self._expand_metadata_content(cleaned_response)
+                logger.warning(f"Frontmatter too short ({yaml_length} chars), expanding content...")
+                cleaned_response = self._expand_frontmatter_content(cleaned_response)
                 logger.info(f"Expanded to {len(cleaned_response)} characters")
             
             # Now validate the expanded content
-            metadata = yaml.safe_load(cleaned_response)
-            if not self._validate_metadata(metadata):
-                logger.error("Metadata validation failed even after expansion")
+            frontmatter = yaml.safe_load(cleaned_response)
+            if not self._validate_frontmatter(frontmatter):
+                logger.error("Frontmatter validation failed even after expansion")
                 # OVERRIDE: Return expanded content anyway
                 return cleaned_response
             
-            logger.info("Successfully generated and expanded schema-driven metadata")
+            logger.info("Successfully generated and expanded schema-driven frontmatter")
             return cleaned_response
             
         except yaml.YAMLError as e:
             logger.error(f"Failed to parse YAML response: {e}")
             return None
         except Exception as e:
-            logger.error(f"Metadata generation failed: {e}", exc_info=True)
+            logger.error(f"Frontmatter generation failed: {e}", exc_info=True)
             return None
     
     def _load_prompt_template(self) -> Dict[str, Any]:
@@ -87,11 +87,11 @@ class MetadataGenerator:
             return {}
     
     def _build_prompt(self) -> str:
-        """Build metadata prompt using template."""
+        """Build frontmatter prompt using template."""
         schema_template = self._build_schema_template()
         
         if not schema_template:
-            logger.error("No schema fields available for metadata generation")
+            logger.error("No schema fields available for frontmatter generation")
             return None
         
         # Use template from prompt config
@@ -211,14 +211,14 @@ class MetadataGenerator:
         
         return value
     
-    def _validate_metadata(self, metadata: Dict[str, Any]) -> bool:
-        """Validate metadata structure and field coverage."""
-        if not isinstance(metadata, dict):
-            logger.error("Metadata is not a dictionary")
+    def _validate_frontmatter(self, frontmatter: Dict[str, Any]) -> bool:
+        """Validate frontmatter structure and field coverage."""
+        if not isinstance(frontmatter, dict):
+            logger.error("Frontmatter is not a dictionary")
             return False
         
         # Check minimum content length - ADJUST FOR ARTICLE TYPE
-        content_length = len(str(metadata))
+        content_length = len(str(frontmatter))
         if self.article_type == "thesaurus":
             min_length = 2000  # Thesaurus entries are naturally shorter
         elif self.article_type == "region":
@@ -227,7 +227,7 @@ class MetadataGenerator:
             min_length = 5000  # Application articles are longer
             
         if content_length < min_length:
-            logger.error(f"Metadata too short: {content_length} < {min_length}")
+            logger.error(f"Frontmatter too short: {content_length} < {min_length}")
             return False
         
         # Check field coverage - handle different profile naming conventions
@@ -250,47 +250,47 @@ class MetadataGenerator:
             
             missing_fields = []
             for field in expected_fields:
-                if field not in metadata:
+                if field not in frontmatter:
                     missing_fields.append(field)
             
             if missing_fields:
                 logger.error(f"❌ MISSING CRITICAL FIELDS: {missing_fields}")
                 return False
             
-            logger.info(f"✅ Field coverage: {len(metadata)}/{len(expected_fields)} fields present")
+            logger.info(f"✅ Field coverage: {len(frontmatter)}/{len(expected_fields)} fields present")
 
         return True
     
-    def _validate_and_enhance_metadata(self, metadata_yaml):
-        """Validate metadata length and expand it if necessary."""
+    def _validate_and_enhance_frontmatter(self, frontmatter_yaml):
+        """Validate frontmatter length and expand it if necessary."""
         try:
             # Check if the content meets minimum length requirements
-            if len(metadata_yaml) < 5000:
-                logger.warning(f"Metadata too short: {len(metadata_yaml)} < 5000, attempting expansion...")
+            if len(frontmatter_yaml) < 5000:
+                logger.warning(f"Frontmatter too short: {len(frontmatter_yaml)} < 5000, attempting expansion...")
                 
-                # Parse the metadata to enhance it
-                metadata = yaml.safe_load(metadata_yaml)
+                # Parse the frontmatter to enhance it
+                frontmatter = yaml.safe_load(frontmatter_yaml)
                 
                 # 1. Fix keywords format if needed
-                if "keywords" in metadata and isinstance(metadata["keywords"], list):
+                if "keywords" in frontmatter and isinstance(frontmatter["keywords"], list):
                     # Check if keywords need reformatting (if they contain dictionaries)
-                    needs_reformatting = any(isinstance(k, dict) for k in metadata["keywords"])
+                    needs_reformatting = any(isinstance(k, dict) for k in frontmatter["keywords"])
                     if needs_reformatting:
                         # Extract just the keyword values
                         fixed_keywords = []
-                        for k in metadata["keywords"]:
+                        for k in frontmatter["keywords"]:
                             if isinstance(k, dict) and "name" in k:
                                 fixed_keywords.append(k["name"])
                             elif isinstance(k, str):
                                 fixed_keywords.append(k)
-                        metadata["keywords"] = fixed_keywords
+                        frontmatter["keywords"] = fixed_keywords
                 
                 # 2. Expand description if it exists
-                if "description" in metadata:
-                    original_desc = metadata["description"]
+                if "description" in frontmatter:
+                    original_desc = frontmatter["description"]
                     if len(original_desc) < 500:  # If description is too short
-                        metadata["description"] = original_desc + "\n\n" + \
-                            f"Located in California, {metadata.get('name', 'this region')} offers " + \
+                        frontmatter["description"] = original_desc + "\n\n" + \
+                            f"Located in California, {frontmatter.get('name', 'this region')} offers " + \
                             "advanced laser cleaning services for industrial applications. " + \
                             "With state-of-the-art facilities and specialized expertise in surface " + \
                             "preparation, the area has become a hub for precision cleaning technologies. " + \
@@ -298,8 +298,8 @@ class MetadataGenerator:
                             "across various industrial sectors including aerospace, automotive, and electronics."
                 
                 # 3. Add technical details section if missing
-                if "technicalDetails" not in metadata:
-                    metadata["technicalDetails"] = {
+                if "technicalDetails" not in frontmatter:
+                    frontmatter["technicalDetails"] = {
                         "laserTypes": ["Fiber", "Nd:YAG", "CO2", "Pulsed"],
                         "powerRange": "20W - 1000W",
                         "wavelengthRange": "532nm - 10.6μm",
@@ -309,30 +309,30 @@ class MetadataGenerator:
                     }
                 
                 # Convert back to YAML
-                enhanced_yaml = yaml.dump(metadata, default_flow_style=False)
+                enhanced_yaml = yaml.dump(frontmatter, default_flow_style=False)
                 
                 # Check if we've reached the minimum length
                 if len(enhanced_yaml) >= 5000:
-                    logger.info(f"Successfully expanded metadata to {len(enhanced_yaml)} characters")
+                    logger.info(f"Successfully expanded frontmatter to {len(enhanced_yaml)} characters")
                     return enhanced_yaml
                 else:
-                    logger.warning(f"Metadata still too short after expansion: {len(enhanced_yaml)} < 5000")
+                    logger.warning(f"Frontmatter still too short after expansion: {len(enhanced_yaml)} < 5000")
                     return enhanced_yaml  # Return what we have anyway
             
-            return metadata_yaml
+            return frontmatter_yaml
             
         except Exception as e:
-            logger.error(f"Error enhancing metadata: {e}")
-            return metadata_yaml
+            logger.error(f"Error enhancing frontmatter: {e}")
+            return frontmatter_yaml
     
-    def _expand_metadata_content(self, metadata):
-        """Expand metadata content to meet minimum length requirements."""
+    def _expand_frontmatter_content(self, frontmatter):
+        """Expand frontmatter content to meet minimum length requirements."""
         try:
-            # Parse the metadata
-            parsed = yaml.safe_load(metadata)
-            original_length = len(metadata)
+            # Parse the frontmatter
+            parsed = yaml.safe_load(frontmatter)
+            original_length = len(frontmatter)
             
-            logger.info(f"Expanding metadata content from {original_length} characters")
+            logger.info(f"Expanding frontmatter content from {original_length} characters")
             
             # 1. Expand description if present
             if "description" in parsed and isinstance(parsed["description"], str):
@@ -407,16 +407,16 @@ class MetadataGenerator:
                 ]
             
             # Convert back to YAML
-            expanded_metadata = yaml.dump(parsed, sort_keys=False, default_flow_style=False)
-            expanded_length = len(expanded_metadata)
+            expanded_frontmatter = yaml.dump(parsed, sort_keys=False, default_flow_style=False)
+            expanded_length = len(expanded_frontmatter)
             
-            logger.info(f"Expanded metadata from {original_length} to {expanded_length} characters")
+            logger.info(f"Expanded frontmatter from {original_length} to {expanded_length} characters")
             
-            return expanded_metadata
+            return expanded_frontmatter
         
         except Exception as e:
-            logger.error(f"Error expanding metadata: {e}")
-            return metadata  # Return original if expansion fails
+            logger.error(f"Error expanding frontmatter: {e}")
+            return frontmatter  # Return original if expansion fails
     
 def fix_special_characters(text):
     """Fix common encoding issues in text."""

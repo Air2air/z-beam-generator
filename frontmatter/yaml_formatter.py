@@ -62,7 +62,7 @@ class YAMLFormatter:
             if (line.strip().startswith('```') or 
                 line.strip().startswith('Here is') or 
                 line.strip().startswith('This YAML') or
-                line.strip().startswith('The metadata')):
+                line.strip().startswith('The frontmatter')):
                 continue
             yaml_lines.append(line)
 

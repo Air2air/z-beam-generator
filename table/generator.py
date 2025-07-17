@@ -6,12 +6,12 @@ from typing import Dict, Any, Optional, List
 logger = logging.getLogger(__name__)
 
 class TableGenerator:
-    """Generates markdown tables for technical articles from schema-driven metadata."""
+    """Generates markdown tables for technical articles from schema-driven frontmatter."""
 
-    def __init__(self, context: Dict[str, Any], schema: Dict[str, Any], metadata: Dict[str, Any]):
+    def __init__(self, context: Dict[str, Any], schema: Dict[str, Any], frontmatter: Dict[str, Any]):
         self.context = context
         self.schema = schema
-        self.metadata = metadata
+        self.frontmatter = frontmatter
         self.prompt_config = self._load_prompt_template()
 
     def _load_prompt_template(self) -> Dict[str, Any]:
@@ -24,15 +24,15 @@ class TableGenerator:
             return {}
 
     def generate(self) -> Optional[str]:
-        """Generate a markdown table from metadata."""
+        """Generate a markdown table from frontmatter."""
         try:
             template = self.prompt_config.get("template", "")
             if not template:
                 logger.error("No table prompt template found")
                 return None
 
-            # Prepare table rows from metadata (example: manufacturingCenters)
-            centers = self.metadata.get("manufacturingCenters", [])
+            # Prepare table rows from frontmatter (example: manufacturingCenters)
+            centers = self.frontmatter.get("manufacturingCenters", [])
             rows = []
             for center in centers:
                 name = center.get("name", "")
