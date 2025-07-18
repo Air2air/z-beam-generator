@@ -125,7 +125,7 @@ The use of specialized coatings and materials enhances durability, ensuring cons
   },
   "publisher": {
     "@type": "Organization",
-    "name": "Z-Beam Technologies",
+    "name": "Z-Beam",
     "location": [
       {
         "@type": "Place",

@@ -5,6 +5,7 @@ import yaml
 import logging
 from typing import Dict, Any, Optional
 from frontmatter.generator import FrontmatterGenerator
+from utils.schema_registry import SchemaRegistry
 
 logger = logging.getLogger(__name__)
 
@@ -85,26 +86,32 @@ class JsonLdGenerator:
     
     def _determine_schema_type(self, frontmatter):
         """Dynamically determine the best schema.org type based on content."""
-        # Check article type from context
+        # Get article type from context
         article_type = self.context.get("article_type", "").lower()
         
-        # Product indicators
-        has_product_features = any(key in frontmatter for key in [
-            "technicalSpecifications", "applications"
-        ])
+        # Use the schema registry to determine the appropriate type
+        schema_type = SchemaRegistry.get_schema_type(article_type, frontmatter)
         
-        # Technical article indicators
-        has_technical_content = any(key in frontmatter for key in [
-            "regulatoryStandards", "challenges", "outcomes"
-        ])
-        
-        # Determine type based on indicators
-        if "product" in article_type or has_product_features:
-            return "Product"
-        elif "technical" in article_type or has_technical_content:
-            return "TechnicalArticle"
-        else:
-            return "Article"
+        # If schema registry couldn't determine, use fallback logic
+        if not schema_type:
+            # Fallback to content-based detection
+            has_product_features = any(key in frontmatter for key in [
+                "technicalSpecifications", "applications"
+            ])
+            
+            has_technical_content = any(key in frontmatter for key in [
+                "regulatoryStandards", "challenges", "outcomes"
+            ])
+            
+            # Determine type based on indicators
+            if "product" in article_type or has_product_features:
+                schema_type = "Product"
+            elif "technical" in article_type or has_technical_content:
+                schema_type = "TechnicalArticle"
+            else:
+                schema_type = "Article"
+                
+        return schema_type
     
     def _add_core_properties(self, jsonld, frontmatter, schema_type):
         """Add core properties like name, description, etc."""
@@ -124,7 +131,7 @@ class JsonLdGenerator:
         # Always add publisher
         jsonld["publisher"] = {
             "@type": "Organization",
-            "name": "Z-Beam Technologies"
+            "name": "Z-Beam"
         }
     
     def _add_author_info(self, jsonld, frontmatter):
@@ -142,26 +149,63 @@ class JsonLdGenerator:
                 jsonld["author"] = author
     
     def _add_technical_details(self, jsonld, frontmatter):
-        """Add technical specifications."""
+        """Add technical specifications using registry field handlers with scientific focus."""
         if "technicalSpecifications" in frontmatter:
             specs = frontmatter["technicalSpecifications"]
             if isinstance(specs, dict) and specs:
-                properties = []
-                for name, value in specs.items():
-                    properties.append({
-                        "@type": "PropertyValue",
-                        "name": name,
-                        "value": str(value)
-                    })
+                # Get field handlers for this schema type
+                handlers = SchemaRegistry.get_field_handlers(jsonld["@type"])
                 
-                if properties:
-                    if jsonld["@type"] == "Product":
+                # For materials (ChemicalSubstance), format properties appropriately
+                if SchemaRegistry.is_material_type(jsonld["@type"]):
+                    properties = []
+                    
+                    # Process material properties
+                    for name, value in specs.items():
+                        prop = {
+                            "@type": "PropertyValue",
+                            "name": name,
+                            "value": str(value)
+                        }
+                        
+                        # Add scientific units if available
+                        if isinstance(value, dict) and "value" in value and "unit" in value:
+                            prop["value"] = str(value["value"])
+                            prop["unitText"] = value["unit"]
+                        
+                        properties.append(prop)
+                    
+                    if properties:
                         jsonld["additionalProperty"] = properties
-                    else:
-                        jsonld["about"] = jsonld.get("about", []) + [
-                            {"@type": "Thing", "name": f"{name}: {value}"}
-                            for name, value in specs.items()
-                        ]
+                    
+                    # Add chemical composition if available
+                    if "composition" in frontmatter and isinstance(frontmatter["composition"], dict):
+                        composition = []
+                        for element, percentage in frontmatter["composition"].items():
+                            composition.append({
+                                "@type": "PropertyValue",
+                                "name": element,
+                                "value": str(percentage)
+                            })
+                        
+                        if composition:
+                            jsonld["chemicalComposition"] = composition
+                
+                # For other types, use default handling
+                else:
+                    properties_field = handlers.get("properties_field", "additionalProperty")
+                    property_type = handlers.get("property_type", "PropertyValue")
+                    
+                    properties = []
+                    for name, value in specs.items():
+                        properties.append({
+                            "@type": property_type,
+                            "name": name,
+                            "value": str(value)
+                        })
+                    
+                    if properties:
+                        jsonld[properties_field] = properties
     
     def _add_applications(self, jsonld, frontmatter):
         """Add applications as parts or features."""
@@ -284,7 +328,7 @@ class JsonLdGenerator:
             "description": f"Information about {self.context.get('subject', '').lower()}",
             "publisher": {
                 "@type": "Organization",
-                "name": "Z-Beam Technologies"
+                "name": "Z-Beam"
             }
         }
         

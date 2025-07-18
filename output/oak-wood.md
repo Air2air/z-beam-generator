@@ -153,7 +153,7 @@ Oak wood is a dense hardwood with high lignin content, making it highly suitable
   },
   "publisher": {
     "@type": "Organization",
-    "name": "Z-Beam Technologies",
+    "name": "Z-Beam",
     "location": [
       {
         "@type": "Place",

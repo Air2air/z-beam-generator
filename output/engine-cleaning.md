@@ -112,7 +112,7 @@ Laser cleaning is a precision method for removing carbon deposits, rust, and coa
   "url": "https://www.z-beam.com/engine-cleaning-laser-cleaning",
   "publisher": {
     "@type": "Organization",
-    "name": "Z-Beam Technologies"
+    "name": "Z-Beam"
   },
   "author": {
     "@type": "Person",
