@@ -9,9 +9,9 @@ OUTPUT_DIR = "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/output"
 
 # Define your article context here - edit this for each generation
 ARTICLE_CONTEXT = {
-    "subject": "Oak wood",
+    "subject": "engine cleaning",
     "author_id": 3,
-    "article_type": "material",
+    "article_type": "application",
     "output_dir": OUTPUT_DIR,
     "ai_provider": "deepseek",
     "component_config": {
