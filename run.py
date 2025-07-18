@@ -17,10 +17,12 @@ ARTICLE_CONTEXT = {
     "component_config": {
         "content": {
             "enabled": True,
-            "min_words": 200,
-            "max_words": 500,
-            "paragraphs": 5,
-            "sections": ["overview", "applications", "technicalSpecifications", "challenges"]
+            "min_words": 200,    # Base minimum that will be randomized
+            "max_words": 500,    # Base maximum that will be randomized
+            "paragraphs": 5,     # Base target that will be randomized
+            "use_dynamic_sections": True,   # Use frontmatter to determine sections
+            "randomize_sections": True,     # Enable full randomization
+            "max_attempts": 3
         },
         "table": {
             "enabled": True,
