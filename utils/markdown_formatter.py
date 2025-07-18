@@ -168,7 +168,7 @@ class MarkdownFormatter:
             
         # Create header row
         header = "| " + " | ".join([col["name"] for col in columns]) + " |"
-        # Make the separator more consistent with markdown standards (add spaces)
+        # Use consistent separator format with proper spacing
         separator = "| " + " | ".join(["----" for _ in columns]) + " |"
         
         rows = []

@@ -14,6 +14,7 @@ import yaml
 
 logger = logging.getLogger(__name__)
 
+OUTPUT_FORMAT = "content"  # Options: "content" (bullet points), "table" (tables), or "both"
 
 class ArticleOrchestrator:
     """Schema-driven orchestrator - NO FALLBACKS."""
@@ -64,8 +65,8 @@ class ArticleOrchestrator:
                 "frontmatter": True,  # Frontmatter is always required
                 "tags": component_config.get("tags", {}).get("enabled", True),
                 "jsonld": component_config.get("jsonld", {}).get("enabled", True),
-                "table": component_config.get("table", {}).get("enabled", True),
-                "content": component_config.get("content", {}).get("enabled", True)  # NEW: Content component
+                "table": OUTPUT_FORMAT in ["table", "both"],
+                "content": OUTPUT_FORMAT in ["content", "both"]
             }
             
             # Log enabled components

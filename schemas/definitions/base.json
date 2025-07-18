@@ -401,13 +401,6 @@
           ]
         },
         {
-          "field": "challenges",
-          "columns": [
-            { "name": "Issue", "property": "issue" },
-            { "name": "Solution", "property": "solution" }
-          ]
-        },
-        {
           "field": "regulatoryStandards",
           "columns": [
             { "name": "Code", "property": "code" },
@@ -417,8 +410,8 @@
         {
           "field": "outcomes",
           "columns": [
-            { "name": "Metric", "property": "metric" },
-            { "name": "Result", "property": "result" }
+            { "name": "Result", "property": "result" },
+            { "name": "Metric", "property": "metric" }
           ]
         },
         {
@@ -441,7 +434,7 @@
         { "field": "tags" }
       ],
       "formatOptions": {
-        "includeTableCaptions": true
+        "includeTableCaptions": false
       }
     },
     "validation": {
