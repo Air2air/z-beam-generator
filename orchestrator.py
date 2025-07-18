@@ -35,11 +35,24 @@ class ArticleOrchestrator:
 
         logger.info(f"Orchestrator initialized for {context['article_type']}: {context['subject']}")
 
+    def _has_schema_changed(self, old_frontmatter, new_frontmatter):
+        """Detect if schema structure has changed."""
+        old_keys = set(old_frontmatter.keys())
+        new_keys = set(new_frontmatter.keys())
+        
+        return old_keys != new_keys
+
     def generate_article(self) -> bool:
         """Generate complete article based on configured components and layout."""
         try:
             logger.info("Starting article generation process")
             
+            # Clear any cached content
+            self.cached_content = None
+            
+            # Force regeneration of all components
+            self.regenerate_all_components = True
+
             # Get component configuration (with defaults if not provided)
             component_config = self.context.get("component_config", {})
             layout_template = self.context.get("layout_template", "standard")

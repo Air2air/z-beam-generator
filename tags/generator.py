@@ -3,6 +3,7 @@
 import logging
 import yaml
 import random
+import re
 from pathlib import Path
 from typing import Dict, Any, Optional, List
 
@@ -317,3 +318,41 @@ class TagsGenerator:
             
         # Ensure uniqueness
         return list(set(fallback_tags))
+
+    def _find_tags_in_frontmatter(self):
+        """Dynamically find tags in various frontmatter fields."""
+        tags = []
+        
+        # Check direct 'tags' field
+        if 'tags' in self.frontmatter:
+            tag_data = self.frontmatter['tags']
+            if isinstance(tag_data, list):
+                tags.extend(tag_data)
+            elif isinstance(tag_data, str):
+                # Handle comma or space separated tags
+                tags.extend([t.strip() for t in re.split(r'[,\s]+', tag_data) if t.strip()])
+        
+        # Check 'keywords' field (often contains tags)
+        if 'keywords' in self.frontmatter and not tags:
+            keywords = self.frontmatter['keywords']
+            if isinstance(keywords, list):
+                # Take the first N keywords as tags if no explicit tags found
+                max_tags = 5
+                tags.extend(keywords[:max_tags])
+                
+        # Check if there's a 'categories' field
+        if 'categories' in self.frontmatter and not tags:
+            categories = self.frontmatter['categories']
+            if isinstance(categories, list):
+                tags.extend(categories)
+                
+        # Format tags for consistency
+        formatted_tags = []
+        for tag in tags:
+            # Convert to kebab-case
+            tag = re.sub(r'\s+', '-', tag.lower())
+            tag = re.sub(r'[^a-z0-9\-]', '', tag)
+            if tag:
+                formatted_tags.append(tag)
+                
+        return formatted_tags

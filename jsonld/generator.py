@@ -6,6 +6,7 @@ import yaml
 import re
 from pathlib import Path
 from typing import Dict, Any, Optional
+from datetime import datetime
 
 logger = logging.getLogger(__name__)
 
@@ -16,6 +17,7 @@ class JsonLdGenerator:
         self.context = context
         self.schema = schema
         self.ai_provider = ai_provider
+        self.frontmatter = {}
         
         # NO DEFAULT VALUES - Must come from context
         self.subject = context["subject"]
@@ -30,74 +32,141 @@ class JsonLdGenerator:
         
         logger.info(f"JsonLdGenerator initialized for {self.article_type}: {self.subject}")
     
+    def set_frontmatter(self, frontmatter):
+        """Set frontmatter data for JSON-LD generation."""
+        self.frontmatter = frontmatter or {}
+        return self
+        
     def generate(self) -> Optional[str]:
         """Generate JSON-LD structured data."""
         try:
-            # Build prompt
-            prompt = self._build_prompt()
+            # Determine the best schema type based on content
+            schema_type = self._determine_schema_type()
             
-            if not prompt:
-                logger.error("Failed to build prompt - no schema fields available")
-                return self._generate_fallback()
+            # Build JSON-LD from frontmatter
+            jsonld = {
+                "@context": "https://schema.org",
+                "@type": schema_type
+            }
             
-            # Use prompt config for parameters
-            max_tokens = self.prompt_config.get("parameters", {}).get("max_tokens", 4000)
-            response = self.api_client.generate(prompt, max_tokens=max_tokens)
+            # Add fields based on available frontmatter data
+            self._add_basic_properties(jsonld)
+            self._add_specific_properties(jsonld)
             
-            if not response:
-                logger.error("Empty response from API")
-                return self._generate_fallback()
+            # Format JSON-LD as a string with code block
+            formatted_jsonld = json.dumps(jsonld, indent=2)
+            return f"```json\n{formatted_jsonld}\n```"
             
-            # Clean and process response
-            cleaned_response = self._clean_response(response)
-            
-            if not cleaned_response:
-                logger.error("Cleaned response is empty, using fallback")
-                return self._generate_fallback()
-            
-            # Try to parse as JSON
-            try:
-                jsonld_data = json.loads(cleaned_response)
-                
-                # Force correct URL
-                jsonld_data["url"] = self._generate_url(self.subject, self.article_type)
-                
-                # Format properly
-                jsonld_string = json.dumps(jsonld_data, indent=2)
-                
-                # Final URL check
-                jsonld_string = self._final_url_check(jsonld_string)
-                
-                return jsonld_string
-            except json.JSONDecodeError as e:
-                logger.warning(f"JSON parse failed: {e}, trying recovery methods...")
-                
-                # Try more aggressive JSON extraction
-                json_pattern = r'(\{[\s\S]*\})'
-                matches = re.search(json_pattern, cleaned_response)
-                
-                if matches:
-                    try:
-                        jsonld_data = json.loads(matches.group(1))
-                        logger.info("Successfully extracted JSON with regex pattern")
-                        
-                        # Force correct URL
-                        jsonld_data["url"] = self._generate_url(self.subject, self.article_type)
-                        
-                        # Format properly
-                        jsonld_string = json.dumps(jsonld_data, indent=2)
-                        
-                        # Final URL check
-                        return self._final_url_check(jsonld_string)
-                    except json.JSONDecodeError:
-                        logger.error("Extracted content still not valid JSON, using fallback")
-                        return self._generate_fallback()
-                else:
-                    logger.error("No JSON-like content found, using fallback")
-                    return self._generate_fallback()
         except Exception as e:
-            logger.error(f"JSON-LD generation failed: {e}")
-            return self._generate_fallback()
+            logger.error(f"JSON-LD generation failed: {str(e)}")
+            return self._generate_fallback_jsonld()
+            
+    def _determine_schema_type(self):
+        """Dynamically determine the best schema type based on frontmatter."""
+        article_type = self.context.get('article_type', '').lower()
+        
+        # Map article types to schema types
+        type_mapping = {
+            'article': 'Article',
+            'blog': 'BlogPosting',
+            'technical': 'TechnicalArticle',
+            'howto': 'HowTo',
+            'material': 'Product',
+            'application': 'TechnicalArticle',
+            'thesaurus': 'DefinedTerm',
+            'product': 'Product'
+        }
+        
+        # Check specific frontmatter indicators
+        if 'steps' in self.frontmatter or 'instructions' in self.frontmatter:
+            return 'HowTo'
+        elif 'specifications' in self.frontmatter or 'technicalSpecifications' in self.frontmatter:
+            return 'TechnicalArticle'
+        
+        # Default to mapping or Article
+        return type_mapping.get(article_type, 'Article')
+        
+    def _add_basic_properties(self, jsonld):
+        """Add common properties from frontmatter."""
+        # Add name/title
+        if 'name' in self.frontmatter:
+            jsonld['headline'] = self.frontmatter['name']
+            
+        # Add description
+        if 'description' in self.frontmatter:
+            jsonld['description'] = self.frontmatter['description']
+            
+        # Add URL
+        if 'website' in self.frontmatter:
+            jsonld['url'] = self.frontmatter['website']
+        elif 'url' in self.frontmatter:
+            jsonld['url'] = self.frontmatter['url']
+            
+        # Add keywords
+        if 'keywords' in self.frontmatter and isinstance(self.frontmatter['keywords'], list):
+            # Take first 5-10 keywords to keep it focused
+            jsonld['keywords'] = self.frontmatter['keywords'][:10]
+        elif 'tags' in self.frontmatter and isinstance(self.frontmatter['tags'], list):
+            jsonld['keywords'] = self.frontmatter['tags']
+            
+        # Add author
+        if 'author' in self.frontmatter:
+            author_data = self.frontmatter['author']
+            if isinstance(author_data, dict):
+                jsonld['author'] = {
+                    "@type": "Person",
+                    "name": author_data.get('name', ''),
+                }
+                # Add credentials if available
+                if 'credentials' in author_data:
+                    jsonld['author']['description'] = author_data['credentials']
+                    
+        # Add publisher from context or frontmatter
+        jsonld['publisher'] = {
+            "@type": "Organization",
+            "name": "Z-Beam Technologies"
+        }
+        
+        # Add publication date
+        jsonld['datePublished'] = datetime.now().strftime('%Y-%m-%d')
+        
+    def _add_specific_properties(self, jsonld):
+        """Add schema-type-specific properties based on frontmatter."""
+        schema_type = jsonld.get('@type')
+        
+        if schema_type == 'Product':
+            self._add_product_properties(jsonld)
+        elif schema_type == 'TechnicalArticle':
+            self._add_technical_article_properties(jsonld)
+        elif schema_type == 'HowTo':
+            self._add_howto_properties(jsonld)
+        elif schema_type == 'DefinedTerm':
+            self._add_defined_term_properties(jsonld)
+            
+    def _add_product_properties(self, jsonld):
+        """Add product-specific properties."""
+        # Add brand
+        if 'manufacturer' in self.frontmatter:
+            jsonld['brand'] = {
+                "@type": "Brand", 
+                "name": self.frontmatter['manufacturer']
+            }
+            
+        # Add specifications as product attributes
+        if 'technicalSpecifications' in self.frontmatter:
+            specs = self.frontmatter['technicalSpecifications']
+            if isinstance(specs, dict):
+                properties = []
+                for name, value in specs.items():
+                    properties.append({
+                        "@type": "PropertyValue",
+                        "name": name,
+                        "value": str(value)
+                    })
+                if properties:
+                    jsonld['additionalProperty'] = properties
+                    
+    # Similar methods for other schema types...
     
     def _load_prompt_template(self) -> Dict[str, Any]:
         """Load prompt template from local YAML file."""
@@ -455,6 +524,22 @@ class JsonLdGenerator:
         }
         
         return json.dumps(fallback_data, indent=2)
+    
+    def _generate_fallback_jsonld(self):
+        """Generate minimal JSON-LD as fallback."""
+        subject = self.context.get('subject', '')
+        jsonld = {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": f"{subject}",
+            "description": f"Information about {subject}",
+            "publisher": {
+                "@type": "Organization",
+                "name": "Z-Beam Technologies"
+            }
+        }
+        formatted_jsonld = json.dumps(jsonld, indent=2)
+        return f"```json\n{formatted_jsonld}\n```"
     
     def _generate_url(self, subject: str, article_type: str) -> str:
         """Generate URL for the article."""
