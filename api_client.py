@@ -397,20 +397,6 @@ class APIClient:
         except:
             return f"Status {response.status_code}: {response.text[:100]}"
     
-    def _generate_mock_response(self, prompt):
-        """Generate a mock response for testing."""
-        logger.warning("Using mock response (no API key available)")
-        
-        # Different mock responses based on prompt content
-        if "metadata" in prompt.lower():
-            return "---\nname: Mock Response\ndescription: This is a mock response.\n---"
-        elif "jsonld" in prompt.lower():
-            return '{"@context": "https://schema.org", "@type": "TechnicalArticle", "headline": "Mock Article"}'
-        elif "tags" in prompt.lower():
-            return "tag1, tag2, tag3, mock-tag, test-tag"
-        else:
-            return "Mock response for: " + prompt[:50] + "..."
-
 
 def generate_with_fallback(prompt: str, max_tokens: int = 2000, preferred_provider: Optional[str] = None) -> Optional[str]:
     """Generate content with automatic fallback to available providers."""

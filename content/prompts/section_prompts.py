@@ -1,74 +1,34 @@
 import logging
-from typing import Dict, Any
-
-from ..randomizers.style_randomizer import StyleRandomizer
+from ..utils.style_utils import format_section_prompt, get_standard_prompt_style
 
 logger = logging.getLogger(__name__)
 
 class SectionPromptBuilder:
-    """Builds dynamic, randomized prompts for content sections with variable lengths."""
+    """Builds prompts for individual content sections."""
     
     @staticmethod
-    def create_section_prompt(section: Dict[str, Any], subject: str, section_data: str, 
-                            words_per_section: int, randomize: bool = True) -> str:
+    def create_section_prompt(section, subject, section_data, words_per_section, randomize=False):
         """
-        Create a prompt for a section with randomization including length variation.
+        Create a prompt for a single content section with standardized formatting.
         
         Args:
-            section: Section metadata dictionary
-            subject: The subject to write about
-            section_data: Formatted data for this section
-            words_per_section: Base target word count before randomization
-            randomize: Whether to randomize prompt elements
-            
+            section: Dictionary with section info (id, title)
+            subject: Main subject of the article
+            section_data: Data/context for this section
+            words_per_section: Target word count for the section
+            randomize: Ignored (kept for backward compatibility)
+        
         Returns:
-            Formatted prompt for this section
+            Formatted section prompt string
         """
-        section_id = section["id"]
-        section_title = section["title"]
+        section_id = section.get("id", "")
+        section_title = section.get("title", "")
         
-        # Base prompt structure
-        prompt = f"## {section_title}\n\n"
-        
-        # Randomize the section length if randomization is enabled
-        if randomize:
-            # Apply significant randomization to section length
-            actual_words = StyleRandomizer.randomize_word_count(words_per_section)
-            
-            # Record the actual length target in the section data for debugging
-            section["target_length"] = actual_words
-        else:
-            actual_words = words_per_section
-        
-        # Add randomized style if requested
-        if randomize:
-            style = StyleRandomizer.get_style()
-            prompt += f"Using a {style} style, "
-            
-            # Randomly determine if this section should be emphasized (lengthier/more detailed)
-            if StyleRandomizer.should_emphasize_section():
-                prompt += f"{StyleRandomizer.get_emphasis_instruction()} "
-            
-        # Get intro phrase (randomized if requested)
-        if randomize:
-            intro_phrase = StyleRandomizer.get_intro_phrase(section_id, subject)
-        else:
-            intro_phrase = f"Write about {subject} based on this information"
-            
-        prompt += f"{intro_phrase}:\n{section_data}\n\n"
-        
-        # Get conclusion guidance (randomized if requested)
-        if randomize:
-            conclusion = StyleRandomizer.get_conclusion_phrase(section_id)
-        else:
-            conclusion = "Provide comprehensive details and explain their significance."
-            
-        prompt += conclusion
-        
-        # Add word count guidance with highly variable targets
-        if randomize:
-            prompt += f"\n\n{StyleRandomizer.get_section_length_description(actual_words)}"
-        else:
-            prompt += f"\n\nWrite approximately {actual_words} words for this section."
-        
-        return prompt
+        # Always use standard formatting (no randomization)
+        return format_section_prompt(
+            section_id=section_id,
+            title=section_title,
+            subject=subject,
+            data=section_data,
+            words=words_per_section
+        )

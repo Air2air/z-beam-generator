@@ -9,19 +9,19 @@ OUTPUT_DIR = "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/output"
 
 # Define your article context here - edit this for each generation
 ARTICLE_CONTEXT = {
-    "subject": "lens",
+    "subject": "Oak wood",
     "author_id": 3,
-    "article_type": "thesaurus",
+    "article_type": "material",
     "output_dir": OUTPUT_DIR,
     "ai_provider": "deepseek",
     "component_config": {
         "content": {
             "enabled": True,
-            "min_words": 200,    # Base minimum that will be randomized
-            "max_words": 500,    # Base maximum that will be randomized
-            "paragraphs": 5,     # Base target that will be randomized
-            "use_dynamic_sections": True,   # Use frontmatter to determine sections
-            "randomize_sections": True,     # Enable full randomization
+            "min_words": 300,    # Fixed minimum
+            "max_words": 500,    # Fixed maximum
+            "paragraphs": 3,     # Fixed target
+            "use_dynamic_sections": False,  # Use standard sections
+            "randomize_sections": False,    # No randomization
             "max_attempts": 3
         },
         "table": {

@@ -6,100 +6,119 @@ from typing import Dict, Any, Optional, List, Union
 logger = logging.getLogger(__name__)
 
 class MarkdownFormatter:
-    """
-    Formats complete markdown document outputs with proper triple backtick code blocks.
-    """
+    """Unified markdown document formatter with proper code blocks."""
     
     @staticmethod
-    def format_and_write_markdown(
-        output_path: str,
-        frontmatter: Union[Dict[str, Any], str],
-        content: str = "",
-        jsonld: Optional[str] = None,
-        tables: Optional[str] = None,
-        code_blocks: Optional[List[Dict[str, Any]]] = None
-    ) -> bool:
-        """
-        Formats and writes a complete markdown document with properly formatted triple backtick code blocks.
+    def format_output(frontmatter, tags, jsonld, tables, content):
+        """Format components into a properly formatted markdown string."""
+        parts = []
         
-        Args:
-            output_path: Path to write the markdown file
-            frontmatter: Dictionary or string of frontmatter data
-            content: Main markdown content
-            jsonld: Optional JSON-LD content as string
-            tables: Optional tables content as string
-            code_blocks: Optional list of code blocks with language and content
+        # Format frontmatter
+        fm_str = MarkdownFormatter._format_frontmatter(frontmatter)
+        if fm_str:
+            parts.append(fm_str)
             
-        Returns:
-            True if successful, False otherwise
-        """
+        # Add content
+        if content:
+            parts.append(str(content).strip())
+            
+        # Format tags as a bulleted list
+        tags_str = MarkdownFormatter._format_tags(tags)
+        if tags_str:
+            parts.append(tags_str)
+            
+        # Format JSON-LD
+        jsonld_str = MarkdownFormatter._format_jsonld(jsonld)
+        if jsonld_str:
+            parts.append(jsonld_str)
+            
+        # Add tables
+        if tables:
+            parts.append(str(tables).strip())
+            
+        return "\n\n".join(parts)
+    
+    @staticmethod
+    def write_markdown(output_path, content):
+        """Write formatted markdown to file."""
         try:
-            # Create directory if it doesn't exist
+            # Create directory if needed
             os.makedirs(os.path.dirname(output_path), exist_ok=True)
             
-            with open(output_path, "w", encoding="utf-8") as f:
-                # 1. Format frontmatter with triple backticks
-                if isinstance(frontmatter, dict):
-                    # Convert dict to YAML string
-                    f.write("```yaml\n")
-                    yaml.dump(frontmatter, f, default_flow_style=False, sort_keys=False)
-                    f.write("```\n\n")
-                else:
-                    # Assume frontmatter is already a string
-                    frontmatter_str = str(frontmatter).strip()
-                    if frontmatter_str.startswith("---"):
-                        # Remove YAML document markers and add triple backticks
-                        if frontmatter_str.startswith("---\n"):
-                            frontmatter_str = frontmatter_str[4:]
-                        if frontmatter_str.endswith("\n---"):
-                            frontmatter_str = frontmatter_str[:-4]
-                        frontmatter_str = frontmatter_str.strip()
-                        f.write("```yaml\n")
-                        f.write(frontmatter_str)
-                        f.write("\n```\n\n")
-                    elif not frontmatter_str.startswith("```yaml"):
-                        # Add triple backticks if not present
-                        f.write("```yaml\n")
-                        f.write(frontmatter_str)
-                        f.write("\n```\n\n")
-                    else:
-                        # Already has triple backticks
-                        f.write(frontmatter_str)
-                        f.write("\n\n")
+            with open(output_path, 'w', encoding='utf-8') as f:
+                f.write(content)
                 
-                # 2. Write main content
-                if content:
-                    f.write(str(content).strip())
-                    f.write("\n\n")
-                
-                # 3. Format and write JSON-LD with triple backticks if present
-                if jsonld:
-                    jsonld_str = str(jsonld).strip()
-                    if not jsonld_str.startswith("```json"):
-                        f.write("```json\n")
-                        f.write(jsonld_str)
-                        f.write("\n```\n\n")
-                    else:
-                        # Already has triple backticks
-                        f.write(jsonld_str)
-                        f.write("\n\n")
-                
-                # 4. Write tables if present
-                if tables:
-                    f.write(str(tables).strip())
-                    f.write("\n\n")
-                
-                # 5. Write any additional code blocks
-                if code_blocks:
-                    for block in code_blocks:
-                        language = block.get("language", "")
-                        f.write(f"```{language}\n")
-                        f.write(block["content"])
-                        f.write("\n```\n\n")
-                
-                logger.info(f"Successfully wrote formatted markdown to {output_path}")
-                return True
-                
+            logger.info(f"Successfully wrote markdown to {output_path}")
+            return True
         except Exception as e:
-            logger.error(f"Error writing markdown to {output_path}: {e}")
+            logger.error(f"Error writing markdown: {e}")
             return False
+    
+    @staticmethod
+    def _format_frontmatter(frontmatter):
+        """Format frontmatter with triple backticks."""
+        if not frontmatter:
+            return ""
+            
+        if isinstance(frontmatter, dict):
+            # Use StringIO to capture YAML dump
+            import io
+            fm_buffer = io.StringIO()
+            yaml.dump(frontmatter, fm_buffer, default_flow_style=False)
+            return f"```yaml\n{fm_buffer.getvalue().strip()}\n```"
+        
+        # Handle string frontmatter
+        fm_str = str(frontmatter).strip()
+        
+        # Convert from --- to ``` if needed
+        if fm_str.startswith('---'):
+            parts = fm_str.split('---', 2)
+            if len(parts) >= 2:
+                return f"```yaml\n{parts[1].strip()}\n```"
+        
+        # Add backticks if not present
+        if not fm_str.startswith('```yaml'):
+            return f"```yaml\n{fm_str}\n```"
+        
+        return fm_str
+    
+    @staticmethod
+    def _format_tags(tags):
+        """Format tags as a bulleted list."""
+        if not tags:
+            return ""
+            
+        if isinstance(tags, list):
+            return "## Tags\n" + "\n".join([f"- {tag}" for tag in tags])
+        
+        # Handle string tags (already formatted or newline-separated)
+        tags_str = str(tags).strip()
+        
+        # If tags are just newline-separated, format as bullets
+        if "\n" in tags_str and not tags_str.startswith("- "):
+            tag_list = [t.strip() for t in tags_str.split("\n") if t.strip()]
+            return "## Tags\n" + "\n".join([f"- {tag}" for tag in tag_list])
+        
+        return "## Tags\n" + tags_str
+    
+    @staticmethod
+    def _format_jsonld(jsonld):
+        """Format JSON-LD with triple backticks."""
+        if not jsonld:
+            return ""
+            
+        jsonld_str = str(jsonld).strip()
+        
+        if not jsonld_str.startswith('```json'):
+            return f"```json\n{jsonld_str}\n```"
+            
+        return jsonld_str
+
+# Add these functions for backward compatibility
+def format_output(frontmatter, tags, jsonld, tables, content):
+    """Legacy function for backward compatibility"""
+    return MarkdownFormatter.format_output(frontmatter, tags, jsonld, tables, content)
+
+def force_write_output(output_path, content):
+    """Legacy function for backward compatibility"""
+    return MarkdownFormatter.write_markdown(output_path, content)

@@ -6,12 +6,11 @@ from typing import Dict, Any, Optional
 from frontmatter.generator import FrontmatterGenerator
 from jsonld.generator import JsonLdGenerator
 from tags.generator import TagsGenerator
-from utils.output_formatter import format_output, force_write_output
+from utils.markdown_formatter import MarkdownFormatter, format_output, force_write_output
 from table.generator import TableGenerator
 from content.generator import ContentGenerator
 import re
 import yaml
-from utils.markdown_formatter import MarkdownFormatter
 
 logger = logging.getLogger(__name__)
 
@@ -179,29 +178,28 @@ class ArticleOrchestrator:
             return False
 
     def save_article(self, output: str) -> bool:
-        """Save article to file with standardized dash-based naming and proper formatting."""
+        """Save article to file with standardized dash-based naming."""
         try:
-            # Use the slug that was already generated
             filename = f"{self.context['slug']}.md"
             output_dir = self.context["output_dir"]
+            filepath = os.path.join(output_dir, filename)
             
-            # Print detailed debug info
             print(f"\n📄 Saving article to:")
             print(f"   - Directory: {output_dir}")
             print(f"   - Filename: {filename}")
             print(f"   - Content length: {len(output)} characters")
             
-            # Full output path
-            filepath = os.path.join(output_dir, filename)
-            
-            # Use the MarkdownFormatter to write with proper triple backticks
-            # Note: We're passing the entire output string as the frontmatter parameter
-            # and letting the formatter handle parsing it
-            success = MarkdownFormatter.format_and_write_markdown(
-                output_path=filepath,
-                frontmatter=output,  # Pass the entire output - formatter will handle it
-                content=""           # Leave content empty since it's already in the output
+            # Format and write in one step
+            from utils.markdown_formatter import MarkdownFormatter
+            formatted_output = MarkdownFormatter.format_output(
+                frontmatter=None,  # Let the formatter extract it from the output
+                tags=None,
+                jsonld=None,
+                tables=None,
+                content=output  # Pass the entire output
             )
+            
+            success = MarkdownFormatter.write_markdown(filepath, formatted_output)
             
             if success:
                 print(f"   ✅ File successfully written with proper formatting")
@@ -209,113 +207,6 @@ class ArticleOrchestrator:
             else:
                 print(f"   ❌ File formatting and write failed")
                 return False
-
         except Exception as e:
             logger.error(f"Failed to save article: {e}", exc_info=True)
             return False
-
-    def _summarize_frontmatter(self, frontmatter: str) -> str:
-        # Example: extract facility names, technologies, standards, and unique uses
-        # You can use regex or yaml parsing for structured frontmatter
-        summary_lines = []
-        # Extract manufacturing centers
-        centers = re.findall(r'name:\s*"([^"]+)"', frontmatter)
-        if centers:
-            summary_lines.append("Facilities: " + ", ".join(centers))
-        # Extract regulatory standards
-        standards = re.findall(r'regulatoryStandards:\s*\n((?:\s*-\s*".*?"\n)+)', frontmatter)
-        if standards:
-            summary_lines.append("Regulatory Standards: " + ", ".join(re.findall(r'"([^"]+)"', standards[0])))
-        # Extract keywords
-        keywords = re.findall(r'keywords:\s*\n((?:\s*-\s*".*?"\n)+)', frontmatter)
-        if keywords:
-            summary_lines.append("Keywords: " + ", ".join(re.findall(r'"([^"]+)"', keywords[0])))
-        # Add more as needed
-        return "\n".join(summary_lines)
-
-    def _generate_table(self, metadata_dict):
-        """Generate a table using the table generator."""
-        
-        # Log the available metadata for debugging
-        logger.debug(f"Available metadata keys: {list(metadata_dict.keys())}")
-        
-        # Create and configure the table generator
-        table_gen = TableGenerator(self.context, self.schema, metadata_dict)
-        
-        # Generate the table
-        table = table_gen.generate()
-        
-        # Validate table output
-        if table and "|" in table:
-            logger.info("Generated table successfully")
-        else:
-            logger.warning("Table generation produced empty or invalid output")
-        
-        return table
-
-    def _assemble_layout(self, content, layout_template):
-        """Assemble the article content based on the selected layout template."""
-        try:
-            if layout_template == "standard":
-                # Include main content after frontmatter but before other components
-                frontmatter = content.get("frontmatter", "")
-                tags = content.get("tags", "")
-                jsonld = content.get("jsonld", "")
-                table = content.get("table", "")
-                main_content = content.get("content", "")
-                
-                # Format standard layout with content
-                result = frontmatter
-                if main_content:
-                    result += "\n\n" + main_content
-                if tags:
-                    result += "\n\n" + tags
-                if jsonld:
-                    result += "\n\n" + jsonld
-                if table:
-                    result += "\n\n" + table
-                
-                return result
-                
-            elif layout_template == "compact":
-                # Minimal layout with just essential components
-                compact_content = []
-                if "frontmatter" in content:
-                    compact_content.append(content["frontmatter"])
-                if "content" in content:  # Add content to compact layout too
-                    compact_content.append(content["content"])
-                if "tags" in content:
-                    compact_content.append(content["tags"])
-                return "\n\n".join(compact_content)
-                
-            elif layout_template == "detailed":
-                # Full detailed layout with all components and additional formatting
-                parts = []
-                
-                if "frontmatter" in content:
-                    parts.append(content["frontmatter"])
-                    
-                if "content" in content:
-                    parts.append("# " + self.context["subject"])  # Add title
-                    parts.append(content["content"])
-                    
-                if "table" in content:
-                    parts.append("# Technical Specifications")
-                    parts.append(content["table"])
-                    
-                if "tags" in content:
-                    parts.append(content["tags"])
-                    
-                if "jsonld" in content:
-                    parts.append(content["jsonld"])
-                    
-                return "\n\n".join(parts)
-                
-            else:
-                # Default to standard layout if template not recognized
-                logger.warning(f"Unknown layout template '{layout_template}', using standard layout")
-                # Similar to standard layout above
-                # [...]
-        except Exception as e:
-            logger.error(f"Error assembling layout: {e}")
-            return None
