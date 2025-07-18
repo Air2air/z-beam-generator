@@ -102,10 +102,14 @@ class FrontmatterGenerator:
                     logger.info(f"🧪 TEST: Adding '{field_name}' field to frontmatter")
                     parsed_yaml[field_name] = field_value
                 
+                # Ensure all required fields are present
+                self._ensure_required_fields_present(parsed_yaml)
+                
                 # Convert back to YAML
                 frontmatter = yaml.dump(parsed_yaml, sort_keys=False, default_flow_style=False)
                 
                 return frontmatter
+                
             except yaml.YAMLError as e:
                 logger.error(f"Failed to parse YAML response: {e}")
                 return None
@@ -144,7 +148,6 @@ class FrontmatterGenerator:
             schema_template=schema_template
         )
     
-    # Hardcoded section expansion
     def _expand_frontmatter_content(self, frontmatter: str) -> str:
         """Expand frontmatter content to meet minimum length requirements."""
         try:
@@ -157,17 +160,14 @@ class FrontmatterGenerator:
             
             logger.info(f"Expanding frontmatter content from {original_length} characters")
             
-            # Get expansion config from schema
-            profile = self.schema_parser.get_profile()
-            expansion_config = profile.get("generatorConfig", {}).get("frontmatter", {})
-            
-            # Use dynamic thresholds with fallbacks
-            description_min_length = expansion_config.get("descriptionMinLength", 500)
-            
             # 1. Expand description if needed
             if "description" in parsed and isinstance(parsed["description"], str):
                 current_length = len(parsed["description"])
-                if current_length < description_min_length:  # Hardcoded length threshold
+                # Get threshold from schema if available
+                profile = self.schema_parser.get_profile()
+                min_length = profile.get("generatorConfig", {}).get("descriptionMinLength", 500)
+                
+                if current_length < min_length:
                     logger.info(f"Expanding description from {current_length} characters")
                     parsed["description"] = self.content_generator.expand_description(parsed["description"])
             
@@ -181,7 +181,7 @@ class FrontmatterGenerator:
             logger.info(f"Expanded frontmatter from {original_length} to {expanded_length} characters")
             
             return expanded_frontmatter
-        
+            
         except Exception as e:
             logger.error(f"Error expanding frontmatter: {e}")
             return YAMLFormatter.extract_first_document_only(frontmatter)
@@ -208,3 +208,30 @@ class FrontmatterGenerator:
                 
                 # Add field with dynamic value based on schema definition
                 parsed[field_name] = self.content_generator.generate_default_value(field_name, field_def, field_type)
+    
+    def _ensure_required_fields_present(self, parsed_yaml: dict) -> None:
+        """Ensure all schema-required fields are present in the frontmatter."""
+        # Get all required fields from schema validation section if available
+        profile = self.schema_parser.get_profile()
+        validation_required = []
+        
+        if profile and "validation" in profile and "requiredFields" in profile["validation"]:
+            validation_required = profile["validation"]["requiredFields"]
+        
+        # Combine with standard required fields
+        required_fields = list(set(validation_required + self.schema_parser.get_required_fields()))
+        
+        for field_name in required_fields:
+            if field_name not in parsed_yaml:
+                logger.warning(f"🚨 Required field missing: {field_name}")
+                
+                # Get field definition
+                field_def = self.schema_parser.get_field_definition(field_name)
+                if not field_def:
+                    logger.error(f"No definition found for required field: {field_name}")
+                    continue
+                    
+                # Generate default value for missing field
+                field_type = self.schema_parser.get_field_type(field_name)
+                parsed_yaml[field_name] = self.content_generator.generate_default_value(field_name, field_def, field_type)
+                logger.info(f"Added missing required field: {field_name}")

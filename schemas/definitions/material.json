@@ -4,111 +4,23 @@
     "version": "1.3",
     "schemaType": "MaterialProfile",
     "generatorConfig": {
-      "tags": {
-        "includeTags": true,
-        "maxTags": 8,
-        "maxKeywords": 12,
-        "primaryKeywords": ["laser cleaning", "{subject} laser cleaning"]
-      },
       "jsonld": {
-        "schemaType": "TechnicalArticle",
-        "additionalProperties": [
-          {
-            "name": "materialCategory",
-            "value": "Laser Cleaning Material"
-          }
-        ],
-        "requiredProperties": ["@context", "@type", "headline", "description", "author", "url", "keywords", "about"],
-        "recommendedProperties": ["hasPart", "publisher", "mentions", "datePublished", "dateModified"]
+        "schemaType": "Product"
       },
-      "frontmatter": {
-        "category": "MaterialProperties",
-        "minLength": 2000,
-        "maxLength": 3000
-      }
-    },
-    "sections": {
-      "overview": {
-        "required": true,
-        "prompt": "Write a 150–200 word technical overview of {subject} in laser cleaning, focusing on properties, uses, and benefits."
-      },
-      "technicalSpecifications": {
-        "required": true,
-        "prompt": "Summarize key properties (physical, chemical, mechanical, thermal, optical) and laser cleaning parameters for {subject} (100–150 words)."
-      },
-      "applications": {
-        "required": true,
-        "prompt": "Provide 3–4 laser cleaning applications for {subject}, with name and 50–75 word description."
-      },
-      "outcomes": {
-        "required": true,
-        "prompt": "Provide 2–3 measurable outcomes for laser cleaning {subject}, with result and metric (e.g., ASTM standards)."
-      },
-      "challenges": {
-        "required": true,
-        "prompt": "Outline 1–3 technical challenges for laser cleaning {subject}, with 50–75 word solutions."
-      },
-      "environmentalImpact": {
-        "required": true,
-        "prompt": "Summarize environmental impact of laser cleaning {subject}, focusing on waste reduction and energy efficiency (100–150 words)."
+      "contentGeneration": {
+        "dynamicSectionsFromFrontmatter": true,
+        "fieldContentMapping": {
+          "properties": "Detail the physical and chemical properties of {subject} relevant to laser cleaning",
+          "laserParameters": "Explain the optimal laser parameters for cleaning {subject}, including wavelength, fluence, and pulse duration",
+          "applications": "Describe the key applications where {subject} is processed using laser cleaning",
+          "challenges": "Analyze the specific challenges in laser cleaning {subject} and their technical solutions",
+          "safetyConsiderations": "Outline the safety considerations and protocols when laser cleaning {subject}"
+        },
+        "introductionPrompt": "Provide a comprehensive technical overview of {subject} as a material in laser cleaning applications"
       }
     },
     "profile": {
-      "name": {
-        "type": "string",
-        "required": true,
-        "description": "Material name (e.g., 'Aluminum')",
-        "example": "{subject}"
-      },
-      "description": {
-        "type": "string",
-        "required": true,
-        "description": "Technical overview (150–200 words)",
-        "example": "Aluminum is a lightweight metal used in aerospace..."
-      },
-      "website": {
-        "type": "string",
-        "required": true,
-        "description": "URL (https://www.z-beam.com/[subject]-laser-cleaning)",
-        "example": "https://www.z-beam.com/aluminum-laser-cleaning"
-      },
-      "author": {
-        "type": "object",
-        "required": true,
-        "properties": {
-          "name": {
-            "type": "string",
-            "required": true,
-            "description": "Author or organization name",
-            "example": "Laser Technology Institute"
-          },
-          "credentials": {
-            "type": "string",
-            "required": true,
-            "description": "Credentials for E-A-T",
-            "example": "Industry Leader in Laser Cleaning Technology"
-          }
-        }
-      },
-      "keywords": {
-        "type": "array",
-        "items": {
-          "type": "string"
-        },
-        "required": true,
-        "description": "10–12 technical keywords for SEO and search",
-        "example": ["aluminum laser cleaning", "surface preparation", "material properties"]
-      },
-      "tags": {
-        "type": "array",
-        "items": {
-          "type": "string"
-        },
-        "required": true,
-        "description": "5–8 hyphenated tags for on-site navigation",
-        "example": ["aluminum-cleaning", "laser-cleaning", "surface-treatment"]
-      },
-      "technicalSpecifications": {
+      "properties": {
         "type": "object",
         "required": true,
         "properties": {
@@ -145,200 +57,57 @@
         },
         "description": "Physical, chemical, and laser cleaning parameters"
       },
-      "applications": {
+      "composition": {
         "type": "array",
         "required": true,
         "items": {
           "type": "object",
           "properties": {
-            "name": {
+            "element": {
               "type": "string",
               "required": true,
-              "description": "Application name",
-              "example": "Aerospace Component Cleaning"
+              "description": "Chemical element",
+              "example": "Aluminum"
             },
-            "description": {
+            "percentage": {
               "type": "string",
               "required": true,
-              "description": "Application description (50–75 words)",
-              "example": "Cleans aluminum aerospace components with 2–10 J/cm²..."
+              "description": "Weight percentage in the material",
+              "example": "100%"
             }
           }
         },
-        "description": "3–4 laser cleaning applications"
+        "description": "Chemical composition by element"
       },
-      "facilities": {
-        "type": "array",
-        "required": false,
-        "items": {
-          "type": "object",
-          "properties": {
-            "name": {
-              "type": "string",
-              "required": true,
-              "description": "Facility name",
-              "example": "Z-Beam Tech Center"
-            },
-            "location": {
-              "type": "string",
-              "required": true,
-              "description": "California city, county, state",
-              "example": "San Diego, San Diego County, California"
-            },
-            "coordinates": {
-              "type": "string",
-              "required": true,
-              "description": "Geographic coordinates",
-              "example": "32.7157° N, 117.1611° W"
-            },
-            "description": {
-              "type": "string",
-              "required": true,
-              "description": "Facility description (50–75 words)",
-              "example": "R&D hub for material cleaning..."
-            }
-          }
-        },
-        "description": "1–3 California facilities"
-      },
-      "regulatoryStandards": {
+      "compatibility": {
         "type": "array",
         "required": true,
         "items": {
           "type": "object",
           "properties": {
-            "code": {
+            "material": {
               "type": "string",
               "required": true,
-              "description": "Standard code",
-              "example": "ANSI Z136.1"
+              "description": "Compatible material",
+              "example": "Stainless Steel"
             },
-            "description": {
+            "application": {
               "type": "string",
               "required": true,
-              "description": "Compliance description (50–75 words)",
-              "example": "Class IV laser safety, requiring interlocks..."
+              "description": "Application or process",
+              "example": "Welding"
             }
           }
         },
-        "description": "2–3 compliance standards"
-      },
-      "challenges": {
-        "type": "array",
-        "required": true,
-        "items": {
-          "type": "object",
-          "properties": {
-            "issue": {
-              "type": "string",
-              "required": true,
-              "description": "Technical challenge",
-              "example": "Thermal Damage"
-            },
-            "solution": {
-              "type": "string",
-              "required": true,
-              "description": "Solution (50–75 words)",
-              "example": "Pulse shaping adjusts fluence..."
-            }
-          }
-        },
-        "description": "1–3 challenges and solutions"
-      },
-      "outcomes": {
-        "type": "array",
-        "required": true,
-        "items": {
-          "type": "object",
-          "properties": {
-            "result": {
-              "type": "string",
-              "required": true,
-              "description": "Measurable result",
-              "example": "99.7% contaminant removal"
-            },
-            "metric": {
-              "type": "string",
-              "required": true,
-              "description": "Measurement standard",
-              "example": "ASTM D3359"
-            }
-          }
-        },
-        "description": "2–3 measurable outcomes"
-      },
-      "environmentalImpact": {
-        "type": "object",
-        "required": true,
-        "properties": {
-          "description": {
-            "type": "string",
-            "required": true,
-            "description": "Environmental impact summary (100–150 words)",
-            "example": "Laser cleaning of aluminum reduces chemical waste by 90%..."
-          },
-          "metrics": {
-            "type": "array",
-            "required": false,
-            "items": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": "string",
-                  "required": true,
-                  "example": "Waste Reduction"
-                },
-                "value": {
-                  "type": "string",
-                  "required": true,
-                  "example": "90%"
-                },
-                "unit": {
-                  "type": "string",
-                  "required": false,
-                  "example": "%"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "jsonLD": {
-      "@type": "TechnicalArticle",
-      "requiredProperties": ["@context", "@type", "headline", "description", "author", "url", "keywords", "about"],
-      "recommendedProperties": ["hasPart", "publisher", "mentions", "datePublished", "dateModified"],
-      "mappings": {
-        "name": "headline",
-        "description": "description",
-        "website": "url",
-        "author.name": "author.name",
-        "author.credentials": "author.description",
-        "keywords": "keywords",
-        "tags": "about.category",
-        "technicalSpecifications": "about.additionalProperty",
-        "applications": "hasPart",
-        "facilities": "publisher.location",
-        "regulatoryStandards": "about.legislationApplied",
-        "challenges": "mentions",
-        "outcomes": "about.potentialAction",
-        "environmentalImpact.description": "about.environmentalImpact",
-        "environmentalImpact.metrics": "about.potentialAction"
+        "description": "Compatible materials and applications"
       }
     },
     "validation": {
-      "requiredSections": ["overview", "technicalSpecifications", "applications", "outcomes", "challenges", "environmentalImpact"],
-      "jsonLD": {
-        "minLength": 1000,
-        "maxLength": 2000,
-        "schemaOrgType": "TechnicalArticle",
-        "schemaOrgCompliance": true,
-        "validPropertiesOnly": true
-      },
       "frontmatter": {
-        "requiredFields": ["name", "description", "website", "author", "keywords", "tags", "technicalSpecifications", "applications", "regulatoryStandards", "outcomes", "environmentalImpact"],
-        "minLength": 2000,
-        "maxLength": 3000
+        "requiredFields": [
+          "name", "description", "website", "author", "keywords", "tags", 
+          "properties", "composition", "compatibility", "regulatoryStandards"
+        ]
       }
     }
   }

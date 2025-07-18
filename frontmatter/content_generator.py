@@ -20,35 +20,119 @@ class DefaultContentGenerator:
         self.schema_parser = SchemaParser(schema, article_type, subject)
     
     def expand_description(self, description: str) -> str:
-        """Expand description with content relevant to article type."""
-        if self.article_type == "application":
-            return (
-                f"{description} This advanced laser cleaning process utilizes "  # Hardcoded text
-                f"high-precision equipment operating at optimal parameters for {self.subject}, "
-                f"achieving superior surface preparation results while preserving substrate integrity."
-            )
-        elif self.article_type == "material":
-            return (
-                f"{description} This material responds optimally to specific laser parameters "  # Hardcoded text
-                f"for cleaning applications, with carefully controlled power, wavelength, and pulse "
-                f"duration settings to ensure effective contaminant removal without substrate damage."
-            )
-        else:
-            return description
+        """Expand description dynamically based on schema config."""
+        # Try to get expansion templates from schema
+        profile = self.schema_parser.get_profile()
+        templates = profile.get("generatorConfig", {}).get("descriptionTemplates", {})
+        
+        # Use schema-defined templates if available
+        if self.article_type in templates:
+            return f"{description} {templates[self.article_type].format(subject=self.subject)}"
+        
+        # Dynamic fallback based on article type
+        industry_terms = {
+            "application": ["surface preparation", "contaminant removal", "substrate integrity"],
+            "material": ["optimal parameters", "surface quality", "cleaning efficiency"],
+            "region": ["local regulations", "industry standards", "environmental compliance"]
+        }
+        
+        terms = industry_terms.get(self.article_type, ["precision", "efficiency", "quality"])
+        term = terms[hash(self.subject) % len(terms)]
+        
+        return f"{description} Additional information about {self.subject} {term} in laser cleaning applications."
     
     def generate_default_value(self, field_name: str, field_def: Dict[str, Any], field_type: str = None) -> Any:
         """Generate default value based on field definition and type."""
         if not field_type:
             field_type = field_def.get("type", "string")
+    
+        # Log the field being generated
+        logging.debug(f"Generating default value for {field_name} ({field_type})")
+    
+        # Get example from definition if available
+        example = field_def.get("example", None)
+    
+        if field_type == "string":
+            # Use example as template if available
+            if example and isinstance(example, str):
+                return self._personalize_example(example)
+            return f"Information about {self.subject} {field_name.replace('_', ' ')}"
             
-        # Generate based on schema-defined type
-        if field_type == "object" or isinstance(field_def.get("example", None), dict):
-            return self._generate_default_object(field_name, field_def)
-        elif field_type == "array" or isinstance(field_def.get("example", None), list):
-            return self._generate_default_array(field_name, field_def)
-        else:
-            # String or other scalar type
-            return self._generate_default_string(field_name, field_def)
+        elif field_type == "array":
+            # Get array items definition
+            items_def = field_def.get("items", {})
+            items_type = items_def.get("type", "string")
+            
+            # Use examples from schema if available
+            if example and isinstance(example, list) and len(example) > 0:
+                # Clone the example to avoid modifying it
+                return [self._personalize_example(item) for item in example[:3]]
+                
+            # Default array items based on type
+            if items_type == "string":
+                return [f"Key aspect of {field_name} for {self.subject}", f"Important {field_name} factor"]
+            elif items_type == "object":
+                # Use item properties to guide generation
+                properties = items_def.get("properties", {})
+                return [self._generate_object_item(properties) for _ in range(2)]
+                
+            return [f"{field_name} item 1", f"{field_name} item 2"]
+            
+        elif field_type == "object":
+            # Special case for objects - look at properties
+            properties = field_def.get("properties", {})
+            
+            # Create object with appropriate properties
+            result = {}
+            
+            for prop_name, prop_def in properties.items():
+                prop_type = prop_def.get("type", "string")
+                
+                # Get example from property definition
+                prop_example = prop_def.get("example", None)
+                
+                if prop_type == "string":
+                    if prop_example and isinstance(prop_example, str):
+                        result[prop_name] = self._personalize_example(prop_example)
+                    else:
+                        result[prop_name] = f"Information about {self.subject} {prop_name.replace('_', ' ')}"
+                
+                elif prop_type == "array":
+                    if prop_example and isinstance(prop_example, list) and len(prop_example) > 0:
+                        # Use examples from schema
+                        result[prop_name] = [self._personalize_example(item) for item in prop_example[:3]]
+                    else:
+                        # Default array content
+                        result[prop_name] = [f"Key {prop_name} factor for {self.subject}", f"Important {prop_name} metric"]
+            
+            return result
+            
+        # Default fallback for other types
+        return f"Default value for {field_name}"
+
+    def _personalize_example(self, example: str) -> str:
+        """Personalize an example string by replacing placeholders."""
+        if not example or not isinstance(example, str):
+            return example
+            
+        # Replace {subject} with actual subject
+        return example.replace("{subject}", self.subject)
+
+    def _generate_object_item(self, properties: Dict[str, Any]) -> Dict[str, Any]:
+        """Generate object item based on property definitions."""
+        result = {}
+        
+        for prop_name, prop_def in properties.items():
+            prop_type = prop_def.get("type", "string")
+            prop_example = prop_def.get("example", None)
+            
+            if prop_type == "string":
+                if prop_example and isinstance(prop_example, str):
+                    result[prop_name] = self._personalize_example(prop_example)
+                else:
+                    result[prop_name] = f"{prop_name} for {self.subject}"
+        
+        return result
     
     def _generate_default_object(self, field_name: str, field_def: Dict[str, Any]) -> Dict[str, Any]:
         """Generate default object based on schema definition."""
@@ -140,8 +224,12 @@ class DefaultContentGenerator:
             # Use pattern from example but personalize
             return self._personalize_example(example)
             
-        # Generate based on field name
-        if field_name == "description":
+        # Special handling for common fields with specific formats
+        if field_name == "website":
+            # Generate website URL based on subject
+            slug = self.subject.lower().replace(' ', '-')
+            return f"https://www.z-beam.com/{slug}-laser-cleaning"
+        elif field_name == "description":
             return f"Information about {self.subject} in laser cleaning applications."
         elif field_name == "name":
             return self.subject

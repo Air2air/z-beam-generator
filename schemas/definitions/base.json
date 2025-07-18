@@ -27,18 +27,14 @@
         "includePublicationDate": true,
         "maxLength": 3000,
         "minLength": 2000
-      }
-    },
-    "sections": {
-      "environmentalImpact": {
-        "required": true,
-        "prompt": "Summarize environmental impact of {subject} in laser cleaning, focusing on waste reduction and energy efficiency (100–150 words)."
       },
-      "businessImplications": {
-        "required": false,
-        "prompt": "Outline business implications of {subject} in laser cleaning, including cost benefits and market trends (100–150 words)."
+      "contentGeneration": {
+        "dynamicSectionsFromFrontmatter": true,
+        "fieldContentMapping": {},
+        "introductionPrompt": "Provide a comprehensive overview of {subject}"
       }
     },
+    "sections": {},
     "profile": {
       "name": {
         "type": "string",
@@ -249,40 +245,26 @@
         "description": "2–3 measurable outcomes"
       },
       "environmentalImpact": {
-        "type": "object",
+        "type": "array",
         "required": true,
-        "properties": {
-          "description": {
-            "type": "string",
-            "required": true,
-            "description": "Environmental impact summary (100–150 words)",
-            "example": "Laser cleaning reduces chemical waste by 90%..."
-          },
-          "metrics": {
-            "type": "array",
-            "required": false,
-            "items": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": "string",
-                  "required": true,
-                  "example": "Waste Reduction"
-                },
-                "value": {
-                  "type": "string",
-                  "required": true,
-                  "example": "90%"
-                },
-                "unit": {
-                  "type": "string",
-                  "required": false,
-                  "example": "%"
-                }
-              }
+        "items": {
+          "type": "object",
+          "properties": {
+            "benefit": {
+              "type": "string",
+              "required": true,
+              "description": "Environmental benefit",
+              "example": "Waste Reduction"
+            },
+            "description": {
+              "type": "string",
+              "required": true,
+              "description": "Environmental impact details (50-75 words)",
+              "example": "Laser cleaning eliminates chemical solvents, reducing hazardous waste by 90% compared to traditional methods. EPA-compliant process generates zero wastewater and minimal airborne particulates."
             }
           }
-        }
+        },
+        "description": "2-3 environmental benefits"
       },
       "contentManagement": {
         "type": "object",
@@ -334,6 +316,32 @@
           }
         },
         "description": "Related articles for navigation"
+      },
+      "displayConfig": {
+        "type": "object",
+        "required": false,
+        "properties": {
+          "tablePresentations": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "field": { "type": "string", "required": true },
+                "columns": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": { "type": "string", "required": true },
+                      "property": { "type": "string", "required": true },
+                      "width": { "type": "string" }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     },
     "jsonLD": {
@@ -376,6 +384,66 @@
         "relatedContent": "relatedLink"
       }
     },
+    "defaultDisplayConfig": {
+      "tablePresentations": [
+        {
+          "field": "applications",
+          "columns": [
+            { "name": "Name", "property": "name" },
+            { "name": "Description", "property": "description" }
+          ]
+        },
+        {
+          "field": "technicalSpecifications",
+          "columns": [
+            { "name": "Parameter", "property": "key" },
+            { "name": "Value", "property": "value" }
+          ]
+        },
+        {
+          "field": "challenges",
+          "columns": [
+            { "name": "Issue", "property": "issue" },
+            { "name": "Solution", "property": "solution" }
+          ]
+        },
+        {
+          "field": "regulatoryStandards",
+          "columns": [
+            { "name": "Code", "property": "code" },
+            { "name": "Description", "property": "description" }
+          ]
+        },
+        {
+          "field": "outcomes",
+          "columns": [
+            { "name": "Metric", "property": "metric" },
+            { "name": "Result", "property": "result" }
+          ]
+        },
+        {
+          "field": "environmentalImpact",
+          "columns": [
+            { "name": "Benefit", "property": "benefit" },
+            { "name": "Description", "property": "description" }
+          ]
+        },
+        {
+          "field": "facilities",
+          "columns": [
+            { "name": "Facility", "property": "name" },
+            { "name": "Location", "property": "location" }
+          ]
+        }
+      ],
+      "listPresentations": [
+        { "field": "keywords" },
+        { "field": "tags" }
+      ],
+      "formatOptions": {
+        "includeTableCaptions": true
+      }
+    },
     "validation": {
       "jsonLD": {
         "requiredProperties": [
@@ -406,7 +474,8 @@
         "requiredFields": ["name", "description", "website", "author", "keywords", "tags", "environmentalImpact", "regulatoryStandards", "outcomes"],
         "minLength": 2000,
         "maxLength": 3000
-      }
+      },
+      "requiredSections": []
     }
   }
 }
