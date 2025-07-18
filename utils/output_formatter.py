@@ -1,146 +1,87 @@
 """Output formatter - SCHEMA-DRIVEN ONLY."""
 
 import logging
-import json
-import yaml
-import re
-from typing import Dict, Any, List, Optional
+from typing import Union, List
 
 logger = logging.getLogger(__name__)
 
 def format_output(frontmatter, tags, jsonld, markdown_table, main_content):
-    """Format all components into a final output string."""
-    output_parts = []
-    
-    # Add frontmatter
-    if frontmatter:
-        output_parts.append(frontmatter)
-    
-    # Add tags, ensuring it's a string
-    if tags:
-        if isinstance(tags, list):
-            tags_str = "\n".join([f"- {tag}" for tag in tags]) if tags else ""
-            output_parts.append(f"tags:\n{tags_str}")
-        else:
-            output_parts.append(tags)
-    
-    # Add JSON-LD
-    if jsonld:
-        output_parts.append(jsonld)
-    
-    # Add markdown table
-    if markdown_table:
-        output_parts.append(markdown_table)
-    
-    # Add main content
-    if main_content:
-        output_parts.append(main_content)
-    
-    return "\n\n".join(output_parts)
-
-def format_yaml(content: str) -> str:
-    """Remove excessive escape characters from YAML output."""
-    if not content:
-        return ""
-    
-    # Remove the wrapping quotes if they exist
-    if content.startswith('"') and content.endswith('"'):
-        content = content[1:-1]
-    
-    # Replace escaped newlines with actual newlines
-    content = content.replace('\\n', '\n')
-    
-    # Replace escaped quotes with regular quotes
-    content = content.replace('\\"', '"')
-    
-    # Fix special characters
-    content = content.replace('\\xB2', '²')
-    content = content.replace('\\u03BCm', 'μm')
-    content = content.replace('\\xC2\\xB0', '°')
-    
-    return content
-
-def format_tags(tags):
-    """Format tags as a proper YAML array."""
-    if not tags:
-        return "tags: []"
-    
-    # Make sure we have a list of tags, not a string
-    if isinstance(tags, str):
-        # Split by commas if it's a comma-separated string
-        if ',' in tags:
-            tag_list = [tag.strip() for tag in tags.split(',')]
-        # Split by spaces if it's a space-separated string
-        elif ' ' in tags:
-            tag_list = [tag.strip() for tag in tags.split()]
-        # Otherwise just use the whole string as one tag
-        else:
-            tag_list = [tags.strip()]
-    else:
-        tag_list = tags
-    
-    # Create YAML formatted tag list
-    formatted_tags = "tags:"
-    for tag in tag_list:
-        # Skip empty tags
-        if not tag or tag.isspace():
-            continue
-        # Remove any internal newlines and normalize spacing
-        clean_tag = tag.replace('\n', ' ').strip()
-        if clean_tag:
-            formatted_tags += f"\n- {clean_tag}"
-    
-    return formatted_tags
-
-def format_jsonld(content: str) -> str:
-    """Fix JSON-LD formatting by removing extra quotes."""
-    if not content:
-        return "{}"
-    
-    # Remove extra quotes at the beginning if they exist
-    if content.startswith('"'):
-        content = content[1:]
-    
-    # Remove extra quotes at the end if they exist
-    if content.endswith('"') and not content.endswith('\\\"'):
-        content = content[:-1]
-    
-    # Try to format as valid JSON with pretty-printing
+    """
+    Format components into final output with proper triple backtick formatting.
+    """
     try:
-        json_obj = json.loads(content)
-        return json.dumps(json_obj, indent=2)
-    except json.JSONDecodeError:
-        # If parsing fails, return as is
-        logger.warning("Could not parse JSON-LD as valid JSON, returning as-is")
-        return content
-
-def force_write_output(directory, filename, content):
-    """Force write content to file with extensive error checking."""
-    import os
-    import logging
-    
-    logger = logging.getLogger("z-beam")
-    
-    # Ensure directory exists
-    os.makedirs(directory, exist_ok=True)
-    
-    # Create full path
-    full_path = os.path.join(directory, filename)
-    
-    # Try to write the file
-    try:
-        with open(full_path, 'w', encoding='utf-8') as f:
-            f.write(content)
+        # Convert any list type objects to strings
+        def ensure_string(content):
+            if isinstance(content, list):
+                return "\n".join(content)
+            elif content is None:
+                return ""
+            else:
+                return str(content)
+                
+        # Format each component
+        frontmatter_str = ensure_string(frontmatter).strip()
+        tags_str = ensure_string(tags).strip()
+        jsonld_str = ensure_string(jsonld).strip()
+        table_str = ensure_string(markdown_table).strip()
+        content_str = ensure_string(main_content).strip()
         
-        # Verify file was written
-        if os.path.exists(full_path):
-            file_size = os.path.getsize(full_path)
-            logger.info(f"✅ File successfully written to {full_path} (size: {file_size} bytes)")
-            return True
-        else:
-            logger.error(f"❌ File does not exist after writing: {full_path}")
-            return False
-    
+        # Start with frontmatter
+        parts = []
+        
+        # Add frontmatter with proper formatting if it exists
+        if frontmatter_str:
+            # Convert from triple hyphen to triple backtick format if needed
+            if frontmatter_str.startswith('---'):
+                # Extract YAML content
+                yaml_content = frontmatter_str.split('---', 2)[1].strip()
+                parts.append(f"```yaml\n{yaml_content}\n```")
+            elif not frontmatter_str.startswith('```yaml'):
+                # Add triple backticks if not already present
+                parts.append(f"```yaml\n{frontmatter_str}\n```")
+            else:
+                # Already properly formatted
+                parts.append(frontmatter_str)
+        
+        # Add content
+        if content_str:
+            parts.append(content_str)
+            
+        # Add tags
+        if tags_str:
+            parts.append(tags_str)
+            
+        # Add JSON-LD with proper formatting if it exists
+        if jsonld_str:
+            # Ensure JSON-LD has proper formatting
+            if jsonld_str.startswith('{') and not jsonld_str.startswith('```json'):
+                parts.append(f"```json\n{jsonld_str}\n```")
+            else:
+                parts.append(jsonld_str)
+                
+        # Add tables
+        if table_str:
+            parts.append(table_str)
+            
+        # Join everything with double newlines
+        return "\n\n".join(parts)
+        
     except Exception as e:
-        logger.error(f"❌ Error writing file to {full_path}: {str(e)}")
+        logger.error(f"Error formatting output: {e}")
+        return None
+
+def force_write_output(output_path, content):
+    """
+    Force write content to file, ensuring directory exists.
+    """
+    import os
+    try:
+        # Ensure directory exists
+        os.makedirs(os.path.dirname(output_path), exist_ok=True)
+        
+        with open(output_path, 'w', encoding='utf-8') as f:
+            f.write(content)
+        return True
+    except Exception as e:
+        logger.error(f"Error writing output: {e}")
         return False

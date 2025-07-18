@@ -1,6 +1,7 @@
 """Simplified orchestrator - SCHEMA-DRIVEN ONLY."""
 
 import logging
+import os
 from typing import Dict, Any, Optional
 from frontmatter.generator import FrontmatterGenerator
 from jsonld.generator import JsonLdGenerator
@@ -10,6 +11,7 @@ from table.generator import TableGenerator
 from content.generator import ContentGenerator
 import re
 import yaml
+from utils.markdown_formatter import MarkdownFormatter
 
 logger = logging.getLogger(__name__)
 
@@ -177,7 +179,7 @@ class ArticleOrchestrator:
             return False
 
     def save_article(self, output: str) -> bool:
-        """Save article to file with standardized dash-based naming."""
+        """Save article to file with standardized dash-based naming and proper formatting."""
         try:
             # Use the slug that was already generated
             filename = f"{self.context['slug']}.md"
@@ -189,21 +191,23 @@ class ArticleOrchestrator:
             print(f"   - Filename: {filename}")
             print(f"   - Content length: {len(output)} characters")
             
-            # Make directory if it doesn't exist
-            import os
-            os.makedirs(output_dir, exist_ok=True)
-            
-            # Write file directly
+            # Full output path
             filepath = os.path.join(output_dir, filename)
-            with open(filepath, 'w', encoding='utf-8') as f:
-                f.write(output)
-                
-            # Verify file was written
-            if os.path.exists(filepath) and os.path.getsize(filepath) > 0:
-                print(f"   ✅ File successfully written ({os.path.getsize(filepath)} bytes)")
+            
+            # Use the MarkdownFormatter to write with proper triple backticks
+            # Note: We're passing the entire output string as the frontmatter parameter
+            # and letting the formatter handle parsing it
+            success = MarkdownFormatter.format_and_write_markdown(
+                output_path=filepath,
+                frontmatter=output,  # Pass the entire output - formatter will handle it
+                content=""           # Leave content empty since it's already in the output
+            )
+            
+            if success:
+                print(f"   ✅ File successfully written with proper formatting")
                 return True
             else:
-                print(f"   ❌ File verification failed")
+                print(f"   ❌ File formatting and write failed")
                 return False
 
         except Exception as e:
