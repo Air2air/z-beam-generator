@@ -8,29 +8,35 @@ from typing import Dict, Any, List, Optional
 
 logger = logging.getLogger(__name__)
 
-def format_output(frontmatter, tags, jsonld, table_content=None):
-    """Format the complete output including all components."""
+def format_output(frontmatter, tags, jsonld, markdown_table, main_content):
+    """Format all components into a final output string."""
+    output_parts = []
     
-    # Format tags properly
-    tags_section = format_tags(tags)
+    # Add frontmatter
+    if frontmatter:
+        output_parts.append(frontmatter)
     
-    # Assemble the output
-    parts = [
-        frontmatter.strip(),
-        "---",
-        "",
-        tags_section,
-        "",
-        f'<script type="application/ld+json">',
-        jsonld,
-        '</script>'
-    ]
+    # Add tags, ensuring it's a string
+    if tags:
+        if isinstance(tags, list):
+            tags_str = "\n".join([f"- {tag}" for tag in tags]) if tags else ""
+            output_parts.append(f"tags:\n{tags_str}")
+        else:
+            output_parts.append(tags)
     
-    # Add table if present
-    if table_content:
-        parts.append(table_content)
+    # Add JSON-LD
+    if jsonld:
+        output_parts.append(jsonld)
     
-    return "\n".join(parts)
+    # Add markdown table
+    if markdown_table:
+        output_parts.append(markdown_table)
+    
+    # Add main content
+    if main_content:
+        output_parts.append(main_content)
+    
+    return "\n\n".join(output_parts)
 
 def format_yaml(content: str) -> str:
     """Remove excessive escape characters from YAML output."""

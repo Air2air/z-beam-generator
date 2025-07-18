@@ -7,6 +7,7 @@ from jsonld.generator import JsonLdGenerator
 from tags.generator import TagsGenerator
 from utils.output_formatter import format_output, force_write_output
 from table.generator import TableGenerator
+from content.generator import ContentGenerator
 import re
 import yaml
 
@@ -34,9 +35,31 @@ class ArticleOrchestrator:
         logger.info(f"Orchestrator initialized for {context['article_type']}: {context['subject']}")
 
     def generate_article(self) -> bool:
-        """Generate complete article - FAIL if any component fails."""
+        """Generate complete article based on configured components and layout."""
         try:
             logger.info("Starting article generation process")
+            
+            # Get component configuration (with defaults if not provided)
+            component_config = self.context.get("component_config", {})
+            layout_template = self.context.get("layout_template", "standard")
+            
+            logger.info(f"Using layout template: {layout_template}")
+            
+            # Track which components to generate based on configuration
+            generate_components = {
+                "frontmatter": True,  # Frontmatter is always required
+                "tags": component_config.get("tags", {}).get("enabled", True),
+                "jsonld": component_config.get("jsonld", {}).get("enabled", True),
+                "table": component_config.get("table", {}).get("enabled", True),
+                "content": component_config.get("content", {}).get("enabled", True)  # NEW: Content component
+            }
+            
+            # Log enabled components
+            enabled_components = [c for c, enabled in generate_components.items() if enabled]
+            logger.info(f"Components enabled: {', '.join(enabled_components)}")
+            
+            # Generated component content
+            generated_content = {}
 
             # Generate frontmatter first
             frontmatter_gen = FrontmatterGenerator(self.context, self.schema, self.ai_provider)
@@ -46,7 +69,7 @@ class ArticleOrchestrator:
                 return False
 
             # Parse frontmatter string to dict for table generation
-            frontmatter_dict = {}
+            frontmatter_dict = {}  # Initialize to avoid potential reference errors
             try:
                 # Extract just the first YAML document if there are multiple documents
                 def extract_yaml_content(text):
@@ -78,29 +101,64 @@ class ArticleOrchestrator:
                     logger.error(f"All frontmatter parsing attempts failed: {e2}")
                     return False
 
-            # Generate table
-            table_gen = TableGenerator(self.context, self.schema, frontmatter_dict)
-            markdown_table = table_gen.generate()
-
-            # Create a frontmatter summary for tags
-            frontmatter_summary = self._summarize_frontmatter(frontmatter)
-            tags_gen = TagsGenerator(self.context, self.schema, frontmatter_dict)
-            tags = tags_gen.generate()
-            if not tags:
-                logger.error("Tags generation failed")
-                return False
+            # Generate table if enabled - FIXED INDENTATION HERE
+            markdown_table = ""
+            if generate_components["table"]:
+                table_options = component_config.get("table", {})
+                table_gen = TableGenerator(self.context, self.schema, frontmatter_dict)
                 
-            # Continue with jsonld...
-            jsonld_gen = JsonLdGenerator(self.context, self.schema, self.ai_provider)
-            jsonld = jsonld_gen.generate()
-            if not jsonld:
-                logger.error("JSON-LD generation failed")
-                return False
+                # Pass component-specific options if we implement set_options in TableGenerator
+                if table_options and hasattr(table_gen, 'set_options'):
+                    table_gen.set_options(table_options)
+                    
+                markdown_table = table_gen.generate()
+            else:
+                logger.info("Table component disabled, skipping generation")
 
+            # Generate content if enabled
+            main_content = ""
+            if generate_components["content"]:
+                content_options = component_config.get("content", {})
+                content_gen = ContentGenerator(self.context, self.schema, self.ai_provider)
+                
+                # Pass frontmatter_dict to ContentGenerator
+                content_gen.set_frontmatter(frontmatter_dict)
+                
+                # Pass component-specific options
+                if content_options:
+                    content_gen.set_options(content_options)
+                    
+                main_content = content_gen.generate()
+                if not main_content:
+                    logger.warning("Content generation produced empty result")
+            else:
+                logger.info("Content component disabled, skipping generation")
 
-            # Assemble final output
+            # Generate tags if enabled
+            tags = ""
+            if generate_components["tags"]:
+                tags_gen = TagsGenerator(self.context, self.schema, frontmatter_dict)
+                tags = tags_gen.generate()
+                if not tags:
+                    logger.error("Tags generation failed")
+                    return False
+            else:
+                logger.info("Tags component disabled, skipping generation")
+            
+            # Generate JSON-LD if enabled
+            jsonld = ""
+            if generate_components["jsonld"]:
+                jsonld_gen = JsonLdGenerator(self.context, self.schema, self.ai_provider)
+                jsonld = jsonld_gen.generate()
+                if not jsonld:
+                    logger.error("JSON-LD generation failed")
+                    return False
+            else:
+                logger.info("JSON-LD component disabled, skipping generation")
+
+            # Assemble final output based on layout template
             logger.info("Assembling final output...")
-            output = format_output(frontmatter, tags, jsonld, markdown_table)
+            output = format_output(frontmatter, tags, jsonld, markdown_table, main_content)
 
             if not output:
                 logger.error("Output assembly failed")
@@ -114,9 +172,8 @@ class ArticleOrchestrator:
 
             logger.info("Article generated successfully")
             return True
-
         except Exception as e:
-            logger.error(f"Article generation failed: {e}", exc_info=True)
+            logger.error(f"Unexpected error during article generation: {e}", exc_info=True)
             return False
 
     def save_article(self, output: str) -> bool:
@@ -191,3 +248,70 @@ class ArticleOrchestrator:
             logger.warning("Table generation produced empty or invalid output")
         
         return table
+
+    def _assemble_layout(self, content, layout_template):
+        """Assemble the article content based on the selected layout template."""
+        try:
+            if layout_template == "standard":
+                # Include main content after frontmatter but before other components
+                frontmatter = content.get("frontmatter", "")
+                tags = content.get("tags", "")
+                jsonld = content.get("jsonld", "")
+                table = content.get("table", "")
+                main_content = content.get("content", "")
+                
+                # Format standard layout with content
+                result = frontmatter
+                if main_content:
+                    result += "\n\n" + main_content
+                if tags:
+                    result += "\n\n" + tags
+                if jsonld:
+                    result += "\n\n" + jsonld
+                if table:
+                    result += "\n\n" + table
+                
+                return result
+                
+            elif layout_template == "compact":
+                # Minimal layout with just essential components
+                compact_content = []
+                if "frontmatter" in content:
+                    compact_content.append(content["frontmatter"])
+                if "content" in content:  # Add content to compact layout too
+                    compact_content.append(content["content"])
+                if "tags" in content:
+                    compact_content.append(content["tags"])
+                return "\n\n".join(compact_content)
+                
+            elif layout_template == "detailed":
+                # Full detailed layout with all components and additional formatting
+                parts = []
+                
+                if "frontmatter" in content:
+                    parts.append(content["frontmatter"])
+                    
+                if "content" in content:
+                    parts.append("# " + self.context["subject"])  # Add title
+                    parts.append(content["content"])
+                    
+                if "table" in content:
+                    parts.append("# Technical Specifications")
+                    parts.append(content["table"])
+                    
+                if "tags" in content:
+                    parts.append(content["tags"])
+                    
+                if "jsonld" in content:
+                    parts.append(content["jsonld"])
+                    
+                return "\n\n".join(parts)
+                
+            else:
+                # Default to standard layout if template not recognized
+                logger.warning(f"Unknown layout template '{layout_template}', using standard layout")
+                # Similar to standard layout above
+                # [...]
+        except Exception as e:
+            logger.error(f"Error assembling layout: {e}")
+            return None

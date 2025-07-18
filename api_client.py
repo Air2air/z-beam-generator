@@ -67,27 +67,28 @@ class APIClient:
             logger.error(f"Generation failed: {e}", exc_info=True)
             return None
     
-    def _generate_openai_format(self, prompt: str, max_tokens: int) -> Optional[str]:
-        """Generate using OpenAI-compatible format (OpenAI, XAI, DeepSeek)."""
+    def _generate_openai_format(self, prompt, max_tokens):
+        """Generate content using OpenAI format APIs (OpenAI or compatible)."""
+        
+        # Check if max_tokens is a dictionary (parameters object) or an integer
+        if isinstance(max_tokens, dict):
+            params = max_tokens
+            max_tokens_value = params.get("max_tokens", 1500)
+        else:
+            max_tokens_value = max_tokens
+            params = {}
+        
+        # Get the max tokens limit from config, ensuring it's a scalar value
+        max_tokens_limit = self.config.get("max_tokens_limit", 4000)
+        if isinstance(max_tokens_limit, dict):
+            max_tokens_limit = 4000  # Default if we have a type mismatch
+        
+        # Now compare integers to integers
+        adjusted_max_tokens = min(max_tokens_value, max_tokens_limit)
+        
         headers = {
             "Authorization": f"Bearer {self.api_key}",
             "Content-Type": "application/json"
-        }
-        
-        # Adjust max tokens based on provider limits
-        adjusted_max_tokens = min(max_tokens, self.config["max_tokens_limit"])
-        
-        # Base data structure
-        data = {
-            "model": self.models[self.provider],
-            "messages": [
-                {
-                    "role": "user",
-                    "content": prompt
-                }
-            ],
-            "temperature": 0.7,
-            "max_tokens": adjusted_max_tokens
         }
         
         # Provider-specific adjustments
@@ -96,10 +97,40 @@ class APIClient:
                 # Use minimal parameters for DeepSeek
                 data = {
                     "model": self.models[self.provider],
-                    "messages": data["messages"],
+                    "messages": [
+                        {
+                            "role": "user",
+                            "content": prompt
+                        }
+                    ],
+                    "max_tokens": adjusted_max_tokens
+                }
+            else:
+                # Base data structure
+                data = {
+                    "model": self.models[self.provider],
+                    "messages": [
+                        {
+                            "role": "user",
+                            "content": prompt
+                        }
+                    ],
                     "temperature": 0.7,
                     "max_tokens": adjusted_max_tokens
                 }
+        else:
+            # Base data structure for other providers
+            data = {
+                "model": self.models[self.provider],
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": prompt
+                    }
+                ],
+                "temperature": 0.7,
+                "max_tokens": adjusted_max_tokens
+            }
         
         url = self.base_urls[self.provider]
         timeout = self.config["timeout"]

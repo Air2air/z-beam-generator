@@ -11,9 +11,31 @@ OUTPUT_DIR = "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/output"
 ARTICLE_CONTEXT = {
     "subject": "Titanium",
     "author_id": 3,
-    "article_type": "thesaurus", # Options: application, material, region, thesaurus
+    "article_type": "material",
     "output_dir": OUTPUT_DIR,
-    "ai_provider": "deepseek"  # Options: openai, deepseek, xai, gemini
+    "ai_provider": "deepseek",
+    "component_config": {
+        "content": {
+            "enabled": True,
+            "min_words": 200,
+            "max_words": 500,
+            "paragraphs": 5,
+            "sections": ["overview", "applications", "technicalSpecifications", "challenges"]
+        },
+        "table": {
+            "enabled": True,
+            "style": "technical",
+            "include_units": True
+        },
+        "tags": {
+            "enabled": True,
+            "max_count": 10
+        },
+        "jsonld": {
+            "enabled": True
+        }
+    },
+    "layout_template": "standard"
 }
 
 # Create output directory if it doesn't exist
