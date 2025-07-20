@@ -30,13 +30,29 @@ class ContentGenerator(BaseComponent):
         logger.info(f"ContentGenerator initialized for subject: {self.subject}")
     
     def generate(self) -> str:
-        """Generate content based on frontmatter data."""
+        """Generate content for the article."""
+        # Get frontmatter data
+        frontmatter_data = self.get_frontmatter_data()
+        
+        if not frontmatter_data:
+            logger.warning("No frontmatter data available for content generation")
+            # Generate minimal content even without frontmatter
+            return f"""
+# {self.subject.title()}
+
+Content generation could not proceed normally because frontmatter data was not available.
+This could be due to an error in the frontmatter component.
+
+## Basic Information
+
+This article is about {self.subject}, which is a {self.article_type}.
+
+## Please Fix Frontmatter Generation
+
+Once the frontmatter component is working correctly, this content will be properly generated.
+"""
+        
         try:
-            frontmatter_data = self.get_frontmatter_data()
-            if not frontmatter_data:
-                logger.error("No frontmatter data available for content generation")
-                return "<!-- No frontmatter data available for content generation -->\n\n"
-            
             # Get article type from frontmatter or context
             article_type = frontmatter_data.get("article_type", self.article_type)
             subject = frontmatter_data.get("name", self.subject)
