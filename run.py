@@ -3,26 +3,56 @@
 
 import os
 import sys
+import logging
+from assembly.assembler import ArticleAssembler
+from utils.env_loader import load_env_variables
+from api import get_client  # Updated API import
+
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+
+logger = logging.getLogger(__name__)
 
 # Define absolute path to output directory
 OUTPUT_DIR = "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/output"
 
 # Define your article context here - edit this for each generation
 ARTICLE_CONTEXT = {
-    "subject": "maple wood",
+    "subject": "stainless steel",  # Try a new material
     "author_id": 3,
     "article_type": "material",
     "output_dir": OUTPUT_DIR,
     "ai_provider": "deepseek",
+    
+    # Specify the component order
+    "component_order": [
+        "frontmatter",   # Material research data
+        "content",       # Main content
+        "bullets",       # Key points in bullet format
+        "table",         # Data tables
+        "tags",          # Tags 
+        "jsonld"         # JSON-LD structured data
+    ],
+    
+    # Component-specific configuration
     "component_config": {
+        "frontmatter": {
+            "enabled": True,
+            "include_website": True
+        },
         "content": {
             "enabled": True,
-            "min_words": 300,    # Fixed minimum
-            "max_words": 500,    # Fixed maximum
-            "paragraphs": 3,     # Fixed target
-            "use_dynamic_sections": False,  # Use standard sections
-            "randomize_sections": False,    # No randomization
-            "max_attempts": 3
+            "min_words": 300,
+            "max_words": 500,
+            "paragraphs": 3
+        },
+        "bullets": {
+            "enabled": True,
+            "count": 5,
+            "style": "technical"
         },
         "table": {
             "enabled": True,
@@ -35,67 +65,52 @@ ARTICLE_CONTEXT = {
         },
         "jsonld": {
             "enabled": True
+        },
+        "chart": {
+            "enabled": False
+        },
+        "author": {
+            "enabled": False
         }
     },
-    "layout_template": "standard"
+    "layout_template": "technical"  # Use the technical template with TOC
 }
 
-# Create output directory if it doesn't exist
-try:
-    os.makedirs(OUTPUT_DIR, exist_ok=True)
-    print(f"✅ Output directory created/verified: {OUTPUT_DIR}")
+def check_api_keys():
+    """Check if required API keys are set."""
+    required_keys = ['DEEPSEEK_API_KEY']  # Add others as needed
+    missing = [key for key in required_keys if not os.environ.get(key)]
     
-    # Test write permissions with a small file
-    test_file = os.path.join(OUTPUT_DIR, ".test_write")
-    with open(test_file, "w") as f:
-        f.write("Test write access")
-    print("✅ Write permissions confirmed")
-    os.remove(test_file)  # Clean up test file
-except Exception as e:
-    print(f"❌ ERROR: Could not create/write to output directory: {e}", file=sys.stderr)
-    sys.exit(1)
+    if missing:
+        print("ERROR: Required API keys missing:", ", ".join(missing))
+        print("Mocks are disabled - real API keys are required.")
+        sys.exit(1)
 
+def main():
+    # Load environment variables from .env file
+    load_env_variables()
+    
+    """Main entry point."""
+    check_api_keys()
+    
+    try:
+        # Create article assembler
+        assembler = ArticleAssembler(ARTICLE_CONTEXT)
+        
+        # Assemble the article
+        success, output_path = assembler.assemble_article()
+        
+        if success:
+            print(f"Article generated successfully: {output_path}")
+            sys.exit(0)
+        else:
+            print("Article generation failed")
+            sys.exit(1)
+            
+    except Exception as e:
+        logger.error(f"Error generating article: {e}", exc_info=True)
+        print(f"Error: {str(e)}")
+        sys.exit(1)
 
 if __name__ == "__main__":
-    # Determine expected filename based on article type and subject
-    subject = ARTICLE_CONTEXT["subject"].lower().replace(" ", "-")
-    
-    if ARTICLE_CONTEXT["article_type"] == "region":
-        expected_file = f"{subject}-laser-cleaning.md"
-        ARTICLE_CONTEXT["slug"] = f"{subject}-laser-cleaning"  # Add this line
-    else:
-        expected_file = f"{subject}.md"
-        ARTICLE_CONTEXT["slug"] = subject  # Add this line
-    
-    print(f"Expected output filename: {expected_file}")
-    
-    # Print existing files in output directory
-    files = os.listdir(OUTPUT_DIR)
-    print(f"\n📂 Current files in output directory ({len(files)} found):")
-    for file in files:
-        print(f"  - {file}")
-    
-    # Import here to avoid polluting the global namespace
-    from generator import generate_article
-    
-    # Generate the article
-    success = generate_article(ARTICLE_CONTEXT)
-    
-    # Verify file was created after generation
-    if success:
-        new_files = os.listdir(OUTPUT_DIR)
-        print(f"\n📂 Files in output directory after generation ({len(new_files)} found):")
-        for file in files:
-            print(f"  - {file}")
-            
-        # Check specifically for our expected file
-        if expected_file in new_files:
-            full_path = os.path.join(OUTPUT_DIR, expected_file)
-            print(f"\n✅ SUCCESS: File created at {full_path}")
-            print(f"File size: {os.path.getsize(full_path)} bytes")
-        else:
-            print(f"\n❓ WARNING: Expected file '{expected_file}' not found, but generation reported success.", file=sys.stderr)
-            print("  This could mean the file was saved with a different name.")
-            print("  Files found:", ", ".join(new_files))
-    else:
-        print("\n❌ Generation reported failure")
+    main()

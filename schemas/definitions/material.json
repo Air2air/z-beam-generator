@@ -1,7 +1,7 @@
 {
   "materialProfile": {
     "name": "material",
-    "version": "1.3",
+    "version": "1.5",
     "schemaType": "MaterialProfile",
     "generatorConfig": {
       "jsonld": {
@@ -17,6 +17,39 @@
           "safetyConsiderations": "Outline the safety considerations and protocols when laser cleaning {subject}"
         },
         "introductionPrompt": "Provide a comprehensive technical overview of {subject} as a material in laser cleaning applications"
+      },
+      "useResearchModule": true,
+      "research": {
+        "fields": [
+          "properties",
+          "composition",
+          "compatibility",
+          "regulatoryStandards",
+          "laserParameters",
+          "environmentalConsiderations"
+        ],
+        "dataStructure": {
+          "composition": {
+            "type": "array",
+            "itemStructure": {
+              "component": "string",
+              "percentage": "string",
+              "type": "string"
+            }
+          },
+          "properties": {
+            "type": "object",
+            "propertyFormat": "keyValue"
+          },
+          "laserParameters": {
+            "type": "object",
+            "propertyFormat": "keyValue"
+          },
+          "environmentalConsiderations": {
+            "type": "object",
+            "propertyFormat": "keyValue"
+          }
+        }
       }
     },
     "profile": {
@@ -59,21 +92,26 @@
       },
       "composition": {
         "type": "array",
-        "required": true,
+        "description": "Chemical or structural composition of the material",
         "items": {
           "type": "object",
           "properties": {
-            "element": {
+            "component": {
               "type": "string",
-              "required": true,
-              "description": "Chemical element",
-              "example": "Aluminum"
+              "description": "Component name (element, compound, or structural component)"
             },
             "percentage": {
               "type": "string",
-              "required": true,
-              "description": "Weight percentage in the material",
-              "example": "100%"
+              "description": "Percentage or proportion as a string with unit"
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "element",
+                "compound",
+                "structural"
+              ],
+              "description": "Type of component (element for metals, structural for woods, etc.)"
             }
           }
         },
@@ -105,8 +143,16 @@
     "validation": {
       "frontmatter": {
         "requiredFields": [
-          "name", "description", "website", "author", "keywords", "tags", 
-          "properties", "composition", "compatibility", "regulatoryStandards"
+          "name",
+          "description",
+          "website",
+          "author",
+          "keywords",
+          "tags",
+          "properties",
+          "composition",
+          "compatibility",
+          "regulatoryStandards"
         ]
       }
     }

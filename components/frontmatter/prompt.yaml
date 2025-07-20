@@ -1,8 +1,17 @@
 name: "Frontmatter Generator"
 description: "Generates concise YAML frontmatter for laser cleaning articles, optimized for SEO, E-A-T, and on-site tagging."
-version: "2.2.2"
+version: "2.3.0"  # Incremented version
 
 template: |
+  🚨🚨🚨 CRITICAL YAML FORMATTING REQUIREMENTS 🚨🚨🚨
+  - DO NOT include ANY triple backticks (```) or ```yaml markers
+  - DO NOT include ANY "---" delimiter markers (not at beginning, not at end)
+  - Return ONLY the raw YAML content with NO delimiters
+  - Example of CORRECT formatting:
+    name: "Example Subject"
+    description: "Example description text"
+    # Other fields
+
   Generate CONCISE AND EFFICIENT YAML frontmatter for the {article_type} "{subject}" in laser cleaning contexts, optimized for E-A-T, searchability, and on-site tagging.
 
   🚨 CRITICAL LENGTH REQUIREMENT:
@@ -13,6 +22,16 @@ template: |
   - Include 5–8 SHORT, HYPHENATED tags for on-site display/navigation (e.g., laser-cleaning).
   - For complex arrays (e.g., applications, facilities), include 3–4 ITEMS with descriptions of 50–75 words.
   - Write descriptions of 100–150 characters for simple fields, 150–200 words for main description.
+
+  🚨 DYNAMIC SCHEMA REQUIREMENTS:
+  - Follow EXACTLY the schema structure for this specific article type
+  - Include ALL required fields as shown below
+  - Use the EXACT field names provided (case-sensitive)
+  - Follow the structure and data types shown in examples
+  - DO NOT add fields not in the schema
+  - DO NOT omit any of the required fields
+  
+  {schema}
 
   🚨 IMPORTANT CONSTRAINTS:
   - For region articles, use ONLY California, USA locations.
@@ -57,8 +76,8 @@ template: |
   - Avoid redundancy (e.g., no overlapping keywords/tags or specs).
 
   Generate YAML for: {article_type} = {subject}
-
-  Required fields:
+  
+  Required fields (if no dynamic schema was provided):
   name: "{subject}"
   description: "150–200 word technical summary of {subject} in laser cleaning."
   website: "https://www.z-beam.com/[subject-with-dashes]-laser-cleaning"
@@ -80,42 +99,3 @@ template: |
     wavelength: "e.g., 1064nm ±5nm"
     powerRange: "e.g., 20–500W"
     # Essential specs only
-  facilities: # For region articles
-    - name: "Facility name"
-      location: "City, County, California"
-      coordinates: "e.g., 37.7749° N, 122.4194° W"
-      description: "50–75 word facility description."
-    # Max 3–4 items
-  regulatoryStandards:
-    - code: "e.g., ANSI Z136.1"
-      description: "Brief compliance note (50–75 words)."
-    # Max 3–4 items
-  challenges:
-    - issue: "Technical challenge"
-      solution: "50–75 word solution."
-    # Max 3–4 items
-  outcomes:
-    - result: "e.g., 99% contaminant removal"
-      metric: "e.g., ASTM D3359"
-    # Max 3–4 items
-
-  🚨 CONTENT EXPANSION REQUIREMENTS:
-  - Include precise coordinates and context for geographic data (California only).
-  - Describe facilities in 50–75 words for region articles.
-  - Reference key regulatory codes with brief notes.
-  - Ensure 10–12 focused, non-redundant keywords for search/SEO.
-  - Ensure 5–8 user-friendly tags for on-site display/navigation.
-  - Keep main description succinct (150–200 words).
-  - Limit complex array descriptions to 50–75 words.
-  - Include essential equipment parameters (e.g., wavelength, power).
-  - Generate JSON-LD dynamically from frontmatter (do not include in content).
-
-parameters:
-  max_tokens: 4000
-  temperature: 0.6
-
-validation:
-  min_length: 2000
-  max_length: 3000
-  required_schema_coverage: 100
-  required_fields: ["name", "description", "keywords", "tags", "author", "website"]

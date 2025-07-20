@@ -22,8 +22,6 @@ from utils.connectivity import check_api_connectivity
 from utils.slug_generator import generate_slug
 from orchestrator import ArticleOrchestrator
 
-OUTPUT_FORMAT = "markdown"  # Options: "markdown", "tables", "both"
-
 def ensure_output_directory(directory):
     """Ensure output directory exists and is writeable."""
     if not directory:
@@ -130,34 +128,3 @@ def generate_article(context):
         print(f"\n❌ Error generating article: {str(e)}")
         print(f"📝 Check api_diagnostics.log for more details")
         sys.exit(1)
-
-def generate_content(subject, frontmatter, schema_parser):
-    # Create list to hold content sections
-    content_parts = []
-    
-    # Always include YAML frontmatter
-    content_parts.append(f"```yaml\n{yaml.dump(frontmatter)}\n```")
-    
-    # Include content based on selected format
-    if OUTPUT_FORMAT in ["markdown", "both"]:
-        # Add bullet-point style content
-        markdown_content = generate_markdown_sections(frontmatter)
-        content_parts.append(markdown_content)
-        
-        # Add tags section
-        tags_content = generate_tags_section(frontmatter)
-        content_parts.append(tags_content)
-        
-        # Add JSON-LD
-        jsonld_content = generate_jsonld(frontmatter)
-        content_parts.append(jsonld_content)
-    
-    if OUTPUT_FORMAT in ["tables", "both"]:
-        # Add table-formatted content
-        from utils.markdown_formatter import MarkdownFormatter
-        formatter = MarkdownFormatter(schema_parser)
-        table_content = formatter.format_frontmatter_as_markdown(frontmatter)
-        content_parts.append(table_content)
-    
-    # Join all parts and return
-    return "\n\n".join(content_parts)

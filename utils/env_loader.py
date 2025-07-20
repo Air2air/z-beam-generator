@@ -2,21 +2,26 @@
 
 import os
 import logging
-from pathlib import Path
+import dotenv
 
 logger = logging.getLogger("z-beam")
 
-def load_env_file():
+def load_env_variables():
     """Load environment variables from .env file."""
-    env_path = Path(".env")
-    if env_path.exists():
-        with open(env_path, 'r') as f:
-            for line in f:
-                line = line.strip()
-                if line and not line.startswith('#') and '=' in line:
-                    key, value = line.split('=', 1)
-                    os.environ[key] = value
-                    if 'KEY' in key.upper():
-                        logger.info(f"Loaded {key}=****{value[-4:] if len(value) > 4 else '****'}")
-                    else:
-                        logger.info(f"Loaded {key}={value}")
+    # Get the path to the .env file
+    env_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), '.env')
+    
+    # Check if the file exists
+    if not os.path.exists(env_path):
+        logger.warning("No .env file found")
+        return False
+    
+    # Load the .env file
+    result = dotenv.load_dotenv(env_path)
+    
+    if result:
+        logger.info(f"Loaded environment variables from {env_path}")
+    else:
+        logger.warning(f"Failed to load environment variables from {env_path}")
+    
+    return result

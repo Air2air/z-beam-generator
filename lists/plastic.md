@@ -1,0 +1,10 @@
+- ABS
+- Acrylic
+- Delrin
+- Nylon
+- Polycarbonate
+- Polyethylene
+- Polypropylene
+- Polystyrene
+- PTFE
+- PVC
