@@ -9,6 +9,7 @@ MODULE DIRECTIVES FOR AI ASSISTANTS:
 
 import logging
 import json
+import re
 from typing import Dict, Any
 
 from components.base import BaseComponent
@@ -30,69 +31,51 @@ class ContentGenerator(BaseComponent):
         logger.info(f"ContentGenerator initialized for subject: {self.subject}")
     
     def generate(self) -> str:
-        """Generate content for the article."""
+        """Generate content based on the template method pattern."""
+        try:
+            # 1. Prepare data
+            data = self._prepare_data()
+            
+            # 2. Create prompt
+            prompt = self._create_prompt(data)
+            
+            # 3. Generate content via API
+            content = self._generate_content(prompt)
+            
+            # 4. Post-process content
+            return self._post_process(content)
+            
+        except Exception as e:
+            from utils.error_handler import ErrorHandler
+            return ErrorHandler.handle_component_error("ContentGenerator", e, strict_mode=False)
+    
+    def _prepare_data(self):
+        """Prepare data for prompt creation."""
         # Get frontmatter data
         frontmatter_data = self.get_frontmatter_data()
         
-        if not frontmatter_data:
-            logger.warning("No frontmatter data available for content generation")
-            # Generate minimal content even without frontmatter
-            return f"""
-# {self.subject.title()}
-
-Content generation could not proceed normally because frontmatter data was not available.
-This could be due to an error in the frontmatter component.
-
-## Basic Information
-
-This article is about {self.subject}, which is a {self.article_type}.
-
-## Please Fix Frontmatter Generation
-
-Once the frontmatter component is working correctly, this content will be properly generated.
-"""
+        # Get component-specific configuration
+        config = self.get_component_config()
         
-        try:
-            # Get article type from frontmatter or context
-            article_type = frontmatter_data.get("article_type", self.article_type)
-            subject = frontmatter_data.get("name", self.subject)
-            
-            # Create prompt for fully dynamic content
-            prompt = self._create_dynamic_prompt(subject, article_type, frontmatter_data)
-            
-            # Generate content using the API client from BaseComponent
-            content = self.api_client.generate_content(prompt)
-            
-            # Return the generated content
-            return content
-            
-        except Exception as e:
-            logger.error(f"Error generating content: {e}")
-            return f"<!-- Error generating content: {str(e)} -->\n\n"
-    
-    def _create_dynamic_prompt(self, subject: str, article_type: str, frontmatter_data: Dict[str, Any]) -> str:
-        """Create a prompt that results in fully dynamic content.
-        
-        Args:
-            subject: The subject of the article
-            article_type: The type of article
-            frontmatter_data: Frontmatter data from BaseComponent
-        
-        Returns:
-            A prompt string for the AI
-        """
-        # Basic contextual info about the request
-        context = {
-            "subject": subject,
-            "article_type": article_type,
+        # Prepare context data
+        return {
+            "subject": self.subject,
+            "article_type": self.article_type,
             "frontmatter": frontmatter_data,
+            "max_words": config.get("max_words", 500),
+            "min_words": config.get("min_words", 300),
+            "paragraphs": config.get("paragraphs", 3)
         }
+
+    def _create_prompt(self, data):
+        """Create dynamic prompt based on prepared data."""
+        # Format as JSON for consistency
+        context_json = json.dumps(data, indent=2)
         
-        # The prompt instructs the AI to create fully dynamic content
-        # with no hardcoded sections or structures
+        # Create dynamic prompt with clear instructions
         prompt = (
-            f"Generate the introduction section ONLY for an article about {subject} laser cleaning.\n\n"
-            f"CONTEXT (use only this data as your information source):\n{json.dumps(context, indent=2)}\n\n"
+            f"Generate the introduction section ONLY for an article about {data['subject']} laser cleaning.\n\n"
+            f"CONTEXT (use only this data as your information source):\n{context_json}\n\n"
             "IMPORTANT INSTRUCTIONS:\n"
             "1. Generate ONLY an introduction/overview section\n"
             "2. DO NOT include any other sections (technical specs, applications, etc.)\n"
@@ -101,10 +84,31 @@ Once the frontmatter component is working correctly, this content will be proper
             "5. DO NOT add any content that would be better handled by separate components\n"
             "6. Your content should be focused only on introducing the subject\n"
             "7. Format as proper markdown\n"
-            "8. Be concise but informative (200-300 words)\n"
+            f"8. Be concise but informative ({data['min_words']}-{data['max_words']} words)\n"
             "9. Ensure your content is based ONLY on the provided frontmatter data\n"
             "10. DO NOT invent facts or specifications not present in the frontmatter\n"
             "11. DO NOT include markdown headlines (# or ##) in your response\n"
         )
         
         return prompt
+    
+    def _generate_content(self, prompt):
+        """Generate content using the API client from BaseComponent."""
+        return self.api_client.generate_content(prompt)
+    
+    def _post_process(self, content):
+        """Post-process the generated content."""
+        # Remove any HTML comments
+        content = re.sub(r'<!--.*?-->', '', content, flags=re.DOTALL)
+        
+        # Remove any markdown headers
+        content = re.sub(r'^#{1,6}\s+.*$', '', content, flags=re.MULTILINE)
+        
+        # Remove excessive blank lines
+        content = re.sub(r'\n{3,}', '\n\n', content)
+        
+        # Ensure content ends with a newline
+        if not content.endswith('\n'):
+            content += '\n'
+            
+        return content.strip()

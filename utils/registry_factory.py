@@ -7,6 +7,8 @@ MODULE DIRECTIVES FOR AI ASSISTANTS:
 """
 
 import logging
+import os
+import importlib
 from typing import Any, Dict, Optional, Type
 
 logger = logging.getLogger(__name__)
@@ -80,3 +82,29 @@ class RegistryFactory:
     def config_registry(cls, use_cache: bool = False, **kwargs) -> Any:
         """Get a config registry instance."""
         return cls.create_registry('config', use_cache, **kwargs)
+
+class ComponentRegistry:
+    """Central registry for all components with automatic loading."""
+    
+    def __init__(self):
+        self._components = {}
+        self._load_components()
+    
+    def _load_components(self):
+        """Automatically discover and load all components."""
+        components_dir = os.path.join(os.path.dirname(__file__), "components")
+        for item in os.listdir(components_dir):
+            component_dir = os.path.join(components_dir, item)
+            if os.path.isdir(component_dir) and os.path.exists(os.path.join(component_dir, "generator.py")):
+                try:
+                    # Dynamically import the component
+                    module_name = f"components.{item}.generator"
+                    module = importlib.import_module(module_name)
+                    
+                    # Find the generator class (ends with Generator)
+                    for attr_name in dir(module):
+                        if attr_name.endswith("Generator"):
+                            self._components[item] = getattr(module, attr_name)
+                            break
+                except Exception as e:
+                    logging.error(f"Failed to load component {item}: {str(e)}")

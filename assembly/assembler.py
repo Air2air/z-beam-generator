@@ -9,6 +9,11 @@ MODULE DIRECTIVES FOR AI ASSISTANTS:
 3. COMPONENT ISOLATION: Each component should be initialized independently
 4. DYNAMIC COMPONENTS: Use registry to discover components
 5. PURE SCHEMA: Use schemas directly without hardcoded field mappings
+6. ARTICLE_CONTEXT DRIVEN: All configuration derives from the article context
+7. ERROR HANDLING: Provide clear error messages with proper component attribution
+8. OUTPUT NORMALIZATION: Remove duplicate filepath comments and normalize spacing
+9. NO FALLBACKS: Components must fail explicitly rather than using fallback content
+10. CONTEXT PROPAGATION: Pass complete context to all components for consistency
 """
 
 import os
@@ -39,32 +44,104 @@ class ArticleAssembler:
         self.article_type = article_type
         self.config = config or {}
         self.ai_provider = ai_provider
-        self.outputs = {}
-        self.frontmatter_data = None
+        
+        # Create the context from existing attributes
+        self.context = {
+            "subject": subject,
+            "article_type": article_type,
+            "ai_provider": ai_provider,
+            **config  # Include all config items
+        }
+        
+        # Initialize schema
+        self.schema = self._load_schema()
         
         logger.info(f"Initializing ArticleAssembler for {article_type}: {subject}")
-    
-    def generate_article(self) -> str:
-        """Generate a complete article by assembling components.
+
+    def _load_schema(self) -> Dict[str, Any]:
+        """Load schema for the article type.
         
         Returns:
-            Path to the generated article file
+            Schema dictionary
         """
-        # Get component order from config or use default
-        component_order = self._get_component_order()
-        
-        # Generate each component
-        for component_name in component_order:
-            # Check if component is enabled
-            if not self._is_component_enabled(component_name):
-                logger.info(f"Skipping disabled component: {component_name}")
-                continue
+        try:
+            # Get schema registry
+            schema_registry = RegistryFactory.schema_registry()
+            
+            # Get schema for this article type
+            schema = schema_registry.get_schema(self.article_type)
+            
+            # If schema is None, return empty dictionary
+            if not schema:
+                logger.warning(f"No schema found for article type: {self.article_type}")
+                return {}
                 
-            self._generate_component(component_name)
+            return schema
+        except Exception as e:
+            logger.error(f"Error loading schema: {str(e)}")
+            return {}
+    
+    def generate_article(self):
+        """Generate a complete article by assembling all components."""
+        # Initialize outputs dictionary and frontmatter data
+        self.outputs = {}
+        self.frontmatter_data = {}
         
-        # Assemble and save the article
-        article_content = self._assemble_content(component_order)
-        return self._save_article(article_content)
+        # Keep track of components for later frontmatter injection
+        self.components = {}
+        
+        # First, generate frontmatter
+        frontmatter_name = "frontmatter"
+        logger.info(f"Generating {frontmatter_name} for {self.article_type}: {self.subject}")
+        
+        try:
+            frontmatter_component = self._get_component_generator(frontmatter_name)
+            if frontmatter_component:
+                frontmatter_content = frontmatter_component.generate()
+                self.outputs[frontmatter_name] = frontmatter_content
+                
+                # Extract frontmatter
+                self._extract_frontmatter(frontmatter_content)
+        except Exception as e:
+            logger.error(f"Error in ComponentLoader-{frontmatter_name}: {str(e)}")
+            self.outputs[frontmatter_name] = f"<!-- Error in {frontmatter_name}: {str(e)} -->"
+    
+        # Now generate other components in order
+        component_order = self._get_component_order()
+        for component_name in component_order:
+            if component_name == "frontmatter":
+                continue  # Already handled
+                
+            logger.info(f"Generating {component_name} for {self.article_type}: {self.subject}")
+            
+            try:
+                # Get component generator
+                component = self._get_component_generator(component_name)
+                if not component:
+                    continue
+                    
+                # Explicitly set frontmatter data
+                if hasattr(self, 'frontmatter_data') and self.frontmatter_data:
+                    if hasattr(component, 'set_frontmatter'):
+                        component.set_frontmatter(self.frontmatter_data)
+                        logger.info(f"Set frontmatter data for {component_name} component")
+                
+                # Generate component content
+                component_content = component.generate()
+                self.outputs[component_name] = component_content
+                
+            except Exception as e:
+                logger.error(f"Error in ComponentLoader-{component_name}: {str(e)}")
+                self.outputs[component_name] = f"<!-- Error in {component_name}: {str(e)} -->"
+    
+        # Assemble components into final article
+        article = self._assemble_content(component_order)
+        
+        # Save to file
+        filename = f"{self.subject}.md"
+        output_path = self._save_article(article, filename)
+        
+        return output_path
     
     def _get_component_order(self) -> List[str]:
         """Get component order from config or use default.
@@ -162,32 +239,49 @@ class ArticleAssembler:
             logger.error(f"Error generating {component_name}: {e}")
             self.outputs[component_name] = f"<!-- Error generating {component_name}: {str(e)} -->\n\n"
     
-    def _extract_frontmatter(self, content: str) -> None:
-        """Extract frontmatter data from content.
-        
-        Args:
-            content: Generated frontmatter content
-        """
+    def _extract_frontmatter(self, content):
+        """Extract frontmatter data from content."""
         try:
-            yaml_content = StringUtils.extract_frontmatter(content)
-            if yaml_content:
-                self.frontmatter_data = yaml.safe_load(yaml_content) or {}
-                logger.debug(f"Extracted frontmatter with {len(self.frontmatter_data)} fields")
-            else:
-                # No frontmatter found, check if we have an error message with frontmatter
-                if "---" in content:
-                    # Try again with a more lenient approach - get content between first two --- markers
-                    sections = content.split('---', 2)
-                    if len(sections) >= 3:
-                        yaml_content = sections[1].strip()
-                        self.frontmatter_data = yaml.safe_load(yaml_content) or {}
-                        logger.info(f"Extracted frontmatter from error content with {len(self.frontmatter_data)} fields")
-                        return
-                        
+            # Basic validation
+            if not content or "---" not in content:
                 logger.warning("No frontmatter delimiters found")
+                return
                 
+            # Extract content between first two --- markers
+            parts = content.split('---', 2)
+            if len(parts) < 3:
+                logger.warning("Invalid frontmatter format (missing closing delimiter)")
+                return
+                
+            # The middle part is the YAML content
+            yaml_content = parts[1].strip()
+            if not yaml_content:
+                logger.warning("Empty frontmatter content")
+                return
+                
+            # Parse the YAML content
+            try:
+                parsed_data = yaml.safe_load(yaml_content)
+                
+                # Handle the case when frontmatter is a list instead of a dict
+                if isinstance(parsed_data, list):
+                    # Wrap the list in a dictionary with a "providers" key
+                    self.frontmatter_data = {"providers": parsed_data}
+                    logger.info(f"Converted list frontmatter to dictionary with providers key")
+                elif isinstance(parsed_data, dict):
+                    self.frontmatter_data = parsed_data
+                else:
+                    logger.warning(f"Unexpected frontmatter type: {type(parsed_data)}")
+                    self.frontmatter_data = {"content": str(parsed_data)}
+                    
+                logger.info(f"Extracted frontmatter with {len(self.frontmatter_data)} fields")
+                
+            except Exception as e:
+                logger.error(f"Error parsing frontmatter YAML: {e}")
+                self.frontmatter_data = {}
         except Exception as e:
             logger.error(f"Error extracting frontmatter: {e}")
+            self.frontmatter_data = {}
     
     def _assemble_content(self, component_order: List[str]) -> str:
         """Assemble all component outputs into a single article.
@@ -205,34 +299,68 @@ class ArticleAssembler:
         
         return "\n".join(parts)
     
-    def _save_article(self, content: str) -> str:
-        """Save the article to a file.
-        
-        Args:
-            content: Article content
-            
-        Returns:
-            Path to the saved file
-        """
-        # Create slug
-        slug = StringUtils.create_slug(self.subject)
-        
-        # Get output directory
-        output_dir = self.config.get("output", {}).get("directory", "output")
-        
-        # Create output directory if it doesn't exist
+    def _save_article(self, article: str, filename: str) -> str:
+        """Save article to output file."""
+        # Create output directory if needed
+        output_dir = self.config.get("output_dir", "output")
         os.makedirs(output_dir, exist_ok=True)
         
-        # Create file path
-        file_path = os.path.join(output_dir, f"{slug}.md")
+        # Generate full path
+        file_path = os.path.join(output_dir, filename)
         
-        # Add filepath comment
-        file_comment = f"<!-- filepath: {os.path.abspath(file_path)} -->\n"
-        content_with_comment = file_comment + content
+        # Remove any existing filepath comments
+        article = re.sub(r'<!--\s*filepath:.+?-->\s*', '', article)
+        
+        # Add a single filepath comment
+        filepath_comment = f"<!-- filepath: {file_path} -->\n"
+        article = filepath_comment + article
         
         # Write to file
         with open(file_path, 'w') as f:
-            f.write(content_with_comment)
+            f.write(article)
         
-        logger.info(f"Saved article to {file_path}")
+        logging.info(f"Saved article to {file_path}")
         return file_path
+    
+    def _get_component_generator(self, component_name):
+        """Get component generator instance."""
+        try:
+            # Check if component is enabled
+            component_config = self.config.get("components", {}).get(component_name, {})
+            if component_config.get("enabled", True) is False:
+                logger.info(f"Component {component_name} is disabled")
+                return None
+            
+            # Get component provider
+            provider = component_config.get("provider", self.ai_provider)
+            
+            # Get component class from registry
+            component_registry = RegistryFactory.component_registry()
+            component_class = component_registry.get_component(component_name)
+            
+            if not component_class:
+                logger.error(f"Component {component_name} not found in registry")
+                return None
+            
+            # Create component instance
+            component = component_class(self.context, self.schema, provider)
+            
+            # Set frontmatter data if available and this is not the frontmatter component
+            if component_name != "frontmatter" and hasattr(self, 'frontmatter_data') and self.frontmatter_data:
+                if hasattr(component, 'set_frontmatter'):
+                    component.set_frontmatter(self.frontmatter_data)
+            
+            return component
+        
+        except Exception as e:
+            logger.error(f"Error in ComponentLoader-{component_name}: {str(e)}")
+            return None
+    
+    def get_frontmatter_data(self) -> Dict[str, Any]:
+        """Get frontmatter data for component generation."""
+        if hasattr(self, 'frontmatter_data') and self.frontmatter_data:
+            logger.debug(f"{self.__class__.__name__} using frontmatter with {len(self.frontmatter_data)} fields")
+            return self.frontmatter_data
+        
+        logger.warning(f"No frontmatter data available for {self.__class__.__name__}")
+        return {}

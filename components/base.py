@@ -20,6 +20,7 @@ import logging
 from abc import ABC, abstractmethod
 from typing import Dict, Any, Optional
 
+from api.client import ApiClient
 from utils.registry_factory import RegistryFactory
 from utils.string_utils import StringUtils
 
@@ -38,58 +39,45 @@ class BaseComponent(ABC):
         """
         self.context = context or {}
         self.schema = schema or {}
+        self.subject = context.get("subject", "")
+        self.article_type = context.get("article_type", "")
         self.ai_provider = ai_provider
         
-        # Extract common attributes
-        self.subject = self.context.get("subject", "")
-        self.article_type = self.context.get("article_type", "material")
-        
-        # Component state
-        self.frontmatter = {}
-        self.previous_outputs = {}
+        # CRITICAL: Initialize frontmatter_data explicitly
+        self.frontmatter_data = {}
         
         # Initialize API client
-        self._init_api_client()
-    
-    def _init_api_client(self) -> None:
-        """Initialize API client for content generation."""
-        try:
-            # Dynamic import to avoid circular imports
-            from api.client import ApiClient
-            self.api_client = ApiClient(self.ai_provider)
-        except Exception as e:
-            logger.error(f"Failed to initialize API client: {e}")
-            self.api_client = None
+        self.api_client = ApiClient(ai_provider)
     
     @abstractmethod
     def generate(self) -> str:
         """Generate component output content."""
         pass
     
-    def set_frontmatter(self, frontmatter: Dict[str, Any]) -> None:
-        """Set frontmatter data for content generation."""
-        self.frontmatter = frontmatter or {}
+    def set_frontmatter(self, frontmatter_data):
+        """Store frontmatter data for use by this component."""
+        # Use debug log to see what's happening
+        logger.debug(f"Setting frontmatter on {self.__class__.__name__}: {len(frontmatter_data)} fields")
+        
+        # Make sure we're storing a dictionary
+        if not isinstance(frontmatter_data, dict):
+            logger.warning(f"Received non-dict frontmatter: {type(frontmatter_data)}")
+            frontmatter_data = {"data": frontmatter_data}
+            
+        # Store the data
+        self.frontmatter_data = frontmatter_data
     
     def set_previous_outputs(self, previous_outputs: Dict[str, str]) -> None:
         """Set previous component outputs."""
         self.previous_outputs = previous_outputs or {}
     
     def get_frontmatter_data(self) -> Dict[str, Any]:
-        """Get frontmatter data from various sources."""
-        # First try direct frontmatter
-        if self.frontmatter:
-            return self.frontmatter
-        
-        # Then try previous outputs
-        if self.previous_outputs and "frontmatter" in self.previous_outputs:
-            yaml_content = StringUtils.extract_frontmatter(self.previous_outputs["frontmatter"])
-            if yaml_content:
-                try:
-                    import yaml
-                    return yaml.safe_load(yaml_content) or {}
-                except Exception as e:
-                    logger.error(f"Failed to parse frontmatter YAML: {e}")
-        
+        """Retrieve frontmatter data."""
+        # Check if frontmatter_data exists and is not empty
+        if hasattr(self, 'frontmatter_data') and self.frontmatter_data:
+            return self.frontmatter_data
+            
+        logger.warning(f"No frontmatter data available for {self.__class__.__name__}")
         return {}
     
     def format_section_title(self, key: str) -> str:
@@ -211,3 +199,69 @@ An error occurred while generating the content for {StringUtils.format_title(com
 Please check the logs for more information.
 """
         return markdown
+
+    # Add this method as an alias to whatever the existing method is
+    def get_component_config(self):
+        """Alias for compatibility with newer component implementations."""
+        # Try to delegate to existing methods that might have similar functionality
+        if hasattr(self, 'get_config'):
+            return self.get_config()
+        
+        # Extract component name from class name
+        component_name = self.__class__.__name__.lower()
+        if "generator" in component_name:
+            component_name = component_name.replace("generator", "")
+        if "component" in component_name:
+            component_name = component_name.replace("component", "")
+        
+        # Try to get component configuration from context
+        components = self.context.get("components", {})
+        return components.get(component_name, {})
+
+class ComponentTemplate:
+    """Base template for component generation."""
+    
+    def __init__(self, context, schema, provider):
+        self.context = context
+        self.schema = schema
+        self.provider = provider
+        self.api_client = ApiClient(provider)
+        
+    def generate(self):
+        """Template method pattern for component generation."""
+        try:
+            # 1. Prepare data
+            data = self._prepare_data()
+            
+            # 2. Create prompt
+            prompt = self._create_prompt(data)
+            
+            # 3. Generate content
+            content = self._generate_content(prompt)
+            
+            # 4. Post-process content
+            return self._post_process(content)
+        except Exception as e:
+            logging.error(f"Error in {self.__class__.__name__}: {str(e)}")
+            return self._get_error_output(str(e))
+            
+    # Abstract methods to be implemented by subclasses
+    def _prepare_data(self):
+        """Prepare data for prompt creation."""
+        raise NotImplementedError
+        
+    def _create_prompt(self, data):
+        """Create the prompt for the AI."""
+        raise NotImplementedError
+        
+    def _generate_content(self, prompt):
+        """Generate content using the API client."""
+        return self.api_client.generate_content(prompt)
+        
+    def _post_process(self, content):
+        """Post-process the generated content."""
+        return content
+        
+    def _get_error_output(self, error_message):
+        """Get output to return in case of error."""
+        return f"<!-- Error in {self.__class__.__name__}: {error_message} -->"

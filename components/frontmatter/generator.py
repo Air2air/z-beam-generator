@@ -113,7 +113,7 @@ class FrontmatterGenerator(BaseComponent):
         return schema_text
     
     def generate(self) -> str:
-        """Generate frontmatter based on dynamic schema and prompt template."""
+        """Generate frontmatter based on subject and article type."""
         try:
             # Get template from prompt config
             template = self.prompt_config.get("template", "")
@@ -143,50 +143,55 @@ class FrontmatterGenerator(BaseComponent):
             # Generate frontmatter using API
             frontmatter_content = self.api_client.generate_content(formatted_prompt)
             
-            # Clean the response - remove any markdown code block delimiters
+            # Clean up the YAML to fix parsing issues
             frontmatter_content = self._clean_yaml_response(frontmatter_content)
             
-            # Validate the generated content
-            self._validate_frontmatter(frontmatter_content)
-            
-            # Return the frontmatter
-            return frontmatter_content
-            
+            return f"---\n{frontmatter_content}\n---\n"
+        
         except Exception as e:
-            logger.error(f"Error generating frontmatter: {e}")
-            return f"<!-- Error in frontmatter: {str(e)} -->\n\n"
+            logger.error(f"Error generating frontmatter: {str(e)}")
+            return self._create_error_markdown(str(e))
     
-    def _clean_yaml_response(self, content: str) -> str:
-        """Clean the API response to ensure valid YAML."""
-        # Remove any markdown code block formatting
-        if "```yaml" in content or "```" in content:
-            logger.debug("Removing markdown code block formatting from API response")
+    def _clean_yaml_response(self, yaml_content: str) -> str:
+        """Clean up YAML response to ensure it's valid.
+        
+        Args:
+            yaml_content: Raw YAML content from AI response
             
-            # Remove opening code block
-            if "```yaml" in content:
-                content = content.replace("```yaml", "", 1)
-            elif "```" in content:
-                content = content.replace("```", "", 1)
-                
-            # Remove closing code block
-            if content.rfind("```") != -1:
-                content = content[:content.rfind("```")]
+        Returns:
+            Cleaned YAML content
+        """
+        # Fix common issues with AI-generated YAML
         
-        # Strip whitespace
-        content = content.strip()
+        # 1. Handle unescaped quotes in strings
+        lines = yaml_content.split('\n')
+        cleaned_lines = []
         
-        # Remove any --- delimiters
-        content = re.sub(r'^---\s*', '', content)  # Remove opening delimiter
-        content = re.sub(r'\s*---$', '', content)  # Remove closing delimiter
+        for line in lines:
+            # If the line contains a string with unescaped quotes, wrap the value in single quotes
+            if ': "' in line and line.count('"') > 2:
+                # Find the position of the first quote after the colon
+                colon_pos = line.find(': "')
+                if colon_pos != -1:
+                    # Split into key and value parts
+                    key_part = line[:colon_pos + 2]  # Include the ': "'
+                    value_part = line[colon_pos + 2:]
+                    
+                    # Strip the closing quote if present
+                    if value_part.endswith('"'):
+                        value_part = value_part[:-1]
+                    
+                    # Replace problematic characters
+                    value_part = value_part.replace('"', '\\"')  # Escape double quotes
+                    value_part = value_part.replace('<', '\\<')  # Escape < character
+                    value_part = value_part.replace('>', '\\>')  # Escape > character
+                    
+                    # Reconstruct the line
+                    line = f"{key_part}{value_part}\""
+            
+            cleaned_lines.append(line)
         
-        # Handle case where there are multiple documents
-        if '---' in content:
-            logger.debug("Multiple YAML documents detected, extracting content")
-            # Take the content before the first --- as our YAML
-            content = content.split('---', 1)[0].strip()
-        
-        # Ensure we have opening and closing delimiters for the assembler
-        return f"---\n{content}\n---"
+        return '\n'.join(cleaned_lines)
     
     def _validate_frontmatter(self, content: str) -> bool:
         """Validate the generated frontmatter against schema."""

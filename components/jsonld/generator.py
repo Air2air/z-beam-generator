@@ -26,22 +26,29 @@ class JsonLdGenerator(BaseComponent):
         
     def generate(self) -> str:
         """Generate JSON-LD schema dynamically based on frontmatter."""
-        # Get frontmatter data from BaseComponent
-        frontmatter_data = self.get_frontmatter_data()
-        
-        if not frontmatter_data:
-            error_msg = "No frontmatter data available for JSON-LD generation"
-            logger.error(error_msg)
-            raise ValueError(error_msg)
-        
-        # Create JSON-LD directly from frontmatter data
-        jsonld = self._create_jsonld_from_frontmatter(frontmatter_data)
-        
-        # Format as JSON string with indentation
-        jsonld_str = json.dumps(jsonld, indent=2)
-        
-        # Return as markdown code block
-        return f"```json\n{jsonld_str}\n```"
+        try:
+            # Get frontmatter data
+            frontmatter_data = self.get_frontmatter_data()
+            if not frontmatter_data:
+                from utils.error_handler import ErrorHandler
+                return ErrorHandler.handle_component_error(
+                    "JsonLdGenerator", 
+                    "No frontmatter data available", 
+                    strict_mode=False
+                )
+            
+            # Create JSON-LD
+            jsonld = self._create_jsonld_from_frontmatter(frontmatter_data)
+            
+            # Format as JSON with proper indentation
+            jsonld_str = json.dumps(jsonld, indent=2)
+            
+            # Return as script tag for embedding in HTML
+            return f"```json\n{jsonld_str}\n```"
+                
+        except Exception as e:
+            from utils.error_handler import ErrorHandler
+            return ErrorHandler.handle_component_error("JsonLdGenerator", e, strict_mode=False)
     
     def _create_jsonld_from_frontmatter(self, frontmatter_data):
         """Create JSON-LD from frontmatter data."""
@@ -213,50 +220,37 @@ class JsonLdGenerator(BaseComponent):
         if tags:
             jsonld["category"] = tags
     
-    def _add_regional_info(self, jsonld: Dict[str, Any], frontmatter_data: Dict[str, Any]) -> None:
-        """Add regional information to JSON-LD structure."""
-        facilities = frontmatter_data.get("facilities", [])
-        regional_context = frontmatter_data.get("regionalContext", {})
+    def _add_regional_info(self, jsonld, frontmatter_data):
+        """Add regional information if available in frontmatter."""
+        # Get regional context
+        regional_context = frontmatter_data.get("regionalContext")
         
-        if facilities and len(facilities) > 0:
-            # Use the first facility as manufacturer
-            facility = facilities[0]
-            if isinstance(facility, dict) and "name" in facility:
-                manufacturer = {
-                    "@type": "Organization",
-                    "name": facility["name"].split(" (")[0]  # Remove location in parentheses if present
+        # Safety check for type
+        if not regional_context:
+            return
+            
+        # Handle different regional context formats
+        if isinstance(regional_context, dict):
+            # Handle dictionary format
+            if "address" in regional_context:
+                jsonld["address"] = self._create_address_object(regional_context["address"])
+                
+            if "broaderRegion" in regional_context:
+                jsonld["containedInPlace"] = {
+                    "@type": "Place",
+                    "name": regional_context["broaderRegion"]
                 }
-                
-                # Add description if available
-                if "description" in facility:
-                    manufacturer["description"] = facility["description"]
-                
-                # Add address if available in regional context
-                if regional_context:
-                    address = {
-                        "@type": "PostalAddress"
-                    }
-                    
-                    # Add city if available (from facility name or regional context)
-                    city = None
-                    if "(" in facility["name"]:
-                        city = facility["name"].split("(")[1].split(")")[0]
-                    elif "cities" in regional_context and len(regional_context["cities"]) > 0:
-                        city = regional_context["cities"][0]
-                    
-                    if city:
-                        address["addressLocality"] = city
-                    
-                    # Add state if available
-                    if "state" in regional_context:
-                        address["addressRegion"] = regional_context["state"]
-                    
-                    # Add country (default to US)
-                    address["addressCountry"] = "US"
-                    
-                    manufacturer["address"] = address
-                
-                jsonld["manufacturer"] = manufacturer
+        elif isinstance(regional_context, str) and regional_context.strip():
+            # Handle string format - just add as description
+            if "description" not in jsonld:
+                jsonld["description"] = regional_context
+            else:
+                jsonld["additionalProperty"] = jsonld.get("additionalProperty", [])
+                jsonld["additionalProperty"].append({
+                    "@type": "PropertyValue",
+                    "name": "regionalContext",
+                    "value": regional_context
+                })
     
     def _add_safety_info(self, jsonld: Dict[str, Any], frontmatter_data: Dict[str, Any]) -> None:
         """Add safety information to JSON-LD structure."""

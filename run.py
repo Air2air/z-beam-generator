@@ -85,11 +85,19 @@ def setup_environment() -> None:
     # Ensure required directories exist
     PathManager.ensure_directories()
     
-    # Check API keys
-    check_api_keys()
+    # Validate API keys for all providers in ARTICLE_CONTEXT
+    check_api_keys(ARTICLE_CONTEXT)
 
-def check_api_keys() -> None:
-    """Check if required API keys are set for all providers used in ARTICLE_CONTEXT."""
+def check_api_keys(context=None):
+    """Check if required API keys are set for all providers used in ARTICLE_CONTEXT.
+    
+    Args:
+        context: Optional context dictionary. If not provided,
+                will use the global ARTICLE_CONTEXT.
+    """
+    # Use provided context or fall back to ARTICLE_CONTEXT
+    context = context or ARTICLE_CONTEXT
+    
     # Map providers to their environment variable keys
     provider_keys = {
         "deepseek": "DEEPSEEK_API_KEY",
@@ -102,12 +110,12 @@ def check_api_keys() -> None:
     providers = set()
     
     # Add main provider
-    main_provider = ARTICLE_CONTEXT.get("ai_provider")
+    main_provider = context.get("ai_provider")
     if main_provider:
         providers.add(main_provider)
     
     # Add component-specific providers
-    components = ARTICLE_CONTEXT.get("components", {})
+    components = context.get("components", {})
     for component_name, component_config in components.items():
         if isinstance(component_config, dict) and "provider" in component_config:
             providers.add(component_config["provider"])
@@ -217,35 +225,38 @@ def parse_command_line() -> Dict[str, Any]:
 
 def main() -> None:
     """Main entry point for Z-Beam generator."""
-    # Set up environment
-    setup_environment()
-    
-    # Use the global ARTICLE_CONTEXT directly
-    context = ARTICLE_CONTEXT
-    
-    # Load base configuration
-    config = ConfigManager.load_config()
-    
-    # Extract key parameters
-    subject = context.get("subject")
-    article_type = context.get("article_type")
-    ai_provider = context.get("ai_provider")
-    
-    # Create article assembler
-    assembler = ArticleAssembler(
-        subject=subject,
-        article_type=article_type,
-        config=config,
-        ai_provider=ai_provider
-    )
-    
-    # Generate article
-    output_path = assembler.generate_article()
-    
-    if output_path:
-        print(f"Article generated successfully: {output_path}")
-    else:
-        print("Failed to generate article. Check logs for details.")
+    try:
+        # Set up environment
+        setup_environment()
+        
+        # Validate ARTICLE_CONTEXT
+        from utils.config_validator import ConfigValidator
+        is_valid, errors = ConfigValidator.validate_context(ARTICLE_CONTEXT)
+        if not is_valid:
+            for error in errors:
+                logging.error(f"Configuration error: {error}")
+            raise ValueError("Invalid ARTICLE_CONTEXT configuration")
+        
+        # Create article assembler
+        assembler = ArticleAssembler(
+            subject=ARTICLE_CONTEXT["subject"],
+            article_type=ARTICLE_CONTEXT["article_type"],
+            config=ARTICLE_CONTEXT,
+            ai_provider=ARTICLE_CONTEXT["ai_provider"]
+        )
+        
+        # Generate article
+        output_path = assembler.generate_article()
+        
+        if output_path:
+            print(f"✅ Article generated successfully: {output_path}")
+        else:
+            print("❌ Failed to generate article. Check logs for details.")
+            sys.exit(1)
+            
+    except Exception as e:
+        from utils.error_handler import ErrorHandler
+        ErrorHandler.handle_application_error("main", e)
         sys.exit(1)
 
 if __name__ == '__main__':
