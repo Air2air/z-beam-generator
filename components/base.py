@@ -19,6 +19,7 @@ Base component class for all content generators.
 import logging
 from abc import ABC, abstractmethod
 from typing import Dict, Any, Optional
+import yaml
 
 from api.client import ApiClient
 from utils.registry_factory import RegistryFactory
@@ -43,7 +44,7 @@ class BaseComponent(ABC):
         self.article_type = context.get("article_type", "")
         self.ai_provider = ai_provider
         
-        # CRITICAL: Initialize frontmatter_data explicitly
+        # Initialize frontmatter_data explicitly
         self.frontmatter_data = {}
         
         # Initialize API client
@@ -55,7 +56,14 @@ class BaseComponent(ABC):
         pass
     
     def set_frontmatter(self, frontmatter_data):
-        """Store frontmatter data for use by this component."""
+        """Store frontmatter data for use by this component.
+        
+        This is the standard method for providing frontmatter data to components.
+        The ArticleAssembler calls this method for each component after extracting frontmatter.
+        
+        Args:
+            frontmatter_data: Dictionary containing frontmatter fields
+        """
         # Use debug log to see what's happening
         logger.debug(f"Setting frontmatter on {self.__class__.__name__}: {len(frontmatter_data)} fields")
         
@@ -72,7 +80,15 @@ class BaseComponent(ABC):
         self.previous_outputs = previous_outputs or {}
     
     def get_frontmatter_data(self) -> Dict[str, Any]:
-        """Retrieve frontmatter data."""
+        """Get frontmatter data for the component.
+        
+        This is the standardized method for accessing frontmatter data in all components.
+        Components should use this method rather than accessing self.frontmatter_data directly
+        or implementing custom frontmatter retrieval methods.
+        
+        Returns:
+            Dictionary containing frontmatter fields or empty dict if none available
+        """
         # Check if frontmatter_data exists and is not empty
         if hasattr(self, 'frontmatter_data') and self.frontmatter_data:
             return self.frontmatter_data
@@ -80,28 +96,147 @@ class BaseComponent(ABC):
         logger.warning(f"No frontmatter data available for {self.__class__.__name__}")
         return {}
     
-    def format_section_title(self, key: str) -> str:
-        """Convert a camelCase or snake_case key to Title Case."""
-        return StringUtils.format_title(key)
-    
-    def load_prompt_template(self, component_name: str = None) -> str:
-        """Load prompt template for this component."""
-        if not component_name:
-            # Derive component name from class name
-            component_name = self.__class__.__name__.lower()
-            for suffix in ['component', 'generator']:
-                if component_name.endswith(suffix):
-                    component_name = component_name[:-len(suffix)]
+    @classmethod
+    def extract_frontmatter(cls, content: str) -> Dict[str, Any]:
+        """Extract frontmatter data from markdown content.
         
-        # Get fresh prompt from registry
-        prompt_registry = RegistryFactory.prompt_registry()
-        prompt_config = prompt_registry.get_prompt(component_name)
+        This static method can be used by any component to extract frontmatter
+        from markdown content.
         
-        return prompt_config.get('template', '')
+        Args:
+            content: Markdown content with frontmatter
+            
+        Returns:
+            Dictionary containing frontmatter data, or empty dict if extraction fails
+        """
+        try:
+            # Basic validation
+            if not content or "---" not in content:
+                logger.warning("No frontmatter delimiters found")
+                return {}
+                
+            # Extract content between first two --- markers
+            parts = content.split('---', 2)
+            if len(parts) < 3:
+                logger.warning("Invalid frontmatter format (missing closing delimiter)")
+                return {}
+                
+            # The middle part is the YAML content
+            yaml_content = parts[1].strip()
+            
+            if not yaml_content:
+                logger.warning("Empty frontmatter content")
+                return {}
+                
+            # Parse the YAML content
+            try:
+                parsed_data = yaml.safe_load(yaml_content)
+                
+                # Handle the case when frontmatter is a list instead of a dict
+                if isinstance(parsed_data, list):
+                    # Wrap the list in a dictionary with a "providers" key
+                    frontmatter_data = {"providers": parsed_data}
+                    logger.info("Converted list frontmatter to dictionary with providers key")
+                elif isinstance(parsed_data, dict):
+                    frontmatter_data = parsed_data
+                else:
+                    logger.warning(f"Unexpected frontmatter type: {type(parsed_data)}")
+                    frontmatter_data = {"content": str(parsed_data)}
+                    
+                logger.info(f"Extracted frontmatter with {len(frontmatter_data)} fields")
+                return frontmatter_data
+                
+            except yaml.YAMLError as e:
+                logger.error(f"Error parsing frontmatter YAML: {e}")
+                return {}
+                
+        except Exception as e:
+            logger.error(f"Error extracting frontmatter: {e}")
+            return {}
+
+    @classmethod
+    def extract_frontmatter_from_file(cls, file_path: str) -> Dict[str, Any]:
+        """Extract frontmatter from a markdown file.
+        
+        Args:
+            file_path: Path to the markdown file
+            
+        Returns:
+            Dictionary containing frontmatter data, or empty dict if extraction fails
+        """
+        try:
+            with open(file_path, 'r') as file:
+                content = file.read()
+            return cls.extract_frontmatter(content)
+        except Exception as e:
+            logger.error(f"Error reading file {file_path}: {e}")
+            return {}
+
+    @staticmethod
+    def create_frontmatter(data: Dict[str, Any]) -> str:
+        """Create frontmatter string from data.
+        
+        Args:
+            data: Dictionary containing frontmatter fields
+            
+        Returns:
+            Formatted frontmatter string with delimiters
+        """
+        try:
+            if not data:
+                return ""
+                
+            yaml_content = yaml.safe_dump(data, default_flow_style=False, sort_keys=False)
+            return f"---\n{yaml_content}---\n"
+            
+        except Exception as e:
+            logger.error(f"Error creating frontmatter: {e}")
+            return ""
+
+    @staticmethod
+    def validate_frontmatter(data: Dict[str, Any], required_fields: list = None) -> bool:
+        """Validate frontmatter data against required fields.
+        
+        Args:
+            data: Frontmatter data dictionary
+            required_fields: List of required field names
+            
+        Returns:
+            True if valid, False otherwise
+        """
+        if not data:
+            logger.warning("Empty frontmatter data")
+            return False
+            
+        if required_fields:
+            missing_fields = [field for field in required_fields if field not in data]
+            if missing_fields:
+                logger.warning(f"Missing required frontmatter fields: {', '.join(missing_fields)}")
+                return False
+                
+        return True
     
-    def get_schema_fields(self) -> Dict[str, Any]:
-        """Get schema fields from schema definition."""
-        return self.schema.get("schema", {})
+    # Keep the existing well-typed implementation of get_component_config
+    def get_component_config(self) -> Dict[str, Any]:
+        """Get component-specific configuration from the context.
+        
+        This is the standardized method for retrieving component configuration
+        throughout the Z-Beam system. All components should use this method
+        rather than implementing custom configuration retrieval.
+        
+        Returns:
+            Dictionary containing component configuration
+        """
+        # Extract component name from class name
+        component_name = self.__class__.__name__.lower()
+        if "generator" in component_name:
+            component_name = component_name.replace("generator", "")
+        if "component" in component_name:
+            component_name = component_name.replace("component", "")
+        
+        # Get configuration from context
+        components = self.context.get("components", {})
+        return components.get(component_name, {})
     
     def generate_safe(self) -> str:
         """Safe wrapper for generate with error handling."""
@@ -199,69 +334,27 @@ An error occurred while generating the content for {StringUtils.format_title(com
 Please check the logs for more information.
 """
         return markdown
-
-    # Add this method as an alias to whatever the existing method is
-    def get_component_config(self):
-        """Alias for compatibility with newer component implementations."""
-        # Try to delegate to existing methods that might have similar functionality
-        if hasattr(self, 'get_config'):
-            return self.get_config()
-        
-        # Extract component name from class name
-        component_name = self.__class__.__name__.lower()
-        if "generator" in component_name:
-            component_name = component_name.replace("generator", "")
-        if "component" in component_name:
-            component_name = component_name.replace("component", "")
-        
-        # Try to get component configuration from context
-        components = self.context.get("components", {})
-        return components.get(component_name, {})
-
-class ComponentTemplate:
-    """Base template for component generation."""
     
-    def __init__(self, context, schema, provider):
-        self.context = context
-        self.schema = schema
-        self.provider = provider
-        self.api_client = ApiClient(provider)
+    def format_section_title(self, key: str) -> str:
+        """Convert a camelCase or snake_case key to Title Case.
         
-    def generate(self):
-        """Template method pattern for component generation."""
-        try:
-            # 1. Prepare data
-            data = self._prepare_data()
+        This method provides standard formatting for section titles derived from
+        frontmatter keys or field names. All components should use this method
+        for consistent formatting across the document.
+        
+        Args:
+            key: The key to format (e.g., 'technicalSpecifications', 'safety_info')
             
-            # 2. Create prompt
-            prompt = self._create_prompt(data)
-            
-            # 3. Generate content
-            content = self._generate_content(prompt)
-            
-            # 4. Post-process content
-            return self._post_process(content)
-        except Exception as e:
-            logging.error(f"Error in {self.__class__.__name__}: {str(e)}")
-            return self._get_error_output(str(e))
-            
-    # Abstract methods to be implemented by subclasses
-    def _prepare_data(self):
-        """Prepare data for prompt creation."""
-        raise NotImplementedError
-        
-    def _create_prompt(self, data):
-        """Create the prompt for the AI."""
-        raise NotImplementedError
-        
-    def _generate_content(self, prompt):
-        """Generate content using the API client."""
-        return self.api_client.generate_content(prompt)
-        
-    def _post_process(self, content):
-        """Post-process the generated content."""
-        return content
-        
-    def _get_error_output(self, error_message):
-        """Get output to return in case of error."""
-        return f"<!-- Error in {self.__class__.__name__}: {error_message} -->"
+        Returns:
+            Formatted title (e.g., 'Technical Specifications', 'Safety Info')
+        """
+        # Remove underscores and handle camelCase
+        if '_' in key:
+            words = key.split('_')
+        else:
+            import re
+            # Insert space before uppercase letters that follow lowercase
+            words = re.findall(r'[A-Z]?[a-z]+|[A-Z]+(?=[A-Z]|$)', key)
+    
+        # Title case each word
+        return ' '.join(word.capitalize() for word in words)

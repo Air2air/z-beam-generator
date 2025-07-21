@@ -25,6 +25,7 @@ from typing import Dict, Any, List, Optional, Tuple
 from utils.registry_factory import RegistryFactory
 from utils.string_utils import StringUtils
 from utils.path_manager import PathManager
+from components.base import BaseComponent
 
 logger = logging.getLogger(__name__)
 
@@ -241,47 +242,7 @@ class ArticleAssembler:
     
     def _extract_frontmatter(self, content):
         """Extract frontmatter data from content."""
-        try:
-            # Basic validation
-            if not content or "---" not in content:
-                logger.warning("No frontmatter delimiters found")
-                return
-                
-            # Extract content between first two --- markers
-            parts = content.split('---', 2)
-            if len(parts) < 3:
-                logger.warning("Invalid frontmatter format (missing closing delimiter)")
-                return
-                
-            # The middle part is the YAML content
-            yaml_content = parts[1].strip()
-            if not yaml_content:
-                logger.warning("Empty frontmatter content")
-                return
-                
-            # Parse the YAML content
-            try:
-                parsed_data = yaml.safe_load(yaml_content)
-                
-                # Handle the case when frontmatter is a list instead of a dict
-                if isinstance(parsed_data, list):
-                    # Wrap the list in a dictionary with a "providers" key
-                    self.frontmatter_data = {"providers": parsed_data}
-                    logger.info(f"Converted list frontmatter to dictionary with providers key")
-                elif isinstance(parsed_data, dict):
-                    self.frontmatter_data = parsed_data
-                else:
-                    logger.warning(f"Unexpected frontmatter type: {type(parsed_data)}")
-                    self.frontmatter_data = {"content": str(parsed_data)}
-                    
-                logger.info(f"Extracted frontmatter with {len(self.frontmatter_data)} fields")
-                
-            except Exception as e:
-                logger.error(f"Error parsing frontmatter YAML: {e}")
-                self.frontmatter_data = {}
-        except Exception as e:
-            logger.error(f"Error extracting frontmatter: {e}")
-            self.frontmatter_data = {}
+        self.frontmatter_data = BaseComponent.extract_frontmatter(content)
     
     def _assemble_content(self, component_order: List[str]) -> str:
         """Assemble all component outputs into a single article.

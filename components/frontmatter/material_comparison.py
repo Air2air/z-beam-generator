@@ -3,6 +3,7 @@ import re
 import yaml
 import logging
 from typing import Dict, Any, List, Optional
+from components.base import BaseComponent
 
 logger = logging.getLogger(__name__)
 
@@ -53,20 +54,17 @@ class MaterialComparison:
             return []
     
     def _extract_frontmatter(self, file_path: str) -> Optional[Dict[str, Any]]:
-        """Extract YAML frontmatter from markdown file."""
-        try:
-            with open(file_path, 'r') as f:
-                content = f.read()
+        """Extract YAML frontmatter from markdown file.
+        
+        Uses the standardized BaseComponent method for extraction.
+        
+        Args:
+            file_path: Path to markdown file
             
-            # Look for YAML frontmatter between --- markers
-            frontmatter_match = re.search(r'---\s*(.*?)\s*---', content, re.DOTALL)
-            if frontmatter_match:
-                frontmatter_yaml = frontmatter_match.group(1)
-                return yaml.safe_load(frontmatter_yaml)
-            return None
-        except Exception as e:
-            logger.error(f"Error extracting frontmatter from {file_path}: {str(e)}")
-            return None
+        Returns:
+            Dictionary of frontmatter data or None if extraction fails
+        """
+        return BaseComponent.extract_frontmatter_from_file(file_path)
     
     def _calculate_similarity(self, material1: Dict[str, Any], material2: Dict[str, Any]) -> float:
         """Calculate similarity score between two materials."""

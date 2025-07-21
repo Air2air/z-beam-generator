@@ -4,6 +4,7 @@
 import logging
 from typing import Dict, Any, Optional
 from components import BaseComponent
+from utils.frontmatter_utils import extract_frontmatter
 
 from components.base import BaseComponent
 logger = logging.getLogger(__name__)
@@ -27,18 +28,8 @@ class ComponentAdapter(BaseComponent):
         """Parse frontmatter from previous outputs."""
         if "frontmatter" not in previous_outputs:
             return {}
-            
-        import yaml
-        import re
-        frontmatter_match = re.search(r'---\s*(.*?)\s*---', previous_outputs["frontmatter"], re.DOTALL)
-        if not frontmatter_match:
-            return {}
-            
-        try:
-            return yaml.safe_load(frontmatter_match.group(1)) or {}
-        except Exception as e:
-            logger.error(f"Failed to parse frontmatter YAML: {e}")
-            return {}
+        
+        return BaseComponent.extract_frontmatter(previous_outputs["frontmatter"])
     
     def _init_handler(self, handler_class: Any, context: Dict[str, Any]) -> Any:
         """Initialize the appropriate handler based on component type."""

@@ -4,7 +4,7 @@ import logging
 from typing import Dict, Any, List
 
 from .author_service import AuthorService
-from .config.component_config import get_component_config
+from .config.component_config import get_author_component_config
 
 logger = logging.getLogger(__name__)
 
@@ -22,7 +22,8 @@ class AuthorLayoutService:
     
     def get_component_params(self, author_id: int, component: str) -> Dict[str, Any]:
         """Get component parameters for an author."""
-        return get_component_config(author_id, component)
+        config = get_author_component_config(author_id, component)
+        return config
     
     def get_template(self, author_id: int) -> str:
         """Get template name for an author."""

@@ -85,8 +85,16 @@ AUTHOR_COMPONENT_CONFIG = {
     }
 }
 
-def get_component_config(author_id: int, component: str) -> Dict[str, Any]:
-    """Get component configuration for an author."""
+def get_author_component_config(author_id: int, component: str) -> Dict[str, Any]:
+    """Get component configuration for a specific author.
+    
+    Args:
+        author_id: Author identifier
+        component: Component name
+        
+    Returns:
+        Component configuration dictionary
+    """
     if author_id in AUTHOR_COMPONENT_CONFIG:
         author_config = AUTHOR_COMPONENT_CONFIG[author_id]
         if component in author_config:
