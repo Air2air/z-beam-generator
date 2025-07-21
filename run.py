@@ -106,12 +106,21 @@ def setup_environment() -> None:
 
 def check_api_keys() -> None:
     """Check if required API keys are set."""
-    required_keys = ['DEEPSEEK_API_KEY']  # Add others as needed
-    missing = [key for key in required_keys if not os.environ.get(key)]
+    # Map providers to their environment variable keys
+    provider_keys = {
+        "deepseek": "DEEPSEEK_API_KEY",
+        "openai": "OPENAI_API_KEY",
+        "gemini": "GEMINI_API_KEY",
+        "xai": "XAI_API_KEY"
+    }
     
-    if missing:
-        logging.warning("Required API keys missing: %s", ", ".join(missing))
-        logging.warning("API operations will fail unless keys are provided")
+    # Check the current provider
+    current_provider = ARTICLE_CONTEXT.get("ai_provider", "deepseek")
+    if current_provider in provider_keys:
+        key_name = provider_keys[current_provider]
+        if not os.environ.get(key_name):
+            logging.warning(f"API key for selected provider ({current_provider}) missing: {key_name}")
+            logging.warning("API operations will fail unless key is provided")
 
 def list_available_schemas() -> List[str]:
     """List all available schema types."""

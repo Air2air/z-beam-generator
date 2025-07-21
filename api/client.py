@@ -21,6 +21,8 @@ import logging
 import sys
 from typing import Dict, Any, Optional
 
+import requests
+
 logger = logging.getLogger(__name__)
 
 class ApiClient:
@@ -99,6 +101,10 @@ class ApiClient:
             return self._generate_deepseek(prompt, options)
         elif self.provider == "openai":
             return self._generate_openai(prompt, options)
+        elif self.provider == "gemini":
+            return self._generate_gemini(prompt, options)
+        elif self.provider == "xai":
+            return self._generate_xai(prompt, options)
         else:
             error_msg = f"Unsupported AI provider: {self.provider}"
             logger.error(error_msg)
@@ -211,4 +217,129 @@ class ApiClient:
         except Exception as e:
             error_msg = f"OpenAI API call failed: {str(e)}"
             logger.error(error_msg, exc_info=True)
+            raise RuntimeError(error_msg)
+    
+    def _generate_gemini(self, prompt: str, options: Dict[str, Any]) -> str:
+        """Generate text using Google's Gemini API."""
+        try:
+            # Import Gemini package
+            import google.generativeai as genai
+            
+            # Set API key
+            api_key = self.api_key.get("gemini") or os.environ.get('GEMINI_API_KEY')
+            if not api_key:
+                raise ValueError("GEMINI_API_KEY environment variable not set")
+                
+            genai.configure(api_key=api_key)
+            
+            # Get model parameters
+            model = options.get("model", "gemini-pro")
+            temperature = options.get("temperature", 0.7)
+            max_tokens = options.get("max_tokens", 2000)
+            
+            # Log the API call (excluding prompt content)
+            logger.info(f"Calling Gemini API with model: {model}, temp: {temperature}, max_tokens: {max_tokens}")
+            
+            # Generate response
+            model = genai.GenerativeModel(model_name=model)
+            response = model.generate_content(
+                prompt,
+                generation_config=genai.types.GenerationConfig(
+                    temperature=temperature,
+                    max_output_tokens=max_tokens
+                )
+            )
+            
+            # Extract text from response
+            result = response.text
+            
+            logger.debug(f"Gemini API response length: {len(result)} characters")
+            return result
+            
+        except ImportError as e:
+            error_msg = f"Gemini package not installed: {str(e)}"
+            logger.error(error_msg)
+            raise ImportError(error_msg)
+            
+        except Exception as e:
+            error_msg = f"Gemini API call failed: {str(e)}"
+            logger.error(error_msg)
+            raise RuntimeError(error_msg)
+
+    def _generate_xai(self, prompt: str, options: Dict[str, Any]) -> str:
+        """Generate text using XAI API."""
+        try:
+            # Get API key
+            api_key = self.api_key.get("xai") or os.environ.get('XAI_API_KEY')
+            if not api_key:
+                raise ValueError("XAI_API_KEY environment variable not set")
+                
+            # Get model parameters
+            model = options.get("model", "xai-1")
+            temperature = options.get("temperature", 0.7)
+            max_tokens = options.get("max_tokens", 2000)
+            
+            # Log the API call (excluding prompt content)
+            logger.info(f"Calling XAI API with model: {model}, temp: {temperature}, max_tokens: {max_tokens}")
+            
+            # Set up API request
+            headers = {
+                "Authorization": f"Bearer {api_key}",
+                "Content-Type": "application/json"
+            }
+            
+            payload = {
+                "model": model,
+                "messages": [{"role": "user", "content": prompt}],
+                "temperature": temperature,
+                "max_tokens": max_tokens
+            }
+            
+            # Make the API request
+            response = requests.post(
+                "https://api.xai.com/v1/chat/completions",
+                headers=headers,
+                json=payload,
+                timeout=120
+            )
+            
+            # Check for errors
+            response.raise_for_status()
+            
+            # Parse the response
+            response_data = response.json()
+            result = response_data["choices"][0]["message"]["content"]
+            
+            logger.debug(f"XAI API response length: {len(result)} characters")
+            return result
+            
+        except Exception as e:
+            error_msg = f"XAI API call failed: {str(e)}"
+            logger.error(error_msg)
+            raise RuntimeError(error_msg)
+
+    def generate(self, prompt: str, provider: str = None, **options) -> str:
+        """Generate text using the specified provider."""
+        provider = provider or self.config.get("ai_provider", "deepseek")
+        
+        # Select the provider method
+        provider_methods = {
+            "deepseek": self._generate_deepseek,
+            "openai": self._generate_openai,
+            "gemini": self._generate_gemini,  # Added Gemini
+            "xai": self._generate_xai         # Added XAI
+        }
+        
+        generator = provider_methods.get(provider.lower())
+        if not generator:
+            error_msg = f"Unsupported AI provider: {provider}"
+            logger.error(error_msg)
+            raise ValueError(error_msg)
+        
+        # Generate text
+        try:
+            return generator(prompt, options)
+        except Exception as e:
+            error_msg = f"Error generating with {provider}: {str(e)}"
+            logger.error(error_msg)
             raise RuntimeError(error_msg)
