@@ -1,0 +1,1 @@
+"""Style module for managing voice, tone and writing styles."""

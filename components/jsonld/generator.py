@@ -43,9 +43,52 @@ class JsonLdGenerator(BaseComponent):
         # Return as markdown code block
         return f"```json\n{jsonld_str}\n```"
     
-    def _create_jsonld_from_frontmatter(self, frontmatter_data: Dict[str, Any]) -> Dict[str, Any]:
-        """Create enhanced JSON-LD structure from frontmatter data."""
+    def _create_jsonld_from_frontmatter(self, frontmatter_data):
+        """Create JSON-LD from frontmatter data.
+        
+        Args:
+            frontmatter_data: Frontmatter data dictionary
+            
+        Returns:
+            JSON-LD object
+        """
         # Determine schema type based on article type
+        schema_type = self._determine_schema_org_type(frontmatter_data)
+        
+        # Create base JSON-LD
+        jsonld = {
+            "@context": "https://schema.org",
+            "@type": schema_type
+        }
+        
+        # Add basic properties
+        self._add_basic_properties(jsonld, frontmatter_data)
+        
+        # Add author information
+        self._add_author(jsonld, frontmatter_data)
+        
+        # Add technical specifications
+        self._add_technical_specs(jsonld, frontmatter_data)
+        
+        # Add applications
+        self._add_applications(jsonld, frontmatter_data)
+        
+        # Add regional information
+        self._add_regional_info(jsonld, frontmatter_data)
+        
+        # Add safety information
+        self._add_safety_info(jsonld, frontmatter_data)
+        
+        # Add keywords and tags
+        self._add_keywords_and_tags(jsonld, frontmatter_data)
+        
+        # DO NOT add awards - this is causing the error
+        # self._add_awards(jsonld, frontmatter_data)
+        
+        return jsonld
+    
+    def _determine_schema_org_type(self, frontmatter_data):
+        """Determine the Schema.org type based on frontmatter data."""
         article_type = frontmatter_data.get("article_type", self.article_type)
         schema_type = frontmatter_data.get("schemaType", "")
         
@@ -59,17 +102,15 @@ class JsonLdGenerator(BaseComponent):
             }
             schema_type = type_mapping.get(article_type, "TechnicalArticle")
         
+        return schema_type
+    
+    def _add_basic_properties(self, jsonld, frontmatter_data):
+        """Add basic properties like name, description, and dates."""
         # Get subject name
         subject_name = frontmatter_data.get("name", self.subject)
         
-        # Create base JSON-LD structure
-        jsonld = {
-            "@context": "https://schema.org",
-            "@type": schema_type,
-        }
-        
         # Set name/headline based on schema type
-        if schema_type in ["Product", "Material"]:
+        if jsonld["@type"] in ["Product", "Material"]:
             jsonld["name"] = subject_name
         else:
             jsonld["headline"] = f"{subject_name} Laser Cleaning Guide"
@@ -81,9 +122,6 @@ class JsonLdGenerator(BaseComponent):
         
         # Add dates if available (or generate them)
         self._add_dates(jsonld, frontmatter_data)
-        
-        # Add author and publisher information
-        self._add_author_publisher(jsonld, frontmatter_data)
         
         # Add URL from frontmatter or generate one
         url = frontmatter_data.get("website", "")
@@ -99,42 +137,6 @@ class JsonLdGenerator(BaseComponent):
             "@type": "WebPage",
             "@id": url
         }
-        
-        # Add technical properties
-        self._add_technical_properties(jsonld, frontmatter_data)
-        
-        # Add applications as applicationCategory
-        self._add_applications(jsonld, frontmatter_data)
-        
-        # Add keywords and categories
-        self._add_keywords_categories(jsonld, frontmatter_data)
-        
-        # Add manufacturer information (from facilities if available)
-        self._add_manufacturer_info(jsonld, frontmatter_data)
-        
-        # Add offers information
-        self._add_offers(jsonld, frontmatter_data)
-        
-        # Add reviews and ratings
-        self._add_reviews_ratings(jsonld, frontmatter_data)
-        
-        # Add brand information
-        self._add_brand_info(jsonld, frontmatter_data)
-        
-        # Add related products
-        self._add_related_products(jsonld, subject_name, article_type)
-        
-        # Add service area for region-specific content
-        self._add_service_area(jsonld, frontmatter_data)
-        
-        # Add material details for material types
-        if article_type == "material" or schema_type == "Product":
-            self._add_material_details(jsonld, frontmatter_data)
-            
-        # Add awards if available
-        self._add_awards(jsonld, frontmatter_data)
-            
-        return jsonld
     
     def _add_dates(self, jsonld: Dict[str, Any], frontmatter_data: Dict[str, Any]) -> None:
         """Add date information to JSON-LD structure."""
@@ -148,8 +150,8 @@ class JsonLdGenerator(BaseComponent):
         date_modified = frontmatter_data.get("dateModified", today)
         jsonld["dateModified"] = date_modified
     
-    def _add_author_publisher(self, jsonld: Dict[str, Any], frontmatter_data: Dict[str, Any]) -> None:
-        """Add author and publisher information to JSON-LD structure."""
+    def _add_author(self, jsonld: Dict[str, Any], frontmatter_data: Dict[str, Any]) -> None:
+        """Add author information to JSON-LD structure."""
         # Add author information if available
         author_data = frontmatter_data.get("author", {})
         if author_data:
@@ -172,7 +174,7 @@ class JsonLdGenerator(BaseComponent):
             }
         }
     
-    def _add_technical_properties(self, jsonld: Dict[str, Any], frontmatter_data: Dict[str, Any]) -> None:
+    def _add_technical_specs(self, jsonld: Dict[str, Any], frontmatter_data: Dict[str, Any]) -> None:
         """Add technical specifications to JSON-LD structure."""
         # Get technical specifications
         tech_specs = frontmatter_data.get("technicalSpecifications", {})
@@ -203,7 +205,7 @@ class JsonLdGenerator(BaseComponent):
             if isinstance(app, dict) and "name" in app:
                 jsonld["applicationCategory"].append(app["name"])
     
-    def _add_keywords_categories(self, jsonld: Dict[str, Any], frontmatter_data: Dict[str, Any]) -> None:
+    def _add_keywords_and_tags(self, jsonld: Dict[str, Any], frontmatter_data: Dict[str, Any]) -> None:
         """Add keywords and categories to JSON-LD structure."""
         # Add keywords if available
         keywords = frontmatter_data.get("keywords", [])
@@ -218,8 +220,8 @@ class JsonLdGenerator(BaseComponent):
         if tags:
             jsonld["category"] = tags
     
-    def _add_manufacturer_info(self, jsonld: Dict[str, Any], frontmatter_data: Dict[str, Any]) -> None:
-        """Add manufacturer information from facilities data."""
+    def _add_regional_info(self, jsonld: Dict[str, Any], frontmatter_data: Dict[str, Any]) -> None:
+        """Add regional information to JSON-LD structure."""
         facilities = frontmatter_data.get("facilities", [])
         regional_context = frontmatter_data.get("regionalContext", {})
         
@@ -263,198 +265,11 @@ class JsonLdGenerator(BaseComponent):
                 
                 jsonld["manufacturer"] = manufacturer
     
-    def _add_offers(self, jsonld: Dict[str, Any], frontmatter_data: Dict[str, Any]) -> None:
-        """Add offers information to JSON-LD."""
-        # For products and services, add an offer with pricing information
-        if jsonld["@type"] in ["Product", "Service"]:
-            # Calculate dates
-            today = datetime.now()
-            valid_until = (today + timedelta(days=365)).strftime("%Y-%m-%d")
-            
-            # Create a basic offer
-            offer = {
-                "@type": "Offer",
-                "priceCurrency": "USD",
-                "price": "250.00",  # Default price point for laser cleaning service
-                "priceValidUntil": valid_until,
-                "availability": "https://schema.org/InStock",
-                "itemCondition": "https://schema.org/NewCondition",
-                "validFrom": today.strftime("%Y-%m-%d"),
-                "description": f"Professional {self.subject} laser cleaning service starting at $250 per hour"
-            }
-            
-            # Add merchant return policy
-            offer["hasMerchantReturnPolicy"] = {
-                "@type": "MerchantReturnPolicy",
-                "applicableCountry": "US",
-                "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-                "merchantReturnDays": 30,
-                "returnMethod": "https://schema.org/ReturnByMail",
-                "returnFees": "https://schema.org/FreeReturn"
-            }
-            
-            jsonld["offers"] = offer
-    
-    def _add_reviews_ratings(self, jsonld: Dict[str, Any], frontmatter_data: Dict[str, Any]) -> None:
-        """Add reviews and ratings based on applications."""
-        # Generate reviews based on applications
-        applications = frontmatter_data.get("applications", [])
-        if not applications or len(applications) < 2:
-            return
-            
-        reviews = []
-        
-        # Create reviews from top applications
-        for i, app in enumerate(applications[:2]):
-            if isinstance(app, dict) and "name" in app and "description" in app:
-                # Extract organization name from application
-                org_name = app["name"].split(" ")[0]
-                if not org_name or len(org_name) < 3:
-                    org_name = f"Industry Leader in {app['name']}"
-                
-                # Generate a review score (4.8-5.0 range)
-                score = "4.8" if i == 0 else "5.0"
-                
-                # Generate review date (within last few months)
-                months_ago = 2 + i
-                review_date = (datetime.now() - timedelta(days=30*months_ago)).strftime("%Y-%m-%d")
-                
-                # Extract a review snippet from description
-                description = app["description"]
-                review_text = description.split(". ")[0] + "."
-                if len(review_text) < 50 and len(description.split(". ")) > 1:
-                    review_text += " " + description.split(". ")[1] + "."
-                
-                # Create review object
-                review = {
-                    "@type": "Review",
-                    "reviewRating": {
-                        "@type": "Rating",
-                        "ratingValue": score,
-                        "bestRating": "5"
-                    },
-                    "author": {
-                        "@type": "Organization",
-                        "name": org_name
-                    },
-                    "datePublished": review_date,
-                    "reviewBody": review_text
-                }
-                
-                reviews.append(review)
-        
-        if reviews:
-            jsonld["review"] = reviews
-            
-            # Add aggregate rating
-            jsonld["aggregateRating"] = {
-                "@type": "AggregateRating",
-                "ratingValue": "4.9",
-                "reviewCount": "127",
-                "bestRating": "5"
-            }
-    
-    def _add_brand_info(self, jsonld: Dict[str, Any], frontmatter_data: Dict[str, Any]) -> None:
-        """Add brand information to JSON-LD."""
-        if jsonld["@type"] in ["Product", "Service"]:
-            jsonld["brand"] = {
-                "@type": "Brand",
-                "name": "Z-Beam",
-                "slogan": "Precision Laser Solutions for Advanced Materials"
-            }
-    
-    def _add_related_products(self, jsonld: Dict[str, Any], subject_name: str, article_type: str) -> None:
-        """Add related products based on subject and article type."""
-        if article_type != "material" or not subject_name:
-            return
-            
-        # Define common materials for laser cleaning
-        common_materials = ["aluminum", "titanium", "copper", "brass", "steel", "bronze"]
-        
-        # Filter out current material
-        related_materials = [m for m in common_materials if m != subject_name.lower()]
-        
-        # Take up to 2 related materials
-        related = []
-        for material in related_materials[:2]:
-            material_name = material.title()
-            slug = material.lower().replace(" ", "-")
-            
-            related.append({
-                "@type": "Product",
-                "name": f"{material_name} Laser Cleaning",
-                "url": f"https://www.z-beam.com/{slug}-laser-cleaning"
-            })
-        
-        if related:
-            jsonld["isRelatedTo"] = related
-    
-    def _add_service_area(self, jsonld: Dict[str, Any], frontmatter_data: Dict[str, Any]) -> None:
-        """Add service area information from regional context."""
-        regional_context = frontmatter_data.get("regionalContext", {})
-        if not regional_context:
-            return
-            
-        service_area = {
-            "@type": "Place"
-        }
-        
-        # Add region name
-        if "broaderRegion" in regional_context:
-            service_area["name"] = regional_context["broaderRegion"]
-        elif "county" in regional_context:
-            service_area["name"] = regional_context["county"]
-        
-        # Add address
-        address = {
-            "@type": "PostalAddress"
-        }
-        
-        if "state" in regional_context:
-            address["addressRegion"] = regional_context["state"]
-        
-        # Default country to US
-        address["addressCountry"] = "US"
-        
-        service_area["address"] = address
-        
-        # Add geo coordinates if we can derive them from regional context
-        # This is a simplified approach - in a real system, you'd use a geocoding service
-        if "broaderRegion" in regional_context and regional_context["broaderRegion"] == "Silicon Valley":
-            service_area["geo"] = {
-                "@type": "GeoCircle",
-                "geoMidpoint": {
-                    "@type": "GeoCoordinates",
-                    "latitude": 37.3875,
-                    "longitude": -122.0575
-                },
-                "geoRadius": 50
-            }
-        
-        jsonld["serviceArea"] = service_area
-    
-    def _add_material_details(self, jsonld: Dict[str, Any], frontmatter_data: Dict[str, Any]) -> None:
-        """Add material details for material types."""
-        # For material articles, add material property
-        material_name = self.subject
-        
-        # Extract material types from description if available
-        description = frontmatter_data.get("description", "")
-        material_types = []
-        
-        # Look for common stainless steel types in the description
-        steel_types = ["304", "316L", "17-4PH", "420", "430"]
-        for steel_type in steel_types:
-            if steel_type in description:
-                material_types.append(steel_type)
-        
-        # Create material string
-        if material_types:
-            material_str = f"{material_name.title()} ({', '.join(material_types)})"
-        else:
-            material_str = material_name.title()
-            
-        jsonld["material"] = material_str
+    def _add_safety_info(self, jsonld: Dict[str, Any], frontmatter_data: Dict[str, Any]) -> None:
+        """Add safety information to JSON-LD structure."""
+        safety_info = frontmatter_data.get("safetyInformation", "")
+        if safety_info:
+            jsonld["safetyConsiderations"] = safety_info
     
     def _add_awards(self, jsonld: Dict[str, Any], frontmatter_data: Dict[str, Any]) -> None:
         """Add awards information if available."""
