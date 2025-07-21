@@ -4,45 +4,32 @@ Standardized logging configuration.
 
 import os
 import logging
-from typing import Optional
+import sys
+from datetime import datetime
 
-from utils.path_manager import PathManager
-
-def configure_logging(log_name: str = "z-beam-generator", level: int = logging.INFO) -> logging.Logger:
-    """Configure logging with standard format and handlers.
+def configure_logging(log_level=logging.INFO):
+    """Configure standardized logging for the entire application."""
+    # Create logs directory if it doesn't exist
+    os.makedirs("logs", exist_ok=True)
     
-    Args:
-        log_name: Name for the log file
-        level: Logging level
-        
-    Returns:
-        Configured logger
-    """
-    # Ensure logs directory exists
-    os.makedirs(PathManager.LOGS_DIR, exist_ok=True)
+    # Generate log filename with timestamp
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    log_file = f"logs/z-beam_{timestamp}.log"
     
-    # Get log file path
-    log_file = PathManager.get_log_path(log_name)
+    # Configure root logger
+    logging.basicConfig(
+        level=log_level,
+        format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+        handlers=[
+            logging.FileHandler(log_file),
+            logging.StreamHandler(sys.stdout)
+        ]
+    )
     
-    # Configure logging
-    logger = logging.getLogger()
-    logger.setLevel(level)
+    # Set standard log levels for various modules
+    logging.getLogger("urllib3").setLevel(logging.WARNING)
+    logging.getLogger("requests").setLevel(logging.WARNING)
     
-    # Remove any existing handlers
-    for handler in logger.handlers[:]:
-        logger.removeHandler(handler)
-    
-    # Create formatter
-    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-    
-    # Add file handler
-    file_handler = logging.FileHandler(log_file)
-    file_handler.setFormatter(formatter)
-    logger.addHandler(file_handler)
-    
-    # Add console handler
-    console_handler = logging.StreamHandler()
-    console_handler.setFormatter(formatter)
-    logger.addHandler(console_handler)
-    
-    return logger
+    # Log startup information
+    logging.info("Z-Beam Generator started")
+    logging.info(f"Log file: {log_file}")

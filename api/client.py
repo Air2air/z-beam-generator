@@ -26,16 +26,27 @@ import requests
 logger = logging.getLogger(__name__)
 
 class ApiClient:
-    """Client for interacting with AI APIs."""
+    """API client for generating content with AI providers."""
     
-    def __init__(self, provider: str = "deepseek"):
-        """Initialize API client.
+    def __init__(self, provider: str):
+        """Initialize the API client with a provider.
         
         Args:
-            provider: AI provider to use
+            provider: The AI provider to use (e.g., deepseek, xai)
         """
         self.provider = provider
-        self.api_key = self._get_api_key()
+        
+        # Validate the provider is supported
+        supported_providers = ["deepseek", "xai", "openai", "gemini"]
+        if provider not in supported_providers:
+            raise ValueError(f"Unsupported AI provider: {provider}")
+        
+        # Check for API key
+        env_key = f"{provider.upper()}_API_KEY"
+        self.api_key = os.environ.get(env_key)
+        
+        if not self.api_key:
+            raise ValueError(f"API key not set for {provider}: {env_key}")
         
         # Validate we have what we need immediately
         if not self.api_key:

@@ -44,14 +44,7 @@ class JsonLdGenerator(BaseComponent):
         return f"```json\n{jsonld_str}\n```"
     
     def _create_jsonld_from_frontmatter(self, frontmatter_data):
-        """Create JSON-LD from frontmatter data.
-        
-        Args:
-            frontmatter_data: Frontmatter data dictionary
-            
-        Returns:
-            JSON-LD object
-        """
+        """Create JSON-LD from frontmatter data."""
         # Determine schema type based on article type
         schema_type = self._determine_schema_org_type(frontmatter_data)
         
@@ -82,7 +75,7 @@ class JsonLdGenerator(BaseComponent):
         # Add keywords and tags
         self._add_keywords_and_tags(jsonld, frontmatter_data)
         
-        # DO NOT add awards - this is causing the error
+        # Remove the awards functionality entirely
         # self._add_awards(jsonld, frontmatter_data)
         
         return jsonld
@@ -270,23 +263,3 @@ class JsonLdGenerator(BaseComponent):
         safety_info = frontmatter_data.get("safetyInformation", "")
         if safety_info:
             jsonld["safetyConsiderations"] = safety_info
-    
-    def _add_awards(self, jsonld: Dict[str, Any], frontmatter_data: Dict[str, Any]) -> None:
-        """Add awards information if available."""
-        regional_context = frontmatter_data.get("regionalContext", {})
-        if not regional_context:
-            return
-            
-        # Create an award based on regional context
-        year = datetime.now().year
-        region = regional_context.get("broaderRegion", "")
-        state = regional_context.get("state", "")
-        
-        if region:
-            award = f"{year} Industrial Cleaning Innovation Award - {region} Manufacturing Association"
-        elif state:
-            award = f"{year} Industrial Cleaning Innovation Award - {state} Manufacturing Association"
-        else:
-            return
-            
-        jsonld["award"] = award

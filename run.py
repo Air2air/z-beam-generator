@@ -26,68 +26,52 @@ from utils.path_manager import PathManager
 from utils.log_config import configure_logging
 from utils.env_loader import load_env_variables
 
-# Define the primary article context - edit this for all configuration
+# Define the primary article context - THE ONLY SOURCE OF TRUTH
 ARTICLE_CONTEXT = {
     # Core article parameters
     "subject": "magnesium",
     "article_type": "material",
     "ai_provider": "deepseek",
     
-    # Control flags
-    "list_schemas": False,     # Set to True to list available schemas and exit
-    "list_components": False,  # Set to True to list available components and exit
-    "use_cli_args": True,      # Set to False to ignore command line arguments
-    
-    # Output configuration
-    "output_dir": "output",    # Directory to save generated articles
-    
-    # Specify the component order
-    "component_order": [
-        "frontmatter",   # Material research data
-        "content",       # Main content
-        "bullets",       # Key points in bullet format
-        "table",         # Data tables
-        "tags",          # Tags 
-        "jsonld"         # JSON-LD structured data
-    ],
-    
-    # Component-specific configuration
-    "component_config": {
+    # Components configuration with provider settings
+    "components": {
         "frontmatter": {
             "enabled": True,
-            "include_website": True
+            "include_website": True,
+            "provider": "deepseek"
         },
         "content": {
             "enabled": True,
             "min_words": 300,
             "max_words": 500,
-            "paragraphs": 3
+            "paragraphs": 3,
+            "provider": "deepseek"
         },
         "bullets": {
             "enabled": True,
             "count": 5,
-            "style": "technical"
+            "style": "technical",
+            "provider": "deepseek"
         },
         "table": {
             "enabled": True,
             "style": "technical",
-            "include_units": True
+            "include_units": True,
+            "provider": "deepseek"
         },
         "tags": {
             "enabled": True,
-            "max_count": 10
+            "max_count": 10,
+            "provider": "deepseek"
         },
         "jsonld": {
-            "enabled": True
-        },
-        "chart": {
-            "enabled": False
-        },
-        "author": {
-            "enabled": False
+            "enabled": True,
+            "provider": "deepseek"
         }
     },
-    "layout_template": "technical"  # Use the technical template with TOC
+    
+    # Output configuration
+    "output_dir": "output"
 }
 
 def setup_environment() -> None:
@@ -105,7 +89,7 @@ def setup_environment() -> None:
     check_api_keys()
 
 def check_api_keys() -> None:
-    """Check if required API keys are set."""
+    """Check if required API keys are set for all providers used in ARTICLE_CONTEXT."""
     # Map providers to their environment variable keys
     provider_keys = {
         "deepseek": "DEEPSEEK_API_KEY",
@@ -114,13 +98,31 @@ def check_api_keys() -> None:
         "xai": "XAI_API_KEY"
     }
     
-    # Check the current provider
-    current_provider = ARTICLE_CONTEXT.get("ai_provider", "deepseek")
-    if current_provider in provider_keys:
-        key_name = provider_keys[current_provider]
-        if not os.environ.get(key_name):
-            logging.warning(f"API key for selected provider ({current_provider}) missing: {key_name}")
-            logging.warning("API operations will fail unless key is provided")
+    # Collect all providers used in the context
+    providers = set()
+    
+    # Add main provider
+    main_provider = ARTICLE_CONTEXT.get("ai_provider")
+    if main_provider:
+        providers.add(main_provider)
+    
+    # Add component-specific providers
+    components = ARTICLE_CONTEXT.get("components", {})
+    for component_name, component_config in components.items():
+        if isinstance(component_config, dict) and "provider" in component_config:
+            providers.add(component_config["provider"])
+    
+    # Check each provider's API key
+    for provider in providers:
+        if provider in provider_keys:
+            key_name = provider_keys[provider]
+            key_value = os.environ.get(key_name)
+            
+            if not key_value:
+                logging.error(f"API key missing for {provider}: {key_name}")
+                raise ValueError(f"Required API key not set: {key_name}")
+            elif len(key_value) < 20:
+                logging.warning(f"API key for {provider} seems unusually short")
 
 def list_available_schemas() -> List[str]:
     """List all available schema types."""
@@ -218,31 +220,27 @@ def main() -> None:
     # Set up environment
     setup_environment()
     
-    # Start with the global ARTICLE_CONTEXT
-    context = ARTICLE_CONTEXT.copy()
+    # Use the global ARTICLE_CONTEXT directly
+    context = ARTICLE_CONTEXT
     
-    # Apply command line overrides if enabled
-    if context.get("use_cli_args", True):
-        cli_overrides = parse_command_line()
-        context.update(cli_overrides)
+    # Load base configuration
+    config = ConfigManager.load_config()
     
-    # Handle list commands
-    if context.get("list_schemas", False):
-        schemas = list_available_schemas()
-        print("Available schemas:")
-        for schema in schemas:
-            print(f"  - {schema}")
-        return
+    # Extract key parameters
+    subject = context.get("subject")
+    article_type = context.get("article_type")
+    ai_provider = context.get("ai_provider")
     
-    if context.get("list_components", False):
-        components = list_available_components()
-        print("Available components:")
-        for component in components:
-            print(f"  - {component}")
-        return
+    # Create article assembler
+    assembler = ArticleAssembler(
+        subject=subject,
+        article_type=article_type,
+        config=config,
+        ai_provider=ai_provider
+    )
     
     # Generate article
-    output_path = generate_article_from_context(context)
+    output_path = assembler.generate_article()
     
     if output_path:
         print(f"Article generated successfully: {output_path}")
