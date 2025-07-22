@@ -1,20 +1,14 @@
 # filepath: /Users/todddunning/Desktop/Z-Beam/z-beam-generator/components/content/prompt.yaml
 
 template: |
-  Generate comprehensive content about {subject} for a {article_type} article.
-  
-  Title: {title}
-  Description: {description}
-  Keywords: {keywords}
-  
-  Focus on providing accurate, detailed information about {subject}.
-  
-  Structure the content with appropriate headings and subheadings.
-  Include information about:
-  - Key characteristics and properties
-  - Common applications and uses
-  - Technical specifications (if relevant)
-  - Advantages and limitations
-  
-  The content should be informative, well-structured, and suitable for readers
-  seeking detailed information about {subject}.
+  Using ONLY the provided frontmatter below, generate comprehensive, well-structured content for a {article_type} article about {subject} in the context of laser cleaning.
+
+  --- FRONTMATTER START ---
+  {frontmatter}
+  --- FRONTMATTER END ---
+
+  Instructions:
+  - Rely exclusively on the information and fields present in the frontmatter.
+  - Organize the content logically, using headings and subheadings that reflect the frontmatter's structure and details.
+  - Cover all relevant sections, such as properties, applications, technical specifications, advantages, limitations, and any other data present.
+  - Do not invent or assume information not found in the frontmatter.

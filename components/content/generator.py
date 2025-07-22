@@ -98,18 +98,35 @@ class ContentGenerator(BaseComponent):
         
         return content
     
-    def _get_country_prompt(self, country):
+    def _get_country_prompt(self, country, min_words=None, max_words=None):
         try:
             with open(f"components/content/prompts/{country.lower()}.txt") as f:
-                return f.read().strip()
+                prompt = f.read().strip()
+                if min_words or max_words:
+                    prompt += "\n"
+                    if min_words:
+                        prompt += f"\nMinimum words: {min_words}."
+                    if max_words:
+                        prompt += f"\nMaximum words: {max_words}."
+                return prompt
         except FileNotFoundError:
             return ""
 
     def generate(self) -> str:
         frontmatter = self.get_frontmatter_data()
-        country = frontmatter.get("author_country", "").lower()
-        country_prompt = self._get_country_prompt(country)
+        country = frontmatter.get("author", {}).get("author_country", "").lower()
+        min_words = frontmatter.get("min_words")
+        max_words = frontmatter.get("max_words")
+        country_prompt = self._get_country_prompt(country, min_words, max_words)
         main_prompt = self._format_prompt(self._prepare_data(frontmatter))
         full_prompt = f"{country_prompt}\n\n{main_prompt}" if country_prompt else main_prompt
+
+        # Debug print to show which country prompt is being used
+        print(f"[DEBUG] Using country prompt for: '{country}'")
+        if country_prompt:
+            print(f"[DEBUG] Country prompt content:\n{country_prompt}\n")
+        else:
+            print("[DEBUG] No country-specific prompt found.")
+
         content = self._call_api(full_prompt)
         return self._post_process(content)
