@@ -11,46 +11,75 @@ MODULE DIRECTIVES FOR AI ASSISTANTS:
 
 import logging
 from typing import Dict, Any, List
-
 from components.base import BaseComponent
 
 logger = logging.getLogger(__name__)
 
 class TagsGenerator(BaseComponent):
-    """Generator for article tags section."""
-    
-    def __init__(self, context: Dict[str, Any], schema: Dict[str, Any], ai_provider: str = "deepseek"):
-        """Initialize the tags generator.
-        
-        Args:
-            context: Context data including subject, article_type, etc.
-            schema: Schema definition for tags generation
-            ai_provider: The AI provider to use
-        """
-        super().__init__(context, schema, ai_provider)
-        logger.info(f"TagsGenerator initialized for subject: {self.subject}")
+    """Generates tags section for articles."""
     
     def generate(self) -> str:
         """Generate tags section based on frontmatter data."""
         try:
+            # 1. Get frontmatter data using standard method
             frontmatter_data = self.get_frontmatter_data()
+            
             if not frontmatter_data:
                 logger.warning("No frontmatter data available for tags generation")
                 return ""
+                
+            # 2. Prepare data (for tags, we extract directly from frontmatter)
+            tags_data = self._prepare_data(frontmatter_data)
             
-            # Extract tags from frontmatter
-            tags = frontmatter_data.get("tags", [])
-            if not tags:
+            if not tags_data:
                 logger.info("No tags found in frontmatter")
                 return ""
             
-            # Create a bulleted list of tags
-            tags_content = "## Tags\n\n"
-            for tag in tags:
-                tags_content += f"- {tag}\n"
-            
-            return tags_content + "\n"
+            # 3. Post-process and format tags (no API call needed)
+            return self._post_process(tags_data)
             
         except Exception as e:
-            logger.error(f"Error generating tags: {e}")
+            logger.error(f"Error generating tags: {str(e)}")
+            return self._create_error_markdown(str(e))
+    
+    def _prepare_data(self, frontmatter_data: Dict[str, Any]) -> List[str]:
+        """Extract tags from frontmatter data."""
+        # Extract tags from frontmatter
+        tags = frontmatter_data.get("tags", [])
+        
+        # Add keywords as tags if present and not already in tags
+        keywords = frontmatter_data.get("keywords", [])
+        if keywords:
+            for keyword in keywords:
+                if keyword not in tags:
+                    tags.append(keyword)
+        
+        return tags
+    
+    def _format_prompt(self, data: Dict[str, Any]) -> str:
+        """Format prompt template with data (not used in TagsGenerator)."""
+        # Tags don't require API calls, but included for standard conformance
+        return ""
+    
+    def _call_api(self, prompt: str) -> str:
+        """Call API with prompt (not used in TagsGenerator)."""
+        # Tags don't require API calls, but included for standard conformance
+        return ""
+    
+    def _post_process(self, tags: List[str]) -> str:
+        """Format tags into markdown."""
+        if not tags:
             return ""
+            
+        # Create tags section
+        tags_section = ["## Tags", ""]
+        
+        # Format tags as badges
+        tags_badges = []
+        for tag in tags:
+            tag_slug = tag.lower().replace(' ', '-')
+            tags_badges.append(f'<span class="tag">{tag}</span>')
+        
+        tags_section.append(' '.join(tags_badges))
+        
+        return "\n".join(tags_section)

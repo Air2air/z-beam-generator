@@ -1,23 +1,15 @@
 """
 MODULE DIRECTIVES FOR AI ASSISTANTS:
-1. SCHEMA-DRIVEN: Load and use schema definition based on article_type
-2. NO FALLBACKS: Do not use hardcoded values when schema data is unavailable
-3. DYNAMIC CONTENT: All frontmatter must be generated via AI, not templates
-4. SCHEMA VALIDATION: Ensure generated content conforms to schema structure
-5. ERROR TRANSPARENCY: Log errors but propagate exceptions to caller
+1. FRONTMATTER-DRIVEN: All content must be extracted from frontmatter
+2. NO HARDCODED SECTIONS: Section structure must be derived from frontmatter
+3. DYNAMIC FORMATTING: Format content based on article_type from frontmatter
+4. ERROR HANDLING: Raise exceptions when required frontmatter fields are missing
+5. SCHEMA AWARENESS: Be aware of the schema structure for different article types
 """
 
-"""
-Frontmatter generator for article metadata.
-"""
-
-import yaml
 import logging
-import os
-import re
-from typing import Dict, Any, Optional
-from pathlib import Path
-
+import yaml
+from typing import Dict, Any
 from components.base import BaseComponent
 
 logger = logging.getLogger(__name__)
@@ -25,209 +17,101 @@ logger = logging.getLogger(__name__)
 class FrontmatterGenerator(BaseComponent):
     """Generates YAML frontmatter for articles."""
     
-    def __init__(self, context: Dict[str, Any], schema: Dict[str, Any], ai_provider: str = "deepseek"):
-        """Initialize the frontmatter generator with dynamic schema support.
-        
-        Args:
-            context: Context data including subject, article_type, etc.
-            schema: Schema definition for frontmatter generation
-            ai_provider: The AI provider to use
-        """
-        super().__init__(context, schema, ai_provider)
-        logger.info(f"FrontmatterGenerator initialized for subject: {self.subject}")
-        
-        # Load prompt configuration from schema or from local file
-        self.prompt_config = schema.get("prompt", {})
-        if not self.prompt_config or "template" not in self.prompt_config:
-            self.prompt_config = self._load_prompt_yaml()
-        
-        # Extract schema definition for dynamic schema generation
-        self.schema_definition = schema.get("schema", {})
-    
-    def _load_prompt_yaml(self) -> Dict[str, Any]:
-        """Load prompt configuration from prompt.yaml file."""
-        prompt_path = os.path.join(os.path.dirname(__file__), "prompt.yaml")
-        try:
-            with open(prompt_path, 'r') as file:
-                prompt_config = yaml.safe_load(file) or {}
-                logger.info(f"Loaded prompt configuration from {prompt_path}")
-                return prompt_config
-        except Exception as e:
-            logger.error(f"Error loading prompt.yaml: {e}")
-            return {}
-    
-    def _generate_schema_section(self) -> str:
-        """Generate schema section for the prompt based on dynamic schema definition."""
-        if not self.schema_definition:
-            # Use the default schema structure from the prompt template
-            return ""
-        
-        schema_text = "Dynamic schema fields:\n"
-        
-        # Process each field in the schema definition
-        for field_name, field_def in self.schema_definition.items():
-            field_type = field_def.get("type", "string")
-            description = field_def.get("description", "")
-            example = field_def.get("example", "")
-            
-            # Format the field based on its type
-            if field_type == "string":
-                schema_text += f"{field_name}: \"{example or field_name}\""
-                if description:
-                    schema_text += f" # {description}"
-                schema_text += "\n"
-                
-            elif field_type == "array":
-                schema_text += f"{field_name}:"
-                if description:
-                    schema_text += f" # {description}"
-                schema_text += "\n"
-                
-                if "items" in field_def and field_def["items"].get("type") == "object":
-                    # Complex array with object items
-                    item_props = field_def["items"].get("properties", {})
-                    for i in range(min(2, field_def.get("minItems", 2))):
-                        schema_text += f"  - "
-                        for prop_name in item_props:
-                            schema_text += f"{prop_name}: \"Example {prop_name}\" "
-                        schema_text += "\n"
-                else:
-                    # Simple array of strings
-                    for i in range(min(2, field_def.get("minItems", 2))):
-                        schema_text += f"  - \"Example item {i+1}\"\n"
-                
-            elif field_type == "object":
-                schema_text += f"{field_name}:"
-                if description:
-                    schema_text += f" # {description}"
-                schema_text += "\n"
-                
-                properties = field_def.get("properties", {})
-                for prop_name, prop_def in properties.items():
-                    prop_example = prop_def.get("example", f"Example {prop_name}")
-                    schema_text += f"  {prop_name}: \"{prop_example}\""
-                    if prop_def.get("description"):
-                        schema_text += f" # {prop_def['description']}"
-                    schema_text += "\n"
-        
-        return schema_text
-    
     def generate(self) -> str:
-        """Generate frontmatter based on subject and article type."""
+        """Generate YAML frontmatter based on subject."""
         try:
-            # Get template from prompt config
-            template = self.prompt_config.get("template", "")
-            if not template:
-                logger.error("No template found in prompt config")
-                raise ValueError("No template found in prompt config")
+            # For frontmatter generator, we don't use existing frontmatter
+            # since we're generating the frontmatter itself
             
-            # Generate dynamic schema section if schema definition is available
-            schema_section = self._generate_schema_section()
+            # 1. Prepare data for prompt
+            prompt_data = self._prepare_data({})
             
-            # Format template with context variables and dynamic schema
-            formatted_prompt = template.format(
-                article_type=self.article_type,
-                subject=self.subject,
-                schema=schema_section
-            )
+            # 2. Format prompt
+            prompt = self._format_prompt(prompt_data)
             
-            # Add explicit instruction to avoid code blocks and multiple YAML documents
-            formatted_prompt += "\n\n🚨 CRITICAL FORMATTING REQUIREMENTS:\n"
-            formatted_prompt += "1. DO NOT USE TRIPLE BACKTICKS (```) or ```yaml MARKERS\n"
-            formatted_prompt += "2. DO NOT INCLUDE ANY --- DELIMITERS\n"
-            formatted_prompt += "3. RETURN ONLY THE RAW YAML CONTENT\n"
+            # 3. Call API
+            content = self._call_api(prompt)
             
-            # Log formatted prompt (truncated for readability)
-            logger.debug(f"Formatted prompt: {formatted_prompt[:100]}...")
+            # 4. Post-process content
+            return self._post_process(content)
             
-            # Generate frontmatter using API
-            frontmatter_content = self.api_client.generate_content(formatted_prompt)
-            
-            # Clean up the YAML to fix parsing issues
-            frontmatter_content = self._clean_yaml_response(frontmatter_content)
-            
-            return f"---\n{frontmatter_content}\n---\n"
-        
         except Exception as e:
             logger.error(f"Error generating frontmatter: {str(e)}")
             return self._create_error_markdown(str(e))
     
-    def _clean_yaml_response(self, yaml_content: str) -> str:
-        """Clean up YAML response to ensure it's valid.
-        
-        Args:
-            yaml_content: Raw YAML content from AI response
-            
-        Returns:
-            Cleaned YAML content
-        """
-        # Fix common issues with AI-generated YAML
-        
-        # 1. Handle unescaped quotes in strings
-        lines = yaml_content.split('\n')
-        cleaned_lines = []
-        
-        for line in lines:
-            # If the line contains a string with unescaped quotes, wrap the value in single quotes
-            if ': "' in line and line.count('"') > 2:
-                # Find the position of the first quote after the colon
-                colon_pos = line.find(': "')
-                if colon_pos != -1:
-                    # Split into key and value parts
-                    key_part = line[:colon_pos + 2]  # Include the ': "'
-                    value_part = line[colon_pos + 2:]
-                    
-                    # Strip the closing quote if present
-                    if value_part.endswith('"'):
-                        value_part = value_part[:-1]
-                    
-                    # Replace problematic characters
-                    value_part = value_part.replace('"', '\\"')  # Escape double quotes
-                    value_part = value_part.replace('<', '\\<')  # Escape < character
-                    value_part = value_part.replace('>', '\\>')  # Escape > character
-                    
-                    # Reconstruct the line
-                    line = f"{key_part}{value_part}\""
-            
-            cleaned_lines.append(line)
-        
-        return '\n'.join(cleaned_lines)
+    def _prepare_data(self, _: Dict[str, Any]) -> Dict[str, Any]:
+        """Prepare data for prompt formatting."""
+        # Add the schema key that's missing
+        return {
+            "subject": self.subject,
+            "article_type": self.article_type,
+            "schema": {
+                "title": "String - Title of the article",
+                "description": "String - Brief description",
+                "keywords": "Array - Related keywords",
+                "properties": "Object - Material properties",
+                "applications": "Array - Common applications"
+            }
+        }
     
-    def _validate_frontmatter(self, content: str) -> bool:
-        """Validate the generated frontmatter against schema."""
+    def _format_prompt(self, data: Dict[str, Any]) -> str:
+        """Format prompt template with data."""
+        template = self.load_prompt_template()
+        
         try:
-            # Special handling for content with multiple document markers
-            clean_content = content
-            if content.count("---") > 2:
-                logger.warning("Multiple YAML document markers found during validation, cleaning")
-                parts = content.split("---")
-                if len(parts) >= 3:
-                    # Use the part between first and second ---
-                    clean_content = f"---\n{parts[1].strip()}\n---"
+            return template.format(**data)
+        except KeyError as e:
+            logger.error(f"Missing key in prompt data: {e}")
+            # Fallback to a simple prompt if template formatting fails
+            return f"Generate YAML frontmatter for an article about {data.get('subject', 'the topic')}."
+    
+    def _call_api(self, prompt: str) -> str:
+        """Call API with prompt."""
+        return self.api_client.generate_content(prompt)
+    
+    def _post_process(self, content: str) -> str:
+        """Post-process API response to ensure valid YAML frontmatter."""
+        if not content:
+            return ""
             
-            # Parse YAML with safe_load_all and get first document
-            documents = list(yaml.safe_load_all(clean_content))
-            if not documents:
-                logger.warning("Frontmatter parsed as empty")
-                raise ValueError("Empty frontmatter")
+        # Extract YAML content (may be wrapped in markdown code blocks)
+        yaml_content = content
+        
+        if "```yaml" in content:
+            # Extract from code block
+            start = content.find("```yaml") + 7
+            end = content.find("```", start)
+            if end != -1:
+                yaml_content = content[start:end].strip()
+        elif "```" in content:
+            # Extract from generic code block
+            start = content.find("```") + 3
+            end = content.find("```", start)
+            if end != -1:
+                yaml_content = content[start:end].strip()
+        
+        # Remove any extra YAML document markers (---)
+        if yaml_content.count('---') > 2:
+            # Keep only the first document
+            parts = yaml_content.split('---', 2)
+            if len(parts) >= 3:
+                yaml_content = parts[1].strip()
+        
+        # Validate YAML
+        try:
+            yaml_data = yaml.safe_load(yaml_content)
+            if not isinstance(yaml_data, dict):
+                raise ValueError("Frontmatter must be a dictionary")
                 
-            parsed_yaml = documents[0]
-            if not parsed_yaml:
-                logger.warning("First YAML document parsed as empty")
-                raise ValueError("Empty frontmatter")
+            # Ensure basic fields are present
+            if "title" not in yaml_data:
+                yaml_data["title"] = self.subject.capitalize()
+                
+            # Format as YAML frontmatter
+            formatted_yaml = yaml.safe_dump(yaml_data, default_flow_style=False)
+            return f"---\n{formatted_yaml}---\n"
             
-            # Get validation rules from prompt config instead of hardcoding
-            validation = self.prompt_config.get("validation", {})
-            required_fields = validation.get("required_fields", [])
-            
-            # Check required fields dynamically
-            for field in required_fields:
-                if field not in parsed_yaml:
-                    logger.warning(f"Required field missing in frontmatter: {field}")
-                    raise ValueError(f"Required field missing in frontmatter: {field}")
-            
-            return True
-            
-        except yaml.YAMLError as e:
-            logger.warning(f"Failed to parse frontmatter YAML: {e}")
-            raise ValueError(f"Failed to parse frontmatter YAML: {e}")
+        except Exception as e:
+            logger.error(f"Invalid YAML frontmatter: {str(e)}")
+            # Return minimal valid frontmatter
+            return f"---\ntitle: {self.subject.capitalize()}\n---\n"

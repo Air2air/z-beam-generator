@@ -10,8 +10,6 @@ MODULE DIRECTIVES FOR AI ASSISTANTS:
 # Your imports and code
 
 import logging
-import json
-import re
 from typing import Dict, Any
 
 from components.base import BaseComponent
@@ -19,46 +17,73 @@ from components.base import BaseComponent
 logger = logging.getLogger(__name__)
 
 class TableGenerator(BaseComponent):
-    """Generator for technical specification tables."""
-    
-    def __init__(self, context: Dict[str, Any], schema: Dict[str, Any], ai_provider: str = "deepseek"):
-        """Initialize the table generator.
-        
-        Args:
-            context: Context data including subject, article_type, etc.
-            schema: Schema definition for table generation
-            ai_provider: The AI provider to use
-        """
-        super().__init__(context, schema, ai_provider)
-        logger.info(f"TableGenerator initialized for subject: {self.subject}")
+    """Generates tables for articles based on frontmatter data."""
     
     def generate(self) -> str:
         """Generate tables dynamically based on frontmatter structure."""
         try:
+            # 1. Get frontmatter data using standard method
             frontmatter_data = self.get_frontmatter_data()
+            
             if not frontmatter_data:
                 logger.warning("No frontmatter data available for table generation")
                 return ""
             
-            # Look for table-worthy data in frontmatter
-            tech_specs = frontmatter_data.get("technicalSpecifications", {})
-            if not tech_specs:
-                logger.info("No technical specifications found for table generation")
+            # 2. Prepare data for tables
+            tables_data = self._prepare_data(frontmatter_data)
+            
+            if not tables_data:
+                logger.info("No table-worthy data found in frontmatter")
                 return ""
             
-            # Generate a markdown table dynamically
-            table = "## Technical Specifications\n\n"
-            table += "| Attribute | Value |\n"
-            table += "|------------|-------|\n"
+            # 3. Format prompt (not needed for tables)
+            # Tables are generated directly from frontmatter, no API call needed
             
-            # Add rows for each specification
-            for key, value in tech_specs.items():
-                # Format the property name using BaseComponent helper
-                property_name = self.format_section_title(key)
-                table += f"| {property_name} | {value} |\n"
-            
-            return table + "\n"
+            # 4. Post-process content
+            return self._post_process(tables_data)
             
         except Exception as e:
-            logger.error(f"Error generating tables: {e}")
+            logger.error(f"Error generating tables: {str(e)}")
+            return self._create_error_markdown(str(e))
+    
+    def _prepare_data(self, frontmatter_data: Dict[str, Any]) -> Dict[str, Dict[str, Any]]:
+        """Extract table-worthy data from frontmatter."""
+        tables_data = {}
+        
+        # Look for standard table-worthy sections
+        table_sections = [
+            "technicalSpecifications",
+            "properties",
+            "specifications",
+            "dimensions"
+        ]
+        
+        for section in table_sections:
+            if section in frontmatter_data and frontmatter_data[section]:
+                if isinstance(frontmatter_data[section], dict):
+                    tables_data[section] = frontmatter_data[section]
+        
+        return tables_data
+    
+    def _format_prompt(self, data: Dict[str, Any]) -> str:
+        """Format prompt template with data (not used in TableGenerator)."""
+        # This method is not used for tables, but included for standard conformance
+        return ""
+    
+    def _call_api(self, prompt: str) -> str:
+        """Call API with prompt (not used in TableGenerator)."""
+        # This method is not used for tables, but included for standard conformance
+        return ""
+    
+    def _post_process(self, tables_data: Dict[str, Dict[str, Any]]) -> str:
+        """Generate tables from prepared data."""
+        if not tables_data:
             return ""
+        
+        tables_content = []
+        for section_key, section_data in tables_data.items():
+            section_title = self.format_section_title(section_key)
+            tables_content.append(f"## {section_title}")
+            tables_content.append(self._format_table(section_data))
+        
+        return "\n\n".join(tables_content)

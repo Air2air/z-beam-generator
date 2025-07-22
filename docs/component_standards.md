@@ -1,5 +1,26 @@
-"""Content generation utilities for frontmatter generator.
+# Z-Beam Component Standards
 
+## Overview
+This document defines standardized patterns for Z-Beam components to ensure consistency, maintainability, and efficiency across the codebase.
+
+## Module Directives
+
+All components should follow these key directives:
+
+1. **FRONTMATTER-DRIVEN**: All content must be extracted from frontmatter
+2. **NO HARDCODED SECTIONS**: Section structure must be derived from frontmatter
+3. **DYNAMIC FORMATTING**: Format content based on article_type from frontmatter
+4. **ERROR HANDLING**: Raise exceptions when required frontmatter fields are missing
+5. **SCHEMA AWARENESS**: Be aware of the schema structure for different article types
+
+## Component Structure
+
+### Base Pattern
+
+All components must follow this standard structure:
+
+```python
+"""
 MODULE DIRECTIVES FOR AI ASSISTANTS:
 1. FRONTMATTER-DRIVEN: All content must be extracted from frontmatter
 2. NO HARDCODED SECTIONS: Section structure must be derived from frontmatter
@@ -14,18 +35,22 @@ from components.base import BaseComponent
 
 logger = logging.getLogger(__name__)
 
-class ContentGenerator(BaseComponent):
-    """Generates content based on frontmatter data."""
+class ExampleComponent(BaseComponent):
+    """Component description with clear purpose."""
     
     def generate(self) -> str:
-        """Generate content from frontmatter."""
+        """Generate component content.
+        
+        Returns:
+            Markdown string content
+        """
         try:
             # 1. Get frontmatter data using standard method
             frontmatter_data = self.get_frontmatter_data()
             
             if not frontmatter_data:
-                logger.warning("No frontmatter data available for content generation")
-                return self._create_error_markdown("Missing frontmatter data")
+                logger.warning("No frontmatter data available for component")
+                return ""
                 
             # 2. Prepare data for prompt
             prompt_data = self._prepare_data(frontmatter_data)
@@ -40,7 +65,7 @@ class ContentGenerator(BaseComponent):
             return self._post_process(content)
             
         except Exception as e:
-            logger.error(f"Error generating content: {str(e)}")
+            logger.error(f"Error in {self.__class__.__name__}: {str(e)}")
             return self._create_error_markdown(str(e))
     
     def _prepare_data(self, frontmatter_data: Dict[str, Any]) -> Dict[str, Any]:
@@ -48,11 +73,7 @@ class ContentGenerator(BaseComponent):
         return {
             "subject": self.subject,
             "article_type": self.article_type,
-            "title": frontmatter_data.get("title", self.subject),
-            "description": frontmatter_data.get("description", ""),
-            "keywords": ", ".join(frontmatter_data.get("keywords", [])),
-            "properties": frontmatter_data.get("properties", {}),
-            "applications": frontmatter_data.get("applications", [])
+            # Component-specific data preparation
         }
     
     def _format_prompt(self, data: Dict[str, Any]) -> str:
@@ -66,8 +87,5 @@ class ContentGenerator(BaseComponent):
     
     def _post_process(self, content: str) -> str:
         """Post-process API response."""
-        if not content:
-            return ""
-            
-        # Add any necessary post-processing here
         return content
+```

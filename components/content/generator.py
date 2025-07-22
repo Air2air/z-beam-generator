@@ -8,107 +8,92 @@ MODULE DIRECTIVES FOR AI ASSISTANTS:
 """
 
 import logging
-import json
-import re
-from typing import Dict, Any
-
+from typing import Dict, Any, List
 from components.base import BaseComponent
 
 logger = logging.getLogger(__name__)
 
 class ContentGenerator(BaseComponent):
-    """Generates dynamic article content based on frontmatter data."""
-    
-    def __init__(self, context: Dict[str, Any], schema: Dict[str, Any], ai_provider: str = "deepseek"):
-        """Initialize the content generator.
-        
-        Args:
-            context: Context data including subject, article_type, etc.
-            schema: Schema definition for content generation
-            ai_provider: The AI provider to use
-        """
-        super().__init__(context, schema, ai_provider)
-        logger.info(f"ContentGenerator initialized for subject: {self.subject}")
+    """Generates main article content based on frontmatter data."""
     
     def generate(self) -> str:
-        """Generate content based on the template method pattern."""
+        """Generate main content for the article."""
         try:
-            # 1. Prepare data
-            data = self._prepare_data()
+            # 1. Get frontmatter data using standard method
+            frontmatter_data = self.get_frontmatter_data()
             
-            # 2. Create prompt
-            prompt = self._create_prompt(data)
+            if not frontmatter_data:
+                logger.warning("No frontmatter data available for content generation")
+                return self._create_error_markdown("Missing frontmatter data")
+                
+            # 2. Prepare data for prompt
+            prompt_data = self._prepare_data(frontmatter_data)
             
-            # 3. Generate content via API
-            content = self._generate_content(prompt)
+            # 3. Format prompt
+            prompt = self._format_prompt(prompt_data)
             
-            # 4. Post-process content
+            # 4. Call API
+            content = self._call_api(prompt)
+            
+            # 5. Post-process content
             return self._post_process(content)
             
         except Exception as e:
-            from utils.error_handler import ErrorHandler
-            return ErrorHandler.handle_component_error("ContentGenerator", e, strict_mode=False)
+            logger.error(f"Error generating content: {str(e)}")
+            return self._create_error_markdown(str(e))
     
-    def _prepare_data(self):
-        """Prepare data for prompt creation."""
-        # Get frontmatter data
-        frontmatter_data = self.get_frontmatter_data()
+    def _prepare_data(self, frontmatter_data: Dict[str, Any]) -> Dict[str, Any]:
+        """Prepare data for prompt formatting."""
+        # Extract essential data from frontmatter
+        title = frontmatter_data.get("title", self.subject)
+        description = frontmatter_data.get("description", "")
+        keywords = frontmatter_data.get("keywords", [])
+        properties = frontmatter_data.get("properties", {})
+        applications = frontmatter_data.get("applications", [])
+        tech_specs = frontmatter_data.get("technicalSpecifications", {})
         
-        # Get component-specific configuration
-        config = self.get_component_config()
+        # Determine structure based on article_type
+        article_type = frontmatter_data.get("articleType", "informational")
         
-        # Prepare context data
+        # Build prompt data dictionary
         return {
             "subject": self.subject,
-            "article_type": self.article_type,
-            "frontmatter": frontmatter_data,
-            "max_words": config.get("max_words", 500),
-            "min_words": config.get("min_words", 300),
-            "paragraphs": config.get("paragraphs", 3)
+            "title": title,
+            "description": description,
+            "keywords": ", ".join(keywords) if keywords else "",
+            "article_type": article_type,
+            "has_properties": bool(properties),
+            "has_applications": bool(applications),
+            "has_tech_specs": bool(tech_specs),
+            # Include any additional context from frontmatter
+            "context": frontmatter_data.get("context", ""),
+            "tone": frontmatter_data.get("tone", "informative")
         }
-
-    def _create_prompt(self, data):
-        """Create dynamic prompt based on prepared data."""
-        # Format as JSON for consistency
-        context_json = json.dumps(data, indent=2)
-        
-        # Create dynamic prompt with clear instructions
-        prompt = (
-            f"Generate the introduction section ONLY for an article about {data['subject']} laser cleaning.\n\n"
-            f"CONTEXT (use only this data as your information source):\n{context_json}\n\n"
-            "IMPORTANT INSTRUCTIONS:\n"
-            "1. Generate ONLY an introduction/overview section\n"
-            "2. DO NOT include any other sections (technical specs, applications, etc.)\n"
-            "3. DO NOT create a table of contents or section previews\n"
-            "4. DO NOT use any hardcoded section titles or structures\n"
-            "5. DO NOT add any content that would be better handled by separate components\n"
-            "6. Your content should be focused only on introducing the subject\n"
-            "7. Format as proper markdown\n"
-            f"8. Be concise but informative ({data['min_words']}-{data['max_words']} words)\n"
-            "9. Ensure your content is based ONLY on the provided frontmatter data\n"
-            "10. DO NOT invent facts or specifications not present in the frontmatter\n"
-            "11. DO NOT include markdown headlines (# or ##) in your response\n"
-        )
-        
-        return prompt
     
-    def _generate_content(self, prompt):
-        """Generate content using the API client from BaseComponent."""
+    def _format_prompt(self, data: Dict[str, Any]) -> str:
+        """Format prompt template with data."""
+        template = self.load_prompt_template()
+        
+        try:
+            return template.format(**data)
+        except KeyError as e:
+            logger.error(f"Missing key in prompt data: {e}")
+            # Fallback to a simple prompt if template formatting fails
+            return f"Write a detailed article about {data.get('subject', 'the topic')}."
+    
+    def _call_api(self, prompt: str) -> str:
+        """Call API with prompt."""
         return self.api_client.generate_content(prompt)
     
-    def _post_process(self, content):
-        """Post-process the generated content."""
-        # Remove any HTML comments
-        content = re.sub(r'<!--.*?-->', '', content, flags=re.DOTALL)
-        
-        # Remove any markdown headers
-        content = re.sub(r'^#{1,6}\s+.*$', '', content, flags=re.MULTILINE)
-        
-        # Remove excessive blank lines
-        content = re.sub(r'\n{3,}', '\n\n', content)
-        
-        # Ensure content ends with a newline
-        if not content.endswith('\n'):
-            content += '\n'
+    def _post_process(self, content: str) -> str:
+        """Post-process API response."""
+        if not content:
+            return ""
             
-        return content.strip()
+        # Ensure content starts with a header if not already
+        if not content.strip().startswith("#"):
+            frontmatter_data = self.get_frontmatter_data()
+            title = frontmatter_data.get("title", self.subject.capitalize())
+            content = f"# {title}\n\n{content}"
+        
+        return content

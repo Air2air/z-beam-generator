@@ -18,8 +18,9 @@ Base component class for all content generators.
 
 import logging
 from abc import ABC, abstractmethod
-from typing import Dict, Any, Optional
+from typing import Dict, Any, Optional, List
 import yaml
+import os
 
 from api.client import ApiClient
 from utils.registry_factory import RegistryFactory
@@ -358,3 +359,130 @@ Please check the logs for more information.
     
         # Title case each word
         return ' '.join(word.capitalize() for word in words)
+    
+    def _format_list_items(self, items: List[str], prefix: str = "*") -> str:
+        """Format a list of items as markdown bullets.
+        
+        Args:
+            items: List of string items
+            prefix: Bullet character or string to use (default: *)
+            
+        Returns:
+            Markdown formatted list
+        """
+        if not items:
+            return ""
+            
+        return "\n".join(f"{prefix} {item}" for item in items)
+
+    def _format_table(self, data: Dict[str, Any], headers: List[str] = None) -> str:
+        """Format data as a markdown table.
+        
+        Args:
+            data: Dictionary of data to format (key-value pairs)
+            headers: Custom header names (optional)
+            
+        Returns:
+            Markdown formatted table
+        """
+        if not data:
+            return ""
+            
+        # Use provided headers or format keys as headers
+        if not headers:
+            headers = ["Property", "Value"]
+            
+        table_rows = [
+            f"| {headers[0]} | {headers[1]} |",
+            f"|{'-'*10}|{'-'*10}|"
+        ]
+        
+        for key, value in data.items():
+            key_formatted = self.format_section_title(key)
+            
+            # Handle different value types
+            if isinstance(value, list):
+                value_str = ", ".join(str(v) for v in value)
+            elif isinstance(value, dict):
+                value_str = ", ".join(f"{k}: {v}" for k, v in value.items())
+            else:
+                value_str = str(value)
+                
+            table_rows.append(f"| {key_formatted} | {value_str} |")
+            
+        return "\n".join(table_rows)
+
+    def _generate_section(self, section_key: str, frontmatter_data: Dict[str, Any]) -> str:
+        """Generate content for a specific frontmatter section.
+        
+        Args:
+            section_key: Key of the section in frontmatter data
+            frontmatter_data: Frontmatter data dictionary
+            
+        Returns:
+            Formatted markdown section or empty string if section doesn't exist
+        """
+        section_data = frontmatter_data.get(section_key)
+        if not section_data:
+            return ""
+            
+        title = self.format_section_title(section_key)
+        content = [f"## {title}"]
+        
+        if isinstance(section_data, list):
+            content.append(self._format_list_items(section_data))
+        elif isinstance(section_data, dict):
+            content.append(self._format_table(section_data))
+        else:
+            content.append(str(section_data))
+            
+        return "\n\n".join(content)
+
+    def load_prompt_template(self) -> str:
+        """Load prompt template for the component.
+        
+        Looks for a prompt.yaml file in the component's directory
+        and loads the template from it.
+        
+        Returns:
+            String template for prompt formatting
+        """
+        try:
+            # Get component class name and convert to snake_case for directory name
+            component_type = self.__class__.__name__.replace('Generator', '').lower()
+            
+            # Try to load from component-specific directory
+            prompt_file = os.path.join('components', component_type, 'prompt.yaml')
+            
+            if not os.path.exists(prompt_file):
+                # Try alternate location
+                prompt_file = os.path.join('components', component_type, 'prompts', 'default.yaml')
+        
+            if not os.path.exists(prompt_file):
+                logger.warning(f"No prompt file found for {component_type}")
+                return self._get_default_prompt_template()
+                
+            with open(prompt_file, 'r') as f:
+                prompt_config = yaml.safe_load(f)
+                
+            logger.info(f"Loaded prompt configuration from {prompt_file}")
+            
+            # Extract template from config
+            if isinstance(prompt_config, dict) and 'template' in prompt_config:
+                return prompt_config['template']
+            elif isinstance(prompt_config, str):
+                return prompt_config
+            else:
+                logger.warning(f"Invalid prompt format in {prompt_file}")
+                return self._get_default_prompt_template()
+                
+        except Exception as e:
+            logger.error(f"Error loading prompt template: {e}")
+            return self._get_default_prompt_template()
+            
+    def _get_default_prompt_template(self) -> str:
+        """Return a minimal default prompt template."""
+        return (
+            "Generate content about {subject} for a {article_type} article.\n\n"
+            "Focus on providing accurate, helpful information suitable for the target audience."
+        )
