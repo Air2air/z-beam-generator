@@ -279,10 +279,10 @@ def get_ai_client(provider_name: str) -> BaseAIClient:
         return GeminiClient(api_key)
         
     elif provider_name == "grok":
-        api_key = os.environ.get("GROK_API_KEY")
+        api_key = os.environ.get("XAI_API_KEY")
         if not api_key:
-            logger.error("GROK_API_KEY environment variable not set")
-            raise ValueError("GROK_API_KEY environment variable not set")
+            logger.error("XAI_API_KEY environment variable not set")
+            raise ValueError("XAI_API_KEY environment variable not set")
         return GrokClient(api_key)
         
     elif provider_name == "auto":

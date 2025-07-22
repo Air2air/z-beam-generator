@@ -28,25 +28,32 @@ logger = logging.getLogger(__name__)
 class ApiClient:
     """API client for generating content with AI providers."""
     
-    def __init__(self, provider: str):
-        """Initialize the API client with a provider.
+    def __init__(self, provider: str = "deepseek"):
+        """Initialize the API client.
         
         Args:
-            provider: The AI provider to use (e.g., deepseek, xai)
+            provider: Default AI provider to use
         """
         self.provider = provider
+        
+        # Load API keys from environment variables
+        self.api_keys = {
+            "deepseek": os.environ.get("DEEPSEEK_API_KEY"),
+            "openai": os.environ.get("OPENAI_API_KEY"),
+            "gemini": os.environ.get("GEMINI_API_KEY"),
+            "xai": os.environ.get("XAI_API_KEY")  # This is correct - use XAI_API_KEY
+        }
+        
+        # Set the API key for the current provider
+        self.api_key = self.api_keys.get(provider)
+        
+        if not self.api_key:
+            logger.warning(f"No API key found for provider: {provider}")
         
         # Validate the provider is supported
         supported_providers = ["deepseek", "xai", "openai", "gemini"]
         if provider not in supported_providers:
             raise ValueError(f"Unsupported AI provider: {provider}")
-        
-        # Check for API key
-        env_key = f"{provider.upper()}_API_KEY"
-        self.api_key = os.environ.get(env_key)
-        
-        if not self.api_key:
-            raise ValueError(f"API key not set for {provider}: {env_key}")
         
         # Validate we have what we need immediately
         if not self.api_key:
@@ -68,20 +75,16 @@ class ApiClient:
             
         return api_key
     
-    def generate_content(self, prompt: str, options: Dict[str, Any] = None) -> str:
-        """Generate content from prompt (primary interface method).
+    def generate_content(self, prompt: str, provider: str = "deepseek", **kwargs) -> str:
+        """Generate content using the specified provider.
         
         Args:
-            prompt: Prompt text
-            options: Generation options
+            prompt: Prompt for generation
+            provider: Provider to use
+            **kwargs: Additional parameters
             
         Returns:
             Generated content
-            
-        Raises:
-            ValueError: If API key is missing
-            RuntimeError: If API call fails
-            ImportError: If provider module is not installed
         """
         # Validate API key before attempting generation
         if not self.api_key:
@@ -90,13 +93,14 @@ class ApiClient:
             raise ValueError(error_msg)
             
         # Call the text generation method
-        return self.generate_text(prompt, options)
+        return self.generate_text(prompt, provider, kwargs)
     
-    def generate_text(self, prompt: str, options: Dict[str, Any] = None) -> str:
+    def generate_text(self, prompt: str, provider: str = "deepseek", options: Dict[str, Any] = None) -> str:
         """Generate text from prompt.
         
         Args:
             prompt: Prompt text
+            provider: Provider to use
             options: Generation options
             
         Returns:
@@ -236,11 +240,9 @@ class ApiClient:
             # Import Gemini package
             import google.generativeai as genai
             
-            # Set API key
-            api_key = self.api_key.get("gemini") or os.environ.get('GEMINI_API_KEY')
-            if not api_key:
-                raise ValueError("GEMINI_API_KEY environment variable not set")
-                
+            # Fix: Use the api_key directly since it's a string, not a dictionary
+            api_key = self.api_key  # Changed from self.api_key.get("gemini")
+            
             genai.configure(api_key=api_key)
             
             # Get model parameters
@@ -278,51 +280,57 @@ class ApiClient:
             raise RuntimeError(error_msg)
 
     def _generate_xai(self, prompt: str, options: Dict[str, Any]) -> str:
-        """Generate text using XAI API."""
+        """Generate text using XAI/Grok API with the official SDK."""
         try:
-            # Get API key
-            api_key = self.api_key.get("xai") or os.environ.get('XAI_API_KEY')
+            # Import the xai-sdk
+            try:
+                from xai_sdk import Client
+                from xai_sdk.chat import user, system
+            except ImportError:
+                raise ImportError("xai-sdk not installed. Run 'pip install xai-sdk' to install it.")
+            
+            # Use the instance API key
+            api_key = self.api_key
+            
             if not api_key:
                 raise ValueError("XAI_API_KEY environment variable not set")
-                
-            # Get model parameters
-            model = options.get("model", "xai-1")
+            
+            # Updated model name based on the curl example
+            model = options.get("model", "grok-3-latest")  # Changed from "grok-1" to "grok-3-latest"
             temperature = options.get("temperature", 0.7)
             max_tokens = options.get("max_tokens", 2000)
             
-            # Log the API call (excluding prompt content)
             logger.info(f"Calling XAI API with model: {model}, temp: {temperature}, max_tokens: {max_tokens}")
             
-            # Set up API request
-            headers = {
-                "Authorization": f"Bearer {api_key}",
-                "Content-Type": "application/json"
-            }
-            
-            payload = {
-                "model": model,
-                "messages": [{"role": "user", "content": prompt}],
-                "temperature": temperature,
-                "max_tokens": max_tokens
-            }
-            
-            # Make the API request
-            response = requests.post(
-                "https://api.xai.com/v1/chat/completions",
-                headers=headers,
-                json=payload,
-                timeout=120
+            # Create client with the API key
+            client = Client(
+                api_key=api_key,
+                timeout=120  # Set reasonable timeout
             )
             
-            # Check for errors
-            response.raise_for_status()
+            # Create chat session with the specified model
+            chat = client.chat.create(model=model)
             
-            # Parse the response
-            response_data = response.json()
-            result = response_data["choices"][0]["message"]["content"]
+            # Add system message if needed
+            system_message = options.get("system_message", "You are a helpful, technical AI assistant.")
+            chat.append(system(system_message))
+            
+            # Add user message (the prompt)
+            chat.append(user(prompt))
+            
+            # Generate response with no parameters
+            response = chat.sample()
+            
+            # Extract the response content
+            result = response.content
             
             logger.debug(f"XAI API response length: {len(result)} characters")
             return result
+            
+        except ImportError as e:
+            error_msg = f"XAI SDK not installed: {str(e)}"
+            logger.error(error_msg)
+            raise ImportError(error_msg)
             
         except Exception as e:
             error_msg = f"XAI API call failed: {str(e)}"
@@ -354,3 +362,72 @@ class ApiClient:
             error_msg = f"Error generating with {provider}: {str(e)}"
             logger.error(error_msg)
             raise RuntimeError(error_msg)
+
+    def _call_xai_api(self, prompt: str, **kwargs) -> str:
+        """Call XAI API to generate content.
+        
+        Args:
+            prompt: Prompt for content generation
+            **kwargs: Additional parameters
+            
+        Returns:
+            Generated content as string
+        """
+        try:
+            # Original API call implementation remains unchanged
+            headers = {
+                "Authorization": f"Bearer {os.environ.get('XAI_API_KEY')}",
+                "Content-Type": "application/json"
+            }
+            
+            payload = {
+                "prompt": prompt,
+                **kwargs
+            }
+            
+            response = requests.post(
+                self.xai_api_url,
+                headers=headers,
+                json=payload
+            )
+            
+            response.raise_for_status()
+            
+            # Fix: Handle both dictionary and string responses
+            result = response.json()
+            
+            # If result is already a string, return it directly
+            if isinstance(result, str):
+                return result
+                
+            # If result is a dictionary, extract content field
+            # Different XAI implementations use different response formats
+            if isinstance(result, dict):
+                # Try common response formats
+                if "content" in result:
+                    return result["content"]
+                elif "text" in result:
+                    return result["text"]
+                elif "output" in result:
+                    return result["output"]
+                elif "generated_text" in result:
+                    return result["generated_text"]
+                elif "choices" in result and len(result["choices"]) > 0:
+                    choices = result["choices"]
+                    if isinstance(choices[0], dict) and "message" in choices[0]:
+                        return choices[0]["message"].get("content", "")
+                    else:
+                        return str(choices[0])
+                # If none of the common fields are found, return the stringified result
+                return str(result)
+            
+            # Handle unexpected response type
+            logger.warning(f"Unexpected response type from XAI API: {type(result)}")
+            return str(result)
+            
+        except requests.exceptions.RequestException as e:
+            logger.error(f"XAI API request failed: {e}")
+            raise
+        except ValueError as e:
+            logger.error(f"XAI API response parsing failed: {e}")
+            raise
