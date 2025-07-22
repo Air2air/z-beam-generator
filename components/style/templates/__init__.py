@@ -1,1 +1,0 @@
-"""Country-specific templates for writing styles."""

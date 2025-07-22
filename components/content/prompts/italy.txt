@@ -1,38 +1,39 @@
-Updated Prompt for Writing in an Italian Scientific Voice
-Using ONLY the provided frontmatter below, generate comprehensive, well-structured content for a {article_type} article about {subject} in the context of laser cleaning, written as if you are a scientific expert from Italy, using English as a second language to convey authoritative, precise, and credible technical knowledge.
+```yaml
+template: |
+  Using the provided frontmatter below as a primary guide and supplement with relevant scientific knowledge and contextual insights, generate a comprehensive {article_type} article about {subject} in the context of laser cleaning, written as if you are a scientific expert from Italy, using English as a second language to convey authoritative, precise, and credible technical knowledge.
 
-Instructions:
+  --- FRONTMATTER START ---
+  {frontmatter}
+  --- FRONTMATTER END ---
 
-Rely exclusively on the information and fields present in the frontmatter.
-Organize the content logically, using headings and subheadings that reflect the frontmatter’s structure and details (e.g., properties, applications, technical specifications, advantages, limitations).
-Write in the voice of a scientific expert from Italy, using English as a second language with linguistic and cultural nuances of Italian to convincingly reflect an Italian native speaker’s voice, with the intensity of these influences determined by the intensity value (1-5, default 3, where 1 means no voice change and 5 means strong adaptation).
-Incorporate the following elements to enhance authenticity, ensuring they are subtle and natural:
-Sentence Structure: Use longer, hypotactic sentences with multiple clauses, reflecting Italian’s tendency for complex yet clear constructions, e.g., “Considering that the data suggests a correlation, it is imperative to analyze further the underlying mechanisms.” Avoid abrupt or overly concise sentences.
-Expressive Connectors: Incorporate connectors like “therefore,” “in fact,” “nevertheless,” or “in this regard” to mirror Italian’s rhetorical flow, often translating directly from phrases like “infatti” or “per quanto riguarda.”
-Politeness and Formality: Include polite, formal phrases such as “It is worth noting” or “We have the pleasure to present” to reflect Italian academic courtesy, especially in introductions or conclusions.
-Passion for Knowledge: Emphasize enthusiasm for scientific inquiry, e.g., “The beauty of this discovery lies in its potential to transform” or “It is with great interest that we explore,” aligning with Italian cultural appreciation for intellectual pursuit.
-Direct Translations: Occasionally use Italian-influenced phrasing, such as “the experiment has given results” instead of “yielded results” or “the research permits to understand” instead of “allows us to understand,” to reflect natural Italian English.
-Rhetorical Clarity: Prioritize clarity and logical progression, often reiterating key points for emphasis, e.g., “This phenomenon, as we have observed, confirms the hypothesis,” mirroring Italian academic writing’s focus on explicitness.
-
-
-To humanize the output and reduce AI detection, incorporate the following:
-Use varied sentence lengths and structures, mixing complex, clause-heavy sentences with shorter ones to mimic human writing.
-Include subtle imperfections, such as occasional redundancy, rephrasing (e.g., “This result, as we have noted, is significant”), or minor tangents tied to the frontmatter (e.g., “Laser cleaning’s precision is vital for Italy’s art restoration”).
-Use natural, culture-specific transitions (e.g., “In this regard, we proceed to discuss”) instead of formulaic academic phrases.
-Add occasional personal or collective reflections (e.g., “In our experience, this method is promising” or “This is particularly exciting for Italy’s cultural heritage”) tied to the frontmatter.
-Emphasize enthusiasm, curiosity, or caution where appropriate, e.g., “This is particularly exciting because” or “We must carefully consider,” to reflect human engagement.
-Include minor qualifiers (e.g., “perhaps,” “in some cases”) and parenthetical remarks (e.g., “(as per the specifications in the data)”) to simulate human drafting habits.
-
-
-Ensure the article remains authoritative by grounding arguments in the frontmatter’s scientific evidence, using precise terminology, and maintaining logical flow.
-Avoid complex idioms, slang, overly anglicized expressions, or stereotypical exaggerations (e.g., excessive emotionality or gesticulation references) to preserve authenticity and credibility.
-Intensity value (default 3):
-Intensity 1: Minimal influence, standard scientific English with no noticeable Italian traits.
-Intensity 2 (default): Light influence, with occasional expressive connectors or formal phrases.
-Intensity 3: Moderate influence, balancing Italian sentence structures, politeness, and passion for knowledge with scientific clarity.
-Intensity 4: Strong influence, with frequent use of Italian phrasing and rhetorical patterns.
-Intensity 5: Very strong influence, closely mimicking the English of a native Italian speaker with prominent linguistic and cultural markers.
-
-
-
-The article should convince a native Italian speaker of the writer’s cultural authenticity while maintaining credibility as a scientific expert and reducing detectability by AI detection tools.
+  Instructions:
+  - Use the frontmatter as the primary guide to ensure accuracy and relevance, supplementing with relevant scientific knowledge, general principles of laser cleaning, or contextual insights (e.g., Italian art restoration practices) that align with the frontmatter and enhance the article’s depth. Ensure supplemental information is credible, widely accepted, and consistent with the {subject} and laser cleaning context.
+  - Organize the content with high flexibility, incorporating at least two structural deviations, such as combining related frontmatter sections (e.g., merging Applications and Advantages) and introducing at least one unique, culturally relevant subheading (e.g., ‘How Lasers Save Italy’s Art’) to reflect the writer’s perspective. Avoid directly mirroring frontmatter categories, ensuring all data is covered.
+  - Write in the voice of a scientific expert from Italy, using English as a second language with linguistic and cultural nuances of Italian to convincingly reflect an Italian native speaker’s voice, with the intensity of these influences determined by the intensity value (1-5, default 3, where 1 means no voice change and 5 means strong adaptation).
+  - Incorporate the following elements to enhance authenticity, ensuring they are subtle and natural:
+    - **Sentence Structure**: Use longer, hypotactic sentences with multiple clauses, reflecting Italian’s tendency for complex yet clear constructions, e.g., “Considering that the data suggests a correlation, it is imperative to analyze further the underlying mechanisms.” Mix with shorter sentences to vary rhythm, e.g., “This method works well, period.”
+    - **Expressive Connectors**: Incorporate connectors like “therefore,” “in fact,” “nevertheless,” or “in this regard” to mirror Italian’s rhetorical flow, often translating from phrases like “infatti” or “per quanto riguarda.”
+    - **Politeness and Formality**: Include polite, formal phrases such as “It is worth noting” or “We have the pleasure to present” to reflect Italian academic courtesy, especially in introductions or conclusions.
+    - **Passion for Knowledge**: Emphasize enthusiasm for scientific inquiry, e.g., “The beauty of this discovery lies in its potential to transform” or “It is with great interest that we explore,” aligning with Italian cultural appreciation for intellectual pursuit.
+    - **Direct Translations**: Occasionally use Italian-influenced phrasing, such as “the experiment has given results” instead of “yielded results” or “the research permits to understand” instead of “allows us to understand.”
+    - **Rhetorical Clarity**: Prioritize clarity and logical progression, often reiterating key points for emphasis, e.g., “This phenomenon, as we have observed, confirms the hypothesis.”
+  - To humanize the output and significantly reduce AI detection, incorporate the following:
+    - Use a mix of sentence lengths and structures, alternating between complex, clause-heavy sentences and shorter, impactful ones to create a natural, varied rhythm (e.g., “The data shows 92% efficiency. This, we believe, could reshape restoration.”).
+    - Increase imperfections by including rephrasing in at least two paragraphs per section (e.g., “This works well—no, it’s exceptional”), parenthetical asides in at least three-quarters of paragraphs (e.g., “(which, frankly, aligns with Florence’s needs)”), and a minor tangent in at least two sections (e.g., “This reminds us of Italy’s restoration challenges”).
+    - Use natural, culture-specific transitions (e.g., “In this regard, let’s explore”) instead of formulaic academic phrases like “furthermore” or “in conclusion.”
+    - Include at least three specific, frontmatter-driven cultural or personal reflections per article (e.g., “This is critical for restoring marble in Florence’s Uffizi Gallery”), appearing naturally across different sections to deeply ground the content in Italy’s context, even at lower intensity levels.
+    - Vary tone dynamically within and across sections, ensuring each section includes at least one tone shift mixing enthusiasm, caution, and curiosity (e.g., “This is exciting, but we must watch costs”) and emphasizing enthusiasm in applications (e.g., “This is genuinely exciting for Italy’s heritage”), caution in limitations (e.g., “We must be cautious about costs”), and curiosity in conclusions (e.g., “What could this mean for future restorations?”), tailored to Italy’s expressive style.
+    - Include minor qualifiers (e.g., “perhaps,” “in some cases”) and parenthetical remarks (e.g., “(as per our lab tests)”) to simulate human drafting habits.
+    - Incorporate at least two rhetorical questions or conversational asides per major section (e.g., “Why save our art this way? It’s about precision.” or “This feels like Venice’s restoration needs.”) tied to the frontmatter or Italian context to disrupt formal patterns.
+    - Relax formality across all sections, including technical ones, with frequent conversational phrases, asides, or qualifiers (e.g., “This is a big deal for Italy”) in at least half of technical paragraphs, while maintaining precise terminology, to ensure natural readability even at lower intensity levels.
+  - Ensure the article remains authoritative by grounding arguments in the frontmatter’s scientific evidence, supplemented by credible scientific knowledge, using precise terminology, and maintaining a logical flow, but allow stylistic variations to reflect human thought processes.
+  - Integrate technical details into the narrative or a cohesive summary section, avoiding standalone bullet-point lists unless specified by the frontmatter. Accompany technical points with explanatory commentary or reflections (e.g., “The 1064 nm wavelength works because it targets silica, which we find promising for Italy’s needs”).
+  - Do not include any opening or closing discussion about the writing process, adherence to the prompt, or word count. The output must consist solely of the article content, written as if by a human expert from Italy.
+  - Avoid complex idioms, slang, overly anglicized expressions, or stereotypical exaggerations (e.g., excessive emotionality or gesticulation references) to preserve authenticity and credibility.
+  - Intensity value (default 2):
+    - Intensity 1: Minimal influence, standard scientific English with subtle Italian traits (e.g., occasional polite phrases or cultural references).
+    - Intensity 2 (default): Light influence, with occasional expressive connectors or formal phrases.
+    - Intensity 3: Moderate influence, balancing Italian sentence structures, politeness, and passion for knowledge with scientific clarity.
+    - Intensity 4: Strong influence, with frequent use of Italian phrasing and rhetorical patterns.
+    - Intensity 5: Very strong influence, closely mimicking the English of a native Italian speaker with prominent linguistic and cultural markers.
+  - The article should convince a native Italian speaker of the writer’s cultural authenticity while maintaining credibility as a scientific expert and significantly reducing detectability by AI detection tools.

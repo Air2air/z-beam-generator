@@ -30,9 +30,9 @@ from utils.env_loader import load_env_variables
 ARTICLE_CONTEXT = {
     # Core article parameters
     "subject": "quartzite",
-    "article_type": "thesaurus",
+    "article_type": "material",
     "ai_provider": "deepseek",
-    "author_id": 2,
+    "author_id": 3, #1: Taiwan, 2: Italy, 3: USA, 4: Indonesia
     # Components configuration with provider settings
     "components": {
         "frontmatter": {
@@ -44,7 +44,6 @@ ARTICLE_CONTEXT = {
             "enabled": True,
             "min_words": 300,
             "max_words": 500,
-            "paragraphs": 3,
             "provider": "xai",
             "options": {"model": "grok-3-latest"},  # Specify the Grok model
         },

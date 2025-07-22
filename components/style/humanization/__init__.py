@@ -1,1 +1,0 @@
-"""Humanization techniques for more natural writing."""

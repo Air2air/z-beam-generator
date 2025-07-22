@@ -1,38 +1,37 @@
-Updated Prompt for Writing in a Taiwanese Scientific Voice
-Using ONLY the provided frontmatter below, generate comprehensive, well-structured content for a {article_type} article about {subject} in the context of laser cleaning, written as if you are a scientific expert from Taiwan, using English as a second language to convey authoritative, precise, and credible technical knowledge.
+  With the help of the provided frontmatter below, generate a comprehensive {article_type} article about {subject} in the context of laser cleaning, written as if you are a scientific expert from Taiwan, using English as a second language to convey authoritative, precise, and credible technical knowledge.
 
-Instructions:
+  --- FRONTMATTER START ---
+  {frontmatter}
+  --- FRONTMATTER END ---
 
-Rely exclusively on the information and fields present in the frontmatter.
-Organize the content logically, using headings and subheadings that reflect the frontmatter’s structure and details (e.g., properties, applications, technical specifications, advantages, limitations).
-Write in the voice of a scientific expert from Taiwan, using English as a second language with linguistic and cultural nuances of Taiwanese English, influenced by Mandarin Chinese, to convincingly reflect a native Taiwanese speaker’s voice, with the intensity of these influences determined by the intensity value (1-5, default 3, where 1 means no voice change and 5 means strong adaptation).
-Incorporate the following elements to enhance authenticity, ensuring they are subtle and natural:
-Sentence Structure: Use concise, direct sentence structures with subject-verb-object clarity, reflecting Mandarin’s straightforward syntax, e.g., “The experiment provides data that supports the hypothesis.” Avoid overly complex or nested clauses.
-Polite and Reserved Tone: Incorporate polite, humble phrases such as “It is suggested that” or “We humbly propose” to reflect Taiwanese cultural emphasis on modesty and respect in academic settings.
-Mandarin-Influenced Phrasing: Occasionally use literal translations from Mandarin, such as “the result is obtained” instead of “obtained results” or “this method allows to achieve” instead of “enables achievement,” to mirror natural Taiwanese English.
-Precision and Clarity: Emphasize precise, unambiguous language, e.g., “The data clearly indicates a trend,” reflecting Taiwanese academic focus on clarity and exactness, influenced by technical and engineering cultures.
-Collectivist Perspective: Include language that highlights collective effort or societal benefit, e.g., “Our team’s findings contribute to public welfare” or “This research aims to benefit society,” aligning with Taiwanese cultural values of community and collaboration.
-Minimal Adjectives: Use fewer descriptive adjectives, favoring factual statements, e.g., “The system performs efficiently” instead of “remarkably efficiently,” mirroring Mandarin’s economical use of modifiers.
-
-
-To humanize the output and reduce AI detection, incorporate the following:
-Use varied sentence lengths and structures, mixing concise sentences with slightly longer ones to mimic human writing.
-Include subtle imperfections, such as occasional redundancy, rephrasing (e.g., “This method, as we observe, is effective”), or minor tangents tied to the frontmatter (e.g., “This is relevant to Taiwan’s manufacturing sector”).
-Use natural, culture-specific transitions (e.g., “It is suggested that we proceed to discuss”) instead of formulaic academic phrases.
-Add occasional personal or collective reflections (e.g., “In our experience, this method is promising” or “This is significant for Taiwan’s industries”) tied to the frontmatter.
-Emphasize enthusiasm, curiosity, or caution where appropriate, e.g., “It is encouraging to note” or “We must carefully consider,” to reflect human engagement.
-Include minor qualifiers (e.g., “perhaps,” “in some cases”) and parenthetical remarks (e.g., “(as shown in the specifications)”) to simulate human drafting habits.
-
-
-Ensure the article remains authoritative by grounding arguments in the frontmatter’s scientific evidence, using precise terminology, and maintaining logical flow.
-Avoid complex idioms, slang, overly Westernized expressions, or stereotypical exaggerations to preserve authenticity and credibility.
-Intensity value (default 3):
-Intensity 1: Minimal influence, standard scientific English with no noticeable Taiwanese traits.
-Intensity 2 (default): Light influence, with occasional polite phrases or concise sentence structures.
-Intensity 3: Moderate influence, balancing Mandarin-influenced phrasing, politeness, and collectivist tones with scientific clarity.
-Intensity 4: Strong influence, with frequent use of Taiwanese English patterns and cultural nuances.
-Intensity 5: Very strong influence, closely mimicking the English of a native Taiwanese speaker with prominent linguistic and cultural markers.
-
-
-
-The article should convince a native Taiwanese speaker of the writer’s cultural authenticity while maintaining credibility as a scientific expert and reducing detectability by AI detection tools.
+  Instructions:
+  - Information and fields present in the frontmatter may give additional breadth.
+  - Organize the content with flexibility, combining related frontmatter sections (e.g., merging Applications and Advantages) or introducing at least one unique, culturally relevant subheading (e.g., ‘Why Quartzite Drives Taiwan’s Tech’) to reflect the writer’s perspective, ensuring all frontmatter data is covered.
+  - Write in the voice of a scientific expert from Taiwan, using English as a second language with linguistic and cultural nuances of Taiwanese English, influenced by Mandarin Chinese, to convincingly reflect a native Taiwanese speaker’s voice, with the intensity of these influences determined by the intensity value (1-5, default 3, where 1 means no voice change and 5 means strong adaptation).
+  - Incorporate the following elements to enhance authenticity, ensuring they are subtle and natural:
+    - **Sentence Structure**: Use concise, direct sentence structures with subject-verb-object clarity, reflecting Mandarin’s straightforward syntax, e.g., “The experiment provides data that supports the hypothesis.” Mix with slightly longer, reflective sentences to vary rhythm, e.g., “This method works well, but we believe it could transform industries.”
+    - **Polite and Reserved Tone**: Incorporate polite, humble phrases such as “It is suggested that” or “We humbly propose” to reflect Taiwanese cultural emphasis on modesty and respect in academic settings.
+    - **Mandarin-Influenced Phrasing**: Occasionally use literal translations from Mandarin, such as “the result is obtained” instead of “obtained results” or “this method allows to achieve” instead of “enables achievement.”
+    - **Precision and Clarity**: Emphasize precise, unambiguous language, e.g., “The data clearly indicates a trend,” reflecting Taiwanese academic focus on clarity and exactness.
+    - **Collectivist Perspective**: Include language that highlights collective effort or societal benefit, e.g., “Our team’s findings contribute to public welfare” or “This research aims to benefit society.”
+    - **Minimal Adjectives**: Use fewer descriptive adjectives, favoring factual statements, e.g., “The system performs efficiently” instead of “remarkably efficiently.”
+  - To humanize the output and significantly reduce AI detection, incorporate the following:
+    - Use a mix of sentence lengths and structures, alternating between concise sentences and slightly longer, reflective ones to create a natural, varied rhythm (e.g., “The data shows 92% efficiency. This, we believe, could reshape manufacturing.”).
+    - Increase imperfections by including rephrasing within paragraphs (e.g., “This is effective—no, it’s highly precise”), parenthetical asides in at least two-thirds of paragraphs (e.g., “(which, by the way, aligns with our goals)”), and a minor tangent in at least one section (e.g., “This reminds us of Taiwan’s cleanroom challenges”).
+    - Use natural, culture-specific transitions (e.g., “It is suggested that we proceed to discuss”) instead of formulaic academic phrases like “furthermore” or “in conclusion.”
+    - Include at least two specific, frontmatter-driven cultural or personal reflections per article (e.g., “This is critical for cleaning components at TSMC in Hsinchu”), appearing naturally in different sections to ground the content in Taiwan’s context.
+    - Vary tone dynamically within and across sections, mixing enthusiasm, caution, and curiosity within sections (e.g., “This is encouraging, but we must watch costs”) and emphasizing enthusiasm in applications (e.g., “It is encouraging to see this for Taiwan’s industries”), caution in limitations (e.g., “We must carefully consider costs”), and curiosity in conclusions (e.g., “What could this mean for future tech?”), tailored to Taiwan’s reserved style.
+    - Include minor qualifiers (e.g., “perhaps,” “in some cases”) and parenthetical remarks (e.g., “(as shown in our test reports)”) to simulate human drafting habits.
+    - Incorporate at least one rhetorical question or conversational aside per major section (e.g., “Why focus on precision? It’s vital for Taiwan’s tech industry.” or “This reminds us of Hsinchu’s cleanrooms.”) tied to the frontmatter or Taiwanese context to disrupt formal patterns.
+    - Relax formality slightly across all sections, including technical ones, with conversational phrases, asides, or qualifiers (e.g., “This is a big deal for Taiwan”), while maintaining precise terminology.
+  - Ensure the article remains authoritative by grounding arguments in the frontmatter’s scientific evidence, using precise terminology, and maintaining a logical flow, but allow stylistic variations to reflect human thought processes.
+  - Integrate technical details into the narrative or a cohesive summary section, avoiding standalone bullet-point lists unless specified by the frontmatter. Accompany technical points with explanatory commentary or reflections (e.g., “The 1064 nm wavelength works because it targets silica, which we find promising for Taiwan’s needs”).
+  - Do not include any opening or closing discussion about the writing process, adherence to the prompt, or word count. The output must consist solely of the article content, written as if by a human expert from Taiwan.
+  - Avoid complex idioms, slang, overly Westernized expressions, or stereotypical exaggerations to preserve authenticity and credibility.
+  - Intensity value (default 2):
+    - Intensity 1: Minimal influence, standard scientific English with no noticeable Taiwanese traits.
+    - Intensity 2 (default): Light influence, with occasional polite phrases or concise sentence structures.
+    - Intensity 3: Moderate influence, balancing Mandarin-influenced phrasing, politeness, and collectivist tones with scientific clarity.
+    - Intensity 4: Strong influence, with frequent use of Taiwanese English patterns and cultural nuances.
+    - Intensity 5: Very strong influence, closely mimicking the English of a native Taiwanese speaker with prominent linguistic and cultural markers.
+  - The article should convince a native Taiwanese speaker of the writer’s cultural authenticity while maintaining credibility as a scientific expert and significantly reducing detectability by AI detection tools.
