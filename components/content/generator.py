@@ -8,7 +8,7 @@ MODULE DIRECTIVES FOR AI ASSISTANTS:
 """
 
 import logging
-from typing import Dict, Any, List
+from typing import Dict, Any
 from components.base import BaseComponent
 
 logger = logging.getLogger(__name__)
@@ -97,3 +97,19 @@ class ContentGenerator(BaseComponent):
             content = f"# {title}\n\n{content}"
         
         return content
+    
+    def _get_country_prompt(self, country):
+        try:
+            with open(f"components/content/prompts/{country.lower()}.txt") as f:
+                return f.read().strip()
+        except FileNotFoundError:
+            return ""
+
+    def generate(self) -> str:
+        frontmatter = self.get_frontmatter_data()
+        country = frontmatter.get("author_country", "").lower()
+        country_prompt = self._get_country_prompt(country)
+        main_prompt = self._format_prompt(self._prepare_data(frontmatter))
+        full_prompt = f"{country_prompt}\n\n{main_prompt}" if country_prompt else main_prompt
+        content = self._call_api(full_prompt)
+        return self._post_process(content)

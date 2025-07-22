@@ -12,6 +12,7 @@ A schema-driven content generation system for laser cleaning technology articles
        "article_type": "material",
        "output_dir": "output",
        "ai_provider": "openai"
+       "content_word_count":500
    }
 ```
 

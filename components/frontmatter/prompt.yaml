@@ -81,7 +81,12 @@ template: |
   name: "{subject}"
   description: "150–200 word technical summary of {subject} in laser cleaning."
   website: "https://www.z-beam.com/[subject-with-dashes]-laser-cleaning"
+  min_words: {min_words}        # <-- Add this line
+  max_words: {max_words}        # <-- Add this line
   author:
+    author_id: {author_id}
+    author_name: "{author_name}"
+    author_country: "{author_country}"
     name: "Laser Technology Institute"
     credentials: "Industry Leader in Laser Cleaning Technology"
   keywords:

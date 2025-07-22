@@ -1,17 +1,19 @@
 name: "JSON-LD Generator"
 description: "Generates concise, Schema.org-compliant JSON-LD for laser cleaning articles, optimized for SEO and E-A-T."
-version: "3.0.1"
+version: "3.0.2"
 template: |
   Generate CONCISE, Schema.org-compliant JSON-LD for a {article_type} article about {subject} IN THE CONTEXT OF LASER CLEANING TECHNOLOGY, using ALL provided frontmatter fields.
 
-  🚨 CRITICAL CONTEXT: This is about "{表情}subject}" in the professional laser cleaning industry context.
+  🚨 CRITICAL CONTEXT: This is about "{subject}" in the professional laser cleaning industry context.
 
   🚨 CRITICAL: Map ALL frontmatter fields to VALID Schema.org properties:
   {article_type == 'thesaurus' ? '
   - name → name
   - description → description
   - website → url
-  - author.name → author.name
+  - author.author_id → author.identifier
+  - author.author_name → author.name
+  - author.author_country → author.nationality
   - author.credentials → author.description
   - keywords → keywords
   - tags → about.category
@@ -28,7 +30,9 @@ template: |
   - name → name
   - description → description
   - website → url
-  - author.name → author.name
+  - author.author_id → author.identifier
+  - author.author_name → author.name
+  - author.author_country → author.nationality
   - author.credentials → author.description
   - keywords → keywords
   - tags → about.category
@@ -47,7 +51,9 @@ template: |
   - name → headline
   - description → description
   - website → url
-  - author.name → author.name
+  - author.author_id → author.identifier
+  - author.author_name → author.name
+  - author.author_country → author.nationality
   - author.credentials → author.description
   - keywords → keywords
   - tags → about.category
@@ -63,6 +69,11 @@ template: |
 
   🚨 SCHEMA.ORG COMPLIANCE:
   - Use ONLY valid Schema.org properties.
+  - For author, include:
+    - "identifier" (from author_id)
+    - "name" (from author_name)
+    - "nationality" (from author_country)
+    - "description" (from author.credentials)
   - Ensure facilities reflect California locations only.
   - Use https://www.z-beam.com/[subject]-laser-cleaning for URLs.
   - Output 1,000–2,000 characters.

@@ -9,6 +9,7 @@ MODULE DIRECTIVES FOR AI ASSISTANTS:
 
 import logging
 import yaml
+import json
 from typing import Dict, Any
 from components.base import BaseComponent
 
@@ -16,25 +17,38 @@ logger = logging.getLogger(__name__)
 
 class FrontmatterGenerator(BaseComponent):
     """Generates YAML frontmatter for articles."""
-    
+
     def generate(self) -> str:
         """Generate YAML frontmatter based on subject."""
         try:
-            # For frontmatter generator, we don't use existing frontmatter
-            # since we're generating the frontmatter itself
-            
             # 1. Prepare data for prompt
             prompt_data = self._prepare_data({})
-            
+
+            # --- BEGIN AUTHOR LOOKUP AND INJECTION ---
+            author_id = self.context.get("author_id")
+            with open("components/author/authors.json") as f:
+                authors = json.load(f)
+            author = next((a for a in authors if a["id"] == author_id), None)
+            if author:
+                prompt_data["author_id"] = author["id"]
+                prompt_data["author_name"] = author["name"]
+                prompt_data["author_country"] = author["country"]
+            # --- END AUTHOR LOOKUP AND INJECTION ---
+
+            # After preparing prompt_data and before formatting the prompt:
+            content_cfg = self.context.get("components", {}).get("content", {})
+            prompt_data["min_words"] = int(content_cfg.get("min_words", 0))
+            prompt_data["max_words"] = int(content_cfg.get("max_words", 0))
+
             # 2. Format prompt
             prompt = self._format_prompt(prompt_data)
-            
+
             # 3. Call API
             content = self._call_api(prompt)
-            
+
             # 4. Post-process content
             return self._post_process(content)
-            
+
         except Exception as e:
             logger.error(f"Error generating frontmatter: {str(e)}")
             return self._create_error_markdown(str(e))

@@ -58,6 +58,24 @@
         "type": "object",
         "required": true,
         "properties": {
+          "author_id": {
+            "type": "integer",
+            "required": true,
+            "description": "Unique author identifier",
+            "example": 2
+          },
+          "author_name": {
+            "type": "string",
+            "required": true,
+            "description": "Author's full name",
+            "example": "Anna Rossi"
+          },
+          "author_country": {
+            "type": "string",
+            "required": true,
+            "description": "Country of the author",
+            "example": "Italy"
+          },
           "name": {
             "type": "string",
             "required": true,

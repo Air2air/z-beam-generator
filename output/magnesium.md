@@ -1,188 +1,198 @@
 <!-- filepath: output/magnesium.md -->
 ---
 applications:
-- description: Precision laser cleaning of magnesium alloy aircraft parts removes
-    oxidation without compromising fatigue resistance. Z-Beam's Santa Clara facility
-    uses pulsed 1064nm lasers to maintain FAA-compliant surface profiles, achieving
-    99.7% contaminant removal at 0.03mm depth control.
-  name: Aerospace Component Restoration
-- description: "Laser systems eliminate release agents and carbon buildup from magnesium\
-    \ die casts in Southern California manufacturing plants. Our 500W fiber lasers\
-    \ process at 20mm/s with 50\xB5m spot size, reducing downtime by 60% compared\
-    \ to chemical methods."
-  name: Automotive Die Cast Maintenance
-- description: San Diego-based biomedical facilities utilize our cold laser ablation
-    for magnesium implants. The process achieves ISO 13485-grade surface purity while
-    preserving biodegradable properties critical for orthopedic applications.
-  name: Medical Device Sterilization
+- description: "Pulsed 1064nm lasers remove magnesium oxide layers from turbine blades\
+    \ and fuselage parts at 150W\u2013300W, preserving base material integrity. Controlled\
+    \ pulse durations (20\u2013100ns) prevent heat accumulation that could ignite\
+    \ thin sections."
+  name: Aerospace component refurbishment
+- description: "Q-switched Nd:YAG systems strip coatings from magnesium alloy wheels\
+    \ using 50W\u2013200W power with 10\u201330\xB5m spot sizes. Nitrogen assist gas\
+    \ suppresses combustion risks during high-volume production line processing."
+  name: Automotive wheel cleaning
+- description: "Low-power (20\u201350W) fiber lasers clean magnesium heat sinks for\
+    \ semiconductor packages without warping delicate fins. Wavelength tuning between\
+    \ 1020\u20131080nm optimizes oxide removal versus substrate reflectivity."
+  name: Electronics heat sink preparation
 author:
+  author_country: Italy
+  author_id: 2
+  author_name: Mario Jordan
   credentials: Industry Leader in Laser Cleaning Technology
   name: Laser Technology Institute
-countries:
-- United States
+californiaFacilities:
+- capabilities: Dedicated flammable metals lab with 2000W laser array for magnesium
+    process development. Serves aerospace clients in Southern California.
+  location: San Diego, California
+  name: Z-Beam San Diego R&D Center
+- capabilities: Specializes in high-precision magnesium cleaning for electronics manufacturers,
+    adjacent to Palo Alto and Sunnyvale tech hubs.
+  location: Santa Clara County, California
+  name: Silicon Valley Prototyping Lab
 description: Magnesium's high reactivity and low density make it ideal for laser cleaning
-  applications, particularly in aerospace and automotive industries. Laser systems
-  effectively remove oxides and contaminants without damaging the base material. Optimal
-  wavelengths (1064nm) prevent excessive heat buildup, preserving structural integrity.
-  Z-Beam's California-based facilities specialize in precision laser ablation for
-  magnesium components.
-facilities:
-- description: Our 15,000 sq ft Santa Clara facility specializes in high-volume magnesium
-    laser cleaning for tech and aerospace sectors. Equipped with 10 Class IV laser
-    systems achieving 0.01mm precision across 2-ton capacity work envelopes.
-  name: Z-Beam Silicon Valley Innovation Center
-- description: Located in San Diego, this center focuses on medical and automotive
-    magnesium applications. Features climate-controlled ablation chambers and real-time
-    spectroscopy for quality assurance during laser processing.
-  name: Southern California Processing Hub
+  applications requiring precision oxide removal without substrate damage. Its 1064nm
+  absorption peak aligns with common industrial lasers, enabling efficient surface
+  preparation for aerospace and automotive components. Laser parameters must be carefully
+  tuned to avoid ignition risks inherent to magnesium's flammability.
 keywords:
-- magnesium oxide removal
-- laser ablation thresholds
-- 1064nm wavelength optimization
-- aerospace component cleaning
-- non-contact surface preparation
-- reactive metal laser processing
-- pulsed fiber laser systems
-- contaminant vaporization
-- microstructure preservation
-- industrial descaling solutions
+- magnesium oxide ablation
+- 1064nm laser absorption
+- flammable metal cleaning
+- aerospace surface prep
+- pulsed fiber laser
+- reactive metal etching
+- non-contact descaling
+- low-melting-point alloys
+- laser-induced ignition mitigation
+- high-speed oxide removal
+- thin-film preservation
+- Nd:YAG compatibility
+max_words: 500
+min_words: 300
 name: magnesium
-region:
-  broaderRegion: Silicon Valley
-  cities:
-  - San Jose
-  - Sunnyvale
-  county: Santa Clara County
-  state: California
+safetyConsiderations:
+- Class 1 laser enclosure mandatory
+- Explosion-proof fume extraction
+- Real-time thermal monitoring
+- NFPA 484 compliance
 tags:
-- magnesium-cleaning
-- laser-ablation
+- metal-cleaning
+- aerospace-lasers
 - oxide-removal
-- aerospace-materials
-- non-destructive-cleaning
+- reactive-metals
+- non-contact-cleaning
 technicalSpecifications:
-  depthControl: "0.01\u20130.5mm"
-  laserType: Pulsed fiber laser (Hafnium-doped)
-  powerRange: "50\u2013500W (modulated)"
-  processingSpeed: "5\u201350mm/s"
+  assistGas: Nitrogen or argon required
+  laserType: Pulsed Nd:YAG / Fiber
+  materialThickness: "0.5\u201320mm optimal"
+  powerRange: "20\u2013500W (pulsed)"
   pulseDuration: "10\u2013200ns"
-  repetitionRate: "20\u2013100kHz"
-  spotSize: "50\u2013200\xB5m adjustable"
-  wavelength: "1064nm \xB12nm"
+  removalRate: "0.5\u20133.5 cm\xB2/s"
+  spotSize: "10\u2013100\xB5m"
+  wavelength: "1064nm \xB110nm"
 title: Magnesium
 website: https://www.z-beam.com/magnesium-laser-cleaning
 ---
 
-# Magnesium: A Versatile Metal for Industrial Innovation
+# Magnesium: A Lightweight, Reactive Metal with Diverse Applications
 
-Magnesium, often referred to as the lightest structural metal, plays a critical role in various industries due to its unique combination of properties. With a high strength-to-weight ratio, excellent reactivity, and low density, magnesium is a material of choice in applications ranging from aerospace to automotive manufacturing. This article explores the characteristics, applications, and technical aspects of magnesium, with a special focus on advanced processing techniques like laser cleaning for maintaining its integrity in high-performance environments.
+Magnesium, a silvery-white alkaline earth metal, is the eighth most abundant element in the Earth's crust and plays a critical role in both industrial applications and biological systems. Known for its low density, high reactivity, and unique physical properties, magnesium is a material of choice in industries ranging from aerospace to automotive manufacturing. This article delves into the key characteristics, applications, technical specifications, advantages, and limitations of magnesium, with a particular focus on its relevance in specialized processes like laser cleaning for oxide removal.
+
+---
 
 ## Key Characteristics and Properties of Magnesium
 
-Magnesium (Mg), with an atomic number of 12, is an alkaline earth metal known for its remarkable physical and chemical properties. Below are some of the key characteristics that make magnesium stand out:
+Magnesium (Mg), with an atomic number of 12, is a lightweight metal that exhibits a unique combination of physical and chemical properties, making it suitable for a wide range of applications.
 
 ### Physical Properties
-- **Low Density**: At 1.74 g/cm³, magnesium is approximately two-thirds the density of aluminum and one-fourth that of steel, making it the lightest structural metal. This property is crucial for weight-sensitive applications.
-- **High Strength-to-Weight Ratio**: Despite its low density, magnesium offers impressive strength, especially when alloyed with elements like aluminum, zinc, or rare earth metals.
-- **Good Thermal Conductivity**: Magnesium conducts heat efficiently, which is beneficial in applications requiring heat dissipation.
-- **High Reactivity**: Magnesium is highly reactive, particularly with oxygen, forming a thin oxide layer (magnesium oxide, MgO) on its surface. While this layer offers some corrosion resistance, it can also complicate processing and maintenance.
+- **Density**: Magnesium is one of the lightest structural metals, with a density of approximately 1.74 g/cm³, about two-thirds that of aluminum and one-quarter that of steel. This low density makes it ideal for weight-sensitive applications.
+- **Melting and Boiling Points**: It has a relatively low melting point of 650°C (1,202°F) and a boiling point of 1,091°C (1,996°F), which impacts its use in high-temperature environments.
+- **Appearance**: Magnesium has a shiny, silvery-white appearance, though it quickly forms a thin layer of magnesium oxide (MgO) when exposed to air, which dulls its surface but provides some corrosion resistance.
+- **Thermal and Electrical Conductivity**: Magnesium is a good conductor of heat and electricity, though not as efficient as copper or aluminum.
 
 ### Chemical Properties
-- **Reactivity with Oxygen and Water**: Magnesium readily forms magnesium oxide when exposed to air, and it can ignite in powdered form, posing challenges for handling and storage.
-- **Corrosion Susceptibility**: In humid or saline environments, magnesium is prone to galvanic corrosion, especially when in contact with other metals. Protective coatings or alloying are often required to mitigate this.
+- **Reactivity**: Magnesium is highly reactive, especially with oxygen, water, and acids. It readily forms magnesium oxide (MgO) in the presence of air, which can complicate processing and storage.
+- **Flammability**: Magnesium is flammable, particularly in powder or thin strip form, and burns with an intense white flame at high temperatures. This property necessitates careful handling to mitigate laser-induced ignition risks during processes like laser cleaning.
+- **Laser Absorption**: Magnesium exhibits a strong absorption peak at 1064 nm, aligning with the wavelength of common industrial lasers such as Nd:YAG and pulsed fiber lasers. This property enables efficient laser-based surface preparation and oxide ablation.
 
-### Mechanical Properties
-- **Ductility and Machinability**: Magnesium is relatively soft and can be easily machined, cast, or forged, though its hexagonal close-packed (HCP) crystal structure limits its ductility at room temperature compared to other metals like aluminum.
+---
 
 ## Common Applications and Uses of Magnesium
 
-Magnesium's unique properties make it indispensable across a variety of industries. Its applications are often driven by the need for lightweight, durable materials.
+Magnesium’s unique combination of low density, high strength-to-weight ratio, and reactivity makes it a valuable material across various industries.
 
-### Aerospace Industry
-In aerospace, magnesium alloys are used for components like aircraft frames, engine parts, and helicopter rotor hubs. The low density of magnesium reduces overall aircraft weight, improving fuel efficiency and performance.
-
-### Automotive Industry
-Magnesium is widely used in automotive manufacturing for parts such as steering wheels, engine blocks, and transmission casings. Its lightweight nature contributes to better fuel economy and reduced emissions.
+### Aerospace and Automotive Industries
+- Magnesium alloys are widely used in aerospace and automotive components, such as engine parts, transmission casings, and structural frames, due to their lightweight nature, which improves fuel efficiency and performance.
+- **Surface Preparation**: Laser cleaning is often employed for magnesium components to remove oxides and contaminants without damaging the substrate. This non-contact descaling method is critical for maintaining the integrity of thin-film coatings and ensuring proper adhesion in subsequent processes.
 
 ### Electronics and Consumer Goods
-Magnesium alloys are found in laptop casings, camera bodies, and other portable devices due to their lightweight and heat dissipation properties.
+- Magnesium is used in the production of lightweight casings for laptops, cameras, and mobile phones, where weight reduction and durability are essential.
+- Its thermal conductivity also makes it suitable for heat sinks in electronic devices.
 
 ### Medical Applications
-Magnesium’s biocompatibility and biodegradability make it suitable for medical implants, such as stents and bone screws, where it can safely dissolve in the body over time.
+- Magnesium is biocompatible and biodegradable, making it a promising material for medical implants such as stents and bone screws. It naturally degrades in the body over time, reducing the need for secondary surgeries.
 
-### Industrial Processing and Cleaning
-Magnesium components often require surface preparation and cleaning to remove oxides and contaminants. Advanced techniques like laser cleaning, particularly using pulsed fiber laser systems, are employed for non-contact surface preparation. This method is ideal for reactive metals like magnesium, as it avoids mechanical damage and preserves the material's microstructure.
+### Metallurgical and Chemical Applications
+- Magnesium is used as a reducing agent in the production of other metals, such as titanium and uranium.
+- It is a key component in pyrotechnics and flares due to its bright, white flame when ignited.
 
-## Technical Specifications and Processing Considerations
+### Laser Cleaning and Surface Treatment
+- Magnesium’s high reactivity and tendency to form oxide layers necessitate advanced cleaning techniques. Laser cleaning, particularly with 1064 nm pulsed fiber lasers or Nd:YAG systems, offers high-speed oxide removal while preserving the underlying material. This is especially valuable in aerospace surface prep, where precision and minimal substrate damage are critical.
 
-When working with magnesium, understanding its technical specifications and processing requirements is essential for achieving optimal results, especially in precision applications.
+---
+
+## Technical Specifications for Magnesium in Industrial Applications
+
+When working with magnesium, particularly in processes like laser cleaning, understanding its technical specifications and behavior under specific conditions is essential for safety and efficiency.
 
 ### Material Specifications
-- **Melting Point**: 650°C (1,202°F)
-- **Boiling Point**: 1,091°C (1,996°F)
-- **Tensile Strength**: Approximately 160-250 MPa for pure magnesium; higher for alloys.
-- **Thermal Conductivity**: 156 W/m·K
-- **Electrical Conductivity**: 22.4% IACS (International Annealed Copper Standard)
+- **Purity Levels**: Commercial magnesium is available in purities ranging from 99.8% to 99.98%, depending on the intended application. Higher purity levels are often required for medical and electronic uses.
+- **Alloy Variants**: Magnesium is frequently alloyed with aluminum, zinc, or rare earth elements to enhance its mechanical properties, corrosion resistance, and thermal stability. Common alloys include AZ31, AZ91, and AM60.
+- **Surface Oxide Layer**: Magnesium oxide (MgO) forms a thin protective layer on the metal’s surface but can interfere with bonding or coating processes, necessitating removal via techniques like laser ablation.
 
-### Laser Cleaning for Magnesium
-Laser cleaning, or laser ablation, is a cutting-edge technique for magnesium oxide removal and contaminant vaporization. This non-contact method is particularly effective for magnesium due to its high reactivity and sensitivity to traditional mechanical cleaning methods. Key considerations include:
+### Laser Cleaning Parameters
+- **Wavelength Compatibility**: Magnesium’s absorption peak at 1064 nm makes it highly compatible with Nd:YAG and pulsed fiber lasers for oxide removal and surface preparation.
+- **Power and Pulse Settings**: Laser parameters must be carefully tuned to avoid overheating, which can lead to ignition due to magnesium’s flammability. Typical settings include low to medium power (10-50 W) and short pulse durations (nanoseconds to microseconds) to achieve high-speed oxide removal without thermal damage.
+- **Safety Considerations**: Laser-induced ignition mitigation strategies, such as inert gas shielding (e.g., argon or nitrogen) and real-time temperature monitoring, are critical when processing magnesium.
 
-- **Optimal Wavelength**: A 1064nm wavelength, commonly used in Nd:YAG or fiber lasers, is ideal for magnesium processing. This wavelength minimizes excessive heat buildup, preventing thermal damage to the base material.
-- **Laser Ablation Thresholds**: The energy density must be carefully controlled to remove surface contaminants without affecting the underlying magnesium. Typical thresholds range from 1-5 J/cm² depending on the oxide layer thickness.
-- **Pulsed Fiber Laser Systems**: These systems deliver short, high-energy pulses to vaporize contaminants while preserving microstructure integrity. Z-Beam, a California-based leader in laser technology, specializes in precision laser ablation for magnesium components in aerospace and automotive applications.
+---
 
 ## Advantages of Magnesium
 
-Magnesium offers numerous benefits that make it a preferred material in high-performance industries:
+Magnesium offers several benefits that make it a preferred material in many applications, particularly where weight, strength, and reactivity are key considerations.
 
-- **Lightweight Design**: Its low density enables significant weight reduction in structural components, enhancing efficiency in transportation and aerospace applications.
-- **High Strength**: When alloyed, magnesium provides excellent mechanical strength, comparable to heavier materials like aluminum.
+- **Lightweight**: Its low density provides a significant weight advantage over other structural metals like steel and aluminum, making it ideal for aerospace and automotive applications.
+- **High Strength-to-Weight Ratio**: Magnesium alloys offer excellent mechanical properties relative to their weight, allowing for strong yet lightweight designs.
+- **Efficient Laser Processing**: The metal’s strong absorption at 1064 nm enables precise and efficient laser cleaning, particularly for magnesium oxide ablation and reactive metal etching.
+- **Biocompatibility**: In medical applications, magnesium’s ability to biodegrade safely in the human body is a major advantage for temporary implants.
 - **Recyclability**: Magnesium is highly recyclable, supporting sustainable manufacturing practices.
-- **Thermal and Electrical Conductivity**: Its ability to conduct heat and electricity makes it suitable for electronic and thermal management applications.
+
+---
 
 ## Limitations of Magnesium
 
-Despite its advantages, magnesium has certain limitations that must be addressed in design and processing:
+Despite its many advantages, magnesium has certain limitations that must be addressed in design, processing, and application.
 
-- **High Reactivity**: Magnesium’s tendency to react with oxygen and water poses risks of ignition and requires careful handling, especially during machining or grinding.
-- **Corrosion Susceptibility**: Without protective coatings or alloying, magnesium is prone to corrosion, particularly in harsh environments.
-- **Limited Ductility**: Its HCP crystal structure restricts formability at room temperature, often necessitating elevated temperatures for shaping.
-- **Cost**: While abundant in nature, the extraction and processing of magnesium can be energy-intensive, leading to higher costs compared to some alternative materials.
+- **High Reactivity and Flammability**: Magnesium’s tendency to react with oxygen and water, coupled with its flammability, poses safety risks during handling and processing. Special precautions are required to prevent ignition, especially in laser-based applications.
+- **Corrosion Susceptibility**: While the magnesium oxide layer provides some protection, it is not as robust as the oxide layers on metals like aluminum, making magnesium prone to corrosion in humid or saline environments.
+- **Low Melting Point**: Its relatively low melting point limits its use in high-temperature applications compared to other metals like titanium or steel.
+- **Cost of Processing**: Magnesium and its alloys can be more expensive to process due to the need for specialized equipment and safety measures, particularly in applications like laser cleaning or reactive metal etching.
+- **Brittleness in Pure Form**: Pure magnesium is relatively brittle and has lower strength compared to its alloys, necessitating alloying for most structural applications.
+
+---
 
 ## Conclusion
 
-Magnesium stands as a cornerstone material in modern engineering, offering a unique blend of low density, high strength, and versatility. From aerospace component cleaning to automotive lightweighting, its applications continue to expand with advancements in processing technologies like laser cleaning. Techniques such as 1064nm wavelength optimization and pulsed fiber laser systems, as pioneered by companies like Z-Beam, ensure that magnesium components maintain their structural integrity while meeting stringent industry standards. Despite challenges like corrosion and reactivity, magnesium’s benefits make it an invaluable asset for innovative industrial solutions, driving efficiency and sustainability across sectors. 
-
-Whether you're exploring magnesium for aerospace designs, automotive innovations, or industrial descaling solutions, understanding its properties and processing requirements is key to unlocking its full potential.
+Magnesium is a versatile and valuable material with a unique combination of low density, high reactivity, and compatibility with advanced processing techniques like laser cleaning. Its applications span industries such as aerospace, automotive, electronics, and medicine, where its lightweight nature and strength-to-weight ratio are critical. However, challenges such as flammability, corrosion susceptibility, and the need for precise handling must be carefully managed, particularly in processes like laser-induced oxide removal at 1064 nm wavelengths. By leveraging technologies such as pulsed fiber lasers and implementing safety measures for ignition mitigation, industries can harness magnesium’s full potential while minimizing risks. Whether used in high-speed oxide removal for aerospace surface prep or as a biodegradable implant in medical applications, magnesium remains a material of significant technical and practical importance.
 ## Key Technical Points
 
-- **Optimized 1064nm wavelength** effectively removes **magnesium oxide layers** while minimizing thermal damage, crucial for **aerospace component cleaning** precision.  
-- **Laser ablation thresholds** for magnesium must be carefully calibrated to avoid surface pitting or excessive **non-contact material removal**.  
-- **Non-destructive cleaning** is achieved by controlling pulse duration and fluence, preserving underlying **aerospace-material** integrity during **oxide-removal**.  
-- **Non-contact surface preparation** with lasers eliminates chemical waste, ideal for **magnesium-cleaning** in environmentally sensitive or high-precision applications.  
-- **Laser-ablation** parameters must account for magnesium's high reactivity to prevent re-oxidation post-cleaning, ensuring long-term surface stability.
+- **Magnesium oxide ablation** with **1064nm lasers** efficiently removes surface contaminants while minimizing heat input, critical for **flammable metal cleaning** safety.  
+- **Pulsed fiber lasers** enable **non-contact-cleaning** of magnesium aerospace components, reducing mechanical stress and preserving substrate integrity.  
+- Laser parameters must be optimized to avoid excessive **oxide-removal** depth, which can compromise magnesium's corrosion resistance.  
+- **Reactive metals** like magnesium require inert gas shielding during laser cleaning to prevent re-oxidation and ensure surface quality.  
+- **Aerospace-lasers** excel in precision **surface prep** for magnesium alloys, eliminating adhesives/paints without chemical waste or abrasive damage.
 
 ## Technical Specifications
 
 | Property | Value |
 |----------|----------|
-| Depth Control | 0.01–0.5mm |
-| Laser Type | Pulsed fiber laser (Hafnium-doped) |
-| Power Range | 50–500W (modulated) |
-| Processing Speed | 5–50mm/s |
+| Assist Gas | Nitrogen or argon required |
+| Laser Type | Pulsed Nd:YAG / Fiber |
+| Material Thickness | 0.5–20mm optimal |
+| Power Range | 20–500W (pulsed) |
 | Pulse Duration | 10–200ns |
-| Repetition Rate | 20–100kHz |
-| Spot Size | 50–200µm adjustable |
-| Wavelength | 1064nm ±2nm |
+| Removal Rate | 0.5–3.5 cm²/s |
+| Spot Size | 10–100µm |
+| Wavelength | 1064nm ±10nm |
 ## Tags
 
-<span class="tag">magnesium-cleaning</span> <span class="tag">laser-ablation</span> <span class="tag">oxide-removal</span> <span class="tag">aerospace-materials</span> <span class="tag">non-destructive-cleaning</span> <span class="tag">magnesium oxide removal</span> <span class="tag">laser ablation thresholds</span> <span class="tag">1064nm wavelength optimization</span> <span class="tag">aerospace component cleaning</span> <span class="tag">non-contact surface preparation</span> <span class="tag">reactive metal laser processing</span> <span class="tag">pulsed fiber laser systems</span> <span class="tag">contaminant vaporization</span> <span class="tag">microstructure preservation</span> <span class="tag">industrial descaling solutions</span>
+<span class="tag">metal-cleaning</span> <span class="tag">aerospace-lasers</span> <span class="tag">oxide-removal</span> <span class="tag">reactive-metals</span> <span class="tag">non-contact-cleaning</span> <span class="tag">magnesium oxide ablation</span> <span class="tag">1064nm laser absorption</span> <span class="tag">flammable metal cleaning</span> <span class="tag">aerospace surface prep</span> <span class="tag">pulsed fiber laser</span> <span class="tag">reactive metal etching</span> <span class="tag">non-contact descaling</span> <span class="tag">low-melting-point alloys</span> <span class="tag">laser-induced ignition mitigation</span> <span class="tag">high-speed oxide removal</span> <span class="tag">thin-film preservation</span> <span class="tag">Nd:YAG compatibility</span>
 ```json
 {
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "Magnesium",
-  "description": "Magnesium's high reactivity and low density make it ideal for laser cleaning applications, particularly in aerospace and automotive industries. Laser systems effectively remove oxides and contaminants without damaging the base material. Optimal wavelengths (1064nm) prevent excessive heat buildup, preserving structural integrity. Z-Beam's California-based facilities specialize in precision laser ablation for magnesium components.",
+  "description": "Magnesium's high reactivity and low density make it ideal for laser cleaning applications requiring precision oxide removal without substrate damage. Its 1064nm absorption peak aligns with common industrial lasers, enabling efficient surface preparation for aerospace and automotive components. Laser parameters must be carefully tuned to avoid ignition risks inherent to magnesium's flammability.",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://example.com/magnesium"
@@ -193,16 +203,18 @@ Whether you're exploring magnesium for aerospace designs, automotive innovations
     "url": ""
   },
   "keywords": [
-    "magnesium oxide removal",
-    "laser ablation thresholds",
-    "1064nm wavelength optimization",
-    "aerospace component cleaning",
-    "non-contact surface preparation",
-    "reactive metal laser processing",
-    "pulsed fiber laser systems",
-    "contaminant vaporization",
-    "microstructure preservation",
-    "industrial descaling solutions"
+    "magnesium oxide ablation",
+    "1064nm laser absorption",
+    "flammable metal cleaning",
+    "aerospace surface prep",
+    "pulsed fiber laser",
+    "reactive metal etching",
+    "non-contact descaling",
+    "low-melting-point alloys",
+    "laser-induced ignition mitigation",
+    "high-speed oxide removal",
+    "thin-film preservation",
+    "Nd:YAG compatibility"
   ]
 }
 ```

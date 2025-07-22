@@ -57,18 +57,15 @@ class JsonLdGenerator(BaseComponent):
         
         # Add author if available
         if "author" in frontmatter_data:
-            author = frontmatter_data["author"]
-            if isinstance(author, dict):
-                jsonld["author"] = {
-                    "@type": "Person",
-                    "name": author.get("name", ""),
-                    "url": author.get("url", "")
-                }
-            else:
-                jsonld["author"] = {
-                    "@type": "Person",
-                    "name": str(author)
-                }
+            author = frontmatter_data.get("author", {})
+            jsonld["author"] = {
+                "@type": "Person",
+                "identifier": author.get("author_id"),
+                "name": author.get("author_name"),
+                "nationality": author.get("author_country"),
+                "description": author.get("credentials"),
+                "affiliation": author.get("name")
+            }
         
         # Add dates if available
         if "datePublished" in frontmatter_data:

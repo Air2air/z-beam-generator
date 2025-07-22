@@ -32,6 +32,7 @@ ARTICLE_CONTEXT = {
     "subject": "magnesium",
     "article_type": "material",
     "ai_provider": "deepseek",
+    "author_id": 2,
     # Components configuration with provider settings
     "components": {
         "frontmatter": {
