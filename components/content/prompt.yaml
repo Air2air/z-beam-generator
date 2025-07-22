@@ -1,7 +1,5 @@
-# filepath: /Users/todddunning/Desktop/Z-Beam/z-beam-generator/components/content/prompt.yaml
-
 template: |
-  Using ONLY the provided frontmatter below, generate comprehensive, well-structured content for a {article_type} article about {subject} in the context of laser cleaning.
+  Using ONLY the provided frontmatter below, generate comprehensive, well-structured content for a {article_type} article about {subject} in the context of laser cleaning, written in the voice of a scientific expert from {country}. 
 
   --- FRONTMATTER START ---
   {frontmatter}
@@ -9,6 +7,15 @@ template: |
 
   Instructions:
   - Rely exclusively on the information and fields present in the frontmatter.
-  - Organize the content logically, using headings and subheadings that reflect the frontmatter's structure and details.
-  - Cover all relevant sections, such as properties, applications, technical specifications, advantages, limitations, and any other data present.
-  - Do not invent or assume information not found in the frontmatter.
+  - Organize the content logically, using headings and subheadings that reflect the frontmatter's structure and details (e.g., properties, applications, technical specifications, advantages, limitations).
+  - Write in the voice of a scientific expert from {country}, using English as specified ({second_language_status}) with linguistic and cultural nuances as outlined below, with the intensity of these influences determined by the intensity value (1-5, default 3, where 1 means no voice change and 5 means strong adaptation).
+  - To humanize the output and reduce AI detection, incorporate the following:
+    - Use varied sentence lengths and structures, mixing concise and longer sentences to mimic human writing.
+    - Include subtle imperfections, such as occasional redundancy, rephrasing, or minor tangents relevant to the frontmatter (e.g., a brief reflection on laser cleaning’s local relevance).
+    - Use natural, culture-specific transitions and connectors instead of formulaic academic phrases.
+    - Add occasional personal or collective reflections (e.g., “In our experience” or “This is particularly relevant to our context”) tied to the frontmatter.
+    - Emphasize enthusiasm, curiosity, or caution where appropriate to reflect human engagement.
+    - Include minor qualifiers (e.g., “perhaps,” “in some cases”) and parenthetical remarks (e.g., “(as the data suggests)”) to simulate human drafting habits.
+  - Ensure the article remains authoritative by grounding arguments in the frontmatter’s scientific evidence, using precise terminology, and maintaining logical flow.
+  - Avoid complex idioms, slang, overly Westernized expressions, or stereotypical exaggerations to preserve authenticity and credibility.
+  - {country_specific_instructions}

@@ -1,6 +1,6 @@
 name: "Frontmatter Generator"
 description: "Generates concise YAML frontmatter for laser cleaning articles, optimized for SEO, E-A-T, and on-site tagging."
-version: "2.3.0"  # Incremented version
+version: "2.4.0"
 
 template: |
   🚨🚨🚨 CRITICAL YAML FORMATTING REQUIREMENTS 🚨🚨🚨
@@ -81,8 +81,8 @@ template: |
   name: "{subject}"
   description: "150–200 word technical summary of {subject} in laser cleaning."
   website: "https://www.z-beam.com/[subject-with-dashes]-laser-cleaning"
-  min_words: {min_words}        # <-- Add this line
-  max_words: {max_words}        # <-- Add this line
+  min_words: {min_words}
+  max_words: {max_words}
   author:
     author_id: {author_id}
     author_name: "{author_name}"
@@ -90,17 +90,52 @@ template: |
     name: "Laser Technology Institute"
     credentials: "Industry Leader in Laser Cleaning Technology"
   keywords:
-    - "10–12 specific, technical terms (e.g., hafnium-doped laser, industrial cleaning)"
+    - "keyword one"
+    - "keyword two"
+    # ...up to 12
   tags:
-    - "5–8 short, hyphenated terms for on-site use (e.g., laser-cleaning, rust-removal)"
+    - "tag-one"
+    - "tag-two"
+    # ...up to 8
   applications:
-    - name: "Application 1"
-      description: "50–75 word technical use case."
-    - name: "Application 2"
-      description: "50–75 word technical use case."
-    # Max 3–4 items
+    - name: "Application One"
+      description: "Brief 50–75 word description of the application."
+    - name: "Application Two"
+      description: "Brief 50–75 word description of the application."
+    # ...up to 4
+  environmentalImpact:
+    - benefit: "Waste Reduction"
+      description: "Laser cleaning eliminates chemical solvents, reducing hazardous waste by 90% compared to traditional methods."
+    - benefit: "Energy Efficiency"
+      description: "Process uses 30% less energy than abrasive cleaning, lowering carbon footprint."
+  regulatoryStandards:
+    - code: "AWS D1.1"
+      description: "Structural Welding Code – Steel"
+    - code: "AWS D1.2"
+      description: "Structural Welding Code – Aluminum"
+  outcomes:
+    - result: "100% NDT pass rate"
+      metric: "API 1104 compliance"
+    - result: "Zero solvent waste"
+      metric: "EPA hazardous waste reporting"
+  composition:
+    - component: "Silica"
+      percentage: "90-99%"
+      type: "mineral"
+    - component: "Other minerals"
+      percentage: "1-10%"
+      type: "mineral"
+  compatibility:
+    - material: "Granite"
+      application: "Laser cleaning for monument restoration"
+    - material: "Sandstone"
+      application: "Surface preparation for conservation"
   technicalSpecifications:
-    laserType: "e.g., Hafnium-doped fiber"
-    wavelength: "e.g., 1064nm ±5nm"
-    powerRange: "e.g., 20–500W"
-    # Essential specs only
+    compliance: "California OSHA Title 8 Section 5417"
+    coolingSystem: "Closed-loop chiller (-10°C to +40°C)"
+    powerRange: "50–500W (modular)"
+    pulseDuration: "10–100ns adjustable"
+    repetitionRate: "20–200kHz"
+    safetyClass: "IV (requires enclosure)"
+    spotSize: "0.1–5mm diameter"
+    wavelength: "1064nm ±2nm"

@@ -29,10 +29,10 @@ from utils.env_loader import load_env_variables
 # Define the primary article context - THE ONLY SOURCE OF TRUTH
 ARTICLE_CONTEXT = {
     # Core article parameters
-    "subject": "magnesium",
-    "article_type": "material",
+    "subject": "quartzite",
+    "article_type": "thesaurus",
     "ai_provider": "deepseek",
-    "author_id": 1,
+    "author_id": 2,
     # Components configuration with provider settings
     "components": {
         "frontmatter": {
