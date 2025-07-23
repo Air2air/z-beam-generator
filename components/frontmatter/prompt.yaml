@@ -139,3 +139,48 @@ template: |
     safetyClass: "IV (requires enclosure)"
     spotSize: "0.1–5mm diameter"
     wavelength: "1064nm ±2nm"
+
+  🚨 TABLE DATA STRUCTURE REQUIREMENTS:
+  - The following fields MUST be included with EXACTLY this structure for table generation:
+  
+  technicalSpecifications:
+    powerRange: "50–500W (modular)"
+    pulseDuration: "10–100ns adjustable" 
+    wavelength: "1064nm ±2nm"
+    spotSize: "0.1–5mm diameter"
+    repetitionRate: "20–200kHz"
+    # Include at least 5 technical specifications relevant to laser cleaning
+  
+  applications:
+    - name: "Application One"
+      description: "Description with specific details about how laser cleaning applies."
+    - name: "Application Two" 
+      description: "Another detailed application description."
+    - name: "Application Three"
+      description: "A third application with technical details."
+    # Include at least 3 applications
+  
+  composition:
+    - component: "Primary Component"
+      type: "material type"
+      percentage: "percentage range"
+    - component: "Secondary Component"
+      type: "material type" 
+      percentage: "percentage range"
+    # Include at least 2 composition entries for materials
+  
+  environmentalImpact:
+    - benefit: "Environmental Benefit"
+      description: "Detailed explanation of the environmental benefit."
+    - benefit: "Another Environmental Benefit"
+      description: "Description of another environmental advantage."
+    # Include at least 2 environmental benefits
+  
+  compatibility:
+    - material: "Compatible Material"
+      application: "Application context"
+    - material: "Another Compatible Material"
+      application: "Another application context"
+    # Include at least 2 compatibility entries
+  
+  # These fields MUST be included with EXACTLY this structure or tables will not generate

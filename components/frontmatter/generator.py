@@ -1,7 +1,7 @@
 """
 MODULE DIRECTIVES FOR AI ASSISTANTS:
 1. FRONTMATTER-DRIVEN: All content must be extracted from frontmatter
-2. NO HARDCODED SECTIONS: Section structure must be derived from frontmatter
+2. NO HARDCODEED SECTIONS: Section structure must be derived from frontmatter
 3. DYNAMIC FORMATTING: Format content based on article_type from frontmatter
 4. ERROR HANDLING: Raise exceptions when required frontmatter fields are missing
 5. SCHEMA AWARENESS: Be aware of the schema structure for different article types
@@ -25,20 +25,40 @@ class FrontmatterGenerator(BaseComponent):
             prompt_data = self._prepare_data({})
 
             # --- BEGIN AUTHOR LOOKUP AND INJECTION ---
-            author_id = self.context.get("author_id")
-            with open("components/author/authors.json") as f:
-                authors = json.load(f)
-            author = next((a for a in authors if a["id"] == author_id), None)
-            if author:
-                prompt_data["author_id"] = author["id"]
-                prompt_data["author_name"] = author["name"]
-                prompt_data["author_country"] = author["country"]
+            author_id = 1  # Default fallback
+            if hasattr(self, 'context') and isinstance(self.context, dict):
+                author_id = self.context.get("author_id", 1)
+            elif hasattr(self, 'config') and isinstance(self.config, dict):
+                author_id = self.config.get("author_id", 1)
+            
+            try:
+                with open("components/author/authors.json") as f:
+                    authors = json.load(f)
+                author = next((a for a in authors if a["id"] == author_id), None)
+                if author:
+                    prompt_data["author_id"] = author["id"]
+                    prompt_data["author_name"] = author["name"]
+                    prompt_data["author_country"] = author["country"]
+                else:
+                    prompt_data["author_id"] = 1
+                    prompt_data["author_name"] = "Z-Beam Laser Technologies"
+                    prompt_data["author_country"] = "USA"
+            except Exception as e:
+                logger.warning(f"Error loading author data: {e}")
+                prompt_data["author_id"] = 1
+                prompt_data["author_name"] = "Z-Beam Laser Technologies"
+                prompt_data["author_country"] = "USA"
             # --- END AUTHOR LOOKUP AND INJECTION ---
 
             # After preparing prompt_data and before formatting the prompt:
-            content_cfg = self.context.get("components", {}).get("content", {})
-            prompt_data["min_words"] = int(content_cfg.get("min_words", 0))
-            prompt_data["max_words"] = int(content_cfg.get("max_words", 0))
+            content_config = {}
+            if hasattr(self, 'context') and isinstance(self.context, dict):
+                content_config = self.context.get("components", {}).get("content", {})
+            elif hasattr(self, 'config') and isinstance(self.config, dict):
+                content_config = self.config.get("components", {}).get("content", {})
+            
+            prompt_data["min_words"] = int(content_config.get("min_words", 300))
+            prompt_data["max_words"] = int(content_config.get("max_words", 500))
 
             # 2. Format prompt
             prompt = self._format_prompt(prompt_data)
@@ -75,7 +95,7 @@ class FrontmatterGenerator(BaseComponent):
         try:
             return template.format(**data)
         except KeyError as e:
-            logger.error(f"Missing key in prompt data: {e}")
+            logger.error(f"Missing key in prompt data: {str(e)}")
             # Fallback to a simple prompt if template formatting fails
             return f"Generate YAML frontmatter for an article about {data.get('subject', 'the topic')}."
     

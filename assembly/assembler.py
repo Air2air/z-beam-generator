@@ -27,6 +27,7 @@ from utils.string_utils import StringUtils
 from utils.path_manager import PathManager
 from components.base import BaseComponent
 from api.client import ApiClient  # Import ApiClient
+from components.table.generator import TableGenerator  # Import TableGenerator
 
 logger = logging.getLogger(__name__)
 
@@ -299,6 +300,21 @@ class ArticleAssembler:
                 logger.info(f"Component {component_name} is disabled")
                 return None
             
+            # Special case for table component (needs different initialization)
+            if component_name == "table":
+                # Import TableGenerator here to avoid circular imports
+                from components.table.generator import TableGenerator
+                
+                # Correct initialization for TableGenerator
+                component = TableGenerator(self.subject, self.article_type, component_config)
+                
+                # Set frontmatter data if available
+                if hasattr(self, 'frontmatter_data') and self.frontmatter_data:
+                    if hasattr(component, 'set_frontmatter'):
+                        component.set_frontmatter(self.frontmatter_data)
+                
+                return component
+            
             # Get component provider
             provider = component_config.get("provider", self.ai_provider)
             
@@ -332,3 +348,51 @@ class ArticleAssembler:
         
         logger.warning(f"No frontmatter data available for {self.__class__.__name__}")
         return {}
+    
+    def _load_component(self, component_name):
+        """Load a component by name, initializing it with the correct context and schema.
+        
+        Args:
+            component_name: Name of the component to load
+            
+        Returns:
+            Initialized component instance, or None if loading failed
+        """
+        logger.info(f"Loading component {component_name} for {self.article_type}: {self.subject}")
+        
+        try:
+            # Get component config
+            component_config = self.config.get("components", {}).get(component_name, {})
+            
+            # Check if component is enabled
+            if component_config.get("enabled", True) is False:
+                logger.info(f"Component {component_name} is disabled")
+                return None
+            
+            # Get component class from registry
+            component_registry = RegistryFactory.component_registry()
+            component_class = component_registry.get_component(component_name)
+            
+            if not component_class:
+                logger.error(f"Component {component_name} not found in registry")
+                return None
+            
+            # Initialize component with correct arguments
+            if component_name == "table":
+                # Correct initialization - right number of arguments
+                component = TableGenerator(self.subject, self.article_type, component_config)
+            else:
+                # Default initialization
+                component = component_class(self.context, self.schema, self.ai_provider)
+            
+            # Set frontmatter data if available and this is not the frontmatter component
+            if component_name != "frontmatter" and hasattr(self, 'frontmatter_data') and self.frontmatter_data:
+                if hasattr(component, 'set_frontmatter'):
+                    component.set_frontmatter(self.frontmatter_data)
+            
+            logger.info(f"Component {component_name} loaded successfully")
+            return component
+        
+        except Exception as e:
+            logger.error(f"Error loading component {component_name}: {str(e)}")
+            return None

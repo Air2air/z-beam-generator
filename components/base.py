@@ -31,25 +31,75 @@ logger = logging.getLogger(__name__)
 class BaseComponent(ABC):
     """Base class for all content generation components."""
     
-    def __init__(self, context: Dict[str, Any], schema: Dict[str, Any], ai_provider: str = "deepseek"):
-        """Initialize base component.
-        
-        Args:
-            context: Context data for generation
-            schema: Schema definition for the component
-            ai_provider: AI provider to use
+    def __init__(self, *args, **kwargs):
+        """Initialize the base component.
+    
+        This constructor is designed to handle both legacy and new initialization patterns:
+        - Legacy: (context, schema, ai_provider)
+        - New: (subject, article_type, component_type, config)
+    
+        It intelligently determines which pattern is being used and sets up the component accordingly.
         """
-        self.context = context or {}
-        self.schema = schema or {}
-        self.subject = context.get("subject", "")
-        self.article_type = context.get("article_type", "")
-        self.ai_provider = ai_provider
-        
+        # Extract parameters based on argument count and types
+        if len(args) >= 2 and isinstance(args[0], dict) and (isinstance(args[1], dict) or args[1] is None):
+            # Legacy initialization pattern: (context, schema, ai_provider)
+            self.context = args[0] or {}
+            self.schema = args[1] or {}
+            self.ai_provider = args[2] if len(args) > 2 else kwargs.get('ai_provider', 'deepseek')
+            
+            # Extract subject and article_type from context
+            self.subject = self.context.get("subject", "")
+            self.article_type = self.context.get("article_type", "")
+            self.component_type = kwargs.get('component_type', None)
+            self.config = self.context  # For compatibility with new style
+        else:
+            # New initialization pattern: (subject, article_type, component_type, config)
+            # Check if first argument is a dict with 'subject' key (happens when assembler passes config as subject)
+            if len(args) > 0 and isinstance(args[0], dict) and 'subject' in args[0]:
+                config_dict = args[0]
+                self.subject = config_dict.get('subject', '')
+                self.article_type = config_dict.get('article_type', '')
+                
+                # Component type from third argument or class name
+                if len(args) > 2:
+                    self.component_type = args[2]
+                else:
+                    class_name = self.__class__.__name__.lower()
+                    if "generator" in class_name:
+                        self.component_type = class_name.replace("generator", "")
+                    elif "component" in class_name:
+                        self.component_type = class_name.replace("component", "")
+                    else:
+                        self.component_type = class_name
+                        
+                # Use first argument as both context and config for compatibility
+                self.context = config_dict
+                self.config = config_dict
+            else:
+                # Standard new initialization
+                self.subject = args[0] if len(args) > 0 else kwargs.get('subject', '')
+                self.article_type = args[1] if len(args) > 1 else kwargs.get('article_type', '')
+                self.component_type = args[2] if len(args) > 2 else kwargs.get('component_type', None)
+                
+                # Get config from args or kwargs
+                config = args[3] if len(args) > 3 else kwargs.get('config', None)
+                self.config = config if config is not None else {}
+                self.context = self.config  # For compatibility with old style
+            
+            # Extract AI provider
+            if isinstance(self.config, dict) and 'ai_provider' in self.config:
+                self.ai_provider = self.config['ai_provider']
+            else:
+                self.ai_provider = kwargs.get('ai_provider', 'deepseek')
+    
         # Initialize frontmatter_data explicitly
         self.frontmatter_data = {}
         
         # Initialize API client
-        self.api_client = ApiClient(ai_provider)
+        self.api_client = ApiClient(self.ai_provider)
+        
+        # Log initialization
+        logger.debug(f"BaseComponent initialized: subject={self.subject}, article_type={self.article_type}, component_type={self.component_type}")
     
     @abstractmethod
     def generate(self) -> str:
@@ -228,6 +278,24 @@ class BaseComponent(ABC):
         Returns:
             Dictionary containing component configuration
         """
+        # Check if context exists, if not, fall back to config
+        if not hasattr(self, 'context') or not self.context:
+            # Extract component name from class name
+            component_name = self.__class__.__name__.lower()
+            if "generator" in component_name:
+                component_name = component_name.replace("generator", "")
+            if "component" in component_name:
+                component_name = component_name.replace("component", "")
+            
+            # If we don't have context, use self.config if available
+            if hasattr(self, 'config') and isinstance(self.config, dict):
+                components = self.config.get("components", {})
+                return components.get(component_name, {})
+            else:
+                logger.warning(f"No context or config available for {component_name}")
+                return {}
+        
+        # Original implementation for when context exists
         # Extract component name from class name
         component_name = self.__class__.__name__.lower()
         if "generator" in component_name:
@@ -349,6 +417,15 @@ Please check the logs for more information.
         Returns:
             Formatted title (e.g., 'Technical Specifications', 'Safety Info')
         """
+        # Handle non-string inputs
+        if not isinstance(key, str):
+            logger.warning(f"Non-string key passed to format_section_title: {type(key)}")
+            try:
+                # Try to convert to string
+                key = str(key)
+            except:
+                return "Section"  # Fallback title
+
         # Remove underscores and handle camelCase
         if '_' in key:
             words = key.split('_')
@@ -356,7 +433,7 @@ Please check the logs for more information.
             import re
             # Insert space before uppercase letters that follow lowercase
             words = re.findall(r'[A-Z]?[a-z]+|[A-Z]+(?=[A-Z]|$)', key)
-    
+
         # Title case each word
         return ' '.join(word.capitalize() for word in words)
     
@@ -439,50 +516,59 @@ Please check the logs for more information.
         return "\n\n".join(content)
 
     def load_prompt_template(self) -> str:
-        """Load prompt template for the component.
-        
-        Looks for a prompt.yaml file in the component's directory
-        and loads the template from it.
-        
+        """Load prompt template from configuration.
+    
+        This method extracts the template from the loaded prompt configuration.
+        If prompt configuration doesn't exist or doesn't contain a template,
+        it returns an empty string.
+    
         Returns:
-            String template for prompt formatting
+            String containing prompt template
         """
         try:
-            # Get component class name and convert to snake_case for directory name
-            component_type = self.__class__.__name__.replace('Generator', '').lower()
-            
-            # Try to load from component-specific directory
-            prompt_file = os.path.join('components', component_type, 'prompt.yaml')
-            
-            if not os.path.exists(prompt_file):
-                # Try alternate location
-                prompt_file = os.path.join('components', component_type, 'prompts', 'default.yaml')
+            # Load prompt config if not already loaded
+            if not hasattr(self, 'prompt_config') or not self.prompt_config:
+                self.prompt_config = self.load_prompt_config()
         
-            if not os.path.exists(prompt_file):
-                logger.warning(f"No prompt file found for {component_type}")
-                return self._get_default_prompt_template()
-                
-            with open(prompt_file, 'r') as f:
-                prompt_config = yaml.safe_load(f)
-                
-            logger.info(f"Loaded prompt configuration from {prompt_file}")
+            # Extract template
+            template = self.prompt_config.get("template", "")
             
-            # Extract template from config
-            if isinstance(prompt_config, dict) and 'template' in prompt_config:
-                return prompt_config['template']
-            elif isinstance(prompt_config, str):
-                return prompt_config
-            else:
-                logger.warning(f"Invalid prompt format in {prompt_file}")
-                return self._get_default_prompt_template()
-                
+            # Return template
+            return template
         except Exception as e:
-            logger.error(f"Error loading prompt template: {e}")
-            return self._get_default_prompt_template()
+            logger.error(f"Error loading prompt template: {str(e)}")
+            return ""
+    
+    def load_prompt_config(self) -> Dict[str, Any]:
+        """Load prompt configuration for this component."""
+        try:
+            # Determine component directory name from class name, not from component_type
+            class_name = self.__class__.__name__.lower()
+            component_dir = None
             
-    def _get_default_prompt_template(self) -> str:
-        """Return a minimal default prompt template."""
-        return (
-            "Generate content about {subject} for a {article_type} article.\n\n"
-            "Focus on providing accurate, helpful information suitable for the target audience."
-        )
+            # Extract directory name from class name
+            if "generator" in class_name:
+                component_dir = class_name.replace("generator", "")
+            elif "component" in class_name:
+                component_dir = class_name.replace("component", "")
+            else:
+                component_dir = class_name
+                
+            logger.debug(f"Looking for prompt config in directory: {component_dir}")
+            
+            # Build path to prompt.yaml
+            prompt_file = f"components/{component_dir}/prompt.yaml"
+            
+            # Check if file exists
+            if not os.path.exists(prompt_file):
+                logger.warning(f"Prompt configuration file not found: {prompt_file}")
+                return {}
+            
+            # Load configuration
+            with open(prompt_file, "r") as f:
+                config = yaml.safe_load(f)
+                logger.info(f"Loaded prompt configuration from {prompt_file}")
+                return config or {}
+        except Exception as e:
+            logger.error(f"Error loading prompt configuration: {str(e)}")
+            return {}

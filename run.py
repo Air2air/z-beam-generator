@@ -43,8 +43,8 @@ ARTICLE_CONTEXT = {
             "enabled": True,
             "min_words": 300,
             "max_words": 500,
-            "provider": "xai", # deepseek, openai, xai, gemini
-            "options": {"model": "grok-3-latest"},  # deepseek-chat (88), "GPT-4o" (76), "grok-3-latest" (62), "gemini-1.5-flash"
+            "provider": "deepseek", # deepseek, openai, xai, gemini
+            "options": {"model": "deepseek-chat"},  # deepseek-chat (88), "GPT-4o" (76), "grok-3-latest" (62), "gemini-1.5-flash"
         },
         "bullets": {
             "enabled": True,
