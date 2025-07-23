@@ -1,37 +1,57 @@
+template: |
   With the help of the provided frontmatter below, generate comprehensive, well-structured content for a {article_type} article about {subject} in the context of laser cleaning, written as if you are a scientific expert from Indonesia, using English as a second language to convey authoritative, precise, and credible technical knowledge.
 
-Instructions:
+  --- FRONTMATTER START ---
+  {frontmatter}
+  --- FRONTMATTER END ---
 
-  - Information and fields present in the frontmatter may give additional breadth.
-  - Organize the content with flexibility, combining related frontmatter sections (e.g., merging Applications and Advantages) or introducing at least one unique, culturally relevant subheading (e.g., ‘Why Quartzite Drives Taiwan’s Tech’) to reflect the writer’s perspective, ensuring all frontmatter data is covered.
-Write in the voice of a scientific expert from Indonesia, using English as a second language with linguistic and cultural nuances of Bahasa Indonesia to convincingly reflect an Indonesian native speaker’s voice, with the intensity of these influences determined by the intensity value (1-5, default 3, where 1 means no voice change and 5 means strong adaptation).
-Incorporate the following elements to enhance authenticity, ensuring they are subtle and natural:
-Sentence Structure: Use straightforward, slightly repetitive sentence structures common in Bahasa Indonesia, such as starting sentences with “It is important to note that” or “Based on the observation.” Avoid complex sentence nesting or heavy use of subordinate clauses.
-Politeness Markers: Integrate polite phrases like “With respect” or “It is respectfully submitted that” to reflect Indonesian cultural emphasis on courtesy in academic settings.
-Collectivist Phrasing: Emphasize collective responsibility or societal benefit, e.g., “It is our duty to ensure” or “For the benefit of the community,” aligning with Indonesian cultural values.
-Direct Translations: Occasionally use direct translations of Bahasa Indonesia expressions, such as “the process that is ongoing” instead of “the ongoing process” or “data that is obtained” instead of “obtained data,” to mirror natural Indonesian English.
-Rhetorical Style: Use a measured, deliberate tone with occasional emphasis on clarity and consensus, e.g., “It is clear and agreed that,” reflecting Indonesian academic communication norms.
-Vocabulary Choice: Prefer simple, precise vocabulary over complex or idiomatic terms, e.g., “big” instead of “substantial” or “do” instead of “execute,” where appropriate.
+  Instructions:
+  - Write in the voice of a scientific expert from Indonesia, using English as a second language with linguistic and cultural nuances of Bahasa Indonesia to convincingly reflect an Indonesian native speaker’s voice.
+  - The **intensity** of these influences will be determined by the **intensity value** (1-5, default 2, where 1 means no noticeable Indonesian traits and 5 means very prominent linguistic and cultural markers).
+  - Incorporate the following elements to create an authentic Indonesian ESL linguistic style, ensuring they are subtle, natural, and avoid exaggeration or sounding forced:
 
+    - **Sentence Structure and Flow:**
+      - Prefer **straightforward, direct sentence structures**, occasionally leading with phrases like “It is important to note that,” “Based on the observation,” or “We can see that.”
+      - Limit the use of complex sentence nesting, extensive subordinate clauses, or highly inverted sentence structures.
+      - Allow for a **slightly more repetitive or consistent sentence rhythm** compared to native English speakers, mirroring patterns common in Bahasa Indonesia.
 
-To humanize the output and reduce AI detection, incorporate the following:
-Use varied sentence lengths and structures, mixing concise and longer sentences to mimic human writing.
-Include subtle imperfections, such as occasional redundancy, rephrasing (e.g., “This advantage, we observe, is critical”), or minor tangents tied to the frontmatter (e.g., “In Indonesia, laser cleaning is relevant for preserving cultural artifacts”).
-Use natural, culture-specific transitions (e.g., “With respect, we proceed to discuss”) instead of formulaic academic phrases.
-Add occasional personal or collective reflections (e.g., “In our experience, this method is promising” or “This is significant for our nation’s industries”) tied to the frontmatter.
-Emphasize enthusiasm, curiosity, or caution where appropriate, e.g., “It is encouraging to see” or “We must carefully consider,” to reflect human engagement.
-Include minor qualifiers (e.g., “perhaps,” “in some cases”) and parenthetical remarks (e.g., “(as the data suggests)”) to simulate human drafting habits.
+    - **Politeness and Formality Markers:**
+      - Integrate **subtle polite phrases and respectful markers**, particularly in transitions or when introducing points, such as “With respect,” “It is respectfully submitted that,” “As a matter of fact,” or “If I may say.” These should reflect Indonesian cultural emphasis on courtesy, especially in academic or formal communication.
+      - Maintain a **measured, deliberate, and courteous tone** throughout.
 
+    - **Collectivist and Inclusive Phrasing:**
+      - Emphasize **collective responsibility, shared understanding, or societal benefit** through phrases like “It is our duty to ensure,” “For the benefit of the community/nation,” “We believe it is important,” or “As we understand.” This aligns with Indonesian cultural values.
 
-Ensure the article remains authoritative by grounding arguments in the frontmatter’s scientific evidence, using precise terminology, and maintaining logical flow.
-Avoid complex idioms, slang, overly Westernized expressions, or forced stereotypes (e.g., excessive formality or cultural clichés) to preserve authenticity and credibility.
-Intensity value (default 2):
-Intensity 1: Minimal influence, standard scientific English with no noticeable Indonesian traits.
-Intensity 2 (default): Light influence, with occasional polite phrases or simple sentence structures.
-Intensity 3: Moderate influence, balancing Indonesian phrasing, politeness, and collectivist tones with scientific clarity.
-Intensity 4: Strong influence, with frequent use of Bahasa Indonesia sentence structures and cultural nuances.
-Intensity 5: Very strong influence, closely mimicking the English of a native Indonesian speaker with prominent linguistic and cultural markers.
+    - **Direct Translation Nuances (Indonesian English Idiomaticity):**
+      - Occasionally, and subtly, use **grammatical structures or phrasing that might be direct translations from Bahasa Indonesia**, lending an authentic, non-native English feel. Examples include:
+        - "the process that is ongoing" instead of "the ongoing process"
+        - "data that is obtained" instead of "obtained data"
+        - "matter that is crucial" instead of "crucial matter"
+        - "take action" instead of "act"
+        - "give attention" instead of "pay attention"
+        - "do research" instead of "conduct research"
+      - Focus on **word order or common phrasal verbs** that resonate with Bahasa Indonesia structures, without making the English ungrammatical or unclear.
 
+    - **Rhetorical Style and Emphasis:**
+      - Adopt a **measured, deliberate tone with occasional emphasis on clarity, consensus, or shared understanding**. Phrases like “It is clear and agreed that,” “We can conclude that,” or “This point is very important, actually” can be used.
+      - Allow for **occasional, subtle redundancy** where a concept might be re-emphasized for clarity, which is common in some Indonesian rhetorical styles.
 
+    - **Vocabulary Choice:**
+      - Prefer **simple, precise, and direct vocabulary** over complex, abstract, or highly idiomatic English terms.
+      - Lean towards common, unambiguous words (e.g., “big” instead of “substantial,” “do” instead of “execute,” “get” instead of “obtain,” “show” instead of “demonstrate”), where appropriate and without sacrificing scientific accuracy.
+      - **Avoid slang, complex idioms, or overly Westernized expressions** that would not typically be used by an Indonesian scientific expert writing in English.
 
-The article should convince a native Indonesian speaker of the writer’s cultural authenticity while maintaining credibility as a scientific expert and reducing detectability by AI detection tools.
+    - **Personal and Collective Reflections:**
+      - Include **occasional personal or collective reflections** that subtly connect to the writer's Indonesian background, such as “In our experience here in Indonesia, this method is promising,” or “This is significant for our nation’s industries.”
+
+  - **Intensity Value Definitions:**
+    - **Intensity 1:** Minimal influence; the writing will largely adhere to standard scientific English with almost no noticeable Indonesian linguistic traits.
+    - **Intensity 2:** Light influence; occasional polite phrases, subtle simple sentence structures, and very rare direct translation nuances may appear.
+    - **Intensity 3 (default):** Moderate influence; a balanced blend of Indonesian phrasing, politeness markers, collectivist tones, and subtle direct translation nuances with clear scientific communication.
+    - **Intensity 4:** Strong influence; frequent use of Bahasa Indonesia-influenced sentence structures, more prominent politeness markers, and consistent subtle direct translation patterns.
+    - **Intensity 5:** Very strong influence; the English will closely mimic the distinctive linguistic and cultural markers of a native Indonesian speaker with limited exposure to native English nuances, without being ungrammatical.
+
+  - Do not include any opening or closing discussion about the writing process, adherence to the prompt, or word count. The output must consist solely of the article content, written as if by a human expert from Indonesia.
+  - The article should convince a native Indonesian speaker of the writer’s cultural authenticity while maintaining credibility as a scientific expert.
+
+---

@@ -20,6 +20,7 @@ import os
 import logging
 import sys
 from typing import Dict, Any, Optional
+from api.config import get_provider_config, update_provider_configs
 
 import requests
 
@@ -28,20 +29,26 @@ logger = logging.getLogger(__name__)
 class ApiClient:
     """API client for generating content with AI providers."""
     
-    def __init__(self, provider: str = "deepseek"):
+    def __init__(self, provider: str = "deepseek", article_context: Dict[str, Any] = None):
         """Initialize the API client.
         
         Args:
             provider: Default AI provider to use
+            article_context: Article context from run.py
         """
         self.provider = provider
+        self.article_context = article_context or {}
+        
+        # Update provider configs from article context
+        if article_context:
+            update_provider_configs(article_context)
         
         # Load API keys from environment variables
         self.api_keys = {
             "deepseek": os.environ.get("DEEPSEEK_API_KEY"),
             "openai": os.environ.get("OPENAI_API_KEY"),
             "gemini": os.environ.get("GEMINI_API_KEY"),
-            "xai": os.environ.get("XAI_API_KEY")  # This is correct - use XAI_API_KEY
+            "xai": os.environ.get("XAI_API_KEY")
         }
         
         # Set the API key for the current provider
@@ -49,92 +56,70 @@ class ApiClient:
         
         if not self.api_key:
             logger.warning(f"No API key found for provider: {provider}")
-        
-        # Validate the provider is supported
-        supported_providers = ["deepseek", "xai", "openai", "gemini"]
-        if provider not in supported_providers:
-            raise ValueError(f"Unsupported AI provider: {provider}")
-        
-        # Validate we have what we need immediately
-        if not self.api_key:
-            logger.error(f"CRITICAL: No API key found for {self.provider} (expected {self.provider.upper()}_API_KEY)")
-        else:
-            logger.debug(f"Initialized API client for {provider}")
     
-    def _get_api_key(self) -> Optional[str]:
-        """Get API key for the current provider.
-        
-        Returns:
-            API key or None if not found
-        """
-        key_name = f"{self.provider.upper()}_API_KEY"
-        api_key = os.environ.get(key_name)
-        
-        if not api_key:
-            logger.warning(f"No API key found for {self.provider} (expected {key_name})")
+    def _generate_gemini(self, prompt: str, options: Dict[str, Any], component: str = None) -> str:
+        """Generate text using Google's Gemini API."""
+        try:
+            # Import Gemini package
+            import google.generativeai as genai
             
-        return api_key
-    
-    def generate_content(self, prompt: str, provider: str = "deepseek", **kwargs) -> str:
-        """Generate content using the specified provider.
-        
-        Args:
-            prompt: Prompt for generation
-            provider: Provider to use
-            **kwargs: Additional parameters
+            # Get API key
+            api_key = self.api_keys.get("gemini")
+            if not api_key:
+                raise ValueError("Gemini API key not found in environment variables")
+                
+            genai.configure(api_key=api_key)
             
-        Returns:
-            Generated content
-        """
-        # Validate API key before attempting generation
-        if not self.api_key:
-            error_msg = f"API key not found for {self.provider} (expected {self.provider.upper()}_API_KEY)"
-            logger.error(f"GENERATION FAILED: {error_msg}")
-            raise ValueError(error_msg)
+            # Get configuration from central config - now with component and context awareness
+            gemini_config = get_provider_config("gemini", component, self.article_context)
             
-        # Call the text generation method
-        return self.generate_text(prompt, provider, kwargs)
-    
-    def generate_text(self, prompt: str, provider: str = "deepseek", options: Dict[str, Any] = None) -> str:
-        """Generate text from prompt.
-        
-        Args:
-            prompt: Prompt text
-            provider: Provider to use
-            options: Generation options
+            # Get model parameters (NO HARDCODED FALLBACKS)
+            model = options.get("model", gemini_config.get("model"))
+            temperature = options.get("temperature", gemini_config.get("temperature"))
+            max_tokens = options.get("max_tokens", gemini_config.get("max_tokens_limit"))
             
-        Returns:
-            Generated text
+            # Log the API call
+            logger.info(f"Calling Gemini API with model: {model}, temp: {temperature}, max_tokens: {max_tokens}")
             
-        Raises:
-            ValueError: If provider is not supported
-            RuntimeError: If API call fails
-        """
-        options = options or {}
-        
-        if self.provider == "deepseek":
-            return self._generate_deepseek(prompt, options)
-        elif self.provider == "openai":
-            return self._generate_openai(prompt, options)
-        elif self.provider == "gemini":
-            return self._generate_gemini(prompt, options)
-        elif self.provider == "xai":
-            return self._generate_xai(prompt, options)
-        else:
-            error_msg = f"Unsupported AI provider: {self.provider}"
+            # Generate response
+            model = genai.GenerativeModel(model_name=model)
+            response = model.generate_content(
+                prompt,
+                generation_config=genai.types.GenerationConfig(
+                    temperature=temperature,
+                    max_output_tokens=max_tokens
+                )
+            )
+            
+            # Extract text from response
+            result = response.text
+            
+            logger.debug(f"Gemini API response length: {len(result)} characters")
+            return result
+            
+        except ImportError as e:
+            error_msg = f"Gemini package not installed: {str(e)}"
             logger.error(error_msg)
-            raise ValueError(error_msg)
+            raise ImportError(error_msg)
+            
+        except Exception as e:
+            error_msg = f"Gemini API call failed: {str(e)}"
+            logger.error(error_msg)
+            raise RuntimeError(error_msg)
     
-    def _generate_deepseek(self, prompt: str, options: Dict[str, Any]) -> str:
+    def _generate_deepseek(self, prompt: str, options: Dict[str, Any], component: str = None) -> str:
         """Generate text using Deepseek API."""
         try:
             # Import the Deepseek client
             import deepseek_ai
             
-            # Set default options
-            model = options.get("model", "deepseek-chat")
-            temperature = options.get("temperature", 0.7)
-            max_tokens = options.get("max_tokens", 2000)
+            # Get configuration from central config
+            deepseek_config = get_provider_config("deepseek", component, self.article_context)
+            
+            # Set options with NO HARDCODED FALLBACKS
+            model = options.get("model", deepseek_config.get("model"))
+            temperature = options.get("temperature", deepseek_config.get("temperature"))
+            max_tokens = options.get("max_tokens", deepseek_config.get("max_tokens_limit"))
             
             # Log the API call (excluding prompt content)
             logger.info(f"Calling Deepseek API with model: {model}, temp: {temperature}, max_tokens: {max_tokens}")
@@ -184,43 +169,45 @@ class ApiClient:
             logger.error(error_msg)
             raise RuntimeError(error_msg)
     
-    def _generate_openai(self, prompt: str, options: Dict[str, Any]) -> str:
-        """Generate text using OpenAI API.
-        
-        Args:
-            prompt: Prompt text
-            options: Generation options
-            
-        Returns:
-            Generated text
-            
-        Raises:
-            ImportError: If openai module is not installed
-            RuntimeError: If API call fails
-        """
+    def _generate_openai(self, prompt: str, options: Dict[str, Any], component: str = None) -> str:
+        """Generate text using OpenAI API."""
         try:
             # Import the OpenAI client
-            import openai
-            openai.api_key = self.api_key
+            from openai import OpenAI
             
-            # Set default options
-            model = options.get("model", "gpt-4")
-            temperature = options.get("temperature", 0.7)
-            max_tokens = options.get("max_tokens", 2000)
+            # Get API key
+            api_key = self.api_keys.get("openai")
+            if not api_key:
+                raise ValueError("OpenAI API key not found in environment variables")
+            
+            # Initialize client with API key
+            client = OpenAI(api_key=api_key)
+            
+            # Get configuration from central config
+            openai_config = get_provider_config("openai", component, self.article_context)
+            
+            # Set options with NO HARDCODED FALLBACKS
+            model = options.get("model", openai_config.get("model"))
+            temperature = options.get("temperature", openai_config.get("temperature"))
+            max_tokens = options.get("max_tokens", openai_config.get("max_tokens_limit"))
             
             # Log the API call (excluding prompt content)
             logger.info(f"Calling OpenAI API with model: {model}, temp: {temperature}, max_tokens: {max_tokens}")
             
-            # Call API
-            response = openai.ChatCompletion.create(
+            # Generate response using new API format
+            response = client.chat.completions.create(
                 model=model,
-                messages=[{"role": "user", "content": prompt}],
+                messages=[
+                    {"role": "system", "content": "You are a helpful, technical AI assistant."},
+                    {"role": "user", "content": prompt}
+                ],
                 temperature=temperature,
                 max_tokens=max_tokens
             )
             
-            # Extract text from response
-            result = response.choices[0].message.content.strip()
+            # Extract the response content
+            result = response.choices[0].message.content
+            
             logger.debug(f"OpenAI API response length: {len(result)} characters")
             return result
             
@@ -231,55 +218,10 @@ class ApiClient:
             
         except Exception as e:
             error_msg = f"OpenAI API call failed: {str(e)}"
-            logger.error(error_msg, exc_info=True)
+            logger.error(error_msg)
             raise RuntimeError(error_msg)
     
-    def _generate_gemini(self, prompt: str, options: Dict[str, Any]) -> str:
-        """Generate text using Google's Gemini API."""
-        try:
-            # Import Gemini package
-            import google.generativeai as genai
-            
-            # Fix: Use the api_key directly since it's a string, not a dictionary
-            api_key = self.api_key  # Changed from self.api_key.get("gemini")
-            
-            genai.configure(api_key=api_key)
-            
-            # Get model parameters
-            model = options.get("model", "gemini-pro")
-            temperature = options.get("temperature", 0.7)
-            max_tokens = options.get("max_tokens", 2000)
-            
-            # Log the API call (excluding prompt content)
-            logger.info(f"Calling Gemini API with model: {model}, temp: {temperature}, max_tokens: {max_tokens}")
-            
-            # Generate response
-            model = genai.GenerativeModel(model_name=model)
-            response = model.generate_content(
-                prompt,
-                generation_config=genai.types.GenerationConfig(
-                    temperature=temperature,
-                    max_output_tokens=max_tokens
-                )
-            )
-            
-            # Extract text from response
-            result = response.text
-            
-            logger.debug(f"Gemini API response length: {len(result)} characters")
-            return result
-            
-        except ImportError as e:
-            error_msg = f"Gemini package not installed: {str(e)}"
-            logger.error(error_msg)
-            raise ImportError(error_msg)
-            
-        except Exception as e:
-            error_msg = f"Gemini API call failed: {str(e)}"
-            logger.error(error_msg)
-            raise RuntimeError(error_msg)
-
-    def _generate_xai(self, prompt: str, options: Dict[str, Any]) -> str:
+    def _generate_xai(self, prompt: str, options: Dict[str, Any], component: str = None) -> str:
         """Generate text using XAI/Grok API with the official SDK."""
         try:
             # Import the xai-sdk
@@ -295,10 +237,13 @@ class ApiClient:
             if not api_key:
                 raise ValueError("XAI_API_KEY environment variable not set")
             
-            # Updated model name based on the curl example
-            model = options.get("model", "grok-3-latest")  # Changed from "grok-1" to "grok-3-latest"
-            temperature = options.get("temperature", 0.7)
-            max_tokens = options.get("max_tokens", 2000)
+            # Get configuration from central config
+            xai_config = get_provider_config("xai", component, self.article_context)
+            
+            # Set options with NO HARDCODED FALLBACKS
+            model = options.get("model", xai_config.get("model"))
+            temperature = options.get("temperature", xai_config.get("temperature"))
+            max_tokens = options.get("max_tokens", xai_config.get("max_tokens_limit"))
             
             logger.info(f"Calling XAI API with model: {model}, temp: {temperature}, max_tokens: {max_tokens}")
             
@@ -337,97 +282,45 @@ class ApiClient:
             logger.error(error_msg)
             raise RuntimeError(error_msg)
 
-    def generate(self, prompt: str, provider: str = None, **options) -> str:
+    def generate(self, prompt: str, provider: str = None, component: str = None, **options) -> str:
         """Generate text using the specified provider."""
-        provider = provider or self.config.get("ai_provider", "deepseek")
+        # Determine provider: explicit arg > component config > global default
+        provider_to_use = provider
+        
+        if not provider_to_use and component and self.article_context:
+            # Look up provider in component config
+            component_config = self.article_context.get("components", {}).get(component, {})
+            provider_to_use = component_config.get("provider")
+            # DEBUG: Print what we found
+            logger.info(f"Component {component} config: {component_config}")
+            logger.info(f"Found provider in component config: {provider_to_use}")
+        
+        provider_to_use = provider_to_use or self.provider
+        logger.info(f"Final provider selected: {provider_to_use}")
         
         # Select the provider method
         provider_methods = {
             "deepseek": self._generate_deepseek,
             "openai": self._generate_openai,
-            "gemini": self._generate_gemini,  # Added Gemini
-            "xai": self._generate_xai         # Added XAI
+            "gemini": self._generate_gemini,
+            "xai": self._generate_xai
         }
         
-        generator = provider_methods.get(provider.lower())
+        generator = provider_methods.get(provider_to_use.lower())
         if not generator:
-            error_msg = f"Unsupported AI provider: {provider}"
+            error_msg = f"Unsupported AI provider: {provider_to_use}"
             logger.error(error_msg)
             raise ValueError(error_msg)
         
         # Generate text
         try:
-            return generator(prompt, options)
+            return generator(prompt, options, component)
         except Exception as e:
-            error_msg = f"Error generating with {provider}: {str(e)}"
+            error_msg = f"Error generating with {provider_to_use}: {str(e)}"
             logger.error(error_msg)
             raise RuntimeError(error_msg)
-
-    def _call_xai_api(self, prompt: str, **kwargs) -> str:
-        """Call XAI API to generate content.
-        
-        Args:
-            prompt: Prompt for content generation
-            **kwargs: Additional parameters
-            
-        Returns:
-            Generated content as string
-        """
-        try:
-            # Original API call implementation remains unchanged
-            headers = {
-                "Authorization": f"Bearer {os.environ.get('XAI_API_KEY')}",
-                "Content-Type": "application/json"
-            }
-            
-            payload = {
-                "prompt": prompt,
-                **kwargs
-            }
-            
-            response = requests.post(
-                self.xai_api_url,
-                headers=headers,
-                json=payload
-            )
-            
-            response.raise_for_status()
-            
-            # Fix: Handle both dictionary and string responses
-            result = response.json()
-            
-            # If result is already a string, return it directly
-            if isinstance(result, str):
-                return result
-                
-            # If result is a dictionary, extract content field
-            # Different XAI implementations use different response formats
-            if isinstance(result, dict):
-                # Try common response formats
-                if "content" in result:
-                    return result["content"]
-                elif "text" in result:
-                    return result["text"]
-                elif "output" in result:
-                    return result["output"]
-                elif "generated_text" in result:
-                    return result["generated_text"]
-                elif "choices" in result and len(result["choices"]) > 0:
-                    choices = result["choices"]
-                    if isinstance(choices[0], dict) and "message" in choices[0]:
-                        return choices[0]["message"].get("content", "")
-                    else:
-                        return str(choices[0])
-                # If none of the common fields are found, return the stringified result
-                return str(result)
-            
-            # Handle unexpected response type
-            logger.warning(f"Unexpected response type from XAI API: {type(result)}")
-            return str(result)
-            
-        except requests.exceptions.RequestException as e:
-            logger.error(f"XAI API request failed: {e}")
-            raise
-        except ValueError as e:
-            logger.error(f"XAI API response parsing failed: {e}")
-            raise
+    
+    # Add this alias method
+    def generate_content(self, prompt: str, provider: str = None, component: str = None, **options) -> str:
+        """Alias for generate() to maintain backwards compatibility."""
+        return self.generate(prompt, provider, component, **options)

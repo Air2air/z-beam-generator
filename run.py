@@ -30,37 +30,34 @@ from utils.env_loader import load_env_variables
 ARTICLE_CONTEXT = {
     # Core article parameters
     "subject": "quartzite",
-    "article_type": "material",
-    "ai_provider": "deepseek",
-    "author_id": 3, #1: Taiwan, 2: Italy, 3: USA, 4: Indonesia
-    # Components configuration with provider settings
+    "article_type": "material",# application, material, region, or thesaurus
+    "ai_provider": "deepseek", # deepseek, openai, xai, gemini
+    "options": {"model": "deepseek-chat"},  # deepseek-chat (88), "GPT-4o" (76), "grok-3-latest" (62), "gemini-1.5-flash"
+    "author_id": 1,  # 1: Taiwan, 2: Italy, 3: USA, 4: Indonesia
     "components": {
         "frontmatter": {
             "enabled": True,
             "include_website": True,
-            "provider": "deepseek",
         },
         "content": {
             "enabled": True,
             "min_words": 300,
             "max_words": 500,
-            "provider": "xai",
-            "options": {"model": "grok-3-latest"},  # Specify the Grok model
+            "provider": "xai", # deepseek, openai, xai, gemini
+            "options": {"model": "grok-3-latest"},  # deepseek-chat (88), "GPT-4o" (76), "grok-3-latest" (62), "gemini-1.5-flash"
         },
         "bullets": {
             "enabled": True,
             "count": 5,
             "style": "technical",
-            "provider": "deepseek",
         },
         "table": {
             "enabled": True,
             "style": "technical",
             "include_units": True,
-            "provider": "deepseek",
         },
-        "tags": {"enabled": True, "max_count": 10, "provider": "deepseek"},
-        "jsonld": {"enabled": True, "provider": "deepseek"},
+        "tags": {"enabled": True, "max_count": 10},
+        "jsonld": {"enabled": True},
     },
     # Output configuration
     "output_dir": "output",

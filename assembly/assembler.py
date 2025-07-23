@@ -26,6 +26,7 @@ from utils.registry_factory import RegistryFactory
 from utils.string_utils import StringUtils
 from utils.path_manager import PathManager
 from components.base import BaseComponent
+from api.client import ApiClient  # Import ApiClient
 
 logger = logging.getLogger(__name__)
 
@@ -56,6 +57,12 @@ class ArticleAssembler:
         
         # Initialize schema
         self.schema = self._load_schema()
+        
+        # Make sure the ApiClient gets the full ARTICLE_CONTEXT
+        self.api_client = ApiClient(
+            provider=ai_provider,
+            article_context=config  # Pass the entire config/ARTICLE_CONTEXT
+        )
         
         logger.info(f"Initializing ArticleAssembler for {article_type}: {subject}")
 

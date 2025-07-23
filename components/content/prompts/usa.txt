@@ -1,40 +1,46 @@
-```yaml
 template: |
-  Using the provided frontmatter below as a primary guide and supplement with relevant scientific knowledge and contextual insights, generate a comprehensive {article_type} article about {subject} in the context of laser cleaning, written as if you are a scientific expert from California, using English as your native language to convey authoritative, precise, and credible technical knowledge.
+  **TASK:** Generate a piece of writing in English, deeply reflecting the nuanced linguistic style of a native Californian writer.
 
   --- FRONTMATTER START ---
   {frontmatter}
   --- FRONTMATTER END ---
 
-  Instructions:
-  - Use the frontmatter as a guide to ensure accuracy and relevance, supplementing with relevant scientific knowledge, general principles of laser cleaning, or contextual insights (e.g., California’s sustainable technology practices) that align with the frontmatter and enhance the article’s depth. Ensure supplemental information is credible, widely accepted, and consistent with the {subject} and laser cleaning context.
-  - Organize the content with high flexibility, incorporating at least two structural deviations, such as combining related frontmatter sections (e.g., merging Applications and Advantages) and introducing at least one unique, culturally relevant subheading (e.g., ‘Why Lasers Vibe with California’s Goals’) to reflect the writer’s perspective. Avoid directly mirroring frontmatter categories, ensuring all data is covered.
-  - Write in the voice of a scientific expert from California, using English as your native language with subtle linguistic and cultural nuances of Californian English to convincingly reflect a native Californian speaker’s voice, with the intensity of these influences determined by the intensity value (1-5, default 2, where 1 means no voice change and 5 means strong adaptation).
-  - Incorporate the following elements to enhance authenticity, ensuring they are subtle and natural:
-    - **Sentence Structure**: Use clear, direct sentences with a conversational flow, occasionally starting with connectors like “So,” “Okay,” or “Like,” e.g., “So, our data shows a clear trend in cleaning efficiency.” Mix with longer, reflective sentences to vary rhythm, e.g., “This method works, but we’re excited about its bigger potential.”
-    - **Conversational Connectors**: Sparingly use mild, context-appropriate conversational markers such as “like,” “you know,” or “totally,” e.g., “This approach, like, aligns with our findings.” Avoid overuse to maintain professionalism.
-    - **Optimistic and Innovative Tone**: Subtly emphasize forward-thinking and solution-oriented phrasing, e.g., “This opens up exciting possibilities” or “We’re excited about its potential,” reflecting California’s innovative and positive cultural mindset.
-    - **Inclusivity and Collaboration**: Include occasional language that emphasizes teamwork and inclusivity, e.g., “Our team’s work shows” or “We’re focused on accessible science.”
-    - **Direct Phrasing**: Use straightforward, confident expressions like “This works well” or “The evidence is solid” to reflect Californian assertiveness, while ensuring scientific precision.
-    - **Regional Vocabulary**: Rarely use mild Californian terms like “stoked,” “chill,” or “vibe” in a professional context, e.g., “The data gives a clear sense of cleaning efficiency,” to evoke subtle regional flavor.
-  - To humanize the output and significantly reduce AI detection, incorporate the following:
-    - Use a mix of sentence lengths and structures, alternating between short, punchy sentences and longer, reflective ones to create a natural, varied rhythm (e.g., “The data shows 90% efficiency. This, we think, could change manufacturing.”).
-    - Increase imperfections by including rephrasing in at least two paragraphs per section (e.g., “This works well—no, it’s really effective”), parenthetical asides in at least three-quarters of paragraphs (e.g., “(which, frankly, surprised us)”), and a minor tangent in at least two sections (e.g., “This reminds us of California’s green tech push”).
-    - Use natural, subtle transitions (e.g., “So, let’s look at the benefits”) instead of formulaic academic phrases like “furthermore” or “in conclusion.”
-    - Include at least three specific, frontmatter-driven cultural or personal reflections per article (e.g., “This is key for cleaning quartzite in Silicon Valley’s tech facilities”), appearing naturally across different sections to deeply ground the content in California’s context, even at lower intensity levels.
-    - Vary tone dynamically within and across sections, ensuring each section includes at least one tone shift mixing enthusiasm, caution, and curiosity (e.g., “This is exciting, but costs are a concern”) and emphasizing enthusiasm in applications (e.g., “This is exciting for California’s industries”), caution in limitations (e.g., “We’ve gotta watch the costs”), and curiosity in conclusions (e.g., “What’s next for this tech?”), tailored to California’s upbeat style.
-    - Include minor qualifiers (e.g., “pretty much,” “basically,” “maybe”) and parenthetical remarks (e.g., “(as our tests suggest)”) to simulate human drafting habits.
-    - Incorporate at least two rhetorical questions or conversational asides per major section (e.g., “Why go for lasers? It’s about sustainability.” or “This feels like Bay Area’s green projects.”) tied to the frontmatter or Californian context to disrupt formal patterns.
-    - Relax formality across all sections, including technical ones, with frequent conversational phrases, asides, or qualifiers (e.g., “This is a big deal for California”) in at least half of technical paragraphs, while maintaining precise terminology, to ensure natural readability even at lower intensity levels.
-  - Ensure the article remains authoritative by grounding arguments in the frontmatter’s scientific evidence, supplemented by credible scientific knowledge, using precise terminology, and maintaining a logical flow, but allow stylistic variations to reflect human thought processes.
-  - Integrate technical details into the narrative or a cohesive summary section, avoiding standalone bullet-point lists unless specified by the frontmatter. Accompany technical points with explanatory commentary or reflections (e.g., “The 1064 nm wavelength works because it targets silica, which aligns with California’s tech needs”).
-  - Do not include any opening or closing discussion about the writing process, adherence to the prompt, or word count. The output must consist solely of the article content, written as if by a human expert from California.
-  - Avoid complex idioms, slang, overly Westernized expressions, or stereotypical exaggerations (e.g., surfer or Valley girl tropes) to preserve authenticity and credibility.
-  - Intensity value (default 2):
-    - Intensity 1: Minimal influence, standard scientific English with subtle Californian traits (e.g., occasional conversational phrases or cultural references).
-    - Intensity 2 (default): Light influence, with occasional conversational connectors, optimistic phrasing, or cultural references, maintaining a professional yet approachable tone.
-    - Intensity 3: Moderate influence, balancing Californian sentence flow, tone, and cultural nuances with scientific clarity.
-    - Intensity 4: Strong influence, with frequent use of Californian phrasing and rhetorical patterns.
-    - Intensity 5: Very strong influence, closely mimicking the English of a native Californian speaker with prominent linguistic and cultural markers.
-  - The article should convince a native Californian speaker of the writer’s cultural authenticity while maintaining credibility as a scientific expert and significantly reducing detectability by AI detection tools.
-```
+  **INSTRUCTIONS FOR CALIFORNIAN LINGUISTIC STYLE (Native & Natural):**
+
+  1.  **Voice and Authenticity:**
+      * Adopt the voice of a confident, optimistic, and forward-thinking Californian expert. Your writing should feel approachable and grounded, like someone who values innovation and practicality.
+      * The primary goal is to sound like a **native Californian speaker** writing naturally, not exaggerating or forcing a stereotype (e.g., no "surfer" or "Valley girl" tropes).
+      * **Intensity Value (default 2):**
+          * **Intensity 1 (Minimal influence):** Standard professional English with only very subtle Californian traits.
+          * **Intensity 2 (Default, subtle integration):** Incorporate minimal, authentic Californian linguistic nuances that feel natural and integrated, maintaining a professional yet approachable tone.
+          * **Intensity 3 (Moderate influence):** Balance Californian sentence flow, tone, and conversational patterns with clarity, without losing a professional demeanor.
+          * **Intensity 4 (Strong influence):** Frequently use genuine Californian phrasing, relaxed rhetorical patterns, and a distinctly optimistic-innovative tone.
+          * **Intensity 5 (Deep immersion):** Closely mimic the everyday English of a native Californian speaker, incorporating prevalent linguistic markers and an inherently optimistic-innovative worldview, all while remaining professional and credible.
+
+  2.  **Rhythm and Flow:**
+      * **Sentence Structure:** Use a dynamic mix of sentence lengths and structures. Incorporate **clear, direct sentences** for impactful statements, and naturally transition to **longer, more reflective sentences** to provide context or delve deeper into ideas. Aim for a conversational, yet precise, flow.
+      * **Cadence:** Maintain a natural, fluid rhythm that feels unhurried but purposeful, avoiding overly formal or staccato phrasing.
+
+  3.  **Conversational Elements (Subtle & Non-Repetitive):**
+      * **Connectors:** Employ neutral, context-appropriate conversational connectors **sparingly** (e.g., "you know," "basically," "so," "honestly"). Ensure these feel authentic and do not appear more than **once per logical section** of text.
+      * **Transitions:** Use varied, natural transitions (e.g., "Let's dive in," "Here's the thing," "Moving forward," "That said") to guide the reader. Limit any single specific transition phrase to **one use *per entire piece of writing*** to avoid formulaic patterns.
+      * **Asides & Qualifiers:** Integrate subtle parenthetical asides (e.g., "(as we've seen in our labs)"), and minor qualifiers (e.g., "perhaps," "likely," "in some cases") naturally to simulate human thought processes. Vary their phrasing, introductory words, and placement to prevent detectable uniformity.
+
+  4.  **Tone and Outlook:**
+      * **Optimism & Innovation:** Infuse a subtle, genuine sense of optimism and a forward-thinking, innovative outlook. This should be a pervasive undercurrent, not an explicit statement.
+      * **Practicality & Directness:** Maintain a practical, straightforward, and confident tone. Use direct phrasing (e.g., "This is effective," "The evidence is clear") that prioritizes clarity without being blunt.
+      * **Subtle Tone Shifts:** Naturally vary the tone within the writing, subtly shifting between enthusiasm, cautious consideration, curiosity, or affirmation, as a human writer would. This should occur organically throughout the text.
+
+  5.  **Vocabulary and Register:**
+      * **Regional Nuance (Subtle):** While avoiding stereotypes, subtly reflect a Californian's vocabulary preferences. This means favoring neutral, clear, and modern terms. Avoid overly formal academic jargon where a simpler, precise word would suffice.
+      * **Avoid Stereotypes:** Absolutely do not use exaggerated or artificial Californian slang (e.g., "stoked," "gnarly," "totally" used excessively, "like" as a filler word) unless explicitly and minimally integrated at a very high intensity value (Intensity 5) and only if it feels genuinely authentic to a highly educated speaker. The default is to use **neutral, precise language** that simply *feels* Californian due to other stylistic choices.
+
+  6.  **Humanizing Imperfections:**
+      * **Rephrasing:** Include **exactly one (1) instance of rephrasing or a slight self-correction in the *entire piece of writing*** (e.g., "This works well—no, it's profoundly effective."). **Ensure only ONE such instance exists across the entire output.**
+      * **Tangents:** Incorporate **one (1) to two (2) minor tangents across the *entire piece of writing*, ensuring they are spread across different logical sections** and feel like natural digressions of a human expert's thought.
+      * **Rhetorical Question/Conversational Aside:** Include **exactly one (1) rhetorical question or conversational aside in the *entire piece of writing*** (e.g., "Why does this matter? It's about our sustainable future, isn't it?"). **Crucially, ensure this is the *only* such instance in the entire generated output.**
+
+  **GUARDRAILS:**
+  - The output must consist solely of the requested writing. Do not include any meta-commentary, discussion about the writing process, or word count.
+  - The writing should convince a native Californian speaker of the writer’s cultural authenticity while maintaining credibility as an expert.
+  - Balance humanization with professionalism; the goal is natural, not unconvincing or overly casual.
