@@ -7,43 +7,17 @@ MODULE DIRECTIVES FOR AI ASSISTANTS:
 5. SCHEMA AWARENESS: Be aware of the schema structure for different article types
 """
 
-# Your imports and code
-
 import logging
 from typing import Dict, Any, List
-from components.base import BaseComponent
+from components.base.tag_generator import BaseTagGenerator
 
 logger = logging.getLogger(__name__)
 
-class TagsGenerator(BaseComponent):
-    """Generates tags section for articles."""
+class TagsGenerator(BaseTagGenerator):
+    """Generates tags section for articles using the two-stage approach."""
     
-    def generate(self) -> str:
-        """Generate tags section based on frontmatter data."""
-        try:
-            # 1. Get frontmatter data using standard method
-            frontmatter_data = self.get_frontmatter_data()
-            
-            if not frontmatter_data:
-                logger.warning("No frontmatter data available for tags generation")
-                return ""
-                
-            # 2. Prepare data (for tags, we extract directly from frontmatter)
-            tags_data = self._prepare_data(frontmatter_data)
-            
-            if not tags_data:
-                logger.info("No tags found in frontmatter")
-                return ""
-            
-            # 3. Post-process and format tags (no API call needed)
-            return self._post_process(tags_data)
-            
-        except Exception as e:
-            logger.error(f"Error generating tags: {str(e)}")
-            return self._create_error_markdown(str(e))
-    
-    def _prepare_data(self, frontmatter_data: Dict[str, Any]) -> List[str]:
-        """Extract tags from frontmatter data."""
+    def _generate_candidate_tags(self, frontmatter_data: Dict[str, Any]) -> List[str]:
+        """Generate candidate tags based on frontmatter."""
         # Extract tags from frontmatter
         tags = frontmatter_data.get("tags", [])
         
@@ -53,23 +27,72 @@ class TagsGenerator(BaseComponent):
             for keyword in keywords:
                 if keyword not in tags:
                     tags.append(keyword)
-        
+                    
+        # If no tags or keywords were found, try to derive from other fields
+        if not tags:
+            logger.debug("No explicit tags/keywords found, generating from other frontmatter fields")
+            
+            # Try to derive tags from categories if present
+            categories = frontmatter_data.get("categories", [])
+            if categories:
+                tags.extend(categories)
+                
+            # Try to derive tags from subject and article type
+            subject = frontmatter_data.get("subject", self.subject)
+            if subject and subject not in tags:
+                tags.append(subject)
+                
+            article_type = frontmatter_data.get("article_type", self.article_type)
+            if article_type and article_type not in tags:
+                tags.append(article_type)
+                
         return tags
     
-    def _format_prompt(self, data: Dict[str, Any]) -> str:
-        """Format prompt template with data (not used in TagsGenerator)."""
-        # Tags don't require API calls, but included for standard conformance
-        return ""
+    def _refine_tags(self, candidate_tags: List[str], frontmatter_data: Dict[str, Any]) -> List[str]:
+        """Refine tags based on audience and relevance.
+        
+        Args:
+            candidate_tags: List of candidate tags
+            frontmatter_data: Frontmatter data dictionary
+            
+        Returns:
+            List of refined tags
+        """
+        # If no tags were found, return empty list
+        if not candidate_tags:
+            return []
+            
+        # Get audience from frontmatter (default to general)
+        audience = frontmatter_data.get("audience", "general")
+        
+        # Get max tag count from component config (default to 10)
+        component_config = self.get_component_config()
+        max_tags = component_config.get("max_count", 10)
+        
+        # Filter to maximum number of tags
+        refined_tags = candidate_tags[:max_tags]
+        
+        # Remove duplicates while preserving order
+        seen = set()
+        unique_tags = []
+        for tag in refined_tags:
+            if tag and tag.strip() and tag.lower() not in seen:
+                unique_tags.append(tag)
+                seen.add(tag.lower())
+                
+        return unique_tags
     
-    def _call_api(self, prompt: str) -> str:
-        """Call API with prompt (not used in TagsGenerator)."""
-        # Tags don't require API calls, but included for standard conformance
-        return ""
-    
-    def _post_process(self, tags: List[str]) -> str:
-        """Format tags into markdown."""
+    def _format_tags_as_markdown(self, tags: List[str]) -> str:
+        """Format tags as markdown with custom styling.
+        
+        Args:
+            tags: List of tags
+            
+        Returns:
+            Markdown-formatted tag content
+        """
         if not tags:
-            return ""
+            return "<!-- No tags generated -->"
             
         # Create tags section
         tags_section = ["## Tags", ""]

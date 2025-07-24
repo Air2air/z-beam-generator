@@ -316,6 +316,21 @@ class ArticleAssembler:
                 
                 return component
             
+            # Special case for tags component (needs direct initialization)
+            if component_name == "tags":
+                # Import TagsGenerator here to avoid circular imports
+                from components.tags.generator import TagsGenerator
+                
+                # Correct initialization for TagsGenerator
+                component = TagsGenerator(self.subject, self.article_type, component_name, component_config)
+                
+                # Set frontmatter data if available
+                if hasattr(self, 'frontmatter_data') and self.frontmatter_data:
+                    if hasattr(component, 'set_frontmatter'):
+                        component.set_frontmatter(self.frontmatter_data)
+                
+                return component
+            
             # Get component provider
             provider = component_config.get("provider", self.ai_provider)
             
