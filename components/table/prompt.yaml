@@ -1,133 +1,213 @@
 name: "Table Generator"
-description: "Creates technical tables with numerical ranges from frontmatter data for laser cleaning articles, researching keys to identify or infer ranges"
-version: "4.2"
-template: |
-  Based on the frontmatter data for the {article_type} "{subject}", create 2-3 formatted markdown tables containing numerical ranges (or at least min/max) by researching relevant frontmatter keys.
+description: "Generates comprehensive tables from frontmatter data based on numerical ranges and structured data"
+version: "2.2"
 
-  --- FRONTMATTER START ---
-  {frontmatter}
-  --- FRONTMATTER END ---
-
-  IMPORTANT: You MUST generate actual markdown tables with numerical ranges using data from the frontmatter or inferred through research. DO NOT skip this component. Only generate range-based tables.
-
-  INSTRUCTIONS:
-
-  1. ANALYZE & SELECT TABULAR DATA:
-     - Scan the entire frontmatter to identify keys containing numerical data suitable for range-based tables (e.g., technicalSpecifications, outcomes, environmentalImpact).
-     - Prioritize keys with explicit numerical ranges (e.g., powerRange: 50–500W) or single values that can be researched to infer ranges (e.g., wavelength: 1064nm).
-     - Research frontmatter keys (e.g., via domain knowledge or external sources if needed) to identify or infer numerical ranges for parameters lacking explicit ranges, such as "low," "medium," or "high" descriptors.
-     - Select 2-3 sections with the most suitable data for range-based tables (e.g., parameters with min/max or researchable ranges).
-     - If fewer than 2 sections contain sufficient data, research related keys (e.g., applications, outcomes) to infer reasonable numerical ranges and note assumptions in the table introduction.
-     - Validate frontmatter for completeness; if ranges are incomplete (e.g., only min provided), use domain knowledge or research to estimate missing values and document assumptions.
-
-  2. PARAMETER RANGE PROCESSING:
-     - For each numerical parameter identified:
-       a. Extract explicit minimum and maximum values from the frontmatter if available.
-       b. If ranges are not explicit, research the parameter (e.g., typical ranges for laser cleaning wavelengths) to infer min/max and intermediate steps.
-       c. Generate 3-5 intermediate steps using linear interpolation for linear parameters (e.g., power) or logarithmic interpolation for exponential scales (e.g., frequency).
-       d. Identify the optimal/recommended value for {subject} based on frontmatter terms like "optimal," "recommended," or "standard." If none is specified, select the median value of the range or a research-based optimal value.
-       e. Mark the optimal value with `<td class="active">value</td>`.
-
-  3. UNIT AND PRECISION FORMATTING:
-     - Extract units from the frontmatter (e.g., "W" for power, "nm" for wavelength) and include them in table headers or cells as specified.
-     - If units are missing, infer standard units based on the parameter (e.g., watts for power, nanometers for wavelength) via research or domain knowledge.
-     - Format numerical values with consistent precision (e.g., 1 decimal place for spot size, whole numbers for power) unless specified otherwise in the frontmatter.
-     - Add a note in the table introduction if units or ranges are inferred or researched.
-
-  4. MARKDOWN TABLE FORMATTING:
-     - Use standard markdown table syntax for range-based tables:
-       ```
-       | Header 1 | Header 2 | Header 3 |
-       | --- | --- | --- |
-       | Data | Data | <td class="active">Optimal Value</td> |
-       ```
-     - Align all columns left unless specified otherwise in the frontmatter.
-     - Ensure headers are bold (e.g., `**Parameter**`) and include units where applicable.
-     - Validate that tables render correctly with consistent column widths (max 60 characters) and no broken pipes.
-     - Add a descriptive header (e.g., `## Table Name`) and a brief introduction explaining the table's relevance, noting any researched or inferred ranges.
-
-  5. Return ONLY the formatted markdown tables with headers and brief introductions. Focus exclusively on range-based tables with numerical data.
-
-  EXAMPLE OUTPUT FOR TECHNICAL SPECIFICATIONS:
-
-  ## Technical Specifications for Quartzite Laser Cleaning
-
-  This table outlines key technical parameters for laser cleaning of quartzite, with optimal values highlighted. Intermediate steps are linearly interpolated, and ranges are based on frontmatter data or researched values.
-
-  | **Parameter** | **Minimum** | **Low** | **<td class="active">Optimal</td>** | **High** | **Maximum** |
-  | --- | --- | --- | --- | --- | --- |
-  | Power (W) | 50 | 100 | <td class="active">250</td> | 350 | 500 |
-  | Pulse Duration (ns) | 10 | 25 | <td class="active">50</td> | 75 | 100 |
-  | Spot Size (mm) | 0.1 | 0.5 | <td class="active">1.0</td> | 2.5 | 5.0 |
-  | Repetition Rate (kHz) | 20 | 50 | <td class="active">100</td> | 150 | 200 |
-
-  ## Environmental Impact Metrics for Quartzite Laser Cleaning
-
-  This table presents environmental metrics with inferred ranges based on frontmatter and research, highlighting optimal benefits of laser cleaning.
-
-  | **Metric** | **Minimum** | **Low** | **<td class="active">Optimal</td>** | **High** | **Maximum** |
-  | --- | --- | --- | --- | --- | --- |
-  | Waste Reduction (%) | 50 | 70 | <td class="active">90</td> | 95 | 100 |
-  | Energy Savings (%) | 10 | 20 | <td class="active">30</td> | 40 | 50 |
-
-parameters:
-  max_tokens: 1500
-  temperature: 0.1
-  
-validation:
-  required_format: "markdown_table"
-  
-# Table Component Configuration
-base:
-  enabled: true
-  style: "technical"
-  include_units: true
-  max_tables: 3
-  min_rows_per_table: 2
-  strict_data_only: true
-  highlight_optimal: true
-  
-# Frontmatter Analysis Configuration
-analysis:
-  scan_all_keys: true
-  prioritize_numerical: true
-  detect_ranges: true
-  min_data_points: 3
-  allow_research: true  # Enable researching frontmatter keys to infer numerical ranges
-  
-# Table Format Configuration
+# Table formatting configuration
 format:
   header_style: "bold"
-  alignment: "left"
-  include_units: true
-  sort_properties: true
-  max_column_width: 60
-  highlight_class: "active"
+  include_descriptions: true
+  table_style: "detailed"
+  section_title_format: "## {title}"
+  preserve_original_values: true
+  process_all_frontmatter_keys: true  # Enable processing of any frontmatter key
+
+# Analysis configuration for dynamic frontmatter processing
+analysis:
+  # Table generation strategy priority (first match wins)
+  strategy_priority:
+    - "explicit_type"  # Use table_structure.type if specified
+    - "list_based"     # Generate tables from lists of objects
+    - "range_based"    # Generate interpolated tables for numerical ranges
+    - "key_value"      # Generate simple key-value tables
+    
+  # Priority for frontmatter keys (determines order of tables)
+  priority_keys:
+    - "technicalSpecifications"
+    - "composition"
+    - "applications"
+    - "outcomes"
+    - "environmentalImpact"
+    - "compatibility"
+    - "regulatoryStandards"
   
-# Range Table Options
+  # Process any frontmatter key not explicitly defined
+  process_undefined_keys: true
+  
+  # Default handling for different data types
+  default_handling:
+    list_of_objects: "table"       # Convert lists of objects to tables
+    list_of_strings: "bullet_list" # Convert lists of strings to bullet lists
+    object_with_ranges: "range_table" # Convert objects with ranges to range tables
+    simple_value: "include"        # Include simple values in key-value tables
+    
+  # Special handling directives
+  special_handling:
+    - key: "regulatoryStandards"
+      directive: "preserve_original_codes"
+    - key: "keywords"
+      directive: "convert_to_table"
+    - key: "tags"
+      directive: "convert_to_table"
+      
+# Range table configuration (applied to type: "range" tables)
 range_tables:
-  enabled: true
-  min_steps: 3
+  min_steps: 5
   max_steps: 5
-  include_optimal: true
-  highlight_optimal: true
-  header_labels:
-    min: "Minimum"
-    low: "Low"
-    optimal: "Optimal"
-    high: "High"
-    max: "Maximum"
-  allow_custom_headers: true  # Allow frontmatter to override header names
-  
-# Parameter Optimization Rules
+  interpolation: "linear"
+  default_column_labels:
+    - "Minimum"
+    - "Low"
+    - "Optimal"
+    - "High"
+    - "Maximum"
+
+# Optimization settings
 optimization:
-  identify_optimal: true
-  mark_with_class: true
-  optimal_indicators:
-    - "recommended"
-    - "optimal"
-    - "ideal"
-    - "best"
-    - "standard"
-  fallback_optimal: "median"  # Use median of range if no optimal value is specified
-  allow_manual_optimal: true  # Allow frontmatter to explicitly define optimal values
+  highlight_optimal: true
+  optimal_column: "mid"  # Options: min, mid, max
+
+# Dynamic table structure for any frontmatter key
+dynamic_tables:
+  enabled: true
+  title_format: "## {key}"
+  description_format: "{key} data for {subject}:"
+  
+  # Mapping of data patterns to table formats
+  mappings:
+    # For lists of objects with name/description fields
+    - pattern: "list_with_name_description"
+      columns:
+        - name: "Name"
+          field: "name"
+        - name: "Description"
+          field: "description"
+          
+    # For lists of objects with component/type/percentage
+    - pattern: "list_with_component_composition"
+      columns:
+        - name: "Component"
+          field: "component"
+        - name: "Type"
+          field: "type"
+        - name: "Percentage"
+          field: "percentage"
+          
+    # For lists of objects with metric/result
+    - pattern: "list_with_metrics"
+      columns:
+        - name: "Metric"
+          field: "metric"
+        - name: "Result"
+          field: "result"
+          
+    # For lists of objects with code/description
+    - pattern: "list_with_codes"
+      columns:
+        - name: "Code"
+          field: "code"
+        - name: "Description"
+          field: "description"
+          
+    # For lists of strings
+    - pattern: "list_of_strings"
+      columns:
+        - name: "Item"
+        - name: "Value"
+        
+    # For objects with properties
+    - pattern: "object_with_properties"
+      columns:
+        - name: "Property"
+        - name: "Value"
+
+# Table structure configuration
+table_structure:
+  technicalSpecifications:
+    title: "Technical Specifications for Laser Cleaning {subject}"
+    description: "Comprehensive parameters for optimal laser cleaning of {subject}:"
+    type: "range"
+    columns:
+      - name: "Parameter"
+      - name: "Minimum"
+      - name: "Low"
+      - name: "Optimal"
+      - name: "High"
+      - name: "Maximum"
+    
+  composition:
+    title: "Composition of {subject}"
+    description: "{subject}'s mineral composition affecting laser cleaning performance:"
+    type: "list"
+    data_mapping:
+      name_field: "component"
+      value_fields: ["type", "percentage"]
+    columns:
+      - name: "Component"
+      - name: "Type"
+      - name: "Percentage"
+    
+  applications:
+    title: "Applications for {subject} Laser Cleaning"
+    description: "Key use cases with detailed implementation:"
+    type: "list"
+    data_mapping:
+      name_field: "name"
+      description_field: "description"
+    columns:
+      - name: "Application"
+      - name: "Description"
+    
+  outcomes:
+    title: "Performance Metrics for {subject} Laser Cleaning"
+    description: "Verified cleaning results and quality measurements:"
+    type: "list"
+    data_mapping:
+      name_field: "metric"
+      value_field: "result"
+    columns:
+      - name: "Metric"
+      - name: "Result"
+    
+  environmentalImpact:
+    title: "Environmental Benefits of {subject} Laser Cleaning"
+    description: "Quantifiable environmental advantages compared to traditional methods:"
+    type: "list"
+    data_mapping:
+      name_field: "benefit"
+      description_field: "description"
+    columns:
+      - name: "Benefit"
+      - name: "Impact"
+    
+  compatibility:
+    title: "Material Compatibility with {subject}"
+    description: "Other materials compatible with similar laser cleaning techniques:"
+    type: "list"
+    data_mapping:
+      name_field: "material"
+      value_field: "application"
+    columns:
+      - name: "Material"
+      - name: "Application"
+    
+  regulatoryStandards:
+    title: "Regulatory Standards for {subject} Laser Cleaning"
+    description: "Applicable codes and compliance requirements:"
+    type: "list"
+    data_mapping:
+      name_field: "code"
+      description_field: "description"
+    columns:
+      - name: "Code"
+      - name: "Description"
+    preserve_original_values: true
+    
+  # Add special handling for keywords
+  keywords:
+    title: "Keywords for {subject} Laser Cleaning"
+    description: "Searchable terms related to {subject} laser cleaning technology:"
+    type: "list"
+    columns:
+      - name: "Keyword"
+      - name: "Category"
+

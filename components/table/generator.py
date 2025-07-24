@@ -9,237 +9,387 @@ MODULE DIRECTIVES FOR AI ASSISTANTS:
 5. DYNAMIC ADAPTATION: Adapt to changes in frontmatter schema without code changes
 6. NO CONTENT GENERATION: Don't generate content not in frontmatter
 7. CONSISTENT NAMING: Use frontmatter key names consistently
+8. NUMERICAL RANGE PROCESSING: Process numerical ranges in frontmatter to create interpolated tables
+9. RANGE-BASED FILTERING: Use prompt config to determine which tables should be generated
+10. OPTIMAL VALUE HIGHLIGHTING: Apply highlighting to optimal values as specified in prompt
 """
 
+import re
 import logging
-from typing import Dict, Any, List
-
-from components.base import BaseComponent
+from typing import Dict, Any, List, Optional
+from ..base import BaseComponent
 
 logger = logging.getLogger(__name__)
 
 class TableGenerator(BaseComponent):
-    """Generates tables for articles based on frontmatter data."""
-    
-    def __init__(self, subject, article_type, component_name, config=None):
-        """Initialize the table generator.
+    """Generates tables from frontmatter data."""
+
+    def __init__(self, *args, **kwargs):
+        """Initialize the table generator with flexible argument handling."""
+        logger.info(f"TableGenerator initialized with args={args}, kwargs={kwargs}")
         
-        Args:
-            subject: Subject of the article (e.g., 'quartzite')
-            article_type: Type of article (e.g., 'material')
-            component_name: Name of the component (e.g., 'table')
-            config: Configuration for the component
-        """
-        # Enhanced logging for initialization parameters
-        logger.debug(f"TableGenerator.__init__ called with: subject={type(subject)}, article_type={type(article_type)}, component_name={type(component_name)}, config={type(config)}")
+        # Extract subject from either positional or keyword arguments
+        subject = None
+        component_name = "table"
         
-        # Fix for when component_name is actually a config dictionary
-        if isinstance(component_name, dict) and config is None:
-            logger.info(f"TableGenerator detected component_name is a dict, fixing initialization pattern")
-            # The correct initialization pattern is:
-            # - subject is the actual subject string
-            # - article_type is the actual article_type string
-            # - config is the component configuration
-            config = component_name
-            component_name = "table"
+        if len(args) >= 1:
+            subject = args[0]
+        elif 'subject' in kwargs:
+            subject = kwargs['subject']
+            
+        if len(args) >= 2:
+            if isinstance(args[1], str):
+                component_name = args[1]
+            
+        # Initialize the base component
+        super().__init__(component_name=component_name)
         
-        # Log pre-super call state
-        logger.debug(f"TableGenerator calling super().__init__ with: subject={subject}, article_type={article_type}, component_name={component_name}, config={bool(config)}")
-        
-        # Call super with the right parameters
-        super().__init__(subject, article_type, component_name, config)
-        
-        # Log post-initialization state
-        logger.debug(f"TableGenerator attributes after init: self.subject={type(self.subject)}, self.article_type={type(self.article_type)}")
-        
-        # Load the prompt configuration during initialization
-        try:
-            self.prompt_config = self.load_prompt_config()
-            logger.debug(f"Loaded table prompt configuration: {self.prompt_config.keys() if hasattr(self.prompt_config, 'keys') else 'None'}")
-        except Exception as e:
-            logger.error(f"Failed to load prompt configuration: {str(e)}")
-            self.prompt_config = {}
-        
-        logger.info(f"TableGenerator initialized for {self.subject} with component_name: {self.component_type}")
-    
+        # Store the subject
+        self.subject = subject or ""
+        logger.info(f"TableGenerator initialized for {self.subject} with component_name: {component_name}")
+
     def generate(self) -> str:
-        """Generate tables dynamically based on frontmatter structure."""
+        """Generate tables only for numerical range data in frontmatter."""
         try:
             # Get frontmatter data
-            logger.debug(f"TableGenerator.generate() called with subject={self.subject}")
             frontmatter_data = self.get_frontmatter_data()
-            
-            logger.info(f"Table generator received frontmatter: {bool(frontmatter_data)}")
-            
-            # Get format settings from prompt configuration
-            logger.debug(f"Getting format settings from prompt_config: {self.prompt_config.keys() if hasattr(self.prompt_config, 'keys') else 'None'}")
-            format_config = self.prompt_config.get("format", {})
-            
-            # Extract formatting options from prompt config
-            header_style = format_config.get("header_style", "")
-            include_descriptions = format_config.get("include_descriptions", True)
-            table_style = format_config.get("table_style", "standard")
-            section_title_format = format_config.get("section_title_format", "## {title}")
-            
-            logger.debug(f"Using prompt-based formatting: header_style={header_style}, table_style={table_style}")
-            
-            # Direct table generation from frontmatter
-            tables_content = []
-            
-            # Process applications data if available
-            if 'applications' in frontmatter_data and frontmatter_data['applications']:
-                apps = frontmatter_data['applications']
-                logger.debug(f"Found applications data: {len(apps) if isinstance(apps, list) else type(apps)}")
-                
-                if isinstance(apps, list) and apps:
-                    logger.info(f"Generating applications table with {len(apps)} entries")
-                    heading = f"## Applications of Laser Cleaning on {self.subject.title()}"
-                    tables_content.append(heading)
-                    
-                    description = f"\nLaser cleaning offers specific advantages for different {self.subject} applications:\n"
-                    tables_content.append(description)
-                    
-                    # Create table header with optional styling
-                    header_prefix = "**" if header_style == "bold" else ""
-                    header_suffix = "**" if header_style == "bold" else ""
-                    tables_content.append(f"| {header_prefix}Application{header_suffix} | {header_prefix}Description{header_suffix} |")
-                    tables_content.append("| --- | --- |")
-                    
-                    # Add table rows
-                    for app in apps:
-                        name = app.get('name', '')
-                        desc = app.get('description', '')
-                        tables_content.append(f"| {name} | {desc} |")
-                    
-                    tables_content.append("")
-            else:
-                logger.debug(f"No applications data found in frontmatter")
-            
-            # Process composition data if available
-            if 'composition' in frontmatter_data and frontmatter_data['composition']:
-                comp = frontmatter_data['composition']
-                logger.debug(f"Found composition data: {len(comp) if isinstance(comp, list) else type(comp)}")
-                
-                if isinstance(comp, list) and comp:
-                    logger.info(f"Generating composition table with {len(comp)} entries")
-                    heading = f"## Composition of {self.subject.title()}"
-                    tables_content.append(heading)
-                    
-                    description = f"\n{self.subject.title()}'s composition affects laser cleaning parameters and effectiveness:\n"
-                    tables_content.append(description)
-                    
-                    # Create table header
-                    header_prefix = "**" if header_style == "bold" else ""
-                    header_suffix = "**" if header_style == "bold" else ""
-                    tables_content.append(f"| {header_prefix}Component{header_suffix} | {header_prefix}Type{header_suffix} | {header_prefix}Percentage{header_suffix} |")
-                    tables_content.append("| --- | --- | --- |")
-                    
-                    # Add table rows
-                    for c in comp:
-                        component = c.get('component', '')
-                        type_val = c.get('type', '')
-                        percentage = c.get('percentage', '')
-                        tables_content.append(f"| {component} | {type_val} | {percentage} |")
-                    
-                    tables_content.append("")
-            else:
-                logger.debug(f"No composition data found in frontmatter")
-            
-            # Process technical specifications if available
-            if 'technicalSpecifications' in frontmatter_data and frontmatter_data['technicalSpecifications']:
-                specs = frontmatter_data['technicalSpecifications']
-                logger.debug(f"Found technicalSpecifications: {len(specs) if isinstance(specs, dict) else type(specs)}")
-                
-                if isinstance(specs, dict) and specs:
-                    logger.info(f"Generating technical specifications table with {len(specs)} entries")
-                    heading = f"## Technical Specifications for Laser Cleaning {self.subject.title()}"
-                    tables_content.append(heading)
-                    
-                    description = f"\nOptimal technical parameters for {self.subject} laser cleaning:\n"
-                    tables_content.append(description)
-                    
-                    # Create table header
-                    header_prefix = "**" if header_style == "bold" else ""
-                    header_suffix = "**" if header_style == "bold" else ""
-                    tables_content.append(f"| {header_prefix}Parameter{header_suffix} | {header_prefix}Value{header_suffix} |")
-                    tables_content.append("| --- | --- |")
-                    
-                    # Add table rows
-                    for param, value in specs.items():
-                        param_name = param.replace("_", " ").title()
-                        tables_content.append(f"| {param_name} | {value} |")
-                    
-                    tables_content.append("")
-            else:
-                logger.debug(f"No technicalSpecifications found in frontmatter")
-            
-            # Process compatibility data if available
-            if 'compatibility' in frontmatter_data and frontmatter_data['compatibility']:
-                compat = frontmatter_data['compatibility']
-                logger.debug(f"Found compatibility data: {len(compat) if isinstance(compat, list) else type(compat)}")
-                
-                if isinstance(compat, list) and compat:
-                    logger.info(f"Generating compatibility table with {len(compat)} entries")
-                    heading = f"## Material Compatibility Chart"
-                    tables_content.append(heading)
-                    
-                    description = f"\nLaser cleaning parameters used for {self.subject} can be adapted for similar materials:\n"
-                    tables_content.append(description)
-                    
-                    # Create table header
-                    header_prefix = "**" if header_style == "bold" else ""
-                    header_suffix = "**" if header_style == "bold" else ""
-                    tables_content.append(f"| {header_prefix}Application{header_suffix} | {header_prefix}Compatible Material{header_suffix} |")
-                    tables_content.append("| --- | --- |")
-                    
-                    # Add table rows
-                    for c in compat:
-                        app = c.get('application', '')
-                        mat = c.get('material', '')
-                        tables_content.append(f"| {app} | {mat} |")
-                    
-                    tables_content.append("")
-            else:
-                logger.debug(f"No compatibility data found in frontmatter")
-                    
-            # Process environmental impact data if available
-            if 'environmentalImpact' in frontmatter_data and frontmatter_data['environmentalImpact']:
-                env_impact = frontmatter_data['environmentalImpact']
-                logger.debug(f"Found environmentalImpact data: {len(env_impact) if isinstance(env_impact, list) else type(env_impact)}")
-                
-                if isinstance(env_impact, list) and env_impact:
-                    logger.info(f"Generating environmental impact table with {len(env_impact)} entries")
-                    heading = f"## Environmental Benefits of Laser Cleaning {self.subject.title()}"
-                    tables_content.append(heading)
-                    
-                    description = f"\nLaser cleaning offers significant environmental advantages over traditional {self.subject} cleaning methods:\n"
-                    tables_content.append(description)
-                    
-                    # Create table header
-                    header_prefix = "**" if header_style == "bold" else ""
-                    header_suffix = "**" if header_style == "bold" else ""
-                    tables_content.append(f"| {header_prefix}Benefit{header_suffix} | {header_prefix}Description{header_suffix} |")
-                    tables_content.append("| --- | --- |")
-                    
-                    # Add table rows
-                    for impact in env_impact:
-                        benefit = impact.get('benefit', '')
-                        description = impact.get('description', '')
-                        tables_content.append(f"| {benefit} | {description} |")
-                    
-                    tables_content.append("")
-            else:
-                logger.debug(f"No environmentalImpact data found in frontmatter")
-                    
-            # If no tables were generated, log a warning
-            if not tables_content:
-                logger.warning(f"No suitable data found for tables in frontmatter for {self.subject}")
+            if not frontmatter_data:
+                logger.warning("No frontmatter data available")
                 return ""
             
-            result = "\n".join(tables_content)
-            logger.info(f"Generated {len(tables_content)} lines of table content")
-            return result
+            # Process the technical specifications - this will always be shown if it has ranges
+            table_sections = []
             
+            # Check if technical specifications exist and contain ranges
+            if "technicalSpecifications" in frontmatter_data:
+                tech_specs_table = self._generate_tech_specs_table(frontmatter_data["technicalSpecifications"])
+                if tech_specs_table:
+                    table_sections.append(tech_specs_table)
+                    
+            # Look for other sections that might contain numerical ranges
+            other_sections = [
+                "composition", 
+                "outcomes", 
+                "environmentalImpact",
+                "compatibility",
+                "regulatoryStandards"
+            ]
+            
+            # Skip sections with detailed text descriptions
+            skip_sections = ["applications"]
+            
+            # Return the combined table content
+            if table_sections:
+                return "\n\n".join(table_sections)
+            else:
+                logger.warning("No tables with numerical ranges were generated")
+                return ""
+                
         except Exception as e:
             logger.error(f"Error generating tables: {str(e)}", exc_info=True)
             return f"<!-- Error generating tables: {str(e)} -->"
+
+    def _load_prompt_config(self) -> Dict[str, Any]:
+        """Load prompt configuration safely."""
+        try:
+            # Use built-in method from BaseComponent to load configuration
+            config = self.load_prompt_config()
+            return config
+        except Exception as e:
+            logger.error(f"Error loading table configuration: {str(e)}")
+            return {}
+
+    def _get_default_config(self) -> Dict[str, Any]:
+        """Return a default minimal configuration."""
+        return {
+            "format": {
+                "header_style": "bold",
+                "include_descriptions": True,
+                "section_title_format": "## {title}"
+            }
+        }
+
+    def _process_section(self, section_name: str, data: Any) -> str:
+        """Process a section of the frontmatter data."""
+        if section_name == "technicalSpecifications":
+            return self._generate_tech_specs_table(data)
+        elif section_name == "composition" and isinstance(data, list):
+            return self._generate_composition_table(data)
+        elif section_name == "applications" and isinstance(data, list):
+            return self._generate_applications_table(data)
+        elif section_name == "outcomes" and isinstance(data, list):
+            return self._generate_outcomes_table(data)
+        elif section_name == "environmentalImpact" and isinstance(data, list):
+            return self._generate_environmental_table(data)
+        elif section_name == "compatibility" and isinstance(data, list):
+            return self._generate_compatibility_table(data)
+        elif section_name == "regulatoryStandards" and isinstance(data, list):
+            return self._generate_regulatory_table(data)
+        return ""
+
+    def _generate_tech_specs_table(self, data: Dict[str, Any]) -> str:
+        """Generate a table for technical specifications with focus on numerical ranges."""
+        if not data:
+            return ""
+        
+        lines = []
+        lines.append(f"## Technical Specifications for Laser Cleaning {self.subject.title()}")
+        lines.append("")
+        lines.append("Comprehensive parameters for optimal laser cleaning:")
+        lines.append("")
+        
+        # Create header row
+        lines.append("| **Parameter** | **Minimum** | **Low** | **Optimal** | **High** | **Maximum** |")
+        lines.append("| --- | --- | --- | --- | --- | --- |")
+        
+        # Track if we found any valid ranges
+        found_ranges = False
+        
+        # Process each specification
+        for key, value in data.items():
+            # Format the parameter name
+            param_name = self._format_name(key)
+            
+            # Check if it's a range
+            range_info = self._extract_range(value)
+            
+            if range_info:
+                found_ranges = True
+                min_val, max_val, unit = range_info
+                # Create interpolated values
+                step = (max_val - min_val) / 4  # 5 columns
+                
+                # Format values with appropriate precision
+                # Use the most appropriate format based on the values
+                if min_val.is_integer() and max_val.is_integer():
+                    # For integer values
+                    values = [
+                        f"{int(min_val)}{unit}",
+                        f"{int(min_val + step)}{unit}",
+                        f"**{int(min_val + 2*step)}{unit}**",  # Optimal value in bold
+                        f"{int(min_val + 3*step)}{unit}",
+                        f"{int(max_val)}{unit}"
+                    ]
+                else:
+                    # For decimal values
+                    values = [
+                        f"{min_val:.1f}{unit}",
+                        f"{min_val + step:.1f}{unit}",
+                        f"**{min_val + 2*step:.1f}{unit}**",  # Optimal value in bold
+                        f"{min_val + 3*step:.1f}{unit}",
+                        f"{max_val:.1f}{unit}"
+                    ]
+                
+                # Add row
+                row = f"| {param_name} | {values[0]} | {values[1]} | {values[2]} | {values[3]} | {values[4]} |"
+                lines.append(row)
+    
+        # If no ranges were found, add a note
+        if not found_ranges:
+            lines.append("| No numerical ranges found in technical specifications | | | | | |")
+    
+        return "\n".join(lines)
+
+    def _generate_composition_table(self, data: List[Dict[str, Any]]) -> str:
+        """Generate a table for composition data."""
+        if not data:
+            return ""
+        
+        lines = []
+        lines.append(f"## Composition of {self.subject.title()}")
+        lines.append("")
+        lines.append(f"{self.subject.title()}'s mineral composition affecting laser cleaning performance:")
+        lines.append("")
+        
+        # Create header row
+        lines.append("| **Component** | **Type** | **Percentage** |")
+        lines.append("| --- | --- | --- |")
+        
+        # Process each component
+        for item in data:
+            component = item.get("component", "")
+            comp_type = item.get("type", "")
+            percentage = item.get("percentage", "")
+            
+            row = f"| {component} | {comp_type} | {percentage} |"
+            lines.append(row)
+        
+        return "\n".join(lines)
+
+    def _generate_applications_table(self, data: List[Dict[str, Any]]) -> str:
+        """Generate a table for applications data."""
+        if not data:
+            return ""
+        
+        lines = []
+        lines.append(f"## Applications for {self.subject.title()} Laser Cleaning")
+        lines.append("")
+        lines.append("Key use cases with detailed implementation:")
+        lines.append("")
+        
+        # Create header row
+        lines.append("| **Application** | **Description** |")
+        lines.append("| --- | --- |")
+        
+        # Process each application
+        for item in data:
+            name = item.get("name", "")
+            description = item.get("description", "")
+            
+            row = f"| {name} | {description} |"
+            lines.append(row)
+        
+        return "\n".join(lines)
+
+    def _generate_outcomes_table(self, data: List[Dict[str, Any]]) -> str:
+        """Generate a table for outcomes data."""
+        if not data:
+            return ""
+        
+        lines = []
+        lines.append(f"## Performance Metrics for {self.subject.title()} Laser Cleaning")
+        lines.append("")
+        lines.append("Verified cleaning results and quality measurements:")
+        lines.append("")
+        
+        # Create header row
+        lines.append("| **Metric** | **Result** |")
+        lines.append("| --- | --- |")
+        
+        # Process each outcome
+        for item in data:
+            metric = item.get("metric", "")
+            result = item.get("result", "")
+            
+            row = f"| {metric} | {result} |"
+            lines.append(row)
+        
+        return "\n".join(lines)
+
+    def _generate_environmental_table(self, data: List[Dict[str, Any]]) -> str:
+        """Generate a table for environmental impact data."""
+        if not data:
+            return ""
+        
+        lines = []
+        lines.append(f"## Environmental Benefits of {self.subject.title()} Laser Cleaning")
+        lines.append("")
+        lines.append("Quantifiable environmental advantages compared to traditional methods:")
+        lines.append("")
+        
+        # Create header row
+        lines.append("| **Benefit** | **Impact** |")
+        lines.append("| --- | --- |")
+        
+        # Process each benefit
+        for item in data:
+            benefit = item.get("benefit", "")
+            description = item.get("description", "")
+            
+            row = f"| {benefit} | {description} |"
+            lines.append(row)
+        
+        return "\n".join(lines)
+
+    def _generate_compatibility_table(self, data: List[Dict[str, Any]]) -> str:
+        """Generate a table for compatibility data."""
+        if not data:
+            return ""
+        
+        lines = []
+        lines.append(f"## Material Compatibility with {self.subject.title()}")
+        lines.append("")
+        lines.append("Other materials compatible with similar laser cleaning techniques:")
+        lines.append("")
+        
+        # Create header row
+        lines.append("| **Material** | **Application** |")
+        lines.append("| --- | --- |")
+        
+        # Process each compatibility item
+        for item in data:
+            material = item.get("material", "")
+            application = item.get("application", "")
+            
+            row = f"| {material} | {application} |"
+            lines.append(row)
+        
+        return "\n".join(lines)
+
+    def _generate_regulatory_table(self, data: List[Dict[str, Any]]) -> str:
+        """Generate a table for regulatory standards data."""
+        if not data:
+            return ""
+        
+        lines = []
+        lines.append(f"## Regulatory Standards for {self.subject.title()} Laser Cleaning")
+        lines.append("")
+        lines.append("Applicable codes and compliance requirements:")
+        lines.append("")
+        
+        # Create header row
+        lines.append("| **Code** | **Description** |")
+        lines.append("| --- | --- |")
+        
+        # Process each standard
+        for item in data:
+            code = item.get("code", "")
+            description = item.get("description", "")
+            
+            row = f"| {code} | {description} |"
+            lines.append(row)
+        
+        return "\n".join(lines)
+
+    def _extract_range(self, value: str) -> Optional[tuple]:
+        """Extract numerical range from a string value."""
+        if not isinstance(value, str):
+            return None
+        
+        # Unicode dash characters commonly used in specifications
+        value = value.replace('\u2013', '-')  # en dash
+        value = value.replace('\u2014', '-')  # em dash
+        value = value.replace('\u2015', '-')  # horizontal bar
+        
+        # Remove parenthetical content but keep the units
+        value = re.sub(r'\([^)]*\)', '', value)
+        value = value.replace('modular', '').replace('adjustable', '').strip()
+        
+        # Common patterns for ranges
+        patterns = [
+            r'(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)\s*([a-zA-Z°%µ]+)?',  # e.g. 50-500W
+            r'(\d+\.?\d*)\s*to\s*(\d+\.?\d*)\s*([a-zA-Z°%µ]+)?'       # e.g. 50 to 500W
+        ]
+        
+        for pattern in patterns:
+            match = re.search(pattern, value)
+            if match:
+                try:
+                    min_val = float(match.group(1))
+                    max_val = float(match.group(2))
+                    unit = match.group(3) or ""
+                    return (min_val, max_val, unit)
+                except (ValueError, TypeError):
+                    continue
+        
+        # Handle special case for temperature ranges with ±
+        plus_minus_pattern = r'(\d+\.?\d*)\s*[±]\s*(\d+\.?\d*)\s*([a-zA-Z°%µ]+)?'
+        match = re.search(plus_minus_pattern, value)
+        if match:
+            try:
+                center_val = float(match.group(1))
+                variation = float(match.group(2))
+                min_val = center_val - variation
+                max_val = center_val + variation
+                unit = match.group(3) or ""
+                return (min_val, max_val, unit)
+            except (ValueError, TypeError):
+                pass
+    
+        return None
+
+    def _format_name(self, name: str) -> str:
+        """Format a camelCase name as Title Case with spaces."""
+        s1 = re.sub('(.)([A-Z][a-z]+)', r'\1 \2', name)
+        s2 = re.sub('([a-z0-9])([A-Z])', r'\1 \2', s1)
+        return s2.title()
