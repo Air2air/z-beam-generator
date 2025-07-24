@@ -28,6 +28,7 @@ from utils.path_manager import PathManager
 from components.base import BaseComponent
 from api.client import ApiClient  # Import ApiClient
 from components.table.generator import TableGenerator  # Import TableGenerator
+from utils.slug_manager import SlugManager
 
 logger = logging.getLogger(__name__)
 
@@ -91,7 +92,7 @@ class ArticleAssembler:
             return {}
     
     def generate_article(self):
-        """Generate a complete article by assembling all components."""
+        """Generate the complete article."""
         # Initialize outputs dictionary and frontmatter data
         self.outputs = {}
         self.frontmatter_data = {}

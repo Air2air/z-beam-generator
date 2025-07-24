@@ -29,8 +29,8 @@ from utils.env_loader import load_env_variables
 # Define the primary article context - THE ONLY SOURCE OF TRUTH
 ARTICLE_CONTEXT = {
     # Core article parameters
-    "subject": "quartzite",
-    "article_type": "material",# application, material, region, or thesaurus
+    "subject": "fremont",
+    "article_type": "region",# application, material, region, or thesaurus
     "ai_provider": "deepseek", # deepseek, openai, xai, gemini
     "options": {"model": "deepseek-chat"},  # deepseek-chat (88), "GPT-4o" (76), "grok-3-latest" (62), "gemini-1.5-flash"
     "author_id": 1,  # 1: Taiwan, 2: Italy, 3: USA, 4: Indonesia

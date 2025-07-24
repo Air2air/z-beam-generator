@@ -106,11 +106,7 @@
             },
             "type": {
               "type": "string",
-              "enum": [
-                "element",
-                "compound",
-                "structural"
-              ],
+              "enum": ["element", "compound", "structural"],
               "description": "Type of component (element for metals, structural for woods, etc.)"
             }
           }
@@ -139,6 +135,38 @@
         },
         "description": "Compatible materials and applications"
       }
+    },
+    "technicalSpecifications": {
+      "type": "object",
+      "required": false,
+      "properties": {
+        "laserType": {
+          "type": "string",
+          "description": "Type of laser used",
+          "example": "Hafnium-doped fiber"
+        },
+        "wavelength": {
+          "type": "string",
+          "description": "Laser wavelength",
+          "example": "1064nm ±2nm"
+        },
+        "powerRange": {
+          "type": "string",
+          "description": "Power range",
+          "example": "50–1000W pulsed"
+        },
+        "fluenceRange": {
+          "type": "string",
+          "description": "Fluence range",
+          "example": "0.1–15 J/cm²"
+        },
+        "pulseDuration": {
+          "type": "string",
+          "description": "Pulse duration",
+          "example": "10–200ns"
+        }
+      },
+      "description": "Technical parameters for material/thesaurus articles"
     },
     "validation": {
       "frontmatter": {
