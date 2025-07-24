@@ -120,11 +120,84 @@ class ContentGenerator(BaseComponent):
         template = self.load_prompt_template()
         
         try:
+            # First, escape any literal curly braces in the template that aren't placeholders
+            import re
+            
+            # Method 1: Replace all problematic examples with double braces
+            problematic_patterns = [
+                r"{Specific {country} Factory}",
+                r"{e\.g\., .+?}",
+                r"{([^{}]*{[^{}]*}[^{}]*)}",  # Nested braces pattern
+                r"{[^{}]*\.\.\.[^{}]*}",       # Patterns with ellipsis
+                r"{[0-9-]+: .+?}",             # Numbered items in braces
+                r"{.+?\?.+?}",                 # Patterns with question marks
+            ]
+            
+            for pattern in problematic_patterns:
+                template = re.sub(pattern, lambda m: "{{" + m.group(0)[1:-1] + "}}", template)
+            
+            # Method 2: More comprehensive regex approach for remaining cases
+            # Find valid placeholder pattern (like {subject}, {country}, etc.)
+            valid_placeholders = set(re.findall(r'{([a-zA-Z_][a-zA-Z0-9_]*)}', template))
+            
+            # Add all keys from data to valid placeholders
+            valid_placeholders.update(data.keys())
+            
+            # Escape any other curly braces that aren't valid placeholders
+            escaped_template = ""
+            i = 0
+            while i < len(template):
+                if template[i:i+1] == '{':
+                    # Check if this is the start of a valid placeholder
+                    placeholder_match = re.match(r'{([a-zA-Z_][a-zA-Z0-9_]*)}', template[i:])
+                    if placeholder_match and placeholder_match.group(1) in valid_placeholders:
+                        # This is a valid placeholder, keep it as is
+                        escaped_template += template[i:i+len(placeholder_match.group(0))]
+                        i += len(placeholder_match.group(0))
+                    else:
+                        # This is not a valid placeholder, escape the brace
+                        escaped_template += '{{'
+                        i += 1
+                elif template[i:i+1] == '}' and (i == 0 or template[i-1:i] != '}'):
+                    # Unmatched closing brace, escape it
+                    escaped_template += '}}'
+                    i += 1
+                else:
+                    # Regular character
+                    escaped_template += template[i:i+1]
+                    i += 1
+            
+            template = escaped_template
+            
+            # Last resort: Direct replacement of common problematic patterns
+            template = template.replace("{{Specific {country} Factory}}", "{{Specific}} {country} {{Factory}}")
+            template = template.replace("e.g.,", "e.g.,")
+            
+            # Final check for unbalanced braces
+            open_count = template.count('{')
+            close_count = template.count('}')
+            if open_count != close_count:
+                logger.warning(f"Unbalanced braces in template after processing: {open_count} open vs {close_count} close")
+                # Try to balance by adding braces
+                if open_count > close_count:
+                    template += "}" * (open_count - close_count)
+                else:
+                    template = "{" * (close_count - open_count) + template
+            
+            logger.debug(f"Formatted template (first 100 chars): {template[:100]}...")
             return template.format(**data)
         except KeyError as e:
             logger.error(f"Missing key in prompt data: {e}")
             # Fallback to a simple prompt if template formatting fails
-            return f"Write a detailed article about {data.get('subject', 'the topic')}."
+            return f"Write an article about {data.get('subject', 'the topic')}."
+        except ValueError as e:
+            logger.error(f"Format error in prompt template: {e}")
+            # Use a more aggressive approach for handling problematic templates
+            simple_template = "Write a comprehensive article about {subject} focused on laser cleaning technology."
+            try:
+                return simple_template.format(**data)
+            except:
+                return f"Write an article about {data.get('subject', 'the topic')} focusing on technical aspects."
     
     def _call_api(self, prompt: str) -> str:
         """Call API with prompt."""

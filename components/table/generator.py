@@ -1,5 +1,14 @@
 """
 Module for generating tables from frontmatter data.
+
+MODULE DIRECTIVES FOR AI ASSISTANTS:
+1. DATA-DRIVEN CONTENT: Generate tables ONLY based on keys present in frontmatter
+2. PROMPT-DRIVEN FORMATTING: All formatting directives must come from prompt.yaml
+3. NO HARDCODED SECTIONS: Table sections must be derived from frontmatter structure
+4. FORMAT DELEGATION: Header styles, descriptions, and table structure from prompt config
+5. DYNAMIC ADAPTATION: Adapt to changes in frontmatter schema without code changes
+6. NO CONTENT GENERATION: Don't generate content not in frontmatter
+7. CONSISTENT NAMING: Use frontmatter key names consistently
 """
 
 import logging
@@ -62,19 +71,17 @@ class TableGenerator(BaseComponent):
             
             logger.info(f"Table generator received frontmatter: {bool(frontmatter_data)}")
             
-            # Dump all frontmatter keys and types for debugging
-            if frontmatter_data:
-                logger.debug("Frontmatter contents:")
-                for key, value in frontmatter_data.items():
-                    value_type = type(value).__name__
-                    value_info = f"{len(value)} items" if isinstance(value, (list, dict)) else str(value)[:50]
-                    logger.debug(f"  {key}: {value_type} - {value_info}")
-        
             # Get format settings from prompt configuration
             logger.debug(f"Getting format settings from prompt_config: {self.prompt_config.keys() if hasattr(self.prompt_config, 'keys') else 'None'}")
             format_config = self.prompt_config.get("format", {})
+            
+            # Extract formatting options from prompt config
             header_style = format_config.get("header_style", "")
-            logger.debug(f"Using header_style: {header_style}")
+            include_descriptions = format_config.get("include_descriptions", True)
+            table_style = format_config.get("table_style", "standard")
+            section_title_format = format_config.get("section_title_format", "## {title}")
+            
+            logger.debug(f"Using prompt-based formatting: header_style={header_style}, table_style={table_style}")
             
             # Direct table generation from frontmatter
             tables_content = []
