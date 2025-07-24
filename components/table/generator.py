@@ -16,126 +16,157 @@ MODULE DIRECTIVES FOR AI ASSISTANTS:
 
 import re
 import logging
-from typing import Dict, Any, List, Optional
+from typing import Dict, Any, List, Optional, Tuple, Union
+
 from ..base import BaseComponent
+from .numerical_detector import NumericalFieldDetector  # Add this import
 
 logger = logging.getLogger(__name__)
 
+
 class TableGenerator(BaseComponent):
-    """Generates tables from frontmatter data."""
+    """Generates tables from frontmatter data based on prompt configuration."""
 
     def __init__(self, *args, **kwargs):
-        """Initialize the table generator with flexible argument handling."""
+        """Initialize the table generator with flexible argument handling.
+        
+        Args:
+            *args: Positional arguments, expecting subject and component_name
+            **kwargs: Keyword arguments that may include subject or component_name
+        """
         logger.info(f"TableGenerator initialized with args={args}, kwargs={kwargs}")
         
         # Extract subject from either positional or keyword arguments
         subject = None
         component_name = "table"
         
-        if len(args) >= 1:
-            subject = args[0]
-        elif 'subject' in kwargs:
-            subject = kwargs['subject']
+        # Handle different argument patterns
+        if args:
+            if isinstance(args[0], str):
+                subject = args[0]
             
-        if len(args) >= 2:
-            if isinstance(args[1], str):
+            if len(args) > 1 and isinstance(args[1], str):
                 component_name = args[1]
+        
+        # Override with kwargs if provided
+        if 'subject' in kwargs:
+            subject = kwargs['subject']
+        if 'component_name' in kwargs:
+            component_name = kwargs['component_name']
             
         # Initialize the base component
         super().__init__(component_name=component_name)
         
         # Store the subject
         self.subject = subject or ""
+        # Cache for configuration
+        self._config = None
+        
         logger.info(f"TableGenerator initialized for {self.subject} with component_name: {component_name}")
 
     def generate(self) -> str:
-        """Generate tables only for numerical range data in frontmatter."""
+        """Generate tables dynamically for frontmatter fields containing numerical data."""
         try:
-            # Get frontmatter data
+            # Step 1: Get frontmatter data
             frontmatter_data = self.get_frontmatter_data()
             if not frontmatter_data:
                 logger.warning("No frontmatter data available")
                 return ""
+                
+            # Step 2: Initialize the numerical field detector (if needed)
+            if not hasattr(self, 'field_detector'):
+                self.field_detector = NumericalFieldDetector()
+                
+            # Step 3: Score and identify fields likely to contain numerical data
+            numerical_scores = self.field_detector.identify_numerical_fields(frontmatter_data)
+            logger.info(f"Field numerical scores: {numerical_scores}")
             
-            # Process the technical specifications - this will always be shown if it has ranges
+            # Step 4: Sort fields by their numerical relevance score (highest first)
+            sorted_fields = sorted(numerical_scores.items(), key=lambda x: x[1], reverse=True)
+            logger.info(f"Fields sorted by numerical relevance: {[f[0] for f in sorted_fields]}")
+            
+            # Step 5: Process fields in order of relevance
             table_sections = []
             
-            # Check if technical specifications exist and contain ranges
-            if "technicalSpecifications" in frontmatter_data:
-                tech_specs_table = self._generate_tech_specs_table(frontmatter_data["technicalSpecifications"])
-                if tech_specs_table:
-                    table_sections.append(tech_specs_table)
+            for field, score in sorted_fields:
+                # Skip fields with low scores
+                if score < 0.5:
+                    logger.info(f"Skipping low-scoring field: {field} (score: {score})")
+                    continue
                     
-            # Look for other sections that might contain numerical ranges
-            other_sections = [
-                "composition", 
-                "outcomes", 
-                "environmentalImpact",
-                "compatibility",
-                "regulatoryStandards"
-            ]
+                logger.info(f"Processing field: {field} (score: {score})")
+                value = frontmatter_data[field]
+                
+                # Step 6: Determine the appropriate table type for each field
+                table_type = self.field_detector.suggest_table_type(field, value)
+                logger.info(f"Suggested table type for {field}: {table_type}")
+                
+                # Step 7: Generate the appropriate table based on type
+                table = ""
+                if table_type == 'range' and isinstance(value, dict):
+                    table = self._generate_range_table(field, value)
+                elif table_type == 'percentage' and isinstance(value, list):
+                    table = self._generate_percentage_table(field, value)
+                elif table_type == 'metrics' and isinstance(value, list):
+                    table = self._generate_metrics_table(field, value)
+                elif table_type == 'standards' and isinstance(value, list):
+                    table = self._generate_standards_table(field, value)
+                    
+                # Step 8: Add the generated table to the list if not empty
+                if table:
+                    logger.info(f"Generated {table_type} table for {field}: {len(table)} chars")
+                    table_sections.append(table)
+                else:
+                    logger.info(f"No table generated for {field}")
             
-            # Skip sections with detailed text descriptions
-            skip_sections = ["applications"]
-            
-            # Return the combined table content
+            # Step 9: Combine all tables and return the result
             if table_sections:
-                return "\n\n".join(table_sections)
+                result = "\n\n".join(table_sections)
+                logger.info(f"Generated {len(table_sections)} tables with total {len(result)} characters")
+                return result
             else:
-                logger.warning("No tables with numerical ranges were generated")
+                logger.warning("No tables generated")
                 return ""
                 
         except Exception as e:
             logger.error(f"Error generating tables: {str(e)}", exc_info=True)
             return f"<!-- Error generating tables: {str(e)} -->"
 
-    def _load_prompt_config(self) -> Dict[str, Any]:
-        """Load prompt configuration safely."""
-        try:
-            # Use built-in method from BaseComponent to load configuration
-            config = self.load_prompt_config()
-            return config
-        except Exception as e:
-            logger.error(f"Error loading table configuration: {str(e)}")
-            return {}
+    def _contains_range(self, text: str) -> bool:
+        """Check if a string contains a numerical range."""
+        if not isinstance(text, str):
+            return False
+            
+        # Check for Unicode dashes and other range indicators
+        normalized = text.replace('\u2013', '-').replace('\u2014', '-').replace('\u2015', '-')
+        
+        # Check for range patterns
+        range_patterns = [
+            r'\d+\s*[-–—]\s*\d+',  # e.g., "50-500"
+            r'\d+\s*to\s*\d+',     # e.g., "50 to 500"
+            r'\d+\s*±\s*\d+'       # e.g., "50 ± 5"
+        ]
+        
+        for pattern in range_patterns:
+            if re.search(pattern, normalized):
+                return True
+                
+        return False
 
-    def _get_default_config(self) -> Dict[str, Any]:
-        """Return a default minimal configuration."""
-        return {
-            "format": {
-                "header_style": "bold",
-                "include_descriptions": True,
-                "section_title_format": "## {title}"
-            }
-        }
-
-    def _process_section(self, section_name: str, data: Any) -> str:
-        """Process a section of the frontmatter data."""
-        if section_name == "technicalSpecifications":
-            return self._generate_tech_specs_table(data)
-        elif section_name == "composition" and isinstance(data, list):
-            return self._generate_composition_table(data)
-        elif section_name == "applications" and isinstance(data, list):
-            return self._generate_applications_table(data)
-        elif section_name == "outcomes" and isinstance(data, list):
-            return self._generate_outcomes_table(data)
-        elif section_name == "environmentalImpact" and isinstance(data, list):
-            return self._generate_environmental_table(data)
-        elif section_name == "compatibility" and isinstance(data, list):
-            return self._generate_compatibility_table(data)
-        elif section_name == "regulatoryStandards" and isinstance(data, list):
-            return self._generate_regulatory_table(data)
-        return ""
-
-    def _generate_tech_specs_table(self, data: Dict[str, Any]) -> str:
-        """Generate a table for technical specifications with focus on numerical ranges."""
+    def _generate_range_table(self, field: str, data: Dict[str, Any]) -> str:
+        """Generate a table for dictionary data containing numerical ranges."""
         if not data:
             return ""
         
+        # Create the table structure
         lines = []
-        lines.append(f"## Technical Specifications for Laser Cleaning {self.subject.title()}")
+        title = f"## {self._format_name(field)} for {self.subject.title()}"
+        lines.append(title)
         lines.append("")
-        lines.append("Comprehensive parameters for optimal laser cleaning:")
+        
+        # Add description
+        description = f"Numerical ranges for {self.subject.lower()} {field.lower().replace('specifications', '')}:"
+        lines.append(description)
         lines.append("")
         
         # Create header row
@@ -145,22 +176,26 @@ class TableGenerator(BaseComponent):
         # Track if we found any valid ranges
         found_ranges = False
         
-        # Process each specification
+        # Process each item
         for key, value in data.items():
+            # Skip non-string values
+            if not isinstance(value, str):
+                continue
+            
             # Format the parameter name
             param_name = self._format_name(key)
             
-            # Check if it's a range
+            # Extract range info
             range_info = self._extract_range(value)
             
             if range_info:
                 found_ranges = True
                 min_val, max_val, unit = range_info
+                
                 # Create interpolated values
                 step = (max_val - min_val) / 4  # 5 columns
                 
                 # Format values with appropriate precision
-                # Use the most appropriate format based on the values
                 if min_val.is_integer() and max_val.is_integer():
                     # For integer values
                     values = [
@@ -174,186 +209,203 @@ class TableGenerator(BaseComponent):
                     # For decimal values
                     values = [
                         f"{min_val:.1f}{unit}",
-                        f"{min_val + step:.1f}{unit}",
-                        f"**{min_val + 2*step:.1f}{unit}**",  # Optimal value in bold
-                        f"{min_val + 3*step:.1f}{unit}",
+                        f"{(min_val + step):.1f}{unit}",
+                        f"**{(min_val + 2*step):.1f}{unit}**",  # Optimal value in bold
+                        f"{(min_val + 3*step):.1f}{unit}",
                         f"{max_val:.1f}{unit}"
                     ]
                 
                 # Add row
                 row = f"| {param_name} | {values[0]} | {values[1]} | {values[2]} | {values[3]} | {values[4]} |"
                 lines.append(row)
-    
-        # If no ranges were found, add a note
+        
+        # If no ranges were found, return empty string
         if not found_ranges:
-            lines.append("| No numerical ranges found in technical specifications | | | | | |")
-    
+            return ""
+        
         return "\n".join(lines)
 
-    def _generate_composition_table(self, data: List[Dict[str, Any]]) -> str:
-        """Generate a table for composition data."""
+    def _generate_percentage_table(self, field: str, data: List[Dict[str, Any]]) -> str:
+        """Generate a table for list data containing percentage values."""
         if not data:
             return ""
         
+        # Create the table structure
         lines = []
-        lines.append(f"## Composition of {self.subject.title()}")
+        title = f"## {self._format_name(field)} of {self.subject.title()}"
+        lines.append(title)
         lines.append("")
-        lines.append(f"{self.subject.title()}'s mineral composition affecting laser cleaning performance:")
+        
+        # Add description
+        description = f"Percentage breakdown for {self.subject.lower()} {field.lower()}:"
+        lines.append(description)
         lines.append("")
+        
+        # Determine columns
+        first_item = data[0]
+        columns = []
+        
+        # Look for component/name field
+        component_field = None
+        for field_name in ['component', 'name', 'material', 'element']:
+            if field_name in first_item:
+                component_field = field_name
+                columns.append(component_field)
+                break
+        
+        # Look for type field
+        type_field = None
+        for field_name in ['type', 'category', 'classification']:
+            if field_name in first_item:
+                type_field = field_name
+                columns.append(type_field)
+                break
+        
+        # Look for percentage field
+        percentage_field = None
+        for field_name in ['percentage', 'percent', 'ratio', 'composition']:
+            if field_name in first_item:
+                percentage_field = field_name
+                columns.append(field_name)
+                break
+        
+        # If we don't have essential fields, return empty
+        if not component_field or not percentage_field:
+            return ""
         
         # Create header row
-        lines.append("| **Component** | **Type** | **Percentage** |")
-        lines.append("| --- | --- | --- |")
+        header = "| " + " | ".join(f"**{self._format_name(col)}**" for col in columns) + " |"
+        lines.append(header)
+        lines.append("| " + " | ".join(["---"] * len(columns)) + " |")
         
-        # Process each component
+        # Process each item
         for item in data:
-            component = item.get("component", "")
-            comp_type = item.get("type", "")
-            percentage = item.get("percentage", "")
+            values = []
+            for col in columns:
+                values.append(str(item.get(col, "")))
             
-            row = f"| {component} | {comp_type} | {percentage} |"
+            # Add row
+            row = "| " + " | ".join(values) + " |"
             lines.append(row)
         
         return "\n".join(lines)
 
-    def _generate_applications_table(self, data: List[Dict[str, Any]]) -> str:
-        """Generate a table for applications data."""
+    def _generate_metrics_table(self, field: str, data: List[Dict[str, Any]]) -> str:
+        """Generate a table for metrics/results data."""
         if not data:
             return ""
         
+        # Create the table structure
         lines = []
-        lines.append(f"## Applications for {self.subject.title()} Laser Cleaning")
-        lines.append("")
-        lines.append("Key use cases with detailed implementation:")
+        title = f"## {self._format_name(field)} for {self.subject.title()}"
+        lines.append(title)
         lines.append("")
         
-        # Create header row
-        lines.append("| **Application** | **Description** |")
-        lines.append("| --- | --- |")
+        # Add description
+        description = f"Performance metrics for {self.subject.lower()}:"
+        lines.append(description)
+        lines.append("")
         
-        # Process each application
-        for item in data:
-            name = item.get("name", "")
-            description = item.get("description", "")
+        # Determine columns
+        metric_field = None
+        result_field = None
+        
+        # Check first item for field names
+        if data and isinstance(data[0], dict):
+            for field_name in ['metric', 'measurement', 'test', 'parameter']:
+                if field_name in data[0]:
+                    metric_field = field_name
+                    break
             
-            row = f"| {name} | {description} |"
-            lines.append(row)
+            for field_name in ['result', 'value', 'outcome', 'performance']:
+                if field_name in data[0]:
+                    result_field = field_name
+                    break
         
-        return "\n".join(lines)
-
-    def _generate_outcomes_table(self, data: List[Dict[str, Any]]) -> str:
-        """Generate a table for outcomes data."""
-        if not data:
+        # If we don't have both fields, return empty
+        if not metric_field or not result_field:
             return ""
         
-        lines = []
-        lines.append(f"## Performance Metrics for {self.subject.title()} Laser Cleaning")
-        lines.append("")
-        lines.append("Verified cleaning results and quality measurements:")
-        lines.append("")
-        
         # Create header row
-        lines.append("| **Metric** | **Result** |")
+        lines.append(f"| **{self._format_name(metric_field)}** | **{self._format_name(result_field)}** |")
         lines.append("| --- | --- |")
         
-        # Process each outcome
+        # Process each item
         for item in data:
-            metric = item.get("metric", "")
-            result = item.get("result", "")
+            metric = item.get(metric_field, "")
+            result = item.get(result_field, "")
             
+            # Add row
             row = f"| {metric} | {result} |"
             lines.append(row)
         
         return "\n".join(lines)
 
-    def _generate_environmental_table(self, data: List[Dict[str, Any]]) -> str:
-        """Generate a table for environmental impact data."""
+    def _generate_standards_table(self, field: str, data: List[Dict[str, Any]]) -> str:
+        """Generate a table for standards/codes data."""
         if not data:
             return ""
         
+        # Create the table structure
         lines = []
-        lines.append(f"## Environmental Benefits of {self.subject.title()} Laser Cleaning")
-        lines.append("")
-        lines.append("Quantifiable environmental advantages compared to traditional methods:")
+        title = f"## {self._format_name(field)} for {self.subject.title()}"
+        lines.append(title)
         lines.append("")
         
-        # Create header row
-        lines.append("| **Benefit** | **Impact** |")
-        lines.append("| --- | --- |")
+        # Add description
+        description = f"Applicable standards and codes for {self.subject.lower()}:"
+        lines.append(description)
+        lines.append("")
         
-        # Process each benefit
-        for item in data:
-            benefit = item.get("benefit", "")
-            description = item.get("description", "")
+        # Determine columns
+        code_field = None
+        description_field = None
+        
+        # Check first item for field names
+        if data and isinstance(data[0], dict):
+            for field_name in ['code', 'standard', 'regulation', 'id']:
+                if field_name in data[0]:
+                    code_field = field_name
+                    break
             
-            row = f"| {benefit} | {description} |"
-            lines.append(row)
+            for field_name in ['description', 'details', 'info', 'text']:
+                if field_name in data[0]:
+                    description_field = field_name
+                    break
         
-        return "\n".join(lines)
-
-    def _generate_compatibility_table(self, data: List[Dict[str, Any]]) -> str:
-        """Generate a table for compatibility data."""
-        if not data:
+        # If we don't have both fields, return empty
+        if not code_field or not description_field:
             return ""
         
-        lines = []
-        lines.append(f"## Material Compatibility with {self.subject.title()}")
-        lines.append("")
-        lines.append("Other materials compatible with similar laser cleaning techniques:")
-        lines.append("")
-        
         # Create header row
-        lines.append("| **Material** | **Application** |")
+        lines.append(f"| **{self._format_name(code_field)}** | **{self._format_name(description_field)}** |")
         lines.append("| --- | --- |")
         
-        # Process each compatibility item
+        # Process each item
         for item in data:
-            material = item.get("material", "")
-            application = item.get("application", "")
+            code = item.get(code_field, "")
+            description = item.get(description_field, "")
             
-            row = f"| {material} | {application} |"
-            lines.append(row)
-        
-        return "\n".join(lines)
-
-    def _generate_regulatory_table(self, data: List[Dict[str, Any]]) -> str:
-        """Generate a table for regulatory standards data."""
-        if not data:
-            return ""
-        
-        lines = []
-        lines.append(f"## Regulatory Standards for {self.subject.title()} Laser Cleaning")
-        lines.append("")
-        lines.append("Applicable codes and compliance requirements:")
-        lines.append("")
-        
-        # Create header row
-        lines.append("| **Code** | **Description** |")
-        lines.append("| --- | --- |")
-        
-        # Process each standard
-        for item in data:
-            code = item.get("code", "")
-            description = item.get("description", "")
-            
+            # Add row
             row = f"| {code} | {description} |"
             lines.append(row)
         
         return "\n".join(lines)
 
-    def _extract_range(self, value: str) -> Optional[tuple]:
+    def _extract_range(self, value: str) -> Optional[Tuple[float, float, str]]:
         """Extract numerical range from a string value."""
         if not isinstance(value, str):
             return None
         
         # Unicode dash characters commonly used in specifications
-        value = value.replace('\u2013', '-')  # en dash
-        value = value.replace('\u2014', '-')  # em dash
-        value = value.replace('\u2015', '-')  # horizontal bar
+        normalized = value.replace('\u2013', '-')  # en dash
+        normalized = normalized.replace('\u2014', '-')  # em dash
+        normalized = normalized.replace('\u2015', '-')  # horizontal bar
         
         # Remove parenthetical content but keep the units
-        value = re.sub(r'\([^)]*\)', '', value)
-        value = value.replace('modular', '').replace('adjustable', '').strip()
+        normalized = re.sub(r'\([^)]*\)', '', normalized)
+        normalized = normalized.replace('modular', '').replace('adjustable', '').strip()
+        normalized = normalized.replace('diameter', '').strip()
         
         # Common patterns for ranges
         patterns = [
@@ -362,7 +414,7 @@ class TableGenerator(BaseComponent):
         ]
         
         for pattern in patterns:
-            match = re.search(pattern, value)
+            match = re.search(pattern, normalized)
             if match:
                 try:
                     min_val = float(match.group(1))
@@ -374,7 +426,7 @@ class TableGenerator(BaseComponent):
         
         # Handle special case for temperature ranges with ±
         plus_minus_pattern = r'(\d+\.?\d*)\s*[±]\s*(\d+\.?\d*)\s*([a-zA-Z°%µ]+)?'
-        match = re.search(plus_minus_pattern, value)
+        match = re.search(plus_minus_pattern, normalized)
         if match:
             try:
                 center_val = float(match.group(1))
@@ -385,7 +437,7 @@ class TableGenerator(BaseComponent):
                 return (min_val, max_val, unit)
             except (ValueError, TypeError):
                 pass
-    
+        
         return None
 
     def _format_name(self, name: str) -> str:
