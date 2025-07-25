@@ -32,7 +32,7 @@ class ApplicationJsonldGenerator(BaseTypeGenerator):
         
         # Add about section with enhanced application details
         about_items = self._generate_about_section(frontmatter, 
-                                                 jsonld["headline"], 
+                                                 jsonld["name"], 
                                                  jsonld["description"])
         if about_items:
             jsonld["about"] = about_items
@@ -41,6 +41,10 @@ class ApplicationJsonldGenerator(BaseTypeGenerator):
         mentions_items = self._generate_mentions_section(frontmatter)
         if mentions_items:
             jsonld["mentions"] = mentions_items
+        
+        name = self._get_frontmatter_value(frontmatter, "name", self.subject)
+        # Capitalize first letter of name
+        name = name[0].upper() + name[1:] if name else ""
         
         return jsonld
     
@@ -61,21 +65,20 @@ class ApplicationJsonldGenerator(BaseTypeGenerator):
         about_items.append({
             "@type": "Thing",
             "name": f"{name} in Laser Cleaning",
-            "description": f"Techniques for {name.lower()}, using methods like LIBS and dual-wavelength analysis."
+            "description": self._normalize_unicode(f"Techniques for {name.lower()}, using methods like LIBS and dual-wavelength analysis.")
         })
         
         # Add Service with applications and enhanced metadata
         applications = self._get_frontmatter_value(frontmatter, "applications", [])
-        outcomes = self._get_frontmatter_value(frontmatter, "outcomes", [])
+        outcomes = self._extract_outcomes(frontmatter)
         
-        # Get outcome metric for description enhancement
-        outcome_metric = ""
-        if outcomes and isinstance(outcomes, list) and len(outcomes) > 0:
-            if isinstance(outcomes[0], dict):
-                metric = outcomes[0].get("metric", "")
-                result = outcomes[0].get("result", "")
-                if metric and result:
-                    outcome_metric = f"{result} {metric}"
+        # Build service description
+        service_description = f"Precision laser cleaning with integrated {name} for aerospace, automotive, and heritage applications"
+        if outcomes:
+            outcome_metrics = [f"{result} {metric}" for metric, result in outcomes]
+            service_description += f", achieving {' and '.join(outcome_metrics)}."
+        else:
+            service_description += "."
         
         # Build the service object
         service = {
@@ -85,8 +88,7 @@ class ApplicationJsonldGenerator(BaseTypeGenerator):
                 "@type": "Organization",
                 "name": "Z-Beam"
             },
-            "description": f"Precision laser cleaning with integrated {name} for aerospace, automotive, and heritage applications" + 
-                          (f", achieving {outcome_metric}" if outcome_metric else "."),
+            "description": self._normalize_unicode(service_description),
             "areaServed": {
                 "@type": "Place",
                 "name": "Global"
@@ -106,7 +108,7 @@ class ApplicationJsonldGenerator(BaseTypeGenerator):
                             "itemOffered": {
                                 "@type": "Service",
                                 "name": app_name,
-                                "description": app_description
+                                "description": self._normalize_unicode(app_description)
                             }
                         })
             
@@ -135,7 +137,7 @@ class ApplicationJsonldGenerator(BaseTypeGenerator):
         # Add technical specifications as structured value
         tech_specs = self._get_frontmatter_value(frontmatter, "technicalSpecifications", {})
         if tech_specs and isinstance(tech_specs, dict) and len(tech_specs) > 0:
-            # Use the base class method to create structured value
+            # Create a structured value object for technical specs
             structured_specs = self._generate_structured_value(tech_specs)
             
             # Add the structured specs to mentions
@@ -148,28 +150,26 @@ class ApplicationJsonldGenerator(BaseTypeGenerator):
         # Add regulatory standards
         standards = self._get_frontmatter_value(frontmatter, "regulatoryStandards", [])
         if standards:
-            standards_description = "Compliance with "
-            if isinstance(standards, list):
-                standard_parts = []
-                for standard in standards:
-                    if isinstance(standard, dict):
-                        code = standard.get("code", "")
-                        description = standard.get("description", "")
-                        if code and description:
-                            standard_parts.append(f"{code} ({description})")
-                        elif code:
-                            standard_parts.append(code)
-                    elif isinstance(standard, str):
-                        standard_parts.append(standard)
+            standards_parts = []
+            for standard in standards:
+                if isinstance(standard, dict):
+                    code = standard.get("code", "")
+                    description = standard.get("description", "")
+                    if code and description:
+                        standards_parts.append(f"{code} ({description})")
+                    elif code:
+                        standards_parts.append(code)
+                elif isinstance(standard, str):
+                    standards_parts.append(standard)
+            
+            if standards_parts:
+                standards_description = f"Compliance with {', '.join(standards_parts)}."
                 
-                if standard_parts:
-                    standards_description += ", ".join(standard_parts) + "."
-                    
-                    mentions.append({
-                        "@type": "Thing",
-                        "name": "Regulatory Standards",
-                        "description": standards_description
-                    })
+                mentions.append({
+                    "@type": "Thing",
+                    "name": "Regulatory Standards",
+                    "description": self._normalize_unicode(standards_description)
+                })
         
         # Add challenges with enhanced description
         challenges = self._get_frontmatter_value(frontmatter, "challenges", [])
@@ -203,30 +203,16 @@ class ApplicationJsonldGenerator(BaseTypeGenerator):
                 mentions.append({
                     "@type": "Thing",
                     "name": "Challenges",
-                    "description": challenge_description
+                    "description": self._normalize_unicode(challenge_description)
                 })
         
         # Add outcomes with enhanced formatting
-        outcomes = self._get_frontmatter_value(frontmatter, "outcomes", [])
+        outcomes = self._extract_outcomes(frontmatter)
         if outcomes:
-            outcome_parts = []
-            if isinstance(outcomes, list):
-                for outcome in outcomes:
-                    if isinstance(outcome, dict):
-                        metric = outcome.get("metric", "")
-                        result = outcome.get("result", "")
-                        if metric and result:
-                            outcome_parts.append(f"{result} {metric}")
-                    elif isinstance(outcome, str):
-                        outcome_parts.append(outcome)
-            
-            if outcome_parts:
-                outcome_description = "; ".join(outcome_parts) + "."
-                
-                mentions.append({
-                    "@type": "Thing",
-                    "name": "Outcomes",
-                    "description": outcome_description
-                })
+            mentions.append({
+                "@type": "Thing",
+                "name": "Outcomes",
+                "description": self._normalize_unicode(self._format_outcomes_description(outcomes))
+            })
         
         return mentions

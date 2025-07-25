@@ -1,5 +1,5 @@
 """
-JSON-LD generator for thesaurus articles.
+JSON-LD generator for thesaurus/glossary articles.
 """
 
 import logging
@@ -12,40 +12,26 @@ class ThesaurusJsonldGenerator(BaseTypeGenerator):
     """Generator for thesaurus-specific JSON-LD."""
     
     def generate_jsonld(self, frontmatter: Dict[str, Any] = None) -> Dict[str, Any]:
-        """Generate JSON-LD for thesaurus articles.
-        
-        Args:
-            frontmatter: Article frontmatter data (override instance frontmatter if provided)
-            
-        Returns:
-            JSON-LD structure for thesaurus articles
-        """
+        """Generate JSON-LD for thesaurus/glossary articles."""
         # Use provided frontmatter or instance frontmatter
         frontmatter = frontmatter or self.frontmatter
         
         # Get basic data
         name = self._get_frontmatter_value(frontmatter, "name", self.subject)
+        # Capitalize first letter of name
+        name = name[0].upper() + name[1:] if name else ""
         slug = self._get_slug(frontmatter)
         description = self._get_frontmatter_value(frontmatter, "description", 
-                                                 f"Definition and information about {name} in laser cleaning context.")
-        today = self._get_current_date()
-        
-        # Get keywords and related terms
+                                                f"Definition and technical details about {name} in laser cleaning.")
         keywords = self._format_keywords(self._get_frontmatter_value(frontmatter, "keywords", []))
-        related_terms = self._get_frontmatter_value(frontmatter, "relatedTerms", [])
+        today = self._get_current_date()
+        website_url = self._get_frontmatter_value(frontmatter, "website", 
+                                                self._build_url(slug, "thesaurus"))
         
-        # Process related terms into links if present
-        related_links = []
-        if related_terms and isinstance(related_terms, list):
-            for term in related_terms:
-                if isinstance(term, str):
-                    term_slug = term.lower().replace(" ", "-")
-                    related_links.append(self._build_url(term_slug, "thesaurus"))
-                elif isinstance(term, dict) and "name" in term:
-                    term_slug = term["name"].lower().replace(" ", "-")
-                    related_links.append(self._build_url(term_slug, "thesaurus"))
+        # Get author information
+        author = self._get_frontmatter_value(frontmatter, "author", {})
         
-        # Build the JSON-LD structure
+        # Build basic JSON-LD structure
         jsonld = {
             "@context": "https://schema.org",
             "@type": "DefinedTerm",
@@ -53,20 +39,113 @@ class ThesaurusJsonldGenerator(BaseTypeGenerator):
             "description": description,
             "mainEntityOfPage": {
                 "@type": "WebPage",
-                "@id": self._build_url(slug, "thesaurus")
+                "@id": website_url
+            },
+            "author": {
+                "@type": "Person",
+                "identifier": self._get_nested_value(author, "author_id", 1),
+                "name": self._get_nested_value(author, "author_name", ""),
+                "description": self._get_nested_value(author, "credentials", 
+                                                    "Laser Technology Expert")
             },
             "datePublished": today,
             "dateModified": today,
-            "image": self._build_image_url(slug, "thesaurus"),
+            "image": f"https://www.z-beam.com/images/glossary/{slug}.jpg",
             "keywords": keywords,
             "inDefinedTermSet": {
                 "@type": "DefinedTermSet",
-                "name": "Z-Beam Laser Cleaning Glossary"
+                "name": "Laser Cleaning Glossary",
+                "description": "Comprehensive glossary of laser cleaning terminology and techniques"
             }
         }
         
-        # Add related links if available
-        if related_links:
-            jsonld["relatedLink"] = related_links
-            
+        # Add term type if available
+        term_type = self._get_frontmatter_value(frontmatter, "termType", "")
+        if term_type:
+            jsonld["termCode"] = term_type
+        
+        # Add alternate names if available
+        alt_names = self._get_frontmatter_value(frontmatter, "alternateNames", [])
+        if alt_names and isinstance(alt_names, list) and len(alt_names) > 0:
+            jsonld["alternateName"] = alt_names
+        
+        # Add subject of field
+        jsonld["subjectOf"] = {
+            "@type": "Article",
+            "name": f"{name} - Laser Cleaning Technical Reference",
+            "description": description,
+            "isPartOf": {
+                "@type": "DefinedTermSet",
+                "name": "Laser Cleaning Encyclopedia"
+            }
+        }
+        
+        # Add about section with related concepts
+        about_items = self._get_about_items(frontmatter, name)
+        if about_items:
+            jsonld["about"] = about_items
+        
         return jsonld
+    
+    def _get_about_items(self, frontmatter: Dict[str, Any], name: str) -> List[Dict[str, Any]]:
+        """Get about items for the term."""
+        items = []
+        
+        # Add related terms
+        related_terms = self._get_frontmatter_value(frontmatter, "relatedTerms", [])
+        if related_terms:
+            term_items = []
+            for term in related_terms:
+                if isinstance(term, dict):
+                    term_name = term.get("name", "")
+                    relation = term.get("relationship", "")
+                    
+                    if term_name:
+                        term_item = {
+                            "@type": "DefinedTerm",
+                            "name": self._normalize_text(term_name)
+                        }
+                        if relation:
+                            term_item["description"] = self._normalize_text(f"{relation} of {name}")
+                        term_items.append(term_item)
+                elif isinstance(term, str):
+                    term_items.append({
+                        "@type": "DefinedTerm",
+                        "name": self._normalize_text(term)
+                    })
+            
+            if term_items:
+                items.append({
+                    "@type": "Thing",
+                    "name": "Related Terms",
+                    "description": f"Terms related to {name} in laser cleaning applications.",
+                    "mentions": term_items
+                })
+        
+        # Add applications
+        applications = self._get_frontmatter_value(frontmatter, "applications", [])
+        if applications:
+            app_items = []
+            for app in applications:
+                if isinstance(app, dict):
+                    app_name = app.get("name", "")
+                    app_desc = app.get("description", "")
+                    
+                    if app_name:
+                        app_item = {
+                            "@type": "Thing",
+                            "name": self._normalize_text(app_name)
+                        }
+                        if app_desc:
+                            app_item["description"] = self._normalize_text(app_desc)
+                        app_items.append(app_item)
+            
+            if app_items:
+                items.append({
+                    "@type": "Thing",
+                    "name": f"Applications Using {name}",
+                    "description": f"Laser cleaning applications that utilize {name}.",
+                    "mentions": app_items
+                })
+        
+        return items
