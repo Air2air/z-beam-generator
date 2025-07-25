@@ -33,7 +33,174 @@ class BaseTypeGenerator(ABC):
             JSON-LD structure
         """
         pass
+        
+    def _get_common_jsonld_structure(self, frontmatter: Dict[str, Any], schema_type: str) -> Dict[str, Any]:
+        """Generate common JSON-LD structure used by most types.
+        
+        Args:
+            frontmatter: Frontmatter data
+            schema_type: Schema.org type to use
+            
+        Returns:
+            Base JSON-LD structure
+        """
+        # Get basic data
+        name = self._get_frontmatter_value(frontmatter, "name", self.subject)
+        slug = self._get_slug(frontmatter)
+        description = self._get_frontmatter_value(
+            frontmatter, 
+            "description", 
+            f"Information about {name}."
+        )
+        keywords = self._format_keywords(self._get_frontmatter_value(frontmatter, "keywords", []))
+        today = self._get_current_date()
+        
+        # Get website URL from frontmatter or build default
+        website_url = self._get_frontmatter_value(
+            frontmatter, 
+            "website", 
+            self._build_url(slug, self._get_article_type_from_class())
+        )
+        
+        # Build base structure
+        return {
+            "@context": "https://schema.org",
+            "@type": schema_type,
+            "headline": name,
+            "description": description,
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": website_url
+            },
+            "author": self._generate_author_object(frontmatter),
+            "publisher": self._get_publisher(),
+            "datePublished": today,
+            "dateModified": today,
+            "image": self._build_image_url(slug, self._get_article_type_from_class()),
+            "keywords": keywords
+        }
     
+    def _generate_author_object(self, frontmatter: Dict[str, Any]) -> Dict[str, Any]:
+        """Generate author object from frontmatter data.
+        
+        Args:
+            frontmatter: Frontmatter data
+            
+        Returns:
+            Author object
+        """
+        # Get author information with proper fallbacks
+        author_data = self._get_frontmatter_value(frontmatter, "author", {})
+        
+        # Check if we should use an organization or person
+        use_organization = self._get_nested_value(author_data, "use_organization", False)
+        
+        if use_organization:
+            return {
+                "@type": "Organization",
+                "name": self._get_nested_value(author_data, "name", "Z-Beam")
+            }
+        else:
+            # Use person with affiliation
+            author_id = self._get_nested_value(author_data, "author_id", 1)
+            author_name = self._get_nested_value(author_data, "author_name", "")
+            author_country = self._get_nested_value(author_data, "author_country", "")
+            author_credentials = self._get_nested_value(
+                author_data, 
+                "credentials", 
+                "Industry Leader in Laser Cleaning Technology"
+            )
+            organization_name = self._get_nested_value(author_data, "name", "Laser Technology Institute")
+            
+            return {
+                "@type": "Person",
+                "identifier": author_id,
+                "name": author_name,
+                "nationality": author_country,
+                "description": author_credentials,
+                "affiliation": {
+                    "@type": "Organization",
+                    "name": organization_name
+                }
+            }
+    
+    def _generate_structured_value(self, data: Dict[str, Any]) -> Dict[str, Any]:
+        """Generate a Schema.org StructuredValue from a dictionary.
+        
+        Args:
+            data: Dictionary to convert
+            
+        Returns:
+            StructuredValue object
+        """
+        structured_value = {"@type": "StructuredValue"}
+        
+        for key, value in data.items():
+            if key and value:
+                # Convert camelCase to standard format
+                formatted_key = key[0].lower() + key[1:]  # Ensure first letter is lowercase
+                structured_value[formatted_key] = value
+                
+        return structured_value
+    
+    def _process_list_items(self, 
+                           items: List[Union[Dict[str, Any], str]], 
+                           name_key: str = "name",
+                           description_key: str = "description",
+                           thing_type: str = "Thing") -> List[Dict[str, Any]]:
+        """Process a list of items into schema.org objects.
+        
+        Args:
+            items: List of dictionaries or strings
+            name_key: Key to use for name in dictionaries
+            description_key: Key to use for description in dictionaries
+            thing_type: Schema.org type to use
+            
+        Returns:
+            List of schema.org objects
+        """
+        result = []
+        
+        for item in items:
+            if isinstance(item, dict):
+                name = item.get(name_key, "")
+                description = item.get(description_key, "")
+                
+                if name:
+                    obj = {
+                        "@type": thing_type,
+                        "name": name
+                    }
+                    
+                    if description:
+                        obj["description"] = description
+                        
+                    # Add other properties
+                    for key, value in item.items():
+                        if key not in [name_key, description_key]:
+                            obj[key] = value
+                            
+                    result.append(obj)
+            elif isinstance(item, str):
+                result.append({
+                    "@type": thing_type,
+                    "name": item
+                })
+                
+        return result
+    
+    def _get_article_type_from_class(self) -> str:
+        """Extract article type from class name.
+        
+        Returns:
+            Article type
+        """
+        # E.g., "ApplicationJsonldGenerator" -> "application"
+        class_name = self.__class__.__name__
+        if class_name.endswith("JsonldGenerator"):
+            return class_name[:-len("JsonldGenerator")].lower()
+        return "article"
+        
     def _get_frontmatter_value(self, frontmatter: Dict[str, Any], key: str, default: Any = None) -> Any:
         """Get value from frontmatter safely.
         
@@ -47,29 +214,20 @@ class BaseTypeGenerator(ABC):
         """
         return frontmatter.get(key, default)
         
-    def _get_nested_value(self, data: Dict[str, Any], key_path: str, default: Any = "") -> Any:
+    def _get_nested_value(self, data: Dict[str, Any], key: str, default: Any = "") -> Any:
         """Get nested value using dot notation.
         
         Args:
             data: Dictionary to extract from
-            key_path: Path to key using dot notation (e.g., "author.name")
+            key: Key to extract
             default: Default value if key not found
             
         Returns:
-            Nested value or default
+            Value as string or empty string if not found
         """
         if not isinstance(data, dict):
             return default
-            
-        keys = key_path.split('.')
-        value = data
-        
-        for key in keys:
-            if not isinstance(value, dict) or key not in value:
-                return default
-            value = value.get(key)
-            
-        return value if value is not None else default
+        return str(data.get(key, default)) if data.get(key) is not None else default
         
     def _format_keywords(self, keywords: Any) -> str:
         """Format keywords as comma-separated string.
@@ -170,37 +328,3 @@ class BaseTypeGenerator(ABC):
                 "url": "https://www.z-beam.com/logo.png"
             }
         }
-        
-    def _convert_list_to_schema_objects(self, items: List[Union[str, Dict[str, Any]]], 
-                                      object_type: str = "Thing") -> List[Dict[str, Any]]:
-        """Convert a list of strings or dicts to schema.org objects.
-        
-        Args:
-            items: List of strings or dictionaries
-            object_type: Schema.org type for the objects
-            
-        Returns:
-            List of schema.org objects
-        """
-        result = []
-        
-        for item in items:
-            if isinstance(item, str):
-                result.append({
-                    "@type": object_type,
-                    "name": item
-                })
-            elif isinstance(item, dict) and "name" in item:
-                obj = {
-                    "@type": object_type,
-                    "name": item["name"]
-                }
-                
-                # Add additional properties if present
-                for key, value in item.items():
-                    if key != "name":
-                        obj[key] = value
-                        
-                result.append(obj)
-                
-        return result
