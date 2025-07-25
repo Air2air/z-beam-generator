@@ -1,104 +1,144 @@
 """
 MODULE DIRECTIVES FOR AI ASSISTANTS:
-1. FRONTMATTER-DRIVEN: All content must be extracted from frontmatter
-2. NO HARDCODED SECTIONS: Section structure must be derived from frontmatter
-3. DYNAMIC FORMATTING: Format content based on article_type from frontmatter
-4. ERROR HANDLING: Raise exceptions when required frontmatter fields are missing
-5. SCHEMA AWARENESS: Be aware of the schema structure for different article types
+1. SCHEMA-COMPLIANT: JSON-LD must follow Schema.org specifications
+2. ARTICLE_TYPE AWARENESS: Different schema types based on article_type
+3. PROPERTY MAPPING: Map frontmatter fields to JSON-LD properties
+4. FORMAT CONSISTENCY: Format keywords as comma-separated string
+5. STRATEGY PATTERN: Use type-specific generators for each article type
 """
 
-import json
 import logging
-from typing import Dict, Any, List
-from components.base import BaseComponent
+import json
+import importlib
+from datetime import datetime
+from typing import Dict, Any, List, Optional
+from components.base.component import BaseComponent
 
 logger = logging.getLogger(__name__)
 
-class JsonLdGenerator(BaseComponent):
-    """Generates JSON-LD structured data for articles."""
+class JsonldGenerator(BaseComponent):
+    """Generates JSON-LD structured data following schema definitions."""
+    
+    # Map of article types to their schema types
+    SCHEMA_TYPE_MAP = {
+        "region": "Article",
+        "application": "TechnicalArticle", 
+        "thesaurus": "DefinedTerm",
+        "material": "Product"
+    }
     
     def generate(self) -> str:
-        """Generate JSON-LD structured data based on frontmatter."""
+        """Abstract method implementation required by BaseComponent.
+        
+        Returns:
+            JSON-LD content as string
+        """
+        return self._generate()
+    
+    def _generate(self) -> str:
+        """Generate JSON-LD content based on article type.
+        
+        Returns:
+            JSON-LD content as string
+        """
         try:
-            # 1. Get frontmatter data using standard method
-            frontmatter_data = self.get_frontmatter_data()
+            # Get frontmatter data
+            frontmatter = self.frontmatter_data or {}
             
-            if not frontmatter_data:
-                logger.warning("No frontmatter data available for JSON-LD generation")
-                return self._create_error_markdown("Missing frontmatter data")
+            # Get the appropriate generator for this article type
+            type_generator = self._get_type_generator()
+            
+            if type_generator:
+                # Use the type-specific generator
+                jsonld = type_generator.generate_jsonld(frontmatter)
+            else:
+                # Use default generator as fallback
+                jsonld = self._generate_default_jsonld(frontmatter)
                 
-            # 2. Prepare data (JSON-LD can be generated directly from frontmatter)
-            jsonld_data = self._prepare_data(frontmatter_data)
+            # Format as JSON with indentation
+            jsonld_str = json.dumps(jsonld, indent=2)
             
-            # 3. Post-process and format as JSON-LD (no API call needed)
-            return self._post_process(jsonld_data)
+            # Return as code block
+            return f"""```json
+{jsonld_str}
+```"""
             
         except Exception as e:
             logger.error(f"Error generating JSON-LD: {str(e)}")
-            return self._create_error_markdown(str(e))
+            return self._generate_fallback_jsonld()
     
-    def _prepare_data(self, frontmatter_data: Dict[str, Any]) -> Dict[str, Any]:
-        """Transform frontmatter data into JSON-LD structure."""
-        # Extract relevant data from frontmatter
-        title = frontmatter_data.get("title", self.subject.capitalize())
-        description = frontmatter_data.get("description", "")
+    def _get_type_generator(self):
+        """Get the appropriate type-specific generator for this article type.
         
-        # Build basic JSON-LD data
-        jsonld = {
+        Returns:
+            Type-specific generator instance or None if not found
+        """
+        try:
+            # Convert article_type to proper module name (e.g., "region" -> "region_generator")
+            module_name = f"{self.article_type}_generator"
+            
+            # Try to import the module
+            module = importlib.import_module(f"components.jsonld.types.{module_name}")
+            
+            # Get the generator class (naming convention: RegionJsonldGenerator, etc.)
+            class_name = f"{self.article_type.capitalize()}JsonldGenerator"
+            generator_class = getattr(module, class_name)
+            
+            # Create an instance with the same context as this generator
+            return generator_class(self.subject, self.frontmatter_data)
+            
+        except (ImportError, AttributeError) as e:
+            logger.warning(f"No specific generator found for article type '{self.article_type}': {str(e)}")
+            return None
+    
+    def _generate_default_jsonld(self, frontmatter: Dict[str, Any]) -> Dict[str, Any]:
+        """Generate JSON-LD for articles without a specific generator.
+        
+        Args:
+            frontmatter: Article frontmatter data
+            
+        Returns:
+            JSON-LD structure for default articles
+        """
+        # Get name/title
+        name = frontmatter.get("name", self.subject)
+        description = frontmatter.get("description", f"Information about {name}.")
+        
+        # Get schema type for this article type or default to Article
+        schema_type = self.SCHEMA_TYPE_MAP.get(self.article_type, "Article")
+        
+        # Create simple JSON-LD
+        return {
             "@context": "https://schema.org",
-            "@type": "Article",
-            "headline": title,
+            "@type": schema_type,
+            "headline": name,
             "description": description,
-            "mainEntityOfPage": {
-                "@type": "WebPage",
-                "@id": f"https://example.com/{self.subject.lower().replace(' ', '-')}"
+            "author": {
+                "@type": "Organization",
+                "name": "Z-Beam"
             }
         }
-        
-        # Add author if available
-        if "author" in frontmatter_data:
-            author = frontmatter_data.get("author", {})
-            jsonld["author"] = {
-                "@type": "Person",
-                "identifier": author.get("author_id"),
-                "name": author.get("author_name"),
-                "nationality": author.get("author_country"),
-                "description": author.get("credentials"),
-                "affiliation": author.get("name")
-            }
-        
-        # Add dates if available
-        if "datePublished" in frontmatter_data:
-            jsonld["datePublished"] = frontmatter_data["datePublished"]
-            
-        if "dateModified" in frontmatter_data:
-            jsonld["dateModified"] = frontmatter_data["dateModified"]
-        
-        # Add keywords if available
-        if "keywords" in frontmatter_data:
-            jsonld["keywords"] = frontmatter_data["keywords"]
-        
-        return jsonld
     
-    def _format_prompt(self, data: Dict[str, Any]) -> str:
-        """Format prompt template with data (not used in JsonLdGenerator)."""
-        # JSON-LD doesn't require API calls, but included for standard conformance
-        return ""
-    
-    def _call_api(self, prompt: str) -> str:
-        """Call API with prompt (not used in JsonLdGenerator)."""
-        # JSON-LD doesn't require API calls, but included for standard conformance
-        return ""
-    
-    def _post_process(self, jsonld_data: Dict[str, Any]) -> str:
-        """Format JSON-LD data as markdown code block."""
-        if not jsonld_data:
-            return ""
-            
-        # Format as pretty JSON
-        try:
-            jsonld_str = json.dumps(jsonld_data, indent=2)
-            return f"```json\n{jsonld_str}\n```"
-        except Exception as e:
-            logger.error(f"Error formatting JSON-LD: {str(e)}")
-            return self._create_error_markdown(f"Error formatting JSON-LD: {str(e)}")
+    def _generate_fallback_jsonld(self) -> str:
+        """Generate fallback JSON-LD when errors occur.
+        
+        Returns:
+            Fallback JSON-LD as string
+        """
+        # Get schema type for this article type or default to Article
+        schema_type = self.SCHEMA_TYPE_MAP.get(self.article_type, "Article")
+        
+        fallback = {
+            "@context": "https://schema.org",
+            "@type": schema_type,
+            "headline": self.subject,
+            "description": f"Information about {self.subject}."
+        }
+        
+        # Format as JSON
+        fallback_str = json.dumps(fallback, indent=2)
+        
+        # Return as code block
+        return f"""```json
+{fallback_str}
+```"""

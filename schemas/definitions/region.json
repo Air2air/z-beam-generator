@@ -143,6 +143,123 @@
           "economicData"
         ]
       }
+    },
+    "jsonld": {
+      "schemaType": "Article",
+      "required": true,
+      "properties": {
+        "@context": {
+          "value": "https://schema.org",
+          "required": true
+        },
+        "@type": {
+          "value": "Article",
+          "required": true
+        },
+        "headline": {
+          "source": "name",
+          "required": true
+        },
+        "description": {
+          "source": "description",
+          "required": true
+        },
+        "mainEntityOfPage": {
+          "required": true,
+          "properties": {
+            "@type": {
+              "value": "WebPage",
+              "required": true
+            },
+            "@id": {
+              "source": "website",
+              "required": true,
+              "default": "https://www.z-beam.com/{slug}-laser-cleaning"
+            }
+          }
+        },
+        "author": {
+          "required": true,
+          "properties": {
+            "@type": {
+              "value": "Person",
+              "required": true
+            },
+            "identifier": {
+              "source": "author.author_id",
+              "required": true
+            },
+            "name": {
+              "source": "author.author_name",
+              "required": true
+            },
+            "nationality": {
+              "source": "author.author_country",
+              "required": true
+            },
+            "description": {
+              "source": "author.credentials",
+              "required": true
+            },
+            "affiliation": {
+              "required": true,
+              "properties": {
+                "@type": {
+                  "value": "Organization",
+                  "required": true
+                },
+                "name": {
+                  "source": "author.name",
+                  "required": true
+                }
+              }
+            }
+          }
+        },
+        "publisher": {
+          "required": true,
+          "properties": {
+            "@type": {
+              "value": "Organization",
+              "required": true
+            },
+            "name": {
+              "value": "Z-Beam",
+              "required": true
+            },
+            "logo": {
+              "required": true,
+              "properties": {
+                "@type": {
+                  "value": "ImageObject",
+                  "required": true
+                },
+                "url": {
+                  "value": "https://www.z-beam.com/logo.png",
+                  "required": true
+                }
+              }
+            }
+          }
+        },
+        "datePublished": {
+          "format": "YYYY-MM-DD",
+          "required": true
+        },
+        "dateModified": {
+          "format": "YYYY-MM-DD",
+          "required": true
+        },
+        "image": {
+          "template": "https://www.z-beam.com/images/{slug}-laser-cleaning.jpg",
+          "required": true
+        },
+        "keywords": {
+          "source": "keywords",
+          "format": "comma-separated",
+          "required": true
+        }
+      }
     }
   }
 }
