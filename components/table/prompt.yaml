@@ -1,0 +1,213 @@
+name: "Table Generator"
+description: "Generates comprehensive tables from frontmatter data based on numerical ranges and structured data"
+version: "2.2"
+
+# Table formatting configuration
+format:
+  header_style: "bold"
+  include_descriptions: true
+  table_style: "detailed"
+  section_title_format: "## {title}"
+  preserve_original_values: true
+  process_all_frontmatter_keys: true  # Enable processing of any frontmatter key
+
+# Analysis configuration for dynamic frontmatter processing
+analysis:
+  # Table generation strategy priority (first match wins)
+  strategy_priority:
+    - "explicit_type"  # Use table_structure.type if specified
+    - "list_based"     # Generate tables from lists of objects
+    - "range_based"    # Generate interpolated tables for numerical ranges
+    - "key_value"      # Generate simple key-value tables
+    
+  # Priority for frontmatter keys (determines order of tables)
+  priority_keys:
+    - "technicalSpecifications"
+    - "composition"
+    - "applications"
+    - "outcomes"
+    - "environmentalImpact"
+    - "compatibility"
+    - "regulatoryStandards"
+  
+  # Process any frontmatter key not explicitly defined
+  process_undefined_keys: true
+  
+  # Default handling for different data types
+  default_handling:
+    list_of_objects: "table"       # Convert lists of objects to tables
+    list_of_strings: "bullet_list" # Convert lists of strings to bullet lists
+    object_with_ranges: "range_table" # Convert objects with ranges to range tables
+    simple_value: "include"        # Include simple values in key-value tables
+    
+  # Special handling directives
+  special_handling:
+    - key: "regulatoryStandards"
+      directive: "preserve_original_codes"
+    - key: "keywords"
+      directive: "convert_to_table"
+    - key: "tags"
+      directive: "convert_to_table"
+      
+# Range table configuration (applied to type: "range" tables)
+range_tables:
+  min_steps: 5
+  max_steps: 5
+  interpolation: "linear"
+  default_column_labels:
+    - "Minimum"
+    - "Low"
+    - "Optimal"
+    - "High"
+    - "Maximum"
+
+# Optimization settings
+optimization:
+  highlight_optimal: true
+  optimal_column: "mid"  # Options: min, mid, max
+
+# Dynamic table structure for any frontmatter key
+dynamic_tables:
+  enabled: true
+  title_format: "## {key}"
+  description_format: "{key} data for {subject}:"
+  
+  # Mapping of data patterns to table formats
+  mappings:
+    # For lists of objects with name/description fields
+    - pattern: "list_with_name_description"
+      columns:
+        - name: "Name"
+          field: "name"
+        - name: "Description"
+          field: "description"
+          
+    # For lists of objects with component/type/percentage
+    - pattern: "list_with_component_composition"
+      columns:
+        - name: "Component"
+          field: "component"
+        - name: "Type"
+          field: "type"
+        - name: "Percentage"
+          field: "percentage"
+          
+    # For lists of objects with metric/result
+    - pattern: "list_with_metrics"
+      columns:
+        - name: "Metric"
+          field: "metric"
+        - name: "Result"
+          field: "result"
+          
+    # For lists of objects with code/description
+    - pattern: "list_with_codes"
+      columns:
+        - name: "Code"
+          field: "code"
+        - name: "Description"
+          field: "description"
+          
+    # For lists of strings
+    - pattern: "list_of_strings"
+      columns:
+        - name: "Item"
+        - name: "Value"
+        
+    # For objects with properties
+    - pattern: "object_with_properties"
+      columns:
+        - name: "Property"
+        - name: "Value"
+
+# Table structure configuration
+table_structure:
+  technicalSpecifications:
+    title: "Technical Specifications for Laser Cleaning {subject}"
+    description: "Comprehensive parameters for optimal laser cleaning of {subject}:"
+    type: "range"
+    columns:
+      - name: "Parameter"
+      - name: "Minimum"
+      - name: "Low"
+      - name: "Optimal"
+      - name: "High"
+      - name: "Maximum"
+    
+  composition:
+    title: "Composition of {subject}"
+    description: "{subject}'s mineral composition affecting laser cleaning performance:"
+    type: "list"
+    data_mapping:
+      name_field: "component"
+      value_fields: ["type", "percentage"]
+    columns:
+      - name: "Component"
+      - name: "Type"
+      - name: "Percentage"
+    
+  applications:
+    title: "Applications for {subject} Laser Cleaning"
+    description: "Key use cases with detailed implementation:"
+    type: "list"
+    data_mapping:
+      name_field: "name"
+      description_field: "description"
+    columns:
+      - name: "Application"
+      - name: "Description"
+    
+  outcomes:
+    title: "Performance Metrics for {subject} Laser Cleaning"
+    description: "Verified cleaning results and quality measurements:"
+    type: "list"
+    data_mapping:
+      name_field: "metric"
+      value_field: "result"
+    columns:
+      - name: "Metric"
+      - name: "Result"
+    
+  environmentalImpact:
+    title: "Environmental Benefits of {subject} Laser Cleaning"
+    description: "Quantifiable environmental advantages compared to traditional methods:"
+    type: "list"
+    data_mapping:
+      name_field: "benefit"
+      description_field: "description"
+    columns:
+      - name: "Benefit"
+      - name: "Impact"
+    
+  compatibility:
+    title: "Material Compatibility with {subject}"
+    description: "Other materials compatible with similar laser cleaning techniques:"
+    type: "list"
+    data_mapping:
+      name_field: "material"
+      value_field: "application"
+    columns:
+      - name: "Material"
+      - name: "Application"
+    
+  regulatoryStandards:
+    title: "Regulatory Standards for {subject} Laser Cleaning"
+    description: "Applicable codes and compliance requirements:"
+    type: "list"
+    data_mapping:
+      name_field: "code"
+      description_field: "description"
+    columns:
+      - name: "Code"
+      - name: "Description"
+    preserve_original_values: true
+    
+  # Add special handling for keywords
+  keywords:
+    title: "Keywords for {subject} Laser Cleaning"
+    description: "Searchable terms related to {subject} laser cleaning technology:"
+    type: "list"
+    columns:
+      - name: "Keyword"
+      - name: "Category"
+

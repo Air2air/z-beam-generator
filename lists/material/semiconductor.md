@@ -1,0 +1,5 @@
+- Gallium Arsenide
+- Germanium
+- Graphite
+- Silicon
+- Silicon Wafer

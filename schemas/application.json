@@ -1,0 +1,109 @@
+{
+  "applicationProfile": {
+    "name": "application",
+    "version": "1.3",
+    "schemaType": "LaserCleaningApplicationProfile",
+    "generatorConfig": {
+      "jsonld": {
+        "schemaType": "TechnicalArticle"
+      },
+      "contentGeneration": {
+        "dynamicSectionsFromFrontmatter": true,
+        "fieldContentMapping": {
+          "technicalSpecifications": "Detail the technical specifications for {subject}, focusing on laser parameters and performance metrics",
+          "applications": "Describe the key use cases and applications of {subject} in laser cleaning technology",
+          "regulatoryStandards": "Explain the relevant regulatory standards and compliance requirements for {subject}",
+          "challenges": "Analyze the technical challenges associated with {subject} and their solutions",
+          "outcomes": "Present the measurable outcomes and performance metrics of {subject} in real-world implementations"
+        },
+        "introductionPrompt": "Provide a comprehensive technical overview of {subject} as a laser cleaning application"
+      }
+    },
+    "profile": {
+      "applications": {
+        "type": "array",
+        "required": true,
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "required": true,
+              "description": "Use case name",
+              "example": "Turbine Blade Cleaning"
+            },
+            "description": {
+              "type": "string",
+              "required": true,
+              "description": "Use case description (50–75 words)",
+              "example": "Fluence of 2–10 J/cm² removes coatings from turbine blades..."
+            }
+          }
+        },
+        "description": "3–4 specific use cases"
+      },
+      "technicalSpecifications": {
+        "type": "object",
+        "required": true,
+        "properties": {
+          "laserType": {
+            "type": "string",
+            "description": "Type of laser",
+            "example": "Hafnium-doped fiber"
+          },
+          "wavelength": {
+            "type": "string",
+            "description": "Wavelength",
+            "example": "1064nm ±2nm"
+          },
+          "powerRange": {
+            "type": "string",
+            "description": "Power range",
+            "example": "50–1000W pulsed"
+          },
+          "fluenceRange": {
+            "type": "string",
+            "description": "Fluence range",
+            "example": "0.1–15 J/cm²"
+          },
+          "pulseDuration": {
+            "type": "string",
+            "description": "Pulse duration",
+            "example": "10–200ns"
+          }
+        },
+        "description": "Key technical parameters"
+      },
+      "challenges": {
+        "type": "array",
+        "required": true,
+        "items": {
+          "type": "object",
+          "properties": {
+            "issue": {
+              "type": "string",
+              "required": true,
+              "description": "Technical challenge",
+              "example": "Thermal Damage"
+            },
+            "solution": {
+              "type": "string",
+              "required": true,
+              "description": "Solution (50–75 words)",
+              "example": "Pulse shaping adjusts fluence..."
+            }
+          }
+        },
+        "description": "1–3 challenges and solutions"
+      }
+    },
+    "validation": {
+      "frontmatter": {
+        "requiredFields": [
+          "name", "description", "website", "author", "keywords", "tags", 
+          "applications", "technicalSpecifications", "regulatoryStandards", "outcomes"
+        ]
+      }
+    }
+  }
+}

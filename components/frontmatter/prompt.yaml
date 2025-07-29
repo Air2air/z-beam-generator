@@ -1,0 +1,186 @@
+name: "Frontmatter Generator"
+description: "Generates concise YAML frontmatter for laser cleaning articles, optimized for SEO, E-A-T, and on-site tagging."
+version: "2.4.0"
+
+template: |
+  🚨🚨🚨 CRITICAL YAML FORMATTING REQUIREMENTS 🚨🚨🚨
+  - DO NOT include ANY triple backticks (```) or ```yaml markers
+  - DO NOT include ANY "---" delimiter markers (not at beginning, not at end)
+  - Return ONLY the raw YAML content with NO delimiters
+  - Example of CORRECT formatting:
+    name: "Example Subject"
+    description: "Example description text"
+    # Other fields
+
+  Generate CONCISE AND EFFICIENT YAML frontmatter for the {article_type} "{subject}" in laser cleaning contexts, optimized for E-A-T, searchability, and on-site tagging.
+
+  🚨 CRITICAL LENGTH REQUIREMENT:
+  - Generate BETWEEN 2,000–3,000 CHARACTERS of focused, technical frontmatter.
+  - This is a HARD REQUIREMENT—longer responses will be rejected.
+  - Use BRIEF, TARGETED content for EACH field.
+  - Include 10–12 UNIQUE, TECHNICAL keywords for search/SEO (avoid duplicates).
+  - Include 5–8 SHORT, HYPHENATED tags for on-site display/navigation (e.g., laser-cleaning).
+  - For complex arrays (e.g., applications, facilities), include 3–4 ITEMS with descriptions of 50–75 words.
+  - Write descriptions of 100–150 characters for simple fields, 150–200 words for main description.
+
+  🚨 DYNAMIC SCHEMA REQUIREMENTS:
+  - Follow EXACTLY the schema structure for this specific article type
+  - Include ALL required fields as shown below
+  - Use the EXACT field names provided (case-sensitive)
+  - Follow the structure and data types shown in examples
+  - DO NOT add fields not in the schema
+  - DO NOT omit any of the required fields
+  
+  {schema}
+
+  🚨 IMPORTANT CONSTRAINTS:
+  - For region articles, use ONLY California, USA locations.
+  - For region articles, set "countries" to ["United States"]—no other countries.
+  - All geographic data must reference California locations exclusively.
+  - Manufacturing centers, organizations, or facilities must be in California.
+  - Use "https://www.z-beam.com" for ALL website URLs.
+
+  🚨 GEOGRAPHIC CONTEXT REQUIREMENTS:
+  - For region articles, include:
+    1. Specific county (e.g., "Santa Clara County").
+    2. 2–3 immediately adjacent cities (verify real neighbors).
+    3. Broader California region (e.g., "Bay Area", "Southern California").
+    4. Explicitly state "California" as the state.
+  - Example: "Mountain View, Santa Clara County, California, in Silicon Valley, borders Palo Alto and Sunnyvale."
+
+  🚨 URL FORMATTING RULES:
+  - Use https://www.z-beam.com/[subject-with-dashes]-laser-cleaning.
+  - Example: https://www.z-beam.com/mountain-view-laser-cleaning.
+  - NEVER use example.com or other domains; ALWAYS include "www.".
+  - Exclude article type from URL (e.g., no /regions/).
+
+  🚨 ARRAY FORMATTING RULES:
+  - Simple arrays (e.g., keywords, tags, countries):
+    keywords:
+      - "keyword one"
+      - "keyword two"
+    tags:
+      - "tag-one"
+      - "tag-two"
+  - Complex arrays (e.g., applications, facilities):
+    arrayName:
+      - name: "Item name"
+        description: "Brief 50–75 word description with technical specifics."
+        property: "Relevant property"
+
+  🚨 E-A-T AND SEO REQUIREMENTS:
+  - Include an author field with credentials to enhance trustworthiness (e.g., "Laser Technology Institute, Industry Leader").
+  - Ensure keywords are specific, technical, and non-repetitive for search/SEO.
+  - Ensure tags are short, hyphenated, and user-friendly for on-site display (minimal overlap with keywords).
+  - Map description to SEO meta description (150–160 characters).
+  - Avoid redundancy (e.g., no overlapping keywords/tags or specs).
+
+  Generate YAML for: {article_type} = {subject}
+  
+  Required fields (if no dynamic schema was provided):
+  name: "{subject}"
+  description: "150–200 word technical summary of {subject} in laser cleaning."
+  website: "https://www.z-beam.com/[subject-with-dashes]-laser-cleaning"
+  min_words: {min_words}
+  max_words: {max_words}
+  author:
+    author_id: {author_id}
+    author_name: "{author_name}"
+    author_country: "{author_country}"
+    name: "Laser Technology Institute"
+    credentials: "Industry Leader in Laser Cleaning Technology"
+  keywords:
+    - "keyword one"
+    - "keyword two"
+    # ...up to 12
+  tags:
+    - "tag-one"
+    - "tag-two"
+    # ...up to 8
+  applications:
+    - name: "Application One"
+      description: "Brief 50–75 word description of the application."
+    - name: "Application Two"
+      description: "Brief 50–75 word description of the application."
+    # ...up to 4
+  environmentalImpact:
+    - benefit: "Waste Reduction"
+      description: "Laser cleaning eliminates chemical solvents, reducing hazardous waste by 90% compared to traditional methods."
+    - benefit: "Energy Efficiency"
+      description: "Process uses 30% less energy than abrasive cleaning, lowering carbon footprint."
+  regulatoryStandards:
+    - code: "AWS D1.1"
+      description: "Structural Welding Code – Steel"
+    - code: "AWS D1.2"
+      description: "Structural Welding Code – Aluminum"
+  outcomes:
+    - result: "100% NDT pass rate"
+      metric: "API 1104 compliance"
+    - result: "Zero solvent waste"
+      metric: "EPA hazardous waste reporting"
+  composition:
+    - component: "Silica"
+      percentage: "90-99%"
+      type: "mineral"
+    - component: "Other minerals"
+      percentage: "1-10%"
+      type: "mineral"
+  compatibility:
+    - material: "Granite"
+      application: "Laser cleaning for monument restoration"
+    - material: "Sandstone"
+      application: "Surface preparation for conservation"
+  technicalSpecifications:
+    compliance: "California OSHA Title 8 Section 5417"
+    coolingSystem: "Closed-loop chiller (-10°C to +40°C)"
+    powerRange: "50–500W (modular)"
+    pulseDuration: "10–100ns adjustable"
+    repetitionRate: "20–200kHz"
+    safetyClass: "IV (requires enclosure)"
+    spotSize: "0.1–5mm diameter"
+    wavelength: "1064nm ±2nm"
+
+  🚨 TABLE DATA STRUCTURE REQUIREMENTS:
+  - The following fields MUST be included with EXACTLY this structure for table generation:
+  
+  technicalSpecifications:
+    powerRange: "50–500W (modular)"
+    pulseDuration: "10–100ns adjustable" 
+    wavelength: "1064nm ±2nm"
+    spotSize: "0.1–5mm diameter"
+    repetitionRate: "20–200kHz"
+    # Include at least 5 technical specifications relevant to laser cleaning
+  
+  applications:
+    - name: "Application One"
+      description: "Description with specific details about how laser cleaning applies."
+    - name: "Application Two" 
+      description: "Another detailed application description."
+    - name: "Application Three"
+      description: "A third application with technical details."
+    # Include at least 3 applications
+  
+  composition:
+    - component: "Primary Component"
+      type: "material type"
+      percentage: "percentage range"
+    - component: "Secondary Component"
+      type: "material type" 
+      percentage: "percentage range"
+    # Include at least 2 composition entries for materials
+  
+  environmentalImpact:
+    - benefit: "Environmental Benefit"
+      description: "Detailed explanation of the environmental benefit."
+    - benefit: "Another Environmental Benefit"
+      description: "Description of another environmental advantage."
+    # Include at least 2 environmental benefits
+  
+  compatibility:
+    - material: "Compatible Material"
+      application: "Application context"
+    - material: "Another Compatible Material"
+      application: "Another application context"
+    # Include at least 2 compatibility entries
+  
+  # These fields MUST be included with EXACTLY this structure or tables will not generate

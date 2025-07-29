@@ -1,0 +1,38 @@
+name: "Tags Generator"
+description: "Generates concise frontmatter tags for laser cleaning articles, optimized for on-site navigation."
+version: "2.0.1"
+template: |
+  Generate CONCISE frontmatter tags for the {article_type} "{subject}" in laser cleaning contexts, optimized for on-site navigation.
+
+  🚨 CRITICAL REQUIREMENTS:
+  - Generate ONLY frontmatter.tags (5–8 short, hyphenated terms, e.g., laser-cleaning).
+  - Do NOT generate content section tags or tables.
+  - Ensure tags are DISTINCT from keywords (10–12 technical terms for SEO/search).
+  - Tags must be user-friendly, hyphenated, and navigation-focused (minimal overlap with keywords).
+  - Limit to 5–8 tags to avoid bloat.
+
+  🚨 CONSTRAINTS:
+  - For region articles, include city/county-specific tags (e.g., solano-county, fairfield-cleaning).
+  - Align with frontmatter keywords but avoid direct duplication (e.g., tag: laser-cleaning vs. keyword: industrial laser cleaning).
+  - Use lowercase, hyphenated format (e.g., rust-removal, not rust removal).
+
+  Generate frontmatter tags for: {article_type} = {subject}
+
+  Example:
+  tags:
+    - {subject-with-dashes}-cleaning
+    - laser-cleaning
+    - rust-removal
+    - surface-treatment
+    - non-abrasive
+    - [county-specific-tag]
+
+parameters:
+  max_tokens: 500
+  temperature: 0.5
+validation:
+  min_length: 5
+  max_length: 8
+  required_fields: ["tags"]
+  unique_items: true
+  hyphenated_format: true

@@ -1,0 +1,68 @@
+{
+  "name": "authorProfile",
+  "version": "1.1",
+  "schemaType": "AuthorSchema",
+  "author": {
+    "type": "object",
+    "required": true,
+    "properties": {
+      "id": { "type": "integer", "required": true },
+      "name": { "type": "string", "required": true },
+      "slug": { "type": "string", "required": true },
+      "title": { "type": "string", "required": false },
+      "bio": { "type": "string", "required": false },
+      "specialties": {
+        "type": "array",
+        "items": { "type": "string" },
+        "required": false
+      },
+      "image": { "type": "string", "required": false },
+      "country": { "type": "string", "required": false },
+      "url": { "type": "string", "required": false }
+    }
+  },
+  "authorProfile": {
+    "generatorConfig": {
+      "jsonld": {
+        "schemaType": "Person"
+      },
+      "contentGeneration": {
+        "dynamicSectionsFromFrontmatter": true,
+        "fieldContentMapping": {
+          "biography": "Provide a detailed professional biography of {subject}, highlighting their expertise in laser technology",
+          "expertise": "Detail the specific areas of expertise and specialization of {subject} in the field of laser cleaning",
+          "publications": "Summarize the key publications and research contributions of {subject} to laser technology",
+          "affiliations": "Describe the professional affiliations and positions held by {subject} in the industry",
+          "achievements": "Highlight the notable achievements and contributions of {subject} to laser cleaning technology"
+        },
+        "introductionPrompt": "Present a comprehensive professional profile of {subject} as an expert in laser cleaning technology"
+      }
+    },
+    "profile": {
+      "biography": {
+        "type": "string",
+        "required": true
+      },
+      "expertise": {
+        "type": "string",
+        "required": true
+      },
+      "publications": {
+        "type": "string",
+        "required": false
+      },
+      "affiliations": {
+        "type": "string",
+        "required": false
+      }
+    },
+    "validation": {
+      "frontmatter": {
+        "requiredFields": [
+          "name", "description", "website", "keywords", "tags", 
+          "biography", "expertise"
+        ]
+      }
+    }
+  }
+}

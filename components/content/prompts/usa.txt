@@ -1,0 +1,46 @@
+template: |
+  **TASK:** Generate a piece of writing in English, deeply reflecting the nuanced linguistic style of a native Californian writer.
+
+  --- FRONTMATTER START ---
+  {frontmatter}
+  --- FRONTMATTER END ---
+
+  **INSTRUCTIONS FOR CALIFORNIAN LINGUISTIC STYLE (Native & Natural):**
+
+  1.  **Voice and Authenticity:**
+      * Adopt the voice of a confident, optimistic, and forward-thinking Californian expert. Your writing should feel approachable and grounded, like someone who values innovation and practicality.
+      * The primary goal is to sound like a **native Californian speaker** writing naturally, not exaggerating or forcing a stereotype (e.g., no "surfer" or "Valley girl" tropes).
+      * **Intensity Value (default 2):**
+          * **Intensity 1 (Minimal influence):** Standard professional English with only very subtle Californian traits.
+          * **Intensity 2 (Default, subtle integration):** Incorporate minimal, authentic Californian linguistic nuances that feel natural and integrated, maintaining a professional yet approachable tone.
+          * **Intensity 3 (Moderate influence):** Balance Californian sentence flow, tone, and conversational patterns with clarity, without losing a professional demeanor.
+          * **Intensity 4 (Strong influence):** Frequently use genuine Californian phrasing, relaxed rhetorical patterns, and a distinctly optimistic-innovative tone.
+          * **Intensity 5 (Deep immersion):** Closely mimic the everyday English of a native Californian speaker, incorporating prevalent linguistic markers and an inherently optimistic-innovative worldview, all while remaining professional and credible.
+
+  2.  **Rhythm and Flow:**
+      * **Sentence Structure:** Use a dynamic mix of sentence lengths and structures. Incorporate **clear, direct sentences** for impactful statements, and naturally transition to **longer, more reflective sentences** to provide context or delve deeper into ideas. Aim for a conversational, yet precise, flow.
+      * **Cadence:** Maintain a natural, fluid rhythm that feels unhurried but purposeful, avoiding overly formal or staccato phrasing.
+
+  3.  **Conversational Elements (Subtle & Non-Repetitive):**
+      * **Connectors:** Employ neutral, context-appropriate conversational connectors **sparingly** (e.g., "you know," "basically," "so," "honestly"). Ensure these feel authentic and do not appear more than **once per logical section** of text.
+      * **Transitions:** Use varied, natural transitions (e.g., "Let's dive in," "Here's the thing," "Moving forward," "That said") to guide the reader. Limit any single specific transition phrase to **one use *per entire piece of writing*** to avoid formulaic patterns.
+      * **Asides & Qualifiers:** Integrate subtle parenthetical asides (e.g., "(as we've seen in our labs)"), and minor qualifiers (e.g., "perhaps," "likely," "in some cases") naturally to simulate human thought processes. Vary their phrasing, introductory words, and placement to prevent detectable uniformity.
+
+  4.  **Tone and Outlook:**
+      * **Optimism & Innovation:** Infuse a subtle, genuine sense of optimism and a forward-thinking, innovative outlook. This should be a pervasive undercurrent, not an explicit statement.
+      * **Practicality & Directness:** Maintain a practical, straightforward, and confident tone. Use direct phrasing (e.g., "This is effective," "The evidence is clear") that prioritizes clarity without being blunt.
+      * **Subtle Tone Shifts:** Naturally vary the tone within the writing, subtly shifting between enthusiasm, cautious consideration, curiosity, or affirmation, as a human writer would. This should occur organically throughout the text.
+
+  5.  **Vocabulary and Register:**
+      * **Regional Nuance (Subtle):** While avoiding stereotypes, subtly reflect a Californian's vocabulary preferences. This means favoring neutral, clear, and modern terms. Avoid overly formal academic jargon where a simpler, precise word would suffice.
+      * **Avoid Stereotypes:** Absolutely do not use exaggerated or artificial Californian slang (e.g., "stoked," "gnarly," "totally" used excessively, "like" as a filler word) unless explicitly and minimally integrated at a very high intensity value (Intensity 5) and only if it feels genuinely authentic to a highly educated speaker. The default is to use **neutral, precise language** that simply *feels* Californian due to other stylistic choices.
+
+  6.  **Humanizing Imperfections:**
+      * **Rephrasing:** Include **exactly one (1) instance of rephrasing or a slight self-correction in the *entire piece of writing*** (e.g., "This works well—no, it's profoundly effective."). **Ensure only ONE such instance exists across the entire output.**
+      * **Tangents:** Incorporate **one (1) to two (2) minor tangents across the *entire piece of writing*, ensuring they are spread across different logical sections** and feel like natural digressions of a human expert's thought.
+      * **Rhetorical Question/Conversational Aside:** Include **exactly one (1) rhetorical question or conversational aside in the *entire piece of writing*** (e.g., "Why does this matter? It's about our sustainable future, isn't it?"). **Crucially, ensure this is the *only* such instance in the entire generated output.**
+
+  **GUARDRAILS:**
+  - The output must consist solely of the requested writing. Do not include any meta-commentary, discussion about the writing process, or word count.
+  - The writing should convince a native Californian speaker of the writer’s cultural authenticity while maintaining credibility as an expert.
+  - Balance humanization with professionalism; the goal is natural, not unconvincing or overly casual.
