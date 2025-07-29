@@ -12,7 +12,7 @@ MODULE DIRECTIVES FOR AI ASSISTANTS:
 """Content generator component."""
 
 import logging
-from typing import Dict, Any, List
+from typing import Dict, Any
 from components.base.component import BaseComponent
 
 logger = logging.getLogger(__name__)
@@ -50,14 +50,11 @@ class ContentGenerator(BaseComponent):
         """
         data = super()._prepare_data()
         
-        # Get component-specific configuration
-        component_config = self.get_component_config()
-        
-        # Add content constraints
+        # Add content constraints using normalized method
         data.update({
-            "min_words": component_config.get("min_words", 500),
-            "max_words": component_config.get("max_words", 1500),
-            "tone": component_config.get("tone", "professional")
+            "min_words": self.get_component_config("min_words"),
+            "max_words": self.get_component_config("max_words"),
+            "tone": self.get_component_config("tone", "professional")
         })
         
         # Get frontmatter data
@@ -82,55 +79,6 @@ class ContentGenerator(BaseComponent):
                 data["relatedTerms"] = frontmatter.get("relatedTerms", [])
         
         return data
-    
-    def _format_prompt(self, data: Dict[str, Any]) -> str:
-        """Build prompt for content generation."""
-        # Get frontmatter data
-        frontmatter = data.get("frontmatter", {})
-        
-        prompt = f"""
-        Write a comprehensive article about {data['subject']} as a {data['article_type']}.
-        
-        Requirements:
-        - Length: Between {data.get('min_words', 500)} and {data.get('max_words', 1500)} words
-        - Tone: {data.get('tone', 'professional')}
-        - Format: Markdown with proper headings and subheadings
-        - Focus on accurate technical information
-        """
-        
-        # Add frontmatter-derived information
-        if "description" in frontmatter:
-            prompt += f"\n\nDescription: {frontmatter['description']}"
-            
-        if "keywords" in frontmatter:
-            keywords = frontmatter["keywords"]
-            if isinstance(keywords, list):
-                prompt += f"\n\nKeywords: {', '.join(keywords)}"
-            else:
-                prompt += f"\n\nKeywords: {keywords}"
-        
-        # Add article type-specific instructions
-        if data['article_type'] == "material":
-            prompt += """
-            
-            Include these sections:
-            1. Introduction
-            2. Properties
-            3. Applications
-            4. Manufacturing Process
-            5. Advantages and Limitations
-            """
-        elif data['article_type'] == "thesaurus":
-            prompt += """
-            
-            Include these sections:
-            1. Definition
-            2. Technical Context
-            3. Related Concepts
-            4. Applications
-            """
-        
-        return prompt
     
     def _post_process(self, content: str) -> str:
         """Post-process the main content.

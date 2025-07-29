@@ -2,6 +2,28 @@ name: "Table Generator"
 description: "Generates comprehensive tables from frontmatter data based on numerical ranges and structured data"
 version: "2.2"
 
+template: |
+  Generate ONLY markdown tables based on the frontmatter data for {subject} as a {article_type}.
+  
+  --- FRONTMATTER DATA ---
+  {frontmatter}
+  --- END FRONTMATTER ---
+  
+  Instructions:
+  1. Create 1-3 relevant tables from the frontmatter data
+  2. Focus on: technicalSpecifications, composition, applications, environmentalImpact, compatibility
+  3. Use proper markdown table format with headers
+  4. Each table should have a descriptive title (## Table Name)
+  5. ONLY output tables - no explanatory text or introductions
+  6. If no structured data is available, create a simple specifications table
+  
+  Example format:
+  ## Technical Specifications
+  | Parameter | Value |
+  |-----------|-------|
+  | Key1 | Value1 |
+  | Key2 | Value2 |
+
 # Table formatting configuration
 format:
   header_style: "bold"

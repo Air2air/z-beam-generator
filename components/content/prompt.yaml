@@ -1,51 +1,23 @@
 name: "Content Generator"
-description: "Generates comprehensive laser cleaning articles with scientific accuracy and human-like writing style"
-version: "1.0"
+description: "Generates comprehensive laser cleaning articles with scientific accuracy"
+version: "2.0"
 template: |
-  Using the provided frontmatter as the primary guide and supplementing with credible scientific knowledge, generate a comprehensive {article_type} article about {subject} in laser cleaning. Write as a scientific expert from {country} using English , with cultural voice intensity {intensity} (1-5, default=2).
-
-  --- FRONTMATTER START ---
+  Generate a comprehensive {article_type} article about {subject} for laser cleaning applications.
+  
+  --- FRONTMATTER DATA ---
   {frontmatter}
-  --- FRONTMATTER END ---
-
-  **Core Instructions:**
-  1.  **Content Foundation:**
-      -   Ground all arguments in the frontmatter's scientific evidence.
-      -   Supplement *only* with credible, widely accepted principles of laser cleaning that align with the subject and frontmatter. Avoid unsupported claims.
-      -   Integrate technical details into the narrative or a cohesive summary (no standalone bullet points unless specified by frontmatter). Always add explanatory commentary (e.g., "The 1064 nm wavelength targets silica effectively, crucial for {country}'s heritage conservation").
-
-  2.  **Structure & Flow:**
-      -   Use a flexible, thematic structure. Incorporate **exactly one (1) unique structural deviation** (e.g., merging "Applications & Advantages," adding a culturally relevant subheading like "Why This Matters for {country} Industry").
-      -   Avoid mirroring frontmatter section order. Prioritize non-linear, logical flow with varied section lengths (e.g., one section significantly longer/shorter).
-      -   Use organic transitions: **Employ each unique transition phrase (e.g., "Let's dive in," "Here's the deal," "Moving forward") only once per article.** Avoid culture-specific connectors.
-
-  3.  **Human Voice & Style (Key for Detection Evasion):**
-      *   **Cultural Voice & Nuance:**
-          -   Adapt language minimally based on `{intensity}` (1: neutral, 5: strong local influence). Follow `{country_specific_instructions}`.
-          -   **Integrate exactly two (2) specific cultural/contextual reflections AND one (1) brief localized anecdote or case reference** (e.g., "Similar challenges were overcome at {Specific {country} Factory} last year") woven naturally into relevant sections. Ensure unique phrasing/context.
-          -   *For intensity 4-5 only:* Consider **one (1) mild, context-appropriate rhetorical device** (e.g., understatement, subtle proverbial allusion – *avoid stereotypes*).
-      *   **Authentic Imperfections & Variation:**
-          -   **Sentence Structure:** Ensure **~70-85% of paragraphs** mix short/long sentences for high burstiness (e.g., "Results are clear. This innovation, however, demands careful calibration.").
-          -   **Imperfections:**
-              -   Include **one (1) instance** of slight rephrasing/self-correction (e.g., "rapid—no, *efficient*—processing").
-              -   Add **~70-85% paragraphs** with *varied* parenthetical remarks/asides (e.g., "(notably,)", "(based on our field data)", "(an essential point)"). Vary placement, wording, and introductory terms.
-              -   Include **one to three (1-3) minor, relevant tangents** spread across sections (e.g., "This echoes {country}'s push for sustainable manufacturing").
-          -   **Tone Dynamics:** Shift tone subtly **within each paragraph** (e.g., mix enthusiasm/caution: "Promising efficiency! Though cost analysis remains vital."). Align overall tone with section content (enthusiasm in Apps, caution in Limits).
-          -   **Conversational Elements:** Relax formality in **~70-85% of paragraphs** using varied conversational phrases/asides/qualifiers (e.g., "likely," "perhaps," "significantly for {country}"). Avoid slang/complex idioms.
-          -   **Rhetorical Device:** Use **exactly one (1) rhetorical question or conversational aside** tied to frontmatter/{country} (e.g., "Why focus here? Sustainability demands it."). **Unique phrasing, only once.**
-      *   **Reasoning Nuance:**
-          -   Include **one (1) instance** of qualifying a strong conclusion based on {country} context (e.g., "Globally achieving >95% efficiency, local factors like [specific {country} regulation] often limit us to ~85% – still robust, but context-dependent").
-          -   Build **one (1) minor point gradually across 2-3 paragraphs** with refined phrasing/added nuance (avoid "as mentioned earlier").
-          -   Include **one (1) instance** of mild, plausible contrast/uncertainty on a *minor* point (e.g., "While speed is generally paramount, precision sometimes outweighs it in {country}'s microelectronics sector"). *Must not contradict core science.*
-      *   **Stylistic Depth:**
-          -   Explain technical concepts using **at least two (2) distinct expository techniques** (e.g., analogy, process description, cause-effect chain, brief historical context).
-          -   **Dynamically adjust {country} voice intensity:** Slightly stronger (~3) in Applications/Reflections, slightly weaker (~1-2) in core Technical Principles/Limitations. Baseline (~2) elsewhere.
-
-  4.  **Critical Implementation Rules:**
-      -   **Prioritize Naturalness:** All humanizing elements MUST feel organically motivated by content/narrative flow, not mechanically inserted. *Sacrifice strict quotas for natural integration if conflicted.*
-      -   **Avoid AI Hallmarks:** No opening/closing meta-commentary about the writing process. Output ONLY the article content.
-      -   **Balance:** Maintain scientific authority. Avoid over-casual tone, stereotypes, or Westernized expressions. Cultural elements must enhance, not distract.
-      -   **Country Instructions:** Adhere strictly to `{country_specific_instructions}`.
+  --- END FRONTMATTER ---
+  
+  Requirements:
+  - Length: {min_words}-{max_words} words
+  - Tone: {tone}
+  - Format: Markdown with proper headings and subheadings
+  - Use frontmatter data as the primary source
+  - Focus on technical accuracy and practical applications
+  - Include introduction, technical details, applications, and conclusion
+  - Do NOT include meta-commentary about the writing process
+  
+  Generate ONLY the article content, nothing else.
 
 parameters:
   max_tokens: 4000
