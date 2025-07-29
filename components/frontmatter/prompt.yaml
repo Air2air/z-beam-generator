@@ -19,7 +19,6 @@ template: |
   - This is a HARD REQUIREMENT—longer responses will be rejected.
   - Use BRIEF, TARGETED content for EACH field.
   - Include 10–12 UNIQUE, TECHNICAL keywords for search/SEO (avoid duplicates).
-  - Include 5–8 SHORT, HYPHENATED tags for on-site display/navigation (e.g., laser-cleaning).
   - For complex arrays (e.g., applications, facilities), include 3–4 ITEMS with descriptions of 50–75 words.
   - Write descriptions of 100–150 characters for simple fields, 150–200 words for main description.
 
@@ -55,13 +54,10 @@ template: |
   - Exclude article type from URL (e.g., no /regions/).
 
   🚨 ARRAY FORMATTING RULES:
-  - Simple arrays (e.g., keywords, tags, countries):
+  - Simple arrays (e.g., keywords, countries):
     keywords:
       - "keyword one"
       - "keyword two"
-    tags:
-      - "tag-one"
-      - "tag-two"
   - Complex arrays (e.g., applications, facilities):
     arrayName:
       - name: "Item name"
@@ -71,9 +67,8 @@ template: |
   🚨 E-A-T AND SEO REQUIREMENTS:
   - Include an author field with credentials to enhance trustworthiness (e.g., "Laser Technology Institute, Industry Leader").
   - Ensure keywords are specific, technical, and non-repetitive for search/SEO.
-  - Ensure tags are short, hyphenated, and user-friendly for on-site display (minimal overlap with keywords).
   - Map description to SEO meta description (150–160 characters).
-  - Avoid redundancy (e.g., no overlapping keywords/tags or specs).
+  - Avoid redundancy (e.g., no overlapping keywords or specs).
 
   Generate YAML for: {article_type} = {subject}
   
@@ -93,10 +88,6 @@ template: |
     - "keyword one"
     - "keyword two"
     # ...up to 12
-  tags:
-    - "tag-one"
-    - "tag-two"
-    # ...up to 8
   applications:
     - name: "Application One"
       description: "Brief 50–75 word description of the application."

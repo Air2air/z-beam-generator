@@ -75,7 +75,7 @@ ARTICLE_CONTEXT = {
                 "max_tokens": 4000
             }, 
         },
-                "caption": {
+        "caption": {
             "enabled": True,  # Now available for all article types
             "results_word_count_max": 120,
             "equipment_word_count_max": 60,
