@@ -4,7 +4,7 @@ Base type generator for JSON-LD data.
 
 import logging
 import re
-from typing import Dict, Any, List, Optional
+from typing import Dict, Any
 from datetime import datetime
 
 logger = logging.getLogger(__name__)
@@ -97,6 +97,66 @@ class BaseTypeGenerator:
             str: Current date
         """
         return datetime.now().strftime("%Y-%m-%d")
+    
+    def _get_common_jsonld_structure(self, frontmatter: Dict[str, Any], article_type: str = "Article") -> Dict[str, Any]:
+        """Get common JSON-LD structure.
+        
+        Args:
+            frontmatter: Frontmatter data
+            article_type: Type of article (Article, TechnicalArticle, etc.)
+            
+        Returns:
+            Dict[str, Any]: Common JSON-LD structure
+        """
+        # Get basic information
+        name = self._get_frontmatter_value(frontmatter, "name", self.subject)
+        description = self._get_frontmatter_value(frontmatter, "description", f"Information about {self.subject}")
+        website = self._get_frontmatter_value(frontmatter, "website", f"https://www.z-beam.com/{self.subject}-laser-cleaning")
+        
+        # Get author information
+        author_data = self._get_frontmatter_value(frontmatter, "author", {})
+        if isinstance(author_data, dict):
+            author_name = author_data.get("author_name", "Z-Beam Technical Writer")
+            author_org = author_data.get("name", "Laser Technology Institute")
+        else:
+            author_name = "Z-Beam Technical Writer"
+            author_org = "Laser Technology Institute"
+        
+        # Get keywords
+        keywords = self._get_frontmatter_value(frontmatter, "keywords", [])
+        if isinstance(keywords, str):
+            keywords = [k.strip() for k in keywords.split(",")]
+        
+        # Build base structure
+        jsonld = {
+            "@context": "https://schema.org",
+            "@type": article_type,
+            "headline": name,
+            "name": name,
+            "description": self._normalize_text(description),
+            "url": website,
+            "datePublished": self._get_current_date(),
+            "dateModified": self._get_current_date(),
+            "author": {
+                "@type": "Person",
+                "name": author_name,
+                "affiliation": {
+                    "@type": "Organization",
+                    "name": author_org
+                }
+            },
+            "publisher": {
+                "@type": "Organization",
+                "name": "Z-Beam",
+                "url": "https://www.z-beam.com"
+            }
+        }
+        
+        # Add keywords if available
+        if keywords:
+            jsonld["keywords"] = keywords
+        
+        return jsonld
     
     def _get_slug(self, frontmatter: Dict[str, Any]) -> str:
         """Get URL slug from frontmatter or generate one.

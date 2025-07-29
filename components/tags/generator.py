@@ -121,7 +121,7 @@ class TagsGenerator(BaseComponent):
             List[str]: List of tags
         """
         # Get max tag count
-        max_count = self.get_component_config("max_count", 10)
+        max_count = self.get_component_config("count", 10)
         
         # Split by commas, new lines, or bullet points
         tags = []

@@ -98,7 +98,7 @@ class RegionJsonldGenerator(BaseTypeGenerator):
         about_items.append({
             "@type": "Thing",
             "name": f"Laser Cleaning in {name}",
-            "description": self._normalize_unicode(f"Specialized laser cleaning techniques and applications used in the {name} region, addressing local industrial needs and environmental regulations.")
+            "description": self._normalize_text(f"Specialized laser cleaning techniques and applications used in the {name} region, addressing local industrial needs and environmental regulations.")
         })
         
         # Add industries served in the region
@@ -117,7 +117,7 @@ class RegionJsonldGenerator(BaseTypeGenerator):
                         }
                         
                         if industry_description:
-                            industry_item["description"] = self._normalize_unicode(industry_description)
+                            industry_item["description"] = self._normalize_text(industry_description)
                             
                         industry_items.append(industry_item)
             
@@ -195,7 +195,7 @@ class RegionJsonldGenerator(BaseTypeGenerator):
                 mentions.append({
                     "@type": "Thing",
                     "name": "Regional Regulations",
-                    "description": self._normalize_unicode("; ".join(regulation_parts) + ".")
+                    "description": self._normalize_text("; ".join(regulation_parts) + ".")
                 })
         
         # Add regional challenges
@@ -216,7 +216,7 @@ class RegionJsonldGenerator(BaseTypeGenerator):
                 mentions.append({
                     "@type": "Thing",
                     "name": "Regional Challenges",
-                    "description": self._normalize_unicode("; ".join(challenge_parts) + ".")
+                    "description": self._normalize_text("; ".join(challenge_parts) + ".")
                 })
         
         # Add case studies
@@ -239,7 +239,7 @@ class RegionJsonldGenerator(BaseTypeGenerator):
                 mentions.append({
                     "@type": "Thing",
                     "name": "Regional Case Studies",
-                    "description": self._normalize_unicode("; ".join(case_parts) + ".")
+                    "description": self._normalize_text("; ".join(case_parts) + ".")
                 })
         
         return mentions
