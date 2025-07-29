@@ -39,7 +39,10 @@ class TagsGenerator(BaseComponent):
                         tags = [str(keywords)]
                         
                     if tags:
-                        return self._format_tags(tags)
+                        # Extract additional tags from specific frontmatter fields
+                        additional_tags = self._extract_additional_tags(frontmatter)
+                        all_tags = tags + additional_tags
+                        return self._format_tags(all_tags)
             
             # No keywords in frontmatter, generate tags
             # 1. Prepare data for prompt
@@ -148,23 +151,192 @@ class TagsGenerator(BaseComponent):
         # Limit to max count
         return normalized_tags[:max_count]
     
+    def _extract_additional_tags(self, frontmatter: Dict[str, Any]) -> List[str]:
+        """Extract additional tags from specific frontmatter fields.
+        
+        Args:
+            frontmatter: The frontmatter data
+            
+        Returns:
+            List[str]: Additional tags extracted from frontmatter fields
+        """
+        additional_tags = []
+        
+        # Extract from name
+        if "name" in frontmatter:
+            name = frontmatter["name"].strip('"').strip("'").strip()
+            words = name.split()
+            if len(words) > 2:
+                short_name = " ".join(words[:2])
+            else:
+                short_name = name
+            additional_tags.append(short_name)
+        
+        # Extract from author.author_name
+        if "author" in frontmatter and isinstance(frontmatter["author"], dict):
+            if "author_name" in frontmatter["author"]:
+                author_name = frontmatter["author"]["author_name"].strip('"').strip("'").strip()
+                words = author_name.split()
+                if len(words) > 2:
+                    short_author = " ".join(words[:2])
+                else:
+                    short_author = author_name
+                additional_tags.append(short_author)
+        
+        # Extract from applications.name
+        if "applications" in frontmatter and isinstance(frontmatter["applications"], list):
+            for app in frontmatter["applications"]:
+                if isinstance(app, dict) and "name" in app:
+                    # Apply intelligent shortening to application names
+                    name = app["name"].strip('"').strip("'").strip()
+                    words = name.split()
+                    if len(words) > 2:
+                        short_name = " ".join(words[:2])
+                    else:
+                        short_name = name
+                    additional_tags.append(short_name)
+        
+        # Extract from environmentalImpact.benefit
+        if "environmentalImpact" in frontmatter and isinstance(frontmatter["environmentalImpact"], list):
+            for impact in frontmatter["environmentalImpact"]:
+                if isinstance(impact, dict) and "benefit" in impact:
+                    # Apply intelligent shortening to benefits
+                    benefit = impact["benefit"].strip('"').strip("'").strip()
+                    words = benefit.split()
+                    if len(words) > 2:
+                        short_benefit = " ".join(words[:2])
+                    else:
+                        short_benefit = benefit
+                    additional_tags.append(short_benefit)
+        
+        # Extract from regulatoryStandards.code
+        if "regulatoryStandards" in frontmatter and isinstance(frontmatter["regulatoryStandards"], list):
+            for standard in frontmatter["regulatoryStandards"]:
+                if isinstance(standard, dict) and "code" in standard:
+                    code = standard["code"].strip('"').strip("'").strip()
+                    additional_tags.append(code)
+        
+        # Extract from composition.type
+        if "composition" in frontmatter and isinstance(frontmatter["composition"], list):
+            for comp in frontmatter["composition"]:
+                if isinstance(comp, dict) and "type" in comp:
+                    comp_type = comp["type"].strip('"').strip("'").strip()
+                    words = comp_type.split()
+                    if len(words) > 2:
+                        short_type = " ".join(words[:2])
+                    else:
+                        short_type = comp_type
+                    additional_tags.append(short_type)
+        
+        # Extract from compatibility.material
+        if "compatibility" in frontmatter and isinstance(frontmatter["compatibility"], list):
+            for compat in frontmatter["compatibility"]:
+                if isinstance(compat, dict) and "material" in compat:
+                    material = compat["material"].strip('"').strip("'").strip()
+                    words = material.split()
+                    if len(words) > 2:
+                        short_material = " ".join(words[:2])
+                    else:
+                        short_material = material
+                    additional_tags.append(short_material)
+        
+        return additional_tags
+
     def _format_tags(self, tags: List[str]) -> str:
-        """Format tags as HTML spans.
+        """Format tags as clean data (no HTML markup) with maximum 2 words per tag.
         
         Args:
             tags: List of tags
             
         Returns:
-            str: Formatted tags
+            str: Formatted tags as clean text with max 2 words each
         """
         # Add heading
         result = "## Tags\n\n"
         
-        # Add tags as HTML spans
+        # Process tags to limit to maximum 2 words each with consistent formatting
         if tags:
-            tag_spans = [f'<span class="tag">{tag}</span>' for tag in tags]
-            result += " ".join(tag_spans)
+            processed_tags = []
+            seen_tags = set()  # Prevent duplicates
+            
+            for tag in tags:
+                # Remove quotes and clean the tag
+                clean_tag = tag.strip('"').strip("'").strip()
+                
+                # Split into words and intelligently shorten to max 2 words
+                words = clean_tag.split()
+                if len(words) > 2:
+                    # Apply intelligent shortening (no abbreviations, natural shortening)
+                    short_tag = self._intelligent_shorten(words)
+                else:
+                    short_tag = clean_tag
+                
+                # Apply consistent title case formatting
+                formatted_tag = self._apply_title_case(short_tag)
+                
+                # Avoid duplicates (case-insensitive check)
+                if formatted_tag.lower() not in seen_tags:
+                    processed_tags.append(formatted_tag)
+                    seen_tags.add(formatted_tag.lower())
+            
+            result += ", ".join(processed_tags)
         else:
             result += "<!-- No tags available -->"
         
         return result
+    
+    def _intelligent_shorten(self, words: List[str]) -> str:
+        """Intelligently shorten a multi-word tag to 2 words maximum.
+        
+        Args:
+            words: List of words to shorten
+            
+        Returns:
+            str: Shortened tag with natural language flow
+        """
+        if len(words) <= 2:
+            return " ".join(words)
+        
+        # Apply intelligent rules for natural shortening
+        if len(words) >= 3:
+            second_word = words[1].lower()
+            
+            # If second word is "and", "or", "of", etc., skip to third word
+            if second_word in ["and", "or", "of", "for", "in", "on", "at", "to", "with"]:
+                return f"{words[0]} {words[2]}"
+        
+        # Default: take first 2 words
+        return f"{words[0]} {words[1]}"
+    
+    def _apply_title_case(self, tag: str) -> str:
+        """Apply consistent title case formatting to tags.
+        
+        Args:
+            tag: The tag to format
+            
+        Returns:
+            str: Tag with proper title case
+        """
+        # Handle special cases for common abbreviations and codes
+        special_cases = {
+            "astm": "ASTM",
+            "nadcap": "NADCAP", 
+            "voc": "VOC",
+            "xrf": "XRF",
+            "osha": "OSHA",
+            "carb": "CARB",
+            "haz": "HAZ"
+        }
+        
+        words = tag.split()
+        formatted_words = []
+        
+        for word in words:
+            word_lower = word.lower()
+            if word_lower in special_cases:
+                formatted_words.append(special_cases[word_lower])
+            else:
+                # Regular title case (first letter capitalized)
+                formatted_words.append(word.capitalize())
+        
+        return " ".join(formatted_words)

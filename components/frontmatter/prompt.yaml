@@ -21,6 +21,10 @@ template: |
   - Include 10–12 UNIQUE, TECHNICAL keywords for search/SEO (avoid duplicates).
   - For complex arrays (e.g., applications, facilities), include 3–4 ITEMS with descriptions of 50–75 words.
   - Write descriptions of 100–150 characters for simple fields, 150–200 words for main description.
+  
+  🚨 SPECIFIC FIELD REQUIREMENTS:
+  - applications.name: MAXIMUM 2 WORDS only (e.g., "Electronics Cleaning", "Paint Removal")
+  - environmentalImpact.benefit: MAXIMUM 2 WORDS only (e.g., "Eco Friendly", "Zero Emissions")
 
   🚨 DYNAMIC SCHEMA REQUIREMENTS:
   - Follow EXACTLY the schema structure for this specific article type
@@ -48,10 +52,9 @@ template: |
   - Example: "Mountain View, Santa Clara County, California, in Silicon Valley, borders Palo Alto and Sunnyvale."
 
   🚨 URL FORMATTING RULES:
-  - Use https://www.z-beam.com/[subject-with-dashes]-laser-cleaning.
-  - Example: https://www.z-beam.com/mountain-view-laser-cleaning.
-  - NEVER use example.com or other domains; ALWAYS include "www.".
-  - Exclude article type from URL (e.g., no /regions/).
+  - The website URL will be provided in the context as {website_url}
+  - Use the exact URL provided without modification
+  - NEVER use example.com or other domains; use only the provided URL
 
   🚨 ARRAY FORMATTING RULES:
   - Simple arrays (e.g., keywords, countries):
@@ -75,7 +78,7 @@ template: |
   Required fields (if no dynamic schema was provided):
   name: "{subject}"
   description: "150–200 word technical summary of {subject} in laser cleaning."
-  website: "https://www.z-beam.com/[subject-with-dashes]-laser-cleaning"
+  website: "{website_url}"
   min_words: {min_words}
   max_words: {max_words}
   author:
@@ -89,15 +92,15 @@ template: |
     - "keyword two"
     # ...up to 12
   applications:
-    - name: "Application One"
+    - name: "Application One"  # Maximum 2 words
       description: "Brief 50–75 word description of the application."
-    - name: "Application Two"
+    - name: "Application Two"  # Maximum 2 words
       description: "Brief 50–75 word description of the application."
     # ...up to 4
   environmentalImpact:
-    - benefit: "Waste Reduction"
+    - benefit: "Waste Reduction"  # Maximum 2 words
       description: "Laser cleaning eliminates chemical solvents, reducing hazardous waste by 90% compared to traditional methods."
-    - benefit: "Energy Efficiency"
+    - benefit: "Energy Efficiency"  # Maximum 2 words
       description: "Process uses 30% less energy than abrasive cleaning, lowering carbon footprint."
   regulatoryStandards:
     - code: "AWS D1.1"
@@ -143,13 +146,20 @@ template: |
     # Include at least 5 technical specifications relevant to laser cleaning
   
   applications:
-    - name: "Application One"
+    - name: "Application One"  # Maximum 2 words
       description: "Description with specific details about how laser cleaning applies."
-    - name: "Application Two" 
+    - name: "Application Two"  # Maximum 2 words
       description: "Another detailed application description."
-    - name: "Application Three"
+    - name: "Application Three"  # Maximum 2 words
       description: "A third application with technical details."
     # Include at least 3 applications
+  
+  environmentalImpact:
+    - benefit: "Environmental Benefit"  # Maximum 2 words
+      description: "Detailed explanation of the environmental benefit."
+    - benefit: "Another Benefit"  # Maximum 2 words
+      description: "Description of another environmental advantage."
+    # Include at least 2 environmental benefits
   
   composition:
     - component: "Primary Component"

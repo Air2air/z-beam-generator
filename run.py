@@ -18,7 +18,7 @@ MODULE DIRECTIVES FOR AI ASSISTANTS:
 # Define the primary article context - THE ONLY SOURCE OF TRUTH
 ARTICLE_CONTEXT = {
     # Core article parameters
-    "subject": "magnesium",
+    "subject": "nickel",
     "article_type": "material",  # application, material, region, or thesaurus
     "author_id": 1,  # 1: Taiwan, 2: Italy, 3: USA, 4: Indonesia
     "components": {
@@ -100,6 +100,14 @@ ARTICLE_CONTEXT = {
     },
     # Output configuration
     "output_dir": "output",
+}
+
+# Output filename pattern configuration
+OUTPUT_FILENAME_PATTERNS = {
+    "material": "{subject}_laser_cleaning.md",
+    "application": "{subject}_applications.md", 
+    "region": "{subject}_laser_cleaning.md",
+    "thesaurus": "{subject}_definition.md"
 }
 
 
@@ -288,13 +296,29 @@ def generate_frontmatter():
         # Create context for the generator - include full ARTICLE_CONTEXT
         generator_context = ARTICLE_CONTEXT.copy()
         
+        # Generate website URL by prepending https://www.z-beam.com to filename pattern (without .md)
+        article_type = ARTICLE_CONTEXT["article_type"]
+        if article_type in OUTPUT_FILENAME_PATTERNS:
+            # Get the filename pattern and remove .md extension
+            filename_pattern = OUTPUT_FILENAME_PATTERNS[article_type].replace(".md", "")
+            # Format the pattern with actual values
+            url_path = filename_pattern.format(
+                subject=ARTICLE_CONTEXT["subject"].replace(" ", "-").lower(),
+                article_type=ARTICLE_CONTEXT["article_type"]
+            )
+            website_url = f"https://www.z-beam.com/{url_path}"
+        else:
+            # Simple fallback if article type not found
+            website_url = f"https://www.z-beam.com/{ARTICLE_CONTEXT['subject'].replace(' ', '-').lower()}-{ARTICLE_CONTEXT['article_type']}"
+        
         # Ensure required fields are present
         generator_context.update({
             "subject": ARTICLE_CONTEXT["subject"],
             "article_type": ARTICLE_CONTEXT["article_type"],
             "author_id": ARTICLE_CONTEXT["author_id"],
             "ai_provider": component_config["ai_provider"],
-            "options": component_config["options"]
+            "options": component_config["options"],
+            "website_url": website_url  # Pass the constructed URL
         })
         
         # Initialize generator
@@ -367,7 +391,21 @@ def main():
         
         # Save to output file
         import os
-        output_file = os.path.join(ARTICLE_CONTEXT["output_dir"], f"{ARTICLE_CONTEXT['subject']}.md")
+        
+        # Get the appropriate filename pattern for this article type
+        article_type = ARTICLE_CONTEXT["article_type"]
+        if article_type in OUTPUT_FILENAME_PATTERNS:
+            pattern = OUTPUT_FILENAME_PATTERNS[article_type]
+        else:
+            # Simple fallback if article type not found
+            pattern = f"{ARTICLE_CONTEXT['subject']}_{ARTICLE_CONTEXT['article_type']}.md"
+        
+        filename = pattern.format(
+            subject=ARTICLE_CONTEXT["subject"],
+            article_type=ARTICLE_CONTEXT["article_type"],
+            author_id=ARTICLE_CONTEXT["author_id"]
+        )
+        output_file = os.path.join(ARTICLE_CONTEXT["output_dir"], filename)
         os.makedirs(ARTICLE_CONTEXT["output_dir"], exist_ok=True)
         
         with open(output_file, 'w') as f:

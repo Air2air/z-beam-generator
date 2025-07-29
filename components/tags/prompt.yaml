@@ -1,30 +1,50 @@
 name: "Tags Generator"
 description: "Generates concise frontmatter tags for laser cleaning articles, optimized for on-site navigation."
-version: "2.0.1"
+version: "2.1.0"
 template: |
   Generate CONCISE frontmatter tags for the {article_type} "{subject}" in laser cleaning contexts, optimized for on-site navigation.
 
   🚨 CRITICAL REQUIREMENTS:
   - Generate ONLY frontmatter.tags (5–8 short, hyphenated terms, e.g., laser-cleaning).
+  - MAXIMUM 2 WORDS per tag (e.g., "metal-cleaning" not "precision-metal-cleaning").
   - Do NOT generate content section tags or tables.
   - Ensure tags are DISTINCT from keywords (10–12 technical terms for SEO/search).
   - Tags must be user-friendly, hyphenated, and navigation-focused (minimal overlap with keywords).
   - Limit to 5–8 tags to avoid bloat.
 
+  🚨 INTELLIGENT SHORTENING RULES:
+  - Use CORE CONCEPTS: "precision-metal-cleaning" → "metal-cleaning" (keep the action + subject)
+  - DROP MODIFIERS: "industrial-laser-cleaning" → "laser-cleaning" (remove adjectives like "industrial")
+  - COMBINE RELATED: "surface-preparation-treatment" → "surface-treatment" (merge similar concepts)
+  - REMOVE REDUNDANCY: "cleaning" can be dropped when context is clear (e.g., "electropolishing-alternative" not "electropolishing-alternative-cleaning")
+  - PRIORITIZE ACTION WORDS: Keep verbs like "cleaning", "removal", "treatment" over descriptive adjectives
+  - SIMPLIFY COMPOUNDS: "non-destructive-cleaning" → "non-destructive" (context implies cleaning)
+
   🚨 CONSTRAINTS:
   - For region articles, include city/county-specific tags (e.g., solano-county, fairfield-cleaning).
   - Align with frontmatter keywords but avoid direct duplication (e.g., tag: laser-cleaning vs. keyword: industrial laser cleaning).
   - Use lowercase, hyphenated format (e.g., rust-removal, not rust removal).
+  - NATURAL SHORTENING: "electropolishing-alternative" → "electropolishing", "medical-device-sterilization" → "medical-device"
+
+  🚨 EXAMPLES OF INTELLIGENT SHORTENING:
+  - "aerospace-surface-treatment" → "aerospace-treatment"
+  - "non-destructive-cleaning" → "non-destructive" 
+  - "selective-contamination-removal" → "selective-removal"
+  - "microstructure-preservation" → "microstructure"
+  - "electropolishing-alternative" → "electropolishing"
+  - "aerospace-grade-cleaning" → "aerospace-grade"
+  - "medical-device-sterilization" → "medical-device"
+  - "thermal-stress-minimization" → "thermal-stress"
 
   Generate frontmatter tags for: {article_type} = {subject}
 
   Example:
   tags:
     - {subject-with-dashes}-cleaning
-    - laser-cleaning
-    - rust-removal
+    - laser-treatment
+    - oxide-removal
     - surface-treatment
-    - non-abrasive
+    - non-destructive
     - [county-specific-tag]
 
 parameters:
@@ -33,6 +53,8 @@ parameters:
 validation:
   min_length: 5
   max_length: 8
+  max_words_per_tag: 2
   required_fields: ["tags"]
   unique_items: true
   hyphenated_format: true
+  intelligent_shortening: true

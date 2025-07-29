@@ -59,6 +59,10 @@ class FrontmatterGenerator(BaseComponent):
         data["max_words"] = component_config["max_words"]  # Must exist
         data["author_id"] = self.context["author_id"]  # Must exist
         
+        # Add website URL from context if provided
+        if "website_url" in self.context:
+            data["website_url"] = self.context["website_url"]
+        
         # Get author data from the author service
         from components.author.author_service import AuthorService
         author_service = AuthorService()
