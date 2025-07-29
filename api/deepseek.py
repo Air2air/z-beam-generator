@@ -25,13 +25,10 @@ class DeepseekClient:
         Args:
             options: Options for the client
         """
-        self.api_key = os.environ.get("DEEPSEEK_API_KEY")
+        self.api_key = os.environ["DEEPSEEK_API_KEY"]  # No fallback - must exist
         self.options = options or {}
-        self.model = self.options.get("model", "deepseek-chat")
+        self.model = self.options["model"]  # No fallback - must be provided
         self.api_base = "https://api.deepseek.com/v1"
-        
-        if not self.api_key:
-            logger.warning("DeepSeek API key not found in environment variables")
     
     def complete(self, prompt: str) -> str:
         """Complete a prompt using the DeepSeek API.
@@ -52,8 +49,8 @@ class DeepseekClient:
         payload = {
             "model": self.model,
             "messages": [{"role": "user", "content": prompt}],
-            "temperature": self.options.get("temperature", 0.7),
-            "max_tokens": self.options.get("max_tokens", 4000)
+            "temperature": self.options["temperature"],  # No fallback - must be provided
+            "max_tokens": self.options["max_tokens"]     # No fallback - must be provided
         }
         
         try:
@@ -66,8 +63,8 @@ class DeepseekClient:
             response.raise_for_status()
             data = response.json()
             
-            # Extract content from response
-            content = data.get("choices", [{}])[0].get("message", {}).get("content", "")
+            # Extract content from response - no fallbacks, data must be valid
+            content = data["choices"][0]["message"]["content"]
             
             if not content:
                 logger.warning("Empty response from DeepSeek API")

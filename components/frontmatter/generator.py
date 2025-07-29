@@ -55,6 +55,70 @@ class FrontmatterGenerator(BaseComponent):
         # Get component-specific configuration
         component_config = self.get_component_config()
         
+        # Add required template variables - no fallbacks
+        data["min_words"] = component_config["min_words"]  # Must exist
+        data["max_words"] = component_config["max_words"]  # Must exist
+        data["author_id"] = self.context["author_id"]  # Must exist
+        
+        # Get author data from the author service
+        from components.author.author_service import AuthorService
+        author_service = AuthorService()
+        author_info = author_service.get_author_by_id(data["author_id"])
+        
+        if not author_info:
+            raise ValueError(f"Author with ID {data['author_id']} not found")
+        
+        data["author_name"] = author_info["name"]
+        data["author_country"] = author_info["country"]
+        
+        # Debug: Log the author data being used
+        import logging
+        logger = logging.getLogger(__name__)
+        logger.info(f"Using author data: ID={data['author_id']}, Name={data['author_name']}, Country={data['author_country']}")
+        
+        # Format the schema for the prompt template
+        if self.schema:
+            # Extract the relevant parts of the schema for frontmatter generation
+            profile = self.schema.get("regionProfile", {}).get("profile", {})
+            validation = self.schema.get("regionProfile", {}).get("validation", {}).get("frontmatter", {})
+            
+            schema_text = f"REQUIRED FIELDS for {self.article_type} articles:\n"
+            
+            # Add required fields from validation
+            required_fields = validation.get("requiredFields", [])
+            if required_fields:
+                schema_text += f"Required frontmatter fields: {', '.join(required_fields)}\n\n"
+            
+            # Add specific field requirements from profile
+            schema_text += "FIELD SPECIFICATIONS:\n"
+            for field_name, field_spec in profile.items():
+                if isinstance(field_spec, dict):
+                    field_type = field_spec.get("type", "unknown")
+                    required = field_spec.get("required", False)
+                    req_str = " (REQUIRED)" if required else " (optional)"
+                    schema_text += f"- {field_name}: {field_type}{req_str}\n"
+                    
+                    # Add any items specification for arrays
+                    if field_type == "array" and "items" in field_spec:
+                        items_spec = field_spec["items"]
+                        if isinstance(items_spec, dict):
+                            items_type = items_spec.get("type", "unknown")
+                            schema_text += f"  └─ Array items: {items_type}\n"
+                            
+                            # Add object properties if items are objects
+                            if items_type == "object" and "properties" in items_spec:
+                                for prop_name, prop_spec in items_spec["properties"].items():
+                                    prop_type = prop_spec.get("type", "unknown")
+                                    prop_required = prop_spec.get("required", False)
+                                    prop_req_str = " (REQUIRED)" if prop_required else ""
+                                    schema_text += f"    └─ {prop_name}: {prop_type}{prop_req_str}\n"
+            
+            data["schema"] = schema_text
+            logger.info(f"Generated schema for prompt:\n{schema_text[:500]}...")  # Log first 500 chars
+        else:
+            data["schema"] = f"No specific schema available for {self.article_type} articles."
+            logger.warning("No schema provided for frontmatter generation")
+        
         # Set frontmatter fields based on article type
         if self.article_type == "material":
             data["required_fields"] = ["title", "description", "date", "author", "properties", "applications"]
@@ -67,8 +131,8 @@ class FrontmatterGenerator(BaseComponent):
         else:
             data["required_fields"] = ["title", "description", "date", "author"]
         
-        # Add website inclusion flag
-        data["include_website"] = component_config.get("include_website", True)
+        # Add website inclusion flag - no fallbacks
+        data["include_website"] = component_config["include_website"]  # Must exist
         
         return data
     
@@ -84,7 +148,20 @@ class FrontmatterGenerator(BaseComponent):
         # Process API response to extract YAML frontmatter
         processed = super()._post_process(content)
         
-        # Ensure content has proper frontmatter format (between triple dashes)
+        # Since our prompt instructs AI NOT to include "---" delimiters,
+        # we expect raw YAML content. Let's validate and format it.
+        
+        # First, try to parse the content as YAML directly
+        try:
+            frontmatter = yaml.safe_load(processed)
+            if isinstance(frontmatter, dict) and frontmatter:
+                # Valid YAML dict - use it directly
+                logger.info(f"Successfully parsed raw YAML response with {len(frontmatter)} fields")
+                return f"---\n{processed.strip()}\n---\n"
+        except yaml.YAMLError as e:
+            logger.warning(f"Failed to parse response as YAML: {e}")
+        
+        # If direct parsing failed, check for content in "---" delimiters
         if "---" in processed:
             # Extract everything between first and second '---'
             parts = processed.split("---", 2)
@@ -94,30 +171,26 @@ class FrontmatterGenerator(BaseComponent):
                 # Validate YAML content
                 try:
                     frontmatter = yaml.safe_load(yaml_content)
-                    if not isinstance(frontmatter, dict):
-                        frontmatter = {"title": self.subject.capitalize()}
-                        yaml_content = yaml.dump(frontmatter, default_flow_style=False)
+                    if isinstance(frontmatter, dict):
+                        logger.info(f"Extracted YAML from delimiters with {len(frontmatter)} fields")
+                        return f"---\n{yaml_content}\n---\n"
                 except Exception:
-                    # If YAML is invalid, create minimal valid frontmatter
-                    frontmatter = {"title": self.subject.capitalize()}
-                    yaml_content = yaml.dump(frontmatter, default_flow_style=False)
-                
-                return f"---\n{yaml_content}\n---\n"
-        else:
-            # Extract YAML from code blocks if present
-            yaml_content = self._extract_yaml_from_code_blocks(processed)
-            if yaml_content:
-                return f"---\n{yaml_content}\n---\n"
-            
-            # If no valid YAML found, create minimal frontmatter
-            minimal = {
-                "title": self.subject.capitalize(),
-                "description": f"Information about {self.subject}",
-                "date": self._get_current_date(),
-                "author": "Z-Beam Technical Writer"
-            }
-            yaml_content = yaml.dump(minimal, default_flow_style=False)
-            return f"---\n{yaml_content}\n---\n"
+                    logger.warning("Invalid YAML found between delimiters")
+        
+        # Try to extract YAML from code blocks
+        yaml_content = self._extract_yaml_from_code_blocks(processed)
+        if yaml_content:
+            try:
+                frontmatter = yaml.safe_load(yaml_content)
+                if isinstance(frontmatter, dict):
+                    logger.info(f"Extracted YAML from code blocks with {len(frontmatter)} fields")
+                    return f"---\n{yaml_content}\n---\n"
+            except Exception:
+                logger.warning("Invalid YAML found in code blocks")
+        
+        # If all parsing attempts failed, raise an error (no fallbacks)
+        logger.error("Failed to extract valid YAML from API response")
+        raise ValueError(f"API response could not be parsed as valid YAML. Response content: {processed[:200]}...")
     
     def _extract_yaml_from_code_blocks(self, content: str) -> str:
         """Extract YAML content from code blocks.

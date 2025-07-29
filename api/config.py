@@ -10,43 +10,19 @@ from typing import Dict, Any
 
 logger = logging.getLogger(__name__)
 
-# Default provider configurations - will be overridden by ARTICLE_CONTEXT
+# Provider configurations - NO DEFAULTS, all values must be provided in ARTICLE_CONTEXT
 PROVIDER_CONFIGS = {
     "deepseek": {
-        "endpoint": "https://api.deepseek.com/v1/chat/completions",
-        "model": "deepseek-chat",  # Default model, will be overridden
-        "max_tokens_limit": 4000,
-        "temperature": 0.7,
-        "top_p": 0.9,
-        "frequency_penalty": 0,
-        "presence_penalty": 0
+        "endpoint": "https://api.deepseek.com/v1/chat/completions"
     },
     "openai": {
-        "endpoint": "https://api.openai.com/v1/chat/completions",
-        "model": "gpt-4",
-        "max_tokens_limit": 4000,  # Reduce from 8000 to 4000
-        "temperature": 0.7,
-        "top_p": 0.9,
-        "frequency_penalty": 0,
-        "presence_penalty": 0
+        "endpoint": "https://api.openai.com/v1/chat/completions"
     },
     "gemini": {
-        "endpoint": "https://generativelanguage.googleapis.com/v1beta/models",
-        "model": "gemini-1.5-pro",  # Default model, will be overridden
-        "max_tokens_limit": 8192,
-        "temperature": 0.7,
-        "top_p": 0.95,
-        "frequency_penalty": 0,
-        "presence_penalty": 0
+        "endpoint": "https://generativelanguage.googleapis.com/v1beta/models"
     },
     "xai": {
-        "endpoint": "https://api.xai.grok.net/v1/chat/completions",
-        "model": "grok-3-latest",  # Default model, will be overridden
-        "max_tokens_limit": 4096,
-        "temperature": 0.7,
-        "top_p": 0.9,
-        "frequency_penalty": 0,
-        "presence_penalty": 0
+        "endpoint": "https://api.xai.grok.net/v1/chat/completions"
     }
 }
 
@@ -54,18 +30,18 @@ PROVIDER_CONFIGS = {
 def update_provider_configs(article_context: Dict[str, Any]) -> None:
     """Update provider configurations from article context."""
     if not article_context:
-        return
+        raise ValueError("article_context must be provided")
         
-    # Get the global AI provider and options
-    provider = article_context.get("ai_provider", "deepseek")
-    options = article_context.get("options", {})
+    # Get the global AI provider and options - no fallbacks
+    provider = article_context["ai_provider"]  # Must exist
+    options = article_context["options"]  # Must exist
     
     # Update the provider config with the global options
     if provider in PROVIDER_CONFIGS and "model" in options:
         PROVIDER_CONFIGS[provider]["model"] = options["model"]
     
     # Update component-specific providers and options
-    components = article_context.get("components", {})
+    components = article_context["components"]  # Must exist
     for component_name, component_config in components.items():
         if "provider" in component_config and "options" in component_config:
             comp_provider = component_config["provider"]
@@ -80,15 +56,12 @@ def get_provider_config(provider: str, component: str = None, article_context: D
     """Get configuration for the specified provider, optionally overridden for a component."""
     provider_name = provider.lower()
     
-    # Start with the base provider config
-    if provider_name in PROVIDER_CONFIGS:
-        config = PROVIDER_CONFIGS[provider_name].copy()
-    else:
-        config = PROVIDER_CONFIGS.get("deepseek", {}).copy()
+    # Start with the base provider config - no fallbacks
+    config = PROVIDER_CONFIGS[provider_name].copy()  # Must exist
         
     # Apply component-specific overrides if available
     if article_context and component:
-        components = article_context.get("components", {})
+        components = article_context["components"]  # Must exist
         if component in components:
             comp_config = components[component]
             comp_provider = comp_config.get("provider")

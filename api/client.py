@@ -27,21 +27,24 @@ class ApiClient:
     
     def __init__(self, ai_provider=None, provider=None, options=None, article_context=None):
         """Initialize API client with provider and options."""
-        # Use either parameter name with ai_provider taking precedence
-        self.ai_provider = ai_provider or provider or "deepseek"
+        # Use either parameter name with ai_provider taking precedence - no fallbacks
+        self.ai_provider = ai_provider or provider  # Must be provided
+        if not self.ai_provider:
+            raise ValueError("ai_provider must be specified")
+        
         self.options = options or {}
         self.article_context = article_context or {}
         
-        # Load API keys from environment variables
+        # Load API keys from environment variables - no fallbacks
         self.api_keys = {
-            "deepseek": os.environ.get("DEEPSEEK_API_KEY"),
-            "openai": os.environ.get("OPENAI_API_KEY"),
-            "gemini": os.environ.get("GEMINI_API_KEY"),
-            "xai": os.environ.get("XAI_API_KEY")
+            "deepseek": os.environ["DEEPSEEK_API_KEY"],
+            "openai": os.environ["OPENAI_API_KEY"], 
+            "gemini": os.environ["GEMINI_API_KEY"],
+            "xai": os.environ["XAI_API_KEY"]
         }
         
-        # Set the API key for the current provider
-        self.api_key = self.api_keys.get(self.ai_provider)
+        # Set the API key for the current provider - must exist
+        self.api_key = self.api_keys[self.ai_provider]
         
         logger.debug(f"Initialized ApiClient with provider={self.ai_provider}")
     
@@ -50,11 +53,11 @@ class ApiClient:
         try:
             # Get provider-specific API client
             if self.ai_provider == "deepseek":
-                from api.providers.deepseek import DeepseekClient
+                from api.deepseek import DeepseekClient
                 client = DeepseekClient(self.options)
             elif self.ai_provider == "openai":
-                from api.providers.openai import OpenAIClient
-                client = OpenAIClient(self.options)
+                # Import OpenAI client when implemented
+                raise ValueError(f"OpenAI provider not yet implemented")
             # Add other providers as needed
             else:
                 raise ValueError(f"Unsupported AI provider: {self.ai_provider}")

@@ -3,7 +3,11 @@ Base component for Z-Beam Generator.
 
 MODULE DIRECTIVES FOR AI ASSISTANTS:
 1. FRONTMATTER-DRIVEN: All content must be extracted from frontmatter
-2. NO HARDCODEED SECTIONS: Section structure must be derived from frontmatter
+2. NO HA                formatted = template.format(
+                    subject=data["subject"],  # Must exist
+                    article_type=data["article_type"],  # Must exist
+                    frontmatter=data["frontmatter"]  # Must exist
+                )EED SECTIONS: Section structure must be derived from frontmatter
 3. DYNAMIC FORMATTING: Format content based on article_type from frontmatter
 4. ERROR HANDLING: Raise exceptions when required frontmatter fields are missing
 5. SCHEMA AWARENESS: Be aware of the schema structure for different article types
@@ -27,22 +31,28 @@ class BaseComponent:
             schema: Schema definition for component
             ai_provider: AI provider to use (defaults to context's ai_provider)
         """
-        # Extract required parameters from context
-        self.subject = context.get("subject", "")
-        self.article_type = context.get("article_type", "material")
+        # Extract required parameters from context - no fallbacks
+        self.subject = context["subject"]  # Must exist
+        self.article_type = context["article_type"]  # Must exist
         
         # Store context and schema
         self.context = context
         self.schema = schema or {}
         
-        # Get AI provider from context if not provided
+        # Get AI provider from context if not provided - no fallbacks
         if ai_provider is None:
-            ai_provider = context.get("ai_provider", "deepseek")
+            ai_provider = context["ai_provider"]  # Must exist
         self.ai_provider = ai_provider
         
         # Initialize API client
         from api.client import ApiClient
-        self.api_client = ApiClient(ai_provider=ai_provider)
+        
+        # Get component-specific options - no fallbacks
+        component_name = self.__class__.__name__.lower().replace("generator", "").replace("component", "")
+        component_config = context["components"][component_name]  # Must exist
+        options = component_config["options"]  # Must exist
+        
+        self.api_client = ApiClient(ai_provider=ai_provider, options=options)
         
         # Initialize storage for frontmatter and previous outputs
         self._frontmatter_data = {}
@@ -123,7 +133,8 @@ class BaseComponent:
         data = {
             "subject": self.subject,
             "article_type": self.article_type,
-            "frontmatter": self._frontmatter_data
+            "frontmatter": self._frontmatter_data,
+            "schema": self.schema  # Add schema to the data
         }
         
         return data
@@ -144,19 +155,27 @@ class BaseComponent:
             # Format template with data
             # First, try using format() with named placeholders
             try:
-                return template.format(**data)
+                formatted_prompt = template.format(**data)
+                logger.debug(f"Successfully formatted prompt with all variables")
+                return formatted_prompt
             except KeyError as e:
                 logger.warning(f"Missing key in template formatting: {e}")
+                logger.debug(f"Available data keys: {list(data.keys())}")
                 
-                # Fallback to basic formatting with common fields
+                # Find what template variables are expected
+                import re
+                template_vars = re.findall(r'\{([^}]+)\}', template)
+                logger.debug(f"Template expects variables: {template_vars}")
+                
+                # Fallback to basic formatting with common fields - but this loses schema info!
                 return template.format(
-                    subject=data.get("subject", ""),
-                    article_type=data.get("article_type", ""),
-                    frontmatter=data.get("frontmatter", {})
+                    subject=data["subject"],  # No fallbacks
+                    article_type=data["article_type"],  # No fallbacks
+                    frontmatter=data["frontmatter"]  # No fallbacks
                 )
         except Exception as e:
             logger.error(f"Error formatting prompt: {str(e)}")
-            return f"Generate content for {data.get('subject', '')} as {data.get('article_type', '')}"
+            return "Generate content for {subject} as {article_type}."
     
     def _load_prompt_template(self) -> str:
         """Load prompt template for this component.
@@ -183,7 +202,7 @@ class BaseComponent:
                 if os.path.exists(template_path):
                     with open(template_path, 'r', encoding='utf-8') as f:
                         config = yaml.safe_load(f)
-                        template = config.get("template", "")
+                        template = config["template"]  # Must exist
                         if template:
                             logger.debug(f"Loaded prompt template from {template_path}")
                             return template
@@ -208,18 +227,22 @@ class BaseComponent:
         try:
             # Log prompt length for debugging
             logger.debug(f"Sending prompt to {self.ai_provider} API (length: {len(prompt)} chars)")
+            logger.debug(f"First 500 chars of prompt: {prompt[:500]}...")
             
-            # Get component-specific options
+            # Get component-specific configuration - no fallbacks
             component_name = self.__class__.__name__.lower().replace("generator", "").replace("component", "")
-            component_config = self.context.get("components", {}).get(component_name, {})
-            options = component_config.get("options", {})
+            component_config = self.context["components"][component_name]  # Must exist
+
+            # Call API client with just the prompt (options are handled in the client)
+            response = self.api_client.complete(prompt)
+            logger.debug(f"API response length: {len(response)} chars")
+            logger.debug(f"First 200 chars of response: {response[:200]}...")
             
-            # Call API client with options
-            return self.api_client.complete(prompt, options)
+            return response
         except Exception as e:
             logger.error(f"API call error: {str(e)}")
             raise
-    
+
     def _post_process(self, content: str) -> str:
         """Post-process API response.
         
@@ -298,12 +321,10 @@ class BaseComponent:
         Returns:
             bool: True if component is enabled
         """
-        # Get component name
+        # Check if component is enabled in configuration - no fallbacks
         component_name = self.__class__.__name__.lower().replace("generator", "").replace("component", "")
-        
-        # Check if component is enabled in configuration
-        component_config = self.context.get("components", {}).get(component_name, {})
-        return component_config.get("enabled", True)
+        component_config = self.context["components"][component_name]  # Must exist
+        return component_config["enabled"]  # Must exist
     
     def get_component_config(self, key: str = None, default: Any = None) -> Any:
         """Get component-specific configuration value.
@@ -315,13 +336,22 @@ class BaseComponent:
         Returns:
             Any: Configuration value or entire config dict if key is None
         """
-        # Get component name
+        # Get component config - no fallbacks
         component_name = self.__class__.__name__.lower().replace("generator", "").replace("component", "")
+        component_config = self.context["components"][component_name]  # Must exist
         
-        # Get component config
-        component_config = self.context.get("components", {}).get(component_name, {})
-        
-        # Return specific key or entire config
+        # Return specific key or entire config - no fallbacks
         if key is not None:
-            return component_config.get(key, default)
+            return component_config[key]  # Must exist if requested
         return component_config
+    
+    def _create_error_markdown(self, error_message: str) -> str:
+        """Create an error markdown comment.
+        
+        Args:
+            error_message: The error message to include
+            
+        Returns:
+            str: A markdown comment with the error
+        """
+        return f"<!-- Error in {self.__class__.__name__.lower().replace('generator', '')}: {error_message} -->"
