@@ -10,8 +10,7 @@ MODULE DIRECTIVES FOR AI ASSISTANTS:
 """
 
 import logging
-import re
-from typing import Dict, Any, List
+from typing import Dict, Any
 from components.base.component import BaseComponent
 
 logger = logging.getLogger(__name__)
@@ -49,13 +48,10 @@ class BulletsGenerator(BaseComponent):
         """
         data = super()._prepare_data()
         
-        # Get component-specific configuration
-        component_config = self.get_component_config()
-        
         # Add bullet point constraints
         data.update({
-            "count": component_config.get("count", 5),
-            "style": component_config.get("style", "technical")
+            "count": self.get_component_config("count", 5),
+            "style": self.get_component_config("style", "technical")
         })
         
         # Get frontmatter data

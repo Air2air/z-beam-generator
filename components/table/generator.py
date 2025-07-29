@@ -10,8 +10,7 @@ MODULE DIRECTIVES FOR AI ASSISTANTS:
 """
 
 import logging
-import re
-from typing import Dict, Any, List
+from typing import Dict, Any
 from components.base.component import BaseComponent
 
 logger = logging.getLogger(__name__)
@@ -49,13 +48,10 @@ class TableGenerator(BaseComponent):
         """
         data = super()._prepare_data()
         
-        # Get component-specific configuration
-        component_config = self.get_component_config()
-        
         # Add table constraints
         data.update({
-            "style": component_config.get("style", "technical"),
-            "include_units": component_config.get("include_units", True)
+            "style": self.get_component_config("style", "technical"),
+            "include_units": self.get_component_config("include_units", True)
         })
         
         # Get frontmatter data

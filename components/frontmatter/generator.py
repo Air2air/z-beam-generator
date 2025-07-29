@@ -12,7 +12,6 @@ MODULE DIRECTIVES FOR AI ASSISTANTS:
 """Frontmatter generator component."""
 
 import logging
-import re
 import yaml
 from typing import Dict, Any
 from components.base.component import BaseComponent
@@ -191,28 +190,3 @@ class FrontmatterGenerator(BaseComponent):
         # If all parsing attempts failed, raise an error (no fallbacks)
         logger.error("Failed to extract valid YAML from API response")
         raise ValueError(f"API response could not be parsed as valid YAML. Response content: {processed[:200]}...")
-    
-    def _extract_yaml_from_code_blocks(self, content: str) -> str:
-        """Extract YAML content from code blocks.
-        
-        Args:
-            content: Content that might contain YAML code blocks
-            
-        Returns:
-            str: Extracted YAML content or empty string
-        """
-        # Look for YAML in code blocks
-        pattern = r"```ya?ml\s*([\s\S]*?)\s*```"
-        match = re.search(pattern, content)
-        if match:
-            return match.group(1).strip()
-        return ""
-    
-    def _get_current_date(self) -> str:
-        """Get current date in YYYY-MM-DD format.
-        
-        Returns:
-            str: Current date
-        """
-        import datetime
-        return datetime.date.today().isoformat()

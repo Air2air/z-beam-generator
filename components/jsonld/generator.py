@@ -12,7 +12,7 @@ MODULE DIRECTIVES FOR AI ASSISTANTS:
 import logging
 import json
 import re
-from typing import Dict, Any, List, Optional
+from typing import Dict, Any, Optional
 from components.base.component import BaseComponent
 
 logger = logging.getLogger(__name__)
@@ -54,6 +54,10 @@ class JsonldGenerator(BaseComponent):
         Returns:
             object: Type generator instance or None
         """
+        # Temporarily disable type-specific generators to use improved main generator
+        # TODO: Update type-specific generators to use rich schema data
+        return None
+        
         try:
             # Import type-specific generator
             if self.article_type == "material":
@@ -111,9 +115,17 @@ class JsonldGenerator(BaseComponent):
         # Get frontmatter data
         frontmatter = self.get_frontmatter_data()
         if frontmatter:
-            # Extract common fields
-            data["title"] = frontmatter.get("title", self.subject.capitalize())
-            data["description"] = frontmatter.get("description", f"Information about {self.subject}")
+            # Include ALL frontmatter data for rich schema generation
+            # The prompt template will map specific fields as needed
+            data.update({
+                "frontmatter_data": frontmatter,  # Complete frontmatter for template
+                "title": frontmatter.get("name", frontmatter.get("title", self.subject.capitalize())),
+                "description": frontmatter.get("description", f"Information about {self.subject}"),
+                "website": frontmatter.get("website", f"https://www.z-beam.com/{self.subject.lower()}"),
+                "keywords": frontmatter.get("keywords", []),
+                "tags": frontmatter.get("tags", []),
+                "countries": frontmatter.get("countries", [])
+            })
             
             # Extract author information
             author = frontmatter.get("author", {})
@@ -125,19 +137,50 @@ class JsonldGenerator(BaseComponent):
             # Extract date
             data["date"] = frontmatter.get("date", self._get_current_date())
             
-            # Extract article type-specific fields
+            # Include article type-specific fields with ALL available data
             if self.article_type == "material":
-                data["properties"] = frontmatter.get("properties", {})
-                data["applications"] = frontmatter.get("applications", [])
+                data.update({
+                    "properties": frontmatter.get("properties", {}),
+                    "applications": frontmatter.get("applications", []),
+                    "technicalSpecifications": frontmatter.get("technicalSpecifications", {}),
+                    "composition": frontmatter.get("composition", []),
+                    "environmentalImpact": frontmatter.get("environmentalImpact", []),
+                    "compatibility": frontmatter.get("compatibility", []),
+                    "regulatoryStandards": frontmatter.get("regulatoryStandards", []),
+                    "outcomes": frontmatter.get("outcomes", [])
+                })
             elif self.article_type == "application":
-                data["industries"] = frontmatter.get("industries", [])
-                data["features"] = frontmatter.get("features", [])
+                data.update({
+                    "industries": frontmatter.get("industries", []),
+                    "features": frontmatter.get("features", []),
+                    "applications": frontmatter.get("applications", []),
+                    "technicalSpecifications": frontmatter.get("technicalSpecifications", {}),
+                    "environmentalImpact": frontmatter.get("environmentalImpact", []),
+                    "regulatoryStandards": frontmatter.get("regulatoryStandards", []),
+                    "outcomes": frontmatter.get("outcomes", [])
+                })
             elif self.article_type == "region":
-                data["location"] = frontmatter.get("location", {})
-                data["companies"] = frontmatter.get("companies", [])
+                data.update({
+                    "geoCoordinates": frontmatter.get("geoCoordinates", {}),
+                    "economicData": frontmatter.get("economicData", {}),
+                    "manufacturingCenters": frontmatter.get("manufacturingCenters", []),
+                    "applications": frontmatter.get("applications", []),
+                    "technicalSpecifications": frontmatter.get("technicalSpecifications", {}),
+                    "composition": frontmatter.get("composition", []),
+                    "environmentalImpact": frontmatter.get("environmentalImpact", []),
+                    "compatibility": frontmatter.get("compatibility", []),
+                    "regulatoryStandards": frontmatter.get("regulatoryStandards", []),
+                    "outcomes": frontmatter.get("outcomes", [])
+                })
             elif self.article_type == "thesaurus":
-                data["alternateNames"] = frontmatter.get("alternateNames", [])
-                data["relatedTerms"] = frontmatter.get("relatedTerms", [])
+                data.update({
+                    "alternateNames": frontmatter.get("alternateNames", []),
+                    "relatedTerms": frontmatter.get("relatedTerms", []),
+                    "applications": frontmatter.get("applications", []),
+                    "technicalSpecifications": frontmatter.get("technicalSpecifications", {}),
+                    "environmentalImpact": frontmatter.get("environmentalImpact", []),
+                    "regulatoryStandards": frontmatter.get("regulatoryStandards", [])
+                })
         
         return data
     
@@ -170,34 +213,59 @@ class JsonldGenerator(BaseComponent):
         Returns:
             Optional[Dict[str, Any]]: Extracted JSON-LD or None
         """
-        # Try to extract JSON object
-        try:
-            # First, try to find JSON in a code block
-            json_pattern = r'```(?:json)?\s*(.*?)\s*```'
-            match = re.search(json_pattern, content, re.DOTALL)
-            if match:
-                json_str = match.group(1).strip()
+        # Try to extract JSON object using the base class method first
+        json_str = self._extract_json_from_code_blocks(content)
+        if json_str:
+            try:
                 return json.loads(json_str)
-            
-            # Next, try to find JSON in script tags
-            script_pattern = r'<script[^>]*>\s*(.*?)\s*</script>'
+            except Exception as e:
+                logger.debug(f"Failed to parse JSON from code blocks: {str(e)}")
+        
+        # Try other extraction methods
+        try:
+            # Look for JSON in script tags
+            script_pattern = r'<script[^>]*type=["\']application/ld\+json["\'][^>]*>\s*(.*?)\s*</script>'
             match = re.search(script_pattern, content, re.DOTALL)
             if match:
                 json_str = match.group(1).strip()
                 return json.loads(json_str)
             
-            # Next, try to find a raw JSON object
-            json_obj_pattern = r'(\{\s*"@context".*\})'
+            # Look for any script tag
+            script_pattern = r'<script[^>]*>\s*(.*?)\s*</script>'
+            match = re.search(script_pattern, content, re.DOTALL)
+            if match:
+                json_str = match.group(1).strip()
+                if json_str.startswith('{') and '"@context"' in json_str:
+                    return json.loads(json_str)
+            
+            # Look for a raw JSON object with @context
+            json_obj_pattern = r'(\{\s*"@context"[^}]*(?:\{[^}]*\}[^}]*)*\})'
             match = re.search(json_obj_pattern, content, re.DOTALL)
             if match:
                 json_str = match.group(1).strip()
                 return json.loads(json_str)
             
-            # Finally, try to parse the whole content as JSON
-            return json.loads(content)
+            # Try to find any JSON object that looks like structured data
+            json_obj_pattern = r'(\{(?:[^{}]|\{[^{}]*\})*\})'
+            matches = re.findall(json_obj_pattern, content, re.DOTALL)
+            for match in matches:
+                try:
+                    parsed = json.loads(match)
+                    # Check if it looks like JSON-LD (has @context or @type)
+                    if isinstance(parsed, dict) and ("@context" in parsed or "@type" in parsed):
+                        return parsed
+                except Exception:
+                    continue
+            
+            # Finally, try to parse the whole content as JSON if it looks like JSON
+            content_stripped = content.strip()
+            if content_stripped.startswith('{') and content_stripped.endswith('}'):
+                return json.loads(content_stripped)
+                
         except Exception as e:
-            logger.error(f"Error extracting JSON-LD: {str(e)}")
-            return None
+            logger.debug(f"Error extracting JSON-LD: {str(e)}")
+            
+        return None
     
     def _format_jsonld(self, jsonld: Dict[str, Any]) -> str:
         """Format JSON-LD as script tag.
@@ -232,53 +300,189 @@ class JsonldGenerator(BaseComponent):
         """
         # Get frontmatter data
         frontmatter = self.get_frontmatter_data()
-        title = frontmatter.get("title", self.subject.capitalize()) if frontmatter else self.subject.capitalize()
-        description = frontmatter.get("description", f"Information about {self.subject}") if frontmatter else f"Information about {self.subject}"
-        
-        # Create basic JSON-LD
-        if self.article_type == "material":
+        if not frontmatter:
+            # Basic fallback if no frontmatter
             return {
+                "@context": "https://schema.org",
+                "@type": "Article",
+                "headline": self.subject.capitalize(),
+                "description": f"Information about {self.subject}"
+            }
+        
+        # Extract basic fields
+        title = frontmatter.get("name", frontmatter.get("title", self.subject.capitalize()))
+        description = frontmatter.get("description", f"Information about {self.subject}")
+        website = frontmatter.get("website", f"https://www.z-beam.com/{self.subject.lower()}")
+        
+        # Get author information
+        author_info = frontmatter.get("author", {})
+        if isinstance(author_info, dict):
+            author = {
+                "@type": "Person",
+                "name": author_info.get("author_name", author_info.get("name", "Z-Beam Technical Writer")),
+                "affiliation": {
+                    "@type": "Organization",
+                    "name": author_info.get("name", "Z-Beam")
+                }
+            }
+        else:
+            author = {
+                "@type": "Person",
+                "name": "Z-Beam Technical Writer",
+                "affiliation": {
+                    "@type": "Organization",
+                    "name": "Z-Beam"
+                }
+            }
+        
+        # Create article type-specific JSON-LD using rich frontmatter data
+        if self.article_type == "region":
+            jsonld = {
+                "@context": "https://schema.org",
+                "@type": "Place",
+                "name": title,
+                "description": description,
+                "url": website
+            }
+            
+            # Add geographic coordinates if available
+            geo_coords = frontmatter.get("geoCoordinates", {})
+            if geo_coords:
+                jsonld["geo"] = {
+                    "@type": "GeoCoordinates",
+                    "latitude": geo_coords.get("latitude"),
+                    "longitude": geo_coords.get("longitude")
+                }
+                
+                # Add address information
+                address_parts = []
+                if geo_coords.get("county"):
+                    address_parts.append(geo_coords.get("county"))
+                if geo_coords.get("state"):
+                    address_parts.append(geo_coords.get("state"))
+                if geo_coords.get("region"):
+                    jsonld["containedInPlace"] = {
+                        "@type": "Place",
+                        "name": geo_coords.get("region")
+                    }
+                
+                if address_parts:
+                    jsonld["address"] = {
+                        "@type": "PostalAddress",
+                        "addressRegion": geo_coords.get("state", ""),
+                        "addressCountry": "US"
+                    }
+            
+            # Add economic data if available
+            economic_data = frontmatter.get("economicData", {})
+            if economic_data:
+                jsonld["additionalProperty"] = []
+                if economic_data.get("gdpContribution"):
+                    jsonld["additionalProperty"].append({
+                        "@type": "PropertyValue",
+                        "name": "GDP Contribution",
+                        "value": economic_data.get("gdpContribution")
+                    })
+                if economic_data.get("employmentRate"):
+                    jsonld["additionalProperty"].append({
+                        "@type": "PropertyValue",
+                        "name": "Employment Rate",
+                        "value": economic_data.get("employmentRate")
+                    })
+            
+            return jsonld
+            
+        elif self.article_type == "material":
+            jsonld = {
                 "@context": "https://schema.org",
                 "@type": "Product",
                 "name": title,
                 "description": description,
-                "category": "Material"
+                "url": website,
+                "category": "Laser Cleaning Material"
             }
+            
+            # Add technical specifications if available
+            tech_specs = frontmatter.get("technicalSpecifications", {})
+            if tech_specs:
+                jsonld["additionalProperty"] = []
+                for key, value in tech_specs.items():
+                    jsonld["additionalProperty"].append({
+                        "@type": "PropertyValue",
+                        "name": key.replace("_", " ").title(),
+                        "value": str(value)
+                    })
+            
+            # Add composition if available
+            composition = frontmatter.get("composition", [])
+            if composition:
+                jsonld["material"] = []
+                for comp in composition:
+                    if isinstance(comp, dict):
+                        jsonld["material"].append({
+                            "@type": "Product",
+                            "name": comp.get("component", ""),
+                            "description": comp.get("type", "")
+                        })
+            
+            return jsonld
+            
         elif self.article_type == "application":
-            return {
+            jsonld = {
                 "@context": "https://schema.org",
                 "@type": "TechArticle",
                 "headline": title,
                 "description": description,
-                "about": {"@type": "Thing", "name": self.subject}
+                "url": website,
+                "about": {
+                    "@type": "Thing",
+                    "name": f"Laser Cleaning {self.subject}"
+                }
             }
-        elif self.article_type == "region":
-            return {
-                "@context": "https://schema.org",
-                "@type": "Place",
-                "name": title,
-                "description": description
-            }
+            
+            # Add applications if available
+            applications = frontmatter.get("applications", [])
+            if applications:
+                jsonld["about"]["description"] = []
+                for app in applications:
+                    if isinstance(app, dict):
+                        jsonld["about"]["description"].append(
+                            f"{app.get('name', '')}: {app.get('description', '')}"
+                        )
+            
+            return jsonld
+            
         elif self.article_type == "thesaurus":
             return {
                 "@context": "https://schema.org",
                 "@type": "DefinedTerm",
                 "name": title,
-                "description": description
+                "description": description,
+                "url": website,
+                "alternateName": frontmatter.get("alternateNames", []),
+                "relatedLink": frontmatter.get("relatedTerms", [])
             }
         else:
+            # Generic article
             return {
                 "@context": "https://schema.org",
                 "@type": "Article",
                 "headline": title,
-                "description": description
+                "description": description,
+                "url": website,
+                "datePublished": self._get_current_date(),
+                "dateModified": self._get_current_date(),
+                "author": author,
+                "publisher": {
+                    "@type": "Organization",
+                    "name": "Z-Beam",
+                    "url": "https://www.z-beam.com"
+                },
+                "about": [
+                    {
+                        "@type": "Thing",
+                        "name": f"Laser Cleaning in {self.subject}",
+                        "description": f"Specialized laser cleaning techniques and applications used in the {self.subject} region, addressing local industrial needs and environmental regulations."
+                    }
+                ]
             }
-    
-    def _get_current_date(self) -> str:
-        """Get current date in ISO format.
-        
-        Returns:
-            str: Current date
-        """
-        import datetime
-        return datetime.date.today().isoformat()

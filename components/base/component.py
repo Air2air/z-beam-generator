@@ -340,9 +340,16 @@ class BaseComponent:
         component_name = self.__class__.__name__.lower().replace("generator", "").replace("component", "")
         component_config = self.context["components"][component_name]  # Must exist
         
-        # Return specific key or entire config - no fallbacks
+        # Return specific key or entire config
         if key is not None:
-            return component_config[key]  # Must exist if requested
+            # Use get() to allow defaults for optional config keys
+            if key in component_config:
+                return component_config[key]
+            elif default is not None:
+                return default
+            else:
+                # Key was requested but doesn't exist and no default provided
+                raise KeyError(f"Required config key '{key}' not found in component '{component_name}'")
         return component_config
     
     def _create_error_markdown(self, error_message: str) -> str:
@@ -355,3 +362,44 @@ class BaseComponent:
             str: A markdown comment with the error
         """
         return f"<!-- Error in {self.__class__.__name__.lower().replace('generator', '')}: {error_message} -->"
+    
+    def _get_current_date(self) -> str:
+        """Get current date in YYYY-MM-DD format.
+        
+        Returns:
+            str: Current date in ISO format
+        """
+        import datetime
+        return datetime.date.today().isoformat()
+    
+    def _extract_yaml_from_code_blocks(self, content: str) -> str:
+        """Extract YAML content from code blocks.
+        
+        Args:
+            content: Content that might contain YAML code blocks
+            
+        Returns:
+            str: Extracted YAML content or empty string
+        """
+        # Look for YAML in code blocks
+        pattern = r"```ya?ml\s*([\s\S]*?)\s*```"
+        match = re.search(pattern, content)
+        if match:
+            return match.group(1).strip()
+        return ""
+    
+    def _extract_json_from_code_blocks(self, content: str) -> str:
+        """Extract JSON content from code blocks.
+        
+        Args:
+            content: Content that might contain JSON code blocks
+            
+        Returns:
+            str: Extracted JSON content or empty string
+        """
+        # Look for JSON in code blocks
+        pattern = r"```json\s*([\s\S]*?)\s*```"
+        match = re.search(pattern, content)
+        if match:
+            return match.group(1).strip()
+        return ""

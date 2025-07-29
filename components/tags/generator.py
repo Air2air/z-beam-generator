@@ -65,11 +65,8 @@ class TagsGenerator(BaseComponent):
         """
         data = super()._prepare_data()
         
-        # Get component-specific configuration
-        component_config = self.get_component_config()
-        
         # Add tag constraints
-        data["max_count"] = component_config.get("count", 10)  # Use 'count' from config, fallback to 10
+        data["max_count"] = self.get_component_config("count", 10)  # Use 'count' from config, fallback to 10
         
         # Add subject-with-dashes for template
         data["subject-with-dashes"] = data["subject"].replace(" ", "-").replace("_", "-")

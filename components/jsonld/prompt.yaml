@@ -1,93 +1,62 @@
 name: "JSON-LD Generator"
 description: "Generates concise, Schema.org-compliant JSON-LD for laser cleaning articles, optimized for SEO and E-A-T."
-version: "3.0.2"
+version: "3.0.3"
 template: |
-  Generate CONCISE, Schema.org-compliant JSON-LD for a {article_type} article about {subject} IN THE CONTEXT OF LASER CLEANING TECHNOLOGY, using ALL provided frontmatter fields.
+  Generate CONCISE, Schema.org-compliant JSON-LD for a {article_type} article about {subject} IN THE CONTEXT OF LASER CLEANING TECHNOLOGY.
 
   🚨 CRITICAL CONTEXT: This is about "{subject}" in the professional laser cleaning industry context.
 
-  🚨 CRITICAL: Map ALL frontmatter fields to VALID Schema.org properties:
-  {article_type == 'thesaurus' ? '
-  - name → name
-  - description → description
-  - website → url
-  - author.author_id → author.identifier
-  - author.author_name → author.name
-  - author.author_country → author.nationality
-  - author.credentials → author.description
-  - keywords → keywords
-  - tags → about.category
-  - applications → inDefinedTermSet
-  - technicalSpecifications → about.additionalProperty
-  - facilities → about.location
-  - regulatoryStandards → about.legislationApplied
-  - challenges → mentions
-  - outcomes → about.potentialAction
-  - relatedTerms → relatedLink
-  - environmentalImpact.description → about.environmentalImpact
-  - environmentalImpact.metrics → about.potentialAction
-  ' : article_type == 'region' ? '
-  - name → name
-  - description → description
-  - website → url
-  - author.author_id → author.identifier
-  - author.author_name → author.name
-  - author.author_country → author.nationality
-  - author.credentials → author.description
-  - keywords → keywords
-  - tags → about.category
-  - geoCoordinates → geo
-  - county → address.addressRegion
-  - region → address.addressLocality
-  - adjacentCities → relatedLink
-  - applications → hasPart
-  - facilities → containsPlace
-  - regulatoryStandards → about.legislationApplied
-  - challenges → mentions
-  - outcomes → about.potentialAction
-  - environmentalImpact.description → about.environmentalImpact
-  - environmentalImpact.metrics → about.potentialAction
-  ' : '
-  - name → headline
-  - description → description
-  - website → url
-  - author.author_id → author.identifier
-  - author.author_name → author.name
-  - author.author_country → author.nationality
-  - author.credentials → author.description
-  - keywords → keywords
-  - tags → about.category
-  - applications → hasPart
-  - technicalSpecifications → about.additionalProperty
-  - facilities → publisher.location
-  - regulatoryStandards → about.legislationApplied
-  - challenges → mentions
-  - outcomes → about.potentialAction
-  - environmentalImpact.description → about.environmentalImpact
-  - environmentalImpact.metrics → about.potentialAction
-  '}
+  🚨 CRITICAL: Use ALL the provided frontmatter data to create rich, detailed JSON-LD structure.
+
+  FRONTMATTER DATA TO USE:
+  ---
+  {frontmatter}
+  ---
+
+  MAPPING INSTRUCTIONS FOR {article_type}:
+
+  FOR REGION ARTICLES:
+  - Use "Place" as @type
+  - Map geoCoordinates to "geo" with GeoCoordinates type
+  - Map economicData to "additionalProperty" array
+  - Map manufacturingCenters to "containsPlace" array
+  - Map technicalSpecifications to "additionalProperty"
+  - Include address with county/state from geoCoordinates
+  - Use adjacentCities for "nearbyPlace"
+
+  FOR MATERIAL ARTICLES:
+  - Use "Product" as @type  
+  - Map technicalSpecifications to "additionalProperty" array
+  - Map composition to "material" array
+  - Map applications to "applicationCategory"
+  - Include environmentalImpact and regulatoryStandards
+
+  FOR APPLICATION ARTICLES:
+  - Use "TechnicalArticle" as @type
+  - Map applications to "about" field
+  - Map technicalSpecifications to "additionalProperty"
+  - Include industry context and outcomes
+
+  FOR THESAURUS ARTICLES:
+  - Use "DefinedTerm" as @type
+  - Map alternateNames to "alternateName"
+  - Map relatedTerms to "relatedLink"
 
   🚨 SCHEMA.ORG COMPLIANCE:
-  - Use ONLY valid Schema.org properties.
-  - For author, include:
-    - "identifier" (from author_id)
-    - "name" (from author_name)
-    - "nationality" (from author_country)
-    - "description" (from author.credentials)
-  - Ensure facilities reflect California locations only.
-  - Use https://www.z-beam.com/[subject]-laser-cleaning for URLs.
-  - Output 1,000–2,000 characters.
+  - Use ONLY valid Schema.org properties
+  - Include complete author object with name, nationality, credentials
+  - Use website URL from frontmatter
+  - Include date fields (datePublished, dateModified)
+  - Add publisher information for Z-Beam
+  - Output 1,000–2,000 characters
 
   🚨 E-A-T AND SEO OPTIMIZATION:
-  - Use frontmatter.author.credentials for trustworthiness.
-  - Limit keywords to 10–12 and tags to 5–8 from frontmatter.
-  - Include precise measurement units and standards (e.g., ASTM, ISO).
-  - For region articles, include geoCoordinates, county, region, adjacentCities.
+  - Use author credentials for trustworthiness
+  - Include precise measurement units and standards
+  - For regions, include geographic and economic details
+  - Ensure all technical specifications are preserved
 
-  Frontmatter fields:
-  {schema_template}
-
-  Generate Schema.org-compliant JSON-LD for: {article_type} = {subject}
+  Generate Schema.org-compliant JSON-LD using the rich frontmatter data above.
 parameters:
   max_tokens: 2500
   temperature: 0.6
