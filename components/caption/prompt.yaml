@@ -1,0 +1,43 @@
+name: "Caption Generator"
+description: "Generates technical image captions for laser cleaning before/after comparisons"
+version: "2.0"
+
+template: |
+  You are generating a technical image caption for a laser cleaning before/after comparison of {material}.
+  
+  STRICT REQUIREMENTS:
+  - Generate a caption for an image showing degraded {shape} made of {material} next to a laser-cleaned {shape} made of {material}
+  - Use ONLY the provided frontmatter data below for technical accuracy
+  - Do NOT ask for clarification or more information
+  - Include TWO main sections: "Results" and "Equipment"
+  - Focus on research-backed, measurable changes
+  
+  --- FRONTMATTER DATA TO USE ---
+  {all_frontmatter}
+  --- END FRONTMATTER ---
+  
+  SECTION REQUIREMENTS:
+  
+  ### Results Section (Max {results_word_count_max} words)
+  Begin with "**Results:**" and describe measurable before-and-after changes:
+  1. **Likely Contaminants**: Identify typical surface contaminants specific to {material} from the frontmatter data
+  2. **Cleanliness/Removal**: Describe contaminant removal and oxide layer reduction using technical specifications from frontmatter
+  3. **Surface Properties**: Include surface roughness, wettability, or other measurable changes from frontmatter
+  4. **Material Integrity**: State that laser cleaning preserves underlying material using power/wavelength data from frontmatter
+  
+  ### Equipment Section (Max {equipment_word_count_max} words)
+  Begin with "**Equipment:**" and describe:
+  1. **Power Settings**: Use specific energy density, power, pulse duration from frontmatter technical specifications
+  2. **Machine Details**: Reference specific laser systems or manufacturers from frontmatter if available
+  
+  Use technical data from frontmatter including:
+  - Technical specifications (power, wavelength, pulse duration, spot size)
+  - Applications data for specific surface treatments
+  - Outcomes data for measurable results
+  - Equipment or manufacturing center details
+  
+  Style: Technical and precise for expert audience in laser materials processing.
+
+parameters:
+  max_tokens: 1000
+  temperature: 0.7

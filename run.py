@@ -18,8 +18,8 @@ MODULE DIRECTIVES FOR AI ASSISTANTS:
 # Define the primary article context - THE ONLY SOURCE OF TRUTH
 ARTICLE_CONTEXT = {
     # Core article parameters
-    "subject": "hayward",
-    "article_type": "region",  # application, material, region, or thesaurus
+    "subject": "magnesium",
+    "article_type": "material",  # application, material, region, or thesaurus
     "author_id": 1,  # 1: Taiwan, 2: Italy, 3: USA, 4: Indonesia
     "components": {
         "frontmatter": {
@@ -75,6 +75,18 @@ ARTICLE_CONTEXT = {
                 "max_tokens": 4000
             }, 
         },
+                "caption": {
+            "enabled": True,  # Now available for all article types
+            "results_word_count_max": 120,
+            "equipment_word_count_max": 60,
+            "shape": "component",  # Default shape, can be overridden
+            "ai_provider": "deepseek",  # deepseek, openai, xai, gemini
+            "options": {
+                "model": "deepseek-chat", # deepseek-chat (88), "GPT-4o" (76), "grok-3-latest" (62), "gemini-1.5-flash"
+                "temperature": 0.7,
+                "max_tokens": 1000
+            },  
+        },
         "jsonld": {
             "enabled": True,
             "ai_provider": "deepseek",  # deepseek, openai, xai, gemini
@@ -84,6 +96,7 @@ ARTICLE_CONTEXT = {
                 "max_tokens": 4000
             },  
         },
+
     },
     # Output configuration
     "output_dir": "output",
@@ -187,6 +200,13 @@ def generate_component(component_name: str, frontmatter_content: str = None):
         elif component_name == "jsonld":
             from components.jsonld.generator import JsonldGenerator
             generator = JsonldGenerator(
+                context=generator_context,
+                schema=schema,
+                ai_provider=component_config["ai_provider"]
+            )
+        elif component_name == "caption":
+            from components.caption.generator import CaptionGenerator
+            generator = CaptionGenerator(
                 context=generator_context,
                 schema=schema,
                 ai_provider=component_config["ai_provider"]
@@ -328,7 +348,7 @@ def main():
             return  # Exit if frontmatter is required but failed
     
     # Generate content components in order
-    components_order = ["content", "bullets", "table", "tags", "jsonld"]
+    components_order = ["content", "bullets", "caption", "table", "tags", "jsonld"]
     
     for component_name in components_order:
         component_content = generate_component(component_name, frontmatter)
@@ -380,4 +400,33 @@ def main():
 
 
 if __name__ == "__main__":
+    import argparse
+    import sys
+    
+    # Parse command line arguments
+    parser = argparse.ArgumentParser(description="Z-Beam content generation system")
+    parser.add_argument("--author-id", type=int, default=None, choices=[1, 2, 3, 4],
+                       help="Author ID (1: Taiwan, 2: Italy, 3: USA, 4: Indonesia)")
+    parser.add_argument("--components", nargs="+", 
+                       choices=["frontmatter", "content", "bullets", "table", "tags", "jsonld", "caption"],
+                       help="Specific components to generate (default: all enabled)")
+    parser.add_argument("--debug", action="store_true", help="Enable debug output")
+    
+    args = parser.parse_args()
+    
+    # Update ARTICLE_CONTEXT with command line arguments if provided
+    if args.author_id is not None:
+        ARTICLE_CONTEXT["author_id"] = args.author_id
+    
+    # If specific components are requested, disable all others and enable only the requested ones
+    if args.components:
+        # First disable all components
+        for component_name in ARTICLE_CONTEXT["components"]:
+            ARTICLE_CONTEXT["components"][component_name]["enabled"] = False
+        
+        # Enable only the requested components
+        for component_name in args.components:
+            if component_name in ARTICLE_CONTEXT["components"]:
+                ARTICLE_CONTEXT["components"][component_name]["enabled"] = True
+    
     main()
