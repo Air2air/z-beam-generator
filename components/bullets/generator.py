@@ -54,23 +54,22 @@ class BulletsGenerator(BaseComponent):
             "style": self.get_component_config("style", "technical")
         })
         
-        # Get frontmatter data
+        # Get frontmatter data and include ALL available structured data
         frontmatter = self.get_frontmatter_data()
         if frontmatter:
-            # Extract keywords if available
-            keywords = frontmatter.get("keywords", [])
-            if keywords:
-                if isinstance(keywords, str):
-                    keywords = [k.strip() for k in keywords.split(",")]
-                data["keywords"] = keywords
+            # Include all frontmatter data dynamically
+            for key, value in frontmatter.items():
+                if value:  # Only include non-empty values
+                    data[key] = value
             
-            # Extract article-type specific data
-            if self.article_type == "material":
-                data["properties"] = frontmatter.get("properties", {})
-                data["applications"] = frontmatter.get("applications", [])
-            elif self.article_type == "application":
-                data["industries"] = frontmatter.get("industries", [])
-                data["features"] = frontmatter.get("features", [])
+            # Store list of available keys for template iteration
+            data["available_keys"] = [k for k, v in frontmatter.items() if v]
+            
+            # Also provide the complete frontmatter as formatted YAML
+            import yaml
+            data["all_frontmatter"] = yaml.dump(frontmatter, default_flow_style=False, sort_keys=False)
+        else:
+            data["all_frontmatter"] = "No frontmatter data available"
         
         return data
     

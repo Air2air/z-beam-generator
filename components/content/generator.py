@@ -50,33 +50,31 @@ class ContentGenerator(BaseComponent):
         """
         data = super()._prepare_data()
         
-        # Add content constraints using normalized method
+        # Add content constraints from config
         data.update({
-            "min_words": self.get_component_config("min_words"),
-            "max_words": self.get_component_config("max_words"),
-            "tone": self.get_component_config("tone", "professional")
+            "min_words": self.get_component_config("min_words", 300),
+            "max_words": self.get_component_config("max_words", 800),
+            "tone": self.get_component_config("tone", "professional"),
+            "style": self.get_component_config("style", "technical"),
+            "audience": self.get_component_config("audience", "professionals")
         })
         
-        # Get frontmatter data
+        # Get frontmatter data and include ALL available structured data
         frontmatter = self.get_frontmatter_data()
         if frontmatter:
-            # Extract title and description
-            data["title"] = frontmatter.get("title", self.subject.capitalize())
-            data["description"] = frontmatter.get("description", "")
+            # Include all frontmatter data dynamically
+            for key, value in frontmatter.items():
+                if value:  # Only include non-empty values
+                    data[key] = value
             
-            # Extract article-type specific data
-            if self.article_type == "material":
-                data["properties"] = frontmatter.get("properties", {})
-                data["applications"] = frontmatter.get("applications", [])
-            elif self.article_type == "application":
-                data["industries"] = frontmatter.get("industries", [])
-                data["features"] = frontmatter.get("features", [])
-            elif self.article_type == "region":
-                data["location"] = frontmatter.get("location", {})
-                data["industries"] = frontmatter.get("industries", [])
-            elif self.article_type == "thesaurus":
-                data["alternateNames"] = frontmatter.get("alternateNames", [])
-                data["relatedTerms"] = frontmatter.get("relatedTerms", [])
+            # Store list of available keys for template iteration
+            data["available_keys"] = [k for k, v in frontmatter.items() if v]
+            
+            # Also provide the complete frontmatter as formatted YAML
+            import yaml
+            data["all_frontmatter"] = yaml.dump(frontmatter, default_flow_style=False, sort_keys=False)
+        else:
+            data["all_frontmatter"] = "No frontmatter data available"
         
         return data
     

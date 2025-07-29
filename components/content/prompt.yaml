@@ -1,33 +1,40 @@
 name: "Content Generator"
-description: "Generates comprehensive laser cleaning articles with scientific accuracy"
+description: "Generates comprehensive article content from all frontmatter data"
 version: "2.0"
+
 template: |
-  Generate a comprehensive {article_type} article about {subject} for laser cleaning applications.
+  Write a comprehensive {article_type} about {subject} using the provided data.
   
-  --- FRONTMATTER DATA ---
-  {frontmatter}
+  REQUIREMENTS:
+  - Generate EXACTLY {min_words}-{max_words} words
+  - Use ALL the technical data provided in the frontmatter
+  - Do NOT ask for clarification or request more information
+  - Write in {style} style for {audience} audience
+  - Focus on laser cleaning technology, applications, and specifications
+  
+  --- FRONTMATTER DATA TO USE ---
+  {all_frontmatter}
   --- END FRONTMATTER ---
   
-  Requirements:
-  - Length: {min_words}-{max_words} words
-  - Tone: {tone}
-  - Format: Markdown with proper headings and subheadings
-  - Use frontmatter data as the primary source
-  - Focus on technical accuracy and practical applications
-  - Include introduction, technical details, applications, and conclusion
-  - Do NOT include meta-commentary about the writing process
+  Article Structure:
+  1. Introduction highlighting key aspects of {subject}
+  2. Technical specifications and capabilities
+  3. Applications and use cases (with specific examples from data)
+  4. Manufacturing centers and industry context
+  5. Environmental benefits and compliance
+  6. Geographic and economic context
+  7. Conclusion with future outlook
   
-  Generate ONLY the article content, nothing else.
+  Use specific data from the frontmatter including:
+  - Technical specifications (power ranges, wavelengths, pulse durations)
+  - Real applications and case studies
+  - Manufacturing center details
+  - Environmental impact data
+  - Geographic coordinates and regional context
+  - Economic data and industry information
+  
+  Write as a complete, authoritative article using markdown formatting.
 
 parameters:
   max_tokens: 4000
   temperature: 0.7
-  
-validation:
-  required_sections: 3
-  min_words: 300
-  avoid_patterns:
-    - "As an AI"
-    - "As a language model"
-    - "In this article"
-    - "In conclusion"

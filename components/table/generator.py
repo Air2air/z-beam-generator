@@ -54,22 +54,40 @@ class TableGenerator(BaseComponent):
             "include_units": self.get_component_config("include_units", True)
         })
         
-        # Get frontmatter data
+        # Get frontmatter data and extract ALL available fields dynamically
         frontmatter = self.get_frontmatter_data()
         if frontmatter:
-            # Extract article-type specific data for tables
-            if self.article_type == "material":
-                # Look for properties or specifications in frontmatter
-                properties = frontmatter.get("properties", {})
-                specs = frontmatter.get("technicalSpecifications", {})
-                data["properties"] = properties
-                data["specifications"] = specs
-            elif self.article_type == "application":
-                data["features"] = frontmatter.get("features", [])
-                data["specifications"] = frontmatter.get("technicalSpecifications", {})
-            elif self.article_type == "region":
-                data["location"] = frontmatter.get("location", {})
-                data["companies"] = frontmatter.get("companies", [])
+            # Define table-worthy data types (objects and lists of objects)
+            table_worthy_keys = []
+            
+            for key, value in frontmatter.items():
+                # Skip simple metadata
+                if key in ['name', 'description', 'website', 'author', 'tags', 'countries']:
+                    continue
+                    
+                # Include structured data that can be tabulated
+                if isinstance(value, dict) and value:  # Non-empty objects
+                    table_worthy_keys.append(key)
+                    data[key] = value
+                elif isinstance(value, list) and value:  # Non-empty lists
+                    # Check if it's a list of objects (good for tables)
+                    if isinstance(value[0], dict):
+                        table_worthy_keys.append(key)
+                        data[key] = value
+                    # Or a list of simple values that can be converted to tables
+                    elif len(value) > 1:
+                        table_worthy_keys.append(key)
+                        data[key] = value
+            
+            # Store the dynamically discovered table-worthy keys
+            data["table_keys"] = table_worthy_keys
+            
+            # Also pass all frontmatter for template flexibility as formatted YAML
+            import yaml
+            data["all_frontmatter"] = yaml.dump(frontmatter, default_flow_style=False, sort_keys=False)
+        else:
+            data["table_keys"] = []
+            data["all_frontmatter"] = "No frontmatter data available"
         
         return data
     

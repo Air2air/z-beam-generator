@@ -1,28 +1,44 @@
 name: "Table Generator"
 description: "Generates comprehensive tables from frontmatter data based on numerical ranges and structured data"
-version: "2.2"
+version: "3.0"
 
 template: |
-  Generate ONLY markdown tables based on the frontmatter data for {subject} as a {article_type}.
+  Generate comprehensive markdown tables using ALL available structured data from the frontmatter for {subject} as a {article_type}.
   
   --- FRONTMATTER DATA ---
-  {frontmatter}
+  {all_frontmatter}
   --- END FRONTMATTER ---
   
-  Instructions:
-  1. Create 1-3 relevant tables from the frontmatter data
-  2. Focus on: technicalSpecifications, composition, applications, environmentalImpact, compatibility
-  3. Use proper markdown table format with headers
-  4. Each table should have a descriptive title (## Table Name)
-  5. ONLY output tables - no explanatory text or introductions
-  6. If no structured data is available, create a simple specifications table
+  Available table-worthy data keys: {table_keys}
   
-  Example format:
+  Instructions:
+  1. Create tables for EVERY key in table_keys that contains structured data
+  2. For objects (dictionaries): Create key-value tables  
+  3. For lists of objects: Create multi-column tables with object properties as columns
+  4. For lists of simple values: Create single-column tables or convert to key-value format
+  5. Use descriptive titles based on the data key (e.g., "Technical Specifications" for technicalSpecifications)
+  6. Include ALL available data - do not omit any fields
+  7. Use proper markdown table format with headers
+  8. Each table should have a descriptive title (## Table Name)
+  
+  CRITICAL: Do NOT use placeholder values like "Not Specified" - use only the actual data from frontmatter.
+  
+  Example formats:
+  
+  For objects:
   ## Technical Specifications
   | Parameter | Value |
   |-----------|-------|
-  | Key1 | Value1 |
-  | Key2 | Value2 |
+  | powerRange | 50–500W (modular) |
+  | wavelength | 1064nm ±2nm |
+  
+  For lists of objects:
+  ## Applications
+  | Name | Description |
+  |------|-------------|
+  | Aerospace Component Refurbishment | Precision removal of thermal barrier coatings... |
+  
+  Generate tables for ALL available structured data.
 
 # Table formatting configuration
 format:

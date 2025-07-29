@@ -194,6 +194,26 @@ def generate_component(component_name: str, frontmatter_content: str = None):
         else:
             raise ValueError(f"Unknown component: {component_name}")
         
+        # Parse and set frontmatter data if available
+        if frontmatter_content:
+            try:
+                import yaml
+                
+                # Extract YAML content from frontmatter (remove --- delimiters)
+                yaml_content = frontmatter_content.strip()
+                if yaml_content.startswith('---'):
+                    yaml_content = yaml_content[3:]
+                if yaml_content.endswith('---'):
+                    yaml_content = yaml_content[:-3]
+                yaml_content = yaml_content.strip()
+                
+                # Parse the YAML content
+                frontmatter_data = yaml.safe_load(yaml_content)
+                if frontmatter_data:
+                    generator.set_frontmatter(frontmatter_data)
+            except Exception as e:
+                print(f"Warning: Failed to parse frontmatter for {component_name}: {e}")
+        
         print(f"Generating {component_name} for: {ARTICLE_CONTEXT['subject']} ({ARTICLE_CONTEXT['article_type']})")
         print(f"Using AI provider: {component_config['ai_provider']} with model: {component_config['options']['model']}")
         

@@ -71,22 +71,19 @@ class TagsGenerator(BaseComponent):
         # Add subject-with-dashes for template
         data["subject-with-dashes"] = data["subject"].replace(" ", "-").replace("_", "-")
         
-        # Get frontmatter data
+        # Get frontmatter data and include ALL available data dynamically
         frontmatter = self.get_frontmatter_data()
         if frontmatter:
-            # Extract title and description for better tag generation
-            data["title"] = frontmatter.get("title", "")
-            data["description"] = frontmatter.get("description", "")
+            # Include all frontmatter data for comprehensive tag generation
+            for key, value in frontmatter.items():
+                if value:  # Only include non-empty values
+                    data[key] = value
             
-            # Add article-type specific content for better tag generation
-            if self.article_type == "material":
-                data["properties"] = frontmatter.get("properties", {})
-                data["applications"] = frontmatter.get("applications", [])
-            elif self.article_type == "application":
-                data["industries"] = frontmatter.get("industries", [])
-                data["features"] = frontmatter.get("features", [])
-            elif self.article_type == "thesaurus":
-                data["alternateNames"] = frontmatter.get("alternateNames", [])
+            # Store list of available keys for template iteration
+            data["available_keys"] = [k for k, v in frontmatter.items() if v]
+            
+            # Also provide the complete frontmatter
+            data["all_frontmatter"] = frontmatter
         
         return data
     

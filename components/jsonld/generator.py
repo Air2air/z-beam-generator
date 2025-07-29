@@ -115,72 +115,32 @@ class JsonldGenerator(BaseComponent):
         # Get frontmatter data
         frontmatter = self.get_frontmatter_data()
         if frontmatter:
-            # Include ALL frontmatter data for rich schema generation
-            # The prompt template will map specific fields as needed
+            # Include ALL frontmatter data dynamically without hardcoded empty fallbacks
             data.update({
                 "frontmatter_data": frontmatter,  # Complete frontmatter for template
                 "title": frontmatter.get("name", frontmatter.get("title", self.subject.capitalize())),
                 "description": frontmatter.get("description", f"Information about {self.subject}"),
                 "website": frontmatter.get("website", f"https://www.z-beam.com/{self.subject.lower()}"),
-                "keywords": frontmatter.get("keywords", []),
-                "tags": frontmatter.get("tags", []),
-                "countries": frontmatter.get("countries", [])
             })
             
-            # Extract author information
-            author = frontmatter.get("author", {})
-            if isinstance(author, dict):
-                data["author"] = author
-            elif isinstance(author, str):
-                data["author"] = {"name": author}
+            # Include only fields that actually exist in frontmatter (no empty defaults)
+            for key, value in frontmatter.items():
+                if value:  # Only include non-empty values
+                    data[key] = value
             
-            # Extract date
-            data["date"] = frontmatter.get("date", self._get_current_date())
+            # Extract author information if present
+            if "author" in frontmatter:
+                author = frontmatter["author"]
+                if isinstance(author, dict):
+                    data["author"] = author
+                elif isinstance(author, str):
+                    data["author"] = {"name": author}
             
-            # Include article type-specific fields with ALL available data
-            if self.article_type == "material":
-                data.update({
-                    "properties": frontmatter.get("properties", {}),
-                    "applications": frontmatter.get("applications", []),
-                    "technicalSpecifications": frontmatter.get("technicalSpecifications", {}),
-                    "composition": frontmatter.get("composition", []),
-                    "environmentalImpact": frontmatter.get("environmentalImpact", []),
-                    "compatibility": frontmatter.get("compatibility", []),
-                    "regulatoryStandards": frontmatter.get("regulatoryStandards", []),
-                    "outcomes": frontmatter.get("outcomes", [])
-                })
-            elif self.article_type == "application":
-                data.update({
-                    "industries": frontmatter.get("industries", []),
-                    "features": frontmatter.get("features", []),
-                    "applications": frontmatter.get("applications", []),
-                    "technicalSpecifications": frontmatter.get("technicalSpecifications", {}),
-                    "environmentalImpact": frontmatter.get("environmentalImpact", []),
-                    "regulatoryStandards": frontmatter.get("regulatoryStandards", []),
-                    "outcomes": frontmatter.get("outcomes", [])
-                })
-            elif self.article_type == "region":
-                data.update({
-                    "geoCoordinates": frontmatter.get("geoCoordinates", {}),
-                    "economicData": frontmatter.get("economicData", {}),
-                    "manufacturingCenters": frontmatter.get("manufacturingCenters", []),
-                    "applications": frontmatter.get("applications", []),
-                    "technicalSpecifications": frontmatter.get("technicalSpecifications", {}),
-                    "composition": frontmatter.get("composition", []),
-                    "environmentalImpact": frontmatter.get("environmentalImpact", []),
-                    "compatibility": frontmatter.get("compatibility", []),
-                    "regulatoryStandards": frontmatter.get("regulatoryStandards", []),
-                    "outcomes": frontmatter.get("outcomes", [])
-                })
-            elif self.article_type == "thesaurus":
-                data.update({
-                    "alternateNames": frontmatter.get("alternateNames", []),
-                    "relatedTerms": frontmatter.get("relatedTerms", []),
-                    "applications": frontmatter.get("applications", []),
-                    "technicalSpecifications": frontmatter.get("technicalSpecifications", {}),
-                    "environmentalImpact": frontmatter.get("environmentalImpact", []),
-                    "regulatoryStandards": frontmatter.get("regulatoryStandards", [])
-                })
+            # Add current date
+            data["date"] = self._get_current_date()
+            
+            # Store available keys for template to iterate over
+            data["available_keys"] = [k for k, v in frontmatter.items() if v]
         
         return data
     
