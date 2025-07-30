@@ -36,7 +36,7 @@ BATCH_CONFIG = {
     "multi_subject": {
         "author_id": 1,  # Use this author for all subjects
         "subject_source": "lists",  # Directory to discover all subjects from all categories
-        "limit": 2,  # Limit to first X subjects (set to None for all subjects)
+        "limit": 4,  # Limit to first X subjects (set to None for all subjects)
     },
     
     # Component configuration - which components to generate
@@ -54,7 +54,7 @@ BATCH_CONFIG = {
             },  
         },
         "content": {
-            "enabled": False,  # Disable for faster testing
+            "enabled": True,  # Enabled for full generation
             "min_words": 300,
             "max_words": 500,
             "ai_provider": "deepseek",  # deepseek, openai, xai, gemini
@@ -65,7 +65,7 @@ BATCH_CONFIG = {
             },  
         },
         "bullets": {
-            "enabled": False,  # Disable for faster testing
+            "enabled": True,  # Enabled for full generation
             "count": 10,
             "ai_provider": "deepseek",  # deepseek, openai, xai, gemini
             "options": {
@@ -75,7 +75,7 @@ BATCH_CONFIG = {
             },  
         },
         "table": {
-            "enabled": False,  # Disable for faster testing
+            "enabled": True,  # Enabled for full generation
             "rows": 5,
             "ai_provider": "deepseek",  # deepseek, openai, xai, gemini
             "options": {
@@ -95,9 +95,9 @@ BATCH_CONFIG = {
             }, 
         },
         "caption": {
-            "enabled": False,  # Disable for faster testing
-            "results_word_count_max": 120,
-            "equipment_word_count_max": 60,
+            "enabled": True,  # Disable for faster testing
+            "results_word_count_max": 40,
+            "equipment_word_count_max": 40,
             "shape": "component",  # Default shape, can be overridden
             "ai_provider": "deepseek",  # deepseek, openai, xai, gemini
             "options": {
@@ -107,7 +107,7 @@ BATCH_CONFIG = {
             },  
         },
         "jsonld": {
-            "enabled": False,  # Disable for faster testing
+            "enabled": True,  # Disable for faster testing
             "ai_provider": "deepseek",  # deepseek, openai, xai, gemini
             "options": {
                 "model": "deepseek-chat", # deepseek-chat (88), "GPT-4o" (76), "grok-3-latest" (62), "gemini-1.5-flash"
@@ -122,12 +122,120 @@ BATCH_CONFIG = {
         "base_dir": "/Users/todddunning/Desktop/Z-Beam/z-beam-test-push/content/components",
         "hierarchy": "flat",  # "flat", "by_article_type", "by_category", or "nested"
         "include_category_metadata": True,  # Include category info in generated files
+    },
+    
+    # File naming patterns for different components and article types
+    "filename_patterns": {
+        # Default patterns (used for all article types unless overridden)
+        "frontmatter": "{subject}.md",           # alumina.md
+        "content": "{subject}.md",               # alumina.md
+        "bullets": "{subject}.md",               # alumina.md
+        "table": "{subject}.md",                 # alumina.md
+        "tags": "{subject}.md",                  # alumina.md
+        "caption": "{subject}.md",               # alumina.md
+        "jsonld": "{subject}.md",                # alumina.md
+        
+        # Article-type specific patterns (applied to ALL components for that type)
+        "article_type_patterns": {
+            "material": "{subject}-laser-cleaning.md",      # zinc-laser-cleaning.md
+            "application": "{subject}-applications.md",     # aerospace-cleaning-applications.md
+            "region": "{subject}-laser-cleaning.md",        # california-laser-cleaning.md
+            "thesaurus": "{subject}-definition.md",         # laser-ablation-definition.md
+        },
+        
+        # Alternative patterns you can use:
+        # "{subject}-{component}.md"             # alumina-frontmatter.md
+        # "{category}-{subject}.md"              # ceramic-alumina.md
+        # "{article_type}-{subject}.md"          # material-alumina.md
+        # "{subject}_{component}.md"             # alumina_frontmatter.md
+        # "{component}_{subject}.md"             # frontmatter_alumina.md
+        
+        # Available variables for patterns:
+        # {subject}      - Subject name (e.g., "alumina")
+        # {category}     - Category name (e.g., "ceramic")
+        # {article_type} - Article type (e.g., "material")
+        # {component}    - Component name (e.g., "frontmatter")
     }
 }
 
 # =============================================================================
 # 🔍 SUBJECT DISCOVERY FUNCTIONS
 # =============================================================================
+
+def detect_article_type_from_subject(subject: str, category: str = None) -> str:
+    """Detect article type from subject name and available schemas.
+    
+    Args:
+        subject: Subject name to analyze
+        category: Category context (optional)
+        
+    Returns:
+        Detected article type (material, application, region, thesaurus)
+    """
+    import os
+    
+    # Check available schemas to determine article type
+    schemas_dir = "schemas"
+    available_schemas = []
+    
+    if os.path.exists(schemas_dir):
+        for filename in os.listdir(schemas_dir):
+            if filename.endswith('.json') and filename != 'author.json' and filename != 'base.json':
+                schema_name = filename[:-5]  # Remove .json
+                available_schemas.append(schema_name)
+    
+    # Simple heuristics for article type detection
+    subject_lower = subject.lower()
+    
+    # Check for application keywords
+    application_keywords = ['cleaning', 'restoration', 'preparation', 'processing', 'treatment', 'application']
+    if any(keyword in subject_lower for keyword in application_keywords):
+        return 'application' if 'application' in available_schemas else 'material'
+    
+    # Check for region keywords  
+    region_keywords = ['california', 'europe', 'asia', 'america', 'county', 'state', 'country', 'region']
+    if any(keyword in subject_lower for keyword in region_keywords):
+        return 'region' if 'region' in available_schemas else 'material'
+    
+    # Check for thesaurus/terminology keywords
+    thesaurus_keywords = ['ablation', 'fluence', 'terminology', 'definition', 'term']
+    if any(keyword in subject_lower for keyword in thesaurus_keywords):
+        return 'thesaurus' if 'thesaurus' in available_schemas else 'material'
+    
+    # Default to material for most cases
+    return 'material'
+
+def get_article_type_from_schema(schema_path: str) -> str:
+    """Extract article type from schema file.
+    
+    Args:
+        schema_path: Path to schema JSON file
+        
+    Returns:
+        Article type from schema, or 'material' as fallback
+    """
+    import json
+    import os
+    
+    if not os.path.exists(schema_path):
+        return 'material'
+    
+    try:
+        with open(schema_path, 'r') as f:
+            schema = json.load(f)
+        
+        # Look for article type in various possible locations
+        for key, value in schema.items():
+            if isinstance(value, dict) and 'name' in value:
+                return value['name']
+        
+        # Fallback: derive from filename
+        filename = os.path.basename(schema_path)
+        return filename[:-5]  # Remove .json extension
+        
+    except Exception as e:
+        print(f"Warning: Could not parse schema {schema_path}: {e}")
+        return 'material'
 
 def get_subjects_from_directory(directory_path: str) -> list:
     """Get subject list from markdown files in a directory.
@@ -186,10 +294,18 @@ def get_subjects_with_categories_from_directory(directory_path: str) -> list:
                                 if line.startswith('- '):
                                     subject_name = line[2:].strip()
                                     if subject_name:
+                                        # Get article type from frontmatter or detect automatically
+                                        category = frontmatter.get("category", filename[:-3])
+                                        article_type = frontmatter.get("article_type")
+                                        
+                                        if not article_type:
+                                            # Auto-detect article type from subject and category
+                                            article_type = detect_article_type_from_subject(subject_name, category)
+                                        
                                         subjects_with_categories.append({
                                             "subject": subject_name,
-                                            "category": frontmatter.get("category", filename[:-3]),  # Fallback to filename
-                                            "article_type": frontmatter.get("article_type", "material")
+                                            "category": category,
+                                            "article_type": article_type
                                         })
                         else:
                             # No frontmatter, fallback to old method
@@ -200,10 +316,13 @@ def get_subjects_with_categories_from_directory(directory_path: str) -> list:
                                 if line.startswith('- '):
                                     subject_name = line[2:].strip()
                                     if subject_name:
+                                        # Auto-detect article type
+                                        article_type = detect_article_type_from_subject(subject_name, category)
+                                        
                                         subjects_with_categories.append({
                                             "subject": subject_name,
                                             "category": category,
-                                            "article_type": "material"
+                                            "article_type": article_type
                                         })
                     
                 except Exception as e:
@@ -244,12 +363,23 @@ def get_component_output_path(component_name: str, subject: str, category: str =
         component_name: Name of the component
         subject: Subject name
         category: Category of the subject (optional)
-        article_type: Article type (optional)
+        article_type: Article type (optional, will be auto-detected from schema if not provided)
         
     Returns:
         Output file path
     """
     import os
+    
+    # Auto-detect article type from schema if not explicitly provided
+    if article_type == "material":  # Only auto-detect if using default
+        schema_path = f"schemas/{article_type}.json"
+        if os.path.exists(schema_path):
+            detected_type = get_article_type_from_schema(schema_path)
+            if detected_type != article_type:
+                article_type = detected_type
+        else:
+            # Try to detect from subject name
+            article_type = detect_article_type_from_subject(subject, category)
     
     base_dir = BATCH_CONFIG["output"]["base_dir"]
     hierarchy = BATCH_CONFIG["output"].get("hierarchy", "flat")
@@ -274,9 +404,32 @@ def get_component_output_path(component_name: str, subject: str, category: str =
     # Create directory if it doesn't exist
     os.makedirs(component_dir, exist_ok=True)
     
-    # Create safe filename
+    # Get filename pattern for this component and article type
+    filename_patterns = BATCH_CONFIG.get("filename_patterns", {})
+    
+    # Check for article-type specific pattern first
+    article_patterns = filename_patterns.get("article_type_patterns", {})
+    if article_type in article_patterns:
+        pattern = article_patterns[article_type]
+    else:
+        # Fall back to component-specific pattern, then default
+        pattern_key = f"{component_name}_{article_type}"
+        pattern = filename_patterns.get(pattern_key, filename_patterns.get(component_name, "{subject}.md"))
+    
+    # Create safe versions of variables for filename
     safe_subject = subject.lower().replace(" ", "-").replace("_", "-")
-    return os.path.join(component_dir, f"{safe_subject}.md")
+    safe_category = (category or "uncategorized").lower().replace(" ", "-").replace("_", "-")
+    safe_article_type = article_type.lower().replace(" ", "-").replace("_", "-")
+    
+    # Format filename using pattern
+    filename = pattern.format(
+        subject=safe_subject,
+        category=safe_category,
+        article_type=safe_article_type,
+        component=component_name
+    )
+    
+    return os.path.join(component_dir, filename)
 
 def save_component_output(component_name: str, subject: str, content: str, category: str = None, article_type: str = "material") -> str:
     """Save component content to modular output file.
