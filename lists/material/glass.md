@@ -1,4 +1,0 @@
-- Borosilicate Glass
-- Fused Silica
-- Soda-Lime Glass
-- Tempered Glass

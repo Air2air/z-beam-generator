@@ -1,6 +1,0 @@
-- Brick
-- Cement
-- Concrete
-- Mortar
-- Stucco
-- Terracotta

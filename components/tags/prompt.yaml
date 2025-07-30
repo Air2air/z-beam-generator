@@ -2,50 +2,47 @@ name: "Tags Generator"
 description: "Generates concise frontmatter tags for laser cleaning articles, optimized for on-site navigation."
 version: "2.1.0"
 template: |
+  🚨 CRITICAL OUTPUT FORMAT REQUIREMENTS 🚨
+  - Output ONLY a comma-separated list of tags
+  - NO explanations, NO YAML format, NO extra text
+  - Example output: "Laser Cleaning, Metal Processing, Surface Treatment, Oxide Removal"
+  
   Generate CONCISE frontmatter tags for the {article_type} "{subject}" in laser cleaning contexts, optimized for on-site navigation.
 
   🚨 CRITICAL REQUIREMENTS:
-  - Generate ONLY frontmatter.tags (5–8 short, hyphenated terms, e.g., laser-cleaning).
-  - MAXIMUM 2 WORDS per tag (e.g., "metal-cleaning" not "precision-metal-cleaning").
-  - Do NOT generate content section tags or tables.
-  - Ensure tags are DISTINCT from keywords (10–12 technical terms for SEO/search).
-  - Tags must be user-friendly, hyphenated, and navigation-focused (minimal overlap with keywords).
-  - Limit to 5–8 tags to avoid bloat.
+  - Generate ONLY 5–8 short terms (maximum 2 words each)
+  - MAXIMUM 2 WORDS per tag (e.g., "Metal Processing" not "Precision Metal Processing")
+  - Tags must be DISTINCT from keywords (avoid technical SEO terms)
+  - Tags must be user-friendly and navigation-focused
+  - Use title case format (e.g., "Laser Cleaning", "Metal Processing")
 
   🚨 INTELLIGENT SHORTENING RULES:
-  - Use CORE CONCEPTS: "precision-metal-cleaning" → "metal-cleaning" (keep the action + subject)
-  - DROP MODIFIERS: "industrial-laser-cleaning" → "laser-cleaning" (remove adjectives like "industrial")
-  - COMBINE RELATED: "surface-preparation-treatment" → "surface-treatment" (merge similar concepts)
-  - REMOVE REDUNDANCY: "cleaning" can be dropped when context is clear (e.g., "electropolishing-alternative" not "electropolishing-alternative-cleaning")
+  - Use CORE CONCEPTS: "precision metal cleaning" → "Metal Cleaning" (keep the action + subject)
+  - DROP MODIFIERS: "industrial laser cleaning" → "Laser Cleaning" (remove adjectives like "industrial")
+  - COMBINE RELATED: "surface preparation treatment" → "Surface Treatment" (merge similar concepts)
+  - REMOVE REDUNDANCY: "cleaning" can be dropped when context is clear
   - PRIORITIZE ACTION WORDS: Keep verbs like "cleaning", "removal", "treatment" over descriptive adjectives
-  - SIMPLIFY COMPOUNDS: "non-destructive-cleaning" → "non-destructive" (context implies cleaning)
+  - SIMPLIFY COMPOUNDS: "non-destructive cleaning" → "Non-destructive" (context implies cleaning)
 
   🚨 CONSTRAINTS:
-  - For region articles, include city/county-specific tags (e.g., solano-county, fairfield-cleaning).
-  - Align with frontmatter keywords but avoid direct duplication (e.g., tag: laser-cleaning vs. keyword: industrial laser cleaning).
-  - Use lowercase, hyphenated format (e.g., rust-removal, not rust removal).
-  - NATURAL SHORTENING: "electropolishing-alternative" → "electropolishing", "medical-device-sterilization" → "medical-device"
+  - For region articles, include city/county-specific tags (e.g., "Solano County", "Fairfield Cleaning")
+  - Align with frontmatter keywords but avoid direct duplication
+  - Use title case format (e.g., "Rust Removal", not "rust removal")
+  - NATURAL SHORTENING: "electropolishing alternative" → "Electropolishing", "medical device sterilization" → "Medical Device"
 
   🚨 EXAMPLES OF INTELLIGENT SHORTENING:
-  - "aerospace-surface-treatment" → "aerospace-treatment"
-  - "non-destructive-cleaning" → "non-destructive" 
-  - "selective-contamination-removal" → "selective-removal"
-  - "microstructure-preservation" → "microstructure"
-  - "electropolishing-alternative" → "electropolishing"
-  - "aerospace-grade-cleaning" → "aerospace-grade"
-  - "medical-device-sterilization" → "medical-device"
-  - "thermal-stress-minimization" → "thermal-stress"
+  - "aerospace surface treatment" → "Aerospace Treatment"
+  - "non-destructive cleaning" → "Non-destructive" 
+  - "selective contamination removal" → "Selective Removal"
+  - "microstructure preservation" → "Microstructure"
+  - "electropolishing alternative" → "Electropolishing"
+  - "aerospace grade cleaning" → "Aerospace Grade"
+  - "medical device sterilization" → "Medical Device"
+  - "thermal stress minimization" → "Thermal Stress"
 
-  Generate frontmatter tags for: {article_type} = {subject}
+  Generate comma-separated tags for: {article_type} = {subject}
 
-  Example:
-  tags:
-    - {subject-with-dashes}-cleaning
-    - laser-treatment
-    - oxide-removal
-    - surface-treatment
-    - non-destructive
-    - [county-specific-tag]
+  Output only the comma-separated list, no other text:
 
 parameters:
   max_tokens: 500

@@ -53,6 +53,13 @@
       }
     },
     "profile": {
+      "category": {
+        "type": "string",
+        "required": true,
+        "description": "Material category (metal, ceramic, semiconductor, plastic, composite, glass, masonry, stone, wood)",
+        "enum": ["metal", "ceramic", "semiconductor", "plastic", "composite", "glass", "masonry", "stone", "wood"],
+        "example": "semiconductor"
+      },
       "properties": {
         "type": "object",
         "required": true,
@@ -110,8 +117,7 @@
               "description": "Type of component (element for metals, structural for woods, etc.)"
             }
           }
-        },
-        "description": "Chemical composition by element"
+        }
       },
       "compatibility": {
         "type": "array",
@@ -176,6 +182,7 @@
           "website",
           "author",
           "keywords",
+          "category",
           "properties",
           "composition",
           "compatibility",

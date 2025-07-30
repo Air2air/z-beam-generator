@@ -1,3 +1,9 @@
+---
+category: "wood"
+description: "Wood materials for laser cleaning applications"
+article_type: "material"
+---
+
 - Ash
 - Beech
 - Birch

@@ -243,10 +243,10 @@ class TagsGenerator(BaseComponent):
         return additional_tags
 
     def _format_tags(self, tags: List[str]) -> str:
-        """Format tags as clean data (no HTML markup) with maximum 2 words per tag.
+        """Format tags as clean text with max 2 words each.
         
         Args:
-            tags: List of tags
+            tags: List of tag strings
             
         Returns:
             str: Formatted tags as clean text with max 2 words each
@@ -263,13 +263,17 @@ class TagsGenerator(BaseComponent):
                 # Remove quotes and clean the tag
                 clean_tag = tag.strip('"').strip("'").strip()
                 
-                # Split into words and intelligently shorten to max 2 words
-                words = clean_tag.split()
+                # Convert kebab-case back to words (if applicable)
+                if '-' in clean_tag:
+                    words = clean_tag.split('-')
+                else:
+                    words = clean_tag.split()
+                
+                # Apply intelligent shortening to max 2 words
                 if len(words) > 2:
-                    # Apply intelligent shortening (no abbreviations, natural shortening)
                     short_tag = self._intelligent_shorten(words)
                 else:
-                    short_tag = clean_tag
+                    short_tag = " ".join(words)
                 
                 # Apply consistent title case formatting
                 formatted_tag = self._apply_title_case(short_tag)

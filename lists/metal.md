@@ -1,3 +1,9 @@
+---
+category: "metal"
+description: "Metal materials for laser cleaning applications"
+article_type: "material"
+---
+
 - Aluminum
 - Beryllium
 - Brass
