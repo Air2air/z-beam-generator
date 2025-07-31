@@ -53,12 +53,16 @@ class TagsGenerator(BaseComponent):
         component_config = self.get_component_config()
         
         # Add tags-specific configuration
+        # Validate required configuration
+        required_config = ["max_tags", "min_tags", "tag_categories"]
+        for key in required_config:
+            if key not in component_config:
+                raise ValueError(f"Required config '{key}' missing for tags component")
+        
         data.update({
-            "max_tags": component_config.get("max_tags", 10),
-            "min_tags": component_config.get("min_tags", 5),
-            "tag_categories": component_config.get("tag_categories", [
-                "technology", "application", "material", "process", "industry"
-            ])
+            "max_tags": component_config["max_tags"],
+            "min_tags": component_config["min_tags"],
+            "tag_categories": component_config["tag_categories"]
         })
         
         # Get frontmatter data and extract keywords

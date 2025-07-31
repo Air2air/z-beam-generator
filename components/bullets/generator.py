@@ -1,101 +1,76 @@
 """
 Bullets generator for Z-Beam Generator.
 
-MODULE DIRECTIVES FOR AI ASSISTANTS:
-1. FRONTMATTER-DRIVEN: All content must be extracted from frontmatter
-2. NO HARDCODED SECTIONS: Section structure must be derived from frontmatter
-3. DYNAMIC FORMATTING: Format content based on article_type from frontmatter
-4. ERROR HANDLING: Raise exceptions when required frontmatter fields are missing
-5. SCHEMA AWARENESS: Be aware of the schema structure for different article types
+Strict fail-fast implementation with no fallbacks or defaults.
 """
 
 import logging
-import yaml
 from typing import Dict, Any
 from components.base.component import BaseComponent
 
 logger = logging.getLogger(__name__)
 
 class BulletsGenerator(BaseComponent):
-    """Generator for bullet point content."""
+    """Generator for bullet point content with strict validation."""
     
     def generate(self) -> str:
-        """Generate bullet points content.
+        """Generate bullet points content with strict validation.
         
         Returns:
             str: The generated bullet points
+            
+        Raises:
+            ValueError: If generation fails
         """
-        try:
-            # 1. Prepare data for prompt
-            data = self._prepare_data()
-            
-            # 2. Format prompt
-            prompt = self._format_prompt(data)
-            
-            # 3. Call API
-            content = self._call_api(prompt)
-            
-            # 4. Post-process content
-            return self._post_process(content)
-        except Exception as e:
-            logger.error(f"Error generating bullets: {str(e)}")
-            return self._create_error_markdown(str(e))
+        # Strict validation - no fallbacks
+        data = self._prepare_data()
+        prompt = self._format_prompt(data)
+        content = self._call_api(prompt)
+        return self._post_process(content)
     
     def _prepare_data(self) -> Dict[str, Any]:
-        """Prepare data for bullet points generation.
+        """Prepare data for bullet points generation with strict validation.
         
         Returns:
-            Dict[str, Any]: Data for prompt formatting
+            Dict[str, Any]: Validated data for generation
+            
+        Raises:
+            ValueError: If required data is missing
         """
         data = super()._prepare_data()
         
-        # Get component-specific configuration
+        # Get component configuration
         component_config = self.get_component_config()
         
-        # Add bullets-specific configuration
-        data.update({
-            "bullet_count": component_config.get("bullet_count", 5),
-            "bullet_style": component_config.get("bullet_style", "concise")
-        })
+        # Validate required configuration
+        if "count" not in component_config:
+            raise ValueError("Required config 'count' missing for bullets component")
         
-        # Get frontmatter data and include ALL available structured data
-        frontmatter = self.get_frontmatter_data()
-        if frontmatter:
-            # Include all frontmatter data dynamically
-            for key, value in frontmatter.items():
-                if value:  # Only include non-empty values
-                    data[key] = value
-            
-            # Store list of available keys for template iteration
-            data["available_keys"] = [k for k, v in frontmatter.items() if v]
-            
-            # Also provide the complete frontmatter as formatted YAML
-            data["all_frontmatter"] = yaml.dump(frontmatter, default_flow_style=False, sort_keys=False)
-            
-            logger.info(f"Using frontmatter data with {len(frontmatter)} fields for bullets generation")
-        else:
-            data["all_frontmatter"] = "No frontmatter data available"
-            logger.warning("No frontmatter data available for bullets generation")
+        data["count"] = component_config["count"]
         
         return data
     
     def _post_process(self, content: str) -> str:
-        """Post-process the bullets content.
+        """Post-process the generated bullet points.
         
         Args:
-            content: The API response content
+            content: Raw API response
             
         Returns:
-            str: The processed bullets
+            str: Processed bullet points
+            
+        Raises:
+            ValueError: If content is invalid
         """
-        # Apply standard processing
-        processed = super()._post_process(content)
+        if not content or not content.strip():
+            raise ValueError("API returned empty or invalid bullet points")
         
-        # Ensure content is in bullet format
-        if not any(line.strip().startswith(('*', '-', '•')) for line in processed.split('\n')):
-            # Convert to bullet points if not already
-            lines = [line.strip() for line in processed.split('\n') if line.strip()]
-            if lines:
-                processed = '\n'.join([f"• {line}" for line in lines])
+        # Validate bullet point format
+        lines = content.strip().split('\n')
+        bullet_lines = [line for line in lines if line.strip().startswith('-') or line.strip().startswith('•')]
         
-        return processed
+        expected_count = self.get_component_config("count")
+        if len(bullet_lines) < expected_count:
+            raise ValueError(f"Generated {len(bullet_lines)} bullet points, expected {expected_count}")
+        
+        return content.strip()

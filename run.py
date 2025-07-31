@@ -163,7 +163,7 @@ BATCH_CONFIG = {
 # =============================================================================
 
 def detect_article_type_from_subject(subject: str, category: str = None) -> str:
-    """Detect article type from subject name and available schemas.
+    """Detect article type from subject name with strict validation.
     
     Args:
         subject: Subject name to analyze
@@ -171,71 +171,91 @@ def detect_article_type_from_subject(subject: str, category: str = None) -> str:
         
     Returns:
         Detected article type (material, application, region, thesaurus)
+        
+    Raises:
+        ValueError: If subject type cannot be determined
     """
     import os
     
     # Check available schemas to determine article type
     schemas_dir = "schemas"
+    if not os.path.exists(schemas_dir):
+        raise ValueError(f"Schemas directory '{schemas_dir}' not found")
+    
     available_schemas = []
+    for filename in os.listdir(schemas_dir):
+        if filename.endswith('.json') and filename not in ['author.json', 'base.json']:
+            schema_name = filename[:-5]  # Remove .json
+            available_schemas.append(schema_name)
     
-    if os.path.exists(schemas_dir):
-        for filename in os.listdir(schemas_dir):
-            if filename.endswith('.json') and filename != 'author.json' and filename != 'base.json':
-                schema_name = filename[:-5]  # Remove .json
-                available_schemas.append(schema_name)
+    if not available_schemas:
+        raise ValueError("No valid schemas found in schemas directory")
     
-    # Simple heuristics for article type detection
+    # Strict detection based on keywords
     subject_lower = subject.lower()
     
     # Check for application keywords
     application_keywords = ['cleaning', 'restoration', 'preparation', 'processing', 'treatment', 'application']
     if any(keyword in subject_lower for keyword in application_keywords):
-        return 'application' if 'application' in available_schemas else 'material'
+        if 'application' not in available_schemas:
+            raise ValueError("Subject appears to be application type but no application schema found")
+        return 'application'
     
     # Check for region keywords  
     region_keywords = ['california', 'europe', 'asia', 'america', 'county', 'state', 'country', 'region']
     if any(keyword in subject_lower for keyword in region_keywords):
-        return 'region' if 'region' in available_schemas else 'material'
+        if 'region' not in available_schemas:
+            raise ValueError("Subject appears to be region type but no region schema found")
+        return 'region'
     
     # Check for thesaurus/terminology keywords
     thesaurus_keywords = ['ablation', 'fluence', 'terminology', 'definition', 'term']
     if any(keyword in subject_lower for keyword in thesaurus_keywords):
-        return 'thesaurus' if 'thesaurus' in available_schemas else 'material'
+        if 'thesaurus' not in available_schemas:
+            raise ValueError("Subject appears to be thesaurus type but no thesaurus schema found")
+        return 'thesaurus'
     
-    # Default to material for most cases
+    # Default to material only if material schema exists
+    if 'material' not in available_schemas:
+        raise ValueError("Cannot determine article type and no material schema available")
     return 'material'
 
 def get_article_type_from_schema(schema_path: str) -> str:
-    """Extract article type from schema file.
+    """Extract article type from schema file with strict validation.
     
     Args:
         schema_path: Path to schema JSON file
         
     Returns:
-        Article type from schema, or 'material' as fallback
+        Article type from schema
+        
+    Raises:
+        FileNotFoundError: If schema file doesn't exist
+        ValueError: If schema is invalid or article type cannot be determined
     """
     import json
     import os
     
     if not os.path.exists(schema_path):
-        return 'material'
+        raise FileNotFoundError(f"Schema file not found: {schema_path}")
     
     try:
         with open(schema_path, 'r') as f:
             schema = json.load(f)
-        
-        # Look for article type in various possible locations
-        for key, value in schema.items():
-            if isinstance(value, dict) and 'name' in value:
-                return value['name']
-        
-        # Fallback: derive from filename
-        filename = os.path.basename(schema_path)
-        return filename[:-5]  # Remove .json extension
-        
-    except Exception as e:
-        print(f"Warning: Could not parse schema {schema_path}: {e}")
-        return 'material'
+    except json.JSONDecodeError as e:
+        raise ValueError(f"Invalid JSON in schema file {schema_path}: {e}")
+    
+    # Look for article type in schema structure
+    for key, value in schema.items():
+        if isinstance(value, dict) and 'name' in value:
+            return value['name']
+    
+    # Extract from filename as last resort
+    filename = os.path.basename(schema_path)
+    if not filename.endswith('.json'):
+        raise ValueError(f"Schema file must have .json extension: {schema_path}")
+    
+    return filename[:-5]  # Remove .json extension
 
 def get_subjects_from_directory(directory_path: str) -> list:
     """Get subject list from markdown files in a directory.
@@ -258,76 +278,78 @@ def get_subjects_from_directory(directory_path: str) -> list:
     return sorted(subjects)
 
 def get_subjects_with_categories_from_directory(directory_path: str) -> list:
-    """Get subject list with category information from markdown files in a directory.
+    """Get subject list with category information from markdown files.
     
     Args:
         directory_path: Path to directory containing subject files
         
     Returns:
-        List of dictionaries with subject info: [{"subject": "aluminum", "category": "metal", "article_type": "material"}, ...]
+        List of dictionaries with subject info
+        
+    Raises:
+        FileNotFoundError: If directory doesn't exist
+        ValueError: If files cannot be parsed or are missing required data
     """
     import os
     import yaml
     
+    if not os.path.exists(directory_path):
+        raise FileNotFoundError(f"Directory not found: {directory_path}")
+    
     subjects_with_categories = []
-    if os.path.exists(directory_path):
-        for filename in os.listdir(directory_path):
-            if filename.endswith('.md'):
-                file_path = os.path.join(directory_path, filename)
-                
-                # Read file and extract frontmatter
-                try:
-                    with open(file_path, 'r', encoding='utf-8') as f:
-                        content = f.read()
-                    
-                    # Check if file has frontmatter
-                    if content.startswith('---'):
-                        parts = content.split('---', 2)
-                        if len(parts) >= 3:
-                            frontmatter_yaml = parts[1].strip()
-                            frontmatter = yaml.safe_load(frontmatter_yaml)
-                            
-                            # Extract subjects from bullet list
-                            content_body = parts[2].strip()
-                            for line in content_body.split('\n'):
-                                line = line.strip()
-                                if line.startswith('- '):
-                                    subject_name = line[2:].strip()
-                                    if subject_name:
-                                        # Get article type from frontmatter or detect automatically
-                                        category = frontmatter.get("category", filename[:-3])
-                                        article_type = frontmatter.get("article_type")
-                                        
-                                        if not article_type:
-                                            # Auto-detect article type from subject and category
-                                            article_type = detect_article_type_from_subject(subject_name, category)
-                                        
-                                        subjects_with_categories.append({
-                                            "subject": subject_name,
-                                            "category": category,
-                                            "article_type": article_type
-                                        })
-                        else:
-                            # No frontmatter, fallback to old method
-                            category = filename[:-3]  # Remove .md extension
-                            # Parse subjects from bullet list
-                            for line in content.split('\n'):
-                                line = line.strip()
-                                if line.startswith('- '):
-                                    subject_name = line[2:].strip()
-                                    if subject_name:
-                                        # Auto-detect article type
-                                        article_type = detect_article_type_from_subject(subject_name, category)
-                                        
-                                        subjects_with_categories.append({
-                                            "subject": subject_name,
-                                            "category": category,
-                                            "article_type": article_type
-                                        })
-                    
-                except Exception as e:
-                    print(f"Warning: Could not parse {filename}: {e}")
-                    continue
+    
+    for filename in os.listdir(directory_path):
+        if not filename.endswith('.md'):
+            continue
+        
+        file_path = os.path.join(directory_path, filename)
+        
+        try:
+            with open(file_path, 'r', encoding='utf-8') as f:
+                content = f.read()
+        except Exception as e:
+            raise ValueError(f"Could not read file {filename}: {e}")
+        
+        # Require frontmatter - no fallbacks
+        if not content.startswith('---'):
+            raise ValueError(f"File {filename} must have frontmatter")
+        
+        parts = content.split('---', 2)
+        if len(parts) < 3:
+            raise ValueError(f"File {filename} has malformed frontmatter")
+        
+        frontmatter_yaml = parts[1].strip()
+        try:
+            frontmatter = yaml.safe_load(frontmatter_yaml)
+        except yaml.YAMLError as e:
+            raise ValueError(f"Invalid YAML in {filename}: {e}")
+        
+        # Require category and article_type in frontmatter
+        if "category" not in frontmatter:
+            raise ValueError(f"File {filename} missing required 'category' in frontmatter")
+        if "article_type" not in frontmatter:
+            raise ValueError(f"File {filename} missing required 'article_type' in frontmatter")
+        
+        category = frontmatter["category"]
+        article_type = frontmatter["article_type"]
+        
+        # Extract subjects from bullet list
+        content_body = parts[2].strip()
+        for line in content_body.split('\n'):
+            line = line.strip()
+            if line.startswith('- '):
+                subject_name = line[2:].strip()
+                if subject_name:
+                    subjects_with_categories.append({
+                        "subject": subject_name,
+                        "category": category,
+                        "article_type": article_type
+                    })
+    
+    if not subjects_with_categories:
+        raise ValueError(f"No valid subjects found in {directory_path}")
+    
+    return sorted(subjects_with_categories, key=lambda x: (x["category"], x["subject"]))
     
     return sorted(subjects_with_categories, key=lambda x: (x["category"], x["subject"]))
 
@@ -356,50 +378,41 @@ def create_article_context(subject: str, article_type: str, author_id: int, cate
 # 🏗️ MODULAR OUTPUT FUNCTIONS
 # =============================================================================
 
-def get_component_output_path(component_name: str, subject: str, category: str = None, article_type: str = "material") -> str:
-    """Get output path for a component file.
+def get_component_output_path(component_name: str, subject: str, category: str, article_type: str) -> str:
+    """Get output path for a component file with strict validation.
     
     Args:
         component_name: Name of the component
         subject: Subject name
-        category: Category of the subject (optional)
-        article_type: Article type (optional, will be auto-detected from schema if not provided)
+        category: Category of the subject
+        article_type: Article type
         
     Returns:
         Output file path
+        
+    Raises:
+        ValueError: If required parameters are missing or invalid
     """
     import os
     
-    # Auto-detect article type from schema if not explicitly provided
-    if article_type == "material":  # Only auto-detect if using default
-        schema_path = f"schemas/{article_type}.json"
-        if os.path.exists(schema_path):
-            detected_type = get_article_type_from_schema(schema_path)
-            if detected_type != article_type:
-                article_type = detected_type
-        else:
-            # Try to detect from subject name
-            article_type = detect_article_type_from_subject(subject, category)
+    # Validate required parameters
+    if not all([component_name, subject, category, article_type]):
+        raise ValueError("All parameters (component_name, subject, category, article_type) are required")
     
     base_dir = BATCH_CONFIG["output"]["base_dir"]
-    hierarchy = BATCH_CONFIG["output"].get("hierarchy", "flat")
+    hierarchy = BATCH_CONFIG["output"]["hierarchy"]
     
     # Build path based on hierarchy setting
     if hierarchy == "flat":
-        # output/tags/silicon.md
         component_dir = os.path.join(base_dir, component_name)
     elif hierarchy == "by_article_type":
-        # output/material/tags/silicon.md
         component_dir = os.path.join(base_dir, article_type, component_name)
     elif hierarchy == "by_category":
-        # output/tags/semiconductor/silicon.md
-        component_dir = os.path.join(base_dir, component_name, category or "uncategorized")
+        component_dir = os.path.join(base_dir, component_name, category)
     elif hierarchy == "nested":
-        # output/material/semiconductor/tags/silicon.md
-        component_dir = os.path.join(base_dir, article_type, category or "uncategorized", component_name)
+        component_dir = os.path.join(base_dir, article_type, category, component_name)
     else:
-        # Default to flat
-        component_dir = os.path.join(base_dir, component_name)
+        raise ValueError(f"Invalid hierarchy setting: {hierarchy}")
     
     # Create directory if it doesn't exist
     os.makedirs(component_dir, exist_ok=True)
@@ -412,48 +425,63 @@ def get_component_output_path(component_name: str, subject: str, category: str =
     if article_type in article_patterns:
         pattern = article_patterns[article_type]
     else:
-        # Fall back to component-specific pattern, then default
-        pattern_key = f"{component_name}_{article_type}"
-        pattern = filename_patterns.get(pattern_key, filename_patterns.get(component_name, "{subject}.md"))
+        # Use component-specific pattern
+        if component_name not in filename_patterns:
+            raise ValueError(f"No filename pattern found for component '{component_name}'")
+        pattern = filename_patterns[component_name]
     
     # Create safe versions of variables for filename
     safe_subject = subject.lower().replace(" ", "-").replace("_", "-")
-    safe_category = (category or "uncategorized").lower().replace(" ", "-").replace("_", "-")
+    safe_category = category.lower().replace(" ", "-").replace("_", "-")
     safe_article_type = article_type.lower().replace(" ", "-").replace("_", "-")
     
     # Format filename using pattern
-    filename = pattern.format(
-        subject=safe_subject,
-        category=safe_category,
-        article_type=safe_article_type,
-        component=component_name
-    )
+    try:
+        filename = pattern.format(
+            subject=safe_subject,
+            category=safe_category,
+            article_type=safe_article_type,
+            component=component_name
+        )
+    except KeyError as e:
+        raise ValueError(f"Filename pattern formatting failed, missing key: {e}")
     
     return os.path.join(component_dir, filename)
 
-def save_component_output(component_name: str, subject: str, content: str, category: str = None, article_type: str = "material") -> str:
-    """Save component content to modular output file.
+def save_component_output(component_name: str, subject: str, content: str, category: str, article_type: str) -> str:
+    """Save component content to modular output file with strict validation.
     
     Args:
         component_name: Name of the component
         subject: Subject name  
         content: Generated content
-        category: Category of the subject (optional)
-        article_type: Article type (optional)
+        category: Category of the subject
+        article_type: Article type
         
     Returns:
         Path to saved file
+        
+    Raises:
+        ValueError: If parameters are invalid or content cannot be saved
     """
-    # Add category metadata to content if enabled
-    if BATCH_CONFIG["output"].get("include_category_metadata", False) and category:
-        # Add metadata comment at the top
-        metadata_comment = f"<!-- Category: {category} | Article Type: {article_type} | Subject: {subject} -->\n"
-        content = metadata_comment + content
+    # Validate required parameters
+    if not all([component_name, subject, content, category, article_type]):
+        raise ValueError("All parameters are required and cannot be empty")
     
+    # Get output path
     output_path = get_component_output_path(component_name, subject, category, article_type)
     
-    with open(output_path, 'w', encoding='utf-8') as f:
-        f.write(content)
+    # Add category metadata to content if enabled
+    if BATCH_CONFIG["output"].get("include_category_metadata", False):
+        metadata_comment = f"<!-- Category: {category}, Article Type: {article_type}, Subject: {subject} -->\n"
+        content = metadata_comment + content
+    
+    # Write content to file
+    try:
+        with open(output_path, 'w', encoding='utf-8') as f:
+            f.write(content)
+    except Exception as e:
+        raise ValueError(f"Failed to write content to {output_path}: {e}")
     
     return output_path
 
