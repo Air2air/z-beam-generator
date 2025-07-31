@@ -64,8 +64,10 @@ def get_provider_config(provider: str, component: str = None, article_context: D
         components = article_context["components"]  # Must exist
         if component in components:
             comp_config = components[component]
-            comp_provider = comp_config.get("provider")
-            comp_options = comp_config.get("options", {})
+            
+            # Strict validation - no fallbacks
+            comp_provider = comp_config["provider"] if "provider" in comp_config else None
+            comp_options = comp_config["options"] if "options" in comp_config else {}
             
             # If this component uses this provider, apply its options
             if comp_provider == provider_name and comp_options:

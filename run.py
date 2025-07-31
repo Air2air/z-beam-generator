@@ -418,10 +418,16 @@ def get_component_output_path(component_name: str, subject: str, category: str, 
     os.makedirs(component_dir, exist_ok=True)
     
     # Get filename pattern for this component and article type
-    filename_patterns = BATCH_CONFIG.get("filename_patterns", {})
+    if "filename_patterns" not in BATCH_CONFIG:
+        raise ValueError("filename_patterns not found in BATCH_CONFIG")
+    
+    filename_patterns = BATCH_CONFIG["filename_patterns"]
     
     # Check for article-type specific pattern first
-    article_patterns = filename_patterns.get("article_type_patterns", {})
+    if "article_type_patterns" not in filename_patterns:
+        raise ValueError("article_type_patterns not found in filename_patterns")
+    
+    article_patterns = filename_patterns["article_type_patterns"]
     if article_type in article_patterns:
         pattern = article_patterns[article_type]
     else:
@@ -472,7 +478,14 @@ def save_component_output(component_name: str, subject: str, content: str, categ
     output_path = get_component_output_path(component_name, subject, category, article_type)
     
     # Add category metadata to content if enabled
-    if BATCH_CONFIG["output"].get("include_category_metadata", False):
+    if "output" not in BATCH_CONFIG:
+        raise ValueError("output configuration not found in BATCH_CONFIG")
+    
+    output_config = BATCH_CONFIG["output"]
+    if "include_category_metadata" not in output_config:
+        raise ValueError("include_category_metadata not found in output configuration")
+    
+    if output_config["include_category_metadata"]:
         metadata_comment = f"<!-- Category: {category}, Article Type: {article_type}, Subject: {subject} -->\n"
         content = metadata_comment + content
     
@@ -746,7 +759,11 @@ def run_batch_generation():
     if BATCH_CONFIG["mode"] == "single":
         # Single subject generation
         config = BATCH_CONFIG["single_subject"]
-        subjects_to_process = [(config["subject"], config["article_type"], config.get("category"))]
+        if "category" not in config:
+            category = None
+        else:
+            category = config["category"]
+        subjects_to_process = [(config["subject"], config["article_type"], category)]
         author_id = config["author_id"]
         
         print(f"Single Mode: {config['subject']} ({config['article_type']})")
