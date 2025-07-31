@@ -50,7 +50,10 @@ class CaptionGenerator(BaseComponent):
         
         data.update({
             "results_word_count_max": component_config["results_word_count_max"],
-            "equipment_word_count_max": component_config["equipment_word_count_max"]
+            "equipment_word_count_max": component_config["equipment_word_count_max"],
+            "material": self.subject,  # Use the subject as the material name
+            "shape": component_config.get("shape", "component"),  # Use configured shape or default
+            "all_frontmatter": "No frontmatter data available yet"  # Will be populated during generation pipeline
         })
         
         return data

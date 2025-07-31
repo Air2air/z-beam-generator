@@ -46,7 +46,11 @@ class BulletsGenerator(BaseComponent):
         if "count" not in component_config:
             raise ValueError("Required config 'count' missing for bullets component")
         
-        data["count"] = component_config["count"]
+        data.update({
+            "count": component_config["count"],
+            "all_frontmatter": "No frontmatter data available yet",  # Will be populated during generation pipeline
+            "style": "technical"
+        })
         
         return data
     

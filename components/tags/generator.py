@@ -20,26 +20,19 @@ class TagsGenerator(BaseComponent):
     """Generator for article tags."""
     
     def generate(self) -> str:
-        """Generate tags for the article.
+        """Generate tags content with strict validation.
         
         Returns:
-            str: The generated tags as YAML array
+            str: The generated tags
+            
+        Raises:
+            ValueError: If generation fails
         """
-        try:
-            # 1. Prepare data for prompt
-            data = self._prepare_data()
-            
-            # 2. Format prompt
-            prompt = self._format_prompt(data)
-            
-            # 3. Call API
-            tags = self._call_api(prompt)
-            
-            # 4. Post-process tags
-            return self._post_process(tags)
-        except Exception as e:
-            logger.error(f"Error generating tags: {str(e)}")
-            return self._create_error_markdown(str(e))
+        # Strict validation - no fallbacks
+        data = self._prepare_data()
+        prompt = self._format_prompt(data)
+        content = self._call_api(prompt)
+        return self._post_process(content)
     
     def _prepare_data(self) -> Dict[str, Any]:
         """Prepare data for tags generation.
@@ -140,14 +133,15 @@ class TagsGenerator(BaseComponent):
         Returns:
             str: The processed tags
         """
-        # Apply standard processing
-        processed = super()._post_process(tags)
+        # Basic validation
+        if not tags or not tags.strip():
+            raise ValueError("API returned empty or invalid tags")
         
         # Ensure tags are in YAML array format
-        if not processed.strip().startswith('-') and not processed.strip().startswith('['):
+        if not tags.strip().startswith('-') and not tags.strip().startswith('['):
             # Convert to YAML array if not already
-            lines = [line.strip() for line in processed.split('\n') if line.strip()]
+            lines = [line.strip() for line in tags.split('\n') if line.strip()]
             if lines:
-                processed = '\n'.join([f"- {line}" for line in lines])
+                tags = '\n'.join([f"- {line}" for line in lines])
         
-        return processed
+        return tags.strip()

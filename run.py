@@ -15,6 +15,8 @@ MODULE DIRECTIVES FOR AI ASSISTANTS:
 10. BATCH PROCESSING: Support generating single components across multiple subjects
 """
 
+from typing import Dict, Any
+
 # =============================================================================
 # 🎯 BATCH GENERATION CONFIGURATION 
 # =============================================================================
@@ -86,7 +88,11 @@ BATCH_CONFIG = {
         },
         "tags": {
             "enabled": True,
-            "count": 10,
+            "max_tags": 10,
+            "min_tags": 5,
+            "tag_categories": [
+                "material", "process", "application", "property", "location"
+            ],
             "ai_provider": "deepseek",  # deepseek, openai, xai, gemini
             "options": {
                 "model": "deepseek-chat", # deepseek-chat (88), "GPT-4o" (76), "grok-3-latest" (62), "gemini-1.5-flash"
@@ -502,6 +508,43 @@ def save_component_output(component_name: str, subject: str, content: str, categ
 # 🚀 COMPONENT GENERATION FUNCTIONS
 # =============================================================================
 
+def load_author_data(author_id: int) -> Dict[str, Any]:
+    """Load author data by ID with strict validation.
+    
+    Args:
+        author_id: Author ID to load
+        
+    Returns:
+        Dict with author data
+        
+    Raises:
+        ValueError: If author not found or data invalid
+    """
+    from components.author.author_service import AuthorService
+    
+    author_service = AuthorService()
+    author_data = author_service.get_author_by_id(author_id)
+    
+    if not author_data:
+        raise ValueError(f"Author with ID {author_id} not found")
+    
+    # Map author fields to expected format
+    required_source_fields = ["name", "country"]
+    for field in required_source_fields:
+        if field not in author_data:
+            raise ValueError(f"Author data missing required field: {field}")
+    
+    # Return mapped data with expected field names
+    return {
+        "author_name": author_data["name"],
+        "author_country": author_data["country"],
+        "author_id": author_data["id"],
+        "author_slug": author_data.get("slug", ""),
+        "author_title": author_data.get("title", ""),
+        "author_bio": author_data.get("bio", ""),
+        "author_specialties": author_data.get("specialties", [])
+    }
+
 def generate_frontmatter_component(article_context: dict) -> str:
     """Generate frontmatter using the configured settings.
     
@@ -536,32 +579,22 @@ def generate_frontmatter_component(article_context: dict) -> str:
                 import json
                 schema = json.load(f)
         
-        # Initialize frontmatter generator
+        # Initialize frontmatter generator with correct parameters
         from components.frontmatter.generator import FrontmatterGenerator
         
-        # Create context for the generator
-        generator_context = article_context.copy()
+        # Load author data
+        author_data = load_author_data(article_context["author_id"])
         
-        # Generate website URL - simplified
-        subject_slug = article_context["subject"].replace(" ", "-").lower()
-        article_type = article_context["article_type"]
-        website_url = f"https://www.z-beam.com/{subject_slug}-{article_type}"
+        # Get component configuration
+        component_config = article_context["components"]["frontmatter"]
         
-        # Ensure required fields are present
-        generator_context.update({
-            "subject": article_context["subject"],
-            "article_type": article_context["article_type"],
-            "author_id": article_context["author_id"],
-            "ai_provider": component_config["ai_provider"],
-            "options": component_config["options"],
-            "website_url": website_url  # Pass the constructed URL
-        })
-        
-        # Initialize generator
+        # Initialize generator with correct BaseComponent interface
         generator = FrontmatterGenerator(
-            context=generator_context,
+            subject=article_context["subject"],
+            article_type=article_context["article_type"],
             schema=schema,
-            ai_provider=component_config["ai_provider"]
+            author_data=author_data,
+            component_config=component_config
         )
         
         print(f"Generating frontmatter for: {article_context['subject']} ({article_context['article_type']})")
@@ -617,69 +650,71 @@ def generate_component(component_name: str, article_context: dict, frontmatter_c
                 import json
                 schema = json.load(f)
         
-        # Create context for the generator
-        generator_context = article_context.copy()
+        # Load author data
+        author_data = load_author_data(article_context["author_id"])
         
-        # Ensure required fields are present
-        generator_context.update({
-            "subject": article_context["subject"],
-            "article_type": article_context["article_type"],
-            "author_id": article_context["author_id"],
-            "ai_provider": component_config["ai_provider"],
-            "options": component_config["options"]
-        })
+        # Get component configuration
+        component_config = article_context["components"][component_name]
         
-        # Add frontmatter content to context if available
-        if frontmatter_content:
-            generator_context["frontmatter_content"] = frontmatter_content
-        
-        # Import and initialize the appropriate generator
+        # Import and initialize the appropriate generator with correct interface
         if component_name == "content":
             from components.content.generator import ContentGenerator
             generator = ContentGenerator(
-                context=generator_context,
+                subject=article_context["subject"],
+                article_type=article_context["article_type"],
                 schema=schema,
-                ai_provider=component_config["ai_provider"]
+                author_data=author_data,
+                component_config=component_config
             )
         elif component_name == "bullets":
             from components.bullets.generator import BulletsGenerator
             generator = BulletsGenerator(
-                context=generator_context,
+                subject=article_context["subject"],
+                article_type=article_context["article_type"],
                 schema=schema,
-                ai_provider=component_config["ai_provider"]
+                author_data=author_data,
+                component_config=component_config
             )
         elif component_name == "table":
             from components.table.generator import TableGenerator
             generator = TableGenerator(
-                context=generator_context,
+                subject=article_context["subject"],
+                article_type=article_context["article_type"],
                 schema=schema,
-                ai_provider=component_config["ai_provider"]
+                author_data=author_data,
+                component_config=component_config
             )
         elif component_name == "tags":
             from components.tags.generator import TagsGenerator
             generator = TagsGenerator(
-                context=generator_context,
+                subject=article_context["subject"],
+                article_type=article_context["article_type"],
                 schema=schema,
-                ai_provider=component_config["ai_provider"]
+                author_data=author_data,
+                component_config=component_config
             )
         elif component_name == "jsonld":
             from components.jsonld.generator import JsonldGenerator
             generator = JsonldGenerator(
-                context=generator_context,
+                subject=article_context["subject"],
+                article_type=article_context["article_type"],
                 schema=schema,
-                ai_provider=component_config["ai_provider"]
+                author_data=author_data,
+                component_config=component_config
             )
         elif component_name == "caption":
             from components.caption.generator import CaptionGenerator
             generator = CaptionGenerator(
-                context=generator_context,
+                subject=article_context["subject"],
+                article_type=article_context["article_type"],
                 schema=schema,
-                ai_provider=component_config["ai_provider"]
+                author_data=author_data,
+                component_config=component_config
             )
         else:
             raise ValueError(f"Unknown component: {component_name}")
         
-        # Parse and set frontmatter data if available
+        # Set frontmatter data if available
         if frontmatter_content:
             try:
                 import yaml
@@ -695,7 +730,7 @@ def generate_component(component_name: str, article_context: dict, frontmatter_c
                 # Parse the YAML content
                 frontmatter_data = yaml.safe_load(yaml_content)
                 if frontmatter_data:
-                    generator.set_frontmatter(frontmatter_data)
+                    generator._frontmatter_data = frontmatter_data
             except Exception as e:
                 print(f"Warning: Failed to parse frontmatter for {component_name}: {e}")
         

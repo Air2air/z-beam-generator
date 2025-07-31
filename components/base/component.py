@@ -44,11 +44,20 @@ class BaseComponent(ABC):
         if not component_config or not isinstance(component_config, dict):
             raise ValueError("Component config must be a non-empty dictionary")
         
+        # Extract required AI configuration from component config
+        if "ai_provider" not in component_config:
+            raise ValueError("ai_provider must be specified in component config")
+        
+        if "options" not in component_config:
+            raise ValueError("options must be specified in component config")
+        
         self.subject = subject
         self.article_type = article_type
         self.schema = schema
         self.author_data = author_data
         self.component_config = component_config
+        self.ai_provider = component_config["ai_provider"]
+        self.options = component_config["options"]
     
     @abstractmethod
     def generate(self) -> str:
@@ -153,20 +162,25 @@ class BaseComponent(ABC):
         return f"components/{component_name}/prompt.yaml"
     
     def _call_api(self, prompt: str) -> str:
-        """Call API with the formatted prompt.
+        """Call the AI API with strict validation.
         
         Args:
-            prompt: Formatted prompt
+            prompt: The formatted prompt
             
         Returns:
-            str: API response
+            str: API response content
             
         Raises:
             ValueError: If API call fails
         """
-        from api.client import make_api_call
-        
         try:
-            return make_api_call(prompt, self.component_config)
+            from api.client import ApiClient
+            client = ApiClient(ai_provider=self.ai_provider, options=self.options)
+            response = client.complete(prompt)
+            
+            if not response or not response.strip():
+                raise ValueError("API returned empty response")
+                
+            return response.strip()
         except Exception as e:
             raise ValueError(f"API call failed: {e}")

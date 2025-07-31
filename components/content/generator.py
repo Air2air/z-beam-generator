@@ -50,7 +50,10 @@ class ContentGenerator(BaseComponent):
         
         data.update({
             "min_words": component_config["min_words"],
-            "max_words": component_config["max_words"]
+            "max_words": component_config["max_words"],
+            "style": "technical",
+            "audience": "professional",
+            "all_frontmatter": "No frontmatter data available yet"  # Will be populated during generation pipeline
         })
         
         return data

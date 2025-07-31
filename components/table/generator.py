@@ -46,7 +46,12 @@ class TableGenerator(BaseComponent):
         if "rows" not in component_config:
             raise ValueError("Required config 'rows' missing for table component")
         
-        data["rows"] = component_config["rows"]
+        data.update({
+            "rows": component_config["rows"],
+            "all_frontmatter": "No frontmatter data available yet",  # Will be populated during generation pipeline
+            "table_keys": ["specifications", "applications", "properties", "manufacturing"],  # Standard table data keys
+            "title": f"{self.subject} Laser Cleaning Tables"
+        })
         
         return data
     
