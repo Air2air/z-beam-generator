@@ -12,6 +12,7 @@ MODULE DIRECTIVES FOR AI ASSISTANTS:
 import logging
 import json
 import re
+import yaml
 from typing import Dict, Any, Optional
 from components.base.component import BaseComponent
 
@@ -112,21 +113,40 @@ class JsonldGenerator(BaseComponent):
         """
         data = super()._prepare_data()
         
-        # Get frontmatter data
+        # Get component-specific configuration
+        component_config = self.get_component_config()
+        
+        # Add JSON-LD specific configuration
+        data.update({
+            "schema_type": component_config.get("schema_type", "Thing"),
+            "include_context": component_config.get("include_context", True)
+        })
+        
+        # Get frontmatter data and include ALL available structured data
         frontmatter = self.get_frontmatter_data()
         if frontmatter:
-            # Include ALL frontmatter data dynamically without hardcoded empty fallbacks
-            data.update({
-                "frontmatter_data": frontmatter,  # Complete frontmatter for template
-                "title": frontmatter.get("name", frontmatter.get("title", self.subject.capitalize())),
-                "description": frontmatter.get("description", f"Information about {self.subject}"),
-                "website": frontmatter.get("website", f"https://www.z-beam.com/{self.subject.lower()}"),
-            })
-            
-            # Include only fields that actually exist in frontmatter (no empty defaults)
+            # Include all frontmatter data dynamically
             for key, value in frontmatter.items():
                 if value:  # Only include non-empty values
                     data[key] = value
+            
+            # Store list of available keys for template iteration
+            data["available_keys"] = [k for k, v in frontmatter.items() if v]
+            
+            # Also provide the complete frontmatter
+            data["frontmatter_data"] = frontmatter
+            data["title"] = frontmatter.get("name", frontmatter.get("title", self.subject.capitalize()))
+            data["description"] = frontmatter.get("description", f"Information about {self.subject}")
+            data["website"] = frontmatter.get("website", f"https://www.z-beam.com/{self.subject.lower()}")
+            
+            logger.info(f"Using frontmatter data with {len(frontmatter)} fields for JSON-LD generation")
+        else:
+            data["frontmatter_data"] = {}
+            data["available_keys"] = []
+            data["title"] = self.subject.capitalize()
+            data["description"] = f"Information about {self.subject}"
+            data["website"] = f"https://www.z-beam.com/{self.subject.lower()}"
+            logger.warning("No frontmatter data available for JSON-LD generation")
             
             # Extract author information if present
             if "author" in frontmatter:

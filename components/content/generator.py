@@ -3,15 +3,14 @@ Content generator for Z-Beam Generator.
 
 MODULE DIRECTIVES FOR AI ASSISTANTS:
 1. FRONTMATTER-DRIVEN: All content must be extracted from frontmatter
-2. NO HARDCODEED SECTIONS: Section structure must be derived from frontmatter
+2. NO HARDCODED SECTIONS: Section structure must be derived from frontmatter
 3. DYNAMIC FORMATTING: Format content based on article_type from frontmatter
 4. ERROR HANDLING: Raise exceptions when required frontmatter fields are missing
 5. SCHEMA AWARENESS: Be aware of the schema structure for different article types
 """
 
-"""Content generator component."""
-
 import logging
+import yaml
 from typing import Dict, Any
 from components.base.component import BaseComponent
 
@@ -48,6 +47,73 @@ class ContentGenerator(BaseComponent):
         Returns:
             Dict[str, Any]: Data for prompt formatting
         """
+        data = super()._prepare_data()
+        
+        # Get component-specific configuration
+        component_config = self.get_component_config()
+        
+        # Add content-specific configuration with validation
+        required_config_keys = ["min_words", "max_words"]
+        for key in required_config_keys:
+            if key not in component_config:
+                raise ValueError(f"Required configuration key '{key}' missing for content component")
+        
+        data.update({
+            "min_words": component_config["min_words"],
+            "max_words": component_config["max_words"]
+        })
+        
+        # Get frontmatter data and include ALL available structured data
+        frontmatter = self.get_frontmatter_data()
+        if frontmatter:
+            # Include all frontmatter data dynamically
+            for key, value in frontmatter.items():
+                if value:  # Only include non-empty values
+                    data[key] = value
+            
+            # Store list of available keys for template iteration
+            data["available_keys"] = [k for k, v in frontmatter.items() if v]
+            
+            # Also provide the complete frontmatter as formatted YAML
+            data["all_frontmatter"] = yaml.dump(frontmatter, default_flow_style=False, sort_keys=False)
+            
+            logger.info(f"Using frontmatter data with {len(frontmatter)} fields for content generation")
+        else:
+            data["all_frontmatter"] = "No frontmatter data available"
+            data["available_keys"] = []
+            logger.warning("No frontmatter data available for content generation")
+        
+        return data
+    
+    def _validate_frontmatter_requirements(self, frontmatter: Dict[str, Any]) -> None:
+        """Validate frontmatter meets component requirements.
+        
+        Args:
+            frontmatter: The frontmatter data to validate
+            
+        Raises:
+            ValueError: If required frontmatter fields are missing
+        """
+        # Override in subclasses for component-specific validation
+        pass
+    
+    def _post_process(self, content: str) -> str:
+        """Post-process the content.
+        
+        Args:
+            content: The API response content
+            
+        Returns:
+            str: The processed content
+        """
+        # Apply standard processing
+        processed = super()._post_process(content)
+        
+        # Ensure content has a heading
+        if not processed.lstrip().startswith("#"):
+            processed = f"# {self.subject.capitalize()}\n\n{processed}"
+        
+        return processed
         data = super()._prepare_data()
         
         # Add content constraints from config

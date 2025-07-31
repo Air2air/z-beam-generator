@@ -48,11 +48,13 @@ class CaptionGenerator(BaseComponent):
         """
         data = super()._prepare_data()
         
-        # Add caption constraints
+        # Get component-specific configuration
+        component_config = self.get_component_config()
+        
+        # Add caption-specific configuration
         data.update({
-            "results_word_count_max": self.get_component_config("results_word_count_max", 120),
-            "equipment_word_count_max": self.get_component_config("equipment_word_count_max", 60),
-            "shape": self.get_component_config("shape", "component")
+            "caption_style": component_config.get("caption_style", "descriptive"),
+            "max_length": component_config.get("max_length", 200)
         })
         
         # Get frontmatter data and include ALL available structured data
@@ -70,32 +72,10 @@ class CaptionGenerator(BaseComponent):
             import yaml
             data["all_frontmatter"] = yaml.dump(frontmatter, default_flow_style=False, sort_keys=False)
             
-            # Extract material name from frontmatter or subject
-            if "name" in frontmatter:
-                data["material"] = frontmatter["name"].lower()
-            else:
-                data["material"] = self.subject.lower()
-                
-            # Extract shape from frontmatter if available
-            if "shape" in frontmatter:
-                data["shape"] = frontmatter["shape"]
-            elif "applications" in frontmatter and frontmatter["applications"]:
-                # Try to infer shape from applications
-                first_app = frontmatter["applications"][0] if isinstance(frontmatter["applications"], list) else frontmatter["applications"]
-                if isinstance(first_app, dict) and "name" in first_app:
-                    # Use a generic shape based on application type
-                    app_name = first_app["name"].lower()
-                    if any(word in app_name for word in ["blade", "turbine"]):
-                        data["shape"] = "blade"
-                    elif any(word in app_name for word in ["panel", "sheet"]):
-                        data["shape"] = "panel"
-                    elif any(word in app_name for word in ["pipe", "tube"]):
-                        data["shape"] = "pipe"
-                    else:
-                        data["shape"] = "component"
+            logger.info(f"Using frontmatter data with {len(frontmatter)} fields for caption generation")
         else:
             data["all_frontmatter"] = "No frontmatter data available"
-            data["material"] = self.subject.lower()
+            logger.warning("No frontmatter data available for caption generation")
         
         return data
     
@@ -111,28 +91,16 @@ class CaptionGenerator(BaseComponent):
         # Apply standard processing
         processed = super()._post_process(content)
         
-        # Ensure content has a heading
-        if not processed.lstrip().startswith("#"):
-            processed = f"## Caption for {self.subject.capitalize()}\n\n{processed}"
+        # Ensure caption is concise and well-formatted
+        processed = processed.strip()
         
-        # Clean up any extra markdown formatting that's not appropriate for captions
-        lines = processed.split("\n")
-        result = []
-        in_caption = False
+        # Remove any markdown formatting for clean caption
+        import re
+        processed = re.sub(r'[#*_`]', '', processed)
         
-        for line in lines:
-            stripped = line.strip()
-            if not stripped:
-                result.append(line)
-            elif stripped.startswith("#"):
-                result.append(line)
-                in_caption = True
-            elif in_caption:
-                # Remove bullet points and extra formatting from caption text
-                if stripped.startswith("- ") or stripped.startswith("* "):
-                    stripped = stripped[2:]
-                result.append(stripped)
-            else:
-                result.append(line)
+        # Limit length if needed
+        max_length = self.get_component_config().get("max_length", 200)
+        if len(processed) > max_length:
+            processed = processed[:max_length].rsplit(' ', 1)[0] + "..."
         
-        return "\n".join(result)
+        return processed

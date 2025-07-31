@@ -10,6 +10,7 @@ MODULE DIRECTIVES FOR AI ASSISTANTS:
 """
 
 import logging
+import yaml
 from typing import Dict, Any
 from components.base.component import BaseComponent
 
@@ -48,10 +49,13 @@ class BulletsGenerator(BaseComponent):
         """
         data = super()._prepare_data()
         
-        # Add bullet point constraints
+        # Get component-specific configuration
+        component_config = self.get_component_config()
+        
+        # Add bullets-specific configuration
         data.update({
-            "count": self.get_component_config("count", 5),
-            "style": self.get_component_config("style", "technical")
+            "bullet_count": component_config.get("bullet_count", 5),
+            "bullet_style": component_config.get("bullet_style", "concise")
         })
         
         # Get frontmatter data and include ALL available structured data
@@ -66,41 +70,32 @@ class BulletsGenerator(BaseComponent):
             data["available_keys"] = [k for k, v in frontmatter.items() if v]
             
             # Also provide the complete frontmatter as formatted YAML
-            import yaml
             data["all_frontmatter"] = yaml.dump(frontmatter, default_flow_style=False, sort_keys=False)
+            
+            logger.info(f"Using frontmatter data with {len(frontmatter)} fields for bullets generation")
         else:
             data["all_frontmatter"] = "No frontmatter data available"
+            logger.warning("No frontmatter data available for bullets generation")
         
         return data
     
     def _post_process(self, content: str) -> str:
-        """Post-process the bullet points content.
+        """Post-process the bullets content.
         
         Args:
             content: The API response content
             
         Returns:
-            str: The processed bullet points
+            str: The processed bullets
         """
         # Apply standard processing
         processed = super()._post_process(content)
         
-        # Ensure content has a heading
-        if not processed.lstrip().startswith("#"):
-            processed = f"## Key Points about {self.subject.capitalize()}\n\n{processed}"
+        # Ensure content is in bullet format
+        if not any(line.strip().startswith(('*', '-', '•')) for line in processed.split('\n')):
+            # Convert to bullet points if not already
+            lines = [line.strip() for line in processed.split('\n') if line.strip()]
+            if lines:
+                processed = '\n'.join([f"• {line}" for line in lines])
         
-        # Ensure each non-heading line starts with a bullet point
-        lines = processed.split("\n")
-        result = []
-        for line in lines:
-            stripped = line.strip()
-            if not stripped:
-                result.append(line)
-            elif stripped.startswith("#"):
-                result.append(line)
-            elif stripped.startswith("-") or stripped.startswith("*"):
-                result.append(line)
-            else:
-                result.append(f"- {line}")
-        
-        return "\n".join(result)
+        return processed

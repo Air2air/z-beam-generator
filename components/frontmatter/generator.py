@@ -3,13 +3,11 @@ Frontmatter generator for Z-Beam Generator.
 
 MODULE DIRECTIVES FOR AI ASSISTANTS:
 1. FRONTMATTER-DRIVEN: All content must be extracted from frontmatter
-2. NO HARDCODEED SECTIONS: Section structure must be derived from frontmatter
+2. NO HARDCODED SECTIONS: Section structure must be derived from frontmatter
 3. DYNAMIC FORMATTING: Format content based on article_type from frontmatter
 4. ERROR HANDLING: Raise exceptions when required frontmatter fields are missing
 5. SCHEMA AWARENESS: Be aware of the schema structure for different article types
 """
-
-"""Frontmatter generator component."""
 
 import logging
 import yaml
@@ -54,14 +52,20 @@ class FrontmatterGenerator(BaseComponent):
         # Get component-specific configuration
         component_config = self.get_component_config()
         
-        # Add required template variables - no fallbacks
-        data["min_words"] = component_config["min_words"]  # Must exist
-        data["max_words"] = component_config["max_words"]  # Must exist
-        data["author_id"] = self.context["author_id"]  # Must exist
+        # Add required template variables - use consistent pattern
+        data.update({
+            "min_words": component_config["min_words"],  # Must exist
+            "max_words": component_config["max_words"],  # Must exist
+            "include_website": component_config["include_website"],  # Must exist
+        })
         
-        # Add website URL from context if provided
+        # Add context data with validation
+        if "author_id" not in self.context:
+            raise ValueError("author_id is required in context but not provided")
         if "website_url" in self.context:
             data["website_url"] = self.context["website_url"]
+        
+        data["author_id"] = self.context["author_id"]
         
         # Get author data from the author service
         from components.author.author_service import AuthorService

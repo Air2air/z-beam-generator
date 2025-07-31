@@ -48,46 +48,35 @@ class TableGenerator(BaseComponent):
         """
         data = super()._prepare_data()
         
-        # Add table constraints
+        # Get component-specific configuration
+        component_config = self.get_component_config()
+        
+        # Add table-specific configuration
         data.update({
-            "style": self.get_component_config("style", "technical"),
-            "include_units": self.get_component_config("include_units", True)
+            "table_type": component_config.get("table_type", "comparison"),
+            "max_rows": component_config.get("max_rows", 10),
+            "include_units": component_config.get("include_units", True)
         })
         
-        # Get frontmatter data and extract ALL available fields dynamically
+        # Get frontmatter data and include ALL available structured data
         frontmatter = self.get_frontmatter_data()
         if frontmatter:
-            # Define table-worthy data types (objects and lists of objects)
-            table_worthy_keys = []
-            
+            # Include all frontmatter data dynamically
             for key, value in frontmatter.items():
-                # Skip simple metadata
-                if key in ['name', 'description', 'website', 'author', 'tags', 'countries']:
-                    continue
-                    
-                # Include structured data that can be tabulated
-                if isinstance(value, dict) and value:  # Non-empty objects
-                    table_worthy_keys.append(key)
+                if value:  # Only include non-empty values
                     data[key] = value
-                elif isinstance(value, list) and value:  # Non-empty lists
-                    # Check if it's a list of objects (good for tables)
-                    if isinstance(value[0], dict):
-                        table_worthy_keys.append(key)
-                        data[key] = value
-                    # Or a list of simple values that can be converted to tables
-                    elif len(value) > 1:
-                        table_worthy_keys.append(key)
-                        data[key] = value
             
-            # Store the dynamically discovered table-worthy keys
-            data["table_keys"] = table_worthy_keys
+            # Store list of available keys for template iteration
+            data["available_keys"] = [k for k, v in frontmatter.items() if v]
             
-            # Also pass all frontmatter for template flexibility as formatted YAML
+            # Also provide the complete frontmatter as formatted YAML
             import yaml
             data["all_frontmatter"] = yaml.dump(frontmatter, default_flow_style=False, sort_keys=False)
+            
+            logger.info(f"Using frontmatter data with {len(frontmatter)} fields for table generation")
         else:
-            data["table_keys"] = []
             data["all_frontmatter"] = "No frontmatter data available"
+            logger.warning("No frontmatter data available for table generation")
         
         return data
     
@@ -103,41 +92,17 @@ class TableGenerator(BaseComponent):
         # Apply standard processing
         processed = super()._post_process(content)
         
-        # Ensure content has a heading
-        if not processed.lstrip().startswith("#"):
-            processed = f"## {self.subject.capitalize()} Specifications\n\n{processed}"
-        
-        # Ensure content has a markdown table
-        if "|" not in processed:
-            logger.warning("Generated content does not contain a markdown table")
-            processed = self._create_fallback_table() + "\n\n" + processed
+        # Ensure content is formatted as a proper markdown table
+        if '|' not in processed:
+            # Convert to table format if not already
+            lines = [line.strip() for line in processed.split('\n') if line.strip()]
+            if lines:
+                # Create a simple two-column table
+                table_lines = ["| Property | Value |", "|----------|-------|"]
+                for line in lines:
+                    if ':' in line:
+                        key, value = line.split(':', 1)
+                        table_lines.append(f"| {key.strip()} | {value.strip()} |")
+                processed = '\n'.join(table_lines)
         
         return processed
-    
-    def _create_fallback_table(self) -> str:
-        """Create a fallback table when the API doesn't generate one.
-        
-        Returns:
-            str: Markdown table
-        """
-        if self.article_type == "material":
-            return f"""
-| Property | Value | Description |
-|----------|-------|-------------|
-| Name | {self.subject.capitalize()} | Material |
-| Type | {self.article_type.capitalize()} | Classification |
-            """
-        elif self.article_type == "application":
-            return f"""
-| Feature | Description |
-|---------|-------------|
-| Application | {self.subject.capitalize()} |
-| Type | {self.article_type.capitalize()} |
-            """
-        else:
-            return f"""
-| Property | Value |
-|----------|-------|
-| Name | {self.subject.capitalize()} |
-| Type | {self.article_type.capitalize()} |
-            """
