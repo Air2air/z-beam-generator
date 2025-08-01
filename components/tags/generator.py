@@ -5,27 +5,12 @@ Strict fail-fast implementation with no fallbacks or defaults.
 """
 
 import logging
-from components.base.component import BaseComponent
+from components.base.enhanced_component import EnhancedBaseComponent
 
 logger = logging.getLogger(__name__)
 
-class TagsGenerator(BaseComponent):
+class TagsGenerator(EnhancedBaseComponent):
     """Generator for article tags with strict validation."""
-    
-    def generate(self) -> str:
-        """Generate tags content with strict validation.
-        
-        Returns:
-            str: The generated tags
-            
-        Raises:
-            ValueError: If generation fails
-        """
-        # Use base class schema-driven data preparation
-        data = self.get_template_data()
-        prompt = self._format_prompt(data)
-        content = self._call_api(prompt)
-        return self._post_process(content)
     
     def _post_process(self, content: str) -> str:
         """Post-process the generated tags.
@@ -39,8 +24,8 @@ class TagsGenerator(BaseComponent):
         Raises:
             ValueError: If content is invalid
         """
-        if not content or not content.strip():
-            raise ValueError("API returned empty or invalid tags")
+        # Validate and clean input
+        content = self._validate_non_empty(content, "API returned empty or invalid tags")
         
         # Validate tag format and count
         lines = content.strip().split('\n')
@@ -63,19 +48,13 @@ class TagsGenerator(BaseComponent):
         min_tags = self.get_component_config("min_tags")
         max_tags = self.get_component_config("max_tags")
         
-        if len(processed_tags) < min_tags:
-            raise ValueError(f"Generated {len(processed_tags)} tags, minimum required: {min_tags}")
+        # Validate line count using the base method
+        processed_tags = self._validate_line_count(
+            processed_tags, 
+            min_tags, 
+            max_tags,
+            "Generated"
+        )
         
-        if len(processed_tags) > max_tags:
-            # Truncate to max_tags
-            processed_tags = processed_tags[:max_tags]
-        
-        # Format tags as metatags for HTML head
-        formatted_output = "<!-- Metatags for HTML head -->\n"
-        formatted_output += '<meta name="keywords" content="' + ', '.join(processed_tags) + '">\n\n'
-        
-        # Add tags in user-friendly format
-        formatted_output += "<!-- Tags for display -->\n"
-        formatted_output += ', '.join(processed_tags) + '\n'
-        
-        return formatted_output
+        # Format tags as comma-separated list
+        return ', '.join(processed_tags) + '\n'

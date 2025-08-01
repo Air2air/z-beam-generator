@@ -6,23 +6,77 @@ Strict fail-fast implementation with no fallbacks or defaults.
 
 import logging
 import yaml
-from typing import Dict, Any
-from components.base.component import BaseComponent
+from components.base.enhanced_component import EnhancedBaseComponent
 
 logger = logging.getLogger(__name__)
 
-class FrontmatterGenerator(BaseComponent):
+class FrontmatterGenerator(EnhancedBaseComponent):
     """Generator for article frontmatter with strict validation."""
     
-    def generate(self) -> str:
-        """Generate frontmatter content with strict validation.
+    def _post_process(self, content: str) -> str:
+        """Post-process the generated frontmatter.
         
+        Args:
+            content: Raw API response
+            
         Returns:
-            str: The generated frontmatter
+            str: Validated frontmatter
             
         Raises:
-            ValueError: If generation fails
+            ValueError: If content is invalid
         """
+        # Validate and clean input
+        content = self._validate_non_empty(content, "API returned empty or invalid frontmatter")
+        
+        # Strip markdown code blocks if present
+        content = self._strip_markdown_code_blocks(content)
+        
+        # Attempt to parse as YAML to validate structure
+        try:
+            parsed = yaml.safe_load(content)
+            if not isinstance(parsed, dict):
+                raise ValueError("Frontmatter must be a valid YAML dictionary")
+        except yaml.YAMLError as e:
+            raise ValueError(f"Invalid YAML in frontmatter: {e}")
+        
+        # Validate required fields are present
+        profile_key = f"{self.article_type}Profile"
+        validation = self.schema[profile_key]["validation"]["frontmatter"]
+        required_fields = validation["requiredFields"]
+        
+        # NOTE: All schemas require 'name' field (not 'title') in frontmatter
+        # Make sure the prompt template uses 'name' and not 'title'
+        missing_fields = [field for field in required_fields if field not in parsed]
+        
+        # Special handling for common error: using 'title' instead of 'name'
+        if 'name' in missing_fields and 'title' in parsed:
+            raise ValueError("Found 'title' field but 'name' is required. Please use 'name' instead of 'title' in the frontmatter.")
+            
+        if missing_fields:
+            raise ValueError(f"Missing required frontmatter fields: {missing_fields}")
+        
+        # Enforce frontmatter value length limits
+        # Title and headline should be concise
+        if "title" in parsed and len(parsed["title"]) > 100:
+            raise ValueError(f"Title too long: {len(parsed['title'])} chars, maximum should be 100 chars")
+        
+        if "headline" in parsed and len(parsed["headline"]) > 150:
+            raise ValueError(f"Headline too long: {len(parsed['headline'])} chars, maximum should be 150 chars")
+        
+        # Description and summary should be reasonable length
+        if "description" in parsed and len(parsed["description"]) > 250:
+            raise ValueError(f"Description too long: {len(parsed['description'])} chars, maximum should be 250 chars")
+        
+        # Keywords should be limited in number and length
+        if "keywords" in parsed and isinstance(parsed["keywords"], list):
+            if len(parsed["keywords"]) > 15:
+                raise ValueError(f"Too many keywords: {len(parsed['keywords'])}, maximum should be 15")
+            
+            for keyword in parsed["keywords"]:
+                if len(keyword) > 50:
+                    raise ValueError(f"Keyword too long: '{keyword}' ({len(keyword)} chars), maximum should be 50 chars")
+        
+        return content
         # Use base class schema-driven data preparation
         data = self.get_template_data()
         prompt = self._format_prompt(data)

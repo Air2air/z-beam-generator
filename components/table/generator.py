@@ -6,27 +6,12 @@ Strict fail-fast implementation with no fallbacks or defaults.
 
 import logging
 from typing import Dict, Any
-from components.base.component import BaseComponent
+from components.base.enhanced_component import EnhancedBaseComponent
 
 logger = logging.getLogger(__name__)
 
-class TableGenerator(BaseComponent):
+class TableGenerator(EnhancedBaseComponent):
     """Generator for table content with strict validation."""
-    
-    def generate(self) -> str:
-        """Generate table content with strict validation.
-        
-        Returns:
-            str: The generated table
-            
-        Raises:
-            ValueError: If generation fails
-        """
-        # Use base class schema-driven data preparation
-        data = self.get_template_data()
-        prompt = self._format_prompt(data)
-        content = self._call_api(prompt)
-        return self._post_process(content)
     
     def _post_process(self, content: str) -> str:
         """Post-process the generated table.
@@ -40,8 +25,8 @@ class TableGenerator(BaseComponent):
         Raises:
             ValueError: If content is invalid
         """
-        if not content or not content.strip():
-            raise ValueError("API returned empty or invalid table")
+        # Validate and clean input
+        content = self._validate_non_empty(content, "API returned empty or invalid table")
         
         # Validate table format - look for pipe characters indicating markdown table
         lines = content.strip().split('\n')

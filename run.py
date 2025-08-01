@@ -15,7 +15,10 @@ MODULE DIRECTIVES FOR AI ASSISTANTS:
 10. BATCH PROCESSING: Support generating single components across multiple subjects
 """
 
+import argparse
 from typing import Dict, Any
+import os
+import shutil
 
 # =============================================================================
 # 🎯 BATCH GENERATION CONFIGURATION 
@@ -689,7 +692,12 @@ def generate_component(component_name: str, article_context: dict, frontmatter_c
         try:
             # Construct the import path and class name dynamically
             component_module = f"components.{component_name}.generator"
-            generator_class_name = f"{component_name.capitalize()}Generator"
+            
+            # Special case for metatags (capitalization issue)
+            if component_name == "metatags":
+                generator_class_name = "MetatagsGenerator"
+            else:
+                generator_class_name = f"{component_name.capitalize()}Generator"
             
             # Dynamic import
             import importlib
@@ -769,12 +777,12 @@ def generate_component(component_name: str, article_context: dict, frontmatter_c
                             }
                             component_config["options"]["messages"].append(retry_message)
                     
-                    # For metatags issues, add specific instructions
+                    # For metatags issues, provide better guidance for Next.js format
                     if component_name == "metatags" and last_error:
                         if "options" in component_config and "messages" in component_config["options"]:
                             retry_message = {
                                 "role": "user", 
-                                "content": "The previous generation failed. Please output ONLY HTML meta tags (e.g., '<meta name=\"description\" content=\"...\">'). No other HTML elements, explanations, or formatting."
+                                "content": "The previous generation failed. Please output ONLY Next.js compatible YAML frontmatter format with --- delimiters. Example format:\n---\ntitle: \"Title here\"\ndescription: \"Description here\"\nkeywords: \"keyword1, keyword2\"\nopenGraph:\n  title: \"Title here\"\n  description: \"Description here\"\n  images:\n    - url: \"https://example.com/image.jpg\"\n      width: 1200\n      height: 630\ntwitter:\n  card: \"summary_large_image\"\n  title: \"Title here\"\n---\nNo HTML tags or other formatting."
                             }
                             component_config["options"]["messages"].append(retry_message)
                 
@@ -988,5 +996,89 @@ def run_batch_generation():
 
     print("\n🎉 Content generation completed successfully!")
 
+def clear_component_files(component=None):
+    """Clear files in the content/components directory.
+    
+    Args:
+        component: Optional specific component to clear. If None, clears all component directories.
+    """
+    base_dir = BATCH_CONFIG["output"]["base_dir"]
+    print(f"🔍 Clearing files from directory: {base_dir}")
+    
+    if not os.path.exists(base_dir):
+        print(f"⚠️ Directory {base_dir} does not exist.")
+        return
+    
+    components = []
+    if component:
+        if os.path.exists(os.path.join(base_dir, component)):
+            components = [component]
+        else:
+            print(f"⚠️ Component directory {component} does not exist.")
+            return
+    else:
+        # Get all subdirectories in the content/components directory
+        components = [d for d in os.listdir(base_dir) if os.path.isdir(os.path.join(base_dir, d))]
+    
+    for comp in components:
+        comp_dir = os.path.join(base_dir, comp)
+        count = 0
+        
+        # Using a direct approach with os.listdir and os.remove
+        print(f"📁 Processing component directory: {comp_dir}")
+        try:
+            file_list = os.listdir(comp_dir)
+            print(f"  Found {len(file_list)} items in {comp_dir}")
+            
+            for filename in file_list:
+                file_path = os.path.join(comp_dir, filename)
+                if os.path.isfile(file_path) and not filename.startswith('.'):
+                    try:
+                        os.remove(file_path)
+                        count += 1
+                        print(f"  - Removed: {file_path}")
+                    except Exception as e:
+                        print(f"  ⚠️ Failed to remove {file_path}: {e}")
+        except Exception as e:
+            print(f"⚠️ Error processing directory {comp_dir}: {e}")
+            
+        # Alternative approach using find and glob
+        import glob
+        pattern = os.path.join(comp_dir, "*")
+        files = glob.glob(pattern)
+        print(f"  Found {len(files)} files using glob pattern '{pattern}'")
+        
+        if count == 0 and len(files) > 0:
+            print(f"  Trying alternative method for {comp}...")
+            for file_path in files:
+                if os.path.isfile(file_path) and not os.path.basename(file_path).startswith('.'):
+                    try:
+                        os.remove(file_path)
+                        count += 1
+                        print(f"  - Removed: {file_path}")
+                    except Exception as e:
+                        print(f"  ⚠️ Failed to remove {file_path}: {e}")
+        
+        remaining = glob.glob(pattern)
+        print(f"✅ Cleared {count} files from {comp} component directory ({len(remaining)} files remain)")
+        
+        # Try to show any remaining files in detail
+        if len(remaining) > 0:
+            print(f"  Remaining files in {comp_dir}:")
+            for f in remaining:
+                file_type = "Directory" if os.path.isdir(f) else "File"
+                print(f"    - {os.path.basename(f)} ({file_type})")
+
 if __name__ == "__main__":
-    run_batch_generation()
+    parser = argparse.ArgumentParser(description="Z-Beam content generator")
+    parser.add_argument('--clear', action='store_true', help='Clear all component files')
+    parser.add_argument('--clear-component', type=str, help='Clear files for a specific component (e.g., bullets, content, frontmatter)')
+    
+    args = parser.parse_args()
+    
+    if args.clear:
+        clear_component_files()
+    elif args.clear_component:
+        clear_component_files(args.clear_component)
+    else:
+        run_batch_generation()

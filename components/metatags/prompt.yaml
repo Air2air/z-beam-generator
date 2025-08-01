@@ -1,45 +1,55 @@
 name: "Metatags Generator"
-description: "Generates HTML meta tags for SEO and social sharing"
-version: "1.0.0"
+description: "Generates Next.js compatible meta tags in YAML frontmatter format"
+version: "1.2.0"
 template: |
-  Generate HTML meta tags for {article_type} "{subject}" in laser cleaning.
+  Generate Next.js compatible meta tags in YAML frontmatter format for {article_type} "{subject}" in laser cleaning.
   
   REQUIREMENTS:
-  - OUTPUT FORMAT: ONLY HTML meta tags (no explanations or other text)
-  - COUNT: {min_tags}-{max_tags} meta tags total
-  - MUST INCLUDE: description, keywords, viewport, og:title, og:description, twitter:title, twitter:description
-  - FORMAT: Standard HTML meta tag format
+  - OUTPUT FORMAT: Next.js compatible YAML frontmatter (with --- delimiters)
+  - COUNT: {min_tags}-{max_tags} metadata fields total
+  - MUST INCLUDE: title, description, keywords, openGraph properties
+  - FORMAT: Standard YAML format following Next.js metadata conventions
   
   DO NOT:
   - Add explanatory text or comments
-  - Include HTML document structure (<html>, <head>, etc.)
-  - Write sentences or descriptions outside of tag content
+  - Include HTML tags
+  - Write sentences or descriptions outside of YAML
   
   FRONTMATTER:
   {all_frontmatter}
   
   EXISTING KEYWORDS: {extracted_keywords}
   
-  REQUIRED META TAGS (add more as appropriate):
+  REQUIRED YAML STRUCTURE (Next.js compatible):
   
-  <!-- Basic SEO -->
-  <meta name="description" content="Technical guide to {subject} laser cleaning including specifications, applications, and environmental impact.">
-  <meta name="keywords" content="{subject}, laser cleaning, {extracted_keywords}">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="author" content="{author_name}">
+  ---
+  # Basic metadata (Next.js Head)
+  title: "{subject} Laser Cleaning | Technical Guide"
+  description: "Technical guide to {subject} laser cleaning including specifications, applications, and environmental impact."
+  keywords: "{subject}, laser cleaning, {extracted_keywords}"
+  author: "{author_name}"
   
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="article">
-  <meta property="og:title" content="{subject} Laser Cleaning: Technical Guide">
-  <meta property="og:description" content="Comprehensive technical resource on {subject} laser cleaning applications, specifications, and best practices.">
-  <meta property="og:image" content="https://www.z-beam.com/images/{subject}-laser-cleaning.jpg">
-  <meta property="og:url" content="https://www.z-beam.com/{subject}-laser-cleaning">
+  # Open Graph / Facebook (Next.js compatible format)
+  openGraph:
+    title: "{subject} Laser Cleaning: Technical Guide"
+    description: "Comprehensive technical resource on {subject} laser cleaning applications, specifications, and best practices."
+    url: "https://www.z-beam.com/{subject}-laser-cleaning"
+    siteName: "Z-Beam"
+    images:
+      - url: "https://www.z-beam.com/images/{subject}-laser-cleaning.jpg"
+        width: 1200
+        height: 630
+        alt: "{subject} Laser Cleaning"
+    locale: "en_US"
+    type: "article"
   
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{subject} Laser Cleaning: Technical Guide">
-  <meta name="twitter:description" content="Comprehensive technical resource on {subject} laser cleaning applications, specifications, and best practices.">
-  <meta name="twitter:image" content="https://www.z-beam.com/images/{subject}-laser-cleaning.jpg">
+  # Twitter (Next.js compatible format)
+  twitter:
+    card: "summary_large_image"
+    title: "{subject} Laser Cleaning: Technical Guide"
+    description: "Comprehensive technical resource on {subject} laser cleaning applications, specifications, and best practices."
+    images: ["https://www.z-beam.com/images/{subject}-laser-cleaning.jpg"]
+  ---
 
 parameters:
   max_tokens: 1000
@@ -47,4 +57,4 @@ parameters:
 validation:
   min_tags: "{min_tags}"
   max_tags: "{max_tags}"
-  required_tags: ["description", "keywords", "og:title", "twitter:card"]
+  required_fields: ["title", "description", "openGraph", "twitter"]

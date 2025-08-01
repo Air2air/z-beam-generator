@@ -8,11 +8,11 @@ import logging
 import json
 import re
 from typing import Dict, Any
-from components.base.component import BaseComponent
+from components.base.enhanced_component import EnhancedBaseComponent
 
 logger = logging.getLogger(__name__)
 
-class JsonldGenerator(BaseComponent):
+class JsonldGenerator(EnhancedBaseComponent):
     """Generator for JSON-LD structured data with fail-fast validation."""
     
     def generate(self) -> str:
@@ -68,6 +68,8 @@ class JsonldGenerator(BaseComponent):
         Raises:
             ValueError: If valid JSON-LD cannot be extracted
         """
+        content = self._validate_non_empty(content, "API returned empty or invalid JSON-LD")
+        
         jsonld = self._extract_jsonld(content)
         if not jsonld:
             raise ValueError("Failed to extract valid JSON-LD from API response")
