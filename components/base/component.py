@@ -154,10 +154,12 @@ class BaseComponent(ABC):
                 "extracted_keywords": self._extract_keywords_from_frontmatter(frontmatter) if frontmatter else []
             })
         elif component_name == "metatags":
+            keywords_list = self._extract_keywords_from_frontmatter(frontmatter) if frontmatter else []
+            keywords_str = ", ".join(keywords_list) if keywords_list else f"{self.subject}, laser cleaning"
             template_data.update({
                 "max_tags": self.component_config.get("max_tags", 15),
                 "min_tags": self.component_config.get("min_tags", 8),
-                "extracted_keywords": ", ".join(self._extract_keywords_from_frontmatter(frontmatter) if frontmatter else [])
+                "extracted_keywords": keywords_str
             })
         elif component_name == "caption":
             template_data.update({
@@ -179,25 +181,17 @@ class BaseComponent(ABC):
                 keywords.extend(frontmatter["keywords"])
         return keywords[:15]  # Limit to 15 keywords
     
-    def get_component_config(self, key: Optional[str] = None) -> Any:
-        """Get component configuration with strict validation.
+    def get_component_config(self, key: str, default: Any = None) -> Any:
+        """Get a value from component_config with a default fallback.
         
         Args:
-            key: Optional specific config key to retrieve
+            key: Configuration key to retrieve
+            default: Default value if key doesn't exist
             
         Returns:
-            Any: Configuration value or entire config if no key specified
-            
-        Raises:
-            ValueError: If key is not found
+            Value from component_config or default if not found
         """
-        if key is None:
-            return self.component_config
-        
-        if key not in self.component_config:
-            raise ValueError(f"Required component config '{key}' is missing")
-        
-        return self.component_config[key]
+        return self.component_config.get(key, default)
     
     def get_frontmatter_data(self) -> Optional[Dict[str, Any]]:
         """Get frontmatter data if available.

@@ -44,9 +44,10 @@ format:
   header_style: "bold"
   include_descriptions: true
   table_style: "detailed"
-  section_title_format: "## {title}"
+  section_title_format: "### {title}"
   preserve_original_values: true
   process_all_frontmatter_keys: true
+  add_section_headers: true
 
 # Analysis configuration for dynamic frontmatter processing
 analysis:

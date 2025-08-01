@@ -4,16 +4,17 @@ version: "1.2.0"
 template: |
   Generate Next.js compatible meta tags in YAML frontmatter format for {article_type} "{subject}" in laser cleaning.
   
-  REQUIREMENTS:
-  - OUTPUT FORMAT: Next.js compatible YAML frontmatter (with --- delimiters)
+  CRITICAL REQUIREMENTS:
+  - ONLY OUTPUT YAML: Just provide the YAML content - nothing else
+  - START AND END WITH ---: Begin with --- and end with ---
   - COUNT: {min_tags}-{max_tags} metadata fields total
   - MUST INCLUDE: title, description, keywords, openGraph properties
   - FORMAT: Standard YAML format following Next.js metadata conventions
   
   DO NOT:
-  - Add explanatory text or comments
+  - Add any explanatory text or comments outside the YAML
   - Include HTML tags
-  - Write sentences or descriptions outside of YAML
+  - Write any content before or after the YAML frontmatter
   
   FRONTMATTER:
   {all_frontmatter}
@@ -54,6 +55,7 @@ template: |
 parameters:
   max_tokens: 1000
   temperature: 0.7
+  system_message: "You are a metadata generator for a Next.js website. You generate YAML frontmatter with metadata for SEO optimization. ONLY output the YAML frontmatter with --- delimiters. Do not include ANY other text or explanations."
 validation:
   min_tags: "{min_tags}"
   max_tags: "{max_tags}"

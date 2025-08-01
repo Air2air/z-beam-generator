@@ -18,7 +18,6 @@ MODULE DIRECTIVES FOR AI ASSISTANTS:
 import argparse
 from typing import Dict, Any
 import os
-import shutil
 
 # =============================================================================
 # 🎯 BATCH GENERATION CONFIGURATION 
@@ -31,17 +30,17 @@ BATCH_CONFIG = {
     
     # Single subject configuration (used when mode="single")
     "single_subject": {
-        "subject": "Oak wood",
+        "subject": "Alumina",
         "article_type": "material",  # application, material, region, or thesaurus
         "author_id": 1,  # 1: Taiwan, 2: Italy, 3: USA, 4: Indonesia
-        "category": "semiconductor",  # Optional: specify category for hierarchy
+        "category": "ceramic",  # Optional: specify category for hierarchy
     },
     
     # Multi-subject configuration (used when mode="multi")
     "multi_subject": {
         "author_id": 1,  # Use this author for all subjects
         "subject_source": "lists",  # Directory to discover all subjects from all categories
-        "limit": 2,  # Limit to first X subjects (set to None for all subjects)
+        "limit": 5,  # Limit to first X subjects (set to None for all subjects)
     },
     
     # Global AI configuration - applied to all components
@@ -64,20 +63,30 @@ BATCH_CONFIG = {
             "temperature": 0.9  # Override global temperature for frontmatter
         },
         "content": {
-            "enabled": True,
+            "enabled": False,
             "min_words": 200,
             "max_words": 400
         },
         "bullets": {
-            "enabled": True,
+            "enabled": False,
             "count": 4
         },
         "table": {
             "enabled": True,
-            "rows": 5
+            "rows": 5,
+            "skip_sections": [
+                "Application Examples",
+                "Author Information",
+                "Benefits",
+                "Compatible Materials",
+                "Data Table",
+                "Keywords",
+                "Geographic Distribution", 
+                "Location Details",
+            ]
         },
         "tags": {
-            "enabled": True,
+            "enabled": False,
             "max_tags": 10,
             "min_tags": 5,
             "tag_categories": [
@@ -85,19 +94,19 @@ BATCH_CONFIG = {
             ]
         },
         "caption": {
-            "enabled": True,
+            "enabled": False,
             "results_word_count_max": 40,
             "equipment_word_count_max": 40,
             "shape": "component",
             "max_tokens": 1000  # Override global max_tokens for caption
         },
         "jsonld": {
-            "enabled": True
+            "enabled": False
         },
         "metatags": {
-            "enabled": True,
+            "enabled": False,
             "min_tags": 8,
-            "max_tags": 15
+            "max_tags": 20
         },
     },
     
@@ -779,10 +788,37 @@ def generate_component(component_name: str, article_context: dict, frontmatter_c
                     
                     # For metatags issues, provide better guidance for Next.js format
                     if component_name == "metatags" and last_error:
+                        print(f"🔍 DETAILED ERROR INFO FOR METATAGS: {last_error}")
+                        with open("logs/metatags_error.log", "a") as f:
+                            f.write(f"ERROR FOR {article_context['subject']}: {last_error}\n")
+                            f.write(f"Component config: {json.dumps(component_config, indent=2)}\n")
+                            f.write("-" * 80 + "\n")
                         if "options" in component_config and "messages" in component_config["options"]:
                             retry_message = {
                                 "role": "user", 
-                                "content": "The previous generation failed. Please output ONLY Next.js compatible YAML frontmatter format with --- delimiters. Example format:\n---\ntitle: \"Title here\"\ndescription: \"Description here\"\nkeywords: \"keyword1, keyword2\"\nopenGraph:\n  title: \"Title here\"\n  description: \"Description here\"\n  images:\n    - url: \"https://example.com/image.jpg\"\n      width: 1200\n      height: 630\ntwitter:\n  card: \"summary_large_image\"\n  title: \"Title here\"\n---\nNo HTML tags or other formatting."
+                                "content": """The previous generation failed. 
+
+INSTRUCTIONS:
+1. Output ONLY Next.js compatible YAML frontmatter format with --- delimiters.
+2. NO explanations, comments, or extra text - ONLY the YAML frontmatter.
+3. The output MUST begin with --- and end with --- delimiters.
+
+Example format:
+---
+title: "Title here"
+description: "Description here"
+keywords: "keyword1, keyword2"
+openGraph:
+  title: "Title here"
+  description: "Description here"
+  images:
+    - url: "https://example.com/image.jpg"
+      width: 1200
+      height: 630
+twitter:
+  card: "summary_large_image"
+  title: "Title here"
+---"""
                             }
                             component_config["options"]["messages"].append(retry_message)
                 
