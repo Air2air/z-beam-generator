@@ -35,16 +35,23 @@ class ApiClient:
         self.options = options or {}
         self.article_context = article_context or {}
         
-        # Load API keys from environment variables - no fallbacks
-        self.api_keys = {
-            "deepseek": os.environ["DEEPSEEK_API_KEY"],
-            "openai": os.environ["OPENAI_API_KEY"], 
-            "gemini": os.environ["GEMINI_API_KEY"],
-            "xai": os.environ["XAI_API_KEY"]
+        # Load only the required API key for the current provider - no fallbacks
+        api_key_map = {
+            "deepseek": "DEEPSEEK_API_KEY",
+            "openai": "OPENAI_API_KEY", 
+            "gemini": "GEMINI_API_KEY",
+            "xai": "XAI_API_KEY"
         }
         
-        # Set the API key for the current provider - must exist
-        self.api_key = self.api_keys[self.ai_provider]
+        if self.ai_provider not in api_key_map:
+            raise ValueError(f"Unsupported AI provider: {self.ai_provider}")
+        
+        # Get the specific API key for this provider
+        api_key_name = api_key_map[self.ai_provider]
+        if api_key_name not in os.environ:
+            raise ValueError(f"Missing environment variable: {api_key_name}")
+        
+        self.api_key = os.environ[api_key_name]
         
         logger.debug(f"Initialized ApiClient with provider={self.ai_provider}")
     

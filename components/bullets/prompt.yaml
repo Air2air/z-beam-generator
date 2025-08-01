@@ -1,32 +1,33 @@
 name: "Bullets Generator"
 description: "Generates comprehensive bullet points from all available frontmatter data"
-version: "2.0"
+version: "2.1"
 
 template: |
-  You are generating bullet points for a laser cleaning article about {subject} (type: {article_type}).
+  Generate {count} bullet points for a {article_type} about {subject} in laser cleaning.
   
-  STRICT REQUIREMENTS:
-  - Generate EXACTLY {count} bullet points
-  - Use ONLY the provided frontmatter data below
-  - Do NOT ask for clarification or more information
-  - Focus on laser cleaning technical details and applications
-  - Use specific data from the frontmatter (measurements, specifications, etc.)
+  REQUIREMENTS:
+  - EXACTLY {count} bullet points
+  - Use technical data from frontmatter
+  - Focus on laser cleaning specifications and applications
   
-  --- FRONTMATTER DATA ---
+  FRONTMATTER:
   {all_frontmatter}
-  --- END FRONTMATTER ---
   
-  Generate {count} technical bullet points covering:
-  1. Technical specifications (power, wavelength, spot size, etc.)
+  COVER THESE AREAS:
+  1. Technical specs (power, wavelength, spot size)
   2. Applications and use cases
   3. Environmental benefits
-  4. Manufacturing centers and capabilities
-  5. Geographic and economic context
+  4. Manufacturing capabilities
+  5. Geographic/economic context
   
-  Style: {style} - Use precise technical language with specific measurements and data.
+  Style: {style} - Use precise technical language with specific measurements.
   
-  Output format: Markdown bullet points with descriptive content.
+  Format as markdown bullet points.
 
 parameters:
   max_tokens: 2000
   temperature: 0.7
+validation:
+  exact_count: "{count}"
+  require_technical_data: true
+  markdown_format: true

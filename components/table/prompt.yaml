@@ -1,29 +1,28 @@
 name: "Table Generator"
 description: "Generates comprehensive tables from frontmatter data based on numerical ranges and structured data"
-version: "3.0"
+version: "3.1"
 
 template: |
-  Generate comprehensive markdown tables using ALL available structured data from the frontmatter for {subject} as a {article_type}.
+  Generate markdown tables for {subject} ({article_type}) using structured data from frontmatter.
   
-  --- FRONTMATTER DATA ---
+  FRONTMATTER:
   {all_frontmatter}
-  --- END FRONTMATTER ---
   
-  Available table-worthy data keys: {table_keys}
+  TABLE-WORTHY DATA KEYS: {table_keys}
   
-  Instructions:
-  1. Create tables for EVERY key in table_keys that contains structured data
-  2. For objects (dictionaries): Create key-value tables  
-  3. For lists of objects: Create multi-column tables with object properties as columns
-  4. For lists of simple values: Create single-column tables or convert to key-value format
-  5. Use descriptive titles based on the data key (e.g., "Technical Specifications" for technicalSpecifications)
-  6. Include ALL available data - do not omit any fields
-  7. Use proper markdown table format with headers
-  8. Each table should have a descriptive title (## Table Name)
+  INSTRUCTIONS:
+  1. Create tables for EVERY key in table_keys with structured data
+  2. Objects (dictionaries): Create key-value tables  
+  3. Lists of objects: Create multi-column tables
+  4. Lists of simple values: Create single-column tables
+  5. Use descriptive titles based on data key
+  6. Include ALL available data fields
+  7. Use proper markdown format with headers
+  8. Each table needs a title (## Table Name)
   
-  CRITICAL: Do NOT use placeholder values like "Not Specified" - use only the actual data from frontmatter.
+  NO PLACEHOLDER VALUES - use only actual data from frontmatter.
   
-  Example formats:
+  FORMATS:
   
   For objects:
   ## Technical Specifications
@@ -36,9 +35,9 @@ template: |
   ## Applications
   | Name | Description |
   |------|-------------|
-  | Aerospace Component Refurbishment | Precision removal of thermal barrier coatings... |
+  | Aerospace Component | Precision removal of coatings... |
   
-  Generate tables for ALL available structured data.
+  Generate tables for ALL structured data.
 
 # Table formatting configuration
 format:
@@ -47,7 +46,7 @@ format:
   table_style: "detailed"
   section_title_format: "## {title}"
   preserve_original_values: true
-  process_all_frontmatter_keys: true  # Enable processing of any frontmatter key
+  process_all_frontmatter_keys: true
 
 # Analysis configuration for dynamic frontmatter processing
 analysis:
@@ -73,10 +72,10 @@ analysis:
   
   # Default handling for different data types
   default_handling:
-    list_of_objects: "table"       # Convert lists of objects to tables
-    list_of_strings: "bullet_list" # Convert lists of strings to bullet lists
-    object_with_ranges: "range_table" # Convert objects with ranges to range tables
-    simple_value: "include"        # Include simple values in key-value tables
+    list_of_objects: "table"
+    list_of_strings: "bullet_list"
+    object_with_ranges: "range_table"
+    simple_value: "include"
     
   # Special handling directives
   special_handling:

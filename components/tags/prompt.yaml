@@ -1,57 +1,48 @@
 name: "Tags Generator"
 description: "Generates concise frontmatter tags for laser cleaning articles, optimized for on-site navigation."
-version: "2.1.0"
+version: "2.3.0"
 template: |
-  🚨 CRITICAL OUTPUT FORMAT REQUIREMENTS 🚨
-  - Output ONLY a comma-separated list of tags
-  - NO explanations, NO YAML format, NO extra text
-  - Example output: "Laser Cleaning, Metal Processing, Surface Treatment, Oxide Removal"
+  Generate a comma-separated list of tags for {article_type} "{subject}" in laser cleaning.
   
-  Generate CONCISE frontmatter tags for the {article_type} "{subject}" in laser cleaning contexts, optimized for on-site navigation.
-
-  🚨 CRITICAL REQUIREMENTS:
-  - Generate ONLY 5–8 short terms (maximum 2 words each)
-  - MAXIMUM 2 WORDS per tag (e.g., "Metal Processing" not "Precision Metal Processing")
-  - Tags must be DISTINCT from keywords (avoid technical SEO terms)
-  - Tags must be user-friendly and navigation-focused
-  - Use title case format (e.g., "Laser Cleaning", "Metal Processing")
-
-  🚨 INTELLIGENT SHORTENING RULES:
-  - Use CORE CONCEPTS: "precision metal cleaning" → "Metal Cleaning" (keep the action + subject)
-  - DROP MODIFIERS: "industrial laser cleaning" → "Laser Cleaning" (remove adjectives like "industrial")
-  - COMBINE RELATED: "surface preparation treatment" → "Surface Treatment" (merge similar concepts)
-  - REMOVE REDUNDANCY: "cleaning" can be dropped when context is clear
-  - PRIORITIZE ACTION WORDS: Keep verbs like "cleaning", "removal", "treatment" over descriptive adjectives
-  - SIMPLIFY COMPOUNDS: "non-destructive cleaning" → "Non-destructive" (context implies cleaning)
-
-  🚨 CONSTRAINTS:
-  - For region articles, include city/county-specific tags (e.g., "Solano County", "Fairfield Cleaning")
-  - Align with frontmatter keywords but avoid direct duplication
-  - Use title case format (e.g., "Rust Removal", not "rust removal")
-  - NATURAL SHORTENING: "electropolishing alternative" → "Electropolishing", "medical device sterilization" → "Medical Device"
-
-  🚨 EXAMPLES OF INTELLIGENT SHORTENING:
+  REQUIREMENTS:
+  - OUTPUT FORMAT: ONLY comma-separated tags (e.g., "Tag1, Tag2, Tag3"), no other text
+  - COUNT: {min_tags}-{max_tags} tags total
+  - LENGTH: Maximum 2 words per tag
+  - STYLE: Title case (e.g., "Laser Cleaning", "Metal Processing")
+  - PURPOSE: Navigation-focused, not technical SEO
+  
+  DO NOT:
+  - Add explanatory text, headers, or bullet points
+  - Include HTML formatting or markdown
+  - Write sentences or descriptions
+  
+  SHORTENING RULES:
+  - Keep action + subject: "precision metal cleaning" → "Metal Cleaning"
+  - Remove adjectives: "industrial laser cleaning" → "Laser Cleaning"
+  - Merge similar concepts: "surface preparation treatment" → "Surface Treatment"
+  - Prioritize action words: Keep "cleaning", "removal", "treatment"
+  
+  EXAMPLES:
   - "aerospace surface treatment" → "Aerospace Treatment"
   - "non-destructive cleaning" → "Non-destructive" 
   - "selective contamination removal" → "Selective Removal"
   - "microstructure preservation" → "Microstructure"
-  - "electropolishing alternative" → "Electropolishing"
-  - "aerospace grade cleaning" → "Aerospace Grade"
-  - "medical device sterilization" → "Medical Device"
-  - "thermal stress minimization" → "Thermal Stress"
-
-  Generate comma-separated tags for: {article_type} = {subject}
-
-  Output only the comma-separated list, no other text:
+  
+  FRONTMATTER:
+  {all_frontmatter}
+  
+  EXISTING KEYWORDS: {extracted_keywords}
+  
+  REQUIRED FORMAT EXAMPLE:
+  Laser Cleaning, Metal Processing, Surface Treatment, Oxide Removal, Precision Cleaning
+  Output only comma-separated tags:
 
 parameters:
   max_tokens: 500
   temperature: 0.5
 validation:
-  min_length: 5
-  max_length: 8
+  min_tags: "{min_tags}"
+  max_tags: "{max_tags}"
   max_words_per_tag: 2
-  required_fields: ["tags"]
-  unique_items: true
-  hyphenated_format: true
-  intelligent_shortening: true
+  title_case: true
+  unique_tags: true

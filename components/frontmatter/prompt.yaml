@@ -1,83 +1,72 @@
 name: "Frontmatter Generator"
 description: "Generates concise YAML frontmatter for laser cleaning articles, optimized for SEO, E-A-T, and on-site tagging."
-version: "2.4.0"
+version: "2.5.0"
 
 template: |
-  🚨🚨🚨 CRITICAL YAML FORMATTING REQUIREMENTS 🚨🚨🚨
-  - DO NOT include ANY triple backticks (```) or ```yaml markers
-  - DO NOT include ANY "---" delimiter markers (not at beginning, not at end)
-  - Return ONLY the raw YAML content with NO delimiters
-  - Example of CORRECT formatting:
-    name: "Example Subject"
-    description: "Example description text"
-    # Other fields
+  🚨 YAML FORMATTING:
+  - Return ONLY raw YAML content
+  - NO triple backticks or ```yaml markers
+  - NO "---" delimiters
 
-  Generate CONCISE AND EFFICIENT YAML frontmatter for the {article_type} "{subject}" in laser cleaning contexts, optimized for E-A-T, searchability, and on-site tagging.
+  Generate concise YAML frontmatter for {article_type} "{subject}" in laser cleaning.
 
-  🚨 CRITICAL LENGTH REQUIREMENT:
-  - Generate BETWEEN 2,000–3,000 CHARACTERS of focused, technical frontmatter.
-  - This is a HARD REQUIREMENT—longer responses will be rejected.
-  - Use BRIEF, TARGETED content for EACH field.
-  - Include 10–12 UNIQUE, TECHNICAL keywords for search/SEO (avoid duplicates).
-  - For complex arrays (e.g., applications, facilities), include 3–4 ITEMS with descriptions of 50–75 words.
-  - Write descriptions of 100–150 characters for simple fields, 150–200 words for main description.
+  LENGTH LIMITS:
+  - TOTAL LENGTH: 2,000-3,000 characters maximum
+  - name: Max 100 characters
+  - headline: Max 150 characters
+  - description: Max 250 characters
+  - keywords: 8-12 items, each max 50 characters
+  - Complex arrays: 3-4 items with descriptions of 50-75 words each
   
-  🚨 SPECIFIC FIELD REQUIREMENTS:
-  - applications.name: MAXIMUM 2 WORDS only (e.g., "Electronics Cleaning", "Paint Removal")
-  - environmentalImpact.benefit: MAXIMUM 2 WORDS only (e.g., "Eco Friendly", "Zero Emissions")
+  FIELD REQUIREMENTS:
+  - applications.name: MAX 2 WORDS (e.g., "Electronics Cleaning")
+  - environmentalImpact.benefit: MAX 2 WORDS (e.g., "Eco Friendly")
+  - name: Include "{subject}" and key application (THIS FIELD IS REQUIRED)
+  - description: Start with "Technical guide to {subject} for laser cleaning..."
 
-  🚨 DYNAMIC SCHEMA REQUIREMENTS:
-  - Follow EXACTLY the schema structure for this specific article type
-  - Include ALL required fields as shown below
-  - Use the EXACT field names provided (case-sensitive)
-  - Follow the structure and data types shown in examples
-  - DO NOT add fields not in the schema
-  - DO NOT omit any of the required fields
+  SCHEMA STRUCTURE:
+  - Follow EXACTLY this schema for {article_type}
+  - Include ALL required fields
+  - Use EXACT field names (case-sensitive)
+  - DO NOT add or omit fields
   
   {schema}
 
-  🚨 IMPORTANT CONSTRAINTS:
-  - For region articles, use ONLY California, USA locations.
-  - For region articles, set "countries" to ["United States"]—no other countries.
-  - All geographic data must reference California locations exclusively.
-  - Manufacturing centers, organizations, or facilities must be in California.
-  - Use "https://www.z-beam.com" for ALL website URLs.
+  CONSTRAINTS:
+  - Region articles: California locations ONLY
+  - Set "countries" to ["United States"] 
+  - All manufacturing centers in California
+  - Use "{website_url}" for ALL website URLs
 
-  🚨 GEOGRAPHIC CONTEXT REQUIREMENTS:
-  - For region articles, include:
-    1. Specific county (e.g., "Santa Clara County").
-    2. 2–3 immediately adjacent cities (verify real neighbors).
-    3. Broader California region (e.g., "Bay Area", "Southern California").
-    4. Explicitly state "California" as the state.
-  - Example: "Mountain View, Santa Clara County, California, in Silicon Valley, borders Palo Alto and Sunnyvale."
+  GEOGRAPHIC FORMAT (for regions):
+  - County: "Santa Clara County"
+  - Adjacent cities: 2-3 real neighbors
+  - Region: "Bay Area", "Southern California", etc.
+  - Always include "California" as state
 
-  🚨 URL FORMATTING RULES:
-  - The website URL will be provided in the context as {website_url}
-  - Use the exact URL provided without modification
-  - NEVER use example.com or other domains; use only the provided URL
-
-  🚨 ARRAY FORMATTING RULES:
-  - Simple arrays (e.g., keywords, countries):
+  ARRAY FORMATTING:
+  - Simple arrays:
     keywords:
       - "keyword one"
       - "keyword two"
-  - Complex arrays (e.g., applications, facilities):
+  - Complex arrays:
     arrayName:
       - name: "Item name"
-        description: "Brief 50–75 word description with technical specifics."
-        property: "Relevant property"
+        description: "Brief description with technical specifics."
+        property: "Value"
 
-  🚨 E-A-T AND SEO REQUIREMENTS:
-  - Include an author field with credentials to enhance trustworthiness (e.g., "Laser Technology Institute, Industry Leader").
-  - Ensure keywords are specific, technical, and non-repetitive for search/SEO.
-  - Map description to SEO meta description (150–160 characters).
-  - Avoid redundancy (e.g., no overlapping keywords or specs).
+  E-A-T AND SEO:
+  - Author field with credentials 
+  - Technical, non-repetitive keywords
+  - Concise meta description (150-160 chars)
+  - No redundant content
 
   Generate YAML for: {article_type} = {subject}
   
-  Required fields (if no dynamic schema was provided):
-  name: "{subject}"
-  description: "150–200 word technical summary of {subject} in laser cleaning."
+  Required fields (if no schema provided):
+  name: "{subject}" # Max 100 chars
+  headline: "Technical guide to {subject}" # Max 150 chars
+  description: "Technical summary of {subject} in laser cleaning." # Max 250 chars
   website: "{website_url}"
   min_words: {min_words}
   max_words: {max_words}
@@ -85,19 +74,17 @@ template: |
     author_id: {author_id}
     author_name: "{author_name}"
     author_country: "{author_country}"
-    name: "Laser Technology Institute"
-    credentials: "Industry Leader in Laser Cleaning Technology"
-  keywords:
-    - "keyword one"
-    - "keyword two"
-    # ...up to 12
-  applications:
-    - name: "Application One"  # Maximum 2 words
-      description: "Brief 50–75 word description of the application."
-    - name: "Application Two"  # Maximum 2 words
-      description: "Brief 50–75 word description of the application."
-    # ...up to 4
+    credentials: "Industry Expert in Laser Cleaning Technology"
+  keywords: # 8-12 unique terms, each max 50 chars
+    - "laser cleaning"
+    - "{subject}"
+    # Add 6-10 more specific technical terms
+  applications: # 3-4 items max
+    - name: "Application One" # MAX 2 WORDS
+      description: "Brief description." # 50-75 words
   environmentalImpact:
+    benefit: "Eco Friendly" # MAX 2 WORDS
+    description: "Environmental benefits." # 50-75 words
     - benefit: "Waste Reduction"  # Maximum 2 words
       description: "Laser cleaning eliminates chemical solvents, reducing hazardous waste by 90% compared to traditional methods."
     - benefit: "Energy Efficiency"  # Maximum 2 words
@@ -136,6 +123,8 @@ template: |
 
   🚨 TABLE DATA STRUCTURE REQUIREMENTS:
   - The following fields MUST be included with EXACTLY this structure for table generation:
+  
+  # IMPORTANT: Always use 'name' as the main article title field, NOT 'title'
   
   technicalSpecifications:
     powerRange: "50–500W (modular)"

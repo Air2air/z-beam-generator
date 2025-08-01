@@ -1,40 +1,42 @@
 name: "Content Generator"
 description: "Generates comprehensive article content from all frontmatter data"
-version: "2.0"
+version: "2.1"
 
 template: |
-  Write a comprehensive {article_type} about {subject} using the provided data.
+  Write a comprehensive {article_type} article about {subject} for the laser cleaning industry.
   
   REQUIREMENTS:
   - Generate EXACTLY {min_words}-{max_words} words
-  - Use ALL the technical data provided in the frontmatter
-  - Do NOT ask for clarification or request more information
+  - Use technical data from frontmatter
   - Write in {style} style for {audience} audience
-  - Focus on laser cleaning technology, applications, and specifications
   
-  --- FRONTMATTER DATA TO USE ---
+  FRONTMATTER:
   {all_frontmatter}
-  --- END FRONTMATTER ---
   
-  Article Structure:
-  1. Introduction highlighting key aspects of {subject}
+  STRUCTURE:
+  1. Introduction to {subject}
   2. Technical specifications and capabilities
-  3. Applications and use cases (with specific examples from data)
-  4. Manufacturing centers and industry context
-  5. Environmental benefits and compliance
-  6. Geographic and economic context
-  7. Conclusion with future outlook
+  3. Applications and use cases with examples
+  4. Manufacturing context
+  5. Environmental benefits
+  6. Geographic/economic context
+  7. Conclusion with outlook
   
-  Use specific data from the frontmatter including:
-  - Technical specifications (power ranges, wavelengths, pulse durations)
-  - Real applications and case studies
-  - Manufacturing center details
-  - Environmental impact data
-  - Geographic coordinates and regional context
-  - Economic data and industry information
+  INCLUDE SPECIFIC DATA:
+  - Technical specs (power ranges, wavelengths, pulse durations)
+  - Real applications with examples
+  - Manufacturing details
+  - Environmental data
+  - Geographic context
+  - Economic information
   
-  Write as a complete, authoritative article using markdown formatting.
+  Format as a complete article using markdown.
 
 parameters:
   max_tokens: 4000
   temperature: 0.7
+validation:
+  min_words: "{min_words}"
+  max_words: "{max_words}"
+  required_sections: ["technical specifications", "applications", "environmental"]
+  markdown_formatting: true

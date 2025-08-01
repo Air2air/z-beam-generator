@@ -5,7 +5,6 @@ Strict fail-fast implementation with no fallbacks or defaults.
 """
 
 import logging
-from typing import Dict, Any
 from components.base.component import BaseComponent
 
 logger = logging.getLogger(__name__)
@@ -22,37 +21,11 @@ class BulletsGenerator(BaseComponent):
         Raises:
             ValueError: If generation fails
         """
-        # Strict validation - no fallbacks
-        data = self._prepare_data()
+        # Use base class schema-driven data preparation
+        data = self.get_template_data()
         prompt = self._format_prompt(data)
         content = self._call_api(prompt)
         return self._post_process(content)
-    
-    def _prepare_data(self) -> Dict[str, Any]:
-        """Prepare data for bullet points generation with strict validation.
-        
-        Returns:
-            Dict[str, Any]: Validated data for generation
-            
-        Raises:
-            ValueError: If required data is missing
-        """
-        data = super()._prepare_data()
-        
-        # Get component configuration
-        component_config = self.get_component_config()
-        
-        # Validate required configuration
-        if "count" not in component_config:
-            raise ValueError("Required config 'count' missing for bullets component")
-        
-        data.update({
-            "count": component_config["count"],
-            "all_frontmatter": "No frontmatter data available yet",  # Will be populated during generation pipeline
-            "style": "technical"
-        })
-        
-        return data
     
     def _post_process(self, content: str) -> str:
         """Post-process the generated bullet points.

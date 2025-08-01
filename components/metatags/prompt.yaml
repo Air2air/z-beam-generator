@@ -1,0 +1,50 @@
+name: "Metatags Generator"
+description: "Generates HTML meta tags for SEO and social sharing"
+version: "1.0.0"
+template: |
+  Generate HTML meta tags for {article_type} "{subject}" in laser cleaning.
+  
+  REQUIREMENTS:
+  - OUTPUT FORMAT: ONLY HTML meta tags (no explanations or other text)
+  - COUNT: {min_tags}-{max_tags} meta tags total
+  - MUST INCLUDE: description, keywords, viewport, og:title, og:description, twitter:title, twitter:description
+  - FORMAT: Standard HTML meta tag format
+  
+  DO NOT:
+  - Add explanatory text or comments
+  - Include HTML document structure (<html>, <head>, etc.)
+  - Write sentences or descriptions outside of tag content
+  
+  FRONTMATTER:
+  {all_frontmatter}
+  
+  EXISTING KEYWORDS: {extracted_keywords}
+  
+  REQUIRED META TAGS (add more as appropriate):
+  
+  <!-- Basic SEO -->
+  <meta name="description" content="Technical guide to {subject} laser cleaning including specifications, applications, and environmental impact.">
+  <meta name="keywords" content="{subject}, laser cleaning, {extracted_keywords}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="{author_name}">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="{subject} Laser Cleaning: Technical Guide">
+  <meta property="og:description" content="Comprehensive technical resource on {subject} laser cleaning applications, specifications, and best practices.">
+  <meta property="og:image" content="https://www.z-beam.com/images/{subject}-laser-cleaning.jpg">
+  <meta property="og:url" content="https://www.z-beam.com/{subject}-laser-cleaning">
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{subject} Laser Cleaning: Technical Guide">
+  <meta name="twitter:description" content="Comprehensive technical resource on {subject} laser cleaning applications, specifications, and best practices.">
+  <meta name="twitter:image" content="https://www.z-beam.com/images/{subject}-laser-cleaning.jpg">
+
+parameters:
+  max_tokens: 1000
+  temperature: 0.7
+validation:
+  min_tags: "{min_tags}"
+  max_tags: "{max_tags}"
+  required_tags: ["description", "keywords", "og:title", "twitter:card"]

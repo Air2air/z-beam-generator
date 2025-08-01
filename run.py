@@ -28,7 +28,7 @@ BATCH_CONFIG = {
     
     # Single subject configuration (used when mode="single")
     "single_subject": {
-        "subject": "Silicon",
+        "subject": "Oak wood",
         "article_type": "material",  # application, material, region, or thesaurus
         "author_id": 1,  # 1: Taiwan, 2: Italy, 3: USA, 4: Indonesia
         "category": "semiconductor",  # Optional: specify category for hierarchy
@@ -38,53 +38,40 @@ BATCH_CONFIG = {
     "multi_subject": {
         "author_id": 1,  # Use this author for all subjects
         "subject_source": "lists",  # Directory to discover all subjects from all categories
-        "limit": 4,  # Limit to first X subjects (set to None for all subjects)
+        "limit": 2,  # Limit to first X subjects (set to None for all subjects)
     },
     
-    # Component configuration - which components to generate
+    # Global AI configuration - applied to all components
+    "ai": {
+        "provider": "deepseek",  # deepseek, openai, xai, gemini
+        "options": {
+            "model": "deepseek-chat", # deepseek-chat (88), "GPT-4o" (76), "grok-3-latest" (62), "gemini-1.5-flash"
+            "temperature": 0.7,
+            "max_tokens": 4000
+        }
+    },
+    
+    # Component configuration - which components to generate (component-specific settings only)
     "components": {
         "frontmatter": {
             "enabled": True,
             "include_website": True,
             "min_words": 300,
             "max_words": 500,
-            "ai_provider": "deepseek",  # deepseek, openai, xai, gemini
-            "options": {
-                "model": "deepseek-chat", # deepseek-chat (88), "GPT-4o" (76), "grok-3-latest" (62), "gemini-1.5-flash"
-                "temperature": 0.9,
-                "max_tokens": 4000
-            },  
+            "temperature": 0.9  # Override global temperature for frontmatter
         },
         "content": {
-            "enabled": True,  # Enabled for full generation
-            "min_words": 300,
-            "max_words": 500,
-            "ai_provider": "deepseek",  # deepseek, openai, xai, gemini
-            "options": {
-                "model": "deepseek-chat", # deepseek-chat (88), "GPT-4o" (76), "grok-3-latest" (62), "gemini-1.5-flash"
-                "temperature": 0.7,
-                "max_tokens": 4000
-            },  
+            "enabled": True,
+            "min_words": 200,
+            "max_words": 400
         },
         "bullets": {
-            "enabled": True,  # Enabled for full generation
-            "count": 10,
-            "ai_provider": "deepseek",  # deepseek, openai, xai, gemini
-            "options": {
-                "model": "deepseek-chat", # deepseek-chat (88), "GPT-4o" (76), "grok-3-latest" (62), "gemini-1.5-flash"
-                "temperature": 0.7,
-                "max_tokens": 4000
-            },  
+            "enabled": True,
+            "count": 4
         },
         "table": {
-            "enabled": True,  # Enabled for full generation
-            "rows": 5,
-            "ai_provider": "deepseek",  # deepseek, openai, xai, gemini
-            "options": {
-                "model": "deepseek-chat", # deepseek-chat (88), "GPT-4o" (76), "grok-3-latest" (62), "gemini-1.5-flash"
-                "temperature": 0.7,
-                "max_tokens": 4000
-            },  
+            "enabled": True,
+            "rows": 5
         },
         "tags": {
             "enabled": True,
@@ -92,34 +79,22 @@ BATCH_CONFIG = {
             "min_tags": 5,
             "tag_categories": [
                 "material", "process", "application", "property", "location"
-            ],
-            "ai_provider": "deepseek",  # deepseek, openai, xai, gemini
-            "options": {
-                "model": "deepseek-chat", # deepseek-chat (88), "GPT-4o" (76), "grok-3-latest" (62), "gemini-1.5-flash"
-                "temperature": 0.7,
-                "max_tokens": 4000
-            }, 
+            ]
         },
         "caption": {
-            "enabled": True,  # Disable for faster testing
+            "enabled": True,
             "results_word_count_max": 40,
             "equipment_word_count_max": 40,
-            "shape": "component",  # Default shape, can be overridden
-            "ai_provider": "deepseek",  # deepseek, openai, xai, gemini
-            "options": {
-                "model": "deepseek-chat", # deepseek-chat (88), "GPT-4o" (76), "grok-3-latest" (62), "gemini-1.5-flash"
-                "temperature": 0.7,
-                "max_tokens": 1000
-            },  
+            "shape": "component",
+            "max_tokens": 1000  # Override global max_tokens for caption
         },
         "jsonld": {
-            "enabled": True,  # Disable for faster testing
-            "ai_provider": "deepseek",  # deepseek, openai, xai, gemini
-            "options": {
-                "model": "deepseek-chat", # deepseek-chat (88), "GPT-4o" (76), "grok-3-latest" (62), "gemini-1.5-flash"
-                "temperature": 0.7,
-                "max_tokens": 4000
-            },  
+            "enabled": True
+        },
+        "metatags": {
+            "enabled": True,
+            "min_tags": 8,
+            "max_tags": 15
         },
     },
     
@@ -140,6 +115,7 @@ BATCH_CONFIG = {
         "tags": "{subject}.md",                  # alumina.md
         "caption": "{subject}.md",               # alumina.md
         "jsonld": "{subject}.md",                # alumina.md
+        "metatags": "{subject}.md",              # alumina.md
         
         # Article-type specific patterns (applied to ALL components for that type)
         "article_type_patterns": {
@@ -545,18 +521,19 @@ def load_author_data(author_id: int) -> Dict[str, Any]:
         "author_specialties": author_data.get("specialties", [])
     }
 
-def generate_frontmatter_component(article_context: dict) -> str:
+def generate_frontmatter_component(article_context: dict) -> tuple:
     """Generate frontmatter using the configured settings.
     
     Args:
         article_context: Article context for this specific subject
         
     Returns:
-        Generated frontmatter content or None if failed
+        Tuple of (generated frontmatter content, parsed frontmatter data) or (None, None) if failed
     """
     import sys
     import os
     import logging
+    import yaml
     
     # Add project root to path
     sys.path.insert(0, os.path.dirname(__file__))
@@ -569,8 +546,8 @@ def generate_frontmatter_component(article_context: dict) -> str:
         component_config = article_context["components"]["frontmatter"]
         if not component_config["enabled"]:
             print("⏭️  Frontmatter generation skipped (disabled)")
-            return None
-        
+            return None, None
+
         # Load schema for the article type
         schema_path = f"schemas/{article_context['article_type']}.json"
         schema = {}
@@ -578,16 +555,39 @@ def generate_frontmatter_component(article_context: dict) -> str:
             with open(schema_path, 'r') as f:
                 import json
                 schema = json.load(f)
-        
+        else:
+            print(f"❌ Schema file not found: {schema_path}")
+            return None, None
+
         # Initialize frontmatter generator with correct parameters
         from components.frontmatter.generator import FrontmatterGenerator
-        
+
         # Load author data
         author_data = load_author_data(article_context["author_id"])
-        
-        # Get component configuration
-        component_config = article_context["components"]["frontmatter"]
-        
+
+        # Get component configuration with AI config merge
+        component_config = article_context["components"]["frontmatter"].copy()
+
+        # Merge global AI configuration with component-specific overrides
+        global_ai = BATCH_CONFIG["ai"]
+        component_config["ai_provider"] = global_ai["provider"]
+        component_config["options"] = global_ai["options"].copy()
+
+        # Apply component-specific AI overrides
+        for key in ["temperature", "max_tokens", "model"]:
+            if key in component_config:
+                component_config["options"][key] = component_config.pop(key)
+
+        # Validate generator configuration
+        print(f"Frontmatter generator config for subject '{article_context['subject']}':")
+        print(f"  Article type: {article_context['article_type']}")
+        print(f"  Schema keys: {list(schema.keys())}")
+        print(f"  Author: {author_data.get('author_name', '')} ({author_data.get('author_country', '')})")
+        print(f"  AI provider: {component_config['ai_provider']}")
+        print(f"  Model: {component_config['options'].get('model', '')}")
+        print(f"  Temperature: {component_config['options'].get('temperature', '')}")
+        print(f"  Max tokens: {component_config['options'].get('max_tokens', '')}")
+
         # Initialize generator with correct BaseComponent interface
         generator = FrontmatterGenerator(
             subject=article_context["subject"],
@@ -596,26 +596,44 @@ def generate_frontmatter_component(article_context: dict) -> str:
             author_data=author_data,
             component_config=component_config
         )
-        
+
         print(f"Generating frontmatter for: {article_context['subject']} ({article_context['article_type']})")
         print(f"Using AI provider: {component_config['ai_provider']} with model: {component_config['options']['model']}")
-        
+
         # Generate frontmatter
         frontmatter_content = generator.generate()
-        
-        print("\n" + "="*60)
-        print("GENERATED FRONTMATTER:")
-        print("="*60)
-        print(frontmatter_content)
-        print("="*60)
-        
-        return frontmatter_content
-        
+
+        if not frontmatter_content or not frontmatter_content.strip():
+            print(f"❌ No frontmatter content generated for {article_context['subject']}. Check generator, schema, and config.")
+            print(f"  Generator config: {component_config}")
+            print(f"  Schema: {schema}")
+            return None, None
+
+        # Parse the YAML content to validate it
+        try:
+            yaml_content = frontmatter_content.strip()
+            frontmatter_data = yaml.safe_load(yaml_content)
+            
+            if not frontmatter_data or not isinstance(frontmatter_data, dict):
+                print(f"❌ Invalid frontmatter data for {article_context['subject']}. Not a valid YAML dictionary.")
+                return None, None
+                
+            print("\n" + "="*60)
+            print("VALIDATED FRONTMATTER:")
+            print("="*60)
+            print(frontmatter_content)
+            print("="*60)
+            
+            return frontmatter_content, frontmatter_data
+        except yaml.YAMLError as e:
+            print(f"❌ Failed to parse frontmatter YAML for {article_context['subject']}: {e}")
+            return None, None
+
     except Exception as e:
-        print(f"Error generating frontmatter: {str(e)}")
+        print(f"❌ Error generating frontmatter: {str(e)}")
         import traceback
         traceback.print_exc()
-        return None
+        return None, None
 
 def generate_component(component_name: str, article_context: dict, frontmatter_content: str = None) -> str:
     """Generate content for a specific component.
@@ -630,6 +648,7 @@ def generate_component(component_name: str, article_context: dict, frontmatter_c
     """
     import sys
     import os
+    import yaml
     
     # Add project root to path
     sys.path.insert(0, os.path.dirname(__file__))
@@ -653,92 +672,123 @@ def generate_component(component_name: str, article_context: dict, frontmatter_c
         # Load author data
         author_data = load_author_data(article_context["author_id"])
         
-        # Get component configuration
-        component_config = article_context["components"][component_name]
+        # Get component configuration with AI config merge
+        component_config = article_context["components"][component_name].copy()
         
-        # Import and initialize the appropriate generator with correct interface
-        if component_name == "content":
-            from components.content.generator import ContentGenerator
-            generator = ContentGenerator(
+        # Merge global AI configuration with component-specific overrides
+        global_ai = BATCH_CONFIG["ai"]
+        component_config["ai_provider"] = global_ai["provider"]
+        component_config["options"] = global_ai["options"].copy()
+        
+        # Apply component-specific AI overrides
+        for key in ["temperature", "max_tokens", "model"]:
+            if key in component_config:
+                component_config["options"][key] = component_config.pop(key)
+        
+        # Import and initialize the appropriate generator dynamically
+        try:
+            # Construct the import path and class name dynamically
+            component_module = f"components.{component_name}.generator"
+            generator_class_name = f"{component_name.capitalize()}Generator"
+            
+            # Dynamic import
+            import importlib
+            module = importlib.import_module(component_module)
+            generator_class = getattr(module, generator_class_name)
+            
+            # Initialize generator
+            generator = generator_class(
                 subject=article_context["subject"],
                 article_type=article_context["article_type"],
                 schema=schema,
                 author_data=author_data,
                 component_config=component_config
             )
-        elif component_name == "bullets":
-            from components.bullets.generator import BulletsGenerator
-            generator = BulletsGenerator(
-                subject=article_context["subject"],
-                article_type=article_context["article_type"],
-                schema=schema,
-                author_data=author_data,
-                component_config=component_config
-            )
-        elif component_name == "table":
-            from components.table.generator import TableGenerator
-            generator = TableGenerator(
-                subject=article_context["subject"],
-                article_type=article_context["article_type"],
-                schema=schema,
-                author_data=author_data,
-                component_config=component_config
-            )
-        elif component_name == "tags":
-            from components.tags.generator import TagsGenerator
-            generator = TagsGenerator(
-                subject=article_context["subject"],
-                article_type=article_context["article_type"],
-                schema=schema,
-                author_data=author_data,
-                component_config=component_config
-            )
-        elif component_name == "jsonld":
-            from components.jsonld.generator import JsonldGenerator
-            generator = JsonldGenerator(
-                subject=article_context["subject"],
-                article_type=article_context["article_type"],
-                schema=schema,
-                author_data=author_data,
-                component_config=component_config
-            )
-        elif component_name == "caption":
-            from components.caption.generator import CaptionGenerator
-            generator = CaptionGenerator(
-                subject=article_context["subject"],
-                article_type=article_context["article_type"],
-                schema=schema,
-                author_data=author_data,
-                component_config=component_config
-            )
-        else:
-            raise ValueError(f"Unknown component: {component_name}")
+        except (ImportError, AttributeError) as e:
+            raise ValueError(f"Failed to load generator for component '{component_name}': {e}")
         
         # Set frontmatter data if available
         if frontmatter_content:
             try:
-                import yaml
-                
-                # Extract YAML content from frontmatter (remove --- delimiters)
+                # Frontmatter should already be validated at this point, but let's be safe
                 yaml_content = frontmatter_content.strip()
-                if yaml_content.startswith('---'):
-                    yaml_content = yaml_content[3:]
-                if yaml_content.endswith('---'):
-                    yaml_content = yaml_content[:-3]
-                yaml_content = yaml_content.strip()
-                
-                # Parse the YAML content
                 frontmatter_data = yaml.safe_load(yaml_content)
-                if frontmatter_data:
+                
+                if frontmatter_data and isinstance(frontmatter_data, dict):
                     generator._frontmatter_data = frontmatter_data
-            except Exception as e:
-                print(f"Warning: Failed to parse frontmatter for {component_name}: {e}")
+                else:
+                    raise ValueError(f"Invalid frontmatter data structure for {component_name}")
+            except yaml.YAMLError as e:
+                raise ValueError(f"Failed to parse frontmatter for {component_name}: {e}")
+        else:
+            # No frontmatter provided - fail for components that require it
+            if component_name in ["jsonld", "table", "content"]:
+                raise ValueError(f"Frontmatter data is required for {component_name} generation")
         
         print(f"Generating {component_name} for: {article_context['subject']} ({article_context['article_type']})")
         print(f"Using AI provider: {component_config['ai_provider']} with model: {component_config['options']['model']}")
         
-        # Generate content
-        content = generator.generate()
+        # Generate content with retry mechanism
+        max_attempts = 3
+        attempt = 1
+        content = None
+        last_error = None
+        
+        while attempt <= max_attempts and content is None:
+            try:
+                if attempt > 1:
+                    print(f"Retry attempt {attempt}/{max_attempts} for {component_name}...")
+                    
+                    # Add retry-specific instructions for known validation issues
+                    if component_name == "caption" and last_error and "word_count" in str(last_error).lower():
+                        # For caption word count issues, modify the component config with more specific instructions
+                        if "options" in component_config and "messages" in component_config["options"]:
+                            # Add a message with specific instructions about word counts
+                            word_count_error = str(last_error)
+                            retry_message = {
+                                "role": "user", 
+                                "content": f"The previous generation failed validation: {word_count_error}. Please regenerate with SHORTER sections to meet word count requirements."
+                            }
+                            component_config["options"]["messages"].append(retry_message)
+                    
+                    # For JSON-LD issues, add more specific instructions
+                    if component_name == "jsonld" and last_error and "json" in str(last_error).lower():
+                        if "options" in component_config and "messages" in component_config["options"]:
+                            retry_message = {
+                                "role": "user", 
+                                "content": f"The previous generation failed: {last_error}. Please output valid JSON-LD in a proper code block."
+                            }
+                            component_config["options"]["messages"].append(retry_message)
+                    
+                    # For tags issues, add specific instructions
+                    if component_name == "tags" and last_error:
+                        if "options" in component_config and "messages" in component_config["options"]:
+                            retry_message = {
+                                "role": "user", 
+                                "content": "The previous generation failed. Please output ONLY a comma-separated list of tags (e.g., 'Tag1, Tag2, Tag3'). No other text, explanations, or formatting."
+                            }
+                            component_config["options"]["messages"].append(retry_message)
+                    
+                    # For metatags issues, add specific instructions
+                    if component_name == "metatags" and last_error:
+                        if "options" in component_config and "messages" in component_config["options"]:
+                            retry_message = {
+                                "role": "user", 
+                                "content": "The previous generation failed. Please output ONLY HTML meta tags (e.g., '<meta name=\"description\" content=\"...\">'). No other HTML elements, explanations, or formatting."
+                            }
+                            component_config["options"]["messages"].append(retry_message)
+                
+                # Generate content
+                content = generator.generate()
+                
+            except Exception as e:
+                last_error = e
+                print(f"Attempt {attempt}/{max_attempts} failed: {str(e)}")
+                attempt += 1
+                
+                if attempt > max_attempts:
+                    print(f"All {max_attempts} attempts failed for {component_name} generation.")
+                    raise e
         
         print("\n" + "="*60)
         print(f"GENERATED {component_name.upper()}:")
@@ -826,59 +876,116 @@ def run_batch_generation():
     else:
         raise ValueError(f"Invalid mode: {BATCH_CONFIG['mode']}")
     
-    # Get enabled components
-    enabled_components = [name for name, config in BATCH_CONFIG["components"].items() 
-                         if config.get("enabled", False)]
-    
+    # Get enabled components (folders)
+    enabled_components = [name for name, config in BATCH_CONFIG["components"].items() if config.get("enabled", False)]
     print(f"Enabled components: {', '.join(enabled_components)}")
-    
-    # Process each subject
+
+    # Make sure frontmatter is the first component to process if enabled
+    if "frontmatter" in enabled_components:
+        enabled_components.remove("frontmatter")
+        enabled_components.insert(0, "frontmatter")
+
+    # Track output parity for all folders
+    output_tracker = {comp: set() for comp in enabled_components}
     total_generated = 0
-    successful_components = []
-    
+    successful_components = set()
+
+    # Process each subject
     for subject, subject_article_type, category in subjects_to_process:
         print(f"\n--- Processing: {subject} ---")
-        
-        # Create article context for this subject  
         article_context = create_article_context(subject, subject_article_type, author_id, category)
         
-        # Generate each enabled component
+        # FIRST STEP: Always generate frontmatter first and validate it
         frontmatter_content = None
+        frontmatter_data = None
         
+        # Check if frontmatter is enabled
+        frontmatter_enabled = BATCH_CONFIG["components"]["frontmatter"].get("enabled", False)
+        
+        if frontmatter_enabled:
+            print(f"Generating frontmatter for: {subject} (prerequisite for other components)")
+            frontmatter_content, frontmatter_data = generate_frontmatter_component(article_context)
+            
+            # Save frontmatter output regardless of success
+            if frontmatter_content:
+                category_for_output = article_context.get("category")
+                output_path = save_component_output("frontmatter", subject, frontmatter_content, category_for_output, subject_article_type)
+                print(f"✅ Frontmatter saved to: {output_path}")
+                output_tracker["frontmatter"].add(subject)
+                total_generated += 1
+                successful_components.add("frontmatter")
+            else:
+                # Create empty frontmatter file to maintain folder parity
+                content = f"<!-- Category: {category}, Article Type: {subject_article_type}, Subject: {subject} -->\n"
+                content += f"<!-- No valid frontmatter generated for {subject} -->\n"
+                category_for_output = article_context.get("category")
+                output_path = save_component_output("frontmatter", subject, content, category_for_output, subject_article_type)
+                print(f"⚠️ Empty frontmatter placeholder saved to: {output_path}")
+                output_tracker["frontmatter"].add(subject)
+        
+        # SECOND STEP: Only generate other components if frontmatter was successfully generated
+        if frontmatter_enabled and not frontmatter_data:
+            print(f"❌ Skipping remaining components for {subject} due to frontmatter generation failure")
+            
+            # Create empty placeholder files for all other components to maintain folder parity
+            for component_name in enabled_components:
+                if component_name != "frontmatter":
+                    content = f"<!-- Category: {category}, Article Type: {subject_article_type}, Subject: {subject} -->\n"
+                    content += f"<!-- No content generated for {subject} ({component_name}) due to frontmatter failure -->\n"
+                    category_for_output = article_context.get("category")
+                    output_path = save_component_output(component_name, subject, content, category_for_output, subject_article_type)
+                    print(f"⚠️ Empty {component_name} placeholder saved to: {output_path}")
+                    output_tracker[component_name].add(subject)
+            
+            # Skip to next subject
+            continue
+        
+        # Process remaining components now that we have valid frontmatter
         for component_name in enabled_components:
+            # Skip frontmatter as we've already handled it
+            if component_name == "frontmatter":
+                continue
+                
             try:
                 print(f"Generating {component_name} for: {subject} ({subject_article_type})")
-                
-                # Generate the component
-                if component_name == "frontmatter":
-                    content = generate_frontmatter_component(article_context)
-                    frontmatter_content = content  # Store for other components
-                else:
-                    content = generate_component(component_name, article_context, frontmatter_content)
-                
-                if content:
-                    # Save to modular file structure with category info
-                    category = article_context.get("category")
-                    output_path = save_component_output(component_name, subject, content, category, subject_article_type)
-                    print(f"✅ {component_name.capitalize()} saved to: {output_path}")
-                    
-                    total_generated += 1
-                    if component_name not in successful_components:
-                        successful_components.append(component_name)
-                else:
-                    print(f"❌ {component_name.capitalize()} generation failed.")
-                    
+                content = generate_component(component_name, article_context, frontmatter_content)
+
+                # Guarantee output file for every folder, even if content is None
+                if content is None:
+                    content = f"<!-- Category: {category}, Article Type: {subject_article_type}, Subject: {subject} -->\n"
+                    content += f"<!-- No content generated for {subject} ({component_name}) -->\n"
+
+                category_for_output = article_context.get("category")
+                output_path = save_component_output(component_name, subject, content, category_for_output, subject_article_type)
+                print(f"✅ {component_name.capitalize()} saved to: {output_path}")
+                output_tracker[component_name].add(subject)
+                total_generated += 1
+                successful_components.add(component_name)
             except Exception as e:
                 print(f"❌ Error generating {component_name}: {str(e)}")
-    
-    # Summary
+                
+                # Create empty placeholder file to maintain folder parity
+                content = f"<!-- Category: {category}, Article Type: {subject_article_type}, Subject: {subject} -->\n"
+                content += f"<!-- Error generating {component_name}: {str(e)} -->\n"
+                category_for_output = article_context.get("category")
+                output_path = save_component_output(component_name, subject, content, category_for_output, subject_article_type)
+                print(f"⚠️ Error placeholder saved to: {output_path}")
+                output_tracker[component_name].add(subject)
+
+    # Parity check: ensure every folder has output for every subject
     print("\n📊 Generation Summary:")
     print(f"   Mode: {BATCH_CONFIG['mode']}")
     print(f"   Subjects processed: {len(subjects_to_process)}")
     print(f"   Enabled components: {', '.join(enabled_components)}")
     print(f"   Successful components: {', '.join(successful_components)}")
     print(f"   Total content sections: {total_generated}")
-    
+    for comp in enabled_components:
+        missing = set([s[0] for s in subjects_to_process]) - output_tracker[comp]
+        if missing:
+            print(f"   ⚠️ {comp} missing subjects: {', '.join(missing)}")
+        else:
+            print(f"   ✅ {comp} has output for all subjects.")
+
     print("\n🎉 Content generation completed successfully!")
 
 if __name__ == "__main__":

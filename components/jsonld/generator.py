@@ -22,44 +22,18 @@ class JsonldGenerator(BaseComponent):
             str: The generated JSON-LD
             
         Raises:
-            ValueError: If required data is missing or invalid
+            ValueError: If generation fails
         """
-        # Strict validation - no fallbacks
-        data = self._prepare_data()
+        # Use base class schema-driven data preparation
+        data = self.get_template_data()
+        
+        # JSON-LD requires frontmatter - strict validation
+        if not data.get("frontmatter_data"):
+            raise ValueError("Frontmatter data is required for JSON-LD generation")
+        
         prompt = self._format_prompt(data)
         content = self._call_api(prompt)
         return self._post_process(content)
-    
-    def _prepare_data(self) -> Dict[str, Any]:
-        """Prepare data for JSON-LD generation with strict validation.
-        
-        Returns:
-            Dict[str, Any]: Validated data for prompt formatting
-            
-        Raises:
-            ValueError: If frontmatter is missing or invalid
-        """
-        data = super()._prepare_data()
-        
-        # Frontmatter is required - no defaults
-        frontmatter = self.get_frontmatter_data()
-        if not frontmatter:
-            raise ValueError("Frontmatter data is required for JSON-LD generation")
-        
-        # Required fields validation
-        required_fields = ["name", "description"]
-        for field in required_fields:
-            if field not in frontmatter or not frontmatter[field]:
-                raise ValueError(f"Required frontmatter field '{field}' is missing or empty")
-        
-        # Add validated frontmatter data
-        data.update({
-            "frontmatter_data": frontmatter,
-            "available_keys": list(frontmatter.keys()),
-            "schema_type": self._get_schema_type(),
-        })
-        
-        return data
     
     def _get_schema_type(self) -> str:
         """Get schema type based on article type - strict mapping.
@@ -140,6 +114,31 @@ class JsonldGenerator(BaseComponent):
                 logger.debug(f"Invalid JSON object: {e}")
         
         raise ValueError("No valid JSON-LD found in API response")
+    
+    def _extract_json_from_code_blocks(self, content: str) -> str:
+        """Extract JSON from code blocks in content.
+        
+        Args:
+            content: Content to extract JSON from
+            
+        Returns:
+            str: Extracted JSON string or empty string if none found
+        """
+        # Look for JSON in markdown code blocks
+        code_block_pattern = r"```(?:json)?\s*\n([\s\S]*?)\n```"
+        matches = re.findall(code_block_pattern, content)
+        
+        for match in matches:
+            # Try to parse as JSON to verify
+            try:
+                json_obj = json.loads(match.strip())
+                # If it has @context and @type, it's likely JSON-LD
+                if isinstance(json_obj, dict) and "@context" in json_obj and "@type" in json_obj:
+                    return match.strip()
+            except json.JSONDecodeError:
+                continue
+        
+        return ""
     
     def _validate_jsonld(self, jsonld: Dict[str, Any]) -> None:
         """Validate JSON-LD structure.

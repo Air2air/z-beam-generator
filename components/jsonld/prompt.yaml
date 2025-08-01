@@ -1,71 +1,59 @@
 name: "JSON-LD Generator"
 description: "Generates concise, Schema.org-compliant JSON-LD for laser cleaning articles, optimized for SEO and E-A-T."
-version: "3.0.3"
+version: "3.0.4"
 template: |
-  Generate CONCISE, Schema.org-compliant JSON-LD for a {article_type} article about {subject} IN THE CONTEXT OF LASER CLEANING TECHNOLOGY.
+  Generate Schema.org-compliant JSON-LD for this {article_type} about {subject} in the laser cleaning industry.
 
-  🚨 CRITICAL CONTEXT: This is about "{subject}" in the professional laser cleaning industry context.
-
-  🚨 CRITICAL: Use ALL the provided frontmatter data to create rich, detailed JSON-LD structure.
-
-  FRONTMATTER DATA TO USE:
+  FRONTMATTER:
   ---
   {frontmatter}
   ---
 
-  MAPPING INSTRUCTIONS FOR {article_type}:
+  INSTRUCTIONS FOR {article_type} TYPE:
 
-  FOR REGION ARTICLES:
-  - Use "Place" as @type
-  - Map geoCoordinates to "geo" with GeoCoordinates type
-  - Map economicData to "additionalProperty" array
-  - Map manufacturingCenters to "containsPlace" array
-  - Map technicalSpecifications to "additionalProperty"
+  IF REGION:
+  - @type: "Place"
+  - Map: geoCoordinates → geo (GeoCoordinates type)
+  - Map: economicData → additionalProperty (array)
+  - Map: manufacturingCenters → containsPlace (array)
+  - Map: technicalSpecifications → additionalProperty
   - Include address with county/state from geoCoordinates
-  - Use adjacentCities for "nearbyPlace"
 
-  FOR MATERIAL ARTICLES:
-  - Use "Product" as @type  
-  - Map technicalSpecifications to "additionalProperty" array
-  - Map composition to "material" array
-  - Map applications to "applicationCategory"
+  IF MATERIAL:
+  - @type: "Product"  
+  - Map: technicalSpecifications → additionalProperty (array)
+  - Map: composition → material (array)
+  - Map: applications → applicationCategory
   - Include environmentalImpact and regulatoryStandards
 
-  FOR APPLICATION ARTICLES:
-  - Use "TechnicalArticle" as @type
-  - Map applications to "about" field
-  - Map technicalSpecifications to "additionalProperty"
+  IF APPLICATION:
+  - @type: "TechnicalArticle"
+  - Map: applications → about field
+  - Map: technicalSpecifications → additionalProperty
   - Include industry context and outcomes
 
-  FOR THESAURUS ARTICLES:
-  - Use "DefinedTerm" as @type
-  - Map alternateNames to "alternateName"
-  - Map relatedTerms to "relatedLink"
+  IF THESAURUS:
+  - @type: "DefinedTerm"
+  - Map: alternateNames → alternateName
+  - Map: relatedTerms → relatedLink
 
-  🚨 SCHEMA.ORG COMPLIANCE:
+  REQUIREMENTS:
   - Use ONLY valid Schema.org properties
   - Include complete author object with name, nationality, credentials
-  - Use website URL from frontmatter
-  - Include date fields (datePublished, dateModified)
+  - Include dates (datePublished, dateModified)
   - Add publisher information for Z-Beam
-  - Output 1,000–2,000 characters
-
-  🚨 E-A-T AND SEO OPTIMIZATION:
-  - Use author credentials for trustworthiness
-  - Include precise measurement units and standards
-  - For regions, include geographic and economic details
-  - Ensure all technical specifications are preserved
-
-  Generate Schema.org-compliant JSON-LD using the rich frontmatter data above.
+  - Output between 1,000–2,000 characters
+  - Include precise measurements and standards
+  - Add geographic/economic details for regions
 parameters:
   max_tokens: 2500
   temperature: 0.6
   top_p: 0.9
 validation:
-  required_fields: ["@context", "@type", "{article_type == 'thesaurus' ? 'name' : article_type == 'region' ? 'name' : 'headline'}", "description", "author", "url", "keywords"]
+  required_fields: ["@context", "@type", "headline", "description", "author", "url", "keywords"]
   min_length: 1000
   max_length: 2000
-  schema_org_type: "{article_type == 'thesaurus' ? 'DefinedTerm' : article_type == 'region' ? 'Place' : 'TechnicalArticle'}"
+  schema_org_type: "TechnicalArticle"
   required_schema_coverage: 85
   schema_org_compliance: true
   valid_properties_only: true
