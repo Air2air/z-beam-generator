@@ -234,9 +234,8 @@ class TableGenerator(EnhancedBaseComponent):
                 formatted_lines.append('| ' + ' | '.join(cells) + ' |')
             # For data rows, format keys to title case with spaces if first column
             elif i > separator_idx and len(cells) > 0:
-                # Convert first cell (key) to title case with spaces
-                if self._is_likely_camel_case(cells[0]):
-                    cells[0] = self._camel_to_title_case(cells[0])
+                # Always convert first cell (key) to title case
+                cells[0] = self._convert_to_title_case(cells[0])
                 formatted_lines.append('| ' + ' | '.join(cells) + ' |')
             else:
                 formatted_lines.append('| ' + ' | '.join(cells) + ' |')
@@ -258,6 +257,27 @@ class TableGenerator(EnhancedBaseComponent):
         
         return any(prev.islower() and current.isupper() 
                   for prev, current in zip(text[:-1], text[1:]))
+    
+    def _convert_to_title_case(self, text: str) -> str:
+        """Convert any text to Title Case With Spaces.
+        
+        Args:
+            text: Input text
+            
+        Returns:
+            str: Text in Title Case With Spaces format
+        """
+        # First check if it's camelCase and convert it appropriately
+        if self._is_likely_camel_case(text):
+            # Use regex to insert space before uppercase letters
+            s1 = re.sub(r'(.)([A-Z][a-z]+)', r'\1 \2', text)
+            s2 = re.sub(r'([a-z0-9])([A-Z])', r'\1 \2', s1)
+            text = s2
+        
+        # Split by spaces, underscores, or hyphens
+        words = re.split(r'[ _-]+', text)
+        # Title case each word and join with spaces
+        return ' '.join(word.capitalize() for word in words)
     
     def _camel_to_title_case(self, text: str) -> str:
         """Convert camelCase to Title Case With Spaces.

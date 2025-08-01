@@ -81,7 +81,7 @@ BATCH_CONFIG = {
                 "Compatible Materials",
                 "Data Table",
                 "Keywords",
-                "Geographic Distribution", 
+                "Geographic Distribution",
                 "Location Details",
             ]
         },
