@@ -7,6 +7,7 @@ template: |
   
   REQUIREMENTS:
   - EXACTLY {count} bullet points
+  - Each bullet point: 15-30 words in length
   - Use technical data from frontmatter
   - Focus on laser cleaning specifications and applications
   
@@ -31,3 +32,5 @@ validation:
   exact_count: "{count}"
   require_technical_data: true
   markdown_format: true
+  min_words_per_bullet: 15
+  max_words_per_bullet: 30

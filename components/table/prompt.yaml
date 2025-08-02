@@ -55,7 +55,6 @@ analysis:
   strategy_priority:
     - "explicit_type"  # Use table_structure.type if specified
     - "list_based"     # Generate tables from lists of objects
-    - "range_based"    # Generate interpolated tables for numerical ranges
     - "key_value"      # Generate simple key-value tables
     
   # Priority for frontmatter keys (determines order of tables)
@@ -75,7 +74,6 @@ analysis:
   default_handling:
     list_of_objects: "table"
     list_of_strings: "bullet_list"
-    object_with_ranges: "range_table"
     simple_value: "include"
     
   # Special handling directives
@@ -87,18 +85,6 @@ analysis:
     - key: "tags"
       directive: "convert_to_table"
       
-# Range table configuration (applied to type: "range" tables)
-range_tables:
-  min_steps: 5
-  max_steps: 5
-  interpolation: "linear"
-  default_column_labels:
-    - "Minimum"
-    - "Low"
-    - "Optimal"
-    - "High"
-    - "Maximum"
-
 # Optimization settings
 optimization:
   highlight_optimal: true

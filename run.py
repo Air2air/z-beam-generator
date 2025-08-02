@@ -26,7 +26,7 @@ import os
 
 BATCH_CONFIG = {
     # Generation mode: "single" for one subject, "multi" for multiple subjects
-    "mode": "multi",  # "single" or "multi"
+    "mode": "single",  # "single" or "multi"
     
     # Single subject configuration (used when mode="single")
     "single_subject": {
@@ -63,7 +63,7 @@ BATCH_CONFIG = {
             "temperature": 0.9  # Override global temperature for frontmatter
         },
         "content": {
-            "enabled": True,
+            "enabled": False,
             "min_words": 200,
             "max_words": 400,
             "inline_links": {
@@ -71,11 +71,11 @@ BATCH_CONFIG = {
             }
         },
         "bullets": {
-            "enabled": True,
+            "enabled": False,
             "count": 4
         },
         "table": {
-            "enabled": True,
+            "enabled": False,
             "rows": 5,
             "skip_sections": [
                 "Application Examples",
@@ -116,7 +116,7 @@ BATCH_CONFIG = {
     
     # Output configuration
     "output": {
-        "base_dir": "/Users/todddunning/Desktop/Z-Beam/z-beam-test-push/content/components",
+        "base_dir": "content/components",
         "hierarchy": "flat",  # "flat", "by_article_type", "by_category", or "nested"
         "include_category_metadata": True,  # Include category info in generated files
     },

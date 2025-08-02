@@ -27,7 +27,7 @@ template: |
   
   FIELD NAMING CONSISTENCY:
   - name: Used internally for subject identification (EXACTLY "{subject}")
-  - title: Used for SEO and display purposes
+  - title: Used for SEO and display purposes with format "{subject} Laser Cleaning | Technical Guide"
 
   SCHEMA STRUCTURE:
   - Follow EXACTLY this schema for {article_type}
@@ -151,7 +151,9 @@ template: |
   🚨 TABLE DATA STRUCTURE REQUIREMENTS:
   - The following fields MUST be included with EXACTLY this structure for table generation:
   
-  # IMPORTANT: Always use 'name' as the main article title field, NOT 'title'
+  # IMPORTANT: Field naming convention
+  # - 'name': Used internally for subject identification (EXACTLY "{subject}")
+  # - 'title': Used for SEO and display purposes
   
   technicalSpecifications:
     powerRange: "50–500W (modular)"
@@ -187,13 +189,6 @@ template: |
       percentage: "percentage range"
       formula: "Chemical formula if applicable"
     # Include at least 2 composition entries for materials
-  
-  environmentalImpact:
-    - benefit: "Environmental Benefit"
-      description: "Detailed explanation of the environmental benefit."
-    - benefit: "Another Environmental Benefit"
-      description: "Description of another environmental advantage."
-    # Include at least 2 environmental benefits
   
   compatibility:
     - material: "Compatible Material"

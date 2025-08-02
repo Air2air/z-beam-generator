@@ -11,6 +11,12 @@ template: |
   - STYLE: Title case (e.g., "Laser Cleaning", "Metal Processing")
   - PURPOSE: Navigation-focused, not technical SEO
   
+  REQUIRED TAGS:
+  - Always include "Laser Cleaning" as a tag
+  - Always include the material category (e.g., "Metal", "Ceramic", "Plastic") if applicable
+  - Always include the application type (e.g., "Surface Treatment", "Rust Removal") if applicable
+  - Always include the author's name (e.g., "Evelyn Wu") as a tag
+  
   DO NOT:
   - Add explanatory text, headers, or bullet points
   - Include HTML formatting or markdown
@@ -34,7 +40,7 @@ template: |
   EXISTING KEYWORDS: {extracted_keywords}
   
   REQUIRED FORMAT EXAMPLE:
-  Laser Cleaning, Metal Processing, Surface Treatment, Oxide Removal, Precision Cleaning
+  Laser Cleaning, Metal Processing, Surface Treatment, Oxide Removal, Precision Cleaning, Evelyn Wu
   Output only comma-separated tags:
 
 parameters:

@@ -18,6 +18,23 @@ template: |
   - Map: manufacturingCenters → containsPlace (array)
   - Map: technicalSpecifications → additionalProperty
   - Include address with county/state from geoCoordinates
+  
+  Example snippet for REGION:
+  ```
+  "@type": "Place",
+  "name": "Santa Clara",
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 37.3541,
+    "longitude": -121.9552
+  },
+  "containsPlace": [
+    {
+      "@type": "Place",
+      "name": "Manufacturing Center Alpha"
+    }
+  ]
+  ```
 
   IF MATERIAL:
   - @type: "Product"  
@@ -25,17 +42,61 @@ template: |
   - Map: composition → material (array)
   - Map: applications → applicationCategory
   - Include environmentalImpact and regulatoryStandards
+  
+  Example snippet for MATERIAL:
+  ```
+  "@type": "Product",
+  "name": "Alumina (Al₂O₃)",
+  "material": [
+    {
+      "@type": "ChemicalSubstance",
+      "name": "Aluminum oxide",
+      "chemicalComposition": "Al₂O₃"
+    }
+  ],
+  "applicationCategory": ["Semiconductor cleaning"]
+  ```
 
   IF APPLICATION:
   - @type: "TechnicalArticle"
   - Map: applications → about field
   - Map: technicalSpecifications → additionalProperty
   - Include industry context and outcomes
+  
+  Example snippet for APPLICATION:
+  ```
+  "@type": "TechnicalArticle",
+  "about": {
+    "@type": "Thing",
+    "name": "Laser Cleaning",
+    "description": "Non-contact surface cleaning process"
+  },
+  "characteristic": [
+    {
+      "@type": "PropertyValue",
+      "name": "Laser Type",
+      "value": "Fiber laser"
+    }
+  ]
+  ```
 
   IF THESAURUS:
   - @type: "DefinedTerm"
   - Map: alternateNames → alternateName
   - Map: relatedTerms → relatedLink
+  
+  Example snippet for THESAURUS:
+  ```
+  "@type": "DefinedTerm",
+  "name": "Laser Ablation",
+  "alternateName": ["Laser Removal", "Ablative Cleaning"],
+  "relatedLink": [
+    {
+      "@type": "DefinedTerm",
+      "name": "Laser Cleaning"
+    }
+  ]
+  ```
 
   REQUIREMENTS:
   - Use ONLY valid Schema.org properties

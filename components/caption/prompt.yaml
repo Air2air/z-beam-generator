@@ -6,9 +6,8 @@ template: |
   Create a technical image caption for a before/after laser cleaning comparison of {material}.
   
   STRICT WORD COUNT REQUIREMENTS:
-  - Results section: MAXIMUM {results_word_count_max} WORDS (will be rejected if longer)
-  - Equipment section: MAXIMUM {equipment_word_count_max} WORDS (will be rejected if longer)
-  - NO EXCEPTIONS to these limits
+  - Results section: Maximum {results_word_count_max} words
+  - Equipment section: Maximum {equipment_word_count_max} words
   
   STRUCTURE:
   - Caption for image showing: degraded {shape} made of {material} → laser-cleaned {shape}
@@ -21,14 +20,14 @@ template: |
   
   SECTIONS:
   
-  ### Results Section (STRICT MAXIMUM {results_word_count_max} WORDS)
+  ### Results Section (Maximum {results_word_count_max} words)
   Begin with "**Results:**" and describe:
   1. Typical contaminants specific to {material}
   2. Cleanliness metrics and oxide layer reduction
   3. Surface property changes (roughness, wettability)
   4. Material integrity preservation
   
-  ### Equipment Section (STRICT MAXIMUM {equipment_word_count_max} WORDS)
+  ### Equipment Section (Maximum {equipment_word_count_max} words)
   Begin with "**Equipment:**" and describe:
   1. Power settings (energy density, power, pulse duration)
   2. Machine details (specific laser systems if available)
@@ -38,8 +37,6 @@ template: |
   - Application-specific surface treatments
   - Measurable results
   - Equipment details
-  
-  COUNT YOUR WORDS FOR EACH SECTION BEFORE SUBMITTING
 
 parameters:
   max_tokens: 1000

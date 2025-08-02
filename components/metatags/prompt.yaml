@@ -44,7 +44,7 @@ template: |
     url: "https://www.z-beam.com/{subject}-laser-cleaning"
     siteName: "Z-Beam"
     images:
-      - url: "https://www.z-beam.com/images/{subject}-laser-cleaning.jpg"
+      - url: "https://www.z-beam.com/images/{article_type}/{subject}.jpg"
         width: 1200
         height: 630
         alt: "{subject} Laser Cleaning"
@@ -56,7 +56,7 @@ template: |
     card: "summary_large_image"
     title: "{subject} Laser Cleaning: Technical Guide"
     description: "Comprehensive technical resource on {subject} laser cleaning applications, specifications, and best practices."
-    images: ["https://www.z-beam.com/images/{subject}-laser-cleaning.jpg"]
+    images: ["https://www.z-beam.com/images/{article_type}/{subject}.jpg"]
   ---
 
 parameters:
