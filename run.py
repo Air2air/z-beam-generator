@@ -48,7 +48,6 @@ BATCH_CONFIG = {
         "provider": "deepseek",  # deepseek, openai, xai, gemini
         "options": {
             "model": "deepseek-chat", # deepseek-chat (88), "GPT-4o" (76), "grok-3-latest" (62), "gemini-1.5-flash"
-            "temperature": 0.7,
             "max_tokens": 4000
         }
     },
@@ -63,20 +62,23 @@ BATCH_CONFIG = {
             "temperature": 0.9  # Override global temperature for frontmatter
         },
         "content": {
-            "enabled": False,
+            "enabled": True,
             "min_words": 200,
             "max_words": 400,
+            "temperature": 0.7,  # Balanced creativity for main content
             "inline_links": {
                 "max_links": 5
             }
         },
         "bullets": {
-            "enabled": False,
-            "count": 4
+            "enabled": True,
+            "count": 4,
+            "temperature": 0.6  # Slightly lower for more focused bullet points
         },
         "table": {
-            "enabled": False,
+            "enabled": True,
             "rows": 5,
+            "temperature": 0.4,  # Lower temperature for more consistent, structured table data
             "skip_sections": [
                 "Application Examples",
                 "Author Information",
@@ -91,6 +93,7 @@ BATCH_CONFIG = {
         },
         "tags": {
             "enabled": True,
+            "temperature": 0.8,  # Higher for more diverse tag generation
             "max_tags": 10,
             "min_tags": 5,
             "tag_categories": [
@@ -102,15 +105,18 @@ BATCH_CONFIG = {
             "results_word_count_max": 40,
             "equipment_word_count_max": 40,
             "shape": "component",
+            "temperature": 0.75,  # Slightly higher for creative but controlled captions
             "max_tokens": 1000  # Override global max_tokens for caption
         },
         "jsonld": {
-            "enabled": True
+            "enabled": True,
+            "temperature": 0.3  # Low temperature for structured JSON data
         },
         "metatags": {
             "enabled": True,
             "min_tags": 8,
-            "max_tags": 20
+            "max_tags": 20,
+            "temperature": 0.5  # Moderate temperature for balanced metadata generation
         },
     },
     

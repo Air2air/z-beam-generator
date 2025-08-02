@@ -10,7 +10,7 @@ template: |
   - COUNT: {min_tags}-{max_tags} metadata fields total
   - MUST INCLUDE: title, description, keywords, openGraph properties
   - FORMAT: Standard YAML format following Next.js metadata conventions
-  - FIELD MAPPING: Ensure 'name' field from frontmatter maps to 'title' in metatags
+  - FIELD MAPPING: Use title, description from frontmatter
   
   FIELD NAMING CONSISTENCY:
   - Use 'title' for display in metatags (NOT 'name')
@@ -30,12 +30,18 @@ template: |
   
   REQUIRED YAML STRUCTURE (Next.js compatible):
   
+  ```yaml
   ---
   # Basic metadata (Next.js Head)
   title: "{subject} Laser Cleaning | Technical Guide"
   description: "Technical guide to {subject} laser cleaning including specifications, applications, and environmental impact."
   keywords: "{subject}, laser cleaning, {extracted_keywords}"
   author: "{author_name}"
+  
+  # For material article types, must include application as an object with name and description
+  application:
+    name: "Laser Cleaning"
+    description: "Removal of contaminants, oxides, and coatings from {subject} surfaces using high-precision laser technology."
   
   # Open Graph / Facebook (Next.js compatible format)
   openGraph:
@@ -58,12 +64,12 @@ template: |
     description: "Comprehensive technical resource on {subject} laser cleaning applications, specifications, and best practices."
     images: ["https://www.z-beam.com/images/{article_type}/{subject}.jpg"]
   ---
-
+  ```
 parameters:
   max_tokens: 1000
-  temperature: 0.7
+  temperature: 0.5
   system_message: "You are a metadata generator for a Next.js website. You generate YAML frontmatter with metadata for SEO optimization. ONLY output the YAML frontmatter with --- delimiters. Do not include ANY other text or explanations."
 validation:
-  min_tags: "{min_tags}"
-  max_tags: "{max_tags}"
-  required_fields: ["title", "description", "openGraph", "twitter"]
+  min_tags: 8
+  max_tags: 20
+  required_fields: ["title", "description", "keywords", "openGraph", "twitter"]

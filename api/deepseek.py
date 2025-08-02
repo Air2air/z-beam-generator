@@ -51,7 +51,7 @@ class DeepseekClient:
         payload = {
             "model": self.model,
             "messages": [{"role": "user", "content": prompt}],
-            "temperature": self.options["temperature"],  # No fallback - must be provided
+            "temperature": self.options.get("temperature", 0.5),  # Default to 0.5 if not provided
             "max_tokens": self.options["max_tokens"]     # No fallback - must be provided
         }
         

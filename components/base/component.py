@@ -89,7 +89,16 @@ class BaseComponent(ABC):
         required_author_fields = ["author_name", "author_country"]
         for field in required_author_fields:
             if field not in self.author_data:
-                raise ValueError(f"Required author field '{field}' is missing")
+                # Check if we have frontmatter data with nested author info as fallback
+                if hasattr(self, '_frontmatter_data') and self._frontmatter_data and 'author' in self._frontmatter_data:
+                    author_key = field.replace('author_', '')
+                    if author_key in self._frontmatter_data['author']:
+                        # Use author data from frontmatter
+                        self.author_data[field] = self._frontmatter_data['author'][author_key]
+                    else:
+                        raise ValueError(f"Required author field '{field}' is missing")
+                else:
+                    raise ValueError(f"Required author field '{field}' is missing")
 
         # Get component name
         component_name = self.__class__.__name__.replace("Generator", "").lower()

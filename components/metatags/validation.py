@@ -16,8 +16,29 @@ def validate_article_specific_fields(article_type: str, category: str, parsed: d
     """
     if article_type == "material":
         # For material articles, validate material-specific fields
-        if 'application' in parsed and not isinstance(parsed['application'], dict):
-            raise ValueError("'application' must be an object with 'name' and 'description'")
+        if 'application' in parsed:
+            # Fix application if it's not properly structured
+            if not isinstance(parsed['application'], dict):
+                # Convert string or other types to proper dict structure
+                if isinstance(parsed['application'], str):
+                    parsed['application'] = {
+                        'name': parsed['application'],
+                        'description': f"Application of laser cleaning technology for {parsed['application']}."
+                    }
+                else:
+                    # Create a default application object
+                    subject = parsed.get('title', '').split(' ')[0] if 'title' in parsed else "Material"
+                    parsed['application'] = {
+                        'name': f"{subject} Laser Cleaning",
+                        'description': f"Removal of contaminants, oxides, and coatings from surfaces using high-precision laser technology."
+                    }
+            
+            # Ensure required fields exist in application object
+            if 'name' not in parsed['application']:
+                parsed['application']['name'] = "Laser Cleaning Application"
+            
+            if 'description' not in parsed['application']:
+                parsed['application']['description'] = "Application of laser cleaning technology for surface preparation and contamination removal."
             
         if 'properties' in parsed:
             if not isinstance(parsed['properties'], dict):

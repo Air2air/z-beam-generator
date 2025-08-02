@@ -67,14 +67,42 @@ class MetatagsGenerator(EnhancedBaseComponent):
                 template_data = self.get_template_data()
                 if 'all_frontmatter' in template_data and template_data['all_frontmatter']:
                     try:
-                        frontmatter = yaml.safe_load(template_data['all_frontmatter'])
+                        frontmatter = template_data['frontmatter_data'] if 'frontmatter_data' in template_data else {}
                         
-                        # Copy fields from frontmatter to metatags if they don't exist
-                        for field in ['application', 'properties', 'chemicalProperties', 'environmentalImpact', 'regulatoryStandards']:
+                        # Always create a valid application object for material article types
+                        if self.article_type == 'material' and ('application' not in parsed or not isinstance(parsed['application'], dict)):
+                            parsed['application'] = {
+                                'name': f"{self.subject} Laser Cleaning",
+                                'description': f"Removal of contaminants, oxides, and coatings from {self.subject} surfaces using high-precision laser technology."
+                            }
+                        
+                        # Use applications from frontmatter if available
+                        if 'applications' in frontmatter and isinstance(frontmatter['applications'], list) and frontmatter['applications']:
+                            # Get the first application from the list
+                            first_app = frontmatter['applications'][0]
+                            
+                            # If it's already a dict with name and description, use it directly
+                            if isinstance(first_app, dict) and 'name' in first_app and 'description' in first_app:
+                                parsed['application'] = first_app
+                            # If it's just a string, create a proper object
+                            elif isinstance(first_app, str):
+                                parsed['application'] = {
+                                    'name': first_app,
+                                    'description': f"Application of laser cleaning technology for {first_app} in the {self.subject} industry."
+                                }
+                            # If it has only a name, add a description
+                            elif isinstance(first_app, dict) and 'name' in first_app and 'description' not in first_app:
+                                parsed['application'] = {
+                                    'name': first_app['name'],
+                                    'description': f"Application of laser cleaning technology for {first_app['name']} in the {self.subject} industry."
+                                }
+                        
+                        # Copy other fields from frontmatter
+                        for field in ['properties', 'chemicalProperties', 'environmentalImpact', 'regulatoryStandards']:
                             if field in frontmatter and field not in parsed:
                                 parsed[field] = frontmatter[field]
                     except Exception as e:
-                        logger.warning(f"Could not parse frontmatter: {e}")
+                        logger.warning(f"Could not process frontmatter data: {e}")
                 
                 # Convert back to YAML and format with --- delimiters
                 formatted_yaml = format_yaml_object(parsed)

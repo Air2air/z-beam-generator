@@ -1,10 +1,18 @@
 name: "JSON-LD Generator"
 description: "Generates concise, Schema.org-compliant JSON-LD for laser cleaning articles, optimized for SEO and E-A-T."
-version: "3.0.4"
+version: "3.0.5"
 template: |
   Generate Schema.org-compliant JSON-LD for this {article_type} about {subject} in the laser cleaning industry.
 
-  FRONTMATTER:
+  CRITICAL REQUIREMENTS:
+  - Output ONLY valid JSON-LD code in a proper JSON code block
+  - Include @context and @type fields
+  - Follow Schema.org best practices
+  - Use the correct @type based on the article_type
+  - Output MUST be parseable as JSON
+  - Include ALL relevant data from the frontmatter
+  
+  FRONTMATTER DATA:
   ---
   {frontmatter}
   ---
@@ -18,103 +26,70 @@ template: |
   - Map: manufacturingCenters → containsPlace (array)
   - Map: technicalSpecifications → additionalProperty
   - Include address with county/state from geoCoordinates
+  - Include author (from author object)
+  - Include countries field if available
   
-  Example snippet for REGION:
-  ```
-  "@type": "Place",
-  "name": "Santa Clara",
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 37.3541,
-    "longitude": -121.9552
-  },
-  "containsPlace": [
-    {
-      "@type": "Place",
-      "name": "Manufacturing Center Alpha"
-    }
-  ]
-  ```
-
   IF MATERIAL:
   - @type: "Product"  
-  - Map: technicalSpecifications → additionalProperty (array)
-  - Map: composition → material (array)
-  - Map: applications → applicationCategory
-  - Include environmentalImpact and regulatoryStandards
+  - Map: technicalSpecifications → additionalProperty (array of PropertyValue objects)
+  - Map: properties → additionalProperty (array of PropertyValue objects)
+  - Map: composition → material (array of materials with percentages)
+  - Map: applications → applicationCategory (comma-separated list of application names)
+  - Map: chemicalProperties → additionalProperty (array of PropertyValue objects)
+  - Include ALL environmentalImpact entries (as additionalProperty array)
+  - Include ALL regulatoryStandards entries (as additionalProperty array)
+  - Include author and publisher information
+  - Include outcomes data if available
+  - Include compatibility data if available
   
-  Example snippet for MATERIAL:
-  ```
-  "@type": "Product",
-  "name": "Alumina (Al₂O₃)",
-  "material": [
-    {
-      "@type": "ChemicalSubstance",
-      "name": "Aluminum oxide",
-      "chemicalComposition": "Al₂O₃"
-    }
-  ],
-  "applicationCategory": ["Semiconductor cleaning"]
-  ```
-
   IF APPLICATION:
   - @type: "TechnicalArticle"
   - Map: applications → about field
   - Map: technicalSpecifications → additionalProperty
   - Include industry context and outcomes
+  - Include author and datePublished
+  - Include keywords
   
-  Example snippet for APPLICATION:
-  ```
-  "@type": "TechnicalArticle",
-  "about": {
-    "@type": "Thing",
-    "name": "Laser Cleaning",
-    "description": "Non-contact surface cleaning process"
-  },
-  "characteristic": [
-    {
-      "@type": "PropertyValue",
-      "name": "Laser Type",
-      "value": "Fiber laser"
-    }
-  ]
-  ```
-
   IF THESAURUS:
   - @type: "DefinedTerm"
   - Map: alternateNames → alternateName
   - Map: relatedTerms → relatedLink
+  - Include author and datePublished
   
-  Example snippet for THESAURUS:
-  ```
-  "@type": "DefinedTerm",
-  "name": "Laser Ablation",
-  "alternateName": ["Laser Removal", "Ablative Cleaning"],
-  "relatedLink": [
-    {
-      "@type": "DefinedTerm",
-      "name": "Laser Cleaning"
-    }
-  ]
+  EXAMPLE JSON-LD FORMAT:
+  ```json
+  {{
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Example Material",
+    "description": "Technical guide to Example Material for laser cleaning applications",
+    "manufacturer": {{
+      "@type": "Organization",
+      "name": "Z-Beam"
+    }},
+    "additionalProperty": [
+      {{
+        "@type": "PropertyValue",
+        "name": "property1",
+        "value": "value1"
+      }}
+    ],
+    "applicationCategory": "Application1, Application2"
+  }}
   ```
 
-  REQUIREMENTS:
-  - Use ONLY valid Schema.org properties
-  - Include complete author object with name, nationality, credentials
-  - Include dates (datePublished, dateModified)
-  - Add publisher information for Z-Beam
-  - Output between 1,000–2,000 characters
-  - Include precise measurements and standards
-  - Add geographic/economic details for regions
+  OUTPUT ONLY THE JSON-LD CODE BLOCK ABOUT {subject}!
+
 parameters:
-  max_tokens: 2500
-  temperature: 0.6
-  top_p: 0.9
+  max_tokens: 2000
+  temperature: 0.4
+  system_message: "You are a JSON-LD generator for a technical website. You generate valid, Schema.org-compliant JSON-LD code for SEO. Your output should ONLY be a JSON-LD code block that can be parsed as valid JSON. Never include explanations or any text outside the JSON code block."
 validation:
-  required_fields: ["@context", "@type", "headline", "description", "author", "url", "keywords"]
-  min_length: 1000
-  max_length: 2000
-  schema_org_type: "TechnicalArticle"
-  required_schema_coverage: 85
-  schema_org_compliance: true
-  valid_properties_only: true
+  required_fields: ["@context", "@type", "name", "description"]
+
+parameters:
+  max_tokens: 2000
+  temperature: 0.4
+  system_message: "You are a JSON-LD generator for a technical website. You generate valid, Schema.org-compliant JSON-LD code for SEO. Your output should ONLY be a JSON-LD code block that can be parsed as valid JSON. Never include explanations or any text outside the JSON code block."
+validation:
+  required_fields: ["@context", "@type", "name", "description"]
