@@ -26,15 +26,26 @@
           "compatibility",
           "regulatoryStandards",
           "laserParameters",
-          "environmentalConsiderations"
+          "environmentalConsiderations",
+          "chemicalProperties"
         ],
         "dataStructure": {
+          "chemicalProperties": {
+            "type": "object",
+            "propertyFormat": "keyValue",
+            "itemStructure": {
+              "symbol": "string",
+              "formula": "string",
+              "materialType": "string"
+            }
+          },
           "composition": {
             "type": "array",
             "itemStructure": {
               "component": "string",
               "percentage": "string",
-              "type": "string"
+              "type": "string",
+              "formula": "string"
             }
           },
           "properties": {
@@ -59,6 +70,29 @@
         "description": "Material category (metal, ceramic, semiconductor, plastic, composite, glass, masonry, stone, wood)",
         "enum": ["metal", "ceramic", "semiconductor", "plastic", "composite", "glass", "masonry", "stone", "wood"],
         "example": "semiconductor"
+      },
+      "chemicalProperties": {
+        "type": "object",
+        "required": true,
+        "properties": {
+          "symbol": {
+            "type": "string",
+            "description": "Symbol or abbreviation for the material (e.g., Ka for Kaolin, Al for Aluminum)",
+            "example": "Ka"
+          },
+          "formula": {
+            "type": "string",
+            "description": "Chemical formula of the material",
+            "example": "Al₂Si₂O₅(OH)₄"
+          },
+          "materialType": {
+            "type": "string",
+            "enum": ["element", "compound", "alloy", "composite", "polymer", "ceramic", "mineral"],
+            "description": "Chemical classification of the material",
+            "example": "compound"
+          }
+        },
+        "description": "Chemical properties for badge symbol and identification"
       },
       "properties": {
         "type": "object",
@@ -93,6 +127,11 @@
             "type": "string",
             "description": "Fluence range",
             "example": "0.1–15 J/cm²"
+          },
+          "chemicalFormula": {
+            "type": "string",
+            "description": "Chemical formula or scientific symbol",
+            "example": "Al₂O₃"
           }
         },
         "description": "Physical, chemical, and laser cleaning parameters"
@@ -115,6 +154,10 @@
               "type": "string",
               "enum": ["element", "compound", "structural"],
               "description": "Type of component (element for metals, structural for woods, etc.)"
+            },
+            "formula": {
+              "type": "string",
+              "description": "Chemical formula or scientific symbol (e.g., Al₂O₃, SiO₂, Fe)"
             }
           }
         }
@@ -183,6 +226,7 @@
           "author",
           "keywords",
           "category",
+          "chemicalProperties",
           "properties",
           "composition",
           "compatibility",

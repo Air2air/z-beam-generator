@@ -63,16 +63,19 @@ BATCH_CONFIG = {
             "temperature": 0.9  # Override global temperature for frontmatter
         },
         "content": {
-            "enabled": False,
+            "enabled": True,
             "min_words": 200,
-            "max_words": 400
+            "max_words": 400,
+            "inline_links": {
+                "max_links": 5
+            }
         },
         "bullets": {
             "enabled": False,
             "count": 4
         },
         "table": {
-            "enabled": True,
+            "enabled": False,
             "rows": 5,
             "skip_sections": [
                 "Application Examples",
@@ -83,6 +86,7 @@ BATCH_CONFIG = {
                 "Keywords",
                 "Geographic Distribution",
                 "Location Details",
+                "Technical Specifications"
             ]
         },
         "tags": {
@@ -120,21 +124,21 @@ BATCH_CONFIG = {
     # File naming patterns for different components and article types
     "filename_patterns": {
         # Default patterns (used for all article types unless overridden)
-        "frontmatter": "{subject}.md",           # alumina.md
-        "content": "{subject}.md",               # alumina.md
-        "bullets": "{subject}.md",               # alumina.md
-        "table": "{subject}.md",                 # alumina.md
-        "tags": "{subject}.md",                  # alumina.md
-        "caption": "{subject}.md",               # alumina.md
-        "jsonld": "{subject}.md",                # alumina.md
-        "metatags": "{subject}.md",              # alumina.md
+        "frontmatter": "{subject}",           # alumina
+        "content": "{subject}",               # alumina
+        "bullets": "{subject}",               # alumina
+        "table": "{subject}",                 # alumina
+        "tags": "{subject}",                  # alumina
+        "caption": "{subject}",               # alumina
+        "jsonld": "{subject}",                # alumina
+        "metatags": "{subject}",              # alumina
         
         # Article-type specific patterns (applied to ALL components for that type)
         "article_type_patterns": {
-            "material": "{subject}-laser-cleaning.md",      # zinc-laser-cleaning.md
-            "application": "{subject}-applications.md",     # aerospace-cleaning-applications.md
-            "region": "{subject}-laser-cleaning.md",        # california-laser-cleaning.md
-            "thesaurus": "{subject}-definition.md",         # laser-ablation-definition.md
+            "material": "{subject}-laser-cleaning",      # zinc-laser-cleaning
+            "application": "{subject}-applications",     # aerospace-cleaning-applications
+            "region": "{subject}-laser-cleaning",        # california-laser-cleaning
+            "thesaurus": "{link}-definition",            # laser-ablation-definition
         },
         
         # Alternative patterns you can use:
@@ -149,6 +153,7 @@ BATCH_CONFIG = {
         # {category}     - Category name (e.g., "ceramic")
         # {article_type} - Article type (e.g., "material")
         # {component}    - Component name (e.g., "frontmatter")
+        # {link}         - The term itself for thesaurus entries (e.g., "laser-ablation")
     }
 }
 
@@ -435,14 +440,32 @@ def get_component_output_path(component_name: str, subject: str, category: str, 
     safe_category = category.lower().replace(" ", "-").replace("_", "-")
     safe_article_type = article_type.lower().replace(" ", "-").replace("_", "-")
     
+    # For thesaurus entries, the link is the term itself
+    if article_type == "thesaurus":
+        # Use the subject as the word/term for the filename
+        safe_link = safe_subject
+        
+        # Future enhancement: Extract term from frontmatter if available
+        # This would allow using a normalized term from the data rather than the subject
+        # if frontmatter_data and "term" in frontmatter_data:
+        #     term = frontmatter_data["term"].lower().replace(" ", "-").replace("_", "-")
+        #     safe_link = term
+    else:
+        safe_link = safe_subject
+    
     # Format filename using pattern
     try:
         filename = pattern.format(
             subject=safe_subject,
             category=safe_category,
             article_type=safe_article_type,
-            component=component_name
+            component=component_name,
+            link=safe_link
         )
+        
+        # Add .md extension if not present and not a thesaurus definition
+        if not filename.endswith('.md') and article_type != "thesaurus":
+            filename += '.md'
     except KeyError as e:
         raise ValueError(f"Filename pattern formatting failed, missing key: {e}")
     

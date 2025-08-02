@@ -8,6 +8,7 @@ import logging
 import os
 from abc import ABC, abstractmethod
 from typing import Dict, Any, Optional
+from components.base.material_formula_service import formula_service
 
 logger = logging.getLogger(__name__)
 
@@ -117,18 +118,41 @@ class BaseComponent(ABC):
 
         # Component-specific additions
         if component_name == "frontmatter":
+            # Add material formula if applicable
+            material_formula = None
+            material_symbol = None
+            material_type = None
+            if self.article_type == "material":
+                category = getattr(self, "category", None)
+                material_formula = formula_service.get_formula(self.subject, category)
+                material_symbol = formula_service.get_symbol(self.subject, category)
+                material_type = formula_service.get_material_type(self.subject, category)
+                
+                if not material_formula and hasattr(self, "category"):
+                    material_formula = formula_service.get_generic_formula(self.category)
+            
             template_data.update({
                 "website_url": "https://www.z-beam.com",
                 "min_words": self.component_config.get("min_words", 300),
                 "max_words": self.component_config.get("max_words", 500),
-                "required_fields": profile_data.get("validation", {}).get("frontmatter", {}).get("requiredFields", [])
+                "required_fields": profile_data.get("validation", {}).get("frontmatter", {}).get("requiredFields", []),
+                "material_formula": material_formula,
+                "material_symbol": material_symbol,
+                "material_type": material_type,
+                # Add chemical properties structure
+                "chemical_properties": {
+                    "symbol": material_symbol,
+                    "formula": material_formula,
+                    "materialType": material_type
+                }
             })
         elif component_name == "content":
             template_data.update({
                 "min_words": self.component_config.get("min_words", 800),
                 "max_words": self.component_config.get("max_words", 1200),
                 "style": self.component_config.get("style", "technical"),
-                "audience": self.component_config.get("audience", "professional")
+                "audience": self.component_config.get("audience", "professional"),
+                "max_links": self.component_config.get("inline_links", {}).get("max_links", 5)
             })
         elif component_name == "bullets":
             template_data.update({

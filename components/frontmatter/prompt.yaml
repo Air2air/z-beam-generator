@@ -37,6 +37,21 @@ template: |
   - Set "countries" to ["United States"] 
   - All manufacturing centers in California
   - Use "{website_url}" for ALL website URLs
+  
+  MATERIAL ARTICLE REQUIREMENTS:
+  - ALWAYS include chemical formula/symbol for materials when applicable
+  - Use this chemical formula if available: {material_formula}
+  - Use this symbol if available: {material_symbol}
+  - Use this material type if available: {material_type}
+  - For ceramics: Al₂O₃ (Alumina), SiO₂ (Silica), ZrO₂ (Zirconia), etc.
+  - For metals: Fe (Iron), Al (Aluminum), Cu (Copper), etc.
+  - For compounds: Include full chemical formulas (e.g., CaCO₃, SiC)
+  - Research thoroughly to provide accurate scientific notation
+  - Include a dedicated chemicalProperties section with:
+    - symbol: 2-3 character abbreviation (e.g., "Ka" for Kaolin, "Al" for Aluminum)
+    - formula: Full chemical formula (e.g., "Al₂Si₂O₅(OH)₄")
+    - materialType: Chemical classification ("element", "compound", "alloy", etc.)
+  - Also include the formula in properties.chemicalFormula and in each composition entry
 
   GEOGRAPHIC FORMAT (for regions):
   - County: "Santa Clara County"
@@ -99,10 +114,21 @@ template: |
       metric: "API 1104 compliance"
     - result: "Zero solvent waste"
       metric: "EPA hazardous waste reporting"
+  category: "ceramic"
+  articleType: "material"
+  chemicalProperties:
+    symbol: "Ka"
+    formula: "Al₂Si₂O₅(OH)₄"
+    materialType: "compound"
+  properties:
+    chemicalFormula: "Al₂Si₂O₅(OH)₄"
+    density: "2.6 g/cm³"
+    meltingPoint: "1750°C"
   composition:
-    - component: "Silica"
-      percentage: "90-99%"
-      type: "mineral"
+    - component: "Aluminosilicate"
+      percentage: "90-95%"
+      type: "compound"
+      formula: "Al₂Si₂O₅(OH)₄"
     - component: "Other minerals"
       percentage: "1-10%"
       type: "mineral"
@@ -154,9 +180,11 @@ template: |
     - component: "Primary Component"
       type: "material type"
       percentage: "percentage range"
+      formula: "Chemical formula if applicable (e.g., Al₂O₃, SiO₂)"
     - component: "Secondary Component"
       type: "material type" 
       percentage: "percentage range"
+      formula: "Chemical formula if applicable"
     # Include at least 2 composition entries for materials
   
   environmentalImpact:
