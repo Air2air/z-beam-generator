@@ -45,6 +45,12 @@ class BaseComponent(ABC):
         if not component_config or not isinstance(component_config, dict):
             raise ValueError("Component config must be a non-empty dictionary")
         
+        # Set category from component_config if available
+        if "category" in component_config:
+            self.category = component_config["category"]
+        else:
+            self.category = ""
+        
         # Extract required AI configuration from component config
         if "ai_provider" not in component_config:
             raise ValueError("ai_provider must be specified in component config")
@@ -205,17 +211,24 @@ class BaseComponent(ABC):
                 keywords.extend(frontmatter["keywords"])
         return keywords[:15]  # Limit to 15 keywords
     
-    def get_component_config(self, key: str, default: Any = None) -> Any:
-        """Get a value from component_config with a default fallback.
+    def get_component_config(self, key: str, default=None) -> Any:
+        """Get a value from component_config with strict validation.
         
         Args:
             key: Configuration key to retrieve
-            default: Default value if key doesn't exist
+            default: Default value to return if key doesn't exist (if None, raises ValueError)
             
         Returns:
-            Value from component_config or default if not found
+            Value from component_config or default
+            
+        Raises:
+            ValueError: If key doesn't exist in component_config and no default is provided
         """
-        return self.component_config.get(key, default)
+        if key not in self.component_config:
+            if default is None:
+                raise ValueError(f"Required component configuration key '{key}' not found")
+            return default
+        return self.component_config[key]
     
     def get_frontmatter_data(self) -> Optional[Dict[str, Any]]:
         """Get frontmatter data if available.
@@ -278,7 +291,13 @@ class BaseComponent(ABC):
         """
         try:
             from api.client import ApiClient
-            client = ApiClient(ai_provider=self.ai_provider, options=self.options)
+            # Create an article context dictionary from the component's data
+            article_context = {
+                "subject": self.subject,
+                "article_type": self.article_type,
+                "category": self.category
+            }
+            client = ApiClient(ai_provider=self.ai_provider, options=self.options, article_context=article_context)
             response = client.complete(prompt)
             
             if not response or not response.strip():

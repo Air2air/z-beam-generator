@@ -10,6 +10,13 @@ template: |
   - COUNT: {min_tags}-{max_tags} metadata fields total
   - MUST INCLUDE: title, description, keywords, openGraph properties
   - FORMAT: Standard YAML format following Next.js metadata conventions
+  - FIELD MAPPING: Ensure 'name' field from frontmatter maps to 'title' in metatags
+  
+  FIELD NAMING CONSISTENCY:
+  - Use 'title' for display in metatags (NOT 'name')
+  - Format 'title' as "{subject} Laser Cleaning | Technical Guide"
+  - Use same 'description' content as frontmatter
+  - Include application, properties, environmentalImpact from frontmatter
   
   DO NOT:
   - Add any explanatory text or comments outside the YAML

@@ -7,6 +7,8 @@ Generates Next.js compatible meta tags in YAML frontmatter format.
 import logging
 import yaml
 from components.base.enhanced_component import EnhancedBaseComponent
+from components.metatags.validation import validate_article_specific_fields
+from components.base.formatting_utils import format_yaml_object
 
 logger = logging.getLogger(__name__)
 
@@ -21,11 +23,11 @@ class MetatagsGenerator(EnhancedBaseComponent):
         """
         return "components/metatags/prompt.yaml"
     
-    def _post_process(self, content: str) -> str:
-        """Post-process the generated metatags, ensuring proper Next.js compatible YAML frontmatter format.
+    def _component_specific_processing(self, content: str) -> str:
+        """Process the generated metatags, ensuring proper Next.js compatible YAML frontmatter format.
         
         Args:
-            content: Raw API response
+            content: Pre-validated, clean API response
             
         Returns:
             str: Processed Next.js compatible YAML frontmatter metatags
@@ -33,9 +35,6 @@ class MetatagsGenerator(EnhancedBaseComponent):
         Raises:
             ValueError: If content is invalid
         """
-        # Validate and clean input
-        content = self._validate_non_empty(content, "API returned empty or invalid metatags")
-        
         # Log the raw content for debugging
         logger.debug(f"Raw metatags content: {content}")
         with open("logs/metatags_raw.log", "a") as f:
@@ -43,73 +42,49 @@ class MetatagsGenerator(EnhancedBaseComponent):
             f.write(f"Raw content:\n{content}\n")
             f.write("-" * 80 + "\n")
         
-        # Strip any markdown code blocks if present
-        content = self._strip_markdown_code_blocks(content)
-        
-        # Try to use the LLM-generated content first, falling back to our template if needed
+        # Try to parse the YAML to validate and normalize
         try:
-            # If we have YAML content from the LLM, use it
+            # Parse the YAML content
             if '---' in content:
-                # Return the properly formatted content
-                return content
+                # Extract content between --- markers
+                yaml_content = content.split('---')[1].strip()
+                parsed = yaml.safe_load(yaml_content)
+                
+                # Validate required fields
+                required_fields = ["title", "description", "keywords", "openGraph"]
+                missing_fields = [field for field in required_fields if field not in parsed]
+                if missing_fields:
+                    raise ValueError(f"Missing required metatag fields: {missing_fields}")
+                
+                # Ensure title field follows proper format
+                if "title" in parsed and not parsed["title"].startswith(f"{self.subject} "):
+                    parsed["title"] = f"{self.subject} Laser Cleaning | Technical Guide"
+                
+                # Validate fields based on article type
+                validate_article_specific_fields(self.article_type, getattr(self, 'category', None), parsed)
+                
+                # Ensure frontmatter data is included if available
+                template_data = self.get_template_data()
+                if 'all_frontmatter' in template_data and template_data['all_frontmatter']:
+                    try:
+                        frontmatter = yaml.safe_load(template_data['all_frontmatter'])
+                        
+                        # Copy fields from frontmatter to metatags if they don't exist
+                        for field in ['application', 'properties', 'chemicalProperties', 'environmentalImpact', 'regulatoryStandards']:
+                            if field in frontmatter and field not in parsed:
+                                parsed[field] = frontmatter[field]
+                    except Exception as e:
+                        logger.warning(f"Could not parse frontmatter: {e}")
+                
+                # Convert back to YAML and format with --- delimiters
+                formatted_yaml = format_yaml_object(parsed)
+                return f"---\n{formatted_yaml}---"
+            else:
+                raise ValueError("Missing YAML frontmatter delimiters (---)")
         except Exception as e:
-            logger.warning(f"Error parsing LLM-generated metatags, falling back to template: {e}")
-            # Continue with the fallback template below
-        
-        # FALLBACK: Create structured metatags if parsing the LLM output failed
-        # Get template data including extracted keywords
-        template_data = self.get_template_data()
-        extracted_keywords = template_data.get('extracted_keywords', f"{self.subject}, laser cleaning")
-        
-        # Make sure we don't duplicate keywords
-        if self.subject.lower() in extracted_keywords.lower():
-            # Subject is already in the keywords, no need to add it again
-            keywords_str = extracted_keywords
-        else:
-            # Add subject to the keywords if not already present
-            keywords_str = f"{self.subject}, {extracted_keywords}"
-        
-        meta_data = {
-            "title": f"{self.subject} Laser Cleaning | Technical Guide",
-            "description": f"Technical guide to {self.subject} laser cleaning including specifications, applications, and environmental impact.",
-            "keywords": keywords_str,
-            "author": self.author_data["author_name"],
-            "openGraph": {
-                "title": f"{self.subject} Laser Cleaning: Technical Guide",
-                "description": f"Comprehensive technical resource on {self.subject} laser cleaning applications, specifications, and best practices.",
-                "url": f"https://www.z-beam.com/{self.subject.lower()}-laser-cleaning",
-                "siteName": "Z-Beam",
-                "images": [{
-                    "url": f"https://www.z-beam.com/images/{self.subject.lower()}-laser-cleaning.jpg",
-                    "width": 1200,
-                    "height": 630,
-                    "alt": f"{self.subject} Laser Cleaning"
-                }],
-                "locale": "en_US",
-                "type": "article"
-            },
-            "twitter": {
-                "card": "summary_large_image",
-                "title": f"{self.subject} Laser Cleaning: Technical Guide",
-                "description": f"Comprehensive technical resource on {self.subject} laser cleaning applications, specifications, and best practices.",
-                "images": [f"https://www.z-beam.com/images/{self.subject.lower()}-laser-cleaning.jpg"]
-            }
-        }
-        
-        # Validate we have enough metadata fields
-        min_tags = self.get_component_config("min_tags")
-        flat_fields_count = self._count_metadata_fields(meta_data)
-        if flat_fields_count < min_tags:
-            raise ValueError(f"Generated only {flat_fields_count} meta properties, minimum required: {min_tags}")
-        
-        # Check maximum tags limit
-        max_tags = self.get_component_config("max_tags")
-        if flat_fields_count > max_tags:
-            raise ValueError(f"Generated {flat_fields_count} meta properties, maximum allowed: {max_tags}")
-        
-        # Format as YAML frontmatter
-        formatted_yaml = yaml.dump(meta_data, default_flow_style=False, sort_keys=False)
-        return f"---\n{formatted_yaml}---\n"
+            # Let the error propagate
+            logger.error(f"Error processing metatags: {e}")
+            raise ValueError(f"Metatags generation failed: {e}")
     
     def _count_metadata_fields(self, meta_data: dict, prefix="") -> int:
         """Count the total number of metadata fields, including nested ones.

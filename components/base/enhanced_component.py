@@ -6,10 +6,14 @@ Provides additional common functionality to reduce code duplication in component
 
 import logging
 import os
+import re
 import yaml
-from abc import abstractmethod
-from typing import Dict, Any, Optional, List, Tuple
+from typing import Dict, Any, Optional, List
 from components.base.component import BaseComponent
+from components.base.validation_utils import (
+    validate_non_empty, validate_category_consistency as validate_category,
+    validate_line_count, strip_markdown_code_blocks
+)
 
 logger = logging.getLogger(__name__)
 
@@ -48,6 +52,21 @@ class EnhancedBaseComponent(BaseComponent):
         except Exception as e:
             logger.error(f"Failed to load prompt config: {e}")
             return {"validation": {}}
+            
+    def validate_category_consistency(self, file_content: str) -> bool:
+        """
+        Validates category consistency in frontmatter metadata.
+        
+        Args:
+            file_content: Content of the file to validate
+            
+        Returns:
+            bool: True if consistent, False otherwise
+            
+        Raises:
+            ValueError: If inconsistencies are detected
+        """
+        return validate_category(file_content, self.category, self.article_type, self.subject)
     
     def generate(self) -> str:
         """Generate content with standard processing flow.
@@ -83,9 +102,7 @@ class EnhancedBaseComponent(BaseComponent):
         Raises:
             ValueError: If content is empty
         """
-        if not content or not content.strip():
-            raise ValueError(error_message)
-        return content.strip()
+        return validate_non_empty(content, error_message)
     
     def _validate_line_count(self, lines: List[str], min_count: int, 
                            max_count: Optional[int] = None, 
@@ -104,14 +121,7 @@ class EnhancedBaseComponent(BaseComponent):
         Raises:
             ValueError: If line count is below minimum
         """
-        if len(lines) < min_count:
-            raise ValueError(f"{error_prefix} {len(lines)} lines, minimum required: {min_count}")
-        
-        if max_count and len(lines) > max_count:
-            # Truncate to max count
-            return lines[:max_count]
-            
-        return lines
+        return validate_line_count(lines, min_count, max_count, error_prefix)
     
     def _strip_markdown_code_blocks(self, content: str) -> str:
         """Remove markdown code block delimiters if present.
@@ -122,20 +132,18 @@ class EnhancedBaseComponent(BaseComponent):
         Returns:
             str: Content with code block markers removed
         """
-        content = content.strip()
-        
-        # Handle triple backtick code blocks with language specifier
-        if content.startswith('```') and content.endswith('```'):
-            lines = content.split('\n')
-            if len(lines) > 2:  # At least opening, content, and closing
-                # Remove first and last lines (opening and closing ```)
-                return '\n'.join(lines[1:-1])
-        
-        return content
+        return strip_markdown_code_blocks(content)
     
-    @abstractmethod
     def _post_process(self, content: str) -> str:
-        """Post-process the generated content. Must be implemented by subclasses.
+        """Base post-processing implementation with common validation.
+        
+        This provides the common validation logic that most generators need:
+        1. Validates content is not empty
+        2. Strips markdown code blocks
+        3. Calls component-specific processing via _component_specific_processing
+        
+        Subclasses should override _component_specific_processing instead of this method
+        unless they need to completely change the post-processing behavior.
         
         Args:
             content: Raw API response
@@ -146,4 +154,96 @@ class EnhancedBaseComponent(BaseComponent):
         Raises:
             ValueError: If content is invalid
         """
-        pass
+        # Step 1: Basic validation - non-empty
+        content = validate_non_empty(content, f"API returned empty or invalid {self.__class__.__name__.replace('Generator', '')}")
+        
+        # Step 2: Strip code blocks
+        content = self._strip_markdown_code_blocks(content)
+        
+        # Step 3: Component-specific processing
+        return self._component_specific_processing(content)
+    
+    def _validate_word_count(self, content: str, 
+                         min_key: str = "min_words", 
+                         max_key: str = "max_words", 
+                         component_name: str = None) -> str:
+        """Validate that the content meets word count requirements.
+        
+        Args:
+            content: Content to validate
+            min_key: Component config key for minimum word count
+            max_key: Component config key for maximum word count
+            component_name: Name of component for error messages (defaults to class name)
+            
+        Returns:
+            str: The original content if valid
+            
+        Raises:
+            ValueError: If content doesn't meet word count requirements
+        """
+        if not component_name:
+            component_name = self.__class__.__name__.replace("Generator", "")
+            
+        word_count = len(content.split())
+        
+        # Get min/max from component config, with reasonable defaults if not specified
+        min_words = self.get_component_config(min_key, 0)
+        max_words = self.get_component_config(max_key, 10000)
+        
+        if min_words and word_count < min_words:
+            raise ValueError(f"Generated {component_name} too short: {word_count} words, minimum required: {min_words}")
+        
+        if max_words and word_count > max_words:
+            raise ValueError(f"Generated {component_name} too long: {word_count} words, maximum allowed: {max_words}")
+            
+        return content
+        
+    def _validate_links(self, content: str, max_links: int = None) -> str:
+        """Validate and potentially modify links in the content.
+        
+        Args:
+            content: Content to validate
+            max_links: Maximum number of links allowed (defaults to component config)
+            
+        Returns:
+            str: Content with validated links
+        """
+        # Extract all markdown links
+        link_pattern = r'\[(.*?)\]\((.*?)\)'
+        links = re.findall(link_pattern, content)
+        
+        if max_links is None:
+            # Try to get from component config
+            inline_links_config = self.get_component_config("inline_links", {})
+            max_links = inline_links_config.get("max_links", 5)
+        
+        # If under the limit, return as is
+        if len(links) <= max_links:
+            return content
+        
+        # Keep only the first max_links links
+        links_to_keep = links[:max_links]
+        
+        # Remove excess links
+        modified_content = content
+        for text, url in links:
+            link = f'[{text}]({url})'
+            if (text, url) not in links_to_keep:
+                modified_content = modified_content.replace(link, text)
+        
+        return modified_content
+        
+    def _component_specific_processing(self, content: str) -> str:
+        """Component-specific processing to be implemented by subclasses.
+        
+        Args:
+            content: Pre-validated and cleaned content
+            
+        Returns:
+            str: Processed content
+            
+        Raises:
+            ValueError: If content fails component-specific validation
+        """
+        # Default implementation returns the content unchanged
+        return content

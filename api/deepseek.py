@@ -26,7 +26,9 @@ class DeepseekClient:
             options: Options for the client
         """
         self.api_key = os.environ["DEEPSEEK_API_KEY"]  # No fallback - must exist
-        self.options = options or {}
+        if options is None:
+            raise ValueError("options parameter must be provided")
+        self.options = options
         self.model = self.options["model"]  # No fallback - must be provided
         self.api_base = "https://api.deepseek.com/v1"
     

@@ -15,6 +15,7 @@ import logging
 import re
 from typing import List
 from components.base.enhanced_component import EnhancedBaseComponent
+from components.base.formatting_utils import format_markdown_table
 
 logger = logging.getLogger(__name__)
 
@@ -29,11 +30,11 @@ class TableGenerator(EnhancedBaseComponent):
         """
         return "components/table/prompt.yaml"
     
-    def _post_process(self, content: str) -> str:
-        """Post-process the generated table.
+    def _component_specific_processing(self, content: str) -> str:
+        """Process the generated table.
         
         Args:
-            content: Raw API response
+            content: Pre-validated, clean API response
             
         Returns:
             str: Processed table with markdown formatting and section headers
@@ -41,9 +42,6 @@ class TableGenerator(EnhancedBaseComponent):
         Raises:
             ValueError: If content is invalid
         """
-        # Validate and clean input
-        content = self._validate_non_empty(content, "API returned empty or invalid table")
-        
         # Validate table format - look for pipe characters indicating markdown table
         lines = content.strip().split('\n')
         original_table_lines = [line for line in lines if '|' in line]
@@ -197,51 +195,49 @@ class TableGenerator(EnhancedBaseComponent):
                 separator_idx = i
                 break
         
-        # Count the number of columns
-        max_columns = 0
-        for line in table_lines:
-            pipe_count = line.count('|')
-            # Adjust count for border pipes
-            if line.strip().startswith('|'):
-                pipe_count -= 1
-            if line.strip().endswith('|'):
-                pipe_count -= 1
-            max_columns = max(max_columns, pipe_count + 1)
+        # Extract headers and data
+        headers = []
+        rows = []
         
-        # Format the table with consistent spacing
-        formatted_lines = []
+        # Process header row
+        if len(table_lines) > 0:
+            header_cells = self._extract_cells(table_lines[0])
+            headers = [cell for cell in header_cells]
         
-        # Process each line
+        # Process data rows (skip separator)
         for i, line in enumerate(table_lines):
-            cells = [cell.strip() for cell in line.split('|')]
-            
-            # Remove empty first/last elements if present
-            if cells and not cells[0]:
-                cells = cells[1:]
-            if cells and not cells[-1]:
-                cells = cells[:-1]
-            
-            # Ensure all rows have the same number of columns
-            while len(cells) < max_columns:
-                cells.append('')
-            
-            # Format based on whether this is the separator line
-            if i == separator_idx:
-                formatted_cells = ['---' for _ in cells]
-                formatted_lines.append('| ' + ' | '.join(formatted_cells) + ' |')
-            # Format the first row (table headers) normally
-            elif i == 0:
-                formatted_lines.append('| ' + ' | '.join(cells) + ' |')
-            # For data rows, format keys to title case with spaces if first column
-            elif i > separator_idx and len(cells) > 0:
-                # Always convert first cell (key) to title case
-                cells[0] = self._convert_to_title_case(cells[0])
-                formatted_lines.append('| ' + ' | '.join(cells) + ' |')
-            else:
-                formatted_lines.append('| ' + ' | '.join(cells) + ' |')
+            if i != 0 and i != separator_idx and i < len(table_lines):
+                cells = self._extract_cells(line)
+                
+                # Title case the first column if it exists
+                if cells and len(cells) > 0:
+                    cells[0] = self._convert_to_title_case(cells[0])
+                
+                if cells:
+                    rows.append(cells)
         
-        return '\n'.join(formatted_lines)
+        # Use the formatting utility to create a clean markdown table
+        return format_markdown_table(headers, rows)
     
+    def _extract_cells(self, line: str) -> List[str]:
+        """Extract and clean cells from a markdown table line.
+        
+        Args:
+            line: Table line with pipe separators
+            
+        Returns:
+            List[str]: List of cleaned cell values
+        """
+        cells = [cell.strip() for cell in line.split('|')]
+        
+        # Remove empty first/last elements if present (border pipes)
+        if cells and not cells[0]:
+            cells = cells[1:]
+        if cells and not cells[-1]:
+            cells = cells[:-1]
+            
+        return cells
+            
     def _is_likely_camel_case(self, text: str) -> bool:
         """Check if a string is likely in camelCase format.
         

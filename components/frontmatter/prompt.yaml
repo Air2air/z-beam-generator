@@ -22,7 +22,12 @@ template: |
   - applications.name: MAX 2 WORDS (e.g., "Electronics Cleaning")
   - environmentalImpact.benefit: MAX 2 WORDS (e.g., "Eco Friendly")
   - name: MUST BE EXACTLY "{subject}" with no additional text (THIS FIELD IS REQUIRED)
+  - title: Use format "{subject} Laser Cleaning | Technical Guide" for SEO purposes
   - description: Start with "Technical guide to {subject} for laser cleaning..."
+  
+  FIELD NAMING CONSISTENCY:
+  - name: Used internally for subject identification (EXACTLY "{subject}")
+  - title: Used for SEO and display purposes
 
   SCHEMA STRUCTURE:
   - Follow EXACTLY this schema for {article_type}
@@ -43,15 +48,11 @@ template: |
   - Use this chemical formula if available: {material_formula}
   - Use this symbol if available: {material_symbol}
   - Use this material type if available: {material_type}
-  - For ceramics: Al₂O₃ (Alumina), SiO₂ (Silica), ZrO₂ (Zirconia), etc.
-  - For metals: Fe (Iron), Al (Aluminum), Cu (Copper), etc.
-  - For compounds: Include full chemical formulas (e.g., CaCO₃, SiC)
-  - Research thoroughly to provide accurate scientific notation
   - Include a dedicated chemicalProperties section with:
     - symbol: 2-3 character abbreviation (e.g., "Ka" for Kaolin, "Al" for Aluminum)
     - formula: Full chemical formula (e.g., "Al₂Si₂O₅(OH)₄")
     - materialType: Chemical classification ("element", "compound", "alloy", etc.)
-  - Also include the formula in properties.chemicalFormula and in each composition entry
+  - DO NOT repeat chemical formulas in the properties section
 
   GEOGRAPHIC FORMAT (for regions):
   - County: "Santa Clara County"

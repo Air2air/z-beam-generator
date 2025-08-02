@@ -12,11 +12,11 @@ logger = logging.getLogger(__name__)
 class TagsGenerator(EnhancedBaseComponent):
     """Generator for article tags with strict validation."""
     
-    def _post_process(self, content: str) -> str:
-        """Post-process the generated tags.
+    def _component_specific_processing(self, content: str) -> str:
+        """Process the generated tags.
         
         Args:
-            content: Raw API response
+            content: Pre-validated, clean API response
             
         Returns:
             str: Processed tags
@@ -24,12 +24,8 @@ class TagsGenerator(EnhancedBaseComponent):
         Raises:
             ValueError: If content is invalid
         """
-        # Validate and clean input
-        content = self._validate_non_empty(content, "API returned empty or invalid tags")
-        
-        # Validate tag format and count
-        lines = content.strip().split('\n')
         # Normalize input: handle comma-separated lists or line-by-line formats
+        lines = content.strip().split('\n')
         tag_lines = []
         for line in lines:
             line = line.strip()
@@ -48,12 +44,12 @@ class TagsGenerator(EnhancedBaseComponent):
         min_tags = self.get_component_config("min_tags")
         max_tags = self.get_component_config("max_tags")
         
-        # Validate line count using the base method
+        # Validate line count using the utility function
         processed_tags = self._validate_line_count(
             processed_tags, 
             min_tags, 
             max_tags,
-            "Generated"
+            "Generated tags"
         )
         
         # Format tags as comma-separated list

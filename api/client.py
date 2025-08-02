@@ -32,8 +32,13 @@ class ApiClient:
         if not self.ai_provider:
             raise ValueError("ai_provider must be specified")
         
-        self.options = options or {}
-        self.article_context = article_context or {}
+        if options is None:
+            raise ValueError("options parameter must be provided")
+        self.options = options
+        
+        if article_context is None:
+            raise ValueError("article_context parameter must be provided")
+        self.article_context = article_context
         
         # Load only the required API key for the current provider - no fallbacks
         api_key_map = {
@@ -64,7 +69,7 @@ class ApiClient:
                 client = DeepseekClient(self.options)
             elif self.ai_provider == "openai":
                 # Import OpenAI client when implemented
-                raise ValueError(f"OpenAI provider not yet implemented")
+                raise ValueError("OpenAI provider not yet implemented")
             # Add other providers as needed
             else:
                 raise ValueError(f"Unsupported AI provider: {self.ai_provider}")
