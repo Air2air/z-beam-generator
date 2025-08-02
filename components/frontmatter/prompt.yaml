@@ -21,7 +21,7 @@ template: |
   FIELD REQUIREMENTS:
   - applications.name: MAX 2 WORDS (e.g., "Electronics Cleaning")
   - environmentalImpact.benefit: MAX 2 WORDS (e.g., "Eco Friendly")
-  - name: Include "{subject}" and key application (THIS FIELD IS REQUIRED)
+  - name: MUST BE EXACTLY "{subject}" with no additional text (THIS FIELD IS REQUIRED)
   - description: Start with "Technical guide to {subject} for laser cleaning..."
 
   SCHEMA STRUCTURE:
@@ -79,7 +79,7 @@ template: |
   Generate YAML for: {article_type} = {subject}
   
   Required fields (if no schema provided):
-  name: "{subject}" # Max 100 chars
+  name: "{subject}" # EXACTLY the subject name, no additional text
   headline: "Technical guide to {subject}" # Max 150 chars
   description: "Technical summary of {subject} in laser cleaning." # Max 250 chars
   website: "{website_url}"

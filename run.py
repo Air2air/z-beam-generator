@@ -40,7 +40,7 @@ BATCH_CONFIG = {
     "multi_subject": {
         "author_id": 1,  # Use this author for all subjects
         "subject_source": "lists",  # Directory to discover all subjects from all categories
-        "limit": 5,  # Limit to first X subjects (set to None for all subjects)
+        "limit": 20,  # Limit to first X subjects (set to None for all subjects)
     },
     
     # Global AI configuration - applied to all components
@@ -71,11 +71,11 @@ BATCH_CONFIG = {
             }
         },
         "bullets": {
-            "enabled": False,
+            "enabled": True,
             "count": 4
         },
         "table": {
-            "enabled": False,
+            "enabled": True,
             "rows": 5,
             "skip_sections": [
                 "Application Examples",
@@ -90,7 +90,7 @@ BATCH_CONFIG = {
             ]
         },
         "tags": {
-            "enabled": False,
+            "enabled": True,
             "max_tags": 10,
             "min_tags": 5,
             "tag_categories": [
@@ -98,17 +98,17 @@ BATCH_CONFIG = {
             ]
         },
         "caption": {
-            "enabled": False,
+            "enabled": True,
             "results_word_count_max": 40,
             "equipment_word_count_max": 40,
             "shape": "component",
             "max_tokens": 1000  # Override global max_tokens for caption
         },
         "jsonld": {
-            "enabled": False
+            "enabled": True
         },
         "metatags": {
-            "enabled": False,
+            "enabled": True,
             "min_tags": 8,
             "max_tags": 20
         },
