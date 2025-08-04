@@ -1,7 +1,7 @@
 {
   "regionProfile": {
     "name": "region",
-    "version": "1.4",
+    "version": "1.5",
     "schemaType": "RegionProfile",
     "generatorConfig": {
       "tags": {
@@ -128,136 +128,166 @@
         }
       },
       "description": "1–3 California facilities for region articles"
-    },
-    "validation": {
-      "frontmatter": {
-        "requiredFields": [
-          "name",
-          "description",
-          "website",
-          "author",
-          "keywords",
-          "countries",
-          "geoCoordinates",
-          "economicData"
-        ]
+    }
+  },
+  "images": {
+    "type": "object",
+    "required": true,
+    "properties": {
+      "hero": {
+        "type": "object",
+        "properties": {
+          "alt": {
+            "type": "string",
+            "required": true,
+            "description": "Alt text for hero image",
+            "example": "Panoramic view of industrial area in California showcasing regional laser cleaning facilities"
+          }
+        }
+      },
+      "closeup": {
+        "type": "object",
+        "properties": {
+          "alt": {
+            "type": "string",
+            "required": true,
+            "description": "Alt text for closeup image",
+            "example": "Close-up of advanced laser cleaning equipment at manufacturing center in California"
+          }
+        }
       }
     },
-    "jsonld": {
-      "schemaType": "Article",
-      "required": true,
-      "properties": {
-        "@context": {
-          "value": "https://schema.org",
-          "required": true
-        },
-        "@type": {
-          "value": "Article",
-          "required": true
-        },
-        "headline": {
-          "source": "name",
-          "required": true
-        },
-        "description": {
-          "source": "description",
-          "required": true
-        },
-        "mainEntityOfPage": {
-          "required": true,
-          "properties": {
-            "@type": {
-              "value": "WebPage",
-              "required": true
-            },
-            "@id": {
-              "source": "website",
-              "required": true,
-              "default": "https://www.z-beam.com/{slug}-laser-cleaning"
-            }
+    "description": "Image descriptions for article visuals"
+  },
+  "validation": {
+    "frontmatter": {
+      "requiredFields": [
+        "name",
+        "description",
+        "website",
+        "author",
+        "keywords",
+        "countries",
+        "geoCoordinates",
+        "economicData",
+        "images"
+      ]
+    }
+  },
+  "jsonld": {
+    "schemaType": "Article",
+    "required": true,
+    "properties": {
+      "@context": {
+        "value": "https://schema.org",
+        "required": true
+      },
+      "@type": {
+        "value": "Article",
+        "required": true
+      },
+      "headline": {
+        "source": "name",
+        "required": true
+      },
+      "description": {
+        "source": "description",
+        "required": true
+      },
+      "mainEntityOfPage": {
+        "required": true,
+        "properties": {
+          "@type": {
+            "value": "WebPage",
+            "required": true
+          },
+          "@id": {
+            "source": "website",
+            "required": true,
+            "default": "https://www.z-beam.com/{slug}-laser-cleaning"
           }
-        },
-        "author": {
-          "required": true,
-          "properties": {
-            "@type": {
-              "value": "Person",
-              "required": true
-            },
-            "identifier": {
-              "source": "author.author_id",
-              "required": true
-            },
-            "name": {
-              "source": "author.author_name",
-              "required": true
-            },
-            "nationality": {
-              "source": "author.author_country",
-              "required": true
-            },
-            "description": {
-              "source": "author.credentials",
-              "required": true
-            },
-            "affiliation": {
-              "required": true,
-              "properties": {
-                "@type": {
-                  "value": "Organization",
-                  "required": true
-                },
-                "name": {
-                  "source": "author.name",
-                  "required": true
-                }
-              }
-            }
-          }
-        },
-        "publisher": {
-          "required": true,
-          "properties": {
-            "@type": {
-              "value": "Organization",
-              "required": true
-            },
-            "name": {
-              "value": "Z-Beam",
-              "required": true
-            },
-            "logo": {
-              "required": true,
-              "properties": {
-                "@type": {
-                  "value": "ImageObject",
-                  "required": true
-                },
-                "url": {
-                  "value": "https://www.z-beam.com/logo.png",
-                  "required": true
-                }
-              }
-            }
-          }
-        },
-        "datePublished": {
-          "format": "YYYY-MM-DD",
-          "required": true
-        },
-        "dateModified": {
-          "format": "YYYY-MM-DD",
-          "required": true
-        },
-        "image": {
-          "template": "https://www.z-beam.com/images/{slug}-laser-cleaning.jpg",
-          "required": true
-        },
-        "keywords": {
-          "source": "keywords",
-          "format": "comma-separated",
-          "required": true
         }
+      },
+      "author": {
+        "required": true,
+        "properties": {
+          "@type": {
+            "value": "Person",
+            "required": true
+          },
+          "identifier": {
+            "source": "author.author_id",
+            "required": true
+          },
+          "name": {
+            "source": "author.author_name",
+            "required": true
+          },
+          "nationality": {
+            "source": "author.author_country",
+            "required": true
+          },
+          "description": {
+            "source": "author.credentials",
+            "required": true
+          },
+          "affiliation": {
+            "required": true,
+            "properties": {
+              "@type": {
+                "value": "Organization",
+                "required": true
+              },
+              "name": {
+                "source": "author.name",
+                "required": true
+              }
+            }
+          }
+        }
+      },
+      "publisher": {
+        "required": true,
+        "properties": {
+          "@type": {
+            "value": "Organization",
+            "required": true
+          },
+          "name": {
+            "value": "Z-Beam",
+            "required": true
+          },
+          "logo": {
+            "required": true,
+            "properties": {
+              "@type": {
+                "value": "ImageObject",
+                "required": true
+              },
+              "url": {
+                "value": "https://www.z-beam.com/logo.png",
+                "required": true
+              }
+            }
+          }
+        }
+      },
+      "datePublished": {
+        "format": "YYYY-MM-DD",
+        "required": true
+      },
+      "dateModified": {
+        "format": "YYYY-MM-DD",
+        "required": true
+      },
+      "image": {
+        "template": "https://www.z-beam.com/images/{slug}-laser-cleaning.jpg",
+        "required": true
+      },
+      "keywords": {
+        "source": "keywords",
+        "format": "comma-separated",
+        "required": true
       }
     }
   }

@@ -39,6 +39,33 @@ template: |
   
   Format as a complete article using markdown.
 
+# Condensed template used when frontmatter data is available
+condensed_template: |
+  Write a comprehensive {article_type} article about {subject} for the laser cleaning industry.
+  
+  REQUIREMENTS:
+  - Generate EXACTLY {min_words}-{max_words} words
+  - Closely follow the data from the frontmatter
+  - Write in {style} style
+  
+  FRONTMATTER DATA AVAILABLE:
+  - Name: {name}
+  - Description: {description}
+  - Tags: {tags}
+  {% if specifications %}
+  - Specifications: Use all the technical specifications provided
+  {% endif %}
+  {% if sections %}
+  - Sections: Follow the exact section structure from frontmatter
+  {% endif %}
+  
+  LINKING REQUIREMENTS:
+  - Add no more than {max_links} inline markdown links
+  - Use standard markdown link format
+  - Do NOT include any links to z-beam.com
+  
+  Format as a complete article using markdown.
+
 parameters:
   max_tokens: 4000
   temperature: 0.7

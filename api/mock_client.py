@@ -10,7 +10,7 @@ class MockAPIClient:
         self.temperature = temperature
         self.max_tokens = max_tokens
     
-    def generate(self, prompt):
+    def complete(self, prompt):
         """Generate a mock response based on the prompt."""
         # Return a basic frontmatter response that passes validation
         # This is a simplified response that should work for testing

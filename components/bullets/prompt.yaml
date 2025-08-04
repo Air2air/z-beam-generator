@@ -25,6 +25,30 @@ template: |
   
   Format as markdown bullet points.
 
+# Condensed template used when frontmatter data is available
+condensed_template: |
+  Generate {count} bullet points for {subject} in laser cleaning based on the available frontmatter data.
+  
+  REQUIREMENTS:
+  - EXACTLY {count} bullet points
+  - Each bullet: 15-30 words
+  - Focus on key technical specifications
+  
+  KEY DATA AVAILABLE:
+  - Material: {subject}
+  - Category: {category}
+  - Article Type: {article_type}
+  - Technical Data: See frontmatter below
+  
+  FRONTMATTER DATA:
+  {all_frontmatter}
+  
+  Cover technical specs, applications, environmental benefits, manufacturing capabilities, and geographic context.
+  
+  Style: {style} - Use precise technical language with specific measurements.
+  
+  Format as markdown bullet points.
+
 parameters:
   max_tokens: 2000
   temperature: 0.7

@@ -1,7 +1,7 @@
 {
   "applicationProfile": {
     "name": "application",
-    "version": "1.3",
+    "version": "1.4",
     "schemaType": "LaserCleaningApplicationProfile",
     "generatorConfig": {
       "jsonld": {
@@ -95,13 +95,42 @@
           }
         },
         "description": "1–3 challenges and solutions"
+      },
+      "images": {
+        "type": "object",
+        "required": true,
+        "properties": {
+          "hero": {
+            "type": "object",
+            "properties": {
+              "alt": {
+                "type": "string",
+                "required": true,
+                "description": "Alt text for hero image",
+                "example": "Industrial laser cleaning equipment performing surface treatment for aerospace application"
+              }
+            }
+          },
+          "closeup": {
+            "type": "object",
+            "properties": {
+              "alt": {
+                "type": "string",
+                "required": true,
+                "description": "Alt text for closeup image",
+                "example": "Detailed view of laser-cleaned surface showing precision removal of contaminants"
+              }
+            }
+          }
+        },
+        "description": "Image descriptions for article visuals"
       }
     },
     "validation": {
       "frontmatter": {
         "requiredFields": [
           "name", "description", "website", "author", "keywords", 
-          "applications", "technicalSpecifications", "regulatoryStandards", "outcomes"
+          "applications", "technicalSpecifications", "regulatoryStandards", "outcomes", "images"
         ]
       }
     }

@@ -6,15 +6,15 @@ Strict fail-fast implementation with no fallbacks or defaults.
 
 import logging
 import yaml
-from components.base.enhanced_component import EnhancedBaseComponent
-from components.base.validation_utils import (
+from components.base.component import BaseComponent
+from components.base.utils.validation import (
     validate_length, validate_required_fields
 )
-from components.base.formatting_utils import format_frontmatter_with_comment
+from components.base.utils.formatting import format_frontmatter_with_comment
 
 logger = logging.getLogger(__name__)
 
-class FrontmatterGenerator(EnhancedBaseComponent):
+class FrontmatterGenerator(BaseComponent):
     """Generator for article frontmatter with strict validation."""
     
     def _component_specific_processing(self, content: str) -> str:
@@ -87,6 +87,9 @@ class FrontmatterGenerator(EnhancedBaseComponent):
         
         # Clean content (use yaml.dump to ensure valid YAML format)
         cleaned_content = yaml.dump(parsed, default_flow_style=False, sort_keys=False)
+        
+        # Store parsed frontmatter for other components to access
+        self._frontmatter_data = parsed
         
         # Get category from instance attribute
         category = getattr(self, 'category', '')

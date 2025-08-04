@@ -5,11 +5,11 @@ Strict fail-fast implementation with no fallbacks or defaults.
 """
 
 import logging
-from components.base.enhanced_component import EnhancedBaseComponent
+from components.base.component import BaseComponent
 
 logger = logging.getLogger(__name__)
 
-class TagsGenerator(EnhancedBaseComponent):
+class TagsGenerator(BaseComponent):
     """Generator for article tags with strict validation."""
     
     def _component_specific_processing(self, content: str) -> str:
@@ -44,13 +44,12 @@ class TagsGenerator(EnhancedBaseComponent):
         min_tags = self.get_component_config("min_tags")
         max_tags = self.get_component_config("max_tags")
         
-        # Validate line count using the utility function
-        processed_tags = self._validate_line_count(
-            processed_tags, 
-            min_tags, 
-            max_tags,
-            "Generated tags"
-        )
+        # Validate tag count
+        if min_tags > 0 and len(processed_tags) < min_tags:
+            raise ValueError(f"Generated tags too few: {len(processed_tags)}, minimum required: {min_tags}")
+        
+        if max_tags > 0 and len(processed_tags) > max_tags:
+            raise ValueError(f"Generated tags too many: {len(processed_tags)}, maximum allowed: {max_tags}")
         
         # Format tags as comma-separated list
         return ', '.join(processed_tags) + '\n'

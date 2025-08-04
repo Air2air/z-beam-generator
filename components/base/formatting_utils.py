@@ -66,6 +66,46 @@ def format_jsonld_as_script(jsonld_content: Dict[str, Any]) -> str:
     # Wrap in script tag
     return f'<script type="application/ld+json">\n{json_str}\n</script>'
 
+def format_jsonld_as_markdown(jsonld_content: Dict[str, Any]) -> str:
+    """Format JSON-LD content as markdown code block.
+    
+    Args:
+        jsonld_content: JSON-LD content as dictionary
+        
+    Returns:
+        str: JSON-LD content as markdown code block
+    """
+    # Format JSON with pretty indentation
+    json_str = json.dumps(jsonld_content, indent=2)
+    
+    # Wrap in markdown code block
+    return f'```json\n{json_str}\n```'
+
+def format_jsonld_as_yaml_markdown(jsonld_content: Dict[str, Any]) -> str:
+    """Format JSON-LD content as YAML markdown code block.
+    
+    Args:
+        jsonld_content: JSON-LD content as dictionary
+        
+    Returns:
+        str: JSON-LD content as YAML markdown code block
+    """
+    # Format as YAML with pretty indentation
+    yaml_str = yaml.dump(jsonld_content, default_flow_style=False, sort_keys=False)
+    
+    # Convert special characters to unicode representations
+    yaml_str = (yaml_str
+                .replace('\\u00b3', '³')
+                .replace('\\u00b0', '°')
+                .replace('\\u00b7', '·')
+                .replace('\\u2013', '–')
+                .replace('\\u2082', '₂')
+                .replace('\\u2083', '₃')
+                .replace('\\u00b1', '±'))
+    
+    # Wrap in markdown code block
+    return f'```yaml\n{yaml_str}\n```'
+
 def format_markdown_table(headers: List[str], rows: List[List[str]]) -> str:
     """Format data as markdown table.
     

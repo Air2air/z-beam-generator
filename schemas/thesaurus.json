@@ -1,7 +1,7 @@
 {
   "thesaurusProfile": {
     "name": "thesaurus",
-    "version": "1.4",
+    "version": "1.5",
     "schemaType": "ThesaurusProfile",
     "generatorConfig": {
       "jsonld": {
@@ -59,13 +59,42 @@
         "required": true,
         "description": "Underlying scientific principles",
         "example": "Involves photon absorption, electron excitation..."
+      },
+      "images": {
+        "type": "object",
+        "required": true,
+        "properties": {
+          "hero": {
+            "type": "object",
+            "properties": {
+              "alt": {
+                "type": "string",
+                "required": true,
+                "description": "Alt text for hero image",
+                "example": "Visual representation of laser fluence affecting material surface in laser cleaning process"
+              }
+            }
+          },
+          "closeup": {
+            "type": "object",
+            "properties": {
+              "alt": {
+                "type": "string",
+                "required": true,
+                "description": "Alt text for closeup image",
+                "example": "Microscopic view of material interaction with laser at specific fluence levels"
+              }
+            }
+          }
+        },
+        "description": "Image descriptions for article visuals"
       }
     },
     "validation": {
       "frontmatter": {
         "requiredFields": [
           "name", "description", "website", "author", "keywords", 
-          "definition", "relatedTerms"
+          "definition", "relatedTerms", "images"
         ]
       }
     }

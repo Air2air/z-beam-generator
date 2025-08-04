@@ -14,12 +14,12 @@ Configuration options:
 import logging
 import re
 from typing import List
-from components.base.enhanced_component import EnhancedBaseComponent
-from components.base.formatting_utils import format_markdown_table
+from components.base.component import BaseComponent
+from components.base.utils.formatting import format_markdown_table
 
 logger = logging.getLogger(__name__)
 
-class TableGenerator(EnhancedBaseComponent):
+class TableGenerator(BaseComponent):
     """Generator for table content with strict validation."""
     
     def _get_prompt_path(self) -> str:

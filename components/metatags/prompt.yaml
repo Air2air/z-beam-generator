@@ -18,15 +18,14 @@ template: |
   - Use same 'description' content as frontmatter
   - Include application, properties, environmentalImpact from frontmatter
   
-  DO NOT:
-  - Add any explanatory text or comments outside the YAML
-  - Include HTML tags
-  - Write any content before or after the YAML frontmatter
+  IMPORTANT URL FORMATTING:
+  - All URLs must use lowercase for subjects (e.g., 'alumina' not 'Alumina')
+  - Image URLs must follow this pattern: https://www.z-beam.com/images/alumina-laser-cleaning-hero.jpg (lowercase)
   
   FRONTMATTER:
   {all_frontmatter}
   
-  EXISTING KEYWORDS: {extracted_keywords}
+  EXISTING KEYWORDS: {keywords}
   
   REQUIRED YAML STRUCTURE (Next.js compatible):
   
@@ -50,7 +49,7 @@ template: |
     url: "https://www.z-beam.com/{subject}-laser-cleaning"
     siteName: "Z-Beam"
     images:
-      - url: "https://www.z-beam.com/images/{article_type}/{subject}.jpg"
+      - url: "https://www.z-beam.com/images/{subject}-laser-cleaning-hero.jpg"
         width: 1200
         height: 630
         alt: "{subject} Laser Cleaning"
@@ -62,7 +61,7 @@ template: |
     card: "summary_large_image"
     title: "{subject} Laser Cleaning: Technical Guide"
     description: "Comprehensive technical resource on {subject} laser cleaning applications, specifications, and best practices."
-    images: ["https://www.z-beam.com/images/{article_type}/{subject}.jpg"]
+    images: ["https://www.z-beam.com/images/{subject}-laser-cleaning-hero.jpg"]
   ---
   ```
 parameters:

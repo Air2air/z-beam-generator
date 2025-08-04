@@ -6,11 +6,11 @@ Includes support for limiting links to technical terms and setting maximum link 
 """
 
 import logging
-from components.base.enhanced_component import EnhancedBaseComponent
+from components.base.component import BaseComponent
 
 logger = logging.getLogger(__name__)
 
-class ContentGenerator(EnhancedBaseComponent):
+class ContentGenerator(BaseComponent):
     """Generator for main article content with strict validation."""
     
     def _component_specific_processing(self, content: str) -> str:

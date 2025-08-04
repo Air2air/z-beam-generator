@@ -1,7 +1,7 @@
 {
   "materialProfile": {
     "name": "material",
-    "version": "1.5",
+    "version": "1.6",
     "schemaType": "MaterialProfile",
     "generatorConfig": {
       "jsonld": {
@@ -183,6 +183,35 @@
           }
         },
         "description": "Compatible materials and applications"
+      },
+      "images": {
+        "type": "object",
+        "required": true,
+        "properties": {
+          "hero": {
+            "type": "object",
+            "properties": {
+              "alt": {
+                "type": "string",
+                "required": true,
+                "description": "Alt text for hero image",
+                "example": "Close-up of Alumina surface being laser cleaned showing material texture and reflectivity"
+              }
+            }
+          },
+          "closeup": {
+            "type": "object",
+            "properties": {
+              "alt": {
+                "type": "string",
+                "required": true,
+                "description": "Alt text for closeup image",
+                "example": "Detailed view of Alumina microstructure after laser cleaning process"
+              }
+            }
+          }
+        },
+        "description": "Image descriptions for article visuals"
       }
     },
     "technicalSpecifications": {
@@ -230,7 +259,8 @@
           "properties",
           "composition",
           "compatibility",
-          "regulatoryStandards"
+          "regulatoryStandards",
+          "images"
         ]
       }
     }

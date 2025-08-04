@@ -34,10 +34,11 @@ template: |
   - "selective contamination removal" → "Selective Removal"
   - "microstructure preservation" → "Microstructure"
   
-  FRONTMATTER:
+  MERGE FRONTMATTER KEYWORDS:
   {all_frontmatter}
   
-  EXISTING KEYWORDS: {extracted_keywords}
+  EXISTING KEYWORDS: 
+  {keywords}
   
   REQUIRED FORMAT EXAMPLE:
   Laser Cleaning, Metal Processing, Surface Treatment, Oxide Removal, Precision Cleaning, Evelyn Wu

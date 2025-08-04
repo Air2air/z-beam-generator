@@ -6,13 +6,13 @@ Generates Next.js compatible meta tags in YAML frontmatter format.
 
 import logging
 import yaml
-from components.base.enhanced_component import EnhancedBaseComponent
+from components.base.component import BaseComponent
 from components.metatags.validation import validate_article_specific_fields
-from components.base.formatting_utils import format_yaml_object
+from components.base.utils.formatting import format_yaml_object
 
 logger = logging.getLogger(__name__)
 
-class MetatagsGenerator(EnhancedBaseComponent):
+class MetatagsGenerator(BaseComponent):
     """Generator for Next.js compatible meta tags in YAML frontmatter format with strict validation."""
     
     def _get_prompt_path(self) -> str:

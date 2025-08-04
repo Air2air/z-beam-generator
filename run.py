@@ -26,7 +26,7 @@ import os
 
 BATCH_CONFIG = {
     # Generation mode: "single" for one subject, "multi" for multiple subjects
-    "mode": "single",  # "single" or "multi"
+    "mode": "multi",  # "single" or "multi"
     
     # Single subject configuration (used when mode="single")
     "single_subject": {
@@ -40,7 +40,7 @@ BATCH_CONFIG = {
     "multi_subject": {
         "author_id": 1,  # Use this author for all subjects
         "subject_source": "lists",  # Directory to discover all subjects from all categories
-        "limit": 10,  # Limit to first X subjects (set to None for all subjects)
+        "limit": 1,  # Limit to first X subjects (set to None for all subjects)
     },
     
     # Global AI configuration - applied to all components
@@ -55,14 +55,14 @@ BATCH_CONFIG = {
     # Component configuration - which components to generate (component-specific settings only)
     "components": {
         "frontmatter": {
-            "enabled": True,
+            "enabled": True,  # We need frontmatter as it's a prerequisite
             "include_website": True,
             "min_words": 300,
             "max_words": 500,
             "temperature": 0.9  # Override global temperature for frontmatter
         },
         "content": {
-            "enabled": True,
+            "enabled": False,
             "min_words": 200,
             "max_words": 400,
             "temperature": 0.7,  # Balanced creativity for main content
@@ -71,14 +71,15 @@ BATCH_CONFIG = {
             }
         },
         "bullets": {
-            "enabled": True,
+            "enabled": False,
             "count": 4,
             "temperature": 0.6  # Slightly lower for more focused bullet points
         },
         "table": {
-            "enabled": True,
+            "enabled": False,
             "rows": 5,
             "temperature": 0.4,  # Lower temperature for more consistent, structured table data
+            "table_keys": ["Material", "Density", "Melting Point", "Laser Type", "Applications"],
             "skip_sections": [
                 "Application Examples",
                 "Author Information",
@@ -662,7 +663,8 @@ def generate_frontmatter_component(article_context: dict) -> tuple:
             article_type=article_context["article_type"],
             schema=schema,
             author_data=author_data,
-            component_config=component_config
+            component_config=component_config,
+            frontmatter_data=article_context.get("frontmatter_data", None)
         )
 
         print(f"Generating frontmatter for: {article_context['subject']} ({article_context['article_type']})")
@@ -698,6 +700,9 @@ def generate_frontmatter_component(article_context: dict) -> tuple:
             if not frontmatter_data or not isinstance(frontmatter_data, dict):
                 print(f"❌ Invalid frontmatter data for {article_context['subject']}. Not a valid YAML dictionary.")
                 return None, None
+                
+            # Store the frontmatter data for other components to use
+            article_context["frontmatter_data"] = frontmatter_data
                 
             print("\n" + "="*60)
             print("VALIDATED FRONTMATTER:")
@@ -794,7 +799,8 @@ def generate_component(component_name: str, article_context: dict, frontmatter_c
                 article_type=article_context["article_type"],
                 schema=schema,
                 author_data=author_data,
-                component_config=component_config
+                component_config=component_config,
+                frontmatter_data=article_context.get("frontmatter_data") if "frontmatter_data" in article_context else {}
             )
         except (ImportError, AttributeError) as e:
             raise ValueError(f"Failed to load generator for component '{component_name}': {e}")

@@ -5,11 +5,11 @@ Strict fail-fast implementation with no fallbacks or defaults.
 """
 
 import logging
-from components.base.enhanced_component import EnhancedBaseComponent
+from components.base.component import BaseComponent
 
 logger = logging.getLogger(__name__)
 
-class CaptionGenerator(EnhancedBaseComponent):
+class CaptionGenerator(BaseComponent):
     """Generator for image caption content with strict validation."""
     
     def _component_specific_processing(self, content: str) -> str:

@@ -1,6 +1,6 @@
 name: "Frontmatter Generator"
 description: "Generates concise YAML frontmatter for laser cleaning articles, optimized for SEO, E-A-T, and on-site tagging."
-version: "2.5.0"
+version: "2.6.0"
 
 template: |
   🚨 YAML FORMATTING:
@@ -17,6 +17,21 @@ template: |
   - description: Max 250 characters
   - keywords: 8-12 items, each max 50 characters
   - Complex arrays: 3-4 items with descriptions of 50-75 words each
+  
+  IMAGE REQUIREMENTS:
+  - ALWAYS include an "images" object with "hero" and "closeup" image alt text
+  - Hero image alt text: Describe a wide-angle view of the subject in context (80-120 characters)
+  - Closeup image alt text: Describe a detailed close-up view of the subject (80-120 characters)
+  - Alt text should be descriptive, specific, and relevant to the subject
+  - Include key technical details in alt text (materials, processes, equipment)
+  - Image URLs will follow this pattern: "https://www.z-beam.com/images/{subject}-laser-cleaning-hero.jpg"
+  
+  REQUIRED OBJECT STRUCTURE FOR IMAGES:
+  images:
+    hero:
+      alt: "Detailed description of the hero image showing subject in context"
+    closeup:
+      alt: "Detailed description of the closeup image showing specific features"
   
   FIELD REQUIREMENTS:
   - applications.name: MAX 2 WORDS (e.g., "Electronics Cleaning")
@@ -70,6 +85,12 @@ template: |
       - name: "Item name"
         description: "Brief description with technical specifics."
         property: "Value"
+  - Images object:
+    images:
+      hero:
+        alt: "Detailed technical description of the hero image showing the subject in its operational context"
+      closeup:
+        alt: "Close-up view of the subject showing specific technical details and material properties"
 
   E-A-T AND SEO:
   - Author field with credentials 

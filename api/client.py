@@ -28,9 +28,12 @@ class ApiClient:
     def __init__(self, ai_provider=None, provider=None, options=None, article_context=None):
         """Initialize API client with provider and options."""
         # Use either parameter name with ai_provider taking precedence - no fallbacks
-        self.ai_provider = ai_provider or provider  # Must be provided
-        if not self.ai_provider:
-            raise ValueError("ai_provider must be specified")
+        if ai_provider:
+            self.ai_provider = ai_provider
+        elif provider:
+            self.ai_provider = provider
+        else:
+            raise ValueError("Either ai_provider or provider must be specified")
         
         if options is None:
             raise ValueError("options parameter must be provided")

@@ -15,4 +15,6 @@ def get_client(provider: str = "deepseek", **kwargs) -> ApiClient:
     Returns:
         API client instance
     """
-    return ApiClient(provider=provider)
+    options = kwargs.get("options", {})
+    article_context = kwargs.get("article_context", {})
+    return ApiClient(provider=provider, options=options, article_context=article_context)
