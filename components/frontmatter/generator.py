@@ -6,6 +6,7 @@ Enhanced implementation with robust error handling and auto-recovery.
 
 import logging
 import yaml
+import re
 from components.base.component import BaseComponent
 from components.base.utils.validation import (
     validate_length, validate_required_fields, validate_category_consistency
@@ -412,7 +413,51 @@ class FrontmatterGenerator(BaseComponent):
             logger.error(f"Auto-fixing failed, still missing fields: {e}")
             raise
         
+        # Ensure image URLs follow the correct convention
+        if parsed and isinstance(parsed, dict):
+            if "images" in parsed and isinstance(parsed["images"], dict):
+                subject_slug = self.subject.lower().replace(' ', '-')
+                
+                # Loop through all image types (hero, closeup, etc.)
+                for image_type, image_data in parsed["images"].items():
+                    if isinstance(image_data, dict) and "url" in image_data:
+                        # Create the standardized URL
+                        old_url = image_data["url"]
+                        
+                        # Get extension (default to jpg)
+                        extension = "jpg"
+                        if "." in old_url:
+                            extension = old_url.split(".")[-1]
+                        
+                        # Create new standardized URL
+                        new_url = f"/images/{subject_slug}-laser-cleaning-{image_type}.{extension}"
+                        
+                        # Update URL
+                        image_data["url"] = new_url
+        
+        # Sanitize content to remove malformed parts and standardize image URLs
+        final_content = self._sanitize_content(final_content)
+        
         return final_content
+    
+    def _sanitize_content(self, content: str) -> str:
+        """Remove malformed content and standardize image URLs."""
+        # Remove standalone URL fragments
+        lines = content.split('\n')
+        cleaned_lines = []
+        
+        for line in lines:
+            # Skip standalone lines with broken URL fragments
+            if re.match(r'^-*>-*laser-cleaning.*\.jpg$', line.strip()):
+                continue
+            cleaned_lines.append(line)
+        
+        content = '\n'.join(cleaned_lines)
+        
+        # Fix URLs with arrow characters
+        content = re.sub(r'-+>-+', '-', content)
+        
+        return content
     
     def validate_category_consistency(self, content: str) -> bool:
         """Validates category consistency in frontmatter.
@@ -428,3 +473,16 @@ class FrontmatterGenerator(BaseComponent):
             return True
             
         return validate_category_consistency(content, category, self.article_type, self.subject)
+    
+    def _process_response(self, response_data):
+        """Process the raw response data from the AI model."""
+        # Handle image URLs formatting
+        if "images" in response_data and isinstance(response_data["images"], dict):
+            subject_slug = self.subject.lower().replace(' ', '-')
+            
+            for image_type, image_data in response_data["images"].items():
+                if isinstance(image_data, dict):
+                    # Generate the standardized URL
+                    image_data["url"] = f"/images/{subject_slug}-laser-cleaning-{image_type}.jpg"
+        
+        return response_data

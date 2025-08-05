@@ -4,7 +4,6 @@ description: "Composite materials for laser cleaning applications"
 article_type: "material"
 ---
 
-- Asphalt
 - Carbon Fiber Reinforced Polymer
 - Epoxy Resin Composites
 - Fiberglass

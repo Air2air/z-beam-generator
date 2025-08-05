@@ -40,7 +40,7 @@ BATCH_CONFIG = {
     "multi_subject": {
         "author_id": 1,  # Use this author for all subjects
         "subject_source": "lists",  # Directory to discover all subjects from all categories
-        "limit": 20,  # Limit to first X subjects (set to None for all subjects)
+        "limit": [15,40],  # Range [start_idx, end_idx] to process items by index (or a single number for first N items, None for all subjects)
     },
     
     # Global AI configuration - applied to all components
@@ -1004,11 +1004,22 @@ def run_batch_generation():
         # Apply limit if specified
         limit = config.get("limit")
         if limit is not None:
-            subjects_to_process = [(s["subject"], s["article_type"], s["category"]) for s in subjects_with_info[:limit]]
+            # Check if limit is a range [start_index, end_index]
+            if isinstance(limit, list) and len(limit) == 2:
+                start_idx, end_idx = limit
+                # Slice the list from start_idx to end_idx (inclusive)
+                subjects_to_process = [(s["subject"], s["article_type"], s["category"]) 
+                                      for s in subjects_with_info[start_idx:end_idx+1]]
+                print(f"Multi Mode: {len(subjects_to_process)} subjects (index range: {start_idx}-{end_idx})")
+            else:
+                # Traditional single number limit (first N items)
+                subjects_to_process = [(s["subject"], s["article_type"], s["category"]) 
+                                      for s in subjects_with_info[:limit]]
+                print(f"Multi Mode: {len(subjects_to_process)} subjects (limit: {limit})")
         else:
-            subjects_to_process = [(s["subject"], s["article_type"], s["category"]) for s in subjects_with_info]
-            
-        print(f"Multi Mode: {len(subjects_to_process)} subjects (limit: {limit or 'none'})")
+            subjects_to_process = [(s["subject"], s["article_type"], s["category"]) 
+                                  for s in subjects_with_info]
+            print(f"Multi Mode: {len(subjects_to_process)} subjects (no limit)")
         
     else:
         raise ValueError(f"Invalid mode: {BATCH_CONFIG['mode']}")

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Simple script to fix image URLs with arrow characters in frontmatter files
+Script to fix malformed HTML comments in frontmatter files
 """
 
 import os
@@ -15,23 +15,17 @@ def fix_file(filepath):
     # Store original content to check if changes were made
     original = content
     
-    # Simple regex to replace any dash-arrow combinations with a single dash
-    content = re.sub(r'-+>+-*', '-', content)
-    
-    # Replace any non-alphabetic character followed by > with just the non-alphabetic character
-    content = re.sub(r'([^a-z])>+-*', r'\1', content)
-    
-    # Also catch image URLs with just a > character (no dashes)
-    content = re.sub(r'(/images/[^>]*)>(-laser-cleaning)', r'\1\2', content)
+    # Fix incomplete HTML comments (replace "- " or "-" at the end with "-->")
+    content = re.sub(r'(<!--[^>]*)-\s*\n', r'\1-->\n', content)
     
     # Only write if changes were made
     if content != original:
         with open(filepath, 'w') as f:
             f.write(content)
-        print(f"Fixed URLs in {os.path.basename(filepath)}")
+        print(f"Fixed comments in {os.path.basename(filepath)}")
         return True
     else:
-        print(f"No changes needed in {os.path.basename(filepath)}")
+        print(f"No comment fixes needed in {os.path.basename(filepath)}")
         return False
 
 def main():
@@ -48,7 +42,7 @@ def main():
         if fix_file(file_path):
             fixed_count += 1
     
-    print(f"Done! Fixed URLs in {fixed_count} of {len(md_files)} files")
+    print(f"Done! Fixed comments in {fixed_count} of {len(md_files)} files")
 
 if __name__ == "__main__":
     main()
