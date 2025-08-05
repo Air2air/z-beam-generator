@@ -12,7 +12,50 @@ from typing import Dict, Any, List
 
 logger = logging.getLogger(__name__)
 
-def format_frontmatter_with_comment(yaml_content: str, category: str, article_type: str, subject: str) -> str:
+def configure_yaml_formatting():
+    """Configure YAML dumper to use proper formatting for strings.
+    
+    This applies the following formatting rules:
+    1. Use literal style (|) for multiline strings to prevent backslash escaping
+    2. Use quoted style (") for strings with special characters
+    
+    Call this function before using yaml.dump() to ensure consistent formatting.
+    """
+    def str_presenter(dumper, data):
+        """Present strings with appropriate YAML style based on content.
+        
+        Args:
+            dumper: YAML dumper instance
+            data: String data to format
+            
+        Returns:
+            YAML scalar node with appropriate style
+        """
+        # Convert data to string if it's not already
+        if not isinstance(data, str):
+            data = str(data)
+            
+        # Strip quotes if they're enclosing the entire string
+        if data.startswith('"') and data.endswith('"') and len(data) > 1:
+            data = data[1:-1]
+            
+        # Handle newlines within the string
+        if '\n' in data or len(data.splitlines()) > 1:
+            # Always use literal block style for multiline strings
+            return dumper.represent_scalar('tag:yaml.org,2002:str', data, style='|')
+        
+        # Use double-quoted style for strings with special characters
+        if any(char in data for char in "{}[]:#,&*!|>'\"%-@\\"):
+            return dumper.represent_scalar('tag:yaml.org,2002:str', data, style='"')
+            
+        return dumper.represent_scalar('tag:yaml.org,2002:str', data)
+    
+    # Register the presenter for string types
+    yaml.add_representer(str, str_presenter)
+    
+    return True  # Return success flag
+
+def format_frontmatter_with_comment(yaml_content: str, category: str = "", article_type: str = "", subject: str = "") -> str:
     """Format YAML content as frontmatter with metadata included in the YAML.
     
     Args:
@@ -40,16 +83,31 @@ def format_frontmatter_with_comment(yaml_content: str, category: str, article_ty
         logger.warning("Could not parse frontmatter YAML, creating new dictionary")
         frontmatter_data = {}
     
-    # Add or update metadata fields
-    frontmatter_data['category'] = category
-    frontmatter_data['article_type'] = article_type
-    frontmatter_data['subject'] = subject
+    # Add or update metadata fields if provided
+    if category:
+        frontmatter_data['category'] = category
+    if article_type:
+        frontmatter_data['article_type'] = article_type
+    if subject:
+        frontmatter_data['subject'] = subject
+    
+    # Configure YAML for consistent formatting
+    configure_yaml_formatting()
     
     # Convert back to YAML
     updated_yaml = yaml.dump(frontmatter_data, default_flow_style=False, sort_keys=False)
     
+    # Add HTML comment if all metadata is provided
+    html_comment = ""
+    if category and article_type and subject:
+        html_comment = f"<!-- Category: {category}, Article Type: {article_type}, Subject: {subject} -->\n"
+    
     # Add delimiters
-    delimited_yaml = f"---\n{updated_yaml}---\n"
+    delimited_yaml = f"{html_comment}---\n{updated_yaml}---\n"
+    
+    # Final cleanup for any remaining backslash line continuations
+    delimited_yaml = re.sub(r'"\\\s*\n\s*\\?"', '"', delimited_yaml)
+    delimited_yaml = re.sub(r'\\\s*\n\s*\\', '\n', delimited_yaml)
     
     return delimited_yaml
 
@@ -66,7 +124,14 @@ def format_jsonld_as_yaml_markdown(jsonld: Dict[str, Any]) -> str:
         ValueError: If JSON-LD cannot be serialized
     """
     try:
+        # Configure YAML for consistent formatting
+        configure_yaml_formatting()
+        
         yaml_str = yaml.dump(jsonld, default_flow_style=False, sort_keys=False)
+        
+        # Clean up any backslash line continuations
+        yaml_str = re.sub(r'"\\\s*\n\s*\\?"', '"', yaml_str)
+        yaml_str = re.sub(r'\\\s*\n\s*\\', '\n', yaml_str)
         
         # Convert special characters to unicode representations
         yaml_str = (yaml_str
@@ -165,7 +230,10 @@ def format_bullet_points(items: List[str], bullet_char: str = '*') -> str:
     return '\n'.join([f"{bullet_char} {item}" for item in items])
 
 def format_yaml_object(data: Dict[str, Any]) -> str:
-    """Format dictionary as YAML string.
+    """Format dictionary as YAML string with consistent formatting.
+    
+    Automatically configures YAML formatting to use proper string styles
+    including literal style (|) for multiline strings.
     
     Args:
         data: Dictionary to format
@@ -177,6 +245,8 @@ def format_yaml_object(data: Dict[str, Any]) -> str:
         ValueError: If serialization fails
     """
     try:
+        # Always configure YAML formatting before dumping
+        configure_yaml_formatting()
         yaml_str = yaml.dump(data, default_flow_style=False, sort_keys=False)
         return yaml_str
     except Exception as e:

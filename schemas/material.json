@@ -196,6 +196,12 @@
                 "required": true,
                 "description": "Alt text for hero image",
                 "example": "Close-up of Alumina surface being laser cleaned showing material texture and reflectivity"
+              },
+              "url": {
+                "type": "string",
+                "required": true,
+                "description": "URL for hero image",
+                "example": "https://www.z-beam.com/images/alumina-laser-cleaning-hero.jpg"
               }
             }
           },
@@ -207,6 +213,12 @@
                 "required": true,
                 "description": "Alt text for closeup image",
                 "example": "Detailed view of Alumina microstructure after laser cleaning process"
+              },
+              "url": {
+                "type": "string",
+                "required": true,
+                "description": "URL for closeup image",
+                "example": "https://www.z-beam.com/images/alumina-laser-cleaning-closeup.jpg"
               }
             }
           }

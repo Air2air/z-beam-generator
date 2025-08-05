@@ -1,41 +1,35 @@
 name: "Content Generator"
 description: "Generates comprehensive article content from all frontmatter data"
-version: "2.1"
+version: "3.0.0"
 
 template: |
   Write a comprehensive {article_type} article about {subject} for the laser cleaning industry.
   
-  REQUIREMENTS:
-  - Generate EXACTLY {min_words}-{max_words} words
-  - Use technical data from frontmatter
-  - Write in {style} style for {audience} audience
+  CONTENT GUIDANCE:
+  - Focus on technical accuracy and completeness
+  - Provide substantial detail about {subject}
+  - Include real-world examples and applications
+  - Explain technical concepts clearly and authoritatively
+  - Maintain a technical but accessible writing style
+  - Write between {min_words} and {max_words} words
   
-  FRONTMATTER:
+  FRONTMATTER DATA:
   {all_frontmatter}
   
-  STRUCTURE:
+  SUGGESTED STRUCTURE:
   1. Introduction to {subject}
   2. Technical specifications and capabilities
   3. Applications and use cases with examples
   4. Manufacturing context
   5. Environmental benefits
-  6. Geographic/economic context
-  7. Conclusion with outlook
+  6. Conclusion with outlook
   
-  INCLUDE SPECIFIC DATA:
-  - Technical specs (power ranges, wavelengths, pulse durations)
+  KEY POINTS TO INCLUDE:
+  - Technical details from frontmatter
   - Real applications with examples
-  - Manufacturing details
-  - Environmental data
-  - Geographic context
-  - Economic information
-  
-  LINKING REQUIREMENTS:
-  - Add no more than {max_links} inline markdown links 
-  - Use standard markdown link format: [text](url)
-  - Format links however appropriate for the content
-  - Do NOT include any links to z-beam.com or the company's website
-  - Do NOT include any references or supporting sentences about the company website
+  - Manufacturing context
+  - Environmental considerations
+  - Industry standards or regulations
   
   Format as a complete article using markdown.
 
@@ -43,34 +37,23 @@ template: |
 condensed_template: |
   Write a comprehensive {article_type} article about {subject} for the laser cleaning industry.
   
-  REQUIREMENTS:
-  - Generate EXACTLY {min_words}-{max_words} words
-  - Closely follow the data from the frontmatter
-  - Write in {style} style
+  CONTENT GUIDANCE:
+  - Focus on the information provided in the frontmatter
+  - Maintain a technical but accessible writing style
+  - Elaborate on the specifications and applications
+  - Write between {min_words} and {max_words} words
   
-  FRONTMATTER DATA AVAILABLE:
+  AVAILABLE FRONTMATTER DATA:
   - Name: {name}
   - Description: {description}
   - Tags: {tags}
-  {% if specifications %}
-  - Specifications: Use all the technical specifications provided
-  {% endif %}
-  {% if sections %}
-  - Sections: Follow the exact section structure from frontmatter
-  {% endif %}
   
-  LINKING REQUIREMENTS:
-  - Add no more than {max_links} inline markdown links
-  - Use standard markdown link format
-  - Do NOT include any links to z-beam.com
+  FRONTMATTER DETAILS:
+  {all_frontmatter}
   
   Format as a complete article using markdown.
 
 parameters:
   max_tokens: 4000
   temperature: 0.7
-validation:
-  min_words: "{min_words}"
-  max_words: "{max_words}"
-  required_sections: ["introduction", "technical specifications", "applications", "manufacturing", "environmental", "geographic", "conclusion"]
   markdown_formatting: true

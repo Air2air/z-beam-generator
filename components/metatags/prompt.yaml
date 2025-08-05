@@ -1,74 +1,46 @@
 name: "Metatags Generator"
 description: "Generates Next.js compatible meta tags in YAML frontmatter format"
-version: "1.2.0"
+version: "2.0.0"
 template: |
   Generate Next.js compatible meta tags in YAML frontmatter format for {article_type} "{subject}" in laser cleaning.
   
-  CRITICAL REQUIREMENTS:
-  - ONLY OUTPUT YAML: Just provide the YAML content - nothing else
-  - START AND END WITH ---: Begin with --- and end with ---
-  - COUNT: {min_tags}-{max_tags} metadata fields total
-  - MUST INCLUDE: title, description, keywords, openGraph properties
-  - FORMAT: Standard YAML format following Next.js metadata conventions
-  - FIELD MAPPING: Use title, description from frontmatter
+  FOCUS ON GENERATING:
+  - Accurate and informative title and description
+  - Relevant keywords for SEO
+  - Basic Open Graph metadata
+  - Twitter card metadata
   
-  FIELD NAMING CONSISTENCY:
-  - Use 'title' for display in metatags (NOT 'name')
-  - Format 'title' as "{subject} Laser Cleaning | Technical Guide"
-  - Use same 'description' content as frontmatter
-  - Include application, properties, environmentalImpact from frontmatter
-  
-  IMPORTANT URL FORMATTING:
-  - All URLs must use lowercase for subjects (e.g., 'alumina' not 'Alumina')
-  - Image URLs must follow this pattern: https://www.z-beam.com/images/alumina-laser-cleaning-hero.jpg (lowercase)
-  
-  FRONTMATTER:
+  USE CONTEXT FROM FRONTMATTER:
   {all_frontmatter}
   
   EXISTING KEYWORDS: {keywords}
   
-  REQUIRED YAML STRUCTURE (Next.js compatible):
+  GUIDANCE FOR YAML CONTENT:
+  - Provide title that clearly identifies the subject
+  - Write compelling description that summarizes the article
+  - Include relevant keywords for search optimization
+  - Add author information
+  - Include OpenGraph and Twitter card metadata
+  - For material articles, include application data
   
+  OUTPUT FORMAT EXAMPLE:
   ```yaml
   ---
-  # Basic metadata (Next.js Head)
-  title: "{subject} Laser Cleaning | Technical Guide"
-  description: "Technical guide to {subject} laser cleaning including specifications, applications, and environmental impact."
-  keywords: "{subject}, laser cleaning, {extracted_keywords}"
+  title: "{subject} Laser Cleaning Guide"
+  description: "Technical information about {subject} laser cleaning"
+  keywords: "{subject}, laser cleaning, surface treatment"
   author: "{author_name}"
   
-  # For material article types, must include application as an object with name and description
-  application:
-    name: "Laser Cleaning"
-    description: "Removal of contaminants, oxides, and coatings from {subject} surfaces using high-precision laser technology."
-  
-  # Open Graph / Facebook (Next.js compatible format)
   openGraph:
-    title: "{subject} Laser Cleaning: Technical Guide"
-    description: "Comprehensive technical resource on {subject} laser cleaning applications, specifications, and best practices."
-    url: "https://www.z-beam.com/{subject}-laser-cleaning"
-    siteName: "Z-Beam"
-    images:
-      - url: "https://www.z-beam.com/images/{subject}-laser-cleaning-hero.jpg"
-        width: 1200
-        height: 630
-        alt: "{subject} Laser Cleaning"
-    locale: "en_US"
-    type: "article"
-  
-  # Twitter (Next.js compatible format)
+    title: "{subject} Laser Cleaning"
+    description: "Technical guide to {subject} laser cleaning"
+    
   twitter:
     card: "summary_large_image"
-    title: "{subject} Laser Cleaning: Technical Guide"
-    description: "Comprehensive technical resource on {subject} laser cleaning applications, specifications, and best practices."
-    images: ["https://www.z-beam.com/images/{subject}-laser-cleaning-hero.jpg"]
+    title: "{subject} Laser Cleaning"
   ---
   ```
 parameters:
   max_tokens: 1000
   temperature: 0.5
-  system_message: "You are a metadata generator for a Next.js website. You generate YAML frontmatter with metadata for SEO optimization. ONLY output the YAML frontmatter with --- delimiters. Do not include ANY other text or explanations."
-validation:
-  min_tags: 8
-  max_tags: 20
-  required_fields: ["title", "description", "keywords", "openGraph", "twitter"]
+  system_message: "You are a metadata generator for a Next.js website. You generate YAML frontmatter with metadata for SEO optimization. Focus on creating accurate and relevant metadata content - the formatting will be handled by the system."

@@ -40,7 +40,7 @@ BATCH_CONFIG = {
     "multi_subject": {
         "author_id": 1,  # Use this author for all subjects
         "subject_source": "lists",  # Directory to discover all subjects from all categories
-        "limit": 1,  # Limit to first X subjects (set to None for all subjects)
+        "limit": 20,  # Limit to first X subjects (set to None for all subjects)
     },
     
     # Global AI configuration - applied to all components
@@ -62,7 +62,7 @@ BATCH_CONFIG = {
             "temperature": 0.9  # Override global temperature for frontmatter
         },
         "content": {
-            "enabled": False,
+            "enabled": True,
             "min_words": 200,
             "max_words": 400,
             "temperature": 0.7,  # Balanced creativity for main content
@@ -71,12 +71,12 @@ BATCH_CONFIG = {
             }
         },
         "bullets": {
-            "enabled": False,
+            "enabled": True,
             "count": 4,
             "temperature": 0.6  # Slightly lower for more focused bullet points
         },
         "table": {
-            "enabled": False,
+            "enabled": True,
             "rows": 5,
             "temperature": 0.4,  # Lower temperature for more consistent, structured table data
             "table_keys": ["Material", "Density", "Melting Point", "Laser Type", "Applications"],
@@ -771,6 +771,10 @@ def generate_component(component_name: str, article_context: dict, frontmatter_c
             component_config["category"] = article_context["category"]
         else:
             component_config["category"] = ""
+            
+        # Add author_id to component_config
+        if "author_id" in article_context:
+            component_config["author_id"] = article_context["author_id"]
         
         # Apply component-specific AI overrides
         for key in ["temperature", "max_tokens", "model"]:

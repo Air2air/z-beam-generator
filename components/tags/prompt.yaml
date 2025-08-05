@@ -1,48 +1,41 @@
 name: "Tags Generator"
 description: "Generates concise frontmatter tags for laser cleaning articles, optimized for on-site navigation."
-version: "2.3.0"
+version: "3.0.0"
 template: |
-  Generate a comma-separated list of tags for {article_type} "{subject}" in laser cleaning.
+  Generate useful, relevant tags for {article_type} "{subject}" in laser cleaning.
   
-  REQUIREMENTS:
-  - OUTPUT FORMAT: ONLY comma-separated tags (e.g., "Tag1, Tag2, Tag3"), no other text
-  - COUNT: {min_tags}-{max_tags} tags total
-  - LENGTH: Maximum 2 words per tag
-  - STYLE: Title case (e.g., "Laser Cleaning", "Metal Processing")
-  - PURPOSE: Navigation-focused, not technical SEO
+  PURPOSE:
+  - Create navigation-focused tags, not SEO keywords
+  - Focus on application areas, materials, techniques, equipment, and benefits
   
-  REQUIRED TAGS:
-  - Always include "Laser Cleaning" as a tag
-  - Always include the material category (e.g., "Metal", "Ceramic", "Plastic") if applicable
-  - Always include the application type (e.g., "Surface Treatment", "Rust Removal") if applicable
-  - Always include the author's name (e.g., "Evelyn Wu") as a tag
+  SUGGESTED TOPICS:
+  - Key materials or applications related to {subject}
+  - Common cleaning contexts or industries for {subject}
+  - Benefits or advantages of laser cleaning for {subject}
+  - Specific techniques relevant to {subject}
+  - Include the author name: {author_name}
   
-  DO NOT:
-  - Add explanatory text, headers, or bullet points
-  - Include HTML formatting or markdown
-  - Write sentences or descriptions
-  
-  SHORTENING RULES:
-  - Keep action + subject: "precision metal cleaning" → "Metal Cleaning"
-  - Remove adjectives: "industrial laser cleaning" → "Laser Cleaning"
-  - Merge similar concepts: "surface preparation treatment" → "Surface Treatment"
-  - Prioritize action words: Keep "cleaning", "removal", "treatment"
-  
-  EXAMPLES:
-  - "aerospace surface treatment" → "Aerospace Treatment"
-  - "non-destructive cleaning" → "Non-destructive" 
-  - "selective contamination removal" → "Selective Removal"
-  - "microstructure preservation" → "Microstructure"
-  
-  MERGE FRONTMATTER KEYWORDS:
+  CONTEXT:
   {all_frontmatter}
   
-  EXISTING KEYWORDS: 
+  EXISTING KEYWORDS:
   {keywords}
   
-  REQUIRED FORMAT EXAMPLE:
-  Laser Cleaning, Metal Processing, Surface Treatment, Oxide Removal, Precision Cleaning, Evelyn Wu
-  Output only comma-separated tags:
+  TAG CATEGORIES TO INCLUDE:
+  - Material type (e.g., ceramic, metal)
+  - Application domain (e.g., semiconductor, aerospace)
+  - Technology (e.g., laser-ablation, nd-yag)
+  - Benefits (e.g., precision-cleaning, chemical-free)
+  - Author (convert to kebab-case: {author_name})
+  
+  OUTPUT INSTRUCTIONS:
+  - Generate between {min_tags} and {max_tags} tags
+  - Output ONLY a comma-separated list of tags (e.g., "tag1, tag2, tag3")
+  - No numbering, no asterisks, no formatting, no explanations
+  - Be concise and focused on laser cleaning applications
+  - Each tag should be relevant to "{subject}"
+  - Use hyphens instead of spaces in multi-word tags (e.g., "laser-cleaning" not "laser cleaning")
+  - MUST include a tag with the author name converted to kebab-case
 
 parameters:
   max_tokens: 500

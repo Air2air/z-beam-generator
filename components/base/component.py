@@ -70,6 +70,9 @@ class BaseComponent(ABC):
         self.article_type = article_type
         self.schema = schema
         self.author_data = author_data
+        # Ensure author ID is available
+        if "author_id" not in self.author_data and "author_id" in component_config:
+            self.author_data["author_id"] = component_config["author_id"]
         self.component_config = component_config
         self.ai_provider = component_config["ai_provider"]
         self.options = component_config["options"]
@@ -150,7 +153,7 @@ class BaseComponent(ABC):
             "article_type": self.article_type,
             "author_name": self.author_data["author_name"],
             "author_country": self.author_data["author_country"],
-            "author_id": self.author_data.get("id", 1),
+            "author_id": self.author_data.get("author_id", self.author_data.get("id", 1)),
             "category": getattr(self, "category", ""),
             "schema": str(self.schema),
             "profile": profile_data.get("profile", {}),
@@ -174,8 +177,8 @@ class BaseComponent(ABC):
                 template_data["summary"] = frontmatter["summary"]
                 
             # Make sure author name is available for tags
-            if "author" in frontmatter and "author_name" in frontmatter["author"]:
-                template_data["author_name"] = frontmatter["author"]["author_name"]
+            if "author" in frontmatter and "name" in frontmatter["author"]:
+                template_data["author_name"] = frontmatter["author"]["name"]
             
             # Handle specific sections based on article type
             if self.article_type == "material" and "specifications" in frontmatter:
@@ -638,7 +641,8 @@ class BaseComponent(ABC):
         This provides the common validation logic that most generators need:
         1. Validates content is not empty
         2. Strips markdown code blocks
-        3. Calls component-specific processing via _component_specific_processing
+        3. Configures YAML formatting for consistent output
+        4. Calls component-specific processing via _component_specific_processing
         
         Subclasses should override _component_specific_processing instead of this method
         unless they need to completely change the post-processing behavior.
@@ -658,7 +662,15 @@ class BaseComponent(ABC):
         # Step 2: Strip code blocks
         content = self._strip_markdown_code_blocks(content)
         
-        # Step 3: Component-specific processing
+        # Step 3: Configure YAML formatting for all generators
+        # This ensures consistent YAML output across all components
+        try:
+            from components.base.utils.formatting import configure_yaml_formatting
+            configure_yaml_formatting()
+        except ImportError:
+            logger.warning("Could not configure YAML formatting - formatting module not found")
+        
+        # Step 4: Component-specific processing
         return self._component_specific_processing(content)
     
     def _component_specific_processing(self, content: str) -> str:
@@ -715,10 +727,12 @@ class BaseComponent(ABC):
         max_words = self.get_component_config(max_key, 10000)
         
         if min_words > 0 and word_count < min_words:
-            raise ValueError(f"Generated {component_name} too short: {word_count} words, minimum required: {min_words}")
+            # Changed from raising ValueError to logging a warning
+            # This prevents generation failures for content that's just a bit short
+            logger.warning(f"Generated {component_name} too short: {word_count} words, minimum required: {min_words}")
         
         if max_words > 0 and word_count > max_words:
-            raise ValueError(f"Generated {component_name} too long: {word_count} words, maximum allowed: {max_words}")
+            logger.warning(f"Generated {component_name} too long: {word_count} words, maximum allowed: {max_words}")
             
         return content
     

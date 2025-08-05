@@ -1,221 +1,76 @@
 name: "Frontmatter Generator"
-description: "Generates concise YAML frontmatter for laser cleaning articles, optimized for SEO, E-A-T, and on-site tagging."
-version: "2.6.0"
+description: "Generates comprehensive YAML frontmatter for laser cleaning articles, optimized for SEO, E-A-T, and technical accuracy."
+version: "3.3.0"
 
 template: |
-  🚨 YAML FORMATTING:
-  - Return ONLY raw YAML content
-  - NO triple backticks or ```yaml markers
-  - NO "---" delimiters
+  Generate detailed, technically accurate YAML frontmatter for {article_type} "{subject}" in laser cleaning applications.
 
-  Generate concise YAML frontmatter for {article_type} "{subject}" in laser cleaning.
+  FOCUS ON:
+  - Comprehensive technical information about {subject}
+  - Detailed physical and chemical properties 
+  - Specific laser parameters for optimal processing
+  - Industry-standard applications and compatibility
+  - Environmental considerations and regulatory compliance
+  - Measurable outcomes and performance metrics
 
-  LENGTH LIMITS:
-  - TOTAL LENGTH: 2,000-3,000 characters maximum
-  - name: Max 100 characters
-  - headline: Max 150 characters
-  - description: Max 250 characters
-  - keywords: 8-12 items, each max 50 characters
-  - Complex arrays: 3-4 items with descriptions of 50-75 words each
-  
-  IMAGE REQUIREMENTS:
-  - ALWAYS include an "images" object with "hero" and "closeup" image alt text
-  - Hero image alt text: Describe a wide-angle view of the subject in context (80-120 characters)
-  - Closeup image alt text: Describe a detailed close-up view of the subject (80-120 characters)
-  - Alt text should be descriptive, specific, and relevant to the subject
-  - Include key technical details in alt text (materials, processes, equipment)
-  - Image URLs will follow this pattern: "https://www.z-beam.com/images/{subject}-laser-cleaning-hero.jpg"
-  
-  REQUIRED OBJECT STRUCTURE FOR IMAGES:
-  images:
-    hero:
-      alt: "Detailed description of the hero image showing subject in context"
-    closeup:
-      alt: "Detailed description of the closeup image showing specific features"
-  
-  FIELD REQUIREMENTS:
-  - applications.name: MAX 2 WORDS (e.g., "Electronics Cleaning")
-  - environmentalImpact.benefit: MAX 2 WORDS (e.g., "Eco Friendly")
-  - name: MUST BE EXACTLY "{subject}" with no additional text (THIS FIELD IS REQUIRED)
-  - title: Use format "{subject} Laser Cleaning | Technical Guide" for SEO purposes
-  - description: Start with "Technical guide to {subject} for laser cleaning..."
-  
-  FIELD NAMING CONSISTENCY:
-  - name: Used internally for subject identification (EXACTLY "{subject}")
-  - title: Used for SEO and display purposes with format "{subject} Laser Cleaning | Technical Guide"
+  REQUIRED FIELDS (MUST INCLUDE ALL OF THESE):
+  - name: The subject name only (string)
+  - title: SEO-optimized page title (include "Laser Cleaning" and "Technical Guide")
+  - headline: Concise description of content purpose (one line)
+  - description: Technical overview highlighting key properties (string, 150-250 chars)
+  - website: Authoritative URL for technical information (string with https://)
+  - author: Comprehensive author information (object with name, country, credentials)
+    IMPORTANT: Use the author with ID: {author_id} ({author_name} from {author_country})
+  - keywords: Comprehensive search terms (array of 8-12 strings, including technical terms)
+  - category: Material category (string: ceramic, metal, plastic, etc.)
+  - chemicalProperties: Chemical data (object with formula, symbol, materialType)
+  - properties: Physical properties (comprehensive object with density, meltingPoint, hardness, thermalConductivity, laserType, wavelength, fluenceRange)
+  - composition: Detailed components (array of component objects with percentages, type, formula)
+  - compatibility: Compatible materials and applications (array of material objects)
+  - images: Image information (object with hero and closeup sections with descriptive alt text)
+  - applications: Detailed use cases (array of objects with name and description)
+  - environmentalImpact: Environmental benefits (array of objects with benefit and description)
+  - technicalSpecifications: Detailed laser parameters (object with powerRange, pulseDuration, wavelength, spotSize, repetitionRate, fluenceRange, safetyClass)
+  - regulatoryStandards: Applicable standards (array of standard objects with code and descriptions)
+  - outcomes: Measurable results (array of objects with result and metric)
+
+  CONTENT REQUIREMENTS:
+  - Include precise numerical values for all physical properties (with units)
+  - Provide detailed composition with exact percentages and chemical formulas
+  - List at least 3 specific compatibility scenarios with detailed applications
+  - Include standard units of measurement (g/cm³, °C, W/m·K, etc.)
+  - Specify at least 2-3 regulatory or industry standards with organization and descriptions
+  - Use proper technical terminology for material science and laser processing
+  - Include environmental impact metrics with quantifiable benefits (percentages, comparisons)
+  - Provide detailed technical specifications for laser parameters (power, duration, spot size)
+  - Include measurable outcomes with appropriate measurement techniques
+  - Add specific applications with detailed descriptions of the processes
 
   SCHEMA STRUCTURE:
-  - Follow EXACTLY this schema for {article_type}
-  - Include ALL required fields
-  - Use EXACT field names (case-sensitive)
-  - DO NOT add or omit fields
-  
+  - Follow this schema structure exactly for {article_type}
+  - Include ALL required fields with complete information
+  - Ensure correct nesting and data types
+  - Do not wrap content in a top-level "{article_type}Profile" key
+  - Use the exact field names from the schema
+
   {schema}
 
-  CONSTRAINTS:
-  - Region articles: California locations ONLY
-  - Set "countries" to ["United States"] 
-  - All manufacturing centers in California
-  - Use "{website_url}" for ALL website URLs
-  
-  MATERIAL ARTICLE REQUIREMENTS:
-  - ALWAYS include chemical formula/symbol for materials when applicable
-  - Use this chemical formula if available: {material_formula}
-  - Use this symbol if available: {material_symbol}
-  - Use this material type if available: {material_type}
-  - Include a dedicated chemicalProperties section with:
-    - symbol: 2-3 character abbreviation (e.g., "Ka" for Kaolin, "Al" for Aluminum)
-    - formula: Full chemical formula (e.g., "Al₂Si₂O₅(OH)₄")
-    - materialType: Chemical classification ("element", "compound", "alloy", etc.)
-  - DO NOT repeat chemical formulas in the properties section
+  MATERIAL INFORMATION:
+  - Chemical formula if applicable: {material_formula}
+  - Symbol if applicable: {material_symbol}
+  - Material type if applicable: {material_type}
 
-  GEOGRAPHIC FORMAT (for regions):
-  - County: "Santa Clara County"
-  - Adjacent cities: 2-3 real neighbors
-  - Region: "Bay Area", "Southern California", etc.
-  - Always include "California" as state
+  FORMAT:
+  - Return raw YAML content only (no markdown code blocks)
+  - Include all fields at the top level (do not wrap in 'materialProfile')
+  - Be technically comprehensive and precise
+  - Use specific, quantitative data rather than generic descriptions
+  - Use multiline string format for descriptions containing colons or special characters
+  - Include proper Unicode characters for units (°, ³, ·, etc.)
+  - Use ranges (e.g., "100-500W") instead of single values when appropriate
+  - Format complex fields consistently (arrays, nested objects)
+  - Ensure SEO optimization for title, headline, and description fields
 
-  ARRAY FORMATTING:
-  - Simple arrays:
-    keywords:
-      - "keyword one"
-      - "keyword two"
-  - Complex arrays:
-    arrayName:
-      - name: "Item name"
-        description: "Brief description with technical specifics."
-        property: "Value"
-  - Images object:
-    images:
-      hero:
-        alt: "Detailed technical description of the hero image showing the subject in its operational context"
-      closeup:
-        alt: "Close-up view of the subject showing specific technical details and material properties"
-
-  E-A-T AND SEO:
-  - Author field with credentials 
-  - Technical, non-repetitive keywords
-  - Concise meta description (150-160 chars)
-  - No redundant content
-
-  Generate YAML for: {article_type} = {subject}
-  
-  Required fields (if no schema provided):
-  name: "{subject}" # EXACTLY the subject name, no additional text
-  headline: "Technical guide to {subject}" # Max 150 chars
-  description: "Technical summary of {subject} in laser cleaning." # Max 250 chars
-  website: "{website_url}"
-  min_words: {min_words}
-  max_words: {max_words}
-  author:
-    author_id: {author_id}
-    author_name: "{author_name}"
-    author_country: "{author_country}"
-    credentials: "Industry Expert in Laser Cleaning Technology"
-  keywords: # 8-12 unique terms, each max 50 chars
-    - "laser cleaning"
-    - "{subject}"
-    # Add 6-10 more specific technical terms
-  applications: # 3-4 items max
-    - name: "Application One" # MAX 2 WORDS
-      description: "Brief description." # 50-75 words
-  environmentalImpact:
-    benefit: "Eco Friendly" # MAX 2 WORDS
-    description: "Environmental benefits." # 50-75 words
-    - benefit: "Waste Reduction"  # Maximum 2 words
-      description: "Laser cleaning eliminates chemical solvents, reducing hazardous waste by 90% compared to traditional methods."
-    - benefit: "Energy Efficiency"  # Maximum 2 words
-      description: "Process uses 30% less energy than abrasive cleaning, lowering carbon footprint."
-  regulatoryStandards:
-    - code: "AWS D1.1"
-      description: "Structural Welding Code – Steel"
-    - code: "AWS D1.2"
-      description: "Structural Welding Code – Aluminum"
-  outcomes:
-    - result: "100% NDT pass rate"
-      metric: "API 1104 compliance"
-    - result: "Zero solvent waste"
-      metric: "EPA hazardous waste reporting"
-  category: "ceramic"
-  articleType: "material"
-  chemicalProperties:
-    symbol: "Ka"
-    formula: "Al₂Si₂O₅(OH)₄"
-    materialType: "compound"
-  properties:
-    chemicalFormula: "Al₂Si₂O₅(OH)₄"
-    density: "2.6 g/cm³"
-    meltingPoint: "1750°C"
-  composition:
-    - component: "Aluminosilicate"
-      percentage: "90-95%"
-      type: "compound"
-      formula: "Al₂Si₂O₅(OH)₄"
-    - component: "Other minerals"
-      percentage: "1-10%"
-      type: "mineral"
-  compatibility:
-    - material: "Granite"
-      application: "Laser cleaning for monument restoration"
-    - material: "Sandstone"
-      application: "Surface preparation for conservation"
-  technicalSpecifications:
-    compliance: "California OSHA Title 8 Section 5417"
-    coolingSystem: "Closed-loop chiller (-10°C to +40°C)"
-    powerRange: "50–500W (modular)"
-    pulseDuration: "10–100ns adjustable"
-    repetitionRate: "20–200kHz"
-    safetyClass: "IV (requires enclosure)"
-    spotSize: "0.1–5mm diameter"
-    wavelength: "1064nm ±2nm"
-
-  🚨 TABLE DATA STRUCTURE REQUIREMENTS:
-  - The following fields MUST be included with EXACTLY this structure for table generation:
-  
-  # IMPORTANT: Field naming convention
-  # - 'name': Used internally for subject identification (EXACTLY "{subject}")
-  # - 'title': Used for SEO and display purposes
-  
-  technicalSpecifications:
-    powerRange: "50–500W (modular)"
-    pulseDuration: "10–100ns adjustable" 
-    wavelength: "1064nm ±2nm"
-    spotSize: "0.1–5mm diameter"
-    repetitionRate: "20–200kHz"
-    # Include at least 5 technical specifications relevant to laser cleaning
-  
-  applications:
-    - name: "Application One"  # Maximum 2 words
-      description: "Description with specific details about how laser cleaning applies."
-    - name: "Application Two"  # Maximum 2 words
-      description: "Another detailed application description."
-    - name: "Application Three"  # Maximum 2 words
-      description: "A third application with technical details."
-    # Include at least 3 applications
-  
-  environmentalImpact:
-    - benefit: "Environmental Benefit"  # Maximum 2 words
-      description: "Detailed explanation of the environmental benefit."
-    - benefit: "Another Benefit"  # Maximum 2 words
-      description: "Description of another environmental advantage."
-    # Include at least 2 environmental benefits
-  
-  composition:
-    - component: "Primary Component"
-      type: "material type"
-      percentage: "percentage range"
-      formula: "Chemical formula if applicable (e.g., Al₂O₃, SiO₂)"
-    - component: "Secondary Component"
-      type: "material type" 
-      percentage: "percentage range"
-      formula: "Chemical formula if applicable"
-    # Include at least 2 composition entries for materials
-  
-  compatibility:
-    - material: "Compatible Material"
-      application: "Application context"
-    - material: "Another Compatible Material"
-      application: "Another application context"
-    # Include at least 2 compatibility entries
-  
-  # These fields MUST be included with EXACTLY this structure or tables will not generate
+parameters:
+  max_tokens: 3000
+  temperature: 0.7

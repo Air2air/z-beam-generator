@@ -1,48 +1,33 @@
 name: "Caption Generator"
 description: "Generates technical image captions for laser cleaning before/after comparisons"
-version: "2.2"
+version: "3.0"
 
 template: |
   Create a technical image caption for a before/after laser cleaning comparison of {material}.
   
-  STRICT WORD COUNT REQUIREMENTS:
-  - Results section: Maximum {results_word_count_max} words
-  - Equipment section: Maximum {equipment_word_count_max} words
-  
-  STRUCTURE:
-  - Caption for image showing: degraded {shape} made of {material} → laser-cleaned {shape}
-  - Use technical data from frontmatter
-  - Two sections: "Results" and "Equipment"
-  - Focus on measurable changes
+  CONTENT GUIDANCE:
+  - Caption describes: degraded {shape} made of {material} → laser-cleaned {shape}
+  - Include technical information about the cleaning process
+  - Focus on measurable changes and specific results
+  - Use technical language and be precise
   
   FRONTMATTER:
   {all_frontmatter}
   
-  SECTIONS:
+  STRUCTURE REQUIREMENTS:
+  Provide two main sections in your caption:
   
-  ### Results Section (Maximum {results_word_count_max} words)
-  Begin with "**Results:**" and describe:
-  1. Typical contaminants specific to {material}
-  2. Cleanliness metrics and oxide layer reduction
-  3. Surface property changes (roughness, wettability)
-  4. Material integrity preservation
+  1. RESULTS SECTION:
+     - Describe contaminants specific to {material}
+     - Mention cleanliness metrics and oxide layer reduction
+     - Note surface property changes (roughness, wettability)
+     - Explain material integrity preservation
   
-  ### Equipment Section (Maximum {equipment_word_count_max} words)
-  Begin with "**Equipment:**" and describe:
-  1. Power settings (energy density, power, pulse duration)
-  2. Machine details (specific laser systems if available)
-  
-  USE TECHNICAL DATA:
-  - Technical specifications (power, wavelength, pulse duration, spot size)
-  - Application-specific surface treatments
-  - Measurable results
-  - Equipment details
+  2. EQUIPMENT SECTION:
+     - Include power settings (energy density, power, pulse duration)
+     - Mention machine details (specific laser systems if available)
+     - Reference wavelength and spot size if relevant
 
 parameters:
   max_tokens: 1000
   temperature: 0.7
-validation:
-  results_max_words: "{results_word_count_max}"
-  equipment_max_words: "{equipment_word_count_max}"
-  required_sections: ["Results", "Equipment"]
-  technical_terms_required: true

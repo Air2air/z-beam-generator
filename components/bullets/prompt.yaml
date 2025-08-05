@@ -1,60 +1,53 @@
 name: "Bullets Generator"
 description: "Generates comprehensive bullet points from all available frontmatter data"
-version: "2.1"
+version: "3.0.0"
 
 template: |
-  Generate {count} bullet points for a {article_type} about {subject} in laser cleaning.
+  Generate key bullet points for a {article_type} about {subject} in laser cleaning.
   
-  REQUIREMENTS:
-  - EXACTLY {count} bullet points
-  - Each bullet point: 15-30 words in length
-  - Use technical data from frontmatter
-  - Focus on laser cleaning specifications and applications
+  CONTENT GUIDANCE:
+  - Focus on the most important technical information
+  - Include specific measurements and values when possible
+  - Emphasize practical applications and benefits
+  - Highlight unique properties of {subject}
+  - Include environmental and efficiency advantages
+  - Generate exactly {count} comprehensive bullet points
   
   FRONTMATTER:
   {all_frontmatter}
   
-  COVER THESE AREAS:
-  1. Technical specs (power, wavelength, spot size)
-  2. Applications and use cases
-  3. Environmental benefits
-  4. Manufacturing capabilities
-  5. Geographic/economic context
+  SUGGESTED TOPICS:
+  - Technical specifications (power, wavelength, spot size)
+  - Key applications and use cases
+  - Environmental benefits
+  - Manufacturing advantages
+  - Performance metrics
   
-  Style: {style} - Use precise technical language with specific measurements.
-  
-  Format as markdown bullet points.
+  FORMAT REQUIREMENTS:
+  - Format as exactly {count} bullet points using "*" at the beginning of each line
+  - Each bullet should be comprehensive and cover multiple related points
+  - Start each bullet with a bold section header using ** markdown formatting
+  - Example: "* **Technical Properties**: Includes density of 3.95 g/cm³, melting point of 2072°C..."
 
 # Condensed template used when frontmatter data is available
 condensed_template: |
-  Generate {count} bullet points for {subject} in laser cleaning based on the available frontmatter data.
+  Generate key bullet points for {subject} in laser cleaning based on the frontmatter data.
   
-  REQUIREMENTS:
-  - EXACTLY {count} bullet points
-  - Each bullet: 15-30 words
-  - Focus on key technical specifications
-  
-  KEY DATA AVAILABLE:
-  - Material: {subject}
-  - Category: {category}
-  - Article Type: {article_type}
-  - Technical Data: See frontmatter below
+  CONTENT GUIDANCE:
+  - Extract the most significant technical details from the frontmatter
+  - Prioritize specifications, applications, and benefits
+  - Keep points concise but technically precise
+  - Generate exactly {count} comprehensive bullet points
   
   FRONTMATTER DATA:
   {all_frontmatter}
   
-  Cover technical specs, applications, environmental benefits, manufacturing capabilities, and geographic context.
-  
-  Style: {style} - Use precise technical language with specific measurements.
-  
-  Format as markdown bullet points.
+  FORMAT REQUIREMENTS:
+  - Format as exactly {count} bullet points using "*" at the beginning of each line
+  - Each bullet should be comprehensive and cover multiple related points
+  - Start each bullet with a bold section header using ** markdown formatting
+  - Example: "* **Technical Properties**: Includes density of 3.95 g/cm³, melting point of 2072°C..."
 
 parameters:
   max_tokens: 2000
   temperature: 0.7
-validation:
-  exact_count: "{count}"
-  require_technical_data: true
-  markdown_format: true
-  min_words_per_bullet: 15
-  max_words_per_bullet: 30
