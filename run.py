@@ -56,7 +56,6 @@ BATCH_CONFIG = {
     "components": {
         "frontmatter": {
             "enabled": True,  # We need frontmatter as it's a prerequisite
-            "include_website": True,
             "min_words": 300,
             "max_words": 500,
             "temperature": 0.9  # Override global temperature for frontmatter

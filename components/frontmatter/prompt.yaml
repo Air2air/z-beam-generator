@@ -18,7 +18,6 @@ template: |
   - title: SEO-optimized page title (include "Laser Cleaning" and "Technical Guide")
   - headline: Concise description of content purpose (one line)
   - description: Technical overview highlighting key properties (string, 150-250 chars)
-  - website: Authoritative URL for technical information (string with https://)
   - author: Comprehensive author information (object with name, country, credentials)
     IMPORTANT: Use the author with ID: {author_id} ({author_name} from {author_country})
   - keywords: Comprehensive search terms (array of 8-12 strings, including technical terms)
@@ -27,7 +26,7 @@ template: |
   - properties: Physical properties (comprehensive object with density, meltingPoint, hardness, thermalConductivity, laserType, wavelength, fluenceRange)
   - composition: Detailed components (array of component objects with percentages, type, formula)
   - compatibility: Compatible materials and applications (array of material objects)
-  - images: Image information (object with hero and closeup sections with descriptive alt text)
+  - images: Image information (object with hero and closeup sections with descriptive alt text and URL paths starting with /images/)
   - applications: Detailed use cases (array of objects with name and description)
   - environmentalImpact: Environmental benefits (array of objects with benefit and description)
   - technicalSpecifications: Detailed laser parameters (object with powerRange, pulseDuration, wavelength, spotSize, repetitionRate, fluenceRange, safetyClass)
@@ -70,6 +69,7 @@ template: |
   - Use ranges (e.g., "100-500W") instead of single values when appropriate
   - Format complex fields consistently (arrays, nested objects)
   - Ensure SEO optimization for title, headline, and description fields
+  - IMPORTANT: Image URLs must start with /images/ (not with https:// or domain names)
 
 parameters:
   max_tokens: 3000

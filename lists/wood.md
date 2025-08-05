@@ -4,33 +4,29 @@ description: "Wood materials for laser cleaning applications"
 article_type: "material"
 ---
 
-- Ash
-- Beech
-- Birch
-- Bubinga
-- Cedar
-- Cherry
-- Cocobolo
-- Ebony
-- Elm
-- Fir
-- Hemlock
-- Hickory
-- Ironwood
-- Koa
-- Lignum Vitae
-- Mahogany
-- Maple
-- Oak
-- Osage
-- Padauk
-- Pine
-- Poplar
-- Redwood
+- Ash Wood
+- Beech Wood
+- Birch Wood
+- Bubinga Wood
+- Cedar Wood
+- Cherry Wood
+- Ebony Wood
+- Elm Wood
+- Fir Wood
+- Hemlock Wood
+- Hickory Wood
+- Ironwood Wood
+- Koa Wood
+- Lignum Vitae Wood
+- Mahogany Wood
+- Maple Wood
+- Oak Wood
+- Pine Wood
+- Poplar Wood
+- Redwood Wood
 - Rosewood
-- Spruce
-- Sycamore
-- Teak
-- Walnut
-- Wenge
-- Yew
+- Spruce Wood
+- Sycamore Wood
+- Teak Wood
+- Walnut Wood
+- Yew Wood

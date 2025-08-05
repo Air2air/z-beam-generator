@@ -195,8 +195,7 @@ class FrontmatterGenerator(BaseComponent):
                     parsed[field] = f"Technical guide to {self.subject} for laser cleaning applications"
                 elif field == "description":
                     parsed[field] = f"A comprehensive technical overview of {self.subject} for laser cleaning applications, including properties, composition, and optimal processing parameters."
-                elif field == "website":
-                    parsed[field] = f"https://www.z-beam.com/materials/{self.subject.lower().replace(' ', '-')}"
+                # Website field removed as per request
                 elif field == "author":
                     # Use author data from BATCH_CONFIG
                     if self.author_data and "author_name" in self.author_data:
@@ -320,11 +319,11 @@ class FrontmatterGenerator(BaseComponent):
                     parsed[field] = {
                         "hero": {
                             "alt": f"Industrial laser system cleaning {self.subject} components in a manufacturing facility, showing precise beam positioning",
-                            "url": f"https://www.z-beam.com/images/{slug}-laser-cleaning-hero.jpg"
+                            "url": f"/images/{slug}-laser-cleaning-hero.jpg"
                         },
                         "closeup": {
                             "alt": f"Microscopic view of {self.subject} surface after laser cleaning, revealing uniform texture and contaminant-free grain structure",
-                            "url": f"https://www.z-beam.com/images/{slug}-closeup.jpg"
+                            "url": f"/images/{slug}-closeup.jpg"
                         }
                     }
                 else:
@@ -335,29 +334,64 @@ class FrontmatterGenerator(BaseComponent):
         if "images" in parsed:
             if "hero" in parsed["images"] and isinstance(parsed["images"]["hero"], dict):
                 if "url" not in parsed["images"]["hero"] or not parsed["images"]["hero"]["url"]:
-                    parsed["images"]["hero"]["url"] = f"https://www.z-beam.com/images/{slug}-laser-cleaning-hero.jpg"
+                    parsed["images"]["hero"]["url"] = f"/images/{slug}-laser-cleaning-hero.jpg"
                 else:
-                    # Ensure URL is lowercase
-                    parsed["images"]["hero"]["url"] = parsed["images"]["hero"]["url"].lower()
+                    # Ensure URL is lowercase and starts with /images/
+                    url = parsed["images"]["hero"]["url"].lower()
+                    # Remove domain if present (handle various formats)
+                    if "://" in url:
+                        url = "/" + "/".join(url.split("/")[3:])
+                    # Ensure URL starts with /images/
+                    if not url.startswith("/images/"):
+                        url = "/images/" + url.split("/")[-1]
+                    parsed["images"]["hero"]["url"] = url
+            
+            # Do the same for closeup image if it exists
+            if "closeup" in parsed["images"] and isinstance(parsed["images"]["closeup"], dict):
+                if "url" not in parsed["images"]["closeup"] or not parsed["images"]["closeup"]["url"]:
+                    parsed["images"]["closeup"]["url"] = f"/images/{slug}-closeup.jpg"
+                else:
+                    # Ensure URL is lowercase and starts with /images/
+                    url = parsed["images"]["closeup"]["url"].lower()
+                    # Remove domain if present (handle various formats)
+                    if "://" in url:
+                        url = "/" + "/".join(url.split("/")[3:])
+                    # Ensure URL starts with /images/
+                    if not url.startswith("/images/"):
+                        url = "/images/" + url.split("/")[-1]
+                    parsed["images"]["closeup"]["url"] = url
         
         # Ensure schema structure is followed
         parsed = self._ensure_schema_structure(parsed)
         
         # Pre-process values that might contain line breaks in quoted strings
-        for key, value in parsed.items():
-            if isinstance(value, str) and '\\' in value and '\n' not in value:
-                # Replace line continuation pattern with actual newlines
-                if "\\n" in value:
-                    parsed[key] = value.replace("\\n", "\n")
-                # Handle YAML's line continuation format with backslashes
-                lines = value.split('\\')
-                if len(lines) > 1:
-                    # Join with actual newlines and strip whitespace from each line
-                    parsed[key] = '\n'.join(line.strip() for line in lines if line.strip())
+        for key, value in list(parsed.items()):
+            if isinstance(value, str):
+                # Remove problematic backslash escape sequences
+                if '\\' in value:
+                    # Handle line continuations with \\n
+                    if "\\n" in value:
+                        parsed[key] = value.replace("\\n", "\n")
+                    
+                    # Remove backslash+space sequences
+                    parsed[key] = parsed[key].replace('\\ ', ' ')
+                    
+                    # Handle YAML's line continuation format with backslashes at line end
+                    if parsed[key].endswith('\\'):
+                        lines = parsed[key].split('\\')
+                        if len(lines) > 1:
+                            # Join with actual newlines and strip whitespace from each line
+                            parsed[key] = '\n'.join(line.strip() for line in lines if line.strip())
+            
+            # Recursively process nested dictionaries
+            elif isinstance(value, dict):
+                for subkey, subvalue in list(value.items()):
+                    if isinstance(subvalue, str) and '\\' in subvalue:
+                        # Handle the same replacements for nested values
+                        value[subkey] = subvalue.replace("\\n", "\n").replace('\\ ', ' ')
         
-        # Clean content (use yaml.dump to ensure valid YAML format with better string handling)
-        # YAML formatting is now handled by the base component and format_yaml_object
-        cleaned_content = yaml.dump(parsed, default_flow_style=False, sort_keys=False)
+        # Clean content - use allow_unicode to preserve Unicode characters properly
+        cleaned_content = yaml.dump(parsed, default_flow_style=False, sort_keys=False, allow_unicode=True)
         
         # Store parsed frontmatter for other components to access
         self._frontmatter_data = parsed
