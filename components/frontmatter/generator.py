@@ -436,9 +436,6 @@ class FrontmatterGenerator(BaseComponent):
         # Fix missing hyphens between subject and laser-cleaning
         content = re.sub(r'(/images/[a-z0-9-]+)laser-cleaning', r'\1-laser-cleaning', content)
         
-        # Fix incomplete HTML comments
-        content = re.sub(r'(<!--[^>]*)-\s*\n', r'\1-->\n', content)
-        
         return content
     
     def validate_category_consistency(self, content: str) -> bool:

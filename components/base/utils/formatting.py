@@ -97,13 +97,8 @@ def format_frontmatter_with_comment(yaml_content: str, category: str = "", artic
     # Convert back to YAML
     updated_yaml = yaml.dump(frontmatter_data, default_flow_style=False, sort_keys=False)
     
-    # Add HTML comment if all metadata is provided
-    html_comment = ""
-    if category and article_type and subject:
-        html_comment = f"<!-- Category: {category}, Article Type: {article_type}, Subject: {subject} -->\n"
-    
-    # Add delimiters
-    delimited_yaml = f"{html_comment}---\n{updated_yaml}---\n"
+    # Add delimiters (no HTML comments)
+    delimited_yaml = f"---\n{updated_yaml}---\n"
     
     # Final cleanup for any remaining backslash line continuations
     delimited_yaml = re.sub(r'"\\\s*\n\s*\\?"', '"', delimited_yaml)

@@ -48,7 +48,7 @@ def format_frontmatter_with_comment(yaml_content: str, category: str, article_ty
     # Convert back to YAML
     updated_yaml = yaml.dump(frontmatter_data, default_flow_style=False, sort_keys=False)
     
-    # Format with YAML delimiters
+    # Format with YAML delimiters (no HTML comments)
     return f"---\n{updated_yaml}---"
 
 def format_jsonld_as_script(jsonld_content: Dict[str, Any]) -> str:

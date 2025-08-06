@@ -61,7 +61,7 @@ BATCH_CONFIG = {
             "temperature": 0.9  # Override global temperature for frontmatter
         },
         "content": {
-            "enabled": True,
+            "enabled": False,
             "min_words": 200,
             "max_words": 400,
             "temperature": 0.7,  # Balanced creativity for main content
@@ -70,12 +70,12 @@ BATCH_CONFIG = {
             }
         },
         "bullets": {
-            "enabled": True,
+            "enabled": False,
             "count": 4,
             "temperature": 0.6  # Slightly lower for more focused bullet points
         },
         "table": {
-            "enabled": True,
+            "enabled": False,
             "rows": 5,
             "temperature": 0.4,  # Lower temperature for more consistent, structured table data
             "table_keys": ["Material", "Density", "Melting Point", "Laser Type", "Applications"],
@@ -92,7 +92,7 @@ BATCH_CONFIG = {
             ]
         },
         "tags": {
-            "enabled": True,
+            "enabled": False,
             "temperature": 0.8,  # Higher for more diverse tag generation
             "max_tags": 10,
             "min_tags": 5,
@@ -101,7 +101,7 @@ BATCH_CONFIG = {
             ]
         },
         "caption": {
-            "enabled": True,
+            "enabled": False,
             "before_word_count_max": 60,
             "equipment_word_count_max": 40,
             "shape": "component",
@@ -109,11 +109,11 @@ BATCH_CONFIG = {
             "max_tokens": 1000  # Override global max_tokens for caption
         },
         "jsonld": {
-            "enabled": True,
+            "enabled": False,
             "temperature": 0.3  # Low temperature for structured JSON data
         },
         "metatags": {
-            "enabled": True,
+            "enabled": False,
             "min_tags": 8,
             "max_tags": 20,
             "temperature": 0.5  # Moderate temperature for balanced metadata generation
@@ -124,7 +124,6 @@ BATCH_CONFIG = {
     "output": {
         "base_dir": "content/components",
         "hierarchy": "flat",  # "flat", "by_article_type", "by_category", or "nested"
-        "include_category_metadata": False,  # Disabled - no HTML comments in generated files
     },
     
     # File naming patterns for different components and article types
@@ -500,17 +499,9 @@ def save_component_output(component_name: str, subject: str, content: str, categ
     # Get output path
     output_path = get_component_output_path(component_name, subject, category, article_type)
     
-    # Add category metadata to content if enabled
-    if "output" not in BATCH_CONFIG:
-        raise ValueError("output configuration not found in BATCH_CONFIG")
-    
-    output_config = BATCH_CONFIG["output"]
-    if "include_category_metadata" not in output_config:
-        raise ValueError("include_category_metadata not found in output configuration")
-    
-    if output_config["include_category_metadata"]:
-        metadata_comment = f"<!-- Category: {category}, Article Type: {article_type}, Subject: {subject} -->\n"
-        content = metadata_comment + content
+    # Ensure no HTML comments are in the content
+    import re
+    content = re.sub(r'<!--.*?-->\n?', '', content)
     
     # Write content to file
     try:

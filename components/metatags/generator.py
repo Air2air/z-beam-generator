@@ -274,7 +274,12 @@ class MetatagsGenerator(BaseComponent):
         Returns:
             str: Formatted slug
         """
-        return text.lower().replace(" ", "-").replace("_", "-")
+        # First replace spaces and underscores with hyphens
+        slug = text.lower().replace(" ", "-").replace("_", "-")
+        # Then replace any double hyphens with single hyphens
+        import re
+        slug = re.sub(r'-+', '-', slug)
+        return slug
     
     def _count_metadata_fields(self, meta_data: dict, prefix="") -> int:
         """Count the total number of metadata fields, including nested ones.

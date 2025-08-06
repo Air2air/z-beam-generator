@@ -107,8 +107,8 @@ description: Test Description
 """
         result = format_frontmatter_with_comment(yaml_content, "metal", "material", "Aluminum")
         
-        if "category: metal" in result and "article_type: material" in result and "subject: Aluminum" in result:
-            logger.info("✅ format_frontmatter_with_comment works correctly")
+        if "category: metal" in result and "article_type: material" in result and "subject: Aluminum" in result and "<!--" not in result:
+            logger.info("✅ format_frontmatter_with_comment works correctly (no HTML comments)")
         else:
             logger.error(f"❌ format_frontmatter_with_comment returned unexpected result: {result}")
             return False

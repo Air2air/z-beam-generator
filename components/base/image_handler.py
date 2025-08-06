@@ -24,7 +24,11 @@ class ImageHandler:
         Returns:
             str: URL-friendly slug
         """
-        return subject.lower().replace(' ', '-').replace('_', '-')
+        # First replace spaces and underscores with hyphens
+        slug = subject.lower().replace(' ', '-').replace('_', '-')
+        # Then replace any double hyphens with single hyphens
+        slug = re.sub(r'-+', '-', slug)
+        return slug
     
     @staticmethod
     def format_image_url(subject: str, image_type: str, custom_slug: Optional[str] = None) -> str:
@@ -76,6 +80,9 @@ class ImageHandler:
         
         # Fix missing hyphens between subject and image type
         url = re.sub(r'(/images/[a-z0-9-]+)laser-cleaning', r'\1-laser-cleaning', url)
+        
+        # Replace any double dashes with single dashes
+        url = re.sub(r'-+', '-', url)
         
         # Ensure .jpg extension
         if not url.endswith(".jpg"):
