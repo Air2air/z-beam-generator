@@ -29,15 +29,15 @@ class CaptionGenerator(BaseComponent):
         # Clean and normalize the content
         clean_content = content.strip()
         
-        # Extract results and equipment sections (handling various formats)
+        # Extract before cleaning and equipment sections (handling various formats)
         sections = self._extract_caption_sections(clean_content)
         
         # Get max word counts from config
-        results_max = self.get_component_config("results_word_count_max")
-        equipment_max = self.get_component_config("equipment_word_count_max")
+        before_max = self.get_component_config("before_word_count_max", 100)
+        equipment_max = self.get_component_config("equipment_word_count_max", 50)
         
         # Truncate sections if needed
-        sections = self._truncate_sections(sections, results_max, equipment_max)
+        sections = self._truncate_sections(sections, before_max, equipment_max)
         
         # Format sections properly
         formatted_caption = self._format_caption(sections)
@@ -45,7 +45,7 @@ class CaptionGenerator(BaseComponent):
         return formatted_caption
     
     def _extract_caption_sections(self, content: str) -> dict:
-        """Extract results and equipment sections from caption.
+        """Extract before cleaning and equipment sections from caption.
         
         Args:
             content: Clean caption content
@@ -59,11 +59,11 @@ class CaptionGenerator(BaseComponent):
         sections = {}
         
         # Try various section header formats
-        results_patterns = [
-            r'\*\*Results:\*\*\s*(.*?)(?=\*\*Equipment:|$)',
-            r'Results:\s*(.*?)(?=Equipment:|$)',
-            r'RESULTS:\s*(.*?)(?=EQUIPMENT:|$)',
-            r'Results\s*(.*?)(?=Equipment|$)'
+        before_patterns = [
+            r'\*\*Before Cleaning:\*\*\s*(.*?)(?=\*\*Equipment:|$)',
+            r'Before Cleaning:\s*(.*?)(?=Equipment:|$)',
+            r'BEFORE CLEANING:\s*(.*?)(?=EQUIPMENT:|$)',
+            r'Before\s*Cleaning\s*(.*?)(?=Equipment|$)'
         ]
         
         equipment_patterns = [
@@ -73,12 +73,12 @@ class CaptionGenerator(BaseComponent):
             r'Equipment\s*(.*?)$'
         ]
         
-        # Try to extract results section
-        results_section = None
-        for pattern in results_patterns:
+        # Try to extract before cleaning section
+        before_section = None
+        for pattern in before_patterns:
             match = re.search(pattern, content, re.DOTALL | re.IGNORECASE)
             if match:
-                results_section = match.group(1).strip()
+                before_section = match.group(1).strip()
                 break
         
         # Try to extract equipment section
@@ -90,32 +90,32 @@ class CaptionGenerator(BaseComponent):
                 break
         
         # If sections are missing, try to split the content
-        if not results_section or not equipment_section:
+        if not before_section or not equipment_section:
             # If there's a clear separation but no headers, assume first half is results
             # and second half is equipment
             if len(content.split('\n\n')) >= 2:
                 parts = content.split('\n\n')
-                results_section = parts[0].strip()
+                before_section = parts[0].strip()
                 equipment_section = parts[1].strip()
             else:
                 # As a fallback, just split the content in half
                 words = content.split()
                 middle = len(words) // 2
-                results_section = ' '.join(words[:middle])
+                before_section = ' '.join(words[:middle])
                 equipment_section = ' '.join(words[middle:])
         
         # Store sections
-        sections['results'] = results_section if results_section else "Results not provided"
+        sections['before'] = before_section if before_section else "Before cleaning details not provided"
         sections['equipment'] = equipment_section if equipment_section else "Equipment details not provided"
         
         return sections
     
-    def _truncate_sections(self, sections: dict, results_max: int, equipment_max: int) -> dict:
+    def _truncate_sections(self, sections: dict, before_max: int, equipment_max: int) -> dict:
         """Truncate sections to meet word count requirements.
         
         Args:
             sections: Caption sections
-            results_max: Maximum words for results section
+            before_max: Maximum words for before cleaning section
             equipment_max: Maximum words for equipment section
             
         Returns:
@@ -123,13 +123,13 @@ class CaptionGenerator(BaseComponent):
         """
         truncated = {}
         
-        # Truncate results section
-        results_words = sections['results'].split()
-        if len(results_words) > results_max:
+        # Truncate before cleaning section
+        before_words = sections['before'].split()
+        if len(before_words) > before_max:
             # Add ellipsis if truncated
-            truncated['results'] = ' '.join(results_words[:results_max]) + '...'
+            truncated['before'] = ' '.join(before_words[:before_max]) + '...'
         else:
-            truncated['results'] = sections['results']
+            truncated['before'] = sections['before']
         
         # Truncate equipment section
         equipment_words = sections['equipment'].split()
@@ -150,7 +150,7 @@ class CaptionGenerator(BaseComponent):
         Returns:
             str: Formatted caption
         """
-        # Apply standard formatting
-        formatted = f"**Results:** {sections['results']}\n\n**Equipment:** {sections['equipment']}"
+        # Apply standard formatting with bold section headers
+        formatted = f"**Before Cleaning:** {sections['before']}\n\n**Equipment:** {sections['equipment']}"
         
         return formatted

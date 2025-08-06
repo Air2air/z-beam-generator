@@ -73,17 +73,16 @@ template: |
   - images:
       description: >
         Image paths for hero image and closeup/detail image. 
-        IMPORTANT: Image URLs MUST follow this EXACT pattern:
-        - Hero image: /images/{subject-name-with-hyphens}-laser-cleaning-hero.jpg
-        - Closeup image: /images/{subject-name-with-hyphens}-laser-cleaning-closeup.jpg
+        IMPORTANT: URLs will be automatically formatted to follow the standard pattern:
+        - Hero image: /images/(subject-name)-laser-cleaning-hero.jpg
+        - Closeup image: /images/(subject-name)-laser-cleaning-closeup.jpg
         
-        Example for "Urethane Composites":
-        - /images/urethane-composites-laser-cleaning-hero.jpg
-        - /images/urethane-composites-laser-cleaning-closeup.jpg
+        Example:
+        - For "Urethane Composites" → /images/urethane-composites-laser-cleaning-hero.jpg
+        - For "Gallium" → /images/gallium-laser-cleaning-closeup.jpg
         
-        DO NOT use abbreviations or shortened forms of the subject name.
-        DO NOT use different naming patterns (like "microstructure" instead of "closeup").
-        ALWAYS use the FULL subject name with hyphens.
+        Focus only on providing descriptive alt text for each image.
+        The URL will be generated automatically.
       type: object
 
 parameters:

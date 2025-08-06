@@ -243,13 +243,25 @@ class MetatagsGenerator(BaseComponent):
         
         # Update twitter images
         if "twitter" in parsed and "images" in parsed["twitter"]:
-            for i, image_url in enumerate(parsed["twitter"]["images"]):
-                # Ensure URL is lowercase and follows pattern
-                image_type = "hero"
-                if "closeup" in image_url.lower():
-                    image_type = "closeup"
-                
-                parsed["twitter"]["images"][i] = f"https://www.z-beam.com/images/{slug}-laser-cleaning-{image_type}.jpg"
+            for i, image_item in enumerate(parsed["twitter"]["images"]):
+                # Handle both string URLs and image objects
+                if isinstance(image_item, dict) and "url" in image_item:
+                    # It's an image object with a URL property
+                    image_url = image_item["url"]
+                    image_type = "hero"
+                    if "closeup" in image_url.lower():
+                        image_type = "closeup"
+                    
+                    image_item["url"] = f"https://www.z-beam.com/images/{slug}-laser-cleaning-{image_type}.jpg"
+                    parsed["twitter"]["images"][i] = image_item
+                else:
+                    # It's a string URL
+                    image_url = image_item
+                    image_type = "hero"
+                    if isinstance(image_url, str) and "closeup" in image_url.lower():
+                        image_type = "closeup"
+                    
+                    parsed["twitter"]["images"][i] = f"https://www.z-beam.com/images/{slug}-laser-cleaning-{image_type}.jpg"
         
         return parsed
     

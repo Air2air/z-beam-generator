@@ -7,11 +7,14 @@ Enhanced implementation with robust error handling and auto-recovery.
 import logging
 import yaml
 import re
+from typing import Dict, Any, List, Optional, Tuple
+
 from components.base.component import BaseComponent
 from components.base.utils.validation import (
     validate_length, validate_required_fields, validate_category_consistency
 )
 from components.base.utils.formatting import format_frontmatter_with_comment
+from components.base.image_handler import ImageHandler
 
 logger = logging.getLogger(__name__)
 
@@ -25,6 +28,15 @@ class FrontmatterGenerator(BaseComponent):
             str: Path to prompt template
         """
         return "components/frontmatter/prompt.yaml"
+    
+    def _get_base_data(self) -> dict:
+        """Get base data for the prompt template."""
+        data = super()._get_base_data()
+        
+        # Add subject-name-with-hyphens to support the image URL formatting
+        data['subject-name-with-hyphens'] = ImageHandler.get_subject_slug(self.subject)
+        
+        return data
     
     def _ensure_schema_structure(self, parsed: dict) -> dict:
         """Ensure the frontmatter follows the schema structure for the article type.
@@ -316,51 +328,13 @@ class FrontmatterGenerator(BaseComponent):
                         {"code": "ASTM Standards", "description": "American standards for material testing and specification"}
                     ]
                 elif field == "images":
-                    slug = self.subject.lower().replace(" ", "-").replace("_", "-")
-                    parsed[field] = {
-                        "hero": {
-                            "alt": f"Industrial laser system cleaning {self.subject} components in a manufacturing facility, showing precise beam positioning",
-                            "url": f"/images/{slug}-laser-cleaning-hero.jpg"
-                        },
-                        "closeup": {
-                            "alt": f"Microscopic view of {self.subject} surface after laser cleaning, revealing uniform texture and contaminant-free grain structure",
-                            "url": f"/images/{slug}-closeup.jpg"
-                        }
-                    }
+                    parsed[field] = ImageHandler.add_missing_images({}, self.subject)
                 else:
                     parsed[field] = f"Placeholder for {field}"
         
-        # Add image URLs if they're missing
-        slug = self.subject.lower().replace(" ", "-").replace("_", "-")
-        if "images" in parsed:
-            if "hero" in parsed["images"] and isinstance(parsed["images"]["hero"], dict):
-                if "url" not in parsed["images"]["hero"] or not parsed["images"]["hero"]["url"]:
-                    parsed["images"]["hero"]["url"] = f"/images/{slug}-laser-cleaning-hero.jpg"
-                else:
-                    # Ensure URL is lowercase and starts with /images/
-                    url = parsed["images"]["hero"]["url"].lower()
-                    # Remove domain if present (handle various formats)
-                    if "://" in url:
-                        url = "/" + "/".join(url.split("/")[3:])
-                    # Ensure URL starts with /images/
-                    if not url.startswith("/images/"):
-                        url = "/images/" + url.split("/")[-1]
-                    parsed["images"]["hero"]["url"] = url
-            
-            # Do the same for closeup image if it exists
-            if "closeup" in parsed["images"] and isinstance(parsed["images"]["closeup"], dict):
-                if "url" not in parsed["images"]["closeup"] or not parsed["images"]["closeup"]["url"]:
-                    parsed["images"]["closeup"]["url"] = f"/images/{slug}-closeup.jpg"
-                else:
-                    # Ensure URL is lowercase and starts with /images/
-                    url = parsed["images"]["closeup"]["url"].lower()
-                    # Remove domain if present (handle various formats)
-                    if "://" in url:
-                        url = "/" + "/".join(url.split("/")[3:])
-                    # Ensure URL starts with /images/
-                    if not url.startswith("/images/"):
-                        url = "/images/" + url.split("/")[-1]
-                    parsed["images"]["closeup"]["url"] = url
+        # Add image URLs if they're missing and process existing ones
+        parsed = ImageHandler.process_image_data(parsed, self.subject)
+        parsed = ImageHandler.add_missing_images(parsed, self.subject)
         
         # Ensure schema structure is followed
         parsed = self._ensure_schema_structure(parsed)
@@ -448,14 +422,22 @@ class FrontmatterGenerator(BaseComponent):
         
         for line in lines:
             # Skip standalone lines with broken URL fragments
-            if re.match(r'^-*>-*laser-cleaning.*\.jpg$', line.strip()):
+            if re.match(r'^-*>*-*laser-cleaning.*\.jpg$', line.strip()):
+                logger.info(f"Removing broken URL line: {line.strip()}")
                 continue
             cleaned_lines.append(line)
         
         content = '\n'.join(cleaned_lines)
         
         # Fix URLs with arrow characters
-        content = re.sub(r'-+>-+', '-', content)
+        content = re.sub(r'-+>+-*', '-', content)
+        content = re.sub(r'([^a-z])>+-*', r'\1', content)
+        
+        # Fix missing hyphens between subject and laser-cleaning
+        content = re.sub(r'(/images/[a-z0-9-]+)laser-cleaning', r'\1-laser-cleaning', content)
+        
+        # Fix incomplete HTML comments
+        content = re.sub(r'(<!--[^>]*)-\s*\n', r'\1-->\n', content)
         
         return content
     
@@ -476,13 +458,11 @@ class FrontmatterGenerator(BaseComponent):
     
     def _process_response(self, response_data):
         """Process the raw response data from the AI model."""
-        # Handle image URLs formatting
-        if "images" in response_data and isinstance(response_data["images"], dict):
-            subject_slug = self.subject.lower().replace(' ', '-')
-            
-            for image_type, image_data in response_data["images"].items():
-                if isinstance(image_data, dict):
-                    # Generate the standardized URL
-                    image_data["url"] = f"/images/{subject_slug}-laser-cleaning-{image_type}.jpg"
+        # Let the base class process the response first
+        data = super()._process_response(response_data)
         
-        return response_data
+        # Process image URLs in case they bypass component_specific_processing
+        data = ImageHandler.process_image_data(data, self.subject)
+        data = ImageHandler.add_missing_images(data, self.subject)
+        
+        return data

@@ -242,6 +242,8 @@ class BaseComponent(ABC):
             template_data["frontmatter_data"] = {}
             template_data["frontmatter"] = "No frontmatter data available"
             template_data["tags"] = []
+            template_data["keywords"] = []
+            template_data["extracted_keywords"] = ""
 
         # Component-specific additions
         if component_name == "frontmatter":

@@ -11,6 +11,7 @@ import yaml
 import re
 from typing import Dict, Any, Optional
 from components.base.component import BaseComponent
+from components.base.image_handler import ImageHandler
 
 logger = logging.getLogger(__name__)
 
@@ -188,7 +189,8 @@ class JsonldGenerator(BaseComponent):
                 slug = subject_slug
                 
             # Add default image URL based on slug
-            data['image'] = f"https://www.z-beam.com/images/{slug}-hero.jpg"
+            slug = ImageHandler.get_subject_slug(self.subject)
+            data['image'] = f"https://www.z-beam.com/images/{slug}-laser-cleaning-hero.jpg"
             
     def _process_image_urls(self, data: Dict[str, Any]) -> None:
         """Process image objects to ensure they have proper URLs.
@@ -200,9 +202,9 @@ class JsonldGenerator(BaseComponent):
             None: Updates the data in place
         """
         # Get the slug for constructing image URLs
-        subject_slug = self.subject.lower().replace(" ", "-").replace("_", "-")
+        subject_slug = ImageHandler.get_subject_slug(self.subject)
         article_type = self.article_type.lower()
-        base_url = "https://www.z-beam.com/images"
+        base_url = "https://www.z-beam.com"
         
         # Use the article type pattern from run.py for the proper slug
         if article_type == "material":
@@ -217,8 +219,11 @@ class JsonldGenerator(BaseComponent):
             # Fallback to simple slug
             slug = subject_slug
         
-        # Use slug-hero.jpg pattern for hero image
-        hero_image_url = f"{base_url}/{slug}-hero.jpg"
+        # Use ImageHandler to format the URL
+        hero_image_relative = ImageHandler.format_image_url(self.subject, "hero")
+        hero_image_url = f"{base_url}{hero_image_relative}"
+        closeup_image_relative = ImageHandler.format_image_url(self.subject, "closeup")
+        closeup_image_url = f"{base_url}{closeup_image_relative}"
         
         # Handle different image formats in the JSON-LD
         if 'image' in data:
@@ -234,9 +239,9 @@ class JsonldGenerator(BaseComponent):
                                 if i == 0:
                                     img['url'] = hero_image_url
                                 elif i == 1:
-                                    img['url'] = f"{base_url}/{slug}-closeup.jpg"
+                                    img['url'] = closeup_image_url
                                 else:
-                                    img['url'] = f"{base_url}/{slug}-image-{i+1}.jpg"
+                                    img['url'] = f"{base_url}/images/{slug}-image-{i+1}.jpg"
             elif isinstance(data['image'], dict):
                 # Single image object
                 if '@type' in data['image'] and data['image']['@type'] == 'ImageObject':
@@ -269,7 +274,7 @@ class JsonldGenerator(BaseComponent):
                 if 'closeup' in frontmatter['images'] and 'alt' in frontmatter['images']['closeup']:
                     closeup_img = {
                         '@type': 'ImageObject',
-                        'url': f"{base_url}/{slug}-closeup.jpg",
+                        'url': closeup_image_url,
                         'caption': frontmatter['images']['closeup']['alt']
                     }
                     image_objects.append(closeup_img)

@@ -30,17 +30,17 @@ BATCH_CONFIG = {
     
     # Single subject configuration (used when mode="single")
     "single_subject": {
-        "subject": "Alumina",
+        "subject": "Aluminum",
         "article_type": "material",  # application, material, region, or thesaurus
         "author_id": 1,  # 1: Taiwan, 2: Italy, 3: USA, 4: Indonesia
-        "category": "ceramic",  # Optional: specify category for hierarchy
+        "category": "metal",  # Optional: specify category for hierarchy
     },
     
     # Multi-subject configuration (used when mode="multi")
     "multi_subject": {
         "author_id": 1,  # Use this author for all subjects
         "subject_source": "lists",  # Directory to discover all subjects from all categories
-        "limit": [15,40],  # Range [start_idx, end_idx] to process items by index (or a single number for first N items, None for all subjects)
+        "limit": 30,  # Range [start_idx, end_idx] to process items by index (or a single number for first N items, None for all subjects)
     },
     
     # Global AI configuration - applied to all components
@@ -102,7 +102,7 @@ BATCH_CONFIG = {
         },
         "caption": {
             "enabled": True,
-            "results_word_count_max": 40,
+            "before_word_count_max": 60,
             "equipment_word_count_max": 40,
             "shape": "component",
             "temperature": 0.75,  # Slightly higher for creative but controlled captions
@@ -124,7 +124,7 @@ BATCH_CONFIG = {
     "output": {
         "base_dir": "content/components",
         "hierarchy": "flat",  # "flat", "by_article_type", "by_category", or "nested"
-        "include_category_metadata": True,  # Include category info in generated files
+        "include_category_metadata": False,  # Disabled - no HTML comments in generated files
     },
     
     # File naming patterns for different components and article types
@@ -740,11 +740,41 @@ def generate_component(component_name: str, article_context: dict, frontmatter_c
     
     try:
         # Get component config
-        component_config = article_context["components"][component_name]
-        
-        if not component_config["enabled"]:
-            print(f"⏭️  {component_name.capitalize()} generation skipped (disabled)")
-            return None
+        if isinstance(article_context["components"], list):
+            # We're running with --component flag
+            # Create a default config since we don't have the actual config
+            component_config = {
+                "enabled": True,
+                "temperature": 0.7,
+                "max_tokens": 1000,
+                "ai_provider": BATCH_CONFIG["ai"]["provider"],
+                "options": BATCH_CONFIG["ai"]["options"].copy()
+            }
+            
+            # Add specific config for certain components
+            if component_name == "caption":
+                component_config.update({
+                    "before_word_count_max": 60,
+                    "equipment_word_count_max": 40,
+                    "shape": "component"
+                })
+        else:
+            # Normal operation - get from config
+            component_config = article_context["components"][component_name].copy()
+            
+            if not component_config["enabled"]:
+                print(f"⏭️  {component_name.capitalize()} generation skipped (disabled)")
+                return None
+            
+            # Merge global AI configuration with component-specific overrides
+            global_ai = BATCH_CONFIG["ai"]
+            component_config["ai_provider"] = global_ai["provider"]
+            component_config["options"] = global_ai["options"].copy()
+            
+            # Apply component-specific AI overrides
+            for key in ["temperature", "max_tokens", "model"]:
+                if key in component_config:
+                    component_config["options"][key] = component_config.pop(key)
         
         # Load schema for the article type
         schema_path = f"schemas/{article_context['article_type']}.json"
@@ -757,14 +787,6 @@ def generate_component(component_name: str, article_context: dict, frontmatter_c
         # Load author data
         author_data = load_author_data(article_context["author_id"])
         
-        # Get component configuration with AI config merge
-        component_config = article_context["components"][component_name].copy()
-        
-        # Merge global AI configuration with component-specific overrides
-        global_ai = BATCH_CONFIG["ai"]
-        component_config["ai_provider"] = global_ai["provider"]
-        component_config["options"] = global_ai["options"].copy()
-        
         # Add category to component config if available
         if "category" in article_context:
             component_config["category"] = article_context["category"]
@@ -774,11 +796,6 @@ def generate_component(component_name: str, article_context: dict, frontmatter_c
         # Add author_id to component_config
         if "author_id" in article_context:
             component_config["author_id"] = article_context["author_id"]
-        
-        # Apply component-specific AI overrides
-        for key in ["temperature", "max_tokens", "model"]:
-            if key in component_config:
-                component_config["options"][key] = component_config.pop(key)
         
         # Import and initialize the appropriate generator dynamically
         try:
@@ -1026,9 +1043,22 @@ def run_batch_generation():
     
     # Get enabled components (folders)
     enabled_components = []
-    for name, config in BATCH_CONFIG["components"].items():
-        if "enabled" in config and config["enabled"]:
-            enabled_components.append(name)
+    
+    # Check if we're running with a --component flag to only generate one component
+    if "components" in BATCH_CONFIG and isinstance(BATCH_CONFIG["components"], list):
+        # We're running with --component flag, just use that list
+        component_name = BATCH_CONFIG["components"][0]
+        enabled_components.append(component_name)
+        
+        # Always add frontmatter as a dependency if we're generating another component
+        if component_name != "frontmatter":
+            enabled_components.append("frontmatter")
+    else:
+        # Normal operation - get enabled components from config
+        for name, config in BATCH_CONFIG["components"].items():
+            if "enabled" in config and config["enabled"]:
+                enabled_components.append(name)
+                
     print(f"Enabled components: {', '.join(enabled_components)}")
 
     # Make sure frontmatter is the first component to process if enabled
@@ -1219,6 +1249,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Z-Beam content generator")
     parser.add_argument('--clear', action='store_true', help='Clear all component files')
     parser.add_argument('--clear-component', type=str, help='Clear files for a specific component (e.g., bullets, content, frontmatter)')
+    parser.add_argument('--component', type=str, help='Generate only a specific component (e.g., caption, bullets, content, frontmatter)')
     
     args = parser.parse_args()
     
@@ -1226,5 +1257,9 @@ if __name__ == "__main__":
         clear_component_files()
     elif args.clear_component:
         clear_component_files(args.clear_component)
+    elif args.component:
+        # Only generate the specified component
+        BATCH_CONFIG["components"] = [args.component]
+        run_batch_generation()
     else:
         run_batch_generation()
