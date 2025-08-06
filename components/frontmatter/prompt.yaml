@@ -1,89 +1,58 @@
 name: "Frontmatter Generator"
-description: "Generates comprehensive YAML frontmatter for laser cleaning articles, optimized for SEO, E-A-T, and technical accuracy."
-version: "3.3.0"
+description: "Generates comprehensive YAML frontmatter for laser cleaning articles, with all formatting handled by Python."
+version: "4.0.0"
 
 template: |
   Generate detailed, technically accurate YAML frontmatter for {article_type} "{subject}" in laser cleaning applications.
 
-  FOCUS ON:
+  FOCUS ON CONTENT, NOT FORMATTING:
+  You should focus on generating accurate technical content. All formatting, structure, and standardization 
+  will be handled automatically by Python code after generation.
+
+  CONTENT FOCUS AREAS:
   - Comprehensive technical information about {subject}
-  - Detailed physical and chemical properties 
+  - Detailed physical and chemical properties with exact values
   - Specific laser parameters for optimal processing
-  - Industry-standard applications and compatibility
+  - Industry-standard applications and compatibility scenarios
   - Environmental considerations and regulatory compliance
   - Measurable outcomes and performance metrics
+  - Detailed composition with percentages and chemical formulas
+  - At least 3 specific compatibility scenarios with detailed applications
+  - 2-3 specific industry/regulatory standards with organizations
+  - Quantifiable environmental benefits with metrics
+  - Technical laser parameters (power, duration, wavelength, spot size, etc.)
 
-  REQUIRED FIELDS (MUST INCLUDE ALL OF THESE):
-  - name: The subject name only (string)
-  - title: SEO-optimized page title (include "Laser Cleaning" and "Technical Guide")
-  - headline: Concise description of content purpose (one line)
-  - description: Technical overview highlighting key properties (string, 150-250 chars)
-  - author: Comprehensive author information (object with name, country, credentials)
-    IMPORTANT: Use the author with ID: {author_id} ({author_name} from {author_country})
-  - keywords: Comprehensive search terms (array of 8-12 strings, including technical terms)
-  - category: Material category (string: ceramic, metal, plastic, etc.)
-  - chemicalProperties: Chemical data (object with formula, symbol, materialType)
-  - properties: Physical properties (comprehensive object with density, meltingPoint, hardness, thermalConductivity, laserType, wavelength, fluenceRange)
-  - composition: Detailed components (array of component objects with percentages, type, formula)
-  - compatibility: Compatible materials and applications (array of material objects)
-  - images: Image information (object with hero and closeup sections with descriptive alt text and URL paths starting with /images/)
-  - applications: Detailed use cases (array of objects with name and description)
-  - environmentalImpact: Environmental benefits (array of objects with benefit and description)
-  - technicalSpecifications: Detailed laser parameters (object with powerRange, pulseDuration, wavelength, spotSize, repetitionRate, fluenceRange, safetyClass)
-  - regulatoryStandards: Applicable standards (array of standard objects with code and descriptions)
-  - outcomes: Measurable results (array of objects with result and metric)
-
-  CONTENT REQUIREMENTS:
-  - Include precise numerical values for all physical properties (with units)
-  - Provide detailed composition with exact percentages and chemical formulas
-  - List at least 3 specific compatibility scenarios with detailed applications
-  - Include standard units of measurement (g/cm³, °C, W/m·K, etc.)
-  - Specify at least 2-3 regulatory or industry standards with organization and descriptions
-  - Use proper technical terminology for material science and laser processing
-  - Include environmental impact metrics with quantifiable benefits (percentages, comparisons)
-  - Provide detailed technical specifications for laser parameters (power, duration, spot size)
-  - Include measurable outcomes with appropriate measurement techniques
-  - Add specific applications with detailed descriptions of the processes
-
-  SCHEMA STRUCTURE:
-  - Follow this schema structure exactly for {article_type}
-  - Include ALL required fields with complete information
-  - Ensure correct nesting and data types
-  - Do not wrap content in a top-level "{article_type}Profile" key
-  - Use the exact field names from the schema
-
-  {schema}
+  REQUIRED CONTENT AREAS (focus on technical accuracy, not formatting):
+  - name: Just the subject name
+  - Basic identifying information (you can provide rough title/headline/description - these will be standardized)
+  - author: Use author ID {author_id} ({author_name} from {author_country})
+  - keywords: Focus on technical terms relevant to {subject} and laser cleaning
+  - category: Material category from the provided options
+  - chemicalProperties: Accurate chemical formula and symbol if applicable
+  - properties: Specific physical properties with exact numerical values and units
+  - composition: Detailed breakdown with exact percentages and chemical formulas
+  - compatibility: At least 3 specific material/application combinations
+  - applications: Detailed real-world use cases with specific parameters
+  - environmentalImpact: Quantifiable environmental benefits
+  - technicalSpecifications: Detailed laser parameters (provide specific values if known)
+  - regulatoryStandards: Specific standards with organization names and descriptions
+  - outcomes: Measurable results with specific metrics and measurement methods
 
   MATERIAL INFORMATION:
   - Chemical formula if applicable: {material_formula}
   - Symbol if applicable: {material_symbol}
   - Material type if applicable: {material_type}
 
-  FORMAT:
-  - Return raw YAML content only (no markdown code blocks)
-  - Include all fields at the top level (do not wrap in 'materialProfile')
-  - Be technically comprehensive and precise
-  - Use specific, quantitative data rather than generic descriptions
-  - Use multiline string format for descriptions containing colons or special characters
-  - Include proper Unicode characters for units (°, ³, ·, etc.)
-  - Use ranges (e.g., "100-500W") instead of single values when appropriate
-  - Format complex fields consistently (arrays, nested objects)
-  - Ensure SEO optimization for title, headline, and description fields
-  - IMPORTANT: Image URLs must start with /images/ (not with https:// or domain names)
-  - images:
-      description: >
-        Image paths for hero image and closeup/detail image. 
-        IMPORTANT: URLs will be automatically formatted to follow the standard pattern:
-        - Hero image: /images/(subject-name)-laser-cleaning-hero.jpg
-        - Closeup image: /images/(subject-name)-laser-cleaning-closeup.jpg
-        
-        Example:
-        - For "Urethane Composites" → /images/urethane-composites-laser-cleaning-hero.jpg
-        - For "Gallium" → /images/gallium-laser-cleaning-closeup.jpg
-        
-        Focus only on providing descriptive alt text for each image.
-        The URL will be generated automatically.
-      type: object
+  IMPORTANT NOTES:
+  - Focus on technical accuracy and specific values rather than generic descriptions
+  - Provide exact numerical data wherever possible (density, temperature, power, etc.)
+  - Include specific industry standards (ISO, ASTM, EN, IEC numbers)
+  - Use proper chemical formulas and technical terminology
+  - Don't worry about formatting consistency - this will be standardized automatically
+  - Don't specify image URLs or alt text - these will be generated automatically
+  - Provide content in whatever YAML structure feels natural - it will be normalized
+
+  {schema}
 
 parameters:
   max_tokens: 3000

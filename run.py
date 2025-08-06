@@ -441,9 +441,10 @@ def get_component_output_path(component_name: str, subject: str, category: str, 
         pattern = filename_patterns[component_name]
     
     # Create safe versions of variables for filename
-    safe_subject = subject.lower().replace(" ", "-").replace("_", "-")
-    safe_category = category.lower().replace(" ", "-").replace("_", "-")
-    safe_article_type = article_type.lower().replace(" ", "-").replace("_", "-")
+    from components.base.utils.slug_utils import SlugUtils
+    safe_subject = SlugUtils.create_subject_slug(subject)
+    safe_category = SlugUtils.create_category_slug(category)
+    safe_article_type = SlugUtils.create_article_type_slug(article_type)
     
     # For thesaurus entries, the link is the term itself
     if article_type == "thesaurus":

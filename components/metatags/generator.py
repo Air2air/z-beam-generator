@@ -11,6 +11,7 @@ import re
 from components.base.component import BaseComponent
 from components.metatags.validation import validate_article_specific_fields
 from components.base.utils.formatting import format_yaml_object
+from components.base.utils.slug_utils import SlugUtils
 
 logger = logging.getLogger(__name__)
 
@@ -149,11 +150,11 @@ class MetatagsGenerator(BaseComponent):
             parsed["openGraph"] = {
                 "title": f"{self.subject} Laser Cleaning: Technical Guide",
                 "description": parsed.get("description", f"Comprehensive technical resource on {self.subject} laser cleaning applications"),
-                "url": f"https://www.z-beam.com/{self._format_slug(self.subject)}-laser-cleaning",
+                "url": f"https://www.z-beam.com/{SlugUtils.create_subject_slug(self.subject)}-laser-cleaning",
                 "siteName": "Z-Beam",
                 "images": [
                     {
-                        "url": f"https://www.z-beam.com/images/{self._format_slug(self.subject)}-laser-cleaning-hero.jpg",
+                        "url": f"https://www.z-beam.com/images/{SlugUtils.create_subject_slug(self.subject)}-laser-cleaning-hero.jpg",
                         "width": 1200,
                         "height": 630,
                         "alt": f"{self.subject} Laser Cleaning"
@@ -170,13 +171,13 @@ class MetatagsGenerator(BaseComponent):
             if "description" not in og:
                 og["description"] = parsed.get("description", f"Comprehensive technical resource on {self.subject} laser cleaning applications")
             if "url" not in og:
-                og["url"] = f"https://www.z-beam.com/{self._format_slug(self.subject)}-laser-cleaning"
+                og["url"] = f"https://www.z-beam.com/{SlugUtils.create_subject_slug(self.subject)}-laser-cleaning"
             if "siteName" not in og:
                 og["siteName"] = "Z-Beam"
             if "images" not in og or not og["images"]:
                 og["images"] = [
                     {
-                        "url": f"https://www.z-beam.com/images/{self._format_slug(self.subject)}-laser-cleaning-hero.jpg",
+                        "url": f"https://www.z-beam.com/images/{SlugUtils.create_subject_slug(self.subject)}-laser-cleaning-hero.jpg",
                         "width": 1200,
                         "height": 630,
                         "alt": f"{self.subject} Laser Cleaning"
@@ -215,7 +216,7 @@ class MetatagsGenerator(BaseComponent):
             dict: Metatags with properly formatted URLs
         """
         # Format slug
-        slug = self._format_slug(self.subject)
+        slug = SlugUtils.create_subject_slug(self.subject)
         
         # Update openGraph URL
         if "openGraph" in parsed and "url" in parsed["openGraph"]:
@@ -264,22 +265,6 @@ class MetatagsGenerator(BaseComponent):
                     parsed["twitter"]["images"][i] = f"https://www.z-beam.com/images/{slug}-laser-cleaning-{image_type}.jpg"
         
         return parsed
-    
-    def _format_slug(self, text: str) -> str:
-        """Format text as a URL slug.
-        
-        Args:
-            text: Text to format
-            
-        Returns:
-            str: Formatted slug
-        """
-        # First replace spaces and underscores with hyphens
-        slug = text.lower().replace(" ", "-").replace("_", "-")
-        # Then replace any double hyphens with single hyphens
-        import re
-        slug = re.sub(r'-+', '-', slug)
-        return slug
     
     def _count_metadata_fields(self, meta_data: dict, prefix="") -> int:
         """Count the total number of metadata fields, including nested ones.

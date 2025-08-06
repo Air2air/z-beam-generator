@@ -14,6 +14,8 @@ from components.base.utils.validation import (
     validate_length, validate_required_fields, validate_category_consistency
 )
 from components.base.utils.formatting import format_frontmatter_with_comment
+from components.base.utils.slug_utils import SlugUtils
+from components.base.utils.content_formatter import ContentFormatter
 from components.base.image_handler import ImageHandler
 
 logger = logging.getLogger(__name__)
@@ -34,7 +36,7 @@ class FrontmatterGenerator(BaseComponent):
         data = super()._get_base_data()
         
         # Add subject-name-with-hyphens to support the image URL formatting
-        data['subject-name-with-hyphens'] = ImageHandler.get_subject_slug(self.subject)
+        data['subject-name-with-hyphens'] = SlugUtils.create_subject_slug(self.subject)
         
         return data
     
@@ -89,7 +91,7 @@ class FrontmatterGenerator(BaseComponent):
         return parsed
         
     def _component_specific_processing(self, content: str) -> str:
-        """Process the generated frontmatter with enhanced error handling.
+        """Process the generated frontmatter using centralized formatting.
         
         Args:
             content: Pre-validated, clean API response
@@ -100,6 +102,9 @@ class FrontmatterGenerator(BaseComponent):
         Raises:
             ValueError: If content is invalid
         """
+        # First, apply basic content normalization
+        content = ContentFormatter.normalize_yaml_content(content)
+        
         # Check if the content seems to be markdown with a code block instead of raw YAML
         if content.startswith('```yaml') or content.startswith('```'):
             # Extract the YAML content from the code block
@@ -131,23 +136,6 @@ class FrontmatterGenerator(BaseComponent):
             logger.error(f"Content causing error: {content}")
             raise ValueError(f"Invalid YAML in frontmatter: {e}")
         
-        # Validate required fields are present based on the article type schema
-        profile_key = f"{self.article_type}Profile"
-        
-        if profile_key not in self.schema:
-            raise ValueError(f"Missing schema for article type: {self.article_type}. Schema should contain {profile_key}.")
-            
-        validation = self.schema[profile_key]["validation"]["frontmatter"]
-        required_fields = validation["requiredFields"]
-        
-        # Log what we're checking for
-        logger.info(f"Validating frontmatter for article type '{self.article_type}' with required fields: {required_fields}")
-        
-        # Check what fields we actually have
-        logger.info(f"Frontmatter contains fields: {list(parsed.keys())}")
-        
-        # Special handling for common errors
-
         # Handle materialProfile wrapper (sometimes the model wraps everything in this object)
         if len(parsed.keys()) == 1 and 'materialProfile' in parsed and isinstance(parsed['materialProfile'], dict):
             logger.warning("Found 'materialProfile' wrapper, extracting contents")
@@ -168,33 +156,53 @@ class FrontmatterGenerator(BaseComponent):
                 logger.warning(f"Name field '{parsed['name']}' doesn't match subject '{self.subject}'. Setting to subject only.")
                 parsed['name'] = self.subject
         
-        # Enforce frontmatter value length limits
-        # Title and headline should be concise
-        if "title" in parsed:
-            validate_length(parsed["title"], 0, 100, "Title", "chars")
+        # Apply centralized formatting from BaseComponent
+        formatted_content = self.apply_centralized_formatting(content, parsed)
         
-        if "headline" in parsed:
-            validate_length(parsed["headline"], 0, 150, "Headline", "chars")
+        # Re-parse the formatted content to validate it
+        try:
+            final_parsed = yaml.safe_load(formatted_content)
+            if not isinstance(final_parsed, dict):
+                raise ValueError("Formatted frontmatter must be a valid YAML dictionary")
+        except yaml.YAMLError as e:
+            logger.error(f"YAML parsing error after formatting: {e}")
+            raise ValueError(f"Invalid YAML in formatted frontmatter: {e}")
         
-        # Description and summary should be reasonable length
-        if "description" in parsed:
-            # Auto-truncate description if it's too long
-            if len(parsed["description"]) > 250:
-                logger.warning(f"Description too long ({len(parsed['description'])} chars), truncating to 250 chars")
-                parsed["description"] = parsed["description"][:247] + "..."
+        # Validate required fields are present based on the article type schema
+        profile_key = f"{self.article_type}Profile"
+        
+        if profile_key not in self.schema:
+            raise ValueError(f"Missing schema for article type: {self.article_type}. Schema should contain {profile_key}.")
             
-            # Just validate after truncating
-            validate_length(parsed["description"], 0, 250, "Description", "chars")
+        validation = self.schema[profile_key]["validation"]["frontmatter"]
+        required_fields = validation["requiredFields"]
+        
+        # Log what we're checking for
+        logger.info(f"Validating frontmatter for article type '{self.article_type}' with required fields: {required_fields}")
+        
+        # Check what fields we actually have
+        logger.info(f"Frontmatter contains fields: {list(final_parsed.keys())}")
+        
+        # Validate length constraints after formatting
+        if "title" in final_parsed:
+            validate_length(final_parsed["title"], 0, 100, "Title", "chars")
+        
+        if "headline" in final_parsed:
+            validate_length(final_parsed["headline"], 0, 150, "Headline", "chars")
+        
+        if "description" in final_parsed:
+            validate_length(final_parsed["description"], 0, 250, "Description", "chars")
         
         # Keywords should be limited in number and length
-        if "keywords" in parsed and isinstance(parsed["keywords"], list):
-            if len(parsed["keywords"]) > 15:
-                raise ValueError(f"Too many keywords: {len(parsed['keywords'])}, maximum should be 15")
+        if "keywords" in final_parsed and isinstance(final_parsed["keywords"], list):
+            if len(final_parsed["keywords"]) > 15:
+                final_parsed["keywords"] = final_parsed["keywords"][:15]
+                logger.warning("Truncated keywords list to 15 items")
             
-            for keyword in parsed["keywords"]:
+            for keyword in final_parsed["keywords"]:
                 validate_length(keyword, 0, 50, "Keyword", "chars")
         
-        # Auto-fix missing fields with placeholder values as a last resort
+        # Auto-fix missing fields with standardized values from ContentFormatter
         for field in required_fields:
             if field not in parsed:
                 logger.warning(f"Auto-fixing missing required field: {field}")
@@ -390,7 +398,7 @@ class FrontmatterGenerator(BaseComponent):
         # Ensure image URLs follow the correct convention
         if parsed and isinstance(parsed, dict):
             if "images" in parsed and isinstance(parsed["images"], dict):
-                subject_slug = self.subject.lower().replace(' ', '-')
+                subject_slug = SlugUtils.create_subject_slug(self.subject)
                 
                 # Loop through all image types (hero, closeup, etc.)
                 for image_type, image_data in parsed["images"].items():
@@ -405,6 +413,9 @@ class FrontmatterGenerator(BaseComponent):
                         
                         # Create new standardized URL
                         new_url = f"/images/{subject_slug}-laser-cleaning-{image_type}.{extension}"
+                        
+                        # Normalize the URL to ensure no double dashes
+                        new_url = ImageHandler.normalize_url(new_url)
                         
                         # Update URL
                         image_data["url"] = new_url
@@ -435,6 +446,9 @@ class FrontmatterGenerator(BaseComponent):
         
         # Fix missing hyphens between subject and laser-cleaning
         content = re.sub(r'(/images/[a-z0-9-]+)laser-cleaning', r'\1-laser-cleaning', content)
+        
+        # Fix double dashes in image URLs - this is our additional safeguard
+        content = re.sub(r'(/images/[^"]*?)--+([^"]*?\.jpg)', r'\1-\2', content)
         
         return content
     

@@ -12,6 +12,7 @@ import re
 from typing import Dict, Any, Optional
 from components.base.component import BaseComponent
 from components.base.image_handler import ImageHandler
+from components.base.utils.slug_utils import SlugUtils
 
 logger = logging.getLogger(__name__)
 
@@ -172,7 +173,7 @@ class JsonldGenerator(BaseComponent):
                 # Check for image field if images are available in frontmatter
         frontmatter = self.get_frontmatter_data()
         if frontmatter and 'images' in frontmatter and 'image' not in data:
-            subject_slug = self.subject.lower().replace(" ", "-").replace("_", "-")
+            subject_slug = SlugUtils.create_subject_slug(self.subject)
             article_type = self.article_type.lower()
             
             # Use the article type pattern from run.py for the proper slug
@@ -189,7 +190,7 @@ class JsonldGenerator(BaseComponent):
                 slug = subject_slug
                 
             # Add default image URL based on slug
-            slug = ImageHandler.get_subject_slug(self.subject)
+            slug = SlugUtils.create_subject_slug(self.subject)
             data['image'] = f"https://www.z-beam.com/images/{slug}-laser-cleaning-hero.jpg"
             
     def _process_image_urls(self, data: Dict[str, Any]) -> None:
@@ -202,7 +203,7 @@ class JsonldGenerator(BaseComponent):
             None: Updates the data in place
         """
         # Get the slug for constructing image URLs
-        subject_slug = ImageHandler.get_subject_slug(self.subject)
+        subject_slug = SlugUtils.create_subject_slug(self.subject)
         article_type = self.article_type.lower()
         base_url = "https://www.z-beam.com"
         

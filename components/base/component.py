@@ -10,6 +10,8 @@ import yaml
 from abc import ABC
 from typing import Dict, Any, Optional
 
+from components.base.utils.slug_utils import SlugUtils
+from components.base.utils.content_formatter import ContentFormatter
 from components.base.utils.validation import (
     validate_non_empty, validate_category_consistency,
     strip_markdown_code_blocks
@@ -119,6 +121,8 @@ class BaseComponent(ABC):
     def get_template_data(self) -> Dict[str, Any]:
         """Extract all dynamic, schema-driven template variables for the component.
         
+        All formatting is handled here in Python to ensure consistency.
+        
         Returns:
             Dict[str, Any]: All validated, schema-driven template variables
         
@@ -147,6 +151,9 @@ class BaseComponent(ABC):
             raise ValueError(f"Profile '{profile_key}' not found in schema")
         profile_data = self.schema[profile_key]
 
+        # Get material formula and symbol for technical content
+        material_formula, material_symbol, material_type = formula_service.get_material_data(self.subject)
+        
         # Start with base fields - ALL components need these
         template_data = {
             "subject": self.subject,
@@ -158,7 +165,39 @@ class BaseComponent(ABC):
             "schema": str(self.schema),
             "profile": profile_data.get("profile", {}),
             "validation": profile_data.get("validation", {}),
-            "slug": self.subject.lower().replace(" ", "-").replace("_", "-")  # Add slug for image naming
+            
+            # CENTRALIZED FORMATTING - All handled by Python, not AI
+            "slug": SlugUtils.create_subject_slug(self.subject),
+            "subject_slug": SlugUtils.create_subject_slug(self.subject),
+            "category_slug": SlugUtils.create_category_slug(getattr(self, "category", "")),
+            "formatted_title": ContentFormatter.format_title(self.subject, self.article_type),
+            "formatted_headline": ContentFormatter.format_headline(self.subject, getattr(self, "category", None)),
+            "formatted_description": ContentFormatter.format_description(
+                self.subject, 
+                material_formula, 
+                {"density": "N/A", "wavelength": "1064nm"}  # Default values, will be enhanced by AI
+            ),
+            "formatted_keywords": ContentFormatter.format_keywords(
+                self.subject, 
+                getattr(self, "category", None), 
+                material_formula
+            ),
+            "formatted_images": ContentFormatter.format_images(self.subject),
+            "formatted_technical_specs": ContentFormatter.format_technical_specifications(),
+            "formatted_regulatory_standards": ContentFormatter.format_regulatory_standards(),
+            "formatted_environmental_impact": ContentFormatter.format_environmental_impact(self.subject),
+            "formatted_outcomes": ContentFormatter.format_outcomes(),
+            
+            # Material-specific data
+            "material_formula": material_formula or "N/A",
+            "material_symbol": material_symbol or "N/A", 
+            "material_type": material_type or "N/A",
+            
+            # Image URLs - all properly formatted by Python
+            "hero_image_url": ContentFormatter.format_images(self.subject)["hero"]["url"],
+            "closeup_image_url": ContentFormatter.format_images(self.subject)["closeup"]["url"],
+            "hero_image_alt": ContentFormatter.format_images(self.subject)["hero"]["alt"],
+            "closeup_image_alt": ContentFormatter.format_images(self.subject)["closeup"]["alt"],
         }
 
         # Add frontmatter if available
@@ -184,7 +223,7 @@ class BaseComponent(ABC):
             if self.article_type == "material" and "specifications" in frontmatter:
                 template_data["specifications"] = frontmatter["specifications"]
             
-            # Process images with special handling
+            # Process images with special handling - ensure they use proper formatting
             if "images" in frontmatter:
                 template_data["images"] = frontmatter["images"]
                 
@@ -195,7 +234,10 @@ class BaseComponent(ABC):
                             # Create a normalized key for the image URL at the top level
                             img_url_key = f"{img_type}_image_url"
                             if "url" in img_data:
-                                template_data[img_url_key] = img_data["url"]
+                                # Ensure image URLs are properly formatted (no double dashes)
+                                from components.base.image_handler import ImageHandler
+                                normalized_url = ImageHandler.normalize_url(img_data["url"])
+                                template_data[img_url_key] = normalized_url
                             elif "src" in img_data:
                                 template_data[img_url_key] = img_data["src"]
                             
@@ -781,3 +823,44 @@ class BaseComponent(ABC):
                 modified_content = modified_content.replace(link, text)
         
         return modified_content
+    
+    def apply_centralized_formatting(self, content: str, parsed_data: Dict[str, Any] = None) -> str:
+        """Apply centralized formatting to ensure consistency across all components.
+        
+        This method should be called by all components to ensure consistent formatting.
+        It offloads all formatting work from AI to Python.
+        
+        Args:
+            content: Raw content from AI generation
+            parsed_data: Optional parsed data structure for additional formatting
+            
+        Returns:
+            str: Formatted content with all standardization applied
+        """
+        # If we have parsed data, apply comprehensive formatting
+        if parsed_data and isinstance(parsed_data, dict):
+            # Apply ContentFormatter standardization
+            category = getattr(self, 'category', None)
+            parsed_data = ContentFormatter.format_frontmatter_structure(
+                parsed_data, self.subject, category, self.article_type
+            )
+            
+            # Convert back to YAML string if this was YAML content
+            if isinstance(content, str) and ('---' in content or content.strip().startswith(('name:', 'title:', 'headline:'))):
+                try:
+                    import yaml
+                    content = yaml.dump(parsed_data, default_flow_style=False, allow_unicode=True, sort_keys=False)
+                except Exception as e:
+                    logger.warning(f"Failed to convert formatted data back to YAML: {e}")
+        
+        # Apply content normalization
+        content = ContentFormatter.normalize_yaml_content(content)
+        
+        # Fix any image URLs that might have double dashes
+        import re
+        content = re.sub(r'(/images/[^"]*?)--+([^"]*?\.jpg)', r'\1-\2', content)
+        
+        # Additional slug normalization throughout content
+        content = re.sub(r'([a-z])--+([a-z])', r'\1-\2', content)
+        
+        return content

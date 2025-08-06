@@ -20,7 +20,8 @@ class RegionGenerator(BaseTypeGenerator):
         region_name = self.data.get("subject", "")
         
         # Create the slug for images
-        slug = f"{region_name.lower().replace(' ', '-').replace('_', '-')}-laser-cleaning"
+        from components.base.utils.slug_utils import SlugUtils
+        slug = f"{SlugUtils.create_subject_slug(region_name)}-laser-cleaning"
         
         # Base JSON-LD structure
         jsonld = {
