@@ -82,9 +82,8 @@ class JsonldGenerator(BaseComponent):
             raise ValueError(f"Invalid @context value: {data['@context']}. Must be https://schema.org")
         
         # Additional schema-specific validation based on article type
-        profile_key = f"{self.article_type}Profile"
-        if profile_key in self.schema and "jsonld" in self.schema[profile_key]:
-            jsonld_schema = self.schema[profile_key]["jsonld"]
+        if self.has_schema_feature('generatorConfig', 'jsonld'):
+            jsonld_schema = self.get_schema_config('generatorConfig', 'jsonld')
             
             # Check required type
             if "schemaType" in jsonld_schema:

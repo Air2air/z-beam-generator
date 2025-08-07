@@ -30,10 +30,10 @@ BATCH_CONFIG = {
     
     # Single subject configuration (used when mode="single")
     "single_subject": {
-        "subject": "Gold",
+        "subject": "Quartzite",
         "article_type": "material",  # application, material, region, or thesaurus
         "author_id": 1,  # 1: Taiwan, 2: Italy, 3: USA, 4: Indonesia
-        "category": "metal",  # Optional: specify category for hierarchy
+        "category": "stone",  # Optional: specify category for hierarchy
     },
     
     # Multi-subject configuration (used when mode="multi")

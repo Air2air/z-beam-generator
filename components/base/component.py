@@ -172,6 +172,266 @@ class BaseComponent(ABC):
             
         raise ValueError(f"Required component config key '{key}' not found")
     
+    def get_profile_key(self) -> str:
+        """Get the schema profile key for the current article type.
+        
+        Returns:
+            str: The profile key (e.g., 'materialProfile')
+        """
+        return f"{self.article_type}Profile"
+    
+    def get_schema_config(self, *path, default: Any = None) -> Any:
+        """Get a value from the schema configuration for the current article type.
+        
+        Args:
+            *path: The path to the configuration (e.g., 'validation', 'frontmatter', 'requiredFields')
+            default: Value to return if path is not found
+            
+        Returns:
+            Any: The value from schema or default
+            
+        Examples:
+            self.get_schema_config('validation', 'frontmatter', 'requiredFields')
+            self.get_schema_config('generatorConfig', 'fieldContentMapping')
+        """
+        profile_key = self.get_profile_key()
+        
+        if profile_key not in self.schema:
+            if default is not None:
+                return default
+            raise ValueError(f"Schema profile '{profile_key}' not found for article type '{self.article_type}'")
+        
+        current = self.schema[profile_key]
+        
+        for key in path:
+            if not isinstance(current, dict) or key not in current:
+                if default is not None:
+                    return default
+                raise ValueError(f"Schema path {'.'.join(path)} not found in profile '{profile_key}'")
+            current = current[key]
+        
+        return current
+    
+    def get_required_fields(self, component_name: str = None) -> List[str]:
+        """Get required fields for a component from the schema.
+        
+        Args:
+            component_name: Name of the component (defaults to current component)
+            
+        Returns:
+            List[str]: List of required field names
+        """
+        if component_name is None:
+            component_name = self.__class__.__name__.replace("Generator", "").lower()
+        
+        try:
+            return self.get_schema_config('validation', component_name, 'requiredFields', default=[])
+        except ValueError:
+            # Fallback to general validation if component-specific not found
+            try:
+                return self.get_schema_config('validation', 'requiredFields', default=[])
+            except ValueError:
+                return []
+    
+    def get_component_validation_config(self, component_name: str = None) -> Dict[str, Any]:
+        """Get validation configuration for a component from the schema.
+        
+        Args:
+            component_name: Name of the component (defaults to current component)
+            
+        Returns:
+            Dict[str, Any]: Validation configuration
+        """
+        if component_name is None:
+            component_name = self.__class__.__name__.replace("Generator", "").lower()
+        
+        try:
+            return self.get_schema_config('validation', component_name, default={})
+        except ValueError:
+            return {}
+    
+    def has_schema_feature(self, *path) -> bool:
+        """Check if a schema feature exists for the current article type.
+        
+        Args:
+            *path: The path to check (e.g., 'generatorConfig', 'research')
+            
+        Returns:
+            bool: True if the feature exists
+        """
+        try:
+            self.get_schema_config(*path)
+            return True
+        except ValueError:
+            return False
+    
+    def get_schema_field_definitions(self) -> dict:
+        """Get field definitions from the schema for the current article type.
+        
+        Returns:
+            dict: Field definitions from the schema
+        """
+        try:
+            # Get profile-level field definitions if available
+            profile_fields = self.get_schema_config('profile', default={})
+            return profile_fields
+        except ValueError:
+            logger.warning(f"No profile field definitions found for article type: {self.article_type}")
+            return {}
+    
+    def get_field_schema_info(self, field_name: str) -> dict:
+        """Get schema information for a specific field.
+        
+        Args:
+            field_name: Name of the field
+            
+        Returns:
+            dict: Schema information for the field
+        """
+        schema_properties = self.get_schema_field_definitions()
+        return schema_properties.get(field_name, {})
+    
+    def generate_schema_compliant_field_value(self, field_name: str, component_name: str = None):
+        """Generate appropriate field value based on schema and field type.
+        
+        Args:
+            field_name: Name of the field to generate
+            component_name: Name of the component (for component-specific logic)
+            
+        Returns:
+            Appropriate value for the field based on schema
+        """
+        if component_name is None:
+            component_name = self.__class__.__name__.replace("Generator", "").lower()
+        
+        schema_properties = self.get_schema_field_definitions()
+        field_info = schema_properties.get(field_name, {})
+        
+        # Handle special fields with custom logic first
+        if field_name == "name":
+            return self.subject
+        elif field_name == "title":
+            return f"{self.subject} Laser Cleaning | Technical Guide"
+        elif field_name == "headline":
+            return f"Technical guide to {self.subject} for laser cleaning applications"
+        elif field_name == "description":
+            return f"A comprehensive technical overview of {self.subject} for laser cleaning applications, including properties, composition, and optimal processing parameters."
+        elif field_name == "author":
+            return self._generate_author_field()
+        elif field_name == "keywords":
+            return self.format_keywords_for_subject(getattr(self, 'category', None))
+        elif field_name == "category":
+            return getattr(self, 'category', 'unknown') if hasattr(self, 'category') and self.category else "unknown"
+        elif field_name == "chemicalProperties":
+            return self._generate_chemical_properties_field()
+        elif field_name == "images":
+            return self._generate_images_field()
+        elif field_name == "article_type":
+            return self.article_type
+        elif field_name == "subject":
+            return self.subject
+        
+        # Handle schema-defined field types
+        field_type = field_info.get('type', 'string')
+        if field_type == 'array':
+            return []
+        elif field_type == 'object':
+            return {}
+        elif field_type == 'boolean':
+            return False
+        elif field_type == 'number':
+            return 0
+        else:
+            # Default to string with descriptive value
+            return f"Generated value for {field_name}"
+    
+    def _generate_author_field(self) -> dict:
+        """Generate author field based on available author data."""
+        if self.author_data and "author_name" in self.author_data:
+            author_field = {
+                "name": self.author_data["author_name"],
+                "country": self.author_data["author_country"],
+                "credentials": self.author_data.get("author_title", "Laser Cleaning Expert")
+            }
+            
+            # Add specialties if available
+            if self.author_data.get("author_specialties"):
+                author_field["credentials"] += f", {self.author_data['author_specialties'][0]}"
+            
+            # Add author ID if available
+            if "author_id" in self.author_data:
+                author_field["id"] = self.author_data["author_id"]
+                
+            return author_field
+        else:
+            # Fallback if author data is not available
+            return {
+                "name": "Material Science Institute", 
+                "country": "United States",
+                "credentials": f"Expert in {self.subject} and Laser Cleaning Technology"
+            }
+    
+    def _generate_chemical_properties_field(self) -> dict:
+        """Generate chemical properties field for material articles."""
+        if self.article_type == 'material':
+            # Try to get from material formula service if available
+            try:
+                from components.base.material_formula_service import MaterialFormulaService
+                service = MaterialFormulaService()
+                formula_data = service.get_material_formula(self.subject)
+                if formula_data:
+                    return {
+                        "symbol": formula_data.get("symbol", self.subject),
+                        "formula": formula_data.get("formula", "Not specified"),
+                        "materialType": formula_data.get("type", "compound")
+                    }
+            except (ImportError, Exception) as e:
+                logger.warning(f"Could not get formula data for {self.subject}: {e}")
+        
+        # Fallback chemical properties
+        return {
+            "symbol": self.subject,
+            "formula": "Not specified",
+            "materialType": "compound"
+        }
+    
+    def _generate_images_field(self) -> dict:
+        """Generate images field with proper URLs."""
+        subject_slug = self.subject.lower().replace(' ', '-').replace('_', '-')
+        return {
+            "hero": {
+                "alt": f"{self.subject} laser cleaning process demonstration",
+                "url": f"https://www.z-beam.com/images/{subject_slug}-laser-cleaning-hero.jpg"
+            },
+            "closeup": {
+                "alt": f"Detailed view of {self.subject} surface after laser cleaning",
+                "url": f"https://www.z-beam.com/images/{subject_slug}-laser-cleaning-closeup.jpg"
+            }
+        }
+    
+    def validate_and_populate_required_fields(self, parsed_data: dict, component_name: str = None) -> dict:
+        """Validate and auto-populate missing required fields based on schema.
+        
+        Args:
+            parsed_data: The parsed data dictionary
+            component_name: Name of the component (defaults to current component)
+            
+        Returns:
+            dict: Data with all required fields populated
+        """
+        if component_name is None:
+            component_name = self.__class__.__name__.replace("Generator", "").lower()
+        
+        required_fields = self.get_required_fields(component_name)
+        
+        # Auto-populate missing required fields
+        for field in required_fields:
+            if field not in parsed_data:
+                logger.warning(f"Auto-populating missing required field: {field}")
+                parsed_data[field] = self.generate_schema_compliant_field_value(field, component_name)
+        
+        return parsed_data
+    
     def generate(self) -> str:
         """Generate content with standard processing flow.
         
