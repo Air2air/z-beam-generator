@@ -44,8 +44,13 @@ class JsonldGenerator(BaseComponent):
             # Apply centralized formatting (pass the YAML string, not dict)
             formatted_content = self.apply_centralized_formatting(extracted_yaml)
             
-            # Add YAML frontmatter delimiters for consistency
-            return f"---\n{formatted_content}---\n"
+            # Add YAML frontmatter delimiters for consistency (following frontmatter pattern)
+            if not formatted_content.startswith('---'):
+                formatted_content = '---\n' + formatted_content
+            if not formatted_content.endswith('---'):
+                formatted_content = formatted_content.rstrip() + '\n---'
+            
+            return formatted_content
             
         except yaml.YAMLError as e:
             raise ValueError(f"Invalid YAML in JSON-LD response: {e}")

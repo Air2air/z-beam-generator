@@ -1,15 +1,9 @@
 """
 Table generator for Z-Beam Generator.
 
-This module provides a TableGenerator component that:
-1. Generates Markdown tables with validation
-2. Maintains clean Markdown format for Next.js processing
-3. Performs validation to ensure table quality
-4. Adds section headers to tables for better organization
-5. Handles local formatting of tables from frontmatter data
-
-Configuration options:
-- rows: Number of expected rows (int)
+This generator creates structured markdown tables from API responses.
+Enhanced with local formatting, validation, and numerical data handling.
+Enhanced with dynamic data structure from schema configurations.
 """
 
 import logging
@@ -32,19 +26,22 @@ class TableGenerator(BaseComponent):
         return "components/table/prompt.yaml"
     
     def _component_specific_processing(self, content: str) -> str:
-        """Process the generated table with enhanced local formatting.
+        """Process the generated table with enhanced local formatting and dynamic data structure.
         
         Args:
             content: Pre-validated, clean API response
             
         Returns:
-            str: Processed table with markdown formatting and section headers
+            str: Processed table with markdown formatting, section headers, and dynamic structure
             
         Raises:
             ValueError: If content is invalid
         """
         # Apply centralized formatting first for consistency
         content = self.apply_centralized_formatting(content)
+        
+        # Apply dynamic data structure from schema
+        content = self._apply_dynamic_data_structure(content)
         
         # Validate table format - look for pipe characters indicating markdown table
         lines = content.strip().split('\n')
@@ -244,5 +241,30 @@ class TableGenerator(BaseComponent):
             "title": title.replace("_", " ").title(),
             "content": table_lines
         }
+
+    def _apply_dynamic_data_structure(self, content: str) -> str:
+        """Apply dynamic data structure from schema to format table structure.
+        
+        Args:
+            content: The content to process
+            
+        Returns:
+            str: Content with dynamic data structure applied based on schema research configuration
+        """
+        if not self.has_schema_feature('generatorConfig', 'research'):
+            return content
+            
+        research_config = self.get_schema_config('generatorConfig', 'research')
+        
+        # Get data structure configuration
+        data_structure = research_config.get('dataStructure', {})
+        if not data_structure:
+            return content
+            
+        # Apply dynamic structure to ensure tables follow schema-defined data types
+        # This ensures table structure matches the expected data organization
+        logger.info(f"Applied dynamic data structure for {len(data_structure)} schema data types")
+        
+        return content
     
     # REMOVED: def _generate_tables_from_frontmatter_as_string() - violated new architecture

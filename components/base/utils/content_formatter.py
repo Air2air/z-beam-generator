@@ -712,31 +712,51 @@ class ContentFormatter:
         """
         from components.base.utils.slug_utils import SlugUtils
         
-        # Use the AI-generated content but ensure proper structure
+        # Normalize field names first (handle inconsistent AI output)
+        normalized_data = {}
+        for key, value in parsed_data.items():
+            # Normalize common metatag field name variations
+            if key.lower() in ['title', 'meta_title']:
+                normalized_data['meta_title'] = value
+            elif key.lower() in ['description', 'meta_description']:
+                normalized_data['meta_description'] = value
+            elif key.lower() in ['keywords', 'meta_keywords']:
+                normalized_data['meta_keywords'] = value
+            else:
+                # Keep other fields as-is
+                normalized_data[key] = value
+        
+        # Use the normalized data for structure formatting
         formatted = {}
         
         # Basic meta fields (use AI content if provided, otherwise use centralized formatting)
-        if "title" in parsed_data:
-            formatted["title"] = parsed_data["title"]
+        if "meta_title" in normalized_data:
+            formatted["meta_title"] = normalized_data["meta_title"]
+        elif "title" in normalized_data:
+            formatted["meta_title"] = normalized_data["title"]
         else:
-            formatted["title"] = ContentFormatter.format_title(subject)
+            formatted["meta_title"] = ContentFormatter.format_title(subject)
             
-        if "description" in parsed_data:
-            formatted["description"] = parsed_data["description"]
+        if "meta_description" in normalized_data:
+            formatted["meta_description"] = normalized_data["meta_description"]
+        elif "description" in normalized_data:
+            formatted["meta_description"] = normalized_data["description"]
         else:
-            formatted["description"] = ContentFormatter.format_description(subject)
+            formatted["meta_description"] = ContentFormatter.format_description(subject)
             
-        if "keywords" in parsed_data:
-            formatted["keywords"] = parsed_data["keywords"]
+        if "meta_keywords" in normalized_data:
+            formatted["meta_keywords"] = normalized_data["meta_keywords"]
+        elif "keywords" in normalized_data:
+            formatted["meta_keywords"] = normalized_data["keywords"]
         else:
             keywords = ContentFormatter.format_keywords(subject, category)
-            formatted["keywords"] = ", ".join(keywords)
+            formatted["meta_keywords"] = ", ".join(keywords)
         
         # Ensure openGraph structure exists
-        if "openGraph" not in parsed_data:
+        if "openGraph" not in normalized_data:
             formatted["openGraph"] = {}
         else:
-            formatted["openGraph"] = parsed_data["openGraph"].copy()
+            formatted["openGraph"] = normalized_data["openGraph"].copy()
             
         og = formatted["openGraph"]
         
@@ -745,9 +765,9 @@ class ContentFormatter:
         
         # Ensure required openGraph fields
         if "title" not in og:
-            og["title"] = formatted["title"]
+            og["title"] = formatted["meta_title"]
         if "description" not in og:
-            og["description"] = formatted["description"]
+            og["description"] = formatted["meta_description"]
         if "url" not in og:
             og["url"] = f"https://www.z-beam.com/{subject_slug}-laser-cleaning"
         if "siteName" not in og:
@@ -781,16 +801,16 @@ class ContentFormatter:
         if "card" not in twitter:
             twitter["card"] = "summary_large_image"
         if "title" not in twitter:
-            twitter["title"] = og.get("title", formatted["title"])
+            twitter["title"] = og.get("title", formatted["meta_title"])
         if "description" not in twitter:
-            twitter["description"] = og.get("description", formatted["description"])
+            twitter["description"] = og.get("description", formatted["meta_description"])
         if "images" not in twitter or not twitter["images"]:
             if og.get("images"):
                 twitter["images"] = [og["images"][0]["url"]]
         
-        # Copy other fields from AI if they exist
-        for key, value in parsed_data.items():
-            if key not in ["title", "description", "keywords", "openGraph", "twitter"]:
+        # Copy other fields from AI if they exist (exclude normalized fields)
+        for key, value in normalized_data.items():
+            if key not in ["meta_title", "meta_description", "meta_keywords", "title", "description", "keywords", "openGraph", "twitter"]:
                 formatted[key] = value
         
         return formatted

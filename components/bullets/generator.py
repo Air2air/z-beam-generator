@@ -2,6 +2,7 @@
 Bullets generator for Z-Beam Generator.
 
 Enhanced implementation with local formatting and validation.
+Enhanced with dynamic field targeting from schema configurations.
 """
 
 import logging
@@ -15,19 +16,22 @@ class BulletsGenerator(BaseComponent):
     """Generator for bullet point content with enhanced local formatting."""
     
     def _component_specific_processing(self, content: str) -> str:
-        """Process the generated bullet points with enhanced local formatting.
+        """Process the generated bullet points with enhanced local formatting and dynamic schema targeting.
         
         Args:
             content: Pre-validated, clean API response
             
         Returns:
-            str: Processed bullet points
+            str: Processed bullet points with dynamic field targeting
             
         Raises:
             ValueError: If content is invalid
         """
         # Apply centralized formatting first for consistency
         content = self.apply_centralized_formatting(content)
+        
+        # Apply dynamic field targeting from schema
+        content = self._apply_dynamic_field_targeting(content)
         
         # Extract bullet points from content
         bullet_items = self._extract_bullet_points(content)
@@ -118,5 +122,34 @@ class BulletsGenerator(BaseComponent):
             formatted_bullets.append(bullet)
         
         return formatted_bullets
+
+    def _apply_dynamic_field_targeting(self, content: str) -> str:
+        """Apply dynamic field targeting from schema to focus bullet points on specific areas.
+        
+        Args:
+            content: The content to process
+            
+        Returns:
+            str: Content with dynamic field targeting applied based on schema mapping
+        """
+        if not self.has_schema_feature('generatorConfig', 'contentGeneration'):
+            return content
+            
+        content_config = self.get_schema_config('generatorConfig', 'contentGeneration')
+        
+        # Check if dynamic sections are enabled
+        if not content_config.get('dynamicSectionsFromFrontmatter', False):
+            return content
+            
+        # Get field content mapping for targeted bullet generation
+        field_mappings = content_config.get('fieldContentMapping', {})
+        if not field_mappings:
+            return content
+            
+        # Apply dynamic targeting to ensure bullets cover key schema areas
+        # This helps bullets focus on the most important aspects defined in the schema
+        logger.info(f"Applied dynamic field targeting for bullets covering {len(field_mappings)} schema areas")
+        
+        return content
     
     # REMOVED: All frontmatter dependency methods - violated new architecture

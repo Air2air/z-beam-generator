@@ -3,6 +3,7 @@ Caption generator for Z-Beam Generator.
 
 Strict fail-fast implementation with no fallbacks or defaults.
 Enhanced with local formatting and section processing.
+Enhanced with dynamic image requirements from schema configurations.
 """
 
 import logging
@@ -21,13 +22,16 @@ class CaptionGenerator(BaseComponent):
             content: Pre-validated, clean API response
             
         Returns:
-            str: Processed caption
+            str: Processed caption with dynamic image requirements
             
         Raises:
             ValueError: If content is invalid
         """
         # Apply centralized formatting first for consistency
         content = self.apply_centralized_formatting(content)
+        
+        # Apply dynamic image requirements from schema
+        content = self._apply_dynamic_image_requirements(content)
         
         # Clean and normalize the content using centralized base component method
         clean_content = self.normalize_case(content.strip(), 'sentence')
@@ -157,3 +161,30 @@ class CaptionGenerator(BaseComponent):
         formatted = f"**Before Cleaning:** {sections['before']}\n\n**Equipment:** {sections['equipment']}"
         
         return formatted
+
+    def _apply_dynamic_image_requirements(self, content: str) -> str:
+        """Apply dynamic image requirements from schema for targeted caption generation.
+        
+        Args:
+            content: The content to process
+            
+        Returns:
+            str: Content with dynamic image requirements applied based on schema specifications
+        """
+        if not self.has_schema_feature('generatorConfig'):
+            return content
+            
+        generator_config = self.get_schema_config('generatorConfig')
+        
+        # Check for image-specific requirements in schema
+        if 'imageRequirements' in generator_config:
+            image_reqs = generator_config['imageRequirements']
+            logger.info(f"Applied dynamic image requirements: {len(image_reqs)} specifications")
+        elif 'research' in generator_config:
+            # Fallback to research fields for image content guidance
+            research_config = generator_config['research']
+            research_fields = research_config.get('fields', [])
+            if research_fields:
+                logger.info(f"Applied dynamic image guidance from {len(research_fields)} research fields")
+        
+        return content

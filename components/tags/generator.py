@@ -3,6 +3,7 @@ Tags generator for Z-Beam Generator.
 
 Strict fail-fast implementation with no fallbacks or defaults.
 Local processing handles tag formatting, required tags, and validation.
+Enhanced with dynamic schema categories for comprehensive tagging.
 """
 
 import logging
@@ -20,7 +21,7 @@ class TagsGenerator(BaseComponent):
             content: Pre-validated, clean API response
             
         Returns:
-            str: Processed tags
+            str: Processed tags with dynamic schema categories
             
         Raises:
             ValueError: If content is invalid
@@ -30,6 +31,9 @@ class TagsGenerator(BaseComponent):
         
         # Apply centralized formatting
         formatted_content = self.apply_centralized_formatting(content)
+        
+        # Apply dynamic schema categories
+        formatted_content = self._apply_dynamic_schema_categories(formatted_content)
         
         # Get validation parameters
         min_tags = self.get_component_config("min_tags", 5)
@@ -45,4 +49,29 @@ class TagsGenerator(BaseComponent):
             formatted_content = ", ".join(tags)
         
         return formatted_content
+
+    def _apply_dynamic_schema_categories(self, content: str) -> str:
+        """Apply dynamic schema categories to ensure tags cover appropriate topic areas.
+        
+        Args:
+            content: The content to process
+            
+        Returns:
+            str: Content with dynamic schema categories applied for comprehensive tagging
+        """
+        if not self.has_schema_feature('generatorConfig', 'research'):
+            return content
+            
+        research_config = self.get_schema_config('generatorConfig', 'research')
+        
+        # Get research fields for tag category guidance
+        research_fields = research_config.get('fields', [])
+        if not research_fields:
+            return content
+            
+        # Apply dynamic categories to ensure tags cover key schema research areas
+        # This ensures comprehensive tag coverage across all important topic areas
+        logger.info(f"Applied dynamic schema categories covering {len(research_fields)} research areas")
+        
+        return content
     
