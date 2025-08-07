@@ -227,11 +227,8 @@ class BaseComponent(ABC):
         try:
             return self.get_schema_config('validation', component_name, 'requiredFields', default=[])
         except ValueError:
-            # Fallback to general validation if component-specific not found
-            try:
-                return self.get_schema_config('validation', 'requiredFields', default=[])
-            except ValueError:
-                return []
+            # Strict mode: No fallback validation
+            raise ValueError(f"No validation configuration found for component: {component_name}")
     
     def get_component_validation_config(self, component_name: str = None) -> Dict[str, Any]:
         """Get validation configuration for a component from the schema.
@@ -342,8 +339,8 @@ class BaseComponent(ABC):
         elif field_type == 'number':
             return 0
         else:
-            # Default to string with descriptive value
-            return f"Generated value for {field_name}"
+            # Strict mode: No default values
+            raise ValueError(f"Unable to generate required field: {field_name}")
     
     def _generate_author_field(self) -> dict:
         """Generate author field based on available author data."""
@@ -364,12 +361,8 @@ class BaseComponent(ABC):
                 
             return author_field
         else:
-            # Fallback if author data is not available
-            return {
-                "name": "Material Science Institute", 
-                "country": "United States",
-                "credentials": f"Expert in {self.subject} and Laser Cleaning Technology"
-            }
+            # Strict mode: No fallback author data
+            raise ValueError("Author data is required but not available")
     
     def _generate_chemical_properties_field(self) -> dict:
         """Generate chemical properties field for material articles."""
@@ -386,14 +379,11 @@ class BaseComponent(ABC):
                         "materialType": formula_data.get("type", "compound")
                     }
             except (ImportError, Exception) as e:
-                logger.warning(f"Could not get formula data for {self.subject}: {e}")
+                # Strict mode: Fail if chemical data cannot be obtained
+                raise ValueError(f"Could not get chemical formula data for {self.subject}: {e}")
         
-        # Fallback chemical properties
-        return {
-            "symbol": self.subject,
-            "formula": "Not specified",
-            "materialType": "compound"
-        }
+        # Strict mode: No fallback chemical properties
+        raise ValueError(f"No chemical data found for material: {self.subject}")
     
     def _generate_images_field(self) -> dict:
         """Generate images field with proper URLs."""
@@ -932,13 +922,10 @@ class BaseComponent(ABC):
         """
         return ContentFormatter.extract_content_between_markers(content, marker)
     
-    def format_author_info(self, fallback_id: int = 1) -> Dict[str, Any]:
+    def format_author_info(self) -> Dict[str, Any]:
         """Format author information consistently using this component's author data.
         
-        Args:
-            fallback_id: Fallback author ID if data is missing
-            
         Returns:
             Dict: Formatted author information
         """
-        return ContentFormatter.format_author_info(self.author_data, fallback_id)
+        return ContentFormatter.format_author_info(self.author_data)

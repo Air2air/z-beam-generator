@@ -105,11 +105,8 @@ class CaptionGenerator(BaseComponent):
                 before_section = parts[0].strip()
                 equipment_section = parts[1].strip()
             else:
-                # As a fallback, just split the content in half
-                words = content.split()
-                middle = len(words) // 2
-                before_section = ' '.join(words[:middle])
-                equipment_section = ' '.join(words[middle:])
+                # Strict mode: Require proper content structure
+                raise ValueError("Caption content must contain '**Equipment:**' section marker")
         
         # Store sections
         sections['before'] = before_section if before_section else "Before cleaning details not provided"
@@ -176,15 +173,13 @@ class CaptionGenerator(BaseComponent):
             
         generator_config = self.get_schema_config('generatorConfig')
         
-        # Check for image-specific requirements in schema
-        if 'imageRequirements' in generator_config:
-            image_reqs = generator_config['imageRequirements']
-            logger.info(f"Applied dynamic image requirements: {len(image_reqs)} specifications")
-        elif 'research' in generator_config:
-            # Fallback to research fields for image content guidance
+        # Use the research field configuration that exists in the schema
+        if 'research' in generator_config:
             research_config = generator_config['research']
-            research_fields = research_config.get('fields', [])
-            if research_fields:
-                logger.info(f"Applied dynamic image guidance from {len(research_fields)} research fields")
+            if 'fields' in research_config:
+                logger.info(f"Applied dynamic image generation context from research fields: {research_config['fields']}")
+        else:
+            # Strict mode: Generator config must be present
+            raise ValueError("Caption generator requires generatorConfig with research fields in schema")
         
         return content

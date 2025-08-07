@@ -372,13 +372,13 @@ class ContentFormatter:
 
     @staticmethod
     def normalize_yaml_content(content: str) -> str:
-        """Normalize YAML content for consistency.
+        """Normalize YAML content for consistency and proper structure.
         
         Args:
             content: Raw YAML content string
             
         Returns:
-            str: Normalized YAML content
+            str: Normalized YAML content with proper indentation
         """
         # Remove any markdown code blocks
         content = re.sub(r'^```ya?ml\s*\n', '', content, flags=re.MULTILINE)
@@ -399,21 +399,62 @@ class ContentFormatter:
         # Normalize quote usage in YAML
         content = re.sub(r'([:\s]+)"([^"]*?)"(\s*)', r'\1"\2"\3', content)
         
-        # Ensure consistent indentation (2 spaces)
+        # Proper YAML structure normalization with context awareness
         lines = content.split('\n')
         normalized_lines = []
+        current_indent_level = 0
+        in_list_item = False
         
-        for line in lines:
-            if line.strip():
-                # Count leading spaces and convert tabs to spaces
-                line = line.expandtabs(2)
-                leading_spaces = len(line) - len(line.lstrip())
+        for i, line in enumerate(lines):
+            if not line.strip():
+                normalized_lines.append(line)
+                continue
                 
-                # Normalize to multiples of 2
+            # Convert tabs to spaces
+            line = line.expandtabs(2)
+            stripped_line = line.lstrip()
+            
+            # Determine if this is a list item marker
+            is_list_marker = stripped_line.startswith('- ')
+            
+            # Determine if this is a key:value pair
+            is_key_value = ':' in stripped_line and not stripped_line.startswith('- ')
+            
+            if is_list_marker:
+                # This is a list item - use current level
+                line = ' ' * current_indent_level + stripped_line
+                in_list_item = True
+                
+            elif in_list_item and is_key_value:
+                # This is a property of the list item - indent by 2 more spaces
+                line = ' ' * (current_indent_level + 2) + stripped_line
+                
+            elif is_key_value and not in_list_item:
+                # This is a top-level key - check if it should reset the indent level
+                if not stripped_line.startswith(' '):
+                    # Top-level key
+                    current_indent_level = 0
+                    in_list_item = False
+                    line = stripped_line
+                    
+                    # If the next line starts with '- ', this key will have a list
+                    if i + 1 < len(lines):
+                        next_line = lines[i + 1].strip()
+                        if next_line.startswith('- '):
+                            current_indent_level = 0  # List items will be at level 0
+                else:
+                    # Already indented key - maintain proper indentation
+                    line = ' ' * current_indent_level + stripped_line
+            else:
+                # Handle other cases - maintain existing structure but normalize spaces
+                leading_spaces = len(line) - len(stripped_line)
                 if leading_spaces > 0:
                     normalized_indent = (leading_spaces // 2) * 2
-                    line = ' ' * normalized_indent + line.lstrip()
-                
+                    line = ' ' * normalized_indent + stripped_line
+                else:
+                    line = stripped_line
+                    in_list_item = False
+            
             normalized_lines.append(line)
         
         return '\n'.join(normalized_lines)
@@ -443,23 +484,31 @@ class ContentFormatter:
         Returns:
             str: Clean YAML content
         """
-        # Check if the content seems to be markdown with a code block instead of raw YAML
-        if content.startswith('```yaml') or content.startswith('```'):
-            # Extract the YAML content from the code block
+        content = content.strip()
+        
+        # Comprehensive code block detection and removal
+        # Handle various code block formats: ```yaml, ```text, ```json, plain ```
+        code_block_patterns = [
+            r'^```(?:yaml|text|json)?\s*\n(.*?)```\s*$',  # Full code block with optional language
+            r'^```(?:yaml|text|json)?\s*(.*?)```\s*$',    # Code block without newline after opening
+        ]
+        
+        for pattern in code_block_patterns:
+            match = re.match(pattern, content, re.DOTALL)
+            if match:
+                extracted = match.group(1).strip()
+                if extracted:
+                    return extracted
+        
+        # Legacy approach for edge cases
+        if content.startswith('```') and content.endswith('```'):
             lines = content.split('\n')
-            content_lines = []
-            in_yaml_block = False
-            for line in lines:
-                if line.startswith('```yaml') or line.startswith('```'):
-                    if in_yaml_block:
-                        break  # End of YAML block
-                    in_yaml_block = True
-                    continue
-                if in_yaml_block:
-                    content_lines.append(line)
-            
-            if content_lines:
-                return '\n'.join(content_lines)
+            if len(lines) >= 3:
+                # Remove first line (opening ```) and last line (closing ```)
+                return '\n'.join(lines[1:-1]).strip()
+            else:
+                # Simple removal if no newlines
+                return content[3:-3].strip()
         
         # Look for YAML content after explanatory text
         # Pattern: "Here's the YAML..." followed by actual YAML starting with a key
@@ -656,18 +705,18 @@ class ContentFormatter:
         return list(set([tag.strip() for tag in tags if tag.strip()]))
     
     @staticmethod
-    def format_author_info(author_data: Dict[str, Any], fallback_id: int = 1) -> Dict[str, Any]:
+    def format_author_info(author_data: Dict[str, Any]) -> Dict[str, Any]:
         """Format author information consistently.
         
         Args:
             author_data: Raw author data
-            fallback_id: Fallback author ID if data is missing
             
         Returns:
             Dict: Formatted author information
         """
         if not author_data:
-            return {"id": fallback_id}
+            # Strict mode: No fallback author data
+            raise ValueError("Author data is required but not provided")
         
         formatted = {}
         
@@ -687,7 +736,8 @@ class ContentFormatter:
         elif "id" in author_data:
             formatted["id"] = author_data["id"]
         else:
-            formatted["id"] = fallback_id
+            # Strict mode: No fallback author ID
+            raise ValueError("Author ID is required but not found in author data")
         
         # Add credentials if available
         if "credentials" in author_data:

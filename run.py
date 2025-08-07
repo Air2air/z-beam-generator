@@ -18,6 +18,7 @@ MODULE DIRECTIVES FOR AI ASSISTANTS:
 import argparse
 from typing import Dict, Any
 import os
+import yaml
 
 # =============================================================================
 # 🎯 BATCH GENERATION CONFIGURATION 
@@ -26,7 +27,7 @@ import os
 
 BATCH_CONFIG = {
     # Generation mode: "single" for one subject, "multi" for multiple subjects
-    "mode": "single",  # "single" or "multi"
+    "mode": "multi",  # "single" or "multi"
     
     # Single subject configuration (used when mode="single")
     "single_subject": {
@@ -40,7 +41,7 @@ BATCH_CONFIG = {
     "multi_subject": {
         "author_id": 1,  # Use this author for all subjects
         "subject_source": "lists",  # Directory to discover all subjects from all categories
-        "limit": 10,  # Range [start_idx, end_idx] to process items by index (or a single number for first N items, None for all subjects)
+        "limit": 5,  # Range [start_idx, end_idx] to process items by index (or a single number for first N items, None for all subjects)
     },
     
     # Global AI configuration - applied to all components
@@ -260,6 +261,57 @@ def get_article_type_from_schema(schema_path: str) -> str:
         raise ValueError(f"Schema file must have .json extension: {schema_path}")
     
     return filename[:-5]  # Remove .json extension
+
+def get_subjects_from_consolidated_yaml(yaml_path: str) -> list:
+    """Get subject list from consolidated materials.yaml file.
+    
+    Args:
+        yaml_path: Path to consolidated materials.yaml file
+        
+    Returns:
+        List of dictionaries with subject info
+        
+    Raises:
+        FileNotFoundError: If YAML file doesn't exist
+        ValueError: If YAML cannot be parsed or is missing required structure
+    """
+    if not os.path.exists(yaml_path):
+        raise FileNotFoundError(f"Consolidated YAML file not found: {yaml_path}")
+    
+    try:
+        with open(yaml_path, 'r', encoding='utf-8') as f:
+            yaml_data = yaml.safe_load(f)
+    except yaml.YAMLError as e:
+        raise ValueError(f"Invalid YAML in {yaml_path}: {e}")
+    except Exception as e:
+        raise ValueError(f"Could not read YAML file {yaml_path}: {e}")
+    
+    if not isinstance(yaml_data, dict) or 'materials' not in yaml_data:
+        raise ValueError(f"YAML file {yaml_path} must contain a 'materials' key with category data")
+    
+    subjects_with_categories = []
+    materials_data = yaml_data['materials']
+    
+    for category, category_info in materials_data.items():
+        if not isinstance(category_info, dict):
+            continue
+            
+        description = category_info.get('description', f"{category.title()} materials for laser cleaning applications")
+        article_type = category_info.get('article_type', 'material')
+        items = category_info.get('items', [])
+        
+        for item in items:
+            if isinstance(item, str) and item.strip():
+                subjects_with_categories.append({
+                    "subject": item.strip(),
+                    "category": category,
+                    "article_type": article_type
+                })
+    
+    if not subjects_with_categories:
+        raise ValueError(f"No valid subjects found in {yaml_path}")
+    
+    return sorted(subjects_with_categories, key=lambda x: (x["category"], x["subject"]))
 
 def get_subjects_from_directory(directory_path: str) -> list:
     """Get subject list from markdown files in a directory.
@@ -978,7 +1030,14 @@ def run_batch_generation():
         
         # Get all subjects with their categories and article types
         if config["subject_source"] == "lists":
-            subjects_with_info = get_subjects_with_categories_from_directory("lists")
+            # Check for consolidated YAML first, then fall back to individual MD files
+            yaml_path = os.path.join("lists", "materials.yaml")
+            if os.path.exists(yaml_path):
+                print(f"Using consolidated materials list: {yaml_path}")
+                subjects_with_info = get_subjects_from_consolidated_yaml(yaml_path)
+            else:
+                print("Using individual category files from lists directory")
+                subjects_with_info = get_subjects_with_categories_from_directory("lists")
         else:
             subjects_with_info = []
         
@@ -1036,10 +1095,10 @@ def run_batch_generation():
             try:
                 print(f"Generating {component_name} for: {subject} ({subject_article_type})")
                 content = generate_component(component_name, article_context)
-                # Guarantee output file for every folder, even if content is None
+                
+                # Strict mode: Fail immediately if content is None
                 if content is None:
-                    content = f"---\ncategory: {category}\narticle_type: {subject_article_type}\nsubject: {subject}\nstatus: failed\n---\n"
-                    content += f"No content generated for {subject} ({component_name})\n"
+                    raise ValueError(f"Content generation failed for {component_name}: {subject}")
                 
                 category_for_output = article_context.get("category")
                 output_path = save_component_output(component_name, subject, content, category_for_output, subject_article_type)
@@ -1049,11 +1108,8 @@ def run_batch_generation():
                 successful_components.add(component_name)
             except Exception as e:
                 print(f"❌ Error generating {component_name}: {str(e)}")
-                
-                category_for_output = article_context.get("category")
-                output_path = save_component_output(component_name, subject, content, category_for_output, subject_article_type)
-                print(f"✅ {component_name.capitalize()} saved to: {output_path}")
-                output_tracker[component_name].add(subject)
+                # Strict mode: Re-raise the exception to stop execution
+                raise e
                 total_generated += 1
                 successful_components.add(component_name)
             except Exception as e:

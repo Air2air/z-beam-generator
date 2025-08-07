@@ -238,22 +238,22 @@ def strip_markdown_code_blocks(content: str) -> str:
     """
     content = content.strip()
     
-    # Pattern to match the whole code block
-    code_block_pattern = r'^```(?:\w+)?\s*\n([\s\S]*?)```$'
-    match = re.match(code_block_pattern, content, re.DOTALL)
-    if match:
-        return match.group(1).strip()
-        
-    # Simpler approach: just strip the backticks if it starts and ends with them
-    if content.startswith('```') and content.endswith('```'):
-        # For code blocks with language specifier like ```yaml
-        if '\n' in content[:20]:  # Language specifier followed by newline
-            first_newline = content.find('\n')
-            return content[first_newline+1:-3].strip()
-        else:
-            # Simple code block without language
-            return content[3:-3].strip()
+    # Comprehensive patterns for various code block formats
+    code_block_patterns = [
+        r'^```(?:yaml|text|json|python|javascript|css|html)?\s*\n(.*?)```\s*$',  # With language specifier + newline
+        r'^```(?:yaml|text|json|python|javascript|css|html)?\s*(.*?)```\s*$',    # With language specifier, no newline
+        r'^```\s*\n(.*?)```\s*$',                                                # Plain ``` with newline
+        r'^```(.*?)```$',                                                        # Simple ``` wrapper
+    ]
     
+    for pattern in code_block_patterns:
+        match = re.match(pattern, content, re.DOTALL)
+        if match:
+            extracted = match.group(1).strip()
+            if extracted:
+                return extracted
+    
+    # No legacy fallbacks - if patterns don't match, content is returned as-is
     return content
 
 def extract_yaml_from_content(content: str) -> str:

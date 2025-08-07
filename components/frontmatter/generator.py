@@ -110,9 +110,8 @@ class FrontmatterGenerator(BaseComponent):
             formatted_content = self.apply_centralized_formatting(formatted_content, parsed_data)
             
         except (json.JSONDecodeError, yaml.YAMLError) as e:
-            logger.warning(f"Failed to parse frontmatter as JSON/YAML: {e}, using fallback")
-            # Fallback to basic formatting
-            formatted_content = self.apply_centralized_formatting(content)
+            # Strict mode: No fallback, raise the error immediately
+            raise ValueError(f"Failed to parse frontmatter as valid JSON/YAML: {e}")
         
         # Ensure frontmatter has proper YAML delimiters
         if not formatted_content.startswith('---'):

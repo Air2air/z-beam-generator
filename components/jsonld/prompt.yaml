@@ -3,11 +3,22 @@ description: "Generates Schema.org-compliant JSON-LD structured data for laser c
 version: "3.0.5"
 
 template: |
-  Generate Schema.org structured data content for {article_type} "{subject}" laser cleaning article.
+  Create Schema.org structured data for {article_type} "{subject}" laser cleaning.
 
-  CONTENT-ONLY FOCUS:
-  You provide ONLY the content values. All JSON-LD structure, formatting, and 
-  Schema.org compliance will be handled by Python utilities.
+  **MANDATORY FORMAT: OUTPUT ONLY YAML - NEVER JSON**
+
+  Example required format:
+  headline: Your headline here
+  description: Your description here
+  keywords:
+  - keyword1
+  - keyword2
+  articleBody: Your article body content here
+
+  **FORBIDDEN FORMATS:**
+  - Do NOT use JSON: {{"key": "value"}}
+  - Do NOT use code blocks: ```
+  - Do NOT use quotes around keys: "headline"
 
   AVAILABLE CONTEXT:
   Subject: {subject}
@@ -23,6 +34,4 @@ template: |
   - Subject slug: {slug}
   - Dates: {created_date}, {updated_date}
 
-  Focus on providing rich, descriptive content for structured data. All JSON formatting, 
-  Schema.org compliance, and URL formatting will be handled automatically.
-  All JSON formatting, Schema.org compliance, and URL formatting will be handled automatically.
+  Create rich, descriptive content for structured data using the YAML format shown above.

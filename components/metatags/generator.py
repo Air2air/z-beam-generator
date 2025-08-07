@@ -93,15 +93,13 @@ class MetatagsGenerator(BaseComponent):
             
         generator_config = self.get_schema_config('generatorConfig')
         
-        # Check for SEO-specific requirements in schema
-        if 'seoRequirements' in generator_config:
-            seo_reqs = generator_config['seoRequirements']
-            logger.info(f"Applied dynamic SEO requirements: {len(seo_reqs)} specifications")
-        elif 'research' in generator_config:
-            # Fallback to research fields for SEO content guidance
+        # Use the research field configuration that exists in the schema
+        if 'research' in generator_config:
             research_config = generator_config['research']
-            research_fields = research_config.get('fields', [])
-            if research_fields:
-                logger.info(f"Applied dynamic SEO guidance from {len(research_fields)} research fields")
+            if 'fields' in research_config:
+                logger.info(f"Applied dynamic SEO context from research fields: {research_config['fields']}")
+        else:
+            # Strict mode: Generator config must be present
+            raise ValueError("Metatags generator requires generatorConfig with research fields in schema")
         
         return parsed

@@ -6,6 +6,7 @@ Version: 3.0.5
 """
 
 import logging
+import re
 import yaml
 from typing import Dict, Any
 from components.base.component import BaseComponent
@@ -65,7 +66,64 @@ class JsonldGenerator(BaseComponent):
             str or None: Extracted YAML content or None if not found
         """
         # Use centralized base component method for YAML extraction
-        return self.extract_yaml_content(content)
+        extracted = self.extract_yaml_content(content)
+        
+        # Additional validation to ensure no code blocks or JSON made it through
+        if extracted:
+            # Final safety check: ensure no lingering code block markers
+            if '```' in extracted:
+                # Try to clean any remaining triple backticks
+                extracted = extracted.replace('```yaml', '').replace('```text', '').replace('```json', '').replace('```', '').strip()
+            
+            # Ensure it's not JSON format (should be YAML)
+            stripped = extracted.strip()
+            if stripped.startswith('{') and stripped.endswith('}'):
+                raise ValueError("AI returned JSON format instead of YAML. JSON-LD component requires YAML format only. Please check the prompt configuration.")
+            
+            # Additional JSON detection - check for JSON-style key formatting
+            if '"@context"' in extracted or '"@type"' in extracted or extracted.count('"') > extracted.count("'"):
+                raise ValueError("AI response appears to contain JSON-style formatting. JSON-LD component requires YAML format (key: value) only.")
+            
+            # Ensure it looks like YAML (has key: value pairs)
+            if ':' not in extracted:
+                raise ValueError("Extracted content does not appear to be valid YAML (no key: value pairs found)")
+                
+            # Fix common YAML parsing issues with colons in values
+            extracted = self._fix_yaml_colon_issues(extracted)
+        
+        return extracted
+    
+    def _fix_yaml_colon_issues(self, yaml_content: str) -> str:
+        """Fix common YAML parsing issues with colons in values.
+        
+        Args:
+            yaml_content: The YAML content to fix
+            
+        Returns:
+            str: Fixed YAML content
+        """
+        # Split into lines for processing
+        lines = yaml_content.split('\n')
+        fixed_lines = []
+        
+        for line in lines:
+            # Check if this is a key-value line with potential colon issues
+            if ':' in line and not line.strip().startswith('#'):
+                # Find the first colon that's likely the key-value separator
+                parts = line.split(':', 1)
+                if len(parts) == 2:
+                    key_part = parts[0].strip()
+                    value_part = parts[1].strip()
+                    
+                    # If the value contains additional colons and isn't already quoted
+                    if ':' in value_part and not (value_part.startswith('"') and value_part.endswith('"')) and not (value_part.startswith("'") and value_part.endswith("'")):
+                        # Quote the value to protect it from YAML parsing issues
+                        value_part = f'"{value_part}"'
+                        line = f"{key_part}: {value_part}"
+            
+            fixed_lines.append(line)
+        
+        return '\n'.join(fixed_lines)
     
     def _validate_jsonld_structure(self, data: Dict[str, Any]) -> None:
         """Validate the JSON-LD structure against schema requirements.
@@ -127,15 +185,14 @@ class JsonldGenerator(BaseComponent):
         elif article_type == "thesaurus":
             slug = f"{subject_slug}-definition"
         else:
-            # Fallback to simple slug
-            slug = subject_slug
+            # Strict mode: Require proper article type
+            raise ValueError(f"Unsupported article type for JSON-LD: {article_type}")
         
         # Use ImageHandler to format the URL
         hero_image_relative = ImageHandler.format_image_url(self.subject, "hero")
         hero_image_url = f"{base_url}{hero_image_relative}"
         closeup_image_relative = ImageHandler.format_image_url(self.subject, "closeup")
         closeup_image_url = f"{base_url}{closeup_image_relative}"
-        
         # Handle different image formats in the JSON-LD
         if 'image' in data:
             if isinstance(data['image'], list):
