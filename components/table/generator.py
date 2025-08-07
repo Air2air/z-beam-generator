@@ -132,11 +132,7 @@ class TableGenerator(BaseComponent):
         formatted_content = []
         
         for table in tables:
-            # Add section header
-            formatted_content.append(f"### {table['title']}")
-            formatted_content.append("")
-            
-            # Add table content
+            # Add table content without headers
             formatted_content.extend(table['content'])
             formatted_content.append("")
             formatted_content.append("")
