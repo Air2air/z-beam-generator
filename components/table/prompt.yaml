@@ -1,29 +1,43 @@
 name: "Table Generator"
-description: "Generates comprehensive tables from frontmatter data based on numerical ranges and structured data"
+description: "Generates comprehensive tables using base component data and material information"
 version: "4.1.0"
 
 template: |
-  Generate informative markdown tables for {subject} ({article_type}).
+  Generate technical content for tables about {subject} ({article_type}).
+  
+  CONTENT-ONLY FOCUS:
+  You provide ONLY the data content. All table formatting and structure will be handled by Python.
   
   CONTENT GUIDANCE:
-  - Focus on creating informative tables with accurate technical data
-  - Each table should have a clear purpose and organization
-  - Include specifications, properties, applications, or measurements as appropriate
+  - Focus on providing accurate technical data for tabular presentation
+  - Include specifications, properties, applications, or measurements
   - Use proper technical terminology relevant to {subject}
+  - Provide content that would work well in different table types
   
-  FRONTMATTER:
-  {all_frontmatter}
+  AVAILABLE BASE COMPONENT DATA:
+  Subject: {subject}
+  Article Type: {article_type}
+  Material Formula: {material_formula}
+  Material Symbol: {material_symbol}
+  Material Type: {material_type}
+  Category: {category}
   
-  TABLE TYPES TO GENERATE:
-  - Technical specifications and parameters
-  - Material properties or composition details
-  - Performance metrics or test results
-  - Compatibility information
-  - Comparison data (if applicable)
+  PRE-FORMATTED CONTEXT:
+  Technical Specs: {formatted_technical_specs}
+  Environmental Impact: {formatted_environmental_impact}
+  Regulatory Standards: {formatted_regulatory_standards}
   
-  INCLUDE AT LEAST 2-3 DIFFERENT TABLES.
+  CONTENT AREAS TO PROVIDE:
+  - Technical specifications and parameters with values
+  - Material properties or composition details with measurements
+  - Performance metrics or test results with units
+  - Compatibility information with specific details
+  - Application data with quantifiable benefits
+  - Regulatory or standards information
   
-  The markdown tables will be formatted by the system after generation, so focus on accurate content rather than exact formatting.
+  Focus on providing rich, structured data content that can be organized into 
+  multiple informative tables. All table formatting, structure, and presentation 
+  will be handled automatically.
 
 parameters:
   max_tokens: 2000

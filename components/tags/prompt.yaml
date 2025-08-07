@@ -1,25 +1,32 @@
 name: "Tags Generator"
-description: "Generates concise frontmatter tags for laser cleaning articles, optimized for on-site navigation."
-version: "3.0.0"
+description: "Generates concise tags for laser cleaning articles using base component data, optimized for on-site navigation."
+version: "4.0.0"
 template: |
-  Generate useful, relevant tags for {article_type} "{subject}" in laser cleaning.
+  Generate navigation-focused content for {article_type} "{subject}" tags.
   
-  PURPOSE:
-  - Create navigation-focused tags, not SEO keywords
-  - Focus on application areas, materials, techniques, equipment, and benefits
+  CONTENT-ONLY FOCUS:
+  Python provides optimized keywords: {formatted_keywords}
+  You provide additional navigation and cross-reference content.
   
-  SUGGESTED TOPICS:
-  - Key materials or applications related to {subject}
-  - Common cleaning contexts or industries for {subject}
-  - Benefits or advantages of laser cleaning for {subject}
-  - Specific techniques relevant to {subject}
-  - Include the author name: {author_name}
+  ADDITIONAL CONTENT TO PROVIDE:
+  - Navigation categories relevant to {subject}
+  - Cross-reference topics for related materials  
+  - Application domains specific to laser cleaning
+  - Technology types relevant to {subject}
+  - Benefit categories that apply
+  - Author reference: {author_name}
   
-  CONTEXT:
-  {all_frontmatter}
+  AVAILABLE BASE COMPONENT DATA:
+  Subject: {subject}
+  Article Type: {article_type}
+  Material Formula: {material_formula}
+  Material Symbol: {material_symbol}
+  Material Type: {material_type}
+  Category: {category}
   
-  EXISTING KEYWORDS:
-  {keywords}
+  Focus on content that helps users navigate and discover related information.
+  Provide terms that would be useful for site organization and user discovery.
+  All formatting and tag structure will be handled by Python.
   
   TAG CATEGORIES TO INCLUDE:
   - Material type (e.g., ceramic, metal)

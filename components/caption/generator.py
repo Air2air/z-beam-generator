@@ -26,8 +26,8 @@ class CaptionGenerator(BaseComponent):
         Raises:
             ValueError: If content is invalid
         """
-        # Clean and normalize the content
-        clean_content = content.strip()
+        # Clean and normalize the content using centralized base component method
+        clean_content = self.normalize_case(content.strip(), 'sentence')
         
         # Extract before cleaning and equipment sections (handling various formats)
         sections = self._extract_caption_sections(clean_content)

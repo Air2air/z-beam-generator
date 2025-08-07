@@ -1,36 +1,33 @@
 name: "Caption Generator"
-description: "Generates technical image captions for laser cleaning before/after comparisons"
-version: "3.1"
+description: "Generates scientific image captions using base component data and material information"
+version: "4.0.0"
 
 template: |
-  Create a technical image caption for a before/after laser cleaning comparison of {material}.
+  Generate scientific image captions for {subject} laser cleaning images.
+  
+  CONTENT-ONLY FOCUS:
+  You provide ONLY the caption content. All formatting will be handled by Python.
   
   CONTENT GUIDANCE:
-  - Caption describes: degraded surface condition of {material} before laser cleaning and the equipment used
-  - Include technical details about the contamination types and specific equipment parameters
-  - Focus on measurable changes and precise technical details
-  - Use technical language, including scientific notation and units where appropriate
+  - Focus on technical details and scientific accuracy
+  - Describe what's visible in before/after cleaning scenarios
+  - Include specific measurements and technical specifications
+  - Mention equipment and technical details
+  - Use proper scientific terminology for {subject}
   
-  FRONTMATTER:
-  {all_frontmatter}
+  AVAILABLE BASE COMPONENT DATA:
+  Subject: {subject}
+  Article Type: {article_type}
+  Material Formula: {material_formula}
+  Material Symbol: {material_symbol}
+  Material Type: {material_type}
+  Category: {category}
   
-  STRUCTURE REQUIREMENTS:
-  Provide two main sections with exactly this format:
+  PRE-FORMATTED CONTEXT:
+  Images: {formatted_images}
+  Technical Specs: {formatted_technical_specs}
   
-  1. **Before Cleaning:** [Description of the {material} surface before cleaning, including:
-     - **Surface contaminants:** [List specific contaminants with measurements]
-     - **Oxide layers:** [Describe oxide formations with chemical formulas]
-     - **Surface properties:** [Include numerical measurements of roughness, etc.]
-  
-  2. **Equipment:** [Describe the laser equipment used, including:
-     - Specific equipment model (e.g., "Pulsed fiber laser (IPG Photonics YLP-H series)")
-     - **Wavelength:** [Specify in nm with ±tolerance]
-     - **Parameters:** [List fluence (J/cm²), pulse duration, repetition rate, spot diameter]
-
-  FORMAT EXAMPLE:
-  **Before Cleaning:** The {material} surface exhibits significant degradation, including: - **Surface contaminants:** Biological growth (lichens/microbial biofilm), carbonaceous deposits (ΔE > 15 via spectrophotometry), and oxide-rich crusts (up to 200 µm thick). - **Oxide layers:** Hydrated oxide staining...
-
-  **Equipment:** Pulsed fiber laser (IPG Photonics YLP-H series) - **Wavelength:** 1064 nm (±2 nm) - **Parameters:** 1.2 J/cm² fluence, 50 ns pulse duration, 30 kHz repetition rate, 0.8 mm spot diameter (Gaussian beam profile).
+  CONTENT AREAS TO COVER:
 
 parameters:
   max_tokens: 1000

@@ -7,7 +7,6 @@ Enhanced implementation with robust error handling and auto-recovery.
 import logging
 import yaml
 import re
-from typing import Dict, Any, List, Optional, Tuple
 
 from components.base.component import BaseComponent
 from components.base.utils.validation import (
@@ -105,25 +104,50 @@ class FrontmatterGenerator(BaseComponent):
         # First, apply basic content normalization
         content = ContentFormatter.normalize_yaml_content(content)
         
-        # Check if the content seems to be markdown with a code block instead of raw YAML
-        if content.startswith('```yaml') or content.startswith('```'):
-            # Extract the YAML content from the code block
-            lines = content.split('\n')
-            content_lines = []
-            in_yaml_block = False
-            for line in lines:
-                if line.startswith('```yaml') or line.startswith('```'):
-                    if in_yaml_block:
-                        break  # End of YAML block
-                    in_yaml_block = True
-                    continue
-                if in_yaml_block:
-                    content_lines.append(line)
+        # Extract YAML content from various formats the AI might generate
+        yaml_content = self._extract_yaml_content(content)
+        
+        # Attempt to parse as YAML to validate structure
+        try:
+            parsed = yaml.safe_load(yaml_content)
+            if not isinstance(parsed, dict):
+                raise ValueError("Frontmatter must be a valid YAML dictionary")
+        except yaml.YAMLError as e:
+            # Additional debugging
+            logger.error(f"YAML parsing error: {e}")
+            logger.error(f"Content causing error: {yaml_content}")
+            raise ValueError(f"Invalid YAML in frontmatter: {e}")
+        
+        # Handle materialProfile wrapper (sometimes the model wraps everything in this object)
+        if len(parsed.keys()) == 1 and 'materialProfile' in parsed and isinstance(parsed['materialProfile'], dict):
+            logger.warning("Found 'materialProfile' wrapper, extracting contents")
+            profile_data = parsed.pop('materialProfile')
+            # Merge the profile data into the main dictionary
+            parsed.update(profile_data)
+            logger.info(f"Extracted fields from materialProfile: {list(profile_data.keys())}")
+        
+        # Special handling for common error: using 'title' instead of 'name'
+        if 'name' not in parsed and 'title' in parsed:
+            # Auto-fix instead of error
+            logger.warning("Found 'title' field but 'name' is required. Copying 'title' to 'name'.")
+            parsed['name'] = parsed['title']
+        
+        # Apply centralized formatting
+        formatted_content = self.apply_centralized_formatting(content, parsed)
+        
+        return formatted_content
+    
+    def _extract_yaml_content(self, content: str) -> str:
+        """Extract clean YAML content from various AI response formats.
+        
+        Args:
+            content: Raw AI response content
             
-            if content_lines:
-                content = '\n'.join(content_lines)
-            else:
-                logger.warning("Failed to extract YAML content from markdown code block")
+        Returns:
+            str: Clean YAML content
+        """
+        # Use centralized base component method
+        return self.extract_yaml_content(content)
         
         # Attempt to parse as YAML to validate structure
         try:
@@ -237,29 +261,10 @@ class FrontmatterGenerator(BaseComponent):
                             "credentials": f"Expert in {self.subject} and Laser Cleaning Technology"
                         }
                 elif field == "keywords":
-                    keywords = [
-                        f"{self.subject.lower()} laser cleaning",
-                        f"{self.subject.lower()} surface treatment",
-                        "laser ablation",
-                        "non-contact cleaning",
-                        "industrial laser applications",
-                        "precision surface cleaning"
-                    ]
-                    
-                    # Add category-based keywords
-                    if hasattr(self, 'category') and self.category:
-                        keywords.append(f"{self.category.lower()} laser cleaning")
-                        keywords.append(f"{self.category.lower()} materials")
-                        
-                    # Add type-specific keywords
-                    if self.article_type == "material":
-                        keywords.extend([
-                            "material properties",
-                            "surface preparation",
-                            "contaminant removal",
-                            "high-temperature materials"
-                        ])
-                    
+                    # Use centralized base component method
+                    keywords = self.format_keywords_for_subject(
+                        getattr(self, 'category', None)
+                    )
                     parsed[field] = keywords
                 elif field == "category":
                     if hasattr(self, 'category') and self.category:
@@ -350,28 +355,16 @@ class FrontmatterGenerator(BaseComponent):
         # Pre-process values that might contain line breaks in quoted strings
         for key, value in list(parsed.items()):
             if isinstance(value, str):
-                # Remove problematic backslash escape sequences
+                # Use centralized base component method
                 if '\\' in value:
-                    # Handle line continuations with \\n
-                    if "\\n" in value:
-                        parsed[key] = value.replace("\\n", "\n")
-                    
-                    # Remove backslash+space sequences
-                    parsed[key] = parsed[key].replace('\\ ', ' ')
-                    
-                    # Handle YAML's line continuation format with backslashes at line end
-                    if parsed[key].endswith('\\'):
-                        lines = parsed[key].split('\\')
-                        if len(lines) > 1:
-                            # Join with actual newlines and strip whitespace from each line
-                            parsed[key] = '\n'.join(line.strip() for line in lines if line.strip())
+                    parsed[key] = self.clean_string_content(value)
             
             # Recursively process nested dictionaries
             elif isinstance(value, dict):
                 for subkey, subvalue in list(value.items()):
                     if isinstance(subvalue, str) and '\\' in subvalue:
-                        # Handle the same replacements for nested values
-                        value[subkey] = subvalue.replace("\\n", "\n").replace('\\ ', ' ')
+                        # Use centralized base component method for nested values
+                        value[subkey] = self.clean_string_content(subvalue)
         
         # Clean content - use allow_unicode to preserve Unicode characters properly
         cleaned_content = yaml.dump(parsed, default_flow_style=False, sort_keys=False, allow_unicode=True)

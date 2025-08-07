@@ -26,11 +26,11 @@ import os
 
 BATCH_CONFIG = {
     # Generation mode: "single" for one subject, "multi" for multiple subjects
-    "mode": "multi",  # "single" or "multi"
+    "mode": "single",  # "single" or "multi"
     
     # Single subject configuration (used when mode="single")
     "single_subject": {
-        "subject": "Aluminum",
+        "subject": "Gold",
         "article_type": "material",  # application, material, region, or thesaurus
         "author_id": 1,  # 1: Taiwan, 2: Italy, 3: USA, 4: Indonesia
         "category": "metal",  # Optional: specify category for hierarchy
@@ -55,13 +55,13 @@ BATCH_CONFIG = {
     # Component configuration - which components to generate (component-specific settings only)
     "components": {
         "frontmatter": {
-            "enabled": True,  # We need frontmatter as it's a prerequisite
+            "enabled": True,  # Frontmatter is just another component
             "min_words": 300,
             "max_words": 500,
             "temperature": 0.9  # Override global temperature for frontmatter
         },
         "content": {
-            "enabled": False,
+            "enabled": True,
             "min_words": 200,
             "max_words": 400,
             "temperature": 0.7,  # Balanced creativity for main content
@@ -70,12 +70,12 @@ BATCH_CONFIG = {
             }
         },
         "bullets": {
-            "enabled": False,
+            "enabled": True,
             "count": 4,
             "temperature": 0.6  # Slightly lower for more focused bullet points
         },
         "table": {
-            "enabled": False,
+            "enabled": True,
             "rows": 5,
             "temperature": 0.4,  # Lower temperature for more consistent, structured table data
             "table_keys": ["Material", "Density", "Melting Point", "Laser Type", "Applications"],
@@ -92,7 +92,7 @@ BATCH_CONFIG = {
             ]
         },
         "tags": {
-            "enabled": False,
+            "enabled": True,
             "temperature": 0.8,  # Higher for more diverse tag generation
             "max_tags": 10,
             "min_tags": 5,
@@ -101,19 +101,19 @@ BATCH_CONFIG = {
             ]
         },
         "caption": {
-            "enabled": False,
-            "before_word_count_max": 60,
+            "enabled": True,
+            "before_word_count_max": 40,
             "equipment_word_count_max": 40,
             "shape": "component",
             "temperature": 0.75,  # Slightly higher for creative but controlled captions
             "max_tokens": 1000  # Override global max_tokens for caption
         },
         "jsonld": {
-            "enabled": False,
+            "enabled": True,
             "temperature": 0.3  # Low temperature for structured JSON data
         },
         "metatags": {
-            "enabled": False,
+            "enabled": True,
             "min_tags": 8,
             "max_tags": 20,
             "temperature": 0.5  # Moderate temperature for balanced metadata generation
@@ -654,8 +654,7 @@ def generate_frontmatter_component(article_context: dict) -> tuple:
             article_type=article_context["article_type"],
             schema=schema,
             author_data=author_data,
-            component_config=component_config,
-            frontmatter_data=article_context.get("frontmatter_data", None)
+            component_config=component_config
         )
 
         print(f"Generating frontmatter for: {article_context['subject']} ({article_context['article_type']})")
@@ -712,20 +711,18 @@ def generate_frontmatter_component(article_context: dict) -> tuple:
         traceback.print_exc()
         return None, None
 
-def generate_component(component_name: str, article_context: dict, frontmatter_content: str = None) -> str:
+def generate_component(component_name: str, article_context: dict) -> str:
     """Generate content for a specific component.
     
     Args:
         component_name: Name of the component to generate
         article_context: Article context for this specific subject
-        frontmatter_content: Previously generated frontmatter content for context
         
     Returns:
         Generated content or None if failed
     """
     import sys
     import os
-    import yaml
     
     # Add project root to path
     sys.path.insert(0, os.path.dirname(__file__))
@@ -811,38 +808,13 @@ def generate_component(component_name: str, article_context: dict, frontmatter_c
                 article_type=article_context["article_type"],
                 schema=schema,
                 author_data=author_data,
-                component_config=component_config,
-                frontmatter_data=article_context.get("frontmatter_data") if "frontmatter_data" in article_context else {}
+                component_config=component_config
             )
         except (ImportError, AttributeError) as e:
             raise ValueError(f"Failed to load generator for component '{component_name}': {e}")
         
-        # Set frontmatter data if available
-        if frontmatter_content:
-            try:
-                # Extract YAML content between --- delimiters, ignoring HTML comments
-                if "---" in frontmatter_content:
-                    # Split by --- to get the content between delimiters
-                    parts = frontmatter_content.split("---", 2)
-                    if len(parts) >= 2:
-                        yaml_content = parts[1].strip()
-                    else:
-                        yaml_content = frontmatter_content.strip()
-                else:
-                    yaml_content = frontmatter_content.strip()
-                    
-                frontmatter_data = yaml.safe_load(yaml_content)
-                
-                if frontmatter_data and isinstance(frontmatter_data, dict):
-                    generator._frontmatter_data = frontmatter_data
-                else:
-                    raise ValueError(f"Invalid frontmatter data structure for {component_name}")
-            except yaml.YAMLError as e:
-                raise ValueError(f"Failed to parse frontmatter for {component_name}: {e}")
-        else:
-            # No frontmatter provided - fail for components that require it
-            if component_name in ["jsonld", "table", "content"]:
-                raise ValueError(f"Frontmatter data is required for {component_name} generation")
+        # No frontmatter data injection - all components use base component data only
+        # Components are independent and equal, including frontmatter
         
         print(f"Generating {component_name} for: {article_context['subject']} ({article_context['article_type']})")
         print(f"Using AI provider: {component_config['ai_provider']} with model: {component_config['options']['model']}")
@@ -1041,10 +1013,6 @@ def run_batch_generation():
         # We're running with --component flag, just use that list
         component_name = BATCH_CONFIG["components"][0]
         enabled_components.append(component_name)
-        
-        # Always add frontmatter as a dependency if we're generating another component
-        if component_name != "frontmatter":
-            enabled_components.append("frontmatter")
     else:
         # Normal operation - get enabled components from config
         for name, config in BATCH_CONFIG["components"].items():
@@ -1052,11 +1020,6 @@ def run_batch_generation():
                 enabled_components.append(name)
                 
     print(f"Enabled components: {', '.join(enabled_components)}")
-
-    # Make sure frontmatter is the first component to process if enabled
-    if "frontmatter" in enabled_components:
-        enabled_components.remove("frontmatter")
-        enabled_components.insert(0, "frontmatter")
 
     # Track output parity for all folders
     output_tracker = {comp: set() for comp in enabled_components}
@@ -1068,69 +1031,25 @@ def run_batch_generation():
         print(f"\n--- Processing: {subject} ---")
         article_context = create_article_context(subject, subject_article_type, author_id, category)
         
-        # FIRST STEP: Always generate frontmatter first and validate it
-        frontmatter_content = None
-        frontmatter_data = None
-        
-        # Check if frontmatter is enabled
-        if "frontmatter" in BATCH_CONFIG["components"] and "enabled" in BATCH_CONFIG["components"]["frontmatter"]:
-            frontmatter_enabled = BATCH_CONFIG["components"]["frontmatter"]["enabled"]
-        else:
-            frontmatter_enabled = False
-        
-        if frontmatter_enabled:
-            print(f"Generating frontmatter for: {subject} (prerequisite for other components)")
-            frontmatter_content, frontmatter_data = generate_frontmatter_component(article_context)
-            
-            # Save frontmatter output regardless of success
-            if frontmatter_content:
-                category_for_output = article_context.get("category")
-                output_path = save_component_output("frontmatter", subject, frontmatter_content, category_for_output, subject_article_type)
-                print(f"✅ Frontmatter saved to: {output_path}")
-                output_tracker["frontmatter"].add(subject)
-                total_generated += 1
-                successful_components.add("frontmatter")
-            else:
-                # Create empty frontmatter file to maintain folder parity
-                content = f"---\ncategory: {category}\narticle_type: {subject_article_type}\nsubject: {subject}\nstatus: failed\n---\n"
-                content += f"No valid frontmatter generated for {subject}\n"
-                category_for_output = article_context.get("category")
-                output_path = save_component_output("frontmatter", subject, content, category_for_output, subject_article_type)
-                print(f"⚠️ Empty frontmatter placeholder saved to: {output_path}")
-                output_tracker["frontmatter"].add(subject)
-        
-        # SECOND STEP: Only generate other components if frontmatter was successfully generated
-        if frontmatter_enabled and not frontmatter_data:
-            print(f"❌ Skipping remaining components for {subject} due to frontmatter generation failure")
-            
-            # Create empty placeholder files for all other components to maintain folder parity
-            for component_name in enabled_components:
-                if component_name != "frontmatter":
-                    content = f"---\ncategory: {category}\narticle_type: {subject_article_type}\nsubject: {subject}\nstatus: failed\n---\n"
-                    content += f"No content generated for {subject} ({component_name}) due to frontmatter failure\n"
-                    category_for_output = article_context.get("category")
-                    output_path = save_component_output(component_name, subject, content, category_for_output, subject_article_type)
-                    print(f"⚠️ Empty {component_name} placeholder saved to: {output_path}")
-                    output_tracker[component_name].add(subject)
-            
-            # Skip to next subject
-            continue
-        
-        # Process remaining components now that we have valid frontmatter
+        # Process all components equally - no special frontmatter handling
         for component_name in enabled_components:
-            # Skip frontmatter as we've already handled it
-            if component_name == "frontmatter":
-                continue
-                
             try:
                 print(f"Generating {component_name} for: {subject} ({subject_article_type})")
-                content = generate_component(component_name, article_context, frontmatter_content)
-
+                content = generate_component(component_name, article_context)
                 # Guarantee output file for every folder, even if content is None
                 if content is None:
                     content = f"---\ncategory: {category}\narticle_type: {subject_article_type}\nsubject: {subject}\nstatus: failed\n---\n"
                     content += f"No content generated for {subject} ({component_name})\n"
-
+                
+                category_for_output = article_context.get("category")
+                output_path = save_component_output(component_name, subject, content, category_for_output, subject_article_type)
+                print(f"✅ {component_name.capitalize()} saved to: {output_path}")
+                output_tracker[component_name].add(subject)
+                total_generated += 1
+                successful_components.add(component_name)
+            except Exception as e:
+                print(f"❌ Error generating {component_name}: {str(e)}")
+                
                 category_for_output = article_context.get("category")
                 output_path = save_component_output(component_name, subject, content, category_for_output, subject_article_type)
                 print(f"✅ {component_name.capitalize()} saved to: {output_path}")

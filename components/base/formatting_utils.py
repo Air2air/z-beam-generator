@@ -8,6 +8,7 @@ import logging
 import re
 import json
 import yaml
+from datetime import datetime
 from typing import Dict, Any, List
 
 logger = logging.getLogger(__name__)
@@ -241,3 +242,23 @@ def add_section_headers_to_tables(content: str, skip_sections: List[str] = None)
             formatted_content.append("")  # Blank line after table
     
     return '\n'.join(formatted_content)
+
+
+def format_created_date() -> str:
+    """Format creation date for consistent use across components."""
+    return datetime.now().strftime("%Y-%m-%d")
+
+
+def format_updated_date() -> str:
+    """Format updated date for consistent use across components."""
+    return datetime.now().strftime("%Y-%m-%d")
+
+
+def format_publish_date() -> str:
+    """Format publish date for consistent use across components."""
+    return datetime.now().strftime("%Y-%m-%d")
+
+
+def format_iso_date() -> str:
+    """Format ISO date for consistent use across components."""
+    return datetime.now().isoformat()

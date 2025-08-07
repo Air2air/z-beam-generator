@@ -3,54 +3,43 @@ description: "Generates comprehensive YAML frontmatter for laser cleaning articl
 version: "4.0.0"
 
 template: |
-  Generate detailed, technically accurate YAML frontmatter for {article_type} "{subject}" in laser cleaning applications.
+  Generate detailed technical content for {article_type} "{subject}" in laser cleaning applications.
 
-  FOCUS ON CONTENT, NOT FORMATTING:
-  You should focus on generating accurate technical content. All formatting, structure, and standardization 
-  will be handled automatically by Python code after generation.
+  CONTENT-ONLY FOCUS:
+  You will provide ONLY the technical information. All formatting, structure, URLs, slugs, 
+  titles, descriptions, and metadata will be handled automatically by Python code.
 
-  CONTENT FOCUS AREAS:
+  TECHNICAL CONTENT TO PROVIDE:
   - Comprehensive technical information about {subject}
-  - Detailed physical and chemical properties with exact values
-  - Specific laser parameters for optimal processing
-  - Industry-standard applications and compatibility scenarios
-  - Environmental considerations and regulatory compliance
-  - Measurable outcomes and performance metrics
-  - Detailed composition with percentages and chemical formulas
-  - At least 3 specific compatibility scenarios with detailed applications
-  - 2-3 specific industry/regulatory standards with organizations
+  - Detailed physical and chemical properties with exact numerical values
+  - Specific laser processing parameters (power, wavelength, pulse duration, spot size)
+  - Industry-standard applications with specific use cases
+  - Environmental considerations and regulatory compliance details
+  - Measurable outcomes and performance metrics with units
+  - Detailed composition with exact percentages and chemical formulas
+  - At least 3 specific compatibility scenarios with applications
+  - 2-3 specific industry/regulatory standards with organization names
   - Quantifiable environmental benefits with metrics
-  - Technical laser parameters (power, duration, wavelength, spot size, etc.)
+  - Complete technical specifications for laser parameters
 
-  REQUIRED CONTENT AREAS (focus on technical accuracy, not formatting):
-  - name: Just the subject name
-  - Basic identifying information (you can provide rough title/headline/description - these will be standardized)
-  - author: Use author ID {author_id} ({author_name} from {author_country})
-  - keywords: Focus on technical terms relevant to {subject} and laser cleaning
-  - category: Material category from the provided options
-  - chemicalProperties: Accurate chemical formula and symbol if applicable
-  - properties: Specific physical properties with exact numerical values and units
-  - composition: Detailed breakdown with exact percentages and chemical formulas
-  - compatibility: At least 3 specific material/application combinations
-  - applications: Detailed real-world use cases with specific parameters
+  MATERIAL INFORMATION AVAILABLE:
+  - Chemical formula: {material_formula}
+  - Chemical symbol: {material_symbol}  
+  - Material type: {material_type}
+
+  PROVIDE CONTENT FOR THESE AREAS:
+  - name: The exact subject name only
+  - properties: Physical and chemical properties with numerical values
+  - composition: Chemical breakdown with percentages
+  - applications: Real-world use cases with specific details
+  - compatibility: Material/process combinations that work well
   - environmentalImpact: Quantifiable environmental benefits
-  - technicalSpecifications: Detailed laser parameters (provide specific values if known)
-  - regulatoryStandards: Specific standards with organization names and descriptions
-  - outcomes: Measurable results with specific metrics and measurement methods
+  - technicalSpecifications: Laser parameters and processing details
+  - regulatoryStandards: Specific standards with organization names
+  - outcomes: Measurable results with metrics
 
-  MATERIAL INFORMATION:
-  - Chemical formula if applicable: {material_formula}
-  - Symbol if applicable: {material_symbol}
-  - Material type if applicable: {material_type}
-
-  IMPORTANT NOTES:
-  - Focus on technical accuracy and specific values rather than generic descriptions
-  - Provide exact numerical data wherever possible (density, temperature, power, etc.)
-  - Include specific industry standards (ISO, ASTM, EN, IEC numbers)
-  - Use proper chemical formulas and technical terminology
-  - Don't worry about formatting consistency - this will be standardized automatically
-  - Don't specify image URLs or alt text - these will be generated automatically
-  - Provide content in whatever YAML structure feels natural - it will be normalized
+  Focus on technical accuracy and specific values. Provide exact numerical data, 
+  chemical formulas, and industry standards. All formatting will be handled automatically.
 
   {schema}
 

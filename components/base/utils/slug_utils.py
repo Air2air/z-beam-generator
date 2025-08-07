@@ -92,6 +92,13 @@ class SlugUtils:
         """
         subject_slug = SlugUtils.create_subject_slug(subject)
         
+        # Handle empty subject case
+        if not subject_slug:
+            if image_type in ["hero", "closeup", "process", "equipment", "application"]:
+                return f"unknown-laser-cleaning-{image_type}"
+            else:
+                return f"unknown-{image_type}"
+        
         # For certain image types, add the laser-cleaning prefix
         if image_type in ["hero", "closeup", "process", "equipment", "application"]:
             return f"{subject_slug}-laser-cleaning-{image_type}"
@@ -161,6 +168,13 @@ class SlugUtils:
         
         # Replace any double dashes with single dashes (redundant but safe)
         url = re.sub(r'-+', '-', url)
+        
+        # Extract the filename part and ensure no trailing dashes before extension
+        if ".jpg" in url:
+            path_part, extension = url.rsplit('.', 1)
+            # Remove trailing dashes from the path
+            path_part = path_part.rstrip('-')
+            url = f"{path_part}.{extension}"
         
         # Ensure .jpg extension
         if not url.endswith(".jpg"):

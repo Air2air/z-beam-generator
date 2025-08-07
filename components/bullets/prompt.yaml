@@ -1,9 +1,12 @@
 name: "Bullets Generator"
-description: "Generates comprehensive bullet points from all available frontmatter data"
-version: "3.0.0"
+description: "Generates comprehensive bullet points using base component data and material information"
+version: "4.0.0"
 
 template: |
-  Generate key bullet points for a {article_type} about {subject} in laser cleaning.
+  Generate key technical content for bullet points about {subject} in laser cleaning.
+  
+  CONTENT-ONLY FOCUS:
+  You provide ONLY the technical content. All bullet formatting and structure will be handled by Python.
   
   CONTENT GUIDANCE:
   - Focus on the most important technical information
@@ -11,36 +14,54 @@ template: |
   - Emphasize practical applications and benefits
   - Highlight unique properties of {subject}
   - Include environmental and efficiency advantages
-  - Generate exactly {count} comprehensive bullet points
+  - Provide content for exactly {count} comprehensive points
   
-  FRONTMATTER:
-  {all_frontmatter}
+  AVAILABLE BASE COMPONENT DATA:
+  Subject: {subject}
+  Article Type: {article_type}
+  Material Formula: {material_formula}
+  Material Symbol: {material_symbol}
+  Material Type: {material_type}
+  Category: {category}
   
-  SUGGESTED TOPICS:
+  PRE-FORMATTED CONTEXT:
+  Title: {formatted_title}
+  Headline: {formatted_headline}
+  Description: {formatted_description}
+  Keywords: {formatted_keywords}
+  Technical Specs: {formatted_technical_specs}
+  
+  CONTENT AREAS TO COVER:
   - Technical specifications (power, wavelength, spot size)
   - Key applications and use cases
-  - Environmental benefits
-  - Manufacturing advantages
-  - Performance metrics
+  - Environmental benefits and advantages
+  - Manufacturing advantages and efficiency
+  - Performance metrics and measurable outcomes
+  - Material properties and characteristics
   
-  FORMAT REQUIREMENTS:
-  - Format as exactly {count} bullet points using "*" at the beginning of each line
-  - Each bullet should be comprehensive and cover multiple related points
-  - Start each bullet with a bold section header using ** markdown formatting
-  - Example: "* **Technical Properties**: Includes density of 3.95 g/cm³, melting point of 2072°C..."
+  Focus on providing rich technical content that can be organized into bullet points.
+  All formatting, bullet structure, and organization will be handled automatically.
 
 # Condensed template used when frontmatter data is available
 condensed_template: |
-  Generate key bullet points for {subject} in laser cleaning based on the frontmatter data.
+  Generate key bullet points for {subject} in laser cleaning based on the base component data.
   
   CONTENT GUIDANCE:
-  - Extract the most significant technical details from the frontmatter
+  - Extract the most significant technical details from base component data
   - Prioritize specifications, applications, and benefits
   - Keep points concise but technically precise
   - Generate exactly {count} comprehensive bullet points
   
-  FRONTMATTER DATA:
-  {all_frontmatter}
+  AVAILABLE BASE COMPONENT DATA:
+  Subject: {subject}
+  Material Formula: {material_formula}
+  Material Symbol: {material_symbol}
+  Category: {category}
+  
+  PRE-FORMATTED CONTENT:
+  Title: {formatted_title}
+  Description: {formatted_description}
+  Keywords: {formatted_keywords}
   
   FORMAT REQUIREMENTS:
   - Format as exactly {count} bullet points using "*" at the beginning of each line

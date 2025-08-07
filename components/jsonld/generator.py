@@ -6,10 +6,8 @@ Version: 3.0.5
 """
 
 import logging
-import json
 import yaml
-import re
-from typing import Dict, Any, Optional
+from typing import Dict, Any
 from components.base.component import BaseComponent
 from components.base.image_handler import ImageHandler
 from components.base.utils.slug_utils import SlugUtils
@@ -20,119 +18,48 @@ class JsonldGenerator(BaseComponent):
     """Generator for JSON-LD structured data with strict validation."""
     
     def _component_specific_processing(self, content: str) -> str:
-        """Process the generated JSON-LD.
+        """Process the generated JSON-LD YAML.
         
         Args:
             content: Pre-validated, clean API response
             
         Returns:
-            str: Validated and formatted JSON-LD
+            str: YAML content for JSON-LD (like all other components)
             
         Raises:
             ValueError: If content is invalid
         """
-        # Extract JSON-LD from response (might be inside code blocks)
-        extracted_jsonld = self._extract_jsonld(content)
+        # Extract YAML from response
+        extracted_yaml = self._extract_jsonld(content)
         
-        if not extracted_jsonld:
-            raise ValueError("No valid JSON-LD data found in response")
+        if not extracted_yaml:
+            raise ValueError("No valid YAML data found in response")
             
-        # Validate as JSON
+        # Parse YAML to validate structure
         try:
-            json_data = json.loads(extracted_jsonld)
-            if not isinstance(json_data, dict):
-                raise ValueError("JSON-LD must be a valid JSON object/dictionary")
+            yaml_data = yaml.safe_load(extracted_yaml)
+            if not isinstance(yaml_data, dict):
+                raise ValueError("JSON-LD YAML must be a valid dictionary structure")
                 
-            # Ensure proper image URLs
-            self._process_image_urls(json_data)
-                
-            # Validate required fields based on schema
-            self._validate_jsonld_structure(json_data)
+            # Apply centralized formatting (pass the YAML string, not dict)
+            formatted_content = self.apply_centralized_formatting(extracted_yaml)
             
-            # Return the formatted JSON-LD
-            return json.dumps(json_data, indent=2)
+            return formatted_content
             
-        except json.JSONDecodeError as e:
-            # Try to parse as YAML as a fallback
-            try:
-                yaml_data = yaml.safe_load(extracted_jsonld)
-                if not isinstance(yaml_data, dict):
-                    raise ValueError("JSON-LD must be a valid dictionary structure")
-                
-                # Ensure proper image URLs
-                self._process_image_urls(yaml_data)
-                
-                # Validate required fields based on schema
-                self._validate_jsonld_structure(yaml_data)
-                
-                # Convert YAML to JSON
-                return json.dumps(yaml_data, indent=2)
-                
-            except yaml.YAMLError:
-                # If both JSON and YAML parsing fail, raise original JSON error
-                raise ValueError(f"Invalid JSON in JSON-LD: {e}")
+        except yaml.YAMLError as e:
+            raise ValueError(f"Invalid YAML in JSON-LD response: {e}")
     
-    def _extract_jsonld(self, content: str) -> Optional[str]:
-        """Extract JSON-LD data from a potentially mixed content response.
+    def _extract_jsonld(self, content: str) -> str:
+        """Extract JSON-LD YAML content from the API response.
         
         Args:
-            content: API response that may contain JSON-LD within code blocks
+            content: API response content
             
         Returns:
-            str or None: Extracted JSON-LD or None if not found
+            str or None: Extracted YAML content or None if not found
         """
-        # First, try to find JSON-LD within JSON code blocks
-        json_matches = re.findall(r'```(?:json|JSON)?\s*([\s\S]*?)```', content)
-        if json_matches:
-            for match in json_matches:
-                try:
-                    # Try parsing as JSON
-                    json.loads(match.strip())
-                    return match.strip()
-                except json.JSONDecodeError:
-                    # Not valid JSON, try next match
-                    continue
-        
-        # Next, try to find JSON-LD within code blocks of any type
-        code_matches = re.findall(r'```(?:\w*)?\s*([\s\S]*?)```', content)
-        if code_matches:
-            for match in code_matches:
-                try:
-                    # Try parsing as JSON
-                    json.loads(match.strip())
-                    return match.strip()
-                except json.JSONDecodeError:
-                    # Try parsing as YAML
-                    try:
-                        yaml_data = yaml.safe_load(match.strip())
-                        if isinstance(yaml_data, dict):
-                            return match.strip()
-                    except yaml.YAMLError:
-                        # Not valid YAML either, try next match
-                        continue
-        
-        # If no code blocks found with valid JSON or YAML, try the whole content
-        try:
-            json.loads(content.strip())
-            return content.strip()
-        except json.JSONDecodeError:
-            # Try as YAML
-            try:
-                yaml_data = yaml.safe_load(content.strip())
-                if isinstance(yaml_data, dict):
-                    return content.strip()
-            except yaml.YAMLError:
-                # Not valid YAML either
-                pass
-        
-        # Look for unenclosed JSON-like structure
-        if content.strip().startswith('{') and content.strip().endswith('}'):
-            # Content looks like JSON but didn't parse - it might have issues
-            # Return it anyway and let the validation handle errors
-            return content.strip()
-        
-        # No valid JSON-LD found
-        return None
+        # Use centralized base component method for YAML extraction
+        return self.extract_yaml_content(content)
     
     def _validate_jsonld_structure(self, data: Dict[str, Any]) -> None:
         """Validate the JSON-LD structure against schema requirements.
@@ -169,29 +96,6 @@ class JsonldGenerator(BaseComponent):
                 for prop, details in jsonld_schema["properties"].items():
                     if details.get("required", False) and prop not in data:
                         raise ValueError(f"Required property '{prop}' is missing in JSON-LD")
-        
-                # Check for image field if images are available in frontmatter
-        frontmatter = self.get_frontmatter_data()
-        if frontmatter and 'images' in frontmatter and 'image' not in data:
-            subject_slug = SlugUtils.create_subject_slug(self.subject)
-            article_type = self.article_type.lower()
-            
-            # Use the article type pattern from run.py for the proper slug
-            if article_type == "material":
-                slug = f"{subject_slug}-laser-cleaning"
-            elif article_type == "application":
-                slug = f"{subject_slug}-applications"
-            elif article_type == "region":
-                slug = f"{subject_slug}-laser-cleaning"
-            elif article_type == "thesaurus":
-                slug = f"{subject_slug}-definition"
-            else:
-                # Fallback to simple slug
-                slug = subject_slug
-                
-            # Add default image URL based on slug
-            slug = SlugUtils.create_subject_slug(self.subject)
-            data['image'] = f"https://www.z-beam.com/images/{slug}-laser-cleaning-hero.jpg"
             
     def _process_image_urls(self, data: Dict[str, Any]) -> None:
         """Process image objects to ensure they have proper URLs.
@@ -204,7 +108,8 @@ class JsonldGenerator(BaseComponent):
         """
         # Get the slug for constructing image URLs
         subject_slug = SlugUtils.create_subject_slug(self.subject)
-        article_type = self.article_type.lower()
+        # Use centralized base component method for case normalization
+        article_type = self.normalize_case(self.article_type, 'lower')
         base_url = "https://www.z-beam.com"
         
         # Use the article type pattern from run.py for the proper slug
@@ -256,27 +161,28 @@ class JsonldGenerator(BaseComponent):
                     'url': url
                 }
                 
-        # Handle case where there's no image property but frontmatter has images
+        # Handle case where there's no image property - use base component data
         else:
-            frontmatter = self.get_frontmatter_data()
-            if frontmatter and 'images' in frontmatter:
+            # Use base component's formatted image data instead of frontmatter
+            formatted_images = self.get_template_variable('formatted_images')
+            if formatted_images:
                 image_objects = []
                 
-                # Add hero image if available
-                if 'hero' in frontmatter['images'] and 'alt' in frontmatter['images']['hero']:
+                # Add hero image
+                if 'hero' in formatted_images:
                     hero_img = {
                         '@type': 'ImageObject',
                         'url': hero_image_url,
-                        'caption': frontmatter['images']['hero']['alt']
+                        'caption': formatted_images['hero']['alt']
                     }
                     image_objects.append(hero_img)
                 
-                # Add closeup image if available
-                if 'closeup' in frontmatter['images'] and 'alt' in frontmatter['images']['closeup']:
+                # Add closeup image
+                if 'closeup' in formatted_images:
                     closeup_img = {
                         '@type': 'ImageObject',
                         'url': closeup_image_url,
-                        'caption': frontmatter['images']['closeup']['alt']
+                        'caption': formatted_images['closeup']['alt']
                     }
                     image_objects.append(closeup_img)
                 

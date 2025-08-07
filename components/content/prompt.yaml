@@ -1,9 +1,12 @@
 name: "Content Generator"
-description: "Generates comprehensive article content from all frontmatter data"
-version: "3.0.0"
+description: "Generates comprehensive article content using base component data and material information"
+version: "4.0.0"
 
 template: |
-  Write a comprehensive {article_type} article about {subject} for the laser cleaning industry.
+  Write comprehensive article content about {subject} for the laser cleaning industry.
+  
+  CONTENT-ONLY FOCUS:
+  You provide ONLY the article content. All formatting and structure will be handled by Python.
   
   CONTENT GUIDANCE:
   - Focus on technical accuracy and completeness
@@ -13,43 +16,54 @@ template: |
   - Maintain a technical but accessible writing style
   - Write between {min_words} and {max_words} words
   
-  FRONTMATTER DATA:
-  {all_frontmatter}
+  AVAILABLE BASE COMPONENT DATA:
+  Subject: {subject}
+  Article Type: {article_type}
+  Material Formula: {material_formula}
+  Material Symbol: {material_symbol}
+  Material Type: {material_type}
+  Category: {category}
   
-  SUGGESTED STRUCTURE:
-  1. Introduction to {subject}
-  2. Technical specifications and capabilities
-  3. Applications and use cases with examples
-  4. Manufacturing context
-  5. Environmental benefits
-  6. Conclusion with outlook
+  PRE-FORMATTED CONTEXT:
+  Title: {formatted_title}
+  Headline: {formatted_headline}
+  Description: {formatted_description}
+  Keywords: {formatted_keywords}
+  Technical Specs: {formatted_technical_specs}
+  Environmental Impact: {formatted_environmental_impact}
   
-  KEY POINTS TO INCLUDE:
-  - Technical details from frontmatter
-  - Real applications with examples
-  - Manufacturing context
-  - Environmental considerations
-  - Industry standards or regulations
+  CONTENT AREAS TO COVER:
+  - Introduction and overview of {subject}
+  - Technical specifications and capabilities  
+  - Applications and use cases with specific examples
+  - Manufacturing and processing context
+  - Environmental benefits and considerations
+  - Industry standards and regulatory aspects
+  - Future outlook and developments
   
-  Format as a complete article using markdown.
+  Focus on providing rich, detailed content that leverages the technical information
+  from the frontmatter. All article structure and markdown formatting will be handled automatically.
 
 # Condensed template used when frontmatter data is available
 condensed_template: |
   Write a comprehensive {article_type} article about {subject} for the laser cleaning industry.
   
   CONTENT GUIDANCE:
-  - Focus on the information provided in the frontmatter
+  - Focus on technical accuracy and completeness using base component data
   - Maintain a technical but accessible writing style
   - Elaborate on the specifications and applications
   - Write between {min_words} and {max_words} words
   
-  AVAILABLE FRONTMATTER DATA:
-  - Name: {name}
-  - Description: {description}
-  - Tags: {tags}
+  AVAILABLE BASE COMPONENT DATA:
+  Subject: {subject}
+  Material Formula: {material_formula}
+  Material Symbol: {material_symbol}
+  Category: {category}
   
-  FRONTMATTER DETAILS:
-  {all_frontmatter}
+  PRE-FORMATTED CONTENT:
+  Title: {formatted_title}
+  Description: {formatted_description}
+  Keywords: {formatted_keywords}
   
   Format as a complete article using markdown.
 

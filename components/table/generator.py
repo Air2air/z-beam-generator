@@ -48,22 +48,18 @@ class TableGenerator(BaseComponent):
         tables = self._extract_tables(lines)
         
         if not tables:
-            # If no tables found in the API response, try to generate from frontmatter
-            if hasattr(self, '_frontmatter_data') and self._frontmatter_data:
-                tables = self._generate_tables_from_frontmatter()
-            
-            if not tables:
-                raise ValueError("Generated content does not contain valid markdown tables and could not generate from frontmatter")
+            # If no tables found in the AI response, rely on AI to generate proper tables
+            # Table component should generate tables from AI, not frontmatter data
+            raise ValueError("Generated content does not contain valid markdown tables")
         
         # Add section headers and format tables
         processed_content = self._format_tables_with_headers(tables)
         
         # Check if any tables remain after processing
         if not processed_content.strip():
-            logger.warning("All tables were excluded by filtering rules. Returning empty content.")
-            if hasattr(self, '_frontmatter_data') and self._frontmatter_data:
-                # Fall back to generating from frontmatter
-                processed_content = self._generate_tables_from_frontmatter_as_string()
+            logger.warning("All tables were excluded by filtering rules. Asking AI to regenerate tables.")
+            # Ask AI to generate different tables rather than falling back to frontmatter
+            raise ValueError("No valid tables found after filtering. AI should generate different table content.")
         
         return processed_content
     
@@ -146,37 +142,9 @@ class TableGenerator(BaseComponent):
         
         return "\n".join(formatted_content)
     
-    def _generate_tables_from_frontmatter(self) -> List[Dict]:
-        """Generate tables from frontmatter data.
-        
-        Returns:
-            List[Dict]: List of generated tables
-        """
-        tables = []
-        
-        if not hasattr(self, '_frontmatter_data') or not self._frontmatter_data:
-            return tables
-        
-        frontmatter = self._frontmatter_data
-        
-        # Process structured data fields from frontmatter
-        for key, value in frontmatter.items():
-            # Skip non-table-worthy keys
-            if key in ['name', 'title', 'description', 'summary', 'slug', 'author', 'category']:
-                continue
-            
-            # Process based on data type
-            if isinstance(value, dict):
-                # Key-value table
-                tables.append(self._create_key_value_table(key, value))
-            elif isinstance(value, list) and all(isinstance(item, dict) for item in value):
-                # List of objects table
-                tables.append(self._create_list_table(key, value))
-            elif isinstance(value, list) and all(isinstance(item, str) for item in value):
-                # List of strings table
-                tables.append(self._create_string_list_table(key, value))
-        
-        return tables
+    # Removed frontmatter dependency methods - components now use base component data only
+    # _generate_tables_from_frontmatter() - DEPRECATED: violated new architecture
+    # _generate_tables_from_frontmatter_as_string() - DEPRECATED: violated new architecture
     
     def _create_key_value_table(self, title: str, data: Dict) -> Dict:
         """Create a key-value table from dictionary data.
@@ -277,11 +245,4 @@ class TableGenerator(BaseComponent):
             "content": table_lines
         }
     
-    def _generate_tables_from_frontmatter_as_string(self) -> str:
-        """Generate tables from frontmatter as a formatted string.
-        
-        Returns:
-            str: Formatted string with tables
-        """
-        tables = self._generate_tables_from_frontmatter()
-        return self._format_tables_with_headers(tables)
+    # REMOVED: def _generate_tables_from_frontmatter_as_string() - violated new architecture

@@ -330,6 +330,15 @@ class ContentFormatter:
         # Fix image URL double dashes
         content = re.sub(r'(/images/[^"]*?)--+([^"]*?\.jpg)', r'\1-\2', content)
         
+        # Fix trailing dashes in image URLs (before file extension)
+        content = re.sub(r'(/images/[^"]*?)-+(\.[a-z]+)', r'\1\2', content)
+        
+        # Fix any trailing dashes in slugs throughout the content
+        content = re.sub(r'([a-z0-9])-+(\s|"|\'|$)', r'\1\2', content)
+        
+        # Escape YAML values that start with special characters that cause parsing issues
+        content = ContentFormatter._escape_yaml_values(content)
+        
         # Normalize quote usage in YAML
         content = re.sub(r'([:\s]+)"([^"]*?)"(\s*)', r'\1"\2"\3', content)
         
@@ -351,3 +360,420 @@ class ContentFormatter:
             normalized_lines.append(line)
         
         return '\n'.join(normalized_lines)
+    
+    @staticmethod
+    def _escape_yaml_values(content: str) -> str:
+        """Escape problematic YAML values to prevent parsing errors.
+        
+        Args:
+            content: YAML content string
+            
+        Returns:
+            str: YAML content with problematic values quoted
+        """
+        # Quote values that start with > or < followed by numbers (like >95% or <0.1µm)
+        content = re.sub(r'(\w+:\s*)([><]\d+[^"\n]*)', r'\1"\2"', content)
+        
+        return content
+    
+    @staticmethod
+    def extract_yaml_content(content: str) -> str:
+        """Extract clean YAML content from various AI response formats.
+        
+        Args:
+            content: Raw AI response content
+            
+        Returns:
+            str: Clean YAML content
+        """
+        # Check if the content seems to be markdown with a code block instead of raw YAML
+        if content.startswith('```yaml') or content.startswith('```'):
+            # Extract the YAML content from the code block
+            lines = content.split('\n')
+            content_lines = []
+            in_yaml_block = False
+            for line in lines:
+                if line.startswith('```yaml') or line.startswith('```'):
+                    if in_yaml_block:
+                        break  # End of YAML block
+                    in_yaml_block = True
+                    continue
+                if in_yaml_block:
+                    content_lines.append(line)
+            
+            if content_lines:
+                return '\n'.join(content_lines)
+        
+        # Look for YAML content after explanatory text
+        # Pattern: "Here's the YAML..." followed by actual YAML starting with a key
+        lines = content.split('\n')
+        yaml_start_idx = None
+        
+        for i, line in enumerate(lines):
+            # Find the first line that looks like YAML (key: value pattern)
+            if re.match(r'^[a-zA-Z_][a-zA-Z0-9_]*\s*:', line.strip()):
+                yaml_start_idx = i
+                break
+        
+        if yaml_start_idx is not None:
+            yaml_lines = lines[yaml_start_idx:]
+            # Remove any trailing explanatory text after the YAML
+            final_lines = []
+            for line in yaml_lines:
+                # Stop when we hit explanatory text (lines that don't look like YAML)
+                stripped = line.strip()
+                if stripped and not (
+                    stripped.startswith('#') or  # Comments
+                    ':' in stripped or  # Key-value pairs
+                    stripped.startswith('-') or  # List items
+                    stripped.startswith(' ') or stripped.startswith('\t') or  # Indented content
+                    stripped == '' or  # Empty lines
+                    re.match(r'^[a-zA-Z_][a-zA-Z0-9_]*$', stripped)  # Single words (possible keys)
+                ):
+                    break
+                final_lines.append(line)
+            
+            return '\n'.join(final_lines).strip()
+        
+        # If no clear YAML structure found, return the content as-is
+        return content
+    
+    @staticmethod
+    def extract_content_between_markers(content: str, marker: str = '---') -> str:
+        """Extract content between YAML frontmatter markers.
+        
+        Args:
+            content: Content with markers
+            marker: Marker string (default: '---')
+            
+        Returns:
+            str: Content between first set of markers
+        """
+        if marker in content:
+            parts = content.split(marker)
+            if len(parts) >= 3:
+                return parts[1].strip()
+            elif len(parts) == 2:
+                return parts[1].strip()
+        
+        return content.strip()
+    
+    @staticmethod
+    def clean_string_content(text: str) -> str:
+        """Clean string content by removing escape characters and normalizing whitespace.
+        
+        Args:
+            text: Text to clean
+            
+        Returns:
+            str: Cleaned text
+        """
+        if not isinstance(text, str):
+            return text
+        
+        # Remove escape characters
+        text = text.replace("\\n", "\n").replace('\\ ', ' ')
+        
+        # Normalize whitespace in multiline strings
+        if '\n' in text:
+            lines = text.split('\n')
+            text = '\n'.join(line.strip() for line in lines if line.strip())
+        
+        return text
+    
+    @staticmethod
+    def normalize_case(text: str, case_type: str = 'lower') -> str:
+        """Normalize text case consistently.
+        
+        Args:
+            text: Text to normalize
+            case_type: 'lower', 'upper', 'title', or 'sentence'
+            
+        Returns:
+            str: Normalized text
+        """
+        if not isinstance(text, str):
+            return text
+        
+        if case_type == 'lower':
+            return text.lower()
+        elif case_type == 'upper':
+            return text.upper()
+        elif case_type == 'title':
+            return text.title()
+        elif case_type == 'sentence':
+            return text.capitalize()
+        
+        return text
+    
+    @staticmethod
+    def extract_json_content(content: str) -> str:
+        """Extract JSON content from various response formats.
+        
+        Args:
+            content: Raw content that may contain JSON
+            
+        Returns:
+            str: Clean JSON content
+        """
+        # Try to extract from code blocks first
+        json_block_pattern = r'```(?:json|javascript)?\s*\n?(.*?)\n?```'
+        matches = re.finditer(json_block_pattern, content, re.DOTALL)
+        
+        for match in matches:
+            try:
+                import json
+                json.loads(match.group(1).strip())
+                return match.group(1).strip()
+            except:
+                continue
+        
+        # Try to extract from YAML-like blocks
+        yaml_block_pattern = r'```(?:yaml|yml)?\s*\n?(.*?)\n?```'
+        matches = re.finditer(yaml_block_pattern, content, re.DOTALL)
+        
+        for match in matches:
+            try:
+                import yaml, json
+                yaml_data = yaml.safe_load(match.group(1).strip())
+                if yaml_data:
+                    return json.dumps(yaml_data, indent=2)
+            except:
+                continue
+        
+        # Try to parse the entire content as JSON
+        try:
+            import json
+            json.loads(content.strip())
+            return content.strip()
+        except:
+            # Try as YAML
+            try:
+                import yaml, json
+                yaml_data = yaml.safe_load(content.strip())
+                if yaml_data:
+                    return json.dumps(yaml_data, indent=2)
+            except:
+                pass
+        
+        # Look for JSON-like content in the response
+        if content.strip().startswith('{') and content.strip().endswith('}'):
+            try:
+                import json
+                json.loads(content.strip())
+                return content.strip()
+            except:
+                pass
+        
+        return content
+    
+    @staticmethod
+    def extract_tags_from_content(content: str) -> List[str]:
+        """Extract and normalize tags from various content formats.
+        
+        Args:
+            content: Content containing tags
+            
+        Returns:
+            List[str]: List of normalized tags
+        """
+        tags = []
+        lines = content.strip().split('\n')
+        
+        # Process each line looking for tags
+        for line in lines:
+            line = line.strip()
+            if not line:
+                continue
+            
+            # Handle comma-separated tags in a single line
+            if ',' in line:
+                tags.extend([tag.strip() for tag in line.split(',') if tag.strip()])
+            else:
+                # Single tag per line (possibly with bullet points)
+                line = re.sub(r'^[-*•]\s*', '', line)  # Remove bullet points
+                if line:
+                    tags.append(line)
+        
+        # Clean and deduplicate
+        return list(set([tag.strip() for tag in tags if tag.strip()]))
+    
+    @staticmethod
+    def format_author_info(author_data: Dict[str, Any], fallback_id: int = 1) -> Dict[str, Any]:
+        """Format author information consistently.
+        
+        Args:
+            author_data: Raw author data
+            fallback_id: Fallback author ID if data is missing
+            
+        Returns:
+            Dict: Formatted author information
+        """
+        if not author_data:
+            return {"id": fallback_id}
+        
+        formatted = {}
+        
+        # Map common field variations
+        if "author_name" in author_data:
+            formatted["name"] = author_data["author_name"]
+        elif "name" in author_data:
+            formatted["name"] = author_data["name"]
+        
+        if "author_country" in author_data:
+            formatted["country"] = author_data["author_country"]
+        elif "country" in author_data:
+            formatted["country"] = author_data["country"]
+        
+        if "author_id" in author_data:
+            formatted["id"] = author_data["author_id"]
+        elif "id" in author_data:
+            formatted["id"] = author_data["id"]
+        else:
+            formatted["id"] = fallback_id
+        
+        # Add credentials if available
+        if "credentials" in author_data:
+            formatted["credentials"] = author_data["credentials"]
+        
+        return formatted
+    
+    @staticmethod
+    def format_metatags_structure(parsed_data: Dict[str, Any], subject: str, category: str = None) -> Dict[str, Any]:
+        """Format metatags structure for Next.js compatibility.
+        
+        This method ensures all metatags follow the expected Next.js structure
+        without doing any local formatting - just structural organization.
+        
+        Args:
+            parsed_data: Raw parsed YAML data from AI
+            subject: The subject material/topic
+            category: Material category if applicable
+            
+        Returns:
+            Dict: Properly structured metatags for Next.js
+        """
+        from components.base.utils.slug_utils import SlugUtils
+        
+        # Use the AI-generated content but ensure proper structure
+        formatted = {}
+        
+        # Basic meta fields (use AI content if provided, otherwise use centralized formatting)
+        if "title" in parsed_data:
+            formatted["title"] = parsed_data["title"]
+        else:
+            formatted["title"] = ContentFormatter.format_title(subject)
+            
+        if "description" in parsed_data:
+            formatted["description"] = parsed_data["description"]
+        else:
+            formatted["description"] = ContentFormatter.format_description(subject)
+            
+        if "keywords" in parsed_data:
+            formatted["keywords"] = parsed_data["keywords"]
+        else:
+            keywords = ContentFormatter.format_keywords(subject, category)
+            formatted["keywords"] = ", ".join(keywords)
+        
+        # Ensure openGraph structure exists
+        if "openGraph" not in parsed_data:
+            formatted["openGraph"] = {}
+        else:
+            formatted["openGraph"] = parsed_data["openGraph"].copy()
+            
+        og = formatted["openGraph"]
+        
+        # Use subject slug for consistent URLs
+        subject_slug = SlugUtils.create_subject_slug(subject)
+        
+        # Ensure required openGraph fields
+        if "title" not in og:
+            og["title"] = formatted["title"]
+        if "description" not in og:
+            og["description"] = formatted["description"]
+        if "url" not in og:
+            og["url"] = f"https://www.z-beam.com/{subject_slug}-laser-cleaning"
+        if "siteName" not in og:
+            og["siteName"] = "Z-Beam"
+        if "type" not in og:
+            og["type"] = "article"
+        if "locale" not in og:
+            og["locale"] = "en_US"
+            
+        # Ensure images structure
+        if "images" not in og or not og["images"]:
+            images_data = ContentFormatter.format_images(subject)
+            og["images"] = [
+                {
+                    "url": images_data["hero"]["url"],
+                    "width": 1200,
+                    "height": 630,
+                    "alt": images_data["hero"]["alt"]
+                }
+            ]
+        
+        # Ensure twitter structure exists
+        if "twitter" not in parsed_data:
+            formatted["twitter"] = {}
+        else:
+            formatted["twitter"] = parsed_data["twitter"].copy()
+            
+        twitter = formatted["twitter"]
+        
+        # Ensure required twitter fields
+        if "card" not in twitter:
+            twitter["card"] = "summary_large_image"
+        if "title" not in twitter:
+            twitter["title"] = og.get("title", formatted["title"])
+        if "description" not in twitter:
+            twitter["description"] = og.get("description", formatted["description"])
+        if "images" not in twitter or not twitter["images"]:
+            if og.get("images"):
+                twitter["images"] = [og["images"][0]["url"]]
+        
+        # Copy other fields from AI if they exist
+        for key, value in parsed_data.items():
+            if key not in ["title", "description", "keywords", "openGraph", "twitter"]:
+                formatted[key] = value
+        
+        return formatted
+    
+    @staticmethod
+    def format_created_date() -> str:
+        """Generate standardized created date.
+        
+        Returns:
+            str: ISO formatted created date
+        """
+        from datetime import datetime
+        return datetime.now().strftime("%Y-%m-%d")
+    
+    @staticmethod
+    def format_updated_date() -> str:
+        """Generate standardized updated date.
+        
+        Returns:
+            str: ISO formatted updated date
+        """
+        from datetime import datetime
+        return datetime.now().strftime("%Y-%m-%d")
+    
+    @staticmethod
+    def format_publish_date() -> str:
+        """Generate standardized publish date.
+        
+        Returns:
+            str: ISO formatted publish date
+        """
+        from datetime import datetime
+        return datetime.now().strftime("%Y-%m-%d")
+    
+    @staticmethod
+    def format_iso_date() -> str:
+        """Generate standardized ISO date.
+        
+        Returns:
+            str: Full ISO formatted datetime
+        """
+        from datetime import datetime, timezone
+        return datetime.now(timezone.utc).isoformat()

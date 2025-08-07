@@ -3,39 +3,49 @@ description: "Generates Schema.org-compliant JSON-LD structured data for laser c
 version: "3.0.5"
 
 template: |
-  TASK: Generate Schema.org-compliant JSON-LD structured data for {article_type} "{subject}" laser cleaning article.
+  Generate Schema.org structured data in YAML format for {article_type} "{subject}" laser cleaning article.
 
-  FORMAT REQUIREMENTS:
-  - Return as JSON ONLY (not YAML)
-  - Format with proper indentation
-  - Include all required Schema.org properties
-  - Include image URL if available in frontmatter
-  - Return ONLY the JSON object WITHOUT code fence markers (```json)
+  YAML OUTPUT REQUIRED:
+  Produce clean YAML structure for JSON-LD. Python will convert to final JSON format.
 
-  IMPORTANT JSON-LD RULES:
-  1. @context MUST be "https://schema.org"
-  2. @type MUST be appropriate for {article_type}: 
-     - "material" articles: "Product" 
-     - "application" articles: "TechArticle"
-     - "region" articles: "Place" or "LocalBusiness"
-     - "thesaurus" articles: "DefinedTerm" or "TechArticle"
-  3. Include all available metadata from frontmatter
-  4. MUST be valid JSON without trailing commas
-  
-  URL FORMATTING RULES:
-  1. Main URL should be: https://www.z-beam.com/{subject}-laser-cleaning (lowercase)
-  2. Image URLs MUST follow these patterns:
-     - Hero image: https://www.z-beam.com/images/{subject}-laser-cleaning-hero.jpg (lowercase)
-     - Closeup image: https://www.z-beam.com/images/{subject}-laser-cleaning-closeup.jpg (lowercase)
-  3. All URLs should use lowercase for subject names
+  CONTENT-ONLY FOCUS:
+  You provide ONLY the content values. All URLs, formatting, and Schema.org compliance 
+  will be handled by Python.
 
-  SUBJECT INFORMATION:
-  - Subject: {subject}
-  - Article Type: {article_type}
-  - Category: {category}
-  - Slug: {slug}
+  PYTHON PROVIDES THESE FORMATTED ELEMENTS:
+  - Main URL: {hero_image_url} (properly formatted)
+  - Image URLs: {hero_image_url}, {closeup_image_url} (properly formatted)
+  - Subject slug: {slug}
+  - Dates: {created_date}, {updated_date}
 
-  AVAILABLE FRONTMATTER DATA:
-  {frontmatter}
+  REQUIRED YAML STRUCTURE:
+  ```yaml
+  "@context": "https://schema.org"
+  "@type": "Article"
+  headline: "Content headline here"
+  description: "Content description here"
+  image: 
+    - "url value"
+  author:
+    "@type": "Person"
+    name: "Author name"
+  publisher:
+    "@type": "Organization"
+    name: "Z-Beam"
+  mainEntity:
+    "@type": "Product"
+    name: "Product name"
+    description: "Product description"
+  ```
 
-  GENERATE JSON-LD (without code fence markers):
+  AVAILABLE CONTEXT:
+  Subject: {subject}
+  Article Type: {article_type}
+  Category: {category}
+  Chemical Formula: {material_formula}
+  Material Symbol: {material_symbol}
+  Material Type: {material_type}
+  Author: {author_name} ({author_country})
+
+  Focus on providing rich, descriptive content that works well in structured data contexts.
+  All JSON formatting, Schema.org compliance, and URL formatting will be handled automatically.

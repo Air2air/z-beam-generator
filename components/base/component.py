@@ -8,15 +8,14 @@ import os
 import re
 import yaml
 from abc import ABC
-from typing import Dict, Any, Optional
+from typing import Dict, Any, Optional, List
 
-from components.base.utils.slug_utils import SlugUtils
 from components.base.utils.content_formatter import ContentFormatter
 from components.base.utils.validation import (
     validate_non_empty, validate_category_consistency,
     strip_markdown_code_blocks
 )
-from components.base.services.material_service import formula_service
+from components.base.data_provider import CleanDataProvider
 
 logger = logging.getLogger(__name__)
 
@@ -24,8 +23,7 @@ class BaseComponent(ABC):
     """Base class for all Z-Beam generators with complete functionality."""
     
     def __init__(self, subject: str, article_type: str, schema: Dict[str, Any], 
-                 author_data: Dict[str, Any], component_config: Dict[str, Any], 
-                 frontmatter_data: Dict[str, Any] = None):
+                 author_data: Dict[str, Any], component_config: Dict[str, Any]):
         """Initialize component with validation and prompt config loading.
         
         Args:
@@ -34,7 +32,6 @@ class BaseComponent(ABC):
             schema: Schema configuration for the article type
             author_data: Author information
             component_config: Component-specific configuration
-            frontmatter_data: Optional frontmatter data from existing content
             
         Raises:
             ValueError: If any required parameter is missing or invalid
@@ -79,8 +76,14 @@ class BaseComponent(ABC):
         self.ai_provider = component_config["ai_provider"]
         self.options = component_config["options"]
         
-        # Store frontmatter data if provided
-        self._frontmatter_data = frontmatter_data or {}
+        # Create clean data provider for strict data isolation
+        self.data_provider = CleanDataProvider(
+            subject=self.subject,
+            article_type=self.article_type,
+            category=self.category,
+            author_data=self.author_data,
+            schema=self.schema
+        )
         
         # Load prompt config
         self.prompt_config = self._load_prompt_config()
@@ -119,259 +122,20 @@ class BaseComponent(ABC):
         return prompt_path
     
     def get_template_data(self) -> Dict[str, Any]:
-        """Extract all dynamic, schema-driven template variables for the component.
+        """Get clean, validated template data for the component.
         
-        All formatting is handled here in Python to ensure consistency.
+        All data is pre-validated and sanitized by the CleanDataProvider.
+        Generators receive only clean data and should not perform any formatting.
         
         Returns:
-            Dict[str, Any]: All validated, schema-driven template variables
+            Dict[str, Any]: Clean, validated template data
         
         Raises:
-            ValueError: If required data is missing or schema is invalid
+            ValueError: If clean data cannot be provided
         """
-        # Validate author fields
-        required_author_fields = ["author_name", "author_country"]
-        for field in required_author_fields:
-            if field not in self.author_data:
-                # Check if we have frontmatter data with nested author info as fallback
-                if hasattr(self, '_frontmatter_data') and self._frontmatter_data and 'author' in self._frontmatter_data:
-                    author_key = field.replace('author_', '')
-                    if author_key in self._frontmatter_data['author']:
-                        # Use author data from frontmatter
-                        self.author_data[field] = self._frontmatter_data['author'][author_key]
-                    else:
-                        raise ValueError(f"Required author field '{field}' is missing")
-                else:
-                    raise ValueError(f"Required author field '{field}' is missing")
-
-        # Get component name
         component_name = self.__class__.__name__.replace("Generator", "").lower()
-        profile_key = f"{self.article_type}Profile"
-        if profile_key not in self.schema:
-            raise ValueError(f"Profile '{profile_key}' not found in schema")
-        profile_data = self.schema[profile_key]
+        return self.data_provider.get_clean_data(component_name, self.component_config)
 
-        # Get material formula and symbol for technical content
-        material_formula, material_symbol, material_type = formula_service.get_material_data(self.subject)
-        
-        # Start with base fields - ALL components need these
-        template_data = {
-            "subject": self.subject,
-            "article_type": self.article_type,
-            "author_name": self.author_data["author_name"],
-            "author_country": self.author_data["author_country"],
-            "author_id": self.author_data.get("author_id", self.author_data.get("id", 1)),
-            "category": getattr(self, "category", ""),
-            "schema": str(self.schema),
-            "profile": profile_data.get("profile", {}),
-            "validation": profile_data.get("validation", {}),
-            
-            # CENTRALIZED FORMATTING - All handled by Python, not AI
-            "slug": SlugUtils.create_subject_slug(self.subject),
-            "subject_slug": SlugUtils.create_subject_slug(self.subject),
-            "category_slug": SlugUtils.create_category_slug(getattr(self, "category", "")),
-            "formatted_title": ContentFormatter.format_title(self.subject, self.article_type),
-            "formatted_headline": ContentFormatter.format_headline(self.subject, getattr(self, "category", None)),
-            "formatted_description": ContentFormatter.format_description(
-                self.subject, 
-                material_formula, 
-                {"density": "N/A", "wavelength": "1064nm"}  # Default values, will be enhanced by AI
-            ),
-            "formatted_keywords": ContentFormatter.format_keywords(
-                self.subject, 
-                getattr(self, "category", None), 
-                material_formula
-            ),
-            "formatted_images": ContentFormatter.format_images(self.subject),
-            "formatted_technical_specs": ContentFormatter.format_technical_specifications(),
-            "formatted_regulatory_standards": ContentFormatter.format_regulatory_standards(),
-            "formatted_environmental_impact": ContentFormatter.format_environmental_impact(self.subject),
-            "formatted_outcomes": ContentFormatter.format_outcomes(),
-            
-            # Material-specific data
-            "material_formula": material_formula or "N/A",
-            "material_symbol": material_symbol or "N/A", 
-            "material_type": material_type or "N/A",
-            
-            # Image URLs - all properly formatted by Python
-            "hero_image_url": ContentFormatter.format_images(self.subject)["hero"]["url"],
-            "closeup_image_url": ContentFormatter.format_images(self.subject)["closeup"]["url"],
-            "hero_image_alt": ContentFormatter.format_images(self.subject)["hero"]["alt"],
-            "closeup_image_alt": ContentFormatter.format_images(self.subject)["closeup"]["alt"],
-        }
-
-        # Add frontmatter if available
-        frontmatter = self._frontmatter_data
-        if frontmatter:
-            template_data["all_frontmatter"] = frontmatter
-            template_data["frontmatter_data"] = frontmatter
-            template_data["frontmatter"] = frontmatter  # Add for JSON-LD compatibility
-            
-            # Extract common fields from frontmatter to make them directly accessible
-            if "name" in frontmatter:
-                template_data["name"] = frontmatter["name"]
-            if "description" in frontmatter:
-                template_data["description"] = frontmatter["description"]
-            if "summary" in frontmatter:
-                template_data["summary"] = frontmatter["summary"]
-                
-            # Make sure author name is available for tags
-            if "author" in frontmatter and "name" in frontmatter["author"]:
-                template_data["author_name"] = frontmatter["author"]["name"]
-            
-            # Handle specific sections based on article type
-            if self.article_type == "material" and "specifications" in frontmatter:
-                template_data["specifications"] = frontmatter["specifications"]
-            
-            # Process images with special handling - ensure they use proper formatting
-            if "images" in frontmatter:
-                template_data["images"] = frontmatter["images"]
-                
-                # Extract image URLs and make them directly accessible at the top level
-                if isinstance(frontmatter["images"], dict):
-                    for img_type, img_data in frontmatter["images"].items():
-                        if isinstance(img_data, dict):
-                            # Create a normalized key for the image URL at the top level
-                            img_url_key = f"{img_type}_image_url"
-                            if "url" in img_data:
-                                # Ensure image URLs are properly formatted (no double dashes)
-                                from components.base.image_handler import ImageHandler
-                                normalized_url = ImageHandler.normalize_url(img_data["url"])
-                                template_data[img_url_key] = normalized_url
-                            elif "src" in img_data:
-                                template_data[img_url_key] = img_data["src"]
-                            
-                            # Also create alt text at the top level
-                            if "alt" in img_data:
-                                template_data[f"{img_type}_image_alt"] = img_data["alt"]
-                
-                # Create consolidated image lists for easy access
-                template_data["image_urls"] = []
-                template_data["image_alts"] = []
-                for img_type, img_data in frontmatter["images"].items():
-                    if isinstance(img_data, dict):
-                        if "url" in img_data:
-                            template_data["image_urls"].append(img_data["url"])
-                        elif "src" in img_data:
-                            template_data["image_urls"].append(img_data["src"])
-                        
-                        if "alt" in img_data:
-                            template_data["image_alts"].append(img_data["alt"])
-            
-            if "tags" in frontmatter:
-                template_data["tags"] = frontmatter["tags"]
-            
-            # Include section data for rich frontmatter
-            if "sections" in frontmatter:
-                template_data["sections"] = frontmatter["sections"]
-                
-            # For components that reference other components
-            if "related" in frontmatter:
-                template_data["related"] = frontmatter["related"]
-                
-            # Ensure tags are available for content component
-            if "tags" not in template_data:
-                if "keywords" in frontmatter:
-                    template_data["tags"] = frontmatter["keywords"]
-                    template_data["keywords"] = frontmatter["keywords"]
-                    template_data["extracted_keywords"] = ", ".join(frontmatter["keywords"]) if isinstance(frontmatter["keywords"], list) else frontmatter["keywords"]
-                else:
-                    template_data["tags"] = []
-                    template_data["keywords"] = []
-                    template_data["extracted_keywords"] = ""
-        else:
-            template_data["all_frontmatter"] = "No frontmatter data available"
-            template_data["frontmatter_data"] = {}
-            template_data["frontmatter"] = "No frontmatter data available"
-            template_data["tags"] = []
-            template_data["keywords"] = []
-            template_data["extracted_keywords"] = ""
-
-        # Component-specific additions
-        if component_name == "frontmatter":
-            # Add material formula if applicable
-            material_formula = None
-            material_symbol = None
-            material_type = None
-            if self.article_type == "material":
-                category = getattr(self, "category", None)
-                material_formula = formula_service.get_formula(self.subject, category)
-                material_symbol = formula_service.get_symbol(self.subject, category)
-                material_type = formula_service.get_material_type(self.subject, category)
-                
-                if not material_formula and hasattr(self, "category"):
-                    material_formula = formula_service.get_generic_formula(self.category)
-            
-            template_data.update({
-                "website_url": "https://www.z-beam.com",
-                "material_formula": "Not available" if material_formula is None else material_formula,
-                "material_symbol": "Not available" if material_symbol is None else material_symbol,
-                "material_type": "Not available" if material_type is None else material_type
-            })
-        
-        # Handle specific article type variables
-        if "variables" in profile_data:
-            for var_name, var_value in profile_data["variables"].items():
-                template_data[var_name] = var_value
-                
-        # Add component-specific configs
-        if component_name in profile_data:
-            component_data = profile_data[component_name]
-            for key, value in component_data.items():
-                template_data[key] = value
-                
-        # Additional fields for formatting
-        if self.article_type == "material":
-            template_data["material"] = self.subject
-            template_data["material_type"] = template_data.get("material_type", "")
-            
-        elif self.article_type == "application":
-            template_data["application"] = self.subject
-            
-        elif self.article_type == "region":
-            template_data["region"] = self.subject
-            
-        elif self.article_type == "thesaurus":
-            template_data["term"] = self.subject
-        
-        # Add min_words and max_words from component_config if available
-        template_data["min_words"] = self.component_config.get("options", {}).get("min_words", 300)
-        template_data["max_words"] = self.component_config.get("options", {}).get("max_words", 500)
-        
-        # Add style if available, or provide a default
-        template_data["style"] = self.component_config.get("style", "technical")
-        
-        # Add component-specific configuration variables for all components
-        component_name = self.__class__.__name__.replace("Generator", "").lower()
-        
-        # Content component config
-        if component_name == "content":
-            template_data["max_links"] = self.component_config.get("max_links", 5)
-            template_data["audience"] = self.component_config.get("audience", "technical")
-        
-        # Bullets component config
-        if component_name == "bullets":
-            template_data["count"] = self.component_config.get("count", 5)
-        
-        # Table component config
-        if component_name == "table":
-            template_data["table_keys"] = self.component_config.get("table_keys", ["Property", "Value", "Unit"])
-            template_data["rows"] = self.component_config.get("rows", 5)
-        
-        # Tags component config
-        if component_name == "tags" or component_name == "metatags":
-            template_data["min_tags"] = self.component_config.get("min_tags", 5)
-            template_data["max_tags"] = self.component_config.get("max_tags", 10)
-            template_data["tag_categories"] = self.component_config.get("tag_categories", [])
-            
-        # Caption component config
-        if component_name == "caption":
-            template_data["results_word_count_max"] = self.component_config.get("results_word_count_max", 40)
-            template_data["equipment_word_count_max"] = self.component_config.get("equipment_word_count_max", 40)
-            template_data["shape"] = self.component_config.get("shape", "component")
-            
-        return template_data
-    
     def validate_category_consistency(self, file_content: str) -> bool:
         """
         Validates category consistency in frontmatter metadata.
@@ -407,65 +171,6 @@ class BaseComponent(ABC):
             return default
             
         raise ValueError(f"Required component config key '{key}' not found")
-    
-    def get_frontmatter_data(self) -> Optional[Dict[str, Any]]:
-        """Get the frontmatter data if available.
-        
-        Returns:
-            Optional[Dict[str, Any]]: Frontmatter data or None
-        """
-        return self._frontmatter_data
-    
-    def get_frontmatter_value(self, key: str, default: Any = None) -> Any:
-        """Get a specific value from frontmatter data.
-        
-        Args:
-            key: The key to look up in frontmatter
-            default: Value to return if key is not found
-            
-        Returns:
-            Any: The value from frontmatter or default
-            
-        Raises:
-            ValueError: If key is not found and no default is provided
-        """
-        if not self._frontmatter_data:
-            if default is not None:
-                return default
-            raise ValueError(f"No frontmatter data available for key '{key}'")
-            
-        # Handle nested keys with dot notation (e.g., "images.hero.alt")
-        if "." in key:
-            parts = key.split(".")
-            value = self._frontmatter_data
-            for part in parts:
-                if isinstance(value, dict) and part in value:
-                    value = value[part]
-                else:
-                    if default is not None:
-                        return default
-                    raise ValueError(f"Frontmatter key path '{key}' not found")
-            return value
-        
-        # Direct key lookup
-        if key in self._frontmatter_data:
-            return self._frontmatter_data[key]
-            
-        if default is not None:
-            return default
-            
-        raise ValueError(f"Required frontmatter key '{key}' not found")
-        
-    def has_frontmatter_section(self, section_name: str) -> bool:
-        """Check if a specific section exists in the frontmatter.
-        
-        Args:
-            section_name: The section name to check
-            
-        Returns:
-            bool: True if section exists, False otherwise
-        """
-        return bool(self._frontmatter_data and section_name in self._frontmatter_data)
     
     def generate(self) -> str:
         """Generate content with standard processing flow.
@@ -506,7 +211,7 @@ class BaseComponent(ABC):
             
         # Use condensed template if available and frontmatter exists
         component_name = self.__class__.__name__.replace("Generator", "").lower()
-        use_condensed = self._frontmatter_data and "condensed_template" in self.prompt_config
+        use_condensed = "condensed_template" in self.prompt_config
         
         if use_condensed:
             template = self.prompt_config["condensed_template"]
@@ -534,7 +239,7 @@ class BaseComponent(ABC):
             
             # Provide more helpful error for frontmatter-related variables
             if "frontmatter" in missing_var or "image" in missing_var:
-                error_msg += f"\nCheck that frontmatter contains the required data. Available frontmatter keys: {list(self._frontmatter_data.keys()) if self._frontmatter_data else 'None'}"
+                error_msg += "\nCheck that base component data contains the required template variables."
             
             raise ValueError(error_msg)
         except Exception as e:
@@ -618,38 +323,8 @@ class BaseComponent(ABC):
         Raises:
             ValueError: If API call fails
         """
-        # Check if we can use frontmatter data instead of making an API call
-        component_name = self.__class__.__name__.replace("Generator", "").lower()
-        frontmatter_key = f"{component_name}_content"
-        
-        # If the component's content is already in frontmatter, use it directly
-        if self._frontmatter_data and frontmatter_key in self._frontmatter_data:
-            logger.info(f"Using existing {component_name} content from frontmatter")
-            return self._frontmatter_data[frontmatter_key]
-            
-        # Check if we can use another component's content via references
-        if self._frontmatter_data and "references" in self._frontmatter_data:
-            references = self._frontmatter_data.get("references", {})
-            if component_name in references:
-                ref_source = references[component_name]
-                if ref_source in self._frontmatter_data:
-                    logger.info(f"Using referenced content for {component_name} from {ref_source}")
-                    return self._frontmatter_data[ref_source]
-                    
-        # Prepare API options based on frontmatter data presence
+        # Use the AI API directly - no frontmatter shortcuts
         api_options = self.options.copy()
-        
-        # If we have rich frontmatter, we can potentially use a lower temperature
-        if self._frontmatter_data and len(self._frontmatter_data) > 5:
-            # Only reduce temperature if it's not explicitly set by the component
-            if "temperature" not in self.component_config:
-                # Use a lower temperature for more deterministic output with rich data
-                current_temp = api_options.get("temperature")
-                if current_temp is not None:
-                    api_options["temperature"] = min(current_temp, 0.5)
-                else:
-                    api_options["temperature"] = 0.5
-                logger.debug(f"Set temperature to {api_options['temperature']} due to rich frontmatter")
         
         # Get API provider
         from api import get_client
@@ -839,11 +514,21 @@ class BaseComponent(ABC):
         """
         # If we have parsed data, apply comprehensive formatting
         if parsed_data and isinstance(parsed_data, dict):
-            # Apply ContentFormatter standardization
+            # Get component name to determine formatting approach
+            component_name = self.__class__.__name__.replace("Generator", "").lower()
             category = getattr(self, 'category', None)
-            parsed_data = ContentFormatter.format_frontmatter_structure(
-                parsed_data, self.subject, category, self.article_type
-            )
+            
+            # Apply specific formatting based on component type
+            if component_name == "metatags":
+                # Use specialized metatags formatting for Next.js compatibility
+                parsed_data = ContentFormatter.format_metatags_structure(
+                    parsed_data, self.subject, category
+                )
+            else:
+                # Use general frontmatter formatting for other components
+                parsed_data = ContentFormatter.format_frontmatter_structure(
+                    parsed_data, self.subject, category, self.article_type
+                )
             
             # Convert back to YAML string if this was YAML content
             if isinstance(content, str) and ('---' in content or content.strip().startswith(('name:', 'title:', 'headline:'))):
@@ -863,4 +548,134 @@ class BaseComponent(ABC):
         # Additional slug normalization throughout content
         content = re.sub(r'([a-z])--+([a-z])', r'\1-\2', content)
         
+        # Ensure no slugs end with trailing dashes
+        content = re.sub(r'([a-z0-9])-+(\s|"|\'|$|\.)', r'\1\2', content)
+        
         return content
+    
+    # ===================================================================
+    # CENTRALIZED DATA UTILITY METHODS
+    # ===================================================================
+    
+    def extract_yaml_content(self, content: str) -> str:
+        """Extract clean YAML content from various AI response formats.
+        
+        Args:
+            content: Raw AI response content
+            
+        Returns:
+            str: Clean YAML content
+        """
+        return ContentFormatter.extract_yaml_content(content)
+    
+    def extract_json_content(self, content: str) -> str:
+        """Extract JSON content from various response formats.
+        
+        Args:
+            content: Raw content that may contain JSON
+            
+        Returns:
+            str: Clean JSON content
+        """
+        return ContentFormatter.extract_json_content(content)
+    
+    def extract_tags_from_content(self, content: str) -> List[str]:
+        """Extract and normalize tags from various content formats.
+        
+        Args:
+            content: Content containing tags
+            
+        Returns:
+            List[str]: List of normalized tags
+        """
+        return ContentFormatter.extract_tags_from_content(content)
+    
+    def clean_string_content(self, text: str) -> str:
+        """Clean string content by removing escape characters and normalizing whitespace.
+        
+        Args:
+            text: Text to clean
+            
+        Returns:
+            str: Cleaned text
+        """
+        return ContentFormatter.clean_string_content(text)
+    
+    def normalize_case(self, text: str, case_type: str = 'lower') -> str:
+        """Normalize text case consistently.
+        
+        Args:
+            text: Text to normalize
+            case_type: 'lower', 'upper', 'title', or 'sentence'
+            
+        Returns:
+            str: Normalized text
+        """
+        return ContentFormatter.normalize_case(text, case_type)
+    
+    def format_keywords_for_subject(self, category: str = None, chemical_formula: str = None) -> List[str]:
+        """Generate comprehensive keyword list for this component's subject.
+        
+        Args:
+            category: Material category override
+            chemical_formula: Chemical formula override
+            
+        Returns:
+            List[str]: List of formatted keywords
+        """
+        return ContentFormatter.format_keywords(
+            self.subject, 
+            category or getattr(self, 'category', None), 
+            chemical_formula
+        )
+    
+    def format_title_for_subject(self) -> str:
+        """Generate SEO-optimized title for this component's subject.
+        
+        Returns:
+            str: Formatted title
+        """
+        return ContentFormatter.format_title(self.subject, self.article_type)
+    
+    def format_description_for_subject(self, formula: str = None, properties: Dict = None) -> str:
+        """Generate technical description for this component's subject.
+        
+        Args:
+            formula: Chemical formula if applicable
+            properties: Key properties dictionary
+            
+        Returns:
+            str: Formatted description
+        """
+        return ContentFormatter.format_description(self.subject, formula, properties)
+    
+    def format_images_for_subject(self) -> Dict[str, Dict[str, str]]:
+        """Generate standardized image structure for this component's subject.
+        
+        Returns:
+            Dict: Standardized image structure with alt text and URLs
+        """
+        return ContentFormatter.format_images(self.subject)
+    
+    def extract_content_between_markers(self, content: str, marker: str = '---') -> str:
+        """Extract content between markers (e.g., YAML frontmatter markers).
+        
+        Args:
+            content: Content with markers
+            marker: Marker string (default: '---')
+            
+        Returns:
+            str: Content between first set of markers
+        """
+        return ContentFormatter.extract_content_between_markers(content, marker)
+    
+    def format_author_info(self, fallback_id: int = 1) -> Dict[str, Any]:
+        """Format author information consistently using this component's author data.
+        
+        Args:
+            fallback_id: Fallback author ID if data is missing
+            
+        Returns:
+            Dict: Formatted author information
+        """
+        return ContentFormatter.format_author_info(self.author_data, fallback_id)

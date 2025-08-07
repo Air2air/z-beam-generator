@@ -30,7 +30,7 @@ class BulletsGenerator(BaseComponent):
         bullet_items = self._extract_bullet_points(content)
         
         # Format and validate bullet points
-        expected_count = self.get_component_config("count")
+        expected_count = self.get_component_config("count", 5)
         bullet_items = self._format_and_validate_bullets(bullet_items, expected_count)
         
         # Format bullet points using utility function
@@ -95,12 +95,8 @@ class BulletsGenerator(BaseComponent):
         """
         # Ensure we have the expected number of bullets
         if len(bullet_items) < expected_count:
-            # If we have frontmatter data, we can try to generate missing bullets
-            if hasattr(self, '_frontmatter_data') and self._frontmatter_data:
-                # Add bullets based on frontmatter data
-                bullet_items = self._add_missing_bullets(bullet_items, expected_count)
-            else:
-                raise ValueError(f"Generated only {len(bullet_items)} bullet points, expected {expected_count}")
+            # Ask AI to regenerate with correct count instead of using frontmatter
+            raise ValueError(f"Generated only {len(bullet_items)} bullet points, expected {expected_count}. AI should regenerate with correct count.")
         elif len(bullet_items) > expected_count:
             # Keep only the first expected_count bullet points
             bullet_items = bullet_items[:expected_count]
@@ -120,60 +116,4 @@ class BulletsGenerator(BaseComponent):
         
         return formatted_bullets
     
-    def _add_missing_bullets(self, bullet_items: list, expected_count: int) -> list:
-        """Add missing bullet points based on frontmatter data.
-        
-        Args:
-            bullet_items: Current bullet points
-            expected_count: Expected number of bullet points
-            
-        Returns:
-            list: Expanded bullet points
-        """
-        missing_count = expected_count - len(bullet_items)
-        if missing_count <= 0:
-            return bullet_items
-        
-        # Get data from frontmatter
-        frontmatter = self._frontmatter_data
-        new_bullets = list(bullet_items)
-        
-        # Add bullets based on available frontmatter sections
-        potential_bullets = []
-        
-        # Add from technical specifications
-        if 'technicalSpecifications' in frontmatter:
-            for key, value in frontmatter['technicalSpecifications'].items():
-                potential_bullets.append(f"Features {key}: {value}.")
-        
-        # Add from applications
-        if 'applications' in frontmatter and isinstance(frontmatter['applications'], list):
-            for app in frontmatter['applications']:
-                if isinstance(app, dict) and 'name' in app:
-                    potential_bullets.append(f"Ideal for {app['name']} applications.")
-        
-        # Add from environmental impact
-        if 'environmentalImpact' in frontmatter and isinstance(frontmatter['environmentalImpact'], list):
-            for impact in frontmatter['environmentalImpact']:
-                if isinstance(impact, dict) and 'benefit' in impact:
-                    potential_bullets.append(f"Offers {impact['benefit']} environmental benefits.")
-        
-        # Add from regulatory standards
-        if 'regulatoryStandards' in frontmatter and isinstance(frontmatter['regulatoryStandards'], list):
-            for standard in frontmatter['regulatoryStandards']:
-                if isinstance(standard, dict) and 'code' in standard:
-                    potential_bullets.append(f"Complies with {standard['code']} standards.")
-        
-        # Add bullets until we reach expected count
-        for bullet in potential_bullets:
-            if len(new_bullets) < expected_count:
-                if bullet not in new_bullets:
-                    new_bullets.append(bullet)
-            else:
-                break
-        
-        # If we still need more bullets, add generic ones
-        while len(new_bullets) < expected_count:
-            new_bullets.append(f"Provides effective cleaning solutions for {self.subject} applications.")
-        
-        return new_bullets
+    # REMOVED: All frontmatter dependency methods - violated new architecture
