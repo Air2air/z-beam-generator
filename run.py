@@ -27,7 +27,7 @@ import yaml
 
 BATCH_CONFIG = {
     # Generation mode: "single" for one subject, "multi" for multiple subjects
-    "mode": "multi",  # "single" or "multi"
+    "mode": "single",  # "single" or "multi"
     
     # Single subject configuration (used when mode="single")
     "single_subject": {
@@ -62,7 +62,7 @@ BATCH_CONFIG = {
             "temperature": 0.9  # Override global temperature for frontmatter
         },
         "content": {
-            "enabled": True,
+            "enabled": False,
             "min_words": 200,
             "max_words": 400,
             "temperature": 0.7,  # Balanced creativity for main content
@@ -71,12 +71,12 @@ BATCH_CONFIG = {
             }
         },
         "bullets": {
-            "enabled": True,
+            "enabled": False,
             "count": 4,
             "temperature": 0.6  # Slightly lower for more focused bullet points
         },
         "table": {
-            "enabled": True,
+            "enabled": False,
             "rows": 5,
             "temperature": 0.4,  # Lower temperature for more consistent, structured table data
             "table_keys": ["Material", "Density", "Melting Point", "Laser Type", "Applications"],
@@ -93,7 +93,7 @@ BATCH_CONFIG = {
             ]
         },
         "tags": {
-            "enabled": True,
+            "enabled": False,
             "temperature": 0.8,  # Higher for more diverse tag generation
             "max_tags": 10,
             "min_tags": 5,
@@ -102,7 +102,7 @@ BATCH_CONFIG = {
             ]
         },
         "caption": {
-            "enabled": True,
+            "enabled": False,
             "before_word_count_max": 40,
             "equipment_word_count_max": 40,
             "shape": "component",
@@ -110,11 +110,11 @@ BATCH_CONFIG = {
             "max_tokens": 1000  # Override global max_tokens for caption
         },
         "jsonld": {
-            "enabled": True,
+            "enabled": False,
             "temperature": 0.3  # Low temperature for structured JSON data
         },
         "metatags": {
-            "enabled": True,
+            "enabled": False,
             "min_tags": 8,
             "max_tags": 20,
             "temperature": 0.5  # Moderate temperature for balanced metadata generation
