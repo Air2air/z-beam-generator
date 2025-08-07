@@ -95,7 +95,7 @@ def format_frontmatter_with_comment(yaml_content: str, category: str = "", artic
     configure_yaml_formatting()
     
     # Convert back to YAML
-    updated_yaml = yaml.dump(frontmatter_data, default_flow_style=False, sort_keys=False)
+    updated_yaml = yaml.dump(frontmatter_data, default_flow_style=False, sort_keys=False, width=float('inf'))
     
     # Add delimiters (no HTML comments)
     delimited_yaml = f"---\n{updated_yaml}---\n"
@@ -122,7 +122,7 @@ def format_jsonld_as_yaml_markdown(jsonld: Dict[str, Any]) -> str:
         # Configure YAML for consistent formatting
         configure_yaml_formatting()
         
-        yaml_str = yaml.dump(jsonld, default_flow_style=False, sort_keys=False)
+        yaml_str = yaml.dump(jsonld, default_flow_style=False, sort_keys=False, width=float('inf'))
         
         # Clean up any backslash line continuations
         yaml_str = re.sub(r'"\\\s*\n\s*\\?"', '"', yaml_str)
@@ -242,7 +242,7 @@ def format_yaml_object(data: Dict[str, Any]) -> str:
     try:
         # Always configure YAML formatting before dumping
         configure_yaml_formatting()
-        yaml_str = yaml.dump(data, default_flow_style=False, sort_keys=False)
+        yaml_str = yaml.dump(data, default_flow_style=False, sort_keys=False, width=float('inf'))
         return yaml_str
     except Exception as e:
         raise ValueError(f"Failed to serialize as YAML: {e}")

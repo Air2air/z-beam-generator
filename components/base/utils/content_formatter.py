@@ -314,6 +314,63 @@ class ContentFormatter:
         return formatted
     
     @staticmethod
+    def clean_yaml_output(content: str) -> str:
+        """Clean YAML output by removing hard returns and unnecessary escaping.
+        
+        Args:
+            content: YAML content string
+            
+        Returns:
+            str: Cleaned YAML content without hard returns and escaping
+        """
+        # Remove escaped backslashes followed by spaces and newlines within quoted strings
+        content = re.sub(r'\\[\s\n]+', ' ', content)
+        
+        # Remove hard returns within quoted values (indicated by quotes on separate lines)
+        lines = content.split('\n')
+        cleaned_lines = []
+        i = 0
+        
+        while i < len(lines):
+            line = lines[i]
+            
+            # Check if this line starts a quoted string that continues on next lines
+            if ':' in line and ('"' in line or "'" in line):
+                # Find if the string is broken across lines
+                if line.count('"') == 1 or line.count("'") == 1:
+                    # This is a multi-line quoted string
+                    quote_char = '"' if '"' in line else "'"
+                    combined_line = line
+                    i += 1
+                    
+                    # Combine lines until we find the closing quote
+                    while i < len(lines) and quote_char not in lines[i]:
+                        combined_line += ' ' + lines[i].strip()
+                        i += 1
+                    
+                    # Add the final line with closing quote
+                    if i < len(lines):
+                        combined_line += ' ' + lines[i].strip()
+                    
+                    cleaned_lines.append(combined_line)
+                else:
+                    cleaned_lines.append(line)
+            else:
+                cleaned_lines.append(line)
+            
+            i += 1
+        
+        content = '\n'.join(cleaned_lines)
+        
+        # Remove backslash escaping at end of lines (YAML line continuation)
+        content = re.sub(r'\\\s*\n\s*', ' ', content)
+        
+        # Clean up extra spaces
+        content = re.sub(r'  +', ' ', content)
+        
+        return content
+
+    @staticmethod
     def normalize_yaml_content(content: str) -> str:
         """Normalize YAML content for consistency.
         

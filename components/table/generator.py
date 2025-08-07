@@ -43,6 +43,9 @@ class TableGenerator(BaseComponent):
         Raises:
             ValueError: If content is invalid
         """
+        # Apply centralized formatting first for consistency
+        content = self.apply_centralized_formatting(content)
+        
         # Validate table format - look for pipe characters indicating markdown table
         lines = content.strip().split('\n')
         tables = self._extract_tables(lines)

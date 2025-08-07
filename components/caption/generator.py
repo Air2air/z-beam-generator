@@ -26,6 +26,9 @@ class CaptionGenerator(BaseComponent):
         Raises:
             ValueError: If content is invalid
         """
+        # Apply centralized formatting first for consistency
+        content = self.apply_centralized_formatting(content)
+        
         # Clean and normalize the content using centralized base component method
         clean_content = self.normalize_case(content.strip(), 'sentence')
         

@@ -26,6 +26,9 @@ class BulletsGenerator(BaseComponent):
         Raises:
             ValueError: If content is invalid
         """
+        # Apply centralized formatting first for consistency
+        content = self.apply_centralized_formatting(content)
+        
         # Extract bullet points from content
         bullet_items = self._extract_bullet_points(content)
         

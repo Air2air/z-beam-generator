@@ -794,7 +794,10 @@ class BaseComponent(ABC):
             if isinstance(content, str) and ('---' in content or content.strip().startswith(('name:', 'title:', 'headline:'))):
                 try:
                     import yaml
-                    content = yaml.dump(parsed_data, default_flow_style=False, allow_unicode=True, sort_keys=False)
+                    # Use width parameter to prevent line breaking and clean output afterward
+                    content = yaml.dump(parsed_data, default_flow_style=False, allow_unicode=True, sort_keys=False, width=float('inf'))
+                    # Clean the YAML output to remove hard returns and escaping
+                    content = ContentFormatter.clean_yaml_output(content)
                 except Exception as e:
                     logger.warning(f"Failed to convert formatted data back to YAML: {e}")
         

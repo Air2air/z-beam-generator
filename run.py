@@ -40,7 +40,7 @@ BATCH_CONFIG = {
     "multi_subject": {
         "author_id": 1,  # Use this author for all subjects
         "subject_source": "lists",  # Directory to discover all subjects from all categories
-        "limit": 30,  # Range [start_idx, end_idx] to process items by index (or a single number for first N items, None for all subjects)
+        "limit": 10,  # Range [start_idx, end_idx] to process items by index (or a single number for first N items, None for all subjects)
     },
     
     # Global AI configuration - applied to all components

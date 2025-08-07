@@ -5,14 +5,10 @@ Enhanced implementation with robust error handling and auto-recovery.
 """
 
 import logging
-import yaml
 import re
 
 from components.base.component import BaseComponent
-from components.base.utils.validation import (
-    validate_length, validate_required_fields, validate_category_consistency
-)
-from components.base.utils.formatting import format_frontmatter_with_comment
+from components.base.utils.validation import validate_category_consistency
 from components.base.utils.slug_utils import SlugUtils
 from components.base.utils.content_formatter import ContentFormatter
 from components.base.image_handler import ImageHandler
@@ -95,66 +91,36 @@ class FrontmatterGenerator(BaseComponent):
         Raises:
             ValueError: If content is invalid
         """
-        # First, apply basic content normalization
-        content = ContentFormatter.normalize_yaml_content(content)
-        
-        # Extract YAML content from various formats the AI might generate
-        yaml_content = self._extract_yaml_content(content)
-        
-        # Attempt to parse as YAML to validate structure
+        # Parse the response to get structured data
         try:
-            parsed = yaml.safe_load(yaml_content)
-            if not isinstance(parsed, dict):
-                raise ValueError("Frontmatter must be a valid YAML dictionary")
-        except yaml.YAMLError as e:
-            # Additional debugging
-            logger.error(f"YAML parsing error: {e}")
-            logger.error(f"Content causing error: {yaml_content}")
-            raise ValueError(f"Invalid YAML in frontmatter: {e}")
-        
-        # Handle materialProfile wrapper (sometimes the model wraps everything in this object)
-        if len(parsed.keys()) == 1 and 'materialProfile' in parsed and isinstance(parsed['materialProfile'], dict):
-            logger.warning("Found 'materialProfile' wrapper, extracting contents")
-            profile_data = parsed.pop('materialProfile')
-            # Merge the profile data into the main dictionary
-            parsed.update(profile_data)
-            logger.info(f"Extracted fields from materialProfile: {list(profile_data.keys())}")
-        
-        # Special handling for common error: using 'title' instead of 'name'
-        if 'name' not in parsed and 'title' in parsed:
-            # Auto-fix instead of error
-            logger.warning("Found 'title' field but 'name' is required. Copying 'title' to 'name'.")
-            parsed['name'] = parsed['title']
-        
-        # Apply centralized formatting
-        formatted_content = self.apply_centralized_formatting(content, parsed)
+            import json
+            import yaml
+            
+            # First try to parse as JSON (common AI response format)
+            if content.strip().startswith('{'):
+                parsed_data = json.loads(content)
+            else:
+                # Try to parse as YAML
+                parsed_data = yaml.safe_load(content)
+            
+            # For frontmatter, always convert to YAML format
+            formatted_content = yaml.dump(parsed_data, default_flow_style=False, allow_unicode=True, sort_keys=False, width=float('inf'))
+            
+            # Apply centralized formatting for cleanup and normalization
+            formatted_content = self.apply_centralized_formatting(formatted_content, parsed_data)
+            
+        except (json.JSONDecodeError, yaml.YAMLError) as e:
+            logger.warning(f"Failed to parse frontmatter as JSON/YAML: {e}, using fallback")
+            # Fallback to basic formatting
+            formatted_content = self.apply_centralized_formatting(content)
         
         # Ensure frontmatter has proper YAML delimiters
-        # Re-parse to get the formatted data structure
-        try:
-            formatted_parsed = yaml.safe_load(formatted_content)
-            if not isinstance(formatted_parsed, dict):
-                raise ValueError("Formatted frontmatter must be a valid YAML dictionary")
-        except yaml.YAMLError as e:
-            logger.error(f"YAML parsing error after formatting: {e}")
-            raise ValueError(f"Invalid YAML in formatted frontmatter: {e}")
+        if not formatted_content.startswith('---'):
+            formatted_content = '---\n' + formatted_content
+        if not formatted_content.endswith('---'):
+            formatted_content = formatted_content.rstrip() + '\n---'
         
-        # Get category from instance attribute
-        category = getattr(self, 'category', '')
-        
-        # Enhanced dynamic schema-based field validation and auto-population using base component
-        parsed = self.validate_and_populate_required_fields(parsed, 'frontmatter')
-        
-        # Apply schema structure validation after auto-fixes
-        parsed = self._ensure_schema_structure(parsed)
-        
-        # Convert to YAML string and add proper frontmatter delimiters
-        yaml_content = yaml.dump(parsed, default_flow_style=False, sort_keys=False, allow_unicode=True)
-        final_content = format_frontmatter_with_comment(
-            yaml_content, category, self.article_type, self.subject
-        )
-        
-        return final_content
+        return formatted_content
     
     def _extract_yaml_content(self, content: str) -> str:
         """Extract clean YAML content from various AI response formats.
@@ -165,8 +131,19 @@ class FrontmatterGenerator(BaseComponent):
         Returns:
             str: Clean YAML content
         """
-        # Use centralized base component method
-        return self.extract_yaml_content(content)
+        # First try to extract content between frontmatter markers
+        yaml_content = ContentFormatter.extract_content_between_markers(content, '---')
+        
+        # If no markers found, use the general YAML extraction method
+        if yaml_content == content:
+            yaml_content = self.extract_yaml_content(content)
+        
+        # Make sure we don't have trailing --- markers that would create multiple YAML documents
+        yaml_content = yaml_content.strip()
+        if yaml_content.endswith('---'):
+            yaml_content = yaml_content[:-3].strip()
+        
+        return yaml_content
 
     def _sanitize_content(self, content: str) -> str:
         """Remove malformed content and standardize image URLs."""
