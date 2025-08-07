@@ -65,9 +65,9 @@ condensed_template: |
   Description: {formatted_description}
   Keywords: {formatted_keywords}
   
-  Format as a complete article using markdown.
+  Focus on providing rich, detailed content. All article structure and 
+  markdown formatting will be handled by Python utilities.
 
 parameters:
   max_tokens: 4000
   temperature: 0.7
-  markdown_formatting: true

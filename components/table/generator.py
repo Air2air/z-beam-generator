@@ -107,8 +107,9 @@ class TableGenerator(BaseComponent):
                     in_table = False
             # Content line that might be after a header but before a table
             elif not in_table and line.strip() and not re.match(r'^#', line):
-                # This might be a description for the table
-                current_title = f"{current_title}: {line.strip()}"
+                # Skip descriptive text lines to avoid malformed titles
+                # Only use proper markdown headers (##, ###) as titles
+                pass
         
         # Add the final table if there is one
         if in_table and current_table_lines:

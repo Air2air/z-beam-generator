@@ -135,7 +135,26 @@ class FrontmatterGenerator(BaseComponent):
         # Apply centralized formatting
         formatted_content = self.apply_centralized_formatting(content, parsed)
         
-        return formatted_content
+        # Ensure frontmatter has proper YAML delimiters
+        # Re-parse to get the formatted data structure
+        try:
+            formatted_parsed = yaml.safe_load(formatted_content)
+            if not isinstance(formatted_parsed, dict):
+                raise ValueError("Formatted frontmatter must be a valid YAML dictionary")
+        except yaml.YAMLError as e:
+            logger.error(f"YAML parsing error after formatting: {e}")
+            raise ValueError(f"Invalid YAML in formatted frontmatter: {e}")
+        
+        # Get category from instance attribute
+        category = getattr(self, 'category', '')
+        
+        # Convert to YAML string and add proper frontmatter delimiters
+        yaml_content = yaml.dump(formatted_parsed, default_flow_style=False, sort_keys=False, allow_unicode=True)
+        final_content = format_frontmatter_with_comment(
+            yaml_content, category, self.article_type, self.subject
+        )
+        
+        return final_content
     
     def _extract_yaml_content(self, content: str) -> str:
         """Extract clean YAML content from various AI response formats.

@@ -55,7 +55,7 @@ class MetatagsGenerator(BaseComponent):
                 f.write(f"Formatted content:\n{formatted_content}\n")
                 f.write("-" * 80 + "\n")
                 
-            return f"---\n{formatted_content}---"
+            return f"---\n{formatted_content}---\n"
             
         except Exception as e:
             # Log the error

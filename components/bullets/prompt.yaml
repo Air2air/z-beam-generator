@@ -63,11 +63,8 @@ condensed_template: |
   Description: {formatted_description}
   Keywords: {formatted_keywords}
   
-  FORMAT REQUIREMENTS:
-  - Format as exactly {count} bullet points using "*" at the beginning of each line
-  - Each bullet should be comprehensive and cover multiple related points
-  - Start each bullet with a bold section header using ** markdown formatting
-  - Example: "* **Technical Properties**: Includes density of 3.95 g/cm³, melting point of 2072°C..."
+  Focus on providing rich technical content. All bullet formatting, structure, 
+  and markdown formatting will be handled by Python utilities.
 
 parameters:
   max_tokens: 2000

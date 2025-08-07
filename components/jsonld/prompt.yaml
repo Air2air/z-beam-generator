@@ -3,40 +3,11 @@ description: "Generates Schema.org-compliant JSON-LD structured data for laser c
 version: "3.0.5"
 
 template: |
-  Generate Schema.org structured data in YAML format for {article_type} "{subject}" laser cleaning article.
-
-  YAML OUTPUT REQUIRED:
-  Produce clean YAML structure for JSON-LD. Python will convert to final JSON format.
+  Generate Schema.org structured data content for {article_type} "{subject}" laser cleaning article.
 
   CONTENT-ONLY FOCUS:
-  You provide ONLY the content values. All URLs, formatting, and Schema.org compliance 
-  will be handled by Python.
-
-  PYTHON PROVIDES THESE FORMATTED ELEMENTS:
-  - Main URL: {hero_image_url} (properly formatted)
-  - Image URLs: {hero_image_url}, {closeup_image_url} (properly formatted)
-  - Subject slug: {slug}
-  - Dates: {created_date}, {updated_date}
-
-  REQUIRED YAML STRUCTURE:
-  ```yaml
-  "@context": "https://schema.org"
-  "@type": "Article"
-  headline: "Content headline here"
-  description: "Content description here"
-  image: 
-    - "url value"
-  author:
-    "@type": "Person"
-    name: "Author name"
-  publisher:
-    "@type": "Organization"
-    name: "Z-Beam"
-  mainEntity:
-    "@type": "Product"
-    name: "Product name"
-    description: "Product description"
-  ```
+  You provide ONLY the content values. All JSON-LD structure, formatting, and 
+  Schema.org compliance will be handled by Python utilities.
 
   AVAILABLE CONTEXT:
   Subject: {subject}
@@ -47,5 +18,11 @@ template: |
   Material Type: {material_type}
   Author: {author_name} ({author_country})
 
-  Focus on providing rich, descriptive content that works well in structured data contexts.
+  PRE-FORMATTED ELEMENTS PROVIDED BY PYTHON:
+  - Image URLs: {hero_image_url}, {closeup_image_url}
+  - Subject slug: {slug}
+  - Dates: {created_date}, {updated_date}
+
+  Focus on providing rich, descriptive content for structured data. All JSON formatting, 
+  Schema.org compliance, and URL formatting will be handled automatically.
   All JSON formatting, Schema.org compliance, and URL formatting will be handled automatically.
