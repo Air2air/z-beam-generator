@@ -82,6 +82,279 @@ class ContentFormatter:
         return description
     
     @staticmethod
+    @staticmethod
+    def _restructure_yaml_nesting(raw_data: dict, component_type: str = 'frontmatter') -> dict:
+        """Restructure flat YAML keys into proper nested sections for any component type.
+        
+        This method takes any flat data structure and organizes it into the proper
+        nested YAML format based on the component type.
+        
+        Args:
+            raw_data: Raw flat data from AI generation
+            component_type: Type of component (frontmatter, jsonld, metatags, etc.)
+            
+        Returns:
+            dict: Properly nested data structure with correct YAML hierarchy
+        """
+        if not isinstance(raw_data, dict):
+            return raw_data
+            
+        result = {}
+        
+        # Component-specific nested section configurations
+        nested_section_configs = {
+            'frontmatter': {
+                'properties': {},
+                'environmentalImpact': {},
+                'technicalSpecifications': {},
+                'outcomes': {},
+                'images': {}
+            },
+            'jsonld': {
+                # JSON-LD typically doesn't need deep nesting as it follows Schema.org structure
+            },
+            'metatags': {
+                # Metatags are typically flat key-value pairs
+            }
+        }
+        
+        # Get configuration for this component type
+        nested_sections = nested_section_configs.get(component_type, {})
+        
+        # For frontmatter specifically, handle the detailed property mappings
+        if component_type == 'frontmatter':
+            return ContentFormatter._restructure_frontmatter_specific(raw_data, nested_sections)
+        
+        # For other component types, apply simpler structuring if needed
+        return ContentFormatter._apply_generic_yaml_structure(raw_data, nested_sections)
+    
+    @staticmethod 
+    def _restructure_frontmatter_nesting(raw_data: dict) -> dict:
+        """Backward compatibility wrapper for frontmatter restructuring.
+        
+        Args:
+            raw_data: Raw flat data from AI generation
+            
+        Returns:
+            dict: Properly nested frontmatter data structure
+        """
+        return ContentFormatter._restructure_yaml_nesting(raw_data, 'frontmatter')
+    
+    @staticmethod
+    def _restructure_frontmatter_specific(raw_data: dict, nested_sections: dict) -> dict:
+        """Handle frontmatter-specific nested section logic."""
+        result = {}
+        
+        # Initialize nested sections for frontmatter
+        nested_sections.update({
+            'properties': {},
+            'environmentalImpact': {},
+            'technicalSpecifications': {},
+            'outcomes': {},
+            'images': {}
+        })
+        
+        # Comprehensive property keys (physical, chemical, mechanical properties)
+        property_keys = {
+            # Basic physical properties
+            'density', 'meltingPoint', 'boilingPoint', 'thermalConductivity', 'hardness',
+            'flexuralStrength', 'compressiveStrength', 'tensileStrength', 'elasticModulus',
+            'thermalExpansionCoefficient', 'coefficientOfThermalExpansion',
+            'dielectricStrength', 'dielectricConstant', 'waterAbsorption',
+            'electricalResistivity', 'fractureToughness', 'chemicalStability',
+            'glassTransitionTemperature', 'degradationTemperature', 'chemicalResistance',
+            'modulusOfElasticity', 'refractiveIndex',
+            # Variations in naming
+            'melting_point', 'boiling_point', 'thermal_conductivity', 'flexural_strength',
+            'compressive_strength', 'tensile_strength', 'elastic_modulus',
+            'thermal_expansion_coefficient', 'dielectric_strength', 'dielectric_constant',
+            'water_absorption', 'electrical_resistivity', 'fracture_toughness',
+            'chemical_stability', 'glass_transition_temperature', 'degradation_temperature',
+            'chemical_resistance', 'modulus_of_elasticity', 'refractive_index'
+        }
+        
+        # Environmental impact keys (any variation)
+        environmental_keys = {
+            'wasteReduction', 'energyEfficiency', 'emissions', 'VOCReduction', 'VOCreduction',
+            'energyConsumption', 'chemicalUsage', 'CO2Reduction', 'waterSavings',
+            'reducedWaste', 'emissionsReduction', 'energySavings', 'waterConservation',
+            'chemicalReduction', 'energyConsumption', 'waterSavings',
+            # Variations
+            'waste_reduction', 'energy_efficiency', 'voc_reduction', 'energy_consumption',
+            'chemical_usage', 'co2_reduction', 'water_savings', 'reduced_waste',
+            'emissions_reduction', 'energy_savings', 'water_conservation', 'chemical_reduction'
+        }
+        
+        # Technical specification keys (laser parameters, equipment specs)
+        technical_keys = {
+            'powerRange', 'pulseDuration', 'wavelength', 'spotSize', 'repetitionRate',
+            'fluenceRange', 'safetyClass', 'laserType', 'scanSpeed', 'wavelengthOptions',
+            'power_range', 'pulse_duration', 'spot_size', 'repetition_rate',
+            'fluence_range', 'safety_class', 'laser_type', 'scan_speed', 'wavelength_options'
+        }
+        
+        # Outcome/result keys (performance metrics)
+        outcome_keys = {
+            'cleaningEfficiency', 'surfaceRoughness', 'processingSpeed', 'processingRate',
+            'colorStability', 'glazePreservation', 'surfaceRoughnessChange', 'thermalAffectedZone',
+            'surfaceCleanliness', 'materialRemovalRate', 'adhesionImprovement', 'processEfficiency',
+            'surfaceQuality', 'contaminantRemoval', 'cleaningRate', 'bacterialReduction',
+            'colorDeltaE', 'substrateDamage', 'depthControl',
+            # Variations
+            'cleaning_efficiency', 'surface_roughness', 'processing_speed', 'processing_rate',
+            'color_stability', 'glaze_preservation', 'surface_roughness_change', 'thermal_affected_zone',
+            'surface_cleanliness', 'material_removal_rate', 'adhesion_improvement', 'process_efficiency',
+            'surface_quality', 'contaminant_removal', 'cleaning_rate', 'bacterial_reduction',
+            'color_delta_e', 'substrate_damage', 'depth_control'
+        }
+        
+        # Image structure keys
+        image_keys = {'hero', 'closeup', 'main', 'detail'}
+        
+        # Process each key-value pair
+        for key, value in raw_data.items():
+            key_lower = key.lower()
+            
+            if key in property_keys or key_lower in property_keys:
+                nested_sections['properties'][key] = value
+            elif key in environmental_keys or key_lower in environmental_keys:
+                nested_sections['environmentalImpact'][key] = value
+            elif key in technical_keys or key_lower in technical_keys:
+                nested_sections['technicalSpecifications'][key] = value
+            elif key in outcome_keys or key_lower in outcome_keys:
+                nested_sections['outcomes'][key] = value
+            elif key in image_keys:
+                nested_sections['images'][key] = value
+            else:
+                # Keep as top-level key (name, title, composition, applications, etc.)
+                result[key] = value
+        
+        # Add non-empty nested sections to result
+        for section_name, section_data in nested_sections.items():
+            if section_data:  # Only add if not empty
+                result[section_name] = section_data
+        
+        return result
+    
+    @staticmethod
+    def _apply_generic_yaml_structure(raw_data: dict, nested_sections: dict) -> dict:
+        """Apply generic YAML structuring for non-frontmatter components.
+        
+        Args:
+            raw_data: Raw data from AI generation
+            nested_sections: Component-specific nested section configuration
+            
+        Returns:
+            dict: Structured data with any required nesting
+        """
+        # For now, most components don't need complex nesting like frontmatter
+        # This method can be extended as other components require specific structuring
+        result = raw_data.copy()
+        
+        # Apply any component-specific nested sections if defined
+        if nested_sections:
+            for section_name, section_config in nested_sections.items():
+                if section_name in result:
+                    # If this section already exists, ensure it's properly structured
+                    if isinstance(result[section_name], dict):
+                        result[section_name] = {**section_config, **result[section_name]}
+                    else:
+                        result[section_name] = section_config
+        
+        return result
+    
+    @staticmethod
+    def _format_yaml_with_proper_indentation(data, indent_level=0):
+        """Format dictionary as YAML with guaranteed proper 2-space indentation.
+        
+        Args:
+            data: Dictionary or list to format
+            indent_level: Current indentation level (0 = root level)
+            
+        Returns:
+            str: Properly indented YAML string
+        """
+        if data is None:
+            return ""
+            
+        lines = []
+        indent = "  " * indent_level  # 2 spaces per level
+        
+        if isinstance(data, dict):
+            for key, value in data.items():
+                if isinstance(value, dict):
+                    # Nested dictionary - add key with colon, then nested content
+                    lines.append(f"{indent}{key}:")
+                    nested_yaml = ContentFormatter._format_yaml_with_proper_indentation(value, indent_level + 1)
+                    lines.append(nested_yaml)
+                elif isinstance(value, list):
+                    # List - add key with colon, then list items
+                    lines.append(f"{indent}{key}:")
+                    for item in value:
+                        if isinstance(item, dict):
+                            # List of dictionaries - each item starts with dash
+                            item_lines = []
+                            first_key = True
+                            for sub_key, sub_value in item.items():
+                                if first_key:
+                                    # First key gets the dash
+                                    formatted_value = ContentFormatter._format_yaml_value(sub_value)
+                                    item_lines.append(f"{indent}- {sub_key}: {formatted_value}")
+                                    first_key = False
+                                else:
+                                    # Subsequent keys are indented to align with first key value
+                                    formatted_value = ContentFormatter._format_yaml_value(sub_value)
+                                    item_lines.append(f"{indent}  {sub_key}: {formatted_value}")
+                            lines.extend(item_lines)
+                        else:
+                            # Simple list item
+                            formatted_value = ContentFormatter._format_yaml_value(item)
+                            lines.append(f"{indent}- {formatted_value}")
+                else:
+                    # Simple key-value pair
+                    formatted_value = ContentFormatter._format_yaml_value(value)
+                    lines.append(f"{indent}{key}: {formatted_value}")
+        elif isinstance(data, list):
+            for item in data:
+                if isinstance(item, dict):
+                    # List of dictionaries at root level
+                    item_lines = []
+                    first_key = True
+                    for sub_key, sub_value in item.items():
+                        if first_key:
+                            formatted_value = ContentFormatter._format_yaml_value(sub_value)
+                            item_lines.append(f"{indent}- {sub_key}: {formatted_value}")
+                            first_key = False
+                        else:
+                            formatted_value = ContentFormatter._format_yaml_value(sub_value)
+                            item_lines.append(f"{indent}  {sub_key}: {formatted_value}")
+                    lines.extend(item_lines)
+                else:
+                    formatted_value = ContentFormatter._format_yaml_value(item)
+                    lines.append(f"{indent}- {formatted_value}")
+        
+        return "\n".join(lines)
+    
+    @staticmethod 
+    def _format_yaml_value(value):
+        """Format a single YAML value with proper quoting if needed."""
+        if value is None:
+            return ""
+        
+        value_str = str(value)
+        
+        # Quote values that contain special characters or start with special chars
+        if any(char in value_str for char in [':', '"', "'", '#', '&', '*', '!', '|', '>', '@', '`']):
+            # Escape quotes in the value
+            escaped = value_str.replace('"', '\\"')
+            return f'"{escaped}"'
+        elif value_str.startswith(('true', 'false', 'null')) or value_str.isdigit():
+            # Quote values that might be interpreted as boolean/null/number when they shouldn't be
+            return f'"{value_str}"'
+        else:
+            return value_str
+    
+    @staticmethod
     def format_keywords(subject: str, category: str = None, 
                        chemical_formula: str = None) -> List[str]:
         """Generate comprehensive keyword list.
@@ -269,6 +542,14 @@ class ContentFormatter:
         """
         formatted = raw_data.copy()
         
+        # Restructure flat keys into proper nested sections
+        formatted = ContentFormatter._restructure_frontmatter_nesting(formatted)
+        
+        # Debug: Print structure before YAML conversion
+        import logging
+        logger = logging.getLogger(__name__)
+        logger.info(f"Restructured data structure: {formatted}")
+        
         # Apply standardized formatting
         formatted["title"] = ContentFormatter.format_title(subject, article_type)
         formatted["headline"] = ContentFormatter.format_headline(subject, category)
@@ -396,68 +677,27 @@ class ContentFormatter:
         # Escape YAML values that start with special characters that cause parsing issues
         content = ContentFormatter._escape_yaml_values(content)
         
-        # Normalize quote usage in YAML
-        content = re.sub(r'([:\s]+)"([^"]*?)"(\s*)', r'\1"\2"\3', content)
-        
-        # Proper YAML structure normalization with context awareness
-        lines = content.split('\n')
-        normalized_lines = []
-        current_indent_level = 0
-        in_list_item = False
-        
-        for i, line in enumerate(lines):
-            if not line.strip():
-                normalized_lines.append(line)
-                continue
-                
-            # Convert tabs to spaces
-            line = line.expandtabs(2)
-            stripped_line = line.lstrip()
+        # Parse and re-structure with guaranteed proper indentation
+        try:
+            import yaml
             
-            # Determine if this is a list item marker
-            is_list_marker = stripped_line.startswith('- ')
+            # Parse the YAML content to get structured data
+            parsed_data = yaml.safe_load(content)
+            if parsed_data is None:
+                return content
             
-            # Determine if this is a key:value pair
-            is_key_value = ':' in stripped_line and not stripped_line.startswith('- ')
+            # Use our custom formatter that guarantees proper indentation
+            formatted_yaml = ContentFormatter._format_yaml_with_proper_indentation(parsed_data)
             
-            if is_list_marker:
-                # This is a list item - use current level
-                line = ' ' * current_indent_level + stripped_line
-                in_list_item = True
-                
-            elif in_list_item and is_key_value:
-                # This is a property of the list item - indent by 2 more spaces
-                line = ' ' * (current_indent_level + 2) + stripped_line
-                
-            elif is_key_value and not in_list_item:
-                # This is a top-level key - check if it should reset the indent level
-                if not stripped_line.startswith(' '):
-                    # Top-level key
-                    current_indent_level = 0
-                    in_list_item = False
-                    line = stripped_line
-                    
-                    # If the next line starts with '- ', this key will have a list
-                    if i + 1 < len(lines):
-                        next_line = lines[i + 1].strip()
-                        if next_line.startswith('- '):
-                            current_indent_level = 0  # List items will be at level 0
-                else:
-                    # Already indented key - maintain proper indentation
-                    line = ' ' * current_indent_level + stripped_line
-            else:
-                # Handle other cases - maintain existing structure but normalize spaces
-                leading_spaces = len(line) - len(stripped_line)
-                if leading_spaces > 0:
-                    normalized_indent = (leading_spaces // 2) * 2
-                    line = ' ' * normalized_indent + stripped_line
-                else:
-                    line = stripped_line
-                    in_list_item = False
+            return formatted_yaml.strip()
             
-            normalized_lines.append(line)
-        
-        return '\n'.join(normalized_lines)
+        except yaml.YAMLError as e:
+            # YAML parsing failed - this should be rare with proper escaping
+            # Return content as-is rather than attempting manual fixes
+            import logging
+            logger = logging.getLogger(__name__)
+            logger.warning(f"YAML parsing failed despite escaping: {e}")
+            return content
     
     @staticmethod
     def _escape_yaml_values(content: str) -> str:
@@ -469,10 +709,48 @@ class ContentFormatter:
         Returns:
             str: YAML content with problematic values quoted
         """
-        # Quote values that start with > or < followed by numbers (like >95% or <0.1µm)
-        content = re.sub(r'(\w+:\s*)([><]\d+[^"\n]*)', r'\1"\2"', content)
+        lines = content.split('\n')
+        escaped_lines = []
         
-        return content
+        for line in lines:
+            # Skip empty lines and comments
+            if not line.strip() or line.strip().startswith('#'):
+                escaped_lines.append(line)
+                continue
+            
+            # Check if this is a key-value line (has a colon followed by a space)
+            colon_match = re.match(r'^(\s*)([^:]+):\s*(.*)$', line)
+            if colon_match:
+                indent, key, value = colon_match.groups()
+                
+                # Don't quote if already quoted or empty
+                if not value or value.startswith('"') or value.startswith("'"):
+                    escaped_lines.append(line)
+                    continue
+                
+                # Quote if value contains problematic characters
+                needs_quoting = False
+                
+                # Contains unescaped colons (but not URLs)
+                if ':' in value and not value.startswith('http'):
+                    needs_quoting = True
+                # Contains brackets that could be mistaken for arrays
+                elif '[' in value or ']' in value:
+                    needs_quoting = True
+                # Starts with special YAML characters
+                elif re.match(r'^[#*&!|>\'%@`\[\]{}]', value):
+                    needs_quoting = True
+                
+                if needs_quoting:
+                    # Escape any existing quotes in the value
+                    escaped_value = value.replace('"', '\\"')
+                    escaped_lines.append(f'{indent}{key}: "{escaped_value}"')
+                else:
+                    escaped_lines.append(line)
+            else:
+                escaped_lines.append(line)
+        
+        return '\n'.join(escaped_lines)
     
     @staticmethod
     def extract_yaml_content(content: str) -> str:
@@ -640,11 +918,12 @@ class ContentFormatter:
         
         for match in matches:
             try:
-                import yaml, json
+                import yaml
+                import json
                 yaml_data = yaml.safe_load(match.group(1).strip())
                 if yaml_data:
                     return json.dumps(yaml_data, indent=2)
-            except:
+            except Exception:
                 continue
         
         # Try to parse the entire content as JSON
@@ -652,14 +931,15 @@ class ContentFormatter:
             import json
             json.loads(content.strip())
             return content.strip()
-        except:
+        except Exception:
             # Try as YAML
             try:
-                import yaml, json
+                import yaml
+                import json
                 yaml_data = yaml.safe_load(content.strip())
                 if yaml_data:
                     return json.dumps(yaml_data, indent=2)
-            except:
+            except Exception:
                 pass
         
         # Look for JSON-like content in the response
@@ -668,7 +948,7 @@ class ContentFormatter:
                 import json
                 json.loads(content.strip())
                 return content.strip()
-            except:
+            except Exception:
                 pass
         
         return content

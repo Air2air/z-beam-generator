@@ -268,13 +268,7 @@ class BaseComponent(ABC):
         Returns:
             dict: Field definitions from the schema
         """
-        try:
-            # Get profile-level field definitions if available
-            profile_fields = self.get_schema_config('profile', default={})
-            return profile_fields
-        except ValueError:
-            logger.warning(f"No profile field definitions found for article type: {self.article_type}")
-            return {}
+        return self.get_schema_config('profile', default={})
     
     def get_field_schema_info(self, field_name: str) -> dict:
         """Get schema information for a specific field.
@@ -288,48 +282,48 @@ class BaseComponent(ABC):
         schema_properties = self.get_schema_field_definitions()
         return schema_properties.get(field_name, {})
     
-    def generate_schema_compliant_field_value(self, field_name: str, component_name: str = None):
-        """Generate appropriate field value based on schema and field type.
+    def generate_dynamic_field_value(self, field_name: str) -> Any:
+        """Generate dynamic field value based on schema and context.
         
         Args:
             field_name: Name of the field to generate
-            component_name: Name of the component (for component-specific logic)
             
         Returns:
-            Appropriate value for the field based on schema
+            Appropriate value for the field based on schema and context
         """
-        if component_name is None:
-            component_name = self.__class__.__name__.replace("Generator", "").lower()
-        
-        schema_properties = self.get_schema_field_definitions()
-        field_info = schema_properties.get(field_name, {})
-        
-        # Handle special fields with custom logic first
+        # Handle essential fields with context-aware logic
         if field_name == "name":
             return self.subject
         elif field_name == "title":
-            return f"{self.subject} Laser Cleaning | Technical Guide"
+            return ContentFormatter.format_title(self.subject, self.article_type)
         elif field_name == "headline":
             return f"Technical guide to {self.subject} for laser cleaning applications"
         elif field_name == "description":
-            return f"A comprehensive technical overview of {self.subject} for laser cleaning applications, including properties, composition, and optimal processing parameters."
-        elif field_name == "author":
-            return self._generate_author_field()
+            return ContentFormatter.format_description(self.subject)
         elif field_name == "keywords":
-            return self.format_keywords_for_subject(getattr(self, 'category', None))
+            return ContentFormatter.format_keywords(self.subject, getattr(self, 'category', None))
         elif field_name == "category":
-            return getattr(self, 'category', 'unknown') if hasattr(self, 'category') and self.category else "unknown"
-        elif field_name == "chemicalProperties":
-            return self._generate_chemical_properties_field()
+            return getattr(self, 'category', 'unknown')
         elif field_name == "images":
-            return self._generate_images_field()
+            return ContentFormatter.format_images(self.subject)
+        elif field_name == "author":
+            return ContentFormatter.format_author_info(self.author_data)
         elif field_name == "article_type":
             return self.article_type
         elif field_name == "subject":
             return self.subject
+        # JSON-LD specific fields
+        elif field_name == "@context":
+            return "https://schema.org"
+        elif field_name == "@type":
+            return "Article"
+        elif field_name == "articleBody":
+            return f"Technical content about {self.subject} laser cleaning applications."
         
         # Handle schema-defined field types
+        field_info = self.get_field_schema_info(field_name)
         field_type = field_info.get('type', 'string')
+        
         if field_type == 'array':
             return []
         elif field_type == 'object':
@@ -339,72 +333,14 @@ class BaseComponent(ABC):
         elif field_type == 'number':
             return 0
         else:
-            # Strict mode: No default values
-            raise ValueError(f"Unable to generate required field: {field_name}")
+            raise ValueError(f"Unable to generate dynamic field: {field_name}")
     
-    def _generate_author_field(self) -> dict:
-        """Generate author field based on available author data."""
-        if self.author_data and "author_name" in self.author_data:
-            author_field = {
-                "name": self.author_data["author_name"],
-                "country": self.author_data["author_country"],
-                "credentials": self.author_data.get("author_title", "Laser Cleaning Expert")
-            }
-            
-            # Add specialties if available
-            if self.author_data.get("author_specialties"):
-                author_field["credentials"] += f", {self.author_data['author_specialties'][0]}"
-            
-            # Add author ID if available
-            if "author_id" in self.author_data:
-                author_field["id"] = self.author_data["author_id"]
-                
-            return author_field
-        else:
-            # Strict mode: No fallback author data
-            raise ValueError("Author data is required but not available")
-    
-    def _generate_chemical_properties_field(self) -> dict:
-        """Generate chemical properties field for material articles."""
-        if self.article_type == 'material':
-            # Try to get from material formula service if available
-            try:
-                from components.base.material_formula_service import MaterialFormulaService
-                service = MaterialFormulaService()
-                formula_data = service.get_material_formula(self.subject)
-                if formula_data:
-                    return {
-                        "symbol": formula_data.get("symbol", self.subject),
-                        "formula": formula_data.get("formula", "Not specified"),
-                        "materialType": formula_data.get("type", "compound")
-                    }
-            except (ImportError, Exception) as e:
-                # Strict mode: Fail if chemical data cannot be obtained
-                raise ValueError(f"Could not get chemical formula data for {self.subject}: {e}")
-        
-        # Strict mode: No fallback chemical properties
-        raise ValueError(f"No chemical data found for material: {self.subject}")
-    
-    def _generate_images_field(self) -> dict:
-        """Generate images field with proper URLs."""
-        subject_slug = self.subject.lower().replace(' ', '-').replace('_', '-')
-        return {
-            "hero": {
-                "alt": f"{self.subject} laser cleaning process demonstration",
-                "url": f"https://www.z-beam.com/images/{subject_slug}-laser-cleaning-hero.jpg"
-            },
-            "closeup": {
-                "alt": f"Detailed view of {self.subject} surface after laser cleaning",
-                "url": f"https://www.z-beam.com/images/{subject_slug}-laser-cleaning-closeup.jpg"
-            }
-        }
-    
-    def validate_and_populate_required_fields(self, parsed_data: dict, component_name: str = None) -> dict:
-        """Validate and auto-populate missing required fields based on schema.
+    def populate_missing_required_fields(self, parsed_data: dict, component_name: str = None) -> dict:
+        """Populate missing required fields based on schema.
         
         Args:
             parsed_data: The parsed data dictionary
-            component_name: Name of the component (defaults to current component)
+            component_name: Name of the component
             
         Returns:
             dict: Data with all required fields populated
@@ -414,11 +350,10 @@ class BaseComponent(ABC):
         
         required_fields = self.get_required_fields(component_name)
         
-        # Auto-populate missing required fields
+        # Populate missing required fields
         for field in required_fields:
             if field not in parsed_data:
-                logger.warning(f"Auto-populating missing required field: {field}")
-                parsed_data[field] = self.generate_schema_compliant_field_value(field, component_name)
+                parsed_data[field] = self.generate_dynamic_field_value(field)
         
         return parsed_data
     
@@ -607,15 +542,6 @@ class BaseComponent(ABC):
     def _post_process(self, content: str) -> str:
         """Base post-processing implementation with common validation.
         
-        This provides the common validation logic that most generators need:
-        1. Validates content is not empty
-        2. Strips markdown code blocks
-        3. Configures YAML formatting for consistent output
-        4. Calls component-specific processing via _component_specific_processing
-        
-        Subclasses should override _component_specific_processing instead of this method
-        unless they need to completely change the post-processing behavior.
-        
         Args:
             content: Raw API response
             
@@ -631,15 +557,7 @@ class BaseComponent(ABC):
         # Step 2: Strip code blocks
         content = self._strip_markdown_code_blocks(content)
         
-        # Step 3: Configure YAML formatting for all generators
-        # This ensures consistent YAML output across all components
-        try:
-            from components.base.utils.formatting import configure_yaml_formatting
-            configure_yaml_formatting()
-        except ImportError:
-            logger.warning("Could not configure YAML formatting - formatting module not found")
-        
-        # Step 4: Component-specific processing
+        # Step 3: Component-specific processing
         return self._component_specific_processing(content)
     
     def _component_specific_processing(self, content: str) -> str:
@@ -654,8 +572,216 @@ class BaseComponent(ABC):
         Raises:
             ValueError: If content fails component-specific validation
         """
-        # Default implementation returns the content unchanged
-        return content
+        # Default implementation uses centralized structured content processing
+        return self._process_structured_content(content)
+    
+    def _process_structured_content(self, content: str, output_format: str = "yaml") -> str:
+        """Centralized processing for structured content (YAML, JSON, etc.).
+        
+        This method handles the common pattern used by most generators:
+        1. Parse AI response (JSON/YAML/text)
+        2. Populate missing required fields from schema
+        3. Apply component-specific formatting
+        4. Add proper delimiters
+        
+        Args:
+            content: Raw AI response content
+            output_format: Desired output format ("yaml", "json")
+            
+        Returns:
+            str: Processed and formatted content
+            
+        Raises:
+            ValueError: If content parsing or validation fails
+        """
+        component_name = self.__class__.__name__.replace("Generator", "").lower()
+        
+        # Step 1: Parse the response to get structured data
+        try:
+            import json
+            import yaml
+            
+            # Apply YAML escaping BEFORE parsing to prevent issues
+            if ':' in content and not content.strip().startswith('{'):
+                content = ContentFormatter._escape_yaml_values(content)
+            
+            # Try JSON first (if AI returns structured JSON)
+            if content.strip().startswith('{'):
+                parsed_data = json.loads(content)
+            # Try YAML if it looks like valid YAML
+            elif ':' in content and not ('**' in content or '*' in content):
+                parsed_data = yaml.safe_load(content)
+            else:
+                # Handle raw text content - extract information intelligently
+                parsed_data = self._extract_content_from_text(content)
+            
+            # Step 2: Ensure all required schema fields are present
+            parsed_data = self.populate_missing_required_fields(parsed_data, component_name)
+            
+            # Step 3: Apply component-specific formatting rules
+            parsed_data = self._apply_component_formatting_rules(parsed_data, component_name)
+            
+            # Step 4: Convert to desired output format
+            if output_format.lower() == "yaml":
+                formatted_content = yaml.dump(
+                    parsed_data, 
+                    default_flow_style=False, 
+                    allow_unicode=True, 
+                    sort_keys=False, 
+                    width=float('inf'),
+                    indent=2
+                )
+                # Apply centralized formatting for cleanup and normalization
+                formatted_content = self.apply_centralized_formatting(formatted_content, parsed_data)
+                
+                # Add YAML frontmatter delimiters
+                if not formatted_content.startswith('---'):
+                    formatted_content = '---\n' + formatted_content
+                if not formatted_content.endswith('---'):
+                    formatted_content = formatted_content.rstrip() + '\n---'
+                    
+            elif output_format.lower() == "json":
+                formatted_content = json.dumps(parsed_data, indent=2, ensure_ascii=False)
+            else:
+                raise ValueError(f"Unsupported output format: {output_format}")
+            
+            return formatted_content
+            
+        except (json.JSONDecodeError, yaml.YAMLError) as e:
+            raise ValueError(f"Failed to parse {component_name} as valid JSON/YAML: {e}")
+    
+    def _apply_component_formatting_rules(self, parsed_data: dict, component_name: str) -> dict:
+        """Apply component-specific formatting rules to parsed data.
+        
+        This method can be overridden by subclasses for component-specific logic,
+        but most components should use the default centralized formatting.
+        
+        Args:
+            parsed_data: Parsed data dictionary
+            component_name: Name of the component
+            
+        Returns:
+            dict: Data with component-specific formatting applied
+        """
+        # Component-specific formatting rules
+        if component_name == "metatags":
+            # Apply dynamic SEO requirements from schema
+            parsed_data = self._apply_dynamic_seo_requirements(parsed_data)
+            
+            # Validate fields based on article type (import here to avoid circular imports)
+            try:
+                from components.metatags.validation import validate_article_specific_fields
+                validate_article_specific_fields(self.article_type, getattr(self, 'category', None), parsed_data)
+            except ImportError:
+                logger.warning("Metatags validation not available")
+            
+            return ContentFormatter.format_metatags_structure(
+                parsed_data, self.subject, getattr(self, 'category', None)
+            )
+        elif component_name == "jsonld":
+            # JSON-LD specific validation and formatting
+            self._validate_jsonld_structure(parsed_data)
+            return parsed_data
+        else:
+            # Default frontmatter formatting for all other components
+            return ContentFormatter.format_frontmatter_structure(
+                parsed_data, self.subject, getattr(self, 'category', None), self.article_type
+            )
+    
+    def _validate_jsonld_structure(self, data: dict) -> None:
+        """Validate JSON-LD structure and apply schema requirements.
+        
+        Args:
+            data: Parsed JSON-LD data
+            
+        Raises:
+            ValueError: If validation fails
+        """
+        # Basic JSON-LD validation - check context format
+        if '@context' in data:
+            context = data['@context']
+            if context not in ['https://schema.org', 'http://schema.org']:
+                # Auto-correct common schema.org variations
+                if 'schema.org' in str(context).lower():
+                    data['@context'] = 'https://schema.org'
+                else:
+                    raise ValueError(f"Invalid @context value: {context}. Must be https://schema.org")
+    
+    def _extract_content_from_text(self, content: str) -> dict:
+        """Extract structured data from raw text content.
+        
+        This method attempts to intelligently parse unstructured text
+        and extract key-value pairs for structured data.
+        
+        Args:
+            content: Raw text content
+            
+        Returns:
+            dict: Extracted structured data
+        """
+        extracted_data = {}
+        
+        # Split into lines and look for key patterns
+        lines = content.strip().split('\n')
+        current_key = None
+        current_value = []
+        
+        for line in lines:
+            line = line.strip()
+            if not line:
+                continue
+                
+            # Look for key: value patterns
+            if ':' in line and not line.startswith('-'):
+                if current_key and current_value:
+                    # Save previous key-value pair
+                    extracted_data[current_key] = ' '.join(current_value).strip()
+                
+                # Start new key-value pair
+                parts = line.split(':', 1)
+                current_key = parts[0].strip()
+                current_value = [parts[1].strip()] if len(parts) > 1 and parts[1].strip() else []
+            elif current_key:
+                # Continuation of current value
+                current_value.append(line)
+        
+        # Don't forget the last key-value pair
+        if current_key and current_value:
+            extracted_data[current_key] = ' '.join(current_value).strip()
+        
+        # If no structured data found, create basic structure
+        if not extracted_data:
+            extracted_data = {
+                'name': self.subject,
+                'description': f"Technical information about {self.subject}"
+            }
+        
+        return extracted_data
+    
+    def _apply_dynamic_seo_requirements(self, parsed: dict) -> dict:
+        """Apply dynamic SEO requirements from schema for optimized metatag generation.
+        
+        Args:
+            parsed: The parsed metatags data
+            
+        Returns:
+            dict: Enhanced metatags with dynamic SEO requirements applied
+        """
+        if not self.has_schema_feature('generatorConfig'):
+            return parsed
+            
+        generator_config = self.get_schema_config('generatorConfig')
+        
+        # Use the research field configuration that exists in the schema
+        if 'research' in generator_config:
+            research_config = generator_config['research']
+            if 'fields' in research_config:
+                logger.info(f"Applied dynamic SEO context from research fields: {research_config['fields']}")
+        else:
+            # Strict mode: Generator config must be present
+            raise ValueError("Metatags generator requires generatorConfig with research fields in schema")
+        
+        return parsed
     
     def _strip_markdown_code_blocks(self, content: str) -> str:
         """Remove markdown code block delimiters if present.
@@ -678,7 +804,7 @@ class BaseComponent(ABC):
             content: Content to validate
             min_key: Component config key for minimum word count
             max_key: Component config key for maximum word count
-            component_name: Name of component for error messages (defaults to class name)
+            component_name: Name of component for error messages
             
         Returns:
             str: The original content if valid
@@ -690,18 +816,14 @@ class BaseComponent(ABC):
             component_name = self.__class__.__name__.replace("Generator", "")
             
         word_count = len(content.split())
-        
-        # Get min/max from component config
         min_words = self.get_component_config(min_key, 0)
         max_words = self.get_component_config(max_key, 10000)
         
         if min_words > 0 and word_count < min_words:
-            # Changed from raising ValueError to logging a warning
-            # This prevents generation failures for content that's just a bit short
-            logger.warning(f"Generated {component_name} too short: {word_count} words, minimum required: {min_words}")
+            raise ValueError(f"Generated {component_name} too short: {word_count} words, minimum required: {min_words}")
         
         if max_words > 0 and word_count > max_words:
-            logger.warning(f"Generated {component_name} too long: {word_count} words, maximum allowed: {max_words}")
+            raise ValueError(f"Generated {component_name} too long: {word_count} words, maximum allowed: {max_words}")
             
         return content
     
@@ -752,9 +874,6 @@ class BaseComponent(ABC):
     def apply_centralized_formatting(self, content: str, parsed_data: Dict[str, Any] = None) -> str:
         """Apply centralized formatting to ensure consistency across all components.
         
-        This method should be called by all components to ensure consistent formatting.
-        It offloads all formatting work from AI to Python.
-        
         Args:
             content: Raw content from AI generation
             parsed_data: Optional parsed data structure for additional formatting
@@ -764,168 +883,73 @@ class BaseComponent(ABC):
         """
         # If we have parsed data, apply comprehensive formatting
         if parsed_data and isinstance(parsed_data, dict):
-            # Get component name to determine formatting approach
             component_name = self.__class__.__name__.replace("Generator", "").lower()
             category = getattr(self, 'category', None)
             
-            # Apply specific formatting based on component type
+            # Apply formatting based on component type
             if component_name == "metatags":
-                # Use specialized metatags formatting for Next.js compatibility
                 parsed_data = ContentFormatter.format_metatags_structure(
                     parsed_data, self.subject, category
                 )
             else:
-                # Use general frontmatter formatting for other components
                 parsed_data = ContentFormatter.format_frontmatter_structure(
                     parsed_data, self.subject, category, self.article_type
                 )
             
-            # Convert back to YAML string if this was YAML content
+            # Convert back to YAML string for YAML content
             if isinstance(content, str) and ('---' in content or content.strip().startswith(('name:', 'title:', 'headline:'))):
-                try:
-                    import yaml
-                    # Use width parameter to prevent line breaking and clean output afterward
-                    content = yaml.dump(parsed_data, default_flow_style=False, allow_unicode=True, sort_keys=False, width=float('inf'))
-                    # Clean the YAML output to remove hard returns and escaping
-                    content = ContentFormatter.clean_yaml_output(content)
-                except Exception as e:
-                    logger.warning(f"Failed to convert formatted data back to YAML: {e}")
+                import yaml
+                content = yaml.dump(
+                    parsed_data, 
+                    default_flow_style=False, 
+                    allow_unicode=True, 
+                    sort_keys=False, 
+                    width=float('inf'),
+                    indent=2
+                )
+                content = ContentFormatter.clean_yaml_output(content)
         
-        # Apply content normalization
+        # Apply content normalization (includes custom YAML formatting)
         content = ContentFormatter.normalize_yaml_content(content)
         
-        # Fix any image URLs that might have double dashes
+        # Clean up image URLs and slugs
         import re
         content = re.sub(r'(/images/[^"]*?)--+([^"]*?\.jpg)', r'\1-\2', content)
-        
-        # Additional slug normalization throughout content
         content = re.sub(r'([a-z])--+([a-z])', r'\1-\2', content)
-        
-        # Ensure no slugs end with trailing dashes
         content = re.sub(r'([a-z0-9])-+(\s|"|\'|$|\.)', r'\1\2', content)
         
         return content
     
     # ===================================================================
-    # CENTRALIZED DATA UTILITY METHODS
+    # ESSENTIAL FORMATTING METHODS (Direct ContentFormatter Access)
     # ===================================================================
     
-    def extract_yaml_content(self, content: str) -> str:
-        """Extract clean YAML content from various AI response formats.
+    def format_yaml_content(self, content: str, component_type: str = None) -> str:
+        """Format YAML content with proper structure and indentation.
         
         Args:
-            content: Raw AI response content
+            content: Raw YAML content string
+            component_type: Type of component (frontmatter, jsonld, metatags, etc.)
             
         Returns:
-            str: Clean YAML content
+            str: Formatted YAML content with proper structure and indentation
         """
-        return ContentFormatter.extract_yaml_content(content)
+        if component_type is None:
+            component_type = self.__class__.__name__.lower().replace('generator', '')
+        
+        return ContentFormatter.normalize_yaml_content(content)
     
-    def extract_json_content(self, content: str) -> str:
-        """Extract JSON content from various response formats.
+    def restructure_yaml_data(self, raw_data: dict, component_type: str = None) -> dict:
+        """Restructure flat YAML data into proper nested sections.
         
         Args:
-            content: Raw content that may contain JSON
+            raw_data: Raw flat data from AI generation
+            component_type: Type of component (frontmatter, jsonld, metatags, etc.)
             
         Returns:
-            str: Clean JSON content
+            dict: Properly structured data with component-appropriate nesting
         """
-        return ContentFormatter.extract_json_content(content)
-    
-    def extract_tags_from_content(self, content: str) -> List[str]:
-        """Extract and normalize tags from various content formats.
+        if component_type is None:
+            component_type = self.__class__.__name__.lower().replace('generator', '')
         
-        Args:
-            content: Content containing tags
-            
-        Returns:
-            List[str]: List of normalized tags
-        """
-        return ContentFormatter.extract_tags_from_content(content)
-    
-    def clean_string_content(self, text: str) -> str:
-        """Clean string content by removing escape characters and normalizing whitespace.
-        
-        Args:
-            text: Text to clean
-            
-        Returns:
-            str: Cleaned text
-        """
-        return ContentFormatter.clean_string_content(text)
-    
-    def normalize_case(self, text: str, case_type: str = 'lower') -> str:
-        """Normalize text case consistently.
-        
-        Args:
-            text: Text to normalize
-            case_type: 'lower', 'upper', 'title', or 'sentence'
-            
-        Returns:
-            str: Normalized text
-        """
-        return ContentFormatter.normalize_case(text, case_type)
-    
-    def format_keywords_for_subject(self, category: str = None, chemical_formula: str = None) -> List[str]:
-        """Generate comprehensive keyword list for this component's subject.
-        
-        Args:
-            category: Material category override
-            chemical_formula: Chemical formula override
-            
-        Returns:
-            List[str]: List of formatted keywords
-        """
-        return ContentFormatter.format_keywords(
-            self.subject, 
-            category or getattr(self, 'category', None), 
-            chemical_formula
-        )
-    
-    def format_title_for_subject(self) -> str:
-        """Generate SEO-optimized title for this component's subject.
-        
-        Returns:
-            str: Formatted title
-        """
-        return ContentFormatter.format_title(self.subject, self.article_type)
-    
-    def format_description_for_subject(self, formula: str = None, properties: Dict = None) -> str:
-        """Generate technical description for this component's subject.
-        
-        Args:
-            formula: Chemical formula if applicable
-            properties: Key properties dictionary
-            
-        Returns:
-            str: Formatted description
-        """
-        return ContentFormatter.format_description(self.subject, formula, properties)
-    
-    def format_images_for_subject(self) -> Dict[str, Dict[str, str]]:
-        """Generate standardized image structure for this component's subject.
-        
-        Returns:
-            Dict: Standardized image structure with alt text and URLs
-        """
-        return ContentFormatter.format_images(self.subject)
-    
-    def extract_content_between_markers(self, content: str, marker: str = '---') -> str:
-        """Extract content between markers (e.g., YAML frontmatter markers).
-        
-        Args:
-            content: Content with markers
-            marker: Marker string (default: '---')
-            
-        Returns:
-            str: Content between first set of markers
-        """
-        return ContentFormatter.extract_content_between_markers(content, marker)
-    
-    def format_author_info(self) -> Dict[str, Any]:
-        """Format author information consistently using this component's author data.
-        
-        Returns:
-            Dict: Formatted author information
-        """
-        return ContentFormatter.format_author_info(self.author_data)
+        return ContentFormatter._restructure_yaml_nesting(raw_data, component_type)

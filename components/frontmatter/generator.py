@@ -80,46 +80,128 @@ class FrontmatterGenerator(BaseComponent):
         return parsed
         
     def _component_specific_processing(self, content: str) -> str:
-        """Process the generated frontmatter using centralized formatting.
+        """Process frontmatter with centralized structured content processing."""
+        return self._process_structured_content(content, output_format="yaml")
+    
+    def _extract_content_from_text(self, content: str) -> dict:
+        """Extract structured data from any text format.
+        
+        This method can handle raw text, markdown, partial YAML, or any other format
+        and extract the technical information needed for frontmatter.
         
         Args:
-            content: Pre-validated, clean API response
+            content: Raw text content from AI
             
         Returns:
-            str: Validated and formatted frontmatter
-            
-        Raises:
-            ValueError: If content is invalid
+            dict: Structured data extracted from text
         """
-        # Parse the response to get structured data
-        try:
-            import json
-            import yaml
-            
-            # First try to parse as JSON (common AI response format)
-            if content.strip().startswith('{'):
-                parsed_data = json.loads(content)
-            else:
-                # Try to parse as YAML
-                parsed_data = yaml.safe_load(content)
-            
-            # For frontmatter, always convert to YAML format
-            formatted_content = yaml.dump(parsed_data, default_flow_style=False, allow_unicode=True, sort_keys=False, width=float('inf'))
-            
-            # Apply centralized formatting for cleanup and normalization
-            formatted_content = self.apply_centralized_formatting(formatted_content, parsed_data)
-            
-        except (json.JSONDecodeError, yaml.YAMLError) as e:
-            # Strict mode: No fallback, raise the error immediately
-            raise ValueError(f"Failed to parse frontmatter as valid JSON/YAML: {e}")
+        import re
         
-        # Ensure frontmatter has proper YAML delimiters
-        if not formatted_content.startswith('---'):
-            formatted_content = '---\n' + formatted_content
-        if not formatted_content.endswith('---'):
-            formatted_content = formatted_content.rstrip() + '\n---'
+        result = {
+            'name': self.subject,  # Use the subject as the base name
+        }
         
-        return formatted_content
+        # Extract properties (look for numeric values with units)
+        properties = {}
+        
+        # Common property patterns
+        property_patterns = [
+            (r'density[:\s]*([0-9.,–\-\s]+g/cm³)', 'density'),
+            (r'melting\s*point[:\s]*([0-9.,–\-\s]+°?C)', 'meltingPoint'),
+            (r'thermal\s*conductivity[:\s]*([0-9.,–\-\s]+W/m[·•]K)', 'thermalConductivity'),
+            (r'hardness[:\s]*([0-9.,–\-\s]+Mohs)', 'hardness'),
+            (r'flexural\s*strength[:\s]*([0-9.,–\-\s]+MPa)', 'flexuralStrength'),
+            (r'tensile\s*strength[:\s]*([0-9.,–\-\s]+MPa)', 'tensileStrength'),
+            (r'compressive\s*strength[:\s]*([0-9.,–\-\s]+MPa)', 'compressiveStrength'),
+        ]
+        
+        for pattern, key in property_patterns:
+            match = re.search(pattern, content, re.IGNORECASE)
+            if match:
+                properties[key] = match.group(1).strip()
+        
+        if properties:
+            result['properties'] = properties
+        
+        # Extract applications (look for industry contexts)
+        applications = []
+        
+        # Look for application patterns
+        app_patterns = [
+            r'\*\*([^*]+)\*\*:\s*([^*\n]+)',  # **Industry**: Description
+            r'([A-Z][a-z]+\s*[A-Z]*[a-z]*):\s*([^:\n]+)',  # Industry: Description
+        ]
+        
+        for pattern in app_patterns:
+            matches = re.findall(pattern, content)
+            for match in matches:
+                if len(match) == 2:
+                    industry, description = match
+                    if any(word in industry.lower() for word in ['restoration', 'heritage', 'medical', 'aerospace', 'automotive', 'electronics']):
+                        applications.append({
+                            'industry': industry.strip(),
+                            'useCase': description.strip(),
+                            'detail': 'Specific laser cleaning application'
+                        })
+        
+        if applications:
+            result['applications'] = applications
+        
+        # Extract composition information
+        composition = []
+        
+        # Look for composition patterns (percentages and formulas)
+        comp_matches = re.findall(r'([A-Z][a-z]*(?:\s+[A-Z][a-z]*)*)\s*[:\-]?\s*([0-9]+[–\-][0-9]+%|[0-9]+%)\s*(?:[,\s]*([A-Z][a-z]*[₀-₉]*[A-Z]*[a-z]*[₀-₉]*))?', content)
+        
+        for match in comp_matches:
+            component_name, percentage, formula = match
+            comp_item = {
+                'component': component_name.strip(),
+                'percentage': percentage.strip(),
+                'type': 'compound'
+            }
+            if formula:
+                comp_item['formula'] = formula.strip()
+            composition.append(comp_item)
+        
+        if composition:
+            result['composition'] = composition
+        
+        # Extract technical specifications (look for laser parameters)
+        tech_specs = {}
+        
+        tech_patterns = [
+            (r'([0-9]+[–\-][0-9]+W|[0-9]+W)', 'powerRange'),
+            (r'([0-9]+[–\-][0-9]+nm|[0-9]+nm)', 'wavelength'),
+            (r'([0-9]+[–\-][0-9]+ns|[0-9]+ns)', 'pulseDuration'),
+            (r'([0-9.,]+[–\-][0-9.,]+\s*J/cm²)', 'fluenceRange'),
+        ]
+        
+        for pattern, key in tech_patterns:
+            match = re.search(pattern, content, re.IGNORECASE)
+            if match:
+                tech_specs[key] = match.group(1)
+        
+        if tech_specs:
+            result['technicalSpecifications'] = tech_specs
+        
+        # Extract environmental impact information
+        env_impact = {}
+        
+        env_patterns = [
+            (r'([0-9]+%).*reduction', 'wasteReduction'),
+            (r'([0-9]+[–\-][0-9]+%).*energy', 'energyEfficiency'),
+        ]
+        
+        for pattern, key in env_patterns:
+            match = re.search(pattern, content, re.IGNORECASE)
+            if match:
+                env_impact[key] = match.group(1)
+        
+        if env_impact:
+            result['environmentalImpact'] = env_impact
+        
+        return result
     
     def _extract_yaml_content(self, content: str) -> str:
         """Extract clean YAML content from various AI response formats.

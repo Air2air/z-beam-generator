@@ -27,7 +27,7 @@ import yaml
 
 BATCH_CONFIG = {
     # Generation mode: "single" for one subject, "multi" for multiple subjects
-    "mode": "single",  # "single" or "multi"
+    "mode": "multi",  # "single" or "multi"
     
     # Single subject configuration (used when mode="single")
     "single_subject": {
@@ -1110,18 +1110,6 @@ def run_batch_generation():
                 print(f"❌ Error generating {component_name}: {str(e)}")
                 # Strict mode: Re-raise the exception to stop execution
                 raise e
-                total_generated += 1
-                successful_components.add(component_name)
-            except Exception as e:
-                print(f"❌ Error generating {component_name}: {str(e)}")
-                
-                # Create empty placeholder file to maintain folder parity
-                content = f"---\ncategory: {category}\narticle_type: {subject_article_type}\nsubject: {subject}\nstatus: error\nerror: \"{str(e)}\"\n---\n"
-                content += f"Error generating {component_name}: {str(e)}\n"
-                category_for_output = article_context.get("category")
-                output_path = save_component_output(component_name, subject, content, category_for_output, subject_article_type)
-                print(f"⚠️ Error placeholder saved to: {output_path}")
-                output_tracker[component_name].add(subject)
 
     # Parity check: ensure every folder has output for every subject
     print("\n📊 Generation Summary:")
