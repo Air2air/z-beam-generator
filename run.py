@@ -53,6 +53,22 @@ BATCH_CONFIG = {
         }
     },
     
+    # Parallel processing configuration
+    "parallel_processing": {
+        "enabled": False,  # DISABLED: Parallel processing causes data corruption - AI returns placeholders instead of real data
+        "max_concurrent_subjects": 3,  # Max subjects processed simultaneously
+        "max_concurrent_components": None,  # Max components per subject (None = auto-detect)
+        "api_rate_limiting": {
+            "requests_per_minute": 60,  # Adjust based on your API limits
+            "burst_limit": 10  # Max requests in a short burst
+        },
+        "performance_monitoring": {
+            "enabled": True,  # Track performance metrics
+            "log_timing": True,  # Log timing for each operation
+            "save_metrics": False  # Save metrics to file (disabled by default)
+        }
+    },
+    
     # Component configuration - which components to generate (component-specific settings only)
     "components": {
         "frontmatter": {
@@ -606,163 +622,6 @@ def load_author_data(author_id: int) -> Dict[str, Any]:
         "author_specialties": author_data["specialties"] if "specialties" in author_data else []
     }
 
-def generate_frontmatter_component(article_context: dict) -> tuple:
-    """Generate frontmatter using the configured settings.
-    
-    Args:
-        article_context: Article context for this specific subject
-        
-    Returns:
-        Tuple of (generated frontmatter content, parsed frontmatter data) or (None, None) if failed
-    """
-    import sys
-    import os
-    import logging
-    import yaml
-    
-    # Add project root to path
-    sys.path.insert(0, os.path.dirname(__file__))
-    
-    # Set up logging
-    logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-    
-    try:
-        # Check if frontmatter is enabled
-        component_config = article_context["components"]["frontmatter"]
-        if not component_config["enabled"]:
-            print("⏭️  Frontmatter generation skipped (disabled)")
-            return None, None
-
-        # Load schema for the article type
-        schema_path = f"schemas/{article_context['article_type']}.json"
-        schema = {}
-        if os.path.exists(schema_path):
-            with open(schema_path, 'r') as f:
-                import json
-                schema = json.load(f)
-        else:
-            print(f"❌ Schema file not found: {schema_path}")
-            return None, None
-
-        # Initialize frontmatter generator with correct parameters
-        from components.frontmatter.generator import FrontmatterGenerator
-
-        # Load author data
-        author_data = load_author_data(article_context["author_id"])
-
-        # Get component configuration with AI config merge
-        component_config = article_context["components"]["frontmatter"].copy()
-
-        # Merge global AI configuration with component-specific overrides
-        global_ai = BATCH_CONFIG["ai"]
-        component_config["ai_provider"] = global_ai["provider"]
-        component_config["options"] = global_ai["options"].copy()
-        
-        # Add category to component config if available
-        if "category" in article_context:
-            component_config["category"] = article_context["category"]
-        else:
-            component_config["category"] = ""
-
-        # Apply component-specific AI overrides
-        for key in ["temperature", "max_tokens", "model"]:
-            if key in component_config:
-                component_config["options"][key] = component_config.pop(key)
-
-        # Validate generator configuration
-        print(f"Frontmatter generator config for subject '{article_context['subject']}':")
-        print(f"  Article type: {article_context['article_type']}")
-        print(f"  Schema keys: {list(schema.keys())}")
-        
-        # Prepare author display values
-        author_name = ""
-        author_country = ""
-        if "author_name" in author_data:
-            author_name = author_data["author_name"]
-        if "author_country" in author_data:
-            author_country = author_data["author_country"]
-        print(f"  Author: {author_name} ({author_country})")
-        
-        print(f"  AI provider: {component_config['ai_provider']}")
-        
-        # Prepare option display values
-        model = ""
-        temperature = ""
-        max_tokens = ""
-        if "model" in component_config['options']:
-            model = component_config['options']["model"]
-        if "temperature" in component_config['options']:
-            temperature = component_config['options']["temperature"]
-        if "max_tokens" in component_config['options']:
-            max_tokens = component_config['options']["max_tokens"]
-        
-        print(f"  Model: {model}")
-        print(f"  Temperature: {temperature}")
-        print(f"  Max tokens: {max_tokens}")
-
-        # Initialize generator with correct BaseComponent interface
-        generator = FrontmatterGenerator(
-            subject=article_context["subject"],
-            article_type=article_context["article_type"],
-            schema=schema,
-            author_data=author_data,
-            component_config=component_config
-        )
-
-        print(f"Generating frontmatter for: {article_context['subject']} ({article_context['article_type']})")
-        print(f"Using AI provider: {component_config['ai_provider']} with model: {component_config['options']['model']}")
-
-        # Generate frontmatter with category information
-        # Set category as an attribute on the generator
-        if "category" in article_context:
-            generator.category = article_context["category"]
-        frontmatter_content = generator.generate()
-
-        if not frontmatter_content or not frontmatter_content.strip():
-            print(f"❌ No frontmatter content generated for {article_context['subject']}. Check generator, schema, and config.")
-            print(f"  Generator config: {component_config}")
-            print(f"  Schema: {schema}")
-            return None, None
-
-        # Parse the YAML content to validate it
-        try:
-            # Extract YAML content between --- delimiters, ignoring HTML comments
-            if "---" in frontmatter_content:
-                # Split by --- to get the content between delimiters
-                parts = frontmatter_content.split("---", 2)
-                if len(parts) >= 2:
-                    yaml_content = parts[1].strip()
-                else:
-                    yaml_content = frontmatter_content.strip()
-            else:
-                yaml_content = frontmatter_content.strip()
-                
-            frontmatter_data = yaml.safe_load(yaml_content)
-            
-            if not frontmatter_data or not isinstance(frontmatter_data, dict):
-                print(f"❌ Invalid frontmatter data for {article_context['subject']}. Not a valid YAML dictionary.")
-                return None, None
-                
-            # Store the frontmatter data for other components to use
-            article_context["frontmatter_data"] = frontmatter_data
-                
-            print("\n" + "="*60)
-            print("VALIDATED FRONTMATTER:")
-            print("="*60)
-            print(frontmatter_content)
-            print("="*60)
-            
-            return frontmatter_content, frontmatter_data
-        except yaml.YAMLError as e:
-            print(f"❌ Failed to parse frontmatter YAML for {article_context['subject']}: {e}")
-            return None, None
-
-    except Exception as e:
-        print(f"❌ Error generating frontmatter: {str(e)}")
-        import traceback
-        traceback.print_exc()
-        return None, None
-
 def generate_component(component_name: str, article_context: dict) -> str:
     """Generate content for a specific component.
     
@@ -1080,36 +939,83 @@ def run_batch_generation():
                 
     print(f"Enabled components: {', '.join(enabled_components)}")
 
-    # Track output parity for all folders
-    output_tracker = {comp: set() for comp in enabled_components}
-    total_generated = 0
-    successful_components = set()
-
-    # Process each subject
-    for subject, subject_article_type, category in subjects_to_process:
-        print(f"\n--- Processing: {subject} ---")
-        article_context = create_article_context(subject, subject_article_type, author_id, category)
+    # Check if parallel processing is enabled
+    use_parallel = BATCH_CONFIG.get("parallel_processing", {}).get("enabled", False)
+    
+    if use_parallel and len(subjects_to_process) > 1:
+        print("🚀 Using parallel processing mode")
         
-        # Process all components equally - no special frontmatter handling
-        for component_name in enabled_components:
-            try:
-                print(f"Generating {component_name} for: {subject} ({subject_article_type})")
-                content = generate_component(component_name, article_context)
-                
-                # Strict mode: Fail immediately if content is None
-                if content is None:
-                    raise ValueError(f"Content generation failed for {component_name}: {subject}")
-                
-                category_for_output = article_context.get("category")
-                output_path = save_component_output(component_name, subject, content, category_for_output, subject_article_type)
-                print(f"✅ {component_name.capitalize()} saved to: {output_path}")
-                output_tracker[component_name].add(subject)
-                total_generated += 1
-                successful_components.add(component_name)
-            except Exception as e:
-                print(f"❌ Error generating {component_name}: {str(e)}")
-                # Strict mode: Re-raise the exception to stop execution
-                raise e
+        # Import parallel processor
+        from parallel_processor import ParallelProcessor
+        
+        # Determine parallelization settings based on workload
+        parallel_config = BATCH_CONFIG["parallel_processing"]
+        max_concurrent_subjects = min(
+            parallel_config.get("max_concurrent_subjects", 3), 
+            len(subjects_to_process)
+        )
+        max_concurrent_components = parallel_config.get("max_concurrent_components")
+        
+        # For single component runs, don't parallelize components
+        if len(enabled_components) == 1:
+            max_concurrent_components = 1
+        
+        processor = ParallelProcessor(
+            max_concurrent_subjects=max_concurrent_subjects,
+            max_concurrent_components=max_concurrent_components
+        )
+        
+        # Process using parallel processor
+        results = processor.process_subjects_parallel(
+            subjects_to_process=subjects_to_process,
+            enabled_components=enabled_components,
+            generate_component_func=generate_component,
+            create_article_context_func=create_article_context,
+            save_component_output_func=save_component_output,
+            author_id=author_id
+        )
+        
+        # Extract results for compatibility with existing code
+        output_tracker = results['output_tracker']
+        total_generated = results['total_generated']
+        successful_components = results['successful_components']
+        
+    else:
+        if use_parallel:
+            print("⚡ Parallel processing enabled but using sequential mode (single subject or disabled)")
+        else:
+            print("⚡ Using sequential processing mode")
+        
+        # Original sequential processing logic
+        output_tracker = {comp: set() for comp in enabled_components}
+        total_generated = 0
+        successful_components = set()
+
+        # Process each subject
+        for subject, subject_article_type, category in subjects_to_process:
+            print(f"\n--- Processing: {subject} ---")
+            article_context = create_article_context(subject, subject_article_type, author_id, category)
+            
+            # Process all components equally - no special frontmatter handling
+            for component_name in enabled_components:
+                try:
+                    print(f"Generating {component_name} for: {subject} ({subject_article_type})")
+                    content = generate_component(component_name, article_context)
+                    
+                    # Strict mode: Fail immediately if content is None
+                    if content is None:
+                        raise ValueError(f"Content generation failed for {component_name}: {subject}")
+                    
+                    category_for_output = article_context.get("category")
+                    output_path = save_component_output(component_name, subject, content, category_for_output, subject_article_type)
+                    print(f"✅ {component_name.capitalize()} saved to: {output_path}")
+                    output_tracker[component_name].add(subject)
+                    total_generated += 1
+                    successful_components.add(component_name)
+                except Exception as e:
+                    print(f"❌ Error generating {component_name}: {str(e)}")
+                    # Strict mode: Re-raise the exception to stop execution
+                    raise e
 
     # Parity check: ensure every folder has output for every subject
     print("\n📊 Generation Summary:")

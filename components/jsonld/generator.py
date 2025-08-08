@@ -14,7 +14,7 @@ from components.base.utils.slug_utils import SlugUtils
 logger = logging.getLogger(__name__)
 
 
-class JsonLdGenerator(BaseComponent):
+class JsonldGenerator(BaseComponent):
     """JSON-LD structure generator optimized for materials science."""
 
     def _component_specific_processing(self, content: str) -> str:

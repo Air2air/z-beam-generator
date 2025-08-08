@@ -285,191 +285,35 @@ class BaseComponent(ABC):
     def generate_dynamic_field_value(self, field_name: str) -> Any:
         """Generate dynamic field value based on schema and context.
         
+        DISABLED: No fallback generation - all data must come from CleanDataProvider.
+        This prevents placeholder contamination and enforces real material data usage.
+        
         Args:
-            field_name: Name of the field to generate
+            field_name: Name of the field
             
         Returns:
-            Appropriate value for the field based on schema and context
+            Never returns - always raises ValueError
+            
+        Raises:
+            ValueError: Always - no fallback values allowed
         """
-        # Get schema information for this field
-        field_info = self.get_field_schema_info(field_name)
-        field_type = field_info.get('type', 'string')
-        field_default = field_info.get('default')
-        
-        # If schema provides a default value, use it
-        if field_default is not None:
-            return field_default
-        
-        # Generate intelligent defaults based on schema type and field name patterns
-        if field_type == 'array':
-            return self._generate_array_field_value(field_name, field_info)
-        elif field_type == 'object':
-            return self._generate_object_field_value(field_name, field_info)
-        elif field_type == 'boolean':
-            return self._generate_boolean_field_value(field_name, field_info)
-        elif field_type == 'number' or field_type == 'integer':
-            return self._generate_number_field_value(field_name, field_info)
-        else:  # string type
-            return self._generate_string_field_value(field_name, field_info)
-    
-    def _generate_array_field_value(self, field_name: str, field_info: dict) -> list:
-        """Generate array field value based on field name patterns and schema info."""
-        field_name_lower = field_name.lower()
-        
-        # Check for specific field patterns
-        if any(keyword in field_name_lower for keyword in ['standard', 'regulation', 'compliance']):
-            return ["ISO 9001", "Industry standards", "Safety regulations"]
-        elif any(keyword in field_name_lower for keyword in ['tag', 'keyword']):
-            return ContentFormatter.format_keywords(self.subject, getattr(self, 'category', None))
-        elif any(keyword in field_name_lower for keyword in ['application', 'use']):
-            return [f"{self.subject} processing", f"{self.subject} cleaning", "Laser applications"]
-        elif any(keyword in field_name_lower for keyword in ['property', 'characteristic']):
-            return [f"{self.subject} properties", "Material characteristics", "Physical properties"]
-        elif any(keyword in field_name_lower for keyword in ['image', 'media']):
-            return ContentFormatter.format_images(self.subject)
-        elif any(keyword in field_name_lower for keyword in ['certification', 'cert']):
-            return ["CE marking", "ISO certification", "Industry compliance"]
-        elif any(keyword in field_name_lower for keyword in ['safety']):
-            return ["OSHA guidelines", "Material safety protocols", "Laser safety standards"]
-        else:
-            # Generic array based on subject
-            return [f"{self.subject} related", "General applications"]
-    
-    def _generate_object_field_value(self, field_name: str, field_info: dict) -> dict:
-        """Generate object field value based on field name patterns and schema info."""
-        field_name_lower = field_name.lower()
-        
-        # Check schema for object properties if available
-        properties = field_info.get('properties', {})
-        if properties:
-            # Generate object based on schema properties
-            obj = {}
-            for prop_name, prop_info in properties.items():
-                obj[prop_name] = self._generate_value_from_schema_property(prop_name, prop_info)
-            return obj
-        
-        # Fallback to pattern-based generation
-        if any(keyword in field_name_lower for keyword in ['spec', 'specification', 'technical']):
-            return {"type": self.subject, "category": getattr(self, 'category', 'material')}
-        elif any(keyword in field_name_lower for keyword in ['author', 'creator']):
-            return ContentFormatter.format_author_info(self.author_data)
-        elif any(keyword in field_name_lower for keyword in ['image', 'media']):
-            return {"url": f"/images/{self.subject}.jpg", "alt": f"{self.subject} image"}
-        else:
-            return {"name": self.subject, "value": f"{self.subject} data"}
-    
-    def _generate_boolean_field_value(self, field_name: str, field_info: dict) -> bool:
-        """Generate boolean field value based on field name patterns."""
-        field_name_lower = field_name.lower()
-        
-        # Default to true for positive attributes
-        if any(keyword in field_name_lower for keyword in ['published', 'active', 'enabled', 'available', 'suitable']):
-            return True
-        elif any(keyword in field_name_lower for keyword in ['deprecated', 'hidden', 'disabled', 'restricted']):
-            return False
-        else:
-            return True  # Default to true for most boolean fields
-    
-    def _generate_number_field_value(self, field_name: str, field_info: dict) -> int:
-        """Generate number field value based on field name patterns."""
-        field_name_lower = field_name.lower()
-        
-        # Provide intelligent defaults for numbers
-        if any(keyword in field_name_lower for keyword in ['count', 'number', 'quantity']):
-            return 1
-        elif any(keyword in field_name_lower for keyword in ['temperature', 'temp']):
-            return 20  # Room temperature
-        elif any(keyword in field_name_lower for keyword in ['pressure']):
-            return 101325  # Standard atmospheric pressure
-        elif any(keyword in field_name_lower for keyword in ['percentage', 'percent']):
-            return 100
-        else:
-            return 0
-    
-    def _generate_string_field_value(self, field_name: str, field_info: dict) -> str:
-        """Generate string field value based on field name patterns and context."""
-        field_name_lower = field_name.lower()
-        
-        # Handle common field names with context-aware logic
-        if field_name in ["name", "title"]:
-            return ContentFormatter.format_title(self.subject, self.article_type)
-        elif field_name == "headline":
-            return f"Technical guide to {self.subject} for laser cleaning applications"
-        elif field_name == "description":
-            return ContentFormatter.format_description(self.subject)
-        elif field_name == "keywords":
-            keywords = ContentFormatter.format_keywords(self.subject, getattr(self, 'category', None))
-            return ", ".join(keywords) if isinstance(keywords, list) else keywords
-        elif field_name == "category":
-            return getattr(self, 'category', 'unknown')
-        elif field_name == "article_type":
-            return self.article_type
-        elif field_name == "subject":
-            return self.subject
-        elif field_name == "@context":
-            return "https://schema.org"
-        elif field_name == "@type":
-            return "Article"
-        elif field_name == "articleBody":
-            return f"Technical content about {self.subject} laser cleaning applications."
-        
-        # Pattern-based generation for other fields
-        elif any(keyword in field_name_lower for keyword in ['compliance', 'regulation']):
-            return f"Compliant with industry standards for {self.subject} processing"
-        elif any(keyword in field_name_lower for keyword in ['slug', 'url']):
-            from components.base.utils.slug_utils import SlugUtils
-            return SlugUtils.create_subject_slug(self.subject)
-        elif any(keyword in field_name_lower for keyword in ['date']):
-            from datetime import datetime
-            return datetime.now().isoformat()
-        elif any(keyword in field_name_lower for keyword in ['region', 'location']):
-            return "Global"
-        elif any(keyword in field_name_lower for keyword in ['coverage']):
-            return f"Global {self.subject} applications"
-        else:
-            # Generic string based on context
-            logger.warning(f"Generating fallback value for unknown field: {field_name}")
-            return f"{self.subject} - {field_name}"
-    
-    def _generate_value_from_schema_property(self, prop_name: str, prop_info: dict) -> Any:
-        """Generate value for a schema property recursively."""
-        prop_type = prop_info.get('type', 'string')
-        prop_default = prop_info.get('default')
-        
-        if prop_default is not None:
-            return prop_default
-        
-        if prop_type == 'array':
-            return []
-        elif prop_type == 'object':
-            return {}
-        elif prop_type == 'boolean':
-            return True
-        elif prop_type in ['number', 'integer']:
-            return 0
-        else:
-            return f"{self.subject} {prop_name}"
-    
+        raise ValueError(f"No fallback data generation allowed for field '{field_name}'. All data must come from CleanDataProvider with real material information.")
+
     def populate_missing_required_fields(self, parsed_data: dict, component_name: str = None) -> dict:
         """Populate missing required fields based on schema.
+        
+        DISABLED: No fallback generation - all data must come from CleanDataProvider.
+        This method is now disabled to prevent placeholder contamination.
         
         Args:
             parsed_data: The parsed data dictionary
             component_name: Name of the component
             
         Returns:
-            dict: Data with all required fields populated
+            dict: Original data unchanged - no fallback generation
         """
-        if component_name is None:
-            component_name = self.__class__.__name__.replace("Generator", "").lower()
-        
-        required_fields = self.get_required_fields(component_name)
-        
-        # Populate missing required fields
-        for field in required_fields:
-            if field not in parsed_data:
-                parsed_data[field] = self.generate_dynamic_field_value(field)
-        
+        # No longer populate missing fields - all data must come from CleanDataProvider
+        # This ensures only real material data (chemical formulas, symbols, etc.) is used
         return parsed_data
     
     def generate(self) -> str:
@@ -691,63 +535,72 @@ class BaseComponent(ABC):
         return self._process_structured_content(content)
     
     def _process_structured_content(self, content: str, output_format: str = "yaml") -> str:
-        """Centralized processing for structured content (YAML, JSON, etc.).
+        """Centralized processing for structured content using ContentFormatter utilities.
         
-        This method handles the common pattern used by most generators:
-        1. Parse AI response (JSON/YAML/text)
-        2. Populate missing required fields from schema
-        3. Apply component-specific formatting
-        4. Add proper delimiters
+        This method leverages the centralized ContentFormatter utilities for:
+        1. Extracting content from various AI response formats
+        2. Parsing structured data (JSON/YAML/text)
+        3. Applying component-specific formatting through ContentFormatter
+        4. Normalizing output with proper structure and delimiters
         
         Args:
             content: Raw AI response content
             output_format: Desired output format ("yaml", "json")
             
         Returns:
-            str: Processed and formatted content
+            str: Processed and formatted content using centralized utilities
             
         Raises:
             ValueError: If content parsing or validation fails
         """
         component_name = self.__class__.__name__.replace("Generator", "").lower()
         
-        # Step 1: Parse the response to get structured data
         try:
             import json
             import yaml
             
-            # Apply YAML escaping BEFORE parsing to prevent issues
-            if ':' in content and not content.strip().startswith('{'):
-                content = ContentFormatter._escape_yaml_values(content)
+            # Step 1: Use ContentFormatter to extract clean content from AI response
+            if output_format.lower() == "yaml":
+                clean_content = ContentFormatter.extract_yaml_content(content)
+            elif output_format.lower() == "json":
+                clean_content = ContentFormatter.extract_json_content(content)
+            else:
+                clean_content = content.strip()
+            
+            # Step 2: Parse the cleaned response to get structured data
+            parsed_data = None
             
             # Try JSON first (if AI returns structured JSON)
-            if content.strip().startswith('{'):
-                parsed_data = json.loads(content)
-            # Try YAML if it looks like valid YAML
-            elif ':' in content and not ('**' in content or '*' in content):
-                parsed_data = yaml.safe_load(content)
-            else:
-                # Handle raw text content - extract information intelligently
-                parsed_data = self._extract_content_from_text(content)
+            if clean_content.strip().startswith('{'):
+                try:
+                    parsed_data = json.loads(clean_content)
+                except json.JSONDecodeError as e:
+                    logger.warning(f"JSON parsing failed for {component_name}: {e}")
             
-            # Step 2: Ensure all required schema fields are present
-            parsed_data = self.populate_missing_required_fields(parsed_data, component_name)
+            # Try YAML if not JSON or JSON failed
+            if parsed_data is None and ':' in clean_content:
+                try:
+                    parsed_data = yaml.safe_load(clean_content)
+                    if not isinstance(parsed_data, dict):
+                        raise ValueError("YAML must parse to a dictionary")
+                except (yaml.YAMLError, ValueError) as e:
+                    logger.warning(f"YAML parsing failed for {component_name}: {e}")
             
-            # Step 3: Apply component-specific formatting rules
+            # Fallback to text extraction if parsing failed
+            if parsed_data is None:
+                logger.info(f"Using text extraction for {component_name} due to parsing failures")
+                parsed_data = self._extract_content_from_text(clean_content)
+            
+            # Step 3: Apply component-specific formatting using ContentFormatter
             parsed_data = self._apply_component_formatting_rules(parsed_data, component_name)
             
-            # Step 4: Convert to desired output format
+            # Step 4: Use ContentFormatter to generate final output
             if output_format.lower() == "yaml":
-                formatted_content = yaml.dump(
-                    parsed_data, 
-                    default_flow_style=False, 
-                    allow_unicode=True, 
-                    sort_keys=False, 
-                    width=float('inf'),
-                    indent=2
-                )
-                # Apply centralized formatting for cleanup and normalization
-                formatted_content = self.apply_centralized_formatting(formatted_content, parsed_data)
+                # Use ContentFormatter's YAML formatting with proper indentation
+                formatted_content = ContentFormatter._format_yaml_with_proper_indentation(parsed_data)
+                
+                # Apply ContentFormatter's comprehensive normalization
+                formatted_content = ContentFormatter.normalize_yaml_content(formatted_content)
                 
                 # Add YAML frontmatter delimiters
                 if not formatted_content.startswith('---'):
@@ -762,8 +615,8 @@ class BaseComponent(ABC):
             
             return formatted_content
             
-        except (json.JSONDecodeError, yaml.YAMLError) as e:
-            raise ValueError(f"Failed to parse {component_name} as valid JSON/YAML: {e}")
+        except Exception as e:
+            raise ValueError(f"Failed to process {component_name} content: {e}")
     
     def _apply_component_formatting_rules(self, parsed_data: dict, component_name: str) -> dict:
         """Apply component-specific formatting rules to parsed data.
@@ -987,53 +840,37 @@ class BaseComponent(ABC):
         return modified_content
     
     def apply_centralized_formatting(self, content: str, parsed_data: Dict[str, Any] = None) -> str:
-        """Apply centralized formatting to ensure consistency across all components.
+        """Apply centralized formatting using ContentFormatter utilities.
+        
+        This method delegates to ContentFormatter for all formatting tasks,
+        ensuring consistency and proper structure across all components.
         
         Args:
             content: Raw content from AI generation
             parsed_data: Optional parsed data structure for additional formatting
             
         Returns:
-            str: Formatted content with all standardization applied
+            str: Formatted content using ContentFormatter utilities
         """
-        # If we have parsed data, apply comprehensive formatting
-        if parsed_data and isinstance(parsed_data, dict):
-            component_name = self.__class__.__name__.replace("Generator", "").lower()
-            category = getattr(self, 'category', None)
-            
-            # Apply formatting based on component type
-            if component_name == "metatags":
-                parsed_data = ContentFormatter.format_metatags_structure(
-                    parsed_data, self.subject, category
-                )
-            else:
-                parsed_data = ContentFormatter.format_frontmatter_structure(
-                    parsed_data, self.subject, category, self.article_type
-                )
-            
-            # Convert back to YAML string for YAML content
-            if isinstance(content, str) and ('---' in content or content.strip().startswith(('name:', 'title:', 'headline:'))):
-                import yaml
-                content = yaml.dump(
-                    parsed_data, 
-                    default_flow_style=False, 
-                    allow_unicode=True, 
-                    sort_keys=False, 
-                    width=float('inf'),
-                    indent=2
-                )
-                content = ContentFormatter.clean_yaml_output(content)
+        # Delegate to ContentFormatter for comprehensive normalization
+        if output_format := getattr(self, '_current_output_format', 'yaml'):
+            if output_format.lower() == 'yaml':
+                return ContentFormatter.normalize_yaml_content(content)
+            elif output_format.lower() == 'json':
+                # For JSON, apply basic cleanup
+                import json
+                try:
+                    # Parse and re-format with proper indentation
+                    if parsed_data:
+                        return json.dumps(parsed_data, indent=2, ensure_ascii=False)
+                    else:
+                        data = json.loads(content)
+                        return json.dumps(data, indent=2, ensure_ascii=False)
+                except json.JSONDecodeError:
+                    return content
         
-        # Apply content normalization (includes custom YAML formatting)
-        content = ContentFormatter.normalize_yaml_content(content)
-        
-        # Clean up image URLs and slugs
-        import re
-        content = re.sub(r'(/images/[^"]*?)--+([^"]*?\.jpg)', r'\1-\2', content)
-        content = re.sub(r'([a-z])--+([a-z])', r'\1-\2', content)
-        content = re.sub(r'([a-z0-9])-+(\s|"|\'|$|\.)', r'\1\2', content)
-        
-        return content
+        # Default: Use ContentFormatter's YAML normalization
+        return ContentFormatter.normalize_yaml_content(content)
     
     # ===================================================================
     # ESSENTIAL FORMATTING METHODS (Direct ContentFormatter Access)
