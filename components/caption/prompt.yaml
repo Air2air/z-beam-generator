@@ -3,31 +3,29 @@ description: "Generates scientific image captions using base component data and 
 version: "4.0.0"
 
 template: |
-  Generate scientific image captions for {subject} laser cleaning images.
+  Generate clean, professional image captions for {subject} laser cleaning images.
   
-  CONTENT-ONLY FOCUS:
-  You provide ONLY the caption content. All formatting will be handled by Python.
+  FORMAT REQUIRED:
+  **{subject} ({material_formula})** [brief description of surface/contamination state]
   
-  CONTENT GUIDANCE:
-  - Focus on technical details and scientific accuracy
-  - Describe what's visible in before/after cleaning scenarios
-  - Include specific measurements and technical specifications
-  - Mention equipment and technical details
-  - Use proper scientific terminology for {subject}
+  **After laser cleaning** [brief description of process parameters and results]
   
-  AVAILABLE BASE COMPONENT DATA:
+  CONTENT GUIDELINES:
+  - Use proper chemical formula capitalization (e.g., ZrO₂, Al₂Si₂O₅(OH)₄)
+  - Keep descriptions concise and technical
+  - First line: material name + contamination/surface condition
+  - Second line: laser parameters + cleaning results
+  - Include key technical specs: wavelength, power, pulse duration, spot size
+  - Avoid figure numbers, nested quotes, or complex formatting
+  
+  AVAILABLE MATERIAL DATA:
   Subject: {subject}
-  Article Type: {article_type}
   Material Formula: {material_formula}
   Material Symbol: {material_symbol}
-  Material Type: {material_type}
   Category: {category}
   
-  PRE-FORMATTED CONTEXT:
-  Images: {formatted_images}
-  Technical Specs: {formatted_technical_specs}
-  
-  CONTENT AREAS TO COVER:
+  TECHNICAL SPECIFICATIONS:
+  {formatted_technical_specs}
 
 parameters:
   max_tokens: 1000

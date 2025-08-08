@@ -17,13 +17,13 @@ class CaptionGenerator(BaseComponent):
     """Generator for image caption content with strict validation and local formatting."""
     
     def _component_specific_processing(self, content: str) -> str:
-        """Process the generated caption with enhanced local formatting.
+        """Process the generated caption with simplified formatting.
         
         Args:
             content: Pre-validated, clean API response
             
         Returns:
-            str: Processed caption with dynamic image requirements
+            str: Processed caption with simplified two-line format
             
         Raises:
             ValueError: If content is invalid
@@ -37,128 +37,75 @@ class CaptionGenerator(BaseComponent):
         # Clean and normalize the content using ContentFormatter
         clean_content = ContentFormatter.normalize_case(content.strip(), 'sentence')
         
-        # Extract before cleaning and equipment sections (handling various formats)
-        sections = self._extract_caption_sections(clean_content)
-        
-        # Get max word counts from config
-        before_max = self.get_component_config("before_word_count_max", 100)
-        equipment_max = self.get_component_config("equipment_word_count_max", 50)
-        
-        # Truncate sections if needed
-        sections = self._truncate_sections(sections, before_max, equipment_max)
-        
-        # Format sections properly
-        formatted_caption = self._format_caption(sections)
+        # Extract and format the simplified caption format
+        formatted_caption = self._format_simplified_caption(clean_content)
         
         return formatted_caption
     
-    def _extract_caption_sections(self, content: str) -> dict:
-        """Extract before cleaning and equipment sections from caption.
+    def _format_simplified_caption(self, content: str) -> str:
+        """Format caption content into simplified two-line format.
         
         Args:
-            content: Clean caption content
+            content: Clean caption content from AI
             
         Returns:
-            dict: Extracted sections
+            str: Formatted caption in simplified format
             
         Raises:
-            ValueError: If required sections are missing
+            ValueError: If content cannot be properly formatted
         """
-        sections = {}
+        # Clean up any extra formatting or quotes
+        content = re.sub(r'^["\']+|["\']+$', '', content.strip())
+        content = re.sub(r'\s+', ' ', content)  # Normalize whitespace
         
-        # Try various section header formats
-        before_patterns = [
-            r'\*\*Before Cleaning:\*\*\s*(.*?)(?=\*\*Equipment:|$)',
-            r'Before Cleaning:\s*(.*?)(?=Equipment:|$)',
-            r'BEFORE CLEANING:\s*(.*?)(?=EQUIPMENT:|$)',
-            r'Before\s*Cleaning\s*(.*?)(?=Equipment|$)'
-        ]
+        # Look for the expected two-line format with material name and "After laser cleaning"
+        lines = [line.strip() for line in content.split('\n') if line.strip()]
         
-        equipment_patterns = [
-            r'\*\*Equipment:\*\*\s*(.*?)$',
-            r'Equipment:\s*(.*?)$',
-            r'EQUIPMENT:\s*(.*?)$',
-            r'Equipment\s*(.*?)$'
-        ]
-        
-        # Try to extract before cleaning section
-        before_section = None
-        for pattern in before_patterns:
-            match = re.search(pattern, content, re.DOTALL | re.IGNORECASE)
-            if match:
-                before_section = match.group(1).strip()
-                break
-        
-        # Try to extract equipment section
-        equipment_section = None
-        for pattern in equipment_patterns:
-            match = re.search(pattern, content, re.DOTALL | re.IGNORECASE)
-            if match:
-                equipment_section = match.group(1).strip()
-                break
-        
-        # If sections are missing, try to split the content
-        if not before_section or not equipment_section:
-            # If there's a clear separation but no headers, assume first half is results
-            # and second half is equipment
-            if len(content.split('\n\n')) >= 2:
-                parts = content.split('\n\n')
-                before_section = parts[0].strip()
-                equipment_section = parts[1].strip()
-            else:
-                # Strict mode: Require proper content structure
-                raise ValueError("Caption content must contain '**Equipment:**' section marker")
-        
-        # Store sections
-        sections['before'] = before_section if before_section else "Before cleaning details not provided"
-        sections['equipment'] = equipment_section if equipment_section else "Equipment details not provided"
-        
-        return sections
-    
-    def _truncate_sections(self, sections: dict, before_max: int, equipment_max: int) -> dict:
-        """Truncate sections to meet word count requirements.
-        
-        Args:
-            sections: Caption sections
-            before_max: Maximum words for before cleaning section
-            equipment_max: Maximum words for equipment section
+        # If we get the expected format, clean it up
+        if len(lines) >= 2:
+            # Find material line and laser cleaning line
+            material_line = None
+            cleaning_line = None
             
-        Returns:
-            dict: Truncated sections
-        """
-        truncated = {}
-        
-        # Truncate before cleaning section
-        before_words = sections['before'].split()
-        if len(before_words) > before_max:
-            # Add ellipsis if truncated
-            truncated['before'] = ' '.join(before_words[:before_max]) + '...'
-        else:
-            truncated['before'] = sections['before']
-        
-        # Truncate equipment section
-        equipment_words = sections['equipment'].split()
-        if len(equipment_words) > equipment_max:
-            # Add ellipsis if truncated
-            truncated['equipment'] = ' '.join(equipment_words[:equipment_max]) + '...'
-        else:
-            truncated['equipment'] = sections['equipment']
-        
-        return truncated
-    
-    def _format_caption(self, sections: dict) -> str:
-        """Format caption with proper section headers.
-        
-        Args:
-            sections: Caption sections
+            for line in lines:
+                if line.startswith('**') and '(' in line and ')' in line:
+                    material_line = line
+                elif 'after laser cleaning' in line.lower() or 'laser cleaning' in line.lower():
+                    cleaning_line = line
             
-        Returns:
-            str: Formatted caption
-        """
-        # Apply standard formatting with bold section headers
-        formatted = f"**Before Cleaning:** {sections['before']}\n\n**Equipment:** {sections['equipment']}"
+            if material_line and cleaning_line:
+                # Ensure proper formatting
+                if not cleaning_line.startswith('**After laser cleaning**'):
+                    # Fix the formatting if needed
+                    cleaning_line = re.sub(r'^\*\*.*?\*\*', '**After laser cleaning**', cleaning_line)
+                    if not cleaning_line.startswith('**After laser cleaning**'):
+                        cleaning_line = '**After laser cleaning** ' + cleaning_line.lstrip('*').strip()
+                
+                return f"{material_line}\n\n{cleaning_line}"
         
-        return formatted
+        # If format is not as expected, try to parse it anyway
+        # Look for material formula and create the expected format
+        material_match = re.search(r'(\w+)\s*\([^)]+\)', content)
+        if material_match:
+            # Split at reasonable break points
+            sentences = re.split(r'[.!?]\s+', content)
+            if len(sentences) >= 2:
+                first_part = sentences[0] + '.'
+                second_part = ' '.join(sentences[1:])
+                
+                # Ensure proper bold formatting
+                if not first_part.startswith('**'):
+                    material_name = material_match.group(1)
+                    first_part = re.sub(rf'{material_name}', f'**{material_name}**', first_part, 1)
+                
+                if 'laser' in second_part.lower() and not second_part.startswith('**After laser cleaning**'):
+                    second_part = '**After laser cleaning** ' + second_part.lstrip()
+                
+                return f"{first_part}\n\n{second_part}"
+        
+        # Fallback: return content as-is if we can't parse it properly
+        logger.warning("Could not parse caption into expected format, returning as-is")
+        return content
 
     def _apply_dynamic_image_requirements(self, content: str) -> str:
         """Apply dynamic image requirements from schema for targeted caption generation.
