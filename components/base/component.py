@@ -585,28 +585,55 @@ class BaseComponent(ABC):
                         raise ValueError("YAML must parse to a dictionary")
                 except (yaml.YAMLError, ValueError) as e:
                     logger.warning(f"YAML parsing failed for {component_name}: {e}")
+                    # Clear parsed_data to ensure fallback to text extraction
+                    parsed_data = None
             
             # Fallback to text extraction if parsing failed
             if parsed_data is None:
                 logger.info(f"Using text extraction for {component_name} due to parsing failures")
                 parsed_data = self._extract_content_from_text(clean_content)
+                
+                # Ensure we have a valid dictionary after text extraction
+                if not isinstance(parsed_data, dict) or not parsed_data:
+                    # Create a minimal valid structure
+                    parsed_data = {
+                        'name': self.subject,
+                        'description': f"Technical information about {self.subject}",
+                        'category': getattr(self, 'category', 'material'),
+                        'subject': self.subject
+                    }
             
             # Step 3: Apply component-specific formatting using ContentFormatter
             parsed_data = self._apply_component_formatting_rules(parsed_data, component_name)
             
             # Step 4: Use ContentFormatter to generate final output
             if output_format.lower() == "yaml":
-                # Use ContentFormatter's YAML formatting with proper indentation
-                formatted_content = ContentFormatter._format_yaml_with_proper_indentation(parsed_data)
-                
-                # Apply ContentFormatter's comprehensive normalization
-                formatted_content = ContentFormatter.normalize_yaml_content(formatted_content)
-                
-                # Add YAML frontmatter delimiters
-                if not formatted_content.startswith('---'):
-                    formatted_content = '---\n' + formatted_content
-                if not formatted_content.endswith('---'):
-                    formatted_content = formatted_content.rstrip() + '\n---'
+                try:
+                    # Use ContentFormatter's YAML formatting with proper indentation
+                    formatted_content = ContentFormatter._format_yaml_with_proper_indentation(parsed_data)
+                    
+                    # Apply ContentFormatter's comprehensive normalization
+                    formatted_content = ContentFormatter.normalize_yaml_content(formatted_content)
+                    
+                    # Add YAML frontmatter delimiters
+                    if not formatted_content.startswith('---'):
+                        formatted_content = '---\n' + formatted_content
+                    if not formatted_content.endswith('---'):
+                        formatted_content = formatted_content.rstrip() + '\n---'
+                        
+                except Exception as yaml_format_error:
+                    logger.error(f"YAML formatting failed for {component_name}: {yaml_format_error}")
+                    # Fallback to basic YAML dump if ContentFormatter fails
+                    try:
+                        import yaml
+                        formatted_content = yaml.dump(parsed_data, default_flow_style=False, allow_unicode=True)
+                        if not formatted_content.startswith('---'):
+                            formatted_content = '---\n' + formatted_content
+                        if not formatted_content.endswith('---'):
+                            formatted_content = formatted_content.rstrip() + '\n---'
+                    except Exception as fallback_error:
+                        logger.error(f"Even fallback YAML formatting failed for {component_name}: {fallback_error}")
+                        raise ValueError(f"Failed to format {component_name} as YAML: {yaml_format_error}")
                     
             elif output_format.lower() == "json":
                 formatted_content = json.dumps(parsed_data, indent=2, ensure_ascii=False)

@@ -273,3 +273,202 @@ def clean_html(content: str) -> str:
         clean = clean.replace(entity, replacement)
         
     return clean
+
+def format_caption_content(content: str) -> str:
+    """Format caption content according to standardized rules.
+    
+    Applies consistent formatting rules:
+    - Material names with proper capitalization
+    - Chemical formulas with proper notation (e.g., C₇H₆O₂)
+    - Two-line format: Material description + Laser cleaning parameters
+    - Removes duplicate text and extra formatting
+    
+    Args:
+        content: Raw caption content from AI
+        
+    Returns:
+        str: Properly formatted caption content
+    """
+    # Clean up any extra formatting or quotes
+    content = re.sub(r'^["\']+|["\']+$', '', content.strip())
+    content = re.sub(r'\s+', ' ', content)  # Normalize whitespace
+    
+    # Apply chemical formula formatting
+    content = format_chemical_formulas(content)
+    
+    # Apply material name capitalization
+    content = format_material_names(content)
+    
+    # Remove duplicate text (case-insensitive)
+    content = remove_duplicate_text(content)
+    
+    # Format into two-line structure
+    return format_two_line_caption(content)
+
+def format_chemical_formulas(text: str) -> str:
+    """Format chemical formulas with proper capitalization and subscripts.
+    
+    Args:
+        text: Text containing chemical formulas
+        
+    Returns:
+        str: Text with properly formatted chemical formulas
+    """
+    # Common chemical formula patterns
+    formula_patterns = [
+        (r'\bc₇h₆o₂\b', 'C₇H₆O₂'),
+        (r'\bsio₂\b', 'SiO₂'),
+        (r'\bc₅h₈\b', 'C₅H₈'),
+        (r'\bzro₂\b', 'ZrO₂'),
+        (r'\bal₂o₃\b', 'Al₂O₃'),
+        (r'\bfe₂o₃\b', 'Fe₂O₃'),
+        (r'\bcaco₃\b', 'CaCO₃'),
+        (r'\bsic\b', 'SiC'),
+        # Add more as needed
+    ]
+    
+    for pattern, replacement in formula_patterns:
+        text = re.sub(pattern, replacement, text, flags=re.IGNORECASE)
+    
+    return text
+
+def format_material_names(text: str) -> str:
+    """Format material names with proper capitalization and bold formatting.
+    
+    Args:
+        text: Text containing material names
+        
+    Returns:
+        str: Text with properly capitalized and bolded material names
+    """
+    # Common material name patterns with their chemical formulas
+    # Use more specific patterns to avoid duplication
+    material_patterns = [
+        # Complex materials with formulas - match the full name and formula
+        (r'\b(carbon fiber reinforced polymer|cfrp)(?:\s*\([^)]*\))?\b', r'**Carbon Fiber Reinforced Polymer (CFRP)**'),
+        (r'\b(borosilicate glass)(?:\s*\([^)]*\))?\b', r'**Borosilicate Glass (SiO₂-B₂O₃-Na₂O)**'),
+        (r'\b(fiberglass)(?:\s*\([^)]*\))?\b', r'**Fiberglass (SiO₂-reinforced polymer matrix)**'),
+        (r'\b(phenolic resin composites?)(?:\s*\([^)]*\))?\b', r'**Phenolic Resin Composites**'),
+        (r'\b(polyester resin composites?)(?:\s*\([^)]*\))?\b', r'**Polyester Resin Composites**'),
+        (r'\b(epoxy resin composites?)(?:\s*\([^)]*\))?\b', r'**Epoxy Resin Composites**'),
+        (r'\b(kevlar reinforced polymer)(?:\s*\([^)]*\))?\b', r'**Kevlar Reinforced Polymer**'),
+        (r'\b(urethane composites?)(?:\s*\([^)]*\))?\b', r'**Urethane Composites**'),
+        (r'\b(thermoplastic elastomer)(?:\s*\([^)]*\))?\b', r'**Thermoplastic Elastomer**'),
+        (r'\b(fused silica)(?:\s*\([^)]*\))?\b', r'**Fused Silica (SiO₂)**'),
+        (r'\b(float glass)(?:\s*\([^)]*\))?\b', r'**Float Glass**'),
+        (r'\b(lead crystal)(?:\s*\([^)]*\))?\b', r'**Lead Crystal**'),
+        (r'\b(pyrex)(?:\s*\([^)]*\))?\b', r'**Pyrex**'),
+        (r'\b(porcelain)(?:\s*\([^)]*\))?\b', r'**Porcelain**'),
+        (r'\b(stoneware)(?:\s*\([^)]*\))?\b', r'**Stoneware**'),
+        (r'\b(zirconia)(?:\s*\([^)]*\))?\b', r'**Zirconia (ZrO₂)**'),
+        (r'\b(rubber)(?:\s*\([^)]*\))?\b', r'**Rubber**'),
+        (r'\b(alumina)(?:\s*\([^)]*\))?\b', r'**Alumina (Al₂O₃)**'),
+    ]
+    
+    for pattern, replacement in material_patterns:
+        text = re.sub(pattern, replacement, text, flags=re.IGNORECASE)
+    
+    return text
+
+def remove_duplicate_text(text: str) -> str:
+    """Remove duplicate text patterns (case-insensitive).
+    
+    Args:
+        text: Text that may contain duplicates
+        
+    Returns:
+        str: Text with duplicates removed
+    """
+    # Remove duplicate "after laser cleaning" patterns
+    text = re.sub(r'\*\*after laser cleaning\*\*\s*\*\*after laser cleaning\*\*', 
+                  '**After laser cleaning**', text, flags=re.IGNORECASE)
+    
+    # Remove duplicate chemical formulas after material names
+    # Pattern: **Material (Formula)** (formula) -> **Material (Formula)**
+    text = re.sub(r'(\*\*[^*]+\([^)]+\)\*\*)\s*\([^)]+\)', r'\1', text)
+    
+    # Remove other duplicate patterns
+    text = re.sub(r'\b(\w+)\s+\1\b', r'\1', text, flags=re.IGNORECASE)
+    
+    return text
+    
+    return text
+
+def format_two_line_caption(content: str) -> str:
+    """Format content into standardized two-line caption format.
+    
+    Expected format:
+    Line 1: **Material Name (Chemical Formula)** description
+    
+    Line 2: **After laser cleaning** technical parameters
+    
+    Args:
+        content: Caption content to format
+        
+    Returns:
+        str: Formatted two-line caption with line break between sentences
+    """
+    # Clean up content first - remove extra spaces and normalize whitespace
+    content = re.sub(r'\s+', ' ', content.strip())
+    
+    # Split content into sentences first
+    sentences = re.split(r'[.!?]+\s*', content)
+    sentences = [s.strip() for s in sentences if s.strip()]
+    
+    if len(sentences) >= 2:
+        # First sentence should be material description
+        first_sentence = sentences[0].strip()
+        if not first_sentence.endswith('.'):
+            first_sentence += '.'
+            
+        # Remaining sentences should be laser cleaning parameters
+        remaining_sentences = ' '.join(sentences[1:]).strip()
+        
+        # Ensure the second part starts with "**After laser cleaning**"
+        if remaining_sentences:
+            # Remove any existing "After laser cleaning" or similar formatting
+            remaining_sentences = re.sub(r'^\*\*?[Aa]fter\s+laser\s+cleaning\*\*?\s*', '', remaining_sentences)
+            remaining_sentences = re.sub(r'^[Ll]aser\s+cleaning\s+', '', remaining_sentences)
+            
+            # Capitalize first word if needed
+            if remaining_sentences and remaining_sentences[0].islower():
+                remaining_sentences = remaining_sentences[0].upper() + remaining_sentences[1:]
+            
+            second_sentence = f"**After laser cleaning** {remaining_sentences}"
+            if not second_sentence.endswith('.'):
+                second_sentence += '.'
+        else:
+            second_sentence = "**After laser cleaning** parameters not specified."
+        
+        return f"{first_sentence}\n\n{second_sentence}"
+    
+    elif len(sentences) == 1:
+        # Single sentence - try to split on "laser" keyword
+        sentence = sentences[0]
+        laser_match = re.search(r'(.*?)\s+((?:laser|cleaning).*)', sentence, re.IGNORECASE)
+        
+        if laser_match:
+            first_part = laser_match.group(1).strip()
+            second_part = laser_match.group(2).strip()
+            
+            if not first_part.endswith('.'):
+                first_part += '.'
+            
+            # Clean up second part and add "After laser cleaning" prefix
+            second_part = re.sub(r'^[Ll]aser\s+cleaning\s+', '', second_part)
+            if second_part and second_part[0].islower():
+                second_part = second_part[0].upper() + second_part[1:]
+            
+            second_part = f"**After laser cleaning** {second_part}"
+            if not second_part.endswith('.'):
+                second_part += '.'
+            
+            return f"{first_part}\n\n{second_part}"
+    
+    # Fallback: if we can't split properly, at least ensure proper line breaks
+    if '\n' not in content:
+        # Add line break before laser content
+        content = re.sub(r'(\*\*[^*]+\*\*[^.]*\.?)\s*(.*(?:laser|cleaning).*)', 
+                        r'\1\n\n**After laser cleaning** \2', content, flags=re.IGNORECASE)
+    
+    return content

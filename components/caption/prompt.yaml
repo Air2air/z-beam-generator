@@ -1,31 +1,32 @@
 name: "Caption Generator"
 description: "Generates scientific image captions using base component data and material information"
-version: "4.0.0"
+version: "5.0.0"
 
 template: |
-  Generate clean, professional image captions for {subject} laser cleaning images.
+  Generate EXACTLY ONE clean, professional image caption for {subject} laser cleaning.
   
-  FORMAT REQUIRED:
-  **{subject} ({material_formula})** [brief description of surface/contamination state]
+  CONTENT REQUIREMENTS:
+  - Line 1: Material description with contamination/surface analysis details
+  - Line 2: Laser cleaning process parameters and results
+  - Include technical specifications: power, wavelength, pulse duration, spot size
+  - Use scientific terminology appropriate for technical documentation
   
-  **After laser cleaning** [brief description of process parameters and results]
+  EXAMPLE STRUCTURE:
+  [Material name with formula] microscopic surface analysis showing contaminants.
   
-  CONTENT GUIDELINES:
-  - Use proper chemical formula capitalization (e.g., ZrO₂, Al₂Si₂O₅(OH)₄)
-  - Keep descriptions concise and technical
-  - First line: material name + contamination/surface condition
-  - Second line: laser parameters + cleaning results
-  - Include key technical specs: wavelength, power, pulse duration, spot size
-  - Avoid figure numbers, nested quotes, or complex formatting
+  After laser cleaning at [wavelength], [power], [pulse duration] and [spot size].
   
-  AVAILABLE MATERIAL DATA:
+  STRICT RULES:
+  - Provide ONLY the two-line caption content
+  - No introductory text, no multiple variations, no explanations
+  - Focus on technical accuracy and scientific precision
+  - Material formatting will be handled automatically
+  
+  MATERIAL DATA:
   Subject: {subject}
-  Material Formula: {material_formula}
-  Material Symbol: {material_symbol}
   Category: {category}
   
-  TECHNICAL SPECIFICATIONS:
-  {formatted_technical_specs}
+  Generate a two-line caption describing the material before and after laser cleaning.
 
 parameters:
   max_tokens: 1000

@@ -31,17 +31,17 @@ BATCH_CONFIG = {
     
     # Single subject configuration (used when mode="single")
     "single_subject": {
-        "subject": "Quartzite",
+        "subject": "Phenolic Resin Composites",
         "article_type": "material",  # application, material, region, or thesaurus
         "author_id": 1,  # 1: Taiwan, 2: Italy, 3: USA, 4: Indonesia
-        "category": "stone",  # Optional: specify category for hierarchy
+        "category": "composite",  # Optional: specify category for hierarchy
     },
     
     # Multi-subject configuration (used when mode="multi")
     "multi_subject": {
         "author_id": 1,  # Use this author for all subjects
         "subject_source": "lists",  # Directory to discover all subjects from all categories
-        "limit": 5,  # Range [start_idx, end_idx] to process items by index (or a single number for first N items, None for all subjects)
+        "limit": [5,20]  # Range [start_idx, end_idx] to process items by index (or a single number for first N items, None for all subjects)
     },
     
     # Global AI configuration - applied to all components
@@ -53,21 +53,7 @@ BATCH_CONFIG = {
         }
     },
     
-    # Parallel processing configuration
-    # "parallel_processing": {
-    #     "enabled": False,  # DISABLED: Parallel processing causes data corruption - AI returns placeholders instead of real data
-    #     "max_concurrent_subjects": 3,  # Max subjects processed simultaneously
-    #     "max_concurrent_components": None,  # Max components per subject (None = auto-detect)
-    #     "api_rate_limiting": {
-    #         "requests_per_minute": 60,  # Adjust based on your API limits
-    #         "burst_limit": 10  # Max requests in a short burst
-    #     },
-    #     "performance_monitoring": {
-    #         "enabled": True,  # Track performance metrics
-    #         "log_timing": True,  # Log timing for each operation
-    #         "save_metrics": False  # Save metrics to file (disabled by default)
-    #     }
-    # },
+
     
     # Component configuration - which components to generate (component-specific settings only)
     "components": {
@@ -561,9 +547,21 @@ def save_component_output(component_name: str, subject: str, content: str, categ
     Raises:
         ValueError: If parameters are invalid or content cannot be saved
     """
-    # Validate required parameters
-    if not all([component_name, subject, content, category, article_type]):
-        raise ValueError("All parameters are required and cannot be empty")
+    # Validate required parameters - be more specific about what's missing
+    if not component_name:
+        raise ValueError("component_name is required and cannot be empty")
+    if not subject:
+        raise ValueError("subject is required and cannot be empty")  
+    if content is None:
+        raise ValueError(f"content is None for component '{component_name}' and subject '{subject}' - generation likely failed")
+    if not isinstance(content, str):
+        raise ValueError(f"content must be a string, got {type(content)} for component '{component_name}' and subject '{subject}'")
+    if not content.strip():
+        raise ValueError(f"content is empty or whitespace-only for component '{component_name}' and subject '{subject}' - generation likely failed")
+    if not category:
+        raise ValueError("category is required and cannot be empty")
+    if not article_type:
+        raise ValueError("article_type is required and cannot be empty")
     
     # Get output path
     output_path = get_component_output_path(component_name, subject, category, article_type)
@@ -939,83 +937,42 @@ def run_batch_generation():
                 
     print(f"Enabled components: {', '.join(enabled_components)}")
 
-    # Check if parallel processing is enabled
-    use_parallel = BATCH_CONFIG.get("parallel_processing", {}).get("enabled", False)
+    print("⚡ Using sequential processing mode")
     
-    if use_parallel and len(subjects_to_process) > 1:
-        print("🚀 Using parallel processing mode")
-        
-        # Import parallel processor
-        from parallel_processor import ParallelProcessor
-        
-        # Determine parallelization settings based on workload
-        parallel_config = BATCH_CONFIG["parallel_processing"]
-        max_concurrent_subjects = min(
-            parallel_config.get("max_concurrent_subjects", 3), 
-            len(subjects_to_process)
-        )
-        max_concurrent_components = parallel_config.get("max_concurrent_components")
-        
-        # For single component runs, don't parallelize components
-        if len(enabled_components) == 1:
-            max_concurrent_components = 1
-        
-        processor = ParallelProcessor(
-            max_concurrent_subjects=max_concurrent_subjects,
-            max_concurrent_components=max_concurrent_components
-        )
-        
-        # Process using parallel processor
-        results = processor.process_subjects_parallel(
-            subjects_to_process=subjects_to_process,
-            enabled_components=enabled_components,
-            generate_component_func=generate_component,
-            create_article_context_func=create_article_context,
-            save_component_output_func=save_component_output,
-            author_id=author_id
-        )
-        
-        # Extract results for compatibility with existing code
-        output_tracker = results['output_tracker']
-        total_generated = results['total_generated']
-        successful_components = results['successful_components']
-        
-    else:
-        if use_parallel:
-            print("⚡ Parallel processing enabled but using sequential mode (single subject or disabled)")
-        else:
-            print("⚡ Using sequential processing mode")
-        
-        # Original sequential processing logic
-        output_tracker = {comp: set() for comp in enabled_components}
-        total_generated = 0
-        successful_components = set()
+    # Sequential processing logic
+    output_tracker = {comp: set() for comp in enabled_components}
+    total_generated = 0
+    successful_components = set()
 
-        # Process each subject
-        for subject, subject_article_type, category in subjects_to_process:
-            print(f"\n--- Processing: {subject} ---")
-            article_context = create_article_context(subject, subject_article_type, author_id, category)
-            
-            # Process all components equally - no special frontmatter handling
-            for component_name in enabled_components:
-                try:
-                    print(f"Generating {component_name} for: {subject} ({subject_article_type})")
-                    content = generate_component(component_name, article_context)
-                    
-                    # Strict mode: Fail immediately if content is None
-                    if content is None:
-                        raise ValueError(f"Content generation failed for {component_name}: {subject}")
-                    
-                    category_for_output = article_context.get("category")
-                    output_path = save_component_output(component_name, subject, content, category_for_output, subject_article_type)
-                    print(f"✅ {component_name.capitalize()} saved to: {output_path}")
-                    output_tracker[component_name].add(subject)
-                    total_generated += 1
-                    successful_components.add(component_name)
-                except Exception as e:
-                    print(f"❌ Error generating {component_name}: {str(e)}")
-                    # Strict mode: Re-raise the exception to stop execution
-                    raise e
+    # Process each subject
+    for subject, subject_article_type, category in subjects_to_process:
+        print(f"\n--- Processing: {subject} ---")
+        article_context = create_article_context(subject, subject_article_type, author_id, category)
+        
+        # Process all components equally - no special frontmatter handling
+        for component_name in enabled_components:
+            try:
+                print(f"Generating {component_name} for: {subject} ({subject_article_type})")
+                content = generate_component(component_name, article_context)
+                
+                # Strict mode: Fail immediately if content is None or empty
+                if content is None:
+                    raise ValueError(f"Content generation failed for {component_name}: {subject} (returned None)")
+                if not isinstance(content, str):
+                    raise ValueError(f"Content generation failed for {component_name}: {subject} (returned {type(content)})")
+                if not content.strip():
+                    raise ValueError(f"Content generation failed for {component_name}: {subject} (returned empty/whitespace content)")
+                
+                category_for_output = article_context.get("category")
+                output_path = save_component_output(component_name, subject, content, category_for_output, subject_article_type)
+                print(f"✅ {component_name.capitalize()} saved to: {output_path}")
+                output_tracker[component_name].add(subject)
+                total_generated += 1
+                successful_components.add(component_name)
+            except Exception as e:
+                print(f"❌ Error generating {component_name}: {str(e)}")
+                # Strict mode: Re-raise the exception to stop execution
+                raise e
 
     # Parity check: ensure every folder has output for every subject
     print("\n📊 Generation Summary:")
