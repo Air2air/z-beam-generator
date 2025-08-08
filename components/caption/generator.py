@@ -9,6 +9,7 @@ Enhanced with dynamic image requirements from schema configurations.
 import logging
 import re
 from components.base.component import BaseComponent
+from components.base.utils.content_formatter import ContentFormatter
 
 logger = logging.getLogger(__name__)
 
@@ -33,8 +34,8 @@ class CaptionGenerator(BaseComponent):
         # Apply dynamic image requirements from schema
         content = self._apply_dynamic_image_requirements(content)
         
-        # Clean and normalize the content using centralized base component method
-        clean_content = self.normalize_case(content.strip(), 'sentence')
+        # Clean and normalize the content using ContentFormatter
+        clean_content = ContentFormatter.normalize_case(content.strip(), 'sentence')
         
         # Extract before cleaning and equipment sections (handling various formats)
         sections = self._extract_caption_sections(clean_content)
