@@ -8,6 +8,7 @@ Enhanced with dynamic schema categories for comprehensive tagging.
 
 import logging
 from components.base.component import BaseComponent
+from components.base.utils.content_formatter import ContentFormatter
 
 logger = logging.getLogger(__name__)
 
@@ -15,40 +16,32 @@ class TagsGenerator(BaseComponent):
     """Generator for article tags with strict validation and local formatting."""
     
     def _component_specific_processing(self, content: str) -> str:
-        """Process the generated tags using centralized formatting.
+        """Extract and format tags from generated content.
         
         Args:
-            content: Pre-validated, clean API response
+            content: Generated content containing tags
             
         Returns:
-            str: Processed tags with dynamic schema categories
-            
-        Raises:
-            ValueError: If content is invalid
+            str: Formatted comma-separated tags
         """
-        # Use centralized tag extraction and formatting
-        tags = self.extract_tags_from_content(content)
+        if not content or not content.strip():
+            return ""
+            
+        # Extract tags from content
+        extracted_tags = ContentFormatter.extract_tags_from_content(content)
         
-        # Apply centralized formatting
-        formatted_content = self.apply_centralized_formatting(content)
+        if not extracted_tags:
+            return ""
         
-        # Apply dynamic schema categories
-        formatted_content = self._apply_dynamic_schema_categories(formatted_content)
+        # Validate tag count (should be 5-10 tags)
+        if len(extracted_tags) > 10:
+            # If we have more than 10 tags, take the first 10
+            extracted_tags = extracted_tags[:10]
         
-        # Get validation parameters
-        min_tags = self.get_component_config("min_tags", 5)
-        max_tags = self.get_component_config("max_tags", 10)
-        
-        # Validate tag count
-        if len(tags) < min_tags:
-            logger.warning(f"Generated only {len(tags)} tags, minimum required: {min_tags}")
-        elif len(tags) > max_tags:
-            logger.warning(f"Generated {len(tags)} tags, maximum allowed: {max_tags}")
-            # Keep only the first max_tags
-            tags = tags[:max_tags]
-            formatted_content = ", ".join(tags)
-        
-        return formatted_content
+        # Format as comma-separated string and return
+        # Note: Tags don't need centralized formatting (which is for YAML content)
+        formatted_tags = ', '.join(extracted_tags)
+        return formatted_tags.strip()
 
     def _apply_dynamic_schema_categories(self, content: str) -> str:
         """Apply dynamic schema categories to ensure tags cover appropriate topic areas.
