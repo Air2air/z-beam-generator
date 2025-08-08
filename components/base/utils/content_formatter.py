@@ -1026,6 +1026,46 @@ class ContentFormatter:
         return formatted
     
     @staticmethod
+    def get_author_name(author_data: Dict[str, Any]) -> str:
+        """Get the author name from author data using standard field mapping.
+        
+        Args:
+            author_data: Raw author data dictionary
+            
+        Returns:
+            str: Author name
+            
+        Raises:
+            ValueError: If author name cannot be found
+        """
+        if not author_data:
+            raise ValueError("Author data is required but not provided")
+        
+        # Use the same mapping logic as format_author_info
+        if "author_name" in author_data:
+            return author_data["author_name"]
+        elif "name" in author_data:
+            return author_data["name"]
+        else:
+            raise ValueError("Author name not found in author data (looked for 'author_name' and 'name' fields)")
+    
+    @staticmethod
+    def create_author_tag(author_data: Dict[str, Any]) -> str:
+        """Create a standardized author tag from author data.
+        
+        Args:
+            author_data: Raw author data dictionary
+            
+        Returns:
+            str: Author name converted to kebab-case tag format
+        """
+        author_name = ContentFormatter.get_author_name(author_data)
+        
+        # Convert to kebab-case using SlugUtils
+        from components.base.utils.slug_utils import SlugUtils
+        return SlugUtils.create_slug(author_name)
+    
+    @staticmethod
     def format_metatags_structure(parsed_data: Dict[str, Any], subject: str, category: str = None) -> Dict[str, Any]:
         """Format metatags structure for Next.js compatibility.
         

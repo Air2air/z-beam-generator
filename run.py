@@ -54,20 +54,20 @@ BATCH_CONFIG = {
     },
     
     # Parallel processing configuration
-    "parallel_processing": {
-        "enabled": False,  # DISABLED: Parallel processing causes data corruption - AI returns placeholders instead of real data
-        "max_concurrent_subjects": 3,  # Max subjects processed simultaneously
-        "max_concurrent_components": None,  # Max components per subject (None = auto-detect)
-        "api_rate_limiting": {
-            "requests_per_minute": 60,  # Adjust based on your API limits
-            "burst_limit": 10  # Max requests in a short burst
-        },
-        "performance_monitoring": {
-            "enabled": True,  # Track performance metrics
-            "log_timing": True,  # Log timing for each operation
-            "save_metrics": False  # Save metrics to file (disabled by default)
-        }
-    },
+    # "parallel_processing": {
+    #     "enabled": False,  # DISABLED: Parallel processing causes data corruption - AI returns placeholders instead of real data
+    #     "max_concurrent_subjects": 3,  # Max subjects processed simultaneously
+    #     "max_concurrent_components": None,  # Max components per subject (None = auto-detect)
+    #     "api_rate_limiting": {
+    #         "requests_per_minute": 60,  # Adjust based on your API limits
+    #         "burst_limit": 10  # Max requests in a short burst
+    #     },
+    #     "performance_monitoring": {
+    #         "enabled": True,  # Track performance metrics
+    #         "log_timing": True,  # Log timing for each operation
+    #         "save_metrics": False  # Save metrics to file (disabled by default)
+    #     }
+    # },
     
     # Component configuration - which components to generate (component-specific settings only)
     "components": {
@@ -110,11 +110,11 @@ BATCH_CONFIG = {
         },
         "tags": {
             "enabled": True,
-            "temperature": 0.8,  # Higher for more diverse tag generation
-            "max_tags": 10,
+            "temperature": 0.7,  # Balanced for focused but diverse tag generation
+            "max_tags": 8,       # Reduced from 10 for higher quality
             "min_tags": 5,
             "tag_categories": [
-                "material", "process", "application", "property", "location"
+                "material", "process", "application", "technology", "author"
             ]
         },
         "caption": {

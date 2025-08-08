@@ -14,7 +14,6 @@ template: |
   - Application domains specific to laser cleaning
   - Technology types relevant to {subject}
   - Benefit categories that apply
-  - Author reference: {author_name}
   
   AVAILABLE BASE COMPONENT DATA:
   Subject: {subject}
@@ -33,7 +32,6 @@ template: |
   - Application domain (e.g., semiconductor, aerospace)
   - Technology (e.g., laser-ablation, nd-yag)
   - Benefits (e.g., precision-cleaning, chemical-free)
-  - Author (convert to kebab-case: {author_name})
   
   OUTPUT INSTRUCTIONS:
   - Generate between {min_tags} and {max_tags} tags
@@ -41,8 +39,11 @@ template: |
   - No numbering, no asterisks, no formatting, no explanations
   - Be concise and focused on laser cleaning applications
   - Each tag should be relevant to "{subject}"
-  - Use hyphens instead of spaces in multi-word tags (e.g., "laser-cleaning" not "laser cleaning")
-  - MUST include a tag with the author name converted to kebab-case
+  - PREFER SINGLE WORDS when possible (e.g., "laser" instead of "laser-cleaning")
+  - Use hyphens ONLY for essential compound concepts (e.g., "nd-yag", "co2-laser")
+  - Maximum 2 words per tag - avoid long descriptive phrases
+  - Focus on core concepts: materials, processes, applications, technologies
+  - NOTE: Author tag will be automatically added by the system
 
 parameters:
   max_tokens: 500
