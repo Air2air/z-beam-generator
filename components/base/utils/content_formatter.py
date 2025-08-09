@@ -787,15 +787,34 @@ class ContentFormatter:
                     break
         
         for i, line in enumerate(lines):
+            # Fix inline sequences with multiple dash-separated items (e.g., "keywords: - item1 - item2 - item3")
+            if re.match(r'^(\s*)([^:]+):\s*-\s*.+?\s*-\s*.+', line):
+                match = re.match(r'^(\s*)([^:]+):\s*-\s*(.+)$', line)
+                if match:
+                    indent, key, full_value = match.groups()
+                    # Split by ' - ' and create proper YAML list
+                    items = [item.strip() for item in full_value.split(' - ') if item.strip()]
+                    if len(items) > 1:
+                        # Convert to proper YAML list format
+                        fixed_lines.append(f'{indent}{key}:')
+                        for item in items:
+                            # Clean up any incomplete content in parentheses
+                            clean_item = re.sub(r'\s*\([^)]*$', '', item.strip())
+                            if clean_item:
+                                fixed_lines.append(f'{indent}  - "{clean_item}"')
+                        continue
+            
             # Fix sequences that start inside scalar values (e.g., "useCase: - Text")
             if re.match(r'^(\s*)([^:]+):\s*-\s*(.+)$', line):
                 match = re.match(r'^(\s*)([^:]+):\s*-\s*(.+)$', line)
                 if match:
                     indent, key, value = match.groups()
-                    # Convert to proper scalar value, removing any trailing incomplete content
-                    clean_value = re.sub(r'\s*\([^)]*$', '', value.strip())
-                    fixed_lines.append(f'{indent}{key}: "{clean_value}"')
-                    continue
+                    # Check if this is a single item (not multiple dash-separated items)
+                    if ' - ' not in value:
+                        # Convert to proper scalar value, removing any trailing incomplete content
+                        clean_value = re.sub(r'\s*\([^)]*$', '', value.strip())
+                        fixed_lines.append(f'{indent}{key}: "{clean_value}"')
+                        continue
             
             # Fix root-level mixed structure by converting list items to mappings if needed
             if root_level_is_mapping and line.strip().startswith('- ') and ':' in line:
