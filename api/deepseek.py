@@ -59,7 +59,8 @@ class DeepseekClient:
             response = requests.post(
                 f"{self.api_base}/chat/completions",
                 headers=headers,
-                json=payload
+                json=payload,
+                timeout=60  # 60 second timeout to prevent hanging
             )
             
             response.raise_for_status()
@@ -73,6 +74,9 @@ class DeepseekClient:
             
             return content
             
+        except requests.exceptions.Timeout as e:
+            logger.error(f"DeepSeek API timeout error (60s): {e}")
+            raise TimeoutError(f"DeepSeek API request timed out after 60 seconds: {e}")
         except requests.exceptions.HTTPError as e:
             if e.response.status_code == 422:
                 logger.error(f"DeepSeek API validation error: {e.response.text}")
