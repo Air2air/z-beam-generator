@@ -293,6 +293,19 @@ def format_caption_content(content: str) -> str:
     content = re.sub(r'^["\']+|["\']+$', '', content.strip())
     content = re.sub(r'\s+', ' ', content)  # Normalize whitespace
     
+    # Remove unwanted brackets that might appear from AI generation
+    content = re.sub(r'^\[|\]$', '', content)  # Remove brackets at start/end
+    content = re.sub(r'\[\*\*([^*]+)\*\*', r'**\1**', content)  # Fix [**text**
+    content = re.sub(r'\*\*([^*]+)\*\*\]', r'**\1**', content)  # Fix **text**]
+    content = re.sub(r'\]\s*after\s+laser\s+cleaning', ' after laser cleaning', content, flags=re.IGNORECASE)
+    
+    # Fix extra asterisks like ****) -> **
+    content = re.sub(r'\*{3,}\)', '**', content)
+    content = re.sub(r'\*{3,}', '**', content)
+    
+    # Fix duplicate material names like **Material** (**Material**)
+    content = re.sub(r'\*\*([^*]+)\*\*\s*\(\*\*([^*]+)\*\*\)', r'**\1 (\2)**', content)
+    
     # Apply chemical formula formatting
     content = format_chemical_formulas(content)
     
@@ -387,6 +400,16 @@ def remove_duplicate_text(text: str) -> str:
     # Pattern: **Material (Formula)** (formula) -> **Material (Formula)**
     text = re.sub(r'(\*\*[^*]+\([^)]+\)\*\*)\s*\([^)]+\)', r'\1', text)
     
+    # Remove duplicate spatial references
+    text = re.sub(r'\(left\)\s*\(left\)', '(left)', text)
+    text = re.sub(r'\(right\)\s*\(right\)', '(right)', text)
+    
+    # Remove duplicate "before cleaning" phrases
+    text = re.sub(r'before cleaning[,\s]*before cleaning', 'before cleaning', text)
+    
+    # Remove duplicate "showing" phrases
+    text = re.sub(r'showing[,\s]*showing', 'showing', text)
+    
     # Remove other duplicate patterns
     text = re.sub(r'\b(\w+)\s+\1\b', r'\1', text, flags=re.IGNORECASE)
     
@@ -398,15 +421,15 @@ def format_two_line_caption(content: str) -> str:
     """Format content into standardized two-line caption format.
     
     Expected format:
-    Line 1: **Material Name (Chemical Formula)** description
+    Line 1: **Material Name (Chemical Formula)** surface (left) showing contaminants before cleaning.
     
-    Line 2: **After laser cleaning** technical parameters
+    Line 2: **After laser cleaning** (right) at technical parameters, showing results.
     
     Args:
         content: Caption content to format
         
     Returns:
-        str: Formatted two-line caption with line break between sentences
+        str: Formatted two-line caption with left/right spatial references
     """
     # Clean up content first - remove extra spaces and normalize whitespace
     content = re.sub(r'\s+', ' ', content.strip())
@@ -418,27 +441,60 @@ def format_two_line_caption(content: str) -> str:
     if len(sentences) >= 2:
         # First sentence should be material description
         first_sentence = sentences[0].strip()
+        
+        # Transform first sentence to include "(left)" and "before cleaning"
+        # Look for patterns like "surface analysis revealing" or "surface with"
+        if 'surface' in first_sentence.lower():
+            # Only add (left) if it's not already there
+            if '(left)' not in first_sentence.lower():
+                first_sentence = re.sub(r'\bsurface\b', 'surface (left)', first_sentence, flags=re.IGNORECASE)
+        else:
+            # If no "surface" found, add "(left)" after material name
+            if first_sentence.startswith('**') and '**' in first_sentence[2:] and '(left)' not in first_sentence.lower():
+                # Find the end of the bold material name
+                end_bold = first_sentence.find('**', 2)
+                if end_bold != -1:
+                    first_sentence = first_sentence[:end_bold+2] + ' (left)' + first_sentence[end_bold+2:]
+        
+        # Add "before cleaning" context if not present
+        if 'before' not in first_sentence.lower() and 'cleaning' not in first_sentence.lower():
+            # Replace descriptive words with "before cleaning" context
+            first_sentence = re.sub(r'\banalysis\s+revealing\b', 'before cleaning, showing', first_sentence, flags=re.IGNORECASE)
+            first_sentence = re.sub(r'\bwith\s+', 'before cleaning, with ', first_sentence, flags=re.IGNORECASE)
+            if 'before cleaning' not in first_sentence.lower():
+                first_sentence = first_sentence.rstrip('.') + ' before cleaning.'
+        
         if not first_sentence.endswith('.'):
             first_sentence += '.'
             
         # Remaining sentences should be laser cleaning parameters
         remaining_sentences = ' '.join(sentences[1:]).strip()
         
-        # Ensure the second part starts with "**After laser cleaning**"
+        # Ensure the second part starts with "**After laser cleaning** (right)"
         if remaining_sentences:
             # Remove any existing "After laser cleaning" or similar formatting
             remaining_sentences = re.sub(r'^\*\*?[Aa]fter\s+laser\s+cleaning\*\*?\s*', '', remaining_sentences)
             remaining_sentences = re.sub(r'^[Ll]aser\s+cleaning\s+', '', remaining_sentences)
             
-            # Capitalize first word if needed
-            if remaining_sentences and remaining_sentences[0].islower():
+            # Fix "At" to "at" at the beginning
+            remaining_sentences = re.sub(r'^At\s+', 'at ', remaining_sentences)
+            
+            # Capitalize first word if needed (but not "at")
+            if remaining_sentences and remaining_sentences[0].islower() and not remaining_sentences.startswith('at '):
                 remaining_sentences = remaining_sentences[0].upper() + remaining_sentences[1:]
             
-            second_sentence = f"**After laser cleaning** {remaining_sentences}"
+            # Add results context if not present
+            if 'achieved' in remaining_sentences.lower():
+                remaining_sentences = re.sub(r'\bachieved\b', 'showing', remaining_sentences, flags=re.IGNORECASE)
+            elif 'revealing' not in remaining_sentences.lower() and 'showing' not in remaining_sentences.lower():
+                # Add "showing" before the results
+                remaining_sentences = remaining_sentences.rstrip('.') + ', showing complete contaminant removal.'
+            
+            second_sentence = f"**After laser cleaning** (right) {remaining_sentences}"
             if not second_sentence.endswith('.'):
                 second_sentence += '.'
         else:
-            second_sentence = "**After laser cleaning** parameters not specified."
+            second_sentence = "**After laser cleaning** (right) parameters not specified."
         
         return f"{first_sentence}\n\n{second_sentence}"
     
@@ -451,15 +507,22 @@ def format_two_line_caption(content: str) -> str:
             first_part = laser_match.group(1).strip()
             second_part = laser_match.group(2).strip()
             
+            # Add "(left)" and "before cleaning" to first part
+            if 'surface' in first_part.lower():
+                first_part = re.sub(r'\bsurface\b', 'surface (left)', first_part, flags=re.IGNORECASE)
+            first_part = re.sub(r'\banalysis\s+revealing\b', 'before cleaning, showing', first_part, flags=re.IGNORECASE)
+            
             if not first_part.endswith('.'):
                 first_part += '.'
             
-            # Clean up second part and add "After laser cleaning" prefix
+            # Clean up second part and add "After laser cleaning (right)" prefix
             second_part = re.sub(r'^[Ll]aser\s+cleaning\s+', '', second_part)
-            if second_part and second_part[0].islower():
+            second_part = re.sub(r'^At\s+', 'at ', second_part)
+            
+            if second_part and second_part[0].islower() and not second_part.startswith('at '):
                 second_part = second_part[0].upper() + second_part[1:]
             
-            second_part = f"**After laser cleaning** {second_part}"
+            second_part = f"**After laser cleaning** (right) {second_part}"
             if not second_part.endswith('.'):
                 second_part += '.'
             
@@ -469,6 +532,6 @@ def format_two_line_caption(content: str) -> str:
     if '\n' not in content:
         # Add line break before laser content
         content = re.sub(r'(\*\*[^*]+\*\*[^.]*\.?)\s*(.*(?:laser|cleaning).*)', 
-                        r'\1\n\n**After laser cleaning** \2', content, flags=re.IGNORECASE)
+                        r'\1\n\n**After laser cleaning** (right) \2', content, flags=re.IGNORECASE)
     
     return content
