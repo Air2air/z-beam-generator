@@ -121,6 +121,10 @@ BATCH_CONFIG = {
             "max_tags": 20,
             "temperature": 0.5  # Moderate temperature for balanced metadata generation
         },
+        "propertiestable": {
+            "enabled": False,
+            "temperature": 0.3  # Low temperature for structured data tables
+        },
     },
     
     # Output configuration
@@ -140,6 +144,7 @@ BATCH_CONFIG = {
         "caption": "{subject}",               # alumina
         "jsonld": "{subject}",                # alumina
         "metatags": "{subject}",              # alumina
+        "propertiestable": "{subject}",       # alumina
         
         # Article-type specific patterns (applied to ALL components for that type)
         "article_type_patterns": {
@@ -703,6 +708,8 @@ def generate_component(component_name: str, article_context: dict) -> str:
             # Special case for metatags (capitalization issue)
             if component_name == "metatags":
                 generator_class_name = "MetatagsGenerator"
+            elif component_name == "propertiestable":
+                generator_class_name = "PropertiesTableGenerator"
             else:
                 generator_class_name = f"{component_name.capitalize()}Generator"
             
