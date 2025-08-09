@@ -661,23 +661,32 @@ class ContentFormatter:
         Returns:
             str: Normalized YAML content with proper indentation
         """
-        # Remove any markdown code blocks
+        # Step 1: Clean AI-generated markdown artifacts
+        content = ContentFormatter._clean_ai_markdown_artifacts(content)
+        
+        # Step 2: Fix document structure issues
+        content = ContentFormatter._fix_document_structure(content)
+        
+        # Step 3: Remove any markdown code blocks
         content = re.sub(r'^```ya?ml\s*\n', '', content, flags=re.MULTILINE)
         content = re.sub(r'\n```\s*$', '', content, flags=re.MULTILINE)
         
-        # Fix image URL double dashes
+        # Step 4: Fix image URL double dashes
         content = re.sub(r'(/images/[^"]*?)--+([^"]*?\.jpg)', r'\1-\2', content)
         
-        # Fix trailing dashes in image URLs (before file extension)
+        # Step 5: Fix trailing dashes in image URLs (before file extension)
         content = re.sub(r'(/images/[^"]*?)-+(\.[a-z]+)', r'\1\2', content)
         
-        # Fix any trailing dashes in slugs throughout the content
+        # Step 6: Fix any trailing dashes in slugs throughout the content
         content = re.sub(r'([a-z0-9])-+(\s|"|\'|$)', r'\1\2', content)
         
-        # Escape YAML values that start with special characters that cause parsing issues
+        # Step 7: Fix malformed YAML sequences
+        content = ContentFormatter._fix_malformed_sequences(content)
+        
+        # Step 8: Escape YAML values that start with special characters that cause parsing issues
         content = ContentFormatter._escape_yaml_values(content)
         
-        # Parse and re-structure with guaranteed proper indentation
+        # Step 8: Parse and re-structure with guaranteed proper indentation
         try:
             import yaml
             
@@ -692,23 +701,310 @@ class ContentFormatter:
             return formatted_yaml.strip()
             
         except yaml.YAMLError as e:
-            # YAML parsing failed - this should be rare with proper escaping
-            # Return content as-is rather than attempting manual fixes
+            # YAML parsing failed - try more aggressive cleaning
             import logging
             logger = logging.getLogger(__name__)
             logger.warning(f"YAML parsing failed despite escaping: {e}")
+            
+            # Try one more aggressive cleaning pass
+            content = ContentFormatter._aggressive_yaml_cleanup(content)
+            try:
+                parsed_data = yaml.safe_load(content)
+                if parsed_data is not None:
+                    formatted_yaml = ContentFormatter._format_yaml_with_proper_indentation(parsed_data)
+                    return formatted_yaml.strip()
+            except yaml.YAMLError:
+                pass
+            
+            # Return content as-is if all cleaning attempts fail
             return content
     
     @staticmethod
+    def _clean_ai_markdown_artifacts(content: str) -> str:
+        """Clean markdown artifacts that AI sometimes embeds in YAML values.
+        
+        Args:
+            content: Raw content with potential markdown artifacts
+            
+        Returns:
+            str: Cleaned content with markdown artifacts removed
+        """
+        # Remove markdown formatting from YAML values (e.g., - **Chemical Formula: "** Al  ")
+        content = re.sub(r'^(\s*-\s+)\*\*([^:]+):\s*"\*\*\s*([^"]*?)\s*"\s*$', r'\1\2: "\3"', content, flags=re.MULTILINE)
+        
+        # Remove markdown bold formatting from YAML values (e.g., **text**)
+        content = re.sub(r'(\s*[^:]+:\s*["\']?)\*\*([^*]+)\*\*(["\']?\s*)$', r'\1\2\3', content, flags=re.MULTILINE)
+        
+        # Remove markdown emphasis from YAML values
+        content = re.sub(r'(\s*[^:]+:\s*["\']?)_([^_]+)_(["\']?\s*)$', r'\1\2\3', content, flags=re.MULTILINE)
+        
+        # Clean up malformed quoted values (e.g., "** text **")
+        content = re.sub(r'"\s*\*\*\s*([^*"]+?)\s*\*\*\s*"', r'"\1"', content)
+        
+        # Remove markdown bold from key names (e.g., **Key**: value)
+        content = re.sub(r'^(\s*-?\s*)\*\*([^:*]+)\*\*:\s*(.*)$', r'\1\2: \3', content, flags=re.MULTILINE)
+        
+        # Clean up any remaining markdown bold markers
+        content = re.sub(r'\*\*([^*]+)\*\*', r'\1', content)
+        
+        # Remove leftover markdown artifacts in values
+        content = re.sub(r'(\s*[^:]+:\s*["\']?)([^"\']*?)\s*"\s*"(["\']?\s*)$', r'\1\2\3', content, flags=re.MULTILINE)
+        
+        # Fix double quotes issues (e.g., - **Chemical Formula: "** Al  " becomes Chemical Formula: Al)
+        content = re.sub(r'^(\s*-?\s*)([^:]+):\s*["\']?\*\*["\']?\s*([^"\']*?)\s*["\']?\s*$', r'\1\2: \3', content, flags=re.MULTILINE)
+        
+        # Remove trailing quotes and whitespace artifacts from values
+        content = re.sub(r'(:\s*[^"\n]*?)\s*["\']?\s*$', r'\1', content, flags=re.MULTILINE)
+        
+        # Remove incomplete parenthetical content at line endings
+        content = re.sub(r'\s*\([^)]*$', '', content, flags=re.MULTILINE)
+        
+        return content
+    
+    @staticmethod
+    def _fix_malformed_sequences(content: str) -> str:
+        """Fix malformed YAML sequences that cause parsing errors.
+        
+        Args:
+            content: YAML content with potential sequence issues
+            
+        Returns:
+            str: Fixed YAML content
+        """
+        lines = content.split('\n')
+        fixed_lines = []
+        root_level_is_mapping = False
+        
+        # First pass: determine if root should be mapping or sequence
+        for line in lines:
+            if line.strip() and not line.strip().startswith('#'):
+                if line.strip().startswith('- ') and ':' in line:
+                    # This is a list item with key-value (could be either)
+                    continue
+                elif ':' in line and not line.strip().startswith('- '):
+                    # This is definitely a mapping
+                    root_level_is_mapping = True
+                    break
+        
+        for i, line in enumerate(lines):
+            # Fix sequences that start inside scalar values (e.g., "useCase: - Text")
+            if re.match(r'^(\s*)([^:]+):\s*-\s*(.+)$', line):
+                match = re.match(r'^(\s*)([^:]+):\s*-\s*(.+)$', line)
+                if match:
+                    indent, key, value = match.groups()
+                    # Convert to proper scalar value, removing any trailing incomplete content
+                    clean_value = re.sub(r'\s*\([^)]*$', '', value.strip())
+                    fixed_lines.append(f'{indent}{key}: "{clean_value}"')
+                    continue
+            
+            # Fix root-level mixed structure by converting list items to mappings if needed
+            if root_level_is_mapping and line.strip().startswith('- ') and ':' in line:
+                # Convert "- key: value" to "key: value" at root level
+                match = re.match(r'^(\s*)-\s+([^:]+):\s*(.*)$', line)
+                if match:
+                    indent, key, value = match.groups()
+                    fixed_lines.append(f'{indent}{key}: {value}')
+                    continue
+            
+            # Fix malformed list items that have broken formatting
+            if re.match(r'^(\s*-\s+)([^:]+):\s*(.+?)\s*\($', line):
+                match = re.match(r'^(\s*-\s+)([^:]+):\s*(.+?)\s*\($', line)
+                if match:
+                    indent, key, value = match.groups()
+                    # Remove trailing parenthesis and clean up
+                    fixed_lines.append(f'{indent}{key}: {value.rstrip()}')
+                    continue
+                    
+            # Fix incomplete sequences or malformed structure
+            if re.match(r'^(\s+)([^:]+):\s*(.+?)\s*\([^)]*$', line):
+                match = re.match(r'^(\s+)([^:]+):\s*(.+?)\s*\([^)]*$', line)
+                if match:
+                    indent, key, value = match.groups()
+                    # Remove incomplete parenthetical content
+                    fixed_lines.append(f'{indent}{key}: {value.rstrip()}')
+                    continue
+            
+            # Fix nested indentation issues
+            if line.strip() and not line.startswith(' ') and not line.startswith('-') and ':' in line:
+                # This should be properly indented under properties if it looks like a property
+                prev_line = fixed_lines[-1] if fixed_lines else ''
+                if prev_line.strip() == 'properties:':
+                    fixed_lines.append(f'  {line}')
+                    continue
+            
+            fixed_lines.append(line)
+        
+        return '\n'.join(fixed_lines)
+    
+    @staticmethod
+    def _aggressive_yaml_cleanup(content: str) -> str:
+        """Perform aggressive cleanup on malformed YAML as last resort.
+        
+        Args:
+            content: Malformed YAML content
+            
+        Returns:
+            str: Aggressively cleaned YAML content
+        """
+        lines = content.split('\n')
+        cleaned_lines = []
+        
+        for line in lines:
+            # Skip lines that would definitely break YAML parsing
+            if re.match(r'^\s*Here is|^\s*```|^\s*##|^\s*\*\*[^:]*\*\*\s*$', line):
+                continue
+                
+            # Remove standalone markdown headers
+            if re.match(r'^\s*#+\s', line):
+                continue
+                
+            # Fix values that start with markdown and end with quotes
+            line = re.sub(r'^(\s*[^:]+):\s*\*\*([^*"]+)\*\*\s*["\']([^"\']*)["\']?\s*$', r'\1: \2 \3', line)
+            
+            # Remove excessive whitespace and clean up
+            line = re.sub(r'\s+', ' ', line)
+            line = line.strip()
+            
+            # Only add non-empty lines
+            if line:
+                cleaned_lines.append(line)
+        
+        return '\n'.join(cleaned_lines)
+    
+    @staticmethod
+    def _fix_document_structure(content: str) -> str:
+        """Fix YAML document structure issues.
+        
+        Args:
+            content: YAML content with potential document structure issues
+            
+        Returns:
+            str: Fixed YAML content with proper document structure
+        """
+        lines = content.split('\n')
+        fixed_lines = []
+        in_document = False
+        content_lines = []
+        
+        for line in lines:
+            stripped = line.strip()
+            
+            # Skip empty lines at the start
+            if not stripped and not in_document:
+                continue
+                
+            # Handle document separators
+            if stripped == '---':
+                if not in_document:
+                    # Start of document
+                    in_document = True
+                    fixed_lines.append(line)
+                else:
+                    # End of document - ignore additional separators
+                    break
+                continue
+            
+            # Skip lines that look like raw markdown or malformed content
+            if in_document:
+                # Skip lines that are just quotes or malformed
+                if stripped in ['"', '**', '']:
+                    continue
+                    
+                # Skip lines that look like orphaned values
+                if stripped.endswith('"') and ':' not in stripped and not stripped.startswith('-'):
+                    continue
+                
+                content_lines.append(line)
+        
+        # If we have content, add it to the document
+        if content_lines:
+            # Ensure we have a document start
+            if not any(line.strip() == '---' for line in fixed_lines):
+                fixed_lines = ['---'] + content_lines
+            else:
+                fixed_lines.extend(content_lines)
+        
+        # Clean up the final structure
+        result = '\n'.join(fixed_lines)
+        
+        # Remove any trailing document separators
+        result = re.sub(r'\n---\s*$', '', result)
+        
+        return result
+
+    @staticmethod  
     def _escape_yaml_values(content: str) -> str:
-        """Escape problematic YAML values to prevent parsing errors.
+        """Escape YAML values that need quoting.
         
         Args:
             content: YAML content string
             
         Returns:
-            str: YAML content with problematic values quoted
+            str: YAML content with properly escaped values
         """
+        lines = content.split('\n')
+        fixed_lines = []
+        
+        for line in lines:
+            # Only process lines that contain key-value pairs
+            if ':' in line and not line.strip().startswith('#'):
+                # Split on first colon to separate key and value
+                parts = line.split(':', 1)
+                if len(parts) == 2:
+                    key_part = parts[0]
+                    value_part = parts[1].strip()
+                    
+                    # If value needs escaping (contains special chars but isn't quoted)
+                    if value_part and not (value_part.startswith('"') and value_part.endswith('"')):
+                        # Check if it needs quoting
+                        needs_quotes = any(char in value_part for char in [':', '[', ']', '{', '}', '!', '&', '*', '#', '?', '|', '>', '<', '=', '%', '@', '`'])
+                        
+                        if needs_quotes:
+                            # Escape any quotes within the value
+                            escaped_value = value_part.replace('"', '\\"')
+                            fixed_lines.append(f'{key_part}: "{escaped_value}"')
+                            continue
+            
+            fixed_lines.append(line)
+        
+        return '\n'.join(fixed_lines)
+
+    @staticmethod
+    def _escape_yaml_values(content: str) -> str:
+        """Escape YAML values that need quoting.
+        
+        Args:
+            content: YAML content string
+            
+        Returns:
+            str: YAML content with properly escaped values
+        """
+        lines = content.split('\n')
+        fixed_lines = []
+        
+        for line in lines:
+            # Only process lines that contain key-value pairs
+            if ':' in line and not line.strip().startswith('#'):
+                # Split on first colon to separate key and value
+                parts = line.split(':', 1)
+                if len(parts) == 2:
+                    key_part = parts[0]
+                    value_part = parts[1].strip()
+                    
+                    # If value needs escaping (contains special chars but isn't quoted)
+                    if value_part and not (value_part.startswith('"') and value_part.endswith('"')):
+                        # Check if it needs quoting
+                        needs_quotes = any(char in value_part for char in [':', '[', ']', '{', '}', '!', '&', '*', '#', '?', '|', '>', '<', '=', '%', '@', '`'])
+                        
+                        if needs_quotes:
+                            # Escape any quotes within the value
+                            escaped_value = value_part.replace('"', '\\"')
+                            fixed_lines.append(f'{key_part}: "{escaped_value}"')
+                            continue
+            
+            fixed_lines.append(line)
+        
+        return '\n'.join(fixed_lines)
         lines = content.split('\n')
         escaped_lines = []
         
@@ -723,12 +1019,12 @@ class ContentFormatter:
             if colon_match:
                 indent, key, value = colon_match.groups()
                 
-                # Don't quote if already quoted or empty
+                # Don't process if already quoted or empty
                 if not value or value.startswith('"') or value.startswith("'"):
                     escaped_lines.append(line)
                     continue
                 
-                # Quote if value contains problematic characters
+                # Enhanced detection of problematic values
                 needs_quoting = False
                 
                 # Contains unescaped colons (but not URLs)
@@ -740,10 +1036,27 @@ class ContentFormatter:
                 # Starts with special YAML characters
                 elif re.match(r'^[#*&!|>\'%@`\[\]{}]', value):
                     needs_quoting = True
+                # Contains markdown formatting remnants
+                elif '**' in value or '__' in value:
+                    needs_quoting = True
+                # Contains parentheses which could confuse YAML
+                elif '(' in value or ')' in value:
+                    needs_quoting = True
+                # Starts with numbers followed by certain characters
+                elif re.match(r'^\d+[.)]', value):
+                    needs_quoting = True
+                # Contains sequences that look like YAML directives
+                elif re.match(r'.*\s-\s.*', value):
+                    needs_quoting = True
+                # Contains percentage symbols which can be problematic
+                elif '%' in value:
+                    needs_quoting = True
                 
                 if needs_quoting:
-                    # Escape any existing quotes in the value
-                    escaped_value = value.replace('"', '\\"')
+                    # Clean the value first, then quote it
+                    cleaned_value = ContentFormatter._clean_value_for_yaml(value)
+                    # Escape any existing quotes in the cleaned value
+                    escaped_value = cleaned_value.replace('"', '\\"')
                     escaped_lines.append(f'{indent}{key}: "{escaped_value}"')
                 else:
                     escaped_lines.append(line)
@@ -751,6 +1064,31 @@ class ContentFormatter:
                 escaped_lines.append(line)
         
         return '\n'.join(escaped_lines)
+    
+    @staticmethod
+    def _clean_value_for_yaml(value: str) -> str:
+        """Clean a YAML value by removing problematic formatting.
+        
+        Args:
+            value: Raw value that may contain formatting issues
+            
+        Returns:
+            str: Cleaned value suitable for YAML
+        """
+        # Remove markdown bold/emphasis
+        value = re.sub(r'\*\*([^*]+)\*\*', r'\1', value)
+        value = re.sub(r'__([^_]+)__', r'\1', value)
+        value = re.sub(r'_([^_]+)_', r'\1', value)
+        
+        # Remove standalone asterisks and underscores
+        value = re.sub(r'\s*\*+\s*', ' ', value)
+        value = re.sub(r'\s*_+\s*', ' ', value)
+        
+        # Clean up excessive whitespace
+        value = re.sub(r'\s+', ' ', value)
+        value = value.strip()
+        
+        return value
     
     @staticmethod
     def extract_yaml_content(content: str) -> str:
@@ -763,6 +1101,9 @@ class ContentFormatter:
             str: Clean YAML content
         """
         content = content.strip()
+        
+        # Pre-clean malformed AI patterns before extraction
+        content = ContentFormatter._preprocess_malformed_ai_content(content)
         
         # Comprehensive code block detection and removal
         # Handle various code block formats: ```yaml, ```text, ```json, plain ```
@@ -795,7 +1136,10 @@ class ContentFormatter:
         
         for i, line in enumerate(lines):
             # Find the first line that looks like YAML (key: value pattern)
-            if re.match(r'^[a-zA-Z_][a-zA-Z0-9_]*\s*:', line.strip()):
+            # Enhanced to handle malformed patterns
+            if (re.match(r'^[a-zA-Z_][a-zA-Z0-9_]*\s*:', line.strip()) or 
+                re.match(r'^---\s*$', line.strip()) or
+                re.match(r'^\s*-\s+[a-zA-Z_]', line.strip())):
                 yaml_start_idx = i
                 break
         
@@ -804,24 +1148,53 @@ class ContentFormatter:
             # Remove any trailing explanatory text after the YAML
             final_lines = []
             for line in yaml_lines:
-                # Stop when we hit explanatory text (lines that don't look like YAML)
-                stripped = line.strip()
-                if stripped and not (
-                    stripped.startswith('#') or  # Comments
-                    ':' in stripped or  # Key-value pairs
-                    stripped.startswith('-') or  # List items
-                    stripped.startswith(' ') or stripped.startswith('\t') or  # Indented content
-                    stripped == '' or  # Empty lines
-                    re.match(r'^[a-zA-Z_][a-zA-Z0-9_]*$', stripped)  # Single words (possible keys)
-                ):
+                # Stop at lines that look like explanatory text
+                if (line.strip().startswith('This YAML') or 
+                    line.strip().startswith('The above') or
+                    line.strip().startswith('Note:') or
+                    re.match(r'^[A-Z].*[.!]$', line.strip())):
                     break
                 final_lines.append(line)
             
             return '\n'.join(final_lines).strip()
         
-        # If no clear YAML structure found, return the content as-is
+        # If no clear YAML structure found, return cleaned content
         return content
     
+    @staticmethod
+    def _preprocess_malformed_ai_content(content: str) -> str:
+        """Preprocess malformed AI content patterns before YAML extraction.
+        
+        Args:
+            content: Raw AI content with potential malformed patterns
+            
+        Returns:
+            str: Preprocessed content with common malformed patterns fixed
+        """
+        # Remove introductory text that AI sometimes adds
+        content = re.sub(r'^Here\s+is.*?:\s*\n', '', content, flags=re.IGNORECASE)
+        content = re.sub(r'^Below\s+is.*?:\s*\n', '', content, flags=re.IGNORECASE)
+        content = re.sub(r'^The\s+following.*?:\s*\n', '', content, flags=re.IGNORECASE)
+        
+        # Fix malformed list items with markdown (e.g., "- **Key: "** value")
+        content = re.sub(r'^(\s*-\s+)\*\*([^:]+):\s*["\']?\*\*\s*([^"\']*?)\s*["\']?\s*$', 
+                        r'\1\2: \3', content, flags=re.MULTILINE)
+        
+        # Fix malformed key-value pairs with markdown (e.g., "**Key: "** value")
+        content = re.sub(r'^(\s*)\*\*([^:]+):\s*["\']?\*\*\s*([^"\']*?)\s*["\']?\s*$', 
+                        r'\1\2: \3', content, flags=re.MULTILINE)
+        
+        # Fix values that end with opening parentheses (incomplete content)
+        content = re.sub(r'^(\s*[^:]+):\s*(.+?)\s*\(\s*$', r'\1: \2', content, flags=re.MULTILINE)
+        
+        # Remove markdown formatting from values
+        content = re.sub(r'(\s*[^:]+:\s*)"([^"]*?)\*\*([^*"]*?)\*\*([^"]*?)"', r'\1"\2\3\4"', content)
+        
+        # Fix broken quoted values
+        content = re.sub(r'(\s*[^:]+:\s*)"\s*([^"]*?)\s*"\s*"([^"]*?)"\s*', r'\1"\2 \3"', content)
+        
+        return content
+        
     @staticmethod
     def extract_content_between_markers(content: str, marker: str = '---') -> str:
         """Extract content between YAML frontmatter markers.
@@ -909,7 +1282,7 @@ class ContentFormatter:
                 import json
                 json.loads(match.group(1).strip())
                 return match.group(1).strip()
-            except:
+            except Exception:
                 continue
         
         # Try to extract from YAML-like blocks

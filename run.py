@@ -41,7 +41,7 @@ BATCH_CONFIG = {
     "multi_subject": {
         "author_id": 1,  # Use this author for all subjects
         "subject_source": "lists",  # Directory to discover all subjects from all categories
-        "limit": 20  # Range [start_idx, end_idx] to process items by index (or a single number for first N items, None for all subjects)
+        "limit": [0,30] # Range [start_idx, end_idx] to process items by index (or a single number for first N items, None for all subjects)
     },
     
     # Global AI configuration - applied to all components
@@ -58,13 +58,13 @@ BATCH_CONFIG = {
     # Component configuration - which components to generate (component-specific settings only)
     "components": {
         "frontmatter": {
-            "enabled": False,  # Frontmatter is just another component
+            "enabled": True,  # Frontmatter is just another component
             "min_words": 300,
             "max_words": 500,
             "temperature": 0.9  # Override global temperature for frontmatter
         },
         "content": {
-            "enabled": False,
+            "enabled": True,
             "min_words": 200,
             "max_words": 400,
             "temperature": 0.7,  # Balanced creativity for main content
@@ -73,12 +73,12 @@ BATCH_CONFIG = {
             }
         },
         "bullets": {
-            "enabled": False,
+            "enabled": True,
             "count": 4,
             "temperature": 0.6  # Slightly lower for more focused bullet points
         },
         "table": {
-            "enabled": False,
+            "enabled": True,
             "rows": 5,
             "temperature": 0.4,  # Lower temperature for more consistent, structured table data
             "table_keys": ["Material", "Density", "Melting Point", "Laser Type", "Applications"],
@@ -95,7 +95,7 @@ BATCH_CONFIG = {
             ]
         },
         "tags": {
-            "enabled": False,
+            "enabled": True,
             "temperature": 0.7,  # Balanced for focused but diverse tag generation
             "max_tags": 8,       # Reduced from 10 for higher quality
             "min_tags": 5,
@@ -112,17 +112,17 @@ BATCH_CONFIG = {
             "max_tokens": 1000  # Override global max_tokens for caption
         },
         "jsonld": {
-            "enabled": False,
+            "enabled": True,
             "temperature": 0.3  # Low temperature for structured JSON data
         },
         "metatags": {
-            "enabled": False,
+            "enabled": True,
             "min_tags": 8,
             "max_tags": 20,
             "temperature": 0.5  # Moderate temperature for balanced metadata generation
         },
         "propertiestable": {
-            "enabled": False,
+            "enabled": True,
             "temperature": 0.3  # Low temperature for structured data tables
         },
     },
