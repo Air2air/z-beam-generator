@@ -1616,3 +1616,235 @@ class ContentFormatter:
         """
         from datetime import datetime, timezone
         return datetime.now(timezone.utc).isoformat()
+
+    @staticmethod
+    def extract_structured_data_from_text(content: str, subject: str) -> Dict[str, Any]:
+        """Extract structured data from any text format for frontmatter.
+        
+        This method can handle raw text, markdown, partial YAML, or any other format
+        and extract the technical information needed for frontmatter.
+        
+        Args:
+            content: Raw text content from AI
+            subject: The subject being processed
+            
+        Returns:
+            Dict[str, Any]: Structured data extracted from text
+        """
+        import re
+        
+        result = {
+            'name': subject,  # Use the subject as the base name
+        }
+        
+        # Extract properties (look for numeric values with units)
+        properties = {}
+        
+        # Common property patterns
+        property_patterns = [
+            (r'density[:\s]*([0-9.,–\-\s]+g/cm³)', 'density'),
+            (r'melting\s*point[:\s]*([0-9.,–\-\s]+°?C)', 'meltingPoint'),
+            (r'thermal\s*conductivity[:\s]*([0-9.,–\-\s]+W/m[·•]K)', 'thermalConductivity'),
+            (r'hardness[:\s]*([0-9.,–\-\s]+Mohs)', 'hardness'),
+            (r'flexural\s*strength[:\s]*([0-9.,–\-\s]+MPa)', 'flexuralStrength'),
+            (r'tensile\s*strength[:\s]*([0-9.,–\-\s]+MPa)', 'tensileStrength'),
+            (r'compressive\s*strength[:\s]*([0-9.,–\-\s]+MPa)', 'compressiveStrength'),
+        ]
+        
+        for pattern, key in property_patterns:
+            match = re.search(pattern, content, re.IGNORECASE)
+            if match:
+                properties[key] = match.group(1).strip()
+        
+        if properties:
+            result['properties'] = properties
+        
+        # Extract applications (look for industry contexts)
+        applications = []
+        
+        # Look for application patterns
+        app_patterns = [
+            r'\*\*([^*]+)\*\*:\s*([^*\n]+)',  # **Industry**: Description
+            r'([A-Z][a-z]+\s*[A-Z]*[a-z]*):\s*([^:\n]+)',  # Industry: Description
+        ]
+        
+        for pattern in app_patterns:
+            matches = re.findall(pattern, content)
+            for match in matches:
+                if len(match) == 2:
+                    industry, description = match
+                    if len(industry) > 2 and len(description) > 10:  # Reasonable length check
+                        applications.append({
+                            'industry': industry.strip(),
+                            'useCase': description.strip(),
+                        })
+        
+        if applications:
+            result['applications'] = applications[:5]  # Limit to 5 applications
+        
+        return result
+
+    @staticmethod
+    def extract_bullet_points(content: str) -> List[str]:
+        """Extract bullet points from AI-generated content.
+        
+        Args:
+            content: Raw generated content with bullet points
+            
+        Returns:
+            List[str]: Extracted bullet points
+        """
+        lines = content.strip().split('\n')
+        bullet_items = []
+        
+        # Process lines to extract bullet content
+        current_bullet = None
+        
+        for line in lines:
+            line = line.strip()
+            # Check if this line starts a bullet point
+            if line.startswith('-') or line.startswith('•') or line.startswith('*'):
+                # If we have a bullet in progress, save it
+                if current_bullet:
+                    bullet_items.append(current_bullet)
+                
+                # Start a new bullet
+                current_bullet = line[1:].strip()
+            # Check if this is a numbered bullet
+            elif re.match(r'^\d+\.', line):
+                # If we have a bullet in progress, save it
+                if current_bullet:
+                    bullet_items.append(current_bullet)
+                
+                # Start a new bullet (remove the number and period)
+                current_bullet = re.sub(r'^\d+\.', '', line).strip()
+            # Check if this is a continuation of the current bullet
+            elif current_bullet and line:
+                # Append to current bullet with a space
+                current_bullet += " " + line
+        
+        # Add the last bullet if there's one in progress
+        if current_bullet:
+            bullet_items.append(current_bullet)
+        
+        return [item for item in bullet_items if item.strip()]
+
+    @staticmethod
+    def format_bullet_points(bullet_items: List[str], expected_count: int = 5) -> List[str]:
+        """Format and validate bullet points.
+        
+        Args:
+            bullet_items: Extracted bullet points
+            expected_count: Expected number of bullet points
+            
+        Returns:
+            List[str]: Formatted bullet points
+            
+        Raises:
+            ValueError: If validation fails
+        """
+        # Ensure we have the expected number of bullets
+        if len(bullet_items) < expected_count:
+            raise ValueError(f"Generated only {len(bullet_items)} bullet points, expected {expected_count}. AI should regenerate with correct count.")
+        elif len(bullet_items) > expected_count:
+            # Keep only the first expected_count bullet points
+            bullet_items = bullet_items[:expected_count]
+        
+        # Format each bullet for consistency
+        formatted_bullets = []
+        for bullet in bullet_items:
+            # Ensure bullet starts with a capital letter
+            if bullet and not bullet[0].isupper():
+                bullet = bullet[0].upper() + bullet[1:]
+            
+            # Ensure bullet ends with a period
+            if bullet and not bullet.endswith(('.', '!', '?')):
+                bullet += '.'
+            
+            formatted_bullets.append(bullet)
+        
+        return formatted_bullets
+
+    @staticmethod
+    def clean_tags_from_content(content: str) -> List[str]:
+        """Extract and clean tags from AI-generated content.
+        
+        Args:
+            content: Raw content containing tags
+            
+        Returns:
+            List[str]: Cleaned list of tags
+        """
+        if not content or not content.strip():
+            return []
+            
+        # Split content into potential tags
+        # Support various formats: comma-separated, line-separated, etc.
+        potential_tags = []
+        
+        # Try comma-separated first
+        if ',' in content:
+            potential_tags = [tag.strip() for tag in content.split(',')]
+        # Try line-separated
+        elif '\n' in content:
+            potential_tags = [tag.strip() for tag in content.split('\n')]
+        # Try space-separated
+        else:
+            potential_tags = [tag.strip() for tag in content.split()]
+        
+        # Clean and validate tags
+        clean_tags = []
+        for tag in potential_tags:
+            if not tag or not tag.strip():
+                continue
+                
+            # Remove common prefixes/suffixes
+            clean_tag = tag.strip().lower()
+            
+            # Remove bullet points, numbers, quotes, etc.
+            clean_tag = re.sub(r'^[-*•\d\.]+\s*', '', clean_tag)
+            clean_tag = re.sub(r'^["\']|["\']$', '', clean_tag)
+            clean_tag = clean_tag.strip()
+            
+            # Skip if too short or too long
+            if len(clean_tag) < 2 or len(clean_tag) > 50:
+                continue
+                
+            # Skip if it contains suspicious characters
+            if re.search(r'[<>{}|\[\]]', clean_tag):
+                continue
+                
+            clean_tags.append(clean_tag)
+        
+        return clean_tags[:10]  # Limit to 10 tags
+
+    @staticmethod
+    def sanitize_frontmatter_content(content: str) -> str:
+        """Remove malformed content and standardize URLs in frontmatter.
+        
+        Args:
+            content: Raw frontmatter content
+            
+        Returns:
+            str: Sanitized content
+        """
+        lines = []
+        for line in content.split('\n'):
+            # Remove lines with malformed image URLs
+            if re.match(r'^-*>*-*laser-cleaning.*\.jpg$', line.strip()):
+                continue
+            lines.append(line)
+        
+        content = '\n'.join(lines)
+        
+        # Fix malformed URL patterns
+        content = re.sub(r'-+>+-*', '-', content)
+        content = re.sub(r'([^a-z])>+-*', r'\1', content)
+        
+        # Fix image URL patterns
+        content = re.sub(r'(/images/[a-z0-9-]+)laser-cleaning', r'\1-laser-cleaning', content)
+        
+        # Fix double dashes in image URLs
+        content = re.sub(r'(/images/[^"]*?)--+([^"]*?\.jpg)', r'\1-\2', content)
+        
+        return content

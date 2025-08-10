@@ -7,10 +7,9 @@ Enhanced with dynamic data structure from schema configurations.
 """
 
 import logging
-import re
 from typing import List, Dict
 from components.base.component import BaseComponent
-from components.base.utils.formatting import format_markdown_table
+from components.base.utils.table_formatter import TableFormatter
 
 logger = logging.getLogger(__name__)
 
@@ -64,7 +63,7 @@ class TableGenerator(BaseComponent):
         return processed_content
     
     def _extract_tables(self, lines: List[str]) -> List[Dict]:
-        """Extract markdown tables from content.
+        """Extract markdown tables from content using utility.
         
         Args:
             lines: Content lines
@@ -72,56 +71,47 @@ class TableGenerator(BaseComponent):
         Returns:
             List[Dict]: List of table dictionaries with title and content
         """
+        # Use centralized table extraction utility
+        extracted_tables = TableFormatter.extract_tables(lines)
+        
+        # Convert to the format expected by this generator
         tables = []
         current_title = "Data Table"
-        current_table_lines = []
-        in_table = False
         
-        for line in lines:
-            # Check for header lines that might indicate a new table
-            if re.match(r'^##\s+', line):
-                # If we were processing a table, save it
-                if in_table and current_table_lines:
-                    tables.append({
-                        "title": current_title,
-                        "content": current_table_lines
-                    })
-                    current_table_lines = []
-                    in_table = False
+        for i, table_data in enumerate(extracted_tables):
+            # Create title based on table index or content
+            title = f"Table {i + 1}" if i > 0 else current_title
+            
+            # Format table data back to lines for compatibility
+            table_lines = []
+            if table_data.get('headers') and table_data.get('rows'):
+                headers = table_data['headers']
+                rows = table_data['rows']
                 
-                # Set the new title
-                current_title = line.lstrip('#').strip()
-            # Check if this line is part of a table
-            elif '|' in line:
-                in_table = True
-                current_table_lines.append(line)
-            # Empty line might indicate end of table
-            elif not line.strip() and in_table:
-                # Only consider it the end if we have a complete table with header and separator
-                if len(current_table_lines) >= 2 and '-' in current_table_lines[1] and '|' in current_table_lines[1]:
-                    tables.append({
-                        "title": current_title,
-                        "content": current_table_lines
-                    })
-                    current_table_lines = []
-                    in_table = False
-            # Content line that might be after a header but before a table
-            elif not in_table and line.strip() and not re.match(r'^#', line):
-                # Skip descriptive text lines to avoid malformed titles
-                # Only use proper markdown headers (##, ###) as titles
-                pass
-        
-        # Add the final table if there is one
-        if in_table and current_table_lines:
-            tables.append({
-                "title": current_title,
-                "content": current_table_lines
-            })
+                # Create header row
+                header_row = '| ' + ' | '.join(headers) + ' |'
+                table_lines.append(header_row)
+                
+                # Create separator row
+                separator_row = '|' + ''.join([' --- |' for _ in headers])
+                table_lines.append(separator_row)
+                
+                # Create data rows
+                for row in rows:
+                    cells = [row.get(header, '').strip() for header in headers]
+                    data_row = '| ' + ' | '.join(cells) + ' |'
+                    table_lines.append(data_row)
+            
+            if table_lines:
+                tables.append({
+                    "title": title,
+                    "content": table_lines
+                })
         
         return tables
     
     def _format_tables_with_headers(self, tables: List[Dict]) -> str:
-        """Format tables with proper section headers.
+        """Format tables with proper section headers using utility.
         
         Args:
             tables: List of table dictionaries
@@ -129,15 +119,40 @@ class TableGenerator(BaseComponent):
         Returns:
             str: Formatted content with tables and headers
         """
-        formatted_content = []
+        # Convert to TableFormatter format and use utility formatting
+        table_data_list = []
         
         for table in tables:
-            # Add table content without headers
-            formatted_content.extend(table['content'])
-            formatted_content.append("")
-            formatted_content.append("")
+            if table.get('content'):
+                # Parse the content lines to extract structured data
+                lines = table['content']
+                if len(lines) >= 2:
+                    # Extract headers from first line
+                    header_line = lines[0].strip('|').strip()
+                    headers = [cell.strip() for cell in header_line.split('|')]
+                    
+                    # Extract data rows (skip separator line)
+                    rows = []
+                    for line in lines[2:]:
+                        data_line = line.strip('|').strip()
+                        cells = [cell.strip() for cell in data_line.split('|')]
+                        
+                        # Create row dict
+                        row = {}
+                        for i, header in enumerate(headers):
+                            if i < len(cells):
+                                row[header] = cells[i]
+                            else:
+                                row[header] = ''
+                        rows.append(row)
+                    
+                    table_data_list.append({
+                        'headers': headers,
+                        'rows': rows
+                    })
         
-        return "\n".join(formatted_content)
+        # Use utility to format tables
+        return TableFormatter.format_tables_with_headers(table_data_list)
     
     # Removed frontmatter dependency methods - components now use base component data only
     # _generate_tables_from_frontmatter() - DEPRECATED: violated new architecture

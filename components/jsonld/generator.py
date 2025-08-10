@@ -6,10 +6,8 @@ Version: 3.0.5
 """
 
 import logging
-import re
 from components.base.component import BaseComponent
-from components.base.image_handler import ImageHandler
-from components.base.utils.slug_utils import SlugUtils
+from components.base.utils.jsonld_formatter import JsonldFormatter
 
 logger = logging.getLogger(__name__)
 
@@ -31,7 +29,7 @@ class JsonldGenerator(BaseComponent):
         )
 
     def _create_image_object(self, subject: str) -> str:
-        """Create an image object for the JSON-LD.
+        """Create an image object for the JSON-LD using utility.
         
         Args:
             subject: The material subject to create an image for
@@ -39,12 +37,10 @@ class JsonldGenerator(BaseComponent):
         Returns:
             str: Image URL for the material
         """
-        # Use the image handler to get a properly formatted image
-        image_handler = ImageHandler(self.category)
-        return image_handler.get_image_url(subject)
+        return JsonldFormatter.create_image_object(subject, self.category)
 
     def _clean_subject_name(self, subject: str) -> str:
-        """Clean and format the subject name for JSON-LD.
+        """Clean and format the subject name for JSON-LD using utility.
         
         Args:
             subject: Raw subject name
@@ -52,12 +48,10 @@ class JsonldGenerator(BaseComponent):
         Returns:
             str: Cleaned subject name
         """
-        # Remove common suffixes and clean the name
-        cleaned = re.sub(r'\s+(alloy|composite|material|substance)$', '', subject, flags=re.IGNORECASE)
-        return cleaned.strip() or subject
+        return JsonldFormatter.clean_subject_name(subject)
 
     def _create_slug(self, subject: str) -> str:
-        """Create a URL-friendly slug for the subject.
+        """Create a URL-friendly slug for the subject using utility.
         
         Args:
             subject: The subject to create a slug for
@@ -65,4 +59,4 @@ class JsonldGenerator(BaseComponent):
         Returns:
             str: URL-friendly slug
         """
-        return SlugUtils.create_slug(subject)
+        return JsonldFormatter.create_slug(subject)

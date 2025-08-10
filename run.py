@@ -41,7 +41,7 @@ BATCH_CONFIG = {
     "multi_subject": {
         "author_id": 1,  # Use this author for all subjects
         "subject_source": "lists",  # Directory to discover all subjects from all categories
-        "limit": [0,30] # Range [start_idx, end_idx] to process items by index (or a single number for first N items, None for all subjects)
+        "limit": [18,40] # Range [start_idx, end_idx] to process items by index (or a single number for first N items, None for all subjects)
     },
     
     # Global AI configuration - applied to all components
@@ -64,7 +64,7 @@ BATCH_CONFIG = {
             "temperature": 0.9  # Override global temperature for frontmatter
         },
         "content": {
-            "enabled": True,
+            "enabled": False,
             "min_words": 200,
             "max_words": 400,
             "temperature": 0.7,  # Balanced creativity for main content
@@ -95,7 +95,7 @@ BATCH_CONFIG = {
             ]
         },
         "tags": {
-            "enabled": True,
+            "enabled": False,
             "temperature": 0.7,  # Balanced for focused but diverse tag generation
             "max_tags": 8,       # Reduced from 10 for higher quality
             "min_tags": 5,
