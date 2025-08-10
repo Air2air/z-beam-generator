@@ -7,13 +7,13 @@ import logging
 import os
 import re
 import yaml
+import json
 from abc import ABC
-from typing import Dict, Any, Optional, List
+from typing import Dict, Any, List
 
 from components.base.utils.content_formatter import ContentFormatter
 from components.base.utils.validation import (
-    validate_non_empty, validate_category_consistency,
-    strip_markdown_code_blocks
+    validate_non_empty, validate_category_consistency, strip_markdown_code_blocks
 )
 from components.base.data_provider import CleanDataProvider
 
@@ -401,8 +401,6 @@ class BaseComponent(ABC):
         Returns:
             str: Template with nested access resolved
         """
-        import re
-        
         # Pattern to find {all_frontmatter.key.subkey} and similar nested access
         pattern = r'\{([\w]+\.[\w\.]+)\}'
         matches = re.findall(pattern, template)
@@ -442,8 +440,6 @@ class BaseComponent(ABC):
         Returns:
             str: Processed template with conditionals evaluated
         """
-        import re
-        
         # First, remove any Jinja-style conditionals that might cause problems
         # Match {% if ... %} ... {% endif %} blocks
         pattern = r'{%.*?%}.*?{%.*?%}'
@@ -556,9 +552,6 @@ class BaseComponent(ABC):
         component_name = self.__class__.__name__.replace("Generator", "").lower()
         
         try:
-            import json
-            import yaml
-            
             # Step 1: Use ContentFormatter to extract clean content from AI response
             if output_format.lower() == "yaml":
                 clean_content = ContentFormatter.extract_yaml_content(content)
@@ -625,7 +618,6 @@ class BaseComponent(ABC):
                     logger.error(f"YAML formatting failed for {component_name}: {yaml_format_error}")
                     # Fallback to basic YAML dump if ContentFormatter fails
                     try:
-                        import yaml
                         formatted_content = yaml.dump(parsed_data, default_flow_style=False, allow_unicode=True)
                         if not formatted_content.startswith('---'):
                             formatted_content = '---\n' + formatted_content
@@ -885,7 +877,6 @@ class BaseComponent(ABC):
                 return ContentFormatter.normalize_yaml_content(content)
             elif output_format.lower() == 'json':
                 # For JSON, apply basic cleanup
-                import json
                 try:
                     # Parse and re-format with proper indentation
                     if parsed_data:

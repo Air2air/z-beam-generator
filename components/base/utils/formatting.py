@@ -212,18 +212,6 @@ def format_markdown_table(headers: List[str], rows: List[List[str]]) -> str:
     # Combine all rows
     return '\n'.join(table + separator + data_rows)
 
-def format_bullet_points(items: List[str], bullet_char: str = '*') -> str:
-    """Format a list of items as markdown bullet points.
-    
-    Args:
-        items: List of items to format
-        bullet_char: Character to use for bullets
-        
-    Returns:
-        str: Formatted bullet points
-    """
-    return '\n'.join([f"{bullet_char} {item}" for item in items])
-
 def format_yaml_object(data: Dict[str, Any]) -> str:
     """Format dictionary as YAML string with consistent formatting.
     

@@ -99,8 +99,6 @@ class ContentFormatter:
         if not isinstance(raw_data, dict):
             return raw_data
             
-        result = {}
-        
         # Component-specific nested section configurations
         nested_section_configs = {
             'frontmatter': {
@@ -1728,42 +1726,6 @@ class ContentFormatter:
             bullet_items.append(current_bullet)
         
         return [item for item in bullet_items if item.strip()]
-
-    @staticmethod
-    def format_bullet_points(bullet_items: List[str], expected_count: int = 5) -> List[str]:
-        """Format and validate bullet points.
-        
-        Args:
-            bullet_items: Extracted bullet points
-            expected_count: Expected number of bullet points
-            
-        Returns:
-            List[str]: Formatted bullet points
-            
-        Raises:
-            ValueError: If validation fails
-        """
-        # Ensure we have the expected number of bullets
-        if len(bullet_items) < expected_count:
-            raise ValueError(f"Generated only {len(bullet_items)} bullet points, expected {expected_count}. AI should regenerate with correct count.")
-        elif len(bullet_items) > expected_count:
-            # Keep only the first expected_count bullet points
-            bullet_items = bullet_items[:expected_count]
-        
-        # Format each bullet for consistency
-        formatted_bullets = []
-        for bullet in bullet_items:
-            # Ensure bullet starts with a capital letter
-            if bullet and not bullet[0].isupper():
-                bullet = bullet[0].upper() + bullet[1:]
-            
-            # Ensure bullet ends with a period
-            if bullet and not bullet.endswith(('.', '!', '?')):
-                bullet += '.'
-            
-            formatted_bullets.append(bullet)
-        
-        return formatted_bullets
 
     @staticmethod
     def clean_tags_from_content(content: str) -> List[str]:

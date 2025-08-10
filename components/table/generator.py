@@ -10,6 +10,7 @@ import logging
 from typing import List, Dict
 from components.base.component import BaseComponent
 from components.base.utils.table_formatter import TableFormatter
+from components.base.utils.formatting import format_markdown_table
 
 logger = logging.getLogger(__name__)
 
@@ -28,7 +29,7 @@ class TableGenerator(BaseComponent):
         """Process the generated table with enhanced local formatting and dynamic data structure.
         
         Args:
-            content: Pre-validated, clean API response
+            content: Pre-validated, clean API response (structured content to be converted to tables)
             
         Returns:
             str: Processed table with markdown formatting, section headers, and dynamic structure
@@ -36,227 +37,153 @@ class TableGenerator(BaseComponent):
         Raises:
             ValueError: If content is invalid
         """
-        # Apply centralized formatting first for consistency
-        content = self.apply_centralized_formatting(content)
+        # Debug logging
+        logger.info(f"Table generator processing content for {self.subject}: {len(content) if content else 'None'} characters")
+        
+        if not content or not content.strip():
+            raise ValueError(f"Table generator received empty content for {self.subject}")
         
         # Apply dynamic data structure from schema
         content = self._apply_dynamic_data_structure(content)
         
-        # Validate table format - look for pipe characters indicating markdown table
+        # First, try to extract existing markdown tables if present
         lines = content.strip().split('\n')
-        tables = self._extract_tables(lines)
+        tables = TableFormatter.extract_tables(lines)
         
-        if not tables:
-            # If no tables found in the AI response, rely on AI to generate proper tables
-            # Table component should generate tables from AI, not frontmatter data
-            raise ValueError("Generated content does not contain valid markdown tables")
+        if tables:
+            # If markdown tables exist, format them
+            logger.info(f"Extracted {len(tables)} existing markdown tables from content for {self.subject}")
+            processed_content = TableFormatter.format_tables_with_headers(tables)
+        else:
+            # If no markdown tables, parse structured content and create tables
+            logger.info(f"No markdown tables found. Converting structured content to tables for {self.subject}")
+            processed_content = self._create_tables_from_structured_content(content)
         
-        # Add section headers and format tables
-        processed_content = self._format_tables_with_headers(tables)
+        logger.info(f"Final formatted content for {self.subject}: {len(processed_content) if processed_content else 'None'} characters")
         
-        # Check if any tables remain after processing
-        if not processed_content.strip():
-            logger.warning("All tables were excluded by filtering rules. Asking AI to regenerate tables.")
-            # Ask AI to generate different tables rather than falling back to frontmatter
-            raise ValueError("No valid tables found after filtering. AI should generate different table content.")
+        # Validate final result
+        if not processed_content or not processed_content.strip():
+            logger.error(f"Final table processing resulted in empty content for {self.subject}")
+            raise ValueError("Table processing resulted in empty content")
         
         return processed_content
     
-    def _extract_tables(self, lines: List[str]) -> List[Dict]:
-        """Extract markdown tables from content using utility.
+    def _create_tables_from_structured_content(self, content: str) -> str:
+        """Convert structured content (headings, bullets) into markdown tables.
         
         Args:
-            lines: Content lines
+            content: Structured text content with headings and bullet points
             
         Returns:
-            List[Dict]: List of table dictionaries with title and content
+            str: Formatted markdown tables
         """
-        # Use centralized table extraction utility
-        extracted_tables = TableFormatter.extract_tables(lines)
+        import re
         
-        # Convert to the format expected by this generator
         tables = []
-        current_title = "Data Table"
+        lines = content.strip().split('\n')
+        current_section = None
+        current_data = []
         
-        for i, table_data in enumerate(extracted_tables):
-            # Create title based on table index or content
-            title = f"Table {i + 1}" if i > 0 else current_title
+        for line in lines:
+            line = line.strip()
+            if not line:
+                continue
             
-            # Format table data back to lines for compatibility
-            table_lines = []
-            if table_data.get('headers') and table_data.get('rows'):
-                headers = table_data['headers']
-                rows = table_data['rows']
+            # Check for section headers (### **Section Name** or ## Section Name)
+            header_match = re.match(r'^#{1,4}\s*\*?\*?(.+?)\*?\*?\s*$', line)
+            if header_match:
+                # Save previous section as table if it has data
+                if current_section and current_data:
+                    table = self._create_table_from_section(current_section, current_data)
+                    if table:
+                        tables.append(table)
                 
-                # Create header row
-                header_row = '| ' + ' | '.join(headers) + ' |'
-                table_lines.append(header_row)
-                
-                # Create separator row
-                separator_row = '|' + ''.join([' --- |' for _ in headers])
-                table_lines.append(separator_row)
-                
-                # Create data rows
-                for row in rows:
-                    cells = [row.get(header, '').strip() for header in headers]
-                    data_row = '| ' + ' | '.join(cells) + ' |'
-                    table_lines.append(data_row)
+                # Start new section
+                current_section = header_match.group(1).strip()
+                current_data = []
+                continue
             
-            if table_lines:
-                tables.append({
-                    "title": title,
-                    "content": table_lines
-                })
+            # Check for bullet points with key-value pairs
+            bullet_match = re.match(r'^[-*]\s*\*?\*?(.+?)\*?\*?:\s*(.+)', line)
+            if bullet_match:
+                key = bullet_match.group(1).strip()
+                value = bullet_match.group(2).strip()
+                current_data.append((key, value))
+                continue
+            
+            # Check for property lines (Property: Value)
+            prop_match = re.match(r'^(.+?):\s*(.+)', line)
+            if prop_match and not line.startswith('#'):
+                key = prop_match.group(1).strip()
+                value = prop_match.group(2).strip()
+                current_data.append((key, value))
         
-        return tables
+        # Save final section
+        if current_section and current_data:
+            table = self._create_table_from_section(current_section, current_data)
+            if table:
+                tables.append(table)
+        
+        # If no structured sections found, try to extract any key-value pairs
+        if not tables:
+            all_data = []
+            for line in lines:
+                prop_match = re.match(r'^[-*]?\s*\*?\*?(.+?)\*?\*?:\s*(.+)', line.strip())
+                if prop_match:
+                    key = prop_match.group(1).strip()
+                    value = prop_match.group(2).strip()
+                    all_data.append((key, value))
+            
+            if all_data:
+                table = self._create_table_from_section("Technical Data", all_data)
+                if table:
+                    tables.append(table)
+        
+        if not tables:
+            raise ValueError("Could not extract any table data from structured content")
+        
+        return '\n\n'.join(tables)
     
-    def _format_tables_with_headers(self, tables: List[Dict]) -> str:
-        """Format tables with proper section headers using utility.
+    def _create_table_from_section(self, section_name: str, data: List[tuple]) -> str:
+        """Create a markdown table from section data.
         
         Args:
-            tables: List of table dictionaries
+            section_name: Name of the section for the table header
+            data: List of (key, value) tuples
             
         Returns:
-            str: Formatted content with tables and headers
+            str: Formatted markdown table with section header
         """
-        # Convert to TableFormatter format and use utility formatting
-        table_data_list = []
-        
-        for table in tables:
-            if table.get('content'):
-                # Parse the content lines to extract structured data
-                lines = table['content']
-                if len(lines) >= 2:
-                    # Extract headers from first line
-                    header_line = lines[0].strip('|').strip()
-                    headers = [cell.strip() for cell in header_line.split('|')]
-                    
-                    # Extract data rows (skip separator line)
-                    rows = []
-                    for line in lines[2:]:
-                        data_line = line.strip('|').strip()
-                        cells = [cell.strip() for cell in data_line.split('|')]
-                        
-                        # Create row dict
-                        row = {}
-                        for i, header in enumerate(headers):
-                            if i < len(cells):
-                                row[header] = cells[i]
-                            else:
-                                row[header] = ''
-                        rows.append(row)
-                    
-                    table_data_list.append({
-                        'headers': headers,
-                        'rows': rows
-                    })
-        
-        # Use utility to format tables
-        return TableFormatter.format_tables_with_headers(table_data_list)
-    
-    # Removed frontmatter dependency methods - components now use base component data only
-    # _generate_tables_from_frontmatter() - DEPRECATED: violated new architecture
-    # _generate_tables_from_frontmatter_as_string() - DEPRECATED: violated new architecture
-    
-    def _create_key_value_table(self, title: str, data: Dict) -> Dict:
-        """Create a key-value table from dictionary data.
-        
-        Args:
-            title: Table title
-            data: Dictionary data
-            
-        Returns:
-            Dict: Table dictionary
-        """
-        table_lines = []
-        
-        # Add header row
-        table_lines.append("| Parameter | Value |")
-        table_lines.append("|-----------|-------|")
-        
-        # Add data rows
-        for key, value in data.items():
-            if isinstance(value, (str, int, float, bool)):
-                table_lines.append(f"| {key} | {value} |")
-        
-        return {
-            "title": title.replace("_", " ").title(),
-            "content": table_lines
-        }
-    
-    def _create_list_table(self, title: str, data: List[Dict]) -> Dict:
-        """Create a table from a list of dictionaries.
-        
-        Args:
-            title: Table title
-            data: List of dictionaries
-            
-        Returns:
-            Dict: Table dictionary
-        """
-        table_lines = []
-        
-        # Determine columns based on the first item
         if not data:
-            return {
-                "title": title.replace("_", " ").title(),
-                "content": ["| No data available |", "|------------------|"]
-            }
+            return ""
         
-        first_item = data[0]
-        columns = list(first_item.keys())
+        # Create table using the formatting utility
+        headers = ["Property", "Value"]
+        rows = [[key, value] for key, value in data]
         
-        # Create header row
-        header = "| " + " | ".join(col.replace("_", " ").title() for col in columns) + " |"
-        table_lines.append(header)
+        table = format_markdown_table(headers, rows)
         
-        # Create separator row
-        separator = "| " + " | ".join("---" for _ in columns) + " |"
-        table_lines.append(separator)
-        
-        # Add data rows
-        for item in data:
-            row_values = []
-            for col in columns:
-                value = item.get(col, "")
-                if isinstance(value, (str, int, float, bool)):
-                    row_values.append(str(value))
-                else:
-                    row_values.append("")
-            
-            row = "| " + " | ".join(row_values) + " |"
-            table_lines.append(row)
-        
-        return {
-            "title": title.replace("_", " ").title(),
-            "content": table_lines
-        }
+        # Add section header
+        return f"## {section_name}\n\n{table}"
     
-    def _create_string_list_table(self, title: str, data: List[str]) -> Dict:
-        """Create a table from a list of strings.
+    def generate(self) -> str:
+        """Generate table content ensuring we never return None.
         
-        Args:
-            title: Table title
-            data: List of strings
-            
         Returns:
-            Dict: Table dictionary
+            str: Generated table content
+            
+        Raises:
+            ValueError: If generation fails
         """
-        table_lines = []
-        
-        # Create header row
-        table_lines.append(f"| {title.replace('_', ' ').title()} |")
-        table_lines.append("|----------|")
-        
-        # Add data rows
-        for item in data:
-            table_lines.append(f"| {item} |")
-        
-        return {
-            "title": title.replace("_", " ").title(),
-            "content": table_lines
-        }
-
+        try:
+            result = super().generate()
+            if result is None:
+                raise ValueError(f"Base component generate() returned None for table: {self.subject}")
+            return result
+        except Exception as e:
+            logger.error(f"Table generation failed for {self.subject}: {e}")
+            raise ValueError(f"Table generation failed for {self.subject}: {e}")
+    
     def _apply_dynamic_data_structure(self, content: str) -> str:
         """Apply dynamic data structure from schema to format table structure.
         

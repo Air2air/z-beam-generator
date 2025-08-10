@@ -103,7 +103,7 @@ class FrontmatterGenerator(BaseComponent):
         
         # If no markers found, use the general YAML extraction method
         if yaml_content == content:
-            yaml_content = self.extract_yaml_content(content)
+            yaml_content = ContentFormatter.extract_yaml_content(content)
         
         # Make sure we don't have trailing --- markers that would create multiple YAML documents
         yaml_content = yaml_content.strip()
