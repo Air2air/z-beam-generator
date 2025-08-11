@@ -1,12 +1,12 @@
 """
+DeepSeek API provider implementation.
+
 API MODULE DIRECTIVES FOR AI ASSISTANTS:
 1. INTERFACE COMPLIANCE: All methods must match BaseProvider exactly
 2. ERROR HANDLING: Convert all DeepSeek errors to standard ApiError classes
 3. NO BLOAT: Don't add methods not in BaseProvider interface
 4. TIMEOUT ENFORCEMENT: All API calls must include timeouts
 """
-
-"""DeepSeek API provider implementation."""
 
 import json
 import logging

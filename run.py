@@ -303,7 +303,6 @@ def get_subjects_from_consolidated_yaml(yaml_path: str) -> list:
         if not isinstance(category_info, dict):
             continue
             
-        description = category_info.get('description', f"{category.title()} materials for laser cleaning applications")
         article_type = category_info.get('article_type', 'material')
         items = category_info.get('items', [])
         

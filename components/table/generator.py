@@ -7,7 +7,7 @@ Enhanced with dynamic data structure from schema configurations.
 """
 
 import logging
-from typing import List, Dict
+from typing import List
 from components.base.component import BaseComponent
 from components.base.utils.table_formatter import TableFormatter
 from components.base.utils.formatting import format_markdown_table
