@@ -495,7 +495,7 @@ class BaseComponent(ABC):
             raise ValueError(f"API call failed: {e}")
     
     def _post_process(self, content: str) -> str:
-        """Base post-processing implementation with common validation.
+        """Base post-processing implementation with common validation and preprocessing.
         
         Args:
             content: Raw API response
@@ -509,10 +509,14 @@ class BaseComponent(ABC):
         # Step 1: Basic validation - non-empty
         content = validate_non_empty(content, f"API returned empty or invalid {self.__class__.__name__.replace('Generator', '')}")
         
-        # Step 2: Strip code blocks
+        # Step 2: Preprocess AI content to remove problematic formatting
+        from components.base.utils.content_formatter import ContentFormatter
+        content = ContentFormatter.preprocess_ai_content(content)
+        
+        # Step 3: Strip code blocks
         content = self._strip_markdown_code_blocks(content)
         
-        # Step 3: Component-specific processing
+        # Step 4: Component-specific processing
         return self._component_specific_processing(content)
     
     def _component_specific_processing(self, content: str) -> str:
@@ -596,7 +600,10 @@ class BaseComponent(ABC):
                         'subject': self.subject
                     }
             
-            # Step 3: Apply component-specific formatting using ContentFormatter
+            # Step 3: Apply schema structure enforcement
+            parsed_data = self._ensure_schema_structure(parsed_data)
+            
+            # Step 4: Apply component-specific formatting using ContentFormatter
             parsed_data = self._apply_component_formatting_rules(parsed_data, component_name)
             
             # Step 4: Use ContentFormatter to generate final output
@@ -637,6 +644,45 @@ class BaseComponent(ABC):
         except Exception as e:
             raise ValueError(f"Failed to process {component_name} content: {e}")
     
+    def _ensure_schema_structure(self, parsed_data: dict) -> dict:
+        """Ensure the parsed data follows the schema structure for the article type.
+        
+        This is a centralized method that can be overridden by subclasses if needed.
+        
+        Args:
+            parsed_data: The parsed data dictionary
+            
+        Returns:
+            dict: The data with enforced schema structure
+        """
+        if not self.has_schema_feature('generatorConfig'):
+            return parsed_data
+            
+        config = self.get_schema_config('generatorConfig')
+        
+        # Add required fields if missing
+        if 'requiredFields' in config:
+            for field in config['requiredFields']:
+                if field not in parsed_data:
+                    # Add default values for missing required fields
+                    if field == 'name':
+                        parsed_data[field] = self.subject
+                    elif field == 'category':
+                        parsed_data[field] = getattr(self, 'category', 'material')
+                    elif field == 'author':
+                        parsed_data[field] = self.author_data.get('author_name', 'Unknown')
+        
+        # Ensure proper schema structure
+        if 'fieldMapping' in config:
+            field_mapping = config['fieldMapping']
+            for schema_field, content_field in field_mapping.items():
+                if content_field in parsed_data:
+                    # Move content to proper schema field if different
+                    if schema_field != content_field:
+                        parsed_data[schema_field] = parsed_data.pop(content_field)
+        
+        return parsed_data
+
     def _apply_component_formatting_rules(self, parsed_data: dict, component_name: str) -> dict:
         """Apply component-specific formatting rules to parsed data.
         

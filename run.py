@@ -996,6 +996,108 @@ def run_batch_generation():
             print(f"   ✅ {comp} has output for all subjects.")
 
     print("\n🎉 Content generation completed successfully!")
+    
+    # Return the processed subjects for post-generation validation
+    return [subject for subject, _, _ in subjects_to_process]
+
+def run_post_generation_validation(processed_subjects: list, skip_validation: bool = False):
+    """Run validation after generation for only the processed subjects and enabled components.
+    
+    Args:
+        processed_subjects: List of subject names that were just generated
+        skip_validation: If True, skip validation entirely
+    """
+    if skip_validation:
+        print("\n⏭️ Validation skipped (--skip-validation flag)")
+        return
+    
+    print("\n🔍 Running post-generation validation...")
+    print("="*60)
+    
+    try:
+        # Import recovery system
+        import sys
+        sys.path.insert(0, os.path.dirname(__file__))
+        from recovery.recovery_system import MaterialRecoverySystem
+        
+        # Initialize recovery system (it will automatically read BATCH_CONFIG)
+        recovery_system = MaterialRecoverySystem()
+        
+        # Track validation results
+        total_subjects = len(processed_subjects)
+        total_successful = 0
+        subjects_with_failures = []
+        all_failed_components = set()
+        
+        print(f"Validating {total_subjects} subjects with enabled components: {', '.join(recovery_system.components)}")
+        print("-" * 60)
+        
+        # Validate each processed subject
+        for subject in processed_subjects:
+            print(f"\n📋 Validating: {subject}")
+            report = recovery_system._validate_material(subject)
+            
+            # Print concise report
+            success_rate = report.successful_components / report.total_components * 100
+            status_emoji = "✅" if report.overall_status.value == "success" else "❌" if report.overall_status.value == "failed" else "⚠️"
+            
+            print(f"  {status_emoji} {subject}: {report.successful_components}/{report.total_components} components "
+                  f"({success_rate:.1f}% success)")
+            
+            if report.failed_components:
+                print(f"    Failed: {', '.join(report.failed_components)}")
+                subjects_with_failures.append(subject)
+                all_failed_components.update(report.failed_components)
+            else:
+                total_successful += 1
+        
+        # Print summary
+        print("\n" + "="*60)
+        print("📊 VALIDATION SUMMARY")
+        print("="*60)
+        print(f"Total subjects validated: {total_subjects}")
+        print(f"Subjects with all components successful: {total_successful}")
+        print(f"Subjects with failures: {len(subjects_with_failures)}")
+        
+        if all_failed_components:
+            print(f"Components that failed: {', '.join(sorted(all_failed_components))}")
+        
+        overall_success_rate = total_successful / total_subjects * 100
+        print(f"Overall success rate: {overall_success_rate:.1f}%")
+        
+        # Generate recovery recommendations if there are failures
+        if subjects_with_failures:
+            print("\n💡 RECOVERY RECOMMENDATIONS")
+            print("-" * 30)
+            
+            # Group subjects by their failed components
+            failure_groups = {}
+            for subject in subjects_with_failures:
+                report = recovery_system._validate_material(subject)
+                failed_key = tuple(sorted(report.failed_components))
+                if failed_key not in failure_groups:
+                    failure_groups[failed_key] = []
+                failure_groups[failed_key].append(subject)
+            
+            for failed_components, subjects in failure_groups.items():
+                print(f"\nSubjects with {', '.join(failed_components)} failures:")
+                for subject in subjects:
+                    print(f"  python3 -m recovery.cli recover \"{subject}\" --components {' '.join(failed_components)}")
+            
+            print("\nOr validate specific subjects in detail:")
+            for subject in subjects_with_failures[:3]:  # Show first 3 as examples
+                print(f"  python3 -m recovery.cli validate \"{subject}\"")
+            if len(subjects_with_failures) > 3:
+                print(f"  ... and {len(subjects_with_failures) - 3} more subjects")
+        else:
+            print("\n🎉 All subjects validated successfully!")
+        
+    except Exception as e:
+        print(f"\n❌ Validation failed: {str(e)}")
+        import traceback
+        traceback.print_exc()
+        print("\nYou can run validation manually with:")
+        print("  python3 -m recovery.cli validate [subject_name]")
 
 def clear_component_files(component=None):
     """Clear files in the content/components directory.
@@ -1075,6 +1177,9 @@ if __name__ == "__main__":
     parser.add_argument('--clear', action='store_true', help='Clear all component files')
     parser.add_argument('--clear-component', type=str, help='Clear files for a specific component (e.g., bullets, content, frontmatter)')
     parser.add_argument('--component', type=str, help='Generate only a specific component (e.g., caption, bullets, content, frontmatter)')
+    parser.add_argument('--skip-validation', action='store_true', help='Skip post-generation validation')
+    parser.add_argument('--validation-only', action='store_true', help='Run validation only (no generation)')
+    parser.add_argument('--check', action='store_true', help='Interactive check for empty/invalid components within BATCH_CONFIG limits')
     
     args = parser.parse_args()
     
@@ -1082,9 +1187,54 @@ if __name__ == "__main__":
         clear_component_files()
     elif args.clear_component:
         clear_component_files(args.clear_component)
+    elif args.validation_only:
+        # Run validation for all subjects that match current BATCH_CONFIG settings
+        print("🔍 Running validation-only mode...")
+        
+        # Get subjects that would be processed based on current config
+        if BATCH_CONFIG["mode"] == "single":
+            config = BATCH_CONFIG["single_subject"] 
+            processed_subjects = [config["subject"]]
+        elif BATCH_CONFIG["mode"] == "multi":
+            config = BATCH_CONFIG["multi_subject"]
+            
+            # Get all subjects with their categories and article types
+            if config["subject_source"] == "lists":
+                yaml_path = os.path.join("lists", "materials.yaml")
+                if os.path.exists(yaml_path):
+                    subjects_with_info = get_subjects_from_consolidated_yaml(yaml_path)
+                else:
+                    subjects_with_info = get_subjects_with_categories_from_directory("lists")
+            else:
+                subjects_with_info = []
+            
+            # Apply the same limit logic as generation
+            limit = config.get("limit")
+            if limit is not None:
+                if isinstance(limit, list) and len(limit) == 2:
+                    start_idx, end_idx = limit
+                    subjects_to_validate = subjects_with_info[start_idx:end_idx+1]
+                else:
+                    subjects_to_validate = subjects_with_info[:limit]
+            else:
+                subjects_to_validate = subjects_with_info
+            
+            processed_subjects = [s["subject"] for s in subjects_to_validate]
+        
+        run_post_generation_validation(processed_subjects, skip_validation=False)
+    elif args.check:
+        # Run interactive check for empty/invalid components
+        print("🔍 Running interactive check for empty/invalid components...")
+        try:
+            from recovery.cli import interactive_check_and_fix
+            interactive_check_and_fix(timeout=45, retry_count=2, verbose=False)
+        except ImportError:
+            print("❌ Recovery system not available. Please use: python3 -m recovery.cli check")
     elif args.component:
         # Only generate the specified component
         BATCH_CONFIG["components"] = [args.component]
-        run_batch_generation()
+        processed_subjects = run_batch_generation()
+        run_post_generation_validation(processed_subjects, skip_validation=args.skip_validation)
     else:
-        run_batch_generation()
+        processed_subjects = run_batch_generation()
+        run_post_generation_validation(processed_subjects, skip_validation=args.skip_validation)

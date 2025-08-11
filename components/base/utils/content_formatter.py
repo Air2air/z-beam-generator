@@ -1810,3 +1810,34 @@ class ContentFormatter:
         content = re.sub(r'(/images/[^"]*?)--+([^"]*?\.jpg)', r'\1-\2', content)
         
         return content
+
+    @staticmethod
+    def preprocess_ai_content(content: str) -> str:
+        """Preprocess AI content to prevent YAML parsing issues.
+        
+        This removes common formatting that AI incorrectly adds which causes YAML parsing failures.
+        
+        Args:
+            content: Raw AI response content
+            
+        Returns:
+            str: Cleaned content safe for processing
+        """
+        # Remove markdown bold/italic formatting that breaks YAML
+        content = re.sub(r'\*\*(.*?)\*\*', r'\1', content)  # Remove **bold**
+        content = re.sub(r'\*(.*?)\*', r'\1', content)      # Remove *italic*
+        content = re.sub(r'`(.*?)`', r'\1', content)        # Remove `code`
+        
+        # Remove problematic YAML characters in unexpected places
+        content = re.sub(r'(?m)^(\s*)-\s*\*\*([^*]+)\*\*:', r'\1\2:', content)  # Fix "- **Key**:" to "Key:"
+        content = re.sub(r'(?m)^(\s*)\*\*([^*]+)\*\*:', r'\1\2:', content)      # Fix "**Key**:" to "Key:"
+        
+        # Remove code block markers if present
+        content = re.sub(r'^```[a-z]*\n?', '', content, flags=re.MULTILINE)
+        content = re.sub(r'\n?```$', '', content, flags=re.MULTILINE)
+        
+        # Clean up extra whitespace
+        content = re.sub(r'\n\s*\n\s*\n', '\n\n', content)  # Remove excessive blank lines
+        content = content.strip()
+        
+        return content

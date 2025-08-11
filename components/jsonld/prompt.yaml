@@ -5,7 +5,7 @@ version: "3.0.5"
 template: |
   Create Schema.org structured data for {article_type} "{subject}" laser cleaning.
 
-  **MANDATORY FORMAT: OUTPUT ONLY YAML - NEVER JSON**
+  MANDATORY FORMAT: OUTPUT ONLY YAML - NEVER JSON
 
   Example required format:
   headline: Your headline here
@@ -15,7 +15,7 @@ template: |
   - keyword2
   articleBody: Your article body content here
 
-  **FORBIDDEN FORMATS:**
+  FORBIDDEN FORMATS:
   - Do NOT use JSON: {{"key": "value"}}
   - Do NOT use code blocks: ```
   - Do NOT use quotes around keys: "headline"

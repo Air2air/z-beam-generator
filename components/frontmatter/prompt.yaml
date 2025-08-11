@@ -3,29 +3,36 @@ description: "Generates comprehensive YAML frontmatter for laser cleaning articl
 version: "4.0.0"
 
 template: |
-  Generate detailed technical information for {article_type} "{subject}" in laser cleaning applications.
+  Generate comprehensive technical data for {article_type} "{subject}" in laser cleaning applications.
   
-  IMPORTANT: Provide ONLY raw technical content. Do not format as YAML, JSON, or any specific structure. 
-  All organization, formatting, metadata generation, and structural arrangement will be handled by post-processing.
+  CRITICAL: Output ONLY raw factual content. NO formatting, NO structure, NO YAML, NO JSON, NO markdown formatting.
+  Python utilities will handle ALL formatting, structuring, and organization.
 
-  TECHNICAL CONTENT REQUIRED:
-  - Physical and chemical properties with exact numerical values and units
-  - Detailed composition breakdown with percentages and chemical formulas  
-  - Specific laser processing parameters (wavelengths, power ranges, pulse durations, fluence rates)
-  - Real-world industry applications with specific use cases and measured parameters
-  - Material compatibility information with processing details
-  - Environmental impact data with quantifiable metrics
-  - Technical specifications for laser equipment and safety requirements
-  - Industry/regulatory standards with organization names and scope details
-  - Measurable processing outcomes with performance metrics
+  Provide technical facts including:
+  
+  Physical properties: density, melting point, thermal conductivity, electrical properties with exact values and units
+  
+  Chemical properties: composition percentages, chemical formulas, molecular structure, purity levels
+  
+  Laser parameters: optimal wavelengths in nanometers, power ranges in watts, pulse durations in nanoseconds, fluence values in J/cm²
+  
+  Processing data: cleaning rates, temperature ranges, optimal settings, measured outcomes
+  
+  Applications: specific industrial uses, equipment types, processing conditions, success metrics
+  
+  Compatibility: substrate materials, coating types, environmental conditions
+  
+  Safety data: emission levels, ventilation requirements, protective equipment specifications
+  
+  Standards: relevant industry standards, regulatory requirements, certification details
 
   MATERIAL CONTEXT:
   - Chemical formula: {material_formula}
   - Chemical symbol: {material_symbol}  
   - Material type: {material_type}
 
-  Focus entirely on technical accuracy, specific numerical data, and industry-standard information.
-  Provide comprehensive details that would be found in technical datasheets and research papers.
+  Provide only factual technical information with specific numerical data.
+  No formatting whatsoever - Python will structure everything.
 
   {schema}
 
