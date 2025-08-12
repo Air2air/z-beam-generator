@@ -109,11 +109,23 @@ class ContentValidator:
         
         # Check if content is empty or minimal
         if size_bytes < 10:
-            return ComponentStatus.EMPTY, ["File is empty"], 0.0
+            return ComponentStatus.EMPTY, ["File is empty or too small"], 0.0
         
         # Check for empty frontmatter (just delimiters)
-        if content.strip() == "---\n---" or content.strip() == "---":
+        stripped_content = content.strip()
+        if stripped_content in ["---\n---", "---", "```markdown\n---\n---\n```"]:
             return ComponentStatus.EMPTY, ["Contains only empty frontmatter delimiters"], 0.0
+        
+        # Check for markdown code block wrappers with empty content
+        if stripped_content.startswith("```markdown\n") and stripped_content.endswith("\n```"):
+            inner_content = stripped_content[12:-4].strip()  # Remove ```markdown\n and \n```
+            if inner_content in ["---\n---", "---", ""]:
+                return ComponentStatus.EMPTY, ["Contains only empty content wrapped in markdown code blocks"], 0.0
+        
+        # Check for content that's just whitespace, newlines, or minimal markup
+        significant_content = content.replace('---', '').replace('```', '').replace('markdown', '').strip()
+        if len(significant_content) < 5:
+            return ComponentStatus.EMPTY, ["No significant content after removing markup"], 0.0
         
         # Check minimum size requirements
         min_size = self.min_content_sizes.get(component, 50)

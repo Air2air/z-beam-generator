@@ -179,8 +179,20 @@ class DirectRecoveryRunner:
             with open(output_path, 'w', encoding='utf-8') as f:
                 f.write(content)
             
-            self.logger.info(f"✅ {component_name} saved to: {output_path}")
-            return True
+            # Validate the generated content for quality
+            from recovery.validator import ContentValidator
+            validator = ContentValidator()
+            result = validator.validate_markdown_file(output_path, component_name)
+            
+            if result.status.value in ['success']:
+                self.logger.info(f"✅ {component_name} successfully generated and validated: {output_path}")
+                return True
+            elif result.status.value in ['invalid']:
+                self.logger.warning(f"⚠️ {component_name} generated but has quality issues: {', '.join(result.issues)}")
+                return False  # Consider invalid content as failure for recovery purposes
+            else:
+                self.logger.error(f"❌ {component_name} generation failed validation: {', '.join(result.issues)}")
+                return False
             
         except Exception as e:
             self.logger.error(f"❌ Failed to recover {component_name}: {e}")

@@ -973,12 +973,26 @@ class ContentFormatter:
                     
                     # If value needs escaping (contains special chars but isn't quoted)
                     if value_part and not (value_part.startswith('"') and value_part.endswith('"')):
-                        # Check if it needs quoting
-                        needs_quotes = any(char in value_part for char in [':', '[', ']', '{', '}', '!', '&', '*', '#', '?', '|', '>', '<', '=', '%', '@', '`'])
+                        # Enhanced detection for problematic characters
+                        needs_quotes = False
+                        
+                        # Check for colons (main issue causing the error)
+                        if ':' in value_part:
+                            needs_quotes = True
+                        # Check for other YAML special characters
+                        elif any(char in value_part for char in ['[', ']', '{', '}', '!', '&', '*', '#', '?', '|', '>', '<', '=', '%', '@', '`']):
+                            needs_quotes = True
+                        # Check for parentheses which often contain colons
+                        elif '(' in value_part or ')' in value_part:
+                            needs_quotes = True
+                        # Check for markdown formatting remnants
+                        elif '**' in value_part or '__' in value_part:
+                            needs_quotes = True
                         
                         if needs_quotes:
-                            # Escape any quotes within the value
-                            escaped_value = value_part.replace('"', '\\"')
+                            # Clean and escape the value
+                            cleaned_value = ContentFormatter._clean_value_for_yaml(value_part)
+                            escaped_value = cleaned_value.replace('"', '\\"')
                             fixed_lines.append(f'{key_part}: "{escaped_value}"')
                             continue
             
@@ -986,102 +1000,6 @@ class ContentFormatter:
         
         return '\n'.join(fixed_lines)
 
-    @staticmethod
-    def _escape_yaml_values(content: str) -> str:
-        """Escape YAML values that need quoting.
-        
-        Args:
-            content: YAML content string
-            
-        Returns:
-            str: YAML content with properly escaped values
-        """
-        lines = content.split('\n')
-        fixed_lines = []
-        
-        for line in lines:
-            # Only process lines that contain key-value pairs
-            if ':' in line and not line.strip().startswith('#'):
-                # Split on first colon to separate key and value
-                parts = line.split(':', 1)
-                if len(parts) == 2:
-                    key_part = parts[0]
-                    value_part = parts[1].strip()
-                    
-                    # If value needs escaping (contains special chars but isn't quoted)
-                    if value_part and not (value_part.startswith('"') and value_part.endswith('"')):
-                        # Check if it needs quoting
-                        needs_quotes = any(char in value_part for char in [':', '[', ']', '{', '}', '!', '&', '*', '#', '?', '|', '>', '<', '=', '%', '@', '`'])
-                        
-                        if needs_quotes:
-                            # Escape any quotes within the value
-                            escaped_value = value_part.replace('"', '\\"')
-                            fixed_lines.append(f'{key_part}: "{escaped_value}"')
-                            continue
-            
-            fixed_lines.append(line)
-        
-        return '\n'.join(fixed_lines)
-        lines = content.split('\n')
-        escaped_lines = []
-        
-        for line in lines:
-            # Skip empty lines and comments
-            if not line.strip() or line.strip().startswith('#'):
-                escaped_lines.append(line)
-                continue
-            
-            # Check if this is a key-value line (has a colon followed by a space)
-            colon_match = re.match(r'^(\s*)([^:]+):\s*(.*)$', line)
-            if colon_match:
-                indent, key, value = colon_match.groups()
-                
-                # Don't process if already quoted or empty
-                if not value or value.startswith('"') or value.startswith("'"):
-                    escaped_lines.append(line)
-                    continue
-                
-                # Enhanced detection of problematic values
-                needs_quoting = False
-                
-                # Contains unescaped colons (but not URLs)
-                if ':' in value and not value.startswith('http'):
-                    needs_quoting = True
-                # Contains brackets that could be mistaken for arrays
-                elif '[' in value or ']' in value:
-                    needs_quoting = True
-                # Starts with special YAML characters
-                elif re.match(r'^[#*&!|>\'%@`\[\]{}]', value):
-                    needs_quoting = True
-                # Contains markdown formatting remnants
-                elif '**' in value or '__' in value:
-                    needs_quoting = True
-                # Contains parentheses which could confuse YAML
-                elif '(' in value or ')' in value:
-                    needs_quoting = True
-                # Starts with numbers followed by certain characters
-                elif re.match(r'^\d+[.)]', value):
-                    needs_quoting = True
-                # Contains sequences that look like YAML directives
-                elif re.match(r'.*\s-\s.*', value):
-                    needs_quoting = True
-                # Contains percentage symbols which can be problematic
-                elif '%' in value:
-                    needs_quoting = True
-                
-                if needs_quoting:
-                    # Clean the value first, then quote it
-                    cleaned_value = ContentFormatter._clean_value_for_yaml(value)
-                    # Escape any existing quotes in the cleaned value
-                    escaped_value = cleaned_value.replace('"', '\\"')
-                    escaped_lines.append(f'{indent}{key}: "{escaped_value}"')
-                else:
-                    escaped_lines.append(line)
-            else:
-                escaped_lines.append(line)
-        
-        return '\n'.join(escaped_lines)
-    
     @staticmethod
     def _clean_value_for_yaml(value: str) -> str:
         """Clean a YAML value by removing problematic formatting.
