@@ -108,7 +108,18 @@ class BaseComponent(ABC):
                     raise ValueError(f"Empty prompt configuration in {prompt_path}")
                 return config
         except Exception as e:
-            logger.error(f"Failed to load prompt config: {e}")
+            logger.error(f"❌ CLAUDE ANALYSIS: Failed to load prompt config from {prompt_path}")
+            logger.error(f"   Error type: {type(e).__name__}")
+            logger.error(f"   Error details: {str(e)}")
+            logger.error(f"   File exists: {os.path.exists(prompt_path)}")
+            if os.path.exists(prompt_path):
+                try:
+                    with open(prompt_path, 'r', encoding='utf-8') as f:
+                        content_preview = f.read(200)
+                        logger.error(f"   File preview (200 chars): {content_preview.replace(chr(10), '\\n')}")
+                except Exception:
+                    logger.error("   Could not read file for preview")
+            logger.error("   🤖 CLAUDE FIX: Check YAML syntax, file permissions, and content structure")
             raise ValueError(f"Failed to load prompt config from {prompt_path}: {e}")
     
     def _get_prompt_path(self) -> str:
@@ -238,14 +249,14 @@ class BaseComponent(ABC):
             
         Returns:
             Dict[str, Any]: Validation configuration
+            
+        Raises:
+            ValueError: If validation configuration not found
         """
         if component_name is None:
             component_name = self.__class__.__name__.replace("Generator", "").lower()
         
-        try:
-            return self.get_schema_config('validation', component_name, default={})
-        except ValueError:
-            return {}
+        return self.get_schema_config('validation', component_name, default={})
     
     def has_schema_feature(self, *path) -> bool:
         """Check if a schema feature exists for the current article type.
@@ -254,7 +265,7 @@ class BaseComponent(ABC):
             *path: The path to check (e.g., 'generatorConfig', 'research')
             
         Returns:
-            bool: True if the feature exists
+            bool: True if the feature exists, False if not found or error
         """
         try:
             self.get_schema_config(*path)
@@ -581,24 +592,13 @@ class BaseComponent(ABC):
                     if not isinstance(parsed_data, dict):
                         raise ValueError("YAML must parse to a dictionary")
                 except (yaml.YAMLError, ValueError) as e:
-                    logger.warning(f"YAML parsing failed for {component_name}: {e}")
-                    # Clear parsed_data to ensure fallback to text extraction
-                    parsed_data = None
+                    logger.error(f"YAML parsing failed for {component_name}: {e}")
+                    raise ValueError(f"YAML parsing failed and requires retry: {e}")
             
-            # Fallback to text extraction if parsing failed
+            # If JSON/YAML parsing succeeded, use the parsed data
             if parsed_data is None:
-                logger.info(f"Using text extraction for {component_name} due to parsing failures")
-                parsed_data = self._extract_content_from_text(clean_content)
-                
-                # Ensure we have a valid dictionary after text extraction
-                if not isinstance(parsed_data, dict) or not parsed_data:
-                    # Create a minimal valid structure
-                    parsed_data = {
-                        'name': self.subject,
-                        'description': f"Technical information about {self.subject}",
-                        'category': getattr(self, 'category', 'material'),
-                        'subject': self.subject
-                    }
+                logger.error(f"No valid structured data found for {component_name}")
+                raise ValueError("Content parsing failed and requires retry: No valid structured data found")
             
             # Step 3: Apply schema structure enforcement
             parsed_data = self._ensure_schema_structure(parsed_data)
@@ -608,31 +608,17 @@ class BaseComponent(ABC):
             
             # Step 4: Use ContentFormatter to generate final output
             if output_format.lower() == "yaml":
-                try:
-                    # Use ContentFormatter's YAML formatting with proper indentation
-                    formatted_content = ContentFormatter._format_yaml_with_proper_indentation(parsed_data)
-                    
-                    # Apply ContentFormatter's comprehensive normalization
-                    formatted_content = ContentFormatter.normalize_yaml_content(formatted_content)
-                    
-                    # Add YAML frontmatter delimiters
-                    if not formatted_content.startswith('---'):
-                        formatted_content = '---\n' + formatted_content
-                    if not formatted_content.endswith('---'):
-                        formatted_content = formatted_content.rstrip() + '\n---'
-                        
-                except Exception as yaml_format_error:
-                    logger.error(f"YAML formatting failed for {component_name}: {yaml_format_error}")
-                    # Fallback to basic YAML dump if ContentFormatter fails
-                    try:
-                        formatted_content = yaml.dump(parsed_data, default_flow_style=False, allow_unicode=True)
-                        if not formatted_content.startswith('---'):
-                            formatted_content = '---\n' + formatted_content
-                        if not formatted_content.endswith('---'):
-                            formatted_content = formatted_content.rstrip() + '\n---'
-                    except Exception as fallback_error:
-                        logger.error(f"Even fallback YAML formatting failed for {component_name}: {fallback_error}")
-                        raise ValueError(f"Failed to format {component_name} as YAML: {yaml_format_error}")
+                # Use ContentFormatter's YAML formatting with proper indentation
+                formatted_content = ContentFormatter._format_yaml_with_proper_indentation(parsed_data)
+                
+                # Apply ContentFormatter's comprehensive normalization
+                formatted_content = ContentFormatter.normalize_yaml_content(formatted_content)
+                
+                # Add YAML frontmatter delimiters
+                if not formatted_content.startswith('---'):
+                    formatted_content = '---\n' + formatted_content
+                if not formatted_content.endswith('---'):
+                    formatted_content = formatted_content.rstrip() + '\n---'
                     
             elif output_format.lower() == "json":
                 formatted_content = json.dumps(parsed_data, indent=2, ensure_ascii=False)
@@ -702,11 +688,8 @@ class BaseComponent(ABC):
             parsed_data = self._apply_dynamic_seo_requirements(parsed_data)
             
             # Validate fields based on article type (import here to avoid circular imports)
-            try:
-                from components.metatags.validation import validate_article_specific_fields
-                validate_article_specific_fields(self.article_type, getattr(self, 'category', None), parsed_data)
-            except ImportError:
-                logger.warning("Metatags validation not available")
+            from components.metatags.validation import validate_article_specific_fields
+            validate_article_specific_fields(self.article_type, getattr(self, 'category', None), parsed_data)
             
             return ContentFormatter.format_metatags_structure(
                 parsed_data, self.subject, getattr(self, 'category', None)
@@ -922,16 +905,13 @@ class BaseComponent(ABC):
             if output_format.lower() == 'yaml':
                 return ContentFormatter.normalize_yaml_content(content)
             elif output_format.lower() == 'json':
-                # For JSON, apply basic cleanup
-                try:
-                    # Parse and re-format with proper indentation
-                    if parsed_data:
-                        return json.dumps(parsed_data, indent=2, ensure_ascii=False)
-                    else:
-                        data = json.loads(content)
-                        return json.dumps(data, indent=2, ensure_ascii=False)
-                except json.JSONDecodeError:
-                    return content
+                # For JSON, apply basic cleanup and validation
+                if parsed_data:
+                    return json.dumps(parsed_data, indent=2, ensure_ascii=False)
+                else:
+                    # Parse to validate JSON format
+                    data = json.loads(content)
+                    return json.dumps(data, indent=2, ensure_ascii=False)
         
         # Default: Use ContentFormatter's YAML normalization
         return ContentFormatter.normalize_yaml_content(content)
