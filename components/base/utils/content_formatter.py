@@ -7,6 +7,7 @@ ensuring consistent and reliable output formatting.
 
 import re
 from typing import Dict, Any, List
+from components.base.utils.content_processor import ContentProcessor
 from components.base.image_handler import ImageHandler
 
 
@@ -665,72 +666,24 @@ class ContentFormatter:
         return content
 
     @staticmethod
+    def extract_yaml_content(content: str) -> str:
+        """Extract clean YAML content from various AI response formats."""
+        return ContentProcessor.extract_structured_content(content, "yaml")
+    
+    @staticmethod
+    def extract_json_content(content: str) -> str:
+        """Extract JSON content from various response formats."""
+        return ContentProcessor.extract_structured_content(content, "json")
+    
+    @staticmethod
     def normalize_yaml_content(content: str) -> str:
-        """Normalize YAML content for consistency and proper structure.
-        
-        Args:
-            content: Raw YAML content string
-            
-        Returns:
-            str: Normalized YAML content with proper indentation
-        """
-        # Step 1: Clean AI-generated markdown artifacts
-        content = ContentFormatter._clean_ai_markdown_artifacts(content)
-        
-        # Step 2: Fix document structure issues
-        content = ContentFormatter._fix_document_structure(content)
-        
-        # Step 3: Remove any markdown code blocks
-        content = re.sub(r'^```ya?ml\s*\n', '', content, flags=re.MULTILINE)
-        content = re.sub(r'\n```\s*$', '', content, flags=re.MULTILINE)
-        
-        # Step 4: Fix image URL double dashes
-        content = re.sub(r'(/images/[^"]*?)--+([^"]*?\.jpg)', r'\1-\2', content)
-        
-        # Step 5: Fix trailing dashes in image URLs (before file extension)
-        content = re.sub(r'(/images/[^"]*?)-+(\.[a-z]+)', r'\1\2', content)
-        
-        # Step 6: Fix any trailing dashes in slugs throughout the content
-        content = re.sub(r'([a-z0-9])-+(\s|"|\'|$)', r'\1\2', content)
-        
-        # Step 7: Fix malformed YAML sequences
-        content = ContentFormatter._fix_malformed_sequences(content)
-        
-        # Step 8: Escape YAML values that start with special characters that cause parsing issues
-        content = ContentFormatter._escape_yaml_values(content)
-        
-        # Step 8: Parse and re-structure with guaranteed proper indentation
-        try:
-            import yaml
-            
-            # Parse the YAML content to get structured data
-            parsed_data = yaml.safe_load(content)
-            if parsed_data is None:
-                return content
-            
-            # Use our custom formatter that guarantees proper indentation
-            formatted_yaml = ContentFormatter._format_yaml_with_proper_indentation(parsed_data)
-            
-            return formatted_yaml.strip()
-            
-        except yaml.YAMLError as e:
-            # YAML parsing failed - try more aggressive cleaning
-            import logging
-            logger = logging.getLogger(__name__)
-            logger.warning(f"YAML parsing failed despite escaping: {e}")
-            
-            # Try one more aggressive cleaning pass
-            content = ContentFormatter._aggressive_yaml_cleanup(content)
-            try:
-                parsed_data = yaml.safe_load(content)
-                if parsed_data is not None:
-                    formatted_yaml = ContentFormatter._format_yaml_with_proper_indentation(parsed_data)
-                    return formatted_yaml.strip()
-            except yaml.YAMLError:
-                pass
-            
-            # Return content as-is if all cleaning attempts fail
-            return content
+        """Normalize YAML content for consistency and proper structure."""
+        return ContentProcessor.normalize_structured_content(content, "yaml")
+    
+    @staticmethod
+    def preprocess_ai_content(content: str) -> str:
+        """Preprocess AI content to prevent parsing issues."""
+        return ContentProcessor.clean_ai_artifacts(content)
     
     @staticmethod
     def _clean_ai_markdown_artifacts(content: str) -> str:
@@ -1165,77 +1118,6 @@ class ContentFormatter:
         return value
     
     @staticmethod
-    def extract_yaml_content(content: str) -> str:
-        """Extract clean YAML content from various AI response formats.
-        
-        Args:
-            content: Raw AI response content
-            
-        Returns:
-            str: Clean YAML content
-        """
-        content = content.strip()
-        
-        # Pre-clean malformed AI patterns before extraction
-        content = ContentFormatter._preprocess_malformed_ai_content(content)
-        
-        # Comprehensive code block detection and removal
-        # Handle various code block formats: ```yaml, ```text, ```json, plain ```
-        code_block_patterns = [
-            r'^```(?:yaml|text|json)?\s*\n(.*?)```\s*$',  # Full code block with optional language
-            r'^```(?:yaml|text|json)?\s*(.*?)```\s*$',    # Code block without newline after opening
-        ]
-        
-        for pattern in code_block_patterns:
-            match = re.match(pattern, content, re.DOTALL)
-            if match:
-                extracted = match.group(1).strip()
-                if extracted:
-                    return extracted
-        
-        # Legacy approach for edge cases
-        if content.startswith('```') and content.endswith('```'):
-            lines = content.split('\n')
-            if len(lines) >= 3:
-                # Remove first line (opening ```) and last line (closing ```)
-                return '\n'.join(lines[1:-1]).strip()
-            else:
-                # Simple removal if no newlines
-                return content[3:-3].strip()
-        
-        # Look for YAML content after explanatory text
-        # Pattern: "Here's the YAML..." followed by actual YAML starting with a key
-        lines = content.split('\n')
-        yaml_start_idx = None
-        
-        for i, line in enumerate(lines):
-            # Find the first line that looks like YAML (key: value pattern)
-            # Enhanced to handle malformed patterns
-            if (re.match(r'^[a-zA-Z_][a-zA-Z0-9_]*\s*:', line.strip()) or 
-                re.match(r'^---\s*$', line.strip()) or
-                re.match(r'^\s*-\s+[a-zA-Z_]', line.strip())):
-                yaml_start_idx = i
-                break
-        
-        if yaml_start_idx is not None:
-            yaml_lines = lines[yaml_start_idx:]
-            # Remove any trailing explanatory text after the YAML
-            final_lines = []
-            for line in yaml_lines:
-                # Stop at lines that look like explanatory text
-                if (line.strip().startswith('This YAML') or 
-                    line.strip().startswith('The above') or
-                    line.strip().startswith('Note:') or
-                    re.match(r'^[A-Z].*[.!]$', line.strip())):
-                    break
-                final_lines.append(line)
-            
-            return '\n'.join(final_lines).strip()
-        
-        # If no clear YAML structure found, return cleaned content
-        return content
-    
-    @staticmethod
     def _preprocess_malformed_ai_content(content: str) -> str:
         """Preprocess malformed AI content patterns before YAML extraction.
         
@@ -1336,69 +1218,6 @@ class ContentFormatter:
             return text.capitalize()
         
         return text
-    
-    @staticmethod
-    def extract_json_content(content: str) -> str:
-        """Extract JSON content from various response formats.
-        
-        Args:
-            content: Raw content that may contain JSON
-            
-        Returns:
-            str: Clean JSON content
-        """
-        # Try to extract from code blocks first
-        json_block_pattern = r'```(?:json|javascript)?\s*\n?(.*?)\n?```'
-        matches = re.finditer(json_block_pattern, content, re.DOTALL)
-        
-        for match in matches:
-            try:
-                import json
-                json.loads(match.group(1).strip())
-                return match.group(1).strip()
-            except Exception:
-                continue
-        
-        # Try to extract from YAML-like blocks
-        yaml_block_pattern = r'```(?:yaml|yml)?\s*\n?(.*?)\n?```'
-        matches = re.finditer(yaml_block_pattern, content, re.DOTALL)
-        
-        for match in matches:
-            try:
-                import yaml
-                import json
-                yaml_data = yaml.safe_load(match.group(1).strip())
-                if yaml_data:
-                    return json.dumps(yaml_data, indent=2)
-            except Exception:
-                continue
-        
-        # Try to parse the entire content as JSON
-        try:
-            import json
-            json.loads(content.strip())
-            return content.strip()
-        except Exception:
-            # Try as YAML
-            try:
-                import yaml
-                import json
-                yaml_data = yaml.safe_load(content.strip())
-                if yaml_data:
-                    return json.dumps(yaml_data, indent=2)
-            except Exception:
-                pass
-        
-        # Look for JSON-like content in the response
-        if content.strip().startswith('{') and content.strip().endswith('}'):
-            try:
-                import json
-                json.loads(content.strip())
-                return content.strip()
-            except Exception:
-                pass
-        
-        return content
     
     @staticmethod
     def extract_tags_from_content(content: str) -> List[str]:
@@ -1578,7 +1397,7 @@ class ContentFormatter:
         og = formatted["openGraph"]
         
         # Use subject slug for consistent URLs
-        subject_slug = SlugUtils.create_subject_slug(subject)
+        subject_slug = SlugUtils.create_slug(subject)
         
         # Ensure required openGraph fields
         if "title" not in og:

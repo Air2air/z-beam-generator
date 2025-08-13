@@ -15,18 +15,6 @@ class ImageHandler:
     """Handler for generating and standardizing image URLs across components."""
     
     @staticmethod
-    def get_subject_slug(subject: str) -> str:
-        """Convert a subject name to a URL-friendly slug.
-        
-        Args:
-            subject: Raw subject name
-            
-        Returns:
-            str: URL-friendly slug
-        """
-        return SlugUtils.create_subject_slug(subject)
-    
-    @staticmethod
     def format_image_url(subject: str, image_type: str, custom_slug: Optional[str] = None) -> str:
         """Generate a standardized image URL for a subject.
         

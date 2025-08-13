@@ -47,7 +47,7 @@ class CentralizedValidator:
     def __init__(self, validators_dir: str = None):
         """Initialize the centralized validator."""
         self.base_path = Path(validators_dir or Path(__file__).parent)
-        self.components = ["frontmatter", "caption", "bullets", "table", "jsonld", "metatags", "propertiestable"]
+        self.components = ["frontmatter", "caption", "content", "bullets", "table", "jsonld", "metatags", "tags", "propertiestable"]
         
         # Cache for instructions
         self._fix_instructions_cache = None
@@ -295,6 +295,19 @@ class CentralizedValidator:
                 if not has_separator:
                     errors.append("Table must have separator row with | and - characters")
         
+        elif component == 'content':
+            # Content should be properly structured paragraphs
+            paragraphs = [p.strip() for p in content.split('\n\n') if p.strip()]
+            if len(paragraphs) < 2:
+                errors.append("Content should have at least 2 paragraphs")
+        
+        elif component == 'tags':
+            # Tags should be a simple list or comma-separated
+            if not content.strip():
+                errors.append("Tags component cannot be empty")
+            elif len(content.split()) < 3:
+                errors.append("Tags should contain at least 3 tags")
+        
         # Check for placeholder content
         if 'TBD' in content or 'TODO' in content or '[' in content and ']' in content:
             errors.append("Contains placeholder content (TBD, TODO, or [brackets])")
@@ -484,21 +497,22 @@ author: 1
     
     def validate_and_fix_component_iteratively(self, subject: str, component: str, max_attempts: int = 3) -> bool:
         """
-        Enhanced iterative validation and fixing that tries different strategies.
+        Enhanced iterative validation and fixing using targeted strategies from validation_fix_instructions.yaml.
         
-        On each attempt, tries increasingly aggressive fix strategies:
-        1. Template-based fixes
-        2. Content quality fixes
-        3. Format structure fixes
-        4. Full regeneration
+        Uses only specific fix strategies with no fallbacks (fail-fast approach):
+        1. Schema compliance fixes (missing required fields)
+        2. Format structure fixes (YAML syntax, structure violations)  
+        3. Content quality fixes (placeholder removal only)
+        
+        NO FALLBACKS - Fail fast if targeted fixes don't work.
         """
         logger.info(f"🔄 ITERATIVE_FIX_START: Starting iterative fixing for {component} (max {max_attempts} attempts)")
         
+        # Only use specific targeted strategies from validation_fix_instructions.yaml
         strategies = [
-            'yaml_syntax_fix',
-            'placeholder_removal', 
-            'content_regeneration',
-            'template_fallback'
+            'schema_compliance_fix',    # Missing required fields
+            'format_structure_fix',     # YAML syntax/structure issues
+            'content_quality_fix'       # Placeholder removal only
         ]
         
         for attempt in range(1, max_attempts + 1):
@@ -520,17 +534,15 @@ author: 1
                 strategy = strategies[attempt - 1]
                 logger.info(f"ITERATIVE_FIX_STRATEGY: Trying {strategy} on attempt {attempt}")
                 
-                # Apply the strategy
+                # Apply the strategy based on validation_fix_instructions.yaml
+                fix_instructions = self.get_current_fix_instructions()
                 try:
-                    if strategy == 'yaml_syntax_fix':
-                        success = self._apply_yaml_syntax_fix(subject, component)
-                    elif strategy == 'placeholder_removal':
-                        success = self._apply_placeholder_removal_fix(subject, component)
-                    elif strategy == 'content_regeneration':
-                        success = self._apply_content_regeneration_fix(subject, component)
-                    elif strategy == 'template_fallback':
-                        fix_instructions = self.get_current_fix_instructions()
-                        success = self._execute_fix_strategy(subject, component, file_path, 'template_generation', fix_instructions)
+                    if strategy == 'schema_compliance_fix':
+                        success = self._apply_schema_compliance_fix(subject, component, file_path, fix_instructions)
+                    elif strategy == 'format_structure_fix':
+                        success = self._apply_format_structure_fix(subject, component, file_path, fix_instructions)
+                    elif strategy == 'content_quality_fix':
+                        success = self._apply_content_quality_fix(subject, component, file_path, fix_instructions)
                     else:
                         success = False
                     
@@ -541,12 +553,9 @@ author: 1
                 except Exception as e:
                     logger.error(f"ITERATIVE_FIX_ERROR: Exception in {strategy} on attempt {attempt}: {e}")
             else:
-                # Fallback to API regeneration for final attempts
-                logger.info(f"ITERATIVE_FIX_REGENERATE: Attempting API regeneration on attempt {attempt}")
-                success = self._regenerate_component_via_api(subject, component)
-                
-                if not success:
-                    logger.error(f"ITERATIVE_FIX_REGEN_FAILED: API regeneration failed on attempt {attempt}")
+                # NO FALLBACKS - Fail fast after attempting all targeted strategies
+                logger.error(f"ITERATIVE_FIX_NO_FALLBACK: No more strategies available on attempt {attempt}")
+                break
         
         logger.error(f"ITERATIVE_FIX_EXHAUSTED: All {max_attempts} attempts failed for {component}")
         return False

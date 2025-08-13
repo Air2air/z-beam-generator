@@ -66,7 +66,7 @@ BATCH_CONFIG = {
     "multi_subject": {
         "author_id": 1,  # Use this author for all subjects
         "subject_source": "lists",  # Directory to discover all subjects from all categories
-        "limit": [1,40] # Range [start_idx, end_idx] to process items by index (or a single number for first N items, None for all subjects)
+        "limit": None # Range [start_idx, end_idx] to process items by index (or a single number for first N items, None for all subjects)
     },
     
     # Global AI configuration - applied to all components
@@ -89,7 +89,7 @@ BATCH_CONFIG = {
             "temperature": 0.9  # Override global temperature for frontmatter
         },
         "content": {
-            "enabled": True,
+            "enabled": False,
             "min_words": 200,
             "max_words": 400,
             "temperature": 0.7,  # Balanced creativity for main content
@@ -120,7 +120,7 @@ BATCH_CONFIG = {
             ]
         },
         "tags": {
-            "enabled": True,
+            "enabled": False,
             "temperature": 0.7,  # Balanced for focused but diverse tag generation
             "max_tags": 8,       # Reduced from 10 for higher quality
             "min_tags": 5,
@@ -321,6 +321,28 @@ def get_subjects_with_categories_from_directory(directory_path: str) -> list:
     
     return sorted(subjects_with_categories, key=lambda x: (x["category"], x["subject"]))
     
+    return sorted(subjects_with_categories, key=lambda x: (x["category"], x["subject"]))
+
+def create_article_context(subject: str, article_type: str, author_id: int, category: str = None) -> dict:
+    """Create article context for a specific subject.
+    
+    Args:
+        subject: Subject name
+        article_type: Type of article
+        author_id: Author ID
+        category: Category of the subject (optional)
+        
+    Returns:
+        Article context dictionary
+    """
+    return {
+        "subject": subject,
+        "article_type": article_type,
+        "author_id": author_id,
+        "category": category,
+        "components": BATCH_CONFIG["components"].copy(),
+        "output_dir": BATCH_CONFIG["output"]["base_dir"]
+    }
 
 # =============================================================================
 # 🏗️ MODULAR OUTPUT FUNCTIONS
@@ -385,9 +407,9 @@ def get_component_output_path(component_name: str, subject: str, category: str, 
     
     # Create safe versions of variables for filename
     from components.base.utils.slug_utils import SlugUtils
-    safe_subject = SlugUtils.create_slug(subject)
-    safe_category = SlugUtils.create_slug(category)
-    safe_article_type = SlugUtils.create_slug(article_type)
+    safe_subject = SlugUtils.create_subject_slug(subject)
+    safe_category = SlugUtils.create_category_slug(category)
+    safe_article_type = SlugUtils.create_article_type_slug(article_type)
     
     # For thesaurus entries, the link is the term itself
     if article_type == "thesaurus":
@@ -649,36 +671,6 @@ def run_post_generation_validation(processed_subjects: list, skip_validation: bo
         print("  python3 -m validators.cli validate [subject_name]")
         return True  # Return True for failures due to exception
 
-def prompt_for_autonomous_fix_authorization(subject: str, failed_components: list) -> bool:
-    """
-    Request user authorization to apply autonomous fixes based on validation_fix_instructions.yaml.
-    
-    Returns:
-        bool: True if user authorizes fixes, False if declined
-    """
-    print(f"\n🔧 Autonomous Fix Authorization")
-    print(f"Generation errors detected for {subject}.")
-    print(f"Failed components: {', '.join(failed_components)}")
-    print(f"\nAvailable fix strategies from validation_fix_instructions.yaml:")
-    print(f"  • Schema compliance fixes (missing required fields)")
-    print(f"  • Format structure fixes (YAML syntax, structure violations)")  
-    print(f"  • Content quality fixes (placeholder content replacement)")
-    print(f"\nThese fixes will:")
-    print(f"  • Reference validators/examples/ for proper structure")
-    print(f"  • Apply material-specific technical data")
-    print(f"  • Preserve content creativity within proper format")
-    
-    while True:
-        response = input("\nApply autonomous fixes? (y/n): ").strip().lower()
-        if response in ['y', 'yes']:
-            print(f"✅ Authorized: Applying autonomous fixes for {subject}")
-            return True
-        elif response in ['n', 'no']:
-            print(f"❌ Declined: Skipping {subject} without fixes")
-            return False
-        else:
-            print("Please enter 'y' for yes or 'n' for no.")
-
 def prompt_for_validation_fixes() -> bool:
     """Automatically authorize validation fixes for failed components."""
     print("\n🔧 Validation fixes available using validators/validation_fix_instructions.yaml")
@@ -687,222 +679,6 @@ def prompt_for_validation_fixes() -> bool:
         print("🛑 User declined validation fixes. Stopping entire generation process.")
         sys.exit(0)
     return response in ['y', 'yes']
-
-def attempt_targeted_autonomous_fixes(subject: str, failed_components: list, category: str = None, article_type: str = None) -> bool:
-    """
-    Attempts targeted autonomous fixes based on validation_fix_instructions.yaml
-    
-    Args:
-        subject: The material subject being processed
-        failed_components: List of component names that failed validation
-        category: Category of the subject (if available)
-        article_type: Article type (if available)
-    
-    Returns:
-        bool: True if all fixes were successful, False otherwise
-    """
-    try:
-        # Load fix instructions
-        instructions_path = "validators/validation_fix_instructions.yaml"
-        if not os.path.exists(instructions_path):
-            print(f"⚠️ Fix instructions not found at {instructions_path}")
-            return False
-            
-        with open(instructions_path, 'r') as f:
-            fix_instructions = yaml.safe_load(f)
-        
-        # Initialize validator for fix attempts
-        from validators.centralized_validator import CentralizedValidator
-        validator = CentralizedValidator()
-        
-        # Determine category and article_type if not provided
-        if not category or not article_type:
-            # Try to determine from materials.yaml
-            yaml_path = os.path.join("lists", "materials.yaml")
-            if os.path.exists(yaml_path):
-                subjects_with_info = get_subjects_from_consolidated_yaml(yaml_path)
-                for subject_info in subjects_with_info:
-                    if subject_info["subject"] == subject:
-                        category = category or subject_info["category"]
-                        article_type = article_type or subject_info["article_type"]
-                        break
-            
-            # Fallback defaults
-            category = category or "material"
-            article_type = article_type or "material"
-        
-        all_fixes_successful = True
-        
-        for component in failed_components:
-            print(f"    🔧 Applying targeted fixes to {component}...")
-            
-            # Use existing path resolution which handles all slug/filename logic
-            component_path = get_component_output_path(component, subject, category, article_type)
-            
-            if not os.path.exists(component_path):
-                print(f"    ⚠️ Component file not found: {component_path}")
-                # Try to regenerate only this specific component
-                success = regenerate_single_component(subject, component, category, article_type)
-                if not success:
-                    all_fixes_successful = False
-                continue
-            
-            # Read current content
-            with open(component_path, 'r') as f:
-                current_content = f.read()
-            
-            # Apply targeted fix strategies from instructions
-            fix_strategies = fix_instructions.get('fix_approaches', {})
-            
-            # Try schema compliance fix first
-            if 'schema_compliance_fix' in fix_strategies:
-                fixed_content = apply_schema_compliance_fix(current_content, component, subject, fix_instructions)
-                if fixed_content != current_content:
-                    with open(component_path, 'w') as f:
-                        f.write(fixed_content)
-                    print(f"    ✅ Applied schema compliance fix to {component}")
-                    continue
-            
-            # Try format structure fix
-            if 'format_structure_fix' in fix_strategies:
-                fixed_content = apply_format_structure_fix(current_content, component, subject, fix_instructions)
-                if fixed_content != current_content:
-                    with open(component_path, 'w') as f:
-                        f.write(fixed_content)
-                    print(f"    ✅ Applied format structure fix to {component}")
-                    continue
-            
-            # Try content quality fix
-            if 'content_quality_fix' in fix_strategies:
-                fixed_content = apply_content_quality_fix(current_content, component, subject, fix_instructions)
-                if fixed_content != current_content:
-                    with open(component_path, 'w') as f:
-                        f.write(fixed_content)
-                    print(f"    ✅ Applied content quality fix to {component}")
-                    continue
-            
-            print(f"    ⚠️ No applicable fixes found for {component}")
-            all_fixes_successful = False
-        
-        return all_fixes_successful
-        
-    except Exception as e:
-        print(f"⚠️ Error during autonomous fixing: {e}")
-        return False
-
-def apply_schema_compliance_fix(content: str, component: str, subject: str, instructions: dict) -> str:
-    """Apply schema compliance fixes based on examples"""
-    try:
-        example_path = f"validators/examples/{component}.md"
-        if os.path.exists(example_path):
-            with open(example_path, 'r') as f:
-                example_content = f.read()
-            
-            # Extract required fields from example and add to content if missing
-            # This is a simplified implementation - would need component-specific logic
-            return content
-        return content
-    except:
-        return content
-
-def apply_format_structure_fix(content: str, component: str, subject: str, instructions: dict) -> str:
-    """Apply format structure fixes"""
-    try:
-        # Remove markdown code block wrappers
-        if content.startswith('```') and content.endswith('```'):
-            lines = content.split('\n')
-            if len(lines) > 2:
-                content = '\n'.join(lines[1:-1])
-        
-        # Apply YAML formatting fixes
-        if component in ['frontmatter', 'metatags', 'jsonld']:
-            try:
-                yaml.safe_load(content)  # Test if valid YAML
-            except yaml.YAMLError:
-                # Basic YAML structure repair would go here
-                pass
-        
-        return content
-    except:
-        return content
-
-def apply_content_quality_fix(content: str, component: str, subject: str, instructions: dict) -> str:
-    """Replace placeholder content with material-specific data"""
-    try:
-        # Replace common placeholders
-        placeholders_to_replace = {
-            'TBD': subject,
-            '[material]': subject,
-            '{material}': subject,
-            'TODO': f"Information about {subject}",
-            '[value]': 'specific value',
-            '{value}': 'specific value'
-        }
-        
-        for placeholder, replacement in placeholders_to_replace.items():
-            content = content.replace(placeholder, replacement)
-        
-        return content
-    except:
-        return content
-
-def regenerate_single_component(subject: str, component: str, category: str, article_type: str) -> bool:
-    """Regenerate a single specific component for a subject using existing systems"""
-    try:
-        print(f"        🔄 Regenerating {component} for {subject}...")
-        
-        # Initialize systems
-        from generators.unified_generator import UnifiedDocumentGenerator
-        ai_config = BATCH_CONFIG["ai"]
-        generator = UnifiedDocumentGenerator(ai_config["provider"], ai_config["options"])
-        
-        # Load author data
-        author_id = BATCH_CONFIG.get("multi_subject", {}).get("author_id", 1)
-        author_data = load_author_data(author_id)
-        
-        # Load schema
-        schema_path = f"schemas/{article_type}.json"
-        if os.path.exists(schema_path):
-            with open(schema_path, 'r') as f:
-                schema = json.load(f)
-        else:
-            schema = {"type": "object", "properties": {}, "required": []}
-        
-        # Generate complete document and extract only the component we need
-        result = generator.generate_complete_document(
-            subject=subject,
-            article_type=article_type,
-            category=category,
-            author_data=author_data,
-            schema=schema
-        )
-        
-        if result and isinstance(result, dict) and result.get("success", False):
-            components = result.get("components", {})
-            if component in components:
-                component_content = components[component]
-                if component_content and isinstance(component_content, str) and component_content.strip():
-                    # Use existing save function which handles all path/slug logic
-                    save_component_output(component, subject, component_content, category, article_type)
-                    print(f"        ✅ Successfully regenerated {component}")
-                    return True
-                else:
-                    print(f"        ❌ {component} content is empty or invalid")
-                    return False
-            else:
-                print(f"        ❌ {component} not found in generated components")
-                return False
-        else:
-            print(f"        ❌ Failed to regenerate document - no valid result")
-            return False
-            
-    except Exception as e:
-        print(f"        ❌ Error regenerating {component}: {e}")
-        return False
-
-def regenerate_missing_component(subject: str, component: str) -> bool:
-    """Legacy function - redirects to regenerate_single_component with default values"""
-    return regenerate_single_component(subject, component, "material", "material")
 
 def prompt_to_continue_next_material(current_material: str, completed_count: int, total_count: int) -> bool:
     """Ask user if they want to continue to the next material."""
@@ -976,9 +752,6 @@ def run_enhanced_material_processing():
         subject = subject_info["subject"]
         category = subject_info["category"]
         article_type = subject_info["article_type"]
-        
-        # Initialize failure tracking for this material
-        has_remaining_failures = False
         
         print(f"\n{'='*60}")
         print(f"🎯 Processing Material {i}/{len(subjects_with_info)}: {subject}")
@@ -1087,15 +860,6 @@ def run_enhanced_material_processing():
         # Check if material needs intervention and attempt autonomous fixing
         if failed_components:
             print(f"⚠️ {subject} has {len(failed_components)} failed components: {', '.join(failed_components)}")
-            
-            # Request authorization before applying autonomous fixes
-            authorized = prompt_for_autonomous_fix_authorization(subject, failed_components)
-            
-            if not authorized:
-                # User declined autonomous fixes - skip this material
-                print(f"⏭️ Skipping {subject} - autonomous fixes declined")
-                continue
-                
             print(f"🔧 Attempting autonomous fixing for {subject}...")
             
             # Attempt autonomous fixing for failed components
@@ -1134,44 +898,25 @@ def run_enhanced_material_processing():
                 print(f"📋 Please check the detailed logs and fix these components before continuing")
                 
                 # Offer immediate retry option
-                print(f"\n� AUTONOMOUS FIX OPTION:")
-                print(f"   The system can attempt additional targeted fixes based on validation guidelines")
-                print(f"   This will apply schema, format, and content quality fixes as appropriate")
+                print(f"\n� RETRY OPTIONS:")
+                print(f"   1. Attempt additional autonomous fixes (recommended)")
+                print(f"   2. Skip to manual intervention")
+                print(f"   3. Exit and review logs")
                 
-                retry_choice = input("Attempt additional autonomous fixes? (y/n): ").strip().lower()
+                retry_choice = input("Choose option (1/2/3): ").strip()
                 
-                if retry_choice == "y":
+                if retry_choice == "1":
                     print(f"🔄 Attempting additional autonomous fixes for {subject}...")
-                    
-                    # Implement targeted autonomous fixes based on validation_fix_instructions.yaml
-                    success = attempt_targeted_autonomous_fixes(subject, remaining_failed, category, article_type)
-                    
-                    if success:
-                        print(f"✅ Autonomous fixes successful for {subject}")
-                        # Re-validate to confirm fixes
-                        print(f"🔍 Re-validating {subject} after autonomous fixes...")
-                        validation_report = validator.validate_material(subject)
-                        
-                        # Check if all components are now successful
-                        all_components_valid = all(
-                            result.status.value == 'success' 
-                            for result in validation_report.values()
-                        )
-                        
-                        if all_components_valid:
-                            completed_materials.append(subject)
-                            print(f"🎉 {subject} completed successfully after autonomous fixing!")
-                            # Continue to next material
-                            continue
-                        else:
-                            print(f"⚠️ Some issues remain after autonomous fixes. Manual intervention needed.")
-                            break
-                    else:
-                        print(f"⚠️ Autonomous fixes could not resolve all issues. Manual intervention needed.")
-                        break
-                else:
-                    print(f"⏭️ Skipping autonomous fixes for {subject}")
+                    # Additional fix attempts could go here
+                    # For now, just break to prevent infinite loop
+                    print(f"⚠️ Additional fix logic not yet implemented. Stopping for manual intervention.")
                     break
+                elif retry_choice == "2":
+                    print(f"⏭️ Skipping to manual intervention for {subject}")
+                    break
+                else:
+                    print(f"🚪 Exiting for log review")
+                    sys.exit(1)
                 
             else:
                 completed_materials.append(subject)
@@ -1209,8 +954,9 @@ def run_enhanced_material_processing():
         response = input("Rerun enhanced cycle for failed materials? (y/n): ").strip().lower()
         if response == 'y':
             print(f"🔄 Rerunning enhanced cycle for failed materials...")
-            # Pass materials with their specific failed components
-            return run_enhanced_material_processing_for_subjects(materials_needing_intervention)
+            # Recursively call for failed materials only
+            failed_subjects = [m['subject'] for m in materials_needing_intervention]
+            return run_enhanced_material_processing_for_subjects(failed_subjects)
         elif response == 'n':
             print(f"⏭️ Skipping rerun. Enhanced generation cycle complete.")
             sys.exit(0)
@@ -1221,9 +967,9 @@ def run_enhanced_material_processing():
     
     return completed_materials
 
-def run_enhanced_material_processing_for_subjects(materials_with_failures: list):
-    """Run enhanced processing for specific subjects with their known failed components."""
-    print(f"🔄 Rerunning enhanced processing for {len(materials_with_failures)} materials with targeted component regeneration")
+def run_enhanced_material_processing_for_subjects(subjects: list):
+    """Run enhanced processing for specific subjects only."""
+    print(f"🔄 Rerunning enhanced processing for {len(subjects)} subjects: {', '.join(subjects)}")
     
     # Setup environment
     setup_environment()
@@ -1239,83 +985,124 @@ def run_enhanced_material_processing_for_subjects(materials_with_failures: list)
     completed_materials = []
     still_failing = []
     
-    for i, material_info in enumerate(materials_with_failures, 1):
-        subject = material_info['subject']
-        failed_components = material_info['failed_components']
-        
+    for i, subject in enumerate(subjects, 1):
         print(f"\n{'='*60}")
-        print(f"🔄 RETRY {i}/{len(materials_with_failures)}: {subject}")
+        print(f"🔄 RETRY {i}/{len(subjects)}: {subject}")
         print(f"{'='*60}")
         
-        # Determine category for this subject (try to get from materials.yaml)
-        category = "material"  # Default
+        # Determine category for this subject (simplified approach)
+        category = "material"  # Default category
         article_type = "material"
-        
-        # Try to get proper category and article_type from materials.yaml
-        yaml_path = os.path.join("lists", "materials.yaml")
-        if os.path.exists(yaml_path):
-            try:
-                subjects_with_info = get_subjects_from_consolidated_yaml(yaml_path)
-                for subject_info in subjects_with_info:
-                    if subject_info["subject"] == subject:
-                        category = subject_info["category"]
-                        article_type = subject_info["article_type"]
-                        break
-            except:
-                pass  # Use defaults if lookup fails
-        
         author_id = BATCH_CONFIG.get("multi_subject", {}).get("author_id", 1)
         author_data = load_author_data(author_id)
         
-        print(f"🔧 Attempting to regenerate {len(failed_components)} failed components for {subject}: {', '.join(failed_components)}")
+        # Get failed components that need to be regenerated
+        enabled_components = [comp for comp, config in BATCH_CONFIG["components"].items() 
+                            if config.get("enabled", False)]
         
-        # Regenerate only the failed components using targeted approach
-        regeneration_success = True
-        for component in failed_components:
-            print(f"    🔄 Regenerating {component}...")
-            success = regenerate_single_component(subject, component, category, article_type)
-            if not success:
-                regeneration_success = False
-                print(f"    ❌ Failed to regenerate {component}")
+        print(f"🔧 Attempting to regenerate {len(enabled_components)} components for {subject}...")
+        
+        # Try generating the document again
+        try:
+            generator = UnifiedDocumentGenerator()
+            
+            # Load basic schema
+            schema = {
+                "type": "object", 
+                "properties": {},
+                "required": []
+            }
+            
+            print(f"🚀 Generating document with unified generator...")
+            result = generator.generate_complete_document(
+                subject, article_type, category, author_data, schema
+            )
+            
+            print(f"📊 Generation result: {type(result)} with keys: {list(result.keys()) if isinstance(result, dict) else 'Not a dict'}")
+            
+            # Check if generation was successful by seeing if we got component content
+            if result and isinstance(result, dict) and len(result) > 0:
+                print(f"✅ Successfully regenerated document for {subject}")
+                print(f"📋 Generated components: {list(result.keys())}")
+                
+                # Write the components to files
+                for component_name, component_content in result.items():
+                    if component_name in enabled_components and component_content:
+                        file_path = validator._get_component_file_path(subject, component_name)
+                        file_path.parent.mkdir(parents=True, exist_ok=True)
+                        
+                        with open(file_path, 'w', encoding='utf-8') as f:
+                            f.write(component_content)
+                        print(f"    📝 Wrote {component_name}: {len(component_content)} chars")
+                
+                # Validate all components and apply iterative autonomous fixes if needed
+                print(f"🔍 Validating all components...")
+                validation_results = validator.validate_material(subject)
+                
+                all_passed = True
+                for component in enabled_components:
+                    if component in validation_results:
+                        validation_result = validation_results[component]
+                        if validation_result.status != ComponentStatus.SUCCESS:
+                            print(f"    ❌ {component}: {validation_result.status}")
+                            
+                            # Apply iterative autonomous fixes for failed components
+                            max_fix_attempts = 3
+                            print(f"    🔧 Starting iterative autonomous fixing for {component}...")
+                            
+                            fix_success = validator.validate_and_fix_component_iteratively(
+                                subject, component, max_attempts=max_fix_attempts
+                            )
+                            
+                            if fix_success:
+                                print(f"    ✅ Successfully fixed {component} with iterative approach")
+                            else:
+                                print(f"    ❌ Failed to fix {component} after {max_fix_attempts} iterative attempts")
+                                all_passed = False
+                        else:
+                            print(f"    ✅ {component}: validated")
+                    else:
+                        print(f"    ⚠️ {component}: not found in validation results")
+                        all_passed = False
+                
+                # Final validation after autonomous fixes
+                if not all_passed:
+                    print(f"🔄 Final validation after autonomous fixes...")
+                    final_validation_results = validator.validate_material(subject)
+                    all_passed = True
+                    
+                    for component in enabled_components:
+                        if component in final_validation_results:
+                            final_result = final_validation_results[component]
+                            if final_result.status != ComponentStatus.SUCCESS:
+                                print(f"    ❌ {component}: still {final_result.status}")
+                                all_passed = False
+                            else:
+                                print(f"    ✅ {component}: now validated")
+                        else:
+                            all_passed = False
+                
+                if all_passed:
+                    completed_materials.append(subject)
+                    print(f"🎉 {subject} completed successfully on retry!")
+                else:
+                    still_failing.append(subject)
+                    print(f"⚠️ {subject} still has validation issues after autonomous fixes")
             else:
-                print(f"    ✅ Successfully regenerated {component}")
-        
-        if regeneration_success:
-            print(f"✅ Successfully regenerated all failed components for {subject}")
-            
-            # Validate all components after regeneration
-            print(f"🔍 Validating all components for {subject}...")
-            validation_report = validator.validate_material(subject)
-            
-            # Check results
-            failed_after_regen = [
-                comp for comp, result in validation_report.items() 
-                if result.status.value != 'success'
-            ]
-            
-            if failed_after_regen:
-                print(f"⚠️ {subject} still has {len(failed_after_regen)} failed components after regeneration: {', '.join(failed_after_regen)}")
+                print(f"❌ Failed to regenerate document for {subject}")
+                print(f"📋 Result details: {result}")
                 still_failing.append(subject)
-            else:
-                print(f"🎉 {subject} completed successfully after targeted regeneration!")
-                completed_materials.append(subject)
-        else:
-            print(f"❌ Failed to regenerate some components for {subject}")
+                
+        except Exception as e:
+            print(f"❌ Error during retry for {subject}: {e}")
+            import traceback
+            traceback.print_exc()
             still_failing.append(subject)
     
     # Summary
     print(f"\n{'='*60}")
     print(f"📊 RETRY SUMMARY")
     print(f"{'='*60}")
-    print(f"Successfully completed: {len(completed_materials)}")
-    print(f"Still failing: {len(still_failing)}")
-    
-    if still_failing:
-        print(f"\n⚠️ Materials still needing intervention:")
-        for material in still_failing:
-            print(f"  • {material}")
-    
-    return completed_materials
     print(f"Successfully completed: {len(completed_materials)}")
     print(f"Still failing: {len(still_failing)}")
     
@@ -1491,7 +1278,8 @@ def apply_validation_fixes(processed_subjects: list) -> None:
     
     except ImportError as e:
         print(f"⚠️ Could not load centralized validator: {e}")
-        print("❌ Unable to proceed with validation fixes. Manual intervention required.")
+        print("Falling back to legacy fix system...")
+        apply_validation_fixes_legacy(processed_subjects)
     
     print("✅ Validation fixes completed.")
     
@@ -1505,14 +1293,13 @@ def apply_validation_fixes(processed_subjects: list) -> None:
 # ========================================
 # TODO: Remove these after confirming centralized system works
 
-# DEAD CODE - LEGACY VALIDATION SYSTEM (DISABLED)
-# def apply_validation_fixes_legacy(processed_subjects: list) -> None:
+def apply_validation_fixes_legacy(processed_subjects: list) -> None:
     """Legacy validation fix system - kept for fallback only."""
     print("\n🔧 Applying legacy formatting fixes...")
     
     # Load validation fix instructions FRESH each time (dynamic updating)
     print("📋 Loading current validation fix instructions...")
-    # instructions = load_validation_fix_instructions()  # DISABLED
+    instructions = load_validation_fix_instructions()
     
     # Get the specific validation errors for each subject
     for subject in processed_subjects:
@@ -1529,8 +1316,7 @@ def apply_validation_fixes(processed_subjects: list) -> None:
     
     print("✅ Formatting fixes completed.")
 
-# DEAD CODE - LEGACY VALIDATION SYSTEM (DISABLED)
-# def load_validation_fix_instructions() -> dict:
+def load_validation_fix_instructions() -> dict:
     """Load the validation fix instructions document with timestamp checking for dynamic updates."""
     
     instructions_path = os.path.join(os.path.dirname(__file__), "validators", "validation_fix_instructions.yaml")

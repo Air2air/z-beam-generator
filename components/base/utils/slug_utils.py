@@ -43,41 +43,7 @@ class SlugUtils:
         
         return slug
     
-    @staticmethod
-    def create_subject_slug(subject: str) -> str:
-        """Create a subject-specific slug.
-        
-        Args:
-            subject: Subject name
-            
-        Returns:
-            str: Subject slug
-        """
-        return SlugUtils.create_slug(subject)
-    
-    @staticmethod
-    def create_category_slug(category: str) -> str:
-        """Create a category-specific slug.
-        
-        Args:
-            category: Category name
-            
-        Returns:
-            str: Category slug
-        """
-        return SlugUtils.create_slug(category)
-    
-    @staticmethod
-    def create_article_type_slug(article_type: str) -> str:
-        """Create an article type-specific slug.
-        
-        Args:
-            article_type: Article type name
-            
-        Returns:
-            str: Article type slug
-        """
-        return SlugUtils.create_slug(article_type)
+    # Removed redundant wrapper functions - use create_slug() directly
     
     @staticmethod
     def create_image_slug(subject: str, image_type: str = "hero") -> str:
@@ -90,7 +56,7 @@ class SlugUtils:
         Returns:
             str: Image filename slug
         """
-        subject_slug = SlugUtils.create_subject_slug(subject)
+        subject_slug = SlugUtils.create_slug(subject)
         
         # Handle empty subject case
         if not subject_slug:

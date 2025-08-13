@@ -13,9 +13,8 @@ from typing import Dict, Any, List
 
 from components.base.utils.content_formatter import ContentFormatter
 from components.base.utils.content_normalizer import ContentNormalizer
-from components.base.utils.validation import (
-    validate_non_empty, validate_category_consistency, strip_markdown_code_blocks
-)
+from components.base.utils.component_validator import ComponentValidator
+from components.base.utils.content_processor import ContentProcessor
 from components.base.data_provider import CleanDataProvider
 
 logger = logging.getLogger(__name__)
@@ -150,7 +149,11 @@ class BaseComponent(ABC):
         Raises:
             ValueError: If inconsistencies are detected
         """
-        return validate_category_consistency(file_content, self.category, self.article_type, self.subject)
+        return ComponentValidator.validate_consistency(file_content, {
+            'category': self.category,
+            'article_type': self.article_type,
+            'subject': self.subject
+        })
 
     def get_component_config(self, key: str, default: Any = None) -> Any:
         """Get a value from component_config.
@@ -508,7 +511,10 @@ class BaseComponent(ABC):
             ValueError: If content is invalid
         """
         # Step 1: Basic validation - non-empty
-        content = validate_non_empty(content, f"API returned empty or invalid {self.__class__.__name__.replace('Generator', '')}")
+        content = ComponentValidator.validate_content(content, {
+            'allow_empty': False,
+            'min_length': 1
+        })
         
         # Step 2: Preprocess AI content to remove problematic formatting
         from components.base.utils.content_formatter import ContentFormatter
@@ -872,7 +878,7 @@ Focus on technical depth, practical applications, and industry-specific details.
         Returns:
             str: Content with code block markers removed
         """
-        return strip_markdown_code_blocks(content)
+        return ContentProcessor.clean_ai_artifacts(content)
     
     def _validate_word_count(self, content: str, 
                          min_key: str = "min_words", 

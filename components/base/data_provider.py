@@ -227,9 +227,9 @@ class CleanDataProvider:
             # ===================================================================
             # PRE-FORMATTED IDENTIFIERS - All slug generation handled by Python
             # ===================================================================
-            "slug": SlugUtils.create_subject_slug(self.subject),
-            "subject_slug": SlugUtils.create_subject_slug(self.subject),
-            "category_slug": SlugUtils.create_category_slug(self.category),
+            "slug": SlugUtils.create_slug(self.subject),
+            "subject_slug": SlugUtils.create_slug(self.subject),
+            "category_slug": SlugUtils.create_slug(self.category),
             
             # ===================================================================
             # PRE-FORMATTED DATES - All date formatting handled by Python
