@@ -1,5 +1,6 @@
 """Metatags component for Z-Beam Generator."""
 
-from components.metatags.generator import MetatagsGenerator
+# Note: Legacy MetatagsGenerator class has been removed in favor of unified generation
+# This package is maintained for backward compatibility but contains no active generators
 
-__all__ = ['MetatagsGenerator']
+__all__ = []

@@ -70,10 +70,8 @@ The TableGenerator processes structured data in the frontmatter and generates pr
 Run the tests for the Table Generator component:
 
 ```bash
-# Run basic test script
-python3 components/table/test_markdown_tables.py
-
-# Run pytest tests (requires pytest)
-# pip install pytest
-pytest components/table/test_table_pytest.py
+# Note: Test files not yet implemented
+# TODO: Create test files for table generation functionality
+# python3 components/table/test_markdown_tables.py
+# pytest components/table/test_table_pytest.py
 ```

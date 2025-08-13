@@ -14,50 +14,66 @@ class ContentFormatter:
     """Handles all content formatting tasks to offload work from AI."""
     
     @staticmethod
-    def format_title(subject: str, article_type: str = "material") -> str:
-        """Generate SEO-optimized title.
+    def format_title(subject: str, article_type: str = "material", schema: Dict[str, Any] = None) -> str:
+        """Generate title based on schema configuration.
         
         Args:
             subject: The subject material/topic
             article_type: Type of article (material, application, etc.)
+            schema: Schema configuration with title patterns
             
         Returns:
             str: Formatted title
         """
-        return f"Laser Cleaning {subject} - Technical Guide for Optimal Processing"
-    
+        if schema and 'titleFormat' in schema:
+            return schema['titleFormat'].format(subject=subject, article_type=article_type)
+        
+        return f"{subject} - Technical Guide"
+
     @staticmethod
-    def format_headline(subject: str, category: str = None) -> str:
-        """Generate concise headline.
+    def format_headline(subject: str, category: str = None, schema: Dict[str, Any] = None) -> str:
+        """Generate headline based on schema configuration.
         
         Args:
             subject: The subject material/topic
             category: Material category (ceramic, metal, etc.)
+            schema: Schema configuration with headline patterns
             
         Returns:
             str: Formatted headline
         """
+        if schema and 'headlineFormat' in schema:
+            return schema['headlineFormat'].format(subject=subject, category=category or '')
+        
         category_text = f"{category} " if category else ""
-        return f"Comprehensive technical guide for laser cleaning {category_text}{subject.lower()}"
+        return f"Technical guide for {category_text}{subject.lower()}"
     
     @staticmethod
-    def format_description(subject: str, formula: str = None, properties: Dict = None) -> str:
-        """Generate technical description with key properties.
+    def format_description(subject: str, formula: str = None, properties: Dict = None, schema: Dict[str, Any] = None) -> str:
+        """Generate technical description based on schema configuration.
         
         Args:
             subject: The subject material/topic
             formula: Chemical formula if applicable
             properties: Key properties dictionary
+            schema: Schema configuration with description patterns
             
         Returns:
             str: Formatted description (150-250 chars)
         """
+        if schema and 'descriptionFormat' in schema:
+            return schema['descriptionFormat'].format(
+                subject=subject, 
+                formula=formula or '', 
+                properties=properties or {}
+            )
+        
         desc_parts = [f"Technical overview of {subject.lower()}"]
         
         if formula:
             desc_parts.append(f"({formula})")
         
-        desc_parts.append("for laser cleaning applications")
+        desc_parts.append("specifications and applications")
         
         if properties:
             prop_parts = []
@@ -65,17 +81,13 @@ class ContentFormatter:
                 prop_parts.append(f"{properties['density']} density")
             if "wavelength" in properties:
                 prop_parts.append(f"{properties['wavelength']}")
-            if "fluenceRange" in properties:
-                prop_parts.append(f"{properties['fluenceRange']}")
             
             if prop_parts:
-                desc_parts.append(f"including {', '.join(prop_parts[:2])}")
-        
-        desc_parts.append("and industrial applications")
+                desc_parts.extend(prop_parts)
         
         description = ", ".join(desc_parts) + "."
         
-        # Ensure it's within 150-250 char range
+        # Truncate if too long
         if len(description) > 250:
             description = description[:247] + "..."
         
@@ -354,59 +366,62 @@ class ContentFormatter:
     
     @staticmethod
     def format_keywords(subject: str, category: str = None, 
-                       chemical_formula: str = None) -> List[str]:
-        """Generate comprehensive keyword list.
+                       chemical_formula: str = None, schema: Dict[str, Any] = None) -> List[str]:
+        """Generate comprehensive keyword list based on schema configuration.
         
         Args:
             subject: The subject material/topic
             category: Material category
             chemical_formula: Chemical formula if applicable
+            schema: Schema configuration with keyword patterns
             
         Returns:
             List[str]: List of 8-12 keywords
         """
         keywords = []
         
-        # Base keywords
-        subject_lower = subject.lower()
-        keywords.append(f"{subject_lower}")
+        # Get keywords from schema if available
+        if schema and 'keywordTemplates' in schema:
+            for template in schema['keywordTemplates']:
+                keyword = template.format(
+                    subject=subject, 
+                    category=category or '', 
+                    formula=chemical_formula or ''
+                ).strip()
+                if keyword:
+                    keywords.append(keyword)
+        else:
+            # Fallback to generic keywords
+            subject_lower = subject.lower()
+            keywords.append(f"{subject_lower}")
+            
+            if category:
+                keywords.append(f"{subject_lower} {category}")
+            
+            # Technical terms
+            keywords.extend([
+                "technical specifications",
+                "material properties",
+                "industrial applications"
+            ])
+            
+            # Chemical formula variations
+            if chemical_formula:
+                # Clean up formula for keyword use
+                formula_clean = re.sub(r'[²³·⁰¹⁴⁵⁶⁷⁸⁹]', '', chemical_formula)
+                keywords.append(f"{formula_clean} material")
+            
+            # Application-specific terms
+            keywords.extend([
+                "processing parameters",
+                "surface treatment",
+                "contamination removal"
+            ])
         
-        if category:
-            keywords.append(f"{subject_lower} {category}")
-        
-        # Laser-specific terms
-        keywords.extend([
-            "laser ablation",
-            "laser cleaning",
-            "non-contact cleaning",
-            "pulsed fiber laser",
-            "surface contamination removal"
-        ])
-        
-        # Chemical formula variations
-        if chemical_formula:
-            # Clean up formula for keyword use
-            formula_clean = re.sub(r'[²³·⁰¹⁴⁵⁶⁷⁸⁹]', '', chemical_formula)
-            keywords.append(f"{formula_clean} composite")
-        
-        # Technical terms
-        keywords.extend([
-            "industrial laser parameters",
-            "thermal processing",
-            "surface restoration"
-        ])
-        
-        # Application-specific
-        if category == "ceramic":
-            keywords.extend(["ceramic restoration", "archaeological conservation"])
-        elif category == "metal":
-            keywords.extend(["metal surface treatment", "corrosion removal"])
-        elif category == "plastic":
-            keywords.extend(["polymer processing", "plastic surface modification"])
-        
-        # Ensure we have 8-12 keywords
-        return keywords[:12]
-    
+        # Remove duplicates and limit to reasonable number
+        keywords = list(dict.fromkeys(keywords))  # Remove duplicates while preserving order
+        return keywords[:12]  # Limit to 12 keywords
+
     @staticmethod
     def format_images(subject: str) -> Dict[str, Dict[str, str]]:
         """Generate standardized image structure.
@@ -903,6 +918,35 @@ class ContentFormatter:
         in_document = False
         content_lines = []
         
+        # Check if content already has frontmatter delimiters
+        has_frontmatter_delimiters = any(line.strip() == '---' for line in lines)
+        
+        # If no frontmatter delimiters, treat as raw YAML and process all content
+        if not has_frontmatter_delimiters:
+            # For raw YAML content (like AI responses), process all lines
+            for line in lines:
+                stripped = line.strip()
+                
+                # Skip completely empty lines at start and end
+                if not stripped:
+                    continue
+                    
+                # Skip lines that are just quotes or malformed
+                if stripped in ['"', '**', '']:
+                    continue
+                    
+                # Skip lines that look like orphaned values
+                if stripped.endswith('"') and ':' not in stripped and not stripped.startswith('-'):
+                    continue
+                
+                content_lines.append(line)
+            
+        # Fix YAML structure issues before returning
+        raw_yaml = '\n'.join(content_lines)
+        fixed_yaml = ContentFormatter._fix_yaml_structure(raw_yaml)
+        
+        # Return the cleaned content without adding frontmatter delimiters
+        return fixed_yaml        # Original logic for content that has frontmatter delimiters
         for line in lines:
             stripped = line.strip()
             
@@ -935,11 +979,15 @@ class ContentFormatter:
         
         # If we have content, add it to the document
         if content_lines:
+            # Apply YAML structure fixes to the content
+            yaml_content = '\n'.join(content_lines)
+            fixed_yaml = ContentFormatter._fix_yaml_structure(yaml_content)
+            
             # Ensure we have a document start
             if not any(line.strip() == '---' for line in fixed_lines):
-                fixed_lines = ['---'] + content_lines
+                fixed_lines = ['---'] + fixed_yaml.split('\n')
             else:
-                fixed_lines.extend(content_lines)
+                fixed_lines.extend(fixed_yaml.split('\n'))
         
         # Clean up the final structure
         result = '\n'.join(fixed_lines)
@@ -948,6 +996,91 @@ class ContentFormatter:
         result = re.sub(r'\n---\s*$', '', result)
         
         return result
+
+    @staticmethod
+    def _fix_yaml_structure(content: str) -> str:
+        """Fix major YAML structural issues.
+        
+        Args:
+            content: YAML content string
+            
+        Returns:
+            str: YAML content with fixed structure
+        """
+        lines = content.split('\n')
+        fixed_lines = []
+        in_openGraph = False
+        in_images = False
+        openGraph_indent = 0
+        
+        for i, line in enumerate(lines):
+            stripped = line.strip()
+            line_indent = len(line) - len(line.lstrip())
+            
+            # Track OpenGraph section
+            if stripped.startswith('openGraph:'):
+                in_openGraph = True
+                openGraph_indent = line_indent
+                fixed_lines.append(line)
+                continue
+            
+            # End of openGraph section - detect when we're back to root level
+            if in_openGraph and stripped and ':' in stripped and line_indent <= openGraph_indent and not stripped.startswith(('title:', 'description:', 'url:', 'siteName:', 'type:', 'locale:', 'images:', 'width:', 'height:', 'alt:')):
+                in_openGraph = False
+                in_images = False
+            
+            # Handle content within openGraph
+            if in_openGraph:
+                # Track images array within OpenGraph
+                if stripped.startswith('images:'):
+                    in_images = True
+                    fixed_lines.append(' ' * (openGraph_indent + 2) + 'images:')
+                    continue
+                
+                # Fix images array items
+                elif in_images and stripped.startswith('-'):
+                    # Check if this is a standalone image URL
+                    image_url = stripped.lstrip('-').strip()
+                    if image_url and ':' not in image_url:
+                        # Simple URL, keep as array item
+                        fixed_lines.append(' ' * (openGraph_indent + 4) + '- ' + image_url)
+                        continue
+                    else:
+                        # Complex image object - end images array and treat as properties
+                        in_images = False
+                
+                # Handle properties that should be nested under openGraph
+                elif stripped and ':' in stripped:
+                    prop_name = stripped.split(':')[0].strip()
+                    if prop_name in ['title', 'description', 'url', 'siteName', 'type', 'locale', 'width', 'height', 'alt']:
+                        # Ensure proper indentation under openGraph
+                        if line_indent <= openGraph_indent:
+                            fixed_lines.append(' ' * (openGraph_indent + 2) + stripped)
+                        else:
+                            fixed_lines.append(line)
+                        continue
+            
+            # Fix twitter section similar issues
+            if stripped.startswith('twitter:') and not stripped.endswith(':'):
+                # Ensure twitter section ends with colon
+                fixed_lines.append(line.replace('twitter:', 'twitter:'))
+                continue
+            
+            # Fix malformed list items that should be objects
+            if stripped.startswith('-') and ':' in stripped and not in_images:
+                # This might be a malformed list item that should be an object property
+                parts = stripped.split(':', 1)
+                if len(parts) == 2:
+                    key = parts[0].lstrip('-').strip()
+                    value = parts[1].strip()
+                    if value:  # Only convert if there's a value
+                        fixed_lines.append(' ' * line_indent + key + ': ' + value)
+                        continue
+            
+            # Default: keep the line as is
+            fixed_lines.append(line)
+        
+        return '\n'.join(fixed_lines)
 
     @staticmethod  
     def _escape_yaml_values(content: str) -> str:
@@ -979,8 +1112,14 @@ class ContentFormatter:
                         # Check for colons (main issue causing the error)
                         if ':' in value_part:
                             needs_quotes = True
+                        # Check for YAML scalar indicators that break parsing
+                        elif value_part.startswith('>') or value_part.startswith('|'):
+                            needs_quotes = True
+                        # Check for percentage values that start with > (like >95%)
+                        elif re.search(r'>\d+%', value_part):
+                            needs_quotes = True
                         # Check for other YAML special characters
-                        elif any(char in value_part for char in ['[', ']', '{', '}', '!', '&', '*', '#', '?', '|', '>', '<', '=', '%', '@', '`']):
+                        elif any(char in value_part for char in ['[', ']', '{', '}', '!', '&', '*', '#', '?', '<', '=', '%', '@', '`']):
                             needs_quotes = True
                         # Check for parentheses which often contain colons
                         elif '(' in value_part or ')' in value_part:

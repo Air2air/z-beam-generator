@@ -1,0 +1,28 @@
+name: "Properties Table Generator"
+description: "Generates technical properties tables from base component data - pass-through component"
+version: "1.0.0"
+
+template: |
+  Generate technical properties tables for {article_type} "{subject}" using existing component data.
+  
+  PASS-THROUGH COMPONENT:
+  This component uses existing technical data from frontmatter and other components to create structured tables.
+  No additional AI generation is required - data is processed automatically.
+
+  REQUIREMENTS:
+  - Use existing material properties and specifications
+  - Create properly formatted markdown tables
+  - Include relevant technical data with units
+  - Organize data into logical table sections
+
+  AVAILABLE BASE COMPONENT DATA:
+  Subject: {subject}
+  Article Type: {article_type}
+  Material Formula: {material_formula}
+  Material Symbol: {material_symbol}
+  Material Type: {material_type}
+  Category: {category}
+
+parameters:
+  max_tokens: 1000
+  temperature: 0.3

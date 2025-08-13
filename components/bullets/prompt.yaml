@@ -3,19 +3,36 @@ description: "Generates comprehensive bullet points using base component data an
 version: "4.0.0"
 
 template: |
-  Generate key technical content for bullet points about {subject} in laser cleaning.
+  Generate comprehensive bullet points for {article_type} "{subject}" in laser cleaning applications.
   
-  CONTENT-ONLY FOCUS:
-  You provide ONLY the technical content. All bullet formatting and structure will be handled by Python.
-  
-  CONTENT GUIDANCE:
-  - Focus on the most important technical information
-  - Include specific measurements and values when possible
-  - Emphasize practical applications and benefits
-  - Highlight unique properties of {subject}
-  - Include environmental and efficiency advantages
-  - Provide content for exactly {count} comprehensive points
-  
+  TEMPLATE-BASED OUTPUT:
+  Use the bullet template structure and create exactly {count} comprehensive bullet points.
+  Output bullets in markdown format using the bullet structure.
+
+  BULLET TEMPLATE STRUCTURE:
+  • [Category]: [Specific technical value with units]
+  • [Property type]: [Detailed specification or measurement]
+  • [Application area]: [Specific use case with parameters]
+  • [Performance metric]: [Quantifiable measurement with standards]
+  • [Processing parameter]: [Technical specification with conditions]
+
+  REQUIREMENTS:
+  - Generate exactly {count} comprehensive bullet points
+  - Include specific numerical values with proper units
+  - Cover key technical specifications and applications
+  - Use laser cleaning industry terminology
+  - Focus on measurable outcomes and properties
+  - Include material-specific advantages and characteristics
+
+  CONTENT AREAS TO COVER:
+  - Technical specifications (power, wavelength, spot size, fluence)
+  - Material properties (density, melting point, thermal conductivity)
+  - Key applications with specific industrial use cases
+  - Environmental benefits with quantifiable data
+  - Performance metrics and measurable outcomes
+  - Processing advantages and efficiency gains
+  - Safety characteristics and operational requirements
+
   AVAILABLE BASE COMPONENT DATA:
   Subject: {subject}
   Article Type: {article_type}
@@ -30,17 +47,6 @@ template: |
   Description: {formatted_description}
   Keywords: {formatted_keywords}
   Technical Specs: {formatted_technical_specs}
-  
-  CONTENT AREAS TO COVER:
-  - Technical specifications (power, wavelength, spot size)
-  - Key applications and use cases
-  - Environmental benefits and advantages
-  - Manufacturing advantages and efficiency
-  - Performance metrics and measurable outcomes
-  - Material properties and characteristics
-  
-  Focus on providing rich technical content that can be organized into bullet points.
-  All formatting, bullet structure, and organization will be handled automatically.
 
 # Condensed template used when frontmatter data is available
 condensed_template: |

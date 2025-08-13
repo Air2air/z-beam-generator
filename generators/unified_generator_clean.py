@@ -34,23 +34,13 @@ class UnifiedDocumentGenerator:
         """Generate complete document with single API call using updated component prompts."""
         
         try:
-            # Get material information
-            from components.base.services.material_service import MaterialFormulaService
-            formula_service = MaterialFormulaService()
-            material_formula = formula_service.get_formula(subject)
-            material_symbol = formula_service.get_symbol(subject)
-            material_type = formula_service.get_material_type(subject)
-            
-            # Build context with schema and material data
+            # Build context with schema
             context = {
                 "subject": subject,
                 "article_type": article_type,
                 "category": category,
                 "author_context": author_data.get("author_name", "Expert") + " from " + author_data.get("author_country", "International"),
-                "schema": schema,
-                "material_formula": material_formula or "N/A",
-                "material_symbol": material_symbol or "N/A", 
-                "material_type": material_type or "material"
+                "schema": schema
             }
             
             # Create unified prompt using updated component prompts
@@ -86,44 +76,41 @@ class UnifiedDocumentGenerator:
                 component_configs[name] = config
         
         # Build component requirements using actual prompt files
-        component_requirements = self._build_component_requirements(enabled_components, component_configs, context)
+        component_requirements = self._build_component_requirements(enabled_components, component_configs, subject, category, article_type)
         
         system_prompt = f"""Generate complete technical {article_type} documentation for {subject} as JSON.
 
-IMPORTANT: Create natural, technically accurate content that includes all required fields.
-Use the component requirements as structural guidance, not rigid templates.
+CRITICAL: Follow the updated template-based component requirements exactly as specified.
+Each component now includes explicit template structures that MUST be followed.
 
 ENABLED COMPONENTS: {', '.join(enabled_components)}
 
-COMPONENT REQUIREMENTS:
+UPDATED COMPONENT REQUIREMENTS:
 {component_requirements}
 
-MATERIAL INFORMATION:
-- Subject: {subject}
-- Article Type: {article_type}
-- Category: {category}
-- Author Perspective: {author_context}
+ARTICLE TYPE: {article_type}
+CATEGORY: {category}
+AUTHOR PERSPECTIVE: {author_context}
 
 OUTPUT FORMAT: Return a JSON object with each component as a separate key.
 Example structure:
 {{
-  "frontmatter": "your complete frontmatter content here",
-  "content": "your article content here",
-  "bullets": "your bullet points here",
-  "caption": "your image caption here",
-  "jsonld": "your structured data here",
-  "metatags": "your meta tags here",
+  "frontmatter": "your frontmatter content here",
+  "content": "your content here",
+  "bullets": "your bullets here",
+  "caption": "your caption here",
+  "jsonld": "your jsonld content here",
+  "metatags": "your metatags content here",
   "table": "your table content here",
   "tags": "your tags here",
   "propertiestable": "your properties table here"
 }}
 
 REQUIREMENTS:
-- Include all required structural fields for each component
-- Generate natural, technically accurate content
-- Use specific numerical values and real-world applications
-- Make content informative and professionally written
-- Ensure completeness while maintaining natural expression"""
+- Follow template structures exactly as specified in each component
+- Generate technically accurate content with specific values
+- Use proper formatting as specified in each component template
+- Include all required fields for each component"""
 
         user_prompt = f"""Generate complete documentation for {subject} ({category} {article_type}).
 Follow all template requirements exactly."""
@@ -131,16 +118,9 @@ Follow all template requirements exactly."""
         return f"{system_prompt}\n\nHuman: {user_prompt}\n\nAssistant:"
     
     def _build_component_requirements(self, enabled_components: list, component_configs: Dict[str, Any], 
-                                    context: Dict[str, Any]) -> str:
+                                    subject: str, category: str, article_type: str) -> str:
         """Build component requirements by reading actual updated component prompt files."""
         requirements = []
-        
-        subject = context["subject"]
-        category = context["category"] 
-        article_type = context["article_type"]
-        material_formula = context.get("material_formula", "N/A")
-        material_symbol = context.get("material_symbol", "N/A")
-        material_type = context.get("material_type", "material")
         
         for component in enabled_components:
             try:
@@ -150,14 +130,6 @@ Follow all template requirements exactly."""
                     with open(prompt_file, 'r') as f:
                         prompt_config = yaml.safe_load(f)
                     
-                    # Ensure prompt_config is not None and is a dict
-                    if prompt_config is None:
-                        logger.error(f"Error loading prompt for {component}: YAML file is empty or invalid")
-                        prompt_config = {}
-                    elif not isinstance(prompt_config, dict):
-                        logger.error(f"Error loading prompt for {component}: YAML content is not a dictionary")
-                        prompt_config = {}
-                    
                     template = prompt_config.get('template', '')
                     description = prompt_config.get('description', f'{component} component')
                     version = prompt_config.get('version', '1.0.0')
@@ -166,10 +138,6 @@ Follow all template requirements exactly."""
                     template = template.replace('{subject}', subject)
                     template = template.replace('{category}', category)
                     template = template.replace('{article_type}', article_type)
-                    template = template.replace('{material_formula}', material_formula)
-                    template = template.replace('{material_symbol}', material_symbol)
-                    template = template.replace('{material_type}', material_type)
-                    template = template.replace('{subject_slug}', subject.lower().replace(' ', '-'))
                     
                     # Add component-specific config values
                     if component == "bullets":

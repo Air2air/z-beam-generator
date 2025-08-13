@@ -3,17 +3,32 @@ description: "Generates comprehensive tables using base component data and mater
 version: "4.1.0"
 
 template: |
-  Generate technical content for tables about {subject} ({article_type}).
+  Generate comprehensive technical tables for {article_type} "{subject}" in laser cleaning applications.
   
-  CONTENT-ONLY FOCUS:
-  You provide ONLY the data content. All table formatting and structure will be handled by Python.
-  
-  CONTENT GUIDANCE:
-  - Focus on providing accurate technical data for tabular presentation
-  - Include specifications, properties, applications, or measurements
-  - Use proper technical terminology relevant to {subject}
-  - Provide content that would work well in different table types
-  
+  TEMPLATE-BASED OUTPUT:
+  Use the table template structure and create informative tables with accurate technical data.
+  Output tables in markdown format using the table structure.
+
+  TABLE TEMPLATE STRUCTURE:
+  | Property | Value | Unit | Application |
+  |----------|-------|------|-------------|
+  | [Material Property] | [Specific Value] | [Standard Unit] | [Industrial Application] |
+  | [Laser Parameter] | [Technical Value] | [Measurement Unit] | [Processing Application] |
+  | [Performance Metric] | [Measured Value] | [Standard Unit] | [Outcome Application] |
+
+  REQUIREMENTS:
+  - Create 2-3 comprehensive tables covering different aspects
+  - Include specific numerical values with standard units
+  - Cover material properties, laser parameters, and performance data
+  - Use proper technical terminology and industry standards
+  - Ensure all data is technically accurate and relevant
+  - Format tables using standard markdown syntax
+
+  TABLE TYPES TO INCLUDE:
+  1. Material Properties Table (density, melting point, thermal conductivity, etc.)
+  2. Laser Processing Parameters Table (wavelength, power, fluence, pulse duration, etc.)
+  3. Performance Metrics Table (cleaning rates, efficiency, environmental benefits, etc.)
+
   AVAILABLE BASE COMPONENT DATA:
   Subject: {subject}
   Article Type: {article_type}
@@ -26,18 +41,6 @@ template: |
   Technical Specs: {formatted_technical_specs}
   Environmental Impact: {formatted_environmental_impact}
   Regulatory Standards: {formatted_regulatory_standards}
-  
-  CONTENT AREAS TO PROVIDE:
-  - Technical specifications and parameters with values
-  - Material properties or composition details with measurements
-  - Performance metrics or test results with units
-  - Compatibility information with specific details
-  - Application data with quantifiable benefits
-  - Regulatory or standards information
-  
-  Focus on providing rich, structured data content that can be organized into 
-  multiple informative tables. All table formatting, structure, and presentation 
-  will be handled automatically.
 
 parameters:
   max_tokens: 2000

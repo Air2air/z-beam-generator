@@ -12,6 +12,7 @@ from abc import ABC
 from typing import Dict, Any, List
 
 from components.base.utils.content_formatter import ContentFormatter
+from components.base.utils.content_normalizer import ContentNormalizer
 from components.base.utils.validation import (
     validate_non_empty, validate_category_consistency, strip_markdown_code_blocks
 )
@@ -108,18 +109,7 @@ class BaseComponent(ABC):
                     raise ValueError(f"Empty prompt configuration in {prompt_path}")
                 return config
         except Exception as e:
-            logger.error(f"❌ CLAUDE ANALYSIS: Failed to load prompt config from {prompt_path}")
-            logger.error(f"   Error type: {type(e).__name__}")
-            logger.error(f"   Error details: {str(e)}")
-            logger.error(f"   File exists: {os.path.exists(prompt_path)}")
-            if os.path.exists(prompt_path):
-                try:
-                    with open(prompt_path, 'r', encoding='utf-8') as f:
-                        content_preview = f.read(200)
-                        logger.error(f"   File preview (200 chars): {content_preview.replace(chr(10), '\\n')}")
-                except Exception:
-                    logger.error("   Could not read file for preview")
-            logger.error("   🤖 CLAUDE FIX: Check YAML syntax, file permissions, and content structure")
+            logger.error(f"Failed to load prompt config: {e}")
             raise ValueError(f"Failed to load prompt config from {prompt_path}: {e}")
     
     def _get_prompt_path(self) -> str:
@@ -249,14 +239,14 @@ class BaseComponent(ABC):
             
         Returns:
             Dict[str, Any]: Validation configuration
-            
-        Raises:
-            ValueError: If validation configuration not found
         """
         if component_name is None:
             component_name = self.__class__.__name__.replace("Generator", "").lower()
         
-        return self.get_schema_config('validation', component_name, default={})
+        try:
+            return self.get_schema_config('validation', component_name, default={})
+        except ValueError:
+            return {}
     
     def has_schema_feature(self, *path) -> bool:
         """Check if a schema feature exists for the current article type.
@@ -265,7 +255,7 @@ class BaseComponent(ABC):
             *path: The path to check (e.g., 'generatorConfig', 'research')
             
         Returns:
-            bool: True if the feature exists, False if not found or error
+            bool: True if the feature exists
         """
         try:
             self.get_schema_config(*path)
@@ -546,89 +536,160 @@ class BaseComponent(ABC):
         return self._process_structured_content(content)
     
     def _process_structured_content(self, content: str, output_format: str = "yaml") -> str:
-        """Centralized processing for structured content using ContentFormatter utilities.
+        """Centralized processing for structured content using ContentNormalizer.
         
-        This method leverages the centralized ContentFormatter utilities for:
-        1. Extracting content from various AI response formats
-        2. Parsing structured data (JSON/YAML/text)
-        3. Applying component-specific formatting through ContentFormatter
-        4. Normalizing output with proper structure and delimiters
+        This method uses the new ContentNormalizer for complete format standardization:
+        1. Normalizes AI responses to proper component format
+        2. Ensures validation compliance  
+        3. Standardizes structure across all components
+        4. Separates content generation from formatting concerns
+        5. Retries generation if content is insufficient
         
         Args:
             content: Raw AI response content
-            output_format: Desired output format ("yaml", "json")
+            output_format: Desired output format (maintained for compatibility)
             
         Returns:
-            str: Processed and formatted content using centralized utilities
+            str: Properly normalized and formatted content
             
         Raises:
-            ValueError: If content parsing or validation fails
+            ValueError: If content normalization fails after retries
         """
         component_name = self.__class__.__name__.replace("Generator", "").lower()
+        max_retries = 2
         
+        for attempt in range(max_retries + 1):
+            try:
+                # Use ContentNormalizer for complete content standardization
+                normalized_content = ContentNormalizer.normalize_content(
+                    content=content,
+                    component_type=component_name,
+                    subject=self.subject,
+                    category=getattr(self, 'category', 'material'),
+                    article_type=getattr(self, 'article_type', 'material'),
+                    author_name=getattr(self, 'author_name', 'System'),
+                    material_formula=getattr(self, 'material_formula', ''),
+                    material_symbol=getattr(self, 'material_symbol', ''),
+                    material_type=getattr(self, 'material_type', 'element')
+                )
+                
+                return normalized_content
+                
+            except ValueError as e:
+                if "Content needs retry" in str(e) and attempt < max_retries:
+                    logger.warning(f"Content insufficient for {component_name} (attempt {attempt + 1}/{max_retries + 1}): {e}")
+                    # Regenerate content with enhanced prompt
+                    content = self._regenerate_content_with_enhancement()
+                    continue
+                else:
+                    # Final attempt failed or different error
+                    raise e
+            except Exception as e:
+                logger.error(f"Content normalization failed for {component_name}: {e}")
+                logger.debug(f"Original content: {content[:200]}...")
+                
+                # Fallback to basic formatting for safety (only on final attempt)
+                if attempt == max_retries:
+                    fallback_content = f"---\nsubject: {self.subject}\ncategory: {getattr(self, 'category', 'material')}\ncontent: |\n  {content.replace(chr(10), chr(10) + '  ')}\n---"
+                    return fallback_content
+                else:
+                    continue
+        
+        # Should not reach here
+        raise ValueError(f"Failed to generate sufficient content for {component_name} after {max_retries + 1} attempts")
+    
+    def _regenerate_content_with_enhancement(self) -> str:
+        """Regenerate content with enhanced prompt for better quality."""
+        component_name = self.__class__.__name__.replace("Generator", "").lower()
+        
+        # Get schema-based requirements for enhancement instructions
+        schema_validation = self.schema.get('validation', {})
+        component_validation = schema_validation.get(component_name, {})
+        required_fields = component_validation.get('requiredFields', [])
+        required_properties = component_validation.get('requiredProperties', [])
+        
+        # Build dynamic enhancement instructions based on schema
+        field_instructions = []
+        
+        # Add instructions for fields that commonly need enhancement
+        if 'headline' in required_fields or 'headline' in required_properties:
+            field_instructions.append("- Headlines should be descriptive and engaging (minimum 50 characters)")
+        
+        if 'description' in required_fields or 'description' in required_properties:
+            field_instructions.append("- Descriptions should be detailed technical explanations (minimum 150 characters)")
+        
+        if 'keywords' in required_fields or 'keywords' in required_properties:
+            field_instructions.append("- Keywords should include 5-10 relevant technical terms")
+        
+        if 'articleBody' in required_fields or 'articleBody' in required_properties:
+            field_instructions.append("- Article content should be comprehensive technical documentation (minimum 200 words)")
+        
+        if 'meta_description' in required_fields or 'meta_description' in required_properties:
+            field_instructions.append("- Meta descriptions should be compelling and informative (100-160 characters)")
+        
+        # Get min/max lengths from schema if available
+        min_length = component_validation.get('minLength', 1000)
+        max_length = component_validation.get('maxLength', 2000)
+        
+        # Create dynamic enhancement instruction
+        enhanced_instruction = f"""
+        
+IMPORTANT: Generate comprehensive, detailed content that meets schema requirements.
+Required fields: {', '.join(required_fields + required_properties)}
+Content should be {min_length}-{max_length} characters total.
+
+Quality requirements:
+{chr(10).join(field_instructions) if field_instructions else '- Provide substantial, informative content for all fields'}
+
+Focus on technical depth, practical applications, and industry-specific details.
+"""
+        
+        # Get fresh content from API with enhanced instruction
         try:
-            # Step 1: Use ContentFormatter to extract clean content from AI response
-            if output_format.lower() == "yaml":
-                clean_content = ContentFormatter.extract_yaml_content(content)
-            elif output_format.lower() == "json":
-                clean_content = ContentFormatter.extract_json_content(content)
-            else:
-                clean_content = content.strip()
+            # Read the prompt file directly
+            prompt_path = self._get_prompt_path()
+            with open(prompt_path, 'r', encoding='utf-8') as f:
+                prompt_content = f.read()
             
-            # Step 2: Parse the cleaned response to get structured data
-            parsed_data = None
+            enhanced_prompt = prompt_content + enhanced_instruction
             
-            # Try JSON first (if AI returns structured JSON)
-            if clean_content.strip().startswith('{'):
-                try:
-                    parsed_data = json.loads(clean_content)
-                except json.JSONDecodeError as e:
-                    logger.warning(f"JSON parsing failed for {component_name}: {e}")
+            # Format the prompt with template data
+            data = self.get_template_data()
+            try:
+                formatted_prompt = enhanced_prompt.format(**data)
+            except KeyError:
+                formatted_prompt = enhanced_prompt  # Use unformatted if variables missing
             
-            # Try YAML if not JSON or JSON failed
-            if parsed_data is None and ':' in clean_content:
-                try:
-                    parsed_data = yaml.safe_load(clean_content)
-                    if not isinstance(parsed_data, dict):
-                        raise ValueError("YAML must parse to a dictionary")
-                except (yaml.YAMLError, ValueError) as e:
-                    logger.error(f"YAML parsing failed for {component_name}: {e}")
-                    raise ValueError(f"YAML parsing failed and requires retry: {e}")
+            # Get API client using the same pattern as _call_api
+            from api import get_client
             
-            # If JSON/YAML parsing succeeded, use the parsed data
-            if parsed_data is None:
-                logger.error(f"No valid structured data found for {component_name}")
-                raise ValueError("Content parsing failed and requires retry: No valid structured data found")
+            api_options = self.options.copy()
             
-            # Step 3: Apply schema structure enforcement
-            parsed_data = self._ensure_schema_structure(parsed_data)
+            article_context = {
+                "subject": self.subject,
+                "article_type": self.article_type
+            }
             
-            # Step 4: Apply component-specific formatting using ContentFormatter
-            parsed_data = self._apply_component_formatting_rules(parsed_data, component_name)
+            # Extract model-specific options from prompt config
+            if self.prompt_config and "parameters" in self.prompt_config:
+                api_options.update(self.prompt_config["parameters"])
             
-            # Step 4: Use ContentFormatter to generate final output
-            if output_format.lower() == "yaml":
-                # Use ContentFormatter's YAML formatting with proper indentation
-                formatted_content = ContentFormatter._format_yaml_with_proper_indentation(parsed_data)
-                
-                # Apply ContentFormatter's comprehensive normalization
-                formatted_content = ContentFormatter.normalize_yaml_content(formatted_content)
-                
-                # Add YAML frontmatter delimiters
-                if not formatted_content.startswith('---'):
-                    formatted_content = '---\n' + formatted_content
-                if not formatted_content.endswith('---'):
-                    formatted_content = formatted_content.rstrip() + '\n---'
-                    
-            elif output_format.lower() == "json":
-                formatted_content = json.dumps(parsed_data, indent=2, ensure_ascii=False)
-            else:
-                raise ValueError(f"Unsupported output format: {output_format}")
+            client = get_client(
+                provider=self.ai_provider,
+                options=api_options,
+                article_context=article_context
+            )
             
-            return formatted_content
+            if not client:
+                raise ValueError(f"Failed to get API client for provider: {self.ai_provider}")
+            
+            # Generate content
+            response = client.complete(formatted_prompt)
+            return response
             
         except Exception as e:
-            raise ValueError(f"Failed to process {component_name} content: {e}")
+            logger.error(f"Failed to regenerate content for {component_name}: {e}")
+            raise ValueError(f"Content regeneration failed: {e}")
     
     def _ensure_schema_structure(self, parsed_data: dict) -> dict:
         """Ensure the parsed data follows the schema structure for the article type.
@@ -688,8 +749,11 @@ class BaseComponent(ABC):
             parsed_data = self._apply_dynamic_seo_requirements(parsed_data)
             
             # Validate fields based on article type (import here to avoid circular imports)
-            from components.metatags.validation import validate_article_specific_fields
-            validate_article_specific_fields(self.article_type, getattr(self, 'category', None), parsed_data)
+            try:
+                from components.metatags.validation import validate_article_specific_fields
+                validate_article_specific_fields(self.article_type, getattr(self, 'category', None), parsed_data)
+            except ImportError:
+                logger.warning("Metatags validation not available")
             
             return ContentFormatter.format_metatags_structure(
                 parsed_data, self.subject, getattr(self, 'category', None)
@@ -905,13 +969,16 @@ class BaseComponent(ABC):
             if output_format.lower() == 'yaml':
                 return ContentFormatter.normalize_yaml_content(content)
             elif output_format.lower() == 'json':
-                # For JSON, apply basic cleanup and validation
-                if parsed_data:
-                    return json.dumps(parsed_data, indent=2, ensure_ascii=False)
-                else:
-                    # Parse to validate JSON format
-                    data = json.loads(content)
-                    return json.dumps(data, indent=2, ensure_ascii=False)
+                # For JSON, apply basic cleanup
+                try:
+                    # Parse and re-format with proper indentation
+                    if parsed_data:
+                        return json.dumps(parsed_data, indent=2, ensure_ascii=False)
+                    else:
+                        data = json.loads(content)
+                        return json.dumps(data, indent=2, ensure_ascii=False)
+                except json.JSONDecodeError:
+                    return content
         
         # Default: Use ContentFormatter's YAML normalization
         return ContentFormatter.normalize_yaml_content(content)

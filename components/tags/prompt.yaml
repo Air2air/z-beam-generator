@@ -2,19 +2,31 @@ name: "Tags Generator"
 description: "Generates concise tags for laser cleaning articles using base component data, optimized for on-site navigation."
 version: "4.0.0"
 template: |
-  Generate navigation-focused content for {article_type} "{subject}" tags.
+  Generate navigation tags for {article_type} "{subject}" laser cleaning using the template structure.
   
-  CONTENT-ONLY FOCUS:
-  Python provides optimized keywords: {formatted_keywords}
-  You provide additional navigation and cross-reference content.
-  
-  ADDITIONAL CONTENT TO PROVIDE:
-  - Navigation categories relevant to {subject}
-  - Cross-reference topics for related materials  
-  - Application domains specific to laser cleaning
-  - Technology types relevant to {subject}
-  - Benefit categories that apply
-  
+  TEMPLATE-BASED OUTPUT:
+  Use the tags template structure below and create {min_tags} to {max_tags} relevant tags.
+  Output tags as a comma-separated list following the template pattern.
+
+  TAGS TEMPLATE STRUCTURE:
+  material-tag, [property-tag], [application-tag], laser-[process], {category}-material
+
+  TEMPLATE GUIDELINES:
+  - material-tag: Use {subject} or related material terms
+  - [property-tag]: Material properties (density, thermal, conductive, etc.)
+  - [application-tag]: Industrial applications (aerospace, automotive, manufacturing, etc.)
+  - laser-[process]: Laser processes (laser-ablation, laser-cleaning, laser-processing, etc.)
+  - {category}-material: Category-based tags ({category}-material, {category}-processing, etc.)
+
+  REQUIREMENTS:
+  - Generate between {min_tags} and {max_tags} tags total
+  - Output ONLY a comma-separated list (e.g., "tag1, tag2, tag3")
+  - Use single words when possible, hyphens only for compound concepts
+  - Maximum 2 words per tag
+  - Focus on laser cleaning applications and {subject}
+  - Include material, process, and application categories
+  - Ensure all tags are relevant to "{subject}" laser cleaning
+
   AVAILABLE BASE COMPONENT DATA:
   Subject: {subject}
   Article Type: {article_type}
@@ -22,28 +34,6 @@ template: |
   Material Symbol: {material_symbol}
   Material Type: {material_type}
   Category: {category}
-  
-  Focus on content that helps users navigate and discover related information.
-  Provide terms that would be useful for site organization and user discovery.
-  All formatting and tag structure will be handled by Python.
-  
-  TAG CATEGORIES TO INCLUDE:
-  - Material type (e.g., ceramic, metal)
-  - Application domain (e.g., semiconductor, aerospace)
-  - Technology (e.g., laser-ablation, nd-yag)
-  - Benefits (e.g., precision-cleaning, chemical-free)
-  
-  OUTPUT INSTRUCTIONS:
-  - Generate between {min_tags} and {max_tags} tags
-  - Output ONLY a comma-separated list of tags (e.g., "tag1, tag2, tag3")
-  - No numbering, no asterisks, no formatting, no explanations
-  - Be concise and focused on laser cleaning applications
-  - Each tag should be relevant to "{subject}"
-  - PREFER SINGLE WORDS when possible (e.g., "laser" instead of "laser-cleaning")
-  - Use hyphens ONLY for essential compound concepts (e.g., "nd-yag", "co2-laser")
-  - Maximum 2 words per tag - avoid long descriptive phrases
-  - Focus on core concepts: materials, processes, applications, technologies
-  - NOTE: Author tag will be automatically added by the system
 
 parameters:
   max_tokens: 500

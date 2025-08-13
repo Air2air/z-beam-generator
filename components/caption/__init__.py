@@ -1,5 +1,6 @@
 """Caption generation component for Z-Beam Generator."""
 
-from .generator import CaptionGenerator
+# Note: Legacy CaptionGenerator class has been removed in favor of unified generation
+# This package is maintained for backward compatibility but contains no active generators
 
-__all__ = ["CaptionGenerator"]
+__all__ = []

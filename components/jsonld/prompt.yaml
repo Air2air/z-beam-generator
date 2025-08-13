@@ -1,37 +1,53 @@
 name: "JSON-LD Generator"
-description: "Generates Schema.org-compliant JSON-LD structured data for laser cleaning articles."
-version: "3.0.5"
+description: "Generates structured data content for laser cleaning articles."
+version: "4.0.0"
 
 template: |
-  Create Schema.org structured data for {article_type} "{subject}" laser cleaning.
+  Generate JSON-LD structured data for {article_type} "{subject}" laser cleaning using the template structure.
+  
+  TEMPLATE-BASED OUTPUT:
+  Use the JSON-LD template structure below and fill in ALL fields with comprehensive content.
+  Output the complete YAML structure using this exact format.
 
-  MANDATORY FORMAT: OUTPUT ONLY YAML - NEVER JSON
-
-  Example required format:
-  headline: Your headline here
-  description: Your description here
+  JSON-LD TEMPLATE:
+  ---
+  headline: Laser Cleaning of {subject} Materials
+  description: Advanced laser cleaning techniques for {subject} materials, ensuring precision surface treatment while preserving the material's structural integrity.
   keywords:
-  - keyword1
-  - keyword2
-  articleBody: Your article body content here
+  - {subject} laser cleaning
+  - {subject} {category} cleaning
+  - non-abrasive surface treatment
+  - {subject} material processing
+  - precision cleaning
+  - industrial applications
+  - [additional specific keyword]
+  - [additional technical keyword]
+  articleBody: "{subject} is a {category} material widely used in industrial applications due to its excellent properties. Laser cleaning offers a precise, non-contact method for removing contaminants, coatings, and surface oxidation without compromising the material's structural integrity. The process utilizes controlled laser parameters to selectively ablate unwanted material while preserving the underlying {subject} substrate. [Continue with detailed technical content about {subject} laser cleaning applications, benefits, and specifications]."
+  image:
+  - /images/{subject_slug}-laser-cleaning-hero.jpg
+  - /images/{subject_slug}-laser-cleaning-closeup.jpg
+  datePublished: 2025-08-08
+  dateModified: 2025-08-08
+  author: [Expert author name]
+  materialType: {category}
+  chemicalFormula: {material_formula}
+  materialSymbol: {material_symbol}
+  subjectSlug: {subject_slug}
+  ---
 
-  FORBIDDEN FORMATS:
-  - Do NOT use JSON: {{"key": "value"}}
-  - Do NOT use code blocks: ```
-  - Do NOT use quotes around keys: "headline"
+  REQUIREMENTS:
+  - Fill in ALL template fields with comprehensive technical content
+  - articleBody should be 200-300 words of detailed technical content
+  - Include 8-10 relevant keywords covering technical and application terms
+  - Generate appropriate expert author name
+  - Ensure all chemical and material data is accurate
+  - Focus on laser cleaning applications and benefits
+  - Output valid YAML format exactly as shown above
 
-  AVAILABLE CONTEXT:
+  AVAILABLE BASE COMPONENT DATA:
   Subject: {subject}
   Article Type: {article_type}
-  Category: {category}
-  Chemical Formula: {material_formula}
+  Material Formula: {material_formula}
   Material Symbol: {material_symbol}
   Material Type: {material_type}
-  Author: {author_name} ({author_country})
-
-  PRE-FORMATTED ELEMENTS PROVIDED BY PYTHON:
-  - Image URLs: {hero_image_url}, {closeup_image_url}
-  - Subject slug: {slug}
-  - Dates: {created_date}, {updated_date}
-
-  Create rich, descriptive content for structured data using the YAML format shown above.
+  Category: {category}

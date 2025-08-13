@@ -5,17 +5,39 @@ version: "4.0.0"
 template: |
   Write comprehensive article content about {subject} for the laser cleaning industry.
   
-  CONTENT-ONLY FOCUS:
-  You provide ONLY the article content. All formatting and structure will be handled by Python.
-  
-  CONTENT GUIDANCE:
-  - Focus on technical accuracy and completeness
-  - Provide substantial detail about {subject}
-  - Include real-world examples and applications
-  - Explain technical concepts clearly and authoritatively
-  - Maintain a technical but accessible writing style
+  TEMPLATE-BASED CONTENT STRUCTURE:
+  Generate a well-structured technical article following this content template:
+
+  ## Introduction
+  [Technical overview of {subject} with material formula {material_formula} and key properties]
+
+  ## Material Properties and Characteristics
+  [Detailed section covering physical and chemical properties, composition, and material-specific characteristics]
+
+  ## Laser Cleaning Applications
+  [Comprehensive coverage of industrial applications with specific examples and parameters]
+
+  ## Technical Specifications and Parameters
+  [Detailed laser processing parameters, optimal settings, and technical requirements]
+
+  ## Environmental Benefits and Considerations
+  [Environmental advantages, efficiency gains, and sustainability aspects]
+
+  ## Industry Standards and Regulatory Aspects
+  [Relevant standards, regulatory requirements, and certification details]
+
+  ## Future Outlook and Developments
+  [Emerging trends, technological advances, and market developments]
+
+  CONTENT REQUIREMENTS:
   - Write between {min_words} and {max_words} words
-  
+  - Focus on technical accuracy and completeness
+  - Use specific numerical values and technical parameters
+  - Include real-world examples and applications
+  - Maintain a technical but accessible writing style
+  - Reference material properties and laser cleaning benefits
+  - Provide substantial detail in each section
+
   AVAILABLE BASE COMPONENT DATA:
   Subject: {subject}
   Article Type: {article_type}
@@ -31,18 +53,6 @@ template: |
   Keywords: {formatted_keywords}
   Technical Specs: {formatted_technical_specs}
   Environmental Impact: {formatted_environmental_impact}
-  
-  CONTENT AREAS TO COVER:
-  - Introduction and overview of {subject}
-  - Technical specifications and capabilities  
-  - Applications and use cases with specific examples
-  - Manufacturing and processing context
-  - Environmental benefits and considerations
-  - Industry standards and regulatory aspects
-  - Future outlook and developments
-  
-  Focus on providing rich, detailed content that leverages the technical information
-  from the frontmatter. All article structure and markdown formatting will be handled automatically.
 
 # Condensed template used when frontmatter data is available
 condensed_template: |

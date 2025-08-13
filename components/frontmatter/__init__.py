@@ -1,6 +1,6 @@
 """Frontmatter generator package for schema-driven content."""
 
-# Import main class for convenient access
-from .generator import FrontmatterGenerator
+# Note: Legacy FrontmatterGenerator class has been removed in favor of unified generation
+# This package is maintained for backward compatibility but contains no active generators
 
-__all__ = ["FrontmatterGenerator"]
+__all__ = []

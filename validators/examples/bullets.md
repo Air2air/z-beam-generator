@@ -1,0 +1,4 @@
+* **Optimal Wavelength for Laser Cleaning**: Copper (Cu) exhibits high reflectivity, making the 1064nm wavelength (common in pulsed fiber lasers) ideal for effective laser ablation while minimizing thermal damage.
+* **Non-Contact Precision Cleaning**: Laser cleaning removes surface contaminants (oxides, oils, coatings) from copper without mechanical contact, preserving substrate integrity and reducing material waste.
+* **Industrial Applications**: Widely used in electronics, aerospace, and automotive industries for restoring copper surfaces, enhancing conductivity, and preparing for soldering or bonding.
+* **Thermal Processing Considerations**: Requires precise pulse duration and energy control to avoid excessive heat buildup, ensuring efficient contamination removal without melting or warping the copper substrate.

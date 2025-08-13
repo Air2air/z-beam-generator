@@ -3,17 +3,48 @@ description: "Generates Next.js compatible meta tags using base component data"
 version: "4.0.0"
 
 template: |
-  Generate SEO metatags for {article_type} "{subject}" laser cleaning article.
-  
-  CONTENT-ONLY FOCUS:
-  You provide ONLY the meta content values. All YAML structure and formatting will be handled by Python.
-  
-  CONTENT GUIDANCE:
-  - Create compelling SEO-optimized content
-  - Focus on technical accuracy and search relevance
-  - Include specific material properties and applications
-  - Optimize for laser cleaning industry search terms
-  
+  You MUST generate metatags for {article_type} "{subject}" using the EXACT template structure below.
+
+  Replace ONLY the placeholder values in square brackets [like this] with SEO-optimized content.
+  Copy the structure EXACTLY - do not change the field names, organization, or YAML formatting.
+
+  OUTPUT THIS EXACT STRUCTURE WITH YOUR DATA:
+
+  ---
+  title: Laser Cleaning {subject} - Technical Guide for Optimal Processing
+  meta_tags:
+    - name: description
+      content: "Technical overview of {subject}, {material_formula}, for laser cleaning applications, including [density value] density, [wavelength] wavelength, and industrial applications."
+    - name: keywords
+      content: "{subject} [additional keywords], {subject} {category}, laser ablation, laser cleaning, non-contact cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters, thermal processing, surface restoration"
+    - name: author
+      content: "[Expert author name]"
+    - name: category
+      content: "{category}"
+    - name: robots
+      content: "index, follow"
+  opengraph:
+    - property: og:title
+      content: "Laser Cleaning {subject} - Technical Guide for Optimal Processing"
+    - property: og:description
+      content: "Comprehensive technical guide for laser cleaning {subject}"
+    - property: og:type
+      content: "article"
+    - property: og:image
+      content: "/images/{subject_slug}-laser-cleaning-hero.jpg"
+    - property: og:image:alt
+      content: "{subject} surface undergoing laser cleaning showing precise contamination removal"
+  ---
+
+  CRITICAL REQUIREMENTS:
+  - Copy the structure EXACTLY as shown above
+  - Replace ALL bracketed placeholders [like this] with real SEO content
+  - Keep all field names exactly as shown
+  - Meta description must be 150-160 characters and technically accurate
+  - Keywords should include 10-15 relevant laser cleaning terms
+  - Generate appropriate expert author name
+  - Use specific technical terminology for {subject}
+
   AVAILABLE BASE COMPONENT DATA:
   Subject: {subject}
   Article Type: {article_type}
@@ -21,27 +52,3 @@ template: |
   Material Symbol: {material_symbol}
   Material Type: {material_type}
   Category: {category}
-  
-  PRE-FORMATTED CONTEXT:
-  Title: {formatted_title}
-  Headline: {formatted_headline}
-  Description: {formatted_description}
-  Keywords: {formatted_keywords}
-  
-  CONTENT AREAS TO PROVIDE:
-  
-  1. meta_title: SEO-optimized page title (50-60 characters)
-  2. meta_description: Compelling description with technical details (150-160 characters)
-  3. meta_keywords: Comma-separated keyword list (10-15 relevant terms)
-  
-  TECHNICAL FOCUS AREAS:
-  - Laser parameters and wavelengths
-  - Material properties and composition
-  - Industrial applications and benefits
-  - Safety and precision aspects
-  - Industry-specific terminology
-  
-  OUTPUT FORMAT:
-  meta_title: Your optimized title here
-  meta_description: Your compelling description here  
-  meta_keywords: keyword1, keyword2, keyword3, etc.
