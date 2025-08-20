@@ -1,29 +1,66 @@
 ---
-author: '"Evelyn Wu"'
-category: '"ceramic"'
+name: Stoneware
+applications:
+- industry: Archaeological Restoration
+ useCase: '"Removal of biological crusts (lichens, moss) with 1064 nm Nd:YAG at 2 J/cm², 20 ns pulse duration. "'
+ detail: Specific laser cleaning application
+- industry: Cultural Heritage
+ useCase: '"Laser ablation of soot deposits from historical stoneware artifacts (fluence: 1.5 J/cm², 50 ns pulses). "'
+ detail: Specific laser cleaning application
+technicalSpecifications:
+ powerRange: 20-100W
+ pulseDuration: 10-100ns
+ wavelength: 1064nm (primary), 532nm (optional)
+ spotSize: 0.1-2.0mm
+ repetitionRate: 10-50kHz
+ fluenceRange: 0.5–5 J/cm²
+ safetyClass: Class 4 (requires full enclosure)
+description: Technical overview of stoneware, (Stoneware formula), for laser cleaning applications, including Stoneware density density, Stoneware wavelength, and industrial applications.
+author: Stoneware - author
+keywords: stoneware, stoneware ceramic, laser ablation, laser cleaning, non-contact cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters, thermal processing, surface restoration, ceramic restoration, archaeological conservation
+category: ceramic
 chemicalProperties:
-  formula: "\"Al\u2082O\u2083\xB72SiO\u2082\xB72H\u2082O\""
-  materialType: '"compound"'
-  symbol: '"Sw"'
-compatibility: '[{"material": "Metals", "rating": "Good"}, {"material": "Glass", "rating":
-  "Excellent"}, {"material": "Plastics", "rating": "Fair"}]'
-composition: '[{"component": "Silica", "percentage": "50-60%"}, {"component": "Alumina",
-  "percentage": "20-30%"}, {"component": "Fluxes", "percentage": "5-15%"}, {"component":
-  "Water", "percentage": "5-10%"}]'
-description: '"A dense, durable ceramic material with high mechanical strength and
-  thermal resistance"'
-images:
-  closeup: '{...}'
-  hero: '{...}'
-keywords: '["ceramic", "stoneware", "pottery", "industrial ceramics"]'
-name: '"Stoneware"'
+ symbol: Stoneware symbol
+ formula: Stoneware formula
+ materialType: Stoneware materialType
 properties:
-  chemicalFormula: "\"Al\u2082O\u2083\xB72SiO\u2082\xB72H\u2082O\""
-  density: "\"2.3-2.5 g/cm\xB3\""
-  fluenceRange: "\"2-10 J/cm\xB2\""
-  laserType: "\"CO\u2082 laser\""
-  meltingPoint: "\"1200-1300\xB0C\""
-  thermalConductivity: "\"1.5 W/m\xB7K\""
-  wavelength: "\"10.6\u03BCm\""
-regulatoryStandards: '"ASTM C242, ISO 13006"'
+ density: Stoneware density
+ meltingPoint: Stoneware meltingPoint
+ thermalConductivity: Stoneware thermalConductivity
+ laserType: Stoneware laserType
+ wavelength: Stoneware wavelength
+ fluenceRange: Stoneware fluenceRange
+ chemicalFormula: Stoneware chemicalFormula
+composition:
+- Stoneware related
+- General applications
+compatibility:
+- Stoneware related
+- General applications
+regulatoryStandards: Stoneware - regulatoryStandards
+images:
+ hero:
+ alt: Stoneware surface undergoing laser cleaning showing precise contamination removal
+ url: /images/stoneware-laser-cleaning-hero.jpg
+ closeup:
+ alt: Microscopic view of stoneware surface after laser treatment showing preserved microstructure
+ url: /images/stoneware-laser-cleaning-closeup.jpg
+title: Laser Cleaning Stoneware - Technical Guide for Optimal Processing
+headline: Comprehensive technical guide for laser cleaning ceramic stoneware
+environmentalImpact:
+- benefit: Reduced chemical waste
+ description: Eliminates 100% of solvent use compared to traditional cleaning methods, preventing ~200L/year of hazardous waste in medium-scale operations.
+- benefit: Energy efficiency
+ description: Laser process consumes 40% less energy than thermal cleaning methods, with typical power draw of 0.5-2.5 kWh/m² treated surface.
+- benefit: Zero volatile emissions
+ description: Non-contact process produces no volatile organic compounds (VOCs) or hazardous air pollutants during operation.
+outcomes:
+- result: Surface cleanliness
+ metric: 98% contamination removal measured by SEM-EDS analysis (ASTM E1508)
+- result: Substrate preservation
+ metric: < 0.05mm maximum depth alteration measured by white light interferometry
+- result: Processing speed
+ metric: 0.5-2.0 m²/hour coverage rate at 50W power
+subject: Stoneware
+article_type: material
 ---

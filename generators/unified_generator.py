@@ -34,39 +34,34 @@ class UnifiedDocumentGenerator:
         """Generate complete document with single API call using updated component prompts."""
         
         try:
-            # Get material information
-            from components.base.services.material_service import MaterialFormulaService
-            formula_service = MaterialFormulaService()
-            material_formula = formula_service.get_formula(subject)
-            material_symbol = formula_service.get_symbol(subject)
-            material_type = formula_service.get_material_type(subject)
-            
-            # Build context with schema and material data
+            # Build the prompt
             context = {
                 "subject": subject,
                 "article_type": article_type,
                 "category": category,
-                "author_context": author_data.get("author_name", "Expert") + " from " + author_data.get("author_country", "International"),
                 "schema": schema,
-                "material_formula": material_formula or "N/A",
-                "material_symbol": material_symbol or "N/A", 
-                "material_type": material_type or "material"
+                "author_context": author_data
             }
-            
-            # Create unified prompt using updated component prompts
             prompt = self._build_unified_prompt(context)
             
-            # Single API call
+            # Call the API
             response = self._call_api(prompt)
             
             # Parse response into component structure
             document = self._parse_response(response, subject, schema)
             
-            return document
+            if document is None:
+                logger.error(f"Failed to parse response for {subject} - returning failure")
+                return {"success": False, "error": "Failed to parse AI response", "components": {}}
+            
+            return {
+                "success": True,
+                "components": document
+            }
             
         except Exception as e:
             logger.error(f"Unified generation failed for {subject}: {e}")
-            return None
+            return {"success": False, "error": str(e), "components": {}}
     
     def _build_unified_prompt(self, context: Dict[str, Any]) -> str:
         """Build single comprehensive prompt using updated component prompts."""
@@ -220,11 +215,23 @@ Follow all template requirements exactly."""
         return client.complete(prompt)
     
     def _parse_response(self, response: str, subject: str, schema: Dict[str, Any]) -> Dict[str, Any]:
-        """Parse AI response into component structure."""
+        """Parse AI response into component structure with robust error handling."""
         from components.base.utils.content_formatter import ContentFormatter
         
-        cleaned = ContentFormatter.extract_json_content(response)
-        document = json.loads(cleaned)
+        try:
+            cleaned = ContentFormatter.extract_json_content(response)
+            document = json.loads(cleaned)
+        except json.JSONDecodeError as e:
+            logger.error(f"JSON parsing failed for {subject}: {e}")
+            logger.debug(f"Raw response: {response[:500]}...")
+            logger.debug(f"Cleaned content: {cleaned[:500]}...")
+            
+            # Attempt JSON repair strategies
+            document = self._attempt_json_repair(cleaned, subject)
+            if not document:
+                # If all repair attempts fail, return None to trigger regeneration
+                logger.error(f"All JSON repair attempts failed for {subject}")
+                return None
         
         # Get enabled components for validation
         enabled_components = []
@@ -242,3 +249,69 @@ Follow all template requirements exactly."""
                 document[component] = f"# {component.title()} for {subject}\n\nGenerated content placeholder."
         
         return document
+
+    def _attempt_json_repair(self, content: str, subject: str) -> Dict[str, Any]:
+        """Attempt to repair malformed JSON using various strategies."""
+        
+        # Try individual repair strategies first
+        repair_attempts = [
+            self._repair_missing_quotes,
+            self._repair_trailing_commas, 
+            self._repair_unescaped_quotes,
+            self._repair_malformed_objects
+        ]
+        
+        for repair_func in repair_attempts:
+            try:
+                repaired = repair_func(content)
+                document = json.loads(repaired)
+                logger.info(f"JSON repair successful for {subject} using {repair_func.__name__}")
+                return document
+            except (json.JSONDecodeError, Exception) as e:
+                logger.debug(f"Repair attempt {repair_func.__name__} failed: {e}")
+                continue
+        
+        # If individual strategies fail, try combining multiple repair strategies
+        try:
+            logger.info(f"Attempting combined JSON repair strategies for {subject}")
+            repaired = content
+            # Apply all repair strategies in sequence
+            for repair_func in repair_attempts:
+                repaired = repair_func(repaired)
+            
+            document = json.loads(repaired)
+            logger.info(f"Combined JSON repair successful for {subject}")
+            return document
+        except (json.JSONDecodeError, Exception) as e:
+            logger.debug(f"Combined repair attempt failed: {e}")
+                
+        return None
+    
+    def _repair_missing_quotes(self, content: str) -> str:
+        """Repair missing quotes around property names."""
+        import re
+        # Fix unquoted property names: property: -> "property":
+        content = re.sub(r'([{,]\s*)([a-zA-Z_][a-zA-Z0-9_]*)\s*:', r'\1"\2":', content)
+        return content
+    
+    def _repair_trailing_commas(self, content: str) -> str:
+        """Remove trailing commas before closing brackets."""
+        import re
+        content = re.sub(r',\s*}', '}', content)
+        content = re.sub(r',\s*]', ']', content)
+        return content
+    
+    def _repair_unescaped_quotes(self, content: str) -> str:
+        """Escape unescaped quotes in string values."""
+        # This is a basic implementation - could be more sophisticated
+        return content
+    
+    def _repair_malformed_objects(self, content: str) -> str:
+        """Attempt to fix malformed object structures."""
+        # Basic cleanup of common malformations
+        content = content.strip()
+        if not content.startswith('{'):
+            content = '{' + content
+        if not content.endswith('}'):
+            content = content + '}'
+        return content

@@ -649,9 +649,14 @@ def run_post_generation_validation(processed_subjects: list, skip_validation: bo
         print("  python3 -m validators.cli validate [subject_name]")
         return True  # Return True for failures due to exception
 
-def prompt_for_autonomous_fix_authorization(subject: str, failed_components: list) -> bool:
+def prompt_for_autonomous_fix_authorization(subject: str, failed_components: list, error_details: str = None) -> bool:
     """
     Request user authorization to apply autonomous fixes based on validation_fix_instructions.yaml.
+    
+    Args:
+        subject: The material subject that failed
+        failed_components: List of failed component names
+        error_details: Specific error message from generation failure
     
     Returns:
         bool: True if user authorizes fixes, False if declined
@@ -659,6 +664,11 @@ def prompt_for_autonomous_fix_authorization(subject: str, failed_components: lis
     print(f"\n🔧 Autonomous Fix Authorization")
     print(f"Generation errors detected for {subject}.")
     print(f"Failed components: {', '.join(failed_components)}")
+    
+    if error_details:
+        print(f"\n📋 Specific Error Details:")
+        print(f"  {error_details}")
+    
     print(f"\nAvailable fix strategies from validation_fix_instructions.yaml:")
     print(f"  • Schema compliance fixes (missing required fields)")
     print(f"  • Format structure fixes (YAML syntax, structure violations)")  
@@ -667,6 +677,8 @@ def prompt_for_autonomous_fix_authorization(subject: str, failed_components: lis
     print(f"  • Reference validators/examples/ for proper structure")
     print(f"  • Apply material-specific technical data")
     print(f"  • Preserve content creativity within proper format")
+    if error_details:
+        print(f"  • Target the specific error: {error_details[:100]}{'...' if len(error_details) > 100 else ''}")
     
     while True:
         response = input("\nApply autonomous fixes? (y/n): ").strip().lower()
@@ -687,6 +699,77 @@ def prompt_for_validation_fixes() -> bool:
         print("🛑 User declined validation fixes. Stopping entire generation process.")
         sys.exit(0)
     return response in ['y', 'yes']
+
+def analyze_generation_error_for_claude(error_details: str, subject: str, failed_components: list) -> dict:
+    """
+    Analyze generation error details to provide specific guidance for Claude's autonomous fixes.
+    This function extracts key information from error messages to guide the fixing process.
+    
+    Args:
+        error_details: The specific error message from generation failure
+        subject: The material subject that failed
+        failed_components: List of component names that failed
+    
+    Returns:
+        dict: Structured error analysis for Claude to use during fixing
+    """
+    analysis = {
+        "error_type": "unknown",
+        "specific_issue": error_details,
+        "suggested_fix_strategy": "general",
+        "priority_components": failed_components,
+        "validation_guidance": "",
+        "claude_instructions": ""
+    }
+    
+    if not error_details:
+        return analysis
+    
+    error_lower = error_details.lower()
+    
+    # Analyze common error patterns
+    if "expecting property name enclosed in double quotes" in error_lower:
+        analysis.update({
+            "error_type": "json_syntax_error", 
+            "suggested_fix_strategy": "format_structure_fix",
+            "validation_guidance": "JSON parsing failed - likely malformed JSON structure in response",
+            "claude_instructions": "Focus on JSON/YAML syntax errors. Check for missing quotes, trailing commas, malformed objects. Reference validation_fix_instructions.yaml format_structure_fix section."
+        })
+    elif "yaml" in error_lower and ("syntax" in error_lower or "parsing" in error_lower):
+        analysis.update({
+            "error_type": "yaml_syntax_error",
+            "suggested_fix_strategy": "format_structure_fix", 
+            "validation_guidance": "YAML parsing failed - indentation or syntax issues",
+            "claude_instructions": "Apply YAML syntax fixes per validation_fix_instructions.yaml. Check indentation, colons, quotes, array syntax."
+        })
+    elif "missing" in error_lower and "field" in error_lower:
+        analysis.update({
+            "error_type": "schema_missing_fields",
+            "suggested_fix_strategy": "schema_compliance_fix",
+            "validation_guidance": "Required schema fields are missing",
+            "claude_instructions": "Use validators/examples/{component}.md to identify and add missing required fields with material-specific data."
+        })
+    elif "schema validation failed" in error_lower:
+        analysis.update({
+            "error_type": "schema_validation",
+            "suggested_fix_strategy": "schema_compliance_fix",
+            "validation_guidance": "Content doesn't match expected schema structure",
+            "claude_instructions": "Compare against validators/examples/ and add missing schema fields following validation_fix_instructions.yaml schema_compliance_fix approach."
+        })
+    elif "placeholder" in error_lower or "tbd" in error_lower:
+        analysis.update({
+            "error_type": "placeholder_content",
+            "suggested_fix_strategy": "content_quality_fix",
+            "validation_guidance": "Placeholder content detected that needs replacement",
+            "claude_instructions": "Replace TBD, placeholder, and bracket content with realistic technical data per validation_fix_instructions.yaml content_quality_fix."
+        })
+    else:
+        # General error - provide comprehensive guidance
+        analysis.update({
+            "claude_instructions": f"Analyze the specific error: '{error_details}'. Apply validation_fix_instructions.yaml decision_framework: 1) Diagnose error type, 2) Identify root cause, 3) Select appropriate fix strategy (schema/format/content)."
+        })
+    
+    return analysis
 
 def attempt_targeted_autonomous_fixes(subject: str, failed_components: list, category: str = None, article_type: str = None) -> bool:
     """
@@ -1015,7 +1098,9 @@ def run_enhanced_material_processing():
         print(f"🔧 Generating {len(enabled_components)} components with immediate validation...")
         
         # Generate all components at once using unified generator
-        print(f"\n� Generating document with {len(enabled_components)} components...")
+        print(f"\n🚀 Generating document with {len(enabled_components)} components...")
+        
+        generation_error_details = None
         
         try:
             # Generate complete document using unified generator
@@ -1078,18 +1163,20 @@ def run_enhanced_material_processing():
                 print(f"    ❌ Document generation failed")
                 # If complete document generation fails, mark all components as failed
                 failed_components.extend(enabled_components)
+                generation_error_details = "Document generation failed - no valid result returned"
                 
         except Exception as e:
             print(f"    ❌ Error generating document: {e}")
             # If there's an exception, mark all components as failed
             failed_components.extend(enabled_components)
+            generation_error_details = f"Generation exception: {str(e)}"
         
         # Check if material needs intervention and attempt autonomous fixing
         if failed_components:
             print(f"⚠️ {subject} has {len(failed_components)} failed components: {', '.join(failed_components)}")
             
             # Request authorization before applying autonomous fixes
-            authorized = prompt_for_autonomous_fix_authorization(subject, failed_components)
+            authorized = prompt_for_autonomous_fix_authorization(subject, failed_components, generation_error_details)
             
             if not authorized:
                 # User declined autonomous fixes - skip this material
@@ -1104,6 +1191,8 @@ def run_enhanced_material_processing():
                 print(f"    🔧 Attempting to fix {failed_component}...")
                 logger.info(f"AUTONOMOUS_FIX_START: {failed_component} for {subject}")
                 
+                # Pass error details to the fixing process (for future enhancement)
+                # error_analysis = analyze_generation_error_for_claude(generation_error_details, subject, [failed_component])
                 fix_success = validator.validate_and_fix_component_immediately(
                     subject=subject,
                     component=failed_component,
