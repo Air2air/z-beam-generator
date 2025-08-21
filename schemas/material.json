@@ -224,6 +224,90 @@
           }
         },
         "description": "Image descriptions for article visuals"
+      },
+      "applications": {
+        "type": "array",
+        "required": true,
+        "items": {
+          "type": "object",
+          "properties": {
+            "industry": {
+              "type": "string",
+              "required": true,
+              "description": "Industry or sector name",
+              "example": "Aerospace Manufacturing"
+            },
+            "useCase": {
+              "type": "string",
+              "required": true,
+              "description": "Detailed technical use case description",
+              "example": "Removal of thermal barrier coatings with specific laser parameters"
+            },
+            "detail": {
+              "type": "string",
+              "required": true,
+              "description": "Additional technical context and specifications",
+              "example": "Processing speeds and quality standards achieved"
+            }
+          }
+        },
+        "description": "Industrial applications and use cases"
+      },
+      "title": {
+        "type": "string",
+        "required": true,
+        "description": "SEO-optimized article title",
+        "example": "Advanced Laser Cleaning Solutions for Aluminum Surfaces"
+      },
+      "headline": {
+        "type": "string",
+        "required": true,
+        "description": "Compelling article headline",
+        "example": "Precision Oxide Removal and Surface Preparation Using Fiber Laser Technology"
+      },
+      "environmentalImpact": {
+        "type": "array",
+        "required": true,
+        "items": {
+          "type": "object",
+          "properties": {
+            "benefit": {
+              "type": "string",
+              "required": true,
+              "description": "Environmental benefit category",
+              "example": "Zero chemical waste"
+            },
+            "description": {
+              "type": "string",
+              "required": true,
+              "description": "Detailed quantifiable description",
+              "example": "Eliminates use of chemical solvents, reducing hazardous waste by 100%"
+            }
+          }
+        },
+        "description": "Environmental benefits and sustainability aspects"
+      },
+      "outcomes": {
+        "type": "array",
+        "required": true,
+        "items": {
+          "type": "object",
+          "properties": {
+            "result": {
+              "type": "string",
+              "required": true,
+              "description": "Measurable outcome or result",
+              "example": "Surface cleanliness"
+            },
+            "metric": {
+              "type": "string",
+              "required": true,
+              "description": "Specific measurement with standards",
+              "example": "Achieves SAE AMS 2700 Level A with contamination below 10 mg/m²"
+            }
+          }
+        },
+        "description": "Measurable outcomes and performance metrics"
       }
     },
     "technicalSpecifications": {
@@ -271,7 +355,13 @@
           "composition",
           "compatibility",
           "regulatoryStandards",
-          "images"
+          "images",
+          "applications",
+          "technicalSpecifications",
+          "title",
+          "headline",
+          "environmentalImpact",
+          "outcomes"
         ]
       }
     }
