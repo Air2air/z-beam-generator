@@ -19,14 +19,17 @@ USAGE:
     python3 run.py --yaml                            # Validate and fix YAML errors
     python3 run.py --test-api                        # Test API connection
 
+python3 -m tests
+
+
+
+
 DYNAMIC GENERATION:
 - Schema-driven field mapping from JSON schemas
 - Component-specific prompt templates
 - Dynamic content adaptation based on material properties
 - Automatic validation against schema requirements
 - Real-time error detection and correction
-
-
 
 Examples:
   python3 -m tests              # Run all tests including API response validation

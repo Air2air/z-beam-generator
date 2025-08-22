@@ -1,28 +1,41 @@
 name: "Properties Table Generator"
-description: "Generates technical properties tables from base component data - pass-through component"
-version: "1.0.0"
+description: "Generates a standardized technical properties table from frontmatter data"
+version: "1.1.0"
 
 template: |
-  Generate technical properties tables for {article_type} "{subject}" using existing component data.
+  Generate a simple technical properties table for {subject} in the exact format shown below.
   
-  PASS-THROUGH COMPONENT:
-  This component uses existing technical data from frontmatter and other components to create structured tables.
-  No additional AI generation is required - data is processed automatically.
-
-  REQUIREMENTS:
-  - Use existing material properties and specifications
-  - Create properly formatted markdown tables
-  - Include relevant technical data with units
-  - Organize data into logical table sections
-
-  AVAILABLE BASE COMPONENT DATA:
-  Subject: {subject}
-  Article Type: {article_type}
-  Material Formula: {material_formula}
-  Material Symbol: {material_symbol}
-  Material Type: {material_type}
-  Category: {category}
+  REQUIRED FORMAT (exactly 2 columns):
+  | Property | Value |
+  |----------|-------|
+  | Chemical Formula | [formula] |
+  | Material Symbol | [symbol] |
+  | Category | [category] |
+  | Material Type | [material_type] |
+  | Tensile Strength | [if available] |
+  | Thermal Conductivity | [thermal_conductivity] |
+  
+  EXTRACTION INSTRUCTIONS:
+  - Use frontmatter data when available
+  - Extract Chemical Formula from: chemicalProperties.formula or properties.chemicalFormula
+  - Extract Material Symbol from: chemicalProperties.symbol
+  - Extract Category from: category field
+  - Extract Material Type from: chemicalProperties.materialType
+  - Extract Thermal Conductivity from: properties.thermalConductivity
+  - For Tensile Strength: look in properties or technicalSpecifications, or skip if not available
+  
+  FALLBACK BEHAVIOR:
+  If frontmatter is not available, generate basic properties based on material knowledge:
+  - Research typical values for {subject}
+  - Use standard chemical formulas and symbols
+  - Include only the 6 properties listed above
+  
+  IMPORTANT:
+  - Generate ONLY the table, no additional text
+  - Use exact 2-column format: | Property | Value |
+  - Keep values concise and technical
+  - Include units where appropriate
 
 parameters:
-  max_tokens: 1000
-  temperature: 0.3
+  max_tokens: 500
+  temperature: 0.2

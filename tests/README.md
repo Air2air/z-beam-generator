@@ -4,68 +4,64 @@ This directory contains the comprehensive test suite for the Z-Beam generator sy
 
 ## Test Organization
 
-### Core Tests (`--test` - default)
+### Current Test Structure (Simplified)
 - **Dynamic System Tests** (`test_dynamic_system.py`): Core system functionality and schema loading
-- **Comprehensive API Tests** (`test_api_comprehensive.py`): Full API provider testing with real API calls
+- **API Response Tests** (`test_api_comprehensive.py`): Basic API response validation with DeepSeek and Grok
 - **Component Configuration Tests** (`test_component_config.py`): Component routing and configuration validation
-- **Integration Tests** (`test_integration.py`): End-to-end workflow testing with real API integration
-
-### Performance Tests (`--performance`)
-- **Performance Monitoring** (`test_performance.py`): API response times, memory usage, and concurrent testing
-
-### Legacy Tests
+- **Integration Tests** (`test_integration.py`): End-to-end workflow testing with API response validation
 - **Legacy API Provider Tests** (`test_api_providers.py`): Original API provider tests (maintained for compatibility)
+
+### Removed (Performance Tests)
+Performance tests have been removed to simplify the test suite and focus on essential functionality validation.
 
 ## Usage
 
 ### Running Tests
 
 ```bash
-# Run core functionality tests (default)
+# Run all tests (simplified - only one option now)
 python3 -m tests
 
-# Run core functionality tests (explicit)
-python3 -m tests --test
+# Run with verbose output
+python3 -m tests --verbose
 
-# Run performance tests only
-python3 -m tests --performance
+# Alternative: Use wrapper scripts
+python3 test.py              # From project root
+python3 tests/test_all.py    # From tests directory
 
-# Run all tests (core + performance)
-python3 -m tests --all
-
-# Alternative: Use the wrapper script
-python3 test.py --test
-python3 test.py --performance
-python3 test.py --all
+# Run individual test files directly
+python3 tests/test_dynamic_system.py
+python3 tests/test_api_comprehensive.py
+python3 tests/test_component_config.py
+python3 tests/test_integration.py
 ```
 
 ### Command Line Options
 
-- `--test`: Run core functionality tests (default)
-- `--performance`: Run performance tests only
-- `--all`: Run complete test suite (core + performance)
+- `--verbose`: Enable verbose output
 - `--help`: Show help message
+
+**Note**: Performance test options (`--performance`, `--all`) have been removed to simplify the test suite.
 
 ## Test Categories
 
-### Core Tests
-These tests validate the fundamental functionality of the Z-Beam system:
+### Core Tests (All Tests)
+These tests validate the essential functionality of the Z-Beam system:
 
 - **System Initialization**: Loading schemas, materials, and components
-- **API Integration**: Real API testing with DeepSeek and Grok providers
+- **API Response Validation**: Basic API testing with DeepSeek and Grok providers
 - **Component Routing**: Proper routing of components to API providers
 - **Configuration Management**: Component enable/disable and provider assignment
-- **End-to-End Workflows**: Complete generation workflows with real API calls
+- **End-to-End Workflows**: Complete generation workflows with API response validation
 - **Error Handling**: Graceful handling of API failures and invalid inputs
 
-### Performance Tests
-These tests monitor system performance and resource usage:
-
-- **API Response Times**: Benchmark response times across providers
-- **Token Generation Rates**: Measure tokens per second performance
-- **Memory Usage**: Monitor memory consumption during operations
-- **Concurrent Performance**: Test system behavior under concurrent load
-- **Scalability**: Validate performance characteristics at scale
+### Removed (Performance Tests)
+Performance tests were removed to simplify the test suite:
+- ~~API Response Times~~
+- ~~Token Generation Rates~~
+- ~~Memory Usage Monitoring~~
+- ~~Concurrent Performance Testing~~
+- ~~Scalability Testing~~
 
 ## Test Environment
 

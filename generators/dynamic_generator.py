@@ -239,6 +239,39 @@ class DynamicGenerator:
         """Set author information for content generation."""
         self.author_info = author_info
     
+    def _extract_frontmatter_data(self, material_name: str) -> Optional[Dict]:
+        """Extract frontmatter data from existing frontmatter file"""
+        try:
+            # Create proper file path for frontmatter
+            material_slug = material_name.lower().replace(' ', '-').replace('_', '-')
+            frontmatter_path = Path("content/components/frontmatter") / f"{material_slug}-laser-cleaning.md"
+            
+            if not frontmatter_path.exists():
+                logger.warning(f"Frontmatter file not found: {frontmatter_path}")
+                return None
+            
+            with open(frontmatter_path, 'r', encoding='utf-8') as f:
+                content = f.read()
+            
+            # Handle files wrapped in code blocks
+            if content.startswith('```yaml\n'):
+                # Remove the code block wrapper
+                content = content[8:]  # Remove ```yaml\n
+                if content.endswith('\n```'):
+                    content = content[:-4]  # Remove \n```
+            
+            # Extract YAML frontmatter
+            if content.startswith('---'):
+                parts = content.split('---', 2)
+                if len(parts) >= 2:
+                    frontmatter_yaml = parts[1].strip()
+                    return yaml.safe_load(frontmatter_yaml)
+            
+            return None
+        except Exception as e:
+            logger.warning(f"Error extracting frontmatter for {material_name}: {e}")
+            return None
+
     def generate_component(self, material_name: str, component_type: str, 
                           schema_fields: Optional[Dict] = None) -> ComponentResult:
         """Generate a single component with dynamic schema-driven content"""
@@ -268,9 +301,14 @@ class DynamicGenerator:
             article_type = material.get('article_type', 'material')
             dynamic_fields = self.schema_manager.get_dynamic_fields(article_type)
             
-            # Build dynamic prompt with schema fields
+            # Extract frontmatter data for propertiestable component
+            frontmatter_data = None
+            if component_type == 'propertiestable':
+                frontmatter_data = self._extract_frontmatter_data(material_name)
+            
+            # Build dynamic prompt with schema fields and frontmatter data
             prompt = self._build_dynamic_prompt(
-                prompt_config, material, dynamic_fields, schema_fields
+                prompt_config, material, dynamic_fields, schema_fields, frontmatter_data
             )
             
             # Generate content using standardized API client
@@ -324,7 +362,8 @@ class DynamicGenerator:
             )
     
     def _build_dynamic_prompt(self, prompt_config: Dict, material: Dict, 
-                             dynamic_fields: Dict, schema_fields: Optional[Dict] = None) -> str:
+                             dynamic_fields: Dict, schema_fields: Optional[Dict] = None,
+                             frontmatter_data: Optional[Dict] = None) -> str:
         """Build a dynamic prompt incorporating schema fields and template variables"""
         
         # Start with base prompt - use 'template' from YAML files
@@ -372,6 +411,36 @@ class DynamicGenerator:
         prompt = base_prompt
         for var, value in template_vars.items():
             prompt = prompt.replace(f'{{{var}}}', str(value))
+        
+        # Add frontmatter data for propertiestable component
+        if frontmatter_data:
+            prompt += "\n\nFRONTMATTER DATA AVAILABLE:\n"
+            
+            # Chemical properties
+            chem_props = frontmatter_data.get('chemicalProperties', {})
+            if chem_props:
+                prompt += f"Chemical Formula: {chem_props.get('formula', 'N/A')}\n"
+                prompt += f"Material Symbol: {chem_props.get('symbol', 'N/A')}\n"
+                prompt += f"Material Type: {chem_props.get('materialType', 'N/A')}\n"
+            
+            # Physical properties
+            properties = frontmatter_data.get('properties', {})
+            if properties:
+                prompt += f"Density: {properties.get('density', 'N/A')}\n"
+                prompt += f"Thermal Conductivity: {properties.get('thermalConductivity', 'N/A')}\n"
+                prompt += f"Melting Point: {properties.get('meltingPoint', 'N/A')}\n"
+            
+            # Category from frontmatter
+            fm_category = frontmatter_data.get('category', '')
+            if fm_category:
+                prompt += f"Category: {fm_category.title()}\n"
+            
+            # Technical specifications for tensile strength
+            tech_specs = frontmatter_data.get('technicalSpecifications', {})
+            if tech_specs and hasattr(tech_specs, 'get'):
+                tensile = tech_specs.get('tensileStrength', '')
+                if tensile:
+                    prompt += f"Tensile Strength: {tensile}\n"
         
         # Add dynamic schema field instructions if available
         if dynamic_fields:
