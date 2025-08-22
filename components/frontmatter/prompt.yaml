@@ -25,7 +25,7 @@ template: |
     fluenceRange: [range like "0.5–5 J/cm²"]
     safetyClass: [class like "Class 4 (requires full enclosure)"]
   description: Technical overview of {subject}, {material_formula}, for laser cleaning applications, including [density], [wavelength], and industrial applications.
-  author: [Expert Author Name]
+  author: {author_name}
   keywords: {subject_lowercase}, {subject_lowercase} {category}, laser ablation, laser cleaning, non-contact cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters, thermal processing, surface restoration
   category: {category}
   chemicalProperties:
@@ -79,7 +79,7 @@ template: |
   - Use proper YAML formatting with correct indentation
   - Include specific numerical values with units
   - Make content specific to {subject} material
-  - Use realistic expert author names
+  - Use the provided author name: {author_name}
   - Include proper technical specifications for laser cleaning
 
 generation_parameters:

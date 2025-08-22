@@ -17,51 +17,71 @@
         "required": false
       },
       "image": { "type": "string", "required": false },
-      "country": { "type": "string", "required": false },
-      "url": { "type": "string", "required": false }
+      "country": { "type": "string", "required": false }
     }
   },
   "authorProfile": {
-    "generatorConfig": {
-      "jsonld": {
-        "schemaType": "Person"
+    "type": "object",
+    "required": true,
+    "properties": {
+      "generatorConfig": {
+        "type": "object",
+        "required": true,
+        "properties": {
+          "jsonld": {
+            "type": "object",
+            "required": true,
+            "properties": {
+              "schemaType": { "type": "string", "required": true }
+            }
+          },
+          "contentGeneration": {
+            "type": "object",
+            "required": false,
+            "properties": {
+              "dynamicSectionsFromFrontmatter": { "type": "boolean", "required": false },
+              "fieldContentMapping": {
+                "type": "object",
+                "required": false,
+                "properties": {
+                  "biography": { "type": "string", "required": false },
+                  "expertise": { "type": "string", "required": false },
+                  "publications": { "type": "string", "required": false },
+                  "affiliations": { "type": "string", "required": false },
+                  "achievements": { "type": "string", "required": false }
+                }
+              },
+              "introductionPrompt": { "type": "string", "required": false }
+            }
+          }
+        }
       },
-      "contentGeneration": {
-        "dynamicSectionsFromFrontmatter": true,
-        "fieldContentMapping": {
-          "biography": "Provide a detailed professional biography of {subject}, highlighting their expertise in laser technology",
-          "expertise": "Detail the specific areas of expertise and specialization of {subject} in the field of laser cleaning",
-          "publications": "Summarize the key publications and research contributions of {subject} to laser technology",
-          "affiliations": "Describe the professional affiliations and positions held by {subject} in the industry",
-          "achievements": "Highlight the notable achievements and contributions of {subject} to laser cleaning technology"
-        },
-        "introductionPrompt": "Present a comprehensive professional profile of {subject} as an expert in laser cleaning technology"
-      }
-    },
-    "profile": {
-      "biography": {
-        "type": "string",
-        "required": true
+      "profile": {
+        "type": "object",
+        "required": true,
+        "properties": {
+          "biography": { "type": "string", "required": true },
+          "expertise": { "type": "string", "required": true },
+          "publications": { "type": "string", "required": false },
+          "affiliations": { "type": "string", "required": false }
+        }
       },
-      "expertise": {
-        "type": "string",
-        "required": true
-      },
-      "publications": {
-        "type": "string",
-        "required": false
-      },
-      "affiliations": {
-        "type": "string",
-        "required": false
-      }
-    },
-    "validation": {
-      "frontmatter": {
-        "requiredFields": [
-          "name", "description", "website", "keywords", 
-          "biography", "expertise"
-        ]
+      "validation": {
+        "type": "object",
+        "required": false,
+        "properties": {
+          "frontmatter": {
+            "type": "object",
+            "required": false,
+            "properties": {
+              "requiredFields": {
+                "type": "array",
+                "items": { "type": "string" },
+                "required": false
+              }
+            }
+          }
+        }
       }
     }
   }

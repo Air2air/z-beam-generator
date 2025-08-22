@@ -200,6 +200,7 @@ class DynamicGenerator:
         self.component_manager = ComponentManager()
         self.material_loader = MaterialLoader()
         self.api_client = api_client
+        self.author_info = None  # Store author information
         
         # Import and initialize API client if not provided
         if not self.api_client and not use_mock:
@@ -233,6 +234,10 @@ class DynamicGenerator:
     def get_available_materials(self) -> List[str]:
         """Get list of available materials"""
         return self.material_loader.get_all_materials()
+    
+    def set_author(self, author_info: Dict):
+        """Set author information for content generation."""
+        self.author_info = author_info
     
     def generate_component(self, material_name: str, component_type: str, 
                           schema_fields: Optional[Dict] = None) -> ComponentResult:
@@ -350,6 +355,18 @@ class DynamicGenerator:
             'formatted_environmental_impact': f"Environmental benefits of {material_name} laser processing",
             'formatted_regulatory_standards': f"Industry standards for {material_name} treatment"
         }
+        
+        # Add author information if available
+        if self.author_info:
+            template_vars['country'] = self.author_info.get('country', 'International')
+            template_vars['author_name'] = self.author_info.get('name', 'Expert Author')
+            template_vars['author_title'] = self.author_info.get('title', 'Technical Expert')
+            template_vars['author_expertise'] = self.author_info.get('expertise', 'Laser Processing')
+        else:
+            template_vars['country'] = 'International'
+            template_vars['author_name'] = 'Expert Author'
+            template_vars['author_title'] = 'Technical Expert'
+            template_vars['author_expertise'] = 'Laser Processing'
         
         # Replace all template variables in the prompt
         prompt = base_prompt

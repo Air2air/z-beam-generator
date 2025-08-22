@@ -213,6 +213,35 @@ materials:
 ### Schema Updates
 Update schemas in `schemas/` directory to modify validation rules.
 
+## 🧪 Testing
+
+The Z-Beam system includes a comprehensive test suite organized in the `tests/` directory.
+
+### Quick Testing
+```bash
+# Run all tests including API response validation (default)
+python3 -m tests
+
+# Alternative: Use the wrapper script  
+python3 test.py
+```
+
+### Test Categories
+
+#### All Tests (default)
+- **Dynamic System Tests**: Core functionality and schema loading
+- **API Response Tests**: Basic API response validation for DeepSeek and Grok
+- **Component Configuration**: Component routing and provider assignment
+- **Integration Tests**: End-to-end workflows with API response validation
+
+### Test Results
+- **EXCELLENT (100%)**: All tests pass - production ready
+- **GOOD (80-99%)**: Minor issues - mostly functional
+- **FAIR (60-79%)**: Some issues - core functionality works
+- **POOR (<60%)**: Significant issues - needs debugging
+
+For detailed testing documentation, see [`tests/README.md`](tests/README.md).
+
 ## 🐛 Known Issues
 
 1. **YAML Formatting**: 11 frontmatter files need YAML fixes
@@ -233,12 +262,14 @@ Update schemas in `schemas/` directory to modify validation rules.
 - [Interactive Mode Guide](INTERACTIVE_MODE.md)
 - [Schema Analysis Report](SCHEMA_EVALUATION_REPORT.md) 
 - [System Summary](FINAL_SYSTEM_SUMMARY.md)
+- [Test Suite Documentation](tests/README.md)
 
 ## 🤝 Contributing
 
-1. Run tests: `python3 -m pytest test_*.py`
+1. Run tests: `python3 -m tests`
 2. Validate changes with interactive mode
 3. Update documentation as needed
+4. Ensure all tests pass before submitting
 
 ## 📄 License
 
@@ -248,6 +279,7 @@ Update schemas in `schemas/` directory to modify validation rules.
 
 **Need Help?** 
 - Use `--help` for command options
+- Check test results: `python3 -m tests --all`
 - Check logs in `logs/` directory
 - Test API with `--test-api`
 - Use interactive mode for best experience

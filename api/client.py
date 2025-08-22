@@ -88,6 +88,10 @@ class APIClient:
         self.base_url = getattr(self.config, 'base_url', None) or (self.config.get('base_url') if hasattr(self.config, 'get') else base_url)
         self.model = getattr(self.config, 'model', None) or (self.config.get('model') if hasattr(self.config, 'get') else model or 'deepseek-chat')
         
+        # Set timeout values with defaults
+        self.timeout_connect = getattr(self.config, 'timeout_connect', None) or (self.config.get('timeout_connect') if hasattr(self.config, 'get') else 30)
+        self.timeout_read = getattr(self.config, 'timeout_read', None) or (self.config.get('timeout_read') if hasattr(self.config, 'get') else 120)
+        
         # Initialize session
         self.session = requests.Session()
         self._setup_session()
@@ -109,8 +113,8 @@ class APIClient:
         @dataclass
         class FallbackConfig:
             api_key: str
-            base_url: str = "https://api.deepseek.com"
-            model: str = "deepseek-chat"
+            base_url: str
+            model: str
             max_tokens: int = 4000
             temperature: float = 0.7
             timeout_connect: int = 10
@@ -118,13 +122,14 @@ class APIClient:
             max_retries: int = 3
             retry_delay: float = 1.0
         
-        resolved_api_key = api_key or os.getenv('DEEPSEEK_API_KEY')
-        if not resolved_api_key:
-            raise ValueError("DEEPSEEK_API_KEY environment variable not set")
+        # Use provided API key or raise error
+        if not api_key:
+            raise ValueError("API key must be provided to APIClient")
         
         return FallbackConfig(
-            api_key=resolved_api_key,
-            base_url=base_url or os.getenv('DEEPSEEK_BASE_URL', 'https://api.deepseek.com')
+            api_key=api_key,
+            base_url=base_url or "https://api.deepseek.com",
+            model=self.model or "deepseek-chat"
         )
     
     def _setup_session(self):
@@ -246,7 +251,7 @@ class APIClient:
         
         # Prepare payload
         payload = {
-            "model": self.config.model,
+            "model": self.model,
             "messages": messages,
             "max_tokens": request.max_tokens,
             "temperature": request.temperature,
@@ -258,9 +263,9 @@ class APIClient:
         
         # Make request
         response = self.session.post(
-            f"{self.config.base_url}/v1/chat/completions",
+            f"{self.base_url}/v1/chat/completions",
             json=payload,
-            timeout=(self.config.timeout_connect, self.config.timeout_read)
+            timeout=(self.timeout_connect, self.timeout_read)
         )
         
         response_time = time.time() - start_time
@@ -269,6 +274,19 @@ class APIClient:
         if response.status_code == 200:
             data = response.json()
             content = data['choices'][0]['message']['content']
+            
+            # Handle empty content from reasoning models like grok-4
+            if not content and data.get('choices', [{}])[0].get('message', {}).get('content') == "":
+                completion_tokens = data.get('usage', {}).get('completion_tokens_details', {}).get('reasoning_tokens', 0)
+                if completion_tokens > 0:
+                    return APIResponse(
+                        success=False,
+                        content="",
+                        error="Model produced reasoning tokens but no completion content. This may indicate the model needs different parameters.",
+                        response_time=response_time,
+                        token_count=data.get('usage', {}).get('total_tokens'),
+                        model_used=data.get('model', self.model)
+                    )
             
             # Extract usage information
             usage = data.get('usage', {})
@@ -280,7 +298,7 @@ class APIClient:
                 token_count=usage.get('total_tokens'),
                 prompt_tokens=usage.get('prompt_tokens'),
                 completion_tokens=usage.get('completion_tokens'),
-                model_used=data.get('model', self.config.model),
+                model_used=data.get('model', self.model),
                 request_id=response.headers.get('x-request-id')
             )
         else:

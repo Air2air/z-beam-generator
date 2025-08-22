@@ -1,56 +1,75 @@
 name: "Content Generator"
-description: "Generates comprehensive article content using base component data and material information"
+description: "Generates comprehensive article content using base component data and material information, with a writing voice and content tailored to emulate a non-native English speaker from a specific country, incorporating regional emphases and enhanced creativity for engaging, authentic technical narratives."
 version: "4.0.0"
 
 template: |
+  Generate the article in a writing style that emulates the English of a Ph.D. researcher from {country}, incorporating subtle linguistic nuances typical of non-native speakers from that region (except for the United States, where it should reflect standard American academic English). This makes the text feel more comfortable and authentic for readers who are non-native English speakers from similar backgrounds. Ensure the nuances are detailed but subtle, integrated naturally without affecting technical accuracy, clarity, or professionalism. Use the following guidelines based on {country}:
+
+  - If {country} is Taiwan: Use slightly simplified sentence structures with occasional compound sentences; subtly omit or misuse articles (e.g., 'the' or 'a') in non-critical places; include minor tense shifts, such as using present tense for past events occasionally or misusing perfect tenses; prefer formal word choices with occasional confusions like 'borrow' vs. 'lend' or gender pronouns; maintain a polite, straightforward tone. To enhance creativity, draw on innovative perspectives from Taiwan's tech ecosystem, weaving in subtle analogies to everyday precision engineering challenges, encouraging fresh insights on efficiency without overstatement.
+
+  - If {country} is Italy: Employ expressive phrasing with enthusiasm in descriptions; use longer, connected sentences with frequent connectors like 'however', 'moreover'; incorporate occasional preposition misuses (e.g., 'in' instead of 'on', 'at' instead of 'in'); subtle verb tense inconsistencies, especially with conditionals or modals; add redundant expressions for emphasis, reflecting Romance language influences. To raise creativity, infuse the narrative with elegant, thoughtful explorations of material interactions, akin to Italian design principles, allowing for nuanced interpretations of data that feel intuitively profound yet grounded in evidence.
+
+  - If {country} is Indonesia: Incorporate simpler vocabulary and direct phrasing; occasional omission of articles or determiners; minor subject-verb agreement lapses (e.g., singular verb with plural subject); diction choices that feel like direct translations, such as repetitive emphasis on ideas or misuse of transitive/intransitive verbs; use present perfect incorrectly at times; maintain a humble, explanatory tone with repetition for clarity. To boost creativity, incorporate adaptive, resourceful approaches inspired by Indonesia's diverse environments, suggesting practical innovations in application examples that resonate with local problem-solving, presented modestly as natural extensions of core concepts.
+
+  - If {country} is United States: Use precise, concise sentence structures typical of American academic technical writing; employ passive voice where appropriate for objectivity; include American spellings (e.g., 'color' instead of 'colour', 'analyze' instead of 'analyse'); ensure logical progression with clear transitions; avoid ambiguity through specific terminology and numerical details; maintain an objective, professional tone. To elevate creativity, integrate forward-thinking analyses and hypothetical scenarios based on cutting-edge U.S. research trends, encouraging original connections between parameters and outcomes while remaining empirically rigorous and understated.
+
+  Additionally, tailor the content to incorporate subtle, country-specific emphases and examples relevant to {country}, reflecting regional industries, applications, or challenges in laser cleaning technology. Integrate these naturally into the sections without altering the core technical details or structure. Use the following content guidelines based on {country}:
+
+  - If {country} is Taiwan: Emphasize applications in semiconductor manufacturing and electronics, such as cleaning silicon wafers or precision components; highlight eco-friendly aspects for high-tech industries; include examples from Taiwanese research or companies like TSMC; focus on precision and minimal environmental impact in humid climates.
+  
+  - If {country} is Italy: Highlight cultural heritage preservation, aerospace, and automotive sectors; include examples of cleaning historical artifacts or composite materials in luxury manufacturing; emphasize artistic and sustainable restoration techniques, drawing from Italian engineering traditions like those in Ferrari or aerospace firms.
+  
+  - If {country} is Indonesia: Focus on sustainable development in mining, tropical material processing, and low-cost implementations; incorporate examples of cleaning mining equipment or adapting to humid environments; stress affordability, environmental remediation, and applications in developing regions, with references to Indonesian institutes.
+  
+  - If {country} is United States: Emphasize high-tech biomedical, semiconductor, and aerospace applications; include examples from California-based labs like Lawrence Berkeley or companies like Boeing; focus on integration with robotics, ultrafast lasers, and innovative R&D, highlighting efficiency and scalability in advanced manufacturing.
+
   Write a comprehensive technical article about {subject} laser cleaning.
 
-  Use EXACTLY this structure and format:
+  Use EXACTLY this structure and format, with minor country-specific title variations if appropriate (e.g., adding a subtitle reflecting regional focus, but keeping the main title intact):
 
   # Laser Cleaning {subject} - Technical Guide for Optimal Processing  
 
   ## Overview  
-  [Technical overview of {subject} with material formula {material_formula} and key properties. Mention that these are used in industrial applications and present unique challenges and opportunities in laser cleaning processes. Include the chemical formula and reinforcement/composition details.]
+  [Technical overview of {subject} with material formula {material_formula} and key properties. Mention that these are used in industrial applications and present unique challenges and opportunities in laser cleaning processes. Include the chemical formula and reinforcement/composition details. Integrate country-specific emphases naturally.]
 
   ## Key Properties & Laser Interaction  
   [Detailed section covering how {subject} exhibits specific thermal characteristics and responds to laser irradiation. Include:
   - Absorption at specific wavelengths (mention 1064 nm effectiveness)
   - Thermal degradation thresholds and energy control requirements
-  - Any compositional factors that influence laser cleaning behavior]
+  - Any compositional factors that influence laser cleaning behavior. Add regional insights if relevant.]
 
   ## Industrial Applications  
   [Comprehensive coverage of where laser cleaning of {subject} is critical, including:
-  - 2-3 specific industry applications with technical details
-  - Real examples of cleaning applications (removing coatings, oxides, etc.)
-  - Specific use cases relevant to the material type]
+  - 2-3 specific industry applications with technical details, tailored to {country}
+  - Real examples of cleaning applications (removing coatings, oxides, etc.), with country-specific cases
+  - Specific use cases relevant to the material type and regional context]
 
   ## Optimal Laser Parameters  
   [Detailed laser processing parameters section including:
   - Recommended wavelength (typically 1064 nm)
   - Pulse duration ranges (typically 10-100 ns)
   - Fluence ranges with adjustments based on material properties
-  - Repetition rates for balanced speed and precision]
+  - Repetition rates for balanced speed and precision. Suggest minor adjustments based on {country}-specific environmental factors, like humidity.]
 
   ## Advantages Over Traditional Methods  
   [List 3-4 key advantages such as:
   - Non-abrasive characteristics
   - Selective cleaning capabilities
-  - Environmental benefits compared to chemical methods]
+  - Environmental benefits compared to chemical methods. Add a country-specific advantage, e.g., cost-effectiveness in developing regions or precision in high-tech areas.]
 
-  ## Conclusion  
-  [Summary paragraph emphasizing how {subject} responds to laser cleaning, parameter optimization importance, and industry applications. Mention pulsed fiber lasers and specific wavelengths for best results.]
 
-  **Keywords**: [Include {subject}, laser ablation, non-contact cleaning, pulsed fiber laser, chemical formula, industrial laser parameters, surface restoration]
+  **Keywords**: [Include {subject}, laser ablation, non-contact cleaning, pulsed fiber laser, chemical formula, industrial laser parameters, surface restoration, and 1-2 country-specific keywords like 'semiconductor cleaning' for Taiwan or 'heritage preservation' for Italy]
 
   REQUIREMENTS:
-  - Write 400-800 words total
+  - Write 300-600 words total
   - Use technical terminology appropriate for {subject}
   - Include specific numerical values and parameters
-  - Make content material-specific, not generic
+  - Make content material-specific, not generic, with country-tailored examples
   - Use the exact section structure shown above
   - Include chemical formula {material_formula} in overview
-  - End with keywords section using **Keywords**: format
+  - End with keywords section using **Keywords**: format, expanded with country-specific terms
+  - Infuse creativity through original phrasing, analogies, or insights aligned with the country-specific guidelines, ensuring the output feels innovative yet authentically professional and culturally resonant
 
 parameters:
   max_tokens: 4000
-  temperature: 0.7
+  temperature: 0.85

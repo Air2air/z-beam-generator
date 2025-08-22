@@ -1,204 +1,128 @@
 {
-  "name": "authorProfile",
-  "version": "1.2",
-  "schemaType": "AuthorSchema",
-  "author": {
-    "id": 1,
-    "name": "Yi-Chun Lin",
-    "slug": "yi-chun-lin",
-    "title": "Ph.D.",
-    "bio": "Yi-Chun Lin is a promising young scientist in her late twenties, specializing in materials science with a focus on laser-based technologies for material processing and cleaning.",
-    "specialties": [
-      "Materials Science",
-      "Laser Research"
-    ],
-    "image": "https://example.com/images/yi-chun-lin.jpg",
-    "country": "Taiwan",
-    "url": "https://research.ntu.edu.tw/yi-chun-lin"
-  },
-  "authorProfile": {
-    "generatorConfig": {
-      "jsonld": {
-        "schemaType": "Person"
+  "authorProfiles": [
+    {
+      "name": "authorProfile",
+      "version": "1.2",
+      "schemaType": "AuthorSchema",
+      "author": {
+        "id": 1,
+        "name": "Yi-Chun Lin",
+        "slug": "yi-chun-lin",
+        "title": "Ph.D.",
+        "bio": "Yi-Chun Lin specializes in materials science with a focus on laser-based technologies for material processing and cleaning.",
+        "specialties": [
+          "Materials Science",
+          "Laser Research"
+        ],
+        "image": "public/images/author/yi-chun-lin.jpg",
+        "country": "Taiwan"
       },
-      "contentGeneration": {
-        "dynamicSectionsFromFrontmatter": true,
-        "fieldContentMapping": {
-          "biography": "Provide a detailed professional biography of {subject}, highlighting their expertise in laser technology",
-          "expertise": "Detail the specific areas of expertise and specialization of {subject} in the field of laser cleaning",
-          "publications": "Summarize the key publications and research contributions of {subject} to laser technology",
-          "affiliations": "Describe the professional affiliations and positions held by {subject} in the industry",
-          "achievements": "Highlight the notable achievements and contributions of {subject} to laser cleaning technology"
+      "authorProfile": {
+        "generatorConfig": {
+          "jsonld": {
+            "schemaType": "Person"
+          }
         },
-        "introductionPrompt": "Present a comprehensive professional profile of {subject} as an expert in laser cleaning technology"
+        "profile": {
+          "biography": "Yi-Chun Lin, born in 1997 in Taipei, Taiwan, is a dedicated researcher in materials science. She earned her Bachelor's degree in Materials Science and Engineering from National Tsing Hua University in 2019, followed by a Ph.D. from National Taiwan University in 2023, where her thesis focused on laser-induced surface modifications for advanced materials. Her work integrates laser technology with nanomaterials to develop eco-friendly cleaning methods for industrial applications. Post-Ph.D., she joined Academia Sinica as a postdoctoral fellow, contributing to projects on laser ablation techniques.",
+          "expertise": "Yi-Chun specializes in laser cleaning processes for semiconductors and cultural heritage preservation, with expertise in pulsed laser deposition, femtosecond laser applications, and material characterization using spectroscopy. Her research emphasizes sustainable laser-based cleaning solutions that minimize environmental impact while enhancing material durability.",
+          "publications": "Key publications include: 'Femtosecond Laser Cleaning of Silicon Wafers' (Journal of Materials Science, 2024), 'Laser-Induced Removal of Contaminants from Historical Artifacts' (Applied Physics Letters, 2023), and 'Nanostructured Surfaces via Laser Processing' (Advanced Materials, 2022). These works have advanced the understanding of laser-material interactions.",
+          "affiliations": "Currently a Postdoctoral Researcher at National Taiwan University, affiliated with the Department of Materials Science and Engineering. Previously, she held a research assistant position at National Tsing Hua University and collaborated with the Industrial Technology Research Institute in Taiwan."
+        }
       }
     },
-    "profile": {
-      "biography": "Yi-Chun Lin, born in 1997 in Taipei, Taiwan, is a dedicated researcher in materials science. She earned her Bachelor's degree in Materials Science and Engineering from National Tsing Hua University in 2019, followed by a Ph.D. from National Taiwan University in 2023, where her thesis focused on laser-induced surface modifications for advanced materials. Her work integrates laser technology with nanomaterials to develop eco-friendly cleaning methods for industrial applications. Post-Ph.D., she joined Academia Sinica as a postdoctoral fellow, contributing to projects on laser ablation techniques.",
-      "expertise": "Yi-Chun specializes in laser cleaning processes for semiconductors and cultural heritage preservation, with expertise in pulsed laser deposition, femtosecond laser applications, and material characterization using spectroscopy. Her research emphasizes sustainable laser-based cleaning solutions that minimize environmental impact while enhancing material durability.",
-      "publications": "Key publications include: 'Femtosecond Laser Cleaning of Silicon Wafers' (Journal of Materials Science, 2024), 'Laser-Induced Removal of Contaminants from Historical Artifacts' (Applied Physics Letters, 2023), and 'Nanostructured Surfaces via Laser Processing' (Advanced Materials, 2022). These works have advanced the understanding of laser-material interactions.",
-      "affiliations": "Currently a Postdoctoral Researcher at National Taiwan University, affiliated with the Department of Materials Science and Engineering. Previously, she held a research assistant position at National Tsing Hua University and collaborated with the Industrial Technology Research Institute in Taiwan."
+    {
+      "name": "authorProfile",
+      "version": "1.2",
+      "schemaType": "AuthorSchema",
+      "author": {
+        "id": 2,
+        "name": "Alessandro Moretti",
+        "slug": "alessandro-moretti",
+        "title": "Ph.D.",
+        "bio": "Alessandro Moretti, a talented scientist in his late twenties from Italy, focuses on laser research within materials science, particularly for advanced manufacturing.",
+        "specialties": [
+          "Materials Science",
+          "Laser Research"
+        ],
+        "image": "public/images/author/alessandro-moretti.jpg",
+        "country": "Italy"
+      },
+      "authorProfile": {
+        "generatorConfig": {
+          "jsonld": {
+            "schemaType": "Person"
+          }
+        },
+        "profile": {
+          "biography": "Alessandro Moretti, born in 1996 in Milan, Italy, pursued his passion for physics and materials. He obtained a Master's degree in Materials Engineering from Polytechnic University of Milan in 2020 and completed his Ph.D. at Sapienza University of Rome in 2024, researching laser processing of composite materials. His innovative approaches to laser cleaning have been applied in aerospace and automotive sectors. He is currently a junior researcher at the Italian National Research Council (CNR).",
+          "expertise": "Alessandro's expertise lies in high-power laser systems for surface cleaning, including CO2 and Nd:YAG lasers, with specializations in laser-material interaction modeling, precision cleaning of metallic alloys, and integration of AI for optimized laser parameters in industrial cleaning processes.",
+          "publications": "Notable contributions: 'High-Efficiency Laser Cleaning of Aerospace Components' (Materials Today, 2024), 'Modeling Laser Ablation for Polymer Composites' (Journal of Applied Physics, 2023), and 'Sustainable Laser Technologies for Material Restoration' (Optics and Lasers in Engineering, 2022). These have influenced standards in laser-based manufacturing.",
+          "affiliations": "Junior Researcher at Polytechnic University of Milan, Department of Mechanical Engineering. Affiliated with the Italian Institute of Technology and previously a visiting scholar at Politecnico di Torino."
+        }
+      }
     },
-    "validation": {
-      "frontmatter": {
-        "requiredFields": [
-          "name", "description", "website", "keywords", 
-          "biography", "expertise"
-        ]
+    {
+      "name": "authorProfile",
+      "version": "1.2",
+      "schemaType": "AuthorSchema",
+      "author": {
+        "id": 3,
+        "name": "Ikmanda Roswati",
+        "slug": "ikmanda-roswati",
+        "title": "Ph.D.",
+        "bio": "Ikmanda Roswati is an emerging Indonesian scientist in his late twenties, dedicated to materials science and laser research for sustainable development.",
+        "specialties": [
+          "Materials Science",
+          "Laser Research"
+        ],
+        "image": "public/images/author/ikmanda-roswati.jpg",
+        "country": "Indonesia"
+      },
+      "authorProfile": {
+        "generatorConfig": {
+          "jsonld": {
+            "schemaType": "Person"
+          }
+        },
+        "profile": {
+          "biography": "Born in 1995 in Jakarta, Indonesia, Ikmanda Roswati excelled in his studies, earning a Bachelor's in Metallurgical Engineering from University of Indonesia in 2017 and a Ph.D. from Bandung Institute of Technology in 2022. His doctoral work explored laser-assisted synthesis of nanomaterials for environmental remediation. He now serves as a lecturer and researcher, promoting laser technologies in developing regions.",
+          "expertise": "Ikmanda's specializations include excimer laser cleaning for mining equipment, laser surface texturing for improved adhesion, and low-cost laser systems for tropical material degradation prevention, with a focus on adapting technologies to humid environments.",
+          "publications": "Key papers: 'Laser Cleaning Applications in Tropical Climates' (International Journal of Materials Research, 2023), 'Synthesis of Nanoparticles via Laser Ablation' (Journal of Nanomaterials, 2022), and 'Eco-Friendly Laser Processing of Metals' (Materials Science Forum, 2021). His research bridges theory and practical implementation.",
+          "affiliations": "Lecturer at Bandung Institute of Technology, Faculty of Mechanical and Aerospace Engineering. Affiliated with the Indonesian Institute of Sciences (LIPI) and previously collaborated with Gadjah Mada University."
+        }
+      }
+    },
+    {
+      "name": "authorProfile",
+      "version": "1.2",
+      "schemaType": "AuthorSchema",
+      "author": {
+        "id": 4,
+        "name": "Todd Dunning",
+        "slug": "todd-dunning",
+        "title": "Ph.D.",
+        "bio": "Todd Dunning, a researcher from California, advances materials science through innovative laser research.",
+        "specialties": [
+          "Materials Science",
+          "Laser Research"
+        ],
+        "image": "public/images/author/todd-dunning.jpg",
+        "country": "United States (California)"
+      },
+      "authorProfile": {
+        "generatorConfig": {
+          "jsonld": {
+            "schemaType": "Person"
+          }
+        },
+        "profile": {
+          "biography": "Todd Dunning developed an early interest in science. He received his B.S. in Materials Science from Stanford University in 2020 and his Ph.D. from UC Berkeley in 2024, with a dissertation on ultrafast laser interactions with biomaterials. His work has applications in medical device cleaning and semiconductor manufacturing. He is now a research associate at Lawrence Berkeley National Laboratory.",
+          "expertise": "Todd excels in ultrafast laser cleaning techniques, including picosecond lasers for precision etching, bio-compatible material processing, and integration of laser systems with robotics for automated cleaning in high-tech industries.",
+          "publications": "Significant publications: 'Ultrafast Laser Cleaning of Biomedical Implants' (ACS Applied Materials & Interfaces, 2024), 'Pulsed Laser Deposition for Thin Films' (Nano Letters, 2023), and 'Laser-Based Decontamination Methods' (Journal of Physical Chemistry C, 2022). These have garnered citations in emerging tech fields.",
+          "affiliations": "Research Associate at UC Berkeley, Department of Materials Science and Engineering. Affiliated with the California Institute of Technology and previously an intern at Stanford's Materials Research Center."
+        }
       }
     }
-  }
-}
-{
-  "name": "authorProfile",
-  "version": "1.2",
-  "schemaType": "AuthorSchema",
-  "author": {
-    "id": 2,
-    "name": "Alessandro Moretti",
-    "slug": "alessandro-moretti",
-    "title": "Ph.D.",
-    "bio": "Alessandro Moretti, a talented scientist in his late twenties from Italy, focuses on laser research within materials science, particularly for advanced manufacturing.",
-    "specialties": [
-      "Materials Science",
-      "Laser Research"
-    ],
-    "image": "https://example.com/images/alessandro-moretti.jpg",
-    "country": "Italy",
-    "url": "https://www.polimi.it/en/alessandro-moretti"
-  },
-  "authorProfile": {
-    "generatorConfig": {
-      "jsonld": {
-        "schemaType": "Person"
-      },
-      "contentGeneration": {
-        "dynamicSectionsFromFrontmatter": true,
-        "fieldContentMapping": {
-          "biography": "Provide a detailed professional biography of {subject}, highlighting their expertise in laser technology",
-          "expertise": "Detail the specific areas of expertise and specialization of {subject} in the field of laser cleaning",
-          "publications": "Summarize the key publications and research contributions of {subject} to laser technology",
-          "affiliations": "Describe the professional affiliations and positions held by {subject} in the industry",
-          "achievements": "Highlight the notable achievements and contributions of {subject} to laser cleaning technology"
-        },
-        "introductionPrompt": "Present a comprehensive professional profile of {subject} as an expert in laser cleaning technology"
-      }
-    },
-    "profile": {
-      "biography": "Alessandro Moretti, born in 1996 in Milan, Italy, pursued his passion for physics and materials. He obtained a Master's degree in Materials Engineering from Polytechnic University of Milan in 2020 and completed his Ph.D. at Sapienza University of Rome in 2024, researching laser processing of composite materials. His innovative approaches to laser cleaning have been applied in aerospace and automotive sectors. He is currently a junior researcher at the Italian National Research Council (CNR).",
-      "expertise": "Alessandro's expertise lies in high-power laser systems for surface cleaning, including CO2 and Nd:YAG lasers, with specializations in laser-material interaction modeling, precision cleaning of metallic alloys, and integration of AI for optimized laser parameters in industrial cleaning processes.",
-      "publications": "Notable contributions: 'High-Efficiency Laser Cleaning of Aerospace Components' (Materials Today, 2024), 'Modeling Laser Ablation for Polymer Composites' (Journal of Applied Physics, 2023), and 'Sustainable Laser Technologies for Material Restoration' (Optics and Lasers in Engineering, 2022). These have influenced standards in laser-based manufacturing.",
-      "affiliations": "Junior Researcher at Polytechnic University of Milan, Department of Mechanical Engineering. Affiliated with the Italian Institute of Technology and previously a visiting scholar at Politecnico di Torino."
-    },
-    "validation": {
-      "frontmatter": {
-        "requiredFields": [
-          "name", "description", "website", "keywords", 
-          "biography", "expertise"
-        ]
-      }
-    }
-  }
-}
-{
-  "name": "authorProfile",
-  "version": "1.2",
-  "schemaType": "AuthorSchema",
-  "author": {
-    "id": 3,
-    "name": "Dewi Sartika",
-    "slug": "dewi-sartika",
-    "title": "Ph.D.",
-    "bio": "Dewi Sartika is an emerging Indonesian scientist in her late twenties, dedicated to materials science and laser research for sustainable development.",
-    "specialties": [
-      "Materials Science",
-      "Laser Research"
-    ],
-    "image": "https://example.com/images/dewi-sartika.jpg",
-    "country": "Indonesia",
-    "url": "https://www.itb.ac.id/dewi-sartika"
-  },
-  "authorProfile": {
-    "generatorConfig": {
-      "jsonld": {
-        "schemaType": "Person"
-      },
-      "contentGeneration": {
-        "dynamicSectionsFromFrontmatter": true,
-        "fieldContentMapping": {
-          "biography": "Provide a detailed professional biography of {subject}, highlighting their expertise in laser technology",
-          "expertise": "Detail the specific areas of expertise and specialization of {subject} in the field of laser cleaning",
-          "publications": "Summarize the key publications and research contributions of {subject} to laser technology",
-          "affiliations": "Describe the professional affiliations and positions held by {subject} in the industry",
-          "achievements": "Highlight the notable achievements and contributions of {subject} to laser cleaning technology"
-        },
-        "introductionPrompt": "Present a comprehensive professional profile of {subject} as an expert in laser cleaning technology"
-      }
-    },
-    "profile": {
-      "biography": "Born in 1995 in Jakarta, Indonesia, Dewi Sartika excelled in her studies, earning a Bachelor's in Metallurgical Engineering from University of Indonesia in 2017 and a Ph.D. from Bandung Institute of Technology in 2022. Her doctoral work explored laser-assisted synthesis of nanomaterials for environmental remediation. She now serves as a lecturer and researcher, promoting laser technologies in developing regions.",
-      "expertise": "Dewi's specializations include excimer laser cleaning for mining equipment, laser surface texturing for improved adhesion, and low-cost laser systems for tropical material degradation prevention, with a focus on adapting technologies to humid environments.",
-      "publications": "Key papers: 'Laser Cleaning Applications in Tropical Climates' (International Journal of Materials Research, 2023), 'Synthesis of Nanoparticles via Laser Ablation' (Journal of Nanomaterials, 2022), and 'Eco-Friendly Laser Processing of Metals' (Materials Science Forum, 2021). Her research bridges theory and practical implementation.",
-      "affiliations": "Lecturer at Bandung Institute of Technology, Faculty of Mechanical and Aerospace Engineering. Affiliated with the Indonesian Institute of Sciences (LIPI) and previously collaborated with Gadjah Mada University."
-    },
-    "validation": {
-      "frontmatter": {
-        "requiredFields": [
-          "name", "description", "website", "keywords", 
-          "biography", "expertise"
-        ]
-      }
-    }
-  }
-}
-{
-  "name": "authorProfile",
-  "version": "1.2",
-  "schemaType": "AuthorSchema",
-  "author": {
-    "id": 4,
-    "name": "Sophia Nguyen",
-    "slug": "sophia-nguyen",
-    "title": "Ph.D.",
-    "bio": "Sophia Nguyen, a dynamic young researcher from California in her late twenties, advances materials science through innovative laser research.",
-    "specialties": [
-      "Materials Science",
-      "Laser Research"
-    ],
-    "image": "https://example.com/images/sophia-nguyen.jpg",
-    "country": "United States (California)",
-    "url": "https://mse.berkeley.edu/sophia-nguyen"
-  },
-  "authorProfile": {
-    "generatorConfig": {
-      "jsonld": {
-        "schemaType": "Person"
-      },
-      "contentGeneration": {
-        "dynamicSectionsFromFrontmatter": true,
-        "fieldContentMapping": {
-          "biography": "Provide a detailed professional biography of {subject}, highlighting their expertise in laser technology",
-          "expertise": "Detail the specific areas of expertise and specialization of {subject} in the field of laser cleaning",
-          "publications": "Summarize the key publications and research contributions of {subject} to laser technology",
-          "affiliations": "Describe the professional affiliations and positions held by {subject} in the industry",
-          "achievements": "Highlight the notable achievements and contributions of {subject} to laser cleaning technology"
-        },
-        "introductionPrompt": "Present a comprehensive professional profile of {subject} as an expert in laser cleaning technology"
-      }
-    },
-    "profile": {
-      "biography": "Sophia Nguyen, born in 1998 in San Francisco, California, developed an early interest in science. She received her B.S. in Materials Science from Stanford University in 2020 and her Ph.D. from UC Berkeley in 2024, with a dissertation on ultrafast laser interactions with biomaterials. Her work has applications in medical device cleaning and semiconductor manufacturing. She is now a research associate at Lawrence Berkeley National Laboratory.",
-      "expertise": "Sophia excels in ultrafast laser cleaning techniques, including picosecond lasers for precision etching, bio-compatible material processing, and integration of laser systems with robotics for automated cleaning in high-tech industries.",
-      "publications": "Significant publications: 'Ultrafast Laser Cleaning of Biomedical Implants' (ACS Applied Materials & Interfaces, 2024), 'Pulsed Laser Deposition for Thin Films' (Nano Letters, 2023), and 'Laser-Based Decontamination Methods' (Journal of Physical Chemistry C, 2022). These have garnered citations in emerging tech fields.",
-      "affiliations": "Research Associate at UC Berkeley, Department of Materials Science and Engineering. Affiliated with the California Institute of Technology and previously an intern at Stanford's Materials Research Center."
-    },
-    "validation": {
-      "frontmatter": {
-        "requiredFields": [
-          "name", "description", "website", "keywords", 
-          "biography", "expertise"
-        ]
-      }
-    }
-  }
+  ]
 }
