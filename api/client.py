@@ -46,11 +46,15 @@ class APIError(Exception):
     pass
 
 class APIClient:
-    """Standardized DeepSeek API client with comprehensive features"""
+    """Standardized API client with comprehensive features"""
     
     def __init__(self, api_key: Optional[str] = None, base_url: Optional[str] = None, 
-                 config: Optional[Dict] = None):
+                 model: Optional[str] = None, config: Optional[Dict] = None):
         """Initialize the API client with configuration"""
+        
+        # Store parameters as instance attributes for test compatibility
+        self.base_url = base_url
+        self.model = model
         
         # Load configuration
         if config:
@@ -62,6 +66,27 @@ class APIClient:
             except ImportError:
                 # Fallback configuration
                 self.config = self._get_fallback_config(api_key, base_url)
+        
+        # Override config with provided parameters
+        if api_key:
+            if hasattr(self.config, 'api_key'):
+                self.config.api_key = api_key
+            else:
+                self.config['api_key'] = api_key
+        if base_url:
+            if hasattr(self.config, 'base_url'):
+                self.config.base_url = base_url
+            else:
+                self.config['base_url'] = base_url
+        if model:
+            if hasattr(self.config, 'model'):
+                self.config.model = model
+            else:
+                self.config['model'] = model
+        
+        # Update instance attributes from config
+        self.base_url = getattr(self.config, 'base_url', None) or (self.config.get('base_url') if hasattr(self.config, 'get') else base_url)
+        self.model = getattr(self.config, 'model', None) or (self.config.get('model') if hasattr(self.config, 'get') else model or 'deepseek-chat')
         
         # Initialize session
         self.session = requests.Session()

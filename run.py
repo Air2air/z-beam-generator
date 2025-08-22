@@ -5,7 +5,8 @@ Z-Beam Dynamic Content Generation System
 FEATURES:
 - Dynamic schema-driven content generation
 - Component-specific generation with user selection
-- Standardized DeepSeek API integration
+- Multi-API provider support (DeepSeek, Grok)
+- Component-level enable/disable controls
 - Real-time validation and error correction
 - Interactive and batch generation modes
 
@@ -26,13 +27,123 @@ DYNAMIC GENERATION:
 - Real-time error detection and correction
 """
 
+# ==========================================
+# COMPONENT CONFIGURATION
+# ==========================================
+# Configure API provider and enable/disable for each component type
+COMPONENT_CONFIG = {
+    "frontmatter": {
+        "enabled": True,
+        "api_provider": "deepseek"  # Options: "deepseek", "grok"
+    },
+    "content": {
+        "enabled": True,
+        "api_provider": "grok"
+    },
+    "jsonld": {
+        "enabled": True,
+        "api_provider": "deepseek"
+    },
+    "table": {
+        "enabled": True,
+        "api_provider": "grok"
+    },
+    "metatags": {
+        "enabled": True,
+        "api_provider": "deepseek"
+    },
+    "tags": {
+        "enabled": True,
+        "api_provider": "deepseek"
+    },
+    "bullets": {
+        "enabled": True,
+        "api_provider": "deepseek"
+    },
+    "caption": {
+        "enabled": True,
+        "api_provider": "deepseek"
+    },
+    "propertiestable": {
+        "enabled": True,
+        "api_provider": "deepseek"
+    }
+}
+
+# API Provider Configuration
+API_PROVIDERS = {
+    "deepseek": {
+        "name": "DeepSeek",
+        "env_key": "DEEPSEEK_API_KEY",
+        "env_var": "DEEPSEEK_API_KEY",  # Add this for test compatibility
+        "base_url": "https://api.deepseek.com",
+        "model": "deepseek-chat"
+    },
+    "grok": {
+        "name": "Grok (X.AI)",
+        "env_key": "GROK_API_KEY", 
+        "env_var": "GROK_API_KEY",  # Add this for test compatibility
+        "base_url": "https://api.x.ai/v1",
+        "model": "grok-beta"
+    }
+}
+
 import sys
+import os
 import argparse
 from pathlib import Path
 import logging
 
 # Setup logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+
+def create_api_client(provider: str, use_mock: bool = False):
+    """Create an API client for the specified provider."""
+    
+    if provider not in API_PROVIDERS:
+        raise ValueError(f"Unknown API provider: {provider}")
+    
+    provider_config = API_PROVIDERS[provider]
+    
+    if use_mock:
+        from api.client import MockAPIClient
+        return MockAPIClient()
+    
+    try:
+        from api.client import APIClient
+        import os
+        
+        # Load environment variables from .env file
+        try:
+            from dotenv import load_dotenv
+            env_path = Path(__file__).parent / '.env'
+            load_dotenv(env_path)
+        except ImportError:
+            pass
+        
+        # Get API key from environment
+        api_key = os.getenv(provider_config["env_key"])
+        if not api_key:
+            raise ValueError(f"API key not found for {provider}. Please set {provider_config['env_key']} in your environment.")
+        
+        # Create API client with provider-specific configuration
+        return APIClient(
+            api_key=api_key,
+            base_url=provider_config["base_url"]
+        )
+        
+    except ImportError as e:
+        raise ImportError(f"Failed to import API client modules: {e}")
+
+def get_api_client_for_component(component_type: str, use_mock: bool = False):
+    """Get the appropriate API client for a component type."""
+    
+    if component_type in COMPONENT_CONFIG:
+        provider = COMPONENT_CONFIG[component_type]["api_provider"]
+    else:
+        provider = "deepseek"  # Default provider
+    
+    return create_api_client(provider, use_mock=use_mock)
 
 def run_dynamic_generation(material: str = None, components: list = None, 
                           interactive: bool = False, test_api: bool = False):
@@ -149,38 +260,192 @@ def run_interactive_generation(generator):
     
     return True
 
+def save_component_to_file(content: str, filepath: str):
+    """Save component content to the specified file path."""
+    
+    # Ensure the directory exists
+    Path(filepath).parent.mkdir(parents=True, exist_ok=True)
+    
+    try:
+        with open(filepath, 'w', encoding='utf-8') as f:
+            f.write(content)
+        print(f"  ✅ Saved to {filepath}")
+        
+    except Exception as e:
+        print(f"  ❌ Failed to save {filepath}: {e}")
+        raise
+
+def save_component_to_file_original(material: str, component_type: str, content: str):
+    """Save a component to the appropriate file path (original signature)."""
+    
+    # Create proper component directory structure: content/components/{component_type}/
+    output_dir = Path("content") / "components" / component_type
+    output_dir.mkdir(parents=True, exist_ok=True)
+    
+    # Create filename: {material}-laser-cleaning.md
+    material_slug = material.lower().replace(' ', '-').replace('_', '-')
+    filename = f"{material_slug}-laser-cleaning.md"
+    filepath = output_dir / filename
+    
+    try:
+        with open(filepath, 'w', encoding='utf-8') as f:
+            f.write(content)
+        logging.info(f"Saved {component_type} to {filepath}")
+    except Exception as e:
+        logging.error(f"Error saving {component_type}: {e}")
+
 def run_material_generation(generator, material: str, components: list = None):
-    """Generate content for a specific material."""
+    """Generate content for a specific material with component configuration."""
     
     if components is None:
         components = generator.get_available_components()
     
-    print(f"🔧 Generating {len(components)} components for {material}...")
+    # Filter components based on configuration
+    enabled_components = []
+    disabled_components = []
     
-    # Create generation request
-    from generators.dynamic_generator import GenerationRequest
-    
-    request = GenerationRequest(
-        material=material,
-        components=components,
-        output_dir="content"
-    )
-    
-    # Generate content
-    result = generator.generate_multiple(request)
-    
-    # Report results
-    print(f"\n📋 Generation Results for {material}:")
-    print(f"   Success: {result.success}")
-    print(f"   Components: {result.successful_components}/{result.total_components}")
-    
-    for component_type, component_result in result.results.items():
-        if component_result.success:
-            print(f"   ✅ {component_type}")
+    for component in components:
+        if component in COMPONENT_CONFIG:
+            if COMPONENT_CONFIG[component]["enabled"]:
+                enabled_components.append(component)
+            else:
+                disabled_components.append(component)
         else:
-            print(f"   ❌ {component_type}: {component_result.error_message}")
+            # Default to enabled if not in config
+            enabled_components.append(component)
     
-    return result.success
+    # Display component status
+    print(f"🔧 Component Generation Plan for {material}:")
+    print(f"   ✅ Enabled ({len(enabled_components)}): {', '.join(enabled_components)}")
+    if disabled_components:
+        print(f"   ❌ Disabled ({len(disabled_components)}): {', '.join(disabled_components)}")
+    
+    # Display API provider assignments
+    print(f"\n🌐 API Provider Assignments:")
+    for component in enabled_components:
+        if component in COMPONENT_CONFIG:
+            provider = COMPONENT_CONFIG[component]["api_provider"]
+            provider_name = API_PROVIDERS.get(provider, {}).get("name", provider)
+            print(f"   {component}: {provider_name}")
+        else:
+            print(f"   {component}: Default (DeepSeek)")
+    
+    if not enabled_components:
+        print("❌ No components enabled for generation!")
+        return False
+    
+    print(f"\n🚀 Generating {len(enabled_components)} enabled components...")
+    
+    # Generate each component with its specific API client
+    successful_count = 0
+    results = {}
+    
+    for component_type in enabled_components:
+        try:
+            # Get the appropriate API client for this component
+            api_client = get_api_client_for_component(component_type)
+            provider = COMPONENT_CONFIG.get(component_type, {}).get("api_provider", "deepseek")
+            provider_name = API_PROVIDERS.get(provider, {}).get("name", provider)
+            
+            print(f"\n🔧 Generating {component_type} using {provider_name}...")
+            
+            # Create a temporary generator with this API client
+            from generators.dynamic_generator import DynamicGenerator
+            temp_generator = DynamicGenerator(api_client=api_client)
+            
+            # Generate this single component
+            result = temp_generator.generate_component(material, component_type)
+            
+            if result.success:
+                # Save the component using our own save logic
+                save_component_to_file(material, component_type, result.content)
+                successful_count += 1
+                results[component_type] = result
+                print(f"   ✅ {component_type} ({provider_name}) - {len(result.content)} chars generated")
+            else:
+                results[component_type] = result
+                print(f"   ❌ {component_type} ({provider_name}): {result.error_message}")
+                
+        except Exception as e:
+            print(f"   ❌ {component_type}: Error creating API client - {str(e)}")
+            # Create a fake failed result
+            from generators.dynamic_generator import ComponentResult
+            results[component_type] = ComponentResult(
+                component_type=component_type,
+                content="",
+                success=False,
+                error_message=str(e)
+            )
+    
+    # Report final results
+    print(f"\n📋 Generation Results for {material}:")
+    print(f"   Success: {successful_count > 0}")
+    print(f"   Components: {successful_count}/{len(enabled_components)}")
+    
+    for component_type, result in results.items():
+        provider = COMPONENT_CONFIG.get(component_type, {}).get("api_provider", "default")
+        provider_name = API_PROVIDERS.get(provider, {}).get("name", provider)
+        
+        if result.success:
+            print(f"   ✅ {component_type} ({provider_name})")
+        else:
+            print(f"   ❌ {component_type} ({provider_name}): {result.error_message}")
+    
+    return successful_count > 0
+
+def show_component_configuration():
+    """Display current component configuration."""
+    
+    # Load environment variables from .env file
+    try:
+        from dotenv import load_dotenv
+        from pathlib import Path
+        env_path = Path(__file__).parent / '.env'
+        load_dotenv(env_path)
+    except ImportError:
+        pass  # Continue without dotenv if not available
+    
+    print("🔧 COMPONENT CONFIGURATION")
+    print("=" * 50)
+    
+    enabled_count = sum(1 for config in COMPONENT_CONFIG.values() if config["enabled"])
+    disabled_count = len(COMPONENT_CONFIG) - enabled_count
+    
+    print(f"Total Components: {len(COMPONENT_CONFIG)} ({enabled_count} enabled, {disabled_count} disabled)")
+    print()
+    
+    # Group by API provider
+    provider_groups = {}
+    for component, config in COMPONENT_CONFIG.items():
+        if config["enabled"]:
+            provider = config["api_provider"]
+            if provider not in provider_groups:
+                provider_groups[provider] = []
+            provider_groups[provider].append(component)
+    
+    # Display by provider
+    for provider, components in provider_groups.items():
+        provider_name = API_PROVIDERS.get(provider, {}).get("name", provider)
+        print(f"🌐 {provider_name} ({len(components)} components):")
+        for component in sorted(components):
+            print(f"   ✅ {component}")
+        print()
+    
+    # Display disabled components
+    disabled = [comp for comp, config in COMPONENT_CONFIG.items() if not config["enabled"]]
+    if disabled:
+        print(f"❌ Disabled Components ({len(disabled)}):")
+        for component in sorted(disabled):
+            print(f"   ⭕ {component}")
+        print()
+    
+    # Display API provider details
+    print("🔑 API Provider Configuration:")
+    for provider_id, provider_info in API_PROVIDERS.items():
+        env_key = provider_info["env_key"]
+        has_key = "✅" if os.getenv(env_key) else "❌"
+        print(f"   {has_key} {provider_info['name']}: {provider_info['model']} (env: {env_key})")
+    print()
 
 def run_yaml_validation():
     """Run comprehensive YAML validation and fixing across all files."""
@@ -273,39 +538,50 @@ def run_yaml_validation():
         print(f"❌ Error during validation: {e}")
         return False
 
-def main():
-    """Main entry point for Z-Beam dynamic generation system."""
-    
+def create_arg_parser():
+    """Create and return the argument parser for the Z-Beam system."""
     parser = argparse.ArgumentParser(
         description="Z-Beam Dynamic Content Generation System",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 EXAMPLES:
-  python3 run.py                                    # Interactive generation mode
+  python3 run.py                                    # Interactive generation mode (default)
   python3 run.py --material "Copper"                # Generate all components for Copper
   python3 run.py --material "Steel" --components "frontmatter,content"  # Specific components
   python3 run.py --list-materials                   # List all available materials
   python3 run.py --list-components                  # List all available components
+  python3 run.py --show-config                     # Show component configuration and API providers
   python3 run.py --yaml                            # Validate and fix YAML errors
   python3 run.py --test-api                        # Test API connection
-  python3 run.py --interactive                     # Interactive mode
+  python3 run.py --interactive                     # Force interactive mode (default when no material specified)
         """
     )
     
     # Main operation modes
     parser.add_argument("--material", help="Generate content for specific material")
     parser.add_argument("--components", help="Comma-separated list of components to generate")
-    parser.add_argument("--interactive", action="store_true", help="Run in interactive mode")
+    parser.add_argument("--interactive", action="store_true", help="Force interactive mode (default when no material specified)")
     parser.add_argument("--yaml", action="store_true", help="Validate and fix YAML errors")
     parser.add_argument("--test-api", action="store_true", help="Test API connection")
     
     # Listing operations
     parser.add_argument("--list-materials", action="store_true", help="List all available materials")
     parser.add_argument("--list-components", action="store_true", help="List all available components")
+    parser.add_argument("--show-config", action="store_true", help="Show component configuration and API provider settings")
+    parser.add_argument("--help-components", action="store_true", help="Show detailed help for components")
+    
+    # Validation operations  
+    parser.add_argument("--validate", help="Validate YAML files in specified directory")
     
     # General options
     parser.add_argument("--verbose", "-v", action="store_true", help="Enable verbose logging")
     
+    return parser
+
+def main():
+    """Main entry point for Z-Beam dynamic generation system."""
+    
+    parser = create_arg_parser()
     args = parser.parse_args()
     
     # Set up logging level
@@ -318,28 +594,32 @@ EXAMPLES:
             # YAML validation mode
             success = run_yaml_validation()
             
-        elif args.list_materials or args.list_components:
-            # List operations
-            try:
-                from generators.dynamic_generator import DynamicGenerator
-                generator = DynamicGenerator()
-                
-                if args.list_materials:
-                    materials = generator.get_available_materials()
-                    print(f"📋 Available materials ({len(materials)}):")
-                    for i, material in enumerate(sorted(materials), 1):
-                        print(f"   {i:3d}. {material}")
-                
-                if args.list_components:
-                    components = generator.get_available_components()
-                    print(f"🔧 Available components ({len(components)}):")
-                    for i, component in enumerate(sorted(components), 1):
-                        print(f"   {i}. {component}")
-                
+        elif args.list_materials or args.list_components or args.show_config:
+            # List operations and configuration display
+            if args.show_config:
+                show_component_configuration()
                 success = True
-            except ImportError as e:
-                print(f"❌ Error importing generator: {e}")
-                success = False
+            else:
+                try:
+                    from generators.dynamic_generator import DynamicGenerator
+                    generator = DynamicGenerator()
+                    
+                    if args.list_materials:
+                        materials = generator.get_available_materials()
+                        print(f"📋 Available materials ({len(materials)}):")
+                        for i, material in enumerate(sorted(materials), 1):
+                            print(f"   {i:3d}. {material}")
+                    
+                    if args.list_components:
+                        components = generator.get_available_components()
+                        print(f"🔧 Available components ({len(components)}):")
+                        for i, component in enumerate(sorted(components), 1):
+                            print(f"   {i}. {component}")
+                    
+                    success = True
+                except ImportError as e:
+                    print(f"❌ Error importing generator: {e}")
+                    success = False
                 
         else:
             # Dynamic generation mode (default)
@@ -350,7 +630,7 @@ EXAMPLES:
             success = run_dynamic_generation(
                 material=args.material,
                 components=components_list,
-                interactive=args.interactive or (args.material is None and not args.test_api),
+                interactive=args.interactive or not (args.material or args.test_api),
                 test_api=args.test_api
             )
         
