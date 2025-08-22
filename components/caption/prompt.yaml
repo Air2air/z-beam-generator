@@ -3,34 +3,23 @@ description: "Generates scientific image captions using base component data and 
 version: "5.0.0"
 
 template: |
-  Generate technical image caption for {article_type} "{subject}" laser cleaning using the template structure.
-  
-  TEMPLATE-BASED OUTPUT:
-  Use the caption template structure below and fill in with specific technical data.
-  Output the complete caption using this exact format.
+  Generate a technical image caption for {subject} laser cleaning.
 
-  CAPTION TEMPLATE:
-  {subject} surface before laser cleaning shows [contamination type] (left).
+  Output EXACTLY this format with two lines:
 
-  **After laser cleaning** (right) After treatment with [wavelength] laser at [fluence], [pulse duration] pulses, and [spot size] spot size (right), showing [result description].
+  **{subject}** surface (left) before cleaning, showing [contamination type].
+
+  **After laser cleaning** (right) After laser cleaning at [wavelength], [power], [pulse duration], and [spot size], [cleaning result description].
 
   REQUIREMENTS:
-  - Fill in ALL template fields with specific technical parameters
-  - Use exact wavelength values (e.g., "1064nm", "532nm")
-  - Include specific fluence values (e.g., "2.5 J/cm²")
-  - Specify pulse duration (e.g., "30ns", "50ns")
-  - Include spot size measurements (e.g., "0.8mm", "1.2mm")
-  - Describe specific contamination types and cleaning results
-  - Maintain scientific accuracy and professional tone
-  - Output the complete two-line caption exactly as shown above
-
-  AVAILABLE BASE COMPONENT DATA:
-  Subject: {subject}
-  Article Type: {article_type}
-  Material Formula: {material_formula}
-  Material Symbol: {material_symbol}
-  Material Type: {material_type}
-  Category: {category}
+  - Replace [contamination type] with specific contamination (organic contaminants, oxide layers, particulate adhesion, etc.)
+  - Replace [wavelength] with specific value like "1064 nm" or "532 nm"
+  - Replace [power] with specific value like "10 W" or "50 W"
+  - Replace [pulse duration] with specific value like "100 ns" or "50 ns"
+  - Replace [spot size] with specific value like "500 µm" or "1.2 mm"
+  - Replace [cleaning result description] with specific results like "achieving contaminant removal with minimal substrate modification, showing complete contaminant removal"
+  
+  Use technical accuracy for {subject} material properties and typical laser cleaning parameters.
 
 parameters:
   max_tokens: 1000

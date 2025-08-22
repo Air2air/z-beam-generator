@@ -1,91 +1,90 @@
 name: "Frontmatter Generator"
-description: "Generates comprehensive YAML frontmatter for laser cleaning articles, with all formatting handled by Python."
+description: "Generates comprehensive YAML frontmatter for laser cleaning articles"
 version: "4.0.0"
 
 template: |
-  Generate comprehensive frontmatter for {article_type} "{subject}" with complete technical information.
+  Generate frontmatter for {subject} laser cleaning.
 
-  REQUIRED STRUCTURE: Include ALL these fields with natural, detailed content:
+  Output EXACTLY this YAML structure:
 
   ---
   name: {subject}
   applications:
-  - industry: [Industry name like "Cultural Heritage Conservation" or "Industrial Manufacturing"]
-    useCase: "[Detailed technical description with specific parameters like fluence, wavelength, pulse duration]"
-    detail: [Additional technical context and application-specific information]
-  - industry: [Second industry]
-    useCase: "[Second application with technical parameters]"
-    detail: [Technical details for second application]
+  - industry: [Industry 1]
+    useCase: '"[Technical description with wavelength, fluence, pulse duration]"'
+    detail: Specific laser cleaning application
+  - industry: [Industry 2]
+    useCase: '"[Technical description with wavelength, fluence, pulse duration]"'
+    detail: Specific laser cleaning application
   technicalSpecifications:
-    powerRange: [Power range in watts like "15-80W"]
-    pulseDuration: [Duration range like "20-100ns"]  
-    wavelength: [Primary wavelength and optional secondary like "1064nm (primary), 532nm (optional)"]
-    spotSize: [Spot size range like "0.2-1.5mm"]
-    repetitionRate: [Frequency range like "10-40kHz"]
-    fluenceRange: [Energy density range like "0.8–8 J/cm²"]
-    safetyClass: [Safety classification with requirements]
-  description: [Natural technical overview mentioning {material_formula}, density, applications]
-  author: [Expert author name like "Dr. [Name]"]
-  keywords: [Natural list of relevant technical terms and applications]
+    powerRange: [power range like "20-100W"]
+    pulseDuration: [duration like "10-100ns"]
+    wavelength: [wavelength like "1064nm (primary), 532nm (optional)"]
+    spotSize: [size like "0.1-2.0mm"]
+    repetitionRate: [rate like "10-50kHz"]
+    fluenceRange: [range like "0.5–5 J/cm²"]
+    safetyClass: [class like "Class 4 (requires full enclosure)"]
+  description: Technical overview of {subject}, {material_formula}, for laser cleaning applications, including [density], [wavelength], and industrial applications.
+  author: [Expert Author Name]
+  keywords: {subject_lowercase}, {subject_lowercase} {category}, laser ablation, laser cleaning, non-contact cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters, thermal processing, surface restoration
   category: {category}
   chemicalProperties:
     symbol: {material_symbol}
     formula: {material_formula}
     materialType: {material_type}
   properties:
-    density: [Density range with units]
-    meltingPoint: [Temperature range]
-    thermalConductivity: [Conductivity value with units]
-    laserType: [Optimal laser type]
-    wavelength: [Primary wavelength]
-    fluenceRange: [Working fluence range]
+    density: [density value]
+    meltingPoint: [melting point]
+    thermalConductivity: [thermal conductivity]
+    laserType: [optimal laser type]
+    wavelength: [primary wavelength]
+    fluenceRange: [fluence range]
     chemicalFormula: {material_formula}
   composition:
-  - component: [Component name]
-    percentage: [Percentage range]
-  [Additional components as needed]
+  - [Component 1]
+  - [Component 2]
   compatibility:
-  - material: [Compatible material]
-    rating: [Excellent/Good/Fair]
-  [Additional compatibility entries]
+  - [Compatible material 1]
+  - [Compatible material 2]
   regulatoryStandards: [Relevant standards]
   images:
     hero:
-      alt: [Descriptive alt text for main image]
+      alt: {subject} surface undergoing laser cleaning showing precise contamination removal
       url: /images/{subject_slug}-laser-cleaning-hero.jpg
     closeup:
-      alt: [Descriptive alt text for detail image]  
+      alt: Microscopic view of {subject} surface after laser treatment showing preserved microstructure
       url: /images/{subject_slug}-laser-cleaning-closeup.jpg
-  title: [SEO-optimized article title]
-  headline: [Compelling article headline]
+  title: Laser Cleaning {subject} - Technical Guide for Optimal Processing
+  headline: Comprehensive technical guide for laser cleaning {category} {subject_lowercase}
   environmentalImpact:
-  - benefit: [Environmental benefit]
-    description: [Detailed quantifiable description]
-  [Additional environmental benefits]
+  - benefit: [Environmental benefit 1]
+    description: [Quantified description with numbers]
+  - benefit: [Environmental benefit 2]
+    description: [Quantified description with numbers]
+  - benefit: [Environmental benefit 3]
+    description: [Quantified description with numbers]
   outcomes:
-  - result: [Measurable outcome]
-    metric: [Specific measurement with standards]
-  [Additional measurable outcomes]
+  - result: [Measurable result 1]
+    metric: [Specific measurement with standard]
+  - result: [Measurable result 2]
+    metric: [Specific measurement with standard]
+  - result: [Measurable result 3]
+    metric: [Specific measurement with standard]
   subject: {subject}
   article_type: {article_type}
   ---
 
-  GUIDANCE:
-  - Write natural, technically accurate content for each field
-  - Include specific numerical values with proper units
-  - Use real-world applications and technical parameters
-  - Make environmental impact and outcomes quantifiable
-  - Generate appropriate expert author names
-  - Create comprehensive but natural keyword lists
-  - Focus on technical accuracy while maintaining readability
+  REQUIREMENTS:
+  - Replace ALL [bracketed placeholders] with specific technical content
+  - Use proper YAML formatting with correct indentation
+  - Include specific numerical values with units
+  - Make content specific to {subject} material
+  - Use realistic expert author names
+  - Include proper technical specifications for laser cleaning
 
-  MATERIAL CONTEXT:
-  - Chemical formula: {material_formula}
-  - Chemical symbol: {material_symbol}  
-  - Material type: {material_type}
-  - Category: {category}
-
-  {schema}
+generation_parameters:
+  max_tokens: 3000
+  temperature: 0.7
 
 parameters:
   max_tokens: 3000

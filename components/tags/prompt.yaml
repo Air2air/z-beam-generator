@@ -1,46 +1,25 @@
 name: "Tags Generator"
 description: "Generates concise tags for laser cleaning articles using base component data, optimized for on-site navigation."
 version: "4.0.0"
+
 template: |
-  Generate navigation tags for {article_type} "{subject}" laser cleaning using the template structure.
-  
-  TEMPLATE-BASED OUTPUT:
-  Use the tags template structure below and create {min_tags} to {max_tags} relevant tags.
-  Output tags as a comma-separated list following the template pattern.
+  Generate navigation tags for {subject} laser cleaning.
 
-  TAGS TEMPLATE STRUCTURE:
-  material-tag, [property-tag], [application-tag], laser-[process], {category}-material
-
-  TEMPLATE GUIDELINES:
-  - material-tag: Use {subject} or related material terms
-  - [property-tag]: Material properties (density, thermal, conductive, etc.)
-  - [application-tag]: Industrial applications (aerospace, automotive, manufacturing, etc.)
-  - laser-[process]: Laser processes (laser-ablation, laser-cleaning, laser-processing, etc.)
-  - {category}-material: Category-based tags ({category}-material, {category}-processing, etc.)
+  Output EXACTLY 8 tags as a comma-separated list like this example:
+  ablation, fused-silica, sio2, cleaning, laser, aerospace, non-contact, evelyn wu
 
   REQUIREMENTS:
-  - Generate between {min_tags} and {max_tags} tags total
-  - Output ONLY a comma-separated list (e.g., "tag1, tag2, tag3")
-  - Use single words when possible, hyphens only for compound concepts
-  - Maximum 2 words per tag
-  - Focus on laser cleaning applications and {subject}
-  - Include material, process, and application categories
-  - Ensure all tags are relevant to "{subject}" laser cleaning
-
-  AVAILABLE BASE COMPONENT DATA:
-  Subject: {subject}
-  Article Type: {article_type}
-  Material Formula: {material_formula}
-  Material Symbol: {material_symbol}
-  Material Type: {material_type}
-  Category: {category}
+  - Output exactly 8 tags
+  - Use single words or hyphenated terms only
+  - Include material name (use {subject} or chemical symbol)
+  - Include "ablation", "cleaning", "laser"
+  - Include 1-2 industry applications (aerospace, automotive, manufacturing, electronics, etc.)
+  - Include "non-contact" 
+  - Include 1 author name (first name + last name, lowercase)
+  - Make tags relevant to {subject} laser cleaning
+  - Use lowercase throughout
+  - Output ONLY the comma-separated list, no other text
 
 parameters:
   max_tokens: 500
   temperature: 0.5
-validation:
-  min_tags: "{min_tags}"
-  max_tags: "{max_tags}"
-  max_words_per_tag: 2
-  title_case: true
-  unique_tags: true

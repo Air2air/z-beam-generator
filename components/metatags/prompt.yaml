@@ -3,22 +3,19 @@ description: "Generates Next.js compatible meta tags using base component data"
 version: "4.0.0"
 
 template: |
-  You MUST generate metatags for {article_type} "{subject}" using the EXACT template structure below.
+  Generate meta tags for {subject} laser cleaning.
 
-  Replace ONLY the placeholder values in square brackets [like this] with SEO-optimized content.
-  Copy the structure EXACTLY - do not change the field names, organization, or YAML formatting.
-
-  OUTPUT THIS EXACT STRUCTURE WITH YOUR DATA:
+  Output EXACTLY this YAML structure:
 
   ---
   title: Laser Cleaning {subject} - Technical Guide for Optimal Processing
   meta_tags:
     - name: description
-      content: "Technical overview of {subject}, {material_formula}, for laser cleaning applications, including [density value] density, [wavelength] wavelength, and industrial applications."
+      content: "Technical overview of {subject}, {material_formula}, for laser cleaning applications, including [density value], [wavelength value], and industrial applications."
     - name: keywords
-      content: "{subject} [additional keywords], {subject} {category}, laser ablation, laser cleaning, non-contact cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters, thermal processing, surface restoration"
+      content: "{subject_lowercase}, {subject_lowercase} {category}, laser ablation, laser cleaning, non-contact cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters, thermal processing, surface restoration"
     - name: author
-      content: "[Expert author name]"
+      content: "[Expert Author Name]"
     - name: category
       content: "{category}"
     - name: robots
@@ -27,7 +24,7 @@ template: |
     - property: og:title
       content: "Laser Cleaning {subject} - Technical Guide for Optimal Processing"
     - property: og:description
-      content: "Comprehensive technical guide for laser cleaning {subject}"
+      content: "Comprehensive technical guide for laser cleaning {category} {subject_lowercase}"
     - property: og:type
       content: "article"
     - property: og:image
@@ -36,19 +33,15 @@ template: |
       content: "{subject} surface undergoing laser cleaning showing precise contamination removal"
   ---
 
-  CRITICAL REQUIREMENTS:
-  - Copy the structure EXACTLY as shown above
-  - Replace ALL bracketed placeholders [like this] with real SEO content
-  - Keep all field names exactly as shown
-  - Meta description must be 150-160 characters and technically accurate
-  - Keywords should include 10-15 relevant laser cleaning terms
-  - Generate appropriate expert author name
-  - Use specific technical terminology for {subject}
+  REQUIREMENTS:
+  - Copy the YAML structure EXACTLY as shown
+  - Replace [density value] with specific density like "2.5 g/cm³ density"
+  - Replace [wavelength value] with specific wavelength like "1064nm wavelength"
+  - Replace [Expert Author Name] with realistic expert name like "Dr. Sarah Johnson"
+  - Keep all other field names exactly as shown
+  - Ensure proper YAML indentation (2 spaces)
+  - Meta description should be 150-160 characters
 
-  AVAILABLE BASE COMPONENT DATA:
-  Subject: {subject}
-  Article Type: {article_type}
-  Material Formula: {material_formula}
-  Material Symbol: {material_symbol}
-  Material Type: {material_type}
-  Category: {category}
+parameters:
+  max_tokens: 1500
+  temperature: 0.7

@@ -149,7 +149,7 @@ class ContentWriter:
         self.content_dir.mkdir(exist_ok=True)
     
     def write_component(self, component: GeneratedComponent) -> bool:
-        """Write a validated component to disk."""
+        """Write a validated component to disk with automatic post-processing and validation."""
         if not component.is_valid:
             logger.error(f"Cannot write invalid component: {component.material.name}/{component.component_type}")
             return False
@@ -165,6 +165,32 @@ class ContentWriter:
         
         with open(filepath, 'w') as f:
             f.write(component.content)
+        
+        # Apply automatic post-processing and validation
+        try:
+            from validators.centralized_validator import CentralizedValidator
+            validator = CentralizedValidator()
+            
+            # Step 1: Apply post-processing cleanup
+            post_processed = validator.post_process_generated_content(str(filepath), component.component_type)
+            if post_processed:
+                logger.info(f"✅ Applied post-processing cleanup to {filepath}")
+            
+            # Step 2: Run validation and auto-fixes
+            validation_successful = validator.validate_and_fix_component_immediately(
+                component.material.name, 
+                component.component_type, 
+                max_retries=2, 
+                force_fix=True
+            )
+            
+            if validation_successful:
+                logger.info(f"✅ Automatic validation and fixes completed for {filepath}")
+            else:
+                logger.warning(f"⚠️ Validation issues remain after auto-fixes for {filepath}")
+                
+        except Exception as e:
+            logger.warning(f"Post-processing/validation failed for {filepath}: {e}")
         
         logger.info(f"Wrote component: {filepath}")
         return True

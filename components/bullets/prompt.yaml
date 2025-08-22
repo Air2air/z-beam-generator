@@ -3,74 +3,33 @@ description: "Generates comprehensive bullet points using base component data an
 version: "4.0.0"
 
 template: |
-  Generate comprehensive bullet points for {article_type} "{subject}" in laser cleaning applications.
-  
-  TEMPLATE-BASED OUTPUT:
-  Use the bullet template structure and create exactly {count} comprehensive bullet points.
-  Output bullets in markdown format using the bullet structure.
+  Generate exactly 4 bullet points for {subject} laser cleaning.
 
-  BULLET TEMPLATE STRUCTURE:
-  • [Category]: [Specific technical value with units]
-  • [Property type]: [Detailed specification or measurement]
-  • [Application area]: [Specific use case with parameters]
-  • [Performance metric]: [Quantifiable measurement with standards]
-  • [Processing parameter]: [Technical specification with conditions]
+  Output EXACTLY this format with 4 bullet points:
+
+  * **[Technical Aspect]**: [Detailed technical description with specific parameters and values]
+  * **[Application Area]**: [Specific application with technical details and industry context]
+  * **[Process Advantage]**: [Advantage description with quantitative details and comparisons]
+  * **[Technical Consideration]**: [Important technical consideration with specific parameters and requirements]
 
   REQUIREMENTS:
-  - Generate exactly {count} comprehensive bullet points
-  - Include specific numerical values with proper units
-  - Cover key technical specifications and applications
-  - Use laser cleaning industry terminology
-  - Focus on measurable outcomes and properties
-  - Include material-specific advantages and characteristics
+  - Generate exactly 4 bullet points
+  - Each bullet must start with * **[Category]**: 
+  - Include specific technical values (wavelengths, power, dimensions, etc.)
+  - Cover different aspects: technical specs, applications, advantages, considerations
+  - Use technical terminology appropriate for {subject}
+  - Make content specific to laser cleaning of {subject}
+  - Include quantitative data where relevant
 
-  CONTENT AREAS TO COVER:
-  - Technical specifications (power, wavelength, spot size, fluence)
-  - Material properties (density, melting point, thermal conductivity)
-  - Key applications with specific industrial use cases
-  - Environmental benefits with quantifiable data
-  - Performance metrics and measurable outcomes
-  - Processing advantages and efficiency gains
-  - Safety characteristics and operational requirements
-
-  AVAILABLE BASE COMPONENT DATA:
-  Subject: {subject}
-  Article Type: {article_type}
-  Material Formula: {material_formula}
-  Material Symbol: {material_symbol}
-  Material Type: {material_type}
-  Category: {category}
-  
-  PRE-FORMATTED CONTEXT:
-  Title: {formatted_title}
-  Headline: {formatted_headline}
-  Description: {formatted_description}
-  Keywords: {formatted_keywords}
-  Technical Specs: {formatted_technical_specs}
-
-# Condensed template used when frontmatter data is available
-condensed_template: |
-  Generate key bullet points for {subject} in laser cleaning based on the base component data.
-  
-  CONTENT GUIDANCE:
-  - Extract the most significant technical details from base component data
-  - Prioritize specifications, applications, and benefits
-  - Keep points concise but technically precise
-  - Generate exactly {count} comprehensive bullet points
-  
-  AVAILABLE BASE COMPONENT DATA:
-  Subject: {subject}
-  Material Formula: {material_formula}
-  Material Symbol: {material_symbol}
-  Category: {category}
-  
-  PRE-FORMATTED CONTENT:
-  Title: {formatted_title}
-  Description: {formatted_description}
-  Keywords: {formatted_keywords}
-  
-  Focus on providing rich technical content. All bullet formatting, structure, 
-  and markdown formatting will be handled by Python utilities.
+  EXAMPLE CATEGORIES to use:
+  - Optimal Wavelength for Laser Cleaning
+  - Non-Contact Precision Cleaning  
+  - Industrial Applications
+  - Thermal Processing Considerations
+  - Surface Preparation Benefits
+  - Material-Specific Advantages
+  - Processing Parameters
+  - Quality Control Aspects
 
 parameters:
   max_tokens: 2000

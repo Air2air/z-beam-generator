@@ -1,0 +1,5 @@
+• Key property: [value]
+• Material type: [category]
+• Primary application: [use_case]
+• Performance metric: [measurement]
+• Processing parameter: [specification]

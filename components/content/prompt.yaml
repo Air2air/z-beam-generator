@@ -3,80 +3,53 @@ description: "Generates comprehensive article content using base component data 
 version: "4.0.0"
 
 template: |
-  Write comprehensive article content about {subject} for the laser cleaning industry.
-  
-  TEMPLATE-BASED CONTENT STRUCTURE:
-  Generate a well-structured technical article following this content template:
+  Write a comprehensive technical article about {subject} laser cleaning.
 
-  ## Introduction
-  [Technical overview of {subject} with material formula {material_formula} and key properties]
+  Use EXACTLY this structure and format:
 
-  ## Material Properties and Characteristics
-  [Detailed section covering physical and chemical properties, composition, and material-specific characteristics]
+  # Laser Cleaning {subject} - Technical Guide for Optimal Processing  
 
-  ## Laser Cleaning Applications
-  [Comprehensive coverage of industrial applications with specific examples and parameters]
+  ## Overview  
+  [Technical overview of {subject} with material formula {material_formula} and key properties. Mention that these are used in industrial applications and present unique challenges and opportunities in laser cleaning processes. Include the chemical formula and reinforcement/composition details.]
 
-  ## Technical Specifications and Parameters
-  [Detailed laser processing parameters, optimal settings, and technical requirements]
+  ## Key Properties & Laser Interaction  
+  [Detailed section covering how {subject} exhibits specific thermal characteristics and responds to laser irradiation. Include:
+  - Absorption at specific wavelengths (mention 1064 nm effectiveness)
+  - Thermal degradation thresholds and energy control requirements
+  - Any compositional factors that influence laser cleaning behavior]
 
-  ## Environmental Benefits and Considerations
-  [Environmental advantages, efficiency gains, and sustainability aspects]
+  ## Industrial Applications  
+  [Comprehensive coverage of where laser cleaning of {subject} is critical, including:
+  - 2-3 specific industry applications with technical details
+  - Real examples of cleaning applications (removing coatings, oxides, etc.)
+  - Specific use cases relevant to the material type]
 
-  ## Industry Standards and Regulatory Aspects
-  [Relevant standards, regulatory requirements, and certification details]
+  ## Optimal Laser Parameters  
+  [Detailed laser processing parameters section including:
+  - Recommended wavelength (typically 1064 nm)
+  - Pulse duration ranges (typically 10-100 ns)
+  - Fluence ranges with adjustments based on material properties
+  - Repetition rates for balanced speed and precision]
 
-  ## Future Outlook and Developments
-  [Emerging trends, technological advances, and market developments]
+  ## Advantages Over Traditional Methods  
+  [List 3-4 key advantages such as:
+  - Non-abrasive characteristics
+  - Selective cleaning capabilities
+  - Environmental benefits compared to chemical methods]
 
-  CONTENT REQUIREMENTS:
-  - Write between {min_words} and {max_words} words
-  - Focus on technical accuracy and completeness
-  - Use specific numerical values and technical parameters
-  - Include real-world examples and applications
-  - Maintain a technical but accessible writing style
-  - Reference material properties and laser cleaning benefits
-  - Provide substantial detail in each section
+  ## Conclusion  
+  [Summary paragraph emphasizing how {subject} responds to laser cleaning, parameter optimization importance, and industry applications. Mention pulsed fiber lasers and specific wavelengths for best results.]
 
-  AVAILABLE BASE COMPONENT DATA:
-  Subject: {subject}
-  Article Type: {article_type}
-  Material Formula: {material_formula}
-  Material Symbol: {material_symbol}
-  Material Type: {material_type}
-  Category: {category}
-  
-  PRE-FORMATTED CONTEXT:
-  Title: {formatted_title}
-  Headline: {formatted_headline}
-  Description: {formatted_description}
-  Keywords: {formatted_keywords}
-  Technical Specs: {formatted_technical_specs}
-  Environmental Impact: {formatted_environmental_impact}
+  **Keywords**: [Include {subject}, laser ablation, non-contact cleaning, pulsed fiber laser, chemical formula, industrial laser parameters, surface restoration]
 
-# Condensed template used when frontmatter data is available
-condensed_template: |
-  Write a comprehensive {article_type} article about {subject} for the laser cleaning industry.
-  
-  CONTENT GUIDANCE:
-  - Focus on technical accuracy and completeness using base component data
-  - Maintain a technical but accessible writing style
-  - Elaborate on the specifications and applications
-  - Write between {min_words} and {max_words} words
-  
-  AVAILABLE BASE COMPONENT DATA:
-  Subject: {subject}
-  Material Formula: {material_formula}
-  Material Symbol: {material_symbol}
-  Category: {category}
-  
-  PRE-FORMATTED CONTENT:
-  Title: {formatted_title}
-  Description: {formatted_description}
-  Keywords: {formatted_keywords}
-  
-  Focus on providing rich, detailed content. All article structure and 
-  markdown formatting will be handled by Python utilities.
+  REQUIREMENTS:
+  - Write 400-800 words total
+  - Use technical terminology appropriate for {subject}
+  - Include specific numerical values and parameters
+  - Make content material-specific, not generic
+  - Use the exact section structure shown above
+  - Include chemical formula {material_formula} in overview
+  - End with keywords section using **Keywords**: format
 
 parameters:
   max_tokens: 4000
