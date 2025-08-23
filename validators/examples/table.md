@@ -21,28 +21,22 @@
 | --- | --- | --- |
 | Corrosion Rate (Seawater) | 0.05-0.2 | mm/year (25°C) |
 | Fatigue Strength | 70-100 | MPa (10⁷ cycles) |
-| Hardness (Brinell) | 35-150 | HB (annealed to cold-worked) |
+| Hardness (Brinell) | 35-150 | HB (annealed) |
 | Reflectivity (IR) | ≥98% | λ = 1064nm |
 
-| Application | Benefit | Quantifiable Impact |
-| --- | --- | --- |
-| Electrical Wiring | Low resistivity (1.68 µΩ·cm) | Saves ~15% energy vs. aluminum |
-| Heat Exchangers | Thermal conductivity (401 W/m·K) | 30% higher efficiency than stainless steel |
-| Antimicrobial Surfaces | Kills 99.9% bacteria in 2h | EPA-registered (Cu-ETP alloys) |
-| Laser Processing | Absorption ~60% at 1064nm | Optimal for 1-5 J/cm² fluence range |
 
 | Standard | Scope |
 | --- | --- |
-| ASTM B152/B152M | Sheet/strip/plate specifications |
-| ISO 431 | High-conductivity copper rod |
-| EN 1172 | Copper for roofing/cladding |
-| IEC 60028 | International resistivity standard |
+| ASTM B152/B152M | Sheet/strip/plate  |
+| ISO 431 | High-conductivity copper  |
+| EN 1172 | Copper for roofing |
+| IEC 60028 | International resistivity std |
 
 | Parameter | Value | Unit |
 | --- | --- | --- |
-| Recyclability | 100% | Reusable without degradation |
-| Embodied Energy | 42-60 | MJ/kg (primary production) |
-| CO₂ Footprint | 2.5-4.0 | kg CO₂/kg (recycled vs. virgin) |
+| Recyclability | 100% | Reusable  |
+| Embodied Energy | 42-60 | MJ/kg  |
+| CO₂ Footprint | 2.5-4.0 | kg CO₂/kg |
 | EU RoHS Compliance | Exempt (Annex III) | - |
 
 | Parameter | Range |

@@ -445,9 +445,9 @@ INDONESIAN AUTHOR REQUIREMENTS:
 - Generate EXACTLY 6 bullets
 - Each bullet must have EXACTLY 1 sentence
 - Use bullet format with • prefix
-- Start each bullet with **Aspek [Topic]:** (use "Aspek" meaning "Aspect", but write everything else in English)
+- Start each bullet with **Aspect [Topic]:** (use English "Aspect" for all content)
 - Order: Environmental → Safety → Applications → Parameters → Challenges → Benefits
-- CRITICAL: Write ONLY in English after "Aspek [Topic]:" - do not use Indonesian language
+- CRITICAL: Write ONLY in English for all content including headers
 - Incorporate Indonesian tropical/humid environment and industrial context in English
 - Emphasize sustainability and regional manufacturing considerations"""
                 

@@ -3,45 +3,34 @@ description: "Generates comprehensive tables using base component data and mater
 version: "4.1.0"
 
 template: |
-  Generate comprehensive technical tables for {article_type} "{subject}" in laser cleaning applications.
+  Generate simple technical tables for {subject} laser cleaning properties.
   
-  TEMPLATE-BASED OUTPUT:
-  Use the table template structure and create informative tables with accurate technical data.
-  Output tables in markdown format using the table structure.
-
-  TABLE TEMPLATE STRUCTURE:
-  | Property | Value | Unit | Application |
-  |----------|-------|------|-------------|
-  | [Material Property] | [Specific Value] | [Standard Unit] | [Industrial Application] |
-  | [Laser Parameter] | [Technical Value] | [Measurement Unit] | [Processing Application] |
-  | [Performance Metric] | [Measured Value] | [Standard Unit] | [Outcome Application] |
-
+  Create concise tables with headings using this format:
+  
+  ## Table Name
+  | Property | Value | Unit |
+  | --- | --- | --- |
+  
   REQUIREMENTS:
-  - Create 2-3 comprehensive tables covering different aspects
-  - Include specific numerical values with standard units
-  - Cover material properties, laser parameters, and performance data
-  - Use proper technical terminology and industry standards
-  - Ensure all data is technically accurate and relevant
-  - Format tables using standard markdown syntax
-
-  TABLE TYPES TO INCLUDE:
-  1. Material Properties Table (density, melting point, thermal conductivity, etc.)
-  2. Laser Processing Parameters Table (wavelength, power, fluence, pulse duration, etc.)
-  3. Performance Metrics Table (cleaning rates, efficiency, environmental benefits, etc.)
-
-  AVAILABLE BASE COMPONENT DATA:
-  Subject: {subject}
-  Article Type: {article_type}
-  Material Formula: {material_formula}
-  Material Symbol: {material_symbol}
-  Material Type: {material_type}
-  Category: {category}
+  - Generate 4-6 simple tables with descriptive headings
+  - Each table has 3 columns (Property | Value | Unit) and 3-8 rows maximum
+  - Include specific numerical values where applicable
+  - Cover: basic properties, grades/purity, performance metrics, standards, environmental data, laser parameters
+  - Use concise property names and precise values
+  - Add clear, descriptive headings using ## format
+  - No additional text or explanations beyond headings and tables
+  - Format using standard markdown table syntax
   
-  PRE-FORMATTED CONTEXT:
-  Technical Specs: {formatted_technical_specs}
-  Environmental Impact: {formatted_environmental_impact}
-  Regulatory Standards: {formatted_regulatory_standards}
+  EXAMPLE TABLE TYPES WITH HEADINGS:
+  ## Material Properties
+  ## Material Grades and Purity
+  ## Performance Metrics  
+  ## Standards and Compliance
+  ## Environmental Data
+  ## Laser Cleaning Parameters
+  
+  Use proper technical units and accurate values for {subject}.
 
 parameters:
-  max_tokens: 2000
-  temperature: 0.7
+  max_tokens: 1200
+  temperature: 0.5
