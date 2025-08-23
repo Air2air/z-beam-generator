@@ -896,6 +896,123 @@ def clean_content_components():
         return False
 
 
+def run_cleanup_scan():
+    """Run comprehensive cleanup scan (dry-run only)."""
+    print("🧹 Z-BEAM CLEANUP SCAN")
+    print("=" * 50)
+    print("Scanning for cleanup opportunities (dry-run mode)...")
+    print("=" * 50)
+    
+    try:
+        # Import standalone cleanup manager (decoupled from tests)
+        from cleanup.cleanup_manager import CleanupManager
+        
+        # Initialize cleanup manager in safe dry-run mode
+        cleanup_manager = CleanupManager(Path.cwd(), dry_run=True)
+        
+        # Run comprehensive cleanup scan
+        results = cleanup_manager.scan()
+        
+        # Display results
+        print("\n📊 CLEANUP SCAN RESULTS")
+        print("=" * 50)
+        
+        total_issues = results['total_issues']
+        for category, items in results['categories'].items():
+            count = len(items) if isinstance(items, list) else 0
+            
+            category_name = category.replace('_', ' ').title()
+            print(f"📋 {category_name}: {count} items")
+            
+            if count > 0 and count <= 5:  # Show details for small lists
+                for item_path, reason in items[:5]:
+                    print(f"   • {item_path} - {reason}")
+            elif count > 5:
+                for item_path, reason in items[:3]:
+                    print(f"   • {item_path} - {reason}")
+                print(f"   ... and {count - 3} more items")
+        
+        print(f"\n🎯 SUMMARY:")
+        print(f"   Total cleanup opportunities: {total_issues}")
+        
+        if total_issues == 0:
+            print("   ✅ No cleanup needed - project is clean!")
+        elif total_issues <= 10:
+            print("   🟡 Minor cleanup opportunities found")
+        else:
+            print("   🔴 Significant cleanup opportunities found")
+        
+        print(f"\n💡 NEXT STEPS:")
+        if total_issues > 0:
+            print("   • Review the items listed above")
+            print("   • Run --cleanup-report for detailed analysis")
+            print("   • Use --clean to remove generated content files")
+        else:
+            print("   • Project is clean, no action needed")
+        
+        return True
+        
+    except ImportError as e:
+        print(f"❌ Error importing cleanup system: {e}")
+        print("   Make sure tests/test_cleanup.py is available")
+        return False
+    except Exception as e:
+        print(f"❌ Error during cleanup scan: {e}")
+        return False
+
+
+def run_cleanup_report():
+    """Generate comprehensive cleanup report."""
+    print("📋 Z-BEAM CLEANUP REPORT GENERATION")
+    print("=" * 50)
+    print("Generating comprehensive cleanup report...")
+    print("=" * 50)
+    
+    try:
+        # Import standalone cleanup manager (decoupled from tests)
+        from cleanup.cleanup_manager import CleanupManager
+        
+        # Initialize cleanup manager in safe dry-run mode
+        cleanup_manager = CleanupManager(Path.cwd(), dry_run=True)
+        
+        # Run comprehensive cleanup scan
+        report_path = cleanup_manager.generate_report()
+        results = cleanup_manager.scan()
+        
+        # Display summary
+        print("\n📊 CLEANUP REPORT SUMMARY")
+        print("=" * 50)
+        
+        for category, items in results['categories'].items():
+            count = len(items) if isinstance(items, list) else 0
+            category_name = category.replace('_', ' ').title()
+            print(f"📋 {category_name}: {count} items")
+        
+        print(f"\n🎯 SUMMARY:")
+        print(f"   Total cleanup opportunities: {results['total_issues']}")
+        print(f"   Report timestamp: {results['timestamp']}")
+        print(f"   Dry-run mode: True")
+        
+        print(f"\n💾 REPORT SAVED:")
+        print(f"   File: {report_path}")
+        print(f"   Size: {Path(report_path).stat().st_size} bytes")
+        
+        print(f"\n💡 USAGE:")
+        print("   • Review cleanup/cleanup_report.json for detailed analysis")
+        print("   • Use --cleanup-scan for quick overview")
+        print("   • Use --clean to remove generated content files")
+        
+        return True
+        
+    except ImportError as e:
+        print(f"❌ Error importing cleanup system: {e}")
+        print("   Make sure tests/test_cleanup.py is available")
+        return False
+    except Exception as e:
+        print(f"❌ Error generating cleanup report: {e}")
+        return False
+
+
 def create_arg_parser():
     """Create and return the argument parser for the Z-Beam system."""
     parser = argparse.ArgumentParser(
@@ -952,6 +1069,16 @@ EXAMPLES:
         action="store_true",
         help="Remove all generated content files from content/components subfolders",
     )
+    parser.add_argument(
+        "--cleanup-scan",
+        action="store_true",
+        help="Scan for dead files, unused files, and other cleanup opportunities (dry-run)",
+    )
+    parser.add_argument(
+        "--cleanup-report",
+        action="store_true",
+        help="Generate comprehensive cleanup report and save to cleanup/cleanup_report.json",
+    )
 
     # Listing operations
     parser.add_argument(
@@ -1004,6 +1131,14 @@ def main():
         elif args.clean:
             # Content cleanup mode
             success = clean_content_components()
+
+        elif args.cleanup_scan:
+            # Cleanup scan mode (dry-run)
+            success = run_cleanup_scan()
+
+        elif args.cleanup_report:
+            # Cleanup report generation
+            success = run_cleanup_report()
 
         elif (
             args.list_materials

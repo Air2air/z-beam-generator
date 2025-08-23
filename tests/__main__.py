@@ -2,7 +2,7 @@
 """
 Z-Beam Test Suite Main Runner
 
-Simplified test runner for core functionality:
+Provides comprehensive test suite execution with enhanced reporting and more functionality:
 - Default: Run all available tests including API response validation
 
 Usage:
@@ -53,22 +53,90 @@ def run_test_suite(test_file: str, description: str) -> tuple[bool, float]:
         return False, duration
 
 def run_all_tests() -> dict:
-    """Run complete test suite with API response validation"""
-    print("🧪 Z-BEAM TEST SUITE")
+    """Run comprehensive test suite (excluding cleanup)"""
+    print("🧪 Z-BEAM COMPREHENSIVE TEST SUITE")
     print("=" * 60)
-    print("Running all tests including API response validation...")
+    print("Running all core system tests...")
     
+    # Define available test suites (EXCLUDING cleanup)
     test_suites = [
+        ("test_api_comprehensive.py", "API Provider Tests"),
+        ("test_api_providers.py", "API Integration Tests"), 
+        ("test_author_component.py", "Author Component Tests"),
         ("test_authors.py", "Author System Tests"),
-        ("test_author_component.py", "Author Component Tests"), 
-        ("test_templates.py", "Component Template Tests"),
+        ("test_component_config.py", "Component Configuration Tests"),
         ("test_dynamic_system.py", "Dynamic System Tests"),
-        ("test_api_comprehensive.py", "API Response & Integration Tests"),
-        ("test_component_config.py", "Component Configuration Tests"), 
-        ("test_integration.py", "Integration Tests")
+        ("test_integration.py", "Integration Tests"),
+        ("test_templates.py", "Template Tests")
     ]
     
     return run_test_suites(test_suites, "COMPLETE")
+
+def run_cleanup_only() -> dict:
+    """Run only cleanup tests"""
+    print("🧹 Z-BEAM CLEANUP SUITE")
+    print("=" * 60)
+    print("Running cleanup system tests...")
+    
+    test_suites = [
+        ("../cleanup/test_cleanup.py", "Cleanup System Tests")
+    ]
+    
+    return run_test_suites(test_suites, "CLEANUP")
+
+def run_with_coverage(cleanup_only: bool = False) -> dict:
+    """Run tests with coverage analysis"""
+    print("📊 Z-BEAM COVERAGE ANALYSIS")
+    print("=" * 60)
+    print("Running tests with coverage tracking...")
+    
+    try:
+        import coverage
+        
+        # Initialize coverage
+        cov = coverage.Coverage()
+        cov.start()
+        
+        # Run appropriate test suite
+        if cleanup_only:
+            results = run_cleanup_only()
+        else:
+            results = run_all_tests()
+        
+        # Stop coverage and generate report
+        cov.stop()
+        cov.save()
+        
+        print("\n📈 COVERAGE REPORT")
+        print("=" * 50)
+        cov.report()
+        
+        # Generate HTML coverage report
+        html_dir = Path(__file__).parent / "coverage_html"
+        cov.html_report(directory=str(html_dir))
+        print(f"\n📋 HTML Report: {html_dir}/index.html")
+        
+        return results
+        
+    except ImportError:
+        print("❌ Coverage package not installed. Install with:")
+        print("   pip install coverage")
+        print("\nRunning tests without coverage...")
+        
+        # Fallback to regular test run
+        if cleanup_only:
+            return run_cleanup_only()
+        else:
+            return run_all_tests()
+    except Exception as e:
+        print(f"❌ Coverage analysis failed: {e}")
+        print("Running tests without coverage...")
+        
+        # Fallback to regular test run
+        if cleanup_only:
+            return run_cleanup_only()
+        else:
+            return run_all_tests()
 
 def run_test_suites(test_suites: list, suite_type: str) -> dict:
     """Run a list of test suites and return results"""
@@ -109,14 +177,14 @@ def run_test_suites(test_suites: list, suite_type: str) -> dict:
     failed = len(results) - passed
     success_rate = (passed / len(results)) * 100 if results else 0
     
-    print(f"📈 OVERALL STATISTICS:")
+    print("📈 OVERALL STATISTICS:")
     print(f"   Total Test Suites: {len(results)}")
     print(f"   ✅ Passed: {passed}")
     print(f"   ❌ Failed: {failed}")
     print(f"   📊 Success Rate: {success_rate:.1f}%")
     print(f"   ⏱️  Total Duration: {total_duration:.2f} seconds")
     
-    print(f"\n📋 DETAILED RESULTS:")
+    print("\n📋 DETAILED RESULTS:")
     for result in results:
         status = "✅ PASS" if result['success'] else "❌ FAIL"
         print(f"   {result['name']:<35} {status} ({result['duration']:.2f}s)")
@@ -124,12 +192,12 @@ def run_test_suites(test_suites: list, suite_type: str) -> dict:
     # Failed suites
     failed_suites = [r['name'] for r in results if not r['success']]
     if failed_suites:
-        print(f"\n⚠️  FAILED SUITES:")
+        print("\n⚠️  FAILED SUITES:")
         for suite in failed_suites:
             print(f"   ❌ {suite}")
     
     # System assessment
-    print(f"\n🎯 SYSTEM ASSESSMENT:")
+    print("\n🎯 SYSTEM ASSESSMENT:")
     if success_rate == 100:
         print("🎉 EXCELLENT! All test suites passed.")
         print("   The Z-Beam system is fully operational and ready for production use.")
@@ -148,7 +216,7 @@ def run_test_suites(test_suites: list, suite_type: str) -> dict:
         assessment = "POOR"
     
     # Recommendations
-    print(f"\n💡 RECOMMENDATIONS:")
+    print("\n💡 RECOMMENDATIONS:")
     if assessment == "EXCELLENT":
         print("   • System is ready for production use")
         print("   • Consider setting up continuous integration")
@@ -166,7 +234,7 @@ def run_test_suites(test_suites: list, suite_type: str) -> dict:
         print("   • Review all error messages and logs")
         print("   • Check system dependencies and configuration")
     
-    print(f"\n📝 NEXT STEPS:")
+    print("\n📝 NEXT STEPS:")
     if failed_suites:
         print("   1. Review and fix failing tests")
         print("   2. Re-run test suite: python3 -m tests")
@@ -194,23 +262,45 @@ def main():
         epilog="""
 Examples:
   python3 -m tests              # Run all tests (default)
+  python3 -m tests --cleanup    # Run only cleanup tests
 
 Test Suite:
   Core Tests: System functionality, API response validation, configuration, integration
+  Cleanup Tests: Dead files, unused files, temporary files, empty directories
         """
     )
     
-    # Optional verbose flag
+    # Optional flags
     parser.add_argument(
         '--verbose', '-v',
         action='store_true',
         help='Enable verbose output'
     )
     
+    parser.add_argument(
+        '--cleanup',
+        action='store_true',
+        help='Run only cleanup system tests'
+    )
+    
+    parser.add_argument(
+        '--coverage',
+        action='store_true',
+        help='Run tests with coverage analysis'
+    )
+    
     args = parser.parse_args()
     
-    # Always run all tests
-    results = run_all_tests()
+    # Run appropriate test suite
+    if args.coverage:
+        # Coverage mode - can be combined with cleanup
+        results = run_with_coverage(cleanup_only=args.cleanup)
+    elif args.cleanup:
+        # Cleanup only mode
+        results = run_cleanup_only()
+    else:
+        # Standard test mode
+        results = run_all_tests()
     
     # Return appropriate exit code
     return 0 if results.get("success", False) else 1
