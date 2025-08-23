@@ -7,33 +7,70 @@ template: |
   
   TEMPLATE-BASED OUTPUT:
   Use the JSON-LD template structure below and fill in ALL fields with comprehensive content.
-  Output the complete YAML structure using this exact format.
+  Output the complete JSON-LD structure using this exact format.
 
   JSON-LD TEMPLATE:
-  ---
-  headline: Laser Cleaning of {subject} Materials
-  description: Advanced laser cleaning techniques for {subject} materials, ensuring precision surface treatment while preserving the material's structural integrity.
-  keywords:
-  - {subject} laser cleaning
-  - {subject} {category} cleaning
-  - non-abrasive surface treatment
-  - {subject} material processing
-  - precision cleaning
-  - industrial applications
-  - [additional specific keyword]
-  - [additional technical keyword]
-  articleBody: "{subject} is a {category} material widely used in industrial applications due to its excellent properties. Laser cleaning offers a precise, non-contact method for removing contaminants, coatings, and surface oxidation without compromising the material's structural integrity. The process utilizes controlled laser parameters to selectively ablate unwanted material while preserving the underlying {subject} substrate. [Continue with detailed technical content about {subject} laser cleaning applications, benefits, and specifications]."
-  image:
-  - /images/{subject_slug}-laser-cleaning-hero.jpg
-  - /images/{subject_slug}-laser-cleaning-closeup.jpg
-  datePublished: 2025-08-08
-  dateModified: 2025-08-08
-  author: {author_name}
-  materialType: {category}
-  chemicalFormula: {material_formula}
-  materialSymbol: {material_symbol}
-  subjectSlug: {subject_slug}
-  ---
+  ```json
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Laser Cleaning of {subject} Materials",
+    "description": "Advanced laser cleaning techniques for {subject} materials, ensuring precision surface treatment while preserving the material's structural integrity.",
+    "keywords": [
+      "{subject} laser cleaning",
+      "{subject} {category} cleaning",
+      "non-abrasive surface treatment",
+      "{subject} material processing",
+      "precision cleaning",
+      "industrial applications",
+      "[additional specific keyword]",
+      "[additional technical keyword]"
+    ],
+    "articleBody": "{subject} is a {category} material widely used in industrial applications due to its excellent properties. Laser cleaning offers a precise, non-contact method for removing contaminants, coatings, and surface oxidation without compromising the material's structural integrity. The process utilizes controlled laser parameters to selectively ablate unwanted material while preserving the underlying {subject} substrate. [Continue with detailed technical content about {subject} laser cleaning applications, benefits, and specifications].",
+    "image": [
+      {
+        "@type": "ImageObject",
+        "url": "/images/{subject_slug}-laser-cleaning-hero.jpg",
+        "name": "{subject} Laser Cleaning Workbench Before/After Comparison",
+        "caption": "Dual workbench photo of {subject} object displaying side-by-side before and after laser cleaning results",
+        "description": "Split-view workbench photograph showing a {subject} object in before (left) and after (right) states, demonstrating the complete transformation achieved through precision laser cleaning treatment",
+        "keywords": "{subject} laser cleaning, before after comparison, dual photo, workbench view, contamination removal",
+        "representativeOfPage": true
+      },
+      {
+        "@type": "ImageObject", 
+        "url": "/images/{subject_slug}-laser-cleaning-closeup.jpg",
+        "name": "{subject} Laser Cleaning High-Magnification Before/After Detail",
+        "caption": "Dual high-magnification photo of {subject} material surface showing detailed side-by-side before and after laser cleaning results with technical specifications",
+        "description": "Split-view microscopic photograph of {subject} material surface displaying before (left) and after (right) states at high magnification, processed with precision laser parameters including specific wavelength, fluence, pulse duration, and spot size specifications",
+        "keywords": "{subject} microscopy, surface analysis, laser parameters, technical specifications, dual comparison",
+        "about": {
+          "@type": "Thing",
+          "name": "Laser Cleaning Technical Process",
+          "description": "Precision laser ablation process with controlled parameters for {subject} surface treatment"
+        }
+      }
+    ],
+    "datePublished": "2025-08-08",
+    "dateModified": "2025-08-08",
+    "author": {
+      "@type": "Person",
+      "name": "{author_name}"
+    },
+    "about": {
+      "@type": "Thing",
+      "name": "{subject}",
+      "alternateName": "{material_formula}",
+      "identifier": "{material_symbol}",
+      "category": "{category}"
+    },
+    "mainEntity": {
+      "@type": "Thing",
+      "name": "Laser Cleaning Process",
+      "description": "Industrial laser cleaning process for {subject} materials"
+    }
+  }
+  ```
 
   REQUIREMENTS:
   - Fill in ALL template fields with comprehensive technical content
@@ -42,7 +79,10 @@ template: |
   - CRITICAL: Use EXACTLY this author name: {author_name}
   - Ensure all chemical and material data is accurate
   - Focus on laser cleaning applications and benefits
-  - Output valid YAML format exactly as shown above
+  - Output valid JSON-LD format exactly as shown above
+  - Do not include markdown code fences or YAML delimiters
+  - Create specific image captions that describe before/after laser cleaning results
+  - Use ImageObject format for enhanced SEO and accessibility
 
   AVAILABLE BASE COMPONENT DATA:
   Subject: {subject}
