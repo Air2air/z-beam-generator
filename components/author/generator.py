@@ -17,6 +17,7 @@ class AuthorGenerator:
     def __init__(self):
         """Initialize the author generator"""
         self.authors_file = Path("components/author/authors.json")
+        self.template_file = Path("validators/examples/author.md")
         
     def _load_authors(self) -> Dict[str, Any]:
         """Load authors data from JSON file"""
@@ -26,6 +27,31 @@ class AuthorGenerator:
         except (FileNotFoundError, json.JSONDecodeError) as e:
             print(f"❌ Error loading authors data: {e}")
             return {"authors": []}
+    
+    def _load_template(self) -> str:
+        """Load author template from master template file"""
+        try:
+            with open(self.template_file, 'r', encoding='utf-8') as f:
+                return f.read()
+        except FileNotFoundError:
+            # Fallback to hardcoded template if file not found
+            return self._get_fallback_template()
+    
+    def _get_fallback_template(self) -> str:
+        """Fallback template if master template file is not available"""
+        return """# Author Information
+
+**{author_name}**, {author_title}
+
+*{author_expertise}*
+
+**Country**: {author_country}
+
+**Author Image**: `{author_image}`
+
+---
+
+*This article on {material} laser cleaning was authored by {author_name}, a leading expert in materials science and laser technology from {author_country}.*"""
     
     def get_author_by_id(self, author_id: int) -> Dict[str, Any]:
         """Get author data by ID"""
@@ -42,26 +68,28 @@ class AuthorGenerator:
         if not author:
             return f"# Author Information\n\nAuthor information not found for ID: {author_id}"
         
-        # Create author component content using template
-        return self._create_author_template(material, author)
+        # Load template and substitute variables
+        template = self._load_template()
+        return self._populate_template(template, material, author)
+    
+    def _populate_template(self, template: str, material: str, author: Dict[str, Any]) -> str:
+        """Populate template with author data and material information"""
+        return template.format(
+            author_name=author.get('name', 'Unknown Author'),
+            author_title=author.get('title', 'Ph.D.'),
+            author_expertise=author.get('expertise', 'Materials Science and Laser Technology'),
+            author_country=author.get('country', 'International'),
+            author_image=author.get('image', 'public/images/author/default.jpg'),
+            material=material
+        )
     
     @staticmethod
     def _create_author_template(material: str, author: Dict[str, Any]) -> str:
-        """Create standardized author content template"""
-        return f"""# Author Information
-
-**{author.get('name', 'Unknown Author')}**, {author.get('title', 'Ph.D.')}
-
-*{author.get('expertise', 'Materials Science and Laser Technology')}*
-
-**Country**: {author.get('country', 'International')}
-
-**Author Image**: `{author.get('image', 'public/images/author/default.jpg')}`
-
----
-
-*This article on {material} laser cleaning was authored by {author.get('name', 'Unknown Author')}, a leading expert in materials science and laser technology from {author.get('country', 'International')}.*
-"""
+        """Create standardized author content template (legacy method for compatibility)"""
+        # For backward compatibility, create a generator instance and use the template method
+        generator = AuthorGenerator()
+        template = generator._load_template()
+        return generator._populate_template(template, material, author)
     
     def get_component_info(self) -> Dict[str, Any]:
         """Get component information"""
