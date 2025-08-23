@@ -41,43 +41,47 @@ Examples:
 # ==========================================
 # Configure API provider, author, and enable/disable for each component type
 COMPONENT_CONFIG = {
-    "frontmatter": {
-        "enabled": True,
-        "api_provider": "grok",  # Options: "deepseek", "grok"
-        "author_id": 3  # Default: Taiwan author for technical precision
-    },
-    "content": {
-        "enabled": True,
-        "api_provider": "grok",
-        "author_id": 3  # Default: Italian author for eloquent narrative style
-    },
-    "jsonld": {
-        "enabled": True,
-        "api_provider": "deepseek"
-    },
-    "table": {
-        "enabled": True,
-        "api_provider": "grok"
-    },
-    "metatags": {
-        "enabled": True,
-        "api_provider": "deepseek"
-    },
-    "tags": {
-        "enabled": True,
-        "api_provider": "deepseek"
-    },
-    "bullets": {
-        "enabled": True,
-        "api_provider": "deepseek"
-    },
-    "caption": {
-        "enabled": True,
-        "api_provider": "deepseek"
-    },
-    "propertiestable": {
-        "enabled": True,
-        "api_provider": "deepseek"
+    # Global author assignment for all components
+    "author_id": 3,  # 1=Taiwan, 2=Italy, 3=Indonesia, 4=USA
+    
+    # Component-specific configuration
+    "components": {
+        "bullets": {
+            "enabled": True,
+            "api_provider": "deepseek"
+        },
+        "caption": {
+            "enabled": True,
+            "api_provider": "deepseek"
+        },
+        "frontmatter": {
+            "enabled": True,
+            "api_provider": "grok"  # Options: "deepseek", "grok"
+        },
+        "content": {
+            "enabled": True,
+            "api_provider": "grok"
+        },
+        "jsonld": {
+            "enabled": True,
+            "api_provider": "deepseek"
+        },
+        "table": {
+            "enabled": True,
+            "api_provider": "grok"
+        },
+        "metatags": {
+            "enabled": True,
+            "api_provider": "deepseek"
+        },
+        "tags": {
+            "enabled": True,
+            "api_provider": "deepseek"
+        },
+        "propertiestable": {
+            "enabled": True,
+            "api_provider": "deepseek"
+        }
     }
 }
 
@@ -145,8 +149,9 @@ def create_api_client(provider: str, use_mock: bool = False):
 def get_api_client_for_component(component_type: str, use_mock: bool = False):
     """Get the appropriate API client for a component type."""
     
-    if component_type in COMPONENT_CONFIG:
-        provider = COMPONENT_CONFIG[component_type]["api_provider"]
+    components_config = COMPONENT_CONFIG.get("components", {})
+    if component_type in components_config:
+        provider = components_config[component_type]["api_provider"]
     else:
         provider = "deepseek"  # Default provider
     
@@ -363,13 +368,16 @@ def run_material_generation(generator, material: str, components: list = None, a
     if components is None:
         components = generator.get_available_components()
     
+    # Get the components configuration
+    components_config = COMPONENT_CONFIG.get("components", {})
+    
     # Filter components based on configuration
     enabled_components = []
     disabled_components = []
     
     for component in components:
-        if component in COMPONENT_CONFIG:
-            if COMPONENT_CONFIG[component]["enabled"]:
+        if component in components_config:
+            if components_config[component]["enabled"]:
                 enabled_components.append(component)
             else:
                 disabled_components.append(component)
@@ -386,8 +394,8 @@ def run_material_generation(generator, material: str, components: list = None, a
     # Display API provider assignments
     print(f"\n🌐 API Provider Assignments:")
     for component in enabled_components:
-        if component in COMPONENT_CONFIG:
-            provider = COMPONENT_CONFIG[component]["api_provider"]
+        if component in components_config:
+            provider = components_config[component]["api_provider"]
             provider_name = API_PROVIDERS.get(provider, {}).get("name", provider)
             print(f"   {component}: {provider_name}")
         else:
@@ -407,18 +415,20 @@ def run_material_generation(generator, material: str, components: list = None, a
         try:
             # Get the appropriate API client for this component
             api_client = get_api_client_for_component(component_type)
-            provider = COMPONENT_CONFIG.get(component_type, {}).get("api_provider", "deepseek")
+            provider = components_config.get(component_type, {}).get("api_provider", "deepseek")
             provider_name = API_PROVIDERS.get(provider, {}).get("name", provider)
             
-            # Determine author for components that need it (content and frontmatter only)
+            # Determine author for ALL components using global author_id
             component_author_info = None
-            if component_type in ["content", "frontmatter"]:
-                component_author_info = author_info  # Use CLI author if specified
-                if component_author_info is None:
-                    # Use component-specific default author
-                    default_author_id = COMPONENT_CONFIG.get(component_type, {}).get("author_id")
-                    if default_author_id:
-                        component_author_info = get_author_by_id(default_author_id)
+            
+            # Use CLI author if specified, otherwise use global default
+            if author_info is not None:
+                component_author_info = author_info
+            else:
+                # Use global author_id from COMPONENT_CONFIG
+                global_author_id = COMPONENT_CONFIG.get("author_id")
+                if global_author_id:
+                    component_author_info = get_author_by_id(global_author_id)
             
             print(f"\n🔧 Generating {component_type} using {provider_name}...")
             if component_author_info:
@@ -428,7 +438,7 @@ def run_material_generation(generator, material: str, components: list = None, a
             from generators.dynamic_generator import DynamicGenerator
             temp_generator = DynamicGenerator(api_client=api_client)
             
-            # Set author info only for components that need it
+            # Set author info for ALL components
             if component_author_info:
                 temp_generator.set_author(component_author_info)
             
@@ -462,7 +472,7 @@ def run_material_generation(generator, material: str, components: list = None, a
     print(f"   Components: {successful_count}/{len(enabled_components)}")
     
     for component_type, result in results.items():
-        provider = COMPONENT_CONFIG.get(component_type, {}).get("api_provider", "default")
+        provider = components_config.get(component_type, {}).get("api_provider", "default")
         provider_name = API_PROVIDERS.get(provider, {}).get("name", provider)
         
         if result.success:
@@ -487,15 +497,28 @@ def show_component_configuration():
     print("🔧 COMPONENT CONFIGURATION")
     print("=" * 50)
     
-    enabled_count = sum(1 for config in COMPONENT_CONFIG.values() if config["enabled"])
-    disabled_count = len(COMPONENT_CONFIG) - enabled_count
+    # Get components configuration
+    components_config = COMPONENT_CONFIG.get("components", {})
+    global_author_id = COMPONENT_CONFIG.get("author_id")
     
-    print(f"Total Components: {len(COMPONENT_CONFIG)} ({enabled_count} enabled, {disabled_count} disabled)")
+    enabled_count = sum(1 for config in components_config.values() if config["enabled"])
+    disabled_count = len(components_config) - enabled_count
+    
+    print(f"Total Components: {len(components_config)} ({enabled_count} enabled, {disabled_count} disabled)")
+    
+    # Show global author assignment
+    if global_author_id:
+        global_author = get_author_by_id(global_author_id)
+        author_name = global_author['name'] if global_author else f"Author {global_author_id}"
+        author_country = global_author['country'] if global_author else "Unknown"
+        print(f"Global Author: {author_name} ({author_country}) - ID {global_author_id}")
+    else:
+        print("Global Author: None assigned")
     print()
     
     # Group by API provider
     provider_groups = {}
-    for component, config in COMPONENT_CONFIG.items():
+    for component, config in components_config.items():
         if config["enabled"]:
             provider = config["api_provider"]
             if provider not in provider_groups:
@@ -507,21 +530,11 @@ def show_component_configuration():
         provider_name = API_PROVIDERS.get(provider, {}).get("name", provider)
         print(f"🌐 {provider_name} ({len(components)} components):")
         for component in sorted(components):
-            # Show author assignment only for content and frontmatter components
-            if component in ["content", "frontmatter"]:
-                author_id = COMPONENT_CONFIG.get(component, {}).get("author_id")
-                if author_id:
-                    author_info = get_author_by_id(author_id)
-                    author_name = author_info['name'] if author_info else f"Author {author_id}"
-                    print(f"   ✅ {component} (👤 {author_name})")
-                else:
-                    print(f"   ✅ {component} (👤 No author assigned)")
-            else:
-                print(f"   ✅ {component}")
+            print(f"   ✅ {component}")
         print()
     
     # Display disabled components
-    disabled = [comp for comp, config in COMPONENT_CONFIG.items() if not config["enabled"]]
+    disabled = [comp for comp, config in components_config.items() if not config["enabled"]]
     if disabled:
         print(f"❌ Disabled Components ({len(disabled)}):")
         for component in sorted(disabled):

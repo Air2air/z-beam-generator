@@ -379,6 +379,7 @@ class DynamicGenerator:
         template_vars = {
             'subject': material_name,
             'material': material_name,
+            'material_name': material_name,  # Add explicit material_name mapping
             'category': category,
             'article_type': article_type,
             'subject_lowercase': material_name.lower(),
@@ -388,6 +389,10 @@ class DynamicGenerator:
             'material_formula': material.get('formula', material_name),
             'material_symbol': material.get('symbol', material_name[:2].upper()),
             'material_type': material.get('material_type', category),
+            'material_description': material.get('description', f"{material_name} is a {category} material used in laser cleaning applications."),
+            
+            # Bullet-specific variables
+            'bullet_count': "2 to 6",  # Randomized bullet count
             
             # Formatted technical specs (placeholders)
             'formatted_technical_specs': f"Technical specifications for {material_name} laser cleaning",
@@ -397,15 +402,89 @@ class DynamicGenerator:
         
         # Add author information if available
         if self.author_info:
-            template_vars['country'] = self.author_info.get('country', 'International')
+            country = self.author_info.get('country', 'International')
+            author_id = self.author_info.get('id', 0)
+            template_vars['country'] = country
             template_vars['author_name'] = self.author_info.get('name', 'Expert Author')
             template_vars['author_title'] = self.author_info.get('title', 'Technical Expert')
             template_vars['author_expertise'] = self.author_info.get('expertise', 'Laser Processing')
+            template_vars['author_id'] = str(author_id)
+            
+            # Create country context for bullets and other components
+            if country != 'International':
+                template_vars['country_context'] = f"Write from the perspective of a technical expert in {country}, incorporating relevant regional standards and industry practices."
+            else:
+                template_vars['country_context'] = "Write from an international technical perspective with global industry standards."
+                
+            # Create author-specific formatting rules for bullets
+            if author_id == 1:  # Taiwan - Yi-Chun Lin
+                template_vars['bullet_format_rules'] = """
+TAIWAN AUTHOR REQUIREMENTS:
+- Generate EXACTLY 4 bullets
+- Each bullet must have EXACTLY 1 sentence
+- Use numbered list format (1., 2., 3., 4.)
+- Start each bullet with **Technical Focus:** followed by the topic
+- Order: Parameters → Applications → Safety → Environmental Benefits
+- Write in English only, incorporate Taiwan semiconductor/electronics industry context
+- Include metric measurements and specific wavelengths"""
+                
+            elif author_id == 2:  # Italy - Alessandro Moretti
+                template_vars['bullet_format_rules'] = """
+ITALIAN AUTHOR REQUIREMENTS:
+- Generate EXACTLY 5 bullets
+- Each bullet must have EXACTLY 2 sentences
+- Use traditional bullet format with - prefix
+- Start each bullet with **[TOPIC]** in ALL CAPS brackets
+- Order: Applications → Parameters → Environmental → Safety → Challenges
+- Write in English only, incorporate European/Italian manufacturing industry context
+- Include European standards and industrial applications"""
+                
+            elif author_id == 3:  # Indonesia - Ikmanda Roswati
+                template_vars['bullet_format_rules'] = """
+INDONESIAN AUTHOR REQUIREMENTS:
+- Generate EXACTLY 6 bullets
+- Each bullet must have EXACTLY 1 sentence
+- Use bullet format with • prefix
+- Start each bullet with **Aspek [Topic]:** (use "Aspek" meaning "Aspect", but write everything else in English)
+- Order: Environmental → Safety → Applications → Parameters → Challenges → Benefits
+- CRITICAL: Write ONLY in English after "Aspek [Topic]:" - do not use Indonesian language
+- Incorporate Indonesian tropical/humid environment and industrial context in English
+- Emphasize sustainability and regional manufacturing considerations"""
+                
+            elif author_id == 4:  # USA - Todd Dunning
+                template_vars['bullet_format_rules'] = """
+USA AUTHOR REQUIREMENTS:
+- Generate EXACTLY 3 bullets
+- Each bullet must have EXACTLY 3 sentences
+- Use bullet format with * prefix
+- Start each bullet with **Key Point:** followed by the topic
+- Order: Safety → Parameters → Applications
+- Write in English only, incorporate US high-tech industry and regulatory context
+- Include OSHA standards, FDA considerations, and Silicon Valley tech applications"""
+            else:
+                template_vars['bullet_format_rules'] = """
+DEFAULT INTERNATIONAL REQUIREMENTS:
+- Generate EXACTLY 4 bullets
+- Each bullet must have EXACTLY 1 sentence
+- Use bullet format with * prefix
+- Start each bullet with **[Topic]:** followed by technical details
+- Standard order: Parameters → Applications → Safety → Environmental
+- Write in English only with international technical perspective"""
         else:
             template_vars['country'] = 'International'
             template_vars['author_name'] = 'Expert Author'
             template_vars['author_title'] = 'Technical Expert'
             template_vars['author_expertise'] = 'Laser Processing'
+            template_vars['author_id'] = '0'
+            template_vars['country_context'] = "Write from an international technical perspective with global industry standards."
+            template_vars['bullet_format_rules'] = """
+DEFAULT INTERNATIONAL REQUIREMENTS:
+- Generate EXACTLY 4 bullets
+- Each bullet must have EXACTLY 1 sentence
+- Use bullet format with * prefix
+- Start each bullet with **[Topic]:** followed by technical details
+- Standard order: Parameters → Applications → Safety → Environmental
+- Write in English only with international technical perspective"""
         
         # Replace all template variables in the prompt
         prompt = base_prompt

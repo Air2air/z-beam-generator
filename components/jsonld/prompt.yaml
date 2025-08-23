@@ -28,7 +28,7 @@ template: |
   - /images/{subject_slug}-laser-cleaning-closeup.jpg
   datePublished: 2025-08-08
   dateModified: 2025-08-08
-  author: [Expert author name]
+  author: {author_name}
   materialType: {category}
   chemicalFormula: {material_formula}
   materialSymbol: {material_symbol}
@@ -39,7 +39,7 @@ template: |
   - Fill in ALL template fields with comprehensive technical content
   - articleBody should be 200-300 words of detailed technical content
   - Include 8-10 relevant keywords covering technical and application terms
-  - Generate appropriate expert author name
+  - CRITICAL: Use EXACTLY this author name: {author_name}
   - Ensure all chemical and material data is accurate
   - Focus on laser cleaning applications and benefits
   - Output valid YAML format exactly as shown above

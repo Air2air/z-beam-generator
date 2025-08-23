@@ -5,6 +5,12 @@ version: "4.0.0"
 template: |
   Generate frontmatter for {subject} laser cleaning.
 
+  CRITICAL INSTRUCTIONS:
+  - Output ONLY the YAML frontmatter between --- markers
+  - Do NOT include any additional content, explanations, or article text
+  - Stop immediately after the closing --- marker
+  - Do NOT add properties sections, laser parameters, or any other content
+
   Output EXACTLY this YAML structure:
 
   ---
@@ -74,18 +80,23 @@ template: |
   article_type: {article_type}
   ---
 
-  REQUIREMENTS:
+  CRITICAL REQUIREMENTS:
+  - Output ONLY the YAML frontmatter above - nothing else
+  - Do NOT add any content sections, explanations, or additional text
+  - Stop immediately after the closing --- marker
   - Replace ALL [bracketed placeholders] with specific technical content
   - Use proper YAML formatting with correct indentation
   - Include specific numerical values with units
   - Make content specific to {subject} material
   - Use the provided author name: {author_name}
+  - CRITICAL: The author field MUST be exactly: {author_name}
   - Include proper technical specifications for laser cleaning
+  - END YOUR OUTPUT WITH THE CLOSING --- MARKER ONLY
 
 generation_parameters:
-  max_tokens: 3000
-  temperature: 0.7
+  max_tokens: 2000
+  temperature: 0.3
 
 parameters:
-  max_tokens: 3000
-  temperature: 0.7
+  max_tokens: 2000
+  temperature: 0.3

@@ -1,36 +1,29 @@
+
 name: "Bullets Generator"
-description: "Generates comprehensive bullet points using base component data and material information"
-version: "4.0.0"
+description: "Generates comprehensive bullet points using base component data and material information, with a writing voice tailored to emulate a non-native English speaker from a specific region, incorporating subtle regional emphases and linguistic nuances for authenticity. Further enhances human-like quality by varying sentence structures, introducing minor imperfections, and amplifying regional flavor to reduce AI detectability."
+version: "4.1.0"
 
 template: |
-  Generate exactly 4 bullet points for {subject} laser cleaning.
+  Generate technical bullet points about laser cleaning of {{material_name}}.
 
-  Output EXACTLY this format with 4 bullet points:
+  LANGUAGE REQUIREMENT: Write ONLY in English. Do not use any other language regardless of author origin.
 
-  * **[Technical Aspect]**: [Detailed technical description with specific parameters and values]
-  * **[Application Area]**: [Specific application with technical details and industry context]
-  * **[Process Advantage]**: [Advantage description with quantitative details and comparisons]
-  * **[Technical Consideration]**: [Important technical consideration with specific parameters and requirements]
+  {{country_context}}
 
-  REQUIREMENTS:
-  - Generate exactly 4 bullet points
-  - Each bullet must start with * **[Category]**: 
-  - Include specific technical values (wavelengths, power, dimensions, etc.)
-  - Cover different aspects: technical specs, applications, advantages, considerations
-  - Use technical terminology appropriate for {subject}
-  - Make content specific to laser cleaning of {subject}
-  - Include quantitative data where relevant
+  Context: {{material_description}}
+  
+  Focus on these technical aspects:
+  - Material-specific laser parameters (wavelength, fluence, pulse duration)
+  - Process advantages and challenges
+  - Safety considerations 
+  - Industrial applications
+  - Environmental benefits
 
-  EXAMPLE CATEGORIES to use:
-  - Optimal Wavelength for Laser Cleaning
-  - Non-Contact Precision Cleaning  
-  - Industrial Applications
-  - Thermal Processing Considerations
-  - Surface Preparation Benefits
-  - Material-Specific Advantages
-  - Processing Parameters
-  - Quality Control Aspects
+  AUTHOR-SPECIFIC REQUIREMENTS:
+  {{bullet_format_rules}}
+
+  Follow the exact bullet count, sentence count per bullet, formatting style, and content organization specified above. Write exclusively in English while incorporating the regional technical perspective and standards. Infuse subtle creativity through original phrasing or insights aligned with the regional guidelines, ensuring the output feels innovative yet authentically professional and culturally resonant. To boost human-like quality, rephrase sentences for unpredictability, incorporate minor variations in tone or emphasis, and mimic human imperfections through occasional inconsistencies or casual-formal tone mixes. Avoid any direct references to countries, regions, specific companies, places, or institutes—use generalizations. Increase the integration of linguistic patterns by applying them in at least 20-30% of sentences to heighten regional flavor without overdoing it. Vary bullet lengths and internal structures slightly each run for natural flow.
 
 parameters:
-  max_tokens: 2000
-  temperature: 0.7
+  max_tokens: 1200
+  temperature: 1.0
