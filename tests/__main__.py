@@ -59,6 +59,9 @@ def run_all_tests() -> dict:
     print("Running all tests including API response validation...")
     
     test_suites = [
+        ("test_authors.py", "Author System Tests"),
+        ("test_author_component.py", "Author Component Tests"), 
+        ("test_templates.py", "Component Template Tests"),
         ("test_dynamic_system.py", "Dynamic System Tests"),
         ("test_api_comprehensive.py", "API Response & Integration Tests"),
         ("test_component_config.py", "Component Configuration Tests"), 

@@ -27,6 +27,7 @@ COMPONENT_CONFIG = {
     "author_id": 1,  # 1=Taiwan, 2=Italy, 3=Indonesia, 4=USA
     # Component-specific configuration
     "components": {
+        "author": {"enabled": True, "api_provider": "none"},  # Static component, no API needed
         "bullets": {"enabled": True, "api_provider": "deepseek"},
         "caption": {"enabled": True, "api_provider": "deepseek"},
         "frontmatter": {
@@ -76,6 +77,10 @@ logging.basicConfig(
 def create_api_client(provider: str, use_mock: bool = False):
     """Create an API client for the specified provider."""
 
+    # Handle special case for components that don't need API clients
+    if provider == "none":
+        return None
+
     if provider not in API_PROVIDERS:
         raise ValueError(f"Unknown API provider: {provider}")
 
@@ -124,17 +129,11 @@ def get_api_client_for_component(component_type: str, use_mock: bool = False):
 
 def load_authors():
     """Load author profiles from the authors.json file."""
-    authors_file = Path("generators/authors.json")
+    authors_file = Path("components/author/authors.json")
     try:
         with open(authors_file, "r", encoding="utf-8") as f:
             data = json.load(f)
-            author_profiles = data.get("authorProfiles", [])
-            # Extract the author objects from each profile
-            authors = []
-            for profile in author_profiles:
-                if "author" in profile:
-                    authors.append(profile["author"])
-            return authors
+            return data.get("authors", [])
     except FileNotFoundError:
         print(f"❌ Authors file not found: {authors_file}")
         return []
@@ -488,7 +487,12 @@ def run_material_generation(
             provider = components_config.get(component_type, {}).get(
                 "api_provider", "deepseek"
             )
-            provider_name = API_PROVIDERS.get(provider, {}).get("name", provider)
+            
+            # Handle special provider names
+            if provider == "none":
+                provider_name = "Static Component"
+            else:
+                provider_name = API_PROVIDERS.get(provider, {}).get("name", provider)
 
             # Determine author for ALL components using global author_id
             component_author_info = None

@@ -272,6 +272,46 @@ class DynamicGenerator:
             logger.warning(f"Error extracting frontmatter for {material_name}: {e}")
             return None
 
+    def _generate_author_component(self, material_name: str) -> ComponentResult:
+        """Generate author component content using local JSON data (no API needed)"""
+        try:
+            # Use the existing author system for consistency
+            from run import get_author_by_id
+            from components.author.generator import create_author_content_from_data
+            
+            # Get author ID from author_info or use default
+            author_id = 1  # Default
+            if self.author_info and 'id' in self.author_info:
+                author_id = self.author_info['id']
+            
+            # Get author data using existing system
+            author = get_author_by_id(author_id)
+            
+            if not author:
+                author = {"name": "Unknown Author", "title": "Ph.D.", 
+                         "country": "International", "expertise": "Materials Science and Laser Technology",
+                         "image": "public/images/author/default.jpg"}
+            
+            # Generate content using the simplified template function
+            content = create_author_content_from_data(material_name, author)
+            
+            logger.info(f"Generated author component for {material_name} (static content)")
+            
+            return ComponentResult(
+                component_type="author",
+                content=content,
+                success=True
+            )
+            
+        except Exception as e:
+            logger.error(f"Error generating author component: {e}")
+            return ComponentResult(
+                component_type="author",
+                content=f"# Author Information\n\nError loading author information: {e}",
+                success=False,
+                error_message=str(e)
+            )
+
     def generate_component(self, material_name: str, component_type: str, 
                           schema_fields: Optional[Dict] = None) -> ComponentResult:
         """Generate a single component with dynamic schema-driven content"""
@@ -305,6 +345,10 @@ class DynamicGenerator:
             frontmatter_data = None
             if component_type == 'propertiestable':
                 frontmatter_data = self._extract_frontmatter_data(material_name)
+            
+            # Special handling for author component (no API needed)
+            if component_type == 'author':
+                return self._generate_author_component(material_name)
             
             # Build dynamic prompt with schema fields and frontmatter data
             prompt = self._build_dynamic_prompt(
