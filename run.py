@@ -14,14 +14,13 @@ USAGE:
     python3 run.py                                    # Interactive generation mode
     python3 run.py --material "Copper"                # Generate all components for specific material
     python3 run.py --material "Steel" --components "frontmatter,content"  # Generate specific components
+    python3 run.py --material "Porcelain" --components "content"  
     python3 run.py --list-materials                   # List all available materials
     python3 run.py --list-components                  # List all available components
     python3 run.py --yaml                            # Validate and fix YAML errors
     python3 run.py --test-api                        # Test API connection
 
 python3 -m tests
-
-
 
 
 DYNAMIC GENERATION:
@@ -45,12 +44,12 @@ COMPONENT_CONFIG = {
     "frontmatter": {
         "enabled": True,
         "api_provider": "grok",  # Options: "deepseek", "grok"
-        "author_id": 2  # Default: Taiwan author for technical precision
+        "author_id": 3  # Default: Taiwan author for technical precision
     },
     "content": {
         "enabled": True,
         "api_provider": "grok",
-        "author_id": 2  # Default: Italian author for eloquent narrative style
+        "author_id": 3  # Default: Italian author for eloquent narrative style
     },
     "jsonld": {
         "enabled": True,
