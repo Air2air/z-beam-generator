@@ -22,10 +22,6 @@ USAGE:
 
 """
 
-# ==========================================
-# COMPONENT CONFIGURATION
-# ==========================================
-# Configure API provider, author, and enable/disable for each component type
 COMPONENT_CONFIG = {
     # Global author assignment for all components
     "author_id": 1,  # 1=Taiwan, 2=Italy, 3=Indonesia, 4=USA
