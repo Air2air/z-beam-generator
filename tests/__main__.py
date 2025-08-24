@@ -64,6 +64,7 @@ def run_all_tests() -> dict:
         ("test_api_providers.py", "API Integration Tests"), 
         ("test_author_component.py", "Author Component Tests"),
         ("test_authors.py", "Author System Tests"),
+        ("test_badgesymbol.py", "Badge Symbol Component Tests"),
         ("test_component_config.py", "Component Configuration Tests"),
         ("test_dynamic_system.py", "Dynamic System Tests"),
         ("test_integration.py", "Integration Tests"),

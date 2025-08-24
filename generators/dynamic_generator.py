@@ -312,6 +312,64 @@ class DynamicGenerator:
                 error_message=str(e)
             )
 
+    def _generate_badgesymbol_component(self, material_name: str) -> ComponentResult:
+        """Generate badgesymbol component content using frontmatter data (no API needed)"""
+        try:
+            from components.badgesymbol.generator import BadgeSymbolGenerator
+            
+            # Extract frontmatter data
+            frontmatter_data = self._extract_frontmatter_data(material_name)
+            
+            # Generate content using the static generator
+            generator = BadgeSymbolGenerator()
+            content = generator.generate_content(material_name, frontmatter_data)
+            
+            logger.info(f"Generated badgesymbol component for {material_name} (static content)")
+            
+            return ComponentResult(
+                component_type="badgesymbol",
+                content=content,
+                success=True
+            )
+            
+        except Exception as e:
+            logger.error(f"Error generating badgesymbol component: {e}")
+            return ComponentResult(
+                component_type="badgesymbol",
+                content="---\nsymbol: \"ERR\"\nmaterialType: \"error\"\n---",
+                success=False,
+                error_message=str(e)
+            )
+
+    def _generate_propertiestable_component(self, material_name: str) -> ComponentResult:
+        """Generate propertiestable component content using frontmatter data (no API needed)"""
+        try:
+            from components.propertiestable.generator import PropertiesTableGenerator
+            
+            # Extract frontmatter data
+            frontmatter_data = self._extract_frontmatter_data(material_name)
+            
+            # Generate content using the static generator
+            generator = PropertiesTableGenerator()
+            content = generator.generate_content(material_name, frontmatter_data)
+            
+            logger.info(f"Generated propertiestable component for {material_name} (static content)")
+            
+            return ComponentResult(
+                component_type="propertiestable",
+                content=content,
+                success=True
+            )
+            
+        except Exception as e:
+            logger.error(f"Error generating propertiestable component: {e}")
+            return ComponentResult(
+                component_type="propertiestable",
+                content="| Property | Value |\n|----------|-------|\n| Error | Failed |",
+                success=False,
+                error_message=str(e)
+            )
+
     def generate_component(self, material_name: str, component_type: str, 
                           schema_fields: Optional[Dict] = None) -> ComponentResult:
         """Generate a single component with dynamic schema-driven content"""
@@ -346,9 +404,13 @@ class DynamicGenerator:
             if component_type == 'propertiestable':
                 frontmatter_data = self._extract_frontmatter_data(material_name)
             
-            # Special handling for author component (no API needed)
+            # Special handling for static components (no API needed)
             if component_type == 'author':
                 return self._generate_author_component(material_name)
+            elif component_type == 'badgesymbol':
+                return self._generate_badgesymbol_component(material_name)
+            elif component_type == 'propertiestable':
+                return self._generate_propertiestable_component(material_name)
             
             # Build dynamic prompt with schema fields and frontmatter data
             prompt = self._build_dynamic_prompt(

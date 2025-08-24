@@ -5,15 +5,15 @@ version: "1.1.0"
 template: |
   Generate a simple technical properties table for {subject} in the exact format shown below.
   
-  REQUIRED FORMAT (exactly 2 columns):
+  REQUIRED FORMAT (exactly 2 columns, max 8 chars per value):
   | Property | Value |
   |----------|-------|
-  | Chemical Formula | [formula] |
-  | Material Symbol | [symbol] |
-  | Category | [category] |
-  | Material Type | [material_type] |
-  | Tensile Strength | [if available] |
-  | Thermal Conductivity | [thermal_conductivity] |
+  | Chemical Formula | Al₂O₃ |
+  | Material Symbol | ALU |
+  | Category | Metal |
+  | Material Type | Alloy |
+  | Tensile Strength | 310 MPa |
+  | Thermal Conductivity | 237W/mK |
   
   EXTRACTION INSTRUCTIONS:
   - Use frontmatter data when available
@@ -30,11 +30,23 @@ template: |
   - Use standard chemical formulas and symbols
   - Include only the 6 properties listed above
   
+  VALUE FORMATTING RULES:
+  - Limit all values to maximum 8 characters for clean display
+  - Use Title Case for all text values (Metal vs metal, Alloy vs alloy)
+  - Apply intelligent truncation while preserving readability:
+    * Use scientific notation for large numbers (1.5e6 vs 1500000)
+    * Abbreviate units (GPa vs Gigapascal, °C vs Celsius)
+    * Round to appropriate precision (2.85 vs 2.8463)
+    * Use standard chemical symbols (Al₂O₃ vs Aluminum Oxide)
+    * Abbreviate material types (FRP vs Fiber-Reinforced Polymer)
+    * Use ranges efficiently (50-100 vs 50 to 100)
+  
   IMPORTANT:
   - Generate ONLY the table, no additional text
   - Use exact 2-column format: | Property | Value |
-  - Keep values concise and technical
-  - Include units where appropriate
+  - Keep ALL values under 8 characters maximum
+  - Apply Title Case to descriptive text values
+  - Prioritize readability over completeness in abbreviated values
 
 parameters:
   max_tokens: 500

@@ -114,6 +114,11 @@ class DeepSeekClient(APIClient):
                 'max_tokens': 600,
                 'temperature': 0.6,
                 'top_p': 0.9
+            },
+            'propertiestable': {
+                'max_tokens': 500,
+                'temperature': 0.2,  # Very deterministic for structured tables
+                'top_p': 0.7
             }
         }
         
@@ -184,7 +189,14 @@ Generate high-quality, accurate, and professional content that follows industry 
 - Include technical context and relevant details
 - Describe visual elements and technical processes
 - Use appropriate technical terminology
-- Keep descriptions concise but informative"""
+- Keep descriptions concise but informative""",
+            
+            'propertiestable': """
+- Generate well-formatted property tables with exact 2-column structure
+- Extract data from frontmatter when available, otherwise research typical values
+- Use intelligent 8-character value formatting with title case
+- Apply scientific notation and unit abbreviations for readability
+- Ensure all values are technically accurate and properly formatted"""
         }
         
         instruction = component_instructions.get(component_type, "Generate high-quality technical content.")

@@ -12,7 +12,7 @@ FEATURES:
 
 USAGE:
     python3 run.py                                    # Interactive generation mode
-    python3 run.py --start-index 50                   # Start batch generation from material #50
+    python3 run.py --start-index 40                   # Start batch generation from material #50
     python3 run.py --material "Copper"                # Generate all components for specific material
     python3 run.py --material "Steel" --components "frontmatter,content"  # Generate specific components
     python3 run.py --list-materials                   # List all available materials
@@ -25,6 +25,22 @@ USAGE:
 COMPONENT_CONFIG = {
     # Global author assignment for all components
     "author_id": 1,  # 1=Taiwan, 2=Italy, 3=Indonesia, 4=USA
+    
+    # Component orchestration order (components will be generated in this order)
+    "orchestration_order": [
+        "frontmatter",      # MUST BE FIRST - provides data for all other components
+        "propertiestable",  # Depends on frontmatter data
+        "badgesymbol",      # Depends on frontmatter data  
+        "author",           # Static component, no dependencies
+        "content",          # Main content generation
+        "bullets",          # Content-related components
+        "caption",          # Content-related components
+        "table",            # Data presentation
+        "tags",             # Metadata components
+        "metatags",         # Metadata components
+        "jsonld",           # Structured data (should be last)
+    ],
+    
     # Component-specific configuration
     "components": {
         "author": {"enabled": True, "api_provider": "none"},  # Static component, no API needed
@@ -39,7 +55,8 @@ COMPONENT_CONFIG = {
         "table": {"enabled": True, "api_provider": "grok"},
         "metatags": {"enabled": True, "api_provider": "deepseek"},
         "tags": {"enabled": True, "api_provider": "deepseek"},
-        "propertiestable": {"enabled": True, "api_provider": "deepseek"},
+        "propertiestable": {"enabled": True, "api_provider": "none"},  # Static component, extracts from frontmatter
+        "badgesymbol": {"enabled": True, "api_provider": "none"},  # Static component, extracts from frontmatter
     },
 }
 
@@ -437,6 +454,7 @@ def run_material_generation(
 
     # Get the components configuration
     components_config = COMPONENT_CONFIG.get("components", {})
+    orchestration_order = COMPONENT_CONFIG.get("orchestration_order", [])
 
     # Filter components based on configuration
     enabled_components = []
@@ -451,6 +469,22 @@ def run_material_generation(
         else:
             # Default to enabled if not in config
             enabled_components.append(component)
+
+    # Order enabled components according to orchestration_order
+    ordered_components = []
+    
+    # First, add components in the defined orchestration order
+    for component in orchestration_order:
+        if component in enabled_components:
+            ordered_components.append(component)
+    
+    # Then add any remaining enabled components that aren't in the orchestration order
+    for component in enabled_components:
+        if component not in ordered_components:
+            ordered_components.append(component)
+    
+    # Use the ordered components list
+    enabled_components = ordered_components
 
     # Display component status
     print(f"🔧 Component Generation Plan for {material}:")
@@ -515,7 +549,11 @@ def run_material_generation(
             # Create a temporary generator with this API client
             from generators.dynamic_generator import DynamicGenerator
 
-            temp_generator = DynamicGenerator(api_client=api_client)
+            # For static components (api_client is None), we need to prevent fallback to DeepSeek
+            if api_client is None:
+                temp_generator = DynamicGenerator(api_client=None, use_mock=True)
+            else:
+                temp_generator = DynamicGenerator(api_client=api_client)
 
             # Set author info for ALL components
             if component_author_info:
