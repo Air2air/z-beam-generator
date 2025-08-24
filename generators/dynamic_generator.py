@@ -290,7 +290,7 @@ class DynamicGenerator:
             if not author:
                 author = {"name": "Unknown Author", "title": "Ph.D.", 
                          "country": "International", "expertise": "Materials Science and Laser Technology",
-                         "image": "public/images/author/default.jpg"}
+                         "image": "/images/author/default.jpg"}
             
             # Generate content using the simplified template function
             content = create_author_content_from_data(material_name, author)
@@ -307,7 +307,7 @@ class DynamicGenerator:
             logger.error(f"Error generating author component: {e}")
             return ComponentResult(
                 component_type="author",
-                content=f"# Author Information\n\nError loading author information: {e}",
+                content=f"Error loading author information: {e}",
                 success=False,
                 error_message=str(e)
             )

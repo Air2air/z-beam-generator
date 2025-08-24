@@ -39,19 +39,11 @@ class AuthorGenerator:
     
     def _get_fallback_template(self) -> str:
         """Fallback template if master template file is not available"""
-        return """# Author Information
-
-**{author_name}**, {author_title}
-
-*{author_expertise}*
-
-**Country**: {author_country}
-
-**Author Image**: `{author_image}`
-
----
-
-*This article on {material} laser cleaning was authored by {author_name}, a leading expert in materials science and laser technology from {author_country}.*"""
+        return """{author_name}  
+{author_title}  
+{author_expertise}  
+{author_country}  
+{author_image}"""
     
     def get_author_by_id(self, author_id: int) -> Dict[str, Any]:
         """Get author data by ID"""
@@ -66,7 +58,7 @@ class AuthorGenerator:
         author = self.get_author_by_id(author_id)
         
         if not author:
-            return f"# Author Information\n\nAuthor information not found for ID: {author_id}"
+            return f"Author information not found for ID: {author_id}"
         
         # Load template and substitute variables
         template = self._load_template()
@@ -79,7 +71,7 @@ class AuthorGenerator:
             author_title=author.get('title', 'Ph.D.'),
             author_expertise=author.get('expertise', 'Materials Science and Laser Technology'),
             author_country=author.get('country', 'International'),
-            author_image=author.get('image', 'public/images/author/default.jpg'),
+            author_image=author.get('image', '/images/author/default.jpg'),
             material=material
         )
     
