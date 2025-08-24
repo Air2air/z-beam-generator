@@ -8,6 +8,11 @@ requires_api: false
 # The generator.py file handles all content creation using authors.json
 
 template: |
+  FORMATTING REFERENCE:
+  - MANDATORY: Follow the EXACT author formatting shown in validators/examples/author.md
+  - Use consistent author information structure and styling
+  - Ensure proper markdown formatting and layout
+  
   This component generates author information using local data from authors.json.
   No AI template is needed as content is generated programmatically.
   

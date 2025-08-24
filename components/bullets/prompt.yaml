@@ -4,6 +4,12 @@ description: "Generates comprehensive bullet points using base component data an
 version: "4.1.0"
 
 template: |
+  FORMATTING REFERENCE:
+  - MANDATORY: Follow the EXACT bullet point formatting shown in validators/examples/bullets.md
+  - Use consistent bullet point syntax and proper indentation
+  - Ensure proper markdown formatting for nested lists if needed
+  - Validate markdown structure and readability before output
+  
   Generate technical bullet points about laser cleaning of {{material_name}}.
 
   LANGUAGE REQUIREMENT: Write ONLY in English. Do not use any other language regardless of author origin.

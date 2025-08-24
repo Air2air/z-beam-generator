@@ -10,6 +10,12 @@ template: |
   - Do NOT include any additional content, explanations, or article text
   - Stop immediately after the closing --- marker
   - Do NOT add properties sections, laser parameters, or any other content
+  
+  FORMATTING REFERENCE:
+  - MANDATORY: Follow the EXACT formatting shown in validators/examples/frontmatter.md
+  - Pay special attention to the images section structure - it must be properly nested YAML
+  - DO NOT use empty objects like "hero: {}" - always include nested alt and url properties
+  - Ensure all YAML is valid and properly indented (2 spaces per level)
 
   Output EXACTLY this YAML structure:
 

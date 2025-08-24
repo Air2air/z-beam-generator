@@ -3,6 +3,12 @@ description: "Generates scientific image captions using base component data and 
 version: "5.0.0"
 
 template: |
+  FORMATTING REFERENCE:
+  - MANDATORY: Follow the EXACT caption formatting shown in validators/examples/caption.md
+  - Use consistent caption structure and styling
+  - Ensure proper markdown formatting for emphasis and technical terms
+  - Validate formatting and readability before output
+  
   Generate a technical image caption for {subject} laser cleaning.
 
   Create ONE two-line before/after caption following this general structure:
