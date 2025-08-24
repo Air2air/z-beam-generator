@@ -24,7 +24,7 @@ USAGE:
 
 COMPONENT_CONFIG = {
     # Global author assignment for all components
-    "author_id": 1,  # 1=Taiwan, 2=Italy, 3=Indonesia, 4=USA
+    "author_id": 2,  # 1=Taiwan, 2=Italy, 3=Indonesia, 4=USA
     
     # Component orchestration order (components will be generated in this order)
     "orchestration_order": [
