@@ -22,19 +22,19 @@ template: |
   ---
   name: {subject}
   applications:
-  - industry: [Industry 1]
+  - industry: "Industry 1"
     detail: Specific laser cleaning application
-  - industry: [Industry 2]
+  - industry: "Industry 2"
     detail: Specific laser cleaning application
   technicalSpecifications:
-    powerRange: [power range like "20-100W"]
-    pulseDuration: [duration like "10-100ns"]
-    wavelength: [wavelength like "1064nm (primary), 532nm (optional)"]
-    spotSize: [size like "0.1-2.0mm"]
-    repetitionRate: [rate like "10-50kHz"]
-    fluenceRange: [range like "0.5–5 J/cm²"]
-    safetyClass: [class like "Class 4 (requires full enclosure)"]
-  description: Technical overview of {subject}, {material_formula}, for laser cleaning applications, including [density], [wavelength], and industrial applications.
+    powerRange: "power range like 20-100W"
+    pulseDuration: "duration like 10-100ns"
+    wavelength: "wavelength like 1064nm (primary), 532nm (optional)"
+    spotSize: "size like 0.1-2.0mm"
+    repetitionRate: "rate like 10-50kHz"
+    fluenceRange: "range like 0.5–5 J/cm²"
+    safetyClass: "class like Class 4 (requires full enclosure)"
+  description: Technical overview of {subject}, {material_formula}, for laser cleaning applications, including density, wavelength, and industrial applications.
   author: {author_name}
   keywords: {subject_lowercase}, {subject_lowercase} {category}, laser ablation, laser cleaning, non-contact cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters, thermal processing, surface restoration
   category: {category}
@@ -43,20 +43,20 @@ template: |
     formula: {material_formula}
     materialType: {material_type}
   properties:
-    density: [density value]
-    meltingPoint: [melting point]
-    thermalConductivity: [thermal conductivity]
-    laserType: [optimal laser type]
-    wavelength: [primary wavelength]
-    fluenceRange: [fluence range]
+    density: "density value"
+    meltingPoint: "melting point"
+    thermalConductivity: "thermal conductivity"
+    laserType: "optimal laser type"
+    wavelength: "primary wavelength"
+    fluenceRange: "fluence range"
     chemicalFormula: {material_formula}
   composition:
-  - [Component 1]
-  - [Component 2]
+  - "Component 1"
+  - "Component 2"
   compatibility:
-  - [Compatible material 1]
-  - [Compatible material 2]
-  regulatoryStandards: [Relevant standards]
+  - "Compatible material 1"
+  - "Compatible material 2"
+  regulatoryStandards: "Relevant standards"
   images:
     hero:
       alt: {subject} surface undergoing laser cleaning showing precise contamination removal
@@ -67,19 +67,19 @@ template: |
   title: Laser Cleaning {subject} - Technical Guide for Optimal Processing
   headline: Comprehensive technical guide for laser cleaning {category} {subject_lowercase}
   environmentalImpact:
-  - benefit: [Environmental benefit 1]
-    description: [Quantified description with numbers]
-  - benefit: [Environmental benefit 2]
-    description: [Quantified description with numbers]
-  - benefit: [Environmental benefit 3]
-    description: [Quantified description with numbers]
+  - benefit: "Environmental benefit 1"
+    description: "Quantified description with numbers"
+  - benefit: "Environmental benefit 2"
+    description: "Quantified description with numbers"
+  - benefit: "Environmental benefit 3"
+    description: "Quantified description with numbers"
   outcomes:
-  - result: [Measurable result 1]
-    metric: [Specific measurement with standard]
-  - result: [Measurable result 2]
-    metric: [Specific measurement with standard]
-  - result: [Measurable result 3]
-    metric: [Specific measurement with standard]
+  - result: "Measurable result 1"
+    metric: "Specific measurement with standard"
+  - result: "Measurable result 2"
+    metric: "Specific measurement with standard"
+  - result: "Measurable result 3"
+    metric: "Specific measurement with standard"
   subject: {subject}
   article_type: {article_type}
   ---
@@ -88,7 +88,7 @@ template: |
   - Output ONLY the YAML frontmatter above - nothing else
   - Do NOT add any content sections, explanations, or additional text
   - Stop immediately after the closing --- marker
-  - Replace ALL [bracketed placeholders] with specific technical content
+  - Replace ALL bracketed placeholders with specific technical content
   - Use proper YAML formatting with correct indentation
   - Include specific numerical values with units
   - Make content specific to {subject} material
