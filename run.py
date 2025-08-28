@@ -3,6 +3,51 @@
 Z-Beam Generator - Main Interface
 
 A comprehensive AI-powered content generation system for laser cleaning materials.
+
+🚀 QUICK START SCRIPTS (User Commands):
+========================================
+
+BASIC GENERATION:
+    python3 run.py                                    # Generate all materials (batch mode)
+    python3 run.py --material "Steel"                 # Generate specific material
+    python3 run.py --material "Aluminum" --author 2   # Generate with Italian author
+    python3 run.py --interactive                      # Interactive mode with prompts
+    python3 run.py --start-index 50                   # Start batch from material #50
+
+COMPONENT CONTROL:
+    python3 run.py --material "Copper" --components "frontmatter,content"  # Specific components only
+    python3 run.py --list-components                  # Show all available components
+    python3 run.py --show-config                     # Show component configuration
+
+CONTENT MANAGEMENT:
+    python3 run.py --clean                           # Remove all generated content files
+    python3 run.py --yaml                            # Validate and fix YAML errors
+    python3 run.py --cleanup-scan                    # Scan for cleanup opportunities
+    python3 run.py --cleanup-report                  # Generate cleanup report
+
+SYSTEM INFO:
+    python3 run.py --list-materials                  # List all 121 available materials  
+    python3 run.py --list-authors                    # List all authors with countries
+    python3 run.py --check-env                       # Check API keys and environment
+    python3 run.py --test-api                        # Test API connectivity
+
+MATERIAL MANAGEMENT (separate script):
+    python3 remove_material.py --list-materials      # List all materials by category
+    python3 remove_material.py --find-orphans        # Find orphaned files
+    python3 remove_material.py --material "Material Name" --dry-run    # Test removal
+    python3 remove_material.py --material "Material Name" --execute    # Remove material
+
+PATH CLEANUP (one-time scripts):
+    python3 cleanup_paths.py                         # Rename files to clean format (already done)
+    
+🎯 COMMON WORKFLOWS:
+==================
+1. Generate all content:           python3 run.py
+2. Generate specific material:     python3 run.py --material "Steel"
+3. Clean and regenerate:          python3 run.py --clean && python3 run.py
+4. Check system health:           python3 run.py --check-env --show-config
+5. Remove unwanted material:      python3 remove_material.py --material "Old Material" --execute
+
 Features:
 - Schema-driven content generation with JSON validation
 - Multi-component orchestration (frontmatter, content, tags, etc.)
@@ -11,21 +56,16 @@ Features:
 - Component validation and autonomous fixing
 - Progress tracking and resumption capabilities
 - Clean slug generation for consistent file paths
-
-Usage:
-    python3 run.py                    # Interactive mode with menu
-    python3 run.py --material "Steel" # Generate for specific material
-    python3 run.py --batch            # Batch mode for all materials
-    python3 run.py --validate         # Validation mode
-    python3 run.py --clean            # Clean generated content
 """
 
+import sys
+import os
 import logging
 import yaml
 import json
+import argparse
 from pathlib import Path
 from typing import Dict, List, Optional
-import argparse
 
 # Import slug utilities for consistent naming
 try:
@@ -93,13 +133,6 @@ API_PROVIDERS = {
         "model": "grok-2",  # grok-2 works reliably; grok-4 currently uses reasoning tokens without completion output
     },
 }
-
-import sys
-import os
-import argparse
-import json
-from pathlib import Path
-import logging
 
 # Setup logging
 logging.basicConfig(
