@@ -12,7 +12,7 @@ composition:
 - '[Element: Percentage]'
 description: [Brief description of material properties and characteristics]
 images:
-  closeup: '{...}'
+  micro: '{...}'
   hero: '{...}'
 keywords:
 - [keyword1]

@@ -20,7 +20,7 @@ template: |
   - Include "ablation", "cleaning", "laser"
   - Include 1-2 industry applications (aerospace, automotive, manufacturing, electronics, etc.)
   - Include "non-contact" 
-  - Include 1 author name using {author_name} (convert to lowercase: first name + last name)
+  - Include 1 author slug using {author_slug} (already in lowercase hyphenated format)
   - Make tags relevant to {subject} laser cleaning
   - Use lowercase throughout
   - Output ONLY the comma-separated list, no other text

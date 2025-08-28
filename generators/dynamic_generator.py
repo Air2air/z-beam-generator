@@ -515,6 +515,9 @@ class DynamicGenerator:
             template_vars['author_title'] = self.author_info.get('title', 'Technical Expert')
             template_vars['author_expertise'] = self.author_info.get('expertise', 'Laser Processing')
             template_vars['author_id'] = str(author_id)
+            # Create author slug for tags and URLs
+            author_name = self.author_info.get('name', 'Expert Author')
+            template_vars['author_slug'] = author_name.lower().replace(' ', '-')
             
             # Create country context for bullets and other components
             if country != 'International':
@@ -582,6 +585,7 @@ DEFAULT INTERNATIONAL REQUIREMENTS:
             template_vars['author_title'] = 'Technical Expert'
             template_vars['author_expertise'] = 'Laser Processing'
             template_vars['author_id'] = '0'
+            template_vars['author_slug'] = 'expert-author'
             template_vars['country_context'] = "Write from an international technical perspective with global industry standards."
             template_vars['bullet_format_rules'] = """
 DEFAULT INTERNATIONAL REQUIREMENTS:

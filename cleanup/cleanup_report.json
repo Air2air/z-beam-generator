@@ -1,50 +1,96 @@
 {
-  "dry_run": true,
-  "timestamp": "2025-08-23T14:27:08.649662",
-  "dead_files": [],
-  "unused_component_files": [],
-  "temp_files": [],
-  "empty_dirs": [],
-  "outdated_files": [],
-  "broken_links": [],
-  "misplaced_test_files": [
-    [
-      "test_output",
-      "Test file/directory in root - should be in tests/"
-    ]
-  ],
-  "misplaced_doc_files": [
-    [
-      "DYNAMIC_SYSTEM_DOCUMENTATION.md",
-      "Documentation file in root - should be in docs/"
+  "metadata": {
+    "generated_at": "2025-08-26T11:26:29.720629",
+    "project_root": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator",
+    "total_issues": 15,
+    "scan_mode": "dry_run_only",
+    "safety_level": "maximum"
+  },
+  "summary": {
+    "dead_files": 0,
+    "temp_files": 0,
+    "empty_dirs": 0,
+    "misplaced_tests": 7,
+    "misplaced_docs": 8,
+    "broken_links": 0,
+    "outdated_content": 0
+  },
+  "detailed_results": {
+    "dead_files": [],
+    "temp_files": [],
+    "empty_dirs": [],
+    "misplaced_tests": [
+      [
+        "test_static_components.py",
+        "Test file in root - should be in tests/"
+      ],
+      [
+        "test_author_tags.py",
+        "Test file in root - should be in tests/"
+      ],
+      [
+        "test_static_focused.py",
+        "Test file in root - should be in tests/"
+      ],
+      [
+        "test_yaml_validation.py",
+        "Test file in root - should be in tests/"
+      ],
+      [
+        "test_clean.py",
+        "Test file in root - should be in tests/"
+      ],
+      [
+        "test_orchestration.py",
+        "Test file in root - should be in tests/"
+      ],
+      [
+        "verify_author_tags.py",
+        "Test file in root - should be in tests/"
+      ]
     ],
-    [
-      "GROK_API_VERIFICATION.md",
-      "Documentation file in root - should be in docs/"
+    "misplaced_docs": [
+      [
+        "DYNAMIC_SYSTEM_DOCUMENTATION.md",
+        "Documentation file in root - should be in docs/"
+      ],
+      [
+        "GROK_API_VERIFICATION.md",
+        "Documentation file in root - should be in docs/"
+      ],
+      [
+        "IMPLEMENTATION_SUMMARY.md",
+        "Documentation file in root - should be in docs/"
+      ],
+      [
+        "TESTING_COMPLETE.md",
+        "Documentation file in root - should be in docs/"
+      ],
+      [
+        "IMPLEMENTATION_SUMMARY.md",
+        "Documentation file in root - should be in docs/"
+      ],
+      [
+        "TESTING_COMPLETE.md",
+        "Documentation file in root - should be in docs/"
+      ],
+      [
+        "DYNAMIC_SYSTEM_DOCUMENTATION.md",
+        "Documentation file in root - should be in docs/"
+      ],
+      [
+        "GROK_API_VERIFICATION.md",
+        "Documentation file in root - should be in docs/"
+      ]
     ],
-    [
-      "IMPLEMENTATION_SUMMARY.md",
-      "Documentation file in root - should be in docs/"
-    ],
-    [
-      "TESTING_COMPLETE.md",
-      "Documentation file in root - should be in docs/"
-    ],
-    [
-      "IMPLEMENTATION_SUMMARY.md",
-      "Documentation file in root - should be in docs/"
-    ],
-    [
-      "TESTING_COMPLETE.md",
-      "Documentation file in root - should be in docs/"
-    ],
-    [
-      "DYNAMIC_SYSTEM_DOCUMENTATION.md",
-      "Documentation file in root - should be in docs/"
-    ],
-    [
-      "GROK_API_VERIFICATION.md",
-      "Documentation file in root - should be in docs/"
-    ]
+    "broken_links": [],
+    "outdated_content": []
+  },
+  "recommendations": [
+    "\ud83d\udd34 Significant cleanup needed - review carefully",
+    "\ud83d\udccb Always review items before taking action",
+    "\ud83d\udeab Never delete files without understanding their purpose",
+    "\ud83d\udcbe Consider backing up important files first",
+    "\ud83d\udd0d Use git status to check for uncommitted changes"
   ]
 }

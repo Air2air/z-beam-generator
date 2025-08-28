@@ -2,7 +2,6 @@
   "thesaurusProfile": {
     "name": "thesaurus",
     "version": "1.5",
-    "schemaType": "ThesaurusProfile",
     "generatorConfig": {
       "jsonld": {
         "schemaType": "DefinedTerm"
@@ -75,13 +74,13 @@
               }
             }
           },
-          "closeup": {
+          "micro": {
             "type": "object",
             "properties": {
               "alt": {
                 "type": "string",
                 "required": true,
-                "description": "Alt text for closeup image",
+                "description": "Alt text for micro image",
                 "example": "Microscopic view of material interaction with laser at specific fluence levels"
               }
             }

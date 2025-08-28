@@ -68,7 +68,17 @@
         "type": "string",
         "required": true,
         "description": "Material category (metal, ceramic, semiconductor, plastic, composite, glass, masonry, stone, wood)",
-        "enum": ["metal", "ceramic", "semiconductor", "plastic", "composite", "glass", "masonry", "stone", "wood"],
+        "enum": [
+          "metal",
+          "ceramic",
+          "semiconductor",
+          "plastic",
+          "composite",
+          "glass",
+          "masonry",
+          "stone",
+          "wood"
+        ],
         "example": "semiconductor"
       },
       "chemicalProperties": {
@@ -87,7 +97,15 @@
           },
           "materialType": {
             "type": "string",
-            "enum": ["element", "compound", "alloy", "composite", "polymer", "ceramic", "mineral"],
+            "enum": [
+              "element",
+              "compound",
+              "alloy",
+              "composite",
+              "polymer",
+              "ceramic",
+              "mineral"
+            ],
             "description": "Chemical classification of the material",
             "example": "compound"
           }
@@ -195,7 +213,7 @@
                 "type": "string",
                 "required": true,
                 "description": "Alt text for hero image",
-                "example": "Close-up of Alumina surface being laser cleaned showing material texture and reflectivity"
+                "example": "Microscopic view of Alumina surface being laser cleaned showing material texture and reflectivity"
               },
               "url": {
                 "type": "string",
@@ -205,158 +223,156 @@
               }
             }
           },
-          "closeup": {
+          "micro": {
             "type": "object",
             "properties": {
               "alt": {
                 "type": "string",
-                "required": true,
-                "description": "Alt text for closeup image",
+                "description": "Alt text for micro image",
                 "example": "Detailed view of Alumina microstructure after laser cleaning process"
               },
               "url": {
                 "type": "string",
-                "required": true,
-                "description": "URL for closeup image",
-                "example": "https://www.z-beam.com/images/alumina-laser-cleaning-closeup.jpg"
+                "description": "URL for micro image",
+                "example": "https://www.z-beam.com/images/alumina-laser-cleaning-micro.jpg"
               }
             }
-          }
+          },
+          "description": "Image descriptions for article visuals"
         },
-        "description": "Image descriptions for article visuals"
-      },
-      "applications": {
-        "type": "array",
-        "required": true,
-        "items": {
-          "type": "object",
-          "properties": {
-            "industry": {
-              "type": "string",
-              "required": true,
-              "description": "Industry or sector name",
-              "example": "Aerospace Manufacturing"
-            },
-            "detail": {
-              "type": "string",
-              "required": true,
-              "description": "Additional technical context and specifications",
-              "example": "Processing speeds and quality standards achieved"
+        "applications": {
+          "type": "array",
+          "required": true,
+          "items": {
+            "type": "object",
+            "properties": {
+              "industry": {
+                "type": "string",
+                "required": true,
+                "description": "Industry or sector name",
+                "example": "Aerospace Manufacturing"
+              },
+              "detail": {
+                "type": "string",
+                "required": true,
+                "description": "Additional technical context and specifications",
+                "example": "Processing speeds and quality standards achieved"
+              }
             }
-          }
+          },
+          "description": "Industrial applications and use cases"
         },
-        "description": "Industrial applications and use cases"
-      },
-      "title": {
-        "type": "string",
-        "required": true,
-        "description": "SEO-optimized article title",
-        "example": "Advanced Laser Cleaning Solutions for Aluminum Surfaces"
-      },
-      "headline": {
-        "type": "string",
-        "required": true,
-        "description": "Compelling article headline",
-        "example": "Precision Oxide Removal and Surface Preparation Using Fiber Laser Technology"
-      },
-      "environmentalImpact": {
-        "type": "array",
-        "required": true,
-        "items": {
-          "type": "object",
-          "properties": {
-            "benefit": {
-              "type": "string",
-              "required": true,
-              "description": "Environmental benefit category",
-              "example": "Zero chemical waste"
-            },
-            "description": {
-              "type": "string",
-              "required": true,
-              "description": "Detailed quantifiable description",
-              "example": "Eliminates use of chemical solvents, reducing hazardous waste by 100%"
+        "title": {
+          "type": "string",
+          "required": true,
+          "description": "SEO-optimized article title",
+          "example": "Advanced Laser Cleaning Solutions for Aluminum Surfaces"
+        },
+        "headline": {
+          "type": "string",
+          "required": true,
+          "description": "Compelling article headline",
+          "example": "Precision Oxide Removal and Surface Preparation Using Fiber Laser Technology"
+        },
+        "environmentalImpact": {
+          "type": "array",
+          "required": true,
+          "items": {
+            "type": "object",
+            "properties": {
+              "benefit": {
+                "type": "string",
+                "required": true,
+                "description": "Environmental benefit category",
+                "example": "Zero chemical waste"
+              },
+              "description": {
+                "type": "string",
+                "required": true,
+                "description": "Detailed quantifiable description",
+                "example": "Eliminates use of chemical solvents, reducing hazardous waste by 100%"
+              }
             }
-          }
+          },
+          "description": "Environmental benefits and sustainability aspects"
         },
-        "description": "Environmental benefits and sustainability aspects"
-      },
-      "outcomes": {
-        "type": "array",
-        "required": true,
-        "items": {
-          "type": "object",
-          "properties": {
-            "result": {
-              "type": "string",
-              "required": true,
-              "description": "Measurable outcome or result",
-              "example": "Surface cleanliness"
-            },
-            "metric": {
-              "type": "string",
-              "required": true,
-              "description": "Specific measurement with standards",
-              "example": "Achieves SAE AMS 2700 Level A with contamination below 10 mg/m²"
+        "outcomes": {
+          "type": "array",
+          "required": true,
+          "items": {
+            "type": "object",
+            "properties": {
+              "result": {
+                "type": "string",
+                "required": true,
+                "description": "Measurable outcome or result",
+                "example": "Surface cleanliness"
+              },
+              "metric": {
+                "type": "string",
+                "required": true,
+                "description": "Specific measurement with standards",
+                "example": "Achieves SAE AMS 2700 Level A with contamination below 10 mg/m²"
+              }
             }
-          }
-        },
-        "description": "Measurable outcomes and performance metrics"
-      }
-    },
-    "technicalSpecifications": {
-      "type": "object",
-      "required": false,
-      "properties": {
-        "laserType": {
-          "type": "string",
-          "description": "Type of laser used",
-          "example": "Hafnium-doped fiber"
-        },
-        "wavelength": {
-          "type": "string",
-          "description": "Laser wavelength",
-          "example": "1064nm ±2nm"
-        },
-        "powerRange": {
-          "type": "string",
-          "description": "Power range",
-          "example": "50–1000W pulsed"
-        },
-        "fluenceRange": {
-          "type": "string",
-          "description": "Fluence range",
-          "example": "0.1–15 J/cm²"
-        },
-        "pulseDuration": {
-          "type": "string",
-          "description": "Pulse duration",
-          "example": "10–200ns"
+          },
+          "description": "Measurable outcomes and performance metrics"
         }
       },
-      "description": "Technical parameters for material/thesaurus articles"
-    },
-    "validation": {
-      "frontmatter": {
-        "requiredFields": [
-          "name",
-          "description",
-          "author",
-          "keywords",
-          "category",
-          "chemicalProperties",
-          "properties",
-          "composition",
-          "compatibility",
-          "regulatoryStandards",
-          "images",
-          "applications",
-          "technicalSpecifications",
-          "title",
-          "headline",
-          "environmentalImpact",
-          "outcomes"
-        ]
+      "technicalSpecifications": {
+        "type": "object",
+        "required": false,
+        "properties": {
+          "laserType": {
+            "type": "string",
+            "description": "Type of laser used",
+            "example": "Hafnium-doped fiber"
+          },
+          "wavelength": {
+            "type": "string",
+            "description": "Laser wavelength",
+            "example": "1064nm ±2nm"
+          },
+          "powerRange": {
+            "type": "string",
+            "description": "Power range",
+            "example": "50–1000W pulsed"
+          },
+          "fluenceRange": {
+            "type": "string",
+            "description": "Fluence range",
+            "example": "0.1–15 J/cm²"
+          },
+          "pulseDuration": {
+            "type": "string",
+            "description": "Pulse duration",
+            "example": "10–200ns"
+          }
+        },
+        "description": "Technical parameters for material/thesaurus articles"
+      },
+      "validation": {
+        "frontmatter": {
+          "requiredFields": [
+            "name",
+            "description",
+            "author",
+            "keywords",
+            "category",
+            "chemicalProperties",
+            "properties",
+            "composition",
+            "compatibility",
+            "regulatoryStandards",
+            "images",
+            "applications",
+            "technicalSpecifications",
+            "title",
+            "headline",
+            "environmentalImpact",
+            "outcomes"
+          ]
+        }
       }
     }
   }
