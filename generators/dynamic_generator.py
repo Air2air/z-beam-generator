@@ -13,6 +13,17 @@ from typing import Dict, List, Optional, Any
 from dataclasses import dataclass
 import logging
 
+# Import slug utilities for consistent naming
+try:
+    from utils.slug_utils import create_material_slug, create_filename_slug
+except ImportError:
+    # Fallback to basic slug generation if utils not available
+    def create_material_slug(name: str) -> str:
+        return name.lower().replace(' ', '-').replace('_', '-').replace('(', '').replace(')', '')
+    def create_filename_slug(name: str, suffix: str = "laser-cleaning") -> str:
+        slug = create_material_slug(name)
+        return f"{slug}-{suffix}" if suffix else slug
+
 # Setup logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -242,8 +253,8 @@ class DynamicGenerator:
     def _extract_frontmatter_data(self, material_name: str) -> Optional[Dict]:
         """Extract frontmatter data from existing frontmatter file"""
         try:
-            # Create proper file path for frontmatter
-            material_slug = material_name.lower().replace(' ', '-').replace('_', '-')
+            # Create proper file path for frontmatter using clean slug
+            material_slug = create_material_slug(material_name)
             frontmatter_path = Path("content/components/frontmatter") / f"{material_slug}-laser-cleaning.md"
             
             if not frontmatter_path.exists():
@@ -489,7 +500,7 @@ class DynamicGenerator:
             'category': category,
             'article_type': article_type,
             'subject_lowercase': material_name.lower(),
-            'subject_slug': material_name.lower().replace(' ', '-').replace('_', '-'),
+            'subject_slug': create_material_slug(material_name),  # Use clean slug generation
             
             # Material properties (fallback values)
             'material_formula': material.get('formula', material_name),
@@ -705,9 +716,8 @@ DEFAULT INTERNATIONAL REQUIREMENTS:
         output_dir = Path(request.output_dir) / "components" / component_type
         output_dir.mkdir(parents=True, exist_ok=True)
         
-        # Create filename: {material}-laser-cleaning.md
-        material_slug = request.material.lower().replace(' ', '-').replace('_', '-')
-        filename = f"{material_slug}-laser-cleaning.md"
+        # Create filename using clean slug generation
+        filename = create_filename_slug(request.material) + ".md"
         filepath = output_dir / filename
         
         try:

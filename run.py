@@ -1,26 +1,42 @@
 #!/usr/bin/env python3
 """
-Z-Beam Dynamic Content Generation System
+Z-Beam Generator - Main Interface
 
-FEATURES:
-- Dynamic schema-driven content generation
-- Component-specific generation with user selection
+A comprehensive AI-powered content generation system for laser cleaning materials.
+Features:
+- Schema-driven content generation with JSON validation
+- Multi-component orchestration (frontmatter, content, tags, etc.)
+- Interactive and batch processing modes
 - Multi-API provider support (DeepSeek, Grok)
-- Component-level enable/disable controls
-- Real-time validation and error correction
-- Interactive and batch generation modes
+- Component validation and autonomous fixing
+- Progress tracking and resumption capabilities
+- Clean slug generation for consistent file paths
 
-USAGE:
-    python3 run.py                                    # Interactive generation mode
-    python3 run.py --start-index 40                   # Start batch generation from material #50
-    python3 run.py --material "Copper"                # Generate all components for specific material
-    python3 run.py --material "Steel" --components "frontmatter,content"  # Generate specific components
-    python3 run.py --list-materials                   # List all available materials
-    python3 run.py --yaml                            # Validate and fix YAML errors
-    python3 run.py --test-api                        # Test API connection
-    python3 -m tests
-
+Usage:
+    python3 run.py                    # Interactive mode with menu
+    python3 run.py --material "Steel" # Generate for specific material
+    python3 run.py --batch            # Batch mode for all materials
+    python3 run.py --validate         # Validation mode
+    python3 run.py --clean            # Clean generated content
 """
+
+import logging
+import yaml
+import json
+from pathlib import Path
+from typing import Dict, List, Optional
+import argparse
+
+# Import slug utilities for consistent naming
+try:
+    from utils.slug_utils import create_material_slug, create_filename_slug
+except ImportError:
+    # Fallback to basic slug generation if utils not available
+    def create_material_slug(name: str) -> str:
+        return name.lower().replace(' ', '-').replace('_', '-').replace('(', '').replace(')', '')
+    def create_filename_slug(name: str, suffix: str = "laser-cleaning") -> str:
+        slug = create_material_slug(name)
+        return f"{slug}-{suffix}" if suffix else slug
 
 COMPONENT_CONFIG = {
     # Global author assignment for all components
@@ -431,9 +447,8 @@ def save_component_to_file_original(material: str, component_type: str, content:
     output_dir = Path("content") / "components" / component_type
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    # Create filename: {material}-laser-cleaning.md
-    material_slug = material.lower().replace(" ", "-").replace("_", "-")
-    filename = f"{material_slug}-laser-cleaning.md"
+    # Create filename using clean slug generation
+    filename = create_filename_slug(material) + ".md"
     filepath = output_dir / filename
 
     try:

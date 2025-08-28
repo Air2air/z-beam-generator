@@ -8,6 +8,17 @@ import os
 from pathlib import Path
 from typing import List, Dict, Any
 
+# Import slug utilities for consistent naming
+try:
+    from utils.slug_utils import create_material_slug, create_filename_slug
+except ImportError:
+    # Fallback to basic slug generation if utils not available
+    def create_material_slug(name: str) -> str:
+        return name.lower().replace(' ', '-').replace('_', '-').replace('(', '').replace(')', '')
+    def create_filename_slug(name: str, suffix: str = "laser-cleaning") -> str:
+        slug = create_material_slug(name)
+        return f"{slug}-{suffix}" if suffix else slug
+
 class TagsGenerator:
     """Enhanced tags generator using material-specific tag categories"""
     
@@ -101,7 +112,7 @@ class TagsGenerator:
     
     def extract_frontmatter_data(self, material_slug):
         """Extract material name, category, and author from frontmatter file."""
-        # Build the correct path to the frontmatter file
+        # Build the correct path to the frontmatter file using clean slug
         frontmatter_file = f"content/components/frontmatter/{material_slug}-laser-cleaning.md"
         
         try:

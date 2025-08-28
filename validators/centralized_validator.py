@@ -18,6 +18,17 @@ from pathlib import Path
 from dataclasses import dataclass
 from enum import Enum
 
+# Import slug utilities for consistent naming
+try:
+    from utils.slug_utils import create_material_slug, create_filename_slug
+except ImportError:
+    # Fallback to basic slug generation if utils not available
+    def create_material_slug(name: str) -> str:
+        return name.lower().replace(' ', '-').replace('_', '-').replace('(', '').replace(')', '')
+    def create_filename_slug(name: str, suffix: str = "laser-cleaning") -> str:
+        slug = create_material_slug(name)
+        return f"{slug}-{suffix}" if suffix else slug
+
 logger = logging.getLogger(__name__)
 
 class ComponentStatus(Enum):
@@ -434,7 +445,7 @@ class CentralizedValidator:
         clean_subject = clean_subject.replace('-laser-cleaning', '').replace('_laser_cleaning', '')
         
         # Use the same filename pattern as main generation (material type uses -laser-cleaning suffix)
-        subject_slug = clean_subject.lower().replace(' ', '-')
+        subject_slug = create_material_slug(clean_subject)
         filename = f"{subject_slug}-laser-cleaning.md"
         return Path("content/components") / component / filename
     
