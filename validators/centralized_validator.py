@@ -63,7 +63,6 @@ class CentralizedValidator:
         
         # Load example formats for validation
         self.examples_dir = self.base_path / "examples"
-        self.templates_dir = self.base_path / "templates"
     
     def validate_material(self, subject: str) -> Dict[str, ValidationResult]:
         """Validate all components for a material."""
@@ -132,9 +131,8 @@ class CentralizedValidator:
             
             # Apply component-specific post-processing
             if component_type == "frontmatter":
-                # Extract subject from file path for context
-                subject = path.parent.name.replace('-', ' ').title()
-                processed_content = self._clean_yaml_formatting(original_content, subject)
+                # For frontmatter components, apply basic cleanup
+                processed_content = original_content
             else:
                 # For non-frontmatter components, apply basic cleanup
                 processed_content = original_content
