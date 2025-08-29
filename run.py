@@ -824,7 +824,7 @@ def run_yaml_validation():
 
         validator = CentralizedValidator()
         content_dir = Path("content")
-        validators_examples_dir = Path("validators/examples")
+        validators_examples_dir = Path("examples")
 
         total_files = 0
         fixed_files = 0
@@ -860,8 +860,8 @@ def run_yaml_validation():
         else:
             print("   ⚠️  Content directory not found")
 
-        # Process validator examples directory
-        print("\n📁 Processing validators/examples directory...")
+        # Process examples directory
+        print("\n📁 Processing examples directory...")
         if validators_examples_dir.exists():
             for md_file in validators_examples_dir.glob("*.md"):
                 total_files += 1
@@ -884,7 +884,7 @@ def run_yaml_validation():
                     error_files.append(f"examples/{md_file.name}: {str(e)}")
                     print(f"   ❌ Error: examples/{md_file.name} - {e}")
         else:
-            print("   ⚠️  Validators/examples directory not found")
+            print("   ⚠️  Examples directory not found")
 
         print("\n📊 YAML PROCESSING COMPLETE")
         print("=" * 50)

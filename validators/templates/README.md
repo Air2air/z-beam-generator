@@ -1,6 +1,6 @@
 # Comprehensive Z-Beam Component Templates
 
-This directory contains proper format templates for all Z-Beam components. These templates are adjusted based on working examples from the validators/examples directory.
+This directory contains proper format templates for all Z-Beam components. These templates are adjusted based on working examples from the examples directory.
 
 ## Component Templates
 

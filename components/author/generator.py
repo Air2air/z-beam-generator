@@ -17,7 +17,7 @@ class AuthorGenerator:
     def __init__(self):
         """Initialize the author generator"""
         self.authors_file = Path("components/author/authors.json")
-        self.template_file = Path("validators/examples/author.md")
+        self.template_file = Path("examples/author.md")
         
     def _load_authors(self) -> Dict[str, Any]:
         """Load authors data from JSON file"""

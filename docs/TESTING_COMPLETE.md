@@ -32,7 +32,7 @@
 - **API provider assignment**: Component-level control working
 
 ### ✅ COMPREHENSIVE VALIDATION
-- **YAML processing**: Content and validators/examples support
+- **YAML processing**: Content and examples support
 - **Error handling**: Graceful failure and recovery
 - **File I/O**: Robust save operations with proper paths
 
