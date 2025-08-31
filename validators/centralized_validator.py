@@ -111,7 +111,7 @@ class CentralizedValidator:
 
     def post_process_generated_content(self, file_path: str, component_type: str) -> bool:
         """
-        Apply post-processing cleanup to generated content.
+        Apply post-processing cleanup to generated content using component-local processors.
         This should be called immediately after content generation, before validation.
         
         Args:
@@ -128,15 +128,74 @@ class CentralizedValidator:
         
         try:
             original_content = path.read_text(encoding='utf-8')
+            processed_content = original_content
             
             # Apply component-specific post-processing
-            if component_type == "frontmatter":
-                # For frontmatter components, apply basic cleanup
+            try:
+                if component_type == "frontmatter":
+                    from components.frontmatter.post_processor import post_process_frontmatter
+                    # Extract material name and category if possible
+                    material_name = path.stem.replace('-laser-cleaning', '')
+                    processed_content = post_process_frontmatter(original_content, material_name)
+                    
+                elif component_type == "content":
+                    from components.content.post_processor import post_process_content
+                    material_name = path.stem.replace('-laser-cleaning', '')
+                    processed_content = post_process_content(original_content, material_name)
+                    
+                elif component_type == "caption":
+                    from components.caption.post_processor import post_process_caption
+                    material_name = path.stem.replace('-laser-cleaning', '')
+                    processed_content = post_process_caption(original_content, material_name)
+                    
+                elif component_type == "bullets":
+                    from components.bullets.post_processor import post_process_bullets
+                    material_name = path.stem.replace('-laser-cleaning', '')
+                    processed_content = post_process_bullets(original_content, material_name)
+                    
+                elif component_type == "table":
+                    from components.table.post_processor import post_process_table
+                    material_name = path.stem.replace('-laser-cleaning', '')
+                    processed_content = post_process_table(original_content, material_name)
+                    
+                elif component_type == "tags":
+                    from components.tags.post_processor import post_process_tags
+                    material_name = path.stem.replace('-laser-cleaning', '')
+                    processed_content = post_process_tags(original_content, material_name)
+                    
+                elif component_type == "metatags":
+                    from components.metatags.post_processor import post_process_metatags
+                    material_name = path.stem.replace('-laser-cleaning', '')
+                    processed_content = post_process_metatags(original_content, material_name)
+                    
+                elif component_type == "jsonld":
+                    from components.jsonld.post_processor import post_process_jsonld
+                    material_name = path.stem.replace('-laser-cleaning', '')
+                    processed_content = post_process_jsonld(original_content, material_name)
+                    
+                elif component_type == "propertiestable":
+                    from components.propertiestable.post_processor import post_process_propertiestable
+                    material_name = path.stem.replace('-laser-cleaning', '')
+                    processed_content = post_process_propertiestable(original_content, material_name)
+                    
+                elif component_type == "author":
+                    from components.author.post_processor import post_process_author
+                    material_name = path.stem.replace('-laser-cleaning', '')
+                    processed_content = post_process_author(original_content, material_name)
+                    
+                elif component_type == "badgesymbol":
+                    from components.badgesymbol.post_processor import post_process_badgesymbol
+                    material_name = path.stem.replace('-laser-cleaning', '')
+                    processed_content = post_process_badgesymbol(original_content, material_name)
+                    
+                else:
+                    # For other components, apply basic cleanup
+                    processed_content = original_content
+                    
+            except ImportError as e:
+                logger.warning(f"Component post-processor not found for {component_type}: {e}")
+                # Apply basic cleanup
                 processed_content = original_content
-            else:
-                # For non-frontmatter components, apply basic cleanup
-                processed_content = original_content
-                # Could add other post-processing here for different component types
             
             # Write back if changes were made
             if processed_content != original_content:
@@ -288,65 +347,74 @@ class CentralizedValidator:
         return errors
     
     def _validate_component_specific_format(self, content: str, component: str, format_rules: Dict[str, Any]) -> List[str]:
-        """Validate component-specific format requirements."""
+        """Validate component-specific format requirements using component-local validators."""
         errors = []
         
-        if component == 'caption':
-            # Caption should be two lines with bold formatting
-            lines = [line.strip() for line in content.split('\n') if line.strip()]
-            if len(lines) != 2:
-                errors.append("Caption must have exactly 2 lines")
-            else:
-                for i, line in enumerate(lines):
-                    if not line.startswith('**') or '**' not in line[2:]:
-                        errors.append(f"Line {i+1} must start with bold formatting (**text**)")
-        
-        elif component == 'content':
-            # Content should be exactly 2 paragraphs
-            paragraphs = [p.strip() for p in content.split('\n\n') if p.strip()]
-            if len(paragraphs) != 2:
-                errors.append("Content must have exactly 2 paragraphs")
-        
-        elif component == 'bullets':
-            # Bullets should have bullet points starting with •
-            lines = [line.strip() for line in content.split('\n') if line.strip()]
-            if not lines:
-                errors.append("Bullets component cannot be empty")
-            else:
-                for line in lines:
-                    if not line.startswith('•'):
-                        errors.append("All bullet points must start with • character")
-                        break
-        
-        elif component == 'table':
-            # Table should have proper markdown table format
-            lines = [line.strip() for line in content.split('\n') if line.strip()]
-            if not lines:
-                errors.append("Table component cannot be empty")
-            else:
-                has_header = any('|' in line for line in lines[:2])
-                has_separator = any('|-' in line or '-|' in line for line in lines[:3])
-                if not has_header:
-                    errors.append("Table must have header row with | separators")
-                if not has_separator:
-                    errors.append("Table must have separator row with | and - characters")
-        
-        elif component == 'content':
-            # Content should be properly structured paragraphs
-            paragraphs = [p.strip() for p in content.split('\n\n') if p.strip()]
-            if len(paragraphs) < 2:
-                errors.append("Content should have at least 2 paragraphs")
-        
-        elif component == 'tags':
-            # Tags should be a simple list or comma-separated
-            if not content.strip():
-                errors.append("Tags component cannot be empty")
-            elif len(content.split()) < 3:
-                errors.append("Tags should contain at least 3 tags")
-        
-        # Check for placeholder content
-        if 'TBD' in content or 'TODO' in content or '[' in content and ']' in content:
-            errors.append("Contains placeholder content (TBD, TODO, or [brackets])")
+        try:
+            # Import and use component-local validators
+            if component == 'caption':
+                from components.caption.validator import validate_caption_format, validate_caption_content
+                errors.extend(validate_caption_format(content, format_rules))
+                errors.extend(validate_caption_content(content))
+                
+            elif component == 'content':
+                from components.content.validator import validate_content_format, validate_content_structure
+                errors.extend(validate_content_format(content, format_rules))
+                errors.extend(validate_content_structure(content))
+                
+            elif component == 'bullets':
+                from components.bullets.validator import validate_bullets_format, validate_bullets_content
+                errors.extend(validate_bullets_format(content, format_rules))
+                errors.extend(validate_bullets_content(content))
+                
+            elif component == 'table':
+                from components.table.validator import validate_table_format, validate_table_structure
+                errors.extend(validate_table_format(content, format_rules))
+                errors.extend(validate_table_structure(content))
+                
+            elif component == 'tags':
+                from components.tags.validator import validate_tags_format, validate_tags_content
+                errors.extend(validate_tags_format(content, format_rules))
+                errors.extend(validate_tags_content(content))
+                
+            elif component == 'frontmatter':
+                from components.frontmatter.validator import validate_frontmatter_content
+                errors.extend(validate_frontmatter_content(content))
+                
+            elif component == 'metatags':
+                from components.metatags.validator import validate_metatags_yaml, validate_metatags_content
+                errors.extend(validate_metatags_yaml(content, format_rules))
+                errors.extend(validate_metatags_content(content))
+                
+            elif component == 'jsonld':
+                from components.jsonld.validator import validate_jsonld_structure, validate_jsonld_content
+                errors.extend(validate_jsonld_structure(content, format_rules))
+                errors.extend(validate_jsonld_content(content))
+                
+            elif component == 'propertiestable':
+                from components.propertiestable.validator import validate_propertiestable_format, validate_propertiestable_content
+                errors.extend(validate_propertiestable_format(content, format_rules))
+                errors.extend(validate_propertiestable_content(content))
+                
+            elif component == 'author':
+                from components.author.validator import validate_author_format, validate_author_content
+                errors.extend(validate_author_format(content, format_rules))
+                errors.extend(validate_author_content(content))
+                
+            elif component == 'badgesymbol':
+                from components.badgesymbol.validator import validate_badgesymbol_format, validate_badgesymbol_content
+                errors.extend(validate_badgesymbol_format(content, format_rules))
+                errors.extend(validate_badgesymbol_content(content))
+                
+        except ImportError as e:
+            # Fallback to basic validation if component validator not available
+            logger.warning(f"Component validator not found for {component}: {e}")
+            # Check for placeholder content (common to all components)
+            if 'TBD' in content or 'TODO' in content or '[' in content and ']' in content:
+                errors.append("Contains placeholder content (TBD, TODO, or [brackets])")
+            
+        except Exception as e:
+            logger.error(f"Error in component-specific validation for {component}: {e}")
             
         return errors
     
@@ -483,8 +551,8 @@ class CentralizedValidator:
     def _get_unified_generator(self):
         """Get the unified generator module."""
         try:
-            from generators.unified_generator import UnifiedDocumentGenerator
-            return UnifiedDocumentGenerator
+            from generators.dynamic_generator import DynamicComponentGeneratorFactory
+            return DynamicComponentGeneratorFactory
         except ImportError as e:
             logger.error(f"Could not import unified generator: {e}")
             return None

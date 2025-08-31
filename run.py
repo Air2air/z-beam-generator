@@ -24,6 +24,7 @@ CONTENT MANAGEMENT:
     python3 run.py --yaml                            # Validate and fix YAML errors
     python3 run.py --cleanup-scan                    # Scan for cleanup opportunities
     python3 run.py --cleanup-report                  # Generate cleanup report
+    python3 run.py --cleanup-root                    # Organize root directory files
 
 SYSTEM INFO:
     python3 run.py --list-materials                  # List all 121 available materials  
@@ -824,7 +825,6 @@ def run_yaml_validation():
 
         validator = CentralizedValidator()
         content_dir = Path("content")
-        validators_examples_dir = Path("examples")
 
         total_files = 0
         fixed_files = 0
@@ -860,31 +860,35 @@ def run_yaml_validation():
         else:
             print("   ⚠️  Content directory not found")
 
-        # Process examples directory
-        print("\n📁 Processing examples directory...")
-        if validators_examples_dir.exists():
-            for md_file in validators_examples_dir.glob("*.md"):
-                total_files += 1
+        # Process component example files
+        print("\n📁 Processing component example files...")
+        components_dir = Path("components")
+        if components_dir.exists():
+            for component_dir in components_dir.iterdir():
+                if component_dir.is_dir():
+                    example_files = list(component_dir.glob("example_*.md"))
+                    for md_file in example_files:
+                        total_files += 1
 
-                try:
-                    # Component type is the filename without extension
-                    component_type = md_file.stem
+                        try:
+                            # Component type is the parent directory name
+                            component_type = component_dir.name
 
-                    was_processed = validator.post_process_generated_content(
-                        str(md_file), component_type
-                    )
+                            was_processed = validator.post_process_generated_content(
+                                str(md_file), component_type
+                            )
 
-                    if was_processed:
-                        fixed_files += 1
-                        print(f"   ✅ Fixed: examples/{md_file.name}")
-                    else:
-                        print(f"   ⚪ OK: examples/{md_file.name}")
+                            if was_processed:
+                                fixed_files += 1
+                                print(f"   ✅ Fixed: {md_file.relative_to(Path('.'))}")
+                            else:
+                                print(f"   ⚪ OK: {md_file.relative_to(Path('.'))}")
 
-                except Exception as e:
-                    error_files.append(f"examples/{md_file.name}: {str(e)}")
-                    print(f"   ❌ Error: examples/{md_file.name} - {e}")
+                        except Exception as e:
+                            error_files.append(f"{md_file.relative_to(Path('.'))}: {str(e)}")
+                            print(f"   ❌ Error: {md_file.relative_to(Path('.'))} - {e}")
         else:
-            print("   ⚠️  Examples directory not found")
+            print("   ⚠️  Components directory not found")
 
         print("\n📊 YAML PROCESSING COMPLETE")
         print("=" * 50)
@@ -1099,6 +1103,179 @@ def run_cleanup_report():
         return False
 
 
+def run_root_cleanup():
+    """Clean up root directory by organizing files into appropriate subdirectories."""
+    print("🧹 ROOT DIRECTORY CLEANUP")
+    print("=" * 50)
+    print("Organizing root directory files into appropriate subdirectories...")
+    print("=" * 50)
+    
+    try:
+        root_dir = Path(".")
+        
+        # Define cleanup rules - where to move different file types
+        cleanup_rules = {
+            # Documentation files - already mostly moved to docs/
+            "docs": {
+                "patterns": ["*.md"],
+                "exclude": ["README.md"],  # Keep README.md in root
+                "description": "Documentation files"
+            },
+            
+            # Test and debug files  
+            "tests": {
+                "patterns": ["test_*.py", "debug_*.py", "*_test.py", "test.py", "*verification*.py"],
+                "exclude": [],
+                "description": "Test and debug files"
+            },
+            
+            # Utility and shell scripts
+            "scripts": {
+                "patterns": [
+                    "*_material.py", "update_*.py", "*_labels.py", "*enhancement*.py", 
+                    "*.sh"
+                ],
+                "exclude": ["run.py", "z_beam_generator.py"],  # Keep main scripts in root
+                "description": "Utility, maintenance and shell scripts"
+            },
+            
+            # Cleanup utilities
+            "cleanup": {
+                "patterns": ["cleanup_*.py", "*cleanup*.py"],
+                "exclude": [],
+                "description": "Cleanup utility scripts"
+            },
+            
+            # Temporary and generated files to delete
+            "delete": {
+                "patterns": [
+                    "*.pyc", "*.pyo", "__pycache__", ".pytest_cache",
+                    "*.tmp", "*.temp", "*~", ".DS_Store",
+                    "cleanup_report.json"  # Will be regenerated in cleanup/ folder
+                ],
+                "exclude": [],
+                "description": "Temporary and cache files"
+            }
+        }
+        
+        moved_files = {}
+        deleted_files = []
+        skipped_files = []
+        
+        # Process each cleanup rule
+        for target_dir, rule in cleanup_rules.items():
+            moved_files[target_dir] = []
+            
+            if target_dir == "delete":
+                # Special handling for deletion
+                for pattern in rule["patterns"]:
+                    for file_path in root_dir.glob(pattern):
+                        if file_path.is_file() and file_path.name not in rule["exclude"]:
+                            try:
+                                file_path.unlink()
+                                deleted_files.append(file_path.name)
+                                print(f"   🗑️  Deleted: {file_path.name}")
+                            except Exception as e:
+                                print(f"   ❌ Error deleting {file_path.name}: {e}")
+                        elif file_path.is_dir() and file_path.name not in rule["exclude"]:
+                            try:
+                                import shutil
+                                shutil.rmtree(file_path)
+                                deleted_files.append(f"{file_path.name}/")
+                                print(f"   🗑️  Deleted directory: {file_path.name}/")
+                            except Exception as e:
+                                print(f"   ❌ Error deleting directory {file_path.name}: {e}")
+                continue
+            
+            # Create target directory if it doesn't exist
+            target_path = Path(target_dir)
+            if not target_path.exists():
+                target_path.mkdir(parents=True, exist_ok=True)
+                print(f"   📁 Created directory: {target_dir}/")
+            
+            # Find and move files matching patterns
+            for pattern in rule["patterns"]:
+                for file_path in root_dir.glob(pattern):
+                    # Skip if it's a directory or in exclude list
+                    if not file_path.is_file() or file_path.name in rule["exclude"]:
+                        if file_path.name in rule["exclude"]:
+                            skipped_files.append(f"{file_path.name} (excluded)")
+                        continue
+                    
+                    # Skip if file is already in target directory
+                    if file_path.parent.name == target_dir:
+                        continue
+                    
+                    # Move file to target directory
+                    dest_path = target_path / file_path.name
+                    
+                    # Handle name conflicts
+                    counter = 1
+                    original_dest = dest_path
+                    while dest_path.exists():
+                        stem = original_dest.stem
+                        suffix = original_dest.suffix
+                        dest_path = target_path / f"{stem}_{counter}{suffix}"
+                        counter += 1
+                    
+                    try:
+                        file_path.rename(dest_path)
+                        moved_files[target_dir].append(f"{file_path.name} → {dest_path.name}")
+                        print(f"   📦 Moved: {file_path.name} → {target_dir}/{dest_path.name}")
+                    except Exception as e:
+                        print(f"   ❌ Error moving {file_path.name}: {e}")
+        
+        # Display summary
+        print("\n📊 ROOT CLEANUP SUMMARY")
+        print("=" * 50)
+        
+        total_actions = sum(len(files) for files in moved_files.values()) + len(deleted_files)
+        
+        for target_dir, files in moved_files.items():
+            if files:
+                rule_desc = cleanup_rules[target_dir]["description"]
+                print(f"📁 {target_dir}/ ({rule_desc}): {len(files)} files")
+                for file_move in files[:3]:  # Show first 3
+                    print(f"   • {file_move}")
+                if len(files) > 3:
+                    print(f"   ... and {len(files) - 3} more files")
+        
+        if deleted_files:
+            print(f"🗑️  Deleted: {len(deleted_files)} items")
+            for item in deleted_files[:5]:  # Show first 5
+                print(f"   • {item}")
+            if len(deleted_files) > 5:
+                print(f"   ... and {len(deleted_files) - 5} more items")
+        
+        if skipped_files:
+            print(f"⏭️  Skipped: {len(skipped_files)} files")
+            for item in skipped_files[:3]:  # Show first 3
+                print(f"   • {item}")
+            if len(skipped_files) > 3:
+                print(f"   ... and {len(skipped_files) - 3} more files")
+        
+        print(f"\n🎯 SUMMARY:")
+        print(f"   Total actions performed: {total_actions}")
+        
+        if total_actions == 0:
+            print("   ✅ Root directory is already clean!")
+        elif total_actions <= 5:
+            print("   ✅ Minor cleanup completed")
+        else:
+            print("   ✅ Major cleanup completed - root directory organized!")
+        
+        print("\n💡 NEXT STEPS:")
+        print("   • Review organized files in their new locations")
+        print("   • Update any import paths if needed")  
+        print("   • Use --cleanup-scan to verify no issues remain")
+        
+        return True
+        
+    except Exception as e:
+        print(f"❌ Error during root cleanup: {e}")
+        return False
+
+
 def create_arg_parser():
     """Create and return the argument parser for the Z-Beam system."""
     parser = argparse.ArgumentParser(
@@ -1118,6 +1295,7 @@ EXAMPLES:
   python3 run.py --show-config                     # Show component configuration and API providers
   python3 run.py --yaml                            # Validate and fix YAML errors
   python3 run.py --clean                           # Remove all generated content files
+  python3 run.py --cleanup-root                    # Organize root directory files
   python3 run.py --test-api                        # Test API connection
         """,
     )
@@ -1164,6 +1342,11 @@ EXAMPLES:
         "--cleanup-report",
         action="store_true",
         help="Generate comprehensive cleanup report and save to cleanup/cleanup_report.json",
+    )
+    parser.add_argument(
+        "--cleanup-root",
+        action="store_true",
+        help="Clean up root directory by organizing files into appropriate subdirectories",
     )
 
     # Listing operations
@@ -1225,6 +1408,10 @@ def main():
         elif args.cleanup_report:
             # Cleanup report generation
             success = run_cleanup_report()
+
+        elif args.cleanup_root:
+            # Root directory cleanup
+            success = run_root_cleanup()
 
         elif (
             args.list_materials

@@ -1,0 +1,88 @@
+# Base Content Prompt for Laser Cleaning Articles
+# Shared technical requirements and author-specific adaptations
+
+# Author-specific configurations
+author_configurations:
+  taiwan:
+    author_id: 1
+    max_word_count: "380 words maximum"
+    specialization_focus: "semiconductor processing and electronics applications"
+    section_emphasis: "methodical approach and systematic analysis"
+    writing_approach: "concise technical precision"
+    
+  italy:
+    author_id: 2
+    max_word_count: "450 words maximum" 
+    specialization_focus: "heritage preservation and additive manufacturing"
+    section_emphasis: "precision and technical innovation"
+    writing_approach: "detailed technical analysis"
+    
+  indonesia:
+    author_id: 3
+    max_word_count: "250 words maximum"
+    specialization_focus: "renewable energy and marine applications"
+    section_emphasis: "sustainability and practical innovation"
+    writing_approach: "direct practical communication"
+    
+  usa:
+    author_id: 4
+    max_word_count: "320 words maximum"
+    specialization_focus: "biomedical and aerospace applications"
+    section_emphasis: "practical results and efficiency"
+    writing_approach: "efficient technical delivery"
+
+# Shared technical requirements for all authors
+technical_requirements:
+  laser_specifications:
+    - "1064 nm wavelength as standard for most materials"
+    - "Nanosecond pulse durations (10-100 ns range)"
+    - "Class 4 laser safety classification"
+    - "Fiber laser technology emphasis"
+  
+  required_content:
+    - "Incorporate chemical formula {material_formula} in overview"
+    - "Include absorption characteristics at 1064 nm"
+    - "Describe thermal thresholds and heat dissipation"
+    - "Specify optimal parameters (wavelength, pulse duration, fluence)"
+    - "Address Class 4 laser safety protocols"
+    - "Provide industrial application examples"
+    - "List technical advantages over traditional methods"
+  
+  quality_standards:
+    - "Expert-level technical depth appropriate to Ph.D. expertise"
+    - "Professional scientific tone throughout"
+    - "Accurate technical terminology and specifications"
+    - "Logical flow and coherent structure"
+    - "No explicit mentions of persona attributes"
+
+# Author-specific focus areas for applications and examples
+application_focus:
+  taiwan: "semiconductor manufacturing, electronics, humid environment considerations"
+  italy: "heritage preservation, aerospace, automotive applications"
+  indonesia: "renewable energy, marine applications, tropical environment adaptations"
+  usa: "biomedical, semiconductor, aerospace with robotics integration"
+
+# Standard content structure (adaptable by individual personas)
+content_structure:
+  required_sections:
+    - "Overview with chemical formula integration"
+    - "Material properties affecting laser interaction"
+    - "Industrial applications (2-3 examples)"
+    - "Optimal laser parameters"
+    - "Advantages over traditional methods"
+    - "Safety considerations"
+    - "Technical keywords"
+  
+  randomization_guidelines:
+    section_order: "Randomize section sequence completely - only keep Overview first and Keywords last"
+    sentence_order: "Within each section, randomize sentence order for maximum variation"
+    paragraph_breaks: "Vary paragraph structure and breaks unpredictably"
+    example_selection: "Randomize which industrial examples to emphasize"
+    parameter_presentation: "Vary the order of technical parameters and specifications"
+    
+  flexibility_guidelines:
+    - "Section lengths should vary naturally based on author's writing approach"
+    - "Number of examples and depth of detail adapt to maximum word count"
+    - "Paragraph structure follows author's natural communication style"
+    - "Technical depth adjusts to available word budget while maintaining accuracy"
+    - "Maximize structural unpredictability while preserving technical accuracy"

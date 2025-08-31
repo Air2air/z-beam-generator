@@ -1,0 +1,289 @@
+# Material Property Ranges by Category
+# Used to provide min/max context for material properties
+
+categories:
+  metal:
+    density:
+      min: "0.5 g/cm³"    # Lithium
+      max: "22.6 g/cm³"   # Osmium
+    tensileStrength:
+      min: "70 MPa"       # Lead
+      max: "2000 MPa"     # High-strength steel alloys
+    thermalConductivity:
+      min: "8 W/m·K"      # Stainless steel
+      max: "429 W/m·K"    # Silver
+    meltingPoint:
+      min: "-39°C"        # Mercury
+      max: "3422°C"       # Tungsten
+    hardness:
+      min: "5 HB"         # Lead
+      max: "500 HV"       # Hardened steel
+    youngsModulus:
+      min: "70 GPa"       # Aluminum
+      max: "411 GPa"      # Tungsten
+    laserAbsorption:
+      min: "0.02 cm⁻¹"    # Highly polished aluminum/silver
+      max: "100 cm⁻¹"     # Oxidized/dark metals
+    laserReflectivity:
+      min: "5%"           # Oxidized steel, dark metals
+      max: "98%"          # Polished silver, aluminum
+    thermalDiffusivity:
+      min: "4 mm²/s"      # Stainless steel
+      max: "174 mm²/s"    # Silver
+    thermalExpansion:
+      min: "0.5 µm/m·K"   # Invar alloys
+      max: "29 µm/m·K"    # Aluminum
+    specificHeat:
+      min: "0.13 J/g·K"   # Lead
+      max: "0.90 J/g·K"   # Aluminum
+  
+  ceramic:
+    density:
+      min: "1.8 g/cm³"    # Porous ceramics
+      max: "6.0 g/cm³"    # Dense technical ceramics
+    tensileStrength:
+      min: "50 MPa"       # Traditional ceramics
+      max: "1000 MPa"     # Advanced technical ceramics
+    thermalConductivity:
+      min: "0.5 W/m·K"    # Insulating ceramics
+      max: "200 W/m·K"    # Silicon carbide
+    meltingPoint:
+      min: "1200°C"       # Low-fire ceramics
+      max: "2800°C"       # Refractory ceramics (alumina)
+    hardness:
+      min: "500 HV"       # Soft ceramics
+      max: "2500 HV"      # Silicon carbide, alumina
+    youngsModulus:
+      min: "150 GPa"      # Porous ceramics
+      max: "400 GPa"      # Dense technical ceramics
+    laserAbsorption:
+      min: "0.1 cm⁻¹"     # Transparent ceramics (alumina)
+      max: "50 cm⁻¹"      # Dark ceramics (silicon carbide)
+    laserReflectivity:
+      min: "8%"           # Dark ceramics
+      max: "25%"          # Light-colored ceramics
+    thermalDiffusivity:
+      min: "0.5 mm²/s"    # Insulating ceramics
+      max: "80 mm²/s"     # Silicon carbide
+    thermalExpansion:
+      min: "0.5 µm/m·K"   # Quartz ceramics
+      max: "8 µm/m·K"     # Alumina
+    specificHeat:
+      min: "0.4 J/g·K"    # Dense ceramics
+      max: "1.2 J/g·K"    # Porous ceramics
+  
+  composite:
+    density:
+      min: "0.9 g/cm³"    # Foam composites
+      max: "2.2 g/cm³"    # Dense fiber composites
+    tensileStrength:
+      min: "100 MPa"      # Basic composites
+      max: "7000 MPa"     # Carbon fiber reinforced
+    thermalConductivity:
+      min: "0.1 W/m·K"    # Insulating composites
+      max: "60 W/m·K"     # Conductive composites
+    meltingPoint:
+      min: "150°C"        # Thermoplastic composites
+      max: "400°C"        # High-temp thermosets
+    hardness:
+      min: "10 HB"        # Soft composites
+      max: "80 HRC"       # Carbon fiber composites
+    youngsModulus:
+      min: "1 GPa"        # Foam composites
+      max: "300 GPa"      # Carbon fiber composites
+    laserAbsorption:
+      min: "1 cm⁻¹"       # Clear resin composites
+      max: "80 cm⁻¹"      # Carbon-filled composites
+    laserReflectivity:
+      min: "3%"           # Dark carbon composites
+      max: "15%"          # Light fiberglass composites
+    thermalDiffusivity:
+      min: "0.1 mm²/s"    # Insulating foam composites
+      max: "20 mm²/s"     # Carbon fiber composites
+    thermalExpansion:
+      min: "1 µm/m·K"     # Carbon fiber (longitudinal)
+      max: "60 µm/m·K"    # Thermoplastic composites
+    specificHeat:
+      min: "0.8 J/g·K"    # Dense composites
+      max: "2.0 J/g·K"    # Foam composites
+  
+  glass:
+    density:
+      min: "2.2 g/cm³"    # Soda-lime glass
+      max: "8.0 g/cm³"    # Lead crystal glass
+    tensileStrength:
+      min: "30 MPa"       # Standard window glass
+      max: "200 MPa"      # Tempered glass
+    thermalConductivity:
+      min: "0.5 W/m·K"    # Low thermal conductivity glass
+      max: "2.0 W/m·K"    # Standard glass
+    meltingPoint:
+      min: "573°C"        # Soda-lime softening
+      max: "1700°C"       # Borosilicate melting
+    hardness:
+      min: "450 HV"       # Soft glass
+      max: "750 HV"       # Hard borosilicate
+    youngsModulus:
+      min: "50 GPa"       # Soft glass
+      max: "90 GPa"       # Hard glass
+    laserAbsorption:
+      min: "0.01 cm⁻¹"    # Pure fused silica
+      max: "10 cm⁻¹"      # Colored/doped glass
+    laserReflectivity:
+      min: "4%"           # Standard glass at 1064nm
+      max: "15%"          # Coated/specialized glass
+    thermalDiffusivity:
+      min: "0.4 mm²/s"    # Heavy lead glass
+      max: "1.4 mm²/s"    # Fused silica
+    thermalExpansion:
+      min: "0.5 µm/m·K"   # Fused silica
+      max: "9 µm/m·K"     # Soda-lime glass
+    specificHeat:
+      min: "0.7 J/g·K"    # Lead glass
+      max: "1.0 J/g·K"    # Borosilicate glass
+  
+  stone:
+    density:
+      min: "1.5 g/cm³"    # Pumice
+      max: "3.2 g/cm³"    # Basalt
+    tensileStrength:
+      min: "2 MPa"        # Soft sedimentary
+      max: "300 MPa"      # Hard igneous
+    thermalConductivity:
+      min: "0.2 W/m·K"    # Insulating stone
+      max: "5.0 W/m·K"    # Dense granite
+    meltingPoint:
+      min: "1200°C"       # Limestone decomposition
+      max: "1700°C"       # Granite melting
+    hardness:
+      min: "100 HV"       # Soft limestone
+      max: "800 HV"       # Hard granite
+    youngsModulus:
+      min: "10 GPa"       # Soft sandstone
+      max: "100 GPa"      # Hard granite
+    laserAbsorption:
+      min: "0.5 cm⁻¹"     # Light-colored marble
+      max: "30 cm⁻¹"      # Dark basalt
+    laserReflectivity:
+      min: "10%"          # Dark stone
+      max: "40%"          # Light marble
+    thermalDiffusivity:
+      min: "0.5 mm²/s"    # Porous limestone
+      max: "3 mm²/s"      # Dense granite
+    thermalExpansion:
+      min: "3 µm/m·K"     # Quartzite
+      max: "12 µm/m·K"    # Marble
+    specificHeat:
+      min: "0.7 J/g·K"    # Dense stone
+      max: "1.0 J/g·K"    # Porous stone
+  
+  masonry:
+    density:
+      min: "1.2 g/cm³"    # Lightweight concrete
+      max: "2.8 g/cm³"    # Dense concrete
+    tensileStrength:
+      min: "1 MPa"        # Basic mortar
+      max: "50 MPa"       # High-strength concrete
+    thermalConductivity:
+      min: "0.1 W/m·K"    # Insulating concrete
+      max: "2.0 W/m·K"    # Dense masonry
+    meltingPoint:
+      min: "1450°C"       # Cement clinker formation
+      max: "2000°C"       # Refractory brick melting
+    hardness:
+      min: "20 HV"        # Soft mortar
+      max: "300 HV"       # High-strength concrete
+    youngsModulus:
+      min: "15 GPa"       # Lightweight concrete
+      max: "50 GPa"       # High-strength concrete
+    laserAbsorption:
+      min: "0.8 cm⁻¹"     # Light concrete
+      max: "50 cm⁻¹"      # Dark brick
+    laserReflectivity:
+      min: "8%"           # Dark brick
+      max: "35%"          # Light concrete
+    thermalDiffusivity:
+      min: "0.3 mm²/s"    # Lightweight concrete
+      max: "1.5 mm²/s"    # Dense masonry
+    thermalExpansion:
+      min: "6 µm/m·K"     # Dense concrete
+      max: "15 µm/m·K"    # Clay brick
+    specificHeat:
+      min: "0.8 J/g·K"    # Dense materials
+      max: "1.1 J/g·K"    # Porous materials
+  
+  wood:
+    density:
+      min: "0.1 g/cm³"    # Balsa
+      max: "1.3 g/cm³"    # Lignum vitae
+    tensileStrength:
+      min: "20 MPa"       # Soft woods
+      max: "200 MPa"      # Hardwoods along grain
+    thermalConductivity:
+      min: "0.04 W/m·K"   # Low-density wood
+      max: "0.4 W/m·K"    # Dense hardwood
+    meltingPoint:
+      min: "250°C"        # Wood decomposition start
+      max: "500°C"        # Complete pyrolysis
+    hardness:
+      min: "1 HB"         # Balsa wood
+      max: "4000 HB"      # Lignum vitae
+    youngsModulus:
+      min: "4 GPa"        # Balsa wood
+      max: "20 GPa"       # Dense hardwoods
+    laserAbsorption:
+      min: "5 cm⁻¹"       # Light woods (pine, birch)
+      max: "100 cm⁻¹"     # Dark woods (ebony, walnut)
+    laserReflectivity:
+      min: "5%"           # Dark hardwoods
+      max: "25%"          # Light softwoods
+    thermalDiffusivity:
+      min: "0.1 mm²/s"    # Dense hardwoods (across grain)
+      max: "0.4 mm²/s"    # Light woods (along grain)
+    thermalExpansion:
+      min: "2 µm/m·K"     # Along grain
+      max: "50 µm/m·K"    # Across grain (radial/tangential)
+    specificHeat:
+      min: "1.2 J/g·K"    # Dry wood
+      max: "2.5 J/g·K"    # Green/wet wood
+  
+  semiconductor:
+    density:
+      min: "2.3 g/cm³"    # Silicon
+      max: "5.3 g/cm³"    # Gallium arsenide
+    tensileStrength:
+      min: "100 MPa"      # Basic semiconductors
+      max: "400 MPa"      # Silicon carbide
+    thermalConductivity:
+      min: "1.5 W/m·K"    # Low-conductivity semiconductors
+      max: "490 W/m·K"    # Silicon carbide
+    meltingPoint:
+      min: "937°C"        # Gallium arsenide
+      max: "2830°C"       # Silicon carbide
+    hardness:
+      min: "900 HV"       # Silicon
+      max: "2800 HV"      # Silicon carbide
+    youngsModulus:
+      min: "130 GPa"      # Silicon
+      max: "450 GPa"      # Silicon carbide
+    laserAbsorption:
+      min: "0.1 cm⁻¹"     # Wide bandgap semiconductors (below bandgap)
+      max: "1000 cm⁻¹"    # Direct bandgap absorption (above bandgap)
+    laserReflectivity:
+      min: "15%"          # Silicon (infrared)
+      max: "45%"          # Gallium arsenide
+    thermalDiffusivity:
+      min: "0.5 mm²/s"    # Low-mobility semiconductors
+      max: "150 mm²/s"    # Silicon carbide
+    thermalExpansion:
+      min: "2 µm/m·K"     # Silicon carbide
+      max: "6 µm/m·K"     # Silicon
+    specificHeat:
+      min: "0.3 J/g·K"    # Heavy semiconductors (GaAs)
+      max: "0.7 J/g·K"    # Silicon
+
+# Usage Notes:
+# - These ranges represent typical values across each material category
+# - Values are based on common materials within each category
+# - Ranges help provide context for individual material properties
+# - Min/max values are conservative estimates covering most materials

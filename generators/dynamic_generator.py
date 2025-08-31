@@ -240,7 +240,12 @@ class DynamicGenerator:
     
     def get_available_components(self) -> List[str]:
         """Get list of available component types"""
-        return self.component_manager.get_available_components()
+        try:
+            from generators.component_generators import ComponentGeneratorFactory
+            return ComponentGeneratorFactory.get_available_components()
+        except ImportError:
+            # Fallback to component manager if the new system isn't available
+            return self.component_manager.get_available_components()
     
     def get_available_materials(self) -> List[str]:
         """Get list of available materials"""
@@ -283,107 +288,9 @@ class DynamicGenerator:
             logger.warning(f"Error extracting frontmatter for {material_name}: {e}")
             return None
 
-    def _generate_author_component(self, material_name: str) -> ComponentResult:
-        """Generate author component content using local JSON data (no API needed)"""
-        try:
-            # Use the existing author system for consistency
-            from run import get_author_by_id
-            from components.author.generator import create_author_content_from_data
-            
-            # Get author ID from author_info or use default
-            author_id = 1  # Default
-            if self.author_info and 'id' in self.author_info:
-                author_id = self.author_info['id']
-            
-            # Get author data using existing system
-            author = get_author_by_id(author_id)
-            
-            if not author:
-                author = {"name": "Unknown Author", "title": "Ph.D.", 
-                         "country": "International", "expertise": "Materials Science and Laser Technology",
-                         "image": "/images/author/default.jpg"}
-            
-            # Generate content using the simplified template function
-            content = create_author_content_from_data(material_name, author)
-            
-            logger.info(f"Generated author component for {material_name} (static content)")
-            
-            return ComponentResult(
-                component_type="author",
-                content=content,
-                success=True
-            )
-            
-        except Exception as e:
-            logger.error(f"Error generating author component: {e}")
-            return ComponentResult(
-                component_type="author",
-                content=f"Error loading author information: {e}",
-                success=False,
-                error_message=str(e)
-            )
-
-    def _generate_badgesymbol_component(self, material_name: str) -> ComponentResult:
-        """Generate badgesymbol component content using frontmatter data (no API needed)"""
-        try:
-            from components.badgesymbol.generator import BadgeSymbolGenerator
-            
-            # Extract frontmatter data
-            frontmatter_data = self._extract_frontmatter_data(material_name)
-            
-            # Generate content using the static generator
-            generator = BadgeSymbolGenerator()
-            content = generator.generate_content(material_name, frontmatter_data)
-            
-            logger.info(f"Generated badgesymbol component for {material_name} (static content)")
-            
-            return ComponentResult(
-                component_type="badgesymbol",
-                content=content,
-                success=True
-            )
-            
-        except Exception as e:
-            logger.error(f"Error generating badgesymbol component: {e}")
-            return ComponentResult(
-                component_type="badgesymbol",
-                content="---\nsymbol: \"ERR\"\nmaterialType: \"error\"\n---",
-                success=False,
-                error_message=str(e)
-            )
-
-    def _generate_propertiestable_component(self, material_name: str) -> ComponentResult:
-        """Generate propertiestable component content using frontmatter data (no API needed)"""
-        try:
-            from components.propertiestable.generator import PropertiesTableGenerator
-            
-            # Extract frontmatter data
-            frontmatter_data = self._extract_frontmatter_data(material_name)
-            
-            # Generate content using the static generator
-            generator = PropertiesTableGenerator()
-            content = generator.generate_content(material_name, frontmatter_data)
-            
-            logger.info(f"Generated propertiestable component for {material_name} (static content)")
-            
-            return ComponentResult(
-                component_type="propertiestable",
-                content=content,
-                success=True
-            )
-            
-        except Exception as e:
-            logger.error(f"Error generating propertiestable component: {e}")
-            return ComponentResult(
-                component_type="propertiestable",
-                content="| Property | Value |\n|----------|-------|\n| Error | Failed |",
-                success=False,
-                error_message=str(e)
-            )
-
     def generate_component(self, material_name: str, component_type: str, 
                           schema_fields: Optional[Dict] = None) -> ComponentResult:
-        """Generate a single component with dynamic schema-driven content"""
+        """Generate a single component using the new component generator system"""
         
         try:
             # Get material info
@@ -396,78 +303,37 @@ class DynamicGenerator:
                     error_message=f"Material {material_name} not found"
                 )
             
-            # Get component prompt
-            prompt_config = self.component_manager.get_prompt(component_type)
-            if not prompt_config:
+            # Import the component generator factory
+            from generators.component_generators import ComponentGeneratorFactory
+            
+            # Create component generator
+            generator = ComponentGeneratorFactory.create_generator(component_type)
+            if not generator:
                 return ComponentResult(
                     component_type=component_type,
                     content="",
                     success=False,
-                    error_message=f"Component {component_type} not found"
+                    error_message=f"No generator available for component type: {component_type}"
                 )
             
-            # Get dynamic fields from schema
+            # Get dynamic fields from schema for this material
             article_type = material.get('article_type', 'material')
             dynamic_fields = self.schema_manager.get_dynamic_fields(article_type)
             
-            # Extract frontmatter data for propertiestable component
-            frontmatter_data = None
-            if component_type == 'propertiestable':
-                frontmatter_data = self._extract_frontmatter_data(material_name)
+            # Extract frontmatter data if needed
+            frontmatter_data = self._extract_frontmatter_data(material_name)
             
-            # Special handling for static components (no API needed)
-            if component_type == 'author':
-                return self._generate_author_component(material_name)
-            elif component_type == 'badgesymbol':
-                return self._generate_badgesymbol_component(material_name)
-            elif component_type == 'propertiestable':
-                return self._generate_propertiestable_component(material_name)
-            
-            # Build dynamic prompt with schema fields and frontmatter data
-            prompt = self._build_dynamic_prompt(
-                prompt_config, material, dynamic_fields, schema_fields, frontmatter_data
+            # Generate using the specific component generator with schema fields
+            result = generator.generate(
+                material_name=material_name,
+                material_data=material,
+                api_client=self.api_client,
+                author_info=self.author_info,
+                frontmatter_data=frontmatter_data,
+                schema_fields=dynamic_fields  # Pass dynamic schema fields
             )
             
-            # Generate content using standardized API client
-            if self.api_client:
-                # Check if we have a DeepSeek-specific client for optimized generation
-                if hasattr(self.api_client, 'generate_for_component'):
-                    response = self.api_client.generate_for_component(
-                        component_type=component_type,
-                        material=material_name,
-                        prompt_template=prompt
-                    )
-                else:
-                    # Use standard generation with proper request structure
-                    if hasattr(self.api_client, 'generate_simple'):
-                        response = self.api_client.generate_simple(prompt)
-                    else:
-                        # Fallback for basic clients
-                        response = self.api_client.generate(prompt)
-                
-                if response.success:
-                    content = response.content
-                    logger.info(f"Generated {component_type} for {material_name} ({response.token_count} tokens)")
-                else:
-                    return ComponentResult(
-                        component_type=component_type,
-                        content="",
-                        success=False,
-                        error_message=f"API generation failed: {response.error}"
-                    )
-            else:
-                # Mock generation for testing
-                content = f"# {component_type.title()} for {material_name}\n\n"
-                content += "Generated content based on dynamic schema fields:\n"
-                for field, description in dynamic_fields.items():
-                    if field != 'profile_fields':
-                        content += f"- {field}: {description}\n"
-            
-            return ComponentResult(
-                component_type=component_type,
-                content=content,
-                success=True
-            )
+            return result
             
         except Exception as e:
             logger.error(f"Error generating {component_type} for {material_name}: {e}")
@@ -481,7 +347,14 @@ class DynamicGenerator:
     def _build_dynamic_prompt(self, prompt_config: Dict, material: Dict, 
                              dynamic_fields: Dict, schema_fields: Optional[Dict] = None,
                              frontmatter_data: Optional[Dict] = None) -> str:
-        """Build a dynamic prompt incorporating schema fields and template variables"""
+        """Build a dynamic prompt incorporating schema fields and template variables
+        
+        NOTE: This method is deprecated and kept for backward compatibility.
+        New component generation uses individual component generators.
+        """
+        
+        # This method is now largely replaced by the component generators
+        # but kept for any legacy API-based components that haven't been migrated yet
         
         # Start with base prompt - use 'template' from YAML files
         base_prompt = prompt_config.get('template', prompt_config.get('prompt', ''))
@@ -492,169 +365,21 @@ class DynamicGenerator:
         category = material['category']
         article_type = material.get('article_type', 'material')
         
-        # Create comprehensive template variables
+        # Create comprehensive template variables (simplified version)
         template_vars = {
             'subject': material_name,
             'material': material_name,
-            'material_name': material_name,  # Add explicit material_name mapping
+            'material_name': material_name,
             'category': category,
             'article_type': article_type,
             'subject_lowercase': material_name.lower(),
-            'subject_slug': create_material_slug(material_name),  # Use clean slug generation
-            
-            # Material properties (fallback values)
-            'material_formula': material.get('formula', material_name),
-            'material_symbol': material.get('symbol', material_name[:2].upper()),
-            'material_type': material.get('material_type', category),
-            'material_description': material.get('description', f"{material_name} is a {category} material used in laser cleaning applications."),
-            
-            # Bullet-specific variables
-            'bullet_count': "2 to 6",  # Randomized bullet count
-            
-            # Formatted technical specs (placeholders)
-            'formatted_technical_specs': f"Technical specifications for {material_name} laser cleaning",
-            'formatted_environmental_impact': f"Environmental benefits of {material_name} laser processing",
-            'formatted_regulatory_standards': f"Industry standards for {material_name} treatment"
+            'subject_slug': create_material_slug(material_name),
         }
-        
-        # Add author information if available
-        if self.author_info:
-            country = self.author_info.get('country', 'International')
-            author_id = self.author_info.get('id', 0)
-            template_vars['country'] = country
-            template_vars['author_name'] = self.author_info.get('name', 'Expert Author')
-            template_vars['author_title'] = self.author_info.get('title', 'Technical Expert')
-            template_vars['author_expertise'] = self.author_info.get('expertise', 'Laser Processing')
-            template_vars['author_id'] = str(author_id)
-            # Create author slug for tags and URLs
-            author_name = self.author_info.get('name', 'Expert Author')
-            template_vars['author_slug'] = author_name.lower().replace(' ', '-')
-            
-            # Create country context for bullets and other components
-            if country != 'International':
-                template_vars['country_context'] = f"Write from the perspective of a technical expert in {country}, incorporating relevant regional standards and industry practices."
-            else:
-                template_vars['country_context'] = "Write from an international technical perspective with global industry standards."
-                
-            # Create author-specific formatting rules for bullets
-            if author_id == 1:  # Taiwan - Yi-Chun Lin
-                template_vars['bullet_format_rules'] = """
-TAIWAN AUTHOR REQUIREMENTS:
-- Generate EXACTLY 4 bullets
-- Each bullet must have EXACTLY 1 sentence
-- Use numbered list format (1., 2., 3., 4.)
-- Start each bullet with **Technical Focus:** followed by the topic
-- Order: Parameters → Applications → Safety → Environmental Benefits
-- Write in English only, incorporate Taiwan semiconductor/electronics industry context
-- Include metric measurements and specific wavelengths"""
-                
-            elif author_id == 2:  # Italy - Alessandro Moretti
-                template_vars['bullet_format_rules'] = """
-ITALIAN AUTHOR REQUIREMENTS:
-- Generate EXACTLY 5 bullets
-- Each bullet must have EXACTLY 2 sentences
-- Use traditional bullet format with - prefix
-- Start each bullet with **[TOPIC]** in ALL CAPS brackets
-- Order: Applications → Parameters → Environmental → Safety → Challenges
-- Write in English only, incorporate European/Italian manufacturing industry context
-- Include European standards and industrial applications"""
-                
-            elif author_id == 3:  # Indonesia - Ikmanda Roswati
-                template_vars['bullet_format_rules'] = """
-INDONESIAN AUTHOR REQUIREMENTS:
-- Generate EXACTLY 6 bullets
-- Each bullet must have EXACTLY 1 sentence
-- Use bullet format with • prefix
-- Start each bullet with **Aspect [Topic]:** (use English "Aspect" for all content)
-- Order: Environmental → Safety → Applications → Parameters → Challenges → Benefits
-- CRITICAL: Write ONLY in English for all content including headers
-- Incorporate Indonesian tropical/humid environment and industrial context in English
-- Emphasize sustainability and regional manufacturing considerations"""
-                
-            elif author_id == 4:  # USA - Todd Dunning
-                template_vars['bullet_format_rules'] = """
-USA AUTHOR REQUIREMENTS:
-- Generate EXACTLY 3 bullets
-- Each bullet must have EXACTLY 3 sentences
-- Use bullet format with * prefix
-- Start each bullet with **Key Point:** followed by the topic
-- Order: Safety → Parameters → Applications
-- Write in English only, incorporate US high-tech industry and regulatory context
-- Include OSHA standards, FDA considerations, and Silicon Valley tech applications"""
-            else:
-                template_vars['bullet_format_rules'] = """
-DEFAULT INTERNATIONAL REQUIREMENTS:
-- Generate EXACTLY 4 bullets
-- Each bullet must have EXACTLY 1 sentence
-- Use bullet format with * prefix
-- Start each bullet with **[Topic]:** followed by technical details
-- Standard order: Parameters → Applications → Safety → Environmental
-- Write in English only with international technical perspective"""
-        else:
-            template_vars['country'] = 'International'
-            template_vars['author_name'] = 'Expert Author'
-            template_vars['author_title'] = 'Technical Expert'
-            template_vars['author_expertise'] = 'Laser Processing'
-            template_vars['author_id'] = '0'
-            template_vars['author_slug'] = 'expert-author'
-            template_vars['country_context'] = "Write from an international technical perspective with global industry standards."
-            template_vars['bullet_format_rules'] = """
-DEFAULT INTERNATIONAL REQUIREMENTS:
-- Generate EXACTLY 4 bullets
-- Each bullet must have EXACTLY 1 sentence
-- Use bullet format with * prefix
-- Start each bullet with **[Topic]:** followed by technical details
-- Standard order: Parameters → Applications → Safety → Environmental
-- Write in English only with international technical perspective"""
         
         # Replace all template variables in the prompt
         prompt = base_prompt
         for var, value in template_vars.items():
             prompt = prompt.replace(f'{{{var}}}', str(value))
-        
-        # Add frontmatter data for propertiestable component
-        if frontmatter_data:
-            prompt += "\n\nFRONTMATTER DATA AVAILABLE:\n"
-            
-            # Chemical properties
-            chem_props = frontmatter_data.get('chemicalProperties', {})
-            if chem_props:
-                prompt += f"Chemical Formula: {chem_props.get('formula', 'N/A')}\n"
-                prompt += f"Material Symbol: {chem_props.get('symbol', 'N/A')}\n"
-                prompt += f"Material Type: {chem_props.get('materialType', 'N/A')}\n"
-            
-            # Physical properties
-            properties = frontmatter_data.get('properties', {})
-            if properties:
-                prompt += f"Density: {properties.get('density', 'N/A')}\n"
-                prompt += f"Thermal Conductivity: {properties.get('thermalConductivity', 'N/A')}\n"
-                prompt += f"Melting Point: {properties.get('meltingPoint', 'N/A')}\n"
-            
-            # Category from frontmatter
-            fm_category = frontmatter_data.get('category', '')
-            if fm_category:
-                prompt += f"Category: {fm_category.title()}\n"
-            
-            # Technical specifications for tensile strength
-            tech_specs = frontmatter_data.get('technicalSpecifications', {})
-            if tech_specs and hasattr(tech_specs, 'get'):
-                tensile = tech_specs.get('tensileStrength', '')
-                if tensile:
-                    prompt += f"Tensile Strength: {tensile}\n"
-        
-        # Add dynamic schema field instructions if available
-        if dynamic_fields:
-            prompt += "\n\nGenerate content incorporating these dynamic fields:\n"
-            for field, instruction in dynamic_fields.items():
-                if field != 'profile_fields':
-                    formatted_instruction = instruction.replace('{subject}', material_name)
-                    prompt += f"- {field}: {formatted_instruction}\n"
-        
-        # Add schema fields if provided
-        if schema_fields:
-            prompt += "\n\nAdditional context from schema:\n"
-            for field, value in schema_fields.items():
-                prompt += f"- {field}: {value}\n"
         
         # Combine with system prompt if available
         if system_prompt:

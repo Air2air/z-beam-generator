@@ -1,12 +1,28 @@
 #!/usr/bin/env python3
 """
 Tags Generator - Generate application-focused tags for laser cleaning materials.
+Integrated with the modular component architecture.
 """
 
 import yaml
 import os
+import sys
 from pathlib import Path
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Optional
+
+# Add the project root to the Python path
+project_root = Path(__file__).parent.parent.parent
+if str(project_root) not in sys.path:
+    sys.path.insert(0, str(project_root))
+
+# Import after path setup
+try:
+    from generators.component_generators import APIComponentGenerator
+except ImportError:
+    # Fallback if running standalone
+    class APIComponentGenerator:
+        def __init__(self, component_type): 
+            self.component_type = component_type
 
 # Import slug utilities for consistent naming
 try:
@@ -18,6 +34,36 @@ except ImportError:
     def create_filename_slug(name: str, suffix: str = "laser-cleaning") -> str:
         slug = create_material_slug(name)
         return f"{slug}-{suffix}" if suffix else slug
+
+
+class TagsComponentGenerator(APIComponentGenerator):
+    """Generator for tags components using API calls"""
+    
+    def __init__(self):
+        super().__init__("tags")
+        self.legacy_generator = TagsGenerator()  # Keep legacy for compatibility
+    
+    def generate(self, material_name: str, material_data: Dict, 
+                api_client=None, author_info: Optional[Dict] = None,
+                frontmatter_data: Optional[Dict] = None,
+                schema_fields: Optional[Dict] = None):
+        """Generate tags using the legacy generator for now"""
+        try:
+            from generators.component_generators import ComponentResult
+            tags_content = self.legacy_generator.generate_tags_content(material_name)
+            return ComponentResult(
+                component_type=self.component_type,
+                content=tags_content,
+                success=True
+            )
+        except Exception as e:
+            from generators.component_generators import ComponentResult
+            return ComponentResult(
+                component_type=self.component_type,
+                content="",
+                success=False,
+                error_message=str(e)
+            )
 
 class TagsGenerator:
     """Enhanced tags generator using material-specific tag categories"""

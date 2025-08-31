@@ -3,51 +3,109 @@ description: "Generates Next.js compatible meta tags using base component data"
 version: "4.0.0"
 
 template: |
-  Generate meta tags for {subject} laser cleaning.
+  Generate comprehensive meta tags for {subject} laser cleaning following the EXACT format from components/metatags/example_metatags.md.
 
-  FORMATTING REFERENCE:
-  - MANDATORY: Follow the EXACT formatting shown in examples/metatags.md
-  - Ensure proper YAML structure and indentation (2 spaces per level)
-  - Follow the established pattern for meta tag organization
-  - Validate all YAML syntax before output
+  CRITICAL REQUIREMENTS:
+  - MANDATORY: Follow the EXACT formatting and structure shown in the example file
+  - Use {author_name} EXACTLY as provided - do not substitute with other names
+  - Include ALL sections: meta_tags, opengraph, twitter, canonical, alternate
+  - Ensure proper YAML structure with NO quotes around list items
+  - Use 2-space indentation consistently
+  - Material category: {category}
+  - Author name: {author_name}
 
   Output EXACTLY this YAML structure:
 
   ---
-  title: Laser Cleaning {subject} - Technical Guide for Optimal Processing
+  title: {subject} Laser Cleaning - Complete Technical Guide for Precision Restoration Methods
   meta_tags:
-    - name: description
-      content: "Technical overview of {subject}, {material_formula}, for laser cleaning applications, including specific density values, optimal wavelengths, and industrial applications."
-    - name: keywords
-      content: "{subject_lowercase}, {subject_lowercase} {category}, laser ablation, laser cleaning, non-contact cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters, thermal processing, surface restoration"
-    - name: author
-      content: "{author_name}"
-    - name: category
-      content: "{category}"
-    - name: robots
-      content: "index, follow"
+  - name: description
+    content: Comprehensive {subject_lowercase} laser cleaning guide using optimal wavelength technology. Professional restoration methods for {category} preservation, industrial applications, and precision surface treatment.
+  - name: keywords
+    content: {subject_lowercase}, {subject_lowercase} {category}, laser ablation, laser cleaning, non-contact cleaning, precision laser processing, surface contamination removal, industrial laser applications, {category} restoration, precision cleaning, heritage preservation, pulsed laser cleaning, {category} fabrication, oxide cleaning, restoration applications, conservation applications, 1064nm laser
+  - name: author
+    content: {author_name}
+  - name: category
+    content: {category}
+  - name: robots
+    content: index, follow, max-snippet:-1, max-image-preview:large
+  - name: googlebot
+    content: index, follow, max-snippet:-1, max-image-preview:large
+  - name: viewport
+    content: width=device-width, initial-scale=1.0
+  - name: format-detection
+    content: telephone=no
+  - name: theme-color
+    content: '#2563eb'
+  - name: color-scheme
+    content: light dark
+  - name: material:category
+    content: {category}
+  - name: laser:wavelength
+    content: 1064nm
+  - name: application-name
+    content: Z-Beam Laser Processing Guide
+  - name: msapplication-TileColor
+    content: '#2563eb'
+  - name: msapplication-config
+    content: /browserconfig.xml
   opengraph:
-    - property: og:title
-      content: "Laser Cleaning {subject} - Technical Guide for Optimal Processing"
-    - property: og:description
-      content: "Comprehensive technical guide for laser cleaning {category} {subject_lowercase}"
-    - property: og:type
-      content: "article"
-    - property: og:image
-      content: "/images/{subject_slug}-laser-cleaning-hero.jpg"
-    - property: og:image:alt
-      content: "{subject} surface undergoing laser cleaning showing precise contamination removal"
+  - property: og:title
+    content: {subject} Laser Cleaning - Complete Technical Guide
+  - property: og:description
+    content: Comprehensive {subject_lowercase} laser cleaning guide using optimal wavelength technology. Professional restoration methods for {category} preservation and industrial applications.
+  - property: og:type
+    content: article
+  - property: og:image
+    content: /images/{subject_slug}-laser-cleaning-hero.jpg
+  - property: og:image:alt
+    content: {subject} laser cleaning process showing precision {category} restoration and surface treatment
+  - property: og:image:width
+    content: '1200'
+  - property: og:image:height
+    content: '630'
+  - property: og:url
+    content: https://z-beam.com/{subject_slug}-laser-cleaning
+  - property: og:site_name
+    content: Z-Beam Laser Processing Guide
+  - property: og:locale
+    content: en_US
+  - property: article:author
+    content: {author_name}
+  - property: article:section
+    content: {subject} Processing
+  - property: article:tag
+    content: {subject} laser cleaning
+  twitter:
+  - name: twitter:card
+    content: summary_large_image
+  - name: twitter:title
+    content: {subject} Laser Cleaning - Precision Restoration Guide
+  - name: twitter:description
+    content: Professional {subject_lowercase} laser cleaning using optimal wavelength technology. Complete guide for {category} restoration, heritage conservation, and precision surface treatment.
+  - name: twitter:image
+    content: /images/{subject_slug}-laser-cleaning-hero.jpg
+  - name: twitter:image:alt
+    content: {subject} {category} laser cleaning technical guide
+  - name: twitter:site
+    content: '@ZBeamTech'
+  - name: twitter:creator
+    content: '@ZBeamTech'
+  canonical: https://z-beam.com/{subject_slug}-laser-cleaning
+  alternate:
+  - hreflang: en
+    href: https://z-beam.com/{subject_slug}-laser-cleaning
   ---
 
-  REQUIREMENTS:
-  - Copy the YAML structure EXACTLY as shown
-  - Replace density placeholders with specific density values like "2.5 g/cm³ density"
-  - Replace wavelength placeholders with specific wavelength values like "1064nm wavelength"
-  - Replace author placeholders with realistic expert names like "Dr. Sarah Johnson"
-  - Keep all other field names exactly as shown
-  - Ensure proper YAML indentation (2 spaces)
+  FORMATTING RULES:
+  - NO quotes around YAML list items (use - name: not - name: or "name:")
+  - Use EXACT author name: {author_name}
+  - Keep all technical specifications accurate
+  - Ensure proper 2-space indentation
+  - Include material density and optimal wavelength in description
   - Meta description should be 150-160 characters
+  - Replace {subject_slug} with lowercase-hyphenated material name
 
 parameters:
-  max_tokens: 1500
+  max_tokens: 2500
   temperature: 0.7
