@@ -176,17 +176,38 @@ class MaterialLoader:
                 data = yaml.safe_load(f)
                 materials_data = data.get('materials', {})
                 
-                # Flatten materials by category
+                # Handle both enhanced and legacy material formats
                 for category, category_data in materials_data.items():
                     items = category_data.get('items', [])
                     for item in items:
-                        self.materials[item] = {
-                            'name': item,
-                            'category': category,
-                            'article_type': category_data.get('article_type', 'material')
-                        }
+                        if isinstance(item, dict):
+                            # Enhanced format with metadata
+                            material_name = item['name']
+                            self.materials[material_name] = {
+                                'name': material_name,
+                                'category': category,
+                                'article_type': category_data.get('article_type', 'material'),
+                                'author_id': item.get('author_id', 1),
+                                'complexity': item.get('complexity', 'medium'),
+                                'difficulty_score': item.get('difficulty_score', 3),
+                                'formula': item.get('formula', ''),
+                                'laser_parameters': item.get('laser_parameters', {}),
+                                'applications': item.get('applications', []),
+                                'surface_treatments': item.get('surface_treatments', []),
+                                'industry_tags': item.get('industry_tags', [])
+                            }
+                        else:
+                            # Legacy format - string only
+                            self.materials[item] = {
+                                'name': item,
+                                'category': category,
+                                'article_type': category_data.get('article_type', 'material'),
+                                'author_id': 1,  # Default assignment
+                                'complexity': 'medium',
+                                'difficulty_score': 3
+                            }
                 
-                logger.info(f"Loaded {len(self.materials)} materials")
+                logger.info(f"Loaded {len(self.materials)} materials with enhanced metadata")
         except Exception as e:
             logger.error(f"Error loading materials: {e}")
     
@@ -250,6 +271,10 @@ class DynamicGenerator:
     def get_available_materials(self) -> List[str]:
         """Get list of available materials"""
         return self.material_loader.get_all_materials()
+    
+    def get_material(self, name: str) -> Optional[Dict]:
+        """Get material data by name"""
+        return self.material_loader.get_material(name)
     
     def set_author(self, author_info: Dict):
         """Set author information for content generation."""

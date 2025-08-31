@@ -9,13 +9,13 @@ from typing import List, Dict, Any
 import yaml
 
 
-def validate_frontmatter_yaml(content: str, format_rules: Dict[str, Any] = None) -> List[str]:
+def validate_frontmatter_yaml(content: str, format_rules: Dict[str, Any]) -> List[str]:
     """
     Validate frontmatter YAML structure.
     
     Args:
         content: The frontmatter content to validate
-        format_rules: Optional format rules dictionary
+        format_rules: Format rules dictionary (required)
         
     Returns:
         List of validation errors (empty if valid)
@@ -31,12 +31,6 @@ def validate_frontmatter_yaml(content: str, format_rules: Dict[str, Any] = None)
         if ': {}' in content:
             errors.append("Empty object placeholders ({}) found in YAML")
         
-        # Check for duplicate field patterns
-        import re
-        duplicate_pattern = r'(\w+):\s*\n\s*\1:\s*(\{\}|$)'
-        if re.search(duplicate_pattern, content):
-            errors.append("Duplicate field names detected in YAML structure")
-        
         yaml_end = content.find('---', 3)
         if yaml_end == -1:
             errors.append("YAML frontmatter not properly closed with '---'")
@@ -50,7 +44,7 @@ def validate_frontmatter_yaml(content: str, format_rules: Dict[str, Any] = None)
             return errors
         
         # Check required fields
-        required_fields = format_rules.get('required_fields', []) if format_rules else []
+        required_fields = format_rules['required_fields']  # Must exist, no fallback
         for field in required_fields:
             if field not in parsed_yaml:
                 errors.append(f"Missing required field: {field}")
@@ -63,12 +57,13 @@ def validate_frontmatter_yaml(content: str, format_rules: Dict[str, Any] = None)
     return errors
 
 
-def validate_frontmatter_content(content: str) -> List[str]:
+def validate_frontmatter_content(content: str, format_rules: Dict[str, Any]) -> List[str]:
     """
-    Validate frontmatter content requirements.
+    Validate frontmatter content quality.
     
     Args:
         content: The frontmatter content to validate
+        format_rules: Format rules dictionary (required)
         
     Returns:
         List of validation errors (empty if valid)

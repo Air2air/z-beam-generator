@@ -1,84 +1,110 @@
 name: "Frontmatter Generator"
 description: "Generates comprehensive YAML frontmatter for laser cleaning articles"
-version: "4.0.0"
+version: "5.0.0"
 
 template: |
   Generate frontmatter for {subject} laser cleaning.
 
-  CRITICAL INSTRUCTIONS:
-  - Output ONLY the YAML frontmatter between --- markers
-  - Do NOT include any additional content, explanations, or article text
-  - Stop immediately after the closing --- marker
-  - Do NOT add properties sections, laser parameters, or any other content
+  COMPLEXITY: {complexity} (Score: {difficulty_score}/5)
   
-  FORMATTING REFERENCE:
-  - MANDATORY: Follow the EXACT formatting shown in components/frontmatter/example_frontmatter.md
-  - Pay special attention to the images section structure - it must be properly nested YAML
-  - DO NOT use empty objects like "hero: {}" - always include nested alt and url properties
-  - Ensure all YAML is valid and properly indented (2 spaces per level)
+  ===== IMPORTED DATA (DO NOT REGENERATE) =====
+  LASER PARAMETERS: Fluence: {laser_fluence}, Pulse: {laser_pulse_duration}, Wavelength: {laser_wavelength}
+  APPLICATIONS: {applications_list}
+  SURFACE TREATMENTS: {surface_treatments_list}
+  INDUSTRY TAGS: {industry_tags_list}
+  MATERIAL: Formula: {material_formula}, Symbol: {material_symbol}
+  
+  ===== AI GENERATION REQUIRED =====
+  Generate with contextual, technical content:
+  
+  1. MATERIAL PROPERTIES (with percentiles and ranges):
+     - density, melting point, thermal conductivity, tensile strength, hardness, Young's modulus
+     - Each with realistic values, min/max ranges, and percentile calculations
+  
+  2. COMPOSITION - specific chemical/physical components of {subject}
+  3. COMPATIBILITY - materials that work well with {subject}
+  4. ENVIRONMENTAL IMPACT - quantified benefits with numbers and units
+  5. OUTCOMES - measurable processing results with technical metrics
+  6. REGULATORY STANDARDS - relevant industry standards for {subject}
+  7. TECHNICAL DESCRIPTIONS - material-specific overview incorporating {material_formula}
+
+  CRITICAL INSTRUCTIONS:
+  - Output ONLY YAML frontmatter between --- markers
+  - Stop immediately after closing --- marker
+  - Use EXACT formatting from components/frontmatter/example_frontmatter.md
+  - Include proper nested YAML structure for images section
+  - Adjust complexity based on difficulty score {difficulty_score}/5
+
+  ===== DATA USAGE =====
+  IMPORT DIRECTLY: laser parameters, applications, treatments, tags, material identifiers
+  GENERATE WITH AI: properties, composition, environmental impact, outcomes, compatibility, standards
 
   Output EXACTLY this YAML structure:
 
   ---
   name: {subject}
-  applications:
-  - industry: "Industry 1"
-    detail: Specific laser cleaning application
-  - industry: "Industry 2"
-    detail: Specific laser cleaning application
+  applications: # IMPORT from materials list
+  - industry: "Industry"
+    detail: "Application detail"
   technicalSpecifications:
-    powerRange: "power range like 20-100W"
-    pulseDuration: "duration like 10-100ns"
-    wavelength: "wavelength like 1064nm (primary), 532nm (optional)"
-    spotSize: "size like 0.1-2.0mm"
-    repetitionRate: "rate like 10-50kHz"
-    fluenceRange: "range like 0.5–5 J/cm²"
-    safetyClass: "class like Class 4 (requires full enclosure)"
-  description: Technical overview of {subject}, {material_formula}, for laser cleaning applications, including density, wavelength, and industrial applications.
-  author: {author_name}
-  authorCountry: {author_country}
+    powerRange: "{dynamic_power_range}"
+    pulseDuration: "{laser_pulse_duration}"
+    wavelength: "{laser_wavelength}"
+    spotSize: "{dynamic_spot_size}"
+    repetitionRate: "{dynamic_repetition_rate}" 
+    fluenceRange: "{laser_fluence}"
+    safetyClass: "{dynamic_safety_class}"
+  description: Technical overview of {subject}, {material_formula}, for laser cleaning. [GENERATE technical description]
+  author: # IMPORT DIRECTLY
+    id: {author_id}
+    name: {author_name}
+    sex: {author_sex}
+    title: {author_title}
+    country: {author_country}
+    expertise: {author_expertise}
+    image: {author_image}
   keywords: {subject_lowercase}, {subject_lowercase} {category}, laser ablation, laser cleaning, non-contact cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters, thermal processing, surface restoration
   category: {category}
   chemicalProperties:
     symbol: {material_symbol}
     formula: {material_formula}
     materialType: {material_type}
-  properties:
-    density: "density value"
-    densityMin: "category minimum density"
-    densityMax: "category maximum density"
-    densityPercentile: percentile_within_category_range
-    meltingPoint: "melting point"
-    meltingMin: "category minimum melting point"
-    meltingMax: "category maximum melting point"
-    meltingPercentile: percentile_within_category_range
-    thermalConductivity: "thermal conductivity"
-    thermalMin: "category minimum thermal conductivity"
-    thermalMax: "category maximum thermal conductivity"
-    thermalPercentile: percentile_within_category_range
-    tensileStrength: "tensile strength value"
-    tensileMin: "category minimum tensile strength"
-    tensileMax: "category maximum tensile strength"
-    tensilePercentile: percentile_within_category_range
-    hardness: "hardness value"
-    hardnessMin: "category minimum hardness"
-    hardnessMax: "category maximum hardness"
-    hardnessPercentile: percentile_within_category_range
-    youngsModulus: "Young's modulus value"
-    modulusMin: "category minimum Young's modulus"
-    modulusMax: "category maximum Young's modulus"
-    modulusPercentile: percentile_within_category_range
-    laserType: "optimal laser type"
-    wavelength: "primary wavelength"
-    fluenceRange: "fluence range"
+  properties: # GENERATE WITH AI - realistic values with percentiles
+    density: "AI GENERATE realistic density"
+    densityMin: "AI GENERATE category minimum"
+    densityMax: "AI GENERATE category maximum"
+    densityPercentile: AI_GENERATE_percentile
+    meltingPoint: "AI GENERATE realistic melting point"
+    meltingMin: "AI GENERATE category minimum"
+    meltingMax: "AI GENERATE category maximum"
+    meltingPercentile: AI_GENERATE_percentile
+    thermalConductivity: "AI GENERATE realistic thermal conductivity"
+    thermalMin: "AI GENERATE category minimum"
+    thermalMax: "AI GENERATE category maximum"
+    thermalPercentile: AI_GENERATE_percentile
+    tensileStrength: "AI GENERATE realistic tensile strength"
+    tensileMin: "AI GENERATE category minimum"
+    tensileMax: "AI GENERATE category maximum"
+    tensilePercentile: AI_GENERATE_percentile
+    hardness: "AI GENERATE realistic hardness"
+    hardnessMin: "AI GENERATE category minimum"
+    hardnessMax: "AI GENERATE category maximum"
+    hardnessPercentile: AI_GENERATE_percentile
+    youngsModulus: "AI GENERATE realistic Young's modulus"
+    modulusMin: "AI GENERATE category minimum"
+    modulusMax: "AI GENERATE category maximum"
+    modulusPercentile: AI_GENERATE_percentile
+    laserType: "optimal laser type for {subject}"
+    wavelength: "{laser_wavelength}"
+    fluenceRange: "{laser_fluence}"
     chemicalFormula: {material_formula}
-  composition:
-  - "Component 1"
-  - "Component 2"
-  compatibility:
-  - "Compatible material 1"
-  - "Compatible material 2"
-  regulatoryStandards: "Relevant standards"
+  composition: # GENERATE WITH AI
+  - "AI GENERATE Component 1"
+  - "AI GENERATE Component 2"
+  compatibility: # GENERATE WITH AI
+  - "AI GENERATE Compatible material 1"
+  - "AI GENERATE Compatible material 2"
+  regulatoryStandards: "AI GENERATE relevant standards"
   images:
     hero:
       alt: {subject} surface undergoing laser cleaning showing precise contamination removal
@@ -88,36 +114,25 @@ template: |
       url: /images/{subject_slug}-laser-cleaning-micro.jpg
   title: Laser Cleaning {subject} - Technical Guide for Optimal Processing
   headline: Comprehensive technical guide for laser cleaning {category} {subject_lowercase}
-  environmentalImpact:
-  - benefit: "Environmental benefit 1"
-    description: "Quantified description with numbers"
-  - benefit: "Environmental benefit 2"
-    description: "Quantified description with numbers"
-  - benefit: "Environmental benefit 3"
-    description: "Quantified description with numbers"
-  outcomes:
-  - result: "Measurable result 1"
-    metric: "Specific measurement with standard"
-  - result: "Measurable result 2"
-    metric: "Specific measurement with standard"
-  - result: "Measurable result 3"
-    metric: "Specific measurement with standard"
+  environmentalImpact: # GENERATE WITH AI
+  - benefit: "AI GENERATE Environmental benefit 1"
+    description: "AI GENERATE Quantified description"
+  - benefit: "AI GENERATE Environmental benefit 2"
+    description: "AI GENERATE Quantified description"
+  - benefit: "AI GENERATE Environmental benefit 3"
+    description: "AI GENERATE Quantified description"
+  outcomes: # GENERATE WITH AI
+  - result: "AI GENERATE Measurable result 1"
+    metric: "AI GENERATE Specific measurement"
+  - result: "AI GENERATE Measurable result 2"
+    metric: "AI GENERATE Specific measurement"
+  - result: "AI GENERATE Measurable result 3"
+    metric: "AI GENERATE Specific measurement"
   subject: {subject}
   article_type: {article_type}
   ---
 
-  CRITICAL REQUIREMENTS:
-  - Output ONLY the YAML frontmatter above - nothing else
-  - Do NOT add any content sections, explanations, or additional text
-  - Stop immediately after the closing --- marker
-  - Replace ALL bracketed placeholders with specific technical content
-  - Use proper YAML formatting with correct indentation
-  - Include specific numerical values with units
-  - Make content specific to {subject} material
-  - Use the provided author name: {author_name}
-  - CRITICAL: The author field MUST be exactly: {author_name}
-  - Include proper technical specifications for laser cleaning
-  - END YOUR OUTPUT WITH THE CLOSING --- MARKER ONLY
+  END OUTPUT WITH CLOSING --- MARKER ONLY
 
 generation_parameters:
   max_tokens: 2000

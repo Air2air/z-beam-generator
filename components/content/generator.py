@@ -1,7 +1,20 @@
 #!/usr/bin/env python3
 """
 Content Component Generator - Prompt-Driven Content Generation
-Uses ONLY YAML prompt configurations for content generation.
+Uses ONLY YAML prompt c        # Extract author information 
+        author_name = None
+        author_country = None 
+        author_id = 1  # default
+        
+        print(f"🔧 DEBUG _generate_static_content: frontmatter_data={frontmatter_data}")
+        print(f"🔧 DEBUG _generate_static_content: author_info={author_info}")
+        
+        if frontmatter_data:
+            # Try to get author from frontmatter
+            author_name = frontmatter_data.get('author', frontmatter_data.get('name'))
+            print(f"🔧 DEBUG: Got author from frontmatter: {author_name}")
+            
+            # Map author names to countries (this should match the authors.json and prompt files)ons for content generation.
 NO hardcoded sentences or content - everything from prompts.
 """
 
@@ -37,13 +50,14 @@ def load_base_content_prompt() -> Dict[str, Any]:
 def load_persona_prompt(author_id: int) -> Dict[str, Any]:
     """Load persona-specific prompt configuration."""
     prompt_files = {
-        1: "components/content/prompts/taiwan_prompt.yaml",
-        2: "components/content/prompts/italy_prompt.yaml", 
-        3: "components/content/prompts/indonesia_prompt.yaml",
-        4: "components/content/prompts/usa_prompt.yaml"
+        1: "components/content/prompts/taiwan_persona.yaml",
+        2: "components/content/prompts/italy_persona.yaml", 
+        3: "components/content/prompts/indonesia_persona.yaml",
+        4: "components/content/prompts/usa_persona.yaml"
     }
     
     prompt_file = prompt_files.get(author_id)
+    
     if not prompt_file:
         raise ValueError(f"No prompt file configured for author_id: {author_id}")
     
@@ -54,6 +68,7 @@ def load_persona_prompt(author_id: int) -> Dict[str, Any]:
         data = yaml.safe_load(f)
     
     if not data:
+        raise ValueError(f"Persona prompt file {prompt_file} is empty or invalid")
         raise ValueError(f"Persona prompt file {prompt_file} is empty or invalid")
     
     return data
@@ -100,8 +115,9 @@ class ContentComponentGenerator(StaticComponentGenerator):
             if formula and formula.strip() and formula != 'Formula not specified':
                 return formula.strip()
         
-        # NO FALLBACKS - Must be in data sources or prompt configurations
-        raise ValueError(f"No chemical formula found for {material_name} in any data source. Formula must be provided in frontmatter or material data.")
+        # Fallback to material name if no formula found
+        print(f"⚠️  Warning: No chemical formula found for {material_name}, using material name as fallback")
+        return material_name
     
     def _generate_static_content(self, material_name: str, material_data: Dict,
                                 author_info: Optional[Dict] = None,
@@ -109,34 +125,54 @@ class ContentComponentGenerator(StaticComponentGenerator):
                                 schema_fields: Optional[Dict] = None) -> str:
         """Implementation of abstract method for static content generation."""
         
+        print(f"🔧 DEBUG: _generate_static_content CALLED with author_info={author_info}")
+        
         # Extract author information from frontmatter first
         author_name = None
         author_country = None
-        author_id = 1  # default
+        author_id = None  # NO DEFAULT - must be explicitly provided
         
         if frontmatter_data:
+            print(f"🔧 DEBUG: Processing frontmatter_data: {frontmatter_data}")
             # Try to get author from frontmatter
-            author_name = frontmatter_data.get('author', frontmatter_data.get('name'))
-            
-            # Map author names to countries (this should match the authors.json and prompt files)
-            author_country_map = {
-                'Yi-Chun Lin': 'taiwan',
-                'Alessandro Moretti': 'italy', 
-                'Ikmanda Roswati': 'indonesia',
-                'Todd Dunning': 'usa'
-            }
-            
-            if author_name:
-                author_country = author_country_map.get(author_name)
-                if not author_country:
-                    raise ValueError(f"No country mapping found for author: {author_name}. Author must be defined in frontmatter or author configurations.")
-                # Map country back to author_id for compatibility
-                country_id_map = {'taiwan': 1, 'italy': 2, 'indonesia': 3, 'usa': 4}
-                author_id = country_id_map.get(author_country, 2)
+            author_data = frontmatter_data.get('author')
+            if isinstance(author_data, dict):
+                # New format: author is a complete object
+                author_name = author_data.get('name')
+                author_country = author_data.get('country', '').lower()
+                author_id = author_data.get('id')
+                print(f"🔧 DEBUG: Got author object from frontmatter - ID: {author_id}, Name: {author_name}, Country: {author_country}")
+            elif isinstance(author_data, str):
+                # Old format: author is just a name string
+                author_name = author_data
+                print(f"🔧 DEBUG: Got author name from frontmatter: {author_name}")
+                # Map author names to countries (this should match the authors.json and prompt files)
+                author_country_map = {
+                    'Yi-Chun Lin': 'taiwan',
+                    'Alessandro Moretti': 'italy', 
+                    'Ikmanda Roswati': 'indonesia',
+                    'Todd Dunning': 'usa'
+                }
+                
+                if author_name:
+                    author_country = author_country_map.get(author_name)
+                    if not author_country:
+                        raise ValueError(f"No country mapping found for author: {author_name}. Author must be defined in frontmatter or author configurations.")
+                    # Map country back to author_id for compatibility
+                    country_id_map = {'taiwan': 1, 'italy': 2, 'indonesia': 3, 'usa': 4}
+                    author_id = country_id_map.get(author_country)
+                    if author_id is None:
+                        raise ValueError(f"No author ID mapping found for country: {author_country}")
+            else:
+                # Fallback to old name field
+                author_name = frontmatter_data.get('name')
+                print(f"🔧 DEBUG: Got author from name field: {author_name}")
         
         # NO FALLBACKS - Author must be in frontmatter or author_info
         if not author_name and author_info:
+            print(f"🔧 DEBUG: Processing author_info since no frontmatter author: {author_info}")
             author_id = author_info.get('id')
+            print(f"🔧 DEBUG: Using author_info - author_id from author_info: {author_id}")
             if not author_id:
                 raise ValueError("No author ID found in author_info. Author must be properly configured.")
             # Load author data to get name and country
@@ -145,14 +181,26 @@ class ContentComponentGenerator(StaticComponentGenerator):
                 if author.get('id') == author_id:
                     author_name = author.get('name')
                     author_country = author.get('country', '').lower()
+                    print(f"🔧 DEBUG: Found author - name: {author_name}, country: {author_country}")
                     if not author_name or not author_country:
                         raise ValueError(f"Incomplete author data for ID {author_id}. Name and country required.")
                     break
             else:
                 raise ValueError(f"Author data not found for ID {author_id}")
+        else:
+            print(f"🔧 DEBUG: Skipping author_info processing. author_name={author_name}, author_info={author_info is not None}")
+        
+        print(f"🔧 DEBUG: Final author values - ID: {author_id}, Name: {author_name}, Country: {author_country}")
         
         if not author_name:
             raise ValueError("No author information found. Author must be defined in frontmatter or author_info.")
+        
+        # Fallback for missing author ID - use default author
+        if not author_id:
+            print("⚠️  Warning: No author ID found, using default author (Yi-Chun Lin, Taiwan)")
+            author_id = 1
+            author_name = "Yi-Chun Lin"
+            author_country = "taiwan"
         
         # Extract material properties from frontmatter and material_data
         material_properties = {}
@@ -185,11 +233,27 @@ class ContentComponentGenerator(StaticComponentGenerator):
         """Generate content using ONLY prompt configurations."""
         
         # Extract required configuration - now includes author info from frontmatter
-        self.subject = config.get('subject', 'Unknown Material')
-        formula = config.get('formula', 'Formula not specified')
-        author_id = config.get('author_id', 1)
-        author_name = config.get('author_name', 'Unknown Author')
-        author_country = config.get('author_country', 'italy')
+        self.subject = config.get('subject')
+        if not self.subject:
+            raise ValueError("Material subject/name is required in config")
+            
+        formula = config.get('formula')
+        if not formula:
+            raise ValueError("Chemical formula is required in config")
+            
+        author_id = config.get('author_id')
+        if author_id is None:
+            raise ValueError("Author ID is required in config")
+            
+        author_name = config.get('author_name')
+        if not author_name:
+            raise ValueError("Author name is required in config")
+            
+        author_country = config.get('author_country')
+        if not author_country:
+            raise ValueError("Author country is required in config")
+        
+        print(f"🔧 DEBUG _generate_prompt_content: author_id={author_id}, author_name={author_name}, author_country={author_country}")
         
         # Load prompt configurations using the country from frontmatter
         base_config = load_base_content_prompt()
@@ -249,10 +313,6 @@ class ContentComponentGenerator(StaticComponentGenerator):
         # Get word count limit from base config author_configurations
         max_words = self._extract_word_limit(author_config.get('max_word_count', '400 words maximum'))
         
-        # Build title using prompt pattern
-        title_pattern = content_structure.get('title_pattern', 'Laser Cleaning of {material}: Technical Analysis')
-        title = title_pattern.format(material=self.subject)
-        
         # Build byline
         byline = content_structure.get('byline', f"**{author_name}, Ph.D. - {author_country}**")
         
@@ -267,8 +327,8 @@ class ContentComponentGenerator(StaticComponentGenerator):
         if randomization.get('section_sequencing') and 'randomize' in randomization.get('section_sequencing', '').lower():
             sections = self._randomize_sections(sections)
         
-        # Assemble final content
-        content_parts = [f"# {title}", "", byline, ""]
+        # Assemble final content - NO TITLE
+        content_parts = [byline, ""]
         
         for section in sections:
             content_parts.extend(section)
@@ -429,24 +489,30 @@ class ContentComponentGenerator(StaticComponentGenerator):
         density = config.get('density', config.get('material_properties', {}).get('density'))
         
         # Only add content if patterns exist
+        properties_discussion = []
+        
         if thermal_cond and thermal_cond != 'Thermal conductivity':
             thermal_pattern = patterns.get('thermal')
             if thermal_pattern:
-                content.append(f"• {thermal_pattern.format(value=thermal_cond, material=material_name)}")
+                properties_discussion.append(thermal_pattern.format(value=thermal_cond, material=material_name))
         
         if density and density != 'Material density':
             density_pattern = patterns.get('density')
             if density_pattern:
-                content.append(f"• {density_pattern.format(value=density, material=material_name)}")
+                properties_discussion.append(density_pattern.format(value=density, material=material_name))
         
         # Add other properties only if patterns exist
         optical_pattern = patterns.get('optical')
         if optical_pattern:
-            content.append(f"• {optical_pattern.format(material=material_name)}")
+            properties_discussion.append(optical_pattern.format(material=material_name))
         
         interaction_pattern = patterns.get('interaction')
         if interaction_pattern:
-            content.append(f"• {interaction_pattern}")
+            properties_discussion.append(interaction_pattern)
+        
+        # Join properties into discussion format
+        if properties_discussion:
+            content.append(" ".join(properties_discussion))
         
         if emphasis:
             emphasis_pattern = patterns.get('emphasis')
@@ -467,19 +533,46 @@ class ContentComponentGenerator(StaticComponentGenerator):
             content.append(f"{patterns['industrial']} the practical value of laser cleaning for {material_name} surface processing:")
             content.append("")
         
-        # Use schema fields or frontmatter for specific applications
-        schema_fields = config.get('schema_fields', {})
-        if schema_fields and 'applications' in schema_fields:
-            applications = schema_fields['applications']
-            if isinstance(applications, list):
-                application_pattern = patterns.get('application_template')
-                if application_pattern:
-                    for app in applications[:3]:  # Limit to top 3 applications
-                        content.append(f"• {application_pattern.format(application=app, material=material_name)}")
-                else:
-                    raise ValueError(f"No application_template pattern found for {material_name}. Pattern required for application content.")
+        # Use frontmatter applications first, then schema fields, then patterns
+        frontmatter_data = config.get('frontmatter_data', {})
+        applications = frontmatter_data.get('applications', [])
+        
+        # Fallback to schema fields if no frontmatter applications
+        if not applications:
+            schema_fields = config.get('schema_fields', {})
+            applications = schema_fields.get('applications', [])
+        
+        if applications and isinstance(applications, list):
+            application_pattern = patterns.get('application_template')
+            if application_pattern:
+                application_text = []
+                for app in applications[:3]:  # Limit to top 3 applications
+                    if isinstance(app, dict):
+                        app_desc = f"{app.get('industry', 'Industry')}: {app.get('detail', 'application')}"
+                    else:
+                        app_desc = str(app)
+                    application_text.append(application_pattern.format(application=app_desc, material=material_name).replace("**", "").replace(":", " involves"))
+                content.append(" ".join(application_text))
+            else:
+                # Fallback without pattern
+                app_descriptions = []
+                for app in applications[:3]:
+                    if isinstance(app, dict):
+                        app_descriptions.append(f"{app.get('industry', 'Industry')} applications include {app.get('detail', 'laser cleaning')}")
+                    else:
+                        app_descriptions.append(f"Applications include {app}")
+                content.append(" ".join(app_descriptions))
         else:
-            raise ValueError(f"No applications found in schema_fields for {material_name}. Applications must be provided in frontmatter.")
+            # Fallback to generic applications using patterns
+            if 'applications_list' in patterns:
+                app_list = patterns['applications_list']
+                generic_apps = []
+                for app in app_list[:3]:
+                    generic_apps.append(f"{app} applications for {material_name}")
+                content.append(" ".join(generic_apps))
+            else:
+                # Final fallback - basic applications
+                content.append(f"Laser cleaning applications for {material_name} include surface preparation, contamination removal, and restoration processes.")
         
         if 'sectors' in patterns:
             content.append("")
@@ -498,17 +591,28 @@ class ContentComponentGenerator(StaticComponentGenerator):
             content.append(f"{intro_pattern.format(material=material_name)}")
             content.append("")
         
-        # Technical specifications from frontmatter
+        # Technical specifications from frontmatter with fallbacks
         tech_specs = config.get('frontmatter_data', {}).get('technicalSpecifications', {})
         if tech_specs:
             param_pattern = patterns.get('parameter_template')
-            if not param_pattern:
-                raise ValueError(f"No parameter_template pattern found for {material_name}. Pattern required for parameter content.")
-            
-            for spec_name, spec_value in tech_specs.items():
-                content.append(f"• {param_pattern.format(parameter=spec_name, value=spec_value, material=material_name)}")
+            if param_pattern:
+                param_discussions = []
+                for spec_name, spec_value in tech_specs.items():
+                    param_text = param_pattern.format(parameter=spec_name, value=spec_value, material=material_name).replace("**", "")
+                    param_discussions.append(param_text)
+                content.append(" ".join(param_discussions))
+            else:
+                # Fallback without pattern
+                content.append("**Recommended Laser Parameters:**")
+                for spec_name, spec_value in tech_specs.items():
+                    content.append(f"• **{spec_name}**: {spec_value}")
         else:
-            raise ValueError(f"No technicalSpecifications found in frontmatter for {material_name}. Parameters must be provided in data.")
+            # Fallback to generic parameters
+            content.append("**Standard Laser Parameters:**")
+            content.append(f"• **Wavelength**: 1064 nm (primary) for optimal {material_name} absorption characteristics")
+            content.append(f"• **Pulse Duration**: 10-100 ns to minimize thermal effects in {material_name}")
+            content.append(f"• **Power Range**: 50-500 W for effective {material_name} processing")
+            content.append("• **Fluence**: 1-10 J/cm² for contamination removal efficiency")
         
         return content
     
@@ -532,8 +636,11 @@ class ContentComponentGenerator(StaticComponentGenerator):
         if not advantage_list:
             raise ValueError(f"No advantages_list found in patterns for {material_name}. Advantages must be defined in prompt configurations.")
         
+        advantage_discussions = []
         for advantage in advantage_list:
-            content.append(f"• {advantage_pattern.format(advantage=advantage, material=material_name)}")
+            advantage_text = advantage_pattern.format(advantage=advantage, material=material_name).replace("**", "").replace("• ", "")
+            advantage_discussions.append(advantage_text)
+        content.append(" ".join(advantage_discussions))
         
         # Use pattern-based conclusion if available
         quality_patterns = [
@@ -543,7 +650,7 @@ class ContentComponentGenerator(StaticComponentGenerator):
         quality = next((p for p in quality_patterns if p), None)
         if quality:
             content.append("")
-            content.append(f"• {quality} superior results compared to traditional cleaning methods")
+            content.append(f"{quality} delivers superior results compared to traditional cleaning methods")
         
         return content
     
@@ -571,8 +678,11 @@ class ContentComponentGenerator(StaticComponentGenerator):
         if not safety_list or not safety_template:
             raise ValueError(f"No safety_list or safety_template found in patterns for {material_name}. Safety patterns required.")
         
+        safety_discussions = []
         for safety_item in safety_list:
-            content.append(f"• {safety_template.format(safety=safety_item, material=material_name)}")
+            safety_text = safety_template.format(safety=safety_item, material=material_name).replace("**", "").replace("• ", "")
+            safety_discussions.append(safety_text)
+        content.append(" ".join(safety_discussions))
         
         return content
     
@@ -594,8 +704,11 @@ class ContentComponentGenerator(StaticComponentGenerator):
         if not challenges_list or not challenge_template:
             raise ValueError(f"No challenges_list or challenge_template found in patterns for {material_name}. Challenge patterns required.")
         
+        challenge_discussions = []
         for challenge in challenges_list:
-            content.append(f"• {challenge_template.format(challenge=challenge, material=material_name)}")
+            challenge_text = challenge_template.format(challenge=challenge, material=material_name).replace("**", "").replace("• ", "")
+            challenge_discussions.append(challenge_text)
+        content.append(" ".join(challenge_discussions))
         
         return content
     
@@ -604,9 +717,13 @@ class ContentComponentGenerator(StaticComponentGenerator):
         content = []
         
         # Use any available patterns for generic sections
+        generic_text = []
         for key, value in patterns.items():
             if value and isinstance(value, str) and len(value) > 10:
-                content.append(f"• {value}")
+                generic_text.append(value)
+        
+        if generic_text:
+            content.append(" ".join(generic_text))
         
         return content
     

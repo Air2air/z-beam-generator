@@ -1,0 +1,46 @@
+# Dynamic Laser Parameters Configuration
+# Material-category-specific laser parameter ranges for frontmatter generation
+
+categories:
+  metal:
+    spotSize: "0.05-1.5mm"
+    repetitionRate: "20-100kHz"
+    safetyClass: "Class 4 (requires full enclosure)"
+    powerRange: "50-500W"
+    
+  ceramic:
+    spotSize: "0.1-2.0mm" 
+    repetitionRate: "10-50kHz"
+    safetyClass: "Class 4 (requires full enclosure)"
+    powerRange: "20-300W"
+    
+  polymer:
+    spotSize: "0.2-3.0mm"
+    repetitionRate: "5-25kHz" 
+    safetyClass: "Class 3B/4 (enclosure recommended)"
+    powerRange: "10-150W"
+    
+  composite:
+    spotSize: "0.1-2.5mm"
+    repetitionRate: "15-75kHz"
+    safetyClass: "Class 4 (requires full enclosure)"
+    powerRange: "30-400W"
+    
+  alloy:
+    spotSize: "0.05-1.5mm"
+    repetitionRate: "25-120kHz" 
+    safetyClass: "Class 4 (requires full enclosure)"
+    powerRange: "60-600W"
+
+  semiconductor:
+    spotSize: "0.05-1.0mm"
+    repetitionRate: "20-100kHz"
+    safetyClass: "Class 4 (requires full enclosure)"
+    powerRange: "50-200W"
+
+# Default parameters for unknown categories
+default:
+  spotSize: "0.1-2.0mm"
+  repetitionRate: "10-50kHz"
+  safetyClass: "Class 4 (requires full enclosure)"
+  powerRange: "20-400W"

@@ -80,8 +80,9 @@ except ImportError:
         return f"{slug}-{suffix}" if suffix else slug
 
 COMPONENT_CONFIG = {
-    # Global author assignment for all components
-    "author_id": 2,  # 1=Taiwan, 2=Italy, 3=Indonesia, 4=USA
+    # Global author assignment for all components - REMOVED hardcoded value
+    # Author ID is now determined by CLI argument only  
+    # "author_id": 2,  # 1=Taiwan, 2=Italy, 3=Indonesia, 4=USA
     
     # Component orchestration order (components will be generated in this order)
     "orchestration_order": [
@@ -238,7 +239,6 @@ def run_dynamic_generation(
     components: list = None,
     interactive: bool = False,
     test_api: bool = False,
-    author_id: int = None,
     start_index: int = 1,
 ):
     """Run dynamic schema-driven content generation."""
@@ -254,26 +254,13 @@ def run_dynamic_generation(
     print("🚀 DYNAMIC SCHEMA-DRIVEN GENERATION")
     print("=" * 50)
 
-    # Initialize generator
+        # Initialize the generator with API client
     try:
         api_client = APIClient()
         generator = DynamicGenerator(api_client=api_client)
     except Exception as e:
         print(f"❌ Error initializing generator: {e}")
         return False
-
-    # Validate and set author if provided
-    author_info = None
-    if author_id is not None:
-        author_info = get_author_by_id(author_id)
-        if author_info:
-            print(f"👤 Using Author: {author_info['name']} ({author_info['country']})")
-            # Set the author in the generator
-            generator.set_author(author_info)
-        else:
-            print(f"❌ Author with ID {author_id} not found!")
-            list_authors()
-            return False
 
     # Test API connection if requested
     if test_api:
@@ -287,18 +274,18 @@ def run_dynamic_generation(
 
     # Interactive mode
     if interactive:
-        return run_interactive_generation(generator, author_info)
+        return run_interactive_generation(generator)
 
     # Batch mode - generate all materials if no specific material requested
     if material is None:
-        return run_batch_generation(generator, author_info, components, start_index)
+        return run_batch_generation(generator, components, start_index)
 
     # Generate for specific material
-    return run_material_generation(generator, material, components, author_info)
+    return run_material_generation(generator, material, components)
 
 
 def run_batch_generation(
-    generator, author_info: dict = None, components: list = None, start_index: int = 1
+    generator, components: list = None, start_index: int = 1
 ):
     """Run batch generation for all available materials without user interaction."""
 
@@ -325,8 +312,6 @@ def run_batch_generation(
     if start_index > 1:
         print(f"🚀 Starting at material #{start_index}: {materials[start_idx]}")
         print(f"📋 Skipping first {start_idx} materials")
-    if author_info:
-        print(f"👤 Author: {author_info['name']} ({author_info['country']})")
     print()
 
     generated_count = 0
@@ -338,7 +323,7 @@ def run_batch_generation(
 
             # Generate content for this material
             success = run_material_generation(
-                generator, material, target_components, author_info
+                generator, material, target_components
             )
 
             if success:
@@ -378,7 +363,7 @@ def run_batch_generation(
     return generated_count > 0
 
 
-def run_interactive_generation(generator, author_info: dict = None):
+def run_interactive_generation(generator):
     """Run interactive generation with user prompts."""
 
     print("🎮 Interactive Generation Mode")
@@ -442,7 +427,7 @@ def run_interactive_generation(generator, author_info: dict = None):
 
             # Generate content
             success = run_material_generation(
-                generator, material, selected_components, author_info
+                generator, material, selected_components
             )
             if success:
                 generated_count += 1
@@ -494,9 +479,15 @@ def save_component_to_file_original(material: str, component_type: str, content:
 
 
 def run_material_generation(
-    generator, material: str, components: list = None, author_info: dict = None
+    generator, material: str, components: list = None
 ):
     """Generate content for a specific material with component configuration."""
+
+    # Get material data from generator
+    material_data = generator.get_material(material)
+    if not material_data:
+        print(f"❌ Material '{material}' not found in materials database")
+        return False
 
     if components is None:
         components = generator.get_available_components()
@@ -577,23 +568,27 @@ def run_material_generation(
             else:
                 provider_name = API_PROVIDERS.get(provider, {}).get("name", provider)
 
-            # Determine author for ALL components using global author_id
+            # Determine author based on material's round-robin assignment
             component_author_info = None
-
-            # Use CLI author if specified, otherwise use global default
-            if author_info is not None:
-                component_author_info = author_info
+            
+            # Get author_id from material metadata (round-robin assignment)
+            material_author_id = material_data.get('author_id') if material_data else None
+            if material_author_id:
+                component_author_info = get_author_by_id(material_author_id)
+                print(f"🎯 Using material-assigned author: Author {material_author_id} for {material}")
             else:
-                # Use global author_id from COMPONENT_CONFIG
-                global_author_id = COMPONENT_CONFIG.get("author_id")
-                if global_author_id:
-                    component_author_info = get_author_by_id(global_author_id)
+                # Fallback to default author if no assignment found
+                component_author_info = get_author_by_id(1)
+                print(f"⚠️  No author assignment found for {material}, using default Author 1")
 
             print(f"\n🔧 Generating {component_type} using {provider_name}...")
             if component_author_info:
                 print(
                     f"   👤 Author: {component_author_info['name']} ({component_author_info['country']})"
                 )
+                print(f"   🔧 DEBUG: component_author_info = {component_author_info}")
+            else:
+                print("   ❌ No author info available")
 
             # Create a temporary generator with this API client
             from generators.dynamic_generator import DynamicGenerator
@@ -1306,9 +1301,6 @@ EXAMPLES:
         "--components", help="Comma-separated list of components to generate"
     )
     parser.add_argument(
-        "--author", type=int, help="Author ID (1-4) for country-specific writing style"
-    )
-    parser.add_argument(
         "--start-index",
         type=int,
         default=1,
@@ -1464,7 +1456,6 @@ def main():
                 components=components_list,
                 interactive=args.interactive,
                 test_api=args.test_api,
-                author_id=args.author,
                 start_index=args.start_index,
             )
 

@@ -7,7 +7,7 @@ Component-specific post-processing logic for frontmatter components.
 
 from typing import Dict, Any
 import logging
-from .utils import enhance_generated_frontmatter, validate_frontmatter_properties_completeness
+from .utils import validate_frontmatter_properties_completeness
 
 logger = logging.getLogger(__name__)
 
@@ -19,25 +19,20 @@ def post_process_frontmatter(content: str, material_name: str = None, category: 
     Args:
         content: Raw frontmatter content
         material_name: Name of the material (optional)
-        category: Material category for enhancement (optional)
+        category: Material category for enhancement (required)
         
     Returns:
         Post-processed frontmatter content
     """
-    try:
-        # Apply property enhancement if category is provided
-        if category:
-            content = enhance_generated_frontmatter(content, category)
-        
-        # Additional frontmatter cleanup
-        content = _cleanup_frontmatter_formatting(content)
-        content = _validate_frontmatter_structure(content)
-        
-        return content
-        
-    except Exception as e:
-        logger.error(f"Error in frontmatter post-processing: {e}")
-        return content
+    # Apply property enhancement - category is required
+    from utils.property_enhancer import enhance_generated_frontmatter
+    content = enhance_generated_frontmatter(content, category)
+    
+    # Apply frontmatter-specific cleanup
+    content = _cleanup_frontmatter_formatting(content)
+    content = _validate_frontmatter_structure(content)
+    
+    return content
 
 
 def _cleanup_frontmatter_formatting(content: str) -> str:

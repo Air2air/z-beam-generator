@@ -2,146 +2,2988 @@ materials:
   ceramic:
     description: Ceramic materials for laser cleaning applications
     article_type: material
+    processing_priority: medium
     items:
-    - Alumina
-    - Porcelain
-    - Silicon Nitride
-    - Stoneware
-    - Zirconia
+    - name: Alumina
+      author_id: 2
+      complexity: high
+      difficulty_score: 4
+      category: ceramic
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      formula: Al2O3
+      laser_parameters:
+        fluence_threshold: "1.0\u201310 J/cm\xB2"
+        pulse_duration: 10-200ns
+        wavelength_optimal: 1064 nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.05-1.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Aerospace: Removal of coatings and surface contaminants from alumina components'
+      - 'Semiconductor: Cleaning of alumina substrates for integrated circuits'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Semiconductor
+      - Aerospace
+    - name: Porcelain
+      author_id: 3
+      complexity: medium
+      difficulty_score: 3
+      category: ceramic
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "0.5\u20135 J/cm\xB2"
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Ceramics Manufacturing: Cleaning of porcelain surfaces for improved adhesion
+        in glazing processes'
+      - 'Restoration and Conservation: Non-destructive cleaning of historical porcelain
+        artifacts'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Ceramics Manufacturing
+      - Restoration and Conservation
+    - name: Silicon Nitride
+      author_id: 1
+      complexity: high
+      difficulty_score: 4
+      category: ceramic
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      formula: Si3N4
+      laser_parameters:
+        fluence_threshold: "0.5\u20135 J/cm\xB2"
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064 nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: Pulsed Fiber Laser
+      applications:
+      - 'Semiconductor: Wafer cleaning and surface preparation'
+      - 'Automotive: Cleaning of ceramic engine components'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Automotive
+      - Semiconductor
+    - name: Stoneware
+      author_id: 4
+      complexity: medium
+      difficulty_score: 3
+      category: ceramic
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "1.0\u201310 J/cm\xB2"
+        pulse_duration: 10-200ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Ceramics Manufacturing: Removing surface contaminants and coatings'
+      - 'Restoration and Conservation: Cleaning historical stoneware artifacts'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Ceramics Manufacturing
+      - Restoration and Conservation
+    - name: Zirconia
+      author_id: 4
+      complexity: high
+      difficulty_score: 4
+      category: ceramic
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      formula: ZrO2
+      laser_parameters:
+        fluence_threshold: "0.5\u20135 J/cm\xB2"
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Aerospace: Removing contaminants from turbine blades and engine components'
+      - 'Medical: Cleaning and sterilizing dental implants and prosthetics'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Medical
+      - Aerospace
   composite:
     description: Composite materials for laser cleaning applications
     article_type: material
+    processing_priority: medium
     items:
-    - Carbon Fiber Reinforced Polymer
-    - Epoxy Resin Composites
-    - Fiberglass
-    - Kevlar-Reinforced Polymer
-    - Phenolic Resin Composites
-    - Polyester Resin Composites
-    - Rubber
-    - Thermoplastic Elastomer
-    - Urethane Composites
-    - Glass Fiber Reinforced Polymers GFRP
-    - Fiber Reinforced Polyurethane FRPU
-    - Metal Matrix Composites MMCs
-    - Ceramic Matrix Composites CMCs
+    - name: Carbon Fiber Reinforced Polymer
+      author_id: 1
+      complexity: very_high
+      difficulty_score: 5
+      category: composite
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "1.0\u201310 J/cm\xB2"
+        pulse_duration: 10-200ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.05-1.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Aerospace: Removal of release agents and surface contaminants from CFRP parts'
+      - 'Automotive: Cleaning of CFRP components for improved bonding and painting'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Automotive
+      - Aerospace
+    - name: Epoxy Resin Composites
+      author_id: 1
+      complexity: medium
+      difficulty_score: 3
+      category: composite
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "1.0\u201310 J/cm\xB2"
+        pulse_duration: 20-200ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Aerospace: Removal of surface contaminants from composite aircraft parts'
+      - 'Automotive: Cleaning of epoxy resin components for improved bonding and painting'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Automotive
+      - Aerospace
+    - name: Fiberglass
+      author_id: 3
+      complexity: medium
+      difficulty_score: 3
+      category: composite
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "0.5-3 J/cm\xB2"
+        pulse_duration: 10-50ns
+        wavelength_optimal: 1064nm
+        power_range: 20-100W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Aerospace: Cleaning composite surfaces for aircraft components'
+      - 'Automotive: Removing contaminants from fiberglass body parts'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Automotive
+      - Aerospace
+    - name: Kevlar-Reinforced Polymer
+      author_id: 3
+      complexity: medium
+      difficulty_score: 3
+      category: composite
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "1.0\u201310 J/cm\xB2"
+        pulse_duration: 10-50ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Aerospace: Removal of surface contaminants from aircraft components'
+      - 'Automotive: Cleaning of composite parts for improved bonding and painting'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Automotive
+      - Aerospace
+    - name: Phenolic Resin Composites
+      author_id: 4
+      complexity: medium
+      difficulty_score: 3
+      category: composite
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "1.0\u201310 J/cm\xB2"
+        pulse_duration: 20-200ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.05-1.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Aerospace: Removal of surface contaminants from composite parts'
+      - 'Automotive: Cleaning of phenolic resin components for enhanced bonding'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Automotive
+      - Aerospace
+    - name: Polyester Resin Composites
+      author_id: 1
+      complexity: medium
+      difficulty_score: 3
+      category: composite
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "0.5-5 J/cm\xB2"
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064 nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: Pulsed Fiber Laser
+      applications:
+      - 'Automotive: Surface preparation for painting and bonding'
+      - 'Aerospace: Cleaning and restoration of composite parts'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Automotive
+      - Aerospace
+    - name: Rubber
+      author_id: 4
+      complexity: medium
+      difficulty_score: 3
+      category: composite
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "0.5\u20135 J/cm\xB2"
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Automotive: Cleaning rubber gaskets and seals for improved assembly precision'
+      - 'Manufacturing: Surface preparation of rubber components prior to bonding
+        or coating'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Automotive
+      - Manufacturing
+    - name: Thermoplastic Elastomer
+      author_id: 2
+      complexity: medium
+      difficulty_score: 3
+      category: composite
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "0.5\u20135 J/cm\xB2"
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Automotive: Cleaning of automotive parts made from Thermoplastic Elastomer
+        to remove mold release agents and surface contaminants'
+      - 'Medical: Precision cleaning of Thermoplastic Elastomer components used in
+        medical devices for sterilization and surface preparation'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Automotive
+      - Medical
+    - name: Urethane Composites
+      author_id: 3
+      complexity: medium
+      difficulty_score: 3
+      category: composite
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "1.0\u201310 J/cm\xB2"
+        pulse_duration: 20-200ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.2-1.5mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Automotive: Cleaning of urethane composite parts for surface preparation
+        before painting'
+      - 'Aerospace: Removal of contaminants from urethane composite aircraft components'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Automotive
+      - Aerospace
+    - name: Glass Fiber Reinforced Polymers GFRP
+      author_id: 1
+      complexity: medium
+      difficulty_score: 3
+      category: composite
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "0.5\u20135 J/cm\xB2"
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064 nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: Pulsed Fiber Laser
+      applications:
+      - 'Aerospace: Removal of surface contaminants and coatings from GFRP components'
+      - 'Automotive: Cleaning of GFRP parts for repair and restoration'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Automotive
+      - Aerospace
+    - name: Fiber Reinforced Polyurethane FRPU
+      author_id: 2
+      complexity: medium
+      difficulty_score: 3
+      category: composite
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "1.0\u201310 J/cm\xB2"
+        pulse_duration: 10-200ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Automotive: Removal of surface contaminants and coatings from FRPU automotive
+        parts'
+      - 'Aerospace: Precision cleaning of FRPU components for aircraft interiors and
+        exteriors'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Automotive
+      - Aerospace
+    - name: Metal Matrix Composites MMCs
+      author_id: 4
+      complexity: very_high
+      difficulty_score: 5
+      category: composite
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "1.0\u201310 J/cm\xB2"
+        pulse_duration: 10-200ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.05-1.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Aerospace: Cleaning of turbine blades and engine components'
+      - 'Automotive: Removal of coatings and contaminants from brake systems'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Automotive
+      - Aerospace
+    - name: Ceramic Matrix Composites CMCs
+      author_id: 4
+      complexity: very_high
+      difficulty_score: 5
+      category: composite
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "1.0\u201310 J/cm\xB2"
+        pulse_duration: 10-50ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: Pulsed Fiber Laser
+      applications:
+      - 'Aerospace: Cleaning of turbine engine components to remove surface contaminants'
+      - 'Power Generation: Surface preparation of gas turbine parts for repair and
+        maintenance'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Power Generation
+      - Aerospace
   glass:
     description: Glass materials for laser cleaning applications
     article_type: material
+    processing_priority: medium
     items:
-    - Borosilicate Glass
-    - Float Glass
-    - Fused Silica
-    - Lead Crystal
-    - Pyrex
-    - Quartz Glass
-    - Soda-Lime Glass
-    - Tempered Glass
+    - name: Borosilicate Glass
+      author_id: 3
+      complexity: medium
+      difficulty_score: 3
+      category: glass
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      formula: B2O3-SiO2
+      laser_parameters:
+        fluence_threshold: "0.5\u20135 J/cm\xB2"
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Semiconductor: Cleaning of semiconductor substrates and wafers'
+      - 'Pharmaceutical: Decontamination and sterilization of glass vials and ampoules'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Pharmaceutical
+      - Semiconductor
+    - name: Float Glass
+      author_id: 1
+      complexity: medium
+      difficulty_score: 3
+      category: glass
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "0.5\u20135 J/cm\xB2"
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Automotive: Cleaning of automotive glass surfaces for improved visibility
+        and aesthetics'
+      - 'Architectural: Restoration and cleaning of glass facades and windows'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Automotive
+      - Architectural
+    - name: Fused Silica
+      author_id: 2
+      complexity: medium
+      difficulty_score: 3
+      category: glass
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      formula: SiO2
+      laser_parameters:
+        fluence_threshold: "0.5\u20135 J/cm\xB2"
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: Pulsed Fiber Laser
+      applications:
+      - 'Semiconductor Manufacturing: Cleaning of photomask substrates for precision
+        in lithography'
+      - 'Optics and Photonics: Removal of surface contaminants on optical components'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Semiconductor Manufacturing
+      - Optics and Photonics
+    - name: Lead Crystal
+      author_id: 1
+      complexity: medium
+      difficulty_score: 3
+      category: glass
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "0.5\u20135 J/cm\xB2"
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: Nd:YAG laser
+      applications:
+      - 'Glass Manufacturing: Removal of surface contaminants and coatings from lead
+        crystal glassware'
+      - 'Restoration and Conservation: Precision cleaning of historic lead crystal
+        artifacts'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Restoration and Conservation
+      - Glass Manufacturing
+    - name: Pyrex
+      author_id: 1
+      complexity: medium
+      difficulty_score: 3
+      category: glass
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "0.5\u20135 J/cm\xB2"
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Automotive: Cleaning of Pyrex glass components for headlights'
+      - 'Aerospace: Decontamination of Pyrex windows and optical components'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Automotive
+      - Aerospace
+    - name: Quartz Glass
+      author_id: 2
+      complexity: medium
+      difficulty_score: 3
+      category: glass
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      formula: SiO2
+      laser_parameters:
+        fluence_threshold: "0.5\u20135 J/cm\xB2"
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064 nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: Pulsed Fiber Laser
+      applications:
+      - 'Semiconductor Manufacturing: Cleaning of quartz glass components used in
+        photolithography processes'
+      - 'Optics and Photonics: Precision cleaning of optical surfaces for laser systems
+        and telescopes'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Semiconductor Manufacturing
+      - Optics and Photonics
+    - name: Soda-Lime Glass
+      author_id: 1
+      complexity: medium
+      difficulty_score: 3
+      category: glass
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "0.5-5 J/cm\xB2"
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: pulsed fiber laser
+      applications:
+      - 'Automotive: Cleaning of glass surfaces for improved optical clarity'
+      - 'Electronics: Surface preparation for better adhesion in PCB manufacturing'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Automotive
+      - Electronics
+    - name: Tempered Glass
+      author_id: 4
+      complexity: medium
+      difficulty_score: 3
+      category: glass
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "0.5\u20135 J/cm\xB2"
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Automotive: Removal of contaminants from car windows and windshields'
+      - 'Electronics: Cleaning of glass surfaces in display manufacturing'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Automotive
+      - Electronics
   masonry:
     description: Masonry materials for laser cleaning applications
     article_type: material
+    processing_priority: medium
     items:
-    - Brick
-    - Cement
-    - Concrete
-    - Mortar
-    - Plaster
-    - Stucco
-    - Terracotta
+    - name: Brick
+      author_id: 2
+      complexity: low
+      difficulty_score: 2
+      category: masonry
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "1.0\u201310 J/cm\xB2"
+        pulse_duration: 10-50ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.5-3.0mm
+        laser_type: Nd:YAG laser
+      applications:
+      - 'Construction: Removal of surface contaminants and efflorescence from brick
+        facades'
+      - 'Restoration: Cleaning historical brick structures without damaging the material'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Construction
+      - Restoration
+    - name: Cement
+      author_id: 3
+      complexity: medium
+      difficulty_score: 3
+      category: masonry
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "1.0\u201310 J/cm\xB2"
+        pulse_duration: 10-200ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: Nd:YAG laser
+      applications:
+      - 'Construction: Removal of graffiti and paint from concrete surfaces'
+      - 'Restoration: Cleaning of historical cement structures without damage'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Construction
+      - Restoration
+    - name: Concrete
+      author_id: 3
+      complexity: low
+      difficulty_score: 2
+      category: masonry
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "1.0\u201310 J/cm\xB2"
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Construction: Removal of paint, graffiti, and other surface contaminants
+        from concrete structures'
+      - 'Restoration: Cleaning historical concrete buildings and monuments without
+        damaging the material'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Construction
+      - Restoration
+    - name: Mortar
+      author_id: 2
+      complexity: low
+      difficulty_score: 2
+      category: masonry
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "1.0\u201310 J/cm\xB2"
+        pulse_duration: 10-200ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: Nd:YAG laser
+      applications:
+      - 'Construction: Restoration of historic buildings and monuments'
+      - 'Heritage Conservation: Cleaning and preservation of ancient masonry structures'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Construction
+      - Heritage Conservation
+    - name: Plaster
+      author_id: 2
+      complexity: medium
+      difficulty_score: 3
+      category: masonry
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "1.0\u20133.0 J/cm\xB2"
+        pulse_duration: 10-50ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.2-1.0mm
+        laser_type: Nd:YAG
+      applications:
+      - 'Construction: Restoration of historical plaster surfaces'
+      - 'Cultural Heritage: Cleaning of plaster sculptures and artifacts'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Construction
+      - Cultural Heritage
+      formula: "CaSO4\xB72H2O"
+    - name: Stucco
+      author_id: 1
+      complexity: medium
+      difficulty_score: 3
+      category: masonry
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "0.5\u20135 J/cm\xB2"
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Construction: Cleaning of stucco facades and surfaces'
+      - 'Restoration: Restoration of historical stucco structures'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Construction
+      - Restoration
+    - name: Terracotta
+      author_id: 1
+      complexity: medium
+      difficulty_score: 3
+      category: masonry
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "0.5\u20135 J/cm\xB2"
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: Nd:YAG laser
+      applications:
+      - 'Cultural Heritage: Restoration of historical terracotta sculptures and facades'
+      - 'Construction: Cleaning and restoration of terracotta cladding on buildings'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Construction
+      - Cultural Heritage
   metal:
     description: Metal materials for laser cleaning applications
     article_type: material
+    processing_priority: medium
     items:
-    - Aluminum
-    - Beryllium
-    - Brass
-    - Bronze
-    - Cobalt
-    - Copper
-    - Gallium
-    - Gold
-    - Hafnium
-    - Hastelloy
-    - Inconel
-    - Indium
-    - Iridium
-    - Iron
-    - Lead
-    - Magnesium
-    - Molybdenum
-    - Nickel
-    - Niobium
-    - Palladium
-    - Platinum
-    - Rhenium
-    - Rhodium
-    - Ruthenium
-    - Silver
-    - Stainless Steel
-    - Steel
-    - Tantalum
-    - Tin
-    - Titanium
-    - Tungsten
-    - Vanadium
-    - Zinc
-    - Zirconium
+    - name: Aluminum
+      author_id: 3
+      complexity: medium
+      difficulty_score: 3
+      category: metal
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      formula: Al
+      laser_parameters:
+        fluence_threshold: "1.0\u201310 J/cm\xB2"
+        pulse_duration: 10-200ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: Fiber laser
+      applications:
+      - 'Automotive: Removing paint and corrosion from aluminum car parts'
+      - 'Aerospace: Cleaning aluminum aircraft components for surface preparation'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Automotive
+      - Aerospace
+    - name: Beryllium
+      author_id: 4
+      complexity: medium
+      difficulty_score: 3
+      category: metal
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "1.0\u201310 J/cm\xB2"
+        pulse_duration: 10-50ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.05-1.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Aerospace: Removal of oxidation and contaminants from beryllium components'
+      - 'Nuclear: Cleaning of beryllium surfaces in nuclear reactors'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Aerospace
+      - Nuclear
+    - name: Brass
+      author_id: 4
+      complexity: medium
+      difficulty_score: 3
+      category: metal
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      formula: Cu-Zn
+      laser_parameters:
+        fluence_threshold: "0.5\u20135 J/cm\xB2"
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Automotive: Cleaning of brass components for surface preparation and restoration'
+      - 'Electronics: Precision cleaning of brass connectors and contacts'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Automotive
+      - Electronics
+    - name: Bronze
+      author_id: 3
+      complexity: medium
+      difficulty_score: 3
+      category: metal
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      formula: Cu-Sn
+      laser_parameters:
+        fluence_threshold: "0.5\u20135 J/cm\xB2"
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Manufacturing: Removal of rust and corrosion from bronze surfaces'
+      - 'Restoration: Cleaning of bronze sculptures and artifacts'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Manufacturing
+      - Restoration
+    - name: Cobalt
+      author_id: 2
+      complexity: medium
+      difficulty_score: 3
+      category: metal
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "1.0\u20133.0 J/cm\xB2"
+        pulse_duration: 10-50ns
+        wavelength_optimal: 1064nm
+        power_range: 50-100W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Aerospace: Cleaning of turbine blades and engine components to remove oxidation
+        and corrosion'
+      - 'Electronics: Precise cleaning of circuit boards and connectors to remove
+        residues and contaminants'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Aerospace
+      - Electronics
+    - name: Copper
+      author_id: 4
+      complexity: medium
+      difficulty_score: 3
+      category: metal
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      formula: Cu
+      laser_parameters:
+        fluence_threshold: "0.5-5 J/cm\xB2"
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Manufacturing: Cleaning copper surfaces for improved adhesion in the electronics
+        industry'
+      - 'Restoration: Removing corrosion and oxidation from copper artifacts and sculptures'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Manufacturing
+      - Restoration
+    - name: Gallium
+      author_id: 3
+      complexity: medium
+      difficulty_score: 3
+      category: metal
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "1.0\u201310 J/cm\xB2"
+        pulse_duration: 10-50ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.05-1.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Electronics: Removing oxide layers from gallium-based components'
+      - 'Semiconductor: Cleaning gallium arsenide wafers for improved performance'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Semiconductor
+      - Electronics
+    - name: Gold
+      author_id: 2
+      complexity: medium
+      difficulty_score: 3
+      category: metal
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      formula: Au
+      laser_parameters:
+        fluence_threshold: "0.5\u20135 J/cm\xB2"
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Electronics: Removal of oxide layers and contaminants from gold-plated circuit
+        boards'
+      - 'Jewelry: Cleaning and restoration of gold jewelry surfaces'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Jewelry
+      - Electronics
+    - name: Hafnium
+      author_id: 4
+      complexity: very_high
+      difficulty_score: 5
+      category: metal
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "1.0\u201310 J/cm\xB2"
+        pulse_duration: 10-200ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Aerospace: Removal of oxidation and contaminants from turbine blades'
+      - 'Electronics: Cleaning of hafnium-based components in semiconductor manufacturing'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Aerospace
+      - Electronics
+    - name: Hastelloy
+      author_id: 1
+      complexity: high
+      difficulty_score: 4
+      category: metal
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "1.0\u201310 J/cm\xB2"
+        pulse_duration: 10-50ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Aerospace: Removal of oxidation and corrosion from turbine components'
+      - 'Chemical Processing: Cleaning of reaction vessels and piping systems'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Chemical Processing
+      - Aerospace
+    - name: Inconel
+      author_id: 3
+      complexity: high
+      difficulty_score: 4
+      category: metal
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "1.0\u201310 J/cm\xB2"
+        pulse_duration: 10-200ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: pulsed fiber laser
+      applications:
+      - 'Aerospace: Removal of coatings and surface contaminants on turbine blades'
+      - 'Oil and Gas: Cleaning of corrosion and scale from piping and valves'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Oil and Gas
+      - Aerospace
+    - name: Indium
+      author_id: 4
+      complexity: medium
+      difficulty_score: 3
+      category: metal
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "0.5-5 J/cm\xB2"
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064 nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Electronics: Surface cleaning of Indium used in soldering and semiconductor
+        applications'
+      - 'Aerospace: Precision cleaning of Indium coatings on satellite components'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Aerospace
+      - Electronics
+    - name: Iridium
+      author_id: 1
+      complexity: medium
+      difficulty_score: 3
+      category: metal
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "1.0\u201310 J/cm\xB2"
+        pulse_duration: 1-100ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.05-1.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Aerospace: Removal of oxidation and contaminants from iridium components
+        in rocket engines'
+      - 'Electronics: Cleaning iridium contacts and connectors for improved conductivity'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Aerospace
+      - Electronics
+      formula: Ir
+    - name: Iron
+      author_id: 2
+      complexity: low
+      difficulty_score: 2
+      category: metal
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      formula: Fe
+      laser_parameters:
+        fluence_threshold: "1.0\u201310 J/cm\xB2"
+        pulse_duration: 10-200ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: pulsed fiber laser
+      applications:
+      - 'Automotive: Removing rust and corrosion from iron components'
+      - 'Manufacturing: Cleaning iron molds and dies for improved surface quality'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Automotive
+      - Manufacturing
+    - name: Lead
+      author_id: 4
+      complexity: medium
+      difficulty_score: 3
+      category: metal
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "1.0\u201310 J/cm\xB2"
+        pulse_duration: 10-200ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: pulsed fiber laser
+      applications:
+      - 'Automotive: Removal of rust and corrosion from lead components'
+      - 'Electronics: Cleaning of lead-based solder residues'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Automotive
+      - Electronics
+      formula: Pb
+    - name: Magnesium
+      author_id: 4
+      complexity: medium
+      difficulty_score: 3
+      category: metal
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "0.5\u20135 J/cm\xB2"
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Aerospace: Removal of oxidation and contaminants from magnesium alloy components'
+      - 'Automotive: Cleaning of magnesium engine parts for improved performance and
+        longevity'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Automotive
+      - Aerospace
+      formula: Mg
+    - name: Molybdenum
+      author_id: 1
+      complexity: medium
+      difficulty_score: 3
+      category: metal
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "1.0\u201310 J/cm\xB2"
+        pulse_duration: 10-200ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.05-1.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Aerospace: Removal of oxidation and surface contaminants from Molybdenum
+        components'
+      - 'Semiconductor: Precision cleaning of Molybdenum surfaces in microelectronics
+        manufacturing'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Semiconductor
+      - Aerospace
+    - name: Nickel
+      author_id: 3
+      complexity: medium
+      difficulty_score: 3
+      category: metal
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "0.5\u20135 J/cm\xB2"
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Automotive: Removal of rust and corrosion from nickel-plated parts'
+      - 'Electronics: Cleaning of nickel surfaces for improved conductivity and soldering'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Automotive
+      - Electronics
+    - name: Niobium
+      author_id: 4
+      complexity: medium
+      difficulty_score: 3
+      category: metal
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "1.0\u201310 J/cm\xB2"
+        pulse_duration: 10-50ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: pulsed fiber laser
+      applications:
+      - 'Aerospace: Cleaning of niobium components for jet engine parts'
+      - 'Electronics: Surface preparation of niobium for superconducting applications'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Aerospace
+      - Electronics
+    - name: Palladium
+      author_id: 3
+      complexity: medium
+      difficulty_score: 3
+      category: metal
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "0.5\u20135 J/cm\xB2"
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064 nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: Pulsed Fiber Laser
+      applications:
+      - 'Automotive: Removal of rust and corrosion from Palladium catalytic converters'
+      - 'Electronics: Cleaning Palladium contacts and connectors for improved conductivity'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Automotive
+      - Electronics
+      formula: Pd
+    - name: Platinum
+      author_id: 3
+      complexity: medium
+      difficulty_score: 3
+      category: metal
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      formula: Pt
+      laser_parameters:
+        fluence_threshold: "1.0\u201310 J/cm\xB2"
+        pulse_duration: 10-50ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.05-1.0mm
+        laser_type: Nd:YAG or fiber laser
+      applications:
+      - 'Aerospace: Removal of surface contaminants on turbine blades'
+      - 'Jewelry: Precision cleaning of intricate Platinum jewelry pieces'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Jewelry
+      - Aerospace
+    - name: Rhenium
+      author_id: 1
+      complexity: very_high
+      difficulty_score: 5
+      category: metal
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "1.0-10 J/cm\xB2"
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Aerospace: Removing oxidation and contaminants from turbine blades'
+      - 'Semiconductor: Precision cleaning of Rhenium contacts and components'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Semiconductor
+      - Aerospace
+    - name: Rhodium
+      author_id: 2
+      complexity: medium
+      difficulty_score: 3
+      category: metal
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "0.5\u20135 J/cm\xB2"
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064 nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: pulsed fiber laser
+      applications:
+      - 'Aerospace: Removing oxidation and coatings from turbine blades'
+      - 'Jewelry: Cleaning and restoring rhodium-plated surfaces'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Jewelry
+      - Aerospace
+    - name: Ruthenium
+      author_id: 1
+      complexity: medium
+      difficulty_score: 3
+      category: metal
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "0.5\u20135 J/cm\xB2"
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Electronics: Removal of oxide layers and surface contaminants from Ruthenium
+        contacts'
+      - 'Aerospace: Precision cleaning of Ruthenium coatings on turbine blades'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Aerospace
+      - Electronics
+    - name: Silver
+      author_id: 2
+      complexity: medium
+      difficulty_score: 3
+      category: metal
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      formula: Ag
+      laser_parameters:
+        fluence_threshold: "0.5-5 J/cm\xB2"
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Electronics: Removal of oxides and contaminants from silver contacts and
+        connectors'
+      - 'Jewelry: Cleaning and restoration of silver jewelry without damaging delicate
+        surfaces'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Jewelry
+      - Electronics
+    - name: Stainless Steel
+      author_id: 2
+      complexity: high
+      difficulty_score: 4
+      category: metal
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      formula: Fe-Cr-Ni
+      laser_parameters:
+        fluence_threshold: "1.0\u201310 J/cm\xB2"
+        pulse_duration: 10-200ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.05-1.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Automotive: Removal of rust, oil, and paint from stainless steel parts'
+      - 'Aerospace: Precision cleaning of intricate stainless steel components'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Automotive
+      - Aerospace
+    - name: Steel
+      author_id: 3
+      complexity: low
+      difficulty_score: 2
+      category: metal
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      formula: Fe-C
+      laser_parameters:
+        fluence_threshold: "1.0\u201310 J/cm\xB2"
+        pulse_duration: 10-200ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: Fiber laser
+      applications:
+      - 'Automotive: Rust and paint removal from steel car bodies'
+      - 'Manufacturing: Removal of oil, grease, and oxide layers from steel surfaces'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Automotive
+      - Manufacturing
+    - name: Tantalum
+      author_id: 2
+      complexity: medium
+      difficulty_score: 3
+      category: metal
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "1.0\u201310 J/cm\xB2"
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064 nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Electronics: Removing oxidation and surface contaminants from Tantalum capacitors'
+      - 'Aerospace: Cleaning Tantalum components for high-temperature applications'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Aerospace
+      - Electronics
+    - name: Tin
+      author_id: 3
+      complexity: medium
+      difficulty_score: 3
+      category: metal
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "0.5-5 J/cm\xB2"
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Electronics: Removal of oxidation and contamination from tin-plated surfaces'
+      - 'Automotive: Cleaning of tin-coated components for improved adhesion and corrosion
+        resistance'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Automotive
+      - Electronics
+      formula: Sn
+    - name: Titanium
+      author_id: 4
+      complexity: very_high
+      difficulty_score: 5
+      category: metal
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      formula: Ti
+      laser_parameters:
+        fluence_threshold: "1.0\u201310 J/cm\xB2"
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Aerospace: Removal of oxidation and surface contaminants from titanium components'
+      - 'Medical: Cleaning of titanium implants and surgical instruments'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Medical
+      - Aerospace
+    - name: Tungsten
+      author_id: 2
+      complexity: medium
+      difficulty_score: 3
+      category: metal
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "1.0\u201310 J/cm\xB2"
+        pulse_duration: 10-200ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Aerospace: Cleaning of turbine blades and engine components'
+      - 'Semiconductor: Removal of surface contaminants from tungsten parts'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Semiconductor
+      - Aerospace
+      formula: W
+    - name: Vanadium
+      author_id: 4
+      complexity: medium
+      difficulty_score: 3
+      category: metal
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "0.5\u20135 J/cm\xB2"
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Aerospace: Removal of surface contaminants from vanadium alloy components'
+      - 'Automotive: Cleaning of vanadium steel parts for enhanced surface quality'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Automotive
+      - Aerospace
+    - name: Zinc
+      author_id: 3
+      complexity: medium
+      difficulty_score: 3
+      category: metal
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "1.0\u201310 J/cm\xB2"
+        pulse_duration: 10-200ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Automotive: Rust and corrosion removal from zinc-coated parts'
+      - 'Electronics: Precision cleaning of zinc components in circuit boards'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Automotive
+      - Electronics
+      formula: Zn
+    - name: Zirconium
+      author_id: 1
+      complexity: medium
+      difficulty_score: 3
+      category: metal
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "0.5\u20135 J/cm\xB2"
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: pulsed fiber laser
+      applications:
+      - 'Aerospace: Removal of oxidation and coatings from engine components'
+      - 'Nuclear: Cleaning of zirconium alloy surfaces for reactor applications'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Aerospace
+      - Nuclear
   semiconductor:
     description: Semiconductor materials for laser cleaning applications
     article_type: material
+    processing_priority: medium
     items:
-    - Gallium Arsenide
-    - Silicon
-    - Silicon Carbide
-    - Silicon Germanium
+    - name: Gallium Arsenide
+      author_id: 4
+      complexity: high
+      difficulty_score: 4
+      category: semiconductor
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      formula: GaAs
+      laser_parameters:
+        fluence_threshold: "1.0\u201310 J/cm\xB2"
+        pulse_duration: 10-50ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.05-1.0mm
+        laser_type: Pulsed Fiber Laser
+      applications:
+      - 'Semiconductor Manufacturing: Removal of surface contaminants from Gallium
+        Arsenide wafers'
+      - 'Optoelectronics: Precision cleaning of Gallium Arsenide substrates for LED
+        and laser diode production'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Optoelectronics
+      - Semiconductor Manufacturing
+    - name: Silicon
+      author_id: 2
+      complexity: medium
+      difficulty_score: 3
+      category: semiconductor
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      formula: Si
+      laser_parameters:
+        fluence_threshold: "0.5-5 J/cm\xB2"
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Semiconductor Manufacturing: Wafer cleaning and surface preparation for microchip
+        fabrication'
+      - 'Photovoltaics: Cleaning of solar cell surfaces to enhance efficiency and
+        performance'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Semiconductor Manufacturing
+      - Photovoltaics
+    - name: Silicon Carbide
+      author_id: 3
+      complexity: high
+      difficulty_score: 4
+      category: semiconductor
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      formula: SiC
+      laser_parameters:
+        fluence_threshold: "1.0\u201310 J/cm\xB2"
+        pulse_duration: 10-50ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.05-1.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Semiconductor Manufacturing: Removal of surface contaminants for improved
+        semiconductor performance'
+      - 'Aerospace: Cleaning of Silicon Carbide components for high-temperature applications'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Semiconductor Manufacturing
+      - Aerospace
+    - name: Silicon Germanium
+      author_id: 4
+      complexity: medium
+      difficulty_score: 3
+      category: semiconductor
+      documentation_status: pending
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: TBD
+        pulse_duration: TBD
+        wavelength_optimal: TBD
+      applications:
+      - TBD
+      surface_treatments:
+      - TBD
+      industry_tags:
+      - TBD
   stone:
     description: Stone materials for laser cleaning applications
     article_type: material
+    processing_priority: medium
     items:
-    - Alabaster
-    - Basalt
-    - Bluestone
-    - Breccia
-    - Calcite
-    - Granite
-    - Limestone
-    - Porphyry
-    - Marble
-    - Onyx
-    - Quartzite
-    - Sandstone
-    - Schist
-    - Serpentine
-    - Shale
-    - Slate
-    - Soapstone
-    - Travertine
+    - name: Alabaster
+      author_id: 1
+      complexity: medium
+      difficulty_score: 3
+      category: stone
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "0.5-5 J/cm\xB2"
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Art Restoration: Cleaning and restoration of alabaster sculptures and artifacts'
+      - 'Construction: Surface preparation and cleaning of alabaster architectural
+        elements'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Construction
+      - Art Restoration
+      formula: "CaSO4\xB72H2O"
+    - name: Basalt
+      author_id: 2
+      complexity: medium
+      difficulty_score: 3
+      category: stone
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "1.0\u201310 J/cm\xB2"
+        pulse_duration: 10-200ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Construction: Cleaning and restoration of basalt facades and sculptures'
+      - 'Manufacturing: Precision cleaning of basalt surfaces in industrial equipment'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Construction
+      - Manufacturing
+    - name: Bluestone
+      author_id: 2
+      complexity: medium
+      difficulty_score: 3
+      category: stone
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "0.5-3.0 J/cm\xB2"
+        pulse_duration: 10-50ns
+        wavelength_optimal: 1064nm
+        power_range: 20-100W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Construction: Removal of surface contaminants and weathering from Bluestone
+        facades'
+      - 'Restoration: Precision cleaning of Bluestone sculptures and historical artifacts'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Construction
+      - Restoration
+    - name: Breccia
+      author_id: 1
+      complexity: medium
+      difficulty_score: 3
+      category: stone
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "1.0-10 J/cm\xB2"
+        pulse_duration: 10-50ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Construction: Restoration of historic buildings and monuments'
+      - 'Art and Restoration: Cleaning and surface preparation of sculptures and artworks'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Construction
+      - Art and Restoration
+    - name: Calcite
+      author_id: 4
+      complexity: medium
+      difficulty_score: 3
+      category: stone
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "1.0\u201310 J/cm\xB2"
+        pulse_duration: 10-50ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: Pulsed Nd:YAG
+      applications:
+      - 'Construction: Removal of surface contaminants from building facades'
+      - 'Restoration: Cleaning of historical monuments and sculptures'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Construction
+      - Restoration
+      formula: CaCO3
+    - name: Granite
+      author_id: 3
+      complexity: high
+      difficulty_score: 4
+      category: stone
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      formula: SiO2-Al2O3-K2O
+      laser_parameters:
+        fluence_threshold: "1.0-10 J/cm\xB2"
+        pulse_duration: 10-50ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: Nd:YAG or fiber laser
+      applications:
+      - 'Construction: Removal of paint and coatings from granite surfaces'
+      - 'Restoration: Cleaning historical granite structures and monuments'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Construction
+      - Restoration
+    - name: Limestone
+      author_id: 2
+      complexity: medium
+      difficulty_score: 3
+      category: stone
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      formula: CaCO3
+      laser_parameters:
+        fluence_threshold: "0.5\u20135 J/cm\xB2"
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: Nd:YAG
+      applications:
+      - 'Construction: Cleaning of limestone facades and sculptures for restoration'
+      - 'Heritage Conservation: Non-destructive cleaning of historical limestone monuments'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Construction
+      - Heritage Conservation
+    - name: Porphyry
+      author_id: 4
+      complexity: medium
+      difficulty_score: 3
+      category: stone
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "1.0\u201310 J/cm\xB2"
+        pulse_duration: 10-50ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.2-1.0mm
+        laser_type: Nd:YAG or fiber laser
+      applications:
+      - 'Construction: Cleaning and restoration of historical porphyry structures'
+      - 'Art and Restoration: Precision cleaning of porphyry sculptures and artifacts'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Construction
+      - Art and Restoration
+    - name: Marble
+      author_id: 3
+      complexity: high
+      difficulty_score: 4
+      category: stone
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      formula: CaCO3
+      laser_parameters:
+        fluence_threshold: "0.5-5 J/cm\xB2"
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Construction: Removing stains and graffiti from marble surfaces'
+      - 'Restoration: Cleaning and restoring historical marble sculptures and buildings'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Construction
+      - Restoration
+    - name: Onyx
+      author_id: 2
+      complexity: medium
+      difficulty_score: 3
+      category: stone
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "1.0\u201310 J/cm\xB2"
+        pulse_duration: 5-50ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.05-1.0mm
+        laser_type: Nd:YAG laser
+      applications:
+      - 'Jewelry: Cleaning and restoration of onyx jewelry pieces'
+      - 'Construction: Surface preparation and cleaning of onyx slabs for building
+        facades'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Construction
+      - Jewelry
+    - name: Quartzite
+      author_id: 3
+      complexity: medium
+      difficulty_score: 3
+      category: stone
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "1.0\u201310 J/cm\xB2"
+        pulse_duration: 10-50ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: pulsed fiber laser
+      applications:
+      - 'Construction: Removing graffiti and paint from quartzite building facades'
+      - 'Restoration: Cleaning and restoring historical quartzite monuments and sculptures'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Construction
+      - Restoration
+      formula: SiO2
+    - name: Sandstone
+      author_id: 2
+      complexity: medium
+      difficulty_score: 3
+      category: stone
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "0.5-5 J/cm\xB2"
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Construction: Cleaning of sandstone facades and sculptures'
+      - 'Heritage Conservation: Restoration of historical sandstone structures'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Construction
+      - Heritage Conservation
+    - name: Schist
+      author_id: 3
+      complexity: medium
+      difficulty_score: 3
+      category: stone
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "1.0-10 J/cm\xB2"
+        pulse_duration: 10-200ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Construction: Removal of dirt and coatings from schist surfaces for restoration'
+      - 'Heritage Conservation: Non-destructive cleaning of schist artifacts and monuments'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Construction
+      - Heritage Conservation
+    - name: Serpentine
+      author_id: 4
+      complexity: medium
+      difficulty_score: 3
+      category: stone
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "1.0\u201310 J/cm\xB2"
+        pulse_duration: 10-50ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Construction: Cleaning of serpentine stone surfaces for restoration and maintenance'
+      - 'Jewelry: Precision cleaning of serpentine gemstones for enhanced appearance'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Construction
+      - Jewelry
+    - name: Shale
+      author_id: 1
+      complexity: medium
+      difficulty_score: 3
+      category: stone
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "1.0\u201310 J/cm\xB2"
+        pulse_duration: 5-50ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.5-3.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Oil and Gas: Cleaning of shale drill bits and tools'
+      - 'Construction: Restoration of shale surfaces in building exteriors'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Construction
+      - Oil and Gas
+    - name: Slate
+      author_id: 3
+      complexity: medium
+      difficulty_score: 3
+      category: stone
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "0.5-5 J/cm\xB2"
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Construction: Removal of graffiti and paint from slate building facades'
+      - 'Restoration: Cleaning of historical slate monuments and gravestones'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Construction
+      - Restoration
+    - name: Soapstone
+      author_id: 4
+      complexity: medium
+      difficulty_score: 3
+      category: stone
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "1.0\u201310 J/cm\xB2"
+        pulse_duration: 5-50ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: Nd:YAG laser
+      applications:
+      - 'Construction: Removal of graffiti and paint from soapstone surfaces'
+      - 'Restoration: Cleaning soapstone sculptures and architectural elements'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Construction
+      - Restoration
+    - name: Travertine
+      author_id: 1
+      complexity: medium
+      difficulty_score: 3
+      category: stone
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "0.5-5 J/cm\xB2"
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064 nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Construction: Removal of surface contaminants and efflorescence from travertine
+        tiles and facades'
+      - 'Restoration: Cleaning and restoration of historical travertine sculptures
+        and architectural elements'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Construction
+      - Restoration
   wood:
     description: Wood materials for laser cleaning applications
     article_type: material
+    processing_priority: medium
     items:
-    - Ash
-    - Bamboo
-    - Beech
-    - Birch
-    - Cedar
-    - Cherry
-    - Fir
-    - Hickory
-    - Mahogany
-    - Maple
-    - MDF
-    - Oak
-    - Pine
-    - Plywood
-    - Poplar
-    - Redwood
-    - Rosewood
-    - Teak
-    - Walnut
-    - Willow
+    - name: Ash
+      author_id: 4
+      complexity: medium
+      difficulty_score: 3
+      category: wood
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "0.5-5 J/cm\xB2"
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Woodworking: Removal of surface contaminants and restoration of wooden artifacts'
+      - 'Conservation: Cleaning of historical wooden structures and artworks'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Woodworking
+      - Conservation
+    - name: Bamboo
+      author_id: 1
+      complexity: medium
+      difficulty_score: 3
+      category: wood
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "0.5-3.0 J/cm\xB2"
+        pulse_duration: 10-50ns
+        wavelength_optimal: 1064nm
+        power_range: 20-100W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Woodworking: Removing mold and mildew from bamboo surfaces'
+      - 'Conservation: Cleaning bamboo artifacts without damaging the material'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Woodworking
+      - Conservation
+    - name: Beech
+      author_id: 3
+      complexity: medium
+      difficulty_score: 3
+      category: wood
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "0.5\u20133.0 J/cm\xB2"
+        pulse_duration: 10-50ns
+        wavelength_optimal: 1064nm
+        power_range: 20-100W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Woodworking: Removing surface contaminants and old finishes from Beech wood
+        furniture'
+      - 'Restoration: Cleaning historical Beech wood artifacts without damaging the
+        material'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Woodworking
+      - Restoration
+    - name: Birch
+      author_id: 1
+      complexity: medium
+      difficulty_score: 3
+      category: wood
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "0.5\u20135 J/cm\xB2"
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064 nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Woodworking: Laser cleaning for restoring antique birch furniture'
+      - 'Construction: Removing surface contaminants from birch wood panels'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Construction
+      - Woodworking
+    - name: Cedar
+      author_id: 2
+      complexity: medium
+      difficulty_score: 3
+      category: wood
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "0.5\u20135 J/cm\xB2"
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Woodworking: Removal of surface contaminants and old finishes on Cedar wood'
+      - 'Restoration: Precision cleaning of historical Cedar structures without damage'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Woodworking
+      - Restoration
+    - name: Cherry
+      author_id: 1
+      complexity: medium
+      difficulty_score: 3
+      category: wood
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "0.5-3.0 J/cm\xB2"
+        pulse_duration: 10-50ns
+        wavelength_optimal: 1064 nm
+        power_range: 20-100W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Furniture Manufacturing: Removing old finishes and stains from Cherry wood
+        surfaces'
+      - 'Restoration and Conservation: Cleaning and restoring antique Cherry wood
+        furniture and artifacts'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Restoration and Conservation
+      - Furniture Manufacturing
+    - name: Fir
+      author_id: 4
+      complexity: medium
+      difficulty_score: 3
+      category: wood
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "0.5-5 J/cm\xB2"
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Woodworking: Surface preparation for staining and finishing'
+      - 'Restoration: Cleaning and restoring historical wooden structures'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Woodworking
+      - Restoration
+    - name: Hickory
+      author_id: 2
+      complexity: medium
+      difficulty_score: 3
+      category: wood
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "0.5-3.0 J/cm\xB2"
+        pulse_duration: 10-50ns
+        wavelength_optimal: 1064nm
+        power_range: 20-100W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Woodworking: Removing old finishes and stains from hickory wood surfaces'
+      - 'Restoration: Cleaning and restoring antique hickory furniture'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Woodworking
+      - Restoration
+    - name: Mahogany
+      author_id: 1
+      complexity: medium
+      difficulty_score: 3
+      category: wood
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "0.5-3.0 J/cm\xB2"
+        pulse_duration: 10-50ns
+        wavelength_optimal: 1064nm
+        power_range: 20-100W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: Nd:YAG laser
+      applications:
+      - 'Furniture Manufacturing: Removing old finishes and stains from Mahogany furniture
+        surfaces'
+      - 'Restoration: Cleaning and restoring historical Mahogany artifacts and structures'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Restoration
+      - Furniture Manufacturing
+    - name: Maple
+      author_id: 2
+      complexity: medium
+      difficulty_score: 3
+      category: wood
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "0.5-3.0 J/cm\xB2"
+        pulse_duration: 10-50ns
+        wavelength_optimal: 1064nm
+        power_range: 20-100W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Woodworking: Removing surface contaminants and residues from Maple wood products'
+      - 'Restoration: Cleaning and restoring antique Maple furniture and artifacts'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Woodworking
+      - Restoration
+    - name: MDF
+      author_id: 3
+      complexity: low
+      difficulty_score: 2
+      category: wood
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "0.5-5 J/cm\xB2"
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Furniture Manufacturing: Removal of surface contaminants and coatings for
+        refinishing'
+      - 'Construction: Cleaning of MDF panels before installation or painting'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Construction
+      - Furniture Manufacturing
+    - name: Oak
+      author_id: 1
+      complexity: medium
+      difficulty_score: 3
+      category: wood
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "0.5-5 J/cm\xB2"
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064 nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Woodworking: Removing surface contaminants and stains from Oak furniture'
+      - 'Restoration: Cleaning Oak artifacts and historical pieces without damage'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Woodworking
+      - Restoration
+    - name: Pine
+      author_id: 1
+      complexity: low
+      difficulty_score: 2
+      category: wood
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "0.5-3.0 J/cm\xB2"
+        pulse_duration: 10-50ns
+        wavelength_optimal: 1064nm
+        power_range: 20-100W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Woodworking: Removal of surface contaminants and coatings on pine wood products'
+      - 'Restoration: Cleaning and restoration of antique pine furniture and structures'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Woodworking
+      - Restoration
+    - name: Plywood
+      author_id: 4
+      complexity: low
+      difficulty_score: 2
+      category: wood
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "0.5\u20135 J/cm\xB2"
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Woodworking: Removing surface contaminants and old finishes'
+      - 'Construction: Cleaning and preparing plywood surfaces for painting or bonding'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Construction
+      - Woodworking
+    - name: Poplar
+      author_id: 2
+      complexity: medium
+      difficulty_score: 3
+      category: wood
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "0.5\u20135 J/cm\xB2"
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Woodworking: Removal of surface contaminants and coatings from Poplar wood'
+      - 'Restoration: Cleaning and restoration of antique Poplar furniture and artifacts'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Woodworking
+      - Restoration
+    - name: Redwood
+      author_id: 4
+      complexity: medium
+      difficulty_score: 3
+      category: wood
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "1.0\u201310 J/cm\xB2"
+        pulse_duration: 10-50ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Woodworking: Removal of mold and mildew from Redwood surfaces'
+      - 'Restoration: Cleaning of historic Redwood structures'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Woodworking
+      - Restoration
+    - name: Rosewood
+      author_id: 3
+      complexity: medium
+      difficulty_score: 3
+      category: wood
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "0.5-5 J/cm\xB2"
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Furniture Manufacturing: Removing old finishes and stains from Rosewood furniture'
+      - 'Restoration: Cleaning and restoring antique Rosewood artifacts'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Restoration
+      - Furniture Manufacturing
+    - name: Teak
+      author_id: 3
+      complexity: medium
+      difficulty_score: 3
+      category: wood
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "0.5\u20135 J/cm\xB2"
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Woodworking: Removal of surface contaminants and restoration of teak furniture'
+      - 'Marine: Cleaning and maintenance of teak decks on boats and yachts'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Woodworking
+      - Marine
+    - name: Walnut
+      author_id: 1
+      complexity: medium
+      difficulty_score: 3
+      category: wood
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "0.5\u20133.0 J/cm\xB2"
+        pulse_duration: 10-50ns
+        wavelength_optimal: 1064nm
+        power_range: 20-100W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Furniture Manufacturing: Removing old finishes and stains from walnut furniture'
+      - 'Art Restoration: Precision cleaning of walnut sculptures and frames'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Art Restoration
+      - Furniture Manufacturing
+    - name: Willow
+      author_id: 2
+      complexity: medium
+      difficulty_score: 3
+      category: wood
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      laser_parameters:
+        fluence_threshold: "0.5\u20135 J/cm\xB2"
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Woodworking: Removing surface contaminants and old finishes from Willow wood'
+      - 'Restoration: Precision cleaning of Willow artifacts and antiques'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Woodworking
+      - Restoration
 metadata:
   total_categories: 8
   total_materials: 109
-  last_updated: '2025-08-28'
-  format_version: '1.0'
+  format_version: '2.0'
+  schema_version: enhanced_v1
+  last_updated: '2025-08-31'
+  migration_date: '2025-08-31'
+  author_distribution:
+    '1':
+    - Silicon Nitride
+    - Carbon Fiber Reinforced Polymer
+    - Epoxy Resin Composites
+    - Polyester Resin Composites
+    - Glass Fiber Reinforced Polymers GFRP
+    - Float Glass
+    - Lead Crystal
+    - Pyrex
+    - Soda-Lime Glass
+    - Stucco
+    - Terracotta
+    - Hastelloy
+    - Iridium
+    - Molybdenum
+    - Rhenium
+    - Ruthenium
+    - Zirconium
+    - Alabaster
+    - Breccia
+    - Shale
+    - Travertine
+    - Bamboo
+    - Birch
+    - Cherry
+    - Mahogany
+    - Oak
+    - Pine
+    - Walnut
+    '2':
+    - Alumina
+    - Thermoplastic Elastomer
+    - Fiber Reinforced Polyurethane FRPU
+    - Fused Silica
+    - Quartz Glass
+    - Brick
+    - Mortar
+    - Plaster
+    - Cobalt
+    - Gold
+    - Iron
+    - Rhodium
+    - Silver
+    - Stainless Steel
+    - Tantalum
+    - Tungsten
+    - Silicon
+    - Basalt
+    - Bluestone
+    - Limestone
+    - Onyx
+    - Sandstone
+    - Cedar
+    - Hickory
+    - Maple
+    - Poplar
+    - Willow
+    '3':
+    - Porcelain
+    - Fiberglass
+    - Kevlar-Reinforced Polymer
+    - Urethane Composites
+    - Borosilicate Glass
+    - Cement
+    - Concrete
+    - Aluminum
+    - Bronze
+    - Gallium
+    - Inconel
+    - Nickel
+    - Palladium
+    - Platinum
+    - Steel
+    - Tin
+    - Zinc
+    - Silicon Carbide
+    - Granite
+    - Marble
+    - Quartzite
+    - Schist
+    - Slate
+    - Beech
+    - MDF
+    - Rosewood
+    - Teak
+    '4':
+    - Stoneware
+    - Zirconia
+    - Phenolic Resin Composites
+    - Rubber
+    - Metal Matrix Composites MMCs
+    - Ceramic Matrix Composites CMCs
+    - Tempered Glass
+    - Beryllium
+    - Brass
+    - Copper
+    - Hafnium
+    - Indium
+    - Lead
+    - Magnesium
+    - Niobium
+    - Titanium
+    - Vanadium
+    - Gallium Arsenide
+    - Silicon Germanium
+    - Calcite
+    - Porphyry
+    - Serpentine
+    - Soapstone
+    - Ash
+    - Fir
+    - Plywood
+    - Redwood
+  priority_groups:
+    high:
+    - metal
+    - glass
+    - semiconductor
+    medium:
+    - ceramic
+    - composite
+    - stone
+    low:
+    - wood
+    - masonry
+  complexity_stats:
+    low: 8
+    medium: 85
+    high: 10
+    very_high: 6
+  documentation_coverage: 0
+  validation:
+    schema_valid: true
+    author_ids_valid: true
+    categories_consistent: true
+    round_robin_complete: true
+    formulas_validated: false
+    parameters_calibrated: false
+  last_enhanced: '2025-08-31'
+  enhancement_source: frontmatter_extraction
+  enhanced_materials_count: 108
+  missing_frontmatter_count: 1

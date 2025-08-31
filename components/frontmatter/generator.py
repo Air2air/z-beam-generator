@@ -17,17 +17,29 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
     def __init__(self):
         super().__init__("frontmatter")
     
+    def _build_template_variables(self, material_name: str, material_data: Dict,
+                                 schema_fields: Optional[Dict] = None, 
+                                 author_info: Optional[Dict] = None) -> Dict[str, str]:
+        """Build template variables with dynamic laser parameters"""
+        # Get base template variables from parent
+        variables = super()._build_template_variables(material_name, material_data, schema_fields, author_info)
+        
+        # Add dynamic laser parameters
+        from utils.laser_parameters import get_dynamic_laser_parameters
+        category = material_data['category']  # Must exist, no fallback
+        dynamic_params = get_dynamic_laser_parameters(category)
+        variables.update(dynamic_params)
+        logger.info(f"Added dynamic laser parameters for category: {category}")
+        
+        return variables
+    
     def _post_process_content(self, content: str, material_name: str, material_data: Dict) -> str:
         """Post-process frontmatter content with property enhancement and percentiles"""
-        try:
-            from utils.property_enhancer import enhance_generated_frontmatter
-            category = material_data.get('category', '')
-            enhanced_content = enhance_generated_frontmatter(content, category)
-            logger.info(f"Enhanced frontmatter for {material_name} with property context and percentiles")
-            return enhanced_content
-        except Exception as e:
-            logger.warning(f"Failed to enhance frontmatter for {material_name}: {e}")
-            return content
+        from utils.property_enhancer import enhance_generated_frontmatter
+        category = material_data['category']  # Must exist, no fallback
+        enhanced_content = enhance_generated_frontmatter(content, category)
+        logger.info(f"Enhanced frontmatter for {material_name} with property context and percentiles")
+        return enhanced_content
     
     def generate(self, material_name: str, material_data: Dict, 
                 api_client=None, author_info: Optional[Dict] = None,

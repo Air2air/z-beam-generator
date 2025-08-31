@@ -1,0 +1,4 @@
+---
+symbol: "ST"
+materialType: "ceramic"
+---

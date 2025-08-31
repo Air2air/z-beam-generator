@@ -226,14 +226,38 @@ class APIComponentGenerator(BaseComponentGenerator):
             'bullet_count': "2 to 6",
             'formatted_technical_specs': f"Technical specifications for {material_name} laser cleaning",
             'formatted_environmental_impact': f"Environmental benefits of {material_name} laser processing",
-            'formatted_regulatory_standards': f"Industry standards for {material_name} treatment"
+            'formatted_regulatory_standards': f"Industry standards for {material_name} treatment",
+            
+            # ===== ENHANCED METADATA VARIABLES =====
+            # Material complexity and difficulty
+            'complexity': material_data.get('complexity', 'medium'),
+            'difficulty_score': material_data.get('difficulty_score', 3),
+            
+            # Laser parameters (from enhanced metadata)
+            'laser_fluence': material_data.get('laser_parameters', {}).get('fluence_threshold', 'TBD'),
+            'laser_pulse_duration': material_data.get('laser_parameters', {}).get('pulse_duration', 'TBD'),
+            'laser_wavelength': material_data.get('laser_parameters', {}).get('wavelength_optimal', 'TBD'),
+            'laser_power_range': material_data.get('laser_parameters', {}).get('power_range', 'TBD'),
+            
+            # Application and industry data
+            'applications_list': ', '.join(material_data.get('applications', ['General laser cleaning'])),
+            'surface_treatments_list': ', '.join(material_data.get('surface_treatments', ['Standard cleaning'])),
+            'industry_tags_list': ', '.join(material_data.get('industry_tags', ['Industrial'])),
+            
+            # Documentation metadata
+            'documentation_status': material_data.get('documentation_status', 'pending'),
+            'last_updated': material_data.get('last_updated', '2025-08-31'),
+            
+            # Complexity-based content hints
+            'complexity_level': f"Complexity: {material_data.get('complexity', 'medium').title()} (Score: {material_data.get('difficulty_score', 3)}/5)",
+            'technical_depth': 'advanced' if material_data.get('difficulty_score', 3) >= 4 else 'standard' if material_data.get('difficulty_score', 3) >= 3 else 'basic'
         }
         
         # Add author-specific variables
         if author_info:
             template_vars.update(self._create_author_vars(author_info))
         else:
-            template_vars.update(self._create_default_author_vars())
+            raise ValueError("Author information is required for content generation. Use --author argument to specify author.")
         
         # Add schema field variables if available
         if schema_fields:
@@ -262,19 +286,38 @@ class APIComponentGenerator(BaseComponentGenerator):
         # Handle case where author_info might be None or not a dict
         if not author_info or not isinstance(author_info, dict):
             logger.debug(f"author_info is not a dict: {type(author_info)}")
-            return self._create_default_author_vars()
+            raise ValueError("Author information must be a valid dictionary with complete author data.")
         
-        country = author_info.get('country', 'International')
-        author_id = author_info.get('id', 0)
-        author_name = author_info.get('name', 'Expert Author')
+        country = author_info.get('country')
+        if not country:
+            raise ValueError(f"Author country is missing for author: {author_info}")
+            
+        author_id = author_info.get('id')
+        if author_id is None:
+            raise ValueError(f"Author ID is missing for author: {author_info}")
+            
+        author_name = author_info.get('name')
+        if not author_name:
+            raise ValueError(f"Author name is missing for author: {author_info}")
+        
+        title = author_info.get('title')
+        if not title:
+            raise ValueError(f"Author title is missing for author: {author_info}")
+            
+        expertise = author_info.get('expertise')
+        if not expertise:
+            raise ValueError(f"Author expertise is missing for author: {author_info}")
         
         vars_dict = {
             'country': country,
             'author_name': author_name,
+            'author_object': author_info,  # Pass the complete author object
             'author_country': country,
-            'author_title': author_info.get('title', 'Technical Expert'),
-            'author_expertise': author_info.get('expertise', 'Laser Processing'),
-            'author_id': str(author_id),
+            'author_title': title,
+            'author_expertise': expertise,
+            'author_id': author_id,  # Keep as int
+            'author_sex': author_info.get('sex', ''),
+            'author_image': author_info.get('image', ''),
             'author_slug': author_name.lower().replace(' ', '-'),
         }
         
@@ -288,20 +331,6 @@ class APIComponentGenerator(BaseComponentGenerator):
         vars_dict['bullet_format_rules'] = self._get_bullet_format_rules(author_id)
         
         return vars_dict
-    
-    def _create_default_author_vars(self) -> Dict[str, str]:
-        """Create default author variables"""
-        return {
-            'country': 'International',
-            'author_name': 'Expert Author',
-            'author_country': 'International',
-            'author_title': 'Technical Expert',
-            'author_expertise': 'Laser Processing',
-            'author_id': '0',
-            'author_slug': 'expert-author',
-            'country_context': "Write from an international technical perspective with global industry standards.",
-            'bullet_format_rules': self._get_bullet_format_rules(0)
-        }
     
     def _get_bullet_format_rules(self, author_id: int) -> str:
         """Get author-specific bullet formatting rules"""

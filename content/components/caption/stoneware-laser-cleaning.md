@@ -1,0 +1,2 @@
+**Stoneware** surface (left) with heavy organic deposits and ingrained particulate contamination prior to intervention.
+**After laser cleaning** (right) using a 1064 nm Nd:YAG laser at 0.8 J/cm², achieving precise ablation of surface residues while preserving the vitrified ceramic body.
