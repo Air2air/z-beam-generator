@@ -13,12 +13,14 @@ technicalSpecifications:
   repetitionRate: 20-100kHz
   fluenceRange: 0.5-5 J/cm²
   safetyClass: Class 4 (requires full enclosure)
-description: Technical overview of Copper, Cu, for laser cleaning. Copper, a ductile
-  and malleable metal with excellent thermal and electrical conductivity, is widely
-  used in various industries. Laser cleaning of copper using a 1064nm wavelength and
-  a fluence range of 0.5-5 J/cm² effectively removes surface contaminants, corrosion,
-  and oxidation, ensuring enhanced surface quality and adhesion properties for subsequent
-  processes.
+description: Technical overview of Copper, Cu, for laser cleaning. Copper, symbolized
+  as Cu and commonly found in pure form, exhibits excellent electrical and thermal
+  conductivity, making it a prime candidate for laser cleaning applications. The process
+  involves the use of a 1064nm wavelength laser, which effectively removes surface
+  contaminants like oxides and corrosion from copper surfaces, ensuring enhanced adhesion
+  in manufacturing and restoration of historical copper artifacts. The laser cleaning
+  method is non-contact, preserving the integrity of the copper while achieving precise
+  cleaning results.
 author:
   id: 4
   name: Todd Dunning
@@ -44,23 +46,23 @@ properties:
   meltingMin: -39°C
   meltingMax: 3422°C
   meltingPercentile: 30.9
-  thermalConductivity: 385 W/m·K
+  thermalConductivity: 401 W/m·K
   thermalMin: 8 W/m·K
   thermalMax: 429 W/m·K
-  thermalPercentile: 89.5
+  thermalPercentile: 93.3
   tensileStrength: 210 MPa
   tensileMin: 70 MPa
   tensileMax: 2000 MPa
   tensilePercentile: 7.3
-  hardness: 35 HV
+  hardness: HB 80-90
   hardnessMin: 5 HB
   hardnessMax: 500 HV
-  hardnessPercentile: 6.1
-  youngsModulus: 110-130 GPa
+  hardnessPercentile: 16.2
+  youngsModulus: 110-128 GPa
   modulusMin: 70 GPa
   modulusMax: 411 GPa
-  modulusPercentile: 14.7
-  laserType: Pulsed Fiber Laser
+  modulusPercentile: 14.4
+  laserType: pulsed fiber laser
   wavelength: 1064nm
   fluenceRange: 0.5-5 J/cm²
   chemicalFormula: Cu
@@ -75,14 +77,13 @@ properties:
   specificHeatMin: 0.13 J/g·K
   specificHeatMax: 0.90 J/g·K
 composition:
-- Pure copper (Cu)
-- Trace elements such as oxygen, sulfur, and iron
+- Pure Copper
+- 'Trace Elements: Oxygen, Sulfur, Hydrogen'
 compatibility:
-- Tin (Sn) for soldering
-- Zinc (Zn) for brass alloys
-regulatoryStandards: ASTM B152/B152M Standard Specification for Copper Sheet, Strip,
-  Plate, and Rolled Bar; ISO 28721-5:2013 Surface chemical analysis — Data transfer
-  between surface chemical analysis instruments
+- Brass
+- Bronze
+regulatoryStandards: ASTM B152/B152M - Standard Specification for Copper Sheet, Strip,
+  Plate, and Rolled Bar; ISO 9001 - Quality Management Systems
 images:
   hero:
     alt: Copper surface undergoing laser cleaning showing precise contamination removal
@@ -94,22 +95,19 @@ images:
 title: Laser Cleaning Copper - Technical Guide for Optimal Processing
 headline: Comprehensive technical guide for laser cleaning metal copper
 environmentalImpact:
-- benefit: Reduced chemical waste
-  description: Decreases chemical solvent use by up to 90%, saving 1000 liters per
-    year in a medium-sized facility
+- benefit: Reduction in chemical waste
+  description: Up to 90% less chemical waste compared to traditional cleaning methods
 - benefit: Lower energy consumption
-  description: Laser cleaning uses 30% less energy than traditional methods, reducing
-    CO2 emissions by 2 tons annually
-- benefit: Minimal waste generation
-  description: Generates only 5 kg of waste per year compared to 100 kg from abrasive
-    methods
+  description: Energy savings of approximately 20-30% due to efficient laser cleaning
+- benefit: Decreased air pollution
+  description: Reduction in volatile organic compounds (VOCs) by up to 85%
 outcomes:
-- result: Surface cleanliness
-- metric: Achieves 99.9% removal of surface contaminants
-- result: Surface roughness
-  metric: Reduces surface roughness from Ra 1.5 µm to Ra 0.5 µm
-- result: Adhesion improvement
-  metric: Increases bond strength by 50% compared to uncleaned surfaces
+- result: Surface Cleanliness
+  metric: Achieves a cleanliness level of 99.9% removal of contaminants
+- result: Surface Roughness
+  metric: Maintains surface roughness within 0.1-0.5 μm post-cleaning
+- result: Adhesion Improvement
+  metric: Increases adhesion strength by up to 50% in the electronics industry
 subject: Copper
 article_type: material
 ---

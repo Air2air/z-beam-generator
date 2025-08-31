@@ -13,11 +13,13 @@ technicalSpecifications:
   repetitionRate: 10-50kHz
   fluenceRange: 0.5–5 J/cm²
   safetyClass: Class 4 (requires full enclosure)
-description: Technical overview of Zirconia (ZrO2) for laser cleaning. Zirconia, a
-  highly durable ceramic material, is effectively processed through laser ablation
-  and cleaning techniques, leveraging its high melting point and robust mechanical
-  properties to achieve precise contaminant removal while preserving the integrity
-  of the material's surface.
+description: Zirconia (ZrO2) is a highly durable ceramic material used extensively
+  in laser cleaning applications across various industries. Its exceptional thermal
+  and mechanical properties make it ideal for non-contact cleaning methods like laser
+  ablation. Zirconia's ability to withstand high temperatures and resist chemical
+  reactions ensures that it can be effectively cleaned without compromising its structural
+  integrity or surface quality. This makes it particularly suitable for the precise
+  removal of contaminants in critical applications such as aerospace and medical devices.
 author:
   id: 4
   name: Todd Dunning
@@ -47,10 +49,10 @@ properties:
   thermalMin: 0.5 W/m·K
   thermalMax: 200 W/m·K
   thermalPercentile: 0.8
-  tensileStrength: 200 MPa
+  tensileStrength: 600 MPa
   tensileMin: 50 MPa
   tensileMax: 1000 MPa
-  tensilePercentile: 15.8
+  tensilePercentile: 57.9
   hardness: 1200 HV
   hardnessMin: 500 HV
   hardnessMax: 2500 HV
@@ -59,7 +61,7 @@ properties:
   modulusMin: 150 GPa
   modulusMax: 400 GPa
   modulusPercentile: 24.0
-  laserType: Nd:YAG laser
+  laserType: pulsed fiber laser
   wavelength: 1064nm
   fluenceRange: 0.5–5 J/cm²
   chemicalFormula: ZrO2
@@ -74,14 +76,12 @@ properties:
   specificHeatMin: 0.4 J/g·K
   specificHeatMax: 1.2 J/g·K
 composition:
-- Zirconium dioxide (ZrO2) - primary component
-- Stabilizers such as yttria (Y2O3), magnesia (MgO), or calcia (CaO)
+- Zirconium dioxide (ZrO2)
+- Stabilizers like yttria (Y2O3), magnesia (MgO), or calcia (CaO)
 compatibility:
-- Stainless steel
-- Titanium alloys
-regulatoryStandards: ISO 13356:2015 (Implants for surgery — Ceramic materials based
-  on yttria-stabilized tetragonal zirconia (Y-TZP)), ASTM C1421-18 (Standard Test
-  Methods for Determination of Fracture Toughness of Advanced Ceramics)
+- Metals such as stainless steel and titanium
+- Ceramics like alumina (Al2O3) and silicon carbide (SiC)
+regulatoryStandards: ASTM C1161-13, ISO 13356:2015, MIL-STD-130 for aerospace applications
 images:
   hero:
     alt: Zirconia surface undergoing laser cleaning showing precise contamination
@@ -94,22 +94,20 @@ images:
 title: Laser Cleaning Zirconia - Technical Guide for Optimal Processing
 headline: Comprehensive technical guide for laser cleaning ceramic zirconia
 environmentalImpact:
-- benefit: Reduction in chemical waste
-  description: Laser cleaning eliminates the need for chemical solvents, reducing
-    waste by up to 90% compared to traditional cleaning methods.
+- benefit: Reduction in chemical usage
+  description: Decreases chemical waste by 90% compared to traditional cleaning methods
 - benefit: Energy efficiency
-  description: Laser cleaning of Zirconia consumes approximately 20% less energy than
-    mechanical cleaning processes.
-- benefit: Lower carbon footprint
-  description: The process reduces CO2 emissions by 30% due to decreased reliance
-    on chemical treatments and reduced energy consumption.
+  description: Reduces energy consumption by 30% due to precise, localized heating
+- benefit: Lower emissions
+  description: Reduces CO2 emissions by up to 25% by minimizing the need for chemical
+    solvents
 outcomes:
 - result: Surface cleanliness
-- metric: Achieves 99.9% contaminant removal efficiency
+- metric: Achieves >99.9% removal of surface contaminants
 - result: Surface integrity
-  metric: Preserves 90% of the original surface profile
+  metric: Preserves surface roughness within ±0.1 μm
 - result: Processing speed
-  metric: Cleans up to 10 cm² per second
+  metric: Cleans up to 1 m² per minute
 subject: Zirconia
 article_type: material
 ---

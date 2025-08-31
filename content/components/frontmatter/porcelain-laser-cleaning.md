@@ -13,11 +13,12 @@ technicalSpecifications:
   repetitionRate: 10-50kHz
   fluenceRange: 0.5–5 J/cm²
   safetyClass: Class 4 (requires full enclosure)
-description: Technical overview of Porcelain, a ceramic material known for its high
-  durability and aesthetic appeal, for laser cleaning. Porcelain's composition allows
-  for effective laser ablation and cleaning which ensures minimal damage and precise
-  cleaning, essential for applications in ceramics manufacturing and restoration of
-  historical artifacts.
+description: Technical overview of Porcelain, a ceramic material, for laser cleaning.
+  Porcelain, composed primarily of kaolin, quartz, and feldspar, is processed using
+  laser ablation and cleaning techniques to remove surface contaminants without compromising
+  the material's integrity. This non-contact cleaning method is particularly effective
+  due to the material's low thermal conductivity, which minimizes heat-affected zones
+  during the laser process.
 author:
   id: 3
   name: Ikmanda Roswati
@@ -39,19 +40,19 @@ properties:
   densityMin: 1.8 g/cm³
   densityMax: 6.0 g/cm³
   densityPercentile: 14.3
-  meltingPoint: 1300-1400°C
+  meltingPoint: 1200-1400°C
   meltingMin: 1200°C
   meltingMax: 2800°C
-  meltingPercentile: 9.4
-  thermalConductivity: 1.5-2.5 W/m·K
+  meltingPercentile: 6.2
+  thermalConductivity: 1.5-3.0 W/m·K
   thermalMin: 0.5 W/m·K
   thermalMax: 200 W/m·K
-  thermalPercentile: 0.8
-  tensileStrength: 50-70 MPa
+  thermalPercentile: 0.9
+  tensileStrength: 30-50 MPa
   tensileMin: 50 MPa
   tensileMax: 1000 MPa
-  tensilePercentile: 1.1
-  hardness: 7-8 Mohs
+  tensilePercentile: 0.0
+  hardness: 6-7 Mohs
   hardnessMin: 500 HV
   hardnessMax: 2500 HV
   hardnessPercentile: 0.0
@@ -59,7 +60,7 @@ properties:
   modulusMin: 150 GPa
   modulusMax: 400 GPa
   modulusPercentile: 0.0
-  laserType: Nd:YAG or fiber laser
+  laserType: pulsed fiber laser
   wavelength: 1064nm
   fluenceRange: 0.5–5 J/cm²
   chemicalFormula: null
@@ -75,15 +76,14 @@ properties:
   specificHeatMax: 1.2 J/g·K
 composition:
 - Kaolin (25-50%)
-- Feldspar (25-45%)
-- Quartz (20-35%)
-- Clay (5-15%)
+- Quartz (25-35%)
+- Feldspar (25-35%)
 compatibility:
-- Glazes and enamels
-- Metallic oxides for coloring
-- Gold and silver for decoration
-regulatoryStandards: ASTM C242 - Standard Terminology of Ceramic Whitewares and Related
-  Products; ISO 13006 - Ceramic tiles
+- Glass
+- Metals (stainless steel, aluminum)
+regulatoryStandards: 'ISO 11146-1:2021 (Laser and laser-related equipment - Test methods
+  for laser beam parameters - Part 1: Power and energy density), ASTM C282-10 (Standard
+  Test Method for Acid-Soluble Chloride in Mortar and Concrete)'
 images:
   hero:
     alt: Porcelain surface undergoing laser cleaning showing precise contamination
@@ -96,21 +96,22 @@ images:
 title: Laser Cleaning Porcelain - Technical Guide for Optimal Processing
 headline: Comprehensive technical guide for laser cleaning ceramic porcelain
 environmentalImpact:
-- benefit: Reduced waste generation
-  description: Decreases waste by up to 30% compared to traditional cleaning methods
-    due to precise removal of contaminants.
+- benefit: Reduced chemical waste
+  description: Decreases chemical usage by 90%, reducing 1000 kg of chemical waste
+    per year for a medium-sized operation
 - benefit: Lower energy consumption
-  description: Energy savings of approximately 20% over mechanical cleaning processes.
-- benefit: Non-toxic process
-  description: Eliminates the need for chemical solvents, reducing environmental pollution
-    by 100%.
+  description: Laser cleaning uses 50% less energy than traditional methods, saving
+    2000 kWh annually
+- benefit: Decreased water usage
+  description: Reduces water consumption by 75%, saving 500 m³ of water per year in
+    industrial applications
 outcomes:
-- result: Enhanced surface cleanliness
-  metric: Achieves a cleanliness level of 99.9%.
-- result: Improved adhesion for glazes
-  metric: Increases glaze adhesion strength by up to 15%.
-- result: Preservation of historical artifacts
-  metric: Zero degradation of historical porcelain surfaces.
+- result: Improved surface cleanliness
+  metric: Reduces surface contaminants by up to 99.9%
+- result: Enhanced adhesion for glazing
+  metric: Increases adhesion strength by 20-30%
+- result: Preservation of material integrity
+  metric: Maintains original microstructure with less than 1% damage
 subject: Porcelain
 article_type: material
 ---

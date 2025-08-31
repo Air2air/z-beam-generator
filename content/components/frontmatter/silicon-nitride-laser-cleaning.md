@@ -13,13 +13,14 @@ technicalSpecifications:
   repetitionRate: 10-50kHz
   fluenceRange: 0.5–5 J/cm²
   safetyClass: Class 4 (requires full enclosure)
-description: Silicon Nitride (Si3N4) is a high-performance ceramic material extensively
-  used in laser cleaning applications due to its exceptional mechanical and thermal
-  properties. Si3N4's high hardness and resistance to thermal shock make it ideal
-  for laser ablation techniques in industries such as semiconductor and automotive.
-  The material's ability to withstand high temperatures and its chemical inertness
-  facilitate precise and efficient non-contact cleaning, ensuring minimal damage and
-  surface integrity preservation during laser processing.
+description: Silicon Nitride (Si3N4) is a high-performance ceramic material known
+  for its excellent thermal shock resistance and mechanical strength. In laser cleaning
+  applications, Si3N4's low thermal expansion and high hardness make it an ideal candidate
+  for precise and non-contact surface treatment. The material's robust nature allows
+  it to withstand the high-intensity pulses of laser ablation, ensuring effective
+  removal of contaminants without damaging the underlying structure. This makes Silicon
+  Nitride particularly suitable for applications in semiconductors and automotive
+  industries where surface integrity is critical.
 author:
   id: 1
   name: Yi-Chun Lin
@@ -37,10 +38,10 @@ chemicalProperties:
   formula: Si3N4
   materialType: ceramic
 properties:
-  density: 3.2 g/cm³
+  density: 3.17 g/cm³
   densityMin: 1.8 g/cm³
   densityMax: 6.0 g/cm³
-  densityPercentile: 33.3
+  densityPercentile: 32.6
   meltingPoint: 1900°C
   meltingMin: 1200°C
   meltingMax: 2800°C
@@ -49,10 +50,10 @@ properties:
   thermalMin: 0.5 W/m·K
   thermalMax: 200 W/m·K
   thermalPercentile: 14.8
-  tensileStrength: 450 MPa
+  tensileStrength: 600 MPa
   tensileMin: 50 MPa
   tensileMax: 1000 MPa
-  tensilePercentile: 42.1
+  tensilePercentile: 57.9
   hardness: 15 GPa
   hardnessMin: 500 HV
   hardnessMax: 2500 HV
@@ -61,7 +62,7 @@ properties:
   modulusMin: 150 GPa
   modulusMax: 400 GPa
   modulusPercentile: 64.0
-  laserType: Pulsed fiber laser
+  laserType: pulsed fiber laser
   wavelength: 1064 nm
   fluenceRange: 0.5–5 J/cm²
   chemicalFormula: Si3N4
@@ -79,9 +80,11 @@ composition:
 - Silicon (Si) - 60%
 - Nitrogen (N) - 40%
 compatibility:
-- Aluminum oxide (Al2O3)
+- Aluminum Oxide (Al2O3)
 - Zirconia (ZrO2)
-regulatoryStandards: ASTM C1277, ISO 20507, MIL-STD-1942
+regulatoryStandards: ISO 20501:2017 (Fine ceramics - Laser ablation method for determining
+  the ablation threshold of ceramics), ASTM C1161-18 (Standard Test Method for Flexural
+  Strength of Advanced Ceramics at Ambient Temperature)
 images:
   hero:
     alt: Silicon Nitride surface undergoing laser cleaning showing precise contamination
@@ -94,19 +97,23 @@ images:
 title: Laser Cleaning Silicon Nitride - Technical Guide for Optimal Processing
 headline: Comprehensive technical guide for laser cleaning ceramic silicon nitride
 environmentalImpact:
-- benefit: Reduced chemical waste
-  description: Decreases chemical solvent use by 90%, reducing environmental pollution
-- benefit: Lower energy consumption
-  description: Saves up to 30% of energy compared to traditional cleaning methods
-- benefit: Decreased particulate emissions
-  description: Reduces airborne particulates by 85% during the cleaning process
+- benefit: Reduced Chemical Waste
+  description: Laser cleaning eliminates the need for chemical solvents, reducing
+    waste by up to 95% compared to traditional methods.
+- benefit: Lower Energy Consumption
+  description: Laser cleaning consumes 30% less energy than abrasive methods, contributing
+    to a reduction in carbon footprint.
+- benefit: Non-Contact Process
+  description: The non-contact nature of laser cleaning minimizes physical damage
+    to the environment, with zero particulate emissions.
 outcomes:
-- result: Surface cleanliness
-- metric: Achieves <100nm particle size post-cleaning
-- result: Surface roughness reduction
-  metric: Decreases surface roughness by up to 20% Ra
-- result: Material integrity
-  metric: 99.9% preservation of Silicon Nitride's original microstructure
+- result: Enhanced Surface Cleanliness
+  metric: Achieves 99.9% surface cleanliness verified by SEM analysis.
+- result: Preserved Material Integrity
+  metric: Maintains material strength with less than 1% degradation in tensile strength
+    post-cleaning.
+- result: Reduced Processing Time
+  metric: Decreases cleaning time by up to 70% compared to traditional methods.
 subject: Silicon Nitride
 article_type: material
 ---

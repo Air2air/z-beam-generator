@@ -6,18 +6,19 @@ applications:
 - industry: Manufacturing
   detail: Removal of oil, grease, and oxide layers from steel surfaces
 technicalSpecifications:
-  powerRange: 10-100W
+  powerRange: 50-500W
   pulseDuration: 10-200ns
   wavelength: 1064nm
-  spotSize: 0.1-2.0mm
-  repetitionRate: 10-50kHz
+  spotSize: 0.05-1.5mm
+  repetitionRate: 20-100kHz
   fluenceRange: 1.0–10 J/cm²
-  safetyClass: Class 4
-description: Steel, characterized by the chemical formula Fe-C, is a widely used material
-  in various industries due to its strength and versatility. For laser cleaning applications,
-  Steel's low complexity (2/5) makes it a favorable material for precise and efficient
-  processing, enabling effective removal of contaminants while maintaining the integrity
-  of the steel surface.
+  safetyClass: Class 4 (requires full enclosure)
+description: Technical overview of Steel, Fe-C, for laser cleaning. Steel, represented
+  by the chemical formula Fe-C, is a versatile alloy widely used in industrial applications.
+  Its response to laser cleaning, particularly at a wavelength of 1064nm, makes it
+  suitable for precise removal of surface contaminants without compromising the material's
+  integrity. This process leverages the thermal and mechanical properties of steel
+  to ensure effective cleaning and surface preparation.
 author:
   id: 3
   name: Ikmanda Roswati
@@ -39,10 +40,10 @@ properties:
   densityMin: 0.5 g/cm³
   densityMax: 22.6 g/cm³
   densityPercentile: 33.3
-  meltingPoint: 1510°C
+  meltingPoint: 1370°C
   meltingMin: -39°C
   meltingMax: 3422°C
-  meltingPercentile: 43.5
+  meltingPercentile: 39.3
   thermalConductivity: 50 W/m·K
   thermalMin: 8 W/m·K
   thermalMax: 429 W/m·K
@@ -59,7 +60,7 @@ properties:
   modulusMin: 70 GPa
   modulusMax: 411 GPa
   modulusPercentile: 38.1
-  laserType: Nd:YAG
+  laserType: pulsed fiber laser
   wavelength: 1064nm
   fluenceRange: 1.0–10 J/cm²
   chemicalFormula: Fe-C
@@ -74,12 +75,12 @@ properties:
   specificHeatMin: 0.13 J/g·K
   specificHeatMax: 0.90 J/g·K
 composition:
-- Iron (Fe): 98-99.5%
-- Carbon (C): 0.05-2.0%
+- 'Iron (Fe): 98-99.5%'
+- 'Carbon (C): 0.05-2%'
 compatibility:
 - Stainless Steel
-- Aluminum
-regulatoryStandards: ASTM A36, ISO 9001, ISO 14001, OSHA 1910.1200
+- Aluminum Alloys
+regulatoryStandards: ASTM A36, ISO 9001, SAE J403
 images:
   hero:
     alt: Steel surface undergoing laser cleaning showing precise contamination removal
@@ -91,25 +92,20 @@ images:
 title: Laser Cleaning Steel - Technical Guide for Optimal Processing
 headline: Comprehensive technical guide for laser cleaning metal steel
 environmentalImpact:
-- benefit: Reduced waste generation
-  description: Laser cleaning reduces waste by up to 90% compared to traditional abrasive
-    methods, minimizing environmental disposal concerns.
-- benefit: Lower energy consumption
-  description: Laser cleaning uses 20% less energy than conventional cleaning methods,
-    resulting in a carbon footprint reduction of approximately 1.5 kg CO2 per hour
-    of operation.
-- benefit: No chemical usage
-  description: Eliminates the need for chemical solvents, preventing the release of
-    500 ml of harmful chemicals per cleaning session into the environment.
+- benefit: Reduction in chemical usage
+  description: Decreases chemical waste by up to 90%, reducing environmental pollution
+- benefit: Energy efficiency
+  description: Laser cleaning can save up to 20% in energy compared to traditional
+    methods
+- benefit: Lower CO2 emissions
+  description: Reduces CO2 emissions by approximately 15% per cleaning operation
 outcomes:
-- result: Surface cleanliness
-  metric: Achieves a surface contamination level of less than 0.1 mg/cm², measured
-    per ASTM D4060 standard.
-- result: Material integrity
-  metric: Maintains steel surface roughness within ±0.5 µm, measured per ISO 4287
-    standard.
-- result: Processing speed
-  metric: Cleans up to 1 m² per minute, measured per ISO 9211-4 standard.
+- result: Surface Cleanliness
+  metric: Achieves up to 99.9% contaminant removal efficiency
+- result: Surface Roughness
+  metric: Reduces surface roughness by up to 30% post-cleaning
+- result: Processing Time
+  metric: Reduces cleaning time by up to 70% compared to traditional methods
 subject: Steel
 article_type: material
 ---

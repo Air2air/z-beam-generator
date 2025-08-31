@@ -13,12 +13,13 @@ technicalSpecifications:
   repetitionRate: 20-100kHz
   fluenceRange: 1.0–10 J/cm²
   safetyClass: Class 4 (requires full enclosure)
-description: Aluminum, symbolized as Al, is a versatile metal commonly used in automotive
-  and aerospace industries for its lightweight and corrosion-resistant properties.
-  Laser cleaning of aluminum involves the use of specific laser parameters to effectively
-  remove contaminants without damaging the material's surface. The complexity level
-  of this process is rated at 3/5, indicating a moderate level of technical skill
-  required for optimal results.
+description: Technical overview of Aluminum, Al, for laser cleaning. Aluminum, characterized
+  by its symbol Al and atomic number 13, is a lightweight metal extensively used in
+  industries like automotive and aerospace. Laser cleaning of aluminum involves the
+  use of short-pulse lasers at a wavelength of 1064nm to remove surface contaminants
+  such as paint, corrosion, and oxides without damaging the underlying material. This
+  non-contact method ensures precision and preservation of the aluminum's microstructure,
+  making it ideal for surface preparation and restoration processes.
 author:
   id: 3
   name: Ikmanda Roswati
@@ -44,7 +45,7 @@ properties:
   meltingMin: -39°C
   meltingMax: 3422°C
   meltingPercentile: 18.4
-  thermalConductivity: 237 W/m·K
+  thermalConductivity: 237 W/(m·K)
   thermalMin: 8 W/m·K
   thermalMax: 429 W/m·K
   thermalPercentile: 54.4
@@ -75,14 +76,12 @@ properties:
   specificHeatMin: 0.13 J/g·K
   specificHeatMax: 0.90 J/g·K
 composition:
-- Aluminum: 99.0-99.9%
-- Impurities: Trace elements such as silicon, iron, copper, manganese, magnesium,
-    zinc, and titanium
+- Aluminum (Al) - 99.99% purity
+- Trace elements like iron, silicon, copper, magnesium, manganese, and zinc
 compatibility:
-- Steel: Suitable for welding and joining processes
-- Copper: Commonly used in electrical applications
-regulatoryStandards: ASTM B209, ISO 6361-1, MIL-A-8625 for anodizing, OSHA 1910.1200
-  for safety data sheets
+- Steel - good for welding and structural applications
+- Copper - excellent for electrical conductivity in applications
+regulatoryStandards: ASTM B209, ISO 6361-1, MIL-DTL-5002, AMS 4037
 images:
   hero:
     alt: Aluminum surface undergoing laser cleaning showing precise contamination
@@ -95,23 +94,21 @@ images:
 title: Laser Cleaning Aluminum - Technical Guide for Optimal Processing
 headline: Comprehensive technical guide for laser cleaning metal aluminum
 environmentalImpact:
-- benefit: Reduced chemical waste
-  description: Laser cleaning reduces chemical usage by up to 90%, minimizing environmental
-    pollution and disposal costs.
+- benefit: Reduction in chemical usage
+  description: Decreases chemical waste by up to 90% compared to traditional cleaning
+    methods
 - benefit: Lower energy consumption
-  description: Compared to traditional methods, laser cleaning can save up to 70%
-    in energy consumption per cleaning operation.
-- benefit: Minimal waste generation
-  description: Generates less than 0.1% waste material compared to abrasive methods,
-    reducing landfill use.
+  description: Laser cleaning consumes up to 50% less energy than abrasive methods
+- benefit: Reduced CO2 emissions
+  description: Emissions reduced by an estimated 30% due to less energy use and no
+    chemical processes
 outcomes:
 - result: Surface cleanliness
-  metric: Achieves a cleanliness level of ISO 4406:1999 class 16/14/11 or better
+- metric: Achieves a cleanliness level of less than 100 particles/cm²
 - result: Surface roughness
-  metric: Reduces surface roughness to Ra < 0.8 µm, meeting standards for aerospace
-    applications
+  metric: Maintains a surface roughness within 0.1-0.5 µm Ra
 - result: Material integrity
-  metric: Preserves 99.9% of the original material properties post-cleaning
+  metric: Preserves 99% of the original material properties post-cleaning
 subject: Aluminum
 article_type: material
 ---

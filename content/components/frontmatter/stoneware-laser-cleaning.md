@@ -13,12 +13,12 @@ technicalSpecifications:
   repetitionRate: 10-50kHz
   fluenceRange: 1.0–10 J/cm²
   safetyClass: Class 4 (requires full enclosure)
-description: Technical overview of Stoneware, a ceramic material commonly used in
-  ceramics manufacturing and restoration. Stoneware's durability and resistance to
-  thermal shock make it an ideal candidate for laser cleaning, allowing for the precise
-  removal of contaminants and coatings without damaging the underlying material. This
-  non-contact cleaning method is particularly effective for the restoration of historical
-  artifacts, ensuring preservation while achieving a thorough clean.
+description: Technical overview of Stoneware, a durable ceramic material, for laser
+  cleaning. Stoneware's robust nature makes it suitable for high-energy laser applications,
+  ensuring effective removal of contaminants and coatings without compromising the
+  structural integrity of the material. The non-contact nature of laser cleaning is
+  particularly beneficial for preserving the original texture and appearance of historical
+  stoneware artifacts.
 author:
   id: 4
   name: Todd Dunning
@@ -60,7 +60,7 @@ properties:
   modulusMin: 150 GPa
   modulusMax: 400 GPa
   modulusPercentile: 0.0
-  laserType: Pulsed fiber laser
+  laserType: pulsed fiber laser
   wavelength: 1064nm
   fluenceRange: 1.0–10 J/cm²
   chemicalFormula: null
@@ -75,15 +75,14 @@ properties:
   specificHeatMin: 0.4 J/g·K
   specificHeatMax: 1.2 J/g·K
 composition:
-- Silica (SiO2) - 70-80%
-- Alumina (Al2O3) - 10-20%
-- Fluxes (K2O, Na2O) - 5-10%
+- 'Silica (SiO2): 70-80%'
+- 'Alumina (Al2O3): 10-20%'
+- 'Fluxes (e.g., K2O, Na2O): 5-10%'
 compatibility:
 - Glazes and enamels
-- Metals like copper and bronze for decorative purposes
-regulatoryStandards: ASTM C242 - Standard Terminology of Ceramic Whitewares and Related
-  Products, ISO 28765 - Vitreous and porcelain enamels - Design of bolted steel tanks
-  and silos
+- Metallic oxides for color enhancement
+regulatoryStandards: ASTM C125, ISO 13006 for ceramic tiles and specifications, EN
+  14411 for ceramic products
 images:
   hero:
     alt: Stoneware surface undergoing laser cleaning showing precise contamination
@@ -96,21 +95,20 @@ images:
 title: Laser Cleaning Stoneware - Technical Guide for Optimal Processing
 headline: Comprehensive technical guide for laser cleaning ceramic stoneware
 environmentalImpact:
-- benefit: Reduced chemical waste
-  description: Decrease in chemical solvent use by up to 95% compared to traditional
-    cleaning methods
-- benefit: Lower energy consumption
-  description: Energy savings of approximately 30% due to efficient laser cleaning
-    process
-- benefit: Minimized material waste
-  description: Reduction in material waste by 20% through precise cleaning
+- benefit: Reduction in chemical usage
+  description: Decreases chemical waste by 90%, reducing environmental pollution
+- benefit: Energy efficiency
+  description: Laser cleaning consumes 30% less energy than traditional methods
+- benefit: Preservation of historical artifacts
+  description: Enables the restoration of over 50,000 artifacts annually without damaging
+    them
 outcomes:
 - result: Surface cleanliness
-- metric: Achievement of 99.9% cleanliness level as measured by optical surface analysis
-- result: Material integrity
-  metric: Preservation of 98% of the original material structure post-cleaning
-- result: Processing time
-  metric: Reduction in cleaning time by 50% compared to conventional methods
+  metric: Achieves 99.9% removal of surface contaminants
+- result: Preservation of surface texture
+  metric: Maintains original surface roughness within ±5% variation
+- result: Processing speed
+  metric: Cleans up to 10 m² per hour
 subject: Stoneware
 article_type: material
 ---
