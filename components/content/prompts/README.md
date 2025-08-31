@@ -63,7 +63,7 @@ components/content/prompts/
 ## Usage Example
 
 ```python
-from components.content.calculator import ContentCalculator
+from components.content.generator import ContentCalculator
 
 # The system automatically loads and merges base + persona prompts
 calc = ContentCalculator(frontmatter_data, author_id=1)

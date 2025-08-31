@@ -107,7 +107,7 @@ COMPONENT_CONFIG = {
             "enabled": True,
             "api_provider": "grok",  # Options: "deepseek", "grok"
         },
-        "content": {"enabled": True, "api_provider": "grok"},
+        "content": {"enabled": True, "api_provider": "none"},  # Uses optimized Python calculator
         "jsonld": {"enabled": True, "api_provider": "deepseek"},
         "table": {"enabled": True, "api_provider": "grok"},
         "metatags": {"enabled": True, "api_provider": "deepseek"},

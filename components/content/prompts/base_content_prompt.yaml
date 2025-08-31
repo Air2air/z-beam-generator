@@ -1,6 +1,12 @@
 # Base Content Prompt for Laser Cleaning Articles
 # Shared technical requirements and author-specific adaptations
 
+# CONTENT GOALS
+# The article content goal is to:
+# 1. Discuss the properties of the material compared to other materials in the category
+# 2. Discuss the challenges and outcomes of laser cleaning this material as a result of its composition and characteristics  
+# 3. Discuss the most common machine settings
+
 # Author-specific configurations
 author_configurations:
   taiwan:
@@ -40,13 +46,15 @@ technical_requirements:
     - "Fiber laser technology emphasis"
   
   required_content:
-    - "Incorporate chemical formula {material_formula} in overview"
-    - "Include absorption characteristics at 1064 nm"
-    - "Describe thermal thresholds and heat dissipation"
-    - "Specify optimal parameters (wavelength, pulse duration, fluence)"
+    - "Compare material properties to others in the same category (metals, alloys, etc.)"
+    - "Analyze how composition affects laser cleaning challenges and outcomes"
+    - "Specify most common machine settings and parameters"
+    - "Incorporate chemical formula {material_formula} in material comparison"
+    - "Include absorption characteristics comparison at 1064 nm"
+    - "Describe composition-specific thermal behavior and challenges"
+    - "Detail optimal machine settings (wavelength, pulse duration, fluence, power)"
     - "Address Class 4 laser safety protocols"
-    - "Provide industrial application examples"
-    - "List technical advantages over traditional methods"
+    - "Connect material characteristics to cleaning outcomes"
   
   quality_standards:
     - "Expert-level technical depth appropriate to Ph.D. expertise"
@@ -62,27 +70,27 @@ application_focus:
   indonesia: "renewable energy, marine applications, tropical environment adaptations"
   usa: "biomedical, semiconductor, aerospace with robotics integration"
 
-# Standard content structure (adaptable by individual personas)
+# Standard content structure focused on the three content goals
 content_structure:
   required_sections:
-    - "Overview with chemical formula integration"
-    - "Material properties affecting laser interaction"
-    - "Industrial applications (2-3 examples)"
-    - "Optimal laser parameters"
-    - "Advantages over traditional methods"
-    - "Safety considerations"
-    - "Technical keywords"
+    - "Overview with chemical formula and material category comparison"
+    - "Material properties comparison within category"
+    - "Composition-based laser cleaning challenges and outcomes"
+    - "Most common machine settings and parameters"
+    - "Results and advantages based on material characteristics"
+    - "Safety considerations for this material type"
   
   randomization_guidelines:
-    section_order: "Randomize section sequence completely - only keep Overview first and Keywords last"
+    section_order: "Randomize section sequence completely - only keep Overview first"
     sentence_order: "Within each section, randomize sentence order for maximum variation"
     paragraph_breaks: "Vary paragraph structure and breaks unpredictably"
-    example_selection: "Randomize which industrial examples to emphasize"
-    parameter_presentation: "Vary the order of technical parameters and specifications"
+    comparison_selection: "Randomize which material comparisons to emphasize"
+    parameter_presentation: "Vary the order of machine settings and specifications"
     
   flexibility_guidelines:
     - "Section lengths should vary naturally based on author's writing approach"
-    - "Number of examples and depth of detail adapt to maximum word count"
+    - "Number of comparisons and depth of detail adapt to maximum word count"
     - "Paragraph structure follows author's natural communication style"
     - "Technical depth adjusts to available word budget while maintaining accuracy"
-    - "Maximize structural unpredictability while preserving technical accuracy"
+    - "Focus on material-specific challenges and their solutions"
+    - "Emphasize practical machine settings used in industry"

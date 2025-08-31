@@ -271,6 +271,7 @@ class APIComponentGenerator(BaseComponentGenerator):
         vars_dict = {
             'country': country,
             'author_name': author_name,
+            'author_country': country,
             'author_title': author_info.get('title', 'Technical Expert'),
             'author_expertise': author_info.get('expertise', 'Laser Processing'),
             'author_id': str(author_id),
@@ -293,6 +294,7 @@ class APIComponentGenerator(BaseComponentGenerator):
         return {
             'country': 'International',
             'author_name': 'Expert Author',
+            'author_country': 'International',
             'author_title': 'Technical Expert',
             'author_expertise': 'Laser Processing',
             'author_id': '0',
