@@ -11,7 +11,7 @@ from pathlib import Path
 project_root = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(project_root))
 
-from components.content.fail_fast_generator import create_fail_fast_generator
+from components.content.generators.fail_fast_generator import create_fail_fast_generator
 from api.client import MockAPIClient
 
 def demonstrate_content_scoring():
