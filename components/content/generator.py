@@ -1,35 +1,58 @@
 #!/usr/bin/env python3
 """
-Content Component Generator - Prompt-Driven Content Generation
-Uses ONLY YAML prompt c        # Extract author information 
-        author_name = None
-        author_country = None 
-        author_id = 1  # default
-        
-        print(f"🔧 DEBUG _generate_static_content: frontmatter_data={frontmatter_data}")
-        print(f"🔧 DEBUG _generate_static_content: author_info={author_info}")
-        
-        if frontmatter_data:
-            # Try to get author from frontmatter
-            author_name = frontmatter_data.get('author', frontmatter_data.get('name'))
-            print(f"🔧 DEBUG: Got author from frontmatter: {author_name}")
-            
-            # Map author names to countries (this should match the authors.json and prompt files)ons for content generation.
-NO hardcoded sentences or content - everything from prompts.
+Content Component Generator - API-based with Three-Stage Prompt System
+
+This generator implements the working architecture:
+1. Base component gets subject and author from frontmatter
+2. Author country and subject are passed to personas and formatting prompts  
+3. Prompt chain: base → persona → formatting
+4. Return from Grok API is written to content component
 """
 
 import sys
 import yaml
-import random
+import logging
 from pathlib import Path
-from typing import Dict, Any, List, Optional
+from typing import Dict, Any, Optional
 from functools import lru_cache
+from datetime import datetime
+
+# Set up logging
+logger = logging.getLogger(__name__)
 
 # Add the project root to Python path
 project_root = Path(__file__).parent.parent.parent
-sys.path.insert(0, str(project_root))
+if str(project_root) not in sys.path:
+    sys.path.insert(0, str(project_root))
 
-from generators.component_generators import StaticComponentGenerator
+# Now import the component generator class
+try:
+    from generators.component_generators import APIComponentGenerator
+except ImportError:
+    # Fallback if running standalone
+    class APIComponentGenerator:
+        def __init__(self, component_type): 
+            self.component_type = component_type
+
+# Author prompt file mappings
+AUTHOR_PROMPT_PATHS = {
+    1: {
+        'persona': "components/content/prompts/personas/taiwan_persona.yaml",
+        'formatting': "components/content/prompts/formatting/taiwan_formatting.yaml"
+    },
+    2: {
+        'persona': "components/content/prompts/personas/italy_persona.yaml",
+        'formatting': "components/content/prompts/formatting/italy_formatting.yaml"
+    },
+    3: {
+        'persona': "components/content/prompts/personas/indonesia_persona.yaml",
+        'formatting': "components/content/prompts/formatting/indonesia_formatting.yaml"
+    },
+    4: {
+        'persona': "components/content/prompts/personas/usa_persona.yaml",
+        'formatting': "components/content/prompts/formatting/usa_formatting.yaml"
+    }
+}
 
 @lru_cache(maxsize=None)
 def load_base_content_prompt() -> Dict[str, Any]:
@@ -49,729 +72,177 @@ def load_base_content_prompt() -> Dict[str, Any]:
 @lru_cache(maxsize=None)
 def load_persona_prompt(author_id: int) -> Dict[str, Any]:
     """Load persona-specific prompt configuration."""
-    prompt_files = {
-        1: "components/content/prompts/taiwan_persona.yaml",
-        2: "components/content/prompts/italy_persona.yaml", 
-        3: "components/content/prompts/indonesia_persona.yaml",
-        4: "components/content/prompts/usa_persona.yaml"
-    }
-    
-    prompt_file = prompt_files.get(author_id)
-    
-    if not prompt_file:
-        raise ValueError(f"No prompt file configured for author_id: {author_id}")
-    
-    if not Path(prompt_file).exists():
-        raise FileNotFoundError(f"Persona prompt not found: {prompt_file}")
-    
-    with open(prompt_file, 'r', encoding='utf-8') as f:
-        data = yaml.safe_load(f)
-    
-    if not data:
-        raise ValueError(f"Persona prompt file {prompt_file} is empty or invalid")
-        raise ValueError(f"Persona prompt file {prompt_file} is empty or invalid")
-    
-    return data
+    try:
+        persona_file = AUTHOR_PROMPT_PATHS.get(author_id, {}).get('persona')
+        if persona_file and Path(persona_file).exists():
+            with open(persona_file, 'r', encoding='utf-8') as f:
+                return yaml.safe_load(f) or {}
+        
+        return {}
+    except Exception as e:
+        print(f"Error loading persona prompt: {e}")
+        return {}
 
 @lru_cache(maxsize=None)
-def load_authors_data() -> List[Dict[str, Any]]:
-    """Load authors data from authors.json."""
-    authors_file = Path("components/author/authors.json")
-    if not authors_file.exists():
-        raise FileNotFoundError(f"Authors file not found: {authors_file}")
-    
-    import json
-    with open(authors_file, 'r', encoding='utf-8') as f:
-        data = json.load(f)
-    
-    if not data or 'authors' not in data:
-        raise ValueError(f"Authors file {authors_file} is missing 'authors' key or is empty")
-    
-    return data['authors']
+def load_formatting_prompt(author_id: int) -> Dict[str, Any]:
+    """Load formatting-specific prompt configuration."""
+    try:
+        formatting_file = AUTHOR_PROMPT_PATHS.get(author_id, {}).get('formatting')
+        if formatting_file and Path(formatting_file).exists():
+            with open(formatting_file, 'r', encoding='utf-8') as f:
+                return yaml.safe_load(f) or {}
+        
+        return {}
+    except Exception as e:
+        print(f"Error loading formatting prompt: {e}")
+        return {}
 
-class ContentComponentGenerator(StaticComponentGenerator):
-    """
-    Generator for content components using ONLY prompt-driven approach.
-    NO hardcoded content - everything comes from YAML prompt configurations.
-    """
+class ContentComponentGenerator(APIComponentGenerator):
+    """Generator for content components using three-stage prompt system"""
     
     def __init__(self):
         super().__init__("content")
     
-    def _extract_chemical_formula(self, material_data: Dict, frontmatter_data: Optional[Dict], material_name: str) -> str:
-        """Extract chemical formula from various sources with NO fallbacks."""
-        
-        # Try multiple sources for chemical formula
-        sources = [
-            material_data.get('formula'),
-            material_data.get('chemical_formula'),
-            frontmatter_data.get('chemicalProperties', {}).get('formula') if frontmatter_data else None,
-            frontmatter_data.get('chemicalProperties', {}).get('chemicalFormula') if frontmatter_data else None,
-            frontmatter_data.get('properties', {}).get('chemicalFormula') if frontmatter_data else None,
-        ]
-        
-        # Return the first non-empty formula found
-        for formula in sources:
-            if formula and formula.strip() and formula != 'Formula not specified':
-                return formula.strip()
-        
-        # Fallback to material name if no formula found
-        print(f"⚠️  Warning: No chemical formula found for {material_name}, using material name as fallback")
-        return material_name
-    
-    def _generate_static_content(self, material_name: str, material_data: Dict,
-                                author_info: Optional[Dict] = None,
-                                frontmatter_data: Optional[Dict] = None,
-                                schema_fields: Optional[Dict] = None) -> str:
-        """Implementation of abstract method for static content generation."""
-        
-        print(f"🔧 DEBUG: _generate_static_content CALLED with author_info={author_info}")
-        
-        # Extract author information from frontmatter first
-        author_name = None
-        author_country = None
-        author_id = None  # NO DEFAULT - must be explicitly provided
-        
-        if frontmatter_data:
-            print(f"🔧 DEBUG: Processing frontmatter_data: {frontmatter_data}")
-            # Try to get author from frontmatter
-            author_data = frontmatter_data.get('author')
-            if isinstance(author_data, dict):
-                # New format: author is a complete object
-                author_name = author_data.get('name')
-                author_country = author_data.get('country', '').lower()
-                author_id = author_data.get('id')
-                print(f"🔧 DEBUG: Got author object from frontmatter - ID: {author_id}, Name: {author_name}, Country: {author_country}")
-            elif isinstance(author_data, str):
-                # Old format: author is just a name string
-                author_name = author_data
-                print(f"🔧 DEBUG: Got author name from frontmatter: {author_name}")
-                # Map author names to countries (this should match the authors.json and prompt files)
-                author_country_map = {
-                    'Yi-Chun Lin': 'taiwan',
-                    'Alessandro Moretti': 'italy', 
-                    'Ikmanda Roswati': 'indonesia',
-                    'Todd Dunning': 'usa'
-                }
-                
-                if author_name:
-                    author_country = author_country_map.get(author_name)
-                    if not author_country:
-                        raise ValueError(f"No country mapping found for author: {author_name}. Author must be defined in frontmatter or author configurations.")
-                    # Map country back to author_id for compatibility
-                    country_id_map = {'taiwan': 1, 'italy': 2, 'indonesia': 3, 'usa': 4}
-                    author_id = country_id_map.get(author_country)
-                    if author_id is None:
-                        raise ValueError(f"No author ID mapping found for country: {author_country}")
-            else:
-                # Fallback to old name field
-                author_name = frontmatter_data.get('name')
-                print(f"🔧 DEBUG: Got author from name field: {author_name}")
-        
-        # NO FALLBACKS - Author must be in frontmatter or author_info
-        if not author_name and author_info:
-            print(f"🔧 DEBUG: Processing author_info since no frontmatter author: {author_info}")
-            author_id = author_info.get('id')
-            print(f"🔧 DEBUG: Using author_info - author_id from author_info: {author_id}")
-            if not author_id:
-                raise ValueError("No author ID found in author_info. Author must be properly configured.")
-            # Load author data to get name and country
-            authors_data = load_authors_data()
-            for author in authors_data:
-                if author.get('id') == author_id:
-                    author_name = author.get('name')
-                    author_country = author.get('country', '').lower()
-                    print(f"🔧 DEBUG: Found author - name: {author_name}, country: {author_country}")
-                    if not author_name or not author_country:
-                        raise ValueError(f"Incomplete author data for ID {author_id}. Name and country required.")
-                    break
-            else:
-                raise ValueError(f"Author data not found for ID {author_id}")
-        else:
-            print(f"🔧 DEBUG: Skipping author_info processing. author_name={author_name}, author_info={author_info is not None}")
-        
-        print(f"🔧 DEBUG: Final author values - ID: {author_id}, Name: {author_name}, Country: {author_country}")
-        
-        if not author_name:
-            raise ValueError("No author information found. Author must be defined in frontmatter or author_info.")
-        
-        # Fallback for missing author ID - use default author
-        if not author_id:
-            print("⚠️  Warning: No author ID found, using default author (Yi-Chun Lin, Taiwan)")
-            author_id = 1
-            author_name = "Yi-Chun Lin"
-            author_country = "taiwan"
-        
-        # Extract material properties from frontmatter and material_data
-        material_properties = {}
-        if frontmatter_data:
-            material_properties.update(frontmatter_data)
-        if material_data:
-            material_properties.update(material_data)
-        
-        # Build enhanced config from parameters including frontmatter
-        config = {
-            'subject': material_name,
-            'formula': self._extract_chemical_formula(material_data, frontmatter_data, material_name),
-            'author_id': author_id,
-            'author_name': author_name or 'Unknown Author',
-            'author_country': author_country or 'italy',
-            'material_properties': material_properties,
-            'frontmatter_data': frontmatter_data or {},
-            'schema_fields': schema_fields or {},
-            # Extract specific technical properties for laser cleaning
-            'density': material_properties.get('density', 'Material density'),
-            'melting_point': material_properties.get('melting_point', 'Melting point'),
-            'thermal_conductivity': material_properties.get('thermal_conductivity', 'Thermal conductivity'),
-            'absorption_coefficient': material_properties.get('absorption_coefficient', 'Absorption characteristics'),
-            'surface_roughness': material_properties.get('surface_roughness', 'Surface properties')
-        }
-        
-        return self._generate_prompt_content(config)
-    
-    def _generate_prompt_content(self, config: Dict[str, Any]) -> str:
-        """Generate content using ONLY prompt configurations."""
-        
-        # Extract required configuration - now includes author info from frontmatter
-        self.subject = config.get('subject')
-        if not self.subject:
-            raise ValueError("Material subject/name is required in config")
-            
-        formula = config.get('formula')
-        if not formula:
-            raise ValueError("Chemical formula is required in config")
-            
-        author_id = config.get('author_id')
-        if author_id is None:
-            raise ValueError("Author ID is required in config")
-            
-        author_name = config.get('author_name')
-        if not author_name:
-            raise ValueError("Author name is required in config")
-            
-        author_country = config.get('author_country')
-        if not author_country:
-            raise ValueError("Author country is required in config")
-        
-        print(f"🔧 DEBUG _generate_prompt_content: author_id={author_id}, author_name={author_name}, author_country={author_country}")
-        
-        # Load prompt configurations using the country from frontmatter
-        base_config = load_base_content_prompt()
-        persona_config = load_persona_prompt(author_id)
-        
-        # Use the country directly from config (derived from frontmatter)
-        prompt_key = author_country
-        
-        # Get author configuration from base prompt
-        author_base_config = base_config.get('author_configurations', {}).get(prompt_key, {})
-        
-        # Build complete configuration
-        config.update({
-            'subject': self.subject,
-            'formula': formula,
-            'author_id': author_id,
-            'author_name': author_name,
-            'author_country': author_country
-        })
-        
-        # Get content structure from persona
-        # The content_structure is at the top level of the persona config
-        content_structure = persona_config.get('content_structure', {})
-        
-        # Generate content using ONLY prompt-driven approach
-        return self._generate_prompt_driven_content(
-            config, author_name, author_country, persona_config,  # Pass full config instead of nested persona_data
-            author_base_config, content_structure, prompt_key
-        )
-    
-    def _generate_prompt_driven_content(self, config: Dict[str, Any], author_name: str, 
-                                      author_country: str, persona_config: Dict[str, Any],
-                                      author_config: Dict[str, Any], content_structure: Dict[str, Any],
-                                      prompt_key: str) -> str:
-        """Generate content dynamically using ONLY prompt configurations."""
-        
-        # Load base prompt to get shared patterns and requirements
-        base_config = load_base_content_prompt()
-        
-        # Get technical requirements from base prompt
-        technical_requirements = base_config.get('technical_requirements', {})
-        
-        # Get language patterns from country-specific prompt
-        country_patterns = persona_config.get('language_patterns', {})
-        
-        # Debug: Check what we loaded
-        print("🔧 DEBUG Persona Config:")
-        print(f"   persona_config keys: {list(persona_config.keys())}")
-        print(f"   country_patterns keys: {list(country_patterns.keys())}")
-        
-        # Combine base technical requirements with country language patterns
-        combined_patterns = {
-            'technical_requirements': technical_requirements,
-            'language_patterns': country_patterns
-        }
-        
-        # Get word count limit from base config author_configurations
-        max_words = self._extract_word_limit(author_config.get('max_word_count', '400 words maximum'))
-        
-        # Build byline
-        byline = content_structure.get('byline', f"**{author_name}, Ph.D. - {author_country}**")
-        
-        # Generate sections using ONLY combined prompt configurations
-        sections = self._generate_dynamic_sections(
-            config, combined_patterns['language_patterns'], content_structure, 
-            author_config, max_words, prompt_key
-        )
-        
-        # Randomize section order if specified in prompts
-        randomization = content_structure.get('randomization_approach', {})
-        if randomization.get('section_sequencing') and 'randomize' in randomization.get('section_sequencing', '').lower():
-            sections = self._randomize_sections(sections)
-        
-        # Assemble final content - NO TITLE
-        content_parts = [byline, ""]
-        
-        for section in sections:
-            content_parts.extend(section)
-            content_parts.append("")  # Section separator
-        
-        # Join and apply word limit
-        full_content = "\n".join(content_parts)
-        limited_content = self._apply_word_limit(full_content, max_words)
-        
-        return limited_content
-    
-    def _extract_word_limit(self, word_count_str: str) -> int:
-        """Extract numeric word limit from configuration string."""
-        import re
-        match = re.search(r'(\d+)', word_count_str)
-        return int(match.group(1)) if match else 400
-    
-    def _generate_dynamic_sections(self, config: Dict[str, Any], language_patterns: Dict[str, Any],
-                                 content_struct: Dict[str, Any], author_config: Dict[str, Any],
-                                 max_words: int, prompt_key: str) -> List[List[str]]:
-        """Generate sections using ONLY prompt configurations."""
-        
-        sections = []
-        configured_sections = content_struct.get('sections', [])
-        
-        if not configured_sections:
-            raise ValueError("No sections configured in prompt file")
-        
-        # Calculate approximate words per section
-        words_per_section = max_words // len(configured_sections)
-        
-        for section_config in configured_sections:
-            section_name = section_config.get('name', 'Section')
-            section_focus = section_config.get('focus', 'general')
-            section_emphasis = section_config.get('emphasis', '')
-            
-            section_content = self._generate_section_content(
-                section_name, section_focus, section_emphasis,
-                config, language_patterns, words_per_section, prompt_key
-            )
-            
-            sections.append(section_content)
-        
-        return sections
-    
-    def _generate_section_content(self, section_name: str, focus: str, emphasis: str,
-                                config: Dict[str, Any], language_patterns: Dict[str, Any],
-                                target_words: int, prompt_key: str) -> List[str]:
-        """Generate content for sections using ONLY prompt patterns."""
-        
-        content = [f"## {section_name}", ""]
-        
-        # Find the correct section key by checking if focus contains keywords
-        section_key = 'introduction'  # default
-        if 'introduction' in focus.lower() or section_name.lower() == 'overview':
-            section_key = 'introduction'
-        elif 'properties' in focus.lower() or 'material' in focus.lower() or 'properties' in section_name.lower():
-            section_key = 'properties'
-        elif 'application' in focus.lower() or 'application' in section_name.lower():
-            section_key = 'applications'
-        elif 'parameter' in focus.lower() or 'parameter' in section_name.lower():
-            section_key = 'parameters'  # use parameters patterns for parameters
-        elif 'advantage' in focus.lower() or 'advantage' in section_name.lower():
-            section_key = 'advantages'  # use advantages patterns for advantages
-        elif 'safety' in focus.lower() or 'safety' in section_name.lower():
-            section_key = 'safety'  # use safety patterns for safety
-        elif 'challenge' in focus.lower() or 'challenge' in section_name.lower():
-            section_key = 'challenges'  # use challenges patterns for challenges
-        
-        # Get patterns for this section
-        section_patterns = language_patterns.get(section_key, {})
-        
-        if not section_patterns:
-            # If no specific patterns found, try using all available patterns
-            print(f"   No patterns for '{section_key}', using all language_patterns")
-            section_patterns = language_patterns
-        
-        # Use patterns from prompts based on section type
-        if section_name.lower() == 'overview':
-            content.extend(self._generate_overview_content(config, section_patterns))
-        elif 'properties' in section_name.lower() or 'material' in section_name.lower():
-            content.extend(self._generate_properties_content(config, section_patterns, emphasis))
-        elif 'application' in section_name.lower():
-            content.extend(self._generate_applications_content(config, section_patterns))
-        elif 'parameter' in section_name.lower() or 'optimal' in section_name.lower():
-            content.extend(self._generate_parameters_content(config, section_patterns))
-        elif 'advantage' in section_name.lower() or 'benefit' in section_name.lower():
-            content.extend(self._generate_advantages_content(config, section_patterns))
-        elif 'safety' in section_name.lower():
-            content.extend(self._generate_safety_content(config, section_patterns))
-        elif 'challenge' in section_name.lower():
-            content.extend(self._generate_challenges_content(config, section_patterns))
-        else:
-            # Generic section using available patterns
-            content.extend(self._generate_generic_content(config, section_patterns, focus))
-        
-        return content
-    
-    def _generate_overview_content(self, config: Dict[str, Any], patterns: Dict[str, Any]) -> List[str]:
-        """Generate comprehensive overview content using available patterns."""
-        content = []
-        material_name = config['subject']
-        formula = config['formula']
-        
-        # Get available patterns dynamically
-        opening_patterns = [
-            patterns.get('opening'),
-            patterns.get('introduction', {}).get('opening') if isinstance(patterns.get('introduction'), dict) else None,
-            "This study presents systematic investigation of"
-        ]
-        opening = next((p for p in opening_patterns if p), f"Laser cleaning technology for {material_name}")
-        
-        # Formula integration - try multiple pattern sources
-        formula_patterns = [
-            patterns.get('formula_integration'),
-            patterns.get('introduction', {}).get('formula_integration') if isinstance(patterns.get('introduction'), dict) else None,
-            f"The chemical composition {formula} provides fundamental understanding"
-        ]
-        formula_text = next((p for p in formula_patterns if p), f"Material composition {formula}")
-        
-        # Build comprehensive overview
-        if '{material_formula}' in str(formula_text):
-            intro_text = formula_text.format(material_formula=formula)
-        else:
-            intro_text = f"{formula_text} of laser-material interaction"
-        
-        content.append(f"{opening} in materials processing technology for {material_name} laser cleaning applications. {intro_text} for effective surface processing.")
-        content.append("")
-        
-        # Add technical context
-        content.append(f"This comprehensive analysis addresses laser cleaning optimization for {material_name} based on material-specific characteristics and processing requirements.")
-        
-        return content
-    
-    def _generate_properties_content(self, config: Dict[str, Any], patterns: Dict[str, Any], emphasis: str) -> List[str]:
-        """Generate comprehensive properties content with technical details."""
-        content = []
-        material_name = config['subject']
-        
-        # Section introduction with pattern-based language
-        intro_patterns = [
-            patterns.get('section_intro'),
-            patterns.get('properties', {}).get('section_intro') if isinstance(patterns.get('properties'), dict) else None,
-            patterns.get('introduction')
-        ]
-        intro = next((p for p in intro_patterns if p), None)
-        if not intro:
-            raise ValueError(f"No introduction patterns found for {material_name}. Patterns must be defined in prompt configurations.")
-        content.append(f"{intro} for successful laser cleaning of {material_name} surfaces.")
-        content.append("")
-        
-        # Technical properties section - must come from patterns or material data
-        if not patterns:
-            raise ValueError(f"No properties patterns found for {material_name}. Patterns must be defined in prompt configurations.")
-        
-        # Use material data from config
-        thermal_cond = config.get('thermal_conductivity', config.get('material_properties', {}).get('thermalConductivity'))
-        density = config.get('density', config.get('material_properties', {}).get('density'))
-        
-        # Only add content if patterns exist
-        properties_discussion = []
-        
-        if thermal_cond and thermal_cond != 'Thermal conductivity':
-            thermal_pattern = patterns.get('thermal')
-            if thermal_pattern:
-                properties_discussion.append(thermal_pattern.format(value=thermal_cond, material=material_name))
-        
-        if density and density != 'Material density':
-            density_pattern = patterns.get('density')
-            if density_pattern:
-                properties_discussion.append(density_pattern.format(value=density, material=material_name))
-        
-        # Add other properties only if patterns exist
-        optical_pattern = patterns.get('optical')
-        if optical_pattern:
-            properties_discussion.append(optical_pattern.format(material=material_name))
-        
-        interaction_pattern = patterns.get('interaction')
-        if interaction_pattern:
-            properties_discussion.append(interaction_pattern)
-        
-        # Join properties into discussion format
-        if properties_discussion:
-            content.append(" ".join(properties_discussion))
-        
-        if emphasis:
-            emphasis_pattern = patterns.get('emphasis')
-            if emphasis_pattern:
-                content.append("")
-                content.append(f"{emphasis_pattern.format(emphasis=emphasis, material=material_name)}")
-        
-        return content
-    
-    def _generate_applications_content(self, config: Dict[str, Any], patterns: Dict[str, Any]) -> List[str]:
-        """Generate applications content using ONLY prompt patterns - NO fallbacks."""
-        content = []
-        
-        material_name = config['subject']
-        
-        # NO fallbacks - must exist in prompt or fail
-        if 'industrial' in patterns:
-            content.append(f"{patterns['industrial']} the practical value of laser cleaning for {material_name} surface processing:")
-            content.append("")
-        
-        # Use frontmatter applications first, then schema fields, then patterns
-        frontmatter_data = config.get('frontmatter_data', {})
-        applications = frontmatter_data.get('applications', [])
-        
-        # Fallback to schema fields if no frontmatter applications
-        if not applications:
-            schema_fields = config.get('schema_fields', {})
-            applications = schema_fields.get('applications', [])
-        
-        if applications and isinstance(applications, list):
-            application_pattern = patterns.get('application_template')
-            if application_pattern:
-                application_text = []
-                for app in applications[:3]:  # Limit to top 3 applications
-                    if isinstance(app, dict):
-                        app_desc = f"{app.get('industry', 'Industry')}: {app.get('detail', 'application')}"
-                    else:
-                        app_desc = str(app)
-                    application_text.append(application_pattern.format(application=app_desc, material=material_name).replace("**", "").replace(":", " involves"))
-                content.append(" ".join(application_text))
-            else:
-                # Fallback without pattern
-                app_descriptions = []
-                for app in applications[:3]:
-                    if isinstance(app, dict):
-                        app_descriptions.append(f"{app.get('industry', 'Industry')} applications include {app.get('detail', 'laser cleaning')}")
-                    else:
-                        app_descriptions.append(f"Applications include {app}")
-                content.append(" ".join(app_descriptions))
-        else:
-            # Fallback to generic applications using patterns
-            if 'applications_list' in patterns:
-                app_list = patterns['applications_list']
-                generic_apps = []
-                for app in app_list[:3]:
-                    generic_apps.append(f"{app} applications for {material_name}")
-                content.append(" ".join(generic_apps))
-            else:
-                # Final fallback - basic applications
-                content.append(f"Laser cleaning applications for {material_name} include surface preparation, contamination removal, and restoration processes.")
-        
-        if 'sectors' in patterns:
-            content.append("")
-            content.append(f"{patterns['sectors']} laser cleaning technology for specialized {material_name} processing requirements.")
-        
-        return content
-    
-    def _generate_parameters_content(self, config: Dict[str, Any], patterns: Dict[str, Any]) -> List[str]:
-        """Generate parameter specifications using ONLY patterns and data - NO fallbacks."""
-        content = []
-        material_name = config['subject']
-        
-        # Parameter introduction from patterns
-        intro_pattern = patterns.get('parameter_intro')
-        if intro_pattern:
-            content.append(f"{intro_pattern.format(material=material_name)}")
-            content.append("")
-        
-        # Technical specifications from frontmatter with fallbacks
-        tech_specs = config.get('frontmatter_data', {}).get('technicalSpecifications', {})
-        if tech_specs:
-            param_pattern = patterns.get('parameter_template')
-            if param_pattern:
-                param_discussions = []
-                for spec_name, spec_value in tech_specs.items():
-                    param_text = param_pattern.format(parameter=spec_name, value=spec_value, material=material_name).replace("**", "")
-                    param_discussions.append(param_text)
-                content.append(" ".join(param_discussions))
-            else:
-                # Fallback without pattern
-                content.append("**Recommended Laser Parameters:**")
-                for spec_name, spec_value in tech_specs.items():
-                    content.append(f"• **{spec_name}**: {spec_value}")
-        else:
-            # Fallback to generic parameters
-            content.append("**Standard Laser Parameters:**")
-            content.append(f"• **Wavelength**: 1064 nm (primary) for optimal {material_name} absorption characteristics")
-            content.append(f"• **Pulse Duration**: 10-100 ns to minimize thermal effects in {material_name}")
-            content.append(f"• **Power Range**: 50-500 W for effective {material_name} processing")
-            content.append("• **Fluence**: 1-10 J/cm² for contamination removal efficiency")
-        
-        return content
-    
-    def _generate_advantages_content(self, config: Dict[str, Any], patterns: Dict[str, Any]) -> List[str]:
-        """Generate advantages using ONLY patterns - NO fallbacks."""
-        content = []
-        material_name = config['subject']
-        
-        intro_pattern = patterns.get('advantages_intro')
-        if intro_pattern:
-            content.append(f"{intro_pattern.format(material=material_name)}")
-            content.append("")
-        
-        # Use pattern-based advantages
-        advantage_pattern = patterns.get('advantage_template')
-        if not advantage_pattern:
-            raise ValueError(f"No advantage_template pattern found for {material_name}. Pattern required for advantages content.")
-        
-        # Get advantages from patterns
-        advantage_list = patterns.get('advantages_list', [])
-        if not advantage_list:
-            raise ValueError(f"No advantages_list found in patterns for {material_name}. Advantages must be defined in prompt configurations.")
-        
-        advantage_discussions = []
-        for advantage in advantage_list:
-            advantage_text = advantage_pattern.format(advantage=advantage, material=material_name).replace("**", "").replace("• ", "")
-            advantage_discussions.append(advantage_text)
-        content.append(" ".join(advantage_discussions))
-        
-        # Use pattern-based conclusion if available
-        quality_patterns = [
-            patterns.get('quality'),
-            patterns.get('applications', {}).get('quality') if isinstance(patterns.get('applications'), dict) else None
-        ]
-        quality = next((p for p in quality_patterns if p), None)
-        if quality:
-            content.append("")
-            content.append(f"{quality} delivers superior results compared to traditional cleaning methods")
-        
-        return content
-    
-    def _generate_safety_content(self, config: Dict[str, Any], patterns: Dict[str, Any]) -> List[str]:
-        """Generate safety content using ONLY patterns - NO fallbacks."""
-        content = []
-        material_name = config['subject']
-        
-        # Safety requirements from frontmatter
-        safety_class = config.get('frontmatter_data', {}).get('technicalSpecifications', {}).get('safetyClass')
-        safety_intro = patterns.get('safety_intro')
-        if not safety_intro:
-            raise ValueError(f"No safety_intro pattern found for {material_name}. Pattern required for safety content.")
-        
-        if safety_class:
-            content.append(f"{safety_intro.format(material=material_name, safety_class=safety_class)}")
-        else:
-            content.append(f"{safety_intro.format(material=material_name, safety_class='comprehensive')}")
-        
-        content.append("")
-        
-        # Get safety requirements from patterns
-        safety_list = patterns.get('safety_list', [])
-        safety_template = patterns.get('safety_template')
-        if not safety_list or not safety_template:
-            raise ValueError(f"No safety_list or safety_template found in patterns for {material_name}. Safety patterns required.")
-        
-        safety_discussions = []
-        for safety_item in safety_list:
-            safety_text = safety_template.format(safety=safety_item, material=material_name).replace("**", "").replace("• ", "")
-            safety_discussions.append(safety_text)
-        content.append(" ".join(safety_discussions))
-        
-        return content
-    
-    def _generate_challenges_content(self, config: Dict[str, Any], patterns: Dict[str, Any]) -> List[str]:
-        """Generate challenges content using ONLY patterns - NO fallbacks."""
-        content = []
-        material_name = config['subject']
-        
-        challenges_intro = patterns.get('challenges_intro')
-        if not challenges_intro:
-            raise ValueError(f"No challenges_intro pattern found for {material_name}. Pattern required for challenges content.")
-        
-        content.append(f"{challenges_intro.format(material=material_name)}")
-        content.append("")
-        
-        # Get challenges from patterns
-        challenges_list = patterns.get('challenges_list', [])
-        challenge_template = patterns.get('challenge_template')
-        if not challenges_list or not challenge_template:
-            raise ValueError(f"No challenges_list or challenge_template found in patterns for {material_name}. Challenge patterns required.")
-        
-        challenge_discussions = []
-        for challenge in challenges_list:
-            challenge_text = challenge_template.format(challenge=challenge, material=material_name).replace("**", "").replace("• ", "")
-            challenge_discussions.append(challenge_text)
-        content.append(" ".join(challenge_discussions))
-        
-        return content
-    
-    def _generate_generic_content(self, config: Dict[str, Any], patterns: Dict[str, Any], focus: str) -> List[str]:
-        """Generate generic content using ONLY available prompt patterns."""
-        content = []
-        
-        # Use any available patterns for generic sections
-        generic_text = []
-        for key, value in patterns.items():
-            if value and isinstance(value, str) and len(value) > 10:
-                generic_text.append(value)
-        
-        if generic_text:
-            content.append(" ".join(generic_text))
-        
-        return content
-    
-    def _randomize_sections(self, sections: List[List[str]]) -> List[List[str]]:
-        """Randomize section order while keeping Overview first."""
-        if not sections:
-            return sections
-        
-        # Find Overview section
-        overview_section = None
-        other_sections = []
-        
-        for section in sections:
-            if section and len(section) > 0 and 'overview' in section[0].lower():
-                overview_section = section
-            else:
-                other_sections.append(section)
-        
-        # Randomize non-overview sections
-        random.shuffle(other_sections)
-        
-        # Rebuild with Overview first
-        result = []
-        if overview_section:
-            result.append(overview_section)
-        result.extend(other_sections)
+    def generate(self, material_name: str, material_data: Dict, 
+                api_client=None, author_info: Optional[Dict] = None,
+                frontmatter_data: Optional[Dict] = None,
+                schema_fields: Optional[Dict] = None,
+                provider_name: Optional[str] = None):
+        """Generate content with frontmatter metadata"""
+        # Call parent generate method to get the content
+        result = super().generate(material_name, material_data, api_client, 
+                                author_info, frontmatter_data, schema_fields)
+        
+        if result.success and result.content:
+            # Add frontmatter to the content
+            frontmatter_content = self._build_frontmatter(material_name, author_info, provider_name)
+            result.content = frontmatter_content + "\n\n" + result.content
         
         return result
     
-    def _apply_word_limit(self, content: str, max_words: int) -> str:
-        """Apply word limit while preserving formatting."""
-        lines = content.split('\n')
-        result_lines = []
-        word_count = 0
+    def _build_frontmatter(self, material_name: str, author_info: Optional[Dict], provider_name: Optional[str]) -> str:
+        """Build YAML frontmatter with metadata"""
         
-        for line in lines:
-            line_words = len(line.split()) if line.strip() else 0
-            
-            if word_count + line_words <= max_words:
-                result_lines.append(line)
-                word_count += line_words
+        frontmatter_data = {
+            'title': f'Laser Cleaning for {material_name}',
+            'material': material_name,
+            'author': {
+                'name': author_info.get('name', 'Unknown') if author_info else 'Unknown',
+                'country': author_info.get('country', 'Unknown') if author_info else 'Unknown'
+            },
+            'api_provider': provider_name or 'Unknown',
+            'generated_at': datetime.now().isoformat(),
+            'component_type': 'content'
+        }
+        
+        # Convert to YAML frontmatter
+        yaml_content = yaml.dump(frontmatter_data, default_flow_style=False, sort_keys=False)
+        return f"---\n{yaml_content}---"
+    
+    def _build_prompt(self, material_name: str, material_data: Dict,
+                     author_info: Optional[Dict] = None,
+                     frontmatter_data: Optional[Dict] = None,
+                     schema_fields: Optional[Dict] = None) -> str:
+        """Build prompt using three-stage prompt system"""
+        
+        logger.info(f"🔧 Building three-stage prompt for {material_name}")
+        
+        # Get author ID for prompt selection
+        author_id = 2  # Default to Italy
+        if author_info:
+            author_id = author_info.get('id', 2)
+        
+        logger.debug(f"   👤 Using author ID: {author_id}")
+        
+        # Load the three-stage prompt components
+        logger.debug(f"   📂 Loading prompts for author {author_id}...")
+        base_prompt = load_base_content_prompt()
+        persona_prompt = load_persona_prompt(author_id)
+        formatting_prompt = load_formatting_prompt(author_id)
+        logger.debug(f"   📝 Loaded prompts: base({len(str(base_prompt))}) persona({len(str(persona_prompt))}) format({len(str(formatting_prompt))}) chars")
+        
+        # Build template variables using parent class method
+        template_vars = self._build_template_variables(material_name, material_data, schema_fields, author_info)
+        
+        # Add content-specific variables that aren't in parent
+        template_vars['subject'] = material_name
+        
+        # Use data already extracted by parent class
+        # Parent _build_template_variables already handles:
+        # - material_formula (chemical formula)
+        # - category 
+        # - author information
+        # - applications formatting
+        # - laser parameters
+        
+        # Build the final prompt by combining base → persona → formatting
+        logger.debug("   🔗 Combining prompt stages: base → persona → formatting")
+        final_prompt = self._build_combined_prompt(base_prompt, persona_prompt, formatting_prompt, template_vars)
+        
+        logger.info(f"   ✅ Final prompt built: {len(final_prompt)} chars")
+        logger.debug(f"   📊 Template variables: {len(template_vars)} items")
+        
+        return final_prompt
+    
+    def _build_combined_prompt(self, base_prompt: Dict, persona_prompt: Dict, 
+                              formatting_prompt: Dict, template_vars: Dict) -> str:
+        """Build the final prompt by combining base → persona → formatting"""
+        
+        # Start with base prompt
+        prompt_parts = []
+        
+        # Add base instructions - handle different YAML structures
+        if 'system_prompt' in base_prompt:
+            prompt_parts.append("SYSTEM INSTRUCTIONS:")
+            prompt_parts.append(str(base_prompt['system_prompt']))
+            prompt_parts.append("")
+        elif 'content_approach' in base_prompt:
+            prompt_parts.append("TECHNICAL CONTENT REQUIREMENTS:")
+            content_approach = base_prompt['content_approach']
+            if isinstance(content_approach, dict) and 'core_technical_coverage' in content_approach:
+                for item in content_approach['core_technical_coverage']:
+                    prompt_parts.append(f"- {item}")
+            prompt_parts.append("")
+        
+        # Add persona instructions
+        if 'persona' in persona_prompt:
+            prompt_parts.append("AUTHOR PERSONA:")
+            prompt_parts.append(str(persona_prompt['persona']))
+            prompt_parts.append("")
+        
+        if 'writing_style' in persona_prompt:
+            prompt_parts.append("WRITING STYLE:")
+            if isinstance(persona_prompt['writing_style'], dict):
+                for key, value in persona_prompt['writing_style'].items():
+                    prompt_parts.append(f"{key}: {value}")
             else:
-                # Add partial line if possible
-                remaining_words = max_words - word_count
-                if remaining_words > 0 and line.strip():
-                    words = line.split()
-                    truncated_line = ' '.join(words[:remaining_words])
-                    result_lines.append(truncated_line)
-                break
+                prompt_parts.append(str(persona_prompt['writing_style']))
+            prompt_parts.append("")
         
-        return '\n'.join(result_lines)
+        # Add formatting instructions
+        if 'format_requirements' in formatting_prompt:
+            prompt_parts.append("FORMAT REQUIREMENTS:")
+            format_reqs = formatting_prompt['format_requirements']
+            if isinstance(format_reqs, dict):
+                for key, value in format_reqs.items():
+                    prompt_parts.append(f"{key}: {value}")
+            else:
+                prompt_parts.append(str(format_reqs))
+            prompt_parts.append("")
+        
+        # Add the main task using template variables from parent class
+        task_prompt = f"""TASK: Generate comprehensive technical content about laser cleaning for {template_vars['material_name']}.
+
+MATERIAL DETAILS:
+- Name: {template_vars['material_name']}
+- Formula: {template_vars.get('material_formula', 'N/A')}
+- Category: {template_vars.get('category', 'Material')}
+- Applications: {template_vars.get('applications_list', 'Various industrial applications')}
+- Parameters: {template_vars.get('laser_fluence', 'TBD')} fluence, {template_vars.get('laser_wavelength', 'TBD')} wavelength
+
+Generate detailed, technical content that provides practical value for professionals working with laser cleaning systems.
+Focus on material properties, optimal parameters, applications, and advantages."""
+        
+        prompt_parts.append(task_prompt)
+        
+        return "\n".join(prompt_parts)

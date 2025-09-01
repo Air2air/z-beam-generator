@@ -1,0 +1,4 @@
+---
+symbol: "AL"
+materialType: "ceramic"
+---

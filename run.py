@@ -108,7 +108,7 @@ COMPONENT_CONFIG = {
             "enabled": True,
             "api_provider": "grok",  # Options: "deepseek", "grok"
         },
-        "content": {"enabled": True, "api_provider": "none"},  # Uses optimized Python calculator
+        "content": {"enabled": True, "api_provider": "grok"},  # Uses optimized Python calculator
         "jsonld": {"enabled": True, "api_provider": "deepseek"},
         "table": {"enabled": True, "api_provider": "grok"},
         "metatags": {"enabled": True, "api_provider": "deepseek"},
@@ -142,7 +142,7 @@ logging.basicConfig(
 )
 
 
-def create_api_client(provider: str, use_mock: bool = False):
+def create_api_client(provider: str):
     """Create an API client for the specified provider."""
 
     # Handle special case for components that don't need API clients
@@ -153,11 +153,6 @@ def create_api_client(provider: str, use_mock: bool = False):
         raise ValueError(f"Unknown API provider: {provider}")
 
     provider_config = API_PROVIDERS[provider]
-
-    if use_mock:
-        from api.client import MockAPIClient
-
-        return MockAPIClient()
 
     try:
         from api.client import APIClient
@@ -183,16 +178,16 @@ def create_api_client(provider: str, use_mock: bool = False):
         raise ImportError(f"Failed to import API client modules: {e}")
 
 
-def get_api_client_for_component(component_type: str, use_mock: bool = False):
+def get_api_client_for_component(component_type: str):
     """Get the appropriate API client for a component type."""
 
     components_config = COMPONENT_CONFIG.get("components", {})
     if component_type in components_config:
         provider = components_config[component_type]["api_provider"]
     else:
-        provider = "deepseek"  # Default provider
+        provider = "grok"  # Default provider (changed from deepseek to grok)
 
-    return create_api_client(provider, use_mock=use_mock)
+    return create_api_client(provider)
 
 
 def load_authors():
@@ -593,11 +588,8 @@ def run_material_generation(
             # Create a temporary generator with this API client
             from generators.dynamic_generator import DynamicGenerator
 
-            # For static components (api_client is None), we need to prevent fallback to DeepSeek
-            if api_client is None:
-                temp_generator = DynamicGenerator(api_client=None, use_mock=True)
-            else:
-                temp_generator = DynamicGenerator(api_client=api_client)
+            # For static components (api_client is None), just pass None
+            temp_generator = DynamicGenerator(api_client=api_client, provider_name=provider_name)
 
             # Set author info for ALL components
             if component_author_info:
@@ -777,7 +769,7 @@ def check_environment():
         print("🧪 API Client Tests:")
         for provider_id, provider_info in API_PROVIDERS.items():
             try:
-                client = create_api_client(provider_id, use_mock=False)
+                create_api_client(provider_id)
                 print(f"   ✅ {provider_info['name']}: Client created successfully")
             except Exception as e:
                 print(f"   ❌ {provider_info['name']}: {str(e)}")

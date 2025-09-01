@@ -13,14 +13,13 @@ technicalSpecifications:
   repetitionRate: 10-50kHz
   fluenceRange: 1.0–10 J/cm²
   safetyClass: Class 4 (requires full enclosure)
-description: Alumina, or Al2O3, is a versatile ceramic material widely used in high-precision
-  applications across the aerospace and semiconductor industries. Its excellent thermal
-  and electrical insulation properties, combined with high hardness and resistance
-  to chemical attack, make it ideal for laser cleaning processes. Laser ablation and
-  cleaning techniques, utilizing a wavelength of 1064 nm, allow for precise removal
-  of coatings and contaminants without altering the structural integrity of the alumina
-  substrate. This non-contact method ensures minimal damage and is crucial for maintaining
-  the integrity of complex alumina components.
+description: Alumina, with the chemical formula Al2O3, is a highly durable ceramic
+  material widely used in industries such as aerospace and semiconductors for its
+  excellent thermal and mechanical properties. Laser cleaning of alumina involves
+  the use of high-intensity laser pulses to remove surface contaminants and coatings
+  without damaging the underlying material. This non-contact cleaning method is particularly
+  effective due to alumina's high melting point and resistance to thermal shock, ensuring
+  that the material's integrity and performance are maintained after cleaning.
 author:
   id: 2
   name: Alessandro Moretti
@@ -46,18 +45,18 @@ properties:
   meltingMin: 1200°C
   meltingMax: 2800°C
   meltingPercentile: 54.5
-  thermalConductivity: 25 W/m·K
+  thermalConductivity: 30 W/m·K
   thermalMin: 0.5 W/m·K
   thermalMax: 200 W/m·K
-  thermalPercentile: 12.3
-  tensileStrength: 275 MPa
+  thermalPercentile: 14.8
+  tensileStrength: 200 MPa
   tensileMin: 50 MPa
   tensileMax: 1000 MPa
-  tensilePercentile: 23.7
-  hardness: 15 GPa
+  tensilePercentile: 15.8
+  hardness: 1500 HV
   hardnessMin: 500 HV
   hardnessMax: 2500 HV
-  hardnessPercentile: 0.0
+  hardnessPercentile: 50.0
   youngsModulus: 380 GPa
   modulusMin: 150 GPa
   modulusMax: 400 GPa
@@ -77,13 +76,14 @@ properties:
   specificHeatMin: 0.4 J/g·K
   specificHeatMax: 1.2 J/g·K
 composition:
-- Aluminum oxide (Al2O3) - 99.9%
-- Trace elements such as silicon, iron, and titanium - <0.1%
+- Aluminum oxide (Al2O3) - primary component
+- Trace impurities such as silicon dioxide (SiO2) and iron oxide (Fe2O3)
 compatibility:
-- Stainless steel - for structural support in high-temperature applications
-- Silicon carbide - for enhanced thermal shock resistance
-regulatoryStandards: ISO 14644 for cleanroom standards, ASTM C773 for flexural strength
-  of ceramic materials, MIL-STD-130 for identification marking
+- Stainless steel - used in aerospace applications
+- Silicon - common in semiconductor industry
+regulatoryStandards: ASTM C773 (Standard Test Method for Compressive Strength of Ceramic
+  Whitewares), ISO 13385-1 (Geometrical Product Specifications (GPS) - Dimensional
+  measuring equipment)
 images:
   hero:
     alt: Alumina surface undergoing laser cleaning showing precise contamination removal
@@ -95,20 +95,21 @@ images:
 title: Laser Cleaning Alumina - Technical Guide for Optimal Processing
 headline: Comprehensive technical guide for laser cleaning ceramic alumina
 environmentalImpact:
-- benefit: Reduced chemical waste
-  description: Elimination of 95% of chemical solvents typically used in traditional
-    cleaning processes
+- benefit: Reduction in chemical waste
+  description: Eliminates up to 95% of chemical solvents used in traditional cleaning
+    methods
 - benefit: Lower energy consumption
-  description: Up to 30% reduction in energy use compared to conventional methods
-- benefit: Decreased emissions
-  description: Reduction of CO2 emissions by 25% due to efficient, targeted cleaning
+  description: Laser cleaning consumes 20% less energy compared to abrasive methods
+- benefit: Decreased CO2 emissions
+  description: Reduces CO2 emissions by 30% due to less energy use and no chemical
+    disposal
 outcomes:
-- result: Enhanced surface cleanliness
-- metric: Achievement of surface cleanliness level ISO Class 3
-- result: Improved component reliability
-  metric: Increase in component lifetime by 20%
-- result: Preservation of material properties
-  metric: Retention of 99% of original tensile strength post-cleaning
+- result: Surface cleanliness
+- metric: Achieves 99.9% surface purity post-cleaning
+- result: Material integrity
+  metric: Preserves 100% of alumina's mechanical strength
+- result: Processing speed
+  metric: Cleans 10 cm² per minute at optimal settings
 subject: Alumina
 article_type: material
 ---

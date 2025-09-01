@@ -180,10 +180,30 @@ class APIClient:
         self.stats['total_requests'] += 1
         start_time = time.time()
         
+        # Log API request details
+        logger.info(f"🚀 API Request #{self.stats['total_requests']}: {self.model}")
+        logger.debug(f"   📝 Prompt length: {len(request.prompt)} chars")
+        logger.debug(f"   🎛️  Parameters: temp={request.temperature}, max_tokens={request.max_tokens}")
+        if request.system_prompt:
+            logger.debug(f"   💬 System prompt: {len(request.system_prompt)} chars")
+        
         for attempt in range(self.config.max_retries + 1):
             try:
+                if attempt > 0:
+                    logger.warning(f"   🔄 Retry attempt {attempt}/{self.config.max_retries}")
+                
                 response = self._make_request(request)
                 response.retry_count = attempt
+                
+                # Log API response details
+                if response.success:
+                    logger.info(f"   ✅ Success in {response.response_time:.2f}s")
+                    logger.info(f"   📊 Tokens: {response.token_count} total ({response.prompt_tokens}+{response.completion_tokens})")
+                    logger.info(f"   📝 Content: {len(response.content)} chars generated")
+                    if response.retry_count > 0:
+                        logger.info(f"   🔄 Required {response.retry_count} retries")
+                else:
+                    logger.error(f"   ❌ Failed: {response.error}")
                 
                 # Update statistics
                 if response.success:
@@ -261,6 +281,10 @@ class APIClient:
             "stream": False
         }
         
+        # Log request details
+        logger.debug(f"   🌐 Making API call to {self.base_url}")
+        logger.debug(f"   📦 Payload size: {len(json.dumps(payload))} bytes")
+        
         # Make request
         response = self.session.post(
             f"{self.base_url}/v1/chat/completions",
@@ -269,6 +293,9 @@ class APIClient:
         )
         
         response_time = time.time() - start_time
+        
+        # Log response status
+        logger.debug(f"   📡 HTTP {response.status_code} in {response_time:.2f}s")
         
         # Process response
         if response.status_code == 200:
@@ -279,6 +306,7 @@ class APIClient:
             if not content and data.get('choices', [{}])[0].get('message', {}).get('content') == "":
                 completion_tokens = data.get('usage', {}).get('completion_tokens_details', {}).get('reasoning_tokens', 0)
                 if completion_tokens > 0:
+                    logger.warning("   ⚠️  Model produced reasoning tokens but no completion content")
                     return APIResponse(
                         success=False,
                         content="",

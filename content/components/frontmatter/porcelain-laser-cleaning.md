@@ -14,11 +14,11 @@ technicalSpecifications:
   fluenceRange: 0.5–5 J/cm²
   safetyClass: Class 4 (requires full enclosure)
 description: Technical overview of Porcelain, a ceramic material, for laser cleaning.
-  Porcelain, composed primarily of kaolin, quartz, and feldspar, is processed using
-  laser ablation and cleaning techniques to remove surface contaminants without compromising
-  the material's integrity. This non-contact cleaning method is particularly effective
-  due to the material's low thermal conductivity, which minimizes heat-affected zones
-  during the laser process.
+  Porcelain is valued for its durability, aesthetic appeal, and versatility in applications
+  ranging from household items to high-end decorative pieces. Laser cleaning of porcelain
+  is crucial for removing contaminants without altering the material's surface integrity,
+  making it ideal for both manufacturing processes and the restoration of valuable
+  artifacts.
 author:
   id: 3
   name: Ikmanda Roswati
@@ -36,31 +36,31 @@ chemicalProperties:
   formula: null
   materialType: ceramic
 properties:
-  density: 2.3-2.5 g/cm³
+  density: 2.3 - 2.5 g/cm³
   densityMin: 1.8 g/cm³
   densityMax: 6.0 g/cm³
   densityPercentile: 14.3
-  meltingPoint: 1200-1400°C
+  meltingPoint: 1200 - 1400°C
   meltingMin: 1200°C
   meltingMax: 2800°C
   meltingPercentile: 6.2
-  thermalConductivity: 1.5-3.0 W/m·K
+  thermalConductivity: 1.5 - 2.5 W/m·K
   thermalMin: 0.5 W/m·K
   thermalMax: 200 W/m·K
-  thermalPercentile: 0.9
-  tensileStrength: 30-50 MPa
+  thermalPercentile: 0.8
+  tensileStrength: 50 - 80 MPa
   tensileMin: 50 MPa
   tensileMax: 1000 MPa
-  tensilePercentile: 0.0
-  hardness: 6-7 Mohs
+  tensilePercentile: 1.6
+  hardness: 6 - 7 Mohs
   hardnessMin: 500 HV
   hardnessMax: 2500 HV
   hardnessPercentile: 0.0
-  youngsModulus: 60-70 GPa
+  youngsModulus: 60 - 70 GPa
   modulusMin: 150 GPa
   modulusMax: 400 GPa
   modulusPercentile: 0.0
-  laserType: pulsed fiber laser
+  laserType: Nd:YAG laser
   wavelength: 1064nm
   fluenceRange: 0.5–5 J/cm²
   chemicalFormula: null
@@ -76,14 +76,16 @@ properties:
   specificHeatMax: 1.2 J/g·K
 composition:
 - Kaolin (25-50%)
-- Quartz (25-35%)
-- Feldspar (25-35%)
+- Feldspar (25-50%)
+- Quartz (10-35%)
+- Minor additives like clay and minerals
 compatibility:
-- Glass
-- Metals (stainless steel, aluminum)
-regulatoryStandards: 'ISO 11146-1:2021 (Laser and laser-related equipment - Test methods
-  for laser beam parameters - Part 1: Power and energy density), ASTM C282-10 (Standard
-  Test Method for Acid-Soluble Chloride in Mortar and Concrete)'
+- Glazes
+- Metals like gold and silver for decorative purposes
+- Ceramic paints
+regulatoryStandards: ASTM C242 - Standard Terminology of Ceramic Whitewares and Related
+  Products; ISO 13006 - Ceramic tiles - Definitions, classification, characteristics
+  and marking
 images:
   hero:
     alt: Porcelain surface undergoing laser cleaning showing precise contamination
@@ -96,22 +98,20 @@ images:
 title: Laser Cleaning Porcelain - Technical Guide for Optimal Processing
 headline: Comprehensive technical guide for laser cleaning ceramic porcelain
 environmentalImpact:
-- benefit: Reduced chemical waste
-  description: Decreases chemical usage by 90%, reducing 1000 kg of chemical waste
-    per year for a medium-sized operation
+- benefit: Reduction in chemical waste
+  description: Decreases chemical usage by up to 90% compared to traditional cleaning
+    methods
 - benefit: Lower energy consumption
-  description: Laser cleaning uses 50% less energy than traditional methods, saving
-    2000 kWh annually
-- benefit: Decreased water usage
-  description: Reduces water consumption by 75%, saving 500 m³ of water per year in
-    industrial applications
+  description: Laser cleaning uses 20-30% less energy than traditional abrasive methods
+- benefit: Decreased air pollution
+  description: Reduces particulate emissions by up to 85% during the cleaning process
 outcomes:
-- result: Improved surface cleanliness
-  metric: Reduces surface contaminants by up to 99.9%
-- result: Enhanced adhesion for glazing
-  metric: Increases adhesion strength by 20-30%
-- result: Preservation of material integrity
-  metric: Maintains original microstructure with less than 1% damage
+- result: Improved surface adhesion
+  metric: Increase in adhesion strength by 30-50%
+- result: Enhanced surface cleanliness
+  metric: Reduction of surface contaminants to less than 0.1% by mass
+- result: Preservation of surface integrity
+  metric: Surface roughness change of less than 0.5 microns post-cleaning
 subject: Porcelain
 article_type: material
 ---
