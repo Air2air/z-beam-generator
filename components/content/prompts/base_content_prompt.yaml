@@ -1,6 +1,25 @@
 # Base Content Prompt for Laser Cleaning Articles
 # Shared technical requirements and author-specific adaptations
 
+# Author expertise areas (required for generator compatibility)
+author_expertise_areas:
+  taiwan:
+    specialization: "semiconductor processing and electronics applications"
+    max_word_count: 380
+    writing_style: "systematic and methodical"
+  italy:
+    specialization: "heritage preservation and additive manufacturing"
+    max_word_count: 450
+    writing_style: "technical and expressive"
+  indonesia:
+    specialization: "renewable energy and marine applications"
+    max_word_count: 250
+    writing_style: "analytical and practical"
+  usa:
+    specialization: "biomedical and aerospace applications"
+    max_word_count: 320
+    writing_style: "conversational and innovative"
+
 # Author-specific configurations
 author_configurations:
   taiwan:
