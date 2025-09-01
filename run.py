@@ -68,6 +68,13 @@ import argparse
 from pathlib import Path
 from typing import Dict, List, Optional
 
+# Import modular CLI components
+from cli import (
+    API_PROVIDERS, create_api_client, get_api_client_for_component, check_environment,
+    COMPONENT_CONFIG, show_component_configuration,
+    clean_content_components, run_cleanup_scan, run_cleanup_report, run_root_cleanup
+)
+
 # Import slug utilities for consistent naming
 try:
     from utils.slug_utils import create_material_slug, create_filename_slug
@@ -79,74 +86,56 @@ except ImportError:
         slug = create_material_slug(name)
         return f"{slug}-{suffix}" if suffix else slug
 
-COMPONENT_CONFIG = {
-    # Global author assignment for all components - REMOVED hardcoded value
-    # Author ID is now determined by CLI argument only  
-    # "author_id": 2,  # 1=Taiwan, 2=Italy, 3=Indonesia, 4=USA
-    
-    # Component orchestration order (components will be generated in this order)
-    "orchestration_order": [
-        "frontmatter",      # MUST BE FIRST - provides data for all other components
-        "propertiestable",  # Depends on frontmatter data
-        "badgesymbol",      # Depends on frontmatter data  
-        "author",           # Static component, no dependencies
-        "content",          # Main content generation
-        "bullets",          # Content-related components
-        "caption",          # Content-related components
-        "table",            # Data presentation
-        "tags",             # Metadata components
-        "metatags",         # Metadata components
-        "jsonld",           # Structured data (should be last)
-    ],
-    
-    # Component-specific configuration
-    "components": {
-        "author": {"enabled": True, "api_provider": "none"},  # Static component, no API needed
-        "bullets": {"enabled": True, "api_provider": "deepseek"},
-        "caption": {"enabled": True, "api_provider": "deepseek"},
-        "frontmatter": {
-            "enabled": True,
-            "api_provider": "grok",  # Options: "deepseek", "grok"
-        },
-        "content": {"enabled": True, "api_provider": "grok"},  # Uses optimized Python calculator
-        "jsonld": {"enabled": True, "api_provider": "deepseek"},
-        "table": {"enabled": True, "api_provider": "grok"},
-        "metatags": {"enabled": True, "api_provider": "deepseek"},
-        "tags": {"enabled": True, "api_provider": "deepseek"},
-        "propertiestable": {"enabled": True, "api_provider": "none"},  # Static component, extracts from frontmatter
-        "badgesymbol": {"enabled": True, "api_provider": "none"},  # Static component, extracts from frontmatter
-    },
-}
-
-# API Provider Configuration
-API_PROVIDERS = {
-    "deepseek": {
-        "name": "DeepSeek",
-        "env_key": "DEEPSEEK_API_KEY",
-        "env_var": "DEEPSEEK_API_KEY",  # Add this for test compatibility
-        "base_url": "https://api.deepseek.com",
-        "model": "deepseek-chat",
-    },
-    "grok": {
-        "name": "Grok (X.AI)",
-        "env_key": "GROK_API_KEY",
-        "env_var": "GROK_API_KEY",  # Add this for test compatibility
-        "base_url": "https://api.x.ai",  # Remove /v1 since APIClient adds it
-        "model": "grok-2",  # grok-2 works reliably; grok-4 currently uses reasoning tokens without completion output
-    },
-}
-
 # Setup logging
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
 )
 
 
+def fallback_get_api_key(provider: str) -> Optional[str]:
+    """Fallback method to get API key from environment when imports fail."""
+    try:
+        # Try to get from environment first
+        import os
+        
+        # Map provider names to environment variable names
+        env_key_map = {
+            "deepseek": "DEEPSEEK_API_KEY",
+            "grok": "GROK_API_KEY"
+        }
+        
+        env_key = env_key_map.get(provider.lower())
+        if env_key:
+            # Try to get from os.environ first
+            api_key = os.getenv(env_key)
+            if api_key:
+                return api_key
+        
+        # Try to load from .env file directly
+        env_file = Path(".env")
+        if env_file.exists():
+            with open(env_file, 'r', encoding='utf-8') as f:
+                for line in f:
+                    line = line.strip()
+                    if line and not line.startswith('#') and '=' in line:
+                        key, value = line.split('=', 1)
+                        key = key.strip()
+                        value = value.strip().strip('"').strip("'")
+                        if key == env_key:
+                            return value
+        
+        return None
+        
+    except Exception as e:
+        logging.warning(f"Error in fallback API key retrieval: {e}")
+        return None
+
+
 def create_api_client(provider: str):
     """Create an API client for the specified provider."""
 
     # Handle special case for components that don't need API clients
-    if provider == "none":
+    if provider in ["none", "frontmatter"]:
         return None
 
     if provider not in API_PROVIDERS:
@@ -175,7 +164,47 @@ def create_api_client(provider: str):
         )
 
     except ImportError as e:
-        raise ImportError(f"Failed to import API client modules: {e}")
+        # Fallback when imports fail - try to get API key directly
+        logging.warning(f"Import failed for API modules: {e}")
+        logging.info("Attempting fallback API key retrieval...")
+        
+        api_key = fallback_get_api_key(provider)
+        if not api_key:
+            raise ValueError(
+                f"Fallback failed: API key not found for {provider}. Please set {provider_config['env_key']} in your .env file."
+            )
+        
+        try:
+            # Try to create a basic APIClient with fallback method
+            from api.client import APIClient
+            return APIClient(
+                api_key=api_key,
+                base_url=provider_config["base_url"],
+                model=provider_config["model"],
+            )
+        except ImportError:
+            raise ImportError(f"Failed to import API client modules: {e}")
+        
+    except Exception as e:
+        # Try fallback on any other error
+        logging.warning(f"Error creating API client: {e}")
+        logging.info("Attempting fallback API key retrieval...")
+        
+        api_key = fallback_get_api_key(provider)
+        if not api_key:
+            raise ValueError(
+                f"Fallback failed: API key not found for {provider}. Please set {provider_config['env_key']} in your .env file."
+            )
+        
+        try:
+            from api.client import APIClient
+            return APIClient(
+                api_key=api_key,
+                base_url=provider_config["base_url"],
+                model=provider_config["model"],
+            )
+        except Exception as fallback_error:
+            raise Exception(f"Both primary and fallback API client creation failed. Primary: {e}, Fallback: {fallback_error}")
 
 
 def get_api_client_for_component(component_type: str):
@@ -183,9 +212,9 @@ def get_api_client_for_component(component_type: str):
 
     components_config = COMPONENT_CONFIG.get("components", {})
     if component_type in components_config:
-        provider = components_config[component_type]["api_provider"]
+        provider = components_config[component_type]["data_provider"]
     else:
-        provider = "grok"  # Default provider (changed from deepseek to grok)
+        provider = "deepseek"  # Default provider
 
     return create_api_client(provider)
 
@@ -234,6 +263,7 @@ def run_dynamic_generation(
     components: list = None,
     interactive: bool = False,
     test_api: bool = False,
+    author_id: int = None,
     start_index: int = 1,
 ):
     """Run dynamic schema-driven content generation."""
@@ -249,13 +279,26 @@ def run_dynamic_generation(
     print("🚀 DYNAMIC SCHEMA-DRIVEN GENERATION")
     print("=" * 50)
 
-        # Initialize the generator with API client
+    # Initialize generator
     try:
         api_client = APIClient()
-        generator = DynamicGenerator(api_client=api_client)
+        generator = DynamicGenerator()
     except Exception as e:
         print(f"❌ Error initializing generator: {e}")
         return False
+
+    # Validate and set author if provided
+    author_info = None
+    if author_id is not None:
+        author_info = get_author_by_id(author_id)
+        if author_info:
+            print(f"👤 Using Author: {author_info['name']} ({author_info['country']})")
+            # Set the author in the generator
+            generator.set_author(author_info)
+        else:
+            print(f"❌ Author with ID {author_id} not found!")
+            list_authors()
+            return False
 
     # Test API connection if requested
     if test_api:
@@ -269,18 +312,18 @@ def run_dynamic_generation(
 
     # Interactive mode
     if interactive:
-        return run_interactive_generation(generator)
+        return run_interactive_generation(generator, author_info)
 
     # Batch mode - generate all materials if no specific material requested
     if material is None:
-        return run_batch_generation(generator, components, start_index)
+        return run_batch_generation(generator, author_info, components, start_index)
 
     # Generate for specific material
-    return run_material_generation(generator, material, components)
+    return run_material_generation(generator, material, components, author_info)
 
 
 def run_batch_generation(
-    generator, components: list = None, start_index: int = 1
+    generator, author_info: dict = None, components: list = None, start_index: int = 1
 ):
     """Run batch generation for all available materials without user interaction."""
 
@@ -307,6 +350,8 @@ def run_batch_generation(
     if start_index > 1:
         print(f"🚀 Starting at material #{start_index}: {materials[start_idx]}")
         print(f"📋 Skipping first {start_idx} materials")
+    if author_info:
+        print(f"👤 Author: {author_info['name']} ({author_info['country']})")
     print()
 
     generated_count = 0
@@ -318,7 +363,7 @@ def run_batch_generation(
 
             # Generate content for this material
             success = run_material_generation(
-                generator, material, target_components
+                generator, material, target_components, author_info
             )
 
             if success:
@@ -358,7 +403,7 @@ def run_batch_generation(
     return generated_count > 0
 
 
-def run_interactive_generation(generator):
+def run_interactive_generation(generator, author_info: dict = None):
     """Run interactive generation with user prompts."""
 
     print("🎮 Interactive Generation Mode")
@@ -422,7 +467,7 @@ def run_interactive_generation(generator):
 
             # Generate content
             success = run_material_generation(
-                generator, material, selected_components
+                generator, material, selected_components, author_info
             )
             if success:
                 generated_count += 1
@@ -474,15 +519,9 @@ def save_component_to_file_original(material: str, component_type: str, content:
 
 
 def run_material_generation(
-    generator, material: str, components: list = None
+    generator, material: str, components: list = None, author_info: dict = None
 ):
     """Generate content for a specific material with component configuration."""
-
-    # Get material data from generator
-    material_data = generator.get_material(material)
-    if not material_data:
-        print(f"❌ Material '{material}' not found in materials database")
-        return False
 
     if components is None:
         components = generator.get_available_components()
@@ -530,11 +569,16 @@ def run_material_generation(
         )
 
     # Display API provider assignments
-    print(f"\n🌐 API Provider Assignments:")
+    print(f"\n🌐 Data Provider Assignments:")
     for component in enabled_components:
         if component in components_config:
-            provider = components_config[component]["api_provider"]
-            provider_name = API_PROVIDERS.get(provider, {}).get("name", provider)
+            provider = components_config[component]["data_provider"]
+            if provider == "frontmatter":
+                provider_name = "Frontmatter Data"
+            elif provider == "none":
+                provider_name = "Static Component"
+            else:
+                provider_name = API_PROVIDERS.get(provider, {}).get("name", provider)
             print(f"   {component}: {provider_name}")
         else:
             print(f"   {component}: Default (DeepSeek)")
@@ -551,45 +595,37 @@ def run_material_generation(
 
     for component_type in enabled_components:
         try:
-            # Get the appropriate API client for this component
-            api_client = get_api_client_for_component(component_type)
             provider = components_config.get(component_type, {}).get(
-                "api_provider", "deepseek"
+                "data_provider", "deepseek"
             )
             
             # Handle special provider names
-            if provider == "none":
+            if provider == "frontmatter":
+                provider_name = "Frontmatter Data"
+            elif provider == "none":
                 provider_name = "Static Component"
             else:
                 provider_name = API_PROVIDERS.get(provider, {}).get("name", provider)
 
-            # Determine author based on material's round-robin assignment
+            # Determine author for components (only use CLI author if specified)
             component_author_info = None
-            
-            # Get author_id from material metadata (round-robin assignment)
-            material_author_id = material_data.get('author_id') if material_data else None
-            if material_author_id:
-                component_author_info = get_author_by_id(material_author_id)
-                print(f"🎯 Using material-assigned author: Author {material_author_id} for {material}")
-            else:
-                # Fallback to default author if no assignment found
-                component_author_info = get_author_by_id(1)
-                print(f"⚠️  No author assignment found for {material}, using default Author 1")
+
+            # Use CLI author if specified - no global defaults
+            if author_info is not None:
+                component_author_info = author_info
 
             print(f"\n🔧 Generating {component_type} using {provider_name}...")
             if component_author_info:
                 print(
                     f"   👤 Author: {component_author_info['name']} ({component_author_info['country']})"
                 )
-                print(f"   🔧 DEBUG: component_author_info = {component_author_info}")
-            else:
-                print("   ❌ No author info available")
 
             # Create a temporary generator with this API client
             from generators.dynamic_generator import DynamicGenerator
 
-            # For static components (api_client is None), just pass None
-            temp_generator = DynamicGenerator(api_client=api_client, provider_name=provider_name)
+            # For components that don't need API clients (api_client is None), 
+            # the generator should handle this appropriately without mock
+            temp_generator = DynamicGenerator()
 
             # Set author info for ALL components
             if component_author_info:
@@ -633,9 +669,14 @@ def run_material_generation(
 
     for component_type, result in results.items():
         provider = components_config.get(component_type, {}).get(
-            "api_provider", "default"
+            "data_provider", "default"
         )
-        provider_name = API_PROVIDERS.get(provider, {}).get("name", provider)
+        if provider == "frontmatter":
+            provider_name = "Frontmatter Data"
+        elif provider == "none":
+            provider_name = "Static Component"
+        else:
+            provider_name = API_PROVIDERS.get(provider, {}).get("name", provider)
 
         if result.success:
             print(f"   ✅ {component_type} ({provider_name})")
@@ -663,7 +704,6 @@ def show_component_configuration():
 
     # Get components configuration
     components_config = COMPONENT_CONFIG.get("components", {})
-    global_author_id = COMPONENT_CONFIG.get("author_id")
 
     enabled_count = sum(1 for config in components_config.values() if config["enabled"])
     disabled_count = len(components_config) - enabled_count
@@ -671,33 +711,26 @@ def show_component_configuration():
     print(
         f"Total Components: {len(components_config)} ({enabled_count} enabled, {disabled_count} disabled)"
     )
-
-    # Show global author assignment
-    if global_author_id:
-        global_author = get_author_by_id(global_author_id)
-        author_name = (
-            global_author["name"] if global_author else f"Author {global_author_id}"
-        )
-        author_country = global_author["country"] if global_author else "Unknown"
-        print(
-            f"Global Author: {author_name} ({author_country}) - ID {global_author_id}"
-        )
-    else:
-        print("Global Author: None assigned")
+    print("Global Author: Dynamic assignment per generation (no default)")
     print()
 
     # Group by API provider
     provider_groups = {}
     for component, config in components_config.items():
         if config["enabled"]:
-            provider = config["api_provider"]
+            provider = config["data_provider"]
             if provider not in provider_groups:
                 provider_groups[provider] = []
             provider_groups[provider].append(component)
 
     # Display by provider
     for provider, components in provider_groups.items():
-        provider_name = API_PROVIDERS.get(provider, {}).get("name", provider)
+        if provider == "frontmatter":
+            provider_name = "Frontmatter Data"
+        elif provider == "none":
+            provider_name = "Static Component"
+        else:
+            provider_name = API_PROVIDERS.get(provider, {}).get("name", provider)
         print(f"🌐 {provider_name} ({len(components)} components):")
         for component in sorted(components):
             print(f"   ✅ {component}")
@@ -769,7 +802,7 @@ def check_environment():
         print("🧪 API Client Tests:")
         for provider_id, provider_info in API_PROVIDERS.items():
             try:
-                create_api_client(provider_id)
+                client = create_api_client(provider_id)
                 print(f"   ✅ {provider_info['name']}: Client created successfully")
             except Exception as e:
                 print(f"   ❌ {provider_info['name']}: {str(e)}")
@@ -1293,6 +1326,9 @@ EXAMPLES:
         "--components", help="Comma-separated list of components to generate"
     )
     parser.add_argument(
+        "--author", type=int, help="Author ID (1-4) for country-specific writing style"
+    )
+    parser.add_argument(
         "--start-index",
         type=int,
         default=1,
@@ -1448,6 +1484,7 @@ def main():
                 components=components_list,
                 interactive=args.interactive,
                 test_api=args.test_api,
+                author_id=args.author,
                 start_index=args.start_index,
             )
 

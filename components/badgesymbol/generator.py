@@ -8,7 +8,9 @@ Integrated with the modular component architecture.
 
 import sys
 from pathlib import Path
-from typing import Dict, Any, Optional
+from typing import Dict, Optional, Any
+import json
+import yaml
 
 # Add the project root to the Python path
 project_root = Path(__file__).parent.parent.parent
@@ -17,44 +19,130 @@ if str(project_root) not in sys.path:
 
 # Import after path setup
 try:
-    from generators.component_generators import StaticComponentGenerator
+    from generators.component_generators import FrontmatterComponentGenerator, ComponentResult
 except ImportError:
     # Fallback if running standalone
-    class StaticComponentGenerator:
+    class FrontmatterComponentGenerator:
         def __init__(self, component_type): 
             self.component_type = component_type
-        def _generate_static_content(self, *args, **kwargs):
+        def generate(self, *args, **kwargs):
             raise NotImplementedError("Base class method")
+    
+    class ComponentResult:
+        def __init__(self, component_type, content, success, error_message=None):
+            self.component_type = component_type
+            self.content = content
+            self.success = success
+            self.error_message = error_message
 
 
-class BadgeSymbolComponentGenerator(StaticComponentGenerator):
-    """Generator for badge symbol components using frontmatter data"""
+class BadgesymbolComponentGenerator(FrontmatterComponentGenerator):
+    """Generator for badge symbol components using frontmatter data - NO API CALLS"""
     
     def __init__(self):
         super().__init__("badgesymbol")
-        self.component_info = {
-            "name": "Badge Symbol",
-            "description": "Generates standardized badge symbol tables from frontmatter data",
-            "version": "2.0.0",  # Updated version
-            "type": "static"
-        }
     
-    def _generate_static_content(self, material_name: str, material_data: Dict,
-                                author_info: Optional[Dict] = None,
-                                frontmatter_data: Optional[Dict] = None,
-                                schema_fields: Optional[Dict] = None) -> str:
-        """Generate badge symbol component content from frontmatter data"""
-        if not frontmatter_data:
-            return self._generate_fallback_content(material_name)
+    def _extract_from_frontmatter(self, material_name: str, frontmatter_data: Dict) -> str:
+        """Generate badge symbol component content from frontmatter data using schema and example"""
         
-        # Extract values for badge symbol
-        symbol = self._get_field(frontmatter_data, ['chemicalProperties.symbol', 'symbol'], material_name[:2].upper())
-        material_type = self._get_field(frontmatter_data, ['chemicalProperties.materialType', 'materialType', 'category'], 'material')
+        # Load example file to understand the expected format
+        try:
+            example_path = Path(__file__).parent / "example_badgesymbol.md"
+            example_fields = {}
+            if example_path.exists():
+                with open(example_path, 'r', encoding='utf-8') as f:
+                    example_content = f.read()
+                    example_fields = self._parse_example_frontmatter(example_content)
+        except Exception:
+            example_fields = {}
         
-        # Create frontmatter section only
-        frontmatter = f'---\nsymbol: "{symbol}"\nmaterialType: "{material_type.lower()}"\n---'
+        # Load schema to understand expected structure  
+        try:
+            schema_path = Path(__file__).parent.parent.parent / "schemas" / "material.json"
+            schema_fields = {}
+            if schema_path.exists():
+                with open(schema_path, 'r', encoding='utf-8') as f:
+                    schema = json.load(f)
+                    chem_props = schema.get('materialProfile', {}).get('profile', {}).get('chemicalProperties', {}).get('properties', {})
+                    if chem_props:
+                        schema_fields = {
+                            'symbol': chem_props.get('symbol', {}),
+                            'materialType': chem_props.get('materialType', {})
+                        }
+        except Exception:
+            schema_fields = {}
         
-        return frontmatter
+        # Extract values dynamically
+        frontmatter_output = {}
+        
+        # Priority 1: Use example fields if available
+        if example_fields:
+            for field_name, example_value in example_fields.items():
+                extracted_value = self._extract_field_value(frontmatter_data, field_name, material_name)
+                frontmatter_output[field_name] = extracted_value
+        # Priority 2: Use schema fields
+        elif schema_fields:
+            for field_name in schema_fields.keys():
+                extracted_value = self._extract_field_value(frontmatter_data, field_name, material_name)
+                frontmatter_output[field_name] = extracted_value
+        # Priority 3: Fallback to hardcoded extraction
+        else:
+            symbol = self._get_field(frontmatter_data, ['chemicalProperties.symbol', 'symbol'], material_name[:2].upper())
+            material_type = self._get_field(frontmatter_data, ['chemicalProperties.materialType', 'materialType', 'category'], 'material')
+            frontmatter_output = {
+                'symbol': symbol,
+                'materialType': material_type.lower()
+            }
+        
+        # Build frontmatter YAML
+        yaml_lines = ['---']
+        for key, value in frontmatter_output.items():
+            yaml_lines.append(f'{key}: "{value}"')
+        yaml_lines.append('---')
+        
+        return '\n'.join(yaml_lines)
+    
+    def _parse_example_frontmatter(self, example_content: str) -> Dict[str, str]:
+        """Parse example file to extract frontmatter fields"""
+        try:
+            if example_content.startswith('---'):
+                parts = example_content.split('---', 2)
+                if len(parts) >= 2:
+                    frontmatter_yaml = parts[1].strip()
+                    return yaml.safe_load(frontmatter_yaml) or {}
+        except Exception:
+            pass
+        return {}
+    
+    def _extract_field_value(self, frontmatter_data: Dict, field_name: str, material_name: str) -> str:
+        """Extract field value using multiple potential paths"""
+        
+        # Define field extraction paths
+        field_paths = {
+            'symbol': ['chemicalProperties.symbol', 'symbol', 'chemicalFormula'],
+            'materialType': ['chemicalProperties.materialType', 'materialType', 'category', 'type']
+        }
+        
+        paths = field_paths.get(field_name, [field_name])
+        
+        for path in paths:
+            value = self._get_field(frontmatter_data, [path], None)
+            if value and value != 'None':
+                # Apply field-specific processing
+                if field_name == 'symbol' and len(value) > 4:
+                    # Truncate long symbols
+                    return value[:4].upper()
+                elif field_name == 'materialType':
+                    return value.lower()
+                return value
+        
+        # Generate fallback values
+        if field_name == 'symbol':
+            return material_name[:2].upper()
+        elif field_name == 'materialType':
+            return 'material'
+        
+        return field_name
     
     def _get_field(self, data: Dict[str, Any], paths: list, default: str) -> str:
         """Get field value from nested dict using dot notation paths"""
@@ -81,7 +169,7 @@ class BadgeSymbolGenerator:
     """Legacy badge symbol generator for backward compatibility"""
     
     def __init__(self):
-        self.generator = BadgeSymbolComponentGenerator()
+        self.generator = BadgesymbolComponentGenerator()
         self.component_info = {
             "name": "Badge Symbol",
             "description": "Generates standardized badge symbol tables from frontmatter data",

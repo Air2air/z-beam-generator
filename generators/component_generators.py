@@ -226,38 +226,14 @@ class APIComponentGenerator(BaseComponentGenerator):
             'bullet_count': "2 to 6",
             'formatted_technical_specs': f"Technical specifications for {material_name} laser cleaning",
             'formatted_environmental_impact': f"Environmental benefits of {material_name} laser processing",
-            'formatted_regulatory_standards': f"Industry standards for {material_name} treatment",
-            
-            # ===== ENHANCED METADATA VARIABLES =====
-            # Material complexity and difficulty
-            'complexity': material_data.get('complexity', 'medium'),
-            'difficulty_score': material_data.get('difficulty_score', 3),
-            
-            # Laser parameters (from enhanced metadata)
-            'laser_fluence': material_data.get('laser_parameters', {}).get('fluence_threshold', 'TBD'),
-            'laser_pulse_duration': material_data.get('laser_parameters', {}).get('pulse_duration', 'TBD'),
-            'laser_wavelength': material_data.get('laser_parameters', {}).get('wavelength_optimal', 'TBD'),
-            'laser_power_range': material_data.get('laser_parameters', {}).get('power_range', 'TBD'),
-            
-            # Application and industry data
-            'applications_list': ', '.join(material_data.get('applications', ['General laser cleaning'])),
-            'surface_treatments_list': ', '.join(material_data.get('surface_treatments', ['Standard cleaning'])),
-            'industry_tags_list': ', '.join(material_data.get('industry_tags', ['Industrial'])),
-            
-            # Documentation metadata
-            'documentation_status': material_data.get('documentation_status', 'pending'),
-            'last_updated': material_data.get('last_updated', '2025-08-31'),
-            
-            # Complexity-based content hints
-            'complexity_level': f"Complexity: {material_data.get('complexity', 'medium').title()} (Score: {material_data.get('difficulty_score', 3)}/5)",
-            'technical_depth': 'advanced' if material_data.get('difficulty_score', 3) >= 4 else 'standard' if material_data.get('difficulty_score', 3) >= 3 else 'basic'
+            'formatted_regulatory_standards': f"Industry standards for {material_name} treatment"
         }
         
         # Add author-specific variables
         if author_info:
             template_vars.update(self._create_author_vars(author_info))
         else:
-            raise ValueError("Author information is required for content generation. Use --author argument to specify author.")
+            template_vars.update(self._create_default_author_vars())
         
         # Add schema field variables if available
         if schema_fields:
@@ -286,38 +262,18 @@ class APIComponentGenerator(BaseComponentGenerator):
         # Handle case where author_info might be None or not a dict
         if not author_info or not isinstance(author_info, dict):
             logger.debug(f"author_info is not a dict: {type(author_info)}")
-            raise ValueError("Author information must be a valid dictionary with complete author data.")
+            return self._create_default_author_vars()
         
-        country = author_info.get('country')
-        if not country:
-            raise ValueError(f"Author country is missing for author: {author_info}")
-            
-        author_id = author_info.get('id')
-        if author_id is None:
-            raise ValueError(f"Author ID is missing for author: {author_info}")
-            
-        author_name = author_info.get('name')
-        if not author_name:
-            raise ValueError(f"Author name is missing for author: {author_info}")
-        
-        title = author_info.get('title')
-        if not title:
-            raise ValueError(f"Author title is missing for author: {author_info}")
-            
-        expertise = author_info.get('expertise')
-        if not expertise:
-            raise ValueError(f"Author expertise is missing for author: {author_info}")
+        country = author_info.get('country', 'International')
+        author_id = author_info.get('id', 0)
+        author_name = author_info.get('name', 'Expert Author')
         
         vars_dict = {
             'country': country,
             'author_name': author_name,
-            'author_object': author_info,  # Pass the complete author object
-            'author_country': country,
-            'author_title': title,
-            'author_expertise': expertise,
-            'author_id': author_id,  # Keep as int
-            'author_sex': author_info.get('sex', ''),
-            'author_image': author_info.get('image', ''),
+            'author_title': author_info.get('title', 'Technical Expert'),
+            'author_expertise': author_info.get('expertise', 'Laser Processing'),
+            'author_id': str(author_id),
             'author_slug': author_name.lower().replace(' ', '-'),
         }
         
@@ -331,6 +287,19 @@ class APIComponentGenerator(BaseComponentGenerator):
         vars_dict['bullet_format_rules'] = self._get_bullet_format_rules(author_id)
         
         return vars_dict
+    
+    def _create_default_author_vars(self) -> Dict[str, str]:
+        """Create default author variables"""
+        return {
+            'country': 'International',
+            'author_name': 'Expert Author',
+            'author_title': 'Technical Expert',
+            'author_expertise': 'Laser Processing',
+            'author_id': '0',
+            'author_slug': 'expert-author',
+            'country_context': "Write from an international technical perspective with global industry standards.",
+            'bullet_format_rules': self._get_bullet_format_rules(0)
+        }
     
     def _get_bullet_format_rules(self, author_id: int) -> str:
         """Get author-specific bullet formatting rules"""
@@ -513,47 +482,80 @@ class AuthorComponentGenerator(StaticComponentGenerator):
 
 # Component generator factory
 
+class FrontmatterComponentGenerator(BaseComponentGenerator):
+    """Base class for components that extract data from frontmatter without API calls"""
+    
+    def __init__(self, component_type: str):
+        super().__init__(component_type)
+        self.component_info = {
+            "name": f"{component_type.title()} Component",
+            "description": f"Generates {component_type} from frontmatter data",
+            "version": "2.0.0",
+            "type": "frontmatter_extraction"
+        }
+    
+    def generate(self, material_name: str, material_data: Dict,
+                api_client=None, author_info: Optional[Dict] = None,
+                frontmatter_data: Optional[Dict] = None,
+                schema_fields: Optional[Dict] = None) -> ComponentResult:
+        """Generate component from frontmatter data - NO API calls required"""
+        try:
+            if not frontmatter_data:
+                return ComponentResult(
+                    component_type=self.component_type,
+                    content="",
+                    success=False,
+                    error_message="No frontmatter data available"
+                )
+            
+            content = self._extract_from_frontmatter(material_name, frontmatter_data)
+            return ComponentResult(
+                component_type=self.component_type,
+                content=content,
+                success=True
+            )
+        except Exception as e:
+            return ComponentResult(
+                component_type=self.component_type,
+                content="",
+                success=False,
+                error_message=str(e)
+            )
+    
+    def _extract_from_frontmatter(self, material_name: str, frontmatter_data: Dict) -> str:
+        """Override this method in subclasses to implement specific extraction logic"""
+        raise NotImplementedError("Subclasses must implement _extract_from_frontmatter")
+
+
 class ComponentGeneratorFactory:
-    """Factory for creating component generators"""
+    """Factory for creating component generators - API ONLY"""
     
-    _generators = {
-        'author': 'components.author.generator.AuthorComponentGenerator',
-        'badgesymbol': 'components.badgesymbol.generator.BadgeSymbolComponentGenerator',
-        'propertiestable': 'components.propertiestable.generator.PropertiesTableComponentGenerator',
-        'frontmatter': 'components.frontmatter.generator.FrontmatterComponentGenerator',
-        'content': 'components.content.generator.ContentComponentGenerator',
-        'bullets': 'components.bullets.generator.BulletsComponentGenerator',
-        'caption': 'components.caption.generator.CaptionComponentGenerator',
-        'table': 'components.table.generator.TableComponentGenerator',
-        'tags': 'components.tags.generator.TagsComponentGenerator',
-        'metatags': 'components.metatags.generator.MetatagsComponentGenerator',
-        'jsonld': 'components.jsonld.generator.JsonldComponentGenerator',
-    }
-    
-    @classmethod
-    def create_generator(cls, component_type: str) -> Optional[BaseComponentGenerator]:
-        """Create a component generator for the specified type"""
-        generator_spec = cls._generators.get(component_type)
-        if not generator_spec:
-            logger.warning(f"No generator found for component type: {component_type}")
-            return None
+    @staticmethod
+    def create_generator(component_type: str):
+        """Create appropriate generator for component type"""
         
         try:
-            # Handle string imports for external generator files
-            if isinstance(generator_spec, str):
-                module_path, class_name = generator_spec.rsplit('.', 1)
-                module = __import__(module_path, fromlist=[class_name])
-                generator_class = getattr(module, class_name)
-                return generator_class()
+            # Import API generators dynamically
+            if component_type == "frontmatter":
+                from components.frontmatter.generator import FrontmatterComponentGenerator
+                return FrontmatterComponentGenerator()
+            elif component_type == "bullets":
+                from generators.bullets_generator import BulletsComponentGenerator
+                return BulletsComponentGenerator()
+            elif component_type == "author":
+                from generators.author_generator import AuthorComponentGenerator
+                return AuthorComponentGenerator()
             else:
-                # Handle direct class references
-                return generator_spec()
-                
-        except Exception as e:
-            logger.error(f"Error creating generator for {component_type}: {e}")
+                # Try to import from components directory
+                module_path = f"components.{component_type}.generator"
+                try:
+                    module = __import__(module_path, fromlist=[f"{component_type.title()}ComponentGenerator"])
+                    generator_class = getattr(module, f"{component_type.title()}ComponentGenerator")
+                    return generator_class()
+                except (ImportError, AttributeError):
+                    logger.error(f"No generator found for component type: {component_type}")
+                    return None
+                    
+        except ImportError as e:
+            logger.error(f"Error importing generator for {component_type}: {e}")
             return None
-    
-    @classmethod
-    def get_available_components(cls) -> List[str]:
-        """Get list of available component types"""
-        return list(cls._generators.keys())

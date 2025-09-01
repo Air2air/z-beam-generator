@@ -180,30 +180,10 @@ class APIClient:
         self.stats['total_requests'] += 1
         start_time = time.time()
         
-        # Log API request details
-        logger.info(f"🚀 API Request #{self.stats['total_requests']}: {self.model}")
-        logger.debug(f"   📝 Prompt length: {len(request.prompt)} chars")
-        logger.debug(f"   🎛️  Parameters: temp={request.temperature}, max_tokens={request.max_tokens}")
-        if request.system_prompt:
-            logger.debug(f"   💬 System prompt: {len(request.system_prompt)} chars")
-        
         for attempt in range(self.config.max_retries + 1):
             try:
-                if attempt > 0:
-                    logger.warning(f"   🔄 Retry attempt {attempt}/{self.config.max_retries}")
-                
                 response = self._make_request(request)
                 response.retry_count = attempt
-                
-                # Log API response details
-                if response.success:
-                    logger.info(f"   ✅ Success in {response.response_time:.2f}s")
-                    logger.info(f"   📊 Tokens: {response.token_count} total ({response.prompt_tokens}+{response.completion_tokens})")
-                    logger.info(f"   📝 Content: {len(response.content)} chars generated")
-                    if response.retry_count > 0:
-                        logger.info(f"   🔄 Required {response.retry_count} retries")
-                else:
-                    logger.error(f"   ❌ Failed: {response.error}")
                 
                 # Update statistics
                 if response.success:
@@ -281,10 +261,6 @@ class APIClient:
             "stream": False
         }
         
-        # Log request details
-        logger.debug(f"   🌐 Making API call to {self.base_url}")
-        logger.debug(f"   📦 Payload size: {len(json.dumps(payload))} bytes")
-        
         # Make request
         response = self.session.post(
             f"{self.base_url}/v1/chat/completions",
@@ -293,9 +269,6 @@ class APIClient:
         )
         
         response_time = time.time() - start_time
-        
-        # Log response status
-        logger.debug(f"   📡 HTTP {response.status_code} in {response_time:.2f}s")
         
         # Process response
         if response.status_code == 200:
@@ -306,7 +279,6 @@ class APIClient:
             if not content and data.get('choices', [{}])[0].get('message', {}).get('content') == "":
                 completion_tokens = data.get('usage', {}).get('completion_tokens_details', {}).get('reasoning_tokens', 0)
                 if completion_tokens > 0:
-                    logger.warning("   ⚠️  Model produced reasoning tokens but no completion content")
                     return APIResponse(
                         success=False,
                         content="",
@@ -412,24 +384,43 @@ class MockAPIClient:
         return True
     
     def generate(self, request: GenerationRequest) -> APIResponse:
-        """Generate mock content for testing"""
+        """Generate mock content for testing with better prompt awareness."""
         
         self.stats['total_requests'] += 1
         self.stats['successful_requests'] += 1
         
-        # Generate realistic mock content based on prompt
+        # Analyze the prompt to generate more realistic mock content
         prompt_lower = request.prompt.lower()
         
+        # Extract material information from prompt
+        material_name = "Unknown Material"
+        formula = "Formula"
+        
+        # Simple extraction logic
+        import re
+        material_match = re.search(r'generate.*?content for ([^(]+)', request.prompt, re.IGNORECASE)
+        if material_match:
+            material_name = material_match.group(1).strip()
+        
+        formula_match = re.search(r'\(([^)]+)\)', request.prompt)
+        if formula_match:
+            formula = formula_match.group(1).strip()
+        
+        # Extract author information 
+        author_match = re.search(r'author: ([^-]+)', request.prompt, re.IGNORECASE)
+        author = author_match.group(1).strip() if author_match else "Expert Author"
+        
+        # Generate content based on prompt analysis
         if "frontmatter" in prompt_lower:
-            content = self._generate_mock_frontmatter(request.prompt)
+            content = self._generate_mock_frontmatter_from_prompt(material_name, formula, request.prompt)
         elif "content" in prompt_lower or "article" in prompt_lower:
-            content = self._generate_mock_article(request.prompt)
+            content = self._generate_mock_article_from_prompt(material_name, formula, author, request.prompt)
         elif "table" in prompt_lower:
             content = self._generate_mock_table(request.prompt)
         elif "json" in prompt_lower or "jsonld" in prompt_lower:
             content = self._generate_mock_jsonld(request.prompt)
         else:
-            content = f"Mock generated content for: {request.prompt[:100]}..."
+            content = self._generate_mock_article_from_prompt(material_name, formula, author, request.prompt)
         
         mock_tokens = len(content.split())
         self.stats['total_tokens'] += mock_tokens
@@ -464,23 +455,87 @@ class MockAPIClient:
             'total_response_time': 0.0
         }
     
-    def _generate_mock_frontmatter(self, prompt: str) -> str:
-        """Generate mock frontmatter"""
-        material = "Test Material"
-        for word in prompt.split():
-            if word.istitle() and len(word) > 3:
-                material = word
-                break
+    def _generate_mock_article_from_prompt(self, material_name: str, formula: str, author: str, prompt: str) -> str:
+        """Generate mock article content based on prompt analysis."""
         
+        # Extract key information from prompt
+        has_taiwan_style = "systematic" in prompt.lower() or "methodical" in prompt.lower()
+        has_formatting = "formatting" in prompt.lower()
+        has_technical_reqs = "wavelength" in prompt.lower() or "1064" in prompt.lower()
+        
+        # Basic article structure
+        content_parts = [
+            f"# Laser Cleaning of {material_name}: Technical Analysis",
+            f"**{author}**",
+            "",
+            f"## Overview",
+            f"This systematic analysis examines laser cleaning applications for {material_name} ({formula}). "
+            f"The material demonstrates excellent compatibility with 1064 nm wavelength processing.",
+            "",
+            f"## Material Properties",
+            f"Chemical composition {formula} provides specific absorption characteristics that enable "
+            f"efficient laser cleaning processes. Key properties include:",
+            "",
+            f"- **Formula**: {formula}",
+            f"- **Wavelength compatibility**: 1064 nm optimal",
+            f"- **Processing efficiency**: High absorption coefficient",
+            "",
+            f"## Technical Parameters"
+        ]
+        
+        # Add technical specifications if mentioned in prompt
+        if has_technical_reqs:
+            content_parts.extend([
+                "Systematic parameter optimization ensures effective cleaning:",
+                "",
+                "- **Wavelength**: 1064 nm (standard fiber laser)",
+                "- **Pulse duration**: 10-100 ns range", 
+                "- **Power density**: 10-50 MW/cm²",
+                "- **Scanning speed**: 100-500 mm/min",
+                ""
+            ])
+        
+        # Add applications section
+        content_parts.extend([
+            "## Industrial Applications",
+            f"The systematic approach to {material_name} laser cleaning enables:",
+            "",
+            "1. **Surface preparation** - Precise contamination removal",
+            "2. **Manufacturing processes** - Clean surface finishing", 
+            "3. **Maintenance applications** - Efficient restoration",
+            "",
+            "## Safety Considerations",
+            "Class 4 laser safety protocols require systematic implementation:",
+            "",
+            "- Proper eye protection (OD 7+ at 1064 nm)",
+            "- Enclosed processing environment",
+            "- Trained operator procedures",
+            "",
+            "## Conclusion",
+            f"Systematic laser cleaning of {material_name} demonstrates excellent results "
+            f"with proper parameter optimization and safety implementation."
+        ])
+        
+        # Add Taiwan-style language if detected
+        if has_taiwan_style:
+            # Replace some phrases with more systematic language
+            content = "\n".join(content_parts)
+            content = content.replace("excellent", "systematic and precise")
+            content = content.replace("demonstrates", "shows through careful analysis")
+            return content
+        
+        return "\n".join(content_parts)
+    
+    def _generate_mock_frontmatter_from_prompt(self, material_name: str, formula: str, prompt: str) -> str:
+        """Generate mock frontmatter based on prompt analysis."""
         return f"""---
-name: {material}
-description: "Mock description for {material} laser cleaning applications"
+name: {material_name}
+description: "Systematic laser cleaning analysis for {material_name} applications"
 category: "metal"
-author: "Mock Expert"
-keywords: {material.lower()}, laser cleaning, surface preparation
+formula: "{formula}"
 chemicalProperties:
-  symbol: "Tm"
-  formula: "TestMaterial"
+  symbol: "Material"
+  formula: "{formula}"
   materialType: "compound"
 properties:
   density: "7.8 g/cm³"
@@ -489,9 +544,9 @@ properties:
 applications:
 - industry: "Manufacturing"
   useCase: "Surface cleaning and preparation"
-  detail: "Mock application details"
-title: "Laser Cleaning {material} - Technical Guide"
-headline: "Comprehensive guide for {material} laser processing"
+  detail: "Systematic laser cleaning optimization"
+title: "Laser Cleaning {material_name} - Technical Guide"
+headline: "Comprehensive systematic analysis for {material_name} laser processing"
 ---"""
     
     def _generate_mock_article(self, prompt: str) -> str:

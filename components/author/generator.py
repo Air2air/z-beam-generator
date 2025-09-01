@@ -19,27 +19,34 @@ if str(project_root) not in sys.path:
 
 # Import after path setup
 try:
-    from generators.component_generators import StaticComponentGenerator
+    from generators.component_generators import APIComponentGenerator, ComponentResult
 except ImportError:
     # Fallback if running standalone
-    class StaticComponentGenerator:
+    class APIComponentGenerator:
         def __init__(self, component_type): 
             self.component_type = component_type
-        def _generate_static_content(self, *args, **kwargs):
+        def generate(self, *args, **kwargs):
             raise NotImplementedError("Base class method")
+    
+    class ComponentResult:
+        def __init__(self, component_type, content, success, error_message=None):
+            self.component_type = component_type
+            self.content = content
+            self.success = success
+            self.error_message = error_message
 
 logger = logging.getLogger(__name__)
 
-class AuthorComponentGenerator(StaticComponentGenerator):
+class AuthorComponentGenerator(APIComponentGenerator):
     """Generator for author components using local author data"""
     
     def __init__(self):
         super().__init__("author")
     
-    def _generate_static_content(self, material_name: str, material_data: Dict,
-                                author_info: Optional[Dict] = None,
-                                frontmatter_data: Optional[Dict] = None,
-                                schema_fields: Optional[Dict] = None) -> str:
+    def generate(self, material_name: str, material_data: Dict,
+                api_client=None, author_info: Optional[Dict] = None,
+                frontmatter_data: Optional[Dict] = None,
+                schema_fields: Optional[Dict] = None) -> ComponentResult:
         """Generate author component content using author system"""
         try:
             from run import get_author_by_id
@@ -54,7 +61,12 @@ class AuthorComponentGenerator(StaticComponentGenerator):
             # Get author data
             author_data = get_author_by_id(author_id)
             if not author_data:
-                return f"Error: Author with ID {author_id} not found"
+                return ComponentResult(
+                    component_type="author",
+                    content="",
+                    success=False,
+                    error_message=f"Author with ID {author_id} not found"
+                )
             
             # Generate author content
             author_name = author_data.get('name', 'Unknown Author')
@@ -79,11 +91,20 @@ class AuthorComponentGenerator(StaticComponentGenerator):
 *Contact {author_name.split()[0]} for expert consultation on laser cleaning applications for {material_name} and related materials.*
 """.strip()
             
-            return content
+            return ComponentResult(
+                component_type="author",
+                content=content,
+                success=True
+            )
             
         except Exception as e:
             logger.error(f"Error generating author content: {e}")
-            return f"Error generating author content: {e}"
+            return ComponentResult(
+                component_type="author",
+                content="",
+                success=False,
+                error_message=str(e)
+            )
 
 
 # Legacy compatibility classes and functions

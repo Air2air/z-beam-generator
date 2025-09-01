@@ -145,6 +145,7 @@ class ComponentManager:
                         with open(prompt_file, 'r', encoding='utf-8') as f:
                             prompt_data = yaml.safe_load(f)
                             self.prompts[component_dir.name] = prompt_data
+                            logger.info(f"Loaded prompt: {component_dir.name}")
                     except Exception as e:
                         logger.error(f"Error loading prompt {prompt_file}: {e}")
     
@@ -175,38 +176,20 @@ class MaterialLoader:
                 data = yaml.safe_load(f)
                 materials_data = data.get('materials', {})
                 
-                # Handle both enhanced and legacy material formats
+                # Flatten materials by category
                 for category, category_data in materials_data.items():
                     items = category_data.get('items', [])
                     for item in items:
-                        if isinstance(item, dict):
-                            # Enhanced format with metadata
-                            material_name = item['name']
+                        material_name = item.get('name')
+                        if material_name:
                             self.materials[material_name] = {
                                 'name': material_name,
                                 'category': category,
                                 'article_type': category_data.get('article_type', 'material'),
-                                'author_id': item.get('author_id', 1),
-                                'complexity': item.get('complexity', 'medium'),
-                                'difficulty_score': item.get('difficulty_score', 3),
-                                'formula': item.get('formula', ''),
-                                'laser_parameters': item.get('laser_parameters', {}),
-                                'applications': item.get('applications', []),
-                                'surface_treatments': item.get('surface_treatments', []),
-                                'industry_tags': item.get('industry_tags', [])
-                            }
-                        else:
-                            # Legacy format - string only
-                            self.materials[item] = {
-                                'name': item,
-                                'category': category,
-                                'article_type': category_data.get('article_type', 'material'),
-                                'author_id': 1,  # Default assignment
-                                'complexity': 'medium',
-                                'difficulty_score': 3
+                                'data': item  # Store the full item data
                             }
                 
-                logger.info(f"Loaded {len(self.materials)} materials with enhanced metadata")
+                logger.info(f"Loaded {len(self.materials)} materials")
         except Exception as e:
             logger.error(f"Error loading materials: {e}")
     
@@ -226,23 +209,16 @@ class MaterialLoader:
 class DynamicGenerator:
     """Main dynamic content generator with schema-driven field generation"""
     
-    def __init__(self, api_client=None, provider_name=None):
+    def __init__(self, api_config=None):
+        """Initialize DynamicGenerator - API-only, no mock support"""
         self.schema_manager = SchemaManager()
         self.component_manager = ComponentManager()
         self.material_loader = MaterialLoader()
-        self.api_client = api_client
-        self.provider_name = provider_name  # Store provider name for frontmatter
+        self.api_client = None
+        self.api_config = api_config
         self.author_info = None  # Store author information
         
-        # Import and initialize API client if not provided
-        if not self.api_client:
-            try:
-                from api.client import APIClient
-                self.api_client = APIClient()
-                logger.info("Initialized API client")
-            except ImportError:
-                logger.error("API client not available")
-                self.api_client = None
+        logger.info("Dynamic Generator initialized - API-only mode")
     
     def get_available_components(self) -> List[str]:
         """Get list of available component types"""
@@ -256,10 +232,6 @@ class DynamicGenerator:
     def get_available_materials(self) -> List[str]:
         """Get list of available materials"""
         return self.material_loader.get_all_materials()
-    
-    def get_material(self, name: str) -> Optional[Dict]:
-        """Get material data by name"""
-        return self.material_loader.get_material(name)
     
     def set_author(self, author_info: Dict):
         """Set author information for content generation."""
@@ -302,13 +274,10 @@ class DynamicGenerator:
                           schema_fields: Optional[Dict] = None) -> ComponentResult:
         """Generate a single component using the new component generator system"""
         
-        logger.info(f"🔧 Starting generation: {component_type} for {material_name}")
-        
         try:
             # Get material info
             material = self.material_loader.get_material(material_name)
             if not material:
-                logger.error(f"   ❌ Material not found: {material_name}")
                 return ComponentResult(
                     component_type=component_type,
                     content="",
@@ -316,15 +285,12 @@ class DynamicGenerator:
                     error_message=f"Material {material_name} not found"
                 )
             
-            logger.debug(f"   📦 Material data loaded: {len(material)} fields")
-            
             # Import the component generator factory
             from generators.component_generators import ComponentGeneratorFactory
             
             # Create component generator
             generator = ComponentGeneratorFactory.create_generator(component_type)
             if not generator:
-                logger.error(f"   ❌ No generator available for: {component_type}")
                 return ComponentResult(
                     component_type=component_type,
                     content="",
@@ -332,47 +298,22 @@ class DynamicGenerator:
                     error_message=f"No generator available for component type: {component_type}"
                 )
             
-            logger.debug(f"   🏭 Generator created: {generator.__class__.__name__}")
-            
             # Get dynamic fields from schema for this material
             article_type = material.get('article_type', 'material')
             dynamic_fields = self.schema_manager.get_dynamic_fields(article_type)
             
-            logger.debug(f"   📋 Schema fields: {len(dynamic_fields)} dynamic fields")
-            
             # Extract frontmatter data if needed
             frontmatter_data = self._extract_frontmatter_data(material_name)
-            logger.debug(f"   📄 Frontmatter loaded: {len(frontmatter_data) if frontmatter_data else 0} fields")
             
             # Generate using the specific component generator with schema fields
-            logger.debug(f"   🚀 Calling generator.generate() for {component_type}")
-            
-            # Check if generator supports provider_name parameter (for content generator)
-            if hasattr(generator, 'generate') and component_type == 'content':
-                result = generator.generate(
-                    material_name=material_name,
-                    material_data=material,
-                    api_client=self.api_client,
-                    author_info=self.author_info,
-                    frontmatter_data=frontmatter_data,
-                    schema_fields=dynamic_fields,
-                    provider_name=self.provider_name  # Pass provider name for frontmatter
-                )
-            else:
-                result = generator.generate(
-                    material_name=material_name,
-                    material_data=material,
-                    api_client=self.api_client,
-                    author_info=self.author_info,
-                    frontmatter_data=frontmatter_data,
-                    schema_fields=dynamic_fields  # Pass dynamic schema fields
-                )
-            
-            # Log generation result
-            if result.success:
-                logger.info(f"   ✅ Generated {len(result.content)} chars successfully")
-            else:
-                logger.error(f"   ❌ Generation failed: {result.error_message}")
+            result = generator.generate(
+                material_name=material_name,
+                material_data=material,
+                api_client=self.api_client,
+                author_info=self.author_info,
+                frontmatter_data=frontmatter_data,
+                schema_fields=dynamic_fields  # Pass dynamic schema fields
+            )
             
             return result
             
