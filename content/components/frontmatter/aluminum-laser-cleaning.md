@@ -2,50 +2,38 @@
 name: Aluminum
 applications:
 - industry: Automotive
-  detail: Removing paint and corrosion from aluminum car parts
+  detail: Cleaning aluminum engine components for improved performance and longevity
 - industry: Aerospace
-  detail: Cleaning aluminum aircraft components for surface preparation
+  detail: Surface preparation of aluminum parts prior to painting or bonding
 technicalSpecifications:
-  powerRange: 50-500W
+  powerRange: 50-200W
   pulseDuration: 10-200ns
-  wavelength: 1064nm
-  spotSize: 0.05-1.5mm
+  wavelength: 1064nm (primary), 532nm (optional)
+  spotSize: 0.05-1.0mm
   repetitionRate: 20-100kHz
   fluenceRange: 1.0–10 J/cm²
   safetyClass: Class 4 (requires full enclosure)
-description: Technical overview of Aluminum, Al, for laser cleaning. Aluminum, characterized
-  by its symbol Al and atomic number 13, is a lightweight metal extensively used in
-  industries like automotive and aerospace. Laser cleaning of aluminum involves the
-  use of short-pulse lasers at a wavelength of 1064nm to remove surface contaminants
-  such as paint, corrosion, and oxides without damaging the underlying material. This
-  non-contact method ensures precision and preservation of the aluminum's microstructure,
-  making it ideal for surface preparation and restoration processes.
-author:
-  id: 3
-  name: Ikmanda Roswati
-  sex: m
-  title: Ph.D.
-  country: Indonesia
-  expertise: Ultrafast Laser Physics and Material Interactions
-  image: /images/author/ikmanda-roswati.jpg
+description: Technical overview of Aluminum for laser cleaning applications, including
+  density, wavelength, and industrial applications.
+author: Alessandro Moretti
 keywords: aluminum, aluminum metal, laser ablation, laser cleaning, non-contact cleaning,
   pulsed fiber laser, surface contamination removal, industrial laser parameters,
   thermal processing, surface restoration
 category: metal
 chemicalProperties:
-  symbol: AL
-  formula: Al
+  symbol: Al
+  formula: Aluminum
   materialType: metal
 properties:
   density: 2.7 g/cm³
   densityMin: 0.5 g/cm³
   densityMax: 22.6 g/cm³
   densityPercentile: 10.0
-  meltingPoint: 660.32°C
+  meltingPoint: 660.3°C
   meltingMin: -39°C
   meltingMax: 3422°C
   meltingPercentile: 18.4
-  thermalConductivity: 237 W/(m·K)
+  thermalConductivity: 237 W/m·K
   thermalMin: 8 W/m·K
   thermalMax: 429 W/m·K
   thermalPercentile: 54.4
@@ -61,10 +49,10 @@ properties:
   modulusMin: 70 GPa
   modulusMax: 411 GPa
   modulusPercentile: 0.0
-  laserType: pulsed fiber laser
+  laserType: Pulsed fiber laser
   wavelength: 1064nm
   fluenceRange: 1.0–10 J/cm²
-  chemicalFormula: Al
+  chemicalFormula: Aluminum
   laserAbsorptionMin: 0.02 cm⁻¹
   laserAbsorptionMax: 100 cm⁻¹
   laserReflectivityMin: 5%
@@ -76,12 +64,12 @@ properties:
   specificHeatMin: 0.13 J/g·K
   specificHeatMax: 0.90 J/g·K
 composition:
-- Aluminum (Al) - 99.99% purity
-- Trace elements like iron, silicon, copper, magnesium, manganese, and zinc
+- Aluminum
+- Trace elements
 compatibility:
-- Steel - good for welding and structural applications
-- Copper - excellent for electrical conductivity in applications
-regulatoryStandards: ASTM B209, ISO 6361-1, MIL-DTL-5002, AMS 4037
+- Steel
+- Copper
+regulatoryStandards: ISO 11146-1:2021, ANSI Z136.1-2014
 images:
   hero:
     alt: Aluminum surface undergoing laser cleaning showing precise contamination
@@ -95,20 +83,18 @@ title: Laser Cleaning Aluminum - Technical Guide for Optimal Processing
 headline: Comprehensive technical guide for laser cleaning metal aluminum
 environmentalImpact:
 - benefit: Reduction in chemical usage
-  description: Decreases chemical waste by up to 90% compared to traditional cleaning
-    methods
+  description: Up to 90% less chemical waste compared to traditional cleaning methods
 - benefit: Lower energy consumption
-  description: Laser cleaning consumes up to 50% less energy than abrasive methods
-- benefit: Reduced CO2 emissions
-  description: Emissions reduced by an estimated 30% due to less energy use and no
-    chemical processes
+  description: Energy savings of 20-30% over mechanical cleaning processes
+- benefit: Reduced waste generation
+  description: Decrease in solid waste by 50% due to non-contact cleaning
 outcomes:
-- result: Surface cleanliness
-- metric: Achieves a cleanliness level of less than 100 particles/cm²
-- result: Surface roughness
-  metric: Maintains a surface roughness within 0.1-0.5 µm Ra
-- result: Material integrity
-  metric: Preserves 99% of the original material properties post-cleaning
+- result: Improved surface cleanliness
+- metric: Contamination levels reduced by 99.9% as per ISO 14644-1 standards
+- result: Enhanced surface finish
+  metric: Surface roughness decreased by up to 50% measured by Ra values
+- result: Increased bonding strength
+  metric: Bond strength increased by 30% as per ASTM D3163 standards
 subject: Aluminum
 article_type: material
 ---

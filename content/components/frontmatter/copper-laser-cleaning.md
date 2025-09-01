@@ -1,32 +1,21 @@
 ---
 name: Copper
 applications:
-- industry: Manufacturing
-  detail: Cleaning copper surfaces for improved adhesion in the electronics industry
-- industry: Restoration
-  detail: Removing corrosion and oxidation from copper artifacts and sculptures
+- industry: Electronics
+  detail: Removing oxidation and surface contaminants from copper components
+- industry: Aerospace
+  detail: Cleaning copper parts for precision assembly and maintenance
 technicalSpecifications:
-  powerRange: 50-500W
+  powerRange: 50-200W
   pulseDuration: 10-100ns
-  wavelength: 1064nm
-  spotSize: 0.05-1.5mm
+  wavelength: 1064nm (primary), 532nm (optional)
+  spotSize: 0.1-1.0mm
   repetitionRate: 20-100kHz
-  fluenceRange: 0.5-5 J/cm²
+  fluenceRange: 1.0–10 J/cm²
   safetyClass: Class 4 (requires full enclosure)
-description: Technical overview of Copper, Cu, for laser cleaning. Copper, a highly
-  conductive metal with the chemical symbol Cu, is ideal for laser cleaning due to
-  its reflective properties and high thermal conductivity. Laser cleaning techniques
-  such as ablation and non-contact cleaning are effective for removing surface contaminants,
-  corrosion, and oxidation from copper, enhancing its utility in manufacturing and
-  restoration applications.
-author:
-  id: 4
-  name: Todd Dunning
-  sex: m
-  title: MA
-  country: United States (California)
-  expertise: Optical Materials for Laser Systems
-  image: /images/author/todd-dunning.jpg
+description: Technical overview of Copper for laser cleaning applications, including
+  density, wavelength, and industrial applications.
+author: Alessandro Moretti
 keywords: copper, copper metal, laser ablation, laser cleaning, non-contact cleaning,
   pulsed fiber laser, surface contamination removal, industrial laser parameters,
   thermal processing, surface restoration
@@ -44,15 +33,15 @@ properties:
   meltingMin: -39°C
   meltingMax: 3422°C
   meltingPercentile: 30.9
-  thermalConductivity: 385 W/m·K
+  thermalConductivity: 401 W/m·K
   thermalMin: 8 W/m·K
   thermalMax: 429 W/m·K
-  thermalPercentile: 89.5
+  thermalPercentile: 93.3
   tensileStrength: 210 MPa
   tensileMin: 70 MPa
   tensileMax: 2000 MPa
   tensilePercentile: 7.3
-  hardness: 3.0 on Mohs scale
+  hardness: 3.0 Mohs
   hardnessMin: 5 HB
   hardnessMax: 500 HV
   hardnessPercentile: 0.0
@@ -60,9 +49,9 @@ properties:
   modulusMin: 70 GPa
   modulusMax: 411 GPa
   modulusPercentile: 14.7
-  laserType: pulsed fiber laser
+  laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: 0.5-5 J/cm²
+  fluenceRange: 1.0–10 J/cm²
   chemicalFormula: Cu
   laserAbsorptionMin: 0.02 cm⁻¹
   laserAbsorptionMax: 100 cm⁻¹
@@ -75,13 +64,12 @@ properties:
   specificHeatMin: 0.13 J/g·K
   specificHeatMax: 0.90 J/g·K
 composition:
-- Copper (Cu) - 99.9% purity
-- 'Trace elements: Oxygen, Sulfur, Iron'
+- Copper
+- Trace elements
 compatibility:
-- Zinc for brass alloy formation
-- Tin for bronze alloy formation
-regulatoryStandards: ASTM B152/B152M-19 Standard Specification for Copper Sheet, Strip,
-  Plate, and Rolled Bar; ISO 9001 Quality Management Systems
+- Brass
+- Bronze
+regulatoryStandards: ISO 11146-1:2021, ANSI Z136.1
 images:
   hero:
     alt: Copper surface undergoing laser cleaning showing precise contamination removal
@@ -93,21 +81,19 @@ images:
 title: Laser Cleaning Copper - Technical Guide for Optimal Processing
 headline: Comprehensive technical guide for laser cleaning metal copper
 environmentalImpact:
-- benefit: Reduction in chemical usage
-  description: Laser cleaning reduces chemical waste by up to 90% compared to traditional
-    methods
-- benefit: Energy efficiency
-  description: Laser cleaning consumes 15% less energy than abrasive methods
-- benefit: Lower emissions
-  description: Decreases CO2 emissions by approximately 20 kg per cubic meter of copper
-    cleaned
+- benefit: Reduced chemical waste
+  description: Decreases chemical usage by 95% compared to traditional methods
+- benefit: Lower energy consumption
+  description: Reduces energy use by up to 80% due to precise targeting
+- benefit: Minimal secondary waste
+  description: Produces 90% less waste than abrasive cleaning methods
 outcomes:
-- result: Surface cleanliness
-- metric: Achieves 99.9% cleanliness level on copper surfaces
-- result: Surface roughness
-  metric: Reduces surface roughness to Ra 0.1-0.5 µm
-- result: Processing speed
-  metric: Cleans up to 1 m² per minute depending on laser settings
+- result: Improved surface cleanliness
+- metric: Achieves 99.9% contaminant removal efficiency
+- result: Enhanced material integrity
+  metric: Preserves 98% of original surface properties
+- result: Increased operational efficiency
+  metric: Reduces cleaning time by up to 70%
 subject: Copper
 article_type: material
 ---
