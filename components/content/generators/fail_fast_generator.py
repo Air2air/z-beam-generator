@@ -57,15 +57,10 @@ class FailFastContentGenerator:
         self.enable_scoring = enable_scoring
         self.human_threshold = human_threshold
         
-        # Initialize content scorer if enabled
+        # Initialize content scorer if enabled - FAIL FAST if not available
         if self.enable_scoring:
-            try:
-                from ..validation.content_scorer import create_content_scorer
-                self.content_scorer = create_content_scorer(human_threshold)
-            except ImportError:
-                logger.warning("Content scorer not available, scoring disabled")
-                self.enable_scoring = False
-                self.content_scorer = None
+            from ..validation.content_scorer import create_content_scorer
+            self.content_scorer = create_content_scorer(human_threshold)
         else:
             self.content_scorer = None
         

@@ -627,6 +627,10 @@ def run_material_generation(
             # the generator should handle this appropriately without mock
             temp_generator = DynamicGenerator()
 
+            # Set API client for the component
+            api_client = get_api_client_for_component(component_type)
+            temp_generator.set_api_client(api_client)
+
             # Set author info for ALL components
             if component_author_info:
                 temp_generator.set_author(component_author_info)

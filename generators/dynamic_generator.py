@@ -237,6 +237,10 @@ class DynamicGenerator:
         """Set author information for content generation."""
         self.author_info = author_info
     
+    def set_api_client(self, api_client):
+        """Set API client for component generation"""
+        self.api_client = api_client
+    
     def _extract_frontmatter_data(self, material_name: str) -> Optional[Dict]:
         """Extract frontmatter data from existing frontmatter file"""
         try:

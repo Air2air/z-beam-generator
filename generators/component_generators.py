@@ -559,3 +559,30 @@ class ComponentGeneratorFactory:
         except ImportError as e:
             logger.error(f"Error importing generator for {component_type}: {e}")
             return None
+    
+    @staticmethod
+    def get_available_components():
+        """Get list of available component types"""
+        # Scan components directory for available components
+        components_dir = Path("components")
+        available_components = []
+        
+        if components_dir.exists():
+            for component_dir in components_dir.iterdir():
+                if component_dir.is_dir() and component_dir.name != "__pycache__":
+                    # Check if it has a generator or prompt file
+                    generator_file = component_dir / "generator.py"
+                    prompt_file = component_dir / "prompt.yaml"
+                    
+                    if generator_file.exists() or prompt_file.exists():
+                        available_components.append(component_dir.name)
+        
+        # Also add known generators from generators directory
+        generators_dir = Path("generators")
+        if generators_dir.exists():
+            for generator_file in generators_dir.glob("*_generator.py"):
+                component_name = generator_file.stem.replace("_generator", "")
+                if component_name not in available_components:
+                    available_components.append(component_name)
+        
+        return sorted(available_components)
