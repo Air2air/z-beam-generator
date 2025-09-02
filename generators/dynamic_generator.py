@@ -309,12 +309,22 @@ class DynamicGenerator:
             # Extract frontmatter data if needed
             frontmatter_data = self._extract_frontmatter_data(material_name)
             
+            # Extract author information from material data
+            author_info = self.author_info  # Use globally set author if available
+            if not author_info:
+                # Check if author_id is in the top level material
+                if 'author_id' in material:
+                    author_info = {'id': material['author_id']}
+                # Check if author_id is in the material.data nested structure  
+                elif 'data' in material and 'author_id' in material['data']:
+                    author_info = {'id': material['data']['author_id']}
+            
             # Generate using the specific component generator with schema fields
             result = generator.generate(
                 material_name=material_name,
                 material_data=material,
                 api_client=self.api_client,
-                author_info=self.author_info,
+                author_info=author_info,
                 frontmatter_data=frontmatter_data,
                 schema_fields=dynamic_fields  # Pass dynamic schema fields
             )

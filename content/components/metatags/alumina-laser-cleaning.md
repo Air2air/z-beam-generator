@@ -1,5 +1,5 @@
 <meta name="description" content="Alumina, with the chemical formula Al2O3, is a highly durable ceramic material widely used in industries such as aerospace and semiconductors for its excellent thermal and mechanical properties. Laser cleaning of alumina involves the use of high-intensity laser pulses to remove surface contaminants and coatings without damaging the underlying material. This non-contact cleaning method is particularly effective due to alumina's high melting point and resistance to thermal shock, ensuring that the material's integrity and performance are maintained after cleaning.">
-<meta name="keywords" content="ceramic, technical specifications, materialtype, material properties, formula, symbol, alumina">
+<meta name="keywords" content="technical specifications, formula, symbol, alumina, ceramic, materialtype, material properties">
 <meta name="subject" content="ceramic">
 <meta name="classification" content="ceramic">
 <meta property="og:title" content="Laser Cleaning Alumina - Technical Guide for Optimal Processing">

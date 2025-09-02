@@ -1,5 +1,5 @@
 <meta name="description" content="Zirconia (ZrO2) is a highly durable ceramic material used extensively in laser cleaning applications across various industries. Its exceptional thermal and mechanical properties make it ideal for non-contact cleaning methods like laser ablation. Zirconia's ability to withstand high temperatures and resist chemical reactions ensures that it can be effectively cleaned without compromising its structural integrity or surface quality. This makes it particularly suitable for the precise removal of contaminants in critical applications such as aerospace and medical devices.">
-<meta name="keywords" content="ceramic, technical specifications, materialtype, material properties, zirconia, formula, symbol">
+<meta name="keywords" content="technical specifications, formula, symbol, ceramic, materialtype, zirconia, material properties">
 <meta name="subject" content="ceramic">
 <meta name="classification" content="ceramic">
 <meta property="og:title" content="Laser Cleaning Zirconia - Technical Guide for Optimal Processing">

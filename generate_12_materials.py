@@ -24,7 +24,7 @@ def main():
     """Generate 12 materials with clean fail-fast approach"""
     from components.content.generators.fail_fast_generator import FailFastContentGenerator
     
-        # Material assignments by author (3 each = 12 total)
+    # Material assignments by author (3 each = 12 total)
     materials_by_author = {
         1: ["Alumina", "Zirconia", "Silicon Nitride"],
         2: ["Aluminum", "Copper", "Brass"], 
@@ -70,7 +70,7 @@ def main():
                         logger.error(f"    ❌ FAILED: {material_name} - Material not found")
                         continue
                     
-                                        # Extract material formula (optional)
+                    # Extract material formula (optional)
                     formula = material_data.get('data', {}).get('formula', material_name)
                     if not formula:
                         formula = material_name  # Use material name as fallback for formula
@@ -84,7 +84,8 @@ def main():
                         material_name=material_name,
                         material_data=material_data,
                         api_client=api_client,
-                        author_info=author_info
+                        author_info=author_info,
+                        frontmatter_data={'verification': True}  # Enable frontmatter verification
                     )
                     
                     if result and result.success:
@@ -103,15 +104,15 @@ def main():
                         logger.info(f"    ✅ SUCCESS: {material_name} ({generation_time:.1f}s)")
                         logger.info(f"    💾 Saved to: {output_file}")
                         
-                        # Log quality metrics if available
-                        if result.quality_score:
+                        # Log quality scores if available
+                        if hasattr(result, 'quality_score') and result.quality_score:
                             qs = result.quality_score
                             logger.info(f"    📊 Quality: Overall={qs.overall_score:.1f}, Human={qs.human_believability:.1f}, Technical={qs.technical_accuracy:.1f}")
-                            logger.info(f"    🎯 Retry Recommended: {'Yes' if qs.retry_recommended else 'No'}")
+                            retry_rec = "Yes" if qs.retry_recommended else "No"
+                            logger.info(f"    🎯 Retry Recommended: {retry_rec}")
                         
                     else:
-                        logger.error(f"    ❌ FAILED: {material_name} - Generation failed")
-                        if result and result.error_message:
+                        if result:
                             logger.error(f"        💬 Error: {result.error_message}")
                         
                 except Exception as e:
@@ -134,7 +135,7 @@ def main():
             return 0
             
     except Exception as e:
-        logger.error(f"💥 CRITICAL FAILURE: {str(e)}")
+        logger.error(f"💥 Fatal error: {str(e)}")
         return 1
 
 if __name__ == "__main__":

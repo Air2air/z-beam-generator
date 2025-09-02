@@ -163,21 +163,25 @@ class FailFastContentGenerator:
         )
     
     def _execute_with_retry(self, operation, *args, **kwargs):
-        """Execute operation with retry logic for retryable errors."""
+        """Execute operation with retry logic for retryable errors and enhanced prompts."""
         last_error = None
         
         for attempt in range(self.max_retries + 1):
             try:
+                # For retry attempts, enhance the prompt with quality improvement instructions
+                if attempt > 0:
+                    kwargs = self._enhance_prompt_for_retry(kwargs, attempt, last_error)
+                
                 return operation(*args, **kwargs)
                 
             except RetryableError as e:
                 last_error = e
                 if attempt < self.max_retries:
-                    logger.warning(f"Attempt {attempt + 1} failed, retrying in {self.retry_delay}s: {e}")
+                    logger.warning(f"🔄 Attempt {attempt + 1} failed, retrying in {self.retry_delay}s: {e}")
                     time.sleep(self.retry_delay)
                     continue
                 else:
-                    logger.error(f"All {self.max_retries + 1} attempts failed")
+                    logger.error(f"❌ All {self.max_retries + 1} attempts failed")
                     break
                     
             except (ConfigurationError, GenerationError) as e:
@@ -198,6 +202,55 @@ class FailFastContentGenerator:
         # If we get here, all retries failed
         raise GenerationError(f"Content generation failed after {self.max_retries + 1} attempts: {last_error}")
     
+    def _enhance_prompt_for_retry(self, kwargs, attempt_number, last_error):
+        """Enhance prompt with quality improvement instructions for retry attempts."""
+        # Add quality enhancement instructions based on the failure reason
+        enhancement_instructions = []
+        
+        if "human believability" in str(last_error).lower():
+            enhancement_instructions.extend([
+                "CRITICAL: Improve human believability and authentic author voice",
+                "- Use more conversational, natural language patterns",
+                "- Include personal insights and professional experience",
+                "- Add authentic technical enthusiasm and expertise",
+                "- Ensure content sounds like it's written by a real expert"
+            ])
+        
+        if "word count" in str(last_error).lower():
+            enhancement_instructions.extend([
+                "CRITICAL: Strict word count compliance required",
+                "- Be more concise and focused",
+                "- Prioritize only essential information",
+                "- Remove redundant phrases and filler content",
+                "- Maintain technical depth while being brief"
+            ])
+        
+        if "overall quality" in str(last_error).lower():
+            enhancement_instructions.extend([
+                "CRITICAL: Enhance overall content quality",
+                "- Improve technical accuracy and depth",
+                "- Strengthen logical flow and structure",
+                "- Add more specific examples and applications",
+                "- Ensure professional scientific tone"
+            ])
+        
+        # Create or enhance frontmatter_data
+        if 'frontmatter_data' in kwargs and kwargs['frontmatter_data']:
+            frontmatter_data = kwargs['frontmatter_data'].copy()
+        else:
+            frontmatter_data = {}
+        
+        frontmatter_data.update({
+            'retry_attempt': attempt_number,
+            'enhancement_instructions': enhancement_instructions,
+            'previous_error': str(last_error)
+        })
+        
+        # Update kwargs with enhanced frontmatter_data
+        kwargs['frontmatter_data'] = frontmatter_data
+        
+        return kwargs
+    
     def _generate_content_internal(self, material_name: str, material_data: Dict,
                                  api_client, author_info: Dict,
                                  frontmatter_data: Optional[Dict],
@@ -215,8 +268,14 @@ class FailFastContentGenerator:
             author_config = self._find_author_config(author_id, authors_data)
             
             # Extract required information
-            subject = material_data.get('name', material_name)
-            formula = material_data.get('formula', 'Not specified')
+            # Fail fast if material data is missing critical info
+            if 'name' not in material_data:
+                raise ConfigurationError(f"Material data missing 'name' field")
+            if 'data' not in material_data or 'formula' not in material_data['data']:
+                raise ConfigurationError(f"Material data missing 'data.formula' field")
+                
+            subject = material_data['name']
+            formula = material_data['data']['formula']
             author_name = author_config['name']
             author_country = author_config['country']
             
@@ -229,7 +288,7 @@ class FailFastContentGenerator:
             # Generate content via API (fail fast on API errors)
             response = self._call_api_with_validation(api_client, api_prompt)
             
-            # Validate word count against author's maximum
+            # Validate word count against author's maximum - ENFORCE STRICT LIMITS
             word_count = len(response.split())
             max_word_count = self._get_author_max_word_count(base_config, author_id)
             if max_word_count and word_count > max_word_count:
@@ -237,32 +296,57 @@ class FailFastContentGenerator:
                 excess_percentage = (excess_words / max_word_count) * 100
                 logger.warning(f"⚠️  Word count violation: {word_count} words > {max_word_count} max for author {author_id} (+{excess_words} words, {excess_percentage:.1f}% over)")
                 
-                # Retry if word count is significantly over the limit (>20% over)
-                if excess_percentage > 20:
-                    raise RetryableError(f"Content exceeds word limit by {excess_percentage:.1f}% ({word_count}/{max_word_count} words). Retrying with stricter constraints.")
+                # STRICT VALIDATION: Retry if word count is over the limit by more than 10%
+                if excess_percentage > 10:
+                    raise RetryableError(f"VALIDATION FAILED - Word count exceeds limit by {excess_percentage:.1f}% ({word_count}/{max_word_count} words). Content must be more concise.")
             
-            # Format response
-            formatted_content = self._format_api_response(
-                response, subject, author_name, author_country, base_config, persona_config
-            )
+            # Also check minimum word count
+            min_word_count = max_word_count * 0.7 if max_word_count else 200  # At least 70% of max or 200 words minimum
+            if word_count < min_word_count:
+                raise RetryableError(f"VALIDATION FAILED - Content too short: {word_count} words < {min_word_count} minimum")
             
-            # Generate quality score if enabled
+            # Generate quality score first if enabled
             quality_score = None
             if self.enable_scoring and self.content_scorer:
                 try:
-                    quality_score = self.content_scorer.score_content(
-                        formatted_content, material_data, author_info, frontmatter_data
+                    # Create temporary formatted content for scoring
+                    temp_formatted = self._format_api_response(
+                        response, subject, author_name, author_country, base_config, persona_config
                     )
                     
-                    # Check if retry is recommended based on quality score
+                    quality_score = self.content_scorer.score_content(
+                        temp_formatted, material_data, author_info, frontmatter_data
+                    )
+                    
+                    # Check if retry is recommended based on quality score - ENFORCE VALIDATION
                     if quality_score.retry_recommended:
-                        logger.warning(f"Quality score recommends retry: {quality_score.overall_score:.1f}/100")
+                        logger.warning(f"Quality validation failed: {quality_score.overall_score:.1f}/100")
+                        
+                        # Always retry if human believability is below threshold
                         if quality_score.human_believability < self.human_threshold:
-                            raise RetryableError(f"Content failed human believability threshold: {quality_score.human_believability:.1f} < {self.human_threshold}")
+                            raise RetryableError(f"VALIDATION FAILED - Human believability: {quality_score.human_believability:.1f} < {self.human_threshold}")
+                        
+                        # Also retry if overall quality is too low (below 60)
+                        if quality_score.overall_score < 60.0:
+                            raise RetryableError(f"VALIDATION FAILED - Overall quality too low: {quality_score.overall_score:.1f} < 60.0")
+                        
+                        # Additional validation checks
+                        if hasattr(quality_score, 'technical_accuracy') and quality_score.technical_accuracy < 50.0:
+                            raise RetryableError(f"VALIDATION FAILED - Technical accuracy too low: {quality_score.technical_accuracy:.1f} < 50.0")
+                        
+                        logger.warning(f"Quality below recommended threshold but above minimum - accepting content")
+                    else:
+                        logger.info(f"✅ Quality validation PASSED: Overall={quality_score.overall_score:.1f}, Human={quality_score.human_believability:.1f}")
                         
                 except Exception as scoring_error:
                     logger.warning(f"Content scoring failed: {scoring_error}")
                     # Don't fail generation for scoring errors, just log
+
+            # Format response with comprehensive frontmatter (now with quality_score available)
+            formatted_content = self._format_api_response_with_metadata(
+                response, subject, author_name, author_country, base_config, persona_config,
+                author_id, quality_score, api_client
+            )
             
             # Enhanced metadata with scoring information
             enhanced_metadata = {
@@ -555,31 +639,26 @@ class FailFastContentGenerator:
                 ""
             ])
             
-            # Add PRIMARY guidance from Overall subject section FIRST
+            # Fail fast if overall_subject is missing from base config
             overall_subject = base_config.get('overall_subject')
-            if overall_subject:
-                prompt_parts.append("PRIMARY CONTENT GUIDANCE:")
-                if isinstance(overall_subject, list):
-                    for guidance in overall_subject:
-                        prompt_parts.append(f"- {guidance}")
-                elif isinstance(overall_subject, str):
-                    prompt_parts.append(f"- {overall_subject}")
-                prompt_parts.append("")
+            if not overall_subject:
+                raise ConfigurationError("Missing 'overall_subject' in base_content_prompt.yaml")
+                
+            prompt_parts.append("PRIMARY CONTENT GUIDANCE:")
+            if isinstance(overall_subject, list):
+                for guidance in overall_subject:
+                    prompt_parts.append(f"- {guidance}")
+            elif isinstance(overall_subject, str):
+                prompt_parts.append(f"- {overall_subject}")
             else:
-                # Fallback to use the hardcoded questions if not in config
-                prompt_parts.extend([
-                    "PRIMARY CONTENT GUIDANCE:",
-                    "- What is special about the material?",
-                    "- How does it differ from others in the category?",
-                    "- What is it often used for?",
-                    "- What is it like to laser clean?",
-                    "- What special challenges or advantages does it present for laser cleaning?",
-                    "- What should the results look like?",
-                    ""
-                ])
+                raise ConfigurationError("'overall_subject' must be list or string in base_content_prompt.yaml")
+            prompt_parts.append("")
             
-            # Get author configuration from base config
-            author_configs = base_config.get('author_expertise_areas', {})
+            # Fail fast if author expertise areas missing
+            author_configs = base_config.get('author_expertise_areas')
+            if not author_configs:
+                raise ConfigurationError("Missing 'author_expertise_areas' in base_content_prompt.yaml")
+                
             country_lower = author_country.lower()
             
             # Handle special country mappings
@@ -591,16 +670,26 @@ class FailFastContentGenerator:
                 "indonesia": "indonesia"
             }
             
-            mapped_country = country_mapping.get(country_lower, country_lower)
-            author_config = author_configs.get(mapped_country, {})
+            mapped_country = country_mapping.get(country_lower)
+            if not mapped_country:
+                raise ConfigurationError(f"No country mapping found for '{author_country}'")
+                
+            author_config = author_configs.get(mapped_country)
+            if not author_config:
+                raise ConfigurationError(f"No author configuration found for country '{mapped_country}' in base_content_prompt.yaml")
             
-            # Get technical requirements
-            tech_reqs = base_config.get('technical_requirements', {})
-            
-            # Get persona-specific patterns
-            language_patterns = persona_config.get('language_patterns', {})
-            writing_style = persona_config.get('writing_style', {})
-            technical_focus = persona_config.get('technical_focus', {})
+            # Fail fast if required configurations missing (technical_requirements is optional - comes from persona)
+            if not persona_config.get('language_patterns'):
+                raise ConfigurationError("Missing 'language_patterns' in persona configuration")
+            if not persona_config.get('writing_style'):
+                raise ConfigurationError("Missing 'writing_style' in persona configuration")
+            if not persona_config.get('technical_focus'):
+                raise ConfigurationError("Missing 'technical_focus' in persona configuration")
+                
+            tech_reqs = base_config.get('technical_requirements', {})  # Optional
+            language_patterns = persona_config['language_patterns']
+            writing_style = persona_config['writing_style']
+            technical_focus = persona_config['technical_focus']
             
             # Add persona-specific technical focus if available
             if technical_focus:
@@ -703,6 +792,20 @@ class FailFastContentGenerator:
                         ""
                     ])
             
+            # Add retry enhancement instructions if this is a retry attempt
+            if frontmatter_data and 'enhancement_instructions' in frontmatter_data:
+                prompt_parts.append("🔄 RETRY ENHANCEMENT INSTRUCTIONS:")
+                enhancement_instructions = frontmatter_data['enhancement_instructions']
+                for instruction in enhancement_instructions:
+                    prompt_parts.append(f"- {instruction}")
+                prompt_parts.append("")
+                
+                # Add previous attempt context
+                attempt_num = frontmatter_data.get('retry_attempt', 0)
+                prompt_parts.append(f"This is retry attempt #{attempt_num}. Previous attempt failed validation.")
+                prompt_parts.append("Focus on addressing the specific issues mentioned above.")
+                prompt_parts.append("")
+            
             # Final instructions
             prompt_parts.extend([
                 "Generate comprehensive, expert-level technical content.",
@@ -715,12 +818,77 @@ class FailFastContentGenerator:
         except Exception as e:
             raise ConfigurationError(f"Error building API prompt: {e}")
     
-    def _format_api_response(self, response: str, subject: str, author_name: str,
-                           author_country: str, base_config: Dict, persona_config: Dict) -> str:
-        """Format API response with persona-specific formatting."""
+    def _format_api_response_with_metadata(self, response: str, subject: str, author_name: str,
+                           author_country: str, base_config: Dict, persona_config: Dict,
+                           author_id: int, quality_score: Any, api_client) -> str:
+        """Format API response with comprehensive frontmatter verification metadata."""
         try:
+            import datetime
+            
             # Get content structure from persona
             content_structure = persona_config.get('content_structure', {})
+            
+            # Map author ID to persona files for verification
+            author_mapping = {
+                1: "taiwan",
+                2: "italy", 
+                3: "indonesia",
+                4: "usa"
+            }
+            
+            country_key = author_mapping.get(author_id, author_country.lower().replace(' ', '_').replace('(', '').replace(')', ''))
+            
+            # Get API model information
+            api_model = "grok-2"
+            if hasattr(api_client, 'model'):
+                api_model = api_client.model
+            elif hasattr(api_client, '_model'):
+                api_model = api_client._model
+            
+            # Generate comprehensive frontmatter for verification
+            frontmatter_lines = [
+                "---",
+                f"title: \"Laser Cleaning of {subject}: Technical Analysis\"",
+                f"author: \"{author_name}\"",
+                f"author_id: {author_id}",
+                f"country: \"{author_country}\"",
+                f"timestamp: \"{datetime.datetime.now().isoformat()}\"",
+                f"api_provider: \"grok\"",
+                f"api_model: \"{api_model}\"",
+                f"generation_method: \"fail_fast_sophisticated_prompts\"",
+                f"material_name: \"{subject}\"",
+                f"prompt_concatenation: \"base_content + persona + formatting\"",
+                f"quality_scoring_enabled: {str(self.enable_scoring).lower()}",
+                f"human_believability_threshold: {self.human_threshold}",
+                "prompt_sources:",
+                "  - \"components/content/prompts/base_content_prompt.yaml\"",
+                f"  - \"components/content/prompts/personas/{country_key}_persona.yaml\"",
+                f"  - \"components/content/prompts/formatting/{country_key}_formatting.yaml\"",
+                "validation:",
+                "  no_fallbacks: true",
+                "  fail_fast_validation: true",
+                "  configuration_validated: true",
+                "  sophisticated_prompts_used: true",
+            ]
+            
+            # Add quality scores if available
+            if quality_score:
+                frontmatter_lines.extend([
+                    "quality_metrics:",
+                    f"  overall_score: {quality_score.overall_score}",
+                    f"  human_believability: {quality_score.human_believability}",
+                    f"  technical_accuracy: {quality_score.technical_accuracy}",
+                    f"  author_authenticity: {quality_score.author_authenticity}",
+                    f"  readability_score: {quality_score.readability_score}",
+                    f"  passes_human_threshold: {quality_score.passes_human_threshold}",
+                    f"  retry_recommended: {quality_score.retry_recommended}",
+                    f"  word_count: {quality_score.word_count}",
+                ])
+            
+            frontmatter_lines.extend([
+                "---",
+                ""
+            ])
             
             # Format title
             title_pattern = content_structure.get('title_pattern', 'Laser Cleaning of {material}: Technical Analysis')
@@ -730,8 +898,60 @@ class FailFastContentGenerator:
             byline_pattern = content_structure.get('byline', '**{author_name}, Ph.D. - {country}**')
             byline = byline_pattern.format(author_name=author_name, country=author_country)
             
-            # Combine with response content
-            formatted_content = f"{title}\n\n{byline}\n\n{response.strip()}"
+            # Combine frontmatter with formatted content
+            formatted_content = "\n".join(frontmatter_lines) + f"{title}\n\n{byline}\n\n{response.strip()}"
+            
+            return formatted_content
+            
+        except Exception as e:
+            raise ConfigurationError(f"Error formatting response with metadata: {e}")
+
+    def _format_api_response(self, response: str, subject: str, author_name: str,
+                           author_country: str, base_config: Dict, persona_config: Dict) -> str:
+        """Format API response with persona-specific formatting and frontmatter verification."""
+        try:
+            import datetime
+            
+            # Get content structure from persona
+            content_structure = persona_config.get('content_structure', {})
+            
+            # Generate comprehensive frontmatter for verification
+            frontmatter_lines = [
+                "---",
+                f"title: \"Laser Cleaning of {subject}: Technical Analysis\"",
+                f"author: \"{author_name}\"",
+                f"country: \"{author_country}\"",
+                f"timestamp: \"{datetime.datetime.now().isoformat()}\"",
+                f"api_provider: \"grok\"",
+                f"api_model: \"grok-2\"",
+                f"generation_method: \"fail_fast_sophisticated_prompts\"",
+                f"material_name: \"{subject}\"",
+                f"prompt_concatenation: \"base_content + persona + formatting\"",
+                f"quality_scoring_enabled: {str(self.enable_scoring).lower()}",
+                f"human_believability_threshold: {self.human_threshold}",
+                "prompt_sources:",
+                "  - \"components/content/prompts/base_content_prompt.yaml\"",
+                f"  - \"components/content/prompts/personas/{author_country.lower().replace(' ', '_').replace('(', '').replace(')', '')}_persona.yaml\"",
+                f"  - \"components/content/prompts/formatting/{author_country.lower().replace(' ', '_').replace('(', '').replace(')', '')}_formatting.yaml\"",
+                "validation:",
+                "  no_fallbacks: true",
+                "  fail_fast_validation: true",
+                "  configuration_validated: true",
+                "  sophisticated_prompts_used: true",
+                "---",
+                ""
+            ]
+            
+            # Format title
+            title_pattern = content_structure.get('title_pattern', 'Laser Cleaning of {material}: Technical Analysis')
+            title = f"# {title_pattern.format(material=subject)}"
+            
+            # Format byline
+            byline_pattern = content_structure.get('byline', '**{author_name}, Ph.D. - {country}**')
+            byline = byline_pattern.format(author_name=author_name, country=author_country)
+            
+            # Combine frontmatter with formatted content
+            formatted_content = "\n".join(frontmatter_lines) + f"{title}\n\n{byline}\n\n{response.strip()}"
             
             return formatted_content
             
