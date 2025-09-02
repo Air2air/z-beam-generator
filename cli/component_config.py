@@ -29,20 +29,21 @@ COMPONENT_CONFIG = {
     
     # Component-specific configuration
     "components": {
-        "author": {"enabled": True, "data_provider": "none"},  # Static component, no API needed
-        "bullets": {"enabled": True, "data_provider": "deepseek"},
-        "caption": {"enabled": True, "data_provider": "deepseek"},
+        "author": {"enabled": True, "data_provider": "none", "api_provider": "none"},  # Static component, no API needed
+        "bullets": {"enabled": True, "data_provider": "API", "api_provider": "deepseek"},
+        "caption": {"enabled": True, "data_provider": "API", "api_provider": "deepseek"},
         "frontmatter": {
             "enabled": True,
-            "data_provider": "grok",  # Options: "deepseek", "grok"
+            "data_provider": "API",  # Generate via API
+            "api_provider": "grok"
         },
-        "content": {"enabled": True, "data_provider": "grok"},  # API-based with frontmatter access
-        "jsonld": {"enabled": True, "data_provider": "frontmatter"},  # Extract data from frontmatter
-        "table": {"enabled": True, "data_provider": "grok"},
-        "metatags": {"enabled": True, "data_provider": "frontmatter"},  # Extract data from frontmatter
-        "tags": {"enabled": True, "data_provider": "deepseek"},
-        "propertiestable": {"enabled": True, "data_provider": "frontmatter"},  # Extract from frontmatter
-        "badgesymbol": {"enabled": True, "data_provider": "frontmatter"},  # Extract from frontmatter
+        "content": {"enabled": True, "data_provider": "hybrid", "api_provider": "grok"},  # Uses both frontmatter and API
+        "jsonld": {"enabled": True, "data_provider": "frontmatter", "api_provider": "none"},  # Extract data from frontmatter
+        "table": {"enabled": True, "data_provider": "API", "api_provider": "grok"},
+        "metatags": {"enabled": True, "data_provider": "frontmatter", "api_provider": "none"},  # Extract data from frontmatter
+        "tags": {"enabled": True, "data_provider": "API", "api_provider": "deepseek"},
+        "propertiestable": {"enabled": True, "data_provider": "frontmatter", "api_provider": "none"},  # Extract from frontmatter
+        "badgesymbol": {"enabled": True, "data_provider": "frontmatter", "api_provider": "none"},  # Extract from frontmatter
     },
 }
 

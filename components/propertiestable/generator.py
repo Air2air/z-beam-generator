@@ -198,7 +198,7 @@ class PropertiesTableGenerator:
     def generate_content(self, material_name: str, frontmatter_data: Optional[Dict[str, Any]] = None) -> str:
         """Generate properties table from frontmatter data"""
         if not frontmatter_data:
-            return self._generate_fallback_table(material_name)
+            raise ValueError(f"Frontmatter data is required for properties table generation for {material_name}")
         
         # Extract values with 8-character limit
         formula = self._get_field(frontmatter_data, ['chemicalProperties.formula', 'properties.chemicalFormula', 'formula'], 'N/A')
@@ -309,18 +309,6 @@ class PropertiesTableGenerator:
         value = value.replace('g/cm³', 'g/cm³').replace('kg/m³', 'kg/m³')
         value = value.replace(' to ', '-').replace(' ', '')
         return value
-    
-    def _generate_fallback_table(self, material_name: str) -> str:
-        """Generate basic table when no frontmatter available"""
-        symbol = material_name[:3].upper() if material_name else "MAT"
-        return f"""| Property | Value |
-|----------|-------|
-| Formula | N/A |
-| Symbol | {symbol} |
-| Category | Material |
-| Density | N/A |
-| Tensile | N/A |
-| Thermal | N/A |"""
 
 
 # Static functions for compatibility

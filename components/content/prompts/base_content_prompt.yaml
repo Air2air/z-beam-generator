@@ -1,4 +1,14 @@
 # Base Content Prompt for Laser Cleaning Articles
+
+# Overall subject - Primary guidance for content generation
+overall_subject:
+  - "What is special about the material?"
+  - "How does it differ from others in the category?"
+  - "What is it often used for?"
+  - "What is it like to laser clean?"
+  - "What special challenges or advantages does it present for laser cleaning?"
+  - "What should the results look like?"
+
 # Shared technical requirements and author-specific adaptations
 
 # Author expertise areas (required for generator compatibility)
@@ -50,29 +60,6 @@ author_configurations:
     section_emphasis: "practical results and efficiency"
     writing_approach: "efficient technical delivery"
 
-# Shared technical requirements for all authors
-technical_requirements:
-  laser_specifications:
-    - "1064 nm wavelength as standard for most materials"
-    - "Nanosecond pulse durations (10-100 ns range)"
-    - "Class 4 laser safety classification"
-    - "Fiber laser technology emphasis"
-  
-  required_content:
-    - "Incorporate chemical formula {material_formula} in overview"
-    - "Include absorption characteristics at 1064 nm"
-    - "Describe thermal thresholds and heat dissipation"
-    - "Specify optimal parameters (wavelength, pulse duration, fluence)"
-    - "Address Class 4 laser safety protocols"
-    - "Provide industrial application examples"
-    - "List technical advantages over traditional methods"
-  
-  quality_standards:
-    - "Expert-level technical depth appropriate to Ph.D. expertise"
-    - "Professional scientific tone throughout"
-    - "Accurate technical terminology and specifications"
-    - "Logical flow and coherent structure"
-    - "No explicit mentions of persona attributes"
 
 # Author-specific focus areas for applications and examples
 application_focus:

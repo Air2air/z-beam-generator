@@ -2,9 +2,9 @@
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "Comprehensive technical guide for laser cleaning ceramic alumina",
+  "headline": "Comprehensive technical guide for laser cleaning ceramic zirconia",
   "alternativeHeadline": "Advanced Laser Ablation Techniques for Aluminum Surface Treatment",
-  "description": "Alumina, with the chemical formula Al2O3, is a highly durable ceramic material widely used in industries such as aerospace and semiconductors for its excellent thermal and mechanical properties. Laser cleaning of alumina involves the use of high-intensity laser pulses to remove surface contaminants and coatings without damaging the underlying material. This non-contact cleaning method is particularly effective due to alumina's high melting point and resistance to thermal shock, ensuring that the material's integrity and performance are maintained after cleaning.",
+  "description": "Zirconia (ZrO2) is a highly durable ceramic material used extensively in laser cleaning applications across various industries. Its exceptional thermal and mechanical properties make it ideal for non-contact cleaning methods like laser ablation. Zirconia's ability to withstand high temperatures and resist chemical reactions ensures that it can be effectively cleaned without compromising its structural integrity or surface quality. This makes it particularly suitable for the precise removal of contaminants in critical applications such as aerospace and medical devices.",
   "abstract": "Advanced laser cleaning techniques for aluminum materials using 1064nm wavelength at 1.0-10 J/cm\u00b2 fluence for aerospace component cleaning, automotive engine part restoration.",
   "keywords": [
     {
@@ -15,12 +15,12 @@
     {
       "@type": "PropertyValue",
       "name": "Pulseduration",
-      "value": "10-200ns"
+      "value": "10-100ns"
     },
     {
       "@type": "PropertyValue",
       "name": "Wavelength",
-      "value": "1064 nm"
+      "value": "1064nm"
     },
     {
       "@type": "PropertyValue",
@@ -35,7 +35,7 @@
     {
       "@type": "PropertyValue",
       "name": "Fluencerange",
-      "value": "1.0\u201310 J/cm\u00b2"
+      "value": "0.5\u20135 J/cm\u00b2"
     },
     {
       "@type": "PropertyValue",
@@ -45,7 +45,7 @@
     {
       "@type": "PropertyValue",
       "name": "Density",
-      "value": "3.95 g/cm\u00b3"
+      "value": "5.68 g/cm\u00b3"
     },
     {
       "@type": "PropertyValue",
@@ -60,12 +60,12 @@
     {
       "@type": "PropertyValue",
       "name": "Densitypercentile",
-      "value": "51.2"
+      "value": "92.4"
     },
     {
       "@type": "PropertyValue",
       "name": "Meltingpoint",
-      "value": "2072\u00b0C"
+      "value": "2715\u00b0C"
     },
     {
       "@type": "PropertyValue",
@@ -80,12 +80,12 @@
     {
       "@type": "PropertyValue",
       "name": "Meltingpercentile",
-      "value": "54.5"
+      "value": "94.7"
     },
     {
       "@type": "PropertyValue",
       "name": "Thermalconductivity",
-      "value": "30 W/m\u00b7K"
+      "value": "2.0 W/m\u00b7K"
     },
     {
       "@type": "PropertyValue",
@@ -100,12 +100,12 @@
     {
       "@type": "PropertyValue",
       "name": "Thermalpercentile",
-      "value": "14.8"
+      "value": "0.8"
     },
     {
       "@type": "PropertyValue",
       "name": "Tensilestrength",
-      "value": "200 MPa"
+      "value": "600 MPa"
     },
     {
       "@type": "PropertyValue",
@@ -120,12 +120,12 @@
     {
       "@type": "PropertyValue",
       "name": "Tensilepercentile",
-      "value": "15.8"
+      "value": "57.9"
     },
     {
       "@type": "PropertyValue",
       "name": "Hardness",
-      "value": "1500 HV"
+      "value": "1200 HV"
     },
     {
       "@type": "PropertyValue",
@@ -140,12 +140,12 @@
     {
       "@type": "PropertyValue",
       "name": "Hardnesspercentile",
-      "value": "50.0"
+      "value": "35.0"
     },
     {
       "@type": "PropertyValue",
       "name": "Youngsmodulus",
-      "value": "380 GPa"
+      "value": "210 GPa"
     },
     {
       "@type": "PropertyValue",
@@ -160,7 +160,7 @@
     {
       "@type": "PropertyValue",
       "name": "Moduluspercentile",
-      "value": "92.0"
+      "value": "24.0"
     },
     {
       "@type": "PropertyValue",
@@ -170,17 +170,17 @@
     {
       "@type": "PropertyValue",
       "name": "Wavelength",
-      "value": "1064 nm"
+      "value": "1064nm"
     },
     {
       "@type": "PropertyValue",
       "name": "Fluencerange",
-      "value": "1.0\u201310 J/cm\u00b2"
+      "value": "0.5\u20135 J/cm\u00b2"
     },
     {
       "@type": "PropertyValue",
       "name": "Chemicalformula",
-      "value": "Al2O3"
+      "value": "ZrO2"
     },
     {
       "@type": "PropertyValue",
@@ -241,24 +241,24 @@
   "license": "https://creativecommons.org/licenses/by/4.0/",
   "copyrightHolder": {
     "@type": "Organization",
-    "name": "Alumina"
+    "name": "Zirconia"
   },
   "copyrightYear": "2025",
   "publisher": {
     "@type": "Organization",
-    "name": "Alumina",
+    "name": "Zirconia",
     "logo": "{'@type': 'ImageObject', 'url': '/images/logo-zbeam.svg', 'width': 200, 'height': 60}"
   },
   "author": {
     "@type": "Person",
-    "name": "Alessandro Moretti",
+    "name": "Todd Dunning",
     "jobTitle": "Senior Laser Processing Engineer",
     "affiliation": "{'@type': 'Organization', 'name': 'Advanced Materials Research Institute'}",
     "knowsAbout": "['Laser Materials Processing', 'Aluminum Surface Engineering', 'Industrial Laser Applications']"
   },
   "reviewedBy": {
     "@type": "Person",
-    "name": "Alumina",
+    "name": "Zirconia",
     "jobTitle": "Materials Science Director"
   },
   "datePublished": "2025-01-27T15:30:00Z",
@@ -272,12 +272,12 @@
     {
       "@type": "ImageObject",
       "name": "Pulseduration",
-      "value": "10-200ns"
+      "value": "10-100ns"
     },
     {
       "@type": "ImageObject",
       "name": "Wavelength",
-      "value": "1064 nm"
+      "value": "1064nm"
     },
     {
       "@type": "ImageObject",
@@ -292,7 +292,7 @@
     {
       "@type": "ImageObject",
       "name": "Fluencerange",
-      "value": "1.0\u201310 J/cm\u00b2"
+      "value": "0.5\u20135 J/cm\u00b2"
     },
     {
       "@type": "ImageObject",
@@ -302,7 +302,7 @@
     {
       "@type": "ImageObject",
       "name": "Density",
-      "value": "3.95 g/cm\u00b3"
+      "value": "5.68 g/cm\u00b3"
     },
     {
       "@type": "ImageObject",
@@ -317,12 +317,12 @@
     {
       "@type": "ImageObject",
       "name": "Densitypercentile",
-      "value": "51.2"
+      "value": "92.4"
     },
     {
       "@type": "ImageObject",
       "name": "Meltingpoint",
-      "value": "2072\u00b0C"
+      "value": "2715\u00b0C"
     },
     {
       "@type": "ImageObject",
@@ -337,12 +337,12 @@
     {
       "@type": "ImageObject",
       "name": "Meltingpercentile",
-      "value": "54.5"
+      "value": "94.7"
     },
     {
       "@type": "ImageObject",
       "name": "Thermalconductivity",
-      "value": "30 W/m\u00b7K"
+      "value": "2.0 W/m\u00b7K"
     },
     {
       "@type": "ImageObject",
@@ -357,12 +357,12 @@
     {
       "@type": "ImageObject",
       "name": "Thermalpercentile",
-      "value": "14.8"
+      "value": "0.8"
     },
     {
       "@type": "ImageObject",
       "name": "Tensilestrength",
-      "value": "200 MPa"
+      "value": "600 MPa"
     },
     {
       "@type": "ImageObject",
@@ -377,12 +377,12 @@
     {
       "@type": "ImageObject",
       "name": "Tensilepercentile",
-      "value": "15.8"
+      "value": "57.9"
     },
     {
       "@type": "ImageObject",
       "name": "Hardness",
-      "value": "1500 HV"
+      "value": "1200 HV"
     },
     {
       "@type": "ImageObject",
@@ -397,12 +397,12 @@
     {
       "@type": "ImageObject",
       "name": "Hardnesspercentile",
-      "value": "50.0"
+      "value": "35.0"
     },
     {
       "@type": "ImageObject",
       "name": "Youngsmodulus",
-      "value": "380 GPa"
+      "value": "210 GPa"
     },
     {
       "@type": "ImageObject",
@@ -417,7 +417,7 @@
     {
       "@type": "ImageObject",
       "name": "Moduluspercentile",
-      "value": "92.0"
+      "value": "24.0"
     },
     {
       "@type": "ImageObject",
@@ -427,17 +427,17 @@
     {
       "@type": "ImageObject",
       "name": "Wavelength",
-      "value": "1064 nm"
+      "value": "1064nm"
     },
     {
       "@type": "ImageObject",
       "name": "Fluencerange",
-      "value": "1.0\u201310 J/cm\u00b2"
+      "value": "0.5\u20135 J/cm\u00b2"
     },
     {
       "@type": "ImageObject",
       "name": "Chemicalformula",
-      "value": "Al2O3"
+      "value": "ZrO2"
     },
     {
       "@type": "ImageObject",
@@ -492,8 +492,8 @@
   ],
   "video": {
     "@type": "VideoObject",
-    "name": "Alumina",
-    "description": "Alumina, with the chemical formula Al2O3, is a highly durable ceramic material widely used in industries such as aerospace and semiconductors for its excellent thermal and mechanical properties. Laser cleaning of alumina involves the use of high-intensity laser pulses to remove surface contaminants and coatings without damaging the underlying material. This non-contact cleaning method is particularly effective due to alumina's high melting point and resistance to thermal shock, ensuring that the material's integrity and performance are maintained after cleaning.",
+    "name": "Zirconia",
+    "description": "Zirconia (ZrO2) is a highly durable ceramic material used extensively in laser cleaning applications across various industries. Its exceptional thermal and mechanical properties make it ideal for non-contact cleaning methods like laser ablation. Zirconia's ability to withstand high temperatures and resist chemical reactions ensures that it can be effectively cleaned without compromising its structural integrity or surface quality. This makes it particularly suitable for the precise removal of contaminants in critical applications such as aerospace and medical devices.",
     "thumbnailUrl": "/images/aluminum-laser-video-thumb.jpg",
     "uploadDate": "2025-01-27T15:30:00Z",
     "duration": "PT3M45S",
@@ -508,12 +508,12 @@
     {
       "@type": "Material",
       "name": "Pulseduration",
-      "value": "10-200ns"
+      "value": "10-100ns"
     },
     {
       "@type": "Material",
       "name": "Wavelength",
-      "value": "1064 nm"
+      "value": "1064nm"
     },
     {
       "@type": "Material",
@@ -528,7 +528,7 @@
     {
       "@type": "Material",
       "name": "Fluencerange",
-      "value": "1.0\u201310 J/cm\u00b2"
+      "value": "0.5\u20135 J/cm\u00b2"
     },
     {
       "@type": "Material",
@@ -538,7 +538,7 @@
     {
       "@type": "Material",
       "name": "Density",
-      "value": "3.95 g/cm\u00b3"
+      "value": "5.68 g/cm\u00b3"
     },
     {
       "@type": "Material",
@@ -553,12 +553,12 @@
     {
       "@type": "Material",
       "name": "Densitypercentile",
-      "value": "51.2"
+      "value": "92.4"
     },
     {
       "@type": "Material",
       "name": "Meltingpoint",
-      "value": "2072\u00b0C"
+      "value": "2715\u00b0C"
     },
     {
       "@type": "Material",
@@ -573,12 +573,12 @@
     {
       "@type": "Material",
       "name": "Meltingpercentile",
-      "value": "54.5"
+      "value": "94.7"
     },
     {
       "@type": "Material",
       "name": "Thermalconductivity",
-      "value": "30 W/m\u00b7K"
+      "value": "2.0 W/m\u00b7K"
     },
     {
       "@type": "Material",
@@ -593,12 +593,12 @@
     {
       "@type": "Material",
       "name": "Thermalpercentile",
-      "value": "14.8"
+      "value": "0.8"
     },
     {
       "@type": "Material",
       "name": "Tensilestrength",
-      "value": "200 MPa"
+      "value": "600 MPa"
     },
     {
       "@type": "Material",
@@ -613,12 +613,12 @@
     {
       "@type": "Material",
       "name": "Tensilepercentile",
-      "value": "15.8"
+      "value": "57.9"
     },
     {
       "@type": "Material",
       "name": "Hardness",
-      "value": "1500 HV"
+      "value": "1200 HV"
     },
     {
       "@type": "Material",
@@ -633,12 +633,12 @@
     {
       "@type": "Material",
       "name": "Hardnesspercentile",
-      "value": "50.0"
+      "value": "35.0"
     },
     {
       "@type": "Material",
       "name": "Youngsmodulus",
-      "value": "380 GPa"
+      "value": "210 GPa"
     },
     {
       "@type": "Material",
@@ -653,7 +653,7 @@
     {
       "@type": "Material",
       "name": "Moduluspercentile",
-      "value": "92.0"
+      "value": "24.0"
     },
     {
       "@type": "Material",
@@ -663,17 +663,17 @@
     {
       "@type": "Material",
       "name": "Wavelength",
-      "value": "1064 nm"
+      "value": "1064nm"
     },
     {
       "@type": "Material",
       "name": "Fluencerange",
-      "value": "1.0\u201310 J/cm\u00b2"
+      "value": "0.5\u20135 J/cm\u00b2"
     },
     {
       "@type": "Material",
       "name": "Chemicalformula",
-      "value": "Al2O3"
+      "value": "ZrO2"
     },
     {
       "@type": "Material",
@@ -728,8 +728,8 @@
   ],
   "mainEntity": {
     "@type": "HowTo",
-    "name": "Alumina",
-    "description": "Alumina, with the chemical formula Al2O3, is a highly durable ceramic material widely used in industries such as aerospace and semiconductors for its excellent thermal and mechanical properties. Laser cleaning of alumina involves the use of high-intensity laser pulses to remove surface contaminants and coatings without damaging the underlying material. This non-contact cleaning method is particularly effective due to alumina's high melting point and resistance to thermal shock, ensuring that the material's integrity and performance are maintained after cleaning.",
+    "name": "Zirconia",
+    "description": "Zirconia (ZrO2) is a highly durable ceramic material used extensively in laser cleaning applications across various industries. Its exceptional thermal and mechanical properties make it ideal for non-contact cleaning methods like laser ablation. Zirconia's ability to withstand high temperatures and resist chemical reactions ensures that it can be effectively cleaned without compromising its structural integrity or surface quality. This makes it particularly suitable for the precise removal of contaminants in critical applications such as aerospace and medical devices.",
     "step": "[{'@type': 'HowToStep', 'name': 'Material Preparation', 'text': 'Secure Aluminum component in laser processing fixture ensuring stable positioning and adequate ventilation for Class 3B operation.'}, {'@type': 'HowToStep', 'name': 'Parameter Configuration', 'text': 'Configure laser parameters: 1064nm wavelength, 1.0-10 J/cm\u00b2 fluence, 10-50ns pulse duration, 20-100kHz repetition rate.'}, {'@type': 'HowToStep', 'name': 'Surface Treatment', 'text': 'Execute systematic scanning pattern with 0.1-1.0mm spot size maintaining consistent standoff distance for metal processing.'}, {'@type': 'HowToStep', 'name': 'Quality Verification', 'text': 'Inspect cleaned surface using optical microscopy to verify contaminant removal and Aluminum material integrity.'}]"
   },
   "mentions": [
@@ -741,12 +741,12 @@
     {
       "@type": "PropertyValue",
       "name": "Pulseduration",
-      "value": "10-200ns"
+      "value": "10-100ns"
     },
     {
       "@type": "PropertyValue",
       "name": "Wavelength",
-      "value": "1064 nm"
+      "value": "1064nm"
     },
     {
       "@type": "PropertyValue",
@@ -761,7 +761,7 @@
     {
       "@type": "PropertyValue",
       "name": "Fluencerange",
-      "value": "1.0\u201310 J/cm\u00b2"
+      "value": "0.5\u20135 J/cm\u00b2"
     },
     {
       "@type": "PropertyValue",
@@ -771,7 +771,7 @@
     {
       "@type": "PropertyValue",
       "name": "Density",
-      "value": "3.95 g/cm\u00b3"
+      "value": "5.68 g/cm\u00b3"
     },
     {
       "@type": "PropertyValue",
@@ -786,12 +786,12 @@
     {
       "@type": "PropertyValue",
       "name": "Densitypercentile",
-      "value": "51.2"
+      "value": "92.4"
     },
     {
       "@type": "PropertyValue",
       "name": "Meltingpoint",
-      "value": "2072\u00b0C"
+      "value": "2715\u00b0C"
     },
     {
       "@type": "PropertyValue",
@@ -806,12 +806,12 @@
     {
       "@type": "PropertyValue",
       "name": "Meltingpercentile",
-      "value": "54.5"
+      "value": "94.7"
     },
     {
       "@type": "PropertyValue",
       "name": "Thermalconductivity",
-      "value": "30 W/m\u00b7K"
+      "value": "2.0 W/m\u00b7K"
     },
     {
       "@type": "PropertyValue",
@@ -826,12 +826,12 @@
     {
       "@type": "PropertyValue",
       "name": "Thermalpercentile",
-      "value": "14.8"
+      "value": "0.8"
     },
     {
       "@type": "PropertyValue",
       "name": "Tensilestrength",
-      "value": "200 MPa"
+      "value": "600 MPa"
     },
     {
       "@type": "PropertyValue",
@@ -846,12 +846,12 @@
     {
       "@type": "PropertyValue",
       "name": "Tensilepercentile",
-      "value": "15.8"
+      "value": "57.9"
     },
     {
       "@type": "PropertyValue",
       "name": "Hardness",
-      "value": "1500 HV"
+      "value": "1200 HV"
     },
     {
       "@type": "PropertyValue",
@@ -866,12 +866,12 @@
     {
       "@type": "PropertyValue",
       "name": "Hardnesspercentile",
-      "value": "50.0"
+      "value": "35.0"
     },
     {
       "@type": "PropertyValue",
       "name": "Youngsmodulus",
-      "value": "380 GPa"
+      "value": "210 GPa"
     },
     {
       "@type": "PropertyValue",
@@ -886,7 +886,7 @@
     {
       "@type": "PropertyValue",
       "name": "Moduluspercentile",
-      "value": "92.0"
+      "value": "24.0"
     },
     {
       "@type": "PropertyValue",
@@ -896,17 +896,17 @@
     {
       "@type": "PropertyValue",
       "name": "Wavelength",
-      "value": "1064 nm"
+      "value": "1064nm"
     },
     {
       "@type": "PropertyValue",
       "name": "Fluencerange",
-      "value": "1.0\u201310 J/cm\u00b2"
+      "value": "0.5\u20135 J/cm\u00b2"
     },
     {
       "@type": "PropertyValue",
       "name": "Chemicalformula",
-      "value": "Al2O3"
+      "value": "ZrO2"
     },
     {
       "@type": "PropertyValue",
@@ -968,12 +968,12 @@
     {
       "@type": "ScholarlyArticle",
       "name": "Pulseduration",
-      "value": "10-200ns"
+      "value": "10-100ns"
     },
     {
       "@type": "ScholarlyArticle",
       "name": "Wavelength",
-      "value": "1064 nm"
+      "value": "1064nm"
     },
     {
       "@type": "ScholarlyArticle",
@@ -988,7 +988,7 @@
     {
       "@type": "ScholarlyArticle",
       "name": "Fluencerange",
-      "value": "1.0\u201310 J/cm\u00b2"
+      "value": "0.5\u20135 J/cm\u00b2"
     },
     {
       "@type": "ScholarlyArticle",
@@ -998,7 +998,7 @@
     {
       "@type": "ScholarlyArticle",
       "name": "Density",
-      "value": "3.95 g/cm\u00b3"
+      "value": "5.68 g/cm\u00b3"
     },
     {
       "@type": "ScholarlyArticle",
@@ -1013,12 +1013,12 @@
     {
       "@type": "ScholarlyArticle",
       "name": "Densitypercentile",
-      "value": "51.2"
+      "value": "92.4"
     },
     {
       "@type": "ScholarlyArticle",
       "name": "Meltingpoint",
-      "value": "2072\u00b0C"
+      "value": "2715\u00b0C"
     },
     {
       "@type": "ScholarlyArticle",
@@ -1033,12 +1033,12 @@
     {
       "@type": "ScholarlyArticle",
       "name": "Meltingpercentile",
-      "value": "54.5"
+      "value": "94.7"
     },
     {
       "@type": "ScholarlyArticle",
       "name": "Thermalconductivity",
-      "value": "30 W/m\u00b7K"
+      "value": "2.0 W/m\u00b7K"
     },
     {
       "@type": "ScholarlyArticle",
@@ -1053,12 +1053,12 @@
     {
       "@type": "ScholarlyArticle",
       "name": "Thermalpercentile",
-      "value": "14.8"
+      "value": "0.8"
     },
     {
       "@type": "ScholarlyArticle",
       "name": "Tensilestrength",
-      "value": "200 MPa"
+      "value": "600 MPa"
     },
     {
       "@type": "ScholarlyArticle",
@@ -1073,12 +1073,12 @@
     {
       "@type": "ScholarlyArticle",
       "name": "Tensilepercentile",
-      "value": "15.8"
+      "value": "57.9"
     },
     {
       "@type": "ScholarlyArticle",
       "name": "Hardness",
-      "value": "1500 HV"
+      "value": "1200 HV"
     },
     {
       "@type": "ScholarlyArticle",
@@ -1093,12 +1093,12 @@
     {
       "@type": "ScholarlyArticle",
       "name": "Hardnesspercentile",
-      "value": "50.0"
+      "value": "35.0"
     },
     {
       "@type": "ScholarlyArticle",
       "name": "Youngsmodulus",
-      "value": "380 GPa"
+      "value": "210 GPa"
     },
     {
       "@type": "ScholarlyArticle",
@@ -1113,7 +1113,7 @@
     {
       "@type": "ScholarlyArticle",
       "name": "Moduluspercentile",
-      "value": "92.0"
+      "value": "24.0"
     },
     {
       "@type": "ScholarlyArticle",
@@ -1123,17 +1123,17 @@
     {
       "@type": "ScholarlyArticle",
       "name": "Wavelength",
-      "value": "1064 nm"
+      "value": "1064nm"
     },
     {
       "@type": "ScholarlyArticle",
       "name": "Fluencerange",
-      "value": "1.0\u201310 J/cm\u00b2"
+      "value": "0.5\u20135 J/cm\u00b2"
     },
     {
       "@type": "ScholarlyArticle",
       "name": "Chemicalformula",
-      "value": "Al2O3"
+      "value": "ZrO2"
     },
     {
       "@type": "ScholarlyArticle",
@@ -1188,7 +1188,7 @@
   ],
   "isPartOf": {
     "@type": "WebSite",
-    "name": "Alumina",
+    "name": "Zirconia",
     "url": "https://zbeam.example.com"
   },
   "breadcrumb": {

@@ -76,13 +76,12 @@ class FailFastContentGenerator:
         if not Path(base_prompt_file).exists():
             raise ConfigurationError(f"Required base content prompt missing: {base_prompt_file}")
         
-        # Validate base prompt structure
+        # Validate base prompt structure - check file exists and is valid YAML
         try:
             base_config = self._load_base_content_prompt()
-            required_sections = ['author_expertise_areas', 'technical_requirements']
-            for section in required_sections:
-                if section not in base_config:
-                    raise ConfigurationError(f"Base prompt missing required section: {section}")
+            # Dynamic validation - just ensure we can load it, no required sections
+            if not isinstance(base_config, dict):
+                raise ConfigurationError("Base content prompt must be a valid YAML dictionary")
         except Exception as e:
             raise ConfigurationError(f"Invalid base content prompt: {e}")
         
@@ -230,6 +229,18 @@ class FailFastContentGenerator:
             # Generate content via API (fail fast on API errors)
             response = self._call_api_with_validation(api_client, api_prompt)
             
+            # Validate word count against author's maximum
+            word_count = len(response.split())
+            max_word_count = self._get_author_max_word_count(base_config, author_id)
+            if max_word_count and word_count > max_word_count:
+                excess_words = word_count - max_word_count
+                excess_percentage = (excess_words / max_word_count) * 100
+                logger.warning(f"⚠️  Word count violation: {word_count} words > {max_word_count} max for author {author_id} (+{excess_words} words, {excess_percentage:.1f}% over)")
+                
+                # Retry if word count is significantly over the limit (>20% over)
+                if excess_percentage > 20:
+                    raise RetryableError(f"Content exceeds word limit by {excess_percentage:.1f}% ({word_count}/{max_word_count} words). Retrying with stricter constraints.")
+            
             # Format response
             formatted_content = self._format_api_response(
                 response, subject, author_name, author_country, base_config, persona_config
@@ -297,6 +308,39 @@ class FailFastContentGenerator:
         
         raise ConfigurationError(f"Author configuration not found for id: {author_id}")
     
+    def _get_author_max_word_count(self, base_config: Dict, author_id: int) -> Optional[int]:
+        """Extract max word count for author from base configuration."""
+        try:
+            # Map author IDs to country codes
+            author_map = {1: 'taiwan', 2: 'italy', 3: 'indonesia', 4: 'usa'}
+            author_key = author_map.get(author_id)
+            
+            if not author_key:
+                return None
+            
+            # Check author_expertise_areas first
+            expertise_areas = base_config.get('author_expertise_areas', {})
+            if author_key in expertise_areas:
+                max_count = expertise_areas[author_key].get('max_word_count')
+                if isinstance(max_count, int):
+                    return max_count
+            
+            # Check author_configurations as fallback
+            author_configs = base_config.get('author_configurations', {})
+            if author_key in author_configs:
+                max_count_str = author_configs[author_key].get('max_word_count', '')
+                # Extract number from strings like "380 words maximum"
+                import re
+                match = re.search(r'(\d+)', max_count_str)
+                if match:
+                    return int(match.group(1))
+            
+            return None
+            
+        except Exception as e:
+            logger.warning(f"Could not extract max word count for author {author_id}: {e}")
+            return None
+
     def _author_exists(self, author_id: int) -> bool:
         """Check if author exists in configuration."""
         try:
@@ -334,6 +378,10 @@ class FailFastContentGenerator:
             
             if not content or len(content.strip()) < 50:
                 raise RetryableError("API returned insufficient content")
+            
+            # Log content length for monitoring
+            word_count = len(content.split())
+            logger.info(f"📝 Generated content: {word_count} words ({len(content)} chars)")
             
             return content
             
@@ -461,6 +509,75 @@ class FailFastContentGenerator:
                          base_config: Dict, persona_config: Dict, formatting_config: Dict) -> str:
         """Build API prompt from configurations."""
         try:
+            # Start with basic material information and frontmatter data FIRST
+            prompt_parts = [
+                f"Generate laser cleaning content for {subject} ({formula})",
+                ""
+            ]
+            
+            # Add frontmatter/material context BEFORE other prompt layers
+            if frontmatter_data:
+                prompt_parts.append("MATERIAL CONTEXT:")
+                
+                # Chemical properties
+                chem_props = frontmatter_data.get('chemicalProperties', {})
+                if chem_props:
+                    prompt_parts.append(f"- Chemical Formula: {chem_props.get('formula', formula)}")
+                    if 'symbol' in chem_props:
+                        prompt_parts.append(f"- Material Symbol: {chem_props['symbol']}")
+                    if 'materialType' in chem_props:
+                        prompt_parts.append(f"- Material Type: {chem_props['materialType']}")
+                
+                # Physical properties
+                properties = frontmatter_data.get('properties', {})
+                if properties:
+                    if 'density' in properties:
+                        prompt_parts.append(f"- Density: {properties['density']}")
+                    if 'thermalConductivity' in properties:
+                        prompt_parts.append(f"- Thermal Conductivity: {properties['thermalConductivity']}")
+                    if 'meltingPoint' in properties:
+                        prompt_parts.append(f"- Melting Point: {properties['meltingPoint']}")
+                
+                # Category and technical specs
+                if 'category' in frontmatter_data:
+                    prompt_parts.append(f"- Category: {frontmatter_data['category'].title()}")
+                
+                tech_specs = frontmatter_data.get('technicalSpecifications', {})
+                if tech_specs:
+                    if 'tensileStrength' in tech_specs:
+                        prompt_parts.append(f"- Tensile Strength: {tech_specs['tensileStrength']}")
+                
+                prompt_parts.append("")
+            
+            # Now add author information AFTER material context
+            prompt_parts.extend([
+                f"Author: {author_name} from {author_country}",
+                ""
+            ])
+            
+            # Add PRIMARY guidance from Overall subject section FIRST
+            overall_subject = base_config.get('overall_subject')
+            if overall_subject:
+                prompt_parts.append("PRIMARY CONTENT GUIDANCE:")
+                if isinstance(overall_subject, list):
+                    for guidance in overall_subject:
+                        prompt_parts.append(f"- {guidance}")
+                elif isinstance(overall_subject, str):
+                    prompt_parts.append(f"- {overall_subject}")
+                prompt_parts.append("")
+            else:
+                # Fallback to use the hardcoded questions if not in config
+                prompt_parts.extend([
+                    "PRIMARY CONTENT GUIDANCE:",
+                    "- What is special about the material?",
+                    "- How does it differ from others in the category?",
+                    "- What is it often used for?",
+                    "- What is it like to laser clean?",
+                    "- What special challenges or advantages does it present for laser cleaning?",
+                    "- What should the results look like?",
+                    ""
+                ])
+            
             # Get author configuration from base config
             author_configs = base_config.get('author_expertise_areas', {})
             country_lower = author_country.lower()
@@ -477,31 +594,25 @@ class FailFastContentGenerator:
             mapped_country = country_mapping.get(country_lower, country_lower)
             author_config = author_configs.get(mapped_country, {})
             
-            if not author_config:
-                raise ConfigurationError(f"No author configuration found for country: {author_country} (mapped to: {mapped_country})")
-            
             # Get technical requirements
             tech_reqs = base_config.get('technical_requirements', {})
             
             # Get persona-specific patterns
             language_patterns = persona_config.get('language_patterns', {})
             writing_style = persona_config.get('writing_style', {})
+            technical_focus = persona_config.get('technical_focus', {})
             
-            # Build comprehensive prompt
-            prompt_parts = [
-                f"Generate laser cleaning content for {subject} ({formula})",
-                f"Author: {author_name} from {author_country}",
-                "",
-                "AUTHOR SPECIFICATIONS:",
-                f"- Technical specialization: {author_config.get('technical_specialization', 'general applications')}",
-                f"- Application expertise: {author_config.get('application_expertise', 'standard applications')}",
-                f"- Industry focus: {author_config.get('industry_focus', 'general industry')}",
-                ""
-            ]
+            # Add persona-specific technical focus if available
+            if technical_focus:
+                prompt_parts.append("SECONDARY - PERSONA TECHNICAL FOCUS:")
+                for key, value in technical_focus.items():
+                    if isinstance(value, str) and key != 'author_id':
+                        prompt_parts.append(f"- {key.replace('_', ' ').title()}: {value}")
+                prompt_parts.append("")
             
-            # Add technical requirements
+            # Add technical requirements as SECONDARY guidance
             if tech_reqs:
-                prompt_parts.append("TECHNICAL REQUIREMENTS:")
+                prompt_parts.append("SECONDARY - TECHNICAL REQUIREMENTS:")
                 laser_specs = tech_reqs.get('laser_specifications', [])
                 for spec in laser_specs:
                     prompt_parts.append(f"- {spec}")
@@ -517,27 +628,27 @@ class FailFastContentGenerator:
                 
                 prompt_parts.append("")
             
-            # Add language patterns if available
+            # Add language patterns if available - SECONDARY guidance
             if language_patterns:
                 signature_phrases = language_patterns.get('signature_phrases', [])
                 if signature_phrases:
-                    prompt_parts.append("LANGUAGE STYLE:")
+                    prompt_parts.append("SECONDARY - LANGUAGE STYLE:")
                     prompt_parts.extend([f"- {phrase}" for phrase in signature_phrases[:3]])
                     prompt_parts.append("")
             
-            # Add writing style guidance
+            # Add writing style guidance - SECONDARY
             if writing_style:
-                prompt_parts.append("WRITING STYLE:")
+                prompt_parts.append("SECONDARY - WRITING STYLE:")
                 for key, value in writing_style.items():
                     if isinstance(value, str):
                         prompt_parts.append(f"- {key.replace('_', ' ').title()}: {value}")
                 prompt_parts.append("")
             
-            # Add formatting guidance from formatting config
+            # Add formatting guidance from formatting config - SECONDARY
             if formatting_config:
                 markdown_formatting = formatting_config.get('markdown_formatting', {})
                 if markdown_formatting:
-                    prompt_parts.append("FORMATTING REQUIREMENTS:")
+                    prompt_parts.append("SECONDARY - FORMATTING REQUIREMENTS:")
                     
                     # Headers
                     headers = markdown_formatting.get('headers', {})
@@ -572,6 +683,25 @@ class FailFastContentGenerator:
             if app_focus and country_lower in app_focus:
                 prompt_parts.append(f"APPLICATION FOCUS: {app_focus[country_lower]}")
                 prompt_parts.append("")
+            
+            # Add explicit word count constraints
+            author_id = author_config.get('author_id')
+            if not author_id:
+                # Try to map from country to author_id
+                author_id_map = {'taiwan': 1, 'italy': 2, 'indonesia': 3, 'usa': 4}
+                author_id = author_id_map.get(mapped_country)
+            
+            if author_id:
+                max_word_count = self._get_author_max_word_count(base_config, author_id)
+                if max_word_count:
+                    prompt_parts.extend([
+                        "CRITICAL WORD COUNT CONSTRAINT:",
+                        f"- Maximum words: {max_word_count} words STRICT LIMIT",
+                        f"- Target range: {int(max_word_count * 0.8)}-{max_word_count} words",
+                        "- Content MUST be concise and focused",
+                        "- Prioritize essential information only",
+                        ""
+                    ])
             
             # Final instructions
             prompt_parts.extend([

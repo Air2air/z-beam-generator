@@ -157,11 +157,6 @@ class BadgesymbolComponentGenerator(FrontmatterComponentGenerator):
             if value is not None:
                 return str(value)
         return default
-    
-    def _generate_fallback_content(self, material_name: str) -> str:
-        """Generate basic content when no frontmatter available"""
-        symbol = material_name[:2].upper() if material_name else "MA"
-        return f'---\nsymbol: "{symbol}"\nmaterialType: "material"\n---'
 
 
 # Legacy compatibility class
@@ -179,9 +174,8 @@ class BadgeSymbolGenerator:
     
     def generate_content(self, material_name: str, frontmatter_data: Optional[Dict[str, Any]] = None) -> str:
         """Legacy generate_content method"""
-        material_data = {'name': material_name}
-        return self.generator._generate_static_content(material_name, material_data, 
-                                                     frontmatter_data=frontmatter_data)
+        result = self.generator.generate(material_name, frontmatter_data or {})
+        return result.content if hasattr(result, 'content') else str(result)
 
 
 # Static functions for compatibility

@@ -31,44 +31,6 @@ API_PROVIDERS = {
 }
 
 
-def fallback_get_api_key(provider: str) -> Optional[str]:
-    """Fallback method to get API key from environment when imports fail."""
-    try:
-        # Try to get from environment first
-                
-        # Map provider names to environment variable names
-        env_key_map = {
-            "deepseek": "DEEPSEEK_API_KEY",
-            "grok": "GROK_API_KEY"
-        }
-        
-        env_key = env_key_map.get(provider.lower())
-        if env_key:
-            # Try to get from os.environ first
-            api_key = os.getenv(env_key)
-            if api_key:
-                return api_key
-        
-        # Try to load from .env file directly
-        env_file = Path(".env")
-        if env_file.exists():
-            with open(env_file, 'r', encoding='utf-8') as f:
-                for line in f:
-                    line = line.strip()
-                    if line and not line.startswith('#') and '=' in line:
-                        key, value = line.split('=', 1)
-                        key = key.strip()
-                        value = value.strip().strip('"').strip("'")
-                        if key == env_key:
-                            return value
-        
-        return None
-        
-    except Exception as e:
-        logging.warning(f"Error in fallback API key retrieval: {e}")
-        return None
-
-
 def create_api_client(provider: str):
     """Create an API client for the specified provider."""
 
@@ -80,69 +42,25 @@ def create_api_client(provider: str):
         raise ValueError(f"Unknown API provider: {provider}")
 
     provider_config = API_PROVIDERS[provider]
+    
+    from api.client import APIClient
+    from api.env_loader import EnvLoader
 
-    try:
-        from api.client import APIClient
-        from api.env_loader import EnvLoader
+    # Get provider configuration with API key
+    config = EnvLoader.get_provider_config(provider_config)
 
-        # Get provider configuration with API key
-        config = EnvLoader.get_provider_config(provider_config)
-
-        # Check if API key was found
-        if "api_key" not in config:
-            raise ValueError(
-                f"API key not found for {provider}. Please set {provider_config['env_key']} in your environment."
-            )
-
-        # Create API client with provider-specific configuration
-        return APIClient(
-            api_key=config["api_key"],
-            base_url=config["base_url"],
-            model=config["model"],
+    # Check if API key was found
+    if "api_key" not in config:
+        raise ValueError(
+            f"API key not found for {provider}. Please set {provider_config['env_key']} in your environment."
         )
 
-    except ImportError as e:
-        # Fallback when imports fail - try to get API key directly
-        logging.warning(f"Import failed for API modules: {e}")
-        logging.info("Attempting fallback API key retrieval...")
-        
-        api_key = fallback_get_api_key(provider)
-        if not api_key:
-            raise ValueError(
-                f"Fallback failed: API key not found for {provider}. Please set {provider_config['env_key']} in your .env file."
-            )
-        
-        try:
-            # Try to create a basic APIClient with fallback method
-            from api.client import APIClient
-            return APIClient(
-                api_key=api_key,
-                base_url=provider_config["base_url"],
-                model=provider_config["model"],
-            )
-        except ImportError:
-            raise ImportError(f"Failed to import API client modules: {e}")
-        
-    except Exception as e:
-        # Try fallback on any other error
-        logging.warning(f"Error creating API client: {e}")
-        logging.info("Attempting fallback API key retrieval...")
-        
-        api_key = fallback_get_api_key(provider)
-        if not api_key:
-            raise ValueError(
-                f"Fallback failed: API key not found for {provider}. Please set {provider_config['env_key']} in your .env file."
-            )
-        
-        try:
-            from api.client import APIClient
-            return APIClient(
-                api_key=api_key,
-                base_url=provider_config["base_url"],
-                model=provider_config["model"],
-            )
-        except Exception as fallback_error:
-            raise Exception(f"Both primary and fallback API client creation failed. Primary: {e}, Fallback: {fallback_error}")
+    # Create API client with provider-specific configuration
+    return APIClient(
+        api_key=config["api_key"],
+        base_url=config["base_url"],
+        model=config["model"],
+    )
 
 
 def get_api_client_for_component(component_type: str, component_config: dict):

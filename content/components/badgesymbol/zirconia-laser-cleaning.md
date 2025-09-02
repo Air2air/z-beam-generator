@@ -1,0 +1,4 @@
+---
+symbol: "ZI"
+materialType: "ceramic"
+---

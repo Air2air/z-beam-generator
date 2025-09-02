@@ -52,9 +52,9 @@ class TestComponentTemplates(unittest.TestCase):
             with open(tags_prompt, 'r', encoding='utf-8') as f:
                 content = f.read()
                 
-            # Check for author name inclusion in tags
-            self.assertIn("{author_name}", content,
-                         "Tags template should include author_name variable")
+            # Check for author slug inclusion in tags (tags uses author_slug not author_name)
+            self.assertIn("{author_slug}", content,
+                         "Tags template should include author_slug variable")
                          
     def test_metatags_template_has_author_meta(self):
         """Test that metatags template includes author meta tag"""
@@ -85,7 +85,7 @@ class TestComponentTemplates(unittest.TestCase):
                          "JSON-LD template should use author_name variable")
                          
     def test_component_prompt_files_exist(self):
-        """Test that all component directories have prompt.yaml files"""
+        """Test that all component directories have prompt.yaml files or appropriate prompt structure"""
         expected_components = [
             "frontmatter", "tags", "metatags", "jsonld", 
             "content", "bullets", "caption", "table"
@@ -98,22 +98,47 @@ class TestComponentTemplates(unittest.TestCase):
             with self.subTest(component=component):
                 self.assertTrue(component_dir.exists(), 
                                f"Component directory should exist: {component}")
-                self.assertTrue(prompt_file.exists(),
-                               f"Prompt file should exist: {component}/prompt.yaml")
+                
+                # Content component uses a different architecture with prompts subdirectory
+                if component == "content":
+                    prompts_dir = component_dir / "prompts"
+                    self.assertTrue(prompts_dir.exists(),
+                                   f"Content component should have prompts directory: {component}/prompts")
+                    # Check that there are some prompt files in the prompts directory
+                    prompt_files = list(prompts_dir.glob("*.yaml"))
+                    self.assertGreater(len(prompt_files), 0,
+                                     f"Content component should have prompt files in prompts directory")
+                else:
+                    self.assertTrue(prompt_file.exists(),
+                                   f"Prompt file should exist: {component}/prompt.yaml")
                                
     def test_prompt_files_are_valid_yaml(self):
         """Test that all prompt.yaml files contain valid YAML"""
         for component_dir in self.components_dir.iterdir():
             if component_dir.is_dir():
-                prompt_file = component_dir / "prompt.yaml"
+                component_name = component_dir.name
                 
-                if prompt_file.exists():
-                    with self.subTest(component=component_dir.name):
-                        try:
-                            with open(prompt_file, 'r', encoding='utf-8') as f:
-                                yaml.safe_load(f)
-                        except yaml.YAMLError as e:
-                            self.fail(f"Invalid YAML in {component_dir.name}/prompt.yaml: {e}")
+                # Handle content component's different structure
+                if component_name == "content":
+                    prompts_dir = component_dir / "prompts"
+                    if prompts_dir.exists():
+                        for prompt_file in prompts_dir.glob("*.yaml"):
+                            with self.subTest(component=f"{component_name}/{prompt_file.name}"):
+                                try:
+                                    with open(prompt_file, 'r', encoding='utf-8') as f:
+                                        yaml.safe_load(f)
+                                except yaml.YAMLError as e:
+                                    self.fail(f"Invalid YAML in {component_name}/prompts/{prompt_file.name}: {e}")
+                else:
+                    prompt_file = component_dir / "prompt.yaml"
+                    
+                    if prompt_file.exists():
+                        with self.subTest(component=component_name):
+                            try:
+                                with open(prompt_file, 'r', encoding='utf-8') as f:
+                                    yaml.safe_load(f)
+                            except yaml.YAMLError as e:
+                                self.fail(f"Invalid YAML in {component_name}/prompt.yaml: {e}")
                             
     def test_template_variables_consistency(self):
         """Test that author-related template variables are consistently named"""

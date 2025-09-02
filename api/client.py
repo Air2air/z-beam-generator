@@ -60,12 +60,8 @@ class APIClient:
         if config:
             self.config = config
         else:
-            try:
-                from .config import get_default_config
-                self.config = get_default_config()
-            except ImportError:
-                # Fallback configuration
-                self.config = self._get_fallback_config(api_key, base_url)
+            from .config import get_default_config
+            self.config = get_default_config()
         
         # Override config with provided parameters
         if api_key:
@@ -104,33 +100,6 @@ class APIClient:
             'total_tokens': 0,
             'total_response_time': 0.0
         }
-    
-    def _get_fallback_config(self, api_key: Optional[str] = None, 
-                            base_url: Optional[str] = None):
-        """Get fallback configuration when config module is not available"""
-        from dataclasses import dataclass
-        
-        @dataclass
-        class FallbackConfig:
-            api_key: str
-            base_url: str
-            model: str
-            max_tokens: int = 4000
-            temperature: float = 0.7
-            timeout_connect: int = 10
-            timeout_read: int = 120
-            max_retries: int = 3
-            retry_delay: float = 1.0
-        
-        # Use provided API key or raise error
-        if not api_key:
-            raise ValueError("API key must be provided to APIClient")
-        
-        return FallbackConfig(
-            api_key=api_key,
-            base_url=base_url or "https://api.deepseek.com",
-            model=self.model or "deepseek-chat"
-        )
     
     def _setup_session(self):
         """Setup the requests session with headers and configuration"""
@@ -249,6 +218,11 @@ class APIClient:
             messages.append({"role": "system", "content": request.system_prompt})
         messages.append({"role": "user", "content": request.prompt})
         
+        # Log API request details
+        logger.info(f"🌐 Making API request to {self.model}")
+        logger.info(f"📝 Prompt length: {len(request.prompt)} chars")
+        logger.info(f"🎯 Max tokens: {request.max_tokens}, Temperature: {request.temperature}")
+        
         # Prepare payload
         payload = {
             "model": self.model,
@@ -275,10 +249,18 @@ class APIClient:
             data = response.json()
             content = data['choices'][0]['message']['content']
             
+            # Log successful API response details
+            usage = data.get('usage', {})
+            logger.info(f"✅ API response successful ({response.status_code})")
+            logger.info(f"⏱️  Response time: {response_time:.2f}s")
+            logger.info(f"📊 Tokens used: {usage.get('total_tokens', 'N/A')} (prompt: {usage.get('prompt_tokens', 'N/A')}, completion: {usage.get('completion_tokens', 'N/A')})")
+            logger.info(f"📄 Content length: {len(content)} chars")
+            
             # Handle empty content from reasoning models like grok-4
             if not content and data.get('choices', [{}])[0].get('message', {}).get('content') == "":
                 completion_tokens = data.get('usage', {}).get('completion_tokens_details', {}).get('reasoning_tokens', 0)
                 if completion_tokens > 0:
+                    logger.error("❌ Model produced reasoning tokens but no completion content")
                     return APIResponse(
                         success=False,
                         content="",
