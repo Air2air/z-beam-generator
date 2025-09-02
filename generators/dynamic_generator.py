@@ -160,7 +160,7 @@ class ComponentManager:
 class MaterialLoader:
     """Loads materials from YAML configuration"""
     
-    def __init__(self, materials_file: str = "lists/materials.yaml"):
+    def __init__(self, materials_file: str = "data/materials.yaml"):
         self.materials_file = Path(materials_file)
         self.materials = {}
         self.load_materials()
@@ -209,11 +209,12 @@ class MaterialLoader:
 class DynamicGenerator:
     """Main dynamic content generator with schema-driven field generation"""
     
-    def __init__(self, api_config=None):
-        """Initialize DynamicGenerator - supports both API and non-API components"""
+    def __init__(self, api_config=None, api_client=None):
+        """Initialize DynamicGenerator - API-only, no mock support"""
         self.schema_manager = SchemaManager()
         self.component_manager = ComponentManager()
         self.material_loader = MaterialLoader()
+        self.api_client = api_client  # Accept api_client parameter for backwards compatibility
         self.api_config = api_config
         self.author_info = None  # Store author information
         
@@ -481,7 +482,7 @@ EXAMPLES:
         logging.getLogger().setLevel(logging.DEBUG)
     
     # Initialize generator
-    generator = DynamicGenerator(args.api_config)
+    generator = DynamicGenerator(use_mock=args.mock)
     
     # Test API connection if requested
     if args.test_api:

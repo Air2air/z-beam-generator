@@ -1,2 +1,0 @@
-**Alumina** ceramic surface (left) with accumulated oxide layers and particulate contamination from high-temperature processing.
-**After laser cleaning** (right) using a 1064 nm Nd:YAG laser at 8 W average power, 100 ns pulse duration, and 200 μm spot size, showing complete contaminant removal without substrate damage.

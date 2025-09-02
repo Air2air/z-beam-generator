@@ -1,4 +1,0 @@
----
-symbol: "PO"
-materialType: "ceramic"
----

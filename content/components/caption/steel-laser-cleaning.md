@@ -1,2 +1,0 @@
-**Steel** surface (left) exhibiting heavy mill scale and oxide layer formation.  
-**After laser cleaning** (right) using a 1064 nm fiber laser at 150 W, 100 ns pulse duration, and 3 mm spot size, achieving complete oxide ablation without substrate damage.

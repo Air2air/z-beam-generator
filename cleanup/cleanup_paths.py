@@ -142,7 +142,7 @@ def execute_rename_plan(rename_plan: List[Tuple[Path, Path]], dry_run: bool = Tr
 
 def update_materials_yaml(dry_run: bool = True) -> bool:
     """Update materials.yaml to use clean names."""
-    materials_file = Path("lists/materials.yaml")
+    materials_file = Path("data/materials.yaml")
     
     if not materials_file.exists():
         logger.warning("materials.yaml not found")

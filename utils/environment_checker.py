@@ -52,7 +52,7 @@ def check_environment() -> Dict[str, Any]:
     # Check required files
     required_files = [
         'components/author/authors.json',
-        'lists/materials.yaml',
+        'data/materials.yaml',
         'cli/component_config.py',
         'api/config.py'
     ]

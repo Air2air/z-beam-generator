@@ -113,7 +113,7 @@ Each material generates these component types:
 ## 🏗️ Architecture
 
 ### Core Components
-- **MaterialLoader**: Loads materials from `lists/materials.yaml`
+- **MaterialLoader**: Loads materials from `data/materials.yaml`
 - **ComponentGenerator**: Uses prompts + DeepSeek API
 - **SchemaValidator**: Validates against JSON schemas
 - **ContentWriter**: Saves to `content/` folder
@@ -125,7 +125,7 @@ z-beam-generator/
 ├── simple_generator.py      # Core generation logic
 ├── fully_dynamic_generator.py # Schema-driven generator
 ├── api_client.py           # DeepSeek API integration
-├── lists/materials.yaml    # Materials database
+├── data/materials.yaml      # Materials database
 ├── components/             # Component templates
 │   ├── bullets/
 │   ├── caption/
@@ -196,7 +196,7 @@ All content is validated against JSON schemas in `schemas/`:
 ## 🛠️ Development
 
 ### Adding New Materials
-Edit `lists/materials.yaml`:
+Edit `data/materials.yaml`:
 ```yaml
 materials:
   metal:

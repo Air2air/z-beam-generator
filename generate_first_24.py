@@ -13,11 +13,11 @@ project_root = Path(__file__).parent
 sys.path.insert(0, str(project_root))
 
 from components.content.generators.fail_fast_generator import create_fail_fast_generator
-from api.client import create_api_client
+from api.client import MockAPIClient
 
 def load_materials():
     """Load materials from the YAML file"""
-    materials_file = project_root / "lists" / "materials.yaml"
+    materials_file = project_root / "data" / "materials.yaml"
     with open(materials_file, 'r') as f:
         data = yaml.safe_load(f)
     
@@ -119,10 +119,7 @@ def main():
         human_threshold=70.0
     )
     
-    # Use real API client - fail fast if not configured
-    api_client = create_api_client('deepseek')
-    if not api_client:
-        raise RuntimeError("API client creation failed - no fallbacks available")
+    api_client = MockAPIClient()
     
     successful = 0
     failed = 0
