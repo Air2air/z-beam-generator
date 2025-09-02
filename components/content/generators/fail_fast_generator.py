@@ -163,25 +163,21 @@ class FailFastContentGenerator:
         )
     
     def _execute_with_retry(self, operation, *args, **kwargs):
-        """Execute operation with retry logic for retryable errors and enhanced prompts."""
+        """Execute operation with retry logic for retryable errors."""
         last_error = None
         
         for attempt in range(self.max_retries + 1):
             try:
-                # For retry attempts, enhance the prompt with quality improvement instructions
-                if attempt > 0:
-                    kwargs = self._enhance_prompt_for_retry(kwargs, attempt, last_error)
-                
                 return operation(*args, **kwargs)
                 
             except RetryableError as e:
                 last_error = e
                 if attempt < self.max_retries:
-                    logger.warning(f"🔄 Attempt {attempt + 1} failed, retrying in {self.retry_delay}s: {e}")
+                    logger.warning(f"Attempt {attempt + 1} failed, retrying in {self.retry_delay}s: {e}")
                     time.sleep(self.retry_delay)
                     continue
                 else:
-                    logger.error(f"❌ All {self.max_retries + 1} attempts failed")
+                    logger.error(f"All {self.max_retries + 1} attempts failed")
                     break
                     
             except (ConfigurationError, GenerationError) as e:
@@ -201,55 +197,6 @@ class FailFastContentGenerator:
         
         # If we get here, all retries failed
         raise GenerationError(f"Content generation failed after {self.max_retries + 1} attempts: {last_error}")
-    
-    def _enhance_prompt_for_retry(self, kwargs, attempt_number, last_error):
-        """Enhance prompt with quality improvement instructions for retry attempts."""
-        # Add quality enhancement instructions based on the failure reason
-        enhancement_instructions = []
-        
-        if "human believability" in str(last_error).lower():
-            enhancement_instructions.extend([
-                "CRITICAL: Improve human believability and authentic author voice",
-                "- Use more conversational, natural language patterns",
-                "- Include personal insights and professional experience",
-                "- Add authentic technical enthusiasm and expertise",
-                "- Ensure content sounds like it's written by a real expert"
-            ])
-        
-        if "word count" in str(last_error).lower():
-            enhancement_instructions.extend([
-                "CRITICAL: Strict word count compliance required",
-                "- Be more concise and focused",
-                "- Prioritize only essential information",
-                "- Remove redundant phrases and filler content",
-                "- Maintain technical depth while being brief"
-            ])
-        
-        if "overall quality" in str(last_error).lower():
-            enhancement_instructions.extend([
-                "CRITICAL: Enhance overall content quality",
-                "- Improve technical accuracy and depth",
-                "- Strengthen logical flow and structure",
-                "- Add more specific examples and applications",
-                "- Ensure professional scientific tone"
-            ])
-        
-        # Create or enhance frontmatter_data
-        if 'frontmatter_data' in kwargs and kwargs['frontmatter_data']:
-            frontmatter_data = kwargs['frontmatter_data'].copy()
-        else:
-            frontmatter_data = {}
-        
-        frontmatter_data.update({
-            'retry_attempt': attempt_number,
-            'enhancement_instructions': enhancement_instructions,
-            'previous_error': str(last_error)
-        })
-        
-        # Update kwargs with enhanced frontmatter_data
-        kwargs['frontmatter_data'] = frontmatter_data
-        
-        return kwargs
     
     def _generate_content_internal(self, material_name: str, material_data: Dict,
                                  api_client, author_info: Dict,
@@ -288,7 +235,7 @@ class FailFastContentGenerator:
             # Generate content via API (fail fast on API errors)
             response = self._call_api_with_validation(api_client, api_prompt)
             
-            # Validate word count against author's maximum - ENFORCE STRICT LIMITS
+            # Validate word count against author's maximum
             word_count = len(response.split())
             max_word_count = self._get_author_max_word_count(base_config, author_id)
             if max_word_count and word_count > max_word_count:
@@ -296,14 +243,9 @@ class FailFastContentGenerator:
                 excess_percentage = (excess_words / max_word_count) * 100
                 logger.warning(f"⚠️  Word count violation: {word_count} words > {max_word_count} max for author {author_id} (+{excess_words} words, {excess_percentage:.1f}% over)")
                 
-                # STRICT VALIDATION: Retry if word count is over the limit by more than 10%
-                if excess_percentage > 10:
-                    raise RetryableError(f"VALIDATION FAILED - Word count exceeds limit by {excess_percentage:.1f}% ({word_count}/{max_word_count} words). Content must be more concise.")
-            
-            # Also check minimum word count
-            min_word_count = max_word_count * 0.7 if max_word_count else 200  # At least 70% of max or 200 words minimum
-            if word_count < min_word_count:
-                raise RetryableError(f"VALIDATION FAILED - Content too short: {word_count} words < {min_word_count} minimum")
+                # Retry if word count is significantly over the limit (>20% over)
+                if excess_percentage > 20:
+                    raise RetryableError(f"Content exceeds word limit by {excess_percentage:.1f}% ({word_count}/{max_word_count} words). Retrying with stricter constraints.")
             
             # Generate quality score first if enabled
             quality_score = None
@@ -318,25 +260,11 @@ class FailFastContentGenerator:
                         temp_formatted, material_data, author_info, frontmatter_data
                     )
                     
-                    # Check if retry is recommended based on quality score - ENFORCE VALIDATION
+                    # Check if retry is recommended based on quality score
                     if quality_score.retry_recommended:
-                        logger.warning(f"Quality validation failed: {quality_score.overall_score:.1f}/100")
-                        
-                        # Always retry if human believability is below threshold
+                        logger.warning(f"Quality score recommends retry: {quality_score.overall_score:.1f}/100")
                         if quality_score.human_believability < self.human_threshold:
-                            raise RetryableError(f"VALIDATION FAILED - Human believability: {quality_score.human_believability:.1f} < {self.human_threshold}")
-                        
-                        # Also retry if overall quality is too low (below 60)
-                        if quality_score.overall_score < 60.0:
-                            raise RetryableError(f"VALIDATION FAILED - Overall quality too low: {quality_score.overall_score:.1f} < 60.0")
-                        
-                        # Additional validation checks
-                        if hasattr(quality_score, 'technical_accuracy') and quality_score.technical_accuracy < 50.0:
-                            raise RetryableError(f"VALIDATION FAILED - Technical accuracy too low: {quality_score.technical_accuracy:.1f} < 50.0")
-                        
-                        logger.warning(f"Quality below recommended threshold but above minimum - accepting content")
-                    else:
-                        logger.info(f"✅ Quality validation PASSED: Overall={quality_score.overall_score:.1f}, Human={quality_score.human_believability:.1f}")
+                            raise RetryableError(f"Content failed human believability threshold: {quality_score.human_believability:.1f} < {self.human_threshold}")
                         
                 except Exception as scoring_error:
                     logger.warning(f"Content scoring failed: {scoring_error}")
@@ -791,20 +719,6 @@ class FailFastContentGenerator:
                         "- Prioritize essential information only",
                         ""
                     ])
-            
-            # Add retry enhancement instructions if this is a retry attempt
-            if frontmatter_data and 'enhancement_instructions' in frontmatter_data:
-                prompt_parts.append("🔄 RETRY ENHANCEMENT INSTRUCTIONS:")
-                enhancement_instructions = frontmatter_data['enhancement_instructions']
-                for instruction in enhancement_instructions:
-                    prompt_parts.append(f"- {instruction}")
-                prompt_parts.append("")
-                
-                # Add previous attempt context
-                attempt_num = frontmatter_data.get('retry_attempt', 0)
-                prompt_parts.append(f"This is retry attempt #{attempt_num}. Previous attempt failed validation.")
-                prompt_parts.append("Focus on addressing the specific issues mentioned above.")
-                prompt_parts.append("")
             
             # Final instructions
             prompt_parts.extend([

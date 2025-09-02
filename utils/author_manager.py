@@ -32,11 +32,17 @@ def load_authors() -> List[Dict[str, Any]]:
         with open(authors_file, 'r', encoding='utf-8') as f:
             authors_data = json.load(f)
         
-        if not isinstance(authors_data, list):
-            raise ValueError("Authors file must contain a list of authors")
+        # Handle both formats: direct list or object with "authors" key
+        if isinstance(authors_data, list):
+            return authors_data
+        elif isinstance(authors_data, dict) and "authors" in authors_data:
+            authors_list = authors_data["authors"]
+            if not isinstance(authors_list, list):
+                raise ValueError("Authors data must contain a list of authors")
+            return authors_list
+        else:
+            raise ValueError("Authors file must contain a list of authors or an object with 'authors' key")
             
-        return authors_data
-        
     except json.JSONDecodeError as e:
         raise json.JSONDecodeError(f"Invalid JSON in authors file: {e}")
 
@@ -46,7 +52,7 @@ def get_author_by_id(author_id: int) -> Optional[Dict[str, Any]]:
     Get author information by ID.
     
     Args:
-        author_id: Author ID (1-based index)
+        author_id: Author ID 
         
     Returns:
         Author dictionary or None if not found
@@ -54,10 +60,12 @@ def get_author_by_id(author_id: int) -> Optional[Dict[str, Any]]:
     try:
         authors = load_authors()
         
-        if 1 <= author_id <= len(authors):
-            return authors[author_id - 1]  # Convert to 0-based index
-        else:
-            return None
+        # Find author by ID field rather than array index
+        for author in authors:
+            if author.get('id') == author_id:
+                return author
+        
+        return None
             
     except (FileNotFoundError, json.JSONDecodeError):
         return None

@@ -74,6 +74,52 @@ This is a laser cleaning content generation system with strict fail-fast archite
 6. **NEVER eliminate error recovery** - fail-fast ≠ no retry logic
 7. **ALWAYS ask before major changes** - get permission for rewrites
 
+## Content Component Special Instructions
+
+### CRITICAL: The content component is the CORE of the system
+The content component (`components/content/`) contains 25,679 bytes of production-ready code with sophisticated multi-layered prompt engineering. **ANY** work involving the content component MUST follow these rules:
+
+### Mandatory Documentation Review
+**BEFORE** making ANY changes to content component code, you MUST:
+1. **READ** the complete documentation: `components/content/docs/README.md`
+2. **UNDERSTAND** the architecture: `components/content/docs/CONTENT_GENERATION_ARCHITECTURE.md`
+3. **STUDY** the prompt system: `components/content/docs/PROMPT_SYSTEM.md`
+4. **REFERENCE** the API: `components/content/docs/API_REFERENCE.md`
+
+### Content Component Forbidden Actions
+1. **NEVER** modify `fail_fast_generator.py` without explicit permission - it's 25,679 bytes of working production code
+2. **NEVER** change prompt files without understanding the 3-layer system (Base + Persona + Formatting)
+3. **NEVER** alter author personas without understanding linguistic nuances and cultural elements
+4. **NEVER** modify word count limits or quality scoring thresholds
+5. **NEVER** remove retry logic or error recovery mechanisms
+6. **NEVER** change the prompt construction process (12-step layered building)
+
+### Content Component Required Actions
+1. **ALWAYS** preserve the multi-layered prompt architecture
+2. **ALWAYS** maintain author authenticity and writing style consistency
+3. **ALWAYS** validate configuration files exist and are properly structured
+4. **ALWAYS** respect word count limits per author (250-450 words)
+5. **ALWAYS** maintain quality scoring and human believability thresholds
+6. **ALWAYS** use fail-fast validation with proper exception types
+7. **ALWAYS** test with real API clients, never mocks
+
+### Content Component Architecture Rules
+- **Wrapper Pattern**: ContentComponentGenerator is a lightweight wrapper for fail_fast_generator
+- **Factory Integration**: Must work with ComponentGeneratorFactory.create_generator("content")
+- **Three-Layer Prompts**: Base guidance + Author persona + Formatting rules
+- **Quality Assurance**: 5-dimension scoring with human believability threshold
+- **Author Authentication**: 4 country-specific personas with linguistic nuances
+- **Configuration Caching**: LRU cache for YAML files, lazy loading for performance
+
+### When Working on Content Component
+1. **READ THE DOCS FIRST** - All answers are in `components/content/docs/`
+2. **Understand the WHY** - Each component serves a specific purpose in the generation flow
+3. **Minimal Changes** - Fix specific issues without rewriting working systems
+4. **Test Thoroughly** - Validate all 4 author personas work correctly
+5. **Ask Permission** - Get explicit approval before major modifications
+
+The content component documentation is comprehensive and covers every aspect of the system. Use it as your primary reference for understanding and working with content generation code.
+
 When suggesting code changes:
 1. Maintain fail-fast behavior
 2. Preserve existing working functionality  

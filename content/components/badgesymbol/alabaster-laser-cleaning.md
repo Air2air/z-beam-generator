@@ -1,0 +1,4 @@
+---
+symbol: "CASO"
+materialType: "stone"
+---

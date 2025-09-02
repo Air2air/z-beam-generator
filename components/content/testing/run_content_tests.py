@@ -43,20 +43,11 @@ def run_content_test_suite():
     # Test execution results
     test_results = {}
     
-    # 1. Run Calculator Tests (existing, comprehensive)
-    logger.info("\n📊 TEST SUITE 1: CALCULATOR TESTS (Author Data Validation)")
+    # 1. Calculator Tests - Removed (no production calculator code exists)
+    logger.info("\n📊 TEST SUITE 1: CALCULATOR TESTS - REMOVED")
     logger.info("-" * 60)
-    try:
-        from components.content.testing.test_calculator import run_calculator_tests
-        success = run_calculator_tests()
-        test_results['calculator'] = success
-        if success:
-            logger.info("✅ Calculator tests PASSED")
-        else:
-            logger.error("❌ Calculator tests FAILED")
-    except Exception as e:
-        logger.error(f"❌ Calculator tests ERROR: {e}")
-        test_results['calculator'] = False
+    logger.info("❌ Calculator module removed - no fallbacks or mocks allowed")
+    # No test_results entry - let the test fail if calculator is expected
     
     # 2. Run Persona Validation Tests (new)
     logger.info("\n🎭 TEST SUITE 2: PERSONA VALIDATION TESTS")

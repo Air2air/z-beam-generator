@@ -252,42 +252,241 @@ class ContentQualityScorer:
         return min(score, max_score)
     
     def _score_author_authenticity(self, content: str, author_info: Dict[str, Any]) -> float:
-        """Score author persona authenticity (0-100)."""
-        score = 0.0
-        max_score = 100.0
+        """
+        Enhanced author authenticity scoring with stricter cultural validation.
+        """
+        if not author_info or 'country' not in author_info:
+            return 0.0
         
+        country = author_info['country'].lower()
         content_lower = content.lower()
-        author_country = author_info.get('country', '').lower()
+        words = self._extract_words(content)
+        word_count = len(words)
         
-        # Map country to marker key
-        country_mapping = {
-            'taiwan': 'taiwan',
-            'italy': 'italy', 
-            'indonesia': 'indonesia',
-            'united states': 'usa',
-            'united states (california)': 'usa'
+        # Enforce minimum word count by country
+        min_word_counts = {
+            'italy': 350,
+            'taiwan': 350, 
+            'indonesia': 400,  # Higher due to repetitive analysis style
+            'united states': 300,
+            'united states (california)': 300
         }
         
-        marker_key = country_mapping.get(author_country, 'usa')
-        expected_markers = self.author_markers.get(marker_key, [])
+        min_words = min_word_counts.get(country, 350)
+        if word_count < min_words:
+            # Severe penalty for insufficient content
+            word_penalty = max(0, (min_words - word_count) / min_words * 50)
+            logger.warning(f"Word count penalty: {word_penalty:.1f} points for {word_count}/{min_words} words")
+        else:
+            word_penalty = 0
         
-        # Check for author-specific linguistic markers (40 points)
-        markers_found = sum(1 for marker in expected_markers if marker in content_lower)
-        if expected_markers:
-            marker_ratio = markers_found / len(expected_markers)
-            score += marker_ratio * 40
+        score = 0.0
         
-        # Check for author name attribution (30 points)
-        author_name = author_info.get('name', '')
-        if author_name and author_name in content:
-            score += 30
+        if 'italy' in country:
+            # Enhanced Italian persona validation
+            score += self._score_italian_persona(content, content_lower, words)
+        elif 'taiwan' in country:
+            # Enhanced Taiwan persona validation  
+            score += self._score_taiwan_persona(content, content_lower, words)
+        elif 'indonesia' in country:
+            # Enhanced Indonesia persona validation
+            score += self._score_indonesia_persona(content, content_lower, words)
+        elif 'united states' in country:
+            # Enhanced USA persona validation
+            score += self._score_usa_persona(content, content_lower, words)
+        else:
+            logger.warning(f"Unknown country for authenticity scoring: {country}")
+            return 20.0  # Base score for unknown countries
         
-        # Check for country attribution (30 points)
-        country_display = author_info.get('country', '')
-        if country_display and country_display in content:
-            score += 30
+        # Apply word count penalty
+        final_score = max(0, score - word_penalty)
         
-        return min(score, max_score)
+        logger.info(f"Author authenticity: {final_score:.1f}/100 (country: {country}, words: {word_count})")
+        return min(final_score, 100.0)
+    
+    def _score_italian_persona(self, content: str, content_lower: str, words: list) -> float:
+        """Score Italian academic persona with enhanced detection."""
+        score = 0.0
+        
+        # Technical precision markers (25 points)
+        precision_terms = [
+            'methodical', 'systematic', 'precise', 'engineering', 'optimization',
+            'rigorous', 'analytical', 'comprehensive', 'meticulous'
+        ]
+        precision_count = sum(1 for term in precision_terms if term in content_lower)
+        score += min(precision_count * 5, 25)
+        
+        # Passionate/artistic language (25 points)
+        passion_terms = [
+            'heritage', 'masterpiece', 'artistic', 'aesthetic', 'elegant',
+            'sophisticated', 'refined', 'excellence', 'beauty', 'craftsmanship'
+        ]
+        passion_count = sum(1 for term in passion_terms if term in content_lower)
+        score += min(passion_count * 5, 25)
+        
+        # Structured presentation (25 points)
+        structure_score = 0
+        if content.count('#') >= 4:  # Multiple clear sections
+            structure_score += 10
+        if 'overview' in content_lower and 'applications' in content_lower:
+            structure_score += 10
+        if any(phrase in content_lower for phrase in ['systematic approach', 'methodical analysis']):
+            structure_score += 5
+        score += min(structure_score, 25)
+        
+        # Authority and confidence (25 points)
+        authority_indicators = [
+            content.count('.') > 15,  # Definitive statements
+            'must be' in content_lower or 'requires' in content_lower,
+            'critical' in content_lower or 'essential' in content_lower,
+            len([w for w in words if w.lower() in ['superior', 'optimal', 'advanced']]) >= 2
+        ]
+        authority_score = sum(6 for indicator in authority_indicators if indicator)
+        score += min(authority_score, 25)
+        
+        return score
+    
+    def _score_taiwan_persona(self, content: str, content_lower: str, words: list) -> float:
+        """Score Taiwan academic persona with enhanced detection."""
+        score = 0.0
+        
+        # Systematic methodology (30 points)
+        systematic_terms = [
+            'systematic', 'methodical', 'step-by-step', 'approach', 'methodology',
+            'process', 'procedure', 'analysis', 'evaluation', 'assessment'
+        ]
+        systematic_count = sum(1 for term in systematic_terms if term in content_lower)
+        score += min(systematic_count * 3, 30)
+        
+        # Electronics/semiconductor context (25 points)
+        tech_terms = [
+            'electronics', 'semiconductor', 'circuit', 'substrate', 'wafer',
+            'fabrication', 'manufacturing', 'precision', 'cleanroom', 'processing'
+        ]
+        tech_count = sum(1 for term in tech_terms if term in content_lower)
+        score += min(tech_count * 4, 25)
+        
+        # Cautious language patterns (25 points)
+        cautious_phrases = [
+            'what if', 'consider', 'as we continue', 'systematic analysis',
+            'careful consideration', 'precise control', 'optimal parameters'
+        ]
+        cautious_count = sum(1 for phrase in cautious_phrases if phrase in content_lower)
+        score += min(cautious_count * 5, 25)
+        
+        # Detail orientation (20 points)
+        detail_indicators = [
+            content.count('(') >= 5,  # Technical specifications in parentheses
+            'nm' in content or 'μm' in content,  # Precise measurements
+            content.count('°C') >= 1,  # Temperature specifications
+            any(phrase in content_lower for phrase in ['parameter', 'specification', 'tolerance'])
+        ]
+        detail_score = sum(5 for indicator in detail_indicators if indicator)
+        score += min(detail_score, 20)
+        
+        return score
+    
+    def _score_indonesia_persona(self, content: str, content_lower: str, words: list) -> float:
+        """Score Indonesia academic persona with enhanced repetition and analysis detection."""
+        score = 0.0
+        
+        # Repetitive emphasis patterns (40 points) - This is critical for Indonesian style
+        repetition_score = 0
+        
+        # Check for repetitive important/vital/critical phrases
+        important_variations = ['important', 'vital', 'critical', 'essential', 'significant']
+        repetitive_phrases = []
+        for term in important_variations:
+            count = content_lower.count(term)
+            if count >= 2:
+                repetition_score += count * 5
+                repetitive_phrases.append(f"{term}({count}x)")
+        
+        # Check for "very important", "most important" patterns
+        if 'very important' in content_lower:
+            repetition_score += 10
+        if 'most important' in content_lower:
+            repetition_score += 10
+        
+        # Check for repeated analytical phrases
+        analytical_repeats = [
+            'analysis shows', 'we can see', 'it is clear', 'this demonstrates',
+            'the results indicate', 'this is important'
+        ]
+        for phrase in analytical_repeats:
+            if content_lower.count(phrase) >= 2:
+                repetition_score += 8
+        
+        score += min(repetition_score, 40)
+        logger.info(f"Indonesia repetition score: {min(repetition_score, 40)}/40 - phrases: {repetitive_phrases}")
+        
+        # Thorough analytical approach (25 points)
+        analytical_terms = [
+            'analysis', 'examine', 'investigate', 'evaluate', 'assess',
+            'study', 'research', 'observation', 'findings', 'results'
+        ]
+        analytical_count = sum(1 for term in analytical_terms if term in content_lower)
+        score += min(analytical_count * 3, 25)
+        
+        # Environmental/community context (20 points)
+        community_terms = [
+            'environment', 'community', 'sustainable', 'affordable', 'practical',
+            'implementation', 'society', 'local', 'region', 'marine', 'humid'
+        ]
+        community_count = sum(1 for term in community_terms if term in content_lower)
+        score += min(community_count * 4, 20)
+        
+        # Formal academic structure (15 points)
+        formal_indicators = [
+            content.count('##') >= 3,  # Multiple subsections
+            'overview' in content_lower,
+            'parameters' in content_lower,
+            'applications' in content_lower
+        ]
+        formal_score = sum(4 for indicator in formal_indicators if indicator)
+        score += min(formal_score, 15)
+        
+        return score
+    
+    def _score_usa_persona(self, content: str, content_lower: str, words: list) -> float:
+        """Score USA academic persona with enhanced detection."""
+        score = 0.0
+        
+        # Conversational/accessible language (30 points)
+        conversational_terms = [
+            "let's", "we're", "you're", "imagine", "consider this", "think about",
+            "what's", "here's", "that's", "it's", "can't", "don't", "won't"
+        ]
+        conversational_count = sum(1 for term in conversational_terms if term in content_lower)
+        score += min(conversational_count * 4, 30)
+        
+        # Optimistic/forward-looking language (25 points)
+        optimistic_terms = [
+            'innovation', 'breakthrough', 'cutting-edge', 'advanced', 'revolutionary',
+            'promising', 'exciting', 'potential', 'opportunity', 'future'
+        ]
+        optimistic_count = sum(1 for term in optimistic_terms if term in content_lower)
+        score += min(optimistic_count * 4, 25)
+        
+        # Direct communication style (25 points)
+        direct_indicators = [
+            content.count('!') >= 1,  # Exclamation for emphasis
+            any(phrase in content_lower for phrase in ['bottom line', 'key point', 'simply put']),
+            content.count('However,') >= 1 or content.count('But') >= 1,
+            len([s for s in content.split('.') if len(s.split()) <= 15]) >= 3  # Short, direct sentences
+        ]
+        direct_score = sum(6 for indicator in direct_indicators if indicator)
+        score += min(direct_score, 25)
+        
+        # Practical application focus (20 points)
+        practical_terms = [
+            'practical', 'real-world', 'industry', 'commercial', 'cost-effective',
+            'efficient', 'scalable', 'implementation', 'production', 'market'
+        ]
+        practical_count = sum(1 for term in practical_terms if term in content_lower)
+        score += min(practical_count * 3, 20)
+        
+        return score
     
     def _score_readability(self, content: str) -> float:
         """Score content readability using multiple metrics (0-100)."""
@@ -327,7 +526,7 @@ class ContentQualityScorer:
             
         except Exception as e:
             logger.error(f"Error calculating readability: {e}")
-            return 50.0  # Default middle score on error
+            raise ValueError(f"Readability calculation failed: {e}") from e
     
     def _score_human_believability(self, content: str, author_info: Dict[str, Any]) -> float:
         """Score overall human believability (0-100)."""

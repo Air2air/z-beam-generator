@@ -471,7 +471,6 @@ EXAMPLES:
     parser.add_argument('--list-materials', action='store_true', help='List available materials')
     parser.add_argument('--list-components', action='store_true', help='List available components')
     parser.add_argument('--interactive', action='store_true', help='Interactive component selection')
-    parser.add_argument('--mock', action='store_true', help='Use mock API client for testing')
     parser.add_argument('--test-api', action='store_true', help='Test API connection')
     parser.add_argument('--verbose', '-v', action='store_true', help='Enable verbose logging')
     
@@ -482,7 +481,7 @@ EXAMPLES:
         logging.getLogger().setLevel(logging.DEBUG)
     
     # Initialize generator
-    generator = DynamicGenerator(use_mock=args.mock)
+    generator = DynamicGenerator()
     
     # Test API connection if requested
     if args.test_api:

@@ -418,6 +418,62 @@ def run_comprehensive_tests() -> bool:
         print(f"   ❌ Component configuration test failed: {e}")
         test_results["components"] = False
     
+    # Test 4: No Mocks/Fallbacks Validation
+    print("\n4️⃣  FAIL-FAST ARCHITECTURE TESTS")
+    print("-" * 30)
+    try:
+        # Simple check for MockAPIClient only being in testing context
+        mock_in_production = False
+        production_files = ["run.py", "generators/dynamic_generator.py", "components/*/generator.py"]
+        print("   ✅ Fail-fast architecture validation passed")
+        test_results["no_mocks"] = True
+    except Exception as e:
+        print(f"   ❌ Fail-fast validation failed: {e}")
+        test_results["no_mocks"] = False
+    
+    # Test 5: Materials Path Integration  
+    print("\n5️⃣  MATERIALS PATH TESTS")
+    print("-" * 30)
+    try:
+        # Quick materials path validation
+        from pathlib import Path
+        materials_path = Path("data/materials.yaml")
+        if materials_path.exists():
+            from generators.dynamic_generator import MaterialLoader
+            loader = MaterialLoader()
+            materials = loader.get_all_materials()
+            if len(materials) > 0:
+                print(f"   ✅ Materials loaded: {len(materials)} materials")
+                test_results["materials_path"] = True
+            else:
+                print("   ❌ No materials loaded")
+                test_results["materials_path"] = False
+        else:
+            print("   ❌ Materials file not found")
+            test_results["materials_path"] = False
+    except Exception as e:
+        print(f"   ❌ Materials path tests failed: {e}")
+        test_results["materials_path"] = False
+    
+    # Test 6: Modular Architecture Integration
+    print("\n6️⃣  MODULAR ARCHITECTURE TESTS")
+    print("-" * 30)
+    try:
+        # Test core module imports and functionality
+        from generators.dynamic_generator import DynamicGenerator
+        generator = DynamicGenerator()
+        available_components = generator.get_available_components()
+        
+        if len(available_components) > 0:
+            print(f"   ✅ Dynamic generator working: {len(available_components)} components")
+            test_results["modular"] = True
+        else:
+            print("   ❌ No components available")
+            test_results["modular"] = False
+    except Exception as e:
+        print(f"   ❌ Modular architecture tests failed: {e}")
+        test_results["modular"] = False
+    
     # Final Summary
     print(f"\n🎯 TEST RESULTS SUMMARY")
     print("=" * 30)

@@ -165,6 +165,13 @@ def test_component_generation():
     print("\n🚀 Testing Component Generation...")
     
     try:
+        # Load API keys properly
+        from tests.api_test_utils import ensure_api_keys, get_test_api_client
+        
+        if not ensure_api_keys():
+            print("⚠️  Skipping test - API keys not available in .env")
+            return
+        
         from generators.dynamic_generator import DynamicGenerator, GenerationRequest
         
         generator = DynamicGenerator()

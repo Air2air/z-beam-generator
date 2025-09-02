@@ -88,7 +88,13 @@ def test_full_generation_workflow():
     print("🔄 Testing Full Generation Workflow...")
     
     try:
-        from run import run_material_generation, COMPONENT_CONFIG
+        # Load API keys properly  
+        from tests.api_test_utils import ensure_api_keys
+        
+        if not ensure_api_keys():
+            print("⚠️  Skipping test - API keys not available in .env")
+            return
+        
         from generators.dynamic_generator import DynamicGenerator
         
         # Create temporary output directory

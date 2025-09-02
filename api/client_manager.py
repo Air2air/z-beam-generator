@@ -47,7 +47,7 @@ def create_api_client(provider: str) -> APIClient:
     client = APIClient(
         base_url=provider_config['base_url'],
         api_key=api_key,
-        model=provider_config['default_model']
+        model=provider_config['model']
     )
     
     return client
