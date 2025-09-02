@@ -68,7 +68,14 @@ def get_api_client_for_component(component_type: str, component_config: dict):
 
     components_config = component_config.get("components", {})
     if component_type in components_config:
-        provider = components_config[component_type]["data_provider"]
+        config = components_config[component_type]
+        data_provider = config["data_provider"]
+        
+        # For hybrid and API data providers, use the api_provider field
+        if data_provider in ["hybrid", "API"]:
+            provider = config["api_provider"]
+        else:
+            provider = data_provider
     else:
         provider = "deepseek"  # Default provider
 

@@ -14,6 +14,7 @@ This script tests the complete dynamic generation system including:
 import sys
 import os
 import json
+import pytest
 import tempfile
 import shutil
 from pathlib import Path
@@ -29,7 +30,7 @@ def test_system_initialization():
     try:
         from generators.dynamic_generator import DynamicGenerator
         
-        # Test with generator
+        # Test dynamic generator
         generator = DynamicGenerator()
         
         # Check that all components loaded
@@ -39,11 +40,10 @@ def test_system_initialization():
         print(f"  ✅ Loaded {len(materials)} materials")
         print(f"  ✅ Loaded {len(components)} components")
         print("  ✅ System initialization successful")
-        return True
         
     except Exception as e:
         print(f"  ❌ System initialization failed: {e}")
-        return False
+        pytest.fail(f"System initialization failed: {e}")
 
 def test_multi_api_provider_system():
     """Test multi-API provider configuration and routing"""
@@ -77,11 +77,11 @@ def test_multi_api_provider_system():
             assert provider in API_PROVIDERS or provider == 'none', f"Invalid provider {provider} for {component}"
         print("  ✅ Component API provider routing validated")
         
-        return True
+        print("  ✅ Multi-API provider system test completed successfully")
         
     except Exception as e:
         print(f"  ❌ Multi-API provider system failed: {e}")
-        return False
+        pytest.fail(f"Multi-API provider system failed: {e}")
 
 def test_component_configuration():
     """Test component enable/disable functionality"""
@@ -112,11 +112,11 @@ def test_component_configuration():
             assert isinstance(config['enabled'], bool), f"Component {component} 'enabled' must be boolean"
         
         print("  ✅ Component configuration validation passed")
-        return True
+        print("  ✅ Component configuration test completed successfully")
         
     except Exception as e:
         print(f"  ❌ Component configuration failed: {e}")
-        return False
+        pytest.fail(f"Component configuration failed: {e}")
 
 def test_interactive_mode():
     """Test interactive mode functionality"""
@@ -154,11 +154,11 @@ def test_interactive_mode():
                 if '--help' in ' '.join(test_arg):
                     print(f"  ✅ Help command handled: {' '.join(test_arg)}")
         
-        return True
+        print("  ✅ Interactive mode test completed successfully")
         
     except Exception as e:
         print(f"  ❌ Interactive mode testing failed: {e}")
-        return False
+        pytest.fail(f"Interactive mode testing failed: {e}")
 
 def test_component_generation():
     """Test content generation for different components"""
@@ -190,11 +190,12 @@ def test_component_generation():
             else:
                 print(f"     ❌ {comp_type}: {comp_result.error_message}")
         
-        return result.success
+        assert result.success, f"Component generation should succeed for basic test case"
+        print("  ✅ Component generation test completed successfully")
         
     except Exception as e:
         print(f"  ❌ Component generation failed: {e}")
-        return False
+        pytest.fail(f"Component generation failed: {e}")
 
 def test_file_operations():
     """Test file I/O operations and content structure"""
@@ -230,11 +231,11 @@ def test_file_operations():
             assert "components" in path_parts, "Missing components directory"
             print("  ✅ File path structure validation passed")
         
-        return True
+        print("  ✅ File operations test completed successfully")
         
     except Exception as e:
         print(f"  ❌ File operations failed: {e}")
-        return False
+        pytest.fail(f"File operations failed: {e}")
 
 def test_validation_system():
     """Test YAML validation and post-processing"""
@@ -286,25 +287,22 @@ description: "Example for testing"
             # Note: Full validation testing would require more complex setup
             # but the structure validation confirms the system is in place
         
-        return True
+        print("  ✅ Validation system test completed successfully")
         
     except Exception as e:
         print(f"  ❌ Validation system failed: {e}")
-        return False
+        pytest.fail(f"Validation system failed: {e}")
 
 def test_api_client_features():
     """Test API client features and statistics"""
     print("\n📊 Testing API Client Features...")
     
     try:
-        from api.client import create_api_client
+        from api.client import MockAPIClient
         from api.deepseek import create_deepseek_client
         
         # Test mock client
-        # Use real API client - fail fast approach
-        api_client = create_api_client('deepseek')
-        if not api_client:
-            raise RuntimeError("API client creation failed - no fallbacks")
+        mock_client = MockAPIClient()
         
         # Test connection
         if mock_client.test_connection():
@@ -335,11 +333,11 @@ def test_api_client_features():
         except Exception as e:
             print(f"  ⚠️  Grok client creation: {e}")
         
-        return True
+        print("  ✅ API client features test completed successfully")
         
     except Exception as e:
         print(f"  ❌ API client testing failed: {e}")
-        return False
+        pytest.fail(f"API client testing failed: {e}")
 
 def test_schema_integration():
     """Test schema loading and dynamic field extraction"""
@@ -368,11 +366,11 @@ def test_schema_integration():
         required = schema_manager.get_required_fields('material')
         print(f"  ✅ Found {len(required)} required fields")
         
-        return True
+        print("  ✅ Schema integration test completed successfully")
         
     except Exception as e:
         print(f"  ❌ Schema integration failed: {e}")
-        return False
+        pytest.fail(f"Schema integration failed: {e}")
 
 def test_run_py_integration():
     """Test run.py CLI integration and end-to-end functionality"""
@@ -429,11 +427,11 @@ def test_run_py_integration():
             except Exception as e:
                 print(f"  ⚠️  Environment handling: {e}")
         
-        return True
+        print("  ✅ run.py integration test completed successfully")
         
     except Exception as e:
         print(f"  ❌ run.py integration failed: {e}")
-        return False
+        pytest.fail(f"run.py integration failed: {e}")
 
 def test_static_component_generation():
     """Test static component generation (badgesymbol, propertiestable)"""
@@ -444,7 +442,7 @@ def test_static_component_generation():
         from run import COMPONENT_CONFIG
         
         # Create generator with no API client (static mode)
-        generator = DynamicGenerator()
+        generator = DynamicGenerator(api_client=None)
         
         # Test badgesymbol static generation
         print("  🏷️  Testing badgesymbol static generation...")
@@ -491,13 +489,13 @@ def test_static_component_generation():
                 print(f"  ❌ {component} not found in components config")
         
         print("  ✅ Static component testing completed")
-        return True
+        print("  ✅ Static component generation test completed successfully")
         
     except Exception as e:
         print(f"  ❌ Static component testing failed: {e}")
         import traceback
         traceback.print_exc()
-        return False
+        pytest.fail(f"Static component testing failed: {e}")
 
 
 def test_end_to_end_workflow():
@@ -550,11 +548,11 @@ def test_end_to_end_workflow():
         found_materials = [mat for mat in test_materials if mat in available_materials]
         print(f"  ✅ Material compatibility: {len(found_materials)}/{len(test_materials)} test materials available")
         
-        return True
+        print("  ✅ End-to-end workflow test completed successfully")
         
     except Exception as e:
         print(f"  ❌ End-to-end workflow failed: {e}")
-        return False
+        pytest.fail(f"End-to-end workflow failed: {e}")
 
 def main():
     """Run all tests"""

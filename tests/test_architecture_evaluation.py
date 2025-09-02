@@ -331,7 +331,7 @@ def test_schema_driven_generation():
         from generators.dynamic_generator import DynamicGenerator
         
         # Test with mock client to avoid API dependencies
-        generator = DynamicGenerator(use_mock=True)
+        generator = DynamicGenerator()
         
         # Test schema integration
         print("📋 Schema Integration Test:")

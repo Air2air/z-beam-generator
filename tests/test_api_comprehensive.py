@@ -19,6 +19,7 @@ from pathlib import Path
 from unittest.mock import patch, MagicMock
 from dataclasses import dataclass
 from typing import Optional, List, Dict, Any
+import pytest
 
 # Add parent directory to path for importing modules
 sys.path.insert(0, str(Path(__file__).parent.parent))
@@ -290,14 +291,16 @@ class APITestSuite:
                 for component, config in components_config.items():
                     try:
                         expected_provider = config['api_provider']
-                        client = get_api_client_for_component(component, use_mock=True)
                         
                         if expected_provider == "none":
-                            # Author component uses 'none' provider, so client may be None
+                            # Components with 'none' provider don't need API clients
                             print(f"  ⚠️  {component} → {expected_provider} (no client needed)")
-                        else:
-                            assert client is not None, f"No client returned for {component}"
-                            print(f"  ✅ {component} → {expected_provider}")
+                            success_count += 1
+                            continue
+                        
+                        client = get_api_client_for_component(component)
+                        assert client is not None, f"No client returned for {component}"
+                        print(f"  ✅ {component} → {expected_provider}")
                         
                         success_count += 1
                         

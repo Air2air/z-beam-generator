@@ -31,6 +31,7 @@ SYSTEM INFO:
     python3 run.py --list-authors                    # List all authors with countries
     python3 run.py --check-env                       # Check API keys and environment
     python3 run.py --test-api                        # Test API connectivity
+    python3 run.py --test                            # Run comprehensive test suite
 
 MATERIAL MANAGEMENT (separate script):
     python3 remove_material.py --list-materials      # List all materials by category
@@ -40,6 +41,40 @@ MATERIAL MANAGEMENT (separate script):
 
 PATH CLEANUP (one-time scripts):
     python3 cleanup_paths.py                         # Rename files to clean format (already done)
+
+🔧 COMPONENT DATA SOURCE CONFIGURATION:
+======================================
+
+Component data sources are configured in: cli/component_config.py
+
+DATA PROVIDER OPTIONS:
+    "API"          - Generate content via AI API (deepseek, grok)
+    "frontmatter"  - Extract data from frontmatter component  
+    "hybrid"       - Uses frontmatter data + API generation
+    "none"         - Static component, no external data
+
+API PROVIDER OPTIONS:
+    "deepseek"     - DeepSeek API
+    "grok"         - Grok (X.AI) API
+    "none"         - No API needed
+
+CURRENT CONFIGURATION:
+    frontmatter:     API generation (grok)
+    content:         hybrid (frontmatter + grok)
+    bullets:         API generation (deepseek)
+    caption:         API generation (deepseek)
+    table:           API generation (grok)
+    tags:            API generation (deepseek)
+    jsonld:          Extract from frontmatter
+    metatags:        Extract from frontmatter
+    propertiestable: Extract from frontmatter
+    badgesymbol:     Extract from frontmatter
+    author:          Static component
+
+TO MODIFY DATA SOURCES:
+1. Edit cli/component_config.py
+2. Change "data_provider" and/or "api_provider" for any component
+3. Run: python3 run.py --show-config (to verify changes)
     
 🎯 COMMON WORKFLOWS:
 ==================
@@ -134,7 +169,14 @@ def get_api_client_for_component(component_type: str):
 
     components_config = COMPONENT_CONFIG.get("components", {})
     if component_type in components_config:
-        provider = components_config[component_type]["data_provider"]
+        config = components_config[component_type]
+        data_provider = config["data_provider"]
+        
+        # For hybrid and API data providers, use the api_provider field
+        if data_provider in ["hybrid", "API"]:
+            provider = config["api_provider"]
+        else:
+            provider = data_provider
     else:
         provider = "deepseek"  # Default provider
 

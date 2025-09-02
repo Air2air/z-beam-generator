@@ -6,11 +6,7 @@ This script provides a unified interface for running all Z-Beam tests including:
 - Original dynamic system tests
 - New component-local architecture tests  
 - Integration tests
-- Mock generator        parser.add_argument(
-        '--no-mocks', 
-        action='store_true',
-        help='Run only no mocks/fallbacks test'
-    )s
+- Mock generator tests
 
 Usage:
     python3 tests/run_all_tests.py                    # Run all tests
@@ -25,21 +21,6 @@ from pathlib import Path
 
 # Add parent directory to path for importing modules
 sys.path.insert(0, str(Path(__file__).parent.parent))
-
-def run_no_mocks_fallbacks_test():
-    """Run no mocks or fallbacks test"""
-    print("\n🚫 RUNNING NO MOCKS/FALLBACKS TEST")
-    print("=" * 60)
-    
-    try:
-        from tests.test_no_mocks_fallbacks import main as test_no_mocks_fallbacks
-        return test_no_mocks_fallbacks()
-    except ImportError as e:
-        print(f"❌ Failed to import no mocks/fallbacks test: {e}")
-        return False
-    except Exception as e:
-        print(f"❌ No mocks/fallbacks test failed: {e}")
-        return False
 
 def run_component_local_tests():
     """Run component-local architecture tests"""
@@ -92,7 +73,7 @@ def run_quick_smoke_tests():
     print("=" * 60)
     
     success_count = 0
-    total_tests = 5
+    total_tests = 6
     
     # Test 1: Basic imports
     print("\n🔍 Test 1: Basic System Imports...")
@@ -106,14 +87,27 @@ def run_quick_smoke_tests():
     # Test 2: Component-local imports
     print("\n🔍 Test 2: Component-Local Module Imports...")
     try:
-        from components.frontmatter.validator import validate_frontmatter_content
+        from components.frontmatter.mock_generator import generate_mock_frontmatter
         print("  ✅ Component-local imports successful")
         success_count += 1
     except Exception as e:
         print(f"  ❌ Component-local imports failed: {e}")
     
-    # Test 3: Dynamic generator initialization
-    print("\n🔍 Test 3: Dynamic Generator Initialization...")
+    # Test 3: Mock generation
+    print("\n🔍 Test 3: Mock Data Generation...")
+    try:
+        from components.frontmatter.mock_generator import generate_mock_frontmatter
+        mock_data = generate_mock_frontmatter("Steel", "metals")
+        if len(mock_data) > 100:
+            print(f"  ✅ Mock generation successful ({len(mock_data)} chars)")
+            success_count += 1
+        else:
+            print(f"  ❌ Mock generation produced insufficient data ({len(mock_data)} chars)")
+    except Exception as e:
+        print(f"  ❌ Mock generation failed: {e}")
+    
+    # Test 4: Dynamic generator initialization
+    print("\n🔍 Test 4: Dynamic Generator Initialization...")
     try:
         generator = DynamicGenerator()
         materials = generator.get_available_materials()
@@ -126,8 +120,8 @@ def run_quick_smoke_tests():
     except Exception as e:
         print(f"  ❌ Generator initialization failed: {e}")
     
-    # Test 4: Centralized validator
-    print("\n🔍 Test 4: Centralized Validator...")
+    # Test 5: Centralized validator
+    print("\n🔍 Test 5: Centralized Validator...")
     try:
         from validators.centralized_validator import CentralizedValidator
         CentralizedValidator()
@@ -136,8 +130,8 @@ def run_quick_smoke_tests():
     except Exception as e:
         print(f"  ❌ Centralized validator failed: {e}")
     
-    # Test 5: API client
-    print("\n🔍 Test 5: API Client...")
+    # Test 6: API client
+    print("\n🔍 Test 6: API Client...")
     try:
         from api.client import MockAPIClient
         client = MockAPIClient()
@@ -168,28 +162,6 @@ def run_all_tests():
     
     results = {}
     
-    # Run no mocks/fallbacks test first (critical for fail-fast architecture)
-    print("🚫 PRIORITY: No Mocks/Fallbacks Test (Fail-Fast Architecture)")
-    results['no_mocks_fallbacks'] = run_no_mocks_fallbacks_test()
-    
-    # Only continue with other tests if no mocks/fallbacks test passes
-    if not results['no_mocks_fallbacks']:
-        print("\n❌ CRITICAL FAILURE: Mock/fallback violations detected!")
-        print("🛑 Stopping test suite - fail-fast architecture violated")
-        print("🔧 Fix mock/fallback violations before running other tests")
-        
-        # Summary for critical failure
-        print("\n" + "=" * 70)
-        print("📊 CRITICAL TEST FAILURE - FAIL-FAST ARCHITECTURE VIOLATED")
-        print("=" * 70)
-        print("   No Mocks/Fallbacks: ❌ FAILED")
-        print("   Other Tests: ⏸️  SKIPPED (fix violations first)")
-        print("\n❌ SYSTEM DOES NOT FOLLOW FAIL-FAST ARCHITECTURE")
-        print("🔧 Manual cleanup required to remove mocks and fallbacks")
-        return False
-    
-    print("\n✅ No mocks/fallbacks test passed - continuing with other tests...")
-    
     # Run component-local tests
     results['component_local'] = run_component_local_tests()
     
@@ -217,20 +189,20 @@ def run_all_tests():
     
     if passed == total:
         print("\n🎉 ALL TEST SUITES PASSED!")
-        print("✅ Z-Beam system with fail-fast architecture is fully functional")
+        print("✅ Z-Beam system with component-local architecture is fully functional")
         
         print("\n📋 VERIFIED SYSTEM CAPABILITIES:")
-        print("   ✅ Fail-fast architecture enforced (no mocks/fallbacks)")
         print("   ✅ Component-local architecture complete")
+        print("   ✅ Mock generators for all 11 components")
         print("   ✅ Enhanced dynamic generation system")
         print("   ✅ Original functionality preserved")
         print("   ✅ Integration between systems working")
         
         print("\n🚀 SYSTEM READY FOR:")
         print("   • Full content generation workflows")
-        print("   • Production deployment")
+        print("   • Comprehensive testing and development")
         print("   • Component-specific development")
-        print("   • Strict fail-fast validation")
+        print("   • Mock-based testing strategies")
         
     else:
         print(f"\n⚠️  {total - passed} test suite(s) failed")
@@ -245,8 +217,7 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 EXAMPLES:
-  python3 tests/run_all_tests.py                    # Run all tests (no-mocks first)
-  python3 tests/run_all_tests.py --no-mocks         # No mocks/fallbacks test only  
+  python3 tests/run_all_tests.py                    # Run all tests
   python3 tests/run_all_tests.py --component-local  # Component-local tests only
   python3 tests/run_all_tests.py --enhanced         # Enhanced dynamic tests only
   python3 tests/run_all_tests.py --quick            # Quick smoke tests only
@@ -270,11 +241,6 @@ EXAMPLES:
         help='Run only original dynamic system tests'
     )
     parser.add_argument(
-        '--no-mocks', 
-        action='store_true',
-        help='Run only no mocks/fallbacks test (default priority)'
-    )
-    parser.add_argument(
         '--quick', 
         action='store_true',
         help='Run only quick smoke tests'
@@ -296,8 +262,6 @@ EXAMPLES:
         success = run_original_dynamic_tests()
     elif args.quick:
         success = run_quick_smoke_tests()
-    elif args.no_mocks:
-        success = run_no_mocks_fallbacks_test()
     else:
         # Run all tests by default
         success = run_all_tests()

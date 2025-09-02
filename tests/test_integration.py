@@ -17,6 +17,7 @@ import shutil
 import time
 from pathlib import Path
 from unittest.mock import patch, MagicMock
+import pytest
 
 # Add parent directory to path for importing modules
 sys.path.insert(0, str(Path(__file__).parent.parent))
@@ -40,7 +41,7 @@ def test_real_api_integration():
         
         if not any(api_keys_available.values()):
             print("  ⚠️  No API keys available - skipping real API tests")
-            return True
+            pytest.skip("No API keys available for real API testing")
         
         # Test each available provider
         successful_tests = 0
@@ -74,11 +75,13 @@ def test_real_api_integration():
                 print(f"    ❌ Provider {provider_id} failed: {e}")
         
         print(f"  📊 Real API integration: {successful_tests}/{total_tests} providers successful")
-        return successful_tests > 0 or total_tests == 0  # Success if any work or none attempted
+        if successful_tests == 0 and total_tests > 0:
+            pytest.fail(f"All {total_tests} API providers failed during real API integration testing")
+        # Success if any work or none attempted
         
     except Exception as e:
         print(f"  ❌ Real API integration test failed: {e}")
-        return False
+        pytest.fail(f"Real API integration test failed: {e}")
 
 def test_full_generation_workflow():
     """Test complete material generation workflow"""
@@ -128,11 +131,11 @@ def test_full_generation_workflow():
                 else:
                     print("  ⚠️  No components enabled for testing")
         
-        return True
+        # Test completed successfully
         
     except Exception as e:
         print(f"  ❌ Full generation workflow test failed: {e}")
-        return False
+        pytest.fail(f"Full generation workflow test failed: {e}")
 
 def test_multi_material_generation():
     """Test generation across multiple materials"""
@@ -141,7 +144,7 @@ def test_multi_material_generation():
     try:
         from generators.dynamic_generator import DynamicGenerator
         
-        generator = DynamicGenerator(use_mock=True)
+        generator = DynamicGenerator()
         available_materials = generator.get_available_materials()
         
         # Test with multiple materials
@@ -167,11 +170,11 @@ def test_multi_material_generation():
             except Exception as e:
                 print(f"  ⚠️  {material} - error: {e}")
         
-        return True
+        # Test completed successfully
         
     except Exception as e:
         print(f"  ❌ Multi-material generation test failed: {e}")
-        return False
+        pytest.fail(f"Multi-material generation test failed: {e}")
 
 def test_cross_component_integration():
     """Test integration between different component types"""
@@ -181,7 +184,7 @@ def test_cross_component_integration():
         from run import COMPONENT_CONFIG
         from generators.dynamic_generator import DynamicGenerator
         
-        generator = DynamicGenerator(use_mock=True)
+        generator = DynamicGenerator()
         
         # Test component dependencies and relationships
         components_config = COMPONENT_CONFIG.get("components", {})
@@ -216,11 +219,11 @@ def test_cross_component_integration():
             if component in component_types:
                 print(f"  ✅ {component}: {description}")
         
-        return True
+        # Test completed successfully
         
     except Exception as e:
         print(f"  ❌ Cross-component integration test failed: {e}")
-        return False
+        pytest.fail(f"Cross-component integration test failed: {e}")
 
 def test_file_system_integration():
     """Test file system operations and content organization"""
@@ -274,11 +277,11 @@ def test_file_system_integration():
             
             print("  ✅ Directory structure validation passed")
         
-        return True
+        # Test completed successfully
         
     except Exception as e:
         print(f"  ❌ File system integration test failed: {e}")
-        return False
+        pytest.fail(f"File system integration test failed: {e}")
 
 def test_cli_integration():
     """Test command-line interface integration"""
@@ -318,11 +321,11 @@ def test_cli_integration():
         assert callable(main), "main function should be callable"
         print("  ✅ Main function is callable")
         
-        return True
+        # Test completed successfully
         
     except Exception as e:
         print(f"  ❌ CLI integration test failed: {e}")
-        return False
+        pytest.fail(f"CLI integration test failed: {e}")
 
 def test_validation_integration():
     """Test validation system integration"""
@@ -363,11 +366,11 @@ def test_validation_integration():
             # Note: Full validation would require the actual validation logic
             # This test confirms the structure is in place for validation
             
-        return True
+        # Test completed successfully
         
     except Exception as e:
         print(f"  ❌ Validation integration test failed: {e}")
-        return False
+        pytest.fail(f"Validation integration test failed: {e}")
 
 def test_error_handling_integration():
     """Test error handling across the entire system"""
@@ -377,7 +380,7 @@ def test_error_handling_integration():
         # Test with invalid material
         from generators.dynamic_generator import DynamicGenerator
         
-        generator = DynamicGenerator(use_mock=True)
+        generator = DynamicGenerator()
         
         # Test invalid material handling
         invalid_materials = ["NonexistentMaterial", "", "123", "Special@Characters"]
@@ -411,11 +414,11 @@ def test_error_handling_integration():
             
             print("  ✅ API error handling ready for testing")
         
-        return True
+        # Test completed successfully
         
     except Exception as e:
         print(f"  ❌ Error handling integration test failed: {e}")
-        return False
+        pytest.fail(f"Error handling integration test failed: {e}")
 
 def main():
     """Run all integration tests"""

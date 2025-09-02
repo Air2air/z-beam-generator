@@ -13,6 +13,7 @@ import sys
 import os
 import tempfile
 from pathlib import Path
+import pytest
 
 # Add parent directory to path for importing modules
 sys.path.insert(0, str(Path(__file__).parent.parent))
@@ -34,11 +35,11 @@ def test_system_initialization():
         print(f"  ✅ Loaded {len(materials)} materials")
         print(f"  ✅ Loaded {len(components)} components")
         print("  ✅ System initialization successful")
-        return True
+        # Test completed successfully
         
     except Exception as e:
         print(f"  ❌ System initialization failed: {e}")
-        return False
+        pytest.fail(f"System initialization failed: {e}")
 
 def test_multi_api_provider_system():
     """Test multi-API provider configuration and routing"""
@@ -63,11 +64,11 @@ def test_multi_api_provider_system():
             assert provider in API_PROVIDERS or provider == 'none', f"Invalid provider {provider} for {component}"
         print("  ✅ Component API provider routing validated")
         
-        return True
+        # Test completed successfully
         
     except Exception as e:
         print(f"  ❌ Multi-API provider system failed: {e}")
-        return False
+        pytest.fail(f"Multi-API provider system failed: {e}")
 
 def test_component_local_architecture():
     """Test the new component-local architecture"""
@@ -77,7 +78,7 @@ def test_component_local_architecture():
         # Import the new component-local test suite
         from tests.test_component_local_architecture import (
             test_component_local_module_imports,
-            test_component_validators,
+            test_mock_generators,
             test_centralized_validator_integration
         )
         
@@ -85,13 +86,13 @@ def test_component_local_architecture():
         import_results, import_success = test_component_local_module_imports()
         
         print("  🎭 Testing mock generators...")
-        comp_results, comp_success = test_component_validators()
+        mock_results, mock_success = test_mock_generators()
         
         print("  🔄 Testing centralized validator integration...")
         integration_success = test_centralized_validator_integration()
         
         # Summary
-        overall_success = import_success and comp_success and integration_success
+        overall_success = import_success and mock_success and integration_success
         
         if overall_success:
             print("  ✅ Component-local architecture fully functional")
@@ -99,7 +100,7 @@ def test_component_local_architecture():
             print("  ⚠️  Component-local architecture has some issues")
             if not import_success:
                 print("    ❌ Module import issues")
-            if not comp_success:
+            if not mock_success:
                 print("    ❌ Mock generator issues") 
             if not integration_success:
                 print("    ❌ Integration issues")
@@ -108,43 +109,59 @@ def test_component_local_architecture():
         
     except ImportError as e:
         print(f"  ❌ Component-local architecture test import failed: {e}")
-        return False
+        pytest.fail(f"Component-local architecture test import failed: {e}")
     except Exception as e:
         print(f"  ❌ Component-local architecture testing failed: {e}")
-        return False
+        pytest.fail(f"Component-local architecture testing failed: {e}")
 
-def test_component_validators():
-    """Test component validators functionality"""
-    print("\n🧪 Testing Component Validators...")
+def test_mock_testing_capabilities():
+    """Test enhanced mock testing capabilities"""
+    print("\n🧪 Testing Enhanced Mock Testing Capabilities...")
     
     try:
-        # Test that component validators are working
+        # Test that we can use component mock generators for testing
         test_components = ['frontmatter', 'content', 'table', 'author', 'metatags']
         
         for component in test_components:
             try:
-                # Import component validator
-                module_path = f'components.{component}.validator'
+                # Import component mock generator
+                module_path = f'components.{component}.mock_generator'
                 module = __import__(module_path, fromlist=[''])
                 
-                # Find validation functions
-                validation_functions = [func for func in dir(module) 
-                                      if func.startswith('validate_') and callable(getattr(module, func))]
-                
-                if validation_functions:
-                    print(f"  ✅ {component} validator functional ({len(validation_functions)} functions)")
+                # Find the main mock function
+                func_name = f'generate_mock_{component}'
+                if hasattr(module, func_name):
+                    mock_func = getattr(module, func_name)
+                    
+                    # Test mock generation
+                    mock_data = mock_func("Test Material", "metals")
+                    
+                    print(f"  ✅ {component} mock: {len(mock_data)} chars generated")
+                    
+                    # Test variations if available
+                    variations_func = f'generate_mock_{component}_variations'
+                    if hasattr(module, variations_func):
+                        variations = getattr(module, variations_func)("Test", "metals", 2)
+                        print(f"    ✅ {component} variations: {len(variations)} items")
+                    
+                    # Test structured data if available
+                    structured_func = f'generate_mock_structured_{component}'
+                    if hasattr(module, structured_func):
+                        structured = getattr(module, structured_func)("Test", "metals")
+                        print(f"    ✅ {component} structured: {type(structured).__name__}")
+                        
                 else:
-                    print(f"  ⚠️  {component} validator: no validation functions found")
+                    print(f"  ⚠️  {component} mock: {func_name} function not found")
                     
             except Exception as e:
-                print(f"  ❌ {component} validator testing failed: {e}")
+                print(f"  ❌ {component} mock testing failed: {e}")
         
-        print("  ✅ Component validators verified")
-        return ("Component Validators", True)
+        print("  ✅ Mock testing capabilities verified")
+        # Test completed successfully
         
     except Exception as e:
-        print(f"  ❌ Component validators failed: {e}")
-        return ("Component Validators", False)
+        print(f"  ❌ Mock testing capabilities failed: {e}")
+        pytest.fail(f"Mock testing capabilities failed: {e}")
 
 def test_component_configuration():
     """Test component enable/disable functionality"""
@@ -167,11 +184,11 @@ def test_component_configuration():
             assert isinstance(config['enabled'], bool), f"Component {component} 'enabled' must be boolean"
         
         print("  ✅ Component configuration validation passed")
-        return True
+        # Test completed successfully
         
     except Exception as e:
         print(f"  ❌ Component configuration failed: {e}")
-        return False
+        pytest.fail(f"Component configuration failed: {e}")
 
 def test_enhanced_static_components():
     """Test enhanced static component functionality"""
@@ -195,29 +212,28 @@ def test_enhanced_static_components():
                 else:
                     print(f"    ⚠️  {component} provider is '{provider}', expected 'none'")
             
-            # Test validator availability
+            # Test mock generator availability
             try:
-                module_path = f'components.{component}.validator'
+                module_path = f'components.{component}.mock_generator'
                 module = __import__(module_path, fromlist=[''])
                 
-                # Find validation functions
-                validation_functions = [func for func in dir(module) 
-                                      if func.startswith('validate_') and callable(getattr(module, func))]
-                
-                if validation_functions:
-                    print(f"    ✅ {component} validator: {len(validation_functions)} functions")
+                func_name = f'generate_mock_{component}'
+                if hasattr(module, func_name):
+                    mock_func = getattr(module, func_name)
+                    result = mock_func("Test Material", "metals")
+                    print(f"    ✅ {component} mock generator: {len(result)} chars")
                 else:
-                    print(f"    ❌ {component} validator: no validation functions")
+                    print(f"    ❌ {component} mock generator: function not found")
                     
             except Exception as e:
-                print(f"    ❌ {component} validator error: {e}")
+                print(f"    ❌ {component} mock generator error: {e}")
         
         print("  ✅ Enhanced static components tested")
-        return True
+        # Test completed successfully
         
     except Exception as e:
         print(f"  ❌ Enhanced static components failed: {e}")
-        return False
+        pytest.fail(f"Enhanced static components failed: {e}")
 
 def test_api_client_features():
     """Test API client features and statistics"""
@@ -242,11 +258,11 @@ def test_api_client_features():
         stats = mock_client.get_statistics()
         print(f"  ✅ Statistics: {stats['total_requests']} requests, {stats['success_rate']:.1f}% success")
         
-        return True
+        # Test completed successfully
         
     except Exception as e:
         print(f"  ❌ API client testing failed: {e}")
-        return False
+        pytest.fail(f"API client testing failed: {e}")
 
 def test_validation_system():
     """Test enhanced validation system with component-local routing"""
@@ -277,11 +293,11 @@ def test_validation_system():
                 print(f"    ⚠️  {component} validation: {e}")
         
         print("  ✅ Enhanced validation system functional")
-        return True
+        # Test completed successfully
         
     except Exception as e:
         print(f"  ❌ Enhanced validation system failed: {e}")
-        return False
+        pytest.fail(f"Enhanced validation system failed: {e}")
 
 def test_file_operations():
     """Test file I/O operations and content structure"""
@@ -308,11 +324,11 @@ def test_file_operations():
             
             print("  ✅ save_component_to_file working correctly")
         
-        return True
+        # Test completed successfully
         
     except Exception as e:
         print(f"  ❌ File operations failed: {e}")
-        return False
+        pytest.fail(f"File operations failed: {e}")
 
 def test_run_py_integration():
     """Test run.py CLI integration with enhanced features"""
@@ -356,11 +372,11 @@ def test_run_py_integration():
         print(f"  ✅ Components configured: {len(components_config)}")
         print(f"  ✅ Orchestration order: {len(orchestration_order)} components")
         
-        return True
+        # Test completed successfully
         
     except Exception as e:
         print(f"  ❌ Enhanced run.py integration failed: {e}")
-        return False
+        pytest.fail(f"Enhanced run.py integration failed: {e}")
 
 def test_end_to_end_workflow():
     """Test complete end-to-end workflow with component-local architecture"""
@@ -395,11 +411,11 @@ def test_end_to_end_workflow():
         else:
             print("  ⚠️  No components enabled for testing")
         
-        return True
+        # Test completed successfully
         
     except Exception as e:
         print(f"  ❌ Enhanced end-to-end workflow failed: {e}")
-        return False
+        pytest.fail(f"Enhanced end-to-end workflow failed: {e}")
 
 
 def main():
@@ -414,7 +430,7 @@ def main():
         ("System Initialization", test_system_initialization),
         ("Multi-API Provider System", test_multi_api_provider_system),
         ("Component-Local Architecture", test_component_local_architecture),
-        ("Component Validators", test_component_validators),
+        ("Enhanced Mock Testing", test_mock_testing_capabilities),
         ("Component Configuration", test_component_configuration),
         ("Enhanced Static Components", test_enhanced_static_components),
         ("API Client Features", test_api_client_features),
@@ -465,8 +481,8 @@ def main():
         print("   python3 tests/test_component_local_architecture.py")
         print("   ")
         print("   # Use mock generators in development")
-        print("   from components.frontmatter.validator import validate_frontmatter_content")
-        print("   from components.content.validator import validate_content_format")
+        print("   from components.frontmatter.mock_generator import generate_mock_frontmatter")
+        print("   from components.content.mock_generator import generate_mock_content")
         
         print("\n💡 DEVELOPMENT RECOMMENDATIONS:")
         print("   1. Use component mock generators for unit testing")

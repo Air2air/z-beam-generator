@@ -179,7 +179,12 @@ def test_provider_assignment():
                 expected_provider = config['api_provider']
                 
                 try:
-                    client = get_api_client_for_component(component, use_mock=True)
+                    if expected_provider == "none":
+                        # Components with 'none' provider don't need API clients
+                        print(f"  ⚠️  {component} → {expected_provider} (no client needed)")
+                        continue
+                    
+                    client = get_api_client_for_component(component)
                     assert client is not None, f"No client returned for {component}"
                     print(f"  ✅ {component} → {expected_provider} (client created)")
                 except Exception as e:

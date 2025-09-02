@@ -12,6 +12,7 @@ Tests the multi-API provider system including:
 import sys
 import os
 import json
+import pytest
 from pathlib import Path
 from unittest.mock import patch, MagicMock
 
@@ -44,11 +45,11 @@ def test_deepseek_api_client():
             assert client.model == "deepseek-chat", "Incorrect DeepSeek model"
             print("  ✅ DeepSeek client configuration correct")
         
-        return True
+        print("  ✅ DeepSeek API client test completed successfully")
         
     except Exception as e:
         print(f"  ❌ DeepSeek API client test failed: {e}")
-        return False
+        pytest.fail(f"DeepSeek API client test failed: {e}")
 
 def test_grok_api_client():
     """Test Grok (X.AI) API client functionality"""
@@ -76,11 +77,11 @@ def test_grok_api_client():
             assert client.model == "grok-2", "Incorrect Grok model"
             print("  ✅ Grok client configuration correct")
         
-        return True
+        print("  ✅ Grok API client test completed successfully")
         
     except Exception as e:
         print(f"  ❌ Grok API client test failed: {e}")
-        return False
+        pytest.fail(f"Grok API client test failed: {e}")
 
 def test_provider_routing():
     """Test component-to-provider routing system"""
@@ -102,21 +103,23 @@ def test_provider_routing():
         with patch.dict(os.environ, {'DEEPSEEK_API_KEY': 'test', 'GROK_API_KEY': 'test'}):
             for component in components_config.keys():
                 try:
-                    client = get_api_client_for_component(component, use_mock=True)
-                    if component == "author":
-                        # Author component uses 'none' provider, so client may be None
+                    config = components_config[component]
+                    if config["api_provider"] == "none":
+                        # Components with 'none' provider don't need API clients
                         print(f"  ⚠️  {component} → none (no client needed)")
-                    else:
-                        assert client is not None, f"No client returned for {component}"
-                        print(f"  ✅ Client routing successful for {component}")
+                        continue
+                    
+                    client = get_api_client_for_component(component)
+                    assert client is not None, f"No client returned for {component}"
+                    print(f"  ✅ Client routing successful for {component}")
                 except Exception as e:
                     print(f"  ⚠️  Client routing for {component}: {e}")
         
-        return True
+        print("  ✅ Provider routing test completed successfully")
         
     except Exception as e:
         print(f"  ❌ Provider routing test failed: {e}")
-        return False
+        pytest.fail(f"Provider routing test failed: {e}")
 
 def test_api_error_handling():
     """Test API error handling and graceful degradation"""
@@ -142,28 +145,25 @@ def test_api_error_handling():
             
             # Test connection (should fail)
             connection_result = client.test_connection()
-            if not connection_result:
-                print("  ✅ Invalid client properly fails connection test")
-                success_count += 1
+            assert not connection_result, "Invalid client should fail connection test"
+            print("  ✅ Invalid client properly fails connection test")
             
             # Test generation with error
             response = client.generate_simple("Test prompt")
-            if not response.success:
-                print("  ✅ Invalid client properly handles generation errors")
-                print(f"     Error: {response.error}")
-                success_count += 1
+            assert not response.success, "Invalid client should fail generation"
+            print("  ✅ Invalid client properly handles generation errors")
+            print(f"     Error: {response.error}")
         
         # Test statistics with failed requests
         stats = client.get_statistics()
-        if stats['total_requests'] > 0:
-            print("  ✅ Statistics properly track failed requests")
-            success_count += 1
+        assert stats['total_requests'] > 0, "Statistics should track failed requests"
+        print("  ✅ Statistics properly track failed requests")
         
-        return success_count >= 2
+        print("  ✅ API error handling test completed successfully")
         
     except Exception as e:
         print(f"  ❌ API error handling test failed: {e}")
-        return False
+        pytest.fail(f"API error handling test failed: {e}")
 
 def test_mock_client_functionality():
     """Test mock API client for development/testing"""
@@ -199,11 +199,11 @@ def test_mock_client_functionality():
         assert final_stats['total_requests'] >= 6, "Should track multiple requests"
         print(f"  ✅ Multiple mock generations ({final_stats['total_requests']} total)")
         
-        return True
+        print("  ✅ Mock client test completed successfully")
         
     except Exception as e:
         print(f"  ❌ Mock client test failed: {e}")
-        return False
+        pytest.fail(f"Mock client test failed: {e}")
 
 def test_api_provider_configuration():
     """Test API provider configuration and validation"""
@@ -237,11 +237,11 @@ def test_api_provider_configuration():
         
         print("  ✅ All provider configurations validated")
         
-        return True
+        print("  ✅ API provider configuration test completed successfully")
         
     except Exception as e:
         print(f"  ❌ API provider configuration test failed: {e}")
-        return False
+        pytest.fail(f"API provider configuration test failed: {e}")
 
 def main():
     """Run all API provider tests"""
