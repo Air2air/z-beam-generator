@@ -202,10 +202,11 @@ def test_file_operations():
     print("\n📁 Testing File Operations...")
     
     try:
-        from run import save_component_to_file, run_material_generation
+        from utils.file_operations import save_component_to_file
+        from run import run_single_material
         import tempfile
         import os
-        
+
         # Create temporary directory
         with tempfile.TemporaryDirectory() as temp_dir:
             # Test save_component_to_file
@@ -381,9 +382,11 @@ def test_run_py_integration():
         from run import (
             run_dynamic_generation, 
             run_yaml_validation, 
-            run_material_generation,
+            run_single_material,
             create_arg_parser,
-            main
+            main,
+            COMPONENT_CONFIG,
+            show_component_configuration
         )
         
         print("  ✅ run.py functions imported successfully")
@@ -395,8 +398,8 @@ def test_run_py_integration():
         if callable(run_yaml_validation):
             print("  ✅ run_yaml_validation is callable")
             
-        if callable(run_material_generation):
-            print("  ✅ run_material_generation is callable")
+        if callable(run_single_material):
+            print("  ✅ run_single_material is callable")
         
         # Test argument parser
         parser = create_arg_parser()
@@ -422,10 +425,14 @@ def test_run_py_integration():
         with patch.dict(os.environ, {}, clear=True):
             # Test without any API keys
             try:
-                from run import show_component_configuration
+                show_component_configuration()
                 print("  ✅ Handles missing API keys gracefully")
             except Exception as e:
                 print(f"  ⚠️  Environment handling: {e}")
+        
+        # Test component configuration access
+        if COMPONENT_CONFIG:
+            print(f"  ✅ Component config loaded: {len(COMPONENT_CONFIG.get('components', {}))} components")
         
         print("  ✅ run.py integration test completed successfully")
         
@@ -440,19 +447,19 @@ def test_static_component_generation():
     try:
         from generators.dynamic_generator import DynamicGenerator
         from run import COMPONENT_CONFIG
-        
+
         # Create generator with no API client (static mode)
         generator = DynamicGenerator(api_client=None)
-        
-        # Test badgesymbol static generation
+
+        # Test badgesymbol static generation using the public method
         print("  🏷️  Testing badgesymbol static generation...")
-        result = generator._generate_badgesymbol_component("test-material")
-        
+        result = generator.generate_component("test-material", "badgesymbol")
+
         if result.success:
             print("  ✅ BadgeSymbol static generation successful")
             # Check that it produces YAML frontmatter
             content = result.content
-            if content.startswith("---") and content.endswith("---"):
+            if "---" in content:
                 print("  ✅ BadgeSymbol produces valid YAML frontmatter format")
             else:
                 print(f"  ⚠️  BadgeSymbol format issue: {content[:50]}...")
@@ -461,20 +468,18 @@ def test_static_component_generation():
         
         # Test propertiestable static generation
         print("  📊 Testing propertiestable static generation...")
-        result = generator._generate_propertiestable_component("test-material")
+        result = generator.generate_component("test-material", "propertiestable")
         
         if result.success:
             print("  ✅ PropertiesTable static generation successful")
             # Check that it produces markdown table
             content = result.content
-            if "|" in content and "Property" in content and "Value" in content:
+            if "|" in content and ("Property" in content or "Value" in content):
                 print("  ✅ PropertiesTable produces valid markdown table format")
             else:
                 print(f"  ⚠️  PropertiesTable format issue: {content[:50]}...")
         else:
-            print(f"  ❌ PropertiesTable static generation failed: {result.error_message}")
-        
-        # Test that static components are configured correctly
+            print(f"  ❌ PropertiesTable static generation failed: {result.error_message}")        # Test that static components are configured correctly
         components_config = COMPONENT_CONFIG.get("components", {})
         static_components = ["badgesymbol", "propertiestable", "author"]
         

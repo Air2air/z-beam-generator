@@ -47,8 +47,7 @@ def create_api_client(provider: str) -> APIClient:
     client = APIClient(
         base_url=provider_config['base_url'],
         api_key=api_key,
-        model=provider_config['default_model'],
-        provider_name=provider
+        model=provider_config['default_model']
     )
     
     return client
@@ -103,7 +102,7 @@ def validate_api_environment() -> dict:
             'env_var': config['env_var'],
             'configured': bool(api_key),
             'base_url': config['base_url'],
-            'model': config['default_model']
+            'model': config.get('model', config.get('default_model', 'unknown'))
         }
     
     return results
