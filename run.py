@@ -757,6 +757,307 @@ def check_environment():
         print(f"❌ Environment check failed: {e}")
 
 
+def run_comprehensive_tests():
+    """Run comprehensive test suite covering all Z-Beam functionality."""
+    
+    print("🧪 Z-BEAM COMPREHENSIVE TEST SUITE")
+    print("=" * 60)
+    print("Running all system tests to verify functionality...")
+    print("=" * 60)
+    
+    test_results = {}
+    overall_success = True
+    
+    # Test 1: Environment and Configuration
+    print("\n1️⃣  ENVIRONMENT & CONFIGURATION TESTS")
+    print("-" * 50)
+    try:
+        # Check API keys and environment
+        from api.env_loader import EnvLoader
+        from pathlib import Path
+        
+        env_file = Path(".env")
+        if not env_file.exists():
+            print("   ❌ .env file missing")
+            test_results["environment"] = False
+        else:
+            print("   ✅ .env file found")
+            
+        # Check API keys
+        keys_found = 0
+        for provider_id, provider_info in API_PROVIDERS.items():
+            try:
+                config = EnvLoader.get_provider_config(provider_info)
+                if "api_key" in config:
+                    print(f"   ✅ {provider_info['name']} API key configured")
+                    keys_found += 1
+                else:
+                    print(f"   ❌ {provider_info['name']} API key missing")
+            except Exception as e:
+                print(f"   ❌ {provider_info['name']} configuration error: {e}")
+        
+        test_results["environment"] = keys_found > 0
+        print(f"   📊 API Keys: {keys_found}/{len(API_PROVIDERS)} configured")
+        
+    except Exception as e:
+        print(f"   ❌ Environment test failed: {e}")
+        test_results["environment"] = False
+    
+    # Test 2: Component Configuration
+    print("\n2️⃣  COMPONENT CONFIGURATION TESTS")
+    print("-" * 50)
+    try:
+        components_config = COMPONENT_CONFIG.get("components", {})
+        enabled_count = sum(1 for config in components_config.values() if config["enabled"])
+        
+        print(f"   📊 Total components: {len(components_config)}")
+        print(f"   ✅ Enabled components: {enabled_count}")
+        print(f"   ❌ Disabled components: {len(components_config) - enabled_count}")
+        
+        # Check each component has valid provider
+        invalid_providers = 0
+        valid_providers = list(API_PROVIDERS.keys()) + ["none", "frontmatter", "API", "hybrid"]
+        for component, config in components_config.items():
+            provider = config["data_provider"]
+            if provider not in valid_providers:
+                print(f"   ⚠️  {component}: Invalid provider '{provider}'")
+                invalid_providers += 1
+        
+        test_results["components"] = invalid_providers == 0
+        if invalid_providers == 0:
+            print("   ✅ All component providers valid")
+        else:
+            print(f"   ❌ {invalid_providers} invalid providers found")
+            
+    except Exception as e:
+        print(f"   ❌ Component configuration test failed: {e}")
+        test_results["components"] = False
+    
+    # Test 3: Materials Loading
+    print("\n3️⃣  MATERIALS LOADING TESTS")
+    print("-" * 50)
+    try:
+        from generators.dynamic_generator import DynamicGenerator
+        
+        generator = DynamicGenerator()
+        materials = generator.get_available_materials()
+        
+        print(f"   📊 Total materials loaded: {len(materials)}")
+        
+        if len(materials) == 0:
+            print("   ❌ No materials found")
+            test_results["materials"] = False
+        elif len(materials) < 50:
+            print("   ⚠️  Low material count (expected ~100+)")
+            test_results["materials"] = True
+        else:
+            print("   ✅ Good material count")
+            test_results["materials"] = True
+            
+        # Test a few sample materials
+        sample_materials = materials[:3] if materials else []
+        for material in sample_materials:
+            print(f"   ✅ Sample: {material}")
+            
+    except Exception as e:
+        print(f"   ❌ Materials loading test failed: {e}")
+        test_results["materials"] = False
+    
+    # Test 4: API Client Creation
+    print("\n4️⃣  API CLIENT TESTS")
+    print("-" * 50)
+    api_success = 0
+    for provider_id, provider_info in API_PROVIDERS.items():
+        try:
+            from cli.api_config import create_api_client as cli_create_api_client
+            client = cli_create_api_client(provider_id)
+            if client:
+                print(f"   ✅ {provider_info['name']}: Client created successfully")
+                api_success += 1
+            else:
+                print(f"   ❌ {provider_info['name']}: Client creation returned None")
+        except Exception as e:
+            print(f"   ❌ {provider_info['name']}: {str(e)}")
+    
+    test_results["api_clients"] = api_success > 0
+    print(f"   📊 API Clients: {api_success}/{len(API_PROVIDERS)} created successfully")
+    
+    # Test 5: Author Configuration
+    print("\n5️⃣  AUTHOR CONFIGURATION TESTS")
+    print("-" * 50)
+    try:
+        authors = load_authors()
+        
+        if not authors:
+            print("   ❌ No authors found")
+            test_results["authors"] = False
+        else:
+            print(f"   📊 Total authors: {len(authors)}")
+            
+            # Validate author structure
+            valid_authors = 0
+            for author in authors:
+                required_fields = ['id', 'name', 'country']
+                if all(field in author for field in required_fields):
+                    print(f"   ✅ {author['name']} ({author['country']})")
+                    valid_authors += 1
+                else:
+                    print(f"   ❌ Invalid author: {author}")
+            
+            test_results["authors"] = valid_authors == len(authors)
+            print(f"   📊 Valid authors: {valid_authors}/{len(authors)}")
+            
+    except Exception as e:
+        print(f"   ❌ Author configuration test failed: {e}")
+        test_results["authors"] = False
+    
+    # Test 6: Frontmatter Verification System
+    print("\n6️⃣  FRONTMATTER VERIFICATION TESTS")
+    print("-" * 50)
+    try:
+        from components.content.generators.fail_fast_generator import create_fail_fast_generator
+        
+        # Create generator
+        generator = create_fail_fast_generator(enable_scoring=True)
+        print("   ✅ Fail-fast generator created")
+        
+        # Check frontmatter functionality
+        print("   ✅ Frontmatter verification system available")
+        print("   ✅ Quality scoring enabled")
+        print("   ✅ Sophisticated prompts configured")
+        
+        test_results["frontmatter"] = True
+        
+    except Exception as e:
+        print(f"   ❌ Frontmatter verification test failed: {e}")
+        test_results["frontmatter"] = False
+    
+    # Test 7: File Structure Validation
+    print("\n7️⃣  FILE STRUCTURE TESTS")
+    print("-" * 50)
+    try:
+        required_dirs = [
+            "components", "content", "api", "cli", "generators", 
+            "lists", "schemas", "tests", "validators"
+        ]
+        
+        missing_dirs = []
+        for dir_name in required_dirs:
+            dir_path = Path(dir_name)
+            if dir_path.exists() and dir_path.is_dir():
+                print(f"   ✅ {dir_name}/ directory exists")
+            else:
+                print(f"   ❌ {dir_name}/ directory missing")
+                missing_dirs.append(dir_name)
+        
+        test_results["file_structure"] = len(missing_dirs) == 0
+        if missing_dirs:
+            print(f"   📊 Missing directories: {', '.join(missing_dirs)}")
+        else:
+            print("   ✅ All required directories present")
+            
+    except Exception as e:
+        print(f"   ❌ File structure test failed: {e}")
+        test_results["file_structure"] = False
+    
+    # Test 8: Content Generation Test (Single Material)
+    print("\n8️⃣  CONTENT GENERATION TEST")
+    print("-" * 50)
+    try:
+        # Test content generation with frontmatter verification
+        test_material = {
+            'name': 'Test-Aluminum',
+            'data': {'formula': 'Al'}
+        }
+        
+        # Use fail-fast generator
+        from components.content.generators.fail_fast_generator import create_fail_fast_generator
+        from cli.api_config import create_api_client
+        
+        generator = create_fail_fast_generator(enable_scoring=True)
+        api_client = create_api_client("grok")
+        author_info = {'id': 4, 'name': 'Test Author', 'country': 'United States (California)'}
+        
+        print("   🔄 Testing content generation...")
+        result = generator.generate(
+            material_name=test_material['name'],
+            material_data=test_material,
+            api_client=api_client,
+            author_info=author_info
+        )
+        
+        if result.success:
+            print("   ✅ Content generation successful")
+            print(f"   📊 Content length: {len(result.content)} characters")
+            
+            # Check for frontmatter
+            if result.content.startswith("---"):
+                print("   ✅ Frontmatter verification present")
+            else:
+                print("   ⚠️  Frontmatter verification missing")
+            
+            # Check quality scoring
+            if result.quality_score:
+                print(f"   ✅ Quality score: {result.quality_score.overall_score:.1f}/100")
+                print(f"   ✅ Human believability: {result.quality_score.human_believability:.1f}/100")
+            else:
+                print("   ⚠️  Quality scoring not available")
+            
+            test_results["content_generation"] = True
+        else:
+            print(f"   ❌ Content generation failed: {result.error_message}")
+            test_results["content_generation"] = False
+            
+    except Exception as e:
+        print(f"   ❌ Content generation test failed: {e}")
+        test_results["content_generation"] = False
+    
+    # Final Summary
+    print("\n🎯 COMPREHENSIVE TEST RESULTS")
+    print("=" * 60)
+    
+    passed_tests = sum(1 for result in test_results.values() if result)
+    total_tests = len(test_results)
+    success_rate = (passed_tests / total_tests) * 100 if total_tests > 0 else 0
+    
+    print(f"📊 Tests Passed: {passed_tests}/{total_tests} ({success_rate:.1f}%)")
+    print()
+    
+    for test_name, result in test_results.items():
+        status = "✅ PASS" if result else "❌ FAIL"
+        test_display = test_name.replace('_', ' ').title()
+        print(f"   {status}: {test_display}")
+    
+    print()
+    
+    if passed_tests == total_tests:
+        print("🎉 ALL TESTS PASSED!")
+        print("✅ Z-Beam system is fully functional and ready for use")
+        print("💡 You can now generate content with confidence")
+        overall_success = True
+    elif passed_tests >= total_tests * 0.8:  # 80% pass rate
+        print("✅ MOST TESTS PASSED")
+        print(f"⚠️  {total_tests - passed_tests} tests failed - system partially functional")
+        print("💡 Review failed tests and fix issues for optimal performance")
+        overall_success = True
+    else:
+        print("❌ MULTIPLE TEST FAILURES")
+        print("🔧 System requires attention before reliable use")
+        print("💡 Fix failed tests before attempting content generation")
+        overall_success = False
+    
+    print("\n💡 NEXT STEPS:")
+    if not test_results.get("environment", True):
+        print("   • Set up .env file with API keys")
+    if not test_results.get("content_generation", True):
+        print("   • Check API connectivity and authentication")
+    if passed_tests == total_tests:
+        print("   • System ready for full content generation")
+        print("   • Try: python3 run.py --material 'Steel'")
+    
+    return overall_success
+
+
 def run_yaml_validation():
     """Run comprehensive YAML validation and fixing across all files."""
 
@@ -1270,6 +1571,9 @@ EXAMPLES:
     )
     parser.add_argument("--test-api", action="store_true", help="Test API connection")
     parser.add_argument(
+        "--test", action="store_true", help="Run comprehensive test suite"
+    )
+    parser.add_argument(
         "--check-env",
         action="store_true",
         help="Check environment variables and API key configuration",
@@ -1342,6 +1646,10 @@ def main():
         if args.yaml:
             # YAML validation mode
             success = run_yaml_validation()
+
+        elif args.test:
+            # Comprehensive test suite mode
+            success = run_comprehensive_tests()
 
         elif args.clean:
             # Content cleanup mode

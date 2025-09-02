@@ -1,6 +1,11 @@
 #!/usr/bin/env python3
 """
-Z-Beam Generator: Clean Batch Generation of 12 Materials - CONTENT COMPONENT ONLY
+Z-Beam Generator: Clean Batch Generation of 24 Material                    result = generator.generate(
+                        material_name=material['name'],
+                        material_data=material,
+                        api_client=api_client,
+                        author_info=author_info
+                    )NTENT COMPONENT ONLY
 No fallbacks, fail-fast approach as specified in CLAUDE_INSTRUCTIONS.md
 """
 
@@ -21,18 +26,18 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 def main():
-    """Generate 12 materials with clean fail-fast approach"""
+    """Generate 24 materials with clean fail-fast approach"""
     from components.content.generators.fail_fast_generator import FailFastContentGenerator
     
-        # Material assignments by author (3 each = 12 total)
+    # Material assignments (6 per author) - using exact names from materials.yaml
     materials_by_author = {
-        1: ["Alumina", "Zirconia", "Silicon Nitride"],
-        2: ["Aluminum", "Copper", "Brass"], 
-        3: ["Stainless Steel", "Titanium", "Tungsten"],
-        4: ["Carbon Fiber Reinforced Polymer", "Fiberglass", "Rubber"]
+        1: ["Alumina", "Zirconia", "Silicon Nitride", "Borosilicate Glass", "Brick", "Cement"],
+        2: ["Aluminum", "Copper", "Brass", "Bronze", "Beryllium", "Cobalt"],
+        3: ["Concrete", "Stainless Steel", "Titanium", "Tungsten", "Silicon", "Silicon Carbide"],
+        4: ["Carbon Fiber Reinforced Polymer", "Fiberglass", "Rubber", "Bamboo", "Ash", "Beech"]
     }
     
-    logger.info("🚀 Starting clean batch generation of 12 materials - CONTENT COMPONENT ONLY")
+    logger.info("🚀 Starting clean batch generation of 24 materials - CONTENT COMPONENT ONLY")
     logger.info("✅ No fallbacks - fail-fast approach with quality scoring")
     
     try:
@@ -120,14 +125,13 @@ def main():
                     continue
         
         # Summary
-        avg_time = total_time / total_materials if total_materials > 0 else 0
         logger.info(f"\n🎯 GENERATION COMPLETE")
-        logger.info(f"✅ Successfully generated: {total_materials}/12 materials")
+        logger.info(f"✅ Successfully generated: {total_materials}/24 materials")
         logger.info(f"⏱️  Total time: {total_time:.1f}s")
-        logger.info(f"📈 Average time per material: {avg_time:.1f}s")
+        logger.info(f"📈 Average time per material: {total_time/max(total_materials, 1):.1f}s")
         
-        if total_materials < 12:
-            logger.warning(f"⚠️  {12 - total_materials} materials failed generation")
+        if total_materials < 24:
+            logger.warning(f"⚠️  {24 - total_materials} materials failed generation")
             return 1
         else:
             logger.info("🎉 All materials generated successfully!")

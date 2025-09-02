@@ -210,11 +210,10 @@ class DynamicGenerator:
     """Main dynamic content generator with schema-driven field generation"""
     
     def __init__(self, api_config=None):
-        """Initialize DynamicGenerator - API-only, no mock support"""
+        """Initialize DynamicGenerator - supports both API and non-API components"""
         self.schema_manager = SchemaManager()
         self.component_manager = ComponentManager()
         self.material_loader = MaterialLoader()
-        self.api_client = None
         self.api_config = api_config
         self.author_info = None  # Store author information
         
@@ -482,7 +481,7 @@ EXAMPLES:
         logging.getLogger().setLevel(logging.DEBUG)
     
     # Initialize generator
-    generator = DynamicGenerator(use_mock=args.mock)
+    generator = DynamicGenerator(args.api_config)
     
     # Test API connection if requested
     if args.test_api:

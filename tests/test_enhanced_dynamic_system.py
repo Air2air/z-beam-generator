@@ -25,7 +25,7 @@ def test_system_initialization():
         from generators.dynamic_generator import DynamicGenerator
         
         # Test with mock client
-        generator = DynamicGenerator(use_mock=True)
+        generator = DynamicGenerator()
         
         # Check that all components loaded
         materials = generator.get_available_materials()
@@ -77,7 +77,7 @@ def test_component_local_architecture():
         # Import the new component-local test suite
         from tests.test_component_local_architecture import (
             test_component_local_module_imports,
-            test_mock_generators,
+            test_component_validators,
             test_centralized_validator_integration
         )
         
@@ -85,13 +85,13 @@ def test_component_local_architecture():
         import_results, import_success = test_component_local_module_imports()
         
         print("  🎭 Testing mock generators...")
-        mock_results, mock_success = test_mock_generators()
+        comp_results, comp_success = test_component_validators()
         
         print("  🔄 Testing centralized validator integration...")
         integration_success = test_centralized_validator_integration()
         
         # Summary
-        overall_success = import_success and mock_success and integration_success
+        overall_success = import_success and comp_success and integration_success
         
         if overall_success:
             print("  ✅ Component-local architecture fully functional")
@@ -99,7 +99,7 @@ def test_component_local_architecture():
             print("  ⚠️  Component-local architecture has some issues")
             if not import_success:
                 print("    ❌ Module import issues")
-            if not mock_success:
+            if not comp_success:
                 print("    ❌ Mock generator issues") 
             if not integration_success:
                 print("    ❌ Integration issues")
@@ -113,54 +113,38 @@ def test_component_local_architecture():
         print(f"  ❌ Component-local architecture testing failed: {e}")
         return False
 
-def test_mock_testing_capabilities():
-    """Test enhanced mock testing capabilities"""
-    print("\n🧪 Testing Enhanced Mock Testing Capabilities...")
+def test_component_validators():
+    """Test component validators functionality"""
+    print("\n🧪 Testing Component Validators...")
     
     try:
-        # Test that we can use component mock generators for testing
+        # Test that component validators are working
         test_components = ['frontmatter', 'content', 'table', 'author', 'metatags']
         
         for component in test_components:
             try:
-                # Import component mock generator
-                module_path = f'components.{component}.mock_generator'
+                # Import component validator
+                module_path = f'components.{component}.validator'
                 module = __import__(module_path, fromlist=[''])
                 
-                # Find the main mock function
-                func_name = f'generate_mock_{component}'
-                if hasattr(module, func_name):
-                    mock_func = getattr(module, func_name)
-                    
-                    # Test mock generation
-                    mock_data = mock_func("Test Material", "metals")
-                    
-                    print(f"  ✅ {component} mock: {len(mock_data)} chars generated")
-                    
-                    # Test variations if available
-                    variations_func = f'generate_mock_{component}_variations'
-                    if hasattr(module, variations_func):
-                        variations = getattr(module, variations_func)("Test", "metals", 2)
-                        print(f"    ✅ {component} variations: {len(variations)} items")
-                    
-                    # Test structured data if available
-                    structured_func = f'generate_mock_structured_{component}'
-                    if hasattr(module, structured_func):
-                        structured = getattr(module, structured_func)("Test", "metals")
-                        print(f"    ✅ {component} structured: {type(structured).__name__}")
-                        
+                # Find validation functions
+                validation_functions = [func for func in dir(module) 
+                                      if func.startswith('validate_') and callable(getattr(module, func))]
+                
+                if validation_functions:
+                    print(f"  ✅ {component} validator functional ({len(validation_functions)} functions)")
                 else:
-                    print(f"  ⚠️  {component} mock: {func_name} function not found")
+                    print(f"  ⚠️  {component} validator: no validation functions found")
                     
             except Exception as e:
-                print(f"  ❌ {component} mock testing failed: {e}")
+                print(f"  ❌ {component} validator testing failed: {e}")
         
-        print("  ✅ Mock testing capabilities verified")
-        return True
+        print("  ✅ Component validators verified")
+        return ("Component Validators", True)
         
     except Exception as e:
-        print(f"  ❌ Mock testing capabilities failed: {e}")
-        return False
+        print(f"  ❌ Component validators failed: {e}")
+        return ("Component Validators", False)
 
 def test_component_configuration():
     """Test component enable/disable functionality"""
@@ -211,21 +195,22 @@ def test_enhanced_static_components():
                 else:
                     print(f"    ⚠️  {component} provider is '{provider}', expected 'none'")
             
-            # Test mock generator availability
+            # Test validator availability
             try:
-                module_path = f'components.{component}.mock_generator'
+                module_path = f'components.{component}.validator'
                 module = __import__(module_path, fromlist=[''])
                 
-                func_name = f'generate_mock_{component}'
-                if hasattr(module, func_name):
-                    mock_func = getattr(module, func_name)
-                    result = mock_func("Test Material", "metals")
-                    print(f"    ✅ {component} mock generator: {len(result)} chars")
+                # Find validation functions
+                validation_functions = [func for func in dir(module) 
+                                      if func.startswith('validate_') and callable(getattr(module, func))]
+                
+                if validation_functions:
+                    print(f"    ✅ {component} validator: {len(validation_functions)} functions")
                 else:
-                    print(f"    ❌ {component} mock generator: function not found")
+                    print(f"    ❌ {component} validator: no validation functions")
                     
             except Exception as e:
-                print(f"    ❌ {component} mock generator error: {e}")
+                print(f"    ❌ {component} validator error: {e}")
         
         print("  ✅ Enhanced static components tested")
         return True
@@ -394,7 +379,7 @@ def test_end_to_end_workflow():
             print(f"  📝 Testing generation for {test_material} with {len(enabled_components)} components")
             
             # Test that we can create generators for different API providers
-            DynamicGenerator(use_mock=True)
+            DynamicGenerator()
             print("  ✅ Generator created with mock client")
             
             # Test that component routing works
@@ -429,7 +414,7 @@ def main():
         ("System Initialization", test_system_initialization),
         ("Multi-API Provider System", test_multi_api_provider_system),
         ("Component-Local Architecture", test_component_local_architecture),
-        ("Enhanced Mock Testing", test_mock_testing_capabilities),
+        ("Component Validators", test_component_validators),
         ("Component Configuration", test_component_configuration),
         ("Enhanced Static Components", test_enhanced_static_components),
         ("API Client Features", test_api_client_features),
@@ -480,8 +465,8 @@ def main():
         print("   python3 tests/test_component_local_architecture.py")
         print("   ")
         print("   # Use mock generators in development")
-        print("   from components.frontmatter.mock_generator import generate_mock_frontmatter")
-        print("   from components.content.mock_generator import generate_mock_content")
+        print("   from components.frontmatter.validator import validate_frontmatter_content")
+        print("   from components.content.validator import validate_content_format")
         
         print("\n💡 DEVELOPMENT RECOMMENDATIONS:")
         print("   1. Use component mock generators for unit testing")

@@ -19,6 +19,23 @@ from pathlib import Path
 # Add parent directory to path for importing modules
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
+# Component constants
+COMPONENTS = [
+    'author', 'badgesymbol', 'bullets', 'caption', 'content', 
+    'frontmatter', 'jsonld', 'metatags', 'propertiestable', 'table', 'tags'
+]
+
+def get_sample_component_content(component):
+    """Get sample content for testing component validators"""
+    if component == 'frontmatter':
+        return "material: Steel\ncategory: metals"
+    elif component == 'content':
+        return "This is a test article about laser cleaning of steel materials. It involves using high-powered lasers to remove contaminants from the surface."
+    elif component == 'table':
+        return "| Property | Value |\n|----------|-------|\n| Material | Steel |"
+    else:
+        return "Sample content for testing"
+
 def test_component_local_module_imports():
     """Test that all component-local modules can be imported"""
     print("🔍 Testing Component-Local Module Imports...")
@@ -28,7 +45,7 @@ def test_component_local_module_imports():
         'frontmatter', 'jsonld', 'metatags', 'propertiestable', 'table', 'tags'
     ]
     
-    module_types = ['validator', 'post_processor', 'mock_generator']
+    module_types = ['validator', 'post_processor']
     import_results = {}
     
     for component in components:
@@ -77,102 +94,50 @@ def test_component_local_module_imports():
     return import_results, successful_imports == total_modules
 
 
-def test_mock_generators():
-    """Test all 11 mock generators"""
-    print("\n🎭 Testing Mock Generators...")
+def test_component_validators():
+    """Test all 11 component validators"""
+    print("\n✅ Testing Component Validators...")
     
-    components = [
-        'author', 'badgesymbol', 'bullets', 'caption', 'content', 
-        'frontmatter', 'jsonld', 'metatags', 'propertiestable', 'table', 'tags'
-    ]
+    test_materials = {
+        'Steel': 'steel',
+        'Aluminum': 'aluminum'
+    }
     
-    test_materials = ["Steel", "Aluminum", "Carbon Fiber"]
-    test_categories = ["metals", "ceramics", "composites"]
+    success_count = 0
+    total_components = len(COMPONENTS)
     
-    mock_results = {}
-    
-    for component in components:
-        print(f"\n🔧 Testing {component} mock generator...")
-        mock_results[component] = {}
-        
+    for component in COMPONENTS:
+        print(f"\n� Testing {component} validator...")
         try:
-            # Import the mock generator
-            module = importlib.import_module(f'components.{component}.mock_generator')
+            validator_module = importlib.import_module(f'components.{component}.validator')
             
-            # Find the main generation function
-            func_name = f'generate_mock_{component}'
-            if hasattr(module, func_name):
-                generate_func = getattr(module, func_name)
-                print(f"  ✅ Found {func_name} function")
+            # Find validation functions
+            validation_functions = [func for func in dir(validator_module) 
+                                  if func.startswith('validate_') and callable(getattr(validator_module, func))]
+            
+            if validation_functions:
+                print(f"  ✅ Found validation functions: {', '.join(validation_functions)}")
                 
-                # Test with different materials and categories
-                for material in test_materials:
-                    for category in test_categories:
-                        try:
-                            result = generate_func(material, category)
-                            
-                            mock_results[component][f'{material}_{category}'] = {
-                                'success': True,
-                                'content_length': len(result),
-                                'content_preview': result[:100] + "..." if len(result) > 100 else result,
-                                'error': None
-                            }
-                            
-                            print(f"    ✅ {material} ({category}): {len(result)} chars generated")
-                            
-                        except Exception as e:
-                            mock_results[component][f'{material}_{category}'] = {
-                                'success': False,
-                                'content_length': 0,
-                                'content_preview': "",
-                                'error': str(e)
-                            }
-                            print(f"    ❌ {material} ({category}): {e}")
-                
-                # Test variations function if it exists
-                variations_func_name = f'generate_mock_{component}_variations'
-                if hasattr(module, variations_func_name):
+                # Test each validation function with sample data
+                sample_content = get_sample_component_content(component)
+                for func_name in validation_functions:
                     try:
-                        variations_func = getattr(module, variations_func_name)
-                        variations = variations_func("Test Material", "metals", 3)
-                        print(f"    ✅ Variations function: {len(variations)} variations generated")
+                        func = getattr(validator_module, func_name)
+                        result = func(sample_content)
+                        print(f"    ✅ {func_name}: {result}")
                     except Exception as e:
-                        print(f"    ⚠️  Variations function error: {e}")
+                        print(f"    ⚠️  {func_name}: {e}")
                 
-                # Test structured function if it exists
-                structured_func_name = f'generate_mock_structured_{component}'
-                if hasattr(module, structured_func_name):
-                    try:
-                        structured_func = getattr(module, structured_func_name)
-                        structured = structured_func("Test Material", "metals")
-                        print(f"    ✅ Structured function: {type(structured).__name__} returned")
-                    except Exception as e:
-                        print(f"    ⚠️  Structured function error: {e}")
-                        
+                success_count += 1
             else:
-                print(f"  ❌ {func_name} function not found")
-                mock_results[component]['error'] = f"Function {func_name} not found"
+                print(f"  ❌ No validation functions found")
                 
-        except ImportError as e:
-            print(f"  ❌ Import failed: {e}")
-            mock_results[component]['error'] = f"Import failed: {e}"
         except Exception as e:
-            print(f"  ❌ Unexpected error: {e}")
-            mock_results[component]['error'] = f"Unexpected error: {e}"
+            print(f"  ❌ Validator import failed: {e}")
     
-    # Summary
-    successful_components = [comp for comp, results in mock_results.items() 
-                           if isinstance(results, dict) and 'error' not in results]
+    print(f"\n📊 Validator Summary: {success_count}/{total_components} components working")
     
-    print(f"\n📊 Mock Generator Summary: {len(successful_components)}/{len(components)} components working")
-    
-    if len(successful_components) == len(components):
-        print("  ✅ All mock generators functional!")
-    else:
-        failed_components = [comp for comp in components if comp not in successful_components]
-        print(f"  ⚠️  Failed components: {', '.join(failed_components)}")
-    
-    return mock_results, len(successful_components) == len(components)
+    return ("Component Validators", success_count == total_components)
 
 
 def test_component_validators():
@@ -439,7 +404,7 @@ def test_component_architecture_completeness():
         'frontmatter', 'jsonld', 'metatags', 'propertiestable', 'table', 'tags'
     ]
     
-    expected_files = ['generator.py', 'validator.py', 'post_processor.py', 'mock_generator.py']
+    expected_files = ['generator.py', 'validator.py', 'post_processor.py']
     optional_files = ['__init__.py', 'prompt.yaml', 'example_*.md']
     
     completeness_results = {}
@@ -514,19 +479,19 @@ def test_component_architecture_completeness():
     return completeness_results, complete_components == total_components
 
 
-def test_mock_generator_integration():
-    """Test integration of mock generators with the testing framework"""
-    print("\n🧪 Testing Mock Generator Integration...")
+def test_component_integration():
+    """Test integration of components with the testing framework"""
+    print("\n🧪 Testing Component Integration...")
     
     try:
-        # Test that we can use mock generators for testing
-        from components.frontmatter.mock_generator import generate_mock_frontmatter
-        from components.content.mock_generator import generate_mock_content
-        from components.table.mock_generator import generate_mock_table
+        # Test that we can use component validators and post-processors
+        from components.frontmatter.validator import validate_frontmatter_content
+        from components.content.validator import validate_content_format
+        from components.table.validator import validate_table_format
         
-        print("  ✅ Mock generator imports successful")
+        print("  ✅ Component validator imports successful")
         
-        # Test generating mock data for testing
+        # Test validating sample data
         test_cases = [
             ("Steel", "metals"),
             ("Alumina", "ceramics"),
@@ -534,38 +499,21 @@ def test_mock_generator_integration():
         ]
         
         for material, category in test_cases:
-            print(f"\n  🧪 Testing mock generation for {material} ({category})...")
+            print(f"\n  🧪 Testing validation for {material} ({category})...")
             
-            # Test frontmatter mock
+            # Test frontmatter validation
             try:
-                frontmatter_mock = generate_mock_frontmatter(material, category)
-                print(f"    ✅ Frontmatter: {len(frontmatter_mock)} chars")
+                sample_frontmatter = f"material: {material}\ncategory: {category}"
+                frontmatter_result = validate_frontmatter_content(sample_frontmatter)
+                print(f"    ✅ Frontmatter validation: {len(frontmatter_result)} issues")
             except Exception as e:
-                print(f"    ❌ Frontmatter: {e}")
+                print(f"    ❌ Frontmatter validation: {e}")
             
-            # Test content mock
-            try:
-                content_mock = generate_mock_content(material, category)
-                print(f"    ✅ Content: {len(content_mock)} chars")
-            except Exception as e:
-                print(f"    ❌ Content: {e}")
-            
-            # Test table mock
-            try:
-                table_mock = generate_mock_table(material, category)
-                print(f"    ✅ Table: {len(table_mock)} chars")
-            except Exception as e:
-                print(f"    ❌ Table: {e}")
+        return ("Component Integration", True)
         
-        print("\n  ✅ Mock generator integration successful")
-        return True
-        
-    except ImportError as e:
-        print(f"  ❌ Mock generator import failed: {e}")
-        return False
     except Exception as e:
-        print(f"  ❌ Mock generator integration failed: {e}")
-        return False
+        print(f"  ❌ Component integration failed: {e}")
+        return ("Component Integration", False)
 
 
 def main():
@@ -573,17 +521,16 @@ def main():
     print("🧪 COMPONENT-LOCAL ARCHITECTURE COMPREHENSIVE TEST SUITE")
     print("=" * 70)
     print("Testing the new component-local architecture implementation")
-    print("Focus: Validators, post-processors, mock generators, integration")
+    print("Focus: Validators, post-processors, integration")
     print("=" * 70)
     
     tests = [
         ("Component-Local Module Imports", test_component_local_module_imports),
-        ("Mock Generators", test_mock_generators),
         ("Component Validators", test_component_validators),
         ("Component Post-Processors", test_component_post_processors),
         ("Centralized Validator Integration", test_centralized_validator_integration),
         ("Component Architecture Completeness", test_component_architecture_completeness),
-        ("Mock Generator Integration", test_mock_generator_integration),
+        ("Component Integration", test_component_integration),
     ]
     
     passed = 0

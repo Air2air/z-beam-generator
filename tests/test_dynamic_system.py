@@ -29,8 +29,8 @@ def test_system_initialization():
     try:
         from generators.dynamic_generator import DynamicGenerator
         
-        # Test with mock client
-        generator = DynamicGenerator(use_mock=True)
+        # Test with generator
+        generator = DynamicGenerator()
         
         # Check that all components loaded
         materials = generator.get_available_materials()
@@ -65,8 +65,8 @@ def test_multi_api_provider_system():
         # Test API client creation with mock
         with patch.dict(os.environ, {'DEEPSEEK_API_KEY': 'test_key', 'GROK_API_KEY': 'test_key'}):
             try:
-                deepseek_client = create_api_client('deepseek', use_mock=True)
-                grok_client = create_api_client('grok', use_mock=True)
+                deepseek_client = create_api_client('deepseek')
+                grok_client = create_api_client('grok')
                 print("  ✅ Multi-API client creation successful")
             except Exception as e:
                 print(f"  ⚠️  API client creation: {e}")
@@ -167,7 +167,7 @@ def test_component_generation():
     try:
         from generators.dynamic_generator import DynamicGenerator, GenerationRequest
         
-        generator = DynamicGenerator(use_mock=True)
+        generator = DynamicGenerator()
         
         # Test generating multiple components for a material
         test_components = ['frontmatter', 'content', 'table']
@@ -297,11 +297,14 @@ def test_api_client_features():
     print("\n📊 Testing API Client Features...")
     
     try:
-        from api.client import MockAPIClient
+        from api.client import create_api_client
         from api.deepseek import create_deepseek_client
         
         # Test mock client
-        mock_client = MockAPIClient()
+        # Use real API client - fail fast approach
+        api_client = create_api_client('deepseek')
+        if not api_client:
+            raise RuntimeError("API client creation failed - no fallbacks")
         
         # Test connection
         if mock_client.test_connection():
@@ -327,7 +330,7 @@ def test_api_client_features():
         try:
             from run import create_api_client
             with patch.dict(os.environ, {'GROK_API_KEY': 'test_key'}):
-                grok_client = create_api_client('grok', use_mock=True)
+                grok_client = create_api_client('grok')
                 print("  ✅ Grok client creation successful")
         except Exception as e:
             print(f"  ⚠️  Grok client creation: {e}")
@@ -441,7 +444,7 @@ def test_static_component_generation():
         from run import COMPONENT_CONFIG
         
         # Create generator with no API client (static mode)
-        generator = DynamicGenerator(api_client=None, use_mock=True)
+        generator = DynamicGenerator()
         
         # Test badgesymbol static generation
         print("  🏷️  Testing badgesymbol static generation...")
@@ -541,7 +544,7 @@ def test_end_to_end_workflow():
         
         # Test that the system can handle various material names
         test_materials = ["Aluminum", "Steel", "Glass", "Plastic"]
-        generator = DynamicGenerator(use_mock=True)
+        generator = DynamicGenerator()
         available_materials = generator.get_available_materials()
         
         found_materials = [mat for mat in test_materials if mat in available_materials]

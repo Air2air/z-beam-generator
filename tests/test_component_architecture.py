@@ -208,9 +208,9 @@ class ComponentArchitectureEvaluator:
                 # Test schema fields integration
                 try:
                     from generators.dynamic_generator import DynamicGenerator
-                    from api.client import MockAPIClient
                     
-                    mock_client = MockAPIClient()
+                    # Fail fast - no mock clients allowed
+                    raise RuntimeError("Test requires real API client - no mock fallbacks")
                     dyn_gen = DynamicGenerator(api_client=mock_client)
                     
                     # Get schema fields for material type
@@ -254,11 +254,9 @@ class ComponentArchitectureEvaluator:
         
         try:
             from generators.dynamic_generator import DynamicGenerator
-            from api.client import MockAPIClient
             
-            # Test with mock client to avoid API costs
-            mock_client = MockAPIClient()
-            generator = DynamicGenerator(api_client=mock_client)
+            # Fail fast - no mock clients for real integration testing
+            raise RuntimeError("Integration test requires real API client - no mocks allowed")
             
             successful_generations = 0
             total_tests = len(self.test_materials)
