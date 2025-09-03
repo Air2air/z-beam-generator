@@ -44,6 +44,9 @@ def create_api_client(provider: str) -> APIClient:
         ValueError: If provider is invalid
         RuntimeError: If API key is missing
     """
+    # Load environment/configuration first
+    EnvLoader.load_env()
+    
     if provider not in API_PROVIDERS:
         raise ValueError(f"Invalid provider: {provider}. Available: {list(API_PROVIDERS.keys())}")
     

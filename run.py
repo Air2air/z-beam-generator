@@ -461,6 +461,84 @@ def run_single_material(generator, material: str, components: list = None, autho
         return False
 
 
+def run_content_batch() -> bool:
+    """
+    Clear content directory and generate content component for first 8 material categories.
+    """
+    print("📦 CONTENT BATCH GENERATION")
+    print("=" * 50)
+    print("🧹 Clearing content directory and generating content for first 8 material categories")
+    print("=" * 50)
+
+    try:
+        from generators.dynamic_generator import DynamicGenerator
+        from pathlib import Path
+        import shutil
+    except ImportError as e:
+        print(f"❌ Error importing required modules: {e}")
+        return False
+
+    # Step 1: Clear content/components/content directory
+    print("🗑️  Clearing content/components/content directory...")
+    content_dir = Path("content/components/content")
+    
+    if content_dir.exists():
+        try:
+            shutil.rmtree(content_dir)
+            print(f"   ✅ Cleared {content_dir}")
+        except Exception as e:
+            print(f"   ❌ Error clearing directory: {e}")
+            return False
+    
+    # Recreate the directory
+    content_dir.mkdir(parents=True, exist_ok=True)
+    print(f"   ✅ Recreated {content_dir}")
+
+    # Step 2: Initialize generator
+    try:
+        generator = DynamicGenerator()
+    except Exception as e:
+        print(f"❌ Error initializing generator: {e}")
+        return False
+
+    # Step 3: Get first 8 materials
+    # Get actual list of materials from generator to ensure consistency
+    all_materials = generator.get_available_materials()
+    first_8_materials = all_materials[:8]  # First 8 materials from the list
+    
+    print(f"🎯 Target materials ({len(first_8_materials)}):")
+    for i, material in enumerate(first_8_materials, 1):
+        print(f"   {i}. {material}")
+
+    # Step 4: Generate content component for each material
+    generated_count = 0
+    failed_count = 0
+    
+    for i, material in enumerate(first_8_materials, 1):
+        print(f"\n📦 [{i}/{len(first_8_materials)}] Processing material: {material}")
+        
+        try:
+            success = run_single_material(generator, material, ["content"], None)
+            if success:
+                generated_count += 1
+                print(f"   ✅ {material} content generated successfully")
+            else:
+                failed_count += 1
+                print(f"   ❌ {material} content generation failed")
+        except Exception as e:
+            failed_count += 1
+            print(f"   ❌ Error generating {material}: {e}")
+
+    # Step 5: Summary
+    print("\n📊 CONTENT BATCH GENERATION COMPLETE")
+    print("=" * 50)
+    print(f"✅ Generated: {generated_count} materials")
+    print(f"❌ Failed: {failed_count} materials")
+    print(f"📁 Output directory: {content_dir}")
+    
+    return failed_count == 0
+
+
 def run_yaml_validation() -> bool:
     """Run comprehensive YAML validation and fixing."""
     print("🔍 YAML VALIDATION & FIXING MODE")
@@ -667,6 +745,7 @@ EXAMPLES:
     parser.add_argument("--test", action="store_true", help="Run comprehensive test suite")
     parser.add_argument("--check-env", action="store_true", help="Check environment variables and API keys")
     parser.add_argument("--clean", action="store_true", help="Remove all generated content files")
+    parser.add_argument("--content-batch", action="store_true", help="Clear content directory and generate content component for first 8 material categories")
 
     # Listing operations
     parser.add_argument("--list-materials", action="store_true", help="List all available materials")
@@ -699,6 +778,9 @@ def main():
 
         elif args.clean:
             success = clean_content_components()
+
+        elif args.content_batch:
+            success = run_content_batch()
 
         elif (
             args.list_materials

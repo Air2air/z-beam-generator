@@ -1,9 +1,10 @@
 """
 Standardized environment variable loader for API clients.
-Handles .env file loading and provides consistent API key access.
+Handles .env file loading and configuration file loading for consistent API key access.
 """
 
 import os
+import sys
 from pathlib import Path
 from typing import Optional, Dict
 
@@ -14,10 +15,33 @@ class EnvLoader:
     
     @classmethod
     def load_env(cls) -> None:
-        """Load environment variables from .env file if available"""
+        """Load environment variables from config file and .env file if available"""
         if cls._loaded:
             return
+        
+        # First, try to load from config/api_keys.py
+        try:
+            project_root = Path(__file__).parent.parent
+            config_dir = project_root / 'config'
             
+            # Add config directory to Python path
+            if str(config_dir) not in sys.path:
+                sys.path.insert(0, str(config_dir))
+                
+            # Import the config file
+            from config.api_keys import API_KEYS
+            
+            # Set environment variables from config
+            for key, value in API_KEYS.items():
+                if value and not os.getenv(key):  # Don't override existing env vars
+                    os.environ[key] = str(value)
+                    
+            print("🔑 Loaded API keys from config/api_keys.py")
+            
+        except ImportError:
+            print("⚠️  config/api_keys.py not found, falling back to .env")
+            
+        # Also try .env file as fallback
         try:
             from dotenv import load_dotenv
             

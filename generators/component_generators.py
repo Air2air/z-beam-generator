@@ -27,6 +27,13 @@ class BaseComponentGenerator(ABC):
     """Base class for component generators"""
     
     def __init__(self, component_type: str):
+        # Load environment variables and API keys first
+        try:
+            from api.env_loader import EnvLoader
+            EnvLoader.load_env()
+        except ImportError:
+            logger.warning("Could not load environment - continuing without API key loading")
+            
         self.component_type = component_type
         self.component_dir = Path("components") / component_type
         self.prompt_config = self._load_prompt_config()
@@ -582,7 +589,8 @@ class ComponentGeneratorFactory:
         if generators_dir.exists():
             for generator_file in generators_dir.glob("*_generator.py"):
                 component_name = generator_file.stem.replace("_generator", "")
-                if component_name not in available_components:
+                # Skip dynamic generator as it's not a component type
+                if component_name != "dynamic" and component_name not in available_components:
                     available_components.append(component_name)
         
         return sorted(available_components)

@@ -218,11 +218,12 @@ class FailFastContentGenerator:
             # Fail fast if material data is missing critical info
             if 'name' not in material_data:
                 raise ConfigurationError(f"Material data missing 'name' field")
-            if 'data' not in material_data or 'formula' not in material_data['data']:
-                raise ConfigurationError(f"Material data missing 'data.formula' field")
-                
+            
             subject = material_data['name']
-            formula = material_data['data']['formula']
+            # Make formula field optional - use "N/A" if not available
+            formula = "N/A"
+            if 'data' in material_data and 'formula' in material_data['data']:
+                formula = material_data['data']['formula']
             author_name = author_config['name']
             author_country = author_config['country']
             

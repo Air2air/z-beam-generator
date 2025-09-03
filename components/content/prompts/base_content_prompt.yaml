@@ -1,53 +1,77 @@
-# Base Content Prompt for Laser Cleaning Articles
-# HUMAN-FOCUSED GUIDANCE - Technical data supports human storytelling
 
-# CORE GUIDANCE QUESTIONS - PRIMARY FOCUS
+# Overview: This YAML acts as a foundational prompt template for generating compelling, reader-friendly articles about laser cleaning various materials. It shifts the emphasis from cold, technical jargon to warm, human-centered narratives that feel like insider conversations. By anchoring content in core questions, it ensures articles are relatable and practical, while author expertise adds authentic, location-specific flavor. The aim is to engage non-experts—think curious hobbyists or industry newcomers—by blending storytelling with selective tech details that illuminate real-world experiences.
+
+# Overall Subject: Core questions that drive the article's structure and content. These essential questions create the foundation for engaging, reader-focused content.
 overall_subject:
-  - "What makes this material interesting or unique for laser cleaning?"
-  - "How is laser cleaning this material different from cleaning other materials?"
-  - "Where do people actually use this material, and why?"
-  - "What's it like when you laser clean this material? What happens?"
-  - "What problems or advantages come up when cleaning this specific material?"
-  - "What should you expect to see when the cleaning is done right?"
-  - "Why would someone choose laser cleaning over other methods for this material?"
+  - What makes this material stand out or feel unique when using laser cleaning?  # (e.g., Does it sparkle differently post-clean, or is there a surprising texture change?)
+  - How does laser cleaning this material differ from others in practice?  # (e.g., Unlike metals that might heat up quickly, this one stays cool to the touch.)
+  - In what real-world places do people use this material, and what's the reasoning behind it?  # (e.g., From aerospace parts in high-stress environments to everyday kitchen tools for durability.)
+  - Describe the experience: What does it look and feel like during laser cleaning?  # (e.g., You hear a faint popping as contaminants evaporate, and the surface transforms from dull to gleaming in seconds.)
+  - What challenges or perks arise specifically when cleaning this material?  # (e.g., Perks: No chemical residues; Challenges: Sensitivity to over-exposure leading to micro-cracks.)
+  - What visual or tangible results indicate a successful clean?  # (e.g., A uniform shine without discoloration, or a smooth feel under your fingertips.)
+  - Why pick laser cleaning over alternatives for this material?  # (e.g., It's eco-friendly and precise, avoiding the mess of sandblasting or the hazards of chemicals.)
 
-# CONTENT APPROACH - Keep it human and conversational
+# Core Guidance Questions: These essential questions drive the article's structure and content. Integrate them seamlessly into the narrative to create a logical flow, focusing on the "why" and "how it feels" rather than just "what." This keeps readers hooked by addressing their natural curiosities.
+core_guidance_questions:
+  - What makes this material stand out or feel unique when using laser cleaning?  # (e.g., Does it sparkle differently post-clean, or is there a surprising texture change?)
+  - How does laser cleaning this material differ from others in practice?  # (e.g., Unlike metals that might heat up quickly, this one stays cool to the touch.)
+  - In what real-world places do people use this material, and what's the reasoning behind it?  # (e.g., From aerospace parts in high-stress environments to everyday kitchen tools for durability.)
+  - Describe the experience: What does it look and feel like during laser cleaning?  # (e.g., You hear a faint popping as contaminants evaporate, and the surface transforms from dull to gleaming in seconds.)
+  - What challenges or perks arise specifically when cleaning this material?  # (e.g., Perks: No chemical residues; Challenges: Sensitivity to over-exposure leading to micro-cracks.)
+  - What visual or tangible results indicate a successful clean?  # (e.g., A uniform shine without discoloration, or a smooth feel under your fingertips.)
+  - Why pick laser cleaning over alternatives for this material?  # (e.g., It's eco-friendly and precise, avoiding the mess of sandblasting or the hazards of chemicals.)
+
+# Content Approach: Guide the writing to be approachable and engaging, prioritizing human connection over robotic precision. Imagine narrating to a peer who's new to the field—use anecdotes, sensory details, and simple analogies to bring concepts to life.
 writing_guidance:
-  primary_focus: "Answer the core questions naturally, like explaining to a colleague"
-  technical_support: "Use technical data only when it helps explain what you're seeing or experiencing"
-  human_elements: "Include personal observations, practical insights, and real-world context"
-  avoid: "Overly systematic organization, rigid technical specifications, AI-like structure"
+  primary_focus: 'Weave answers to the core questions into a natural, conversational flow, like explaining over lunch "Hey, ever wondered why laser cleaning is a game-changer for this stuff? Let me break it down..."'
+  technical_support: 'Incorporate tech details sparingly, only to enhance understanding of observable effects—e.g., "At 1064 nm, the laser targets dirt without harming the base, which is why you don''t see burn marks."'
+  human_elements: 'Infuse with relatable insights, such as personal anecdotes, field observations, or practical advice—e.g., "In my experience working in humid shops, adding a dehumidifier nearby prevents fogging on the lens." Or, "It''s satisfying to watch grime vanish like magic, leaving no waste behind."'
+  avoid: Formal, list-heavy formats; dense spec sheets; repetitive phrasing; or AI-generated vibes—opt for varied sentence lengths, questions to the reader, and a touch of enthusiasm to keep it dynamic and personable.
+  additional_tips: 
+    - Start with a hook: A quick story or surprising fact about the material.
+    - End with takeaways: What readers can apply or why it matters in broader contexts.
+    - Length: Aim for 800-1500 words to allow depth without overwhelming.
 
-# TECHNICAL ESSENTIALS - Only what's needed
+# Technical Essentials: These are supporting elements—include them judiciously to back up human stories, not dominate. Think of them as footnotes in a novel: helpful but not the main plot.
 include_when_relevant:
-  - "Material formula: {material_formula}"
-  - "Wavelength: typically 1064 nm"
-  - "Pulse duration: nanosecond range"
-  - "Safety: Class 4 laser systems"
-  - "Any specific challenges or advantages for this material"
+  - Material formula: {material_formula}  # (e.g., the chemical composition like TiO2 for titanium dioxide; explain if it affects cleaning, such as higher ablation thresholds.)
+  - Wavelength: typically 1064 nm  # (Infrared spectrum ideal for non-destructive removal; note how it interacts with the material's absorption properties for better storytelling.)
+  - Pulse duration: nanosecond range  # (Short pulses like 10-100 ns prevent thermal buildup; use to describe why the process feels "instant" and safe.)
+  - 'Safety: Class 4 laser systems  # (Requires eye protection, interlocks, and trained operators; tie into real-world precautions, like "Always wear those funky goggles—I''ve seen what happens without them!")'
+  - Any specific challenges or advantages for this material  # (e.g., Advantages: Eco-friendly with no abrasives; Challenges: For porous materials, deeper contaminants might need multiple passes—share tips like adjusting fluence levels.)
+  - Optional extras: If relevant, mention energy density (fluence) in J/cm² or repetition rates in Hz, but only with context—e.g., "A lower fluence of 1-5 J/cm² keeps delicate surfaces intact."
 
-# AUTHOR EXPERTISE AREAS
+# Author Expertise Areas: This section provides a palette of perspectives to color the article with regional and industry-specific insights. Choose one author per article based on the material's typical applications, and let their background shine through in examples or adaptations. It's like assigning a narrator who knows the terrain.
 author_expertise_areas:
   taiwan:
-    author_id: 1
-    technical_specialization: "semiconductor processing, electronics manufacturing"
-    application_expertise: "humid environment considerations, precision electronics"
-    industry_focus: "electronics manufacturing, semiconductor fabrication"
-    
+    technical_specialization: semiconductor processing and electronics manufacturing
+    application_expertise: handling humid environments and precision electronics
+    industry_focus: electronics manufacturing and semiconductor fabrication
+    max_word_count: 380
+    writing_style: systematic and methodical
+    # Tip: Leverage for articles on high-tech materials; e.g., "In Taiwan's rainy season, we tweak humidity controls to avoid condensation during cleaning."
+  
   italy:
-    author_id: 2
-    technical_specialization: "heritage preservation, additive manufacturing"
-    application_expertise: "aerospace, automotive, cultural preservation"
-    industry_focus: "aerospace engineering, automotive manufacturing, cultural preservation"
-    
+    technical_specialization: heritage preservation and additive manufacturing
+    application_expertise: aerospace, automotive, and cultural preservation
+    industry_focus: aerospace engineering, automotive manufacturing, and cultural preservation
+    max_word_count: 350
+    writing_style: artistic and heritage-focused
+    # Tip: Ideal for historical or artistic contexts; e.g., "Drawing from restoring Renaissance sculptures, laser cleaning gently revives details without erosion."
+  
   indonesia:
-    author_id: 3
-    technical_specialization: "renewable energy systems, marine applications"
-    application_expertise: "tropical environment adaptations, sustainability focus"
-    industry_focus: "renewable energy, marine technology, environmental applications"
-    
+    technical_specialization: renewable energy systems and marine applications
+    application_expertise: adaptations for tropical climates with a sustainability emphasis
+    industry_focus: renewable energy, marine technology, and environmental applications
+    max_word_count: 400
+    writing_style: sustainability and environmental focus
+    # Tip: Use for sustainable or harsh-environment scenarios; e.g., "In Indonesia's coastal humidity, we focus on corrosion-resistant setups for offshore wind turbine parts."
+  
   usa:
-    author_id: 4
-    technical_specialization: "biomedical devices, aerospace applications"
-    application_expertise: "robotics integration, high-precision manufacturing"
-    industry_focus: "biomedical technology, aerospace systems, robotics integration"
+    technical_specialization: biomedical devices and aerospace applications
+    application_expertise: robotics integration and high-precision manufacturing
+    industry_focus: biomedical technology, aerospace systems, and robotics integration
+    max_word_count: 420
+    writing_style: cutting-edge technology and innovation
+    # Tip: Best for cutting-edge tech; e.g., "Integrating robots in US labs, we automate cleaning for sterile medical implants, ensuring micron-level accuracy."
+
