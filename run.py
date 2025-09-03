@@ -2,8 +2,21 @@
 """
 Z-Beam Generator - Main Interface (Cleaned)
 
-A comprehensive AI-powered content generation system for laser cleaning materials.
-This version imports functionality from extracted modules for better maintainability.
+A comprehensive AI-powered content generation system for laser cleaning materi        "content": {
+            "enabled": True,
+            "data_provider": "hybrid",
+            "api_provider": "deepseek"
+        },
+        "jsonld": {
+            "enabled": True, 
+            "data_provider": "frontmatter", 
+            "api_provider": "none"
+        },
+        "table": {
+            "enabled": True, 
+            "data_provider": "API", 
+            "api_provider": "grok"
+        },on imports functionality from extracted modules for better maintainability.
 
 🚀 QUICK START SCRIPTS (User Commands):
 ========================================
@@ -117,7 +130,7 @@ COMPONENT_CONFIG = {
         "propertiestable",  # Depends on frontmatter data
         "badgesymbol",      # Depends on frontmatter data  
         "author",           # Static component, no dependencies
-        "content",          # Main content generation
+        "text",          # Main content generation
         "bullets",          # Content-related components
         "caption",          # Content-related components
         "table",            # Data presentation
@@ -148,10 +161,10 @@ COMPONENT_CONFIG = {
             "data_provider": "API", 
             "api_provider": "deepseek"
         },
-        "content": {
+        "text": {
             "enabled": True,
             "data_provider": "hybrid",
-            "api_provider": "grok"
+            "api_provider": "deepseek"
         },
         "jsonld": {
             "enabled": True, 
@@ -161,7 +174,7 @@ COMPONENT_CONFIG = {
         "table": {
             "enabled": True, 
             "data_provider": "API", 
-            "api_provider": "grok"
+            "api_provider": "deepseek"
         },
         "metatags": {
             "enabled": True, 
@@ -486,9 +499,9 @@ def run_content_batch() -> bool:
         print(f"❌ Error importing required modules: {e}")
         return False
 
-    # Step 1: Clear content/components/content directory
-    print("🗑️  Clearing content/components/content directory...")
-    content_dir = Path("content/components/content")
+    # Step 1: Clear content/components/text directory
+    print("🗑️  Clearing content/components/text directory...")
+    content_dir = Path("content/components/text")
     
     if content_dir.exists():
         try:
@@ -576,7 +589,7 @@ def run_yaml_validation() -> bool:
         if content_dir.exists():
             for md_file in content_dir.rglob("*.md"):
                 total_files += 1
-                component_type = md_file.parent.name if md_file.parent.name != "content" else "content"
+                component_type = md_file.parent.name if md_file.parent.name != "content" else "text"
                 
                 try:
                     was_processed = validator.post_process_generated_content(str(md_file), component_type)

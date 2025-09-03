@@ -12,7 +12,7 @@ from pathlib import Path
 project_root = Path(__file__).parent
 sys.path.insert(0, str(project_root))
 
-from components.content.generators.fail_fast_generator import create_fail_fast_generator
+from components.text.generators.fail_fast_generator import create_fail_fast_generator
 from api.client_manager import create_api_client
 
 def test_production_system():
@@ -145,7 +145,7 @@ def test_production_system():
         
         # Check system cleanliness
         print("\n6️⃣ Checking system cleanliness...")
-        content_dir = Path("components/content")
+        content_dir = Path("components/text")
         generator_files = list(content_dir.glob("*generator*.py"))
         
         if len(generator_files) == 1 and "fail_fast" in generator_files[0].name:

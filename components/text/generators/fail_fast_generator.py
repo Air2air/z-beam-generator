@@ -75,7 +75,7 @@ class FailFastContentGenerator:
         logger.info("Validating required configurations...")
         
         # Check base content prompt
-        base_prompt_file = "components/content/prompts/base_content_prompt.yaml"
+        base_prompt_file = "components/text/prompts/base_content_prompt.yaml"
         if not Path(base_prompt_file).exists():
             raise ConfigurationError(f"Required base content prompt missing: {base_prompt_file}")
         
@@ -474,10 +474,10 @@ class FailFastContentGenerator:
     def _get_persona_file_path(self, author_id: int) -> str:
         """Get persona file path for author ID."""
         persona_files = {
-            1: "components/content/prompts/personas/taiwan_persona.yaml",
-            2: "components/content/prompts/personas/italy_persona.yaml", 
-            3: "components/content/prompts/personas/indonesia_persona.yaml",
-            4: "components/content/prompts/personas/usa_persona.yaml"
+            1: "components/text/prompts/personas/taiwan_persona.yaml",
+            2: "components/text/prompts/personas/italy_persona.yaml", 
+            3: "components/text/prompts/personas/indonesia_persona.yaml",
+            4: "components/text/prompts/personas/usa_persona.yaml"
         }
         
         persona_file = persona_files.get(author_id)
@@ -488,7 +488,7 @@ class FailFastContentGenerator:
     
     def _load_base_content_prompt(self) -> Dict[str, Any]:
         """Load base content prompt configuration."""
-        base_file = "components/content/prompts/base_content_prompt.yaml"
+        base_file = "components/text/prompts/base_content_prompt.yaml"
         
         try:
             with open(base_file, 'r', encoding='utf-8') as f:
@@ -529,10 +529,10 @@ class FailFastContentGenerator:
     def _load_formatting_prompt(self, author_id: int) -> Dict[str, Any]:
         """Load formatting-specific configuration."""
         formatting_files = {
-            1: "components/content/prompts/formatting/taiwan_formatting.yaml",
-            2: "components/content/prompts/formatting/italy_formatting.yaml",
-            3: "components/content/prompts/formatting/indonesia_formatting.yaml", 
-            4: "components/content/prompts/formatting/usa_formatting.yaml"
+            1: "components/text/prompts/formatting/taiwan_formatting.yaml",
+            2: "components/text/prompts/formatting/italy_formatting.yaml",
+            3: "components/text/prompts/formatting/indonesia_formatting.yaml", 
+            4: "components/text/prompts/formatting/usa_formatting.yaml"
         }
         
         formatting_file = formatting_files.get(author_id)
@@ -813,7 +813,7 @@ class FailFastContentGenerator:
                 f"author_id: {author_id}",
                 f"country: \"{author_country}\"",
                 f"timestamp: \"{datetime.datetime.now().isoformat()}\"",
-                f"api_provider: \"grok\"",
+                "api_provider: \"deepseek\"",
                 f"api_model: \"{api_model}\"",
                 f"generation_method: \"fail_fast_sophisticated_prompts\"",
                 f"material_name: \"{subject}\"",
@@ -821,9 +821,9 @@ class FailFastContentGenerator:
                 f"quality_scoring_enabled: {str(self.enable_scoring).lower()}",
                 f"human_believability_threshold: {self.human_threshold}",
                 "prompt_sources:",
-                "  - \"components/content/prompts/base_content_prompt.yaml\"",
-                f"  - \"components/content/prompts/personas/{country_key}_persona.yaml\"",
-                f"  - \"components/content/prompts/formatting/{country_key}_formatting.yaml\"",
+                "  - \"components/text/prompts/base_content_prompt.yaml\"",
+                f"  - \"components/text/prompts/personas/{country_key}_persona.yaml\"",
+                f"  - \"components/text/prompts/formatting/{country_key}_formatting.yaml\"",
                 "validation:",
                 "  no_fallbacks: true",
                 "  fail_fast_validation: true",
@@ -917,17 +917,17 @@ class FailFastContentGenerator:
                 f"author: \"{author_name}\"",
                 f"country: \"{author_country}\"",
                 f"timestamp: \"{datetime.datetime.now().isoformat()}\"",
-                f"api_provider: \"grok\"",
-                f"api_model: \"grok-2\"",
+                "api_provider: \"deepseek\"",
+                "api_model: \"deepseek-chat\"",
                 f"generation_method: \"fail_fast_sophisticated_prompts\"",
                 f"material_name: \"{subject}\"",
                 f"prompt_concatenation: \"base_content + persona + formatting\"",
                 f"quality_scoring_enabled: {str(self.enable_scoring).lower()}",
                 f"human_believability_threshold: {self.human_threshold}",
                 "prompt_sources:",
-                "  - \"components/content/prompts/base_content_prompt.yaml\"",
-                f"  - \"components/content/prompts/personas/{author_country.lower().replace(' ', '_').replace('(', '').replace(')', '')}_persona.yaml\"",
-                f"  - \"components/content/prompts/formatting/{author_country.lower().replace(' ', '_').replace('(', '').replace(')', '')}_formatting.yaml\"",
+                "  - \"components/text/prompts/base_content_prompt.yaml\"",
+                f"  - \"components/text/prompts/personas/{author_country.lower().replace(' ', '_').replace('(', '').replace(')', '')}_persona.yaml\"",
+                f"  - \"components/text/prompts/formatting/{author_country.lower().replace(' ', '_').replace('(', '').replace(')', '')}_formatting.yaml\"",
                 "validation:",
                 "  no_fallbacks: true",
                 "  fail_fast_validation: true",

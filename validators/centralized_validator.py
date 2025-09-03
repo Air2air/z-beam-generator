@@ -139,7 +139,7 @@ class CentralizedValidator:
                     processed_content = post_process_frontmatter(original_content, material_name)
                     
                 elif component_type == "content":
-                    from components.content.post_processor import post_process_content
+                    from components.text.post_processor import post_process_content
                     material_name = path.stem.replace('-laser-cleaning', '')
                     processed_content = post_process_content(original_content, material_name)
                     
@@ -358,7 +358,7 @@ class CentralizedValidator:
                 errors.extend(validate_caption_content(content))
                 
             elif component == 'content':
-                from components.content.validator import validate_content_format, validate_content_structure
+                from components.text.validator import validate_content_format, validate_content_structure
                 errors.extend(validate_content_format(content, format_rules))
                 errors.extend(validate_content_structure(content))
                 

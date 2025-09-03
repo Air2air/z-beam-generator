@@ -18,7 +18,7 @@ COMPONENT_CONFIG = {
         "propertiestable",  # Depends on frontmatter data
         "badgesymbol",      # Depends on frontmatter data  
         "author",           # Static component, no dependencies
-        "content",          # Main content generation
+        "text",          # Main content generation
         "bullets",          # Content-related components
         "caption",          # Content-related components
         "table",            # Data presentation
@@ -37,7 +37,7 @@ COMPONENT_CONFIG = {
             "data_provider": "API",  # Generate via API
             "api_provider": "grok"
         },
-        "content": {"enabled": True, "data_provider": "hybrid", "api_provider": "grok"},  # Uses both frontmatter and API
+        "text": {"enabled": True, "data_provider": "hybrid", "api_provider": "deepseek"},  # Uses both frontmatter and API
         "jsonld": {"enabled": True, "data_provider": "frontmatter", "api_provider": "none"},  # Extract data from frontmatter
         "table": {"enabled": True, "data_provider": "API", "api_provider": "grok"},
         "metatags": {"enabled": True, "data_provider": "frontmatter", "api_provider": "none"},  # Extract data from frontmatter

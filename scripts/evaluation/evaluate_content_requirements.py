@@ -12,7 +12,7 @@ from pathlib import Path
 project_root = Path(__file__).parent
 sys.path.insert(0, str(project_root))
 
-from components.content.generators.fail_fast_generator import create_fail_fast_generator
+from components.text.generators.fail_fast_generator import create_fail_fast_generator
 from api.client import MockAPIClient
 
 def check_requirement_1_believable_content():
@@ -81,7 +81,7 @@ def check_requirement_2_no_mocks_fallbacks():
     
     try:
         # Check fail_fast_generator.py for fallback patterns
-        fail_fast_file = "components/content/fail_fast_generator.py"
+        fail_fast_file = "components/text/fail_fast_generator.py"
         with open(fail_fast_file, 'r') as f:
             content = f.read()
         
@@ -125,17 +125,17 @@ def check_requirement_3_formatting_personas():
     try:
         # Check if formatting files exist and are loaded
         formatting_files = [
-            "components/content/prompts/formatting/taiwan_formatting.yaml",
-            "components/content/prompts/formatting/italy_formatting.yaml",
-            "components/content/prompts/formatting/indonesia_formatting.yaml",
-            "components/content/prompts/formatting/usa_formatting.yaml"
+            "components/text/prompts/formatting/taiwan_formatting.yaml",
+            "components/text/prompts/formatting/italy_formatting.yaml",
+            "components/text/prompts/formatting/indonesia_formatting.yaml",
+            "components/text/prompts/formatting/usa_formatting.yaml"
         ]
         
         persona_files = [
-            "components/content/prompts/personas/taiwan_persona.yaml",
-            "components/content/prompts/personas/italy_persona.yaml",
-            "components/content/prompts/personas/indonesia_persona.yaml",
-            "components/content/prompts/personas/usa_persona.yaml"
+            "components/text/prompts/personas/taiwan_persona.yaml",
+            "components/text/prompts/personas/italy_persona.yaml",
+            "components/text/prompts/personas/indonesia_persona.yaml",
+            "components/text/prompts/personas/usa_persona.yaml"
         ]
         
         # Check file existence
@@ -146,7 +146,7 @@ def check_requirement_3_formatting_personas():
         print(f"  Persona files exist: {persona_exists}")
         
         # Check if fail_fast_generator loads them
-        fail_fast_file = "components/content/fail_fast_generator.py"
+        fail_fast_file = "components/text/fail_fast_generator.py"
         with open(fail_fast_file, 'r') as f:
             content = f.read()
         
@@ -239,7 +239,7 @@ def check_requirement_5_validation_retries():
     
     try:
         # Check if fail_fast_generator has retry logic
-        fail_fast_file = "components/content/fail_fast_generator.py"
+        fail_fast_file = "components/text/fail_fast_generator.py"
         with open(fail_fast_file, 'r') as f:
             content = f.read()
         
@@ -284,7 +284,7 @@ def check_requirement_6_e2e_evaluation():
     
     try:
         # Check for multiple generator files (bloat)
-        content_dir = Path("components/content")
+        content_dir = Path("components/text")
         generator_files = list(content_dir.glob("*generator*.py"))
         
         print(f"  Generator files found: {len(generator_files)}")

@@ -559,8 +559,8 @@ class ComponentGeneratorFactory:
                     module = __import__(module_path, fromlist=[f"{component_type.title()}ComponentGenerator"])
                     generator_class = getattr(module, f"{component_type.title()}ComponentGenerator")
                     
-                    # Pass AI detection service to content generator
-                    if component_type == "content":
+                    # Pass AI detection service to text generator
+                    if component_type == "text":
                         return generator_class(ai_detection_service=ai_detection_service)
                 except (ImportError, AttributeError):
                     logger.error(f"No generator found for component type: {component_type}")
