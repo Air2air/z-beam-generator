@@ -212,7 +212,11 @@ class APIClient:
         
         start_time = time.time()
         
-        # Prepare messages
+        # Handle Gemini API format differently
+        if "gemini" in self.model.lower():
+            return self._make_gemini_request(request, start_time)
+        
+        # Standard OpenAI-compatible format for other providers
         messages = []
         if request.system_prompt:
             messages.append({"role": "system", "content": request.system_prompt})
@@ -299,6 +303,111 @@ class APIClient:
                     
             except json.JSONDecodeError:
                 error_msg += f": {response.text}"
+            
+            return APIResponse(
+                success=False,
+                content="",
+                error=error_msg,
+                response_time=response_time
+            )
+
+    def _make_gemini_request(self, request: GenerationRequest, start_time: float) -> APIResponse:
+        """Make a request to Gemini API with its specific format"""
+        
+        # Combine system prompt and user prompt for Gemini
+        full_prompt = request.prompt
+        if request.system_prompt:
+            full_prompt = f"{request.system_prompt}\n\n{request.prompt}"
+        
+        # Log API request details
+        logger.info(f"🌐 Making Gemini API request to {self.model}")
+        logger.info(f"📝 Prompt length: {len(full_prompt)} chars")
+        logger.info(f"🎯 Max tokens: {request.max_tokens}, Temperature: {request.temperature}")
+        
+        # Prepare Gemini-specific payload
+        payload = {
+            "contents": [{
+                "parts": [{
+                    "text": full_prompt
+                }]
+            }],
+            "generationConfig": {
+                "temperature": request.temperature,
+                "topP": request.top_p,
+                "maxOutputTokens": request.max_tokens,
+            }
+        }
+        
+        # Make request to Gemini API
+        api_key = getattr(self.config, 'api_key', None) or (self.config.get('api_key') if hasattr(self.config, 'get') else None)
+        
+        # Try API key in URL parameter (standard method)
+        url = f"{self.base_url}/v1beta/models/{self.model}:generateContent?key={api_key}"
+        
+        headers = {
+            'Content-Type': 'application/json'
+        }
+        
+        response = self.session.post(
+            url,
+            json=payload,
+            headers=headers,
+            timeout=(self.timeout_connect, self.timeout_read)
+        )
+        
+        response_time = time.time() - start_time
+        
+        # Process Gemini response
+        if response.status_code == 200:
+            data = response.json()
+            
+            # Extract content from Gemini response format
+            candidates = data.get('candidates', [])
+            if candidates and 'content' in candidates[0]:
+                parts = candidates[0]['content'].get('parts', [])
+                if parts and 'text' in parts[0]:
+                    content = parts[0]['text']
+                else:
+                    content = ""
+            else:
+                content = ""
+            
+            # Log successful API response details
+            usage_metadata = data.get('usageMetadata', {})
+            total_tokens = usage_metadata.get('totalTokenCount', 0)
+            prompt_tokens = usage_metadata.get('promptTokenCount', 0)
+            completion_tokens = usage_metadata.get('candidatesTokenCount', 0)
+            
+            logger.info(f"✅ Gemini API response successful ({response.status_code})")
+            logger.info(f"⏱️  Response time: {response_time:.2f}s")
+            logger.info(f"📊 Tokens used: {total_tokens} (prompt: {prompt_tokens}, completion: {completion_tokens})")
+            logger.info(f"📄 Content length: {len(content)} chars")
+            
+            return APIResponse(
+                success=True,
+                content=content,
+                response_time=response_time,
+                token_count=total_tokens,
+                prompt_tokens=prompt_tokens,
+                completion_tokens=completion_tokens,
+                model_used=self.model,
+                request_id=response.headers.get('x-request-id')
+            )
+        else:
+            # Handle Gemini error response
+            error_msg = f"Gemini API request failed with status {response.status_code}"
+            try:
+                error_data = response.json()
+                if 'error' in error_data:
+                    error_details = error_data['error']
+                    error_msg += f": {error_details.get('message', 'Unknown error')}"
+                    if 'code' in error_details:
+                        logger.error(f"Gemini error code: {error_details['code']}")
+                        
+            except json.JSONDecodeError:
+                error_msg += f": {response.text}"
+            
+            logger.error(f"❌ {error_msg}")
             
             return APIResponse(
                 success=False,

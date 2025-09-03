@@ -10,9 +10,19 @@ import os
 import time
 from typing import Optional
 from .client import APIClient
-from cli.api_config import API_PROVIDERS
-from cli.component_config import COMPONENT_CONFIG
 from .env_loader import EnvLoader
+
+# Import configurations from run.py where they are now centralized
+import sys
+from pathlib import Path
+
+# Add the project root to path to ensure run.py can be imported
+project_root = Path(__file__).parent.parent
+if str(project_root) not in sys.path:
+    sys.path.insert(0, str(project_root))
+
+# Force import from run.py - no fallbacks
+from run import API_PROVIDERS, COMPONENT_CONFIG
 
 
 def setup_api_client(provider: str = "deepseek") -> APIClient:

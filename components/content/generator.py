@@ -15,7 +15,6 @@ import logging
 from pathlib import Path
 from typing import Dict, Any, Optional
 from functools import lru_cache
-from datetime import datetime
 
 # Set up logging
 logger = logging.getLogger(__name__)
@@ -98,46 +97,38 @@ def load_formatting_prompt(author_id: int) -> Dict[str, Any]:
         return {}
 
 class ContentComponentGenerator(APIComponentGenerator):
-    """Generator for content components using three-stage prompt system"""
+    """Generator for content components using production-ready fail-fast system with quality scoring"""
     
     def __init__(self):
+        # Initialize parent class
         super().__init__("content")
+        
+        # Initialize the production-ready fail-fast generator
+        from .generators.fail_fast_generator import create_fail_fast_generator
+        self.fail_fast_generator = create_fail_fast_generator()
+    
+    def _load_prompt_config(self) -> Optional[Dict]:
+        """Override parent method - content component uses fail-fast system"""
+        # Content component uses fail-fast generator, not basic prompt.yaml
+        return {}
     
     def generate(self, material_name: str, material_data: Dict, 
                 api_client=None, author_info: Optional[Dict] = None,
                 frontmatter_data: Optional[Dict] = None,
                 schema_fields: Optional[Dict] = None,
                 provider_name: Optional[str] = None):
-        """Generate content with frontmatter metadata"""
-        # Call parent generate method to get the content
-        result = super().generate(material_name, material_data, api_client, 
-                                author_info, frontmatter_data, schema_fields)
-        
-        if result.success and result.content:
-            # Add frontmatter to the content
-            frontmatter_content = self._build_frontmatter(material_name, author_info, provider_name)
-            result.content = frontmatter_content + "\n\n" + result.content
+        """Generate content using production-ready fail-fast system"""
+        # Use the fail-fast generator directly for all content generation
+        result = self.fail_fast_generator.generate(
+            material_name=material_name,
+            material_data=material_data, 
+            api_client=api_client,
+            author_info=author_info,
+            frontmatter_data=frontmatter_data,
+            schema_fields=schema_fields
+        )
         
         return result
-    
-    def _build_frontmatter(self, material_name: str, author_info: Optional[Dict], provider_name: Optional[str]) -> str:
-        """Build YAML frontmatter with metadata"""
-        
-        frontmatter_data = {
-            'title': f'Laser Cleaning for {material_name}',
-            'material': material_name,
-            'author': {
-                'name': author_info.get('name', 'Unknown') if author_info else 'Unknown',
-                'country': author_info.get('country', 'Unknown') if author_info else 'Unknown'
-            },
-            'api_provider': provider_name or 'Unknown',
-            'generated_at': datetime.now().isoformat(),
-            'component_type': 'content'
-        }
-        
-        # Convert to YAML frontmatter
-        yaml_content = yaml.dump(frontmatter_data, default_flow_style=False, sort_keys=False)
-        return f"---\n{yaml_content}---"
     
     def _build_prompt(self, material_name: str, material_data: Dict,
                      author_info: Optional[Dict] = None,

@@ -40,40 +40,6 @@ MATERIAL MANAGEMENT (separate script):
 PATH CLEANUP (one-time scripts):
     python3 cleanup_paths.py                         # Rename files to clean format (already done)
 
-🔧 COMPONENT DATA SOURCE CONFIGURATION:
-======================================
-
-Component data sources are configured in: cli/component_config.py
-
-DATA PROVIDER OPTIONS:
-    "API"          - Generate content via AI API (deepseek, grok)
-    "frontmatter"  - Extract data from frontmatter component  
-    "hybrid"       - Uses frontmatter data + API generation
-    "none"         - Static component, no external data
-
-API PROVIDER OPTIONS:
-    "deepseek"     - DeepSeek API
-    "grok"         - Grok (X.AI) API
-    "none"         - No API needed
-
-CURRENT CONFIGURATION:
-    frontmatter:     API generation (grok)
-    content:         hybrid (frontmatter + grok)
-    bullets:         API generation (deepseek)
-    caption:         API generation (deepseek)
-    table:           API generation (grok)
-    tags:            API generation (deepseek)
-    jsonld:          Extract from frontmatter
-    metatags:        Extract from frontmatter
-    propertiestable: Extract from frontmatter
-    badgesymbol:     Extract from frontmatter
-    author:          Static component
-
-TO MODIFY DATA SOURCES:
-1. Edit cli/component_config.py
-2. Change "data_provider" and/or "api_provider" for any component
-3. Run: python3 run.py --show-config (to verify changes)
-
 🎯 COMMON WORKFLOWS:
 ==================
 1. Generate all content:           python3 run.py
@@ -94,6 +60,16 @@ TO MODIFY DATA SOURCES:
 - Modular architecture with extracted utility modules
 - Fail-fast configuration validation
 - Comprehensive test suite integration
+
+🔧 CONFIGURATION:
+=================
+All system configuration is now located at the top of this file (lines 75-120):
+- API_PROVIDERS: DeepSeek and Grok API configuration
+- COMPONENT_CONFIG: Component orchestration order and API provider assignments
+
+To modify configuration:
+1. Edit the configuration section in this file
+2. Run: python3 run.py --show-config (to verify changes)
 """
 
 import sys
@@ -101,20 +77,179 @@ import os
 import logging
 import argparse
 from pathlib import Path
-from typing import List, Optional
 
 # Import modular components
-from api.client_manager import create_api_client, get_api_client_for_component, test_api_connectivity
+# Note: client_manager imports are moved to function level to avoid circular imports
 from utils.author_manager import load_authors, get_author_by_id, list_authors
 from utils.environment_checker import check_environment
 from utils.file_operations import clean_content_components
-from cli.api_config import API_PROVIDERS
-from cli.component_config import COMPONENT_CONFIG, show_component_configuration
+
+# ============================================================================
+# CONFIGURATION SECTION - ALL SYSTEM CONFIGURATION IN ONE PLACE
+# ============================================================================
+
+# API Provider Configuration
+API_PROVIDERS = {
+    "deepseek": {
+        "name": "DeepSeek",
+        "env_key": "DEEPSEEK_API_KEY",
+        "env_var": "DEEPSEEK_API_KEY",
+        "base_url": "https://api.deepseek.com",
+        "model": "deepseek-chat",
+    },
+    "grok": {
+        "name": "Grok (X.AI)",
+        "env_key": "GROK_API_KEY",
+        "env_var": "GROK_API_KEY",
+        "base_url": "https://api.x.ai",
+        "model": "grok-2",
+    },
+    "gemini": {
+        "name": "Google Gemini",
+        "env_key": "GEMINI_API_KEY",
+        "env_var": "GEMINI_API_KEY",
+        "base_url": "https://generativelanguage.googleapis.com",
+        "model": "gemini-1.5-pro",
+    },
+}
+
+# Component Configuration
+COMPONENT_CONFIG = {
+    # Component orchestration order (components will be generated in this order)
+    "orchestration_order": [
+        "frontmatter",      # MUST BE FIRST - provides data for all other components
+        "propertiestable",  # Depends on frontmatter data
+        "badgesymbol",      # Depends on frontmatter data  
+        "author",           # Static component, no dependencies
+        "content",          # Main content generation
+        "bullets",          # Content-related components
+        "caption",          # Content-related components
+        "table",            # Data presentation
+        "tags",             # Metadata components
+        "metatags",         # Metadata components
+        "jsonld",           # Structured data (should be last)
+    ],
+    
+    # Component-specific configuration
+    "components": {
+        "author": {
+            "enabled": True, 
+            "data_provider": "none", 
+            "api_provider": "none"
+        },
+        "bullets": {
+            "enabled": True, 
+            "data_provider": "API", 
+            "api_provider": "deepseek"
+        },
+        "caption": {
+            "enabled": True, 
+            "data_provider": "API", 
+            "api_provider": "gemini"
+        },
+        "frontmatter": {
+            "enabled": True, 
+            "data_provider": "API", 
+            "api_provider": "deepseek"
+        },
+        "content": {
+            "enabled": True, 
+            "data_provider": "hybrid", 
+            "api_provider": "grok"
+        },
+        "jsonld": {
+            "enabled": True, 
+            "data_provider": "frontmatter", 
+            "api_provider": "none"
+        },
+        "table": {
+            "enabled": True, 
+            "data_provider": "API", 
+            "api_provider": "grok"
+        },
+        "metatags": {
+            "enabled": True, 
+            "data_provider": "frontmatter", 
+            "api_provider": "none"
+        },
+        "tags": {
+            "enabled": True, 
+            "data_provider": "API", 
+            "api_provider": "deepseek"
+        },
+        "propertiestable": {
+            "enabled": True, 
+            "data_provider": "frontmatter", 
+            "api_provider": "none"
+        },
+        "badgesymbol": {
+            "enabled": True, 
+            "data_provider": "frontmatter", 
+            "api_provider": "none"
+        },
+    },
+}
+
+# ============================================================================
+# END CONFIGURATION SECTION
+# ============================================================================
 
 # Setup logging
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
 )
+
+
+def show_component_configuration():
+    """Display current component configuration."""
+    print("🔧 COMPONENT CONFIGURATION")
+    print("=" * 50)
+
+    components_config = COMPONENT_CONFIG.get("components", {})
+    enabled_count = sum(1 for config in components_config.values() if config["enabled"])
+    disabled_count = len(components_config) - enabled_count
+
+    print(f"Total Components: {len(components_config)} ({enabled_count} enabled, {disabled_count} disabled)")
+    print("Global Author: Dynamic assignment per generation (no default)")
+    print()
+
+    # Group by API provider
+    provider_groups = {}
+    for component, config in components_config.items():
+        if config["enabled"]:
+            provider = config["data_provider"]
+            if provider not in provider_groups:
+                provider_groups[provider] = []
+            provider_groups[provider].append(component)
+
+    # Display by provider
+    for provider, components in provider_groups.items():
+        if provider == "frontmatter":
+            provider_name = "Frontmatter Data"
+        elif provider == "none":
+            provider_name = "Static Component"
+        else:
+            provider_name = API_PROVIDERS.get(provider, {}).get("name", provider)
+        print(f"🌐 {provider_name} ({len(components)} components):")
+        for component in sorted(components):
+            print(f"   ✅ {component}")
+        print()
+
+    # Display disabled components
+    disabled = [comp for comp, config in components_config.items() if not config["enabled"]]
+    if disabled:
+        print(f"❌ Disabled Components ({len(disabled)}):")
+        for component in sorted(disabled):
+            print(f"   ⭕ {component}")
+        print()
+
+    # Display API provider details
+    print("🔑 API Provider Configuration:")
+    for provider_id, provider_info in API_PROVIDERS.items():
+        env_key = provider_info["env_key"]
+        has_key = "✅" if os.getenv(env_key) else "❌"
+        print(f"   {has_key} {provider_info['name']}: {provider_info['model']} (env: {env_key})")
+    print()
 
 
 def run_dynamic_generation(
@@ -158,6 +293,7 @@ def run_dynamic_generation(
     # Test API connection if requested
     if test_api:
         print("🔗 Testing API connections...")
+        from api.client_manager import test_api_connectivity
         test_results = test_api_connectivity()
         for provider, result in test_results.items():
             status = "✅" if result['success'] else "❌"
@@ -295,6 +431,7 @@ def run_single_material(generator, material: str, components: list = None, autho
             try:
                 # Create temporary generator with appropriate API client
                 temp_generator = generator.__class__()
+                from api.client_manager import get_api_client_for_component
                 api_client = get_api_client_for_component(component_type)
                 temp_generator.set_api_client(api_client)
                 
@@ -386,6 +523,7 @@ def run_comprehensive_tests() -> bool:
     print("\n2️⃣  API CONNECTIVITY TESTS")
     print("-" * 30)
     try:
+        from api.client_manager import test_api_connectivity
         api_results = test_api_connectivity()
         successful_apis = sum(1 for result in api_results.values() if result['success'])
         total_apis = len(api_results)

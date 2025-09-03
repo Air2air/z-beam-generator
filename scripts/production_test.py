@@ -2,6 +2,7 @@
 """
 Production-Ready Content Generator Test
 Final validation that all requirements are met and system is production-ready.
+Uses REAL API clients only (no mocks).
 """
 
 import sys
@@ -12,7 +13,7 @@ project_root = Path(__file__).parent
 sys.path.insert(0, str(project_root))
 
 from components.content.generators.fail_fast_generator import create_fail_fast_generator
-from api.client import MockAPIClient
+from api.client_manager import create_api_client
 
 def test_production_system():
     """Comprehensive test of the production system."""
@@ -39,9 +40,16 @@ def test_production_system():
         except Exception as e:
             print(f"✅ Correctly failed without API client: {type(e).__name__}")
         
-        # Test content generation with all authors
-        print("\n3️⃣ Testing all author personas...")
-        api_client = MockAPIClient()
+        # Test content generation with all authors using REAL API
+        print("\n3️⃣ Testing all author personas with real API...")
+        try:
+            api_client = create_api_client('grok')
+            print("✅ Real Grok API client created successfully")
+        except Exception as e:
+            print(f"❌ Failed to create API client: {e}")
+            print("💡 Make sure GROK_API_KEY environment variable is set")
+            print("⚠️  Cannot test content generation without API key")
+            return False
         
         authors = [
             {'id': 1, 'name': 'Dr. Li Wei', 'country': 'Taiwan'},
