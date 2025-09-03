@@ -77,7 +77,8 @@ def test_badgesymbol_component():
     print("Formatted:")
     print(result4)
     
-    return True
+    # Test completed successfully
+    assert True, "BadgeSymbol component test completed successfully"
 
 
 def test_propertiestable_with_dynamic_generator():
@@ -147,8 +148,10 @@ def test_propertiestable_with_dynamic_generator():
         print(f"❌ Error testing propertiestable: {e}")
         import traceback
         traceback.print_exc()
+        assert False, f"PropertiesTable test failed: {e}"
     
-    return True
+    # Test completed successfully
+    assert True, "PropertiesTable component test completed successfully"
 
 
 def test_component_comparison():
