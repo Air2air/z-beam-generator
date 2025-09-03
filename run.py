@@ -551,7 +551,7 @@ def run_content_batch() -> bool:
         print(f"\n📦 [{i}/{len(first_8_materials)}] Processing material: {material}")
         
         try:
-            success = run_single_material(generator, material, ["content"], None, ai_detection_service)
+            success = run_single_material(generator, material, ["text"], None, ai_detection_service)
             if success:
                 generated_count += 1
                 print(f"   ✅ {material} content generated successfully")

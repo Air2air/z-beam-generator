@@ -1,4 +1,4 @@
-# Claude Instructions for Z-Beam Generator
+# Grok Instructions for Z-Beam Generator
 
 ## 🎯 Mission Statement
 You are working on a **laser cleaning content generation system** with strict fail-fast architecture. Your role is to make **minimal, targeted fixes** while preserving all working functionality.
