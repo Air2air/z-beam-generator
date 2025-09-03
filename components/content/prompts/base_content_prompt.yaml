@@ -1,6 +1,8 @@
 # Base Content Prompt for Laser Cleaning Articles
+# PURE TECHNICAL/SUBJECT MATTER ONLY
+# Contains only technical requirements, scientific content, and material specifications
 
-# Overall subject - Primary guidance for content generation
+# CORE GUIDANCE QUESTIONS
 overall_subject:
   - "What is special about the material?"
   - "How does it differ from others in the category?"
@@ -9,85 +11,266 @@ overall_subject:
   - "What special challenges or advantages does it present for laser cleaning?"
   - "What should the results look like?"
 
-# Shared technical requirements and author-specific adaptations
+# TECHNICAL CONTENT GOALS
+# Articles must cover laser cleaning of the material with maximum natural variation:
+# 1. Material properties and laser cleaning behavior
+# 2. Real-world laser cleaning applications and challenges
+# 3. Technical parameters and practical considerations
 
-# Author expertise areas (required for generator compatibility)
+# FLEXIBLE CONTENT APPROACH
+# Encourage organic, varied content organization while covering essential technical aspects
+content_approach:
+  core_technical_coverage:
+    - "Material identification with chemical formula {material_formula}"
+    - "Material properties affecting laser cleaning behavior"
+    - "Laser cleaning applications and use cases"
+    - "Technical parameters and machine settings"
+    - "Practical challenges and solutions"
+    - "Safety considerations for Class 4 laser systems"
+
+# FLEXIBLE CONTENT STRUCTURE
+# Randomizable sections with organic organization
+content_structure:
+  standard_sections:
+    - name: "Overview"
+      purpose: "Material introduction and laser cleaning relevance"
+      focus: "material_identification"
+      required: true
+      
+    - name: "Material Properties"
+      purpose: "Physical and chemical characteristics affecting laser cleaning"
+      focus: "properties_analysis"
+      randomizable: true
+      
+    - name: "Laser Applications"
+      purpose: "Real-world use cases and industry applications"
+      focus: "applications_analysis"
+      randomizable: true
+      
+    - name: "Technical Parameters"
+      purpose: "Optimal laser settings and process parameters"
+      focus: "parameters_optimization"
+      randomizable: true
+      
+    - name: "Performance Analysis"
+      purpose: "Cleaning effectiveness and comparative advantages"
+      focus: "performance_evaluation"
+      randomizable: true
+      
+    - name: "Process Challenges"
+      purpose: "Technical difficulties and engineering solutions"
+      focus: "challenges_solutions"
+      randomizable: true
+      
+    - name: "Safety Considerations"
+      purpose: "Laser safety and material-specific precautions"
+      focus: "safety_analysis"
+      randomizable: true
+  
+  organization_flexibility:
+    - "NO required section order - organize content naturally"
+    - "NO mandatory section titles - use contextually appropriate headings"
+    - "NO rigid structure - allow organic flow based on material characteristics"
+    - "YES to varied approaches - comparative, narrative, problem-solution, application-focused"
+    - "YES to different emphasis - some materials focus on challenges, others on applications"
+    - "YES to natural integration - weave technical parameters throughout content"
+
+  content_variation_strategies:
+    - "Start with applications, problems, comparisons, or material uniqueness"
+    - "Integrate parameters within context rather than isolated sections"
+    - "Vary depth and focus based on material's most interesting characteristics"
+    - "Use natural transitions and contextual flow"
+    - "Allow personality-driven organization preferences"
+
+# UNIVERSAL TECHNICAL REQUIREMENTS
+# Scientific and technical standards for all laser cleaning content
+technical_requirements:
+  laser_specifications:
+    wavelength: "1064 nm standard for most materials"
+    pulse_duration: "nanosecond range (10-100 ns typical)"
+    safety_classification: "Class 4 laser systems"
+    technology_type: "fiber laser technology emphasis"
+  
+  material_analysis_requirements:
+    - "Chemical formula integration: {material_formula}"
+    - "Quantitative property comparisons within material category"
+    - "Absorption coefficient analysis at 1064 nm wavelength"
+    - "Thermal conductivity and heat capacity considerations"
+    - "Composition-specific laser interaction mechanisms"
+    - "Material-specific contamination characteristics"
+    - "Surface preparation requirements and considerations"
+  
+  parameter_specifications:
+    required_parameters:
+      - "Laser power density (W/cm²)"
+      - "Pulse repetition frequency (Hz)"
+      - "Scanning speed (mm/s or m/min)"
+      - "Number of passes required"
+      - "Beam diameter and spot size"
+      - "Working distance specifications"
+    
+    performance_metrics:
+      - "Cleaning efficiency rates"
+      - "Surface roughness changes"
+      - "Material removal rates"
+      - "Heat-affected zone measurements"
+  
+  safety_technical_requirements:
+    - "Class 4 laser safety protocols mandatory"
+    - "Material-specific ventilation requirements" 
+    - "Personal protective equipment specifications"
+    - "Laser safety interlock systems"
+    - "Emission control and containment"
+
+# FLEXIBLE CONTENT COVERAGE
+# Organic topic exploration maintaining laser cleaning focus
+
+topic_coverage_areas:
+  material_fundamentals:
+    core_concepts: 
+      - "Material identification and classification"
+      - "Chemical composition relevance to laser cleaning"
+      - "Physical and thermal properties affecting process"
+      - "Comparative analysis with similar materials"
+    
+    technical_depth_options:
+      - "Quantitative property measurements when available"
+      - "Material behavior under laser exposure"
+      - "Category positioning and differentiation"
+      - "Contamination susceptibility patterns"
+
+  laser_cleaning_applications:
+    flexible_coverage:
+      - "Industrial use cases and adoption patterns"
+      - "Contamination scenarios and cleaning challenges"
+      - "Real-world implementation examples"
+      - "Economic drivers and cost considerations"
+      - "Geographic and industry-specific usage patterns"
+    
+    parameter_discussions:
+      - "Optimal laser settings exploration (wavelength, power, frequency)"
+      - "Process parameter ranges and adjustments"
+      - "Equipment specifications and setup requirements"
+      - "Working conditions and environmental factors"
+
+  process_analysis:
+    performance_aspects:
+      - "Cleaning effectiveness compared to alternatives"
+      - "Surface quality and precision advantages"
+      - "Environmental benefits and sustainability"
+      - "Automation potential and productivity gains"
+      - "Quality assurance and monitoring approaches"
+    
+    technical_considerations:
+      - "Material-specific challenges and solutions"
+      - "Process optimization strategies"
+      - "Safety requirements and risk management"
+      - "Heat effects and surface protection"
+      - "Equipment maintenance and operational factors"
+
+content_flexibility:
+  organization_freedom:
+    - "Natural flow based on material characteristics"
+    - "Emphasis areas can vary per article"
+    - "Section development based on available information"
+    - "Organic connections between topics"
+    - "Variable depth depending on material complexity"
+    - "Randomize section order (except overview first)"
+    - "Vary comparative material selections"
+    - "Alternate between technical depth levels"
+    - "Change focus areas for each article"
+  
+  topic_selection:
+    - "Choose most relevant aspects for each material"
+    - "Prioritize unique or interesting characteristics"
+    - "Focus on practical applications when data available"
+    - "Emphasize safety considerations for hazardous materials"
+    - "Highlight economic factors for commercial applications"
+    - "Randomly vary technical complexity"
+    - "Alternate between property-focused vs application-focused"
+    - "Vary parameter presentation formats"
+
+# MAXIMUM RANDOMIZATION DIRECTIVES
+randomization_requirements:
+  author_variation:
+    country_differences: "Each author must demonstrate distinct cultural and professional approaches"
+    writing_style_variation: "Avoid identical phrasing, structure, or technical explanations between authors"
+    perspective_diversity: "Authors emphasize different aspects based on their expertise backgrounds"
+    language_patterns: "Maintain authentic voice differences - formal vs conversational, technical vs accessible"
+    
+  content_randomization:
+    section_ordering: "Randomize all sections except overview (always first)"
+    comparative_materials: "Rotate which materials are compared, avoid repetitive selections"
+    parameter_emphasis: "Vary which laser parameters receive detailed focus"
+    application_examples: "Select different industry examples for each article"
+    technical_depth: "Alternate between basic explanations and advanced technical detail"
+    
+  structural_variation:
+    paragraph_length: "Vary between short punchy paragraphs and longer detailed explanations"
+    list_vs_prose: "Alternate between bullet points and flowing narrative text"
+    data_presentation: "Mix table formats, inline values, and descriptive presentations"
+    transition_styles: "Use diverse connecting phrases and structural approaches"
+    
+  thematic_approaches:
+    material_emphasis: "Rotate focus between properties, applications, safety, economics"
+    industry_perspective: "Vary between manufacturing, research, commercial viewpoints"
+    geographic_relevance: "Include region-specific applications and considerations"
+    innovation_angle: "Alternate between established practices and cutting-edge developments"
+
+# CONTENT VARIATION AND RANDOMIZATION
+# Guidelines for creating diverse content while maintaining technical accuracy
+
+content_variation:
+  section_ordering:
+    - "Always start with Overview section"
+    - "Randomize order of remaining 6 sections completely"
+    - "Ensure logical flow despite randomized order"
+    - "Use transitional content to connect randomized sections"
+  
+  comparative_materials:
+    selection_strategy: "Choose 2-3 materials from same category for comparison"
+    variation_approach: "Rotate which materials are compared across articles"
+    comparison_depth: "Vary between basic and detailed comparisons"
+    emphasis_rotation: "Highlight different properties in different articles"
+  
+  parameter_presentation:
+    format_variation: "Alternate between table format and descriptive text"
+    detail_levels: "Vary between basic ranges and precise specifications"
+    grouping_methods: "Group by function, importance, or process stage"
+    measurement_emphasis: "Rotate focus between different parameter types"
+
+# SCIENTIFIC QUALITY STANDARDS
+quality_standards:
+  technical_accuracy: "PhD-level expertise in materials science and laser physics"
+  scientific_rigor: "Quantitative data and measurable parameters"
+  industrial_relevance: "Real-world application scenarios and proven results"
+  safety_compliance: "International laser safety standards (IEC 60825)"
+  content_completeness: "All required technical elements covered"
+  professional_presentation: "Expert-level scientific communication"
+
+# AUTHOR EXPERTISE ASSIGNMENTS
+# Subject matter expertise areas assigned to each author for content coverage
 author_expertise_areas:
   taiwan:
-    specialization: "semiconductor processing and electronics applications"
-    max_word_count: 380
-    writing_style: "systematic and methodical"
-  italy:
-    specialization: "heritage preservation and additive manufacturing"
-    max_word_count: 450
-    writing_style: "technical and expressive"
-  indonesia:
-    specialization: "renewable energy and marine applications"
-    max_word_count: 250
-    writing_style: "analytical and practical"
-  usa:
-    specialization: "biomedical and aerospace applications"
-    max_word_count: 320
-    writing_style: "conversational and innovative"
-
-# Author-specific configurations
-author_configurations:
-  taiwan:
     author_id: 1
-    max_word_count: "380 words maximum"
-    specialization_focus: "semiconductor processing and electronics applications"
-    section_emphasis: "methodical approach and systematic analysis"
-    writing_approach: "concise technical precision"
+    technical_specialization: "semiconductor processing, electronics manufacturing"
+    application_expertise: "humid environment considerations, precision electronics"
+    industry_focus: "electronics manufacturing, semiconductor fabrication"
     
   italy:
     author_id: 2
-    max_word_count: "450 words maximum" 
-    specialization_focus: "heritage preservation and additive manufacturing"
-    section_emphasis: "precision and technical innovation"
-    writing_approach: "detailed technical analysis"
+    technical_specialization: "heritage preservation, additive manufacturing"
+    application_expertise: "aerospace, automotive, cultural preservation"
+    industry_focus: "aerospace engineering, automotive manufacturing, cultural preservation"
     
   indonesia:
     author_id: 3
-    max_word_count: "250 words maximum"
-    specialization_focus: "renewable energy and marine applications"
-    section_emphasis: "sustainability and practical innovation"
-    writing_approach: "direct practical communication"
+    technical_specialization: "renewable energy systems, marine applications"
+    application_expertise: "tropical environment adaptations, sustainability focus"
+    industry_focus: "renewable energy, marine technology, environmental applications"
     
   usa:
     author_id: 4
-    max_word_count: "320 words maximum"
-    specialization_focus: "biomedical and aerospace applications"
-    section_emphasis: "practical results and efficiency"
-    writing_approach: "efficient technical delivery"
-
-
-# Author-specific focus areas for applications and examples
-application_focus:
-  taiwan: "semiconductor manufacturing, electronics, humid environment considerations"
-  italy: "heritage preservation, aerospace, automotive applications"
-  indonesia: "renewable energy, marine applications, tropical environment adaptations"
-  usa: "biomedical, semiconductor, aerospace with robotics integration"
-
-# Standard content structure (adaptable by individual personas)
-content_structure:
-  required_sections:
-    - "Overview with chemical formula integration"
-    - "Material properties affecting laser interaction"
-    - "Industrial applications (2-3 examples)"
-    - "Optimal laser parameters"
-    - "Advantages over traditional methods"
-    - "Safety considerations"
-  
-  randomization_guidelines:
-    section_order: "Randomize section sequence completely - only keep Overview first"
-    sentence_order: "Within each section, randomize sentence order for maximum variation"
-    paragraph_breaks: "Vary paragraph structure and breaks unpredictably"
-    example_selection: "Randomize which industrial examples to emphasize"
-    parameter_presentation: "Vary the order of technical parameters and specifications"
-    
-  flexibility_guidelines:
-    - "Section lengths should vary naturally based on author's writing approach"
-    - "Number of examples and depth of detail adapt to maximum word count"
-    - "Paragraph structure follows author's natural communication style"
-    - "Technical depth adjusts to available word budget while maintaining accuracy"
-    - "Maximize structural unpredictability while preserving technical accuracy"
+    technical_specialization: "biomedical devices, aerospace applications"
+    application_expertise: "robotics integration, high-precision manufacturing"
+    industry_focus: "biomedical technology, aerospace systems, robotics integration"

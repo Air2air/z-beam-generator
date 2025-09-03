@@ -91,10 +91,32 @@ def generate_content_for_material(material, api_client):
         'article_type': 'material'
     }
     
-    # Prepare author info
-    author_info = {
-        'id': material.get('author_id', 1)
-    }
+    # Prepare author info - Load full author data from authors.json
+    author_id = material.get('author_id', 1)
+    
+    # Load full author information
+    import json
+    try:
+        with open('components/author/authors.json', 'r') as f:
+            authors_data = json.load(f)
+        
+        # Find the author by ID
+        author_info = None
+        for author in authors_data.get('authors', []):
+            if author.get('id') == author_id:
+                author_info = author
+                break
+        
+        if not author_info:
+            # Fallback to basic info if author not found
+            author_info = {'id': author_id}
+            logger.warning(f"Author ID {author_id} not found in authors.json, using basic info")
+        else:
+            logger.debug(f"Loaded full author data for {author_info.get('name', 'Unknown')}")
+            
+    except Exception as e:
+        logger.warning(f"Failed to load authors.json: {e}, using basic author info")
+        author_info = {'id': author_id}
     
     # Generate frontmatter data (simplified)
     frontmatter_data = {
@@ -142,8 +164,8 @@ def generate_content_for_material(material, api_client):
 def save_content_file(material_name, content):
     """Save generated content to file"""
     # Create content directory if it doesn't exist
-    content_dir = Path("content")
-    content_dir.mkdir(exist_ok=True)
+    content_dir = Path("content/components/content")
+    content_dir.mkdir(parents=True, exist_ok=True)
     
     # Create filename (lowercase, hyphenated)
     filename = material_name.lower().replace(' ', '-').replace('(', '').replace(')', '') + "-laser-cleaning.md"

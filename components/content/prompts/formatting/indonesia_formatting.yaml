@@ -28,7 +28,7 @@ markdown_formatting:
   
   tables:
     format: "simple markdown tables for comparisons or data"
-    example: "| Property | Value | Units |\n|---------|--------|-------|\n| Density | 3.95 | g/cm³ |"
+    example: "| Property | Value | Units |\n|----------|--------|-------|\n| Density | 3.95 | g/cm³ |"
     guidelines: "keep columns minimal (2-4); use for technical specs or summaries; ensure mobile-friendly with short rows"
   
   media:
@@ -98,11 +98,13 @@ cultural_formatting:
   environmental_consciousness: "clean, efficient visual design"
 
 # CONTENT CONSTRAINTS
+# CONTENT CONSTRAINTS - STRICTLY ENFORCED
 content_constraints:
-  max_word_count: 250  # MAXIMUM LIMIT - content should be UNDER this count, not exact
-  word_count_guidance: "Target 75-90% of maximum for natural variation and quality; flexible for longer formats like tutorials (up to 500 if justified)"
-  content_density: "concise, clear communication with accessibility focus"
-  information_depth: "practical analysis with community impact"
+  max_word_count: 250  # ABSOLUTE MAXIMUM LIMIT - content MUST be UNDER this count, not exact
+  word_count_guidance: "STRICT TARGET: 188-225 words (75-90% of maximum). This is a hard limit that must be respected."
+  content_density: "concise, community-focused communication"
+  information_depth: "practical analysis with sustainable focus"
+  enforcement: "CRITICAL: AI must count words and stay within limit. Exceeding word count is not acceptable."
 
 # MIMICRY VARIATIONS FOR NON-NATIVE FEEL
 mimicry_variations:
