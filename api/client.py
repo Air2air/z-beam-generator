@@ -227,6 +227,12 @@ class APIClient:
         logger.info(f"📝 Prompt length: {len(request.prompt)} chars")
         logger.info(f"🎯 Max tokens: {request.max_tokens}, Temperature: {request.temperature}")
         
+        # Debug: Log config type and attributes
+        logger.info(f"🔧 Config type: {type(self.config)}")
+        logger.info(f"🔧 Config attributes: {dir(self.config) if hasattr(self.config, '__dict__') else 'No __dict__'}")
+        logger.info(f"🔧 Base URL: {self.base_url}")
+        logger.info(f"🔧 Model: {self.model}")
+        
         # Prepare payload
         payload = {
             "model": self.model,
@@ -234,10 +240,14 @@ class APIClient:
             "max_tokens": request.max_tokens,
             "temperature": request.temperature,
             "top_p": request.top_p,
-            "frequency_penalty": request.frequency_penalty,
-            "presence_penalty": request.presence_penalty,
             "stream": False
         }
+        
+        # Add provider-specific parameters
+        if "grok" not in self.model.lower():
+            # Only add these parameters for non-Grok models
+            payload["frequency_penalty"] = request.frequency_penalty
+            payload["presence_penalty"] = request.presence_penalty
         
         # Make request
         response = self.session.post(
@@ -248,9 +258,17 @@ class APIClient:
         
         response_time = time.time() - start_time
         
+        # Debug: Log response details
+        logger.info(f"🌐 Response status: {response.status_code}")
+        logger.info(f"🌐 Response headers: {dict(response.headers)}")
+        logger.info(f"🌐 Response content preview: {response.text[:200]}...")
+        
         # Process response
         if response.status_code == 200:
             data = response.json()
+            logger.info(f"📄 Raw response data type: {type(data)}")
+            logger.info(f"📄 Raw response keys: {list(data.keys()) if isinstance(data, dict) else 'Not a dict'}")
+            
             content = data['choices'][0]['message']['content']
             
             # Log successful API response details
@@ -292,14 +310,27 @@ class APIClient:
             error_msg = f"API request failed with status {response.status_code}"
             try:
                 error_data = response.json()
-                error_details = error_data.get('error', {})
-                error_msg += f": {error_details.get('message', 'Unknown error')}"
+                logger.info(f"📄 Error response data type: {type(error_data)}")
+                logger.info(f"📄 Error response content: {error_data}")
                 
-                # Log additional error details
-                if 'type' in error_details:
-                    logger.error(f"Error type: {error_details['type']}")
-                if 'code' in error_details:
-                    logger.error(f"Error code: {error_details['code']}")
+                # Handle different error response formats
+                if isinstance(error_data, dict):
+                    error_details = error_data.get('error', {})
+                    if isinstance(error_details, dict):
+                        error_msg += f": {error_details.get('message', 'Unknown error')}"
+                        # Log additional error details
+                        if 'type' in error_details:
+                            logger.error(f"Error type: {error_details['type']}")
+                        if 'code' in error_details:
+                            logger.error(f"Error code: {error_details['code']}")
+                    elif isinstance(error_details, str):
+                        error_msg += f": {error_details}"
+                    else:
+                        error_msg += f": {error_data.get('message', error_data.get('error', 'Unknown error'))}"
+                elif isinstance(error_data, str):
+                    error_msg += f": {error_data}"
+                else:
+                    error_msg += f": {str(error_data)}"
                     
             except json.JSONDecodeError:
                 error_msg += f": {response.text}"

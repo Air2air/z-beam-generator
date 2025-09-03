@@ -1,0 +1,30 @@
+# AI Detection Service Configuration
+# This is the centralized configuration for all AI detection capabilities
+
+# Primary provider to use
+provider: "winston"
+
+# Service settings
+enabled: true
+target_score: 30.0  # Target AI detection score (lower = more human-like)
+max_iterations: 3   # Maximum improvement iterations
+improvement_threshold: 5.0  # Minimum score improvement to continue iterating
+timeout: 30  # API timeout in seconds
+retry_attempts: 3  # Number of retry attempts
+
+# Provider-specific configurations
+gptzero:
+  api_key: "your-gptzero-api-key-here"
+  base_url: "https://api.gptzero.me"
+
+phrasly:
+  api_key: "your-phrasly-api-key-here"
+  base_url: "https://api.phrasly.ai"
+
+winston:
+  api_key: "YOg4ByzumdBgrnImJ2LQ3GMW0FnkHnco64KpyAKp8c0974d5"
+  base_url: "https://api.gowinston.ai"
+
+# Mock provider for testing
+mock:
+  enabled: true

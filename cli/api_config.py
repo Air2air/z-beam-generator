@@ -6,10 +6,10 @@ Extracted API configuration and client creation from run.py for better modularit
 Handles API provider configuration, client creation, and fallback mechanisms.
 """
 
-import os
-import logging
-from pathlib import Path
-from typing import Optional
+import os  # noqa: F401
+import logging  # noqa: F401
+from pathlib import Path  # noqa: F401
+from typing import Optional  # noqa: F401
 
 
 # API Provider Configuration
@@ -27,6 +27,13 @@ API_PROVIDERS = {
         "env_var": "GROK_API_KEY",  # Add this for test compatibility
         "base_url": "https://api.x.ai",  # Remove /v1 since APIClient adds it
         "model": "grok-2",  # grok-2 works reliably; grok-4 currently uses reasoning tokens without completion output
+    },
+    "openai": {
+        "name": "OpenAI",
+        "env_key": "OPENAI_API_KEY",
+        "env_var": "OPENAI_API_KEY",  # For test compatibility
+        "base_url": "https://api.openai.com",
+        "model": "gpt-4-turbo",
     },
 }
 
@@ -109,7 +116,8 @@ def check_environment():
 
         # Load environment and check API keys
         print("🔑 API Key Status:")
-        available_keys = EnvLoader.list_available_keys()
+        # List keys to trigger loader output
+        EnvLoader.list_available_keys()
 
         provider_keys_found = 0
         for provider_id, provider_info in API_PROVIDERS.items():
@@ -126,7 +134,7 @@ def check_environment():
         print("🧪 API Client Tests:")
         for provider_id, provider_info in API_PROVIDERS.items():
             try:
-                client = create_api_client(provider_id)
+                create_api_client(provider_id)
                 print(f"   ✅ {provider_info['name']}: Client created successfully")
             except Exception as e:
                 print(f"   ❌ {provider_info['name']}: {str(e)}")

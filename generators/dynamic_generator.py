@@ -275,7 +275,8 @@ class DynamicGenerator:
             return None
 
     def generate_component(self, material_name: str, component_type: str, 
-                          schema_fields: Optional[Dict] = None) -> ComponentResult:
+                          schema_fields: Optional[Dict] = None,
+                          ai_detection_service=None) -> ComponentResult:
         """Generate a single component using the new component generator system"""
         
         try:
@@ -293,7 +294,7 @@ class DynamicGenerator:
             from generators.component_generators import ComponentGeneratorFactory
             
             # Create component generator
-            generator = ComponentGeneratorFactory.create_generator(component_type)
+            generator = ComponentGeneratorFactory.create_generator(component_type, ai_detection_service)
             if not generator:
                 return ComponentResult(
                     component_type=component_type,

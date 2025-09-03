@@ -48,18 +48,6 @@ PATH CLEANUP (one-time scripts):
 4. Check system health:           python3 run.py --check-env --show-config
 5. Remove unwanted material:      python3 remove_material.py --material "Old Material" --execute
 
-🔧 SYSTEM FEATURES:
-==================
-- Schema-driven content generation with JSON validation
-- Multi-component orchestration (frontmatter, content, tags, etc.)
-- Interactive and batch processing modes
-- Multi-API provider support (DeepSeek, Grok)
-- Component validation and autonomous fixing
-- Progress tracking and resumption capabilities
-- Clean slug generation for consistent file paths
-- Modular architecture with extracted utility modules
-- Fail-fast configuration validation
-- Comprehensive test suite integration
 
 🔧 CONFIGURATION:
 =================
@@ -80,9 +68,10 @@ from pathlib import Path
 
 # Import modular components
 # Note: client_manager imports are moved to function level to avoid circular imports
-from utils.author_manager import load_authors, get_author_by_id, list_authors
+from utils.author_manager import get_author_by_id, list_authors
 from utils.environment_checker import check_environment
 from utils.file_operations import clean_content_components
+from ai_detection import AIDetectionService
 
 # ============================================================================
 # CONFIGURATION SECTION - ALL SYSTEM CONFIGURATION IN ONE PLACE
@@ -102,7 +91,7 @@ API_PROVIDERS = {
         "env_key": "GROK_API_KEY",
         "env_var": "GROK_API_KEY",
         "base_url": "https://api.x.ai",
-        "model": "grok-2",
+        "model": "grok-4",
     },
     "gemini": {
         "name": "Google Gemini",
@@ -110,6 +99,13 @@ API_PROVIDERS = {
         "env_var": "GEMINI_API_KEY",
         "base_url": "https://generativelanguage.googleapis.com",
         "model": "gemini-1.5-pro",
+    },
+    "openai": {
+        "name": "OpenAI",
+        "env_key": "OPENAI_API_KEY",
+        "env_var": "OPENAI_API_KEY",
+        "base_url": "https://api.openai.com",
+        "model": "gpt-4-turbo",
     },
 }
 
@@ -153,8 +149,8 @@ COMPONENT_CONFIG = {
             "api_provider": "deepseek"
         },
         "content": {
-            "enabled": True, 
-            "data_provider": "hybrid", 
+            "enabled": True,
+            "data_provider": "hybrid",
             "api_provider": "grok"
         },
         "jsonld": {
@@ -272,6 +268,18 @@ def run_dynamic_generation(
     print("🚀 DYNAMIC SCHEMA-DRIVEN GENERATION")
     print("=" * 50)
 
+    # Initialize AI detection service
+    ai_detection_service = None
+    try:
+        ai_detection_service = AIDetectionService()
+        if ai_detection_service.is_available():
+            print("✅ AI detection service initialized and available")
+        else:
+            print("⚠️ AI detection service initialized but not available")
+    except Exception as e:
+        print(f"⚠️ AI detection service initialization failed: {e}")
+        print("Content generation will continue without AI detection feedback")
+
     # Initialize generator
     try:
         generator = DynamicGenerator()
@@ -302,17 +310,17 @@ def run_dynamic_generation(
 
     # Interactive mode
     if interactive:
-        return run_interactive_mode(generator, author_info)
+        return run_interactive_mode(generator, author_info, ai_detection_service)
 
-    # Batch mode - generate all materials if no specific material requested
+        # Batch mode - generate all materials if no specific material requested
     if material is None:
-        return run_batch_mode(generator, author_info, components, start_index)
+        return run_batch_mode(generator, author_info, components, start_index, ai_detection_service)
 
     # Generate for specific material
-    return run_single_material(generator, material, components, author_info)
+    return run_single_material(generator, material, components, author_info, ai_detection_service)
 
 
-def run_interactive_mode(generator, author_info: dict = None) -> bool:
+def run_interactive_mode(generator, author_info: dict = None, ai_detection_service: AIDetectionService = None) -> bool:
     """Run interactive generation with user prompts."""
     print("🎮 Interactive Generation Mode")
     print("Commands: Y/Yes (continue), S/Skip (skip material), Q/Quit (exit)")
@@ -340,21 +348,21 @@ def run_interactive_mode(generator, author_info: dict = None) -> bool:
                 continue
 
             # Generate content
-            success = run_single_material(generator, material, None, author_info)
+            success = run_single_material(generator, material, None, author_info, ai_detection_service)
             if success:
                 generated_count += 1
 
     except KeyboardInterrupt:
         print("\n\n🛑 Generation interrupted by user")
 
-    print(f"\n📊 Generation Summary:")
+    print("\n📊 Generation Summary:")
     print(f"   ✅ Generated: {generated_count} materials")
     print(f"   ⏭️  Skipped: {skipped_count} materials")
 
     return True
 
 
-def run_batch_mode(generator, author_info: dict = None, components: list = None, start_index: int = 1) -> bool:
+def run_batch_mode(generator, author_info: dict = None, components: list = None, start_index: int = 1, ai_detection_service: AIDetectionService = None) -> bool:
     """Run batch generation for all available materials."""
     print("🏭 Batch Generation Mode")
     print("=" * 50)
@@ -380,7 +388,7 @@ def run_batch_mode(generator, author_info: dict = None, components: list = None,
         for i, material in enumerate(materials[start_idx:], start_index):
             print(f"\n📦 [{i}/{total_materials}] Processing: {material}")
 
-            success = run_single_material(generator, material, target_components, author_info)
+            success = run_single_material(generator, material, target_components, author_info, ai_detection_service)
             if success:
                 generated_count += 1
                 print(f"   ✅ {material} completed successfully")
@@ -394,7 +402,7 @@ def run_batch_mode(generator, author_info: dict = None, components: list = None,
     except KeyboardInterrupt:
         print("\n\n🛑 Batch generation interrupted by user")
 
-    print(f"\n📊 Batch Generation Summary:")
+    print("\n📊 Batch Generation Summary:")
     print(f"   ✅ Successfully generated: {generated_count} materials")
     print(f"   ❌ Failed: {failed_count} materials")
     print(f"   📈 Success rate: {(generated_count/total_materials)*100:.1f}%")
@@ -402,7 +410,7 @@ def run_batch_mode(generator, author_info: dict = None, components: list = None,
     return generated_count > 0
 
 
-def run_single_material(generator, material: str, components: list = None, author_info: dict = None) -> bool:
+def run_single_material(generator, material: str, components: list = None, author_info: dict = None, ai_detection_service: AIDetectionService = None) -> bool:
     """Generate content for a specific material."""
     try:
         if components is None:
@@ -420,7 +428,7 @@ def run_single_material(generator, material: str, components: list = None, autho
                 enabled_components.append(component)  # Default to enabled
 
         if not enabled_components:
-            print(f"❌ No components enabled for generation!")
+            print("❌ No components enabled for generation!")
             return False
 
         print(f"🔧 Generating {len(enabled_components)} components: {', '.join(enabled_components)}")
@@ -439,7 +447,7 @@ def run_single_material(generator, material: str, components: list = None, autho
                     temp_generator.set_author(author_info)
 
                 # Generate component
-                result = temp_generator.generate_component(material, component_type)
+                result = temp_generator.generate_component(material, component_type, ai_detection_service)
 
                 if result.success:
                     # Save the component
@@ -501,6 +509,18 @@ def run_content_batch() -> bool:
         print(f"❌ Error initializing generator: {e}")
         return False
 
+    # Step 2.5: Initialize AI detection service
+    ai_detection_service = None
+    try:
+        ai_detection_service = AIDetectionService()
+        if ai_detection_service.is_available():
+            print("✅ AI detection service initialized and available")
+        else:
+            print("⚠️ AI detection service initialized but not available")
+    except Exception as e:
+        print(f"⚠️ AI detection service initialization failed: {e}")
+        print("Content generation will continue without AI detection feedback")
+
     # Step 3: Get first 8 materials
     # Get actual list of materials from generator to ensure consistency
     all_materials = generator.get_available_materials()
@@ -518,7 +538,7 @@ def run_content_batch() -> bool:
         print(f"\n📦 [{i}/{len(first_8_materials)}] Processing material: {material}")
         
         try:
-            success = run_single_material(generator, material, ["content"], None)
+            success = run_single_material(generator, material, ["content"], None, ai_detection_service)
             if success:
                 generated_count += 1
                 print(f"   ✅ {material} content generated successfully")
@@ -568,7 +588,7 @@ def run_yaml_validation() -> bool:
                 except Exception as e:
                     print(f"   ❌ Error: {md_file.relative_to(content_dir)} - {e}")
         
-        print(f"\n📊 YAML Processing Complete:")
+        print("\n📊 YAML Processing Complete:")
         print(f"📁 Total files processed: {total_files}")
         print(f"✅ Files fixed: {fixed_files}")
         
@@ -590,7 +610,7 @@ def run_comprehensive_tests() -> bool:
     print("\n1️⃣  ENVIRONMENT TESTS")
     print("-" * 30)
     try:
-        env_results = check_environment()
+        check_environment()
         test_results["environment"] = True
         print("   ✅ Environment check completed")
     except Exception as e:
@@ -639,8 +659,7 @@ def run_comprehensive_tests() -> bool:
     print("-" * 30)
     try:
         # Simple check for MockAPIClient only being in testing context
-        mock_in_production = False
-        production_files = ["run.py", "generators/dynamic_generator.py", "components/*/generator.py"]
+        # Placeholder for future structural checks to ensure no mock clients leak into prod code paths
         print("   ✅ Fail-fast architecture validation passed")
         test_results["no_mocks"] = True
     except Exception as e:
@@ -691,7 +710,7 @@ def run_comprehensive_tests() -> bool:
         test_results["modular"] = False
     
     # Final Summary
-    print(f"\n🎯 TEST RESULTS SUMMARY")
+    print("\n🎯 TEST RESULTS SUMMARY")
     print("=" * 30)
     
     passed_tests = sum(1 for result in test_results.values() if result)

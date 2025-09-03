@@ -538,7 +538,7 @@ class ComponentGeneratorFactory:
     """Factory for creating component generators - API ONLY"""
     
     @staticmethod
-    def create_generator(component_type: str):
+    def create_generator(component_type: str, ai_detection_service=None):
         """Create appropriate generator for component type"""
         
         try:
@@ -558,7 +558,10 @@ class ComponentGeneratorFactory:
                 try:
                     module = __import__(module_path, fromlist=[f"{component_type.title()}ComponentGenerator"])
                     generator_class = getattr(module, f"{component_type.title()}ComponentGenerator")
-                    return generator_class()
+                    
+                    # Pass AI detection service to content generator
+                    if component_type == "content":
+                        return generator_class(ai_detection_service=ai_detection_service)
                 except (ImportError, AttributeError):
                     logger.error(f"No generator found for component type: {component_type}")
                     return None

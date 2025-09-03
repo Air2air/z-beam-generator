@@ -782,7 +782,8 @@ class FailFastContentGenerator:
     
     def _format_api_response_with_metadata(self, response: str, subject: str, author_name: str,
                            author_country: str, base_config: Dict, persona_config: Dict,
-                           author_id: int, quality_score: Any, api_client, api_response_obj=None) -> str:
+                           author_id: int, quality_score: Any, api_client, api_response_obj=None,
+                           phrasly_metadata: Optional[Dict] = None) -> str:
         """Format API response with comprehensive frontmatter verification metadata."""
         try:
             import datetime
@@ -868,6 +869,27 @@ class FailFastContentGenerator:
                     f"  retry_recommended: {quality_score.retry_recommended}",
                     f"  word_count: {quality_score.word_count}",
                 ])
+            
+            # Add Phrasly.ai iteration metadata if available
+            if phrasly_metadata:
+                frontmatter_lines.extend([
+                    "gptzero_iterations:",
+                    f"  enabled: {phrasly_metadata.get('gptzero_enabled', False)}",
+                    f"  total_iterations: {phrasly_metadata.get('gptzero_iterations', 0)}",
+                    f"  target_score: {phrasly_metadata.get('gptzero_target_score', 'N/A')}",
+                    f"  content_improved: {phrasly_metadata.get('content_improved', False)}",
+                ])
+                
+                # Add iteration history if available
+                if 'gptzero_history' in phrasly_metadata and phrasly_metadata['gptzero_history']:
+                    frontmatter_lines.append("  iteration_history:")
+                    for iteration in phrasly_metadata['gptzero_history']:
+                        frontmatter_lines.extend([
+                            f"    - iteration: {iteration.get('iteration', 'N/A')}",
+                            f"      ai_score: {iteration.get('ai_score', 'N/A')}",
+                            f"      improvement_made: {iteration.get('improvement_made', False)}",
+                            f"      strategy: \"{iteration.get('strategy', 'unknown')}\"",
+                        ])
             
             frontmatter_lines.extend([
                 "---",

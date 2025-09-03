@@ -1,0 +1,15 @@
+# GPTZero Integration Configuration
+# Add this file to .gitignore to keep API key secure
+
+GPTZERO_API_KEY: "your-gptzero-api-key-here"
+GPTZERO_BASE_URL: "https://api.gptzero.me"
+GPTZERO_TARGET_SCORE: 30.0  # Target AI detection score (lower = more human-like)
+GPTZERO_MAX_ITERATIONS: 3   # Maximum improvement iterations
+GPTZERO_IMPROVEMENT_THRESHOLD: 5.0  # Minimum score improvement to continue iteratingy.ai Integration Configuration
+# Add this file to .gitignore to keep API key secure
+
+PHRASLY_API_KEY: "your-phrasly-api-key-here"
+PHRASLY_BASE_URL: "https://api.phrasly.ai"
+PHRASLY_TARGET_SCORE: 30.0  # Target AI detection score (lower = more human-like)
+PHRASLY_MAX_ITERATIONS: 3   # Maximum improvement iterations
+PHRASLY_IMPROVEMENT_THRESHOLD: 5.0  # Minimum score improvement to continue iterating
