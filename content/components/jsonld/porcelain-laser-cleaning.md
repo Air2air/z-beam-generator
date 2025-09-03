@@ -2,20 +2,20 @@
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "Comprehensive technical guide for laser cleaning ceramic alumina",
+  "headline": "Comprehensive technical guide for laser cleaning ceramic porcelain",
   "alternativeHeadline": "Advanced Laser Ablation Techniques for Aluminum Surface Treatment",
-  "description": "Technical overview of Alumina, Al2O3, for laser cleaning applications, including density, wavelength, and industrial applications.",
+  "description": "Technical overview of Porcelain, TBD, for laser cleaning applications, including density, wavelength, and industrial applications.",
   "abstract": "Advanced laser cleaning techniques for aluminum materials using 1064nm wavelength at 1.0-10 J/cm\u00b2 fluence for aerospace component cleaning, automotive engine part restoration.",
   "keywords": [
     {
       "@type": "PropertyValue",
       "name": "Powerrange",
-      "value": "20-200W"
+      "value": "20-100W"
     },
     {
       "@type": "PropertyValue",
       "name": "Pulseduration",
-      "value": "10-200ns"
+      "value": "10-100ns"
     },
     {
       "@type": "PropertyValue",
@@ -30,12 +30,12 @@
     {
       "@type": "PropertyValue",
       "name": "Repetitionrate",
-      "value": "10-100kHz"
+      "value": "10-50kHz"
     },
     {
       "@type": "PropertyValue",
       "name": "Fluencerange",
-      "value": "1.5\u20138 J/cm\u00b2"
+      "value": "0.5\u20135 J/cm\u00b2"
     },
     {
       "@type": "PropertyValue",
@@ -45,7 +45,7 @@
     {
       "@type": "PropertyValue",
       "name": "Density",
-      "value": "3.95 g/cm\u00b3"
+      "value": "2.5 g/cm\u00b3"
     },
     {
       "@type": "PropertyValue",
@@ -60,12 +60,12 @@
     {
       "@type": "PropertyValue",
       "name": "Densitypercentile",
-      "value": "51.2"
+      "value": "16.7"
     },
     {
       "@type": "PropertyValue",
       "name": "Meltingpoint",
-      "value": "2072\u00b0C"
+      "value": "1400\u00b0C"
     },
     {
       "@type": "PropertyValue",
@@ -80,12 +80,12 @@
     {
       "@type": "PropertyValue",
       "name": "Meltingpercentile",
-      "value": "54.5"
+      "value": "12.5"
     },
     {
       "@type": "PropertyValue",
       "name": "Thermalconductivity",
-      "value": "30 W/m\u00b7K"
+      "value": "1.5 W/m\u00b7K"
     },
     {
       "@type": "PropertyValue",
@@ -100,12 +100,12 @@
     {
       "@type": "PropertyValue",
       "name": "Thermalpercentile",
-      "value": "14.8"
+      "value": "0.5"
     },
     {
       "@type": "PropertyValue",
       "name": "Tensilestrength",
-      "value": "300 MPa"
+      "value": "50 MPa"
     },
     {
       "@type": "PropertyValue",
@@ -120,12 +120,12 @@
     {
       "@type": "PropertyValue",
       "name": "Tensilepercentile",
-      "value": "26.3"
+      "value": "0.0"
     },
     {
       "@type": "PropertyValue",
       "name": "Hardness",
-      "value": "9 Mohs"
+      "value": "7 Mohs"
     },
     {
       "@type": "PropertyValue",
@@ -145,7 +145,7 @@
     {
       "@type": "PropertyValue",
       "name": "Youngsmodulus",
-      "value": "370 GPa"
+      "value": "70 GPa"
     },
     {
       "@type": "PropertyValue",
@@ -160,7 +160,7 @@
     {
       "@type": "PropertyValue",
       "name": "Moduluspercentile",
-      "value": "88.0"
+      "value": "0.0"
     },
     {
       "@type": "PropertyValue",
@@ -175,12 +175,12 @@
     {
       "@type": "PropertyValue",
       "name": "Fluencerange",
-      "value": "1.5\u20138 J/cm\u00b2"
+      "value": "0.5\u20135 J/cm\u00b2"
     },
     {
       "@type": "PropertyValue",
       "name": "Chemicalformula",
-      "value": "Al2O3"
+      "value": "TBD"
     },
     {
       "@type": "PropertyValue",
@@ -241,24 +241,24 @@
   "license": "https://creativecommons.org/licenses/by/4.0/",
   "copyrightHolder": {
     "@type": "Organization",
-    "name": "Alumina"
+    "name": "Porcelain"
   },
   "copyrightYear": "2025",
   "publisher": {
     "@type": "Organization",
-    "name": "Alumina",
+    "name": "Porcelain",
     "logo": "{'@type': 'ImageObject', 'url': '/images/logo-zbeam.svg', 'width': 200, 'height': 60}"
   },
   "author": {
     "@type": "Person",
-    "name": "Alumina",
+    "name": "Porcelain",
     "jobTitle": "Senior Laser Processing Engineer",
     "affiliation": "{'@type': 'Organization', 'name': 'Advanced Materials Research Institute'}",
     "knowsAbout": "['Laser Materials Processing', 'Aluminum Surface Engineering', 'Industrial Laser Applications']"
   },
   "reviewedBy": {
     "@type": "Person",
-    "name": "Alumina",
+    "name": "Porcelain",
     "jobTitle": "Materials Science Director"
   },
   "datePublished": "2025-01-27T15:30:00Z",
@@ -267,12 +267,12 @@
     {
       "@type": "ImageObject",
       "name": "Powerrange",
-      "value": "20-200W"
+      "value": "20-100W"
     },
     {
       "@type": "ImageObject",
       "name": "Pulseduration",
-      "value": "10-200ns"
+      "value": "10-100ns"
     },
     {
       "@type": "ImageObject",
@@ -287,12 +287,12 @@
     {
       "@type": "ImageObject",
       "name": "Repetitionrate",
-      "value": "10-100kHz"
+      "value": "10-50kHz"
     },
     {
       "@type": "ImageObject",
       "name": "Fluencerange",
-      "value": "1.5\u20138 J/cm\u00b2"
+      "value": "0.5\u20135 J/cm\u00b2"
     },
     {
       "@type": "ImageObject",
@@ -302,7 +302,7 @@
     {
       "@type": "ImageObject",
       "name": "Density",
-      "value": "3.95 g/cm\u00b3"
+      "value": "2.5 g/cm\u00b3"
     },
     {
       "@type": "ImageObject",
@@ -317,12 +317,12 @@
     {
       "@type": "ImageObject",
       "name": "Densitypercentile",
-      "value": "51.2"
+      "value": "16.7"
     },
     {
       "@type": "ImageObject",
       "name": "Meltingpoint",
-      "value": "2072\u00b0C"
+      "value": "1400\u00b0C"
     },
     {
       "@type": "ImageObject",
@@ -337,12 +337,12 @@
     {
       "@type": "ImageObject",
       "name": "Meltingpercentile",
-      "value": "54.5"
+      "value": "12.5"
     },
     {
       "@type": "ImageObject",
       "name": "Thermalconductivity",
-      "value": "30 W/m\u00b7K"
+      "value": "1.5 W/m\u00b7K"
     },
     {
       "@type": "ImageObject",
@@ -357,12 +357,12 @@
     {
       "@type": "ImageObject",
       "name": "Thermalpercentile",
-      "value": "14.8"
+      "value": "0.5"
     },
     {
       "@type": "ImageObject",
       "name": "Tensilestrength",
-      "value": "300 MPa"
+      "value": "50 MPa"
     },
     {
       "@type": "ImageObject",
@@ -377,12 +377,12 @@
     {
       "@type": "ImageObject",
       "name": "Tensilepercentile",
-      "value": "26.3"
+      "value": "0.0"
     },
     {
       "@type": "ImageObject",
       "name": "Hardness",
-      "value": "9 Mohs"
+      "value": "7 Mohs"
     },
     {
       "@type": "ImageObject",
@@ -402,7 +402,7 @@
     {
       "@type": "ImageObject",
       "name": "Youngsmodulus",
-      "value": "370 GPa"
+      "value": "70 GPa"
     },
     {
       "@type": "ImageObject",
@@ -417,7 +417,7 @@
     {
       "@type": "ImageObject",
       "name": "Moduluspercentile",
-      "value": "88.0"
+      "value": "0.0"
     },
     {
       "@type": "ImageObject",
@@ -432,12 +432,12 @@
     {
       "@type": "ImageObject",
       "name": "Fluencerange",
-      "value": "1.5\u20138 J/cm\u00b2"
+      "value": "0.5\u20135 J/cm\u00b2"
     },
     {
       "@type": "ImageObject",
       "name": "Chemicalformula",
-      "value": "Al2O3"
+      "value": "TBD"
     },
     {
       "@type": "ImageObject",
@@ -492,8 +492,8 @@
   ],
   "video": {
     "@type": "VideoObject",
-    "name": "Alumina",
-    "description": "Technical overview of Alumina, Al2O3, for laser cleaning applications, including density, wavelength, and industrial applications.",
+    "name": "Porcelain",
+    "description": "Technical overview of Porcelain, TBD, for laser cleaning applications, including density, wavelength, and industrial applications.",
     "thumbnailUrl": "/images/aluminum-laser-video-thumb.jpg",
     "uploadDate": "2025-01-27T15:30:00Z",
     "duration": "PT3M45S",
@@ -503,12 +503,12 @@
     {
       "@type": "Material",
       "name": "Powerrange",
-      "value": "20-200W"
+      "value": "20-100W"
     },
     {
       "@type": "Material",
       "name": "Pulseduration",
-      "value": "10-200ns"
+      "value": "10-100ns"
     },
     {
       "@type": "Material",
@@ -523,12 +523,12 @@
     {
       "@type": "Material",
       "name": "Repetitionrate",
-      "value": "10-100kHz"
+      "value": "10-50kHz"
     },
     {
       "@type": "Material",
       "name": "Fluencerange",
-      "value": "1.5\u20138 J/cm\u00b2"
+      "value": "0.5\u20135 J/cm\u00b2"
     },
     {
       "@type": "Material",
@@ -538,7 +538,7 @@
     {
       "@type": "Material",
       "name": "Density",
-      "value": "3.95 g/cm\u00b3"
+      "value": "2.5 g/cm\u00b3"
     },
     {
       "@type": "Material",
@@ -553,12 +553,12 @@
     {
       "@type": "Material",
       "name": "Densitypercentile",
-      "value": "51.2"
+      "value": "16.7"
     },
     {
       "@type": "Material",
       "name": "Meltingpoint",
-      "value": "2072\u00b0C"
+      "value": "1400\u00b0C"
     },
     {
       "@type": "Material",
@@ -573,12 +573,12 @@
     {
       "@type": "Material",
       "name": "Meltingpercentile",
-      "value": "54.5"
+      "value": "12.5"
     },
     {
       "@type": "Material",
       "name": "Thermalconductivity",
-      "value": "30 W/m\u00b7K"
+      "value": "1.5 W/m\u00b7K"
     },
     {
       "@type": "Material",
@@ -593,12 +593,12 @@
     {
       "@type": "Material",
       "name": "Thermalpercentile",
-      "value": "14.8"
+      "value": "0.5"
     },
     {
       "@type": "Material",
       "name": "Tensilestrength",
-      "value": "300 MPa"
+      "value": "50 MPa"
     },
     {
       "@type": "Material",
@@ -613,12 +613,12 @@
     {
       "@type": "Material",
       "name": "Tensilepercentile",
-      "value": "26.3"
+      "value": "0.0"
     },
     {
       "@type": "Material",
       "name": "Hardness",
-      "value": "9 Mohs"
+      "value": "7 Mohs"
     },
     {
       "@type": "Material",
@@ -638,7 +638,7 @@
     {
       "@type": "Material",
       "name": "Youngsmodulus",
-      "value": "370 GPa"
+      "value": "70 GPa"
     },
     {
       "@type": "Material",
@@ -653,7 +653,7 @@
     {
       "@type": "Material",
       "name": "Moduluspercentile",
-      "value": "88.0"
+      "value": "0.0"
     },
     {
       "@type": "Material",
@@ -668,12 +668,12 @@
     {
       "@type": "Material",
       "name": "Fluencerange",
-      "value": "1.5\u20138 J/cm\u00b2"
+      "value": "0.5\u20135 J/cm\u00b2"
     },
     {
       "@type": "Material",
       "name": "Chemicalformula",
-      "value": "Al2O3"
+      "value": "TBD"
     },
     {
       "@type": "Material",
@@ -728,20 +728,20 @@
   ],
   "mainEntity": {
     "@type": "HowTo",
-    "name": "Alumina",
-    "description": "Technical overview of Alumina, Al2O3, for laser cleaning applications, including density, wavelength, and industrial applications.",
+    "name": "Porcelain",
+    "description": "Technical overview of Porcelain, TBD, for laser cleaning applications, including density, wavelength, and industrial applications.",
     "step": "[{'@type': 'HowToStep', 'name': 'Material Preparation', 'text': 'Secure Aluminum component in laser processing fixture ensuring stable positioning and adequate ventilation for Class 3B operation.'}, {'@type': 'HowToStep', 'name': 'Parameter Configuration', 'text': 'Configure laser parameters: 1064nm wavelength, 1.0-10 J/cm\u00b2 fluence, 10-50ns pulse duration, 20-100kHz repetition rate.'}, {'@type': 'HowToStep', 'name': 'Surface Treatment', 'text': 'Execute systematic scanning pattern with 0.1-1.0mm spot size maintaining consistent standoff distance for metal processing.'}, {'@type': 'HowToStep', 'name': 'Quality Verification', 'text': 'Inspect cleaned surface using optical microscopy to verify contaminant removal and Aluminum material integrity.'}]"
   },
   "mentions": [
     {
       "@type": "PropertyValue",
       "name": "Powerrange",
-      "value": "20-200W"
+      "value": "20-100W"
     },
     {
       "@type": "PropertyValue",
       "name": "Pulseduration",
-      "value": "10-200ns"
+      "value": "10-100ns"
     },
     {
       "@type": "PropertyValue",
@@ -756,12 +756,12 @@
     {
       "@type": "PropertyValue",
       "name": "Repetitionrate",
-      "value": "10-100kHz"
+      "value": "10-50kHz"
     },
     {
       "@type": "PropertyValue",
       "name": "Fluencerange",
-      "value": "1.5\u20138 J/cm\u00b2"
+      "value": "0.5\u20135 J/cm\u00b2"
     },
     {
       "@type": "PropertyValue",
@@ -771,7 +771,7 @@
     {
       "@type": "PropertyValue",
       "name": "Density",
-      "value": "3.95 g/cm\u00b3"
+      "value": "2.5 g/cm\u00b3"
     },
     {
       "@type": "PropertyValue",
@@ -786,12 +786,12 @@
     {
       "@type": "PropertyValue",
       "name": "Densitypercentile",
-      "value": "51.2"
+      "value": "16.7"
     },
     {
       "@type": "PropertyValue",
       "name": "Meltingpoint",
-      "value": "2072\u00b0C"
+      "value": "1400\u00b0C"
     },
     {
       "@type": "PropertyValue",
@@ -806,12 +806,12 @@
     {
       "@type": "PropertyValue",
       "name": "Meltingpercentile",
-      "value": "54.5"
+      "value": "12.5"
     },
     {
       "@type": "PropertyValue",
       "name": "Thermalconductivity",
-      "value": "30 W/m\u00b7K"
+      "value": "1.5 W/m\u00b7K"
     },
     {
       "@type": "PropertyValue",
@@ -826,12 +826,12 @@
     {
       "@type": "PropertyValue",
       "name": "Thermalpercentile",
-      "value": "14.8"
+      "value": "0.5"
     },
     {
       "@type": "PropertyValue",
       "name": "Tensilestrength",
-      "value": "300 MPa"
+      "value": "50 MPa"
     },
     {
       "@type": "PropertyValue",
@@ -846,12 +846,12 @@
     {
       "@type": "PropertyValue",
       "name": "Tensilepercentile",
-      "value": "26.3"
+      "value": "0.0"
     },
     {
       "@type": "PropertyValue",
       "name": "Hardness",
-      "value": "9 Mohs"
+      "value": "7 Mohs"
     },
     {
       "@type": "PropertyValue",
@@ -871,7 +871,7 @@
     {
       "@type": "PropertyValue",
       "name": "Youngsmodulus",
-      "value": "370 GPa"
+      "value": "70 GPa"
     },
     {
       "@type": "PropertyValue",
@@ -886,7 +886,7 @@
     {
       "@type": "PropertyValue",
       "name": "Moduluspercentile",
-      "value": "88.0"
+      "value": "0.0"
     },
     {
       "@type": "PropertyValue",
@@ -901,12 +901,12 @@
     {
       "@type": "PropertyValue",
       "name": "Fluencerange",
-      "value": "1.5\u20138 J/cm\u00b2"
+      "value": "0.5\u20135 J/cm\u00b2"
     },
     {
       "@type": "PropertyValue",
       "name": "Chemicalformula",
-      "value": "Al2O3"
+      "value": "TBD"
     },
     {
       "@type": "PropertyValue",
@@ -963,12 +963,12 @@
     {
       "@type": "ScholarlyArticle",
       "name": "Powerrange",
-      "value": "20-200W"
+      "value": "20-100W"
     },
     {
       "@type": "ScholarlyArticle",
       "name": "Pulseduration",
-      "value": "10-200ns"
+      "value": "10-100ns"
     },
     {
       "@type": "ScholarlyArticle",
@@ -983,12 +983,12 @@
     {
       "@type": "ScholarlyArticle",
       "name": "Repetitionrate",
-      "value": "10-100kHz"
+      "value": "10-50kHz"
     },
     {
       "@type": "ScholarlyArticle",
       "name": "Fluencerange",
-      "value": "1.5\u20138 J/cm\u00b2"
+      "value": "0.5\u20135 J/cm\u00b2"
     },
     {
       "@type": "ScholarlyArticle",
@@ -998,7 +998,7 @@
     {
       "@type": "ScholarlyArticle",
       "name": "Density",
-      "value": "3.95 g/cm\u00b3"
+      "value": "2.5 g/cm\u00b3"
     },
     {
       "@type": "ScholarlyArticle",
@@ -1013,12 +1013,12 @@
     {
       "@type": "ScholarlyArticle",
       "name": "Densitypercentile",
-      "value": "51.2"
+      "value": "16.7"
     },
     {
       "@type": "ScholarlyArticle",
       "name": "Meltingpoint",
-      "value": "2072\u00b0C"
+      "value": "1400\u00b0C"
     },
     {
       "@type": "ScholarlyArticle",
@@ -1033,12 +1033,12 @@
     {
       "@type": "ScholarlyArticle",
       "name": "Meltingpercentile",
-      "value": "54.5"
+      "value": "12.5"
     },
     {
       "@type": "ScholarlyArticle",
       "name": "Thermalconductivity",
-      "value": "30 W/m\u00b7K"
+      "value": "1.5 W/m\u00b7K"
     },
     {
       "@type": "ScholarlyArticle",
@@ -1053,12 +1053,12 @@
     {
       "@type": "ScholarlyArticle",
       "name": "Thermalpercentile",
-      "value": "14.8"
+      "value": "0.5"
     },
     {
       "@type": "ScholarlyArticle",
       "name": "Tensilestrength",
-      "value": "300 MPa"
+      "value": "50 MPa"
     },
     {
       "@type": "ScholarlyArticle",
@@ -1073,12 +1073,12 @@
     {
       "@type": "ScholarlyArticle",
       "name": "Tensilepercentile",
-      "value": "26.3"
+      "value": "0.0"
     },
     {
       "@type": "ScholarlyArticle",
       "name": "Hardness",
-      "value": "9 Mohs"
+      "value": "7 Mohs"
     },
     {
       "@type": "ScholarlyArticle",
@@ -1098,7 +1098,7 @@
     {
       "@type": "ScholarlyArticle",
       "name": "Youngsmodulus",
-      "value": "370 GPa"
+      "value": "70 GPa"
     },
     {
       "@type": "ScholarlyArticle",
@@ -1113,7 +1113,7 @@
     {
       "@type": "ScholarlyArticle",
       "name": "Moduluspercentile",
-      "value": "88.0"
+      "value": "0.0"
     },
     {
       "@type": "ScholarlyArticle",
@@ -1128,12 +1128,12 @@
     {
       "@type": "ScholarlyArticle",
       "name": "Fluencerange",
-      "value": "1.5\u20138 J/cm\u00b2"
+      "value": "0.5\u20135 J/cm\u00b2"
     },
     {
       "@type": "ScholarlyArticle",
       "name": "Chemicalformula",
-      "value": "Al2O3"
+      "value": "TBD"
     },
     {
       "@type": "ScholarlyArticle",
@@ -1188,7 +1188,7 @@
   ],
   "isPartOf": {
     "@type": "WebSite",
-    "name": "Alumina",
+    "name": "Porcelain",
     "url": "https://zbeam.example.com"
   },
   "breadcrumb": {

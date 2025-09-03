@@ -64,16 +64,36 @@ def run_content_test_suite():
         logger.error(f"❌ Persona validation tests ERROR: {e}")
         test_results['persona_validation'] = False
     
-    # 3. Run End-to-End Tests (new, with API calls)
-    logger.info("\n🌐 TEST SUITE 3: END-TO-END INTEGRATION TESTS")
+    # 3. Run Technical Content Validation Tests (new)
+    logger.info("\n🔬 TEST SUITE 3: TECHNICAL CONTENT VALIDATION TESTS")
+    logger.info("-" * 60)
+    logger.info("⚠️  WARNING: This suite makes real API calls to Grok")
+    logger.info("   - Tests new technical-only content requirements")
+    logger.info("   - Validates emotive language elimination")
+    logger.info("   - Checks header standardization and paragraph structure")
+    
+    try:
+        from components.content.testing.test_technical_content_validation import run_technical_content_validation_tests
+        success = run_technical_content_validation_tests()
+        test_results['technical_validation'] = success
+        if success:
+            logger.info("✅ Technical content validation tests PASSED")
+        else:
+            logger.error("❌ Technical content validation tests FAILED")
+    except Exception as e:
+        logger.error(f"❌ Technical content validation tests ERROR: {e}")
+        test_results['technical_validation'] = False
+    
+    # 4. Run End-to-End Tests (existing, with API calls)
+    logger.info("\n🌐 TEST SUITE 4: END-TO-END INTEGRATION TESTS")
     logger.info("-" * 60)
     logger.info("⚠️  WARNING: This suite makes real API calls to Grok")
     logger.info("   - Tests are limited to minimize API usage")
     logger.info("   - May take several minutes to complete")
     
     try:
-        from components.content.testing.test_content_end_to_end import run_end_to_end_tests
-        success = run_end_to_end_tests()
+        from components.content.testing.test_content_end_to_end_updated import run_updated_end_to_end_tests
+        success = run_updated_end_to_end_tests()
         test_results['end_to_end'] = success
         if success:
             logger.info("✅ End-to-end tests PASSED")

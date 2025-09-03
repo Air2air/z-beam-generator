@@ -1,22 +1,20 @@
 #!/usr/bin/env python3
 """
 Fail-Fast Content Generator
-Removes all hardcoded fallbacks and implements clean error handli                 schema_fields: Optional[Dict] = None) -> GenerationResult:g with retry mechanisms.
+Removes all hardcoded fallbacks and implements clean error handling with retry mechanisms.
 """
 
 import sys
 import logging
 import time
+import yaml
+import json
 from pathlib import Path
 from typing import Dict, Any, List, Optional
-from functools import lru_cache
 
 # Add project root to path
 project_root = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(project_root))
-
-import yaml
-import json
 
 # Define our own result class locally
 class GenerationResult:
@@ -59,8 +57,13 @@ class FailFastContentGenerator:
         
         # Initialize content scorer if enabled - FAIL FAST if not available
         if self.enable_scoring:
-            from ..validation.content_scorer import create_content_scorer
-            self.content_scorer = create_content_scorer(human_threshold)
+            try:
+                from ..validation.content_scorer import create_content_scorer
+                self.content_scorer = create_content_scorer(human_threshold)
+            except ImportError:
+                logger.warning("Content scorer not available - disabling quality scoring")
+                self.enable_scoring = False
+                self.content_scorer = None
         else:
             self.content_scorer = None
         
@@ -483,7 +486,6 @@ class FailFastContentGenerator:
         
         return persona_file
     
-    @lru_cache(maxsize=None)
     def _load_base_content_prompt(self) -> Dict[str, Any]:
         """Load base content prompt configuration."""
         base_file = "components/content/prompts/base_content_prompt.yaml"
@@ -504,7 +506,6 @@ class FailFastContentGenerator:
         except Exception as e:
             raise ConfigurationError(f"Error loading base content prompt: {e}")
     
-    @lru_cache(maxsize=None)
     def _load_persona_prompt(self, author_id: int) -> Dict[str, Any]:
         """Load persona configuration for author."""
         persona_file = self._get_persona_file_path(author_id)
@@ -525,7 +526,6 @@ class FailFastContentGenerator:
         except Exception as e:
             raise ConfigurationError(f"Error loading persona file: {e}")
     
-    @lru_cache(maxsize=None)
     def _load_formatting_prompt(self, author_id: int) -> Dict[str, Any]:
         """Load formatting-specific configuration."""
         formatting_files = {
@@ -553,7 +553,6 @@ class FailFastContentGenerator:
         except Exception as e:
             raise ConfigurationError(f"Error loading formatting file {formatting_file}: {e}")
     
-    @lru_cache(maxsize=None)
     def _load_authors_data(self) -> List[Dict[str, Any]]:
         """Load authors data from authors.json."""
         authors_file = "components/author/authors.json"
@@ -584,7 +583,7 @@ class FailFastContentGenerator:
     def _build_api_prompt(self, subject: str, formula: str, author_name: str, 
                          author_country: str, frontmatter_data: Optional[Dict],
                          base_config: Dict, persona_config: Dict, formatting_config: Dict) -> str:
-        """Build API prompt from configurations."""
+        """Build API prompt from configurations - NO FALLBACK CONTENT."""
         try:
             # Start with basic material information and frontmatter data FIRST
             prompt_parts = [
@@ -774,12 +773,7 @@ class FailFastContentGenerator:
                         ""
                     ])
             
-            # Final instructions
-            prompt_parts.extend([
-                "Generate comprehensive, expert-level technical content.",
-                "Maintain professional scientific tone throughout.",
-                "Ensure logical flow and accurate technical terminology."
-            ])
+            # NO FALLBACK CONTENT - removed hardcoded final instructions
             
             return "\n".join(prompt_parts)
             
@@ -792,9 +786,6 @@ class FailFastContentGenerator:
         """Format API response with comprehensive frontmatter verification metadata."""
         try:
             import datetime
-            
-            # Get content structure from persona
-            content_structure = persona_config.get('content_structure', {})
             
             # Map author ID to persona files for verification
             author_mapping = {
@@ -883,16 +874,8 @@ class FailFastContentGenerator:
                 ""
             ])
             
-            # Format title
-            title_pattern = content_structure.get('title_pattern', 'Laser Cleaning of {material}: Technical Analysis')
-            title = f"# {title_pattern.format(material=subject)}"
-            
-            # Format byline
-            byline_pattern = content_structure.get('byline', '**{author_name}, Ph.D. - {country}**')
-            byline = byline_pattern.format(author_name=author_name, country=author_country)
-            
-            # Combine frontmatter with formatted content
-            formatted_content = "\n".join(frontmatter_lines) + f"{title}\n\n{byline}\n\n{response.strip()}"
+            # Combine frontmatter with API response content directly (no title/byline)
+            formatted_content = "\n".join(frontmatter_lines) + response.strip()
             
             return formatted_content
             
@@ -904,9 +887,6 @@ class FailFastContentGenerator:
         """Format API response with persona-specific formatting and frontmatter verification."""
         try:
             import datetime
-            
-            # Get content structure from persona
-            content_structure = persona_config.get('content_structure', {})
             
             # Generate comprehensive frontmatter for verification
             frontmatter_lines = [
@@ -935,16 +915,8 @@ class FailFastContentGenerator:
                 ""
             ]
             
-            # Format title
-            title_pattern = content_structure.get('title_pattern', 'Laser Cleaning of {material}: Technical Analysis')
-            title = f"# {title_pattern.format(material=subject)}"
-            
-            # Format byline
-            byline_pattern = content_structure.get('byline', '**{author_name}, Ph.D. - {country}**')
-            byline = byline_pattern.format(author_name=author_name, country=author_country)
-            
-            # Combine frontmatter with formatted content
-            formatted_content = "\n".join(frontmatter_lines) + f"{title}\n\n{byline}\n\n{response.strip()}"
+            # Combine frontmatter with API response content directly (no title/byline)
+            formatted_content = "\n".join(frontmatter_lines) + response.strip()
             
             return formatted_content
             

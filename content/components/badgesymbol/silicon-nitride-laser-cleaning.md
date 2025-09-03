@@ -1,4 +1,4 @@
 ---
-symbol: "AL₂O"
+symbol: "TBD"
 materialType: "ceramic"
 ---

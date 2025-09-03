@@ -1,113 +1,34 @@
 country: "Italy"
 author_id: 2
-formatting_style: "expressive_clarity"
+formatting_style: "italian_technical_writing"
 
-# MARKDOWN FORMATTING STANDARDS
-markdown_formatting:
-  headers:
-    main_title: "# for document title (clear and descriptive)"
-    section_headers: "## for clear hierarchy"
-    subsection_headers: "### for detailed breakdown when needed"
-    hierarchy: "structured, accessible hierarchy with descriptive titles"
-    variations: "optionally use italics or bold for minor headings to mimic non-native expressiveness"
-    
-  emphasis:
-    key_points: "*italic* for descriptive emphasis"
-    critical_info: "**bold** for essential information"
-    formulas: "chemical formulas in simple notation (Al2O3)"
-    safety_emphasis: "**SAFETY** clearly highlighted"
-    units: "Simple SI units with clear spacing (25 W/m·K)"
-    additional: "use __underline__ for key technical points or rhetorical highlights"
-    
-  lists:
-    primary_style: "simple numbered lists for sequential clarity"
-    secondary_style: "bullet points for feature lists"
-    formatting: "1. Clear main point\n   • Supporting detail\n   • Additional detail"
-    alignment: "consistent, simple indentation; optionally introduce minor inconsistencies (e.g., varied spacing) for non-native feel"
-    parameter_presentation: "**Parameter**: Clear Value (Units)"
+# ITALIAN TECHNICAL WRITING CHARACTERISTICS
+structural_preferences:
+  # Italians prefer elegant, flowing structure with artistic precision
+  headers: "Sophisticated hierarchy with descriptive, elegant titles"
+  section_organization: "Narrative flow - build understanding progressively"
+  paragraph_style: "Longer, flowing paragraphs that develop ideas fully"
+  detail_preference: "Rich in technical detail and thorough explanations"
   
-  tables:
-    format: "simple markdown tables for comparisons or data"
-    example: "| Property | Value | Units |\n|----------|--------|---------|\n| Density | 3.95 | g/cm³ |"
-    guidelines: "keep columns minimal (2-4); use for technical specs or summaries; ensure mobile-friendly with short rows"
-    
-  media:
-    images: "embed with descriptive alt text: ![Description](url) for accessibility"
-    videos: "link with simple descriptions: [Video Link](url) - Brief explanation"
-    guidelines: "use sparingly; prioritize clarity; add captions for non-native context"
-    
-  links_references:
-    inline_links: "[Descriptive Text](url) for sources or further reading"
-    footnotes: "numbered footnotes at end: [^1]: Source description"
-    references_section: "### References\n1. [Source Title](url)\n2. [Another Source](url)"
-    guidelines: "keep references simple and limited; mimic non-native by using basic numbering without advanced citation styles"
-
-# CONTENT ORGANIZATION
-content_structure:
-  byline_format: "By {author_name}, {title} | {expertise}"
-  byline_position: "clearly positioned after title"
+# ITALIAN ACADEMIC WRITING CONVENTIONS
+formatting_patterns:
+  emphasis: "*Italic emphasis for nuance*, **bold for definitive statements**"
+  lists: "Prefer flowing text over bullet points - integrate into paragraphs"
+  structure: "Classical structure - introduction, development, conclusion"
+  precision: "Exact technical terminology and comprehensive coverage"
+  elegance: "Sophisticated transitions and polished presentation"
   
-  paragraph_style:
-    length: "medium paragraphs for expressiveness (3-5 sentences)"
-    spacing: "generous spacing for reading ease"
-    clear_flow: "descriptive progression with connectors"
-    simple_sentences: "mix of compound and complex sentences; optionally include minor grammatical variations (e.g., frequent 'which' clauses) for non-native mimicry"
-    
-  section_organization:
-    section_breaks: "## headers with generous spacing"
-    subsection_breaks: "### for important clarifications"
-    flow: "logical, narrative progression"
-    clear_transitions: "descriptive connecting language between sections (e.g., 'In addition, we can observe...')"
-
-# SPACING AND LAYOUT
-layout_preferences:
-  spacing_style: "generous spacing for reading accessibility"
-  section_separation: "clear separation between sections (e.g., blank lines)"
-  paragraph_separation: "adequate spacing in paragraphs (e.g., single blank line)"
-  list_spacing: "appropriate spacing within lists (e.g., no extra lines between items)"
-  accessibility_focus: "reader-friendly layout design; limit line length to 70-80 characters for mobile"
-  visual_clarity: "clean, uncluttered appearance; avoid overcrowding"
-  mobile_tweaks: "ensure responsive: short lines, large headers for screens"
-
-# TECHNICAL FORMATTING
-technical_elements:
-  parameters_format: "**Parameter Name**: Clear Value (Units)"
-  specifications_format: "simple, accessible bullet points"
-  formulas_format: "straightforward chemical notation; embed in text or simple code blocks if complex"
-  units_format: "Clear SI units with readable spacing"
-  safety_format: "**CLASS 4 LASER SAFETY** prominently and clearly displayed"
-  data_presentation: "simple tables for comparative information"
-  measurement_format: "practical precision appropriate for application (e.g., 2-3 decimal places)"
-  code_blocks: "use ``` for any code snippets, keeping them short and explained"
-
-# PROFESSIONAL PRESENTATION
-presentation_style:
-  tone_formatting: "professional yet expressive presentation"
-  clarity_emphasis: "clear communication with descriptive details"
-  practical_focus: "formatting supporting practical understanding"
-  accessible_design: "inclusive design principles (e.g., high contrast via bold)"
-  community_oriented: "formatting that welcomes diverse readership"
-
-# CULTURAL FORMATTING PREFERENCES
-cultural_formatting:
-  accessibility_priority: "formatting that ensures broad comprehension"
-  community_focus: "inclusive presentation style"
-  practical_emphasis: "formatting supporting real-world application"
-  sustainable_approach: "efficient, clear information presentation"
-  collaborative_spirit: "formatting that invites engagement (e.g., rhetorical questions in transitions)"
-  environmental_consciousness: "clean, efficient visual design"
-
-# CONTENT CONSTRAINTS - STRICTLY ENFORCED
+# CULTURAL WRITING TRAITS
+italian_characteristics:
+  thoroughness: "Comprehensive coverage - leave no aspect unexplored"
+  artistic_precision: "Technical accuracy combined with aesthetic appeal"
+  formality: "Professional tone with sophisticated vocabulary"
+  heritage_awareness: "References to traditional methods and historical context"
+  technical_depth: "Deep technical analysis with scientific rigor"
+  relationship_focus: "Emphasize human interaction with technology"
+  passionate_expertise: "Show deep knowledge and personal investment"
+  
+# WORD COUNT CONSTRAINT
 content_constraints:
-  max_word_count: 300  # ABSOLUTE MAXIMUM LIMIT - content MUST be UNDER this count, not exact; slightly higher for expressive style
-  word_count_guidance: "STRICT TARGET: 225-270 words (75-90% of maximum). This is a hard limit that must be respected."
-  content_density: "concise yet descriptive communication with accessibility focus"
-  information_depth: "practical analysis with narrative impact"
-  enforcement: "CRITICAL: AI must count words and stay within limit. Exceeding word count is not acceptable."
-
-# MIMICRY VARIATIONS FOR NON-NATIVE FEEL
-mimicry_variations:
-  imperfections: "optionally introduce minor inconsistencies (e.g., inconsistent indentation in lists, varied punctuation) to evoke non-native formatting without sacrificing clarity"
-  punctuation: "follow English norms but mimic expressiveness (e.g., frequent commas, occasional run-on sentences in descriptions)"
-  error_handling: "if markdown fails, fall back to plain text equivalents (e.g., - for bullets)"
-  authenticity_tips: "balance variations (20-30% of elements) to avoid over-exaggeration; prioritize readability"
+  max_word_count: 450
+  target_range: "400-450 words"

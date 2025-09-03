@@ -2,9 +2,9 @@
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "Comprehensive technical guide for laser cleaning ceramic alumina",
+  "headline": "Comprehensive technical guide for laser cleaning ceramic silicon nitride",
   "alternativeHeadline": "Advanced Laser Ablation Techniques for Aluminum Surface Treatment",
-  "description": "Technical overview of Alumina, Al2O3, for laser cleaning applications, including density, wavelength, and industrial applications.",
+  "description": "Technical overview of Silicon Nitride, Si3N4, for laser cleaning applications, including density, wavelength, and industrial applications.",
   "abstract": "Advanced laser cleaning techniques for aluminum materials using 1064nm wavelength at 1.0-10 J/cm\u00b2 fluence for aerospace component cleaning, automotive engine part restoration.",
   "keywords": [
     {
@@ -15,7 +15,7 @@
     {
       "@type": "PropertyValue",
       "name": "Pulseduration",
-      "value": "10-200ns"
+      "value": "10-100ns"
     },
     {
       "@type": "PropertyValue",
@@ -35,7 +35,7 @@
     {
       "@type": "PropertyValue",
       "name": "Fluencerange",
-      "value": "1.5\u20138 J/cm\u00b2"
+      "value": "0.5-5 J/cm\u00b2"
     },
     {
       "@type": "PropertyValue",
@@ -45,7 +45,7 @@
     {
       "@type": "PropertyValue",
       "name": "Density",
-      "value": "3.95 g/cm\u00b3"
+      "value": "3.2 g/cm\u00b3"
     },
     {
       "@type": "PropertyValue",
@@ -60,12 +60,12 @@
     {
       "@type": "PropertyValue",
       "name": "Densitypercentile",
-      "value": "51.2"
+      "value": "33.3"
     },
     {
       "@type": "PropertyValue",
       "name": "Meltingpoint",
-      "value": "2072\u00b0C"
+      "value": "1900\u00b0C"
     },
     {
       "@type": "PropertyValue",
@@ -80,7 +80,7 @@
     {
       "@type": "PropertyValue",
       "name": "Meltingpercentile",
-      "value": "54.5"
+      "value": "43.8"
     },
     {
       "@type": "PropertyValue",
@@ -105,7 +105,7 @@
     {
       "@type": "PropertyValue",
       "name": "Tensilestrength",
-      "value": "300 MPa"
+      "value": "700 MPa"
     },
     {
       "@type": "PropertyValue",
@@ -120,12 +120,12 @@
     {
       "@type": "PropertyValue",
       "name": "Tensilepercentile",
-      "value": "26.3"
+      "value": "68.4"
     },
     {
       "@type": "PropertyValue",
       "name": "Hardness",
-      "value": "9 Mohs"
+      "value": "1600 HV"
     },
     {
       "@type": "PropertyValue",
@@ -140,12 +140,12 @@
     {
       "@type": "PropertyValue",
       "name": "Hardnesspercentile",
-      "value": "0.0"
+      "value": "55.0"
     },
     {
       "@type": "PropertyValue",
       "name": "Youngsmodulus",
-      "value": "370 GPa"
+      "value": "310 GPa"
     },
     {
       "@type": "PropertyValue",
@@ -160,7 +160,7 @@
     {
       "@type": "PropertyValue",
       "name": "Moduluspercentile",
-      "value": "88.0"
+      "value": "64.0"
     },
     {
       "@type": "PropertyValue",
@@ -175,12 +175,12 @@
     {
       "@type": "PropertyValue",
       "name": "Fluencerange",
-      "value": "1.5\u20138 J/cm\u00b2"
+      "value": "0.5-5 J/cm\u00b2"
     },
     {
       "@type": "PropertyValue",
       "name": "Chemicalformula",
-      "value": "Al2O3"
+      "value": "Si3N4"
     },
     {
       "@type": "PropertyValue",
@@ -241,24 +241,24 @@
   "license": "https://creativecommons.org/licenses/by/4.0/",
   "copyrightHolder": {
     "@type": "Organization",
-    "name": "Alumina"
+    "name": "Silicon Nitride"
   },
   "copyrightYear": "2025",
   "publisher": {
     "@type": "Organization",
-    "name": "Alumina",
+    "name": "Silicon Nitride",
     "logo": "{'@type': 'ImageObject', 'url': '/images/logo-zbeam.svg', 'width': 200, 'height': 60}"
   },
   "author": {
     "@type": "Person",
-    "name": "Alumina",
+    "name": "Silicon Nitride",
     "jobTitle": "Senior Laser Processing Engineer",
     "affiliation": "{'@type': 'Organization', 'name': 'Advanced Materials Research Institute'}",
     "knowsAbout": "['Laser Materials Processing', 'Aluminum Surface Engineering', 'Industrial Laser Applications']"
   },
   "reviewedBy": {
     "@type": "Person",
-    "name": "Alumina",
+    "name": "Silicon Nitride",
     "jobTitle": "Materials Science Director"
   },
   "datePublished": "2025-01-27T15:30:00Z",
@@ -272,7 +272,7 @@
     {
       "@type": "ImageObject",
       "name": "Pulseduration",
-      "value": "10-200ns"
+      "value": "10-100ns"
     },
     {
       "@type": "ImageObject",
@@ -292,7 +292,7 @@
     {
       "@type": "ImageObject",
       "name": "Fluencerange",
-      "value": "1.5\u20138 J/cm\u00b2"
+      "value": "0.5-5 J/cm\u00b2"
     },
     {
       "@type": "ImageObject",
@@ -302,7 +302,7 @@
     {
       "@type": "ImageObject",
       "name": "Density",
-      "value": "3.95 g/cm\u00b3"
+      "value": "3.2 g/cm\u00b3"
     },
     {
       "@type": "ImageObject",
@@ -317,12 +317,12 @@
     {
       "@type": "ImageObject",
       "name": "Densitypercentile",
-      "value": "51.2"
+      "value": "33.3"
     },
     {
       "@type": "ImageObject",
       "name": "Meltingpoint",
-      "value": "2072\u00b0C"
+      "value": "1900\u00b0C"
     },
     {
       "@type": "ImageObject",
@@ -337,7 +337,7 @@
     {
       "@type": "ImageObject",
       "name": "Meltingpercentile",
-      "value": "54.5"
+      "value": "43.8"
     },
     {
       "@type": "ImageObject",
@@ -362,7 +362,7 @@
     {
       "@type": "ImageObject",
       "name": "Tensilestrength",
-      "value": "300 MPa"
+      "value": "700 MPa"
     },
     {
       "@type": "ImageObject",
@@ -377,12 +377,12 @@
     {
       "@type": "ImageObject",
       "name": "Tensilepercentile",
-      "value": "26.3"
+      "value": "68.4"
     },
     {
       "@type": "ImageObject",
       "name": "Hardness",
-      "value": "9 Mohs"
+      "value": "1600 HV"
     },
     {
       "@type": "ImageObject",
@@ -397,12 +397,12 @@
     {
       "@type": "ImageObject",
       "name": "Hardnesspercentile",
-      "value": "0.0"
+      "value": "55.0"
     },
     {
       "@type": "ImageObject",
       "name": "Youngsmodulus",
-      "value": "370 GPa"
+      "value": "310 GPa"
     },
     {
       "@type": "ImageObject",
@@ -417,7 +417,7 @@
     {
       "@type": "ImageObject",
       "name": "Moduluspercentile",
-      "value": "88.0"
+      "value": "64.0"
     },
     {
       "@type": "ImageObject",
@@ -432,12 +432,12 @@
     {
       "@type": "ImageObject",
       "name": "Fluencerange",
-      "value": "1.5\u20138 J/cm\u00b2"
+      "value": "0.5-5 J/cm\u00b2"
     },
     {
       "@type": "ImageObject",
       "name": "Chemicalformula",
-      "value": "Al2O3"
+      "value": "Si3N4"
     },
     {
       "@type": "ImageObject",
@@ -492,8 +492,8 @@
   ],
   "video": {
     "@type": "VideoObject",
-    "name": "Alumina",
-    "description": "Technical overview of Alumina, Al2O3, for laser cleaning applications, including density, wavelength, and industrial applications.",
+    "name": "Silicon Nitride",
+    "description": "Technical overview of Silicon Nitride, Si3N4, for laser cleaning applications, including density, wavelength, and industrial applications.",
     "thumbnailUrl": "/images/aluminum-laser-video-thumb.jpg",
     "uploadDate": "2025-01-27T15:30:00Z",
     "duration": "PT3M45S",
@@ -508,7 +508,7 @@
     {
       "@type": "Material",
       "name": "Pulseduration",
-      "value": "10-200ns"
+      "value": "10-100ns"
     },
     {
       "@type": "Material",
@@ -528,7 +528,7 @@
     {
       "@type": "Material",
       "name": "Fluencerange",
-      "value": "1.5\u20138 J/cm\u00b2"
+      "value": "0.5-5 J/cm\u00b2"
     },
     {
       "@type": "Material",
@@ -538,7 +538,7 @@
     {
       "@type": "Material",
       "name": "Density",
-      "value": "3.95 g/cm\u00b3"
+      "value": "3.2 g/cm\u00b3"
     },
     {
       "@type": "Material",
@@ -553,12 +553,12 @@
     {
       "@type": "Material",
       "name": "Densitypercentile",
-      "value": "51.2"
+      "value": "33.3"
     },
     {
       "@type": "Material",
       "name": "Meltingpoint",
-      "value": "2072\u00b0C"
+      "value": "1900\u00b0C"
     },
     {
       "@type": "Material",
@@ -573,7 +573,7 @@
     {
       "@type": "Material",
       "name": "Meltingpercentile",
-      "value": "54.5"
+      "value": "43.8"
     },
     {
       "@type": "Material",
@@ -598,7 +598,7 @@
     {
       "@type": "Material",
       "name": "Tensilestrength",
-      "value": "300 MPa"
+      "value": "700 MPa"
     },
     {
       "@type": "Material",
@@ -613,12 +613,12 @@
     {
       "@type": "Material",
       "name": "Tensilepercentile",
-      "value": "26.3"
+      "value": "68.4"
     },
     {
       "@type": "Material",
       "name": "Hardness",
-      "value": "9 Mohs"
+      "value": "1600 HV"
     },
     {
       "@type": "Material",
@@ -633,12 +633,12 @@
     {
       "@type": "Material",
       "name": "Hardnesspercentile",
-      "value": "0.0"
+      "value": "55.0"
     },
     {
       "@type": "Material",
       "name": "Youngsmodulus",
-      "value": "370 GPa"
+      "value": "310 GPa"
     },
     {
       "@type": "Material",
@@ -653,7 +653,7 @@
     {
       "@type": "Material",
       "name": "Moduluspercentile",
-      "value": "88.0"
+      "value": "64.0"
     },
     {
       "@type": "Material",
@@ -668,12 +668,12 @@
     {
       "@type": "Material",
       "name": "Fluencerange",
-      "value": "1.5\u20138 J/cm\u00b2"
+      "value": "0.5-5 J/cm\u00b2"
     },
     {
       "@type": "Material",
       "name": "Chemicalformula",
-      "value": "Al2O3"
+      "value": "Si3N4"
     },
     {
       "@type": "Material",
@@ -728,8 +728,8 @@
   ],
   "mainEntity": {
     "@type": "HowTo",
-    "name": "Alumina",
-    "description": "Technical overview of Alumina, Al2O3, for laser cleaning applications, including density, wavelength, and industrial applications.",
+    "name": "Silicon Nitride",
+    "description": "Technical overview of Silicon Nitride, Si3N4, for laser cleaning applications, including density, wavelength, and industrial applications.",
     "step": "[{'@type': 'HowToStep', 'name': 'Material Preparation', 'text': 'Secure Aluminum component in laser processing fixture ensuring stable positioning and adequate ventilation for Class 3B operation.'}, {'@type': 'HowToStep', 'name': 'Parameter Configuration', 'text': 'Configure laser parameters: 1064nm wavelength, 1.0-10 J/cm\u00b2 fluence, 10-50ns pulse duration, 20-100kHz repetition rate.'}, {'@type': 'HowToStep', 'name': 'Surface Treatment', 'text': 'Execute systematic scanning pattern with 0.1-1.0mm spot size maintaining consistent standoff distance for metal processing.'}, {'@type': 'HowToStep', 'name': 'Quality Verification', 'text': 'Inspect cleaned surface using optical microscopy to verify contaminant removal and Aluminum material integrity.'}]"
   },
   "mentions": [
@@ -741,7 +741,7 @@
     {
       "@type": "PropertyValue",
       "name": "Pulseduration",
-      "value": "10-200ns"
+      "value": "10-100ns"
     },
     {
       "@type": "PropertyValue",
@@ -761,7 +761,7 @@
     {
       "@type": "PropertyValue",
       "name": "Fluencerange",
-      "value": "1.5\u20138 J/cm\u00b2"
+      "value": "0.5-5 J/cm\u00b2"
     },
     {
       "@type": "PropertyValue",
@@ -771,7 +771,7 @@
     {
       "@type": "PropertyValue",
       "name": "Density",
-      "value": "3.95 g/cm\u00b3"
+      "value": "3.2 g/cm\u00b3"
     },
     {
       "@type": "PropertyValue",
@@ -786,12 +786,12 @@
     {
       "@type": "PropertyValue",
       "name": "Densitypercentile",
-      "value": "51.2"
+      "value": "33.3"
     },
     {
       "@type": "PropertyValue",
       "name": "Meltingpoint",
-      "value": "2072\u00b0C"
+      "value": "1900\u00b0C"
     },
     {
       "@type": "PropertyValue",
@@ -806,7 +806,7 @@
     {
       "@type": "PropertyValue",
       "name": "Meltingpercentile",
-      "value": "54.5"
+      "value": "43.8"
     },
     {
       "@type": "PropertyValue",
@@ -831,7 +831,7 @@
     {
       "@type": "PropertyValue",
       "name": "Tensilestrength",
-      "value": "300 MPa"
+      "value": "700 MPa"
     },
     {
       "@type": "PropertyValue",
@@ -846,12 +846,12 @@
     {
       "@type": "PropertyValue",
       "name": "Tensilepercentile",
-      "value": "26.3"
+      "value": "68.4"
     },
     {
       "@type": "PropertyValue",
       "name": "Hardness",
-      "value": "9 Mohs"
+      "value": "1600 HV"
     },
     {
       "@type": "PropertyValue",
@@ -866,12 +866,12 @@
     {
       "@type": "PropertyValue",
       "name": "Hardnesspercentile",
-      "value": "0.0"
+      "value": "55.0"
     },
     {
       "@type": "PropertyValue",
       "name": "Youngsmodulus",
-      "value": "370 GPa"
+      "value": "310 GPa"
     },
     {
       "@type": "PropertyValue",
@@ -886,7 +886,7 @@
     {
       "@type": "PropertyValue",
       "name": "Moduluspercentile",
-      "value": "88.0"
+      "value": "64.0"
     },
     {
       "@type": "PropertyValue",
@@ -901,12 +901,12 @@
     {
       "@type": "PropertyValue",
       "name": "Fluencerange",
-      "value": "1.5\u20138 J/cm\u00b2"
+      "value": "0.5-5 J/cm\u00b2"
     },
     {
       "@type": "PropertyValue",
       "name": "Chemicalformula",
-      "value": "Al2O3"
+      "value": "Si3N4"
     },
     {
       "@type": "PropertyValue",
@@ -968,7 +968,7 @@
     {
       "@type": "ScholarlyArticle",
       "name": "Pulseduration",
-      "value": "10-200ns"
+      "value": "10-100ns"
     },
     {
       "@type": "ScholarlyArticle",
@@ -988,7 +988,7 @@
     {
       "@type": "ScholarlyArticle",
       "name": "Fluencerange",
-      "value": "1.5\u20138 J/cm\u00b2"
+      "value": "0.5-5 J/cm\u00b2"
     },
     {
       "@type": "ScholarlyArticle",
@@ -998,7 +998,7 @@
     {
       "@type": "ScholarlyArticle",
       "name": "Density",
-      "value": "3.95 g/cm\u00b3"
+      "value": "3.2 g/cm\u00b3"
     },
     {
       "@type": "ScholarlyArticle",
@@ -1013,12 +1013,12 @@
     {
       "@type": "ScholarlyArticle",
       "name": "Densitypercentile",
-      "value": "51.2"
+      "value": "33.3"
     },
     {
       "@type": "ScholarlyArticle",
       "name": "Meltingpoint",
-      "value": "2072\u00b0C"
+      "value": "1900\u00b0C"
     },
     {
       "@type": "ScholarlyArticle",
@@ -1033,7 +1033,7 @@
     {
       "@type": "ScholarlyArticle",
       "name": "Meltingpercentile",
-      "value": "54.5"
+      "value": "43.8"
     },
     {
       "@type": "ScholarlyArticle",
@@ -1058,7 +1058,7 @@
     {
       "@type": "ScholarlyArticle",
       "name": "Tensilestrength",
-      "value": "300 MPa"
+      "value": "700 MPa"
     },
     {
       "@type": "ScholarlyArticle",
@@ -1073,12 +1073,12 @@
     {
       "@type": "ScholarlyArticle",
       "name": "Tensilepercentile",
-      "value": "26.3"
+      "value": "68.4"
     },
     {
       "@type": "ScholarlyArticle",
       "name": "Hardness",
-      "value": "9 Mohs"
+      "value": "1600 HV"
     },
     {
       "@type": "ScholarlyArticle",
@@ -1093,12 +1093,12 @@
     {
       "@type": "ScholarlyArticle",
       "name": "Hardnesspercentile",
-      "value": "0.0"
+      "value": "55.0"
     },
     {
       "@type": "ScholarlyArticle",
       "name": "Youngsmodulus",
-      "value": "370 GPa"
+      "value": "310 GPa"
     },
     {
       "@type": "ScholarlyArticle",
@@ -1113,7 +1113,7 @@
     {
       "@type": "ScholarlyArticle",
       "name": "Moduluspercentile",
-      "value": "88.0"
+      "value": "64.0"
     },
     {
       "@type": "ScholarlyArticle",
@@ -1128,12 +1128,12 @@
     {
       "@type": "ScholarlyArticle",
       "name": "Fluencerange",
-      "value": "1.5\u20138 J/cm\u00b2"
+      "value": "0.5-5 J/cm\u00b2"
     },
     {
       "@type": "ScholarlyArticle",
       "name": "Chemicalformula",
-      "value": "Al2O3"
+      "value": "Si3N4"
     },
     {
       "@type": "ScholarlyArticle",
@@ -1188,7 +1188,7 @@
   ],
   "isPartOf": {
     "@type": "WebSite",
-    "name": "Alumina",
+    "name": "Silicon Nitride",
     "url": "https://zbeam.example.com"
   },
   "breadcrumb": {
