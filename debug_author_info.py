@@ -138,9 +138,9 @@ def check_current_author_info_usage():
         
         # Check the generated content files to see what author info was used
         content_files = {
-            'content/alumina-laser-cleaning.md': 'Italy/Alessandro Moretti',
-            'content/porcelain-laser-cleaning.md': 'Indonesia/Ikmanda Roswati', 
-            'content/silicon-nitride-laser-cleaning.md': 'Taiwan/Yi-Chun Lin'
+            'content/components/content/alumina-laser-cleaning.md': 'Italy/Alessandro Moretti',
+            'content/components/content/porcelain-laser-cleaning.md': 'Indonesia/Ikmanda Roswati', 
+            'content/components/content/silicon-nitride-laser-cleaning.md': 'Taiwan/Yi-Chun Lin'
         }
         
         for file_path, expected_author in content_files.items():

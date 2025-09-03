@@ -59,7 +59,7 @@ def evaluate_generators():
 
 def test_fail_fast_generator(material):
     """Test the fail-fast generator."""
-    from components.content.fail_fast_generator import create_fail_fast_generator
+    from components.content.generators.fail_fast_generator import create_fail_fast_generator
     from api.client import MockAPIClient
     
     start_time = time.time()

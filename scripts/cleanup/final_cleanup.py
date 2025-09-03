@@ -139,7 +139,7 @@ components/content/
 ## 🚀 Usage
 
 ```python
-from components.content.fail_fast_generator import create_fail_fast_generator
+from components.content.generators.fail_fast_generator import create_fail_fast_generator
 from api.client import APIClient
 
 # Create generator (validates all configs on startup)

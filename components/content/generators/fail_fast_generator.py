@@ -611,21 +611,10 @@ class FailFastContentGenerator:
                 raise ConfigurationError("Missing 'language_patterns' in persona configuration")
             if not persona_config.get('writing_style'):
                 raise ConfigurationError("Missing 'writing_style' in persona configuration")
-            if not persona_config.get('technical_focus'):
-                raise ConfigurationError("Missing 'technical_focus' in persona configuration")
                 
             tech_reqs = base_config.get('technical_requirements', {})  # Optional
             language_patterns = persona_config['language_patterns']
             writing_style = persona_config['writing_style']
-            technical_focus = persona_config['technical_focus']
-            
-            # Add persona-specific technical focus if available
-            if technical_focus:
-                prompt_parts.append("SECONDARY - PERSONA TECHNICAL FOCUS:")
-                for key, value in technical_focus.items():
-                    if isinstance(value, str) and key != 'author_id':
-                        prompt_parts.append(f"- {key.replace('_', ' ').title()}: {value}")
-                prompt_parts.append("")
             
             # Add technical requirements as SECONDARY guidance
             if tech_reqs:

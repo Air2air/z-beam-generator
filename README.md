@@ -136,6 +136,13 @@ z-beam-generator/
 │   └── propertiestable/
 ├── schemas/               # JSON validation schemas
 └── content/              # Generated output
+    └── components/       # Component-organized output
+        ├── frontmatter/  # Generated frontmatter files
+        ├── content/      # Generated content articles
+        ├── bullets/      # Generated bullet points
+        ├── metatags/     # Generated meta tags
+        ├── jsonld/       # Generated JSON-LD markup
+        └── propertiestable/ # Generated properties tables
 ```
 
 ## 🧪 Testing

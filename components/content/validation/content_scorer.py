@@ -305,84 +305,84 @@ class ContentQualityScorer:
         return min(final_score, 100.0)
     
     def _score_italian_persona(self, content: str, content_lower: str, words: list) -> float:
-        """Score Italian academic persona with enhanced detection."""
+        """Score Italian academic persona with authentic linguistic pattern detection."""
         score = 0.0
         
-        # Technical precision markers (25 points)
-        precision_terms = [
-            'methodical', 'systematic', 'precise', 'engineering', 'optimization',
-            'rigorous', 'analytical', 'comprehensive', 'meticulous'
+        # Italian linguistic nuances (30 points)
+        # Look for complex sentence structures and logical connectors
+        italian_connectors = [
+            'therefore', 'consequently', 'furthermore', 'moreover', 'however',
+            'in addition', 'as a result', 'on the other hand'
         ]
-        precision_count = sum(1 for term in precision_terms if term in content_lower)
+        connector_count = sum(1 for conn in italian_connectors if conn in content_lower)
+        score += min(connector_count * 4, 20)
+        
+        # Technical precision phrasing (25 points)
+        precision_phrases = [
+            'technical precision requires', 'engineering analysis shows', 'methodical approach',
+            'systematic investigation', 'comprehensive analysis', 'precision engineering',
+            'technical innovation', 'manufacturing excellence'
+        ]
+        precision_count = sum(1 for phrase in precision_phrases if phrase in content_lower)
         score += min(precision_count * 5, 25)
         
-        # Passionate/artistic language (25 points)
-        passion_terms = [
-            'heritage', 'masterpiece', 'artistic', 'aesthetic', 'elegant',
-            'sophisticated', 'refined', 'excellence', 'beauty', 'craftsmanship'
+        # Heritage/manufacturing focus (20 points)
+        heritage_terms = [
+            'heritage', 'preservation', 'manufacturing', 'additive', 'aerospace',
+            'automotive', 'archaeological', 'historical', 'precision', 'excellence'
         ]
-        passion_count = sum(1 for term in passion_terms if term in content_lower)
-        score += min(passion_count * 5, 25)
+        heritage_count = sum(1 for term in heritage_terms if term in content_lower)
+        score += min(heritage_count * 3, 20)
         
-        # Structured presentation (25 points)
-        structure_score = 0
-        if content.count('#') >= 4:  # Multiple clear sections
-            structure_score += 10
-        if 'overview' in content_lower and 'applications' in content_lower:
-            structure_score += 10
-        if any(phrase in content_lower for phrase in ['systematic approach', 'methodical analysis']):
-            structure_score += 5
+        # Structured technical organization (25 points)
+        structure_indicators = [
+            content.count('**') >= 8,  # Bold technical terms
+            'overview' in content_lower and 'applications' in content_lower,
+            'parameters' in content_lower and 'advantages' in content_lower,
+            content.count('#') >= 4  # Clear section structure
+        ]
+        structure_score = sum(6 for indicator in structure_indicators if indicator)
         score += min(structure_score, 25)
-        
-        # Authority and confidence (25 points)
-        authority_indicators = [
-            content.count('.') > 15,  # Definitive statements
-            'must be' in content_lower or 'requires' in content_lower,
-            'critical' in content_lower or 'essential' in content_lower,
-            len([w for w in words if w.lower() in ['superior', 'optimal', 'advanced']]) >= 2
-        ]
-        authority_score = sum(6 for indicator in authority_indicators if indicator)
-        score += min(authority_score, 25)
         
         return score
     
     def _score_taiwan_persona(self, content: str, content_lower: str, words: list) -> float:
-        """Score Taiwan academic persona with enhanced detection."""
+        """Score Taiwan academic persona with authentic linguistic pattern detection."""
         score = 0.0
         
-        # Systematic methodology (30 points)
+        # Question-based exploration patterns (25 points)
+        taiwanese_questions = [
+            'what if we consider', 'what if', 'as we continue', 'systematic approach',
+            'careful analysis', 'methodical investigation', 'step-by-step'
+        ]
+        question_count = sum(1 for phrase in taiwanese_questions if phrase in content_lower)
+        score += min(question_count * 5, 25)
+        
+        # Article omissions and simplified structures (20 points)
+        # Look for patterns that might indicate Mandarin influence
+        simplified_indicators = [
+            content_lower.count(' the ') < len(words) * 0.08,  # Fewer articles than typical
+            content.count('(') >= 4,  # Technical specs in parentheses
+            'material' in content_lower and content_lower.count('the material') < content_lower.count('material') * 0.5
+        ]
+        simplified_score = sum(7 for indicator in simplified_indicators if indicator)
+        score += min(simplified_score, 20)
+        
+        # Systematic methodology emphasis (30 points)
         systematic_terms = [
-            'systematic', 'methodical', 'step-by-step', 'approach', 'methodology',
-            'process', 'procedure', 'analysis', 'evaluation', 'assessment'
+            'systematic', 'methodical', 'comprehensive', 'analysis', 'investigation',
+            'research', 'study', 'examination', 'evaluation', 'assessment'
         ]
         systematic_count = sum(1 for term in systematic_terms if term in content_lower)
         score += min(systematic_count * 3, 30)
         
         # Electronics/semiconductor context (25 points)
-        tech_terms = [
-            'electronics', 'semiconductor', 'circuit', 'substrate', 'wafer',
-            'fabrication', 'manufacturing', 'precision', 'cleanroom', 'processing'
+        tech_context = [
+            'semiconductor', 'electronics', 'processing', 'manufacturing', 'precision',
+            'thermal', 'silicon', 'substrate', 'component', 'technical'
         ]
-        tech_count = sum(1 for term in tech_terms if term in content_lower)
-        score += min(tech_count * 4, 25)
-        
-        # Cautious language patterns (25 points)
-        cautious_phrases = [
-            'what if', 'consider', 'as we continue', 'systematic analysis',
-            'careful consideration', 'precise control', 'optimal parameters'
-        ]
-        cautious_count = sum(1 for phrase in cautious_phrases if phrase in content_lower)
-        score += min(cautious_count * 5, 25)
-        
-        # Detail orientation (20 points)
-        detail_indicators = [
-            content.count('(') >= 5,  # Technical specifications in parentheses
-            'nm' in content or 'μm' in content,  # Precise measurements
-            content.count('°C') >= 1,  # Temperature specifications
-            any(phrase in content_lower for phrase in ['parameter', 'specification', 'tolerance'])
-        ]
-        detail_score = sum(5 for indicator in detail_indicators if indicator)
-        score += min(detail_score, 20)
+        tech_count = sum(1 for term in tech_context if term in content_lower)
+        score += min(tech_count * 3, 25)
         
         return score
     
