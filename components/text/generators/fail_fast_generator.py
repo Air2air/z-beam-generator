@@ -197,9 +197,15 @@ class FailFastContentGenerator:
             subject = material_data['name']
             author_name = author_config['name']
             
-            # Build API prompt - removed all prompting content
+            # Build API prompt using the comprehensive prompt building system
             system_prompt = ""
-            user_prompt = f"Generate content for {subject}"
+            user_prompt = self._build_api_prompt(
+                subject=subject,
+                author_id=author_id,
+                author_name=author_name,
+                material_data=material_data,
+                author_info=author_info
+            )
             
             # Generate content via API (fail fast on API errors)
             api_response_obj = self._call_api_with_validation(api_client, user_prompt, system_prompt)
@@ -502,6 +508,166 @@ class FailFastContentGenerator:
             else:
                 raise RetryableError(f"API call failed: {e}")
     
+    def _load_base_content_prompt(self) -> Dict[str, Any]:
+        """Load base content prompt configuration from YAML file."""
+        import yaml
+        
+        base_prompt_file = "components/text/prompts/base_content_prompt.yaml"
+        
+        try:
+            with open(base_prompt_file, 'r', encoding='utf-8') as f:
+                config = yaml.safe_load(f)
+            
+            if not config:
+                raise ConfigurationError(f"Base content prompt file is empty: {base_prompt_file}")
+            
+            return config
+            
+        except FileNotFoundError:
+            raise ConfigurationError(f"Base content prompt file not found: {base_prompt_file}")
+        except yaml.YAMLError as e:
+            raise ConfigurationError(f"Invalid YAML in base content prompt: {e}")
+    
+    def _load_persona_prompt(self, author_id: int) -> Dict[str, Any]:
+        """Load persona configuration for specific author."""
+        import yaml
+        
+        persona_file = self._get_persona_file_path(author_id)
+        
+        try:
+            with open(persona_file, 'r', encoding='utf-8') as f:
+                config = yaml.safe_load(f)
+            
+            if not config:
+                raise ConfigurationError(f"Persona file is empty: {persona_file}")
+            
+            return config
+            
+        except FileNotFoundError:
+            raise ConfigurationError(f"Persona file not found: {persona_file}")
+        except yaml.YAMLError as e:
+            raise ConfigurationError(f"Invalid YAML in persona file: {e}")
+    
+    def _load_formatting_prompt(self, author_id: int) -> Dict[str, Any]:
+        """Load formatting configuration for specific author."""
+        import yaml
+        
+        # Map author IDs to country codes
+        author_map = {1: 'taiwan', 2: 'italy', 3: 'indonesia', 4: 'usa'}
+        country = author_map.get(author_id)
+        
+        if not country:
+            raise ConfigurationError(f"No formatting configuration for author_id: {author_id}")
+        
+        formatting_file = f"components/text/prompts/formatting/{country}_formatting.yaml"
+        
+        try:
+            with open(formatting_file, 'r', encoding='utf-8') as f:
+                config = yaml.safe_load(f)
+            
+            if not config:
+                raise ConfigurationError(f"Formatting file is empty: {formatting_file}")
+            
+            return config
+            
+        except FileNotFoundError:
+            raise ConfigurationError(f"Formatting file not found: {formatting_file}")
+        except yaml.YAMLError as e:
+            raise ConfigurationError(f"Invalid YAML in formatting file: {e}")
+    
+    def _build_api_prompt(self, subject: str, author_id: int, author_name: str, 
+                         material_data: Dict, author_info: Dict) -> str:
+        """Build complete API prompt by combining base, persona, and formatting configurations."""
+        try:
+            # Load all required configurations
+            base_config = self._load_base_content_prompt()
+            persona_config = self._load_persona_prompt(author_id)
+            formatting_config = self._load_formatting_prompt(author_id)
+            
+            # Build the complete prompt by combining all layers
+            prompt_parts = []
+            
+            # 1. Base content prompt
+            if 'overall_subject' in base_config:
+                prompt_parts.append(f"## Base Content Requirements\n{base_config['overall_subject']}")
+            
+            # 2. Author-specific persona
+            if 'persona' in persona_config:
+                persona = persona_config['persona']
+                prompt_parts.append(f"\n## Author Persona: {persona.get('name', author_name)}")
+                prompt_parts.append(f"Country: {persona.get('country', 'Unknown')}")
+                prompt_parts.append(f"Personality: {persona.get('personality', 'Professional')}")
+                prompt_parts.append(f"Tone: {persona.get('tone_objective', 'Professional')}")
+            
+            # 3. Language patterns and signature phrases
+            if 'language_patterns' in persona_config:
+                patterns = persona_config['language_patterns']
+                prompt_parts.append("\n## Language Patterns (Apply Throughout)")
+                if 'vocabulary' in patterns:
+                    prompt_parts.append(f"Vocabulary: {patterns['vocabulary']}")
+                if 'repetition' in patterns:
+                    prompt_parts.append(f"Repetition: {patterns['repetition']}")
+                if 'signature_phrases' in patterns:
+                    prompt_parts.append(f"Use these signature phrases naturally: {', '.join(patterns['signature_phrases'][:5])}")
+            
+            # 4. Writing style guidelines
+            if 'writing_style' in persona_config:
+                style = persona_config['writing_style']
+                prompt_parts.append("\n## Writing Style Guidelines")
+                if 'tone' in style:
+                    prompt_parts.append(f"Tone: {style['tone']['primary']}")
+                if 'pacing' in style:
+                    prompt_parts.append(f"Pacing: {style['pacing']}")
+                if 'guidelines' in style:
+                    prompt_parts.append("Key guidelines:")
+                    for guideline in style['guidelines'][:3]:
+                        prompt_parts.append(f"- {guideline}")
+            
+            # 5. Formatting requirements
+            if 'formatting_patterns' in formatting_config:
+                patterns = formatting_config['formatting_patterns']
+                prompt_parts.append("\n## Formatting Requirements")
+                if 'emphasis' in patterns:
+                    prompt_parts.append(f"Emphasis: {patterns['emphasis']}")
+                if 'structure' in patterns:
+                    prompt_parts.append(f"Structure: {patterns['structure']}")
+            
+            # 6. Content constraints
+            if 'content_constraints' in formatting_config:
+                constraints = formatting_config['content_constraints']
+                if 'max_word_count' in constraints:
+                    prompt_parts.append(f"\n## Content Length\nMaximum word count: {constraints['max_word_count']} words")
+            
+            # 7. Cultural characteristics
+            if 'taiwanese_characteristics' in formatting_config:
+                chars = formatting_config['taiwanese_characteristics']
+                prompt_parts.append("\n## Cultural Writing Characteristics")
+                for key, value in list(chars.items())[:3]:
+                    prompt_parts.append(f"{key.replace('_', ' ').title()}: {value}")
+            
+            # 8. Main content generation instruction
+            prompt_parts.append(f"""
+## Content Generation Task
+
+Write a comprehensive article about laser cleaning {subject} following all the above guidelines.
+
+**Subject:** {subject}
+**Author:** {author_name}
+**Target Audience:** Industry professionals and researchers interested in laser cleaning applications
+
+Ensure the content demonstrates authentic {persona_config['persona'].get('country', 'professional')} writing characteristics and maintains the specified tone throughout.
+
+Apply all language patterns, signature phrases, and formatting requirements consistently throughout the article.
+""")
+            
+            # Combine all parts
+            complete_prompt = '\n'.join(prompt_parts)
+            
+            logger.info(f"📝 Built complete prompt: {len(complete_prompt)} characters")
+            return complete_prompt
+            
+        except Exception as e:
+            logger.error(f"Failed to build API prompt: {e}")
     def _get_persona_file_path(self, author_id: int) -> str:
         """Get persona file path for author ID."""
         persona_files = {
