@@ -545,13 +545,19 @@ def run_content_batch() -> bool:
     import time as time_module
     batch_start_time = time_module.time()
     last_batch_status = batch_start_time
-    batch_status_interval = 15  # seconds
+    batch_status_interval = 10  # seconds - reduced from 15 for more frequent updates
     
     for i, material in enumerate(first_3_materials, 1):
         current_batch_time = time_module.time()
         
-        # Status update every 15 seconds
-        if current_batch_time - last_batch_status >= batch_status_interval:
+        # Status update every 10 seconds OR for first/last material (not every material)
+        should_show_status = (
+            current_batch_time - last_batch_status >= batch_status_interval or
+            i == 1 or  # Always show first material
+            i == len(first_3_materials)  # Always show last material
+        )
+        
+        if should_show_status:
             elapsed_batch_time = current_batch_time - batch_start_time
             progress_percent = (i / len(first_3_materials)) * 100
             print(f"📊 [BATCH STATUS] Processing material {i}/{len(first_3_materials)} ({progress_percent:.1f}%) - "

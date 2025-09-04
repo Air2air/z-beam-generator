@@ -27,12 +27,13 @@ class AuthorComponentGenerator(APIComponentGenerator):
         try:
             from run import get_author_by_id
             
-            # Get author ID from author_info or use default
-            author_id = 1  # Default to Taiwan author
-            if author_info and 'id' in author_info:
-                author_id = author_info['id']
+            # FAIL-FAST: Author information is required - no defaults
+            if not author_info or 'id' not in author_info:
+                raise Exception("Author information with 'id' field is required for author component generation")
             
-            # Get author data using existing system
+            author_id = author_info['id']
+            
+            # Get author data using existing system - fail fast if not found
             author = get_author_by_id(author_id)
             if not author:
                 raise Exception(f"Author {author_id} not found - no fallback authors permitted in fail-fast architecture")
@@ -57,12 +58,18 @@ class AuthorComponentGenerator(APIComponentGenerator):
             )
     
     def _create_author_content(self, material_name: str, author: Dict) -> str:
-        """Create author content from author data"""
-        name = author.get('name', 'Expert Author')
-        title = author.get('title', 'Ph.D.')
-        country = author.get('country', 'International')
-        expertise = author.get('expertise', 'Materials Science')
-        image_path = author.get('image', '/images/author/default.jpg')
+        """Create author content from author data - FAIL-FAST: all required fields must be present"""
+        # FAIL-FAST: All required author fields must be present
+        required_fields = ['name', 'title', 'country', 'expertise', 'image']
+        for field in required_fields:
+            if field not in author:
+                raise Exception(f"Author data missing required field '{field}' - fail-fast architecture requires complete author information")
+        
+        name = author['name']
+        title = author['title']
+        country = author['country']
+        expertise = author['expertise']
+        image_path = author['image']
         
         content = f"""**{name}, {title}**
 *{expertise}*

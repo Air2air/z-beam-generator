@@ -347,6 +347,10 @@ class DynamicGenerator:
     
     def _save_component(self, request: GenerationRequest, component_type: str, content: str):
         """Save generated component to file"""
+        # Handle legacy "content" component type - should save to "text" directory
+        if component_type == "content":
+            component_type = "text"
+        
         # Create proper component directory structure: content/components/{component_type}/
         output_dir = Path(request.output_dir) / "components" / component_type
         output_dir.mkdir(parents=True, exist_ok=True)

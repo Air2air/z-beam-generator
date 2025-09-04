@@ -81,26 +81,32 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
         """Create template variables for frontmatter generation."""
         subject_lowercase = material_name.lower()
         subject_slug = subject_lowercase.replace(" ", "-")
-        category = material_data.get("category", "material")
         
-        # Extract formula from material data - check nested data structure
-        formula = material_data.get("formula", "TBD")
-        if not formula or formula == "TBD":
-            # Try nested data structure
-            data_section = material_data.get("data", {})
-            formula = data_section.get("formula", "TBD")
+        # FAIL-FAST: Category is required for frontmatter generation
+        if "category" not in material_data:
+            raise Exception("Material data missing required 'category' field - fail-fast architecture requires complete material information")
+        category = material_data["category"]
         
-        # Extract symbol similarly
-        symbol = material_data.get("symbol", "TBD")
-        if not symbol or symbol == "TBD":
-            data_section = material_data.get("data", {})
-            symbol = data_section.get("symbol", "TBD")
-        
-        # Resolve author name from author_id
-        author_name = "Unknown Author"
-        if author_info and 'name' in author_info:
-            author_name = author_info['name']
+        # FAIL-FAST: Formula is required for frontmatter generation
+        formula = None
+        if "formula" in material_data and material_data["formula"]:
+            formula = material_data["formula"]
+        elif "data" in material_data and "formula" in material_data["data"] and material_data["data"]["formula"]:
+            formula = material_data["data"]["formula"]
         else:
+            raise Exception("Material data missing required 'formula' field - fail-fast architecture requires complete material information")
+        
+        # FAIL-FAST: Symbol is required for frontmatter generation
+        symbol = None
+        if "symbol" in material_data and material_data["symbol"]:
+            symbol = material_data["symbol"]
+        elif "data" in material_data and "symbol" in material_data["data"] and material_data["data"]["symbol"]:
+            symbol = material_data["data"]["symbol"]
+        else:
+            raise Exception("Material data missing required 'symbol' field - fail-fast architecture requires complete material information")
+        
+        # FAIL-FAST: Author information is required
+        if not author_info or 'name' not in author_info:
             # Try to extract author_id from material_data and resolve it
             author_id = None
             if 'author_id' in material_data:
@@ -112,11 +118,17 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
                 try:
                     from utils.author_manager import get_author_by_id
                     author_data = get_author_by_id(author_id)
-                    if author_data:
-                        author_name = author_data.get('name', 'Unknown Author')
+                    if author_data and 'name' in author_data:
+                        author_name = author_data['name']
                         logger.info(f"Resolved author_id {author_id} to {author_name}")
+                    else:
+                        raise Exception(f"Author data for ID {author_id} missing required 'name' field - fail-fast architecture requires complete author information")
                 except Exception as e:
-                    logger.warning(f"Failed to resolve author_id {author_id}: {e}")
+                    raise Exception(f"Failed to resolve author_id {author_id}: {e} - fail-fast architecture requires valid author information")
+            else:
+                raise Exception("Author information with 'name' field is required for frontmatter generation - fail-fast architecture requires complete author information")
+        else:
+            author_name = author_info['name']
         
         return {
             "subject": material_name,
@@ -124,21 +136,20 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
             "subject_slug": subject_slug,
             "material_formula": formula,
             "material_symbol": symbol,
-            "material_type": material_data.get("material_type", category),
+            "material_type": material_data.get("material_type") if "material_type" in material_data else category,
             "category": category,
             "author_name": author_name,
-            "article_type": material_data.get("article_type", "material")
+            "article_type": material_data.get("article_type") if "article_type" in material_data else "material"  # Keep this for schema compatibility
         }
-    
-    def _build_api_prompt(self, template_vars: Dict, frontmatter_data: Optional[Dict] = None) -> str:
         """Build API prompt using template variables"""
         
         if not self.prompt_config:
             raise ValueError("Prompt configuration not loaded")
         
-        template = self.prompt_config.get('template', '')
-        if not template:
-            raise ValueError("No template found in prompt configuration")
+        if 'template' not in self.prompt_config:
+            raise ValueError("Prompt configuration missing required 'template' field - fail-fast architecture requires complete configuration")
+        
+        template = self.prompt_config['template']
         
         # Escape literal {} braces in template that should not be formatted
         # Replace {} with {{}} so they are treated as literal braces
@@ -160,7 +171,10 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
         try:
             # Try to use the property enhancer if available
             from utils.property_enhancer import enhance_generated_frontmatter
-            category = material_data.get('category', '')
+            # FAIL-FAST: Category is required for enhancement
+            if 'category' not in material_data:
+                raise Exception("Material data missing required 'category' field for frontmatter enhancement - fail-fast architecture requires complete material information")
+            category = material_data['category']
             enhanced_content = enhance_generated_frontmatter(content, category)
             logger.info(f"Enhanced frontmatter for {material_name} with property context")
             return enhanced_content

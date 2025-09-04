@@ -22,6 +22,10 @@ class ComponentResult:
     success: bool
     error_message: Optional[str] = None
 
+class GenerationError(Exception):
+    """Raised when content generation fails."""
+    pass
+
 class BaseComponentGenerator(ABC):
     """Base class for component generators"""
     
@@ -171,21 +175,16 @@ class AuthorComponentGenerator(StaticComponentGenerator):
             from run import get_author_by_id
             from components.author.generator import create_author_content_from_data
             
-            # Get author ID from author_info or use default
-            author_id = 1
-            if author_info and 'id' in author_info:
-                author_id = author_info['id']
+            # FAIL-FAST: Author information is required - no defaults
+            if not author_info or 'id' not in author_info:
+                raise GenerationError("Author information with 'id' field is required for author component generation")
             
-            # Get author data
+            author_id = author_info['id']
+            
+            # Get author data - fail fast if not found
             author = get_author_by_id(author_id)
             if not author:
-                author = {
-                    "name": "Unknown Author", 
-                    "title": "Ph.D.", 
-                    "country": "International", 
-                    "expertise": "Materials Science and Laser Technology",
-                    "image": "/images/author/default.jpg"
-                }
+                raise GenerationError(f"Author with ID {author_id} not found in configuration")
             
             # Generate content
             return create_author_content_from_data(material_name, author)

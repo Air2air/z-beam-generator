@@ -48,16 +48,26 @@ class TextComponentGenerator(APIComponentGenerator):
             # Import the fail_fast_generator
             from .generators.fail_fast_generator import create_fail_fast_generator
 
-            # Get AI detection configuration for iteration parameters
-            target_score = 70.0  # Target for human-like content (Winston: higher = more human-like)
-            max_iterations = 3   # Minimum 3 iterations to ensure score improvement
-            improvement_threshold = 5.0
-
-            if self.ai_detection_service and hasattr(self.ai_detection_service, 'config'):
-                config = self.ai_detection_service.config
-                target_score = getattr(config, 'target_score', 70.0)
-                max_iterations = getattr(config, 'max_iterations', 3)  # Default to 3 for minimum iterations
-                improvement_threshold = getattr(config, 'improvement_threshold', 5.0)
+            # Get AI detection configuration for iteration parameters - FAIL-FAST: no defaults
+            if not self.ai_detection_service:
+                raise Exception("AI detection service is required for iterative content generation - fail-fast architecture requires complete configuration")
+            
+            if not hasattr(self.ai_detection_service, 'config'):
+                raise Exception("AI detection service configuration missing - fail-fast architecture requires complete configuration")
+            
+            config = self.ai_detection_service.config
+            
+            # FAIL-FAST: Configuration must provide ALL required values
+            if not hasattr(config, 'target_score'):
+                raise Exception("AI detection service configuration missing required 'target_score' - fail-fast architecture requires complete configuration")
+            if not hasattr(config, 'max_iterations'):
+                raise Exception("AI detection service configuration missing required 'max_iterations' - fail-fast architecture requires complete configuration")
+            if not hasattr(config, 'improvement_threshold'):
+                raise Exception("AI detection service configuration missing required 'improvement_threshold' - fail-fast architecture requires complete configuration")
+            
+            target_score = config.target_score
+            max_iterations = config.max_iterations
+            improvement_threshold = config.improvement_threshold
 
             # Initialize config optimizer for dynamic configuration improvement
             from components.text.ai_detection_config_optimizer import AIDetectionConfigOptimizer
@@ -77,14 +87,20 @@ class TextComponentGenerator(APIComponentGenerator):
             import time as time_module
             start_time = time_module.time()
             last_status_update = start_time
-            status_update_interval = 15  # seconds
+            status_update_interval = 10  # seconds - reduced for more frequent updates
             
             # Iterative improvement loop
             for iteration in range(max_iterations):
                 current_time = time_module.time()
                 
-                # Status update every 15 seconds
-                if current_time - last_status_update >= status_update_interval:
+                # Status update every 10 seconds OR for first/last iteration (not every iteration)
+                should_show_status = (
+                    current_time - last_status_update >= status_update_interval or
+                    iteration == 0 or  # Always show first iteration
+                    iteration == max_iterations - 1  # Always show last iteration
+                )
+                
+                if should_show_status:
                     elapsed_time = current_time - start_time
                     progress_percent = ((iteration + 1) / max_iterations) * 100
                     print(f"📊 [STATUS] Iteration {iteration + 1}/{max_iterations} ({progress_percent:.1f}%) - "
@@ -250,16 +266,10 @@ class TextComponentGenerator(APIComponentGenerator):
                             # Skip AI detection on first iteration for speed, but be more aggressive on later iterations
                             if iteration == 0:
                                 logger.info("⏭️ Skipping AI detection on first iteration for speed")
-                                current_score = 60.0  # More optimistic baseline
-                                iteration_data['ai_detection_skipped'] = True
-                                iteration_data['score'] = current_score
-                                iteration_data['classification'] = 'neutral'
+                                raise Exception("AI detection service must be available for score evaluation - fail-fast architecture requires complete AI detection service")
                             elif len(clean_text.strip()) < 400:  # Reduced threshold for short content
                                 logger.info("⏭️ Content moderately short, using estimated score")
-                                current_score = 55.0  # Better estimate for short content
-                                iteration_data['ai_detection_skipped'] = True
-                                iteration_data['score'] = current_score
-                                iteration_data['classification'] = 'neutral'
+                                raise Exception("Content too short for reliable AI detection analysis - fail-fast architecture requires sufficient content length")
                             else:
                                 ai_result = self.ai_detection_service.analyze_text(clean_text.strip())
                                 current_score = ai_result.score
@@ -327,12 +337,8 @@ class TextComponentGenerator(APIComponentGenerator):
                                 logger.info(f"📈 Significant improvement detected: +{current_score - best_score:.1f}")
                         else:
                             logger.warning(f"📝 Content too short for AI detection: {len(clean_text.strip())} chars")
-                            # Still consider it as a valid result if generation succeeded
-                            if best_result is None:
-                                best_result = result
-                                best_score = 40.0  # Lower baseline for very short content
-                                iteration_data['score'] = best_score
-                                iteration_data['classification'] = 'ai'
+                            # FAIL-FAST: No fallback scores allowed - system must have working AI detection
+                            raise Exception(f"Content too short for AI detection analysis: {len(clean_text.strip())} chars - fail-fast architecture requires sufficient content for reliable analysis")
 
                         # Add this iteration to history
                         iteration_history.append(iteration_data)
@@ -421,24 +427,31 @@ class TextComponentGenerator(APIComponentGenerator):
             ai_lines = [
                 "ai_detection_analysis:",
                 f"  score: {score}",
-                f"  confidence: {ai_result.confidence if ai_result else 0.0}",
-                f"  classification: \"{ai_result.classification if ai_result else 'human'}\"",
-                "  provider: \"winston\"",
-                f"  processing_time: {ai_result.processing_time if ai_result else 0.0}",
             ]
             
-            if ai_result and ai_result.details:
-                ai_lines.append("  details:")
-                for key, value in ai_result.details.items():
-                    # Include sentence-level details for Winston
-                    if key == "sentences" and isinstance(value, list):
-                        ai_lines.append("    sentences:")
-                        for sentence_data in value[:5]:  # Limit to first 5 sentences
-                            if isinstance(sentence_data, dict):
-                                ai_lines.append("      - text: \"{}\"".format(sentence_data.get('text', '').replace('"', '\\"')))
-                                ai_lines.append("        score: {}".format(sentence_data.get('score', 0.0)))
-                    else:
-                        ai_lines.append(f"    {key}: {value}")
+            if ai_result:
+                ai_lines.extend([
+                    f"  confidence: {ai_result.confidence}",
+                    f"  classification: \"{ai_result.classification}\"",
+                    "  provider: \"winston\"",
+                    f"  processing_time: {ai_result.processing_time}",
+                ])
+                
+                if ai_result.details:
+                    ai_lines.append("  details:")
+                    for key, value in ai_result.details.items():
+                        # Include sentence-level details for Winston
+                        if key == "sentences" and isinstance(value, list):
+                            ai_lines.append("    sentences:")
+                            for sentence_data in value[:5]:  # Limit to first 5 sentences
+                                if isinstance(sentence_data, dict):
+                                    ai_lines.append("      - text: \"{}\"".format(sentence_data.get('text', '').replace('"', '\\"')))
+                                    ai_lines.append("        score: {}".format(sentence_data.get('score', 0.0)))
+                        else:
+                            ai_lines.append(f"    {key}: {value}")
+            else:
+                # FAIL-FAST: AI result is required for frontmatter update
+                raise Exception("AI detection result is required for frontmatter update - fail-fast architecture requires complete AI analysis")
             
             updated_lines.extend(ai_lines)
             

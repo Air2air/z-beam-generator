@@ -82,9 +82,9 @@ iteration_refinement_mechanism:
   
   # Adaptive Content Modification
   detection_response:
-    - If Winston score > 50 (human-like): Maintain current approach
-    - If score > 30 (moderately human-like): Fine-tune conversational elements
-    - If score < 30 (AI-like): Add more personal anecdotes and human elements
+    - If Winston score > 80 (human-like): Fine-tune conversational elements
+    - If score > 60 (moderately human-like): Fine-tune conversational elements
+    - If score < 60 (AI-like): Add more personal anecdotes and human elements
     - Track successful patterns for future use
 
 cultural_humanization:
@@ -107,10 +107,10 @@ content_transformation_rules:
 success_metrics:
   # Measuring Human-Like Quality
   winston_targets:
-    - Target score: 30 or below (human-like)
-    - Acceptable range: 0-30
-    - Warning threshold: 30-50
-    - Failure threshold: 50+
+    - Target score: 80+
+    - Acceptable range: 60-80
+    - Warning threshold: 40-60
+    - Failure threshold: 40 or below (ai-like)
 
   believability_indicators:
     - Natural language flow
