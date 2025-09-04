@@ -111,7 +111,7 @@ def verify_production_system():
         project_root = Path(__file__).parent
         sys.path.insert(0, str(project_root))
         
-        from components.content.generators.fail_fast_generator import create_fail_fast_generator
+        from components.text.generators.fail_fast_generator import create_fail_fast_generator
         
         # Test initialization
         generator = create_fail_fast_generator()

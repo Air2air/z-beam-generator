@@ -60,15 +60,27 @@ def run_all_tests() -> dict:
     
     # Define available test suites (EXCLUDING cleanup)
     test_suites = [
-        ("test_api_comprehensive.py", "API Provider Tests"),
-        ("test_api_providers.py", "API Integration Tests"), 
-        ("test_author_component.py", "Author Component Tests"),
-        ("test_authors.py", "Author System Tests"),
-        ("test_badgesymbol.py", "Badge Symbol Component Tests"),
+        ("test_ai_detection_integration.py", "AI Detection Integration Tests"),
+        ("test_category_ranges.py", "Category Ranges Tests"),
+        ("test_component_ai_routing.py", "Component AI Routing Tests"),
         ("test_component_config.py", "Component Configuration Tests"),
+        ("test_content_comprehensive.py", "Content Comprehensive Tests"),
+        ("test_content_fail_fast.py", "Content Fail-Fast Tests"),
+        ("test_content_validation.py", "Content Validation Tests"),
         ("test_dynamic_system.py", "Dynamic System Tests"),
+        ("test_frontmatter_core.py", "Frontmatter Core Tests"),
+        ("test_frontmatter_fail_fast.py", "Frontmatter Fail-Fast Tests"),
+        ("test_frontmatter_validator.py", "Frontmatter Validator Tests"),
         ("test_integration.py", "Integration Tests"),
-        ("test_templates.py", "Template Tests")
+        ("test_iterative_content_improver.py", "Iterative Content Improver Tests"),
+        ("test_iterative_improvement.py", "Iterative Improvement Tests"),
+        ("test_percentile_calculator.py", "Percentile Calculator Tests"),
+        ("test_property_enhancer.py", "Property Enhancer Tests"),
+        ("test_static_components.py", "Static Components Tests"),
+        ("test_templates.py", "Template Tests"),
+        ("test_winston_provider.py", "Winston Provider Tests"),
+        ("../test_nationality_fix.py", "Nationality Prompt Retention Tests"),
+        ("../test_frontmatter_iterations.py", "Frontmatter Iteration Tracking Tests")
     ]
     
     return run_test_suites(test_suites, "COMPLETE")
@@ -120,24 +132,8 @@ def run_with_coverage(cleanup_only: bool = False) -> dict:
         return results
         
     except ImportError:
-        print("❌ Coverage package not installed. Install with:")
-        print("   pip install coverage")
-        print("\nRunning tests without coverage...")
-        
-        # Fallback to regular test run
-        if cleanup_only:
-            return run_cleanup_only()
-        else:
-            return run_all_tests()
-    except Exception as e:
-        print(f"❌ Coverage analysis failed: {e}")
-        print("Running tests without coverage...")
-        
-        # Fallback to regular test run
-        if cleanup_only:
-            return run_cleanup_only()
-        else:
-            return run_all_tests()
+        raise Exception("Coverage package not installed - install with: pip install coverage")
+        raise Exception(f"Coverage analysis failed: {e}")
 
 def run_test_suites(test_suites: list, suite_type: str) -> dict:
     """Run a list of test suites and return results"""

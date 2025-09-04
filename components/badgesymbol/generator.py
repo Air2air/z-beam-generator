@@ -85,14 +85,9 @@ class BadgesymbolComponentGenerator(FrontmatterComponentGenerator):
             for field_name in schema_fields.keys():
                 extracted_value = self._extract_field_value(frontmatter_data, field_name, material_name)
                 frontmatter_output[field_name] = extracted_value
-        # Priority 3: Fallback to hardcoded extraction
+        # FAIL-FAST: No fallback allowed - system must have required schema or example
         else:
-            symbol = self._get_field(frontmatter_data, ['chemicalProperties.symbol', 'symbol'], material_name[:2].upper())
-            material_type = self._get_field(frontmatter_data, ['chemicalProperties.materialType', 'materialType', 'category'], 'material')
-            frontmatter_output = {
-                'symbol': symbol,
-                'materialType': material_type.lower()
-            }
+            raise Exception(f"No schema or example provided for badge symbol generation of {material_name} - fail-fast architecture requires explicit configuration")
         
         # Build frontmatter YAML
         yaml_lines = ['---']

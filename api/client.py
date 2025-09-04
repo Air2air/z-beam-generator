@@ -227,6 +227,11 @@ class APIClient:
         logger.info(f"📝 Prompt length: {len(request.prompt)} chars")
         logger.info(f"🎯 Max tokens: {request.max_tokens}, Temperature: {request.temperature}")
         
+        # API Terminal Messaging - Start
+        print(f"🚀 [API CLIENT] Starting request to {self.model}")
+        print(f"📤 [API CLIENT] Sending prompt ({len(request.prompt)} chars) with system prompt ({len(request.system_prompt) if request.system_prompt else 0} chars)")
+        print(f"⚙️ [API CLIENT] Config: max_tokens={request.max_tokens}, temperature={request.temperature}")
+        
         # Debug: Log config type and attributes
         logger.info(f"🔧 Config type: {type(self.config)}")
         logger.info(f"🔧 Config attributes: {dir(self.config) if hasattr(self.config, '__dict__') else 'No __dict__'}")
@@ -263,6 +268,9 @@ class APIClient:
         logger.info(f"🌐 Response headers: {dict(response.headers)}")
         logger.info(f"🌐 Response content preview: {response.text[:200]}...")
         
+        # API Terminal Messaging - Response received
+        print(f"📥 [API CLIENT] Received response (Status: {response.status_code})")
+        
         # Process response
         if response.status_code == 200:
             data = response.json()
@@ -278,10 +286,17 @@ class APIClient:
             logger.info(f"📊 Tokens used: {usage.get('total_tokens', 'N/A')} (prompt: {usage.get('prompt_tokens', 'N/A')}, completion: {usage.get('completion_tokens', 'N/A')})")
             logger.info(f"📄 Content length: {len(content)} chars")
             
+            # API Terminal Messaging - Success
+            print(f"✅ [API CLIENT] Request completed successfully")
+            print(f"⏱️ [API CLIENT] Response time: {response_time:.2f}s")
+            print(f"📊 [API CLIENT] Tokens used: {usage.get('total_tokens', 'N/A')} total")
+            print(f"📄 [API CLIENT] Content length: {len(content)} chars")
+            
             # Handle empty content from reasoning models like grok-4
             if not content and data.get('choices', [{}])[0].get('message', {}).get('content') == "":
                 completion_tokens = data.get('usage', {}).get('completion_tokens_details', {}).get('reasoning_tokens', 0)
                 if completion_tokens > 0:
+                    print("❌ [API CLIENT] Model produced reasoning tokens but no completion content")
                     logger.error("❌ Model produced reasoning tokens but no completion content")
                     return APIResponse(
                         success=False,
@@ -313,6 +328,9 @@ class APIClient:
                 logger.info(f"📄 Error response data type: {type(error_data)}")
                 logger.info(f"📄 Error response content: {error_data}")
                 
+                # API Terminal Messaging - Error
+                print(f"❌ [API CLIENT] Request failed with status {response.status_code}")
+                
                 # Handle different error response formats
                 if isinstance(error_data, dict):
                     error_details = error_data.get('error', {})
@@ -335,6 +353,7 @@ class APIClient:
             except json.JSONDecodeError:
                 error_msg += f": {response.text}"
             
+            print(f"❌ [API CLIENT] Error details: {error_msg}")
             return APIResponse(
                 success=False,
                 content="",
@@ -490,226 +509,29 @@ class APIClient:
         }
 
 class MockAPIClient:
-    """Mock API client for testing without real API calls"""
+    """Mock API client for testing without real API calls - FAIL-FAST: No mock content allowed"""
     
     def __init__(self, *args, **kwargs):
-        self.stats = {
-            'total_requests': 0,
-            'successful_requests': 0,
-            'failed_requests': 0,
-            'total_tokens': 0,
-            'total_response_time': 0.0
-        }
+        # FAIL-FAST: Mock clients are not permitted in fail-fast architecture
+        raise Exception("MockAPIClient is not allowed in fail-fast architecture - use real API clients only")
     
     def test_connection(self) -> bool:
-        """Mock connection test - always returns True"""
-        return True
+        """Mock connection test - FAIL-FAST: Not permitted"""
+        raise Exception("MockAPIClient methods not permitted in fail-fast architecture")
     
     def generate(self, request: GenerationRequest) -> APIResponse:
-        """Generate mock content for testing with better prompt awareness."""
-        
-        self.stats['total_requests'] += 1
-        self.stats['successful_requests'] += 1
-        
-        # Analyze the prompt to generate more realistic mock content
-        prompt_lower = request.prompt.lower()
-        
-        # Extract material information from prompt
-        material_name = "Unknown Material"
-        formula = "Formula"
-        
-        # Simple extraction logic
-        import re
-        material_match = re.search(r'generate.*?content for ([^(]+)', request.prompt, re.IGNORECASE)
-        if material_match:
-            material_name = material_match.group(1).strip()
-        
-        formula_match = re.search(r'\(([^)]+)\)', request.prompt)
-        if formula_match:
-            formula = formula_match.group(1).strip()
-        
-        # Extract author information 
-        author_match = re.search(r'author: ([^-]+)', request.prompt, re.IGNORECASE)
-        author = author_match.group(1).strip() if author_match else "Expert Author"
-        
-        # Generate content based on prompt analysis
-        if "frontmatter" in prompt_lower:
-            content = self._generate_mock_frontmatter_from_prompt(material_name, formula, request.prompt)
-        elif "content" in prompt_lower or "article" in prompt_lower:
-            content = self._generate_mock_article_from_prompt(material_name, formula, author, request.prompt)
-        elif "table" in prompt_lower:
-            content = self._generate_mock_table(request.prompt)
-        elif "json" in prompt_lower or "jsonld" in prompt_lower:
-            content = self._generate_mock_jsonld(request.prompt)
-        else:
-            content = self._generate_mock_article_from_prompt(material_name, formula, author, request.prompt)
-        
-        mock_tokens = len(content.split())
-        self.stats['total_tokens'] += mock_tokens
-        
-        return APIResponse(
-            success=True,
-            content=content,
-            response_time=0.1,
-            token_count=mock_tokens,
-            prompt_tokens=len(request.prompt.split()),
-            completion_tokens=mock_tokens,
-            model_used="mock-model"
-        )
+        """Generate mock content - FAIL-FAST: Not permitted"""
+        raise Exception("MockAPIClient methods not permitted in fail-fast architecture")
     
     def generate_simple(self, prompt: str, system_prompt: Optional[str] = None,
                        max_tokens: int = None, temperature: float = None) -> APIResponse:
-        """Simplified mock generation"""
-        request = GenerationRequest(prompt=prompt, system_prompt=system_prompt)
-        return self.generate(request)
+        """Simplified mock generation - FAIL-FAST: Not permitted"""
+        raise Exception("MockAPIClient methods not permitted in fail-fast architecture")
     
     def get_statistics(self) -> Dict[str, Any]:
-        """Get mock statistics"""
-        return {**self.stats, 'average_response_time': 0.1, 'success_rate': 100.0}
+        """Get mock statistics - FAIL-FAST: Not permitted"""
+        raise Exception("MockAPIClient methods not permitted in fail-fast architecture")
     
     def reset_statistics(self):
-        """Reset mock statistics"""
-        self.stats = {
-            'total_requests': 0,
-            'successful_requests': 0,
-            'failed_requests': 0,
-            'total_tokens': 0,
-            'total_response_time': 0.0
-        }
-    
-    def _generate_mock_article_from_prompt(self, material_name: str, formula: str, author: str, prompt: str) -> str:
-        """Generate mock article content based on prompt analysis."""
-        
-        # Extract key information from prompt
-        has_taiwan_style = "systematic" in prompt.lower() or "methodical" in prompt.lower()
-        has_formatting = "formatting" in prompt.lower()
-        has_technical_reqs = "wavelength" in prompt.lower() or "1064" in prompt.lower()
-        
-        # Basic article structure
-        content_parts = [
-            f"# Laser Cleaning of {material_name}: Technical Analysis",
-            f"**{author}**",
-            "",
-            f"## Overview",
-            f"This systematic analysis examines laser cleaning applications for {material_name} ({formula}). "
-            f"The material demonstrates excellent compatibility with 1064 nm wavelength processing.",
-            "",
-            f"## Material Properties",
-            f"Chemical composition {formula} provides specific absorption characteristics that enable "
-            f"efficient laser cleaning processes. Key properties include:",
-            "",
-            f"- **Formula**: {formula}",
-            f"- **Wavelength compatibility**: 1064 nm optimal",
-            f"- **Processing efficiency**: High absorption coefficient",
-            "",
-            f"## Technical Parameters"
-        ]
-        
-        # Add technical specifications if mentioned in prompt
-        if has_technical_reqs:
-            content_parts.extend([
-                "Systematic parameter optimization ensures effective cleaning:",
-                "",
-                "- **Wavelength**: 1064 nm (standard fiber laser)",
-                "- **Pulse duration**: 10-100 ns range", 
-                "- **Power density**: 10-50 MW/cm²",
-                "- **Scanning speed**: 100-500 mm/min",
-                ""
-            ])
-        
-        # Add applications section
-        content_parts.extend([
-            "## Industrial Applications",
-            f"The systematic approach to {material_name} laser cleaning enables:",
-            "",
-            "1. **Surface preparation** - Precise contamination removal",
-            "2. **Manufacturing processes** - Clean surface finishing", 
-            "3. **Maintenance applications** - Efficient restoration",
-            "",
-            "## Safety Considerations",
-            "Class 4 laser safety protocols require systematic implementation:",
-            "",
-            "- Proper eye protection (OD 7+ at 1064 nm)",
-            "- Enclosed processing environment",
-            "- Trained operator procedures",
-            "",
-            "## Conclusion",
-            f"Systematic laser cleaning of {material_name} demonstrates excellent results "
-            f"with proper parameter optimization and safety implementation."
-        ])
-        
-        # Add Taiwan-style language if detected
-        if has_taiwan_style:
-            # Replace some phrases with more systematic language
-            content = "\n".join(content_parts)
-            content = content.replace("excellent", "systematic and precise")
-            content = content.replace("demonstrates", "shows through careful analysis")
-            return content
-        
-        return "\n".join(content_parts)
-    
-    def _generate_mock_frontmatter_from_prompt(self, material_name: str, formula: str, prompt: str) -> str:
-        """Generate mock frontmatter based on prompt analysis."""
-        return f"""---
-name: {material_name}
-description: "Systematic laser cleaning analysis for {material_name} applications"
-category: "metal"
-formula: "{formula}"
-chemicalProperties:
-  symbol: "Material"
-  formula: "{formula}"
-  materialType: "compound"
-properties:
-  density: "7.8 g/cm³"
-  meltingPoint: "1500°C"
-  wavelength: "1064nm"
-applications:
-- industry: "Manufacturing"
-  useCase: "Surface cleaning and preparation"
-  detail: "Systematic laser cleaning optimization"
-title: "Laser Cleaning {material_name} - Technical Guide"
-headline: "Comprehensive systematic analysis for {material_name} laser processing"
----"""
-    
-    def _generate_mock_article(self, prompt: str) -> str:
-        """Generate mock article content"""
-        return """# Mock Article Content
-
-This is mock-generated content for testing the dynamic generation system.
-
-## Introduction
-
-This content demonstrates the structure and format of generated articles.
-
-## Technical Specifications
-
-- Wavelength: 1064nm
-- Power: 50-100W
-- Pulse duration: 10-100ns
-
-## Applications
-
-Mock applications and use cases would be listed here.
-
-## Conclusion
-
-This concludes the mock article content generation."""
-    
-    def _generate_mock_table(self, prompt: str) -> str:
-        """Generate mock table content"""
-        return """| Property | Value | Unit |
-|----------|-------|------|
-| Density | 7.8 | g/cm³ |
-| Melting Point | 1500 | °C |
-| Wavelength | 1064 | nm |
-| Power Range | 50-100 | W |"""
-    
-    def _generate_mock_jsonld(self, prompt: str) -> str:
-        """Generate mock JSON-LD content"""
-        return """{
-  "@context": "https://schema.org/",
-  "@type": "Product",
-  "name": "Mock Material",
-  "description": "Mock material for laser cleaning applications",
-  "category": "Industrial Material"
-}"""
+        """Reset mock statistics - FAIL-FAST: Not permitted"""
+        raise Exception("MockAPIClient methods not permitted in fail-fast architecture")

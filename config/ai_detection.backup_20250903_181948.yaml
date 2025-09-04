@@ -1,0 +1,34 @@
+# AI Detection Service Configuration
+# This is the centralized configuration for all AI detection capabilities
+
+# Primary provider to use
+provider: "winston"
+
+# Service settings
+enabled: true
+target_score: 70.0  # Target Winston score (70+ = human-like, 0-30 = AI-like)
+max_iterations: 3   # Minimum 3 iterations to ensure score improvement
+improvement_threshold: 5.0  # Minimum score improvement to continue iterating
+timeout: 15  # REDUCED FROM 30 for faster AI detection
+retry_attempts: 2  # REDUCED FROM 3 for faster failure
+
+# Provider-specific configurations
+gptzero:
+  api_key: "your-gptzero-api-key-here"
+  base_url: "https://api.gptzero.me"
+
+winston:
+  api_key: "YOg4ByzumdBgrnImJ2LQ3GMW0FnkHnco64KpyAKp8c0974d5"
+  base_url: "https://api.gowinston.ai"
+
+# Mock provider for testing
+mock:
+  enabled: true
+
+# Content Generation Optimization Flags (modified by DeepSeek)
+# These flags control how content is generated to improve human-like qualities
+conversational_style: false      # Use conversational language patterns
+natural_language_patterns: false # Apply natural language variations
+human_error_simulation: false    # Simulate minor human-like errors
+cultural_adaptation: false       # Adapt to cultural/national contexts
+emotional_depth: false          # Add emotional depth and personality

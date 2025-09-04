@@ -31,9 +31,33 @@ class WinstonProvider:
             })
 
     def analyze_text(self, text: str, options: Optional[Dict] = None) -> AIDetectionResult:
-        """Analyze text for AI detection score"""
+        """Analyze text for AI detection score
+        
+        Winston.ai scoring:
+        - 0-100 scale where LOWER scores indicate MORE AI-like content
+        - 0 = Definitely AI-generated
+        - 100 = Definitely human-written
+        - 30-70 = Unclear/uncertain
+        """
         if not self.api_key:
             raise AIDetectionError("Winston.ai API key not configured")
+
+        # Check minimum text length requirement
+        if len(text.strip()) < 300:
+            logger.warning(f"Text too short for Winston.ai analysis: {len(text.strip())} characters (minimum 300 required)")
+            # Return a neutral result for short text
+            return AIDetectionResult(
+                score=50.0,  # Neutral score
+                confidence=0.5,
+                classification="unclear",
+                details={
+                    "error": "Text too short for analysis",
+                    "text_length": len(text.strip()),
+                    "minimum_required": 300
+                },
+                processing_time=0.0,
+                provider="winston"
+            )
 
         start_time = time.time()
 
@@ -49,29 +73,50 @@ class WinstonProvider:
             if 'language' in options:
                 payload['language'] = options['language']
 
+        # API Terminal Messaging - Start
+        print(f"🔍 [AI DETECTOR] Starting Winston.ai analysis...")
+        print(f"📤 [AI DETECTOR] Sending text ({len(text)} chars) for AI detection")
+        logger.info(f"🔍 [AI DETECTOR] Winston.ai API call initiated - Text length: {len(text)} chars")
+
         try:
             response = self.session.post(
                 f"{self.base_url}/v2/ai-content-detection",
                 json=payload,
-                timeout=self.config.timeout
+                timeout=min(self.config.timeout, 15)  # CAP timeout at 15 seconds for faster response
             )
+
+            # API Terminal Messaging - Response received
+            print(f"📥 [AI DETECTOR] Received response from Winston.ai (Status: {response.status_code})")
 
             if response.status_code == 200:
                 data = response.json()
 
-                # Winston.ai returns score as 0-100 (higher = more AI-like)
+                # Winston.ai returns score as 0-100 (lower = more AI-like)
                 ai_score = data.get('score', 0.0)
 
                 # Determine classification based on score
-                if ai_score > 70:
+                # Low scores (< 30) indicate AI-generated content
+                # High scores (> 70) indicate human-written content
+                if ai_score < 30:
                     classification = "ai"
-                elif ai_score < 30:
+                elif ai_score > 70:
                     classification = "human"
                 else:
                     classification = "unclear"
 
-                # Calculate confidence based on the score spread from 50
-                confidence = min(abs(ai_score - 50) / 50, 1.0)
+                # Calculate confidence based on distance from the uncertain zone (around 50)
+                # Higher confidence when score is closer to 0 (AI) or 100 (Human)
+                if ai_score <= 50:
+                    confidence = ai_score / 50  # 0-50 range: 0=low confidence, 50=high confidence
+                else:
+                    confidence = (100 - ai_score) / 50  # 50-100 range: 50=high confidence, 100=low confidence
+                confidence = min(confidence, 1.0)
+
+                # API Terminal Messaging - Success
+                processing_time = time.time() - start_time
+                print(f"✅ [AI DETECTOR] Analysis completed - Score: {ai_score:.1f}, Classification: {classification}")
+                print(f"⏱️ [AI DETECTOR] Processing time: {processing_time:.2f}s")
+                logger.info(f"✅ [AI DETECTOR] Winston.ai analysis successful - Score: {ai_score:.1f} ({classification})")
 
                 # Extract sentence-level details if available
                 details = {
@@ -96,15 +141,26 @@ class WinstonProvider:
                     processing_time=time.time() - start_time,
                     provider="winston"
                 )
+            elif response.status_code == 403:
+                # Handle validation errors (like text too short)
+                error_data = response.json()
+                error_desc = error_data.get('description', 'Validation failed')
+                print(f"❌ [AI DETECTOR] Winston.ai validation error: {error_desc}")
+                logger.error(f"Winston.ai validation error: {error_desc}")
+                raise AIDetectionError(f"Winston.ai validation failed: {error_desc}")
             else:
+                print(f"❌ [AI DETECTOR] Winston.ai API error: {response.status_code}")
                 logger.error(f"Winston.ai API error: {response.status_code} - {response.text}")
                 raise AIDetectionError(f"API error {response.status_code}")
 
         except requests.exceptions.Timeout:
+            print("⏰ [AI DETECTOR] Winston.ai API request timeout")
             raise AIDetectionError("Winston.ai API request timeout")
         except requests.exceptions.RequestException as e:
+            print(f"❌ [AI DETECTOR] Winston.ai API request failed: {e}")
             raise AIDetectionError(f"Winston.ai API request failed: {e}")
         except Exception as e:
+            print(f"❌ [AI DETECTOR] Winston.ai analysis failed: {e}")
             logger.error(f"Winston.ai analysis failed: {e}")
             raise AIDetectionError(f"Analysis failed: {e}")
 
@@ -113,17 +169,34 @@ class WinstonProvider:
         if not self.api_key:
             return False
 
+        # API Terminal Messaging - Connectivity Test
+        print("🔗 [AI DETECTOR] Testing Winston.ai service connectivity...")
+        logger.info("🔗 [AI DETECTOR] Testing Winston.ai service availability")
+
         try:
-            # Simple health check - use the same text that worked in curl
-            test_text = "This is a comprehensive test text that should definitely meet the minimum 300 character requirement for the Winston.ai API. We are testing the AI detection capabilities of this service to ensure it can properly analyze content and provide accurate scoring. The system should be able to detect whether this text was written by a human or generated by an AI language model. This is important for content quality assurance and ensuring the authenticity of generated materials in various applications including content generation, academic writing, and creative projects. The API should return a score between 0 and 100 indicating the likelihood of AI generation."
+            # Test with sufficient text length (minimum 300 characters)
+            test_text = "This is a comprehensive test text that should definitely meet the minimum 300 character requirement for the Winston.ai API. We are testing the AI detection capabilities of this service to ensure it can properly analyze content and provide accurate scoring. The system should be able to detect whether this text was written by a human or generated by an AI language model. This is important for content quality assurance and ensuring the authenticity of generated materials in various applications including content generation, academic writing, and creative projects. The API should return a score between 0 and 100 indicating the likelihood of AI generation, with lower scores indicating more AI-like content and higher scores indicating human-written content. This test will help verify that the Winston.ai service is functioning correctly and can be relied upon for AI detection analysis."
             test_payload = {"text": test_text}
+            
+            print("📤 [AI DETECTOR] Sending connectivity test to Winston.ai...")
             response = self.session.post(
                 f"{self.base_url}/v2/ai-content-detection",
                 json=test_payload,
                 timeout=10
             )
-            return response.status_code == 200
-        except Exception:
+            
+            if response.status_code == 200:
+                print("✅ [AI DETECTOR] Winston.ai service is available")
+                logger.info("✅ [AI DETECTOR] Winston.ai service connectivity confirmed")
+                return True
+            else:
+                print(f"❌ [AI DETECTOR] Winston.ai service unavailable (Status: {response.status_code})")
+                logger.warning(f"❌ [AI DETECTOR] Winston.ai service returned status {response.status_code}")
+                return False
+                
+        except Exception as e:
+            print(f"❌ [AI DETECTOR] Winston.ai connectivity test failed: {e}")
+            logger.error(f"❌ [AI DETECTOR] Winston.ai connectivity test failed: {e}")
             return False
 
     def _get_api_key(self) -> Optional[str]:
@@ -140,15 +213,6 @@ class WinstonProvider:
 
         # Fallback to config file
         if not api_key:
-            config_path = Path("config/ai_detection.yaml")
-            if config_path.exists():
-                try:
-                    import yaml
-                    with open(config_path, 'r') as f:
-                        data = yaml.safe_load(f)
-                    winston_config = data.get('winston', {})
-                    api_key = winston_config.get('api_key')
-                except Exception:
-                    pass
+            raise Exception("Winston.ai API key not found in environment - no fallback to config file permitted in fail-fast architecture")
 
         return api_key

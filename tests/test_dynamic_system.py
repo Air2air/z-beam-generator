@@ -306,24 +306,8 @@ def test_api_client_features():
     print("\n📊 Testing API Client Features...")
     
     try:
-        from api.client import MockAPIClient
+        # MockAPIClient removed - using fail-fast approach
         from api.deepseek import create_deepseek_client
-        
-        # Test mock client
-        mock_client = MockAPIClient()
-        
-        # Test connection
-        if mock_client.test_connection():
-            print("  ✅ Mock client connection test passed")
-        
-        # Test generation
-        response = mock_client.generate_simple("Test prompt")
-        if response.success:
-            print(f"  ✅ Mock generation successful ({response.token_count} tokens)")
-        
-        # Test statistics
-        stats = mock_client.get_statistics()
-        print(f"  ✅ Statistics: {stats['total_requests']} requests, {stats['success_rate']:.1f}% success")
         
         # Test DeepSeek client creation (will fail without API key, but that's expected)
         try:
@@ -460,7 +444,7 @@ def test_static_component_generation():
 
         # Test badgesymbol static generation using the public method
         print("  🏷️  Testing badgesymbol static generation...")
-        result = generator.generate_component("test-material", "badgesymbol")
+        result = generator.generate_component("test-material", "badgesymbol", None, None)
 
         if result.success:
             print("  ✅ BadgeSymbol static generation successful")
@@ -475,7 +459,7 @@ def test_static_component_generation():
         
         # Test propertiestable static generation
         print("  📊 Testing propertiestable static generation...")
-        result = generator.generate_component("test-material", "propertiestable")
+        result = generator.generate_component("test-material", "propertiestable", None, None)
         
         if result.success:
             print("  ✅ PropertiesTable static generation successful")
@@ -488,7 +472,7 @@ def test_static_component_generation():
         else:
             print(f"  ❌ PropertiesTable static generation failed: {result.error_message}")        # Test that static components are configured correctly
         components_config = COMPONENT_CONFIG.get("components", {})
-        static_components = ["badgesymbol", "propertiestable", "author"]
+        static_components = ["badgesymbol", "propertiestable", "author", "jsonld", "metatags"]
         
         for component in static_components:
             if component in components_config:

@@ -25,8 +25,8 @@ BASIC GENERATION:
     python3 run.py                                    # Generate all materials (batch mode)
     python3 run.py --material "Steel"                 # Generate specific material
     python3 run.py --material "Aluminum" --author 2   # Generate with Italian author
-    python3 run.py --interactive                      # Interactive mode with prompts
     python3 run.py --start-index 50                   # Start batch from material #50
+    python3 run.py --content-batch                    # Clear and regenerate content for first 8 categories
 
 COMPONENT CONTROL:
     python3 run.py --material "Copper" --components "frontmatter,content"  # Specific components only
@@ -149,22 +149,30 @@ COMPONENT_CONFIG = {
         "bullets": {
             "enabled": True, 
             "data_provider": "API", 
-            "api_provider": "deepseek"
+            "api_provider": "deepseek",
+            "ai_detection_enabled": True,
+            "iterative_improvement_enabled": True
         },
         "caption": {
             "enabled": True, 
             "data_provider": "API", 
-            "api_provider": "gemini"
+            "api_provider": "gemini",
+            "ai_detection_enabled": True,
+            "iterative_improvement_enabled": True
         },
         "frontmatter": {
             "enabled": True, 
             "data_provider": "API", 
-            "api_provider": "deepseek"
+            "api_provider": "deepseek",
+            "ai_detection_enabled": False,
+            "iterative_improvement_enabled": False
         },
         "text": {
             "enabled": True,
             "data_provider": "hybrid",
-            "api_provider": "deepseek"
+            "api_provider": "deepseek",
+            "ai_detection_enabled": True,
+            "iterative_improvement_enabled": True
         },
         "jsonld": {
             "enabled": True, 
@@ -174,7 +182,9 @@ COMPONENT_CONFIG = {
         "table": {
             "enabled": True, 
             "data_provider": "API", 
-            "api_provider": "deepseek"
+            "api_provider": "deepseek",
+            "ai_detection_enabled": False,
+            "iterative_improvement_enabled": False
         },
         "metatags": {
             "enabled": True, 
@@ -184,7 +194,9 @@ COMPONENT_CONFIG = {
         "tags": {
             "enabled": True, 
             "data_provider": "API", 
-            "api_provider": "deepseek"
+            "api_provider": "deepseek",
+            "ai_detection_enabled": False,
+            "iterative_improvement_enabled": False
         },
         "propertiestable": {
             "enabled": True, 
@@ -241,7 +253,10 @@ def show_component_configuration():
             provider_name = API_PROVIDERS.get(provider, {}).get("name", provider)
         print(f"🌐 {provider_name} ({len(components)} components):")
         for component in sorted(components):
-            print(f"   ✅ {component}")
+            config = components_config[component]
+            ai_status = "🤖" if config.get("ai_detection_enabled", False) else "❌"
+            iter_status = "🔄" if config.get("iterative_improvement_enabled", False) else "❌"
+            print(f"   ✅ {component} {ai_status} {iter_status}")
         print()
 
     # Display disabled components
@@ -249,7 +264,10 @@ def show_component_configuration():
     if disabled:
         print(f"❌ Disabled Components ({len(disabled)}):")
         for component in sorted(disabled):
-            print(f"   ⭕ {component}")
+            config = components_config[component]
+            ai_status = "🤖" if config.get("ai_detection_enabled", False) else "❌"
+            iter_status = "🔄" if config.get("iterative_improvement_enabled", False) else "❌"
+            print(f"   ⭕ {component} {ai_status} {iter_status}")
         print()
 
     # Display API provider details
@@ -260,11 +278,27 @@ def show_component_configuration():
         print(f"   {has_key} {provider_info['name']}: {provider_info['model']} (env: {env_key})")
     print()
 
+    # Display AI detection and iterative improvement summary
+    ai_detection_count = sum(1 for config in components_config.values() if config.get("ai_detection_enabled", False))
+    iterative_improvement_count = sum(1 for config in components_config.values() if config.get("iterative_improvement_enabled", False))
+    
+    print("🤖 AI Detection & Iterative Improvement:")
+    print(f"   🤖 AI Detection enabled: {ai_detection_count}/{len(components_config)} components")
+    print(f"   🔄 Iterative Improvement enabled: {iterative_improvement_count}/{len(components_config)} components")
+    
+    if ai_detection_count > 0:
+        ai_components = [comp for comp, config in components_config.items() if config.get("ai_detection_enabled", False)]
+        print(f"   📊 AI Detection components: {', '.join(sorted(ai_components))}")
+    
+    if iterative_improvement_count > 0:
+        iter_components = [comp for comp, config in components_config.items() if config.get("iterative_improvement_enabled", False)]
+        print(f"   📊 Iterative Improvement components: {', '.join(sorted(iter_components))}")
+    print()
+
 
 def run_dynamic_generation(
     material: str = None,
     components: list = None,
-    interactive: bool = False,
     test_api: bool = False,
     author_id: int = None,
     start_index: int = 1,
@@ -321,58 +355,12 @@ def run_dynamic_generation(
             print(f"   {status} {API_PROVIDERS[provider]['name']}: {result.get('error', 'OK')}")
         return all(result['success'] for result in test_results.values())
 
-    # Interactive mode
-    if interactive:
-        return run_interactive_mode(generator, author_info, ai_detection_service)
-
         # Batch mode - generate all materials if no specific material requested
     if material is None:
         return run_batch_mode(generator, author_info, components, start_index, ai_detection_service)
 
     # Generate for specific material
     return run_single_material(generator, material, components, author_info, ai_detection_service)
-
-
-def run_interactive_mode(generator, author_info: dict = None, ai_detection_service: AIDetectionService = None) -> bool:
-    """Run interactive generation with user prompts."""
-    print("🎮 Interactive Generation Mode")
-    print("Commands: Y/Yes (continue), S/Skip (skip material), Q/Quit (exit)")
-    print("=" * 50)
-
-    materials = generator.get_available_materials()
-    available_components = generator.get_available_components()
-
-    print(f"📊 Loaded {len(materials)} materials and {len(available_components)} components")
-    print(f"🔧 Components: {', '.join(available_components)}")
-
-    generated_count = 0
-    skipped_count = 0
-
-    try:
-        for i, material in enumerate(materials, 1):
-            print(f"\n📦 [{i}/{len(materials)}] Processing: {material}")
-            response = input(f"Generate content for {material}? (Y/s/q): ").strip().lower()
-
-            if response in ["q", "quit"]:
-                break
-            elif response in ["s", "skip"]:
-                print(f"⏭️  Skipped {material}")
-                skipped_count += 1
-                continue
-
-            # Generate content
-            success = run_single_material(generator, material, None, author_info, ai_detection_service)
-            if success:
-                generated_count += 1
-
-    except KeyboardInterrupt:
-        print("\n\n🛑 Generation interrupted by user")
-
-    print("\n📊 Generation Summary:")
-    print(f"   ✅ Generated: {generated_count} materials")
-    print(f"   ⏭️  Skipped: {skipped_count} materials")
-
-    return True
 
 
 def run_batch_mode(generator, author_info: dict = None, components: list = None, start_index: int = 1, ai_detection_service: AIDetectionService = None) -> bool:
@@ -459,15 +447,21 @@ def run_single_material(generator, material: str, components: list = None, autho
                 if author_info:
                     temp_generator.set_author(author_info)
 
+                # Check if AI detection is enabled for this component
+                component_config = components_config.get(component_type, {})
+                use_ai_detection = component_config.get("ai_detection_enabled", False)
+                ai_service = ai_detection_service if use_ai_detection else None
+
                 # Generate component
-                result = temp_generator.generate_component(material, component_type, ai_detection_service)
+                result = temp_generator.generate_component(material, component_type, None, ai_service)
 
                 if result.success:
                     # Save the component
                     from utils.file_operations import save_component_to_file_original
                     save_component_to_file_original(material, component_type, result.content)
                     successful_count += 1
-                    print(f"   ✅ {component_type} - {len(result.content)} chars generated")
+                    ai_indicator = "🤖" if use_ai_detection else ""
+                    print(f"   ✅ {component_type} - {len(result.content)} chars generated {ai_indicator}")
                 else:
                     print(f"   ❌ {component_type}: {result.error_message}")
 
@@ -484,11 +478,11 @@ def run_single_material(generator, material: str, components: list = None, autho
 
 def run_content_batch() -> bool:
     """
-    Clear content directory and generate content component for first 8 material categories.
+    Clear content directory and generate content component for first 3 material categories.
     """
     print("📦 CONTENT BATCH GENERATION")
     print("=" * 50)
-    print("🧹 Clearing content directory and generating content for first 8 material categories")
+    print("🧹 Clearing content directory and generating content for first 3 material categories")
     print("=" * 50)
 
     try:
@@ -534,24 +528,46 @@ def run_content_batch() -> bool:
         print(f"⚠️ AI detection service initialization failed: {e}")
         print("Content generation will continue without AI detection feedback")
 
-    # Step 3: Get first 8 materials
+    # Step 3: Get first 3 materials
     # Get actual list of materials from generator to ensure consistency
     all_materials = generator.get_available_materials()
-    first_8_materials = all_materials[:8]  # First 8 materials from the list
+    first_3_materials = all_materials[:3]  # First 3 materials from the list
     
-    print(f"🎯 Target materials ({len(first_8_materials)}):")
-    for i, material in enumerate(first_8_materials, 1):
+    print(f"🎯 Target materials ({len(first_3_materials)}):")
+    for i, material in enumerate(first_3_materials, 1):
         print(f"   {i}. {material}")
 
     # Step 4: Generate content component for each material
     generated_count = 0
     failed_count = 0
     
-    for i, material in enumerate(first_8_materials, 1):
-        print(f"\n📦 [{i}/{len(first_8_materials)}] Processing material: {material}")
+    # Status update tracking for batch processing
+    import time as time_module
+    batch_start_time = time_module.time()
+    last_batch_status = batch_start_time
+    batch_status_interval = 15  # seconds
+    
+    for i, material in enumerate(first_3_materials, 1):
+        current_batch_time = time_module.time()
+        
+        # Status update every 15 seconds
+        if current_batch_time - last_batch_status >= batch_status_interval:
+            elapsed_batch_time = current_batch_time - batch_start_time
+            progress_percent = (i / len(first_3_materials)) * 100
+            print(f"📊 [BATCH STATUS] Processing material {i}/{len(first_3_materials)} ({progress_percent:.1f}%) - "
+                  f"Elapsed: {elapsed_batch_time:.1f}s - Generated: {generated_count}, Failed: {failed_count}")
+            last_batch_status = current_batch_time
+        
+        print(f"\n📦 [{i}/{len(first_3_materials)}] Processing material: {material}")
         
         try:
-            success = run_single_material(generator, material, ["text"], None, ai_detection_service)
+            # Check if AI detection is enabled for text component
+            components_config = COMPONENT_CONFIG.get("components", {})
+            text_config = components_config.get("text", {})
+            use_ai_detection = text_config.get("ai_detection_enabled", False)
+            ai_service = ai_detection_service if use_ai_detection else None
+            
+            success = run_single_material(generator, material, ["text"], None, ai_service)
             if success:
                 generated_count += 1
                 print(f"   ✅ {material} content generated successfully")
@@ -565,9 +581,15 @@ def run_content_batch() -> bool:
     # Step 5: Summary
     print("\n📊 CONTENT BATCH GENERATION COMPLETE")
     print("=" * 50)
+    
+    # Final batch status update
+    total_batch_time = time_module.time() - batch_start_time
+    success_rate = (generated_count / len(first_3_materials)) * 100 if len(first_3_materials) > 0 else 0
     print(f"✅ Generated: {generated_count} materials")
     print(f"❌ Failed: {failed_count} materials")
     print(f"📁 Output directory: {content_dir}")
+    print(f"⏱️ Total batch time: {total_batch_time:.1f}s")
+    print(f"📈 Success rate: {success_rate:.1f}%")
     
     return failed_count == 0
 
@@ -757,7 +779,6 @@ EXAMPLES:
   python3 run.py --material "Copper"                # Generate all components for Copper
   python3 run.py --material "Steel" --components "frontmatter,content"  # Specific components
   python3 run.py --material "Aluminum" --author 2   # Generate with Italian writing style
-  python3 run.py --interactive                      # Interactive mode with user prompts
   python3 run.py --list-materials                   # List all available materials
   python3 run.py --show-config                      # Show component configuration
   python3 run.py --yaml                            # Validate and fix YAML errors
@@ -771,7 +792,6 @@ EXAMPLES:
     parser.add_argument("--components", help="Comma-separated list of components to generate")
     parser.add_argument("--author", type=int, help="Author ID for country-specific writing style")
     parser.add_argument("--start-index", type=int, default=1, help="Start batch generation at specific material index")
-    parser.add_argument("--interactive", action="store_true", help="Interactive mode with user prompts")
     parser.add_argument("--yaml", action="store_true", help="Validate and fix YAML errors")
     parser.add_argument("--test-api", action="store_true", help="Test API connection")
     parser.add_argument("--test", action="store_true", help="Run comprehensive test suite")
@@ -862,7 +882,6 @@ def main():
             success = run_dynamic_generation(
                 material=args.material,
                 components=components_list,
-                interactive=args.interactive,
                 test_api=args.test_api,
                 author_id=args.author,
                 start_index=args.start_index,

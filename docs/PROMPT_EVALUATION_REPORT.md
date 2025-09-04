@@ -1,4 +1,4 @@
-# Components/Content/Prompts Evaluation Report
+# Components/Text/Prompts Evaluation Report
 
 ## 1. CURRENT STATE ANALYSIS
 
@@ -6,8 +6,8 @@
 
 #### A. REDUNDANCY AND CONTRADICTION
 1. **Duplicate Configuration Systems**:
-   - `components/content/prompt.yaml` (5,200+ characters) - Old comprehensive prompt
-   - `components/content/prompts/base_content_prompt.yaml` (302 lines) - New dynamic base prompt
+   - `components/text/prompt.yaml` (5,200+ characters) - Old comprehensive prompt
+   - `components/text/prompts/base_content_prompt.yaml` (302 lines) - New dynamic base prompt
    - **ISSUE**: These serve the same function but have different approaches
 
 2. **Length Specification Conflicts**:
@@ -35,9 +35,9 @@
 
 #### C. OUTDATED FILES
 1. **Legacy Components**:
-   - `components/content/prompt.yaml` - Massive, outdated approach
-   - `components/content/generator.py` - May use old prompt system
-   - `components/content/mock_generator.py` - Likely test file
+   - `components/text/prompt.yaml` - Massive, outdated approach
+   - `components/text/generator.py` - May use old prompt system
+   - `components/text/mock_generator.py` - Likely test file
    - **ISSUE**: Unclear which system is currently active
 
 ## 2. CLARITY ASSESSMENT
@@ -59,9 +59,9 @@
 ### IMMEDIATE CLEANUP REQUIRED:
 
 #### A. Remove Redundant Files:
-1. **DELETE**: `components/content/prompt.yaml` (old comprehensive approach)
-2. **REVIEW**: `components/content/generator.py` - update to use new system
-3. **REMOVE**: `components/content/mock_generator.py` if unused
+1. **DELETE**: `components/text/prompt.yaml` (old comprehensive approach)
+2. **REVIEW**: `components/text/generator.py` - update to use new system
+3. **REMOVE**: `components/text/mock_generator.py` if unused
 4. **CONSOLIDATE**: Test files into organized structure
 
 #### B. Simplify Base Prompt:
@@ -103,7 +103,7 @@ individual_persona_files:
 ## 5. CLEANUP PRIORITY
 
 ### HIGH PRIORITY:
-1. Remove `components/content/prompt.yaml`
+1. Remove `components/text/prompt.yaml`
 2. Standardize section names across all files
 3. Resolve length specification conflicts
 4. Simplify base prompt complexity

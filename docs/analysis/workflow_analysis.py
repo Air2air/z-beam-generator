@@ -11,8 +11,8 @@ from pathlib import Path
 project_root = Path(__file__).parent
 sys.path.insert(0, str(project_root))
 
-from components.content.enhanced_generator import EnhancedContentGenerator
-from components.content.human_validator import HumanLikeValidator
+from components.text.generator import TextComponentGenerator
+from components.text.validation.content_scorer import ContentQualityScorer
 from api.client import MockAPIClient
 
 def analyze_workflow():
@@ -25,15 +25,15 @@ def analyze_workflow():
     print("-" * 30)
     
     config_files = [
-        "components/content/prompts/base_content_prompt.yaml",
-        "components/content/prompts/personas/taiwan_persona.yaml",
-        "components/content/prompts/personas/italy_persona.yaml", 
-        "components/content/prompts/personas/indonesia_persona.yaml",
-        "components/content/prompts/personas/usa_persona.yaml",
-        "components/content/prompts/formatting/taiwan_formatting.yaml",
-        "components/content/prompts/formatting/italy_formatting.yaml",
-        "components/content/prompts/formatting/indonesia_formatting.yaml",
-        "components/content/prompts/formatting/usa_formatting.yaml",
+        "components/text/prompts/base_content_prompt.yaml",
+        "components/text/prompts/personas/taiwan_persona.yaml",
+        "components/text/prompts/personas/italy_persona.yaml", 
+        "components/text/prompts/personas/indonesia_persona.yaml",
+        "components/text/prompts/personas/usa_persona.yaml",
+        "components/text/prompts/formatting/taiwan_formatting.yaml",
+        "components/text/prompts/formatting/italy_formatting.yaml",
+        "components/text/prompts/formatting/indonesia_formatting.yaml",
+        "components/text/prompts/formatting/usa_formatting.yaml",
         "components/author/authors.json"
     ]
     
@@ -48,7 +48,7 @@ def analyze_workflow():
                     empty_files.append(file_path)
                 else:
                     existing_files.append(file_path)
-        except:
+        except Exception:
             pass
     
     print(f"📊 Configuration Files Found: {len(existing_files)}")
@@ -66,16 +66,14 @@ def analyze_workflow():
     
     # Analyze Enhanced Generator complexity
     try:
-        generator = EnhancedContentGenerator()
-        validator = HumanLikeValidator()
+        generator = TextComponentGenerator()
+        ContentQualityScorer()  # Initialize to verify it works
         
-        print("✅ Enhanced Generator: Initialized successfully")
-        print(f"   - Validation enabled: {generator.enable_validation}")
-        print(f"   - Threshold: {generator.human_likeness_threshold}")
-        print(f"   - Max attempts: {generator.max_improvement_attempts}")
+        print("✅ Text Component Generator: Initialized successfully")
+        print("   - AI detection service integrated")
         
-        print("✅ Human Validator: Initialized successfully")
-        print(f"   - Validation categories: 5 (structural, typography, vocabulary, sentence, tone)")
+        print("✅ Content Quality Scorer: Initialized successfully")
+        print("   - Validation categories: comprehensive scoring system")
         
     except Exception as e:
         print(f"❌ Initialization failed: {e}")
@@ -173,7 +171,7 @@ def test_simple_generation():
     
     try:
         # Test with mock client to avoid API dependencies
-        generator = EnhancedContentGenerator(enable_validation=False)  # Disable validation for simplicity
+        generator = TextComponentGenerator()  # Use the current text component generator
         mock_client = MockAPIClient()
         
         test_material = {

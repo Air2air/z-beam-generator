@@ -17,7 +17,7 @@ The Z-Beam generator now fully implements the **hybrid architecture** where API-
 - ✅ Documented implementation benefits
 
 ### **2. Content Component Enhancement**
-- ✅ Updated `components/content/generator.py` to hybrid pattern
+- ✅ Updated `components/text/generator.py` to hybrid pattern
 - ✅ Implemented API generation with frontmatter context
 - ✅ Added comprehensive prompt building with material data
 - ✅ Maintained fallback to prompt-based generation
@@ -177,7 +177,7 @@ Total Components: 11 (11 enabled, 0 disabled)
 ## 📋 Documentation Index
 
 1. **Architecture Specification**: `docs/HYBRID_ARCHITECTURE_SPECIFICATION.md`
-2. **Implementation Details**: `components/content/generator.py`
+2. **Implementation Details**: `components/text/generator.py`
 3. **Component Configuration**: `cli/component_config.py`
 4. **Completion Summary**: `HYBRID_IMPLEMENTATION_COMPLETE.md` (this document)
 

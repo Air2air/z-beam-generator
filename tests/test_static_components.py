@@ -61,13 +61,20 @@ def test_badgesymbol_component():
     print("Formatted:")
     print(result2)
     
-    # Test 3: Missing frontmatter (fallback)
-    print("\n📝 Test 3: Missing frontmatter (fallback)")
-    result3 = generator.generate_content("Steel")
-    print("Input: None")
-    print("Output:", repr(result3))
-    print("Formatted:")
-    print(result3)
+    # Test 3: Missing frontmatter (fail-fast)
+    print("\n📝 Test 3: Missing frontmatter (fail-fast)")
+    try:
+        result3 = generator.generate_content("Steel")  # No frontmatter provided
+        print("Input: None")
+        print("Output:", repr(result3))
+        print("Formatted:")
+        print(result3)
+        print("❌ Expected failure but got result - fail-fast not working")
+        assert False, "Should have failed without frontmatter"
+    except Exception as e:
+        print("Input: None")
+        print("✅ Correctly failed without frontmatter:", str(e))
+        print("✅ Fail-fast behavior confirmed")
     
     # Test 4: Empty frontmatter
     print("\n📝 Test 4: Empty frontmatter")
@@ -136,7 +143,7 @@ def test_propertiestable_with_dynamic_generator():
             
             # Let's check what happens if we try to generate with mock client
             print("\n🔄 Testing with mock API client...")
-            result = generator.generate_component("propertiestable", material_data)
+            result = generator.generate_component("propertiestable", material_data, None, None)
             if result:
                 print("✅ Generated with mock client:")
                 print("Output length:", len(result))

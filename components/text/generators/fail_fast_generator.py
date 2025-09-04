@@ -7,10 +7,9 @@ Removes all hardcoded fallbacks and implements clean error handling with retry m
 import sys
 import logging
 import time
-import yaml
 import json
 from pathlib import Path
-from typing import Dict, Any, List, Optional
+from typing import Dict, Any, List, Optional, Tuple
 
 # Add project root to path
 project_root = Path(__file__).parent.parent.parent
@@ -49,11 +48,18 @@ class FailFastContentGenerator:
     """
     
     def __init__(self, max_retries: int = 3, retry_delay: float = 1.0, 
-                 enable_scoring: bool = True, human_threshold: float = 75.0):
+                 enable_scoring: bool = True, human_threshold: float = 75.0,
+                 ai_detection_service=None, skip_ai_detection: bool = False):
         self.max_retries = max_retries
         self.retry_delay = retry_delay
         self.enable_scoring = enable_scoring
         self.human_threshold = human_threshold
+        self.ai_detection_service = ai_detection_service
+        self.skip_ai_detection = skip_ai_detection  # New flag to skip AI detection
+        
+        logger.info(f"FailFastContentGenerator initialized with AI detection service: {self.ai_detection_service is not None}")
+        if self.ai_detection_service:
+            logger.info(f"AI detection service available: {self.ai_detection_service.is_available()}")
         
         # Initialize content scorer if enabled - FAIL FAST if not available
         if self.enable_scoring:
@@ -74,20 +80,6 @@ class FailFastContentGenerator:
         """Validate all required configuration files exist and are valid."""
         logger.info("Validating required configurations...")
         
-        # Check base content prompt
-        base_prompt_file = "components/text/prompts/base_content_prompt.yaml"
-        if not Path(base_prompt_file).exists():
-            raise ConfigurationError(f"Required base content prompt missing: {base_prompt_file}")
-        
-        # Validate base prompt structure - check file exists and is valid YAML
-        try:
-            base_config = self._load_base_content_prompt()
-            # Dynamic validation - just ensure we can load it, no required sections
-            if not isinstance(base_config, dict):
-                raise ConfigurationError("Base content prompt must be a valid YAML dictionary")
-        except Exception as e:
-            raise ConfigurationError(f"Invalid base content prompt: {e}")
-        
         # Check authors configuration
         authors_file = "components/author/authors.json"
         if not Path(authors_file).exists():
@@ -106,25 +98,6 @@ class FailFastContentGenerator:
                         raise ConfigurationError(f"Author missing required field '{field}': {author}")
         except Exception as e:
             raise ConfigurationError(f"Invalid authors configuration: {e}")
-        
-        # Check persona files for all authors
-        authors_data = self._load_authors_data()
-        for author in authors_data:
-            author_id = author['id']
-            persona_file = self._get_persona_file_path(author_id)
-            
-            if not Path(persona_file).exists():
-                raise ConfigurationError(f"Required persona file missing for author {author_id}: {persona_file}")
-            
-            # Validate persona structure
-            try:
-                persona_config = self._load_persona_prompt(author_id)
-                required_sections = ['writing_style', 'language_patterns']
-                for section in required_sections:
-                    if section not in persona_config:
-                        logger.warning(f"Persona {author_id} missing recommended section: {section}")
-            except Exception as e:
-                raise ConfigurationError(f"Invalid persona file for author {author_id}: {e}")
         
         logger.info("✅ All required configurations validated successfully")
     
@@ -208,10 +181,9 @@ class FailFastContentGenerator:
         """Internal content generation without fallbacks."""
         try:
             # Load required configurations (fail fast if missing)
-            base_config = self._load_base_content_prompt()
+            base_config = {}
             author_id = author_info['id']
-            persona_config = self._load_persona_prompt(author_id)
-            formatting_config = self._load_formatting_prompt(author_id)
+            formatting_config = {}
             authors_data = self._load_authors_data()
             
             # Find author configuration (fail fast if not found)
@@ -220,24 +192,23 @@ class FailFastContentGenerator:
             # Extract required information
             # Fail fast if material data is missing critical info
             if 'name' not in material_data:
-                raise ConfigurationError(f"Material data missing 'name' field")
+                raise ConfigurationError("Material data missing 'name' field")
             
             subject = material_data['name']
-            # Make formula field optional - use "N/A" if not available
-            formula = "N/A"
-            if 'data' in material_data and 'formula' in material_data['data']:
-                formula = material_data['data']['formula']
             author_name = author_config['name']
-            author_country = author_config['country']
             
-            # Build API prompt
-            api_prompt = self._build_api_prompt(
-                subject, formula, author_name, author_country,
-                frontmatter_data, base_config, persona_config, formatting_config
-            )
+            # Build API prompt - removed all prompting content
+            system_prompt = ""
+            user_prompt = f"Generate content for {subject}"
             
             # Generate content via API (fail fast on API errors)
-            api_response_obj = self._call_api_with_validation(api_client, api_prompt)
+            api_response_obj = self._call_api_with_validation(api_client, user_prompt, system_prompt)
+            
+            # Debug: Log the actual prompts being sent
+            logger.info(f"🔍 System prompt preview (first 500 chars): {system_prompt[:500]}...")
+            logger.info(f"🔍 User prompt preview (first 500 chars): {user_prompt[:500]}...")
+            logger.info(f"📝 System prompt length: {len(system_prompt)} characters")
+            logger.info(f"📝 User prompt length: {len(user_prompt)} characters")
             
             # Extract text content from response object for processing
             if hasattr(api_response_obj, 'content'):
@@ -291,14 +262,26 @@ class FailFastContentGenerator:
                     excess_percentage = (excess_words / max_word_count) * 100
                     logger.info(f"ℹ️  Word count slightly over target but within 50% tolerance: {word_count} words > {max_word_count} target (+{excess_words} words, {excess_percentage:.1f}% over)")
             
+            # Extract content from response object for processing
+            if hasattr(response, 'content'):
+                response_content = response.content
+            elif isinstance(response, dict) and 'choices' in response:
+                # Handle OpenAI-style API response
+                if response['choices'] and 'message' in response['choices'][0]:
+                    response_content = response['choices'][0]['message']['content']
+                else:
+                    response_content = str(response)
+            elif isinstance(response, str):
+                response_content = response
+            else:
+                response_content = str(response)
+            
             # Generate quality score first if enabled
             quality_score = None
             if self.enable_scoring and self.content_scorer:
                 try:
                     # Create temporary formatted content for scoring
-                    temp_formatted = self._format_api_response(
-                        response, subject, author_name, author_country, base_config, persona_config
-                    )
+                    temp_formatted = response_content
                     
                     quality_score = self.content_scorer.score_content(
                         temp_formatted, material_data, author_info, frontmatter_data
@@ -314,11 +297,32 @@ class FailFastContentGenerator:
                     logger.warning(f"Content scoring failed: {scoring_error}")
                     # Don't fail generation for scoring errors, just log
 
+            # Perform AI detection analysis if service is available and not skipped
+            ai_detection_result = None
+            if not self.skip_ai_detection:
+                logger.info(f"Checking AI detection service: {self.ai_detection_service is not None}")
+                if self.ai_detection_service and self.ai_detection_service.is_available():
+                    logger.info("AI detection service is available, starting analysis...")
+                    try:
+                        # Use the raw response content for AI detection (without frontmatter)
+                        logger.info(f"Text length for AI detection: {len(response_content)} characters")
+                        ai_detection_result = self.ai_detection_service.analyze_text(response_content)
+                        logger.info(f"AI detection analysis completed: {ai_detection_result.score:.1f} score, {ai_detection_result.classification}")
+                        
+                        # Log warning if content appears too AI-like
+                        if ai_detection_result.score < 30:  # LOW score = AI-like content
+                            logger.warning(f"Content appears AI-generated (score: {ai_detection_result.score:.1f})")
+                            
+                    except Exception as ai_error:
+                        logger.warning(f"AI detection analysis failed: {ai_error}")
+                        ai_detection_result = None
+                else:
+                    logger.info("AI detection service not available or not enabled")
+            else:
+                logger.info("AI detection skipped by configuration")
+
             # Format response with comprehensive frontmatter (now with quality_score available)
-            formatted_content = self._format_api_response_with_metadata(
-                response, subject, author_name, author_country, base_config, persona_config,
-                author_id, quality_score, api_client, api_response_obj
-            )
+            formatted_content = response_content
             
             # Enhanced metadata with scoring information
             enhanced_metadata = {
@@ -326,7 +330,8 @@ class FailFastContentGenerator:
                 'author_id': author_id,
                 'author_name': author_name,
                 'attempts': 1,
-                'scoring_enabled': self.enable_scoring
+                'scoring_enabled': self.enable_scoring,
+                'ai_detection_enabled': self.ai_detection_service is not None and self.ai_detection_service.is_available()
             }
             
             if quality_score:
@@ -339,6 +344,17 @@ class FailFastContentGenerator:
                     'passes_human_threshold': quality_score.passes_human_threshold,
                     'retry_recommended': quality_score.retry_recommended,
                     'word_count': quality_score.word_count
+                })
+            
+            # Add AI detection metadata if available
+            if ai_detection_result:
+                enhanced_metadata.update({
+                    'ai_detection_score': ai_detection_result.score,
+                    'ai_detection_confidence': ai_detection_result.confidence,
+                    'ai_detection_classification': ai_detection_result.classification,
+                    'ai_detection_provider': ai_detection_result.provider,
+                    'ai_detection_processing_time': ai_detection_result.processing_time,
+                    'ai_detection_details': ai_detection_result.details
                 })
             
             return GenerationResult(
@@ -389,17 +405,6 @@ class FailFastContentGenerator:
                     logger.debug(f"Found word limit in base config expertise areas: {max_count}")
                     return max_count
             
-            # Check author_configurations as fallback
-            author_configs = base_config.get('author_configurations', {})
-            if author_key in author_configs:
-                max_count_str = author_configs[author_key].get('max_word_count', '')
-                # Extract number from strings like "380 words maximum"
-                import re
-                match = re.search(r'(\d+)', max_count_str)
-                if match:
-                    logger.debug(f"Found word limit in base config author configurations: {match.group(1)}")
-                    return int(match.group(1))
-            
             return None
             
         except Exception as e:
@@ -414,12 +419,19 @@ class FailFastContentGenerator:
         except Exception:
             return False
     
-    def _call_api_with_validation(self, api_client, prompt: str):
+    def _call_api_with_validation(self, api_client, prompt: str, system_prompt: Optional[str] = None):
         """Call API with proper error handling and return full response object."""
         try:
+            # API Terminal Messaging - Start
+            print("🚀 [GENERATOR] Starting API call to content generation service...")
+            print(f"📤 [GENERATOR] Sending prompt ({len(prompt)} chars) to API")
+            if system_prompt:
+                print(f"📤 [GENERATOR] System prompt ({len(system_prompt)} chars) included")
+            logger.info(f"🌐 [GENERATOR] API call initiated - Prompt length: {len(prompt)} chars")
+
             # Check if API client has generate_simple method (for backward compatibility)
             if hasattr(api_client, 'generate_simple'):
-                response = api_client.generate_simple(prompt)
+                response = api_client.generate_simple(prompt, system_prompt=system_prompt)
                 # For generate_simple, we only get string content, wrap it
                 if isinstance(response, str):
                     # Create a mock response object to maintain API verification data
@@ -430,7 +442,7 @@ class FailFastContentGenerator:
                             self.request_id = "simple_api_call"
                             self.response_time = 0.0
                             self.token_count = len(content.split())
-                            self.prompt_tokens = len(prompt.split())
+                            self.prompt_tokens = len(prompt.split()) + (len(system_prompt.split()) if system_prompt else 0)
                             self.completion_tokens = len(content.split())
                             self.model_used = "unknown"
                             self.retry_count = 0
@@ -438,14 +450,27 @@ class FailFastContentGenerator:
             else:
                 # Use GenerationRequest for newer API clients
                 from api.client import GenerationRequest
-                request = GenerationRequest(prompt=prompt)
+                request = GenerationRequest(prompt=prompt, system_prompt=system_prompt)
                 response = api_client.generate(request)
             
+            # API Terminal Messaging - Success
+            if hasattr(response, 'content'):
+                content_length = len(response.content)
+            elif isinstance(response, str):
+                content_length = len(response)
+            else:
+                content_length = len(str(response))
+            
+            print(f"✅ [GENERATOR] API call completed successfully - Received {content_length} chars")
+            logger.info(f"✅ [GENERATOR] API response received - Content length: {content_length} chars")
+            
             if not response:
+                print("❌ [GENERATOR] API returned empty response")
                 raise RetryableError("API returned empty response")
             
             if hasattr(response, 'success') and not response.success:
                 error_msg = getattr(response, 'error', 'Unknown API error')
+                print(f"❌ [GENERATOR] API request failed: {error_msg}")
                 raise RetryableError(f"API request failed: {error_msg}")
             
             # Extract content from response for validation
@@ -457,15 +482,21 @@ class FailFastContentGenerator:
                 content = str(response)
             
             if not content or len(content.strip()) < 50:
+                print(f"⚠️ [GENERATOR] API returned insufficient content: {len(content.strip())} chars")
                 raise RetryableError("API returned insufficient content")
             
             # Log content length for monitoring
             word_count = len(content.split())
             logger.info(f"📝 Generated content: {word_count} words ({len(content)} chars)")
+            print(f"📊 [GENERATOR] Content generated: {word_count} words, {len(content)} characters")
             
             return response  # Return full response object, not just content
             
         except Exception as e:
+            # API Terminal Messaging - Error
+            print(f"❌ [GENERATOR] API call failed: {str(e)}")
+            logger.error(f"❌ [GENERATOR] API call error: {e}")
+            
             if "timeout" in str(e).lower() or "connection" in str(e).lower():
                 raise RetryableError(f"API connection error: {e}")
             else:
@@ -486,78 +517,12 @@ class FailFastContentGenerator:
         
         return persona_file
     
-    def _load_base_content_prompt(self) -> Dict[str, Any]:
-        """Load base content prompt configuration."""
-        base_file = "components/text/prompts/base_content_prompt.yaml"
-        
-        try:
-            with open(base_file, 'r', encoding='utf-8') as f:
-                data = yaml.safe_load(f)
-            
-            if not data:
-                raise ConfigurationError(f"Base content prompt file {base_file} is empty")
-            
-            return data
-            
-        except FileNotFoundError:
-            raise ConfigurationError(f"Base content prompt not found: {base_file}")
-        except yaml.YAMLError as e:
-            raise ConfigurationError(f"Invalid YAML in base content prompt: {e}")
-        except Exception as e:
-            raise ConfigurationError(f"Error loading base content prompt: {e}")
-    
-    def _load_persona_prompt(self, author_id: int) -> Dict[str, Any]:
-        """Load persona configuration for author."""
-        persona_file = self._get_persona_file_path(author_id)
-        
-        try:
-            with open(persona_file, 'r', encoding='utf-8') as f:
-                data = yaml.safe_load(f)
-            
-            if not data:
-                raise ConfigurationError(f"Persona file {persona_file} is empty")
-            
-            return data
-            
-        except FileNotFoundError:
-            raise ConfigurationError(f"Persona file not found: {persona_file}")
-        except yaml.YAMLError as e:
-            raise ConfigurationError(f"Invalid YAML in persona file: {e}")
-        except Exception as e:
-            raise ConfigurationError(f"Error loading persona file: {e}")
-    
-    def _load_formatting_prompt(self, author_id: int) -> Dict[str, Any]:
-        """Load formatting-specific configuration."""
-        formatting_files = {
-            1: "components/text/prompts/formatting/taiwan_formatting.yaml",
-            2: "components/text/prompts/formatting/italy_formatting.yaml",
-            3: "components/text/prompts/formatting/indonesia_formatting.yaml", 
-            4: "components/text/prompts/formatting/usa_formatting.yaml"
-        }
-        
-        formatting_file = formatting_files.get(author_id)
-        if not formatting_file:
-            raise ConfigurationError(f"No formatting file configured for author_id: {author_id}")
-        
-        if not Path(formatting_file).exists():
-            raise ConfigurationError(f"Formatting file not found: {formatting_file}")
-        
-        try:
-            with open(formatting_file, 'r', encoding='utf-8') as f:
-                data = yaml.safe_load(f)
-            if not data:
-                raise ConfigurationError(f"Formatting file is empty: {formatting_file}")
-            return data
-        except yaml.YAMLError as e:
-            raise ConfigurationError(f"Invalid YAML in formatting file: {e}")
-        except Exception as e:
-            raise ConfigurationError(f"Error loading formatting file {formatting_file}: {e}")
-    
     def _load_authors_data(self) -> List[Dict[str, Any]]:
         """Load authors data from authors.json."""
         authors_file = "components/author/authors.json"
         
         try:
+            import json
             with open(authors_file, 'r', encoding='utf-8') as f:
                 data = json.load(f)
             
@@ -575,379 +540,13 @@ class FailFastContentGenerator:
             
         except FileNotFoundError:
             raise ConfigurationError(f"Authors file not found: {authors_file}")
-        except json.JSONDecodeError as e:
-            raise ConfigurationError(f"Invalid JSON in authors file: {e}")
         except Exception as e:
             raise ConfigurationError(f"Error loading authors file: {e}")
-    
-    def _build_api_prompt(self, subject: str, formula: str, author_name: str, 
-                         author_country: str, frontmatter_data: Optional[Dict],
-                         base_config: Dict, persona_config: Dict, formatting_config: Dict) -> str:
-        """Build API prompt from configurations - NO FALLBACK CONTENT."""
-        try:
-            # Start with basic material information and frontmatter data FIRST
-            prompt_parts = [
-                f"Generate laser cleaning content for {subject} ({formula})",
-                ""
-            ]
-            
-            # Add frontmatter/material context BEFORE other prompt layers
-            if frontmatter_data:
-                prompt_parts.append("MATERIAL CONTEXT:")
-                
-                # Chemical properties
-                chem_props = frontmatter_data.get('chemicalProperties', {})
-                if chem_props:
-                    prompt_parts.append(f"- Chemical Formula: {chem_props.get('formula', formula)}")
-                    if 'symbol' in chem_props:
-                        prompt_parts.append(f"- Material Symbol: {chem_props['symbol']}")
-                    if 'materialType' in chem_props:
-                        prompt_parts.append(f"- Material Type: {chem_props['materialType']}")
-                
-                # Physical properties
-                properties = frontmatter_data.get('properties', {})
-                if properties:
-                    if 'density' in properties:
-                        prompt_parts.append(f"- Density: {properties['density']}")
-                    if 'thermalConductivity' in properties:
-                        prompt_parts.append(f"- Thermal Conductivity: {properties['thermalConductivity']}")
-                    if 'meltingPoint' in properties:
-                        prompt_parts.append(f"- Melting Point: {properties['meltingPoint']}")
-                
-                # Category and technical specs
-                if 'category' in frontmatter_data:
-                    prompt_parts.append(f"- Category: {frontmatter_data['category'].title()}")
-                
-                tech_specs = frontmatter_data.get('technicalSpecifications', {})
-                if tech_specs:
-                    if 'tensileStrength' in tech_specs:
-                        prompt_parts.append(f"- Tensile Strength: {tech_specs['tensileStrength']}")
-                
-                prompt_parts.append("")
-            
-            # Now add author information AFTER material context
-            prompt_parts.extend([
-                f"Author: {author_name} from {author_country}",
-                ""
-            ])
-            
-            # Fail fast if overall_subject is missing from base config
-            overall_subject = base_config.get('overall_subject')
-            if not overall_subject:
-                raise ConfigurationError("Missing 'overall_subject' in base_content_prompt.yaml")
-                
-            prompt_parts.append("PRIMARY CONTENT GUIDANCE:")
-            if isinstance(overall_subject, list):
-                for guidance in overall_subject:
-                    prompt_parts.append(f"- {guidance}")
-            elif isinstance(overall_subject, str):
-                prompt_parts.append(f"- {overall_subject}")
-            else:
-                raise ConfigurationError("'overall_subject' must be list or string in base_content_prompt.yaml")
-            prompt_parts.append("")
-            
-            # Fail fast if author expertise areas missing
-            author_configs = base_config.get('author_expertise_areas')
-            if not author_configs:
-                raise ConfigurationError("Missing 'author_expertise_areas' in base_content_prompt.yaml")
-                
-            country_lower = author_country.lower()
-            
-            # Handle special country mappings
-            country_mapping = {
-                "united states (california)": "usa",
-                "united states": "usa", 
-                "taiwan": "taiwan",
-                "italy": "italy",
-                "indonesia": "indonesia"
-            }
-            
-            mapped_country = country_mapping.get(country_lower)
-            if not mapped_country:
-                raise ConfigurationError(f"No country mapping found for '{author_country}'")
-                
-            author_config = author_configs.get(mapped_country)
-            if not author_config:
-                raise ConfigurationError(f"No author configuration found for country '{mapped_country}' in base_content_prompt.yaml")
-            
-            # Fail fast if required configurations missing (technical_requirements is optional - comes from persona)
-            if not persona_config.get('language_patterns'):
-                raise ConfigurationError("Missing 'language_patterns' in persona configuration")
-            if not persona_config.get('writing_style'):
-                raise ConfigurationError("Missing 'writing_style' in persona configuration")
-                
-            tech_reqs = base_config.get('technical_requirements', {})  # Optional
-            language_patterns = persona_config['language_patterns']
-            writing_style = persona_config['writing_style']
-            
-            # Add technical requirements as SECONDARY guidance
-            if tech_reqs:
-                prompt_parts.append("SECONDARY - TECHNICAL REQUIREMENTS:")
-                laser_specs = tech_reqs.get('laser_specifications', [])
-                for spec in laser_specs:
-                    prompt_parts.append(f"- {spec}")
-                
-                required_content = tech_reqs.get('required_content', [])
-                if required_content:
-                    prompt_parts.append("")
-                    prompt_parts.append("REQUIRED CONTENT:")
-                    for content in required_content:
-                        # Replace placeholder with actual formula
-                        content_with_formula = content.replace('{material_formula}', formula)
-                        prompt_parts.append(f"- {content_with_formula}")
-                
-                prompt_parts.append("")
-            
-            # Add language patterns if available - SECONDARY guidance
-            if language_patterns:
-                signature_phrases = language_patterns.get('signature_phrases', [])
-                if signature_phrases:
-                    prompt_parts.append("SECONDARY - LANGUAGE STYLE:")
-                    prompt_parts.extend([f"- {phrase}" for phrase in signature_phrases[:3]])
-                    prompt_parts.append("")
-            
-            # Add writing style guidance - SECONDARY
-            if writing_style:
-                prompt_parts.append("SECONDARY - WRITING STYLE:")
-                for key, value in writing_style.items():
-                    if isinstance(value, str):
-                        prompt_parts.append(f"- {key.replace('_', ' ').title()}: {value}")
-                prompt_parts.append("")
-            
-            # Add formatting guidance from formatting config - SECONDARY
-            if formatting_config:
-                markdown_formatting = formatting_config.get('markdown_formatting', {})
-                if markdown_formatting:
-                    prompt_parts.append("SECONDARY - FORMATTING REQUIREMENTS:")
-                    
-                    # Headers
-                    headers = markdown_formatting.get('headers', {})
-                    if headers:
-                        prompt_parts.append("- Headers: " + headers.get('main_title', '# for main title'))
-                        prompt_parts.append("- Sections: " + headers.get('section_headers', '## for sections'))
-                    
-                    # Emphasis
-                    emphasis = markdown_formatting.get('emphasis', {})
-                    if emphasis:
-                        prompt_parts.append("- Bold: " + emphasis.get('critical_info', '**bold** for key information'))
-                        prompt_parts.append("- Formulas: " + emphasis.get('formulas', 'simple notation'))
-                    
-                    # Lists
-                    lists = markdown_formatting.get('lists', {})
-                    if lists:
-                        prompt_parts.append("- Lists: " + lists.get('primary_style', 'numbered lists'))
-                    
-                    prompt_parts.append("")
-            
-            # Add content structure from base config
-            content_structure = base_config.get('content_structure', {})
-            if content_structure:
-                required_sections = content_structure.get('required_sections', [])
-                if required_sections:
-                    prompt_parts.append("CONTENT STRUCTURE:")
-                    prompt_parts.extend([f"- {section}" for section in required_sections])
-                    prompt_parts.append("")
-            
-            # Add application focus if available
-            app_focus = base_config.get('application_focus', {})
-            if app_focus and country_lower in app_focus:
-                prompt_parts.append(f"APPLICATION FOCUS: {app_focus[country_lower]}")
-                prompt_parts.append("")
-            
-            # Add explicit word count constraints
-            author_id = author_config.get('author_id')
-            if not author_id:
-                # Try to map from country to author_id
-                author_id_map = {'taiwan': 1, 'italy': 2, 'indonesia': 3, 'usa': 4}
-                author_id = author_id_map.get(mapped_country)
-            
-            if author_id:
-                max_word_count = self._get_author_max_word_count(base_config, author_id, formatting_config)
-                if max_word_count:
-                    prompt_parts.extend([
-                        "CRITICAL WORD COUNT CONSTRAINT:",
-                        f"- Maximum words: {max_word_count} words STRICT LIMIT",
-                        f"- Target range: {int(max_word_count * 0.8)}-{max_word_count} words",
-                        "- Content MUST be concise and focused",
-                        "- Prioritize essential information only",
-                        ""
-                    ])
-            
-            # NO FALLBACK CONTENT - removed hardcoded final instructions
-            
-            return "\n".join(prompt_parts)
-            
-        except Exception as e:
-            raise ConfigurationError(f"Error building API prompt: {e}")
-    
-    def _format_api_response_with_metadata(self, response: str, subject: str, author_name: str,
-                           author_country: str, base_config: Dict, persona_config: Dict,
-                           author_id: int, quality_score: Any, api_client, api_response_obj=None,
-                           phrasly_metadata: Optional[Dict] = None) -> str:
-        """Format API response with comprehensive frontmatter verification metadata."""
-        try:
-            import datetime
-            
-            # Map author ID to persona files for verification
-            author_mapping = {
-                1: "taiwan",
-                2: "italy", 
-                3: "indonesia",
-                4: "usa"
-            }
-            
-            country_key = author_mapping.get(author_id, author_country.lower().replace(' ', '_').replace('(', '').replace(')', ''))
-            
-            # Get API model information
-            api_model = "grok-2"
-            if hasattr(api_client, 'model'):
-                api_model = api_client.model
-            elif hasattr(api_client, '_model'):
-                api_model = api_client._model
-            
-            # Generate comprehensive frontmatter for verification
-            frontmatter_lines = [
-                "---",
-                f"title: \"Laser Cleaning of {subject}: Technical Analysis\"",
-                f"author: \"{author_name}\"",
-                f"author_id: {author_id}",
-                f"country: \"{author_country}\"",
-                f"timestamp: \"{datetime.datetime.now().isoformat()}\"",
-                "api_provider: \"deepseek\"",
-                f"api_model: \"{api_model}\"",
-                f"generation_method: \"fail_fast_sophisticated_prompts\"",
-                f"material_name: \"{subject}\"",
-                f"prompt_concatenation: \"base_content + persona + formatting\"",
-                f"quality_scoring_enabled: {str(self.enable_scoring).lower()}",
-                f"human_believability_threshold: {self.human_threshold}",
-                "prompt_sources:",
-                "  - \"components/text/prompts/base_content_prompt.yaml\"",
-                f"  - \"components/text/prompts/personas/{country_key}_persona.yaml\"",
-                f"  - \"components/text/prompts/formatting/{country_key}_formatting.yaml\"",
-                "validation:",
-                "  no_fallbacks: true",
-                "  fail_fast_validation: true",
-                "  configuration_validated: true",
-                "  sophisticated_prompts_used: true",
-            ]
-            
-            # Add API verification metadata for absolute content traceability
-            if api_response_obj:
-                frontmatter_lines.extend([
-                    "api_verification:",
-                    f"  request_id: \"{getattr(api_response_obj, 'request_id', 'not_available')}\"",
-                    f"  response_time: {getattr(api_response_obj, 'response_time', 'not_available')}",
-                    f"  token_count: {getattr(api_response_obj, 'token_count', 'not_available')}",
-                    f"  prompt_tokens: {getattr(api_response_obj, 'prompt_tokens', 'not_available')}",
-                    f"  completion_tokens: {getattr(api_response_obj, 'completion_tokens', 'not_available')}",
-                    f"  model_used: \"{getattr(api_response_obj, 'model_used', 'not_available')}\"",
-                    f"  retry_count: {getattr(api_response_obj, 'retry_count', 0)}",
-                    f"  success_verified: {getattr(api_response_obj, 'success', False)}",
-                    "  content_source: \"api_response_object\"",
-                    f"  content_length: {len(response)}",
-                    "  no_hardcoded_content: true",
-                    "  no_mock_content: true",
-                ])
-            else:
-                frontmatter_lines.extend([
-                    "api_verification:",
-                    "  warning: \"api_response_object_not_captured\"",
-                    "  content_source: \"string_only\"",
-                    f"  content_length: {len(response)}",
-                ])
-                
-            # Add quality scores if available
-            if quality_score:
-                frontmatter_lines.extend([
-                    "quality_metrics:",
-                    f"  overall_score: {quality_score.overall_score}",
-                    f"  human_believability: {quality_score.human_believability}",
-                    f"  technical_accuracy: {quality_score.technical_accuracy}",
-                    f"  author_authenticity: {quality_score.author_authenticity}",
-                    f"  readability_score: {quality_score.readability_score}",
-                    f"  passes_human_threshold: {quality_score.passes_human_threshold}",
-                    f"  retry_recommended: {quality_score.retry_recommended}",
-                    f"  word_count: {quality_score.word_count}",
-                ])
-            
-            # Add Phrasly.ai iteration metadata if available
-            if phrasly_metadata:
-                frontmatter_lines.extend([
-                    "gptzero_iterations:",
-                    f"  enabled: {phrasly_metadata.get('gptzero_enabled', False)}",
-                    f"  total_iterations: {phrasly_metadata.get('gptzero_iterations', 0)}",
-                    f"  target_score: {phrasly_metadata.get('gptzero_target_score', 'N/A')}",
-                    f"  content_improved: {phrasly_metadata.get('content_improved', False)}",
-                ])
-                
-                # Add iteration history if available
-                if 'gptzero_history' in phrasly_metadata and phrasly_metadata['gptzero_history']:
-                    frontmatter_lines.append("  iteration_history:")
-                    for iteration in phrasly_metadata['gptzero_history']:
-                        frontmatter_lines.extend([
-                            f"    - iteration: {iteration.get('iteration', 'N/A')}",
-                            f"      ai_score: {iteration.get('ai_score', 'N/A')}",
-                            f"      improvement_made: {iteration.get('improvement_made', False)}",
-                            f"      strategy: \"{iteration.get('strategy', 'unknown')}\"",
-                        ])
-            
-            frontmatter_lines.extend([
-                "---",
-                ""
-            ])
-            
-            # Combine frontmatter with API response content directly (no title/byline)
-            formatted_content = "\n".join(frontmatter_lines) + response.strip()
-            
-            return formatted_content
-            
-        except Exception as e:
-            raise ConfigurationError(f"Error formatting response with metadata: {e}")
-
-    def _format_api_response(self, response: str, subject: str, author_name: str,
-                           author_country: str, base_config: Dict, persona_config: Dict) -> str:
-        """Format API response with persona-specific formatting and frontmatter verification."""
-        try:
-            import datetime
-            
-            # Generate comprehensive frontmatter for verification
-            frontmatter_lines = [
-                "---",
-                f"title: \"Laser Cleaning of {subject}: Technical Analysis\"",
-                f"author: \"{author_name}\"",
-                f"country: \"{author_country}\"",
-                f"timestamp: \"{datetime.datetime.now().isoformat()}\"",
-                "api_provider: \"deepseek\"",
-                "api_model: \"deepseek-chat\"",
-                f"generation_method: \"fail_fast_sophisticated_prompts\"",
-                f"material_name: \"{subject}\"",
-                f"prompt_concatenation: \"base_content + persona + formatting\"",
-                f"quality_scoring_enabled: {str(self.enable_scoring).lower()}",
-                f"human_believability_threshold: {self.human_threshold}",
-                "prompt_sources:",
-                "  - \"components/text/prompts/base_content_prompt.yaml\"",
-                f"  - \"components/text/prompts/personas/{author_country.lower().replace(' ', '_').replace('(', '').replace(')', '')}_persona.yaml\"",
-                f"  - \"components/text/prompts/formatting/{author_country.lower().replace(' ', '_').replace('(', '').replace(')', '')}_formatting.yaml\"",
-                "validation:",
-                "  no_fallbacks: true",
-                "  fail_fast_validation: true",
-                "  configuration_validated: true",
-                "  sophisticated_prompts_used: true",
-                "---",
-                ""
-            ]
-            
-            # Combine frontmatter with API response content directly (no title/byline)
-            formatted_content = "\n".join(frontmatter_lines) + response.strip()
-            
-            return formatted_content
-            
-        except Exception as e:
-            raise ConfigurationError(f"Error formatting response: {e}")
 
 
 def create_fail_fast_generator(max_retries: int = 3, retry_delay: float = 1.0,
-                             enable_scoring: bool = True, human_threshold: float = 75.0) -> FailFastContentGenerator:
+                             enable_scoring: bool = True, human_threshold: float = 75.0,
+                             ai_detection_service=None, skip_ai_detection: bool = False) -> FailFastContentGenerator:
     """
     Create a fail-fast content generator.
     
@@ -956,6 +555,8 @@ def create_fail_fast_generator(max_retries: int = 3, retry_delay: float = 1.0,
         retry_delay: Delay between retries in seconds
         enable_scoring: Whether to enable comprehensive quality scoring
         human_threshold: Minimum score required to pass human believability test
+        ai_detection_service: AI detection service for content analysis
+        skip_ai_detection: Whether to skip AI detection (useful when called from wrapper)
         
     Returns:
         Configured fail-fast content generator with optional scoring
@@ -967,5 +568,7 @@ def create_fail_fast_generator(max_retries: int = 3, retry_delay: float = 1.0,
         max_retries=max_retries, 
         retry_delay=retry_delay,
         enable_scoring=enable_scoring,
-        human_threshold=human_threshold
+        human_threshold=human_threshold,
+        ai_detection_service=ai_detection_service,
+        skip_ai_detection=skip_ai_detection
     )

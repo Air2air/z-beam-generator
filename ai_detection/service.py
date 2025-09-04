@@ -15,7 +15,7 @@ logger = logging.getLogger(__name__)
 @dataclass
 class AIDetectionResult:
     """AI detection analysis result"""
-    score: float  # AI detection score (0-100, higher = more AI-like)
+    score: float  # AI detection score (0-100, lower = more AI-like)
     confidence: float  # Confidence level (0-1)
     classification: str  # "human", "ai", or "unclear"
     details: Dict[str, Any]  # Additional analysis details
@@ -25,9 +25,9 @@ class AIDetectionResult:
 @dataclass
 class AIDetectionConfig:
     """Configuration for AI detection service"""
-    provider: str = "gptzero"
+    provider: str = "winston"
     enabled: bool = True
-    target_score: float = 30.0
+    target_score: float = 70.0
     max_iterations: int = 3
     improvement_threshold: float = 5.0
     timeout: int = 30
@@ -103,13 +103,7 @@ class AIDetectionService:
     def _initialize_provider(self):
         """Initialize the AI detection provider"""
         try:
-            if self.config.provider == "gptzero":
-                from .providers.gptzero import GPTZeroProvider
-                self.provider = GPTZeroProvider(self.config)
-            elif self.config.provider == "phrasly":
-                from .providers.phrasly import PhraslyProvider
-                self.provider = PhraslyProvider(self.config)
-            elif self.config.provider == "winston":
+            if self.config.provider == "winston":
                 from .providers.winston import WinstonProvider
                 self.provider = WinstonProvider(self.config)
             elif self.config.provider == "mock":
@@ -130,13 +124,8 @@ class AIDetectionService:
         config_path = Path("config/ai_detection.yaml")
 
         if not config_path.exists():
-            # Fallback to legacy config
-            legacy_config = Path("config/gptzero_config.yaml")
-            if legacy_config.exists():
-                return self._load_legacy_config(legacy_config)
-            else:
-                logger.warning("No AI detection config found, using defaults")
-                return AIDetectionConfig()
+            logger.warning("No AI detection config found, using defaults")
+            return AIDetectionConfig()
 
         try:
             import yaml
@@ -144,9 +133,9 @@ class AIDetectionService:
                 data = yaml.safe_load(f)
 
             return AIDetectionConfig(
-                provider=data.get('provider', 'gptzero'),
+                provider=data.get('provider', 'winston'),
                 enabled=data.get('enabled', True),
-                target_score=data.get('target_score', 30.0),
+                target_score=data.get('target_score', 70.0),
                 max_iterations=data.get('max_iterations', 3),
                 improvement_threshold=data.get('improvement_threshold', 5.0),
                 timeout=data.get('timeout', 30),
@@ -154,24 +143,6 @@ class AIDetectionService:
             )
         except Exception as e:
             logger.warning(f"Failed to load AI detection config: {e}")
-            return AIDetectionConfig()
-
-    def _load_legacy_config(self, config_path: Path) -> AIDetectionConfig:
-        """Load configuration from legacy GPTZero config file"""
-        try:
-            import yaml
-            with open(config_path, 'r') as f:
-                data = yaml.safe_load(f)
-
-            return AIDetectionConfig(
-                provider="gptzero",
-                enabled=True,
-                target_score=data.get('GPTZERO_TARGET_SCORE', 30.0),
-                max_iterations=data.get('GPTZERO_MAX_ITERATIONS', 3),
-                improvement_threshold=data.get('GPTZERO_IMPROVEMENT_THRESHOLD', 5.0)
-            )
-        except Exception as e:
-            logger.warning(f"Failed to load legacy config: {e}")
             return AIDetectionConfig()
 
 # Global service instance for easy access

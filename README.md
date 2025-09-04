@@ -100,15 +100,30 @@ python3 z_beam_generator.py --list-materials
 
 Each material generates these component types:
 
-| Component | Description | Status |
-|-----------|-------------|---------|
-| `caption` | Brief material description | ✅ Working |
-| `propertiestable` | Technical properties table | ✅ Working |
-| `bullets` | Key characteristics list | ✅ Working |
-| `content` | Full technical article | ✅ Working |
-| `frontmatter` | YAML metadata | ⚠️ YAML formatting issues |
-| `metatags` | HTML meta tags | ✅ Working |
-| `jsonld` | Structured data markup | ✅ Working |
+| Component | Description | Status | AI Detection | API Provider |
+|-----------|-------------|---------|--------------|--------------|
+| `frontmatter` | YAML metadata | ✅ Working | ❌ Disabled | deepseek |
+| `propertiestable` | Technical properties table | ✅ Working | ❌ Disabled | none |
+| `badgesymbol` | Material symbol badge | ✅ Working | ❌ Disabled | none |
+| `author` | Author information | ✅ Working | ❌ Disabled | none |
+| `bullets` | Key characteristics list | ✅ Working | ✅ Enabled | deepseek |
+| `caption` | Brief material description | ✅ Working | ✅ Enabled | gemini |
+| `text` | Full technical article | ✅ Working | ✅ Enabled | deepseek |
+| `tags` | SEO tags | ✅ Working | ❌ Disabled | deepseek |
+| `metatags` | HTML meta tags | ✅ Working | ❌ Disabled | none |
+| `jsonld` | Structured data markup | ✅ Working | ❌ Disabled | none |
+
+### Component Configuration Notes
+
+- **Static Components** (`api_provider: "none"`): `author`, `badgesymbol`, `propertiestable`, `jsonld`, `metatags`
+  - No API calls required
+  - AI detection flags removed (default to `False`)
+  - Faster generation, lower cost
+  
+- **API-Driven Components**: `frontmatter`, `bullets`, `caption`, `text`, `tags`
+  - Use external AI services
+  - AI detection enabled for content components
+  - Iterative improvement for quality enhancement
 
 ## 🏗️ Architecture
 

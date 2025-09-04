@@ -17,22 +17,7 @@ if str(project_root) not in sys.path:
     sys.path.insert(0, str(project_root))
 
 # Import after path setup
-try:
-    from generators.component_generators import FrontmatterComponentGenerator, ComponentResult
-except ImportError:
-    # Fallback if running standalone
-    class FrontmatterComponentGenerator:
-        def __init__(self, component_type): 
-            self.component_type = component_type
-        def generate(self, *args, **kwargs):
-            raise NotImplementedError("Base class method")
-    
-    class ComponentResult:
-        def __init__(self, component_type, content, success, error_message=None):
-            self.component_type = component_type
-            self.content = content
-            self.success = success
-            self.error_message = error_message
+from generators.component_generators import FrontmatterComponentGenerator, ComponentResult
 
 
 class JsonldComponentGenerator(FrontmatterComponentGenerator):
@@ -81,8 +66,8 @@ class JsonldComponentGenerator(FrontmatterComponentGenerator):
             # Use schema structure
             jsonld_data = self._build_from_schema(frontmatter_data, schema_structure, material_name)
         else:
-            # Fallback to hardcoded structure
-            jsonld_data = self._build_fallback_jsonld(frontmatter_data, material_name)
+            # FAIL-FAST: No fallback allowed - system must have required schema or example
+            raise Exception(f"No schema or example provided for JSON-LD generation of {material_name} - fail-fast architecture requires explicit configuration")
         
         # Format as proper JSON-LD script tag
         json_content = json.dumps(jsonld_data, indent=2)
@@ -165,63 +150,7 @@ class JsonldComponentGenerator(FrontmatterComponentGenerator):
         
         return jsonld
     
-    def _build_fallback_jsonld(self, frontmatter_data: Dict, material_name: str) -> Dict:
-        """Build fallback JSON-LD structure"""
-        # Extract basic material information
-        title = frontmatter_data.get('title', material_name)
-        description = frontmatter_data.get('description', f"Technical specifications and properties for {material_name}")
-        category = frontmatter_data.get('category', 'Material')
-        
-        # Extract chemical properties
-        chem_props = frontmatter_data.get('chemicalProperties', {})
-        formula = chem_props.get('formula', 'N/A')
-        symbol = chem_props.get('symbol', material_name[:3].upper())
-        
-        # Extract physical properties
-        properties = frontmatter_data.get('properties', {})
-        density = properties.get('density', 'N/A')
-        melting_point = properties.get('meltingPoint', 'N/A')
-        thermal_conductivity = properties.get('thermalConductivity', 'N/A')
-        
-        # Extract technical specifications
-        tech_specs = frontmatter_data.get('technicalSpecifications', {})
-        tensile_strength = tech_specs.get('tensileStrength', 'N/A') if tech_specs else 'N/A'
-        
-        # Build JSON-LD structure
-        return {
-            "@context": "https://schema.org",
-            "@type": "Material",
-            "name": title,
-            "description": description,
-            "category": category,
-            "chemicalComposition": {
-                "@type": "ChemicalSubstance",
-                "molecularFormula": formula,
-                "identifier": symbol
-            },
-            "properties": [
-                {
-                    "@type": "PropertyValue",
-                    "name": "Density",
-                    "value": density
-                },
-                {
-                    "@type": "PropertyValue", 
-                    "name": "Melting Point",
-                    "value": melting_point
-                },
-                {
-                    "@type": "PropertyValue",
-                    "name": "Thermal Conductivity", 
-                    "value": thermal_conductivity
-                },
-                {
-                    "@type": "PropertyValue",
-                    "name": "Tensile Strength",
-                    "value": tensile_strength
-                }
-            ]
-        }
+
     
     def _build_nested_structure(self, frontmatter_data: Dict, example_structure: Dict, parent_key: str) -> Dict:
         """Build nested dictionary structure"""

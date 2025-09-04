@@ -35,15 +35,7 @@ class AuthorComponentGenerator(APIComponentGenerator):
             # Get author data using existing system
             author = get_author_by_id(author_id)
             if not author:
-                # Fallback author data
-                author = {
-                    "name": "Expert Author", 
-                    "title": "Ph.D.", 
-                    "country": "International", 
-                    "expertise": "Materials Science and Laser Technology",
-                    "image": "/images/author/default.jpg"
-                }
-                logger.warning(f"Author {author_id} not found, using fallback data")
+                raise Exception(f"Author {author_id} not found - no fallback authors permitted in fail-fast architecture")
             
             # Generate author content using local data
             content = self._create_author_content(material_name, author)

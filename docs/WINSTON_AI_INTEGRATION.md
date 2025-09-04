@@ -90,7 +90,7 @@ provider: "winston"
 
 ## Scoring Interpretation
 
-- **Score Range**: 0-100 (higher = more AI-like)
+- **Score Range**: 0-100 (lower = more AI-like)
 - **Classification**:
   - `< 30`: "human"
   - `30-70`: "unclear"

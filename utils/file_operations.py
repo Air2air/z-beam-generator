@@ -55,6 +55,11 @@ def save_component_to_file_original(material: str, component_type: str, content:
     safe_material = material.lower().replace(' ', '-').replace('/', '-')
     filename = f"{safe_material}-laser-cleaning.md"
     
+    # Map component types to correct directories
+    # Handle legacy "content" component type - should save to "text" directory
+    if component_type == "content":
+        component_type = "text"
+    
     # Create directory structure
     component_dir = Path("content") / "components" / component_type
     component_dir.mkdir(parents=True, exist_ok=True)

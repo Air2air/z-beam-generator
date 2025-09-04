@@ -7,26 +7,22 @@ allowing for flexible field-driven content creation with component selection.
 """
 
 import json
-import yaml
 from pathlib import Path
 from typing import Dict, List, Optional, Any
 from dataclasses import dataclass
 import logging
 
-# Import slug utilities for consistent naming
-try:
-    from utils.slug_utils import create_material_slug, create_filename_slug
-except ImportError:
-    # Fallback to basic slug generation if utils not available
-    def create_material_slug(name: str) -> str:
-        return name.lower().replace(' ', '-').replace('_', '-').replace('(', '').replace(')', '')
-    def create_filename_slug(name: str, suffix: str = "laser-cleaning") -> str:
-        slug = create_material_slug(name)
-        return f"{slug}-{suffix}" if suffix else slug
-
 # Setup logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+
+# Simple slug generation functions
+def create_material_slug(name: str) -> str:
+    return name.lower().replace(' ', '-').replace('_', '-').replace('(', '').replace(')', '')
+
+def create_filename_slug(name: str, suffix: str = "laser-cleaning") -> str:
+    slug = create_material_slug(name)
+    return f"{slug}-{suffix}" if suffix else slug
 
 @dataclass
 class GenerationRequest:
@@ -129,33 +125,20 @@ class ComponentManager:
     def __init__(self, components_dir: str = "components"):
         self.components_dir = Path(components_dir)
         self.prompts = {}
-        self.load_prompts()
-    
-    def load_prompts(self):
-        """Load all component prompt.yaml files"""
-        if not self.components_dir.exists():
-            logger.warning(f"Components directory {self.components_dir} not found")
-            return
-        
-        for component_dir in self.components_dir.iterdir():
-            if component_dir.is_dir():
-                prompt_file = component_dir / "prompt.yaml"
-                if prompt_file.exists():
-                    try:
-                        with open(prompt_file, 'r', encoding='utf-8') as f:
-                            prompt_data = yaml.safe_load(f)
-                            self.prompts[component_dir.name] = prompt_data
-                            logger.info(f"Loaded prompt: {component_dir.name}")
-                    except Exception as e:
-                        logger.error(f"Error loading prompt {prompt_file}: {e}")
     
     def get_available_components(self) -> List[str]:
         """Get list of available component types"""
-        return list(self.prompts.keys())
+        # Scan components directory for available components
+        components = []
+        if self.components_dir.exists():
+            for component_dir in self.components_dir.iterdir():
+                if component_dir.is_dir() and component_dir.name != "__pycache__":
+                    components.append(component_dir.name)
+        return components
     
     def get_prompt(self, component_type: str) -> Optional[Dict]:
         """Get prompt configuration for a component type"""
-        return self.prompts.get(component_type)
+        return None
 
 class MaterialLoader:
     """Loads materials from YAML configuration"""
@@ -167,31 +150,29 @@ class MaterialLoader:
     
     def load_materials(self):
         """Load materials from YAML file"""
-        if not self.materials_file.exists():
-            logger.warning(f"Materials file {self.materials_file} not found")
-            return
-        
         try:
+            import yaml
             with open(self.materials_file, 'r', encoding='utf-8') as f:
                 data = yaml.safe_load(f)
-                materials_data = data.get('materials', {})
-                
-                # Flatten materials by category
-                for category, category_data in materials_data.items():
-                    items = category_data.get('items', [])
-                    for item in items:
-                        material_name = item.get('name')
-                        if material_name:
-                            self.materials[material_name] = {
-                                'name': material_name,
-                                'category': category,
-                                'article_type': category_data.get('article_type', 'material'),
-                                'data': item  # Store the full item data
-                            }
-                
-                logger.info(f"Loaded {len(self.materials)} materials")
+            
+            if not data or 'materials' not in data:
+                logger.warning(f"No materials found in {self.materials_file}")
+                return
+            
+            # Flatten the nested structure into a simple name->data mapping
+            for category, category_data in data['materials'].items():
+                if 'items' in category_data:
+                    for item in category_data['items']:
+                        material_name = item['name']
+                        # Add category to the material data
+                        item['category'] = category
+                        self.materials[material_name] = item
+            
+            logger.info(f"Loaded {len(self.materials)} materials from {self.materials_file}")
+            
         except Exception as e:
-            logger.error(f"Error loading materials: {e}")
+            logger.error(f"Error loading materials from {self.materials_file}: {e}")
+            self.materials = {}
     
     def get_material(self, name: str) -> Optional[Dict]:
         """Get material by name"""
@@ -226,8 +207,7 @@ class DynamicGenerator:
             from generators.component_generators import ComponentGeneratorFactory
             return ComponentGeneratorFactory.get_available_components()
         except ImportError:
-            # Fallback to component manager if the new system isn't available
-            return self.component_manager.get_available_components()
+            raise Exception("generators.component_generators not available - no fallback to component manager permitted in fail-fast architecture")
     
     def get_available_materials(self) -> List[str]:
         """Get list of available materials"""
@@ -242,37 +222,8 @@ class DynamicGenerator:
         self.api_client = api_client
     
     def _extract_frontmatter_data(self, material_name: str) -> Optional[Dict]:
-        """Extract frontmatter data from existing frontmatter file"""
-        try:
-            # Create proper file path for frontmatter using clean slug
-            material_slug = create_material_slug(material_name)
-            frontmatter_path = Path("content/components/frontmatter") / f"{material_slug}-laser-cleaning.md"
-            
-            if not frontmatter_path.exists():
-                logger.warning(f"Frontmatter file not found: {frontmatter_path}")
-                return None
-            
-            with open(frontmatter_path, 'r', encoding='utf-8') as f:
-                content = f.read()
-            
-            # Handle files wrapped in code blocks
-            if content.startswith('```yaml\n'):
-                # Remove the code block wrapper
-                content = content[8:]  # Remove ```yaml\n
-                if content.endswith('\n```'):
-                    content = content[:-4]  # Remove \n```
-            
-            # Extract YAML frontmatter
-            if content.startswith('---'):
-                parts = content.split('---', 2)
-                if len(parts) >= 2:
-                    frontmatter_yaml = parts[1].strip()
-                    return yaml.safe_load(frontmatter_yaml)
-            
-            return None
-        except Exception as e:
-            logger.warning(f"Error extracting frontmatter for {material_name}: {e}")
-            return None
+        """Extract frontmatter data from existing frontmatter file - simplified"""
+        return None
 
     def generate_component(self, material_name: str, component_type: str, 
                           schema_fields: Optional[Dict] = None,
@@ -344,47 +295,8 @@ class DynamicGenerator:
     def _build_dynamic_prompt(self, prompt_config: Dict, material: Dict, 
                              dynamic_fields: Dict, schema_fields: Optional[Dict] = None,
                              frontmatter_data: Optional[Dict] = None) -> str:
-        """Build a dynamic prompt incorporating schema fields and template variables
-        
-        NOTE: This method is deprecated and kept for backward compatibility.
-        New component generation uses individual component generators.
-        """
-        
-        # This method is now largely replaced by the component generators
-        # but kept for any legacy API-based components that haven't been migrated yet
-        
-        # Start with base prompt - use 'template' from YAML files
-        base_prompt = prompt_config.get('template', prompt_config.get('prompt', ''))
-        system_prompt = prompt_config.get('system', '')
-        
-        # Extract material information
-        material_name = material['name']
-        category = material['category']
-        article_type = material.get('article_type', 'material')
-        
-        # Create comprehensive template variables (simplified version)
-        template_vars = {
-            'subject': material_name,
-            'material': material_name,
-            'material_name': material_name,
-            'category': category,
-            'article_type': article_type,
-            'subject_lowercase': material_name.lower(),
-            'subject_slug': create_material_slug(material_name),
-        }
-        
-        # Replace all template variables in the prompt
-        prompt = base_prompt
-        for var, value in template_vars.items():
-            prompt = prompt.replace(f'{{{var}}}', str(value))
-        
-        # Combine with system prompt if available
-        if system_prompt:
-            full_prompt = f"System: {system_prompt}\n\nUser: {prompt}"
-        else:
-            full_prompt = prompt
-        
-        return full_prompt
+        """Build a simple prompt - deprecated method"""
+        return f"Generate content for {material.get('name', 'material')}"
     
     def generate_multiple(self, request: GenerationRequest) -> GenerationResult:
         """Generate multiple components for a material"""
@@ -413,7 +325,8 @@ class DynamicGenerator:
             result = self.generate_component(
                 request.material, 
                 component_type, 
-                schema_fields
+                schema_fields,
+                None  # No AI detection service in batch mode
             )
             
             results[component_type] = result

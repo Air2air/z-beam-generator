@@ -14,9 +14,9 @@
 - **Issue**: 4+ files loaded per content generation (base + persona + formatting + authors)
 - **Current Structure**: 
   ```
-  components/content/prompts/base_content_prompt.yaml  ✅
-  components/content/prompts/personas/taiwan_persona.yaml  ✅
-  components/content/prompts/formatting/taiwan_formatting.yaml  ❌ EMPTY
+  components/text/prompts/base_content_prompt.yaml  ✅
+  components/text/prompts/personas/taiwan_persona.yaml  ✅
+  components/text/prompts/formatting/taiwan_formatting.yaml  ❌ EMPTY
   components/author/authors.json  ✅
   ```
 - **Impact**: Unnecessary complexity and file I/O overhead
@@ -73,7 +73,7 @@ Based on current capabilities:
 ### **Priority 1: Fix Broken Formatting (CRITICAL)**
 ```bash
 # Option A: Remove broken formatting files
-rm components/content/prompts/formatting/*.yaml
+rm components/text/prompts/formatting/*.yaml
 
 # Option B: Implement formatting logic
 # Add cultural formatting patterns to persona files
@@ -82,7 +82,7 @@ rm components/content/prompts/formatting/*.yaml
 ### **Priority 2: Consolidate Configuration (HIGH)**
 **Recommended Structure:**
 ```yaml
-# components/content/prompts/personas/taiwan_complete.yaml
+# components/text/prompts/personas/taiwan_complete.yaml
 persona:
   name: "Yi-Chun Lin"
   writing_style: {...}

@@ -15,8 +15,8 @@ from typing import Dict, List
 project_root = Path(__file__).parent
 sys.path.insert(0, str(project_root))
 
-from components.content.enhanced_generator import EnhancedContentGenerator
-from components.content.human_validator import HumanLikeValidator
+from components.text.generator import TextComponentGenerator
+from components.text.validator import validate_content_comprehensive
 from api.client import APIClient, MockAPIClient
 
 # Configure logging
@@ -27,12 +27,8 @@ class ContentGenerationEvaluator:
     """Comprehensive evaluation of content generation workflow."""
     
     def __init__(self):
-        self.generator = EnhancedContentGenerator(
-            enable_validation=True,
-            human_likeness_threshold=85,  # High standard for believability
-            max_improvement_attempts=3   # Allow more attempts
-        )
-        self.validator = HumanLikeValidator()
+        self.generator = TextComponentGenerator()
+        self.validator = None  # Using built-in validation
         self.api_client = MockAPIClient()
         
         # Test materials for evaluation

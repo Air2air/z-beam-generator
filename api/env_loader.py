@@ -39,29 +39,7 @@ class EnvLoader:
             print("🔑 Loaded API keys from config/api_keys.py")
             
         except ImportError:
-            print("⚠️  config/api_keys.py not found, falling back to .env")
-            
-        # Also try .env file as fallback
-        try:
-            from dotenv import load_dotenv
-            
-            # Look for .env file in project root
-            project_root = Path(__file__).parent.parent
-            env_file = project_root / '.env'
-            
-            if env_file.exists():
-                load_dotenv(env_file)
-                print(f"📁 Loaded environment from {env_file}")
-            else:
-                # Also check for .env in current working directory
-                cwd_env = Path.cwd() / '.env'
-                if cwd_env.exists():
-                    load_dotenv(cwd_env)
-                    print(f"📁 Loaded environment from {cwd_env}")
-                    
-        except ImportError:
-            # dotenv not available, rely on system environment
-            pass
+            raise Exception("config/api_keys.py not found - no fallback to .env permitted in fail-fast architecture")
         
         cls._loaded = True
     

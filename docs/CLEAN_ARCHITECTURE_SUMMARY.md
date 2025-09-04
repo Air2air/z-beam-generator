@@ -71,7 +71,7 @@
 ## 📁 **Final Directory Structure**
 
 ```
-components/content/prompts/
+components/text/prompts/
 ├── base_content_prompt.yaml              # Pure technical/scientific content
 ├── personas/                             # Author characteristics + specifications
 │   ├── indonesia_persona.yaml           # Ikmanda: 250 words, renewable energy

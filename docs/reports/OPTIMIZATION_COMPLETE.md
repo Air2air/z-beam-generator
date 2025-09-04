@@ -35,7 +35,7 @@ Successfully implemented critical optimizations while maintaining 100% backward 
 ## 🔧 **IMPLEMENTED COMPONENTS**
 
 ### **OptimizedContentGenerator**
-- **Location**: `components/content/optimized_enhanced_generator.py`
+- **Location**: `components/text/optimized_enhanced_generator.py`
 - **Features**: 
   - Enhanced cultural authenticity
   - Simplified 3-category validation
@@ -43,7 +43,7 @@ Successfully implemented critical optimizations while maintaining 100% backward 
   - Backward compatibility
 
 ### **ConfigurationManager**
-- **Location**: `components/content/optimized_config_manager.py`
+- **Location**: `components/text/optimized_config_manager.py`
 - **Features**:
   - LRU caching with TTL
   - File priority loading
@@ -105,7 +105,7 @@ Successfully implemented critical optimizations while maintaining 100% backward 
 ### **Option 1: Drop-in Replacement**
 ```python
 # Replace existing generator
-from components.content.optimized_enhanced_generator import create_optimized_generator
+from components.text.optimized_enhanced_generator import create_optimized_generator
 
 generator = create_optimized_generator(
     enable_validation=True,
@@ -117,8 +117,8 @@ generator = create_optimized_generator(
 ### **Option 2: Gradual Migration**
 ```python
 # Test alongside existing system
-from components.content.enhanced_generator import EnhancedContentGenerator
-from components.content.optimized_enhanced_generator import OptimizedContentGenerator
+from components.text.enhanced_generator import EnhancedContentGenerator
+from components.text.optimized_enhanced_generator import OptimizedContentGenerator
 
 # Compare results between systems
 standard_gen = EnhancedContentGenerator()
@@ -128,7 +128,7 @@ optimized_gen = OptimizedContentGenerator()
 ### **Option 3: Configuration Only**
 ```python
 # Use just the optimized config manager
-from components.content.optimized_config_manager import get_optimized_persona_config
+from components.text.optimized_config_manager import get_optimized_persona_config
 
 # Efficient config loading with caching
 config = get_optimized_persona_config(author_id=1)

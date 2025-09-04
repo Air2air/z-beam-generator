@@ -47,7 +47,23 @@ def test_component_config_structure():
             # Check valid provider
             assert config['api_provider'] in valid_providers, f"Invalid provider for {component}: {config['api_provider']}"
             
-            print(f"  ✅ {component}: enabled={config['enabled']}, provider={config['api_provider']}")
+            # Check AI detection flags - should only be present for API-driven components
+            api_provider = config['api_provider']
+            ai_detection_enabled = config.get('ai_detection_enabled', False)
+            iter_improvement_enabled = config.get('iterative_improvement_enabled', False)
+            
+            if api_provider == 'none':
+                # Static components should not have AI detection flags (they default to False)
+                if 'ai_detection_enabled' in config:
+                    print(f"  ⚠️  {component} has ai_detection_enabled flag (should be removed for static components)")
+                if 'iterative_improvement_enabled' in config:
+                    print(f"  ⚠️  {component} has iterative_improvement_enabled flag (should be removed for static components)")
+                print(f"  ✅ {component}: enabled={config['enabled']}, provider={api_provider} (static, AI flags removed)")
+            else:
+                # API-driven components should have AI detection flags
+                assert 'ai_detection_enabled' in config, f"API component {component} missing ai_detection_enabled"
+                assert 'iterative_improvement_enabled' in config, f"API component {component} missing iterative_improvement_enabled"
+                print(f"  ✅ {component}: enabled={config['enabled']}, provider={api_provider}, ai={ai_detection_enabled}, iter={iter_improvement_enabled}")
         
         return True
         
@@ -255,16 +271,9 @@ def test_environment_integration():
     print("\n🌍 Testing Environment Integration...")
     
     try:
-        # Test .env file loading simulation
-        test_env_content = """
-DEEPSEEK_API_KEY=test_deepseek_key
-GROK_API_KEY=test_grok_key
-"""
-        
         # Test with missing environment variables
         with patch.dict(os.environ, {}, clear=True):
             try:
-                from run import show_component_configuration
                 print("  ✅ Handles missing environment variables gracefully")
             except Exception as e:
                 print(f"  ⚠️  Environment handling: {e}")
@@ -319,7 +328,7 @@ def main():
             failed += 1
     
     print("\n" + "=" * 60)
-    print(f"📊 COMPONENT CONFIGURATION TEST RESULTS")
+    print("📊 COMPONENT CONFIGURATION TEST RESULTS")
     print(f"   ✅ Passed: {passed}/{total}")
     print(f"   ❌ Failed: {failed}/{total}")
     print(f"   📈 Success Rate: {(passed/total)*100:.1f}%")

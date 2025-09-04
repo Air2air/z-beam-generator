@@ -81,8 +81,8 @@ class MetatagsComponentGenerator(FrontmatterComponentGenerator):
             # Use schema structure
             meta_tags = self._build_from_schema(frontmatter_data, schema_fields, material_name)
         else:
-            # Fallback to hardcoded structure
-            meta_tags = self._build_fallback_metatags(frontmatter_data, material_name)
+            # FAIL-FAST: No fallback allowed - system must have required schema or example
+            raise Exception(f"No schema or example provided for metatags generation of {material_name} - fail-fast architecture requires explicit configuration")
         
         return '\n'.join(meta_tags)
     
@@ -154,46 +154,7 @@ class MetatagsComponentGenerator(FrontmatterComponentGenerator):
         
         return meta_tags
     
-    def _build_fallback_metatags(self, frontmatter_data: Dict, material_name: str) -> list:
-        """Build fallback meta tags structure"""
-        # Extract basic information
-        title = frontmatter_data.get('title', material_name)
-        description = frontmatter_data.get('description', f"Technical specifications and properties for {material_name}")
-        category = frontmatter_data.get('category', 'Material')
-        
-        # Extract additional metadata
-        keywords = []
-        keywords.append(material_name.lower())
-        keywords.append(category.lower())
-        
-        # Add material type keywords
-        chem_props = frontmatter_data.get('chemicalProperties', {})
-        if 'materialType' in chem_props:
-            keywords.append(chem_props['materialType'].lower())
-        
-        # Add properties keywords
-        properties = frontmatter_data.get('properties', {})
-        if properties:
-            keywords.extend(['material properties', 'technical specifications'])
-        
-        # Build meta tags
-        meta_tags = []
-        meta_tags.append(f'<meta name="description" content="{description}">')
-        meta_tags.append(f'<meta name="keywords" content="{", ".join(keywords)}">')
-        meta_tags.append(f'<meta name="subject" content="{category}">')
-        meta_tags.append(f'<meta name="classification" content="{category}">')
-        
-        # Open Graph tags
-        meta_tags.append(f'<meta property="og:title" content="{title}">')
-        meta_tags.append(f'<meta property="og:description" content="{description}">')
-        meta_tags.append('<meta property="og:type" content="article">')
-        
-        # Twitter Card tags
-        meta_tags.append('<meta name="twitter:card" content="summary">')
-        meta_tags.append(f'<meta name="twitter:title" content="{title}">')
-        meta_tags.append(f'<meta name="twitter:description" content="{description}">')
-        
-        return meta_tags
+
     
     def _generate_meta_content(self, frontmatter_data: Dict, tag_name: str, material_name: str, example_content: str) -> str:
         """Generate content for specific meta tag based on tag name"""

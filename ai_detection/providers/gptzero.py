@@ -113,14 +113,6 @@ class GPTZeroProvider:
 
         # Fallback to config file
         if not api_key:
-            config_path = Path("config/gptzero_config.yaml")
-            if config_path.exists():
-                try:
-                    import yaml
-                    with open(config_path, 'r') as f:
-                        data = yaml.safe_load(f)
-                    api_key = data.get('GPTZERO_API_KEY')
-                except Exception:
-                    pass
+            raise Exception("GPTZero API key not found in environment - no fallback to config file permitted in fail-fast architecture")
 
         return api_key

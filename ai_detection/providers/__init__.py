@@ -3,10 +3,10 @@
 AI Detection Providers Package
 """
 
-from .gptzero import GPTZeroProvider
+from .winston import WinstonProvider
 from .mock import MockProvider
 
 __all__ = [
-    'GPTZeroProvider',
+    'WinstonProvider',
     'MockProvider'
 ]

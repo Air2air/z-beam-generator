@@ -22,12 +22,7 @@ from enum import Enum
 try:
     from utils.slug_utils import create_material_slug, create_filename_slug
 except ImportError:
-    # Fallback to basic slug generation if utils not available
-    def create_material_slug(name: str) -> str:
-        return name.lower().replace(' ', '-').replace('_', '-').replace('(', '').replace(')', '')
-    def create_filename_slug(name: str, suffix: str = "laser-cleaning") -> str:
-        slug = create_material_slug(name)
-        return f"{slug}-{suffix}" if suffix else slug
+    raise Exception("utils.slug_utils not available - no fallback slug generation permitted in fail-fast architecture")
 
 logger = logging.getLogger(__name__)
 
@@ -407,11 +402,7 @@ class CentralizedValidator:
                 errors.extend(validate_badgesymbol_content(content))
                 
         except ImportError as e:
-            # Fallback to basic validation if component validator not available
-            logger.warning(f"Component validator not found for {component}: {e}")
-            # Check for placeholder content (common to all components)
-            if 'TBD' in content or 'TODO' in content or '[' in content and ']' in content:
-                errors.append("Contains placeholder content (TBD, TODO, or [brackets])")
+            raise Exception(f"Component validator not found for {component}: {e} - no fallback validation permitted in fail-fast architecture")
             
         except Exception as e:
             logger.error(f"Error in component-specific validation for {component}: {e}")

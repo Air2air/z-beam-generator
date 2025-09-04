@@ -11,7 +11,12 @@ import json
 from pathlib import Path
 from typing import Dict, List, Any
 from api.env_loader import EnvLoader
-from cli.api_config import API_PROVIDERS
+# Import API providers from run.py to match the main configuration
+try:
+    from run import API_PROVIDERS
+except ImportError:
+    # Fallback to CLI config if run.py import fails
+    from cli.api_config import API_PROVIDERS
 from cli.component_config import COMPONENT_CONFIG
 
 

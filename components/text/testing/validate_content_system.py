@@ -45,7 +45,7 @@ def run_content_validation():
     logger.info("\n🎭 PERSONA VALIDATION (Core Content Generation)")
     logger.info("-" * 60)
     try:
-        from components.content.testing.test_persona_validation import run_persona_validation_tests
+        from components.text.testing.test_persona_validation import run_persona_validation_tests
         success = run_persona_validation_tests()
         validation_results['persona_validation'] = success
         
@@ -62,7 +62,7 @@ def run_content_validation():
     logger.info("-" * 60)
     try:
         # Test fail_fast_generator initialization
-        from components.content.generators.fail_fast_generator import FailFastContentGenerator
+        from components.text.generators.fail_fast_generator import FailFastContentGenerator
         generator = FailFastContentGenerator()
         
         # Test all 4 authors can be loaded
@@ -93,7 +93,7 @@ def run_content_validation():
     logger.info("\n📄 CONTENT FILES VALIDATION")
     logger.info("-" * 60)
     try:
-        content_dir = Path("content/components/content")
+        content_dir = Path("content/components/text")
         
         if not content_dir.exists():
             logger.error("❌ Content directory does not exist")

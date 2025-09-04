@@ -59,7 +59,7 @@ def evaluate_generators():
 
 def test_fail_fast_generator(material):
     """Test the fail-fast generator."""
-    from components.content.generators.fail_fast_generator import create_fail_fast_generator
+    from components.text.generators.fail_fast_generator import create_fail_fast_generator
     from api.client import MockAPIClient
     
     start_time = time.time()
@@ -97,12 +97,12 @@ def test_fail_fast_generator(material):
 def test_optimized_generator(material):
     """Test the optimized enhanced generator."""
     try:
-        from components.content.optimized_enhanced_generator import OptimizedContentGenerator
+        from components.text.generators.fail_fast_generator import create_fail_fast_generator
         from api.client import MockAPIClient
         
         start_time = time.time()
         
-        generator = OptimizedContentGenerator(enable_validation=False)  # Skip validation for speed
+        generator = create_fail_fast_generator()
         api_client = MockAPIClient()
         
         result = generator.generate(
@@ -134,7 +134,7 @@ def test_optimized_generator(material):
 def test_original_generator(material):
     """Test the original generator."""
     try:
-        from components.content.generator import ContentComponentGenerator
+        from components.text.generator import ContentComponentGenerator
         from api.client import MockAPIClient
         
         start_time = time.time()

@@ -25,12 +25,12 @@ class APIConfig:
     api_key: str
     base_url: str = "https://api.deepseek.com"
     model: str = "deepseek-chat"
-    max_tokens: int = 4000
-    temperature: float = 0.7
+    max_tokens: int = 3000  # REDUCED FROM 4000 for faster responses
+    temperature: float = 0.8  # INCREASED FROM 0.7 for more creative but faster responses
     timeout_connect: int = 10
-    timeout_read: int = 120
-    max_retries: int = 3
-    retry_delay: float = 1.0
+    timeout_read: int = 60  # REDUCED FROM 120 for faster timeout
+    max_retries: int = 2   # REDUCED FROM 3 for faster failure
+    retry_delay: float = 0.5  # REDUCED FROM 1.0 for faster retries
 
 class ConfigManager:
     """Manages API configuration with environment variable support"""
@@ -50,12 +50,12 @@ class ConfigManager:
             api_key=api_key,
             base_url=os.getenv('DEEPSEEK_BASE_URL', 'https://api.deepseek.com'),
             model=os.getenv('DEEPSEEK_MODEL', 'deepseek-chat'),
-            max_tokens=int(os.getenv('DEEPSEEK_MAX_TOKENS', '4000')),
-            temperature=float(os.getenv('DEEPSEEK_TEMPERATURE', '0.7')),
+            max_tokens=int(os.getenv('DEEPSEEK_MAX_TOKENS', '3000')),  # OPTIMIZED: Reduced from 4000
+            temperature=float(os.getenv('DEEPSEEK_TEMPERATURE', '0.8')),  # OPTIMIZED: Increased from 0.7
             timeout_connect=int(os.getenv('DEEPSEEK_TIMEOUT_CONNECT', '10')),
-            timeout_read=int(os.getenv('DEEPSEEK_TIMEOUT_READ', '120')),
-            max_retries=int(os.getenv('DEEPSEEK_MAX_RETRIES', '3')),
-            retry_delay=float(os.getenv('DEEPSEEK_RETRY_DELAY', '1.0'))
+            timeout_read=int(os.getenv('DEEPSEEK_TIMEOUT_READ', '60')),  # OPTIMIZED: Reduced from 120
+            max_retries=int(os.getenv('DEEPSEEK_MAX_RETRIES', '2')),  # OPTIMIZED: Reduced from 3
+            retry_delay=float(os.getenv('DEEPSEEK_RETRY_DELAY', '0.5'))  # OPTIMIZED: Reduced from 1.0
         )
     
     @staticmethod

@@ -53,7 +53,7 @@ def run_content_test_suite():
     logger.info("\n🎭 TEST SUITE 2: PERSONA VALIDATION TESTS")
     logger.info("-" * 60)
     try:
-        from components.content.testing.test_persona_validation import run_persona_validation_tests
+        from components.text.testing.test_persona_validation import run_persona_validation_tests
         success = run_persona_validation_tests()
         test_results['persona_validation'] = success
         if success:
@@ -73,7 +73,7 @@ def run_content_test_suite():
     logger.info("   - Checks header standardization and paragraph structure")
     
     try:
-        from components.content.testing.test_technical_content_validation import run_technical_content_validation_tests
+        from components.text.testing.test_technical_content_validation import run_technical_content_validation_tests
         success = run_technical_content_validation_tests()
         test_results['technical_validation'] = success
         if success:
@@ -92,7 +92,7 @@ def run_content_test_suite():
     logger.info("   - May take several minutes to complete")
     
     try:
-        from components.content.testing.test_content_end_to_end_updated import run_updated_end_to_end_tests
+        from components.text.testing.test_content_end_to_end_updated import run_updated_end_to_end_tests
         success = run_updated_end_to_end_tests()
         test_results['end_to_end'] = success
         if success:
