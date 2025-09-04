@@ -422,37 +422,40 @@ z-beam-generator/
 
 ## 🧪 Testing
 
-### Comprehensive Test Runner
+### Unified Test Runner
 
-Run the complete test suite with frontmatter validation and dependency testing:
+Run comprehensive tests across all architectures with a single command:
 
 ```bash
-# Full test suite (recommended)
-python3 run_comprehensive_tests.py
+# Run all tests (components + services)
+python3 run_unified_tests.py
 
-# Quick test suite (frontmatter + core tests only)
-python3 run_comprehensive_tests.py --quick
+# Run component tests only (with frontmatter validation)
+python3 run_unified_tests.py --components
+
+# Run service tests only (AI detection, iterative workflow, etc.)
+python3 run_unified_tests.py --services
+
+# Quick component tests (skip slow tests)
+python3 run_unified_tests.py --components --quick
 
 # Verbose output with detailed results
-python3 run_comprehensive_tests.py --verbose
-
-# Quick tests with verbose output
-python3 run_comprehensive_tests.py --quick --verbose
+python3 run_unified_tests.py --verbose
 ```
 
 **Features:**
+- ✅ **Unified Architecture**: Combines component-based and service-based testing
 - ✅ **Frontmatter Validation**: Only tests materials with complete frontmatter files
 - ✅ **Dependency Testing**: Validates frontmatter dependency chain and cascading failures
-- ✅ **Comprehensive Coverage**: 20+ tests covering all system components
+- ✅ **Comprehensive Coverage**: 20+ tests covering all system components and services
 - ✅ **Real-time Status**: Live progress tracking during test execution
 - ✅ **Clear Reporting**: Detailed pass/fail summary with timing information
 - ✅ **Fail-Fast Validation**: Confirms no fallbacks or mocks in production code
 
 **Test Categories:**
-- **Frontmatter Tests**: Dependency chain and cascading failure validation
-- **Core Tests**: Content generation, AI detection, prompt systems
-- **API Tests**: DeepSeek and Winston.ai integration validation
-- **Validation Tests**: Schema validation and data integrity checks
+- **Component Tests**: Frontmatter dependency validation, core component generation
+- **Service Tests**: AI detection optimization, iterative workflow, dynamic evolution
+- **Integration Tests**: Cross-system compatibility and performance validation
 
 ### Individual Test Files
 

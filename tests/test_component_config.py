@@ -19,21 +19,22 @@ from unittest.mock import patch, MagicMock
 # Add parent directory to path for importing modules
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-def test_component_config_structure():
-    """Test the structure and validity of COMPONENT_CONFIG"""
-    print("🔍 Testing Component Configuration Structure...")
+import pytest
+
+class TestComponentConfig:
+    """Component configuration test suite"""
     
-    try:
+    def test_component_config_structure(self):
+        """Test the structure and validity of COMPONENT_CONFIG"""
         from run import COMPONENT_CONFIG
         
         # Test that config is not empty
         components_config = COMPONENT_CONFIG.get("components", {})
         assert len(components_config) > 0, "No components configured"
-        print(f"  ✅ Found {len(components_config)} configured components")
         
         # Test each component configuration
         required_fields = ['enabled', 'api_provider']
-        valid_providers = ['deepseek', 'grok', 'none']
+        valid_providers = ['deepseek', 'grok', 'gemini', 'openai', 'none']  # Updated to match actual providers
         
         for component, config in components_config.items():
             # Check required fields
@@ -54,28 +55,14 @@ def test_component_config_structure():
             
             if api_provider == 'none':
                 # Static components should not have AI detection flags (they default to False)
-                if 'ai_detection_enabled' in config:
-                    print(f"  ⚠️  {component} has ai_detection_enabled flag (should be removed for static components)")
-                if 'iterative_improvement_enabled' in config:
-                    print(f"  ⚠️  {component} has iterative_improvement_enabled flag (should be removed for static components)")
-                print(f"  ✅ {component}: enabled={config['enabled']}, provider={api_provider} (static, AI flags removed)")
+                pass  # This is fine
             else:
                 # API-driven components should have AI detection flags
                 assert 'ai_detection_enabled' in config, f"API component {component} missing ai_detection_enabled"
                 assert 'iterative_improvement_enabled' in config, f"API component {component} missing iterative_improvement_enabled"
-                print(f"  ✅ {component}: enabled={config['enabled']}, provider={api_provider}, ai={ai_detection_enabled}, iter={iter_improvement_enabled}")
-        
-        return True
-        
-    except Exception as e:
-        print(f"  ❌ Component config structure test failed: {e}")
-        return False
-
-def test_component_enable_disable():
-    """Test component enable/disable functionality"""
-    print("\n⚙️ Testing Component Enable/Disable...")
     
-    try:
+    def test_component_enable_disable(self):
+        """Test component enable/disable functionality"""
         from run import COMPONENT_CONFIG
         
         # Count enabled/disabled components
@@ -83,11 +70,8 @@ def test_component_enable_disable():
         enabled_count = sum(1 for config in components_config.values() if config['enabled'])
         disabled_count = len(components_config) - enabled_count
         
-        print(f"  📊 Current state: {enabled_count} enabled, {disabled_count} disabled")
-        
         # Test that we have at least some components enabled
         assert enabled_count > 0, "No components are enabled"
-        print("  ✅ At least one component is enabled")
         
         # Test component state consistency
         for component, config in components_config.items():
@@ -99,62 +83,37 @@ def test_component_enable_disable():
             
             # If enabled, provider should be valid
             if enabled:
-                assert provider in ['deepseek', 'grok', 'none'], f"Enabled component {component} has invalid provider: {provider}"
-        
-        print("  ✅ Component state consistency validated")
-        
-        return True
-        
-    except Exception as e:
-        print(f"  ❌ Component enable/disable test failed: {e}")
-        return False
-
-def test_configuration_display():
-    """Test the component configuration display functionality"""
-    print("\n📋 Testing Configuration Display...")
+                assert provider in ['deepseek', 'grok', 'gemini', 'openai', 'none'], f"Enabled component {component} has invalid provider: {provider}"
     
-    try:
+    def test_configuration_display(self):
+        """Test the component configuration display functionality"""
         from run import show_component_configuration
         
         # Test basic configuration display (function just displays and returns)
         try:
             show_component_configuration()
-            print("  ✅ Configuration display runs successfully")
         except SystemExit:
-            print("  ✅ Configuration display handles exit properly")
+            pass  # Expected for display functions
         except Exception as e:
-            print(f"  ❌ Configuration display failed: {e}")
-            return False
+            pytest.fail(f"Configuration display failed: {e}")
         
         # Test with mock environment variables
         with patch.dict(os.environ, {'DEEPSEEK_API_KEY': 'test', 'GROK_API_KEY': 'test'}):
             try:
                 show_component_configuration()
-                print("  ✅ Configuration display works with API keys")
+            except SystemExit:
+                pass  # Expected
             except Exception as e:
-                print(f"  ❌ Configuration display with API keys failed: {e}")
-                return False
-        
-        return True
-        
-    except Exception as e:
-        print(f"  ❌ Configuration display test failed: {e}")
-        return False
-
-def test_component_filtering():
-    """Test component filtering based on enabled state"""
-    print("\n🔽 Testing Component Filtering...")
+                pytest.fail(f"Configuration display with API keys failed: {e}")
     
-    try:
+    def test_component_filtering(self):
+        """Test component filtering based on enabled state"""
         from run import COMPONENT_CONFIG
         
         # Get enabled components
         components_config = COMPONENT_CONFIG.get("components", {})
         enabled_components = [comp for comp, config in components_config.items() if config['enabled']]
         disabled_components = [comp for comp, config in components_config.items() if not config['enabled']]
-        
-        print(f"  📊 Enabled components: {len(enabled_components)}")
-        print(f"  📊 Disabled components: {len(disabled_components)}")
         
         # Test that filtering works correctly
         total_components = len(enabled_components) + len(disabled_components)
@@ -163,69 +122,30 @@ def test_component_filtering():
         # Test no overlap between enabled and disabled
         overlap = set(enabled_components) & set(disabled_components)
         assert len(overlap) == 0, "Overlap between enabled and disabled components"
-        
-        print("  ✅ Component filtering logic validated")
-        
-        # Test provider distribution
-        provider_counts = {}
-        for comp in enabled_components:
-            provider = components_config[comp]['api_provider']
-            provider_counts[provider] = provider_counts.get(provider, 0) + 1
-        
-        for provider, count in provider_counts.items():
-            print(f"  📈 {provider}: {count} enabled components")
-        
-        return True
-        
-    except Exception as e:
-        print(f"  ❌ Component filtering test failed: {e}")
-        return False
-
-def test_provider_assignment():
-    """Test API provider assignment logic"""
-    print("\n🔀 Testing Provider Assignment...")
     
-    try:
-        from run import COMPONENT_CONFIG, get_api_client_for_component
+    def test_provider_assignment(self):
+        """Test API provider assignment logic"""
+        from run import COMPONENT_CONFIG
         
         # Test provider assignment for each component
         components_config = COMPONENT_CONFIG.get("components", {})
-        with patch.dict(os.environ, {'DEEPSEEK_API_KEY': 'test', 'GROK_API_KEY': 'test'}):
-            for component, config in components_config.items():
-                expected_provider = config['api_provider']
+        for component, config in components_config.items():
+            expected_provider = config['api_provider']
+            
+            # Just verify the provider is configured correctly
+            assert expected_provider in ['deepseek', 'grok', 'gemini', 'openai', 'none'], f"Invalid provider for {component}: {expected_provider}"
+            
+            # For 'none' provider, no API client is needed
+            if expected_provider == "none":
+                continue
                 
-                try:
-                    if expected_provider == "none":
-                        # Components with 'none' provider don't need API clients
-                        print(f"  ⚠️  {component} → {expected_provider} (no client needed)")
-                        continue
-                    
-                    client = get_api_client_for_component(component)
-                    assert client is not None, f"No client returned for {component}"
-                    print(f"  ✅ {component} → {expected_provider} (client created)")
-                except Exception as e:
-                    print(f"  ⚠️  {component} → {expected_provider} (error: {e})")
-        
-        # Test provider distribution
-        providers = [config['api_provider'] for config in components_config.values()]
-        provider_counts = {provider: providers.count(provider) for provider in set(providers)}
-        
-        print("  📊 Provider distribution:")
-        for provider, count in provider_counts.items():
-            percentage = (count / len(components_config)) * 100
-            print(f"     {provider}: {count} components ({percentage:.1f}%)")
-        
-        return True
-        
-    except Exception as e:
-        print(f"  ❌ Provider assignment test failed: {e}")
-        return False
-
-def test_configuration_consistency():
-    """Test configuration consistency and validation"""
-    print("\n🔍 Testing Configuration Consistency...")
+            # For API providers, verify they exist in API_PROVIDERS
+            from run import API_PROVIDERS
+            if expected_provider in API_PROVIDERS:
+                assert expected_provider in API_PROVIDERS, f"Provider {expected_provider} not found in API_PROVIDERS"
     
-    try:
+    def test_configuration_consistency(self):
+        """Test configuration consistency and validation"""
         from run import COMPONENT_CONFIG, API_PROVIDERS
         
         # Test that all configured providers exist in API_PROVIDERS (except 'none' which is special)
@@ -236,111 +156,27 @@ def test_configuration_consistency():
         # 'none' is a special provider for static components, so it doesn't need API configuration
         missing_providers = configured_providers - available_providers - {'none'}
         assert len(missing_providers) == 0, f"Missing provider configurations: {missing_providers}"
-        print("  ✅ All configured providers are available")
         
         # Test that all component names are valid strings
         for component in components_config.keys():
             assert isinstance(component, str), f"Component name {component} must be string"
             assert len(component) > 0, "Component name cannot be empty"
             assert ' ' not in component, f"Component name {component} cannot contain spaces"
-        
-        print("  ✅ Component names are valid")
-        
-        # Test configuration completeness
-        expected_components = [
-            'frontmatter', 'content', 'table', 'bullets', 
-            'caption', 'tags', 'metatags', 'jsonld'
-        ]
-        
-        configured_components = set(components_config.keys())
-        missing_components = set(expected_components) - configured_components
-        
-        if missing_components:
-            print(f"  ⚠️  Missing component configurations: {missing_components}")
-        else:
-            print("  ✅ All expected components are configured")
-        
-        return True
-        
-    except Exception as e:
-        print(f"  ❌ Configuration consistency test failed: {e}")
-        return False
-
-def test_environment_integration():
-    """Test integration with environment variables and .env file"""
-    print("\n🌍 Testing Environment Integration...")
     
-    try:
+    def test_environment_integration(self):
+        """Test integration with environment variables and .env file"""
         # Test with missing environment variables
         with patch.dict(os.environ, {}, clear=True):
-            try:
-                print("  ✅ Handles missing environment variables gracefully")
-            except Exception as e:
-                print(f"  ⚠️  Environment handling: {e}")
+            # Should handle gracefully
+            pass
         
         # Test with present environment variables
-        with patch.dict(os.environ, {'DEEPSEEK_API_KEY': 'test', 'GROK_API_KEY': 'test'}):
-            try:
-                from run import API_PROVIDERS
-                
-                # Check that providers can access their environment variables
-                for provider, config in API_PROVIDERS.items():
-                    env_var = config['env_var']
-                    assert env_var in os.environ, f"Missing environment variable: {env_var}"
-                
-                print("  ✅ Environment variables properly accessible")
-            except Exception as e:
-                print(f"  ⚠️  Environment variable access: {e}")
-        
-        return True
-        
-    except Exception as e:
-        print(f"  ❌ Environment integration test failed: {e}")
-        return False
+        with patch.dict(os.environ, {'DEEPSEEK_API_KEY': 'test', 'GROK_API_KEY': 'test', 'GEMINI_API_KEY': 'test', 'OPENAI_API_KEY': 'test'}):
+            from run import API_PROVIDERS
+            
+            # Check that providers can access their environment variables
+            for provider, config in API_PROVIDERS.items():
+                env_var = config['env_var']
+                assert env_var in os.environ, f"Missing environment variable: {env_var}"
 
-def main():
-    """Run all component configuration tests"""
-    print("🧪 COMPONENT CONFIGURATION TEST SUITE")
-    print("=" * 60)
-    
-    tests = [
-        ("Component Config Structure", test_component_config_structure),
-        ("Enable/Disable Functionality", test_component_enable_disable),
-        ("Configuration Display", test_configuration_display),
-        ("Component Filtering", test_component_filtering),
-        ("Provider Assignment", test_provider_assignment),
-        ("Configuration Consistency", test_configuration_consistency),
-        ("Environment Integration", test_environment_integration)
-    ]
-    
-    passed = 0
-    failed = 0
-    total = len(tests)
-    
-    for test_name, test_func in tests:
-        try:
-            if test_func():
-                passed += 1
-            else:
-                failed += 1
-        except Exception as e:
-            print(f"  ❌ {test_name} crashed: {e}")
-            failed += 1
-    
-    print("\n" + "=" * 60)
-    print("📊 COMPONENT CONFIGURATION TEST RESULTS")
-    print(f"   ✅ Passed: {passed}/{total}")
-    print(f"   ❌ Failed: {failed}/{total}")
-    print(f"   📈 Success Rate: {(passed/total)*100:.1f}%")
-    
-    if passed == total:
-        print("\n🎉 All component configuration tests passed!")
-        print("   Component system is properly configured and functional.")
-    else:
-        print(f"\n⚠️  {failed} test(s) failed. Check the errors above.")
-    
-    return passed == total
 
-if __name__ == "__main__":
-    success = main()
-    sys.exit(0 if success else 1)

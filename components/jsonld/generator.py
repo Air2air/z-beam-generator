@@ -182,6 +182,14 @@ class JsonldComponentGenerator(FrontmatterComponentGenerator):
         for key, example_value in example_structure.items():
             if key in ['@type']:
                 result[key] = example_value
+            elif parent_key in ['author', 'reviewedBy'] and key == 'name':
+                # Special handling for author and reviewer names - extract from top-level author field
+                author_name = self._get_field(frontmatter_data, ['author'], None)
+                if author_name:
+                    result[key] = author_name
+                else:
+                    # Fallback to example value if author not found
+                    result[key] = str(example_value)
             else:
                 field_path = f"{parent_key}.{key}" if parent_key != 'chemicalComposition' else f"chemicalProperties.{key}"
                 result[key] = self._get_field(frontmatter_data, [field_path, key], str(example_value))  # Allow example_value as fallback for optional nested fields

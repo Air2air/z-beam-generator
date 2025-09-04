@@ -213,7 +213,7 @@ class FrontmatterComponentGenerator(BaseComponentGenerator):
                 schema_fields: Optional[Dict] = None) -> ComponentResult:
         """Generate component from frontmatter data - NO API calls required"""
         try:
-            if not frontmatter_data:
+            if frontmatter_data is None:
                 return ComponentResult(
                     component_type=self.component_type,
                     content="",

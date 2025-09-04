@@ -1,0 +1,82 @@
+{
+  "test_run": {
+    "timestamp": "2025-09-04T11:13:29.027175",
+    "duration": 7.990837,
+    "total_suites": 6,
+    "successful_suites": 2,
+    "failed_suites": 0
+  },
+  "test_results": {
+    "total_tests": 132,
+    "passed": 115,
+    "failed": 17,
+    "success_rate": 87.12121212121212,
+    "total_duration": 7.981115341186523
+  },
+  "suite_details": [
+    {
+      "name": "AI Detection Optimization Tests",
+      "status": "completed",
+      "passed": 35,
+      "failed": 0,
+      "total": 35,
+      "duration": 1.9815762042999268,
+      "success_rate": 100.0
+    },
+    {
+      "name": "Iterative Workflow Tests",
+      "status": "completed",
+      "passed": 17,
+      "failed": 2,
+      "total": 19,
+      "duration": 3.073509931564331,
+      "success_rate": 89.47368421052632
+    },
+    {
+      "name": "Dynamic Evolution Tests",
+      "status": "completed",
+      "passed": 30,
+      "failed": 3,
+      "total": 33,
+      "duration": 0.812885046005249,
+      "success_rate": 90.9090909090909
+    },
+    {
+      "name": "Quality Assessment Tests",
+      "status": "completed",
+      "passed": 23,
+      "failed": 0,
+      "total": 23,
+      "duration": 0.6472136974334717,
+      "success_rate": 100.0
+    },
+    {
+      "name": "Configuration Optimization Tests",
+      "status": "completed",
+      "passed": 10,
+      "failed": 1,
+      "total": 11,
+      "duration": 0.6192703247070312,
+      "success_rate": 90.9090909090909
+    },
+    {
+      "name": "Service Integration Tests",
+      "status": "completed",
+      "passed": 0,
+      "failed": 11,
+      "total": 11,
+      "duration": 0.8466601371765137,
+      "success_rate": 0.0
+    }
+  ],
+  "coverage": {
+    "services_covered": 5,
+    "integration_tests": true,
+    "unit_tests": true,
+    "performance_tests": true,
+    "error_handling_tests": true
+  },
+  "recommendations": [
+    "Improve overall test success rate above 95%"
+  ]
+}

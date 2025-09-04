@@ -251,14 +251,14 @@
   },
   "author": {
     "@type": "Person",
-    "name": "Porcelain",
+    "name": "Ikmanda Roswati",
     "jobTitle": "Senior Laser Processing Engineer",
     "affiliation": "{'@type': 'Organization', 'name': 'Advanced Materials Research Institute'}",
     "knowsAbout": "['Laser Materials Processing', 'Aluminum Surface Engineering', 'Industrial Laser Applications']"
   },
   "reviewedBy": {
     "@type": "Person",
-    "name": "Porcelain",
+    "name": "Ikmanda Roswati",
     "jobTitle": "Materials Science Director"
   },
   "datePublished": "2025-01-27T15:30:00Z",

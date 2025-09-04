@@ -137,7 +137,14 @@ class AuthorGenerator:
         """Legacy generate method"""
         author_info = {'id': author_id}
         material_data = {'name': material}
-        return self.generator._generate_static_content(material, material_data, author_info)
+        
+        # Call the correct method from AuthorComponentGenerator
+        result = self.generator.generate(material, material_data, author_info=author_info)
+        
+        if result.success:
+            return result.content
+        else:
+            return f"Error generating author content: {result.error_message}"
     
     def get_component_info(self) -> Dict[str, Any]:
         """Get component information"""
@@ -152,8 +159,30 @@ class AuthorGenerator:
     @staticmethod
     def _create_author_template(material: str, author: Dict[str, Any]) -> str:
         """Create standardized author content template (legacy method for compatibility)"""
-        generator = AuthorGenerator()
-        return generator.generate(material, author.get('id', 1))
+        # Use the provided author data directly instead of loading from JSON
+        author_name = author.get('name', 'Unknown Author')
+        author_title = author.get('title', 'Expert')
+        author_expertise = author.get('expertise', 'Technical Expert')
+        country = author.get('country', 'International')
+        
+        content = f"""
+## About the Author
+
+**{author_name}**  
+*{author_title}*
+
+{author_name} is a {author_expertise.lower()} based in {country}. With extensive experience in laser processing and material science, {author_name.split()[0]} specializes in advanced laser cleaning applications and industrial material processing technologies.
+
+### Expertise Areas
+- Laser cleaning systems and applications
+- Material science and processing
+- Industrial automation and safety protocols
+- Technical consultation and process optimization
+
+*Contact {author_name.split()[0]} for expert consultation on laser cleaning applications for {material} and related materials.*
+""".strip()
+        
+        return content
 
 
 def generate_author_content(material: str, author_id: int = 1) -> str:

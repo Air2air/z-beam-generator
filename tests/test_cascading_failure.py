@@ -15,10 +15,28 @@ from typing import Dict, List
 from unittest.mock import Mock
 
 # Add project root to path
-project_root = Path(__file__).parent
+project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
 from generators.component_generators import ComponentGeneratorFactory, ComponentResult
+
+
+def test_cascading_failure_no_frontmatter():
+    """Test cascading failure when no frontmatter data exists"""
+    tester = CascadingFailureTester()
+    tester._test_no_frontmatter_scenario()
+
+
+def test_cascading_failure_incomplete_frontmatter():
+    """Test cascading failure with incomplete frontmatter data"""
+    tester = CascadingFailureTester()
+    tester._test_incomplete_frontmatter_scenario()
+
+
+def test_frontmatter_dependency_validation():
+    """Test frontmatter dependency validation"""
+    tester = CascadingFailureTester()
+    tester.test_frontmatter_dependency_validation()
 
 
 class CascadingFailureTester:

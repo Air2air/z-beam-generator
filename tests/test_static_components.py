@@ -208,7 +208,7 @@ def test_component_comparison():
         print("❌ Cannot generate without API client")
         print("❌ Format: Would be markdown table via AI")
     
-    return True
+    assert True  # Test passed
 
 
 def test_normalization_and_formatting():
@@ -265,60 +265,7 @@ def test_normalization_and_formatting():
             if 'materialType:' in line or 'symbol:' in line:
                 print(f"  ✓ Line format: {line.strip()}")
     
-    return True
+    assert True  # Test passed
 
 
-def main():
-    """Run all static component tests"""
-    print("🧪 STATIC COMPONENTS COMPREHENSIVE TEST")
-    print("=" * 60)
-    print("Testing badgesymbol and propertiestable components")
-    print("Focus: No-API operation, normalization, formatting")
-    print("=" * 60)
-    
-    try:
-        # Test badgesymbol component
-        test_badgesymbol_component()
-        
-        # Test propertiestable component
-        test_propertiestable_with_dynamic_generator()
-        
-        # Compare components
-        test_component_comparison()
-        
-        # Test normalization
-        test_normalization_and_formatting()
-        
-        print("\n" + "=" * 60)
-        print("📊 TEST SUMMARY")
-        print("=" * 60)
-        print("✅ BadgeSymbol: Fully static, no API required")
-        print("✅ BadgeSymbol: Proper frontmatter normalization")
-        print("✅ BadgeSymbol: Handles edge cases gracefully")
-        
-        # Check propertiestable status
-        try:
-            from components.propertiestable.generator import PropertiesTableGenerator
-            print("✅ PropertiesTable: Static generator available")
-            print("✅ PropertiesTable: No API required")
-        except ImportError:
-            print("⚠️ PropertiesTable: Still requires API")
-            print("💡 PropertiesTable: Could be converted to static like badgesymbol")
-        
-        print("\n🎯 RECOMMENDATIONS:")
-        print("1. BadgeSymbol is ready for production use")
-        print("2. Consider creating static PropertiesTable generator")
-        print("3. Both components should use 'none' API provider for consistency")
-        
-        return True
-        
-    except Exception as e:
-        print(f"\n❌ Test failed with error: {e}")
-        import traceback
-        traceback.print_exc()
-        return False
 
-
-if __name__ == "__main__":
-    success = main()
-    sys.exit(0 if success else 1)

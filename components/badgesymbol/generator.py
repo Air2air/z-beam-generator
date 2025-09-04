@@ -169,7 +169,7 @@ class BadgeSymbolGenerator:
     
     def generate_content(self, material_name: str, frontmatter_data: Optional[Dict[str, Any]] = None) -> str:
         """Legacy generate_content method"""
-        result = self.generator.generate(material_name, frontmatter_data or {})
+        result = self.generator.generate(material_name, {}, frontmatter_data=frontmatter_data or {})
         return result.content if hasattr(result, 'content') else str(result)
 
 

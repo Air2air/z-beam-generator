@@ -43,6 +43,19 @@ Hello, I’m Yi-Chun Lin."
         score: 0.26
       - text: "It’s also common in medical implants because the body doesn’t reject it. The reason is always its amazing properties."
         score: 0
+iteration_summary:
+  total_iterations: 5
+  best_score: 60.0
+  target_score: 65.0
+  target_achieved: false
+  total_processing_time: "4m 57.8s"
+  scores_by_iteration:
+    - iteration: 1, score: 60.0, classification: "neutral", words: 293, improvement: "+60.0"
+    - iteration: 2, score: 0.0, classification: "ai", words: 293, improvement: "-60.0"
+    - iteration: 3, score: 0.01, classification: "ai", words: 271, improvement: "-59.99"
+    - iteration: 4, score: 0.0, classification: "ai", words: 324, improvement: "-60.0"
+    - iteration: 5, score: 0.0, classification: "ai", words: 280, improvement: "-60.0"
+  enhancements_applied: ["conversational_style", "natural_language_patterns", "sentence_variability", "paragraph_structure", "lexical_diversity"]
 iteration_history:
   - iteration: 1
     max_iterations: 5

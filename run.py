@@ -84,6 +84,20 @@ from pathlib import Path
 from utils.author_manager import get_author_by_id, list_authors
 from utils.environment_checker import check_environment
 from utils.file_operations import clean_content_components
+
+# Import new service architecture
+from services import (
+    ServiceConfiguration,
+    service_registry,
+    BaseService
+)
+from services.ai_detection_optimization import AIDetectionOptimizationService
+from services.iterative_workflow import IterativeWorkflowService
+from services.dynamic_evolution import DynamicEvolutionService
+from services.quality_assessment import QualityAssessmentService
+from services.configuration_optimizer import ConfigurationOptimizationService
+
+# Legacy import for backward compatibility
 from ai_detection import AIDetectionService
 
 # ============================================================================
@@ -353,6 +367,43 @@ def show_component_configuration():
     if iterative_improvement_count > 0:
         iter_components = [comp for comp, config in components_config.items() if config.get("iterative_improvement_enabled", False)]
         print(f"   📊 Iterative Improvement components: {', '.join(sorted(iter_components))}")
+
+    # Display service architecture information
+    print("\n🏗️  Service Architecture Status:")
+    try:
+        # Check if services are available
+        service_status = {}
+        service_modules = [
+            ("AI Detection Optimization", "services.ai_detection_optimization"),
+            ("Iterative Workflow", "services.iterative_workflow"),
+            ("Dynamic Evolution", "services.dynamic_evolution"),
+            ("Quality Assessment", "services.quality_assessment"),
+            ("Configuration Optimizer", "services.configuration_optimizer")
+        ]
+
+        for service_name, module_path in service_modules:
+            try:
+                __import__(module_path)
+                service_status[service_name] = "✅ Available"
+            except ImportError:
+                service_status[service_name] = "❌ Not Available"
+
+        for service_name, status in service_status.items():
+            print(f"   {status} {service_name}")
+
+        available_services = sum(1 for status in service_status.values() if "✅" in status)
+        print(f"   📊 Services Available: {available_services}/{len(service_modules)}")
+
+        if available_services == len(service_modules):
+            print("   🎉 Full service architecture available!")
+        elif available_services >= len(service_modules) * 0.8:
+            print("   ✅ Most services available - enhanced features enabled")
+        else:
+            print("   ⚠️ Limited services available - basic functionality only")
+
+    except Exception as e:
+        print(f"   ❌ Service status check failed: {e}")
+
     print()
 
 
@@ -364,7 +415,7 @@ def run_dynamic_generation(
     start_index: int = 1,
 ) -> bool:
     """
-    Run dynamic schema-driven content generation using modular components.
+    Run dynamic schema-driven content generation using modular components and services.
     """
     try:
         from generators.dynamic_generator import DynamicGenerator
@@ -375,17 +426,133 @@ def run_dynamic_generation(
     print("🚀 DYNAMIC SCHEMA-DRIVEN GENERATION")
     print("=" * 50)
 
-    # Initialize AI detection service
-    ai_detection_service = None
+    # Initialize new service architecture
+    services = {}
     try:
-        ai_detection_service = AIDetectionService()
-        if ai_detection_service.is_available():
-            print("✅ AI detection service initialized and available")
-        else:
-            print("⚠️ AI detection service initialized but not available")
+        print("🔧 Initializing service architecture...")
+
+        # AI Detection Optimization Service
+        ai_config = ServiceConfiguration(
+            name="ai_detection_service",
+            settings={
+                "providers": {
+                    "mock_provider": {
+                        "type": "mock",
+                        "mock_score": 0.3,
+                        "mock_detected": False
+                    }
+                },
+                "cache_ttl_hours": 1,
+                "detection_threshold": 0.7,
+                "confidence_threshold": 0.8,
+                # Add the specific attributes expected by text component
+                "target_score": AI_DETECTION_CONFIG.get("target_score", 65.0),
+                "max_iterations": AI_DETECTION_CONFIG.get("max_iterations", 5),
+                "improvement_threshold": AI_DETECTION_CONFIG.get("improvement_threshold", 3.0),
+                "human_threshold": AI_DETECTION_CONFIG.get("human_threshold", 75.0),
+                "min_text_length_winston": AI_DETECTION_CONFIG.get("min_text_length_winston", 300),
+                "short_content_threshold": AI_DETECTION_CONFIG.get("short_content_threshold", 400),
+                "min_content_length": AI_DETECTION_CONFIG.get("min_content_length", 150),
+                "fallback_score_first_iteration": AI_DETECTION_CONFIG.get("fallback_score_first_iteration", 60.0),
+                "fallback_score_short_content": AI_DETECTION_CONFIG.get("fallback_score_short_content", 55.0),
+                "fallback_score_very_short": AI_DETECTION_CONFIG.get("fallback_score_very_short", 40.0),
+                "fallback_score_error": AI_DETECTION_CONFIG.get("fallback_score_error", 50.0),
+                "status_update_interval": AI_DETECTION_CONFIG.get("status_update_interval", 10),
+                "iteration_status_frequency": AI_DETECTION_CONFIG.get("iteration_status_frequency", 5),
+                "word_count_tolerance": AI_DETECTION_CONFIG.get("word_count_tolerance", 1.5),
+                "winston_timeout_cap": AI_DETECTION_CONFIG.get("winston_timeout_cap", 15),
+                "max_tokens": AI_DETECTION_CONFIG.get("max_tokens", 3000),
+                "retry_delay": AI_DETECTION_CONFIG.get("retry_delay", 0.5),
+                "winston_human_range": AI_DETECTION_CONFIG.get("winston_human_range", (70, 100)),
+                "winston_unclear_range": AI_DETECTION_CONFIG.get("winston_unclear_range", (30, 70)),
+                "winston_ai_range": AI_DETECTION_CONFIG.get("winston_ai_range", (0, 30)),
+                "min_iterations_before_exit": AI_DETECTION_CONFIG.get("min_iterations_before_exit", 3),
+                "early_exit_score_threshold": AI_DETECTION_CONFIG.get("early_exit_score_threshold", 10),
+                "deepseek_optimization_enabled": AI_DETECTION_CONFIG.get("deepseek_optimization_enabled", True),
+                "config_backup_enabled": AI_DETECTION_CONFIG.get("config_backup_enabled", True),
+                "enable_detailed_logging": AI_DETECTION_CONFIG.get("enable_detailed_logging", True),
+                "max_sentence_details": AI_DETECTION_CONFIG.get("max_sentence_details", 5)
+            }
+        )
+        ai_service = AIDetectionOptimizationService(ai_config)
+        service_registry.register_service(ai_service)
+        services["ai_detection"] = ai_service
+        print("   ✅ AI Detection Optimization Service initialized")
+
+        # Iterative Workflow Service
+        workflow_config = ServiceConfiguration(
+            name="iterative_workflow_service",
+            settings={
+                "max_iterations": AI_DETECTION_CONFIG.get("max_iterations", 5),
+                "quality_threshold": AI_DETECTION_CONFIG.get("target_score", 65.0) / 100.0,
+                "improvement_threshold": AI_DETECTION_CONFIG.get("improvement_threshold", 3.0) / 100.0
+            }
+        )
+        workflow_service = IterativeWorkflowService(workflow_config)
+        service_registry.register_service(workflow_service)
+        services["iterative_workflow"] = workflow_service
+        print("   ✅ Iterative Workflow Service initialized")
+
+        # Dynamic Evolution Service
+        evolution_config = ServiceConfiguration(
+            name="dynamic_evolution_service",
+            settings={
+                "max_templates": 10,
+                "evolution_history_size": 50
+            }
+        )
+        evolution_service = DynamicEvolutionService(evolution_config)
+        service_registry.register_service(evolution_service)
+        services["dynamic_evolution"] = evolution_service
+        print("   ✅ Dynamic Evolution Service initialized")
+
+        # Quality Assessment Service
+        quality_config = ServiceConfiguration(
+            name="quality_assessment_service",
+            settings={
+                "benchmark_configs": {
+                    "standard_quality": {
+                        "readability_weight": 0.3,
+                        "structure_weight": 0.3,
+                        "content_weight": 0.4,
+                        "min_score": 0.0,
+                        "max_score": 1.0
+                    }
+                }
+            }
+        )
+        quality_service = QualityAssessmentService(quality_config)
+        service_registry.register_service(quality_service)
+        services["quality_assessment"] = quality_service
+        print("   ✅ Quality Assessment Service initialized")
+
+        # Configuration Optimization Service
+        optimizer_config = ServiceConfiguration(
+            name="configuration_optimizer_service",
+            settings={
+                "backup_enabled": True,
+                "max_history_size": 20
+            }
+        )
+        optimizer_service = ConfigurationOptimizationService(optimizer_config)
+        service_registry.register_service(optimizer_service)
+        services["configuration_optimizer"] = optimizer_service
+        print("   ✅ Configuration Optimization Service initialized")
+
+        print("🎉 All services initialized successfully!")
+
     except Exception as e:
-        print(f"⚠️ AI detection service initialization failed: {e}")
-        print("Content generation will continue without AI detection feedback")
+        print(f"⚠️ Service initialization failed: {e}")
+        print("Falling back to legacy AI detection service...")
+
+        # Fallback to legacy service
+        try:
+            ai_detection_service = AIDetectionService()
+            services["legacy_ai"] = ai_detection_service
+            print("   ✅ Legacy AI detection service initialized")
+        except Exception as e2:
+            print(f"   ❌ Legacy service also failed: {e2}")
+            services = {}
 
     # Initialize generator
     try:
@@ -415,15 +582,15 @@ def run_dynamic_generation(
             print(f"   {status} {API_PROVIDERS[provider]['name']}: {result.get('error', 'OK')}")
         return all(result['success'] for result in test_results.values())
 
-        # Batch mode - generate all materials if no specific material requested
+    # Batch mode - generate all materials if no specific material requested
     if material is None:
-        return run_batch_mode(generator, author_info, components, start_index, ai_detection_service)
+        return run_batch_mode(generator, author_info, components, start_index, services)
 
     # Generate for specific material
-    return run_single_material(generator, material, components, author_info, ai_detection_service)
+    return run_single_material(generator, material, components, author_info, services)
 
 
-def run_batch_mode(generator, author_info: dict = None, components: list = None, start_index: int = 1, ai_detection_service: AIDetectionService = None) -> bool:
+def run_batch_mode(generator, author_info: dict = None, components: list = None, start_index: int = 1, services: dict = None) -> bool:
     """Run batch generation for all available materials."""
     print("🏭 Batch Generation Mode")
     print("=" * 50)
@@ -449,7 +616,7 @@ def run_batch_mode(generator, author_info: dict = None, components: list = None,
         for i, material in enumerate(materials[start_idx:], start_index):
             print(f"\n📦 [{i}/{total_materials}] Processing: {material}")
 
-            success = run_single_material(generator, material, target_components, author_info, ai_detection_service)
+            success = run_single_material(generator, material, target_components, author_info, services)
             if success:
                 generated_count += 1
                 print(f"   ✅ {material} completed successfully")
@@ -471,7 +638,7 @@ def run_batch_mode(generator, author_info: dict = None, components: list = None,
     return generated_count > 0
 
 
-def run_single_material(generator, material: str, components: list = None, author_info: dict = None, ai_detection_service: AIDetectionService = None) -> bool:
+def run_single_material(generator, material: str, components: list = None, author_info: dict = None, services: dict = None) -> bool:
     """Generate content for a specific material."""
     try:
         if components is None:
@@ -507,13 +674,30 @@ def run_single_material(generator, material: str, components: list = None, autho
                 if author_info:
                     temp_generator.set_author(author_info)
 
-                # Check if AI detection is enabled for this component
+                # Check if AI detection and iterative improvement are enabled for this component
                 component_config = components_config.get(component_type, {})
                 use_ai_detection = component_config.get("ai_detection_enabled", False)
-                ai_service = ai_detection_service if use_ai_detection else None
+                use_iterative_improvement = component_config.get("iterative_improvement_enabled", False)
 
-                # Generate component
-                result = temp_generator.generate_component(material, component_type, None, ai_service)
+                # Select appropriate services based on component configuration
+                ai_service = None
+                if use_ai_detection:
+                    if "ai_detection" in services:
+                        ai_service = services["ai_detection"]
+                    elif "legacy_ai" in services:
+                        ai_service = services["legacy_ai"]
+
+                # Prepare service context for advanced features
+                service_context = {
+                    "ai_detection": ai_service,
+                    "iterative_workflow": services.get("iterative_workflow") if use_iterative_improvement else None,
+                    "dynamic_evolution": services.get("dynamic_evolution") if use_iterative_improvement else None,
+                    "quality_assessment": services.get("quality_assessment") if use_iterative_improvement else None,
+                    "configuration_optimizer": services.get("configuration_optimizer") if use_iterative_improvement else None,
+                }
+
+                # Generate component with service integration
+                result = temp_generator.generate_component(material, component_type, service_context, ai_service)
 
                 if result.success:
                     # Save the component
@@ -576,17 +760,58 @@ def run_content_batch() -> bool:
         print(f"❌ Error initializing generator: {e}")
         return False
 
-    # Step 2.5: Initialize AI detection service
-    ai_detection_service = None
+    # Step 2.5: Initialize service architecture
+    services = {}
     try:
-        ai_detection_service = AIDetectionService()
-        if ai_detection_service.is_available():
-            print("✅ AI detection service initialized and available")
-        else:
-            print("⚠️ AI detection service initialized but not available")
+        print("🔧 Initializing service architecture for batch processing...")
+
+        # AI Detection Optimization Service
+        ai_config = ServiceConfiguration(
+            name="ai_detection_batch_service",
+            settings={
+                "providers": {
+                    "mock_provider": {
+                        "type": "mock",
+                        "mock_score": 0.3,
+                        "mock_detected": False
+                    }
+                },
+                "cache_ttl_hours": 1,
+                "detection_threshold": 0.7,
+                "confidence_threshold": 0.8
+            }
+        )
+        ai_service = AIDetectionOptimizationService(ai_config)
+        service_registry.register_service(ai_service)
+        services["ai_detection"] = ai_service
+
+        # Iterative Workflow Service for batch processing
+        workflow_config = ServiceConfiguration(
+            name="iterative_workflow_batch_service",
+            settings={
+                "max_iterations": AI_DETECTION_CONFIG.get("max_iterations", 5),
+                "quality_threshold": AI_DETECTION_CONFIG.get("target_score", 65.0) / 100.0,
+                "improvement_threshold": AI_DETECTION_CONFIG.get("improvement_threshold", 3.0) / 100.0
+            }
+        )
+        workflow_service = IterativeWorkflowService(workflow_config)
+        service_registry.register_service(workflow_service)
+        services["iterative_workflow"] = workflow_service
+
+        print("   ✅ Service architecture initialized for batch processing")
+
     except Exception as e:
-        print(f"⚠️ AI detection service initialization failed: {e}")
-        print("Content generation will continue without AI detection feedback")
+        print(f"⚠️ Service initialization failed: {e}")
+        print("Falling back to legacy AI detection service...")
+
+        # Fallback to legacy service
+        try:
+            ai_detection_service = AIDetectionService()
+            services["legacy_ai"] = ai_detection_service
+            print("   ✅ Legacy AI detection service initialized")
+        except Exception as e2:
+            print(f"   ❌ Legacy service also failed: {e2}")
+            services = {}
 
     # Step 3: Get first 3 materials
     # Get actual list of materials from generator to ensure consistency
@@ -641,12 +866,12 @@ def run_content_batch() -> bool:
             components_config = COMPONENT_CONFIG.get("components", {})
             text_config = components_config.get("text", {})
             use_ai_detection = text_config.get("ai_detection_enabled", False)
-            ai_service = ai_detection_service if use_ai_detection else None
-            
-            success = run_single_material(generator, material, ["text"], None, ai_service)
+
+            success = run_single_material(generator, material, ["text"], None, services)
             if success:
                 generated_count += 1
-                print(f"   ✅ {material} content generated successfully")
+                ai_indicator = "🤖" if use_ai_detection else ""
+                print(f"   ✅ {material} content generated successfully {ai_indicator}")
             else:
                 failed_count += 1
                 print(f"   ❌ {material} content generation failed")
@@ -843,6 +1068,88 @@ def run_comprehensive_tests() -> bool:
         print("❌ MULTIPLE FAILURES. System requires attention.")
     
     return passed_tests >= total_tests * 0.8
+
+
+def list_authors():
+    """List all available authors with their details."""
+    try:
+        import json
+        from pathlib import Path
+
+        authors_file = Path("components/author/authors.json")
+        if not authors_file.exists():
+            print("❌ Authors file not found")
+            return
+
+        with open(authors_file, 'r', encoding='utf-8') as f:
+            authors_data = json.load(f)
+
+        authors = authors_data.get("authors", [])
+        if not authors:
+            print("❌ No authors found")
+            return
+
+        print(f"👥 Available Authors ({len(authors)}):")
+        print("-" * 50)
+
+        for i, author in enumerate(authors, 1):
+            author_id = author.get("id", i)
+            name = author.get("name", "Unknown")
+            country = author.get("country", "Unknown")
+            language = author.get("language", "Unknown")
+
+            print(f"   {author_id}. {name}")
+            print(f"      🌍 Country: {country}")
+            print(f"      🗣️  Language: {language}")
+            print()
+
+    except Exception as e:
+        print(f"❌ Error listing authors: {e}")
+
+
+def load_authors():
+    """Load all authors from the JSON file and return as a list."""
+    try:
+        import json
+        from pathlib import Path
+
+        authors_file = Path("components/author/authors.json")
+        if not authors_file.exists():
+            return []
+
+        with open(authors_file, 'r', encoding='utf-8') as f:
+            authors_data = json.load(f)
+
+        return authors_data.get("authors", [])
+
+    except Exception as e:
+        print(f"❌ Error loading authors: {e}")
+        return []
+
+
+def get_author_by_id(author_id: int):
+    """Get author data by ID."""
+    try:
+        import json
+        from pathlib import Path
+
+        authors_file = Path("components/author/authors.json")
+        if not authors_file.exists():
+            return None
+
+        with open(authors_file, 'r', encoding='utf-8') as f:
+            authors_data = json.load(f)
+
+        authors = authors_data.get("authors", [])
+        for author in authors:
+            if author.get("id") == author_id:
+                return author
+
+        return None
+
+    except Exception as e:
+        print(f"❌ Error getting author {author_id}: {e}")
+        return None
 
 
 def create_arg_parser():
