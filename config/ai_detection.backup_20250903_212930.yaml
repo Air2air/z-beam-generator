@@ -1,0 +1,26 @@
+provider: winston
+enabled: true
+target_score: 45.0  # Reduced from 70.0 to more realistic target
+max_iterations: 5
+improvement_threshold: 3.0
+timeout: 15
+retry_attempts: 2
+gptzero:
+  api_key: your-gptzero-api-key-here
+  base_url: https://api.gptzero.me
+winston:
+  api_key: YOg4ByzumdBgrnImJ2LQ3GMW0FnkHnco64KpyAKp8c0974d5
+  base_url: https://api.gowinston.ai
+mock:
+  enabled: true
+# Simplified enhancement strategy - focus on core human elements
+conversational_style: true      # Core: Natural conversational flow
+natural_language_patterns: true # Core: Natural language variations
+human_error_simulation: false   # Disabled: Can backfire with technical content
+cultural_adaptation: true       # Core: Author-specific cultural elements
+emotional_depth: false          # Disabled: Over-engineering, focus on facts
+sentence_variability: true      # Core: Mix short/long sentences
+paragraph_structure: false      # Disabled: Let content flow naturally
+lexical_diversity: false        # Disabled: Over-engineering vocabulary
+rhetorical_devices: false       # Disabled: Can seem forced in technical writing
+personal_anecdotes: false       # Disabled: Keep professional tone for technical content

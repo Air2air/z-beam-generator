@@ -17,7 +17,17 @@ sys.path.insert(0, str(project_root))
 
 # Define our own result class locally
 class GenerationResult:
-    """Result of content generation with comprehensive scoring"""
+    """Result of content gen            # Extract content from response for validation
+            if hasattr(response, 'content'):
+                content = response.content
+            elif isinstance(response, str):
+                content = response
+            else:
+                content = str(response)
+            
+            # Import centralized AI detection config
+            from run import AI_DETECTION_CONFIG
+            if not content or len(content.strip()) < AI_DETECTION_CONFIG["min_content_length"]:ith comprehensive scoring"""
     def __init__(self, success: bool, content: str = "", error_message: str = "", 
                  metadata: Optional[Dict] = None, quality_score: Optional[Any] = None):
         self.success = success
@@ -50,10 +60,13 @@ class FailFastContentGenerator:
     def __init__(self, max_retries: int = 3, retry_delay: float = 1.0, 
                  enable_scoring: bool = True, human_threshold: float = 75.0,
                  ai_detection_service=None, skip_ai_detection: bool = False):
+        # Import centralized AI detection config
+        from run import AI_DETECTION_CONFIG
+        
         self.max_retries = max_retries
         self.retry_delay = retry_delay
         self.enable_scoring = enable_scoring
-        self.human_threshold = human_threshold
+        self.human_threshold = AI_DETECTION_CONFIG["human_threshold"] if human_threshold == 75.0 else human_threshold
         self.ai_detection_service = ai_detection_service
         self.skip_ai_detection = skip_ai_detection  # New flag to skip AI detection
         
@@ -210,7 +223,6 @@ class FailFastContentGenerator:
             # Generate content via API (fail fast on API errors)
             api_response_obj = self._call_api_with_validation(api_client, user_prompt, system_prompt)
             
-            # Debug: Log the actual prompts being sent
             logger.info(f"🔍 System prompt preview (first 500 chars): {system_prompt[:500]}...")
             logger.info(f"🔍 User prompt preview (first 500 chars): {user_prompt[:500]}...")
             logger.info(f"📝 System prompt length: {len(system_prompt)} characters")
@@ -254,8 +266,10 @@ class FailFastContentGenerator:
             word_count = len(response.split())
             max_word_count = self._get_author_max_word_count(base_config, author_id, formatting_config)
             if max_word_count:
+                # Import centralized AI detection config
+                from run import AI_DETECTION_CONFIG
                 # Allow 50% tolerance over the limit
-                tolerance_limit = max_word_count * 1.5
+                tolerance_limit = max_word_count * AI_DETECTION_CONFIG["word_count_tolerance"]
                 if word_count > tolerance_limit:
                     excess_words = word_count - max_word_count
                     excess_percentage = (excess_words / max_word_count) * 100
@@ -316,7 +330,7 @@ class FailFastContentGenerator:
                         logger.info(f"AI detection analysis completed: {ai_detection_result.score:.1f} score, {ai_detection_result.classification}")
                         
                         # Log warning if content appears too AI-like
-                        if ai_detection_result.score < 30:  # LOW score = AI-like content
+                        if ai_detection_result.score < AI_DETECTION_CONFIG["winston_ai_range"][1]:  # LOW score = AI-like content
                             logger.warning(f"Content appears AI-generated (score: {ai_detection_result.score:.1f})")
                             
                     except Exception as ai_error:
@@ -427,6 +441,9 @@ class FailFastContentGenerator:
     
     def _call_api_with_validation(self, api_client, prompt: str, system_prompt: Optional[str] = None):
         """Call API with proper error handling and return full response object."""
+        # Import centralized AI detection config
+        from run import AI_DETECTION_CONFIG
+        
         try:
             # API Terminal Messaging - Start
             print("🚀 [GENERATOR] Starting API call to content generation service...")
@@ -487,7 +504,7 @@ class FailFastContentGenerator:
             else:
                 content = str(response)
             
-            if not content or len(content.strip()) < 50:
+            if not content or len(content.strip()) < AI_DETECTION_CONFIG["min_content_length"]:
                 print(f"⚠️ [GENERATOR] API returned insufficient content: {len(content.strip())} chars")
                 raise RetryableError("API returned insufficient content")
             
@@ -575,14 +592,35 @@ class FailFastContentGenerator:
         except yaml.YAMLError as e:
             raise ConfigurationError(f"Invalid YAML in formatting file: {e}")
     
+    def _load_ai_detection_prompt(self) -> Dict[str, Any]:
+        """Load AI detection and human authenticity configuration."""
+        import yaml
+        
+        ai_detection_file = "components/text/prompts/ai_detection.yaml"
+        
+        try:
+            with open(ai_detection_file, 'r', encoding='utf-8') as f:
+                config = yaml.safe_load(f)
+            
+            if not config:
+                raise ConfigurationError(f"AI detection file is empty: {ai_detection_file}")
+            
+            return config
+            
+        except FileNotFoundError:
+            raise ConfigurationError(f"AI detection file not found: {ai_detection_file}")
+        except yaml.YAMLError as e:
+            raise ConfigurationError(f"Invalid YAML in AI detection file: {e}")
+    
     def _build_api_prompt(self, subject: str, author_id: int, author_name: str, 
                          material_data: Dict, author_info: Dict) -> str:
-        """Build complete API prompt by combining base, persona, and formatting configurations."""
+        """Build complete API prompt by combining base, persona, formatting, and AI detection configurations."""
         try:
             # Load all required configurations
             base_config = self._load_base_content_prompt()
             persona_config = self._load_persona_prompt(author_id)
             formatting_config = self._load_formatting_prompt(author_id)
+            ai_detection_config = self._load_ai_detection_prompt()
             
             # Build the complete prompt by combining all layers
             prompt_parts = []
@@ -591,13 +629,37 @@ class FailFastContentGenerator:
             if 'overall_subject' in base_config:
                 prompt_parts.append(f"## Base Content Requirements\n{base_config['overall_subject']}")
             
-            # 2. Author-specific persona
+            # 2. AI Detection & Human Authenticity Focus
+            if 'ai_detection_focus' in ai_detection_config:
+                prompt_parts.append(f"\n## PRIMARY OBJECTIVE: Human-Like Content Generation\n{ai_detection_config['ai_detection_focus']}")
+            
+            # 3. Human Writing Characteristics
+            if 'human_writing_characteristics' in ai_detection_config:
+                chars = ai_detection_config['human_writing_characteristics']
+                prompt_parts.append("\n## Human Writing Characteristics (Apply Throughout)")
+                if 'conversational_elements' in chars:
+                    prompt_parts.append("**Conversational Elements:**")
+                    for element in chars['conversational_elements'][:3]:
+                        prompt_parts.append(f"- {element}")
+                if 'cognitive_variability' in chars:
+                    prompt_parts.append("**Natural Thought Patterns:**")
+                    for pattern in chars['cognitive_variability'][:3]:
+                        prompt_parts.append(f"- {pattern}")
+            
+            # 4. Author-specific persona
             if 'persona' in persona_config:
                 persona = persona_config['persona']
                 prompt_parts.append(f"\n## Author Persona: {persona.get('name', author_name)}")
                 prompt_parts.append(f"Country: {persona.get('country', 'Unknown')}")
                 prompt_parts.append(f"Personality: {persona.get('personality', 'Professional')}")
                 prompt_parts.append(f"Tone: {persona.get('tone_objective', 'Professional')}")
+            
+            # 5. Cultural Humanization
+            if 'cultural_humanization' in ai_detection_config and 'nationality_adaptation' in ai_detection_config['cultural_humanization']:
+                adaptations = ai_detection_config['cultural_humanization']['nationality_adaptation']
+                author_country = persona_config['persona'].get('country', '').lower()
+                if author_country in adaptations:
+                    prompt_parts.append(f"\n## Cultural Writing Style\n{author_country.title()} characteristics: {adaptations[author_country]}")
             
             # 3. Language patterns and signature phrases
             if 'language_patterns' in persona_config:

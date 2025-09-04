@@ -1,6 +1,6 @@
 provider: winston
 enabled: true
-target_score: 45.0
+target_score: 70.0
 max_iterations: 5
 improvement_threshold: 3.0
 timeout: 15
@@ -16,10 +16,10 @@ mock:
 conversational_style: true
 natural_language_patterns: true
 human_error_simulation: false
-cultural_adaptation: false
-emotional_depth: false
+cultural_adaptation: true
+emotional_depth: true
 sentence_variability: true
 paragraph_structure: true
 lexical_diversity: true
-rhetorical_devices: false
-personal_anecdotes: false
+rhetorical_devices: true
+personal_anecdotes: true

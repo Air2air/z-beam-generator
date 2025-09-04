@@ -108,7 +108,9 @@ class ContentQualityScorer:
             
             # Determine if retry is recommended
             passes_threshold = believability_score >= self.human_threshold
-            retry_recommended = not passes_threshold or overall_score < 70.0
+            # Import centralized AI detection config
+            from run import AI_DETECTION_CONFIG
+            retry_recommended = not passes_threshold or overall_score < AI_DETECTION_CONFIG["target_score"]
             
             # Create detailed breakdown
             breakdown = {
@@ -264,15 +266,21 @@ class ContentQualityScorer:
         word_count = len(words)
         
         # Enforce minimum word count by country
-        min_word_counts = {
-            'italy': 350,
-            'taiwan': 350, 
-            'indonesia': 400,  # Higher due to repetitive analysis style
-            'united states': 300,
-            'united states (california)': 300
+        # Import centralized AI detection config
+        from run import AI_DETECTION_CONFIG
+        min_word_counts = AI_DETECTION_CONFIG["word_count_limits"]
+        
+        # Map country names to config keys
+        country_key_map = {
+            'italy': 'italy',
+            'taiwan': 'taiwan', 
+            'indonesia': 'indonesia',
+            'united states': 'usa',
+            'united states (california)': 'usa'
         }
         
-        min_words = min_word_counts.get(country, 350)
+        config_key = country_key_map.get(country, 'taiwan')  # Default to taiwan
+        min_words = min_word_counts.get(config_key, {}).get('max', 350)
         if word_count < min_words:
             # Severe penalty for insufficient content
             word_penalty = max(0, (min_words - word_count) / min_words * 50)

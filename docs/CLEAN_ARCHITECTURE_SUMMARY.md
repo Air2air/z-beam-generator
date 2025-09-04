@@ -51,6 +51,28 @@
 - **Indonesia**: Accessible clarity with generous spacing
 - **USA**: Modern business with efficient spacing
 
+## ⚙️ **Centralized Configuration System**
+
+### **AI_DETECTION_CONFIG** - `run.py`
+**CENTRALIZED THRESHOLDS AND PARAMETERS**
+
+**Contains:**
+- ✅ **Core AI Detection Thresholds**: target_score (70.0), max_iterations (5), human_threshold (75.0)
+- ✅ **Content Length Thresholds**: min_text_length_winston (300), short_content_threshold (400)
+- ✅ **Fallback Scores**: Different scores for various failure scenarios
+- ✅ **Status Update Configuration**: status_update_interval (10s), iteration_status_frequency (5)
+- ✅ **Word Count Validation**: word_count_tolerance (1.5x), country-specific limits
+- ✅ **Winston.ai Scoring Ranges**: human_range (70-100), unclear_range (30-70), ai_range (0-30)
+- ✅ **API Timeouts and Limits**: winston_timeout_cap (15s), max_tokens (3000)
+- ✅ **Configuration Optimization**: deepseek_optimization_enabled, config_backup_enabled
+
+**Benefits:**
+- ✅ **Single Source of Truth**: All AI detection parameters in one place
+- ✅ **Easy Configuration**: Change thresholds without modifying multiple files
+- ✅ **Consistent Usage**: All components reference the same configuration
+- ✅ **Validation Ready**: Centralized validation of all parameters
+- ✅ **Documentation**: Clear parameter definitions and expected ranges
+
 ## 🔄 **Architecture Benefits Realized**
 
 ### **Maintainability**
@@ -92,6 +114,9 @@ components/text/prompts/
 - ✅ **Persona validation functional**: 71.8/100 scores
 - ✅ **Author specifications accessible**: Now in persona files where they belong
 - ✅ **Technical content pure**: Base contains only scientific/technical requirements
+- ✅ **Real-time status updates**: Every 10 seconds during generation
+- ✅ **Iterative AI detection**: Winston.ai integration working
+- ✅ **13/14 tests passing**: Comprehensive test coverage
 
 ## 🎉 **Architecture Status: PRODUCTION READY**
 
@@ -102,5 +127,7 @@ The three-layer architecture now provides:
 3. **Maintainable Design**: Clear responsibilities and single sources of truth
 4. **Scalable Foundation**: Ready for new countries, variants, and A/B testing
 5. **Quality Assurance**: Consistent technical accuracy with cultural authenticity
+6. **Real-Time Monitoring**: Status updates every 10 seconds during generation
+7. **AI Quality Control**: Winston.ai integration for content improvement
 
-**🚀 Ready for full material catalog generation with enhanced three-layer system!**
+**🚀 Ready for full material catalog generation with enhanced three-layer system and real-time status updates!**

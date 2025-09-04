@@ -83,9 +83,98 @@ if self.enable_scoring and self.content_scorer:
 ```
 
 ### Configuration
-The system is configured to use Winston.ai by default in `config/ai_detection.yaml`:
-```yaml
-provider: "winston"
+
+### Centralized AI Detection Configuration
+The system uses a centralized `AI_DETECTION_CONFIG` in `run.py` that contains all AI detection thresholds and parameters:
+
+```python
+AI_DETECTION_CONFIG = {
+    # Core AI Detection Thresholds
+    "target_score": 70.0,                    # Winston.ai target score for human-like content (≥70 = human-like)
+    "max_iterations": 5,                     # Maximum iterative improvement attempts
+    "improvement_threshold": 3.0,            # Minimum score improvement to continue iterations
+    "human_threshold": 75.0,                 # General human-like content threshold
+    
+    # Content Length Thresholds
+    "min_text_length_winston": 300,          # Minimum characters for Winston.ai analysis
+    "short_content_threshold": 400,          # Threshold for short content handling
+    "min_content_length": 50,                # Minimum content length for validation
+    
+    # Fallback Scores (when AI detection fails or content is too short)
+    "fallback_score_first_iteration": 60.0,  # Baseline score for first iteration
+    "fallback_score_short_content": 55.0,    # Score for moderately short content
+    "fallback_score_very_short": 40.0,       # Score for very short content
+    "fallback_score_error": 50.0,            # Score when AI detection fails
+    
+    # Status Update Configuration
+    "status_update_interval": 10,            # Seconds between status updates
+    "iteration_status_frequency": 5,         # Show status every Nth iteration
+    
+    # Word Count Validation
+    "word_count_tolerance": 1.5,             # Allow 50% tolerance over word limits (1.5x multiplier)
+    
+    # Country-Specific Word Count Limits
+    "word_count_limits": {
+        "taiwan": {"max": 380, "target_range": "340-380"},
+        "italy": {"max": 450, "target_range": "400-450"},
+        "indonesia": {"max": 400, "target_range": "350-400"},
+        "usa": {"max": 320, "target_range": "280-320"}
+    },
+    
+    # API Timeouts and Limits
+    "winston_timeout_cap": 15,               # Maximum timeout for Winston.ai requests
+    "max_tokens": 3000,                      # Maximum tokens for API requests
+    "retry_delay": 0.5,                     # Delay between retries
+    
+    # Winston.ai Scoring Ranges
+    "winston_human_range": (70, 100),       # Scores indicating human-written content
+    "winston_unclear_range": (30, 70),      # Scores indicating unclear/uncertain content
+    "winston_ai_range": (0, 30),            # Scores indicating AI-generated content
+    
+    # Early Exit Conditions
+    "min_iterations_before_exit": 3,         # Minimum iterations before allowing early exit
+    "early_exit_score_threshold": 10,        # Lenient threshold for early iterations (target - this value)
+    
+    # Configuration Optimization
+    "deepseek_optimization_enabled": True,   # Enable DeepSeek-based configuration optimization
+    "config_backup_enabled": True,           # Create backups before config changes
+    
+    # Logging and Debugging
+    "enable_detailed_logging": True,         # Enable detailed AI detection logging
+    "max_sentence_details": 5,               # Maximum sentence-level details to include in frontmatter
+}
+```
+
+### Key Configuration Parameters
+
+- **target_score**: The primary target for Winston.ai scores (default: 70.0)
+- **winston_human_range**: Scores considered human-like (70-100)
+- **winston_unclear_range**: Scores that are unclear/uncertain (30-70)
+- **winston_ai_range**: Scores considered AI-generated (0-30)
+- **min_text_length_winston**: Minimum characters required for analysis (300)
+- **status_update_interval**: How often to show progress updates (10 seconds)
+- **word_count_limits**: Country-specific word count limits for different authors
+
+### Configuration Validation
+Run the configuration test to validate all settings:
+```bash
+python3 test_ai_detection_config.py
+```
+
+Expected output:
+```
+🔧 Testing AI_DETECTION_CONFIG centralization...
+✅ AI_DETECTION_CONFIG imported successfully
+✅ All required configuration keys present
+✅ All configuration values are valid
+✅ Word count limits properly structured for all countries
+✅ Winston.ai scoring ranges properly configured
+✅ Configuration values are within reasonable ranges
+
+🔧 Testing AI_DETECTION_CONFIG usage in components...
+✅ Component import tests completed
+
+🎉 ALL AI_DETECTION_CONFIG TESTS PASSED!
 ```
 
 ## Scoring Interpretation

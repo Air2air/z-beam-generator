@@ -20,6 +20,18 @@ from datetime import datetime
 
 from api.client_manager import create_api_client
 
+# Import centralized AI detection configuration
+try:
+    from run import AI_DETECTION_CONFIG
+except ImportError:
+    # Fallback if run.py is not available
+    AI_DETECTION_CONFIG = {
+        "target_score": 70.0,
+        "winston_ai_range": (0, 30),
+        "winston_unclear_range": (30, 70),
+        "winston_human_range": (70, 100)
+    }
+
 logger = logging.getLogger(__name__)
 
 class AIDetectionConfigOptimizer:
@@ -30,16 +42,17 @@ class AIDetectionConfigOptimizer:
         # Initialize DeepSeek client when needed
         self._deepseek_client = None
         self.optimization_flags = [
-            "conversational_style",
-            "natural_language_patterns", 
-            "human_error_simulation",
-            "cultural_adaptation",
-            "emotional_depth",
-            "sentence_variability",
-            "paragraph_structure",
-            "lexical_diversity",
-            "rhetorical_devices",
-            "personal_anecdotes"
+            "conversational_style",        # Core: Keep enabled
+            "natural_language_patterns",   # Core: Keep enabled  
+            "cultural_adaptation",         # Core: Keep enabled
+            "sentence_variability",        # Core: Keep enabled
+            # Disable over-engineering features
+            "human_error_simulation",      # Disabled: Can backfire
+            "emotional_depth",             # Disabled: Over-engineering
+            "paragraph_structure",         # Disabled: Let content flow naturally
+            "lexical_diversity",           # Disabled: Over-engineering vocabulary
+            "rhetorical_devices",          # Disabled: Can seem forced
+            "personal_anecdotes"           # Disabled: Keep professional tone
         ]
 
     @property
@@ -116,70 +129,212 @@ class AIDetectionConfigOptimizer:
 
     def _generate_optimization_prompt(self, winston_result: Dict[str, Any],
                                     content: str, config: Dict[str, Any]) -> str:
-        """Generate the prompt for DeepSeek to optimize the configuration."""
+        """Generate the prompt for DeepSeek to optimize the configuration using comprehensive Winston AI data."""
 
-        # Extract key metrics from Winston result
+        # Extract comprehensive metrics from Winston result
         overall_score = winston_result.get('overall_score', 0)
-        sentence_scores = winston_result.get('sentence_scores', [])
-        analysis = winston_result.get('analysis', {})
+        confidence = winston_result.get('confidence', 0)
+        classification = winston_result.get('classification', 'unclear')
+
+        # Extract detailed analysis from Winston response
+        details = winston_result.get('details', {})
+        readability_score = details.get('readability_score')
+        attack_detected = details.get('attack_detected', {})
+
+        # Extract sentence-level analysis if available
+        sentences_data = details.get('sentences', [])
+        sentence_analysis = self._analyze_sentence_patterns(sentences_data)
 
         # Current flag states
         current_flags = {flag: config.get(flag, False) for flag in self.optimization_flags}
 
-        prompt = f"""You are an expert AI content optimization specialist. Analyze the Winston AI detection results and current configuration, then recommend optimal settings for the enhancement flags to improve human-like content generation.
+        # Build comprehensive analysis summary
+        analysis_summary = self._build_analysis_summary(
+            overall_score, confidence, classification, readability_score,
+            attack_detected, sentence_analysis, content
+        )
 
-CURRENT SITUATION:
-- Overall Winston Score: {overall_score}/100 (higher = more human-like)
-- Target Score: {config.get('target_score', 70)}
-- Current Enhancement Flags: {json.dumps(current_flags, indent=2)}
+        prompt = f"""You are an expert AI content optimization specialist with deep knowledge of Winston AI detection patterns. Analyze the comprehensive Winston AI detection results and recommend precise, data-driven enhancements for technical content.
 
-WINSTON ANALYSIS DETAILS:
-{json.dumps(analysis, indent=2)}
+{analysis_summary}
 
-SENTENCE-BY-SENTENCE SCORES:
-{json.dumps(sentence_scores[:10], indent=2)}  # First 10 sentences
+CURRENT CONFIGURATION:
+- Enhancement Flags: {json.dumps(current_flags, indent=2)}
+- Target Score: {AI_DETECTION_CONFIG["target_score"]} (realistic for technical content)
 
-CONTENT SAMPLE (first 500 characters):
-{content[:500]}...
+CONTENT SAMPLE (first 600 characters for pattern analysis):
+{content[:600]}...
 
-ENHANCEMENT FLAGS EXPLANATION:
-- conversational_style: Use conversational language patterns and natural flow
-- natural_language_patterns: Apply natural language variations and idioms
-- human_error_simulation: Simulate minor human-like errors (typos, hesitations)
-- cultural_adaptation: Adapt to cultural/national contexts and references
-- emotional_depth: Add emotional depth and personality to writing
-- sentence_variability: Vary sentence length and structure (short/long sentences)
-- paragraph_structure: Use varied paragraph lengths and transitions
-- lexical_diversity: Employ rich vocabulary and word choice variety
-- rhetorical_devices: Include metaphors, analogies, and rhetorical questions
-- personal_anecdotes: Add brief personal stories or examples (use sparingly)
+WINDSOR AI-DRIVEN OPTIMIZATION FRAMEWORK:
 
-TASK:
-Based on the Winston analysis, determine which enhancement flags should be enabled/disabled to improve the overall score. Consider:
+1. **SCORE-BASED STRATEGY** (Primary Driver):
+   - Score < 20: Maximum enhancement - content needs fundamental human-like restructuring
+   - Score 20-35: Balanced enhancement - focus on natural flow and readability
+   - Score 35-50: Targeted refinement - address specific detection patterns
+   - Score > 50: Minimal adjustments - preserve working patterns
 
-1. If score is very low (<30): Enable all human-like features aggressively
-2. If score is low (30-50): Focus on basic human elements (conversational, natural patterns, sentence variability)
-3. If score is medium (50-70): Add structural improvements (paragraph structure, lexical diversity)
-4. If score is high (>70): Fine-tune with advanced techniques (rhetorical devices, emotional depth)
+2. **READABILITY-BASED ADJUSTMENTS** (Secondary Driver):
+   - Readability < 40: Enable conversational_style and natural_language_patterns
+   - Readability 40-60: Focus on sentence_variability for rhythm
+   - Readability > 60: Cultural adaptation may be sufficient
 
-Return ONLY a JSON object with the optimized flag settings:
+3. **SENTENCE PATTERN ANALYSIS** (Tactical Driver):
+   - Uniform sentence lengths: Enable sentence_variability
+   - Complex vocabulary clusters: Enable natural_language_patterns
+   - Repetitive structures: Enable conversational_style
+
+4. **ATTACK DETECTION RESPONSE** (Safety Driver):
+   - If manipulation detected: Prioritize natural_language_patterns
+   - If pattern anomalies: Enable sentence_variability
+
+TECHNICAL CONTENT PRINCIPLES:
+- Preserve technical accuracy and domain expertise
+- Maintain professional credibility over casual tone
+- Focus on natural information flow, not forced personality
+- Address specific AI detection triggers identified by Winston
+
+Return ONLY a JSON object with data-driven optimization settings:
 {{
   "conversational_style": true/false,
   "natural_language_patterns": true/false,
-  "human_error_simulation": true/false,
   "cultural_adaptation": true/false,
-  "emotional_depth": true/false,
   "sentence_variability": true/false,
-  "paragraph_structure": true/false,
-  "lexical_diversity": true/false,
-  "rhetorical_devices": true/false,
-  "personal_anecdotes": true/false,
-  "reasoning": "Brief explanation of your optimization decisions"
+  "human_error_simulation": false,
+  "emotional_depth": false,
+  "paragraph_structure": false,
+  "lexical_diversity": false,
+  "rhetorical_devices": false,
+  "personal_anecdotes": false,
+  "reasoning": "Detailed explanation of Winston data-driven optimization approach"
 }}
 
-Be strategic - enable flags progressively based on current score level, and disable flags that might be counterproductive."""
+Provide specific, actionable recommendations based on the Winston AI analysis data."""
 
         return prompt
+
+    def _analyze_sentence_patterns(self, sentences_data: list) -> Dict[str, Any]:
+        """Analyze sentence-level patterns from Winston AI response."""
+        if not sentences_data:
+            return {"available": False}
+
+        try:
+            scores = [s.get('score', 0) for s in sentences_data if isinstance(s, dict)]
+            texts = [s.get('text', '') for s in sentences_data if isinstance(s, dict)]
+
+            if not scores:
+                return {"available": False}
+
+            # Calculate sentence-level statistics
+            avg_sentence_score = sum(scores) / len(scores)
+            score_variance = sum((s - avg_sentence_score) ** 2 for s in scores) / len(scores)
+
+            # Analyze sentence length patterns
+            sentence_lengths = [len(text.split()) for text in texts if text]
+            avg_length = sum(sentence_lengths) / len(sentence_lengths) if sentence_lengths else 0
+
+            # Identify problematic sentences (very low scores)
+            low_score_sentences = [i for i, score in enumerate(scores) if score < 20]
+
+            return {
+                "available": True,
+                "sentence_count": len(sentences_data),
+                "avg_sentence_score": avg_sentence_score,
+                "score_variance": score_variance,
+                "avg_sentence_length": avg_length,
+                "low_score_count": len(low_score_sentences),
+                "low_score_percentage": (len(low_score_sentences) / len(sentences_data)) * 100 if sentences_data else 0
+            }
+
+        except Exception as e:
+            logger.warning(f"Error analyzing sentence patterns: {e}")
+            return {"available": False, "error": str(e)}
+
+    def _build_analysis_summary(self, overall_score: float, confidence: float,
+                              classification: str, readability_score: Optional[float],
+                              attack_detected: Dict, sentence_analysis: Dict,
+                              content: str) -> str:
+        """Build comprehensive analysis summary from Winston AI data."""
+
+        summary_parts = []
+
+        # Core metrics
+        summary_parts.append("WINDSOR AI ANALYSIS RESULTS:")
+        summary_parts.append(f"- Overall Score: {overall_score:.1f}/100 ({classification})")
+        summary_parts.append(f"- Confidence: {confidence:.2f}")
+        summary_parts.append(f"- Target Range: {AI_DETECTION_CONFIG['target_score']} (realistic technical content)")
+
+        # Readability analysis
+        if readability_score is not None:
+            readability_level = "Low" if readability_score < 40 else "Medium" if readability_score < 60 else "High"
+            summary_parts.append(f"- Readability Score: {readability_score:.1f} ({readability_level})")
+            if readability_score < 40:
+                summary_parts.append("  → Content may be too complex - needs simplification")
+            elif readability_score > 60:
+                summary_parts.append("  → Content may be too simple - needs technical depth")
+
+        # Attack detection
+        if attack_detected:
+            summary_parts.append(f"- Attack Detection: {attack_detected}")
+            if any(attack_detected.values()):
+                summary_parts.append("  → Manipulation patterns detected - prioritize natural patterns")
+
+        # Sentence-level analysis
+        if sentence_analysis.get("available", False):
+            summary_parts.append("SENTENCE-LEVEL ANALYSIS:")
+            summary_parts.append(f"- Sentences Analyzed: {sentence_analysis['sentence_count']}")
+            summary_parts.append(f"- Average Sentence Score: {sentence_analysis['avg_sentence_score']:.1f}")
+            summary_parts.append(f"- Score Variance: {sentence_analysis['score_variance']:.2f}")
+            summary_parts.append(f"- Average Sentence Length: {sentence_analysis['avg_sentence_length']:.1f} words")
+
+            if sentence_analysis['low_score_percentage'] > 20:
+                summary_parts.append(f"- Problem Sentences: {sentence_analysis['low_score_percentage']:.1f}% have very low scores")
+                summary_parts.append("  → Multiple sentences triggering AI detection")
+
+        # Content characteristics analysis
+        content_analysis = self._analyze_content_characteristics(content)
+        if content_analysis:
+            summary_parts.append("CONTENT CHARACTERISTICS:")
+            for characteristic, value in content_analysis.items():
+                summary_parts.append(f"- {characteristic}: {value}")
+
+        return "\n".join(summary_parts)
+
+    def _analyze_content_characteristics(self, content: str) -> Dict[str, str]:
+        """Analyze basic content characteristics that might affect AI detection."""
+        try:
+            sentences = content.split('.')
+            words = content.split()
+            paragraphs = content.split('\n\n')
+
+            characteristics = {}
+
+            # Sentence analysis
+            if len(sentences) > 0:
+                avg_sentence_length = sum(len(s.split()) for s in sentences) / len(sentences)
+                characteristics["Average Sentence Length"] = f"{avg_sentence_length:.1f} words"
+
+            # Vocabulary analysis
+            unique_words = len(set(words))
+            total_words = len(words)
+            if total_words > 0:
+                lexical_diversity = unique_words / total_words
+                characteristics["Lexical Diversity"] = f"{lexical_diversity:.3f}"
+
+            # Structure analysis
+            characteristics["Paragraph Count"] = str(len(paragraphs))
+            characteristics["Total Words"] = str(total_words)
+
+            # Technical indicators
+            technical_terms = sum(1 for word in words if len(word) > 8)  # Long technical terms
+            if total_words > 0:
+                technical_density = technical_terms / total_words
+                characteristics["Technical Term Density"] = f"{technical_density:.3f}"
+
+            return characteristics
+
+        except Exception as e:
+            logger.warning(f"Error analyzing content characteristics: {e}")
+            return {}
 
     def _parse_optimization_response(self, response, current_config: Dict[str, Any]) -> Dict[str, Any]:
         """Parse DeepSeek's optimization response and apply changes to config."""

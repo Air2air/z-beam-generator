@@ -43,17 +43,19 @@ class WinstonProvider:
             raise AIDetectionError("Winston.ai API key not configured")
 
         # Check minimum text length requirement
-        if len(text.strip()) < 300:
-            logger.warning(f"Text too short for Winston.ai analysis: {len(text.strip())} characters (minimum 300 required)")
+        # Import centralized AI detection config
+        from run import AI_DETECTION_CONFIG
+        if len(text.strip()) < AI_DETECTION_CONFIG["min_text_length_winston"]:
+            logger.warning(f"Text too short for Winston.ai analysis: {len(text.strip())} characters (minimum {AI_DETECTION_CONFIG['min_text_length_winston']} required)")
             # Return a neutral result for short text
             return AIDetectionResult(
-                score=50.0,  # Neutral score
+                score=AI_DETECTION_CONFIG["fallback_score_error"],  # Neutral score
                 confidence=0.5,
                 classification="unclear",
                 details={
                     "error": "Text too short for analysis",
                     "text_length": len(text.strip()),
-                    "minimum_required": 300
+                    "minimum_required": AI_DETECTION_CONFIG["min_text_length_winston"]
                 },
                 processing_time=0.0,
                 provider="winston"
@@ -82,7 +84,7 @@ class WinstonProvider:
             response = self.session.post(
                 f"{self.base_url}/v2/ai-content-detection",
                 json=payload,
-                timeout=min(self.config.timeout, 15)  # CAP timeout at 15 seconds for faster response
+                timeout=min(self.config.timeout, AI_DETECTION_CONFIG["winston_timeout_cap"])  # CAP timeout at configured seconds for faster response
             )
 
             # API Terminal Messaging - Response received

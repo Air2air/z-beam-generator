@@ -8,6 +8,7 @@ Provides a clean interface to the fail_fast_generator.py content generation syst
 
 import logging
 import datetime
+import random
 from typing import Dict, Optional
 from generators.component_generators import APIComponentGenerator, ComponentResult
 
@@ -25,6 +26,10 @@ class TextComponentGenerator(APIComponentGenerator):
         """Initialize the text component generator."""
         super().__init__("text")
         self.ai_detection_service = ai_detection_service
+        
+        # Import centralized AI detection config at initialization
+        from run import AI_DETECTION_CONFIG
+        self.ai_detection_config = AI_DETECTION_CONFIG
 
     def generate(self, material_name: str, material_data: Dict,
                 api_client=None, author_info: Optional[Dict] = None,
@@ -74,9 +79,17 @@ class TextComponentGenerator(APIComponentGenerator):
             config_optimizer = AIDetectionConfigOptimizer()
             current_config = config_optimizer._load_current_config()
 
+            # Initialize prompt optimizer for targeted prompt updates
+            from components.text.ai_detection_prompt_optimizer import AIDetectionPromptOptimizer
+            prompt_optimizer = AIDetectionPromptOptimizer()
+
+            # Initialize dynamic prompt generator for gradual evolution
+            from components.text.dynamic_prompt_system import DynamicPromptSystem
+            dynamic_system = DynamicPromptSystem()
+
             logger.info(f"🎯 Starting intelligent iterative content generation for {material_name}")
             logger.info(f"Target Winston score: ≥{target_score} (human-like), Max iterations: {max_iterations}")
-            logger.info("📋 Dynamic configuration optimization enabled")
+            logger.info("📋 Dynamic configuration and prompt optimization enabled")
 
             best_result = None
             best_score = 0.0
@@ -87,7 +100,7 @@ class TextComponentGenerator(APIComponentGenerator):
             import time as time_module
             start_time = time_module.time()
             last_status_update = start_time
-            status_update_interval = 10  # seconds
+            status_update_interval = self.ai_detection_config["status_update_interval"]  # seconds
             
             # Initial status update
             print(f"📊 [START] Beginning iterative improvement for {material_name} - Target: {target_score:.1f} - Max iterations: {max_iterations}")
@@ -98,7 +111,7 @@ class TextComponentGenerator(APIComponentGenerator):
                 
                 # Always check for time-based status update (every 10 seconds)
                 time_since_last_update = current_time - last_status_update
-                if time_since_last_update >= status_update_interval:
+                if time_since_last_update >= self.ai_detection_config["status_update_interval"]:
                     elapsed_time = current_time - start_time
                     progress_percent = ((iteration + 1) / max_iterations) * 100
                     print(f"📊 [TIME STATUS] {time_module.strftime('%H:%M:%S')} - Elapsed: {elapsed_time:.1f}s - "
@@ -110,7 +123,7 @@ class TextComponentGenerator(APIComponentGenerator):
                 should_show_iteration_status = (
                     iteration == 0 or  # Always show first iteration
                     iteration == max_iterations - 1 or  # Always show last iteration
-                    (iteration + 1) % 5 == 0  # Show every 5th iteration
+                    (iteration + 1) % self.ai_detection_config["iteration_status_frequency"] == 0  # Show every Nth iteration
                 )
                 
                 if should_show_iteration_status:
@@ -140,11 +153,12 @@ class TextComponentGenerator(APIComponentGenerator):
                 }
 
                 # Create generator with current iteration settings
+                # Use pre-imported AI detection config
                 generator = create_fail_fast_generator(
                     max_retries=3,
                     retry_delay=1.0,
                     enable_scoring=True,
-                    human_threshold=75.0,
+                    human_threshold=self.ai_detection_config["human_threshold"],
                     ai_detection_service=self.ai_detection_service,
                     skip_ai_detection=True  # Skip AI detection in fail_fast_generator since we handle it here
                 )
@@ -275,17 +289,17 @@ class TextComponentGenerator(APIComponentGenerator):
                             if not in_frontmatter and line.strip():
                                 clean_text += line + '\n'
 
-                        if len(clean_text.strip()) >= 300:  # Reduced minimum for Winston
+                        if len(clean_text.strip()) >= self.ai_detection_config["min_text_length_winston"]:  # Reduced minimum for Winston
                             # Skip AI detection on first iteration for speed, but be more aggressive on later iterations
                             if iteration == 0:
                                 logger.info("⏭️ Skipping AI detection on first iteration for speed")
-                                current_score = 60.0  # Reasonable baseline for first iteration
+                                current_score = self.ai_detection_config["fallback_score_first_iteration"]  # Reasonable baseline for first iteration
                                 iteration_data['ai_detection_skipped'] = True
                                 iteration_data['score'] = current_score
                                 iteration_data['classification'] = 'neutral'
-                            elif len(clean_text.strip()) < 400:  # Reduced threshold for short content
+                            elif len(clean_text.strip()) < self.ai_detection_config["short_content_threshold"]:  # Reduced threshold for short content
                                 logger.info("⏭️ Content moderately short, using estimated score")
-                                current_score = 55.0  # Better estimate for short content
+                                current_score = self.ai_detection_config["fallback_score_short_content"]  # Better estimate for short content
                                 iteration_data['ai_detection_skipped'] = True
                                 iteration_data['score'] = current_score
                                 iteration_data['classification'] = 'neutral'
@@ -321,6 +335,50 @@ class TextComponentGenerator(APIComponentGenerator):
                                     else:
                                         logger.info("ℹ️ Configuration unchanged by DeepSeek")
 
+                                    # Optimize prompts based on Winston analysis (lightweight updates)
+                                    iteration_context = {
+                                        'iteration_history': iteration_history,
+                                        'current_score': current_score,
+                                        'target_score': target_score,
+                                        'material_name': material_name
+                                    }
+
+                                    prompt_updated = prompt_optimizer.optimize_prompts(
+                                        winston_result={
+                                            'overall_score': current_score,
+                                            'sentence_scores': ai_result.details.get('sentences', []) if ai_result and ai_result.details else [],
+                                            'analysis': ai_result.details if ai_result and ai_result.details else {},
+                                            'classification': ai_result.classification if ai_result else 'unknown'
+                                        },
+                                        content=clean_text.strip(),
+                                        iteration_context=iteration_context
+                                    )
+
+                                    if prompt_updated:
+                                        logger.info("✅ AI detection prompts updated for improved future generation")
+                                    else:
+                                        logger.info("ℹ️ No prompt updates needed at this time")
+
+                                    # Generate gradual prompt improvements (like text generation iterations)
+                                    if iteration > 0 and random.random() < 0.4:  # 40% chance after first iteration
+                                        logger.info("🤖 Analyzing prompts for gradual evolution...")
+                                        evolution_result = dynamic_system.analyze_and_evolve(
+                                            winston_result={
+                                                'overall_score': current_score,
+                                                'classification': ai_result.classification if ai_result else 'unknown',
+                                                'sentence_analysis': {
+                                                    'low_score_percentage': 15.0 if current_score < 50 else 5.0
+                                                }
+                                            },
+                                            content=clean_text.strip(),
+                                            iteration_context=iteration_context
+                                        )
+
+                                        if evolution_result['success'] and evolution_result['improvements_applied'] > 0:
+                                            logger.info(f"✅ Applied {evolution_result['improvements_applied']} gradual prompt improvements")
+                                        else:
+                                            logger.info("ℹ️ No prompt improvements applied this iteration")
+
                             # Calculate improvement from previous best
                             iteration_data['improvement'] = current_score - best_score
 
@@ -331,7 +389,7 @@ class TextComponentGenerator(APIComponentGenerator):
                                 logger.info(f"💡 New best score: {best_score:.1f}")
 
                             # Check if we've reached the target (be more lenient for early iterations)
-                            target_threshold = target_score if iteration >= 2 else target_score - 10  # Allow lower scores (more lenient) on early iterations
+                            target_threshold = target_score if iteration >= 2 else target_score - self.ai_detection_config["early_exit_score_threshold"]  # Allow lower scores (more lenient) on early iterations
                             if current_score >= target_threshold:
                                 # Only exit early if we've done at least 3 iterations OR if this is the last possible iteration
                                 if iteration >= 2 or iteration == max_iterations - 1:  # iteration is 0-indexed, so iteration >= 2 means 3+ iterations
@@ -357,7 +415,7 @@ class TextComponentGenerator(APIComponentGenerator):
                         else:
                             logger.warning(f"📝 Content too short for AI detection: {len(clean_text.strip())} chars")
                             # Use default score for short content
-                            current_score = 40.0  # Lower baseline for very short content
+                            current_score = self.ai_detection_config["fallback_score_very_short"]  # Lower baseline for very short content
                             iteration_data['score'] = current_score
                             iteration_data['classification'] = 'ai'
                             iteration_data['ai_detection_skipped'] = True
@@ -368,7 +426,7 @@ class TextComponentGenerator(APIComponentGenerator):
                     except Exception as ai_error:
                         logger.warning(f"⚠️ AI detection failed on iteration {iteration + 1}: {ai_error}")
                         # Use default score when AI detection fails
-                        current_score = 50.0  # Neutral score when AI detection fails
+                        current_score = self.ai_detection_config["fallback_score_error"]  # Neutral score when AI detection fails
                         iteration_data['score'] = current_score
                         iteration_data['classification'] = 'unknown'
                         iteration_data['ai_detection_performed'] = False
@@ -426,6 +484,7 @@ class TextComponentGenerator(APIComponentGenerator):
 
     def _update_frontmatter_with_iterations(self, content: str, score: float, ai_result=None, iteration_history=None) -> str:
         """Update the frontmatter with AI detection score and iteration history."""
+        
         try:
             lines = content.split('\n')
             updated_lines = []
@@ -468,7 +527,7 @@ class TextComponentGenerator(APIComponentGenerator):
                         # Include sentence-level details for Winston
                         if key == "sentences" and isinstance(value, list):
                             ai_lines.append("    sentences:")
-                            for sentence_data in value[:5]:  # Limit to first 5 sentences
+                            for sentence_data in value[:self.ai_detection_config["max_sentence_details"]]:  # Limit to first N sentences
                                 if isinstance(sentence_data, dict):
                                     ai_lines.append("      - text: \"{}\"".format(sentence_data.get('text', '').replace('"', '\\"')))
                                     ai_lines.append("        score: {}".format(sentence_data.get('score', 0.0)))

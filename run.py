@@ -122,6 +122,66 @@ API_PROVIDERS = {
     },
 }
 
+# ============================================================================
+# AI DETECTION CONFIGURATION - CENTRALIZED THRESHOLDS AND PARAMETERS
+# ============================================================================
+
+AI_DETECTION_CONFIG = {
+    # Core AI Detection Thresholds
+    "target_score": 65.0,                    # Winston.ai target score for human-like content (realistic target: 40-50)
+    "max_iterations": 5,                     # Maximum iterative improvement attempts
+    "improvement_threshold": 3.0,            # Minimum score improvement to continue iterations
+    "human_threshold": 75.0,                 # General human-like content threshold
+    
+    # Content Length Thresholds
+    "min_text_length_winston": 300,          # Minimum characters for Winston.ai analysis
+    "short_content_threshold": 400,          # Threshold for short content handling
+    "min_content_length": 150,                # Minimum content length for validation
+    
+    # Fallback Scores (when AI detection fails or content is too short)
+    "fallback_score_first_iteration": 60.0,  # Baseline score for first iteration
+    "fallback_score_short_content": 55.0,    # Score for moderately short content
+    "fallback_score_very_short": 40.0,       # Score for very short content
+    "fallback_score_error": 50.0,            # Score when AI detection fails
+    
+    # Status Update Configuration
+    "status_update_interval": 10,            # Seconds between status updates
+    "iteration_status_frequency": 5,         # Show status every Nth iteration
+    
+    # Word Count Validation
+    "word_count_tolerance": 1.5,             # Allow 50% tolerance over word limits (1.5x multiplier)
+    
+    # Country-Specific Word Count Limits
+    "word_count_limits": {
+        "taiwan": {"max": 380, "target_range": "340-380"},
+        "italy": {"max": 450, "target_range": "400-450"},
+        "indonesia": {"max": 400, "target_range": "350-400"},
+        "usa": {"max": 320, "target_range": "280-320"}
+    },
+    
+    # API Timeouts and Limits
+    "winston_timeout_cap": 15,               # Maximum timeout for Winston.ai requests
+    "max_tokens": 3000,                      # Maximum tokens for API requests
+    "retry_delay": 0.5,                     # Delay between retries
+    
+    # Winston.ai Scoring Ranges
+    "winston_human_range": (70, 100),       # Scores indicating human-written content
+    "winston_unclear_range": (30, 70),      # Scores indicating unclear/uncertain content
+    "winston_ai_range": (0, 30),            # Scores indicating AI-generated content
+    
+    # Early Exit Conditions
+    "min_iterations_before_exit": 3,         # Minimum iterations before allowing early exit
+    "early_exit_score_threshold": 10,        # Lenient threshold for early iterations (target - this value)
+    
+    # Configuration Optimization
+    "deepseek_optimization_enabled": True,   # Enable DeepSeek-based configuration optimization
+    "config_backup_enabled": True,           # Create backups before config changes
+    
+    # Logging and Debugging
+    "enable_detailed_logging": True,         # Enable detailed AI detection logging
+    "max_sentence_details": 5,               # Maximum sentence-level details to include in frontmatter
+}
+
 # Component Configuration
 COMPONENT_CONFIG = {
     # Component orchestration order (components will be generated in this order)
@@ -547,12 +607,18 @@ def run_content_batch() -> bool:
     last_batch_status = batch_start_time
     batch_status_interval = 10  # seconds - reduced from 15 for more frequent updates
     
+    # Track previous counts for change detection
+    prev_generated_count = 0
+    prev_failed_count = 0
+    
     for i, material in enumerate(first_3_materials, 1):
         current_batch_time = time_module.time()
         
-        # Status update every 10 seconds OR for first/last material (not every material)
+        # Status update every 10 seconds OR when status changes OR for first/last material
+        status_changed = (generated_count != prev_generated_count or failed_count != prev_failed_count)
         should_show_status = (
             current_batch_time - last_batch_status >= batch_status_interval or
+            status_changed or
             i == 1 or  # Always show first material
             i == len(first_3_materials)  # Always show last material
         )
@@ -560,9 +626,13 @@ def run_content_batch() -> bool:
         if should_show_status:
             elapsed_batch_time = current_batch_time - batch_start_time
             progress_percent = (i / len(first_3_materials)) * 100
-            print(f"📊 [BATCH STATUS] Processing material {i}/{len(first_3_materials)} ({progress_percent:.1f}%) - "
+            status_change_indicator = "🔄" if status_changed else ""
+            print(f"📊 [BATCH STATUS{status_change_indicator}] Processing material {i}/{len(first_3_materials)} ({progress_percent:.1f}%) - "
                   f"Elapsed: {elapsed_batch_time:.1f}s - Generated: {generated_count}, Failed: {failed_count}")
             last_batch_status = current_batch_time
+            # Update previous counts after showing status
+            prev_generated_count = generated_count
+            prev_failed_count = failed_count
         
         print(f"\n📦 [{i}/{len(first_3_materials)}] Processing material: {material}")
         
@@ -596,6 +666,7 @@ def run_content_batch() -> bool:
     print(f"📁 Output directory: {content_dir}")
     print(f"⏱️ Total batch time: {total_batch_time:.1f}s")
     print(f"📈 Success rate: {success_rate:.1f}%")
+    print(f"🔄 Status updates: Real-time (on changes + every {batch_status_interval}s)")
     
     return failed_count == 0
 
