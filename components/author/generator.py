@@ -3,81 +3,89 @@
 Author Component Generator
 
 Generates author information content using local JSON data.
-Integrated with the modular component architecture.
+Uses consolidated component base utilities for reduced code duplication.
 """
 
-import logging
-import sys
 import json
 from pathlib import Path
 from typing import Dict, Optional, Any
 
-# Add the project root to the Python path
-project_root = Path(__file__).parent.parent.parent
-if str(project_root) not in sys.path:
-    sys.path.insert(0, str(project_root))
+# Import consolidated utilities
+from utils.component_base import (
+    ComponentGeneratorBase,
+    ComponentResult,
+    APIComponentGenerator,
+    handle_generation_error,
+    validate_required_fields
+)
 
-# Import after path setup
-try:
-    from generators.component_generators import APIComponentGenerator, ComponentResult
-except ImportError:
-    # Fallback if running standalone
-    class APIComponentGenerator:
-        def __init__(self, component_type): 
-            self.component_type = component_type
-        def generate(self, *args, **kwargs):
-            raise NotImplementedError("Base class method")
-    
-    class ComponentResult:
-        def __init__(self, component_type, content, success, error_message=None):
-            self.component_type = component_type
-            self.content = content
-            self.success = success
-            self.error_message = error_message
-
-logger = logging.getLogger(__name__)
 
 class AuthorComponentGenerator(APIComponentGenerator):
     """Generator for author components using local author data"""
-    
+
     def __init__(self):
         super().__init__("author")
-    
+        self.authors_file = Path(__file__).parent / "authors.json"
+
     def generate(self, material_name: str, material_data: Dict,
                 api_client=None, author_info: Optional[Dict] = None,
                 frontmatter_data: Optional[Dict] = None,
                 schema_fields: Optional[Dict] = None) -> ComponentResult:
         """Generate author component content using author system"""
         try:
-            from run import get_author_by_id
-            
+            # Validate required data
+            if not material_name:
+                return self.create_error_result("Material name is required")
+
             # Determine author ID to use
-            if author_info and 'id' in author_info:
-                author_id = author_info['id']
-            else:
-                # Use first author as default
-                author_id = 1
-                
+            author_id = author_info.get('id', 1) if author_info else 1
+
             # Get author data
-            author_data = get_author_by_id(author_id)
+            author_data = self._get_author_by_id(author_id)
             if not author_data:
-                return ComponentResult(
-                    component_type="author",
-                    content="",
-                    success=False,
-                    error_message=f"Author with ID {author_id} not found"
-                )
-            
-            # Generate author content
-            author_name = author_data.get('name', 'Unknown Author')
-            author_title = author_data.get('title', 'Expert')
-            author_expertise = author_data.get('expertise', 'Technical Expert')
-            country = author_data.get('country', 'International')
-            
-            content = f"""
+                return self.create_error_result(f"Author with ID {author_id} not found")
+
+            # Generate content
+            content = self._create_author_content(material_name, author_data)
+
+            return ComponentResult(
+                component_type="author",
+                content=content,
+                success=True
+            )
+
+        except Exception as e:
+            return handle_generation_error("author", e, "content generation")
+
+    def _get_author_by_id(self, author_id: int) -> Optional[Dict[str, Any]]:
+        """Get author data by ID"""
+        try:
+            if not self.authors_file.exists():
+                return None
+
+            with open(self.authors_file, 'r', encoding='utf-8') as f:
+                authors_data = json.load(f)
+
+            for author in authors_data.get("authors", []):
+                if author.get("id") == author_id:
+                    return author
+            return None
+
+        except Exception as e:
+            self.logger.error(f"Error loading author data: {e}")
+            return None
+
+    def _create_author_content(self, material_name: str, author_data: Dict) -> str:
+        """Create author content from author data"""
+        author_name = author_data.get('name', 'Unknown Author')
+        author_title = author_data.get('title', 'Expert')
+        author_expertise = author_data.get('expertise', 'Technical Expert')
+        country = author_data.get('country', 'International')
+
+        content = f"""
 ## About the Author
 
-**{author_name}**  
+**{author_name}**
 *{author_title}*
 
 {author_name} is a {author_expertise.lower()} based in {country}. With extensive experience in laser processing and material science, {author_name.split()[0]} specializes in advanced laser cleaning applications and industrial material processing technologies.
@@ -90,21 +98,17 @@ class AuthorComponentGenerator(APIComponentGenerator):
 
 *Contact {author_name.split()[0]} for expert consultation on laser cleaning applications for {material_name} and related materials.*
 """.strip()
-            
-            return ComponentResult(
-                component_type="author",
-                content=content,
-                success=True
-            )
-            
-        except Exception as e:
-            logger.error(f"Error generating author content: {e}")
-            return ComponentResult(
-                component_type="author",
-                content="",
-                success=False,
-                error_message=str(e)
-            )
+
+        return content
+
+    def create_error_result(self, error_message: str) -> ComponentResult:
+        """Create a ComponentResult for error cases"""
+        return ComponentResult(
+            component_type="author",
+            content="",
+            success=False,
+            error_message=error_message
+        )
 
 
 # Legacy compatibility classes and functions
