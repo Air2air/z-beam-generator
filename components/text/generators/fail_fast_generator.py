@@ -622,6 +622,13 @@ class FailFastContentGenerator:
             formatting_config = self._load_formatting_prompt(author_id)
             ai_detection_config = self._load_ai_detection_prompt()
             
+            # LOG PROMPT LOADING FOR VERIFICATION
+            logger.info(f"🔍 PROMPT CHAIN VERIFICATION - Loading prompts for author_id {author_id}:")
+            logger.info(f"   📄 Base config loaded: {len(str(base_config))} chars")
+            logger.info(f"   👤 Persona config loaded: {persona_config.get('persona', {}).get('country', 'unknown')} - {len(str(persona_config))} chars")
+            logger.info(f"   🎨 Formatting config loaded: {formatting_config.get('country', 'unknown')} - {len(str(formatting_config))} chars")
+            logger.info(f"   🤖 AI detection config loaded: {len(str(ai_detection_config))} chars")
+            
             # Build the complete prompt by combining all layers
             prompt_parts = []
             
@@ -653,6 +660,9 @@ class FailFastContentGenerator:
                 prompt_parts.append(f"Country: {persona.get('country', 'Unknown')}")
                 prompt_parts.append(f"Personality: {persona.get('personality', 'Professional')}")
                 prompt_parts.append(f"Tone: {persona.get('tone_objective', 'Professional')}")
+                
+                # LOG PERSONA-SPECIFIC CONTENT
+                logger.info(f"   👤 PERSONA VERIFICATION - Author: {persona.get('name', 'Unknown')}, Country: {persona.get('country', 'Unknown')}")
             
             # 5. Cultural Humanization
             if 'cultural_humanization' in ai_detection_config and 'nationality_adaptation' in ai_detection_config['cultural_humanization']:
@@ -661,7 +671,7 @@ class FailFastContentGenerator:
                 if author_country in adaptations:
                     prompt_parts.append(f"\n## Cultural Writing Style\n{author_country.title()} characteristics: {adaptations[author_country]}")
             
-            # 3. Language patterns and signature phrases
+            # 6. Language patterns and signature phrases
             if 'language_patterns' in persona_config:
                 patterns = persona_config['language_patterns']
                 prompt_parts.append("\n## Language Patterns (Apply Throughout)")
@@ -671,8 +681,11 @@ class FailFastContentGenerator:
                     prompt_parts.append(f"Repetition: {patterns['repetition']}")
                 if 'signature_phrases' in patterns:
                     prompt_parts.append(f"Use these signature phrases naturally: {', '.join(patterns['signature_phrases'][:5])}")
+                    
+                    # LOG SIGNATURE PHRASES
+                    logger.info(f"   🗣️ SIGNATURE PHRASES VERIFICATION - Loaded {len(patterns['signature_phrases'])} phrases")
             
-            # 4. Writing style guidelines
+            # 7. Writing style guidelines
             if 'writing_style' in persona_config:
                 style = persona_config['writing_style']
                 prompt_parts.append("\n## Writing Style Guidelines")
@@ -685,7 +698,7 @@ class FailFastContentGenerator:
                     for guideline in style['guidelines'][:3]:
                         prompt_parts.append(f"- {guideline}")
             
-            # 5. Formatting requirements
+            # 8. Formatting requirements
             if 'formatting_patterns' in formatting_config:
                 patterns = formatting_config['formatting_patterns']
                 prompt_parts.append("\n## Formatting Requirements")
@@ -693,21 +706,30 @@ class FailFastContentGenerator:
                     prompt_parts.append(f"Emphasis: {patterns['emphasis']}")
                 if 'structure' in patterns:
                     prompt_parts.append(f"Structure: {patterns['structure']}")
+                    
+                    # LOG FORMATTING PATTERNS
+                    logger.info(f"   🎨 FORMATTING VERIFICATION - Structure: {patterns.get('structure', 'none')}")
             
-            # 6. Content constraints
+            # 9. Content constraints
             if 'content_constraints' in formatting_config:
                 constraints = formatting_config['content_constraints']
                 if 'max_word_count' in constraints:
                     prompt_parts.append(f"\n## Content Length\nMaximum word count: {constraints['max_word_count']} words")
+                    
+                    # LOG WORD COUNT CONSTRAINTS
+                    logger.info(f"   📏 WORD COUNT VERIFICATION - Max: {constraints['max_word_count']} words")
             
-            # 7. Cultural characteristics
+            # 10. Cultural characteristics
             if 'taiwanese_characteristics' in formatting_config:
                 chars = formatting_config['taiwanese_characteristics']
                 prompt_parts.append("\n## Cultural Writing Characteristics")
                 for key, value in list(chars.items())[:3]:
                     prompt_parts.append(f"{key.replace('_', ' ').title()}: {value}")
+                    
+                    # LOG CULTURAL CHARACTERISTICS
+                    logger.info(f"   🌏 CULTURAL VERIFICATION - {key}: {value[:50]}...")
             
-            # 8. Main content generation instruction
+            # 11. Main content generation instruction
             prompt_parts.append(f"""
 ## Content Generation Task
 
@@ -725,7 +747,12 @@ Apply all language patterns, signature phrases, and formatting requirements cons
             # Combine all parts
             complete_prompt = '\n'.join(prompt_parts)
             
-            logger.info(f"📝 Built complete prompt: {len(complete_prompt)} characters")
+            # FINAL VERIFICATION LOG
+            logger.info(f"📝 PROMPT CHAIN COMPLETE - Final prompt: {len(complete_prompt)} characters")
+            logger.info(f"   ✅ Contains persona content: {'Author Persona:' in complete_prompt}")
+            logger.info(f"   ✅ Contains formatting content: {'Formatting Requirements' in complete_prompt}")
+            logger.info(f"   ✅ Contains AI detection content: {'Human-Like Content Generation' in complete_prompt}")
+            
             return complete_prompt
             
         except Exception as e:

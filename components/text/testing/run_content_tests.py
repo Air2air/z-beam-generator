@@ -64,6 +64,35 @@ def run_content_test_suite():
         logger.error(f"❌ Persona validation tests ERROR: {e}")
         test_results['persona_validation'] = False
     
+    # 2.5. Run Silicon Nitride Case Study Tests (new)
+    logger.info("\n🔬 TEST SUITE 2.5: SILICON NITRIDE CASE STUDY TESTS")
+    logger.info("-" * 60)
+    logger.info("📖 Testing real-world prompt chain integration")
+    logger.info("   - Validates formatting/* and personas/* integration")
+    logger.info("   - Tests AI detection optimization process")
+    logger.info("   - Verifies cultural authenticity and technical accuracy")
+    
+    try:
+        from components.text.testing.test_silicon_nitride_case_study import TestSiliconNitrideCaseStudy
+        import pytest
+        import unittest
+        
+        # Run the test class
+        loader = unittest.TestLoader()
+        suite = loader.loadTestsFromTestCase(TestSiliconNitrideCaseStudy)
+        runner = unittest.TextTestRunner(verbosity=2, stream=sys.stdout)
+        result = runner.run(suite)
+        
+        success = result.wasSuccessful()
+        test_results['silicon_nitride_case_study'] = success
+        if success:
+            logger.info("✅ Silicon Nitride case study tests PASSED")
+        else:
+            logger.error("❌ Silicon Nitride case study tests FAILED")
+    except Exception as e:
+        logger.error(f"❌ Silicon Nitride case study tests ERROR: {e}")
+        test_results['silicon_nitride_case_study'] = False
+    
     # 3. Run Technical Content Validation Tests (new)
     logger.info("\n🔬 TEST SUITE 3: TECHNICAL CONTENT VALIDATION TESTS")
     logger.info("-" * 60)

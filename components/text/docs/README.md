@@ -32,6 +32,15 @@ Detailed prompt system documentation including:
 - Formatting rules and optimization
 - Quality assurance and troubleshooting
 
+### 📖 [CASE_STUDIES.md](./CASE_STUDIES.md)
+Real-world examples and case studies including:
+- Silicon Nitride laser cleaning content generation
+- Prompt chain integration verification
+- AI detection optimization process
+- Quality metrics and iterative improvement
+- Cultural authenticity validation
+- Technical accuracy preservation
+
 ## Quick Navigation
 
 ### For Developers
@@ -43,6 +52,12 @@ Detailed prompt system documentation including:
 - **Author Personas:** See [PROMPT_SYSTEM.md](./PROMPT_SYSTEM.md) Author Personas section
 - **Writing Styles:** See [PROMPT_SYSTEM.md](./PROMPT_SYSTEM.md) Country-Specific Characteristics
 - **Content Structure:** See [CONTENT_GENERATION_ARCHITECTURE.md](./CONTENT_GENERATION_ARCHITECTURE.md) Prompt System Details
+- **Real Examples:** See [CASE_STUDIES.md](./CASE_STUDIES.md) for actual generated content
+
+### For Quality Assurance
+- **Testing Examples:** See [CASE_STUDIES.md](./CASE_STUDIES.md) for validation test cases
+- **Quality Metrics:** See [CASE_STUDIES.md](./CASE_STUDIES.md) AI Detection Analysis
+- **Prompt Chain Verification:** See [CASE_STUDIES.md](./CASE_STUDIES.md) Integration Testing
 
 ### For System Administrators
 - **Configuration:** See [PROMPT_SYSTEM.md](./PROMPT_SYSTEM.md) Configuration Files section
