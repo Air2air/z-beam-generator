@@ -177,18 +177,190 @@ python3 run.py --list-materials
 
 Each material generates these component types:
 
-| Component | Description | Status | AI Detection | API Provider | Status Updates |
-|-----------|-------------|---------|--------------|--------------|----------------|
-| `frontmatter` | YAML metadata | ✅ Working | ❌ Disabled | deepseek | ❌ |
-| `propertiestable` | Technical properties table | ✅ Working | ❌ Disabled | none | ❌ |
-| `badgesymbol` | Material symbol badge | ✅ Working | ❌ Disabled | none | ❌ |
-| `author` | Author information | ✅ Working | ❌ Disabled | none | ❌ |
-| `bullets` | Key characteristics list | ✅ Working | ✅ Enabled | deepseek | ❌ |
-| `caption` | Brief material description | ✅ Working | ✅ Enabled | gemini | ❌ |
-| `text` | Full technical article | ✅ Working | ✅ Enabled | deepseek | ✅ **Real-time** |
-| `tags` | SEO tags | ✅ Working | ❌ Disabled | deepseek | ❌ |
-| `metatags` | HTML meta tags | ✅ Working | ❌ Disabled | none | ❌ |
-| `jsonld` | Structured data markup | ✅ Working | ❌ Disabled | none | ❌ |
+| Component | Description | Status | AI Detection | API Provider | Dependencies |
+|-----------|-------------|---------|--------------|--------------|-------------|
+| `frontmatter` | YAML metadata | ✅ Working | ❌ Disabled | deepseek | None |
+| `propertiestable` | Technical properties table | ✅ Working | ❌ Disabled | none | None |
+| `badgesymbol` | Material symbol badge | ✅ Working | ❌ Disabled | none | **REQUIRES frontmatter** |
+| `author` | Author information | ✅ Working | ❌ Disabled | none | **REQUIRES frontmatter** |
+| `bullets` | Key characteristics list | ✅ Working | ✅ Enabled | deepseek | None |
+| `caption` | Brief material description | ✅ Working | ✅ Enabled | gemini | None |
+| `text` | Full technical article | ✅ Working | ✅ Enabled | deepseek | None |
+| `tags` | SEO tags | ✅ Working | ❌ Disabled | deepseek | None |
+| `metatags` | HTML meta tags | ✅ Working | ❌ Disabled | none | None |
+| `jsonld` | Structured data markup | ✅ Working | ❌ Disabled | none | None |
+
+## ⚠️ CRITICAL DEPENDENCY: Frontmatter Data
+
+**IMPORTANT**: Component generation depends on frontmatter data for that specified material. Component failures will cascade without it. This is intentional design.
+
+### Frontmatter Dependency Chain
+
+```
+┌─────────────────┐
+│   Frontmatter   │ ←── REQUIRED for dependent components
+│     Data        │
+└─────────────────┘
+         │
+         ▼
+┌─────────────────┐    ┌─────────────────┐
+│   badgesymbol   │    │     author      │
+│   Component     │    │   Component     │
+│                 │    │                 │
+│  DEPENDS ON     │    │  DEPENDS ON     │
+│  frontmatter    │    │  frontmatter    │
+└─────────────────┘    └─────────────────┘
+```
+
+### Required Frontmatter Fields
+
+#### For badgesymbol Component
+- `name` - Material name
+- `category` - Material category
+- `symbol` - Chemical symbol (e.g., "Al", "Cu")
+
+#### For author Component
+- `name` - Material name
+- `category` - Material category
+- `author` - Author name from frontmatter
+
+#### For All Components
+- Complete frontmatter file at: `content/components/frontmatter/{material}-laser-cleaning.md`
+
+### Cascading Failure Behavior
+
+When frontmatter data is missing or incomplete:
+
+1. **Frontmatter Generation Fails**
+   - Missing required fields (category, formula, properties)
+   - Invalid data structure
+   - File not found
+
+2. **Dependent Components Fail**
+   - `badgesymbol` cannot generate without material symbol
+   - `author` cannot personalize without author data
+   - Other components may fail if they depend on frontmatter data
+
+3. **Complete Material Failure**
+   - No content generated for the material
+   - User must fix frontmatter data before proceeding
+   - System maintains data integrity
+
+### Example Failure Scenario
+
+```bash
+# Frontmatter file missing or incomplete
+$ python3 run.py --material "Aluminum" --components "frontmatter,badgesymbol,author"
+
+# Result:
+❌ frontmatter: Missing required fields (category, formula, properties)
+❌ badgesymbol: No frontmatter data available
+❌ author: No frontmatter data available
+
+# Complete material generation fails
+```
+
+### Frontmatter Validation
+
+The system validates frontmatter data before component generation:
+
+```python
+def validate_frontmatter_for_generation(frontmatter_data: Dict) -> bool:
+    """Validate frontmatter contains sufficient data for generation"""
+    required_fields = ['name', 'category', 'properties', 'applications']
+
+    for field in required_fields:
+        if field not in frontmatter_data:
+            return False
+
+        value = frontmatter_data[field]
+        if not value:
+            return False
+
+        if field in ['properties', 'applications'] and len(value) == 0:
+            return False
+
+    return True
+```
+
+### Best Practices
+
+#### For Users
+1. **Ensure Frontmatter Exists**
+   - Create frontmatter files before generation
+   - Validate all required fields are present
+
+2. **Check Frontmatter Completeness**
+   - Run validation tests before generation
+   - Fix missing fields before proceeding
+
+3. **Understand Failure Causes**
+   - Frontmatter issues cause component failures
+   - Fix root cause (frontmatter) before retrying
+
+#### For Developers
+1. **Always Validate Frontmatter First**
+   ```python
+   if not validate_frontmatter_for_generation(frontmatter_data):
+       raise ValueError("Insufficient frontmatter data for generation")
+   ```
+
+2. **Fail Fast on Missing Dependencies**
+   ```python
+   if not frontmatter_data:
+       return ComponentResult(component_type, "", False, "No frontmatter data available")
+   ```
+
+3. **Provide Clear Error Messages**
+   ```python
+   error_msg = f"Missing required frontmatter fields: {missing_fields}"
+   ```
+
+### Testing Frontmatter Dependencies
+
+Run comprehensive dependency tests:
+
+```bash
+# Test frontmatter dependency chain
+python3 tests/test_frontmatter_dependency_chain.py
+
+# Test cascading failures
+python3 tests/test_cascading_failure.py
+
+# Validate frontmatter data
+python3 tests/test_frontmatter_validation.py
+```
+
+### Troubleshooting Frontmatter Issues
+
+#### Common Issues
+1. **"No frontmatter data available"**
+   - Check if frontmatter file exists
+   - Verify file path and naming convention
+
+2. **"Missing required frontmatter fields"**
+   - Add missing fields to frontmatter file
+   - Validate YAML structure
+
+3. **"Component generation failed"**
+   - Check frontmatter data completeness
+   - Run validation tests
+
+#### Debugging Steps
+1. Check frontmatter file:
+   ```bash
+   cat content/components/frontmatter/aluminum-laser-cleaning.md
+   ```
+
+2. Run dependency tests:
+   ```bash
+   python3 tests/test_frontmatter_dependency_chain.py
+   ```
+
+3. Validate frontmatter structure:
+   ```bash
+   python3 -c "import yaml; print(yaml.safe_load(open('content/components/frontmatter/aluminum-laser-cleaning.md')))"
+   ```
 
 ### Component Configuration Notes
 
@@ -201,6 +373,11 @@ Each material generates these component types:
   - Use external AI services
   - AI detection enabled for content components
   - Iterative improvement for quality enhancement
+
+- **Critical Dependencies**:
+  - **`badgesymbol` REQUIRES `frontmatter`**: Must be generated first, no fallback available
+  - **`author` REQUIRES `frontmatter`**: Uses material data for content personalization
+  - **Generation Order**: Always generate `frontmatter` → `badgesymbol` → `author` → other components
 
 - **Text Component Special Features**:
   - **Real-time status updates** every 10 seconds
@@ -244,6 +421,40 @@ z-beam-generator/
 ```
 
 ## 🧪 Testing
+
+### Comprehensive Test Runner
+
+Run the complete test suite with frontmatter validation and dependency testing:
+
+```bash
+# Full test suite (recommended)
+python3 run_comprehensive_tests.py
+
+# Quick test suite (frontmatter + core tests only)
+python3 run_comprehensive_tests.py --quick
+
+# Verbose output with detailed results
+python3 run_comprehensive_tests.py --verbose
+
+# Quick tests with verbose output
+python3 run_comprehensive_tests.py --quick --verbose
+```
+
+**Features:**
+- ✅ **Frontmatter Validation**: Only tests materials with complete frontmatter files
+- ✅ **Dependency Testing**: Validates frontmatter dependency chain and cascading failures
+- ✅ **Comprehensive Coverage**: 20+ tests covering all system components
+- ✅ **Real-time Status**: Live progress tracking during test execution
+- ✅ **Clear Reporting**: Detailed pass/fail summary with timing information
+- ✅ **Fail-Fast Validation**: Confirms no fallbacks or mocks in production code
+
+**Test Categories:**
+- **Frontmatter Tests**: Dependency chain and cascading failure validation
+- **Core Tests**: Content generation, AI detection, prompt systems
+- **API Tests**: DeepSeek and Winston.ai integration validation
+- **Validation Tests**: Schema validation and data integrity checks
+
+### Individual Test Files
 
 Run comprehensive test suite:
 ```bash
