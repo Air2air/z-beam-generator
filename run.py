@@ -92,14 +92,14 @@ from services import (
     service_registry,
     BaseService
 )
-from services.ai_detection_optimization import AIDetectionOptimizationService
-from services.iterative_workflow import IterativeWorkflowService
-from services.dynamic_evolution import DynamicEvolutionService
-from services.quality_assessment import QualityAssessmentService
-from services.configuration_optimizer import ConfigurationOptimizationService
+from optimizer.services.ai_detection_optimization import AIDetectionOptimizationService
+from optimizer.services.iterative_workflow import IterativeWorkflowService
+from optimizer.services.dynamic_evolution import DynamicEvolutionService
+from optimizer.services.quality_assessment import QualityAssessmentService
+from optimizer.services.configuration_optimizer import ConfigurationOptimizationService
 
 # Legacy import for backward compatibility
-from ai_detection import AIDetectionService
+from optimizer.ai_detection import AIDetectionService, create_dynamic_ai_detection_config, AI_DETECTION_CONFIG
 
 # ============================================================================
 # CONFIGURATION SECTION - ALL SYSTEM CONFIGURATION IN ONE PLACE
@@ -141,452 +141,36 @@ API_PROVIDERS = {
 # DYNAMIC AI DETECTION CONFIGURATION - LOGIC-DRIVEN THRESHOLDS
 # ============================================================================
 
-def create_dynamic_ai_detection_config(content_type: str = "technical", author_country: str = None, content_length: int = None) -> dict:
+def get_dynamic_config_for_content(material: str = None, author_info: dict = None, component_type: str = "text") -> dict:
     """
-    Create dynamic AI detection configuration based on content characteristics and system performance.
+    Get dynamic AI detection configuration based on content characteristics.
 
     Args:
-        content_type: Type of content ("technical", "marketing", "educational", "creative")
-        author_country: Author country for style-specific tuning
-        content_length: Expected content length for adaptive thresholds
+        material: Material name for content type inference
+        author_info: Author information for country-specific tuning
+        component_type: Component type for optimization
 
     Returns:
-        dict: Dynamic configuration optimized for the given parameters
+        dict: Dynamic configuration optimized for the content
     """
 
-    # Base configuration with intelligent defaults
-    config = {
-        # Core AI Detection Thresholds - Adaptive based on content type
-        "target_score": _calculate_optimal_target_score(content_type, author_country),
-        "max_iterations": _calculate_optimal_iterations(content_type, content_length),
-        "improvement_threshold": _calculate_improvement_threshold(content_type),
-        "human_threshold": _calculate_human_threshold(content_type),
+    # Infer content type from material name
+    content_type = _infer_content_type(material)
 
-        # Content Length Thresholds - Adaptive based on content type
-        "min_text_length_winston": _calculate_min_text_length(content_type),
-        "short_content_threshold": _calculate_short_content_threshold(content_type),
-        "min_content_length": _calculate_min_content_length(content_type),
+    # Get author country
+    author_country = author_info.get("country", "usa") if author_info else "usa"
 
-        # Fallback Scores - Dynamic based on content characteristics
-        "fallback_score_first_iteration": _calculate_fallback_score_first(content_type),
-        "fallback_score_short_content": _calculate_fallback_score_short(content_type),
-        "fallback_score_very_short": _calculate_fallback_score_very_short(content_type),
-        "fallback_score_error": _calculate_fallback_score_error(content_type),
+    # Estimate content length based on component type
+    content_length = _estimate_content_length(component_type, author_country)
 
-        # Status Update Configuration - Adaptive based on expected processing time
-        "status_update_interval": _calculate_status_update_interval(content_length),
-        "iteration_status_frequency": _calculate_iteration_status_frequency(content_type),
-
-        # Word Count Validation - Dynamic based on author and content type
-        "word_count_tolerance": _calculate_word_count_tolerance(content_type),
-        "word_count_limits": _calculate_word_count_limits(author_country),
-
-        # API Timeouts and Limits - Adaptive based on content complexity
-        "winston_timeout_cap": _calculate_winston_timeout(content_length),
-        "max_tokens": _calculate_max_tokens(content_type, content_length),
-        "retry_delay": _calculate_retry_delay(content_type),
-
-        # Winston.ai Scoring Ranges - Content-type specific
-        "winston_human_range": _calculate_winston_human_range(content_type),
-        "winston_unclear_range": _calculate_winston_unclear_range(content_type),
-        "winston_ai_range": _calculate_winston_ai_range(content_type),
-
-        # Early Exit Conditions - Adaptive based on content type
-        "min_iterations_before_exit": _calculate_min_iterations_before_exit(content_type),
-        "early_exit_score_threshold": _calculate_early_exit_threshold(content_type),
-
-        # Configuration Optimization - Content-aware
-        "deepseek_optimization_enabled": _should_enable_deepseek_optimization(content_type),
-        "config_backup_enabled": True,  # Always enable for safety
-
-        # Service Configuration - Performance-optimized
-        "service_cache_ttl_hours": _calculate_service_cache_ttl(content_type),
-        "service_detection_threshold": _calculate_service_detection_threshold(content_type),
-        "service_confidence_threshold": _calculate_service_confidence_threshold(content_type),
-        "service_mock_score": _calculate_service_mock_score(content_type),
-        "service_max_templates": _calculate_service_max_templates(content_type),
-        "service_evolution_history_size": _calculate_service_evolution_history(content_type),
-        "service_max_history_size": _calculate_service_max_history(content_type),
-
-        # Logging and Debugging - Adaptive based on content complexity
-        "enable_detailed_logging": _should_enable_detailed_logging(content_type),
-        "max_sentence_details": _calculate_max_sentence_details(content_type),
-
-        # Metadata for tracking
-        "config_metadata": {
-            "content_type": content_type,
-            "author_country": author_country,
-            "content_length": content_length,
-            "generated_at": time_module.time(),
-            "logic_version": "2.0"
-        }
-    }
+    # Create dynamic configuration
+    config = create_dynamic_ai_detection_config(
+        content_type=content_type,
+        author_country=author_country,
+        content_length=content_length
+    )
 
     return config
-
-# ============================================================================
-# DYNAMIC CALCULATION FUNCTIONS
-# ============================================================================
-
-def _calculate_optimal_target_score(content_type: str, author_country: str = None) -> float:
-    """Calculate optimal target score based on content type and author characteristics."""
-    base_scores = {
-        "technical": 50.0,      # Technical content is harder to make human-like
-        "marketing": 45.0,      # Marketing content needs to be engaging
-        "educational": 55.0,    # Educational content can be more structured
-        "creative": 40.0        # Creative content has more flexibility
-    }
-
-    score = base_scores.get(content_type, 50.0)
-
-    # Adjust based on author country (cultural writing styles)
-    if author_country:
-        country_adjustments = {
-            "italy": 2.0,       # Italian writing tends to be more expressive
-            "taiwan": -1.0,     # Taiwanese technical writing is more formal
-            "indonesia": 1.0,   # Indonesian writing can be more narrative
-            "usa": 0.0          # American writing is balanced
-        }
-        score += country_adjustments.get(author_country.lower(), 0.0)
-
-    return max(30.0, min(70.0, score))  # Clamp between 30-70
-
-def _calculate_optimal_iterations(content_type: str, content_length: int = None) -> int:
-    """Calculate optimal number of iterations based on content complexity."""
-    base_iterations = {
-        "technical": 5,     # Technical content needs more iterations
-        "marketing": 4,     # Marketing content needs refinement
-        "educational": 3,   # Educational content is more straightforward
-        "creative": 3       # Creative content can be more flexible
-    }
-
-    iterations = base_iterations.get(content_type, 4)
-
-    # Adjust based on content length
-    if content_length:
-        if content_length > 2000:
-            iterations += 1  # Longer content needs more iterations
-        elif content_length < 500:
-            iterations = max(2, iterations - 1)  # Shorter content needs fewer
-
-    return max(2, min(8, iterations))  # Clamp between 2-8
-
-def _calculate_improvement_threshold(content_type: str) -> float:
-    """Calculate improvement threshold based on content type."""
-    thresholds = {
-        "technical": 2.5,   # Technical content improvements are smaller
-        "marketing": 3.0,   # Marketing content needs clear improvements
-        "educational": 2.0, # Educational content can have smaller increments
-        "creative": 3.5     # Creative content needs more significant changes
-    }
-    return thresholds.get(content_type, 3.0)
-
-def _calculate_human_threshold(content_type: str) -> float:
-    """Calculate human threshold based on content type."""
-    thresholds = {
-        "technical": 70.0,  # Technical content can be more structured
-        "marketing": 75.0,  # Marketing content needs to be very human-like
-        "educational": 72.0,# Educational content balanced
-        "creative": 68.0    # Creative content more flexible
-    }
-    return thresholds.get(content_type, 75.0)
-
-def _calculate_min_text_length(content_type: str) -> int:
-    """Calculate minimum text length for Winston analysis."""
-    lengths = {
-        "technical": 250,   # Technical content needs more context
-        "marketing": 200,   # Marketing content can be shorter
-        "educational": 300, # Educational content needs substantial text
-        "creative": 150     # Creative content can be more concise
-    }
-    return lengths.get(content_type, 250)
-
-def _calculate_short_content_threshold(content_type: str) -> int:
-    """Calculate threshold for short content handling."""
-    thresholds = {
-        "technical": 350,   # Technical content needs more words
-        "marketing": 250,   # Marketing content can be punchier
-        "educational": 400, # Educational content needs explanation
-        "creative": 200     # Creative content can be brief
-    }
-    return thresholds.get(content_type, 350)
-
-def _calculate_min_content_length(content_type: str) -> int:
-    """Calculate minimum content length for validation."""
-    lengths = {
-        "technical": 120,   # Technical content minimum
-        "marketing": 100,   # Marketing content minimum
-        "educational": 150, # Educational content minimum
-        "creative": 80      # Creative content minimum
-    }
-    return lengths.get(content_type, 120)
-
-def _calculate_fallback_score_first(content_type: str) -> float:
-    """Calculate fallback score for first iteration."""
-    scores = {
-        "technical": 55.0,  # Technical content starts lower
-        "marketing": 50.0,  # Marketing content competitive
-        "educational": 60.0,# Educational content structured
-        "creative": 45.0    # Creative content flexible
-    }
-    return scores.get(content_type, 55.0)
-
-def _calculate_fallback_score_short(content_type: str) -> float:
-    """Calculate fallback score for short content."""
-    scores = {
-        "technical": 50.0,  # Technical short content
-        "marketing": 45.0,  # Marketing short content
-        "educational": 55.0,# Educational short content
-        "creative": 40.0    # Creative short content
-    }
-    return scores.get(content_type, 50.0)
-
-def _calculate_fallback_score_very_short(content_type: str) -> float:
-    """Calculate fallback score for very short content."""
-    scores = {
-        "technical": 40.0,  # Technical very short
-        "marketing": 35.0,  # Marketing very short
-        "educational": 45.0,# Educational very short
-        "creative": 30.0    # Creative very short
-    }
-    return scores.get(content_type, 40.0)
-
-def _calculate_fallback_score_error(content_type: str) -> float:
-    """Calculate fallback score when AI detection fails."""
-    scores = {
-        "technical": 45.0,  # Technical error fallback
-        "marketing": 40.0,  # Marketing error fallback
-        "educational": 50.0,# Educational error fallback
-        "creative": 35.0    # Creative error fallback
-    }
-    return scores.get(content_type, 45.0)
-
-def _calculate_status_update_interval(content_length: int = None) -> int:
-    """Calculate status update interval based on expected processing time."""
-    if content_length and content_length > 1500:
-        return 15  # Longer content, less frequent updates
-    elif content_length and content_length < 500:
-        return 5   # Shorter content, more frequent updates
-    else:
-        return 10  # Default interval
-
-def _calculate_iteration_status_frequency(content_type: str) -> int:
-    """Calculate iteration status frequency."""
-    frequencies = {
-        "technical": 3,     # Technical content needs more status updates
-        "marketing": 4,     # Marketing content moderate updates
-        "educational": 5,   # Educational content fewer updates
-        "creative": 4       # Creative content moderate updates
-    }
-    return frequencies.get(content_type, 4)
-
-def _calculate_word_count_tolerance(content_type: str) -> float:
-    """Calculate word count tolerance."""
-    tolerances = {
-        "technical": 1.3,   # Technical content more flexible
-        "marketing": 1.2,   # Marketing content moderate flexibility
-        "educational": 1.4, # Educational content needs structure
-        "creative": 1.5     # Creative content most flexible
-    }
-    return tolerances.get(content_type, 1.3)
-
-def _calculate_word_count_limits(author_country: str = None) -> dict:
-    """Calculate word count limits based on author country."""
-    base_limits = {
-        "taiwan": {"max": 380, "target_range": "340-380"},
-        "italy": {"max": 450, "target_range": "400-450"},
-        "indonesia": {"max": 400, "target_range": "350-400"},
-        "usa": {"max": 320, "target_range": "280-320"}
-    }
-
-    if author_country and author_country.lower() in base_limits:
-        return base_limits[author_country.lower()]
-
-    # Default limits if country not specified
-    return {"max": 350, "target_range": "300-350"}
-
-def _calculate_winston_timeout(content_length: int = None) -> int:
-    """Calculate Winston timeout based on content length."""
-    if content_length and content_length > 1000:
-        return 20  # Longer content needs more time
-    else:
-        return 15  # Default timeout
-
-def _calculate_max_tokens(content_type: str, content_length: int = None) -> int:
-    """Calculate max tokens based on content type and length."""
-    base_tokens = {
-        "technical": 2500,  # Technical content needs more tokens
-        "marketing": 2000,  # Marketing content moderate tokens
-        "educational": 3000,# Educational content needs explanation
-        "creative": 2000    # Creative content flexible
-    }
-
-    tokens = base_tokens.get(content_type, 2500)
-
-    # Adjust based on content length
-    if content_length and content_length > 1500:
-        tokens = int(tokens * 1.2)  # Increase for longer content
-
-    return min(tokens, 4000)  # Cap at 4000
-
-def _calculate_retry_delay(content_type: str) -> float:
-    """Calculate retry delay based on content type."""
-    delays = {
-        "technical": 0.5,   # Technical content standard delay
-        "marketing": 0.3,   # Marketing content faster retry
-        "educational": 0.7, # Educational content more conservative
-        "creative": 0.4     # Creative content moderate delay
-    }
-    return delays.get(content_type, 0.5)
-
-def _calculate_winston_human_range(content_type: str) -> tuple:
-    """Calculate Winston human range based on content type."""
-    ranges = {
-        "technical": (65, 100),  # Technical content harder to make human-like
-        "marketing": (60, 100),  # Marketing content more flexible
-        "educational": (70, 100),# Educational content structured
-        "creative": (55, 100)    # Creative content most flexible
-    }
-    return ranges.get(content_type, (65, 100))
-
-def _calculate_winston_unclear_range(content_type: str) -> tuple:
-    """Calculate Winston unclear range based on content type."""
-    ranges = {
-        "technical": (35, 65),   # Technical content wider unclear range
-        "marketing": (30, 60),   # Marketing content competitive
-        "educational": (40, 70), # Educational content structured
-        "creative": (25, 55)     # Creative content flexible
-    }
-    return ranges.get(content_type, (30, 65))
-
-def _calculate_winston_ai_range(content_type: str) -> tuple:
-    """Calculate Winston AI range based on content type."""
-    ranges = {
-        "technical": (0, 35),    # Technical content wider AI range
-        "marketing": (0, 30),    # Marketing content competitive
-        "educational": (0, 40),  # Educational content structured
-        "creative": (0, 25)      # Creative content flexible
-    }
-    return ranges.get(content_type, (0, 35))
-
-def _calculate_min_iterations_before_exit(content_type: str) -> int:
-    """Calculate minimum iterations before allowing early exit."""
-    iterations = {
-        "technical": 4,     # Technical content needs more attempts
-        "marketing": 3,     # Marketing content moderate
-        "educational": 2,   # Educational content can exit earlier
-        "creative": 3       # Creative content moderate
-    }
-    return iterations.get(content_type, 3)
-
-def _calculate_early_exit_threshold(content_type: str) -> int:
-    """Calculate early exit threshold."""
-    thresholds = {
-        "technical": 12,    # Technical content needs higher threshold
-        "marketing": 10,    # Marketing content moderate
-        "educational": 8,   # Educational content can exit earlier
-        "creative": 8       # Creative content flexible
-    }
-    return thresholds.get(content_type, 10)
-
-def _should_enable_deepseek_optimization(content_type: str) -> bool:
-    """Determine if DeepSeek optimization should be enabled."""
-    return content_type in ["technical", "educational"]  # Most beneficial for these types
-
-def _calculate_service_cache_ttl(content_type: str) -> int:
-    """Calculate service cache TTL."""
-    ttls = {
-        "technical": 2,     # Technical content changes less frequently
-        "marketing": 1,     # Marketing content changes more often
-        "educational": 3,   # Educational content stable
-        "creative": 1       # Creative content dynamic
-    }
-    return ttls.get(content_type, 1)
-
-def _calculate_service_detection_threshold(content_type: str) -> float:
-    """Calculate service detection threshold."""
-    thresholds = {
-        "technical": 0.75,  # Technical content stricter
-        "marketing": 0.65,  # Marketing content moderate
-        "educational": 0.8, # Educational content strictest
-        "creative": 0.6     # Creative content lenient
-    }
-    return thresholds.get(content_type, 0.7)
-
-def _calculate_service_confidence_threshold(content_type: str) -> float:
-    """Calculate service confidence threshold."""
-    thresholds = {
-        "technical": 0.85,  # Technical content needs high confidence
-        "marketing": 0.75,  # Marketing content moderate
-        "educational": 0.9, # Educational content highest confidence
-        "creative": 0.7     # Creative content flexible
-    }
-    return thresholds.get(content_type, 0.8)
-
-def _calculate_service_mock_score(content_type: str) -> float:
-    """Calculate service mock score."""
-    scores = {
-        "technical": 0.25,  # Technical content lower mock score
-        "marketing": 0.35,  # Marketing content higher
-        "educational": 0.2, # Educational content lowest
-        "creative": 0.4     # Creative content highest
-    }
-    return scores.get(content_type, 0.3)
-
-def _calculate_service_max_templates(content_type: str) -> int:
-    """Calculate service max templates."""
-    templates = {
-        "technical": 8,     # Technical content fewer templates
-        "marketing": 12,    # Marketing content more templates
-        "educational": 6,   # Educational content structured
-        "creative": 15      # Creative content most templates
-    }
-    return templates.get(content_type, 10)
-
-def _calculate_service_evolution_history(content_type: str) -> int:
-    """Calculate service evolution history size."""
-    histories = {
-        "technical": 40,    # Technical content moderate history
-        "marketing": 60,    # Marketing content larger history
-        "educational": 30,  # Educational content smaller history
-        "creative": 70      # Creative content largest history
-    }
-    return histories.get(content_type, 50)
-
-def _calculate_service_max_history(content_type: str) -> int:
-    """Calculate service max history size."""
-    histories = {
-        "technical": 15,    # Technical content moderate
-        "marketing": 25,    # Marketing content larger
-        "educational": 12,  # Educational content smaller
-        "creative": 30      # Creative content largest
-    }
-    return histories.get(content_type, 20)
-
-def _should_enable_detailed_logging(content_type: str) -> bool:
-    """Determine if detailed logging should be enabled."""
-    return content_type in ["technical", "educational"]  # Most complex content types
-
-def _calculate_max_sentence_details(content_type: str) -> int:
-    """Calculate max sentence details."""
-    details = {
-        "technical": 6,     # Technical content more details
-        "marketing": 4,     # Marketing content moderate
-        "educational": 7,   # Educational content most details
-        "creative": 3       # Creative content fewer details
-    }
-    return details.get(content_type, 5)
-
-# ============================================================================
-# LEGACY STATIC CONFIG (for backward compatibility)
-# ============================================================================
-
-# Create default dynamic config for backward compatibility
-AI_DETECTION_CONFIG = create_dynamic_ai_detection_config(
-    content_type="technical",
-    author_country="usa",
-    content_length=1000
-)
 
 # Component Configuration
 COMPONENT_CONFIG = {
@@ -1796,15 +1380,69 @@ def run_optimization_only(material: str, component_type: str = "text", author_id
         try:
             print("🔧 Initializing optimization services...")
 
-            # Use the existing synchronous AI detection service
-            from ai_detection import AIDetectionService
-            detection_service = AIDetectionService()
-            services["ai_detection"] = detection_service
-            print("   ✅ AI Detection Service initialized")
+            # Create AI Detection Optimization Service with proper configuration
+            from optimizer.services.ai_detection_optimization import AIDetectionOptimizationService
+            from services import ServiceConfiguration
+
+            ai_config = ServiceConfiguration(
+                name="ai_detection_optimization_service",
+                settings={
+                    "providers": {
+                        "winston_provider": {
+                            "type": "winston",
+                            "api_key": os.getenv("WINSTON_API_KEY", ""),
+                            "mock_score": dynamic_config.get("service_mock_score", 0.3),
+                            "mock_detected": False
+                        }
+                    },
+                    "cache_ttl_hours": dynamic_config.get("service_cache_ttl_hours", 1),
+                    "detection_threshold": dynamic_config.get("service_detection_threshold", 0.7),
+                    "confidence_threshold": dynamic_config.get("service_confidence_threshold", 0.8),
+                    # Add the specific attributes expected by text component
+                    "target_score": dynamic_config.get("target_score", 65.0),
+                    "max_iterations": dynamic_config.get("max_iterations", 5),
+                    "improvement_threshold": dynamic_config.get("improvement_threshold", 3.0),
+                    "human_threshold": dynamic_config.get("human_threshold", 75.0),
+                    "min_text_length_winston": dynamic_config.get("min_text_length_winston", 300),
+                    "short_content_threshold": dynamic_config.get("short_content_threshold", 400),
+                    "min_content_length": dynamic_config.get("min_content_length", 150),
+                    "fallback_score_first_iteration": dynamic_config.get("fallback_score_first_iteration", 60.0),
+                    "fallback_score_short_content": dynamic_config.get("fallback_score_short_content", 55.0),
+                    "fallback_score_very_short": dynamic_config.get("fallback_score_very_short", 40.0),
+                    "fallback_score_error": dynamic_config.get("fallback_score_error", 50.0),
+                    "status_update_interval": dynamic_config.get("status_update_interval", 10),
+                    "iteration_status_frequency": dynamic_config.get("iteration_status_frequency", 5),
+                    "word_count_tolerance": dynamic_config.get("word_count_tolerance", 1.5),
+                    "winston_timeout_cap": dynamic_config.get("winston_timeout_cap", 15),
+                    "max_tokens": dynamic_config.get("max_tokens", 3000),
+                    "retry_delay": dynamic_config.get("retry_delay", 0.5),
+                    "winston_human_range": dynamic_config.get("winston_human_range", (70, 100)),
+                    "winston_unclear_range": dynamic_config.get("winston_unclear_range", (30, 70)),
+                    "winston_ai_range": dynamic_config.get("winston_ai_range", (0, 30)),
+                    "min_iterations_before_exit": dynamic_config.get("min_iterations_before_exit", 3),
+                    "early_exit_score_threshold": dynamic_config.get("early_exit_score_threshold", 10),
+                    "deepseek_optimization_enabled": dynamic_config.get("deepseek_optimization_enabled", True),
+                    "config_backup_enabled": dynamic_config.get("config_backup_enabled", True),
+                    "enable_detailed_logging": dynamic_config.get("enable_detailed_logging", True),
+                    "max_sentence_details": dynamic_config.get("max_sentence_details", 5)
+                }
+            )
+            ai_service = AIDetectionOptimizationService(ai_config)
+            services["ai_detection"] = ai_service
+            print("   ✅ AI Detection Optimization Service initialized")
 
         except Exception as e:
             print(f"⚠️ Service initialization failed: {e}")
-            services = {}
+            print("Falling back to legacy AI detection service...")
+
+            # Fallback to legacy service
+            try:
+                ai_detection_service = AIDetectionService()
+                services["legacy_ai"] = ai_detection_service
+                print("   ✅ Legacy AI detection service initialized")
+            except Exception as e2:
+                print(f"   ❌ Legacy service also failed: {e2}")
+                services = {}
 
         # Run optimization on existing content
         print("🚀 Starting AI detection optimization...")
@@ -1832,11 +1470,13 @@ def run_optimization_only(material: str, component_type: str = "text", author_id
 
             # Run Winston.ai analysis on existing content
             try:
-                analysis_result = ai_service.analyze_text(existing_content)
+                # Handle async call properly
+                import asyncio
+                analysis_result = asyncio.run(ai_service.detect_ai_content(existing_content))
 
                 current_score = analysis_result.score
                 print(f"📊 Current AI detection score: {current_score}")
-                print(f"🔍 Classification: {analysis_result.classification}")
+                print(f"🔍 Classification: {'AI' if analysis_result.detected else 'Human'}")
                 print(f"� Confidence: {analysis_result.confidence:.2f}")
 
                 # Check if optimization is needed
@@ -1884,11 +1524,201 @@ def run_optimization_only(material: str, component_type: str = "text", author_id
         return False
 
 
+def run_optimization_batch(component_type: str = "text", author_id: int = None) -> bool:
+    """
+    Run AI detection optimization on all materials in a component folder.
+
+    Args:
+        component_type: Component type to optimize
+        author_id: Author ID for optimization context
+
+    Returns:
+        bool: True if optimization completed successfully
+    """
+    print("🎯 AI DETECTION OPTIMIZATION BATCH MODE")
+    print("=" * 50)
+    print(f"🔧 Component: {component_type}")
+
+    try:
+        from pathlib import Path
+        import time as time_module
+
+        # Check if component directory exists
+        component_dir = Path(f"content/components/{component_type}")
+        if not component_dir.exists():
+            print(f"❌ Component directory not found: {component_dir}")
+            return False
+
+        # Find all material files in the component directory
+        material_files = list(component_dir.glob("*.md"))
+        if not material_files:
+            print(f"❌ No material files found in {component_dir}")
+            return False
+
+        # Extract material names from filenames
+        materials = []
+        for file_path in material_files:
+            filename = file_path.name
+            # Remove .md extension and -laser-cleaning suffix
+            material_name = filename.replace(".md", "").replace("-laser-cleaning", "")
+            # Convert hyphens back to spaces for proper material names
+            material_name = material_name.replace("-", " ").strip()
+            materials.append(material_name)
+
+        print(f"📦 Found {len(materials)} materials to optimize:")
+        for i, material in enumerate(materials, 1):
+            print(f"   {i}. {material}")
+
+        # Get author info if provided
+        author_info = None
+        if author_id is not None:
+            author_info = get_author_by_id(author_id)
+            if author_info:
+                print(f"👤 Using Author: {author_info['name']} ({author_info['country']})")
+            else:
+                print(f"❌ Author with ID {author_id} not found!")
+                return False
+
+        # Get dynamic configuration (use first material for config)
+        dynamic_config = get_dynamic_config_for_content(materials[0] if materials else None, author_info, component_type)
+
+        # Initialize service architecture
+        services = {}
+        try:
+            print("🔧 Initializing optimization services...")
+
+            # Create AI Detection Optimization Service with proper configuration
+            from optimizer.services.ai_detection_optimization import AIDetectionOptimizationService
+            from services import ServiceConfiguration
+
+            ai_config = ServiceConfiguration(
+                name="ai_detection_batch_service",
+                settings={
+                    "providers": {
+                        "winston_provider": {
+                            "type": "winston",
+                            "api_key": os.getenv("WINSTON_API_KEY", ""),
+                            "mock_score": dynamic_config.get("service_mock_score", 0.3),
+                            "mock_detected": False
+                        }
+                    },
+                    "cache_ttl_hours": dynamic_config.get("service_cache_ttl_hours", 1),
+                    "detection_threshold": dynamic_config.get("service_detection_threshold", 0.7),
+                    "confidence_threshold": dynamic_config.get("service_confidence_threshold", 0.8),
+                    # Add the specific attributes expected by text component
+                    "target_score": dynamic_config.get("target_score", 65.0),
+                    "max_iterations": dynamic_config.get("max_iterations", 5),
+                    "improvement_threshold": dynamic_config.get("improvement_threshold", 3.0),
+                    "human_threshold": dynamic_config.get("human_threshold", 75.0),
+                    "min_text_length_winston": dynamic_config.get("min_text_length_winston", 300),
+                    "short_content_threshold": dynamic_config.get("short_content_threshold", 400),
+                    "min_content_length": dynamic_config.get("min_content_length", 150),
+                    "fallback_score_first_iteration": dynamic_config.get("fallback_score_first_iteration", 60.0),
+                    "fallback_score_short_content": dynamic_config.get("fallback_score_short_content", 55.0),
+                    "fallback_score_very_short": dynamic_config.get("fallback_score_very_short", 40.0),
+                    "fallback_score_error": dynamic_config.get("fallback_score_error", 50.0),
+                    "status_update_interval": dynamic_config.get("status_update_interval", 10),
+                    "iteration_status_frequency": dynamic_config.get("iteration_status_frequency", 5),
+                    "word_count_tolerance": dynamic_config.get("word_count_tolerance", 1.5),
+                    "winston_timeout_cap": dynamic_config.get("winston_timeout_cap", 15),
+                    "max_tokens": dynamic_config.get("max_tokens", 3000),
+                    "retry_delay": dynamic_config.get("retry_delay", 0.5),
+                    "winston_human_range": dynamic_config.get("winston_human_range", (70, 100)),
+                    "winston_unclear_range": dynamic_config.get("winston_unclear_range", (30, 70)),
+                    "winston_ai_range": dynamic_config.get("winston_ai_range", (0, 30)),
+                    "min_iterations_before_exit": dynamic_config.get("min_iterations_before_exit", 3),
+                    "early_exit_score_threshold": dynamic_config.get("early_exit_score_threshold", 10),
+                    "deepseek_optimization_enabled": dynamic_config.get("deepseek_optimization_enabled", True),
+                    "config_backup_enabled": dynamic_config.get("config_backup_enabled", True),
+                    "enable_detailed_logging": dynamic_config.get("enable_detailed_logging", True),
+                    "max_sentence_details": dynamic_config.get("max_sentence_details", 5)
+                }
+            )
+            ai_service = AIDetectionOptimizationService(ai_config)
+            services["ai_detection"] = ai_service
+            print("   ✅ AI Detection Optimization Service initialized")
+
+        except Exception as e:
+            print(f"⚠️ Service initialization failed: {e}")
+            print("Falling back to legacy AI detection service...")
+
+            # Fallback to legacy service
+            try:
+                ai_detection_service = AIDetectionService()
+                services["legacy_ai"] = ai_detection_service
+                print("   ✅ Legacy AI detection service initialized")
+            except Exception as e2:
+                print(f"   ❌ Legacy service also failed: {e2}")
+                services = {}
+
+        # Select appropriate AI service
+        ai_service = services.get("ai_detection") or services.get("legacy_ai")
+        if not ai_service:
+            print("❌ No AI detection service available")
+            return False
+
+        # Process each material
+        print("🚀 Starting batch optimization...")
+        optimized_count = 0
+        failed_count = 0
+        total_improvement = 0.0
+
+        batch_start_time = time_module.time()
+
+        for i, material in enumerate(materials, 1):
+            current_time = time_module.time()
+            elapsed_time = current_time - batch_start_time
+
+            print(f"\n📦 [{i}/{len(materials)}] Optimizing: {material}")
+            print(f"   ⏱️ Elapsed: {elapsed_time:.1f}s")
+
+            try:
+                # Run optimization for this material
+                success = run_optimization_workflow(
+                    material=material,
+                    component_type=component_type,
+                    existing_content=None,  # Will be loaded inside the function
+                    current_score=0.0,  # Will be determined inside
+                    target_score=dynamic_config.get("target_score", 65.0),
+                    ai_service=ai_service,
+                    dynamic_config=dynamic_config
+                )
+
+                if success:
+                    optimized_count += 1
+                    print(f"   ✅ {material} optimized successfully")
+                else:
+                    failed_count += 1
+                    print(f"   ❌ {material} optimization failed")
+
+            except Exception as e:
+                failed_count += 1
+                print(f"   ❌ {material} error: {e}")
+
+        # Final summary
+        total_time = time_module.time() - batch_start_time
+        success_rate = (optimized_count / len(materials)) * 100 if materials else 0
+
+        print(f"\n🏁 BATCH OPTIMIZATION COMPLETE")
+        print("=" * 50)
+        print(f"✅ Successfully optimized: {optimized_count} materials")
+        print(f"❌ Failed: {failed_count} materials")
+        print(f"📊 Success rate: {success_rate:.1f}%")
+        print(f"⏱️ Total time: {total_time:.1f}s")
+        print(f"🔧 Component: {component_type}")
+
+        return optimized_count > 0
+
+    except Exception as e:
+        print(f"❌ Error in batch optimization mode: {e}")
+        return False
+
+
 def run_optimization_workflow(material: str, component_type: str, existing_content: str,
                             current_score: float, target_score: float, ai_service,
                             dynamic_config: dict) -> bool:
     """
-    Run the optimization workflow on existing content.
+    Run the real optimization workflow using the TextComponentGenerator's iterative process.
 
     Args:
         material: Material name
@@ -1903,52 +1733,149 @@ def run_optimization_workflow(material: str, component_type: str, existing_conte
         bool: True if optimization successful
     """
     try:
+        from pathlib import Path
+        from utils.file_operations import save_component_to_file_original, load_component_from_file
+        from components.text.generator import TextComponentGenerator
+        from api.client_manager import get_api_client_for_component
+
+        # Load existing content if not provided
+        if existing_content is None:
+            existing_content = load_component_from_file(material, component_type)
+            if not existing_content:
+                print(f"   ❌ Failed to load content for {material}")
+                return False
+
         max_iterations = dynamic_config.get("max_iterations", 5)
         improvement_threshold = dynamic_config.get("improvement_threshold", 3.0)
 
-        print(f"🔄 Optimization parameters:")
+        print(f"🔄 Real optimization parameters:")
         print(f"   📊 Current score: {current_score}")
         print(f"   🎯 Target score: {target_score}")
         print(f"   🔄 Max iterations: {max_iterations}")
         print(f"   📈 Improvement threshold: {improvement_threshold}")
 
-        # This is a simplified optimization workflow
-        # In a full implementation, this would integrate with the existing
-        # iterative improvement system
+        # Initialize the real TextComponentGenerator
+        text_generator = TextComponentGenerator(ai_detection_service=ai_service)
+
+        # Get API client for the component
+        api_client = get_api_client_for_component(component_type)
+
+        # Prepare material data (simplified for optimization)
+        material_data = {
+            "name": material,
+            "properties": {
+                "thermal_conductivity": "high",
+                "ablation_threshold": "medium",
+                "reflectivity": "high"
+            }
+        }
+
+        # Get author info (use default if not specified)
+        author_info = {
+            "id": 1,
+            "name": "Technical Expert",
+            "country": "usa",
+            "language": "english"
+        }
+
+        # Prepare frontmatter data
+        frontmatter_data = {
+            "title": f"{material} Laser Cleaning",
+            "material": material,
+            "process": "laser_cleaning"
+        }
+
+        # Get initial score if not provided
+        if current_score == 0.0:
+            try:
+                import asyncio
+                # Handle both async and sync services
+                if hasattr(ai_service, 'detect_ai_content'):
+                    if asyncio.iscoroutinefunction(ai_service.detect_ai_content):
+                        initial_result = asyncio.run(ai_service.detect_ai_content(existing_content))
+                    else:
+                        initial_result = ai_service.detect_ai_content(existing_content)
+                    current_score = initial_result.score
+                    print(f"   📊 Initial score: {current_score:.1f}")
+                else:
+                    print("   ⚠️ AI service doesn't have detect_ai_content method, using fallback")
+                    current_score = 50.0  # Fallback score
+            except Exception as e:
+                print(f"   ⚠️ Could not get initial score: {e}, using fallback")
+                current_score = 50.0  # Fallback score
 
         best_score = current_score
+        best_content = existing_content
         iteration = 0
 
+        print("🚀 Starting full iterative optimization system...")
+
+        # Iterative optimization loop
         while iteration < max_iterations and best_score < target_score:
             iteration += 1
-            print(f"\n🔄 Iteration {iteration}/{max_iterations}")
+            print(f"\n🔄 Iteration {iteration}/{max_iterations} - Calling APIs...")
 
-            # Here we would typically:
-            # 1. Generate optimized prompts based on AI analysis
-            # 2. Regenerate content with optimized configuration
-            # 3. Analyze the new content
-            # 4. Update configuration based on results
+            try:
+                # Generate new content using the real TextComponentGenerator
+                result = text_generator.generate(
+                    material_name=material,
+                    material_data=material_data,
+                    api_client=api_client,
+                    author_info=author_info,
+                    frontmatter_data=frontmatter_data
+                )
 
-            # For now, we'll simulate the process
-            print("   🤖 Analyzing content patterns...")
-            print("   📝 Generating optimized configuration...")
-            print("   ⚙️ Updating AI detection settings...")
+                if not result.success:
+                    print(f"   ❌ Generation failed: {result.error_message}")
+                    continue
 
-            # Simulate improvement
-            improvement = min(improvement_threshold * 1.5, target_score - best_score)
-            new_score = best_score + improvement
+                # Extract clean text for analysis
+                content_lines = result.content.split('\n')
+                clean_text = ""
+                in_frontmatter = False
 
-            print(f"   📈 Iteration {iteration} improvement: +{improvement:.1f} points")
-            print(f"   📊 New score: {new_score:.1f}")
+                for line in content_lines:
+                    if line.strip() == '---':
+                        in_frontmatter = not in_frontmatter
+                        continue
+                    if not in_frontmatter and line.strip():
+                        clean_text += line + '\n'
 
-            if new_score > best_score:
-                best_score = new_score
-                print(f"   ✅ New best score: {best_score}")
+                if len(clean_text.strip()) < 200:
+                    print(f"   ⚠️ Content too short for analysis: {len(clean_text.strip())} chars")
+                    continue
 
-            # Check if we've reached the target
-            if best_score >= target_score:
-                print(f"🎯 Target score reached: {best_score} >= {target_score}")
-                break
+                # Analyze the new content with Winston.ai
+                print("   🤖 Analyzing new content with Winston.ai...")
+                import asyncio
+                # Handle both async and sync services
+                if asyncio.iscoroutinefunction(ai_service.detect_ai_content):
+                    ai_result = asyncio.run(ai_service.detect_ai_content(clean_text.strip()))
+                else:
+                    ai_result = ai_service.detect_ai_content(clean_text.strip())
+                new_score = ai_result.score
+
+                print(f"   � New content score: {new_score:.1f} ({ai_result.classification})")
+                print(f"   � Improvement: {new_score - best_score:+.1f} points")
+
+                # Update best result if improved
+                if new_score > best_score:
+                    best_score = new_score
+                    best_content = result.content
+                    print(f"   ✅ New best score: {best_score:.1f}")
+
+                    # Save the improved content
+                    save_component_to_file_original(material, component_type, best_content)
+                    print(f"   💾 Saved improved content to file")
+
+                # Check if we've reached the target
+                if best_score >= target_score:
+                    print(f"🎯 Target score reached: {best_score:.1f} >= {target_score}")
+                    break
+
+            except Exception as e:
+                print(f"   ❌ Iteration {iteration} failed: {e}")
+                continue
 
         # Final result
         if best_score >= target_score:
@@ -1956,11 +1883,12 @@ def run_optimization_workflow(material: str, component_type: str, existing_conte
             return True
         else:
             print(f"⚠️ Optimization completed but target not fully reached")
-            print(f"   📊 Final score: {best_score} (target: {target_score})")
+            print(f"   📊 Final score: {best_score:.1f} (target: {target_score:.1f})")
+            print(f"   📈 Total improvement: {best_score - current_score:+.1f} points")
             return best_score > current_score  # Return true if any improvement
 
     except Exception as e:
-        print(f"❌ Optimization workflow failed: {e}")
+        print(f"❌ Real optimization workflow failed: {e}")
         return False
 
 
@@ -1975,7 +1903,8 @@ EXAMPLES:
   python3 run.py --material "Copper"                # Generate all components for Copper
   python3 run.py --material "Steel" --components "frontmatter,content"  # Specific components
   python3 run.py --material "Aluminum" --author 2   # Generate with Italian writing style
-  python3 run.py --optimize-only --material "Steel" # Optimize existing Steel content
+  python3 run.py --optimize-only --material "Steel" # Optimize specific Steel content
+  python3 run.py --optimize-only --component "text" # Optimize all materials in text component
   python3 run.py --list-materials                   # List all available materials
   python3 run.py --show-config                      # Show component configuration
   python3 run.py --yaml                            # Validate and fix YAML errors
@@ -1996,6 +1925,7 @@ EXAMPLES:
     parser.add_argument("--clean", action="store_true", help="Remove all generated content files")
     parser.add_argument("--content-batch", action="store_true", help="Clear content directory and generate content component for first 8 material categories")
     parser.add_argument("--optimize-only", action="store_true", help="Run AI detection optimization only (no content generation)")
+    parser.add_argument("--component", default="text", help="Component type to optimize (default: text)")
 
     # Listing operations
     parser.add_argument("--list-materials", action="store_true", help="List all available materials")
@@ -2031,14 +1961,18 @@ def main():
 
         elif args.optimize_only:
             # Optimization-only mode
-            if not args.material:
-                print("❌ --optimize-only requires --material to be specified")
-                print("💡 Example: python3 run.py --optimize-only \"Steel\" --material \"Steel\"")
-                success = False
-            else:
+            component_type = args.component or "text"
+            if args.material:
+                # Optimize specific material
                 success = run_optimization_only(
                     material=args.material,
-                    component_type="text",  # Default to text component
+                    component_type=component_type,
+                    author_id=args.author
+                )
+            else:
+                # Optimize all materials in component folder
+                success = run_optimization_batch(
+                    component_type=component_type,
                     author_id=args.author
                 )
 

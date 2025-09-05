@@ -44,7 +44,7 @@ class WinstonProvider:
 
         # Check minimum text length requirement
         # Import centralized AI detection config
-        from ai_detection.config import AI_DETECTION_CONFIG
+        from ..config import AI_DETECTION_CONFIG
         if len(text.strip()) < AI_DETECTION_CONFIG["min_text_length_winston"]:
             logger.warning(f"Text too short for Winston.ai analysis: {len(text.strip())} characters (minimum {AI_DETECTION_CONFIG['min_text_length_winston']} required)")
             # Return a neutral result for short text

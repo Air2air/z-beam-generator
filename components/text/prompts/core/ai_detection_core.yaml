@@ -46,11 +46,11 @@ success_metrics:
 
 # Modular Components (loaded dynamically)
 modular_components:
-  human_characteristics: "modules/human_characteristics/conversational_patterns.yaml"
-  detection_avoidance: "modules/detection_avoidance/avoidance_patterns.yaml"
-  structural_improvements: "modules/structural_improvements/structural_patterns.yaml"
-  authenticity_enhancements: "modules/authenticity_enhancements/authenticity_patterns.yaml"
-  cultural_adaptation: "modules/cultural_adaptation/cultural_patterns.yaml"
+  human_characteristics: "../../../optimizer/text_optimization/modules/human_characteristics/conversational_patterns.yaml"
+  detection_avoidance: "../../../optimizer/text_optimization/modules/detection_avoidance/avoidance_patterns.yaml"
+  structural_improvements: "../../../optimizer/text_optimization/modules/structural_improvements/structural_patterns.yaml"
+  authenticity_enhancements: "../../../optimizer/text_optimization/modules/authenticity_enhancements/authenticity_patterns.yaml"
+  cultural_adaptation: "../../../optimizer/text_optimization/modules/cultural_adaptation/cultural_patterns.yaml"
 
 iteration_refinement_mechanism:
   feedback_integration:

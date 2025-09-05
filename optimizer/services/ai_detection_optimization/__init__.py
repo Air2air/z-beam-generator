@@ -22,7 +22,7 @@ from dataclasses import dataclass
 from datetime import datetime, timedelta
 from concurrent.futures import ThreadPoolExecutor
 
-from .. import BaseService, ServiceConfiguration, ServiceConfigurationError, ServiceError
+from services import BaseService, ServiceConfiguration, ServiceConfigurationError, ServiceError
 
 logger = logging.getLogger(__name__)
 

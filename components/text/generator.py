@@ -36,7 +36,11 @@ class TextComponentGenerator(APIComponentGenerator):
                 frontmatter_data: Optional[Dict] = None,
                 schema_fields: Optional[Dict] = None) -> ComponentResult:
         """
-        Generate content using the fail_fast_generator with iterative AI detection improvement.
+        Generate content using simplified prompting without complex optimization.
+
+        This simplified version focuses on basic content generation using
+        straightforward prompting, leaving complex optimization to the
+        decoupled optimization system.
 
         Args:
             material_name: Name of the material
@@ -53,452 +57,50 @@ class TextComponentGenerator(APIComponentGenerator):
             # Import the fail_fast_generator
             from .generators.fail_fast_generator import create_fail_fast_generator
 
-            # Get AI detection configuration for iteration parameters - FAIL-FAST: no defaults
-            if not self.ai_detection_service:
-                raise Exception("AI detection service is required for iterative content generation - fail-fast architecture requires complete configuration")
-            
-            if not hasattr(self.ai_detection_service, 'config'):
-                raise Exception("AI detection service configuration missing - fail-fast architecture requires complete configuration")
-            
-            config = self.ai_detection_service.config
-            
-            # FAIL-FAST: Configuration must provide ALL required values
-            if not hasattr(config, 'target_score'):
-                raise Exception("AI detection service configuration missing required 'target_score' - fail-fast architecture requires complete configuration")
-            if not hasattr(config, 'max_iterations'):
-                raise Exception("AI detection service configuration missing required 'max_iterations' - fail-fast architecture requires complete configuration")
-            if not hasattr(config, 'improvement_threshold'):
-                raise Exception("AI detection service configuration missing required 'improvement_threshold' - fail-fast architecture requires complete configuration")
-            
-            target_score = config.target_score
-            max_iterations = config.max_iterations
-            improvement_threshold = config.improvement_threshold
+            logger.info(f"📝 Generating content for {material_name} using simplified approach")
 
-            # Initialize config optimizer for dynamic configuration improvement
-            from components.text.ai_detection_config_optimizer import AIDetectionConfigOptimizer
-            config_optimizer = AIDetectionConfigOptimizer()
-            current_config = config_optimizer._load_current_config()
+            # Create generator with basic settings (no complex optimization)
+            generator = create_fail_fast_generator(
+                max_retries=3,
+                retry_delay=1.0,
+                enable_scoring=False,  # Disable complex scoring in component generation
+                skip_ai_detection=True  # Skip AI detection - handle in optimization system
+            )
 
-            # Initialize prompt optimizer for targeted prompt updates
-            from components.text.ai_detection_prompt_optimizer import AIDetectionPromptOptimizer
-            prompt_optimizer = AIDetectionPromptOptimizer()
-
-            # Initialize dynamic prompt generator for gradual evolution
-            from components.text.dynamic_prompt_system import DynamicPromptSystem
-            dynamic_system = DynamicPromptSystem(prompts_path="components/text/prompts/legacy/ai_detection.yaml")
-
-            logger.info(f"🎯 Starting intelligent iterative content generation for {material_name}")
-            logger.info(f"Target Winston score: ≥{target_score} (human-like), Max iterations: {max_iterations}")
-            logger.info("📋 Dynamic configuration and prompt optimization enabled")
-
-            best_result = None
-            best_score = 0.0
-            iteration_history = []  # Track iteration details
-            previous_content = None  # Track previous iteration's content for comparison
-            
-            # Status update tracking
-            import time as time_module
-            start_time = time_module.time()
-            last_status_update = start_time
-            
-            # Get dynamic configuration based on material and author
-            dynamic_config = self.get_dynamic_config(material_name, author_info, "text")
-            status_update_interval = dynamic_config.get("status_update_interval", 10)  # seconds
-            
-            # Initial status update
-            print(f"📊 [START] Beginning iterative improvement for {material_name} - Target: {target_score:.1f} - Max iterations: {max_iterations}")
-            
-            # Iterative improvement loop
-            for iteration in range(max_iterations):
-                current_time = time_module.time()
-                
-                # Always check for time-based status update (every 10 seconds)
-                time_since_last_update = current_time - last_status_update
-                if time_since_last_update >= status_update_interval:
-                    elapsed_time = current_time - start_time
-                    progress_percent = ((iteration + 1) / max_iterations) * 100
-                    print(f"📊 [TIME STATUS] {time_module.strftime('%H:%M:%S')} - Elapsed: {elapsed_time:.1f}s - "
-                          f"Progress: {progress_percent:.1f}% - Iteration: {iteration + 1}/{max_iterations} - "
-                          f"Best score: {best_score:.1f}")
-                    last_status_update = current_time
-                
-                # Always show iteration status for first, last, and every 5th iteration
-                should_show_iteration_status = (
-                    iteration == 0 or  # Always show first iteration
-                    iteration == max_iterations - 1 or  # Always show last iteration
-                    (iteration + 1) % dynamic_config.get("iteration_status_frequency", 5) == 0  # Show every Nth iteration
-                )
-                
-                if should_show_iteration_status:
-                    elapsed_time = current_time - start_time
-                    progress_percent = ((iteration + 1) / max_iterations) * 100
-                    print(f"📊 [ITERATION STATUS] Iteration {iteration + 1}/{max_iterations} ({progress_percent:.1f}%) - "
-                          f"Elapsed: {elapsed_time:.1f}s - Best score: {best_score:.1f}")
-                    # Don't update last_status_update here to avoid interfering with time-based updates
-                
-                logger.info(f"🔄 Iteration {iteration + 1}/{max_iterations} for {material_name}")
-
-                iteration_data = {
-                    'iteration_number': iteration + 1,
-                    'max_iterations': max_iterations,
-                    'timestamp': datetime.datetime.now().isoformat(),
-                    'ai_detection_performed': False,
-                    'ai_detection_skipped': False,
-                    'score': 0.0,
-                    'classification': 'unknown',
-                    'improvement': 0.0,
-                    'target_reached': False,
-                    'enhancements_applied': [],
-                    'content_length_chars': 0,
-                    'content_length_words': 0,
-                    'content_change_percent_chars': 0.0,
-                    'content_change_percent_words': 0.0
+            # Generate content with basic author info
+            current_author_info = author_info.copy() if author_info else {}
+            if not current_author_info:
+                current_author_info = {
+                    "name": "Technical Expert",
+                    "country": "usa",
+                    "language": "english"
                 }
 
-                # Create generator with current iteration settings
-                # Use pre-imported AI detection config
-                generator = create_fail_fast_generator(
-                    max_retries=3,
-                    retry_delay=1.0,
-                    enable_scoring=True,
-                    human_threshold=dynamic_config.get("human_threshold", 75.0),
-                    ai_detection_service=self.ai_detection_service,
-                    skip_ai_detection=True  # Skip AI detection in fail_fast_generator since we handle it here
-                )
+            # Simple content generation - no iteration or complex optimization
+            result = generator.generate(
+                material_name=material_name,
+                material_data=material_data,
+                api_client=api_client,
+                author_info=current_author_info,
+                frontmatter_data=frontmatter_data
+            )
 
-                # Prepare author info with iteration feedback for AI detection refinement
-                current_author_info = author_info.copy() if author_info else {}
-                
-                # Add iteration feedback for AI detection prompt refinement
-                if iteration_history:
-                    ai_detection_scores = [iter_data.get('score', 0) for iter_data in iteration_history 
-                                         if iter_data.get('ai_detection_performed', False)]
-                    if ai_detection_scores:
-                        current_author_info['iteration_feedback'] = {
-                            'ai_detection_scores': ai_detection_scores,
-                            'iteration_count': iteration + 1,
-                            'avg_ai_score': sum(ai_detection_scores) / len(ai_detection_scores)
-                        }
-
-                # Add iteration-specific enhancements to improve human-like qualities
-                if iteration > 0:
-                    # OPTIMIZATION: Apply enhancements more selectively - max 2 per iteration
-                    # Only consider the optimization flags, not all config flags
-                    optimization_flags = [
-                        "conversational_style",
-                        "natural_language_patterns", 
-                        "sentence_variability",
-                        "cultural_adaptation",
-                    ]
-                    
-                    current_enabled = [flag for flag in optimization_flags if current_config.get(flag, False)]
-                    
-                    if len(current_enabled) > 2:
-                        logger.info(f"⚠️ Limiting to 2 enhancements (had {len(current_enabled)})")
-                        # Keep only first 2 enabled enhancements
-                        current_enabled = current_enabled[:2]
-                    
-                    # Apply only the enabled enhancements
-                    for flag in current_enabled:
-                        if flag == 'conversational_style' and current_config.get('conversational_style'):
-                            current_author_info['conversational_boost'] = True
-                            iteration_data['enhancements_applied'].append('conversational_style')
-
-                        elif flag == 'natural_language_patterns' and current_config.get('natural_language_patterns'):
-                            current_author_info['human_elements_emphasis'] = True
-                            iteration_data['enhancements_applied'].append('natural_language_patterns')
-
-                        elif flag == 'cultural_adaptation' and current_config.get('cultural_adaptation'):
-                            current_author_info['nationality_emphasis'] = True
-                            iteration_data['enhancements_applied'].append('cultural_adaptation')
-
-                        elif flag == 'sentence_variability' and current_config.get('sentence_variability'):
-                            current_author_info['sentence_variability'] = True
-                            iteration_data['enhancements_applied'].append('sentence_variability')
-
-                    logger.info(f"✨ Applied {len(iteration_data['enhancements_applied'])} targeted enhancements: {iteration_data['enhancements_applied']}")
-                else:
-                    logger.info("🎯 First iteration: Using base configuration")
-
-                # Generate content
-                result = generator.generate(
-                    material_name=material_name,
-                    material_data=material_data,
-                    api_client=api_client,
-                    author_info=current_author_info,
-                    frontmatter_data=frontmatter_data
-                )
-
-                if not result.success:
-                    logger.warning(f"❌ Generation failed on iteration {iteration + 1}: {result.error_message}")
-                    if iteration == max_iterations - 1:
-                        # Last attempt failed, return the failure
-                        return ComponentResult(
-                            component_type="text",
-                            content="",
-                            success=False,
-                            error_message=result.error_message
-                        )
-                    continue
-
-                # Calculate content metrics and changes
-                current_content = result.content
-                current_char_count = len(current_content)
-                current_word_count = len(current_content.split())
-
-                iteration_data['content_length_chars'] = current_char_count
-                iteration_data['content_length_words'] = current_word_count
-
-                # Calculate percentage change from previous iteration
-                if previous_content is not None:
-                    prev_char_count = len(previous_content)
-                    prev_word_count = len(previous_content.split())
-
-                    if prev_char_count > 0:
-                        char_change_percent = ((current_char_count - prev_char_count) / prev_char_count) * 100
-                        iteration_data['content_change_percent_chars'] = round(char_change_percent, 2)
-
-                    if prev_word_count > 0:
-                        word_change_percent = ((current_word_count - prev_word_count) / prev_word_count) * 100
-                        iteration_data['content_change_percent_words'] = round(word_change_percent, 2)
-
-                    logger.info(f"📊 Content change: {iteration_data['content_change_percent_chars']:+.1f}% chars, "
-                              f"{iteration_data['content_change_percent_words']:+.1f}% words")
-                else:
-                    # First iteration - no previous content to compare
-                    iteration_data['content_change_percent_chars'] = 0.0
-                    iteration_data['content_change_percent_words'] = 0.0
-                    logger.info(f"📊 First iteration: {current_char_count} chars, {current_word_count} words")
-
-                # Update previous content for next iteration comparison
-                previous_content = current_content
-
-                # Check AI detection score if service is available
-                current_score = 0.0
-                if self.ai_detection_service and self.ai_detection_service.is_available():
-                    try:
-                        # Extract clean text for AI detection (remove frontmatter)
-                        content_lines = result.content.split('\n')
-                        clean_text = ""
-                        in_frontmatter = False
-
-                        for line in content_lines:
-                            if line.strip() == '---':
-                                in_frontmatter = not in_frontmatter
-                                continue
-                            if not in_frontmatter and line.strip():
-                                clean_text += line + '\n'
-
-                        if len(clean_text.strip()) >= dynamic_config.get("min_text_length_winston", 300):  # Reduced minimum for Winston
-                            # Skip AI detection on first iteration for speed, but be more aggressive on later iterations
-                            if iteration == 0:
-                                logger.info("⏭️ Skipping AI detection on first iteration for speed")
-                                current_score = dynamic_config.get("fallback_score_first_iteration", 60.0)  # Reasonable baseline for first iteration
-                                iteration_data['ai_detection_skipped'] = True
-                                iteration_data['score'] = current_score
-                                iteration_data['classification'] = 'neutral'
-                            elif len(clean_text.strip()) < dynamic_config.get("short_content_threshold", 400):  # Reduced threshold for short content
-                                logger.info("⏭️ Content moderately short, using estimated score")
-                                current_score = dynamic_config.get("fallback_score_short_content", 55.0)  # Better estimate for short content
-                                iteration_data['ai_detection_skipped'] = True
-                                iteration_data['score'] = current_score
-                                iteration_data['classification'] = 'neutral'
-                            else:
-                                ai_result = self.ai_detection_service.analyze_text(clean_text.strip())
-                                current_score = ai_result.score
-                                iteration_data['ai_detection_performed'] = True
-                                iteration_data['score'] = current_score
-                                iteration_data['classification'] = ai_result.classification
-
-                                logger.info(f"🎯 Iteration {iteration + 1} Winston score: {current_score:.1f} "
-                                          f"({ai_result.classification})")
-
-                                # Use config optimizer to improve configuration for next iteration
-                                if iteration < max_iterations - 1:  # Don't optimize on last iteration
-                                    logger.info("🤖 Sending Winston results to DeepSeek for configuration optimization...")
-                                    optimized_config, deepseek_response = config_optimizer.optimize_config(
-                                        winston_result={
-                                            'overall_score': current_score,
-                                            'sentence_scores': ai_result.details.get('sentences', []) if ai_result and ai_result.details else [],
-                                            'analysis': ai_result.details if ai_result and ai_result.details else {}
-                                        },
-                                        content=clean_text.strip(),
-                                        current_config=current_config
-                                    )
-
-                                    # Store DeepSeek response in iteration data
-                                    iteration_data['deepseek_response'] = deepseek_response
-
-                                    # OPTIMIZATION: Validate configuration impact before applying
-                                    if iteration > 1:  # Start validation after 2 iterations
-                                        previous_score = iteration_history[-2]['score'] if len(iteration_history) >= 2 else best_score
-                                        score_change = current_score - previous_score
-                                        
-                                        if score_change < -10:  # Significant degradation
-                                            # Check if we have structural enhancements enabled (these should be preserved)
-                                            structural_enhancements = ['sentence_variability', 'paragraph_structure', 'lexical_diversity']
-                                            current_structural_enabled = any(
-                                                current_config.get(f'enhancements.{enh}', False) 
-                                                for enh in structural_enhancements
-                                            )
-                                            
-                                            # Only rollback if we're not using structural enhancements
-                                            # or if the degradation is extreme (>25 points)
-                                            if not current_structural_enabled or score_change < -25:
-                                                logger.warning(f"⚠️ Significant score degradation ({score_change:.1f}). Rolling back configuration.")
-                                                # Rollback the configuration change
-                                                config_optimizer.rollback_config()
-                                                # Reset to previous config for next iteration
-                                                current_config = config_optimizer._load_current_config()
-                                                logger.info("✅ Configuration rolled back to previous state")
-                                            else:
-                                                logger.info(f"📊 Score degradation ({score_change:.1f}) but preserving structural enhancements")
-                                        else:
-                                            logger.info(f"📊 Configuration impact: {score_change:+.1f} points")
-
-                                    if optimized_config != current_config:
-                                        current_config = optimized_config
-                                        logger.info("✅ Configuration updated by DeepSeek for next iteration")
-                                    else:
-                                        logger.info("ℹ️ Configuration unchanged by DeepSeek")
-
-                                    # Optimize prompts based on Winston analysis (lightweight updates)
-                                    iteration_context = {
-                                        'iteration_history': iteration_history,
-                                        'current_score': current_score,
-                                        'target_score': target_score,
-                                        'material_name': material_name
-                                    }
-
-                                    prompt_updated = prompt_optimizer.optimize_prompts(
-                                        winston_result={
-                                            'overall_score': current_score,
-                                            'sentence_scores': ai_result.details.get('sentences', []) if ai_result and ai_result.details else [],
-                                            'analysis': ai_result.details if ai_result and ai_result.details else {},
-                                            'classification': ai_result.classification if ai_result else 'unknown'
-                                        },
-                                        content=clean_text.strip(),
-                                        iteration_context=iteration_context
-                                    )
-
-                                    if prompt_updated:
-                                        logger.info("✅ AI detection prompts updated for improved future generation")
-                                    else:
-                                        logger.info("ℹ️ No prompt updates needed at this time")
-
-                                    # Generate gradual prompt improvements (like text generation iterations)
-                                    if iteration > 0 and random.random() < 0.4:  # 40% chance after first iteration
-                                        logger.info("🤖 Analyzing prompts for gradual evolution...")
-                                        evolution_result = dynamic_system.analyze_and_evolve(
-                                            winston_result={
-                                                'overall_score': current_score,
-                                                'classification': ai_result.classification if ai_result else 'unknown',
-                                                'sentence_analysis': {
-                                                    'low_score_percentage': 15.0 if current_score < 50 else 5.0
-                                                }
-                                            },
-                                            content=clean_text.strip(),
-                                            iteration_context=iteration_context
-                                        )
-
-                                        if evolution_result['success'] and evolution_result['improvements_applied'] > 0:
-                                            logger.info(f"✅ Applied {evolution_result['improvements_applied']} gradual prompt improvements")
-                                        else:
-                                            logger.info("ℹ️ No prompt improvements applied this iteration")
-
-                            # Calculate improvement from previous best
-                            iteration_data['improvement'] = current_score - best_score
-
-                            # Update best result if this is better
-                            if current_score > best_score:
-                                best_score = current_score
-                                best_result = result
-                                logger.info(f"💡 New best score: {best_score:.1f}")
-
-                            # Check if we've reached the target (be more lenient for early iterations)
-                            target_threshold = target_score if iteration >= 2 else target_score - dynamic_config.get("early_exit_score_threshold", 10)  # Allow lower scores (more lenient) on early iterations
-                            if current_score >= target_threshold:
-                                # Only exit early if we've done at least 3 iterations OR if this is the last possible iteration
-                                if iteration >= 2 or iteration == max_iterations - 1:  # iteration is 0-indexed, so iteration >= 2 means 3+ iterations
-                                    logger.info(f"🎉 Target score reached after {iteration + 1} iterations! Final score: {current_score:.1f}")
-                                    iteration_data['target_reached'] = True
-                                    iteration_history.append(iteration_data)
-                                    # Update frontmatter with correct AI detection score and iteration history
-                                    updated_content = self._update_frontmatter_with_iterations(result.content, current_score, ai_result if 'ai_result' in locals() else None, iteration_history, dynamic_config)
-                                    return ComponentResult(
-                                        component_type="text",
-                                        content=updated_content,
-                                        success=True,
-                                        error_message=None
-                                    )
-                                else:
-                                    logger.info(f"🎯 Target threshold reached on iteration {iteration + 1}, but continuing for minimum 3 iterations (current: {current_score:.1f})")
-                            else:
-                                logger.info(f"🎯 Target not yet reached on iteration {iteration + 1} (current: {current_score:.1f}, target: {target_threshold})")
-
-                            # Check for significant improvement (reduced threshold)
-                            if iteration > 0 and (current_score - best_score) >= (improvement_threshold - 1):
-                                logger.info(f"📈 Significant improvement detected: +{current_score - best_score:.1f}")
-                        else:
-                            logger.warning(f"📝 Content too short for AI detection: {len(clean_text.strip())} chars")
-                            # Use default score for short content
-                            current_score = dynamic_config.get("fallback_score_very_short", 40.0)  # Lower baseline for very short content
-                            iteration_data['score'] = current_score
-                            iteration_data['classification'] = 'ai'
-                            iteration_data['ai_detection_skipped'] = True
-
-                        # Add this iteration to history
-                        iteration_history.append(iteration_data)
-
-                    except Exception as ai_error:
-                        logger.warning(f"⚠️ AI detection failed on iteration {iteration + 1}: {ai_error}")
-                        # Use default score when AI detection fails
-                        current_score = dynamic_config.get("fallback_score_error", 50.0)  # Neutral score when AI detection fails
-                        iteration_data['score'] = current_score
-                        iteration_data['classification'] = 'unknown'
-                        iteration_data['ai_detection_performed'] = False
-                else:
-                    logger.info("ℹ️ AI detection service not available, using generated content")
-                    if best_result is None:
-                        best_result = result
-
-            # Return the best result achieved
-            if best_result:
-                # Final status update
-                total_elapsed_time = time_module.time() - start_time
-                print(f"🎉 [STATUS] Iterative improvement completed! Total time: {total_elapsed_time:.1f}s - "
-                      f"Final best score: {best_score:.1f} - Iterations: {len(iteration_history)}")
-                
-                logger.info(f"🏁 Completed iterations. Best Winston score: {best_score:.1f}")
-                # Update frontmatter with correct AI detection score and iteration history
-                # Find the most recent ai_result for frontmatter update
-                latest_ai_result = None
-                if iteration_history:
-                    for iter_data in reversed(iteration_history):
-                        if iter_data.get('ai_detection_performed') and 'ai_result' in locals():
-                            latest_ai_result = ai_result
-                            break
-                
-                updated_content = self._update_frontmatter_with_iterations(best_result.content, best_score, latest_ai_result, iteration_history, dynamic_config)
-                logger.info("✅ Frontmatter updated with AI detection analysis and iteration history")
-                return ComponentResult(
-                    component_type="text",
-                    content=updated_content,
-                    success=True,
-                    error_message=None
-                )
-            else:
-                # Error status update
-                total_elapsed_time = time_module.time() - start_time
-                print(f"❌ [STATUS] All iterations failed! Total time: {total_elapsed_time:.1f}s")
-                
-                logger.error("❌ All iterations failed to generate content")
+            if not result.success:
+                logger.warning(f"❌ Content generation failed for {material_name}: {result.error_message}")
                 return ComponentResult(
                     component_type="text",
                     content="",
                     success=False,
-                    error_message="All content generation iterations failed"
+                    error_message=result.error_message
                 )
+
+            logger.info(f"✅ Content generated successfully for {material_name}")
+            return ComponentResult(
+                component_type="text",
+                content=result.content,
+                success=True,
+                error_message=None
+            )
 
         except Exception as e:
             logger.error(f"Error generating text: {e}")

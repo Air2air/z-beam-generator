@@ -16,7 +16,7 @@ project_root = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(project_root))
 
 # Import modular configuration loader
-from ..prompts.utils.modular_loader import ModularConfigLoader
+from optimizer.text_optimization.validation.content_scorer import create_content_scorer
 
 # Define our own result class locally
 class GenerationResult:
@@ -80,7 +80,7 @@ class FailFastContentGenerator:
         # Initialize content scorer if enabled - FAIL FAST if not available
         if self.enable_scoring:
             try:
-                from ..validation.content_scorer import create_content_scorer
+                from optimizer.text_optimization.validation.content_scorer import create_content_scorer
                 self.content_scorer = create_content_scorer(human_threshold)
             except ImportError:
                 logger.warning("Content scorer not available - disabling quality scoring")
@@ -550,266 +550,57 @@ class FailFastContentGenerator:
     
     def _load_persona_prompt(self, author_id: int) -> Dict[str, Any]:
         """Load persona configuration for specific author."""
-        import yaml
-        
-        persona_file = self._get_persona_file_path(author_id)
-        
-        try:
-            with open(persona_file, 'r', encoding='utf-8') as f:
-                config = yaml.safe_load(f)
-            
-            if not config:
-                raise ConfigurationError(f"Persona file is empty: {persona_file}")
-            
-            return config
-            
-        except FileNotFoundError:
-            raise ConfigurationError(f"Persona file not found: {persona_file}")
-        except yaml.YAMLError as e:
-            raise ConfigurationError(f"Invalid YAML in persona file: {e}")
+        # Persona prompts have been moved to optimizer - return empty config
+        return {}
     
     def _load_formatting_prompt(self, author_id: int) -> Dict[str, Any]:
         """Load formatting configuration for specific author."""
-        import yaml
-        
-        # Map author IDs to country codes
-        author_map = {1: 'taiwan', 2: 'italy', 3: 'indonesia', 4: 'usa'}
-        country = author_map.get(author_id)
-        
-        if not country:
-            raise ConfigurationError(f"No formatting configuration for author_id: {author_id}")
-        
-        formatting_file = f"components/text/prompts/formatting/{country}_formatting.yaml"
-        
-        try:
-            with open(formatting_file, 'r', encoding='utf-8') as f:
-                config = yaml.safe_load(f)
-            
-            if not config:
-                raise ConfigurationError(f"Formatting file is empty: {formatting_file}")
-            
-            return config
-            
-        except FileNotFoundError:
-            raise ConfigurationError(f"Formatting file not found: {formatting_file}")
-        except yaml.YAMLError as e:
-            raise ConfigurationError(f"Invalid YAML in formatting file: {e}")
+        # Formatting prompts have been moved to optimizer - return empty config
+        return {}
     
     def _load_ai_detection_prompt(self) -> Dict[str, Any]:
-        """Load AI detection and human authenticity configuration using modular loader."""
-        try:
-            # Use the modular configuration loader
-            loader = ModularConfigLoader()
-            config = loader.load_config(use_modular=True)
-            
-            if not config:
-                raise ConfigurationError("AI detection configuration could not be loaded")
-            
-            logger.info(f"✅ AI detection config loaded with {len(config)} top-level sections")
-            return config
-            
-        except Exception as e:
-            logger.error(f"Failed to load AI detection configuration: {e}")
-            raise ConfigurationError(f"AI detection configuration loading failed: {e}")
+        """Load AI detection and human authenticity configuration."""
+        # AI detection prompts have been moved to optimizer - return empty config
+        return {}
     
     def _build_api_prompt(self, subject: str, author_id: int, author_name: str, 
                          material_data: Dict, author_info: Dict) -> str:
-        """Build complete API prompt by combining base, persona, formatting, and AI detection configurations."""
+        """Build simple API prompt using only base content configuration."""
         try:
-            # Load all required configurations
+            # Load only the base content prompt
             base_config = self._load_base_content_prompt()
-            persona_config = self._load_persona_prompt(author_id)
-            formatting_config = self._load_formatting_prompt(author_id)
-            ai_detection_config = self._load_ai_detection_prompt()
             
-            # LOG PROMPT LOADING FOR VERIFICATION
-            logger.info(f"🔍 PROMPT CHAIN VERIFICATION - Loading prompts for author_id {author_id}:")
-            logger.info(f"   📄 Base config loaded: {len(str(base_config))} chars")
-            logger.info(f"   👤 Persona config loaded: {persona_config.get('persona', {}).get('country', 'unknown')} - {len(str(persona_config))} chars")
-            logger.info(f"   🎨 Formatting config loaded: {formatting_config.get('country', 'unknown')} - {len(str(formatting_config))} chars")
-            logger.info(f"   🤖 AI detection config loaded: {len(str(ai_detection_config))} chars")
-            
-            # Build the complete prompt by combining all layers
+            # Build simple prompt using only base content
             prompt_parts = []
             
-            # 1. Base content prompt
+            # Base content prompt
             if 'overall_subject' in base_config:
-                prompt_parts.append(f"## Base Content Requirements\n{base_config['overall_subject']}")
+                content = base_config['overall_subject'].format(material=subject)
+                prompt_parts.append(f"## Content Requirements\n{content}")
             
-            # 2. AI Detection & Human Authenticity Focus
-            if 'ai_detection_focus' in ai_detection_config:
-                prompt_parts.append(f"\n## PRIMARY OBJECTIVE: Human-Like Content Generation\n{ai_detection_config['ai_detection_focus']}")
-            
-            # 3. Human Writing Characteristics
-            if 'human_writing_characteristics' in ai_detection_config:
-                chars = ai_detection_config['human_writing_characteristics']
-                prompt_parts.append("\n## Human Writing Characteristics (Apply Throughout)")
-                if 'conversational_elements' in chars:
-                    prompt_parts.append("**Conversational Elements:**")
-                    for element in chars['conversational_elements'][:3]:
-                        prompt_parts.append(f"- {element}")
-                if 'cognitive_variability' in chars:
-                    prompt_parts.append("**Natural Thought Patterns:**")
-                    for pattern in chars['cognitive_variability'][:3]:
-                        prompt_parts.append(f"- {pattern}")
-            
-            # 4. Author-specific persona
-            if 'persona' in persona_config:
-                persona = persona_config['persona']
-                prompt_parts.append(f"\n## Author Persona: {persona.get('name', author_name)}")
-                prompt_parts.append(f"Country: {persona.get('country', 'Unknown')}")
-                prompt_parts.append(f"Personality: {persona.get('personality', 'Professional')}")
-                prompt_parts.append(f"Tone: {persona.get('tone_objective', 'Professional')}")
-                
-                # LOG PERSONA-SPECIFIC CONTENT
-                logger.info(f"   👤 PERSONA VERIFICATION - Author: {persona.get('name', 'Unknown')}, Country: {persona.get('country', 'Unknown')}")
-            
-            # 5. Cultural Humanization
-            if 'cultural_humanization' in ai_detection_config and 'nationality_adaptation' in ai_detection_config['cultural_humanization']:
-                adaptations = ai_detection_config['cultural_humanization']['nationality_adaptation']
-                author_country = persona_config['persona'].get('country', '').lower()
-                if author_country in adaptations:
-                    prompt_parts.append(f"\n## Cultural Writing Style\n{author_country.title()} characteristics: {adaptations[author_country]}")
-            
-            # 6. Language patterns and signature phrases
-            if 'language_patterns' in persona_config:
-                patterns = persona_config['language_patterns']
-                prompt_parts.append("\n## Language Patterns (Apply Throughout)")
-                if 'vocabulary' in patterns:
-                    prompt_parts.append(f"Vocabulary: {patterns['vocabulary']}")
-                if 'repetition' in patterns:
-                    prompt_parts.append(f"Repetition: {patterns['repetition']}")
-                if 'signature_phrases' in patterns:
-                    prompt_parts.append(f"Use these signature phrases naturally: {', '.join(patterns['signature_phrases'][:5])}")
-                    
-                    # LOG SIGNATURE PHRASES
-                    logger.info(f"   🗣️ SIGNATURE PHRASES VERIFICATION - Loaded {len(patterns['signature_phrases'])} phrases")
-            
-            # 7. Writing style guidelines
-            if 'writing_style' in persona_config:
-                style = persona_config['writing_style']
-                prompt_parts.append("\n## Writing Style Guidelines")
-                if 'tone' in style:
-                    prompt_parts.append(f"Tone: {style['tone']['primary']}")
-                if 'pacing' in style:
-                    prompt_parts.append(f"Pacing: {style['pacing']}")
-                if 'guidelines' in style:
-                    prompt_parts.append("Key guidelines:")
-                    for guideline in style['guidelines'][:3]:
-                        prompt_parts.append(f"- {guideline}")
-            
-            # 8. Formatting requirements
-            if 'formatting_patterns' in formatting_config:
-                patterns = formatting_config['formatting_patterns']
-                prompt_parts.append("\n## Formatting Requirements")
-                if 'emphasis' in patterns:
-                    prompt_parts.append(f"Emphasis: {patterns['emphasis']}")
-                if 'structure' in patterns:
-                    prompt_parts.append(f"Structure: {patterns['structure']}")
-                    
-                    # LOG FORMATTING PATTERNS
-                    logger.info(f"   🎨 FORMATTING VERIFICATION - Structure: {patterns.get('structure', 'none')}")
-            
-            # 9. Content constraints
-            if 'content_constraints' in formatting_config:
-                constraints = formatting_config['content_constraints']
-                if 'max_word_count' in constraints:
-                    prompt_parts.append(f"\n## Content Length\nMaximum word count: {constraints['max_word_count']} words")
-                    
-                    # LOG WORD COUNT CONSTRAINTS
-                    logger.info(f"   📏 WORD COUNT VERIFICATION - Max: {constraints['max_word_count']} words")
-            
-            # 10. Cultural characteristics
-            if 'taiwanese_characteristics' in formatting_config:
-                chars = formatting_config['taiwanese_characteristics']
-                prompt_parts.append("\n## Cultural Writing Characteristics")
-                for key, value in list(chars.items())[:3]:
-                    prompt_parts.append(f"{key.replace('_', ' ').title()}: {value}")
-                    
-                    # LOG CULTURAL CHARACTERISTICS
-                    logger.info(f"   🌏 CULTURAL VERIFICATION - {key}: {value[:50]}...")
-            
-            # 11. AI Detection Enhancement Flags (DYNAMIC OPTIMIZATION)
-            enhancement_instructions = []
-            
-            if author_info.get('conversational_boost'):
-                enhancement_instructions.append("**ENHANCEMENT: Conversational Style**")
-                enhancement_instructions.append("- Use more conversational, expert-to-expert dialogue style")
-                enhancement_instructions.append("- Incorporate phrases like 'you see', 'well', 'in my experience', 'actually'")
-                enhancement_instructions.append("- Make the writing feel like a knowledgeable professional sharing insights")
-                logger.info("   ✨ APPLYING: Conversational boost enhancement")
-            
-            if author_info.get('human_elements_emphasis'):
-                enhancement_instructions.append("**ENHANCEMENT: Natural Language Patterns**")
-                enhancement_instructions.append("- Emphasize natural human writing patterns and thought processes")
-                enhancement_instructions.append("- Avoid uniform sentence structures and predictable patterns")
-                enhancement_instructions.append("- Include natural transitions and varied expression")
-                logger.info("   ✨ APPLYING: Human elements emphasis enhancement")
-            
-            if author_info.get('nationality_emphasis'):
-                enhancement_instructions.append("**ENHANCEMENT: Cultural Authenticity**")
-                enhancement_instructions.append("- Strengthen cultural writing characteristics and national identity")
-                enhancement_instructions.append("- Use culturally authentic expressions and perspectives")
-                enhancement_instructions.append("- Maintain authentic cultural voice throughout the content")
-                logger.info("   ✨ APPLYING: Nationality emphasis enhancement")
-            
-            if author_info.get('sentence_variability'):
-                enhancement_instructions.append("**ENHANCEMENT: Sentence Variability**")
-                enhancement_instructions.append("- Vary sentence length and structure significantly")
-                enhancement_instructions.append("- Mix short, punchy sentences with longer, complex ones")
-                enhancement_instructions.append("- Avoid repetitive sentence patterns that trigger AI detection")
-                enhancement_instructions.append("- Use varied punctuation and sentence construction")
-                logger.info("   ✨ APPLYING: Sentence variability enhancement")
-            
-            if enhancement_instructions:
-                prompt_parts.append("\n## CRITICAL AI DETECTION OPTIMIZATIONS")
-                prompt_parts.append("**These enhancements are REQUIRED to improve human-like quality:**")
-                prompt_parts.extend(enhancement_instructions)
-                prompt_parts.append("**Apply these enhancements throughout the entire article to maximize human believability.**")
-                logger.info(f"   🎯 ENHANCEMENT VERIFICATION - Applied {len([e for e in enhancement_instructions if e.startswith('**ENHANCEMENT:')])} enhancements")
-            
-            # 12. Main content generation instruction
+            # Simple content generation instruction
             prompt_parts.append(f"""
 ## Content Generation Task
 
-Write a comprehensive article about laser cleaning {subject} following all the above guidelines.
+Write a comprehensive article about laser cleaning {subject}.
 
 **Subject:** {subject}
 **Author:** {author_name}
 **Target Audience:** Industry professionals and researchers interested in laser cleaning applications
 
-Ensure the content demonstrates authentic {persona_config['persona'].get('country', 'professional')} writing characteristics and maintains the specified tone throughout.
-
-Apply all language patterns, signature phrases, and formatting requirements consistently throughout the article.
+Focus on technical accuracy, practical applications, and engineering insights.
 """)
             
-            # Combine all parts
+            # Combine parts
             complete_prompt = '\n'.join(prompt_parts)
             
-            # FINAL VERIFICATION LOG
-            logger.info(f"📝 PROMPT CHAIN COMPLETE - Final prompt: {len(complete_prompt)} characters")
-            logger.info(f"   ✅ Contains persona content: {'Author Persona:' in complete_prompt}")
-            logger.info(f"   ✅ Contains formatting content: {'Formatting Requirements' in complete_prompt}")
-            logger.info(f"   ✅ Contains AI detection content: {'Human-Like Content Generation' in complete_prompt}")
+            logger.info(f"📝 Simple prompt built: {len(complete_prompt)} characters")
             
             return complete_prompt
             
         except Exception as e:
             logger.error(f"Failed to build API prompt: {e}")
-    def _get_persona_file_path(self, author_id: int) -> str:
-        """Get persona file path for author ID."""
-        persona_files = {
-            1: "components/text/prompts/personas/taiwan_persona.yaml",
-            2: "components/text/prompts/personas/italy_persona.yaml", 
-            3: "components/text/prompts/personas/indonesia_persona.yaml",
-            4: "components/text/prompts/personas/usa_persona.yaml"
-        }
-        
-        persona_file = persona_files.get(author_id)
-        if not persona_file:
-            raise ConfigurationError(f"No persona file configured for author_id: {author_id}")
-        
-        return persona_file
+
     
     def _load_authors_data(self) -> List[Dict[str, Any]]:
         """Load authors data from authors.json."""
