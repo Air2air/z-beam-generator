@@ -1,0 +1,36 @@
+# Authenticity Enhancements Module
+# Version: 1.0.0
+# Last Updated: 2025-09-04
+# Description: Personal touch and conversational flow enhancements
+# Dependencies: None
+# Used by: ai_detection.yaml (main configuration)
+
+human_authenticity_enhancements:
+  personal_touch:
+  - Include subjective opinions (I believe, in my experience)
+  - Add emotional context (exciting, concerning, fascinating)
+  - Use idiomatic expressions from author's culture
+  - Incorporate professional anecdotes
+  - Express enthusiasm or skepticism
+
+  conversational_flow:
+  - Vary sentence length dramatically (5-${winston_ai_range[1]} words)
+  - Mix simple and complex sentence structures
+  - Use fragments for emphasis
+  - Include rhetorical devices naturally
+  - Allow for natural digressions and returns
+  - Break uniform paragraph patterns with varied structures
+  - Use short transitional paragraphs between longer ones
+  - Mix paragraph purposes: explanatory, reflective, technical, personal
+
+  paragraph_rhythm_breakers:
+  - Short introductory paragraphs (1-2 sentences)
+  - Medium explanatory paragraphs (3-4 sentences) with varied purposes
+  - Long detailed paragraphs (5-6 sentences) with internal breaks and transitions
+  - Single-sentence reflective paragraphs for emphasis
+  - Question-based paragraphs to engage reader and break rhythm
+  - Transitional paragraphs that bridge concepts with different approaches
+  - Anecdotal paragraphs with personal insights interspersed
+  - Technical paragraphs with varied sentence complexity and vocabulary
+  - Mixed-purpose paragraphs that combine explanation with reflection
+  - Fragment paragraphs that use incomplete thoughts for natural flow

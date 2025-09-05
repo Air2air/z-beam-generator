@@ -15,6 +15,9 @@ from typing import Dict, Any, List, Optional, Tuple
 project_root = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(project_root))
 
+# Import modular configuration loader
+from ..prompts.utils.modular_loader import ModularConfigLoader
+
 # Define our own result class locally
 class GenerationResult:
     """Result of content gen            # Extract content from response for validation
@@ -529,7 +532,7 @@ class FailFastContentGenerator:
         """Load base content prompt configuration from YAML file."""
         import yaml
         
-        base_prompt_file = "components/text/prompts/base_content_prompt.yaml"
+        base_prompt_file = "components/text/prompts/core/base_content_prompt.yaml"
         
         try:
             with open(base_prompt_file, 'r', encoding='utf-8') as f:
@@ -593,24 +596,21 @@ class FailFastContentGenerator:
             raise ConfigurationError(f"Invalid YAML in formatting file: {e}")
     
     def _load_ai_detection_prompt(self) -> Dict[str, Any]:
-        """Load AI detection and human authenticity configuration."""
-        import yaml
-        
-        ai_detection_file = "components/text/prompts/ai_detection.yaml"
-        
+        """Load AI detection and human authenticity configuration using modular loader."""
         try:
-            with open(ai_detection_file, 'r', encoding='utf-8') as f:
-                config = yaml.safe_load(f)
+            # Use the modular configuration loader
+            loader = ModularConfigLoader()
+            config = loader.load_config(use_modular=True)
             
             if not config:
-                raise ConfigurationError(f"AI detection file is empty: {ai_detection_file}")
+                raise ConfigurationError("AI detection configuration could not be loaded")
             
+            logger.info(f"✅ AI detection config loaded with {len(config)} top-level sections")
             return config
             
-        except FileNotFoundError:
-            raise ConfigurationError(f"AI detection file not found: {ai_detection_file}")
-        except yaml.YAMLError as e:
-            raise ConfigurationError(f"Invalid YAML in AI detection file: {e}")
+        except Exception as e:
+            logger.error(f"Failed to load AI detection configuration: {e}")
+            raise ConfigurationError(f"AI detection configuration loading failed: {e}")
     
     def _build_api_prompt(self, subject: str, author_id: int, author_name: str, 
                          material_data: Dict, author_info: Dict) -> str:
@@ -729,7 +729,46 @@ class FailFastContentGenerator:
                     # LOG CULTURAL CHARACTERISTICS
                     logger.info(f"   🌏 CULTURAL VERIFICATION - {key}: {value[:50]}...")
             
-            # 11. Main content generation instruction
+            # 11. AI Detection Enhancement Flags (DYNAMIC OPTIMIZATION)
+            enhancement_instructions = []
+            
+            if author_info.get('conversational_boost'):
+                enhancement_instructions.append("**ENHANCEMENT: Conversational Style**")
+                enhancement_instructions.append("- Use more conversational, expert-to-expert dialogue style")
+                enhancement_instructions.append("- Incorporate phrases like 'you see', 'well', 'in my experience', 'actually'")
+                enhancement_instructions.append("- Make the writing feel like a knowledgeable professional sharing insights")
+                logger.info("   ✨ APPLYING: Conversational boost enhancement")
+            
+            if author_info.get('human_elements_emphasis'):
+                enhancement_instructions.append("**ENHANCEMENT: Natural Language Patterns**")
+                enhancement_instructions.append("- Emphasize natural human writing patterns and thought processes")
+                enhancement_instructions.append("- Avoid uniform sentence structures and predictable patterns")
+                enhancement_instructions.append("- Include natural transitions and varied expression")
+                logger.info("   ✨ APPLYING: Human elements emphasis enhancement")
+            
+            if author_info.get('nationality_emphasis'):
+                enhancement_instructions.append("**ENHANCEMENT: Cultural Authenticity**")
+                enhancement_instructions.append("- Strengthen cultural writing characteristics and national identity")
+                enhancement_instructions.append("- Use culturally authentic expressions and perspectives")
+                enhancement_instructions.append("- Maintain authentic cultural voice throughout the content")
+                logger.info("   ✨ APPLYING: Nationality emphasis enhancement")
+            
+            if author_info.get('sentence_variability'):
+                enhancement_instructions.append("**ENHANCEMENT: Sentence Variability**")
+                enhancement_instructions.append("- Vary sentence length and structure significantly")
+                enhancement_instructions.append("- Mix short, punchy sentences with longer, complex ones")
+                enhancement_instructions.append("- Avoid repetitive sentence patterns that trigger AI detection")
+                enhancement_instructions.append("- Use varied punctuation and sentence construction")
+                logger.info("   ✨ APPLYING: Sentence variability enhancement")
+            
+            if enhancement_instructions:
+                prompt_parts.append("\n## CRITICAL AI DETECTION OPTIMIZATIONS")
+                prompt_parts.append("**These enhancements are REQUIRED to improve human-like quality:**")
+                prompt_parts.extend(enhancement_instructions)
+                prompt_parts.append("**Apply these enhancements throughout the entire article to maximize human believability.**")
+                logger.info(f"   🎯 ENHANCEMENT VERIFICATION - Applied {len([e for e in enhancement_instructions if e.startswith('**ENHANCEMENT:')])} enhancements")
+            
+            # 12. Main content generation instruction
             prompt_parts.append(f"""
 ## Content Generation Task
 

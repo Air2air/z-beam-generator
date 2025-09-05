@@ -77,6 +77,19 @@ You are working on a **laser cleaning content generation system** with strict fa
 - **No scope expansion** - fix X means fix only X
 - **Complete solutions** - don't leave parts for user to debug
 
+### 6. 🗣️ Linguistic Patterns Location
+- **KEEP linguistic patterns ONLY in `components/text/prompts/personas/`**
+- **NEVER duplicate or move linguistic patterns** to other configuration files
+- **ALWAYS reference personas for nationality-specific language variations**
+- **Exception**: Brief summaries may exist in other files, but detailed patterns stay in personas
+
+### 7. 🔍 Prompt Chain Verification
+- **VERIFY prompt chain integration** in frontmatter using `prompt_chain_verification` metadata
+- **CHECK frontmatter** contains verification fields: base_config_loaded, persona_config_loaded, etc.
+- **VALIDATE** all 4 prompt components (base, persona, formatting, AI detection) were integrated
+- **CONFIRM** cultural adaptation and human authenticity focus were applied
+- **USE** `verify_frontmatter_prompt_chain.py` script to validate generated content
+
 ## 📚 Lessons from Past Failures
 
 ### 🚨 Critical Failure Patterns to Avoid

@@ -6,6 +6,7 @@ Generates frontmatter YAML content with property enhancement.
 """
 
 import logging
+import time
 from typing import Dict, Optional
 from generators.component_generators import APIComponentGenerator, ComponentResult
 
@@ -16,6 +17,25 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
     
     def __init__(self):
         super().__init__("frontmatter")
+        self._load_prompt_config()
+    
+    def _load_prompt_config(self):
+        """Load prompt configuration from YAML file"""
+        try:
+            import yaml
+            from pathlib import Path
+            
+            prompt_file = self.component_dir / "prompt.yaml"
+            if prompt_file.exists():
+                with open(prompt_file, 'r', encoding='utf-8') as f:
+                    self.prompt_config = yaml.safe_load(f)
+                logger.info(f"Loaded prompt configuration for frontmatter")
+            else:
+                logger.warning(f"Prompt configuration file not found: {prompt_file}")
+                self.prompt_config = {}
+        except Exception as e:
+            logger.error(f"Error loading prompt configuration: {e}")
+            self.prompt_config = {}
     
     def generate(self, material_name: str, material_data: Dict,
                 api_client=None, author_info: Optional[Dict] = None,
@@ -139,8 +159,13 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
             "material_type": material_data.get("material_type") if "material_type" in material_data else category,
             "category": category,
             "author_name": author_name,
-            "article_type": material_data.get("article_type") if "article_type" in material_data else "material"  # Keep this for schema compatibility
+            "article_type": material_data.get("article_type") if "article_type" in material_data else "material",  # Keep this for schema compatibility
+            "persona_country": author_info.get("country", "Unknown") if author_info else "Unknown",
+            "author_id": author_info.get("id", 0) if author_info else 0,
+            "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
         }
+    
+    def _build_api_prompt(self, template_vars: Dict, frontmatter_data: Optional[Dict] = None) -> str:
         """Build API prompt using template variables"""
         
         if not self.prompt_config:

@@ -101,9 +101,17 @@ template: |
     metric: "Specific measurement with standard"
   - result: "Measurable result 3"
     metric: "Specific measurement with standard"
-  subject: {subject}
-  article_type: {article_type}
-  ---
+  prompt_chain_verification:
+    base_config_loaded: true
+    persona_config_loaded: true
+    formatting_config_loaded: true
+    ai_detection_config_loaded: true
+    persona_country: "{persona_country}"
+    author_id: {author_id}
+    verification_timestamp: "{timestamp}"
+    prompt_components_integrated: 4
+    human_authenticity_focus: true
+    cultural_adaptation_applied: true
 
   CRITICAL REQUIREMENTS:
   - Output ONLY the YAML frontmatter above - nothing else

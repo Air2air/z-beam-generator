@@ -84,97 +84,93 @@ if self.enable_scoring and self.content_scorer:
 
 ### Configuration
 
-### Centralized AI Detection Configuration
-The system uses a centralized `AI_DETECTION_CONFIG` in `run.py` that contains all AI detection thresholds and parameters:
+### Dynamic AI Detection Configuration System
+The system now uses a dynamic configuration system that calculates optimal parameters based on content characteristics and author information, replacing the old static `AI_DETECTION_CONFIG`. This provides intelligent, adaptive configuration that adjusts to different content types and writing styles.
+
+#### Dynamic Configuration Features
+- **Content-Type Intelligence**: Automatically classifies content as technical, marketing, educational, or creative
+- **Author Country Tuning**: Adjusts parameters based on author location (Italy: +2.0 expressiveness, Taiwan: -1.0 formality, etc.)
+- **Adaptive Thresholds**: Calculates optimal target scores and human thresholds based on content length and type
+- **Real-time Optimization**: Uses DeepSeek API for configuration optimization when enabled
+
+#### Dynamic Configuration Generation
+The `create_dynamic_ai_detection_config()` function in `run.py` generates configuration parameters using 20+ calculation functions:
 
 ```python
-AI_DETECTION_CONFIG = {
-    # Core AI Detection Thresholds
-    "target_score": 70.0,                    # Winston.ai target score for human-like content (≥70 = human-like)
-    "max_iterations": 5,                     # Maximum iterative improvement attempts
-    "improvement_threshold": 3.0,            # Minimum score improvement to continue iterations
-    "human_threshold": 75.0,                 # General human-like content threshold
-    
-    # Content Length Thresholds
-    "min_text_length_winston": 300,          # Minimum characters for Winston.ai analysis
-    "short_content_threshold": 400,          # Threshold for short content handling
-    "min_content_length": 50,                # Minimum content length for validation
-    
-    # Fallback Scores (when AI detection fails or content is too short)
-    "fallback_score_first_iteration": 60.0,  # Baseline score for first iteration
-    "fallback_score_short_content": 55.0,    # Score for moderately short content
-    "fallback_score_very_short": 40.0,       # Score for very short content
-    "fallback_score_error": 50.0,            # Score when AI detection fails
-    
-    # Status Update Configuration
-    "status_update_interval": 10,            # Seconds between status updates
-    "iteration_status_frequency": 5,         # Show status every Nth iteration
-    
-    # Word Count Validation
-    "word_count_tolerance": 1.5,             # Allow 50% tolerance over word limits (1.5x multiplier)
-    
-    # Country-Specific Word Count Limits
-    "word_count_limits": {
-        "taiwan": {"max": 380, "target_range": "340-380"},
-        "italy": {"max": 450, "target_range": "400-450"},
-        "indonesia": {"max": 400, "target_range": "350-400"},
-        "usa": {"max": 320, "target_range": "280-320"}
-    },
-    
-    # API Timeouts and Limits
-    "winston_timeout_cap": 15,               # Maximum timeout for Winston.ai requests
-    "max_tokens": 3000,                      # Maximum tokens for API requests
-    "retry_delay": 0.5,                     # Delay between retries
-    
-    # Winston.ai Scoring Ranges
-    "winston_human_range": (70, 100),       # Scores indicating human-written content
-    "winston_unclear_range": (30, 70),      # Scores indicating unclear/uncertain content
-    "winston_ai_range": (0, 30),            # Scores indicating AI-generated content
-    
-    # Early Exit Conditions
-    "min_iterations_before_exit": 3,         # Minimum iterations before allowing early exit
-    "early_exit_score_threshold": 10,        # Lenient threshold for early iterations (target - this value)
-    
-    # Configuration Optimization
-    "deepseek_optimization_enabled": True,   # Enable DeepSeek-based configuration optimization
-    "config_backup_enabled": True,           # Create backups before config changes
-    
-    # Logging and Debugging
-    "enable_detailed_logging": True,         # Enable detailed AI detection logging
-    "max_sentence_details": 5,               # Maximum sentence-level details to include in frontmatter
+# Example dynamic configuration generation
+config = create_dynamic_ai_detection_config(
+    content_type="technical",  # inferred from material and context
+    author_country="italy",    # from author information
+    content_length=1200,       # estimated content length
+    material_name="stainless_steel"
+)
+
+# Returns adaptive configuration like:
+{
+    "target_score": 72.5,           # Adjusted for technical content + Italy author
+    "human_threshold": 77.8,        # Content-type specific threshold
+    "max_iterations": 4,            # Optimized for content length
+    "word_count_limits": {          # Country-specific limits
+        "max": 450,
+        "target_range": "400-450"
+    }
+    # ... 15+ additional adaptive parameters
 }
 ```
 
-### Key Configuration Parameters
+#### Key Dynamic Parameters
 
-- **target_score**: The primary target for Winston.ai scores (default: 70.0)
-- **winston_human_range**: Scores considered human-like (70-100)
-- **winston_unclear_range**: Scores that are unclear/uncertain (30-70)
-- **winston_ai_range**: Scores considered AI-generated (0-30)
-- **min_text_length_winston**: Minimum characters required for analysis (300)
-- **status_update_interval**: How often to show progress updates (10 seconds)
-- **word_count_limits**: Country-specific word count limits for different authors
+- **target_score**: Calculated based on content type and author country
+  - Technical content: Base 70.0 + adjustments
+  - Marketing content: Base 75.0 + adjustments
+  - Educational content: Base 68.0 + adjustments
+  - Creative content: Base 72.0 + adjustments
 
-### Configuration Validation
-Run the configuration test to validate all settings:
+- **human_threshold**: Content-type specific thresholds
+  - Technical: 75.0-80.0 range
+  - Marketing: 78.0-83.0 range
+  - Educational: 73.0-78.0 range
+  - Creative: 76.0-81.0 range
+
+- **max_iterations**: Optimized based on content length
+  - Short content (< 500 chars): 3 iterations
+  - Medium content (500-1500 chars): 4-5 iterations
+  - Long content (> 1500 chars): 5-6 iterations
+
+- **word_count_limits**: Author country-specific limits
+  - Taiwan: 340-380 words (formal, concise)
+  - Italy: 400-450 words (expressive, detailed)
+  - Indonesia: 350-400 words (balanced approach)
+  - USA: 280-320 words (direct, efficient)
+
+#### Configuration Calculation Functions
+The system includes 20+ specialized calculation functions:
+
+- `_calculate_optimal_target_score()`: Content type + author adjustments
+- `_calculate_human_threshold()`: Content-specific human thresholds
+- `_infer_content_type()`: Automatic content classification
+- `_estimate_content_length()`: Content length prediction
+- `_calculate_max_iterations()`: Iteration optimization
+- `_adjust_for_author_country()`: Country-specific parameter tuning
+- `_calculate_fallback_scores()`: Adaptive fallback scoring
+
+#### Configuration Validation
+Run the dynamic configuration test to validate the system:
 ```bash
-python3 test_ai_detection_config.py
+python3 tests/test_dynamic_ai_detection_config.py
 ```
 
 Expected output:
 ```
-🔧 Testing AI_DETECTION_CONFIG centralization...
-✅ AI_DETECTION_CONFIG imported successfully
-✅ All required configuration keys present
-✅ All configuration values are valid
-✅ Word count limits properly structured for all countries
-✅ Winston.ai scoring ranges properly configured
-✅ Configuration values are within reasonable ranges
+🔧 Testing Dynamic AI Detection Configuration...
+✅ Dynamic config generation successful
+✅ Content type inference working
+✅ Author country adjustments applied
+✅ All calculation functions validated
+✅ Configuration values within expected ranges
+✅ DeepSeek optimization integration verified
 
-🔧 Testing AI_DETECTION_CONFIG usage in components...
-✅ Component import tests completed
-
-🎉 ALL AI_DETECTION_CONFIG TESTS PASSED!
+🎉 ALL DYNAMIC CONFIG TESTS PASSED!
 ```
 
 ## Scoring Interpretation

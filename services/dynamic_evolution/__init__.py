@@ -523,9 +523,10 @@ class DynamicEvolutionService(BaseService):
 
         # Update variant performance (simple moving average)
         variant.sample_size += 1
-        variant.performance_score = (
-            (variant.performance_score * (variant.sample_size - 1)) + performance_score
-        ) / variant.sample_size
+        variant.performance_score = round(
+            (variant.performance_score * (variant.sample_size - 1) + performance_score) / variant.sample_size,
+            10
+        )
 
     def get_ab_test_results(self, test_id: str) -> Optional[Dict[str, Any]]:
         """
@@ -572,7 +573,7 @@ class DynamicEvolutionService(BaseService):
             Dict[str, Any]: Evolution analytics
         """
         if template_id not in self.evolution_history:
-            return {"error": f"No evolution history for template {template_id}"}
+            return {"error": f"Template {template_id} not found"}
 
         history = self.evolution_history[template_id]
 
@@ -584,9 +585,12 @@ class DynamicEvolutionService(BaseService):
 
         return {
             "total_evolutions": history.total_evolutions,
-            "avg_improvement": avg_improvement,
+            "avg_improvement": round(avg_improvement, 10),  # Round to avoid floating point precision issues
+            "best_improvement": round(max(improvements), 10) if improvements else 0.0,
+            "worst_improvement": round(min(improvements), 10) if improvements else 0.0,
             "last_evolution": history.last_evolution.isoformat() if history.last_evolution else None,
             "improvement_trend": improvements[-10:],  # Last 10 improvements
+            "recent_optimizations": [r for r in history.evolution_results[-5:] if r.quality_improvement > 0],  # Recent positive improvements
             "performance_trends": history.performance_trends
         }
 
@@ -630,3 +634,16 @@ class DynamicEvolutionService(BaseService):
         except Exception as e:
             self.logger.error(f"Health check failed: {e}")
             return False
+
+
+__all__ = [
+    "DynamicEvolutionService",
+    "EvolutionStrategy",
+    "EvolutionTemplate",
+    "EvolutionTrigger",
+    "EvolutionResult",
+    "EvolutionHistory",
+    "ABTest",
+    "ABTestVariant",
+    "DynamicEvolutionError"
+]

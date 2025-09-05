@@ -67,12 +67,13 @@ class IterationResult:
 @dataclass
 class WorkflowResult:
     """Result of an iterative workflow."""
-    final_result: Any
-    iterations: List[IterationResult]
-    total_time: float
-    exit_reason: str
+    workflow_id: str
     success: bool
-    metadata: Dict[str, Any]
+    iterations: List[IterationResult] = field(default_factory=list)
+    final_result: Any = None
+    exit_reason: str = ""
+    total_time: float = 0.0
+    metadata: Dict[str, Any] = field(default_factory=dict)
 
 
 @dataclass
@@ -158,7 +159,16 @@ class IterativeWorkflowService(BaseService):
         # Initialize workflow tracking
         iterations: List[IterationResult] = []
         current_input = initial_input
+        original_input = initial_input  # Keep original for iterations
         previous_quality = 0.0
+
+        # Create initial workflow result for tracking
+        workflow_result = WorkflowResult(
+            workflow_id=workflow_id,
+            success=False,
+            metadata={"status": "running"}
+        )
+        self.active_workflows[workflow_id] = workflow_result
 
         try:
             for iteration_num in range(1, config.max_iterations + 1):
@@ -200,8 +210,8 @@ class IterativeWorkflowService(BaseService):
                     self.logger.info(f"Workflow {workflow_id} exiting at iteration {iteration_num}: {exit_reason}")
                     break
 
-                # Prepare for next iteration
-                current_input = iteration_result
+                # Prepare for next iteration - use original input to avoid accumulation
+                current_input = original_input
                 previous_quality = quality_score
 
                 # Apply iteration strategy delay
@@ -222,11 +232,12 @@ class IterativeWorkflowService(BaseService):
             # Create workflow result
             total_time = (datetime.now() - start_time).total_seconds()
             workflow_result = WorkflowResult(
-                final_result=final_result,
-                iterations=iterations,
-                total_time=total_time,
-                exit_reason=exit_reason,
+                workflow_id=workflow_id,
                 success=success,
+                iterations=iterations,
+                final_result=final_result,
+                exit_reason=exit_reason,
+                total_time=total_time,
                 metadata={
                     "workflow_id": workflow_id,
                     "final_quality": final_quality,
@@ -423,3 +434,15 @@ class IterativeWorkflowService(BaseService):
         except Exception as e:
             self.logger.error(f"Health check failed: {e}")
             return False
+
+
+__all__ = [
+    "IterativeWorkflowService",
+    "WorkflowConfiguration",
+    "IterationStrategy",
+    "ExitCondition",
+    "IterationContext",
+    "IterativeWorkflowError",
+    "IterationResult",
+    "WorkflowResult"
+]

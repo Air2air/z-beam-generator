@@ -1,0 +1,36 @@
+provider: winston
+enabled: true
+target_score: 80.0
+max_iterations: 5
+improvement_threshold: 1.0
+timeout: 30
+retry_attempts: 3
+gptzero: false
+winston: true
+mock: false
+conversational_style: false
+natural_language_patterns: false
+human_error_simulation: false
+cultural_adaptation: false
+emotional_depth: false
+sentence_variability: true
+paragraph_structure: true
+lexical_diversity: false
+rhetorical_devices: false
+personal_anecdotes: false
+
+# OPTIMIZATION: Enhanced Configuration Management
+configuration_management:
+  max_backups: 5
+  auto_rollback_threshold: 15.0  # Points
+  baseline_preservation: true
+  learning_enabled: true
+  stability_monitoring: true
+  intelligent_rollback: true
+
+optimization_strategy:
+  max_enhancements_per_iteration: 1  # Force gradual approach
+  score_based_prioritization: true
+  content_stability_check: true
+  learning_based_optimization: true
+  avoid_failed_patterns: true

@@ -1,10 +1,10 @@
 # Dynamic Prompt Generation System
 
-A standalone system for dynamically evolving AI detection prompts based on Winston AI analysis, designed to work similarly to iterative text generation systems.
+A standalone system for dynamically evolving AI detection prompts based on Winston AI analysis, designed to work with the modular prompt architecture.
 
 ## Overview
 
-The Dynamic Prompt Generation System analyzes Winston AI detection results and gradually evolves the `ai_detection.yaml` prompts to improve future content generation. This creates a self-improving AI detection optimization system that evolves based on real performance data.
+The Dynamic Prompt Generation System analyzes Winston AI detection results and gradually evolves the modular AI detection prompts to improve future content generation. This creates a self-improving AI detection optimization system that evolves based on real performance data.
 
 ## Architecture
 
@@ -33,10 +33,10 @@ dynamic_prompt_system/
 - Works like the text generation system with incremental improvements
 - Includes random elements for natural evolution (40% application chance)
 
-### 🔧 Template Variable System
-- Maintains dynamic config substitution with `${variable_name}` syntax
-- Automatically substitutes values from `AI_DETECTION_CONFIG`
-- Preserves template variables when saving updates
+### 🔧 Modular Architecture Support
+- Works with the new modular prompt system in `components/text/prompts/`
+- Loads configuration from multiple modular components
+- Maintains compatibility with legacy monolithic files as fallback
 
 ### 📊 Evolution Tracking
 - Comprehensive history of all prompt evolutions
@@ -165,7 +165,9 @@ for improvement in improvements:
 
 ## File Structure
 
-- `ai_detection.yaml`: The evolving prompts file
+- `components/text/prompts/core/ai_detection_core.yaml`: Core configuration file
+- `components/text/prompts/modules/`: Modular prompt components
+- `components/text/prompts/legacy/ai_detection.yaml`: Legacy monolithic file (fallback)
 - `evolution_history.json`: Complete evolution history and statistics
 - Template variables: `${variable_name}` format for dynamic configuration
 

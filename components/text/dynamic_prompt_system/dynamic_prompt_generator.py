@@ -25,7 +25,7 @@ class DynamicPromptGenerator:
     based on Winston AI analysis, similar to iterative text generation.
     """
 
-    def __init__(self, prompts_path: str = "components/text/prompts/ai_detection.yaml"):
+    def __init__(self, prompts_path: str = "components/text/prompts/core/ai_detection_core.yaml"):
         self.prompts_path = Path(prompts_path)
         self._deepseek_client = None
         self.generation_history = []
@@ -390,10 +390,33 @@ Keep improvements focused and incremental. Avoid suggesting major structural cha
             return False
 
     def _load_current_prompts(self) -> Optional[Dict[str, Any]]:
-        """Load current prompts with template variable substitution."""
+        """Load current prompts using the modular configuration system."""
         try:
-            if self.prompts_path.exists():
-                with open(self.prompts_path, 'r', encoding='utf-8') as f:
+            # Use the new modular loader instead of loading monolithic file
+            from components.text.prompts.utils.modular_loader import load_ai_detection_config
+            
+            # Load the complete modular configuration
+            config = load_ai_detection_config(use_modular=True)
+            
+            if config:
+                logger.info("✅ Loaded prompts using modular configuration system")
+                return config
+            else:
+                logger.warning("Failed to load modular config, falling back to legacy file")
+                # Fallback to legacy file if modular loading fails
+                return self._load_legacy_prompts()
+                
+        except Exception as e:
+            logger.error(f"Failed to load modular prompts: {e}")
+            # Fallback to legacy loading
+            return self._load_legacy_prompts()
+
+    def _load_legacy_prompts(self) -> Optional[Dict[str, Any]]:
+        """Fallback method to load legacy monolithic prompts file."""
+        try:
+            legacy_path = Path("components/text/prompts/legacy/ai_detection.yaml")
+            if legacy_path.exists():
+                with open(legacy_path, 'r', encoding='utf-8') as f:
                     raw_content = f.read()
 
                 # Import config for variable substitution
@@ -405,10 +428,10 @@ Keep improvements focused and incremental. Avoid suggesting major structural cha
                 # Parse the processed YAML
                 return yaml.safe_load(processed_content)
             else:
-                logger.warning(f"Prompts file not found: {self.prompts_path}")
+                logger.warning(f"Legacy prompts file not found: {legacy_path}")
                 return None
         except Exception as e:
-            logger.error(f"Failed to load prompts: {e}")
+            logger.error(f"Failed to load legacy prompts: {e}")
             return None
 
     def substitute_config_variables(self, content: str, config: Dict[str, Any]) -> str:
@@ -448,25 +471,17 @@ Keep improvements focused and incremental. Avoid suggesting major structural cha
         return processed_content
 
     def _save_updated_prompts(self, prompts: Dict[str, Any]) -> None:
-        """Save updated prompts with template variables restored."""
-        try:
-            # Convert back to YAML string
-            yaml_content = yaml.dump(prompts, default_flow_style=False, sort_keys=False, allow_unicode=True)
-
-            # Import config for reverse substitution
-            from run import AI_DETECTION_CONFIG
-
-            # Convert config values back to template variables
-            templated_content = self._convert_to_template_variables(yaml_content, AI_DETECTION_CONFIG)
-
-            # Save the templated content
-            with open(self.prompts_path, 'w', encoding='utf-8') as f:
-                f.write(templated_content)
-
-            logger.info(f"Saved updated prompts to {self.prompts_path}")
-        except Exception as e:
-            logger.error(f"Failed to save updated prompts: {e}")
-            raise
+        """Save updated prompts - currently disabled for modular system."""
+        logger.warning("⚠️ Prompt saving is currently disabled for modular configuration system")
+        logger.info("💡 To modify prompts, edit the individual modular component files in components/text/prompts/modules/")
+        logger.info("📝 Changes will be loaded automatically on next system restart")
+        
+        # TODO: Implement modular component saving in future version
+        # For now, we log the changes that would have been made
+        logger.info(f"📊 Would have saved {len(prompts)} configuration sections")
+        
+        # Could implement saving to individual module files here in the future
+        # But for now, we prevent accidental overwrites of the modular structure
 
     def get_evolution_history(self) -> List[Dict[str, Any]]:
         """Get the evolution history of prompt improvements."""

@@ -1,0 +1,26 @@
+provider: winston
+enabled: true
+target_score: 65.0  # OPTIMIZATION: Increased target for better quality
+max_iterations: 5
+improvement_threshold: 5.0  # OPTIMIZATION: More reasonable threshold
+timeout: 15
+retry_attempts: 2
+gptzero:
+  api_key: your-gptzero-api-key-here
+  base_url: https://api.gptzero.me
+winston:
+  api_key: YOg4ByzumdBgrnImJ2LQ3GMW0FnkHnco64KpyAKp8c0974d5
+  base_url: https://api.gowinston.ai
+mock:
+  enabled: true
+# OPTIMIZATION: Conservative enhancement approach - focus on core improvements
+conversational_style: true
+natural_language_patterns: true
+human_error_simulation: false
+cultural_adaptation: false  # OPTIMIZATION: Start disabled, enable if needed
+emotional_depth: false
+sentence_variability: true
+paragraph_structure: false  # OPTIMIZATION: Disabled to avoid over-engineering
+lexical_diversity: false    # OPTIMIZATION: Disabled to avoid over-engineering
+rhetorical_devices: false
+personal_anecdotes: false

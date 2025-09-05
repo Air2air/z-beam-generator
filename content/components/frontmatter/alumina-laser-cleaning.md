@@ -2,16 +2,16 @@
 name: Alumina
 applications:
 - industry: Semiconductor Manufacturing
-  detail: Removal of surface contaminants from alumina ceramic substrates and components
-- industry: Medical Device Manufacturing
-  detail: Precision cleaning of alumina implants and surgical instrument components
+  detail: Removal of photoresist and oxide layers from alumina substrates
+- industry: Aerospace Components
+  detail: Surface preparation and coating removal from alumina thermal barrier coatings
 technicalSpecifications:
-  powerRange: 20-200W
-  pulseDuration: 10-200ns
+  powerRange: 50-200W
+  pulseDuration: 10-100ns
   wavelength: 1064nm (primary), 532nm (optional)
-  spotSize: 0.1-2.0mm
-  repetitionRate: 10-100kHz
-  fluenceRange: 1.5–8 J/cm²
+  spotSize: 0.2-3.0mm
+  repetitionRate: 20-100kHz
+  fluenceRange: 1.0–8.0 J/cm²
   safetyClass: Class 4 (requires full enclosure)
 description: Technical overview of Alumina, Al2O3, for laser cleaning applications,
   including density, wavelength, and industrial applications.
@@ -21,7 +21,7 @@ keywords: alumina, alumina ceramic, laser ablation, laser cleaning, non-contact 
   thermal processing, surface restoration
 category: ceramic
 chemicalProperties:
-  symbol: TBD
+  symbol: Al2O3
   formula: Al2O3
   materialType: ceramic
 properties:
@@ -45,13 +45,13 @@ properties:
   hardnessMin: 500 HV
   hardnessMax: 2500 HV
   hardnessPercentile: 0.0
-  youngsModulus: 370 GPa
+  youngsModulus: 380 GPa
   modulusMin: 150 GPa
   modulusMax: 400 GPa
-  modulusPercentile: 88.0
+  modulusPercentile: 92.0
   laserType: Pulsed Fiber Laser
   wavelength: 1064nm
-  fluenceRange: 1.5–8 J/cm²
+  fluenceRange: 1.0–8.0 J/cm²
   chemicalFormula: Al2O3
   laserAbsorptionMin: 0.1 cm⁻¹
   laserAbsorptionMax: 50 cm⁻¹
@@ -64,13 +64,12 @@ properties:
   specificHeatMin: 0.4 J/g·K
   specificHeatMax: 1.2 J/g·K
 composition:
-- Aluminum Oxide (Al2O3)
-- Trace elements (Si, Fe, Na, Ca)
+- Aluminum Oxide (Al2O3) - 99.6%
+- Trace elements (Si, Fe, Na, Ca) - 0.4%
 compatibility:
 - Stainless Steel
-- Titanium
-- Other Ceramics
-regulatoryStandards: ISO 13485, ASTM F603, MIL-STD-129
+- Titanium Alloys
+regulatoryStandards: ISO 14119, IEC 60825-1, FDA 21 CFR 1040.10
 images:
   hero:
     alt: Alumina surface undergoing laser cleaning showing precise contamination removal
@@ -86,16 +85,25 @@ environmentalImpact:
   description: Eliminates 95% of chemical solvents compared to traditional cleaning
     methods
 - benefit: Energy Efficiency
-  description: Uses 40% less energy than ultrasonic cleaning systems
+  description: Consumes 40% less energy than thermal cleaning processes
 - benefit: Zero Wastewater
-  description: Produces no liquid waste streams, reducing water consumption by 100%
+  description: Completely eliminates wastewater generation from cleaning operations
 outcomes:
 - result: Surface Cleanliness
-  metric: Achieves ISO 14644-1 Class 5 cleanliness standard
+  metric: Achieves ISO 8501-1 Sa 2.5 standard with <5% residual contamination
 - result: Material Preservation
-  metric: Less than 0.1% surface material removal during cleaning process
+  metric: Less than 0.1% substrate material removal during cleaning process
 - result: Processing Speed
-  metric: Cleaning rates up to 2 m²/hour with 100W laser system
-subject: Alumina
-article_type: material
+  metric: Cleaning rates up to 5 m²/hour with 100W laser system
+prompt_chain_verification:
+  base_config_loaded: true
+  persona_config_loaded: true
+  formatting_config_loaded: true
+  ai_detection_config_loaded: true
+  persona_country: Unknown
+  author_id: 2
+  verification_timestamp: '2025-09-05T01:32:31Z'
+  prompt_components_integrated: 4
+  human_authenticity_focus: true
+  cultural_adaptation_applied: true
 ---

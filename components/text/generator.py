@@ -27,9 +27,9 @@ class TextComponentGenerator(APIComponentGenerator):
         super().__init__("text")
         self.ai_detection_service = ai_detection_service
         
-        # Import centralized AI detection config at initialization
-        from run import AI_DETECTION_CONFIG
-        self.ai_detection_config = AI_DETECTION_CONFIG
+        # Import dynamic configuration functions at initialization
+        from run import get_dynamic_config_for_content
+        self.get_dynamic_config = get_dynamic_config_for_content
 
     def generate(self, material_name: str, material_data: Dict,
                 api_client=None, author_info: Optional[Dict] = None,
@@ -85,7 +85,7 @@ class TextComponentGenerator(APIComponentGenerator):
 
             # Initialize dynamic prompt generator for gradual evolution
             from components.text.dynamic_prompt_system import DynamicPromptSystem
-            dynamic_system = DynamicPromptSystem()
+            dynamic_system = DynamicPromptSystem(prompts_path="components/text/prompts/legacy/ai_detection.yaml")
 
             logger.info(f"🎯 Starting intelligent iterative content generation for {material_name}")
             logger.info(f"Target Winston score: ≥{target_score} (human-like), Max iterations: {max_iterations}")
@@ -100,7 +100,10 @@ class TextComponentGenerator(APIComponentGenerator):
             import time as time_module
             start_time = time_module.time()
             last_status_update = start_time
-            status_update_interval = self.ai_detection_config["status_update_interval"]  # seconds
+            
+            # Get dynamic configuration based on material and author
+            dynamic_config = self.get_dynamic_config(material_name, author_info, "text")
+            status_update_interval = dynamic_config.get("status_update_interval", 10)  # seconds
             
             # Initial status update
             print(f"📊 [START] Beginning iterative improvement for {material_name} - Target: {target_score:.1f} - Max iterations: {max_iterations}")
@@ -111,7 +114,7 @@ class TextComponentGenerator(APIComponentGenerator):
                 
                 # Always check for time-based status update (every 10 seconds)
                 time_since_last_update = current_time - last_status_update
-                if time_since_last_update >= self.ai_detection_config["status_update_interval"]:
+                if time_since_last_update >= status_update_interval:
                     elapsed_time = current_time - start_time
                     progress_percent = ((iteration + 1) / max_iterations) * 100
                     print(f"📊 [TIME STATUS] {time_module.strftime('%H:%M:%S')} - Elapsed: {elapsed_time:.1f}s - "
@@ -123,7 +126,7 @@ class TextComponentGenerator(APIComponentGenerator):
                 should_show_iteration_status = (
                     iteration == 0 or  # Always show first iteration
                     iteration == max_iterations - 1 or  # Always show last iteration
-                    (iteration + 1) % self.ai_detection_config["iteration_status_frequency"] == 0  # Show every Nth iteration
+                    (iteration + 1) % dynamic_config.get("iteration_status_frequency", 5) == 0  # Show every Nth iteration
                 )
                 
                 if should_show_iteration_status:
@@ -158,7 +161,7 @@ class TextComponentGenerator(APIComponentGenerator):
                     max_retries=3,
                     retry_delay=1.0,
                     enable_scoring=True,
-                    human_threshold=self.ai_detection_config["human_threshold"],
+                    human_threshold=dynamic_config.get("human_threshold", 75.0),
                     ai_detection_service=self.ai_detection_service,
                     skip_ai_detection=True  # Skip AI detection in fail_fast_generator since we handle it here
                 )
@@ -179,44 +182,41 @@ class TextComponentGenerator(APIComponentGenerator):
 
                 # Add iteration-specific enhancements to improve human-like qualities
                 if iteration > 0:
-                    # Apply configuration-based enhancements from optimizer
-                    if 'conversational_style' in current_config and current_config['conversational_style']:
-                        current_author_info['conversational_boost'] = True
-                        iteration_data['enhancements_applied'].append('conversational_style')
+                    # OPTIMIZATION: Apply enhancements more selectively - max 2 per iteration
+                    # Only consider the optimization flags, not all config flags
+                    optimization_flags = [
+                        "conversational_style",
+                        "natural_language_patterns", 
+                        "sentence_variability",
+                        "cultural_adaptation",
+                    ]
+                    
+                    current_enabled = [flag for flag in optimization_flags if current_config.get(flag, False)]
+                    
+                    if len(current_enabled) > 2:
+                        logger.info(f"⚠️ Limiting to 2 enhancements (had {len(current_enabled)})")
+                        # Keep only first 2 enabled enhancements
+                        current_enabled = current_enabled[:2]
+                    
+                    # Apply only the enabled enhancements
+                    for flag in current_enabled:
+                        if flag == 'conversational_style' and current_config.get('conversational_style'):
+                            current_author_info['conversational_boost'] = True
+                            iteration_data['enhancements_applied'].append('conversational_style')
 
-                    if 'natural_language_patterns' in current_config and current_config['natural_language_patterns']:
-                        current_author_info['human_elements_emphasis'] = True
-                        iteration_data['enhancements_applied'].append('natural_language_patterns')
+                        elif flag == 'natural_language_patterns' and current_config.get('natural_language_patterns'):
+                            current_author_info['human_elements_emphasis'] = True
+                            iteration_data['enhancements_applied'].append('natural_language_patterns')
 
-                    if 'cultural_adaptation' in current_config and current_config['cultural_adaptation']:
-                        current_author_info['nationality_emphasis'] = True
-                        iteration_data['enhancements_applied'].append('cultural_adaptation')
+                        elif flag == 'cultural_adaptation' and current_config.get('cultural_adaptation'):
+                            current_author_info['nationality_emphasis'] = True
+                            iteration_data['enhancements_applied'].append('cultural_adaptation')
 
-                    if 'sentence_variability' in current_config and current_config['sentence_variability']:
-                        current_author_info['sentence_variability'] = True
-                        iteration_data['enhancements_applied'].append('sentence_variability')
+                        elif flag == 'sentence_variability' and current_config.get('sentence_variability'):
+                            current_author_info['sentence_variability'] = True
+                            iteration_data['enhancements_applied'].append('sentence_variability')
 
-                    if 'paragraph_structure' in current_config and current_config['paragraph_structure']:
-                        current_author_info['paragraph_structure'] = True
-                        iteration_data['enhancements_applied'].append('paragraph_structure')
-
-                    if 'lexical_diversity' in current_config and current_config['lexical_diversity']:
-                        current_author_info['lexical_diversity'] = True
-                        iteration_data['enhancements_applied'].append('lexical_diversity')
-
-                    if 'rhetorical_devices' in current_config and current_config['rhetorical_devices']:
-                        current_author_info['rhetorical_devices'] = True
-                        iteration_data['enhancements_applied'].append('rhetorical_devices')
-
-                    if 'personal_anecdotes' in current_config and current_config['personal_anecdotes']:
-                        current_author_info['personal_anecdotes'] = True
-                        iteration_data['enhancements_applied'].append('personal_anecdotes')
-
-                    if 'human_error_simulation' in current_config and current_config['human_error_simulation']:
-                        current_author_info['human_error_simulation'] = True
-                        iteration_data['enhancements_applied'].append('human_error_simulation')
-
-                    logger.info(f"✨ Applied configuration-based enhancements: {iteration_data['enhancements_applied']}")
+                    logger.info(f"✨ Applied {len(iteration_data['enhancements_applied'])} targeted enhancements: {iteration_data['enhancements_applied']}")
                 else:
                     logger.info("🎯 First iteration: Using base configuration")
 
@@ -289,17 +289,17 @@ class TextComponentGenerator(APIComponentGenerator):
                             if not in_frontmatter and line.strip():
                                 clean_text += line + '\n'
 
-                        if len(clean_text.strip()) >= self.ai_detection_config["min_text_length_winston"]:  # Reduced minimum for Winston
+                        if len(clean_text.strip()) >= dynamic_config.get("min_text_length_winston", 300):  # Reduced minimum for Winston
                             # Skip AI detection on first iteration for speed, but be more aggressive on later iterations
                             if iteration == 0:
                                 logger.info("⏭️ Skipping AI detection on first iteration for speed")
-                                current_score = self.ai_detection_config["fallback_score_first_iteration"]  # Reasonable baseline for first iteration
+                                current_score = dynamic_config.get("fallback_score_first_iteration", 60.0)  # Reasonable baseline for first iteration
                                 iteration_data['ai_detection_skipped'] = True
                                 iteration_data['score'] = current_score
                                 iteration_data['classification'] = 'neutral'
-                            elif len(clean_text.strip()) < self.ai_detection_config["short_content_threshold"]:  # Reduced threshold for short content
+                            elif len(clean_text.strip()) < dynamic_config.get("short_content_threshold", 400):  # Reduced threshold for short content
                                 logger.info("⏭️ Content moderately short, using estimated score")
-                                current_score = self.ai_detection_config["fallback_score_short_content"]  # Better estimate for short content
+                                current_score = dynamic_config.get("fallback_score_short_content", 55.0)  # Better estimate for short content
                                 iteration_data['ai_detection_skipped'] = True
                                 iteration_data['score'] = current_score
                                 iteration_data['classification'] = 'neutral'
@@ -328,6 +328,33 @@ class TextComponentGenerator(APIComponentGenerator):
 
                                     # Store DeepSeek response in iteration data
                                     iteration_data['deepseek_response'] = deepseek_response
+
+                                    # OPTIMIZATION: Validate configuration impact before applying
+                                    if iteration > 1:  # Start validation after 2 iterations
+                                        previous_score = iteration_history[-2]['score'] if len(iteration_history) >= 2 else best_score
+                                        score_change = current_score - previous_score
+                                        
+                                        if score_change < -10:  # Significant degradation
+                                            # Check if we have structural enhancements enabled (these should be preserved)
+                                            structural_enhancements = ['sentence_variability', 'paragraph_structure', 'lexical_diversity']
+                                            current_structural_enabled = any(
+                                                current_config.get(f'enhancements.{enh}', False) 
+                                                for enh in structural_enhancements
+                                            )
+                                            
+                                            # Only rollback if we're not using structural enhancements
+                                            # or if the degradation is extreme (>25 points)
+                                            if not current_structural_enabled or score_change < -25:
+                                                logger.warning(f"⚠️ Significant score degradation ({score_change:.1f}). Rolling back configuration.")
+                                                # Rollback the configuration change
+                                                config_optimizer.rollback_config()
+                                                # Reset to previous config for next iteration
+                                                current_config = config_optimizer._load_current_config()
+                                                logger.info("✅ Configuration rolled back to previous state")
+                                            else:
+                                                logger.info(f"📊 Score degradation ({score_change:.1f}) but preserving structural enhancements")
+                                        else:
+                                            logger.info(f"📊 Configuration impact: {score_change:+.1f} points")
 
                                     if optimized_config != current_config:
                                         current_config = optimized_config
@@ -389,7 +416,7 @@ class TextComponentGenerator(APIComponentGenerator):
                                 logger.info(f"💡 New best score: {best_score:.1f}")
 
                             # Check if we've reached the target (be more lenient for early iterations)
-                            target_threshold = target_score if iteration >= 2 else target_score - self.ai_detection_config["early_exit_score_threshold"]  # Allow lower scores (more lenient) on early iterations
+                            target_threshold = target_score if iteration >= 2 else target_score - dynamic_config.get("early_exit_score_threshold", 10)  # Allow lower scores (more lenient) on early iterations
                             if current_score >= target_threshold:
                                 # Only exit early if we've done at least 3 iterations OR if this is the last possible iteration
                                 if iteration >= 2 or iteration == max_iterations - 1:  # iteration is 0-indexed, so iteration >= 2 means 3+ iterations
@@ -397,7 +424,7 @@ class TextComponentGenerator(APIComponentGenerator):
                                     iteration_data['target_reached'] = True
                                     iteration_history.append(iteration_data)
                                     # Update frontmatter with correct AI detection score and iteration history
-                                    updated_content = self._update_frontmatter_with_iterations(result.content, current_score, ai_result if 'ai_result' in locals() else None, iteration_history)
+                                    updated_content = self._update_frontmatter_with_iterations(result.content, current_score, ai_result if 'ai_result' in locals() else None, iteration_history, dynamic_config)
                                     return ComponentResult(
                                         component_type="text",
                                         content=updated_content,
@@ -415,7 +442,7 @@ class TextComponentGenerator(APIComponentGenerator):
                         else:
                             logger.warning(f"📝 Content too short for AI detection: {len(clean_text.strip())} chars")
                             # Use default score for short content
-                            current_score = self.ai_detection_config["fallback_score_very_short"]  # Lower baseline for very short content
+                            current_score = dynamic_config.get("fallback_score_very_short", 40.0)  # Lower baseline for very short content
                             iteration_data['score'] = current_score
                             iteration_data['classification'] = 'ai'
                             iteration_data['ai_detection_skipped'] = True
@@ -426,7 +453,7 @@ class TextComponentGenerator(APIComponentGenerator):
                     except Exception as ai_error:
                         logger.warning(f"⚠️ AI detection failed on iteration {iteration + 1}: {ai_error}")
                         # Use default score when AI detection fails
-                        current_score = self.ai_detection_config["fallback_score_error"]  # Neutral score when AI detection fails
+                        current_score = dynamic_config.get("fallback_score_error", 50.0)  # Neutral score when AI detection fails
                         iteration_data['score'] = current_score
                         iteration_data['classification'] = 'unknown'
                         iteration_data['ai_detection_performed'] = False
@@ -452,7 +479,7 @@ class TextComponentGenerator(APIComponentGenerator):
                             latest_ai_result = ai_result
                             break
                 
-                updated_content = self._update_frontmatter_with_iterations(best_result.content, best_score, latest_ai_result, iteration_history)
+                updated_content = self._update_frontmatter_with_iterations(best_result.content, best_score, latest_ai_result, iteration_history, dynamic_config)
                 logger.info("✅ Frontmatter updated with AI detection analysis and iteration history")
                 return ComponentResult(
                     component_type="text",
@@ -482,7 +509,7 @@ class TextComponentGenerator(APIComponentGenerator):
                 error_message=str(e)
             )
 
-    def _update_frontmatter_with_iterations(self, content: str, score: float, ai_result=None, iteration_history=None) -> str:
+    def _update_frontmatter_with_iterations(self, content: str, score: float, ai_result=None, iteration_history=None, dynamic_config=None) -> str:
         """Update the frontmatter with AI detection score and iteration history."""
         
         try:
@@ -527,7 +554,7 @@ class TextComponentGenerator(APIComponentGenerator):
                         # Include sentence-level details for Winston
                         if key == "sentences" and isinstance(value, list):
                             ai_lines.append("    sentences:")
-                            for sentence_data in value[:self.ai_detection_config["max_sentence_details"]]:  # Limit to first N sentences
+                            for sentence_data in value[:dynamic_config.get("max_sentence_details", 5) if dynamic_config else 5]:  # Limit to first N sentences
                                 if isinstance(sentence_data, dict):
                                     ai_lines.append("      - text: \"{}\"".format(sentence_data.get('text', '').replace('"', '\\"')))
                                     ai_lines.append("        score: {}".format(sentence_data.get('score', 0.0)))

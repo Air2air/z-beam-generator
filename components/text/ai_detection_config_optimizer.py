@@ -1,7 +1,7 @@
 """
 AI Detection Configuration Optimizer
 
-This module uses DeepSeek to analyze Winston AI detection results and dynamically
+Uses DeepSeek to analyze Winston AI detection results and dynamically
 optimize the ai_detection.yaml configuration to improve content generation quality.
 
 The optimizer:
@@ -15,7 +15,7 @@ import yaml
 import json
 import logging
 from pathlib import Path
-from typing import Dict, Any, Optional, Tuple
+from typing import Dict, Any, Optional, Tuple, List
 from datetime import datetime
 
 from api.client_manager import create_api_client
@@ -41,19 +41,29 @@ class AIDetectionConfigOptimizer:
         self.config_path = Path(config_path)
         # Initialize DeepSeek client when needed
         self._deepseek_client = None
+
+        # OPTIMIZATION: Focus on core enhancements with gradual application
         self.optimization_flags = [
-            "conversational_style",        # Core: Keep enabled
-            "natural_language_patterns",   # Core: Keep enabled  
-            "cultural_adaptation",         # Core: Keep enabled
-            "sentence_variability",        # Core: Keep enabled
-            # Disable over-engineering features
-            "human_error_simulation",      # Disabled: Can backfire
-            "emotional_depth",             # Disabled: Over-engineering
-            "paragraph_structure",         # Disabled: Let content flow naturally
-            "lexical_diversity",           # Disabled: Over-engineering vocabulary
-            "rhetorical_devices",          # Disabled: Can seem forced
-            "personal_anecdotes"           # Disabled: Keep professional tone
+            "conversational_style",        # Core: Natural flow
+            "natural_language_patterns",   # Core: Address manipulation detection
+            "sentence_variability",        # Core: Break uniform patterns
+            "cultural_adaptation",         # Core: Author authenticity
+            "emotional_depth",             # Core: Human nuance
+            "paragraph_structure",         # Core: Break regimented paragraphs
+            "lexical_diversity",           # Core: Vary vocabulary
+            # Keep minimal to avoid conflicts
         ]
+
+        # Track previous configurations for rollback
+        self.previous_configs = []
+        
+        # Learning mechanism for successful configurations
+        self.successful_configs = []
+        
+        # OPTIMIZATION: Enhanced state management
+        self.baseline_configs = []  # Preserve high-performing configurations
+        self.baseline_score_threshold = 50.0  # Score threshold for baseline preservation
+        self.rollback_threshold = 15.0  # Score drop that triggers rollback
 
     @property
     def deepseek_client(self):
@@ -111,11 +121,28 @@ class AIDetectionConfigOptimizer:
 
             # Validate the optimized configuration
             if self._validate_config(optimized_config):
+                # OPTIMIZATION: Check if rollback is needed before applying changes
+                current_score = winston_result.get('overall_score', 0)
+                baseline_score = self._get_baseline_score()
+                
+                if baseline_score is not None and self._should_rollback(current_score, baseline_score):
+                    logger.warning("Rolling back to previous configuration due to score degradation")
+                    if self.rollback_config():
+                        # Return the rolled back config
+                        rolled_back_config = self._load_current_config()
+                        return rolled_back_config, "Configuration rolled back due to score degradation"
+                
                 # Create backup before modifying
                 self._create_backup()
 
                 # Save the optimized configuration
                 self._save_config(optimized_config)
+                
+                # OPTIMIZATION: Preserve baseline if score is good
+                self._preserve_baseline_config(optimized_config, current_score)
+                
+                # Record successful configuration for learning
+                self._record_successful_config(optimized_config, winston_result)
 
                 logger.info("Successfully optimized AI detection configuration")
                 return optimized_config, deepseek_response_text
@@ -137,13 +164,21 @@ class AIDetectionConfigOptimizer:
         classification = winston_result.get('classification', 'unclear')
 
         # Extract detailed analysis from Winston response
-        details = winston_result.get('details', {})
+        details = winston_result.get('analysis', {})  # Changed from 'details' to 'analysis'
         readability_score = details.get('readability_score')
         attack_detected = details.get('attack_detected', {})
 
         # Extract sentence-level analysis if available
         sentences_data = details.get('sentences', [])
         sentence_analysis = self._analyze_sentence_patterns(sentences_data)
+
+        # Get learning insights
+        learning_insights = self.get_learning_insights()
+        recommended_flags = learning_insights.get('recommended_flags', [])
+        
+        learning_context = ""
+        if recommended_flags:
+            learning_context = f"\nLEARNING INSIGHTS:\n- Previously successful flags: {', '.join(recommended_flags)}\n- Consider these proven combinations for better results"
 
         # Current flag states
         current_flags = {flag: config.get(flag, False) for flag in self.optimization_flags}
@@ -154,61 +189,63 @@ class AIDetectionConfigOptimizer:
             attack_detected, sentence_analysis, content
         )
 
-        prompt = f"""You are an expert AI content optimization specialist with deep knowledge of Winston AI detection patterns. Analyze the comprehensive Winston AI detection results and recommend precise, data-driven enhancements for technical content.
+        # Build comprehensive analysis summary
+        analysis_summary = self._build_analysis_summary(
+            overall_score, confidence, classification, readability_score,
+            attack_detected, sentence_analysis, content
+        )
+
+        prompt = f"""You are an expert AI content optimization specialist. Analyze Winston AI detection results and provide targeted, sentence-specific enhancements with GRADUAL improvements.
 
 {analysis_summary}
 
-CURRENT CONFIGURATION:
-- Enhancement Flags: {json.dumps(current_flags, indent=2)}
-- Target Score: {AI_DETECTION_CONFIG["target_score"]} (realistic for technical content)
+CONTENT ANALYSIS:
+- Overall Score: {overall_score:.1f}/100 ({classification})
+- Readability: {readability_score if readability_score is not None else 'N/A'}
+- Low-Scoring Sentences: {sentence_analysis.get('low_score_percentage', 0):.1f}%
 
-CONTENT SAMPLE (first 600 characters for pattern analysis):
-{content[:600]}...
+{learning_context}
 
-WINDSOR AI-DRIVEN OPTIMIZATION FRAMEWORK:
+GRADUAL OPTIMIZATION STRATEGY:
 
-1. **SCORE-BASED STRATEGY** (Primary Driver):
-   - Score < 20: Maximum enhancement - content needs fundamental human-like restructuring
-   - Score 20-35: Balanced enhancement - focus on natural flow and readability
-   - Score 35-50: Targeted refinement - address specific detection patterns
-   - Score > 50: Minimal adjustments - preserve working patterns
+1. **SCORE-BASED PRIORITIES**:
+   - Score < 30: Enable natural_language_patterns first (addresses core manipulation detection)
+   - Score 30-50: Add sentence_variability for better rhythm
+   - Score 50-70: Enable cultural_adaptation for author authenticity
+   - Score > 70: Enable emotional_depth for human nuance
 
-2. **READABILITY-BASED ADJUSTMENTS** (Secondary Driver):
-   - Readability < 40: Enable conversational_style and natural_language_patterns
-   - Readability 40-60: Focus on sentence_variability for rhythm
-   - Readability > 60: Cultural adaptation may be sufficient
+2. **PARAGRAPH STRUCTURE FOCUS**:
+   - Enable paragraph_structure when paragraphs appear regimented/uniform
+   - Focus on breaking up predictable paragraph patterns
+   - Vary paragraph lengths and purposes dramatically
+   - Mix short reflective paragraphs with longer explanatory ones
 
-3. **SENTENCE PATTERN ANALYSIS** (Tactical Driver):
-   - Uniform sentence lengths: Enable sentence_variability
-   - Complex vocabulary clusters: Enable natural_language_patterns
-   - Repetitive structures: Enable conversational_style
+3. **GRADUAL APPLICATION**:
+   - Apply 1-3 enhancements per iteration based on severity
+   - Test impact before adding more features
+   - Focus on sentences with scores < 20 first
+   - Preserve technical accuracy at all costs
+   - For severe cases (100% failing sentences), apply multiple enhancements simultaneously
 
-4. **ATTACK DETECTION RESPONSE** (Safety Driver):
-   - If manipulation detected: Prioritize natural_language_patterns
-   - If pattern anomalies: Enable sentence_variability
+4. **LEARNING FROM HISTORY**:
+   - Consider previously successful flag combinations
+   - Build upon proven approaches rather than starting over
 
-TECHNICAL CONTENT PRINCIPLES:
-- Preserve technical accuracy and domain expertise
-- Maintain professional credibility over casual tone
-- Focus on natural information flow, not forced personality
-- Address specific AI detection triggers identified by Winston
+CURRENT FLAGS: {json.dumps(current_flags, indent=2)}
 
-Return ONLY a JSON object with data-driven optimization settings:
+Return ONLY JSON with targeted changes (apply multiple enhancements for severe cases):
 {{
-  "conversational_style": true/false,
   "natural_language_patterns": true/false,
-  "cultural_adaptation": true/false,
   "sentence_variability": true/false,
-  "human_error_simulation": false,
-  "emotional_depth": false,
-  "paragraph_structure": false,
-  "lexical_diversity": false,
-  "rhetorical_devices": false,
-  "personal_anecdotes": false,
-  "reasoning": "Detailed explanation of Winston data-driven optimization approach"
+  "paragraph_structure": true/false,
+  "cultural_adaptation": true/false,
+  "lexical_diversity": true/false,
+  "emotional_depth": true/false,
+  "conversational_style": true/false,
+  "reasoning": "Specific analysis: which enhancements to enable/disable and why, focusing on multiple changes for severe cases, paragraph structure issues, and learning from history"
 }}
 
-Provide specific, actionable recommendations based on the Winston AI analysis data."""
+Focus on GRADUAL improvements that address the most critical issues identified by Winston AI, especially regimented paragraph structures and uniform sentence patterns."""
 
         return prompt
 
@@ -221,8 +258,15 @@ Provide specific, actionable recommendations based on the Winston AI analysis da
             scores = [s.get('score', 0) for s in sentences_data if isinstance(s, dict)]
             texts = [s.get('text', '') for s in sentences_data if isinstance(s, dict)]
 
-            if not scores:
+            # Filter out None scores
+            valid_scores = [score for score in scores if score is not None]
+            valid_texts = [text for score, text in zip(scores, texts) if score is not None]
+
+            if not valid_scores:
                 return {"available": False}
+
+            scores = valid_scores
+            texts = valid_texts
 
             # Calculate sentence-level statistics
             avg_sentence_score = sum(scores) / len(scores)
@@ -323,6 +367,22 @@ Provide specific, actionable recommendations based on the Winston AI analysis da
             # Structure analysis
             characteristics["Paragraph Count"] = str(len(paragraphs))
             characteristics["Total Words"] = str(total_words)
+            
+            # Paragraph structure analysis
+            if len(paragraphs) > 1:
+                paragraph_lengths = [len(p.split()) for p in paragraphs if p.strip()]
+                if paragraph_lengths:
+                    avg_paragraph_length = sum(paragraph_lengths) / len(paragraph_lengths)
+                    characteristics["Average Paragraph Length"] = f"{avg_paragraph_length:.1f} words"
+                    
+                    # Check for regimented structure (similar paragraph lengths)
+                    length_variance = sum((l - avg_paragraph_length) ** 2 for l in paragraph_lengths) / len(paragraph_lengths)
+                    characteristics["Paragraph Length Variance"] = f"{length_variance:.1f}"
+                    
+                    if length_variance < 50:  # Low variance indicates regimented structure
+                        characteristics["Paragraph Structure"] = "Regimented (similar lengths)"
+                    else:
+                        characteristics["Paragraph Structure"] = "Varied (natural lengths)"
 
             # Technical indicators
             technical_terms = sum(1 for word in words if len(word) > 8)  # Long technical terms
@@ -379,9 +439,17 @@ Provide specific, actionable recommendations based on the Winston AI analysis da
             return current_config
 
     def _validate_config(self, config: Dict[str, Any]) -> bool:
-        """Validate the optimized configuration."""
+        """Validate the optimized configuration with rollback capability."""
         try:
-            # Ensure all required flags are present
+            # Store current config for potential rollback
+            current_config = self._load_current_config()
+            self.previous_configs.append(current_config)
+            
+            # Keep only last 3 configs for memory efficiency
+            if len(self.previous_configs) > 3:
+                self.previous_configs.pop(0)
+
+            # Ensure all core flags are present
             for flag in self.optimization_flags:
                 if flag not in config:
                     logger.warning(f"Missing optimization flag: {flag}")
@@ -392,6 +460,40 @@ Provide specific, actionable recommendations based on the Winston AI analysis da
                 if not isinstance(config[flag], bool):
                     logger.warning(f"Invalid flag type for {flag}: {type(config[flag])}")
                     return False
+
+            # Ensure we're not enabling too many flags at once (max 1-2 for gradual improvement)
+            # Prioritize structural enhancements over conversational ones
+            enabled_flags = [flag for flag in self.optimization_flags if config[flag]]
+            structural_flags = ['sentence_variability', 'paragraph_structure', 'lexical_diversity']
+            conversational_flags = ['natural_language_patterns', 'conversational_style', 'cultural_adaptation', 'emotional_depth']
+            
+            enabled_structural = [flag for flag in enabled_flags if flag in structural_flags]
+            enabled_conversational = [flag for flag in enabled_flags if flag in conversational_flags]
+            
+            # OPTIMIZATION: Intelligent enhancement application based on DeepSeek recommendations
+            max_enhancements = config.get('optimization_strategy', {}).get('max_enhancements_per_iteration', 1)
+            
+            # Allow more enhancements if DeepSeek strongly recommends multiple changes
+            deepseek_driven = config.get('optimization_strategy', {}).get('deepseek_driven_limits', False)
+            if deepseek_driven and len(enabled_flags) > 1:
+                # If multiple flags are enabled by DeepSeek, allow up to the configured maximum
+                max_enhancements = min(len(enabled_flags), max_enhancements)
+                logger.info(f"DeepSeek-driven limits enabled: allowing up to {max_enhancements} enhancements")
+            
+            if len(enabled_flags) > max_enhancements:
+                logger.warning(f"Too many flags enabled ({len(enabled_flags)}) > max {max_enhancements}. "
+                             f"Enforcing intelligent optimization.")
+                
+                # Keep only highest priority enhancements
+                prioritized_flags = self._prioritize_enhancements_from_config(config)
+                selected_flags = prioritized_flags[:max_enhancements]
+                
+                # Disable excess flags
+                for flag in enabled_flags:
+                    if flag not in selected_flags:
+                        config[flag] = False
+                        
+                logger.info(f"Selected {len(selected_flags)} enhancements: {selected_flags}")
 
             return True
 
@@ -420,27 +522,256 @@ Provide specific, actionable recommendations based on the Winston AI analysis da
             logger.error(f"Failed to save configuration: {e}")
             raise
 
-    def restore_backup(self, backup_timestamp: Optional[str] = None) -> bool:
-        """Restore configuration from backup."""
+    def _record_successful_config(self, config: Dict[str, Any], winston_result: Dict[str, Any]) -> None:
+        """Record successful configuration for learning."""
         try:
-            if backup_timestamp:
-                backup_path = self.config_path.with_suffix(f".backup_{backup_timestamp}.yaml")
-            else:
-                # Find the most recent backup
-                backup_files = list(self.config_path.parent.glob(f"{self.config_path.stem}.backup_*.yaml"))
-                if not backup_files:
-                    logger.warning("No backup files found")
-                    return False
-                backup_path = max(backup_files, key=lambda p: p.stat().st_mtime)
+            score = winston_result.get('overall_score', 0)
+            # Record all configurations, not just successful ones, to learn from failures too
+            successful_entry = {
+                'config': config.copy(),
+                'score': score,
+                'timestamp': datetime.now(),
+                'enabled_flags': [flag for flag in self.optimization_flags if config.get(flag, False)]
+            }
+            self.successful_configs.append(successful_entry)
+            
+            # Keep only last 10 configs for better learning
+            if len(self.successful_configs) > 10:
+                self.successful_configs.pop(0)
+                
+            logger.info(f"Recorded configuration with score {score:.1f} for learning")
+        except Exception as e:
+            logger.warning(f"Failed to record configuration: {e}")
 
-            if backup_path.exists():
-                backup_path.replace(self.config_path)
-                logger.info(f"Restored configuration from backup: {backup_path}")
-                return True
-            else:
-                logger.warning(f"Backup file not found: {backup_path}")
-                return False
+    def get_learning_insights(self) -> Dict[str, Any]:
+        """Get insights from configuration history for learning."""
+        try:
+            if not self.successful_configs:
+                return {"recommended_flags": [], "insights": "No configuration history recorded yet"}
+
+            # Analyze all configurations, not just successful ones
+            all_flags = []
+            high_score_configs = []
+            
+            for config_entry in self.successful_configs:
+                flags = config_entry.get('enabled_flags', [])
+                all_flags.extend(flags)
+                
+                # Track high-performing configurations
+                if config_entry.get('score', 0) > 60:
+                    high_score_configs.append(config_entry)
+
+            # Count flag frequencies
+            flag_counts = {}
+            for flag in all_flags:
+                flag_counts[flag] = flag_counts.get(flag, 0) + 1
+
+            # Get most frequently used flags
+            recommended_flags = sorted(flag_counts.keys(), key=lambda x: flag_counts[x], reverse=True)
+            
+            # Prioritize flags that appear in high-scoring configurations
+            if high_score_configs:
+                high_score_flags = []
+                for config in high_score_configs:
+                    high_score_flags.extend(config.get('enabled_flags', []))
+                
+                high_score_flag_counts = {}
+                for flag in high_score_flags:
+                    high_score_flag_counts[flag] = high_score_flag_counts.get(flag, 0) + 1
+                
+                # Boost high-scoring flags in recommendations
+                recommended_flags = sorted(high_score_flag_counts.keys(), 
+                                         key=lambda x: high_score_flag_counts[x], reverse=True)
+                # Add other flags that might be useful
+                for flag in flag_counts:
+                    if flag not in recommended_flags:
+                        recommended_flags.append(flag)
+
+            # Limit to top 3 recommendations
+            recommended_flags = recommended_flags[:3]
+
+            insights = {
+                "recommended_flags": recommended_flags,
+                "total_configs_analyzed": len(self.successful_configs),
+                "flag_usage_counts": flag_counts,
+                "high_score_configs": len(high_score_configs),
+                "insights": f"Analyzed {len(self.successful_configs)} configurations. Top flags: {', '.join(recommended_flags)}"
+            }
+
+            logger.info(f"Learning insights: {insights['insights']}")
+            return insights
 
         except Exception as e:
-            logger.error(f"Failed to restore backup: {e}")
+            logger.warning(f"Error getting learning insights: {e}")
+            return {"recommended_flags": [], "insights": "Error retrieving insights"}
+
+    def rollback_config(self) -> bool:
+        """Rollback to the previous configuration."""
+        try:
+            if not self.previous_configs:
+                logger.warning("No previous configurations to rollback to")
+                return False
+
+            # Get the last previous config
+            previous_config = self.previous_configs[-1]
+            
+            # Save current config as backup
+            self._create_backup()
+            
+            # Restore previous config
+            self._save_config(previous_config)
+            
+            logger.info("Successfully rolled back to previous configuration")
+            return True
+
+            logger.info("Successfully rolled back to previous configuration")
+            return True
+
+        except Exception as e:
+            logger.error(f"Failed to rollback configuration: {e}")
             return False
+
+    def _should_rollback(self, new_score: float, baseline_score: float) -> bool:
+        """Determine if configuration should rollback based on score degradation."""
+        degradation = baseline_score - new_score
+        should_rollback = degradation > self.rollback_threshold
+        if should_rollback:
+            logger.warning(f"Score degradation detected: {baseline_score:.1f} → {new_score:.1f} "
+                         f"({degradation:.1f} point drop > {self.rollback_threshold} threshold)")
+        return should_rollback
+
+    def _prioritize_enhancements_from_config(self, config: Dict[str, Any]) -> List[str]:
+        """Prioritize enhancements based on configuration settings and DeepSeek recommendations."""
+        try:
+            enabled_flags = [flag for flag in self.optimization_flags if config.get(flag, False)]
+            
+            # Get learning insights to dynamically adjust priorities
+            learning_insights = self.get_learning_insights()
+            recommended_flags = learning_insights.get('recommended_flags', [])
+            
+            # Dynamic priority order based on DeepSeek recommendations and current needs
+            base_priority_order = [
+                'natural_language_patterns',  # DeepSeek's top recommendation for manipulation detection
+                'paragraph_structure',       # DeepSeek's recommendation for structural issues
+                'sentence_variability',      # Current fallback
+                'lexical_diversity',         # Vocabulary variation
+                'cultural_adaptation',       # Author authenticity
+                'emotional_depth',           # Human nuance
+                'conversational_style'       # Natural flow
+            ]
+            
+            # Boost priority of DeepSeek-recommended flags
+            if recommended_flags:
+                # Move recommended flags to the front
+                adjusted_order = recommended_flags.copy()
+                for flag in base_priority_order:
+                    if flag not in adjusted_order:
+                        adjusted_order.append(flag)
+                priority_order = adjusted_order
+                logger.info(f"Adjusted priority order based on learning: {priority_order}")
+            else:
+                priority_order = base_priority_order
+            
+            # Sort enabled flags by dynamic priority
+            prioritized = []
+            for flag in priority_order:
+                if flag in enabled_flags:
+                    prioritized.append(flag)
+                    
+            return prioritized
+            
+        except Exception as e:
+            logger.warning(f"Error prioritizing enhancements: {e}")
+            return enabled_flags  # Return as-is if prioritization fails
+
+    def _preserve_baseline_config(self, config: Dict[str, Any], score: float) -> None:
+        """Preserve high-performing configurations as baselines."""
+        try:
+            if score >= self.baseline_score_threshold:
+                baseline_entry = {
+                    'config': config.copy(),
+                    'score': score,
+                    'timestamp': datetime.now()
+                }
+                self.baseline_configs.append(baseline_entry)
+                
+                # Keep only top 3 baseline configs
+                if len(self.baseline_configs) > 3:
+                    self.baseline_configs.sort(key=lambda x: x['score'], reverse=True)
+                    self.baseline_configs = self.baseline_configs[:3]
+                    
+                logger.info(f"Preserved baseline configuration with score {score:.1f}")
+        except Exception as e:
+            logger.warning(f"Failed to preserve baseline config: {e}")
+
+    def _analyze_content_stability(self, content: str, previous_content: Optional[str] = None) -> Dict[str, Any]:
+        """Analyze content stability across iterations."""
+        try:
+            if not previous_content:
+                return {"stability_score": 100.0, "change_percentage": 0.0}
+                
+            # Calculate content changes
+            current_words = len(content.split())
+            previous_words = len(previous_content.split())
+            
+            if previous_words == 0:
+                return {"stability_score": 100.0, "change_percentage": 0.0}
+                
+            change_percentage = abs(current_words - previous_words) / previous_words * 100
+            
+            # Stability score (lower change = higher stability)
+            stability_score = max(0, 100 - change_percentage)
+            
+            return {
+                "stability_score": stability_score,
+                "change_percentage": change_percentage,
+                "current_words": current_words,
+                "previous_words": previous_words
+            }
+        except Exception as e:
+            logger.warning(f"Failed to analyze content stability: {e}")
+            return {"stability_score": 50.0, "change_percentage": 0.0}
+
+    def _learn_from_iterations(self, iteration_history: List[Dict[str, Any]]) -> Dict[str, Any]:
+        """Learn patterns from iteration history to improve future optimizations."""
+        try:
+            if not iteration_history:
+                return {"insights": "No iteration history available"}
+                
+            # Analyze score patterns
+            scores = [entry.get('score', 0) for entry in iteration_history]
+            score_changes = []
+            for i in range(1, len(scores)):
+                score_changes.append(scores[i] - scores[i-1])
+                
+            # Identify successful patterns
+            successful_iterations = [entry for entry in iteration_history if entry.get('score', 0) > 50]
+            
+            insights = {
+                "total_iterations": len(iteration_history),
+                "average_score": sum(scores) / len(scores) if scores else 0,
+                "score_trend": "improving" if score_changes and sum(score_changes) > 0 else "declining",
+                "successful_iterations": len(successful_iterations),
+                "insights": f"Analyzed {len(iteration_history)} iterations with {len(successful_iterations)} successful ones"
+            }
+            
+            logger.info(f"Learned from iteration history: {insights['insights']}")
+            return insights
+            
+        except Exception as e:
+            logger.warning(f"Failed to learn from iterations: {e}")
+            return {"insights": "Error analyzing iteration history"}
+
+    def _get_baseline_score(self) -> Optional[float]:
+        """Get the baseline score from preserved configurations."""
+        try:
+            if not self.baseline_configs:
+                return None
+                
+            # Return the highest score from baseline configs
+            best_score = max(config['score'] for config in self.baseline_configs)
+            logger.info(f"Retrieved baseline score: {best_score:.1f}")
+            return best_score
+        except Exception as e:
+            logger.warning(f"Failed to get baseline score: {e}")
+            return None

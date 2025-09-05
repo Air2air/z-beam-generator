@@ -7,7 +7,7 @@ import os
 import time
 import logging
 import requests
-from typing import Dict, Optional
+from typing import Dict, Optional, Any
 from pathlib import Path
 
 from ..service import AIDetectionResult, AIDetectionConfig, AIDetectionError
@@ -131,9 +131,21 @@ class WinstonProvider:
                     "attack_detected": data.get("attack_detected", {})
                 }
 
-                # Add sentence-level analysis if available
+                # OPTIMIZATION: Enhanced sentence-level analysis for better feedback
                 if "sentences" in data and data["sentences"]:
                     details["sentences"] = data["sentences"]
+                    
+                    # Add analysis of failing sentences
+                    failing_sentences = [s for s in data["sentences"] if isinstance(s, dict) and s.get("score", 100) < 30]
+                    details["failing_sentences_count"] = len(failing_sentences)
+                    details["failing_sentences_percentage"] = (len(failing_sentences) / len(data["sentences"])) * 100 if data["sentences"] else 0
+                    
+                    # Analyze patterns in failing sentences
+                    if failing_sentences:
+                        failing_texts = [s.get("text", "") for s in failing_sentences]
+                        details["failing_patterns"] = self._analyze_failing_patterns(failing_texts)
+                    
+                    logger.info(f"📊 Sentence analysis: {len(failing_sentences)}/{len(data['sentences'])} failing sentences ({details['failing_sentences_percentage']:.1f}%)")
 
                 return AIDetectionResult(
                     score=ai_score,
@@ -218,3 +230,36 @@ class WinstonProvider:
             raise Exception("Winston.ai API key not found in environment - no fallback to config file permitted in fail-fast architecture")
 
         return api_key
+
+    def _analyze_failing_patterns(self, failing_texts: list) -> Dict[str, Any]:
+        """Analyze patterns in sentences that are failing AI detection."""
+        if not failing_texts:
+            return {}
+        
+        patterns = {
+            "avg_length": sum(len(text.split()) for text in failing_texts) / len(failing_texts),
+            "contains_repetition": any("very" in text.lower() or "really" in text.lower() for text in failing_texts),
+            "uniform_structure": self._check_uniform_structure(failing_texts),
+            "technical_density": sum(1 for text in failing_texts for word in text.split() if len(word) > 8) / sum(len(text.split()) for text in failing_texts) if failing_texts else 0
+        }
+        
+        return patterns
+    
+    def _check_uniform_structure(self, texts: list) -> bool:
+        """Check if sentences have uniform structure (potential AI detection trigger)."""
+        if len(texts) < 2:
+            return False
+        
+        # Check for similar sentence starters
+        starters = []
+        for text in texts:
+            words = text.strip().split()
+            if words:
+                starters.append(words[0].lower())
+        
+        # If more than 50% of sentences start with same word, consider uniform
+        if starters:
+            most_common = max(set(starters), key=starters.count)
+            return (starters.count(most_common) / len(starters)) > 0.5
+        
+        return False

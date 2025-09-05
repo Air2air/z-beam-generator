@@ -25,11 +25,14 @@ class DynamicPromptGenerator:
     based on Winston AI analysis, similar to iterative text generation.
     """
 
-    def __init__(self, prompts_path: str = "components/text/prompts/ai_detection.yaml"):
+    def __init__(self, prompts_path: str = "components/text/prompts/ai_detection_core.yaml"):
         self.prompts_path = Path(prompts_path)
         self._deepseek_client = None
         self.generation_history = []
         self.current_version = 0
+        # Use modular loader for configuration
+        from .prompts.utils.modular_loader import ModularConfigLoader
+        self._config_loader = ModularConfigLoader()
 
     @property
     def deepseek_client(self):
@@ -390,23 +393,25 @@ Keep improvements focused and incremental. Avoid suggesting major structural cha
             return False
 
     def _load_current_prompts(self) -> Optional[Dict[str, Any]]:
-        """Load current prompts with template variable substitution."""
+        """Load current prompts using modular configuration loader."""
         try:
-            if self.prompts_path.exists():
-                with open(self.prompts_path, 'r', encoding='utf-8') as f:
-                    raw_content = f.read()
-
-                # Import config for variable substitution
-                from run import AI_DETECTION_CONFIG
-
-                # Substitute template variables
-                processed_content = self.substitute_config_variables(raw_content, AI_DETECTION_CONFIG)
-
-                # Parse the processed YAML
-                return yaml.safe_load(processed_content)
-            else:
-                logger.warning(f"Prompts file not found: {self.prompts_path}")
+            # Use modular loader to get the complete configuration
+            prompts = self._config_loader.load_config(use_modular=True)
+            
+            if not prompts:
+                logger.warning("Failed to load prompts using modular loader")
                 return None
+            
+            # Import config for variable substitution
+            from run import AI_DETECTION_CONFIG
+            
+            # Convert to string for template substitution, then back to dict
+            yaml_content = yaml.dump(prompts, default_flow_style=False, sort_keys=False, allow_unicode=True)
+            processed_content = self.substitute_config_variables(yaml_content, AI_DETECTION_CONFIG)
+            
+            # Parse the processed YAML
+            return yaml.safe_load(processed_content)
+            
         except Exception as e:
             logger.error(f"Failed to load prompts: {e}")
             return None
@@ -450,20 +455,24 @@ Keep improvements focused and incremental. Avoid suggesting major structural cha
     def _save_updated_prompts(self, prompts: Dict[str, Any]) -> None:
         """Save updated prompts with template variables restored."""
         try:
-            # Convert back to YAML string
-            yaml_content = yaml.dump(prompts, default_flow_style=False, sort_keys=False, allow_unicode=True)
-
+            # NOTE: This is a simplified approach for the modular system
+            # In a full implementation, changes should be distributed across
+            # the appropriate modular component files
+            
             # Import config for reverse substitution
             from run import AI_DETECTION_CONFIG
-
+            
             # Convert config values back to template variables
+            yaml_content = yaml.dump(prompts, default_flow_style=False, sort_keys=False, allow_unicode=True)
             templated_content = self._convert_to_template_variables(yaml_content, AI_DETECTION_CONFIG)
-
-            # Save the templated content
-            with open(self.prompts_path, 'w', encoding='utf-8') as f:
+            
+            # For now, save to the core file (this is a limitation of the current approach)
+            # A more sophisticated implementation would update individual modular components
+            core_path = Path("components/text/prompts/ai_detection_core.yaml")
+            with open(core_path, 'w', encoding='utf-8') as f:
                 f.write(templated_content)
-
-            logger.info(f"Saved updated prompts to {self.prompts_path}")
+            
+            logger.info(f"Saved updated prompts to {core_path} (modular components not updated)")
         except Exception as e:
             logger.error(f"Failed to save updated prompts: {e}")
             raise

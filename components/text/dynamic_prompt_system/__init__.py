@@ -31,7 +31,7 @@ class DynamicPromptSystem:
     the ai_detection.yaml prompts to improve future content generation.
     """
 
-    def __init__(self, prompts_path: str = "components/text/prompts/ai_detection.yaml"):
+    def __init__(self, prompts_path: str = "components/text/prompts/core/ai_detection_core.yaml"):
         """
         Initialize the dynamic prompt system.
 

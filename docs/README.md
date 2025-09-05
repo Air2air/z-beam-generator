@@ -4,23 +4,31 @@ Comprehens### Status Update System
 ```
 📊 [START] Beginning iterative improvement for Alu## ⚙️ **Configuration Management**
 
-### Centralized AI Detection Configuration
-All AI detection parameters are now centralized in `AI_DETECTION_CONFIG` within `run.py`:
+### Dynamic AI Detection Configuration
+All AI detection parameters are now dynamically calculated based on content characteristics using the `create_dynamic_ai_detection_config()` function in `run.py`:
 
-**Core Settings:**
-- **Target Score**: 70.0 (Winston.ai threshold for human-like content)
-- **Max Iterations**: 5 (Maximum improvement attempts)
-- **Status Updates**: Every 10 seconds + real-time on changes
+**Dynamic Parameters:**
+- **Target Score**: Calculated based on content type and author country
+- **Max Iterations**: Adaptive based on content complexity and length
+- **Human Threshold**: Content-type specific (Technical: 70.0, Marketing: 75.0, etc.)
+- **Status Updates**: Adaptive intervals based on expected processing time
 - **Word Count Limits**: Country-specific (Taiwan: 380, Italy: 450, Indonesia: 400, USA: 320)
 
-**Scoring Ranges:**
-- **Human-like**: 70-100 (acceptable content)
-- **Unclear**: 30-70 (needs improvement)
-- **AI-like**: 0-30 (requires significant changes)
+**Content Type Intelligence:**
+- **Technical Content**: Stricter thresholds, more iterations, formal tone
+- **Marketing Content**: Higher human-like requirements, engaging style
+- **Educational Content**: Balanced approach, structured presentation
+- **Creative Content**: Flexible thresholds, expressive writing
+
+**Author Country Tuning:**
+- **Italy**: +2.0 expressiveness bonus, 450 word limit
+- **Taiwan**: -1.0 formality adjustment, 380 word limit
+- **Indonesia**: +1.0 narrative style, 400 word limit
+- **USA**: Balanced baseline, 320 word limit
 
 **Validation:**
 ```bash
-python3 test_ai_detection_config.py  # Validate all configuration parameters
+python3 test_dynamic_config.py  # Validate dynamic configuration system
 ```
 
 ### Configuration Benefits

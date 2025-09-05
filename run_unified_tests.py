@@ -110,17 +110,17 @@ class UnifiedTestRunner:
 
         # Run core component tests
         core_tests = [
-            "test_ai_detection_config.py",
-            "test_content_generation.py",
-            "test_dynamic_components.py",
-            "test_dynamic_prompt_generation.py",
-            "test_dynamic_prompt_system.py",
-            "test_frontmatter_iterations.py",
-            "test_modified_prompts.py",
-            "test_nationality_fix.py",
-            "test_prompt_optimizer.py",
-            "test_template_substitution.py",
-            "test_validation_diagnostics.py"
+            "tests/test_ai_detection_config.py",
+            "tests/test_content_generation.py",
+            "tests/test_dynamic_components.py",
+            "tests/test_dynamic_prompt_generation.py",
+            "tests/test_dynamic_prompt_system.py",
+            "tests/test_frontmatter_iterations.py",
+            "tests/test_modified_prompts.py",
+            "tests/test_nationality_fix.py",
+            "tests/test_prompt_optimizer.py",
+            "tests/test_template_substitution.py",
+            "tests/test_validation_diagnostics.py"
         ]
 
         if not self.quick_mode:

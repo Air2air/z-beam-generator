@@ -197,18 +197,35 @@ def get_file_stats(directory: str = "content") -> dict:
     return stats
 
 
-def format_file_size(size_bytes: int) -> str:
+def load_component_from_file(material: str, component_type: str) -> Optional[str]:
     """
-    Format file size in human readable format.
+    Load component content from file.
     
     Args:
-        size_bytes: Size in bytes
+        material: Material name
+        component_type: Component type
         
     Returns:
-        Formatted size string
+        Content string if file exists, None otherwise
     """
-    for unit in ['B', 'KB', 'MB', 'GB']:
-        if size_bytes < 1024:
-            return f"{size_bytes:.1f} {unit}"
-        size_bytes /= 1024
-    return f"{size_bytes:.1f} TB"
+    # Create safe filename from material name
+    safe_material = material.lower().replace(' ', '-').replace('/', '-')
+    filename = f"{safe_material}-laser-cleaning.md"
+    
+    # Handle legacy "content" component type - should load from "text" directory
+    if component_type == "content":
+        component_type = "text"
+    
+    # Construct file path
+    component_dir = Path("content") / "components" / component_type
+    filepath = component_dir / filename
+    
+    # Check if file exists and load content
+    if filepath.exists():
+        try:
+            with open(filepath, 'r', encoding='utf-8') as f:
+                return f.read()
+        except Exception as e:
+            raise OSError(f"Failed to load file {filepath}: {e}")
+    
+    return None
