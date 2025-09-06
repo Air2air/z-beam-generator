@@ -15,7 +15,7 @@ technicalSpecifications:
   safetyClass: Class 4 (requires full enclosure)
 description: Technical overview of Alumina, Al2O3, for laser cleaning applications,
   including density, wavelength, and industrial applications.
-author: Test Author
+author: Alessandro Moretti
 keywords: alumina, alumina ceramic, laser ablation, laser cleaning, non-contact cleaning,
   pulsed fiber laser, surface contamination removal, industrial laser parameters,
   thermal processing, surface restoration
@@ -101,9 +101,9 @@ prompt_chain_verification:
   persona_config_loaded: true
   formatting_config_loaded: true
   ai_detection_config_loaded: true
-  persona_country: Test
-  author_id: 1
-  verification_timestamp: '2025-09-06T06:18:22Z'
+  persona_country: Italy
+  author_id: 2
+  verification_timestamp: '2025-09-06T12:00:00Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
