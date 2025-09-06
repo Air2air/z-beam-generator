@@ -13,7 +13,9 @@ import yaml
 duplicate_pattern = r"(\w+):\s*\n\s*\1:\s*(\{\}|$)"
 
 
-def validate_frontmatter_format(content: str, format_rules: Dict[str, Any] = None) -> List[str]:
+def validate_frontmatter_format(
+    content: str, format_rules: Dict[str, Any] = None
+) -> List[str]:
     """
     Validate frontmatter format and structure.
 

@@ -4,6 +4,7 @@ Mock Properties Table Component Generator for Testing
 """
 
 from typing import Any, Dict, Optional
+
 from utils.component_base import ComponentResult
 
 

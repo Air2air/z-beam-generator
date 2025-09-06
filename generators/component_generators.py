@@ -347,7 +347,7 @@ class ComponentGeneratorFactory:
                 return AuthorComponentGenerator()
             else:
                 # Try to import from components directory
-                module_path = f"components.{component_type}.generator"
+                module_path = f"components.{component_type}.generators.generator"
                 logger.info(f"Trying to import {module_path}")
                 try:
                     module = __import__(
@@ -361,9 +361,7 @@ class ComponentGeneratorFactory:
 
                     # Pass AI detection service to text generator
                     if component_type == "text":
-                        return generator_class(
-                            ai_detection_service=ai_detection_service
-                        )
+                        return generator_class()
                     else:
                         return generator_class()
                 except (ImportError, AttributeError) as e:

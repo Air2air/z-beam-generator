@@ -6,14 +6,14 @@ This script validates all imports in the codebase and reports issues.
 Used in CI/CD pipeline to prevent import path errors.
 """
 
-import sys
-import os
 import ast
 import importlib
 import logging
-from pathlib import Path
-from typing import List, Dict, Set, Tuple
+import os
+import sys
 from collections import defaultdict
+from pathlib import Path
+from typing import Dict, List, Set, Tuple
 
 # Add project root to path
 project_root = Path(__file__).parent.parent
@@ -43,7 +43,7 @@ class ImportValidator:
         imports = []
 
         try:
-            with open(file_path, 'r', encoding='utf-8') as f:
+            with open(file_path, "r", encoding="utf-8") as f:
                 content = f.read()
 
             tree = ast.parse(content, filename=str(file_path))
@@ -57,19 +57,23 @@ class ImportValidator:
                         imports.append((node.module, node.lineno))
 
         except SyntaxError as e:
-            self.issues.append({
-                'file': str(file_path),
-                'type': 'syntax_error',
-                'message': f"Syntax error: {e}",
-                'line': str(e.lineno) if e.lineno else 'unknown'
-            })
+            self.issues.append(
+                {
+                    "file": str(file_path),
+                    "type": "syntax_error",
+                    "message": f"Syntax error: {e}",
+                    "line": str(e.lineno) if e.lineno else "unknown",
+                }
+            )
         except Exception as e:
-            self.issues.append({
-                'file': str(file_path),
-                'type': 'parse_error',
-                'message': f"Failed to parse: {e}",
-                'line': 'unknown'
-            })
+            self.issues.append(
+                {
+                    "file": str(file_path),
+                    "type": "parse_error",
+                    "message": f"Failed to parse: {e}",
+                    "line": "unknown",
+                }
+            )
 
         return imports
 
@@ -86,40 +90,46 @@ class ImportValidator:
             logger.debug(f"✓ {module_name}")
         except ImportError as e:
             # Check if it's a relative import that should be absolute
-            if module_name.startswith('.'):
-                self.issues.append({
-                    'file': str(file_path),
-                    'type': 'relative_import',
-                    'message': f"Relative import '{module_name}' should be absolute",
-                    'line': str(line_no),
-                    'module': module_name
-                })
+            if module_name.startswith("."):
+                self.issues.append(
+                    {
+                        "file": str(file_path),
+                        "type": "relative_import",
+                        "message": f"Relative import '{module_name}' should be absolute",
+                        "line": str(line_no),
+                        "module": module_name,
+                    }
+                )
             else:
                 # Check if it's a local module
-                module_parts = module_name.split('.')
+                module_parts = module_name.split(".")
                 possible_paths = [
                     self.project_root / f"{module_name.replace('.', '/')}.py",
-                    self.project_root / module_parts[0] / "__init__.py"
+                    self.project_root / module_parts[0] / "__init__.py",
                 ]
 
                 is_local = any(path.exists() for path in possible_paths)
 
                 if is_local:
-                    self.issues.append({
-                        'file': str(file_path),
-                        'type': 'missing_local_import',
-                        'message': f"Local module '{module_name}' not found in path",
-                        'line': str(line_no),
-                        'module': module_name
-                    })
+                    self.issues.append(
+                        {
+                            "file": str(file_path),
+                            "type": "missing_local_import",
+                            "message": f"Local module '{module_name}' not found in path",
+                            "line": str(line_no),
+                            "module": module_name,
+                        }
+                    )
                 else:
-                    self.issues.append({
-                        'file': str(file_path),
-                        'type': 'missing_dependency',
-                        'message': f"External dependency '{module_name}' not installed: {e}",
-                        'line': str(line_no),
-                        'module': module_name
-                    })
+                    self.issues.append(
+                        {
+                            "file": str(file_path),
+                            "type": "missing_dependency",
+                            "message": f"External dependency '{module_name}' not installed: {e}",
+                            "line": str(line_no),
+                            "module": module_name,
+                        }
+                    )
 
     def validate_all_imports(self) -> None:
         """Validate imports in all Python files."""
@@ -127,7 +137,10 @@ class ImportValidator:
 
         for file_path in self.python_files:
             # Skip certain directories
-            if any(skip in str(file_path) for skip in ['__pycache__', '.git', 'archive', 'cleanup']):
+            if any(
+                skip in str(file_path)
+                for skip in ["__pycache__", ".git", "archive", "cleanup"]
+            ):
                 continue
 
             logger.debug(f"Checking {file_path}")
@@ -140,45 +153,47 @@ class ImportValidator:
         """Generate a validation report."""
         issue_counts = defaultdict(int)
         for issue in self.issues:
-            issue_counts[issue['type']] += 1
+            issue_counts[issue["type"]] += 1
 
         return {
-            'total_files': len(self.python_files),
-            'total_issues': len(self.issues),
-            'issue_counts': dict(issue_counts),
-            'issues': self.issues,
-            'critical_imports_ok': validate_critical_imports()
+            "total_files": len(self.python_files),
+            "total_issues": len(self.issues),
+            "issue_counts": dict(issue_counts),
+            "issues": self.issues,
+            "critical_imports_ok": validate_critical_imports(),
         }
 
     def print_report(self, report: Dict[str, any]) -> None:
         """Print the validation report."""
-        print("\n" + "="*60)
+        print("\n" + "=" * 60)
         print("IMPORT VALIDATION REPORT")
-        print("="*60)
+        print("=" * 60)
 
         print(f"Files checked: {report['total_files']}")
         print(f"Total issues: {report['total_issues']}")
         print(f"Critical imports OK: {report['critical_imports_ok']}")
 
-        if report['issue_counts']:
+        if report["issue_counts"]:
             print("\nIssue breakdown:")
-            for issue_type, count in report['issue_counts'].items():
+            for issue_type, count in report["issue_counts"].items():
                 print(f"  {issue_type}: {count}")
 
-        if report['issues']:
+        if report["issues"]:
             print("\nDetailed issues:")
-            for issue in report['issues'][:20]:  # Show first 20 issues
-                print(f"  {issue['file']}:{issue['line']} - {issue['type']}: {issue['message']}")
+            for issue in report["issues"][:20]:  # Show first 20 issues
+                print(
+                    f"  {issue['file']}:{issue['line']} - {issue['type']}: {issue['message']}"
+                )
 
-            if len(report['issues']) > 20:
+            if len(report["issues"]) > 20:
                 print(f"  ... and {len(report['issues']) - 20} more issues")
 
-        print("\n" + "="*60)
+        print("\n" + "=" * 60)
 
 
 def main():
     """Main validation function."""
-    logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
+    logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 
     validator = ImportValidator(project_root)
     validator.find_python_files()
@@ -188,7 +203,7 @@ def main():
     validator.print_report(report)
 
     # Exit with error code if there are issues
-    if report['total_issues'] > 0 or not report['critical_imports_ok']:
+    if report["total_issues"] > 0 or not report["critical_imports_ok"]:
         print("\n❌ Import validation failed!")
         sys.exit(1)
     else:

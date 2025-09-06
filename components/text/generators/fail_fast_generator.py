@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Fail-Fast Content Generator
-Removes all hardcoded fallbacks and implements clean error handling with retry mechanisms.
+Fail-Fast Text Generator
+Basic text generation without optimization dependencies.
 """
 
 import json
@@ -14,33 +14,28 @@ from typing import Any, Dict, List, Optional, Tuple
 import yaml
 
 from api.client import GenerationRequest
-from optimizer.ai_detection.config import AI_DETECTION_CONFIG
-from optimizer.text_optimization.validation.content_scorer import create_content_scorer
 
 logger = logging.getLogger(__name__)
 
 
 class ConfigurationError(Exception):
     """Raised when required configurations are missing or invalid."""
-
     pass
 
 
 class GenerationError(Exception):
-    """Raised when content generation fails."""
-
+    """Raised when text generation fails."""
     pass
 
 
 class RetryableError(Exception):
     """Raised for temporary failures that could be retried."""
-
     pass
 
 
-class FailFastContentGenerator:
+class FailFastTextGenerator:
     """
-    Fail-fast content generator that validates all dependencies upfront
+    Fail-fast text generator that validates all dependencies upfront
     and provides clean error handling without fallbacks.
     """
 
@@ -48,21 +43,19 @@ class FailFastContentGenerator:
         self,
         max_retries: int = 3,
         retry_delay: float = 1.0,
-        enable_scoring: bool = True,
+        enable_scoring: bool = False,
         human_threshold: float = 75.0,
-        ai_detection_service=None,
-        skip_ai_detection: bool = False,
+        skip_ai_detection: bool = True,
     ):
         """
-        Initialize the fail-fast content generator.
+        Initialize the fail-fast text generator.
 
         Args:
             max_retries: Maximum number of retry attempts
             retry_delay: Delay between retries in seconds
-            enable_scoring: Whether to enable quality scoring
+            enable_scoring: Whether to enable quality scoring (disabled for basic text)
             human_threshold: Minimum human believability score
-            ai_detection_service: AI detection service instance
-            skip_ai_detection: Whether to skip AI detection
+            skip_ai_detection: Whether to skip AI detection (always True for basic text)
 
         Raises:
             ConfigurationError: If required configurations are missing
@@ -71,26 +64,16 @@ class FailFastContentGenerator:
         self.retry_delay = retry_delay
         self.enable_scoring = enable_scoring
         self.human_threshold = human_threshold
-        self.ai_detection_service = ai_detection_service
         self.skip_ai_detection = skip_ai_detection
 
         # Validate configurations on initialization
         self._validate_configurations()
 
-        # Initialize content scorer if enabled
-        self.content_scorer = None
-        if self.enable_scoring:
-            self.content_scorer = create_content_scorer(
-                human_threshold=self.human_threshold
-            )
-
     def _validate_configurations(self):
         """Validate all required configurations exist and are valid."""
         # Check for required files
         required_files = [
-            "components/text/prompts/core/base_content_prompt.yaml",
-            "components/author/authors.json",
-            "config/ai_detection.yaml",
+            "components/text/prompts/base_content_prompt.yaml",
         ]
 
         for file_path in required_files:
@@ -99,93 +82,7 @@ class FailFastContentGenerator:
                     f"Required configuration file not found: {file_path}"
                 )
 
-        # Validate authors file
-        self._load_authors_file("components/author/authors.json")
-
         logger.info("✅ All configurations validated successfully")
-
-    def _load_authors_file(self, authors_file: str) -> List[Dict]:
-        """
-        Load and validate the authors configuration file.
-
-        Args:
-            authors_file: Path to the authors JSON file
-
-        Returns:
-            List of author dictionaries
-
-        Raises:
-            ConfigurationError: If authors file is invalid
-        """
-        try:
-            with open(authors_file, "r", encoding="utf-8") as f:
-                data = json.load(f)
-
-            if isinstance(data, dict) and "authors" in data:
-                authors_list = data["authors"]
-            elif isinstance(data, list):
-                authors_list = data
-            else:
-                raise ConfigurationError(
-                    f"Authors file {authors_file} must contain a list or object with 'authors' key"
-                )
-
-            if not isinstance(authors_list, list):
-                raise ConfigurationError("Authors data must be a list")
-
-            return authors_list
-
-        except FileNotFoundError:
-            raise ConfigurationError(f"Authors file not found: {authors_file}")
-        except Exception as e:
-            raise ConfigurationError(f"Error loading authors file: {e}")
-
-    def _load_persona_prompt(self, author_info: Dict[str, Any]) -> str:
-        """
-        Load persona-specific prompt patterns for the given author.
-
-        Args:
-            author_info: Author information dictionary
-
-        Returns:
-            Persona prompt string
-
-        Raises:
-            ConfigurationError: If persona file is missing or invalid
-        """
-        country = author_info.get("country", "").lower()
-        if not country:
-            logger.warning("No country specified in author_info, using default persona")
-            country = "usa"
-
-        persona_file = (
-            f"optimizer/text_optimization/prompts/personas/{country}_persona.yaml"
-        )
-
-        try:
-            with open(persona_file, "r", encoding="utf-8") as f:
-                persona_data = yaml.safe_load(f)
-
-            # Extract language patterns and writing style
-            language_patterns = persona_data.get("language_patterns", {})
-            writing_style = persona_data.get("writing_style", {})
-
-            # Build persona prompt
-            persona_prompt = f"""
-Author: {author_info.get('name', 'Technical Expert')}
-Country: {country.title()}
-Language Patterns: {json.dumps(language_patterns)}
-Writing Style: {json.dumps(writing_style)}
-"""
-
-            return persona_prompt.strip()
-
-        except FileNotFoundError:
-            logger.warning(f"Persona file not found: {persona_file}, using default")
-            return f"Author: {author_info.get('name', 'Technical Expert')}"
-        except Exception as e:
-            logger.error(f"Error loading persona file {persona_file}: {e}")
-            return f"Author: {author_info.get('name', 'Technical Expert')}"
 
     def generate(
         self,
@@ -196,7 +93,7 @@ Writing Style: {json.dumps(writing_style)}
         frontmatter_data: Optional[Dict[str, Any]] = None,
     ) -> Dict[str, Any]:
         """
-        Generate content using fail-fast approach.
+        Generate text using fail-fast approach.
 
         Args:
             material_name: Name of the material
@@ -213,14 +110,13 @@ Writing Style: {json.dumps(writing_style)}
             RetryableError: For temporary failures
         """
         if not api_client:
-            raise GenerationError("API client is required for content generation")
-
-        # Load persona prompt
-        persona_prompt = self._load_persona_prompt(author_info)
+            raise GenerationError("API client is required for text generation")
 
         # Load base prompt
         try:
-            with open("components/text/prompts/core/base_content_prompt.yaml", "r") as f:
+            with open(
+                "components/text/prompts/base_content_prompt.yaml", "r"
+            ) as f:
                 base_prompt_data = yaml.safe_load(f)
         except Exception as e:
             raise ConfigurationError(f"Failed to load base prompt: {e}")
@@ -230,7 +126,7 @@ Writing Style: {json.dumps(writing_style)}
             base_prompt_data,
             material_name,
             material_data,
-            persona_prompt,
+            author_info,
             frontmatter_data,
         )
 
@@ -238,7 +134,7 @@ Writing Style: {json.dumps(writing_style)}
         for attempt in range(self.max_retries + 1):
             try:
                 logger.info(
-                    f"Generating content for {material_name} (attempt {attempt + 1})"
+                    f"Generating text for {material_name} (attempt {attempt + 1})"
                 )
 
                 # Create generation request
@@ -264,29 +160,14 @@ Writing Style: {json.dumps(writing_style)}
 
                 content = response.content
 
-                # Score content if enabled
-                score = None
-                if self.content_scorer and not self.skip_ai_detection:
-                    score_result = self.content_scorer.score_content(
-                        content=content,
-                        material_data=material_data,
-                        author_info=author_info,
-                    )
-                    score = score_result.overall_score
-
-                    if score < self.human_threshold:
-                        logger.warning(
-                            f"Content score {score} below threshold {self.human_threshold}"
-                        )
-
                 # Create ComponentResult instead of dict
                 from generators.component_generators import ComponentResult
-                
+
                 return ComponentResult(
                     component_type="text",
                     content=content,
                     success=True,
-                    token_count=getattr(response, 'token_count', None)
+                    token_count=getattr(response, "token_count", None),
                 )
 
             except Exception as e:
@@ -297,7 +178,7 @@ Writing Style: {json.dumps(writing_style)}
                     time.sleep(self.retry_delay)
                 else:
                     raise GenerationError(
-                        f"Content generation failed after {self.max_retries + 1} attempts: {e}"
+                        f"Text generation failed after {self.max_retries + 1} attempts: {e}"
                     )
 
         # This should never be reached
@@ -308,17 +189,17 @@ Writing Style: {json.dumps(writing_style)}
         base_prompt_data: Dict[str, Any],
         material_name: str,
         material_data: Dict[str, Any],
-        persona_prompt: str,
+        author_info: Dict[str, Any],
         frontmatter_data: Optional[Dict[str, Any]] = None,
     ) -> str:
         """
-        Construct the complete prompt for content generation.
+        Construct the complete prompt for text generation.
 
         Args:
             base_prompt_data: Base prompt configuration
             material_name: Name of the material
             material_data: Material data
-            persona_prompt: Persona-specific prompt
+            author_info: Author information
             frontmatter_data: Frontmatter data
 
         Returns:
@@ -327,8 +208,9 @@ Writing Style: {json.dumps(writing_style)}
         # Build prompt sections
         sections = []
 
-        # Add persona information
-        sections.append(f"PERSONA INFORMATION:\n{persona_prompt}")
+        # Add author information
+        sections.append(f"AUTHOR: {author_info.get('name', 'Technical Expert')}")
+        sections.append(f"COUNTRY: {author_info.get('country', 'USA').title()}")
 
         # Add material information
         sections.append(f"MATERIAL: {material_name}")
@@ -337,12 +219,13 @@ Writing Style: {json.dumps(writing_style)}
         # Add frontmatter context if available
         if frontmatter_data:
             sections.append(
-                f"FRONTMATTER CONTEXT: {json.dumps(frontmatter_data, indent=2)}"
+                f"CONTEXT: {json.dumps(frontmatter_data, indent=2)}"
             )
 
         # Add base prompt instructions
-        if "instructions" in base_prompt_data:
-            sections.append(f"INSTRUCTIONS:\n{base_prompt_data['instructions']}")
+        if "overall_subject" in base_prompt_data:
+            subject = base_prompt_data['overall_subject'].format(material=material_name)
+            sections.append(f"TASK:\nWrite a comprehensive technical article about laser cleaning of {material_name}.\n\n{subject}")
 
         return "\n\n".join(sections)
 
@@ -350,33 +233,32 @@ Writing Style: {json.dumps(writing_style)}
 def create_fail_fast_generator(
     max_retries: int = 3,
     retry_delay: float = 1.0,
-    enable_scoring: bool = True,
+    enable_scoring: bool = False,
     human_threshold: float = 75.0,
     ai_detection_service=None,
-    skip_ai_detection: bool = False,
-) -> FailFastContentGenerator:
+    skip_ai_detection: bool = True,
+) -> FailFastTextGenerator:
     """
-    Create a fail-fast content generator.
+    Create a fail-fast text generator.
 
     Args:
         max_retries: Maximum number of retry attempts for retryable errors
         retry_delay: Delay between retries in seconds
-        enable_scoring: Whether to enable comprehensive quality scoring
+        enable_scoring: Whether to enable quality scoring (disabled for basic text)
         human_threshold: Minimum score required to pass human believability test
-        ai_detection_service: AI detection service for content analysis
-        skip_ai_detection: Whether to skip AI detection (useful when called from wrapper)
+        ai_detection_service: AI detection service (ignored for basic text)
+        skip_ai_detection: Whether to skip AI detection (always True for basic text)
 
     Returns:
-        Configured fail-fast content generator with optional scoring
+        Configured fail-fast text generator
 
     Raises:
         ConfigurationError: If required configurations are missing or invalid
     """
-    return FailFastContentGenerator(
+    return FailFastTextGenerator(
         max_retries=max_retries,
         retry_delay=retry_delay,
         enable_scoring=enable_scoring,
         human_threshold=human_threshold,
-        ai_detection_service=ai_detection_service,
         skip_ai_detection=skip_ai_detection,
     )

@@ -17,6 +17,14 @@ technicalSpecifications:
   safetyClass: "Class 4 (requires full enclosure)"
 description: "Technical overview of stoneware for laser cleaning applications, including 2.3 g/cm³ density, 1064nm wavelength, and industrial applications."
 author: "Dr. Sarah Chen"
+author_object:
+  id: 1
+  name: "Dr. Sarah Chen"
+  sex: "f"
+  title: "Ph.D."
+  country: "Taiwan"
+  expertise: "Laser Materials Processing"
+  image: "/images/author/sarah-chen.jpg"
 keywords: "stoneware, stoneware ceramic, laser ablation, laser cleaning, non-contact cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters, thermal processing, surface restoration, ceramic restoration, archaeological conservation"
 category: "ceramic"
 chemicalProperties:

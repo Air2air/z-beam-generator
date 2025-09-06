@@ -173,20 +173,20 @@ class DynamicGenerator:
             )
 
             # Convert to expected format with token_count
-            if hasattr(result, 'token_count'):
+            if hasattr(result, "token_count"):
                 return result
             else:
                 # If the result doesn't have token_count, add it from API response
                 token_count = 0
-                if hasattr(api_client, 'stats') and 'total_tokens' in api_client.stats:
-                    token_count = api_client.stats['total_tokens']
-                
+                if hasattr(api_client, "stats") and "total_tokens" in api_client.stats:
+                    token_count = api_client.stats["total_tokens"]
+
                 # Create a new result with token_count
                 return ComponentResult(
                     component_type=component_type,
                     content=result.content,
                     success=result.success,
-                    error_message=getattr(result, 'error_message', None),
+                    error_message=getattr(result, "error_message", None),
                     token_count=token_count,
                 )
 

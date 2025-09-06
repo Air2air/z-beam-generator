@@ -67,6 +67,7 @@ elif args.services:
 else:
     test_mode = "all"
 
+
 # Simple test runner implementation
 def run_tests(test_mode, quick_mode, verbose):
     """Run tests based on the specified mode."""
@@ -89,6 +90,7 @@ def run_tests(test_mode, quick_mode, verbose):
 
     result = subprocess.run(cmd, capture_output=not verbose)
     return result.returncode == 0, result.stdout.decode() if result.stdout else ""
+
 
 success, output = run_tests(test_mode, args.quick, args.verbose)
 

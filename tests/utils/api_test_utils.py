@@ -12,11 +12,12 @@ import pytest
 from api.client_manager import create_api_client
 from api.env_loader import EnvLoader
 
+
 def ensure_api_keys():
     """Ensure API keys are available for testing"""
     try:
         loader = EnvLoader()
-        required_keys = ['OPENAI_API_KEY', 'DEEPSEEK_API_KEY']
+        required_keys = ["OPENAI_API_KEY", "DEEPSEEK_API_KEY"]
 
         missing_keys = []
         for key in required_keys:
@@ -34,6 +35,7 @@ def ensure_api_keys():
         print(f"❌ Error checking API keys: {e}")
         return False
 
+
 def get_test_api_client():
     """Get a test API client instance"""
     try:
@@ -42,8 +44,10 @@ def get_test_api_client():
         print(f"❌ Error creating API client: {e}")
         return None
 
+
 def require_api_keys():
     """Decorator to skip tests if API keys are not available"""
+
     def decorator(test_func):
         def wrapper(*args, **kwargs):
             if not ensure_api_keys():
@@ -68,10 +72,10 @@ if __name__ == "__main__":
 
         if client:
             print("✅ API testing environment ready")
-            sys.exit(0)
+            pass  # Success
         else:
             print("❌ API client creation failed")
-            sys.exit(1)
+            import pytest; pytest.fail("Test failed")
     else:
         print("❌ API keys not available")
-        sys.exit(1)
+        import pytest; pytest.fail("Test failed")

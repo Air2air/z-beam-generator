@@ -7,11 +7,11 @@ and provides consistent, predictable behavior.
 """
 
 import json
+import logging
 import random
 import time
-from typing import Dict, Any, Optional, List, Union
+from typing import Any, Dict, List, Optional, Union
 from unittest.mock import MagicMock
-import logging
 
 logger = logging.getLogger(__name__)
 
@@ -33,9 +33,9 @@ class RobustMockAPIClient:
             **kwargs: Additional configuration options
         """
         self.provider = provider
-        self.response_delay = kwargs.get('response_delay', 0.1)
-        self.error_rate = kwargs.get('error_rate', 0.0)
-        self.max_retries = kwargs.get('max_retries', 3)
+        self.response_delay = kwargs.get("response_delay", 0.1)
+        self.error_rate = kwargs.get("error_rate", 0.0)
+        self.max_retries = kwargs.get("max_retries", 3)
 
         # Response templates for different providers
         self.response_templates = self._load_response_templates()
@@ -51,42 +51,43 @@ class RobustMockAPIClient:
                 "success": {
                     "content": "This is a mock response from Grok API for {component_type} generation about {material}. The content is generated using advanced AI technology to provide comprehensive information about laser cleaning processes.",
                     "usage": {"tokens": 150, "cost": 0.002},
-                    "model": "grok-1"
+                    "model": "grok-1",
                 },
                 "error": {
                     "error": "Mock API error from Grok",
                     "code": "MOCK_ERROR",
-                    "message": "Simulated API error for testing"
-                }
+                    "message": "Simulated API error for testing",
+                },
             },
             "deepseek": {
                 "success": {
                     "content": "DeepSeek AI generated content for {component_type} component regarding {material} laser cleaning. This response demonstrates the capabilities of advanced language models in technical content generation.",
                     "usage": {"tokens": 120, "cost": 0.0015},
-                    "model": "deepseek-chat"
+                    "model": "deepseek-chat",
                 },
                 "error": {
                     "error": "Mock API error from DeepSeek",
                     "code": "DEEPSEEK_ERROR",
-                    "message": "Simulated DeepSeek API error"
-                }
+                    "message": "Simulated DeepSeek API error",
+                },
             },
             "openai": {
                 "success": {
                     "content": "OpenAI GPT-generated content for {component_type} about {material}. This mock response simulates the quality and structure of OpenAI's language models.",
                     "usage": {"tokens": 130, "cost": 0.0025},
-                    "model": "gpt-4"
+                    "model": "gpt-4",
                 },
                 "error": {
                     "error": "Mock API error from OpenAI",
                     "code": "OPENAI_ERROR",
-                    "message": "Simulated OpenAI API error"
-                }
-            }
+                    "message": "Simulated OpenAI API error",
+                },
+            },
         }
 
-    def generate_content(self, prompt: str, component_type: str,
-                        material: str, **kwargs) -> Dict[str, Any]:
+    def generate_content(
+        self, prompt: str, component_type: str, material: str, **kwargs
+    ) -> Dict[str, Any]:
         """
         Generate mock content for a component.
 
@@ -108,7 +109,7 @@ class RobustMockAPIClient:
             "prompt": prompt[:100] + "..." if len(prompt) > 100 else prompt,
             "component_type": component_type,
             "material": material,
-            "timestamp": time.time()
+            "timestamp": time.time(),
         }
         self.request_history.append(request_info)
 
@@ -124,8 +125,13 @@ class RobustMockAPIClient:
 
         return response
 
-    def generate_simple(self, prompt: str, system_prompt: Optional[str] = None,
-                       max_tokens: int = None, temperature: float = None):
+    def generate_simple(
+        self,
+        prompt: str,
+        system_prompt: Optional[str] = None,
+        max_tokens: int = None,
+        temperature: float = None,
+    ):
         """
         Simplified generation method for backward compatibility.
 
@@ -158,8 +164,10 @@ class RobustMockAPIClient:
 
         # Track request
         request_info = {
-            "prompt": request.prompt[:100] + "..." if len(request.prompt) > 100 else request.prompt,
-            "timestamp": time.time()
+            "prompt": request.prompt[:100] + "..."
+            if len(request.prompt) > 100
+            else request.prompt,
+            "timestamp": time.time(),
         }
         self.request_history.append(request_info)
 
@@ -206,7 +214,7 @@ class RobustMockAPIClient:
             "steel": ["steel", "iron"],
             "aluminum": ["aluminum", "aluminium"],
             "copper": ["copper"],
-            "titanium": ["titanium"]
+            "titanium": ["titanium"],
         }
 
         for material, keywords in materials.items():
@@ -263,8 +271,9 @@ tags: ["laser", "cleaning", "industrial"]
         """Generate generic mock content."""
         return "This is mock content generated for testing purposes. It simulates AI-generated technical content."
 
-    def _generate_success_response(self, component_type: str, material: str,
-                                  **kwargs) -> Dict[str, Any]:
+    def _generate_success_response(
+        self, component_type: str, material: str, **kwargs
+    ) -> Dict[str, Any]:
         """Generate a successful response."""
         template = self.response_templates.get(self.provider, {}).get("success", {})
 
@@ -276,12 +285,14 @@ tags: ["laser", "cleaning", "industrial"]
             "usage": template.get("usage", {}),
             "model": template.get("model", "mock-model"),
             "provider": self.provider,
-            "timestamp": time.time()
+            "timestamp": time.time(),
         }
 
         return response
 
-    def _customize_content(self, template: str, component_type: str, material: str) -> str:
+    def _customize_content(
+        self, template: str, component_type: str, material: str
+    ) -> str:
         """Customize the content template for specific component and material."""
         content = template.format(component_type=component_type, material=material)
 
@@ -300,11 +311,7 @@ tags: ["laser", "cleaning", "industrial"]
     def _generate_error_response(self) -> Dict[str, Any]:
         """Generate an error response."""
         template = self.response_templates.get(self.provider, {}).get("error", {})
-        return {
-            "error": template,
-            "provider": self.provider,
-            "timestamp": time.time()
-        }
+        return {"error": template, "provider": self.provider, "timestamp": time.time()}
 
     def get_request_history(self) -> List[Dict[str, Any]]:
         """Get the history of requests made to this client."""
@@ -390,6 +397,7 @@ class MockAPIManager:
 # Backward compatibility - create aliases for existing code
 MockAPIClient = RobustMockAPIClient
 
+
 # Convenience functions
 def create_mock_client(provider: str = "grok", **kwargs) -> RobustMockAPIClient:
     """Create a mock API client."""
@@ -403,10 +411,10 @@ def create_test_client_manager() -> MockAPIManager:
 
 # Export key classes and functions
 __all__ = [
-    'RobustMockAPIClient',
-    'MockAPIClientFactory',
-    'MockAPIManager',
-    'MockAPIClient',  # Backward compatibility
-    'create_mock_client',
-    'create_test_client_manager',
+    "RobustMockAPIClient",
+    "MockAPIClientFactory",
+    "MockAPIManager",
+    "MockAPIClient",  # Backward compatibility
+    "create_mock_client",
+    "create_test_client_manager",
 ]

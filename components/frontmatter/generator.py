@@ -141,6 +141,8 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
                     if author_data and 'name' in author_data:
                         author_name = author_data['name']
                         logger.info(f"Resolved author_id {author_id} to {author_name}")
+                        # Store the full author data for later use
+                        resolved_author_info = author_data
                     else:
                         raise Exception(f"Author data for ID {author_id} missing required 'name' field - fail-fast architecture requires complete author information")
                 except Exception as e:
@@ -149,6 +151,7 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
                 raise Exception("Author information with 'name' field is required for frontmatter generation - fail-fast architecture requires complete author information")
         else:
             author_name = author_info['name']
+            resolved_author_info = author_info
         
         return {
             "subject": material_name,
@@ -159,9 +162,14 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
             "material_type": material_data.get("material_type") if "material_type" in material_data else category,
             "category": category,
             "author_name": author_name,
+            "author_object_sex": resolved_author_info.get("sex", "unknown") if resolved_author_info else "unknown",
+            "author_object_title": resolved_author_info.get("title", "Expert") if resolved_author_info else "Expert",
+            "author_object_country": resolved_author_info.get("country", "Unknown") if resolved_author_info else "Unknown",
+            "author_object_expertise": resolved_author_info.get("expertise", "Materials Science") if resolved_author_info else "Materials Science",
+            "author_object_image": resolved_author_info.get("image", "/images/default-author.jpg") if resolved_author_info else "/images/default-author.jpg",
             "article_type": material_data.get("article_type") if "article_type" in material_data else "material",  # Keep this for schema compatibility
-            "persona_country": author_info.get("country", "Unknown") if author_info else "Unknown",
-            "author_id": author_info.get("id", 0) if author_info else 0,
+            "persona_country": resolved_author_info.get("country", "Unknown") if resolved_author_info else "Unknown",
+            "author_id": resolved_author_info.get("id", 0) if resolved_author_info else 0,
             "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
         }
     

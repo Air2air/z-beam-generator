@@ -6,10 +6,10 @@ Provides safe configuration loading with fallback mechanisms and validation.
 Handles missing files, invalid formats, and provides sensible defaults.
 """
 
+import logging
 import os
 from pathlib import Path
 from typing import Any, Dict, Optional, Union
-import logging
 
 logger = logging.getLogger(__name__)
 
@@ -28,7 +28,9 @@ class ConfigLoader:
     _config_cache: Dict[str, Any] = {}
 
     @classmethod
-    def load_yaml_config(cls, filepath: Union[str, Path], defaults: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
+    def load_yaml_config(
+        cls, filepath: Union[str, Path], defaults: Optional[Dict[str, Any]] = None
+    ) -> Dict[str, Any]:
         """
         Load YAML configuration with fallback to defaults.
 
@@ -57,7 +59,7 @@ class ConfigLoader:
         try:
             path = Path(filepath)
             if path.exists():
-                with open(path, 'r', encoding='utf-8') as f:
+                with open(path, "r", encoding="utf-8") as f:
                     file_config = yaml.safe_load(f) or {}
 
                 # Merge with defaults (file takes precedence)
@@ -110,9 +112,9 @@ class ConfigLoader:
 
         path = Path(filepath)
 
-        if path.suffix == '.py':
+        if path.suffix == ".py":
             return cls._load_api_keys_from_python(path)
-        elif path.suffix in ['.yaml', '.yml']:
+        elif path.suffix in [".yaml", ".yml"]:
             return cls._load_api_keys_from_yaml(path)
         else:
             logger.error(f"Unsupported API keys file format: {path.suffix}")
@@ -124,9 +126,10 @@ class ConfigLoader:
         try:
             # Create a namespace for the config
             import types
-            config_module = types.ModuleType('config')
 
-            with open(filepath, 'r', encoding='utf-8') as f:
+            config_module = types.ModuleType("config")
+
+            with open(filepath, "r", encoding="utf-8") as f:
                 config_code = f.read()
 
             # Execute in the module's namespace
@@ -152,7 +155,8 @@ class ConfigLoader:
         """Load API keys from YAML file."""
         try:
             import yaml
-            with open(filepath, 'r', encoding='utf-8') as f:
+
+            with open(filepath, "r", encoding="utf-8") as f:
                 config = yaml.safe_load(f) or {}
 
             api_keys = {}
@@ -200,6 +204,7 @@ def load_materials_config() -> Dict[str, Any]:
     """Load materials configuration with robust error handling."""
     try:
         from utils.path_manager import PathManager
+
         materials_file = PathManager.get_materials_file()
     except ImportError:
         materials_file = Path("data/materials.yaml")
@@ -219,6 +224,7 @@ def load_api_keys() -> Dict[str, str]:
     """Load API keys with robust error handling."""
     try:
         from utils.path_manager import PathManager
+
         api_keys_file = PathManager.get_api_keys_file()
     except ImportError:
         api_keys_file = None
@@ -227,7 +233,7 @@ def load_api_keys() -> Dict[str, str]:
 
 
 __all__ = [
-    'ConfigLoader',
-    'load_materials_config',
-    'load_api_keys',
+    "ConfigLoader",
+    "load_materials_config",
+    "load_api_keys",
 ]

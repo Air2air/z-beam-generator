@@ -6,13 +6,13 @@ This script helps migrate relative imports to absolute imports
 throughout the codebase to prevent import path issues.
 """
 
-import os
-import re
 import ast
 import logging
-from pathlib import Path
-from typing import List, Dict, Set, Tuple, Optional
+import os
+import re
 from dataclasses import dataclass
+from pathlib import Path
+from typing import Dict, List, Optional, Set, Tuple
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -21,6 +21,7 @@ logger = logging.getLogger(__name__)
 @dataclass
 class ImportIssue:
     """Represents an import issue found in a file."""
+
     file_path: str
     line_number: int
     original_import: str
@@ -59,7 +60,7 @@ class AbsoluteImportMigrator:
         issues = []
 
         try:
-            with open(file_path, 'r', encoding='utf-8') as f:
+            with open(file_path, "r", encoding="utf-8") as f:
                 content = f.read()
 
             # Parse the AST
@@ -78,21 +79,23 @@ class AbsoluteImportMigrator:
 
         return issues
 
-    def _check_import_statement(self, file_path: Path, node: ast.ImportFrom, content: str) -> Optional[ImportIssue]:
+    def _check_import_statement(
+        self, file_path: Path, node: ast.ImportFrom, content: str
+    ) -> Optional[ImportIssue]:
         """Check if an import statement needs to be fixed."""
         if not node.level:  # Not a relative import
             return None
 
         # Get the line content
-        lines = content.split('\n')
+        lines = content.split("\n")
         line_content = lines[node.lineno - 1].strip()
 
         # Calculate the absolute module path
-        relative_parts = ['.'] * node.level
+        relative_parts = ["."] * node.level
         if node.module:
             relative_parts.append(node.module)
 
-        relative_path = '.'.join(relative_parts)
+        relative_path = ".".join(relative_parts)
 
         # Calculate absolute path from file location
         file_dir = file_path.parent
@@ -112,13 +115,15 @@ class AbsoluteImportMigrator:
 
             # Remove the parts we're going up
             if len(path_parts) >= node.level:
-                remaining_parts = path_parts[:-node.level] if node.level > 0 else path_parts
+                remaining_parts = (
+                    path_parts[: -node.level] if node.level > 0 else path_parts
+                )
                 absolute_parts.extend(remaining_parts)
 
             if node.module:
-                absolute_parts.extend(node.module.split('.'))
+                absolute_parts.extend(node.module.split("."))
 
-            absolute_import = '.'.join(absolute_parts)
+            absolute_import = ".".join(absolute_parts)
 
             # Create suggested fix
             imports = []
@@ -137,7 +142,7 @@ class AbsoluteImportMigrator:
                 line_number=node.lineno,
                 original_import=line_content,
                 suggested_fix=suggested_fix,
-                confidence=confidence
+                confidence=confidence,
             )
 
         except Exception as e:
@@ -149,15 +154,16 @@ class AbsoluteImportMigrator:
         try:
             # Try to import the module to verify it exists
             import importlib
+
             importlib.import_module(absolute_import)
-            return 'high'
+            return "high"
         except ImportError:
             # Check if the module file exists
-            module_path = absolute_import.replace('.', os.sep) + '.py'
+            module_path = absolute_import.replace(".", os.sep) + ".py"
             if (self.project_root / module_path).exists():
-                return 'medium'
+                return "medium"
             else:
-                return 'low'
+                return "low"
 
     def generate_report(self) -> str:
         """Generate a report of all import issues."""
@@ -169,9 +175,9 @@ class AbsoluteImportMigrator:
         report.append("")
 
         # Group by confidence
-        high_confidence = [i for i in self.issues if i.confidence == 'high']
-        medium_confidence = [i for i in self.issues if i.confidence == 'medium']
-        low_confidence = [i for i in self.issues if i.confidence == 'low']
+        high_confidence = [i for i in self.issues if i.confidence == "high"]
+        medium_confidence = [i for i in self.issues if i.confidence == "medium"]
+        low_confidence = [i for i in self.issues if i.confidence == "low"]
 
         report.append("## High Confidence Fixes")
         report.append(f"Count: {len(high_confidence)}")
@@ -196,11 +202,11 @@ class AbsoluteImportMigrator:
         report.append("These may need manual review")
         report.append("")
 
-        return '\n'.join(report)
+        return "\n".join(report)
 
-    def apply_fixes(self, confidence_threshold: str = 'high') -> int:
+    def apply_fixes(self, confidence_threshold: str = "high") -> int:
         """Apply fixes for issues above the confidence threshold."""
-        confidence_levels = {'high': 3, 'medium': 2, 'low': 1}
+        confidence_levels = {"high": 3, "medium": 2, "low": 1}
         threshold_level = confidence_levels.get(confidence_threshold, 3)
 
         fixes_applied = 0
@@ -212,31 +218,41 @@ class AbsoluteImportMigrator:
                     fixes_applied += 1
                     logger.info(f"Applied fix: {issue.file_path}:{issue.line_number}")
                 except Exception as e:
-                    logger.error(f"Failed to apply fix {issue.file_path}:{issue.line_number}: {e}")
+                    logger.error(
+                        f"Failed to apply fix {issue.file_path}:{issue.line_number}: {e}"
+                    )
 
         return fixes_applied
 
     def _apply_single_fix(self, issue: ImportIssue) -> None:
         """Apply a single import fix."""
-        with open(issue.file_path, 'r', encoding='utf-8') as f:
+        with open(issue.file_path, "r", encoding="utf-8") as f:
             content = f.read()
 
-        lines = content.split('\n')
+        lines = content.split("\n")
         lines[issue.line_number - 1] = issue.suggested_fix
 
-        with open(issue.file_path, 'w', encoding='utf-8') as f:
-            f.write('\n'.join(lines))
+        with open(issue.file_path, "w", encoding="utf-8") as f:
+            f.write("\n".join(lines))
 
 
 def main():
     """Main function for the migration tool."""
     import argparse
 
-    parser = argparse.ArgumentParser(description="Migrate relative imports to absolute imports")
+    parser = argparse.ArgumentParser(
+        description="Migrate relative imports to absolute imports"
+    )
     parser.add_argument("--project-root", default=".", help="Project root directory")
-    parser.add_argument("--analyze-only", action="store_true", help="Only analyze, don't fix")
-    parser.add_argument("--confidence", choices=['high', 'medium', 'low'], default='high',
-                       help="Minimum confidence level for fixes")
+    parser.add_argument(
+        "--analyze-only", action="store_true", help="Only analyze, don't fix"
+    )
+    parser.add_argument(
+        "--confidence",
+        choices=["high", "medium", "low"],
+        default="high",
+        help="Minimum confidence level for fixes",
+    )
     parser.add_argument("--report-file", help="Save report to file")
 
     args = parser.parse_args()
@@ -254,7 +270,7 @@ def main():
     print(report)
 
     if args.report_file:
-        with open(args.report_file, 'w', encoding='utf-8') as f:
+        with open(args.report_file, "w", encoding="utf-8") as f:
             f.write(report)
         print(f"Report saved to {args.report_file}")
 

@@ -18,6 +18,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 from optimizer.text_optimization.dynamic_prompt_generator import DynamicPromptGenerator
+
 from .prompt_evolution_manager import PromptEvolutionManager
 from .winston_analyzer import WinstonAnalyzer
 

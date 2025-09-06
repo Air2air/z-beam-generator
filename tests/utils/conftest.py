@@ -17,6 +17,7 @@ import pytest
 
 from tests.fixtures.mocks.mock_api_client import create_fast_mock_client
 
+
 class TestDataCache:
     """Cache for test data to improve test performance"""
 
@@ -30,18 +31,22 @@ class TestDataCache:
             shutil.rmtree(self.cache_dir)
             self.cache_dir.mkdir(exist_ok=True)
 
+
 # Global cache instance
 test_data_cache = TestDataCache()
+
 
 @pytest.fixture
 def test_config():
     """Provide test configuration"""
     return {"test_mode": True, "mock_responses": True}
 
+
 @pytest.fixture
 def get_test_api_client():
     """Provide a mock API client for testing"""
     return create_fast_mock_client()
+
 
 def assert_api_response_format(response):
     """Assert that API response has expected format"""

@@ -13,7 +13,7 @@ A comprehensive AI-powered content generation system for laser cleaning material
 # Optimize text components
 python3 run.py --optimize text
 
-# Optimize bullets components  
+# Optimize bullets components
 python3 run.py --optimize bullets
 
 # Optimize any component (frontmatter, table, metatags, etc.)
@@ -67,12 +67,12 @@ import os
 import sys
 import time as time_module
 from pathlib import Path
+from typing import Any, Dict, Optional
 
 # Set up logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 import traceback
-
 
 # Configuration constants for tests
 API_PROVIDERS = {
@@ -191,10 +191,14 @@ def get_dynamic_config_for_content(component_type: str, material_data: dict = No
     return base_config
 
 
-def create_dynamic_ai_detection_config(content_type: str = "technical", author_country: str = "usa", content_length: int = 1000):
+def create_dynamic_ai_detection_config(
+    content_type: str = "technical",
+    author_country: str = "usa",
+    content_length: int = 1000,
+):
     """Create dynamic AI detection configuration based on content parameters."""
     base_config = AI_DETECTION_CONFIG.copy()
-    
+
     # Adjust configuration based on content type
     if content_type == "technical":
         base_config["target_score"] = 75.0
@@ -202,7 +206,7 @@ def create_dynamic_ai_detection_config(content_type: str = "technical", author_c
         base_config["target_score"] = 65.0
     else:
         base_config["target_score"] = 70.0
-    
+
     # Adjust based on author country
     if author_country.lower() == "usa":
         base_config["language_patterns"] = "american_english"
@@ -210,7 +214,7 @@ def create_dynamic_ai_detection_config(content_type: str = "technical", author_c
         base_config["language_patterns"] = "british_english"
     else:
         base_config["language_patterns"] = "international_english"
-    
+
     # Adjust based on content length
     if content_length < 500:
         base_config["min_text_length"] = 100
@@ -218,7 +222,7 @@ def create_dynamic_ai_detection_config(content_type: str = "technical", author_c
         base_config["min_text_length"] = 500
     else:
         base_config["min_text_length"] = 200
-    
+
     return base_config
 
 
@@ -231,98 +235,9 @@ class FailFastGenerator:
     def generate(self, *args, **kwargs):
         """Mock generate method that always fails."""
         self.call_count += 1
-        raise Exception(f"FailFastGenerator called (attempt {self.call_count}) - fail-fast test")
-
-
-def update_content_with_ai_analysis(content: str, ai_result, material_name: str) -> str:
-    """Update content with AI detection analysis in proper YAML frontmatter format.
-
-    This function ensures:
-    1. Frontmatter appears at the top in proper YAML format
-    2. Existing frontmatter is preserved and new data is appended
-    3. AI detection analysis is added to the frontmatter section
-    4. Prevents duplicate ai_detection_analysis sections
-    """
-    try:
-        lines = content.split("\n")
-        updated_lines = []
-
-        # Find frontmatter boundaries
-        frontmatter_start_idx = -1
-        frontmatter_end_idx = -1
-
-        for i, line in enumerate(lines):
-            if line.strip() == "---":
-                if frontmatter_start_idx == -1:
-                    frontmatter_start_idx = i
-                else:
-                    frontmatter_end_idx = i
-                    break
-
-        # Extract content (everything after first ---)
-        if frontmatter_start_idx >= 0 and frontmatter_end_idx > frontmatter_start_idx:
-            content_lines = lines[frontmatter_end_idx + 1:]
-        else:
-            content_lines = lines
-
-        # Start with frontmatter delimiter
-        updated_lines.append("---")
-
-        # Add AI detection analysis
-        ai_lines = [
-            "ai_detection_analysis:",
-            f"  score: {ai_result.score:.6f}",
-            f"  confidence: {ai_result.confidence:.6f}",
-            f'  classification: "{ai_result.classification}"',
-            f'  provider: "{ai_result.provider}"',
-            f"  processing_time: {ai_result.processing_time:.6f}",
-        ]
-
-        if ai_result.details:
-            ai_lines.append("  details:")
-            for key, value in ai_result.details.items():
-                if isinstance(value, dict):
-                    ai_lines.append(f"    {key}:")
-                    for sub_key, sub_value in value.items():
-                        # Ensure proper YAML formatting for values
-                        if isinstance(sub_value, str):
-                            ai_lines.append(f'      {sub_key}: "{sub_value}"')
-                        elif isinstance(sub_value, (int, float)):
-                            if isinstance(sub_value, float):
-                                ai_lines.append(f"      {sub_key}: {sub_value:.6f}")
-                            else:
-                                ai_lines.append(f"      {sub_key}: {sub_value}")
-                        else:
-                            ai_lines.append(f"      {sub_key}: {sub_value}")
-                else:
-                    # Ensure proper YAML formatting for values
-                    if isinstance(value, str):
-                        ai_lines.append(f'    {key}: "{value}"')
-                    elif isinstance(value, (int, float)):
-                        if isinstance(value, float):
-                            ai_lines.append(f"    {key}: {value:.6f}")
-                        else:
-                            ai_lines.append(f"    {key}: {value}")
-                    else:
-                        ai_lines.append(f"    {key}: {value}")
-
-        updated_lines.extend(ai_lines)
-
-        # Add closing marker
-        updated_lines.append("---")
-        updated_lines.append("")  # Add blank line before content
-
-        # Add content
-        updated_lines.extend(content_lines)
-
-        return "\n".join(updated_lines)
-
-    except Exception as e:
-        print(f"⚠️ Error updating frontmatter for {material_name}: {e}")
-        import traceback
-
-        traceback.print_exc()
-        return content
+        raise Exception(
+            f"FailFastGenerator called (attempt {self.call_count}) - fail-fast test"
+        )
 
 
 def main():
@@ -395,6 +310,10 @@ def main():
         action="store_true",
         help="Show system status and component availability",
     )
+    parser.add_argument(
+        "--version-history",
+        help="Show version history for a material-component pair (format: material:component)",
+    )
 
     # Options
     parser.add_argument("--verbose", "-v", action="store_true", help="Verbose output")
@@ -448,6 +367,16 @@ def main():
             print("✅ API clients configured")
             print("✅ Content validation active")
 
+        elif args.version_history:
+            # Show version history
+            try:
+                material, component = args.version_history.split(":", 1)
+                from utils.file_operations import display_version_history
+                display_version_history(material.strip(), component.strip())
+            except ValueError:
+                print("❌ Invalid format. Use: --version-history 'Material:component'")
+                print("💡 Example: --version-history 'Alumina:text'")
+
         elif args.clean:
             # Clean generated content
             print("🧹 Cleaning generated content...")
@@ -482,22 +411,29 @@ def main():
                 # First clean existing content
                 print("🧹 Cleaning existing content...")
                 from cli.cleanup_commands import clean_content_components
+
                 clean_content_components()
 
                 # Load materials data
                 from data.materials import load_materials
+
                 materials_data = load_materials()
 
                 # Get first 8 categories
                 categories = list(materials_data.keys())[:8]
-                print(f"📂 Processing {len(categories)} categories: {', '.join(categories)}")
+                print(
+                    f"📂 Processing {len(categories)} categories: {', '.join(categories)}"
+                )
 
                 # Count total materials
-                total_materials = sum(len(materials_data[cat].get("items", [])) for cat in categories)
+                total_materials = sum(
+                    len(materials_data[cat].get("items", [])) for cat in categories
+                )
                 print(f"� Total materials to process: {total_materials}")
 
                 # Import generator
                 from generators.dynamic_generator import DynamicGenerator
+
                 generator = DynamicGenerator()
 
                 processed_materials = 0
@@ -507,7 +443,9 @@ def main():
                     category_data = materials_data[category]
                     materials = category_data.get("items", [])
 
-                    print(f"\n🔧 Processing category: {category} ({len(materials)} materials)")
+                    print(
+                        f"\n🔧 Processing category: {category} ({len(materials)} materials)"
+                    )
 
                     for material in materials:
                         material_name = material["name"]
@@ -515,18 +453,38 @@ def main():
 
                         try:
                             # Generate all components for this material
-                            from generators.workflow_manager import run_dynamic_generation
+                            from generators.workflow_manager import (
+                                run_dynamic_generation,
+                            )
 
                             results = run_dynamic_generation(
                                 generator=generator,
                                 material=material_name,
-                                component_types=["frontmatter", "text", "table", "metatags", "tags", "bullets", "caption", "propertiestable", "jsonld"],
-                                author_info={"id": 1, "name": "Test Author", "country": "Test"}
+                                component_types=[
+                                    "frontmatter",
+                                    "text",
+                                    "table",
+                                    "metatags",
+                                    "tags",
+                                    "bullets",
+                                    "caption",
+                                    "propertiestable",
+                                    "jsonld",
+                                ],
+                                author_info={
+                                    "id": 1,
+                                    "name": "Test Author",
+                                    "country": "Test",
+                                },
                             )
 
                             processed_materials += 1
-                            successful_components = len(results.get("components_generated", []))
-                            print(f"      ✅ Generated {successful_components} components")
+                            successful_components = len(
+                                results.get("components_generated", [])
+                            )
+                            print(
+                                f"      ✅ Generated {successful_components} components"
+                            )
 
                             if successful_components > 0:
                                 successful_generations += 1
@@ -543,7 +501,11 @@ def main():
                 print(f"📂 Categories processed: {len(categories)}")
                 print(f"📝 Materials processed: {processed_materials}")
                 print(f"✅ Successful generations: {successful_generations}")
-                print(f"📊 Success rate: {(successful_generations/processed_materials*100):.1f}%" if processed_materials > 0 else "0%")
+                print(
+                    f"📊 Success rate: {(successful_generations/processed_materials*100):.1f}%"
+                    if processed_materials > 0
+                    else "0%"
+                )
 
             except ImportError as e:
                 print(f"❌ Import error: {e}")
@@ -551,213 +513,18 @@ def main():
             except Exception as e:
                 print(f"❌ Error in content batch mode: {e}")
                 import traceback
+
                 traceback.print_exc()
 
         elif args.optimize:
-            # Optimization mode - iterative AI detection optimization
+            # Optimization mode - sophisticated AI detection optimization
             component_name = args.optimize
-            print(f"🚀 Starting iterative optimization for component: {component_name}")
+            print(f"🚀 Starting sophisticated optimization for component: {component_name}")
 
-            # Find all material files in the component directory
-            component_dir = Path("content/components") / component_name
-            if not component_dir.exists():
-                print(f"❌ Component directory not found: {component_dir}")
-                return
+            # Import and run the optimization
+            from optimizer.content_optimization import run_sophisticated_optimization
 
-            # Get all .md files in the component directory
-            material_files = list(component_dir.glob("*.md"))
-            if not material_files:
-                print(f"⚠️ No material files found in {component_dir}")
-                return
-
-            print(f"📂 Found {len(material_files)} material files to optimize")
-
-            # Load content from each file
-            materials_content = {}
-            for file_path in material_files:
-                try:
-                    with open(file_path, "r", encoding="utf-8") as f:
-                        content = f.read()
-
-                    # Extract material name from filename (remove -laser-cleaning.md suffix)
-                    material_name = file_path.stem.replace("-laser-cleaning", "")
-                    materials_content[material_name] = content
-                    print(f"   📄 Loaded {material_name} from {file_path.name}")
-
-                except Exception as e:
-                    print(f"❌ Error loading {file_path}: {e}")
-                    continue
-
-            if not materials_content:
-                print("❌ No content loaded for optimization")
-                return
-
-            # Run iterative optimization
-            print(f"\n🔄 Starting iterative optimization for {len(materials_content)} materials...")
-
-            async def run_iterative_optimization():
-                try:
-                    # Import the AI detection service
-                    from optimizer.ai_detection.service import (
-                        get_ai_detection_service,
-                        initialize_ai_detection_service,
-                    )
-                    from optimizer.ai_detection.types import AIDetectionConfig
-
-                    # Initialize AI detection service with proper config
-                    config = AIDetectionConfig(
-                        provider="winston",  # Always use real Winston API
-                        enabled=True,
-                        target_score=70.0,
-                        max_iterations=5,  # Allow up to 5 iterations
-                        improvement_threshold=5.0,
-                        timeout=30,
-                        retry_attempts=3,
-                    )
-                    ai_service = initialize_ai_detection_service(config)
-
-                    # Import text generator for regeneration
-                    from generators.dynamic_generator import DynamicGenerator
-                    from data.materials import load_materials
-
-                    generator = DynamicGenerator()
-                    materials_data = load_materials()
-
-                    successful_optimizations = 0
-
-                    for material_name, original_content in materials_content.items():
-                        print(f"\n🔄 Optimizing {material_name}...")
-
-                        current_content = original_content
-                        best_score = 0.0
-                        best_content = original_content
-                        iteration = 0
-                        consecutive_failures = 0
-
-                        while iteration < config.max_iterations:
-                            iteration += 1
-                            print(f"   📊 Iteration {iteration}/{config.max_iterations}")
-
-                            try:
-                                # Get AI detection score for current content
-                                result = ai_service.detect_ai_content(current_content)
-                                current_score = result.score
-                                print(f"      📊 Score: {current_score:.1f} (Target: {config.target_score})")
-
-                                # Update best content if this is better
-                                if current_score > best_score:
-                                    best_score = current_score
-                                    best_content = current_content
-                                    print(f"      ✅ New best score: {best_score:.1f}")
-
-                                # Check if we've reached the target
-                                if current_score >= config.target_score:
-                                    print(f"      🎯 Target reached! Score: {current_score:.1f}")
-                                    break
-
-                                # If score is very low and this is the first iteration, try regenerating
-                                if current_score < 30.0 and iteration == 1:
-                                    print(f"      🔄 Score too low ({current_score:.1f}), regenerating content...")
-
-                                    # Find material data
-                                    material_data = None
-                                    for category_data in materials_data.values():
-                                        for item in category_data.get("items", []):
-                                            if item["name"].lower().replace(" ", "-") == material_name.lower():
-                                                material_data = item
-                                                break
-                                        if material_data:
-                                            break
-
-                                    if material_data:
-                                        try:
-                                            # Regenerate content with adjustments for better AI detection
-                                            from generators.workflow_manager import run_dynamic_generation
-
-                                            results = run_dynamic_generation(
-                                                generator=generator,
-                                                material=material_data["name"],
-                                                component_types=[component_name],
-                                                author_info={"id": 1, "name": "Test Author", "country": "usa"}
-                                            )
-
-                                            if results.get("components_generated"):
-                                                # Extract the new content
-                                                new_content_file = Path("content/components") / component_name / f"{material_name}-laser-cleaning.md"
-                                                if new_content_file.exists():
-                                                    with open(new_content_file, "r", encoding="utf-8") as f:
-                                                        new_content = f.read()
-                                                    
-                                                    # Add AI detection analysis to the new content
-                                                    current_content = update_content_with_ai_analysis(
-                                                        new_content, result, material_name
-                                                    )
-                                                    
-                                                    # Save the updated content
-                                                    with open(new_content_file, "w", encoding="utf-8") as f:
-                                                        f.write(current_content)
-                                                    
-                                                    print(f"      🔄 Regenerated content loaded and updated with AI analysis")
-                                                    consecutive_failures = 0
-                                                    continue
-                                                else:
-                                                    print(f"      ❌ Regenerated content not found")
-                                                    consecutive_failures += 1
-                                            else:
-                                                print(f"      ❌ Content regeneration failed")
-                                                consecutive_failures += 1
-
-                                        except Exception as e:
-                                            print(f"      ❌ Error regenerating content: {e}")
-                                            consecutive_failures += 1
-                                    else:
-                                        print(f"      ❌ Material data not found for regeneration")
-                                        consecutive_failures += 1
-
-                                # If we can't improve significantly, try minor adjustments
-                                elif iteration > 1 and (current_score - best_score) < config.improvement_threshold:
-                                    consecutive_failures += 1
-                                    print(f"      ⚠️ Minimal improvement ({current_score - best_score:.1f} < {config.improvement_threshold})")
-                                else:
-                                    consecutive_failures = 0
-
-                                # Stop if too many consecutive failures
-                                if consecutive_failures >= 2:
-                                    print(f"      🛑 Stopping after {consecutive_failures} consecutive failures")
-                                    break
-
-                            except Exception as e:
-                                print(f"      ❌ Error in iteration {iteration}: {e}")
-                                consecutive_failures += 1
-                                if consecutive_failures >= 2:
-                                    break
-                                continue
-
-                        # Save the best content found
-                        original_file = component_dir / f"{material_name}-laser-cleaning.md"
-                        
-                        # Add final AI detection analysis to the best content
-                        final_result = ai_service.detect_ai_content(best_content)
-                        best_content_with_analysis = update_content_with_ai_analysis(
-                            best_content, final_result, material_name
-                        )
-                        
-                        with open(original_file, "w", encoding="utf-8") as f:
-                            f.write(best_content_with_analysis)
-
-                        print(f"      ✅ {material_name}: Best score {best_score:.1f} after {iteration} iterations")
-                        if best_score >= config.target_score:
-                            successful_optimizations += 1
-
-                    print(f"\n🏁 Iterative optimization completed: {successful_optimizations}/{len(materials_content)} reached target score")
-
-                except Exception as e:
-                    print(f"❌ Error initializing optimization services: {e}")
-                    import traceback
-                    traceback.print_exc()
-
-            # Run the async optimization
-            asyncio.run(run_iterative_optimization())
+            asyncio.run(run_sophisticated_optimization(component_name))
 
         elif args.interactive or args.material or args.all:
             # Interactive or batch generation mode
@@ -783,9 +550,44 @@ def main():
                 if args.material:
                     # Generate for specific material
                     print(f"\n🎯 Generating content for {args.material}...")
-                    print(
-                        "⚠️  Material-specific generation not yet implemented in this version"
-                    )
+
+                    try:
+                        # Import workflow manager for material generation
+                        from generators.workflow_manager import run_material_generation
+
+                        # Get available components
+                        available_components = generator.get_available_components()
+
+                        # Generate all components for the material
+                        result = run_material_generation(
+                            material=args.material,
+                            component_types=available_components,
+                            author_id=None  # Will use material's author_id from materials.yaml
+                        )
+
+                        print("✅ Generation completed!")
+                        print(f"Material: {result['material']}")
+                        print(f"Components generated: {len(result['components_generated'])}")
+                        print(f"Components failed: {len(result['components_failed'])}")
+
+                        if result['components_generated']:
+                            print("\n📝 Generated components:")
+                            for comp in result['components_generated']:
+                                print(f"  ✅ {comp['type']}: {comp['filepath']}")
+
+                        if result['components_failed']:
+                            print("\n❌ Failed components:")
+                            for comp in result['components_failed']:
+                                print(f"  ❌ {comp['type']}: {comp['error']}")
+
+                        print(f"\n🕐 Total time: {result['total_time']:.1f}s")
+                        print(f"🎯 Total tokens: {result['total_tokens']}")
+
+                    except Exception as e:
+                        print(f"❌ Error generating content for {args.material}: {e}")
+                        if args.verbose:
+                            import traceback
+                            traceback.print_exc()
 
                 elif args.all:
                     # Generate for all materials
@@ -826,6 +628,9 @@ def main():
             print("⚙️  CONFIGURATION:")
             print("  python3 run.py --config                # Show config")
             print("  python3 run.py --status                # System status")
+            print()
+            print("📋 VERSION TRACKING:")
+            print("  python3 run.py --version-history 'Alumina:text'  # Show version history")
             print()
             print("🧹 CLEANUP:")
             print("  python3 run.py --clean                 # Clean content")

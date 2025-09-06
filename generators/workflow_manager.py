@@ -12,7 +12,7 @@ from typing import Any, Dict, List, Optional
 
 from api.client_manager import get_api_client_for_component
 from generators.dynamic_generator import DynamicGenerator
-from utils.author_manager import get_author_info_for_generation
+from utils.author_manager import get_author_info_for_generation, get_author_info_for_material
 from utils.file_operations import save_component_to_file_original
 
 
@@ -324,8 +324,8 @@ def run_material_generation(
             f"Invalid components: {invalid_components}. Available: {available_components}"
         )
 
-    # Get author info
-    author_info = get_author_info_for_generation(author_id)
+    # Get author info - prioritize frontmatter data
+    author_info = get_author_info_for_material(material, author_id)
 
     # Generate content
     return run_dynamic_generation(

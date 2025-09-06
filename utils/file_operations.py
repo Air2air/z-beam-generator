@@ -10,10 +10,13 @@ import os
 import shutil
 from pathlib import Path
 from typing import Optional
+from datetime import datetime
+import json
 
 # Import path manager for robust path handling
 try:
     from utils.path_manager import PathManager
+
     _path_manager_available = True
 except ImportError:
     _path_manager_available = False
@@ -80,8 +83,20 @@ def save_component_to_file_original(
     # Full file path
     filepath = component_dir / filename
 
+    # Add version log to content before saving
+    content_with_version = add_version_log_to_content(
+        content=content,
+        material=material,
+        component_type=component_type,
+        filepath=str(filepath)
+    )
+
     # Save content
-    save_component_to_file(content, str(filepath))
+    save_component_to_file(content_with_version, str(filepath))
+
+    # Save version history to separate file
+    version_entry = create_version_log_entry(material, component_type, str(filepath))
+    save_version_history(material, component_type, version_entry)
 
     return str(filepath)
 
@@ -237,3 +252,236 @@ def load_component_from_file(material: str, component_type: str) -> Optional[str
             raise OSError(f"Failed to load file {filepath}: {e}")
 
     return None
+
+
+def add_version_log_to_content(
+    content: str,
+    material: str,
+    component_type: str,
+    filepath: str
+) -> str:
+    """
+    Add version log to component content.
+
+    Args:
+        content: Original content
+        material: Material name
+        component_type: Component type
+        filepath: File path where content will be saved
+
+    Returns:
+        Content with version log appended
+    """
+    # Create version log entry
+    version_entry = create_version_log_entry(material, component_type, filepath)
+
+    # Format version log as footer
+    version_footer = format_version_log_footer(version_entry)
+
+    # Append version log to content
+    return content + "\n\n" + version_footer
+
+
+def create_version_log_entry(
+    material: str,
+    component_type: str,
+    filepath: str
+) -> dict:
+    """
+    Create a version log entry for the component.
+
+    Args:
+        material: Material name
+        component_type: Component type
+        filepath: File path
+
+    Returns:
+        Dictionary with version log data
+    """
+    timestamp = datetime.now().isoformat()
+
+    # Get system information
+    try:
+        import platform
+        system_info = {
+            "platform": platform.system(),
+            "python_version": platform.python_version(),
+            "hostname": platform.node()
+        }
+    except:
+        system_info = {"platform": "unknown", "python_version": "unknown", "hostname": "unknown"}
+
+    # Get generation context
+    generation_context = {
+        "material": material,
+        "component_type": component_type,
+        "filepath": filepath,
+        "timestamp": timestamp,
+        "generator_version": "2.1.0",  # Update as needed
+        "system_info": system_info
+    }
+
+    # Try to get author information from environment or context
+    try:
+        # This would be passed from the generation context
+        author_info = os.environ.get("ZBEAM_AUTHOR", "AI Assistant")
+        generation_context["author"] = author_info
+    except:
+        generation_context["author"] = "AI Assistant"
+
+    return generation_context
+
+
+def format_version_log_footer(version_entry: dict) -> str:
+    """
+    Format version log entry as a standardized footer.
+
+    Args:
+        version_entry: Version log data dictionary
+
+    Returns:
+        Formatted footer string
+    """
+    footer_lines = [
+        "---",
+        f"Version Log - Generated: {version_entry['timestamp']}",
+        f"Material: {version_entry['material']}",
+        f"Component: {version_entry['component_type']}",
+        f"Generator: Z-Beam v{version_entry['generator_version']}",
+        f"Author: {version_entry['author']}",
+        f"Platform: {version_entry['system_info']['platform']} ({version_entry['system_info']['python_version']})",
+        f"File: {version_entry['filepath']}",
+        "---"
+    ]
+
+    return "\n".join(footer_lines)
+
+
+def save_version_history(
+    material: str,
+    component_type: str,
+    version_entry: dict
+) -> None:
+    """
+    Save version entry to a persistent history file.
+
+    Args:
+        material: Material name
+        component_type: Component type
+        version_entry: Version log data
+    """
+    try:
+        # Create version history directory
+        history_dir = Path("content/version_history")
+        history_dir.mkdir(parents=True, exist_ok=True)
+
+        # Create filename for version history
+        safe_material = material.lower().replace(" ", "-").replace("/", "-")
+        history_file = history_dir / f"{safe_material}-{component_type}-versions.json"
+
+        # Load existing history or create new
+        if history_file.exists():
+            with open(history_file, "r", encoding="utf-8") as f:
+                history = json.load(f)
+        else:
+            history = {"material": material, "component_type": component_type, "versions": []}
+
+        # Add new version entry
+        history["versions"].append(version_entry)
+
+        # Keep only last 10 versions to prevent file bloat
+        if len(history["versions"]) > 10:
+            history["versions"] = history["versions"][-10:]
+
+        # Save updated history
+        with open(history_file, "w", encoding="utf-8") as f:
+            json.dump(history, f, indent=2, ensure_ascii=False)
+
+    except Exception as e:
+        # Log error but don't fail the generation
+        print(f"Warning: Failed to save version history: {e}")
+
+
+def get_version_history(material: str, component_type: str) -> Optional[dict]:
+    """
+    Get version history for a component.
+
+    Args:
+        material: Material name
+        component_type: Component type
+
+    Returns:
+        Version history dictionary or None if not found
+    """
+    try:
+        history_dir = Path("content/version_history")
+        safe_material = material.lower().replace(" ", "-").replace("/", "-")
+        history_file = history_dir / f"{safe_material}-{component_type}-versions.json"
+
+        if history_file.exists():
+            with open(history_file, "r", encoding="utf-8") as f:
+                return json.load(f)
+
+    except Exception as e:
+        print(f"Warning: Failed to load version history: {e}")
+
+    return None
+
+
+def display_version_history(material: str, component_type: str) -> None:
+    """
+    Display formatted version history for a component.
+
+    Args:
+        material: Material name
+        component_type: Component type
+    """
+    history = get_version_history(material, component_type)
+
+    if not history:
+        print(f"No version history found for {material} - {component_type}")
+        return
+
+    print(f"\n📋 Version History for {material} - {component_type}")
+    print("=" * 60)
+
+    for i, version in enumerate(history["versions"], 1):
+        print(f"\nVersion {i}:")
+        print(f"  📅 Generated: {version['timestamp']}")
+        print(f"  👤 Author: {version['author']}")
+        print(f"  🔧 Generator: Z-Beam v{version['generator_version']}")
+        print(f"  💻 Platform: {version['system_info']['platform']} ({version['system_info']['python_version']})")
+        print(f"  📁 File: {version['filepath']}")
+
+    print(f"\n📊 Total Versions: {len(history['versions'])}")
+
+
+def cleanup_old_versions(material: str, component_type: str, keep_versions: int = 5) -> int:
+    """
+    Clean up old versions, keeping only the most recent ones.
+
+    Args:
+        material: Material name
+        component_type: Component type
+        keep_versions: Number of versions to keep
+
+    Returns:
+        Number of versions removed
+    """
+    history = get_version_history(material, component_type)
+    if not history or len(history["versions"]) <= keep_versions:
+        return 0
+
+    # Keep only the most recent versions
+    original_count = len(history["versions"])
+    history["versions"] = history["versions"][-keep_versions:]
+
+    # Save updated history
+    history_dir = Path("content/version_history")
+    safe_material = material.lower().replace(" ", "-").replace("/", "-")
+    history_file = history_dir / f"{safe_material}-{component_type}-versions.json"
+
+    with open(history_file, "w", encoding="utf-8") as f:
+        json.dump(history, f, indent=2, ensure_ascii=False)
+
+    return original_count - len(history["versions"])

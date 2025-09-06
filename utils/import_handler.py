@@ -6,10 +6,10 @@ This module provides robust error handling for import failures
 and graceful degradation when modules are missing.
 """
 
-import logging
 import importlib
-from typing import Any, Optional, Dict, List, Callable
+import logging
 from functools import wraps
+from typing import Any, Callable, Dict, List, Optional
 
 logger = logging.getLogger(__name__)
 
@@ -92,9 +92,10 @@ class ImportErrorHandler:
     def get_import_report(self) -> Dict[str, Any]:
         """Get a report of import successes and failures."""
         return {
-            'failed_imports': self.failed_imports.copy(),
-            'total_failed': len(self.failed_imports),
-            'total_attempted': len(self.failed_imports) + len([m for m in self.fallbacks.keys() if m not in self.failed_imports])
+            "failed_imports": self.failed_imports.copy(),
+            "total_failed": len(self.failed_imports),
+            "total_attempted": len(self.failed_imports)
+            + len([m for m in self.fallbacks.keys() if m not in self.failed_imports]),
         }
 
 
@@ -104,6 +105,7 @@ import_handler = ImportErrorHandler()
 
 def with_import_fallback(fallback_module: Any):
     """Decorator to provide import fallback for functions."""
+
     def decorator(func: Callable) -> Callable:
         @wraps(func)
         def wrapper(*args, **kwargs):
@@ -118,13 +120,16 @@ def with_import_fallback(fallback_module: Any):
                     return fallback_func(*args, **kwargs)
                 else:
                     raise e
+
         return wrapper
+
     return decorator
 
 
 def create_mock_module(**attributes) -> Any:
     """Create a mock module with specified attributes."""
     import types
+
     module = types.ModuleType("mock_module")
 
     for name, value in attributes.items():
@@ -138,26 +143,26 @@ def setup_component_fallbacks():
     # Mock component generator
     mock_generator = create_mock_module(
         generate=lambda *args, **kwargs: {
-            'component_type': 'mock',
-            'content': 'Mock content - component not available',
-            'success': False,
-            'error': 'Component module not found'
+            "component_type": "mock",
+            "content": "Mock content - component not available",
+            "success": False,
+            "error": "Component module not found",
         }
     )
 
     # Register fallbacks for common components
     common_components = [
-        'components.author.generator',
-        'components.table.generator',
-        'components.frontmatter.generator',
-        'components.badgesymbol.generator',
-        'components.jsonld.generator',
-        'components.metatags.generator',
-        'components.propertiestable.generator',
-        'components.tags.generator',
-        'components.bullets.generator',
-        'components.caption.generator',
-        'components.text.generator'
+        "components.author.generator",
+        "components.table.generator",
+        "components.frontmatter.generator",
+        "components.badgesymbol.generator",
+        "components.jsonld.generator",
+        "components.metatags.generator",
+        "components.propertiestable.generator",
+        "components.tags.generator",
+        "components.bullets.generator",
+        "components.caption.generator",
+        "components.text.generator",
     ]
 
     for component in common_components:
@@ -167,11 +172,11 @@ def setup_component_fallbacks():
 def validate_critical_imports() -> bool:
     """Validate that critical imports are working."""
     critical_modules = [
-        'generators.component_generators',
-        'utils.component_base',
-        'api.client_manager',
-        'optimizer.ai_detection.service',
-        'run'
+        "generators.component_generators",
+        "utils.component_base",
+        "api.client_manager",
+        "optimizer.ai_detection.service",
+        "run",
     ]
 
     results = import_handler.validate_dependencies(critical_modules)
@@ -180,13 +185,19 @@ def validate_critical_imports() -> bool:
     total_count = len(results)
 
     if failed_count > 0:
-        logger.error(f"Critical import validation failed: {failed_count}/{total_count} modules failed")
+        logger.error(
+            f"Critical import validation failed: {failed_count}/{total_count} modules failed"
+        )
         for module, status in results.items():
             if not status:
-                logger.error(f"  - {module}: {import_handler.failed_imports.get(module, 'Unknown error')}")
+                logger.error(
+                    f"  - {module}: {import_handler.failed_imports.get(module, 'Unknown error')}"
+                )
         return False
     else:
-        logger.info(f"Critical import validation passed: {total_count}/{total_count} modules available")
+        logger.info(
+            f"Critical import validation passed: {total_count}/{total_count} modules available"
+        )
         return True
 
 
@@ -195,10 +206,10 @@ setup_component_fallbacks()
 
 
 __all__ = [
-    'ImportErrorHandler',
-    'import_handler',
-    'with_import_fallback',
-    'create_mock_module',
-    'setup_component_fallbacks',
-    'validate_critical_imports',
+    "ImportErrorHandler",
+    "import_handler",
+    "with_import_fallback",
+    "create_mock_module",
+    "setup_component_fallbacks",
+    "validate_critical_imports",
 ]

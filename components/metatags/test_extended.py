@@ -108,7 +108,9 @@ def test_security_validation():
     """Test security validation"""
     try:
         # Test with potentially malicious input
-        calculator = MetatagsCalculator({"subject": "<script>alert('xss')</script>", "category": "metal"})
+        calculator = MetatagsCalculator(
+            {"subject": "<script>alert('xss')</script>", "category": "metal"}
+        )
         result = calculator.generate_complete_metatags()
         # Should not contain script tags in output
         meta_tags_str = str(result["meta_tags"])

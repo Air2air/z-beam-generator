@@ -246,7 +246,7 @@ class ContentQualityScorer:
         elif "indonesia" in country:
             # Enhanced Indonesia persona validation
             score += self._score_indonesia_persona(content, content_lower, words)
-        elif "united states" in country:
+        elif "united states" in country or "usa" in country:
             # Enhanced USA persona validation
             score += self._score_usa_persona(content, content_lower, words)
         else:

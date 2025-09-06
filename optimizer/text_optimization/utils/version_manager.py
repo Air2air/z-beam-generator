@@ -24,9 +24,9 @@ class AIDetectionVersionManager:
         if not self.config_path.exists():
             return "0.1.0"
         try:
-            with open(self.config_path, 'r') as f:
+            with open(self.config_path, "r") as f:
                 config = yaml.safe_load(f)
-            return config.get('version', '0.1.0')
+            return config.get("version", "0.1.0")
         except Exception:
             return "0.1.0"
 
@@ -47,9 +47,9 @@ class AIDetectionVersionManager:
     def get_version_history(self) -> Dict[str, Any]:
         """Get version history."""
         return {
-            'current_version': self.get_current_version(),
-            'last_updated': self.get_current_date(),
-            'changelog': []
+            "current_version": self.get_current_version(),
+            "last_updated": self.get_current_date(),
+            "changelog": [],
         }
 
 

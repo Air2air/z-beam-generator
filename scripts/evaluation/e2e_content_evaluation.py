@@ -16,7 +16,7 @@ project_root = Path(__file__).parent
 sys.path.insert(0, str(project_root))
 
 from api.client import APIClient, MockAPIClient
-from components.text.generator import TextComponentGenerator
+from components.text.generators.generator import TextComponentGenerator
 from components.text.validator import validate_content_comprehensive
 
 # Configure logging

@@ -156,3 +156,113 @@ def get_author_info_for_generation(author_id: Optional[int] = None) -> Dict[str,
         "experience": author.get("experience", ""),
         "specialization": author.get("specialization", ""),
     }
+
+
+def extract_author_info_from_frontmatter_file(material_name: str) -> Optional[Dict[str, Any]]:
+    """
+    Extract author information from the corresponding frontmatter file.
+
+    This function reads the frontmatter file for a material and extracts
+    author information including name, country, and ID.
+
+    Args:
+        material_name: Name of the material (e.g., "Alumina", "Steel")
+
+    Returns:
+        Dictionary with author information or None if not found
+    """
+    try:
+        from pathlib import Path
+
+        # Look for the frontmatter file
+        frontmatter_path = Path("content/components/frontmatter") / f"{material_name}-laser-cleaning.md"
+
+        if not frontmatter_path.exists():
+            return None
+
+        with open(frontmatter_path, "r", encoding="utf-8") as f:
+            content = f.read()
+
+        return extract_author_info_from_content(content)
+
+    except Exception as e:
+        print(f"⚠️ Error extracting author info from frontmatter file: {e}")
+        return None
+
+
+def extract_author_info_from_content(content: str) -> Optional[Dict[str, Any]]:
+    """
+    Extract author information from content frontmatter.
+
+    Args:
+        content: Markdown content with frontmatter
+
+    Returns:
+        Dictionary with author information or None if not found
+    """
+    try:
+        lines = content.split("\n")
+        in_frontmatter = False
+        author_info = {}
+
+        for line in lines:
+            if line.strip() == "---":
+                if not in_frontmatter:
+                    in_frontmatter = True
+                else:
+                    break
+                continue
+
+            if in_frontmatter and ":" in line:
+                key, value = line.split(":", 1)
+                key = key.strip()
+                value = value.strip().strip('"')
+
+                if key == "author":
+                    author_info["name"] = value
+                elif key == "persona_country":
+                    author_info["country"] = value.lower()
+                elif key == "author_id":
+                    author_info["id"] = int(value) if value.isdigit() else 1
+
+        if author_info:
+            author_info.setdefault("id", 1)
+            author_info.setdefault("country", "usa")
+            return author_info
+
+    except Exception as e:
+        print(f"⚠️ Error extracting author info: {e}")
+
+    return None
+
+
+def get_author_info_for_material(material_name: str, fallback_author_id: Optional[int] = None) -> Dict[str, Any]:
+    """
+    Get author information for a material, prioritizing frontmatter data.
+
+    This function first tries to extract author information from the material's
+    frontmatter file. If that fails, it falls back to the provided author_id
+    or default author information.
+
+    Args:
+        material_name: Name of the material
+        fallback_author_id: Optional author ID to use as fallback
+
+    Returns:
+        Dictionary with author information ready for content generation
+    """
+    # First, try to extract from frontmatter file
+    frontmatter_author = extract_author_info_from_frontmatter_file(material_name)
+    if frontmatter_author:
+        return {
+            "name": frontmatter_author.get("name", "Unknown Author"),
+            "country": frontmatter_author.get("country", "Unknown"),
+            "bio": "",
+            "expertise": "laser cleaning technology",
+            "experience": "",
+            "specialization": "",
+            "id": frontmatter_author.get("id", 1),
+        }
+
+    # Fallback to provided author_id or default
+    return get_author_info_for_generation(fallback_author_id)

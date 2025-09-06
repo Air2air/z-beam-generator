@@ -6,11 +6,11 @@ Centralized path management to eliminate hardcoded paths and CWD dependencies.
 Provides consistent path resolution across the entire codebase.
 """
 
+import logging
 import os
 import sys
 from pathlib import Path
 from typing import Optional, Union
-import logging
 
 logger = logging.getLogger(__name__)
 
@@ -43,7 +43,9 @@ class PathManager:
 
         # Ensure project root exists
         if not cls._project_root or not cls._project_root.exists():
-            raise RuntimeError(f"Could not determine project root. Tried: {cls._project_root}")
+            raise RuntimeError(
+                f"Could not determine project root. Tried: {cls._project_root}"
+            )
 
         # Add project root to Python path
         project_root_str = str(cls._project_root)
@@ -79,7 +81,9 @@ class PathManager:
         return cls._project_root
 
     @classmethod
-    def get_path(cls, *path_components: Union[str, Path], must_exist: bool = True) -> Path:
+    def get_path(
+        cls, *path_components: Union[str, Path], must_exist: bool = True
+    ) -> Path:
         """
         Get a path relative to project root.
 
@@ -160,7 +164,7 @@ def get_path(*path_components: Union[str, Path], must_exist: bool = True) -> Pat
 
 # Export common functions
 __all__ = [
-    'PathManager',
-    'get_project_root',
-    'get_path',
+    "PathManager",
+    "get_project_root",
+    "get_path",
 ]

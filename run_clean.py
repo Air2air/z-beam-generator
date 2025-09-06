@@ -18,7 +18,7 @@ from pathlib import Path
 import yaml
 
 from api.client_manager import get_api_client_for_component, test_api_connectivity
-from components.text.generator import TextComponentGenerator
+from components.text.generators.generator import TextComponentGenerator
 from generators.dynamic_generator import DynamicGenerator
 from optimizer.optimization_orchestrator import ContentOptimizationOrchestrator
 from utils.author_manager import get_author_by_id, list_authors

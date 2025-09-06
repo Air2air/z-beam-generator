@@ -8,9 +8,9 @@ Handles missing dependencies and provides graceful degradation.
 
 import importlib
 import logging
-from typing import Any, Optional, Type, Dict, List
 import sys
 from pathlib import Path
+from typing import Any, Dict, List, Optional, Type
 
 logger = logging.getLogger(__name__)
 
@@ -45,7 +45,9 @@ class ImportManager:
             return cls._import_cache[module_path]
 
         if module_path in cls._failed_imports:
-            logger.debug(f"Using cached failure for {module_path}: {cls._failed_imports[module_path]}")
+            logger.debug(
+                f"Using cached failure for {module_path}: {cls._failed_imports[module_path]}"
+            )
             return fallback
 
         try:
@@ -65,7 +67,9 @@ class ImportManager:
             return fallback
 
     @classmethod
-    def safe_import_class(cls, module_path: str, class_name: str, fallback: Any = None) -> Optional[Type]:
+    def safe_import_class(
+        cls, module_path: str, class_name: str, fallback: Any = None
+    ) -> Optional[Type]:
         """
         Safely import a class from a module.
 
@@ -122,12 +126,7 @@ def validate_dependencies() -> Dict[str, Any]:
     Returns:
         Dictionary with validation results
     """
-    results = {
-        "critical": {},
-        "optional": {},
-        "missing": [],
-        "warnings": []
-    }
+    results = {"critical": {}, "optional": {}, "missing": [], "warnings": []}
 
     # Critical dependencies
     critical_deps = [
@@ -175,7 +174,7 @@ setup_python_path()
 
 
 __all__ = [
-    'ImportManager',
-    'validate_dependencies',
-    'setup_python_path',
+    "ImportManager",
+    "validate_dependencies",
+    "setup_python_path",
 ]
