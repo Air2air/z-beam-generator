@@ -6,26 +6,27 @@ including A/B testing, template evolution, and performance-based optimization.
 """
 
 import asyncio
+import hashlib
 import logging
-from typing import Any, Dict, List, Optional, Union
 from dataclasses import dataclass, field
 from datetime import datetime, timedelta
 from enum import Enum
-import hashlib
+from typing import Any, Dict, List, Optional, Union
 
 from services import BaseService, ServiceConfiguration, ServiceError
-
 
 logger = logging.getLogger(__name__)
 
 
 class DynamicEvolutionError(ServiceError):
     """Raised when dynamic evolution operations fail."""
+
     pass
 
 
 class EvolutionStrategy(Enum):
     """Strategies for content evolution."""
+
     GRADUAL = "gradual"
     RADICAL = "radical"
     CONSERVATIVE = "conservative"
@@ -34,6 +35,7 @@ class EvolutionStrategy(Enum):
 
 class EvolutionTrigger(Enum):
     """Triggers for evolution."""
+
     PERFORMANCE_DROP = "performance_drop"
     QUALITY_THRESHOLD = "quality_threshold"
     TIME_BASED = "time_based"
@@ -43,6 +45,7 @@ class EvolutionTrigger(Enum):
 @dataclass
 class EvolutionTemplate:
     """Template for content evolution."""
+
     template_id: str
     base_prompt: str
     evolution_rules: Dict[str, Any] = field(default_factory=dict)
@@ -59,6 +62,7 @@ class EvolutionTemplate:
 @dataclass
 class EvolutionResult:
     """Result of a content evolution."""
+
     original_content: str
     evolved_content: str
     evolution_strategy: EvolutionStrategy
@@ -71,6 +75,7 @@ class EvolutionResult:
 @dataclass
 class EvolutionHistory:
     """History of evolutions for a template."""
+
     template_id: str
     evolution_results: List[EvolutionResult] = field(default_factory=list)
     performance_trends: Dict[str, List[float]] = field(default_factory=dict)
@@ -91,6 +96,7 @@ class EvolutionHistory:
 @dataclass
 class ABTestVariant:
     """Variant in an A/B test."""
+
     variant_id: str
     content: str
     performance_score: float = 0.0
@@ -101,6 +107,7 @@ class ABTestVariant:
 @dataclass
 class ABTest:
     """A/B test configuration and results."""
+
     test_id: str
     template_id: str
     variants: List[ABTestVariant] = field(default_factory=list)
@@ -163,7 +170,7 @@ class DynamicEvolutionService(BaseService):
         base_prompt: str,
         evolution_rules: Optional[Dict[str, Any]] = None,
         variables: Optional[Dict[str, Any]] = None,
-        constraints: Optional[Dict[str, Any]] = None
+        constraints: Optional[Dict[str, Any]] = None,
     ) -> EvolutionTemplate:
         """
         Register or update an evolution template.
@@ -190,14 +197,16 @@ class DynamicEvolutionService(BaseService):
             base_prompt=base_prompt,
             evolution_rules=evolution_rules,
             variables=variables,
-            constraints=constraints
+            constraints=constraints,
         )
 
         self.templates[template_id] = template
 
         # Initialize evolution history if not exists
         if template_id not in self.evolution_history:
-            self.evolution_history[template_id] = EvolutionHistory(template_id=template_id)
+            self.evolution_history[template_id] = EvolutionHistory(
+                template_id=template_id
+            )
 
         logger.info(f"Registered template: {template_id}")
         return template
@@ -207,7 +216,7 @@ class DynamicEvolutionService(BaseService):
         template_id: str,
         current_content: str,
         performance_data: Dict[str, Any],
-        evolution_strategy: Optional[EvolutionStrategy] = None
+        evolution_strategy: Optional[EvolutionStrategy] = None,
     ) -> Optional[EvolutionResult]:
         """
         Evolve content based on performance data.
@@ -249,14 +258,16 @@ class DynamicEvolutionService(BaseService):
             evolution_strategy=evolution_strategy,
             quality_improvement=quality_improvement,
             performance_metrics=performance_data.copy(),
-            metadata={"template_id": template_id}
+            metadata={"template_id": template_id},
         )
 
         # Update history
         history.add_result(result)
         self._update_performance_trends(history, result)
 
-        logger.info(f"Evolved content for template {template_id} using {evolution_strategy.value} strategy")
+        logger.info(
+            f"Evolved content for template {template_id} using {evolution_strategy.value} strategy"
+        )
         return result
 
     def _select_adaptive_strategy(self, history: EvolutionHistory) -> EvolutionStrategy:
@@ -266,7 +277,9 @@ class DynamicEvolutionService(BaseService):
 
         # Analyze recent performance
         recent_results = history.evolution_results[-3:]
-        avg_improvement = sum(r.quality_improvement for r in recent_results) / len(recent_results)
+        avg_improvement = sum(r.quality_improvement for r in recent_results) / len(
+            recent_results
+        )
 
         if avg_improvement > 0.1:
             return EvolutionStrategy.RADICAL
@@ -280,7 +293,7 @@ class DynamicEvolutionService(BaseService):
         template: EvolutionTemplate,
         content: str,
         performance_data: Dict[str, Any],
-        strategy: EvolutionStrategy
+        strategy: EvolutionStrategy,
     ) -> str:
         """Apply the specified evolution strategy."""
         if strategy == EvolutionStrategy.GRADUAL:
@@ -303,7 +316,7 @@ class DynamicEvolutionService(BaseService):
         template_id: str,
         trigger: EvolutionTrigger,
         performance_data: Dict[str, Any],
-        **kwargs
+        **kwargs,
     ) -> tuple[bool, str]:
         """
         Check if content should be evolved based on trigger conditions.
@@ -327,15 +340,27 @@ class DynamicEvolutionService(BaseService):
             threshold = kwargs.get("performance_threshold", 0.7)
             current_perf = performance_data.get("quality_score", 0.0)
             if current_perf < threshold:
-                return True, f"Performance dropped below threshold ({current_perf:.2f} < {threshold})"
-            return False, f"Performance above threshold ({current_perf:.2f} >= {threshold})"
+                return (
+                    True,
+                    f"Performance dropped below threshold ({current_perf:.2f} < {threshold})",
+                )
+            return (
+                False,
+                f"Performance above threshold ({current_perf:.2f} >= {threshold})",
+            )
 
         elif trigger == EvolutionTrigger.QUALITY_THRESHOLD:
             threshold = kwargs.get("quality_threshold", 0.8)
             current_quality = performance_data.get("quality_score", 0.0)
             if current_quality < threshold:
-                return True, f"Quality below threshold ({current_quality:.2f} < {threshold})"
-            return False, f"Quality above threshold ({current_quality:.2f} >= {threshold})"
+                return (
+                    True,
+                    f"Quality below threshold ({current_quality:.2f} < {threshold})",
+                )
+            return (
+                False,
+                f"Quality above threshold ({current_quality:.2f} >= {threshold})",
+            )
 
         elif trigger == EvolutionTrigger.TIME_BASED:
             if not history or not history.last_evolution:
@@ -344,8 +369,14 @@ class DynamicEvolutionService(BaseService):
             threshold_hours = kwargs.get("hours_threshold", 24)
             time_since_last = datetime.now() - history.last_evolution
             if time_since_last.total_seconds() > (threshold_hours * 3600):
-                return True, f"Time threshold exceeded ({time_since_last.total_seconds()/3600:.1f} hours > {threshold_hours})"
-            return False, f"Time threshold not exceeded ({time_since_last.total_seconds()/3600:.1f} hours <= {threshold_hours})"
+                return (
+                    True,
+                    f"Time threshold exceeded ({time_since_last.total_seconds()/3600:.1f} hours > {threshold_hours})",
+                )
+            return (
+                False,
+                f"Time threshold not exceeded ({time_since_last.total_seconds()/3600:.1f} hours <= {threshold_hours})",
+            )
 
         elif trigger == EvolutionTrigger.MANUAL:
             return True, "Manual trigger"
@@ -358,7 +389,7 @@ class DynamicEvolutionService(BaseService):
         template_id: str,
         variants: List[str],
         control_variant: str,
-        duration_days: int = 7
+        duration_days: int = 7,
     ) -> ABTest:
         """
         Create an A/B test.
@@ -381,16 +412,14 @@ class DynamicEvolutionService(BaseService):
 
         # Create control variant
         control = ABTestVariant(
-            variant_id=f"{test_id}_control",
-            content=control_variant
+            variant_id=f"{test_id}_control", content=control_variant
         )
 
         # Create test variants
         test_variants = []
         for i, content in enumerate(variants):
             variant = ABTestVariant(
-                variant_id=f"{test_id}_variant_{i}",
-                content=content
+                variant_id=f"{test_id}_variant_{i}", content=content
             )
             test_variants.append(variant)
 
@@ -400,7 +429,7 @@ class DynamicEvolutionService(BaseService):
             variants=[control] + test_variants,
             control_variant=control_variant,
             test_duration_days=duration_days,
-            end_date=datetime.now() + timedelta(days=duration_days)
+            end_date=datetime.now() + timedelta(days=duration_days),
         )
 
         self.active_ab_tests[test_id] = ab_test
@@ -408,10 +437,7 @@ class DynamicEvolutionService(BaseService):
         return ab_test
 
     def update_ab_test_performance(
-        self,
-        test_id: str,
-        variant_id: str,
-        performance_score: float
+        self, test_id: str, variant_id: str, performance_score: float
     ) -> None:
         """
         Update performance for an A/B test variant.
@@ -425,15 +451,21 @@ class DynamicEvolutionService(BaseService):
             raise DynamicEvolutionError(f"A/B test '{test_id}' not found")
 
         ab_test = self.active_ab_tests[test_id]
-        variant = next((v for v in ab_test.variants if v.variant_id == variant_id), None)
+        variant = next(
+            (v for v in ab_test.variants if v.variant_id == variant_id), None
+        )
 
         if not variant:
-            raise DynamicEvolutionError(f"Variant '{variant_id}' not found in test '{test_id}'")
+            raise DynamicEvolutionError(
+                f"Variant '{variant_id}' not found in test '{test_id}'"
+            )
 
         # Update performance (simple average)
         total_score = variant.performance_score * variant.sample_size
         variant.sample_size += 1
-        variant.performance_score = (total_score + performance_score) / variant.sample_size
+        variant.performance_score = (
+            total_score + performance_score
+        ) / variant.sample_size
 
     def get_ab_test_results(self, test_id: str) -> Optional[Dict[str, Any]]:
         """
@@ -455,22 +487,26 @@ class DynamicEvolutionService(BaseService):
             return {"error": "No variants found"}
 
         best_variant = max(ab_test.variants, key=lambda v: v.performance_score)
-        control_variant = next((v for v in ab_test.variants if v.variant_id.endswith("_control")), None)
+        control_variant = next(
+            (v for v in ab_test.variants if v.variant_id.endswith("_control")), None
+        )
 
         return {
             "test_id": test_id,
             "status": ab_test.status,
             "best_variant": best_variant.variant_id,
             "best_score": best_variant.performance_score,
-            "control_score": control_variant.performance_score if control_variant else 0.0,
+            "control_score": control_variant.performance_score
+            if control_variant
+            else 0.0,
             "variants": [
                 {
                     "id": v.variant_id,
                     "score": v.performance_score,
-                    "sample_size": v.sample_size
+                    "sample_size": v.sample_size,
                 }
                 for v in ab_test.variants
-            ]
+            ],
         }
 
     def get_evolution_analytics(self, template_id: str) -> Dict[str, Any]:
@@ -493,7 +529,7 @@ class DynamicEvolutionService(BaseService):
                 "total_evolutions": 0,
                 "avg_improvement": 0.0,
                 "best_improvement": 0.0,
-                "worst_improvement": 0.0
+                "worst_improvement": 0.0,
             }
 
         improvements = [r.quality_improvement for r in history.evolution_results]
@@ -504,8 +540,9 @@ class DynamicEvolutionService(BaseService):
             "best_improvement": max(improvements),
             "worst_improvement": min(improvements),
             "improvement_trend": improvements[-10:],  # Last 10 improvements
-            "recent_optimizations": len([r for r in history.evolution_results[-5:]
-                                       if r.quality_improvement > 0])  # Recent positive improvements
+            "recent_optimizations": len(
+                [r for r in history.evolution_results[-5:] if r.quality_improvement > 0]
+            ),  # Recent positive improvements
         }
 
     def rollback_evolution(self, template_id: str, steps: int = 1) -> bool:
@@ -540,13 +577,19 @@ class DynamicEvolutionService(BaseService):
         logger.info(f"Rolled back {steps} evolution steps for template {template_id}")
         return True
 
-    def _update_performance_trends(self, history: EvolutionHistory, result: EvolutionResult) -> None:
+    def _update_performance_trends(
+        self, history: EvolutionHistory, result: EvolutionResult
+    ) -> None:
         """Update performance trends in history."""
         if "quality_improvements" not in history.performance_trends:
             history.performance_trends["quality_improvements"] = []
 
-        history.performance_trends["quality_improvements"].append(result.quality_improvement)
+        history.performance_trends["quality_improvements"].append(
+            result.quality_improvement
+        )
 
         # Keep only last 20 trend points
         if len(history.performance_trends["quality_improvements"]) > 20:
-            history.performance_trends["quality_improvements"] = history.performance_trends["quality_improvements"][-20:]
+            history.performance_trends[
+                "quality_improvements"
+            ] = history.performance_trends["quality_improvements"][-20:]

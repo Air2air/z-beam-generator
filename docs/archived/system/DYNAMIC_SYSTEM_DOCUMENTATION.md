@@ -279,6 +279,6 @@ python3 run.py --verbose --material "Aluminum" --components "frontmatter"
 
 ---
 
-*Generated: August 21, 2025*  
-*Version: 2.0.0*  
+*Generated: August 21, 2025*
+*Version: 2.0.0*
 *Status: Production Ready ✅*

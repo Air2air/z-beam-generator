@@ -9,7 +9,7 @@
 
 ### Test Categories Now Covered by `run.py --test`:
 1. **Environment Tests** - .env file validation
-2. **API Connectivity Tests** - DeepSeek & Grok API validation  
+2. **API Connectivity Tests** - DeepSeek & Grok API validation
 3. **Component Configuration Tests** - All 11 components verified
 4. **Fail-Fast Architecture Tests** - No mocks validation
 5. **Materials Path Tests** - 109 materials loading validation
@@ -26,7 +26,7 @@
 
 #### Essential Files to Keep:
 - `test_dynamic_system.py` - Core system validation
-- `test_integration.py` - Integration testing  
+- `test_integration.py` - Integration testing
 - `test_component_config.py` - Component configuration
 - `test_static_components.py` - Static component validation
 - `test_frontmatter.py` - Frontmatter component testing
@@ -112,7 +112,7 @@ api/
 1. **Maintain Current Design** - Architecture is enterprise-grade
 2. **Consider Future Enhancements**:
    - Rate limiting for API requests
-   - Response caching for repeated requests  
+   - Response caching for repeated requests
    - Async/await patterns for concurrent requests
 3. **Documentation**: Consider adding API architecture diagrams
 

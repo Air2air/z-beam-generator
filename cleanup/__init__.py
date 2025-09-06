@@ -9,9 +9,10 @@ Two interfaces available:
 2. CleanupManager (from cleanup_manager) - Standalone cleanup system
 """
 
-# Import both cleanup interfaces
-from .test_cleanup import CleanupManager as TestCleanupManager
 from .cleanup_manager import CleanupManager
 
+# Import both cleanup interfaces
+from .test_cleanup import CleanupManager as TestCleanupManager
+
 # Default to standalone manager for safety and simplicity
-__all__ = ['CleanupManager', 'TestCleanupManager']
+__all__ = ["CleanupManager", "TestCleanupManager"]

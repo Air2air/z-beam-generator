@@ -26,27 +26,27 @@ The current `ContentQualityScorer` provides:
 ```python
 class EnhancedContentScorer:
     """Enhanced scorer with Winston.ai integration"""
-    
+
     def __init__(self, human_threshold: float = 75.0, ai_threshold: float = 30.0):
         self.human_threshold = human_threshold
         self.ai_threshold = ai_threshold  # Target AI detection score
         self.ai_detector = get_ai_detection_service()
-    
+
     def score_with_ai_detection(self, content: str, material_data: Dict,
                                author_info: Dict, frontmatter_data: Dict = None) -> EnhancedContentScore:
         """Score content with both quality metrics and AI detection"""
-        
+
         # Get existing quality scores
         quality_score = self._calculate_quality_score(content, material_data, author_info, frontmatter_data)
-        
+
         # Get AI detection score from Winston.ai
         ai_result = self.ai_detector.analyze_text(content)
-        
+
         # Calculate improvement recommendations
         improvement_plan = self._generate_improvement_plan(
             quality_score, ai_result, material_data, author_info
         )
-        
+
         return EnhancedContentScore(
             quality_score=quality_score,
             ai_detection_score=ai_result.score,
@@ -62,7 +62,7 @@ class EnhancedContentScorer:
 ```python
 class IterativePromptRefinement:
     """Refine prompts based on AI detection feedback"""
-    
+
     def __init__(self):
         self.improvement_strategies = {
             'high_ai_score': self._reduce_ai_patterns,
@@ -70,25 +70,25 @@ class IterativePromptRefinement:
             'poor_authenticity': self._strengthen_persona,
             'technical_imbalance': self._balance_technical_content
         }
-    
+
     def refine_prompt(self, original_prompt: str, ai_score: float,
                      quality_score: ContentScore) -> str:
         """Refine prompt based on scoring feedback"""
-        
+
         refinements = []
-        
+
         # High AI score (> 70) - Add human-like elements
         if ai_score > 70:
             refinements.extend(self._reduce_ai_patterns())
-        
+
         # Low believability - Enhance human writing characteristics
         if quality_score.human_believability < self.human_threshold:
             refinements.extend(self._enhance_human_elements())
-        
+
         # Poor authenticity - Strengthen author persona
         if quality_score.author_authenticity < 70:
             refinements.extend(self._strengthen_persona())
-        
+
         return self._apply_refinements(original_prompt, refinements)
 ```
 
@@ -96,24 +96,24 @@ class IterativePromptRefinement:
 ```python
 class ContentRewriter:
     """Rewrite content based on AI detection analysis"""
-    
+
     def rewrite_for_human_likeness(self, content: str, ai_analysis: Dict) -> str:
         """Rewrite content to reduce AI detection score"""
-        
+
         # Analyze sentence-level AI scores
         high_ai_sentences = []
         for sentence_data in ai_analysis.get('sentences', []):
             if sentence_data.get('score', 0) > 60:
                 high_ai_sentences.append(sentence_data['text'])
-        
+
         # Apply rewriting strategies
         rewritten_content = content
         for sentence in high_ai_sentences:
             rewritten_sentence = self._humanize_sentence(sentence)
             rewritten_content = rewritten_content.replace(sentence, rewritten_sentence)
-        
+
         return rewritten_content
-    
+
     def _humanize_sentence(self, sentence: str) -> str:
         """Apply human-like writing patterns to a sentence"""
         # Add natural variations, contractions, colloquialisms
@@ -127,41 +127,41 @@ class ContentRewriter:
 ```python
 class IterativeContentImprover:
     """Multi-iteration content improvement system"""
-    
+
     def __init__(self, max_iterations: int = 3):
         self.max_iterations = max_iterations
         self.ai_detector = get_ai_detection_service()
         self.scorer = EnhancedContentScorer()
-    
+
     def improve_content(self, initial_content: str, material_data: Dict,
                        author_info: Dict, generation_context: Dict) -> ImprovementResult:
         """Iteratively improve content using AI detection feedback"""
-        
+
         current_content = initial_content
         improvement_history = []
-        
+
         for iteration in range(self.max_iterations):
             # Score current content
             score_result = self.scorer.score_with_ai_detection(
                 current_content, material_data, author_info, generation_context
             )
-            
+
             improvement_history.append({
                 'iteration': iteration + 1,
                 'ai_score': score_result.ai_detection_score,
                 'quality_score': score_result.quality_score.overall_score,
                 'classification': score_result.ai_classification
             })
-            
+
             # Check if improvement is needed
             if not score_result.retry_recommended:
                 break
-            
+
             # Apply improvement strategy
             current_content = self._apply_improvement_strategy(
                 current_content, score_result, material_data, author_info
             )
-        
+
         return ImprovementResult(
             final_content=current_content,
             improvement_history=improvement_history,
@@ -186,28 +186,28 @@ class IterativeContentImprover:
 ```python
 class EnhancedFailFastContentGenerator(FailFastContentGenerator):
     """Enhanced generator with AI detection iterative improvement"""
-    
+
     def __init__(self, *args, enable_ai_improvement: bool = True, **kwargs):
         super().__init__(*args, **kwargs)
         self.enable_ai_improvement = enable_ai_improvement
         if enable_ai_improvement:
             self.improver = IterativeContentImprover()
-    
+
     def generate(self, material_name: str, material_data: Dict, **kwargs) -> GenerationResult:
         """Generate content with AI detection iterative improvement"""
-        
+
         # Generate initial content
         initial_result = super().generate(material_name, material_data, **kwargs)
-        
+
         if not self.enable_ai_improvement or not initial_result.success:
             return initial_result
-        
+
         # Apply iterative improvement
         improvement_result = self.improver.improve_content(
-            initial_result.content, material_data, 
+            initial_result.content, material_data,
             kwargs.get('author_info', {}), kwargs
         )
-        
+
         # Return improved content with metadata
         return GenerationResult(
             success=True,
@@ -252,12 +252,12 @@ quality_thresholds:
 ```python
 class ImprovementAnalytics:
     """Track and analyze content improvement patterns"""
-    
+
     def track_improvement(self, material_name: str, improvement_history: List[Dict]) -> None:
         """Track improvement metrics for analytics"""
         # Store improvement data for analysis
         # Calculate success rates, average iterations, etc.
-    
+
     def analyze_patterns(self) -> Dict:
         """Analyze improvement patterns across materials"""
         # Identify common improvement needs

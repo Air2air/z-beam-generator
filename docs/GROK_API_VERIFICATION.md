@@ -86,7 +86,7 @@ export DEEPSEEK_API_KEY="your_deepseek_api_key_here"
 # Generate content using Grok-4
 python3 run.py --material "Steel" --components "content"
 
-# Generate table using Grok-4  
+# Generate table using Grok-4
 python3 run.py --material "Aluminum" --components "table"
 
 # Interactive mode to select components

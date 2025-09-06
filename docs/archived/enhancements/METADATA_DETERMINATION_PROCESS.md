@@ -7,19 +7,19 @@ def assign_round_robin_authors(materials_by_category: Dict[str, List[str]]) -> D
     """Assign authors in round-robin fashion across all materials."""
     author_assignments = {}
     author_counter = 1
-    
+
     # Flatten all materials and assign in round-robin
     all_materials = []
     for category, materials in materials_by_category.items():
         all_materials.extend(materials)
-    
+
     # Sort materials alphabetically for consistent assignment
     all_materials.sort()
-    
+
     for material in all_materials:
         author_assignments[material] = author_counter
         author_counter = (author_counter % 4) + 1  # Round-robin through 1-4
-        
+
     return author_assignments
 ```
 
@@ -34,17 +34,17 @@ def assign_round_robin_authors(materials_by_category: Dict[str, List[str]]) -> D
 ```python
 COMPLEXITY_MAPPING = {
     # High-end materials requiring precise control
-    "very_high": ["Titanium", "Hafnium", "Rhenium", "Carbon Fiber Reinforced Polymer", 
+    "very_high": ["Titanium", "Hafnium", "Rhenium", "Carbon Fiber Reinforced Polymer",
                   "Ceramic Matrix Composites CMCs", "Metal Matrix Composites MMCs"],
-    
+
     # Technical materials requiring expertise
     "high": ["Stainless Steel", "Inconel", "Hastelloy", "Gallium Arsenide", "Silicon Carbide",
              "Alumina", "Zirconia", "Silicon Nitride", "Marble", "Granite"],
-    
+
     # Standard industrial materials
     "medium": ["Aluminum", "Copper", "Brass", "Bronze", "Glass", "Borosilicate Glass",
                "Fused Silica", "Quartz Glass", "Lead Crystal", "Oak", "Maple", "Cherry"],
-    
+
     # Basic materials with straightforward processing
     "low": ["Steel", "Iron", "Pine", "Plywood", "MDF", "Concrete", "Brick", "Mortar"]
 }
@@ -52,7 +52,7 @@ COMPLEXITY_MAPPING = {
 
 **Classification criteria:**
 - **Very High (Score 5)**: Exotic metals, advanced composites requiring ultrafast lasers
-- **High (Score 4)**: Technical alloys, ceramics, engineered stones requiring expertise  
+- **High (Score 4)**: Technical alloys, ceramics, engineered stones requiring expertise
 - **Medium (Score 3)**: Common industrial metals, standard glasses, hardwoods
 - **Low (Score 2)**: Basic materials, simple processing requirements
 
@@ -79,7 +79,7 @@ For each material, the system creates:
 ```python
 metadata = {
     "name": material_name,                    # From original list
-    "author_id": author_id,                  # Round-robin assignment  
+    "author_id": author_id,                  # Round-robin assignment
     "complexity": complexity,                # Classification algorithm
     "difficulty_score": get_difficulty_score(complexity),  # 2-5 numeric scale
     "category": category,                    # From original YAML structure
@@ -88,11 +88,11 @@ metadata = {
     "formula": "Al2O3",                     # If known from lookup table
     "laser_parameters": {                   # Placeholders for calibration
         "fluence_threshold": "TBD",
-        "pulse_duration": "TBD", 
+        "pulse_duration": "TBD",
         "wavelength_optimal": "TBD"
     },
     "applications": ["TBD"],               # To be researched
-    "surface_treatments": ["TBD"],         # To be researched  
+    "surface_treatments": ["TBD"],         # To be researched
     "industry_tags": ["TBD"]               # To be researched
 }
 ```
@@ -101,7 +101,7 @@ metadata = {
 
 **Perfect Round-Robin Distribution:**
 - Author 1: 28 materials (25.7%)
-- Author 2: 27 materials (24.8%) 
+- Author 2: 27 materials (24.8%)
 - Author 3: 27 materials (24.8%)
 - Author 4: 27 materials (24.8%)
 

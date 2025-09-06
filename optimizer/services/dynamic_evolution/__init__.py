@@ -15,22 +15,23 @@ Features:
 """
 
 import asyncio
+import hashlib
 import json
 import logging
-import hashlib
-from typing import Any, Dict, List, Optional, Tuple, Union
+from copy import deepcopy
 from dataclasses import dataclass, field
 from datetime import datetime
 from enum import Enum
-from copy import deepcopy
+from typing import Any, Dict, List, Optional, Tuple, Union
 
-from services import BaseService, ServiceConfiguration, ServiceError
+from ..base import BaseService, ServiceConfiguration, ServiceError
 
 logger = logging.getLogger(__name__)
 
 
 class EvolutionStrategy(Enum):
     """Strategies for evolving prompts/content."""
+
     GRADUAL = "gradual"
     RADICAL = "radical"
     CONSERVATIVE = "conservative"
@@ -39,6 +40,7 @@ class EvolutionStrategy(Enum):
 
 class EvolutionTrigger(Enum):
     """Triggers for initiating evolution."""
+
     PERFORMANCE_DROP = "performance_drop"
     QUALITY_THRESHOLD = "quality_threshold"
     TIME_BASED = "time_based"
@@ -49,6 +51,7 @@ class EvolutionTrigger(Enum):
 @dataclass
 class EvolutionTemplate:
     """Template for prompt/content evolution."""
+
     template_id: str
     base_prompt: str
     evolution_rules: Dict[str, Any]
@@ -61,6 +64,7 @@ class EvolutionTemplate:
 @dataclass
 class EvolutionResult:
     """Result of an evolution operation."""
+
     original_content: str
     evolved_content: str
     evolution_strategy: EvolutionStrategy
@@ -73,6 +77,7 @@ class EvolutionResult:
 @dataclass
 class EvolutionHistory:
     """History of evolution operations."""
+
     template_id: str
     evolution_results: List[EvolutionResult] = field(default_factory=list)
     performance_trends: Dict[str, List[float]] = field(default_factory=dict)
@@ -83,6 +88,7 @@ class EvolutionHistory:
 @dataclass
 class ABTestVariant:
     """A/B test variant for evolution testing."""
+
     variant_id: str
     content: str
     performance_score: float = 0.0
@@ -94,6 +100,7 @@ class ABTestVariant:
 @dataclass
 class ABTest:
     """A/B test configuration and results."""
+
     test_id: str
     variants: List[ABTestVariant]
     control_variant: str
@@ -106,6 +113,7 @@ class ABTest:
 
 class DynamicEvolutionError(ServiceError):
     """Raised when dynamic evolution fails."""
+
     pass
 
 
@@ -129,6 +137,9 @@ class DynamicEvolutionService(BaseService):
         self.performance_cache: Dict[str, Dict[str, Any]] = {}
 
         super().__init__(config)
+        
+        # Initialize logger
+        self.logger = logging.getLogger(f"{__name__}.{self.__class__.__name__}")
 
     def _validate_config(self) -> None:
         """Validate service configuration."""
@@ -145,7 +156,7 @@ class DynamicEvolutionService(BaseService):
         base_prompt: str,
         evolution_rules: Dict[str, Any],
         variables: Optional[Dict[str, Any]] = None,
-        constraints: Optional[Dict[str, Any]] = None
+        constraints: Optional[Dict[str, Any]] = None,
     ) -> EvolutionTemplate:
         """
         Register an evolution template.
@@ -168,7 +179,7 @@ class DynamicEvolutionService(BaseService):
             base_prompt=base_prompt,
             evolution_rules=evolution_rules,
             variables=variables or {},
-            constraints=constraints or {}
+            constraints=constraints or {},
         )
 
         self.templates[template_id] = template
@@ -183,7 +194,7 @@ class DynamicEvolutionService(BaseService):
         current_content: str,
         performance_data: Dict[str, Any],
         evolution_strategy: EvolutionStrategy = EvolutionStrategy.GRADUAL,
-        **kwargs
+        **kwargs,
     ) -> EvolutionResult:
         """
         Evolve content based on performance data.
@@ -210,7 +221,11 @@ class DynamicEvolutionService(BaseService):
         try:
             # Apply evolution strategy
             evolved_content = await self._apply_evolution_strategy(
-                template, current_content, performance_data, evolution_strategy, **kwargs
+                template,
+                current_content,
+                performance_data,
+                evolution_strategy,
+                **kwargs,
             )
 
             # Calculate quality improvement
@@ -228,9 +243,9 @@ class DynamicEvolutionService(BaseService):
                 metadata={
                     "template_id": template_id,
                     "strategy": evolution_strategy.value,
-                    "processing_time": (datetime.now() - start_time).total_seconds()
+                    "processing_time": (datetime.now() - start_time).total_seconds(),
                 },
-                timestamp=datetime.now()
+                timestamp=datetime.now(),
             )
 
             # Update evolution history
@@ -242,8 +257,10 @@ class DynamicEvolutionService(BaseService):
             # Update performance trends
             self._update_performance_trends(history, result)
 
-            self.logger.info(f"Evolved content for template {template_id}: "
-                           f"improvement={quality_improvement:.3f}")
+            self.logger.info(
+                f"Evolved content for template {template_id}: "
+                f"improvement={quality_improvement:.3f}"
+            )
 
             return result
 
@@ -257,17 +274,25 @@ class DynamicEvolutionService(BaseService):
         content: str,
         performance_data: Dict[str, Any],
         strategy: EvolutionStrategy,
-        **kwargs
+        **kwargs,
     ) -> str:
         """Apply the specified evolution strategy."""
         if strategy == EvolutionStrategy.GRADUAL:
-            return await self._apply_gradual_evolution(template, content, performance_data, **kwargs)
+            return await self._apply_gradual_evolution(
+                template, content, performance_data, **kwargs
+            )
         elif strategy == EvolutionStrategy.RADICAL:
-            return await self._apply_radical_evolution(template, content, performance_data, **kwargs)
+            return await self._apply_radical_evolution(
+                template, content, performance_data, **kwargs
+            )
         elif strategy == EvolutionStrategy.CONSERVATIVE:
-            return await self._apply_conservative_evolution(template, content, performance_data, **kwargs)
+            return await self._apply_conservative_evolution(
+                template, content, performance_data, **kwargs
+            )
         elif strategy == EvolutionStrategy.ADAPTIVE:
-            return await self._apply_adaptive_evolution(template, content, performance_data, **kwargs)
+            return await self._apply_adaptive_evolution(
+                template, content, performance_data, **kwargs
+            )
         else:
             raise DynamicEvolutionError(f"Unknown evolution strategy: {strategy}")
 
@@ -276,7 +301,7 @@ class DynamicEvolutionService(BaseService):
         template: EvolutionTemplate,
         content: str,
         performance_data: Dict[str, Any],
-        **kwargs
+        **kwargs,
     ) -> str:
         """Apply gradual evolution strategy."""
         # Simple gradual improvement based on performance
@@ -284,10 +309,14 @@ class DynamicEvolutionService(BaseService):
 
         if quality_score < 0.7:
             # Add more specific instructions
-            evolved = content + " Please ensure the response is detailed and comprehensive."
+            evolved = (
+                content + " Please ensure the response is detailed and comprehensive."
+            )
         elif quality_score < 0.9:
             # Add quality emphasis
-            evolved = content + " Focus on providing high-quality, accurate information."
+            evolved = (
+                content + " Focus on providing high-quality, accurate information."
+            )
         else:
             # Minor refinement
             evolved = content + " Maintain the current high quality standards."
@@ -299,7 +328,7 @@ class DynamicEvolutionService(BaseService):
         template: EvolutionTemplate,
         content: str,
         performance_data: Dict[str, Any],
-        **kwargs
+        **kwargs,
     ) -> str:
         """Apply radical evolution strategy."""
         # More aggressive changes
@@ -309,7 +338,7 @@ class DynamicEvolutionService(BaseService):
         if performance_data.get("quality_score", 0.5) < 0.6:
             evolved = base_prompt.replace(
                 "Create content",
-                "Create comprehensive, high-quality content with detailed analysis"
+                "Create comprehensive, high-quality content with detailed analysis",
             )
         else:
             evolved = base_prompt
@@ -321,7 +350,7 @@ class DynamicEvolutionService(BaseService):
         template: EvolutionTemplate,
         content: str,
         performance_data: Dict[str, Any],
-        **kwargs
+        **kwargs,
     ) -> str:
         """Apply conservative evolution strategy."""
         # Minimal changes to preserve working content
@@ -339,7 +368,7 @@ class DynamicEvolutionService(BaseService):
         template: EvolutionTemplate,
         content: str,
         performance_data: Dict[str, Any],
-        **kwargs
+        **kwargs,
     ) -> str:
         """Apply adaptive evolution strategy based on history."""
         template_id = template.template_id
@@ -347,27 +376,34 @@ class DynamicEvolutionService(BaseService):
 
         if not history or not history.evolution_results:
             # No history, use gradual approach
-            return await self._apply_gradual_evolution(template, content, performance_data, **kwargs)
+            return await self._apply_gradual_evolution(
+                template, content, performance_data, **kwargs
+            )
 
         # Analyze recent performance trends
         recent_results = history.evolution_results[-5:]  # Last 5 evolutions
-        avg_improvement = sum(r.quality_improvement for r in recent_results) / len(recent_results)
+        avg_improvement = sum(r.quality_improvement for r in recent_results) / len(
+            recent_results
+        )
 
         if avg_improvement > 0.1:
             # Good improvement trend, continue gradual
-            return await self._apply_gradual_evolution(template, content, performance_data, **kwargs)
+            return await self._apply_gradual_evolution(
+                template, content, performance_data, **kwargs
+            )
         elif avg_improvement < 0:
             # Declining performance, be more conservative
-            return await self._apply_conservative_evolution(template, content, performance_data, **kwargs)
+            return await self._apply_conservative_evolution(
+                template, content, performance_data, **kwargs
+            )
         else:
             # Stagnant, try radical approach
-            return await self._apply_radical_evolution(template, content, performance_data, **kwargs)
+            return await self._apply_radical_evolution(
+                template, content, performance_data, **kwargs
+            )
 
     def _calculate_quality_improvement(
-        self,
-        original: str,
-        evolved: str,
-        performance_data: Dict[str, Any]
+        self, original: str, evolved: str, performance_data: Dict[str, Any]
     ) -> float:
         """Calculate the quality improvement from evolution."""
         # Simple heuristic based on content length and performance
@@ -383,27 +419,29 @@ class DynamicEvolutionService(BaseService):
         return max(-1.0, min(1.0, improvement))  # Clamp between -1 and 1
 
     def _update_performance_trends(
-        self,
-        history: EvolutionHistory,
-        result: EvolutionResult
+        self, history: EvolutionHistory, result: EvolutionResult
     ) -> None:
         """Update performance trends in history."""
         # Track quality improvements over time
         if "quality_improvements" not in history.performance_trends:
             history.performance_trends["quality_improvements"] = []
 
-        history.performance_trends["quality_improvements"].append(result.quality_improvement)
+        history.performance_trends["quality_improvements"].append(
+            result.quality_improvement
+        )
 
         # Keep only last 20 data points
         if len(history.performance_trends["quality_improvements"]) > 20:
-            history.performance_trends["quality_improvements"] = history.performance_trends["quality_improvements"][-20:]
+            history.performance_trends[
+                "quality_improvements"
+            ] = history.performance_trends["quality_improvements"][-20:]
 
     def should_evolve(
         self,
         template_id: str,
         trigger: EvolutionTrigger,
         performance_data: Dict[str, Any],
-        **kwargs
+        **kwargs,
     ) -> Tuple[bool, str]:
         """
         Determine if evolution should be triggered.
@@ -424,7 +462,10 @@ class DynamicEvolutionService(BaseService):
             threshold = kwargs.get("performance_threshold", 0.7)
             current_performance = performance_data.get("quality_score", 1.0)
             if current_performance < threshold:
-                return True, f"Performance dropped below threshold: {current_performance} < {threshold}"
+                return (
+                    True,
+                    f"Performance dropped below threshold: {current_performance} < {threshold}",
+                )
 
         elif trigger == EvolutionTrigger.QUALITY_THRESHOLD:
             threshold = kwargs.get("quality_threshold", 0.8)
@@ -436,7 +477,9 @@ class DynamicEvolutionService(BaseService):
             hours_since_last = kwargs.get("hours_threshold", 24)
             history = self.evolution_history.get(template_id)
             if history and history.last_evolution:
-                hours_elapsed = (datetime.now() - history.last_evolution).total_seconds() / 3600
+                hours_elapsed = (
+                    datetime.now() - history.last_evolution
+                ).total_seconds() / 3600
                 if hours_elapsed >= hours_since_last:
                     return True, f"Time threshold exceeded: {hours_elapsed:.1f} hours"
 
@@ -451,7 +494,7 @@ class DynamicEvolutionService(BaseService):
         template_id: str,
         variants: List[str],
         control_variant: str,
-        duration_days: int = 7
+        duration_days: int = 7,
     ) -> ABTest:
         """
         Create an A/B test for evolution validation.
@@ -473,15 +516,13 @@ class DynamicEvolutionService(BaseService):
         test_variants = []
         for i, content in enumerate(variants):
             variant = ABTestVariant(
-                variant_id=f"{test_id}_variant_{i}",
-                content=content
+                variant_id=f"{test_id}_variant_{i}", content=content
             )
             test_variants.append(variant)
 
         # Add control variant
         control = ABTestVariant(
-            variant_id=f"{test_id}_control",
-            content=control_variant
+            variant_id=f"{test_id}_control", content=control_variant
         )
         test_variants.insert(0, control)
 
@@ -490,19 +531,18 @@ class DynamicEvolutionService(BaseService):
             variants=test_variants,
             control_variant=control_variant,
             test_duration_days=duration_days,
-            start_date=datetime.now()
+            start_date=datetime.now(),
         )
 
         self.active_ab_tests[test_id] = ab_test
-        self.logger.info(f"Created A/B test: {test_id} with {len(test_variants)} variants")
+        self.logger.info(
+            f"Created A/B test: {test_id} with {len(test_variants)} variants"
+        )
 
         return ab_test
 
     def update_ab_test_performance(
-        self,
-        test_id: str,
-        variant_id: str,
-        performance_score: float
+        self, test_id: str, variant_id: str, performance_score: float
     ) -> None:
         """
         Update performance data for an A/B test variant.
@@ -516,16 +556,21 @@ class DynamicEvolutionService(BaseService):
             raise DynamicEvolutionError(f"A/B test {test_id} not found")
 
         ab_test = self.active_ab_tests[test_id]
-        variant = next((v for v in ab_test.variants if v.variant_id == variant_id), None)
+        variant = next(
+            (v for v in ab_test.variants if v.variant_id == variant_id), None
+        )
 
         if not variant:
-            raise DynamicEvolutionError(f"Variant {variant_id} not found in test {test_id}")
+            raise DynamicEvolutionError(
+                f"Variant {variant_id} not found in test {test_id}"
+            )
 
         # Update variant performance (simple moving average)
         variant.sample_size += 1
         variant.performance_score = round(
-            (variant.performance_score * (variant.sample_size - 1) + performance_score) / variant.sample_size,
-            10
+            (variant.performance_score * (variant.sample_size - 1) + performance_score)
+            / variant.sample_size,
+            10,
         )
 
     def get_ab_test_results(self, test_id: str) -> Optional[Dict[str, Any]]:
@@ -555,11 +600,11 @@ class DynamicEvolutionService(BaseService):
                 {
                     "id": v.variant_id,
                     "score": v.performance_score,
-                    "sample_size": v.sample_size
+                    "sample_size": v.sample_size,
                 }
                 for v in ab_test.variants
             ],
-            "days_running": (datetime.now() - ab_test.start_date).days
+            "days_running": (datetime.now() - ab_test.start_date).days,
         }
 
     def get_evolution_analytics(self, template_id: str) -> Dict[str, Any]:
@@ -585,13 +630,19 @@ class DynamicEvolutionService(BaseService):
 
         return {
             "total_evolutions": history.total_evolutions,
-            "avg_improvement": round(avg_improvement, 10),  # Round to avoid floating point precision issues
+            "avg_improvement": round(
+                avg_improvement, 10
+            ),  # Round to avoid floating point precision issues
             "best_improvement": round(max(improvements), 10) if improvements else 0.0,
             "worst_improvement": round(min(improvements), 10) if improvements else 0.0,
-            "last_evolution": history.last_evolution.isoformat() if history.last_evolution else None,
+            "last_evolution": history.last_evolution.isoformat()
+            if history.last_evolution
+            else None,
             "improvement_trend": improvements[-10:],  # Last 10 improvements
-            "recent_optimizations": [r for r in history.evolution_results[-5:] if r.quality_improvement > 0],  # Recent positive improvements
-            "performance_trends": history.performance_trends
+            "recent_optimizations": [
+                r for r in history.evolution_results[-5:] if r.quality_improvement > 0
+            ],  # Recent positive improvements
+            "performance_trends": history.performance_trends,
         }
 
     def rollback_evolution(self, template_id: str, steps: int = 1) -> bool:
@@ -623,7 +674,9 @@ class DynamicEvolutionService(BaseService):
         else:
             history.last_evolution = None
 
-        self.logger.info(f"Rolled back evolution for template {template_id} by {steps} steps")
+        self.logger.info(
+            f"Rolled back evolution for template {template_id} by {steps} steps"
+        )
         return True
 
     def health_check(self) -> bool:
@@ -645,5 +698,5 @@ __all__ = [
     "EvolutionHistory",
     "ABTest",
     "ABTestVariant",
-    "DynamicEvolutionError"
+    "DynamicEvolutionError",
 ]

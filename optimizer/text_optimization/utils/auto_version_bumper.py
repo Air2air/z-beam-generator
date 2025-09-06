@@ -4,8 +4,8 @@ Automatic Version Bumper for AI Detection Prompts
 Integrates with the iterative optimization system to automatically version changes.
 """
 
-import sys
 import logging
+import sys
 from pathlib import Path
 
 # Add project root to path
@@ -18,6 +18,7 @@ from .version_manager import AIDetectionVersionManager
 
 logger = logging.getLogger(__name__)
 
+
 class AutoVersionBumper:
     """Automatically manages versioning during iterative optimization."""
 
@@ -25,8 +26,9 @@ class AutoVersionBumper:
         self.version_manager = AIDetectionVersionManager(config_path)
         self.last_version = self.version_manager.get_current_version()
 
-    def check_and_bump_version(self, iteration_data: dict, winston_score: float,
-                              previous_score: float = None) -> bool:
+    def check_and_bump_version(
+        self, iteration_data: dict, winston_score: float, previous_score: float = None
+    ) -> bool:
         """
         Check if version should be bumped based on iteration results.
 
@@ -42,10 +44,14 @@ class AutoVersionBumper:
             # Determine if this is a significant improvement
             significant_improvement = False
             if previous_score is not None:
-                improvement = previous_score - winston_score  # Lower score = better (less AI-like)
+                improvement = (
+                    previous_score - winston_score
+                )  # Lower score = better (less AI-like)
                 if improvement >= 15:  # 15+ point improvement
                     significant_improvement = True
-                    logger.info(f"📈 Significant improvement detected: +{improvement:.1f} points")
+                    logger.info(
+                        f"📈 Significant improvement detected: +{improvement:.1f} points"
+                    )
 
             # Check for major pattern changes
             major_changes = self._detect_major_changes(iteration_data)
@@ -64,7 +70,7 @@ class AutoVersionBumper:
             success = self.version_manager.bump_version(
                 bump_type=bump_type,
                 changelog_entry=changelog,
-                author="Iterative Optimization System"
+                author="Iterative Optimization System",
             )
 
             if success:
@@ -83,21 +89,21 @@ class AutoVersionBumper:
         major_changes = []
 
         # Check for new enhancement types
-        enhancements_applied = iteration_data.get('enhancements_applied', [])
-        if 'paragraph_structure' in enhancements_applied:
+        enhancements_applied = iteration_data.get("enhancements_applied", [])
+        if "paragraph_structure" in enhancements_applied:
             major_changes.append("paragraph structure optimization")
-        if 'lexical_diversity' in enhancements_applied:
+        if "lexical_diversity" in enhancements_applied:
             major_changes.append("lexical diversity enhancement")
-        if 'sentence_variability' in enhancements_applied:
+        if "sentence_variability" in enhancements_applied:
             major_changes.append("sentence variability patterns")
 
         # Check for significant content changes
-        content_change_percent = iteration_data.get('content_change_percent_words', 0)
+        content_change_percent = iteration_data.get("content_change_percent_words", 0)
         if content_change_percent > 50:  # Major content restructuring
             major_changes.append("major content restructuring")
 
         # Check for DeepSeek optimization
-        if iteration_data.get('deepseek_response'):
+        if iteration_data.get("deepseek_response"):
             major_changes.append("DeepSeek optimization applied")
 
         return major_changes
@@ -105,13 +111,18 @@ class AutoVersionBumper:
     def get_version_info(self) -> dict:
         """Get current version information."""
         return {
-            'current_version': self.version_manager.get_current_version(),
-            'last_updated': self.version_manager.get_current_date(),
-            'version_history': self.version_manager.get_version_history()
+            "current_version": self.version_manager.get_current_version(),
+            "last_updated": self.version_manager.get_current_date(),
+            "version_history": self.version_manager.get_version_history(),
         }
 
-def integrate_with_optimization(auto_bumper: AutoVersionBumper, iteration_data: dict,
-                               winston_score: float, previous_score: float = None):
+
+def integrate_with_optimization(
+    auto_bumper: AutoVersionBumper,
+    iteration_data: dict,
+    winston_score: float,
+    previous_score: float = None,
+):
     """
     Integration function for the iterative optimization system.
 
@@ -121,7 +132,7 @@ def integrate_with_optimization(auto_bumper: AutoVersionBumper, iteration_data: 
         version_bumped = auto_bumper.check_and_bump_version(
             iteration_data=iteration_data,
             winston_score=winston_score,
-            previous_score=previous_score
+            previous_score=previous_score,
         )
 
         if version_bumped:
@@ -131,6 +142,7 @@ def integrate_with_optimization(auto_bumper: AutoVersionBumper, iteration_data: 
 
     except Exception as e:
         logger.warning(f"Version auto-bumping failed: {e}")
+
 
 # Example usage in the generator.py file:
 """
@@ -157,16 +169,14 @@ if __name__ == "__main__":
 
     # Test with mock iteration data
     test_iteration_data = {
-        'enhancements_applied': ['paragraph_structure', 'sentence_variability'],
-        'content_change_percent_words': 25.0,
-        'deepseek_response': 'Optimization applied'
+        "enhancements_applied": ["paragraph_structure", "sentence_variability"],
+        "content_change_percent_words": 25.0,
+        "deepseek_response": "Optimization applied",
     }
 
     print("Testing auto version bumping...")
     success = bumper.check_and_bump_version(
-        iteration_data=test_iteration_data,
-        winston_score=45.0,
-        previous_score=60.0
+        iteration_data=test_iteration_data, winston_score=45.0, previous_score=60.0
     )
 
     if success:

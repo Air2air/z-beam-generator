@@ -9,7 +9,7 @@ This directory contains utility scripts organized by function:
 - `demonstrate_content_scoring.py` - Content scoring system demonstration
 - `production_test.py` - Production readiness testing
 
-### `/cleanup/` - Cleanup and Maintenance Scripts  
+### `/cleanup/` - Cleanup and Maintenance Scripts
 - `cleanup_*.py` - Component and directory cleanup utilities
 - `final_cleanup.py` - Final system cleanup operations
 

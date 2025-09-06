@@ -18,16 +18,15 @@ Features:
 import asyncio
 import logging
 import re
-import statistics
-from typing import Any, Dict, List, Optional, Tuple, Union
+from collections import Counter
 from dataclasses import dataclass, field
 from datetime import datetime
 from enum import Enum
-from collections import Counter
+from typing import Any, Dict, List, Optional, Tuple, Union
+import hashlib
 
-from services import BaseService, ServiceConfiguration, ServiceError
-
-logger = logging.getLogger(__name__)
+import statistics
+from ..base import BaseService, ServiceConfiguration, ServiceError, ServiceConfigurationError
 
 
 class QualityDimension(Enum):
@@ -43,10 +42,10 @@ class QualityDimension(Enum):
 
 @dataclass
 class QualityScore:
-    """Individual quality dimension score."""
+    """Individual quality score for a dimension."""
     dimension: QualityDimension
-    score: float  # 0.0 to 1.0
-    weight: float = 1.0
+    score: float
+    weight: float
     feedback: str = ""
     metadata: Dict[str, Any] = field(default_factory=dict)
 
@@ -58,7 +57,7 @@ class QualityAssessment:
     overall_score: float
     dimension_scores: List[QualityScore]
     weighted_score: float
-    grade: str  # A, B, C, D, F
+    grade: str
     strengths: List[str]
     weaknesses: List[str]
     recommendations: List[str]
@@ -78,7 +77,7 @@ class QualityBenchmark:
 
 @dataclass
 class QualityTrend:
-    """Quality trend analysis."""
+    """Quality trend data for content types."""
     content_type: str
     time_period: str
     average_score: float
@@ -88,41 +87,24 @@ class QualityTrend:
     consistency_score: float
 
 
-class QualityAssessmentError(ServiceError):
-    """Raised when quality assessment fails."""
-    pass
-
-
 class QualityAssessmentService(BaseService):
     """
     Service for comprehensive quality assessment and scoring.
 
-    This service provides:
-    - Multi-dimensional quality evaluation
-    - Readability and structure analysis
-    - Technical accuracy assessment
-    - Consistency and completeness checking
-    - Quality benchmarking and trends
-    - Detailed feedback and recommendations
+    This service evaluates content across multiple quality dimensions and provides
+    detailed feedback, trend analysis, and benchmarking capabilities.
     """
 
     def __init__(self, config: ServiceConfiguration):
-        # Initialize attributes before calling super().__init__
-        self.assessment_history: Dict[str, List[QualityAssessment]] = {}
-        self.quality_benchmarks: Dict[str, QualityBenchmark] = {}
-        self.dimension_weights: Dict[QualityDimension, float] = {}
-        self.quality_trends: Dict[str, QualityTrend] = {}
-
         super().__init__(config)
+        self.logger = logging.getLogger(__name__)
 
-    def _validate_config(self) -> None:
-        """Validate service configuration."""
-        # No specific validation required for base implementation
-        pass
+        # Initialize data structures
+        self.assessment_history: Dict[str, List[QualityAssessment]] = {}
+        self.quality_trends: Dict[str, QualityTrend] = {}
+        self.quality_benchmarks: Dict[str, QualityBenchmark] = {}
 
-    def _initialize(self) -> None:
-        """Initialize the service with default configurations."""
-        # Set default dimension weights
+        # Default dimension weights
         self.dimension_weights = {
             QualityDimension.READABILITY: 0.15,
             QualityDimension.STRUCTURE: 0.20,
@@ -130,35 +112,43 @@ class QualityAssessmentService(BaseService):
             QualityDimension.CONSISTENCY: 0.15,
             QualityDimension.COMPLETENESS: 0.15,
             QualityDimension.ENGAGEMENT: 0.05,
-            QualityDimension.TECHNICAL_DEPTH: 0.05
+            QualityDimension.TECHNICAL_DEPTH: 0.05,
         }
 
         # Initialize default benchmarks
         self._initialize_default_benchmarks()
 
-        self.logger.info("Quality Assessment Service initialized")
+    def _validate_config(self) -> None:
+        """Validate service configuration."""
+        if not self.config.name:
+            raise ServiceConfigurationError("Service name is required")
+
+    def _initialize(self) -> None:
+        """Initialize the service."""
+        self.logger.info(f"Initializing Quality Assessment Service: {self.config.name}")
+        self._healthy = True
 
     def _initialize_default_benchmarks(self) -> None:
         """Initialize default quality benchmarks."""
         # High quality benchmark
-        high_quality = QualityBenchmark(
+        self.quality_benchmarks["high_quality"] = QualityBenchmark(
             benchmark_id="high_quality",
             name="High Quality Standard",
             dimension_thresholds={
                 QualityDimension.READABILITY: 0.85,
-                QualityDimension.STRUCTURE: 0.90,
-                QualityDimension.ACCURACY: 0.95,
+                QualityDimension.STRUCTURE: 0.88,
+                QualityDimension.ACCURACY: 0.90,
                 QualityDimension.CONSISTENCY: 0.85,
-                QualityDimension.COMPLETENESS: 0.90,
+                QualityDimension.COMPLETENESS: 0.88,
                 QualityDimension.ENGAGEMENT: 0.80,
-                QualityDimension.TECHNICAL_DEPTH: 0.85
+                QualityDimension.TECHNICAL_DEPTH: 0.85,
             },
             overall_threshold=0.88,
-            description="High quality content standards"
+            description="High quality standards for premium content"
         )
 
         # Standard quality benchmark
-        standard_quality = QualityBenchmark(
+        self.quality_benchmarks["standard_quality"] = QualityBenchmark(
             benchmark_id="standard_quality",
             name="Standard Quality",
             dimension_thresholds={
@@ -168,456 +158,270 @@ class QualityAssessmentService(BaseService):
                 QualityDimension.CONSISTENCY: 0.70,
                 QualityDimension.COMPLETENESS: 0.75,
                 QualityDimension.ENGAGEMENT: 0.65,
-                QualityDimension.TECHNICAL_DEPTH: 0.70
+                QualityDimension.TECHNICAL_DEPTH: 0.70,
             },
             overall_threshold=0.73,
-            description="Standard quality expectations"
+            description="Standard quality requirements"
         )
 
-        self.quality_benchmarks["high_quality"] = high_quality
-        self.quality_benchmarks["standard_quality"] = standard_quality
+    def _generate_content_id(self, content: str) -> str:
+        """Generate a unique content ID from content hash."""
+        content_hash = hashlib.md5(content.encode()).hexdigest()[:8]
+        return f"content_{content_hash}"
 
     async def assess_quality(
         self,
         content: str,
-        content_id: Optional[str] = None,
         content_type: str = "general",
-        benchmark_id: Optional[str] = None,
-        **kwargs
+        content_id: Optional[str] = None,
+        benchmark_id: str = "standard_quality"
     ) -> QualityAssessment:
         """
         Perform comprehensive quality assessment.
 
         Args:
             content: Content to assess
-            content_id: Unique identifier for the content
-            content_type: Type of content (article, blog, technical, etc.)
-            benchmark_id: Benchmark to compare against
-            **kwargs: Additional assessment parameters
+            content_type: Type of content (general, technical, creative, etc.)
+            content_id: Optional content identifier
+            benchmark_id: Benchmark to use for assessment
 
         Returns:
-            QualityAssessment: Complete quality assessment
+            QualityAssessment: Complete assessment result
         """
         if not content_id:
             content_id = self._generate_content_id(content)
 
-        start_time = datetime.now()
+        # Assess each dimension
+        dimension_scores = []
 
-        try:
-            # Assess each quality dimension
-            dimension_scores = []
-            for dimension in QualityDimension:
-                score = await self._assess_dimension(content, dimension, content_type, **kwargs)
-                dimension_scores.append(score)
+        # Readability assessment
+        readability_score = await self._assess_readability(content)
+        dimension_scores.append(readability_score)
 
-            # Calculate overall scores
-            overall_score = sum(s.score for s in dimension_scores) / len(dimension_scores)
-            weighted_score = sum(s.score * s.weight for s in dimension_scores)
+        # Structure assessment
+        structure_score = await self._assess_structure(content, content_type)
+        dimension_scores.append(structure_score)
 
-            # Determine grade
-            grade = self._calculate_grade(overall_score)
+        # Technical depth assessment
+        technical_score = await self._assess_technical_depth(content, content_type)
+        dimension_scores.append(technical_score)
 
-            # Generate feedback
-            strengths, weaknesses, recommendations = self._generate_feedback(
-                dimension_scores, content_type
-            )
+        # Engagement assessment
+        engagement_score = await self._assess_engagement(content)
+        dimension_scores.append(engagement_score)
 
-            # Create assessment result
-            assessment = QualityAssessment(
-                content_id=content_id,
-                overall_score=overall_score,
-                dimension_scores=dimension_scores,
-                weighted_score=weighted_score,
-                grade=grade,
-                strengths=strengths,
-                weaknesses=weaknesses,
-                recommendations=recommendations,
-                metadata={
-                    "content_type": content_type,
-                    "benchmark_id": benchmark_id,
-                    "word_count": len(content.split()),
-                    "character_count": len(content),
-                    "processing_time": (datetime.now() - start_time).total_seconds()
-                },
-                timestamp=datetime.now()
-            )
+        # Calculate overall scores
+        overall_score = sum(score.score * score.weight for score in dimension_scores)
+        weighted_score = overall_score  # For now, same as overall
 
-            # Store assessment history
-            if content_id not in self.assessment_history:
-                self.assessment_history[content_id] = []
-            self.assessment_history[content_id].append(assessment)
+        # Determine grade
+        grade = self._calculate_grade(overall_score)
 
-            # Update quality trends
-            self._update_quality_trends(content_type, assessment)
+        # Generate feedback
+        strengths, weaknesses, recommendations = self._generate_feedback(
+            dimension_scores, content_type
+        )
 
-            self.logger.info(f"Quality assessment completed for {content_id}: "
-                           f"score={overall_score:.3f}, grade={grade}")
+        # Create assessment
+        assessment = QualityAssessment(
+            content_id=content_id,
+            overall_score=overall_score,
+            dimension_scores=dimension_scores,
+            weighted_score=weighted_score,
+            grade=grade,
+            strengths=strengths,
+            weaknesses=weaknesses,
+            recommendations=recommendations,
+            metadata={"content_type": content_type, "benchmark_id": benchmark_id},
+            timestamp=datetime.now()
+        )
 
-            return assessment
+        # Store in history
+        if content_id not in self.assessment_history:
+            self.assessment_history[content_id] = []
+        self.assessment_history[content_id].append(assessment)
 
-        except Exception as e:
-            self.logger.error(f"Quality assessment failed for {content_id}: {e}")
-            raise QualityAssessmentError(f"Assessment failed: {e}") from e
+        # Update trends
+        self._update_quality_trends(content_type, assessment)
 
-    async def _assess_dimension(
-        self,
-        content: str,
-        dimension: QualityDimension,
-        content_type: str,
-        **kwargs
-    ) -> QualityScore:
-        """Assess a specific quality dimension."""
-        if dimension == QualityDimension.READABILITY:
-            return await self._assess_readability(content, **kwargs)
-        elif dimension == QualityDimension.STRUCTURE:
-            return await self._assess_structure(content, content_type, **kwargs)
-        elif dimension == QualityDimension.ACCURACY:
-            return await self._assess_accuracy(content, content_type, **kwargs)
-        elif dimension == QualityDimension.CONSISTENCY:
-            return await self._assess_consistency(content, **kwargs)
-        elif dimension == QualityDimension.COMPLETENESS:
-            return await self._assess_completeness(content, content_type, **kwargs)
-        elif dimension == QualityDimension.ENGAGEMENT:
-            return await self._assess_engagement(content, **kwargs)
-        elif dimension == QualityDimension.TECHNICAL_DEPTH:
-            return await self._assess_technical_depth(content, content_type, **kwargs)
-        else:
-            raise QualityAssessmentError(f"Unknown quality dimension: {dimension}")
+        return assessment
 
-    async def _assess_readability(self, content: str, **kwargs) -> QualityScore:
+    async def _assess_readability(self, content: str) -> QualityScore:
         """Assess content readability."""
-        words = content.split()
-        sentences = re.split(r'[.!?]+', content)
-        sentences = [s.strip() for s in sentences if s.strip()]
-
-        if not words or not sentences:
+        if not content.strip():
             return QualityScore(
                 dimension=QualityDimension.READABILITY,
                 score=0.0,
-                feedback="Content is too short or malformed"
+                weight=self.dimension_weights[QualityDimension.READABILITY],
+                feedback="Empty content"
             )
 
-        # Average words per sentence
+        sentences = re.split(r'[.!?]+', content)
+        sentences = [s.strip() for s in sentences if s.strip()]
+
+        if not sentences:
+            return QualityScore(
+                dimension=QualityDimension.READABILITY,
+                score=0.0,
+                weight=self.dimension_weights[QualityDimension.READABILITY],
+                feedback="No sentences found"
+            )
+
+        words = content.split()
         avg_words_per_sentence = len(words) / len(sentences)
 
-        # Average syllables per word (simplified)
-        avg_syllables_per_word = sum(self._count_syllables(word) for word in words) / len(words)
-
-        # Flesch Reading Ease score (simplified)
-        flesch_score = 206.835 - (1.015 * avg_words_per_sentence) - (84.6 * avg_syllables_per_word)
-
-        # Normalize to 0-1 scale
-        readability_score = max(0.0, min(1.0, flesch_score / 100.0))
-
-        feedback = self._get_readability_feedback(readability_score, avg_words_per_sentence)
+        # Simple readability score based on sentence length
+        if avg_words_per_sentence < 15:
+            score = 0.9
+            feedback = "Good readability with concise sentences"
+        elif avg_words_per_sentence < 25:
+            score = 0.7
+            feedback = "Moderate readability"
+        else:
+            score = 0.4
+            feedback = "Complex sentences may reduce readability"
 
         return QualityScore(
             dimension=QualityDimension.READABILITY,
-            score=readability_score,
+            score=score,
+            weight=self.dimension_weights[QualityDimension.READABILITY],
             feedback=feedback,
             metadata={
-                "avg_words_per_sentence": avg_words_per_sentence,
-                "avg_syllables_per_word": avg_syllables_per_word,
-                "flesch_score": flesch_score
+                "sentence_count": len(sentences),
+                "word_count": len(words),
+                "avg_words_per_sentence": avg_words_per_sentence
             }
         )
 
-    async def _assess_structure(self, content: str, content_type: str, **kwargs) -> QualityScore:
+    async def _assess_structure(self, content: str, content_type: str) -> QualityScore:
         """Assess content structure."""
-        # Check for structural elements
-        has_title = bool(re.search(r'^#{1,6}\s+', content, re.MULTILINE))
-        has_paragraphs = len(re.findall(r'\n\s*\n', content)) > 0
-        has_lists = bool(re.search(r'^[\s]*[-*+]\s+', content, re.MULTILINE))
-        has_headings = len(re.findall(r'^#{1,6}\s+', content, re.MULTILINE)) > 1
+        # Check for headings
+        heading_pattern = r'^#{1,6}\s+'
+        headings = len(re.findall(heading_pattern, content, re.MULTILINE))
 
-        structure_score = 0.0
-        feedback_parts = []
+        # Check for paragraphs
+        paragraphs = len(re.split(r'\n\s*\n', content.strip()))
 
-        if has_title:
-            structure_score += 0.2
-            feedback_parts.append("Has clear title")
+        # Check for lists
+        list_items = len(re.findall(r'^[\s]*[-*+]\s+', content, re.MULTILINE))
+
+        # Calculate structure score
+        structure_score = min(1.0, (headings * 0.3 + paragraphs * 0.1 + list_items * 0.05))
+
+        if structure_score > 0.8:
+            feedback = "Excellent structure with clear organization"
+        elif structure_score > 0.6:
+            feedback = "Good structure"
+        elif structure_score > 0.3:
+            feedback = "Basic structure present"
         else:
-            feedback_parts.append("Missing clear title")
-
-        if has_paragraphs:
-            structure_score += 0.3
-            feedback_parts.append("Well-organized paragraphs")
-        else:
-            feedback_parts.append("Could benefit from paragraph breaks")
-
-        if has_lists:
-            structure_score += 0.2
-            feedback_parts.append("Uses lists effectively")
-        else:
-            feedback_parts.append("Could use lists for better organization")
-
-        if has_headings:
-            structure_score += 0.3
-            feedback_parts.append("Good use of headings")
-        else:
-            feedback_parts.append("Could benefit from section headings")
+            feedback = "Poor structure - consider adding headings and paragraphs"
 
         return QualityScore(
             dimension=QualityDimension.STRUCTURE,
             score=structure_score,
-            feedback="; ".join(feedback_parts),
-            metadata={
-                "has_title": has_title,
-                "has_paragraphs": has_paragraphs,
-                "has_lists": has_lists,
-                "has_headings": has_headings
-            }
-        )
-
-    async def _assess_accuracy(self, content: str, content_type: str, **kwargs) -> QualityScore:
-        """Assess content accuracy."""
-        # This is a simplified accuracy assessment
-        # In a real implementation, this would use fact-checking APIs or domain expertise
-
-        # Check for factual indicators
-        has_sources = bool(re.search(r'\b(source|reference|cite|according to)\b', content, re.IGNORECASE))
-        has_data = bool(re.search(r'\b(\d+%|\d+\.\d+|statistics|data|research)\b', content, re.IGNORECASE))
-        has_qualifiers = bool(re.search(r'\b(may|might|could|approximately|estimated)\b', content, re.IGNORECASE))
-
-        accuracy_score = 0.5  # Base score
-
-        if has_sources:
-            accuracy_score += 0.2
-        if has_data:
-            accuracy_score += 0.2
-        if has_qualifiers:
-            accuracy_score += 0.1  # Appropriate use of uncertainty qualifiers
-
-        feedback = "Accuracy assessment based on content indicators"
-        if has_sources:
-            feedback += "; Includes source references"
-        if has_data:
-            feedback += "; Contains supporting data"
-        if has_qualifiers:
-            feedback += "; Uses appropriate uncertainty qualifiers"
-
-        return QualityScore(
-            dimension=QualityDimension.ACCURACY,
-            score=min(1.0, accuracy_score),
+            weight=self.dimension_weights[QualityDimension.STRUCTURE],
             feedback=feedback,
             metadata={
-                "has_sources": has_sources,
-                "has_data": has_data,
-                "has_qualifiers": has_qualifiers
+                "headings": headings,
+                "paragraphs": paragraphs,
+                "list_items": list_items
             }
         )
 
-    async def _assess_consistency(self, content: str, **kwargs) -> QualityScore:
-        """Assess content consistency."""
-        # Check for consistency in terminology, tone, and style
-        words = re.findall(r'\b\w+\b', content.lower())
-
-        if len(words) < 10:
-            return QualityScore(
-                dimension=QualityDimension.CONSISTENCY,
-                score=0.5,
-                feedback="Content too short for consistency assessment"
-            )
-
-        # Check for repeated technical terms (consistency indicator)
-        word_freq = Counter(words)
-        technical_terms = [word for word, freq in word_freq.items() if freq > 2 and len(word) > 4]
-
-        # Check for consistent tense usage
-        past_tense = len(re.findall(r'\b\w+ed\b', content))
-        present_tense = len(re.findall(r'\b\w+s\b|\bam\b|\bis\b|\bare\b', content))
-
-        consistency_score = 0.6  # Base score
-
-        if technical_terms:
-            consistency_score += 0.2  # Consistent use of technical terminology
-
-        # Balance between past and present tense
-        total_verbs = past_tense + present_tense
-        if total_verbs > 0:
-            tense_balance = min(past_tense, present_tense) / max(past_tense, present_tense)
-            consistency_score += tense_balance * 0.2
-
-        feedback = f"Found {len(technical_terms)} consistently used technical terms"
-
-        return QualityScore(
-            dimension=QualityDimension.CONSISTENCY,
-            score=min(1.0, consistency_score),
-            feedback=feedback,
-            metadata={
-                "technical_terms_count": len(technical_terms),
-                "tense_balance": tense_balance if 'tense_balance' in locals() else 0.0
-            }
-        )
-
-    async def _assess_completeness(self, content: str, content_type: str, **kwargs) -> QualityScore:
-        """Assess content completeness."""
-        word_count = len(content.split())
-
-        # Base completeness on content length and structure
-        completeness_score = 0.0
-
-        if word_count > 500:
-            completeness_score = 0.9
-        elif word_count > 200:
-            completeness_score = 0.7
-        elif word_count > 100:
-            completeness_score = 0.5
-        else:
-            completeness_score = 0.3
-
-        # Check for comprehensive coverage indicators
-        has_introduction = bool(re.search(r'\b(intro|overview|summary|purpose)\b', content, re.IGNORECASE))
-        has_conclusion = bool(re.search(r'\b(conclusion|summary|finally|in conclusion)\b', content, re.IGNORECASE))
-
-        if has_introduction:
-            completeness_score += 0.05
-        if has_conclusion:
-            completeness_score += 0.05
-
-        feedback = f"Content length: {word_count} words"
-        if has_introduction and has_conclusion:
-            feedback += "; Has clear introduction and conclusion"
-        elif has_introduction:
-            feedback += "; Has introduction but could use conclusion"
-        elif has_conclusion:
-            feedback += "; Has conclusion but could use introduction"
-
-        return QualityScore(
-            dimension=QualityDimension.COMPLETENESS,
-            score=min(1.0, completeness_score),
-            feedback=feedback,
-            metadata={
-                "word_count": word_count,
-                "has_introduction": has_introduction,
-                "has_conclusion": has_conclusion
-            }
-        )
-
-    async def _assess_engagement(self, content: str, **kwargs) -> QualityScore:
-        """Assess content engagement."""
-        # Check for engagement indicators
-        has_questions = bool(re.search(r'\?', content))
-        has_exclamations = bool(re.search(r'!', content))
-        has_quotes = bool(re.search(r'"[^"]*"', content) or re.search(r"'[^']*'", content))
-        has_calls_to_action = bool(re.search(r'\b(learn more|find out|discover|see|check out)\b', content, re.IGNORECASE))
-
-        engagement_score = 0.0
-
-        if has_questions:
-            engagement_score += 0.3
-        if has_exclamations:
-            engagement_score += 0.2
-        if has_quotes:
-            engagement_score += 0.2
-        if has_calls_to_action:
-            engagement_score += 0.3
-
-        feedback_parts = []
-        if has_questions:
-            feedback_parts.append("Uses questions to engage readers")
-        if has_exclamations:
-            feedback_parts.append("Uses exclamations for emphasis")
-        if has_quotes:
-            feedback_parts.append("Includes quotes for credibility")
-        if has_calls_to_action:
-            feedback_parts.append("Contains calls to action")
-
-        return QualityScore(
-            dimension=QualityDimension.ENGAGEMENT,
-            score=min(1.0, engagement_score),
-            feedback="; ".join(feedback_parts) if feedback_parts else "Could benefit from more engaging elements",
-            metadata={
-                "has_questions": has_questions,
-                "has_exclamations": has_exclamations,
-                "has_quotes": has_quotes,
-                "has_calls_to_action": has_calls_to_action
-            }
-        )
-
-    async def _assess_technical_depth(self, content: str, content_type: str, **kwargs) -> QualityScore:
+    async def _assess_technical_depth(self, content: str, content_type: str) -> QualityScore:
         """Assess technical depth."""
-        if content_type not in ["technical", "tutorial", "documentation"]:
+        if content_type != "technical":
             return QualityScore(
                 dimension=QualityDimension.TECHNICAL_DEPTH,
                 score=0.5,
+                weight=self.dimension_weights[QualityDimension.TECHNICAL_DEPTH],
                 feedback="Not applicable for non-technical content"
             )
 
-        # Check for technical indicators
-        has_code = bool(re.search(r'`.*?`', content))  # Inline code
-        has_code_blocks = bool(re.search(r'```.*?```', content, re.DOTALL))  # Code blocks
-        has_technical_terms = bool(re.search(r'\b(API|function|class|method|algorithm|database)\b', content, re.IGNORECASE))
-        has_examples = bool(re.search(r'\b(example|for instance|such as|like this)\b', content, re.IGNORECASE))
+        # Look for technical indicators
+        technical_terms = [
+            r'\bO\([^)]+\)',  # Big O notation
+            r'\bcomplexity\b',
+            r'\balgorithm\b',
+            r'\bfunction\b',
+            r'\bclass\b',
+            r'\bmethod\b',
+            r'\bAPI\b',
+            r'\bdatabase\b',
+            r'\bserver\b',
+            r'\bclient\b'
+        ]
 
         technical_score = 0.0
+        found_terms = []
 
-        if has_code:
-            technical_score += 0.3
-        if has_code_blocks:
-            technical_score += 0.3
-        if has_technical_terms:
-            technical_score += 0.2
-        if has_examples:
-            technical_score += 0.2
+        for term in technical_terms:
+            matches = len(re.findall(term, content, re.IGNORECASE))
+            if matches > 0:
+                technical_score += 0.1
+                found_terms.append(term)
 
-        feedback_parts = []
-        if has_code or has_code_blocks:
-            feedback_parts.append("Includes code examples")
-        if has_technical_terms:
-            feedback_parts.append("Uses appropriate technical terminology")
-        if has_examples:
-            feedback_parts.append("Provides practical examples")
+        technical_score = min(1.0, technical_score)
+
+        if technical_score > 0.7:
+            feedback = "Strong technical depth"
+        elif technical_score > 0.4:
+            feedback = "Moderate technical content"
+        else:
+            feedback = "Limited technical depth"
 
         return QualityScore(
             dimension=QualityDimension.TECHNICAL_DEPTH,
-            score=min(1.0, technical_score),
-            feedback="; ".join(feedback_parts) if feedback_parts else "Could benefit from more technical depth",
-            metadata={
-                "has_code": has_code,
-                "has_code_blocks": has_code_blocks,
-                "has_technical_terms": has_technical_terms,
-                "has_examples": has_examples
-            }
+            score=technical_score,
+            weight=self.dimension_weights[QualityDimension.TECHNICAL_DEPTH],
+            feedback=feedback,
+            metadata={"technical_terms_found": len(found_terms)}
         )
 
-    def _count_syllables(self, word: str) -> int:
-        """Count syllables in a word (simplified)."""
-        word = word.lower()
-        count = 0
-        vowels = "aeiouy"
-        if word[0] in vowels:
-            count += 1
-        for i in range(1, len(word)):
-            if word[i] in vowels and word[i - 1] not in vowels:
-                count += 1
-        if word.endswith("e"):
-            count -= 1
-        return max(1, count)
+    async def _assess_engagement(self, content: str) -> QualityScore:
+        """Assess content engagement."""
+        # Look for engagement indicators
+        engagement_indicators = [
+            r'\b(you|your|we|us|our)\b',
+            r'[?!]{2,}',
+            r'\b(amazing|exciting|incredible|wonderful)\b',
+            r'\b(imagine|think|consider|wonder)\b',
+            r'\b(discover|learn|explore|find)\b'
+        ]
 
-    def _get_readability_feedback(self, score: float, avg_words_per_sentence: float) -> str:
-        """Generate readability feedback."""
-        if score > 0.8:
-            return "Excellent readability"
-        elif score > 0.6:
-            feedback = "Good readability"
-            if avg_words_per_sentence > 20:
-                feedback += "; Consider shorter sentences"
-            return feedback
-        elif score > 0.4:
-            return "Moderate readability; could be improved"
+        engagement_score = 0.0
+
+        for indicator in engagement_indicators:
+            matches = len(re.findall(indicator, content, re.IGNORECASE))
+            if matches > 0:
+                engagement_score += 0.2
+
+        engagement_score = min(1.0, engagement_score)
+
+        if engagement_score > 0.6:
+            feedback = "Highly engaging content"
+        elif engagement_score > 0.3:
+            feedback = "Moderately engaging"
         else:
-            return "Poor readability; needs significant improvement"
+            feedback = "Low engagement - consider adding more interactive elements"
 
-    def _calculate_grade(self, overall_score: float) -> str:
+        return QualityScore(
+            dimension=QualityDimension.ENGAGEMENT,
+            score=engagement_score,
+            weight=self.dimension_weights[QualityDimension.ENGAGEMENT],
+            feedback=feedback
+        )
+
+    def _calculate_grade(self, score: float) -> str:
         """Calculate letter grade from score."""
-        if overall_score >= 0.9:
+        if score >= 0.9:
             return "A"
-        elif overall_score >= 0.8:
+        elif score >= 0.8:
             return "B"
-        elif overall_score >= 0.7:
+        elif score >= 0.7:
             return "C"
-        elif overall_score >= 0.6:
+        elif score >= 0.6:
             return "D"
         else:
             return "F"
@@ -627,27 +431,25 @@ class QualityAssessmentService(BaseService):
         dimension_scores: List[QualityScore],
         content_type: str
     ) -> Tuple[List[str], List[str], List[str]]:
-        """Generate comprehensive feedback."""
+        """Generate feedback from dimension scores."""
         strengths = []
         weaknesses = []
         recommendations = []
 
-        for score in dimension_scores:
-            if score.score > 0.8:
-                strengths.append(f"Strong {score.dimension.value}: {score.feedback}")
-            elif score.score < 0.6:
-                weaknesses.append(f"Weak {score.dimension.value}: {score.feedback}")
-                recommendations.append(f"Improve {score.dimension.value}: {score.feedback}")
+        for score_obj in dimension_scores:
+            if score_obj.score >= 0.7:
+                strengths.append(f"Good {score_obj.dimension.value}: {score_obj.feedback}")
+            elif score_obj.score >= 0.4:
+                weaknesses.append(f"Average {score_obj.dimension.value}: {score_obj.feedback}")
+            else:
+                weaknesses.append(f"Poor {score_obj.dimension.value}: {score_obj.feedback}")
+                recommendations.append(f"Improve {score_obj.dimension.value}: {score_obj.feedback}")
 
         return strengths, weaknesses, recommendations
 
-    def _generate_content_id(self, content: str) -> str:
-        """Generate a unique content ID."""
-        import hashlib
-        content_hash = hashlib.md5(content.encode()).hexdigest()[:8]
-        return f"content_{content_hash}"
-
-    def _update_quality_trends(self, content_type: str, assessment: QualityAssessment) -> None:
+    def _update_quality_trends(
+        self, content_type: str, assessment: QualityAssessment
+    ) -> None:
         """Update quality trends for content type."""
         if content_type not in self.quality_trends:
             self.quality_trends[content_type] = QualityTrend(
@@ -657,7 +459,7 @@ class QualityAssessmentService(BaseService):
                 score_trend=[],
                 dimension_trends={dim: [] for dim in QualityDimension},
                 improvement_rate=0.0,
-                consistency_score=0.0
+                consistency_score=0.0,
             )
 
         trend = self.quality_trends[content_type]
@@ -671,25 +473,37 @@ class QualityAssessmentService(BaseService):
         for score in assessment.dimension_scores:
             trend.dimension_trends[score.dimension].append(score.score)
             if len(trend.dimension_trends[score.dimension]) > 50:
-                trend.dimension_trends[score.dimension] = trend.dimension_trends[score.dimension][-50:]
+                trend.dimension_trends[score.dimension] = trend.dimension_trends[
+                    score.dimension
+                ][-50:]
 
         # Update average score
-        trend.average_score = statistics.mean(trend.score_trend) if trend.score_trend else 0.0
+        trend.average_score = (
+            statistics.mean(trend.score_trend) if trend.score_trend else 0.0
+        )
 
         # Calculate improvement rate (simplified)
         if len(trend.score_trend) >= 2:
-            recent_scores = trend.score_trend[-10:] if len(trend.score_trend) >= 10 else trend.score_trend
+            recent_scores = (
+                trend.score_trend[-10:]
+                if len(trend.score_trend) >= 10
+                else trend.score_trend
+            )
             if len(recent_scores) >= 2:
-                trend.improvement_rate = (recent_scores[-1] - recent_scores[0]) / len(recent_scores)
+                trend.improvement_rate = (recent_scores[-1] - recent_scores[0]) / len(
+                    recent_scores
+                )
 
         # Calculate consistency score
         if len(trend.score_trend) >= 2:
-            trend.consistency_score = 1.0 - (statistics.stdev(trend.score_trend) if len(trend.score_trend) > 1 else 0.0)
+            trend.consistency_score = 1.0 - (
+                statistics.stdev(trend.score_trend)
+                if len(trend.score_trend) > 1
+                else 0.0
+            )
 
     def compare_to_benchmark(
-        self,
-        assessment: QualityAssessment,
-        benchmark_id: str
+        self, assessment: QualityAssessment, benchmark_id: str
     ) -> Dict[str, Any]:
         """
         Compare assessment to a quality benchmark.
@@ -708,9 +522,12 @@ class QualityAssessmentService(BaseService):
 
         comparison = {
             "benchmark_name": benchmark.name,
-            "overall_comparison": "above" if assessment.overall_score >= benchmark.overall_threshold else "below",
-            "overall_difference": assessment.overall_score - benchmark.overall_threshold,
-            "dimension_comparison": {}
+            "overall_comparison": "above"
+            if assessment.overall_score >= benchmark.overall_threshold
+            else "below",
+            "overall_difference": assessment.overall_score
+            - benchmark.overall_threshold,
+            "dimension_comparison": {},
         }
 
         for score in assessment.dimension_scores:
@@ -719,7 +536,7 @@ class QualityAssessmentService(BaseService):
                 "score": score.score,
                 "threshold": threshold,
                 "status": "above" if score.score >= threshold else "below",
-                "difference": score.score - threshold
+                "difference": score.score - threshold,
             }
 
         return comparison
@@ -749,7 +566,7 @@ class QualityAssessmentService(BaseService):
             "dimension_averages": {
                 dim.value: statistics.mean(scores) if scores else 0.0
                 for dim, scores in trend.dimension_trends.items()
-            }
+            },
         }
 
     def get_assessment_history(self, content_id: str) -> List[Dict[str, Any]]:
@@ -772,7 +589,7 @@ class QualityAssessmentService(BaseService):
                 "grade": assessment.grade,
                 "strengths": assessment.strengths,
                 "weaknesses": assessment.weaknesses,
-                "recommendations": assessment.recommendations
+                "recommendations": assessment.recommendations,
             }
             for assessment in self.assessment_history[content_id]
         ]

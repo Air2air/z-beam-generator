@@ -6,26 +6,27 @@ including various iteration strategies, exit conditions, and workflow management
 """
 
 import asyncio
-import time
 import logging
-from typing import Any, Dict, List, Optional, Callable, Union
+import time
 from dataclasses import dataclass, field
 from datetime import datetime, timedelta
 from enum import Enum
+from typing import Any, Callable, Dict, List, Optional, Union
 
-from services import BaseService, ServiceConfiguration, ServiceError
-
+from ..base import BaseService, ServiceConfiguration, ServiceError
 
 logger = logging.getLogger(__name__)
 
 
 class IterativeWorkflowError(ServiceError):
     """Raised when iterative workflow operations fail."""
+
     pass
 
 
 class IterationStrategy(Enum):
     """Strategies for controlling iteration timing and behavior."""
+
     LINEAR = "linear"
     EXPONENTIAL_BACKOFF = "exponential_backoff"
     ADAPTIVE = "adaptive"
@@ -33,6 +34,7 @@ class IterationStrategy(Enum):
 
 class ExitCondition(Enum):
     """Conditions that can cause workflow termination."""
+
     QUALITY_THRESHOLD = "quality_threshold"
     MAX_ITERATIONS = "max_iterations"
     TIME_LIMIT = "time_limit"
@@ -43,6 +45,7 @@ class ExitCondition(Enum):
 @dataclass
 class IterationContext:
     """Context information passed to iteration functions."""
+
     iteration_number: int
     previous_result: Any
     workflow_id: str
@@ -58,14 +61,17 @@ class IterationContext:
 @dataclass
 class WorkflowConfiguration:
     """Configuration for iterative workflows."""
+
     max_iterations: int = 10
     quality_threshold: float = 0.9
     time_limit_seconds: Optional[float] = None
     iteration_strategy: IterationStrategy = IterationStrategy.LINEAR
-    exit_conditions: List[ExitCondition] = field(default_factory=lambda: [
-        ExitCondition.QUALITY_THRESHOLD,
-        ExitCondition.MAX_ITERATIONS
-    ])
+    exit_conditions: List[ExitCondition] = field(
+        default_factory=lambda: [
+            ExitCondition.QUALITY_THRESHOLD,
+            ExitCondition.MAX_ITERATIONS,
+        ]
+    )
     convergence_threshold: float = 0.01
     backoff_factor: float = 2.0
     min_delay: float = 0.1
@@ -75,6 +81,7 @@ class WorkflowConfiguration:
 @dataclass
 class IterationResult:
     """Result of a single iteration."""
+
     iteration_number: int
     input_content: Any
     output_content: Any
@@ -86,6 +93,7 @@ class IterationResult:
 @dataclass
 class WorkflowResult:
     """Result of an iterative workflow."""
+
     workflow_id: str
     success: bool
     iterations: List[IterationResult] = field(default_factory=list)
@@ -115,7 +123,11 @@ class IterativeWorkflowService(BaseService):
 
     def _validate_config(self) -> None:
         """Validate service configuration."""
-        required_settings = ["max_iterations", "quality_threshold", "time_limit_seconds"]
+        required_settings = [
+            "max_iterations",
+            "quality_threshold",
+            "time_limit_seconds",
+        ]
         for setting in required_settings:
             if setting not in self.config.settings:
                 self.config.settings[setting] = getattr(self.default_config, setting)
@@ -134,7 +146,7 @@ class IterativeWorkflowService(BaseService):
         initial_input: Any,
         iteration_function: Callable[[Any, IterationContext], Any],
         quality_function: Callable[[Any], float],
-        workflow_config: Optional[WorkflowConfiguration] = None
+        workflow_config: Optional[WorkflowConfiguration] = None,
     ) -> WorkflowResult:
         """
         Run an iterative workflow.
@@ -159,14 +171,20 @@ class IterativeWorkflowService(BaseService):
             iteration_number=0,
             previous_result=initial_input,
             workflow_id=workflow_id,
-            start_time=start_time
+            start_time=start_time,
         )
+        context.metadata["workflow_id"] = workflow_id
+
+        # Add to active workflows at start
+        self.active_workflows[workflow_id] = result
 
         try:
             for iteration_num in range(1, workflow_config.max_iterations + 1):
                 # Check time limit
-                if (workflow_config.time_limit_seconds and
-                    context.elapsed_time >= workflow_config.time_limit_seconds):
+                if (
+                    workflow_config.time_limit_seconds
+                    and context.elapsed_time >= workflow_config.time_limit_seconds
+                ):
                     result.exit_reason = "time_limit_exceeded"
                     break
 
@@ -182,13 +200,17 @@ class IterativeWorkflowService(BaseService):
                     new_content = await iteration_function(current_content, context)
                 except Exception as e:
                     logger.error(f"Iteration {iteration_num} failed: {e}")
-                    raise IterativeWorkflowError(f"Iteration {iteration_num} failed: {e}") from e
+                    raise IterativeWorkflowError(
+                        f"Iteration {iteration_num} failed: {e}"
+                    ) from e
 
                 # Assess quality
                 try:
                     quality_score = quality_function(new_content)
                 except Exception as e:
-                    logger.error(f"Quality assessment failed for iteration {iteration_num}: {e}")
+                    logger.error(
+                        f"Quality assessment failed for iteration {iteration_num}: {e}"
+                    )
                     quality_score = 0.0
 
                 # Record iteration
@@ -198,12 +220,14 @@ class IterativeWorkflowService(BaseService):
                     output_content=new_content,
                     quality_score=quality_score,
                     timestamp=datetime.now(),
-                    metadata=context.metadata.copy()
+                    metadata=context.metadata.copy(),
                 )
                 result.iterations.append(iteration_result)
 
                 # Check exit conditions
-                if self._should_exit(iteration_result, workflow_config, result.iterations):
+                if self._should_exit(
+                    iteration_result, workflow_config, result.iterations, result
+                ):
                     result.success = True
                     result.final_result = new_content
                     break
@@ -225,7 +249,9 @@ class IterativeWorkflowService(BaseService):
 
         return result
 
-    async def _apply_iteration_delay(self, iteration_num: int, config: WorkflowConfiguration) -> None:
+    async def _apply_iteration_delay(
+        self, iteration_num: int, config: WorkflowConfiguration
+    ) -> None:
         """Apply delay based on iteration strategy."""
         if iteration_num == 1:
             return  # No delay for first iteration
@@ -233,7 +259,10 @@ class IterativeWorkflowService(BaseService):
         if config.iteration_strategy == IterationStrategy.LINEAR:
             delay = config.min_delay
         elif config.iteration_strategy == IterationStrategy.EXPONENTIAL_BACKOFF:
-            delay = min(config.min_delay * (config.backoff_factor ** (iteration_num - 2)), config.max_delay)
+            delay = min(
+                config.min_delay * (config.backoff_factor ** (iteration_num - 2)),
+                config.max_delay,
+            )
         elif config.iteration_strategy == IterationStrategy.ADAPTIVE:
             # Adaptive strategy - could be based on previous iteration performance
             delay = config.min_delay
@@ -242,21 +271,32 @@ class IterativeWorkflowService(BaseService):
 
         await asyncio.sleep(delay)
 
-    def _should_exit(self, current_iteration: IterationResult, config: WorkflowConfiguration,
-                    all_iterations: List[IterationResult]) -> bool:
+    def _should_exit(
+        self,
+        current_iteration: IterationResult,
+        config: WorkflowConfiguration,
+        all_iterations: List[IterationResult],
+        result: WorkflowResult,
+    ) -> bool:
         """Check if workflow should exit based on conditions."""
         # Quality threshold
-        if (ExitCondition.QUALITY_THRESHOLD in config.exit_conditions and
-            current_iteration.quality_score >= config.quality_threshold):
+        if (
+            ExitCondition.QUALITY_THRESHOLD in config.exit_conditions
+            and current_iteration.quality_score >= config.quality_threshold
+        ):
+            result.exit_reason = "quality_threshold_reached"
             return True
 
         # Convergence check
-        if (ExitCondition.CONVERGENCE in config.exit_conditions and
-            len(all_iterations) >= 2):
+        if (
+            ExitCondition.CONVERGENCE in config.exit_conditions
+            and len(all_iterations) >= 2
+        ):
             prev_score = all_iterations[-2].quality_score
             current_score = current_iteration.quality_score
             improvement = current_score - prev_score
             if abs(improvement) < config.convergence_threshold:
+                result.exit_reason = "convergence_reached"
                 return True
 
         return False
@@ -271,7 +311,9 @@ class IterativeWorkflowService(BaseService):
 
         # Keep only recent history (last 10 results per workflow)
         if len(self.workflow_history[result.workflow_id]) > 10:
-            self.workflow_history[result.workflow_id] = self.workflow_history[result.workflow_id][-10:]
+            self.workflow_history[result.workflow_id] = self.workflow_history[
+                result.workflow_id
+            ][-10:]
 
     def get_workflow_status(self, workflow_id: str) -> Optional[Dict[str, Any]]:
         """Get status of a workflow."""
@@ -285,7 +327,9 @@ class IterativeWorkflowService(BaseService):
             "iterations_completed": len(result.iterations),
             "total_time": result.total_time,
             "exit_reason": result.exit_reason,
-            "last_updated": result.iterations[-1].timestamp if result.iterations else None
+            "last_updated": result.iterations[-1].timestamp
+            if result.iterations
+            else None,
         }
 
     def get_workflow_history(self, workflow_id: str) -> List[Dict[str, Any]]:
@@ -299,7 +343,9 @@ class IterativeWorkflowService(BaseService):
                 "success": result.success,
                 "total_time": result.total_time,
                 "exit_reason": result.exit_reason,
-                "timestamp": result.iterations[-1].timestamp if result.iterations else None
+                "timestamp": result.iterations[-1].timestamp
+                if result.iterations
+                else None,
             }
             for result in self.workflow_history[workflow_id]
         ]
@@ -332,8 +378,11 @@ class IterativeWorkflowService(BaseService):
         # Clean history (keep at least one entry per workflow)
         for workflow_id, results in self.workflow_history.items():
             if len(results) > 1:
-                old_results = [r for r in results[:-1]
-                             if r.iterations and r.iterations[-1].timestamp < cutoff_time]
+                old_results = [
+                    r
+                    for r in results[:-1]
+                    if r.iterations and r.iterations[-1].timestamp < cutoff_time
+                ]
                 for old_result in old_results:
                     results.remove(old_result)
                     cleaned_count += 1

@@ -96,7 +96,7 @@ Total Test Cases: 37
 
 ### 🎯 **Complete Property Coverage**
 - **Original 6 Properties**: density, tensileStrength, thermalConductivity, meltingPoint, hardness, youngsModulus
-- **Phase 1 Laser Properties**: laserAbsorption, laserReflectivity  
+- **Phase 1 Laser Properties**: laserAbsorption, laserReflectivity
 - **Phase 2 Thermal Properties**: thermalDiffusivity, thermalExpansion, specificHeat
 
 ### 🔬 **Advanced Unit Support**
@@ -150,7 +150,7 @@ Total Test Cases: 37
 
 The enhanced percentile system is now comprehensively tested across all dimensions:
 - **Functional correctness** ✅
-- **Integration reliability** ✅  
+- **Integration reliability** ✅
 - **Data accuracy** ✅
 - **Error resilience** ✅
 

@@ -5,7 +5,7 @@
 ```
 components/jsonld/
 ├── README.md                    # Overview and navigation
-├── OPTIMIZATION_GUIDE.md        # Complete optimization methodology  
+├── OPTIMIZATION_GUIDE.md        # Complete optimization methodology
 ├── CONSOLIDATION_SUMMARY.md     # Documentation consolidation details
 ├── CALCULATOR_USAGE.md          # Calculator function reference
 ├── calculator.py                # Core Python optimization engine
@@ -41,7 +41,7 @@ html_script = generate_html_jsonld_for_material('path/to/frontmatter.md')
 ## 📊 Optimization Results
 
 - **21% Accuracy Improvement** (0.65 → 0.79)
-- **60% API Request Reduction** 
+- **60% API Request Reduction**
 - **Complete Schema.org Compliance**
 - **XSS Security Protection**
 - **Next.js Ready Format**

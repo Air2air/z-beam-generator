@@ -25,12 +25,12 @@ for file in "$PROPS_DIR"/*.md; do
     if [ -f "$file" ]; then
         # Replace "| Material |" with "| Density |" in the header row
         sed -i '' 's/| Material |/| Density |/g' "$file"
-        
+
         # For now, set density values to "N/A" - these will be populated by the generator in future runs
         # We're only updating the header label here to maintain consistency
-        
+
         UPDATED_COUNT=$((UPDATED_COUNT + 1))
-        
+
         # Show progress every 20 files
         if [ $((UPDATED_COUNT % 20)) -eq 0 ]; then
             echo "✅ Updated $UPDATED_COUNT/$TOTAL_FILES files..."

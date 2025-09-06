@@ -27,7 +27,7 @@ Edit `.env` and add your API keys:
 # DeepSeek API Configuration
 DEEPSEEK_API_KEY=your_deepseek_api_key_here
 
-# Grok (X.AI) API Configuration  
+# Grok (X.AI) API Configuration
 GROK_API_KEY=your_grok_api_key_here
 ```
 
@@ -53,7 +53,7 @@ API_PROVIDERS = {
     },
     "grok": {
         "name": "Grok (X.AI)",
-        "env_key": "GROK_API_KEY", 
+        "env_key": "GROK_API_KEY",
         "base_url": "https://api.x.ai/v1",
         "model": "grok-4"
     }

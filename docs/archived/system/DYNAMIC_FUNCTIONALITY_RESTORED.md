@@ -25,7 +25,7 @@ All component generators now support schema fields:
 
 ### **Specific Generators Enhanced**
 - **AuthorComponentGenerator** - Updated to handle schema fields
-- **FrontmatterComponentGenerator** - Inherits full schema integration 
+- **FrontmatterComponentGenerator** - Inherits full schema integration
 - **BulletsComponentGenerator** - Enhanced with schema field support
 
 ## **Schema Fields Available**
@@ -33,7 +33,7 @@ All component generators now support schema fields:
 For material type content, the following dynamic fields are now available:
 
 1. **`properties`** - "Detail the physical and chemical properties of {subject} relevant to laser cleaning"
-2. **`laserParameters`** - "Explain the optimal laser parameters for cleaning {subject}, including wavelength, fluence, and pulse duration"  
+2. **`laserParameters`** - "Explain the optimal laser parameters for cleaning {subject}, including wavelength, fluence, and pulse duration"
 3. **`applications`** - "Describe the key applications where {subject} is processed using laser cleaning"
 4. **`challenges`** - "Analyze the specific challenges in laser cleaning {subject} and their technical solutions"
 5. **`safetyConsiderations`** - "Outline the safety considerations and protocols when laser cleaning {subject}"
@@ -66,7 +66,7 @@ def _build_prompt(..., schema_fields=None):
 ### **Template Variables**
 Schema fields are now available as template variables:
 - `{schema_properties}` - Properties field description
-- `{schema_laserParameters}` - Laser parameters description  
+- `{schema_laserParameters}` - Laser parameters description
 - `{schema_applications}` - Applications description
 - etc.
 
@@ -105,7 +105,7 @@ Schema fields are now available as template variables:
 
 2. **Current Responsibilities** - `dynamic_generator.py` still handles:
    - `SchemaManager` - Dynamic schema field extraction
-   - `ComponentManager` - Dynamic component mapping  
+   - `ComponentManager` - Dynamic component mapping
    - `MaterialLoader` - Dynamic material loading
    - `DynamicGenerator` - Main orchestration class
 

@@ -41,19 +41,19 @@ Successfully implemented percentile calculations showing where each material pro
 properties:
   density: "7.85 g/cm³"
   densityPercentile: 33.3          # NEW: 33% through metal density range
-  
+
   meltingPoint: "1500°C"
   meltingPercentile: 41.4          # NEW: 41% through metal melting range
-  
+
   thermalConductivity: "50 W/m·K"
   thermalPercentile: 10.0          # NEW: 10% through metal thermal range
-  
+
   tensileStrength: "400 MPa"
   tensilePercentile: 21.0          # NEW: 21% through metal tensile range
-  
+
   hardness: "150 HV"
   hardnessPercentile: 29.3         # NEW: 29% through metal hardness range
-  
+
   youngsModulus: "200 GPa"
   modulusPercentile: 38.1          # NEW: 38% through metal modulus range
 ```
@@ -85,8 +85,8 @@ properties:
 <div className="property-indicator">
   <span>Density: {density}</span>
   <div className="progress-bar">
-    <div 
-      className="progress-fill" 
+    <div
+      className="progress-fill"
       style={{width: `${densityPercentile}%`}}
     />
   </div>
@@ -133,7 +133,7 @@ Steel Properties Enhanced:
 The percentile enhancement transforms the Z-Beam Generator from providing basic material properties to offering **intelligent, contextual material characterization**. Users now get:
 
 - **Scientific Context:** Where each property sits within its category
-- **Visual Ready Data:** Perfect for UI progress bars and comparisons  
+- **Visual Ready Data:** Perfect for UI progress bars and comparisons
 - **Decision Support:** Easy identification of high/low performing materials
 - **Enhanced SEO:** Rich, searchable property context
 

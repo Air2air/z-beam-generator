@@ -17,7 +17,7 @@ Abstract base class for all component generators. Provides:
 #### `StaticComponentGenerator`
 For components that don't require API calls:
 - Author information
-- Badge symbols  
+- Badge symbols
 - Properties tables
 - Uses local data and templates
 
@@ -54,12 +54,12 @@ generators/
 - **File**: `generators/author_generator.py`
 - **Type**: Static
 - **Function**: Generates author information using local JSON data
-- **Features**: 
+- **Features**:
   - Uses existing author system (`run.get_author_by_id`)
   - Fallback to default author data
   - No API calls required
 
-### FrontmatterComponentGenerator  
+### FrontmatterComponentGenerator
 - **File**: `generators/frontmatter_generator.py`
 - **Type**: API-based
 - **Function**: Generates YAML frontmatter with property enhancement
@@ -70,7 +70,7 @@ generators/
   - Category-specific processing
 
 ### BulletsComponentGenerator
-- **File**: `generators/bullets_generator.py` 
+- **File**: `generators/bullets_generator.py`
 - **Type**: API-based
 - **Function**: Generates bullet points with author-specific formatting
 - **Features**:
@@ -89,7 +89,7 @@ Each component generator handles only its specific logic:
 
 ### 2. **Maintainability**
 - Easier to modify component-specific behavior
-- Clear boundaries between components  
+- Clear boundaries between components
 - Isolated testing of individual generators
 
 ### 3. **Extensibility**
@@ -127,7 +127,7 @@ from generators.component_generators import APIComponentGenerator
 class CustomComponentGenerator(APIComponentGenerator):
     def __init__(self):
         super().__init__("custom")
-    
+
     def _post_process_content(self, content, material_name, material_data):
         # Custom post-processing logic
         return enhanced_content
@@ -156,7 +156,7 @@ from generators.author_generator import AuthorComponentGenerator
 generator = AuthorComponentGenerator()
 result = generator.generate('TestMaterial', material_data)
 
-# Test with mock API for API-based generators  
+# Test with mock API for API-based generators
 from generators.frontmatter_generator import FrontmatterComponentGenerator
 generator = FrontmatterComponentGenerator()
 result = generator.generate('TestMaterial', material_data, mock_api_client)
@@ -166,7 +166,7 @@ result = generator.generate('TestMaterial', material_data, mock_api_client)
 
 ### Planned Specializations
 - **Content Generator**: Advanced content structuring and technical accuracy
-- **Tags Generator**: Smart tag generation with category analysis  
+- **Tags Generator**: Smart tag generation with category analysis
 - **Table Generator**: Dynamic table structures based on material properties
 - **Metatags Generator**: SEO optimization and metadata enhancement
 

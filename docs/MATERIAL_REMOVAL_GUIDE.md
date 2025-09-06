@@ -235,8 +235,8 @@ To support new component types, update the `component_types` list:
 
 ```python
 self.component_types = [
-    "frontmatter", "content", "metatags", "jsonld", 
-    "tags", "bullets", "caption", "table", 
+    "frontmatter", "content", "metatags", "jsonld",
+    "tags", "bullets", "caption", "table",
     "propertiestable", "badgesymbol", "author",
     "new_component_type"  # Add new types here
 ]

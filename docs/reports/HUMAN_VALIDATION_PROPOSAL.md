@@ -22,7 +22,7 @@ Input → API Generation → Human-Like Validation → [Improvement Loop] → En
 
 #### **Tier 1: Human-Like Validator (`human_validator.py`)**
 - **Structural Variety**: Paragraph variation, heading usage, intro/conclusion balance
-- **Typographical Elements**: Emphasis usage, list patterns, whitespace analysis  
+- **Typographical Elements**: Emphasis usage, list patterns, whitespace analysis
 - **Vocabulary Choice**: Lexical diversity, buzzword detection, technical term balance
 - **Sentence Structure**: Length variation, passive voice analysis, rhythm scoring
 - **Tone & Flow**: Transition variety, personal elements, AI pattern detection
@@ -66,14 +66,14 @@ print(f"Content human-likeness score: {score}/100")
 # In run.py, replace content component generation:
 if component == "content":
     from components.content.integration_workflow import ContentValidationIntegrator
-    
+
     integrator = ContentValidationIntegrator({
         'enabled': True,
         'threshold': 80,
         'max_attempts': 2,
         'mode': 'permissive'  # or 'strict' for quality-critical applications
     })
-    
+
     result = integrator.generate_content_with_validation(
         material_name, material_data, api_client, author_info, frontmatter_data
     )

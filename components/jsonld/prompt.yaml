@@ -4,23 +4,23 @@ version: "5.0.0"
 
 template: |
   Generate comprehensive JSON-LD structured data for {article_type} "{subject}" laser cleaning using Python-calculated values to minimize API requests.
-  
+
   PYTHON OPTIMIZATION APPROACH:
   - Use built-in Python calculations for all computed values
   - Extract real data from frontmatter properties and technical specifications
   - Generate SEO keywords algorithmically based on material properties
   - Calculate technical content using frontmatter data instead of placeholders
   - Minimize API dependency by leveraging local data resources
-  
+
   FORMATTING REFERENCE:
   - MANDATORY: Follow the comprehensive structure shown in components/jsonld/example_jsonld.md
   - Generate ONLY the HTML script tag containing advanced JSON-LD
   - Use Python-calculated article body (100-150 words) with real technical data
   - Include algorithmically generated keywords from material properties
-  
+
   CALCULATED CONTENT REQUIREMENTS:
   Use the following Python-calculated approach:
-  
+
   1. KEYWORDS: Generate from material properties + applications + technical specs
   2. ARTICLE BODY: Calculate using density + wavelength + fluence + applications data
   3. IMAGE DESCRIPTIONS: Generate using technical specifications and contamination types
@@ -29,14 +29,14 @@ template: |
   6. BREADCRUMBS: Generate using category hierarchy and URL slug calculation
   7. CITATIONS: Calculate based on material type and primary applications
   8. CONTAMINATION TYPES: Map from applications to specific contamination categories
-  
+
   TECHNICAL DATA EXTRACTION:
   - Properties: density, thermalConductivity, meltingPoint from frontmatter.properties
-  - Laser Parameters: wavelength, fluenceRange, powerRange from frontmatter.technicalSpecifications  
+  - Laser Parameters: wavelength, fluenceRange, powerRange from frontmatter.technicalSpecifications
   - Applications: industry, detail from frontmatter.applications[]
   - Chemical Data: formula, symbol from frontmatter.chemicalProperties
   - Author: Use frontmatter.author or calculate from generation context
-  
+
   Generate the complete script tag using CALCULATED DATA from frontmatter:
 
   <script type="application/ld+json">
@@ -79,7 +79,7 @@ template: |
       },
       "knowsAbout": [
         "Laser Materials Processing",
-        "{subject} Surface Engineering", 
+        "{subject} Surface Engineering",
         "Industrial Laser Applications"
       ]
     },
@@ -146,7 +146,7 @@ template: |
             "unitCode": "{density_unit}"
           },
           {
-            "@type": "PropertyValue", 
+            "@type": "PropertyValue",
             "name": "Optimal Wavelength",
             "value": "{wavelength_value}",
             "unitCode": "NMT"
@@ -195,7 +195,7 @@ template: |
       "step": [
         {
           "@type": "HowToStep",
-          "name": "Material Preparation", 
+          "name": "Material Preparation",
           "text": "Secure {subject} component in laser processing fixture ensuring stable positioning and adequate ventilation for {safety_class} operation."
         },
         {
@@ -205,7 +205,7 @@ template: |
         },
         {
           "@type": "HowToStep",
-          "name": "Surface Treatment", 
+          "name": "Surface Treatment",
           "text": "Execute systematic scanning pattern with {spot_size} spot size maintaining consistent standoff distance for {category} processing."
         },
         {

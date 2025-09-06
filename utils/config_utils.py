@@ -8,16 +8,20 @@ Consolidates YAML loading patterns and provides unified configuration access.
 
 import os
 from pathlib import Path
-from typing import Dict, Any, Optional, Union
+from typing import Any, Dict, Optional, Union
+
 import yaml
 
 
 class ConfigurationError(Exception):
     """Raised when configuration loading fails"""
+
     pass
 
 
-def load_yaml_file(file_path: Union[str, Path], required: bool = True) -> Optional[Dict[str, Any]]:
+def load_yaml_file(
+    file_path: Union[str, Path], required: bool = True
+) -> Optional[Dict[str, Any]]:
     """
     Load a YAML file with comprehensive error handling.
 
@@ -36,11 +40,13 @@ def load_yaml_file(file_path: Union[str, Path], required: bool = True) -> Option
 
     if not file_path.exists():
         if required:
-            raise FileNotFoundError(f"Required configuration file not found: {file_path}")
+            raise FileNotFoundError(
+                f"Required configuration file not found: {file_path}"
+            )
         return None
 
     try:
-        with open(file_path, 'r', encoding='utf-8') as f:
+        with open(file_path, "r", encoding="utf-8") as f:
             data = yaml.safe_load(f)
 
         if data is None:
@@ -77,13 +83,15 @@ def load_component_config(component_name: str) -> Dict[str, Any]:
             raise ConfigurationError(f"Empty component configuration: {component_name}")
 
         # Add component metadata
-        config['_component_name'] = component_name
-        config['_config_path'] = str(config_path)
+        config["_component_name"] = component_name
+        config["_config_path"] = str(config_path)
 
         return config
 
     except Exception as e:
-        raise ConfigurationError(f"Failed to load component config for {component_name}: {e}")
+        raise ConfigurationError(
+            f"Failed to load component config for {component_name}: {e}"
+        )
 
 
 def load_ai_detection_config() -> Dict[str, Any]:
@@ -105,12 +113,12 @@ def load_ai_detection_config() -> Dict[str, Any]:
 
         # Set defaults for missing values
         defaults = {
-            'provider': 'winston',
-            'enabled': True,
-            'target_score': 45.0,
-            'max_iterations': 5,
-            'timeout': 15,
-            'retry_attempts': 2
+            "provider": "winston",
+            "enabled": True,
+            "target_score": 45.0,
+            "max_iterations": 5,
+            "timeout": 15,
+            "retry_attempts": 2,
         }
 
         for key, default_value in defaults.items():
@@ -134,21 +142,23 @@ def load_frontmatter_data(material_name: str) -> Optional[Dict[str, Any]]:
         Frontmatter data dictionary, or None if not found
     """
     # Create safe filename
-    safe_name = material_name.lower().replace(' ', '-').replace('/', '-')
-    file_path = Path("content/components/frontmatter") / f"{safe_name}-laser-cleaning.md"
+    safe_name = material_name.lower().replace(" ", "-").replace("/", "-")
+    file_path = (
+        Path("content/components/frontmatter") / f"{safe_name}-laser-cleaning.md"
+    )
 
     if not file_path.exists():
         return None
 
     try:
-        with open(file_path, 'r', encoding='utf-8') as f:
+        with open(file_path, "r", encoding="utf-8") as f:
             content = f.read()
 
         # Extract frontmatter (between --- markers)
-        if not content.startswith('---'):
+        if not content.startswith("---"):
             return None
 
-        end_marker = content.find('---', 3)
+        end_marker = content.find("---", 3)
         if end_marker == -1:
             return None
 
@@ -201,7 +211,7 @@ def save_yaml_file(data: Dict[str, Any], file_path: Union[str, Path]) -> None:
         # Create directory if it doesn't exist
         file_path.parent.mkdir(parents=True, exist_ok=True)
 
-        with open(file_path, 'w', encoding='utf-8') as f:
+        with open(file_path, "w", encoding="utf-8") as f:
             yaml.dump(data, f, default_flow_style=False, sort_keys=False)
 
     except Exception as e:
@@ -242,7 +252,9 @@ def get_config_value(config: Dict[str, Any], key: str, default: Any = None) -> A
     return config.get(key, default)
 
 
-def merge_configs(base_config: Dict[str, Any], override_config: Dict[str, Any]) -> Dict[str, Any]:
+def merge_configs(
+    base_config: Dict[str, Any], override_config: Dict[str, Any]
+) -> Dict[str, Any]:
     """
     Merge two configuration dictionaries.
 

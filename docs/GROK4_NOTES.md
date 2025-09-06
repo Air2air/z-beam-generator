@@ -24,7 +24,7 @@
 ### Parameters Tested
 
 - ✅ `max_tokens`: 50, 100, 200 (no effect)
-- ✅ `temperature`: 0.7 (no effect)  
+- ✅ `temperature`: 0.7 (no effect)
 - ✅ `include_reasoning`: true (parameter ignored)
 - ✅ `reasoning`: true (parameter ignored)
 - ✅ `stream`: false (no effect)

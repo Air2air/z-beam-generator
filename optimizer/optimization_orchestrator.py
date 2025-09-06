@@ -8,13 +8,45 @@ AI detection, iterative workflows, and configuration optimization.
 
 import asyncio
 import logging
-from typing import Dict, Any, Optional, Callable
 from dataclasses import dataclass
 from datetime import datetime
+from typing import Any, Callable, Dict, Optional
 
 from optimizer.services.ai_detection_optimization import AIDetectionOptimizationService
-from optimizer.services.iterative_workflow.service import IterativeWorkflowService, WorkflowConfiguration
-from services import ServiceConfiguration, service_registry
+from optimizer.services.iterative_workflow.service import (
+    IterativeWorkflowService,
+    WorkflowConfiguration,
+)
+from optimizer.services import ServiceConfiguration
+
+# Simple service registry implementation
+class ServiceRegistry:
+    """Simple service registry for managing optimizer services."""
+    
+    _instance = None
+    
+    def __init__(self):
+        self._services = {}
+    
+    @classmethod
+    def get_instance(cls):
+        if cls._instance is None:
+            cls._instance = cls()
+        return cls._instance
+    
+    def register_service(self, service):
+        """Register a service instance."""
+        self._services[service.config.name] = service
+    
+    def get_service_typed(self, name, service_type):
+        """Get a service by name and type."""
+        service = self._services.get(name)
+        if service and isinstance(service, service_type):
+            return service
+        return None
+
+# Global service registry instance
+service_registry = ServiceRegistry.get_instance()
 
 logger = logging.getLogger(__name__)
 
@@ -22,6 +54,7 @@ logger = logging.getLogger(__name__)
 @dataclass
 class OptimizationConfig:
     """Configuration for content optimization."""
+
     target_score: float = 75.0
     max_iterations: int = 5
     improvement_threshold: float = 3.0
@@ -32,6 +65,7 @@ class OptimizationConfig:
 @dataclass
 class OptimizationResult:
     """Result of content optimization."""
+
     original_content: str
     optimized_content: str
     original_score: float
@@ -52,8 +86,11 @@ class ContentOptimizationOrchestrator:
     workflow that was previously embedded in TextComponentGenerator.
     """
 
-    def __init__(self, ai_service: Optional[AIDetectionOptimizationService] = None,
-                 workflow_service: Optional[IterativeWorkflowService] = None):
+    def __init__(
+        self,
+        ai_service: Optional[AIDetectionOptimizationService] = None,
+        workflow_service: Optional[IterativeWorkflowService] = None,
+    ):
         """
         Initialize the optimization orchestrator.
 
@@ -65,45 +102,20 @@ class ContentOptimizationOrchestrator:
         if ai_service:
             self.ai_service = ai_service
         else:
-            try:
-                self.ai_service = service_registry.get_service_typed(
-                    "ai_detection_service", AIDetectionOptimizationService
-                )
-            except Exception as e:
-                logger.warning(f"AI detection service not in registry: {e}. Creating new instance.")
-                # Create a basic AI detection service configuration
-                ai_config = ServiceConfiguration(
-                    name="ai_detection_service",
-                    settings={
-                        "providers": {"mock": {"type": "mock"}},
-                        "target_score": 75.0,
-                        "max_iterations": 5
-                    }
-                )
-                self.ai_service = AIDetectionOptimizationService(ai_config)
-                # Register with the original service config
-                service_registry.register_service(self.ai_service)
+            self.ai_service = service_registry.get_service_typed(
+                "ai_detection_service", AIDetectionOptimizationService
+            )
+            if not self.ai_service:
+                raise ValueError("AI detection service not found in registry and not provided")
 
         if workflow_service:
             self.workflow_service = workflow_service
         else:
-            try:
-                self.workflow_service = service_registry.get_service_typed(
-                    "iterative_workflow_service", IterativeWorkflowService
-                )
-            except Exception as e:
-                logger.warning(f"Iterative workflow service not in registry: {e}. Creating new instance.")
-                # Create a basic workflow service configuration
-                workflow_config = ServiceConfiguration(
-                    name="iterative_workflow_service",
-                    settings={
-                        "max_iterations": 10,
-                        "quality_threshold": 0.9,
-                        "time_limit_seconds": None
-                    }
-                )
-                self.workflow_service = IterativeWorkflowService(workflow_config)
-                service_registry.register_service(self.workflow_service)
+            self.workflow_service = service_registry.get_service_typed(
+                "iterative_workflow_service", IterativeWorkflowService
+            )
+            if not self.workflow_service:
+                raise ValueError("Iterative workflow service not found in registry and not provided")
 
         if not self.ai_service:
             raise ValueError("AI detection service not available")
@@ -116,7 +128,7 @@ class ContentOptimizationOrchestrator:
         material_name: str,
         config: Optional[OptimizationConfig] = None,
         iteration_function: Optional[Callable] = None,
-        **kwargs
+        **kwargs,
     ) -> OptimizationResult:
         """
         Optimize content using the decoupled optimization system.
@@ -140,7 +152,9 @@ class ContentOptimizationOrchestrator:
         # Get initial score
         try:
             initial_result = await self.ai_service.detect_ai_content(content)
-            initial_score = initial_result.score if hasattr(initial_result, 'score') else 50.0
+            initial_score = (
+                initial_result.score if hasattr(initial_result, "score") else 50.0
+            )
         except Exception as e:
             logger.warning(f"Could not get initial AI score: {e}")
             initial_score = 50.0
@@ -159,28 +173,34 @@ class ContentOptimizationOrchestrator:
             max_iterations=config.max_iterations,
             quality_threshold=config.target_score / 100.0,  # Convert to 0-1 scale
             time_limit_seconds=config.time_limit_seconds,
-            convergence_threshold=config.convergence_threshold
+            convergence_threshold=config.convergence_threshold,
         )
 
         # Prepare iteration context
         iteration_context = {
-            'material_name': material_name,
-            'ai_service': self.ai_service,
-            'config': config,
-            'kwargs': kwargs
+            "material_name": material_name,
+            "ai_service": self.ai_service,
+            "config": config,
+            "kwargs": kwargs,
         }
 
         # Run iterative workflow
         workflow_result = await self.workflow_service.run_iterative_workflow(
             workflow_id=workflow_id,
             initial_input=content,
-            iteration_function=lambda content, ctx: iteration_function(content, iteration_context),
+            iteration_function=lambda content, ctx: iteration_function(
+                content, iteration_context
+            ),
             quality_function=self._quality_assessment_function,
-            workflow_config=workflow_config
+            workflow_config=workflow_config,
         )
 
         # Calculate final results
-        final_score = workflow_result.iterations[-1].quality_score if workflow_result.iterations else initial_score
+        final_score = (
+            workflow_result.iterations[-1].quality_score
+            if workflow_result.iterations
+            else initial_score
+        )
         improvement = final_score - initial_score
         total_time = (datetime.now() - start_time).total_seconds()
 
@@ -196,35 +216,39 @@ class ContentOptimizationOrchestrator:
             success=success,
             improvement=improvement,
             metadata={
-                'workflow_id': workflow_id,
-                'exit_reason': workflow_result.exit_reason,
-                'iterations': [
+                "workflow_id": workflow_id,
+                "exit_reason": workflow_result.exit_reason,
+                "iterations": [
                     {
-                        'number': it.iteration_number,
-                        'score': it.quality_score,
-                        'timestamp': it.timestamp.isoformat()
+                        "number": it.iteration_number,
+                        "score": it.quality_score,
+                        "timestamp": it.timestamp.isoformat(),
                     }
                     for it in workflow_result.iterations
-                ]
-            }
+                ],
+            },
         )
 
         logger.info(f"🏁 Optimization completed for {material_name}")
-        logger.info(f"   📊 Final score: {final_score:.1f} (improvement: {improvement:+.1f})")
+        logger.info(
+            f"   📊 Final score: {final_score:.1f} (improvement: {improvement:+.1f})"
+        )
         logger.info(f"   ⏱️ Total time: {total_time:.1f}s")
         logger.info(f"   ✅ Success: {success}")
 
         return result
 
-    async def _default_iteration_function(self, content: str, context: Dict[str, Any]) -> str:
+    async def _default_iteration_function(
+        self, content: str, context: Dict[str, Any]
+    ) -> str:
         """
         Default iteration function for content optimization.
 
         This is a simplified version that focuses on basic improvements
         without the complex logic from TextComponentGenerator.
         """
-        material_name = context['material_name']
-        ai_service = context['ai_service']
+        material_name = context["material_name"]
+        ai_service = context["ai_service"]
 
         # Simple prompt for content improvement
         improvement_prompt = f"""
@@ -259,20 +283,17 @@ class ContentOptimizationOrchestrator:
 
         Returns:
             float: Quality score (0-100 scale)
+        
+        Raises:
+            Exception: If quality assessment fails
         """
-        try:
-            result = await self.ai_service.detect_ai_content(content)
-            # Convert to 0-100 scale and invert (lower AI score = higher quality)
-            quality_score = (1.0 - result.score) * 100
-            return quality_score
-        except Exception as e:
-            logger.warning(f"Quality assessment failed: {e}")
-            return 50.0  # Neutral score on failure
+        result = await self.ai_service.detect_ai_content(content)
+        # Convert to 0-100 scale and invert (lower AI score = higher quality)
+        quality_score = (1.0 - result.score) * 100
+        return quality_score
 
     async def batch_optimize(
-        self,
-        content_items: Dict[str, str],
-        config: Optional[OptimizationConfig] = None
+        self, content_items: Dict[str, str], config: Optional[OptimizationConfig] = None
     ) -> Dict[str, OptimizationResult]:
         """
         Optimize multiple content items in batch.
@@ -301,7 +322,9 @@ class ContentOptimizationOrchestrator:
         batch_results = {}
         for i, (material_name, _) in enumerate(content_items.items()):
             if isinstance(results[i], Exception):
-                logger.error(f"Batch optimization failed for {material_name}: {results[i]}")
+                logger.error(
+                    f"Batch optimization failed for {material_name}: {results[i]}"
+                )
                 # Create a failure result
                 batch_results[material_name] = OptimizationResult(
                     original_content=content_items[material_name],
@@ -312,13 +335,15 @@ class ContentOptimizationOrchestrator:
                     total_time=0.0,
                     success=False,
                     improvement=0.0,
-                    metadata={'error': str(results[i])}
+                    metadata={"error": str(results[i])},
                 )
             else:
                 batch_results[material_name] = results[i]
 
         successful_optimizations = sum(1 for r in batch_results.values() if r.success)
-        logger.info(f"🏁 Batch optimization completed: {successful_optimizations}/{len(content_items)} successful")
+        logger.info(
+            f"🏁 Batch optimization completed: {successful_optimizations}/{len(content_items)} successful"
+        )
 
         return batch_results
 
@@ -328,7 +353,7 @@ async def optimize_content_simple(
     content: str,
     material_name: str,
     target_score: float = 75.0,
-    max_iterations: int = 5
+    max_iterations: int = 5,
 ) -> OptimizationResult:
     """
     Simple function to optimize content with default settings.
@@ -343,8 +368,7 @@ async def optimize_content_simple(
         OptimizationResult: Optimization results
     """
     config = OptimizationConfig(
-        target_score=target_score,
-        max_iterations=max_iterations
+        target_score=target_score, max_iterations=max_iterations
     )
 
     orchestrator = ContentOptimizationOrchestrator()
@@ -354,7 +378,7 @@ async def optimize_content_simple(
 async def batch_optimize_materials(
     materials_content: Dict[str, str],
     target_score: float = 75.0,
-    max_iterations: int = 5
+    max_iterations: int = 5,
 ) -> Dict[str, OptimizationResult]:
     """
     Optimize multiple materials in batch.
@@ -368,8 +392,7 @@ async def batch_optimize_materials(
         Dict[str, OptimizationResult]: Results for each material
     """
     config = OptimizationConfig(
-        target_score=target_score,
-        max_iterations=max_iterations
+        target_score=target_score, max_iterations=max_iterations
     )
 
     orchestrator = ContentOptimizationOrchestrator()

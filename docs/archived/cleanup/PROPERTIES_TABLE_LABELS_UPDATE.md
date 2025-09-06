@@ -7,7 +7,7 @@ Successfully updated all properties table files and the generator to use the new
 
 ### **Label Mappings (Old → New):**
 - `Chemical Formula` → `Formula`
-- `Material Symbol` → `Symbol` 
+- `Material Symbol` → `Symbol`
 - `Material Type` → `Material`
 - `Tensile Strength` → `Tensile`
 - `Thermal Conductivity` → `Thermal`

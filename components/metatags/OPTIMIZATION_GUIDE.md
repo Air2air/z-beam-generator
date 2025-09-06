@@ -52,7 +52,7 @@
 ```python
 class MetatagsCalculator:
     def calculate_meta_title(self) -> str
-    def calculate_meta_description(self) -> str  
+    def calculate_meta_description(self) -> str
     def generate_seo_keywords(self) -> List[str]
     def generate_opengraph_data(self) -> Dict
     def generate_twitter_card_data(self) -> List[Dict]
@@ -109,7 +109,7 @@ alternate: "Language variant support"
 
 ### Validation Criteria
 - ✅ **Title Length**: 50-60 characters optimal
-- ✅ **Description Length**: 150-160 characters optimal  
+- ✅ **Description Length**: 150-160 characters optimal
 - ✅ **Keyword Relevance**: Real technical terms
 - ✅ **Social Media**: Complete OpenGraph + Twitter
 - ✅ **Technical Accuracy**: Real frontmatter data

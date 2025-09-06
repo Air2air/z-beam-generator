@@ -5,7 +5,7 @@
 
 ### **Files Archived to `archive/legacy_scripts/`:**
 - `generate_24_materials.py` - Legacy 24 materials generation script
-- `generate_12_materials.py` - Legacy 12 materials generation script  
+- `generate_12_materials.py` - Legacy 12 materials generation script
 - `generate_24_materials_clean.py` - Legacy clean generation script
 - `generate_content_only.py` - Legacy content-only generation script
 - `test_content_generation.py` - Legacy content generation test script
@@ -26,7 +26,7 @@
 - Validation report files (should only exist as terminal output)
 - Multiple redundant coverage directories:
   - `tests/coverage_analysis/`
-  - `tests/coverage_html/`  
+  - `tests/coverage_html/`
   - `tests/coverage_html_new/`
 
 ### **Validation Reports Cleanup:**

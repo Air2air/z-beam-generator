@@ -14,7 +14,7 @@ The author ID mapping in the Z-Beam Generator system is **100% accurate**. Here'
 
 ### Data Source Verification
 - **Author Data**: `components/author/authors.json` ✅
-- **Persona Files**: `components/content/prompts/personas/` ✅ 
+- **Persona Files**: `components/content/prompts/personas/` ✅
 - **Formatting Files**: `components/content/prompts/formatting/` ✅
 - **Generator Code**: `components/content/generators/fail_fast_generator.py` ✅
 
@@ -46,7 +46,7 @@ Author ID 1 (Yi-Chun Lin) ->
   └── formatting/taiwan_formatting.yaml (250 words)
 
 Author ID 2 (Alessandro Moretti) ->
-  ├── personas/italy_persona.yaml  
+  ├── personas/italy_persona.yaml
   └── formatting/italy_formatting.yaml (300 words)
 
 Author ID 3 (Ikmanda Roswati) ->

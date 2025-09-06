@@ -11,10 +11,10 @@ Successfully implemented a comprehensive cleanup system to ensure all generators
 - **`create_material_slug(material_name)`**: Converts material names to clean slugs
   - Example: `"Metal Matrix Composites (MMCs)"` → `"metal-matrix-composites-mmcs"`
   - Removes parentheses, normalizes spacing, converts to lowercase with hyphens
-  
+
 - **`create_filename_slug(material_name, suffix)`**: Creates complete filenames
   - Example: `"Metal Matrix Composites (MMCs)"` → `"metal-matrix-composites-mmcs-laser-cleaning"`
-  
+
 - **`validate_slug(slug)`**: Validates slug format compliance
 - **`normalize_material_name(material_name)`**: Normalizes display names
 - **`get_clean_material_mapping()`**: Maps old names to clean versions

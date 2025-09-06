@@ -10,7 +10,7 @@ metal:
     min: "0.02 cm⁻¹"     # Highly reflective metals (silver, aluminum)
     max: "100 cm⁻¹"     # Absorptive metals (oxidized steel)
 ceramic:
-  laserAbsorption:  
+  laserAbsorption:
     min: "0.1 cm⁻¹"     # Transparent ceramics
     max: "50 cm⁻¹"      # Dark/carbon-containing ceramics
 ```
@@ -37,7 +37,7 @@ metal:
     max: "174 mm²/s"    # Silver
 composite:
   thermalDiffusivity:
-    min: "0.1 mm²/s"    # Insulating composites  
+    min: "0.1 mm²/s"    # Insulating composites
     max: "5 mm²/s"      # Conductive fiber composites
 ```
 
@@ -74,20 +74,20 @@ properties:
   # Current properties (6)
   density: "8.96 g/cm³"
   densityPercentile: 45.2
-  
+
   # NEW: Laser properties (4)
   laserAbsorption: "15 cm⁻¹"
   absorptionPercentile: 23.5
   laserReflectivity: "85%"
   reflectivityPercentile: 78.9
-  
+
   # NEW: Advanced thermal (3)
   thermalDiffusivity: "111 mm²/s"
   diffusivityPercentile: 89.2
   thermalExpansion: "16.5 µm/m·K"
   expansionPercentile: 67.3
-  
-  # NEW: Electrical (2)  
+
+  # NEW: Electrical (2)
   electricalConductivity: "5.96×10⁷ S/m"
   conductivityPercentile: 95.8
 ```
@@ -110,7 +110,7 @@ properties:
 - Add 4 new property fields to templates and database
 - Update percentile calculator with new units (cm⁻¹, %)
 
-### **Phase 2: Thermal Properties (2 weeks)**  
+### **Phase 2: Thermal Properties (2 weeks)**
 - Research thermal diffusivity and expansion coefficients
 - Add 3 new thermal property fields
 - Update unit parsing for mm²/s and µm/m·K
@@ -124,7 +124,7 @@ properties:
 
 ### **For Laser Cleaning Applications:**
 1. **Laser Absorption/Reflectivity** - Critical for parameter optimization
-2. **Thermal Properties** - Prevent damage during processing  
+2. **Thermal Properties** - Prevent damage during processing
 3. **Electrical Properties** - Important for semiconductor cleaning
 
 ### **For User Decision Making:**
@@ -134,7 +134,7 @@ properties:
 
 ### **For Next.js UI Enhancement:**
 ```tsx
-<PropertyRadar 
+<PropertyRadar
   density={33.3}
   laserAbsorption={23.5}
   thermalStability={67.3}

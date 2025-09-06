@@ -6,99 +6,21 @@ Extracted API configuration and client creation from run.py for better modularit
 Handles API provider configuration, client creation, and fallback mechanisms.
 """
 
-import os  # noqa: F401
 import logging  # noqa: F401
+import os  # noqa: F401
 from pathlib import Path  # noqa: F401
 from typing import Optional  # noqa: F401
+from pathlib import Path
+
+from api.client import APIClient
+from api.env_loader import EnvLoader
+from api.env_loader import EnvLoader
+from api.config import API_PROVIDERS
 
 
-# API Provider Configuration
-API_PROVIDERS = {
-    "deepseek": {
-        "name": "DeepSeek",
-        "env_key": "DEEPSEEK_API_KEY",
-        "env_var": "DEEPSEEK_API_KEY",  # Add this for test compatibility
-        "base_url": "https://api.deepseek.com",
-        "model": "deepseek-chat",
-    },
-    "grok": {
-        "name": "Grok (X.AI)",
-        "env_key": "GROK_API_KEY",
-        "env_var": "GROK_API_KEY",  # Add this for test compatibility
-        "base_url": "https://api.x.ai",  # Remove /v1 since APIClient adds it
-        "model": "grok-2",  # grok-2 works reliably; grok-4 currently uses reasoning tokens without completion output
-    },
-    "openai": {
-        "name": "OpenAI",
-        "env_key": "OPENAI_API_KEY",
-        "env_var": "OPENAI_API_KEY",  # For test compatibility
-        "base_url": "https://api.openai.com",
-        "model": "gpt-4-turbo",
-    },
-}
-
-
-def create_api_client(provider: str):
-    """Create an API client for the specified provider."""
-
-    # Handle special case for components that don't need API clients
-    if provider in ["none", "frontmatter"]:
-        return None
-
-    if provider not in API_PROVIDERS:
-        raise ValueError(f"Unknown API provider: {provider}")
-
-    provider_config = API_PROVIDERS[provider]
-    
-    from api.client import APIClient
-    from api.env_loader import EnvLoader
-
-    # Get provider configuration with API key
-    config = EnvLoader.get_provider_config(provider_config)
-
-    # Check if API key was found
-    if "api_key" not in config:
-        raise ValueError(
-            f"API key not found for {provider}. Please set {provider_config['env_key']} in your environment."
-        )
-
-    # Create API client with provider-specific configuration
-    return APIClient(
-        api_key=config["api_key"],
-        base_url=config["base_url"],
-        model=config["model"],
-    )
-
-
-def get_api_client_for_component(component_type: str, component_config: dict):
-    """Get the appropriate API client for a component type."""
-
-    components_config = component_config.get("components", {})
-    if component_type in components_config:
-        config = components_config[component_type]
-        data_provider = config["data_provider"]
-        
-        # For hybrid and API data providers, use the api_provider field
-        if data_provider in ["hybrid", "API"]:
-            provider = config["api_provider"]
-        else:
-            provider = data_provider
-    else:
-        provider = "deepseek"  # Default provider
-
-    return create_api_client(provider)
-
-
-def check_environment():
-    """Check environment variables and API key configuration."""
-
-    print("🔍 ENVIRONMENT CONFIGURATION CHECK")
-    print("=" * 50)
-
+def check_api_configuration():
+    """Check API configuration and display status."""
     try:
-        from api.env_loader import EnvLoader
-        from pathlib import Path
-
         # Check for .env file
         env_file = Path(".env")
         env_example = Path(".env.example")
@@ -134,6 +56,8 @@ def check_environment():
         print("🧪 API Client Tests:")
         for provider_id, provider_info in API_PROVIDERS.items():
             try:
+                # Import here to avoid circular import
+                from api.client_manager import create_api_client
                 create_api_client(provider_id)
                 print(f"   ✅ {provider_info['name']}: Client created successfully")
             except Exception as e:

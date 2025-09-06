@@ -12,7 +12,7 @@
 
 2. **Length Specification Conflicts**:
    - Base prompt: Taiwan 350-420 words, Italy 380-450 words
-   - Taiwan persona: 300-450 words  
+   - Taiwan persona: 300-450 words
    - USA persona: 250-400 words
    - Old prompt: 200-500 words varying
    - **ISSUE**: Inconsistent length requirements across systems

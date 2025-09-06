@@ -9,17 +9,20 @@ This package contains all the service modules for optimization:
 - configuration_optimizer: Configuration optimization service
 """
 
+from .base import BaseService, ServiceConfiguration, ServiceConfigurationError, ServiceError
 from .ai_detection_optimization import AIDetectionOptimizationService
-from .iterative_workflow import IterativeWorkflowService, WorkflowConfiguration
 from .dynamic_evolution import DynamicEvolutionService
+from .iterative_workflow import IterativeWorkflowService, WorkflowConfiguration
 from .quality_assessment import QualityAssessmentService
-from .configuration_optimizer import ConfigurationOptimizationService
 
 __all__ = [
-    'AIDetectionOptimizationService',
-    'IterativeWorkflowService',
-    'WorkflowConfiguration',
-    'DynamicEvolutionService',
-    'QualityAssessmentService',
-    'ConfigurationOptimizationService'
+    "BaseService",
+    "ServiceConfiguration",
+    "ServiceConfigurationError",
+    "ServiceError",
+    "AIDetectionOptimizationService",
+    "IterativeWorkflowService",
+    "WorkflowConfiguration",
+    "DynamicEvolutionService",
+    "QualityAssessmentService",
 ]

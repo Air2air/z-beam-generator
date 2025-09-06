@@ -20,7 +20,7 @@ The text component is the core of the Z-Beam laser cleaning content generation s
 
 ```python
 class TextComponentGenerator:
-    def generate(self, material_name: str, material_data: Dict, 
+    def generate(self, material_name: str, material_data: Dict,
                 api_client=None, author_info: Optional[Dict] = None,
                 frontmatter_data: Optional[Dict] = None,
                 schema_fields: Optional[Dict] = None) -> ComponentResult:

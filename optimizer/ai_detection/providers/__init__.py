@@ -3,10 +3,7 @@
 AI Detection Providers Package
 """
 
-from .winston import WinstonProvider
 from .mock import MockProvider
+from .winston import WinstonProvider
 
-__all__ = [
-    'WinstonProvider',
-    'MockProvider'
-]
+__all__ = ["WinstonProvider", "MockProvider"]

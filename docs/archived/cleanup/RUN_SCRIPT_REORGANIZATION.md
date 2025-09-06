@@ -9,7 +9,7 @@ Successfully moved all user scripts and commands to the top of `run.py` for bett
 - Added comprehensive "QUICK START SCRIPTS" section at the top
 - Organized commands into logical categories:
   - **BASIC GENERATION** - Core content generation commands
-  - **COMPONENT CONTROL** - Component-specific operations  
+  - **COMPONENT CONTROL** - Component-specific operations
   - **CONTENT MANAGEMENT** - File cleanup and validation
   - **SYSTEM INFO** - System status and configuration
   - **MATERIAL MANAGEMENT** - External script references

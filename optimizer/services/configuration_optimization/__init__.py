@@ -7,18 +7,20 @@ Supports multiple optimization strategies including Bayesian optimization, grid 
 
 import asyncio
 import json
-import uuid
-from datetime import datetime, timedelta
-from typing import Dict, List, Optional, Any, Callable, Union
-from dataclasses import dataclass, field
-from enum import Enum
-import numpy as np
-import random
 import math
+import random
+import uuid
+from dataclasses import dataclass, field
+from datetime import datetime, timedelta
+from enum import Enum
+from typing import Any, Callable, Dict, List, Optional, Union
+
+import numpy as np
 
 
 class OptimizationStrategy(Enum):
     """Optimization strategies available."""
+
     BAYESIAN_OPTIMIZATION = "bayesian_optimization"
     GRID_SEARCH = "grid_search"
     RANDOM_SEARCH = "random_search"
@@ -28,6 +30,7 @@ class OptimizationStrategy(Enum):
 @dataclass
 class OptimizationParameter:
     """Represents a parameter in the optimization space."""
+
     name: str
     min_value: Union[int, float]
     max_value: Union[int, float]
@@ -50,6 +53,7 @@ class OptimizationParameter:
 @dataclass
 class ParameterSpace:
     """Represents a parameter space for optimization."""
+
     space_id: str
     name: str
     parameters: Dict[str, OptimizationParameter]
@@ -72,6 +76,7 @@ class ParameterSpace:
 @dataclass
 class OptimizationResult:
     """Result of an optimization run."""
+
     optimization_id: str
     strategy: OptimizationStrategy
     parameter_space_id: str
@@ -87,6 +92,7 @@ class OptimizationResult:
 @dataclass
 class ConfigurationBackup:
     """Configuration backup for rollback purposes."""
+
     backup_id: str
     config_type: str
     config_data: Dict[str, Any]
@@ -96,12 +102,14 @@ class ConfigurationBackup:
 
 class OptimizationError(Exception):
     """Base exception for optimization errors."""
+
     pass
 
 
 @dataclass
 class OptimizationHistory:
     """Tracks optimization history."""
+
     optimization_id: str
     results: List[OptimizationResult] = field(default_factory=list)
 
@@ -142,24 +150,24 @@ class ConfigurationOptimizationService:
                     min_value=0.1,
                     max_value=0.5,
                     param_type="float",
-                    description="Weight for readability in content scoring"
+                    description="Weight for readability in content scoring",
                 ),
                 "structure_weight": OptimizationParameter(
                     name="structure_weight",
                     min_value=0.1,
                     max_value=0.5,
                     param_type="float",
-                    description="Weight for structure in content scoring"
+                    description="Weight for structure in content scoring",
                 ),
                 "technical_depth_weight": OptimizationParameter(
                     name="technical_depth_weight",
                     min_value=0.0,
                     max_value=0.3,
                     param_type="float",
-                    description="Weight for technical depth in content scoring"
-                )
+                    description="Weight for technical depth in content scoring",
+                ),
             },
-            description="Parameter space for optimizing content quality metrics"
+            description="Parameter space for optimizing content quality metrics",
         )
 
         self.parameter_spaces["content_quality"] = content_quality_space
@@ -176,7 +184,7 @@ class ConfigurationOptimizationService:
         max_iterations: int = 50,
         convergence_threshold: float = 0.001,
         timeout_seconds: Optional[float] = None,
-        optimization_id: Optional[str] = None
+        optimization_id: Optional[str] = None,
     ) -> OptimizationResult:
         """Optimize configuration using the specified strategy."""
 
@@ -193,27 +201,39 @@ class ConfigurationOptimizationService:
         self.active_optimizations[optimization_id] = {
             "start_time": start_time,
             "strategy": strategy,
-            "iterations_completed": 0
+            "iterations_completed": 0,
         }
 
         try:
             if strategy == OptimizationStrategy.BAYESIAN_OPTIMIZATION:
                 result = await self._bayesian_optimization(
-                    objective_function, parameter_space, max_iterations,
-                    convergence_threshold, timeout_seconds, optimization_id
+                    objective_function,
+                    parameter_space,
+                    max_iterations,
+                    convergence_threshold,
+                    timeout_seconds,
+                    optimization_id,
                 )
             elif strategy == OptimizationStrategy.GRID_SEARCH:
                 result = await self._grid_search_optimization(
-                    objective_function, parameter_space, max_iterations,
-                    timeout_seconds, optimization_id
+                    objective_function,
+                    parameter_space,
+                    max_iterations,
+                    timeout_seconds,
+                    optimization_id,
                 )
             elif strategy == OptimizationStrategy.RANDOM_SEARCH:
                 result = await self._random_search_optimization(
-                    objective_function, parameter_space, max_iterations,
-                    timeout_seconds, optimization_id
+                    objective_function,
+                    parameter_space,
+                    max_iterations,
+                    timeout_seconds,
+                    optimization_id,
                 )
             else:
-                raise OptimizationError(f"Unsupported optimization strategy: {strategy}")
+                raise OptimizationError(
+                    f"Unsupported optimization strategy: {strategy}"
+                )
 
             # Store result
             self.optimization_history[optimization_id] = result
@@ -232,18 +252,21 @@ class ConfigurationOptimizationService:
         max_iterations: int,
         convergence_threshold: float,
         timeout_seconds: Optional[float],
-        optimization_id: str
+        optimization_id: str,
     ) -> OptimizationResult:
         """Perform Bayesian optimization."""
         # Simplified Bayesian optimization implementation
-        best_score = float('-inf')
+        best_score = float("-inf")
         best_params = None
         iteration_history = []
         start_time = datetime.now()
 
         for iteration in range(max_iterations):
             # Check timeout
-            if timeout_seconds and (datetime.now() - start_time).total_seconds() > timeout_seconds:
+            if (
+                timeout_seconds
+                and (datetime.now() - start_time).total_seconds() > timeout_seconds
+            ):
                 break
 
             # Sample parameters (simplified - in real implementation would use Gaussian processes)
@@ -252,14 +275,16 @@ class ConfigurationOptimizationService:
             try:
                 score = await objective_function(params)
             except Exception as e:
-                score = float('-inf')
+                score = float("-inf")
 
-            iteration_history.append({
-                "iteration": iteration + 1,
-                "parameters": params,
-                "score": score,
-                "timestamp": datetime.now()
-            })
+            iteration_history.append(
+                {
+                    "iteration": iteration + 1,
+                    "parameters": params,
+                    "score": score,
+                    "timestamp": datetime.now(),
+                }
+            )
 
             if score > best_score:
                 best_score = score
@@ -278,12 +303,12 @@ class ConfigurationOptimizationService:
             strategy=OptimizationStrategy.BAYESIAN_OPTIMIZATION,
             parameter_space_id=parameter_space.space_id,
             best_parameters=best_params or {},
-            best_score=best_score if best_score != float('-inf') else 0.0,
+            best_score=best_score if best_score != float("-inf") else 0.0,
             converged=converged,
             total_iterations=len(iteration_history),
             iteration_history=iteration_history,
             metadata={"method": "simplified_bayesian"},
-            timestamp=datetime.now()
+            timestamp=datetime.now(),
         )
 
     async def _grid_search_optimization(
@@ -292,18 +317,21 @@ class ConfigurationOptimizationService:
         parameter_space: ParameterSpace,
         max_iterations: int,
         timeout_seconds: Optional[float],
-        optimization_id: str
+        optimization_id: str,
     ) -> OptimizationResult:
         """Perform grid search optimization."""
         # Simplified grid search - sample from grid points
-        best_score = float('-inf')
+        best_score = float("-inf")
         best_params = None
         iteration_history = []
         start_time = datetime.now()
 
         for iteration in range(max_iterations):
             # Check timeout
-            if timeout_seconds and (datetime.now() - start_time).total_seconds() > timeout_seconds:
+            if (
+                timeout_seconds
+                and (datetime.now() - start_time).total_seconds() > timeout_seconds
+            ):
                 break
 
             # Sample parameters from grid (simplified)
@@ -312,14 +340,16 @@ class ConfigurationOptimizationService:
             try:
                 score = await objective_function(params)
             except Exception as e:
-                score = float('-inf')
+                score = float("-inf")
 
-            iteration_history.append({
-                "iteration": iteration + 1,
-                "parameters": params,
-                "score": score,
-                "timestamp": datetime.now()
-            })
+            iteration_history.append(
+                {
+                    "iteration": iteration + 1,
+                    "parameters": params,
+                    "score": score,
+                    "timestamp": datetime.now(),
+                }
+            )
 
             if score > best_score:
                 best_score = score
@@ -330,12 +360,12 @@ class ConfigurationOptimizationService:
             strategy=OptimizationStrategy.GRID_SEARCH,
             parameter_space_id=parameter_space.space_id,
             best_parameters=best_params or {},
-            best_score=best_score if best_score != float('-inf') else 0.0,
+            best_score=best_score if best_score != float("-inf") else 0.0,
             converged=True,  # Grid search always "converges"
             total_iterations=len(iteration_history),
             iteration_history=iteration_history,
             metadata={"method": "grid_search"},
-            timestamp=datetime.now()
+            timestamp=datetime.now(),
         )
 
     async def _random_search_optimization(
@@ -344,17 +374,20 @@ class ConfigurationOptimizationService:
         parameter_space: ParameterSpace,
         max_iterations: int,
         timeout_seconds: Optional[float],
-        optimization_id: str
+        optimization_id: str,
     ) -> OptimizationResult:
         """Perform random search optimization."""
-        best_score = float('-inf')
+        best_score = float("-inf")
         best_params = None
         iteration_history = []
         start_time = datetime.now()
 
         for iteration in range(max_iterations):
             # Check timeout
-            if timeout_seconds and (datetime.now() - start_time).total_seconds() > timeout_seconds:
+            if (
+                timeout_seconds
+                and (datetime.now() - start_time).total_seconds() > timeout_seconds
+            ):
                 break
 
             # Sample random parameters
@@ -363,14 +396,16 @@ class ConfigurationOptimizationService:
             try:
                 score = await objective_function(params)
             except Exception as e:
-                score = float('-inf')
+                score = float("-inf")
 
-            iteration_history.append({
-                "iteration": iteration + 1,
-                "parameters": params,
-                "score": score,
-                "timestamp": datetime.now()
-            })
+            iteration_history.append(
+                {
+                    "iteration": iteration + 1,
+                    "parameters": params,
+                    "score": score,
+                    "timestamp": datetime.now(),
+                }
+            )
 
             if score > best_score:
                 best_score = score
@@ -381,15 +416,17 @@ class ConfigurationOptimizationService:
             strategy=OptimizationStrategy.RANDOM_SEARCH,
             parameter_space_id=parameter_space.space_id,
             best_parameters=best_params or {},
-            best_score=best_score if best_score != float('-inf') else 0.0,
+            best_score=best_score if best_score != float("-inf") else 0.0,
             converged=True,  # Random search always "converges"
             total_iterations=len(iteration_history),
             iteration_history=iteration_history,
             metadata={"method": "random_search"},
-            timestamp=datetime.now()
+            timestamp=datetime.now(),
         )
 
-    def get_optimization_history(self, optimization_id: str) -> List[OptimizationResult]:
+    def get_optimization_history(
+        self, optimization_id: str
+    ) -> List[OptimizationResult]:
         """Get optimization history for a specific optimization."""
         if optimization_id in self.optimization_history:
             return [self.optimization_history[optimization_id]]
@@ -402,7 +439,9 @@ class ConfigurationOptimizationService:
     def create_parameter_space(self, space: ParameterSpace):
         """Create a new parameter space."""
         if space.space_id in self.parameter_spaces:
-            raise OptimizationError(f"Parameter space '{space.space_id}' already exists")
+            raise OptimizationError(
+                f"Parameter space '{space.space_id}' already exists"
+            )
         self.parameter_spaces[space.space_id] = space
 
     def _validate_parameter_space(self, space: ParameterSpace) -> bool:
@@ -419,10 +458,7 @@ class ConfigurationOptimizationService:
         return True
 
     def backup_configuration(
-        self,
-        config_data: Dict[str, Any],
-        config_type: str,
-        description: str
+        self, config_data: Dict[str, Any], config_type: str, description: str
     ) -> ConfigurationBackup:
         """Create a configuration backup."""
         return self.backup_manager.create_backup(config_data, config_type, description)
@@ -431,14 +467,19 @@ class ConfigurationOptimizationService:
         """Restore a configuration from backup."""
         return self.backup_manager.restore_backup(backup_id)
 
-    def list_configuration_backups(self, config_type: Optional[str] = None) -> List[ConfigurationBackup]:
+    def list_configuration_backups(
+        self, config_type: Optional[str] = None
+    ) -> List[ConfigurationBackup]:
         """List configuration backups."""
         return self.backup_manager.list_backups(config_type)
 
-    def get_optimization_statistics(self, parameter_space_id: str) -> Optional[Dict[str, Any]]:
+    def get_optimization_statistics(
+        self, parameter_space_id: str
+    ) -> Optional[Dict[str, Any]]:
         """Get optimization statistics for a parameter space."""
         relevant_results = [
-            result for result in self.optimization_history.values()
+            result
+            for result in self.optimization_history.values()
             if result.parameter_space_id == parameter_space_id
         ]
 
@@ -447,18 +488,24 @@ class ConfigurationOptimizationService:
 
         total_optimizations = len(relevant_results)
         successful_optimizations = sum(1 for r in relevant_results if r.converged)
-        average_score = sum(r.best_score for r in relevant_results) / total_optimizations
-        average_iterations = sum(r.total_iterations for r in relevant_results) / total_optimizations
+        average_score = (
+            sum(r.best_score for r in relevant_results) / total_optimizations
+        )
+        average_iterations = (
+            sum(r.total_iterations for r in relevant_results) / total_optimizations
+        )
 
         return {
             "parameter_space_id": parameter_space_id,
             "total_optimizations": total_optimizations,
             "successful_optimizations": successful_optimizations,
             "average_score": average_score,
-            "average_iterations": average_iterations
+            "average_iterations": average_iterations,
         }
 
-    def export_optimization_results(self, result: OptimizationResult, format: str = "json") -> Dict[str, Any]:
+    def export_optimization_results(
+        self, result: OptimizationResult, format: str = "json"
+    ) -> Dict[str, Any]:
         """Export optimization results."""
         return {
             "optimization_id": result.optimization_id,
@@ -470,7 +517,7 @@ class ConfigurationOptimizationService:
             "total_iterations": result.total_iterations,
             "iteration_history": result.iteration_history,
             "metadata": result.metadata,
-            "timestamp": result.timestamp.isoformat()
+            "timestamp": result.timestamp.isoformat(),
         }
 
     def batch_optimize_configurations(
@@ -479,11 +526,13 @@ class ConfigurationOptimizationService:
         parameter_space_id: str,
         strategy: OptimizationStrategy,
         max_iterations: int,
-        optimization_ids: Optional[List[str]] = None
+        optimization_ids: Optional[List[str]] = None,
     ) -> List[OptimizationResult]:
         """Batch optimize multiple configurations."""
         if optimization_ids is None:
-            optimization_ids = [str(uuid.uuid4()) for _ in range(len(objective_functions))]
+            optimization_ids = [
+                str(uuid.uuid4()) for _ in range(len(objective_functions))
+            ]
 
         results = []
         for obj_func, opt_id in zip(objective_functions, optimization_ids):
@@ -493,7 +542,11 @@ class ConfigurationOptimizationService:
             try:
                 result = loop.run_until_complete(
                     self.optimize_configuration(
-                        obj_func, parameter_space_id, strategy, max_iterations, optimization_id=opt_id
+                        obj_func,
+                        parameter_space_id,
+                        strategy,
+                        max_iterations,
+                        optimization_id=opt_id,
                     )
                 )
                 results.append(result)
@@ -506,10 +559,13 @@ class ConfigurationOptimizationService:
         """Clean up old configuration backups."""
         return self.backup_manager.cleanup_old_backups(days_to_keep)
 
-    def get_parameter_importance(self, parameter_space_id: str) -> Optional[Dict[str, float]]:
+    def get_parameter_importance(
+        self, parameter_space_id: str
+    ) -> Optional[Dict[str, float]]:
         """Analyze parameter importance based on optimization history."""
         relevant_results = [
-            result for result in self.optimization_history.values()
+            result
+            for result in self.optimization_history.values()
             if result.parameter_space_id == parameter_space_id
         ]
 
@@ -536,7 +592,9 @@ class ConfigurationOptimizationService:
                 # Calculate correlation coefficient
                 try:
                     correlation = np.corrcoef(param_values, scores)[0, 1]
-                    param_scores[param_name] = abs(correlation) if not np.isnan(correlation) else 0.0
+                    param_scores[param_name] = (
+                        abs(correlation) if not np.isnan(correlation) else 0.0
+                    )
                 except:
                     param_scores[param_name] = 0.0
             else:
@@ -559,10 +617,7 @@ class ConfigurationBackupManager:
         self.backups: Dict[str, ConfigurationBackup] = {}
 
     def create_backup(
-        self,
-        config_data: Dict[str, Any],
-        config_type: str,
-        description: str
+        self, config_data: Dict[str, Any], config_type: str, description: str
     ) -> ConfigurationBackup:
         """Create a new configuration backup."""
         backup_id = str(uuid.uuid4())
@@ -571,7 +626,7 @@ class ConfigurationBackupManager:
             config_type=config_type,
             config_data=config_data.copy(),
             description=description,
-            timestamp=datetime.now()
+            timestamp=datetime.now(),
         )
 
         self.backups[backup_id] = backup
@@ -585,7 +640,9 @@ class ConfigurationBackupManager:
         backup = self.backups[backup_id]
         return backup.config_data.copy()
 
-    def list_backups(self, config_type: Optional[str] = None) -> List[ConfigurationBackup]:
+    def list_backups(
+        self, config_type: Optional[str] = None
+    ) -> List[ConfigurationBackup]:
         """List configuration backups."""
         backups = list(self.backups.values())
 
@@ -600,7 +657,8 @@ class ConfigurationBackupManager:
         """Clean up backups older than specified days."""
         cutoff_date = datetime.now() - timedelta(days=days_to_keep)
         old_backups = [
-            backup_id for backup_id, backup in self.backups.items()
+            backup_id
+            for backup_id, backup in self.backups.items()
             if backup.timestamp < cutoff_date
         ]
 

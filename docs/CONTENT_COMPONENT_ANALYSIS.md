@@ -123,7 +123,7 @@ python run.py --component content --material aluminum
 components/content/
 ├── generator.py              # PRIMARY - Prompt-driven generation with inline validation
 ├── persona_validator.py      # Persona adherence validation
-├── validator.py             # Comprehensive content validation  
+├── validator.py             # Comprehensive content validation
 ├── post_processor.py        # Content optimization
 └── prompts/
     ├── base_content_prompt.yaml      # Shared base instructions

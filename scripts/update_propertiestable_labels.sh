@@ -21,7 +21,7 @@ for file in "$DIR"/*.md; do
             -e 's/| Tensile Strength |/| Tensile |/g' \
             -e 's/| Thermal Conductivity |/| Thermal |/g' \
             "$file"
-        
+
         ((count++))
         echo "  ✅ Updated: $(basename "$file")"
     fi

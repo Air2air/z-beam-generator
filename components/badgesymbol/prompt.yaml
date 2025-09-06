@@ -8,7 +8,7 @@ type: "static"
 
 extraction_rules: |
   Extract badge symbol table data from frontmatter using these field mappings:
-  
+
   FIELD MAPPINGS:
   - Chemical Formula: chemicalProperties.formula or properties.chemicalFormula
   - Material Symbol: chemicalProperties.symbol or generate from material name
@@ -16,14 +16,14 @@ extraction_rules: |
   - Material Type: chemicalProperties.materialType (abbreviated if needed)
   - Tensile Strength: properties.tensileStrength or technicalSpecifications.tensileStrength
   - Thermal Conductivity: properties.thermalConductivity
-  
+
   VALUE FORMATTING:
   - Maximum 8 characters per value
   - Title case for text values
   - Engineering abbreviations (GPa, MPa, W/mK)
   - Scientific notation for large numbers
   - Intelligent truncation with ellipsis if needed
-  
+
   OUTPUT FORMAT:
   | Property | Value |
   |----------|-------|

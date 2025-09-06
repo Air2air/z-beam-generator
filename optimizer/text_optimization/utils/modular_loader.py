@@ -4,10 +4,12 @@ Modular AI Detection Configuration Loader
 Loads the core configuration and merges modular components dynamically.
 """
 
-import yaml
 import os
 from pathlib import Path
-from typing import Dict, Any, Optional
+from typing import Any, Dict, Optional
+
+import yaml
+
 
 class ModularConfigLoader:
     """Loads AI detection configuration with modular component support."""
@@ -36,14 +38,14 @@ class ModularConfigLoader:
         # Load core configuration from core/ directory
         core_config = self._load_yaml_file("core/ai_detection_core.yaml")
 
-        if not core_config or 'modular_components' not in core_config:
+        if not core_config or "modular_components" not in core_config:
             # Fallback to legacy loading if core config is missing
             return self._load_legacy_config()
 
         # Load and merge modular components
         merged_config = core_config.copy()
 
-        for component_name, component_path in core_config['modular_components'].items():
+        for component_name, component_path in core_config["modular_components"].items():
             try:
                 component_config = self._load_yaml_file(component_path)
                 if component_config:
@@ -56,8 +58,8 @@ class ModularConfigLoader:
                 print(f"❌ Error loading component {component_name}: {e}")
 
         # Remove the modular_components reference from final config
-        if 'modular_components' in merged_config:
-            del merged_config['modular_components']
+        if "modular_components" in merged_config:
+            del merged_config["modular_components"]
 
         return merged_config
 
@@ -79,7 +81,7 @@ class ModularConfigLoader:
                 print(f"⚠️ Configuration file not found: {file_path}")
                 return None
 
-            with open(file_path, 'r', encoding='utf-8') as f:
+            with open(file_path, "r", encoding="utf-8") as f:
                 config = yaml.safe_load(f)
 
             # Cache the result
@@ -90,12 +92,18 @@ class ModularConfigLoader:
             print(f"❌ Error loading {filename}: {e}")
             return None
 
-    def _deep_merge(self, base: Dict[str, Any], update: Dict[str, Any]) -> Dict[str, Any]:
+    def _deep_merge(
+        self, base: Dict[str, Any], update: Dict[str, Any]
+    ) -> Dict[str, Any]:
         """Deep merge two dictionaries."""
         result = base.copy()
 
         for key, value in update.items():
-            if key in result and isinstance(result[key], dict) and isinstance(value, dict):
+            if (
+                key in result
+                and isinstance(result[key], dict)
+                and isinstance(value, dict)
+            ):
                 result[key] = self._deep_merge(result[key], value)
             else:
                 result[key] = value
@@ -110,24 +118,27 @@ class ModularConfigLoader:
         """Get information about loaded components."""
         core_config = self._load_yaml_file("core/ai_detection_core.yaml")
 
-        if not core_config or 'modular_components' not in core_config:
+        if not core_config or "modular_components" not in core_config:
             return {"modular": False, "components": []}
 
         components_info = []
-        for name, path in core_config['modular_components'].items():
+        for name, path in core_config["modular_components"].items():
             component_config = self._load_yaml_file(path)
-            components_info.append({
-                "name": name,
-                "path": path,
-                "loaded": component_config is not None,
-                "size": len(str(component_config)) if component_config else 0
-            })
+            components_info.append(
+                {
+                    "name": name,
+                    "path": path,
+                    "loaded": component_config is not None,
+                    "size": len(str(component_config)) if component_config else 0,
+                }
+            )
 
         return {
             "modular": True,
             "components": components_info,
-            "total_components": len(components_info)
+            "total_components": len(components_info),
         }
+
 
 def load_ai_detection_config(use_modular: bool = True) -> Dict[str, Any]:
     """
@@ -142,6 +153,7 @@ def load_ai_detection_config(use_modular: bool = True) -> Dict[str, Any]:
     loader = ModularConfigLoader()
     return loader.load_config(use_modular=use_modular)
 
+
 if __name__ == "__main__":
     # Test the modular loader
     loader = ModularConfigLoader()
@@ -153,7 +165,9 @@ if __name__ == "__main__":
     if config:
         print(f"✅ Modular config loaded successfully")
         print(f"   - Total top-level sections: {len(config)}")
-        print(f"   - Has human_writing_characteristics: {'human_writing_characteristics' in config}")
+        print(
+            f"   - Has human_writing_characteristics: {'human_writing_characteristics' in config}"
+        )
         print(f"   - Has ai_detection_avoidance: {'ai_detection_avoidance' in config}")
     else:
         print("❌ Failed to load modular config")
@@ -163,6 +177,6 @@ if __name__ == "__main__":
     print(f"\n📊 Component Information:")
     print(f"   - Modular: {info['modular']}")
     print(f"   - Total components: {info['total_components']}")
-    for comp in info['components']:
-        status = "✅" if comp['loaded'] else "❌"
+    for comp in info["components"]:
+        status = "✅" if comp["loaded"] else "❌"
         print(f"   - {comp['name']}: {status} ({comp['size']} chars)")

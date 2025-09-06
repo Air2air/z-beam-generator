@@ -14,7 +14,7 @@ python3 run.py --cleanup-root
 
 ### Files Moved to `tests/`
 - `test_*.py` - Test files with test prefix
-- `*_test.py` - Test files with test suffix  
+- `*_test.py` - Test files with test suffix
 - `test.py` - Main test file
 - `*verification*.py` - Verification scripts
 - `debug_*.py` - Debug scripts

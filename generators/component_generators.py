@@ -7,210 +7,291 @@ independently or orchestrated by the dynamic generator.
 """
 
 import logging
-from pathlib import Path
-from typing import Dict, Optional, List
-from dataclasses import dataclass
 from abc import ABC, abstractmethod
+from dataclasses import dataclass
+from pathlib import Path
+from typing import Dict, List, Optional
 
 logger = logging.getLogger(__name__)
+
 
 @dataclass
 class ComponentResult:
     """Result of component generation"""
+
     component_type: str
     content: str
     success: bool
     error_message: Optional[str] = None
 
+
 class GenerationError(Exception):
     """Raised when content generation fails."""
+
     pass
+
 
 class BaseComponentGenerator(ABC):
     """Base class for component generators"""
-    
+
     def __init__(self, component_type: str):
         # Load environment variables and API keys first
         try:
             from api.env_loader import EnvLoader
+
             EnvLoader.load_env()
         except ImportError:
-            logger.warning("Could not load environment - continuing without API key loading")
-            
+            logger.warning(
+                "Could not load environment - continuing without API key loading"
+            )
+
         self.component_type = component_type
         self.component_dir = Path("components") / component_type
-    
+
     @abstractmethod
-    def generate(self, material_name: str, material_data: Dict, 
-                api_client=None, author_info: Optional[Dict] = None,
-                frontmatter_data: Optional[Dict] = None,
-                schema_fields: Optional[Dict] = None) -> ComponentResult:
+    def generate(
+        self,
+        material_name: str,
+        material_data: Dict,
+        api_client=None,
+        author_info: Optional[Dict] = None,
+        frontmatter_data: Optional[Dict] = None,
+        schema_fields: Optional[Dict] = None,
+    ) -> ComponentResult:
         """Generate component content"""
         pass
-    
-    def _create_result(self, content: str, success: bool = True, 
-                      error_message: Optional[str] = None) -> ComponentResult:
+
+    def _create_result(
+        self, content: str, success: bool = True, error_message: Optional[str] = None
+    ) -> ComponentResult:
         """Create a ComponentResult"""
         return ComponentResult(
             component_type=self.component_type,
             content=content,
             success=success,
-            error_message=error_message
+            error_message=error_message,
         )
+
 
 class StaticComponentGenerator(BaseComponentGenerator):
     """Base class for static components that don't require API calls"""
-    
-    def generate(self, material_name: str, material_data: Dict, 
-                api_client=None, author_info: Optional[Dict] = None,
-                frontmatter_data: Optional[Dict] = None,
-                schema_fields: Optional[Dict] = None) -> ComponentResult:
+
+    def generate(
+        self,
+        material_name: str,
+        material_data: Dict,
+        api_client=None,
+        author_info: Optional[Dict] = None,
+        frontmatter_data: Optional[Dict] = None,
+        schema_fields: Optional[Dict] = None,
+    ) -> ComponentResult:
         """Generate static component content"""
         try:
             content = self._generate_static_content(
-                material_name, material_data, author_info, frontmatter_data, schema_fields
+                material_name,
+                material_data,
+                author_info,
+                frontmatter_data,
+                schema_fields,
             )
             return self._create_result(content, success=True)
         except Exception as e:
             logger.error(f"Error generating {self.component_type}: {e}")
             return self._create_result("", success=False, error_message=str(e))
-    
+
     @abstractmethod
-    def _generate_static_content(self, material_name: str, material_data: Dict,
-                                author_info: Optional[Dict] = None,
-                                frontmatter_data: Optional[Dict] = None,
-                                schema_fields: Optional[Dict] = None) -> str:
+    def _generate_static_content(
+        self,
+        material_name: str,
+        material_data: Dict,
+        author_info: Optional[Dict] = None,
+        frontmatter_data: Optional[Dict] = None,
+        schema_fields: Optional[Dict] = None,
+    ) -> str:
         """Generate static content for this component"""
         pass
 
+
 class APIComponentGenerator(BaseComponentGenerator):
     """Base class for components that require API calls"""
-    
-    def generate(self, material_name: str, material_data: Dict, 
-                api_client=None, author_info: Optional[Dict] = None,
-                frontmatter_data: Optional[Dict] = None,
-                schema_fields: Optional[Dict] = None) -> ComponentResult:
+
+    def generate(
+        self,
+        material_name: str,
+        material_data: Dict,
+        api_client=None,
+        author_info: Optional[Dict] = None,
+        frontmatter_data: Optional[Dict] = None,
+        schema_fields: Optional[Dict] = None,
+    ) -> ComponentResult:
         """Generate API-driven component content"""
-        
+
         if not api_client:
-            return self._create_result("", success=False, 
-                                     error_message="API client required but not provided")
-        
+            return self._create_result(
+                "", success=False, error_message="API client required but not provided"
+            )
+
         try:
             # Build the prompt with schema fields
-            prompt = self._build_prompt(material_name, material_data, author_info, 
-                                      frontmatter_data, schema_fields)
-            
+            prompt = self._build_prompt(
+                material_name,
+                material_data,
+                author_info,
+                frontmatter_data,
+                schema_fields,
+            )
+
             # Generate content using API
-            if hasattr(api_client, 'generate_for_component'):
+            if hasattr(api_client, "generate_for_component"):
                 response = api_client.generate_for_component(
                     component_type=self.component_type,
                     material=material_name,
-                    prompt_template=prompt
+                    prompt_template=prompt,
                 )
-            elif hasattr(api_client, 'generate_simple'):
+            elif hasattr(api_client, "generate_simple"):
                 response = api_client.generate_simple(prompt)
             else:
                 response = api_client.generate(prompt)
-            
+
             # Handle different response types
             if isinstance(response, str):
                 # Direct string response
-                content = self._post_process_content(response, material_name, material_data)
-                logger.info(f"Generated {self.component_type} for {material_name} (direct string response)")
+                content = self._post_process_content(
+                    response, material_name, material_data
+                )
+                logger.info(
+                    f"Generated {self.component_type} for {material_name} (direct string response)"
+                )
                 return self._create_result(content, success=True)
-            elif hasattr(response, 'success') and response.success:
+            elif hasattr(response, "success") and response.success:
                 # Structured response object
-                content = self._post_process_content(response.content, material_name, material_data)
-                logger.info(f"Generated {self.component_type} for {material_name} ({getattr(response, 'token_count', 0)} tokens)")
+                content = self._post_process_content(
+                    response.content, material_name, material_data
+                )
+                logger.info(
+                    f"Generated {self.component_type} for {material_name} ({getattr(response, 'token_count', 0)} tokens)"
+                )
                 return self._create_result(content, success=True)
-            elif hasattr(response, 'success'):
+            elif hasattr(response, "success"):
                 # Failed structured response
-                return self._create_result("", success=False, 
-                                         error_message=f"API generation failed: {getattr(response, 'error', 'Unknown error')}")
+                return self._create_result(
+                    "",
+                    success=False,
+                    error_message=f"API generation failed: {getattr(response, 'error', 'Unknown error')}",
+                )
             else:
                 # Unknown response type, treat as string
-                content = self._post_process_content(str(response), material_name, material_data)
-                logger.info(f"Generated {self.component_type} for {material_name} (unknown response type)")
+                content = self._post_process_content(
+                    str(response), material_name, material_data
+                )
+                logger.info(
+                    f"Generated {self.component_type} for {material_name} (unknown response type)"
+                )
                 return self._create_result(content, success=True)
-        
+
         except Exception as e:
             logger.error(f"Error generating {self.component_type}: {e}")
             return self._create_result("", success=False, error_message=str(e))
-    
-    def _build_prompt(self, material_name: str, material_data: Dict,
-                     author_info: Optional[Dict] = None,
-                     frontmatter_data: Optional[Dict] = None,
-                     schema_fields: Optional[Dict] = None) -> str:
+
+    def _build_prompt(
+        self,
+        material_name: str,
+        material_data: Dict,
+        author_info: Optional[Dict] = None,
+        frontmatter_data: Optional[Dict] = None,
+        schema_fields: Optional[Dict] = None,
+    ) -> str:
         """Build simple prompt for this component"""
         return f"Generate {self.component_type} content for {material_name}"
-    
-    def _post_process_content(self, content: str, material_name: str, material_data: Dict) -> str:
+
+    def _post_process_content(
+        self, content: str, material_name: str, material_data: Dict
+    ) -> str:
         """Post-process generated content"""
         # Special handling for frontmatter enhancement
-        if self.component_type == 'frontmatter':
+        if self.component_type == "frontmatter":
             try:
                 from utils.property_enhancer import enhance_generated_frontmatter
-                category = material_data.get('category', '')
+
+                category = material_data.get("category", "")
                 content = enhance_generated_frontmatter(content, category)
-                logger.info(f"Enhanced frontmatter for {material_name} with property context and percentiles")
+                logger.info(
+                    f"Enhanced frontmatter for {material_name} with property context and percentiles"
+                )
             except Exception as e:
                 logger.warning(f"Failed to enhance frontmatter: {e}")
-        
+
         return content
+
 
 # Specific component generators
 
+
 class AuthorComponentGenerator(StaticComponentGenerator):
     """Generator for author components"""
-    
+
     def __init__(self):
         super().__init__("author")
-    
-    def _generate_static_content(self, material_name: str, material_data: Dict,
-                                author_info: Optional[Dict] = None,
-                                frontmatter_data: Optional[Dict] = None) -> str:
+
+    def _generate_static_content(
+        self,
+        material_name: str,
+        material_data: Dict,
+        author_info: Optional[Dict] = None,
+        frontmatter_data: Optional[Dict] = None,
+    ) -> str:
         """Generate author component content"""
         try:
-            from run import get_author_by_id
             from components.author.generator import create_author_content_from_data
-            
+            from run import get_author_by_id
+
             # FAIL-FAST: Author information is required - no defaults
-            if not author_info or 'id' not in author_info:
-                raise GenerationError("Author information with 'id' field is required for author component generation")
-            
-            author_id = author_info['id']
-            
+            if not author_info or "id" not in author_info:
+                raise GenerationError(
+                    "Author information with 'id' field is required for author component generation"
+                )
+
+            author_id = author_info["id"]
+
             # Get author data - fail fast if not found
             author = get_author_by_id(author_id)
             if not author:
-                raise GenerationError(f"Author with ID {author_id} not found in configuration")
-            
+                raise GenerationError(
+                    f"Author with ID {author_id} not found in configuration"
+                )
+
             # Generate content
             return create_author_content_from_data(material_name, author)
-            
+
         except Exception as e:
             logger.error(f"Error generating author component: {e}")
             return f"Error loading author information: {e}"
 
+
 # Component generator factory
+
 
 class FrontmatterComponentGenerator(BaseComponentGenerator):
     """Base class for components that extract data from frontmatter without API calls"""
-    
+
     def __init__(self, component_type: str):
         super().__init__(component_type)
         self.component_info = {
             "name": f"{component_type.title()} Component",
             "description": f"Generates {component_type} from frontmatter data",
             "version": "2.0.0",
-            "type": "frontmatter_extraction"
+            "type": "frontmatter_extraction",
         }
-    
-    def generate(self, material_name: str, material_data: Dict,
-                api_client=None, author_info: Optional[Dict] = None,
-                frontmatter_data: Optional[Dict] = None,
-                schema_fields: Optional[Dict] = None) -> ComponentResult:
+
+    def generate(
+        self,
+        material_name: str,
+        material_data: Dict,
+        api_client=None,
+        author_info: Optional[Dict] = None,
+        frontmatter_data: Optional[Dict] = None,
+        schema_fields: Optional[Dict] = None,
+    ) -> ComponentResult:
         """Generate component from frontmatter data - NO API calls required"""
         try:
             if frontmatter_data is None:
@@ -218,90 +299,107 @@ class FrontmatterComponentGenerator(BaseComponentGenerator):
                     component_type=self.component_type,
                     content="",
                     success=False,
-                    error_message="No frontmatter data available"
+                    error_message="No frontmatter data available",
                 )
-            
+
             content = self._extract_from_frontmatter(material_name, frontmatter_data)
             return ComponentResult(
-                component_type=self.component_type,
-                content=content,
-                success=True
+                component_type=self.component_type, content=content, success=True
             )
         except Exception as e:
             return ComponentResult(
                 component_type=self.component_type,
                 content="",
                 success=False,
-                error_message=str(e)
+                error_message=str(e),
             )
-    
-    def _extract_from_frontmatter(self, material_name: str, frontmatter_data: Dict) -> str:
+
+    def _extract_from_frontmatter(
+        self, material_name: str, frontmatter_data: Dict
+    ) -> str:
         """Override this method in subclasses to implement specific extraction logic"""
         raise NotImplementedError("Subclasses must implement _extract_from_frontmatter")
 
 
 class ComponentGeneratorFactory:
     """Factory for creating component generators - API ONLY"""
-    
+
     @staticmethod
     def create_generator(component_type: str, ai_detection_service=None):
         """Create appropriate generator for component type"""
-        
+
         try:
             # Import API generators dynamically
             if component_type == "frontmatter":
-                from components.frontmatter.generator import FrontmatterComponentGenerator
+                from components.frontmatter.generator import (
+                    FrontmatterComponentGenerator,
+                )
+
                 return FrontmatterComponentGenerator()
             elif component_type == "bullets":
                 from generators.bullets_generator import BulletsComponentGenerator
+
                 return BulletsComponentGenerator()
             elif component_type == "author":
                 from generators.author_generator import AuthorComponentGenerator
+
                 return AuthorComponentGenerator()
             else:
                 # Try to import from components directory
                 module_path = f"components.{component_type}.generator"
                 logger.info(f"Trying to import {module_path}")
                 try:
-                    module = __import__(module_path, fromlist=[f"{component_type.title()}ComponentGenerator"])
-                    generator_class = getattr(module, f"{component_type.title()}ComponentGenerator")
+                    module = __import__(
+                        module_path,
+                        fromlist=[f"{component_type.title()}ComponentGenerator"],
+                    )
+                    generator_class = getattr(
+                        module, f"{component_type.title()}ComponentGenerator"
+                    )
                     logger.info(f"Got generator class: {generator_class}")
-                    
+
                     # Pass AI detection service to text generator
                     if component_type == "text":
-                        return generator_class(ai_detection_service=ai_detection_service)
+                        return generator_class(
+                            ai_detection_service=ai_detection_service
+                        )
                 except (ImportError, AttributeError) as e:
-                    logger.error(f"No generator found for component type: {component_type}: {e}")
+                    logger.error(
+                        f"No generator found for component type: {component_type}: {e}"
+                    )
                     return None
-                    
+
         except ImportError as e:
             logger.error(f"Error importing generator for {component_type}: {e}")
             return None
-    
+
     @staticmethod
     def get_available_components():
         """Get list of available component types"""
         # Scan components directory for available components
         components_dir = Path("components")
         available_components = []
-        
+
         if components_dir.exists():
             for component_dir in components_dir.iterdir():
                 if component_dir.is_dir() and component_dir.name != "__pycache__":
                     # Check if it has a generator or prompt file
                     generator_file = component_dir / "generator.py"
                     prompt_file = component_dir / "prompt.yaml"
-                    
+
                     if generator_file.exists() or prompt_file.exists():
                         available_components.append(component_dir.name)
-        
+
         # Also add known generators from generators directory
         generators_dir = Path("generators")
         if generators_dir.exists():
             for generator_file in generators_dir.glob("*_generator.py"):
                 component_name = generator_file.stem.replace("_generator", "")
                 # Skip dynamic generator as it's not a component type
-                if component_name != "dynamic" and component_name not in available_components:
+                if (
+                    component_name != "dynamic"
+                    and component_name not in available_components
+                ):
                     available_components.append(component_name)
-        
+
         return sorted(available_components)

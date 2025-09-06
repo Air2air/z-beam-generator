@@ -7,7 +7,7 @@
 
 ### Core Implementation
 - **`calculator.py`** - Python calculation engine (400+ lines)
-- **`prompt.yaml`** - Enhanced template (Version 5.0.0) 
+- **`prompt.yaml`** - Enhanced template (Version 5.0.0)
 - **`example_jsonld.md`** - Complete schema.org implementation
 - **`validator.py`** - JSON-LD validation logic
 
@@ -19,7 +19,7 @@
 
 ### For Optimizing Other Components
 1. **Follow** `OPTIMIZATION_GUIDE.md` for 5-minute quick start
-2. **Reference** `calculator.py` for Python implementation patterns  
+2. **Reference** `calculator.py` for Python implementation patterns
 3. **Use** `example_jsonld.md` for complete schema.org example
 
 ### For Understanding This Implementation

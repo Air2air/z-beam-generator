@@ -17,9 +17,10 @@ Or use the module directly:
     python3 -m tests --all       # Run all tests
 """
 
-import sys
 import subprocess
+import sys
 from pathlib import Path
+
 
 def main():
     """Forward all arguments to the tests module"""
@@ -34,6 +35,7 @@ def main():
     except Exception as e:
         print(f"❌ Error running tests: {e}")
         return 1
+
 
 if __name__ == "__main__":
     exit_code = main()

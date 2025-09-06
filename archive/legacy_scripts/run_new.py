@@ -28,7 +28,7 @@ CONTENT MANAGEMENT:
     python3 run.py --cleanup-root                    # Organize root directory files
 
 SYSTEM INFO:
-    python3 run.py --list-materials                  # List all 121 available materials  
+    python3 run.py --list-materials                  # List all 121 available materials
     python3 run.py --list-authors                    # List all authors with countries
     python3 run.py --check-env                       # Check API keys and environment
     python3 run.py --test-api                        # Test API connectivity
@@ -41,7 +41,7 @@ Component data sources are configured in: cli/component_config.py
 
 DATA PROVIDER OPTIONS:
     "API"          - Generate content via AI API (deepseek, grok)
-    "static"       - Use pre-generated static content files  
+    "static"       - Use pre-generated static content files
     "hybrid"       - Static files with AI enhancement via API
 
 API PROVIDER OPTIONS:
@@ -74,32 +74,32 @@ This modular architecture improves:
     ✅ Coverage (easier to achieve comprehensive test coverage)
 """
 
-import sys
 import argparse
 import logging
+import sys
 from pathlib import Path
 from typing import List, Optional
 
 # Import extracted modules
 from api.client_manager import test_api_connectivity
+from cli.component_config import COMPONENT_CONFIG
 from generators.dynamic_generator import DynamicGenerator
 from generators.workflow_manager import (
-    run_material_generation,
     run_batch_generation,
-    run_interactive_generation
+    run_interactive_generation,
+    run_material_generation,
 )
 from utils.author_manager import list_authors, validate_author_id
 from utils.environment_checker import check_environment, format_environment_report
 from utils.file_operations import clean_content_components
-from cli.component_config import COMPONENT_CONFIG
 
 # Import existing functionality that remains
 try:
-    from cleanup.cleanup_manager import cleanup_scan, cleanup_report, cleanup_root
+    from cleanup.cleanup_manager import cleanup_report, cleanup_root, cleanup_scan
 except ImportError:
     # Fallback to original run.py functions if cleanup_manager doesn't exist
     cleanup_scan = None
-    cleanup_report = None 
+    cleanup_report = None
     cleanup_root = None
 
 # For now, import these from original run.py - will extract later
@@ -114,43 +114,49 @@ def show_component_configuration():
     """Display current component configuration."""
     print("⚙️  Z-BEAM COMPONENT CONFIGURATION")
     print("=" * 50)
-    
+
     try:
         components_config = COMPONENT_CONFIG.get("components", {})
         orchestration_order = COMPONENT_CONFIG.get("orchestration_order", [])
-        
+
         if not components_config:
             print("❌ No component configuration found")
             return
-        
+
         # Show orchestration order
         print(f"\n🔄 Generation Order:")
         for i, component in enumerate(orchestration_order, 1):
-            enabled = components_config.get(component, {}).get('enabled', False)
+            enabled = components_config.get(component, {}).get("enabled", False)
             status = "✅" if enabled else "❌"
             print(f"  {i:2d}. {status} {component}")
-        
+
         # Show detailed configuration
         print(f"\n🔧 Component Details:")
-        print(f"{'Component':<15} {'Enabled':<8} {'Data Provider':<12} {'API Provider':<12}")
+        print(
+            f"{'Component':<15} {'Enabled':<8} {'Data Provider':<12} {'API Provider':<12}"
+        )
         print("-" * 50)
-        
+
         for component, config in components_config.items():
-            enabled = "✅ Yes" if config.get('enabled', False) else "❌ No"
-            data_provider = config.get('data_provider', 'unknown')
-            api_provider = config.get('api_provider', 'none')
-            
-            print(f"{component:<15} {enabled:<8} {data_provider:<12} {api_provider:<12}")
-        
+            enabled = "✅ Yes" if config.get("enabled", False) else "❌ No"
+            data_provider = config.get("data_provider", "unknown")
+            api_provider = config.get("api_provider", "none")
+
+            print(
+                f"{component:<15} {enabled:<8} {data_provider:<12} {api_provider:<12}"
+            )
+
         # Summary
-        enabled_count = sum(1 for config in components_config.values() if config.get('enabled', False))
+        enabled_count = sum(
+            1 for config in components_config.values() if config.get("enabled", False)
+        )
         total_count = len(components_config)
-        
+
         print(f"\n📊 Summary:")
         print(f"  Total components: {total_count}")
         print(f"  Enabled: {enabled_count}")
         print(f"  Disabled: {total_count - enabled_count}")
-        
+
     except Exception as e:
         print(f"❌ Error loading configuration: {e}")
 
@@ -161,11 +167,11 @@ def run_dynamic_generation(
     interactive: bool = False,
     test_api: bool = False,
     author_id: Optional[int] = None,
-    start_index: int = 0
+    start_index: int = 0,
 ) -> bool:
     """
     Main generation coordination function.
-    
+
     Args:
         material: Specific material to generate
         components: List of components to generate
@@ -173,7 +179,7 @@ def run_dynamic_generation(
         test_api: Test API connectivity only
         author_id: Author ID for content generation
         start_index: Starting index for batch generation
-        
+
     Returns:
         True if successful, False otherwise
     """
@@ -182,49 +188,53 @@ def run_dynamic_generation(
         if test_api:
             print("🔌 Testing API connectivity...")
             results = test_api_connectivity()
-            
+
             for provider, result in results.items():
-                if result['success']:
-                    print(f"  ✅ {provider}: {result['response_time']:.2f}s ({result['token_count']} tokens)")
+                if result["success"]:
+                    print(
+                        f"  ✅ {provider}: {result['response_time']:.2f}s ({result['token_count']} tokens)"
+                    )
                 else:
                     print(f"  ❌ {provider}: {result['error']}")
-            
-            return all(result['success'] for result in results.values())
-        
+
+            return all(result["success"] for result in results.values())
+
         # Validate author if specified
         if author_id and not validate_author_id(author_id):
             print(f"❌ Invalid author ID: {author_id}")
             return False
-        
+
         # Initialize generator
         generator = DynamicGenerator()
-        
+
         # Get available components
         if components is None:
             # Use enabled components from configuration
             components_config = COMPONENT_CONFIG.get("components", {})
             components = [
-                comp for comp, config in components_config.items() 
-                if config.get('enabled', False)
+                comp
+                for comp, config in components_config.items()
+                if config.get("enabled", False)
             ]
-        
+
         if not components:
             print("❌ No components specified or enabled")
             return False
-        
+
         # Route to appropriate generation mode
         if interactive:
             # Interactive mode
             from utils.author_manager import get_author_info_for_generation
+
             author_info = get_author_info_for_generation(author_id)
             run_interactive_generation(generator, author_info)
             return True
-            
+
         elif material:
             # Single material generation
             result = run_material_generation(material, components, author_id)
-            return len(result['components_generated']) > 0
-            
+            return len(result["components_generated"]) > 0
+
         else:
             # Batch generation mode
             materials = generator.get_available_materials()
@@ -232,10 +242,10 @@ def run_dynamic_generation(
                 materials=materials,
                 component_types=components,
                 author_id=author_id,
-                start_index=start_index
+                start_index=start_index,
             )
-            return len(result['materials_processed']) > 0
-            
+            return len(result["materials_processed"]) > 0
+
     except Exception as e:
         print(f"❌ Generation failed: {e}")
         return False
@@ -262,7 +272,9 @@ def create_arg_parser() -> argparse.ArgumentParser:
         help="Comma-separated list of components to generate (default: all enabled)",
     )
     parser.add_argument(
-        "--author", type=int, help="Author ID for content generation (see --list-authors)"
+        "--author",
+        type=int,
+        help="Author ID for content generation (see --list-authors)",
     )
     parser.add_argument(
         "--interactive", "-i", action="store_true", help="Run in interactive mode"
@@ -278,9 +290,7 @@ def create_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--test", action="store_true", help="Run comprehensive test suite"
     )
-    parser.add_argument(
-        "--test-api", action="store_true", help="Test API connectivity"
-    )
+    parser.add_argument("--test-api", action="store_true", help="Test API connectivity")
     parser.add_argument(
         "--check-env", action="store_true", help="Check environment and configuration"
     )
@@ -352,11 +362,11 @@ def main():
             # Content cleanup mode
             result = clean_content_components()
             print(f"🧹 Cleanup completed: {result['message']}")
-            if result['errors']:
+            if result["errors"]:
                 print("⚠️  Errors occurred:")
-                for error in result['errors']:
+                for error in result["errors"]:
                     print(f"  - {error}")
-            success = len(result['errors']) == 0
+            success = len(result["errors"]) == 0
 
         elif args.cleanup_scan:
             # Cleanup scan mode (dry-run)
@@ -375,16 +385,21 @@ def main():
             env_results = check_environment()
             report = format_environment_report(env_results)
             print(report)
-            success = env_results['overall_status'] != 'critical'
+            success = env_results["overall_status"] != "critical"
 
-        elif args.list_materials or args.list_components or args.list_authors or args.show_config:
+        elif (
+            args.list_materials
+            or args.list_components
+            or args.list_authors
+            or args.show_config
+        ):
             # List operations and configuration display
             if args.show_config:
                 show_component_configuration()
-            
+
             if args.list_authors:
                 print(list_authors())
-            
+
             if args.list_materials or args.list_components:
                 try:
                     generator = DynamicGenerator()
@@ -404,7 +419,7 @@ def main():
                 except ImportError as e:
                     print(f"❌ Error importing generator: {e}")
                     success = False
-                    
+
             success = True
 
         else:
@@ -431,6 +446,7 @@ def main():
         print(f"❌ Error running operation: {e}")
         if args.verbose:
             import traceback
+
             traceback.print_exc()
         sys.exit(1)
 

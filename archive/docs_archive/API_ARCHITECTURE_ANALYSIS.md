@@ -9,7 +9,7 @@
 
 #### Standardized Components:
 - **`api/client.py`** - Base APIClient with comprehensive features
-- **`api/config.py`** - Configuration management with APIConfig dataclass  
+- **`api/config.py`** - Configuration management with APIConfig dataclass
 - **`api/deepseek.py`** - Provider-specific optimizations extending base client
 - **`api/client_manager.py`** - Centralized client management and factory
 - **`api/env_loader.py`** - Standardized environment variable handling
@@ -37,7 +37,7 @@ class APIResponse:
     request_id: Optional[str] = None
     retry_count: int = 0
 
-@dataclass 
+@dataclass
 class GenerationRequest:
     prompt: str
     system_prompt: Optional[str] = None
@@ -54,14 +54,14 @@ class GenerationRequest:
 ```python
 API_PROVIDERS = {
     "deepseek": {
-        "name": "DeepSeek", 
+        "name": "DeepSeek",
         "env_key": "DEEPSEEK_API_KEY",
         "base_url": "https://api.deepseek.com",
         "model": "deepseek-chat"
     },
     "grok": {
         "name": "Grok (X.AI)",
-        "env_key": "GROK_API_KEY", 
+        "env_key": "GROK_API_KEY",
         "base_url": "https://api.x.ai",
         "model": "grok-2"
     }
@@ -93,7 +93,7 @@ API_PROVIDERS = {
     'top_p': 0.8
 },
 'content': {
-    'max_tokens': 4000, 
+    'max_tokens': 4000,
     'temperature': 0.7,  # Balanced creativity
     'top_p': 0.95
 }
@@ -112,7 +112,7 @@ API_PROVIDERS = {
 
 #### Best Practices Followed:
 - ✅ **Dependency Injection** - Configurable clients
-- ✅ **Separation of Concerns** - Clear module responsibilities  
+- ✅ **Separation of Concerns** - Clear module responsibilities
 - ✅ **Single Responsibility** - Each class has one purpose
 - ✅ **Open/Closed Principle** - Extensible via inheritance
 - ✅ **Interface Segregation** - Clean, focused interfaces

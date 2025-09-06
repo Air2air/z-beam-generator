@@ -106,7 +106,7 @@ properties:
 
 ### **Data Sources Verified:**
 - **Formula:** Chemical formulas from frontmatter
-- **Symbol:** Material symbols from frontmatter  
+- **Symbol:** Material symbols from frontmatter
 - **Category:** Material categories from frontmatter
 - **Density:** Real density values from properties section
 - **Tensile:** Real tensile strength values (where available)
@@ -131,7 +131,7 @@ properties:
 ### **Current Status:**
 - **Formula:** 100% populated (from frontmatter)
 - **Symbol:** 100% populated (from frontmatter)
-- **Category:** 100% populated (from frontmatter) 
+- **Category:** 100% populated (from frontmatter)
 - **Density:** 100% populated (from frontmatter)
 - **Tensile:** Variable (depends on frontmatter content)
 - **Thermal:** 100% populated (from frontmatter)

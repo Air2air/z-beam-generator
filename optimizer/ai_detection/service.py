@@ -4,159 +4,80 @@ AI Detection Service - Root Level
 Provides centralized AI detection capabilities for all components
 """
 
-import time
 import logging
-from typing import Dict, Any, Optional
-from dataclasses import dataclass
-from pathlib import Path
+import time
+from typing import Optional
 
-logger = logging.getLogger(__name__)
+from .types import AIDetectionConfig, AIDetectionResult, AIDetectionError
 
-@dataclass
-class AIDetectionResult:
-    """AI detection analysis result"""
-    score: float  # AI detection score (0-100, lower = more AI-like)
-    confidence: float  # Confidence level (0-1)
-    classification: str  # "human", "ai", or "unclear"
-    details: Dict[str, Any]  # Additional analysis details
-    processing_time: float
-    provider: str  # Which provider was used
+# Import providers after importing types to avoid circular imports
+from .providers.winston import WinstonProvider
+from .providers.mock import MockProvider
 
-@dataclass
-class AIDetectionConfig:
-    """Configuration for AI detection service"""
-    provider: str = "winston"
-    enabled: bool = True
-    target_score: float = 70.0
-    max_iterations: int = 3
-    improvement_threshold: float = 5.0
-    timeout: int = 30
-    retry_attempts: int = 3
 
 class AIDetectionService:
-    """
-    Main AI detection service that provides centralized access to AI detection capabilities.
-    This service can be injected into any component that needs AI detection.
-    """
+    """Main AI detection service class."""
 
     def __init__(self, config: Optional[AIDetectionConfig] = None):
-        """
-        Initialize AI detection service
+        self.config = config or AIDetectionConfig()
+        self.logger = logging.getLogger(__name__)
 
-        Args:
-            config: Service configuration. If None, loads from default config file.
-        """
-        self.config = config or self._load_default_config()
-        self.provider = None
-        self._initialized = False
+        # Initialize providers
+        self.providers = {
+            "winston": WinstonProvider(self.config),
+            "mock": MockProvider(self.config),
+        }
 
-        if self.config.enabled:
-            self._initialize_provider()
-
-    def analyze_text(self, text: str, options: Optional[Dict] = None) -> AIDetectionResult:
-        """
-        Analyze text for AI detection
-
-        Args:
-            text: Text to analyze
-            options: Additional options for analysis
-
-        Returns:
-            AIDetectionResult with analysis results
-
-        Raises:
-            AIDetectionError: If analysis fails
-        """
-        if not self.is_available():
-            raise AIDetectionError("AI detection service is not available")
-
+    def detect_ai_content(self, content: str) -> AIDetectionResult:
+        """Detect AI-generated content."""
         start_time = time.time()
 
         try:
-            result = self.provider.analyze_text(text, options or {})
-            result.provider = self.config.provider
-            result.processing_time = time.time() - start_time
-            return result
-        except Exception as e:
-            logger.error(f"AI detection analysis failed: {e}")
-            raise AIDetectionError(f"Analysis failed: {e}")
+            provider = self.providers.get(self.config.provider, self.providers["mock"])
+            result = provider.analyze_text(content)
 
-    def is_available(self) -> bool:
-        """Check if AI detection service is available and working"""
-        return self._initialized and self.provider and self.provider.is_available()
+            processing_time = time.time() - start_time
 
-    def get_provider_info(self) -> Dict[str, Any]:
-        """Get information about the current provider"""
-        if not self.is_available():
-            return {"status": "unavailable"}
-
-        return {
-            "status": "available",
-            "provider": self.config.provider,
-            "config": {
-                "target_score": self.config.target_score,
-                "max_iterations": self.config.max_iterations,
-                "timeout": self.config.timeout
-            }
-        }
-
-    def _initialize_provider(self):
-        """Initialize the AI detection provider"""
-        try:
-            if self.config.provider == "winston":
-                from .providers.winston import WinstonProvider
-                self.provider = WinstonProvider(self.config)
-            elif self.config.provider == "mock":
-                from .providers.mock import MockProvider
-                self.provider = MockProvider(self.config)
-            else:
-                raise ValueError(f"Unknown AI detection provider: {self.config.provider}")
-
-            self._initialized = True
-            logger.info(f"✅ AI detection service initialized with {self.config.provider} provider")
-
-        except Exception as e:
-            logger.warning(f"⚠️ Failed to initialize AI detection provider: {e}")
-            self._initialized = False
-
-    def _load_default_config(self) -> AIDetectionConfig:
-        """Load default configuration from config file"""
-        config_path = Path("config/ai_detection.yaml")
-
-        if not config_path.exists():
-            logger.warning("No AI detection config found, using defaults")
-            return AIDetectionConfig()
-
-        try:
-            import yaml
-            with open(config_path, 'r') as f:
-                data = yaml.safe_load(f)
-
-            return AIDetectionConfig(
-                provider=data.get('provider', 'winston'),
-                enabled=data.get('enabled', True),
-                target_score=data.get('target_score', 70.0),
-                max_iterations=data.get('max_iterations', 3),
-                improvement_threshold=data.get('improvement_threshold', 5.0),
-                timeout=data.get('timeout', 30),
-                retry_attempts=data.get('retry_attempts', 3)
+            return AIDetectionResult(
+                score=result.score,
+                confidence=result.confidence,
+                classification=result.classification,
+                provider=self.config.provider,
+                processing_time=processing_time,
+                details=result.details,
             )
+
         except Exception as e:
-            logger.warning(f"Failed to load AI detection config: {e}")
-            return AIDetectionConfig()
+            self.logger.error(f"AI detection failed: {e}")
+            processing_time = time.time() - start_time
+
+            return AIDetectionResult(
+                score=0.0,
+                confidence=0.0,
+                classification="error",
+                provider=self.config.provider,
+                processing_time=processing_time,
+                details={"error": str(e)},
+            )
+
 
 # Global service instance for easy access
 _ai_detection_service = None
+
 
 def get_ai_detection_service() -> Optional[AIDetectionService]:
     """Get the global AI detection service instance"""
     return _ai_detection_service
 
-def initialize_ai_detection_service(config: Optional[AIDetectionConfig] = None) -> AIDetectionService:
+
+def initialize_ai_detection_service(
+    config: Optional[AIDetectionConfig] = None,
+) -> AIDetectionService:
     """Initialize the global AI detection service"""
     global _ai_detection_service
     _ai_detection_service = AIDetectionService(config)
     return _ai_detection_service
+
 
 class AIDetectionError(Exception):
     """Exception raised for AI detection errors"""

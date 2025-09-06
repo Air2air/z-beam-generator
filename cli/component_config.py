@@ -7,60 +7,79 @@ Defines component orchestration order, provider assignments, and configuration.
 """
 
 import os
+from pathlib import Path
+
+try:
+    from dotenv import load_dotenv
+
+    env_path = Path(__file__).parent.parent / ".env"
+    load_dotenv(env_path)
+except ImportError:
+    pass  # Continue without dotenv if not available
+
 from cli.api_config import API_PROVIDERS
 
 
 # Component Configuration
+# Moved here to break circular import between run.py and other modules
 COMPONENT_CONFIG = {
-    # Component orchestration order (components will be generated in this order)
-    "orchestration_order": [
-        "frontmatter",      # MUST BE FIRST - provides data for all other components
-        "propertiestable",  # Depends on frontmatter data
-        "badgesymbol",      # Depends on frontmatter data  
-        "author",           # Static component, no dependencies
-        "text",          # Main content generation
-        "bullets",          # Content-related components
-        "caption",          # Content-related components
-        "table",            # Data presentation
-        "tags",             # Metadata components
-        "metatags",         # Metadata components
-        "jsonld",           # Structured data (should be last)
-    ],
-    
-    # Component-specific configuration
     "components": {
-        "author": {"enabled": True, "data_provider": "none", "api_provider": "none"},  # Static component, no API needed
-        "bullets": {"enabled": True, "data_provider": "API", "api_provider": "deepseek"},
-        "caption": {"enabled": True, "data_provider": "API", "api_provider": "deepseek"},
+        "text": {
+            "enabled": True,
+            "data_provider": "API",
+            "api_provider": "deepseek",
+        },
         "frontmatter": {
             "enabled": True,
-            "data_provider": "API",  # Generate via API
-            "api_provider": "grok"
+            "data_provider": "static",
+            "api_provider": "deepseek",
         },
-        "text": {"enabled": True, "data_provider": "hybrid", "api_provider": "deepseek"},  # Uses both frontmatter and API
-        "jsonld": {"enabled": True, "data_provider": "frontmatter", "api_provider": "none"},  # Extract data from frontmatter
-        "table": {"enabled": True, "data_provider": "API", "api_provider": "grok"},
-        "metatags": {"enabled": True, "data_provider": "frontmatter", "api_provider": "none"},  # Extract data from frontmatter
-        "tags": {"enabled": True, "data_provider": "API", "api_provider": "deepseek"},
-        "propertiestable": {"enabled": True, "data_provider": "frontmatter", "api_provider": "none"},  # Extract from frontmatter
-        "badgesymbol": {"enabled": True, "data_provider": "frontmatter", "api_provider": "none"},  # Extract from frontmatter
-    },
+        "bullets": {
+            "enabled": True,
+            "data_provider": "API",
+            "api_provider": "deepseek",
+        },
+        "caption": {
+            "enabled": True,
+            "data_provider": "API",
+            "api_provider": "gemini",
+        },
+        "tags": {
+            "enabled": True,
+            "data_provider": "static",
+            "api_provider": "deepseek",
+        },
+        "author": {
+            "enabled": True,
+            "data_provider": "static",
+            "api_provider": "none",
+        },
+        "badgesymbol": {
+            "enabled": True,
+            "data_provider": "static",
+            "api_provider": "none",
+        },
+        "propertiestable": {
+            "enabled": True,
+            "data_provider": "static",
+            "api_provider": "none",
+        },
+        "metatags": {
+            "enabled": True,
+            "data_provider": "static",
+            "api_provider": "none",
+        },
+        "jsonld": {
+            "enabled": True,
+            "data_provider": "static",
+            "api_provider": "none",
+        },
+    }
 }
 
 
 def show_component_configuration():
     """Display current component configuration."""
-
-    # Load environment variables from .env file
-    try:
-        from dotenv import load_dotenv
-        from pathlib import Path
-
-        env_path = Path(__file__).parent / ".env"
-        load_dotenv(env_path)
-    except ImportError:
-        pass  # Continue without dotenv if not available
-
     print("🔧 COMPONENT CONFIGURATION")
     print("=" * 50)
 

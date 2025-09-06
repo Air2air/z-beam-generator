@@ -4,7 +4,7 @@
 
 **Performance Achievements:**
 - JSON-LD Accuracy: 0.65 → 0.79 (+21% improvement)
-- Overall System: 0.85 → 0.87 (+2.4% improvement)  
+- Overall System: 0.85 → 0.87 (+2.4% improvement)
 - API Dependency: 100% → 40% (60% reduction)
 
 ## 🎯 Quick Start (5 Minutes)
@@ -20,16 +20,16 @@ class ComponentCalculator:
         self.frontmatter = frontmatter_data
         self.subject = frontmatter_data.get('subject', 'Unknown Material')
         self.category = frontmatter_data.get('category', 'material')
-        
+
     def generate_primary_content(self) -> str:
         """CUSTOMIZE THIS: Main content generation logic"""
         properties = self.frontmatter.get('properties', {})
         tech_specs = self.frontmatter.get('technicalSpecifications', {})
         applications = self.frontmatter.get('applications', [])
-        
+
         # Add component-specific logic here
         return f"Generated content for {self.subject}"
-        
+
     def generate_complete_output(self) -> str:
         return self.generate_primary_content()
 
@@ -55,13 +55,13 @@ version: "5.0.0"
 
 template: |
   Generate {component} for {subject} using Python-calculated values to minimize API requests.
-  
+
   PYTHON OPTIMIZATION APPROACH:
   - Use Python calculations for all computed values
   - Extract real data from frontmatter properties
   - Generate content algorithmically based on material data
   - Minimize API dependency through local calculations
-  
+
   REQUIREMENTS:
   - Use frontmatter.properties for material specifications
   - Use frontmatter.technicalSpecifications for laser parameters
@@ -76,7 +76,7 @@ parameters:
 ### 3. Test & Measure
 ```bash
 # Test calculator
-python -c "from components.{component}.calculator import calculate_component_for_material; 
+python -c "from components.{component}.calculator import calculate_component_for_material;
 result = calculate_component_for_material('content/components/frontmatter/aluminum-laser-cleaning.md');
 print(f'Generated: {len(result)} chars')"
 
@@ -91,13 +91,13 @@ python test_generation_accuracy.py
 def generate_primary_content(self) -> str:
     applications = self.frontmatter.get('applications', [])
     primary_industry = applications[0].get('industry', 'materials') if applications else 'materials'
-    
+
     expertise = [
         f"{self.subject} Processing",
         f"Laser {self.category.title()} Applications",
         f"{primary_industry.title()} Materials Engineering"
     ]
-    
+
     return {
         "name": f"Dr. {self._generate_name()}",
         "expertise": expertise,
@@ -109,19 +109,19 @@ def generate_primary_content(self) -> str:
 ```python
 def generate_primary_content(self) -> str:
     tags = [self.subject.lower(), f"{self.subject.lower()}-{self.category}", "laser-cleaning", "ablation"]
-    
+
     # Add technical tags
     tech_specs = self.frontmatter.get('technicalSpecifications', {})
     if 'wavelength' in tech_specs:
         wavelength = tech_specs['wavelength'].replace('nm', '')
         tags.append(f"{wavelength}nm")
-    
+
     # Add application tags
     applications = self.frontmatter.get('applications', [])
     for app in applications[:2]:
         industry = app.get('industry', '').lower()
         if industry: tags.append(industry)
-    
+
     return ", ".join(tags[:8])
 ```
 
@@ -129,23 +129,23 @@ def generate_primary_content(self) -> str:
 ```python
 def generate_primary_content(self) -> str:
     bullets = []
-    
+
     # Material properties
     properties = self.frontmatter.get('properties', {})
     if 'density' in properties:
         bullets.append(f"High-precision cleaning of {properties['density']} density {self.subject}")
-    
+
     # Technical specifications
     tech_specs = self.frontmatter.get('technicalSpecifications', {})
     if 'wavelength' in tech_specs:
         bullets.append(f"Optimized for {tech_specs['wavelength']} wavelength processing")
-    
+
     # Applications
     applications = self.frontmatter.get('applications', [])
     for app in applications[:3]:
         detail = app.get('detail', '')
         if detail: bullets.append(f"Ideal for {detail}")
-    
+
     return "\n".join([f"- {bullet}" for bullet in bullets])
 ```
 
@@ -166,18 +166,18 @@ def generate_keywords(self) -> List[str]:
         f"{self.subject.lower()} {self.category}",
         "laser-cleaning", "ablation"
     ]
-    
+
     # Add technical specifications
     tech_specs = self.frontmatter.get('technicalSpecifications', {})
     if 'wavelength' in tech_specs:
         keywords.append(f"{tech_specs['wavelength']} wavelength")
-        
+
     # Add applications
     applications = self.frontmatter.get('applications', [])
     for app in applications[:3]:
         industry = app.get('industry', '').lower()
         if industry: keywords.append(f"{industry} applications")
-        
+
     return keywords[:10]  # SEO optimization
 ```
 
@@ -215,7 +215,7 @@ def extract_properties(self) -> Dict[str, Any]:
 
 ### Minimum Targets
 - **Accuracy Improvement**: +15% minimum
-- **API Reduction**: -50% minimum  
+- **API Reduction**: -50% minimum
 - **Data Utilization**: Use all available frontmatter fields
 - **Technical Precision**: Replace all placeholders with calculations
 
@@ -244,7 +244,7 @@ Following this methodology, each component should achieve:
 ## 🎯 Next Priority Components
 
 1. **Author** (0.78) - Expertise mapping and credential calculation
-2. **Tags** (0.79) - Semantic analysis and terminology generation  
+2. **Tags** (0.79) - Semantic analysis and terminology generation
 3. **Bullets** (0.85) - Feature extraction optimization
 4. **Content** (0.88) - Technical narrative enhancement
 

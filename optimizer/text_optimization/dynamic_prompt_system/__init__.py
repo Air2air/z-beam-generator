@@ -14,14 +14,15 @@ This system provides:
 
 import logging
 import random
-from typing import Dict, Any, Optional, List
 from pathlib import Path
+from typing import Any, Dict, List, Optional
 
 from .dynamic_prompt_generator import DynamicPromptGenerator
 from .prompt_evolution_manager import PromptEvolutionManager
 from .winston_analyzer import WinstonAnalyzer
 
 logger = logging.getLogger(__name__)
+
 
 class DynamicPromptSystem:
     """
@@ -31,7 +32,9 @@ class DynamicPromptSystem:
     the ai_detection.yaml prompts to improve future content generation.
     """
 
-    def __init__(self, prompts_path: str = "components/text/prompts/core/ai_detection_core.yaml"):
+    def __init__(
+        self, prompts_path: str = "components/text/prompts/core/ai_detection_core.yaml"
+    ):
         """
         Initialize the dynamic prompt system.
 
@@ -47,8 +50,12 @@ class DynamicPromptSystem:
 
         logger.info("🎯 Dynamic Prompt System initialized")
 
-    def analyze_and_evolve(self, winston_result: Dict[str, Any],
-                          content: str, iteration_context: Dict[str, Any]) -> Dict[str, Any]:
+    def analyze_and_evolve(
+        self,
+        winston_result: Dict[str, Any],
+        content: str,
+        iteration_context: Dict[str, Any],
+    ) -> Dict[str, Any]:
         """
         Main entry point for analyzing Winston results and evolving prompts.
 
@@ -68,12 +75,12 @@ class DynamicPromptSystem:
                 winston_result, content, iteration_context
             )
 
-            if not analysis['needs_improvement']:
+            if not analysis["needs_improvement"]:
                 logger.info("ℹ️ No prompt improvements needed at this time")
                 return {
-                    'success': True,
-                    'improvements_applied': 0,
-                    'message': 'No improvements needed'
+                    "success": True,
+                    "improvements_applied": 0,
+                    "message": "No improvements needed",
                 }
 
             # Generate improvements
@@ -84,9 +91,9 @@ class DynamicPromptSystem:
             if not improvements:
                 logger.info("ℹ️ No improvements generated")
                 return {
-                    'success': True,
-                    'improvements_applied': 0,
-                    'message': 'No improvements generated'
+                    "success": True,
+                    "improvements_applied": 0,
+                    "message": "No improvements generated",
                 }
 
             # Apply improvements gradually
@@ -95,11 +102,15 @@ class DynamicPromptSystem:
                 applied = self.generator.apply_gradual_improvements(improvements)
                 if applied:
                     applied_count = len(improvements)
-                    logger.info(f"✅ Applied {applied_count} gradual prompt improvements")
+                    logger.info(
+                        f"✅ Applied {applied_count} gradual prompt improvements"
+                    )
                 else:
                     logger.info("ℹ️ No improvements applied this iteration")
             else:
-                logger.info("⏭️ Skipping improvement application this iteration (gradual evolution)")
+                logger.info(
+                    "⏭️ Skipping improvement application this iteration (gradual evolution)"
+                )
 
             # Update evolution history
             self.evolution_manager.record_evolution(
@@ -107,20 +118,16 @@ class DynamicPromptSystem:
             )
 
             return {
-                'success': True,
-                'improvements_generated': len(improvements),
-                'improvements_applied': applied_count,
-                'analysis': analysis,
-                'message': f'Generated {len(improvements)} improvements, applied {applied_count}'
+                "success": True,
+                "improvements_generated": len(improvements),
+                "improvements_applied": applied_count,
+                "analysis": analysis,
+                "message": f"Generated {len(improvements)} improvements, applied {applied_count}",
             }
 
         except Exception as e:
             logger.error(f"Failed to evolve prompts: {e}")
-            return {
-                'success': False,
-                'error': str(e),
-                'message': 'Evolution failed'
-            }
+            return {"success": False, "error": str(e), "message": "Evolution failed"}
 
     def get_evolution_history(self) -> List[Dict[str, Any]]:
         """Get the complete evolution history of prompt improvements."""
@@ -129,14 +136,18 @@ class DynamicPromptSystem:
     def get_current_stats(self) -> Dict[str, Any]:
         """Get current statistics about the prompt evolution system."""
         return {
-            'current_version': self.generator.get_current_version(),
-            'total_evolutions': len(self.evolution_manager.get_history()),
-            'prompts_path': str(self.prompts_path),
-            'system_status': 'active'
+            "current_version": self.generator.get_current_version(),
+            "total_evolutions": len(self.evolution_manager.get_history()),
+            "prompts_path": str(self.prompts_path),
+            "system_status": "active",
         }
 
-    def force_evolution(self, winston_result: Dict[str, Any],
-                       content: str, iteration_context: Dict[str, Any]) -> bool:
+    def force_evolution(
+        self,
+        winston_result: Dict[str, Any],
+        content: str,
+        iteration_context: Dict[str, Any],
+    ) -> bool:
         """
         Force prompt evolution regardless of random chance.
         Useful for testing or when specific improvements are needed.

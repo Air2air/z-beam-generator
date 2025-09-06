@@ -35,7 +35,7 @@ Creates a new content generator instance. No parameters required.
 
 #### generate() Method
 ```python
-def generate(self, material_name: str, material_data: Dict, 
+def generate(self, material_name: str, material_data: Dict,
             api_client=None, author_info: Optional[Dict] = None,
             frontmatter_data: Optional[Dict] = None,
             schema_fields: Optional[Dict] = None) -> ComponentResult:

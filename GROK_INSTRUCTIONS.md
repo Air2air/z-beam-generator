@@ -6,7 +6,7 @@ You are working on a **laser cleaning content generation system** with strict fa
 ## ⚡ Quick Reference Card
 **BEFORE ANY CHANGE:**
 1. ✅ Read the request precisely
-2. ✅ Explore existing architecture 
+2. ✅ Explore existing architecture
 3. ✅ Check git history for context
 4. ✅ Plan minimal fix only
 5. ✅ Ask permission for major changes
@@ -14,20 +14,36 @@ You are working on a **laser cleaning content generation system** with strict fa
 **GOLDEN RULES:**
 - 🚫 **NEVER rewrite working code**
 - 🚫 **NEVER expand beyond requested scope**
-- 🚫 **NEVER use mocks/fallbacks in production - NO EXCEPTIONS**
+- 🚫 **NEVER use mocks/fallbacks in production code - NO EXCEPTIONS**
+- ✅ **ALLOW mocks/fallbacks in test code for proper testing**
 - 🚫 **NEVER add "skip" logic or dummy test results**
 - 🚫 **NEVER create placeholder return values**
 - ✅ **ALWAYS preserve existing patterns**
 - ✅ **ALWAYS fail-fast on configuration issues**
 - ✅ **ALWAYS maintain runtime error recovery**
 
-## 🚨 **ZERO TOLERANCE FOR MOCKS/FALLBACKS**
+## 🚨 **ZERO TOLERANCE FOR MOCKS/FALLBACKS IN PRODUCTION CODE**
+
 **ANY** code that returns a default value, skips validation, or provides placeholder data is **STRICTLY FORBIDDEN** in production code. This includes:
 - `return True` when tests don't exist
-- `result = {} if not found` patterns  
+- `result = {} if not found` patterns
 - `or "default"` fallback values
 - Skip logic that bypasses validation
 - Mock API responses outside test files
+
+### 🎭 **TEST CODE EXCEPTION**
+**✅ Mocks and fallbacks ARE ALLOWED in test code** for the following purposes:
+- Unit testing without external dependencies
+- Integration testing with controlled scenarios
+- Performance testing with mock responses
+- Error handling testing with simulated failures
+
+### 🔍 **TESTING REQUIREMENT**
+**Part of testing should include verifying ZERO presence of mocks and fallbacks in production code:**
+- Static analysis to detect mock usage in non-test files
+- Code review checks for fallback patterns
+- Automated tests that fail if production code contains mocks
+- Build verification that excludes mock dependencies from production builds
 
 ## 📖 Key Definitions
 
@@ -39,6 +55,7 @@ You are working on a **laser cleaning content generation system** with strict fa
 ### Mocks/Fallbacks
 - ❌ **Prohibited in Production**: No MockAPIClient, no default values, no silent failures
 - ✅ **Allowed in Testing**: Retain existing mocks for test infrastructure (ask before removing)
+- 🔍 **Testing Requirement**: Verify zero presence of mocks/fallbacks in production code
 
 ### Minimal Changes
 - 🎯 **Target**: Fix only the specific issue requested
@@ -52,11 +69,12 @@ You are working on a **laser cleaning content generation system** with strict fa
 - **ONLY make targeted fixes** - if `fail_fast_generator.py` works, integrate around it
 - **Example**: Add missing method ≠ Rewrite entire class
 
-### 2. 🚫 No Production Mocks/Fallbacks  
+### 2. 🚫 No Production Mocks/Fallbacks
 - **Fail immediately** if dependencies are missing
 - **No defaults, mock clients, or silent recoveries** in core logic
 - **No skip logic, placeholder returns, or dummy values**
-- **Exception**: Keep existing mocks for testing (ask before removing)
+- **✅ ALLOWED in test code** for proper testing infrastructure
+- **🔍 REQUIRE testing** to verify zero mocks/fallbacks in production
 - **VIOLATION EXAMPLES TO AVOID**:
   - `test_results['missing'] = True  # Skip logic`
   - `return "default" if not data`
@@ -104,7 +122,7 @@ You are working on a **laser cleaning content generation system** with strict fa
 
 ### 🎯 Success Pattern
 1. **Understand** the existing code
-2. **Identify** the minimal change needed  
+2. **Identify** the minimal change needed
 3. **Implement** only that change
 4. **Verify** the fix works
 5. **Confirm** nothing else broke
@@ -117,7 +135,7 @@ You are working on a **laser cleaning content generation system** with strict fa
 - [ ] **Read request precisely** - What is the *exact* issue?
 - [ ] **No assumptions** - Ask for clarification if unclear
 
-### Step 2: 🔍 Explore Architecture  
+### Step 2: 🔍 Explore Architecture
 - [ ] **Read relevant code** - Understand how it currently works
 - [ ] **Check subdirectories** - Don't miss important context
 - [ ] **Verify file existence** - Prevent "Content Not Found" errors
@@ -140,16 +158,17 @@ You are working on a **laser cleaning content generation system** with strict fa
 - [ ] **Apply the fix** - Make only the planned changes
 - [ ] **Verify it works** - Test the specific issue is resolved
 - [ ] **Check for regressions** - Ensure nothing else broke
+- [ ] **🔍 Verify no production mocks** - Confirm changes don't introduce mocks/fallbacks in production code
 
 ## 🚫 Absolute Prohibitions
 
 ### ❌ CODE MODIFICATION PROHIBITIONS
 - **Never rewrite or remove working code** without explicit permission
-- **Never expand beyond requested scope** - fix X means fix only X  
+- **Never expand beyond requested scope** - fix X means fix only X
 - **Never create new files** to bypass fixing existing ones
 - **Never ignore existing patterns** - factories, wrappers, etc.
 
-### ❌ DEVELOPMENT PRACTICE PROHIBITIONS  
+### ❌ DEVELOPMENT PRACTICE PROHIBITIONS
 - **Never assume requirements** - ask for clarification instead
 - **Never generate verbose/inefficient code** - keep it concise
 - **Never skip validation** - always include error handling
@@ -172,9 +191,9 @@ Watch for these indicators of problems:
 
 ## 🏗️ Project Context
 
-**System:** Z-Beam laser cleaning content generation  
-**Scale:** 109 materials, sophisticated multi-component architecture  
-**APIs:** Grok, DeepSeek integration  
+**System:** Z-Beam laser cleaning content generation
+**Scale:** 109 materials, sophisticated multi-component architecture
+**APIs:** Grok, DeepSeek integration
 **Architecture:** Component-based with strict validation, no defaults
 
 ## 🔥 CONTENT COMPONENT - CRITICAL SYSTEM CORE
@@ -190,7 +209,7 @@ The content component (`components/content/`) is the **MOST CRITICAL** part of t
 **You MUST read these files BEFORE touching ANY content component code:**
 
 1. 📖 **`components/content/docs/README.md`** - Start here for overview
-2. 🏗️ **`components/content/docs/CONTENT_GENERATION_ARCHITECTURE.md`** - System architecture  
+2. 🏗️ **`components/content/docs/CONTENT_GENERATION_ARCHITECTURE.md`** - System architecture
 3. 🎯 **`components/content/docs/PROMPT_SYSTEM.md`** - Prompt engineering details
 4. 📚 **`components/content/docs/API_REFERENCE.md`** - API documentation
 
@@ -208,7 +227,7 @@ The content component (`components/content/`) is the **MOST CRITICAL** part of t
 
 **ALWAYS:**
 1. Preserve multi-layered prompt architecture (Base + Persona + Formatting)
-2. Maintain author authenticity and writing style consistency  
+2. Maintain author authenticity and writing style consistency
 3. Validate configuration files exist and are properly structured
 4. Respect word count limits per author
 5. Maintain quality scoring and human believability thresholds
@@ -218,7 +237,7 @@ The content component (`components/content/`) is the **MOST CRITICAL** part of t
 ### 🏛️ Content Component Architecture Overview
 
 - **Wrapper Pattern**: `ContentComponentGenerator` wraps `fail_fast_generator`
-- **Factory Integration**: Works with `ComponentGeneratorFactory.create_generator("content")`  
+- **Factory Integration**: Works with `ComponentGeneratorFactory.create_generator("content")`
 - **Three-Layer Prompts**: Base guidance + Author persona + Formatting rules
 - **Quality Assurance**: 5-dimension scoring with human believability threshold
 - **Author Authentication**: 4 country-specific personas with linguistic nuances
@@ -227,7 +246,7 @@ The content component (`components/content/`) is the **MOST CRITICAL** part of t
 ### 🔧 Content Component Work Protocol
 
 1. **📖 READ THE DOCS FIRST** - All answers are in `components/content/docs/`
-2. **🤔 Understand the WHY** - Each component serves a specific purpose  
+2. **🤔 Understand the WHY** - Each component serves a specific purpose
 3. **🎯 Minimal Changes** - Fix specific issues without rewriting working systems
 4. **🧪 Test Thoroughly** - Validate all 4 author personas work correctly
 5. **🙋 Ask Permission** - Get explicit approval before major modifications
@@ -243,7 +262,7 @@ The content component (`components/content/`) is the **MOST CRITICAL** part of t
 git status  # See what files changed
 ```
 
-#### Step 2: 🔄 Restore Files  
+#### Step 2: 🔄 Restore Files
 ```bash
 git checkout HEAD -- <file>  # Restore specific file
 ```
@@ -266,7 +285,7 @@ git revert <commit>  # Revert to known working state
 
 **Before I start:**
 - [ ] I understand the exact request
-- [ ] I've explored the existing architecture  
+- [ ] I've explored the existing architecture
 - [ ] I've checked git history for context
 - [ ] I've planned the minimal fix needed
 
@@ -276,7 +295,7 @@ git revert <commit>  # Revert to known working state
 - [ ] I'm following existing patterns and conventions
 - [ ] I'm including proper error handling
 
-**For content component work:**  
+**For content component work:**
 - [ ] I've read the documentation in `components/content/docs/`
 - [ ] I understand the multi-layered architecture
 - [ ] I have permission for any major changes

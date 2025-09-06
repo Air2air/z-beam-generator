@@ -3,14 +3,15 @@
 Mock AI Detection Provider for Testing
 """
 
-import time
-import random
 import logging
+import random
+import time
 from typing import Dict, Optional
 
-from ..service import AIDetectionResult, AIDetectionConfig
+from ..types import AIDetectionConfig, AIDetectionResult
 
 logger = logging.getLogger(__name__)
+
 
 class MockProvider:
     """Mock AI detection provider for testing"""
@@ -20,7 +21,9 @@ class MockProvider:
         self._available = True
         logger.info("Mock AI detection provider initialized")
 
-    def analyze_text(self, text: str, options: Optional[Dict] = None) -> AIDetectionResult:
+    def analyze_text(
+        self, text: str, options: Optional[Dict] = None
+    ) -> AIDetectionResult:
         """Mock analysis - returns random but realistic results"""
         start_time = time.time()
 
@@ -41,18 +44,21 @@ class MockProvider:
 
         # Mock API response structure
         mock_details = {
-            "documents": [{
-                "average_generated_prob": ai_score / 100,
-                "completely_generated_prob": ai_score / 100 + random.uniform(-0.1, 0.1),
-                "sentences": [
-                    {
-                        "sentence": "Mock sentence analysis",
-                        "generated_prob": ai_score / 100
-                    }
-                ]
-            }],
+            "documents": [
+                {
+                    "average_generated_prob": ai_score / 100,
+                    "completely_generated_prob": ai_score / 100
+                    + random.uniform(-0.1, 0.1),
+                    "sentences": [
+                        {
+                            "sentence": "Mock sentence analysis",
+                            "generated_prob": ai_score / 100,
+                        }
+                    ],
+                }
+            ],
             "mock": True,
-            "processing_time": time.time() - start_time
+            "processing_time": time.time() - start_time,
         }
 
         return AIDetectionResult(
@@ -61,7 +67,7 @@ class MockProvider:
             classification=classification,
             details=mock_details,
             processing_time=time.time() - start_time,
-            provider="mock"
+            provider="mock",
         )
 
     def is_available(self) -> bool:

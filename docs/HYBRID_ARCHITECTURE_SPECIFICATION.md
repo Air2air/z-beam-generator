@@ -1,7 +1,7 @@
 # Z-Beam Hybrid Architecture Specification
 
-**Date:** September 1, 2025  
-**Status:** ACTIVE SPECIFICATION  
+**Date:** September 1, 2025
+**Status:** ACTIVE SPECIFICATION
 **Version:** 1.0
 
 ## 🏗️ Architecture Overview
@@ -16,7 +16,7 @@ These components use AI APIs for intelligent generation while leveraging frontma
 | Component | Data Provider | Frontmatter Access | Purpose |
 |-----------|---------------|-------------------|---------|
 | `frontmatter` | `grok` | ❌ (source component) | Primary material data source |
-| `content` | `grok` | ✅ | AI-generated articles with material context |
+| `text` | `grok` | ✅ | AI-generated articles with material context |
 | `bullets` | `deepseek` | ✅ | AI-generated bullet points with technical accuracy |
 | `caption` | `deepseek` | ✅ | AI-generated captions with material specifics |
 | `table` | `grok` | ✅ | AI-generated tables with frontmatter data |
@@ -78,7 +78,7 @@ frontmatter_data = {
 
 ### **For API-Based Components:**
 1. **Enhanced Context**: Rich material data improves AI generation accuracy
-2. **Technical Consistency**: All components reference same technical specifications  
+2. **Technical Consistency**: All components reference same technical specifications
 3. **Quality Assurance**: Frontmatter data validates and enhances AI output
 4. **Semantic Coherence**: Components share common technical vocabulary
 
@@ -95,9 +95,9 @@ frontmatter_data = {
 orchestration_order:
   1. frontmatter      # MUST BE FIRST - provides data for all other components
   2. propertiestable  # Depends on frontmatter data
-  3. badgesymbol      # Depends on frontmatter data  
+  3. badgesymbol      # Depends on frontmatter data
   4. author           # Static component, no dependencies
-  5. content          # AI + frontmatter context
+  5. text             # AI + frontmatter context
   6. bullets          # AI + frontmatter context
   7. caption          # AI + frontmatter context
   8. table            # AI + frontmatter context
@@ -111,18 +111,18 @@ orchestration_order:
 components:
   # API-based components with frontmatter access
   frontmatter:    {enabled: true, data_provider: "grok"}
-  content:        {enabled: true, data_provider: "grok"}
+  text:           {enabled: true, data_provider: "grok"}
   bullets:        {enabled: true, data_provider: "deepseek"}
   caption:        {enabled: true, data_provider: "deepseek"}
   table:          {enabled: true, data_provider: "grok"}
   tags:           {enabled: true, data_provider: "deepseek"}
-  
+
   # Frontmatter-dependent components (schema-driven)
   jsonld:         {enabled: true, data_provider: "frontmatter"}
   metatags:       {enabled: true, data_provider: "frontmatter"}
   propertiestable: {enabled: true, data_provider: "frontmatter"}
   badgesymbol:    {enabled: true, data_provider: "frontmatter"}
-  
+
   # Static components
   author:         {enabled: true, data_provider: "none"}
 ```

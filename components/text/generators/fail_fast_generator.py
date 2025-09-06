@@ -4,637 +4,334 @@ Fail-Fast Content Generator
 Removes all hardcoded fallbacks and implements clean error handling with retry mechanisms.
 """
 
-import sys
-import logging
-import time
 import json
+import logging
+import sys
+import time
 from pathlib import Path
-from typing import Dict, Any, List, Optional, Tuple
+from typing import Any, Dict, List, Optional, Tuple
+import json
 
-# Add project root to path
-project_root = Path(__file__).parent.parent.parent
-sys.path.insert(0, str(project_root))
+import yaml
 
-# Import modular configuration loader
 from optimizer.text_optimization.validation.content_scorer import create_content_scorer
+from optimizer.ai_detection.config import AI_DETECTION_CONFIG
+from api.client import GenerationRequest
 
-# Define our own result class locally
-class GenerationResult:
-    """Result of content gen            # Extract content from response for validation
-            if hasattr(response, 'content'):
-                content = response.content
-            elif isinstance(response, str):
-                content = response
-            else:
-                content = str(response)
-            
-            # Import centralized AI detection config
-            from run import AI_DETECTION_CONFIG
-            if not content or len(content.strip()) < AI_DETECTION_CONFIG["min_content_length"]:ith comprehensive scoring"""
-    def __init__(self, success: bool, content: str = "", error_message: str = "", 
-                 metadata: Optional[Dict] = None, quality_score: Optional[Any] = None):
-        self.success = success
-        self.content = content
-        self.error_message = error_message
-        self.metadata = metadata or {}
-        self.quality_score = quality_score
 
 logger = logging.getLogger(__name__)
 
+
 class ConfigurationError(Exception):
-    """Raised when configuration is missing or invalid."""
+    """Raised when required configurations are missing or invalid."""
     pass
+
 
 class GenerationError(Exception):
     """Raised when content generation fails."""
     pass
 
+
 class RetryableError(Exception):
-    """Raised when operation should be retried."""
+    """Raised for temporary failures that could be retried."""
     pass
+
 
 class FailFastContentGenerator:
     """
-    Content generator with fail-fast approach and configurable retry logic.
-    No hardcoded fallbacks - fails immediately on missing configuration.
-    Includes comprehensive quality scoring for human believability.
+    Fail-fast content generator that validates all dependencies upfront
+    and provides clean error handling without fallbacks.
     """
-    
-    def __init__(self, max_retries: int = 3, retry_delay: float = 1.0, 
-                 enable_scoring: bool = True, human_threshold: float = 75.0,
-                 ai_detection_service=None, skip_ai_detection: bool = False):
-        # Import centralized AI detection config
-        from run import AI_DETECTION_CONFIG
-        
+
+    def __init__(
+        self,
+        max_retries: int = 3,
+        retry_delay: float = 1.0,
+        enable_scoring: bool = True,
+        human_threshold: float = 75.0,
+        ai_detection_service=None,
+        skip_ai_detection: bool = False,
+    ):
+        """
+        Initialize the fail-fast content generator.
+
+        Args:
+            max_retries: Maximum number of retry attempts
+            retry_delay: Delay between retries in seconds
+            enable_scoring: Whether to enable quality scoring
+            human_threshold: Minimum human believability score
+            ai_detection_service: AI detection service instance
+            skip_ai_detection: Whether to skip AI detection
+
+        Raises:
+            ConfigurationError: If required configurations are missing
+        """
         self.max_retries = max_retries
         self.retry_delay = retry_delay
         self.enable_scoring = enable_scoring
-        self.human_threshold = AI_DETECTION_CONFIG["human_threshold"] if human_threshold == 75.0 else human_threshold
+        self.human_threshold = human_threshold
         self.ai_detection_service = ai_detection_service
-        self.skip_ai_detection = skip_ai_detection  # New flag to skip AI detection
-        
-        logger.info(f"FailFastContentGenerator initialized with AI detection service: {self.ai_detection_service is not None}")
-        if self.ai_detection_service:
-            logger.info(f"AI detection service available: {self.ai_detection_service.is_available()}")
-        
-        # Initialize content scorer if enabled - FAIL FAST if not available
+        self.skip_ai_detection = skip_ai_detection
+
+        # Validate configurations on initialization
+        self._validate_configurations()
+
+        # Initialize content scorer if enabled
+        self.content_scorer = None
         if self.enable_scoring:
-            try:
-                from optimizer.text_optimization.validation.content_scorer import create_content_scorer
-                self.content_scorer = create_content_scorer(human_threshold)
-            except ImportError:
-                logger.warning("Content scorer not available - disabling quality scoring")
-                self.enable_scoring = False
-                self.content_scorer = None
-        else:
-            self.content_scorer = None
-        
-        # Validate required configurations on startup
-        self._validate_required_configurations()
-    
-    def _validate_required_configurations(self):
-        """Validate all required configuration files exist and are valid."""
-        logger.info("Validating required configurations...")
-        
-        # Check authors configuration
-        authors_file = "components/author/authors.json"
-        if not Path(authors_file).exists():
-            raise ConfigurationError(f"Required authors configuration missing: {authors_file}")
-        
-        # Validate authors data
-        try:
-            authors_data = self._load_authors_data()
-            if not authors_data or len(authors_data) == 0:
-                raise ConfigurationError("Authors configuration is empty")
-            
-            for author in authors_data:
-                required_fields = ['id', 'name', 'country']
-                for field in required_fields:
-                    if field not in author:
-                        raise ConfigurationError(f"Author missing required field '{field}': {author}")
-        except Exception as e:
-            raise ConfigurationError(f"Invalid authors configuration: {e}")
-        
-        logger.info("✅ All required configurations validated successfully")
-    
-    def generate(self, material_name: str, material_data: Dict,
-                api_client=None, author_info: Optional[Dict] = None,
-                frontmatter_data: Optional[Dict] = None,
-                schema_fields: Optional[Dict] = None) -> GenerationResult:
+            self.content_scorer = create_content_scorer(human_threshold=self.human_threshold)
+
+    def _validate_configurations(self):
+        """Validate all required configurations exist and are valid."""
+        # Check for required files
+        required_files = [
+            "components/text/prompts/base_content_prompt.yaml",
+            "components/author/authors.json",
+            "config/ai_detection.yaml",
+        ]
+
+        for file_path in required_files:
+            if not Path(file_path).exists():
+                raise ConfigurationError(f"Required configuration file not found: {file_path}")
+
+        # Validate authors file
+        self._load_authors_file("components/author/authors.json")
+
+        logger.info("✅ All configurations validated successfully")
+
+    def _load_authors_file(self, authors_file: str) -> List[Dict]:
         """
-        Generate content with fail-fast approach and retry logic.
-        
-        Fails immediately if:
-        - Required configurations are missing
-        - API client is not provided
-        - Author information is invalid
-        
-        Retries on:
-        - API communication errors
-        - Temporary failures
+        Load and validate the authors configuration file.
+
+        Args:
+            authors_file: Path to the authors JSON file
+
+        Returns:
+            List of author dictionaries
+
+        Raises:
+            ConfigurationError: If authors file is invalid
         """
-        # Fail fast on missing requirements
-        if not api_client:
-            raise GenerationError("API client is required for content generation")
-        
-        if not author_info or 'id' not in author_info:
-            raise GenerationError("Valid author information with 'id' field is required")
-        
-        if not material_name or not material_data:
-            raise GenerationError("Valid material name and data are required")
-        
-        # Validate author exists in configuration
-        author_id = author_info['id']
-        if not self._author_exists(author_id):
-            raise GenerationError(f"Author ID {author_id} not found in configuration")
-        
-        # Execute generation with retry logic
-        return self._execute_with_retry(
-            self._generate_content_internal,
-            material_name, material_data, api_client, author_info, frontmatter_data, schema_fields
-        )
-    
-    def _execute_with_retry(self, operation, *args, **kwargs):
-        """Execute operation with retry logic for retryable errors."""
-        last_error = None
-        
-        for attempt in range(self.max_retries + 1):
-            try:
-                return operation(*args, **kwargs)
-                
-            except RetryableError as e:
-                last_error = e
-                if attempt < self.max_retries:
-                    logger.warning(f"Attempt {attempt + 1} failed, retrying in {self.retry_delay}s: {e}")
-                    time.sleep(self.retry_delay)
-                    continue
-                else:
-                    logger.error(f"All {self.max_retries + 1} attempts failed")
-                    break
-                    
-            except (ConfigurationError, GenerationError) as e:
-                # These errors should not be retried
-                logger.error(f"Non-retryable error: {e}")
-                raise
-                
-            except Exception as e:
-                # Unexpected errors - treat as retryable
-                last_error = RetryableError(f"Unexpected error: {e}")
-                if attempt < self.max_retries:
-                    logger.warning(f"Unexpected error on attempt {attempt + 1}, retrying: {e}")
-                    time.sleep(self.retry_delay)
-                    continue
-                else:
-                    break
-        
-        # If we get here, all retries failed
-        raise GenerationError(f"Content generation failed after {self.max_retries + 1} attempts: {last_error}")
-    
-    def _generate_content_internal(self, material_name: str, material_data: Dict,
-                                 api_client, author_info: Dict,
-                                 frontmatter_data: Optional[Dict],
-                                 schema_fields: Optional[Dict]) -> GenerationResult:
-        """Internal content generation without fallbacks."""
         try:
-            # Load required configurations (fail fast if missing)
-            base_config = {}
-            author_id = author_info['id']
-            formatting_config = {}
-            authors_data = self._load_authors_data()
-            
-            # Find author configuration (fail fast if not found)
-            author_config = self._find_author_config(author_id, authors_data)
-            
-            # Extract required information
-            # Fail fast if material data is missing critical info
-            if 'name' not in material_data:
-                raise ConfigurationError("Material data missing 'name' field")
-            
-            subject = material_data['name']
-            author_name = author_config['name']
-            
-            # Build API prompt using the comprehensive prompt building system
-            system_prompt = ""
-            user_prompt = self._build_api_prompt(
-                subject=subject,
-                author_id=author_id,
-                author_name=author_name,
-                material_data=material_data,
-                author_info=author_info
-            )
-            
-            # Generate content via API (fail fast on API errors)
-            api_response_obj = self._call_api_with_validation(api_client, user_prompt, system_prompt)
-            
-            logger.info(f"🔍 System prompt preview (first 500 chars): {system_prompt[:500]}...")
-            logger.info(f"🔍 User prompt preview (first 500 chars): {user_prompt[:500]}...")
-            logger.info(f"📝 System prompt length: {len(system_prompt)} characters")
-            logger.info(f"📝 User prompt length: {len(user_prompt)} characters")
-            
-            # Extract text content from response object for processing
-            if hasattr(api_response_obj, 'content'):
-                response = api_response_obj.content
-            elif isinstance(api_response_obj, str):
-                response = api_response_obj
-                # For backward compatibility, create a simple wrapper
-                class StringResponseWrapper:
-                    def __init__(self, content):
-                        self.content = content
-                        self.success = True
-                        self.request_id = "string_response"
-                        self.response_time = 0.0
-                        self.token_count = len(content.split())
-                        self.prompt_tokens = 0
-                        self.completion_tokens = len(content.split())
-                        self.model_used = "unknown"
-                        self.retry_count = 0
-                api_response_obj = StringResponseWrapper(response)
-            else:
-                response = str(api_response_obj)
-                # Create wrapper for any other type
-                class GenericResponseWrapper:
-                    def __init__(self, content):
-                        self.content = content
-                        self.success = True
-                        self.request_id = "generic_response"
-                        self.response_time = 0.0
-                        self.token_count = len(content.split())
-                        self.prompt_tokens = 0
-                        self.completion_tokens = len(content.split())
-                        self.model_used = "unknown"
-                        self.retry_count = 0
-                api_response_obj = GenericResponseWrapper(response)
-            
-            # Validate word count against author's maximum (with 50% tolerance)
-            word_count = len(response.split())
-            max_word_count = self._get_author_max_word_count(base_config, author_id, formatting_config)
-            if max_word_count:
-                # Import centralized AI detection config
-                from run import AI_DETECTION_CONFIG
-                # Allow 50% tolerance over the limit
-                tolerance_limit = max_word_count * AI_DETECTION_CONFIG["word_count_tolerance"]
-                if word_count > tolerance_limit:
-                    excess_words = word_count - max_word_count
-                    excess_percentage = (excess_words / max_word_count) * 100
-                    logger.warning(f"⚠️  Word count violation: {word_count} words > {max_word_count} max for author {author_id} (+{excess_words} words, {excess_percentage:.1f}% over)")
-                    
-                    # Only fail if exceeding 50% tolerance
-                    raise RetryableError(f"Content exceeds word limit with 50% tolerance: {word_count}/{int(tolerance_limit)} words. Retrying with stricter constraints.")
-                elif word_count > max_word_count:
-                    excess_words = word_count - max_word_count
-                    excess_percentage = (excess_words / max_word_count) * 100
-                    logger.info(f"ℹ️  Word count slightly over target but within 50% tolerance: {word_count} words > {max_word_count} target (+{excess_words} words, {excess_percentage:.1f}% over)")
-            
-            # Extract content from response object for processing
-            if hasattr(response, 'content'):
-                response_content = response.content
-            elif isinstance(response, dict) and 'choices' in response:
-                # Handle OpenAI-style API response
-                if response['choices'] and 'message' in response['choices'][0]:
-                    response_content = response['choices'][0]['message']['content']
-                else:
-                    response_content = str(response)
-            elif isinstance(response, str):
-                response_content = response
-            else:
-                response_content = str(response)
-            
-            # Generate quality score first if enabled
-            quality_score = None
-            if self.enable_scoring and self.content_scorer:
-                try:
-                    # Create temporary formatted content for scoring
-                    temp_formatted = response_content
-                    
-                    quality_score = self.content_scorer.score_content(
-                        temp_formatted, material_data, author_info, frontmatter_data
-                    )
-                    
-                    # Check if retry is recommended based on quality score
-                    if quality_score.retry_recommended:
-                        logger.warning(f"Quality score recommends retry: {quality_score.overall_score:.1f}/100")
-                        if quality_score.human_believability < self.human_threshold:
-                            raise RetryableError(f"Content failed human believability threshold: {quality_score.human_believability:.1f} < {self.human_threshold}")
-                        
-                except Exception as scoring_error:
-                    logger.warning(f"Content scoring failed: {scoring_error}")
-                    # Don't fail generation for scoring errors, just log
-
-            # Perform AI detection analysis if service is available and not skipped
-            ai_detection_result = None
-            if not self.skip_ai_detection:
-                logger.info(f"Checking AI detection service: {self.ai_detection_service is not None}")
-                if self.ai_detection_service and self.ai_detection_service.is_available():
-                    logger.info("AI detection service is available, starting analysis...")
-                    try:
-                        # Use the raw response content for AI detection (without frontmatter)
-                        logger.info(f"Text length for AI detection: {len(response_content)} characters")
-                        ai_detection_result = self.ai_detection_service.analyze_text(response_content)
-                        logger.info(f"AI detection analysis completed: {ai_detection_result.score:.1f} score, {ai_detection_result.classification}")
-                        
-                        # Log warning if content appears too AI-like
-                        if ai_detection_result.score < AI_DETECTION_CONFIG["winston_ai_range"][1]:  # LOW score = AI-like content
-                            logger.warning(f"Content appears AI-generated (score: {ai_detection_result.score:.1f})")
-                            
-                    except Exception as ai_error:
-                        logger.warning(f"AI detection analysis failed: {ai_error}")
-                        ai_detection_result = None
-                else:
-                    logger.info("AI detection service not available or not enabled")
-            else:
-                logger.info("AI detection skipped by configuration")
-
-            # Format response with comprehensive frontmatter (now with quality_score available)
-            formatted_content = response_content
-            
-            # Enhanced metadata with scoring information
-            enhanced_metadata = {
-                'generation_method': 'api_fail_fast',
-                'author_id': author_id,
-                'author_name': author_name,
-                'attempts': 1,
-                'scoring_enabled': self.enable_scoring,
-                'ai_detection_enabled': self.ai_detection_service is not None and self.ai_detection_service.is_available()
-            }
-            
-            if quality_score:
-                enhanced_metadata.update({
-                    'overall_score': quality_score.overall_score,
-                    'human_believability': quality_score.human_believability,
-                    'technical_accuracy': quality_score.technical_accuracy,
-                    'author_authenticity': quality_score.author_authenticity,
-                    'readability_score': quality_score.readability_score,
-                    'passes_human_threshold': quality_score.passes_human_threshold,
-                    'retry_recommended': quality_score.retry_recommended,
-                    'word_count': quality_score.word_count
-                })
-            
-            # Add AI detection metadata if available
-            if ai_detection_result:
-                enhanced_metadata.update({
-                    'ai_detection_score': ai_detection_result.score,
-                    'ai_detection_confidence': ai_detection_result.confidence,
-                    'ai_detection_classification': ai_detection_result.classification,
-                    'ai_detection_provider': ai_detection_result.provider,
-                    'ai_detection_processing_time': ai_detection_result.processing_time,
-                    'ai_detection_details': ai_detection_result.details
-                })
-            
-            return GenerationResult(
-                success=True,
-                content=formatted_content,
-                metadata=enhanced_metadata,
-                quality_score=quality_score
-            )
-            
-        except ConfigurationError as e:
-            # Configuration errors should fail immediately
-            raise GenerationError(f"Configuration error: {e}")
-            
-        except Exception as e:
-            # Other errors might be retryable
-            raise RetryableError(f"Generation attempt failed: {e}")
-    
-    def _find_author_config(self, author_id: int, authors_data: List[Dict]) -> Dict:
-        """Find author configuration, fail fast if not found."""
-        for author in authors_data:
-            if author.get('id') == author_id:
-                return author
-        
-        raise ConfigurationError(f"Author configuration not found for id: {author_id}")
-    
-    def _get_author_max_word_count(self, base_config: Dict, author_id: int, formatting_config: Optional[Dict] = None) -> Optional[int]:
-        """Extract max word count for author from configuration files."""
-        try:
-            # First check formatting config (most specific)
-            if formatting_config and 'content_constraints' in formatting_config:
-                max_count = formatting_config['content_constraints'].get('max_word_count')
-                if isinstance(max_count, int):
-                    logger.debug(f"Found word limit in formatting config: {max_count}")
-                    return max_count
-            
-            # Map author IDs to country codes
-            author_map = {1: 'taiwan', 2: 'italy', 3: 'indonesia', 4: 'usa'}
-            author_key = author_map.get(author_id)
-            
-            if not author_key:
-                return None
-            
-            # Check author_expertise_areas in base config
-            expertise_areas = base_config.get('author_expertise_areas', {})
-            if author_key in expertise_areas:
-                max_count = expertise_areas[author_key].get('max_word_count')
-                if isinstance(max_count, int):
-                    logger.debug(f"Found word limit in base config expertise areas: {max_count}")
-                    return max_count
-            
-            return None
-            
-        except Exception as e:
-            logger.warning(f"Could not extract max word count for author {author_id}: {e}")
-            return None
-
-    def _author_exists(self, author_id: int) -> bool:
-        """Check if author exists in configuration."""
-        try:
-            authors_data = self._load_authors_data()
-            return any(author.get('id') == author_id for author in authors_data)
-        except Exception:
-            return False
-    
-    def _call_api_with_validation(self, api_client, prompt: str, system_prompt: Optional[str] = None):
-        """Call API with proper error handling and return full response object."""
-        # Import centralized AI detection config
-        from run import AI_DETECTION_CONFIG
-        
-        try:
-            # API Terminal Messaging - Start
-            print("🚀 [GENERATOR] Starting API call to content generation service...")
-            print(f"📤 [GENERATOR] Sending prompt ({len(prompt)} chars) to API")
-            if system_prompt:
-                print(f"📤 [GENERATOR] System prompt ({len(system_prompt)} chars) included")
-            logger.info(f"🌐 [GENERATOR] API call initiated - Prompt length: {len(prompt)} chars")
-
-            # Check if API client has generate_simple method (for backward compatibility)
-            if hasattr(api_client, 'generate_simple'):
-                response = api_client.generate_simple(prompt, system_prompt=system_prompt)
-                # For generate_simple, we only get string content, wrap it
-                if isinstance(response, str):
-                    # Create a mock response object to maintain API verification data
-                    class SimpleResponseWrapper:
-                        def __init__(self, content):
-                            self.content = content
-                            self.success = True
-                            self.request_id = "simple_api_call"
-                            self.response_time = 0.0
-                            self.token_count = len(content.split())
-                            self.prompt_tokens = len(prompt.split()) + (len(system_prompt.split()) if system_prompt else 0)
-                            self.completion_tokens = len(content.split())
-                            self.model_used = "unknown"
-                            self.retry_count = 0
-                    response = SimpleResponseWrapper(response)
-            else:
-                # Use GenerationRequest for newer API clients
-                from api.client import GenerationRequest
-                request = GenerationRequest(prompt=prompt, system_prompt=system_prompt)
-                response = api_client.generate(request)
-            
-            # API Terminal Messaging - Success
-            if hasattr(response, 'content'):
-                content_length = len(response.content)
-            elif isinstance(response, str):
-                content_length = len(response)
-            else:
-                content_length = len(str(response))
-            
-            print(f"✅ [GENERATOR] API call completed successfully - Received {content_length} chars")
-            logger.info(f"✅ [GENERATOR] API response received - Content length: {content_length} chars")
-            
-            if not response:
-                print("❌ [GENERATOR] API returned empty response")
-                raise RetryableError("API returned empty response")
-            
-            if hasattr(response, 'success') and not response.success:
-                error_msg = getattr(response, 'error', 'Unknown API error')
-                print(f"❌ [GENERATOR] API request failed: {error_msg}")
-                raise RetryableError(f"API request failed: {error_msg}")
-            
-            # Extract content from response for validation
-            if hasattr(response, 'content'):
-                content = response.content
-            elif isinstance(response, str):
-                content = response
-            else:
-                content = str(response)
-            
-            if not content or len(content.strip()) < AI_DETECTION_CONFIG["min_content_length"]:
-                print(f"⚠️ [GENERATOR] API returned insufficient content: {len(content.strip())} chars")
-                raise RetryableError("API returned insufficient content")
-            
-            # Log content length for monitoring
-            word_count = len(content.split())
-            logger.info(f"📝 Generated content: {word_count} words ({len(content)} chars)")
-            print(f"📊 [GENERATOR] Content generated: {word_count} words, {len(content)} characters")
-            
-            return response  # Return full response object, not just content
-            
-        except Exception as e:
-            # API Terminal Messaging - Error
-            print(f"❌ [GENERATOR] API call failed: {str(e)}")
-            logger.error(f"❌ [GENERATOR] API call error: {e}")
-            
-            if "timeout" in str(e).lower() or "connection" in str(e).lower():
-                raise RetryableError(f"API connection error: {e}")
-            else:
-                raise RetryableError(f"API call failed: {e}")
-    
-    def _load_base_content_prompt(self) -> Dict[str, Any]:
-        """Load base content prompt configuration from YAML file."""
-        import yaml
-        
-        base_prompt_file = "components/text/prompts/core/base_content_prompt.yaml"
-        
-        try:
-            with open(base_prompt_file, 'r', encoding='utf-8') as f:
-                config = yaml.safe_load(f)
-            
-            if not config:
-                raise ConfigurationError(f"Base content prompt file is empty: {base_prompt_file}")
-            
-            return config
-            
-        except FileNotFoundError:
-            raise ConfigurationError(f"Base content prompt file not found: {base_prompt_file}")
-        except yaml.YAMLError as e:
-            raise ConfigurationError(f"Invalid YAML in base content prompt: {e}")
-    
-    def _load_persona_prompt(self, author_id: int) -> Dict[str, Any]:
-        """Load persona configuration for specific author."""
-        # Persona prompts have been moved to optimizer - return empty config
-        return {}
-    
-    def _load_formatting_prompt(self, author_id: int) -> Dict[str, Any]:
-        """Load formatting configuration for specific author."""
-        # Formatting prompts have been moved to optimizer - return empty config
-        return {}
-    
-    def _load_ai_detection_prompt(self) -> Dict[str, Any]:
-        """Load AI detection and human authenticity configuration."""
-        # AI detection prompts have been moved to optimizer - return empty config
-        return {}
-    
-    def _build_api_prompt(self, subject: str, author_id: int, author_name: str, 
-                         material_data: Dict, author_info: Dict) -> str:
-        """Build simple API prompt using only base content configuration."""
-        try:
-            # Load only the base content prompt
-            base_config = self._load_base_content_prompt()
-            
-            # Build simple prompt using only base content
-            prompt_parts = []
-            
-            # Base content prompt
-            if 'overall_subject' in base_config:
-                content = base_config['overall_subject'].format(material=subject)
-                prompt_parts.append(f"## Content Requirements\n{content}")
-            
-            # Simple content generation instruction
-            prompt_parts.append(f"""
-## Content Generation Task
-
-Write a comprehensive article about laser cleaning {subject}.
-
-**Subject:** {subject}
-**Author:** {author_name}
-**Target Audience:** Industry professionals and researchers interested in laser cleaning applications
-
-Focus on technical accuracy, practical applications, and engineering insights.
-""")
-            
-            # Combine parts
-            complete_prompt = '\n'.join(prompt_parts)
-            
-            logger.info(f"📝 Simple prompt built: {len(complete_prompt)} characters")
-            
-            return complete_prompt
-            
-        except Exception as e:
-            logger.error(f"Failed to build API prompt: {e}")
-
-    
-    def _load_authors_data(self) -> List[Dict[str, Any]]:
-        """Load authors data from authors.json."""
-        authors_file = "components/author/authors.json"
-        
-        try:
-            import json
-            with open(authors_file, 'r', encoding='utf-8') as f:
+            with open(authors_file, "r", encoding="utf-8") as f:
                 data = json.load(f)
-            
-            if isinstance(data, dict) and 'authors' in data:
-                authors_list = data['authors']
+
+            if isinstance(data, dict) and "authors" in data:
+                authors_list = data["authors"]
             elif isinstance(data, list):
                 authors_list = data
             else:
-                raise ConfigurationError(f"Authors file {authors_file} must contain a list or object with 'authors' key")
-            
+                raise ConfigurationError(
+                    f"Authors file {authors_file} must contain a list or object with 'authors' key"
+                )
+
             if not isinstance(authors_list, list):
                 raise ConfigurationError("Authors data must be a list")
-            
+
             return authors_list
-            
+
         except FileNotFoundError:
             raise ConfigurationError(f"Authors file not found: {authors_file}")
         except Exception as e:
             raise ConfigurationError(f"Error loading authors file: {e}")
 
+    def _load_persona_prompt(self, author_info: Dict[str, Any]) -> str:
+        """
+        Load persona-specific prompt patterns for the given author.
 
-def create_fail_fast_generator(max_retries: int = 3, retry_delay: float = 1.0,
-                             enable_scoring: bool = True, human_threshold: float = 75.0,
-                             ai_detection_service=None, skip_ai_detection: bool = False) -> FailFastContentGenerator:
+        Args:
+            author_info: Author information dictionary
+
+        Returns:
+            Persona prompt string
+
+        Raises:
+            ConfigurationError: If persona file is missing or invalid
+        """
+        country = author_info.get("country", "").lower()
+        if not country:
+            logger.warning("No country specified in author_info, using default persona")
+            country = "usa"
+
+        persona_file = f"optimizer/text_optimization/prompts/personas/{country}_persona.yaml"
+
+        try:
+            with open(persona_file, "r", encoding="utf-8") as f:
+                persona_data = yaml.safe_load(f)
+
+            # Extract language patterns and writing style
+            language_patterns = persona_data.get("language_patterns", {})
+            writing_style = persona_data.get("writing_style", {})
+
+            # Build persona prompt
+            persona_prompt = f"""
+Author: {author_info.get('name', 'Technical Expert')}
+Country: {country.title()}
+Language Patterns: {json.dumps(language_patterns)}
+Writing Style: {json.dumps(writing_style)}
+"""
+
+            return persona_prompt.strip()
+
+        except FileNotFoundError:
+            logger.warning(f"Persona file not found: {persona_file}, using default")
+            return f"Author: {author_info.get('name', 'Technical Expert')}"
+        except Exception as e:
+            logger.error(f"Error loading persona file {persona_file}: {e}")
+            return f"Author: {author_info.get('name', 'Technical Expert')}"
+
+    def generate(
+        self,
+        material_name: str,
+        material_data: Dict[str, Any],
+        api_client,
+        author_info: Dict[str, Any],
+        frontmatter_data: Optional[Dict[str, Any]] = None,
+    ) -> Dict[str, Any]:
+        """
+        Generate content using fail-fast approach.
+
+        Args:
+            material_name: Name of the material
+            material_data: Material data dictionary
+            api_client: API client for generation
+            author_info: Author information
+            frontmatter_data: Frontmatter data from previous generation
+
+        Returns:
+            Dictionary with generation results
+
+        Raises:
+            GenerationError: If generation fails
+            RetryableError: For temporary failures
+        """
+        if not api_client:
+            raise GenerationError("API client is required for content generation")
+
+        # Load persona prompt
+        persona_prompt = self._load_persona_prompt(author_info)
+
+        # Load base prompt
+        try:
+            with open("components/text/prompts/base_content_prompt.yaml", "r") as f:
+                base_prompt_data = yaml.safe_load(f)
+        except Exception as e:
+            raise ConfigurationError(f"Failed to load base prompt: {e}")
+
+        # Construct full prompt
+        full_prompt = self._construct_prompt(
+            base_prompt_data, material_name, material_data, persona_prompt, frontmatter_data
+        )
+
+        # Generate content with retries
+        for attempt in range(self.max_retries + 1):
+            try:
+                logger.info(f"Generating content for {material_name} (attempt {attempt + 1})")
+
+                # Create generation request
+                request = GenerationRequest(
+                    prompt=full_prompt,
+                    material_name=material_name,
+                    material_data=material_data,
+                    author_info=author_info,
+                )
+
+                # Generate content
+                response = api_client.generate_content(request)
+
+                if not response or not response.content:
+                    if attempt < self.max_retries:
+                        logger.warning(f"Empty response, retrying in {self.retry_delay}s")
+                        time.sleep(self.retry_delay)
+                        continue
+                    else:
+                        raise GenerationError("Empty response from API")
+
+                content = response.content
+
+                # Score content if enabled
+                score = None
+                if self.content_scorer and not self.skip_ai_detection:
+                    score_result = self.content_scorer.score_content(
+                        content=content,
+                        material_data=material_data,
+                        author_info=author_info,
+                    )
+                    score = score_result.overall_score
+
+                    if score < self.human_threshold:
+                        logger.warning(f"Content score {score} below threshold {self.human_threshold}")
+
+                return {
+                    "success": True,
+                    "content": content,
+                    "score": score,
+                    "error_message": None,
+                }
+
+            except Exception as e:
+                if attempt < self.max_retries:
+                    logger.warning(f"Generation attempt {attempt + 1} failed: {e}, retrying in {self.retry_delay}s")
+                    time.sleep(self.retry_delay)
+                else:
+                    raise GenerationError(f"Content generation failed after {self.max_retries + 1} attempts: {e}")
+
+        # This should never be reached
+        raise GenerationError("Unexpected error in generation loop")
+
+    def _construct_prompt(
+        self,
+        base_prompt_data: Dict[str, Any],
+        material_name: str,
+        material_data: Dict[str, Any],
+        persona_prompt: str,
+        frontmatter_data: Optional[Dict[str, Any]] = None,
+    ) -> str:
+        """
+        Construct the complete prompt for content generation.
+
+        Args:
+            base_prompt_data: Base prompt configuration
+            material_name: Name of the material
+            material_data: Material data
+            persona_prompt: Persona-specific prompt
+            frontmatter_data: Frontmatter data
+
+        Returns:
+            Complete prompt string
+        """
+        # Build prompt sections
+        sections = []
+
+        # Add persona information
+        sections.append(f"PERSONA INFORMATION:\n{persona_prompt}")
+
+        # Add material information
+        sections.append(f"MATERIAL: {material_name}")
+        sections.append(f"MATERIAL DATA: {json.dumps(material_data, indent=2)}")
+
+        # Add frontmatter context if available
+        if frontmatter_data:
+            sections.append(f"FRONTMATTER CONTEXT: {json.dumps(frontmatter_data, indent=2)}")
+
+        # Add base prompt instructions
+        if "instructions" in base_prompt_data:
+            sections.append(f"INSTRUCTIONS:\n{base_prompt_data['instructions']}")
+
+        return "\n\n".join(sections)
+
+
+def create_fail_fast_generator(
+    max_retries: int = 3,
+    retry_delay: float = 1.0,
+    enable_scoring: bool = True,
+    human_threshold: float = 75.0,
+    ai_detection_service=None,
+    skip_ai_detection: bool = False,
+) -> FailFastContentGenerator:
     """
     Create a fail-fast content generator.
-    
+
     Args:
         max_retries: Maximum number of retry attempts for retryable errors
         retry_delay: Delay between retries in seconds
@@ -642,18 +339,18 @@ def create_fail_fast_generator(max_retries: int = 3, retry_delay: float = 1.0,
         human_threshold: Minimum score required to pass human believability test
         ai_detection_service: AI detection service for content analysis
         skip_ai_detection: Whether to skip AI detection (useful when called from wrapper)
-        
+
     Returns:
         Configured fail-fast content generator with optional scoring
-        
+
     Raises:
         ConfigurationError: If required configurations are missing or invalid
     """
     return FailFastContentGenerator(
-        max_retries=max_retries, 
+        max_retries=max_retries,
         retry_delay=retry_delay,
         enable_scoring=enable_scoring,
         human_threshold=human_threshold,
         ai_detection_service=ai_detection_service,
-        skip_ai_detection=skip_ai_detection
+        skip_ai_detection=skip_ai_detection,
     )

@@ -61,3 +61,39 @@ test_*.py
 cache/
 .env
 config/api_keys.py
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# Backup files
+*.backup
+*.backup_*
+*~
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# Coverage reports
+coverage.xml
+*.cover
+.hypothesis/
+
+# Documentation builds
+docs/_build/
+
+# Node modules (if any frontend components)
+node_modules/
+
+# Local development
+.local/

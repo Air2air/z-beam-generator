@@ -4,7 +4,7 @@ version: "1.1.0"
 
 template: |
   Generate a simple technical properties table for {subject} in the exact format shown below.
-  
+
   REQUIRED FORMAT (exactly 2 columns, max 8 chars per value):
   | Property | Value |
   |----------|-------|
@@ -14,7 +14,7 @@ template: |
   | Material Type | Alloy |
   | Tensile Strength | 310 MPa |
   | Thermal Conductivity | 237W/mK |
-  
+
   EXTRACTION INSTRUCTIONS:
   - Use frontmatter data when available
   - Extract Chemical Formula from: chemicalProperties.formula or properties.chemicalFormula
@@ -23,13 +23,13 @@ template: |
   - Extract Material Type from: chemicalProperties.materialType
   - Extract Thermal Conductivity from: properties.thermalConductivity
   - For Tensile Strength: look in properties or technicalSpecifications, or skip if not available
-  
+
   FALLBACK BEHAVIOR:
   If frontmatter is not available, generate basic properties based on material knowledge:
   - Research typical values for {subject}
   - Use standard chemical formulas and symbols
   - Include only the 6 properties listed above
-  
+
   VALUE FORMATTING RULES:
   - Limit all values to maximum 8 characters for clean display
   - Use Title Case for all text values (Metal vs metal, Alloy vs alloy)
@@ -40,7 +40,7 @@ template: |
     * Use standard chemical symbols (Al₂O₃ vs Aluminum Oxide)
     * Abbreviate material types (FRP vs Fiber-Reinforced Polymer)
     * Use ranges efficiently (50-100 vs 50 to 100)
-  
+
   IMPORTANT:
   - Generate ONLY the table, no additional text
   - Use exact 2-column format: | Property | Value |

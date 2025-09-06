@@ -8,16 +8,14 @@ Uses consolidated component base utilities for reduced code duplication.
 
 import json
 from pathlib import Path
-from typing import Dict, Optional, Any
+from typing import Any, Dict, Optional
 
-# Import consolidated utilities
 from utils.component_base import (
-    ComponentGeneratorBase,
     ComponentResult,
-    APIComponentGenerator,
     handle_generation_error,
-    validate_required_fields
+    validate_required_fields,
 )
+from generators.component_generators import APIComponentGenerator
 
 
 class AuthorComponentGenerator(APIComponentGenerator):
@@ -27,10 +25,15 @@ class AuthorComponentGenerator(APIComponentGenerator):
         super().__init__("author")
         self.authors_file = Path(__file__).parent / "authors.json"
 
-    def generate(self, material_name: str, material_data: Dict,
-                api_client=None, author_info: Optional[Dict] = None,
-                frontmatter_data: Optional[Dict] = None,
-                schema_fields: Optional[Dict] = None) -> ComponentResult:
+    def generate(
+        self,
+        material_name: str,
+        material_data: Dict,
+        api_client=None,
+        author_info: Optional[Dict] = None,
+        frontmatter_data: Optional[Dict] = None,
+        schema_fields: Optional[Dict] = None,
+    ) -> ComponentResult:
         """Generate author component content using author system"""
         try:
             # Validate required data
@@ -38,7 +41,7 @@ class AuthorComponentGenerator(APIComponentGenerator):
                 return self.create_error_result("Material name is required")
 
             # Determine author ID to use
-            author_id = author_info.get('id', 1) if author_info else 1
+            author_id = author_info.get("id", 1) if author_info else 1
 
             # Get author data
             author_data = self._get_author_by_id(author_id)
@@ -49,9 +52,7 @@ class AuthorComponentGenerator(APIComponentGenerator):
             content = self._create_author_content(material_name, author_data)
 
             return ComponentResult(
-                component_type="author",
-                content=content,
-                success=True
+                component_type="author", content=content, success=True
             )
 
         except Exception as e:
@@ -63,7 +64,7 @@ class AuthorComponentGenerator(APIComponentGenerator):
             if not self.authors_file.exists():
                 return None
 
-            with open(self.authors_file, 'r', encoding='utf-8') as f:
+            with open(self.authors_file, "r", encoding="utf-8") as f:
                 authors_data = json.load(f)
 
             for author in authors_data.get("authors", []):
@@ -77,10 +78,10 @@ class AuthorComponentGenerator(APIComponentGenerator):
 
     def _create_author_content(self, material_name: str, author_data: Dict) -> str:
         """Create author content from author data"""
-        author_name = author_data.get('name', 'Unknown Author')
-        author_title = author_data.get('title', 'Expert')
-        author_expertise = author_data.get('expertise', 'Technical Expert')
-        country = author_data.get('country', 'International')
+        author_name = author_data.get("name", "Unknown Author")
+        author_title = author_data.get("title", "Expert")
+        author_expertise = author_data.get("expertise", "Technical Expert")
+        country = author_data.get("country", "International")
 
         content = f"""
 ## About the Author
@@ -107,28 +108,28 @@ class AuthorComponentGenerator(APIComponentGenerator):
             component_type="author",
             content="",
             success=False,
-            error_message=error_message
+            error_message=error_message,
         )
 
 
 # Legacy compatibility classes and functions
 class AuthorGenerator:
     """Legacy author generator for backward compatibility"""
-    
+
     def __init__(self):
         self.generator = AuthorComponentGenerator()
         self.authors_file = Path("components/author/authors.json")
         self.template_file = Path("components/author/example_author.md")
-    
+
     def _load_authors(self) -> Dict[str, Any]:
         """Load authors data from JSON file"""
         try:
-            with open(self.authors_file, 'r', encoding='utf-8') as f:
+            with open(self.authors_file, "r", encoding="utf-8") as f:
                 return json.load(f)
         except (FileNotFoundError, json.JSONDecodeError) as e:
             print(f"❌ Error loading authors data: {e}")
             return {"authors": []}
-    
+
     def get_author_by_id(self, author_id: int) -> Dict[str, Any]:
         """Get author data by ID"""
         authors_data = self._load_authors()
@@ -136,20 +137,22 @@ class AuthorGenerator:
             if author.get("id") == author_id:
                 return author
         return {}
-    
+
     def generate(self, material: str, author_id: int = 1) -> str:
         """Legacy generate method"""
-        author_info = {'id': author_id}
-        material_data = {'name': material}
-        
+        author_info = {"id": author_id}
+        material_data = {"name": material}
+
         # Call the correct method from AuthorComponentGenerator
-        result = self.generator.generate(material, material_data, author_info=author_info)
-        
+        result = self.generator.generate(
+            material, material_data, author_info=author_info
+        )
+
         if result.success:
             return result.content
         else:
             return f"Error generating author content: {result.error_message}"
-    
+
     def get_component_info(self) -> Dict[str, Any]:
         """Get component information"""
         return {
@@ -157,22 +160,22 @@ class AuthorGenerator:
             "description": "Author information component",
             "version": "2.0.0",  # Updated version
             "requires_api": False,
-            "type": "static"
+            "type": "static",
         }
-    
+
     @staticmethod
     def _create_author_template(material: str, author: Dict[str, Any]) -> str:
         """Create standardized author content template (legacy method for compatibility)"""
         # Use the provided author data directly instead of loading from JSON
-        author_name = author.get('name', 'Unknown Author')
-        author_title = author.get('title', 'Expert')
-        author_expertise = author.get('expertise', 'Technical Expert')
-        country = author.get('country', 'International')
-        
+        author_name = author.get("name", "Unknown Author")
+        author_title = author.get("title", "Expert")
+        author_expertise = author.get("expertise", "Technical Expert")
+        country = author.get("country", "International")
+
         content = f"""
 ## About the Author
 
-**{author_name}**  
+**{author_name}**
 *{author_title}*
 
 {author_name} is a {author_expertise.lower()} based in {country}. With extensive experience in laser processing and material science, {author_name.split()[0]} specializes in advanced laser cleaning applications and industrial material processing technologies.
@@ -185,7 +188,7 @@ class AuthorGenerator:
 
 *Contact {author_name.split()[0]} for expert consultation on laser cleaning applications for {material} and related materials.*
 """.strip()
-        
+
         return content
 
 

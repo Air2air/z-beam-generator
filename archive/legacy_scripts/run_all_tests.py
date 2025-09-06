@@ -6,14 +6,14 @@ This script runs all tests for the Z-Beam service architecture and provides
 detailed reporting on test coverage, performance, and results.
 """
 
+import json
+import os
 import subprocess
 import sys
-import os
-import json
 import time
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, List, Any
+from typing import Any, Dict, List
 
 
 class TestRunner:
@@ -37,33 +37,33 @@ class TestRunner:
             {
                 "name": "AI Detection Optimization Tests",
                 "path": "services/ai_detection_optimization/test_ai_detection_optimization.py",
-                "description": "Tests for AI detection scoring and optimization"
+                "description": "Tests for AI detection scoring and optimization",
             },
             {
                 "name": "Iterative Workflow Tests",
                 "path": "services/iterative_workflow/test_iterative_workflow.py",
-                "description": "Tests for iterative content improvement workflows"
+                "description": "Tests for iterative content improvement workflows",
             },
             {
                 "name": "Dynamic Evolution Tests",
                 "path": "services/dynamic_evolution/test_dynamic_evolution.py",
-                "description": "Tests for dynamic evolution and A/B testing"
+                "description": "Tests for dynamic evolution and A/B testing",
             },
             {
                 "name": "Quality Assessment Tests",
                 "path": "services/quality_assessment/test_quality_assessment.py",
-                "description": "Tests for content quality assessment and benchmarking"
+                "description": "Tests for content quality assessment and benchmarking",
             },
             {
                 "name": "Configuration Optimization Tests",
                 "path": "services/configuration_optimizer/test_configuration_optimization.py",
-                "description": "Tests for configuration optimization and parameter tuning"
+                "description": "Tests for configuration optimization and parameter tuning",
             },
             {
                 "name": "Service Integration Tests",
                 "path": "tests/test_service_integration.py",
-                "description": "Integration tests for complete service architecture"
-            }
+                "description": "Integration tests for complete service architecture",
+            },
         ]
 
         all_results = {}
@@ -74,10 +74,10 @@ class TestRunner:
             print("-" * 40)
 
             result = self._run_test_suite(suite)
-            all_results[suite['name']] = result
+            all_results[suite["name"]] = result
 
             # Print immediate results
-            self._print_suite_results(suite['name'], result)
+            self._print_suite_results(suite["name"], result)
 
         self.end_time = datetime.now()
 
@@ -93,16 +93,21 @@ class TestRunner:
             os.chdir(self.project_root)
 
             # Prepare pytest command
-            if suite['path'].endswith('*.py'):
+            if suite["path"].endswith("*.py"):
                 # Run all test files matching pattern
                 cmd = [
-                    'python3', '-m', 'pytest',
-                    suite['path'],
-                    '-v', '--tb=short', '--json-report', '--json-report-file=/tmp/test_results.json'
+                    "python3",
+                    "-m",
+                    "pytest",
+                    suite["path"],
+                    "-v",
+                    "--tb=short",
+                    "--json-report",
+                    "--json-report-file=/tmp/test_results.json",
                 ]
             else:
                 # Run specific test file
-                test_file = self.project_root / suite['path']
+                test_file = self.project_root / suite["path"]
                 print(f"DEBUG: Looking for test file: {test_file}")
                 print(f"DEBUG: File exists: {test_file.exists()}")
                 if not test_file.exists():
@@ -112,23 +117,25 @@ class TestRunner:
                         "passed": 0,
                         "failed": 0,
                         "total": 0,
-                        "duration": 0
+                        "duration": 0,
                     }
 
                 cmd = [
-                    'python3', '-m', 'pytest',
+                    "python3",
+                    "-m",
+                    "pytest",
                     str(test_file),
-                    '-v', '--tb=short', '--json-report', '--json-report-file=/tmp/test_results.json'
+                    "-v",
+                    "--tb=short",
+                    "--json-report",
+                    "--json-report-file=/tmp/test_results.json",
                 ]
 
             # Run the test
             start_time = time.time()
             print(f"DEBUG: Running command: {' '.join(cmd)}")
             result = subprocess.run(
-                cmd,
-                capture_output=True,
-                text=True,
-                timeout=300  # 5 minute timeout
+                cmd, capture_output=True, text=True, timeout=300  # 5 minute timeout
             )
             end_time = time.time()
 
@@ -137,14 +144,16 @@ class TestRunner:
             print(f"DEBUG: STDOUT length: {len(result.stdout)}")
             print(f"DEBUG: STDERR length: {len(result.stderr)}")
             if result.stderr:
-                print(f"DEBUG: STDERR content: {result.stderr[:500]}")  # Print first 500 chars of stderr
+                print(
+                    f"DEBUG: STDERR content: {result.stderr[:500]}"
+                )  # Print first 500 chars of stderr
 
             # Try to parse JSON results
             json_results = {}
-            json_file = Path('/tmp/test_results.json')
+            json_file = Path("/tmp/test_results.json")
             if json_file.exists():
                 try:
-                    with open(json_file, 'r') as f:
+                    with open(json_file, "r") as f:
                         json_results = json.load(f)
                     print(f"DEBUG: JSON results loaded: {len(json_results)} keys")
                 except Exception as e:
@@ -159,29 +168,29 @@ class TestRunner:
             failed = 0
             total = 0
 
-            if json_results and 'tests' in json_results:
-                tests = json_results['tests']
+            if json_results and "tests" in json_results:
+                tests = json_results["tests"]
                 total = len(tests)
                 for test in tests:
-                    outcome = test.get('outcome', 'unknown')
-                    if outcome == 'passed':
+                    outcome = test.get("outcome", "unknown")
+                    if outcome == "passed":
                         passed += 1
-                    elif outcome in ['failed', 'error']:
+                    elif outcome in ["failed", "error"]:
                         failed += 1
                 # Note: skipped tests are not counted as failed
             else:
                 # Fallback: parse from stdout
-                stdout_lines = result.stdout.split('\n')
+                stdout_lines = result.stdout.split("\n")
                 for line in stdout_lines:
-                    if 'passed' in line and 'failed' in line:
+                    if "passed" in line and "failed" in line:
                         # Try to extract numbers
                         try:
-                            parts = line.split(',')
+                            parts = line.split(",")
                             for part in parts:
                                 part = part.strip()
-                                if part.endswith('passed'):
+                                if part.endswith("passed"):
                                     passed = int(part.split()[0])
-                                elif part.endswith('failed'):
+                                elif part.endswith("failed"):
                                     failed = int(part.split()[0])
                         except:
                             pass
@@ -204,8 +213,12 @@ class TestRunner:
                 "total": total,
                 "duration": duration,
                 "return_code": result.returncode,
-                "stdout": result.stdout[-1000:] if len(result.stdout) > 1000 else result.stdout,
-                "stderr": result.stderr[-1000:] if len(result.stderr) > 1000 else result.stderr
+                "stdout": result.stdout[-1000:]
+                if len(result.stdout) > 1000
+                else result.stdout,
+                "stderr": result.stderr[-1000:]
+                if len(result.stderr) > 1000
+                else result.stderr,
             }
 
         except subprocess.TimeoutExpired:
@@ -215,7 +228,7 @@ class TestRunner:
                 "passed": 0,
                 "failed": 0,
                 "total": 0,
-                "duration": 300
+                "duration": 300,
             }
         except Exception as e:
             return {
@@ -224,28 +237,32 @@ class TestRunner:
                 "passed": 0,
                 "failed": 0,
                 "total": 0,
-                "duration": 0
+                "duration": 0,
             }
 
     def _print_suite_results(self, suite_name: str, result: Dict[str, Any]):
         """Print results for a test suite."""
-        status = result['status']
-        passed = result['passed']
-        failed = result['failed']
-        total = result['total']
-        duration = result['duration']
+        status = result["status"]
+        passed = result["passed"]
+        failed = result["failed"]
+        total = result["total"]
+        duration = result["duration"]
 
         if status == "completed":
             if failed == 0:
                 print(f"✅ PASSED: {passed}/{total} tests passed in {duration:.2f}s")
             else:
-                print(f"❌ FAILED: {passed}/{total} passed, {failed} failed in {duration:.2f}s")
+                print(
+                    f"❌ FAILED: {passed}/{total} passed, {failed} failed in {duration:.2f}s"
+                )
         elif status == "timeout":
             print(f"⏰ TIMEOUT: Test suite timed out after {duration:.2f}s")
         else:
             print(f"💥 ERROR: {result.get('error', 'Unknown error')}")
 
-    def _generate_final_report(self, all_results: Dict[str, Dict[str, Any]]) -> Dict[str, Any]:
+    def _generate_final_report(
+        self, all_results: Dict[str, Dict[str, Any]]
+    ) -> Dict[str, Any]:
         """Generate comprehensive final test report."""
         total_passed = 0
         total_failed = 0
@@ -258,11 +275,11 @@ class TestRunner:
         suite_details = []
 
         for suite_name, result in all_results.items():
-            passed = result['passed']
-            failed = result['failed']
-            total = result['total']
-            duration = result['duration']
-            status = result['status']
+            passed = result["passed"]
+            failed = result["failed"]
+            total = result["total"]
+            duration = result["duration"]
+            status = result["status"]
 
             total_passed += passed
             total_failed += failed
@@ -276,7 +293,7 @@ class TestRunner:
                 "failed": failed,
                 "total": total,
                 "duration": duration,
-                "success_rate": (passed / total * 100) if total > 0 else 0
+                "success_rate": (passed / total * 100) if total > 0 else 0,
             }
             suite_details.append(suite_detail)
 
@@ -286,7 +303,9 @@ class TestRunner:
                 failed_suites += 1
 
         # Calculate overall metrics
-        overall_success_rate = (total_passed / total_tests * 100) if total_tests > 0 else 0
+        overall_success_rate = (
+            (total_passed / total_tests * 100) if total_tests > 0 else 0
+        )
         total_runtime = (self.end_time - self.start_time).total_seconds()
 
         report = {
@@ -295,14 +314,14 @@ class TestRunner:
                 "duration": total_runtime,
                 "total_suites": suite_count,
                 "successful_suites": successful_suites,
-                "failed_suites": failed_suites
+                "failed_suites": failed_suites,
             },
             "test_results": {
                 "total_tests": total_tests,
                 "passed": total_passed,
                 "failed": total_failed,
                 "success_rate": overall_success_rate,
-                "total_duration": total_duration
+                "total_duration": total_duration,
             },
             "suite_details": suite_details,
             "coverage": {
@@ -310,14 +329,16 @@ class TestRunner:
                 "integration_tests": True,
                 "unit_tests": True,
                 "performance_tests": True,
-                "error_handling_tests": True
+                "error_handling_tests": True,
             },
-            "recommendations": self._generate_recommendations(all_results)
+            "recommendations": self._generate_recommendations(all_results),
         }
 
         return report
 
-    def _generate_recommendations(self, all_results: Dict[str, Dict[str, Any]]) -> List[str]:
+    def _generate_recommendations(
+        self, all_results: Dict[str, Dict[str, Any]]
+    ) -> List[str]:
         """Generate recommendations based on test results."""
         recommendations = []
 
@@ -325,25 +346,31 @@ class TestRunner:
         slow_suites = []
 
         for suite_name, result in all_results.items():
-            if result['status'] in ['failed', 'timeout', 'error']:
+            if result["status"] in ["failed", "timeout", "error"]:
                 failed_suites.append(suite_name)
-            elif result['duration'] > 60:  # More than 1 minute
+            elif result["duration"] > 60:  # More than 1 minute
                 slow_suites.append(suite_name)
 
         if failed_suites:
-            recommendations.append(f"Fix failing test suites: {', '.join(failed_suites)}")
+            recommendations.append(
+                f"Fix failing test suites: {', '.join(failed_suites)}"
+            )
 
         if slow_suites:
-            recommendations.append(f"Optimize slow test suites: {', '.join(slow_suites)}")
+            recommendations.append(
+                f"Optimize slow test suites: {', '.join(slow_suites)}"
+            )
 
-        total_passed = sum(r['passed'] for r in all_results.values())
-        total_tests = sum(r['total'] for r in all_results.values())
+        total_passed = sum(r["passed"] for r in all_results.values())
+        total_tests = sum(r["total"] for r in all_results.values())
 
         if total_tests > 0 and (total_passed / total_tests) < 0.95:
             recommendations.append("Improve overall test success rate above 95%")
 
         if len(all_results) < 6:
-            recommendations.append("Add more comprehensive test coverage for all services")
+            recommendations.append(
+                "Add more comprehensive test coverage for all services"
+            )
 
         return recommendations
 
@@ -354,7 +381,7 @@ class TestRunner:
         print("=" * 80)
 
         # Test run summary
-        test_run = report['test_run']
+        test_run = report["test_run"]
         print("\n🏃 Test Run Summary:")
         print(f"   Timestamp: {test_run['timestamp']}")
         print(f"   Duration: {test_run['duration']:.2f} seconds")
@@ -363,7 +390,7 @@ class TestRunner:
         print(f"   Failed: {test_run['failed_suites']}")
 
         # Test results
-        results = report['test_results']
+        results = report["test_results"]
         print("\n📈 Test Results:")
         print(f"   Total Tests: {results['total_tests']}")
         print(f"   Passed: {results['passed']}")
@@ -372,30 +399,36 @@ class TestRunner:
         print(f"   Total Duration: {results['total_duration']:.2f}s")
 
         # Coverage
-        coverage = report['coverage']
+        coverage = report["coverage"]
         print("\n🎯 Test Coverage:")
         print(f"   Services Covered: {coverage['services_covered']}/5")
         print(f"   Integration Tests: {'✅' if coverage['integration_tests'] else '❌'}")
         print(f"   Unit Tests: {'✅' if coverage['unit_tests'] else '❌'}")
         print(f"   Performance Tests: {'✅' if coverage['performance_tests'] else '❌'}")
-        print(f"   Error Handling Tests: {'✅' if coverage['error_handling_tests'] else '❌'}")
+        print(
+            f"   Error Handling Tests: {'✅' if coverage['error_handling_tests'] else '❌'}"
+        )
 
         # Suite details
         print("\n📋 Suite Details:")
-        for suite in report['suite_details']:
-            status_icon = "✅" if suite['status'] == "completed" and suite['failed'] == 0 else "❌"
-            print(f"   {status_icon} {suite['name']}: {suite['passed']}/{suite['total']} "
-                  f"({suite['success_rate']:.1f}%) in {suite['duration']:.2f}s")
+        for suite in report["suite_details"]:
+            status_icon = (
+                "✅" if suite["status"] == "completed" and suite["failed"] == 0 else "❌"
+            )
+            print(
+                f"   {status_icon} {suite['name']}: {suite['passed']}/{suite['total']} "
+                f"({suite['success_rate']:.1f}%) in {suite['duration']:.2f}s"
+            )
 
         # Recommendations
-        recommendations = report['recommendations']
+        recommendations = report["recommendations"]
         if recommendations:
             print("\n💡 Recommendations:")
             for rec in recommendations:
                 print(f"   • {rec}")
 
         # Final status
-        success_rate = results['success_rate']
+        success_rate = results["success_rate"]
         if success_rate >= 95:
             print("\n🎉 OVERALL STATUS: EXCELLENT (95%+ success rate)")
         elif success_rate >= 80:
@@ -435,13 +468,13 @@ def main():
 
         # Save report to file
         report_file = project_root / "test_report.json"
-        with open(report_file, 'w') as f:
+        with open(report_file, "w") as f:
             json.dump(report, f, indent=2, default=str)
 
         print(f"\n📄 Detailed report saved to: {report_file}")
 
         # Exit with appropriate code
-        success_rate = report['test_results']['success_rate']
+        success_rate = report["test_results"]["success_rate"]
         if success_rate >= 80:
             sys.exit(0)  # Success
         else:

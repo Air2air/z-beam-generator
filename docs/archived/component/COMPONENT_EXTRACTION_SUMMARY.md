@@ -72,10 +72,10 @@ Successfully extracted component methods from `generators/dynamic_generator.py` 
 # Large monolithic methods in dynamic_generator.py
 def _generate_author_component(self, material_name: str) -> ComponentResult:
     # 50+ lines of author-specific logic
-    
+
 def _generate_badgesymbol_component(self, material_name: str) -> ComponentResult:
     # 30+ lines of badge-specific logic
-    
+
 def _generate_propertiestable_component(self, material_name: str) -> ComponentResult:
     # 40+ lines of properties-specific logic
 
@@ -98,7 +98,7 @@ def generate_component(self, material_name: str, component_type: str) -> Compone
 ✅ **Badge Symbol Generation**: Correctly extracts "Cu" symbol for Copper
 ✅ **Properties Table**: Processes frontmatter data accurately
 
-### **API Components** 
+### **API Components**
 ✅ **Frontmatter Generation**: Enhanced with percentiles and min/max context
 ✅ **Bullets Generation**: Author-specific formatting (5 bullets for Italian author)
 ✅ **Integration**: Seamless integration with main run script
@@ -157,7 +157,7 @@ from generators.component_generators import APIComponentGenerator
 class CustomComponentGenerator(APIComponentGenerator):
     def __init__(self):
         super().__init__("custom")
-    
+
     def _post_process_content(self, content, material_name, material_data):
         return enhanced_content
 ```
