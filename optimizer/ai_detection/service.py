@@ -29,11 +29,18 @@ class AIDetectionService:
         }
 
     def detect_ai_content(self, content: str) -> AIDetectionResult:
-        """Detect AI-generated content."""
+        """Detect AI-generated content using ONLY real APIs (no mocks in production)."""
         start_time = time.time()
 
         try:
-            provider = self.providers.get(self.config.provider, self.providers["mock"])
+            # PRODUCTION: Only use real Winston API - no mock fallback
+            if self.config.provider == "winston":
+                provider = self.providers.get("winston")
+                if not provider:
+                    raise AIDetectionError("Winston provider not available")
+            else:
+                raise AIDetectionError(f"Unknown provider: {self.config.provider}")
+
             result = provider.analyze_text(content)
 
             processing_time = time.time() - start_time

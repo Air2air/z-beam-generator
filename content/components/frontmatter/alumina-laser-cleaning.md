@@ -1,21 +1,21 @@
 ---
 name: Alumina
 applications:
-- industry: Semiconductor Manufacturing
-  detail: Removal of photoresist and oxide layers from alumina substrates
-- industry: Aerospace Components
-  detail: Surface preparation and coating removal from alumina thermal barrier coatings
+- industry: Electronics Manufacturing
+  detail: Removal of oxidation and contaminants from alumina substrates and packages
+- industry: Medical Device Manufacturing
+  detail: Precision cleaning of alumina ceramic components for surgical implants
 technicalSpecifications:
   powerRange: 50-200W
   pulseDuration: 10-100ns
   wavelength: 1064nm (primary), 532nm (optional)
-  spotSize: 0.2-3.0mm
+  spotSize: 0.2-2.0mm
   repetitionRate: 20-100kHz
   fluenceRange: 1.0–8.0 J/cm²
   safetyClass: Class 4 (requires full enclosure)
 description: Technical overview of Alumina, Al2O3, for laser cleaning applications,
   including density, wavelength, and industrial applications.
-author: Alessandro Moretti
+author: Test Author
 keywords: alumina, alumina ceramic, laser ablation, laser cleaning, non-contact cleaning,
   pulsed fiber laser, surface contamination removal, industrial laser parameters,
   thermal processing, surface restoration
@@ -45,10 +45,10 @@ properties:
   hardnessMin: 500 HV
   hardnessMax: 2500 HV
   hardnessPercentile: 0.0
-  youngsModulus: 380 GPa
+  youngsModulus: 370 GPa
   modulusMin: 150 GPa
   modulusMax: 400 GPa
-  modulusPercentile: 92.0
+  modulusPercentile: 88.0
   laserType: Pulsed Fiber Laser
   wavelength: 1064nm
   fluenceRange: 1.0–8.0 J/cm²
@@ -68,8 +68,9 @@ composition:
 - Trace elements (Si, Fe, Na, Ca) - 0.4%
 compatibility:
 - Stainless Steel
-- Titanium Alloys
-regulatoryStandards: ISO 14119, IEC 60825-1, FDA 21 CFR 1040.10
+- Titanium
+- Other Ceramics
+regulatoryStandards: ISO 13485, ASTM F603, MIL-PRF-38534
 images:
   hero:
     alt: Alumina surface undergoing laser cleaning showing precise contamination removal
@@ -85,24 +86,24 @@ environmentalImpact:
   description: Eliminates 95% of chemical solvents compared to traditional cleaning
     methods
 - benefit: Energy Efficiency
-  description: Consumes 40% less energy than thermal cleaning processes
+  description: Uses 40% less energy than thermal cleaning processes
 - benefit: Zero Wastewater
   description: Completely eliminates wastewater generation from cleaning operations
 outcomes:
 - result: Surface Cleanliness
-  metric: Achieves ISO 8501-1 Sa 2.5 standard with <5% residual contamination
+  metric: Achieves Class 100 cleanliness per IEST-STD-CC1246D
 - result: Material Preservation
-  metric: Less than 0.1% substrate material removal during cleaning process
+  metric: Less than 0.1% surface material removal during cleaning
 - result: Processing Speed
-  metric: Cleaning rates up to 5 m²/hour with 100W laser system
+  metric: Cleaning rates up to 2.5 cm²/s at 100W power
 prompt_chain_verification:
   base_config_loaded: true
   persona_config_loaded: true
   formatting_config_loaded: true
   ai_detection_config_loaded: true
-  persona_country: Unknown
-  author_id: 2
-  verification_timestamp: '2025-09-05T01:32:31Z'
+  persona_country: Test
+  author_id: 1
+  verification_timestamp: '2025-09-06T06:18:22Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true

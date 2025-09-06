@@ -35,7 +35,7 @@ class DynamicPromptGenerator:
         self.generation_history = []
         self.current_version = 0
         # Use modular loader for configuration
-        from .prompts.utils.modular_loader import ModularConfigLoader
+        from .utils.modular_loader import ModularConfigLoader
 
         self._config_loader = ModularConfigLoader()
 

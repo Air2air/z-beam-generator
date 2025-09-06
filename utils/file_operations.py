@@ -11,6 +11,13 @@ import shutil
 from pathlib import Path
 from typing import Optional
 
+# Import path manager for robust path handling
+try:
+    from utils.path_manager import PathManager
+    _path_manager_available = True
+except ImportError:
+    _path_manager_available = False
+
 
 def save_component_to_file(content: str, filepath: str) -> None:
     """
@@ -62,9 +69,13 @@ def save_component_to_file_original(
     if component_type == "content":
         component_type = "text"
 
-    # Create directory structure
-    component_dir = Path("content") / "components" / component_type
-    component_dir.mkdir(parents=True, exist_ok=True)
+    # Use path manager if available, otherwise fallback to relative paths
+    if _path_manager_available:
+        component_dir = PathManager.get_component_output_dir(component_type)
+    else:
+        # Fallback to relative path
+        component_dir = Path("content") / "components" / component_type
+        component_dir.mkdir(parents=True, exist_ok=True)
 
     # Full file path
     filepath = component_dir / filename

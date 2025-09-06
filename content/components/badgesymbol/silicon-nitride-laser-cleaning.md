@@ -1,4 +1,0 @@
----
-symbol: "TBD"
-materialType: "ceramic"
----

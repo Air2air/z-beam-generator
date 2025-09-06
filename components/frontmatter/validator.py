@@ -10,7 +10,23 @@ from typing import Any, Dict, List
 
 import yaml
 
-        duplicate_pattern = r"(\w+):\s*\n\s*\1:\s*(\{\}|$)"
+duplicate_pattern = r"(\w+):\s*\n\s*\1:\s*(\{\}|$)"
+
+
+def validate_frontmatter_format(content: str, format_rules: Dict[str, Any] = None) -> List[str]:
+    """
+    Validate frontmatter format and structure.
+
+    Args:
+        content: The frontmatter content to validate
+        format_rules: Optional format validation rules
+
+    Returns:
+        List of validation errors (empty if valid)
+    """
+    errors = []
+
+    try:
         if re.search(duplicate_pattern, content):
             errors.append("Duplicate field names detected in YAML structure")
 

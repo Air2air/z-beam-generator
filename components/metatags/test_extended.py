@@ -12,13 +12,14 @@ from pathlib import Path
 
 import yaml
 
-from components.metatags.calculator import (  # Test with minimal data
-    =,
-    start,
-    time.time,
-    try:,
-)
+from components.metatags.calculator import MetatagsCalculator
 
+
+def test_performance_edge_cases():
+    """Test performance with minimal and maximal data"""
+    try:
+        # Test with minimal data
+        start = time.time()
         minimal_calculator = MetatagsCalculator({"subject": "X"})
         minimal_result = minimal_calculator.generate_complete_metatags()
         minimal_time = time.time() - start
@@ -60,6 +61,61 @@ from components.metatags.calculator import (  # Test with minimal data
 
     except Exception as e:
         print(f"❌ Performance edge case test failed: {e}")
+        return False
+
+
+def test_error_handling():
+    """Test error handling capabilities"""
+    try:
+        # Test with invalid data
+        calculator = MetatagsCalculator({})
+        result = calculator.generate_complete_metatags()
+        assert "error" in result or len(result["meta_tags"]) == 0
+        return True
+    except Exception as e:
+        print(f"❌ Error handling test failed: {e}")
+        return False
+
+
+def test_multiple_material_types():
+    """Test with different material types"""
+    try:
+        materials = ["steel", "aluminum", "copper", "titanium"]
+        for material in materials:
+            calculator = MetatagsCalculator({"subject": material, "category": "metal"})
+            result = calculator.generate_complete_metatags()
+            assert len(result["meta_tags"]) > 0
+        return True
+    except Exception as e:
+        print(f"❌ Multiple material types test failed: {e}")
+        return False
+
+
+def test_schema_compliance():
+    """Test schema compliance"""
+    try:
+        calculator = MetatagsCalculator({"subject": "test", "category": "metal"})
+        result = calculator.generate_complete_metatags()
+        assert "meta_tags" in result
+        assert isinstance(result["meta_tags"], list)
+        return True
+    except Exception as e:
+        print(f"❌ Schema compliance test failed: {e}")
+        return False
+
+
+def test_security_validation():
+    """Test security validation"""
+    try:
+        # Test with potentially malicious input
+        calculator = MetatagsCalculator({"subject": "<script>alert('xss')</script>", "category": "metal"})
+        result = calculator.generate_complete_metatags()
+        # Should not contain script tags in output
+        meta_tags_str = str(result["meta_tags"])
+        assert "<script>" not in meta_tags_str
+        return True
+    except Exception as e:
+        print(f"❌ Security validation test failed: {e}")
         return False
 
 

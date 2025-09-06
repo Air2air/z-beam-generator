@@ -73,6 +73,11 @@ COMPONENT_CONFIG = {
             "data_provider": "static",
             "api_provider": "none",
         },
+        "table": {
+            "enabled": True,
+            "data_provider": "API",
+            "api_provider": "deepseek",
+        },
     }
 }
 

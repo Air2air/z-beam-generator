@@ -74,7 +74,6 @@ class APIClient:
             self.config = config
         else:
             from .config import get_default_config
-
             self.config = get_default_config()
 
         # Override config with provided parameters

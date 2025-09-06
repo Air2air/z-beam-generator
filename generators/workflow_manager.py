@@ -78,12 +78,12 @@ def run_dynamic_generation(
                 results["components_generated"].append(
                     {
                         "type": component_type,
-                        "tokens": result.token_count,
+                        "tokens": result.token_count or 0,
                         "time": component_time,
                         "filepath": filepath,
                     }
                 )
-                results["total_tokens"] += result.token_count
+                results["total_tokens"] += result.token_count or 0
 
             else:
                 print(f"    ❌ Failed: {result.error_message}")

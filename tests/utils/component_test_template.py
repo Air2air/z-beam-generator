@@ -23,9 +23,12 @@ from pathlib import Path
 from typing import Dict
 
 from components.COMPONENT_NAME.generator import COMPONENT_NAMEComponentGenerator
-
 from generators.component_generators import ComponentResult
 
+# Handle import errors gracefully
+try:
+    from components.COMPONENT_NAME.generator import COMPONENT_NAMEComponentGenerator
+    from generators.component_generators import ComponentResult
 except ImportError as e:
     print(f"Import error: {e}")
     sys.exit(1)

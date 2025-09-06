@@ -434,9 +434,7 @@ Keep improvements focused and incremental. Avoid suggesting major structural cha
         """Load current prompts using the modular configuration system."""
         try:
             # Use the new modular loader instead of loading monolithic file
-            from components.text.prompts.utils.modular_loader import (
-                load_ai_detection_config,
-            )
+            from ..utils.modular_loader import load_ai_detection_config
 
             # Load the complete modular configuration
             config = load_ai_detection_config(use_modular=True)

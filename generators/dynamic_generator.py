@@ -16,7 +16,7 @@ from typing import Any, Dict, List, Optional
 import yaml
 
 from api.client_manager import get_api_client_for_component
-from generators.component_generators import ComponentGeneratorFactory
+from generators.component_generators import ComponentGeneratorFactory, ComponentResult
 from utils.config_utils import load_materials_data
 
 
@@ -113,6 +113,90 @@ class DynamicGenerator:
             successful_components=successful,
             results=results,
         )
+
+    def generate_component(
+        self,
+        material: str,
+        component_type: str,
+        api_client,
+        author_info: Optional[Dict] = None,
+    ) -> ComponentResult:
+        """Generate a single component for a material"""
+        try:
+            # Get material data
+            materials_data = self.materials_data
+            if not materials_data or "materials" not in materials_data:
+                return ComponentResult(
+                    component_type=component_type,
+                    content="",
+                    success=False,
+                    error_message="No materials data available",
+                )
+
+            # Find material data
+            material_data = None
+            for category, category_data in materials_data["materials"].items():
+                if "items" in category_data:
+                    for item in category_data["items"]:
+                        if item["name"].lower() == material.lower():
+                            material_data = item
+                            break
+                    if material_data:
+                        break
+
+            if not material_data:
+                return ComponentResult(
+                    component_type=component_type,
+                    content="",
+                    success=False,
+                    error_message=f"Material '{material}' not found",
+                )
+
+            # Use ComponentGeneratorFactory to create the appropriate generator
+            factory = ComponentGeneratorFactory()
+            generator = factory.create_generator(component_type)
+
+            if not generator:
+                return ComponentResult(
+                    component_type=component_type,
+                    content="",
+                    success=False,
+                    error_message=f"No generator available for component type '{component_type}'",
+                )
+
+            # Generate the component
+            result = generator.generate(
+                material_name=material,
+                material_data=material_data,
+                api_client=api_client,
+                author_info=author_info,
+            )
+
+            # Convert to expected format with token_count
+            if hasattr(result, 'token_count'):
+                return result
+            else:
+                # If the result doesn't have token_count, add it from API response
+                token_count = 0
+                if hasattr(api_client, 'stats') and 'total_tokens' in api_client.stats:
+                    token_count = api_client.stats['total_tokens']
+                
+                # Create a new result with token_count
+                return ComponentResult(
+                    component_type=component_type,
+                    content=result.content,
+                    success=result.success,
+                    error_message=getattr(result, 'error_message', None),
+                    token_count=token_count,
+                )
+
+        except Exception as e:
+            return ComponentResult(
+                component_type=component_type,
+                content="",
+                success=False,
+                error_message=str(e),
+            )
 
 
 def main():

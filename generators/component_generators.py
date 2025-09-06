@@ -23,6 +23,7 @@ class ComponentResult:
     content: str
     success: bool
     error_message: Optional[str] = None
+    token_count: Optional[int] = None
 
 
 class GenerationError(Exception):
@@ -363,6 +364,8 @@ class ComponentGeneratorFactory:
                         return generator_class(
                             ai_detection_service=ai_detection_service
                         )
+                    else:
+                        return generator_class()
                 except (ImportError, AttributeError) as e:
                     logger.error(
                         f"No generator found for component type: {component_type}: {e}"

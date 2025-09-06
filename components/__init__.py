@@ -32,6 +32,11 @@ def list_components() -> list[str]:
     return list(COMPONENT_REGISTRY.keys())
 
 
+def is_component_available(name: str) -> bool:
+    """Check if a component is available."""
+    return name in COMPONENT_REGISTRY
+
+
 # Lazy import and registration of components
 def _load_components():
     """Load and register all available components."""
@@ -56,8 +61,29 @@ def _load_components():
             register_component(component_name, component_class)
         except (ImportError, AttributeError) as e:
             logger.warning(f"Failed to load component {component_name}: {e}")
+            # Register a placeholder for missing components
+            register_component(component_name, _create_missing_component_class(component_name, e))
         except Exception as e:
             logger.error(f"Unexpected error loading component {component_name}: {e}")
+            # Register a placeholder for failed components
+            register_component(component_name, _create_missing_component_class(component_name, e))
+
+
+def _create_missing_component_class(component_name: str, error: Exception) -> Type[Any]:
+    """Create a placeholder class for missing components."""
+    class MissingComponent:
+        def __init__(self, *args, **kwargs):
+            self.component_name = component_name
+            self.error = error
+
+        def generate(self, *args, **kwargs):
+            raise RuntimeError(f"Component '{self.component_name}' is not available: {self.error}")
+
+        def __str__(self):
+            return f"MissingComponent({self.component_name})"
+
+    MissingComponent.__name__ = f"Missing{component_name.title()}Component"
+    return MissingComponent
 
 
 # Load components on module import
@@ -87,12 +113,23 @@ def get_component_info(component_type: str) -> Optional[Dict[str, Any]]:
     return None
 
 
+def get_missing_components() -> list[str]:
+    """Get list of components that failed to load."""
+    missing = []
+    for name, component_class in COMPONENT_REGISTRY.items():
+        if hasattr(component_class, 'error'):
+            missing.append(name)
+    return missing
+
+
 # Export commonly used classes and functions
 __all__ = [
     'COMPONENT_REGISTRY',
     'register_component',
     'get_component',
     'list_components',
+    'is_component_available',
     'create_component',
     'get_component_info',
+    'get_missing_components',
 ]

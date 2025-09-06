@@ -88,7 +88,7 @@ class FailFastContentGenerator:
         """Validate all required configurations exist and are valid."""
         # Check for required files
         required_files = [
-            "components/text/prompts/base_content_prompt.yaml",
+            "components/text/prompts/core/base_content_prompt.yaml",
             "components/author/authors.json",
             "config/ai_detection.yaml",
         ]
@@ -220,7 +220,7 @@ Writing Style: {json.dumps(writing_style)}
 
         # Load base prompt
         try:
-            with open("components/text/prompts/base_content_prompt.yaml", "r") as f:
+            with open("components/text/prompts/core/base_content_prompt.yaml", "r") as f:
                 base_prompt_data = yaml.safe_load(f)
         except Exception as e:
             raise ConfigurationError(f"Failed to load base prompt: {e}")
@@ -244,13 +244,13 @@ Writing Style: {json.dumps(writing_style)}
                 # Create generation request
                 request = GenerationRequest(
                     prompt=full_prompt,
-                    material_name=material_name,
-                    material_data=material_data,
-                    author_info=author_info,
+                    system_prompt=None,
+                    max_tokens=4000,
+                    temperature=0.7,
                 )
 
                 # Generate content
-                response = api_client.generate_content(request)
+                response = api_client.generate(request)
 
                 if not response or not response.content:
                     if attempt < self.max_retries:
@@ -279,12 +279,15 @@ Writing Style: {json.dumps(writing_style)}
                             f"Content score {score} below threshold {self.human_threshold}"
                         )
 
-                return {
-                    "success": True,
-                    "content": content,
-                    "score": score,
-                    "error_message": None,
-                }
+                # Create ComponentResult instead of dict
+                from generators.component_generators import ComponentResult
+                
+                return ComponentResult(
+                    component_type="text",
+                    content=content,
+                    success=True,
+                    token_count=getattr(response, 'token_count', None)
+                )
 
             except Exception as e:
                 if attempt < self.max_retries:

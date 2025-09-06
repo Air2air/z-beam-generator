@@ -20,8 +20,8 @@ from typing import Dict, List, Optional, Tuple
 
 import yaml
 
-from utils.slug_utils import create_filename_slug, create_material_slug
-
+try:
+    from utils.slug_utils import create_filename_slug, create_material_slug
 except ImportError:
     # Fallback to basic slug generation if utils not available
     def create_material_slug(name: str) -> str:

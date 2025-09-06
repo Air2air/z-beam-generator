@@ -1,0 +1,2615 @@
+{
+  "test_suite_health_check": {
+    "timestamp": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator",
+    "test_directory": "unknown",
+    "statistics": {
+      "files_analyzed": 64,
+      "total_issues": 143,
+      "high_severity": 15,
+      "medium_severity": 35,
+      "low_severity": 93
+    },
+    "issues_by_type": {
+      "missing_setup": [
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_frontmatter_core.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/unit/test_table_component.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/unit/test_frontmatter_component.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_modified_prompts.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/unit/test_tags_component.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/unit/test_propertiestable_component.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_ai_detection_config.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_frontmatter_fail_fast.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/unit/test_ai_detection_service.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_content_generation.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_content_comprehensive.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_content_fail_fast.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_ai_detection_integration.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_integration.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_category_ranges.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/unit/test_content_component.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_dynamic_components.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/unit/test_config.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_prompt_optimizer.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_prompt_chain_integration.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_error_scenarios.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/test_utils.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_dynamic_system.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/unit/test_badgesymbol_component.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_iterative_improvement.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/unit/test_caption_component.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_frontmatter_iterations.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/unit/test_file_structure.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_nationality_fix.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_validation_diagnostics.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_winston_provider.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/unit/test_bullets_component.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_frontmatter_dependency_chain.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_iterative_content_improver.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_comprehensive_workflow_refactored.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_dynamic_prompt_system_comprehensive.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_content_validation.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/unit/test_author_component.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_service_integration.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_frontmatter_validator.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/unit/test_metatags_component.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/unit/test_jsonld_component.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        }
+      ],
+      "missing_teardown": [
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_frontmatter_core.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/unit/test_table_component.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/unit/test_frontmatter_component.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_modified_prompts.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/unit/test_tags_component.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/unit/test_propertiestable_component.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_ai_detection_config.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_frontmatter_fail_fast.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_cascading_failure.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/unit/test_ai_detection_service.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_property_enhancer.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_content_generation.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_template_substitution.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_content_comprehensive.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_content_fail_fast.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_ai_detection_integration.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_integration.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_api_client_integration.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_category_ranges.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/unit/test_content_component.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_dynamic_components.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/unit/test_config.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_prompt_optimizer.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_prompt_chain_integration.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_error_scenarios.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/test_utils.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_comprehensive_workflow.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_dynamic_system.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/unit/test_badgesymbol_component.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_iterative_improvement.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_component_ai_routing.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_prompt_chain_verification.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_percentile_calculator.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/unit/test_caption_component.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_frontmatter_iterations.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/unit/test_file_structure.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_nationality_fix.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_validation_diagnostics.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_winston_provider.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/unit/test_bullets_component.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_frontmatter_dependency_chain.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_iterative_content_improver.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_comprehensive_workflow_refactored.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_dynamic_prompt_system_comprehensive.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_content_validation.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/unit/test_author_component.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_service_integration.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_templates.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_frontmatter_validator.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/unit/test_metatags_component.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/unit/test_jsonld_component.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        }
+      ],
+      "sys_path_manipulation": [
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/unit/test_ai_detection_service.py",
+          "line_number": 14,
+          "issue_type": "sys_path_manipulation",
+          "severity": "high",
+          "description": "Manual sys.path manipulation can cause import issues",
+          "code_snippet": "sys.path.insert(0, str(project_root))",
+          "recommendation": "Use proper Python package structure and imports"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_interactive_mode.py",
+          "line_number": 16,
+          "issue_type": "sys_path_manipulation",
+          "severity": "high",
+          "description": "Manual sys.path manipulation can cause import issues",
+          "code_snippet": "sys.path.insert(0, str(Path(__file__).parent.parent.parent))",
+          "recommendation": "Use proper Python package structure and imports"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_integration.py",
+          "line_number": 24,
+          "issue_type": "sys_path_manipulation",
+          "severity": "high",
+          "description": "Manual sys.path manipulation can cause import issues",
+          "code_snippet": "sys.path.insert(0, str(Path(__file__).parent.parent))",
+          "recommendation": "Use proper Python package structure and imports"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_file_io_validation.py",
+          "line_number": 16,
+          "issue_type": "sys_path_manipulation",
+          "severity": "high",
+          "description": "Manual sys.path manipulation can cause import issues",
+          "code_snippet": "sys.path.insert(0, str(Path(__file__).parent.parent.parent))",
+          "recommendation": "Use proper Python package structure and imports"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_api_client_integration.py",
+          "line_number": 15,
+          "issue_type": "sys_path_manipulation",
+          "severity": "high",
+          "description": "Manual sys.path manipulation can cause import issues",
+          "code_snippet": "sys.path.insert(0, str(Path(__file__).parent.parent.parent))",
+          "recommendation": "Use proper Python package structure and imports"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_dynamic_components.py",
+          "line_number": 8,
+          "issue_type": "sys_path_manipulation",
+          "severity": "high",
+          "description": "Manual sys.path manipulation can cause import issues",
+          "code_snippet": "sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))",
+          "recommendation": "Use proper Python package structure and imports"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_component_specific.py",
+          "line_number": 16,
+          "issue_type": "sys_path_manipulation",
+          "severity": "high",
+          "description": "Manual sys.path manipulation can cause import issues",
+          "code_snippet": "sys.path.insert(0, str(Path(__file__).parent.parent.parent))",
+          "recommendation": "Use proper Python package structure and imports"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/test_framework.py",
+          "line_number": 98,
+          "issue_type": "sys_path_manipulation",
+          "severity": "high",
+          "description": "Manual sys.path manipulation can cause import issues",
+          "code_snippet": "sys.path.insert(0, str(project_root))",
+          "recommendation": "Use proper Python package structure and imports"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/unit/test_file_structure.py",
+          "line_number": 15,
+          "issue_type": "sys_path_manipulation",
+          "severity": "high",
+          "description": "Manual sys.path manipulation can cause import issues",
+          "code_snippet": "sys.path.insert(0, str(Path(__file__).parent.parent.parent))",
+          "recommendation": "Use proper Python package structure and imports"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_nationality_fix.py",
+          "line_number": 11,
+          "issue_type": "sys_path_manipulation",
+          "severity": "high",
+          "description": "Manual sys.path manipulation can cause import issues",
+          "code_snippet": "sys.path.insert(0, str(project_root))",
+          "recommendation": "Use proper Python package structure and imports"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_batch_processing.py",
+          "line_number": 16,
+          "issue_type": "sys_path_manipulation",
+          "severity": "high",
+          "description": "Manual sys.path manipulation can cause import issues",
+          "code_snippet": "sys.path.insert(0, str(Path(__file__).parent.parent.parent))",
+          "recommendation": "Use proper Python package structure and imports"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_frontmatter_dependency_chain.py",
+          "line_number": 20,
+          "issue_type": "sys_path_manipulation",
+          "severity": "high",
+          "description": "Manual sys.path manipulation can cause import issues",
+          "code_snippet": "sys.path.insert(0, str(project_root))",
+          "recommendation": "Use proper Python package structure and imports"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_iterative_content_improver.py",
+          "line_number": 13,
+          "issue_type": "sys_path_manipulation",
+          "severity": "high",
+          "description": "Manual sys.path manipulation can cause import issues",
+          "code_snippet": "sys.path.insert(0, str(project_root))",
+          "recommendation": "Use proper Python package structure and imports"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_templates.py",
+          "line_number": 21,
+          "issue_type": "sys_path_manipulation",
+          "severity": "high",
+          "description": "Manual sys.path manipulation can cause import issues",
+          "code_snippet": "sys.path.insert(0, str(Path(__file__).parent.parent))",
+          "recommendation": "Use proper Python package structure and imports"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_performance_validation.py",
+          "line_number": 17,
+          "issue_type": "sys_path_manipulation",
+          "severity": "high",
+          "description": "Manual sys.path manipulation can cause import issues",
+          "code_snippet": "sys.path.insert(0, str(Path(__file__).parent.parent.parent))",
+          "recommendation": "Use proper Python package structure and imports"
+        }
+      ],
+      "brittle_temp_dir": [
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_interactive_mode.py",
+          "line_number": 26,
+          "issue_type": "brittle_temp_dir",
+          "severity": "medium",
+          "description": "Using manual temp directory creation instead of TestPathManager",
+          "code_snippet": "self.temp_dir = Path(tempfile.mkdtemp())",
+          "recommendation": "Use TestPathManager.get_test_temp_dir() for consistent temp directories"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_interactive_mode.py",
+          "line_number": 149,
+          "issue_type": "brittle_temp_dir",
+          "severity": "medium",
+          "description": "Using manual temp directory creation instead of TestPathManager",
+          "code_snippet": "self.temp_dir = Path(tempfile.mkdtemp())",
+          "recommendation": "Use TestPathManager.get_test_temp_dir() for consistent temp directories"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_interactive_mode.py",
+          "line_number": 232,
+          "issue_type": "brittle_temp_dir",
+          "severity": "medium",
+          "description": "Using manual temp directory creation instead of TestPathManager",
+          "code_snippet": "self.temp_dir = Path(tempfile.mkdtemp())",
+          "recommendation": "Use TestPathManager.get_test_temp_dir() for consistent temp directories"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_file_io_validation.py",
+          "line_number": 26,
+          "issue_type": "brittle_temp_dir",
+          "severity": "medium",
+          "description": "Using manual temp directory creation instead of TestPathManager",
+          "code_snippet": "self.temp_dir = Path(tempfile.mkdtemp())",
+          "recommendation": "Use TestPathManager.get_test_temp_dir() for consistent temp directories"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_file_io_validation.py",
+          "line_number": 258,
+          "issue_type": "brittle_temp_dir",
+          "severity": "medium",
+          "description": "Using manual temp directory creation instead of TestPathManager",
+          "code_snippet": "self.temp_dir = Path(tempfile.mkdtemp())",
+          "recommendation": "Use TestPathManager.get_test_temp_dir() for consistent temp directories"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_component_specific.py",
+          "line_number": 26,
+          "issue_type": "brittle_temp_dir",
+          "severity": "medium",
+          "description": "Using manual temp directory creation instead of TestPathManager",
+          "code_snippet": "self.temp_dir = Path(tempfile.mkdtemp())",
+          "recommendation": "Use TestPathManager.get_test_temp_dir() for consistent temp directories"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_component_specific.py",
+          "line_number": 371,
+          "issue_type": "brittle_temp_dir",
+          "severity": "medium",
+          "description": "Using manual temp directory creation instead of TestPathManager",
+          "code_snippet": "self.temp_dir = Path(tempfile.mkdtemp())",
+          "recommendation": "Use TestPathManager.get_test_temp_dir() for consistent temp directories"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_batch_processing.py",
+          "line_number": 26,
+          "issue_type": "brittle_temp_dir",
+          "severity": "medium",
+          "description": "Using manual temp directory creation instead of TestPathManager",
+          "code_snippet": "self.temp_dir = Path(tempfile.mkdtemp())",
+          "recommendation": "Use TestPathManager.get_test_temp_dir() for consistent temp directories"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_batch_processing.py",
+          "line_number": 186,
+          "issue_type": "brittle_temp_dir",
+          "severity": "medium",
+          "description": "Using manual temp directory creation instead of TestPathManager",
+          "code_snippet": "self.temp_dir = Path(tempfile.mkdtemp())",
+          "recommendation": "Use TestPathManager.get_test_temp_dir() for consistent temp directories"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_batch_processing.py",
+          "line_number": 302,
+          "issue_type": "brittle_temp_dir",
+          "severity": "medium",
+          "description": "Using manual temp directory creation instead of TestPathManager",
+          "code_snippet": "self.temp_dir = Path(tempfile.mkdtemp())",
+          "recommendation": "Use TestPathManager.get_test_temp_dir() for consistent temp directories"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_performance_validation.py",
+          "line_number": 27,
+          "issue_type": "brittle_temp_dir",
+          "severity": "medium",
+          "description": "Using manual temp directory creation instead of TestPathManager",
+          "code_snippet": "self.temp_dir = Path(tempfile.mkdtemp())",
+          "recommendation": "Use TestPathManager.get_test_temp_dir() for consistent temp directories"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_performance_validation.py",
+          "line_number": 166,
+          "issue_type": "brittle_temp_dir",
+          "severity": "medium",
+          "description": "Using manual temp directory creation instead of TestPathManager",
+          "code_snippet": "self.temp_dir = Path(tempfile.mkdtemp())",
+          "recommendation": "Use TestPathManager.get_test_temp_dir() for consistent temp directories"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_performance_validation.py",
+          "line_number": 279,
+          "issue_type": "brittle_temp_dir",
+          "severity": "medium",
+          "description": "Using manual temp directory creation instead of TestPathManager",
+          "code_snippet": "self.temp_dir = Path(tempfile.mkdtemp())",
+          "recommendation": "Use TestPathManager.get_test_temp_dir() for consistent temp directories"
+        }
+      ],
+      "complex_mock_setup": [
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_interactive_mode.py",
+          "line_number": 44,
+          "issue_type": "complex_mock_setup",
+          "severity": "medium",
+          "description": "Complex mock setup that may be brittle",
+          "code_snippet": "with patch('builtins.input', side_effect=user_inputs):",
+          "recommendation": "Use RobustMockAPIClient with simple configuration"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_interactive_mode.py",
+          "line_number": 68,
+          "issue_type": "complex_mock_setup",
+          "severity": "medium",
+          "description": "Complex mock setup that may be brittle",
+          "code_snippet": "with patch('builtins.input', side_effect=user_inputs):",
+          "recommendation": "Use RobustMockAPIClient with simple configuration"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_interactive_mode.py",
+          "line_number": 88,
+          "issue_type": "complex_mock_setup",
+          "severity": "medium",
+          "description": "Complex mock setup that may be brittle",
+          "code_snippet": "with patch('builtins.input', side_effect=user_inputs):",
+          "recommendation": "Use RobustMockAPIClient with simple configuration"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_interactive_mode.py",
+          "line_number": 109,
+          "issue_type": "complex_mock_setup",
+          "severity": "medium",
+          "description": "Complex mock setup that may be brittle",
+          "code_snippet": "with patch('builtins.input', side_effect=user_inputs):",
+          "recommendation": "Use RobustMockAPIClient with simple configuration"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_interactive_mode.py",
+          "line_number": 129,
+          "issue_type": "complex_mock_setup",
+          "severity": "medium",
+          "description": "Complex mock setup that may be brittle",
+          "code_snippet": "with patch('builtins.input', side_effect=user_inputs):",
+          "recommendation": "Use RobustMockAPIClient with simple configuration"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_interactive_mode.py",
+          "line_number": 171,
+          "issue_type": "complex_mock_setup",
+          "severity": "medium",
+          "description": "Complex mock setup that may be brittle",
+          "code_snippet": "with patch('builtins.input', side_effect=user_inputs):",
+          "recommendation": "Use RobustMockAPIClient with simple configuration"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_interactive_mode.py",
+          "line_number": 191,
+          "issue_type": "complex_mock_setup",
+          "severity": "medium",
+          "description": "Complex mock setup that may be brittle",
+          "code_snippet": "with patch('builtins.input', side_effect=user_inputs):",
+          "recommendation": "Use RobustMockAPIClient with simple configuration"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_interactive_mode.py",
+          "line_number": 212,
+          "issue_type": "complex_mock_setup",
+          "severity": "medium",
+          "description": "Complex mock setup that may be brittle",
+          "code_snippet": "with patch('builtins.input', side_effect=user_inputs):",
+          "recommendation": "Use RobustMockAPIClient with simple configuration"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_interactive_mode.py",
+          "line_number": 249,
+          "issue_type": "complex_mock_setup",
+          "severity": "medium",
+          "description": "Complex mock setup that may be brittle",
+          "code_snippet": "with patch('builtins.input', side_effect=user_inputs):",
+          "recommendation": "Use RobustMockAPIClient with simple configuration"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_interactive_mode.py",
+          "line_number": 269,
+          "issue_type": "complex_mock_setup",
+          "severity": "medium",
+          "description": "Complex mock setup that may be brittle",
+          "code_snippet": "with patch('builtins.input', side_effect=user_inputs):",
+          "recommendation": "Use RobustMockAPIClient with simple configuration"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_interactive_mode.py",
+          "line_number": 289,
+          "issue_type": "complex_mock_setup",
+          "severity": "medium",
+          "description": "Complex mock setup that may be brittle",
+          "code_snippet": "with patch('builtins.input', side_effect=user_inputs):",
+          "recommendation": "Use RobustMockAPIClient with simple configuration"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_interactive_mode.py",
+          "line_number": 309,
+          "issue_type": "complex_mock_setup",
+          "severity": "medium",
+          "description": "Complex mock setup that may be brittle",
+          "code_snippet": "with patch('builtins.input', side_effect=user_inputs):",
+          "recommendation": "Use RobustMockAPIClient with simple configuration"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_api_client_integration.py",
+          "line_number": 78,
+          "issue_type": "complex_mock_setup",
+          "severity": "medium",
+          "description": "Complex mock setup that may be brittle",
+          "code_snippet": "with patch('api.client_manager.get_api_client_for_component', side_effect=mock_get_client):",
+          "recommendation": "Use RobustMockAPIClient with simple configuration"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_api_client_integration.py",
+          "line_number": 244,
+          "issue_type": "complex_mock_setup",
+          "severity": "medium",
+          "description": "Complex mock setup that may be brittle",
+          "code_snippet": "with patch('api.client_manager.get_api_client_for_component', side_effect=rotating_client):",
+          "recommendation": "Use RobustMockAPIClient with simple configuration"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_error_scenarios.py",
+          "line_number": 345,
+          "issue_type": "complex_mock_setup",
+          "severity": "medium",
+          "description": "Complex mock setup that may be brittle",
+          "code_snippet": "with patch('api.client_manager.get_api_client_for_component', side_effect=selective_failing_client):",
+          "recommendation": "Use RobustMockAPIClient with simple configuration"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_error_scenarios.py",
+          "line_number": 384,
+          "issue_type": "complex_mock_setup",
+          "severity": "medium",
+          "description": "Complex mock setup that may be brittle",
+          "code_snippet": "with patch('pathlib.Path.mkdir', side_effect=OSError(\"Disk full\")):",
+          "recommendation": "Use RobustMockAPIClient with simple configuration"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_error_scenarios.py",
+          "line_number": 540,
+          "issue_type": "complex_mock_setup",
+          "severity": "medium",
+          "description": "Complex mock setup that may be brittle",
+          "code_snippet": "with patch('api.client_manager.get_api_client_for_component', side_effect=mixed_result_client):",
+          "recommendation": "Use RobustMockAPIClient with simple configuration"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_batch_processing.py",
+          "line_number": 74,
+          "issue_type": "complex_mock_setup",
+          "severity": "medium",
+          "description": "Complex mock setup that may be brittle",
+          "code_snippet": "with patch('api.client_manager.get_api_client_for_component', side_effect=mock_get_client):",
+          "recommendation": "Use RobustMockAPIClient with simple configuration"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_batch_processing.py",
+          "line_number": 212,
+          "issue_type": "complex_mock_setup",
+          "severity": "medium",
+          "description": "Complex mock setup that may be brittle",
+          "code_snippet": "with patch('api.client_manager.get_api_client_for_component', side_effect=failing_client):",
+          "recommendation": "Use RobustMockAPIClient with simple configuration"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_batch_processing.py",
+          "line_number": 237,
+          "issue_type": "complex_mock_setup",
+          "severity": "medium",
+          "description": "Complex mock setup that may be brittle",
+          "code_snippet": "with patch('api.client_manager.get_api_client_for_component', side_effect=selective_failing_client):",
+          "recommendation": "Use RobustMockAPIClient with simple configuration"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_performance_validation.py",
+          "line_number": 335,
+          "issue_type": "complex_mock_setup",
+          "severity": "medium",
+          "description": "Complex mock setup that may be brittle",
+          "code_snippet": "with patch('api.client_manager.get_api_client_for_component', side_effect=tracking_client):",
+          "recommendation": "Use RobustMockAPIClient with simple configuration"
+        }
+      ],
+      "environment_dependency": [
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_integration.py",
+          "line_number": 42,
+          "issue_type": "environment_dependency",
+          "severity": "medium",
+          "description": "Test depends on environment variables or platform specifics",
+          "code_snippet": "api_key = os.getenv(config[\"env_var\"])",
+          "recommendation": "Mock environment dependencies or use test configuration"
+        }
+      ]
+    },
+    "issues_by_severity": {
+      "low": [
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_frontmatter_core.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_frontmatter_core.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/unit/test_table_component.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/unit/test_table_component.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/unit/test_frontmatter_component.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/unit/test_frontmatter_component.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_modified_prompts.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_modified_prompts.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/unit/test_tags_component.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/unit/test_tags_component.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/unit/test_propertiestable_component.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/unit/test_propertiestable_component.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_ai_detection_config.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_ai_detection_config.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_frontmatter_fail_fast.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_frontmatter_fail_fast.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_cascading_failure.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/unit/test_ai_detection_service.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/unit/test_ai_detection_service.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_property_enhancer.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_content_generation.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_content_generation.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_template_substitution.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_content_comprehensive.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_content_comprehensive.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_content_fail_fast.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_content_fail_fast.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_ai_detection_integration.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_ai_detection_integration.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_integration.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_integration.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_api_client_integration.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_category_ranges.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_category_ranges.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/unit/test_content_component.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/unit/test_content_component.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_dynamic_components.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_dynamic_components.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/unit/test_config.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/unit/test_config.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_prompt_optimizer.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_prompt_optimizer.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_prompt_chain_integration.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_prompt_chain_integration.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_error_scenarios.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_error_scenarios.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/test_utils.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/test_utils.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_comprehensive_workflow.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_dynamic_system.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_dynamic_system.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/unit/test_badgesymbol_component.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/unit/test_badgesymbol_component.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_iterative_improvement.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_iterative_improvement.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_component_ai_routing.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_prompt_chain_verification.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_percentile_calculator.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/unit/test_caption_component.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/unit/test_caption_component.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_frontmatter_iterations.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_frontmatter_iterations.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/unit/test_file_structure.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/unit/test_file_structure.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_nationality_fix.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_nationality_fix.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_validation_diagnostics.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_validation_diagnostics.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_winston_provider.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_winston_provider.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/unit/test_bullets_component.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/unit/test_bullets_component.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_frontmatter_dependency_chain.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_frontmatter_dependency_chain.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_iterative_content_improver.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_iterative_content_improver.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_comprehensive_workflow_refactored.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_comprehensive_workflow_refactored.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_dynamic_prompt_system_comprehensive.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_dynamic_prompt_system_comprehensive.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_content_validation.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_content_validation.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/unit/test_author_component.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/unit/test_author_component.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_service_integration.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_service_integration.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_templates.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_frontmatter_validator.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_frontmatter_validator.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/unit/test_metatags_component.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/unit/test_metatags_component.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/unit/test_jsonld_component.py",
+          "line_number": 1,
+          "issue_type": "missing_setup",
+          "severity": "low",
+          "description": "Test class missing setUp method for proper isolation",
+          "code_snippet": "class Test...",
+          "recommendation": "Add setUp method using TestEnvironment for proper test isolation"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/unit/test_jsonld_component.py",
+          "line_number": 1,
+          "issue_type": "missing_teardown",
+          "severity": "low",
+          "description": "Test class missing tearDown method for cleanup",
+          "code_snippet": "class Test...",
+          "recommendation": "Add tearDown method using TestEnvironment for proper cleanup"
+        }
+      ],
+      "high": [
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/unit/test_ai_detection_service.py",
+          "line_number": 14,
+          "issue_type": "sys_path_manipulation",
+          "severity": "high",
+          "description": "Manual sys.path manipulation can cause import issues",
+          "code_snippet": "sys.path.insert(0, str(project_root))",
+          "recommendation": "Use proper Python package structure and imports"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_interactive_mode.py",
+          "line_number": 16,
+          "issue_type": "sys_path_manipulation",
+          "severity": "high",
+          "description": "Manual sys.path manipulation can cause import issues",
+          "code_snippet": "sys.path.insert(0, str(Path(__file__).parent.parent.parent))",
+          "recommendation": "Use proper Python package structure and imports"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_integration.py",
+          "line_number": 24,
+          "issue_type": "sys_path_manipulation",
+          "severity": "high",
+          "description": "Manual sys.path manipulation can cause import issues",
+          "code_snippet": "sys.path.insert(0, str(Path(__file__).parent.parent))",
+          "recommendation": "Use proper Python package structure and imports"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_file_io_validation.py",
+          "line_number": 16,
+          "issue_type": "sys_path_manipulation",
+          "severity": "high",
+          "description": "Manual sys.path manipulation can cause import issues",
+          "code_snippet": "sys.path.insert(0, str(Path(__file__).parent.parent.parent))",
+          "recommendation": "Use proper Python package structure and imports"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_api_client_integration.py",
+          "line_number": 15,
+          "issue_type": "sys_path_manipulation",
+          "severity": "high",
+          "description": "Manual sys.path manipulation can cause import issues",
+          "code_snippet": "sys.path.insert(0, str(Path(__file__).parent.parent.parent))",
+          "recommendation": "Use proper Python package structure and imports"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_dynamic_components.py",
+          "line_number": 8,
+          "issue_type": "sys_path_manipulation",
+          "severity": "high",
+          "description": "Manual sys.path manipulation can cause import issues",
+          "code_snippet": "sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))",
+          "recommendation": "Use proper Python package structure and imports"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_component_specific.py",
+          "line_number": 16,
+          "issue_type": "sys_path_manipulation",
+          "severity": "high",
+          "description": "Manual sys.path manipulation can cause import issues",
+          "code_snippet": "sys.path.insert(0, str(Path(__file__).parent.parent.parent))",
+          "recommendation": "Use proper Python package structure and imports"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/test_framework.py",
+          "line_number": 98,
+          "issue_type": "sys_path_manipulation",
+          "severity": "high",
+          "description": "Manual sys.path manipulation can cause import issues",
+          "code_snippet": "sys.path.insert(0, str(project_root))",
+          "recommendation": "Use proper Python package structure and imports"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/unit/test_file_structure.py",
+          "line_number": 15,
+          "issue_type": "sys_path_manipulation",
+          "severity": "high",
+          "description": "Manual sys.path manipulation can cause import issues",
+          "code_snippet": "sys.path.insert(0, str(Path(__file__).parent.parent.parent))",
+          "recommendation": "Use proper Python package structure and imports"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_nationality_fix.py",
+          "line_number": 11,
+          "issue_type": "sys_path_manipulation",
+          "severity": "high",
+          "description": "Manual sys.path manipulation can cause import issues",
+          "code_snippet": "sys.path.insert(0, str(project_root))",
+          "recommendation": "Use proper Python package structure and imports"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_batch_processing.py",
+          "line_number": 16,
+          "issue_type": "sys_path_manipulation",
+          "severity": "high",
+          "description": "Manual sys.path manipulation can cause import issues",
+          "code_snippet": "sys.path.insert(0, str(Path(__file__).parent.parent.parent))",
+          "recommendation": "Use proper Python package structure and imports"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_frontmatter_dependency_chain.py",
+          "line_number": 20,
+          "issue_type": "sys_path_manipulation",
+          "severity": "high",
+          "description": "Manual sys.path manipulation can cause import issues",
+          "code_snippet": "sys.path.insert(0, str(project_root))",
+          "recommendation": "Use proper Python package structure and imports"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_iterative_content_improver.py",
+          "line_number": 13,
+          "issue_type": "sys_path_manipulation",
+          "severity": "high",
+          "description": "Manual sys.path manipulation can cause import issues",
+          "code_snippet": "sys.path.insert(0, str(project_root))",
+          "recommendation": "Use proper Python package structure and imports"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_templates.py",
+          "line_number": 21,
+          "issue_type": "sys_path_manipulation",
+          "severity": "high",
+          "description": "Manual sys.path manipulation can cause import issues",
+          "code_snippet": "sys.path.insert(0, str(Path(__file__).parent.parent))",
+          "recommendation": "Use proper Python package structure and imports"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_performance_validation.py",
+          "line_number": 17,
+          "issue_type": "sys_path_manipulation",
+          "severity": "high",
+          "description": "Manual sys.path manipulation can cause import issues",
+          "code_snippet": "sys.path.insert(0, str(Path(__file__).parent.parent.parent))",
+          "recommendation": "Use proper Python package structure and imports"
+        }
+      ],
+      "medium": [
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_interactive_mode.py",
+          "line_number": 26,
+          "issue_type": "brittle_temp_dir",
+          "severity": "medium",
+          "description": "Using manual temp directory creation instead of TestPathManager",
+          "code_snippet": "self.temp_dir = Path(tempfile.mkdtemp())",
+          "recommendation": "Use TestPathManager.get_test_temp_dir() for consistent temp directories"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_interactive_mode.py",
+          "line_number": 149,
+          "issue_type": "brittle_temp_dir",
+          "severity": "medium",
+          "description": "Using manual temp directory creation instead of TestPathManager",
+          "code_snippet": "self.temp_dir = Path(tempfile.mkdtemp())",
+          "recommendation": "Use TestPathManager.get_test_temp_dir() for consistent temp directories"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_interactive_mode.py",
+          "line_number": 232,
+          "issue_type": "brittle_temp_dir",
+          "severity": "medium",
+          "description": "Using manual temp directory creation instead of TestPathManager",
+          "code_snippet": "self.temp_dir = Path(tempfile.mkdtemp())",
+          "recommendation": "Use TestPathManager.get_test_temp_dir() for consistent temp directories"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_interactive_mode.py",
+          "line_number": 44,
+          "issue_type": "complex_mock_setup",
+          "severity": "medium",
+          "description": "Complex mock setup that may be brittle",
+          "code_snippet": "with patch('builtins.input', side_effect=user_inputs):",
+          "recommendation": "Use RobustMockAPIClient with simple configuration"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_interactive_mode.py",
+          "line_number": 68,
+          "issue_type": "complex_mock_setup",
+          "severity": "medium",
+          "description": "Complex mock setup that may be brittle",
+          "code_snippet": "with patch('builtins.input', side_effect=user_inputs):",
+          "recommendation": "Use RobustMockAPIClient with simple configuration"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_interactive_mode.py",
+          "line_number": 88,
+          "issue_type": "complex_mock_setup",
+          "severity": "medium",
+          "description": "Complex mock setup that may be brittle",
+          "code_snippet": "with patch('builtins.input', side_effect=user_inputs):",
+          "recommendation": "Use RobustMockAPIClient with simple configuration"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_interactive_mode.py",
+          "line_number": 109,
+          "issue_type": "complex_mock_setup",
+          "severity": "medium",
+          "description": "Complex mock setup that may be brittle",
+          "code_snippet": "with patch('builtins.input', side_effect=user_inputs):",
+          "recommendation": "Use RobustMockAPIClient with simple configuration"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_interactive_mode.py",
+          "line_number": 129,
+          "issue_type": "complex_mock_setup",
+          "severity": "medium",
+          "description": "Complex mock setup that may be brittle",
+          "code_snippet": "with patch('builtins.input', side_effect=user_inputs):",
+          "recommendation": "Use RobustMockAPIClient with simple configuration"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_interactive_mode.py",
+          "line_number": 171,
+          "issue_type": "complex_mock_setup",
+          "severity": "medium",
+          "description": "Complex mock setup that may be brittle",
+          "code_snippet": "with patch('builtins.input', side_effect=user_inputs):",
+          "recommendation": "Use RobustMockAPIClient with simple configuration"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_interactive_mode.py",
+          "line_number": 191,
+          "issue_type": "complex_mock_setup",
+          "severity": "medium",
+          "description": "Complex mock setup that may be brittle",
+          "code_snippet": "with patch('builtins.input', side_effect=user_inputs):",
+          "recommendation": "Use RobustMockAPIClient with simple configuration"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_interactive_mode.py",
+          "line_number": 212,
+          "issue_type": "complex_mock_setup",
+          "severity": "medium",
+          "description": "Complex mock setup that may be brittle",
+          "code_snippet": "with patch('builtins.input', side_effect=user_inputs):",
+          "recommendation": "Use RobustMockAPIClient with simple configuration"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_interactive_mode.py",
+          "line_number": 249,
+          "issue_type": "complex_mock_setup",
+          "severity": "medium",
+          "description": "Complex mock setup that may be brittle",
+          "code_snippet": "with patch('builtins.input', side_effect=user_inputs):",
+          "recommendation": "Use RobustMockAPIClient with simple configuration"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_interactive_mode.py",
+          "line_number": 269,
+          "issue_type": "complex_mock_setup",
+          "severity": "medium",
+          "description": "Complex mock setup that may be brittle",
+          "code_snippet": "with patch('builtins.input', side_effect=user_inputs):",
+          "recommendation": "Use RobustMockAPIClient with simple configuration"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_interactive_mode.py",
+          "line_number": 289,
+          "issue_type": "complex_mock_setup",
+          "severity": "medium",
+          "description": "Complex mock setup that may be brittle",
+          "code_snippet": "with patch('builtins.input', side_effect=user_inputs):",
+          "recommendation": "Use RobustMockAPIClient with simple configuration"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_interactive_mode.py",
+          "line_number": 309,
+          "issue_type": "complex_mock_setup",
+          "severity": "medium",
+          "description": "Complex mock setup that may be brittle",
+          "code_snippet": "with patch('builtins.input', side_effect=user_inputs):",
+          "recommendation": "Use RobustMockAPIClient with simple configuration"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/integration/test_integration.py",
+          "line_number": 42,
+          "issue_type": "environment_dependency",
+          "severity": "medium",
+          "description": "Test depends on environment variables or platform specifics",
+          "code_snippet": "api_key = os.getenv(config[\"env_var\"])",
+          "recommendation": "Mock environment dependencies or use test configuration"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_file_io_validation.py",
+          "line_number": 26,
+          "issue_type": "brittle_temp_dir",
+          "severity": "medium",
+          "description": "Using manual temp directory creation instead of TestPathManager",
+          "code_snippet": "self.temp_dir = Path(tempfile.mkdtemp())",
+          "recommendation": "Use TestPathManager.get_test_temp_dir() for consistent temp directories"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_file_io_validation.py",
+          "line_number": 258,
+          "issue_type": "brittle_temp_dir",
+          "severity": "medium",
+          "description": "Using manual temp directory creation instead of TestPathManager",
+          "code_snippet": "self.temp_dir = Path(tempfile.mkdtemp())",
+          "recommendation": "Use TestPathManager.get_test_temp_dir() for consistent temp directories"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_api_client_integration.py",
+          "line_number": 78,
+          "issue_type": "complex_mock_setup",
+          "severity": "medium",
+          "description": "Complex mock setup that may be brittle",
+          "code_snippet": "with patch('api.client_manager.get_api_client_for_component', side_effect=mock_get_client):",
+          "recommendation": "Use RobustMockAPIClient with simple configuration"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_api_client_integration.py",
+          "line_number": 244,
+          "issue_type": "complex_mock_setup",
+          "severity": "medium",
+          "description": "Complex mock setup that may be brittle",
+          "code_snippet": "with patch('api.client_manager.get_api_client_for_component', side_effect=rotating_client):",
+          "recommendation": "Use RobustMockAPIClient with simple configuration"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_error_scenarios.py",
+          "line_number": 345,
+          "issue_type": "complex_mock_setup",
+          "severity": "medium",
+          "description": "Complex mock setup that may be brittle",
+          "code_snippet": "with patch('api.client_manager.get_api_client_for_component', side_effect=selective_failing_client):",
+          "recommendation": "Use RobustMockAPIClient with simple configuration"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_error_scenarios.py",
+          "line_number": 384,
+          "issue_type": "complex_mock_setup",
+          "severity": "medium",
+          "description": "Complex mock setup that may be brittle",
+          "code_snippet": "with patch('pathlib.Path.mkdir', side_effect=OSError(\"Disk full\")):",
+          "recommendation": "Use RobustMockAPIClient with simple configuration"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_error_scenarios.py",
+          "line_number": 540,
+          "issue_type": "complex_mock_setup",
+          "severity": "medium",
+          "description": "Complex mock setup that may be brittle",
+          "code_snippet": "with patch('api.client_manager.get_api_client_for_component', side_effect=mixed_result_client):",
+          "recommendation": "Use RobustMockAPIClient with simple configuration"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_component_specific.py",
+          "line_number": 26,
+          "issue_type": "brittle_temp_dir",
+          "severity": "medium",
+          "description": "Using manual temp directory creation instead of TestPathManager",
+          "code_snippet": "self.temp_dir = Path(tempfile.mkdtemp())",
+          "recommendation": "Use TestPathManager.get_test_temp_dir() for consistent temp directories"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_component_specific.py",
+          "line_number": 371,
+          "issue_type": "brittle_temp_dir",
+          "severity": "medium",
+          "description": "Using manual temp directory creation instead of TestPathManager",
+          "code_snippet": "self.temp_dir = Path(tempfile.mkdtemp())",
+          "recommendation": "Use TestPathManager.get_test_temp_dir() for consistent temp directories"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_batch_processing.py",
+          "line_number": 26,
+          "issue_type": "brittle_temp_dir",
+          "severity": "medium",
+          "description": "Using manual temp directory creation instead of TestPathManager",
+          "code_snippet": "self.temp_dir = Path(tempfile.mkdtemp())",
+          "recommendation": "Use TestPathManager.get_test_temp_dir() for consistent temp directories"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_batch_processing.py",
+          "line_number": 186,
+          "issue_type": "brittle_temp_dir",
+          "severity": "medium",
+          "description": "Using manual temp directory creation instead of TestPathManager",
+          "code_snippet": "self.temp_dir = Path(tempfile.mkdtemp())",
+          "recommendation": "Use TestPathManager.get_test_temp_dir() for consistent temp directories"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_batch_processing.py",
+          "line_number": 302,
+          "issue_type": "brittle_temp_dir",
+          "severity": "medium",
+          "description": "Using manual temp directory creation instead of TestPathManager",
+          "code_snippet": "self.temp_dir = Path(tempfile.mkdtemp())",
+          "recommendation": "Use TestPathManager.get_test_temp_dir() for consistent temp directories"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_batch_processing.py",
+          "line_number": 74,
+          "issue_type": "complex_mock_setup",
+          "severity": "medium",
+          "description": "Complex mock setup that may be brittle",
+          "code_snippet": "with patch('api.client_manager.get_api_client_for_component', side_effect=mock_get_client):",
+          "recommendation": "Use RobustMockAPIClient with simple configuration"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_batch_processing.py",
+          "line_number": 212,
+          "issue_type": "complex_mock_setup",
+          "severity": "medium",
+          "description": "Complex mock setup that may be brittle",
+          "code_snippet": "with patch('api.client_manager.get_api_client_for_component', side_effect=failing_client):",
+          "recommendation": "Use RobustMockAPIClient with simple configuration"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_batch_processing.py",
+          "line_number": 237,
+          "issue_type": "complex_mock_setup",
+          "severity": "medium",
+          "description": "Complex mock setup that may be brittle",
+          "code_snippet": "with patch('api.client_manager.get_api_client_for_component', side_effect=selective_failing_client):",
+          "recommendation": "Use RobustMockAPIClient with simple configuration"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_performance_validation.py",
+          "line_number": 27,
+          "issue_type": "brittle_temp_dir",
+          "severity": "medium",
+          "description": "Using manual temp directory creation instead of TestPathManager",
+          "code_snippet": "self.temp_dir = Path(tempfile.mkdtemp())",
+          "recommendation": "Use TestPathManager.get_test_temp_dir() for consistent temp directories"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_performance_validation.py",
+          "line_number": 166,
+          "issue_type": "brittle_temp_dir",
+          "severity": "medium",
+          "description": "Using manual temp directory creation instead of TestPathManager",
+          "code_snippet": "self.temp_dir = Path(tempfile.mkdtemp())",
+          "recommendation": "Use TestPathManager.get_test_temp_dir() for consistent temp directories"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_performance_validation.py",
+          "line_number": 279,
+          "issue_type": "brittle_temp_dir",
+          "severity": "medium",
+          "description": "Using manual temp directory creation instead of TestPathManager",
+          "code_snippet": "self.temp_dir = Path(tempfile.mkdtemp())",
+          "recommendation": "Use TestPathManager.get_test_temp_dir() for consistent temp directories"
+        },
+        {
+          "file_path": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/tests/e2e/test_performance_validation.py",
+          "line_number": 335,
+          "issue_type": "complex_mock_setup",
+          "severity": "medium",
+          "description": "Complex mock setup that may be brittle",
+          "code_snippet": "with patch('api.client_manager.get_api_client_for_component', side_effect=tracking_client):",
+          "recommendation": "Use RobustMockAPIClient with simple configuration"
+        }
+      ]
+    },
+    "recommendations": [
+      "🔴 HIGH PRIORITY: Address hardcoded paths and sys.path manipulations immediately",
+      "🟡 MEDIUM PRIORITY: Simplify mock setups and remove environment dependencies",
+      "🟢 LOW PRIORITY: Add proper test isolation with setUp/tearDown methods",
+      "📊 SUMMARY: Found 143 brittleness issues across 64 test files"
+    ]
+  }
+}
