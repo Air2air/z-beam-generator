@@ -10,12 +10,10 @@ import logging  # noqa: F401
 import os  # noqa: F401
 from pathlib import Path  # noqa: F401
 from typing import Optional  # noqa: F401
-from pathlib import Path
 
 from api.client import APIClient
-from api.env_loader import EnvLoader
-from api.env_loader import EnvLoader
 from api.config import API_PROVIDERS
+from api.env_loader import EnvLoader
 
 
 def check_api_configuration():
@@ -58,6 +56,7 @@ def check_api_configuration():
             try:
                 # Import here to avoid circular import
                 from api.client_manager import create_api_client
+
                 create_api_client(provider_id)
                 print(f"   ✅ {provider_info['name']}: Client created successfully")
             except Exception as e:

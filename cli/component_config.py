@@ -19,7 +19,6 @@ except ImportError:
 
 from cli.api_config import API_PROVIDERS
 
-
 # Component Configuration
 # Moved here to break circular import between run.py and other modules
 COMPONENT_CONFIG = {

@@ -17,11 +17,11 @@ import asyncio
 import hashlib
 import json
 import logging
+from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass
 from datetime import datetime, timedelta
 from typing import Any, Dict, List, Optional, Tuple, Union
 
-from concurrent.futures import ThreadPoolExecutor
 from ..base import (
     BaseService,
     ServiceConfiguration,
@@ -262,22 +262,32 @@ class AIDetectionOptimizationService(BaseService):
             provider_type = provider_config.get("type")
 
             if not provider_type:
-                raise ServiceConfigurationError(f"Provider type not specified for {provider_name}")
+                raise ServiceConfigurationError(
+                    f"Provider type not specified for {provider_name}"
+                )
 
             if provider_type == "mock":
                 # Allow mocks only in test environments or when explicitly permitted
                 allow_mocks = (
-                    self.config.settings.get("allow_mocks_for_testing", False) or
-                    "pytest" in str(__import__('sys').modules.get('sys', {}).get('argv', [])) or
-                    __name__ == "__main__"  # Allow when running as main script in tests
+                    self.config.settings.get("allow_mocks_for_testing", False)
+                    or "pytest"
+                    in str(__import__("sys").modules.get("sys", {}).get("argv", []))
+                    or __name__
+                    == "__main__"  # Allow when running as main script in tests
                 )
                 if not allow_mocks:
-                    raise ServiceConfigurationError(f"Mock providers not allowed in production: {provider_name}")
+                    raise ServiceConfigurationError(
+                        f"Mock providers not allowed in production: {provider_name}"
+                    )
                 # Mock providers are not available in production code - this should not be reached
-                raise ServiceConfigurationError(f"Mock providers not available in production: {provider_name}")
+                raise ServiceConfigurationError(
+                    f"Mock providers not available in production: {provider_name}"
+                )
             else:
                 # Here you would initialize real providers like OpenAI, etc.
-                raise ServiceConfigurationError(f"Unknown provider type: {provider_type}")
+                raise ServiceConfigurationError(
+                    f"Unknown provider type: {provider_type}"
+                )
 
             self.providers[provider_name] = provider
             self.logger.info(f"Initialized provider: {provider_name}")

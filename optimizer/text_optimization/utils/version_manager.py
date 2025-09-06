@@ -4,14 +4,13 @@ AI Detection Prompts Version Manager
 Manages versioning and changelog for ai_detection.yaml configuration files.
 """
 
+import argparse
 import re
 from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, Optional
-import argparse
 
 import yaml
-
 
     parser = argparse.ArgumentParser(description="AI Detection Prompts Version Manager")
     parser.add_argument(

@@ -7,17 +7,18 @@ Additional tests for edge cases, error handling, and comprehensive validation.
 import os
 import sys
 import tempfile
-from pathlib import Path
 import time
+from pathlib import Path
 
 import yaml
 
-from components.metatags.calculator import (
+from components.metatags.calculator import (  # Test with minimal data
+    =,
+    start,
+    time.time,
+    try:,
+)
 
-
-    try:
-        # Test with minimal data
-        start = time.time()
         minimal_calculator = MetatagsCalculator({"subject": "X"})
         minimal_result = minimal_calculator.generate_complete_metatags()
         minimal_time = time.time() - start

@@ -8,6 +8,67 @@ on:
   workflow_dispatch:
 
 jobs:
+  import-validation:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.12'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Validate component imports
+      run: |
+        echo "Testing centralized component registry..."
+        python -c "import components; print('Available components:', sorted(components.list_components()))"
+
+        echo "Testing individual component imports..."
+        python -c "
+        import components
+        for comp_name in components.list_components():
+            try:
+                comp = components.create_component(comp_name)
+                print(f'✓ {comp_name}: {type(comp).__name__}')
+            except Exception as e:
+                print(f'✗ {comp_name}: {e}')
+                exit(1)
+        print('All component imports successful!')
+        "
+
+    - name: Validate core module imports
+      run: |
+        echo "Testing core module imports..."
+        python -c "
+        modules_to_test = [
+            'generators.component_generators',
+            'utils.component_base',
+            'api.client_manager',
+            'optimizer.ai_detection.service',
+            'run'
+        ]
+        for module in modules_to_test:
+            try:
+                __import__(module)
+                print(f'✓ {module}')
+            except ImportError as e:
+                print(f'✗ {module}: {e}')
+                exit(1)
+        print('All core module imports successful!')
+        "
+
+    - name: Check for broken imports in test files
+      run: |
+        echo "Checking test file imports..."
+        find tests/ -name "*.py" -exec python -m py_compile {} \;
+        echo "All test files compile successfully!"
+
   test:
     runs-on: ubuntu-latest
     strategy:

@@ -3,11 +3,9 @@
 Update propertiestable files with new shorter labels
 """
 
+import glob
 import os
 from pathlib import Path
-
-import glob
-
 
 
 def update_propertiestable_files():

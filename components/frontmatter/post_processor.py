@@ -10,12 +10,19 @@ from typing import Any, Dict
 
 import yaml
 
-from .utils import (
-
-
-        # Extract YAML content
-        if not content.startswith("---"):
-            return {"error": "Not valid frontmatter format"}
+from .utils import (  # Extract YAML content
+    "---",
+    "Not,
+    :,
+    content.startswith,
+    format"},
+    frontmatter,
+    if,
+    not,
+    return,
+    valid,
+    {"error":,
+)
 
         yaml_end = content.find("---", 3)
         if yaml_end == -1:

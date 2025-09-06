@@ -6,15 +6,11 @@ Removes unnecessary files while preserving production components.
 
 import os
 import shutil
+import sys
 from datetime import datetime
 from pathlib import Path
-import sys
-from pathlib import Path
 
-from components.text.generators.fail_fast_generator import (
-
-            create_fail_fast_generator,
-        )
+from components.text.generators.fail_fast_generator import create_fail_fast_generator
 
         # Test initialization
         generator = create_fail_fast_generator()

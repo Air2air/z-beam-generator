@@ -10,12 +10,12 @@ import json
 from pathlib import Path
 from typing import Any, Dict, Optional
 
+from generators.component_generators import APIComponentGenerator
 from utils.component_base import (
     ComponentResult,
     handle_generation_error,
     validate_required_fields,
 )
-from generators.component_generators import APIComponentGenerator
 
 
 class AuthorComponentGenerator(APIComponentGenerator):

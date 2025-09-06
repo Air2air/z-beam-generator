@@ -7,25 +7,29 @@ Provides mock implementation of Winston.ai AI detection service for testing.
 
 import random
 import time
-from pathlib import Path
-from typing import Dict, Optional
 from dataclasses import dataclass
+from pathlib import Path
 from typing import Any, Dict, Optional
 
 from ai_detection.providers.winston import (
-
-
-    @dataclass
-    class AIDetectionResult:
-        score: float
-        confidence: float
-        classification: str
-        details: Dict[str, Any]
-        processing_time: float
-        provider: str
-
-    class AIDetectionError(Exception):
-        pass
+    AIDetectionError,
+    AIDetectionResult:,
+    Any],
+    Dict[str,
+    Exception,
+    :,
+    @dataclass,
+    class,
+    classification:,
+    confidence:,
+    details:,
+    float,
+    pass,
+    processing_time:,
+    provider:,
+    score:,
+    str,
+)
 
     @dataclass
     class AIDetectionConfig:

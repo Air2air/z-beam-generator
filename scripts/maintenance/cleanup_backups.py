@@ -32,7 +32,9 @@ def find_backup_files(directory: str = "config") -> List[Path]:
     return sorted(backup_files, key=lambda x: x.stat().st_mtime, reverse=True)
 
 
-def cleanup_backups(directory: str = "config", keep_count: int = 3, dry_run: bool = True) -> dict:
+def cleanup_backups(
+    directory: str = "config", keep_count: int = 3, dry_run: bool = True
+) -> dict:
     """
     Clean up old backup files while preserving the most recent ones.
 
@@ -51,11 +53,15 @@ def cleanup_backups(directory: str = "config", keep_count: int = 3, dry_run: boo
             "files_found": 0,
             "files_to_remove": 0,
             "files_removed": 0,
-            "message": f"No backup files found in {directory}"
+            "message": f"No backup files found in {directory}",
         }
 
-    files_to_remove = backup_files[keep_count:] if len(backup_files) > keep_count else []
-    files_to_keep = backup_files[:keep_count] if len(backup_files) > keep_count else backup_files
+    files_to_remove = (
+        backup_files[keep_count:] if len(backup_files) > keep_count else []
+    )
+    files_to_keep = (
+        backup_files[:keep_count] if len(backup_files) > keep_count else backup_files
+    )
 
     print(f"📁 Found {len(backup_files)} backup files in {directory}")
     print(f"✅ Keeping {len(files_to_keep)} most recent files:")
@@ -81,21 +87,21 @@ def cleanup_backups(directory: str = "config", keep_count: int = 3, dry_run: boo
                 "files_found": len(backup_files),
                 "files_to_remove": len(files_to_remove),
                 "files_removed": removed_count,
-                "message": f"Successfully removed {removed_count} backup files"
+                "message": f"Successfully removed {removed_count} backup files",
             }
         else:
             return {
                 "files_found": len(backup_files),
                 "files_to_remove": len(files_to_remove),
                 "files_removed": 0,
-                "message": f"Dry run: Would remove {len(files_to_remove)} files"
+                "message": f"Dry run: Would remove {len(files_to_remove)} files",
             }
     else:
         return {
             "files_found": len(backup_files),
             "files_to_remove": 0,
             "files_removed": 0,
-            "message": f"No cleanup needed - only {len(backup_files)} backup files (keeping {keep_count})"
+            "message": f"No cleanup needed - only {len(backup_files)} backup files (keeping {keep_count})",
         }
 
 
@@ -110,24 +116,27 @@ EXAMPLES:
   python3 scripts/maintenance/cleanup_backups.py                    # Remove old backups (keep 3)
   python3 scripts/maintenance/cleanup_backups.py --keep 5           # Keep 5 most recent
   python3 scripts/maintenance/cleanup_backups.py --directory config # Specify directory
-        """
+        """,
     )
 
     parser.add_argument(
-        "--directory", "-d",
+        "--directory",
+        "-d",
         default="config",
-        help="Directory to clean up (default: config)"
+        help="Directory to clean up (default: config)",
     )
     parser.add_argument(
-        "--keep", "-k",
+        "--keep",
+        "-k",
         type=int,
         default=3,
-        help="Number of most recent backups to keep (default: 3)"
+        help="Number of most recent backups to keep (default: 3)",
     )
     parser.add_argument(
-        "--dry-run", "-n",
+        "--dry-run",
+        "-n",
         action="store_true",
-        help="Show what would be deleted without actually deleting"
+        help="Show what would be deleted without actually deleting",
     )
 
     args = parser.parse_args()

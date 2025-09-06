@@ -10,6 +10,7 @@ from typing import Any, Dict, Optional
 @dataclass
 class AIDetectionConfig:
     """Configuration for AI detection service."""
+
     provider: str = "winston"
     enabled: bool = True
     target_score: float = 70.0
@@ -22,6 +23,7 @@ class AIDetectionConfig:
 @dataclass
 class AIDetectionResult:
     """Result from AI detection analysis."""
+
     score: float
     confidence: float
     classification: str
@@ -32,4 +34,5 @@ class AIDetectionResult:
 
 class AIDetectionError(Exception):
     """Exception raised for AI detection errors"""
+
     pass

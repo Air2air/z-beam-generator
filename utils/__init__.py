@@ -6,7 +6,6 @@ and other shared functionality across the generator system.
 """
 
 from .slug_utils import (
-
     create_filename_slug,
     create_material_slug,
     extract_material_from_filename,

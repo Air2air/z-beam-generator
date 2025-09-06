@@ -62,7 +62,10 @@ def run_all_tests() -> dict:
 
     # Define available test suites (EXCLUDING cleanup)
     test_suites = [
-        ("integration/test_ai_detection_integration.py", "AI Detection Integration Tests"),
+        (
+            "integration/test_ai_detection_integration.py",
+            "AI Detection Integration Tests",
+        ),
         ("integration/test_category_ranges.py", "Category Ranges Tests"),
         ("integration/test_component_ai_routing.py", "Component AI Routing Tests"),
         ("unit/test_component_config.py", "Component Configuration Tests"),
@@ -74,7 +77,10 @@ def run_all_tests() -> dict:
         ("integration/test_frontmatter_fail_fast.py", "Frontmatter Fail-Fast Tests"),
         ("integration/test_frontmatter_validator.py", "Frontmatter Validator Tests"),
         ("integration/test_integration.py", "Integration Tests"),
-        ("integration/test_iterative_content_improver.py", "Iterative Content Improver Tests"),
+        (
+            "integration/test_iterative_content_improver.py",
+            "Iterative Content Improver Tests",
+        ),
         ("integration/test_iterative_improvement.py", "Iterative Improvement Tests"),
         ("integration/test_percentile_calculator.py", "Percentile Calculator Tests"),
         ("integration/test_property_enhancer.py", "Property Enhancer Tests"),

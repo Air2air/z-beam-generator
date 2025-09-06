@@ -98,44 +98,55 @@ import argparse
 import json
 import logging
 import os
+import shutil
 import sys
 from pathlib import Path
 from typing import Dict, List, Optional
-from pathlib import Path
-from pathlib import Path
-from pathlib import Path
-import shutil
 
 import yaml
 from dotenv import load_dotenv
 
 from api.client_manager import (
-from cli.api_config import API_PROVIDERS
-from cli.component_config import COMPONENT_CONFIG, show_component_configuration
-from generators.workflow_manager import (
-from utils.author_manager import get_author_by_id, list_authors, load_authors
-from utils.environment_checker import check_environment
-from utils.file_operations import clean_content_components, save_component_to_file
-from utils.slug_utils import create_filename_slug, create_material_slug
-from api.client import APIClient
-from generators.dynamic_generator import DynamicGenerator
-from generators.dynamic_generator import DynamicGenerator
-from generators.dynamic_generator import ComponentResult
-from api.env_loader import EnvLoader
-from api.env_loader import EnvLoader
-from generators.dynamic_generator import DynamicGenerator
-from cli.api_config import create_api_client as cli_create_api_client
-from components.content.generators.fail_fast_generator import (
-from components.content.generators.fail_fast_generator import (
-from cli.api_config import create_api_client
-from validators.centralized_validator import CentralizedValidator
-from cleanup.cleanup_manager import CleanupManager
-from cleanup.cleanup_manager import CleanupManager
-from generators.dynamic_generator import DynamicGenerator
-import traceback
+    API_PROVIDERS,
+    COMPONENT_CONFIG,
+    APIClient,
+    CentralizedValidator,
+    CleanupManager,
+    ComponentResult,
+    DynamicGenerator,
+    EnvLoader,
+    api.client,
+    api.env_loader,
+    check_environment,
+    clean_content_components,
+    cleanup.cleanup_manager,
+    cli.api_config,
+    cli.component_config,
+    components.content.generators.fail_fast_generator,
+)
+from api.client_manager import create_api_client
+from api.client_manager import create_api_client as cli_create_api_client
+from api.client_manager import (
+    create_filename_slug,
+    create_material_slug,
+    from,
+    generators.dynamic_generator,
+    generators.workflow_manager,
+    get_author_by_id,
+    import,
+    list_authors,
+    load_authors,
+    save_component_to_file,
+    show_component_configuration,
+    traceback,
+    traceback.print_exc,
+    utils.author_manager,
+    utils.environment_checker,
+    utils.file_operations,
+    utils.slug_utils,
+    validators.centralized_validator,
+)
 
-
-            traceback.print_exc()
         sys.exit(1)
 
 

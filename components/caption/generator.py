@@ -10,12 +10,12 @@ import random
 from pathlib import Path
 from typing import Any, Dict, Optional
 
+from generators.component_generators import APIComponentGenerator
 from utils.component_base import (
     ComponentResult,
     handle_generation_error,
     validate_required_fields,
 )
-from generators.component_generators import APIComponentGenerator
 
 
 class CaptionComponentGenerator(APIComponentGenerator):
@@ -73,7 +73,7 @@ class CaptionComponentGenerator(APIComponentGenerator):
             "industrial deposits and material buildup",
             "environmental contaminants and surface films",
             "processing residues and impurity accumulation",
-            "atmospheric deposits and surface contamination"
+            "atmospheric deposits and surface contamination",
         ]
         return random.choice(contaminations)
 
@@ -88,7 +88,7 @@ class CaptionComponentGenerator(APIComponentGenerator):
             "wavelength": random.choice(wavelengths),
             "power": random.choice(powers),
             "pulse_duration": random.choice(pulse_durations),
-            "spot_size": random.choice(spot_sizes)
+            "spot_size": random.choice(spot_sizes),
         }
 
     def _get_random_result(self) -> str:
@@ -101,7 +101,7 @@ class CaptionComponentGenerator(APIComponentGenerator):
             "successful surface restoration with minimal thermal effects",
             "comprehensive cleaning with preserved surface characteristics",
             "efficient contaminant removal with controlled process parameters",
-            "complete surface decontamination with optimized laser settings"
+            "complete surface decontamination with optimized laser settings",
         ]
         return random.choice(results)
 

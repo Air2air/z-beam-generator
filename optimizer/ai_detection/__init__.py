@@ -4,9 +4,9 @@ AI Detection Service Package
 """
 
 from .config import (
+    AI_DETECTION_CONFIG,
     create_dynamic_ai_detection_config,
     get_default_ai_detection_config,
-    AI_DETECTION_CONFIG,
 )
 from .service import (
     AIDetectionError,
@@ -15,9 +15,7 @@ from .service import (
     get_ai_detection_service,
     initialize_ai_detection_service,
 )
-from .types import (
-    AIDetectionConfig,
-)
+from .types import AIDetectionConfig
 
 __all__ = [
     "AIDetectionService",

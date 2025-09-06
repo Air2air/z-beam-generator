@@ -7,23 +7,23 @@ Content appears above frontmatter (--- delimiter)
 """
 
 import os
+import shutil
 import sys
 from pathlib import Path
 from typing import List, Tuple
-import shutil
 
 
 def migrate_file_structure(file_path: str, backup: bool = True) -> Tuple[bool, str]:
     """
     Migrate a file to follow the content-above-frontmatter convention.
-    
+
     Preserves existing frontmatter and ensures content-first format.
     """
     try:
-        with open(file_path, 'r', encoding='utf-8') as f:
+        with open(file_path, "r", encoding="utf-8") as f:
             content = f.read()
 
-        parts = content.split('---')
+        parts = content.split("---")
 
         # Check if already in correct format
         if len(parts) >= 3 and parts[0].strip():
@@ -36,7 +36,7 @@ def migrate_file_structure(file_path: str, backup: bool = True) -> Tuple[bool, s
                 # Extract actual content from after the second ---
                 content_part = parts[2].strip() if len(parts) > 2 else ""
                 frontmatter_part = parts[1].strip() if len(parts) > 1 else ""
-                
+
                 if content_part:
                     # Reconstruct with content first, preserving existing frontmatter
                     new_content = f"{content_part}\n\n---\n{frontmatter_part}\n---"
@@ -48,11 +48,14 @@ def migrate_file_structure(file_path: str, backup: bool = True) -> Tuple[bool, s
                         shutil.copy2(file_path, backup_path)
 
                     # Write migrated content
-                    with open(file_path, 'w', encoding='utf-8') as f:
+                    with open(file_path, "w", encoding="utf-8") as f:
                         f.write(new_content)
 
                     backup_msg = f" (backup: {backup_path})" if backup_path else ""
-                    return True, f"✅ Migrated: Content moved above frontmatter, existing frontmatter preserved{backup_msg}"
+                    return (
+                        True,
+                        f"✅ Migrated: Content moved above frontmatter, existing frontmatter preserved{backup_msg}",
+                    )
                 else:
                     return False, "No content found after frontmatter to migrate"
             else:
@@ -64,12 +67,14 @@ def migrate_file_structure(file_path: str, backup: bool = True) -> Tuple[bool, s
         return False, f"Error migrating file: {e}"
 
 
-def migrate_directory(directory: str, extensions: List[str] = None, backup: bool = True) -> None:
+def migrate_directory(
+    directory: str, extensions: List[str] = None, backup: bool = True
+) -> None:
     """
     Migrate all files in a directory to follow the new convention.
     """
     if extensions is None:
-        extensions = ['.md', '.markdown']
+        extensions = [".md", ".markdown"]
 
     path = Path(directory)
     if not path.exists():
@@ -81,7 +86,7 @@ def migrate_directory(directory: str, extensions: List[str] = None, backup: bool
     files_skipped = 0
     files_failed = 0
 
-    for file_path in path.rglob('*'):
+    for file_path in path.rglob("*"):
         if file_path.is_file() and file_path.suffix.lower() in extensions:
             files_processed += 1
             success, message = migrate_file_structure(str(file_path), backup)
@@ -114,30 +119,34 @@ def migrate_directory(directory: str, extensions: List[str] = None, backup: bool
 def main():
     """Main entry point for the migration script."""
     if len(sys.argv) < 2:
-        print("Usage: python migrate_structure.py <file_or_directory> [--no-backup] [--extensions .md,.markdown]")
+        print(
+            "Usage: python migrate_structure.py <file_or_directory> [--no-backup] [--extensions .md,.markdown]"
+        )
         print("\nExamples:")
-        print("  python migrate_structure.py content/components/text/copper-laser-cleaning.md")
+        print(
+            "  python migrate_structure.py content/components/text/copper-laser-cleaning.md"
+        )
         print("  python migrate_structure.py content/ --no-backup")
         print("  python migrate_structure.py content/ --extensions .md")
         sys.exit(1)
 
     target = sys.argv[1]
     backup = True
-    extensions = ['.md', '.markdown']
+    extensions = [".md", ".markdown"]
 
     # Parse arguments
     i = 2
     while i < len(sys.argv):
         arg = sys.argv[i]
-        if arg == '--no-backup':
+        if arg == "--no-backup":
             backup = False
-        elif arg.startswith('--extensions'):
-            if '=' in arg:
-                ext_str = arg.split('=')[1]
+        elif arg.startswith("--extensions"):
+            if "=" in arg:
+                ext_str = arg.split("=")[1]
             else:
                 i += 1
                 ext_str = sys.argv[i]
-            extensions = [ext.strip() for ext in ext_str.split(',')]
+            extensions = [ext.strip() for ext in ext_str.split(",")]
         i += 1
 
     path = Path(target)

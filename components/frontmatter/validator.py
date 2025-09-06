@@ -5,11 +5,10 @@ Frontmatter Component Validator
 Component-specific validation logic for frontmatter components.
 """
 
-from typing import Any, Dict, List
 import re
+from typing import Any, Dict, List
 
 import yaml
-
 
         duplicate_pattern = r"(\w+):\s*\n\s*\1:\s*(\{\}|$)"
         if re.search(duplicate_pattern, content):

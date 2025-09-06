@@ -6,23 +6,24 @@ This module provides dynamic content generation based on JSON schemas,
 allowing for flexible field-driven content creation with component selection.
 """
 
+import argparse
 import json
 import logging
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Dict, List, Optional
-import argparse
 
 import yaml
 
-from generators.component_generators import ComponentGeneratorFactory
 from api.client_manager import get_api_client_for_component
+from generators.component_generators import ComponentGeneratorFactory
 from utils.config_utils import load_materials_data
 
 
 @dataclass
 class GenerationRequest:
     """Request for generating multiple components for a material"""
+
     material: str
     components: List[str]
     output_dir: str
@@ -31,6 +32,7 @@ class GenerationRequest:
 @dataclass
 class GenerationResult:
     """Result of generating multiple components"""
+
     material: str
     success: bool
     total_components: int
@@ -48,14 +50,14 @@ class DynamicGenerator:
 
     def get_available_materials(self) -> List[str]:
         """Get list of available materials"""
-        if not self.materials_data or 'materials' not in self.materials_data:
+        if not self.materials_data or "materials" not in self.materials_data:
             return []
-        
+
         materials = []
-        for category, category_data in self.materials_data['materials'].items():
-            if 'items' in category_data:
-                for item in category_data['items']:
-                    materials.append(item['name'])
+        for category, category_data in self.materials_data["materials"].items():
+            if "items" in category_data:
+                for item in category_data["items"]:
+                    materials.append(item["name"])
         return sorted(materials)
 
     def get_available_components(self) -> List[str]:
@@ -64,10 +66,10 @@ class DynamicGenerator:
         components_dir = Path("components")
         if not components_dir.exists():
             return []
-        
+
         components = []
         for item in components_dir.iterdir():
-            if item.is_dir() and not item.name.startswith('__'):
+            if item.is_dir() and not item.name.startswith("__"):
                 components.append(item.name)
         return sorted(components)
 
@@ -75,41 +77,41 @@ class DynamicGenerator:
         """Generate multiple components for a material"""
         results = {}
         successful = 0
-        
+
         for component_type in request.components:
             try:
                 # Get API client for this component
                 api_client = get_api_client_for_component(component_type)
-                
+
                 # Generate component
                 factory = ComponentGeneratorFactory()
                 generator = factory.create_generator(component_type)
-                
+
                 # This is a simplified version - in reality you'd need more parameters
                 result = generator.generate(request.material, api_client)
-                
+
                 results[component_type] = {
-                    'success': result.success,
-                    'content': result.content,
-                    'error_message': result.error_message
+                    "success": result.success,
+                    "content": result.content,
+                    "error_message": result.error_message,
                 }
-                
+
                 if result.success:
                     successful += 1
-                    
+
             except Exception as e:
                 results[component_type] = {
-                    'success': False,
-                    'content': '',
-                    'error_message': str(e)
+                    "success": False,
+                    "content": "",
+                    "error_message": str(e),
                 }
-        
+
         return GenerationResult(
             material=request.material,
             success=successful == len(request.components),
             total_components=len(request.components),
             successful_components=successful,
-            results=results
+            results=results,
         )
 
 

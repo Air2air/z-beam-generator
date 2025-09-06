@@ -8,13 +8,12 @@ Provides comprehensive scoring for content component generation to ensure
 import logging
 import math
 import re
+import statistics
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
-import statistics
 from optimizer.ai_detection.config import AI_DETECTION_CONFIG
-
 
 logger = logging.getLogger(__name__)
 
@@ -22,6 +21,7 @@ logger = logging.getLogger(__name__)
 @dataclass
 class ContentScoreResult:
     """Result of content quality scoring."""
+
     overall_score: float
     formatting_score: float
     technical_score: float
@@ -57,6 +57,7 @@ class ContentQualityScorer:
             country = persona_file.stem.replace("_persona", "")
             try:
                 import yaml
+
                 with open(persona_file, "r", encoding="utf-8") as f:
                     data = yaml.safe_load(f)
 
@@ -77,10 +78,28 @@ class ContentQualityScorer:
     def _load_technical_terms(self) -> List[str]:
         """Load technical terminology for content analysis."""
         return [
-            "laser", "cleaning", "material", "surface", "removal", "ablation",
-            "thermal", "processing", "precision", "efficiency", "wavelength",
-            "power", "density", "pulse", "beam", "optical", "interaction",
-            "mechanism", "parameter", "optimization", "application", "industrial"
+            "laser",
+            "cleaning",
+            "material",
+            "surface",
+            "removal",
+            "ablation",
+            "thermal",
+            "processing",
+            "precision",
+            "efficiency",
+            "wavelength",
+            "power",
+            "density",
+            "pulse",
+            "beam",
+            "optical",
+            "interaction",
+            "mechanism",
+            "parameter",
+            "optimization",
+            "application",
+            "industrial",
         ]
 
     def score_content(
@@ -108,10 +127,16 @@ class ContentQualityScorer:
         believability_score = self._score_human_believability(content, author_info)
 
         # Calculate overall score
-        required_elements = self._check_required_elements(content, material_data, author_info)
+        required_elements = self._check_required_elements(
+            content, material_data, author_info
+        )
         overall_score = self._calculate_overall_score(
-            formatting_score, technical_score, authenticity_score,
-            readability_score, believability_score, required_elements
+            formatting_score,
+            technical_score,
+            authenticity_score,
+            readability_score,
+            believability_score,
+            required_elements,
         )
 
         return ContentScoreResult(
@@ -125,7 +150,7 @@ class ContentQualityScorer:
                 "required_elements": required_elements,
                 "word_count": len(self._extract_words(content)),
                 "author_country": author_info.get("country", ""),
-            }
+            },
         )
 
     def _score_formatting(self, content: str) -> float:
@@ -150,14 +175,20 @@ class ContentQualityScorer:
 
         return min(score, 100.0)
 
-    def _score_technical_accuracy(self, content: str, material_data: Dict[str, Any]) -> float:
+    def _score_technical_accuracy(
+        self, content: str, material_data: Dict[str, Any]
+    ) -> float:
         """Score technical accuracy (0-100)."""
         score = 0.0
         content_lower = content.lower()
 
         # Technical term density (40 points)
-        tech_terms_found = sum(1 for term in self.technical_terms if term in content_lower)
-        tech_density = tech_terms_found / len(self._extract_words(content)) if content else 0
+        tech_terms_found = sum(
+            1 for term in self.technical_terms if term in content_lower
+        )
+        tech_density = (
+            tech_terms_found / len(self._extract_words(content)) if content else 0
+        )
         score += min(tech_density * 1000, 40)  # Optimal: 4-8% technical density
 
         # Material-specific content (30 points)
@@ -172,7 +203,9 @@ class ContentQualityScorer:
 
         return min(score, 100.0)
 
-    def _score_author_authenticity(self, content: str, author_info: Dict[str, Any]) -> float:
+    def _score_author_authenticity(
+        self, content: str, author_info: Dict[str, Any]
+    ) -> float:
         """Score author authenticity based on linguistic patterns (0-100)."""
         content_lower = content.lower()
         words = self._extract_words(content)

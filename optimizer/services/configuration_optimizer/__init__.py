@@ -18,19 +18,25 @@ import asyncio
 import copy
 import json
 import logging
+import random
+import uuid
 from dataclasses import dataclass, field
 from datetime import datetime
 from enum import Enum
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple, Union
-import uuid
-import random
 
-from ..base import BaseService, ServiceConfiguration, ServiceError, ServiceConfigurationError
+from ..base import (
+    BaseService,
+    ServiceConfiguration,
+    ServiceConfigurationError,
+    ServiceError,
+)
 
 
 class OptimizationStrategy(Enum):
     """Optimization strategies available."""
+
     RANDOM_SEARCH = "random_search"
     BAYESIAN_OPTIMIZATION = "bayesian_optimization"
     GRID_SEARCH = "grid_search"
@@ -38,6 +44,7 @@ class OptimizationStrategy(Enum):
 
 class OptimizationGoal(Enum):
     """Optimization goals."""
+
     MAXIMIZE_QUALITY = "maximize_quality"
     MAXIMIZE_SPEED = "maximize_speed"
     MAXIMIZE_RELIABILITY = "maximize_reliability"
@@ -48,6 +55,7 @@ class OptimizationGoal(Enum):
 @dataclass
 class OptimizationParameter:
     """Parameter for optimization."""
+
     name: str
     param_type: str  # "int", "float", "categorical", "boolean"
     min_value: Optional[float] = None
@@ -60,6 +68,7 @@ class OptimizationParameter:
 @dataclass
 class OptimizationResult:
     """Result of an optimization run."""
+
     optimization_id: str
     strategy: OptimizationStrategy
     goal: OptimizationGoal
@@ -76,6 +85,7 @@ class OptimizationResult:
 @dataclass
 class ConfigurationBackup:
     """Configuration backup."""
+
     backup_id: str
     component_name: str
     configuration: Dict[str, Any]
@@ -108,7 +118,9 @@ class ConfigurationOptimizationService(BaseService):
 
     def _initialize(self) -> None:
         """Initialize the service."""
-        self.logger.info(f"Initializing Configuration Optimization Service: {self.config.name}")
+        self.logger.info(
+            f"Initializing Configuration Optimization Service: {self.config.name}"
+        )
         self._healthy = True
 
     async def optimize_configuration(
@@ -135,7 +147,9 @@ class ConfigurationOptimizationService(BaseService):
             OptimizationResult: Optimization results
         """
         if component_name not in self.optimization_parameters:
-            raise ServiceError(f"No parameters registered for component {component_name}")
+            raise ServiceError(
+                f"No parameters registered for component {component_name}"
+            )
 
         parameters = self.optimization_parameters[component_name]
 
@@ -154,11 +168,21 @@ class ConfigurationOptimizationService(BaseService):
         # Perform optimization based on strategy
         if strategy == OptimizationStrategy.RANDOM_SEARCH:
             result = await self._random_search_optimization(
-                parameters, base_config, goal, max_iterations, evaluation_function, result
+                parameters,
+                base_config,
+                goal,
+                max_iterations,
+                evaluation_function,
+                result,
             )
         elif strategy == OptimizationStrategy.BAYESIAN_OPTIMIZATION:
             result = await self._bayesian_optimization(
-                parameters, base_config, goal, max_iterations, evaluation_function, result
+                parameters,
+                base_config,
+                goal,
+                max_iterations,
+                evaluation_function,
+                result,
             )
         else:
             raise ServiceError(f"Unsupported optimization strategy: {strategy}")
@@ -276,14 +300,16 @@ class ConfigurationOptimizationService(BaseService):
             parameters: List of parameters to optimize
         """
         self.optimization_parameters[component_name] = parameters
-        self.logger.info(f"Registered {len(parameters)} parameters for {component_name}")
+        self.logger.info(
+            f"Registered {len(parameters)} parameters for {component_name}"
+        )
 
     def create_backup(
         self,
         component_name: str,
         configuration: Dict[str, Any],
         performance_score: float,
-        description: str = ""
+        description: str = "",
     ) -> str:
         """
         Create a configuration backup.
@@ -304,7 +330,7 @@ class ConfigurationOptimizationService(BaseService):
             configuration=copy.deepcopy(configuration),
             performance_score=performance_score,
             created_at=datetime.now(),
-            description=description
+            description=description,
         )
 
         if component_name not in self.configuration_backups:

@@ -11,6 +11,7 @@ from typing import Any, Dict, Optional
 @dataclass
 class ServiceConfiguration:
     """Configuration for a service."""
+
     name: str
     version: str = "1.0.0"
     enabled: bool = True
@@ -19,11 +20,13 @@ class ServiceConfiguration:
 
 class ServiceError(Exception):
     """Base exception for service errors."""
+
     pass
 
 
 class ServiceConfigurationError(ServiceError):
     """Raised when service configuration is invalid."""
+
     pass
 
 

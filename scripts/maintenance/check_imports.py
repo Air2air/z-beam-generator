@@ -21,15 +21,21 @@ from typing import List, Tuple
 def get_import_lines(file_path: Path) -> List[str]:
     """Extract import lines from a Python file."""
     try:
-        with open(file_path, 'r', encoding='utf-8') as f:
+        with open(file_path, "r", encoding="utf-8") as f:
             lines = f.readlines()
-        return [line.strip() for line in lines if line.strip().startswith(('import ', 'from '))]
+        return [
+            line.strip()
+            for line in lines
+            if line.strip().startswith(("import ", "from "))
+        ]
     except Exception as e:
         print(f"Error reading {file_path}: {e}")
         return []
 
 
-def categorize_imports(import_lines: List[str]) -> Tuple[List[str], List[str], List[str]]:
+def categorize_imports(
+    import_lines: List[str],
+) -> Tuple[List[str], List[str], List[str]]:
     """Categorize imports into standard, third-party, and local."""
     stdlib_imports = []
     third_party_imports = []
@@ -37,25 +43,62 @@ def categorize_imports(import_lines: List[str]) -> Tuple[List[str], List[str], L
 
     # Common standard library modules
     stdlib_modules = {
-        'abc', 'argparse', 'ast', 'asyncio', 'collections', 'contextlib', 'copy',
-        'dataclasses', 'datetime', 'enum', 'functools', 'hashlib', 'heapq', 'inspect',
-        'io', 'itertools', 'json', 'logging', 'math', 'os', 'pathlib', 'pickle',
-        'platform', 'random', 're', 'shutil', 'socket', 'sqlite3', 'string', 'subprocess',
-        'sys', 'tempfile', 'threading', 'time', 'timeit', 'typing', 'unittest', 'urllib',
-        'uuid', 'warnings', 'weakref', 'xml', 'zipfile'
+        "abc",
+        "argparse",
+        "ast",
+        "asyncio",
+        "collections",
+        "contextlib",
+        "copy",
+        "dataclasses",
+        "datetime",
+        "enum",
+        "functools",
+        "hashlib",
+        "heapq",
+        "inspect",
+        "io",
+        "itertools",
+        "json",
+        "logging",
+        "math",
+        "os",
+        "pathlib",
+        "pickle",
+        "platform",
+        "random",
+        "re",
+        "shutil",
+        "socket",
+        "sqlite3",
+        "string",
+        "subprocess",
+        "sys",
+        "tempfile",
+        "threading",
+        "time",
+        "timeit",
+        "typing",
+        "unittest",
+        "urllib",
+        "uuid",
+        "warnings",
+        "weakref",
+        "xml",
+        "zipfile",
     }
 
     for line in import_lines:
-        if line.startswith('import '):
-            module = line.split()[1].split('.')[0]
-        elif line.startswith('from '):
-            module = line.split()[1].split('.')[0]
+        if line.startswith("import "):
+            module = line.split()[1].split(".")[0]
+        elif line.startswith("from "):
+            module = line.split()[1].split(".")[0]
         else:
             continue
 
         if module in stdlib_modules:
             stdlib_imports.append(line)
-        elif module in ['pytest', 'requests', 'yaml', 'dotenv', 'pathlib']:
+        elif module in ["pytest", "requests", "yaml", "dotenv", "pathlib"]:
             # Known third-party modules
             third_party_imports.append(line)
         else:
@@ -84,7 +127,7 @@ def check_file_imports(file_path: Path) -> Tuple[bool, str]:
     # Check for blank lines between groups
     all_lines = []
     try:
-        with open(file_path, 'r', encoding='utf-8') as f:
+        with open(file_path, "r", encoding="utf-8") as f:
             all_lines = f.readlines()
     except Exception:
         return False, "Could not read file"
@@ -94,7 +137,7 @@ def check_file_imports(file_path: Path) -> Tuple[bool, str]:
     import_end = -1
 
     for i, line in enumerate(all_lines):
-        if line.strip().startswith(('import ', 'from ')):
+        if line.strip().startswith(("import ", "from ")):
             if import_start == -1:
                 import_start = i
             import_end = i
@@ -113,7 +156,7 @@ def check_file_imports(file_path: Path) -> Tuple[bool, str]:
 def fix_file_imports(file_path: Path) -> bool:
     """Fix import organization in a file."""
     try:
-        with open(file_path, 'r', encoding='utf-8') as f:
+        with open(file_path, "r", encoding="utf-8") as f:
             content = f.read()
 
         # Parse the AST to preserve formatting
@@ -139,12 +182,12 @@ def fix_file_imports(file_path: Path) -> bool:
             new_imports.append("")
 
         # Replace import section in content
-        lines = content.split('\n')
+        lines = content.split("\n")
         import_start = -1
         import_end = -1
 
         for i, line in enumerate(lines):
-            if line.strip().startswith(('import ', 'from ')):
+            if line.strip().startswith(("import ", "from ")):
                 if import_start == -1:
                     import_start = i
                 import_end = i
@@ -152,11 +195,11 @@ def fix_file_imports(file_path: Path) -> bool:
         if import_start >= 0:
             # Replace import section
             before_imports = lines[:import_start]
-            after_imports = lines[import_end + 1:]
+            after_imports = lines[import_end + 1 :]
 
-            new_content = '\n'.join(before_imports + new_imports + after_imports)
+            new_content = "\n".join(before_imports + new_imports + after_imports)
 
-            with open(file_path, 'w', encoding='utf-8') as f:
+            with open(file_path, "w", encoding="utf-8") as f:
                 f.write(new_content)
 
             return True
@@ -170,20 +213,26 @@ def fix_file_imports(file_path: Path) -> bool:
 
 def main():
     """Main entry point."""
-    parser = argparse.ArgumentParser(description="Check and fix Python import organization")
-    parser.add_argument("--fix", action="store_true", help="Automatically fix import issues")
-    parser.add_argument("--path", default=".", help="Path to check (default: current directory)")
+    parser = argparse.ArgumentParser(
+        description="Check and fix Python import organization"
+    )
+    parser.add_argument(
+        "--fix", action="store_true", help="Automatically fix import issues"
+    )
+    parser.add_argument(
+        "--path", default=".", help="Path to check (default: current directory)"
+    )
     args = parser.parse_args()
 
     project_root = Path(args.path)
 
     # Find all Python files
     python_files = []
-    for ext in ['*.py']:
+    for ext in ["*.py"]:
         python_files.extend(project_root.rglob(ext))
 
     # Exclude certain directories
-    exclude_patterns = ['__pycache__', '.git', '.venv', 'venv', 'env', 'node_modules']
+    exclude_patterns = ["__pycache__", ".git", ".venv", "venv", "env", "node_modules"]
     filtered_files = []
 
     for file_path in python_files:

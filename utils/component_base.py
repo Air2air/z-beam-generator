@@ -17,6 +17,7 @@ import yaml
 from generators.component_generators import ComponentResult
 from utils.config_utils import load_component_config
 
+
 def load_template(template_path: Path) -> Optional[Dict[str, Any]]:
     """Load a YAML template file."""
     try:

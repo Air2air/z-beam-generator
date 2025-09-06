@@ -15,6 +15,7 @@ Usage:
     python3 run_unified_tests.py --verbose         # Detailed output
 """
 
+import argparse
 import json
 import os
 import subprocess
@@ -23,10 +24,8 @@ import time
 from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, List, Tuple
-import argparse
 
 import yaml
-
 
     parser = argparse.ArgumentParser(
         description="Unified Test Runner for Z-Beam Generator",

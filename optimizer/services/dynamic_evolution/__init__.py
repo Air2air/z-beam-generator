@@ -137,7 +137,7 @@ class DynamicEvolutionService(BaseService):
         self.performance_cache: Dict[str, Dict[str, Any]] = {}
 
         super().__init__(config)
-        
+
         # Initialize logger
         self.logger = logging.getLogger(f"{__name__}.{self.__class__.__name__}")
 

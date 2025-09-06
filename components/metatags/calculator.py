@@ -4,15 +4,13 @@ Maximizes Python-based calculations to minimize API requests and enhance SEO per
 Follows current best practice standards for comprehensive meta tag implementation.
 """
 
+import html
 import json
 import re
 from datetime import datetime
 from typing import Any, Dict, List, Optional
 
 import yaml
-
-import html
-
 
 
 def sanitize_content(content: str) -> str:

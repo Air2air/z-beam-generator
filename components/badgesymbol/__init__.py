@@ -6,7 +6,6 @@ This is a static component that extracts data without requiring API calls.
 """
 
 from .generator import (
-
     BadgeSymbolGenerator,
     create_badge_symbol_template,
     generate_badge_symbol_content,

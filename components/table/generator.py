@@ -10,12 +10,12 @@ import random
 from pathlib import Path
 from typing import Any, Dict, Optional
 
+from generators.component_generators import APIComponentGenerator
 from utils.component_base import (
     ComponentResult,
     handle_generation_error,
     validate_required_fields,
 )
-from generators.component_generators import APIComponentGenerator
 
 
 class TableComponentGenerator(APIComponentGenerator):
@@ -73,7 +73,7 @@ class TableComponentGenerator(APIComponentGenerator):
             ("Thermal Conductivity", "401", "W/(m·K)"),
             ("Electrical Conductivity", "5.96×10⁷", "S/m"),
             ("Tensile Strength", "210-350", "MPa"),
-            ("Young's Modulus", "110-128", "GPa")
+            ("Young's Modulus", "110-128", "GPa"),
         ]
 
         # Randomly select 5-7 properties
@@ -94,7 +94,7 @@ class TableComponentGenerator(APIComponentGenerator):
             ("C10100 (OFHC)", "≥99.99", "O₂ ≤ 0.0005"),
             ("C11000 (ETP)", "≥99.90", "O₂ ≤ 0.04"),
             ("C12200 (Phosphorized)", "≥99.90", "P 0.015-0.040"),
-            ("C19400 (Alloy)", "97.0-98.5", "Fe 2.1-2.6")
+            ("C19400 (Alloy)", "97.0-98.5", "Fe 2.1-2.6"),
         ]
 
         # Randomly select 3-4 grades
@@ -117,7 +117,7 @@ class TableComponentGenerator(APIComponentGenerator):
             ("Hardness (Brinell)", "35-150", "HB (annealed)"),
             ("Reflectivity (IR)", "≥98%", "λ = 1064nm"),
             ("Surface Roughness (Ra)", "0.1-0.5", "µm"),
-            ("Thermal Expansion", "16.5", "µm/(m·K)")
+            ("Thermal Expansion", "16.5", "µm/(m·K)"),
         ]
 
         # Randomly select 4-5 metrics
@@ -140,7 +140,7 @@ class TableComponentGenerator(APIComponentGenerator):
             ("EN 1172", "Copper for roofing"),
             ("IEC 60028", "International resistivity std"),
             ("ASTM B170", "Oxygen-free copper"),
-            ("JIS H3100", "Copper and copper alloys")
+            ("JIS H3100", "Copper and copper alloys"),
         ]
 
         # Randomly select 4-5 standards
@@ -163,7 +163,7 @@ class TableComponentGenerator(APIComponentGenerator):
             ("Pulse Duration", "10-100", "ns"),
             ("Spot Size", "0.1-2.0", "mm"),
             ("Repetition Rate", "10-50", "kHz"),
-            ("Fluence", "0.5-5", "J/cm²")
+            ("Fluence", "0.5-5", "J/cm²"),
         ]
 
         # Randomly select 4-5 parameters

@@ -6,15 +6,14 @@ Renames all content files with parentheses in their names to use clean slug nami
 This ensures consistent, clean paths without parentheses for all generated content.
 """
 
+import argparse
 import logging
 import shutil
 import sys
 from pathlib import Path
 from typing import Dict, List, Tuple
-import argparse
 
 from utils.slug_utils import create_filename_slug, get_clean_material_mapping
-
 
     parser = argparse.ArgumentParser(
         description="Clean up Z-Beam file paths by removing parentheses"

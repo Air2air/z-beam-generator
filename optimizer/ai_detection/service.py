@@ -8,11 +8,11 @@ import logging
 import time
 from typing import Optional
 
-from .types import AIDetectionConfig, AIDetectionResult, AIDetectionError
+from .providers.mock import MockProvider
 
 # Import providers after importing types to avoid circular imports
 from .providers.winston import WinstonProvider
-from .providers.mock import MockProvider
+from .types import AIDetectionConfig, AIDetectionError, AIDetectionResult
 
 
 class AIDetectionService:
@@ -81,4 +81,5 @@ def initialize_ai_detection_service(
 
 class AIDetectionError(Exception):
     """Exception raised for AI detection errors"""
+
     pass

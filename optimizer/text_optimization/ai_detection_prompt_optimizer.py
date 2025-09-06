@@ -8,14 +8,15 @@ Updates are targeted and incremental to avoid bloat.
 
 import json
 import logging
+import re
 from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
-import re
 
 import yaml
 
 from api.client_manager import create_api_client
+
 from .ai_detection_config_optimizer import AIDetectionConfigOptimizer
 
 logger = logging.getLogger(__name__)
@@ -40,11 +41,16 @@ class AIDetectionPromptOptimizer(AIDetectionConfigOptimizer):
                 prompts = yaml.safe_load(f)
 
             # Analyze results and update prompts
-            updated_prompts = self._optimize_prompts_for_results(prompts, winston_results)
+            updated_prompts = self._optimize_prompts_for_results(
+                prompts, winston_results
+            )
 
             # Convert config values back to template variables
             yaml_content = yaml.dump(
-                updated_prompts, default_flow_style=False, sort_keys=False, allow_unicode=True
+                updated_prompts,
+                default_flow_style=False,
+                sort_keys=False,
+                allow_unicode=True,
             )
 
             # For now, save to the core file (this is a limitation of the current approach)
@@ -61,7 +67,9 @@ class AIDetectionPromptOptimizer(AIDetectionConfigOptimizer):
             logger.error(f"Failed to save updated prompts: {e}")
             return False
 
-    def _optimize_prompts_for_results(self, prompts: Dict[str, Any], results: Dict[str, Any]) -> Dict[str, Any]:
+    def _optimize_prompts_for_results(
+        self, prompts: Dict[str, Any], results: Dict[str, Any]
+    ) -> Dict[str, Any]:
         """Optimize prompts based on analysis results."""
         # This is a placeholder implementation
         # In a real implementation, this would analyze the results and make targeted updates

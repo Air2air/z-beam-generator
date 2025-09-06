@@ -6,18 +6,16 @@ Provides common test fixtures, utilities, and setup/teardown
 functions for the test suite.
 """
 
-import sys
-from pathlib import Path
-from typing import Any, Dict
-import time
-import json
 import json
 import shutil
+import sys
+import time
+from pathlib import Path
+from typing import Any, Dict
 
 import pytest
 
 from tests.mocks.mock_api_client import create_fast_mock_client
-
 
         if self.cache_dir.exists():
             shutil.rmtree(self.cache_dir)

@@ -9,9 +9,8 @@ from pathlib import Path
 
 import pytest
 
-from api.env_loader import EnvLoader
 from api.client_manager import create_api_client
-
+from api.env_loader import EnvLoader
 
     def decorator(test_func):
         def wrapper(*args, **kwargs):

@@ -12,38 +12,40 @@ from dataclasses import dataclass
 from datetime import datetime
 from typing import Any, Callable, Dict, Optional
 
+from optimizer.services import ServiceConfiguration
 from optimizer.services.ai_detection_optimization import AIDetectionOptimizationService
 from optimizer.services.iterative_workflow.service import (
     IterativeWorkflowService,
     WorkflowConfiguration,
 )
-from optimizer.services import ServiceConfiguration
+
 
 # Simple service registry implementation
 class ServiceRegistry:
     """Simple service registry for managing optimizer services."""
-    
+
     _instance = None
-    
+
     def __init__(self):
         self._services = {}
-    
+
     @classmethod
     def get_instance(cls):
         if cls._instance is None:
             cls._instance = cls()
         return cls._instance
-    
+
     def register_service(self, service):
         """Register a service instance."""
         self._services[service.config.name] = service
-    
+
     def get_service_typed(self, name, service_type):
         """Get a service by name and type."""
         service = self._services.get(name)
         if service and isinstance(service, service_type):
             return service
         return None
+
 
 # Global service registry instance
 service_registry = ServiceRegistry.get_instance()
@@ -106,7 +108,9 @@ class ContentOptimizationOrchestrator:
                 "ai_detection_service", AIDetectionOptimizationService
             )
             if not self.ai_service:
-                raise ValueError("AI detection service not found in registry and not provided")
+                raise ValueError(
+                    "AI detection service not found in registry and not provided"
+                )
 
         if workflow_service:
             self.workflow_service = workflow_service
@@ -115,7 +119,9 @@ class ContentOptimizationOrchestrator:
                 "iterative_workflow_service", IterativeWorkflowService
             )
             if not self.workflow_service:
-                raise ValueError("Iterative workflow service not found in registry and not provided")
+                raise ValueError(
+                    "Iterative workflow service not found in registry and not provided"
+                )
 
         if not self.ai_service:
             raise ValueError("AI detection service not available")
@@ -283,7 +289,7 @@ class ContentOptimizationOrchestrator:
 
         Returns:
             float: Quality score (0-100 scale)
-        
+
         Raises:
             Exception: If quality assessment fails
         """

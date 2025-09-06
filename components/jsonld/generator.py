@@ -12,7 +12,6 @@ from pathlib import Path
 from typing import Dict, Optional
 
 from generators.component_generators import (
-
     ComponentResult,
     FrontmatterComponentGenerator,
 )
@@ -137,7 +136,11 @@ class JsonldComponentGenerator(FrontmatterComponentGenerator):
         return {}
 
     def _build_from_example(
-        self, frontmatter_data: Dict, example_structure: Dict, material_name: str, material_data: Dict
+        self,
+        frontmatter_data: Dict,
+        example_structure: Dict,
+        material_name: str,
+        material_data: Dict,
     ) -> Dict:
         """Build JSON-LD using example structure as template"""
         result = {}
@@ -273,7 +276,11 @@ class JsonldComponentGenerator(FrontmatterComponentGenerator):
         return jsonld
 
     def _build_nested_structure(
-        self, frontmatter_data: Dict, example_structure: Dict, parent_key: str, author_info: Optional[Dict]
+        self,
+        frontmatter_data: Dict,
+        example_structure: Dict,
+        parent_key: str,
+        author_info: Optional[Dict],
     ) -> Dict:
         """Build nested dictionary structure"""
         result = {}
@@ -324,7 +331,7 @@ class JsonldComponentGenerator(FrontmatterComponentGenerator):
             "physicalProperties",
             "technicalSpecifications",
             "properties",
-            "chemicalProperties"
+            "chemicalProperties",
         ]:
             if section_name not in frontmatter_data:
                 continue  # Skip sections that don't exist

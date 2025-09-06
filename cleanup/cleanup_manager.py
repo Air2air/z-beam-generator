@@ -6,11 +6,11 @@ Standalone cleanup system decoupled from test framework.
 Provides comprehensive project maintenance and file organization.
 """
 
+import argparse
 import json
 from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Any, Dict, List, Tuple
-import argparse
 
 from cleanup.test_cleanup import CleanupManager
 

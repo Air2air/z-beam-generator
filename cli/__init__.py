@@ -7,10 +7,10 @@ Modular CLI components extracted from run.py for better organization:
 - cleanup_commands.py: Cleanup functionality
 """
 
-from .api_config import (
-    API_PROVIDERS,
-)
-from api.client_manager import get_api_client_for_component, create_api_client
+from api.client_manager import create_api_client, get_api_client_for_component
+
+from .api_config import API_PROVIDERS
+
 # Removed check_environment import to avoid circular dependency
 from .cleanup_commands import (
     clean_content_components,

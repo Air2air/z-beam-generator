@@ -10,12 +10,12 @@ import random
 from pathlib import Path
 from typing import Any, Dict, Optional
 
+from generators.component_generators import APIComponentGenerator
 from utils.component_base import (
     ComponentResult,
     handle_generation_error,
     validate_required_fields,
 )
-from generators.component_generators import APIComponentGenerator
 
 
 class BulletsComponentGenerator(APIComponentGenerator):
@@ -71,7 +71,7 @@ class BulletsComponentGenerator(APIComponentGenerator):
             f"exhibits high reflectivity, making the {wavelength}nm wavelength (common in pulsed fiber lasers) ideal for effective laser ablation",
             f"responds well to {wavelength}nm wavelength lasers, providing optimal energy absorption for contaminant removal",
             f"benefits from {wavelength}nm laser systems, which offer excellent coupling efficiency for surface cleaning",
-            f"works effectively with {wavelength}nm wavelength, delivering precise ablation while controlling thermal effects"
+            f"works effectively with {wavelength}nm wavelength, delivering precise ablation while controlling thermal effects",
         ]
 
         return f"• **Optimal Wavelength for Laser Cleaning**: {material_name} {random.choice(descriptions)} while minimizing thermal damage."
@@ -82,14 +82,14 @@ class BulletsComponentGenerator(APIComponentGenerator):
             "oxides, oils, coatings",
             "surface contaminants and residues",
             "industrial deposits and films",
-            "environmental contaminants and buildup"
+            "environmental contaminants and buildup",
         ]
 
         benefits = [
             "preserving substrate integrity and reducing material waste",
             "maintaining surface quality and dimensional accuracy",
             "ensuring consistent cleaning results without mechanical stress",
-            "providing selective removal without affecting base material properties"
+            "providing selective removal without affecting base material properties",
         ]
 
         return f"• **Non-Contact Precision Cleaning**: Laser cleaning removes {random.choice(contaminants)} from {material_name} without mechanical contact, {random.choice(benefits)}."
@@ -100,14 +100,14 @@ class BulletsComponentGenerator(APIComponentGenerator):
             "electronics, aerospace, and automotive",
             "semiconductor, medical, and manufacturing",
             "aerospace, marine, and industrial equipment",
-            "automotive, electronics, and precision engineering"
+            "automotive, electronics, and precision engineering",
         ]
 
         purposes = [
             f"restoring {material_name} surfaces, enhancing conductivity, and preparing for soldering or bonding",
             f"improving {material_name} surface finish, removing coatings, and preparing for further processing",
             f"cleaning critical {material_name} components, removing residues, and ensuring surface quality",
-            f"preparing {material_name} surfaces for coating, improving adhesion, and extending component life"
+            f"preparing {material_name} surfaces for coating, improving adhesion, and extending component life",
         ]
 
         return f"• **Industrial Applications**: Widely used in {random.choice(industries)} industries for {random.choice(purposes)}."
@@ -118,14 +118,14 @@ class BulletsComponentGenerator(APIComponentGenerator):
             f"Requires precise pulse duration and energy control to avoid excessive heat buildup in {material_name}",
             f"Demands careful parameter selection to prevent thermal stress and distortion of {material_name}",
             f"Needs optimized laser settings to minimize thermal effects on sensitive {material_name} surfaces",
-            f"Benefits from controlled energy delivery to prevent unwanted modification of {material_name}"
+            f"Benefits from controlled energy delivery to prevent unwanted modification of {material_name}",
         ]
 
         outcomes = [
             "ensuring efficient contamination removal without melting or warping the substrate",
             "providing effective cleaning while maintaining material integrity and properties",
             "delivering precise ablation without compromising structural characteristics",
-            "achieving thorough cleaning with minimal thermal impact on the base material"
+            "achieving thorough cleaning with minimal thermal impact on the base material",
         ]
 
         return f"• **Thermal Processing Considerations**: {random.choice(considerations)}, {random.choice(outcomes)}."

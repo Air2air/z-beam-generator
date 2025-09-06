@@ -54,7 +54,6 @@ class AIDetectionConfigOptimizer:
             "emotional_depth",  # Core: Human nuance
             "paragraph_structure",  # Core: Break regimented paragraphs
             "lexical_diversity",  # Core: Vary vocabulary
-            
             # Advanced linguistic patterns for high scores
             "syntactic_complexity_variation",  # Advanced: Vary sentence structure complexity
             "discourse_marker_diversity",  # Advanced: Use varied transition words
@@ -63,7 +62,6 @@ class AIDetectionConfigOptimizer:
             "register_shifting",  # Advanced: Mix formal/informal language
             "hedging_and_qualification",  # Advanced: Add uncertainty markers
             "epistemic_markers",  # Advanced: Show knowledge limitations
-            
             # Cognitive authenticity markers
             "mid_thought_interruptions",  # Cognitive: Simulate thinking pauses
             "cognitive_dissonance_indicators",  # Cognitive: Show internal conflict
@@ -71,7 +69,6 @@ class AIDetectionConfigOptimizer:
             "subjective_evaluation_markers",  # Cognitive: Add personal opinions
             "personal_reflection_indicators",  # Cognitive: Show introspection
             "contextual_memory_references",  # Cognitive: Reference prior knowledge
-            
             # Advanced structural variations
             "paragraph_rhythm_variation",  # Structural: Vary paragraph pacing
             "thematic_progression_markers",  # Structural: Show topic development
@@ -79,14 +76,12 @@ class AIDetectionConfigOptimizer:
             "narrative_digression_patterns",  # Structural: Allow tangents
             "perspective_shifting",  # Structural: Change viewpoints
             "temporal_reference_diversity",  # Structural: Vary time references
-            
             # Contextual and cultural adaptation
             "domain_specific_jargon_variation",  # Contextual: Mix technical terms
             "cultural_reference_integration",  # Cultural: Add relevant references
             "situational_context_markers",  # Contextual: Show awareness of context
             "professional_experience_indicators",  # Professional: Show expertise
             "expertise_level_markers",  # Professional: Demonstrate knowledge depth
-            
             # Rhetorical and stylistic devices
             "metaphorical_language_usage",  # Rhetorical: Use metaphors naturally
             "rhetorical_question_patterns",  # Rhetorical: Ask questions for emphasis
@@ -151,7 +146,7 @@ class AIDetectionConfigOptimizer:
         try:
             # Store winston_result for validation method access
             self._current_winston_result = winston_result
-            
+
             # Generate optimization prompt for DeepSeek
             prompt = self._generate_optimization_prompt(
                 winston_result, content, current_config
@@ -646,24 +641,35 @@ Focus on GRADUAL improvements that combine multiple enhancement types for breakt
             # Dynamic enhancement limits based on current score context
             # Allow more enhancements for lower scores that need aggressive optimization
             enabled_flags = [flag for flag in self.optimization_flags if config[flag]]
-            
+
             # Get current score from winston_result if available (passed from optimize_config)
             current_score = 50  # Default fallback
-            if hasattr(self, '_current_winston_result') and self._current_winston_result:
+            if (
+                hasattr(self, "_current_winston_result")
+                and self._current_winston_result
+            ):
                 current_score = self._current_winston_result.get("overall_score", 50)
-            
+
             if current_score < 40:
                 max_enhancements = 4  # Aggressive for critical scores
-                logger.info(f"Critical score ({current_score:.1f}) - allowing up to {max_enhancements} enhancements")
+                logger.info(
+                    f"Critical score ({current_score:.1f}) - allowing up to {max_enhancements} enhancements"
+                )
             elif current_score < 60:
                 max_enhancements = 3  # Moderate for low-medium scores
-                logger.info(f"Moderate score ({current_score:.1f}) - allowing up to {max_enhancements} enhancements")
+                logger.info(
+                    f"Moderate score ({current_score:.1f}) - allowing up to {max_enhancements} enhancements"
+                )
             elif current_score < 80:
                 max_enhancements = 2  # Conservative for good scores
-                logger.info(f"Good score ({current_score:.1f}) - allowing up to {max_enhancements} enhancements")
+                logger.info(
+                    f"Good score ({current_score:.1f}) - allowing up to {max_enhancements} enhancements"
+                )
             else:
                 max_enhancements = 1  # Minimal for excellent scores
-                logger.info(f"Excellent score ({current_score:.1f}) - allowing up to {max_enhancements} enhancements")
+                logger.info(
+                    f"Excellent score ({current_score:.1f}) - allowing up to {max_enhancements} enhancements"
+                )
 
             if len(enabled_flags) > max_enhancements:
                 logger.warning(
@@ -857,34 +863,54 @@ Focus on GRADUAL improvements that combine multiple enhancement types for breakt
             recommended_flags = learning_insights.get("recommended_flags", [])
 
             # Dynamic priority order based on current score and DeepSeek recommendations
-            current_score = self._current_winston_result.get("overall_score", 50) if hasattr(self, '_current_winston_result') and self._current_winston_result else 50
-            
+            current_score = (
+                self._current_winston_result.get("overall_score", 50)
+                if hasattr(self, "_current_winston_result")
+                and self._current_winston_result
+                else 50
+            )
+
             if current_score < 40:
                 # Critical scores: Focus on core + cognitive authenticity
                 base_priority_order = [
-                    "natural_language_patterns", "syntactic_complexity_variation",
-                    "cognitive_dissonance_indicators", "mid_thought_interruptions",
-                    "sentence_variability", "paragraph_structure", "lexical_diversity"
+                    "natural_language_patterns",
+                    "syntactic_complexity_variation",
+                    "cognitive_dissonance_indicators",
+                    "mid_thought_interruptions",
+                    "sentence_variability",
+                    "paragraph_structure",
+                    "lexical_diversity",
                 ]
             elif current_score < 60:
                 # Moderate scores: Authenticity and cultural markers
                 base_priority_order = [
-                    "cultural_adaptation", "personal_reflection_indicators",
-                    "uncertainty_expressions", "discourse_marker_diversity",
-                    "natural_language_patterns", "sentence_variability", "emotional_depth"
+                    "cultural_adaptation",
+                    "personal_reflection_indicators",
+                    "uncertainty_expressions",
+                    "discourse_marker_diversity",
+                    "natural_language_patterns",
+                    "sentence_variability",
+                    "emotional_depth",
                 ]
             elif current_score < 80:
                 # Good scores: Advanced rhetorical and structural
                 base_priority_order = [
-                    "rhetorical_question_patterns", "metaphorical_language_usage",
-                    "paragraph_rhythm_variation", "pragmatic_context_markers",
-                    "cultural_adaptation", "lexical_diversity", "conversational_style"
+                    "rhetorical_question_patterns",
+                    "metaphorical_language_usage",
+                    "paragraph_rhythm_variation",
+                    "pragmatic_context_markers",
+                    "cultural_adaptation",
+                    "lexical_diversity",
+                    "conversational_style",
                 ]
             else:
                 # Excellent scores: Fine-tuning with subtle markers
                 base_priority_order = [
-                    "epistemic_markers", "politeness_strategies", "expertise_level_markers",
-                    "emphasis_and_intensification", "persuasive_language_markers"
+                    "epistemic_markers",
+                    "politeness_strategies",
+                    "expertise_level_markers",
+                    "emphasis_and_intensification",
+                    "persuasive_language_markers",
                 ]
 
             # Boost priority of DeepSeek-recommended flags

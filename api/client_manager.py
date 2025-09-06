@@ -87,6 +87,7 @@ def get_api_client_for_component(component_type: str) -> APIClient:
     """
     # Import here to avoid circular import
     from cli.component_config import COMPONENT_CONFIG
+
     components_config = COMPONENT_CONFIG.get("components", {})
 
     if component_type not in components_config:

@@ -10,30 +10,31 @@ import sys
 import time
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
-import json
 
 import yaml
 
-from optimizer.text_optimization.validation.content_scorer import create_content_scorer
-from optimizer.ai_detection.config import AI_DETECTION_CONFIG
 from api.client import GenerationRequest
-
+from optimizer.ai_detection.config import AI_DETECTION_CONFIG
+from optimizer.text_optimization.validation.content_scorer import create_content_scorer
 
 logger = logging.getLogger(__name__)
 
 
 class ConfigurationError(Exception):
     """Raised when required configurations are missing or invalid."""
+
     pass
 
 
 class GenerationError(Exception):
     """Raised when content generation fails."""
+
     pass
 
 
 class RetryableError(Exception):
     """Raised for temporary failures that could be retried."""
+
     pass
 
 
@@ -79,7 +80,9 @@ class FailFastContentGenerator:
         # Initialize content scorer if enabled
         self.content_scorer = None
         if self.enable_scoring:
-            self.content_scorer = create_content_scorer(human_threshold=self.human_threshold)
+            self.content_scorer = create_content_scorer(
+                human_threshold=self.human_threshold
+            )
 
     def _validate_configurations(self):
         """Validate all required configurations exist and are valid."""
@@ -92,7 +95,9 @@ class FailFastContentGenerator:
 
         for file_path in required_files:
             if not Path(file_path).exists():
-                raise ConfigurationError(f"Required configuration file not found: {file_path}")
+                raise ConfigurationError(
+                    f"Required configuration file not found: {file_path}"
+                )
 
         # Validate authors file
         self._load_authors_file("components/author/authors.json")
@@ -153,7 +158,9 @@ class FailFastContentGenerator:
             logger.warning("No country specified in author_info, using default persona")
             country = "usa"
 
-        persona_file = f"optimizer/text_optimization/prompts/personas/{country}_persona.yaml"
+        persona_file = (
+            f"optimizer/text_optimization/prompts/personas/{country}_persona.yaml"
+        )
 
         try:
             with open(persona_file, "r", encoding="utf-8") as f:
@@ -220,13 +227,19 @@ Writing Style: {json.dumps(writing_style)}
 
         # Construct full prompt
         full_prompt = self._construct_prompt(
-            base_prompt_data, material_name, material_data, persona_prompt, frontmatter_data
+            base_prompt_data,
+            material_name,
+            material_data,
+            persona_prompt,
+            frontmatter_data,
         )
 
         # Generate content with retries
         for attempt in range(self.max_retries + 1):
             try:
-                logger.info(f"Generating content for {material_name} (attempt {attempt + 1})")
+                logger.info(
+                    f"Generating content for {material_name} (attempt {attempt + 1})"
+                )
 
                 # Create generation request
                 request = GenerationRequest(
@@ -241,7 +254,9 @@ Writing Style: {json.dumps(writing_style)}
 
                 if not response or not response.content:
                     if attempt < self.max_retries:
-                        logger.warning(f"Empty response, retrying in {self.retry_delay}s")
+                        logger.warning(
+                            f"Empty response, retrying in {self.retry_delay}s"
+                        )
                         time.sleep(self.retry_delay)
                         continue
                     else:
@@ -260,7 +275,9 @@ Writing Style: {json.dumps(writing_style)}
                     score = score_result.overall_score
 
                     if score < self.human_threshold:
-                        logger.warning(f"Content score {score} below threshold {self.human_threshold}")
+                        logger.warning(
+                            f"Content score {score} below threshold {self.human_threshold}"
+                        )
 
                 return {
                     "success": True,
@@ -271,10 +288,14 @@ Writing Style: {json.dumps(writing_style)}
 
             except Exception as e:
                 if attempt < self.max_retries:
-                    logger.warning(f"Generation attempt {attempt + 1} failed: {e}, retrying in {self.retry_delay}s")
+                    logger.warning(
+                        f"Generation attempt {attempt + 1} failed: {e}, retrying in {self.retry_delay}s"
+                    )
                     time.sleep(self.retry_delay)
                 else:
-                    raise GenerationError(f"Content generation failed after {self.max_retries + 1} attempts: {e}")
+                    raise GenerationError(
+                        f"Content generation failed after {self.max_retries + 1} attempts: {e}"
+                    )
 
         # This should never be reached
         raise GenerationError("Unexpected error in generation loop")
@@ -312,7 +333,9 @@ Writing Style: {json.dumps(writing_style)}
 
         # Add frontmatter context if available
         if frontmatter_data:
-            sections.append(f"FRONTMATTER CONTEXT: {json.dumps(frontmatter_data, indent=2)}")
+            sections.append(
+                f"FRONTMATTER CONTEXT: {json.dumps(frontmatter_data, indent=2)}"
+            )
 
         # Add base prompt instructions
         if "instructions" in base_prompt_data:
