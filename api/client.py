@@ -106,10 +106,10 @@ class APIClient:
 
         # Set timeout values with defaults
         self.timeout_connect = getattr(self.config, "timeout_connect", None) or (
-            self.config.get("timeout_connect") if hasattr(self.config, "get") else 30
+            self.config.get("timeout_connect") if hasattr(self.config, "get") else 10
         )
         self.timeout_read = getattr(self.config, "timeout_read", None) or (
-            self.config.get("timeout_read") if hasattr(self.config, "get") else 120
+            self.config.get("timeout_read") if hasattr(self.config, "get") else 30
         )
 
         # Initialize session
@@ -137,9 +137,11 @@ class APIClient:
             }
         )
 
-        # Configure session timeouts and retries
+        # Configure session - disable HTTP-level retries since we handle retries at application level
         adapter = requests.adapters.HTTPAdapter(
-            max_retries=self.config.max_retries, pool_connections=10, pool_maxsize=10
+            max_retries=0,  # Disable HTTP-level retries, we handle retries in generate()
+            pool_connections=1,  # Reduce connection pool to prevent concurrent requests
+            pool_maxsize=1,  # Reduce max size to prevent concurrent requests
         )
         self.session.mount("http://", adapter)
         self.session.mount("https://", adapter)
@@ -157,11 +159,23 @@ class APIClient:
                 logger.info("✅ API connection test successful")
                 return True
             else:
-                logger.error(f"❌ API connection test failed: {response.error}")
+                from utils.loud_errors import api_failure
+
+                api_failure(
+                    "api_client",
+                    f"Connection test failed: {response.error}",
+                    retry_count=None,
+                )
                 return False
 
         except Exception as e:
-            logger.error(f"❌ API connection test failed with exception: {e}")
+            from utils.loud_errors import api_failure
+
+            api_failure(
+                "api_client",
+                f"Connection test failed with exception: {e}",
+                retry_count=None,
+            )
             return False
 
     def generate(self, request: GenerationRequest) -> APIResponse:
@@ -186,7 +200,7 @@ class APIClient:
                 self.stats["total_response_time"] += response.response_time or 0
                 return response
 
-            except requests.exceptions.Timeout as e:
+            except requests.exceptions.Timeout:
                 if attempt == self.config.max_retries:
                     return APIResponse(
                         success=False,
@@ -197,7 +211,7 @@ class APIClient:
                     )
                 time.sleep(self.config.retry_delay * (attempt + 1))
 
-            except requests.exceptions.ConnectionError as e:
+            except requests.exceptions.ConnectionError:
                 if attempt == self.config.max_retries:
                     return APIResponse(
                         success=False,
@@ -283,12 +297,37 @@ class APIClient:
             payload["frequency_penalty"] = request.frequency_penalty
             payload["presence_penalty"] = request.presence_penalty
 
-        # Make request
-        response = self.session.post(
-            f"{self.base_url}/v1/chat/completions",
-            json=payload,
-            timeout=(self.timeout_connect, self.timeout_read),
-        )
+        # Make request with enhanced timeout handling
+        try:
+            response = self.session.post(
+                f"{self.base_url}/v1/chat/completions",
+                json=payload,
+                timeout=(self.timeout_connect, self.timeout_read),
+            )
+        except requests.exceptions.ReadTimeout:
+            # Handle read timeout specifically
+            from utils.loud_errors import network_failure
+
+            network_failure("api_client", f"Read timeout after {self.timeout_read}s")
+            return APIResponse(
+                success=False,
+                content="",
+                error=f"Response read timeout after {self.timeout_read} seconds",
+                response_time=time.time() - start_time,
+            )
+        except requests.exceptions.ConnectTimeout:
+            # Handle connection timeout specifically
+            from utils.loud_errors import network_failure
+
+            network_failure(
+                "api_client", f"Connection timeout after {self.timeout_connect}s"
+            )
+            return APIResponse(
+                success=False,
+                content="",
+                error=f"Connection timeout after {self.timeout_connect} seconds",
+                response_time=time.time() - start_time,
+            )
 
         response_time = time.time() - start_time
 
@@ -300,9 +339,76 @@ class APIClient:
         # API Terminal Messaging - Response received
         print(f"📥 [API CLIENT] Received response (Status: {response.status_code})")
 
+        # Add timeout protection for response content reading using threading
+        import threading
+
+        content_loaded = [False]
+        content_data = [None]
+        content_error = [None]
+
+        def load_content_with_timeout():
+            try:
+                content_data[0] = response.content
+                content_loaded[0] = True
+            except Exception as e:
+                content_error[0] = str(e)
+
+        # Start content loading in a separate thread with timeout
+        content_thread = threading.Thread(target=load_content_with_timeout)
+        content_thread.daemon = True
+        content_thread.start()
+
+        # Wait for content loading with timeout
+        content_timeout = min(self.timeout_read, 30)  # Max 30s for content reading
+        content_thread.join(timeout=content_timeout)
+
+        if not content_loaded[0]:
+            if content_thread.is_alive():
+                from utils.loud_errors import network_failure
+
+                network_failure(
+                    "api_client", f"Content reading timeout after {content_timeout}s"
+                )
+                return APIResponse(
+                    success=False,
+                    content="",
+                    error=f"Content reading timeout after {content_timeout} seconds",
+                    response_time=time.time() - start_time,
+                )
+            elif content_error[0]:
+                from utils.loud_errors import api_failure
+
+                api_failure(
+                    "api_client",
+                    f"Content reading error: {content_error[0]}",
+                    retry_count=None,
+                )
+                return APIResponse(
+                    success=False,
+                    content="",
+                    error=f"Content reading error: {content_error[0]}",
+                    response_time=time.time() - start_time,
+                )
+
+        print(
+            f"📦 [API CLIENT] Content loaded successfully ({len(content_data[0])} bytes)"
+        )
+
         # Process response
         if response.status_code == 200:
-            data = response.json()
+            try:
+                data = response.json()
+            except json.JSONDecodeError as e:
+                from utils.loud_errors import api_failure
+
+                api_failure("api_client", f"JSON decode error: {e}", retry_count=None)
+                return APIResponse(
+                    success=False,
+                    content="",
+                    error=f"Invalid JSON response: {e}",
+                    response_time=time.time() - start_time,
+                )
+
             logger.info(f"📄 Raw response data type: {type(data)}")
             logger.info(
                 f"📄 Raw response keys: {list(data.keys()) if isinstance(data, dict) else 'Not a dict'}"
@@ -320,7 +426,7 @@ class APIClient:
             logger.info(f"📄 Content length: {len(content)} chars")
 
             # API Terminal Messaging - Success
-            print(f"✅ [API CLIENT] Request completed successfully")
+            print("✅ [API CLIENT] Request completed successfully")
             print(f"⏱️ [API CLIENT] Response time: {response_time:.2f}s")
             print(
                 f"📊 [API CLIENT] Tokens used: {usage.get('total_tokens', 'N/A')} total"
@@ -508,7 +614,9 @@ class APIClient:
             except json.JSONDecodeError:
                 error_msg += f": {response.text}"
 
-            logger.error(f"❌ {error_msg}")
+            from utils.loud_errors import api_failure
+
+            api_failure("gemini_api", error_msg, retry_count=None)
 
             return APIResponse(
                 success=False, content="", error=error_msg, response_time=response_time

@@ -1,21 +1,26 @@
-Of course. Here is the material card for Carbon Fiber Reinforced Polymer (CFRP), written from the persona of Test Author.
+---
+ai_detection_analysis:
+  score: 0.000000
+  confidence: 0.000000
+  classification: "error"
+  provider: "winston"
+  processing_time: 0.111193
+  optimization_iterations: 3
 
-***
-
-### **Material Card: Carbon Fiber Reinforced Polymer (CFRP)**
-
-**Author:** Test Author
-**Category:** Composite
-**Last Updated:** 2025-08-31
-**Status:** Generated Frontmatter
-**Complexity:** Very High | **Difficulty Score:** 5/5
-
+quality_analysis:
+  overall_score: 50.548030
+  formatting_score: 80.000000
+  technical_score: 64.482759
+  authenticity_score: 12.714286
+  readability_score: 80.896552
+  believability_score: 72.500000
+  word_count: 348
+  author_country: "usa"
+  details:
+    error: "Analysis failed: Winston.ai validation failed: You do not have enough credits to make this request, the request cost 357 credits but you only have 28 credits remaining. Please visit https://dev.gowinston.ai/billing to purchase more credits."
+    error_type: "AIDetectionError"
 ---
 
-#### **Material Overview**
-Carbon Fiber Reinforced Polymer is a high-performance composite material known for its exceptional strength-to-weight ratio and stiffness. Laser processing of CFRP is a highly complex procedure due to its anisotropic and heterogeneous nature. The primary challenge is the significant difference in ablation thresholds between the carbon fiber and the polymer matrix. Precise control is essential to achieve desired results without damaging the underlying fibers or causing matrix degradation.
-
----
 
 #### **Recommended Laser Parameters**
 

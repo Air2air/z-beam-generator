@@ -12,43 +12,14 @@ from dataclasses import dataclass
 from datetime import datetime
 from typing import Any, Callable, Dict, Optional
 
+from optimizer.service_initializer import initialize_optimizer_services
 from optimizer.services import ServiceConfiguration
 from optimizer.services.ai_detection_optimization import AIDetectionOptimizationService
 from optimizer.services.iterative_workflow.service import (
     IterativeWorkflowService,
     WorkflowConfiguration,
 )
-
-
-# Simple service registry implementation
-class ServiceRegistry:
-    """Simple service registry for managing optimizer services."""
-
-    _instance = None
-
-    def __init__(self):
-        self._services = {}
-
-    @classmethod
-    def get_instance(cls):
-        if cls._instance is None:
-            cls._instance = cls()
-        return cls._instance
-
-    def register_service(self, service):
-        """Register a service instance."""
-        self._services[service.config.name] = service
-
-    def get_service_typed(self, name, service_type):
-        """Get a service by name and type."""
-        service = self._services.get(name)
-        if service and isinstance(service, service_type):
-            return service
-        return None
-
-
-# Global service registry instance
-service_registry = ServiceRegistry.get_instance()
+from optimizer.services.service_registry import service_registry
 
 logger = logging.getLogger(__name__)
 
@@ -100,6 +71,15 @@ class ContentOptimizationOrchestrator:
             ai_service: AI detection service (will be retrieved from registry if None)
             workflow_service: Workflow service (will be retrieved from registry if None)
         """
+        # Initialize services if not provided
+        if ai_service is None or workflow_service is None:
+            logger.info("🔧 Initializing optimizer services...")
+            init_result = initialize_optimizer_services()
+            if not init_result["success"]:
+                raise ValueError(
+                    f"Failed to initialize services: {init_result['errors']}"
+                )
+
         # Try to get services from registry, create if not available
         if ai_service:
             self.ai_service = ai_service
@@ -127,6 +107,8 @@ class ContentOptimizationOrchestrator:
             raise ValueError("AI detection service not available")
         if not self.workflow_service:
             raise ValueError("Iterative workflow service not available")
+
+        logger.info("✅ Content optimization orchestrator initialized")
 
     async def optimize_content(
         self,

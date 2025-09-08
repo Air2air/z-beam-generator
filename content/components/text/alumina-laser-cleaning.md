@@ -1,58 +1,34 @@
-Of course. Here is the material data for Alumina (Al₂O₃), presented in a clear and structured format as if from a technical database.
+---
+ai_detection_analysis:
+  score: 0.000000
+  confidence: 0.000000
+  classification: "error"
+  provider: "winston"
+  processing_time: 0.147660
+  optimization_iterations: 3
 
-***
-
-### **Material Profile: Alumina (Al₂O₃)**
-
-**Author:** Alessandro Moretti
-**Last Updated:** September 6, 2025
-**Status:** Documentation Generated (Frontmatter)
-
-| Property | Value |
-| :--- | :--- |
-| **Category** | Ceramic |
-| **Chemical Formula** | Al₂O₃ |
-| **Material Complexity** | High |
-| **Processing Difficulty Score** | 4 / 5 |
-
+quality_analysis:
+  overall_score: 50.444383
+  formatting_score: 80.000000
+  technical_score: 70.000000
+  authenticity_score: 21.000000
+  readability_score: 80.240331
+  believability_score: 51.250000
+  word_count: 362
+  author_country: "italy"
+  details:
+    error: "Analysis failed: Winston.ai validation failed: You do not have enough credits to make this request, the request cost 387 credits but you only have 64 credits remaining. Please visit https://dev.gowinston.ai/billing to purchase more credits."
+    error_type: "AIDetectionError"
 ---
 
-### **Laser Processing Parameters**
 
-Alumina is effectively processed using the following laser settings. Adherence to these parameters is crucial to achieve the desired surface treatment without causing thermal damage.
-
-| Parameter | Value / Range |
-| :--- | :--- |
-| **Optimal Laser Type** | Pulsed Fiber Laser |
-| **Wavelength (Optimal)** | 1064 nm |
-| **Fluence Threshold** | 1.0 – 10 J/cm² |
-| **Pulse Duration** | 10 - 200 ns |
-| **Average Power Range** | 50 - 200 W |
-| **Repetition Rate** | 20 - 100 kHz |
-| **Spot Size** | 0.05 - 1.0 mm |
 
 ---
-
-### **Recommended Surface Treatments**
-
-This material is suitable for the following laser-based processes:
-*   **Laser Ablation**
-*   **Laser Cleaning**
-*   **Non-Contact Cleaning**
-
----
-
-### **Primary Industrial Applications**
-
-*   **Aerospace:** Precision removal of coatings and surface contaminants from critical alumina components.
-*   **Semiconductor:** High-purity cleaning of alumina substrates and carriers used in integrated circuit manufacturing.
-
-**Industry Tags:** `#Semiconductor` `#Aerospace`
-
----
-author: Test Author
-material: Alumina
-component: text
-generated: 2025-09-06
-source: frontmatter
+Version Log - Generated: 2025-09-07T20:52:16.069446
+Material: Alumina
+Component: text
+Generator: Z-Beam v2.1.0
+Author: AI Assistant
+Platform: Darwin (3.12.4)
+File: /Users/todddunning/Desktop/Z-Beam/z-beam-generator/content/components/text/alumina-laser-cleaning.md
 ---

@@ -97,7 +97,9 @@ class StaticComponentGenerator(BaseComponentGenerator):
             )
             return self._create_result(content, success=True)
         except Exception as e:
-            logger.error(f"Error generating {self.component_type}: {e}")
+            from utils.loud_errors import component_failure
+
+            component_failure(self.component_type, str(e), material=material_name)
             return self._create_result("", success=False, error_message=str(e))
 
     @abstractmethod
@@ -191,7 +193,9 @@ class APIComponentGenerator(BaseComponentGenerator):
                 return self._create_result(content, success=True)
 
         except Exception as e:
-            logger.error(f"Error generating {self.component_type}: {e}")
+            from utils.loud_errors import api_failure
+
+            api_failure(self.component_type, str(e), retry_count=None)
             return self._create_result("", success=False, error_message=str(e))
 
     def _build_prompt(
@@ -244,7 +248,7 @@ class AuthorComponentGenerator(StaticComponentGenerator):
         """Generate author component content"""
         try:
             from components.author.generator import create_author_content_from_data
-            from run import get_author_by_id
+            from utils.author_manager import get_author_by_id
 
             # FAIL-FAST: Author information is required - no defaults
             if not author_info or "id" not in author_info:
@@ -265,7 +269,9 @@ class AuthorComponentGenerator(StaticComponentGenerator):
             return create_author_content_from_data(material_name, author)
 
         except Exception as e:
-            logger.error(f"Error generating author component: {e}")
+            from utils.loud_errors import component_failure
+
+            component_failure("author", str(e), material=material_name)
             return f"Error loading author information: {e}"
 
 
@@ -347,31 +353,51 @@ class ComponentGeneratorFactory:
                 return AuthorComponentGenerator()
             else:
                 # Try to import from components directory
-                module_path = f"components.{component_type}.generators.generator"
-                logger.info(f"Trying to import {module_path}")
-                try:
-                    module = __import__(
-                        module_path,
-                        fromlist=[f"{component_type.title()}ComponentGenerator"],
-                    )
-                    generator_class = getattr(
-                        module, f"{component_type.title()}ComponentGenerator"
-                    )
-                    logger.info(f"Got generator class: {generator_class}")
+                # Some components have generator.py directly, others have generators/generator.py
+                import_paths = [
+                    f"components.{component_type}.generator",
+                    f"components.{component_type}.generators.generator",
+                ]
 
-                    # Pass AI detection service to text generator
-                    if component_type == "text":
-                        return generator_class()
-                    else:
-                        return generator_class()
-                except (ImportError, AttributeError) as e:
-                    logger.error(
-                        f"No generator found for component type: {component_type}: {e}"
-                    )
-                    return None
+                for module_path in import_paths:
+                    logger.info(f"Trying to import {module_path}")
+                    try:
+                        module = __import__(
+                            module_path,
+                            fromlist=[f"{component_type.title()}ComponentGenerator"],
+                        )
+                        generator_class = getattr(
+                            module, f"{component_type.title()}ComponentGenerator"
+                        )
+                        logger.info(f"Got generator class: {generator_class}")
+
+                        # Pass AI detection service to text generator
+                        if component_type == "text":
+                            return generator_class()
+                        else:
+                            return generator_class()
+                    except (ImportError, AttributeError) as e:
+                        logger.debug(f"Failed to import from {module_path}: {e}")
+                        continue
+
+                # If both import paths failed
+                from utils.loud_errors import dependency_failure
+
+                dependency_failure(
+                    f"{component_type}_generator",
+                    f"No generator found for component type: {component_type}",
+                    impact="Component generation cannot proceed",
+                )
+                return None
 
         except ImportError as e:
-            logger.error(f"Error importing generator for {component_type}: {e}")
+            from utils.loud_errors import dependency_failure
+
+            dependency_failure(
+                f"{component_type}_generator",
+                str(e),
+                impact="Component generation cannot proceed",
+            )
             return None
 
     @staticmethod
@@ -385,10 +411,16 @@ class ComponentGeneratorFactory:
             for component_dir in components_dir.iterdir():
                 if component_dir.is_dir() and component_dir.name != "__pycache__":
                     # Check if it has a generator or prompt file
+                    # Some components have generator.py directly, others have generators/generator.py
                     generator_file = component_dir / "generator.py"
+                    generators_file = component_dir / "generators" / "generator.py"
                     prompt_file = component_dir / "prompt.yaml"
 
-                    if generator_file.exists() or prompt_file.exists():
+                    if (
+                        generator_file.exists()
+                        or generators_file.exists()
+                        or prompt_file.exists()
+                    ):
                         available_components.append(component_dir.name)
 
         # Also add known generators from generators directory

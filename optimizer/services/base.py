@@ -44,6 +44,7 @@ class BaseService(ABC):
         if not self._initialized:
             self._validate_config()
             self._initialize()
+            self._healthy = self.health_check()
             self._initialized = True
 
     @abstractmethod

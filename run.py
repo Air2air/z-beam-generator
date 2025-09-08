@@ -21,13 +21,12 @@ python3 run.py --optimize frontmatter
 
 BASIC GENERATION:
     python3 run.py                                    # Generate all materials (batch mode)
-    python3 run.py --material "Steel"                 # Generate specific material
-    python3 run.py --material "Aluminum" --author 2   # Generate with Italian author
+    python3 run.py --material "Steel"                 # Generate specific material (author auto-resolved)
     python3 run.py --start-index 50                   # Start batch from material #50
     python3 run.py --content-batch                    # Clear and regenerate content for first 8 categories
 
 COMPONENT CONTROL:
-    python3 run.py --material "Copper" --author 2 --components "frontmatter,text"  # Specific components only
+    python3 run.py --material "Copper" --components "frontmatter,text"  # Specific components only
 
 CONTENT MANAGEMENT:
     python3 run.py --clean                           # Remove all generated content files
@@ -64,15 +63,6 @@ import argparse
 import asyncio
 import logging
 import os
-import sys
-import time as time_module
-from pathlib import Path
-from typing import Any, Dict, Optional
-
-# Set up logging
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
-import traceback
 
 # Configuration constants for tests
 API_PROVIDERS = {
@@ -372,6 +362,7 @@ def main():
             try:
                 material, component = args.version_history.split(":", 1)
                 from utils.file_operations import display_version_history
+
                 display_version_history(material.strip(), component.strip())
             except ValueError:
                 print("❌ Invalid format. Use: --version-history 'Material:component'")
@@ -471,11 +462,7 @@ def main():
                                     "propertiestable",
                                     "jsonld",
                                 ],
-                                author_info={
-                                    "id": 1,
-                                    "name": "Test Author",
-                                    "country": "Test",
-                                },
+                                author_info=None,  # Will use material's author_id from materials.yaml
                             )
 
                             processed_materials += 1
@@ -490,7 +477,11 @@ def main():
                                 successful_generations += 1
 
                         except Exception as e:
-                            print(f"      ❌ Error generating {material_name}: {e}")
+                            from utils.loud_errors import component_failure
+
+                            component_failure(
+                                "material_generation", str(e), material=material_name
+                            )
                             processed_materials += 1
                             continue
 
@@ -508,23 +499,41 @@ def main():
                 )
 
             except ImportError as e:
-                print(f"❌ Import error: {e}")
-                print("💡 Make sure all required modules are installed")
-            except Exception as e:
-                print(f"❌ Error in content batch mode: {e}")
-                import traceback
+                from utils.loud_errors import dependency_failure
 
-                traceback.print_exc()
+                dependency_failure(
+                    "module_import",
+                    str(e),
+                    impact="Content batch generation cannot proceed",
+                )
+            except Exception as e:
+                from utils.loud_errors import critical_error
+
+                critical_error(
+                    "Content batch generation failed",
+                    details=str(e),
+                    context="Batch processing mode",
+                )
 
         elif args.optimize:
             # Optimization mode - sophisticated AI detection optimization
             component_name = args.optimize
-            print(f"🚀 Starting sophisticated optimization for component: {component_name}")
+            print(
+                f"🚀 Starting sophisticated optimization for component: {component_name}"
+            )
+            print("⏱️  Timeout protection: 10 minutes maximum")
 
-            # Import and run the optimization
+            # Import and run the optimization with timeout protection
             from optimizer.content_optimization import run_sophisticated_optimization
 
-            asyncio.run(run_sophisticated_optimization(component_name))
+            try:
+                asyncio.run(
+                    run_sophisticated_optimization(component_name, timeout_seconds=600)
+                )
+            except Exception as e:
+                from utils.loud_errors import api_failure
+
+                api_failure("optimization_service", str(e), retry_count=None)
 
         elif args.interactive or args.material or args.all:
             # Interactive or batch generation mode
@@ -562,32 +571,37 @@ def main():
                         result = run_material_generation(
                             material=args.material,
                             component_types=available_components,
-                            author_id=None  # Will use material's author_id from materials.yaml
+                            author_id=None,  # Will use material's author_id from materials.yaml
                         )
 
                         print("✅ Generation completed!")
                         print(f"Material: {result['material']}")
-                        print(f"Components generated: {len(result['components_generated'])}")
+                        print(
+                            f"Components generated: {len(result['components_generated'])}"
+                        )
                         print(f"Components failed: {len(result['components_failed'])}")
 
-                        if result['components_generated']:
+                        if result["components_generated"]:
                             print("\n📝 Generated components:")
-                            for comp in result['components_generated']:
+                            for comp in result["components_generated"]:
                                 print(f"  ✅ {comp['type']}: {comp['filepath']}")
 
-                        if result['components_failed']:
+                        if result["components_failed"]:
                             print("\n❌ Failed components:")
-                            for comp in result['components_failed']:
+                            for comp in result["components_failed"]:
                                 print(f"  ❌ {comp['type']}: {comp['error']}")
 
                         print(f"\n🕐 Total time: {result['total_time']:.1f}s")
                         print(f"🎯 Total tokens: {result['total_tokens']}")
 
                     except Exception as e:
-                        print(f"❌ Error generating content for {args.material}: {e}")
-                        if args.verbose:
-                            import traceback
-                            traceback.print_exc()
+                        from utils.loud_errors import critical_error
+
+                        critical_error(
+                            f"Content generation failed for {args.material}",
+                            details=str(e),
+                            context="Material-specific generation",
+                        )
 
                 elif args.all:
                     # Generate for all materials
@@ -600,8 +614,13 @@ def main():
                     print("⚠️  Interactive mode not yet implemented in this version")
 
             except ImportError as e:
-                print(f"❌ Error importing generator: {e}")
-                print("💡 Make sure all required modules are installed")
+                from utils.loud_errors import dependency_failure
+
+                dependency_failure(
+                    "generator_module",
+                    str(e),
+                    impact="Interactive generation cannot proceed",
+                )
 
         else:
             # Show help/usage information
@@ -611,13 +630,15 @@ def main():
             print("EXAMPLES:")
             print("  python3 run.py --interactive --verbose # Interactive logging")
             print(
-                '  python3 run.py --material "Copper"     # Generate specific material'
+                '  python3 run.py --material "Copper"     # Generate specific material (author auto-resolved)'
             )
             print("  python3 run.py --all                   # Generate all materials")
             print()
             print("QUICK START:")
             print("  python3 run.py --interactive          # Interactive mode")
-            print('  python3 run.py --material "Aluminum"   # Specific material')
+            print(
+                '  python3 run.py --material "Aluminum"   # Specific material (author auto-resolved)'
+            )
             print("  python3 run.py --all                   # All materials")
             print()
             print("🧪 TESTING & VALIDATION:")
@@ -630,7 +651,9 @@ def main():
             print("  python3 run.py --status                # System status")
             print()
             print("📋 VERSION TRACKING:")
-            print("  python3 run.py --version-history 'Alumina:text'  # Show version history")
+            print(
+                "  python3 run.py --version-history 'Alumina:text'  # Show version history"
+            )
             print()
             print("🧹 CLEANUP:")
             print("  python3 run.py --clean                 # Clean content")
@@ -643,10 +666,11 @@ def main():
             print("💡 TIP: Use --help for complete command reference")
 
     except Exception as e:
-        print(f"❌ Error: {e}")
-        if args.verbose:
-            traceback.print_exc()
-        sys.exit(1)
+        from utils.loud_errors import critical_error
+
+        critical_error(
+            "Application execution failed", details=str(e), context="Main application"
+        )
 
 
 if __name__ == "__main__":

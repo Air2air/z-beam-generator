@@ -48,6 +48,14 @@ API_PROVIDERS = {
         "model": "winston-ai-detector",
         "default_model": "winston-ai-detector",
     },
+    "gemini": {
+        "name": "Gemini",
+        "env_var": "GEMINI_API_KEY",
+        "env_key": "GEMINI_API_KEY",  # For backward compatibility
+        "base_url": "https://generativelanguage.googleapis.com",
+        "model": "gemini-1.5-pro",
+        "default_model": "gemini-1.5-pro",
+    },
 }
 
 
@@ -63,7 +71,7 @@ class APIConfig:
         0.8  # INCREASED FROM 0.7 for more creative but faster responses
     )
     timeout_connect: int = 10
-    timeout_read: int = 60  # REDUCED FROM 120 for faster timeout
+    timeout_read: int = 30  # REDUCED FROM 60 for faster timeout on slow requests
     max_retries: int = 2  # REDUCED FROM 3 for faster failure
     retry_delay: float = 0.5  # REDUCED FROM 1.0 for faster retries
 
@@ -94,8 +102,8 @@ class ConfigManager:
             ),  # OPTIMIZED: Increased from 0.7
             timeout_connect=int(os.getenv("DEEPSEEK_TIMEOUT_CONNECT", "10")),
             timeout_read=int(
-                os.getenv("DEEPSEEK_TIMEOUT_READ", "60")
-            ),  # OPTIMIZED: Reduced from 120
+                os.getenv("DEEPSEEK_TIMEOUT_READ", "30")
+            ),  # OPTIMIZED: Reduced from 60
             max_retries=int(
                 os.getenv("DEEPSEEK_MAX_RETRIES", "2")
             ),  # OPTIMIZED: Reduced from 3

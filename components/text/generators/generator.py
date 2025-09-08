@@ -66,20 +66,15 @@ class TextComponentGenerator(APIComponentGenerator):
             )
 
             # Generate content with provided author info
-            current_author_info = author_info.copy() if author_info else {}
-            if not current_author_info:
-                current_author_info = {
-                    "name": "Technical Expert",
-                    "country": "usa",
-                    "language": "english",
-                }
+            if not author_info:
+                raise ValueError("Author information is required for text generation")
 
             # Simple text generation
             result = generator.generate(
                 material_name=material_name,
                 material_data=material_data,
                 api_client=api_client,
-                author_info=current_author_info,
+                author_info=author_info,
                 frontmatter_data=frontmatter_data,
             )
 
@@ -94,13 +89,16 @@ class TextComponentGenerator(APIComponentGenerator):
                     error_message=result.error_message,
                 )
 
-            logger.info(f"✅ Text generated successfully for {material_name}")
-            
             # Format content with frontmatter at the bottom
-            formatted_content = self._format_content_with_frontmatter(
-                result.content, material_name, author_info, frontmatter_data
-            )
-            
+            try:
+                formatted_content = self._format_content_with_frontmatter(
+                    result.content, material_name, author_info, frontmatter_data
+                )
+            except ValueError as e:
+                # Re-raise ValueError for missing required dependencies (fail-fast)
+                logger.error(f"Validation error in content formatting: {e}")
+                raise
+
             return ComponentResult(
                 component_type="text",
                 content=formatted_content,
@@ -108,6 +106,10 @@ class TextComponentGenerator(APIComponentGenerator):
                 error_message=None,
             )
 
+        except ValueError as e:
+            # Re-raise ValueError for missing required dependencies (fail-fast)
+            logger.error(f"Validation error in text generation: {e}")
+            raise
         except Exception as e:
             logger.error(f"Error generating text: {e}")
             return ComponentResult(
@@ -123,25 +125,26 @@ class TextComponentGenerator(APIComponentGenerator):
     ) -> str:
         """
         Format content with frontmatter at the bottom.
-        
+
         Args:
             content: Generated text content
             material_name: Name of the material
             author_info: Author information from generation
             frontmatter_data: Frontmatter data from counterpart component
-            
+
         Returns:
             Formatted content with frontmatter
         """
         import time
-        
+
         # Extract author information from frontmatter data if available
-        author_name = "Technical Expert"
         if frontmatter_data and "author" in frontmatter_data:
             author_name = frontmatter_data["author"]
         elif author_info and "name" in author_info:
             author_name = author_info["name"]
-            
+        else:
+            raise ValueError("Author information is required for content formatting")
+
         # Create frontmatter
         frontmatter = f"""---
 author: {author_name}
@@ -150,6 +153,6 @@ component: text
 generated: {time.strftime('%Y-%m-%d')}
 source: frontmatter
 ---"""
-        
+
         # Combine content with frontmatter at the bottom
         return content + "\n\n" + frontmatter

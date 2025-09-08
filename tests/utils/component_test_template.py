@@ -23,15 +23,21 @@ from pathlib import Path
 from typing import Dict
 
 from components.COMPONENT_NAME.generator import COMPONENT_NAMEComponentGenerator
+
 from generators.component_generators import ComponentResult
 
 # Handle import errors gracefully
 try:
     from components.COMPONENT_NAME.generator import COMPONENT_NAMEComponentGenerator
+
     from generators.component_generators import ComponentResult
 except ImportError as e:
-    import pytest; pytest.skip(f"Import error: {e}")
-    import pytest; pytest.fail("Test failed")
+    import pytest
+
+    pytest.skip(f"Import error: {e}")
+    import pytest
+
+    pytest.fail("Test failed")
 
 # Test fixtures
 _test_generator = None

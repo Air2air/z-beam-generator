@@ -42,7 +42,7 @@ class TagsCalculator:
         self.frontmatter = frontmatter_data
         self.subject = sanitize_tag(frontmatter_data.get("subject", "Unknown Material"))
         self.category = sanitize_tag(frontmatter_data.get("category", "material"))
-        self.author = frontmatter_data.get("author", "Technical Expert")
+        self.author = frontmatter_data["author"]
 
         # Load advanced tag databases
         self.seo_keywords = self._load_seo_keyword_database()

@@ -60,6 +60,37 @@ API_PROVIDERS = {
 }
 ```
 
+## API Client Configuration
+
+### Connection Settings
+- **Connection Timeout**: 10 seconds
+- **Read Timeout**: 30 seconds (optimized for faster failure detection)
+- **Max Retries**: 2 attempts (application-level retry logic)
+- **Connection Pool**: 1 connection (prevents concurrent request conflicts)
+
+### Session Management
+The API client uses optimized session configuration to prevent concurrent request issues:
+- HTTP-level retries disabled (handled by application logic)
+- Single connection pool to ensure sequential processing
+- Proper connection reuse for efficiency
+
+## Performance Optimizations
+
+### Timeout Configuration
+```python
+APIConfig(
+    timeout_connect=10,    # Fast connection establishment
+    timeout_read=30,       # Reasonable response timeout
+    max_retries=2,         # Limited retry attempts
+    retry_delay=0.5        # Quick retry delay
+)
+```
+
+### Connection Pooling
+- Single connection prevents concurrent request conflicts
+- Session reuse improves performance
+- Automatic connection cleanup
+
 ## Standardized Features
 
 ### Environment Loading
@@ -76,6 +107,33 @@ API_PROVIDERS = {
 - Isolated API client tests for each provider
 - Mock client support for development
 - Connection verification tools
+- Performance and timeout validation tests
+
+## Recent Performance Improvements
+
+### September 2025 Updates
+- **Fixed Concurrent Request Issues**: Resolved hanging generation caused by HTTP-level retries interfering with application retry logic
+- **Optimized Connection Pooling**: Reduced connection pool to single connection to prevent concurrent request conflicts
+- **Improved Timeout Handling**: Reduced read timeout from 60s to 30s for faster failure detection
+- **Enhanced Session Management**: Disabled HTTP-level retries, relying on application-level retry logic for better control
+
+### Key Changes
+1. **HTTPAdapter Configuration**:
+   - `max_retries=0` (disabled HTTP-level retries)
+   - `pool_connections=1` (single connection)
+   - `pool_maxsize=1` (prevent concurrent requests)
+
+2. **Timeout Optimization**:
+   - Connection timeout: 10 seconds
+   - Read timeout: 30 seconds (down from 60)
+   - Retry delay: 0.5 seconds
+
+3. **Error Handling**:
+   - Application-level retry logic with proper delays
+   - Sequential request processing
+   - Better timeout error messages
+
+These changes ensure reliable, sequential API request processing without hanging or concurrent request conflicts.
 
 ## Commands
 

@@ -78,10 +78,10 @@ class AuthorComponentGenerator(APIComponentGenerator):
 
     def _create_author_content(self, material_name: str, author_data: Dict) -> str:
         """Create author content from author data"""
-        author_name = author_data.get("name", "Unknown Author")
-        author_title = author_data.get("title", "Expert")
-        author_expertise = author_data.get("expertise", "Technical Expert")
-        country = author_data.get("country", "International")
+        author_name = author_data["name"]
+        author_title = author_data["title"]
+        author_expertise = author_data["expertise"]
+        country = author_data["country"]
 
         content = f"""
 ## About the Author
@@ -167,10 +167,10 @@ class AuthorGenerator:
     def _create_author_template(material: str, author: Dict[str, Any]) -> str:
         """Create standardized author content template (legacy method for compatibility)"""
         # Use the provided author data directly instead of loading from JSON
-        author_name = author.get("name", "Unknown Author")
-        author_title = author.get("title", "Expert")
-        author_expertise = author.get("expertise", "Technical Expert")
-        country = author.get("country", "International")
+        author_name = author["name"]
+        author_title = author["title"]
+        author_expertise = author["expertise"]
+        country = author["country"]
 
         content = f"""
 ## About the Author

@@ -92,13 +92,34 @@ def run_tests(test_mode, quick_mode, verbose):
     return result.returncode == 0, result.stdout.decode() if result.stdout else ""
 
 
-success, output = run_tests(test_mode, args.quick, args.verbose)
+def main():
+    """Main entry point for the unified test runner."""
+    # Parse arguments
+    args = parser.parse_args()
 
-if args.verbose and output:
-    print(output)
+    # Determine test mode
+    if args.components:
+        test_mode = "components"
+    elif args.services:
+        test_mode = "services"
+    else:
+        test_mode = "all"
 
-# Exit with appropriate code
-sys.exit(0 if success else 1)
+    print(f"🚀 Running {test_mode} tests...")
+    print("=" * 50)
+
+    success, output = run_tests(test_mode, args.quick, args.verbose)
+
+    if args.verbose and output:
+        print(output)
+
+    if success:
+        print("✅ All tests passed!")
+    else:
+        print("❌ Some tests failed!")
+
+    # Exit with appropriate code
+    sys.exit(0 if success else 1)
 
 
 if __name__ == "__main__":

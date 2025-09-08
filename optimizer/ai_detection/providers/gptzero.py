@@ -6,7 +6,6 @@ GPTZero AI Detection Provider
 import logging
 import os
 import time
-from pathlib import Path
 from typing import Dict, Optional
 
 import requests
@@ -85,8 +84,12 @@ class GPTZeroProvider:
                     provider="gptzero",
                 )
             else:
-                logger.error(
-                    f"GPTZero API error: {response.status_code} - {response.text}"
+                from utils.loud_errors import api_failure
+
+                api_failure(
+                    "gptzero",
+                    f"API error {response.status_code}: {response.text}",
+                    retry_count=None,
                 )
                 raise AIDetectionError(f"API error {response.status_code}")
 
@@ -95,7 +98,9 @@ class GPTZeroProvider:
         except requests.exceptions.RequestException as e:
             raise AIDetectionError(f"GPTZero API request failed: {e}")
         except Exception as e:
-            logger.error(f"GPTZero analysis failed: {e}")
+            from utils.loud_errors import api_failure
+
+            api_failure("gptzero", f"Analysis failed: {e}", retry_count=None)
             raise AIDetectionError(f"Analysis failed: {e}")
 
     def is_available(self) -> bool:

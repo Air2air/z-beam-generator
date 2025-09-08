@@ -75,7 +75,11 @@ if __name__ == "__main__":
             pass  # Success
         else:
             print("❌ API client creation failed")
-            import pytest; pytest.fail("Test failed")
+            import pytest
+
+            pytest.fail("Test failed")
     else:
         print("❌ API keys not available")
-        import pytest; pytest.fail("Test failed")
+        import pytest
+
+        pytest.fail("Test failed")

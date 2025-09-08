@@ -20,16 +20,19 @@ logger = logging.getLogger(__name__)
 
 class ConfigurationError(Exception):
     """Raised when required configurations are missing or invalid."""
+
     pass
 
 
 class GenerationError(Exception):
     """Raised when text generation fails."""
+
     pass
 
 
 class RetryableError(Exception):
     """Raised for temporary failures that could be retried."""
+
     pass
 
 
@@ -78,6 +81,12 @@ class FailFastTextGenerator:
 
         for file_path in required_files:
             if not Path(file_path).exists():
+                from utils.loud_errors import configuration_failure
+
+                configuration_failure(
+                    "fail_fast_generator",
+                    f"Required configuration file not found: {file_path}",
+                )
                 raise ConfigurationError(
                     f"Required configuration file not found: {file_path}"
                 )
@@ -110,15 +119,23 @@ class FailFastTextGenerator:
             RetryableError: For temporary failures
         """
         if not api_client:
+            from utils.loud_errors import dependency_failure
+
+            dependency_failure(
+                "fail_fast_generator", "API client is required for text generation"
+            )
             raise GenerationError("API client is required for text generation")
 
         # Load base prompt
         try:
-            with open(
-                "components/text/prompts/base_content_prompt.yaml", "r"
-            ) as f:
+            with open("components/text/prompts/base_content_prompt.yaml", "r") as f:
                 base_prompt_data = yaml.safe_load(f)
         except Exception as e:
+            from utils.loud_errors import configuration_failure
+
+            configuration_failure(
+                "fail_fast_generator", f"Failed to load base prompt: {e}"
+            )
             raise ConfigurationError(f"Failed to load base prompt: {e}")
 
         # Construct full prompt
@@ -148,6 +165,21 @@ class FailFastTextGenerator:
                 # Generate content
                 response = api_client.generate(request)
 
+                # Check for API errors first
+                if hasattr(response, "success") and not response.success:
+                    # API returned an error - don't retry, raise immediately
+                    error_msg = getattr(response, "error", "API error")
+                    from utils.loud_errors import api_failure
+
+                    api_failure(
+                        "fail_fast_generator",
+                        f"API error: {error_msg}",
+                        retry_count=None,
+                    )
+                    from api.client import APIError
+
+                    raise APIError(f"API error: {error_msg}")
+
                 if not response or not response.content:
                     if attempt < self.max_retries:
                         logger.warning(
@@ -156,6 +188,13 @@ class FailFastTextGenerator:
                         time.sleep(self.retry_delay)
                         continue
                     else:
+                        from utils.loud_errors import api_failure
+
+                        api_failure(
+                            "fail_fast_generator",
+                            "Empty response from API",
+                            retry_count=attempt,
+                        )
                         raise GenerationError("Empty response from API")
 
                 content = response.content
@@ -171,17 +210,34 @@ class FailFastTextGenerator:
                 )
 
             except Exception as e:
+                # Preserve API-specific errors without wrapping
+                from api.client import APIError
+
+                if isinstance(e, APIError):
+                    # Don't retry API errors, re-raise immediately
+                    raise e
+
                 if attempt < self.max_retries:
                     logger.warning(
                         f"Generation attempt {attempt + 1} failed: {e}, retrying in {self.retry_delay}s"
                     )
                     time.sleep(self.retry_delay)
                 else:
+                    from utils.loud_errors import api_failure
+
+                    api_failure(
+                        "fail_fast_generator",
+                        f"Text generation failed after {self.max_retries + 1} attempts: {e}",
+                        retry_count=attempt,
+                    )
                     raise GenerationError(
                         f"Text generation failed after {self.max_retries + 1} attempts: {e}"
                     )
 
         # This should never be reached
+        from utils.loud_errors import critical_failure
+
+        critical_failure("fail_fast_generator", "Unexpected error in generation loop")
         raise GenerationError("Unexpected error in generation loop")
 
     def _construct_prompt(
@@ -209,7 +265,17 @@ class FailFastTextGenerator:
         sections = []
 
         # Add author information
-        sections.append(f"AUTHOR: {author_info.get('name', 'Technical Expert')}")
+        author_name = author_info.get("name")
+        if not author_name:
+            from utils.loud_errors import validation_failure
+
+            validation_failure(
+                "fail_fast_generator",
+                "Author name is required for text generation",
+                field="author_info.name",
+            )
+            raise ValueError("Author name is required for text generation")
+        sections.append(f"AUTHOR: {author_name}")
         sections.append(f"COUNTRY: {author_info.get('country', 'USA').title()}")
 
         # Add material information
@@ -218,14 +284,14 @@ class FailFastTextGenerator:
 
         # Add frontmatter context if available
         if frontmatter_data:
-            sections.append(
-                f"CONTEXT: {json.dumps(frontmatter_data, indent=2)}"
-            )
+            sections.append(f"CONTEXT: {json.dumps(frontmatter_data, indent=2)}")
 
         # Add base prompt instructions
         if "overall_subject" in base_prompt_data:
-            subject = base_prompt_data['overall_subject'].format(material=material_name)
-            sections.append(f"TASK:\nWrite a comprehensive technical article about laser cleaning of {material_name}.\n\n{subject}")
+            subject = base_prompt_data["overall_subject"].format(material=material_name)
+            sections.append(
+                f"TASK:\nWrite a comprehensive technical article about laser cleaning of {material_name}.\n\n{subject}"
+            )
 
         return "\n\n".join(sections)
 

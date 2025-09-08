@@ -98,7 +98,7 @@ def list_authors() -> str:
                 "=" * 50,
                 f"Total: {len(authors)} authors available",
                 "",
-                "Usage: python3 run.py --material 'Steel' --author 2",
+                "Usage: python3 run.py --material 'Steel'  # Author automatically resolved from materials.yaml",
             ]
         )
 
@@ -158,7 +158,9 @@ def get_author_info_for_generation(author_id: Optional[int] = None) -> Dict[str,
     }
 
 
-def extract_author_info_from_frontmatter_file(material_name: str) -> Optional[Dict[str, Any]]:
+def extract_author_info_from_frontmatter_file(
+    material_name: str,
+) -> Optional[Dict[str, Any]]:
     """
     Extract author information from the corresponding frontmatter file.
 
@@ -175,7 +177,10 @@ def extract_author_info_from_frontmatter_file(material_name: str) -> Optional[Di
         from pathlib import Path
 
         # Look for the frontmatter file
-        frontmatter_path = Path("content/components/frontmatter") / f"{material_name}-laser-cleaning.md"
+        frontmatter_path = (
+            Path("content/components/frontmatter")
+            / f"{material_name}-laser-cleaning.md"
+        )
 
         if not frontmatter_path.exists():
             return None
@@ -236,7 +241,9 @@ def extract_author_info_from_content(content: str) -> Optional[Dict[str, Any]]:
     return None
 
 
-def get_author_info_for_material(material_name: str, fallback_author_id: Optional[int] = None) -> Dict[str, Any]:
+def get_author_info_for_material(
+    material_name: str, fallback_author_id: Optional[int] = None
+) -> Dict[str, Any]:
     """
     Get author information for a material, prioritizing frontmatter data.
 

@@ -12,7 +12,10 @@ from typing import Any, Dict, List, Optional
 
 from api.client_manager import get_api_client_for_component
 from generators.dynamic_generator import DynamicGenerator
-from utils.author_manager import get_author_info_for_generation, get_author_info_for_material
+from utils.author_manager import (
+    get_author_info_for_generation,
+    get_author_info_for_material,
+)
 from utils.file_operations import save_component_to_file_original
 
 
@@ -86,12 +89,26 @@ def run_dynamic_generation(
                 results["total_tokens"] += result.token_count or 0
 
             else:
+                from utils.loud_errors import component_failure
+
+                component_failure(
+                    "workflow_manager",
+                    f"Component generation failed: {result.error_message}",
+                    component_type=component_type,
+                )
                 print(f"    ❌ Failed: {result.error_message}")
                 results["components_failed"].append(
                     {"type": component_type, "error": result.error_message}
                 )
 
         except Exception as e:
+            from utils.loud_errors import component_failure
+
+            component_failure(
+                "workflow_manager",
+                f"Error generating {component_type}: {e}",
+                component_type=component_type,
+            )
             print(f"    ❌ Error generating {component_type}: {e}")
             results["components_failed"].append(
                 {"type": component_type, "error": str(e)}
@@ -197,7 +214,7 @@ def run_batch_generation(
 
     # Final summary
     print(f"\n{'='*60}")
-    print(f"🎉 BATCH GENERATION COMPLETE")
+    print("🎉 BATCH GENERATION COMPLETE")
     print(f"{'='*60}")
     print(f"✅ Materials processed: {len(batch_results['materials_processed'])}")
     if batch_results["materials_failed"]:
@@ -280,7 +297,7 @@ def run_interactive_generation(
 
         # Generate content
         try:
-            result = run_dynamic_generation(
+            run_dynamic_generation(
                 generator=generator,
                 material=material_input,
                 component_types=selected_components,

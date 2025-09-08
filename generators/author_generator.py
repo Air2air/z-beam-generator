@@ -32,7 +32,7 @@ class AuthorComponentGenerator(APIComponentGenerator):
     ) -> ComponentResult:
         """Generate author component content using local author data"""
         try:
-            from run import get_author_by_id
+            from utils.author_manager import get_author_by_id
 
             # FAIL-FAST: Author information is required - no defaults
             if not author_info or "id" not in author_info:

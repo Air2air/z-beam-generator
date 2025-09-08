@@ -6,12 +6,12 @@ Centralized file operations for content generation.
 Extracted from run.py to reduce bloat and improve testability.
 """
 
+import json
 import os
 import shutil
+from datetime import datetime
 from pathlib import Path
 from typing import Optional
-from datetime import datetime
-import json
 
 # Import path manager for robust path handling
 try:
@@ -88,7 +88,7 @@ def save_component_to_file_original(
         content=content,
         material=material,
         component_type=component_type,
-        filepath=str(filepath)
+        filepath=str(filepath),
     )
 
     # Save content
@@ -255,10 +255,7 @@ def load_component_from_file(material: str, component_type: str) -> Optional[str
 
 
 def add_version_log_to_content(
-    content: str,
-    material: str,
-    component_type: str,
-    filepath: str
+    content: str, material: str, component_type: str, filepath: str
 ) -> str:
     """
     Add version log to component content.
@@ -282,11 +279,7 @@ def add_version_log_to_content(
     return content + "\n\n" + version_footer
 
 
-def create_version_log_entry(
-    material: str,
-    component_type: str,
-    filepath: str
-) -> dict:
+def create_version_log_entry(material: str, component_type: str, filepath: str) -> dict:
     """
     Create a version log entry for the component.
 
@@ -303,13 +296,18 @@ def create_version_log_entry(
     # Get system information
     try:
         import platform
+
         system_info = {
             "platform": platform.system(),
             "python_version": platform.python_version(),
-            "hostname": platform.node()
+            "hostname": platform.node(),
         }
     except:
-        system_info = {"platform": "unknown", "python_version": "unknown", "hostname": "unknown"}
+        system_info = {
+            "platform": "unknown",
+            "python_version": "unknown",
+            "hostname": "unknown",
+        }
 
     # Get generation context
     generation_context = {
@@ -318,7 +316,7 @@ def create_version_log_entry(
         "filepath": filepath,
         "timestamp": timestamp,
         "generator_version": "2.1.0",  # Update as needed
-        "system_info": system_info
+        "system_info": system_info,
     }
 
     # Try to get author information from environment or context
@@ -351,16 +349,14 @@ def format_version_log_footer(version_entry: dict) -> str:
         f"Author: {version_entry['author']}",
         f"Platform: {version_entry['system_info']['platform']} ({version_entry['system_info']['python_version']})",
         f"File: {version_entry['filepath']}",
-        "---"
+        "---",
     ]
 
     return "\n".join(footer_lines)
 
 
 def save_version_history(
-    material: str,
-    component_type: str,
-    version_entry: dict
+    material: str, component_type: str, version_entry: dict
 ) -> None:
     """
     Save version entry to a persistent history file.
@@ -384,7 +380,11 @@ def save_version_history(
             with open(history_file, "r", encoding="utf-8") as f:
                 history = json.load(f)
         else:
-            history = {"material": material, "component_type": component_type, "versions": []}
+            history = {
+                "material": material,
+                "component_type": component_type,
+                "versions": [],
+            }
 
         # Add new version entry
         history["versions"].append(version_entry)
@@ -450,13 +450,17 @@ def display_version_history(material: str, component_type: str) -> None:
         print(f"  📅 Generated: {version['timestamp']}")
         print(f"  👤 Author: {version['author']}")
         print(f"  🔧 Generator: Z-Beam v{version['generator_version']}")
-        print(f"  💻 Platform: {version['system_info']['platform']} ({version['system_info']['python_version']})")
+        print(
+            f"  💻 Platform: {version['system_info']['platform']} ({version['system_info']['python_version']})"
+        )
         print(f"  📁 File: {version['filepath']}")
 
     print(f"\n📊 Total Versions: {len(history['versions'])}")
 
 
-def cleanup_old_versions(material: str, component_type: str, keep_versions: int = 5) -> int:
+def cleanup_old_versions(
+    material: str, component_type: str, keep_versions: int = 5
+) -> int:
     """
     Clean up old versions, keeping only the most recent ones.
 

@@ -5,7 +5,7 @@ This is a test component for version logging.
 ## Section 1
 Some content here.
 
-## Section 2  
+## Section 2
 More content here.
 
 

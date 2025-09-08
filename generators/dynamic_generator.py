@@ -330,6 +330,13 @@ EXAMPLES:
         if component_result.success:
             print(f"   ✅ {component_type}")
         else:
+            from utils.loud_errors import component_failure
+
+            component_failure(
+                "dynamic_generator",
+                f"Component generation failed: {component_result.error_message}",
+                component_type=component_type,
+            )
             print(f"   ❌ {component_type}: {component_result.error_message}")
 
     # Show API statistics if available

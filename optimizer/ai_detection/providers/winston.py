@@ -6,7 +6,6 @@ Winston.ai AI Detection Provider
 import logging
 import os
 import time
-from pathlib import Path
 from typing import Any, Dict, Optional
 
 import requests
@@ -82,7 +81,7 @@ class WinstonProvider:
                 payload["language"] = options["language"]
 
         # API Terminal Messaging - Start
-        print(f"🔍 [AI DETECTOR] Starting Winston.ai analysis...")
+        print("🔍 [AI DETECTOR] Starting Winston.ai analysis...")
         print(f"📤 [AI DETECTOR] Sending text ({len(text)} chars) for AI detection")
         logger.info(
             f"🔍 [AI DETECTOR] Winston.ai API call initiated - Text length: {len(text)} chars"
@@ -191,25 +190,34 @@ class WinstonProvider:
                 # Handle validation errors (like text too short)
                 error_data = response.json()
                 error_desc = error_data.get("description", "Validation failed")
-                print(f"❌ [AI DETECTOR] Winston.ai validation error: {error_desc}")
-                logger.error(f"Winston.ai validation error: {error_desc}")
+                from utils.loud_errors import validation_failure
+
+                validation_failure("winston_ai", error_desc, field="text_content")
                 raise AIDetectionError(f"Winston.ai validation failed: {error_desc}")
             else:
-                print(f"❌ [AI DETECTOR] Winston.ai API error: {response.status_code}")
-                logger.error(
-                    f"Winston.ai API error: {response.status_code} - {response.text}"
+                from utils.loud_errors import api_failure
+
+                api_failure(
+                    "winston_ai",
+                    f"API error {response.status_code}: {response.text}",
+                    retry_count=None,
                 )
                 raise AIDetectionError(f"API error {response.status_code}")
 
         except requests.exceptions.Timeout:
-            print("⏰ [AI DETECTOR] Winston.ai API request timeout")
+            from utils.loud_errors import network_failure
+
+            network_failure("winston_ai", "API request timeout")
             raise AIDetectionError("Winston.ai API request timeout")
         except requests.exceptions.RequestException as e:
-            print(f"❌ [AI DETECTOR] Winston.ai API request failed: {e}")
+            from utils.loud_errors import network_failure
+
+            network_failure("winston_ai", f"API request failed: {e}")
             raise AIDetectionError(f"Winston.ai API request failed: {e}")
         except Exception as e:
-            print(f"❌ [AI DETECTOR] Winston.ai analysis failed: {e}")
-            logger.error(f"Winston.ai analysis failed: {e}")
+            from utils.loud_errors import api_failure
+
+            api_failure("winston_ai", f"Analysis failed: {e}", retry_count=None)
             raise AIDetectionError(f"Analysis failed: {e}")
 
     def is_available(self) -> bool:
@@ -247,8 +255,9 @@ class WinstonProvider:
                 return False
 
         except Exception as e:
-            print(f"❌ [AI DETECTOR] Winston.ai connectivity test failed: {e}")
-            logger.error(f"❌ [AI DETECTOR] Winston.ai connectivity test failed: {e}")
+            from utils.loud_errors import network_failure
+
+            network_failure("winston_ai", f"Connectivity test failed: {e}")
             return False
 
     def _get_api_key(self) -> Optional[str]:

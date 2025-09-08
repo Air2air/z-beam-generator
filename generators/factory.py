@@ -97,9 +97,23 @@ class ComponentGeneratorFactory:
                 return generator
 
             logger.error(f"No generator found for component type: {component_type}")
+            from utils.loud_errors import component_failure
+
+            component_failure(
+                "component_generator_factory",
+                f"No generator found for component type: {component_type}",
+                component_type=component_type,
+            )
             return None
 
         except Exception as e:
+            from utils.loud_errors import component_failure
+
+            component_failure(
+                "component_generator_factory",
+                f"Error creating generator for {component_type}: {e}",
+                component_type=component_type,
+            )
             logger.error(f"Error creating generator for {component_type}: {e}")
             return None
 
@@ -169,7 +183,6 @@ class ComponentGeneratorFactory:
 
         # Add from components directory
         try:
-            import os
             from pathlib import Path
 
             components_dir = Path("components")
@@ -184,7 +197,6 @@ class ComponentGeneratorFactory:
 
         # Add from generators directory
         try:
-            import os
             from pathlib import Path
 
             generators_dir = Path("generators")

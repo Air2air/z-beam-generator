@@ -1,0 +1,128 @@
+{
+  "import_error": {
+    "pattern": "ImportError: No module named '(\\w+)'",
+    "error_type": "import_error",
+    "severity": "high",
+    "description": "Missing Python module dependency",
+    "solution": "Install missing package with: pip install {0}",
+    "test_case": "test_import_{0}",
+    "documentation_update": "Add {0} to requirements.txt and installation docs",
+    "prevention_measures": [
+      "Add dependency to requirements.txt",
+      "Update installation documentation",
+      "Add import validation in __init__.py"
+    ]
+  },
+  "file_not_found": {
+    "pattern": "FileNotFoundError:.*No such file or directory: '(.+)'",
+    "error_type": "file_not_found",
+    "severity": "high",
+    "description": "Required file is missing",
+    "solution": "Create missing file: {0}",
+    "test_case": "test_file_exists_{0}",
+    "documentation_update": "Document required files in setup documentation",
+    "prevention_measures": [
+      "Add file existence validation",
+      "Create file templates",
+      "Update setup documentation"
+    ]
+  },
+  "api_key_missing": {
+    "pattern": "API key not found.*environment",
+    "error_type": "configuration_error",
+    "severity": "critical",
+    "description": "Required API key is missing from environment",
+    "solution": "Set environment variable: export {API_KEY_NAME}={value}",
+    "test_case": "test_api_key_{api_name}_configured",
+    "documentation_update": "Add API key setup to README and .env.example",
+    "prevention_measures": [
+      "Add .env.example file",
+      "Update README with API setup instructions",
+      "Add configuration validation on startup"
+    ]
+  },
+  "network_timeout": {
+    "pattern": "timeout|TimeoutError|ConnectionError",
+    "error_type": "network_error",
+    "severity": "medium",
+    "description": "Network connectivity or timeout issue",
+    "solution": "Check network connection and retry with increased timeout",
+    "test_case": "test_network_connectivity_{service}",
+    "documentation_update": "Add network requirements to documentation",
+    "prevention_measures": [
+      "Implement retry logic with exponential backoff",
+      "Add network connectivity tests",
+      "Document network requirements"
+    ]
+  },
+  "validation_error": {
+    "pattern": "ValidationError|ValueError.*required",
+    "error_type": "validation_error",
+    "severity": "medium",
+    "description": "Data validation failure",
+    "solution": "Provide valid data or fix validation logic",
+    "test_case": "test_validation_{field_name}",
+    "documentation_update": "Update data format documentation",
+    "prevention_measures": [
+      "Add input validation",
+      "Improve error messages",
+      "Update data format documentation"
+    ]
+  },
+  "loud_error_pattern": {
+    "pattern": "❌.*💥.*🚨",
+    "error_type": "loud_error_display",
+    "severity": "high",
+    "description": "Loud error message detected - system error occurred",
+    "solution": "Review error details and fix underlying issue",
+    "test_case": "test_error_handling_{component}",
+    "documentation_update": "Document error scenario and resolution",
+    "prevention_measures": [
+      "Add error handling for this scenario",
+      "Update error documentation",
+      "Add regression tests"
+    ]
+  },
+  "component_failure": {
+    "pattern": "COMPONENT FAILURE.*❌",
+    "error_type": "component_error",
+    "severity": "high",
+    "description": "Component generation or processing failed",
+    "solution": "Check component configuration and dependencies",
+    "test_case": "test_component_{component_name}",
+    "documentation_update": "Update component documentation with error handling",
+    "prevention_measures": [
+      "Add component validation",
+      "Improve error recovery",
+      "Update component documentation"
+    ]
+  },
+  "api_failure": {
+    "pattern": "API FAILURE.*❌",
+    "error_type": "api_error",
+    "severity": "high",
+    "description": "API call failed",
+    "solution": "Check API configuration and network connectivity",
+    "test_case": "test_api_{service_name}",
+    "documentation_update": "Update API documentation with error scenarios",
+    "prevention_measures": [
+      "Add API retry logic",
+      "Improve error handling",
+      "Update API documentation"
+    ]
+  },
+  "dependency_failure": {
+    "pattern": "DEPENDENCY FAILURE.*❌",
+    "error_type": "dependency_error",
+    "severity": "critical",
+    "description": "Required dependency is missing or invalid",
+    "solution": "Install or configure missing dependency",
+    "test_case": "test_dependency_{dependency_name}",
+    "documentation_update": "Update dependency documentation",
+    "prevention_measures": [
+      "Add dependency validation",
+      "Update installation docs",
+      "Add dependency checks"
+    ]
+  }
+}
