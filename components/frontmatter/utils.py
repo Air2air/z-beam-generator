@@ -6,15 +6,13 @@ Component-specific utility functions for frontmatter generation and enhancement.
 """
 
 import logging
-import os
-import sys
 from pathlib import Path
 from typing import Any, Dict
 
 import yaml
 
-from utils.percentile_calculator import calculate_property_percentiles
-
+try:
+    from utils.core.percentile_calculator import calculate_property_percentiles
 except ImportError:
     # Fallback if percentile calculator not available
     def calculate_property_percentiles(

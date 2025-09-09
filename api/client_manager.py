@@ -88,7 +88,7 @@ def get_api_client_for_component(component_type: str) -> APIClient:
     # Import here to avoid circular import
     from cli.component_config import COMPONENT_CONFIG
 
-    components_config = COMPONENT_CONFIG.get("components", {})
+    components_config = COMPONENT_CONFIG
 
     if component_type not in components_config:
         raise ValueError(f"Unknown component type: {component_type}")
@@ -101,6 +101,9 @@ def get_api_client_for_component(component_type: str) -> APIClient:
 
     if data_provider in ["hybrid", "API"]:
         return create_api_client(api_provider)
+    elif api_provider == "none":
+        # For truly static components that don't need any API
+        return None
     else:
         # For static components, still return default client for consistency
         return create_api_client("deepseek")

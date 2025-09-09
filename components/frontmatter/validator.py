@@ -10,6 +10,8 @@ from typing import Any, Dict, List
 
 import yaml
 
+from utils.validation import validate_placeholder_content
+
 duplicate_pattern = r"(\w+):\s*\n\s*\1:\s*(\{\}|$)"
 
 
@@ -77,8 +79,7 @@ def validate_frontmatter_content(content: str) -> List[str]:
         errors.append("Missing required frontmatter fields")
 
     # Check for placeholder content
-    if "TBD" in content or "TODO" in content or "[" in content and "]" in content:
-        errors.append("Contains placeholder content (TBD, TODO, or [brackets])")
+    errors.extend(validate_placeholder_content(content))
 
     return errors
 

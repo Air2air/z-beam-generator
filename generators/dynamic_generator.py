@@ -17,7 +17,7 @@ import yaml
 
 from api.client_manager import get_api_client_for_component
 from generators.component_generators import ComponentGeneratorFactory, ComponentResult
-from utils.config_utils import load_materials_data
+from utils.config.config_utils import load_materials_data
 
 
 @dataclass
@@ -54,29 +54,58 @@ class DynamicGenerator:
             return []
 
         materials = []
-        for category, category_data in self.materials_data["materials"].items():
-            if "items" in category_data:
+        materials_section = self.materials_data["materials"]
+        for category, category_data in materials_section.items():
+            if isinstance(category_data, dict) and "items" in category_data:
                 for item in category_data["items"]:
-                    materials.append(item["name"])
+                    if "name" in item:
+                        materials.append(item["name"])
         return sorted(materials)
 
     def get_available_components(self) -> List[str]:
-        """Get list of available components"""
-        # Get component directories
-        components_dir = Path("components")
-        if not components_dir.exists():
-            return []
+        """Get list of available components sorted by priority"""
+        try:
+            from cli.component_config import get_components_sorted_by_priority
+            return get_components_sorted_by_priority()
+        except ImportError:
+            # Fallback to directory listing if config not available
+            components_dir = Path("components")
+            if not components_dir.exists():
+                return []
 
-        components = []
-        for item in components_dir.iterdir():
-            if item.is_dir() and not item.name.startswith("__"):
-                components.append(item.name)
-        return sorted(components)
+            components = []
+            for item in components_dir.iterdir():
+                if item.is_dir() and not item.name.startswith("__"):
+                    components.append(item.name)
+            return sorted(components)
 
-    def generate_multiple(self, request: GenerationRequest) -> GenerationResult:
+    def generate_multiple(self, request: GenerationRequest, frontmatter_data: Optional[Dict] = None) -> GenerationResult:
         """Generate multiple components for a material"""
         results = {}
         successful = 0
+
+        # Get material data once for all components
+        materials_data = self.materials_data
+        material_data = None
+        if materials_data and "materials" in materials_data:
+            materials_section = materials_data["materials"]
+            for category, category_data in materials_section.items():
+                if isinstance(category_data, dict) and "items" in category_data:
+                    for item in category_data["items"]:
+                        if item["name"].lower() == request.material.lower():
+                            material_data = item
+                            break
+                    if material_data:
+                        break
+
+        if not material_data:
+            return GenerationResult(
+                material=request.material,
+                success=False,
+                total_components=len(request.components),
+                successful_components=0,
+                results={comp: {"success": False, "content": "", "error_message": f"Material '{request.material}' not found"} for comp in request.components}
+            )
 
         for component_type in request.components:
             try:
@@ -87,8 +116,21 @@ class DynamicGenerator:
                 factory = ComponentGeneratorFactory()
                 generator = factory.create_generator(component_type)
 
-                # This is a simplified version - in reality you'd need more parameters
-                result = generator.generate(request.material, api_client)
+                if not generator:
+                    results[component_type] = {
+                        "success": False,
+                        "content": "",
+                        "error_message": f"No generator available for component type '{component_type}'",
+                    }
+                    continue
+
+                # Generate component with proper parameters
+                result = generator.generate(
+                    material_name=request.material,
+                    material_data=material_data,
+                    api_client=api_client,
+                    frontmatter_data=frontmatter_data,
+                )
 
                 results[component_type] = {
                     "success": result.success,
@@ -120,12 +162,13 @@ class DynamicGenerator:
         component_type: str,
         api_client,
         author_info: Optional[Dict] = None,
+        frontmatter_data: Optional[Dict] = None,
     ) -> ComponentResult:
         """Generate a single component for a material"""
         try:
             # Get material data
             materials_data = self.materials_data
-            if not materials_data or "materials" not in materials_data:
+            if not materials_data:
                 return ComponentResult(
                     component_type=component_type,
                     content="",
@@ -133,16 +176,18 @@ class DynamicGenerator:
                     error_message="No materials data available",
                 )
 
-            # Find material data
+            # Find material data - materials.yaml has materials -> category -> items structure
             material_data = None
-            for category, category_data in materials_data["materials"].items():
-                if "items" in category_data:
-                    for item in category_data["items"]:
-                        if item["name"].lower() == material.lower():
-                            material_data = item
+            if "materials" in materials_data:
+                materials_section = materials_data["materials"]
+                for category, category_data in materials_section.items():
+                    if isinstance(category_data, dict) and "items" in category_data:
+                        for item in category_data["items"]:
+                            if item["name"].lower() == material.lower():
+                                material_data = item
+                                break
+                        if material_data:
                             break
-                    if material_data:
-                        break
 
             if not material_data:
                 return ComponentResult(
@@ -170,6 +215,7 @@ class DynamicGenerator:
                 material_data=material_data,
                 api_client=api_client,
                 author_info=author_info,
+                frontmatter_data=frontmatter_data,
             )
 
             # Convert to expected format with token_count
@@ -210,7 +256,7 @@ EXAMPLES:
   python3 -m generators.dynamic_generator --list-materials
   python3 -m generators.dynamic_generator --list-components
   python3 -m generators.dynamic_generator --material "Steel" --components all
-  python3 -m generators.dynamic_generator --material "Aluminum" --interactive
+  python3 -m generators.dynamic_generator --material "Aluminum"
         """,
     )
 
@@ -226,9 +272,6 @@ EXAMPLES:
     )
     parser.add_argument(
         "--list-components", action="store_true", help="List available components"
-    )
-    parser.add_argument(
-        "--interactive", action="store_true", help="Interactive component selection"
     )
     parser.add_argument("--test-api", action="store_true", help="Test API connection")
     parser.add_argument(
@@ -278,35 +321,28 @@ EXAMPLES:
         print("   Use --list-materials to see available materials")
         return
 
-    # Interactive component selection
-    if args.interactive:
-        components_list = interactive_component_selection(generator)
-        if not components_list:
-            print("No components selected. Exiting.")
-            return
+    # Parse components list
+    if not args.components:
+        print("❌ Components list is required")
+        print("   Use --list-components to see available components")
+        print("   Use --components all to generate all components")
+        return
+
+    available_components = generator.get_available_components()
+
+    if args.components.lower() == "all":
+        components_list = available_components
     else:
-        # Parse components list
-        if not args.components:
-            print("❌ Components list is required")
-            print("   Use --list-components to see available components")
-            print("   Use --components all to generate all components")
+        components_list = [c.strip() for c in args.components.split(",")]
+
+        # Validate components
+        invalid_components = [
+            c for c in components_list if c not in available_components
+        ]
+        if invalid_components:
+            print(f"❌ Invalid components: {', '.join(invalid_components)}")
+            print(f"   Available components: {', '.join(available_components)}")
             return
-
-        available_components = generator.get_available_components()
-
-        if args.components.lower() == "all":
-            components_list = available_components
-        else:
-            components_list = [c.strip() for c in args.components.split(",")]
-
-            # Validate components
-            invalid_components = [
-                c for c in components_list if c not in available_components
-            ]
-            if invalid_components:
-                print(f"❌ Invalid components: {', '.join(invalid_components)}")
-                print(f"   Available components: {', '.join(available_components)}")
-                return
 
     # Create generation request
     request = GenerationRequest(
@@ -327,17 +363,17 @@ EXAMPLES:
     print("=" * 50)
 
     for component_type, component_result in result.results.items():
-        if component_result.success:
+        if component_result["success"]:
             print(f"   ✅ {component_type}")
         else:
             from utils.loud_errors import component_failure
 
             component_failure(
                 "dynamic_generator",
-                f"Component generation failed: {component_result.error_message}",
+                f"Component generation failed: {component_result['error_message']}",
                 component_type=component_type,
             )
-            print(f"   ❌ {component_type}: {component_result.error_message}")
+            print(f"   ❌ {component_type}: {component_result['error_message']}")
 
     # Show API statistics if available
     if hasattr(generator.api_client, "get_statistics"):
@@ -347,57 +383,6 @@ EXAMPLES:
         print(f"   Success rate: {stats.get('success_rate', 0):.1f}%")
         print(f"   Total tokens: {stats.get('total_tokens', 0)}")
         print(f"   Avg response time: {stats.get('average_response_time', 0):.2f}s")
-
-
-def interactive_component_selection(generator) -> list:
-    """Interactive component selection interface"""
-
-    available_components = generator.get_available_components()
-
-    print(f"\n🔧 Available components ({len(available_components)}):")
-    for i, component in enumerate(available_components, 1):
-        print(f"   {i}. {component}")
-
-    print("\nComponent selection options:")
-    print("  - Enter numbers (e.g., 1,3,5)")
-    print("  - Enter names (e.g., frontmatter,content)")
-    print("  - Enter 'all' for all components")
-    print("  - Enter 'quit' to exit")
-
-    while True:
-        try:
-            selection = input("\nSelect components: ").strip()
-
-            if selection.lower() == "quit":
-                return []
-
-            if selection.lower() == "all":
-                return available_components
-
-            # Parse numeric selection
-            if selection.replace(",", "").replace(" ", "").isdigit():
-                indices = [int(x.strip()) - 1 for x in selection.split(",")]
-                selected_components = []
-                for idx in indices:
-                    if 0 <= idx < len(available_components):
-                        selected_components.append(available_components[idx])
-                    else:
-                        print(f"❌ Invalid number: {idx + 1}")
-                        continue
-                return selected_components
-
-            # Parse name selection
-            else:
-                components_list = [c.strip() for c in selection.split(",")]
-                invalid = [c for c in components_list if c not in available_components]
-                if invalid:
-                    print(f"❌ Invalid components: {', '.join(invalid)}")
-                    continue
-                return components_list
-
-        except (ValueError, KeyboardInterrupt):
-            print("\n❌ Invalid selection. Please try again.")
-            continue
 
 
 if __name__ == "__main__":

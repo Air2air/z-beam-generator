@@ -95,60 +95,61 @@ COMPONENT_CONFIG = {
         "priority": 1,
         "required": True,
     },
-    "content": {
-        "generator": "content",
-        "api_provider": "deepseek",
-        "priority": 2,
-        "required": True,
-    },
-    "text": {
-        "generator": "text",
-        "api_provider": "deepseek",
-        "priority": 2,
-        "required": True,
-    },
-    "jsonld": {
-        "generator": "jsonld",
-        "api_provider": "deepseek",
-        "priority": 3,
-        "required": True,
-    },
-    "table": {
-        "generator": "table",
-        "api_provider": "deepseek",
-        "priority": 4,
-        "required": True,
-    },
     "metatags": {
         "generator": "metatags",
         "api_provider": "deepseek",
-        "priority": 5,
+        "priority": 2,
         "required": True,
     },
-    "tags": {
-        "generator": "tags",
-        "api_provider": "deepseek",
-        "priority": 6,
+    "propertiestable": {
+        "generator": "propertiestable",
+        "api_provider": "none",
+        "priority": 3,
         "required": True,
     },
     "bullets": {
         "generator": "bullets",
         "api_provider": "deepseek",
-        "priority": 7,
+        "priority": 4,
         "required": True,
     },
     "caption": {
         "generator": "caption",
         "api_provider": "deepseek",
+        "priority": 5,
+        "required": True,
+    },
+    "text": {
+        "generator": "text",
+        "api_provider": "deepseek",
+        "priority": 6,
+        "required": True,
+    },
+    "table": {
+        "generator": "table",
+        "api_provider": "deepseek",
+        "priority": 7,
+        "required": True,
+    },
+    "tags": {
+        "generator": "tags",
+        "api_provider": "deepseek",
         "priority": 8,
         "required": True,
     },
-    "propertiestable": {
-        "generator": "propertiestable",
-        "api_provider": "deepseek",
+    "jsonld": {
+        "generator": "jsonld",
+        "api_provider": "none",
         "priority": 9,
         "required": True,
     },
+    "author": {
+        "generator": "author",
+        "api_provider": "none",  # Static component, no API needed
+        "priority": 10,
+        "required": True,
+    },
+
 }
 
 AI_DETECTION_CONFIG = {
@@ -235,12 +236,6 @@ def main():
     parser = argparse.ArgumentParser(description="Z-Beam Content Generator")
 
     # Core generation commands
-    parser.add_argument(
-        "--interactive",
-        "-i",
-        action="store_true",
-        help="Interactive mode with step-by-step generation and status updates",
-    )
     parser.add_argument(
         "--material", "-m", help="Generate content for specific material"
     )
@@ -452,15 +447,16 @@ def main():
                                 generator=generator,
                                 material=material_name,
                                 component_types=[
-                                    "frontmatter",
-                                    "text",
-                                    "table",
-                                    "metatags",
-                                    "tags",
-                                    "bullets",
-                                    "caption",
-                                    "propertiestable",
-                                    "jsonld",
+                                    "frontmatter",  # Priority 1
+                                    "metatags",     # Priority 2
+                                    "propertiestable",  # Priority 3
+                                    "bullets",      # Priority 4
+                                    "caption",      # Priority 5
+                                    "text",         # Priority 6
+                                    "table",        # Priority 7
+                                    "tags",         # Priority 8
+                                    "jsonld",       # Priority 9
+                                    "author",       # Priority 10
                                 ],
                                 author_info=None,  # Will use material's author_id from materials.yaml
                             )
@@ -535,17 +531,12 @@ def main():
 
                 api_failure("optimization_service", str(e), retry_count=None)
 
-        elif args.interactive or args.material or args.all:
-            # Interactive or batch generation mode
-            print("🎮 Z-Beam Interactive Generator")
+        elif args.material or args.all:
+            # Batch generation mode
+            print("🎮 Z-Beam Generator")
             print("=" * 40)
 
-            if args.interactive:
-                print("📝 Interactive mode: Step-by-step material generation")
-                print(
-                    "💡 Use --all for batch processing or --material for specific material"
-                )
-            elif args.material:
+            if args.material:
                 print(f"🎯 Generating content for: {args.material}")
             elif args.all:
                 print("🔄 Generating content for all materials")
@@ -608,18 +599,13 @@ def main():
                     print("\n🚀 Starting batch generation for all materials...")
                     print("⚠️  Batch generation not yet implemented in this version")
 
-                elif args.interactive:
-                    # Interactive mode
-                    print("\n🎮 Starting interactive generation...")
-                    print("⚠️  Interactive mode not yet implemented in this version")
-
             except ImportError as e:
                 from utils.loud_errors import dependency_failure
 
                 dependency_failure(
                     "generator_module",
                     str(e),
-                    impact="Interactive generation cannot proceed",
+                    impact="Generation cannot proceed",
                 )
 
         else:
@@ -628,17 +614,11 @@ def main():
             print("=" * 55)
             print()
             print("EXAMPLES:")
-            print("  python3 run.py --interactive --verbose # Interactive logging")
-            print(
-                '  python3 run.py --material "Copper"     # Generate specific material (author auto-resolved)'
-            )
+            print("  python3 run.py --material \"Copper\"     # Generate specific material")
             print("  python3 run.py --all                   # Generate all materials")
             print()
             print("QUICK START:")
-            print("  python3 run.py --interactive          # Interactive mode")
-            print(
-                '  python3 run.py --material "Aluminum"   # Specific material (author auto-resolved)'
-            )
+            print("  python3 run.py --material \"Aluminum\"   # Specific material")
             print("  python3 run.py --all                   # All materials")
             print()
             print("🧪 TESTING & VALIDATION:")

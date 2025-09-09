@@ -3,38 +3,26 @@ description: "Generates comprehensive YAML frontmatter for laser cleaning articl
 version: "4.0.0"
 
 template: |
-  Generate frontmatter for {subject} laser cleaning.
+  Generate comprehensive YAML frontmatter for {subject} laser cleaning.
 
-  CRITICAL INSTRUCTIONS:
-  - Output ONLY the YAML frontmatter between --- markers
-  - Do NOT include any additional content, explanations, or article text
-  - Stop immediately after the closing --- marker
-  - Do NOT add properties sections, laser parameters, or any other content
-
-  FORMATTING REFERENCE:
-  - MANDATORY: Follow the EXACT formatting shown in components/frontmatter/example_frontmatter.md
-  - Pay special attention to the images section structure - it must be properly nested YAML
-  - DO NOT use empty objects like "hero: {}" - always include nested alt and url properties
-  - Ensure all YAML is valid and properly indented (2 spaces per level)
-
-  Output EXACTLY this YAML structure:
+  Output ONLY valid YAML between --- markers:
 
   ---
   name: {subject}
   applications:
-  - industry: "Industry 1"
-    detail: Specific laser cleaning application
-  - industry: "Industry 2"
-    detail: Specific laser cleaning application
+  - industry: Electronics Manufacturing
+    detail: Removal of surface oxides and contaminants from {subject} substrates
+  - industry: Aerospace Components
+    detail: Cleaning of thermal barrier coatings and {category} matrix composites
   technicalSpecifications:
-    powerRange: "power range like 20-100W"
-    pulseDuration: "duration like 10-100ns"
-    wavelength: "wavelength like 1064nm (primary), 532nm (optional)"
-    spotSize: "size like 0.1-2.0mm"
-    repetitionRate: "rate like 10-50kHz"
-    fluenceRange: "range like 0.5–5 J/cm²"
-    safetyClass: "class like Class 4 (requires full enclosure)"
-  description: Technical overview of {subject}, {material_formula}, for laser cleaning applications, including density, wavelength, and industrial applications.
+    powerRange: 50-200W
+    pulseDuration: 20-100ns
+    wavelength: "1064nm (primary), 532nm (optional)"
+    spotSize: 0.2-1.5mm
+    repetitionRate: 20-100kHz
+    fluenceRange: "1.0–4.5 J/cm²"
+    safetyClass: "Class 4 (requires full enclosure)"
+  description: Technical overview of {subject}, {material_formula}, for laser cleaning applications, including density of 3.95 g/cm³, optimal 1064nm wavelength interaction, and industrial applications in high-purity surface preparation.
   author: {author_name}
   author_object:
     id: {author_id}
@@ -51,41 +39,42 @@ template: |
     formula: {material_formula}
     materialType: {material_type}
   properties:
-    density: "density value"
-    densityMin: "category minimum density"
-    densityMax: "category maximum density"
-    densityPercentile: percentile_within_category_range
-    meltingPoint: "melting point"
-    meltingMin: "category minimum melting point"
-    meltingMax: "category maximum melting point"
-    meltingPercentile: percentile_within_category_range
-    thermalConductivity: "thermal conductivity"
-    thermalMin: "category minimum thermal conductivity"
-    thermalMax: "category maximum thermal conductivity"
-    thermalPercentile: percentile_within_category_range
-    tensileStrength: "tensile strength value"
-    tensileMin: "category minimum tensile strength"
-    tensileMax: "category maximum tensile strength"
-    tensilePercentile: percentile_within_category_range
-    hardness: "hardness value"
-    hardnessMin: "category minimum hardness"
-    hardnessMax: "category maximum hardness"
-    hardnessPercentile: percentile_within_category_range
-    youngsModulus: "Young's modulus value"
-    modulusMin: "category minimum Young's modulus"
-    modulusMax: "category maximum Young's modulus"
-    modulusPercentile: percentile_within_category_range
-    laserType: "optimal laser type"
-    wavelength: "primary wavelength"
-    fluenceRange: "fluence range"
+    density: "7.85 g/cm³"
+    densityMin: "1.8 g/cm³"
+    densityMax: "6.0 g/cm³"
+    densityPercentile: 51.2
+    meltingPoint: "1370-1530°C"
+    meltingMin: "1200°C"
+    meltingMax: "2800°C"
+    meltingPercentile: 54.5
+    thermalConductivity: "50.2 W/m·K"
+    thermalMin: "0.5 W/m·K"
+    thermalMax: "200 W/m·K"
+    thermalPercentile: 14.8
+    tensileStrength: "400-600 MPa"
+    tensileMin: "50 MPa"
+    tensileMax: "1000 MPa"
+    tensilePercentile: 26.3
+    hardness: "150-250 HB"
+    hardnessMin: "500 HV"
+    hardnessMax: "2500 HV"
+    hardnessPercentile: 0.0
+    youngsModulus: "200 GPa"
+    modulusMin: "150 GPa"
+    modulusMax: "400 GPa"
+    modulusPercentile: 92.0
+    laserType: "Pulsed Fiber Laser"
+    wavelength: "1064nm"
+    fluenceRange: "1.0–4.5 J/cm²"
     chemicalFormula: {material_formula}
   composition:
-  - "Component 1"
-  - "Component 2"
+  - "{subject} ({material_formula}) 99.6%"
+  - "Trace elements (Si, Fe, Na, Mg)"
   compatibility:
-  - "Compatible material 1"
-  - "Compatible material 2"
-  regulatoryStandards: "Relevant standards"
+  - "Stainless Steel"
+  - "Titanium Alloys"
+  - "Nickel-based Superalloys"
+  regulatoryStandards: "ISO 18562, ASTM F2100, IEC 60601-1"
   images:
     hero:
       alt: {subject} surface undergoing laser cleaning showing precise contamination removal
@@ -96,19 +85,19 @@ template: |
   title: Laser Cleaning {subject} - Technical Guide for Optimal Processing
   headline: Comprehensive technical guide for laser cleaning {category} {subject_lowercase}
   environmentalImpact:
-  - benefit: "Environmental benefit 1"
-    description: "Quantified description with numbers"
-  - benefit: "Environmental benefit 2"
-    description: "Quantified description with numbers"
-  - benefit: "Environmental benefit 3"
-    description: "Quantified description with numbers"
+  - benefit: Chemical Solvent Elimination
+    description: Reduces chemical usage by 100% compared to traditional solvent cleaning methods
+  - benefit: Water Conservation
+    description: Saves approximately 5000 liters of water per month in industrial applications
+  - benefit: Energy Efficiency
+    description: Consumes 40% less energy than thermal cleaning processes
   outcomes:
-  - result: "Measurable result 1"
-    metric: "Specific measurement with standard"
-  - result: "Measurable result 2"
-    metric: "Specific measurement with standard"
-  - result: "Measurable result 3"
-    metric: "Specific measurement with standard"
+  - result: Surface Cleanliness Level
+    metric: Achieves ISO 14644-1 Class 7 cleanliness standard
+  - result: Material Removal Precision
+    metric: ±5μm accuracy with no substrate damage
+  - result: Processing Speed
+    metric: "2-5 m²/hour cleaning rate depending on contamination level"
   prompt_chain_verification:
     base_config_loaded: true
     persona_config_loaded: true
@@ -120,19 +109,9 @@ template: |
     prompt_components_integrated: 4
     human_authenticity_focus: true
     cultural_adaptation_applied: true
+  ---
 
-  CRITICAL REQUIREMENTS:
-  - Output ONLY the YAML frontmatter above - nothing else
-  - Do NOT add any content sections, explanations, or additional text
-  - Stop immediately after the closing --- marker
-  - Replace ALL bracketed placeholders with specific technical content
-  - Use proper YAML formatting with correct indentation
-  - Include specific numerical values with units
-  - Make content specific to {subject} material
-  - Use the provided author name: {author_name}
-  - CRITICAL: The author field MUST be exactly: {author_name}
-  - Include proper technical specifications for laser cleaning
-  - END YOUR OUTPUT WITH THE CLOSING --- MARKER ONLY
+  Replace placeholders with {subject}-specific values. Output ONLY the YAML.
 
 generation_parameters:
   max_tokens: 2000

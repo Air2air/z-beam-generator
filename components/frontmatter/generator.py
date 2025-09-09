@@ -28,13 +28,14 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
 
             import yaml
 
+            # Use the optimized comprehensive prompt file
             prompt_file = self.component_dir / "prompt.yaml"
             if prompt_file.exists():
                 with open(prompt_file, "r", encoding="utf-8") as f:
                     self.prompt_config = yaml.safe_load(f)
-                logger.info(f"Loaded prompt configuration for frontmatter")
+                logger.info("Loaded optimized comprehensive prompt configuration for frontmatter")
             else:
-                logger.warning(f"Prompt configuration file not found: {prompt_file}")
+                logger.warning(f"Comprehensive prompt configuration file not found: {prompt_file}")
                 self.prompt_config = {}
         except Exception as e:
             from utils.loud_errors import configuration_failure
@@ -192,7 +193,7 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
 
             if author_id:
                 try:
-                    from utils.author_manager import get_author_by_id
+                    from utils import get_author_by_id
 
                     author_data = get_author_by_id(author_id)
                     if author_data and "name" in author_data:
@@ -273,13 +274,9 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
 
         template = self.prompt_config["template"]
 
-        # Escape literal {} braces in template that should not be formatted
-        # Replace {} with {{}} so they are treated as literal braces
-        template_escaped = template.replace("{}", "{{}}")
-
         # Format the template with variables
         try:
-            formatted_prompt = template_escaped.format(**template_vars)
+            formatted_prompt = template.format(**template_vars)
             return formatted_prompt
         except KeyError as e:
             from utils.loud_errors import validation_failure

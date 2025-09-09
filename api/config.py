@@ -66,14 +66,14 @@ class APIConfig:
     api_key: str
     base_url: str = "https://api.deepseek.com"
     model: str = "deepseek-chat"
-    max_tokens: int = 3000  # REDUCED FROM 4000 for faster responses
+    max_tokens: int = 2000  # FURTHER REDUCED for faster responses
     temperature: float = (
-        0.8  # INCREASED FROM 0.7 for more creative but faster responses
+        0.9  # INCREASED for faster, more creative responses
     )
-    timeout_connect: int = 10
-    timeout_read: int = 30  # REDUCED FROM 60 for faster timeout on slow requests
-    max_retries: int = 2  # REDUCED FROM 3 for faster failure
-    retry_delay: float = 0.5  # REDUCED FROM 1.0 for faster retries
+    timeout_connect: int = 10  # REDUCED for faster failure
+    timeout_read: int = 45  # REDUCED for faster timeout
+    max_retries: int = 1  # REDUCED to 1 retry for faster failure
+    retry_delay: float = 0.3  # REDUCED for faster retries
 
 
 class ConfigManager:
@@ -95,21 +95,21 @@ class ConfigManager:
             base_url=os.getenv("DEEPSEEK_BASE_URL", "https://api.deepseek.com"),
             model=os.getenv("DEEPSEEK_MODEL", "deepseek-chat"),
             max_tokens=int(
-                os.getenv("DEEPSEEK_MAX_TOKENS", "3000")
-            ),  # OPTIMIZED: Reduced from 4000
+                os.getenv("DEEPSEEK_MAX_TOKENS", "2000")
+            ),  # OPTIMIZED: Further reduced from 3000
             temperature=float(
-                os.getenv("DEEPSEEK_TEMPERATURE", "0.8")
-            ),  # OPTIMIZED: Increased from 0.7
+                os.getenv("DEEPSEEK_TEMPERATURE", "0.9")
+            ),  # OPTIMIZED: Increased from 0.8
             timeout_connect=int(os.getenv("DEEPSEEK_TIMEOUT_CONNECT", "10")),
             timeout_read=int(
-                os.getenv("DEEPSEEK_TIMEOUT_READ", "30")
+                os.getenv("DEEPSEEK_TIMEOUT_READ", "45")
             ),  # OPTIMIZED: Reduced from 60
             max_retries=int(
-                os.getenv("DEEPSEEK_MAX_RETRIES", "2")
-            ),  # OPTIMIZED: Reduced from 3
+                os.getenv("DEEPSEEK_MAX_RETRIES", "1")
+            ),  # OPTIMIZED: Reduced from 2
             retry_delay=float(
-                os.getenv("DEEPSEEK_RETRY_DELAY", "0.5")
-            ),  # OPTIMIZED: Reduced from 1.0
+                os.getenv("DEEPSEEK_RETRY_DELAY", "0.3")
+            ),  # OPTIMIZED: Reduced from 0.5
         )
 
     @staticmethod

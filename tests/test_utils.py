@@ -7,11 +7,12 @@ Provides essential test utilities.
 
 import contextlib
 from pathlib import Path
-from typing import Dict, Any, List, Generator
+from typing import Any, Dict, Generator, List
 from unittest.mock import patch
+
 import pytest
 
-from tests.test_framework import TestPathManager, TestDataFactory, TestValidator
+from tests.test_framework import TestDataFactory, TestPathManager, TestValidator
 
 
 @pytest.fixture(scope="session")
@@ -40,9 +41,11 @@ def mock_api_client():
     """Provide a mock API client."""
     try:
         from tests.fixtures.mocks.mock_api_client import MockAPIClient
+
         return MockAPIClient("grok")
     except ImportError:
         from unittest.mock import MagicMock
+
         return MagicMock()
 
 
@@ -71,13 +74,16 @@ def mock_file_operations():
         component_dir.mkdir(parents=True, exist_ok=True)
 
         filepath = component_dir / filename
-        filepath.write_text(content, encoding='utf-8')
+        filepath.write_text(content, encoding="utf-8")
         return str(filepath)
 
-    with patch('utils.file_operations.save_component_to_file_original',
-               side_effect=mock_save_component_to_file_original), \
-         patch('generators.workflow_manager.save_component_to_file_original',
-               side_effect=mock_save_component_to_file_original):
+    with patch(
+        "utils.file_operations.save_component_to_file_original",
+        side_effect=mock_save_component_to_file_original,
+    ), patch(
+        "generators.workflow_manager.save_component_to_file_original",
+        side_effect=mock_save_component_to_file_original,
+    ):
         yield
 
 
@@ -86,13 +92,27 @@ def mock_api_calls(provider: str = "grok", error_rate: float = 0.0):
     """Context manager for mocking API calls."""
     try:
         from tests.fixtures.mocks.mock_api_client import MockAPIClient
+
         mock_client = MockAPIClient(provider)
     except ImportError:
         from unittest.mock import MagicMock
+
         mock_client = MagicMock()
 
-    with patch('generators.workflow_manager.get_api_client_for_component',
-               return_value=mock_client):
+    # Mock all possible API client functions
+    with patch(
+        "api.client_manager.get_api_client_for_component",
+        return_value=mock_client,
+    ), patch(
+        "api.client_manager.create_api_client",
+        return_value=mock_client,
+    ), patch(
+        "generators.workflow_manager.get_api_client_for_component",
+        return_value=mock_client,
+    ), patch(
+        "generators.dynamic_generator.get_api_client_for_component",
+        return_value=mock_client,
+    ):
         yield mock_client
 
 
@@ -106,7 +126,9 @@ def validate_generation_result(result: Dict[str, Any]) -> Dict[str, Any]:
     return TestValidator.validate_generation_result(result)
 
 
-def validate_file_structure(content_dir: Path, expected_components: List[str]) -> Dict[str, Any]:
+def validate_file_structure(
+    content_dir: Path, expected_components: List[str]
+) -> Dict[str, Any]:
     """Validate file structure after generation."""
     return TestValidator.validate_file_structure(content_dir, expected_components)
 
@@ -135,6 +157,22 @@ def assert_content_quality(content: str, component_type: str, material: str):
         assert "|" in content, "Table content must contain table markup"
 
 
+class TestHelper:
+    """
+    Helper class for common test operations.
+    """
+
+    @staticmethod
+    def setup_component_test(component_type: str, material: str = "Steel") -> Dict[str, Any]:
+        """Set up a component test with standard data."""
+        return {
+            "component_type": component_type,
+            "material": material,
+            "author_info": TestDataFactory.create_test_author_info(1),
+            "config": TestDataFactory.create_test_component_config(component_type)
+        }
+
+
 # Test data constants
 TEST_MATERIALS = ["Steel", "Aluminum", "Copper", "Titanium", "Ceramic"]
 TEST_COMPONENTS = ["frontmatter", "text", "table", "bullets", "caption"]
@@ -160,7 +198,39 @@ __all__ = [
     'validate_file_structure',
     'assert_test_files_exist',
     'assert_content_quality',
+    'TestHelper',
     'TEST_MATERIALS',
     'TEST_COMPONENTS',
     'TEST_AUTHORS',
+]
+
+
+# Test data constants
+TEST_MATERIALS = ["Steel", "Aluminum", "Copper", "Titanium", "Ceramic"]
+TEST_COMPONENTS = ["frontmatter", "text", "table", "bullets", "caption"]
+TEST_AUTHORS = [
+    {"id": 1, "name": "Yi-Chun Lin", "country": "Taiwan"},
+    {"id": 2, "name": "Maria Garcia", "country": "Spain"},
+    {"id": 3, "name": "Hans Mueller", "country": "Germany"},
+    {"id": 4, "name": "Sarah Johnson", "country": "USA"},
+]
+
+# Export key functions
+__all__ = [
+    "project_root",
+    "test_temp_dir",
+    "test_content_dir",
+    "mock_api_client",
+    "sample_materials",
+    "sample_author_info",
+    "mock_file_operations",
+    "mock_api_calls",
+    "create_test_component_config",
+    "validate_generation_result",
+    "validate_file_structure",
+    "assert_test_files_exist",
+    "assert_content_quality",
+    "TEST_MATERIALS",
+    "TEST_COMPONENTS",
+    "TEST_AUTHORS",
 ]

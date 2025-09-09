@@ -33,6 +33,15 @@ class MockAPIClient:
         self.failure_rate = 0.05  # 5% failure rate when enabled
         self.retry_count = 0
 
+        # Statistics tracking (same as real API client)
+        self.stats = {
+            "total_requests": 0,
+            "successful_requests": 0,
+            "failed_requests": 0,
+            "total_tokens": 0,
+            "total_response_time": 0.0,
+        }
+
         # Provider-specific configurations
         self._setup_provider_config()
 
@@ -79,9 +88,11 @@ class MockAPIClient:
     def generate(self, request: GenerationRequest) -> APIResponse:
         """Mock content generation with realistic but fast responses"""
         self.call_count += 1
+        self.stats["total_requests"] += 1
 
         # Simulate network failures if enabled
         if self.simulate_failures and random.random() < self.failure_rate:
+            self.stats["failed_requests"] += 1
             return self._simulate_failure(request)
 
         # Simulate API delay with some variance
@@ -98,6 +109,11 @@ class MockAPIClient:
         prompt_tokens = len(optimized_request.prompt.split())
         completion_tokens = len(content.split())
         total_tokens = prompt_tokens + completion_tokens
+
+        # Update successful request stats
+        self.stats["successful_requests"] += 1
+        self.stats["total_tokens"] += total_tokens
+        self.stats["total_response_time"] += delay
 
         return APIResponse(
             success=True,
@@ -734,11 +750,6 @@ Repetition Rate|10-1000|Hz|Laser pulse frequency"""
                 "call_count": self.call_count,
             },
         }
-
-    def reset_statistics(self):
-        """Reset usage statistics"""
-        self.reset_call_count()
-
 
 class MockAPIClientManager:
     """Manager for mock API clients with different configurations"""

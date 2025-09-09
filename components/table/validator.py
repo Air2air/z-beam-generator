@@ -7,6 +7,8 @@ Component-specific validation logic for table components.
 
 from typing import Any, Dict, List
 
+from utils.validation import validate_placeholder_content
+
 
 def validate_table_format(
     content: str, format_rules: Dict[str, Any] = None
@@ -51,8 +53,7 @@ def validate_table_structure(content: str) -> List[str]:
     errors = []
 
     # Check for placeholder content
-    if "TBD" in content or "TODO" in content or "[" in content and "]" in content:
-        errors.append("Contains placeholder content (TBD, TODO, or [brackets])")
+    errors.extend(validate_placeholder_content(content))
 
     # Check for proper table headers
     lines = [line.strip() for line in content.split("\n") if line.strip()]

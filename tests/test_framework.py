@@ -5,14 +5,14 @@ Simplified Test Framework
 Provides essential test utilities with minimal bloat.
 """
 
+import logging
 import os
 import sys
 import tempfile
 import unittest
 from pathlib import Path
-from typing import Dict, Any, Optional, List
-from unittest.mock import patch, MagicMock
-import logging
+from typing import Any, Dict, List, Optional
+from unittest.mock import MagicMock, patch
 
 # Setup logging for tests
 logging.basicConfig(level=logging.WARNING)
@@ -79,7 +79,7 @@ class RobustTestCase(unittest.TestCase):
         self.test_author_info = {
             "id": 1,
             "name": "Test Author",
-            "country": "Test Country"
+            "country": "Test Country",
         }
 
     def tearDown(self):
@@ -92,6 +92,7 @@ class RobustTestCase(unittest.TestCase):
         """Create a mock API client."""
         try:
             from tests.fixtures.mocks.mock_api_client import MockAPIClient
+
             return MockAPIClient(provider, **kwargs)
         except ImportError:
             return MagicMock()
@@ -111,7 +112,7 @@ class TestDataFactory:
                 "name": materials[i % len(materials)],
                 "category": "metal" if i < 4 else "ceramic",
                 "complexity": "medium",
-                "formula": "Fe" if materials[i % len(materials)] == "Steel" else "Al"
+                "formula": "Fe" if materials[i % len(materials)] == "Steel" else "Al",
             }
             for i in range(count)
         ]
@@ -123,7 +124,7 @@ class TestDataFactory:
             {"id": 1, "name": "Yi-Chun Lin", "country": "Taiwan"},
             {"id": 2, "name": "Maria Garcia", "country": "Spain"},
             {"id": 3, "name": "Hans Mueller", "country": "Germany"},
-            {"id": 4, "name": "Sarah Johnson", "country": "USA"}
+            {"id": 4, "name": "Sarah Johnson", "country": "USA"},
         ]
         return authors[(author_id - 1) % len(authors)]
 
@@ -134,19 +135,19 @@ class TestDataFactory:
             "frontmatter": {
                 "type": "yaml",
                 "required_fields": ["title", "author", "date"],
-                "optional_fields": ["description", "tags", "category"]
+                "optional_fields": ["description", "tags", "category"],
             },
             "text": {
                 "type": "markdown",
                 "min_length": 100,
                 "max_length": 2000,
-                "required_sections": ["introduction", "process", "applications"]
+                "required_sections": ["introduction", "process", "applications"],
             },
             "table": {
                 "type": "markdown_table",
                 "columns": ["Property", "Value", "Unit"],
-                "min_rows": 3
-            }
+                "min_rows": 3,
+            },
         }
         return configs.get(component, {})
 
@@ -159,12 +160,7 @@ class TestValidator:
     @staticmethod
     def validate_generation_result(result: Dict[str, Any]) -> Dict[str, Any]:
         """Validate a generation result."""
-        validation = {
-            "valid": True,
-            "errors": [],
-            "warnings": [],
-            "metrics": {}
-        }
+        validation = {"valid": True, "errors": [], "warnings": [], "metrics": {}}
 
         required_fields = ["components_generated", "components_failed", "total_time"]
         for field in required_fields:
@@ -183,25 +179,28 @@ class TestValidator:
                     validation["valid"] = False
 
         if "components_generated" in result and "components_failed" in result:
-            total = len(result["components_generated"]) + len(result["components_failed"])
-            success_rate = len(result["components_generated"]) / total if total > 0 else 0
+            total = len(result["components_generated"]) + len(
+                result["components_failed"]
+            )
+            success_rate = (
+                len(result["components_generated"]) / total if total > 0 else 0
+            )
             validation["metrics"]["success_rate"] = success_rate
             validation["metrics"]["total_components"] = total
 
         return validation
 
     @staticmethod
-    def validate_file_structure(content_dir: Path, expected_components: List[str]) -> Dict[str, Any]:
+    def validate_file_structure(
+        content_dir: Path, expected_components: List[str]
+    ) -> Dict[str, Any]:
         """Validate file structure after generation."""
-        validation = {
-            "valid": True,
-            "errors": [],
-            "file_counts": {},
-            "total_files": 0
-        }
+        validation = {"valid": True, "errors": [], "file_counts": {}, "total_files": 0}
 
         if not content_dir.exists():
-            validation["errors"].append(f"Content directory does not exist: {content_dir}")
+            validation["errors"].append(
+                f"Content directory does not exist: {content_dir}"
+            )
             validation["valid"] = False
             return validation
 
@@ -238,18 +237,20 @@ def patch_file_operations():
         component_dir.mkdir(parents=True, exist_ok=True)
 
         filepath = component_dir / filename
-        filepath.write_text(content, encoding='utf-8')
+        filepath.write_text(content, encoding="utf-8")
         return str(filepath)
 
-    return patch('utils.file_operations.save_component_to_file_original',
-                 side_effect=mock_save_component_to_file_original)
+    return patch(
+        "utils.file_operations.save_component_to_file_original",
+        side_effect=mock_save_component_to_file_original,
+    )
 
 
 # Export key classes and functions
 __all__ = [
-    'TestPathManager',
-    'RobustTestCase',
-    'TestDataFactory',
-    'TestValidator',
-    'patch_file_operations',
+    "TestPathManager",
+    "RobustTestCase",
+    "TestDataFactory",
+    "TestValidator",
+    "patch_file_operations",
 ]

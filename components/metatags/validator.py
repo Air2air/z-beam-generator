@@ -9,6 +9,8 @@ from typing import Any, Dict, List
 
 import yaml
 
+from utils.validation import validate_placeholder_content
+
 
 def validate_metatags_yaml(
     content: str, format_rules: Dict[str, Any] = None
@@ -69,8 +71,7 @@ def validate_metatags_content(content: str) -> List[str]:
     errors = []
 
     # Check for placeholder content
-    if "TBD" in content or "TODO" in content or "[" in content and "]" in content:
-        errors.append("Contains placeholder content (TBD, TODO, or [brackets])")
+    errors.extend(validate_placeholder_content(content))
 
     # Check for required meta tag fields
     required_elements = ["title:", "meta_tags:", "description"]

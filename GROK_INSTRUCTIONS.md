@@ -196,24 +196,24 @@ Watch for these indicators of problems:
 **APIs:** Grok, DeepSeek integration
 **Architecture:** Component-based with strict validation, no defaults
 
-## 🔥 CONTENT COMPONENT - CRITICAL SYSTEM CORE
+## 🔥 TEXT COMPONENT - CRITICAL SYSTEM CORE
 
 ### 🚨 EXTREME CAUTION REQUIRED
-The content component (`components/content/`) is the **MOST CRITICAL** part of the system:
+The text component (`components/text/`) is the **MOST CRITICAL** part of the system:
 - **25,679 bytes** of production-ready code
 - **Sophisticated multi-layered prompt engineering**
 - **Core revenue-generating functionality**
 
-### 📚 MANDATORY READING BEFORE ANY CONTENT WORK
+### 📚 MANDATORY READING BEFORE ANY TEXT WORK
 
-**You MUST read these files BEFORE touching ANY content component code:**
+**You MUST read these files BEFORE touching ANY text component code:**
 
-1. 📖 **`components/content/docs/README.md`** - Start here for overview
-2. 🏗️ **`components/content/docs/CONTENT_GENERATION_ARCHITECTURE.md`** - System architecture
-3. 🎯 **`components/content/docs/PROMPT_SYSTEM.md`** - Prompt engineering details
-4. 📚 **`components/content/docs/API_REFERENCE.md`** - API documentation
+1. 📖 **`components/text/docs/README.md`** - Start here for overview
+2. 🏗️ **`components/text/docs/CONTENT_GENERATION_ARCHITECTURE.md`** - System architecture
+3. 🎯 **`components/text/docs/PROMPT_SYSTEM.md`** - Prompt engineering details
+4. 📚 **`components/text/docs/API_REFERENCE.md`** - API documentation
 
-### 🚫 CONTENT COMPONENT FORBIDDEN ACTIONS
+### 🚫 TEXT COMPONENT FORBIDDEN ACTIONS
 
 **ABSOLUTELY NEVER:**
 1. Modify `fail_fast_generator.py` without explicit permission
@@ -223,7 +223,7 @@ The content component (`components/content/`) is the **MOST CRITICAL** part of t
 5. Remove retry logic or error recovery mechanisms
 6. Change the 12-step prompt construction process
 
-### ✅ CONTENT COMPONENT REQUIRED ACTIONS
+### ✅ TEXT COMPONENT REQUIRED ACTIONS
 
 **ALWAYS:**
 1. Preserve multi-layered prompt architecture (Base + Persona + Formatting)
@@ -234,24 +234,24 @@ The content component (`components/content/`) is the **MOST CRITICAL** part of t
 6. Use fail-fast validation with proper exception types
 7. Test with real API clients, never mocks
 
-### 🏛️ Content Component Architecture Overview
+### 🏛️ Text Component Architecture Overview
 
-- **Wrapper Pattern**: `ContentComponentGenerator` wraps `fail_fast_generator`
-- **Factory Integration**: Works with `ComponentGeneratorFactory.create_generator("content")`
+- **Wrapper Pattern**: `TextComponentGenerator` wraps `fail_fast_generator`
+- **Factory Integration**: Works with `ComponentGeneratorFactory.create_generator("text")`
 - **Three-Layer Prompts**: Base guidance + Author persona + Formatting rules
 - **Quality Assurance**: 5-dimension scoring with human believability threshold
 - **Author Authentication**: 4 country-specific personas with linguistic nuances
 - **Configuration Caching**: LRU cache for YAML files, lazy loading
 
-### 🔧 Content Component Work Protocol
+### 🔧 Text Component Work Protocol
 
-1. **📖 READ THE DOCS FIRST** - All answers are in `components/content/docs/`
+1. **📖 READ THE DOCS FIRST** - All answers are in `components/text/docs/`
 2. **🤔 Understand the WHY** - Each component serves a specific purpose
 3. **🎯 Minimal Changes** - Fix specific issues without rewriting working systems
 4. **🧪 Test Thoroughly** - Validate all 4 author personas work correctly
 5. **🙋 Ask Permission** - Get explicit approval before major modifications
 
-**The content component documentation is comprehensive and covers every aspect of the system. Use it as your primary reference.**
+**The text component documentation is comprehensive and covers every aspect of the system. Use it as your primary reference.**
 
 ## 🚑 Emergency Recovery Procedures
 
@@ -295,8 +295,8 @@ git revert <commit>  # Revert to known working state
 - [ ] I'm following existing patterns and conventions
 - [ ] I'm including proper error handling
 
-**For content component work:**
-- [ ] I've read the documentation in `components/content/docs/`
+**For text component work:**
+- [ ] I've read the documentation in `components/text/docs/`
 - [ ] I understand the multi-layered architecture
 - [ ] I have permission for any major changes
 - [ ] I'm testing with real API clients

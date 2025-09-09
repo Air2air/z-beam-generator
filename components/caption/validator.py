@@ -7,6 +7,8 @@ Component-specific validation logic for caption components.
 
 from typing import Any, Dict, List
 
+from utils.validation import validate_placeholder_content
+
 
 def validate_caption_format(
     content: str, format_rules: Dict[str, Any] = None
@@ -48,8 +50,7 @@ def validate_caption_content(content: str) -> List[str]:
     errors = []
 
     # Check for placeholder content
-    if "TBD" in content or "TODO" in content or "[" in content and "]" in content:
-        errors.append("Contains placeholder content (TBD, TODO, or [brackets])")
+    errors.extend(validate_placeholder_content(content))
 
     # Basic content validation
     if not content.strip():

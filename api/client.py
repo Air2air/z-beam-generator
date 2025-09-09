@@ -339,60 +339,24 @@ class APIClient:
         # API Terminal Messaging - Response received
         print(f"📥 [API CLIENT] Received response (Status: {response.status_code})")
 
-        # Add timeout protection for response content reading using threading
-        import threading
+        # Simplified content reading without complex threading
+        try:
+            content_data = response.content
+            print(
+                f"📦 [API CLIENT] Content loaded successfully ({len(content_data)} bytes)"
+            )
+        except Exception as e:
+            from utils.loud_errors import network_failure
 
-        content_loaded = [False]
-        content_data = [None]
-        content_error = [None]
-
-        def load_content_with_timeout():
-            try:
-                content_data[0] = response.content
-                content_loaded[0] = True
-            except Exception as e:
-                content_error[0] = str(e)
-
-        # Start content loading in a separate thread with timeout
-        content_thread = threading.Thread(target=load_content_with_timeout)
-        content_thread.daemon = True
-        content_thread.start()
-
-        # Wait for content loading with timeout
-        content_timeout = min(self.timeout_read, 30)  # Max 30s for content reading
-        content_thread.join(timeout=content_timeout)
-
-        if not content_loaded[0]:
-            if content_thread.is_alive():
-                from utils.loud_errors import network_failure
-
-                network_failure(
-                    "api_client", f"Content reading timeout after {content_timeout}s"
-                )
-                return APIResponse(
-                    success=False,
-                    content="",
-                    error=f"Content reading timeout after {content_timeout} seconds",
-                    response_time=time.time() - start_time,
-                )
-            elif content_error[0]:
-                from utils.loud_errors import api_failure
-
-                api_failure(
-                    "api_client",
-                    f"Content reading error: {content_error[0]}",
-                    retry_count=None,
-                )
-                return APIResponse(
-                    success=False,
-                    content="",
-                    error=f"Content reading error: {content_error[0]}",
-                    response_time=time.time() - start_time,
-                )
-
-        print(
-            f"📦 [API CLIENT] Content loaded successfully ({len(content_data[0])} bytes)"
-        )
+            network_failure(
+                "api_client", f"Content reading error: {e}"
+            )
+            return APIResponse(
+                success=False,
+                content="",
+                error=f"Content reading error: {e}",
+                response_time=time.time() - start_time,
+            )
 
         # Process response
         if response.status_code == 200:

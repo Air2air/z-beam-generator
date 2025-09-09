@@ -18,7 +18,7 @@ from .cleanup_commands import (
     run_cleanup_scan,
     run_root_cleanup,
 )
-from .component_config import COMPONENT_CONFIG, show_component_configuration
+from .component_config import COMPONENT_CONFIG, show_component_configuration, get_components_sorted_by_priority, get_enabled_components
 
 __all__ = [
     "API_PROVIDERS",
@@ -26,6 +26,8 @@ __all__ = [
     "get_api_client_for_component",
     "COMPONENT_CONFIG",
     "show_component_configuration",
+    "get_components_sorted_by_priority",
+    "get_enabled_components",
     "clean_content_components",
     "run_cleanup_scan",
     "run_cleanup_report",

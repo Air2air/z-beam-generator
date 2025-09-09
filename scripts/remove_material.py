@@ -55,7 +55,6 @@ class MaterialRemover:
         # Component types that generate files
         self.component_types = [
             "frontmatter",
-            "content",
             "metatags",
             "jsonld",
             "tags",

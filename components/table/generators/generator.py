@@ -11,7 +11,7 @@ from pathlib import Path
 from typing import Any, Dict, Optional
 
 from generators.component_generators import APIComponentGenerator
-from utils.component_base import (
+from utils.core.component_base import (
     ComponentResult,
     handle_generation_error,
     validate_required_fields,

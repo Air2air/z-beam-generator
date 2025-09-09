@@ -4,7 +4,6 @@ A dynamic, schema-driven content generator for laser cleaning technical document
 
 ## ✨ Features
 
-- **🎮 Interactive Mode**: Step-by-step generation with user prompts
 - **📊 Schema-Driven**: Fully dynamic content generation using JSON schemas
 - **🤖 AI-Powered**: Integration with DeepSeek API for intelligent content creation
 - **📈 Real-Time Status Updates**: Live progress tracking every 10 seconds during generation
@@ -224,52 +223,9 @@ python3 run.py --test-api
 python3 run.py --material "Aluminum"
 ```
 
-#### Interactive Mode (Recommended)
-```bash
-python3 run.py --interactive
-```
-
 #### Batch Processing
 ```bash
 python3 run.py --all --limit 10
-```
-
-## 🎮 Interactive Mode
-
-The interactive mode provides the best user experience with fine-grained control and real-time status updates:
-
-### Key Features
-- **Step-by-step processing**: Generate one material at a time
-- **Real-time status updates**: Progress tracking every 10 seconds
-- **User prompts**: Choose to continue, skip, pause, or quit
-- **Progress tracking**: Live completion status with AI detection scores
-- **Resume capability**: Start from any specific material
-
-### Status Update Format
-```
-📊 [START] Beginning iterative improvement for Aluminum - Target: 70.0 - Max iterations: 5
-📊 [TIME STATUS] 20:46:12 - Elapsed: 21.9s - Progress: 40.0% - Iteration: 2/5 - Best score: 60.0
-📊 [ITERATION STATUS] Iteration 1/5 (20.0%) - Elapsed: 0.0s - Best score: 0.0
-🎉 [STATUS] Iterative improvement completed! Total time: 72.3s - Final best score: 96.2 - Iterations: 3
-```
-
-### Commands
-- **Y/Yes**: Continue to next material (default)
-- **N/No**: Pause generation
-- **S/Skip**: Skip current material
-- **Q/Quit**: Exit with summary
-- **List**: Show next 10 materials
-
-### Examples
-```bash
-# Basic interactive mode
-python3 run.py --interactive
-
-# Start from specific material
-python3 run.py --interactive --start-from "Copper"
-
-# With verbose logging
-python3 run.py --interactive --verbose
 ```
 
 ## 📋 Available Materials
@@ -813,7 +769,6 @@ python3 test_validation_diagnostics.py   # Test validation system
 
 ## 📚 Documentation
 
-- [Interactive Mode Guide](docs/README.md)
 - [Three-Layer Architecture](docs/CLEAN_ARCHITECTURE_SUMMARY.md)
 - [AI Detection Integration](docs/WINSTON_AI_INTEGRATION.md)
 - [Robustness Framework](docs/ZBEAM_ROBUSTNESS_IMPROVEMENTS.md)
@@ -824,7 +779,7 @@ python3 test_validation_diagnostics.py   # Test validation system
 ## 🤝 Contributing
 
 1. Run tests: `python3 -m pytest test_*.py -v`
-2. Validate changes with interactive mode
+2. Validate changes with batch mode
 3. Update documentation as needed
 4. Ensure all tests pass before submitting
 
@@ -839,6 +794,6 @@ python3 test_validation_diagnostics.py   # Test validation system
 - Check test results: `python3 -m pytest test_*.py -v`
 - Check logs in console output
 - Test API with `--test-api`
-- Use interactive mode for best experience
+- Use batch mode for best experience
 
 **Status Updates:** The system now provides real-time status updates every 10 seconds during text generation, showing progress, elapsed time, and AI detection scores!

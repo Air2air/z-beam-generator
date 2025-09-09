@@ -62,12 +62,18 @@ The Z-Beam generator successfully meets all three core requirements while mainta
    - 2 empty files in `/tests/` (0 bytes each)
    - 3 active files in `/cleanup/` with overlapping functionality
 
-2. **Validator Duplication**
-   - 9 component validators with identical TBD/TODO validation logic
-   - Same pattern repeated across all validators:
+2. **Validator Duplication** ✅ **RESOLVED**
+   - **Before:** 12 component validators with identical TBD/TODO validation logic
+   - **After:** Consolidated into shared `utils.validation.validate_placeholder_content()`
+   - **Pattern eliminated:**
      ```python
+     # OLD: Duplicated across 12 files
      if 'TBD' in content or 'TODO' in content or '[' in content and ']' in content:
          errors.append("Contains placeholder content (TBD, TODO, or [brackets])")
+
+     # NEW: Single shared function
+     from utils.validation import validate_placeholder_content
+     errors.extend(validate_placeholder_content(content))
      ```
 
 3. **Unused Imports**
@@ -90,18 +96,13 @@ The Z-Beam generator successfully meets all three core requirements while mainta
 - Merge `test_cleanup.py`, `test_cleanup_old.py`, and `test_cleanup_new.py`
 - Create single `cleanup/test_cleanup.py` with unified functionality
 
-#### 2. Extract Common Validator Base Class
-**Impact:** Reduce ~200 lines of duplication
+#### 2. Extract Common Validator Base Class ✅ **COMPLETED**
+**Impact:** Reduced ~200 lines of duplication
 **Action:**
 ```python
-# Create validators/base_validator.py
-class BaseValidator:
-    @staticmethod
-    def check_placeholder_content(content: str) -> List[str]:
-        errors = []
-        if 'TBD' in content or 'TODO' in content or '[' in content and ']' in content:
-            errors.append("Contains placeholder content (TBD, TODO, or [brackets])")
-        return errors
+# COMPLETED: Created utils/validation/placeholder_validator.py
+from utils.validation import validate_placeholder_content
+errors.extend(validate_placeholder_content(content))
 ```
 
 #### 3. Remove Unused Imports

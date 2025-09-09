@@ -1,0 +1,40 @@
+name: "Frontmatter Generator"
+description: "Generates comprehensive YAML frontmatter for laser cleaning articles"
+version: "5.0.0"
+
+template: |
+  Generate YAML frontmatter for {subject} laser cleaning.
+
+  Output ONLY valid YAML between --- markers:
+
+  ---
+  name: {subject}
+  description: Technical overview of {subject}, {material_formula}, for laser cleaning applications.
+  author: {author_name}
+  category: {category}
+  chemicalProperties:
+    symbol: {material_symbol}
+    formula: {material_formula}
+    materialType: {material_type}
+  properties:
+    density: "7.85 g/cm³"
+    meltingPoint: "1370-1530°C"
+    thermalConductivity: "50.2 W/m·K"
+    tensileStrength: "400-600 MPa"
+    hardness: "150-250 HB"
+    youngsModulus: "200 GPa"
+    laserType: "Fiber laser"
+    wavelength: "1064nm"
+    fluenceRange: "1-3 J/cm²"
+  title: Laser Cleaning {subject} - Technical Guide
+  ---
+
+  Replace placeholders with {subject}-specific values. Output ONLY the YAML.
+
+generation_parameters:
+  max_tokens: 1000
+  temperature: 0.5
+
+parameters:
+  max_tokens: 1000
+  temperature: 0.5

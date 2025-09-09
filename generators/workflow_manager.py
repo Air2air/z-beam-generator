@@ -3,20 +3,34 @@
 Workflow Manager
 
 Centralized generation workflow management.
-Extracted from run.py to reduce bloat and improve testability.
+Extracted from                # Extract frontmatter data if this was the frontmatter component
+                if component_type == "frontmatter":
+                    try:
+                        import yaml
+                        # Strip YAML markers before parsing
+                        content_to_parse = result.content.strip()
+                        if content_to_parse.startswith('---'):
+                            content_to_parse = content_to_parse[3:].strip()
+                        if content_to_parse.endswith('---'):
+                            content_to_parse = content_to_parse[:-3].strip()
+                        
+                        frontmatter_data = yaml.safe_load(content_to_parse)
+                        print("    📋 Extracted frontmatter data for subsequent components")
+                    except Exception as e:
+                        print(f"    ⚠️  Failed to parse frontmatter data: {e}")
+                        frontmatter_data = None reduce bloat and improve testability.
 """
 
 import time
-from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 from api.client_manager import get_api_client_for_component
 from generators.dynamic_generator import DynamicGenerator
-from utils.author_manager import (
+from utils.core.author_manager import (
     get_author_info_for_generation,
     get_author_info_for_material,
 )
-from utils.file_operations import save_component_to_file_original
+from utils.file_ops.file_operations import save_component_to_file_original
 
 
 def run_dynamic_generation(
@@ -50,7 +64,19 @@ def run_dynamic_generation(
     print(f"\n🔧 Generating content for: {material}")
     print(f"📝 Components: {', '.join(component_types)}")
 
-    for component_type in component_types:
+    # Track frontmatter data for components that need it
+    frontmatter_data = None
+
+    # Prioritize frontmatter generation first if it's in the list
+    prioritized_components = []
+    if "frontmatter" in component_types:
+        prioritized_components.append("frontmatter")
+        component_types = [c for c in component_types if c != "frontmatter"]
+
+    # Add remaining components
+    prioritized_components.extend(component_types)
+
+    for component_type in prioritized_components:
         try:
             print(f"\n  🔨 Generating {component_type}...")
 
@@ -64,6 +90,7 @@ def run_dynamic_generation(
                 component_type=component_type,
                 api_client=api_client,
                 author_info=author_info,
+                frontmatter_data=frontmatter_data,  # Pass frontmatter data if available
             )
             component_time = time.time() - component_start
 
@@ -87,6 +114,25 @@ def run_dynamic_generation(
                     }
                 )
                 results["total_tokens"] += result.token_count or 0
+
+                # Extract frontmatter data if this was the frontmatter component
+                if component_type == "frontmatter":
+                    try:
+                        import yaml
+                        # Strip YAML markers and parse the frontmatter content
+                        content = result.content.strip()
+                        if content.startswith('---'):
+                            # Remove the opening marker
+                            content = content[3:].strip()
+                        if content.endswith('---'):
+                            # Remove the closing marker
+                            content = content[:-3].strip()
+                        # Parse the YAML frontmatter content
+                        frontmatter_data = yaml.safe_load(content)
+                        print("    📋 Extracted frontmatter data for subsequent components")
+                    except Exception as e:
+                        print(f"    ⚠️  Failed to parse frontmatter data: {e}")
+                        frontmatter_data = None
 
             else:
                 from utils.loud_errors import component_failure
@@ -118,7 +164,7 @@ def run_dynamic_generation(
 
     # Summary
     success_count = len(results["components_generated"])
-    total_count = len(component_types)
+    total_count = len(prioritized_components)
 
     print(f"\n📊 Generation Summary for {material}:")
     print(f"  ✅ Successful: {success_count}/{total_count}")
@@ -226,88 +272,6 @@ def run_batch_generation(
     print(f"🎯 Total tokens: {batch_results['total_tokens']}")
 
     return batch_results
-
-
-def run_interactive_generation(
-    generator: DynamicGenerator, author_info: Dict[str, Any] = None
-) -> None:
-    """
-    Run interactive generation mode with user prompts.
-
-    Args:
-        generator: DynamicGenerator instance
-        author_info: Optional author information
-    """
-    print("🎮 Interactive Generation Mode")
-    print("=" * 50)
-
-    # Get available materials and components
-    materials = generator.get_available_materials()
-    components = generator.get_available_components()
-
-    print(f"📋 Available materials: {len(materials)}")
-    print(f"🔧 Available components: {len(components)}")
-
-    if author_info and author_info.get("name") != "AI Assistant":
-        print(f"👤 Author: {author_info['name']} ({author_info['country']})")
-
-    while True:
-        print("\n" + "-" * 50)
-
-        # Material selection
-        print("\nSelect material:")
-        material_input = input(
-            "Enter material name (or 'list' to see all, 'quit' to exit): "
-        ).strip()
-
-        if material_input.lower() == "quit":
-            print("👋 Goodbye!")
-            break
-        elif material_input.lower() == "list":
-            print("\n📋 Available materials:")
-            for i, mat in enumerate(materials[:20], 1):  # Show first 20
-                print(f"  {i:2d}. {mat}")
-            if len(materials) > 20:
-                print(f"  ... and {len(materials) - 20} more")
-            continue
-        elif material_input not in materials:
-            print(
-                f"❌ Material '{material_input}' not found. Use 'list' to see available materials."
-            )
-            continue
-
-        # Component selection
-        print(f"\nSelected material: {material_input}")
-        print("\nSelect components to generate:")
-        print("Available components:", ", ".join(components))
-
-        components_input = input(
-            "Enter component names (comma-separated, or 'all'): "
-        ).strip()
-
-        if components_input.lower() == "all":
-            selected_components = components
-        else:
-            selected_components = [c.strip() for c in components_input.split(",")]
-            # Validate components
-            invalid_components = [c for c in selected_components if c not in components]
-            if invalid_components:
-                print(f"❌ Invalid components: {invalid_components}")
-                continue
-
-        # Generate content
-        try:
-            run_dynamic_generation(
-                generator=generator,
-                material=material_input,
-                component_types=selected_components,
-                author_info=author_info,
-            )
-
-            print(f"\n✨ Interactive generation completed for {material_input}")
-
-        except Exception as e:
-            print(f"❌ Generation failed: {e}")
 
 
 def run_material_generation(

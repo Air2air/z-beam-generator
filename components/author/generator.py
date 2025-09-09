@@ -10,19 +10,13 @@ import json
 from pathlib import Path
 from typing import Any, Dict, Optional
 
-from generators.component_generators import APIComponentGenerator
-from utils.component_base import (
-    ComponentResult,
-    handle_generation_error,
-    validate_required_fields,
-)
+from generators.component_generators import ComponentResult
 
 
-class AuthorComponentGenerator(APIComponentGenerator):
+class AuthorComponentGenerator:
     """Generator for author components using local author data"""
 
     def __init__(self):
-        super().__init__("author")
         self.authors_file = Path(__file__).parent / "authors.json"
 
     def generate(
@@ -56,7 +50,7 @@ class AuthorComponentGenerator(APIComponentGenerator):
             )
 
         except Exception as e:
-            return handle_generation_error("author", e, "content generation")
+            return self.create_error_result(f"Content generation failed: {e}")
 
     def _get_author_by_id(self, author_id: int) -> Optional[Dict[str, Any]]:
         """Get author data by ID"""
@@ -73,7 +67,7 @@ class AuthorComponentGenerator(APIComponentGenerator):
             return None
 
         except Exception as e:
-            self.logger.error(f"Error loading author data: {e}")
+            print(f"Error loading author data: {e}")
             return None
 
     def _create_author_content(self, material_name: str, author_data: Dict) -> str:

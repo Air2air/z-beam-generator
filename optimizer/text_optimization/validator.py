@@ -10,6 +10,8 @@ import logging
 import re
 from typing import Any, Dict, List
 
+from utils.validation import validate_placeholder_content
+
 logger = logging.getLogger(__name__)
 
 
@@ -153,10 +155,7 @@ def validate_content_structure(content: str) -> List[str]:
     errors = []
 
     # Check for placeholder content
-    placeholders = ["TBD", "TODO", "[INSERT", "[PLACEHOLDER", "XXXX", "..."]
-    found_placeholders = [p for p in placeholders if p in content.upper()]
-    if found_placeholders:
-        errors.append(f"Contains placeholder content: {', '.join(found_placeholders)}")
+    errors.extend(validate_placeholder_content(content, extended_check=True))
 
     # Check for proper introduction
     first_paragraph = content.split("\n\n")[0] if "\n\n" in content else content[:200]
