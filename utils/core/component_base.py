@@ -15,7 +15,14 @@ from typing import Any, Dict, Optional
 import yaml
 
 from generators.component_generators import ComponentResult
-from utils.config.config_utils import load_component_config
+# Component config now in run.py - use COMPONENT_CONFIG directly
+def load_component_config(component_name: str):
+    """Load component config from run.py"""
+    try:
+        from run import COMPONENT_CONFIG
+        return COMPONENT_CONFIG.get(component_name, {})
+    except ImportError:
+        return {}
 
 
 def load_template(template_path: Path) -> Optional[Dict[str, Any]]:

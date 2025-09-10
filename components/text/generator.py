@@ -69,9 +69,15 @@ class TextComponentGenerator(APIComponentGenerator):
 
             # Create generator with settings optimized for test vs production
             # Use faster retry delays in test mode to speed up test execution
-            from config_manager import is_test_mode
+            # Test mode detection using environment variables directly
+            import os
+            is_test_mode = any([
+                os.getenv("TEST_MODE", "").lower() in ("true", "1", "yes"),
+                os.getenv("PYTEST_CURRENT_TEST", "") != "",
+                "pytest" in os.getenv("_", "").lower(),
+            ])
             
-            retry_delay = 0.1 if is_test_mode() else 1.0
+            retry_delay = 0.1 if is_test_mode else 1.0
             
             generator = create_fail_fast_generator(
                 max_retries=3,

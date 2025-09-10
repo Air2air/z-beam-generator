@@ -55,8 +55,7 @@ from .core.author_manager import (
 # File operations
 # from .file_ops.file_operations import FileOperations
 from .file_ops.path_manager import PathManager
-from .file_ops.import_handler import ImportErrorHandler
-from .file_ops.import_manager import ImportManager
+from .import_system import UnifiedImportManager, import_manager
 
 # Validation
 from .validation.quality_validator import QualityScoreValidator
@@ -65,9 +64,7 @@ from .validation.layer_validator import LayerValidator
 from .validation.placeholder_validator import validate_placeholder_content, has_placeholder_content
 
 # Configuration
-from .config.config_loader import ConfigLoader
-from .config.config_utils import load_yaml_file, load_component_config, load_ai_detection_config
-from .config.environment_checker import check_environment, format_environment_report
+# Configuration now centralized in run.py - no separate config utilities needed
 
 # AI and error handling
 from .loud_errors import component_failure

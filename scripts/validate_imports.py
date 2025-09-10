@@ -19,7 +19,7 @@ from typing import Dict, List, Set, Tuple
 project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
-from utils.import_handler import import_handler, validate_critical_imports
+from utils.import_system import import_manager, validate_critical_imports
 
 logger = logging.getLogger(__name__)
 

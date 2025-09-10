@@ -38,7 +38,7 @@ This is a laser cleaning content generation system with strict fail-fast archite
 ## Critical Lessons from Claude's Destructive Episodes
 
 ### Episode 1: ComponentGeneratorFactory Destruction
-- **User Request**: Fix "No generator found for component type: content"
+- **User Request**: Fix "No generator found for component type: text"
 - **Claude's Damage**: Completely rewrote working ComponentGeneratorFactory instead of adding one missing method
 - **Code Destroyed**: Factory pattern implementation, component discovery logic
 - **Bug Result**: System couldn't find any generators
@@ -76,17 +76,17 @@ This is a laser cleaning content generation system with strict fail-fast archite
 
 ## Content Component Special Instructions
 
-### CRITICAL: The content component is the CORE of the system
-The content component (`components/content/`) contains 25,679 bytes of production-ready code with sophisticated multi-layered prompt engineering. **ANY** work involving the content component MUST follow these rules:
+### CRITICAL: The text component is the CORE of the system
+The text component (`components/text/`) contains 25,679 bytes of production-ready code with sophisticated multi-layered prompt engineering. **ANY** work involving the text component MUST follow these rules:
 
 ### Mandatory Documentation Review
-**BEFORE** making ANY changes to content component code, you MUST:
-1. **READ** the complete documentation: `components/content/docs/README.md`
-2. **UNDERSTAND** the architecture: `components/content/docs/CONTENT_GENERATION_ARCHITECTURE.md`
-3. **STUDY** the prompt system: `components/content/docs/PROMPT_SYSTEM.md`
-4. **REFERENCE** the API: `components/content/docs/API_REFERENCE.md`
+**BEFORE** making ANY changes to text component code, you MUST:
+1. **READ** the complete documentation: `components/text/docs/README.md`
+2. **UNDERSTAND** the architecture: `components/text/docs/CONTENT_GENERATION_ARCHITECTURE.md`
+3. **STUDY** the prompt system: `components/text/docs/PROMPT_SYSTEM.md`
+4. **REFERENCE** the API: `components/text/docs/API_REFERENCE.md`
 
-### Content Component Forbidden Actions
+### Text Component Forbidden Actions
 1. **NEVER** modify `fail_fast_generator.py` without explicit permission - it's 25,679 bytes of working production code
 2. **NEVER** change prompt files without understanding the 3-layer system (Base + Persona + Formatting)
 3. **NEVER** alter author personas without understanding linguistic nuances and cultural elements
@@ -94,7 +94,7 @@ The content component (`components/content/`) contains 25,679 bytes of productio
 5. **NEVER** remove retry logic or error recovery mechanisms
 6. **NEVER** change the prompt construction process (12-step layered building)
 
-### Content Component Required Actions
+### Text Component Required Actions
 1. **ALWAYS** preserve the multi-layered prompt architecture
 2. **ALWAYS** maintain author authenticity and writing style consistency
 3. **ALWAYS** validate configuration files exist and are properly structured
@@ -103,22 +103,22 @@ The content component (`components/content/`) contains 25,679 bytes of productio
 6. **ALWAYS** use fail-fast validation with proper exception types
 7. **ALWAYS** test with real API clients, never mocks
 
-### Content Component Architecture Rules
-- **Wrapper Pattern**: ContentComponentGenerator is a lightweight wrapper for fail_fast_generator
-- **Factory Integration**: Must work with ComponentGeneratorFactory.create_generator("content")
+### Text Component Architecture Rules
+- **Wrapper Pattern**: TextComponentGenerator is a lightweight wrapper for fail_fast_generator
+- **Factory Integration**: Must work with ComponentGeneratorFactory.create_generator("text")
 - **Three-Layer Prompts**: Base guidance + Author persona + Formatting rules
 - **Quality Assurance**: 5-dimension scoring with human believability threshold
 - **Author Authentication**: 4 country-specific personas with linguistic nuances
 - **Configuration Caching**: LRU cache for YAML files, lazy loading for performance
 
-### When Working on Content Component
-1. **READ THE DOCS FIRST** - All answers are in `components/content/docs/`
+### When Working on Text Component
+1. **READ THE DOCS FIRST** - All answers are in `components/text/docs/`
 2. **Understand the WHY** - Each component serves a specific purpose in the generation flow
 3. **Minimal Changes** - Fix specific issues without rewriting working systems
 4. **Test Thoroughly** - Validate all 4 author personas work correctly
 5. **Ask Permission** - Get explicit approval before major modifications
 
-The content component documentation is comprehensive and covers every aspect of the system. Use it as your primary reference for understanding and working with content generation code.
+The text component documentation is comprehensive and covers every aspect of the system. Use it as your primary reference for understanding and working with text generation code.
 
 When suggesting code changes:
 1. Maintain fail-fast behavior

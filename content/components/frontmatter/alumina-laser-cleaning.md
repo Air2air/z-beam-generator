@@ -14,15 +14,15 @@ technicalSpecifications:
   fluenceRange: "1.0–4.5 J/cm²"
   safetyClass: "Class 4 (requires full enclosure)"
 description: "Technical overview of Alumina, Al2O3, for laser cleaning applications, including optimal 1064nm wavelength interaction, and industrial applications in surface preparation."
-author: "Alessandro Moretti"
+author: "AI Assistant"
 author_object:
-  id: 1
-  name: "Alessandro Moretti"
+  id: null
+  name: "AI Assistant"
   sex: "unknown"
   title: "Expert"
-  country: "usa"
+  country: "International"
   expertise: "laser cleaning technology"
-  image: "None"
+  image: null
 keywords: "alumina, alumina ceramic, laser ablation, laser cleaning, non-contact cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters, thermal processing, surface restoration"
 category: "ceramic"
 chemicalProperties:
@@ -33,23 +33,23 @@ properties:
   density: "3.95 g/cm³"
   densityMin: "3.5 g/cm³"
   densityMax: "4.1 g/cm³"
-  densityPercentile: 65.0
+  densityPercentile: 62.5
   meltingPoint: "2072°C"
-  meltingMin: "2050°C"
-  meltingMax: "2100°C"
-  meltingPercentile: 95.0
+  meltingMin: "2000°C"
+  meltingMax: "2200°C"
+  meltingPercentile: 78.2
   thermalConductivity: "30 W/m·K"
   thermalMin: "20 W/m·K"
   thermalMax: "40 W/m·K"
-  thermalPercentile: 50.0
+  thermalPercentile: 45.3
   tensileStrength: "300 MPa"
   tensileMin: "200 MPa"
   tensileMax: "400 MPa"
-  tensilePercentile: 50.0
+  tensilePercentile: 35.7
   hardness: "1500-2000 HV"
-  hardnessMin: "1400 HV"
+  hardnessMin: "1200 HV"
   hardnessMax: "2200 HV"
-  hardnessPercentile: 75.0
+  hardnessPercentile: 72.1
   youngsModulus: "370 GPa"
   modulusMin: "300 GPa"
   modulusMax: "400 GPa"
@@ -76,20 +76,21 @@ images:
 title: "Laser Cleaning Alumina - Technical Guide for Optimal Processing"
 headline: "Comprehensive technical guide for laser cleaning ceramic alumina"
 environmentalImpact:
-- benefit: "Chemical Sol
+- benefit: "Chemical Solvent Elimination"
+  description: "Red
 
 # Version Information
-# Generated: 2025-09-10T14:13:20.801490
+# Generated: 2025-09-10T15:35:14.622547
 # Material: Unknown
 # Component: frontmatter
 # Generator: Z-Beam v1.0.0
 # Component Version: 4.0.1
-# Author: "Alessandro Moretti"
+# Author: "AI Assistant"
 # Platform: Darwin (3.12.4)
 # Operation: generation
 
 ---
-Version Log - Generated: 2025-09-10T14:13:20.801667
+Version Log - Generated: 2025-09-10T15:35:14.622739
 Material: Alumina
 Component: frontmatter
 Generator: Z-Beam v2.1.0

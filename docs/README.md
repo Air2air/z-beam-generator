@@ -36,7 +36,7 @@ This documentation hub is specifically designed for Copilot AI assistants to qui
 - **[Frontmatter Dependencies](FRONTMATTER_DEPENDENCY_ARCHITECTURE.md)** - Dependency management
 
 ### **Architecture Blueprints**
-- **[Content Generation Architecture](CONTENT_COMPONENT_ANALYSIS.md)** - Content pipeline design
+- **[Text Generation Architecture](TEXT_COMPONENT_ANALYSIS.md)** - Text pipeline design
 - **[AI Detection Integration](WINSTON_AI_INTEGRATION.md)** - AI service integration patterns
 - **[API Client Architecture](API_SETUP.md)** - API client design patterns
 

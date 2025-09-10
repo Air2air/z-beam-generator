@@ -1,0 +1,149 @@
+# Test Materials Data - Minimal subset for testing
+# This is a smaller version of the main materials.yaml for test purposes
+
+materials:
+  ceramic:
+    description: Ceramic materials for laser cleaning applications
+    article_type: material
+    processing_priority: medium
+    items:
+    - name: Alumina
+      author_id: 2
+      complexity: high
+      difficulty_score: 4
+      category: ceramic
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      formula: Al2O3
+      symbol: Al2O3
+      laser_parameters:
+        fluence_threshold: "1.0–10 J/cm²"
+        pulse_duration: 10-200ns
+        wavelength_optimal: 1064 nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.05-1.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Aerospace: Removal of coatings and surface contaminants from alumina components'
+      - 'Semiconductor: Cleaning of alumina substrates for integrated circuits'
+      surface_treatments:
+      - Laser Ablation
+      - Laser Cleaning
+      - Non-Contact Cleaning
+      industry_tags:
+      - Semiconductor
+      - Aerospace
+
+    - name: Test Ceramic
+      author_id: 1
+      complexity: low
+      difficulty_score: 2
+      category: ceramic
+      documentation_status: test_material
+      last_updated: '2025-09-10'
+      formula: Test
+      symbol: TC
+      laser_parameters:
+        fluence_threshold: "1.0 J/cm²"
+        pulse_duration: 10ns
+        wavelength_optimal: 1064 nm
+        power_range: 50W
+        repetition_rate: 20kHz
+        spot_size: 0.1mm
+        laser_type: Test laser
+      applications:
+      - 'Test: Test application'
+      surface_treatments:
+      - Test Cleaning
+      industry_tags:
+      - Test
+
+  metal:
+    description: Metal materials for laser cleaning applications
+    article_type: material
+    processing_priority: high
+    items:
+    - name: Steel
+      author_id: 1
+      complexity: medium
+      difficulty_score: 3
+      category: metal
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      formula: Fe
+      symbol: Fe
+      laser_parameters:
+        fluence_threshold: "1.0–20 J/cm²"
+        pulse_duration: 10-500ns
+        wavelength_optimal: 1064 nm
+        power_range: 100-500W
+        repetition_rate: 20-200kHz
+        spot_size: 0.1-5.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Automotive: Paint removal from steel components'
+      - 'Construction: Rust removal from steel structures'
+      surface_treatments:
+      - Laser Descaling
+      - Laser Derusting
+      - Paint Removal
+      industry_tags:
+      - Automotive
+      - Construction
+
+    - name: Aluminum
+      author_id: 1
+      complexity: medium
+      difficulty_score: 3
+      category: metal
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      formula: Al
+      symbol: Al
+      laser_parameters:
+        fluence_threshold: "0.5–15 J/cm²"
+        pulse_duration: 10-300ns
+        wavelength_optimal: 1064 nm
+        power_range: 50-400W
+        repetition_rate: 20-150kHz
+        spot_size: 0.1-3.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Aerospace: Anodizing removal from aluminum parts'
+      - 'Automotive: Cleaning aluminum components'
+      surface_treatments:
+      - Anodizing Removal
+      - Surface Preparation
+      - Laser Cleaning
+      industry_tags:
+      - Aerospace
+      - Automotive
+
+    - name: Copper
+      author_id: 2
+      complexity: medium
+      difficulty_score: 3
+      category: metal
+      documentation_status: generated_frontmatter
+      last_updated: '2025-08-31'
+      formula: Cu
+      symbol: Cu
+      laser_parameters:
+        fluence_threshold: "0.8–12 J/cm²"
+        pulse_duration: 10-200ns
+        wavelength_optimal: 1064 nm
+        power_range: 80-300W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-2.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Electronics: Oxide removal from copper circuits'
+      - 'Industrial: Cleaning copper heat exchangers'
+      surface_treatments:
+      - Oxide Removal
+      - Surface Cleaning
+      - Preparation for Welding
+      industry_tags:
+      - Electronics
+      - Industrial

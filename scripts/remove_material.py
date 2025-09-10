@@ -118,7 +118,7 @@ class MaterialRemover:
         for category, category_data in materials.items():
             items = category_data.get("items", [])
             for i, item in enumerate(items):
-                if item.lower() == material_name.lower():
+                if "name" in item and item["name"].lower() == material_name.lower():
                     return category, i
 
         return None

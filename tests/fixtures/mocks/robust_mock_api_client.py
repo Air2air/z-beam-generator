@@ -209,7 +209,7 @@ class RobustMockAPIClient:
         elif "bullet" in prompt_lower:
             return self._generate_bullets_content()
 
-        # Material-specific content
+        # Material-specific content (case-insensitive matching)
         materials = {
             "steel": ["steel", "iron"],
             "aluminum": ["aluminum", "aluminium"],

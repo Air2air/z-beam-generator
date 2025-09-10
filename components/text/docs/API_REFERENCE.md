@@ -1,12 +1,12 @@
-# Content Component API Reference
+# Text Component API Reference
 
 ## Quick Start
 
 ```python
-from components.content.generator import ContentComponentGenerator
+from components.text.generator import TextComponentGenerator
 
 # Create generator instance
-generator = ContentComponentGenerator()
+generator = TextComponentGenerator()
 
 # Generate content
 result = generator.generate(
@@ -25,13 +25,13 @@ else:
 
 ## API Documentation
 
-### ContentComponentGenerator
+### TextComponentGenerator
 
 #### Constructor
 ```python
-ContentComponentGenerator()
+TextComponentGenerator()
 ```
-Creates a new content generator instance. No parameters required.
+Creates a new text generator instance. No parameters required.
 
 #### generate() Method
 ```python
@@ -89,7 +89,7 @@ Same parameters as ContentComponentGenerator, but returns `GenerationResult` wit
 ```python
 @dataclass
 class ComponentResult:
-    component_type: str     # Always "content"
+    component_type: str     # Always "text"
     content: str           # Generated markdown with frontmatter
     success: bool          # True if generation succeeded
     error_message: Optional[str] = None  # Error details if failed
@@ -157,7 +157,7 @@ frontmatter_data = {
 ## Configuration Files
 
 ### Base Content Prompt
-**File:** `components/content/prompts/base_content_prompt.yaml`
+**File:** `components/text/prompts/base_content_prompt.yaml`
 
 **Required Sections:**
 - `overall_subject`: Primary content guidance questions
@@ -167,7 +167,7 @@ frontmatter_data = {
 - `content_structure`: Required sections and guidelines
 
 ### Author Personas
-**Files:** `components/content/prompts/personas/{country}_persona.yaml`
+**Files:** `components/text/prompts/personas/{country}_persona.yaml`
 
 **Required Sections:**
 - `author_id`: Numeric author identifier
@@ -178,7 +178,7 @@ frontmatter_data = {
 - `technical_focus`: Expertise areas and specializations
 
 ### Formatting Configuration
-**Files:** `components/content/prompts/formatting/{country}_formatting.yaml`
+**Files:** `components/text/prompts/formatting/{country}_formatting.yaml`
 
 **Required Sections:**
 - `markdown_formatting`: Markdown style preferences
@@ -342,8 +342,8 @@ result = generator.generate_component('alabaster', 'content')
 ```python
 from generators.component_generators import ComponentGeneratorFactory
 
-content_gen = ComponentGeneratorFactory.create_generator('content')
-result = content_gen.generate(material_name, material_data, api_client)
+text_gen = ComponentGeneratorFactory.create_generator('text')
+result = text_gen.generate(material_name, material_data, api_client)
 ```
 
 ### Custom Quality Scoring

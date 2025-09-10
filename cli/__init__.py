@@ -9,7 +9,14 @@ Modular CLI components extracted from run.py for better organization:
 
 from api.client_manager import create_api_client, get_api_client_for_component
 
-from .api_config import get_api_providers
+# Configuration now centralized in run.py
+def get_api_providers():
+    """Get API providers from run.py - single source of truth"""
+    try:
+        from run import API_PROVIDERS
+        return API_PROVIDERS
+    except ImportError:
+        return {}
 
 # Removed check_environment import to avoid circular dependency
 from .cleanup_commands import (

@@ -17,7 +17,7 @@ import yaml
 
 from api.client_manager import get_api_client_for_component
 from generators.component_generators import ComponentGeneratorFactory, ComponentResult
-from utils.config.config_utils import load_materials_data
+from data.materials import load_materials  # Use materials.py directly
 
 
 @dataclass
@@ -46,7 +46,7 @@ class DynamicGenerator:
     def __init__(self):
         """Initialize the dynamic generator"""
         self.api_client = None
-        self.materials_data = load_materials_data()
+        self.materials_data = load_materials()  # Use materials.py directly
 
     def get_available_materials(self) -> List[str]:
         """Get list of available materials"""
@@ -92,7 +92,7 @@ class DynamicGenerator:
             for category, category_data in materials_section.items():
                 if isinstance(category_data, dict) and "items" in category_data:
                     for item in category_data["items"]:
-                        if item["name"].lower() == request.material.lower():
+                        if "name" in item and item["name"].lower() == request.material.lower():
                             material_data = item
                             break
                     if material_data:
@@ -183,18 +183,31 @@ class DynamicGenerator:
                 for category, category_data in materials_section.items():
                     if isinstance(category_data, dict) and "items" in category_data:
                         for item in category_data["items"]:
-                            if item["name"].lower() == material.lower():
+                            if "name" in item and item["name"].lower() == material.lower():
                                 material_data = item
                                 break
                         if material_data:
                             break
 
             if not material_data:
+                # Try once more with an exact match for compatibility with old tests
+                for category, category_data in materials_section.items():
+                    if isinstance(category_data, dict) and "items" in category_data:
+                        for item in category_data["items"]:
+                            if "name" in item and item["name"] == material:
+                                material_data = item
+                                break
+                        if material_data:
+                            break
+
+            if not material_data:
+                available_materials = self.get_available_materials()
+                error_message = f"Material '{material}' not found. Available materials: {', '.join(available_materials)}"
                 return ComponentResult(
                     component_type=component_type,
                     content="",
                     success=False,
-                    error_message=f"Material '{material}' not found",
+                    error_message=error_message,
                 )
 
             # Use ComponentGeneratorFactory to create the appropriate generator

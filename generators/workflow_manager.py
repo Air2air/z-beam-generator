@@ -292,7 +292,7 @@ def run_material_generation(
 
     # Validate material
     available_materials = generator.get_available_materials()
-    if material not in available_materials:
+    if not any(m.lower() == material.lower() for m in available_materials):
         raise ValueError(
             f"Material '{material}' not found. Available materials: {len(available_materials)}"
         )

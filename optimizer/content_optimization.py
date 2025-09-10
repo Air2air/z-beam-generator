@@ -229,7 +229,7 @@ def find_material_data(
     try:
         for category_data in materials_data.values():
             for item in category_data.get("items", []):
-                if item["name"].lower().replace(" ", "-") == material_name.lower():
+                if "name" in item and item["name"].lower().replace(" ", "-") == material_name.lower():
                     return item
     except Exception as e:
         print(f"⚠️ Error finding material data for {material_name}: {e}")
@@ -349,7 +349,24 @@ async def run_sophisticated_optimization(
         )
         # Import optimization components
         # Initialize services with config manager for test/prod mode detection
-        from config_manager import get_config, is_test_mode
+        # Configuration now in run.py - use environment detection directly
+        import os
+        
+        def get_config():
+            """Get basic config from run.py"""
+            try:
+                from run import COMPONENT_CONFIG, API_PROVIDERS
+                return {"components": COMPONENT_CONFIG, "api": API_PROVIDERS}
+            except ImportError:
+                return {"components": {}, "api": {}}
+        
+        def is_test_mode():
+            """Test mode detection using environment variables"""
+            return any([
+                os.getenv("TEST_MODE", "").lower() in ("true", "1", "yes"),
+                os.getenv("PYTEST_CURRENT_TEST", "") != "",
+                "pytest" in os.getenv("_", "").lower(),
+            ])
         from data.materials import load_materials
         from generators.dynamic_generator import DynamicGenerator
         from generators.workflow_manager import run_dynamic_generation

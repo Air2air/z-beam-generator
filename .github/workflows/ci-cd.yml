@@ -45,7 +45,7 @@ jobs:
     - name: Run comprehensive import validation
       run: |
         echo "Running comprehensive import validation..."
-        python scripts/validate_imports.py
+        python -m utils.import_system --validate
 
     - name: Validate core module imports
       run: |

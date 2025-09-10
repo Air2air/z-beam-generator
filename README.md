@@ -18,6 +18,24 @@ A dynamic, schema-driven content generator for laser cleaning technical document
 
 ## 🚀 Recent Updates (September 2025)
 
+### Material Data Structure Improvements (v2.2.1)
+
+Major improvement in material data handling ensuring consistent access patterns:
+
+#### ✅ **Fixed Critical Issues**
+- **Material Not Found Error**: Fixed "Material 'Steel' not found" error in tests despite material existing in data
+- **Batch Generation**: Fixed batch generation mode (`--all` flag) to properly find and process materials
+- **Data Structure Consistency**: Ensured consistent access to the "materials" key in data structure
+- **Test Environment**: Updated tests to use real materials.yaml file instead of mocks for consistency
+
+#### 🔧 **Key Improvements**
+- **Consistent Data Structure**: Modified `load_materials()` to return complete structure with "materials" key
+- **Unified Data Source**: Removed mock materials in tests to ensure all code uses real data from materials.yaml
+- **Batch Generation Fix**: Updated run.py to properly navigate the materials data structure
+- **Comprehensive Testing**: Added new test file specifically for testing material loading functionality
+
+For more details, see [Material Data Structure Improvements](docs/MATERIAL_DATA_STRUCTURE_IMPROVEMENTS.md)
+
 ### API Configuration Centralization (v2.1.0)
 
 Major architecture improvement with comprehensive API configuration centralization:
@@ -767,7 +785,12 @@ python3 test_validation_diagnostics.py   # Test validation system
 
 ## 🔮 Roadmap
 
-### ✅ **Completed (v2.2)**
+### ✅ **Completed (v2.2.1)**
+- [x] **Material Data Structure Improvements**
+  - Consistent data structure access across all code
+  - Unified data source (materials.yaml) for both production and tests
+  - Fixed batch generation to properly navigate data structure
+  - Added comprehensive material loading tests
 - [x] **Robustness Framework Implementation**
   - Three-layer architecture validation system
   - Frontmatter dependency validation and cascading failure prevention
