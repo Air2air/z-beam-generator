@@ -120,7 +120,7 @@ author_info = {
 material_data = {
     'name': str,                    # Required: Material name
     'data': {
-        'formula': str,             # Required: Chemical formula
+        'formula': str,             # Optional: Chemical formula
         'author_id': int,           # Optional: Default author
         'category': str,            # Optional: Material category
         'properties': Dict,         # Optional: Physical properties

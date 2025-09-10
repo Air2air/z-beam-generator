@@ -167,7 +167,7 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
             )
         category = material_data["category"]
 
-        # FAIL-FAST: Formula is required for frontmatter generation
+        # Formula is now optional for frontmatter generation
         formula = None
         if "formula" in material_data and material_data["formula"]:
             formula = material_data["formula"]
@@ -178,9 +178,7 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
         ):
             formula = material_data["data"]["formula"]
         else:
-            raise Exception(
-                "Material data missing required 'formula' field - fail-fast architecture requires complete material information"
-            )
+            logger.warning(f"Material data missing 'formula' field for {material_name} - continuing without formula")
 
         # FAIL-FAST: Symbol is required for frontmatter generation
         # Use formula as fallback if symbol is not available
