@@ -26,14 +26,15 @@ def validate_api_environment() -> dict:
     Returns:
         Dict with validation results for each provider
     """
+    from api.key_manager import is_provider_available
+
     results = {}
 
     for provider_id, config in API_PROVIDERS.items():
-        api_key = os.getenv(config["env_var"])
         results[provider_id] = {
             "provider": config["name"],
             "env_var": config["env_var"],
-            "configured": bool(api_key),
+            "configured": is_provider_available(provider_id),
             "base_url": config["base_url"],
             "model": config.get("model", config.get("default_model", "unknown")),
         }
@@ -87,10 +88,15 @@ def test_api_connectivity(provider: str = None) -> dict:
     Returns:
         Dict with connectivity test results
     """
+    print("🔍 [CLIENT MANAGER] Testing API connectivity...")
+
     results = {}
     providers_to_test = [provider] if provider else list(API_PROVIDERS.keys())
 
+    print(f"📋 [CLIENT MANAGER] Testing providers: {', '.join(providers_to_test)}")
+
     for provider_id in providers_to_test:
+        print(f"🧪 [CLIENT MANAGER] Testing {provider_id}...")
         try:
             client = create_api_client(provider_id)
 
@@ -109,6 +115,11 @@ def test_api_connectivity(provider: str = None) -> dict:
                 else None,
             }
 
+            if response.success:
+                print(f"✅ [CLIENT MANAGER] {provider_id}: Connected ({response_time:.2f}s)")
+            else:
+                print(f"❌ [CLIENT MANAGER] {provider_id}: Failed - {results[provider_id]['error']}")
+
         except Exception as e:
             results[provider_id] = {
                 "success": False,
@@ -116,5 +127,10 @@ def test_api_connectivity(provider: str = None) -> dict:
                 "response_time": None,
                 "token_count": 0,
             }
+            print(f"💥 [CLIENT MANAGER] {provider_id}: Error - {str(e)}")
+
+    total_tested = len(results)
+    successful = sum(1 for r in results.values() if r["success"])
+    print(f"📊 [CLIENT MANAGER] Connectivity test complete: {successful}/{total_tested} providers working")
 
     return results

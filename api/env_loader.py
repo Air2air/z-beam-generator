@@ -1,26 +1,38 @@
 """
-Standardized environment variable loader for API clients.
-Handles .env file loading and configuration file loading for consistent API key access.
+DEPRECATED: Environment variable loader for API clients.
+
+WARNING: This module is deprecated. Use api.key_manager instead for all new code.
+This module is kept for backward compatibility only.
+
+Provides legacy environment variable loading functionality.
+New code should use the standardized APIKeyManager from api.key_manager.
 """
 
 import os
 import sys
+import warnings
 from pathlib import Path
 from typing import Dict, Optional
 
 
 class EnvLoader:
-    """Standardized environment variable loader"""
+    """DEPRECATED: Legacy environment variable loader - use APIKeyManager instead"""
 
     _loaded = False
 
     @classmethod
     def load_env(cls) -> None:
-        """Load environment variables from config file and .env file if available"""
+        """DEPRECATED: Load environment variables - use APIKeyManager instead"""
+        warnings.warn(
+            "EnvLoader is deprecated. Use api.key_manager.APIKeyManager instead.",
+            DeprecationWarning,
+            stacklevel=2
+        )
+
         if cls._loaded:
             return
 
-        # First, try to load from config/api_keys.py
+        # Try to load from config/api_keys.py
         try:
             project_root = Path(__file__).parent.parent
             config_dir = project_root / "config"
@@ -48,7 +60,13 @@ class EnvLoader:
 
     @classmethod
     def get_api_key(cls, provider: str, env_key: str) -> Optional[str]:
-        """Get API key for a provider from environment"""
+        """DEPRECATED: Get API key - use api.key_manager.get_api_key instead"""
+        warnings.warn(
+            "EnvLoader.get_api_key is deprecated. Use api.key_manager.get_api_key instead.",
+            DeprecationWarning,
+            stacklevel=2
+        )
+
         cls.load_env()
 
         api_key = os.getenv(env_key)
@@ -61,7 +79,13 @@ class EnvLoader:
 
     @classmethod
     def get_provider_config(cls, provider_config: Dict) -> Dict:
-        """Get complete configuration for a provider"""
+        """DEPRECATED: Get provider config - use APIKeyManager instead"""
+        warnings.warn(
+            "EnvLoader.get_provider_config is deprecated. Use APIKeyManager instead.",
+            DeprecationWarning,
+            stacklevel=2
+        )
+
         cls.load_env()
 
         config = provider_config.copy()
@@ -74,7 +98,13 @@ class EnvLoader:
 
     @classmethod
     def list_available_keys(cls) -> Dict[str, bool]:
-        """List which API keys are available in environment"""
+        """DEPRECATED: List available keys - use APIKeyManager.validate_api_keys instead"""
+        warnings.warn(
+            "EnvLoader.list_available_keys is deprecated. Use APIKeyManager.validate_api_keys instead.",
+            DeprecationWarning,
+            stacklevel=2
+        )
+
         cls.load_env()
 
         keys_to_check = [

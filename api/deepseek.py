@@ -23,10 +23,21 @@ class DeepSeekClient(APIClient):
         # Load DeepSeek-specific configuration
         config = get_default_config()
 
+        # If no API key provided, get it using standardized key manager
+        if api_key is None:
+            from api.key_manager import get_api_key
+            api_key = get_api_key("deepseek")
+
         # Override with any provided parameters
         for key, value in kwargs.items():
             if hasattr(config, key):
                 setattr(config, key, value)
+
+        # Set the API key in config
+        if isinstance(config, dict):
+            config["api_key"] = api_key
+        else:
+            config.api_key = api_key
 
         super().__init__(config=config)
 

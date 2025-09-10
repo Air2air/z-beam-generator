@@ -261,27 +261,15 @@ class WinstonProvider:
             return False
 
     def _get_api_key(self) -> Optional[str]:
-        """Get Winston.ai API key from environment or config"""
-        # Load environment variables first
+        """Get Winston.ai API key using standardized key manager"""
+        from api.key_manager import get_api_key
+
         try:
-            from api.env_loader import EnvLoader
-
-            EnvLoader.load_env()
-        except ImportError:
-            logger.warning(
-                "Could not load environment - continuing without .env loading"
-            )
-
-        # Try environment variable first
-        api_key = os.getenv("WINSTON_API_KEY")
-
-        # Fallback to config file
-        if not api_key:
+            return get_api_key("winston")
+        except ValueError:
             raise Exception(
                 "Winston.ai API key not found in environment - no fallback to config file permitted in fail-fast architecture"
             )
-
-        return api_key
 
     def _analyze_failing_patterns(self, failing_texts: list) -> Dict[str, Any]:
         """Analyze patterns in sentences that are failing AI detection."""

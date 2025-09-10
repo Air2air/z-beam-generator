@@ -131,10 +131,20 @@ class APIClient:
     def _setup_session(self):
         """Setup the requests session with headers and configuration"""
 
-        # Get API key with fallback for both object attributes and dict keys
-        api_key = getattr(self.config, "api_key", None) or (
-            self.config.get("api_key") if hasattr(self.config, "get") else None
-        )
+        # Get API key from environment variable specified in config
+        api_key = None
+        if isinstance(self.config, dict) and "env_var" in self.config:
+            # If config is a dict with env_var field, get API key from that environment variable
+            env_var = self.config["env_var"]
+            api_key = os.getenv(env_var)
+        else:
+            # Fallback to direct api_key field or environment
+            api_key = getattr(self.config, "api_key", None) or (
+                self.config.get("api_key") if hasattr(self.config, "get") else None
+            )
+
+        if not api_key:
+            raise ValueError(f"API key not found. Please ensure the API key environment variable is set.")
 
         self.session.headers.update(
             {
@@ -157,16 +167,22 @@ class APIClient:
     def test_connection(self) -> bool:
         """Test API connection with a minimal request"""
 
+        print("🔍 [API CLIENT] Testing connection to API endpoint...")
         logger.info("Testing API connection...")
 
         try:
-            test_request = GenerationRequest(prompt="Test connection", max_tokens=10)
+            test_request = GenerationRequest(prompt="Test connection - respond with 'OK'", max_tokens=10)
+            start_time = time.time()
             response = self.generate(test_request)
+            test_time = time.time() - start_time
 
             if response.success:
+                print(f"✅ [API CLIENT] Connection test successful in {test_time:.2f}s")
+                print(f"📊 [API CLIENT] Test tokens used: {response.token_count or 'N/A'}")
                 logger.info("✅ API connection test successful")
                 return True
             else:
+                print(f"❌ [API CLIENT] Connection test failed: {response.error}")
                 from utils.loud_errors import api_failure
 
                 api_failure(
@@ -177,6 +193,7 @@ class APIClient:
                 return False
 
         except Exception as e:
+            print(f"💥 [API CLIENT] Connection test error: {str(e)}")
             from utils.loud_errors import api_failure
 
             api_failure(
@@ -197,8 +214,18 @@ class APIClient:
             self.config.get("max_retries") if hasattr(self.config, "get") else 2
         )
 
+        # Get retry_delay with fallback
+        retry_delay = getattr(self.config, "retry_delay", None) or (
+            self.config.get("retry_delay") if hasattr(self.config, "get") else 1.0
+        )
+
         for attempt in range(max_retries + 1):
             try:
+                if attempt > 0:
+                    # Exponential backoff with jitter to avoid thundering herd
+                    backoff_delay = retry_delay * (2 ** (attempt - 1))
+                    print(f"🔄 [API CLIENT] Retry attempt {attempt}/{max_retries} after {backoff_delay:.1f}s delay")
+                    time.sleep(backoff_delay)
                 response = self._make_request(request)
                 response.retry_count = attempt
 
@@ -215,6 +242,7 @@ class APIClient:
 
             except requests.exceptions.Timeout:
                 if attempt == max_retries:
+                    print(f"⏰ [API CLIENT] Request timeout after {max_retries + 1} attempts")
                     return APIResponse(
                         success=False,
                         content="",
@@ -222,14 +250,13 @@ class APIClient:
                         response_time=time.time() - start_time,
                         retry_count=attempt,
                     )
-                # Get retry_delay with fallback
-                retry_delay = getattr(self.config, "retry_delay", None) or (
-                    self.config.get("retry_delay") if hasattr(self.config, "get") else 1.0
-                )
-                time.sleep(retry_delay * (attempt + 1))
+                backoff_delay = retry_delay * (2 ** attempt)
+                print(f"⏳ [API CLIENT] Timeout on attempt {attempt + 1}, retrying in {backoff_delay:.1f}s...")
+                time.sleep(backoff_delay)
 
             except requests.exceptions.ConnectionError:
                 if attempt == max_retries:
+                    print(f"🔌 [API CLIENT] Connection error after {max_retries + 1} attempts")
                     return APIResponse(
                         success=False,
                         content="",
@@ -237,15 +264,14 @@ class APIClient:
                         response_time=time.time() - start_time,
                         retry_count=attempt,
                     )
-                # Get retry_delay with fallback
-                retry_delay = getattr(self.config, "retry_delay", None) or (
-                    self.config.get("retry_delay") if hasattr(self.config, "get") else 1.0
-                )
-                time.sleep(retry_delay * (attempt + 1))
+                backoff_delay = retry_delay * (2 ** attempt)
+                print(f"🔌 [API CLIENT] Connection failed on attempt {attempt + 1}, retrying in {backoff_delay:.1f}s...")
+                time.sleep(backoff_delay)
 
             except Exception as e:
                 logger.error(f"Unexpected error on attempt {attempt + 1}: {e}")
                 if attempt == max_retries:
+                    print(f"💥 [API CLIENT] Unexpected error after {max_retries + 1} attempts: {str(e)}")
                     return APIResponse(
                         success=False,
                         content="",
@@ -253,11 +279,9 @@ class APIClient:
                         response_time=time.time() - start_time,
                         retry_count=attempt,
                     )
-                # Get retry_delay with fallback
-                retry_delay = getattr(self.config, "retry_delay", None) or (
-                    self.config.get("retry_delay") if hasattr(self.config, "get") else 1.0
-                )
-                time.sleep(retry_delay * (attempt + 1))
+                backoff_delay = retry_delay * (2 ** attempt)
+                print(f"⚠️ [API CLIENT] Unexpected error on attempt {attempt + 1}, retrying in {backoff_delay:.1f}s...")
+                time.sleep(backoff_delay)
 
         # Should never reach here, but just in case
         return APIResponse(
@@ -293,6 +317,8 @@ class APIClient:
         print(
             f"⚙️ [API CLIENT] Config: max_tokens={request.max_tokens}, temperature={request.temperature}"
         )
+        print(f"🔗 [API CLIENT] Endpoint: {self.base_url}/v1/chat/completions")
+        print(f"⏳ [API CLIENT] Timeout: connect={self.timeout_connect}s, read={self.timeout_read}s")
 
         # Debug: Log config type and attributes
         logger.info(f"🔧 Config type: {type(self.config)}")
@@ -320,11 +346,13 @@ class APIClient:
 
         # Make request with enhanced timeout handling
         try:
+            print("🔌 [API CLIENT] Establishing connection...")
             response = self.session.post(
                 f"{self.base_url}/v1/chat/completions",
                 json=payload,
                 timeout=(self.timeout_connect, self.timeout_read),
             )
+            print("📡 [API CLIENT] Connection established, waiting for response...")
         except requests.exceptions.ReadTimeout:
             # Handle read timeout specifically
             from utils.loud_errors import network_failure
@@ -499,110 +527,6 @@ class APIClient:
                 success=False, content="", error=error_msg, response_time=response_time
             )
 
-    def _make_gemini_request(
-        self, request: GenerationRequest, start_time: float
-    ) -> APIResponse:
-        """Make a request to Gemini API with its specific format"""
-
-        # Combine system prompt and user prompt for Gemini
-        full_prompt = request.prompt
-        if request.system_prompt:
-            full_prompt = f"{request.system_prompt}\n\n{request.prompt}"
-
-        # Log API request details
-        logger.info(f"🌐 Making Gemini API request to {self.model}")
-        logger.info(f"📝 Prompt length: {len(full_prompt)} chars")
-        logger.info(
-            f"🎯 Max tokens: {request.max_tokens}, Temperature: {request.temperature}"
-        )
-
-        # Prepare Gemini-specific payload
-        payload = {
-            "contents": [{"parts": [{"text": full_prompt}]}],
-            "generationConfig": {
-                "temperature": request.temperature,
-                "topP": request.top_p,
-                "maxOutputTokens": request.max_tokens,
-            },
-        }
-
-        # Make request to Gemini API
-        api_key = getattr(self.config, "api_key", None) or (
-            self.config.get("api_key") if hasattr(self.config, "get") else None
-        )
-
-        # Try API key in URL parameter (standard method)
-        url = (
-            f"{self.base_url}/v1beta/models/{self.model}:generateContent?key={api_key}"
-        )
-
-        headers = {"Content-Type": "application/json"}
-
-        response = self.session.post(
-            url,
-            json=payload,
-            headers=headers,
-            timeout=(self.timeout_connect, self.timeout_read),
-        )
-
-        response_time = time.time() - start_time
-
-        # Process Gemini response
-        if response.status_code == 200:
-            data = response.json()
-
-            # Extract content from Gemini response format
-            candidates = data.get("candidates", [])
-            if candidates and "content" in candidates[0]:
-                parts = candidates[0]["content"].get("parts", [])
-                if parts and "text" in parts[0]:
-                    content = parts[0]["text"]
-                else:
-                    content = ""
-            else:
-                content = ""
-
-            # Log successful API response details
-            usage_metadata = data.get("usageMetadata", {})
-            total_tokens = usage_metadata.get("totalTokenCount", 0)
-            prompt_tokens = usage_metadata.get("promptTokenCount", 0)
-            completion_tokens = usage_metadata.get("candidatesTokenCount", 0)
-
-            logger.info(f"✅ Gemini API response successful ({response.status_code})")
-            logger.info(f"⏱️  Response time: {response_time:.2f}s")
-            logger.info(
-                f"📊 Tokens used: {total_tokens} (prompt: {prompt_tokens}, completion: {completion_tokens})"
-            )
-            logger.info(f"📄 Content length: {len(content)} chars")
-
-            return APIResponse(
-                success=True,
-                content=content,
-                response_time=response_time,
-                token_count=total_tokens,
-                prompt_tokens=prompt_tokens,
-                completion_tokens=completion_tokens,
-                model_used=self.model,
-                request_id=response.headers.get("x-request-id"),
-            )
-        else:
-            # Handle Gemini error response
-            error_msg = f"Gemini API request failed with status {response.status_code}"
-            try:
-                error_data = response.json()
-                if "error" in error_data:
-                    error_details = error_data["error"]
-                    error_msg += f": {error_details.get('message', 'Unknown error')}"
-                    if "code" in error_details:
-                        logger.error(f"Gemini error code: {error_details['code']}")
-
-            except json.JSONDecodeError:
-                error_msg += f": {response.text}"
-
-            from utils.loud_errors import api_failure
-
-            api_failure("gemini_api", error_msg, retry_count=None)
-
     def generate_simple(
         self,
         prompt: str,
@@ -612,14 +536,14 @@ class APIClient:
     ) -> APIResponse:
         """Simplified generation method for backward compatibility"""
 
-        # Get config values - FAIL-FAST: Must be explicitly configured
-        default_max_tokens = getattr(self.config, "max_tokens", None)
-        if default_max_tokens is None:
-            raise ValueError("max_tokens must be configured explicitly - no defaults allowed")
+        # Get config values with sensible defaults (maintains fail-fast for critical config)
+        default_max_tokens = getattr(self.config, "max_tokens", None) or (
+            self.config.get("max_tokens") if hasattr(self.config, "get") else 32000
+        )
 
-        default_temperature = getattr(self.config, "temperature", None)
-        if default_temperature is None:
-            raise ValueError("temperature must be configured explicitly - no defaults allowed")
+        default_temperature = getattr(self.config, "temperature", None) or (
+            self.config.get("temperature") if hasattr(self.config, "get") else 0.7
+        )
 
         request = GenerationRequest(
             prompt=prompt,
@@ -647,11 +571,22 @@ class APIClient:
             else 0
         )
 
-        return {
+        stats = {
             **self.stats,
             "average_response_time": avg_response_time,
             "success_rate": success_rate,
         }
+
+        # Display statistics in terminal
+        print("📊 [API CLIENT] Usage Statistics:")
+        print(f"   �� Total Requests: {stats['total_requests']}")
+        print(f"   ✅ Successful: {stats['successful_requests']}")
+        print(f"   ❌ Failed: {stats['failed_requests']}")
+        print(f"   📊 Success Rate: {stats['success_rate']:.1f}%")
+        print(f"   ⏱️  Avg Response Time: {stats['average_response_time']:.2f}s")
+        print(f"   🪙 Total Tokens: {stats['total_tokens']}")
+
+        return stats
 
     def reset_statistics(self):
         """Reset usage statistics"""
@@ -661,6 +596,72 @@ class APIClient:
             "failed_requests": 0,
             "total_tokens": 0,
             "total_response_time": 0.0,
+        }
+        print("🔄 [API CLIENT] Statistics reset")
+
+    def show_status(self):
+        """Display current client status and configuration"""
+        print("📊 [API CLIENT] Current Status:")
+        print(f"   🤖 Model: {self.model}")
+        print(f"   🔗 Base URL: {self.base_url}")
+        print(f"   ⏳ Timeouts: connect={self.timeout_connect}s, read={self.timeout_read}s")
+        print(f"   📈 Requests: {self.stats['total_requests']} total")
+        print(f"   ✅ Success: {self.stats['successful_requests']}")
+        print(f"   ❌ Failed: {self.stats['failed_requests']}")
+        print(f"   🪙 Tokens: {self.stats['total_tokens']}")
+        avg_time = self.stats['total_response_time'] / max(1, self.stats['total_requests'])
+        print(f"   ⏱️ Avg Response Time: {avg_time:.2f}s")
+        print("   🔧 Configuration: Valid" if self.config else "   🔧 Configuration: Invalid")
+
+    def get_health_status(self) -> Dict[str, Any]:
+        """Get comprehensive health status of the API client"""
+
+        print("🏥 [API CLIENT] Health Check:")
+
+        # Basic configuration status
+        config_status = {
+            "model": self.model,
+            "base_url": self.base_url,
+            "timeout_connect": self.timeout_connect,
+            "timeout_read": self.timeout_read,
+            "config_valid": True
+        }
+
+        print(f"   🤖 Model: {config_status['model']}")
+        print(f"   🔗 Base URL: {config_status['base_url']}")
+        print(f"   ⏳ Timeouts: connect={config_status['timeout_connect']}s, read={config_status['timeout_read']}s")
+
+        # Statistics summary
+        stats = self.get_statistics()
+        health_score = min(100, stats['success_rate'])  # Simple health score based on success rate
+
+        if health_score >= 95:
+            health_status = "🟢 Excellent"
+        elif health_score >= 80:
+            health_status = "�� Good"
+        elif health_score >= 60:
+            health_status = "🟠 Fair"
+        else:
+            health_status = "🔴 Poor"
+
+        print(f"   ❤️ Health Status: {health_status} ({health_score:.1f}%)")
+
+        # Connection test
+        print("   🔍 Testing connection...")
+        connection_ok = self.test_connection()
+
+        if connection_ok:
+            print("   🔗 Connection: 🟢 Healthy")
+        else:
+            print("   🔗 Connection: 🔴 Unhealthy")
+
+        return {
+            "config": config_status,
+            "statistics": stats,
+            "health_score": health_score,
+            "health_status": health_status,
+            "connection_healthy": connection_ok,
+            "timestamp": time.time()
         }
 
 

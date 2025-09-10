@@ -116,14 +116,12 @@ class GPTZeroProvider:
             return False
 
     def _get_api_key(self) -> Optional[str]:
-        """Get GPTZero API key from environment or config"""
-        # Try environment variable first
-        api_key = os.getenv("GPTZERO_API_KEY")
+        """Get GPTZero API key using standardized key manager"""
+        from api.key_manager import get_api_key
 
-        # Fallback to config file
-        if not api_key:
+        try:
+            return get_api_key("gptzero")
+        except ValueError:
             raise Exception(
                 "GPTZero API key not found in environment - no fallback to config file permitted in fail-fast architecture"
             )
-
-        return api_key
