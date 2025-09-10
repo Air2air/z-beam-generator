@@ -94,3 +94,24 @@ outcomes:
 subject: "Stoneware"
 article_type: "material"
 ---
+
+
+# Version Information
+# Generated: 2025-09-10T13:23:40.671545
+# Material: Stoneware
+# Component: frontmatter
+# Generator: Z-Beam v2.1.0
+# Component Version: 4.0.1
+# Author: Dr. Sarah Chen
+# Platform: Darwin (3.12.4)
+# Operation: generation
+
+---
+Version Log - Generated: 2025-09-10T13:23:40.671714
+Material: Stoneware
+Component: frontmatter
+Generator: Z-Beam v2.1.0
+Author: Dr. Sarah Chen
+Platform: Darwin (3.12.4)
+File: content/components/frontmatter/stoneware-laser-cleaning.md
+---

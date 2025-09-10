@@ -10,6 +10,22 @@ This test suite provides extensive coverage for the Z-Beam generator components 
 - **Error handling and edge cases**
 - **API client dependency management**
 - **Content quality assurance**
+- **API configuration centralization validation**
+- **Performance regression prevention**
+
+## Recent Test Additions (September 2025)
+
+### API Configuration Centralization Tests
+- **`test_api_centralization.py`**: Validates that all API configurations are properly centralized in `run.py`
+- **`test_api_timeout_fixes.py`**: Ensures API timeout issues are resolved with optimized parameters
+
+### Key Test Coverage
+- ✅ Single source of truth for API configurations
+- ✅ Elimination of duplicate API_PROVIDERS definitions
+- ✅ Conservative parameter validation (max_tokens=800, temperature=0.7)
+- ✅ Timeout configuration verification
+- ✅ Large prompt handling capability
+- ✅ Real-world scenario validation (Steel material generation)
 
 ## Test Structure
 
@@ -19,11 +35,15 @@ This test suite provides extensive coverage for the Z-Beam generator components 
 - **Integration Tests**: Component interactions and data flow
 - **System Tests**: End-to-end content generation workflows
 - **Quality Tests**: Code style, security, and performance
+- **Configuration Tests**: API configuration centralization and optimization
+- **Performance Regression Tests**: Parameter optimization validation
 
 ### Test Organization
 
 ```
 tests/
+├── test_api_centralization.py        # API configuration centralization tests
+├── test_api_timeout_fixes.py         # API parameter optimization tests
 ├── test_content_comprehensive.py     # Enhanced content component testing
 ├── test_frontmatter_component.py     # Frontmatter component tests
 ├── test_content_component.py         # Content component interface tests
@@ -46,6 +66,12 @@ pytest
 
 # Run specific test file
 pytest tests/test_content_comprehensive.py
+
+# Run API centralization tests
+pytest tests/test_api_centralization.py -v
+
+# Run API timeout optimization tests  
+pytest tests/test_api_timeout_fixes.py -v
 
 # Run tests with verbose output
 pytest -v
@@ -101,6 +127,37 @@ TEST_PARALLEL=false
 ```
 
 ## Component Test Patterns
+
+### Hybrid Component Testing Rule
+
+**For hybrid data components** (components that combine API-generated content with static source data):
+
+- ✅ **API data fields**: Can use mock API clients for testing
+- ✅ **Static source data**: Must be used and tested without mocking
+- ✅ **Data validation**: Static data must be validated against real schemas
+- ✅ **Integration testing**: Test both mocked API and real static data together
+
+**Example Test Pattern:**
+```python
+def test_hybrid_component_with_mixed_mocking():
+    """Test hybrid component using mock API but real static data."""
+    # Mock API for generated content
+    mock_client = get_mock_api_client("deepseek")
+
+    # Use REAL static data (no mocking)
+    static_data = load_static_data_from_yaml("materials.yaml")
+
+    result = generate_hybrid_component(
+        material_name="Steel",
+        static_data=static_data,  # Real data, no mocking
+        api_client=mock_client    # Mock API for generated fields
+    )
+
+    # Validate both parts work correctly
+    assert result.success
+    assert validate_static_data_integrity(static_data, result)
+    assert validate_api_generated_content(result.generated_content)
+```
 
 ### API-Based Components
 

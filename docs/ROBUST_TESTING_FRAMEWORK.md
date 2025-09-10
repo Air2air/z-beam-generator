@@ -123,6 +123,36 @@ file_validation = TestValidator.validate_file_structure(content_dir, ["frontmatt
 
 ## Mock Utilities
 
+### Hybrid Component Testing Rule
+
+**For hybrid data components** (components that combine API-generated content with static source data):
+
+- ✅ **API data fields**: Can use mock API clients for testing
+- ✅ **Static source data**: Must be used and tested without mocking
+- ✅ **Data validation**: Static data must be validated against real schemas
+- ✅ **Integration testing**: Test both mocked API and real static data together
+
+**Example Pattern:**
+```python
+def test_hybrid_component_generation(self):
+    """Test hybrid component with mock API but real static data."""
+    # Use mock API for generated content
+    with mock_api_calls("deepseek") as mock_client:
+        # But use REAL static data source
+        static_data = load_real_static_data("materials.yaml")
+
+        result = generate_hybrid_component(
+            material_name="Steel",
+            static_data=static_data,  # Real data, no mocking
+            api_client=mock_client    # Mock API for generated fields
+        )
+
+        # Validate both parts work together
+        self.assertTrue(result.success)
+        self.assert_static_data_integrity(static_data, result)
+        self.assert_api_content_quality(result.generated_content)
+```
+
 ### RobustMockAPIClient
 
 **Purpose:** Production-ready mock API client that eliminates brittleness in API testing.

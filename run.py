@@ -62,23 +62,64 @@ To modify configuration:
 import argparse
 import asyncio
 import logging
+import time
 import os
 
 # Configuration constants for tests
 API_PROVIDERS = {
     "deepseek": {
         "name": "DeepSeek",
+        "env_var": "DEEPSEEK_API_KEY",
+        "env_key": "DEEPSEEK_API_KEY",  # For backward compatibility
+        "base_url": "https://api.deepseek.com",
         "model": "deepseek-chat",
-        "max_tokens": 32000,
+        "default_model": "deepseek-chat",
+        # Required operational parameters for fail-fast architecture
+        "max_tokens": 800,  # FIXED: Reduced from 2000 to prevent API timeouts with large prompts
+        "temperature": 0.7,  # FIXED: Reduced from 0.9 to improve API reliability
+        "timeout_connect": 10,  # Connection timeout in seconds
+        "timeout_read": 45,  # Read timeout in seconds
+        "max_retries": 3,  # Maximum retry attempts
+        "retry_delay": 1.0,  # Delay between retries in seconds
+        # Legacy compatibility fields
         "supports_function_calling": True,
         "optimal_temperature": 0.7,
     },
     "grok": {
         "name": "Grok",
-        "model": "grok-4",
-        "max_tokens": 8000,
+        "env_var": "GROK_API_KEY",
+        "env_key": "GROK_API_KEY",  # For backward compatibility
+        "base_url": "https://api.x.ai/v1",
+        "model": "grok-beta",
+        "default_model": "grok-beta",
+        # Required operational parameters for fail-fast architecture
+        "max_tokens": 800,  # Conservative for large prompts
+        "temperature": 0.7,  # Balanced creativity
+        "timeout_connect": 10,  # Connection timeout in seconds
+        "timeout_read": 45,  # Read timeout in seconds
+        "max_retries": 3,  # Maximum retry attempts
+        "retry_delay": 1.0,  # Delay between retries in seconds
+        # Legacy compatibility fields
         "supports_reasoning": True,
         "optimal_temperature": 0.7,
+    },
+    "winston": {
+        "name": "Winston AI Detection",
+        "env_var": "WINSTON_API_KEY",
+        "env_key": "WINSTON_API_KEY",  # For backward compatibility
+        "base_url": "https://api.gowinston.ai/v1",
+        "model": "winston-ai-detector",
+        "default_model": "winston-ai-detector",
+        # Required operational parameters for fail-fast architecture
+        "max_tokens": 1000,  # Appropriate for detection API
+        "temperature": 0.1,  # Low temperature for consistent detection
+        "timeout_connect": 10,  # Connection timeout in seconds
+        "timeout_read": 45,  # Read timeout in seconds
+        "max_retries": 3,  # Maximum retry attempts
+        "retry_delay": 1.0,  # Delay between retries in seconds
+        # Legacy compatibility fields
+        "supports_detection": True,
+        "optimal_temperature": 0.1,
     },
 }
 
@@ -94,55 +135,55 @@ COMPONENT_CONFIG = {
     "metatags": {
         "api_provider": "deepseek",
         "priority": 2,
-        "enabled": True,
+        "enabled": False,  # DISABLED for focused batch test
         "data_provider": "hybrid",  # Uses frontmatter data + AI generation
     },
     "propertiestable": {
         "api_provider": "deepseek",
         "priority": 3,
-        "enabled": True,
+        "enabled": False,  # DISABLED for focused batch test
         "data_provider": "hybrid",  # Uses frontmatter data + AI generation
     },
     "bullets": {
         "api_provider": "deepseek",
         "priority": 4,
-        "enabled": True,
+        "enabled": False,  # DISABLED for focused batch test
         "data_provider": "hybrid",  # Uses frontmatter data + AI generation
     },
     "caption": {
         "api_provider": "deepseek",
         "priority": 5,
-        "enabled": True,
+        "enabled": False,  # DISABLED for focused batch test
         "data_provider": "hybrid",  # Uses frontmatter data + AI generation
     },
     "text": {
         "api_provider": "deepseek",
         "priority": 6,
-        "enabled": True,
+        "enabled": False,  # DISABLED for focused batch test
         "data_provider": "hybrid",  # Uses frontmatter data + AI generation
     },
     "table": {
         "api_provider": "none",  # Static/deterministic generation
         "priority": 7,
-        "enabled": True,
+        "enabled": False,  # DISABLED for focused batch test
         "data_provider": "static",  # No API calls needed, no frontmatter dependency
     },
     "tags": {
         "api_provider": "deepseek",
         "priority": 8,
-        "enabled": True,
+        "enabled": False,  # DISABLED for focused batch test
         "data_provider": "hybrid",  # Uses frontmatter data + AI generation
     },
     "jsonld": {
         "api_provider": "none",  # Extracts from frontmatter, no AI needed
         "priority": 9,
-        "enabled": True,
+        "enabled": False,  # DISABLED for focused batch test
         "data_provider": "frontmatter",  # Pure frontmatter extraction
     },
     "author": {
         "api_provider": "none",  # Static component, no API needed
         "priority": 10,
-        "enabled": True,
+        "enabled": False,  # DISABLED for focused batch test
         "data_provider": "static",  # Static data, no dependencies
     },
 }
@@ -293,6 +334,21 @@ def main():
         help="Show system status and component availability",
     )
     parser.add_argument(
+        "--cache-stats",
+        action="store_true",
+        help="Show API client cache performance statistics",
+    )
+    parser.add_argument(
+        "--clear-cache",
+        action="store_true",
+        help="Clear API client cache to force fresh connections",
+    )
+    parser.add_argument(
+        "--preload-cache",
+        action="store_true",
+        help="Preload API clients into cache for better performance",
+    )
+    parser.add_argument(
         "--version-history",
         help="Show version history for a material-component pair (format: material:component)",
     )
@@ -348,6 +404,63 @@ def main():
             print("✅ Component generators loaded")
             print("✅ API clients configured")
             print("✅ Content validation active")
+
+        elif args.cache_stats:
+            # Show cache statistics
+            print("📊 API Client Cache Statistics:")
+            try:
+                from api.client_cache import APIClientCache
+                
+                stats = APIClientCache.get_cache_stats()
+                print(f"   🎯 Cache hit rate: {stats['hit_rate_percent']}%")
+                print(f"   ✅ Cache hits: {stats['cache_hits']}")
+                print(f"   ❌ Cache misses: {stats['cache_misses']}")
+                print(f"   📋 Total requests: {stats['total_requests']}")
+                print(f"   🏭 Cached instances: {stats['cached_instances']}")
+                
+                if stats['hit_rate_percent'] >= 80:
+                    print("🚀 Excellent cache performance!")
+                elif stats['hit_rate_percent'] >= 60:
+                    print("👍 Good cache performance")
+                else:
+                    print("⚠️  Consider preloading cache for better performance")
+                    
+            except ImportError:
+                print("❌ Cache system not available")
+
+        elif args.clear_cache:
+            # Clear API client cache
+            print("🧹 Clearing API client cache...")
+            try:
+                from api.client_cache import APIClientCache
+                
+                stats_before = APIClientCache.get_cache_stats()
+                APIClientCache.clear_cache()
+                
+                print(f"✅ Cleared {stats_before['cached_instances']} cached clients")
+                print("💡 Next API calls will create fresh connections")
+                
+            except ImportError:
+                print("❌ Cache system not available")
+
+        elif args.preload_cache:
+            # Preload API clients
+            print("🚀 Preloading API client cache...")
+            try:
+                from api.client_cache import APIClientCache
+                
+                # Get configured providers
+                providers = ["deepseek", "grok", "winston"]
+                APIClientCache.preload_clients(providers)
+                
+                stats = APIClientCache.get_cache_stats()
+                print(f"✅ Preloaded {stats['cached_instances']} API clients")
+                print("🚀 Ready for high-performance batch generation!")
+                
+            except ImportError:
+                print("❌ Cache system not available")
+            except Exception as e:
+                print(f"⚠️  Preload completed with some errors: {e}")
 
         elif args.version_history:
             # Show version history
@@ -412,7 +525,7 @@ def main():
                 total_materials = sum(
                     len(materials_data[cat].get("items", [])) for cat in categories
                 )
-                print(f"� Total materials to process: {total_materials}")
+                print(f"📝 Total materials to process: {total_materials}")
 
                 # Import generator
                 from generators.dynamic_generator import DynamicGenerator
@@ -435,26 +548,19 @@ def main():
                         print(f"   📝 Generating content for: {material_name}")
 
                         try:
-                            # Generate all components for this material
+                            # Generate enabled components for this material
                             from generators.workflow_manager import (
                                 run_dynamic_generation,
                             )
+                            from cli.component_config import get_components_sorted_by_priority
+
+                            # Use only enabled components
+                            enabled_components = get_components_sorted_by_priority(include_disabled=False)
 
                             results = run_dynamic_generation(
                                 generator=generator,
                                 material=material_name,
-                                component_types=[
-                                    "frontmatter",  # Priority 1
-                                    "metatags",     # Priority 2
-                                    "propertiestable",  # Priority 3
-                                    "bullets",      # Priority 4
-                                    "caption",      # Priority 5
-                                    "text",         # Priority 6
-                                    "table",        # Priority 7
-                                    "tags",         # Priority 8
-                                    "jsonld",       # Priority 9
-                                    "author",       # Priority 10
-                                ],
+                                component_types=enabled_components,
                                 author_info=None,  # Will use material's author_id from materials.yaml
                             )
 
@@ -528,6 +634,26 @@ def main():
 
                 api_failure("optimization_service", str(e), retry_count=None)
 
+        elif args.optimize:
+            # Optimization mode - sophisticated AI detection optimization
+            component_name = args.optimize
+            print(
+                f"🚀 Starting sophisticated optimization for component: {component_name}"
+            )
+            print("⏱️  Timeout protection: 10 minutes maximum")
+
+            # Import and run the optimization with timeout protection
+            from optimizer.content_optimization import run_sophisticated_optimization
+
+            try:
+                asyncio.run(
+                    run_sophisticated_optimization(component_name, timeout_seconds=600)
+                )
+            except Exception as e:
+                from utils.loud_errors import api_failure
+
+                api_failure("optimization_service", str(e), retry_count=None)
+
         elif args.material or args.all:
             # Batch generation mode
             print("🎮 Z-Beam Generator")
@@ -551,11 +677,12 @@ def main():
                     try:
                         # Import workflow manager for material generation
                         from generators.workflow_manager import run_material_generation
+                        from cli.component_config import get_components_sorted_by_priority
 
-                        # Get available components
-                        available_components = generator.get_available_components()
+                        # Get only enabled components
+                        available_components = get_components_sorted_by_priority(include_disabled=False)
 
-                        # Generate all components for the material
+                        # Generate enabled components for the material
                         result = run_material_generation(
                             material=args.material,
                             component_types=available_components,
@@ -592,9 +719,184 @@ def main():
                         )
 
                 elif args.all:
-                    # Generate for all materials
-                    print("\n🚀 Starting batch generation for all materials...")
-                    print("⚠️  Batch generation not yet implemented in this version")
+                    # Generate for all materials - FULL BATCH GENERATION
+                    print("\n🚀 Starting batch generation for ALL materials...")
+                    print("=" * 60)
+
+                    # Preload API clients for better performance
+                    try:
+                        from api.client_cache import APIClientCache
+                        print("🚀 Preloading API clients for optimal performance...")
+                        APIClientCache.preload_clients(["deepseek", "grok", "winston"])
+                        cache_stats = APIClientCache.get_cache_stats()
+                        print(f"✅ Preloaded {cache_stats['cached_instances']} API clients")
+                    except Exception as e:
+                        print(f"⚠️  Cache preload failed: {e}")
+
+                    try:
+                        # Load materials data
+                        from data.materials import load_materials
+
+                        materials_data = load_materials()
+
+                        # Count total materials across all categories
+                        total_materials = sum(
+                            len(category_data.get("items", []))
+                            for category_data in materials_data.values()
+                        )
+
+                        categories = list(materials_data.keys())
+                        print(f"📂 Found {len(categories)} categories with {total_materials} total materials")
+
+                        # Get only ENABLED components for batch generation
+                        from cli.component_config import get_components_sorted_by_priority
+                        available_components = get_components_sorted_by_priority(include_disabled=False)
+                        print(f"🔧 Available components: {', '.join(available_components)}")
+                        print(f"📊 Component Status: Only ENABLED components included")
+
+                        # Initialize tracking variables
+                        processed_materials = 0
+                        successful_generations = 0
+                        total_components_generated = 0
+                        total_components_failed = 0
+                        total_tokens_used = 0
+                        start_time = time.time()
+
+                        # Process each category
+                        for category in categories:
+                            category_data = materials_data[category]
+                            materials = category_data.get("items", [])
+
+                            print(f"\n🔧 Processing category: {category}")
+                            print(f"   📝 Materials in category: {len(materials)}")
+
+                            category_processed = 0
+                            category_successful = 0
+
+                            # Process each material in the category
+                            for material in materials:
+                                material_name = material["name"]
+                                material_start_time = time.time()
+
+                                print(f"   📝 Generating content for: {material_name}")
+
+                                try:
+                                    # Import workflow manager for material generation
+                                    from generators.workflow_manager import run_material_generation
+
+                                    # Generate all available components for this material
+                                    result = run_material_generation(
+                                        material=material_name,
+                                        component_types=available_components,
+                                        author_id=None,  # Will use material's author_id from materials.yaml
+                                    )
+
+                                    material_time = time.time() - material_start_time
+                                    processed_materials += 1
+                                    category_processed += 1
+
+                                    # Count successful and failed components
+                                    successful_components = len(result.get("components_generated", []))
+                                    failed_components = len(result.get("components_failed", []))
+                                    total_components_generated += successful_components
+                                    total_components_failed += failed_components
+
+                                    # Add tokens used
+                                    material_tokens = result.get("total_tokens", 0)
+                                    total_tokens_used += material_tokens
+
+                                    if successful_components > 0:
+                                        successful_generations += 1
+                                        category_successful += 1
+                                        print(f"      ✅ Generated {successful_components} components ({material_tokens} tokens, {material_time:.1f}s)")
+                                    else:
+                                        print(f"      ⚠️  Generated {successful_components} components, {failed_components} failed ({material_time:.1f}s)")
+
+                                    # Show progress every 10 materials or at key milestones
+                                    if processed_materials % 10 == 0 or processed_materials == total_materials:
+                                        progress_percent = (processed_materials / total_materials) * 100
+                                        elapsed_time = time.time() - start_time
+                                        avg_time_per_material = elapsed_time / processed_materials
+                                        estimated_remaining = (total_materials - processed_materials) * avg_time_per_material
+
+                                        print(f"\n📊 Progress: {processed_materials}/{total_materials} materials ({progress_percent:.1f}%)")
+                                        print(f"   ⏱️  Elapsed: {elapsed_time:.1f}s, ETA: {estimated_remaining:.1f}s")
+                                        print(f"   ✅ Success rate: {(successful_generations/processed_materials*100):.1f}%")
+
+                                except Exception as e:
+                                    from utils.loud_errors import component_failure
+
+                                    component_failure(
+                                        "material_generation", str(e), material=material_name
+                                    )
+                                    processed_materials += 1
+                                    category_processed += 1
+                                    continue
+
+                            # Category summary
+                            if materials:
+                                category_success_rate = (category_successful / len(materials)) * 100
+                                print(f"   📊 Category {category}: {category_successful}/{len(materials)} successful ({category_success_rate:.1f}%)")
+
+                        # Final summary
+                        total_time = time.time() - start_time
+                        overall_success_rate = (successful_generations / processed_materials * 100) if processed_materials > 0 else 0
+
+                        print("\n" + "=" * 60)
+                        print("🎉 BATCH GENERATION COMPLETE")
+                        print("=" * 60)
+                        print(f"📂 Categories processed: {len(categories)}")
+                        print(f"📝 Materials processed: {processed_materials}")
+                        print(f"✅ Successful generations: {successful_generations}")
+                        print(f"📊 Overall success rate: {overall_success_rate:.1f}%")
+                        print(f"🔧 Total components generated: {total_components_generated}")
+                        print(f"❌ Total components failed: {total_components_failed}")
+                        print(f"🎯 Total tokens used: {total_tokens_used}")
+                        print(f"🕐 Total time: {total_time:.1f}s")
+                        print(f"⚡ Average time per material: {total_time/processed_materials:.1f}s" if processed_materials > 0 else "⚡ Average time per material: N/A")
+
+                        # Performance insights
+                        if total_time > 0:
+                            tokens_per_second = total_tokens_used / total_time
+                            print(f"🚀 Performance: {tokens_per_second:.1f} tokens/second")
+
+                        # Cache performance insights
+                        try:
+                            from api.client_cache import APIClientCache
+                            cache_stats = APIClientCache.get_cache_stats()
+                            if cache_stats['total_requests'] > 0:
+                                print(f"📋 Cache Performance: {cache_stats['hit_rate_percent']}% hit rate ({cache_stats['cache_hits']}/{cache_stats['total_requests']} requests)")
+                                
+                                if cache_stats['hit_rate_percent'] >= 80:
+                                    cache_saved_time = cache_stats['cache_hits'] * 0.5  # Estimate 0.5s per client creation
+                                    print(f"⚡ Time saved by caching: ~{cache_saved_time:.1f}s")
+                        except ImportError:
+                            pass
+
+                        # Recommendations based on results
+                        if overall_success_rate >= 95:
+                            print("🎯 Excellent results! System performing optimally.")
+                        elif overall_success_rate >= 80:
+                            print("👍 Good results. Consider optimizing timeout settings for better performance.")
+                        else:
+                            print("⚠️  Results below expectations. Check API connectivity and timeout settings.")
+
+                    except ImportError as e:
+                        from utils.loud_errors import dependency_failure
+
+                        dependency_failure(
+                            "module_import",
+                            str(e),
+                            impact="Batch generation cannot proceed",
+                        )
+                    except Exception as e:
+                        from utils.loud_errors import critical_error
+
+                        critical_error(
+                            "Batch generation failed",
+                            details=str(e),
+                            context="Full batch processing mode",
+                        )
 
             except ImportError as e:
                 from utils.loud_errors import dependency_failure
@@ -626,6 +928,9 @@ def main():
             print("⚙️  CONFIGURATION:")
             print("  python3 run.py --config                # Show config")
             print("  python3 run.py --status                # System status")
+            print("  python3 run.py --cache-stats           # Cache performance")
+            print("  python3 run.py --clear-cache           # Clear API cache")
+            print("  python3 run.py --preload-cache         # Preload cache")
             print()
             print("📋 VERSION TRACKING:")
             print(

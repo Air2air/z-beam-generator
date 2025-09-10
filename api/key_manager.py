@@ -8,7 +8,23 @@ Eliminates hardcoded environment variable names and ensures uniform behavior.
 
 import os
 from typing import Dict, Optional, Any
-from api.config import API_PROVIDERS
+
+
+def get_api_providers():
+    """Get API provider configurations from centralized location"""
+    try:
+        from run import API_PROVIDERS
+        return API_PROVIDERS
+    except ImportError:
+        # Fallback minimal configuration if run.py not available
+        return {
+            "deepseek": {
+                "name": "DeepSeek",
+                "env_var": "DEEPSEEK_API_KEY",
+                "base_url": "https://api.deepseek.com",
+                "model": "deepseek-chat",
+            }
+        }
 
 
 class APIKeyManager:
@@ -31,6 +47,7 @@ class APIKeyManager:
         """
         # Get provider configuration
         if config is None:
+            API_PROVIDERS = get_api_providers()
             if provider not in API_PROVIDERS:
                 raise ValueError(f"Unknown provider: {provider}")
             config = API_PROVIDERS[provider]
@@ -60,6 +77,7 @@ class APIKeyManager:
             Dict mapping provider names to boolean availability status
         """
         results = {}
+        API_PROVIDERS = get_api_providers()
         
         for provider, config in API_PROVIDERS.items():
             try:

@@ -16,6 +16,36 @@ A dynamic, schema-driven content generator for laser cleaning technical document
 - **🎭 Cultural Authenticity Protection**: Persona drift detection and quality assurance
 - **🔧 Flexible Architecture**: Clean, maintainable codebase with health monitoring
 
+## 🚀 Recent Updates (September 2025)
+
+### API Configuration Centralization (v2.1.0)
+
+Major architecture improvement with comprehensive API configuration centralization:
+
+#### ✅ **Fixed Critical Issues**
+- **API Timeout Resolution**: Fixed connection timeouts caused by aggressive parameters (max_tokens=2000, temperature=0.9)
+- **Configuration Centralization**: Eliminated duplicate API_PROVIDERS definitions across 12+ files
+- **Single Source of Truth**: All API configurations now centralized in `run.py`
+- **Import Consistency**: Standardized access pattern using `get_api_providers()` function
+
+#### 🔧 **Optimized Parameters**
+- **DeepSeek**: max_tokens=800, temperature=0.7 (conservative for large prompts)
+- **Grok**: max_tokens=800, temperature=0.7 (reliable for content generation)
+- **Winston**: max_tokens=1000, temperature=0.1 (optimized for detection tasks)
+- **Timeout Settings**: connect=10s, read=45s (sufficient for 39s response times)
+
+#### 📁 **Files Updated**
+- `api/config.py`, `api/client_factory.py`, `api/client_manager.py`
+- `api/enhanced_client.py`, `api/key_manager.py`
+- `cli/api_config.py`, `cli/component_config.py`, `cli/__init__.py`
+- `config/unified_config.py`, `utils/config/environment_checker.py`
+
+#### ✅ **Verified Functionality**
+- **API Connectivity**: All 3 providers connect successfully
+- **Content Generation**: Frontmatter generation working for Steel material
+- **Data Integration**: Materials loaded from `data/materials.yaml` (109 materials, 8 categories)
+- **Large Prompt Support**: Successfully handles 4116+ character prompts
+
 ## 🧠 AI Detection System
 
 ### Recent Improvements (v2.1)

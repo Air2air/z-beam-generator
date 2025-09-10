@@ -10,7 +10,29 @@ import os
 from typing import Any, Dict, Optional
 
 from api.client import APIClient
-from api.config import API_PROVIDERS
+
+
+def get_api_providers():
+    """Get API provider configurations from centralized location"""
+    try:
+        from run import API_PROVIDERS
+        return API_PROVIDERS
+    except ImportError:
+        # Fallback minimal configuration if run.py not available
+        return {
+            "deepseek": {
+                "name": "DeepSeek",
+                "env_var": "DEEPSEEK_API_KEY",
+                "base_url": "https://api.deepseek.com",
+                "model": "deepseek-chat",
+                "max_tokens": 800,
+                "temperature": 0.7,
+                "timeout_connect": 10,
+                "timeout_read": 45,
+                "max_retries": 3,
+                "retry_delay": 1.0,
+            }
+        }
 
 
 class APIClientFactory:
@@ -65,6 +87,8 @@ class APIClientFactory:
     @staticmethod
     def _create_real_client(provider: str, **kwargs) -> APIClient:
         """Create a real API client"""
+        API_PROVIDERS = get_api_providers()
+        
         if provider not in API_PROVIDERS:
             print(f"❌ [CLIENT FACTORY] Unsupported provider: {provider}")
             raise ValueError(f"Unsupported provider: {provider}")
@@ -159,7 +183,8 @@ class APIClientFactory:
             Dict with validation results
         """
         from api.key_manager import is_provider_available
-
+        
+        API_PROVIDERS = get_api_providers()
         results = {"valid": True, "providers": {}}
 
         for provider_id, config in API_PROVIDERS.items():

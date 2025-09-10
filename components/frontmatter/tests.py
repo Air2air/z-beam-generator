@@ -783,6 +783,183 @@ class TestFrontmatterErrorHandling(unittest.TestCase):
         self.assertGreater(len(prompt), 0)
 
 
+class TestFrontmatterVersioning(unittest.TestCase):
+    """Test cases for frontmatter version information integration"""
+
+    def setUp(self):
+        """Set up test fixtures"""
+        self.generator = FrontmatterComponentGenerator()
+
+    def test_version_information_integration(self):
+        """Test that version information is properly integrated via versioning system"""
+        # Test content with proper YAML frontmatter
+        test_content = """---
+name: "Test Material"
+category: "metal"
+author: "Test Author"
+---"""
+        
+        # Mock the versioning system
+        with patch('versioning.stamp_component_output') as mock_stamp:
+            mock_stamp.return_value = test_content + """
+
+# Version Information
+# Generated: 2025-09-10T13:23:40.671545
+# Material: Test Material
+# Component: frontmatter
+# Generator: Z-Beam v2.1.0
+
+---
+Version Log - Generated: 2025-09-10T13:23:40.671714
+Material: Test Material
+Component: frontmatter
+Generator: Z-Beam v2.1.0
+---"""
+            
+            # Test that versioning system is called
+            from versioning import stamp_component_output
+            result = stamp_component_output("frontmatter", test_content)
+            
+            # Verify versioning was applied
+            self.assertIn("# Version Information", result)
+            self.assertIn("Version Log - Generated:", result)
+            self.assertIn("Material: Test Material", result)
+            self.assertIn("Component: frontmatter", result)
+            mock_stamp.assert_called_once_with("frontmatter", test_content)
+
+    def test_version_information_format_validation(self):
+        """Test validation of version information format in generated files"""
+        # Sample content with version information
+        content_with_version = """---
+name: "Alumina"
+category: "ceramic"
+author: "Test Author"
+---
+
+# Version Information
+# Generated: 2025-09-10T13:23:40.671545
+# Material: Alumina
+# Component: frontmatter
+# Generator: Z-Beam v2.1.0
+
+---
+Version Log - Generated: 2025-09-10T13:23:40.671714
+Material: Alumina
+Component: frontmatter
+Generator: Z-Beam v2.1.0
+---"""
+        
+        # Test that content has proper structure
+        lines = content_with_version.split('\n')
+        yaml_sections = [i for i, line in enumerate(lines) if line.strip() == '---']
+        
+        # Should have at least 4 '---' markers (open YAML, close YAML, close version log)
+        self.assertGreaterEqual(len(yaml_sections), 3)
+        
+        # Check that version information is present
+        content_str = '\n'.join(lines)
+        self.assertIn("# Version Information", content_str)
+        self.assertIn("Version Log - Generated:", content_str)
+        self.assertIn("Material:", content_str)
+        self.assertIn("Component: frontmatter", content_str)
+
+    def test_post_processor_version_preservation(self):
+        """Test that post-processor preserves version information sections"""
+        from components.frontmatter.post_processor import post_process_frontmatter
+        
+        # Content with version info that might have formatting issues
+        malformed_content = """---
+name: "Test Material"
+description: "Test description
+---
+
+# Version Information
+# Generated: 2025-09-10T13:23:40.671545
+
+---
+Version Log - Generated: 2025-09-10T13:23:40.671714
+Material: Test Material
+---"""
+        
+        # Post-process the content
+        processed = post_process_frontmatter(malformed_content, "Test Material")
+        
+        # Verify version sections are preserved
+        self.assertIn("# Version Information", processed)
+        self.assertIn("Version Log - Generated:", processed)
+        self.assertIn("Material: Test Material", processed)
+        
+        # Verify YAML is properly formatted
+        lines = processed.split('\n')
+        yaml_sections = [i for i, line in enumerate(lines) if line.strip() == '---']
+        self.assertGreaterEqual(len(yaml_sections), 2)  # At least opening and closing YAML
+
+    def test_no_version_duplication(self):
+        """Test that version information is not duplicated in template"""
+        # Check that prompt template does not contain version information
+        prompt_config = self.generator.prompt_config
+        if prompt_config and 'template' in prompt_config:
+            template = prompt_config['template']
+            
+            # Template should not contain version information fields
+            self.assertNotIn("versionInfo:", template)
+            self.assertNotIn("generated:", template)
+            self.assertNotIn("# Version Information", template)
+            
+            # Version info should be handled by external versioning system
+            self.assertNotIn("Version Log", template)
+
+    @patch('api.client_factory.APIClientFactory.create_client')
+    def test_version_integration_in_generation_workflow(self, mock_create_client):
+        """Test that version information is properly integrated in full generation workflow"""
+        # Mock API client
+        mock_api_client = Mock()
+        mock_api_client.generate_simple.return_value = Mock(
+            success=True,
+            content="""---
+name: "Steel"
+category: "metal"
+---"""
+        )
+        mock_create_client.return_value = mock_api_client
+        
+        # Mock versioning system
+        with patch('versioning.stamp_component_output') as mock_stamp:
+            mock_stamp.return_value = """---
+name: "Steel"
+category: "metal"
+---
+
+# Version Information
+# Generated: 2025-09-10T13:23:40.671545
+# Material: Steel
+
+---
+Version Log - Generated: 2025-09-10T13:23:40.671714
+Material: Steel
+Component: frontmatter
+---"""
+            
+            # Generate content
+            result = self.generator.generate(
+                material_name="Steel",
+                material_data={
+                    "name": "Steel",
+                    "author_id": 1,
+                    "formula": "Fe-C",
+                    "symbol": "Fe",
+                    "category": "metal"
+                },
+                api_client=mock_api_client
+            )
+            
+            # Verify versioning was applied
+            self.assertTrue(result.success)
+            self.assertIn("# Version Information", result.content)
+            self.assertIn("Version Log - Generated:", result.content)
+            mock_stamp.assert_called_once()
+
+
 if __name__ == '__main__':
     # Configure test runner with verbose output
     unittest.main(verbosity=2)

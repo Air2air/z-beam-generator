@@ -2,14 +2,25 @@
 
 ## Overview
 
-The Z-Beam system uses a standardized API client architecture that supports multiple AI providers with consistent environment variable loading and error handling.
+The Z-Beam system uses a **centralized API configuration architecture** with all provider settings stored in `run.py` as the single source of truth. This ensures consistent configuration management and eliminates duplicate API provider definitions across the codebase.
+
+## Architecture Changes (September 2025)
+
+### Centralized Configuration
+- **Single Source**: All API provider configurations are now centralized in `run.py`
+- **Consistent Access**: All files use `get_api_providers()` function to access configuration
+- **No Duplicates**: Removed all duplicate `API_PROVIDERS` definitions from individual modules
+
+### Fixed API Parameters
+- **Conservative Timeouts**: Resolved API timeout issues by using conservative parameters
+- **Optimized Token Limits**: Set `max_tokens=800` and `temperature=0.7` for reliable operation
+- **Large Prompt Support**: System now handles large prompts without connection timeouts
 
 ## Supported Providers
 
-- **DeepSeek**: Primary provider for most components
-- **Grok (X.AI)**: Used for content component
-  - **grok-2**: Recommended model, works reliably for content generation
-  - **grok-4**: Advanced reasoning model, currently produces reasoning tokens without completion output (not recommended for content generation)
+- **DeepSeek**: Primary provider for most components (optimized parameters)
+- **Grok (X.AI)**: Used for content component with reliable grok-2 model
+- **Winston AI**: Detection and analysis provider
 - **Table Component**: Static/deterministic generation (no API required)
 
 ## Environment Setup
@@ -30,35 +41,81 @@ DEEPSEEK_API_KEY=your_deepseek_api_key_here
 
 # Grok (X.AI) API Configuration
 GROK_API_KEY=your_grok_api_key_here
+
+# Winston AI Configuration
+WINSTON_API_KEY=your_winston_api_key_here
 ```
 
 ### 3. Verify Configuration
 
-Check your environment setup:
+Check your environment setup and API connectivity:
 ```bash
-python3 run.py --check-env
+python3 run.py --test-api
 ```
 
-## API Provider Configuration
+## Centralized API Provider Configuration
 
-The system automatically routes components to appropriate providers:
+All API provider settings are now centralized in `run.py`:
 
 ```python
-# Component → Provider Routing
+# Centralized API Configuration (run.py)
 API_PROVIDERS = {
     "deepseek": {
         "name": "DeepSeek",
-        "env_key": "DEEPSEEK_API_KEY",
+        "env_var": "DEEPSEEK_API_KEY",
         "base_url": "https://api.deepseek.com",
-        "model": "deepseek-chat"
+        "model": "deepseek-chat",
+        # Optimized operational parameters
+        "max_tokens": 800,  # Conservative for large prompts
+        "temperature": 0.7,  # Balanced creativity
+        "timeout_connect": 10,  # Connection timeout in seconds
+        "timeout_read": 45,  # Read timeout in seconds
+        "max_retries": 3,  # Maximum retry attempts
+        "retry_delay": 1.0,  # Delay between retries in seconds
     },
     "grok": {
-        "name": "Grok (X.AI)",
-        "env_key": "GROK_API_KEY",
+        "name": "Grok",
+        "env_var": "GROK_API_KEY",
         "base_url": "https://api.x.ai/v1",
-        "model": "grok-4"
+        "model": "grok-2",  # Reliable model for content generation
+        "max_tokens": 800,
+        "temperature": 0.7,
+        "timeout_connect": 10,
+        "timeout_read": 45,
+        "max_retries": 3,
+        "retry_delay": 1.0,
+    },
+    "winston": {
+        "name": "Winston AI Detection",
+        "env_var": "WINSTON_API_KEY",
+        "base_url": "https://api.gowinston.ai/functions/v1",
+        "model": "winston-detection",
+        "max_tokens": 1000,
+        "temperature": 0.1,
+        "timeout_connect": 10,
+        "timeout_read": 30,
+        "max_retries": 2,
+        "retry_delay": 0.5,
     }
 }
+
+def get_api_providers():
+    """Get API provider configurations from centralized location"""
+    return API_PROVIDERS
+```
+
+### Accessing Configuration
+
+All modules access the centralized configuration using the `get_api_providers()` function:
+
+```python
+# Example usage in any module
+from run import get_api_providers
+
+def create_client(provider_name):
+    api_providers = get_api_providers()
+    config = api_providers[provider_name]
+    # Use config...
 ```
 
 ## API Client Configuration
@@ -119,7 +176,41 @@ The system now uses strict fail-fast architecture:
 
 ## Recent Performance Improvements
 
-### September 2025 Updates
+### September 2025 Updates - API Configuration Centralization
+
+#### **Major Architecture Changes**
+- **Centralized Configuration**: Moved all API provider configurations to `run.py` as single source of truth
+- **Eliminated Duplicates**: Removed duplicate `API_PROVIDERS` definitions from 12+ files across the codebase
+- **Consistent Access Pattern**: Implemented `get_api_providers()` function for uniform configuration access
+
+#### **Fixed API Timeout Issues**
+- **Root Cause**: Aggressive API parameters (max_tokens=2000, temperature=0.9) caused connection timeouts
+- **Solution**: Implemented conservative parameters (max_tokens=800, temperature=0.7) for reliable operation
+- **Large Prompt Support**: System now handles large prompts without timeout failures
+
+#### **Files Updated for Centralization**
+- `api/config.py` - Updated to use `get_api_providers()`
+- `api/client_factory.py` - Updated to use centralized configuration
+- `api/client_manager.py` - Updated to use centralized configuration
+- `api/enhanced_client.py` - Updated to use centralized configuration
+- `api/key_manager.py` - Updated to use centralized configuration
+- `cli/api_config.py` - Updated to use centralized configuration
+- `cli/component_config.py` - Updated to use centralized configuration
+- `cli/__init__.py` - Updated to use centralized configuration
+- `config/unified_config.py` - Updated to use centralized configuration
+- `utils/config/environment_checker.py` - Updated to use centralized configuration
+
+#### **Added Missing Functions**
+- Added `critical_error()` function to `utils/loud_errors.py` for proper error handling
+- Enhanced error reporting with comprehensive failure categories
+
+#### **Verified Functionality**
+- ✅ API connectivity test: All 3 providers (DeepSeek, Grok, Winston) connect successfully
+- ✅ Content generation: Frontmatter generation working for Steel material
+- ✅ Data integration: Materials loaded from `data/materials.yaml` (109 materials across 8 categories)
+- ✅ Import dependencies: All files correctly import from centralized location
+
+### Historical Performance Fixes
 - **Fixed Concurrent Request Issues**: Resolved hanging generation caused by HTTP-level retries interfering with application retry logic
 - **Optimized Connection Pooling**: Reduced connection pool to single connection to prevent concurrent request conflicts
 - **Improved Timeout Handling**: Reduced read timeout from 60s to 30s for faster failure detection

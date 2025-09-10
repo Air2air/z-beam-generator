@@ -271,6 +271,26 @@ class MockAPIClient:
         """Generate mock response based on prompt content with expanded material support"""
         prompt_lower = prompt.lower()
 
+        # Component-specific content (check first to override material-specific content)
+        component_patterns = {
+            "frontmatter": ["yaml", "frontmatter", "metadata"],
+            "jsonld": ["json-ld", "structured data"],
+            "table": ["markdown table", "tabular data"],
+            "metatags": ["meta tags", "seo optimization"],
+            "tags": ["tags", "categories", "keywords"],
+            "bullets": ["bullet points", "key features"],
+            "caption": ["caption", "image description"],
+            "propertiestable": ["properties table", "specifications"],
+        }
+
+        for component, patterns in component_patterns.items():
+            if any(pattern in prompt_lower for pattern in patterns):
+                method_name = f"_generate_{component}_content"
+                if component == "frontmatter":
+                    return getattr(self, method_name)(prompt)
+                else:
+                    return getattr(self, method_name)()
+
         # Material-specific content generation
         materials = {
             "steel": ["steel", "iron", "carbon steel", "stainless steel"],
@@ -296,22 +316,6 @@ class MockAPIClient:
             "cleaning" in prompt_lower or "removal" in prompt_lower
         ):
             return self._generate_generic_laser_content()
-
-        # Component-specific content
-        component_patterns = {
-            "frontmatter": ["yaml", "frontmatter", "metadata"],
-            "jsonld": ["json-ld", "structured data"],
-            "table": ["markdown table", "tabular data"],
-            "metatags": ["meta tags", "seo optimization"],
-            "tags": ["tags", "categories", "keywords"],
-            "bullets": ["bullet points", "key features"],
-            "caption": ["caption", "image description"],
-            "propertiestable": ["properties table", "specifications"],
-        }
-
-        for component, patterns in component_patterns.items():
-            if any(pattern in prompt_lower for pattern in patterns):
-                return getattr(self, f"_generate_{component}_content")()
 
         # Default to generic content
         return self._generate_generic_content()
@@ -522,44 +526,145 @@ Glass substrates offer excellent optical properties and surface quality requirem
 - Optical fiber processing
 - Precision optics maintenance"""
 
-    def _generate_generic_content(self) -> str:
-        """Generate generic mock content"""
-        return """### Technical Content Overview
+    def _extract_template_variables(self, prompt: str) -> Dict[str, str]:
+        """Extract template variables from the prompt containing YAML template"""
+        import re
 
-This document provides comprehensive information about the specified technical topic. The content has been generated using advanced AI technology to ensure accuracy and relevance.
+        variables = {}
 
-### Key Technical Points
-- Advanced processing techniques and methodologies
-- Material properties and characteristics
-- Performance optimization strategies
-- Quality control and validation procedures
+        # Look for template variables in the format {variable_name}
+        # Common patterns we expect to find
+        patterns = {
+            'author_name': r'author:\s*"([^"]+)"',
+            'author_object_country': r'country:\s*"([^"]+)"',
+            'author_object_expertise': r'expertise:\s*"([^"]+)"',
+            'author_id': r'id:\s*([^}\s]+)',
+            'material_name': r'name:\s*"([^"]+)"',
+            'material_symbol': r'symbol:\s*"([^"]+)"',
+        }
 
-### Implementation Guidelines
-- Proper equipment selection and calibration
-- Process parameter optimization
-- Safety considerations and best practices
-- Performance monitoring and maintenance
+        for var_name, pattern in patterns.items():
+            match = re.search(pattern, prompt, re.IGNORECASE)
+            if match:
+                variables[var_name] = match.group(1)
 
-The information presented here serves as a foundation for understanding and implementing the described technical processes in industrial applications."""
+        # Also try to extract from template format {variable_name}
+        template_vars = re.findall(r'\{([^}]+)\}', prompt)
+        for var in template_vars:
+            if var in ['author_name', 'author_object_country', 'author_object_expertise', 'author_id', 'material_name', 'material_symbol']:
+                # Try to find the value in the prompt context
+                # Look for patterns like "author_name": "Ikmanda Roswati"
+                value_pattern = rf'"{var}":\s*"([^"]+)"'
+                match = re.search(value_pattern, prompt)
+                if match:
+                    variables[var] = match.group(1)
 
-    def _generate_frontmatter_content(self) -> str:
-        """Generate mock YAML frontmatter"""
-        return """---
-title: "Advanced Laser Cleaning Technology for Industrial Applications"
-description: "Comprehensive guide to laser cleaning processes, parameters, and industrial applications"
-date: "2025-01-15"
-author: "Technical Documentation Team"
-category: "Industrial Technology"
-tags:
-  - laser-cleaning
-  - surface-preparation
-  - industrial-processes
-  - contamination-removal
+        return variables
+
+    def _generate_frontmatter_content(self, prompt: str = "") -> str:
+        """Generate mock YAML frontmatter matching the comprehensive template format"""
+        # Extract template variables from the prompt
+        template_vars = self._extract_template_variables(prompt)
+
+        # Use extracted variables or fallbacks
+        author_name = template_vars.get('author_name', 'Dr. Sarah Chen')
+        author_country = template_vars.get('author_object_country', 'China')
+        author_expertise = template_vars.get('author_object_expertise', 'Laser Materials Processing')
+        author_id = template_vars.get('author_id', 'sarah_chen')
+        material_name = template_vars.get('material_name', 'Steel')
+        material_symbol = template_vars.get('material_symbol', 'Fe')
+
+        return f"""---
+name: "{material_name}"
+applications:
+- industry: "Electronics Manufacturing"
+  detail: "Removal of surface oxides and contaminants from {material_name} substrates"
+- industry: "Aerospace Components"
+  detail: "Cleaning of thermal barrier coatings and metal matrix composites"
+technicalSpecifications:
+  powerRange: "50-200W"
+  pulseDuration: "20-100ns"
+  wavelength: "1064nm (primary), 532nm (optional)"
+  spotSize: "0.2-1.5mm"
+  repetitionRate: "20-100kHz"
+  fluenceRange: "1.0–4.5 J/cm²"
+  safetyClass: "Class 4 (requires full enclosure)"
+description: "Technical overview of {material_name}, {material_symbol}, for laser cleaning applications, including optimal 1064nm wavelength interaction, and industrial applications in surface preparation."
+author: "{author_name}"
+author_object:
+  id: {author_id}
+  name: "{author_name}"
+  sex: "female"
+  title: "Materials Scientist"
+  country: "{author_country}"
+  expertise: "{author_expertise}"
+  image: null
+keywords: "{material_name.lower()}, {material_name.lower()} metal, laser ablation, laser cleaning, non-contact cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters, thermal processing, surface restoration"
+category: "metal"
+chemicalProperties:
+  symbol: "{material_symbol}"
+  formula: "{material_symbol}"
+  materialType: "metal"
 properties:
-  thermal_conductivity: "50-400 W/m·K"
-  wavelength_range: "532-1064 nm"
-  pulse_energy: "0.3-5.0 mJ"
-  applications: "Manufacturing, Aerospace, Electronics"
+  density: "7.85 g/cm³"
+  densityMin: "1.8 g/cm³"
+  densityMax: "6.0 g/cm³"
+  densityPercentile: 51.2
+  meltingPoint: "1370-1530°C"
+  meltingMin: "1200°C"
+  meltingMax: "2800°C"
+  meltingPercentile: 54.5
+  thermalConductivity: "50.2 W/m·K"
+  thermalMin: "0.5 W/m·K"
+  thermalMax: "200 W/m·K"
+  thermalPercentile: 14.8
+  tensileStrength: "400-600 MPa"
+  tensileMin: "50 MPa"
+  tensileMax: "1000 MPa"
+  tensilePercentile: 26.3
+  hardness: "150-250 HB"
+  hardnessMin: "500 HV"
+  hardnessMax: "2500 HV"
+  hardnessPercentile: 0.0
+  youngsModulus: "200 GPa"
+  modulusMin: "150 GPa"
+  modulusMax: "400 GPa"
+  modulusPercentile: 92.0
+  laserType: "Pulsed Fiber Laser"
+  wavelength: "1064nm"
+  fluenceRange: "1.0–4.5 J/cm²"
+  chemicalFormula: "{material_symbol}"
+composition:
+- "{material_name} ({material_symbol}) 99.6%"
+- "Trace elements (Si, Fe, Na, Mg)"
+compatibility:
+- "Stainless Steel"
+- "Titanium Alloys"
+- "Nickel-based Superalloys"
+regulatoryStandards: "ISO 18562, ASTM F2100, IEC 60601-1"
+images:
+  hero:
+    alt: "{material_name} surface undergoing laser cleaning showing precise contamination removal"
+    url: "/images/{material_name.lower()}-laser-cleaning-hero.jpg"
+  micro:
+    alt: "Microscopic view of {material_name} surface after laser treatment showing preserved microstructure"
+    url: "/images/{material_name.lower()}-laser-cleaning-micro.jpg"
+title: "Laser Cleaning {material_name} - Technical Guide for Optimal Processing"
+headline: "Comprehensive technical guide for laser cleaning metal {material_name}"
+environmentalImpact:
+- benefit: "Chemical Solvent Elimination"
+  description: "Reduces chemical usage by 100% compared to traditional solvent cleaning methods"
+- benefit: "Water Conservation"
+  description: "Saves approximately 5000 liters of water per month in industrial applications"
+- benefit: "Energy Efficiency"
+  description: "Consumes 40% less energy than thermal cleaning processes"
+outcomes:
+- result: "Surface Cleanliness Level"
+  metric: "Achieves ISO 14644-1 Class 7 cleanliness standard"
+- result: "Material Removal Precision"
+  metric: "±5μm accuracy with no substrate damage"
+- result: "Processing Speed"
+  metric: "2-5 m²/hour cleaning rate depending on contamination level"
 ---"""
 
     def _generate_jsonld_content(self) -> str:

@@ -12,8 +12,24 @@ from pathlib import Path  # noqa: F401
 from typing import Optional  # noqa: F401
 
 from api.client import APIClient
-from api.config import API_PROVIDERS
 from api.env_loader import EnvLoader
+
+
+def get_api_providers():
+    """Get API provider configurations from centralized location"""
+    try:
+        from run import API_PROVIDERS
+        return API_PROVIDERS
+    except ImportError:
+        # Fallback minimal configuration if run.py not available
+        return {
+            "deepseek": {
+                "name": "DeepSeek",
+                "env_key": "DEEPSEEK_API_KEY",
+                "base_url": "https://api.deepseek.com",
+                "model": "deepseek-chat",
+            }
+        }
 
 
 def check_api_configuration():
@@ -39,6 +55,7 @@ def check_api_configuration():
         # List keys to trigger loader output
         EnvLoader.list_available_keys()
 
+        API_PROVIDERS = get_api_providers()
         provider_keys_found = 0
         for provider_id, provider_info in API_PROVIDERS.items():
             env_key = provider_info["env_key"]
@@ -52,6 +69,7 @@ def check_api_configuration():
 
         # Test API client creation
         print("🧪 API Client Tests:")
+        API_PROVIDERS = get_api_providers()  # Get fresh reference
         for provider_id, provider_info in API_PROVIDERS.items():
             try:
                 # Import here to avoid circular import
@@ -66,6 +84,7 @@ def check_api_configuration():
 
         # Summary and recommendations
         print("📋 Summary:")
+        API_PROVIDERS = get_api_providers()  # Get fresh reference for length check
         print(f"   API Keys Found: {provider_keys_found}/{len(API_PROVIDERS)}")
 
         if provider_keys_found == 0:

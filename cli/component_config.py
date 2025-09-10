@@ -22,7 +22,23 @@ try:
 except ImportError:
     pass  # Continue without dotenv if not available
 
-from cli.api_config import API_PROVIDERS
+
+def get_api_providers():
+    """Get API provider configurations from centralized location"""
+    try:
+        from run import API_PROVIDERS
+        return API_PROVIDERS
+    except ImportError:
+        # Fallback minimal configuration if run.py not available
+        return {
+            "deepseek": {
+                "name": "DeepSeek",
+                "env_var": "DEEPSEEK_API_KEY",
+                "base_url": "https://api.deepseek.com",
+                "model": "deepseek-chat",
+            }
+        }
+
 
 # Import user-settable configuration from run.py
 try:
@@ -83,6 +99,7 @@ def show_component_configuration():
 
     # Display API provider details
     print("🔑 API Provider Configuration:")
+    API_PROVIDERS = get_api_providers()
     for provider_id, provider_info in API_PROVIDERS.items():
         env_key = provider_info["env_key"]
         has_key = "✅" if os.getenv(env_key) else "❌"
@@ -93,7 +110,7 @@ def show_component_configuration():
     print()
 
 
-def get_components_sorted_by_priority():
+def get_components_sorted_by_priority(include_disabled=False):
     """Get components sorted by priority order."""
     components_config = COMPONENT_CONFIG
 
@@ -103,7 +120,10 @@ def get_components_sorted_by_priority():
         key=lambda x: x[1].get("priority", 999)
     )
 
-    return [component for component, config in sorted_components if config.get("enabled", True)]
+    if include_disabled:
+        return [component for component, config in sorted_components]
+    else:
+        return [component for component, config in sorted_components if config.get("enabled", True)]
 
 
 def get_enabled_components():

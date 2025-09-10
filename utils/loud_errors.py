@@ -97,3 +97,16 @@ def network_failure(component_name: str, error_message: str, **kwargs) -> None:
     print(f"\n🌐 NETWORK FAILURE: {component_name}", file=sys.stderr)
     print(f"❌ Network Error: {error_message}", file=sys.stderr)
     print("⚠️  Network connectivity issue detected", file=sys.stderr)
+
+
+def critical_error(error_message: str, **kwargs) -> None:
+    """
+    Report a critical error that requires immediate attention.
+
+    Args:
+        error_message: Description of the critical error
+        **kwargs: Additional arguments (for compatibility)
+    """
+    print(f"\n💀 CRITICAL ERROR", file=sys.stderr)
+    print(f"❌ Fatal Error: {error_message}", file=sys.stderr)
+    print("⚠️  System cannot continue", file=sys.stderr)

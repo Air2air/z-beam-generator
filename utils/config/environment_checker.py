@@ -12,7 +12,22 @@ from pathlib import Path
 from typing import Any, Dict, List
 
 # Import API providers and COMPONENT_CONFIG directly to avoid circular imports
-from api.config import API_PROVIDERS
+def get_api_providers():
+    """Get API provider configurations from centralized location"""
+    try:
+        from run import API_PROVIDERS
+        return API_PROVIDERS
+    except ImportError:
+        # Fallback minimal configuration if run.py not available
+        return {
+            "deepseek": {
+                "name": "DeepSeek",
+                "env_var": "DEEPSEEK_API_KEY",
+                "base_url": "https://api.deepseek.com",
+                "model": "deepseek-chat",
+            }
+        }
+
 from api.env_loader import EnvLoader
 from run import COMPONENT_CONFIG
 
@@ -38,6 +53,7 @@ def check_environment() -> Dict[str, Any]:
     }
 
     # Check API keys
+    API_PROVIDERS = get_api_providers()
     for provider_id, config in API_PROVIDERS.items():
         api_key = os.getenv(config["env_var"])
         results["api_keys"][provider_id] = {
@@ -263,6 +279,7 @@ def validate_component_configuration() -> Dict[str, Any]:
                     f"Invalid data_provider: {config.get('data_provider')}"
                 )
 
+            API_PROVIDERS = get_api_providers()  # Get fresh reference
             if (
                 config.get("api_provider")
                 and config.get("api_provider") not in API_PROVIDERS

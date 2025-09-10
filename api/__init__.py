@@ -9,8 +9,16 @@ with consistent behavior across all providers and environments.
 from .client import APIClient, APIResponse, GenerationRequest
 from .client_factory import APIClientFactory, create_api_client, get_api_client_for_component
 
+# Client caching for performance
+from .client_cache import (
+    APIClientCache,
+    get_cached_api_client,
+    get_cached_client_for_component,
+    api_client_cache
+)
+
 # Configuration and key management
-from .config import API_PROVIDERS, get_default_config
+from .config import get_default_config, get_api_providers
 from .key_manager import (
     APIKeyManager,
     get_api_key,
@@ -37,6 +45,7 @@ __all__ = [
     # Main classes
     "APIClient",
     "APIClientFactory",
+    "APIClientCache",
     "APIKeyManager",
     "DeepSeekClient",
     "EnvLoader",
@@ -51,6 +60,11 @@ __all__ = [
     "get_api_client_for_component",
     "get_component_client",
 
+    # Cache functions
+    "get_cached_api_client",
+    "get_cached_client_for_component",
+    "api_client_cache",
+
     # Key management
     "get_api_key",
     "validate_all_api_keys",
@@ -58,7 +72,7 @@ __all__ = [
     "is_provider_available",
 
     # Configuration
-    "API_PROVIDERS",
+    "get_api_providers",
     "get_default_config",
 
     # Management functions

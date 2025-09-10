@@ -137,6 +137,44 @@ The migration script will:
 **Enforcement:** Mandatory for all new optimized files
 **Migration Status:** Tools available for existing files
 
+## 🧪 **Testing Conventions**
+
+### **Hybrid Component Testing Rule**
+
+**For hybrid data components** (components that combine API-generated content with static source data):
+
+- ✅ **API data fields**: Can use mock API clients for testing
+- ✅ **Static source data**: Must be used and tested without mocking
+- ✅ **Data validation**: Static data must be validated against real schemas
+- ✅ **Integration testing**: Test both mocked API and real static data together
+
+**Example Implementation:**
+```python
+def test_hybrid_component_mixed_approach():
+    """Test hybrid component with mock API but real static data."""
+    # Mock API for generated content
+    with mock_api_calls("deepseek") as mock_client:
+        # Use REAL static data (no mocking)
+        static_data = load_real_static_data("materials.yaml")
+
+        result = generate_hybrid_component(
+            material_name="Steel",
+            static_data=static_data,  # Real data, no mocking
+            api_client=mock_client    # Mock API for generated fields
+        )
+
+        # Validate both parts work correctly
+        assert result.success
+        assert static_data_integrity_valid(static_data, result)
+        assert api_content_quality_valid(result.generated_content)
+```
+
+**Rationale:**
+- Ensures static data accuracy and reliability
+- Validates API integration with real data sources
+- Prevents testing with completely mocked environments
+- Maintains data integrity across component types
+
 ## 📋 **Current Status**
 
 ✅ **Completed:**

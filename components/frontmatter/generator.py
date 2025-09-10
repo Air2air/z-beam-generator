@@ -25,8 +25,8 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
         """Get component information"""
         return {
             "name": "frontmatter",
-            "description": "YAML frontmatter generation for laser cleaning articles",
-            "version": "4.0.1",
+            "description": "YAML frontmatter generation for laser cleaning articles with centralized version integration",
+            "version": "4.1.1",
             "requires_api": True,
             "type": "dynamic",
         }
@@ -183,6 +183,7 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
             )
 
         # FAIL-FAST: Symbol is required for frontmatter generation
+        # Use formula as fallback if symbol is not available
         symbol = None
         if "symbol" in material_data and material_data["symbol"]:
             symbol = material_data["symbol"]
@@ -193,9 +194,14 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
         ):
             symbol = material_data["data"]["symbol"]
         else:
-            raise Exception(
-                "Material data missing required 'symbol' field - fail-fast architecture requires complete material information"
-            )
+            # Use formula as fallback for symbol
+            if formula:
+                symbol = formula
+                logger.info(f"Using formula '{formula}' as fallback for missing symbol in {material_name}")
+            else:
+                raise Exception(
+                    "Material data missing required 'symbol' field and no 'formula' available as fallback - fail-fast architecture requires complete material information"
+                )
 
         # FAIL-FAST: Author information is required
         if not author_info or "name" not in author_info:
@@ -316,7 +322,7 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
         """Post-process frontmatter content with property enhancement"""
         try:
             # Try to use the property enhancer if available
-            from utils.property_enhancer import enhance_generated_frontmatter
+            from utils.core.property_enhancer import enhance_generated_frontmatter
 
             # FAIL-FAST: Category is required for enhancement
             if "category" not in material_data:

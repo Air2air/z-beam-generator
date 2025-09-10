@@ -108,22 +108,22 @@ class VersionGenerator:
 
         return "\n".join(stamp_lines)
 
-    def prepend_version_stamp(
+    def append_version_stamp(
         self,
         content: str,
         new_stamp: str,
         legacy_marker: str = "Version Log - Generated:"
     ) -> str:
         """
-        Prepend a new version stamp to content, preserving any existing legacy stamps.
+        Append a new version stamp to content, preserving any existing legacy stamps.
 
         Args:
             content: The content to stamp
-            new_stamp: The new version stamp to prepend
+            new_stamp: The new version stamp to append
             legacy_marker: Marker to identify existing legacy stamps
 
         Returns:
-            Content with new stamp prepended and legacy stamps preserved
+            Content with new stamp appended and legacy stamps preserved
         """
         lines = content.split('\n')
         legacy_stamp_start = -1
@@ -150,11 +150,11 @@ class VersionGenerator:
                 '\n'.join(lines[legacy_stamp_end + 1:])
             ).strip()
 
-            # Prepend new stamp and append legacy stamp
-            return f"{new_stamp}\n\n{content_without_legacy}\n\n{legacy_stamp}"
+            # Append new stamp and legacy stamp at the END
+            return f"{content_without_legacy}\n\n{new_stamp}\n\n{legacy_stamp}"
         else:
-            # No legacy stamp found, just prepend new stamp
-            return f"{new_stamp}\n\n{content}"
+            # No legacy stamp found, just append new stamp at the END
+            return f"{content}\n\n{new_stamp}"
 
     def stamp_component_output(
         self,
@@ -195,7 +195,7 @@ class VersionGenerator:
             )
 
             # Apply stamp (will handle legacy stamps automatically)
-            stamped_content = self.prepend_version_stamp(content, new_stamp)
+            stamped_content = self.append_version_stamp(content, new_stamp)
 
             logger.info(f"Applied version stamp to {component_name} for {material_name}")
             return stamped_content
@@ -250,11 +250,13 @@ class VersionGenerator:
                         closing_marker_index = i
                         break
 
-            # If we found both markers, remove the closing one and add version info after opening
+            # If we found both markers, add version info at the END of the file
             if opening_marker_index >= 0 and closing_marker_index >= 0:
-                # Create version comment block
+                # Create version comment block for the END of the file
                 version_comments = [
-                    f"# Version Log - Generated: {timestamp}",
+                    "",
+                    "# Version Information",
+                    f"# Generated: {timestamp}",
                     f"# Material: {material_name}",
                     f"# Component: {component_name}",
                     f"# Generator: Z-Beam v{self.generator_version}",
@@ -262,7 +264,6 @@ class VersionGenerator:
                     f"# Author: {author_name or 'AI Assistant'}",
                     f"# Platform: {self.system_info['platform']} ({self.system_info['python_version']})",
                     f"# Operation: {operation}",
-                    "",  # Empty line for readability
                 ]
 
                 # Add metadata as comments if provided
@@ -271,21 +272,22 @@ class VersionGenerator:
                         if key not in ['version_log', 'material', 'component', 'generator',
                                       'component_version', 'author', 'platform', 'python_version', 'operation']:
                             version_comments.append(f"# {key.replace('_', ' ').title()}: {value}")
-                    version_comments.append("")  # Empty line after metadata
 
-                # Insert version comments after the opening --- and remove the closing ---
+                # Keep the original YAML structure and append version info at the END
                 new_lines = (
-                    lines[:opening_marker_index + 1] +  # Keep opening ---
-                    version_comments +                   # Add version comments
-                    lines[opening_marker_index + 1:closing_marker_index]  # Keep content until closing ---
+                    lines[:closing_marker_index + 1] +  # Keep entire YAML block including closing ---
+                    [""] +                              # Add empty line for separation
+                    version_comments                     # Add version comments at the END
                 )
                 return '\n'.join(new_lines)
 
-            # If no closing marker found, just add comments after opening marker
+            # If no closing marker found, just add comments at the END
             elif opening_marker_index >= 0:
-                # Create version comment block
+                # Create version comment block for the END
                 version_comments = [
-                    f"# Version Log - Generated: {timestamp}",
+                    "",
+                    "# Version Information",
+                    f"# Generated: {timestamp}",
                     f"# Material: {material_name}",
                     f"# Component: {component_name}",
                     f"# Generator: Z-Beam v{self.generator_version}",
@@ -293,7 +295,6 @@ class VersionGenerator:
                     f"# Author: {author_name or 'AI Assistant'}",
                     f"# Platform: {self.system_info['platform']} ({self.system_info['python_version']})",
                     f"# Operation: {operation}",
-                    "",  # Empty line for readability
                 ]
 
                 # Add metadata as comments if provided
@@ -302,16 +303,16 @@ class VersionGenerator:
                         if key not in ['version_log', 'material', 'component', 'generator',
                                       'component_version', 'author', 'platform', 'python_version', 'operation']:
                             version_comments.append(f"# {key.replace('_', ' ').title()}: {value}")
-                    version_comments.append("")  # Empty line after metadata
 
-                # Insert version comments after the opening ---
-                new_lines = lines[:opening_marker_index + 1] + version_comments + lines[opening_marker_index + 1:]
-                return '\n'.join(new_lines)
+                # Add version comments at the END of the file
+                return content + '\n' + '\n'.join(version_comments)
 
-            # If no markers found, prepend version comments
+            # If no markers found, append version comments at the END
             else:
                 version_comments = [
-                    f"# Version Log - Generated: {timestamp}",
+                    "",
+                    "# Version Information",
+                    f"# Generated: {timestamp}",
                     f"# Material: {material_name}",
                     f"# Component: {component_name}",
                     f"# Generator: Z-Beam v{self.generator_version}",
@@ -319,15 +320,13 @@ class VersionGenerator:
                     f"# Author: {author_name or 'AI Assistant'}",
                     f"# Platform: {self.system_info['platform']} ({self.system_info['python_version']})",
                     f"# Operation: {operation}",
-                    "",
                 ]
 
                 if metadata:
                     for key, value in metadata.items():
                         version_comments.append(f"# {key.replace('_', ' ').title()}: {value}")
-                    version_comments.append("")
 
-                return '\n'.join(version_comments) + content
+                return content + '\n' + '\n'.join(version_comments)
 
         except Exception as e:
             logger.error(f"Failed to stamp frontmatter output: {e}")

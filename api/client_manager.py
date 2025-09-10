@@ -11,12 +11,13 @@ import time
 
 # Import the unified factory
 from .client_factory import create_api_client
-from .config import API_PROVIDERS
+from .config import get_api_providers
 
 
 def setup_api_client(provider: str = "deepseek"):
-    """Setup API client with fail-fast behavior - no fallbacks"""
-    return create_api_client(provider)
+    """Setup API client with fail-fast behavior - now uses caching for performance"""
+    from .client_cache import get_cached_api_client
+    return get_cached_api_client(provider)
 
 
 def validate_api_environment() -> dict:
@@ -29,8 +30,9 @@ def validate_api_environment() -> dict:
     from api.key_manager import is_provider_available
 
     results = {}
+    api_providers = get_api_providers()
 
-    for provider_id, config in API_PROVIDERS.items():
+    for provider_id, config in api_providers.items():
         results[provider_id] = {
             "provider": config["name"],
             "env_var": config["env_var"],
@@ -45,39 +47,22 @@ def validate_api_environment() -> dict:
 def get_api_client_for_component(component_type: str):
     """
     Get appropriate API client for a specific component type.
+    Now uses caching to improve performance by reusing clients.
 
     Args:
         component_type: Component type (frontmatter, content, etc.)
 
     Returns:
-        APIClient instance configured for the component
+        APIClient instance configured for the component (cached when possible)
 
     Raises:
         ValueError: If component type is invalid
         RuntimeError: If provider configuration is missing
     """
-    # Import here to avoid circular import
-    from run import COMPONENT_CONFIG
-
-    components_config = COMPONENT_CONFIG
-
-    if component_type not in components_config:
-        raise ValueError(f"Unknown component type: {component_type}")
-
-    component_config = components_config[component_type]
-
-    # Handle hybrid and API data providers - use api_provider field
-    data_provider = component_config.get("data_provider", "API")
-    api_provider = component_config.get("api_provider", "deepseek")
-
-    if data_provider in ["hybrid", "API"]:
-        return create_api_client(api_provider)
-    elif api_provider == "none":
-        # For truly static components that don't need any API
-        return None
-    else:
-        # For static components, still return default client for consistency
-        return create_api_client("deepseek")
+    # Use cached client for better performance
+    from .client_cache import get_cached_client_for_component
+    
+    return get_cached_client_for_component(component_type)
 def test_api_connectivity(provider: str = None) -> dict:
     """
     Test API connectivity for providers.
@@ -91,7 +76,8 @@ def test_api_connectivity(provider: str = None) -> dict:
     print("🔍 [CLIENT MANAGER] Testing API connectivity...")
 
     results = {}
-    providers_to_test = [provider] if provider else list(API_PROVIDERS.keys())
+    api_providers = get_api_providers()
+    providers_to_test = [provider] if provider else list(api_providers.keys())
 
     print(f"📋 [CLIENT MANAGER] Testing providers: {', '.join(providers_to_test)}")
 

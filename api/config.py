@@ -2,7 +2,8 @@
 """
 API Configuration for Z-Beam Generator
 
-Standardized configuration management for DeepSeek API integration.
+Standardized configuration management for API integration.
+Configuration is centralized in run.py to avoid circular imports.
 """
 
 import os
@@ -21,55 +22,32 @@ except ImportError:
     pass
 
 
-# API Providers Configuration
-# Moved here to break circular import between run.py and utils/environment_checker.py
-API_PROVIDERS = {
-    "deepseek": {
-        "name": "DeepSeek",
-        "env_var": "DEEPSEEK_API_KEY",
-        "env_key": "DEEPSEEK_API_KEY",  # For backward compatibility
-        "base_url": "https://api.deepseek.com",
-        "model": "deepseek-chat",
-        "default_model": "deepseek-chat",
-        # Required operational parameters for fail-fast architecture
-        "max_tokens": 2000,  # RESTORED: Correct value from working commit
-        "temperature": 0.9,  # RESTORED: Correct value from working commit
-        "timeout_connect": 10,  # RESTORED: Correct value from working commit
-        "timeout_read": 45,  # RESTORED: Correct value from working commit
-        "max_retries": 3,  # INCREASED: Better for network issues
-        "retry_delay": 1.0,  # INCREASED: Give network time to recover
-    },
-    "grok": {
-        "name": "Grok",
-        "env_var": "GROK_API_KEY",
-        "env_key": "GROK_API_KEY",  # For backward compatibility
-        "base_url": "https://api.x.ai/v1",
-        "model": "grok-beta",
-        "default_model": "grok-beta",
-        # Required operational parameters for fail-fast architecture
-        "max_tokens": 2000,  # RESTORED: Consistent with working values
-        "temperature": 0.9,  # RESTORED: Consistent with working values
-        "timeout_connect": 10,  # RESTORED: Consistent with working values
-        "timeout_read": 45,  # RESTORED: Consistent with working values
-        "max_retries": 3,  # INCREASED: Better for network issues
-        "retry_delay": 1.0,  # INCREASED: Give network time to recover
-    },
-    "winston": {
-        "name": "Winston AI Detection",
-        "env_var": "WINSTON_API_KEY",
-        "env_key": "WINSTON_API_KEY",  # For backward compatibility
-        "base_url": "https://api.gowinston.ai/v1",
-        "model": "winston-ai-detector",
-        "default_model": "winston-ai-detector",
-        # Required operational parameters for fail-fast architecture
-        "max_tokens": 1000,  # RESTORED: Appropriate for detection API
-        "temperature": 0.1,  # RESTORED: Low temperature for consistent detection
-        "timeout_connect": 10,  # RESTORED: Consistent with working values
-        "timeout_read": 45,  # RESTORED: Consistent with working values
-        "max_retries": 3,  # INCREASED: Better for network issues
-        "retry_delay": 1.0,  # INCREASED: Give network time to recover
-    },
-}
+def get_api_providers():
+    """
+    Get API provider configurations from centralized location.
+    
+    Returns:
+        dict: API provider configurations from run.py
+    """
+    try:
+        from run import API_PROVIDERS
+        return API_PROVIDERS
+    except ImportError:
+        # Fallback minimal configuration if run.py not available
+        return {
+            "deepseek": {
+                "name": "DeepSeek",
+                "env_var": "DEEPSEEK_API_KEY",
+                "base_url": "https://api.deepseek.com",
+                "model": "deepseek-chat",
+                "max_tokens": 800,
+                "temperature": 0.7,
+                "timeout_connect": 10,
+                "timeout_read": 45,
+                "max_retries": 3,
+                "retry_delay": 1.0,
+            }
+        }
 
 
 @dataclass
@@ -111,7 +89,8 @@ class ConfigManager:
 
 def get_default_config():
     """Get default configuration for DeepSeek API client"""
-    return API_PROVIDERS["deepseek"]
+    api_providers = get_api_providers()
+    return api_providers["deepseek"]
 
     @staticmethod
     def validate_config(config: APIConfig) -> bool:

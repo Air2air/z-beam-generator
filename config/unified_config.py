@@ -11,7 +11,21 @@ from pathlib import Path
 from typing import Any, Dict, Optional
 
 # Import existing configurations
-from api.config import API_PROVIDERS
+def get_api_providers():
+    """Get API provider configurations from centralized location"""
+    try:
+        from run import API_PROVIDERS
+        return API_PROVIDERS
+    except ImportError:
+        # Fallback minimal configuration if run.py not available
+        return {
+            "deepseek": {
+                "name": "DeepSeek",
+                "env_var": "DEEPSEEK_API_KEY",
+                "base_url": "https://api.deepseek.com",
+                "model": "deepseek-chat",
+            }
+        }
 
 
 class UnifiedConfigManager:
@@ -50,8 +64,9 @@ class UnifiedConfigManager:
 
     def _load_api_config(self) -> Dict[str, Any]:
         """Load API provider configuration"""
+        api_providers = get_api_providers()
         api_config = {
-            "providers": API_PROVIDERS,
+            "providers": api_providers,
             "default_provider": "deepseek",
             "timeout_connect": int(os.getenv("API_TIMEOUT_CONNECT", "10")),
             "timeout_read": int(os.getenv("API_TIMEOUT_READ", "45")),
@@ -60,7 +75,7 @@ class UnifiedConfigManager:
         }
 
         # Validate API keys
-        for provider_id, config in API_PROVIDERS.items():
+        for provider_id, config in api_providers.items():
             api_key = os.getenv(config["env_var"])
             api_config["providers"][provider_id]["configured"] = bool(api_key)
 

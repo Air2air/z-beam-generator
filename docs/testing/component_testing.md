@@ -458,6 +458,160 @@ class TestFileOperations:
             assert os.path.exists(test_file)
 ```
 
+## 🏷️ Version Information Testing Patterns
+
+### **Version Integration Testing**
+Tests for version information integration across all components using the centralized versioning system.
+
+```python
+class TestVersionIntegration(unittest.TestCase):
+    """Test version information integration patterns"""
+
+    def setUp(self):
+        self.generator = FrontmatterComponentGenerator()
+
+    @patch('versioning.stamp_component_output')
+    def test_version_stamping_integration(self, mock_stamp):
+        """Test that version information is properly integrated"""
+        # Mock versioning system
+        test_content = """---
+name: "Test Material"
+category: "metal"
+---"""
+        
+        versioned_content = test_content + """
+
+# Version Information
+# Generated: 2025-09-10T13:23:40.671545
+# Material: Test Material
+# Component: frontmatter
+# Generator: Z-Beam v2.1.0
+
+---
+Version Log - Generated: 2025-09-10T13:23:40.671714
+Material: Test Material
+Component: frontmatter
+Generator: Z-Beam v2.1.0
+---"""
+        mock_stamp.return_value = versioned_content
+
+        # Test versioning integration
+        from versioning import stamp_component_output
+        result = stamp_component_output("frontmatter", test_content)
+        
+        # Verify version sections exist
+        self.assertIn("# Version Information", result)
+        self.assertIn("Version Log - Generated:", result)
+        self.assertIn("Component: frontmatter", result)
+        mock_stamp.assert_called_once_with("frontmatter", test_content)
+
+    def test_version_section_structure(self):
+        """Test version information section structure"""
+        sample_content = '''---
+name: "Test Material"
+---
+
+# Version Information
+# Generated: 2025-09-10T13:23:40.671545
+# Material: Test Material
+
+---
+Version Log - Generated: 2025-09-10T13:23:40.671714
+Material: Test Material
+Component: frontmatter
+---'''
+        
+        # Parse and validate structure
+        lines = sample_content.split('\n')
+        yaml_markers = [i for i, line in enumerate(lines) if line.strip() == '---']
+        version_comments = [i for i, line in enumerate(lines) if '# Version Information' in line]
+        version_logs = [i for i, line in enumerate(lines) if 'Version Log - Generated:' in line]
+        
+        # Verify proper structure
+        self.assertGreaterEqual(len(yaml_markers), 3)  # YAML start, end, version log end
+        self.assertEqual(len(version_comments), 1)      # One version comment section
+        self.assertEqual(len(version_logs), 1)          # One version log section
+
+    def test_version_information_preservation(self):
+        """Test that post-processing preserves version information"""
+        from components.frontmatter.post_processor import post_process_frontmatter
+        
+        # Content with potential formatting issues
+        malformed_content = """---
+name: "Test Material"
+description: "Test
+---
+
+# Version Information
+# Generated: 2025-09-10T13:23:40.671545
+
+---
+Version Log - Generated: 2025-09-10T13:23:40.671714
+Material: Test Material
+---"""
+        
+        # Post-process and verify preservation
+        processed = post_process_frontmatter(malformed_content, "Test Material")
+        
+        self.assertIn("# Version Information", processed)
+        self.assertIn("Version Log - Generated:", processed)
+        self.assertIn("Material: Test Material", processed)
+
+    def test_no_version_duplication_in_template(self):
+        """Test that templates don't contain version information"""
+        # Version info should be handled by external versioning system
+        generator = FrontmatterComponentGenerator()
+        
+        if hasattr(generator, 'prompt_config') and generator.prompt_config:
+            template = generator.prompt_config.get('template', '')
+            
+            # Template should not contain version fields
+            self.assertNotIn("versionInfo:", template)
+            self.assertNotIn("# Version Information", template)
+            self.assertNotIn("Version Log", template)
+```
+
+### **Version Testing Guidelines**
+
+#### **Required Test Cases**
+1. **Version Integration**: Test versioning system integration
+2. **Section Structure**: Validate version section format and placement
+3. **Content Preservation**: Ensure version info survives post-processing
+4. **Template Separation**: Verify version info not in templates
+5. **Format Consistency**: Test consistent format across components
+
+#### **Testing Patterns**
+```python
+# Pattern 1: Mock versioning system
+@patch('versioning.stamp_component_output')
+def test_version_integration(self, mock_stamp):
+    mock_stamp.return_value = content_with_version
+    # Test component generation
+    result = component.generate(...)
+    mock_stamp.assert_called_once()
+
+# Pattern 2: Parse version sections
+def test_version_structure(self):
+    lines = content.split('\n')
+    yaml_markers = [i for i, line in enumerate(lines) if line.strip() == '---']
+    version_sections = [i for i, line in enumerate(lines) if '# Version' in line]
+    # Validate structure
+
+# Pattern 3: Post-processor preservation
+def test_version_preservation(self):
+    processed = post_process_component(malformed_content)
+    self.assertIn("# Version Information", processed)
+    self.assertIn("Version Log", processed)
+```
+
+#### **Version Testing Checklist**
+- ✅ Version stamping integration works
+- ✅ Version sections have proper structure  
+- ✅ Version info preserved during post-processing
+- ✅ No version duplication in templates
+- ✅ Consistent format across all components
+- ✅ Version information parsing works correctly
+
 ## 📊 Performance Testing Patterns
 
 ### **Generation Speed Testing**
