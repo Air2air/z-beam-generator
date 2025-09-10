@@ -1,13 +1,13 @@
-**Yi-Chun Lin, Ph.D.**
-*Laser Materials Processing*
-*Taiwan*
+**Ikmanda Roswati, Ph.D.**
+*Ultrafast Laser Physics and Material Interactions*
+*Indonesia*
 
-![Yi-Chun Lin](/images/author/yi-chun-lin.jpg)
+![Ikmanda Roswati](/images/author/ikmanda-roswati.jpg)
 
 Expert analysis of Steel laser cleaning applications, providing technical insights based on extensive research in materials processing and laser technology.
 
 ---
-Version Log - Generated: 2025-09-08T15:22:00.317059
+Version Log - Generated: 2025-09-08T21:26:26.815962
 Material: Steel
 Component: author
 Generator: Z-Beam v2.1.0

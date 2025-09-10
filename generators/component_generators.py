@@ -344,7 +344,7 @@ class ComponentGeneratorFactory:
 
                 return FrontmatterComponentGenerator()
             elif component_type == "bullets":
-                from generators.bullets_generator import BulletsComponentGenerator
+                from components.bullets.generator import BulletsComponentGenerator
 
                 return BulletsComponentGenerator()
             elif component_type == "author":

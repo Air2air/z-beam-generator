@@ -10,56 +10,51 @@ import random
 from pathlib import Path
 from typing import Any, Dict, Optional
 
-from generators.component_generators import APIComponentGenerator
-from utils.core.component_base import (
-    ComponentResult,
-    handle_generation_error,
-    validate_required_fields,
-)
+from generators.component_generators import StaticComponentGenerator
+from versioning import stamp_component_output
 
 
-class CaptionComponentGenerator(APIComponentGenerator):
+class CaptionComponentGenerator(StaticComponentGenerator):
     """Generator for caption components using material data"""
 
     def __init__(self):
         super().__init__("caption")
         self.prompt_file = Path(__file__).parent / "prompt.yaml"
 
-    def generate(
+    def _generate_static_content(
         self,
         material_name: str,
         material_data: Dict,
-        api_client=None,
         author_info: Optional[Dict] = None,
         frontmatter_data: Optional[Dict] = None,
         schema_fields: Optional[Dict] = None,
-    ) -> ComponentResult:
+    ) -> str:
         """Generate caption component content"""
         try:
             # Validate required data
             if not material_name:
-                return self.create_error_result("Material name is required")
+                raise ValueError("Material name is required")
 
             # Generate caption content
             content = self._create_caption_content(material_name, material_data)
 
-            return ComponentResult(
-                component_type="caption", content=content, success=True
-            )
+            # Apply centralized version stamping
+            return stamp_component_output("caption", content)
 
         except Exception as e:
-            return handle_generation_error("caption", e, "content generation")
+            raise Exception(f"Error generating caption content: {e}")
 
     def _create_caption_content(self, material_name: str, material_data: Dict) -> str:
-        """Create caption content with before/after format"""
+        """Create caption content with before/after format matching example"""
         # Get contamination types and laser parameters
         contamination = self._get_random_contamination()
         laser_params = self._get_random_laser_params()
+        result_desc = self._get_random_result()
 
-        # Create the two-line caption format
+        # Create the two-line caption format matching example structure
         line1 = f"**{material_name}** surface (left) before cleaning, showing {contamination}."
 
-        line2 = f"**After laser cleaning** (right) at {laser_params['wavelength']} nm, {laser_params['power']} W, {laser_params['pulse_duration']} ns pulse duration, and {laser_params['spot_size']} µm spot size, achieving {self._get_random_result()}."
+        line2 = f"**After laser cleaning** (right) After laser cleaning at {laser_params['wavelength']} nm, {laser_params['power']} W, {laser_params['pulse_duration']} ns pulse duration, and {laser_params['spot_size']} µm spot size, achieving {result_desc}, showing {self._get_random_showing()}."
 
         return f"{line1}\n\n{line2}"
 
@@ -94,7 +89,7 @@ class CaptionComponentGenerator(APIComponentGenerator):
     def _get_random_result(self) -> str:
         """Get random result description"""
         results = [
-            "complete contaminant removal with minimal substrate modification",
+            "contaminant removal with minimal substrate modification",
             "precise contamination removal with controlled ablation",
             "effective surface cleaning with maintained material integrity",
             "thorough contaminant elimination with optimized parameters",
@@ -105,14 +100,21 @@ class CaptionComponentGenerator(APIComponentGenerator):
         ]
         return random.choice(results)
 
-    def create_error_result(self, error_message: str) -> ComponentResult:
-        """Create a ComponentResult for error cases"""
-        return ComponentResult(
-            component_type="caption",
-            content="",
-            success=False,
-            error_message=error_message,
-        )
+    def _get_random_showing(self) -> str:
+        """Get random showing description for the second line"""
+        showings = [
+            "complete contaminant removal",
+            "effective surface restoration",
+            "successful material cleaning",
+            "thorough surface decontamination",
+            "precise contaminant elimination",
+            "comprehensive cleaning results",
+            "optimal surface treatment",
+            "excellent cleaning performance",
+        ]
+        return random.choice(showings)
+
+
 
 
 # Legacy compatibility
@@ -127,12 +129,13 @@ class CaptionGenerator:
         if material_data is None:
             material_data = {"name": material}
 
-        result = self.generator.generate(material, material_data)
-
-        if result.success:
-            return result.content
-        else:
-            return f"Error generating caption content: {result.error_message}"
+        try:
+            content = self.generator._generate_static_content(
+                material, material_data
+            )
+            return content
+        except Exception as e:
+            return f"Error generating caption content: {e}"
 
     def get_component_info(self) -> Dict[str, Any]:
         """Get component information"""

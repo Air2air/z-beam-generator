@@ -25,10 +25,8 @@ template: |
   - For Tensile Strength: look in properties or technicalSpecifications, or skip if not available
 
   FALLBACK BEHAVIOR:
-  If frontmatter is not available, generate basic properties based on material knowledge:
-  - Research typical values for {subject}
-  - Use standard chemical formulas and symbols
-  - Include only the 6 properties listed above
+  If frontmatter is not available, FAIL FAST - do not generate fallback content.
+  Raise an error immediately rather than using default values or material knowledge.
 
   VALUE FORMATTING RULES:
   - Limit all values to maximum 8 characters for clean display

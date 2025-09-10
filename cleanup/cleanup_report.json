@@ -1,283 +1,11 @@
 {
   "dry_run": true,
-  "timestamp": "2025-09-05T20:31:29.732292",
+  "timestamp": "2025-09-09T16:49:14.886091",
   "dead_files": [],
   "unused_component_files": [
     [
-      "components/caption/validator.py",
-      "Unused: component 'caption' not in configuration"
-    ],
-    [
-      "components/caption/mock_generator.py",
-      "Unused: component 'caption' not in configuration"
-    ],
-    [
-      "components/caption/post_processor.py",
-      "Unused: component 'caption' not in configuration"
-    ],
-    [
-      "components/caption/__init__.py",
-      "Unused: component 'caption' not in configuration"
-    ],
-    [
-      "components/caption/prompt.yaml",
-      "Unused: component 'caption' not in configuration"
-    ],
-    [
-      "components/caption/README.md",
-      "Unused: component 'caption' not in configuration"
-    ],
-    [
-      "components/caption/generator.py",
-      "Unused: component 'caption' not in configuration"
-    ],
-    [
-      "components/caption/example_caption.md",
-      "Unused: component 'caption' not in configuration"
-    ],
-    [
-      "components/caption/__pycache__/mock_generator.cpython-312.pyc",
-      "Unused: component 'caption' not in configuration"
-    ],
-    [
-      "components/caption/__pycache__/generator.cpython-312.pyc",
-      "Unused: component 'caption' not in configuration"
-    ],
-    [
-      "components/caption/__pycache__/__init__.cpython-312.pyc",
-      "Unused: component 'caption' not in configuration"
-    ],
-    [
-      "components/caption/testing/test_caption.py",
-      "Unused: component 'caption' not in configuration"
-    ],
-    [
-      "components/caption/testing/__pycache__/test_caption.cpython-312-pytest-8.4.1.pyc",
-      "Unused: component 'caption' not in configuration"
-    ],
-    [
-      "components/propertiestable/validator.py",
-      "Unused: component 'propertiestable' not in configuration"
-    ],
-    [
-      "components/propertiestable/mock_generator.py",
-      "Unused: component 'propertiestable' not in configuration"
-    ],
-    [
-      "components/propertiestable/post_processor.py",
-      "Unused: component 'propertiestable' not in configuration"
-    ],
-    [
-      "components/propertiestable/__init__.py",
-      "Unused: component 'propertiestable' not in configuration"
-    ],
-    [
-      "components/propertiestable/prompt.yaml",
-      "Unused: component 'propertiestable' not in configuration"
-    ],
-    [
-      "components/propertiestable/README.md",
-      "Unused: component 'propertiestable' not in configuration"
-    ],
-    [
-      "components/propertiestable/example_propertiestable.md",
-      "Unused: component 'propertiestable' not in configuration"
-    ],
-    [
-      "components/propertiestable/generator.py",
-      "Unused: component 'propertiestable' not in configuration"
-    ],
-    [
-      "components/propertiestable/__pycache__/mock_generator.cpython-312.pyc",
-      "Unused: component 'propertiestable' not in configuration"
-    ],
-    [
-      "components/propertiestable/__pycache__/generator.cpython-312.pyc",
-      "Unused: component 'propertiestable' not in configuration"
-    ],
-    [
-      "components/propertiestable/__pycache__/__init__.cpython-312.pyc",
-      "Unused: component 'propertiestable' not in configuration"
-    ],
-    [
-      "components/propertiestable/testing/test_propertiestable.py",
-      "Unused: component 'propertiestable' not in configuration"
-    ],
-    [
-      "components/propertiestable/testing/__pycache__/test_propertiestable.cpython-312-pytest-8.4.1.pyc",
-      "Unused: component 'propertiestable' not in configuration"
-    ],
-    [
       "components/__pycache__/__init__.cpython-312.pyc",
       "Unused: component '__pycache__' not in configuration"
-    ],
-    [
-      "components/tags/validator.py",
-      "Unused: component 'tags' not in configuration"
-    ],
-    [
-      "components/tags/mock_generator.py",
-      "Unused: component 'tags' not in configuration"
-    ],
-    [
-      "components/tags/post_processor.py",
-      "Unused: component 'tags' not in configuration"
-    ],
-    [
-      "components/tags/prompt.yaml",
-      "Unused: component 'tags' not in configuration"
-    ],
-    [
-      "components/tags/test_tags_calculator.py",
-      "Unused: component 'tags' not in configuration"
-    ],
-    [
-      "components/tags/generator.py",
-      "Unused: component 'tags' not in configuration"
-    ],
-    [
-      "components/tags/calculator.py",
-      "Unused: component 'tags' not in configuration"
-    ],
-    [
-      "components/tags/TESTING_COMPLETE.md",
-      "Unused: component 'tags' not in configuration"
-    ],
-    [
-      "components/tags/example_tags.md",
-      "Unused: component 'tags' not in configuration"
-    ],
-    [
-      "components/tags/__pycache__/generator.cpython-312.pyc",
-      "Unused: component 'tags' not in configuration"
-    ],
-    [
-      "components/table/validator.py",
-      "Unused: component 'table' not in configuration"
-    ],
-    [
-      "components/table/mock_generator.py",
-      "Unused: component 'table' not in configuration"
-    ],
-    [
-      "components/table/post_processor.py",
-      "Unused: component 'table' not in configuration"
-    ],
-    [
-      "components/table/__init__.py",
-      "Unused: component 'table' not in configuration"
-    ],
-    [
-      "components/table/prompt.yaml",
-      "Unused: component 'table' not in configuration"
-    ],
-    [
-      "components/table/README.md",
-      "Unused: component 'table' not in configuration"
-    ],
-    [
-      "components/table/generator.py",
-      "Unused: component 'table' not in configuration"
-    ],
-    [
-      "components/table/example_table.md",
-      "Unused: component 'table' not in configuration"
-    ],
-    [
-      "components/table/__pycache__/mock_generator.cpython-312.pyc",
-      "Unused: component 'table' not in configuration"
-    ],
-    [
-      "components/table/__pycache__/generator.cpython-312.pyc",
-      "Unused: component 'table' not in configuration"
-    ],
-    [
-      "components/table/__pycache__/__init__.cpython-312.pyc",
-      "Unused: component 'table' not in configuration"
-    ],
-    [
-      "components/table/testing/test_table.py",
-      "Unused: component 'table' not in configuration"
-    ],
-    [
-      "components/table/testing/__pycache__/test_table.cpython-312-pytest-8.4.1.pyc",
-      "Unused: component 'table' not in configuration"
-    ],
-    [
-      "components/metatags/validator.py",
-      "Unused: component 'metatags' not in configuration"
-    ],
-    [
-      "components/metatags/mock_generator.py",
-      "Unused: component 'metatags' not in configuration"
-    ],
-    [
-      "components/metatags/test_extended.py",
-      "Unused: component 'metatags' not in configuration"
-    ],
-    [
-      "components/metatags/test_metatags_calculator.py",
-      "Unused: component 'metatags' not in configuration"
-    ],
-    [
-      "components/metatags/post_processor.py",
-      "Unused: component 'metatags' not in configuration"
-    ],
-    [
-      "components/metatags/aluminum_metatags_output.md",
-      "Unused: component 'metatags' not in configuration"
-    ],
-    [
-      "components/metatags/OPTIMIZATION_GUIDE.md",
-      "Unused: component 'metatags' not in configuration"
-    ],
-    [
-      "components/metatags/TESTING_COMPREHENSIVE.md",
-      "Unused: component 'metatags' not in configuration"
-    ],
-    [
-      "components/metatags/__init__.py",
-      "Unused: component 'metatags' not in configuration"
-    ],
-    [
-      "components/metatags/prompt.yaml",
-      "Unused: component 'metatags' not in configuration"
-    ],
-    [
-      "components/metatags/example_metatags.md",
-      "Unused: component 'metatags' not in configuration"
-    ],
-    [
-      "components/metatags/generator.py",
-      "Unused: component 'metatags' not in configuration"
-    ],
-    [
-      "components/metatags/calculator.py",
-      "Unused: component 'metatags' not in configuration"
-    ],
-    [
-      "components/metatags/OPTIMIZATION_COMPLETE.md",
-      "Unused: component 'metatags' not in configuration"
-    ],
-    [
-      "components/metatags/aluminum_metatags_optimized.md",
-      "Unused: component 'metatags' not in configuration"
-    ],
-    [
-      "components/metatags/__pycache__/calculator.cpython-312.pyc",
-      "Unused: component 'metatags' not in configuration"
-    ],
-    [
-      "components/metatags/__pycache__/generator.cpython-312.pyc",
-      "Unused: component 'metatags' not in configuration"
-    ],
-    [
-      "components/metatags/__pycache__/test_metatags_calculator.cpython-312-pytest-8.4.1.pyc",
-      "Unused: component 'metatags' not in configuration"
-    ],
-    [
-      "components/metatags/__pycache__/__init__.cpython-312.pyc",
-      "Unused: component 'metatags' not in configuration"
     ],
     [
       "components/badgesymbol/validator.py",
@@ -318,113 +46,24 @@
     [
       "components/badgesymbol/__pycache__/__init__.cpython-312.pyc",
       "Unused: component 'badgesymbol' not in configuration"
-    ],
-    [
-      "components/jsonld/validator.py",
-      "Unused: component 'jsonld' not in configuration"
-    ],
-    [
-      "components/jsonld/mock_generator.py",
-      "Unused: component 'jsonld' not in configuration"
-    ],
-    [
-      "components/jsonld/test_output.json",
-      "Unused: component 'jsonld' not in configuration"
-    ],
-    [
-      "components/jsonld/example_jsonld.md",
-      "Unused: component 'jsonld' not in configuration"
-    ],
-    [
-      "components/jsonld/post_processor.py",
-      "Unused: component 'jsonld' not in configuration"
-    ],
-    [
-      "components/jsonld/aluminum_jsonld_output.md",
-      "Unused: component 'jsonld' not in configuration"
-    ],
-    [
-      "components/jsonld/QUICK_START_GUIDE.md",
-      "Unused: component 'jsonld' not in configuration"
-    ],
-    [
-      "components/jsonld/OPTIMIZATION_GUIDE.md",
-      "Unused: component 'jsonld' not in configuration"
-    ],
-    [
-      "components/jsonld/prompt.yaml",
-      "Unused: component 'jsonld' not in configuration"
-    ],
-    [
-      "components/jsonld/test_calculator.py",
-      "Unused: component 'jsonld' not in configuration"
-    ],
-    [
-      "components/jsonld/OPTIMIZATION_METHODOLOGY.md",
-      "Unused: component 'jsonld' not in configuration"
-    ],
-    [
-      "components/jsonld/README.md",
-      "Unused: component 'jsonld' not in configuration"
-    ],
-    [
-      "components/jsonld/generator.py",
-      "Unused: component 'jsonld' not in configuration"
-    ],
-    [
-      "components/jsonld/OPTIMIZATION_SUMMARY.md",
-      "Unused: component 'jsonld' not in configuration"
-    ],
-    [
-      "components/jsonld/calculator.py",
-      "Unused: component 'jsonld' not in configuration"
-    ],
-    [
-      "components/jsonld/COMPONENT_OPTIMIZATION_BLUEPRINT.md",
-      "Unused: component 'jsonld' not in configuration"
-    ],
-    [
-      "components/jsonld/FOLDER_SUMMARY.md",
-      "Unused: component 'jsonld' not in configuration"
-    ],
-    [
-      "components/jsonld/CONSOLIDATION_SUMMARY.md",
-      "Unused: component 'jsonld' not in configuration"
-    ],
-    [
-      "components/jsonld/CALCULATOR_USAGE.md",
-      "Unused: component 'jsonld' not in configuration"
-    ],
-    [
-      "components/jsonld/BEST_PRACTICES.md",
-      "Unused: component 'jsonld' not in configuration"
-    ],
-    [
-      "components/jsonld/__pycache__/generator.cpython-312.pyc",
-      "Unused: component 'jsonld' not in configuration"
-    ],
-    [
-      "components/jsonld/__pycache__/test_calculator.cpython-312-pytest-8.4.1.pyc",
-      "Unused: component 'jsonld' not in configuration"
     ]
   ],
-  "temp_files": [
-    [
-      "run.py.backup",
-      "Temporary file matching pattern: *.backup"
-    ],
-    [
-      "content/components/frontmatter/copper-laser-cleaning.md.backup",
-      "Temporary file matching pattern: *.backup"
-    ],
-    [
-      "content/components/text/copper-laser-cleaning.md.backup",
-      "Temporary file matching pattern: *.backup"
-    ]
-  ],
+  "temp_files": [],
   "empty_dirs": [
     [
-      "components/badgesymbol/testing/__pycache__",
+      "test_cache",
+      "Empty directory"
+    ],
+    [
+      "content/components/jsonld",
+      "Empty directory"
+    ],
+    [
+      "components/text/prompts/personas",
+      "Empty directory"
+    ],
+    [
+      "components/text/prompts/formatting",
       "Empty directory"
     ]
   ],
@@ -432,15 +71,7 @@
   "broken_links": [],
   "misplaced_test_files": [
     [
-      "test_content_generation.py",
-      "Test file/directory in root - should be in tests/"
-    ],
-    [
-      "test_optimization_validation.py",
-      "Test file/directory in root - should be in tests/"
-    ],
-    [
-      "test_iterative_improvement.py",
+      "test_error_workflow_manager.py",
       "Test file/directory in root - should be in tests/"
     ]
   ],

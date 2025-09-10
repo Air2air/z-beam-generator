@@ -15,6 +15,7 @@ from generators.component_generators import (
     ComponentResult,
     FrontmatterComponentGenerator,
 )
+from versioning import stamp_component_output
 
 
 class PropertiestableComponentGenerator(FrontmatterComponentGenerator):
@@ -26,7 +27,11 @@ class PropertiestableComponentGenerator(FrontmatterComponentGenerator):
     def _extract_from_frontmatter(
         self, material_name: str, frontmatter_data: Dict
     ) -> str:
-        """Generate properties table component content from frontmatter data using material schema"""
+        """Generate properties table component content from frontmatter data using material schema - FAIL FAST"""
+
+        # FAIL FAST: Require frontmatter data
+        if not frontmatter_data:
+            raise ValueError(f"Frontmatter data is required for propertiestable generation for {material_name}")
 
         # Load schema to understand the expected structure
         try:
@@ -36,6 +41,7 @@ class PropertiestableComponentGenerator(FrontmatterComponentGenerator):
             if schema_path.exists():
                 with open(schema_path, "r", encoding="utf-8") as f:
                     schema = json.load(f)
+                    # Fix: Get properties from the correct schema path
                     material_properties = (
                         schema.get("materialProfile", {})
                         .get("profile", {})
@@ -59,10 +65,10 @@ class PropertiestableComponentGenerator(FrontmatterComponentGenerator):
         except Exception:
             example_format = None
 
-        # Build the properties table dynamically
+        # Build the properties table dynamically - NO FALLBACKS
         table = "| Property | Value |\n|----------|-------|\n"
 
-        # Use schema-defined properties or fallback to discovered properties
+        # Use schema-defined properties or discovered properties from frontmatter
         properties_to_extract = []
 
         # Priority 1: Use schema-defined properties
@@ -71,26 +77,43 @@ class PropertiestableComponentGenerator(FrontmatterComponentGenerator):
                 display_name = prop_info.get(
                     "description", prop_key.replace("_", " ").title()
                 )
-                properties_to_extract.append((prop_key, display_name))
+                # Fix: Add full path for properties that should be under 'properties' key
+                if prop_key in ["density", "meltingPoint", "thermalConductivity", "laserType", "wavelength", "fluenceRange"]:
+                    full_key = f"properties.{prop_key}"
+                elif prop_key == "chemicalFormula":
+                    full_key = "chemicalProperties.formula"
+                else:
+                    full_key = prop_key
+                properties_to_extract.append((full_key, display_name))
 
         # Priority 2: Use example format if available
         elif example_format:
             properties_to_extract = example_format
 
-        # Priority 3: Fallback to discovered properties from frontmatter
+        # Priority 3: Discover properties from frontmatter structure
         else:
-            # Discover properties from frontmatter structure
             properties_to_extract = self._discover_properties_from_frontmatter(
                 frontmatter_data
             )
 
+        # FAIL FAST: Require at least some properties to extract
+        if not properties_to_extract:
+            raise ValueError(f"No properties found in frontmatter for propertiestable generation for {material_name}")
+
         # Extract values for each property
+        extracted_count = 0
         for prop_key, display_name in properties_to_extract:
             value = self._get_property_value(frontmatter_data, prop_key)
             if value and value != "N/A":
                 table += f"| {display_name} | {value} |\n"
+                extracted_count += 1
 
-        return table
+        # FAIL FAST: Require at least some valid properties
+        if extracted_count == 0:
+            raise ValueError(f"No valid property values found in frontmatter for propertiestable generation for {material_name}")
+
+        # Apply centralized version stamping
+        return stamp_component_output("propertiestable", table)
 
     def _parse_example_format(self, example_content: str) -> List[tuple]:
         """Parse example file to extract property format"""
@@ -200,67 +223,74 @@ class PropertiesTableGenerator:
     def generate_content(
         self, material_name: str, frontmatter_data: Optional[Dict[str, Any]] = None
     ) -> str:
-        """Generate properties table from frontmatter data"""
+        """Generate properties table from frontmatter data - FAIL FAST"""
         if not frontmatter_data:
             raise ValueError(
                 f"Frontmatter data is required for properties table generation for {material_name}"
             )
 
-        # Extract values with 8-character limit
+        # Extract values with 8-character limit - NO FALLBACKS
         formula = self._get_field(
             frontmatter_data,
             ["chemicalProperties.formula", "properties.chemicalFormula", "formula"],
-            "N/A",
+            None,  # No default - fail fast
         )
+        if formula is None:
+            raise ValueError(f"Chemical formula not found in frontmatter for {material_name}")
+
         symbol = self._get_field(
             frontmatter_data,
             ["chemicalProperties.symbol", "symbol"],
-            material_name[:3].upper(),
+            None,  # No default - fail fast
         )
-        category = self._get_field(frontmatter_data, ["category"], "Material").title()
+        if symbol is None:
+            symbol = material_name[:3].upper()  # Only fallback for symbol
+
+        category = self._get_field(frontmatter_data, ["category"], None)
+        if category is None:
+            raise ValueError(f"Category not found in frontmatter for {material_name}")
+        category = category.title()
+
         density = self._get_field(
             frontmatter_data,
             ["properties.density", "chemicalProperties.density", "density"],
-            "N/A",
+            None,  # No default - fail fast
         )
+        if density is None:
+            raise ValueError(f"Density not found in frontmatter for {material_name}")
+
         tensile = self._get_field(
             frontmatter_data,
             ["properties.tensileStrength", "technicalSpecifications.tensileStrength"],
-            "N/A",
+            None,  # No default - fail fast
         )
+
         thermal = self._get_field(
             frontmatter_data,
             ["properties.thermalConductivity", "thermalProperties.conductivity"],
-            "N/A",
+            None,  # No default - fail fast
         )
-
-        # Extract min/max values for context (available for future enhancements)
-        # density_min = self._get_field(frontmatter_data, ['properties.densityMin'], '')
-        # density_max = self._get_field(frontmatter_data, ['properties.densityMax'], '')
-        # tensile_min = self._get_field(frontmatter_data, ['properties.tensileMin'], '')
-        # tensile_max = self._get_field(frontmatter_data, ['properties.tensileMax'], '')
-        # thermal_min = self._get_field(frontmatter_data, ['properties.thermalMin'], '')
-        # thermal_max = self._get_field(frontmatter_data, ['properties.thermalMax'], '')
 
         # Format values to 8 chars max
         formula = self._format_value(str(formula))
         symbol = self._format_value(str(symbol))
         category = self._format_value(self._abbreviate_category(str(category)))
         density = self._format_value(self._abbreviate_units(str(density)))
-        tensile = self._format_value(self._abbreviate_units(str(tensile)))
-        thermal = self._format_value(self._abbreviate_units(str(thermal)))
+        tensile = self._format_value(self._abbreviate_units(str(tensile))) if tensile else ""
+        thermal = self._format_value(self._abbreviate_units(str(thermal))) if thermal else ""
 
-        return f"""| Property | Value |
-|----------|-------|
-| Formula | {formula} |
-| Symbol | {symbol} |
-| Category | {category} |
-| Density | {density} |
-| Tensile | {tensile} |
-| Thermal | {thermal} |"""
+        # Build table with only available properties
+        table_lines = ["| Property | Value |", "|----------|-------|", f"| Formula | {formula} |", f"| Symbol | {symbol} |", f"| Category | {category} |", f"| Density | {density} |"]
 
-    def _get_field(self, data: Dict[str, Any], paths: list, default: str) -> str:
-        """Get field value from nested dict using dot notation paths"""
+        if tensile:
+            table_lines.append(f"| Tensile | {tensile} |")
+        if thermal:
+            table_lines.append(f"| Thermal | {thermal} |")
+
+        return "\n".join(table_lines)
+
+    def _get_field(self, data: Dict[str, Any], paths: list, default: Any = None) -> Any:
+        """Get field value from nested dict using dot notation paths - FAIL FAST"""
         for path in paths:
             value = data
             for key in path.split("."):
@@ -271,6 +301,7 @@ class PropertiesTableGenerator:
                     break
             if value is not None:
                 return str(value)
+        # FAIL FAST: Return None instead of default if not found
         return default
 
     def _format_value(self, value: str) -> str:

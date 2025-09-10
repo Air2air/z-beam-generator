@@ -14,7 +14,7 @@ from typing import Any, Dict, List
 # Import API providers and COMPONENT_CONFIG directly to avoid circular imports
 from api.config import API_PROVIDERS
 from api.env_loader import EnvLoader
-from cli.component_config import COMPONENT_CONFIG
+from run import COMPONENT_CONFIG
 
 
 def check_environment() -> Dict[str, Any]:

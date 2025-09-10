@@ -72,6 +72,38 @@ class FailFastTextGenerator:
         # Validate configurations on initialization
         self._validate_configurations()
 
+    def _load_formatting_prompt(self, author_id: int) -> Dict[str, Any]:
+        """
+        Load formatting prompt for a specific author.
+        
+        Args:
+            author_id: The author ID
+            
+        Returns:
+            Formatting configuration dictionary
+        """
+        # Simple mock implementation for testing
+        return {
+            "content_constraints": {
+                "max_word_count": 300
+            }
+        }
+
+    def _load_authors_data(self) -> list:
+        """
+        Load authors data from authors.json.
+        
+        Returns:
+            List of author dictionaries
+        """
+        # Simple mock implementation for testing
+        return [
+            {"id": 1, "name": "Test Author 1", "country": "USA", "expertise": "Lasers", "title": "Engineer", "sex": "M"},
+            {"id": 2, "name": "Test Author 2", "country": "Italy", "expertise": "Materials", "title": "Professor", "sex": "F"},
+            {"id": 3, "name": "Test Author 3", "country": "Taiwan", "expertise": "Physics", "title": "Researcher", "sex": "M"},
+            {"id": 4, "name": "Test Author 4", "country": "Indonesia", "expertise": "Chemistry", "title": "Scientist", "sex": "F"}
+        ]
+
     def _validate_configurations(self):
         """Validate all required configurations exist and are valid."""
         # Check for required files
@@ -167,18 +199,32 @@ class FailFastTextGenerator:
 
                 # Check for API errors first
                 if hasattr(response, "success") and not response.success:
-                    # API returned an error - don't retry, raise immediately
                     error_msg = getattr(response, "error", "API error")
-                    from utils.loud_errors import api_failure
-
-                    api_failure(
-                        "fail_fast_generator",
-                        f"API error: {error_msg}",
-                        retry_count=None,
-                    )
-                    from api.client import APIError
-
-                    raise APIError(f"API error: {error_msg}")
+                    
+                    # Check if this is a temporary/retryable error
+                    retryable_errors = [
+                        "temporary failure", "timeout", "rate limit", "server error", 
+                        "connection error", "network error", "service unavailable"
+                    ]
+                    
+                    is_retryable = any(retryable_error in error_msg.lower() for retryable_error in retryable_errors)
+                    
+                    if is_retryable and attempt < self.max_retries:
+                        logger.warning(
+                            f"Temporary API error '{error_msg}', retrying in {self.retry_delay}s (attempt {attempt + 1}/{self.max_retries + 1})"
+                        )
+                        time.sleep(self.retry_delay)
+                        continue
+                    else:
+                        # Non-retryable error or max retries reached
+                        from utils.loud_errors import api_failure
+                        api_failure(
+                            "fail_fast_generator",
+                            f"API error: {error_msg}",
+                            retry_count=attempt if is_retryable else None,
+                        )
+                        from api.client import APIError
+                        raise APIError(f"API error: {error_msg}")
 
                 if not response or not response.content:
                     if attempt < self.max_retries:

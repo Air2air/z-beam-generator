@@ -1,3 +1,14 @@
+---
+Version Log - Generated: 2025-09-09T17:42:14.359159
+Material: Unknown
+Component: text
+Generator: Z-Beam v1.0.0
+Component Version: 3.0.0
+Author: Yi-Chun Lin
+Platform: Darwin (3.12.4)
+Operation: generation
+---
+
 ### Steel Surface Preparation with Laser Technology
 
 Steel substrates present unique challenges and opportunities for laser cleaning applications. The process effectively removes rust, scale, paint, and other contaminants while maintaining the integrity of the base material.
@@ -21,16 +32,15 @@ The laser parameters must be carefully selected based on the specific steel allo
 author: Yi-Chun Lin
 material: Copper
 component: text
-generated: 2025-09-08
+generated: 2025-09-09
 source: frontmatter
 ---
 
----
-Version Log - Generated: 2025-09-08T17:22:00.024081
-Material: Copper
-Component: text
-Generator: Z-Beam v2.1.0
-Author: AI Assistant
-Platform: Darwin (3.12.4)
-File: content/components/text/copper-laser-cleaning.md
----
+# Version Information
+# Generated: 2025-09-09T17:42:14.359598
+# Material: Copper
+# Component: text
+# Generator: Z-Beam v2.1.0
+# Author: AI Assistant
+# Platform: Darwin (3.12.4)
+# File: content/components/text/copper-laser-cleaning.md

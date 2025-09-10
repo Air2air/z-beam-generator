@@ -213,7 +213,7 @@ pre-commit run black --all-files
 **Completed Components:**
 - **caption** (9 tests): API-based technical image caption generation
 - **bullets** (10 tests): API-based technical bullet point generation
-- **table** (11 tests): API-based technical table generation
+- **table** (11 tests): Static technical table generation
 - **jsonld** (4 tests): Frontmatter-based JSON-LD structured data generation
 
 **Test Statistics:**

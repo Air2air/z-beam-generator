@@ -80,78 +80,75 @@ API_PROVIDERS = {
         "supports_reasoning": True,
         "optimal_temperature": 0.7,
     },
-    "gemini": {
-        "name": "Gemini",
-        "model": "gemini-1.5-pro",
-        "max_tokens": 8000,
-        "optimal_temperature": 0.7,
-    },
 }
 
+# Component Configuration - USER SETTABLE
+# Modify these settings to customize component behavior
 COMPONENT_CONFIG = {
     "frontmatter": {
-        "generator": "frontmatter",
         "api_provider": "deepseek",
         "priority": 1,
-        "required": True,
+        "enabled": True,
+        "data_provider": "hybrid",  # Generates content + provides data for other components
     },
     "metatags": {
-        "generator": "metatags",
         "api_provider": "deepseek",
         "priority": 2,
-        "required": True,
+        "enabled": True,
+        "data_provider": "hybrid",  # Uses frontmatter data + AI generation
     },
     "propertiestable": {
-        "generator": "propertiestable",
-        "api_provider": "none",
+        "api_provider": "deepseek",
         "priority": 3,
-        "required": True,
+        "enabled": True,
+        "data_provider": "hybrid",  # Uses frontmatter data + AI generation
     },
     "bullets": {
-        "generator": "bullets",
         "api_provider": "deepseek",
         "priority": 4,
-        "required": True,
+        "enabled": True,
+        "data_provider": "hybrid",  # Uses frontmatter data + AI generation
     },
     "caption": {
-        "generator": "caption",
         "api_provider": "deepseek",
         "priority": 5,
-        "required": True,
+        "enabled": True,
+        "data_provider": "hybrid",  # Uses frontmatter data + AI generation
     },
     "text": {
-        "generator": "text",
         "api_provider": "deepseek",
         "priority": 6,
-        "required": True,
+        "enabled": True,
+        "data_provider": "hybrid",  # Uses frontmatter data + AI generation
     },
     "table": {
-        "generator": "table",
-        "api_provider": "deepseek",
+        "api_provider": "none",  # Static/deterministic generation
         "priority": 7,
-        "required": True,
+        "enabled": True,
+        "data_provider": "static",  # No API calls needed, no frontmatter dependency
     },
     "tags": {
-        "generator": "tags",
         "api_provider": "deepseek",
         "priority": 8,
-        "required": True,
+        "enabled": True,
+        "data_provider": "hybrid",  # Uses frontmatter data + AI generation
     },
     "jsonld": {
-        "generator": "jsonld",
-        "api_provider": "none",
+        "api_provider": "none",  # Extracts from frontmatter, no AI needed
         "priority": 9,
-        "required": True,
+        "enabled": True,
+        "data_provider": "frontmatter",  # Pure frontmatter extraction
     },
     "author": {
-        "generator": "author",
         "api_provider": "none",  # Static component, no API needed
         "priority": 10,
-        "required": True,
+        "enabled": True,
+        "data_provider": "static",  # Static data, no dependencies
     },
-
 }
 
+# AI Detection Configuration - USER SETTABLE
+# Modify these settings to customize AI detection behavior
 AI_DETECTION_CONFIG = {
     "enabled": True,
     "provider": "winston",

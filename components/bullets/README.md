@@ -6,7 +6,7 @@ The Bullets component generates concise, technical bullet points highlighting ke
 ## 📋 Component Requirements
 
 ### **Functional Requirements**
-- Generate 5-10 key bullet points per material
+- Generate 4 key bullet points per material (matching example file structure)
 - Focus on laser cleaning relevant properties and applications
 - Include technical specifications and performance characteristics
 - Provide actionable information for industrial applications
@@ -188,7 +188,7 @@ class TestBulletsComponentGenerator:
         
         assert result.success is True
         assert result.component_type == "bullets"
-        assert result.content.startswith('- ')
+        assert result.content.startswith('• ')
         assert len(result.content.split('\n- ')) >= 5
     
     def test_ai_detection_integration(self):
@@ -220,12 +220,10 @@ class MockBulletsComponentGenerator(BulletsComponentGenerator):
         """Return mock bullets for testing"""
         material_name = material_data.get('name', 'Unknown Material')
         
-        return f"""- **High thermal conductivity** makes {material_name} ideal for heat-sensitive laser cleaning applications
-- **Lightweight nature** enables efficient processing in aerospace and automotive industries
-- **Excellent reflectivity** requires optimized laser parameters for effective cleaning
-- **Corrosion resistance** ensures long-term performance in industrial environments
-- **Recyclability** supports sustainable manufacturing practices
-- **Formability** allows complex shapes in laser cleaning operations"""
+        return f"""• **High thermal conductivity** makes {material_name} ideal for heat-sensitive laser cleaning applications
+• **Lightweight nature** enables efficient processing in aerospace and automotive industries
+• **Excellent reflectivity** requires optimized laser parameters for effective cleaning
+• **Corrosion resistance** ensures long-term performance in industrial environments"""
 ```
 
 ## 📈 Performance & Quality Metrics
@@ -322,7 +320,7 @@ print(f"Detection score: {result.metadata.get('detection_score', 'N/A')}")
 - [ ] AI detection service accessible (if enabled)
 
 ### **Post-Generation Validation**
-- [ ] Generated content starts with proper bullet formatting ('- ')
+- [ ] Generated content starts with proper bullet formatting ('• ')
 - [ ] Bullet count is within acceptable range (5-10)
 - [ ] Content contains technically accurate information
 - [ ] AI detection metadata is present (if enabled)

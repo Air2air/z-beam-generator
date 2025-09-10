@@ -7,9 +7,10 @@ The Z-Beam system uses a standardized API client architecture that supports mult
 ## Supported Providers
 
 - **DeepSeek**: Primary provider for most components
-- **Grok (X.AI)**: Used for content and table components
-  - **grok-2**: Recommended model, works reliably for all content generation
+- **Grok (X.AI)**: Used for content component
+  - **grok-2**: Recommended model, works reliably for content generation
   - **grok-4**: Advanced reasoning model, currently produces reasoning tokens without completion output (not recommended for content generation)
+- **Table Component**: Static/deterministic generation (no API required)
 
 ## Environment Setup
 
@@ -63,9 +64,9 @@ API_PROVIDERS = {
 ## API Client Configuration
 
 ### Connection Settings
-- **Connection Timeout**: 10 seconds
-- **Read Timeout**: 30 seconds (optimized for faster failure detection)
-- **Max Retries**: 2 attempts (application-level retry logic)
+- **Connection Timeout**: Must be explicitly configured (no defaults)
+- **Read Timeout**: Must be explicitly configured (no defaults)
+- **Max Retries**: Must be explicitly configured (no defaults)
 - **Connection Pool**: 1 connection (prevents concurrent request conflicts)
 
 ### Session Management
@@ -79,12 +80,19 @@ The API client uses optimized session configuration to prevent concurrent reques
 ### Timeout Configuration
 ```python
 APIConfig(
-    timeout_connect=10,    # Fast connection establishment
-    timeout_read=30,       # Reasonable response timeout
-    max_retries=2,         # Limited retry attempts
-    retry_delay=0.5        # Quick retry delay
+    timeout_connect=10,    # Must be explicitly provided
+    timeout_read=30,       # Must be explicitly provided
+    max_retries=2,         # Must be explicitly provided
+    retry_delay=0.5        # Must be explicitly provided
 )
 ```
+
+### Fail-Fast Configuration
+The system now uses strict fail-fast architecture:
+- **No Default Values**: All configuration parameters must be explicitly provided
+- **Immediate Validation**: Missing environment variables cause immediate failure
+- **Clear Error Messages**: Specific error messages guide proper configuration
+- **No Silent Fallbacks**: System fails immediately when dependencies are missing
 
 ### Connection Pooling
 - Single connection prevents concurrent request conflicts

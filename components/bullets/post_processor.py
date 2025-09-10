@@ -32,10 +32,10 @@ def post_process_bullets(content: str, material_name: str = "") -> str:
 
         # Ensure bullet points start with proper markdown format
         if line and not line.startswith(
-            ("- ", "* ", "+ ", "1. ", "2. ", "3. ", "4. ", "5. ")
+            ("- ", "* ", "+ ", "1. ", "2. ", "3. ", "4. ", "5. ", "• ")
         ):
             # If it looks like a bullet point without proper formatting
-            if re.match(r"^[•·‣▪▫]", line):
+            if re.match(r"^[·‣▪▫]", line):
                 line = "- " + line[1:].strip()
             elif not line.startswith("#"):  # Don't modify headers
                 line = "- " + line
@@ -44,14 +44,14 @@ def post_process_bullets(content: str, material_name: str = "") -> str:
         line = re.sub(r"\s+", " ", line)  # Normalize whitespace
 
         # Ensure consistent capitalization for bullet points
-        if line.startswith(("- ", "* ", "+ ")):
+        if line.startswith(("- ", "* ", "+ ", "• ")):
             bullet_content = line[2:].strip()
             if bullet_content and bullet_content[0].islower():
                 line = line[:2] + bullet_content[0].upper() + bullet_content[1:]
 
         # Remove trailing periods from bullet points (optional style choice)
         if (
-            line.startswith(("- ", "* ", "+ "))
+            line.startswith(("- ", "* ", "+ ", "• "))
             and line.endswith(".")
             and not line.endswith("..")
         ):

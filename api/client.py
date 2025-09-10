@@ -73,9 +73,7 @@ class APIClient:
         if config:
             self.config = config
         else:
-            from .config import get_default_config
-
-            self.config = get_default_config()
+            raise ValueError("Configuration must be provided explicitly - no defaults allowed in fail-fast architecture")
 
         # Override config with provided parameters
         if api_key:
@@ -104,13 +102,18 @@ class APIClient:
             else model or "deepseek-chat"
         )
 
-        # Set timeout values with defaults
+        # Set timeout values - FAIL-FAST: Must be explicitly configured
         self.timeout_connect = getattr(self.config, "timeout_connect", None) or (
-            self.config.get("timeout_connect") if hasattr(self.config, "get") else 10
+            self.config.get("timeout_connect") if hasattr(self.config, "get") else None
         )
+        if self.timeout_connect is None:
+            raise ValueError("timeout_connect must be configured explicitly - no defaults allowed")
+
         self.timeout_read = getattr(self.config, "timeout_read", None) or (
-            self.config.get("timeout_read") if hasattr(self.config, "get") else 30
+            self.config.get("timeout_read") if hasattr(self.config, "get") else None
         )
+        if self.timeout_read is None:
+            raise ValueError("timeout_read must be configured explicitly - no defaults allowed")
 
         # Initialize session
         self.session = requests.Session()
@@ -128,9 +131,14 @@ class APIClient:
     def _setup_session(self):
         """Setup the requests session with headers and configuration"""
 
+        # Get API key with fallback for both object attributes and dict keys
+        api_key = getattr(self.config, "api_key", None) or (
+            self.config.get("api_key") if hasattr(self.config, "get") else None
+        )
+
         self.session.headers.update(
             {
-                "Authorization": f"Bearer {self.config.api_key}",
+                "Authorization": f"Bearer {api_key}",
                 "Content-Type": "application/json",
                 "Accept": "application/json",
                 "User-Agent": "Z-Beam-Generator/1.0",
@@ -184,7 +192,12 @@ class APIClient:
         self.stats["total_requests"] += 1
         start_time = time.time()
 
-        for attempt in range(self.config.max_retries + 1):
+        # Get max_retries with fallback for both object attributes and dict keys
+        max_retries = getattr(self.config, "max_retries", None) or (
+            self.config.get("max_retries") if hasattr(self.config, "get") else 2
+        )
+
+        for attempt in range(max_retries + 1):
             try:
                 response = self._make_request(request)
                 response.retry_count = attempt
@@ -201,30 +214,38 @@ class APIClient:
                 return response
 
             except requests.exceptions.Timeout:
-                if attempt == self.config.max_retries:
+                if attempt == max_retries:
                     return APIResponse(
                         success=False,
                         content="",
-                        error=f"Request timeout after {self.config.max_retries + 1} attempts",
+                        error=f"Request timeout after {max_retries + 1} attempts",
                         response_time=time.time() - start_time,
                         retry_count=attempt,
                     )
-                time.sleep(self.config.retry_delay * (attempt + 1))
+                # Get retry_delay with fallback
+                retry_delay = getattr(self.config, "retry_delay", None) or (
+                    self.config.get("retry_delay") if hasattr(self.config, "get") else 1.0
+                )
+                time.sleep(retry_delay * (attempt + 1))
 
             except requests.exceptions.ConnectionError:
-                if attempt == self.config.max_retries:
+                if attempt == max_retries:
                     return APIResponse(
                         success=False,
                         content="",
-                        error=f"Connection error after {self.config.max_retries + 1} attempts",
+                        error=f"Connection error after {max_retries + 1} attempts",
                         response_time=time.time() - start_time,
                         retry_count=attempt,
                     )
-                time.sleep(self.config.retry_delay * (attempt + 1))
+                # Get retry_delay with fallback
+                retry_delay = getattr(self.config, "retry_delay", None) or (
+                    self.config.get("retry_delay") if hasattr(self.config, "get") else 1.0
+                )
+                time.sleep(retry_delay * (attempt + 1))
 
             except Exception as e:
                 logger.error(f"Unexpected error on attempt {attempt + 1}: {e}")
-                if attempt == self.config.max_retries:
+                if attempt == max_retries:
                     return APIResponse(
                         success=False,
                         content="",
@@ -232,7 +253,11 @@ class APIClient:
                         response_time=time.time() - start_time,
                         retry_count=attempt,
                     )
-                time.sleep(self.config.retry_delay * (attempt + 1))
+                # Get retry_delay with fallback
+                retry_delay = getattr(self.config, "retry_delay", None) or (
+                    self.config.get("retry_delay") if hasattr(self.config, "get") else 1.0
+                )
+                time.sleep(retry_delay * (attempt + 1))
 
         # Should never reach here, but just in case
         return APIResponse(
@@ -247,11 +272,7 @@ class APIClient:
 
         start_time = time.time()
 
-        # Handle Gemini API format differently
-        if "gemini" in self.model.lower():
-            return self._make_gemini_request(request, start_time)
-
-        # Standard OpenAI-compatible format for other providers
+        # Standard OpenAI-compatible format for all providers
         messages = []
         if request.system_prompt:
             messages.append({"role": "system", "content": request.system_prompt})
@@ -582,10 +603,6 @@ class APIClient:
 
             api_failure("gemini_api", error_msg, retry_count=None)
 
-            return APIResponse(
-                success=False, content="", error=error_msg, response_time=response_time
-            )
-
     def generate_simple(
         self,
         prompt: str,
@@ -595,13 +612,22 @@ class APIClient:
     ) -> APIResponse:
         """Simplified generation method for backward compatibility"""
 
+        # Get config values - FAIL-FAST: Must be explicitly configured
+        default_max_tokens = getattr(self.config, "max_tokens", None)
+        if default_max_tokens is None:
+            raise ValueError("max_tokens must be configured explicitly - no defaults allowed")
+
+        default_temperature = getattr(self.config, "temperature", None)
+        if default_temperature is None:
+            raise ValueError("temperature must be configured explicitly - no defaults allowed")
+
         request = GenerationRequest(
             prompt=prompt,
             system_prompt=system_prompt,
-            max_tokens=max_tokens or self.config.max_tokens,
+            max_tokens=max_tokens or default_max_tokens,
             temperature=temperature
             if temperature is not None
-            else self.config.temperature,
+            else default_temperature,
         )
 
         return self.generate(request)

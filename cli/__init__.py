@@ -18,7 +18,13 @@ from .cleanup_commands import (
     run_cleanup_scan,
     run_root_cleanup,
 )
-from .component_config import COMPONENT_CONFIG, show_component_configuration, get_components_sorted_by_priority, get_enabled_components
+from .component_config import show_component_configuration, get_components_sorted_by_priority, get_enabled_components
+
+# Import COMPONENT_CONFIG from run.py (user-settable configs)
+try:
+    from run import COMPONENT_CONFIG
+except ImportError:
+    COMPONENT_CONFIG = {}
 
 __all__ = [
     "API_PROVIDERS",

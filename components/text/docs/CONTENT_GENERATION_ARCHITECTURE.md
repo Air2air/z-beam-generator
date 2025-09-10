@@ -2,7 +2,7 @@
 
 ## Overview
 
-The text component is the core of the Z-Beam laser cleaning content generation system. It produces basic technical articles about laser cleaning for specific materials using a simple prompt system and strict fail-fast architecture.
+The text component is the core of the Z-Beam laser cleaning content generation system. It produces basic technical articles about laser cleaning for specific materials using a **hybrid data integration approach** that combines material properties from `data/materials.yaml` with template guidance from `components/text/prompts/base_content_prompt.yaml`.
 
 ## System Architecture
 
@@ -43,41 +43,44 @@ class TextComponentGenerator:
 1. Validate API client exists (fail-fast if missing)
 2. Validate author information provided
 3. Validate material data completeness
-4. Confirm base_content_prompt.yaml exists and is valid
+4. Confirm materials.yaml and base_content_prompt.yaml exist and are valid
 ```
 
-### Phase 2: Configuration Loading
+### Phase 2: Hybrid Data Loading
 ```
-1. Load base content prompt → Primary guidance
-2. Validate configuration structure
-```
-
-### Phase 3: Simple Prompt Construction
-The system builds a basic prompt using only the base content guidance:
-
-#### Base Content Integration
-```yaml
-overall_subject: |
-  A detailed technical analysis of the {material}, emphasizing its physicochemical properties, engineering applications, and the intricate mechanisms involved in laser cleaning processes.
+1. Load material data from materials.yaml → Material properties and metadata
+2. Load base content prompt → Template structure and guidance
+3. Resolve author information → Author details for context
+4. Load frontmatter data → Consistency with other components
 ```
 
-#### Simple Prompt Building
+### Phase 3: Hybrid Prompt Construction
+The system builds a comprehensive prompt by integrating multiple data sources:
+
+#### Material Data Integration
 ```python
-prompt_parts = []
+# Extract material properties
+material_name = material_data.get('name', subject)
+material_formula = material_data.get('formula')
+material_category = material_data.get('category')
+laser_params = material_data.get('laser_parameters', {})
+```
+
+#### Template Variable Substitution
+```python
+# Replace variables in base prompt
 if 'overall_subject' in base_config:
-    content = base_config['overall_subject'].format(material=subject)
+    content = base_config['overall_subject'].format(material=material_name)
     prompt_parts.append(f"## Content Requirements\n{content}")
+```
 
-prompt_parts.append(f"""
-## Content Generation Task
-
-Write a comprehensive article about laser cleaning {subject}.
-
-**Subject:** {subject}
-**Target Audience:** Industry professionals and researchers interested in laser cleaning applications
-
-Focus on technical accuracy, practical applications, and engineering insights.
-""")
+#### Context Integration
+```python
+# Include author and material context
+sections.append(f"AUTHOR: {author_info.get('name')}")
+sections.append(f"COUNTRY: {author_info.get('country', 'USA').title()}")
+sections.append(f"MATERIAL: {material_name}")
+sections.append(f"MATERIAL DATA: {json.dumps(material_data, indent=2)}")
 ```
 
 ### Phase 4: API Generation & Validation
@@ -97,16 +100,82 @@ Focus on technical accuracy, practical applications, and engineering insights.
 
 ## Prompt System Details
 
-### Base Content Prompt (`base_content_prompt.yaml`)
-**Purpose:** Primary guidance for all content generation
+### Hybrid Data Integration System
+
+The text component uses a sophisticated hybrid approach that combines:
+
+#### 1. Material Data Source (`data/materials.yaml`)
+**Purpose:** Provides comprehensive material properties and metadata
+
+**Key Properties:**
+- `name`: Material name (e.g., "alabaster")
+- `formula`: Chemical formula (e.g., "CaSO₄·2H₂O")
+- `category`: Material category (e.g., "mineral")
+- `laser_parameters`: Cleaning-specific parameters
+- `author_id`: Links to author information
+
+#### 2. Template System (`base_content_prompt.yaml`)
+**Purpose:** Structured guidance with variable substitution
 
 **Key Sections:**
-- `overall_subject`: Core questions that guide content focus
+- `overall_subject`: Core questions with {material} variable substitution
 
-**Example:**
+**Variable Replacement:**
+```python
+# Template variable substitution
+subject = base_config['overall_subject'].format(material=material_name)
+```
+
+#### 3. Author Integration
+**Purpose:** Provides author context and credibility
+
+**Integration:**
+```python
+author_name = author_info.get('name')
+author_country = author_info.get('country', 'USA').title()
+```
+
+#### 4. Frontmatter Context
+**Purpose:** Maintains consistency with other components
+
+**Usage:**
+```python
+if frontmatter_data:
+    sections.append(f"CONTEXT: {json.dumps(frontmatter_data, indent=2)}")
+```
+
+### Complete Prompt Assembly
+
+The final prompt combines all data sources:
+
+```python
+def _construct_prompt(self, base_prompt_data, material_name, material_data, author_info, frontmatter_data):
+    sections = []
+    
+    # Author context
+    sections.append(f"AUTHOR: {author_info.get('name')}")
+    sections.append(f"COUNTRY: {author_info.get('country', 'USA').title()}")
+    
+    # Material integration
+    sections.append(f"MATERIAL: {material_name}")
+    sections.append(f"MATERIAL DATA: {json.dumps(material_data, indent=2)}")
+    
+    # Frontmatter context
+    if frontmatter_data:
+        sections.append(f"CONTEXT: {json.dumps(frontmatter_data, indent=2)}")
+    
+    # Template with variable substitution
+    if "overall_subject" in base_prompt_data:
+        subject = base_prompt_data["overall_subject"].format(material=material_name)
+        sections.append(f"TASK:\nWrite about laser cleaning of {material_name}.\n\n{subject}")
+    
+    return "\n\n".join(sections)
+```
+
+### Base Content Prompt Example
 ```yaml
 overall_subject: |
-  A detailed technical analysis of the {material}, emphasizing its physicochemical properties, engineering applications, and the intricate mechanisms involved in laser cleaning processes. This content aims to equip engineers, researchers, and materials scientists with in-depth insights into the material's role in high-performance systems, potential degradation modes, and how optimized laser cleaning parameters can mitigate surface contaminants while preserving structural integrity and extending service life.
+  A detailed technical analysis of the {material}, emphasizing its physicochemical properties, engineering applications, and the intricate mechanisms involved in laser cleaning processes...
 
   - What distinctive material properties influence the efficacy of laser cleaning?
   - What are the primary industrial applications of this {material}?
@@ -120,13 +189,15 @@ overall_subject: |
 
 #### ConfigurationError (No Retry)
 - Missing base_content_prompt.yaml
-- Invalid YAML syntax
+- Missing materials.yaml
+- Invalid YAML syntax in configuration files
 - Missing required configuration sections
 
 #### GenerationError (No Retry)
 - Missing API client
 - Invalid author information
-- Insufficient material data
+- Insufficient material data completeness
+- Missing required material properties
 
 #### RetryableError (Retry Enabled)
 - API timeout or connection issues

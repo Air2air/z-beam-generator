@@ -1,52 +1,76 @@
+---
+Version Log - Generated: 2025-09-09T17:58:21.932509
+Material: Unknown
+Component: table
+Generator: Z-Beam v1.0.0
+Component Version: 2.0.0
+Author: AI Assistant
+Platform: Darwin (3.12.4)
+Operation: generation
+---
+
 ## Material Properties
 | Property | Value | Unit |
 | --- | --- | --- |
-| Electrical Conductivity | 5.96×10⁷ | S/m |
-| Atomic Number | 29 | - |
-| Melting Point | 1085 | °C |
-| Density | 8.96 | g/cm³ |
-| Boiling Point | 2562 | °C |
+| Boiling Point | 3287 | °C |
+| Tensile Strength | 240-1380 | MPa |
+| Thermal Conductivity | 21.9 | W/(m·K) |
+| Atomic Number | 22 | - |
+| Density | 4.51 | g/cm³ |
+| Electrical Conductivity | 2.38×10⁶ | S/m |
+| Melting Point | 1668 | °C |
+| Young's Modulus | 116 | GPa |
 
 
 ## Material Grades and Purity
 | Grade | Purity (%) | Common Impurities |
 | --- | --- | --- |
-| C12200 (Phosphorized) | ≥99.90 | P 0.015-0.040 |
-| C11000 (ETP) | ≥99.90 | O₂ ≤ 0.04 |
-| C10100 (OFHC) | ≥99.99 | O₂ ≤ 0.0005 |
-| C19400 (Alloy) | 97.0-98.5 | Fe 2.1-2.6 |
+| Grade 9 (Ti-3Al-2.5V) | ≥92.0 | Al 2.5-3.5, V 2.0-3.0 |
+| Grade 5 (Ti-6Al-4V) | ≥88.0 | Al 5.5-6.75, V 3.5-4.5 |
+| Grade 1 (CP) | ≥99.5 | Fe ≤ 0.20, O₂ ≤ 0.18 |
+| Grade 2 (CP) | ≥99.2 | Fe ≤ 0.30, O₂ ≤ 0.25 |
 
 
 ## Performance Metrics
 | Metric | Value | Condition |
 | --- | --- | --- |
-| Corrosion Rate (Seawater) | 0.05-0.2 | mm/year (25°C) |
-| Fatigue Strength | 70-100 | MPa (10⁷ cycles) |
-| Hardness (Brinell) | 35-150 | HB (annealed) |
-| Reflectivity (IR) | ≥98% | λ = 1064nm |
-| Thermal Expansion | 16.5 | µm/(m·K) |
+| Hardness (Brinell) | 120-350 | HB |
+| Reflectivity (IR) | 60-80% | λ = 1064nm |
+| Fatigue Strength | 300-800 | MPa (10⁷ cycles) |
+| Corrosion Rate (Seawater) | 0.001-0.01 | mm/year |
 
 
 ## Standards and Compliance
 | Standard | Scope |
-| --- | --- |
+| --- | --- | --- |
+| ASTM B152/B152M | Sheet/strip/plate |
 | ISO 431 | High-conductivity copper |
-| ASTM B170 | Oxygen-free copper |
 | EN 1172 | Copper for roofing |
 | IEC 60028 | International resistivity std |
+
+
+## Environmental Data
+| Parameter | Value | Unit |
+| --- | --- | --- |
+| Recyclability | 95-100% | Reusable |
+| Embodied Energy | 42-60 | MJ/kg |
+| CO₂ Footprint | 1.8-4.2 | kg CO₂/kg |
+| EU RoHS Compliance | Exempt (Annex III) | - |
 
 
 ## Laser Cleaning Parameters
 | Parameter | Range | Unit |
 | --- | --- | --- |
-| Power | 20-100 | W |
+| Wavelength | 532nm (primary), 1064nm (optional) | - |
+| Power | 25-90 | W |
+| Pulse Duration | 10-100 | ns |
 | Spot Size | 0.1-2.0 | mm |
-| Fluence | 0.5-5 | J/cm² |
 | Repetition Rate | 10-50 | kHz |
+| Fluence | 0.5-5 | J/cm² |
 
 
 ---
-Version Log - Generated: 2025-09-08T12:41:24.578488
+Version Log - Generated: 2025-09-09T17:58:21.932684
 Material: Titanium
 Component: table
 Generator: Z-Beam v2.1.0

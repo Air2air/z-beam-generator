@@ -59,16 +59,18 @@ class ConfigManager:
         ]
         return any(test_indicators)
 
-    def get_config_value(self, key_path: str, default: Any = None) -> Any:
+    def get_config_value(self, key_path: str) -> Any:
         """
         Get a configuration value using dot notation
 
         Args:
             key_path: Path to config value (e.g., 'AI_DETECTION.TARGET_SCORE')
-            default: Default value if key not found
 
         Returns:
-            Configuration value or default
+            Configuration value
+
+        Raises:
+            KeyError: If the configuration key is not found
         """
         if self._config_cache is None:
             self.load_config()
@@ -80,17 +82,23 @@ class ConfigManager:
             for key in keys:
                 value = value[key]
             return value
-        except (KeyError, TypeError):
-            return default
+        except (KeyError, TypeError) as e:
+            raise KeyError(f"Configuration key '{key_path}' not found: {e}")
 
     def is_test_mode(self) -> bool:
         """Check if currently in test mode"""
-        return self.get_config_value("TEST_MODE", False)
+        try:
+            return self.get_config_value("TEST_MODE")
+        except KeyError:
+            return False
 
     def get_timeout(self, operation: str) -> int:
         """Get timeout for a specific operation"""
         timeout_key = f"TIMEOUTS.{operation.upper()}"
-        return self.get_config_value(timeout_key, 30)  # Default 30 seconds
+        try:
+            return self.get_config_value(timeout_key)
+        except KeyError:
+            raise ValueError(f"Timeout configuration for operation '{operation}' not found. Please configure TIMEOUTS.{operation.upper()} in your configuration file.")
 
 
 # Global configuration manager instance

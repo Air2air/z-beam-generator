@@ -34,12 +34,11 @@ Required Inputs:
 ### **Output Requirements**
 ```python
 Output Format: ComponentResult with:
-- content: str (comma-separated tags)
+- content: str (comma-separated tags, exactly 8 tags)
 - success: bool
 - metadata: Dict containing:
-  - tag_count: int
-  - categories: List[str]
-  - generation_method: str
+  - tag_count: int (should be 8)
+  - generation_method: str ("api" or "mock")
 ```
 
 ## 🏗️ Architecture & Implementation
@@ -66,25 +65,21 @@ class TagsComponentGenerator(ComponentGenerator):
 
 ### **Prompt Structure**
 ```yaml
-# components/tags/prompt.yaml
+# Built-in prompt in generator.py
 system: |
-  You are a materials science expert generating tags for laser cleaning applications.
-  Generate relevant, specific tags that capture material properties and applications.
+  Generate navigation tags for {material_name} laser cleaning.
 
 user_template: |
-  Generate 8-12 semantic tags for {material_name} in laser cleaning applications.
-  
-  Material Context:
-  - Name: {material_name}
-  - Category: {category}
-  - Properties: {properties}
-  - Applications: {applications}
-  
-  Requirements:
-  - Include material-specific properties
-  - Add laser cleaning relevant terms
-  - Use industry-standard terminology
-  - Ensure tag relevance and specificity
+  Output EXACTLY 8 tags as a comma-separated list like this example:
+  ablation, fused-silica, sio2, cleaning, laser, aerospace, non-contact, yi-chun-lin
+
+  REQUIREMENTS:
+  - Output exactly 8 tags
+  - Use single words or hyphenated terms only
+  - Include material name, "ablation", "cleaning", "laser", "non-contact"
+  - Include 1-2 industry applications and 1 author slug
+  - Use lowercase throughout
+  - Output ONLY the comma-separated list, no other text
 ```
 
 ## 📊 Data Flow & Dependencies

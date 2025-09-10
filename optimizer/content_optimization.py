@@ -185,8 +185,11 @@ def extract_author_info_from_content(content: str) -> Optional[Dict[str, Any]]:
                     author_info["id"] = int(value) if value.isdigit() else 1
 
         if author_info:
-            author_info.setdefault("id", 1)
-            author_info.setdefault("country", "usa")
+            # FAIL-FAST: Author information must be complete - no defaults allowed
+            if "id" not in author_info:
+                raise ValueError("Author ID must be provided explicitly - no defaults allowed in fail-fast architecture")
+            if "country" not in author_info:
+                raise ValueError("Author country must be provided explicitly - no defaults allowed in fail-fast architecture")
             return author_info
 
     except Exception as e:
@@ -458,7 +461,7 @@ async def run_sophisticated_optimization(
                 # Fallback to extracting from content
                 author_info = extract_author_info_from_content(current_content)
             if not author_info:
-                author_info = {"id": 1, "name": "Research Author", "country": "usa"}
+                raise ValueError(f"Author information must be available for {material_name} - no defaults allowed in fail-fast architecture")
 
             print(
                 f"   👤 Author: {author_info.get('name', 'Unknown')} (Country: {author_info.get('country', 'Unknown')})"

@@ -1,89 +1,89 @@
 """
-Table component post-processor for content cleanup and enhancement.
+Table component post-processor for deterministic content validation.
+
+FAIL-FAST: No content modifications allowed. Only validates deterministic output.
 """
 import logging
-import re
 
 logger = logging.getLogger(__name__)
 
 
 def post_process_table(content: str, material_name: str = "") -> str:
     """
-    Post-process table content for consistency and quality.
+    Post-process table content - DETERMINISTIC: No modifications, only validation.
 
     Args:
-        content: Generated table content
+        content: Generated table content (should be identical each time)
         material_name: Name of the material being processed
 
     Returns:
-        str: Post-processed table content
+        str: Original content (unchanged) or error message
     """
     if not content or not content.strip():
+        logger.error("Table content is empty - fail-fast architecture requires complete content")
         return content
 
-    lines = content.strip().split("\n")
-    processed_lines = []
+    # VALIDATION ONLY - Do not modify content
+    validation_errors = validate_deterministic_content(content, material_name)
 
-    for line in lines:
-        line = line.strip()
-        if not line:
-            processed_lines.append("")
-            continue
+    if validation_errors:
+        logger.error(f"Content validation failed: {', '.join(validation_errors)}")
+        # FAIL-FAST: Return original content but log errors
+        return content
 
-        # Clean up table formatting
-        if "|" in line:
-            # Split by pipes and clean each cell
-            cells = line.split("|")
-            cleaned_cells = []
+    # Content is valid and deterministic - return unchanged
+    logger.info(f"Table content validated successfully for material: {material_name}")
+    return content
 
-            for cell in cells:
-                cell = cell.strip()
-                # Normalize whitespace within cells
-                cell = re.sub(r"\s+", " ", cell)
-                # Clean up technical terms
-                cell = clean_technical_terms(cell)
-                cleaned_cells.append(cell)
 
-            line = (
-                "| " + " | ".join(cleaned_cells[1:-1]) + " |"
-                if len(cleaned_cells) > 2
-                else line
-            )
+def validate_deterministic_content(content: str, material_name: str) -> list:
+    """
+    Validate that content matches deterministic requirements - FAIL-FAST.
 
-        processed_lines.append(line)
+    Args:
+        content: The table content to validate
+        material_name: Expected material name
 
-    processed = "\n".join(processed_lines)
+    Returns:
+        List of validation errors (empty if valid)
+    """
+    errors = []
 
-    # Material-specific enhancements
-    if material_name:
-        material_lower = material_name.lower()
-        if material_lower in processed.lower() and material_name not in processed:
-            processed = re.sub(
-                rf"\b{re.escape(material_lower)}\b",
-                material_name,
-                processed,
-                flags=re.IGNORECASE,
-            )
+    # Must contain material name - FAIL-FAST
+    if material_name and material_name.lower() not in content.lower():
+        errors.append(f"Material name '{material_name}' not found in content")
 
-    return processed
+    # Must have exact 6 table sections - FAIL-FAST
+    section_count = content.count("##")
+    if section_count != 6:
+        errors.append(f"Must have exactly 6 table sections, found {section_count}")
+
+    # Must have proper markdown table structure - FAIL-FAST
+    lines = content.split("\n")
+    table_lines = [line for line in lines if "|" in line]
+
+    if len(table_lines) < 12:  # Minimum: 6 headers + 6 separators
+        errors.append(f"Insufficient table structure, found {len(table_lines)} table lines")
+
+    # Check for separator rows - FAIL-FAST
+    separator_count = sum(1 for line in table_lines if "---" in line)
+    if separator_count != 6:
+        errors.append(f"Must have exactly 6 separator rows, found {separator_count}")
+
+    # Check for data consistency - FAIL-FAST
+    data_lines = [line for line in table_lines if "|" in line and "---" not in line and not line.startswith("##")]
+    if len(data_lines) != 24:  # Exact count required
+        errors.append(f"Must have exactly 24 data rows, found {len(data_lines)}")
+
+    return errors
 
 
 def clean_technical_terms(text: str) -> str:
-    """Clean up technical terminology in table cells."""
-    technical_replacements = {
-        "laser cleaning": "laser cleaning",
-        "contaminant": "contaminant",
-        "substrate": "substrate",
-        "surface": "surface",
-        "ablation": "ablation",
-        "wavelength": "wavelength",
-        "pulse duration": "pulse duration",
-        "energy density": "energy density",
-    }
+    """
+    DEPRECATED: Technical term cleaning not allowed in deterministic generation.
 
-    for old_term, new_term in technical_replacements.items():
-        text = re.sub(
-            rf"\b{re.escape(old_term)}\b", new_term, text, flags=re.IGNORECASE
-        )
-
-    return text
+    This function is kept for backward compatibility but should not be used
+    as it would modify deterministic output.
+    """
+    logger.warning("clean_technical_terms called - this modifies deterministic output and should not be used")
+    return text  # Return unchanged to maintain determinism

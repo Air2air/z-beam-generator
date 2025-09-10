@@ -439,7 +439,7 @@ python3 tests/test_frontmatter_validation.py
 
 ### Component Configuration Notes
 
-- **Static Components** (`api_provider: "none"`): `author`, `badgesymbol`, `propertiestable`, `jsonld`, `metatags`
+- **Static Components** (`api_provider: "none"`): `author`, `badgesymbol`, `propertiestable`, `jsonld`, `metatags`, `table`
   - No API calls required
   - AI detection flags removed (default to `False`)
   - Faster generation, lower cost
@@ -731,7 +731,7 @@ python3 test_validation_diagnostics.py   # Test validation system
 
 ## 🐛 Known Issues
 
-1. **Some component generators missing**: `badgesymbol`, `caption`, `jsonld`, `metatags`, `propertiestable`, `table`, `tags`
+1. **Some component generators missing**: `badgesymbol`, `caption`, `jsonld`, `metatags`, `table`, `tags`
 2. **Frontmatter validation**: Some materials missing required fields
 3. **API timeouts**: Occasional timeout on long content generation
 

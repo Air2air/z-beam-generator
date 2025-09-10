@@ -10,57 +10,62 @@ import random
 from pathlib import Path
 from typing import Any, Dict, Optional
 
-from generators.component_generators import APIComponentGenerator
-from utils.core.component_base import (
-    ComponentResult,
-    handle_generation_error,
-    validate_required_fields,
-)
+from generators.component_generators import StaticComponentGenerator
+from versioning import stamp_component_output
 
 
-class BulletsComponentGenerator(APIComponentGenerator):
+class BulletsComponentGenerator(StaticComponentGenerator):
     """Generator for bullets components using material data"""
 
     def __init__(self):
         super().__init__("bullets")
         self.prompt_file = Path(__file__).parent / "prompt.yaml"
 
-    def generate(
+    def _generate_static_content(
         self,
         material_name: str,
         material_data: Dict,
-        api_client=None,
         author_info: Optional[Dict] = None,
         frontmatter_data: Optional[Dict] = None,
         schema_fields: Optional[Dict] = None,
-    ) -> ComponentResult:
+    ) -> str:
         """Generate bullets component content"""
         try:
             # Validate required data
             if not material_name:
-                return self.create_error_result("Material name is required")
+                raise ValueError("Material name is required")
 
             # Generate bullets content
             content = self._create_bullets_content(material_name, material_data)
 
-            return ComponentResult(
-                component_type="bullets", content=content, success=True
-            )
+            # Apply centralized version stamping
+            return stamp_component_output("bullets", content)
 
         except Exception as e:
-            return handle_generation_error("bullets", e, "content generation")
+            raise Exception(f"Error generating bullets content: {e}")
 
     def _create_bullets_content(self, material_name: str, material_data: Dict) -> str:
         """Create bullets content with technical details"""
         bullets = []
 
-        # Generate 4 technical bullet points
+        # Generate 4 technical bullet points (matching example file count)
         bullets.append(self._generate_wavelength_bullet(material_name))
         bullets.append(self._generate_precision_bullet(material_name))
         bullets.append(self._generate_applications_bullet(material_name))
         bullets.append(self._generate_thermal_bullet(material_name))
 
-        return "\n\n".join(bullets)
+        # Apply word count limits similar to example file (100-150 words total)
+        content = "\n\n".join(bullets)
+        words = content.split()
+        if len(words) > 150:  # Max ~150 words total
+            # Truncate to approximately 150 words while preserving bullet structure
+            truncated_words = words[:150]
+            content = " ".join(truncated_words)
+            # Ensure we end at a complete bullet if possible
+            if not content.endswith("."):
+                content = content.rsplit(".", 1)[0] + "."
+
+        return content
 
     def _generate_wavelength_bullet(self, material_name: str) -> str:
         """Generate wavelength-focused bullet"""
@@ -130,14 +135,7 @@ class BulletsComponentGenerator(APIComponentGenerator):
 
         return f"• **Thermal Processing Considerations**: {random.choice(considerations)}, {random.choice(outcomes)}."
 
-    def create_error_result(self, error_message: str) -> ComponentResult:
-        """Create a ComponentResult for error cases"""
-        return ComponentResult(
-            component_type="bullets",
-            content="",
-            success=False,
-            error_message=error_message,
-        )
+
 
 
 # Legacy compatibility

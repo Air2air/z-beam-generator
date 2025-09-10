@@ -73,6 +73,26 @@ author_object:
 
 ## Architecture
 
+### Hybrid Data Integration
+The frontmatter component uses a **hybrid approach** that combines data from multiple sources:
+
+#### 1. Material Data Source (`data/materials.yaml`)
+- **Primary Data:** Material properties, formulas, symbols, categories
+- **Author References:** `author_id` links to complete author profiles
+- **Laser Parameters:** Wavelength, power ranges, fluence thresholds
+- **Application Data:** Industry uses and surface treatment methods
+
+#### 2. Prompt Template (`components/frontmatter/prompt.yaml`)
+- **Template Structure:** Pre-defined YAML frontmatter format
+- **Variable Substitution:** Dynamic replacement with material-specific data
+- **Property Placeholders:** Template variables for density, melting point, etc.
+- **Author Integration:** Complete author object embedding
+
+#### 3. Author Database (`authors.json`)
+- **Complete Profiles:** Full author information with expertise, country, etc.
+- **Dynamic Resolution:** `author_id` to complete author object conversion
+- **Cultural Adaptation:** Country-specific writing styles and perspectives
+
 ### Fail-Fast Design Principles
 - **No Mocks or Fallbacks**: System fails immediately if dependencies are missing
 - **Explicit Dependencies**: All required components must be explicitly provided
@@ -163,9 +183,11 @@ author_object:
 
 ## Data Flow
 
-### 1. Material Data Loading
-```python
-# From materials.yaml
+### Hybrid Integration Process
+
+#### 1. Material Data Loading
+```yaml
+# From data/materials.yaml
 materials:
   metal:
     items:
@@ -174,40 +196,66 @@ materials:
       formula: Fe-C
       symbol: Fe
       category: metal
+      laser_parameters:
+        fluence_threshold: "1.0–10 J/cm²"
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
 ```
 
-### 2. Author Resolution
-```python
-# From authors.json
+#### 2. Author Resolution
+```json
+// From authors.json (resolved via author_id: 3)
 {
-  "authors": [
-    {
-      "id": 3,
-      "name": "Ikmanda Roswati",
-      "sex": "m",
-      "title": "Ph.D.",
-      "country": "Indonesia",
-      "expertise": "Ultrafast Laser Physics and Material Interactions",
-      "image": "/images/author/ikmanda-roswati.jpg"
-    }
-  ]
+  "id": 3,
+  "name": "Ikmanda Roswati",
+  "sex": "m",
+  "title": "Ph.D.",
+  "country": "Indonesia",
+  "expertise": "Ultrafast Laser Physics and Material Interactions",
+  "image": "/images/author/ikmanda-roswati.jpg"
 }
 ```
 
-### 3. Template Integration
-All author fields are included in the frontmatter template with proper variable substitution.
+#### 3. Template Integration
+```yaml
+# From components/frontmatter/prompt.yaml
+template: |
+  ---
+  name: "{subject}"
+  applications:
+  - industry: "Electronics Manufacturing"
+    detail: "Removal of surface oxides and contaminants from {subject} substrates"
+  author: "{author_name}"
+  author_object:
+    id: {author_id}
+    name: "{author_name}"
+    country: "{author_object_country}"
+    expertise: "{author_object_expertise}"
+  category: "{category}"
+  chemicalProperties:
+    symbol: "{material_symbol}"
+    formula: "{material_formula}"
+  ---
+```
 
-### 4. Property Enhancement
+#### 4. Variable Substitution
+The system performs comprehensive variable replacement:
+- **Material Variables:** `{subject}`, `{material_formula}`, `{material_symbol}`
+- **Author Variables:** `{author_name}`, `{author_object_country}`, `{author_object_expertise}`
+- **Category Variables:** `{category}` for material classification
+- **Dynamic Properties:** Material-specific property values from materials.yaml
+
+#### 5. Property Enhancement
 Post-processing adds contextual property data:
 ```yaml
 properties:
-  density: "7.85 g/cm³"
-  densityMin: "7.0 g/cm³"
-  densityMax: "8.0 g/cm³"
-  densityPercentile: 75.5
+  density: "7.85 g/cm³"  # From materials.yaml
+  densityMin: "7.0 g/cm³"  # Calculated from category ranges
+  densityMax: "8.0 g/cm³"  # Calculated from category ranges
+  densityPercentile: 75.5  # Statistical ranking
 ```
 
-### 5. Validation
+#### 6. Validation
 Fail-fast validation ensures all required data is present and properly formatted.
 
 ## Configuration Files

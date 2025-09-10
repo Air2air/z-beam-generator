@@ -1,9 +1,14 @@
 #!/usr/bin/env python3
 """
-Z-Beam Component Configuration
+Z-Beam Component Configuration Utilities
 
-Extracted component configuration from run.py for better modularity.
-Defines component orchestration order, provider assignments, and configuration.
+Utility functions for component configuration management.
+Component configuration data is now stored in run.py for user customization.
+
+ARCHITECTURE NOTE:
+- User-settable configurations (COMPONENT_CONFIG, AI_DETECTION_CONFIG) are in run.py
+- System utility functions (display, sorting, validation) remain here
+- This separation allows users to easily modify settings without touching system code
 """
 
 import os
@@ -19,90 +24,12 @@ except ImportError:
 
 from cli.api_config import API_PROVIDERS
 
-# Component Configuration
-# Moved here to break circular import between run.py and other modules
-COMPONENT_CONFIG = {
-    "frontmatter": {
-        "generator": "frontmatter",
-        "api_provider": "deepseek",
-        "priority": 1,
-        "required": True,
-        "enabled": True,
-        "data_provider": "API",
-    },
-    "metatags": {
-        "generator": "metatags",
-        "api_provider": "deepseek",
-        "priority": 2,
-        "required": True,
-        "enabled": True,
-        "data_provider": "static",
-    },
-    "propertiestable": {
-        "generator": "propertiestable",
-        "api_provider": "deepseek",
-        "priority": 3,
-        "required": True,
-        "enabled": True,
-        "data_provider": "static",
-    },
-    "bullets": {
-        "generator": "bullets",
-        "api_provider": "deepseek",
-        "priority": 4,
-        "required": True,
-        "enabled": True,
-        "data_provider": "API",
-    },
-    "caption": {
-        "generator": "caption",
-        "api_provider": "deepseek",
-        "priority": 5,
-        "required": True,
-        "enabled": True,
-        "data_provider": "API",
-    },
-    "text": {
-        "generator": "text",
-        "api_provider": "deepseek",
-        "priority": 6,
-        "required": True,
-        "enabled": True,
-        "data_provider": "API",
-    },
-    "table": {
-        "generator": "table",
-        "api_provider": "deepseek",
-        "priority": 7,
-        "required": True,
-        "enabled": True,
-        "data_provider": "API",
-    },
-    "tags": {
-        "generator": "tags",
-        "api_provider": "deepseek",
-        "priority": 8,
-        "required": True,
-        "enabled": True,
-        "data_provider": "static",
-    },
-    "jsonld": {
-        "generator": "jsonld",
-        "api_provider": "deepseek",
-        "priority": 9,
-        "required": True,
-        "enabled": True,
-        "data_provider": "static",
-    },
-    "author": {
-        "generator": "author",
-        "api_provider": "none",
-        "priority": 10,
-        "required": True,
-        "enabled": True,
-        "data_provider": "static",
-    },
-}
+# Import user-settable configuration from run.py
+try:
+    from run import COMPONENT_CONFIG
+except ImportError:
+    # Fallback if run.py is not available (e.g., during testing)
+    COMPONENT_CONFIG = {}
 
 
 def show_component_configuration():

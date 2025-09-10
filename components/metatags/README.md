@@ -1,54 +1,50 @@
 # MetaTags Component - Complete Reference
 
 ## 🎯 Overview
-The MetaTags component generates HTML meta tags and structured metadata for laser cleaning content, providing SEO optimization and social media sharing support.
+The MetaTags component generates YAML frontmatter with comprehensive meta tags and structured metadata for laser cleaning content, providing SEO optimization and social media sharing support for Next.js and static site generators.
 
 ## 📋 Component Requirements
 
 ### **Functional Requirements**
-- Generate complete HTML meta tag set for SEO
+- Generate complete YAML frontmatter with meta tags for SEO
 - Include Open Graph tags for social media sharing
 - Provide Twitter Card metadata
 - Support structured data markup
 - Ensure mobile-friendly and accessible metadata
+- Follow fail-fast architecture with no fallbacks
 
 ### **Technical Requirements**
-- **Type**: AI-powered component
-- **API Provider**: DeepSeek
-- **AI Detection**: Disabled (metadata generation)
+- **Type**: Frontmatter-based component (no API calls)
+- **Output Format**: YAML frontmatter with `---` delimiters
+- **Fail-Fast**: Strict validation with immediate failure on missing data
 - **Priority**: 4 (early in generation pipeline)
-- **Dependencies**: Frontmatter (for content context)
+- **Dependencies**: Example file (components/metatags/example_metatags.md)
 
 ### **Input Requirements**
 ```python
 Required Inputs:
 - material_name: str (e.g., "aluminum", "steel")
-- material_data: Dict containing:
-  - name: str
+- frontmatter_data: Dict containing:
+  - title: str
   - description: str
-  - category: str
-  - properties: Dict
-- api_client: DeepSeekAPIClient instance
-- content_context: Dict (from frontmatter/other components)
+  - category: str (or type: str)
+  - author: str (optional, defaults to "Z-Beam Technical Team")
+- material_data: Dict (for context)
 ```
 
 ### **Output Requirements**
 ```python
 Output Format: ComponentResult with:
-- content: str (HTML meta tags block)
+- content: str (YAML frontmatter with meta tags)
 - success: bool
-- metadata: Dict containing:
-  - meta_count: int
-  - og_tags: int
-  - twitter_tags: int
-  - structured_data: bool
+- error_message: str (if failed)
 ```
 
 ## 🏗️ Architecture & Implementation
 
 ### **Core Classes**
 ```python
-class MetaTagsComponentGenerator(ComponentGenerator):
+class MetatagsComponentGenerator(FrontmatterComponentGenerator):
     """Generates comprehensive meta tags for laser cleaning content"""
     
     def get_component_type(self) -> str:
@@ -85,10 +81,10 @@ Frontmatter Data → Content Analysis → Meta Tag Requirements → AI Generatio
 2. **MetaTags Component** (Priority 4): Uses context to generate relevant meta tags
 
 ### **Error Handling**
-- **Missing Content Context**: Returns error with clear dependency message
-- **API Generation Failure**: Implements fallback to basic meta tags
-- **Invalid Content Data**: Validates input structure and content quality
-- **Tag Assembly Errors**: Comprehensive validation of generated HTML
+- **Missing Frontmatter Data**: Returns error with clear dependency message
+- **Missing Required Fields**: Fail-fast with specific field error messages
+- **Invalid Example File**: Fail-fast with configuration error
+- **YAML Generation Errors**: Comprehensive validation of generated YAML
 
 ## 🔧 Configuration
 
@@ -97,56 +93,64 @@ Frontmatter Data → Content Analysis → Meta Tag Requirements → AI Generatio
 # In COMPONENT_CONFIG
 metatags:
   generator: "metatags"
-  api_provider: "deepseek"
+  type: "frontmatter"
   priority: 4
   required: true
-  ai_detection: false
+  fail_fast: true
 ```
 
-### **Meta Tag Templates**
+### **Example File Structure**
 ```yaml
-# components/metatags/prompt.yaml
-meta_templates:
-  title: "{material_name} Laser Cleaning: Complete Guide & Applications"
-  description: "Comprehensive guide to {material_name} laser cleaning applications, techniques, and best practices for industrial surface treatment."
-  keywords: "{material_name}, laser cleaning, surface treatment, industrial cleaning, material processing"
-```
-
-### **API Configuration**
-```python
-# API client requirements
-api_config = {
-    "provider": "deepseek",
-    "model": "deepseek-chat",
-    "temperature": 0.2,  # Lower for consistency in meta descriptions
-    "max_tokens": 300
-}
+# components/metatags/example_metatags.md
+---
+title: Material Laser Cleaning - Complete Technical Guide
+meta_tags:
+- name: description
+  content: Comprehensive guide...
+- name: keywords
+  content: material, laser cleaning...
+opengraph:
+- property: og:title
+  content: Material Laser Cleaning Guide
+twitter:
+- name: twitter:card
+  content: summary_large_image
+canonical: https://z-beam.com/material-laser-cleaning
+---
 ```
 
 ## 📝 Usage Examples
 
 ### **Basic Usage**
 ```python
-from components.metatags.generator import MetaTagsComponentGenerator
+from components.metatags.generator import MetatagsComponentGenerator
 
-generator = MetaTagsComponentGenerator("aluminum")
+generator = MetatagsComponentGenerator()
+
+# Frontmatter data is required
+frontmatter_data = {
+    "title": "Aluminum Laser Cleaning Guide",
+    "description": "Complete guide to aluminum laser cleaning techniques",
+    "category": "metal",
+    "author": "Dr. Materials Engineer"
+}
+
 result = generator.generate(
-    material_data={
-        "name": "Aluminum",
-        "description": "Lightweight metal widely used in aerospace and automotive industries",
-        "category": "Light Metal",
-        "properties": {"density": "2.7 g/cm³", "thermal_conductivity": "237 W/m·K"}
-    },
-    content_context={
-        "main_topics": ["surface preparation", "oxide removal", "paint stripping"],
-        "target_audience": "industrial engineers"
-    },
-    api_client=deepseek_client
+    material_name="Aluminum",
+    material_data={"name": "Aluminum"},
+    frontmatter_data=frontmatter_data
 )
 
 if result.success:
-    print(result.content)  # HTML meta tags block
-    print(f"Generated {result.metadata['meta_count']} meta tags")
+    print(result.content)  # YAML frontmatter with meta tags
+    # Content will be:
+    # ---
+    # title: Aluminum Laser Cleaning Guide
+    # meta_tags:
+    # - name: description
+    #   content: Complete guide to aluminum laser cleaning techniques
+    # ...
+    # ---
 ```
 
 ### **Integration with Dynamic Generator**
@@ -161,47 +165,56 @@ frontmatter_result = generator.generate_component("aluminum", "frontmatter")
 # Generate metatags using frontmatter context
 metatags_result = generator.generate_component("aluminum", "metatags")
 
-# The metatags will be optimized based on the frontmatter content
+# The metatags will be generated as YAML frontmatter
 ```
 
 ## 🧪 Testing & Validation
 
 ### **Unit Tests**
 ```python
-# components/metatags/testing/test_metatags.py
-class TestMetaTagsComponentGenerator:
+# components/metatags/tests/test_metatags_component.py
+class TestMetatagsComponentGenerator:
     
     def test_successful_generation(self):
-        """Test successful meta tag generation"""
-        generator = MetaTagsComponentGenerator("aluminum")
+        """Test successful YAML meta tag generation"""
+        generator = MetatagsComponentGenerator()
+        frontmatter_data = {
+            "title": "Aluminum Laser Cleaning",
+            "description": "Complete guide to aluminum laser cleaning",
+            "category": "metal",
+            "author": "Test Author"
+        }
         result = generator.generate(
-            material_data=valid_material_data,
-            content_context=valid_context,
-            api_client=mock_client
+            material_name="Aluminum",
+            frontmatter_data=frontmatter_data
         )
         
         assert result.success is True
         assert result.component_type == "metatags"
-        assert "<meta" in result.content
-        assert "og:" in result.content  # Open Graph tags present
+        assert result.content.startswith("---")
+        assert "title:" in result.content
+        assert "meta_tags:" in result.content
+        assert "opengraph:" in result.content
+        assert "twitter:" in result.content
     
-    def test_missing_content_context(self):
-        """Test behavior when content context is missing"""
-        generator = MetaTagsComponentGenerator("aluminum")
+    def test_missing_frontmatter_data(self):
+        """Test behavior when frontmatter data is missing"""
+        generator = MetatagsComponentGenerator()
         result = generator.generate(
-            material_data=valid_material_data,
-            api_client=mock_client
+            material_name="Aluminum",
+            frontmatter_data=None
         )
         
         assert result.success is False
-        assert "content context" in result.error_message.lower()
+        assert "frontmatter data" in result.error_message.lower()
 ```
 
 ### **Integration Tests**
-- **End-to-End Generation**: Complete workflow from material data to HTML meta tags
+- **End-to-End Generation**: Complete workflow from frontmatter to YAML meta tags
+- **YAML Validation**: Verify generated content is valid YAML frontmatter
 - **SEO Validation**: Verify generated tags meet SEO best practices
 - **Social Media Integration**: Test Open Graph and Twitter Card functionality
-- **HTML Validation**: Ensure generated HTML is well-formed
+- **Fail-Fast Validation**: Ensure proper error handling for missing data
 
 ### **Mock Implementation**
 ```python
@@ -233,16 +246,18 @@ class MockMetaTagsComponentGenerator(MetaTagsComponentGenerator):
 ## 📈 Performance & Quality Metrics
 
 ### **Performance Targets**
-- **Generation Time**: < 5 seconds per material
-- **API Calls**: 1 call per material (for description optimization)
-- **Success Rate**: > 95% for valid inputs
-- **Meta Tag Count**: 15-25 tags per material
+- **Generation Time**: < 0.1 seconds per material
+- **API Calls**: 0 calls (frontmatter-based, no external APIs)
+- **Success Rate**: > 95% for valid frontmatter data
+- **YAML Validity**: 100% valid YAML frontmatter
+- **Fail-Fast**: Immediate failure on missing required data
 
 ### **Quality Metrics**
+- **YAML Compliance**: 100% valid YAML frontmatter format
 - **SEO Score**: > 90% on SEO best practice checklists
 - **Social Media Compatibility**: Full Open Graph and Twitter Card support
-- **HTML Validity**: 100% valid HTML5 markup
-- **Content Relevance**: Meta descriptions should accurately reflect content
+- **Content Relevance**: Meta descriptions accurately reflect content
+- **Fail-Fast Reliability**: Consistent error handling for invalid inputs
 
 ### **Monitoring**
 - **Generation Success Rate**: Track success/failure ratios
@@ -271,20 +286,25 @@ class MockMetaTagsComponentGenerator(MetaTagsComponentGenerator):
 ## 🚨 Error Handling & Troubleshooting
 
 ### **Common Issues**
-1. **Missing Content Context**
-   - **Symptom**: Generation fails with context dependency error
-   - **Solution**: Ensure frontmatter or other content components run first
-   - **Prevention**: Add context validation in workflow orchestration
+1. **Missing Frontmatter Data**
+   - **Symptom**: Generation fails with "No frontmatter data available"
+   - **Solution**: Ensure frontmatter data is provided to the generator
+   - **Prevention**: Add frontmatter validation in workflow orchestration
 
-2. **API Description Generation Failure**
-   - **Symptom**: Fallback to basic templates with warning
-   - **Solution**: Check API connectivity and retry logic
-   - **Prevention**: Implement robust API error handling
+2. **Missing Required Fields**
+   - **Symptom**: Fail-fast error with specific field name
+   - **Solution**: Ensure frontmatter contains title, description, and category
+   - **Prevention**: Validate frontmatter completeness before generation
 
-3. **Invalid HTML Generation**
-   - **Symptom**: Malformed meta tags or encoding issues
-   - **Solution**: Add HTML validation and sanitization
-   - **Prevention**: Comprehensive output validation
+3. **Invalid Example File**
+   - **Symptom**: Configuration error about missing example file
+   - **Solution**: Verify components/metatags/example_metatags.md exists
+   - **Prevention**: Include example file in component deployment
+
+4. **YAML Generation Errors**
+   - **Symptom**: Invalid YAML syntax in output
+   - **Solution**: Check frontmatter data for special characters
+   - **Prevention**: Sanitize input data before generation
 
 ### **Debug Information**
 ```python
@@ -293,15 +313,16 @@ import logging
 logging.basicConfig(level=logging.DEBUG)
 
 # Check component state
-generator = MetaTagsComponentGenerator("aluminum")
+generator = MetatagsComponentGenerator()
 print(f"Component type: {generator.get_component_type()}")
-print(f"Material: {generator.material_name}")
 
-# Validate meta tag output
-from bs4 import BeautifulSoup
-soup = BeautifulSoup(result.content, 'html.parser')
-meta_tags = soup.find_all('meta')
-print(f"Found {len(meta_tags)} meta tags")
+# Validate YAML output
+import yaml
+try:
+    parsed = yaml.safe_load(result.content)
+    print(f"✅ Valid YAML with {len(parsed)} top-level keys")
+except yaml.YAMLError as e:
+    print(f"❌ Invalid YAML: {e}")
 ```
 
 ## 📚 Related Documentation
@@ -319,23 +340,23 @@ print(f"Found {len(meta_tags)} meta tags")
 ## ✅ Validation Checklist
 
 ### **Pre-Generation Validation**
-- [ ] Content context available and valid
-- [ ] Material data contains required fields (name, description)
-- [ ] API client properly configured and available
-- [ ] Component configuration loaded correctly
+- [ ] Frontmatter data available and not None
+- [ ] Required fields present: title, description, category
+- [ ] Example file exists: components/metatags/example_metatags.md
+- [ ] Frontmatter data contains valid strings
 
 ### **Post-Generation Validation**
-- [ ] Generated content contains valid HTML
-- [ ] All required meta tags are present (title, description, OG tags)
-- [ ] No malformed or duplicate meta tags
-- [ ] Content is properly escaped and encoded
-- [ ] Social media tags follow current standards
+- [ ] Generated content is valid YAML frontmatter
+- [ ] All required sections present: title, meta_tags, opengraph, twitter
+- [ ] YAML structure matches example format
+- [ ] Content is properly formatted with `---` delimiters
+- [ ] No malformed or invalid YAML syntax
 
 ### **Integration Validation**
 - [ ] Component integrates properly with dynamic generator
 - [ ] Dependencies are correctly specified and enforced
-- [ ] Error handling works as expected
-- [ ] Performance meets targets
+- [ ] Error handling works as expected with fail-fast behavior
+- [ ] Performance meets targets (< 0.1s generation time)
 
 ---
 

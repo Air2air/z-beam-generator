@@ -258,6 +258,9 @@ def add_version_log_to_content(
     """
     Add version log to component content.
 
+    For YAML frontmatter files, add version info as comments to preserve format.
+    For other content types, append as footer section.
+
     Args:
         content: Original content
         material: Material name
@@ -270,11 +273,31 @@ def add_version_log_to_content(
     # Create version log entry
     version_entry = create_version_log_entry(material, component_type, filepath)
 
-    # Format version log as footer
-    version_footer = format_version_log_footer(version_entry)
+    # Check if content is YAML frontmatter (starts and ends with ---)
+    is_yaml_frontmatter = (
+        content.strip().startswith('---') and
+        content.strip().endswith('---') and
+        content.count('---') >= 2
+    )
 
-    # Append version log to content
-    return content + "\n\n" + version_footer
+    if is_yaml_frontmatter:
+        # For YAML files, add version info as comments at the end (without --- delimiters)
+        version_comments = [
+            "",
+            "# Version Information",
+            f"# Generated: {version_entry['timestamp']}",
+            f"# Material: {version_entry['material']}",
+            f"# Component: {version_entry['component_type']}",
+            f"# Generator: Z-Beam v{version_entry['generator_version']}",
+            f"# Author: {version_entry['author']}",
+            f"# Platform: {version_entry['system_info']['platform']} ({version_entry['system_info']['python_version']})",
+            f"# File: {version_entry['filepath']}",
+        ]
+        return content + "\n" + "\n".join(version_comments)
+    else:
+        # For other content types, use the original footer format
+        version_footer = format_version_log_footer(version_entry)
+        return content + "\n\n" + version_footer
 
 
 def create_version_log_entry(material: str, component_type: str, filepath: str) -> dict:
@@ -300,7 +323,7 @@ def create_version_log_entry(material: str, component_type: str, filepath: str) 
             "python_version": platform.python_version(),
             "hostname": platform.node(),
         }
-    except:
+    except Exception:
         system_info = {
             "platform": "unknown",
             "python_version": "unknown",
@@ -322,7 +345,7 @@ def create_version_log_entry(material: str, component_type: str, filepath: str) 
         # This would be passed from the generation context
         author_info = os.environ.get("ZBEAM_AUTHOR", "AI Assistant")
         generation_context["author"] = author_info
-    except:
+    except Exception:
         generation_context["author"] = "AI Assistant"
 
     return generation_context

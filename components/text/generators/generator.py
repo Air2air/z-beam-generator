@@ -7,7 +7,7 @@ Provides a clean interface to the fail_fast_generator.py text generation system.
 """
 
 import logging
-from typing import Dict, Optional
+from typing import Dict, Optional, Any
 
 from generators.component_generators import APIComponentGenerator, ComponentResult
 
@@ -25,6 +25,16 @@ class TextComponentGenerator(APIComponentGenerator):
     def __init__(self):
         """Initialize the text component generator."""
         super().__init__("text")
+
+    def get_component_info(self) -> Dict[str, Any]:
+        """Get component information"""
+        return {
+            "name": "text",
+            "description": "Technical content generation for laser cleaning articles",
+            "version": "3.0.0",
+            "requires_api": True,
+            "type": "dynamic",
+        }
 
     def generate(
         self,
@@ -57,10 +67,15 @@ class TextComponentGenerator(APIComponentGenerator):
                 f"📝 Generating text for {material_name} using simplified approach"
             )
 
-            # Create generator with basic settings
+            # Create generator with settings optimized for test vs production
+            # Use faster retry delays in test mode to speed up test execution
+            from config_manager import is_test_mode
+            
+            retry_delay = 0.1 if is_test_mode() else 1.0
+            
             generator = create_fail_fast_generator(
                 max_retries=3,
-                retry_delay=1.0,
+                retry_delay=retry_delay,
                 enable_scoring=False,  # Disable scoring for basic text generation
                 skip_ai_detection=True,  # No AI detection in basic text component
             )
@@ -99,9 +114,14 @@ class TextComponentGenerator(APIComponentGenerator):
                 logger.error(f"Validation error in content formatting: {e}")
                 raise
 
+            # Apply centralized version stamping (will prepend to any existing legacy stamps)
+            from versioning import stamp_component_output
+
+            final_content = stamp_component_output("text", formatted_content)
+
             return ComponentResult(
                 component_type="text",
-                content=formatted_content,
+                content=final_content,
                 success=True,
                 error_message=None,
             )

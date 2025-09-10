@@ -10,7 +10,7 @@ from unittest.mock import MagicMock, patch
 import pytest
 import yaml
 
-from components.text.generators.fail_fast_generator import FailFastContentGenerator
+from components.text.generators.fail_fast_generator import FailFastTextGenerator
 
 
 class TestSiliconNitrideCaseStudy:
@@ -19,7 +19,7 @@ class TestSiliconNitrideCaseStudy:
     @pytest.fixture
     def generator(self):
         """Create a FailFastContentGenerator instance for testing."""
-        return FailFastContentGenerator()
+        return FailFastTextGenerator()
 
     @pytest.fixture
     def case_study_content(self):

@@ -2,7 +2,14 @@
 """
 Frontmatter Component Test Suite
 
-Comprehensive tests for frontmatter generation, validation, and enhancement.
+Comprehensive tests for frontmatter generation, validation, and enhancement
+using hybrid data integration approach:
+
+- Material data from materials.yaml combined with prompt templates
+- Author information resolution via author_id from authors.json
+- Template variable substitution and dynamic content generation
+- Property enhancement with category ranges and statistical data
+- Frontmatter validation and format checking
 """
 
 import unittest
@@ -58,6 +65,55 @@ class TestFrontmatterGenerator(unittest.TestCase):
         """Test generator initialization"""
         self.assertIsInstance(self.generator, FrontmatterComponentGenerator)
         self.assertIsNotNone(self.generator.prompt_config)
+
+    @patch('pathlib.Path.exists')
+    @patch('builtins.open', create=True)
+    @patch('yaml.safe_load')
+    def test_prompt_config_loading_success(self, mock_yaml_load, mock_open, mock_exists):
+        """Test successful loading of prompt configuration from prompt.yaml"""
+        # Mock file exists
+        mock_exists.return_value = True
+
+        # Mock YAML content
+        mock_prompt_config = {
+            'name': 'Frontmatter Generator',
+            'template': 'Test template with {subject} and {author_name}'
+        }
+        mock_yaml_load.return_value = mock_prompt_config
+
+        # Create new generator to test loading
+        generator = FrontmatterComponentGenerator()
+
+        # Verify prompt config was loaded
+        self.assertEqual(generator.prompt_config, mock_prompt_config)
+        mock_exists.assert_called_once()
+        mock_open.assert_called_once()
+        mock_yaml_load.assert_called_once()
+
+    @patch('pathlib.Path.exists')
+    def test_prompt_config_loading_file_not_found(self, mock_exists):
+        """Test prompt config loading when prompt.yaml file doesn't exist"""
+        # Mock file doesn't exist
+        mock_exists.return_value = False
+
+        # Create new generator to test loading
+        generator = FrontmatterComponentGenerator()
+
+        # Verify empty config when file not found
+        self.assertEqual(generator.prompt_config, {})
+
+    @patch('pathlib.Path.exists')
+    @patch('yaml.safe_load', side_effect=Exception("YAML parsing error"))
+    def test_prompt_config_loading_yaml_error(self, mock_yaml_load, mock_exists):
+        """Test prompt config loading with YAML parsing error"""
+        # Mock file exists but YAML parsing fails
+        mock_exists.return_value = True
+
+        # Create new generator to test loading
+        generator = FrontmatterComponentGenerator()
+
+        # Verify empty config when YAML parsing fails
+        self.assertEqual(generator.prompt_config, {})
 
     @patch('utils.get_author_by_id')
     def test_create_template_vars_success(self, mock_get_author):
@@ -131,43 +187,64 @@ class TestFrontmatterGenerator(unittest.TestCase):
 
         self.assertIn("author_id", str(context.exception))
 
-    def test_build_api_prompt_success(self):
-        """Test successful API prompt building"""
-        template_vars = {
-            'subject': 'Steel',
-            'subject_lowercase': 'steel',
-            'subject_slug': 'steel',
-            'material_formula': 'Fe-C',
-            'material_symbol': 'Fe',
-            'material_type': 'ferrous alloy',
-            'category': 'metal',
-            'author_name': 'Ikmanda Roswati',
-            'author_object_sex': 'm',
-            'author_object_title': 'Ph.D.',
-            'author_object_country': 'Indonesia',
-            'author_object_expertise': 'Ultrafast Laser Physics',
-            'author_object_image': '/images/author/ikmanda-roswati.jpg',
-            'persona_country': 'Indonesia',
-            'author_id': 3,
-            'timestamp': '2025-09-08T10:30:00Z'
-        }
+    @patch('utils.get_author_by_id')
+    def test_build_api_prompt_with_template_integration(self, mock_get_author):
+        """Test API prompt building with actual template integration from prompt.yaml"""
+        mock_get_author.return_value = self.test_author_data
 
-        prompt = self.generator._build_api_prompt(template_vars)
+        # Set up generator with test template that mimics the actual prompt.yaml structure
+        test_template = """TASK: Generate ONLY valid YAML frontmatter data for {subject} laser cleaning.
+---
+name: "{subject}"
+author: "{author_name}"
+category: "{category}"
+chemicalProperties:
+  formula: "{material_formula}"
+---
+"""
+        self.generator.prompt_config = {'template': test_template}
 
-        # Verify prompt contains expected content
+        # Create template variables
+        template_vars = self.generator._create_template_vars(
+            "Steel",
+            self.test_material_data,
+            self.test_author_data
+        )
+
+        # Build API prompt
+        prompt = self.generator._build_api_prompt(template_vars, None)
+
+        # Verify template variables were substituted correctly from material data
         self.assertIn('Steel', prompt)
         self.assertIn('Ikmanda Roswati', prompt)
-        self.assertIn('Indonesia', prompt)
-        self.assertIn('---', prompt)  # YAML markers
+        self.assertIn('metal', prompt)
+        self.assertIn('Fe-C', prompt)
+        self.assertIn('---', prompt)  # YAML markers should be present
+        self.assertIn('TASK: Generate ONLY valid YAML', prompt)  # Template content preserved
 
-    def test_build_api_prompt_missing_variable(self):
-        """Test API prompt building with missing template variable"""
-        incomplete_vars = {'subject': 'Steel'}  # Missing required variables
+    def test_build_api_prompt_missing_template_config(self):
+        """Test API prompt building with missing template configuration"""
+        # Clear prompt config
+        self.generator.prompt_config = {}
+
+        template_vars = {'subject': 'Steel'}
 
         with self.assertRaises(ValueError) as context:
-            self.generator._build_api_prompt(incomplete_vars)
+            self.generator._build_api_prompt(template_vars, None)
 
-        self.assertIn("Missing template variable", str(context.exception))
+        self.assertIn("Prompt configuration not loaded", str(context.exception))
+
+    def test_build_api_prompt_missing_template_field(self):
+        """Test API prompt building with missing template field in config"""
+        # Set config without template field
+        self.generator.prompt_config = {'name': 'Test Config'}
+
+        template_vars = {'subject': 'Steel'}
+
+        with self.assertRaises(ValueError) as context:
+            self.generator._build_api_prompt(template_vars, None)
+
+        self.assertIn("missing required 'template' field", str(context.exception))
 
     @patch('utils.property_enhancer.enhance_generated_frontmatter')
     def test_post_process_content_success(self, mock_enhance):
@@ -466,6 +543,23 @@ class TestFrontmatterIntegration(unittest.TestCase):
     def setUp(self):
         """Set up integration test fixtures"""
         self.generator = FrontmatterComponentGenerator()
+        self.test_author_data = {
+            "id": 3,
+            "name": "Ikmanda Roswati",
+            "sex": "m",
+            "title": "Ph.D.",
+            "country": "Indonesia",
+            "expertise": "Ultrafast Laser Physics and Material Interactions",
+            "image": "/images/author/ikmanda-roswati.jpg"
+        }
+        self.test_material_data = {
+            "name": "Steel",
+            "author_id": 3,
+            "formula": "Fe-C",
+            "symbol": "Fe",
+            "category": "metal",
+            "material_type": "ferrous alloy"
+        }
 
     @patch('utils.get_author_by_id')
     @patch('components.frontmatter.generator.APIComponentGenerator.__init__')
@@ -517,6 +611,67 @@ class TestFrontmatterIntegration(unittest.TestCase):
         self.assertIn("Steel", result.content)
         self.assertIn("Ikmanda Roswati", result.content)
         self.assertIn("Indonesia", result.content)
+
+    @patch('utils.get_author_by_id')
+    @patch('components.frontmatter.generator.APIComponentGenerator.__init__')
+    def test_hybrid_data_integration_end_to_end(self, mock_init, mock_get_author):
+        """Test complete hybrid data integration: materials.yaml + prompt.yaml + authors.json"""
+        mock_init.return_value = None
+        mock_get_author.return_value = self.test_author_data
+
+        # Mock API client
+        mock_api_client = Mock()
+        mock_api_response = Mock()
+        mock_api_response.success = True
+        mock_api_response.content = """---
+name: "Steel"
+author: "Ikmanda Roswati"
+category: "metal"
+chemicalProperties:
+  formula: "Fe-C"
+---
+"""
+        mock_api_client.generate_simple.return_value = mock_api_response
+
+        # Create generator with realistic template from prompt.yaml
+        generator = FrontmatterComponentGenerator()
+        generator.prompt_config = {
+            'template': """TASK: Generate frontmatter for {subject}.
+---
+name: "{subject}"
+author: "{author_name}"
+category: "{category}"
+chemicalProperties:
+  formula: "{material_formula}"
+  symbol: "{material_symbol}"
+---
+"""
+        }
+
+        # Generate using material data (simulating data from materials.yaml)
+        result = generator.generate(
+            "Steel",
+            self.test_material_data,  # Material data with formula, symbol, category
+            api_client=mock_api_client,
+            author_info=self.test_author_data  # Author data (simulating authors.json)
+        )
+
+        # Verify successful generation
+        self.assertTrue(result.success)
+        self.assertIn("Steel", result.content)
+        self.assertIn("Ikmanda Roswati", result.content)
+        self.assertIn("Fe-C", result.content)  # Material formula from materials.yaml
+        self.assertIn("metal", result.content)  # Category from materials.yaml
+
+        # Verify the API was called with properly formatted prompt
+        mock_api_client.generate_simple.assert_called_once()
+        call_args = mock_api_client.generate_simple.call_args[0][0]
+
+        # Verify template variables were substituted in the prompt
+        self.assertIn("Steel", call_args)
+        self.assertIn("Ikmanda Roswati", call_args)
+        self.assertIn("Fe-C", call_args)
+        self.assertIn("TASK: Generate frontmatter", call_args)
 
     def _get_complete_frontmatter_sample(self):
         """Get complete frontmatter sample for integration testing"""

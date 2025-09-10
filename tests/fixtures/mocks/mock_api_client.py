@@ -72,12 +72,6 @@ class MockAPIClient:
                 "optimal_temperature": 0.7,
                 "exclude_params": ["frequency_penalty", "presence_penalty"],
             },
-            "gemini": {
-                "model": "gemini-1.5-pro",
-                "max_tokens": 8000,
-                "optimal_temperature": 0.7,
-                "different_format": True,
-            },
             "openai": {
                 "model": "gpt-4-turbo",
                 "max_tokens": 4000,
@@ -787,8 +781,6 @@ def create_provider_specific_mock(provider_name: str, **kwargs) -> MockAPIClient
         client.set_response_delay(0.15)  # Slightly slower for realism
     elif provider_name == "grok":
         client.set_response_delay(0.12)  # Fast response
-    elif provider_name == "gemini":
-        client.set_response_delay(0.18)  # Variable response times
 
     return client
 
@@ -846,7 +838,7 @@ def test_mock_client_compatibility():
 
 def benchmark_mock_providers():
     """Benchmark different mock provider configurations"""
-    providers = ["deepseek", "grok", "gemini", "openai"]
+    providers = ["deepseek", "grok", "openai"]
     results = {}
 
     for provider in providers:

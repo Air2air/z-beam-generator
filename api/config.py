@@ -48,14 +48,6 @@ API_PROVIDERS = {
         "model": "winston-ai-detector",
         "default_model": "winston-ai-detector",
     },
-    "gemini": {
-        "name": "Gemini",
-        "env_var": "GEMINI_API_KEY",
-        "env_key": "GEMINI_API_KEY",  # For backward compatibility
-        "base_url": "https://generativelanguage.googleapis.com",
-        "model": "gemini-1.5-pro",
-        "default_model": "gemini-1.5-pro",
-    },
 }
 
 
@@ -64,16 +56,14 @@ class APIConfig:
     """Configuration for API client"""
 
     api_key: str
-    base_url: str = "https://api.deepseek.com"
-    model: str = "deepseek-chat"
-    max_tokens: int = 2000  # FURTHER REDUCED for faster responses
-    temperature: float = (
-        0.9  # INCREASED for faster, more creative responses
-    )
-    timeout_connect: int = 10  # REDUCED for faster failure
-    timeout_read: int = 45  # REDUCED for faster timeout
-    max_retries: int = 1  # REDUCED to 1 retry for faster failure
-    retry_delay: float = 0.3  # REDUCED for faster retries
+    base_url: str
+    model: str
+    max_tokens: int
+    temperature: float
+    timeout_connect: int
+    timeout_read: int
+    max_retries: int
+    retry_delay: float
 
 
 class ConfigManager:
@@ -90,26 +80,78 @@ class ConfigManager:
                 "Please set your DeepSeek API key in your environment."
             )
 
+        base_url = os.getenv("DEEPSEEK_BASE_URL")
+        if not base_url:
+            raise ValueError(
+                "DEEPSEEK_BASE_URL environment variable not set. "
+                "Please set your DeepSeek base URL in your environment."
+            )
+
+        model = os.getenv("DEEPSEEK_MODEL")
+        if not model:
+            raise ValueError(
+                "DEEPSEEK_MODEL environment variable not set. "
+                "Please set your DeepSeek model in your environment."
+            )
+
+        max_tokens_str = os.getenv("DEEPSEEK_MAX_TOKENS")
+        if not max_tokens_str:
+            raise ValueError(
+                "DEEPSEEK_MAX_TOKENS environment variable not set. "
+                "Please set your DeepSeek max tokens in your environment."
+            )
+        max_tokens = int(max_tokens_str)
+
+        temperature_str = os.getenv("DEEPSEEK_TEMPERATURE")
+        if not temperature_str:
+            raise ValueError(
+                "DEEPSEEK_TEMPERATURE environment variable not set. "
+                "Please set your DeepSeek temperature in your environment."
+            )
+        temperature = float(temperature_str)
+
+        timeout_connect_str = os.getenv("DEEPSEEK_TIMEOUT_CONNECT")
+        if not timeout_connect_str:
+            raise ValueError(
+                "DEEPSEEK_TIMEOUT_CONNECT environment variable not set. "
+                "Please set your DeepSeek timeout connect in your environment."
+            )
+        timeout_connect = int(timeout_connect_str)
+
+        timeout_read_str = os.getenv("DEEPSEEK_TIMEOUT_READ")
+        if not timeout_read_str:
+            raise ValueError(
+                "DEEPSEEK_TIMEOUT_READ environment variable not set. "
+                "Please set your DeepSeek timeout read in your environment."
+            )
+        timeout_read = int(timeout_read_str)
+
+        max_retries_str = os.getenv("DEEPSEEK_MAX_RETRIES")
+        if not max_retries_str:
+            raise ValueError(
+                "DEEPSEEK_MAX_RETRIES environment variable not set. "
+                "Please set your DeepSeek max retries in your environment."
+            )
+        max_retries = int(max_retries_str)
+
+        retry_delay_str = os.getenv("DEEPSEEK_RETRY_DELAY")
+        if not retry_delay_str:
+            raise ValueError(
+                "DEEPSEEK_RETRY_DELAY environment variable not set. "
+                "Please set your DeepSeek retry delay in your environment."
+            )
+        retry_delay = float(retry_delay_str)
+
         return APIConfig(
             api_key=api_key,
-            base_url=os.getenv("DEEPSEEK_BASE_URL", "https://api.deepseek.com"),
-            model=os.getenv("DEEPSEEK_MODEL", "deepseek-chat"),
-            max_tokens=int(
-                os.getenv("DEEPSEEK_MAX_TOKENS", "2000")
-            ),  # OPTIMIZED: Further reduced from 3000
-            temperature=float(
-                os.getenv("DEEPSEEK_TEMPERATURE", "0.9")
-            ),  # OPTIMIZED: Increased from 0.8
-            timeout_connect=int(os.getenv("DEEPSEEK_TIMEOUT_CONNECT", "10")),
-            timeout_read=int(
-                os.getenv("DEEPSEEK_TIMEOUT_READ", "45")
-            ),  # OPTIMIZED: Reduced from 60
-            max_retries=int(
-                os.getenv("DEEPSEEK_MAX_RETRIES", "1")
-            ),  # OPTIMIZED: Reduced from 2
-            retry_delay=float(
-                os.getenv("DEEPSEEK_RETRY_DELAY", "0.3")
-            ),  # OPTIMIZED: Reduced from 0.5
+            base_url=base_url,
+            model=model,
+            max_tokens=max_tokens,
+            temperature=temperature,
+            timeout_connect=timeout_connect,
+            timeout_read=timeout_read,
+            max_retries=max_retries,
+            retry_delay=retry_delay,
         )
 
     @staticmethod
@@ -132,9 +174,3 @@ class ConfigManager:
             return False
 
         return True
-
-
-# Default configuration instance
-def get_default_config() -> APIConfig:
-    """Get default API configuration"""
-    return ConfigManager.load_config()

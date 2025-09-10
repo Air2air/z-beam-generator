@@ -7,7 +7,7 @@ Generates frontmatter YAML content with property enhancement.
 
 import logging
 import time
-from typing import Dict, Optional
+from typing import Dict, Optional, Any
 
 from generators.component_generators import APIComponentGenerator, ComponentResult
 
@@ -20,6 +20,16 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
     def __init__(self):
         super().__init__("frontmatter")
         self._load_prompt_config()
+
+    def get_component_info(self) -> Dict[str, Any]:
+        """Get component information"""
+        return {
+            "name": "frontmatter",
+            "description": "YAML frontmatter generation for laser cleaning articles",
+            "version": "4.0.1",
+            "requires_api": True,
+            "type": "dynamic",
+        }
 
     def _load_prompt_config(self):
         """Load prompt configuration from YAML file"""
@@ -95,10 +105,15 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
                     content, material_name, material_data
                 )
 
+                # Apply centralized version stamping
+                from versioning import stamp_component_output
+
+                final_content = stamp_component_output("frontmatter", enhanced_content)
+
                 logger.info(f"Generated frontmatter for {material_name}")
 
                 return ComponentResult(
-                    component_type="frontmatter", content=enhanced_content, success=True
+                    component_type="frontmatter", content=final_content, success=True
                 )
             else:
                 error_msg = api_response.error or "API call failed"
@@ -242,20 +257,18 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
             )
             if resolved_author_info
             else "Materials Science",
-            "author_object_image": resolved_author_info.get(
-                "image", "/images/default-author.jpg"
-            )
-            if resolved_author_info
-            else "/images/default-author.jpg",
+            "author_object_image": resolved_author_info.get("image")
+            if resolved_author_info and "image" in resolved_author_info
+            else None,  # FAIL-FAST: No default image allowed
             "article_type": material_data.get("article_type")
             if "article_type" in material_data
             else "material",  # Keep this for schema compatibility
-            "persona_country": resolved_author_info.get("country", "Unknown")
-            if resolved_author_info
-            else "Unknown",
-            "author_id": resolved_author_info.get("id", 0)
-            if resolved_author_info
-            else 0,
+            "persona_country": resolved_author_info.get("country")
+            if resolved_author_info and "country" in resolved_author_info
+            else None,  # FAIL-FAST: No default country allowed
+            "author_id": resolved_author_info.get("id")
+            if resolved_author_info and "id" in resolved_author_info
+            else None,  # FAIL-FAST: No default ID allowed
             "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
         }
 

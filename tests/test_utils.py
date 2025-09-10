@@ -94,6 +94,9 @@ def mock_api_calls(provider: str = "grok", error_rate: float = 0.0):
         from tests.fixtures.mocks.mock_api_client import MockAPIClient
 
         mock_client = MockAPIClient(provider)
+        # Enable failure simulation if error_rate > 0
+        if error_rate > 0:
+            mock_client.enable_failure_simulation(error_rate)
     except ImportError:
         from unittest.mock import MagicMock
 
@@ -149,8 +152,12 @@ def assert_content_quality(content: str, component_type: str, material: str):
     assert len(content) > 0, "Content must not be empty"
 
     if component_type == "frontmatter":
-        assert "---" in content, "Frontmatter must have YAML delimiters"
-        assert "title:" in content, "Frontmatter must have title"
+        # Frontmatter may have YAML delimiters OR version log format
+        has_yaml = "---" in content
+        has_version_log = "# Version Log" in content
+        assert has_yaml or has_version_log, "Frontmatter must have YAML delimiters or version log"
+        if has_yaml:
+            assert "title:" in content, "YAML frontmatter must have title"
     elif component_type == "text":
         assert len(content) > 100, "Text content must be substantial"
     elif component_type == "table":

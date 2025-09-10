@@ -15,6 +15,7 @@ from generators.component_generators import (
     ComponentResult,
     FrontmatterComponentGenerator,
 )
+from versioning import stamp_component_output
 
 
 class JsonldComponentGenerator(FrontmatterComponentGenerator):
@@ -51,24 +52,29 @@ class JsonldComponentGenerator(FrontmatterComponentGenerator):
     ) -> str:
         """Generate JSON-LD structured data from frontmatter using schema and example"""
 
-        # Load example file to understand the expected format
+        # Load example file to understand the expected format - FAIL-FAST: Must succeed
+        example_fields = {}
         try:
             example_path = Path(__file__).parent / "example_jsonld.md"
-            example_fields = {}
             if example_path.exists():
                 with open(example_path, "r", encoding="utf-8") as f:
                     example_content = f.read()
                     example_fields = self._parse_example_json_ld(example_content)
         except Exception:
-            example_fields = {}
+            # If example fails, try schema instead
+            pass
 
-        # Load schema to understand expected structure
-        try:
-            schema_path = (
-                Path(__file__).parent.parent.parent / "schemas" / "material.json"
-            )
-            schema_structure = {}
-            if schema_path.exists():
+        # Load schema to understand expected structure - FAIL-FAST: Must succeed if example not available
+        schema_structure = {}
+        if not example_fields:
+            try:
+                schema_path = (
+                    Path(__file__).parent.parent.parent / "schemas" / "material.json"
+                )
+                if not schema_path.exists():
+                    raise Exception(
+                        f"Required schema file missing: {schema_path} - fail-fast architecture requires complete schema configuration"
+                    )
                 with open(schema_path, "r", encoding="utf-8") as f:
                     schema = json.load(f)
                     # Extract relevant properties for JSON-LD
@@ -89,38 +95,37 @@ class JsonldComponentGenerator(FrontmatterComponentGenerator):
                         raise Exception(
                             "Schema missing required 'materialProfile.profile' structure - fail-fast architecture requires complete schema"
                         )
-            else:
+            except Exception as e:
                 raise Exception(
-                    f"Required schema file missing: {schema_path} - fail-fast architecture requires complete schema configuration"
+                    f"Failed to load schema: {e} - fail-fast architecture requires valid schema configuration"
                 )
-        except Exception as e:
-            raise Exception(
-                f"Failed to load schema: {e} - fail-fast architecture requires valid schema configuration"
-            )
 
-        # Extract values dynamically
+        # Extract values dynamically - FAIL-FAST: Must have either example or schema
         if example_fields:
             # Use example structure as template
             jsonld_data = self._build_from_example(
                 frontmatter_data, example_fields, material_name, self._material_data
             )
         elif schema_structure:
-            # Use schema structure
+            # Use schema structure as fallback
             jsonld_data = self._build_from_schema(
                 frontmatter_data, schema_structure, material_name
             )
         else:
-            # FAIL-FAST: No fallback allowed - system must have required schema or example
+            # FAIL-FAST: No configuration available
             raise Exception(
-                f"No schema or example provided for JSON-LD generation of {material_name} - fail-fast architecture requires explicit configuration"
+                f"No valid configuration found for JSON-LD generation of {material_name} - fail-fast architecture requires either example file or schema"
             )
 
         # Format as proper JSON-LD script tag
         json_content = json.dumps(jsonld_data, indent=2)
-        return f'<script type="application/ld+json">\n{json_content}\n</script>'
+        content = f'<script type="application/ld+json">\n{json_content}\n</script>'
+
+        # Apply centralized version stamping
+        return stamp_component_output("jsonld", content)
 
     def _parse_example_json_ld(self, example_content: str) -> Dict:
-        """Parse example file to extract JSON-LD structure"""
+        """Parse example file to extract JSON-LD structure - FAIL-FAST: Must succeed"""
         try:
             # Look for JSON-LD script tags
             if '<script type="application/ld+json">' in example_content:
@@ -131,9 +136,11 @@ class JsonldComponentGenerator(FrontmatterComponentGenerator):
                 if start_idx > 0 and end_idx > start_idx:
                     json_str = example_content[start_idx:end_idx].strip()
                     return json.loads(json_str)
-        except Exception:
-            pass
-        return {}
+        except Exception as e:
+            raise Exception(f"Failed to parse example JSON-LD: {e} - fail-fast architecture requires valid example file")
+
+        # FAIL-FAST: Must find and parse JSON-LD
+        raise Exception("JSON-LD script tag not found in example file - fail-fast architecture requires complete example structure")
 
     def _build_from_example(
         self,
@@ -148,16 +155,49 @@ class JsonldComponentGenerator(FrontmatterComponentGenerator):
         for key, example_value in example_structure.items():
             if key in ["@context", "@type"]:
                 result[key] = example_value
+            elif key == "headline":
+                result[key] = f"Laser Cleaning of {material_name} Materials"
+            elif key == "alternativeHeadline":
+                result[key] = f"Advanced Laser Ablation Techniques for {material_name} Surface Treatment"
+            elif key == "description":
+                result[key] = f"Comprehensive technical guide covering laser cleaning methodologies for {material_name} materials, including optimal parameters, industrial applications, and surface treatment benefits."
+            elif key == "abstract":
+                # Extract technical data for abstract - all fields required
+                wavelength = self._get_field(frontmatter_data, ["technicalSpecifications.wavelength", "wavelength"])
+                fluence = self._get_field(frontmatter_data, ["technicalSpecifications.fluenceRange", "fluenceRange"])
+                applications = self._get_field(frontmatter_data, ["applications"])
+                result[key] = f"Advanced laser cleaning techniques for {material_name} materials using {wavelength} wavelength at {fluence} fluence for {applications}."
+            elif key == "keywords":
+                # Generate comprehensive keywords from material data - all fields required
+                base_keywords = [material_name.lower(), f"{material_name.lower()} laser cleaning", f"{material_name.lower()} metal"]
+                tech_keywords = ["laser ablation", "non-contact cleaning", "surface treatment", "industrial laser"]
+                wavelength = self._get_field(frontmatter_data, ["technicalSpecifications.wavelength", "wavelength"])
+                tech_keywords.append(f"{wavelength} wavelength")
+                tech_keywords.append("laser fluence")
+                applications = self._get_field(frontmatter_data, ["applications"])
+                if "aerospace" in applications.lower():
+                    tech_keywords.append("aerospace applications")
+                if "automotive" in applications.lower():
+                    tech_keywords.append("automotive applications")
+                result[key] = base_keywords + tech_keywords
+            elif key == "articleBody":
+                # Generate comprehensive article body (100-150 words) matching example format - all fields required
+                density = self._get_field(frontmatter_data, ["properties.density", "physicalProperties.density", "density"])
+                thermal_conductivity = self._get_field(frontmatter_data, ["properties.thermalConductivity", "physicalProperties.thermalConductivity", "thermalConductivity"])
+                wavelength = self._get_field(frontmatter_data, ["technicalSpecifications.wavelength", "wavelength"])
+                fluence = self._get_field(frontmatter_data, ["technicalSpecifications.fluenceRange", "fluenceRange"])
+                pulse_duration = self._get_field(frontmatter_data, ["technicalSpecifications.pulseDuration", "pulseDuration"])
+                applications = self._get_field(frontmatter_data, ["applications"])
+
+                result[key] = f"{material_name} is a lightweight metal with {density} density and {thermal_conductivity} thermal conductivity extensively used in aircraft component cleaning, automotive engine part restoration. Laser cleaning utilizes {wavelength} wavelength at {fluence} fluence and {pulse_duration} pulse duration to remove oxidation and thermal coatings, paint and corrosion layers while preserving material integrity. The process operates at controlled power levels with precise beam control for optimal surface treatment. Key advantages include non-contact processing, selective contamination removal, and environmental safety compared to chemical methods."
+            elif key == "wordCount":
+                # Calculate actual word count from articleBody
+                article_body = result.get("articleBody", "")
+                result[key] = len(article_body.split())
             elif key == "name":
                 result[key] = self._get_field(
-                    frontmatter_data, ["title", "name"], material_name
-                )  # material_name as fallback for name
-            elif key == "description":
-                result[key] = self._get_field(
-                    frontmatter_data,
-                    ["description"],
-                    f"Technical specifications and properties for {material_name}",
-                )  # Generated description as fallback
+                    frontmatter_data, ["title", "name"]
+                )
             elif key == "category":
                 if (
                     "category" not in frontmatter_data
@@ -167,8 +207,8 @@ class JsonldComponentGenerator(FrontmatterComponentGenerator):
                         "Frontmatter data missing required 'category' or 'type' field - fail-fast architecture requires complete material information"
                     )
                 result[key] = self._get_field(
-                    frontmatter_data, ["category", "type"], None
-                )  # No default - must exist
+                    frontmatter_data, ["category", "type"]
+                )
             elif isinstance(example_value, dict):
                 result[key] = self._build_nested_structure(
                     frontmatter_data, example_value, key, self._author_info
@@ -183,10 +223,12 @@ class JsonldComponentGenerator(FrontmatterComponentGenerator):
                     # For other arrays (keywords, mentions, etc.), use as-is
                     result[key] = example_value
             else:
-                # Try to extract similar field from frontmatter - allow defaults for optional fields
-                result[key] = self._get_field(
-                    frontmatter_data, [key], str(example_value)
-                )
+                # Try to extract field from frontmatter - skip if not available (fail-fast for required fields only)
+                try:
+                    result[key] = self._get_field(frontmatter_data, [key])
+                except Exception:
+                    # Skip fields that are not available in frontmatter - use example value as-is
+                    result[key] = example_value
 
         return result
 
@@ -198,15 +240,14 @@ class JsonldComponentGenerator(FrontmatterComponentGenerator):
             "@context": "https://schema.org",
             "@type": "Material",
             "name": self._get_field(
-                frontmatter_data, ["title", "name"], material_name
+                frontmatter_data, ["title", "name"]
             ),  # material_name as fallback
             "description": self._get_field(
                 frontmatter_data,
-                ["description"],
-                f"Technical specifications and properties for {material_name}",
+                ["description"]
             ),  # Generated fallback
             "category": self._get_field(
-                frontmatter_data, ["category", "type"], None
+                frontmatter_data, ["category", "type"]
             ),  # No default - must exist
         }
 
@@ -214,26 +255,17 @@ class JsonldComponentGenerator(FrontmatterComponentGenerator):
         if "chemical" in schema_structure:
             chem_props = schema_structure["chemical"].get("properties", {})
             if chem_props:
-                # FAIL-FAST: Chemical properties must be available if schema defines them
                 formula = self._get_field(
-                    frontmatter_data, ["chemicalProperties.formula", "formula"], None
+                    frontmatter_data, ["chemicalProperties.formula", "formula"]
                 )
                 symbol = self._get_field(
-                    frontmatter_data, ["chemicalProperties.symbol", "symbol"], None
+                    frontmatter_data, ["chemicalProperties.symbol", "symbol"]
                 )
-                if not formula:
-                    raise Exception(
-                        "Chemical formula required but not found in frontmatter data - fail-fast architecture requires complete chemical information"
-                    )
-                if not symbol:
-                    raise Exception(
-                        "Chemical symbol required but not found in frontmatter data - fail-fast architecture requires complete chemical information"
-                    )
 
                 jsonld["chemicalComposition"] = {
                     "@type": "ChemicalSubstance",
-                    "molecularFormula": formula,  # Already validated above
-                    "identifier": symbol,  # Already validated above
+                    "molecularFormula": formula,
+                    "identifier": symbol,
                 }
 
         # Add properties array
@@ -248,13 +280,8 @@ class JsonldComponentGenerator(FrontmatterComponentGenerator):
                 for prop_name, prop_config in section_props.items():
                     prop_value = self._get_field(
                         frontmatter_data,
-                        [f"{section_name}Properties.{prop_name}", prop_name],
-                        None,
+                        [f"{section_name}Properties.{prop_name}", prop_name]
                     )
-                    if not prop_value:
-                        raise Exception(
-                            f"Property '{prop_name}' required by schema but not found in frontmatter data - fail-fast architecture requires complete property information"
-                        )
 
                     # FAIL-FAST: Property config must have title
                     if "title" not in prop_config:
@@ -265,8 +292,8 @@ class JsonldComponentGenerator(FrontmatterComponentGenerator):
                     properties.append(
                         {
                             "@type": "PropertyValue",
-                            "name": prop_config["title"],  # Already validated above
-                            "value": prop_value,  # Already validated above
+                            "name": prop_config["title"],
+                            "value": prop_value,
                         }
                     )
 
@@ -292,29 +319,28 @@ class JsonldComponentGenerator(FrontmatterComponentGenerator):
                 if author_info and "name" in author_info:
                     result[key] = author_info["name"]
                 else:
-                    author_name = self._get_field(frontmatter_data, ["author"], None)
-                    if author_name:
-                        result[key] = author_name
-                    else:
-                        # Fallback to example value if author not found
-                        result[key] = str(example_value)
+                    result[key] = self._get_field(frontmatter_data, ["author"])
             else:
                 field_path = (
                     f"{parent_key}.{key}"
                     if parent_key != "chemicalComposition"
                     else f"chemicalProperties.{key}"
                 )
-                result[key] = self._get_field(
-                    frontmatter_data, [field_path, key], str(example_value)
-                )  # Allow example_value as fallback for optional nested fields
+                try:
+                    result[key] = self._get_field(
+                        frontmatter_data, [field_path, key]
+                    )
+                except Exception:
+                    # Use example value if field not available
+                    result[key] = example_value
         return result
 
     def _build_properties_array(
         self, frontmatter_data: Dict, example_array: list, material_data: Dict
     ) -> list:
-        """Build properties array from example structure"""
+        """Build properties array from frontmatter data - FAIL-FAST: Must find properties"""
         if not example_array:
-            return []
+            raise Exception("Example array is empty - fail-fast architecture requires complete example structure")
 
         # Use first item as template
         template = example_array[0] if isinstance(example_array[0], dict) else {}
@@ -326,53 +352,20 @@ class JsonldComponentGenerator(FrontmatterComponentGenerator):
             )
 
         properties = []
-        # Look for common property sections
-        for section_name in [
-            "physicalProperties",
-            "technicalSpecifications",
-            "properties",
-            "chemicalProperties",
-        ]:
-            if section_name not in frontmatter_data:
-                continue  # Skip sections that don't exist
-            section_data = frontmatter_data[section_name]
-            if isinstance(section_data, dict):
-                for prop_name, prop_value in section_data.items():
-                    properties.append(
-                        {
-                            "@type": template["@type"],
-                            "name": prop_name.replace("_", " ").title(),
-                            "value": str(prop_value),
-                        }
-                    )
+        # Look for properties in frontmatter data - must exist
+        if "properties" not in frontmatter_data:
+            raise Exception("Properties section not found in frontmatter data - fail-fast architecture requires complete property information")
 
-        # If no properties found in sections, try to extract from material_data
-        if not properties:
-            if isinstance(material_data, dict):
-                # Try properties from material_data
-                material_props = material_data.get("properties", {})
-                if isinstance(material_props, dict):
-                    for prop_name, prop_value in material_props.items():
-                        properties.append(
-                            {
-                                "@type": template["@type"],
-                                "name": prop_name.replace("_", " ").title(),
-                                "value": str(prop_value),
-                            }
-                        )
-
-        # If still no properties, try data section
-        if not properties:
-            data_section = material_data.get("data", {})
-            if isinstance(data_section, dict):
-                for prop_name, prop_value in data_section.items():
-                    properties.append(
-                        {
-                            "@type": template["@type"],
-                            "name": prop_name.replace("_", " ").title(),
-                            "value": str(prop_value),
-                        }
-                    )
+        properties_data = frontmatter_data["properties"]
+        if isinstance(properties_data, dict):
+            for prop_name, prop_value in properties_data.items():
+                properties.append(
+                    {
+                        "@type": template["@type"],
+                        "name": prop_name.replace("_", " ").title(),
+                        "value": str(prop_value),
+                    }
+                )
 
         if not properties:
             raise Exception(
@@ -381,8 +374,8 @@ class JsonldComponentGenerator(FrontmatterComponentGenerator):
 
         return properties
 
-    def _get_field(self, data: Dict, paths: list, default: str = None) -> str:
-        """Extract field using dot notation paths - FAIL-FAST: default must be explicitly handled"""
+    def _get_field(self, data: Dict, paths: list) -> str:
+        """Extract field using dot notation paths - FAIL-FAST: No defaults allowed"""
         for path in paths:
             if "." in path:
                 # Handle nested path
@@ -402,9 +395,7 @@ class JsonldComponentGenerator(FrontmatterComponentGenerator):
                 if path in data and data[path] is not None:
                     return str(data[path])
 
-        # FAIL-FAST: If no default provided, field must exist
-        if default is None:
-            raise Exception(
-                f"Required field not found in data. Searched paths: {paths} - fail-fast architecture requires complete data"
-            )
-        return default
+        # FAIL-FAST: Field must exist - no fallbacks allowed
+        raise Exception(
+            f"Required field not found in data. Searched paths: {paths} - fail-fast architecture requires complete data"
+        )

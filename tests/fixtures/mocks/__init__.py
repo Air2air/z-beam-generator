@@ -98,7 +98,50 @@ class MockFrontmatterComponentGenerator(MockComponentGenerator):
     def generate(self, material_name: str, material_data: Dict[str, Any],
                  api_client=None, **kwargs) -> Dict[str, Any]:
         result = super().generate(material_name, material_data, api_client, **kwargs)
-        result['content'] = f"---\nmaterial: {material_name}\ncategory: mock\n---"
+        
+        # Generate proper YAML frontmatter format
+        mock_yaml = f"""---
+name: "{material_name}"
+applications:
+- industry: "Electronics Manufacturing"
+  detail: "Removal of surface oxides and contaminants from {material_name} substrates"
+- industry: "Aerospace Components"
+  detail: "Cleaning of thermal barrier coatings and metal matrix composites"
+technicalSpecifications:
+  powerRange: "50-200W"
+  pulseDuration: "20-100ns"
+  wavelength: "1064nm (primary), 532nm (optional)"
+  spotSize: "0.2-1.5mm"
+  repetitionRate: "20-100kHz"
+  fluenceRange: "1.0–4.5 J/cm²"
+  safetyClass: "Class 4 (requires full enclosure)"
+description: "Technical overview of {material_name} for laser cleaning applications"
+author: "Mock Author"
+author_object:
+  id: 1
+  name: "Mock Author"
+  sex: "m"
+  title: "Ph.D."
+  country: "Test Country"
+  expertise: "Materials Science"
+  image: "/images/author/mock-author.jpg"
+keywords: "{material_name.lower()}, laser ablation, laser cleaning"
+category: "{material_data.get('category', 'metal')}"
+chemicalProperties:
+  symbol: "{material_data.get('symbol', 'Mk')}"
+  formula: "{material_data.get('formula', 'Mock')}"
+  materialType: "compound"
+properties:
+  density: "7.85 g/cm³"
+  meltingPoint: "1370-1530°C"
+  laserType: "Pulsed Fiber Laser"
+  wavelength: "1064nm"
+  fluenceRange: "1.0–4.5 J/cm²"
+title: "Laser Cleaning {material_name} - Technical Guide"
+headline: "Comprehensive technical guide for laser cleaning {material_name.lower()}"
+---
+"""
+        result['content'] = mock_yaml
         return result
 
 

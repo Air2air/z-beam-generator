@@ -41,26 +41,30 @@ Basic generation examples and case studies including:
 
 ## System Overview
 
-The text component is the core of the Z-Beam laser cleaning content generation system. It produces basic technical articles about laser cleaning using a simple prompt system and strict fail-fast architecture.
+The text component is the core of the Z-Beam laser cleaning content generation system. It produces basic technical articles about laser cleaning using a **hybrid data integration approach** that combines material data from `data/materials.yaml` with template guidance from `components/text/prompts/base_content_prompt.yaml`.
 
 ### 🔧 **Core Technologies**
-- **Simple Prompting:** Base content guidance only
+- **Hybrid Data Integration:** Combines materials.yaml data with prompt templates
+- **Template Variable Substitution:** Dynamic content generation using material properties
 - **Fail-Fast Architecture:** Immediate validation, no fallbacks
-- **Basic Generation:** Single API call per content piece
+- **Single API Call:** Efficient generation per content piece
 - **Configuration Validation:** Startup health checks
 
 ### 📊 **Key Features**
-- **Base Content Focus:** Uses only base_content_prompt.yaml
-- **Simple Architecture:** Minimal dependencies and complexity
-- **Error Handling:** Comprehensive error management
-- **Performance:** Efficient single-call generation
+- **Material Data Integration:** Uses complete material properties from materials.yaml
+- **Template-Driven Generation:** Structured prompts with variable substitution
+- **Author Context:** Includes author information in generation context
+- **Frontmatter Integration:** Incorporates frontmatter data for consistency
+- **Error Handling:** Comprehensive error management with retry logic
 
 ### 🎯 **Generation Process**
-1. **Validation Phase** - Fail-fast dependency checking
-2. **Configuration Loading** - Load base content prompt
-3. **Simple Prompt Building** - Basic prompt construction
-4. **API Generation** - Single API call with validation
-5. **Basic Formatting** - Simple content formatting
+1. **Validation Phase** - Fail-fast dependency checking (API client, material data, author info)
+2. **Data Loading** - Load material properties from materials.yaml and prompt template
+3. **Hybrid Integration** - Combine material data with template variables
+4. **Context Building** - Include author information and frontmatter data
+5. **Prompt Construction** - Build complete prompt with variable substitution
+6. **API Generation** - Single API call with validation
+7. **Content Formatting** - Return structured ComponentResult
 
 ## Usage Examples
 
@@ -90,17 +94,69 @@ generator = create_fail_fast_generator(enable_scoring=False)  # Basic generation
 result = generator.generate(material_name, material_data, api_client)
 ```
 
-## Configuration Structure
+## Hybrid Data Integration
 
+### Data Sources
+
+#### 1. Material Data (`data/materials.yaml`)
+```yaml
+materials:
+  mineral:
+    items:
+    - name: alabaster
+      author_id: 2
+      formula: CaSO₄·2H₂O
+      symbol: CaSO4
+      category: mineral
+      laser_parameters:
+        fluence_threshold: "0.5–2.0 J/cm²"
+        wavelength_optimal: 355nm
+        power_range: 10-50W
 ```
-components/text/
-├── prompts/
-│   └── core/
-│       └── base_content_prompt.yaml   # Core guidance only
-├── generators/
-│   └── fail_fast_generator.py         # Basic generation engine
-└── docs/                              # This documentation
+
+#### 2. Template System (`components/text/prompts/base_content_prompt.yaml`)
+```yaml
+overall_subject: |
+  A detailed technical analysis of the {material}, emphasizing its physicochemical properties, engineering applications, and the intricate mechanisms involved in laser cleaning processes...
 ```
+
+#### 3. Author Information
+```json
+{
+  "id": 2,
+  "name": "Dr. Maria Santos",
+  "country": "Brazil",
+  "expertise": "Mineral Processing and Surface Engineering"
+}
+```
+
+### Integration Process
+
+#### Variable Substitution
+The system performs dynamic variable replacement in the prompt template:
+- **Material Variables:** `{material}` → actual material name (e.g., "alabaster")
+- **Context Variables:** Material properties, author information, frontmatter data
+
+#### Prompt Construction
+```python
+# Example of how variables are integrated
+sections = [
+    f"AUTHOR: {author_name}",
+    f"COUNTRY: {author_country}",
+    f"MATERIAL: {material_name}",
+    f"MATERIAL DATA: {json.dumps(material_data)}",
+    f"TASK: Write about laser cleaning of {material_name}...",
+    formatted_template_content
+]
+```
+
+#### Data Flow
+1. **Material Resolution:** Extract material properties from materials.yaml
+2. **Author Resolution:** Get author details using author_id
+3. **Template Loading:** Load base_content_prompt.yaml
+4. **Variable Substitution:** Replace {material} and other variables
+5. **Context Integration:** Include author info and frontmatter data
+6. **Prompt Assembly:** Combine all components into final prompt
 
 ## Quality Standards
 

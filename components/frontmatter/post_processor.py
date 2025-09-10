@@ -10,19 +10,25 @@ from typing import Any, Dict
 
 import yaml
 
-from .utils import (  # Extract YAML content
-    "---",
-    "Not,
-    :,
-    content.startswith,
-    format"},
-    frontmatter,
-    if,
-    not,
-    return,
-    valid,
-    {"error":,
-)
+from .utils import validate_frontmatter_properties_completeness
+
+logger = logging.getLogger(__name__)
+
+
+def analyze_frontmatter_completeness(content: str) -> Dict[str, Any]:
+    """
+    Analyze frontmatter content for completeness and structure.
+
+    Args:
+        content: The frontmatter content to analyze
+
+    Returns:
+        Dictionary with analysis results
+    """
+    try:
+        # Extract YAML content from frontmatter
+        if not content.startswith("---"):
+            return {"error": "Content does not start with frontmatter markers"}
 
         yaml_end = content.find("---", 3)
         if yaml_end == -1:
@@ -53,3 +59,36 @@ from .utils import (  # Extract YAML content
 
     except Exception as e:
         return {"error": f"Analysis failed: {e}"}
+
+
+def post_process_frontmatter(content: str, material_name: str) -> str:
+    """
+    Post-process frontmatter content with enhancements.
+
+    Args:
+        content: Raw frontmatter content
+        material_name: Name of the material
+
+    Returns:
+        Enhanced frontmatter content
+    """
+    try:
+        logger.info(f"Post-processing frontmatter for {material_name}")
+
+        # Basic validation
+        if not content or not content.strip():
+            logger.warning(f"Empty frontmatter content for {material_name}")
+            return content
+
+        # Ensure proper frontmatter markers
+        if not content.startswith("---"):
+            content = f"---\n{content}"
+        if not content.strip().endswith("---"):
+            content = f"{content}\n---"
+
+        logger.info(f"Successfully post-processed frontmatter for {material_name}")
+        return content
+
+    except Exception as e:
+        logger.error(f"Error post-processing frontmatter for {material_name}: {e}")
+        return content

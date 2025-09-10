@@ -4,7 +4,7 @@ Tags Generator - API-based tags generation for laser cleaning materials.
 """
 
 import logging
-from typing import Dict, Optional
+from typing import Dict, Optional, Any
 
 from generators.component_generators import APIComponentGenerator, ComponentResult
 
@@ -16,6 +16,16 @@ class TagsComponentGenerator(APIComponentGenerator):
 
     def __init__(self):
         super().__init__("tags")
+
+    def get_component_info(self) -> Dict[str, Any]:
+        """Get component information"""
+        return {
+            "name": "tags",
+            "description": "Navigation tags generation for laser cleaning articles",
+            "version": "2.0.0",
+            "requires_api": True,
+            "type": "dynamic",
+        }
 
     def generate(
         self,
@@ -57,8 +67,13 @@ class TagsComponentGenerator(APIComponentGenerator):
                 content = api_response.content
                 logger.info(f"Generated tags for {material_name}")
 
+                # Apply centralized version stamping (will prepend to any existing legacy stamps)
+                from versioning import stamp_component_output
+
+                final_content = stamp_component_output("tags", content)
+
                 return ComponentResult(
-                    component_type="tags", content=content, success=True
+                    component_type="tags", content=final_content, success=True
                 )
             else:
                 error_msg = api_response.error or "API call failed"
@@ -93,16 +108,22 @@ class TagsComponentGenerator(APIComponentGenerator):
     def _build_api_prompt(self, template_vars: Dict, frontmatter_data: Optional[Dict] = None) -> str:
         """Build API prompt for tags generation"""
         material_name = template_vars["material_name"]
-        category = template_vars["material_category"]
         
-        prompt = f"""Generate SEO tags for {material_name}, a {category} material used in laser cleaning applications.
+        prompt = f"""Generate navigation tags for {material_name} laser cleaning.
 
-Please provide:
-1. **Title tag**: SEO-optimized title (50-60 characters)
-2. **Meta description**: Compelling description (150-160 characters) 
-3. **Keywords**: Relevant keywords for laser cleaning of {material_name}
-4. **Open Graph tags**: Social media optimization
+Output EXACTLY 8 tags as a comma-separated list like this example:
+ablation, fused-silica, sio2, cleaning, laser, aerospace, non-contact, yi-chun-lin
 
-Focus on laser cleaning applications, surface preparation, and industrial uses of {material_name}."""
+REQUIREMENTS:
+- Output exactly 8 tags
+- Use single words or hyphenated terms only
+- Include material name (use {material_name})
+- Include "ablation", "cleaning", "laser"
+- Include 1-2 industry applications (aerospace, automotive, manufacturing, electronics, etc.)
+- Include "non-contact"
+- Include 1 author slug using {template_vars.get('author_name', 'expert')} (already in lowercase hyphenated format)
+- Make tags relevant to {material_name} laser cleaning
+- Use lowercase throughout
+- Output ONLY the comma-separated list, no other text"""
 
         return prompt

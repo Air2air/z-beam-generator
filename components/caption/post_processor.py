@@ -21,20 +21,31 @@ def post_process_caption(content: str, material_name: str = "") -> str:
     if not content or not content.strip():
         return content
 
-    # Clean up common formatting issues
+    # Clean up common formatting issues but preserve caption structure
     processed = content.strip()
 
-    # Ensure proper sentence structure
-    processed = re.sub(r"\s+", " ", processed)  # Normalize whitespace
-    processed = re.sub(r"\.{2,}", ".", processed)  # Remove multiple periods
-
-    # Capitalize first letter if not already
-    if processed and processed[0].islower():
-        processed = processed[0].upper() + processed[1:]
-
-    # Ensure ends with period if it's a complete sentence
-    if processed and not processed.endswith((".", "!", "?")):
-        processed += "."
+    # For captions, preserve the double newline between lines
+    lines = processed.split('\n')
+    if len(lines) >= 2:
+        # Keep the structure but clean individual lines
+        cleaned_lines = []
+        for line in lines:
+            line = line.strip()
+            if line:
+                # Normalize whitespace within lines but preserve structure
+                line = re.sub(r"\s+", " ", line)
+                line = re.sub(r"\.{2,}", ".", line)  # Remove multiple periods
+                cleaned_lines.append(line)
+        
+        # Rejoin with proper spacing for caption format
+        if len(cleaned_lines) == 2:
+            processed = cleaned_lines[0] + '\n\n' + cleaned_lines[1]
+        else:
+            processed = '\n\n'.join(cleaned_lines)
+    else:
+        # Single line processing
+        processed = re.sub(r"\s+", " ", processed)  # Normalize whitespace
+        processed = re.sub(r"\.{2,}", ".", processed)  # Remove multiple periods
 
     # Clean up technical terms
     technical_replacements = {

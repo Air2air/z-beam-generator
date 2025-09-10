@@ -8,7 +8,9 @@ Uses consolidated component base utilities for reduced code duplication.
 
 import json
 from pathlib import Path
-from typing import Any, Dict, Optional
+from typing import Dict, Any, Optional
+
+from versioning import stamp_component_output
 
 from generators.component_generators import ComponentResult
 
@@ -45,8 +47,11 @@ class AuthorComponentGenerator:
             # Generate content
             content = self._create_author_content(material_name, author_data)
 
+            # Apply centralized version stamping
+            versioned_content = stamp_component_output("author", content)
+
             return ComponentResult(
-                component_type="author", content=content, success=True
+                component_type="author", content=versioned_content, success=True
             )
 
         except Exception as e:

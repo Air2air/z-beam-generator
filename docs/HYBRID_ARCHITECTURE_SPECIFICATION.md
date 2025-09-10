@@ -10,34 +10,34 @@ The Z-Beam generator implements a **hybrid architecture** where API-based compon
 
 ## 📋 Component Categories
 
-### **Category 1: API-Based Components (with Frontmatter Access)**
-These components use AI APIs for intelligent generation while leveraging frontmatter data for context:
+### **Category 1: Hybrid Components (API + Frontmatter)**
+These components use AI APIs for intelligent generation while requiring frontmatter data for context:
 
-| Component | Data Provider | Frontmatter Access | Purpose |
-|-----------|---------------|-------------------|---------|
-| `frontmatter` | `grok` | ❌ (source component) | Primary material data source |
-| `text` | `grok` | ✅ | AI-generated articles with material context |
-| `bullets` | `deepseek` | ✅ | AI-generated bullet points with technical accuracy |
-| `caption` | `deepseek` | ✅ | AI-generated captions with material specifics |
-| `table` | `grok` | ✅ | AI-generated tables with frontmatter data |
-| `tags` | `deepseek` | ✅ | AI-generated tags with material context |
+| Component | API Provider | Data Provider | Frontmatter Access | Purpose |
+|-----------|--------------|---------------|-------------------|---------|
+| `frontmatter` | `deepseek` | `hybrid` | ❌ (source) | Primary material data source + provides data |
+| `text` | `deepseek` | `hybrid` | ✅ | AI-generated articles with material context |
+| `bullets` | `deepseek` | `hybrid` | ✅ | AI-generated bullet points with technical accuracy |
+| `caption` | `deepseek` | `hybrid` | ✅ | AI-generated captions with material specifics |
+| `tags` | `deepseek` | `hybrid` | ✅ | AI-generated tags with material context |
+| `metatags` | `deepseek` | `hybrid` | ✅ | AI-generated meta tags with material context |
+| `propertiestable` | `deepseek` | `hybrid` | ✅ | AI-generated property tables with material data |
 
 ### **Category 2: Frontmatter-Dependent Components (Schema-Driven)**
 These components extract and transform data directly from frontmatter:
 
-| Component | Data Provider | Purpose |
-|-----------|---------------|---------|
-| `jsonld` | `frontmatter` | Schema.org structured data extraction |
-| `metatags` | `frontmatter` | SEO meta tags from frontmatter properties |
-| `propertiestable` | `frontmatter` | Material properties table from schema |
-| `badgesymbol` | `frontmatter` | Material badges from frontmatter data |
+| Component | API Provider | Data Provider | Purpose |
+|-----------|--------------|---------------|---------|
+| `jsonld` | `none` | `frontmatter` | Schema.org structured data extraction |
+| `badgesymbol` | `none` | `frontmatter` | Material badges from frontmatter data |
 
 ### **Category 3: Static Components**
 These components use static data without API or frontmatter dependencies:
 
-| Component | Data Provider | Purpose |
-|-----------|---------------|---------|
-| `author` | `none` | Static author profiles from authors.json |
+| Component | API Provider | Data Provider | Purpose |
+|-----------|--------------|---------------|---------|
+| `table` | `none` | `static` | Technical tables (static generation) |
+| `author` | `none` | `static` | Static author profiles from authors.json |
 
 ## 🔄 Standard API Component Interface
 
@@ -109,23 +109,25 @@ orchestration_order:
 ### **Component Configuration**
 ```yaml
 components:
-  # API-based components with frontmatter access
-  frontmatter:    {enabled: true, data_provider: "grok"}
-  text:           {enabled: true, data_provider: "grok"}
-  bullets:        {enabled: true, data_provider: "deepseek"}
-  caption:        {enabled: true, data_provider: "deepseek"}
-  table:          {enabled: true, data_provider: "grok"}
-  tags:           {enabled: true, data_provider: "deepseek"}
+  # Hybrid components (API + frontmatter data)
+  frontmatter:    {enabled: true, api_provider: "deepseek", data_provider: "hybrid"}
+  text:           {enabled: true, api_provider: "deepseek", data_provider: "hybrid"}
+  bullets:        {enabled: true, api_provider: "deepseek", data_provider: "hybrid"}
+  caption:        {enabled: true, api_provider: "deepseek", data_provider: "hybrid"}
+  tags:           {enabled: true, api_provider: "deepseek", data_provider: "hybrid"}
+  metatags:       {enabled: true, api_provider: "deepseek", data_provider: "hybrid"}
+  propertiestable: {enabled: true, api_provider: "deepseek", data_provider: "hybrid"}
 
-  # Frontmatter-dependent components (schema-driven)
-  jsonld:         {enabled: true, data_provider: "frontmatter"}
-  metatags:       {enabled: true, data_provider: "frontmatter"}
-  propertiestable: {enabled: true, data_provider: "frontmatter"}
-  badgesymbol:    {enabled: true, data_provider: "frontmatter"}
+  # Frontmatter-dependent components (pure extraction)
+  jsonld:         {enabled: true, api_provider: "none", data_provider: "frontmatter"}
+  badgesymbol:    {enabled: true, api_provider: "none", data_provider: "frontmatter"}
 
-  # Static components
-  author:         {enabled: true, data_provider: "none"}
+  # Static components (no dependencies)
+  table:          {enabled: true, api_provider: "none", data_provider: "static"}
+  author:         {enabled: true, api_provider: "none", data_provider: "static"}
 ```
+
+> **Note**: "hybrid" data_provider indicates components that require BOTH frontmatter data AND AI API calls. This is different from "API" (AI-only) and "static" (no dependencies).
 
 ## 🧪 Validation Requirements
 
