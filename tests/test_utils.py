@@ -102,7 +102,7 @@ def mock_api_calls(provider: str = "grok", error_rate: float = 0.0):
 
         mock_client = MagicMock()
 
-    # Mock all possible API client functions
+    # Mock all possible API client functions, but not materials.py
     with patch(
         "api.client_manager.get_api_client_for_component",
         return_value=mock_client,
@@ -181,7 +181,11 @@ class TestHelper:
 
 
 # Test data constants
-TEST_MATERIALS = ["Steel", "Aluminum", "Copper", "Titanium", "Ceramic"]
+try:
+    from tests.fixtures.mocks.mock_materials import get_mock_materials_list
+    TEST_MATERIALS = get_mock_materials_list()
+except ImportError:
+    TEST_MATERIALS = ["Steel", "Aluminum", "Copper", "Titanium", "Ceramic"]
 TEST_COMPONENTS = ["frontmatter", "text", "table", "bullets", "caption"]
 TEST_AUTHORS = [
     {"id": 1, "name": "Yi-Chun Lin", "country": "Taiwan"},
@@ -213,7 +217,12 @@ __all__ = [
 
 
 # Test data constants
-TEST_MATERIALS = ["Steel", "Aluminum", "Copper", "Titanium", "Ceramic"]
+try:
+    from tests.fixtures.mocks.mock_materials import get_mock_materials_list
+    TEST_MATERIALS = get_mock_materials_list()
+except ImportError:
+    TEST_MATERIALS = ["Steel", "Aluminum", "Copper", "Titanium", "Ceramic"]
+
 TEST_COMPONENTS = ["frontmatter", "text", "table", "bullets", "caption"]
 TEST_AUTHORS = [
     {"id": 1, "name": "Yi-Chun Lin", "country": "Taiwan"},

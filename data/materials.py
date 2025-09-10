@@ -14,7 +14,10 @@ def load_materials():
     try:
         with open(materials_file, "r", encoding="utf-8") as f:
             data = yaml.safe_load(f)
-        return data.get("materials", {})  # Return the materials section
+        
+        # Return the complete structure, not just the materials section
+        # This makes it compatible with both DynamicGenerator and other components
+        return data
     except Exception as e:
         print(f"Error loading materials data: {e}")
-        return {}
+        return {"materials": {}}  # Return an empty but valid structure

@@ -215,17 +215,51 @@ class TestDataFactory:
 
     @staticmethod
     def create_test_materials(count: int = 3) -> List[Dict[str, Any]]:
-        """Create test material data."""
-        materials = ["Steel", "Aluminum", "Copper", "Titanium", "Ceramic"]
-        return [
-            {
-                "name": materials[i % len(materials)],
-                "category": "metal" if i < 4 else "ceramic",
-                "complexity": "medium",
-                "formula": "Fe" if materials[i % len(materials)] == "Steel" else "Al",
-            }
-            for i in range(count)
-        ]
+        """Create test material data using real materials from materials.yaml."""
+        try:
+            from data.materials import load_materials
+            materials_data = load_materials()
+            real_materials = []
+            
+            if materials_data and "materials" in materials_data:
+                for category, category_data in materials_data["materials"].items():
+                    if isinstance(category_data, dict) and "items" in category_data:
+                        for item in category_data["items"]:
+                            if "name" in item:
+                                real_materials.append({
+                                    "name": item["name"],
+                                    "category": category,
+                                    "complexity": item.get("complexity", "medium"),
+                                    "formula": item.get("formula", ""),
+                                })
+            
+            # If we found materials, use the first 'count' materials
+            if real_materials:
+                return real_materials[:count]
+                
+            # Fallback to defaults if no materials were found
+            materials = ["Steel", "Aluminum", "Copper", "Titanium", "Ceramic"]
+            return [
+                {
+                    "name": materials[i % len(materials)],
+                    "category": "metal" if i < 4 else "ceramic",
+                    "complexity": "medium",
+                    "formula": "Fe" if materials[i % len(materials)] == "Steel" else "Al",
+                }
+                for i in range(count)
+            ]
+        except ImportError:
+            # Fallback to defaults
+            materials = ["Steel", "Aluminum", "Copper", "Titanium", "Ceramic"]
+            return [
+                {
+                    "name": materials[i % len(materials)],
+                    "category": "metal" if i < 4 else "ceramic",
+                    "complexity": "medium",
+                    "formula": "Fe" if materials[i % len(materials)] == "Steel" else "Al",
+                }
+                for i in range(count)
+            ]
 
     @staticmethod
     def create_test_author_info(author_id: int = 1) -> Dict[str, Any]:
