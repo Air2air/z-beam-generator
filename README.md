@@ -824,7 +824,7 @@ python3 test_validation_diagnostics.py   # Test validation system
 
 - [Three-Layer Architecture](docs/CLEAN_ARCHITECTURE_SUMMARY.md)
 - [AI Detection Integration](docs/WINSTON_AI_INTEGRATION.md)
-- [Robustness Framework](docs/ZBEAM_ROBUSTNESS_IMPROVEMENTS.md)
+- [Robustness Framework](docs/z-beam_ROBUSTNESS_IMPROVEMENTS.md)
 - [Testing Framework](tests/README.md)
 - [Frontmatter Dependencies](docs/FRONTMATTER_DEPENDENCY_ARCHITECTURE.md)
 - [Component Standards](docs/COMPONENT_STANDARDS.md)

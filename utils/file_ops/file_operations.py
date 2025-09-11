@@ -343,7 +343,7 @@ def create_version_log_entry(material: str, component_type: str, filepath: str) 
     # Try to get author information from environment or context
     try:
         # This would be passed from the generation context
-        author_info = os.environ.get("ZBEAM_AUTHOR", "AI Assistant")
+        author_info = os.environ.get("z-beam_AUTHOR", "AI Assistant")
         generation_context["author"] = author_info
     except Exception:
         generation_context["author"] = "AI Assistant"

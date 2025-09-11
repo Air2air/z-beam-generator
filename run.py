@@ -49,9 +49,9 @@ PATH CLEANUP (one-time scripts):
 
 🔧 CONFIGURATION GUIDE - SINGLE SOURCE OF TRUTH:
 ===============================================
-All system configuration is centralized in this file (run.py) in THREE main sections:
+All system configuration is centralized in this file (run.py) in FOUR main sections:
 
-### 1. API_PROVIDERS (Lines 75-120)
+### 1. API_PROVIDERS (Lines 110-170)
 Configure API endpoints, timeouts, and operational parameters:
 - DeepSeek: Content generation API
 - Grok: Alternative content generation 
@@ -60,56 +60,34 @@ Configure API endpoints, timeouts, and operational parameters:
 IMPORTANT: API keys are loaded from config/api_keys.py automatically.
 Set your API keys in that file or as environment variables.
 
-### 2. COMPONENT_CONFIG (Lines 122-160)  
+### 2. COMPONENT_CONFIG (Lines 172-210)  
 Configure which components run and their settings:
 - enabled: True/False - whether component runs in batch mode
 - api_provider: "deepseek", "grok", or "none" for static components
 - priority: 1-10 - execution order (lower = earlier)
 - data_provider: "hybrid", "static", "frontmatter" - data source type
 
-### 3. AI_DETECTION_CONFIG (Lines 162-170)
+### 3. AI_DETECTION_CONFIG (Lines 212-220)
 Configure AI detection behavior:
 - target_score: 70.0 - target human-likeness score (0-100)
 - max_iterations: 3 - maximum retry attempts
 - improvement_threshold: 5.0 - minimum improvement required
 - timeout: 30 - timeout in seconds
 
-🛠️ CONFIGURATION EXAMPLES:
-==========================
-
-## Enable All Components:
-Set enabled: True for all components in COMPONENT_CONFIG
-
-## Disable AI Components (Faster):
-Set api_provider: "none" for frontmatter-only generation
-
-## Change API Provider:
-Change "deepseek" to "grok" in any component's api_provider
-
-## Adjust AI Detection:
-Modify target_score in AI_DETECTION_CONFIG (higher = more human-like)
-
-## Add New Component:
-Add new entry to COMPONENT_CONFIG with appropriate settings
-
-🔍 TROUBLESHOOTING:
-==================
-1. Import validation:     python3 -m utils.import_system --validate
-2. Check configuration:   python3 run.py --config  
-3. Test API connectivity: python3 run.py --test-api
-4. Check system status:   python3 run.py --status
-5. View cache stats:      python3 run.py --cache-stats
+### 4. OPTIMIZER_CONFIG (Lines 224-320)
+Advanced optimization settings for AI detection, workflow, and text generation
 
 ⚠️ IMPORTANT NOTES:
 ==================
 - This file (run.py) is the ONLY configuration file you need to edit
-- All other config files are either legacy or automatically managed
+- All user-controlled configurations are at the TOP of this file (lines ~110-320)
 - API keys are loaded from config/api_keys.py (keep that file secure)
 - Changes to this configuration take effect immediately
 - No restart required for configuration changes
+- Configuration is validated on startup with fail-fast behavior
 
 To modify configuration:
-1. Edit the configuration section in this file (lines 75-170)
+1. Edit the configuration section at the TOP of this file (lines ~110-320)
 2. Run: python3 run.py --config (to verify changes)
 3. Test: python3 run.py --material "Test Material"
 """
@@ -120,7 +98,23 @@ import logging
 import time
 import os
 
-# Configuration constants for tests
+# Import extracted modules
+from cli.argument_parser import create_argument_parser, show_help
+from cli.commands import (
+    run_test_suite, test_api_connectivity, list_available_materials,
+    show_system_status, show_cache_statistics, show_cache_info,
+    clear_api_cache, disable_persistent_cache, preload_api_cache,
+    show_version_history, clean_generated_content, run_cleanup_scan,
+    generate_cleanup_report, run_root_cleanup, run_content_batch_generation,
+    run_optimization, run_batch_generation
+)
+from cli.config_display import show_configuration
+
+# USER-CONTROLLED CONFIGURATION - MODIFY THESE SETTINGS TO CUSTOMIZE BEHAVIOR
+# =================================================================================
+
+# API Providers Configuration - USER SETTABLE
+# Configure API endpoints, timeouts, and operational parameters
 API_PROVIDERS = {
     "deepseek": {
         "name": "DeepSeek",
@@ -184,13 +178,13 @@ COMPONENT_CONFIG = {
     "frontmatter": {
         "api_provider": "deepseek",
         "priority": 1,
-        "enabled": True,
+        "enabled": False,
         "data_provider": "hybrid",  # Generates content + provides data for other components
     },
     "metatags": {
         "api_provider": "deepseek",
         "priority": 2,
-        "enabled": False,  # DISABLED for focused batch test
+        "enabled": True,
         "data_provider": "hybrid",  # Uses frontmatter data + AI generation
     },
     "propertiestable": {
@@ -230,10 +224,10 @@ COMPONENT_CONFIG = {
         "data_provider": "hybrid",  # Uses frontmatter data + AI generation
     },
     "jsonld": {
-        "api_provider": "none",  # Extracts from frontmatter, no AI needed
+        "api_provider": "deepseek",  # Extracts from frontmatter, no AI needed
         "priority": 9,
-        "enabled": False,  # DISABLED for focused batch test
-        "data_provider": "frontmatter",  # Pure frontmatter extraction
+        "enabled": True,  # DISABLED for focused batch test
+        "data_provider": "hybrid",  # Pure frontmatter extraction
     },
     "author": {
         "api_provider": "none",  # Static component, no API needed
@@ -256,7 +250,177 @@ AI_DETECTION_CONFIG = {
 }
 
 
-def get_dynamic_config_for_content(component_type: str, material_data: dict = None):
+# Optimizer Configuration - USER SETTABLE
+# Modify these settings to customize optimizer behavior
+OPTIMIZER_CONFIG = {
+    # AI Detection Service Configuration
+    "ai_detection_service": {
+        "enabled": True,
+        "version": "1.0.0",
+        "settings": {
+            "providers": {
+                "winston": {
+                    "type": "winston",
+                    "enabled": True,
+                    "target_score": 70.0,
+                    "max_iterations": 5,
+                },
+                "mock": {
+                    "type": "mock",
+                    "enabled": False,  # Only for testing
+                }
+            },
+            # Global AI detection settings
+            "target_score": 70.0,
+            "max_iterations": 5,
+            "improvement_threshold": 3.0,
+            "cache_ttl_hours": 1,
+            "max_workers": 4,
+            "detection_threshold": 0.7,
+            "confidence_threshold": 0.8,
+            "allow_mocks_for_testing": False,  # Production: False
+        }
+    },
+
+    # Iterative Workflow Service Configuration
+    "iterative_workflow_service": {
+        "enabled": True,
+        "version": "1.0.0",
+        "settings": {
+            "max_iterations": 10,
+            "quality_threshold": 0.9,
+            "time_limit_seconds": 300,
+            "convergence_threshold": 0.01,
+            "backoff_factor": 2.0,
+            "min_delay": 0.1,
+            "max_delay": 10.0,
+        }
+    },
+
+    # Optimization Configuration
+    "optimization": {
+        "target_score": 75.0,
+        "max_iterations": 5,
+        "improvement_threshold": 3.0,
+        "time_limit_seconds": None,
+        "convergence_threshold": 0.01,
+    },
+
+    # Text Optimization Settings
+    "text_optimization": {
+        "dynamic_prompts": {
+            "enabled": True,
+            "enhancement_flags": {
+                "conversational_boost": True,
+                "natural_language_patterns": True,
+                "cultural_adaptation": True,
+                "sentence_variability": True,
+                "ai_detection_focus": True,
+            }
+        },
+        "quality_scorer": {
+            "human_threshold": 75.0,
+            "technical_accuracy_weight": 0.3,
+            "author_authenticity_weight": 0.3,
+            "readability_weight": 0.2,
+            "human_believability_weight": 0.2,
+        }
+    },
+
+    # Author Personas Configuration
+    "personas": {
+        "taiwan": {
+            "word_limit": 380,
+            "language_patterns": {
+                "signature_phrases": [
+                    "systematic approach enables",
+                    "careful analysis shows",
+                    "methodical investigation reveals"
+                ]
+            }
+        },
+        "italy": {
+            "word_limit": 450,
+            "language_patterns": {
+                "signature_phrases": [
+                    "precision meets innovation",
+                    "technical elegance",
+                    "meticulous approach"
+                ]
+            }
+        },
+        "indonesia": {
+            "word_limit": 250,
+            "language_patterns": {
+                "signature_phrases": [
+                    "practical applications",
+                    "efficient solutions",
+                    "renewable energy focus"
+                ]
+            }
+        },
+        "usa": {
+            "word_limit": 320,
+            "language_patterns": {
+                "signature_phrases": [
+                    "innovative solutions",
+                    "efficient processes",
+                    "conversational expertise"
+                ]
+            }
+        }
+    },
+
+    # Logging Configuration
+    "logging": {
+        "level": "INFO",
+        "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    },
+
+    # Test Mode Configuration
+    "test_mode": False,
+}
+
+# END OF USER-CONTROLLED CONFIGURATION
+# =================================================================================
+
+# Configuration Helper Functions
+def get_optimizer_config(service_name: str = None):
+    """Get optimizer configuration for a specific service or all services."""
+    if service_name:
+        return OPTIMIZER_CONFIG.get(service_name, {})
+    return OPTIMIZER_CONFIG
+
+
+def get_ai_detection_config():
+    """Get AI detection configuration."""
+    return get_optimizer_config("ai_detection_service")
+
+
+def get_workflow_config():
+    """Get workflow configuration."""
+    return get_optimizer_config("iterative_workflow_service")
+
+
+def get_optimization_config():
+    """Get optimization configuration."""
+    return get_optimizer_config("optimization")
+
+
+def get_text_optimization_config():
+    """Get text optimization configuration."""
+    return get_optimizer_config("text_optimization")
+
+
+def get_persona_config(country: str = None):
+    """Get persona configuration for a specific country or all personas."""
+    personas = get_optimizer_config("personas")
+    if country:
+        return personas.get(country.lower(), {})
+    return personas
+
+
+def get_dynamic_config_for_component(component_type: str, material_data: dict = None):
     """Get dynamic configuration for content generation."""
     base_config = COMPONENT_CONFIG.get(component_type, {})
 
@@ -324,6 +488,10 @@ class FailFastGenerator:
         )
 
 
+# END OF CONFIGURATION HELPER FUNCTIONS
+# =================================================================================
+
+
 def main():
     """Main entry point for Z-Beam generator."""
     parser = argparse.ArgumentParser(description="Z-Beam Content Generator")
@@ -331,6 +499,9 @@ def main():
     # Core generation commands
     parser.add_argument(
         "--material", "-m", help="Generate content for specific material"
+    )
+    parser.add_argument(
+        "--components", "-c", help="Comma-separated list of components to generate (e.g., 'frontmatter,text,metatags')"
     )
     parser.add_argument(
         "--all", action="store_true", help="Generate content for all materials"
@@ -914,13 +1085,20 @@ def main():
                         from generators.workflow_manager import run_material_generation
                         from cli.component_config import get_components_sorted_by_priority
 
-                        # Get only enabled components
-                        available_components = get_components_sorted_by_priority(include_disabled=False)
+                        # Use specified components if provided, otherwise get enabled components
+                        if args.components:
+                            # Split the comma-separated list and strip whitespace
+                            component_types = [c.strip() for c in args.components.split(',')]
+                            print(f"🔍 Using specified components: {', '.join(component_types)}")
+                        else:
+                            # Get only enabled components from config
+                            component_types = get_components_sorted_by_priority(include_disabled=False)
+                            print(f"🔍 Using enabled components from config: {', '.join(component_types)}")
 
-                        # Generate enabled components for the material
+                        # Generate components for the material
                         result = run_material_generation(
                             material=args.material,
-                            component_types=available_components,
+                            component_types=component_types,
                             author_id=None,  # Will use material's author_id from materials.yaml
                         )
 

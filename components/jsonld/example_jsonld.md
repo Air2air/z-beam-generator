@@ -1,11 +1,24 @@
+<!-- 
+  This is the reference example for the JSON-LD component generator.
+  It provides the structure and format for generating schema.org structured data.
+  Key features:
+  - Material names use title case (e.g., "Aluminum" not "aluminum")
+  - Headline uses the simple format: "{Material} Laser Cleaning"
+  - URLs follow the /{material-name}-laser-cleaning pattern
+  - Complete schema.org Article, Material, Process, and HowTo implementations
+  - Standardized image naming pattern: {material-name}-laser-cleaning-hero.jpg
+  
+  The generator uses this example as a template when generating new JSON-LD content.
+-->
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "Laser Cleaning of Aluminum Materials",
+  "headline": "Aluminum Laser Cleaning",
   "alternativeHeadline": "Advanced Laser Ablation Techniques for Aluminum Surface Treatment",
-  "description": "Comprehensive technical guide covering laser cleaning methodologies for aluminum metal materials, including optimal parameters, industrial applications, and surface treatment benefits.",
-  "abstract": "Advanced laser cleaning techniques for aluminum materials using 1064nm wavelength at 1.0-10 J/cm² fluence for aerospace component cleaning, automotive engine part restoration.",
+  "description": "Comprehensive technical guide covering laser cleaning methodologies for Aluminum metal materials, including optimal parameters, industrial applications, and surface treatment benefits.",
+  "abstract": "Advanced laser cleaning techniques for Aluminum materials using 1064nm wavelength at 1.0-10 J/cm² fluence for aerospace component cleaning, automotive engine part restoration.",
   "keywords": [
     "aluminum",
     "aluminum laser cleaning",
@@ -34,7 +47,7 @@
     "name": "Z-Beam Technologies",
     "logo": {
       "@type": "ImageObject",
-      "url": "/images/logo-zbeam.svg",
+      "url": "/images/logo-z-beam.svg",
       "width": 200,
       "height": 60
     }
@@ -65,8 +78,8 @@
       "@type": "ImageObject",
       "url": "/images/aluminum-laser-cleaning-hero.jpg",
       "name": "Aluminum Laser Cleaning Before/After Comparison",
-      "caption": "Split-view workbench photograph displaying aluminum component before and after laser cleaning treatment",
-      "description": "High-resolution dual-panel photograph showing a aluminum component processed with 1064nm wavelength, 1.0-10 J/cm² fluence, demonstrating complete contamination removal while preserving material integrity",
+      "caption": "Split-view workbench photograph displaying Aluminum component before and after laser cleaning treatment",
+      "description": "High-resolution dual-panel photograph showing an Aluminum component processed with 1064nm wavelength, 1.0-10 J/cm² fluence, demonstrating complete contamination removal while preserving material integrity",
       "width": 1200,
       "height": 800,
       "encodingFormat": "image/jpeg",
@@ -77,7 +90,7 @@
       "@type": "ImageObject",
       "url": "/images/aluminum-laser-cleaning-micro.jpg",
       "name": "Aluminum Surface Microstructure Analysis",
-      "caption": "SEM images showing aluminum surface quality before and after laser treatment",
+      "caption": "SEM images showing Aluminum surface quality before and after laser treatment",
       "description": "Comparative scanning electron micrographs displaying surface microstructure processed with 1064nm wavelength, 1.0-10 J/cm² fluence, verified at 1000x magnification",
       "width": 800,
       "height": 600,
@@ -92,7 +105,7 @@
   "video": {
     "@type": "VideoObject",
     "name": "Aluminum Laser Cleaning Process Demonstration",
-    "description": "Real-time demonstration of 1064nm laser cleaning process on aluminum metal components",
+    "description": "Real-time demonstration of 1064nm laser cleaning process on Aluminum metal components",
     "thumbnailUrl": "/images/aluminum-laser-video-thumb.jpg",
     "uploadDate": "2025-01-27T15:30:00Z",
     "duration": "PT3M45S",
@@ -103,10 +116,10 @@
       "@type": "Material",
       "name": "Aluminum",
       "alternateName": [
-        "",
-        ""
+        "Al",
+        "Aluminium"
       ],
-      "identifier": "",
+      "identifier": "Al",
       "category": "metal",
       "description": "High-strength aluminum alloy for precision laser cleaning applications",
       "additionalProperty": [
@@ -193,7 +206,7 @@
   "isPartOf": {
     "@type": "WebSite",
     "name": "Z-Beam Laser Processing Guide",
-    "url": "https://zbeam.example.com"
+    "url": "https://z-beam.com"
   },
   "breadcrumb": {
     "@type": "BreadcrumbList",
@@ -220,7 +233,7 @@
   },
   "potentialAction": {
     "@type": "ReadAction",
-    "target": "/materials/metal/aluminum/laser-cleaning"
+    "target": "/aluminum-laser-cleaning"
   }
 }
 </script>

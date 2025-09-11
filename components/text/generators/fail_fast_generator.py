@@ -72,22 +72,64 @@ class FailFastTextGenerator:
         # Validate configurations on initialization
         self._validate_configurations()
 
-    def _load_formatting_prompt(self, author_id: int) -> Dict[str, Any]:
+    def _load_persona_prompt(self, author_info: Dict[str, Any]) -> str:
         """
-        Load formatting prompt for a specific author.
+        Load persona-specific prompt for an author.
         
         Args:
-            author_id: The author ID
+            author_info: Author information dictionary with 'id' and 'country'
             
         Returns:
-            Formatting configuration dictionary
+            Persona prompt string
         """
-        # Simple mock implementation for testing
-        return {
-            "content_constraints": {
-                "max_word_count": 300
+        author_id = author_info.get('id', 1)
+        country = author_info.get('country', 'usa').lower()
+        
+        # Get author data
+        authors_data = self._load_authors_data()
+        author_data = None
+        
+        for author in authors_data:
+            if author['id'] == author_id:
+                author_data = author
+                break
+        
+        if not author_data:
+            # Fallback to first author
+            author_data = authors_data[0] if authors_data else {
+                'id': 1, 'name': 'Test Author', 'country': 'USA', 
+                'expertise': 'Lasers', 'title': 'Engineer', 'sex': 'M'
             }
-        }
+        
+        # Create persona prompt
+        persona_prompt = f"""AUTHOR PROFILE:
+Name: {author_data['name']}
+Country: {author_data['country']}
+Expertise: {author_data['expertise']}
+Title: {author_data['title']}
+Gender: {author_data['sex']}
+
+WRITING CHARACTERISTICS:
+- Professional technical writing style
+- Focus on {author_data['expertise']} applications
+- {country.title()} English language patterns
+- Technical accuracy with practical insights
+- Clear, concise explanations
+
+CONTENT REQUIREMENTS:
+- Write as {author_data['name']}, {author_data['title']} from {author_data['country']}
+- Use terminology appropriate for {author_data['expertise']} field
+- Include practical examples and applications
+- Maintain professional tone throughout
+- Ensure technical accuracy
+
+LANGUAGE STYLE:
+- Use {country.title()} English conventions
+- Include relevant technical terminology
+- Write in first person perspective
+- Maintain consistent voice and style"""
+        
+        return persona_prompt
 
     def _load_authors_data(self) -> list:
         """

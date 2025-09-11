@@ -351,6 +351,30 @@ class ComponentGeneratorFactory:
                 from generators.author_generator import AuthorComponentGenerator
 
                 return AuthorComponentGenerator()
+            # Try hybrid components first for known hybrid components
+            elif component_type in ["metatags", "jsonld", "propertiestable", "badgesymbol"]:
+                # Use logging to show we're trying to use hybrid generators
+                logger.info(f"Creating hybrid component generator for {component_type}")
+                try:
+                    import_paths = [
+                        f"components.{component_type}.generator",
+                        f"components.{component_type}.generators.generator",
+                    ]
+                    for module_path in import_paths:
+                        try:
+                            module = __import__(
+                                module_path,
+                                fromlist=[f"{component_type.title()}ComponentGenerator"],
+                            )
+                            generator_class = getattr(
+                                module, f"{component_type.title()}ComponentGenerator"
+                            )
+                            return generator_class()
+                        except (ImportError, AttributeError) as e:
+                            logger.debug(f"Failed to import from {module_path}: {e}")
+                            continue
+                except Exception as e:
+                    logger.warning(f"Failed to create hybrid generator for {component_type}: {e}")
             else:
                 # Try to import from components directory
                 # Some components have generator.py directly, others have generators/generator.py

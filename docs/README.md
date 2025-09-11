@@ -31,7 +31,7 @@ This documentation hub is specifically designed for Copilot AI assistants to qui
 
 ### **Core Architecture Patterns**
 - **[Three-Layer Architecture](CLEAN_ARCHITECTURE_SUMMARY.md)** - Base + Persona + Formatting layers
-- **[Robustness Framework](ZBEAM_ROBUSTNESS_IMPROVEMENTS.md)** - Circuit breakers & validation
+- **[Robustness Framework](z-beam_ROBUSTNESS_IMPROVEMENTS.md)** - Circuit breakers & validation
 - **[Component Architecture](COMPONENT_STANDARDS.md)** - Component design patterns
 - **[Frontmatter Dependencies](FRONTMATTER_DEPENDENCY_ARCHITECTURE.md)** - Dependency management
 

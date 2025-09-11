@@ -435,9 +435,31 @@ Keep improvements focused and incremental. Avoid suggesting major structural cha
             return False
 
     def _load_current_prompts(self) -> Optional[Dict[str, Any]]:
-        """Load current prompts using modular configuration loader."""
+        """Load current prompts using modular configuration loader or direct file."""
         try:
-            # Use modular loader to get the complete configuration
+            # First try to load from the specified prompts_path if it exists and is not modular
+            if self.prompts_path.exists() and self.prompts_path.is_file():
+                try:
+                    with open(self.prompts_path, "r", encoding="utf-8") as f:
+                        prompts = yaml.safe_load(f)
+                    if prompts:
+                        # Import config for variable substitution
+                        from run import AI_DETECTION_CONFIG
+
+                        # Convert to string for template substitution, then back to dict
+                        yaml_content = yaml.dump(
+                            prompts, default_flow_style=False, sort_keys=False, allow_unicode=True
+                        )
+                        processed_content = self.substitute_config_variables(
+                            yaml_content, AI_DETECTION_CONFIG
+                        )
+
+                        # Parse the processed YAML
+                        return yaml.safe_load(processed_content)
+                except Exception as e:
+                    logger.warning(f"Failed to load from specified path {self.prompts_path}: {e}")
+
+            # Fallback to modular loader
             prompts = self._config_loader.load_config(use_modular=True)
 
             if not prompts:

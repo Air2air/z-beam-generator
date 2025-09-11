@@ -1,8 +1,8 @@
+#!/usr/bin/env python3
 """
 Iterative Workflow Service for Z-Beam Generator.
 
-This module provides iterative workflow capabilities for content generation,
-including various iteration strategies, exit conditions, and workflow management.
+Uses unified configuration system for consistent settings management.
 """
 
 import asyncio
@@ -13,12 +13,12 @@ from datetime import datetime, timedelta
 from enum import Enum
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ..base import BaseService, ServiceConfiguration, ServiceError
+from ..base import SimplifiedService, ServiceConfiguration
+from ..config_unified import get_workflow_service_config
+from ..errors import OptimizerError
 
-logger = logging.getLogger(__name__)
 
-
-class IterativeWorkflowError(ServiceError):
+class IterativeWorkflowError(OptimizerError):
     """Raised when iterative workflow operations fail."""
 
     pass
@@ -103,20 +103,15 @@ class WorkflowResult:
     metadata: Dict[str, Any] = field(default_factory=dict)
 
 
-class IterativeWorkflowService(BaseService):
+class IterativeWorkflowService(SimplifiedService):
     """
     Service for managing iterative workflows with various strategies and exit conditions.
 
-    Provides:
-    - Multiple iteration strategies (linear, exponential backoff, adaptive)
-    - Flexible exit conditions (quality, time, iterations, convergence)
-    - Workflow tracking and history
-    - Cancellation support
-    - Performance monitoring
+    Uses unified configuration for all settings.
     """
 
-    def __init__(self, config: ServiceConfiguration):
-        super().__init__(config)
+    def __init__(self, config: Optional[ServiceConfiguration] = None):
+        super().__init__(config or get_workflow_service_config())
         self.active_workflows: Dict[str, WorkflowResult] = {}
         self.workflow_history: Dict[str, List[WorkflowResult]] = {}
         self.default_config = WorkflowConfiguration()
@@ -132,13 +127,17 @@ class IterativeWorkflowService(BaseService):
             if setting not in self.config.settings:
                 self.config.settings[setting] = getattr(self.default_config, setting)
 
-    def _initialize(self) -> None:
+    async def _initialize_service(self) -> None:
         """Initialize the service."""
-        logger.info("Initializing IterativeWorkflowService")
+        self.logger.info("Initializing IterativeWorkflowService")
 
-    def health_check(self) -> bool:
+    async def _check_health(self) -> Dict[str, Any]:
         """Perform health check."""
-        return True
+        return {
+            'healthy': True,
+            'active_workflows': len(self.active_workflows),
+            'workflow_history_size': sum(len(history) for history in self.workflow_history.values())
+        }
 
     async def run_iterative_workflow(
         self,
@@ -199,7 +198,7 @@ class IterativeWorkflowService(BaseService):
                 try:
                     new_content = await iteration_function(current_content, context)
                 except Exception as e:
-                    logger.error(f"Iteration {iteration_num} failed: {e}")
+                    self.logger.error(f"Iteration {iteration_num} failed: {e}")
                     raise IterativeWorkflowError(
                         f"Iteration {iteration_num} failed: {e}"
                     ) from e
@@ -208,7 +207,7 @@ class IterativeWorkflowService(BaseService):
                 try:
                     quality_score = quality_function(new_content)
                 except Exception as e:
-                    logger.error(
+                    self.logger.error(
                         f"Quality assessment failed for iteration {iteration_num}: {e}"
                     )
                     quality_score = 0.0
@@ -241,7 +240,7 @@ class IterativeWorkflowService(BaseService):
                     result.exit_reason = "max_iterations_reached"
 
         except Exception as e:
-            logger.error(f"Workflow {workflow_id} failed: {e}")
+            self.logger.error(f"Workflow {workflow_id} failed: {e}")
             result.exit_reason = f"error: {str(e)}"
         finally:
             result.total_time = (datetime.now() - start_time).total_seconds()
@@ -387,5 +386,5 @@ class IterativeWorkflowService(BaseService):
                     results.remove(old_result)
                     cleaned_count += 1
 
-        logger.info(f"Cleaned up {cleaned_count} old workflow entries")
+        self.logger.info(f"Cleaned up {cleaned_count} old workflow entries")
         return cleaned_count

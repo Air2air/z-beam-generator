@@ -13,15 +13,13 @@ from typing import Any, Dict, Optional
 
 import yaml
 
-from generators.component_generators import (
-    ComponentResult,
-    FrontmatterComponentGenerator,
-)
+from generators.hybrid_generator import HybridComponentGenerator
+from generators.component_generators import ComponentResult
 from versioning import stamp_component_output
 
 
-class BadgesymbolComponentGenerator(FrontmatterComponentGenerator):
-    """Generator for badge symbol components using frontmatter data - NO API CALLS"""
+class BadgesymbolComponentGenerator(HybridComponentGenerator):
+    """Generator for badge symbol components using frontmatter data and API when needed"""
 
     def __init__(self):
         super().__init__("badgesymbol")

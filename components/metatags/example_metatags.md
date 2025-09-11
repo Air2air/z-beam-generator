@@ -1,5 +1,5 @@
 ---
-title: Stoneware Laser Cleaning - Complete Technical Guide for Precision Restoration Methods
+title: Stoneware Laser Cleaning
 meta_tags:
 - name: description
   content: Comprehensive stoneware laser cleaning guide using 1064nm wavelength technology. Professional restoration methods for ceramic preservation, archaeological conservation, and precision surface treatment applications.
@@ -70,9 +70,9 @@ twitter:
 - name: twitter:image:alt
   content: Stoneware ceramic laser cleaning technical guide
 - name: twitter:site
-  content: '@ZBeamTech'
+  content: '@z-beamTech'
 - name: twitter:creator
-  content: '@ZBeamTech'
+  content: '@z-beamTech'
 canonical: https://z-beam.com/stoneware-laser-cleaning
 alternate:
 - hreflang: en

@@ -1,80 +1,120 @@
 ---
-name: "Brick"
-applications:
-- industry: "Construction Restoration"
-  detail: "Removal of dirt, soot, biological growth, and paint from historical brick masonry"
-- industry: "Industrial Maintenance"
-  detail: "Cleaning of smoke and fire damage from brick structures and chimneys"
-technicalSpecifications:
-  powerRange: "20-100W"
-  pulseDuration: "10-50ns"
-  wavelength: "1064nm (primary), 532nm (optional)"
-  spotSize: "0.5-3.0mm"
-  repetitionRate: "10-50kHz"
-  fluenceRange: "0.5–2.5 J/cm²"
-  safetyClass: "Class 4 (requires full enclosure)"
-description: "Technical overview of Brick for laser cleaning applications, including optimal 1064nm wavelength interaction with mineral surfaces, and industrial applications in masonry restoration."
-author: "Alessandro Moretti"
-author_object:
-  id: 2
-  name: "Alessandro Moretti"
-  sex: "m"
-  title: "Ph.D."
-  country: "Italy"
-  expertise: "Laser-Based Additive Manufacturing"
-  image: "/images/author/alessandro-moretti.jpg"
-keywords: "brick, brick masonry, laser ablation, laser cleaning, non-contact cleaning, pulsed fiber laser, surface contamination removal, historical restoration, masonry cleaning, soot removal"
-category: "masonry"
-chemicalProperties:
-  symbol: "None"
-  formula: "None"
-  materialType: "masonry"
-properties:
-  density: "1.8-2.0 g/cm³"
-  densityMin: "1.6 g/cm³"
-  densityMax: "2.4 g/cm³"
-  densityPercentile: 42.5
-  meltingPoint: "1200-1400°C"
-  meltingMin: "1000°C"
-  meltingMax: "1600°C"
-  meltingPercentile: 38.2
-  thermalConductivity: "0.7-1.3 W/m·K"
-  thermalMin: "0.5 W/m·K"
-  thermalMax: "1.8 W/m·K"
-  thermalPercentile: 35.6
-  tensileStrength: "10-30 MPa"
-  tensileMin: "5 MPa"
-  tensileMax: "50 MPa"
-  tensilePercentile: 12.8
-  hardness: "3-4 Mohs"
-  hardnessMin: "2 Mohs"
-  hardnessMax: "6 Mohs"
-  hardnessPercentile: 25.0
-  youngsModulus: "10-30 GPa"
-  modulusMin: "5 GPa"
-  modulusMax: "40 GPa"
-  modulusPercentile: 18.5
-  laserType: "Pulsed Fiber Laser"
-  wavelength: "1064nm"
-  fluenceRange: "0.5–2.5 J/cm²"
-  chemicalFormula: "None"
-composition:
-- "Silica (SiO₂) 50-60%"
-- "Alumina (Al₂O₃) 20-30%"
-- "Lime (CaO) 2-5%"
-- "Iron Oxide (Fe₂O₃) 5-8%"
-- "Magnesia (MgO) 1-2%"
-compatibility:
-- "Terracotta"
-- "Stone Masonry"
-- "Mortar Joints"
-regulatoryStandards: "ISO 18562, ASTM C67, EN 771-1"
-images:
-  hero:
-    alt: "Historical brick wall undergoing laser cleaning showing precise contamination removal"
-    url: "/images/brick-laser-cleaning-hero.jpg"
-  micro:
-    alt: "Micro
+name:
+  name: Alessandro Moretti
+detail:
+  detail: Cleaning of smoke and fire damage from brick structures and chimneys
+powerRange:
+  powerRange: 20-100W
+pulseDuration:
+  pulseDuration: 10-50ns
+wavelength:
+  wavelength: 1064nm
+spotSize:
+  spotSize: 0.5-3.0mm
+repetitionRate:
+  repetitionRate: 10-50kHz
+fluenceRange:
+  fluenceRange: 0.5–2.5 J/cm²
+safetyClass:
+  safetyClass: Class 4 (requires full enclosure)
+description: Technical overview of Brick for laser cleaning applications, including
+  optimal 1064nm wavelength interaction with mineral surfaces, and industrial applications
+  in masonry restoration.
+author: Alessandro Moretti
+id:
+  id: '2'
+sex:
+  sex: m
+title:
+  title: Ph.D.
+country:
+  country: Italy
+expertise:
+  expertise: Laser-Based Additive Manufacturing
+image:
+  image: /images/author/alessandro-moretti.jpg
+keywords: brick, brick masonry, laser ablation, laser cleaning, non-contact cleaning,
+  pulsed fiber laser, surface contamination removal, historical restoration, masonry
+  cleaning, soot removal
+category: masonry
+symbol:
+  symbol: None
+formula:
+  formula: None
+materialType:
+  materialType: masonry
+density:
+  density: 1.8-2.0 g/cm³
+densityMin:
+  densityMin: 1.6 g/cm³
+densityMax:
+  densityMax: 2.4 g/cm³
+densityPercentile:
+  densityPercentile: '42.5'
+meltingPoint:
+  meltingPoint: 1200-1400°C
+meltingMin:
+  meltingMin: 1000°C
+meltingMax:
+  meltingMax: 1600°C
+meltingPercentile:
+  meltingPercentile: '38.2'
+thermalConductivity:
+  thermalConductivity: 0.7-1.3 W/m·K
+thermalMin:
+  thermalMin: 0.5 W/m·K
+thermalMax:
+  thermalMax: 1.8 W/m·K
+thermalPercentile:
+  thermalPercentile: '35.6'
+tensileStrength:
+  tensileStrength: 10-30 MPa
+tensileMin:
+  tensileMin: 5 MPa
+tensileMax:
+  tensileMax: 50 MPa
+tensilePercentile:
+  tensilePercentile: '12.8'
+hardness:
+  hardness: 3-4 Mohs
+hardnessMin:
+  hardnessMin: 2 Mohs
+hardnessMax:
+  hardnessMax: 6 Mohs
+hardnessPercentile:
+  hardnessPercentile: '25.0'
+youngsModulus:
+  youngsModulus: 10-30 GPa
+modulusMin:
+  modulusMin: 5 GPa
+modulusMax:
+  modulusMax: 40 GPa
+modulusPercentile:
+  modulusPercentile: '18.5'
+laserType:
+  laserType: Pulsed Fiber Laser
+chemicalFormula:
+- '"Silica (SiO₂) 50-60%"'
+- '"Alumina (Al₂O₃) 20-30%"'
+- '"Lime (CaO) 2-5%"'
+- '"Iron Oxide (Fe₂O₃) 5-8%"'
+- '"Magnesia (MgO) 1-2%"'
+- '"Terracotta"'
+- '"Stone Masonry"'
+- '"Mortar Joints"'
+regulatoryStandards: ISO 18562, ASTM C67, EN 771-1
+alt:
+- --
+url:
+  url: /images/brick-laser-cleaning-hero.jpg
+Material: Brick
+Component: frontmatter
+Generator: Z-Beam v2.1.0
+Author: AI Assistant
+Platform: Darwin (3.12.4)
+File:
+- --
+---
 
 # Version Information
 # Generated: 2025-09-10T18:20:58.800147
@@ -85,13 +125,3 @@ images:
 # Author: "Alessandro Moretti"
 # Platform: Darwin (3.12.4)
 # Operation: generation
-
----
-Version Log - Generated: 2025-09-10T18:20:58.800372
-Material: Brick
-Component: frontmatter
-Generator: Z-Beam v2.1.0
-Author: AI Assistant
-Platform: Darwin (3.12.4)
-File: content/components/frontmatter/brick-laser-cleaning.md
----

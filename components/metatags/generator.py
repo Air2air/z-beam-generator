@@ -7,52 +7,242 @@ Integrated with the modular component architecture.
 """
 
 from pathlib import Path
-from typing import Dict
+from typing import Dict, Optional
 
 import yaml
 
-from generators.component_generators import FrontmatterComponentGenerator
+from generators.hybrid_generator import HybridComponentGenerator
+from generators.component_generators import ComponentResult
+from utils.file_ops.frontmatter_loader import load_frontmatter_data
 from versioning import stamp_component_output
 
 
-class MetatagsComponentGenerator(FrontmatterComponentGenerator):
-    """Generator for meta tags components using frontmatter data"""
+class MetatagsComponentGenerator(HybridComponentGenerator):
+    """Generator for meta tags components using frontmatter data and API when needed"""
 
     def __init__(self):
         super().__init__("metatags")
+        
+    def _build_prompt(
+        self,
+        material_name: str,
+        material_data: Dict,
+        author_info: Optional[Dict] = None,
+        frontmatter_data: Optional[Dict] = None,
+        schema_fields: Optional[Dict] = None,
+    ) -> str:
+        """
+        Build prompt using both material data and frontmatter data.
+        """
+        # Get important details for the prompt
+        category = frontmatter_data.get("category", material_data.get("category", "material")) if frontmatter_data else material_data.get("category", "material")
+        formula = material_data.get("formula", "")
+        formula_str = f" ({formula})" if formula else ""
+        author_name = author_info.get("name", "Z-Beam Engineering Team") if author_info else "Z-Beam Engineering Team"
+        
+        # Ensure material name is in title case
+        material_name_title = material_name.title()
+        
+        # Extract technical details if available
+        laser_params = material_data.get("laser_parameters", {})
+        wavelength = laser_params.get("wavelength_optimal", "1064nm") if laser_params else "1064nm"
+        
+        # Extract applications if available
+        applications = material_data.get("applications", [])
+        applications_str = "\n".join([f"- {app}" for app in applications]) if applications else "No specific applications provided"
+        
+        return f"""Generate comprehensive YAML frontmatter metatags for a {material_name_title}{formula_str} laser cleaning technical guide webpage.
+
+MATERIAL DETAILS:
+- Name: {material_name_title}
+- Category: {category}
+- Formula: {formula}
+- Wavelength: {wavelength}
+- Author: {author_name}
+
+APPLICATIONS:
+{applications_str}
+
+The title should be simple: "{material_name_title} Laser Cleaning"
+
+Your output must follow this exact structure:
+1. A title section with the page title (as specified above)
+2. A meta_tags list containing:
+   - description (150-160 chars)
+   - keywords (comma-separated, include technical terms)
+   - author, category, robots, etc.
+3. An opengraph list with og:title, og:description, og:image, etc.
+4. A twitter list with twitter:card, twitter:title, twitter:description, etc.
+5. A canonical URL: https://z-beam.com/{material_name.lower()}-laser-cleaning
+6. An alternate section with hreflang tags
+
+Your output should be STRICTLY in YAML format with proper frontmatter delimiters (---).
+Do NOT generate explanatory text - ONLY the YAML frontmatter with metadata.
+Include appropriate technical details about laser cleaning parameters, applications, and material properties.
+"""
+        
+    def generate(
+        self,
+        material_name: str,
+        material_data: Dict,
+        api_client=None,
+        author_info: Optional[Dict] = None,
+        frontmatter_data: Optional[Dict] = None,
+        schema_fields: Optional[Dict] = None,
+    ) -> ComponentResult:
+        """
+        Generate component content using both frontmatter data and API when in hybrid mode.
+        Will automatically load frontmatter data from file if not provided.
+        """
+        # If no frontmatter data was provided, try to load it from file
+        if frontmatter_data is None:
+            frontmatter_data = load_frontmatter_data(material_name)
+            if not frontmatter_data:
+                return ComponentResult(
+                    component_type=self.component_type,
+                    content="",
+                    success=False,
+                    error_message="No frontmatter data available",
+                )
+        
+        # Determine if we should use API based on configuration
+        from utils.component_mode import should_use_api
+        use_api = should_use_api(self.component_type, api_client)
+        
+        # Use the structured frontmatter data as a base
+        try:
+            # First, extract basic metatags from frontmatter
+            base_content = self._extract_from_frontmatter(material_name, frontmatter_data)
+            
+            # Then, if in hybrid mode, use API to enhance the descriptions and keywords
+            if use_api:
+                print(f"Generating {self.component_type} for {material_name} in hybrid mode with API enhancement")
+                enhanced_content = self._enhance_with_api(
+                    material_name=material_name,
+                    material_data=material_data,
+                    api_client=api_client,
+                    author_info=author_info,
+                    frontmatter_data=frontmatter_data,
+                    base_content=base_content
+                )
+                
+                return ComponentResult(
+                    component_type=self.component_type,
+                    content=enhanced_content,
+                    success=True,
+                )
+            else:
+                print(f"Generating {self.component_type} for {material_name} in static mode")
+                return ComponentResult(
+                    component_type=self.component_type,
+                    content=base_content,
+                    success=True,
+                )
+        except Exception as e:
+            # Fall back to parent implementation if direct extraction fails
+            return super().generate(
+                material_name=material_name,
+                material_data=material_data,
+                api_client=api_client,
+                author_info=author_info,
+                frontmatter_data=frontmatter_data,
+                schema_fields=schema_fields,
+            )
 
     def _extract_from_frontmatter(
         self, material_name: str, frontmatter_data: Dict
     ) -> str:
         """Generate YAML frontmatter meta tags from frontmatter using example - FAIL-FAST: Must have valid configuration"""
-
-        # Load example file to understand the expected format - FAIL-FAST: Must succeed
+        
+        # Load the example metatags as a template
+        example_path = Path(__file__).parent / "example_metatags.md"
         try:
-            example_path = Path(__file__).parent / "example_metatags.md"
-            if not example_path.exists():
-                raise Exception(f"Required example file missing: {example_path} - fail-fast architecture requires complete example configuration")
             with open(example_path, "r", encoding="utf-8") as f:
                 example_content = f.read()
-                example_data = self._parse_example_yaml(example_content)
+            example_data = self._parse_example_yaml(example_content)
         except Exception as e:
-            raise Exception(f"Failed to load example file: {e} - fail-fast architecture requires valid example configuration")
-
-        # Generate YAML meta tags dynamically - FAIL-FAST: Must use example structure
-        if example_data:
-            # Use example structure as template - primary method
-            yaml_data = self._build_yaml_from_example(
-                frontmatter_data, example_data, material_name
-            )
-        else:
-            # FAIL-FAST: Example must be available - no fallbacks
-            raise Exception(
-                f"No valid example configuration found for metatags generation of {material_name} - fail-fast architecture requires example file"
-            )
-
+            raise Exception(f"Failed to load example metatags: {e} - FAIL-FAST requires valid template")
+        
+        # Get key metadata from frontmatter
+        description = frontmatter_data.get("description", "")
+        category = frontmatter_data.get("category", "material")
+        author = frontmatter_data.get("author", "")
+        keywords = frontmatter_data.get("keywords", "")
+        
+        # Get properties for technical details
+        properties = frontmatter_data.get("properties", {})
+        wavelength = properties.get("wavelength", "1064nm")
+        
+        # Ensure material name is in title case
+        material_name_title = material_name.title()
+        
+        # Build title and descriptions
+        title = f"{material_name_title} Laser Cleaning"
+        og_title = f"{material_name_title} Laser Cleaning"
+        twitter_title = f"{material_name_title} Laser Cleaning"
+        
+        # Create meta_tags list
+        meta_tags = []
+        meta_tags.append({"name": "description", "content": description})
+        meta_tags.append({"name": "keywords", "content": keywords})
+        meta_tags.append({"name": "author", "content": author})
+        meta_tags.append({"name": "category", "content": category})
+        meta_tags.append({"name": "robots", "content": "index, follow, max-snippet:-1, max-image-preview:large"})
+        meta_tags.append({"name": "googlebot", "content": "index, follow, max-snippet:-1, max-image-preview:large"})
+        meta_tags.append({"name": "viewport", "content": "width=device-width, initial-scale=1.0"})
+        meta_tags.append({"name": "format-detection", "content": "telephone=no"})
+        meta_tags.append({"name": "theme-color", "content": "#2563eb"})
+        meta_tags.append({"name": "color-scheme", "content": "light dark"})
+        meta_tags.append({"name": "material:category", "content": category})
+        meta_tags.append({"name": "laser:wavelength", "content": wavelength})
+        meta_tags.append({"name": "application-name", "content": "Z-Beam Laser Processing Guide"})
+        meta_tags.append({"name": "msapplication-TileColor", "content": "#2563eb"})
+        meta_tags.append({"name": "msapplication-config", "content": "/browserconfig.xml"})
+        
+        # Create opengraph list
+        opengraph = []
+        opengraph.append({"property": "og:title", "content": og_title})
+        opengraph.append({"property": "og:description", "content": description})
+        opengraph.append({"property": "og:type", "content": "article"})
+        opengraph.append({"property": "og:image", "content": f"/images/{material_name.lower()}-laser-cleaning-hero.jpg"})
+        opengraph.append({"property": "og:image:alt", "content": f"{material_name} laser cleaning process showing precision {category} restoration and surface treatment"})
+        opengraph.append({"property": "og:image:width", "content": "1200"})
+        opengraph.append({"property": "og:image:height", "content": "630"})
+        opengraph.append({"property": "og:url", "content": f"https://z-beam.com/{material_name.lower()}-laser-cleaning"})
+        opengraph.append({"property": "og:site_name", "content": "Z-Beam Laser Processing Guide"})
+        opengraph.append({"property": "og:locale", "content": "en_US"})
+        opengraph.append({"property": "article:author", "content": author})
+        opengraph.append({"property": "article:section", "content": f"{material_name} Processing"})
+        opengraph.append({"property": "article:tag", "content": f"{material_name} laser cleaning"})
+        
+        # Create twitter list
+        twitter = []
+        twitter.append({"name": "twitter:card", "content": "summary_large_image"})
+        twitter.append({"name": "twitter:title", "content": twitter_title})
+        twitter.append({"name": "twitter:description", "content": description})
+        twitter.append({"name": "twitter:image", "content": f"/images/{material_name.lower()}-laser-cleaning-hero.jpg"})
+        twitter.append({"name": "twitter:image:alt", "content": f"{material_name} {category} laser cleaning technical guide"})
+        twitter.append({"name": "twitter:site", "content": "@z-beamTech"})
+        twitter.append({"name": "twitter:creator", "content": "@z-beamTech"})
+        
+        # Create canonical and alternate URLs
+        canonical = f"https://z-beam.com/{material_name.lower()}-laser-cleaning"
+        alternate = [{"hreflang": "en", "href": canonical}]
+        
+        # Build the complete meta tags structure
+        metatags_data = {
+            "title": title,
+            "meta_tags": meta_tags,
+            "opengraph": opengraph,
+            "twitter": twitter,
+            "canonical": canonical,
+            "alternate": alternate
+        }
+        
         # Convert to YAML string with frontmatter delimiters
-        yaml_content = yaml.dump(yaml_data, default_flow_style=False, sort_keys=False, allow_unicode=True)
+        yaml_content = yaml.dump(metatags_data, default_flow_style=False, sort_keys=False, allow_unicode=True)
         content = f"---\n{yaml_content.strip()}\n---"
-
+        
         # Apply centralized version stamping
         return stamp_component_output("metatags", content)
 
@@ -70,208 +260,130 @@ class MetatagsComponentGenerator(FrontmatterComponentGenerator):
 
         # FAIL-FAST: Must find and parse YAML
         raise Exception("YAML frontmatter not found in example file - fail-fast architecture requires complete example structure")
-
-    def _build_yaml_from_example(
-        self, frontmatter_data: Dict, example_data: Dict, material_name: str
-    ) -> Dict:
-        """Build YAML structure using example as template"""
-        result = {}
-
-        for key, example_value in example_data.items():
-            if key == "title":
-                result[key] = self._get_field(frontmatter_data, ["title", "name"])
-            elif key == "meta_tags":
-                result[key] = self._build_meta_tags_list(frontmatter_data, example_value, material_name)
-            elif key == "opengraph":
-                result[key] = self._build_opengraph_list(frontmatter_data, example_value, material_name)
-            elif key == "twitter":
-                result[key] = self._build_twitter_list(frontmatter_data, example_value, material_name)
-            elif key == "canonical":
-                result[key] = self._generate_canonical_url(material_name)
-            elif key == "alternate":
-                result[key] = self._build_alternate_list(example_value)
-            else:
-                # Try to extract field from frontmatter - FAIL-FAST for required fields
-                try:
-                    result[key] = self._get_field(frontmatter_data, [key])
-                except Exception:
-                    # Use example value as-is for optional fields
-                    result[key] = example_value
-
-        return result
-
-    def _build_meta_tags_list(self, frontmatter_data: Dict, example_list: list, material_name: str) -> list:
-        """Build meta_tags list for YAML"""
-        meta_tags = []
-
-        for item in example_list:
-            if isinstance(item, dict):
-                tag_name = item.get("name", item.get("property", ""))
-                if tag_name:
-                    content = self._generate_meta_content(frontmatter_data, tag_name, material_name)
-                    if content:
-                        meta_tags.append({"name": tag_name, "content": content})
-
-        return meta_tags
-
-    def _build_opengraph_list(self, frontmatter_data: Dict, example_list: list, material_name: str) -> list:
-        """Build opengraph list for YAML"""
-        og_tags = []
-
-        for item in example_list:
-            if isinstance(item, dict):
-                property_name = item.get("property", "")
-                if property_name:
-                    content = self._generate_meta_content(frontmatter_data, property_name, material_name)
-                    if content:
-                        og_tags.append({"property": property_name, "content": content})
-
-        return og_tags
-
-    def _build_twitter_list(self, frontmatter_data: Dict, example_list: list, material_name: str) -> list:
-        """Build twitter list for YAML"""
-        twitter_tags = []
-
-        for item in example_list:
-            if isinstance(item, dict):
-                name = item.get("name", "")
-                if name:
-                    content = self._generate_meta_content(frontmatter_data, name, material_name)
-                    if content:
-                        twitter_tags.append({"name": name, "content": content})
-
-        return twitter_tags
-
-    def _generate_canonical_url(self, material_name: str) -> str:
-        """Generate canonical URL"""
-        slug = material_name.lower().replace(" ", "-")
-        return f"https://z-beam.com/{slug}-laser-cleaning"
-
-    def _build_alternate_list(self, example_list: list) -> list:
-        """Build alternate list for YAML"""
-        return example_list if isinstance(example_list, list) else []
-
-    def _generate_meta_content(
+        
+    def _enhance_with_api(
         self,
-        frontmatter_data: Dict,
-        tag_name: str,
         material_name: str,
+        material_data: Dict,
+        api_client,
+        author_info: Optional[Dict],
+        frontmatter_data: Dict,
+        base_content: str,
     ) -> str:
-        """Generate content for specific meta tag based on tag name - FAIL-FAST: Must find required fields"""
+        """Enhance metatags with API-generated content"""
+        print(f"\n🔍 DEBUG: Enhancing metatags for {material_name} with API")
+        
+        # Parse the base content to get the YAML structure
+        yaml_start = base_content.find("---") + 3
+        yaml_end = base_content.find("---", yaml_start)
+        yaml_content = base_content[yaml_start:yaml_end].strip()
+        
+        try:
+            data = yaml.safe_load(yaml_content)
+        except Exception as e:
+            print(f"⚠️ DEBUG: Failed to parse base metatags content: {e}")
+            raise Exception(f"Failed to parse base metatags content: {e}")
+        
+        # Prepare category and material info for the API prompt
+        category = frontmatter_data.get("category", "material")
+        formula = material_data.get("formula", "")
+        formula_str = f" ({formula})" if formula else ""
+        
+        # Ensure material name is in title case for the API prompt
+        material_name_title = material_name.title()
+        
+        # Create a detailed prompt for the API to generate enhanced descriptions
+        prompt = f"""Generate enhanced meta descriptions for a {material_name_title}{formula_str} laser cleaning webpage.
+The material category is {category}.
+The title of the page is "{material_name_title} Laser Cleaning".
 
-        if tag_name in ["description", "og:description", "twitter:description"]:
-            return self._get_field(
-                frontmatter_data,
-                ["description"]
-            )
-        elif tag_name in ["title", "og:title", "twitter:title"]:
-            return self._get_field(frontmatter_data, ["title", "name"])
-        elif tag_name == "keywords":
-            keywords = [material_name.lower()]
-            category = self._get_field(
-                frontmatter_data, ["category", "type"]
-            ).lower()
-            if category:
-                keywords.append(category)
-            return ", ".join(keywords)
-        elif tag_name in ["subject", "classification"]:
-            return self._get_field(frontmatter_data, ["category", "type"])
-        elif tag_name == "og:type":
-            return "article"
-        elif tag_name == "twitter:card":
-            return "summary"
-        elif tag_name == "author":
-            try:
-                return self._get_field(frontmatter_data, ["author"])
-            except Exception:
-                raise ValueError("Author information must be available in frontmatter - no defaults allowed in fail-fast architecture")
-        elif tag_name == "robots":
-            return "index, follow, max-snippet:-1, max-image-preview:large"
-        elif tag_name == "googlebot":
-            return "index, follow, max-snippet:-1, max-image-preview:large"
-        elif tag_name == "viewport":
-            return "width=device-width, initial-scale=1.0"
-        elif tag_name == "format-detection":
-            return "telephone=no"
-        elif tag_name == "theme-color":
-            return "#2563eb"
-        elif tag_name == "color-scheme":
-            return "light dark"
-        elif tag_name.startswith("material:"):
-            try:
-                return self._get_field(frontmatter_data, [tag_name.replace("material:", "")])
-            except Exception:
-                raise ValueError(f"Material information must be available for {tag_name} - no defaults allowed in fail-fast architecture")
-        elif tag_name.startswith("laser:"):
-            try:
-                return self._get_field(frontmatter_data, [tag_name.replace("laser:", "")])
-            except Exception:
-                raise ValueError(f"Laser information must be available for {tag_name} - no defaults allowed in fail-fast architecture")
-        elif tag_name == "application-name":
-            return "Z-Beam Laser Processing Guide"
-        elif tag_name == "msapplication-TileColor":
-            return "#2563eb"
-        elif tag_name == "msapplication-config":
-            return "/browserconfig.xml"
-        elif tag_name.startswith("og:image"):
-            if tag_name == "og:image":
-                return f"/images/{material_name.lower().replace(' ', '-')}-laser-cleaning-hero.jpg"
-            elif tag_name == "og:image:alt":
-                return f"{material_name} laser cleaning process showing precision restoration and surface treatment"
-            elif tag_name == "og:image:width":
-                return "1200"
-            elif tag_name == "og:image:height":
-                return "630"
-        elif tag_name == "og:url":
-            return self._generate_canonical_url(material_name)
-        elif tag_name == "og:site_name":
-            return "Z-Beam Laser Processing Guide"
-        elif tag_name == "og:locale":
-            return "en_US"
-        elif tag_name == "article:author":
-            try:
-                return self._get_field(frontmatter_data, ["author"])
-            except Exception:
-                raise ValueError("Author information must be available for article:author - no defaults allowed in fail-fast architecture")
-        elif tag_name == "article:section":
-            return f"{material_name} Processing"
-        elif tag_name == "article:tag":
-            return f"{material_name} laser cleaning"
-        elif tag_name.startswith("twitter:image"):
-            if tag_name == "twitter:image":
-                return f"/images/{material_name.lower().replace(' ', '-')}-laser-cleaning-hero.jpg"
-            elif tag_name == "twitter:image:alt":
-                return f"{material_name} laser cleaning technical guide"
-        elif tag_name == "twitter:site":
-            return "@ZBeamTech"
-        elif tag_name == "twitter:creator":
-            return "@ZBeamTech"
-        else:
-            # Try to extract from frontmatter - FAIL-FAST: Must find field
-            return self._get_field(frontmatter_data, [tag_name])
+I need three improved descriptions of different lengths:
+1. A detailed meta description (150-160 characters)
+2. An engaging og:description (200-250 characters)
+3. A concise twitter:description (120-130 characters)
 
-    def _get_field(self, data: Dict, paths: list) -> str:
-        """Extract field using dot notation paths - FAIL-FAST: No defaults allowed"""
-        for path in paths:
-            if "." in path:
-                # Handle nested path
-                keys = path.split(".")
-                current = data
-                try:
-                    for key in keys:
-                        if key not in current:
-                            continue
-                        current = current[key]
-                    if current is not None:
-                        return str(current)
-                except (KeyError, TypeError):
-                    continue
-            else:
-                # Handle direct key
-                if path in data and data[path] is not None:
-                    return str(data[path])
+Each description should include technical details about {material_name_title} laser cleaning, including wavelength information, applications, and key benefits.
+Format your response as YAML with the keys 'meta_description', 'og_description', and 'twitter_description'.
+"""
+        print(f"\n🔍 DEBUG: Sending API prompt for descriptions:\n{prompt}")
 
-        # FAIL-FAST: Field must exist - no fallbacks allowed
-        raise Exception(
-            f"Required field not found in data. Searched paths: {paths} - fail-fast architecture requires complete data"
-        )
+        try:
+            # Generate enhanced descriptions with the API
+            print(f"🔍 DEBUG: Calling API to generate enhanced descriptions")
+            response = api_client.generate_simple(prompt)
+            print(f"🔍 DEBUG: Received API response: {response.content[:100]}..." if hasattr(response, 'content') else "No response content")
+            
+            if not response or not hasattr(response, 'content') or not response.content.strip():
+                print("⚠️ DEBUG: API returned empty response for meta descriptions")
+                raise Exception("API returned empty response for meta descriptions")
+                
+            # Parse the API response
+            enhanced_text = response.content.strip()
+            
+            # Try to extract YAML from the response
+            try:
+                enhanced_data = yaml.safe_load(enhanced_text)
+                print(f"🔍 DEBUG: Parsed API response as YAML: {enhanced_data}")
+                
+                if isinstance(enhanced_data, dict):
+                    # Update the descriptions in our data
+                    for meta_tag in data.get("meta_tags", []):
+                        if meta_tag.get("name") == "description" and "meta_description" in enhanced_data:
+                            meta_tag["content"] = enhanced_data["meta_description"]
+                            
+                    for og_tag in data.get("opengraph", []):
+                        if og_tag.get("property") == "og:description" and "og_description" in enhanced_data:
+                            og_tag["content"] = enhanced_data["og_description"]
+                            
+                    for twitter_tag in data.get("twitter", []):
+                        if twitter_tag.get("name") == "twitter:description" and "twitter_description" in enhanced_data:
+                            twitter_tag["content"] = enhanced_data["twitter_description"]
+            except Exception as e:
+                print(f"⚠️ DEBUG: Failed to parse API response as YAML: {e}")
+                # If parsing fails, try to extract descriptions using text analysis
+                if "meta_description:" in enhanced_text:
+                    meta_desc = enhanced_text.split("meta_description:")[1].split("\n")[0].strip()
+                    for meta_tag in data.get("meta_tags", []):
+                        if meta_tag.get("name") == "description":
+                            meta_tag["content"] = meta_desc
+                
+                if "og_description:" in enhanced_text:
+                    og_desc = enhanced_text.split("og_description:")[1].split("\n")[0].strip()
+                    for og_tag in data.get("opengraph", []):
+                        if og_tag.get("property") == "og:description":
+                            og_tag["content"] = og_desc
+                
+                if "twitter_description:" in enhanced_text:
+                    twitter_desc = enhanced_text.split("twitter_description:")[1].split("\n")[0].strip()
+                    for twitter_tag in data.get("twitter", []):
+                        if twitter_tag.get("name") == "twitter:description":
+                            twitter_tag["content"] = twitter_desc
+        
+            # Now generate enhanced keywords with the API
+            keywords_prompt = f"""Generate an enhanced, comma-separated list of SEO keywords for {material_name_title} laser cleaning.
+Include technical terms related to {category} processing, laser parameters, surface treatments, and applications.
+The output should be a simple comma-separated list with no introductory text."""
+
+            print(f"🔍 DEBUG: Sending API prompt for keywords:\n{keywords_prompt}")
+            keywords_response = api_client.generate_simple(keywords_prompt)
+            print(f"🔍 DEBUG: Received API keywords response: {keywords_response.content[:50]}..." if hasattr(keywords_response, 'content') else "No keywords response content")
+            
+            if keywords_response and hasattr(keywords_response, 'content') and keywords_response.content.strip():
+                # Update keywords in meta_tags
+                for meta_tag in data.get("meta_tags", []):
+                    if meta_tag.get("name") == "keywords":
+                        meta_tag["content"] = keywords_response.content.strip()
+        
+            # Convert back to YAML string with frontmatter delimiters
+            enhanced_yaml = yaml.dump(data, default_flow_style=False, sort_keys=False, allow_unicode=True)
+            enhanced_content = f"---\n{enhanced_yaml.strip()}\n---"
+            
+            print("✅ DEBUG: Successfully enhanced metatags with API content")
+            
+            # Apply version stamping to the enhanced content
+            return stamp_component_output("metatags", enhanced_content)
+            
+        except Exception as e:
+            print(f"⚠️ DEBUG: Error enhancing with API: {e}")
+            # If API enhancement fails, return the base content
+            return base_content

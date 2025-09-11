@@ -92,24 +92,3 @@ images:
     alt: Carbon Fiber Reinforced Polymer surface undergoing laser cleaning showing
       precise contamination removal without fiber damage
 ---
-
-
-# Version Information
-# Generated: 2025-09-10T18:09:09.765712
-# Material: Unknown
-# Component: frontmatter
-# Generator: Z-Beam v1.0.0
-# Component Version: 4.0.1
-# Author: Yi-Chun Lin
-# Platform: Darwin (3.12.4)
-# Operation: generation
-
----
-Version Log - Generated: 2025-09-10T18:09:09.765934
-Material: Carbon Fiber Reinforced Polymer
-Component: frontmatter
-Generator: Z-Beam v2.1.0
-Author: AI Assistant
-Platform: Darwin (3.12.4)
-File: content/components/frontmatter/carbon-fiber-reinforced-polymer-laser-cleaning.md
----

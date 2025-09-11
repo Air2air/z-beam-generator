@@ -87,24 +87,3 @@ compatibility:
 regulatoryStandards: ISO 13003, ASTM D7137, NADCAP AC7121
 images: hero
 ---
-
-
-# Version Information
-# Generated: 2025-09-10T18:09:44.988167
-# Material: Unknown
-# Component: frontmatter
-# Generator: Z-Beam v1.0.0
-# Component Version: 4.0.1
-# Author: Yi-Chun Lin
-# Platform: Darwin (3.12.4)
-# Operation: generation
-
----
-Version Log - Generated: 2025-09-10T18:09:44.988353
-Material: Epoxy Resin Composites
-Component: frontmatter
-Generator: Z-Beam v2.1.0
-Author: AI Assistant
-Platform: Darwin (3.12.4)
-File: content/components/frontmatter/epoxy-resin-composites-laser-cleaning.md
----

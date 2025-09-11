@@ -31,6 +31,7 @@ from utils.core.author_manager import (
     get_author_info_for_material,
 )
 from utils.file_ops.file_operations import save_component_to_file_original
+from utils.file_ops.frontmatter_loader import load_frontmatter_data
 
 
 def run_dynamic_generation(
@@ -66,6 +67,16 @@ def run_dynamic_generation(
 
     # Track frontmatter data for components that need it
     frontmatter_data = None
+    
+    # Check if we need frontmatter data for dependent components
+    needs_frontmatter = any(c != "frontmatter" for c in component_types)
+    if needs_frontmatter and "frontmatter" not in component_types:
+        # Try to load existing frontmatter data from file
+        frontmatter_data = load_frontmatter_data(material)
+        if frontmatter_data:
+            print(f"    📋 Loaded existing frontmatter data from file for dependent components")
+        else:
+            print(f"    ⚠️ Warning: Components may require frontmatter data, but no data was found")
 
     # Prioritize frontmatter generation first if it's in the list
     prioritized_components = []
@@ -81,8 +92,22 @@ def run_dynamic_generation(
             print(f"\n  🔨 Generating {component_type}...")
 
             # Get API client for this component
+            print(f"    🔌 Requesting API client for {component_type}...")
             api_client = get_api_client_for_component(component_type)
+            if api_client:
+                print(f"    ✅ API client obtained for {component_type}")
+            else:
+                print(f"    ⚠️  No API client obtained for {component_type}")
 
+            # Check if this component requires API based on configuration
+            from utils.component_mode import should_use_api
+            
+            if should_use_api(component_type, api_client):
+                print(f"    🔌 Using API for {component_type} (hybrid mode)")
+            elif api_client is None and component_type in ["frontmatter", "metatags", "bullets", "propertiestable", "caption", "text", "tags"]:
+                print(f"    ⚠️  Warning: {component_type} is configured as a hybrid component but no API client is available")
+                print(f"    🔧 Falling back to static generation mode")
+            
             # Generate content
             component_start = time.time()
             result = generator.generate_component(

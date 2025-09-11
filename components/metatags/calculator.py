@@ -54,35 +54,9 @@ class MetatagsCalculator:
         self.category = sanitize_content(frontmatter_data.get("category", "material"))
 
     def calculate_meta_title(self) -> str:
-        """Calculate optimized meta title (45-65 characters ideal)."""
-        base_title = f"Laser Cleaning {self.subject} - Complete Technical Guide"
-
-        # Add specialization based on category
-        specializations = {
-            "metal": "Industrial Processing Solutions",
-            "ceramic": "Precision Restoration Methods",
-            "stone": "Heritage Conservation Techniques",
-            "glass": "Optical Applications Guide",
-            "composite": "Advanced Materials Processing",
-            "wood": "Eco-Friendly Treatment Methods",
-            "semiconductor": "Electronics Manufacturing Guide",
-        }
-
-        specialization = specializations.get(self.category, "Professional Processing")
-        full_title = f"{base_title} for {specialization}"
-
-        # Ensure title is within optimal length (45-65 chars)
-        if len(full_title) > 65:
-            # Use shorter version
-            result = f"{self.subject} Laser Cleaning - {specialization}"[:65]
-        elif len(full_title) < 45:
-            # Add more context
-            result = f"{self.subject} Laser Cleaning Technology - {specialization}"
-        else:
-            result = full_title
-
-        # Sanitize before returning
-        return sanitize_content(result)
+        """Calculate optimized meta title."""
+        # Simple title format
+        return f"{self.subject} Laser Cleaning"
 
     def calculate_meta_description(self) -> str:
         """Calculate comprehensive meta description (150-160 characters)."""
@@ -260,8 +234,8 @@ class MetatagsCalculator:
                 "name": "twitter:image:alt",
                 "content": f"{self.subject} laser cleaning technical guide",
             },
-            {"name": "twitter:site", "content": "@ZBeamTech"},
-            {"name": "twitter:creator", "content": "@ZBeamTech"},
+            {"name": "twitter:site", "content": "@z-beamTech"},
+            {"name": "twitter:creator", "content": "@z-beamTech"},
         ]
 
         return twitter_data

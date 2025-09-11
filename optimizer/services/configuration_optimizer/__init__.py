@@ -26,12 +26,8 @@ from enum import Enum
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple, Union
 
-from ..base import (
-    BaseService,
-    ServiceConfiguration,
-    ServiceConfigurationError,
-    ServiceError,
-)
+from ..base import SimplifiedService, ServiceConfiguration
+from ..errors import ServiceConfigurationError, ServiceError
 
 
 class OptimizationStrategy(Enum):
@@ -94,7 +90,7 @@ class ConfigurationBackup:
     description: str = ""
 
 
-class ConfigurationOptimizationService(BaseService):
+class ConfigurationOptimizationService(SimplifiedService):
     """
     Service for AI-powered configuration optimization.
 
@@ -111,17 +107,30 @@ class ConfigurationOptimizationService(BaseService):
         self.optimization_history: Dict[str, List[OptimizationResult]] = {}
         self.configuration_backups: Dict[str, List[ConfigurationBackup]] = {}
 
-    def _validate_config(self) -> None:
-        """Validate service configuration."""
-        if not self.config.name:
-            raise ServiceConfigurationError("Service name is required")
-
-    def _initialize(self) -> None:
+    def _initialize_service(self) -> None:
         """Initialize the service."""
         self.logger.info(
             f"Initializing Configuration Optimization Service: {self.config.name}"
         )
         self._healthy = True
+
+    def _check_health(self) -> Dict[str, Any]:
+        """Service-specific health check logic."""
+        try:
+            # Basic health check - service is healthy if it can manage configurations
+            return {
+                'healthy': True,
+                'status': 'Configuration Optimization Service is operational',
+                'components_registered': len(self.optimization_parameters),
+                'total_optimizations': sum(len(history) for history in self.optimization_history.values())
+            }
+        except Exception as e:
+            self.logger.error(f"Health check failed: {e}")
+            return {
+                'healthy': False,
+                'status': f'Health check failed: {str(e)}',
+                'error': str(e)
+            }
 
     async def optimize_configuration(
         self,

@@ -24,7 +24,8 @@ from datetime import datetime
 from enum import Enum
 from typing import Any, Dict, List, Optional, Tuple, Union
 
-from ..base import BaseService, ServiceConfiguration, ServiceError
+from ..base import SimplifiedService, ServiceConfiguration
+from ..errors import ServiceError
 
 logger = logging.getLogger(__name__)
 
@@ -117,7 +118,7 @@ class DynamicEvolutionError(ServiceError):
     pass
 
 
-class DynamicEvolutionService(BaseService):
+class DynamicEvolutionService(SimplifiedService):
     """
     Service for dynamic prompt/content evolution.
 
@@ -141,14 +142,27 @@ class DynamicEvolutionService(BaseService):
         # Initialize logger
         self.logger = logging.getLogger(f"{__name__}.{self.__class__.__name__}")
 
-    def _validate_config(self) -> None:
-        """Validate service configuration."""
-        # No specific validation required for base implementation
-        pass
-
-    def _initialize(self) -> None:
+    def _initialize_service(self) -> None:
         """Initialize the service."""
         self.logger.info("Dynamic Evolution Service initialized")
+
+    def _check_health(self) -> Dict[str, Any]:
+        """Service-specific health check logic."""
+        try:
+            # Basic health check - service is healthy if it can manage templates
+            return {
+                'healthy': True,
+                'status': 'Dynamic Evolution Service is operational',
+                'templates_count': len(self.templates),
+                'active_tests': len(self.active_ab_tests)
+            }
+        except Exception as e:
+            self.logger.error(f"Health check failed: {e}")
+            return {
+                'healthy': False,
+                'status': f'Health check failed: {str(e)}',
+                'error': str(e)
+            }
 
     def register_template(
         self,

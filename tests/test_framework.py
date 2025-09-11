@@ -136,7 +136,7 @@ class TestPathManager:
     def get_test_temp_dir(cls) -> Path:
         """Get a temporary directory for tests."""
         if cls._test_temp_dir is None:
-            cls._test_temp_dir = Path(tempfile.mkdtemp(prefix="zbeam_test_"))
+            cls._test_temp_dir = Path(tempfile.mkdtemp(prefix="z-beam_test_"))
         return cls._test_temp_dir
 
     @classmethod

@@ -1,9 +1,9 @@
-**Steel** surface (left) before cleaning, showing processing residues and impurity accumulation.
+**Steel** surface (left) before cleaning, showing organic contaminants and particulate adhesion.
 
-**After laser cleaning** (right) After laser cleaning at 1064 nm, 25 W, 50 ns pulse duration, and 1000 µm spot size, achieving precise contamination removal with controlled ablation, showing thorough surface decontamination.
+**After laser cleaning** (right) After laser cleaning at 266 nm, 25 W, 50 ns pulse duration, and 1000 µm spot size, achieving precise contamination removal with controlled ablation, showing effective surface restoration.
 
 ---
-Version Log - Generated: 2025-09-10T17:43:57.974311
+Version Log - Generated: 2025-09-11T13:03:55.558098
 Material: Unknown
 Component: caption
 Generator: Z-Beam v1.0.0
@@ -14,7 +14,7 @@ Operation: generation
 ---
 
 ---
-Version Log - Generated: 2025-09-10T17:43:57.974401
+Version Log - Generated: 2025-09-11T13:03:55.558369
 Material: Steel
 Component: caption
 Generator: Z-Beam v2.1.0

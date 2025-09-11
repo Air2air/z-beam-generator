@@ -11,15 +11,13 @@ import sys
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
-from generators.component_generators import (
-    ComponentResult,
-    FrontmatterComponentGenerator,
-)
+from generators.hybrid_generator import HybridComponentGenerator
+from generators.component_generators import ComponentResult
 from versioning import stamp_component_output
 
 
-class PropertiestableComponentGenerator(FrontmatterComponentGenerator):
-    """Generator for properties table components using frontmatter data - NO API CALLS"""
+class PropertiestableComponentGenerator(HybridComponentGenerator):
+    """Generator for properties table components using frontmatter data and API when needed"""
 
     def __init__(self):
         super().__init__("propertiestable")

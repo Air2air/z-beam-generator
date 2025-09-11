@@ -1,6 +1,6 @@
 {
   "dry_run": true,
-  "timestamp": "2025-09-09T16:49:14.886091",
+  "timestamp": "2025-09-11T12:12:02.455110",
   "dead_files": [],
   "unused_component_files": [
     [
@@ -48,14 +48,23 @@
       "Unused: component 'badgesymbol' not in configuration"
     ]
   ],
-  "temp_files": [],
+  "temp_files": [
+    [
+      "generators/dynamic_generator.py.bak",
+      "Temporary file matching pattern: *.bak"
+    ],
+    [
+      "run.py.backup",
+      "Temporary file matching pattern: *.backup"
+    ]
+  ],
   "empty_dirs": [
     [
       "test_cache",
       "Empty directory"
     ],
     [
-      "content/components/jsonld",
+      "content/components/author",
       "Empty directory"
     ],
     [
@@ -71,11 +80,55 @@
   "broken_links": [],
   "misplaced_test_files": [
     [
-      "test_error_workflow_manager.py",
+      "test_workflow_formula_optional.py",
+      "Test file/directory in root - should be in tests/"
+    ],
+    [
+      "test_api_client_caching.py",
+      "Test file/directory in root - should be in tests/"
+    ],
+    [
+      "test_frontmatter.py",
+      "Test file/directory in root - should be in tests/"
+    ],
+    [
+      "test_formula_direct.py",
+      "Test file/directory in root - should be in tests/"
+    ],
+    [
+      "test_formula_optional.py",
+      "Test file/directory in root - should be in tests/"
+    ],
+    [
+      "test_cache_persistence.py",
+      "Test file/directory in root - should be in tests/"
+    ],
+    [
+      "test_api_client_demo.py",
+      "Test file/directory in root - should be in tests/"
+    ],
+    [
+      "test_override_material.py",
+      "Test file/directory in root - should be in tests/"
+    ],
+    [
+      "test_frontmatter_proper.py",
+      "Test file/directory in root - should be in tests/"
+    ],
+    [
+      "network_test.py",
       "Test file/directory in root - should be in tests/"
     ]
   ],
   "misplaced_doc_files": [
+    [
+      "CRITICAL_FIXES_SUMMARY.md",
+      "Documentation file in root - should be in docs/"
+    ],
+    [
+      "CHANGE_SUMMARY.md",
+      "Documentation file in root - should be in docs/"
+    ],
     [
       "GROK_INSTRUCTIONS.md",
       "Documentation file in root - should be in docs/"

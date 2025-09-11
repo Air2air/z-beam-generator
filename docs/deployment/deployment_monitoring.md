@@ -681,7 +681,7 @@ groups:
   - name: z-beam-alerts
     rules:
       # Service availability alerts
-      - alert: ZBeamServiceDown
+      - alert: z-beamServiceDown
         expr: up{job="z-beam-generator"} == 0
         for: 5m
         labels:

@@ -1,17 +1,15 @@
+#!/usr/bin/env python3
 """
-Z-Beam CLI Package
+Z-Beam CLI Module
 
-Modular CLI components extracted from run.py for better organization:
-- api_config.py: API provider configuration and client creation
-- component_config.py: Component orchestration and configuration
-- cleanup_commands.py: Cleanup functionality
+Command-line interface components for the Z-Beam content generation system.
 """
 
 from api.client_manager import create_api_client, get_api_client_for_component
 
 # Configuration now centralized in run.py
 def get_api_providers():
-    """Get API providers from run.py - single source of truth"""
+    """Get API providers from config - single source of truth"""
     try:
         from run import API_PROVIDERS
         return API_PROVIDERS
@@ -33,7 +31,32 @@ try:
 except ImportError:
     COMPONENT_CONFIG = {}
 
+# New modular CLI components
+from .commands import (
+    run_test_suite,
+    test_api_connectivity,
+    list_available_materials,
+    show_system_status,
+    show_cache_statistics,
+    show_cache_info,
+    clear_api_cache,
+    disable_persistent_cache,
+    preload_api_cache,
+    show_version_history,
+    clean_generated_content,
+    run_cleanup_scan,
+    generate_cleanup_report,
+    run_root_cleanup,
+    run_content_batch_generation,
+    run_optimization,
+    run_batch_generation,
+)
+
+from .argument_parser import create_argument_parser, show_help
+from .config_display import show_configuration
+
 __all__ = [
+    # Legacy API functions
     "get_api_providers",
     "create_api_client",
     "get_api_client_for_component",
@@ -45,4 +68,25 @@ __all__ = [
     "run_cleanup_scan",
     "run_cleanup_report",
     "run_root_cleanup",
+
+    # New modular CLI components
+    'run_test_suite',
+    'test_api_connectivity',
+    'list_available_materials',
+    'show_system_status',
+    'show_cache_statistics',
+    'show_cache_info',
+    'clear_api_cache',
+    'disable_persistent_cache',
+    'preload_api_cache',
+    'show_version_history',
+    'clean_generated_content',
+    'run_content_batch_generation',
+    'run_optimization',
+    'run_batch_generation',
+
+    # Utilities
+    'create_argument_parser',
+    'show_help',
+    'show_configuration',
 ]

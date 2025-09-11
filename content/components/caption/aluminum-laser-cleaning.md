@@ -1,9 +1,9 @@
-**Aluminum** surface (left) before cleaning, showing industrial deposits and material buildup.
+**Aluminum** surface (left) before cleaning, showing processing residues and impurity accumulation.
 
-**After laser cleaning** (right) After laser cleaning at 1064 nm, 5 W, 100 ns pulse duration, and 500 µm spot size, achieving contaminant removal with minimal substrate modification, showing excellent cleaning performance.
+**After laser cleaning** (right) After laser cleaning at 266 nm, 20 W, 100 ns pulse duration, and 100 µm spot size, achieving successful surface restoration with minimal thermal effects, showing precise contaminant elimination.
 
 ---
-Version Log - Generated: 2025-09-10T17:43:38.259108
+Version Log - Generated: 2025-09-11T13:01:52.289297
 Material: Unknown
 Component: caption
 Generator: Z-Beam v1.0.0
@@ -14,7 +14,7 @@ Operation: generation
 ---
 
 ---
-Version Log - Generated: 2025-09-10T17:43:38.259203
+Version Log - Generated: 2025-09-11T13:01:52.289585
 Material: Aluminum
 Component: caption
 Generator: Z-Beam v2.1.0

@@ -39,29 +39,42 @@ class ServiceInitializer:
         }
 
         try:
+            # Get configuration from centralized OPTIMIZER_CONFIG
+            try:
+                from run import OPTIMIZER_CONFIG
+                ai_service_config = OPTIMIZER_CONFIG.get("ai_detection_service", {})
+                logger.info("Using centralized AI detection configuration from run.py")
+            except ImportError:
+                logger.warning("Could not import OPTIMIZER_CONFIG, using defaults")
+                ai_service_config = {
+                    "enabled": True,
+                    "version": "1.0.0",
+                    "settings": {
+                        "providers": {
+                            "winston": {
+                                "type": "winston",
+                                "enabled": True,
+                                "target_score": 70.0,
+                                "max_iterations": 5,
+                            }
+                        },
+                        "target_score": 70.0,
+                        "max_iterations": 5,
+                        "improvement_threshold": 3.0,
+                        "cache_ttl_hours": 1,
+                        "max_workers": 4,
+                        "detection_threshold": 0.7,
+                        "confidence_threshold": 0.8,
+                        "allow_mocks_for_testing": True,
+                    }
+                }
+
             # Initialize AI Detection Optimization Service
             ai_config = ServiceConfiguration(
                 name="ai_detection_service",
-                version="1.0.0",
-                enabled=True,
-                settings={
-                    "providers": {
-                        "winston": {
-                            "type": "winston",
-                            "enabled": True,
-                            "target_score": 70.0,
-                            "max_iterations": 5,
-                        }
-                    },
-                    "target_score": 70.0,
-                    "max_iterations": 5,
-                    "improvement_threshold": 3.0,
-                    "cache_ttl_hours": 1,
-                    "max_workers": 4,
-                    "detection_threshold": 0.7,
-                    "confidence_threshold": 0.8,
-                    "allow_mocks_for_testing": True,  # Allow for testing
-                },
+                version=ai_service_config.get("version", "1.0.0"),
+                enabled=ai_service_config.get("enabled", True),
+                settings=ai_service_config.get("settings", {}),
             )
 
             try:
@@ -76,16 +89,28 @@ class ServiceInitializer:
                 logger.error(f"❌ AI Detection Service failed: {e}")
 
             # Initialize Iterative Workflow Service
+            try:
+                from run import OPTIMIZER_CONFIG
+                workflow_service_config = OPTIMIZER_CONFIG.get("iterative_workflow_service", {})
+                logger.info("Using centralized workflow configuration from run.py")
+            except ImportError:
+                logger.warning("Could not import OPTIMIZER_CONFIG for workflow, using defaults")
+                workflow_service_config = {
+                    "enabled": True,
+                    "version": "1.0.0",
+                    "settings": {
+                        "max_iterations": 10,
+                        "quality_threshold": 0.9,
+                        "time_limit_seconds": 300,
+                        "convergence_threshold": 0.01,
+                    }
+                }
+
             workflow_config = ServiceConfiguration(
                 name="iterative_workflow_service",
-                version="1.0.0",
-                enabled=True,
-                settings={
-                    "max_iterations": 10,
-                    "quality_threshold": 0.9,
-                    "time_limit_seconds": 300,
-                    "convergence_threshold": 0.01,
-                },
+                version=workflow_service_config.get("version", "1.0.0"),
+                enabled=workflow_service_config.get("enabled", True),
+                settings=workflow_service_config.get("settings", {}),
             )
 
             try:

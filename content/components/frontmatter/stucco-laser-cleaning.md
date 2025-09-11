@@ -92,24 +92,3 @@ images:
       texture
     url: null
 ---
-
-
-# Version Information
-# Generated: 2025-09-10T18:23:49.184153
-# Material: Unknown
-# Component: frontmatter
-# Generator: Z-Beam v1.0.0
-# Component Version: 4.0.1
-# Author: Yi-Chun Lin
-# Platform: Darwin (3.12.4)
-# Operation: generation
-
----
-Version Log - Generated: 2025-09-10T18:23:49.184402
-Material: Stucco
-Component: frontmatter
-Generator: Z-Beam v2.1.0
-Author: AI Assistant
-Platform: Darwin (3.12.4)
-File: content/components/frontmatter/stucco-laser-cleaning.md
----

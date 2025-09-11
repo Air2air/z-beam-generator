@@ -34,6 +34,28 @@ class OptimizationConfig:
     time_limit_seconds: Optional[float] = None
     convergence_threshold: float = 0.01
 
+    def __post_init__(self):
+        """Initialize with centralized configuration if available."""
+        try:
+            from run import OPTIMIZER_CONFIG
+            optimization_config = OPTIMIZER_CONFIG.get("optimization", {})
+            if not hasattr(self, '_initialized_from_central'):
+                self._initialized_from_central = True
+                # Only override if values weren't explicitly provided
+                if 'target_score' not in self.__dict__ or self.__dict__['target_score'] == 75.0:
+                    self.target_score = optimization_config.get("target_score", 75.0)
+                if 'max_iterations' not in self.__dict__ or self.__dict__['max_iterations'] == 5:
+                    self.max_iterations = optimization_config.get("max_iterations", 5)
+                if 'improvement_threshold' not in self.__dict__ or self.__dict__['improvement_threshold'] == 3.0:
+                    self.improvement_threshold = optimization_config.get("improvement_threshold", 3.0)
+                if 'time_limit_seconds' not in self.__dict__ or self.__dict__['time_limit_seconds'] is None:
+                    self.time_limit_seconds = optimization_config.get("time_limit_seconds", None)
+                if 'convergence_threshold' not in self.__dict__ or self.__dict__['convergence_threshold'] == 0.01:
+                    self.convergence_threshold = optimization_config.get("convergence_threshold", 0.01)
+        except ImportError:
+            # Use defaults if centralized config not available
+            pass
+
 
 @dataclass
 class OptimizationResult:
@@ -355,6 +377,17 @@ async def optimize_content_simple(
     Returns:
         OptimizationResult: Optimization results
     """
+    # Try to get defaults from centralized config
+    try:
+        from run import OPTIMIZER_CONFIG
+        optimization_config = OPTIMIZER_CONFIG.get("optimization", {})
+        if target_score == 75.0:  # Only override if using default
+            target_score = optimization_config.get("target_score", 75.0)
+        if max_iterations == 5:  # Only override if using default
+            max_iterations = optimization_config.get("max_iterations", 5)
+    except ImportError:
+        pass
+
     config = OptimizationConfig(
         target_score=target_score, max_iterations=max_iterations
     )
@@ -379,6 +412,17 @@ async def batch_optimize_materials(
     Returns:
         Dict[str, OptimizationResult]: Results for each material
     """
+    # Try to get defaults from centralized config
+    try:
+        from run import OPTIMIZER_CONFIG
+        optimization_config = OPTIMIZER_CONFIG.get("optimization", {})
+        if target_score == 75.0:  # Only override if using default
+            target_score = optimization_config.get("target_score", 75.0)
+        if max_iterations == 5:  # Only override if using default
+            max_iterations = optimization_config.get("max_iterations", 5)
+    except ImportError:
+        pass
+
     config = OptimizationConfig(
         target_score=target_score, max_iterations=max_iterations
     )

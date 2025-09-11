@@ -26,12 +26,8 @@ from datetime import datetime
 from enum import Enum
 from typing import Any, Dict, List, Optional, Tuple, Union
 
-from ..base import (
-    BaseService,
-    ServiceConfiguration,
-    ServiceConfigurationError,
-    ServiceError,
-)
+from ..base import SimplifiedService, ServiceConfiguration
+from ..errors import ServiceConfigurationError, ServiceError
 
 
 class QualityDimension(Enum):
@@ -97,7 +93,7 @@ class QualityTrend:
     consistency_score: float
 
 
-class QualityAssessmentService(BaseService):
+class QualityAssessmentService(SimplifiedService):
     """
     Service for comprehensive quality assessment and scoring.
 
@@ -128,15 +124,28 @@ class QualityAssessmentService(BaseService):
         # Initialize default benchmarks
         self._initialize_default_benchmarks()
 
-    def _validate_config(self) -> None:
-        """Validate service configuration."""
-        if not self.config.name:
-            raise ServiceConfigurationError("Service name is required")
-
-    def _initialize(self) -> None:
+    def _initialize_service(self) -> None:
         """Initialize the service."""
         self.logger.info(f"Initializing Quality Assessment Service: {self.config.name}")
         self._healthy = True
+
+    def _check_health(self) -> Dict[str, Any]:
+        """Service-specific health check logic."""
+        try:
+            # Basic health check - service is healthy if it can perform assessments
+            return {
+                'healthy': True,
+                'status': 'Quality Assessment Service is operational',
+                'benchmarks_count': len(self.quality_benchmarks),
+                'assessments_count': sum(len(history) for history in self.assessment_history.values())
+            }
+        except Exception as e:
+            self.logger.error(f"Health check failed: {e}")
+            return {
+                'healthy': False,
+                'status': f'Health check failed: {str(e)}',
+                'error': str(e)
+            }
 
     def _initialize_default_benchmarks(self) -> None:
         """Initialize default quality benchmarks."""

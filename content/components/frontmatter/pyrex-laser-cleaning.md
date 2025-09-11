@@ -86,24 +86,3 @@ regulatoryStandards: ISO 18562, ASTM F2100, IEC 60601-1
 images:
   hero: alt
 ---
-
-
-# Version Information
-# Generated: 2025-09-10T18:18:43.003607
-# Material: Unknown
-# Component: frontmatter
-# Generator: Z-Beam v1.0.0
-# Component Version: 4.0.1
-# Author: Yi-Chun Lin
-# Platform: Darwin (3.12.4)
-# Operation: generation
-
----
-Version Log - Generated: 2025-09-10T18:18:43.003998
-Material: Pyrex
-Component: frontmatter
-Generator: Z-Beam v2.1.0
-Author: AI Assistant
-Platform: Darwin (3.12.4)
-File: content/components/frontmatter/pyrex-laser-cleaning.md
----

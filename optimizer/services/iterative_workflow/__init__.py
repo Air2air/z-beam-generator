@@ -22,7 +22,8 @@ from datetime import datetime
 from enum import Enum
 from typing import Any, Awaitable, Callable, Dict, List, Optional, Union
 
-from ..base import BaseService, ServiceConfiguration, ServiceError
+from ..base import SimplifiedService, ServiceConfiguration
+from ..errors import ServiceError
 
 logger = logging.getLogger(__name__)
 
@@ -108,7 +109,7 @@ class IterativeWorkflowError(ServiceError):
     pass
 
 
-class IterativeWorkflowService(BaseService):
+class IterativeWorkflowService(SimplifiedService):
     """
     Service for managing iterative improvement workflows.
 

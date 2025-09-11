@@ -92,24 +92,3 @@ images:
 title: Laser Cleaning Bamboo - Technical Guide for Optimal Processing
 headline: null
 ---
-
-
-# Version Information
-# Generated: 2025-09-10T19:00:34.573709
-# Material: Unknown
-# Component: frontmatter
-# Generator: Z-Beam v1.0.0
-# Component Version: 4.0.1
-# Author: Yi-Chun Lin
-# Platform: Darwin (3.12.4)
-# Operation: generation
-
----
-Version Log - Generated: 2025-09-10T19:00:34.573893
-Material: Bamboo
-Component: frontmatter
-Generator: Z-Beam v2.1.0
-Author: AI Assistant
-Platform: Darwin (3.12.4)
-File: content/components/frontmatter/bamboo-laser-cleaning.md
----

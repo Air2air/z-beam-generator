@@ -91,24 +91,3 @@ images:
     url: /images/fused-silica-laser-cleaning-micro.jpg
 title: Laser Cleaning Fused Silica - Technical Guide for Optimal Processing
 ---
-
-
-# Version Information
-# Generated: 2025-09-10T18:17:34.989141
-# Material: Unknown
-# Component: frontmatter
-# Generator: Z-Beam v1.0.0
-# Component Version: 4.0.1
-# Author: Alessandro Moretti
-# Platform: Darwin (3.12.4)
-# Operation: generation
-
----
-Version Log - Generated: 2025-09-10T18:17:34.989559
-Material: Fused Silica
-Component: frontmatter
-Generator: Z-Beam v2.1.0
-Author: AI Assistant
-Platform: Darwin (3.12.4)
-File: content/components/frontmatter/fused-silica-laser-cleaning.md
----

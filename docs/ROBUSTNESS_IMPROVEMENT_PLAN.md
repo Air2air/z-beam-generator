@@ -61,23 +61,23 @@ def retry_with_backoff(func, max_attempts=3, **kwargs):
 
 #### Structured Error Types
 ```python
-class ZBeamError(Exception):
+class z-beamError(Exception):
     """Base exception for Z-Beam Generator"""
     pass
 
-class ConfigurationError(ZBeamError):
+class ConfigurationError(z-beamError):
     """Configuration-related errors"""
     pass
 
-class APIError(ZBeamError):
+class APIError(z-beamError):
     """API-related errors"""
     pass
 
-class ValidationError(ZBeamError):
+class ValidationError(z-beamError):
     """Data validation errors"""
     pass
 
-class FileSystemError(ZBeamError):
+class FileSystemError(z-beamError):
     """File system operation errors"""
     pass
 ```
@@ -131,7 +131,7 @@ def validate_config(config: Dict[str, Any]) -> bool:
 ```python
 class ConfigManager:
     def __init__(self):
-        self.env = os.getenv('ZBEAM_ENV', 'development')
+        self.env = os.getenv('z-beam_ENV', 'development')
         self._config_cache = {}
         self._config_mtime = {}
 
@@ -509,33 +509,33 @@ class MetricsCollector:
     def __init__(self):
         # Counters
         self.generation_requests = Counter(
-            'zbeam_generation_requests_total',
+            'z-beam_generation_requests_total',
             'Total number of generation requests',
             ['material', 'component_type']
         )
 
         self.generation_errors = Counter(
-            'zbeam_generation_errors_total',
+            'z-beam_generation_errors_total',
             'Total number of generation errors',
             ['error_type', 'component_type']
         )
 
         # Histograms
         self.generation_duration = Histogram(
-            'zbeam_generation_duration_seconds',
+            'z-beam_generation_duration_seconds',
             'Time spent generating content',
             ['component_type']
         )
 
         self.api_call_duration = Histogram(
-            'zbeam_api_call_duration_seconds',
+            'z-beam_api_call_duration_seconds',
             'Time spent on API calls',
             ['provider']
         )
 
         # Gauges
         self.active_generations = Gauge(
-            'zbeam_active_generations',
+            'z-beam_active_generations',
             'Number of active generations'
         )
 
@@ -632,7 +632,7 @@ class CacheManager:
         self.redis_client = redis.Redis(host='localhost', port=6379, db=0)
 
         # L3 Cache: File-based cache for large objects
-        self.file_cache_dir = Path('/tmp/zbeam_cache')
+        self.file_cache_dir = Path('/tmp/z-beam_cache')
 
     def get(self, key: str) -> Optional[Any]:
         """Get value from cache hierarchy."""
@@ -692,7 +692,7 @@ from typing import List, Dict, Any, Optional
 import hashlib
 
 class ContentDatabase:
-    def __init__(self, db_path: str = "zbeam_content.db"):
+    def __init__(self, db_path: str = "z-beam_content.db"):
         self.db_path = db_path
         self._init_database()
 

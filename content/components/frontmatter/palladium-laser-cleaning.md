@@ -88,24 +88,3 @@ regulatoryStandards: ISO 14644-1, ASTM B540, IEC 60825-1
 images:
   hero: null
 ---
-
-
-# Version Information
-# Generated: 2025-09-10T18:35:49.055740
-# Material: Unknown
-# Component: frontmatter
-# Generator: Z-Beam v1.0.0
-# Component Version: 4.0.1
-# Author: Ikmanda Roswati
-# Platform: Darwin (3.12.4)
-# Operation: generation
-
----
-Version Log - Generated: 2025-09-10T18:35:49.055929
-Material: Palladium
-Component: frontmatter
-Generator: Z-Beam v2.1.0
-Author: AI Assistant
-Platform: Darwin (3.12.4)
-File: content/components/frontmatter/palladium-laser-cleaning.md
----
