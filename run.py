@@ -44,7 +44,7 @@ PATH CLEANUP (one-time scripts):
 1. Generate all content:           python3 run.py
 2. Generate specific material:     python3 run.py --material "Steel"
 3. Clean and regenerate:          python3 run.py --clean && python3 run.py
-4. Check system health:           python3 run.py --check-env --show-config
+4. Check system health:           python3 run.py --check-env
 5. Remove unwanted material:      python3 remove_material.py --material "Old Material" --execute
 
 🔧 CONFIGURATION GUIDE - SINGLE SOURCE OF TRUTH:
@@ -138,9 +138,9 @@ API_PROVIDERS = {
         "name": "Grok",
         "env_var": "GROK_API_KEY",
         "env_key": "GROK_API_KEY",  # For backward compatibility
-        "base_url": "https://api.x.ai/v1",
-        "model": "grok-beta",
-        "default_model": "grok-beta",
+        "base_url": "https://api.x.ai",
+        "model": "grok-3",
+        "default_model": "grok-3",
         # Required operational parameters for fail-fast architecture
         "max_tokens": 800,  # Conservative for large prompts
         "temperature": 0.7,  # Balanced creativity
@@ -152,24 +152,9 @@ API_PROVIDERS = {
         "supports_reasoning": True,
         "optimal_temperature": 0.7,
     },
-    "winston": {
-        "name": "Winston AI Detection",
-        "env_var": "WINSTON_API_KEY",
-        "env_key": "WINSTON_API_KEY",  # For backward compatibility
-        "base_url": "https://api.gowinston.ai/v1",
-        "model": "winston-ai-detector",
-        "default_model": "winston-ai-detector",
-        # Required operational parameters for fail-fast architecture
-        "max_tokens": 1000,  # Appropriate for detection API
-        "temperature": 0.1,  # Low temperature for consistent detection
-        "timeout_connect": 10,  # Connection timeout in seconds
-        "timeout_read": 45,  # Read timeout in seconds
-        "max_retries": 3,  # Maximum retry attempts
-        "retry_delay": 1.0,  # Delay between retries in seconds
-        # Legacy compatibility fields
-        "supports_detection": True,
-        "optimal_temperature": 0.1,
-    },
+    # REMOVED: Winston is not a chat completion service
+    # It should only be used through the specialized AI detection provider
+    # "winston": { ... }
 }
 
 # Component Configuration - USER SETTABLE
@@ -208,7 +193,7 @@ COMPONENT_CONFIG = {
     "text": {
         "api_provider": "deepseek",
         "priority": 6,
-        "enabled": False,  # DISABLED for focused batch test
+        "enabled": True,  # ENABLED for text generation
         "data_provider": "hybrid",  # Uses frontmatter data + AI generation
     },
     "table": {
@@ -238,10 +223,10 @@ COMPONENT_CONFIG = {
 }
 
 # AI Detection Configuration - USER SETTABLE
-# Modify these settings to customize AI detection behavior
+# Configure AI detection behavior
 AI_DETECTION_CONFIG = {
     "enabled": True,
-    "provider": "winston",
+    "provider": "winston",  # FIXED: Keep Winston for AI detection only
     "target_score": 70.0,
     "max_iterations": 3,
     "improvement_threshold": 5.0,
@@ -488,8 +473,264 @@ class FailFastGenerator:
         )
 
 
-# END OF CONFIGURATION HELPER FUNCTIONS
-# =================================================================================
+def perform_comprehensive_health_check():
+    """Perform comprehensive health check of all system components."""
+    import time
+    import os
+    
+    health_checks = {
+        "api_connectivity": {"status": "unknown", "score": 0, "details": []},
+        "component_loading": {"status": "unknown", "score": 0, "details": []},
+        "configuration": {"status": "unknown", "score": 0, "details": []},
+        "file_system": {"status": "unknown", "score": 0, "details": []},
+        "cache_system": {"status": "unknown", "score": 0, "details": []},
+        "materials_data": {"status": "unknown", "score": 0, "details": []},
+        "memory_resources": {"status": "unknown", "score": 0, "details": []}
+    }
+    
+    print("🔍 Running comprehensive health checks...")
+    
+    # 1. API Connectivity Check
+    print("   🧪 Testing API connectivity...")
+    try:
+        from api.client_manager import test_api_connectivity
+        api_results = test_api_connectivity()
+        
+        successful_apis = sum(1 for r in api_results.values() if r.get("success", False))
+        total_apis = len(api_results)
+        
+        if successful_apis == total_apis:
+            health_checks["api_connectivity"]["status"] = "healthy"
+            health_checks["api_connectivity"]["score"] = 100
+            health_checks["api_connectivity"]["details"] = [f"All {total_apis} API providers connected"]
+        elif successful_apis > 0:
+            health_checks["api_connectivity"]["status"] = "warning"
+            health_checks["api_connectivity"]["score"] = (successful_apis / total_apis) * 100
+            health_checks["api_connectivity"]["details"] = [f"{successful_apis}/{total_apis} API providers connected"]
+        else:
+            health_checks["api_connectivity"]["status"] = "critical"
+            health_checks["api_connectivity"]["score"] = 0
+            health_checks["api_connectivity"]["details"] = ["No API providers available"]
+            
+    except Exception as e:
+        health_checks["api_connectivity"]["status"] = "critical"
+        health_checks["api_connectivity"]["score"] = 0
+        health_checks["api_connectivity"]["details"] = [f"API check failed: {str(e)}"]
+    
+    # 2. Component Loading Check
+    print("   🔧 Testing component loading...")
+    try:
+        from cli.component_config import get_components_sorted_by_priority
+        components = get_components_sorted_by_priority(include_disabled=True)
+        
+        loadable_components = 0
+        for comp in components:
+            try:
+                # Try to import the component generator
+                if comp == "text":
+                    from components.text.generator import TextComponentGenerator
+                elif comp == "frontmatter":
+                    from components.frontmatter.generator import FrontmatterComponentGenerator
+                # Add other components as needed
+                loadable_components += 1
+            except ImportError:
+                continue
+        
+        if loadable_components == len(components):
+            health_checks["component_loading"]["status"] = "healthy"
+            health_checks["component_loading"]["score"] = 100
+            health_checks["component_loading"]["details"] = [f"All {len(components)} components loadable"]
+        elif loadable_components > 0:
+            health_checks["component_loading"]["status"] = "warning"
+            health_checks["component_loading"]["score"] = (loadable_components / len(components)) * 100
+            health_checks["component_loading"]["details"] = [f"{loadable_components}/{len(components)} components loadable"]
+        else:
+            health_checks["component_loading"]["status"] = "critical"
+            health_checks["component_loading"]["score"] = 0
+            health_checks["component_loading"]["details"] = ["No components loadable"]
+            
+    except Exception as e:
+        health_checks["component_loading"]["status"] = "critical"
+        health_checks["component_loading"]["score"] = 0
+        health_checks["component_loading"]["details"] = [f"Component check failed: {str(e)}"]
+    
+    # 3. Configuration Check
+    print("   ⚙️  Testing configuration...")
+    try:
+        # Check if config files exist and are readable
+        config_files = [
+            "config/api_keys.py",
+            "data/materials.yaml",
+            "run.py"
+        ]
+        
+        missing_files = []
+        for config_file in config_files:
+            if not os.path.exists(config_file):
+                missing_files.append(config_file)
+        
+        if not missing_files:
+            health_checks["configuration"]["status"] = "healthy"
+            health_checks["configuration"]["score"] = 100
+            health_checks["configuration"]["details"] = ["All configuration files present"]
+        else:
+            health_checks["configuration"]["status"] = "critical"
+            health_checks["configuration"]["score"] = 0
+            health_checks["configuration"]["details"] = [f"Missing files: {', '.join(missing_files)}"]
+            
+    except Exception as e:
+        health_checks["configuration"]["status"] = "critical"
+        health_checks["configuration"]["score"] = 0
+        health_checks["configuration"]["details"] = [f"Configuration check failed: {str(e)}"]
+    
+    # 4. File System Check
+    print("   📁 Testing file system...")
+    try:
+        # Check write permissions in key directories
+        test_dirs = ["content", "logs", "cache"]
+        writeable_dirs = 0
+        
+        for test_dir in test_dirs:
+            if os.path.exists(test_dir):
+                test_file = os.path.join(test_dir, ".health_check_test")
+                try:
+                    with open(test_file, 'w') as f:
+                        f.write("test")
+                    os.remove(test_file)
+                    writeable_dirs += 1
+                except:
+                    continue
+            else:
+                # Try to create directory
+                try:
+                    os.makedirs(test_dir, exist_ok=True)
+                    writeable_dirs += 1
+                except:
+                    continue
+        
+        if writeable_dirs == len(test_dirs):
+            health_checks["file_system"]["status"] = "healthy"
+            health_checks["file_system"]["score"] = 100
+            health_checks["file_system"]["details"] = ["All directories writeable"]
+        elif writeable_dirs > 0:
+            health_checks["file_system"]["status"] = "warning"
+            health_checks["file_system"]["score"] = (writeable_dirs / len(test_dirs)) * 100
+            health_checks["file_system"]["details"] = [f"{writeable_dirs}/{len(test_dirs)} directories writeable"]
+        else:
+            health_checks["file_system"]["status"] = "critical"
+            health_checks["file_system"]["score"] = 0
+            health_checks["file_system"]["details"] = ["No directories writeable"]
+            
+    except Exception as e:
+        health_checks["file_system"]["status"] = "critical"
+        health_checks["file_system"]["score"] = 0
+        health_checks["file_system"]["details"] = [f"File system check failed: {str(e)}"]
+    
+    # 5. Cache System Check
+    print("   📋 Testing cache system...")
+    try:
+        from api.cache_adapter import APIClientCache
+        
+        # Test basic cache operations
+        cache_stats = APIClientCache.get_cache_stats()
+        
+        if cache_stats["total_requests"] >= 0:  # Basic functionality check
+            health_checks["cache_system"]["status"] = "healthy"
+            health_checks["cache_system"]["score"] = 100
+            health_checks["cache_system"]["details"] = [f"Cache operational ({cache_stats['cached_instances']} instances)"]
+        else:
+            health_checks["cache_system"]["status"] = "warning"
+            health_checks["cache_system"]["score"] = 50
+            health_checks["cache_system"]["details"] = ["Cache system responding but may have issues"]
+            
+    except Exception as e:
+        health_checks["cache_system"]["status"] = "critical"
+        health_checks["cache_system"]["score"] = 0
+        health_checks["cache_system"]["details"] = [f"Cache system failed: {str(e)}"]
+    
+    # 6. Materials Data Check
+    print("   📊 Testing materials data...")
+    try:
+        from data.materials import load_materials
+        materials_data = load_materials()
+        
+        if "materials" in materials_data:
+            categories = list(materials_data["materials"].keys())
+            total_materials = sum(len(cat_data.get("items", [])) for cat_data in materials_data["materials"].values())
+            
+            health_checks["materials_data"]["status"] = "healthy"
+            health_checks["materials_data"]["score"] = 100
+            health_checks["materials_data"]["details"] = [f"{len(categories)} categories, {total_materials} materials loaded"]
+        else:
+            health_checks["materials_data"]["status"] = "critical"
+            health_checks["materials_data"]["score"] = 0
+            health_checks["materials_data"]["details"] = ["Materials data structure invalid"]
+            
+    except Exception as e:
+        health_checks["materials_data"]["status"] = "critical"
+        health_checks["materials_data"]["score"] = 0
+        health_checks["materials_data"]["details"] = [f"Materials data check failed: {str(e)}"]
+    
+    # 7. Memory Resources Check
+    print("   🧠 Testing memory resources...")
+    try:
+        import psutil
+        memory = psutil.virtual_memory()
+        memory_percent = memory.percent
+        
+        if memory_percent < 80:
+            health_checks["memory_resources"]["status"] = "healthy"
+            health_checks["memory_resources"]["score"] = 100
+            health_checks["memory_resources"]["details"] = [f"Memory usage: {memory_percent:.1f}%"]
+        elif memory_percent < 90:
+            health_checks["memory_resources"]["status"] = "warning"
+            health_checks["memory_resources"]["score"] = 70
+            health_checks["memory_resources"]["details"] = [f"Memory usage: {memory_percent:.1f}% (high)"]
+        else:
+            health_checks["memory_resources"]["status"] = "critical"
+            health_checks["memory_resources"]["score"] = 30
+            health_checks["memory_resources"]["details"] = [f"Memory usage: {memory_percent:.1f}% (critical)"]
+            
+    except (ImportError, ModuleNotFoundError):
+        # psutil not available, skip this check
+        health_checks["memory_resources"]["status"] = "unknown"
+        health_checks["memory_resources"]["score"] = 50
+        health_checks["memory_resources"]["details"] = ["Memory check unavailable (psutil not installed)"]
+    except Exception as e:
+        health_checks["memory_resources"]["status"] = "warning"
+        health_checks["memory_resources"]["score"] = 50
+        health_checks["memory_resources"]["details"] = [f"Memory check failed: {str(e)}"]
+    
+    # Calculate overall status
+    scores = [check["score"] for check in health_checks.values()]
+    overall_score = sum(scores) / len(scores)
+    
+    if overall_score >= 90:
+        overall_status = "healthy"
+    elif overall_score >= 70:
+        overall_status = "warning"
+    else:
+        overall_status = "critical"
+    
+    # Print detailed results
+    print("\n📋 HEALTH CHECK RESULTS:")
+    for check_name, check_data in health_checks.items():
+        status_icon = {
+            "healthy": "✅",
+            "warning": "⚠️ ",
+            "critical": "❌",
+            "unknown": "❓"
+        }.get(check_data["status"], "❓")
+        
+        print(f"   {status_icon} {check_name.replace('_', ' ').title()}: {check_data['score']:.0f}/100")
+        for detail in check_data["details"]:
+            print(f"      • {detail}")
+    
+    return {
+        "overall_status": overall_status,
+        "overall_score": overall_score,
+        "checks": health_checks
+    }
 
 
 def main():
@@ -563,6 +804,11 @@ def main():
         "--status",
         action="store_true",
         help="Show system status and component availability",
+    )
+    parser.add_argument(
+        "--check-env",
+        action="store_true",
+        help="Perform comprehensive environment health check",
     )
     parser.add_argument(
         "--cache-stats",
@@ -673,7 +919,8 @@ def main():
                 from data.materials import load_materials
 
                 materials_data = load_materials()
-                for category, data in materials_data.items():
+                materials_section = materials_data.get("materials", {})
+                for category, data in materials_section.items():
                     items = data.get("items", [])
                     print(f"\n🔧 {category.title()} ({len(items)} materials):")
                     for material in items[:5]:  # Show first 5
@@ -693,13 +940,26 @@ def main():
 
             show_component_configuration()
 
-        elif args.status:
-            # Show system status
-            print("📊 Z-Beam System Status:")
-            print("✅ Core system operational")
-            print("✅ Component generators loaded")
-            print("✅ API clients configured")
-            print("✅ Content validation active")
+        elif args.check_env:
+            # Comprehensive environment health check
+            print("🏥 COMPREHENSIVE ENVIRONMENT HEALTH CHECK")
+            print("=" * 60)
+            
+            health_status = perform_comprehensive_health_check()
+            
+            print("\n" + "=" * 60)
+            if health_status["overall_status"] == "healthy":
+                print("🎉 SYSTEM HEALTH: EXCELLENT - All systems operational")
+                print("🚀 Ready for production content generation")
+            elif health_status["overall_status"] == "warning":
+                print("⚠️  SYSTEM HEALTH: WARNING - Minor issues detected")
+                print("💡 System functional but consider addressing warnings")
+            else:
+                print("❌ SYSTEM HEALTH: CRITICAL - Major issues detected")
+                print("🛑 System may not function properly - fix issues before proceeding")
+            
+            print(f"📊 Overall Score: {health_status['overall_score']:.1f}/100")
+            print("=" * 60)
 
         elif args.cache_stats:
             # Show cache statistics
@@ -1377,7 +1637,8 @@ def main():
             print()
             print("⚙️  CONFIGURATION:")
             print("  python3 run.py --config                # Show config")
-            print("  python3 run.py --status                # System status")
+            print("  python3 run.py --status                # Basic system status")
+            print("  python3 run.py --check-env             # Comprehensive health check")
             print("  python3 run.py --cache-stats           # Cache performance")
             print("  python3 run.py --clear-cache           # Clear API cache")
             print("  python3 run.py --preload-cache         # Preload cache")

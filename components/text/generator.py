@@ -46,20 +46,76 @@ class TextComponentGenerator(APIComponentGenerator):
         schema_fields: Optional[Dict] = None,
     ) -> ComponentResult:
         """
-        Generate text content using simplified prompting.
+        Generate text content using frontmatter data as primary source.
+
+        FAIL-FAST: Requires counterpart frontmatter file to exist. Will not generate
+        frontmatter itself - must be pre-generated.
 
         Args:
             material_name: Name of the material
-            material_data: Material data dictionary
+            material_data: Raw material data from materials.yaml (fallback)
             api_client: API client for text generation
             author_info: Author information
-            frontmatter_data: Frontmatter data from previous generation
+            frontmatter_data: Processed frontmatter data (primary source)
             schema_fields: Schema fields (not used for text)
 
         Returns:
             ComponentResult with generated content
         """
         try:
+            # FAIL-FAST: Text component requires counterpart frontmatter file
+            if not frontmatter_data:
+                from pathlib import Path
+                safe_material = material_name.lower().replace(" ", "-").replace("/", "-")
+                frontmatter_path = Path("content") / "components" / "frontmatter" / f"{safe_material}-laser-cleaning.md"
+
+                if not frontmatter_path.exists():
+                    error_msg = f"Counterpart frontmatter file not found: {frontmatter_path}. Text component requires pre-generated frontmatter data."
+                    logger.error(f"❌ {error_msg}")
+                    return ComponentResult(
+                        component_type="text",
+                        content="",
+                        success=False,
+                        error_message=error_msg,
+                    )
+                else:
+                    # Try to load existing frontmatter data
+                    try:
+                        from utils.file_ops.frontmatter_loader import load_frontmatter_data
+                        frontmatter_data = load_frontmatter_data(material_name)
+                        if not frontmatter_data:
+                            error_msg = f"Failed to load frontmatter data from existing file: {frontmatter_path}"
+                            logger.error(f"❌ {error_msg}")
+                            return ComponentResult(
+                                component_type="text",
+                                content="",
+                                success=False,
+                                error_message=error_msg,
+                            )
+                        # Convert datetime objects to strings for JSON serialization
+                        import datetime
+                        def convert_datetimes(obj):
+                            if isinstance(obj, dict):
+                                return {k: convert_datetimes(v) for k, v in obj.items()}
+                            elif isinstance(obj, list):
+                                return [convert_datetimes(item) for item in obj]
+                            elif isinstance(obj, datetime.datetime):
+                                return obj.isoformat()
+                            elif isinstance(obj, datetime.date):
+                                return obj.isoformat()
+                            else:
+                                return obj
+                        frontmatter_data = convert_datetimes(frontmatter_data)
+                    except Exception as e:
+                        error_msg = f"Error loading frontmatter data: {e}"
+                        logger.error(f"❌ {error_msg}")
+                        return ComponentResult(
+                            component_type="text",
+                            content="",
+                            success=False,
+                            error_message=error_msg,
+                        )
+
             # Import the fail_fast_generator
             from .generators.fail_fast_generator import create_fail_fast_generator
 
@@ -90,10 +146,13 @@ class TextComponentGenerator(APIComponentGenerator):
             if not author_info:
                 raise ValueError("Author information is required for text generation")
 
+            # Use frontmatter_data as primary source, fall back to material_data
+            primary_data = frontmatter_data if frontmatter_data else material_data
+
             # Simple text generation
             result = generator.generate(
                 material_name=material_name,
-                material_data=material_data,
+                material_data=primary_data,  # Use frontmatter data as primary source
                 api_client=api_client,
                 author_info=author_info,
                 frontmatter_data=frontmatter_data,
@@ -177,7 +236,7 @@ author: {author_name}
 material: {material_name}
 component: text
 generated: {time.strftime('%Y-%m-%d')}
-source: frontmatter
+source: text
 ---"""
 
         # Combine content with frontmatter at the bottom

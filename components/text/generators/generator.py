@@ -177,7 +177,7 @@ author: {author_name}
 material: {material_name}
 component: text
 generated: {time.strftime('%Y-%m-%d')}
-source: frontmatter
+source: text
 ---"""
 
         # Combine content with frontmatter at the bottom

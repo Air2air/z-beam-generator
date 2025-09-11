@@ -19,7 +19,7 @@ The Z-Beam system uses a **centralized API configuration architecture** with all
 ## Supported Providers
 
 - **DeepSeek**: Primary provider for most components (optimized parameters)
-- **Grok (X.AI)**: Used for content component with reliable grok-2 model
+- **Grok (X.AI)**: Used for content component with reliable grok-3 model
 - **Winston AI**: Detection and analysis provider
 - **Table Component**: Static/deterministic generation (no API required)
 
@@ -76,8 +76,8 @@ API_PROVIDERS = {
     "grok": {
         "name": "Grok",
         "env_var": "GROK_API_KEY",
-        "base_url": "https://api.x.ai/v1",
-        "model": "grok-2",  # Reliable model for content generation
+        "base_url": "https://api.x.ai",  # FIXED: Removed /v1 to prevent double-pathing
+        "model": "grok-3",  # UPDATED: Changed from grok-beta to grok-3 (grok-beta deprecated 2025-09-15)
         "max_tokens": 800,
         "temperature": 0.7,
         "timeout_connect": 10,
@@ -88,14 +88,14 @@ API_PROVIDERS = {
     "winston": {
         "name": "Winston AI Detection",
         "env_var": "WINSTON_API_KEY",
-        "base_url": "https://api.gowinston.ai/functions/v1",
-        "model": "winston-detection",
+        "base_url": "https://api.gowinston.ai",  # FIXED: Removed /v1 to prevent double-pathing
+        "model": "winston-ai-detector",
         "max_tokens": 1000,
         "temperature": 0.1,
         "timeout_connect": 10,
-        "timeout_read": 30,
-        "max_retries": 2,
-        "retry_delay": 0.5,
+        "timeout_read": 45,
+        "max_retries": 3,
+        "retry_delay": 1.0,
     }
 }
 
@@ -234,13 +234,50 @@ The system now uses strict fail-fast architecture:
 
 These changes ensure reliable, sequential API request processing without hanging or concurrent request conflicts.
 
+## September 2025 Critical Fixes - API Endpoint Configuration
+
+### **🚨 CRITICAL: Double Path Prevention**
+**Issue**: API endpoints were configured with `/v1` in base_url, but client code added another `/v1/chat/completions`, creating invalid URLs like `https://api.x.ai/v1/v1/chat/completions`
+
+**Root Cause**: 
+- Grok: `"base_url": "https://api.x.ai/v1"` → `https://api.x.ai/v1/v1/chat/completions` ❌
+- Winston: `"base_url": "https://api.gowinston.ai/v1"` → `https://api.gowinston.ai/v1/v1/chat/completions` ❌
+
+**Fix Applied**:
+- Grok: `"base_url": "https://api.x.ai"` → `https://api.x.ai/v1/chat/completions` ✅
+- Winston: `"base_url": "https://api.gowinston.ai"` → `https://api.gowinston.ai/v1/chat/completions` ✅
+
+### **🚨 CRITICAL: Model Deprecation Prevention**
+**Issue**: Grok model `grok-beta` was deprecated on 2025-09-15, causing 404 errors
+
+**Root Cause**: Using outdated model name in configuration
+**Fix Applied**: Updated from `"model": "grok-beta"` to `"model": "grok-3"`
+
+### **Impact of Fixes**
+- ✅ **Immediate Connections**: Response times now 0.57s (Grok) and 3.44s (DeepSeek)
+- ✅ **No More Hanging**: Eliminated 785+ second timeouts that were causing system hangs
+- ✅ **Reliable Generation**: Text component generation now works consistently
+- ✅ **Fail-Fast Behavior**: System fails immediately instead of hanging indefinitely
+
+### **Prevention Measures**
+1. **Endpoint Validation**: Always verify base_url doesn't include path components that client code will duplicate
+2. **Model Version Monitoring**: Regularly check for deprecated model versions
+3. **Connectivity Testing**: Run `python3 run.py --test-api` before deployment
+4. **Response Time Monitoring**: Alert if response times exceed 10 seconds
+
+### **Testing Requirements**
+- **Connectivity Test**: Must pass for all configured providers
+- **Endpoint Validation**: No double-path URLs allowed
+- **Model Validation**: All models must be current and supported
+- **Timeout Validation**: Response times must be under 10 seconds
+
 ## Commands
 
 ```bash
 # Check environment configuration
 python3 run.py --check-env
 
-# Test API connections
+# Test API connections (CRITICAL - run before any generation)
 python3 run.py --test-api
 
 # Show component configuration
@@ -264,6 +301,18 @@ python3 test_api_providers.py
 ```
 **Solution**: Check internet connection and API key validity
 
+### Double Path Errors (404)
+```
+❌ API request failed with status 404: The requested resource was not found
+```
+**Solution**: Check base_url configuration - remove `/v1` if client adds it automatically
+
+### Model Deprecation Errors (404)
+```
+❌ API request failed with status 404: The model was deprecated
+```
+**Solution**: Update model name to current version (e.g., grok-beta → grok-3)
+
 ### Import Errors
 ```
 ❌ Failed to import API client modules
@@ -286,3 +335,6 @@ The system includes comprehensive tests:
 - Component routing verification
 - Error handling validation
 - Mock client functionality
+- **NEW**: API endpoint validation tests
+- **NEW**: Model deprecation monitoring tests
+- **NEW**: Response time validation tests

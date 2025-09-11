@@ -1,21 +1,21 @@
 ## Material Properties
 | Property | Value | Unit |
 | --- | --- | --- |
-| Melting Point | 1668 | °C |
+| Young's Modulus | 116 | GPa |
+| Density | 4.51 | g/cm³ |
 | Electrical Conductivity | 2.38×10⁶ | S/m |
 | Boiling Point | 3287 | °C |
 | Thermal Conductivity | 21.9 | W/(m·K) |
-| Young's Modulus | 116 | GPa |
 | Atomic Number | 22 | - |
 | Tensile Strength | 240-1380 | MPa |
-| Density | 4.51 | g/cm³ |
+| Melting Point | 1668 | °C |
 
 
 ## Material Grades and Purity
 | Grade | Purity (%) | Common Impurities |
 | --- | --- | --- |
-| Grade 5 (Ti-6Al-4V) | ≥88.0 | Al 5.5-6.75, V 3.5-4.5 |
 | Grade 9 (Ti-3Al-2.5V) | ≥92.0 | Al 2.5-3.5, V 2.0-3.0 |
+| Grade 5 (Ti-6Al-4V) | ≥88.0 | Al 5.5-6.75, V 3.5-4.5 |
 | Grade 2 (CP) | ≥99.2 | Fe ≤ 0.30, O₂ ≤ 0.25 |
 | Grade 1 (CP) | ≥99.5 | Fe ≤ 0.20, O₂ ≤ 0.18 |
 
@@ -23,10 +23,10 @@
 ## Performance Metrics
 | Metric | Value | Condition |
 | --- | --- | --- |
-| Reflectivity (IR) | 60-80% | λ = 1064nm |
-| Fatigue Strength | 300-800 | MPa (10⁷ cycles) |
-| Hardness (Brinell) | 120-350 | HB |
 | Corrosion Rate (Seawater) | 0.001-0.01 | mm/year |
+| Hardness (Brinell) | 120-350 | HB |
+| Fatigue Strength | 300-800 | MPa (10⁷ cycles) |
+| Reflectivity (IR) | 60-80% | λ = 1064nm |
 
 
 ## Standards and Compliance
@@ -41,25 +41,25 @@
 ## Environmental Data
 | Parameter | Value | Unit |
 | --- | --- | --- |
-| Recyclability | 100% | Reusable |
-| Embodied Energy | 35-70 | MJ/kg |
-| CO₂ Footprint | 2.5-4.0 | kg CO₂/kg |
+| Recyclability | 95-100% | Reusable |
+| Embodied Energy | 42-60 | MJ/kg |
+| CO₂ Footprint | 2.0-4.5 | kg CO₂/kg |
 | EU RoHS Compliance | Exempt (Annex III) | - |
 
 
 ## Laser Cleaning Parameters
 | Parameter | Range | Unit |
 | --- | --- | --- |
-| Wavelength | 1064nm (primary) | - |
-| Power | 25-90 | W |
+| Wavelength | 532nm (primary), 1064nm (optional) | - |
+| Power | 15-120 | W |
 | Pulse Duration | 10-100 | ns |
-| Spot Size | 0.05-2.5 | mm |
-| Repetition Rate | 10-50 | kHz |
+| Spot Size | 0.2-1.8 | mm |
+| Repetition Rate | 15-45 | kHz |
 | Fluence | 1.0-4 | J/cm² |
 
 
 ---
-Version Log - Generated: 2025-09-11T13:04:00.387699
+Version Log - Generated: 2025-09-11T14:07:10.999593
 Material: Unknown
 Component: table
 Generator: Z-Beam v1.0.0
@@ -70,7 +70,7 @@ Operation: generation
 ---
 
 ---
-Version Log - Generated: 2025-09-11T13:04:00.387980
+Version Log - Generated: 2025-09-11T14:07:10.999917
 Material: Titanium
 Component: table
 Generator: Z-Beam v2.1.0

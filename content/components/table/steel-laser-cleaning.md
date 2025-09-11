@@ -1,14 +1,14 @@
 ## Material Properties
 | Property | Value | Unit |
 | --- | --- | --- |
-| Electrical Conductivity | 1.0×10⁷ | S/m |
-| Melting Point | 1370-1530 | °C |
-| Boiling Point | 2862 | °C |
-| Young's Modulus | 190-210 | GPa |
-| Tensile Strength | 400-2000 | MPa |
 | Density | 7.85 | g/cm³ |
-| Atomic Number | 26 | - |
+| Young's Modulus | 190-210 | GPa |
 | Thermal Conductivity | 50-60 | W/(m·K) |
+| Atomic Number | 26 | - |
+| Boiling Point | 2862 | °C |
+| Melting Point | 1370-1530 | °C |
+| Tensile Strength | 400-2000 | MPa |
+| Electrical Conductivity | 1.0×10⁷ | S/m |
 
 
 ## Material Grades and Purity
@@ -23,10 +23,10 @@
 ## Performance Metrics
 | Metric | Value | Condition |
 | --- | --- | --- |
-| Corrosion Rate (Atmospheric) | 0.01-0.1 | mm/year |
-| Fatigue Strength | 200-600 | MPa (10⁷ cycles) |
 | Hardness (Brinell) | 100-400 | HB |
 | Reflectivity (IR) | 85-95% | λ = 1064nm |
+| Fatigue Strength | 200-600 | MPa (10⁷ cycles) |
+| Corrosion Rate (Atmospheric) | 0.01-0.1 | mm/year |
 
 
 ## Standards and Compliance
@@ -41,8 +41,8 @@
 ## Environmental Data
 | Parameter | Value | Unit |
 | --- | --- | --- |
-| Recyclability | 100% | Reusable |
-| Embodied Energy | 42-60 | MJ/kg |
+| Recyclability | 90-100% | Reusable |
+| Embodied Energy | 40-65 | MJ/kg |
 | CO₂ Footprint | 2.5-4.0 | kg CO₂/kg |
 | EU RoHS Compliance | Exempt (Annex III) | - |
 
@@ -51,15 +51,15 @@
 | Parameter | Range | Unit |
 | --- | --- | --- |
 | Wavelength | 532nm (primary), 1064nm (optional) | - |
-| Power | 20-100 | W |
-| Pulse Duration | 20-80 | ns |
-| Spot Size | 0.1-2.0 | mm |
+| Power | 15-120 | W |
+| Pulse Duration | 5-150 | ns |
+| Spot Size | 0.2-1.8 | mm |
 | Repetition Rate | 5-60 | kHz |
-| Fluence | 0.3-6 | J/cm² |
+| Fluence | 1.0-4 | J/cm² |
 
 
 ---
-Version Log - Generated: 2025-09-11T13:03:55.446101
+Version Log - Generated: 2025-09-11T14:07:03.170301
 Material: Unknown
 Component: table
 Generator: Z-Beam v1.0.0
@@ -70,7 +70,7 @@ Operation: generation
 ---
 
 ---
-Version Log - Generated: 2025-09-11T13:03:55.446392
+Version Log - Generated: 2025-09-11T14:07:03.170759
 Material: Steel
 Component: table
 Generator: Z-Beam v2.1.0

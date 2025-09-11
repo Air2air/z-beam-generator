@@ -96,11 +96,11 @@ author: Yi-Chun Lin
 material: Titanium
 component: text
 generated: 2025-09-11
-source: frontmatter
+source: text
 ---
 
 ---
-Version Log - Generated: 2025-09-11T13:04:00.384820
+Version Log - Generated: 2025-09-11T14:07:10.994108
 Material: Unknown
 Component: text
 Generator: Z-Beam v1.0.0
@@ -111,7 +111,7 @@ Operation: generation
 ---
 
 # Version Information
-# Generated: 2025-09-11T13:04:00.385218
+# Generated: 2025-09-11T14:07:10.994553
 # Material: Titanium
 # Component: text
 # Generator: Z-Beam v2.1.0

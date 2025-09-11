@@ -180,10 +180,10 @@ LANGUAGE STYLE:
 
         Args:
             material_name: Name of the material
-            material_data: Material data dictionary
+            material_data: Raw material data from materials.yaml (fallback)
             api_client: API client for generation
             author_info: Author information
-            frontmatter_data: Frontmatter data from previous generation
+            frontmatter_data: Processed frontmatter data (primary source)
 
         Returns:
             Dictionary with generation results
@@ -232,7 +232,7 @@ LANGUAGE STYLE:
                 request = GenerationRequest(
                     prompt=full_prompt,
                     system_prompt=None,
-                    max_tokens=4000,
+                    max_tokens=800,  # Use safe limit to prevent API timeouts with large prompts
                     temperature=0.7,
                 )
 
@@ -342,9 +342,9 @@ LANGUAGE STYLE:
         Args:
             base_prompt_data: Base prompt configuration
             material_name: Name of the material
-            material_data: Material data
+            material_data: Raw material data (fallback)
             author_info: Author information
-            frontmatter_data: Frontmatter data
+            frontmatter_data: Processed frontmatter data (primary source)
 
         Returns:
             Complete prompt string
@@ -366,13 +366,38 @@ LANGUAGE STYLE:
         sections.append(f"AUTHOR: {author_name}")
         sections.append(f"COUNTRY: {author_info.get('country', 'USA').title()}")
 
-        # Add material information
-        sections.append(f"MATERIAL: {material_name}")
-        sections.append(f"MATERIAL DATA: {json.dumps(material_data, indent=2)}")
+        # Add material information - use frontmatter_data as primary source
+        primary_data = frontmatter_data if frontmatter_data else material_data
 
-        # Add frontmatter context if available
+        # Convert datetime objects to strings for JSON serialization
+        import datetime
+        def convert_datetimes(obj):
+            if isinstance(obj, dict):
+                return {k: convert_datetimes(v) for k, v in obj.items()}
+            elif isinstance(obj, list):
+                return [convert_datetimes(item) for item in obj]
+            elif isinstance(obj, datetime.datetime):
+                return obj.isoformat()
+            elif isinstance(obj, datetime.date):
+                return obj.isoformat()
+            else:
+                return obj
+
+        primary_data = convert_datetimes(primary_data)
+        material_data = convert_datetimes(material_data)
         if frontmatter_data:
-            sections.append(f"CONTEXT: {json.dumps(frontmatter_data, indent=2)}")
+            frontmatter_data = convert_datetimes(frontmatter_data)
+
+        sections.append(f"MATERIAL: {material_name}")
+        sections.append(f"MATERIAL DATA: {json.dumps(primary_data, indent=2)}")
+
+        # Add raw material data as additional context if frontmatter was used
+        if frontmatter_data and material_data != frontmatter_data:
+            sections.append(f"RAW MATERIAL DATA: {json.dumps(material_data, indent=2)}")
+
+        # Add frontmatter context if available (for debugging/transparency)
+        if frontmatter_data:
+            sections.append(f"FRONTMATTER CONTEXT: {json.dumps(frontmatter_data, indent=2)}")
 
         # Add base prompt instructions
         if "overall_subject" in base_prompt_data:

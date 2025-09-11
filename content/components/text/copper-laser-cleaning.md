@@ -96,11 +96,11 @@ author: Yi-Chun Lin
 material: Copper
 component: text
 generated: 2025-09-11
-source: frontmatter
+source: text
 ---
 
 ---
-Version Log - Generated: 2025-09-11T13:04:02.315659
+Version Log - Generated: 2025-09-11T14:07:13.774380
 Material: Unknown
 Component: text
 Generator: Z-Beam v1.0.0
@@ -111,7 +111,7 @@ Operation: generation
 ---
 
 # Version Information
-# Generated: 2025-09-11T13:04:02.316090
+# Generated: 2025-09-11T14:07:13.775197
 # Material: Copper
 # Component: text
 # Generator: Z-Beam v2.1.0
