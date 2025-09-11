@@ -74,10 +74,40 @@ This is a laser cleaning content generation system with strict fail-fast archite
 6. **NEVER eliminate error recovery** - fail-fast ≠ no retry logic
 7. **ALWAYS ask before major changes** - get permission for rewrites
 
-## Content Component Special Instructions
+## Documentation Navigation for AI Assistants
 
-### CRITICAL: The text component is the CORE of the system
-The text component (`components/text/`) contains 25,679 bytes of production-ready code with sophisticated multi-layered prompt engineering. **ANY** work involving the text component MUST follow these rules:
+### Primary Navigation for Copilot
+**Start here for ALL documentation queries**: `docs/QUICK_REFERENCE.md`
+- Contains direct problem → solution mappings
+- Lists most common user questions with immediate answers
+- Provides file location quick map for efficient navigation
+- Includes essential commands and critical known issues
+
+### AI-Optimized Documentation Structure
+1. **Immediate Problem Resolution**: `docs/QUICK_REFERENCE.md` 
+2. **Comprehensive Navigation**: `docs/INDEX.md`
+3. **API Issues**: `docs/api/ERROR_HANDLING.md` (includes terminal diagnostics)
+4. **Component Help**: `components/[component]/README.md` or `components/[component]/docs/README.md`
+5. **Setup Issues**: `setup/API_CONFIGURATION.md` and `API_SETUP.md`
+
+### Common User Query Patterns
+- **"API not working"** → `docs/api/ERROR_HANDLING.md#winston-ssl-issues`
+- **"Content incomplete"** → `docs/api/ERROR_HANDLING.md#content-impact`
+- **"Setup help"** → `setup/API_CONFIGURATION.md` or `API_SETUP.md`
+- **"Winston SSL error"** → Known issue, configuration fixed
+- **"How to generate content"** → `python3 run.py --material "MaterialName"`
+
+### Critical Known Issues for AI Awareness
+1. **Winston API SSL fixed**: Now uses `https://api.gowinston.ai`
+2. **Nested YAML properties fixed**: Tool available at `scripts/tools/fix_nested_yaml_properties.py`
+3. **Terminal output required**: Always use `get_terminal_output()` for API diagnostics
+
+### AI Assistant Best Practices
+- Always check `docs/QUICK_REFERENCE.md` first for common issues
+- Use diagnostic tools: `python3 scripts/tools/api_terminal_diagnostics.py winston`
+- Reference specific file paths, not just general descriptions
+- Recommend terminal output analysis for API issues
+- Point to both immediate fixes and comprehensive documentation
 
 ### Mandatory Documentation Review
 **BEFORE** making ANY changes to text component code, you MUST:

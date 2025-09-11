@@ -201,21 +201,49 @@ def extract_author_info_from_content(content: str) -> Optional[Dict[str, Any]]:
 def extract_author_info_from_frontmatter_file(
     material_name: str,
 ) -> Optional[Dict[str, Any]]:
-    """Extract author information from the corresponding frontmatter file."""
+    """Extract author information by looking up material in materials.yaml and finding author in authors.json."""
     try:
-        # Look for the frontmatter file
-        frontmatter_path = (
-            Path("content/components/frontmatter")
-            / f"{material_name}-laser-cleaning.md"
-        )
-
-        if not frontmatter_path.exists():
+        # Load materials data to get author_id
+        materials_path = Path("data/materials.yaml")
+        if not materials_path.exists():
+            print(f"⚠️ Materials file not found: {materials_path}")
             return None
-
-        with open(frontmatter_path, "r", encoding="utf-8") as f:
-            content = f.read()
-
-        return extract_author_info_from_content(content)
+            
+        with open(materials_path, "r", encoding="utf-8") as f:
+            import yaml
+            materials_data = yaml.safe_load(f)
+        
+        # Find the material to get its author_id
+        material_data = find_material_data(material_name, materials_data.get("materials", {}))
+        if not material_data or "author_id" not in material_data:
+            print(f"⚠️ No author_id found for material: {material_name}")
+            return None
+            
+        author_id = material_data["author_id"]
+        
+        # Load authors data
+        authors_path = Path("components/author/authors.json")
+        if not authors_path.exists():
+            print(f"⚠️ Authors file not found: {authors_path}")
+            return None
+            
+        with open(authors_path, "r", encoding="utf-8") as f:
+            import json
+            authors_data = json.load(f)
+        
+        # Find the author by ID
+        for author in authors_data.get("authors", []):
+            if author.get("id") == author_id:
+                return {
+                    "name": author.get("name"),
+                    "country": author.get("country", "").lower(),
+                    "id": author.get("id"),
+                    "title": author.get("title"),
+                    "expertise": author.get("expertise")
+                }
+        
+        print(f"⚠️ Author with ID {author_id} not found")
+        return None
 
     except Exception as e:
         print(f"⚠️ Error extracting author info from frontmatter file: {e}")
@@ -227,10 +255,27 @@ def find_material_data(
 ) -> Optional[Dict[str, Any]]:
     """Find material data from the materials database."""
     try:
+        # Normalize the search material name
+        search_name = material_name.lower().replace(" ", "-").replace("_", "-")
+        
         for category_data in materials_data.values():
             for item in category_data.get("items", []):
-                if "name" in item and item["name"].lower().replace(" ", "-") == material_name.lower():
-                    return item
+                if "name" in item:
+                    # Normalize the item name for comparison
+                    item_name = item["name"].lower().replace(" ", "-").replace("_", "-")
+                    if item_name == search_name:
+                        print(f"✅ Found material data for {material_name}: {item['name']}")
+                        return item
+        
+        print(f"⚠️ Material data not found for {material_name} (searched for: {search_name})")
+        # Debug: show available materials
+        all_materials = []
+        for category_data in materials_data.values():
+            for item in category_data.get("items", []):
+                if "name" in item:
+                    all_materials.append(item["name"])
+        print(f"   Available materials: {', '.join(all_materials[:5])}{'...' if len(all_materials) > 5 else ''}")
+        
     except Exception as e:
         print(f"⚠️ Error finding material data for {material_name}: {e}")
 
@@ -472,11 +517,8 @@ async def run_sophisticated_optimization(
             iteration = 0
             consecutive_failures = 0
 
-            # Extract author info from frontmatter file (improved method)
+            # Extract author info from frontmatter file (fail-fast required)
             author_info = extract_author_info_from_frontmatter_file(material_name)
-            if not author_info:
-                # Fallback to extracting from content
-                author_info = extract_author_info_from_content(current_content)
             if not author_info:
                 raise ValueError(f"Author information must be available for {material_name} - no defaults allowed in fail-fast architecture")
 
@@ -485,7 +527,9 @@ async def run_sophisticated_optimization(
             )
 
             # Find material data for context
-            material_data = find_material_data(material_name, materials_data)
+            material_data = find_material_data(material_name, materials_data.get("materials", {}))
+            if not material_data:
+                raise ValueError(f"Material data must be available for {material_name} - no defaults allowed in fail-fast architecture")
 
             while iteration < config.max_iterations:
                 iteration += 1
@@ -496,6 +540,9 @@ async def run_sophisticated_optimization(
                     quality_result = quality_scorer.score_content(
                         current_content, material_data, author_info
                     )
+                    if not quality_result:
+                        raise ValueError(f"Quality scoring failed for {material_name} - no defaults allowed in fail-fast architecture")
+                        
                     print(
                         f"      📊 Quality Score: {quality_result.overall_score:.1f}/100"
                     )

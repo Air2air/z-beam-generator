@@ -2,7 +2,54 @@
 
 ## Overview
 
-The Z-Beam system uses a **centralized API configuration architecture** with all provider settings stored in `run.py` as the single source of truth. This ensures consistent configuration management and eliminates duplicate API provider definitions across the codebase.
+The Z-Beam system uses a **centralized API configuration architecture** with all provider settings stored in `run.py` as the single source of truth. This ensures consistent configuration management and eliminates duplicate API### Testing Requirements**
+- **Connectivity Test**: Must pass for all configured providers
+- **Endpoint Validation**: No double-path URLs allowed
+- **Model Validation**: All models must be current and supported
+- **Timeout Validation**: Response times must be under 10 seconds
+- **Terminal Output Analysis**: Must read and analyze terminal output for detailed API error patterns
+
+### **🔍 CRITICAL: Terminal Output Reading for API Diagnostics**
+
+**Requirement**: All API diagnostic procedures MUST include reading terminal output to capture detailed error messages that are not returned in API response objects.
+
+**Why This Matters**:
+- API client logs detailed connection attempts, retry patterns, and failure modes to terminal
+- Response objects often only contain `success: false` and `error: None`
+- Terminal output shows the real failure details (SSL errors, connection timeouts, DNS issues)
+
+**Example API Failure Pattern (Winston API)**:
+```
+🔌 [API CLIENT] Establishing connection...
+🔌 [API CLIENT] Connection failed on attempt 1, retrying in 1.0s...
+🔄 [API CLIENT] Retry attempt 1/3 after 1.0s delay
+🔌 [API CLIENT] Connection failed on attempt 2, retrying in 2.0s...
+🔌 [API CLIENT] Connection error after 4 attempts
+❌ [CLIENT MANAGER] winston: Failed - None
+```
+
+**Implementation Requirements**:
+1. **Always Use get_terminal_output()**: After running API tests, read terminal output using terminal ID
+2. **Parse Error Patterns**: Look for connection failure patterns, SSL errors, timeout messages
+3. **Document Failure Modes**: Update documentation with actual terminal error messages
+4. **Correlation Analysis**: Match terminal errors to incomplete content (like alumina-laser-cleaning.md cutoff)
+
+**Updated Testing Procedure**:
+```python
+# 1. Run API test and capture terminal ID
+terminal_id = run_in_terminal("python3 -c 'from api.client_manager import test_api_connectivity; test_api_connectivity(\"winston\")'")
+
+# 2. Read detailed terminal output
+terminal_output = get_terminal_output(terminal_id)
+
+# 3. Analyze error patterns
+if "Connection failed" in terminal_output:
+    # Document specific connection failure
+if "SSL" in terminal_output:
+    # Document SSL/TLS issues
+if "timeout" in terminal_output:
+    # Document timeout patterns
+```ider definitions across the codebase.
 
 ## Architecture Changes (September 2025)
 
@@ -280,11 +327,39 @@ python3 run.py --check-env
 # Test API connections (CRITICAL - run before any generation)
 python3 run.py --test-api
 
+# REQUIRED: Comprehensive API diagnosis with terminal output analysis
+python3 scripts/tools/api_terminal_diagnostics.py <provider_name> [content_file]
+
+# Example: Diagnose Winston API with content impact analysis
+python3 scripts/tools/api_terminal_diagnostics.py winston content/components/text/alumina-laser-cleaning.md
+
 # Show component configuration
 python3 run.py --show-config
 
 # Run comprehensive API tests
 python3 test_api_providers.py
+```
+
+## CRITICAL: Terminal Output Reading Procedure
+
+**MANDATORY for all API diagnostics**: After running any API test, you MUST read the terminal output to capture detailed error information not available in response objects.
+
+### Step-by-Step Procedure:
+1. **Run API test and capture terminal ID**
+2. **Use get_terminal_output(terminal_id) to read detailed errors**
+3. **Analyze error patterns using the diagnostic tool**
+4. **Correlate terminal errors to content generation issues**
+
+### Example Workflow:
+```python
+# 1. Run API test
+terminal_id = run_in_terminal("python3 -c 'from api.client_manager import test_api_connectivity; test_api_connectivity(\"winston\")'")
+
+# 2. MANDATORY: Read terminal output
+terminal_output = get_terminal_output(terminal_id)
+
+# 3. Use diagnostic tool for analysis
+run_in_terminal(f"python3 scripts/tools/api_terminal_diagnostics.py winston")
 ```
 
 ## Troubleshooting

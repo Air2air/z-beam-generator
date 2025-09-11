@@ -152,9 +152,24 @@ API_PROVIDERS = {
         "supports_reasoning": True,
         "optimal_temperature": 0.7,
     },
-    # REMOVED: Winston is not a chat completion service
-    # It should only be used through the specialized AI detection provider
-    # "winston": { ... }
+    "winston": {
+        "name": "Winston.ai",
+        "env_var": "WINSTON_API_KEY",
+        "env_key": "WINSTON_API_KEY",  # For backward compatibility
+        "base_url": "https://api.gowinston.ai",  # FIXED: Updated to working SSL endpoint
+        "model": "ai-detection",  # Not a chat model, used for AI detection
+        "default_model": "ai-detection",
+        # AI detection specific parameters
+        "max_tokens": None,  # Not applicable for AI detection
+        "temperature": None,  # Not applicable for AI detection
+        "timeout_connect": 10,  # Connection timeout in seconds
+        "timeout_read": 30,  # Read timeout in seconds
+        "max_retries": 3,  # Maximum retry attempts
+        "retry_delay": 1.0,  # Delay between retries in seconds
+        # Service type identifier
+        "service_type": "ai_detection",
+        "supports_ai_detection": True,
+    },
 }
 
 # Component Configuration - USER SETTABLE
@@ -223,15 +238,15 @@ COMPONENT_CONFIG = {
 }
 
 # AI Detection Configuration - USER SETTABLE
-# Configure AI detection behavior
+# Configure AI detection behavior - FAIL-FAST: No fallbacks allowed
 AI_DETECTION_CONFIG = {
     "enabled": True,
-    "provider": "winston",  # FIXED: Keep Winston for AI detection only
+    "provider": "winston",  # FAIL-FAST: Must be explicitly provided, no fallbacks
     "target_score": 70.0,
     "max_iterations": 3,
     "improvement_threshold": 5.0,
     "timeout": 30,
-    "retry_attempts": 3,
+    "retry_attempts": 3,  # FAIL-FAST: Validate configuration, then fail immediately
 }
 
 
