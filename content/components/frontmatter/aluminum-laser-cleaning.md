@@ -1,126 +1,92 @@
 ---
-name: Aluminum
+name: "Aluminum"
 applications:
-- industry: Electronics Manufacturing
-  detail: Removal of surface oxides and contaminants from Aluminum substrates
-- industry: Aerospace Components
-  detail: Cleaning of thermal barrier coatings and metal matrix composites
+- industry: "Automotive"
+  detail: "Removal of lubricants, oxides, and thermal oxides from castings and extrusions prior to welding or bonding"
+- industry: "Aerospace"
+  detail: "Cleaning of airframe components and removal of anodized layers for repair"
+- industry: "Electronics"
+  detail: "De-oxidation of heat sinks and preparation of contacts for improved conductivity"
 technicalSpecifications:
-  powerRange: 50-200W
-  pulseDuration: 20-100ns
-  wavelength: 1064nm (primary), 532nm (optional)
-  spotSize: 0.2-1.5mm
-  repetitionRate: 20-100kHz
-  fluenceRange: 1.0–4.5 J/cm²
-  safetyClass: Class 4 (requires full enclosure)
-description: Technical overview of Aluminum, Al, for laser cleaning applications,
-  including optimal 1064nm wavelength interaction, and industrial applications in
-  surface preparation.
-author: Yi-Chun Lin
+  powerRange: "20-500W"
+  pulseDuration: "10-200ns"
+  wavelength: "1064nm (primary), 355nm (optional for thin films)"
+  spotSize: "0.05-3.0mm"
+  repetitionRate: "1-2000kHz"
+  fluenceRange: "0.5–8.0 J/cm²"
+  safetyClass: "Class 4 (requires full enclosure and fume extraction)"
+description: "Technical overview of Aluminum, Al, for laser cleaning applications, including optimal 1064nm wavelength interaction, and industrial applications in surface preparation."
+author: "Ikmanda Roswati"
 author_object:
-  id: None
-  name: Yi-Chun Lin
-  sex: female
-  title: Materials Scientist
-  country: Taiwan
-  expertise: Laser Materials Processing
-  image: null
-keywords: aluminum, aluminum metal, laser ablation, laser cleaning, non-contact cleaning,
-  pulsed fiber laser, surface contamination removal, industrial laser parameters,
-  thermal processing, surface restoration
-category: metal
+  id: 3
+  name: "Ikmanda Roswati"
+  sex: "m"
+  title: "Ph.D."
+  country: "Indonesia"
+  expertise: "Ultrafast Laser Physics and Material Interactions"
+  image: "/images/author/ikmanda-roswati.jpg"
+keywords: "aluminum, aluminum metal, laser ablation, laser cleaning, non-contact cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters, thermal processing, surface restoration"
+category: "metal"
 chemicalProperties:
-  symbol: Al
-  formula: Al
-  materialType: metal
+  symbol: "Al"
+  formula: "Al"
+  materialType: "metal"
 properties:
-  density: 7.85 g/cm³
-  densityMin: 0.5 g/cm³
-  densityMax: 22.6 g/cm³
-  densityPercentile: 33.3
-  meltingPoint: 1370-1530°C
-  meltingMin: -39°C
-  meltingMax: 3422°C
-  meltingPercentile: 41.7
-  thermalConductivity: 50.2 W/m·K
-  thermalMin: 8 W/m·K
-  thermalMax: 429 W/m·K
-  thermalPercentile: 10.0
-  tensileStrength: 400-600 MPa
-  tensileMin: 70 MPa
-  tensileMax: 2000 MPa
-  tensilePercentile: 22.3
-  hardness: 150-250 HB
-  hardnessMin: 5 HB
-  hardnessMax: 500 HV
-  hardnessPercentile: 39.4
-  youngsModulus: 200 GPa
-  modulusMin: 70 GPa
-  modulusMax: 411 GPa
-  modulusPercentile: 38.1
-  laserType: Pulsed Fiber Laser
-  wavelength: 1064nm
-  fluenceRange: 1.0–4.5 J/cm²
-  chemicalFormula: Al
-  laserAbsorptionMin: 0.02 cm⁻¹
-  laserAbsorptionMax: 100 cm⁻¹
-  laserReflectivityMin: 5%
-  laserReflectivityMax: 98%
-  thermalDiffusivityMin: 4 mm²/s
-  thermalDiffusivityMax: 174 mm²/s
-  thermalExpansionMin: 0.5 µm/m·K
-  thermalExpansionMax: 29 µm/m·K
-  specificHeatMin: 0.13 J/g·K
-  specificHeatMax: 0.90 J/g·K
+  density: "2.70 g/cm³"
+  densityMin: "0.5 g/cm³"
+  densityMax: "22.6 g/cm³"
+  densityPercentile: 12.5
+  meltingPoint: "660.3°C"
+  meltingMin: "-39°C"
+  meltingMax: "3422°C"
+  meltingPercentile: 21.8
+  thermalConductivity: "237 W/m·K"
+  thermalMin: "0.02 W/m·K"
+  thermalMax: "429 W/m·K"
+  thermalPercentile: 85.2
+  tensileStrength: "40-500 MPa"
+  tensileMin: "10 MPa"
+  tensileMax: "6000 MPa"
+  tensilePercentile: 15.7
+  hardness: "15-120 HB"
+  hardnessMin: "0.3 HB"
+  hardnessMax: "3000 HB"
+  hardnessPercentile: 5.2
+  youngsModulus: "69 GPa"
+  modulusMin: "0.01 GPa"
+  modulusMax: "1100 GPa"
+  modulusPercentile: 18.3
+  laserType: "Pulsed Fiber Laser, Nanosecond Pulsed Laser"
+  wavelength: "1064nm"
+  fluenceRange: "0.5–8.0 J/cm²"
+  chemicalFormula: "Al"
 composition:
-- Aluminum (Al) 99.6%
-- Trace elements (Si, Fe, Na, Mg)
+- "Aluminum (Al) 95.8-99.9%"
+- "Alloying elements (Cu, Si, Mn, Mg, Zn)"
+- "Impurities (Fe, Ti, V)"
 compatibility:
-- Stainless Steel
-- Titanium Alloys
-- Nickel-based Superalloys
-regulatoryStandards: ISO 18562, ASTM F2100, IEC 60601-1
+- "Stainless Steel"
+- "Titanium Alloys"
+- "Copper Alloys"
+- "Magnesium Alloys"
+regulatoryStandards: "ISO 8501-1, ASTM B209, AMS 2772"
 images:
   hero:
-    alt: Aluminum surface undergoing laser cleaning showing precise contamination
-      removal
-    url: /images/aluminum-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Aluminum surface after laser treatment showing preserved
-      microstructure
-    url: /images/aluminum-laser-cleaning-micro.jpg
-title: Laser Cleaning Aluminum - Technical Guide for Optimal Processing
-headline: Comprehensive technical guide for laser cleaning metal Aluminum
-environmentalImpact:
-- benefit: Chemical Solvent Elimination
-  description: Reduces chemical usage by 100% compared to traditional solvent cleaning
-    methods
-- benefit: Water Conservation
-  description: Saves approximately 5000 liters of water per month in industrial applications
-- benefit: Energy Efficiency
-  description: Consumes 40% less energy than thermal cleaning processes
-outcomes:
-- result: Surface Cleanliness Level
-  metric: Achieves ISO 14644-1 Class 7 cleanliness standard
-- result: Material Removal Precision
-  metric: ±5μm accuracy with no substrate damage
-- result: Processing Speed
-  metric: 2-5 m²/hour cleaning rate depending on contamination level
----
-
+    alt: "Laser cleaning head removing oxidation from an aluminum aerospace component"
+    url: "/images
 
 # Version Information
-# Generated: 2025-09-10T15:57:08.047874
+# Generated: 2025-09-10T18:24:57.350009
 # Material: Unknown
 # Component: frontmatter
 # Generator: Z-Beam v1.0.0
 # Component Version: 4.0.1
-# Author: Yi-Chun Lin
+# Author: "Ikmanda Roswati"
 # Platform: Darwin (3.12.4)
 # Operation: generation
 
 ---
-Version Log - Generated: 2025-09-10T15:57:08.048075
+Version Log - Generated: 2025-09-10T18:24:57.350212
 Material: Aluminum
 Component: frontmatter
 Generator: Z-Beam v2.1.0

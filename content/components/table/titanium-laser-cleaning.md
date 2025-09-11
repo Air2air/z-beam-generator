@@ -1,32 +1,32 @@
 ## Material Properties
 | Property | Value | Unit |
 | --- | --- | --- |
-| Thermal Conductivity | 21.9 | W/(m·K) |
 | Young's Modulus | 116 | GPa |
+| Thermal Conductivity | 21.9 | W/(m·K) |
+| Density | 4.51 | g/cm³ |
+| Atomic Number | 22 | - |
 | Tensile Strength | 240-1380 | MPa |
 | Electrical Conductivity | 2.38×10⁶ | S/m |
 | Melting Point | 1668 | °C |
 | Boiling Point | 3287 | °C |
-| Density | 4.51 | g/cm³ |
-| Atomic Number | 22 | - |
 
 
 ## Material Grades and Purity
 | Grade | Purity (%) | Common Impurities |
 | --- | --- | --- |
+| Grade 9 (Ti-3Al-2.5V) | ≥92.0 | Al 2.5-3.5, V 2.0-3.0 |
 | Grade 1 (CP) | ≥99.5 | Fe ≤ 0.20, O₂ ≤ 0.18 |
 | Grade 2 (CP) | ≥99.2 | Fe ≤ 0.30, O₂ ≤ 0.25 |
 | Grade 5 (Ti-6Al-4V) | ≥88.0 | Al 5.5-6.75, V 3.5-4.5 |
-| Grade 9 (Ti-3Al-2.5V) | ≥92.0 | Al 2.5-3.5, V 2.0-3.0 |
 
 
 ## Performance Metrics
 | Metric | Value | Condition |
 | --- | --- | --- |
-| Hardness (Brinell) | 120-350 | HB |
-| Corrosion Rate (Seawater) | 0.001-0.01 | mm/year |
-| Fatigue Strength | 300-800 | MPa (10⁷ cycles) |
 | Reflectivity (IR) | 60-80% | λ = 1064nm |
+| Hardness (Brinell) | 120-350 | HB |
+| Fatigue Strength | 300-800 | MPa (10⁷ cycles) |
+| Corrosion Rate (Seawater) | 0.001-0.01 | mm/year |
 
 
 ## Standards and Compliance
@@ -42,9 +42,9 @@
 | Parameter | Value | Unit |
 | --- | --- | --- |
 | Recyclability | 95-100% | Reusable |
-| Embodied Energy | 35-70 | MJ/kg |
-| CO₂ Footprint | 2.5-4.0 | kg CO₂/kg |
-| EU RoHS Compliance | Compliant | - |
+| Embodied Energy | 42-60 | MJ/kg |
+| CO₂ Footprint | 2.0-4.5 | kg CO₂/kg |
+| EU RoHS Compliance | Exempt (Annex III) | - |
 
 
 ## Laser Cleaning Parameters
@@ -54,12 +54,12 @@
 | Power | 25-90 | W |
 | Pulse Duration | 20-80 | ns |
 | Spot Size | 0.2-1.8 | mm |
-| Repetition Rate | 10-50 | kHz |
-| Fluence | 0.5-5 | J/cm² |
+| Repetition Rate | 15-45 | kHz |
+| Fluence | 0.3-6 | J/cm² |
 
 
 ---
-Version Log - Generated: 2025-09-10T15:57:06.862341
+Version Log - Generated: 2025-09-10T17:44:01.002139
 Material: Unknown
 Component: table
 Generator: Z-Beam v1.0.0
@@ -70,7 +70,7 @@ Operation: generation
 ---
 
 ---
-Version Log - Generated: 2025-09-10T15:57:06.862466
+Version Log - Generated: 2025-09-10T17:44:01.002242
 Material: Titanium
 Component: table
 Generator: Z-Beam v2.1.0

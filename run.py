@@ -409,6 +409,16 @@ def main():
         help="Preload API clients into cache for better performance",
     )
     parser.add_argument(
+        "--no-persistent-cache",
+        action="store_true",
+        help="Disable persistent caching (not recommended, reduces performance)",
+    )
+    parser.add_argument(
+        "--cache-info",
+        action="store_true",
+        help="Show detailed information about cached API clients",
+    )
+    parser.add_argument(
         "--version-history",
         help="Show version history for a material-component pair (format: material:component)",
     )
@@ -524,56 +534,159 @@ def main():
             # Show cache statistics
             print("📊 API Client Cache Statistics:")
             try:
-                from api.client_cache import APIClientCache
+                from api.cache_adapter import APIClientCache
                 
                 stats = APIClientCache.get_cache_stats()
+                
+                # Show cache type
+                cache_type = "persistent" if APIClientCache.is_persistent() else "in-memory"
+                print(f"🔧 Cache type: {cache_type}")
+                
                 print(f"   🎯 Cache hit rate: {stats['hit_rate_percent']}%")
                 print(f"   ✅ Cache hits: {stats['cache_hits']}")
                 print(f"   ❌ Cache misses: {stats['cache_misses']}")
                 print(f"   📋 Total requests: {stats['total_requests']}")
                 print(f"   🏭 Cached instances: {stats['cached_instances']}")
                 
+                # Show persistent cache stats if available
+                if 'disk_cached_instances' in stats:
+                    print(f"   💾 Disk cached instances: {stats['disk_cached_instances']}")
+                
                 if stats['hit_rate_percent'] >= 80:
                     print("🚀 Excellent cache performance!")
                 elif stats['hit_rate_percent'] >= 60:
                     print("👍 Good cache performance")
+                elif stats['total_requests'] == 0:
+                    print("💡 No cache activity yet - preload cache for better performance")
                 else:
                     print("⚠️  Consider preloading cache for better performance")
                     
-            except ImportError:
-                print("❌ Cache system not available")
+            except ImportError as e:
+                print(f"❌ Cache system not available: {e}")
+        
+        elif args.cache_info:
+            # Show detailed cache information
+            print("📋 API Client Cache Detailed Information:")
+            try:
+                from api.cache_adapter import APIClientCache
+                
+                # Get cache info
+                info = APIClientCache.cache_info()
+                
+                # Show cache type
+                cache_type = "persistent" if APIClientCache.is_persistent() else "in-memory"
+                print(f"🔧 Cache type: {cache_type}")
+                
+                # Show stats summary
+                stats = info.get("stats", {})
+                print(f"\n📊 Cache Statistics:")
+                print(f"   🎯 Hit rate: {stats.get('hit_rate_percent', 0)}%")
+                print(f"   ✅ Hits: {stats.get('cache_hits', 0)}")
+                print(f"   ❌ Misses: {stats.get('cache_misses', 0)}")
+                print(f"   📋 Requests: {stats.get('total_requests', 0)}")
+                
+                # Show clients if available
+                clients = info.get("clients", {})
+                if clients:
+                    print(f"\n🔧 Cached Clients ({len(clients)}):")
+                    for key, client_info in list(clients.items())[:5]:  # Show first 5
+                        age = client_info.get("age_formatted", "unknown")
+                        size = client_info.get("size", "unknown")
+                        in_memory = "✅" if client_info.get("in_memory", False) else "❌"
+                        print(f"   • {key} | Age: {age} | Size: {size}B | In Memory: {in_memory}")
+                    
+                    if len(clients) > 5:
+                        print(f"   ... and {len(clients) - 5} more")
+                
+                # Show cache location
+                if "cache_dir" in info:
+                    print(f"\n📂 Cache Location:")
+                    print(f"   Directory: {info['cache_dir']}")
+                    print(f"   Info File: {info['cache_info_file']}")
+                
+            except ImportError as e:
+                print(f"❌ Cache info not available: {e}")
+            except Exception as e:
+                print(f"⚠️  Error retrieving cache info: {e}")
 
         elif args.clear_cache:
             # Clear API client cache
             print("🧹 Clearing API client cache...")
             try:
-                from api.client_cache import APIClientCache
+                from api.cache_adapter import APIClientCache
+                
+                cache_type = "persistent" if APIClientCache.is_persistent() else "in-memory"
+                print(f"🔧 Clearing {cache_type} cache...")
                 
                 stats_before = APIClientCache.get_cache_stats()
-                APIClientCache.clear_cache()
+                result = APIClientCache.clear_cache()
                 
-                print(f"✅ Cleared {stats_before['cached_instances']} cached clients")
+                if isinstance(result, tuple) and len(result) == 2:
+                    cleared_count, errors = result
+                    print(f"✅ Cleared {cleared_count} cached clients")
+                    
+                    if errors:
+                        print(f"⚠️  Encountered {len(errors)} errors while clearing cache:")
+                        for error in errors[:3]:  # Show first 3 errors
+                            print(f"   • {error}")
+                        if len(errors) > 3:
+                            print(f"   ... and {len(errors) - 3} more")
+                else:
+                    print(f"✅ Cleared {stats_before.get('cached_instances', 0)} cached clients")
+                
                 print("💡 Next API calls will create fresh connections")
                 
-            except ImportError:
-                print("❌ Cache system not available")
+            except ImportError as e:
+                print(f"❌ Cache system not available: {e}")
+
+        elif args.no_persistent_cache:
+            # Set environment variable to disable persistent cache
+            print("⚠️ Disabling persistent cache (not recommended)...")
+            os.environ["Z_BEAM_NO_PERSISTENT_CACHE"] = "true"
+            print("💡 Using in-memory cache only (clients won't persist between runs)")
+            print("⚠️ Performance may be reduced - this is not recommended for production use")
 
         elif args.preload_cache:
             # Preload API clients
             print("🚀 Preloading API client cache...")
             try:
-                from api.client_cache import APIClientCache
+                from api.cache_adapter import APIClientCache
                 
-                # Get configured providers
-                providers = ["deepseek", "grok", "winston"]
-                APIClientCache.preload_clients(providers)
+                # Show cache type
+                cache_type = "persistent" if APIClientCache.is_persistent() else "in-memory"
+                print(f"🔧 Using {cache_type} cache")
                 
+                # Get configured providers from API_PROVIDERS
+                providers = list(API_PROVIDERS.keys())
+                print(f"📋 Detected providers: {', '.join(providers)}")
+                
+                # Preload each provider with standard configurations
+                preload_results = APIClientCache.preload_clients(providers)
+                
+                # Report success/failure counts
+                success_count = len(preload_results.get("success", []))
+                failed_count = len(preload_results.get("failed", []))
+                
+                if success_count > 0:
+                    print(f"✅ Successfully preloaded {success_count} API clients")
+                
+                if failed_count > 0:
+                    print(f"⚠️  Failed to preload {failed_count} providers:")
+                    for fail in preload_results.get("failed", []):
+                        print(f"   ❌ {fail['provider']}: {fail['error']}")
+                
+                # Report cache statistics
                 stats = APIClientCache.get_cache_stats()
-                print(f"✅ Preloaded {stats['cached_instances']} API clients")
-                print("🚀 Ready for high-performance batch generation!")
+                print(f"📊 Cache now contains {stats.get('cached_instances', 0)} API clients")
                 
-            except ImportError:
-                print("❌ Cache system not available")
+                if APIClientCache.is_persistent():
+                    print(f"💾 Disk cache contains {stats.get('disk_cached_instances', 0)} clients")
+                    print(f"🚀 Clients will persist between program runs for better performance")
+                
+                print("� Ready for high-performance batch generation!")
+                
+            except ImportError as e:
+                print(f"❌ Cache system not available: {e}")
             except Exception as e:
                 print(f"⚠️  Preload completed with some errors: {e}")
 
@@ -847,11 +960,35 @@ def main():
 
                     # Preload API clients for better performance
                     try:
-                        from api.client_cache import APIClientCache
-                        print("🚀 Preloading API clients for optimal performance...")
-                        APIClientCache.preload_clients(["deepseek", "grok", "winston"])
-                        cache_stats = APIClientCache.get_cache_stats()
-                        print(f"✅ Preloaded {cache_stats['cached_instances']} API clients")
+                        from api.cache_adapter import APIClientCache
+                        
+                        # Show cache type
+                        cache_type = "persistent" if APIClientCache.is_persistent() else "in-memory"
+                        print(f"🚀 Preloading API clients using {cache_type} cache...")
+                        
+                        # Get all providers from API_PROVIDERS
+                        providers = list(API_PROVIDERS.keys())
+                        print(f"📋 Detected providers: {', '.join(providers)}")
+                        
+                        # Preload all configured providers
+                        preload_results = APIClientCache.preload_clients(providers)
+                        
+                        # Report preload results
+                        success_count = len(preload_results.get("success", []))
+                        failed_count = len(preload_results.get("failed", []))
+                        
+                        if success_count > 0:
+                            print(f"✅ Successfully preloaded {success_count} API clients")
+                        
+                        if failed_count > 0:
+                            print(f"⚠️  Failed to preload {failed_count} providers:")
+                            for fail in preload_results.get("failed", []):
+                                print(f"   ❌ {fail['provider']}: {fail['error']}")
+                        
+                        # Show persistence benefit message
+                        if APIClientCache.is_persistent():
+                            print("🚀 Using persistent cache - clients will be reused between runs")
+                        
                     except Exception as e:
                         print(f"⚠️  Cache preload failed: {e}")
 
@@ -991,14 +1128,19 @@ def main():
 
                         # Cache performance insights
                         try:
-                            from api.client_cache import APIClientCache
+                            from api.cache_adapter import APIClientCache
                             cache_stats = APIClientCache.get_cache_stats()
+                            
                             if cache_stats['total_requests'] > 0:
-                                print(f"📋 Cache Performance: {cache_stats['hit_rate_percent']}% hit rate ({cache_stats['cache_hits']}/{cache_stats['total_requests']} requests)")
+                                cache_type = "persistent" if APIClientCache.is_persistent() else "in-memory"
+                                print(f"📋 Cache Performance ({cache_type}): {cache_stats['hit_rate_percent']}% hit rate ({cache_stats['cache_hits']}/{cache_stats['total_requests']} requests)")
                                 
                                 if cache_stats['hit_rate_percent'] >= 80:
                                     cache_saved_time = cache_stats['cache_hits'] * 0.5  # Estimate 0.5s per client creation
                                     print(f"⚡ Time saved by caching: ~{cache_saved_time:.1f}s")
+                                    
+                                if APIClientCache.is_persistent():
+                                    print(f"💾 Disk cached clients: {cache_stats.get('disk_cached_instances', 0)} (will persist for future runs)")
                         except ImportError:
                             pass
 

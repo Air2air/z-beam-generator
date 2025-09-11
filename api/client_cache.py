@@ -122,16 +122,54 @@ class APIClientCache:
         }
     
     @classmethod
-    def preload_clients(cls, providers: list) -> None:
-        """Preload clients for common providers"""
+    def preload_clients(cls, providers: list) -> dict:
+        """
+        Preload clients for common providers and return status
+        
+        Args:
+            providers: List of provider names to preload
+            
+        Returns:
+            Dictionary with preload results
+        """
         logger.info(f"🚀 [CLIENT CACHE] Preloading clients for: {', '.join(providers)}")
+        results = {"success": [], "failed": []}
         
         for provider in providers:
             try:
-                cls.get_client(provider)
+                client = cls.get_client(provider)
                 logger.info(f"✅ [CLIENT CACHE] Preloaded {provider} client")
+                results["success"].append(provider)
             except Exception as e:
                 logger.warning(f"⚠️  [CLIENT CACHE] Failed to preload {provider}: {e}")
+                results["failed"].append({"provider": provider, "error": str(e)})
+        
+        # Also preload component-specific clients if COMPONENT_CONFIG is available
+        try:
+            from run import COMPONENT_CONFIG
+            
+            # Get unique API providers from component config
+            component_providers = set()
+            for component, config in COMPONENT_CONFIG.items():
+                provider = config.get("api_provider")
+                if provider and provider != "none" and provider not in providers:
+                    component_providers.add(provider)
+            
+            # Preload any additional providers found in components
+            for provider in component_providers:
+                if provider not in providers:  # Skip if already loaded
+                    try:
+                        client = cls.get_client(provider)
+                        logger.info(f"✅ [CLIENT CACHE] Preloaded component provider: {provider}")
+                        results["success"].append(provider)
+                    except Exception as e:
+                        logger.warning(f"⚠️  [CLIENT CACHE] Failed to preload component provider {provider}: {e}")
+                        results["failed"].append({"provider": provider, "error": str(e)})
+        
+        except ImportError:
+            logger.info("⚠️  [CLIENT CACHE] COMPONENT_CONFIG not available, skipping component-specific preloading")
+        
+        return results
 
 
 # Convenience functions for drop-in replacement

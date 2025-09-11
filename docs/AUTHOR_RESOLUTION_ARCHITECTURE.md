@@ -10,9 +10,28 @@ The Z-Beam generator implements a robust **fail-fast author resolution system** 
 
 ## Author Resolution Hierarchy
 
-### Primary Source: Frontmatter Component
+### Primary Source: Material Configuration
 
-The **preferred source** for author information is the frontmatter component, which contains the complete author object:
+The **preferred source** for author information is the material-specific configuration in `data/materials.yaml`, which contains the author_id:
+
+```yaml
+materials:
+  metal:
+    items:
+    - name: "Aluminum"
+      author_id: 1  # ← Author ID reference
+      # ... other material properties
+```
+
+**Advantages:**
+- Consistent author assignment per material
+- Single source of truth for material-author mapping
+- Simplified generation process (no manual author specification)
+- Fail-fast validation when material data is loaded
+
+### Secondary Source: Frontmatter Component
+
+When material data author resolution fails, the system falls back to existing frontmatter if available, which contains the complete author object:
 
 ```yaml
 ---
@@ -22,25 +41,6 @@ author_id: 1
 author_object_title: "Ph.D."
 author_object_expertise: "Laser Materials Processing"
 ---
-```
-
-**Advantages:**
-- Complete author profile with all metadata
-- Country-specific linguistic nuances
-- Expertise and credentials
-- Consistent with generated content structure
-
-### Secondary Source: Material Configuration
-
-When frontmatter author data is unavailable, the system falls back to material-specific configuration in `data/materials.yaml`:
-
-```yaml
-materials:
-  metal:
-    items:
-    - name: "Aluminum"
-      author_id: 1  # ← Author ID reference
-      # ... other material properties
 ```
 
 ### Tertiary Source: Author Registry
@@ -69,64 +69,123 @@ The system resolves author IDs to complete author objects from `components/autho
 
 ```mermaid
 graph TD
-    A[Component Generation Request] --> B{Author Info in Frontmatter?}
-    B -->|Yes| C[Use Complete Author Object]
-    B -->|No| D{Author ID in Material Data?}
-    D -->|Yes| E[Lookup Author in authors.json]
-    D -->|No| F[FAIL: Missing Author Information]
-    E -->|Found| G[Use Resolved Author Object]
-    E -->|Not Found| H[FAIL: Invalid Author ID]
-    C --> I[Generate Content]
-    G --> I
-    F --> J[Exception: Author Resolution Failed]
-    H --> J
+    A[Component Generation Request] --> B{Author ID in Material Data?}
+    B -->|Yes| C[Lookup Author in authors.json]
+    B -->|No| D{Author Info in Frontmatter?}
+    C -->|Found| E[Use Resolved Author Object]
+    C -->|Not Found| F[FAIL: Invalid Author ID]
+    D -->|Yes| G[Use Complete Author Object]
+    D -->|No| H{Fallback Author ID Provided?}
+    H -->|Yes| I[Lookup Fallback Author]
+    H -->|No| J[Use Default Author]
+    E --> K[Generate Content]
+    G --> K
+    I --> K
+    J --> K
+    F --> L[Exception: Author Resolution Failed]
 ```
 
 ### Code Implementation
 
-The author resolution is implemented in the frontmatter generator:
+The author resolution is implemented in the author manager:
 
 ```python
-def _create_template_vars(self, material_name, material_data, author_info, ...):
-    """Create template variables with author resolution"""
+def get_author_info_for_material(
+    material_data_or_name: Any, fallback_author_id: Optional[int] = None
+) -> Dict[str, Any]:
+    """
+    Get author information for a material, prioritizing material data author_id.
+    """
+    # Extract material name for frontmatter lookup
+    material_name = material_data_or_name
+    material_author_id = None
 
-    # 1. Try to use complete author object from frontmatter
-    if author_info and "name" in author_info:
-        author_name = author_info["name"]
-        resolved_author_info = author_info
-    else:
-        # 2. Fallback to author_id from material data
-        author_id = material_data.get("author_id") or material_data.get("data", {}).get("author_id")
+    # If material_data_or_name is a dictionary with material data
+    if isinstance(material_data_or_name, dict):
+        # Extract author_id from material data
+        if "author_id" in material_data_or_name:
+            material_author_id = material_data_or_name["author_id"]
+        elif "data" in material_data_or_name and "author_id" in material_data_or_name["data"]:
+            material_author_id = material_data_or_name["data"]["author_id"]
+        
+        # Extract material name for frontmatter lookup
+        if "name" in material_data_or_name:
+            material_name = material_data_or_name["name"].strip()
+        elif "material_name" in material_data_or_name:
+            material_name = material_data_or_name["material_name"].strip()
+    
+    # If we found an author_id in the material data, use it
+    if material_author_id is not None:
+        author = get_author_by_id(material_author_id)
+        if author:
+            # Return complete author info
+            return {
+                "name": author.get("name", "Unknown Author"),
+                "country": author.get("country", "Unknown"),
+                # ... other author fields
+            }
 
-        if author_id:
-            # 3. Resolve complete author from authors.json
-            resolved_author_info = get_author_by_id(author_id)
-            if resolved_author_info and "name" in resolved_author_info:
-                author_name = resolved_author_info["name"]
-            else:
-                raise Exception(f"Author ID {author_id} not found in authors registry")
-        else:
-            raise Exception("No author information available - fail-fast architecture")
+    # Try to extract from frontmatter file as a fallback
+    frontmatter_author = extract_author_info_from_frontmatter_file(material_name)
+    if frontmatter_author:
+        return {
+            "name": frontmatter_author.get("name", "Unknown Author"),
+            "country": frontmatter_author.get("country", "Unknown"),
+            # ... other author fields
+        }
 
-    # Use resolved author information for template variables
-    return {
-        "author_name": author_name,
-        "author_object_country": resolved_author_info.get("country", "Unknown"),
-        "author_object_title": resolved_author_info.get("title", "Expert"),
-        "author_object_expertise": resolved_author_info.get("expertise", "Materials Science"),
-        # ... other template variables
-    }
+    # Final fallback to provided author_id or default
+    return get_author_info_for_generation(fallback_author_id)
 ```
 
-## Fail-Fast Behavior
+## Workflow Integration
 
-### Validation Points
+The author resolution is integrated into the workflow manager:
 
-The system validates author information at multiple points:
+```python
+def run_material_generation(
+    material: str, component_types: List[str], author_id: Optional[int] = None
+) -> Dict[str, Any]:
+    """
+    Generate content for a single material.
 
-1. **Frontmatter Generation**: Ensures author data is available
-2. **Template Variable Creation**: Validates author resolution
-3. **Content Generation**: Confirms author information integrity
+    Args:
+        material: Material name
+        component_types: List of component types to generate
+        author_id: Optional author ID (fallback)
+
+    Returns:
+        Dictionary with generation results
+    """
+    generator = DynamicGenerator()
+
+    # Validate material and components...
+    
+    # Extract material data from materials.yaml
+    material_data = None
+    materials_data = generator.materials_data
+    if "materials" in materials_data:
+        materials_section = materials_data["materials"]
+        for category, category_data in materials_section.items():
+            if isinstance(category_data, dict) and "items" in category_data:
+                for item in category_data["items"]:
+                    if "name" in item and item["name"].lower() == material.lower():
+                        material_data = item
+                        break
+                if material_data:
+                    break
+    
+    # Get author info - use material data to retrieve material-specific author info
+    author_info = get_author_info_for_material(material_data, author_id)
+
+    # Generate content
+    return run_dynamic_generation(
+        generator=generator,
+        material=material,
+        component_types=component_types,
+        author_info=author_info,
+    )
+```
 
 ### Error Conditions
 

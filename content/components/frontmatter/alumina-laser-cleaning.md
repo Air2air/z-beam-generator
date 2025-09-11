@@ -1,4 +1,4 @@
----
+```yaml
 name: "Alumina"
 applications:
 - industry: "Electronics Manufacturing"
@@ -14,15 +14,15 @@ technicalSpecifications:
   fluenceRange: "1.0–4.5 J/cm²"
   safetyClass: "Class 4 (requires full enclosure)"
 description: "Technical overview of Alumina, Al2O3, for laser cleaning applications, including optimal 1064nm wavelength interaction, and industrial applications in surface preparation."
-author: "AI Assistant"
+author: "Alessandro Moretti"
 author_object:
-  id: null
-  name: "AI Assistant"
-  sex: "unknown"
-  title: "Expert"
-  country: "International"
-  expertise: "laser cleaning technology"
-  image: null
+  id: 2
+  name: "Alessandro Moretti"
+  sex: "m"
+  title: "Ph.D."
+  country: "Italy"
+  expertise: "Laser-Based Additive Manufacturing"
+  image: "/images/author/alessandro-moretti.jpg"
 keywords: "alumina, alumina ceramic, laser ablation, laser cleaning, non-contact cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters, thermal processing, surface restoration"
 category: "ceramic"
 chemicalProperties:
@@ -33,27 +33,27 @@ properties:
   density: "3.95 g/cm³"
   densityMin: "3.5 g/cm³"
   densityMax: "4.1 g/cm³"
-  densityPercentile: 62.5
+  densityPercentile: 72.4
   meltingPoint: "2072°C"
   meltingMin: "2000°C"
   meltingMax: "2200°C"
-  meltingPercentile: 78.2
+  meltingPercentile: 89.2
   thermalConductivity: "30 W/m·K"
   thermalMin: "20 W/m·K"
   thermalMax: "40 W/m·K"
-  thermalPercentile: 45.3
+  thermalPercentile: 45.6
   tensileStrength: "300 MPa"
   tensileMin: "200 MPa"
   tensileMax: "400 MPa"
-  tensilePercentile: 35.7
+  tensilePercentile: 38.7
   hardness: "1500-2000 HV"
   hardnessMin: "1200 HV"
-  hardnessMax: "2200 HV"
-  hardnessPercentile: 72.1
+  hardnessMax: "2300 HV"
+  hardnessPercentile: 85.3
   youngsModulus: "370 GPa"
   modulusMin: "300 GPa"
   modulusMax: "400 GPa"
-  modulusPercentile: 85.0
+  modulusPercentile: 94.8
   laserType: "Pulsed Fiber Laser"
   wavelength: "1064nm"
   fluenceRange: "1.0–4.5 J/cm²"
@@ -74,23 +74,20 @@ images:
     alt: "Microscopic view of Alumina surface after laser treatment showing preserved microstructure"
     url: "/images/alumina-laser-cleaning-micro.jpg"
 title: "Laser Cleaning Alumina - Technical Guide for Optimal Processing"
-headline: "Comprehensive technical guide for laser cleaning ceramic alumina"
-environmentalImpact:
-- benefit: "Chemical Solvent Elimination"
-  description: "Red
+headline: "Comprehensive technical guide for
 
 # Version Information
-# Generated: 2025-09-10T15:35:14.622547
+# Generated: 2025-09-10T18:06:22.506616
 # Material: Unknown
 # Component: frontmatter
 # Generator: Z-Beam v1.0.0
 # Component Version: 4.0.1
-# Author: "AI Assistant"
+# Author: "Alessandro Moretti"
 # Platform: Darwin (3.12.4)
 # Operation: generation
 
 ---
-Version Log - Generated: 2025-09-10T15:35:14.622739
+Version Log - Generated: 2025-09-10T18:06:22.506818
 Material: Alumina
 Component: frontmatter
 Generator: Z-Beam v2.1.0

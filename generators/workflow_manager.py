@@ -305,8 +305,22 @@ def run_material_generation(
             f"Invalid components: {invalid_components}. Available: {available_components}"
         )
 
-    # Get author info - prioritize frontmatter data
-    author_info = get_author_info_for_material(material, author_id)
+    # Get author info - use material data to retrieve material-specific author info
+    # Find material data in materials.yaml
+    material_data = None
+    materials_data = generator.materials_data
+    if "materials" in materials_data:
+        materials_section = materials_data["materials"]
+        for category, category_data in materials_section.items():
+            if isinstance(category_data, dict) and "items" in category_data:
+                for item in category_data["items"]:
+                    if "name" in item and item["name"].lower() == material.lower():
+                        material_data = item
+                        break
+                if material_data:
+                    break
+    
+    author_info = get_author_info_for_material(material_data, author_id)
 
     # Generate content
     return run_dynamic_generation(

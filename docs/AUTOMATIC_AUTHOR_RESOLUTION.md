@@ -83,8 +83,22 @@ def run_material_generation(
 ) -> Dict:
     """Generate content for a material with automatic author resolution."""
 
+    # Extract material data from materials.yaml
+    material_data = None
+    materials_data = generator.materials_data
+    if "materials" in materials_data:
+        materials_section = materials_data["materials"]
+        for category, category_data in materials_section.items():
+            if isinstance(category_data, dict) and "items" in category_data:
+                for item in category_data["items"]:
+                    if "name" in item and item["name"].lower() == material.lower():
+                        material_data = item
+                        break
+                if material_data:
+                    break
+    
     # Get author info - automatically resolved from material data
-    author_info = get_author_info_for_material(material, author_id)
+    author_info = get_author_info_for_material(material_data, author_id)
 
     # Generate content with resolved author
     # ... generation logic
@@ -94,26 +108,40 @@ The `get_author_info_for_material` function:
 
 ```python
 def get_author_info_for_material(
-    material_name: str,
+    material_data_or_name: Any,
     fallback_author_id: Optional[int] = None
 ) -> Dict[str, Any]:
     """Get author information for a material, prioritizing material's author_id."""
 
-    # 1. Try to extract from material's author_id in materials.yaml
-    material_data = load_material_data(material_name)
-    if material_data and 'author_id' in material_data:
-        author = get_author_by_id(material_data['author_id'])
+    # Extract material name for frontmatter lookup
+    material_name = material_data_or_name
+    material_author_id = None
+
+    # If material_data_or_name is a dictionary with material data
+    if isinstance(material_data_or_name, dict):
+        # Extract author_id from material data
+        if "author_id" in material_data_or_name:
+            material_author_id = material_data_or_name["author_id"]
+        elif "data" in material_data_or_name and "author_id" in material_data_or_name["data"]:
+            material_author_id = material_data_or_name["data"]["author_id"]
+        
+        # Extract material name for frontmatter lookup
+        if "name" in material_data_or_name:
+            material_name = material_data_or_name["name"].strip()
+        elif "material_name" in material_data_or_name:
+            material_name = material_data_or_name["material_name"].strip()
+    
+    # If we found an author_id in the material data, use it
+    if material_author_id is not None:
+        author = get_author_by_id(material_author_id)
         if author:
             return author
 
-    # 2. Fallback to provided author_id (if any)
-    if fallback_author_id:
-        author = get_author_by_id(fallback_author_id)
-        if author:
-            return author
+    # Try to extract from existing frontmatter as fallback
+    # ... frontmatter lookup logic
 
-    # 3. Default fallback
-    return get_default_author()
+    # Final fallback to provided author_id or default
+    # ... fallback logic
 ```
 
 ## Usage Examples

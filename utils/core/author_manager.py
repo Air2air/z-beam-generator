@@ -242,25 +242,68 @@ def extract_author_info_from_content(content: str) -> Optional[Dict[str, Any]]:
 
 
 def get_author_info_for_material(
-    material_name: str, fallback_author_id: Optional[int] = None
+    material_data_or_name: Any, fallback_author_id: Optional[int] = None
 ) -> Dict[str, Any]:
     """
-    Get author information for a material, prioritizing frontmatter data.
+    Get author information for a material, prioritizing material data author_id.
 
-    This function first tries to extract author information from the material's
-    frontmatter file. If that fails, it falls back to the provided author_id
-    or default author information.
+    This function first tries to extract author ID from the material data,
+    then falls back to existing frontmatter, and finally to the fallback ID.
 
     Args:
-        material_name: Name of the material
+        material_data_or_name: Material data dictionary or material name
         fallback_author_id: Optional author ID to use as fallback
 
     Returns:
         Dictionary with author information ready for content generation
     """
-    # First, try to extract from frontmatter file
+    # Extract material name for frontmatter lookup
+    material_name = material_data_or_name
+    material_author_id = None
+
+    # Debug print
+    print(f"⚠️ Material data extracted directly: {material_data_or_name}")
+
+    # If material_data_or_name is a dictionary with material data
+    if isinstance(material_data_or_name, dict):
+        # Extract author_id from material data
+        if "author_id" in material_data_or_name:
+            material_author_id = material_data_or_name["author_id"]
+            import logging
+            logging.info(f"Resolved author_id {material_author_id} to {get_author_by_id(material_author_id)['name'] if get_author_by_id(material_author_id) else 'Unknown'}")
+        elif "data" in material_data_or_name and "author_id" in material_data_or_name["data"]:
+            material_author_id = material_data_or_name["data"]["author_id"]
+            import logging
+            logging.info(f"Resolved author_id {material_author_id} from data to {get_author_by_id(material_author_id)['name'] if get_author_by_id(material_author_id) else 'Unknown'}")
+        
+        # Extract material name for frontmatter lookup
+        if "name" in material_data_or_name:
+            material_name = material_data_or_name["name"].strip()
+        elif "material_name" in material_data_or_name:
+            material_name = material_data_or_name["material_name"].strip()
+    
+    # If we found an author_id in the material data, use it
+    if material_author_id is not None:
+        author = get_author_by_id(material_author_id)
+        if author:
+            print(f"👤 Using author {author['name']} (ID: {material_author_id}) from material data")
+            return {
+                "name": author.get("name", "Unknown Author"),
+                "country": author.get("country", "Unknown"),
+                "bio": author.get("bio", ""),
+                "expertise": author.get("expertise", "laser cleaning technology"),
+                "experience": author.get("experience", ""),
+                "specialization": author.get("specialization", ""),
+                "id": material_author_id,
+                "sex": author.get("sex", "unknown"),
+                "title": author.get("title", "Expert"),
+                "image": author.get("image", None)
+            }
+
+    # Try to extract from frontmatter file as a fallback
     frontmatter_author = extract_author_info_from_frontmatter_file(material_name)
     if frontmatter_author:
+        print(f"👤 Using author from existing frontmatter: {frontmatter_author.get('name', 'Unknown')}")
         return {
             "name": frontmatter_author.get("name", "Unknown Author"),
             "country": frontmatter_author.get("country", "Unknown"),
@@ -271,5 +314,6 @@ def get_author_info_for_material(
             "id": frontmatter_author.get("id", 1),
         }
 
-    # Fallback to provided author_id or default
+    # Final fallback to provided author_id or default
+    print(f"👤 Using fallback author ID: {fallback_author_id or 'Default'}")
     return get_author_info_for_generation(fallback_author_id)

@@ -1,126 +1,92 @@
 ---
-name: Titanium
+name: "Titanium"
 applications:
-- industry: Electronics Manufacturing
-  detail: Removal of surface oxides and contaminants from Titanium substrates
-- industry: Aerospace Components
-  detail: Cleaning of thermal barrier coatings and metal matrix composites
+- industry: "Aerospace"
+  detail: "Cleaning of titanium components and removal of thermal barrier coatings"
+- industry: "Medical Implants"
+  detail: "Surface preparation and oxide removal from surgical grade titanium"
 technicalSpecifications:
-  powerRange: 50-200W
-  pulseDuration: 20-100ns
-  wavelength: 1064nm (primary), 532nm (optional)
-  spotSize: 0.2-1.5mm
-  repetitionRate: 20-100kHz
-  fluenceRange: 1.0–4.5 J/cm²
-  safetyClass: Class 4 (requires full enclosure)
-description: Technical overview of Titanium, Ti, for laser cleaning applications,
-  including optimal 1064nm wavelength interaction, and industrial applications in
-  surface preparation.
-author: Yi-Chun Lin
+  powerRange: "50-200W"
+  pulseDuration: "20-100ns"
+  wavelength: "1064nm (primary), 532nm (optional)"
+  spotSize: "0.2-1.5mm"
+  repetitionRate: "20-100kHz"
+  fluenceRange: "1.0–4.5 J/cm²"
+  safetyClass: "Class 4 (requires full enclosure)"
+description: "Technical overview of Titanium, Ti, for laser cleaning applications, including optimal 1064nm wavelength interaction, and industrial applications in surface preparation."
+author: "Todd Dunning"
 author_object:
-  id: None
-  name: Yi-Chun Lin
-  sex: female
-  title: Materials Scientist
-  country: Taiwan
-  expertise: Laser Materials Processing
-  image: null
-keywords: titanium, titanium metal, laser ablation, laser cleaning, non-contact cleaning,
-  pulsed fiber laser, surface contamination removal, industrial laser parameters,
-  thermal processing, surface restoration
-category: metal
+  id: 4
+  name: "Todd Dunning"
+  sex: "m"
+  title: "MA"
+  country: "United States (California)"
+  expertise: "Optical Materials for Laser Systems"
+  image: "/images/author/todd-dunning.jpg"
+keywords: "titanium, titanium metal, laser ablation, laser cleaning, non-contact cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters, thermal processing, surface restoration"
+category: "metal"
 chemicalProperties:
-  symbol: Ti
-  formula: Ti
-  materialType: metal
+  symbol: "Ti"
+  formula: "Ti"
+  materialType: "metal"
 properties:
-  density: 7.85 g/cm³
-  densityMin: 0.5 g/cm³
-  densityMax: 22.6 g/cm³
-  densityPercentile: 33.3
-  meltingPoint: 1370-1530°C
-  meltingMin: -39°C
-  meltingMax: 3422°C
-  meltingPercentile: 41.7
-  thermalConductivity: 50.2 W/m·K
-  thermalMin: 8 W/m·K
-  thermalMax: 429 W/m·K
-  thermalPercentile: 10.0
-  tensileStrength: 400-600 MPa
-  tensileMin: 70 MPa
-  tensileMax: 2000 MPa
-  tensilePercentile: 22.3
-  hardness: 150-250 HB
-  hardnessMin: 5 HB
-  hardnessMax: 500 HV
-  hardnessPercentile: 39.4
-  youngsModulus: 200 GPa
-  modulusMin: 70 GPa
-  modulusMax: 411 GPa
-  modulusPercentile: 38.1
-  laserType: Pulsed Fiber Laser
-  wavelength: 1064nm
-  fluenceRange: 1.0–4.5 J/cm²
-  chemicalFormula: Ti
-  laserAbsorptionMin: 0.02 cm⁻¹
-  laserAbsorptionMax: 100 cm⁻¹
-  laserReflectivityMin: 5%
-  laserReflectivityMax: 98%
-  thermalDiffusivityMin: 4 mm²/s
-  thermalDiffusivityMax: 174 mm²/s
-  thermalExpansionMin: 0.5 µm/m·K
-  thermalExpansionMax: 29 µm/m·K
-  specificHeatMin: 0.13 J/g·K
-  specificHeatMax: 0.90 J/g·K
+  density: "4.51 g/cm³"
+  densityMin: "4.4 g/cm³"
+  densityMax: "4.6 g/cm³"
+  densityPercentile: 42.8
+  meltingPoint: "1668°C"
+  meltingMin: "1650°C"
+  meltingMax: "1680°C"
+  meltingPercentile: 68.2
+  thermalConductivity: "21.9 W/m·K"
+  thermalMin: "15.0 W/m·K"
+  thermalMax: "25.0 W/m·K"
+  thermalPercentile: 32.1
+  tensileStrength: "240-550 MPa"
+  tensileMin: "200 MPa"
+  tensileMax: "1000 MPa"
+  tensilePercentile: 38.5
+  hardness: "70-74 HRB"
+  hardnessMin: "60 HRB"
+  hardnessMax: "80 HRB"
+  hardnessPercentile: 45.6
+  youngsModulus: "116 GPa"
+  modulusMin: "110 GPa"
+  modulusMax: "120 GPa"
+  modulusPercentile: 62.3
+  laserType: "Pulsed Fiber Laser"
+  wavelength: "1064nm"
+  fluenceRange: "1.0–4.5 J/cm²"
+  chemicalFormula: "Ti"
 composition:
-- Titanium (Ti) 99.6%
-- Trace elements (Si, Fe, Na, Mg)
+- "Titanium (Ti) 99.0-99.8%"
+- "Oxygen (O) 0.1-0.4%"
+- "Iron (Fe) 0.1-0.3%"
+- "Carbon (C) 0.05-0.1%"
+- "Nitrogen (N) 0.01-0.05%"
 compatibility:
-- Stainless Steel
-- Titanium Alloys
-- Nickel-based Superalloys
-regulatoryStandards: ISO 18562, ASTM F2100, IEC 60601-1
+- "Titanium Alloys (Ti-6Al-4V)"
+- "Stainless Steel"
+- "Nickel-based Superalloys"
+regulatoryStandards: "ASTM F67, ASTM F136, ISO 5832-2, ISO 10993-1"
 images:
   hero:
-    alt: Titanium surface undergoing laser cleaning showing precise contamination
-      removal
-    url: /images/titanium-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Titanium surface after laser treatment showing preserved
-      microstructure
-    url: /images/titanium-laser-cleaning-micro.jpg
-title: Laser Cleaning Titanium - Technical Guide for Optimal Processing
-headline: Comprehensive technical guide for laser cleaning metal Titanium
-environmentalImpact:
-- benefit: Chemical Solvent Elimination
-  description: Reduces chemical usage by 100% compared to traditional solvent cleaning
-    methods
-- benefit: Water Conservation
-  description: Saves approximately 5000 liters of water per month in industrial applications
-- benefit: Energy Efficiency
-  description: Consumes 40% less energy than thermal cleaning processes
-outcomes:
-- result: Surface Cleanliness Level
-  metric: Achieves ISO 14644-1 Class 7 cleanliness standard
-- result: Material Removal Precision
-  metric: ±5μm accuracy with no substrate damage
-- result: Processing Speed
-  metric: 2-5 m²/hour cleaning rate depending on contamination level
----
-
+    alt: "Titanium aerospace component undergoing precision laser cleaning"
+    url: "/images/titanium-laser-cleaning-hero.jpg"
+  micro
 
 # Version Information
-# Generated: 2025-09-10T15:57:06.842242
+# Generated: 2025-09-10T18:41:53.162878
 # Material: Unknown
 # Component: frontmatter
 # Generator: Z-Beam v1.0.0
 # Component Version: 4.0.1
-# Author: Yi-Chun Lin
+# Author: "Todd Dunning"
 # Platform: Darwin (3.12.4)
 # Operation: generation
 
 ---
-Version Log - Generated: 2025-09-10T15:57:06.842409
+Version Log - Generated: 2025-09-10T18:41:53.163063
 Material: Titanium
 Component: frontmatter
 Generator: Z-Beam v2.1.0

@@ -16,7 +16,7 @@ from .config import get_api_providers
 
 def setup_api_client(provider: str = "deepseek"):
     """Setup API client with fail-fast behavior - now uses caching for performance"""
-    from .client_cache import get_cached_api_client
+    from .cache_adapter import get_cached_api_client
     return get_cached_api_client(provider)
 
 
@@ -60,7 +60,7 @@ def get_api_client_for_component(component_type: str):
         RuntimeError: If provider configuration is missing
     """
     # Use cached client for better performance
-    from .client_cache import get_cached_client_for_component
+    from .cache_adapter import get_cached_client_for_component
     
     return get_cached_client_for_component(component_type)
 def test_api_connectivity(provider: str = None) -> dict:

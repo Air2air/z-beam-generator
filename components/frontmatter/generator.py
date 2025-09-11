@@ -180,7 +180,7 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
         else:
             logger.warning(f"Material data missing 'formula' field for {material_name} - continuing without formula")
 
-        # FAIL-FAST: Symbol is required for frontmatter generation
+        # Symbol is now optional for frontmatter generation
         # Use formula as fallback if symbol is not available
         symbol = None
         if "symbol" in material_data and material_data["symbol"]:
@@ -197,9 +197,8 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
                 symbol = formula
                 logger.info(f"Using formula '{formula}' as fallback for missing symbol in {material_name}")
             else:
-                raise Exception(
-                    "Material data missing required 'symbol' field and no 'formula' available as fallback - fail-fast architecture requires complete material information"
-                )
+                # Symbol is now optional
+                logger.warning(f"Material data missing 'symbol' field for {material_name} - continuing without symbol")
 
         # FAIL-FAST: Author information is required
         if not author_info or "name" not in author_info:
