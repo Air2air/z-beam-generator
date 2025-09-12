@@ -165,9 +165,11 @@ class DynamicPromptGenerator:
             # Load current prompts to understand existing content
             current_prompts = self._load_current_prompts()
             if not current_prompts:
+                logger.error(f"Failed to load current prompts for section {section_name}")
                 return None
 
             current_section = current_prompts.get(section_name, {})
+            logger.debug(f"Processing section {section_name}, type: {type(current_section)}")
 
             # Create improvement prompt based on section type
             improvement_prompt = self._create_improvement_prompt(
@@ -175,6 +177,7 @@ class DynamicPromptGenerator:
             )
 
             if not improvement_prompt:
+                logger.error(f"Failed to create improvement prompt for section {section_name}")
                 return None
 
             # Get DeepSeek's suggestions
@@ -194,6 +197,13 @@ class DynamicPromptGenerator:
 
             return improvements
 
+        except KeyError as e:
+            logger.error(f"KeyError in section {section_name}: {e}")
+            logger.error(f"Current section type: {type(current_section) if 'current_section' in locals() else 'Unknown'}")
+            logger.error(f"Current section content: {current_section if 'current_section' in locals() else 'Unknown'}")
+            import traceback
+            logger.error(f"Traceback: {traceback.format_exc()}")
+            return None
         except Exception as e:
             logger.error(
                 f"Failed to generate improvement for section {section_name}: {e}"
@@ -437,33 +447,25 @@ Keep improvements focused and incremental. Avoid suggesting major structural cha
     def _load_current_prompts(self) -> Optional[Dict[str, Any]]:
         """Load current prompts using modular configuration loader or direct file."""
         try:
-            # First try to load from the specified prompts_path if it exists and is not modular
-            if self.prompts_path.exists() and self.prompts_path.is_file():
-                try:
-                    with open(self.prompts_path, "r", encoding="utf-8") as f:
-                        prompts = yaml.safe_load(f)
-                    if prompts:
-                        # Import config for variable substitution
-                        from run import AI_DETECTION_CONFIG
-
-                        # Convert to string for template substitution, then back to dict
-                        yaml_content = yaml.dump(
-                            prompts, default_flow_style=False, sort_keys=False, allow_unicode=True
-                        )
-                        processed_content = self.substitute_config_variables(
-                            yaml_content, AI_DETECTION_CONFIG
-                        )
-
-                        # Parse the processed YAML
-                        return yaml.safe_load(processed_content)
-                except Exception as e:
-                    logger.warning(f"Failed to load from specified path {self.prompts_path}: {e}")
-
-            # Fallback to modular loader
+            # Prioritize modular loader for complete configuration with components
             prompts = self._config_loader.load_config(use_modular=True)
+            
+            if prompts:
+                logger.debug("Successfully loaded prompts using modular loader")
+            else:
+                logger.warning("Modular loader failed, trying direct file load")
+                # Fallback to direct file loading only if modular fails
+                if self.prompts_path.exists() and self.prompts_path.is_file():
+                    try:
+                        with open(self.prompts_path, "r", encoding="utf-8") as f:
+                            prompts = yaml.safe_load(f)
+                        logger.debug(f"Loaded prompts from direct file: {self.prompts_path}")
+                    except Exception as e:
+                        logger.warning(f"Failed to load from specified path {self.prompts_path}: {e}")
+                        return None
 
             if not prompts:
-                logger.warning("Failed to load prompts using modular loader")
+                logger.warning("Failed to load prompts using any method")
                 return None
 
             # Import config for variable substitution

@@ -45,10 +45,19 @@ The Z-Beam Optimizer is a sophisticated content optimization system that enhance
 - **Multi-Layer Construction**: Base + Persona + Formatting
 - **Cultural Adaptation**: Country-specific enhancements
 - **Quality Feedback Loop**: Winston analysis integration
+- **Modular Component Integration**: Leverages 5-module prompt system
+- **DeepSeek API Integration**: Complete configuration with retry logic
 
 ##### AI Detection Prompt Optimizer (`text_optimization/ai_detection_prompt_optimizer.py`)
 - **Iterative Optimization**: Progressive quality improvement
 - **Enhancement Flags**: Targeted improvement techniques
+
+##### Modular Component System (`components/text/prompts/modules/`)
+**Purpose**: Modular prompt enhancement architecture
+- **5 Core Modules**: Authenticity, cultural adaptation, detection avoidance, human characteristics, structural improvements
+- **Dynamic Loading**: Runtime configuration assembly via modular_loader.py
+- **Component Mapping**: Centralized configuration in ai_detection_core.yaml
+- **Path Resolution**: Automatic relative path handling for component discovery
 - **Author Persona Integration**: Cultural authenticity
 - **Performance Tracking**: Optimization metrics
 
@@ -377,11 +386,156 @@ init_result = initialize_optimizer_services()
 cleanup_optimizer_services()
 ```
 
-### Performance Tuning
+---
+
+## Modular Components Architecture
+
+### Overview
+The optimizer uses a sophisticated modular component system for prompt construction and enhancement. This system allows for dynamic loading and configuration of specialized prompt modules.
+
+### Component Structure
+```
+components/text/prompts/modules/
+├── authenticity_enhancements.yaml    # Natural language patterns
+├── cultural_adaptation.yaml          # Regional customization
+├── detection_avoidance.yaml          # AI detection mitigation
+├── human_characteristics.yaml        # Human writing traits
+└── structural_improvements.yaml      # Content organization
+```
+
+### Modular Loader (`optimizer/text_optimization/utils/modular_loader.py`)
+**Purpose**: Dynamic configuration assembly and component integration
+- **YAML Merging**: Deep merge of multiple configuration files
+- **Path Resolution**: Automatic relative path handling
+- **Component Discovery**: Runtime loading of available modules
+- **Configuration Validation**: Ensures complete prompt assembly
+
+### Configuration Mapping
+The modular components are mapped in `components/text/prompts/core/ai_detection_core.yaml`:
+```yaml
+modular_components:
+  authenticity_enhancements: "modules/authenticity_enhancements.yaml"
+  cultural_adaptation: "modules/cultural_adaptation.yaml"
+  detection_avoidance: "modules/detection_avoidance.yaml"
+  human_characteristics: "modules/human_characteristics.yaml" 
+  structural_improvements: "modules/structural_improvements.yaml"
+```
+
+### Integration with Dynamic Prompt Generator
+The DynamicPromptGenerator prioritizes modular loader configuration:
+1. **Primary**: Modular loader assembles complete configuration
+2. **Fallback**: Direct file loading if modular system unavailable
+3. **Validation**: Ensures all required components are present
+
+---
+
+## Troubleshooting Guide
+
+### Common Issues and Solutions
+
+#### KeyError: 'name' in API Configuration
+**Symptom**: `KeyError: 'name'` when initializing API clients
+**Root Cause**: Incomplete API provider configuration in run.py
+**Solution**: Ensure complete API provider configuration:
+```python
+API_PROVIDERS = {
+    "deepseek": {
+        "name": "deepseek",
+        "base_url": "https://api.deepseek.com/v1",
+        "model": "deepseek-chat",
+        "timeout": 30,
+        "retry_delay": 1.0
+    },
+    "winston": {
+        "name": "winston",
+        "base_url": "https://api.gowinston.ai"
+    }
+}
+```
+
+#### Modular Components Not Loading
+**Symptom**: Missing or incomplete prompt configuration
+**Root Cause**: Missing modular_components section in ai_detection_core.yaml
+**Solution**: Add modular_components mapping with correct paths:
+```yaml
+modular_components:
+  authenticity_enhancements: "modules/authenticity_enhancements.yaml"
+  cultural_adaptation: "modules/cultural_adaptation.yaml"
+  detection_avoidance: "modules/detection_avoidance.yaml"
+  human_characteristics: "modules/human_characteristics.yaml"
+  structural_improvements: "modules/structural_improvements.yaml"
+```
+
+#### Dynamic Prompt Generator Initialization Failure
+**Symptom**: Cannot create DynamicPromptGenerator instance
+**Root Cause**: Modular loader prioritization issue
+**Solution**: Ensure `_load_current_prompts` method prioritizes modular loader:
+```python
+def _load_current_prompts(self):
+    try:
+        return self.modular_loader.load_complete_configuration()
+    except Exception as e:
+        logger.warning(f"Modular loader failed: {e}")
+        # Fallback to direct loading
+        return self._load_direct_prompts()
+```
+
+#### Winston AI SSL Certificate Issues
+**Symptom**: SSL certificate verification failures
+**Root Cause**: Incorrect base_url configuration
+**Solution**: Use correct HTTPS endpoint: `https://api.gowinston.ai`
+
+### Diagnostic Tools
+
+#### Prompt Chain Diagnostics
+Use the comprehensive diagnostic tool to validate system health:
+```bash
+python3 scripts/tools/prompt_chain_diagnostics.py
+```
+
+#### API Terminal Diagnostics
+Test API connectivity and configuration:
+```bash
+python3 scripts/tools/api_terminal_diagnostics.py winston
+python3 scripts/tools/api_terminal_diagnostics.py deepseek
+```
+
+#### Component Validation
+Verify modular components are properly loaded:
+```python
+from optimizer.text_optimization.utils.modular_loader import ModularLoader
+loader = ModularLoader()
+config = loader.load_complete_configuration()
+print(f"Loaded {len(config)} configuration sections")
+```
+
+---
+
+## Performance Tuning
 - **Cache TTL**: Adjust based on content update frequency
 - **Worker Count**: Scale based on concurrent optimization needs
 - **Timeout Settings**: Configure based on AI service response times
 - **Quality Thresholds**: Tune based on content requirements
+
+---
+
+## Documentation Reference
+
+### Core Documentation
+- **[Main README](README.md)**: This document - system overview and architecture
+- **[API Reference](docs/API_REFERENCE.md)**: Complete API documentation and usage examples
+- **[Configuration Guide](docs/CONFIGURATION_GUIDE.md)**: Detailed configuration instructions
+- **[Troubleshooting Guide](docs/TROUBLESHOOTING_GUIDE.md)**: Comprehensive issue resolution guide
+
+### Specialized Documentation
+- **[Modular Components Reference](docs/MODULAR_COMPONENTS_REFERENCE.md)**: Complete modular component system documentation
+- **[Text Optimization Guide](text_optimization/docs/README.md)**: Text-specific optimization documentation
+- **[Dynamic Prompt System](text_optimization/dynamic_prompt_system/README.md)**: Advanced prompt evolution documentation
+
+### Quick References
+- **System Health Check**: `python3 scripts/tools/prompt_chain_diagnostics.py`
+- **API Diagnostics**: `python3 scripts/tools/api_terminal_diagnostics.py [provider]`
+- **Configuration Validation**: See troubleshooting guide for validation commands
 
 ---
 

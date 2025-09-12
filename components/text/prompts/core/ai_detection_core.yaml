@@ -1,6 +1,14 @@
 # AI Detection Core Prompts Configuration
 # This file contains the core prompts for AI detection avoidance and optimization
 
+# Modular Components Configuration - Maps component names to their YAML files
+modular_components:
+  authenticity_enhancements: "../../../optimizer/text_optimization/modules/authenticity_enhancements/authenticity_patterns.yaml"
+  cultural_adaptation: "../../../optimizer/text_optimization/modules/cultural_adaptation/cultural_patterns.yaml"
+  detection_avoidance: "../../../optimizer/text_optimization/modules/detection_avoidance/avoidance_patterns.yaml"
+  human_characteristics: "../../../optimizer/text_optimization/modules/human_characteristics/conversational_patterns.yaml"
+  structural_improvements: "../../../optimizer/text_optimization/modules/structural_improvements/structural_patterns.yaml"
+
 ai_detection_avoidance:
   - "Avoid repetitive sentence structures and predictable patterns"
   - "Use varied vocabulary and natural language flow"

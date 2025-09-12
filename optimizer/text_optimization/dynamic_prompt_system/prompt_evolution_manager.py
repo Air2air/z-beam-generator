@@ -28,8 +28,8 @@ class PromptEvolutionManager:
             prompts_path: Path to the prompts file for tracking
         """
         self.prompts_path = Path(prompts_path)
-        self.history_file = self.prompts_path.parent / "evolution_history.json"
-        self.evolution_history = self._load_history()
+        # Evolution history removed - rely on timestamps in MD files instead
+        self.evolution_history = []  # Keep empty list for compatibility
 
     def record_evolution(
         self,
@@ -55,11 +55,11 @@ class PromptEvolutionManager:
             "version": len(self.evolution_history) + 1,
         }
 
-        self.evolution_history.append(evolution_record)
-        self._save_history()
+        # Don't append to history since JSON tracking is disabled
+        # self.evolution_history.append(evolution_record)
 
         logger.info(
-            f"📝 Recorded evolution: Score {evolution_record['winston_score']}, "
+            f"📝 Evolution event (not stored): Score {evolution_record['winston_score']}, "
             f"Applied: {applied}, Sections: {len(evolution_record['target_sections'])}"
         )
 
@@ -162,46 +162,19 @@ class PromptEvolutionManager:
             return "stable"
 
     def _load_history(self) -> List[Dict[str, Any]]:
-        """Load evolution history from file."""
-        try:
-            if self.history_file.exists():
-                with open(self.history_file, "r", encoding="utf-8") as f:
-                    return json.load(f)
-            return []
-        except Exception as e:
-            logger.warning(f"Failed to load evolution history: {e}")
-            return []
+        """Load evolution history from file. Disabled - relying on MD file timestamps."""
+        return []
 
     def _save_history(self) -> None:
-        """Save evolution history to file."""
-        try:
-            with open(self.history_file, "w", encoding="utf-8") as f:
-                json.dump(self.evolution_history, f, indent=2, ensure_ascii=False)
-        except Exception as e:
-            logger.error(f"Failed to save evolution history: {e}")
+        """Save evolution history to file. Disabled - relying on MD file timestamps."""
+        pass
 
     def clear_history(self) -> None:
-        """Clear the evolution history."""
+        """Clear the evolution history. Disabled - relying on MD file timestamps."""
         self.evolution_history = []
-        self._save_history()
-        logger.info("🗑️ Evolution history cleared")
+        logger.info("🗑️ Evolution history cleared (JSON tracking disabled)")
 
     def export_history(self, filepath: str) -> bool:
-        """Export evolution history to a specified file."""
-        try:
-            export_data = {
-                "export_timestamp": datetime.now().isoformat(),
-                "prompts_file": str(self.prompts_path),
-                "total_evolutions": len(self.evolution_history),
-                "evolution_history": self.evolution_history,
-                "statistics": self.get_evolution_stats(),
-            }
-
-            with open(filepath, "w", encoding="utf-8") as f:
-                json.dump(export_data, f, indent=2, ensure_ascii=False)
-
-            logger.info(f"📤 Evolution history exported to {filepath}")
-            return True
-        except Exception as e:
-            logger.error(f"Failed to export evolution history: {e}")
-            return False
+        """Export evolution history. Disabled - relying on MD file timestamps."""
+        logger.info("📤 Evolution history export disabled - using MD file timestamps")
+        return True

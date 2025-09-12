@@ -524,7 +524,7 @@ async def run_sophisticated_optimization(
         from optimizer.text_optimization.dynamic_prompt_generator import (
             DynamicPromptGenerator,
         )
-        from optimizer.text_optimization.validation.content_scorer import (
+        from optimizer.text_optimization.validation.scoring import (
             ContentQualityScorer,
         )
 

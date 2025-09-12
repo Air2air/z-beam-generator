@@ -16,6 +16,7 @@ import yaml
 
 from api.client import GenerationRequest
 from components.text.localization import get_required_localization_prompt
+from components.text.ai_detection import get_ai_detection_prompt
 
 logger = logging.getLogger(__name__)
 
@@ -291,6 +292,8 @@ class FailFastTextGenerator:
     ) -> str:
         """
         Construct the complete prompt for text generation.
+        
+        ARCHITECTURE: AI Detection → Localization → Base Content
 
         Args:
             base_prompt_data: Base prompt configuration
@@ -302,7 +305,10 @@ class FailFastTextGenerator:
         Returns:
             Complete prompt string
         """
-        # CRITICAL: Add mandatory localization chain FIRST
+        # STEP 1: Add AI detection prompts FIRST
+        ai_detection_prompt = get_ai_detection_prompt()
+        
+        # STEP 2: Add mandatory localization chain SECOND
         try:
             localization_prompt = get_required_localization_prompt(author_info)
         except Exception as e:
@@ -314,8 +320,11 @@ class FailFastTextGenerator:
             )
             raise ValueError(f"Localization prompts are mandatory: {e}")
 
-        # Build prompt sections
-        sections = [localization_prompt]  # Localization MUST be first
+        # Build prompt sections in order: AI Detection → Localization → Content
+        sections = [
+            ai_detection_prompt,  # AI detection guidance FIRST
+            localization_prompt   # Localization requirements SECOND
+        ]
 
         # Add author information
         author_name = author_info.get("name")

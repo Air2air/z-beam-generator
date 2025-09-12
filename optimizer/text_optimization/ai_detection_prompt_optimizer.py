@@ -17,7 +17,7 @@ import yaml
 
 from api.client_manager import create_api_client
 
-from .ai_detection_config_optimizer import AIDetectionConfigOptimizer
+from .ai_detection import AIDetectionConfigOptimizer
 
 logger = logging.getLogger(__name__)
 

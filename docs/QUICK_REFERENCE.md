@@ -31,6 +31,11 @@
 **→ Quick Fix**: `python3 run.py --material "Steel"`
 **→ Batch**: `python3 run.py` (generates all materials)
 
+### "Prompt architecture" / "AI detection + localization"
+**→ Immediate Response**: [AI Detection + Localization Architecture](AI_DETECTION_LOCALIZATION_CHAIN_ARCHITECTURE.md)
+**→ Quick Fix**: Two-stage chain: AI Detection → Localization → Content
+**→ Details**: [Localization System](LOCALIZATION_PROMPT_CHAIN_SYSTEM.md)
+
 ## 📍 File Location Quick Map for AI
 
 ### User needs setup help → Look in:

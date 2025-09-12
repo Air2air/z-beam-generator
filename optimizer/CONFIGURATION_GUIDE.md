@@ -4,6 +4,44 @@
 
 The Z-Beam Optimizer uses a hierarchical configuration system that allows flexible customization while maintaining sensible defaults. This guide covers all configuration options and best practices.
 
+## Automatic Configuration Discovery
+
+🎯 **Most services support automatic configuration loading** - you can initialize services without explicitly providing configuration:
+
+```python
+# ✅ Automatic configuration loading (recommended)
+service = AIDetectionOptimizationService()  # Loads config automatically
+workflow = IterativeWorkflowService()       # Loads config automatically
+
+# ✅ Explicit configuration (for custom setups)
+service = AIDetectionOptimizationService(my_config)
+```
+
+### Configuration Discovery Order
+
+Services automatically discover configuration in this priority order:
+
+1. **Explicitly provided ServiceConfiguration** (highest priority)
+2. **Service-specific config files** (e.g., `ai_detection_service_config.yaml`)
+3. **Environment variables** (prefixed with service name)
+4. **Default configuration values** (built-in fallbacks)
+5. **Raises ConfigurationError** if none found (lowest priority)
+
+### Service-Specific Config Loading Functions
+
+Each service has its own config loader:
+
+```python
+# Available automatic config loaders
+from optimizer.services.ai_detection_optimization import get_ai_detection_service_config
+from optimizer.services.iterative_workflow import get_workflow_service_config
+from optimizer.services.quality_assessment import get_quality_service_config
+
+# These are called automatically when config=None
+ai_config = get_ai_detection_service_config()        # Auto-loaded
+workflow_config = get_workflow_service_config()      # Auto-loaded
+```
+
 ## Configuration Hierarchy
 
 ```
@@ -32,6 +70,63 @@ config = ServiceConfiguration(
         # Service-specific settings
     }
 )
+```
+
+## Service Initialization Patterns
+
+### ✅ **Recommended: Automatic Configuration**
+
+```python
+# 🎯 Best Practice - Let services load their own configuration
+from optimizer.services.ai_detection_optimization import AIDetectionOptimizationService
+from optimizer.services.iterative_workflow import IterativeWorkflowService
+
+# These automatically load appropriate configuration
+ai_service = AIDetectionOptimizationService()    # ✅ Simple & reliable
+workflow = IterativeWorkflowService()           # ✅ Simple & reliable
+```
+
+### ⚠️ **Advanced: Custom Configuration**
+
+```python
+# 🔧 Advanced - For custom setups or testing
+from optimizer.services import ServiceConfiguration
+
+custom_config = ServiceConfiguration(
+    name="custom_ai_detection",
+    settings={"target_score": 85.0, "max_iterations": 5}
+)
+
+ai_service = AIDetectionOptimizationService(custom_config)  # ✅ Custom behavior
+```
+
+### 🚫 **Common Mistake: Assuming Config is Required**
+
+```python
+# ❌ DON'T DO THIS - Unnecessary complexity
+config = get_ai_detection_service_config()  # Manual loading
+service = AIDetectionOptimizationService(config)  # Redundant
+
+# ✅ DO THIS INSTEAD - Automatic loading  
+service = AIDetectionOptimizationService()  # Handles config automatically
+```
+
+### **Base Class Behavior vs Subclass Behavior**
+
+**Critical Understanding:**
+
+- **SimplifiedService base class**: Requires configuration, throws `ConfigurationError` if None
+- **Service subclasses**: Provide configuration fallbacks, rarely throw errors
+
+```python
+# Base class behavior (SimplifiedService)
+def __init__(self, config: Optional[ServiceConfiguration] = None):
+    if config is None:
+        raise ConfigurationError("Service configuration is required")  # ❌ Strict
+
+# Subclass behavior (AIDetectionOptimizationService)  
+def __init__(self, config: Optional[ServiceConfiguration] = None):
+    super().__init__(config or get_ai_detection_service_config())  # ✅ Provides fallback
 ```
 
 ### AI Detection Service Configuration
@@ -495,7 +590,52 @@ config = ServiceConfiguration(name="test", settings={"test": True})
 print("Config loaded:", config.settings)
 ```
 
-#### 3. Environment Variables Not Working
+#### 3. Service Initialization Errors
+
+**ConfigurationError: Service configuration is required**
+
+This error means the service couldn't load any configuration. Check:
+
+```python
+# ✅ Debug configuration discovery
+from optimizer.services.ai_detection_optimization import get_ai_detection_service_config
+
+try:
+    config = get_ai_detection_service_config()
+    print("✅ Config loaded successfully:", config.name)
+except Exception as e:
+    print("❌ Config loading failed:", str(e))
+    
+# ✅ Test service initialization
+try:
+    from optimizer.services.ai_detection_optimization import AIDetectionOptimizationService
+    service = AIDetectionOptimizationService()
+    print("✅ Service initialized successfully")
+except Exception as e:
+    print("❌ Service initialization failed:", str(e))
+```
+
+**Common Solutions:**
+- Ensure config files exist in expected locations
+- Check file permissions on configuration files  
+- Verify environment variables are set correctly
+- Use explicit configuration as fallback
+
+```python
+# 🔧 Fallback pattern for problematic environments
+try:
+    service = AIDetectionOptimizationService()  # Try automatic
+except ConfigurationError:
+    # Manual fallback configuration
+    from optimizer.services import ServiceConfiguration
+    fallback_config = ServiceConfiguration(
+        name="ai_detection_fallback",
+        settings={"target_score": 75.0}
+    )
+    service = AIDetectionOptimizationService(fallback_config)
+```
+
+#### 4. Environment Variables Not Working
 ```python
 # Check environment variables
 import os

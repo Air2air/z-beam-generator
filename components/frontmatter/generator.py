@@ -105,10 +105,9 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
                     content, material_name, material_data
                 )
 
-                # Apply centralized version stamping
-                from versioning import stamp_component_output
-
-                final_content = stamp_component_output("frontmatter", enhanced_content)
+                # Version stamping is handled by the main workflow manager
+                # No need to stamp here as it will be done by the caller
+                final_content = enhanced_content
 
                 logger.info(f"Generated frontmatter for {material_name}")
 

@@ -149,40 +149,70 @@ def enhance_generated_frontmatter(content: str, category: str) -> str:
     Enhance generated frontmatter content with min/max context and percentiles.
 
     Args:
-        content: Raw frontmatter content (YAML between --- markers)
+        content: Raw frontmatter content (YAML between --- markers or wrapped in markdown code blocks)
         category: Material category
 
     Returns:
         Enhanced frontmatter content with added context
     """
     try:
-        # Parse the YAML frontmatter
-        if content.startswith("---"):
+        yaml_content = None
+        
+        # Handle content wrapped in markdown code blocks (common AI response format)
+        if content.strip().startswith("````markdown") or content.strip().startswith("```yaml"):
+            # Extract YAML from markdown code blocks
+            lines = content.strip().split('\n')
+            yaml_lines = []
+            in_yaml = False
+            
+            for line in lines:
+                if line.strip().startswith("```yaml"):
+                    in_yaml = True
+                    continue
+                elif line.strip().startswith("```") and in_yaml:
+                    break
+                elif in_yaml:
+                    yaml_lines.append(line)
+            
+            if yaml_lines:
+                yaml_content = '\n'.join(yaml_lines)
+        
+        # Handle standard frontmatter format
+        elif content.startswith("---"):
             parts = content.split("---", 2)
             if len(parts) >= 2:
                 yaml_content = parts[1].strip()
+        
+        # If we extracted YAML content, validate and process it
+        if yaml_content:
+            # First, validate that the YAML is complete and parseable
+            try:
                 frontmatter_data = yaml.safe_load(yaml_content)
+                if not frontmatter_data:
+                    logger.warning("YAML content is empty or invalid")
+                    return content
+            except yaml.YAMLError as e:
+                logger.error(f"YAML parsing failed, returning original content: {e}")
+                return content
 
-                # Enhance with context
-                enhanced_data = enhance_frontmatter_with_context(
-                    frontmatter_data, category
-                )
+            # Enhance with context
+            enhanced_data = enhance_frontmatter_with_context(
+                frontmatter_data, category
+            )
 
-                # Convert back to YAML
-                enhanced_yaml = yaml.dump(
-                    enhanced_data,
-                    default_flow_style=False,
-                    sort_keys=False,
-                    allow_unicode=True,
-                )
+            # Convert back to YAML with proper frontmatter format
+            enhanced_yaml = yaml.dump(
+                enhanced_data,
+                default_flow_style=False,
+                sort_keys=False,
+                allow_unicode=True,
+            )
 
-                # Reconstruct the content
-                result = f"---\n{enhanced_yaml}---"
-                if len(parts) > 2:
-                    result += parts[2]  # Add any content after frontmatter
+            # Always return in proper frontmatter format
+            return f"---\n{enhanced_yaml}---"
 
-                return result
-
+        # If we couldn't extract valid YAML, return original content
+        logger.warning("Could not extract valid YAML content from response")
         return content
 
     except Exception as e:

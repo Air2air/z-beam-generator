@@ -125,6 +125,73 @@ optimized_prompt = generator.generate_optimized_prompt(
 )
 ```
 
+## Modular Components System
+
+### Architecture Overview
+The text optimization system uses a sophisticated modular component architecture for dynamic prompt construction and enhancement.
+
+### Component Modules
+Located in `components/text/prompts/modules/`:
+
+#### 1. Authenticity Enhancements (`authenticity_enhancements.yaml`)
+- **Purpose**: Natural language patterns and human-like characteristics
+- **Features**: Conversational elements, informal language patterns, personal anecdotes
+- **Integration**: Applied during prompt construction phase
+
+#### 2. Cultural Adaptation (`cultural_adaptation.yaml`)
+- **Purpose**: Regional and cultural customization
+- **Features**: Country-specific language patterns, cultural references, local terminology
+- **Integration**: Persona-specific application based on author nationality
+
+#### 3. Detection Avoidance (`detection_avoidance.yaml`)
+- **Purpose**: AI detection mitigation strategies
+- **Features**: Variability patterns, human inconsistencies, natural flow disruptions
+- **Integration**: Applied when AI detection scores are too high
+
+#### 4. Human Characteristics (`human_characteristics.yaml`)
+- **Purpose**: Human writing traits and behaviors
+- **Features**: Personal opinions, emotional expressions, subjective statements
+- **Integration**: Baseline human authenticity enhancement
+
+#### 5. Structural Improvements (`structural_improvements.yaml`)
+- **Purpose**: Content organization and flow optimization
+- **Features**: Paragraph structure, transition improvements, logical flow
+- **Integration**: Applied during content revision phase
+
+### Modular Loader Integration
+The `ModularLoader` class provides dynamic configuration assembly:
+
+```python
+from optimizer.text_optimization.utils.modular_loader import ModularLoader
+
+# Initialize loader
+loader = ModularLoader()
+
+# Load complete configuration
+config = loader.load_complete_configuration()
+
+# Access specific modules
+auth_config = config.get('authenticity_enhancements', {})
+cultural_config = config.get('cultural_adaptation', {})
+```
+
+### Dynamic Prompt Generator Integration
+The `DynamicPromptGenerator` prioritizes modular components:
+
+```python
+# Modular loading (preferred)
+prompts = self.modular_loader.load_complete_configuration()
+
+# Enhancement flags trigger specific modules
+enhancement_flags = {
+    'conversational_boost': True,      # → authenticity_enhancements
+    'cultural_adaptation': True,       # → cultural_adaptation  
+    'detection_avoidance': True,       # → detection_avoidance
+    'human_elements_emphasis': True,   # → human_characteristics
+    'structural_optimization': True    # → structural_improvements
+}
+```
+
 ## Configuration Structure
 
 ```
@@ -220,6 +287,63 @@ enhanced_prompt = generator.generate_optimized_prompt(
 ## Support and Maintenance
 
 ### Common Issues
+
+#### 1. Modular Component Loading Failures
+**Symptom**: Missing or incomplete prompt configuration
+**Solution**: Verify modular_components mapping in `ai_detection_core.yaml`:
+```yaml
+modular_components:
+  authenticity_enhancements: "modules/authenticity_enhancements.yaml"
+  cultural_adaptation: "modules/cultural_adaptation.yaml"
+  detection_avoidance: "modules/detection_avoidance.yaml"
+  human_characteristics: "modules/human_characteristics.yaml"
+  structural_improvements: "modules/structural_improvements.yaml"
+```
+
+#### 2. API Configuration Errors
+**Symptom**: `KeyError: 'name'` during API client initialization
+**Solution**: Ensure complete API provider configuration in `run.py`:
+```python
+API_PROVIDERS = {
+    "deepseek": {
+        "name": "deepseek",
+        "base_url": "https://api.deepseek.com/v1", 
+        "model": "deepseek-chat",
+        "timeout": 30,
+        "retry_delay": 1.0
+    }
+}
+```
+
+#### 3. Dynamic Prompt Generator Initialization
+**Symptom**: Cannot create DynamicPromptGenerator instance
+**Solution**: Verify modular loader prioritization in `_load_current_prompts()` method
+
+#### 4. Quality Threshold Issues
+**Symptom**: Content consistently below optimization targets
+**Solution**: Adjust enhancement flags and review persona configurations
+
+### Diagnostic Commands
+```bash
+# Validate complete system health
+python3 scripts/tools/prompt_chain_diagnostics.py
+
+# Test API connectivity
+python3 scripts/tools/api_terminal_diagnostics.py deepseek
+python3 scripts/tools/api_terminal_diagnostics.py winston
+
+# Verify modular component loading
+python3 -c "
+from optimizer.text_optimization.utils.modular_loader import ModularLoader
+loader = ModularLoader()
+config = loader.load_complete_configuration()
+print(f'Loaded {len(config)} configuration sections')
+for key in config.keys():
+    print(f'  - {key}')
+"
+```
+
+### Configuration Errors
 1. **Configuration Errors:** Missing or invalid YAML files
 2. **AI Detection Failures:** Service unavailability or API limits
 3. **Quality Thresholds:** Content below optimization targets

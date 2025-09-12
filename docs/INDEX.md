@@ -18,6 +18,8 @@
 ### 🏗️ **Core System Knowledge**
 Understanding how Z-Beam works fundamentally
 - [**ARCHITECTURE.md**](core/ARCHITECTURE.md) - System design and fail-fast principles
+- [**AI_DETECTION_LOCALIZATION_CHAIN_ARCHITECTURE.md**](AI_DETECTION_LOCALIZATION_CHAIN_ARCHITECTURE.md) - AI detection + localization prompt chain
+- [**LOCALIZATION_PROMPT_CHAIN_SYSTEM.md**](LOCALIZATION_PROMPT_CHAIN_SYSTEM.md) - Cultural localization system
 - [**COMPONENT_SYSTEM.md**](core/COMPONENT_SYSTEM.md) - How components interact
 - [**DATA_FLOW.md**](core/DATA_FLOW.md) - Data flow through the generation pipeline
 - [**FAIL_FAST_PRINCIPLES.md**](core/FAIL_FAST_PRINCIPLES.md) - Design philosophy and constraints

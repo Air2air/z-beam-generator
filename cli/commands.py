@@ -271,18 +271,6 @@ def preload_api_cache():
         print(f"⚠️  Preload completed with some errors: {e}")
 
 
-def show_version_history(material_component: str):
-    """Show version history for a material-component pair."""
-    try:
-        material, component = material_component.split(":", 1)
-        from utils.file_operations import display_version_history
-
-        display_version_history(material.strip(), component.strip())
-    except ValueError:
-        print("❌ Invalid format. Use: --version-history 'Material:component'")
-        print("💡 Example: --version-history 'Alumina:text'")
-
-
 def clean_generated_content():
     """Clean all generated content files."""
     print("🧹 Cleaning generated content...")

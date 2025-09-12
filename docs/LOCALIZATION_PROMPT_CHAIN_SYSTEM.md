@@ -4,11 +4,18 @@
 
 The Localization Prompt Chain System is a **MANDATORY** component that ensures all text generation in the Z-Beam system includes culturally and linguistically authentic localization based on the author's country.
 
+**NEW ARCHITECTURE**: The system now works as part of a two-stage prompt chain:
+```
+AI Detection Prompts → Localization Prompts → Base Content Prompts
+```
+
 ## ✅ CRITICAL REQUIREMENT
 
 **Every text generation request MUST include localized persona and formatting prompts.**
 
 This is not optional - it's an essential requirement for maintaining content authenticity and quality.
+
+**IMPORTANT**: Localization prompts are **NEVER modified** by AI detection optimization. They preserve cultural authenticity while AI detection prompts handle human-like writing optimization.
 
 ## System Components
 
@@ -63,9 +70,17 @@ The system then:
 
 ### 3. Prompt Integration
 The localization prompt is:
-1. **Added FIRST** to every text generation prompt
+1. **Added SECOND** in the new prompt chain architecture (after AI detection prompts)
 2. Includes mandatory instructions that must be followed
 3. Contains cultural characteristics, language patterns, and formatting requirements
+4. **Never modified by AI detection optimization** - preserves cultural authenticity
+
+**New Prompt Chain Order**:
+```
+1. AI Detection Prompts (dynamic optimization)
+2. Localization Prompts (cultural authenticity)
+3. Base Content Prompts (material-specific instructions)
+```
 
 ## Localization Characteristics
 

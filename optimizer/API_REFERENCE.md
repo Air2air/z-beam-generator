@@ -66,11 +66,25 @@ AI Detection Optimization Service with caching and batch processing.
 
 #### Methods
 
-##### `__init__(config)`
+##### `__init__(config=None)`
 Initialize the AI detection service.
 
 **Parameters:**
-- `config` (ServiceConfiguration): Service configuration
+- `config` (Optional[ServiceConfiguration]): Service configuration. If None, loads default configuration automatically.
+
+**Behavior:**
+- If config provided: Uses the provided configuration
+- If config is None: Automatically loads configuration using `get_ai_detection_service_config()`
+- If no configuration found: Raises ConfigurationError
+
+**Examples:**
+```python
+# With explicit config
+service = AIDetectionOptimizationService(my_config)
+
+# With automatic config loading (recommended)
+service = AIDetectionOptimizationService()  # Loads defaults
+```
 
 ##### `async detect_ai_content(content)`
 Detect AI content in the given text.
@@ -112,11 +126,25 @@ Service for managing iterative workflows with various strategies and exit condit
 
 #### Methods
 
-##### `__init__(config)`
+##### `__init__(config=None)`
 Initialize the iterative workflow service.
 
 **Parameters:**
-- `config` (ServiceConfiguration): Service configuration
+- `config` (Optional[ServiceConfiguration]): Service configuration. If None, loads default configuration automatically.
+
+**Behavior:**
+- If config provided: Uses the provided configuration  
+- If config is None: Automatically loads workflow service configuration
+- If no configuration found: Raises ConfigurationError
+
+**Examples:**
+```python
+# With explicit config
+workflow = IterativeWorkflowService(my_config)
+
+# With automatic config loading (recommended)
+workflow = IterativeWorkflowService()  # Loads defaults
+```
 
 ##### `async run_iterative_workflow(workflow_id, initial_input, iteration_function, quality_function, workflow_config=None)`
 Run an iterative workflow.
@@ -189,6 +217,49 @@ Configuration for a service.
 - `version` (str): Service version (default: "1.0.0")
 - `enabled` (bool): Whether service is enabled (default: True)
 - `settings` (Optional[Dict[str, Any]]): Service-specific settings
+
+#### Automatic vs Manual Configuration
+
+**✅ Recommended: Automatic Configuration Loading**
+```python
+# Services automatically load their configuration
+from optimizer.services.ai_detection_optimization import AIDetectionOptimizationService
+
+# No configuration needed - loads automatically
+service = AIDetectionOptimizationService()  # Uses get_ai_detection_service_config()
+```
+
+**🔧 Advanced: Manual Configuration**
+```python
+# For custom configurations or testing
+from optimizer.services import ServiceConfiguration
+
+# Create custom configuration
+custom_config = ServiceConfiguration(
+    name="custom_ai_detection",
+    settings={
+        "target_score": 85.0,
+        "max_iterations": 3,
+        "providers": {
+            "winston": {"enabled": True, "api_key": "custom_key"}
+        }
+    }
+)
+
+# Use custom configuration
+service = AIDetectionOptimizationService(custom_config)
+```
+
+**⚙️ Configuration Discovery Pattern**
+```python
+# Each service has its own config loader
+from optimizer.services.ai_detection_optimization import get_ai_detection_service_config
+from optimizer.services.iterative_workflow import get_workflow_service_config
+
+# These functions are called automatically when config=None
+ai_config = get_ai_detection_service_config()      # Discovery order: files → env → defaults
+workflow_config = get_workflow_service_config()    # Discovery order: files → env → defaults
+```
 
 **Example:**
 ```python

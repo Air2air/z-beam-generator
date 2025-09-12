@@ -169,7 +169,8 @@ class VersionGenerator:
         """
         Stamp component output with version information.
 
-        This is the main method that components should call to stamp their output.
+        For frontmatter components, adds version info as YAML comments.
+        For other components, uses standard version stamping.
 
         Args:
             content: The component output content
@@ -184,6 +185,19 @@ class VersionGenerator:
             Content with version stamp applied
         """
         try:
+            # Special handling for frontmatter - add version info as YAML comments
+            if component_name == "frontmatter":
+                return self.stamp_frontmatter_output(
+                    content=content,
+                    component_name=component_name,
+                    component_version=component_version,
+                    material_name=material_name,
+                    author_name=author_name,
+                    operation=operation,
+                    metadata=metadata,
+                )
+            
+            # Standard handling for other components
             # Generate new version stamp
             new_stamp = self.generate_version_stamp(
                 component_name=component_name,
@@ -457,17 +471,7 @@ def stamp_component_output(
 
     component_version = component_versions.get(component_name, "1.0.0")
 
-    # Special handling for frontmatter - add version info as YAML comments
-    if component_name == "frontmatter":
-        return generator.stamp_frontmatter_output(
-            content=content,
-            component_name=component_name,
-            component_version=component_version,
-            material_name=material_name,
-            author_name=author_name,
-            operation="generation",
-        )
-
+    # Use standard stamping for all components
     return generator.stamp_component_output(
         content=content,
         component_name=component_name,
