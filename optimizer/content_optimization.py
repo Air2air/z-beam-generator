@@ -58,101 +58,142 @@ def create_timeout_wrapper(func, timeout_seconds: int = 300):
 
 
 def update_content_with_ai_analysis(content: str, ai_result, material_name: str) -> str:
-    """Update content with AI detection analysis in proper YAML frontmatter format.
-
-    This function ensures:
-    1. Frontmatter appears at the top in proper YAML format
-    2. Existing frontmatter is preserved and new data is appended
-    3. AI detection analysis is added to the frontmatter section
-    4. Prevents duplicate ai_detection_analysis sections
+    """Update content with AI detection analysis in the target format:
+    1. Clean markdown content at top
+    2. Basic author frontmatter in middle
+    3. AI analysis logs at bottom
     """
     try:
         lines = content.split("\n")
-        updated_lines = []
-
-        # Find frontmatter boundaries
-        frontmatter_start_idx = -1
-        frontmatter_end_idx = -1
-        existing_frontmatter = []
-
-        for i, line in enumerate(lines):
+        
+        # Extract different sections
+        clean_content_lines = []
+        author_frontmatter_lines = []
+        existing_logs = []
+        
+        # Find sections in content
+        in_frontmatter = False
+        in_logs = False
+        current_section = []
+        
+        i = 0
+        while i < len(lines):
+            line = lines[i]
+            
+            # Check for frontmatter delimiter
             if line.strip() == "---":
-                if frontmatter_start_idx == -1:
-                    frontmatter_start_idx = i
-                else:
-                    frontmatter_end_idx = i
-                    break
-
-        # Extract existing frontmatter and content
-        if frontmatter_start_idx >= 0 and frontmatter_end_idx > frontmatter_start_idx:
-            existing_frontmatter = lines[
-                frontmatter_start_idx + 1 : frontmatter_end_idx
-            ]
-            content_lines = lines[frontmatter_end_idx + 1 :]
+                if not in_frontmatter and not in_logs:
+                    # First --- - could be start of author frontmatter or logs
+                    in_frontmatter = True
+                    i += 1
+                    continue
+                elif in_frontmatter:
+                    # End of frontmatter
+                    author_frontmatter_lines = current_section.copy()
+                    current_section = []
+                    in_frontmatter = False
+                    i += 1
+                    continue
+                elif in_logs:
+                    # End of logs
+                    existing_logs = current_section.copy()
+                    current_section = []
+                    in_logs = False
+                    i += 1
+                    continue
+            
+            # Check for optimization logs start
+            if line.strip().startswith("ai_detection_analysis:") or line.strip().startswith("# Optimization Analysis"):
+                in_logs = True
+                if current_section:
+                    clean_content_lines.extend(current_section)
+                current_section = [line]
+                i += 1
+                continue
+            
+            # Collect lines based on current section
+            if in_frontmatter or in_logs:
+                current_section.append(line)
+            else:
+                clean_content_lines.append(line)
+            
+            i += 1
+        
+        # Handle any remaining content
+        if current_section and not in_frontmatter and not in_logs:
+            clean_content_lines.extend(current_section)
+        elif current_section and in_logs:
+            existing_logs.extend(current_section)
+        
+        # Clean up content lines (remove empty lines at end)
+        while clean_content_lines and clean_content_lines[-1].strip() == "":
+            clean_content_lines.pop()
+        
+        # Build the target format
+        result_lines = []
+        
+        # 1. Clean markdown content at top
+        result_lines.extend(clean_content_lines)
+        result_lines.append("")
+        
+        # 2. Basic author frontmatter in middle
+        result_lines.append("---")
+        if author_frontmatter_lines:
+            result_lines.extend(author_frontmatter_lines)
         else:
-            content_lines = lines
-
-        # Start with frontmatter delimiter
-        updated_lines.append("---")
-
-        # Add existing frontmatter first (excluding any existing ai_detection_analysis)
-        for line in existing_frontmatter:
-            if not line.strip().startswith("ai_detection_analysis"):
-                updated_lines.append(line)
-
-        # Add AI detection analysis
-        ai_lines = [
-            "ai_detection_analysis:",
-            f"  score: {ai_result.score:.6f}",
-            f"  confidence: {ai_result.confidence:.6f}",
-            f'  classification: "{ai_result.classification}"',
-            f'  provider: "{ai_result.provider}"',
-            f"  processing_time: {ai_result.processing_time:.6f}",
-        ]
-
+            # Extract author info from AI result if available
+            author_info = extract_author_info_from_content(content)
+            if author_info:
+                result_lines.append(f"author: {author_info.get('name', 'AI Assistant')}")
+                result_lines.append(f"material: {material_name}")
+                result_lines.append("component: text")
+                result_lines.append("generated: 2025-09-11")
+                result_lines.append("source: text")
+        result_lines.append("---")
+        result_lines.append("")
+        
+        # 3. AI analysis logs at bottom
+        result_lines.append("---")
+        result_lines.append("ai_detection_analysis:")
+        result_lines.append(f"  score: {ai_result.score:.6f}")
+        result_lines.append(f"  confidence: {ai_result.confidence:.6f}")
+        result_lines.append(f'  classification: "{ai_result.classification}"')
+        result_lines.append(f'  provider: "{ai_result.provider}"')
+        result_lines.append(f"  processing_time: {ai_result.processing_time:.6f}")
+        
         if ai_result.details:
-            ai_lines.append("  details:")
+            result_lines.append("  details:")
             for key, value in ai_result.details.items():
                 if isinstance(value, dict):
-                    ai_lines.append(f"    {key}:")
+                    result_lines.append(f"    {key}:")
                     for sub_key, sub_value in value.items():
-                        # Ensure proper YAML formatting for values
                         if isinstance(sub_value, str):
-                            ai_lines.append(f'      {sub_key}: "{sub_value}"')
+                            result_lines.append(f'      {sub_key}: "{sub_value}"')
                         elif isinstance(sub_value, (int, float)):
                             if isinstance(sub_value, float):
-                                ai_lines.append(f"      {sub_key}: {sub_value:.6f}")
+                                result_lines.append(f"      {sub_key}: {sub_value:.6f}")
                             else:
-                                ai_lines.append(f"      {sub_key}: {sub_value}")
+                                result_lines.append(f"      {sub_key}: {sub_value}")
                         else:
-                            ai_lines.append(f"      {sub_key}: {sub_value}")
+                            result_lines.append(f"      {sub_key}: {sub_value}")
                 else:
-                    # Ensure proper YAML formatting for values
                     if isinstance(value, str):
-                        ai_lines.append(f'    {key}: "{value}"')
+                        result_lines.append(f'    {key}: "{value}"')
                     elif isinstance(value, (int, float)):
                         if isinstance(value, float):
-                            ai_lines.append(f"    {key}: {value:.6f}")
+                            result_lines.append(f"    {key}: {value:.6f}")
                         else:
-                            ai_lines.append(f"    {key}: {value}")
+                            result_lines.append(f"    {key}: {value}")
                     else:
-                        ai_lines.append(f"    {key}: {value}")
-
-        updated_lines.extend(ai_lines)
-
-        # Add closing marker
-        updated_lines.append("---")
-        updated_lines.append("")  # Add blank line before content
-
-        # Add content
-        updated_lines.extend(content_lines)
-
-        return "\n".join(updated_lines)
+                        result_lines.append(f"    {key}: {value}")
+        
+        result_lines.append("---")
+        
+        return "\n".join(result_lines)
 
     except Exception as e:
-        print(f"⚠️ Error updating frontmatter for {material_name}: {e}")
+        print(f"⚠️ Error updating content with target format for {material_name}: {e}")
         import traceback
-
         traceback.print_exc()
         return content
 
@@ -285,96 +326,156 @@ def find_material_data(
 def update_content_with_comprehensive_analysis(
     content: str, ai_result, quality_result, material_name: str, iterations: int
 ) -> str:
-    """Update content with comprehensive analysis including quality metrics."""
+    """Update content with comprehensive analysis in the target format:
+    1. Clean markdown content at top
+    2. Basic author frontmatter in middle  
+    3. Comprehensive optimization logs at bottom
+    """
     try:
         lines = content.split("\n")
-        updated_lines = []
-
-        # Find frontmatter boundaries
-        frontmatter_start_idx = -1
-        frontmatter_end_idx = -1
-
-        for i, line in enumerate(lines):
+        
+        # Extract different sections
+        clean_content_lines = []
+        author_frontmatter_lines = []
+        
+        # Find sections in content
+        in_frontmatter = False
+        in_logs = False
+        current_section = []
+        
+        i = 0
+        while i < len(lines):
+            line = lines[i]
+            
+            # Check for frontmatter delimiter
             if line.strip() == "---":
-                if frontmatter_start_idx == -1:
-                    frontmatter_start_idx = i
-                else:
-                    frontmatter_end_idx = i
-                    break
-
-        # Extract content (everything after first ---)
-        if frontmatter_start_idx >= 0 and frontmatter_end_idx > frontmatter_start_idx:
-            content_lines = lines[frontmatter_end_idx + 1 :]
+                if not in_frontmatter and not in_logs:
+                    # First --- - could be start of author frontmatter or logs
+                    in_frontmatter = True
+                    i += 1
+                    continue
+                elif in_frontmatter:
+                    # End of frontmatter
+                    author_frontmatter_lines = current_section.copy()
+                    current_section = []
+                    in_frontmatter = False
+                    i += 1
+                    continue
+                elif in_logs:
+                    # End of logs - ignore existing logs
+                    current_section = []
+                    in_logs = False
+                    i += 1
+                    continue
+            
+            # Check for optimization logs start
+            if (line.strip().startswith("ai_detection_analysis:") or 
+                line.strip().startswith("# Optimization Analysis") or
+                line.strip().startswith("quality_analysis:")):
+                in_logs = True
+                if current_section:
+                    clean_content_lines.extend(current_section)
+                current_section = []  # Start collecting logs to ignore
+                i += 1
+                continue
+            
+            # Collect lines based on current section
+            if in_frontmatter:
+                current_section.append(line)
+            elif not in_logs:
+                clean_content_lines.append(line)
+            # Ignore lines in existing logs
+            
+            i += 1
+        
+        # Handle any remaining content
+        if current_section and not in_frontmatter and not in_logs:
+            clean_content_lines.extend(current_section)
+        
+        # Clean up content lines (remove empty lines at end)
+        while clean_content_lines and clean_content_lines[-1].strip() == "":
+            clean_content_lines.pop()
+        
+        # Build the target format
+        result_lines = []
+        
+        # 1. Clean markdown content at top
+        result_lines.extend(clean_content_lines)
+        result_lines.append("")
+        
+        # 2. Basic author frontmatter in middle
+        result_lines.append("---")
+        if author_frontmatter_lines:
+            result_lines.extend(author_frontmatter_lines)
         else:
-            content_lines = lines
-
-        # Start with frontmatter delimiter
-        updated_lines.append("---")
-
-        # Add comprehensive analysis
-        analysis_lines = [
-            "ai_detection_analysis:",
-            f"  score: {ai_result.score:.6f}",
-            f"  confidence: {ai_result.confidence:.6f}",
-            f'  classification: "{ai_result.classification}"',
-            f'  provider: "{ai_result.provider}"',
-            f"  processing_time: {ai_result.processing_time:.6f}",
-            f"  optimization_iterations: {iterations}",
-            "",
-            "quality_analysis:",
-            f"  overall_score: {quality_result.overall_score:.6f}",
-            f"  formatting_score: {quality_result.formatting_score:.6f}",
-            f"  technical_score: {quality_result.technical_score:.6f}",
-            f"  authenticity_score: {quality_result.authenticity_score:.6f}",
-            f"  readability_score: {quality_result.readability_score:.6f}",
-            f"  believability_score: {quality_result.believability_score:.6f}",
-            f"  word_count: {quality_result.details.get('word_count', 0)}",
-            f'  author_country: "{quality_result.details.get("author_country", "")}"',
-        ]
-
+            # Extract author info or use defaults
+            author_info = extract_author_info_from_content(content)
+            if author_info:
+                result_lines.append(f"author: {author_info.get('name', 'AI Assistant')}")
+            else:
+                result_lines.append("author: AI Assistant")
+            result_lines.append(f"material: {material_name}")
+            result_lines.append("component: text")
+            result_lines.append("generated: 2025-09-11")
+            result_lines.append("source: text")
+        result_lines.append("---")
+        result_lines.append("")
+        
+        # 3. Comprehensive optimization logs at bottom
+        result_lines.append("---")
+        result_lines.append("ai_detection_analysis:")
+        result_lines.append(f"  score: {ai_result.score:.6f}")
+        result_lines.append(f"  confidence: {ai_result.confidence:.6f}")
+        result_lines.append(f'  classification: "{ai_result.classification}"')
+        result_lines.append(f'  provider: "{ai_result.provider}"')
+        result_lines.append(f"  processing_time: {ai_result.processing_time:.6f}")
+        result_lines.append(f"  optimization_iterations: {iterations}")
+        result_lines.append("")
+        
+        result_lines.append("quality_analysis:")
+        result_lines.append(f"  overall_score: {quality_result.overall_score:.6f}")
+        result_lines.append(f"  formatting_score: {quality_result.formatting_score:.6f}")
+        result_lines.append(f"  technical_score: {quality_result.technical_score:.6f}")
+        result_lines.append(f"  authenticity_score: {quality_result.authenticity_score:.6f}")
+        result_lines.append(f"  readability_score: {quality_result.readability_score:.6f}")
+        result_lines.append(f"  believability_score: {quality_result.believability_score:.6f}")
+        result_lines.append(f"  word_count: {quality_result.details.get('word_count', 0)}")
+        result_lines.append(f'  author_country: "{quality_result.details.get("author_country", "")}"')
+        
+        # Add AI result details
         if ai_result.details:
-            analysis_lines.append("  details:")
+            result_lines.append("  details:")
             for key, value in ai_result.details.items():
                 if isinstance(value, dict):
-                    analysis_lines.append(f"    {key}:")
+                    result_lines.append(f"    {key}:")
                     for sub_key, sub_value in value.items():
                         if isinstance(sub_value, str):
-                            analysis_lines.append(f'      {sub_key}: "{sub_value}"')
+                            result_lines.append(f'      {sub_key}: "{sub_value}"')
                         elif isinstance(sub_value, (int, float)):
                             if isinstance(sub_value, float):
-                                analysis_lines.append(
-                                    f"      {sub_key}: {sub_value:.6f}"
-                                )
+                                result_lines.append(f"      {sub_key}: {sub_value:.6f}")
                             else:
-                                analysis_lines.append(f"      {sub_key}: {sub_value}")
+                                result_lines.append(f"      {sub_key}: {sub_value}")
                         else:
-                            analysis_lines.append(f"      {sub_key}: {sub_value}")
+                            result_lines.append(f"      {sub_key}: {sub_value}")
                 else:
                     if isinstance(value, str):
-                        analysis_lines.append(f'    {key}: "{value}"')
+                        result_lines.append(f'    {key}: "{value}"')
                     elif isinstance(value, (int, float)):
                         if isinstance(value, float):
-                            analysis_lines.append(f"    {key}: {value:.6f}")
+                            result_lines.append(f"    {key}: {value:.6f}")
                         else:
-                            analysis_lines.append(f"    {key}: {value}")
+                            result_lines.append(f"    {key}: {value}")
                     else:
-                        analysis_lines.append(f"    {key}: {value}")
-
-        updated_lines.extend(analysis_lines)
-
-        # Add closing marker
-        updated_lines.append("---")
-        updated_lines.append("")  # Add blank line before content
-
-        # Add content
-        updated_lines.extend(content_lines)
-
-        return "\n".join(updated_lines)
+                        result_lines.append(f"    {key}: {value}")
+        
+        result_lines.append("---")
+        
+        return "\n".join(result_lines)
 
     except Exception as e:
-        print(f"⚠️ Error updating comprehensive analysis for {material_name}: {e}")
+        print(f"⚠️ Error updating comprehensive analysis with target format for {material_name}: {e}")
         import traceback
-
         traceback.print_exc()
         return content
 
@@ -677,14 +778,25 @@ async def run_sophisticated_optimization(
                                         ) as f:
                                             new_content = f.read()
 
+                                        # Apply preamble removal to regenerated content
+                                        from components.text.generator import TextComponentGenerator
+                                        text_gen = TextComponentGenerator()
+                                        cleaned_content = text_gen._remove_preamble_text(new_content)
+                                        cleaned_content = text_gen._remove_existing_frontmatter(cleaned_content)
+
                                         # Update with AI analysis
                                         current_content = (
                                             update_content_with_ai_analysis(
-                                                new_content, ai_result, material_name
+                                                cleaned_content, ai_result, material_name
                                             )
                                         )
+                                        
+                                        # Save the cleaned content back to file
+                                        with open(new_content_file, "w", encoding="utf-8") as f:
+                                            f.write(current_content)
+                                        
                                         print(
-                                            "      🔄 Regenerated content with basic improvements"
+                                            "      🔄 Regenerated and cleaned content with basic improvements"
                                         )
                                         consecutive_failures = 0
                                         continue

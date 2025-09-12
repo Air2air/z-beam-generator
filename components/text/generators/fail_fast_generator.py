@@ -6,6 +6,7 @@ Basic text generation without optimization dependencies.
 
 import json
 import logging
+import os
 import sys
 import time
 from pathlib import Path
@@ -102,7 +103,28 @@ class FailFastTextGenerator:
             }
         
         # Create persona prompt
-        persona_prompt = f"""AUTHOR PROFILE:
+        # Create persona prompt with enhanced localization
+        persona_prompt = self._create_enhanced_persona_prompt(author_data)
+        
+        return persona_prompt
+
+    def _create_enhanced_persona_prompt(self, author_data: Dict[str, Any]) -> str:
+        """
+        Create enhanced persona prompt with localized characteristics.
+        
+        Args:
+            author_data: Author information dictionary
+            
+        Returns:
+            Enhanced persona prompt string
+        """
+        country = author_data['country'].lower()
+        
+        # Try to load optimizer persona and formatting if available
+        persona_content = self._load_optimizer_persona(country)
+        formatting_content = self._load_optimizer_formatting(country)
+        
+        base_prompt = f"""AUTHOR PROFILE:
 Name: {author_data['name']}
 Country: {author_data['country']}
 Expertise: {author_data['expertise']}
@@ -112,7 +134,7 @@ Gender: {author_data['sex']}
 WRITING CHARACTERISTICS:
 - Professional technical writing style
 - Focus on {author_data['expertise']} applications
-- {country.title()} English language patterns
+- {author_data['country'].title()} English language patterns
 - Technical accuracy with practical insights
 - Clear, concise explanations
 
@@ -128,8 +150,51 @@ LANGUAGE STYLE:
 - Include relevant technical terminology
 - Write in first person perspective
 - Maintain consistent voice and style"""
+
+        # Add localized persona characteristics if available
+        if persona_content:
+            base_prompt += f"\n\nLOCALIZED WRITING STYLE:\n{persona_content}"
         
-        return persona_prompt
+        # Add localized formatting preferences if available
+        if formatting_content:
+            base_prompt += f"\n\nFORMATTING PREFERENCES:\n{formatting_content}"
+        
+        return base_prompt
+
+    def _load_optimizer_persona(self, country: str) -> str:
+        """Load optimizer persona characteristics for the given country."""
+        try:
+            persona_file = f"optimizer/text_optimization/prompts/personas/{country}_persona.yaml"
+            if os.path.exists(persona_file):
+                with open(persona_file, 'r', encoding='utf-8') as f:
+                    data = yaml.safe_load(f)
+                    
+                if 'writing_style' in data and 'guidelines' in data['writing_style']:
+                    guidelines = data['writing_style']['guidelines']
+                    return '\n'.join(f"- {guideline}" for guideline in guidelines)
+        except Exception:
+            pass
+        return ""
+
+    def _load_optimizer_formatting(self, country: str) -> str:
+        """Load optimizer formatting preferences for the given country."""
+        try:
+            formatting_file = f"optimizer/text_optimization/prompts/formatting/{country}_formatting.yaml"
+            if os.path.exists(formatting_file):
+                with open(formatting_file, 'r', encoding='utf-8') as f:
+                    data = yaml.safe_load(f)
+                    
+                if 'content_constraints' in data:
+                    constraints = data['content_constraints']
+                    result = []
+                    if 'max_word_count' in constraints:
+                        result.append(f"- Maximum word count: {constraints['max_word_count']}")
+                    if 'target_range' in constraints:
+                        result.append(f"- Target word range: {constraints['target_range']}")
+                    return '\n'.join(result)
+        except Exception:
+            pass
+        return ""
 
     def _load_authors_data(self) -> list:
         """
@@ -405,6 +470,10 @@ LANGUAGE STYLE:
             sections.append(
                 f"TASK:\nWrite a comprehensive technical article about laser cleaning of {material_name}.\n\n{subject}"
             )
+        
+        # Add formatting requirements if available
+        if "formatting_requirements" in base_prompt_data:
+            sections.append(base_prompt_data["formatting_requirements"])
 
         return "\n\n".join(sections)
 

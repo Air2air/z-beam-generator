@@ -209,7 +209,12 @@ class TextComponentGenerator(APIComponentGenerator):
         frontmatter_data: Optional[Dict] = None,
     ) -> str:
         """
-        Format content with frontmatter at the bottom.
+        Format content with frontmatter, removing any preamble text before the actual content.
+
+        This removes common AI-generated preambles like:
+        - "Of course. Here is a comprehensive..."
+        - "Certainly. Here is a technical..."
+        - Any introductory text before the first substantial paragraph
 
         Args:
             content: Generated text content
@@ -218,7 +223,7 @@ class TextComponentGenerator(APIComponentGenerator):
             frontmatter_data: Frontmatter data from counterpart component
 
         Returns:
-            Formatted content with frontmatter
+            Formatted content with proper structure
         """
         import time
 
@@ -230,14 +235,169 @@ class TextComponentGenerator(APIComponentGenerator):
         else:
             raise ValueError("Author information is required for content formatting")
 
-        # Create frontmatter
-        frontmatter = f"""---
-author: {author_name}
-material: {material_name}
-component: text
-generated: {time.strftime('%Y-%m-%d')}
-source: text
----"""
+        # Clean content by removing preamble text before actual content
+        clean_content = self._remove_preamble_text(content.strip())
+        
+        # Remove any existing frontmatter from content (but preserve version logs)
+        clean_content = self._remove_existing_frontmatter(clean_content)
 
-        # Combine content with frontmatter at the bottom
-        return content + "\n\n" + frontmatter
+        # Build the formatted content
+        result_parts = []
+        
+        # Add clean content at top
+        result_parts.append(clean_content)
+        result_parts.append("")  # Empty line separator
+        
+        # Add basic author frontmatter
+        result_parts.append("---")
+        result_parts.append(f"author: {author_name}")
+        result_parts.append(f"material: {material_name}")
+        result_parts.append("component: text")
+        result_parts.append(f"generated: {time.strftime('%Y-%m-%d')}")
+        result_parts.append("source: text")
+        result_parts.append("---")
+
+        return '\n'.join(result_parts)
+
+    def _remove_preamble_text(self, content: str) -> str:
+        """
+        Remove headers, metadata, abstracts, and preambles to start directly with the main content paragraph.
+        
+        Based on user formatting preferences:
+        - Removes main headings (# Laser Cleaning of...)
+        - Removes author bylines and metadata
+        - Removes Abstract sections completely
+        - Removes preambles like "Of course. Here is..."
+        - Starts with the first substantial technical paragraph
+        
+        Args:
+            content: Raw content with headers and metadata
+            
+        Returns:
+            Content starting directly with the main technical paragraph
+        """
+        lines = content.split('\n')
+        content_start_index = -1
+        i = 0
+        
+        # First, skip all preambles, headers, metadata, and abstract sections
+        while i < len(lines):
+            line_stripped = lines[i].strip()
+            
+            # Skip empty lines
+            if not line_stripped:
+                i += 1
+                continue
+            
+            # Skip preamble phrases
+            if any(phrase in line_stripped for phrase in [
+                "Of course.", "Here is", "Here's", "Below is", "This is", "I'll provide"
+            ]):
+                i += 1
+                continue
+            
+            # Skip separators like ***
+            if line_stripped in ['***', '---', '___']:
+                i += 1
+                continue
+                
+            # Skip all headers (# and ##)
+            if line_stripped.startswith('#'):
+                # If this is an Abstract header, skip until next section
+                if 'abstract' in line_stripped.lower():
+                    i += 1
+                    # Skip all lines until we find another header or substantial content
+                    while i < len(lines):
+                        next_line = lines[i].strip()
+                        if next_line.startswith('#') and 'abstract' not in next_line.lower():
+                            break  # Found next section
+                        i += 1
+                    continue
+                else:
+                    i += 1
+                    continue
+                    
+            # Skip author/metadata lines
+            if any(pattern in line_stripped for pattern in [
+                "**Author:**", "**Material:**", "**Date:**", "**Affiliation:**", "**Expertise:**",
+                "*Generated:", "*Italy*", "*Indonesia*", "*Taiwan*", "*USA*"
+            ]):
+                i += 1
+                continue
+                
+            # This should be a substantial technical paragraph
+            # Look for paragraphs that:
+            # - Are longer than 100 characters (substantial content)
+            # - Contain periods (complete sentences)
+            # - Don't end with colons (not section labels)
+            # - Start with a capital letter or material name
+            if (len(line_stripped) > 100 and 
+                '.' in line_stripped and 
+                not line_stripped.endswith(':') and
+                (line_stripped[0].isupper() or 
+                 any(material in line_stripped[:50] for material in [
+                     'Alumina', 'Porcelain', 'Silicon Nitride', 'Aluminum', 'Steel'
+                 ]))):
+                content_start_index = i
+                break
+            
+            i += 1
+        
+        # If we found a good starting point, use it
+        if content_start_index >= 0:
+            return '\n'.join(lines[content_start_index:]).strip()
+        
+        # Fallback: remove obvious preambles and return the rest
+        for i, line in enumerate(lines):
+            line_stripped = line.strip()
+            if line_stripped and not any(pattern in line_stripped for pattern in [
+                "Of course.", "Here is", "**Author:**", "**Material:**", "# ", "## Abstract"
+            ]):
+                return '\n'.join(lines[i:]).strip()
+        
+        return content.strip()
+    
+    def _remove_existing_frontmatter(self, content: str) -> str:
+        """
+        Remove any existing frontmatter blocks from content while preserving version logs.
+        
+        Args:
+            content: Content that may contain frontmatter
+            
+        Returns:
+            Content with frontmatter removed but version logs preserved
+        """
+        lines = content.split('\n')
+        result_lines = []
+        in_frontmatter = False
+        in_version_log = False
+        
+        for line in lines:
+            stripped = line.strip()
+            
+            # Detect frontmatter boundaries
+            if stripped == '---':
+                if not in_frontmatter and not in_version_log:
+                    # Check if next lines look like frontmatter or version log
+                    in_frontmatter = True
+                    continue
+                else:
+                    # End of frontmatter or version log
+                    in_frontmatter = False
+                    in_version_log = False
+                    continue
+            
+            # Detect version logs (preserve these)
+            if stripped.startswith('Version Log -'):
+                in_version_log = True
+                result_lines.append(line)
+                continue
+                
+            # Skip frontmatter lines but preserve version log lines
+            if in_frontmatter and not in_version_log:
+                continue
+                
+            # Add all other lines
+            result_lines.append(line)
+        
+        return '\n'.join(result_lines).strip()
