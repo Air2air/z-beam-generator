@@ -120,7 +120,7 @@ base_ai_detection_guidance: |
 
 # Quality thresholds
 quality_thresholds:
-  winston_threshold: 0.3        # Maximum acceptable AI detection score
+  winston_threshold: 85.0       # Target AI detection score (higher = more human-like, less AI detectable)
   human_authenticity: 0.7       # Minimum human authenticity score
   technical_accuracy: 0.8       # Minimum technical accuracy score
   cultural_appropriateness: 0.7  # Minimum cultural adaptation score
@@ -495,7 +495,7 @@ optimization_service:
     memory_limit_mb: 512     # Memory limit in MB
     
   quality_settings:
-    winston_threshold: 0.3   # Maximum AI detection score
+    winston_threshold: 85.0   # Target AI detection score (higher = more human-like)
     min_human_authenticity: 0.7
     min_technical_accuracy: 0.8
     min_cultural_appropriateness: 0.7

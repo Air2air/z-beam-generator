@@ -146,7 +146,7 @@ Located in `components/text/prompts/modules/`:
 #### 3. Detection Avoidance (`detection_avoidance.yaml`)
 - **Purpose**: AI detection mitigation strategies
 - **Features**: Variability patterns, human inconsistencies, natural flow disruptions
-- **Integration**: Applied when AI detection scores are too high
+- **Integration**: Applied when AI detection scores are too low (content appears too AI-generated)
 
 #### 4. Human Characteristics (`human_characteristics.yaml`)
 - **Purpose**: Human writing traits and behaviors

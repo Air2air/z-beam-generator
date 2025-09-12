@@ -19,6 +19,24 @@ from optimizer.services.iterative_workflow.service import (
     IterativeWorkflowService,
     WorkflowConfiguration,
 )
+from utils.ai_detection_logger import (
+    AIDetectionIterationLogger,
+    extract_key_failing_patterns
+)
+
+import asyncio
+import logging
+from dataclasses import dataclass
+from datetime import datetime
+from typing import Any, Callable, Dict, Optional
+
+from optimizer.service_initializer import initialize_optimizer_services
+from optimizer.services import ServiceConfiguration
+from optimizer.services.ai_detection_optimization import AIDetectionOptimizationService
+from optimizer.services.iterative_workflow.service import (
+    IterativeWorkflowService,
+    WorkflowConfiguration,
+)
 from optimizer.services.service_registry import service_registry
 
 logger = logging.getLogger(__name__)
@@ -138,6 +156,7 @@ class ContentOptimizationOrchestrator:
         material_name: str,
         config: Optional[OptimizationConfig] = None,
         iteration_function: Optional[Callable] = None,
+        enable_iteration_logging: bool = True,
         **kwargs,
     ) -> OptimizationResult:
         """
@@ -148,10 +167,11 @@ class ContentOptimizationOrchestrator:
             material_name: Name of the material for context
             config: Optimization configuration
             iteration_function: Custom iteration function (optional)
+            enable_iteration_logging: Whether to use compact iteration logging
             **kwargs: Additional parameters for iteration function
 
         Returns:
-            OptimizationResult: Optimization results
+            OptimizationResult: Optimization results with optional iteration logger
         """
         if config is None:
             config = OptimizationConfig()
@@ -159,12 +179,35 @@ class ContentOptimizationOrchestrator:
         start_time = datetime.now()
         workflow_id = f"optimization_{material_name}_{int(start_time.timestamp())}"
 
+        # Initialize iteration logger if enabled
+        iteration_logger = AIDetectionIterationLogger() if enable_iteration_logging else None
+
         # Get initial score
         try:
             initial_result = await self.ai_service.detect_ai_content(content)
             initial_score = (
                 initial_result.score if hasattr(initial_result, "score") else 50.0
             )
+            
+            # Log initial iteration if logger enabled
+            if iteration_logger:
+                # Extract failing patterns from initial result
+                key_patterns = {}
+                if hasattr(initial_result, 'details') and initial_result.details:
+                    key_patterns = extract_key_failing_patterns(initial_result.details)
+                
+                iteration_logger.log_iteration(
+                    iteration=0,  # Initial state
+                    score=initial_score,
+                    classification=getattr(initial_result, 'classification', 'unknown'),
+                    confidence=getattr(initial_result, 'confidence', 0.0),
+                    provider=getattr(initial_result, 'provider', 'winston'),
+                    processing_time=getattr(initial_result, 'processing_time', 0.0),
+                    failing_sentences_count=initial_result.details.get('failing_sentences_count', 0) if hasattr(initial_result, 'details') and initial_result.details else 0,
+                    failing_sentences_percentage=initial_result.details.get('failing_sentences_percentage', 0.0) if hasattr(initial_result, 'details') and initial_result.details else 0.0,
+                    key_failing_patterns=key_patterns
+                )
+                
         except Exception as e:
             logger.warning(f"Could not get initial AI score: {e}")
             initial_score = 50.0
@@ -191,6 +234,7 @@ class ContentOptimizationOrchestrator:
             "material_name": material_name,
             "ai_service": self.ai_service,
             "config": config,
+            "iteration_logger": iteration_logger,
             "kwargs": kwargs,
         }
 
@@ -228,6 +272,7 @@ class ContentOptimizationOrchestrator:
             metadata={
                 "workflow_id": workflow_id,
                 "exit_reason": workflow_result.exit_reason,
+                "iteration_logger": iteration_logger,  # Include the iteration logger
                 "iterations": [
                     {
                         "number": it.iteration_number,

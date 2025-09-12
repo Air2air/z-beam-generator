@@ -187,7 +187,7 @@ workflow_config = ServiceConfiguration(
 from optimizer.optimization_orchestrator import OptimizationConfig
 
 config = OptimizationConfig(
-    target_score=75.0,        # Target AI detection score
+    target_score=75.0,        # Target AI detection score (higher = more human-like)
     max_iterations=5,         # Maximum optimization attempts
     improvement_threshold=3.0, # Minimum improvement per iteration
     time_limit_seconds=None,   # No time limit

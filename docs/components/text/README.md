@@ -97,7 +97,7 @@ class TextComponentGenerator(ComponentGenerator):
             # Start status tracking
             self.status_tracker.start_generation(
                 material_name=self.material_name,
-                target_score=self.config.get('target_score', 70.0),
+                target_score=self.config.get('target_score', 85.0),
                 max_iterations=self.config.get('max_iterations', 5)
             )
 
@@ -147,11 +147,11 @@ class TextComponentGenerator(ComponentGenerator):
             if score > best_score:
                 best_score = score
                 # Only improve if score is below target
-                if score < self.config.get('target_score', 70.0):
+                if score < self.config.get('target_score', 85.0):
                     best_content = self._improve_content(best_content, score, material_data)
 
             # Check if target reached
-            if score >= self.config.get('target_score', 70.0):
+            if score >= self.config.get('target_score', 85.0):
                 break
 
         return best_content
@@ -173,8 +173,8 @@ class TextComponentGenerator(ComponentGenerator):
         """Create improvement prompt based on current score"""
         return f"""
         Current AI detection score: {score}
-
-        Please improve this technical content to achieve a higher AI detection score
+        Target: {self.config.get('target_score', 85.0)} (higher = more human-like)
+        Please improve this technical content to achieve a higher AI detection score (less detectable as AI)
         while maintaining technical accuracy and professional tone.
 
         Focus areas for improvement:
@@ -188,7 +188,7 @@ class TextComponentGenerator(ComponentGenerator):
         """Load AI detection configuration"""
         # Implementation would load from config/ai_detection.yaml
         return {
-            'target_score': 70.0,
+            'target_score': 85.0,
             'max_iterations': 5,
             'improvement_threshold': 3.0
         }
@@ -335,7 +335,7 @@ def log_generation_status(self, material: str, iteration: int,
         "iteration": iteration,
         "current_score": score,
         "elapsed_time": elapsed,
-        "target_score": self.config.get('target_score', 70.0),
+        "target_score": self.config.get('target_score', 85.0),
         "timestamp": time.time()
     }
 

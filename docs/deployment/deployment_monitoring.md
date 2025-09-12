@@ -15,8 +15,13 @@ This document provides comprehensive blueprints for deploying and monitoring the
 - **AWS/GCP/Azure** cloud provider support
 - **Load balancing** and auto-scaling
 - **Database** for configuration and caching
-- **CDN** for static asset delivery
-
+- **CDN** for static asset de        expr: histogram_quantile(0.5, rate(z_beam_ai_detection_score_bucket[10m])) < 70
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Low AI detection scores detected"
+          description: "Median AI detection score is below 70 (content appears too AI-generated)."
 ### **Monitoring Stack**
 - **Prometheus** for metrics collection
 - **Grafana** for visualization

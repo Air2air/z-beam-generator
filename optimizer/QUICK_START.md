@@ -39,7 +39,7 @@ async def main():
     result = await optimize_content_simple(
         content=content,
         material_name="silicon_nitride",
-        target_score=75.0  # Target AI detection score
+        target_score=75.0  # Target AI detection score (higher = more human-like)
     )
 
     if result.success:
@@ -160,7 +160,7 @@ from optimizer.optimization_orchestrator import OptimizationConfig
 
 # Simple configuration
 config = OptimizationConfig(
-    target_score=75.0,    # Target AI detection score
+    target_score=75.0,    # Target AI detection score (higher = more human-like)
     max_iterations=5,     # Maximum attempts
 )
 

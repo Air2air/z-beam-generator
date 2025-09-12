@@ -397,8 +397,8 @@ For current system status and capabilities, refer to:
 - **Total per material**: ~3-5 minutes with iterative improvement
 
 ### AI Detection Scores
-- **Target Score**: ≥70.0 (human-like content)
-- **Typical Range**: 60.0-96.2
+- **Target Score**: ≥85.0 (human-like content, low AI detectability)
+- **Current Results**: Alumina: 16.8, Aluminum: 32.48 (both need improvement to appear more human)
 - **Improvement Tracking**: Full iteration history in frontmatter
 
 ## 🧪 Testing Framework
@@ -429,7 +429,7 @@ WINSTON_API_KEY=your_winston_key_here
 # config/ai_detection.yaml
 provider: winston
 enabled: true
-target_score: 70.0
+target_score: 85.0
 max_iterations: 5
 improvement_threshold: 3.0
 ```

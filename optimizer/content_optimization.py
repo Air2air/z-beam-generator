@@ -12,6 +12,13 @@ import logging
 from pathlib import Path
 from typing import Any, Dict, Optional
 
+# Import the new AI detection iteration logger
+from utils.ai_detection_logger import (
+    AIDetectionIterationLogger, 
+    extract_key_failing_patterns,
+    update_content_with_iteration_log
+)
+
 logger = logging.getLogger(__name__)
 
 
@@ -324,12 +331,22 @@ def find_material_data(
 
 
 def update_content_with_comprehensive_analysis(
-    content: str, ai_result, quality_result, material_name: str, iterations: int
+    content: str, ai_result, quality_result, material_name: str, iterations: int,
+    iteration_logger: Optional[AIDetectionIterationLogger] = None
 ) -> str:
     """Update content with comprehensive analysis in the target format:
     1. Clean markdown content at top
     2. Basic author frontmatter in middle  
-    3. Comprehensive optimization logs at bottom
+    3. Compact optimization iteration logs at bottom (if iteration_logger provided)
+    4. Quality analysis summary
+    
+    Args:
+        content: Original content to update
+        ai_result: AI detection analysis result
+        quality_result: Quality analysis result  
+        material_name: Material name for frontmatter
+        iterations: Number of optimization iterations
+        iteration_logger: Optional iteration logger for compact AI detection tracking
     """
     try:
         lines = content.split("\n")
@@ -421,53 +438,61 @@ def update_content_with_comprehensive_analysis(
         result_lines.append("---")
         result_lines.append("")
         
-        # 3. Comprehensive optimization logs at bottom
-        result_lines.append("---")
-        result_lines.append("ai_detection_analysis:")
-        result_lines.append(f"  score: {ai_result.score:.6f}")
-        result_lines.append(f"  confidence: {ai_result.confidence:.6f}")
-        result_lines.append(f'  classification: "{ai_result.classification}"')
-        result_lines.append(f'  provider: "{ai_result.provider}"')
-        result_lines.append(f"  processing_time: {ai_result.processing_time:.6f}")
-        result_lines.append(f"  optimization_iterations: {iterations}")
-        result_lines.append("")
-        
+        # 3. Use compact iteration logging if available, otherwise fallback to traditional
+        if iteration_logger and iteration_logger.iteration_history:
+            # Use compact iteration logging
+            result_lines.append("---")
+            compact_log = iteration_logger.format_compact_log(include_details=True)
+            result_lines.extend(compact_log.split('\n'))
+            result_lines.append("")
+        else:
+            # Fallback to traditional AI detection analysis (simplified)
+            result_lines.append("---")
+            result_lines.append("ai_detection_analysis:")
+            result_lines.append(f"  score: {ai_result.score:.2f}")
+            result_lines.append(f"  confidence: {ai_result.confidence:.4f}")
+            result_lines.append(f'  classification: "{ai_result.classification}"')
+            result_lines.append(f'  provider: "{ai_result.provider}"')
+            result_lines.append(f"  processing_time: {ai_result.processing_time:.3f}")
+            result_lines.append(f"  optimization_iterations: {iterations}")
+            result_lines.append("")
+
+        # 4. Quality analysis (streamlined)
         result_lines.append("quality_analysis:")
-        result_lines.append(f"  overall_score: {quality_result.overall_score:.6f}")
-        result_lines.append(f"  formatting_score: {quality_result.formatting_score:.6f}")
-        result_lines.append(f"  technical_score: {quality_result.technical_score:.6f}")
-        result_lines.append(f"  authenticity_score: {quality_result.authenticity_score:.6f}")
-        result_lines.append(f"  readability_score: {quality_result.readability_score:.6f}")
-        result_lines.append(f"  believability_score: {quality_result.believability_score:.6f}")
+        result_lines.append(f"  overall_score: {quality_result.overall_score:.2f}")
+        result_lines.append(f"  formatting_score: {quality_result.formatting_score:.2f}")
+        result_lines.append(f"  technical_score: {quality_result.technical_score:.2f}")
+        result_lines.append(f"  authenticity_score: {quality_result.authenticity_score:.2f}")
+        result_lines.append(f"  readability_score: {quality_result.readability_score:.2f}")
+        result_lines.append(f"  believability_score: {quality_result.believability_score:.2f}")
         result_lines.append(f"  word_count: {quality_result.details.get('word_count', 0)}")
         result_lines.append(f'  author_country: "{quality_result.details.get("author_country", "")}"')
         
-        # Add AI result details
+        # Add minimal AI result details (no massive sentence arrays)
         if ai_result.details:
-            result_lines.append("  details:")
+            result_lines.append("  summary:")
+            # Only include high-level metrics, not sentence arrays
             for key, value in ai_result.details.items():
-                if isinstance(value, dict):
-                    result_lines.append(f"    {key}:")
-                    for sub_key, sub_value in value.items():
-                        if isinstance(sub_value, str):
-                            result_lines.append(f'      {sub_key}: "{sub_value}"')
-                        elif isinstance(sub_value, (int, float)):
-                            if isinstance(sub_value, float):
-                                result_lines.append(f"      {sub_key}: {sub_value:.6f}")
-                            else:
-                                result_lines.append(f"      {sub_key}: {sub_value}")
-                        else:
-                            result_lines.append(f"      {sub_key}: {sub_value}")
-                else:
-                    if isinstance(value, str):
-                        result_lines.append(f'    {key}: "{value}"')
-                    elif isinstance(value, (int, float)):
-                        if isinstance(value, float):
-                            result_lines.append(f"    {key}: {value:.6f}")
-                        else:
-                            result_lines.append(f"    {key}: {value}")
+                if key == "sentences":
+                    # Skip the massive sentence array completely
+                    continue
+                elif key in ["failing_sentences_count", "failing_sentences_percentage"]:
+                    if isinstance(value, float):
+                        result_lines.append(f"    {key}: {value:.1f}")
                     else:
                         result_lines.append(f"    {key}: {value}")
+                elif key == "failing_patterns":
+                    # Include only essential pattern metrics
+                    if isinstance(value, dict):
+                        essential_patterns = extract_key_failing_patterns({"failing_patterns": value})
+                        if essential_patterns:
+                            result_lines.append(f"    key_patterns:")
+                            for pattern_key, pattern_value in essential_patterns.items():
+                                result_lines.append(f"      {pattern_key}: {pattern_value}")
+                elif isinstance(value, (str, int, bool)):
+                    result_lines.append(f"    {key}: {value}")
+                elif isinstance(value, float):
+                    result_lines.append(f"    {key}: {value:.3f}")
         
         result_lines.append("---")
         
