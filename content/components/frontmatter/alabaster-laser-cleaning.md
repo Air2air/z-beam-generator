@@ -1,11 +1,12 @@
 ---
-Version Log - Generated: 2025-09-10 18:47:29.643807
-Material: Alabaster
-Component: frontmatter
-Generator: Z-Beam v2.1.0
 Author: AI Assistant
-Platform: Darwin (3.12.4)
+Component: frontmatter
 File: content/components/frontmatter/alabaster-laser-cleaning.md
+Generator: Z-Beam v2.1.0
+Material: Alabaster
+Platform: Darwin (3.12.4)
+Version Log - Generated: 2025-09-10 18:47:29.643807
+author: Yi-Chun Lin
 ---
 
 # Version Information

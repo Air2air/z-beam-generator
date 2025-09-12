@@ -1,11 +1,12 @@
 ---
-Version Log - Generated: 2025-09-10 18:40:39.856741
-Material: Tantalum
-Component: frontmatter
-Generator: Z-Beam v2.1.0
 Author: AI Assistant
-Platform: Darwin (3.12.4)
+Component: frontmatter
 File: content/components/frontmatter/tantalum-laser-cleaning.md
+Generator: Z-Beam v2.1.0
+Material: Tantalum
+Platform: Darwin (3.12.4)
+Version Log - Generated: 2025-09-10 18:40:39.856741
+author: Alessandro Moretti
 ---
 
 # Version Information

@@ -1,11 +1,12 @@
 ---
-Version Log - Generated: 2025-09-10 19:08:19.241976
-Material: Pine
-Component: frontmatter
-Generator: Z-Beam v2.1.0
 Author: AI Assistant
-Platform: Darwin (3.12.4)
+Component: frontmatter
 File: content/components/frontmatter/pine-laser-cleaning.md
+Generator: Z-Beam v2.1.0
+Material: Pine
+Platform: Darwin (3.12.4)
+Version Log - Generated: 2025-09-10 19:08:19.241976
+author: Yi-Chun Lin
 ---
 
 # Version Information

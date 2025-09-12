@@ -1,11 +1,12 @@
 ---
-Version Log - Generated: 2025-09-10 18:42:29.718086
-Material: Tungsten
-Component: frontmatter
-Generator: Z-Beam v2.1.0
 Author: AI Assistant
-Platform: Darwin (3.12.4)
+Component: frontmatter
 File: content/components/frontmatter/tungsten-laser-cleaning.md
+Generator: Z-Beam v2.1.0
+Material: Tungsten
+Platform: Darwin (3.12.4)
+Version Log - Generated: 2025-09-10 18:42:29.718086
+author: Alessandro Moretti
 ---
 
 # Version Information

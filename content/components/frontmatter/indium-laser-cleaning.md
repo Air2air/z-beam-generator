@@ -1,11 +1,12 @@
 ---
-Version Log - Generated: 2025-09-10 18:31:09.739215
-Material: Indium
-Component: frontmatter
-Generator: Z-Beam v2.1.0
 Author: AI Assistant
-Platform: Darwin (3.12.4)
+Component: frontmatter
 File: content/components/frontmatter/indium-laser-cleaning.md
+Generator: Z-Beam v2.1.0
+Material: Indium
+Platform: Darwin (3.12.4)
+Version Log - Generated: 2025-09-10 18:31:09.739215
+author: Todd Dunning
 ---
 
 # Version Information

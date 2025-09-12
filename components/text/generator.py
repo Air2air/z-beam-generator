@@ -10,6 +10,7 @@ import logging
 from typing import Dict, Optional, Any
 
 from generators.component_generators import APIComponentGenerator, ComponentResult
+from components.text.localization import validate_localization_support
 
 logger = logging.getLogger(__name__)
 
@@ -146,6 +147,13 @@ class TextComponentGenerator(APIComponentGenerator):
             if not author_info:
                 raise ValueError("Author information is required for text generation")
 
+            # CRITICAL: Validate localization support before generation
+            author_country = author_info.get('country', 'USA')
+            if not validate_localization_support(author_country):
+                error_msg = f"Localization not supported for country '{author_country}'. Localization is mandatory for all text generation."
+                logger.error(f"❌ {error_msg}")
+                raise ValueError(error_msg)
+
             # Use frontmatter_data as primary source, fall back to material_data
             primary_data = frontmatter_data if frontmatter_data else material_data
 
@@ -227,11 +235,12 @@ class TextComponentGenerator(APIComponentGenerator):
         """
         import time
 
-        # Extract author information from frontmatter data if available
-        if frontmatter_data and "author" in frontmatter_data:
-            author_name = frontmatter_data["author"]
-        elif author_info and "name" in author_info:
+        # Extract author information - prioritize author_info over frontmatter  
+        # This ensures the correct author is used even if frontmatter has old data
+        if author_info and "name" in author_info:
             author_name = author_info["name"]
+        elif frontmatter_data and "author" in frontmatter_data:
+            author_name = frontmatter_data["author"]
         else:
             raise ValueError("Author information is required for content formatting")
 

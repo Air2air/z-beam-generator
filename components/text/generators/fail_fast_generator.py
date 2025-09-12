@@ -15,6 +15,7 @@ from typing import Any, Dict, List, Optional, Tuple
 import yaml
 
 from api.client import GenerationRequest
+from components.text.localization import get_required_localization_prompt
 
 logger = logging.getLogger(__name__)
 
@@ -73,129 +74,6 @@ class FailFastTextGenerator:
         # Validate configurations on initialization
         self._validate_configurations()
 
-    def _load_persona_prompt(self, author_info: Dict[str, Any]) -> str:
-        """
-        Load persona-specific prompt for an author.
-        
-        Args:
-            author_info: Author information dictionary with 'id' and 'country'
-            
-        Returns:
-            Persona prompt string
-        """
-        author_id = author_info.get('id', 1)
-        country = author_info.get('country', 'usa').lower()
-        
-        # Get author data
-        authors_data = self._load_authors_data()
-        author_data = None
-        
-        for author in authors_data:
-            if author['id'] == author_id:
-                author_data = author
-                break
-        
-        if not author_data:
-            # Fallback to first author
-            author_data = authors_data[0] if authors_data else {
-                'id': 1, 'name': 'Test Author', 'country': 'USA', 
-                'expertise': 'Lasers', 'title': 'Engineer', 'sex': 'M'
-            }
-        
-        # Create persona prompt
-        # Create persona prompt with enhanced localization
-        persona_prompt = self._create_enhanced_persona_prompt(author_data)
-        
-        return persona_prompt
-
-    def _create_enhanced_persona_prompt(self, author_data: Dict[str, Any]) -> str:
-        """
-        Create enhanced persona prompt with localized characteristics.
-        
-        Args:
-            author_data: Author information dictionary
-            
-        Returns:
-            Enhanced persona prompt string
-        """
-        country = author_data['country'].lower()
-        
-        # Try to load optimizer persona and formatting if available
-        persona_content = self._load_optimizer_persona(country)
-        formatting_content = self._load_optimizer_formatting(country)
-        
-        base_prompt = f"""AUTHOR PROFILE:
-Name: {author_data['name']}
-Country: {author_data['country']}
-Expertise: {author_data['expertise']}
-Title: {author_data['title']}
-Gender: {author_data['sex']}
-
-WRITING CHARACTERISTICS:
-- Professional technical writing style
-- Focus on {author_data['expertise']} applications
-- {author_data['country'].title()} English language patterns
-- Technical accuracy with practical insights
-- Clear, concise explanations
-
-CONTENT REQUIREMENTS:
-- Write as {author_data['name']}, {author_data['title']} from {author_data['country']}
-- Use terminology appropriate for {author_data['expertise']} field
-- Include practical examples and applications
-- Maintain professional tone throughout
-- Ensure technical accuracy
-
-LANGUAGE STYLE:
-- Use {country.title()} English conventions
-- Include relevant technical terminology
-- Write in first person perspective
-- Maintain consistent voice and style"""
-
-        # Add localized persona characteristics if available
-        if persona_content:
-            base_prompt += f"\n\nLOCALIZED WRITING STYLE:\n{persona_content}"
-        
-        # Add localized formatting preferences if available
-        if formatting_content:
-            base_prompt += f"\n\nFORMATTING PREFERENCES:\n{formatting_content}"
-        
-        return base_prompt
-
-    def _load_optimizer_persona(self, country: str) -> str:
-        """Load optimizer persona characteristics for the given country."""
-        try:
-            persona_file = f"optimizer/text_optimization/prompts/personas/{country}_persona.yaml"
-            if os.path.exists(persona_file):
-                with open(persona_file, 'r', encoding='utf-8') as f:
-                    data = yaml.safe_load(f)
-                    
-                if 'writing_style' in data and 'guidelines' in data['writing_style']:
-                    guidelines = data['writing_style']['guidelines']
-                    return '\n'.join(f"- {guideline}" for guideline in guidelines)
-        except Exception:
-            pass
-        return ""
-
-    def _load_optimizer_formatting(self, country: str) -> str:
-        """Load optimizer formatting preferences for the given country."""
-        try:
-            formatting_file = f"optimizer/text_optimization/prompts/formatting/{country}_formatting.yaml"
-            if os.path.exists(formatting_file):
-                with open(formatting_file, 'r', encoding='utf-8') as f:
-                    data = yaml.safe_load(f)
-                    
-                if 'content_constraints' in data:
-                    constraints = data['content_constraints']
-                    result = []
-                    if 'max_word_count' in constraints:
-                        result.append(f"- Maximum word count: {constraints['max_word_count']}")
-                    if 'target_range' in constraints:
-                        result.append(f"- Target word range: {constraints['target_range']}")
-                    return '\n'.join(result)
-        except Exception:
-            pass
-        return ""
-
     def _load_authors_data(self) -> list:
         """
         Load authors data from authors.json.
@@ -203,12 +81,22 @@ LANGUAGE STYLE:
         Returns:
             List of author dictionaries
         """
-        # Simple mock implementation for testing
+        try:
+            authors_file = "components/author/authors.json"
+            if os.path.exists(authors_file):
+                with open(authors_file, 'r', encoding='utf-8') as f:
+                    data = json.load(f)
+                    if 'authors' in data:
+                        return data['authors']
+        except Exception as e:
+            print(f"Warning: Could not load authors data: {e}")
+        
+        # Fallback to mock data if file doesn't exist
         return [
-            {"id": 1, "name": "Test Author 1", "country": "USA", "expertise": "Lasers", "title": "Engineer", "sex": "M"},
-            {"id": 2, "name": "Test Author 2", "country": "Italy", "expertise": "Materials", "title": "Professor", "sex": "F"},
-            {"id": 3, "name": "Test Author 3", "country": "Taiwan", "expertise": "Physics", "title": "Researcher", "sex": "M"},
-            {"id": 4, "name": "Test Author 4", "country": "Indonesia", "expertise": "Chemistry", "title": "Scientist", "sex": "F"}
+            {"id": 1, "name": "Yi-Chun Lin", "country": "Taiwan", "expertise": "Laser Materials Processing", "title": "Ph.D.", "sex": "f"},
+            {"id": 2, "name": "Alessandro Moretti", "country": "Italy", "expertise": "Laser-Based Additive Manufacturing", "title": "Ph.D.", "sex": "m"},
+            {"id": 3, "name": "Ikmanda Roswati", "country": "Indonesia", "expertise": "Ultrafast Laser Physics and Material Interactions", "title": "Ph.D.", "sex": "m"},
+            {"id": 4, "name": "Todd Dunning", "country": "United States", "expertise": "Optical Materials for Laser Systems", "title": "MA", "sex": "m"}
         ]
 
     def _validate_configurations(self):
@@ -414,8 +302,20 @@ LANGUAGE STYLE:
         Returns:
             Complete prompt string
         """
+        # CRITICAL: Add mandatory localization chain FIRST
+        try:
+            localization_prompt = get_required_localization_prompt(author_info)
+        except Exception as e:
+            from utils.loud_errors import validation_failure
+            validation_failure(
+                "fail_fast_generator",
+                f"Failed to load required localization prompts: {e}",
+                field="localization"
+            )
+            raise ValueError(f"Localization prompts are mandatory: {e}")
+
         # Build prompt sections
-        sections = []
+        sections = [localization_prompt]  # Localization MUST be first
 
         # Add author information
         author_name = author_info.get("name")

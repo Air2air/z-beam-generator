@@ -1,11 +1,12 @@
 ---
-Version Log - Generated: 2025-09-10 18:43:43.239484
-Material: Zinc
-Component: frontmatter
-Generator: Z-Beam v2.1.0
 Author: AI Assistant
-Platform: Darwin (3.12.4)
+Component: frontmatter
 File: content/components/frontmatter/zinc-laser-cleaning.md
+Generator: Z-Beam v2.1.0
+Material: Zinc
+Platform: Darwin (3.12.4)
+Version Log - Generated: 2025-09-10 18:43:43.239484
+author: Ikmanda Roswati
 ---
 
 # Version Information
