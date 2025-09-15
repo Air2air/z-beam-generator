@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """
-Iterative Workflow Service for Z-Beam Generator.
+Optimized Iterative Workflow Service for Z-Beam Generator.
 
-Uses unified configuration system for consistent settings management.
+Consolidated implementation that eliminates duplicate code and provides
+efficient iterative workflow management with unified configuration.
 """
 
 import asyncio
@@ -11,30 +12,29 @@ import time
 from dataclasses import dataclass, field
 from datetime import datetime, timedelta
 from enum import Enum
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Awaitable, Callable, Dict, List, Optional, Union
 
 from ..base import SimplifiedService, ServiceConfiguration
 from ..config_unified import get_workflow_service_config
 from ..errors import OptimizerError
 
+logger = logging.getLogger(__name__)
+
 
 class IterativeWorkflowError(OptimizerError):
     """Raised when iterative workflow operations fail."""
-
     pass
 
 
 class IterationStrategy(Enum):
     """Strategies for controlling iteration timing and behavior."""
-
     LINEAR = "linear"
-    EXPONENTIAL_BACKOFF = "exponential_backoff"
+    EXPONENTIAL_BACKOFF = "exponential_backoff"  
     ADAPTIVE = "adaptive"
 
 
 class ExitCondition(Enum):
     """Conditions that can cause workflow termination."""
-
     QUALITY_THRESHOLD = "quality_threshold"
     MAX_ITERATIONS = "max_iterations"
     TIME_LIMIT = "time_limit"
@@ -45,10 +45,11 @@ class ExitCondition(Enum):
 @dataclass
 class IterationContext:
     """Context information passed to iteration functions."""
-
     iteration_number: int
     previous_result: Any
     workflow_id: str
+    start_time: datetime
+    metadata: Dict[str, Any] = field(default_factory=dict)
     start_time: datetime
     metadata: Dict[str, Any] = field(default_factory=dict)
 

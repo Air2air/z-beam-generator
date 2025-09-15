@@ -1,0 +1,129 @@
+{
+  "created_at": "2025-09-14T22:50:00.000000",
+  "total_optimizations": 3,
+  "materials": {
+    "copper": {
+      "attempts": [
+        {
+          "timestamp": "2025-09-14T22:53:53.473771",
+          "initial_score": 14.14,
+          "final_score": 32.0,
+          "improvement": 17.86,
+          "enhancement_flags": {
+            "reduce_persona_intensity": true,
+            "professional_tone": true,
+            "reduce_casual_language": true,
+            "technical_precision": true,
+            "vary_sentence_structure": true
+          },
+          "success": true,
+          "details": {
+            "content_length": 2303,
+            "enhancement_count": 5,
+            "optimization_timestamp": "2025-09-14T22:53:53.473760"
+          }
+        }
+      ],
+      "best_score": 32.0
+    },
+    "steel": {
+      "attempts": [
+        {
+          "timestamp": "2025-09-14T22:55:53.704741",
+          "initial_score": 99.88,
+          "final_score": 36.0,
+          "improvement": -63.879999999999995,
+          "enhancement_flags": {
+            "technical_precision": true,
+            "vary_sentence_structure": true
+          },
+          "success": false,
+          "details": {
+            "content_length": 2319,
+            "enhancement_count": 2,
+            "optimization_timestamp": "2025-09-14T22:55:53.704730"
+          }
+        }
+      ],
+      "best_score": 99.88
+    },
+    "aluminum": {
+      "attempts": [
+        {
+          "timestamp": "2025-09-14T23:04:22.364003",
+          "initial_score": 99.54,
+          "final_score": 28.0,
+          "improvement": -71.54,
+          "enhancement_flags": {
+            "technical_precision": true,
+            "vary_sentence_structure": true
+          },
+          "success": false,
+          "details": {
+            "content_length": 2480,
+            "enhancement_count": 2,
+            "optimization_timestamp": "2025-09-14T23:04:22.362764",
+            "char_change": -2775,
+            "expected_improvement": 26.86,
+            "performance_ratio": -266.3,
+            "decision": "REJECT"
+          }
+        }
+      ],
+      "best_score": 99.54
+    }
+  },
+  "proven_strategies": {
+    "reduce_persona_intensity": {
+      "priority": 1,
+      "avg_improvement": 17.93,
+      "description": "Reduces casual language and overly enthusiastic tone",
+      "success_rate": 0.85
+    },
+    "professional_tone": {
+      "priority": 2,
+      "avg_improvement": 16.43,
+      "description": "Applies professional, technical writing style",
+      "success_rate": 0.8
+    },
+    "reduce_casual_language": {
+      "priority": 3,
+      "avg_improvement": 14.93,
+      "description": "Eliminates casual words like 'like', 'totally', 'rad'",
+      "success_rate": 0.75
+    },
+    "technical_precision": {
+      "priority": 4,
+      "avg_improvement": 13.93,
+      "description": "Increases technical accuracy and precision",
+      "success_rate": 0.7
+    },
+    "vary_sentence_structure": {
+      "priority": 5,
+      "avg_improvement": 12.93,
+      "description": "Varies sentence length and structure patterns",
+      "success_rate": 0.65
+    },
+    "formal_transitions": {
+      "priority": 6,
+      "avg_improvement": 6.0,
+      "description": "Uses formal transitions between ideas",
+      "success_rate": 0.6
+    }
+  },
+  "learning_insights": {
+    "copper_specific": {
+      "common_issues": [
+        "Excessive casual language (like, totally, rad, dude)",
+        "Overly enthusiastic tone (awesome, epic, wild)",
+        "Repetitive sentence patterns",
+        "High AI detection due to informal style"
+      ],
+      "effective_strategies": [
+        "reduce_persona_intensity",
+        "professional_tone",
+        "reduce_casual_language"
+      ]
+    }
+  }
+}

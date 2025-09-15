@@ -1,5 +1,174 @@
 #!/usr/bin/env python3
 """
+Compact Forensic Logging for Smart Optimizer
+
+Captures essential investigative trails without verbose text samples.
+Focus: Flag impacts, metrics, decisions, and learning outcomes.
+"""
+
+import asyncio
+import json
+import logging
+from datetime import datetime
+from pathlib import Path
+from smart_optimize import ContentOptimizer, LearningDatabase
+
+# Configure compact logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger(__name__)
+
+class CompactForensicOptimizer(ContentOptimizer):
+    """Smart optimizer with compact forensic logging."""
+    
+    def __init__(self):
+        super().__init__()
+        self.session_id = datetime.now().strftime("%Y%m%d_%H%M%S")
+    
+    async def optimize_with_compact_logging(self, material: str):
+        """Run optimization with compact investigative logging."""
+        
+        logger.info(f"🔍 FORENSIC SESSION {self.session_id} - Material: {material}")
+        
+        # Find and process content file
+        content_dir = Path("content/components/text")
+        content_files = list(content_dir.glob(f"*{material}*.md"))
+        
+        if not content_files:
+            logger.error(f"❌ No content files found for: {material}")
+            return {"success": False, "error": "No content files found"}
+        
+        content_file = content_files[0]
+        content = content_file.read_text()
+        current_score = self._extract_ai_score(content)
+        
+        if current_score is None:
+            logger.error(f"❌ Cannot extract AI score from {content_file.name}")
+            return {"success": False, "error": "No AI score found"}
+        
+        # COMPACT FORENSIC LOG: Initial State
+        logger.info(f"📊 INITIAL: Score={current_score:.1f}, Chars={len(content)}, File={content_file.name}")
+        
+        # Get strategy and analyze flags
+        strategy = self.learning_db.get_smart_strategy(material, current_score)
+        enhancement_flags = strategy["enhancement_flags"]
+        
+        # COMPACT FORENSIC LOG: Strategy Selection
+        flag_names = list(enhancement_flags.keys()) if isinstance(enhancement_flags, dict) else enhancement_flags
+        expected_improvement = sum(
+            self.learning_db.proven_strategies.get(flag, {}).get("avg_improvement", 0)
+            for flag in flag_names
+        )
+        
+        logger.info(f"🎯 STRATEGY: Flags={len(flag_names)}, Expected=+{expected_improvement:.1f}, Reason={strategy.get('strategy_reason', 'Standard')}")
+        logger.info(f"🔧 FLAGS: {', '.join(flag_names)}")
+        
+        # Generate enhanced content
+        start_time = datetime.now()
+        enhanced_content = await self._generate_enhanced_content(material, content, enhancement_flags)
+        generation_time = (datetime.now() - start_time).total_seconds()
+        
+        if not enhanced_content:
+            logger.error(f"❌ Content generation failed")
+            return {"success": False, "error": "Generation failed"}
+        
+        # Analyze results
+        new_score = await self._analyze_content_score(enhanced_content)
+        improvement = new_score - current_score if new_score else 0
+        
+        # COMPACT FORENSIC LOG: Results Analysis
+        performance_ratio = (improvement / expected_improvement * 100) if expected_improvement > 0 else 0
+        
+        # Quick text analysis
+        original_words = content.split()
+        enhanced_words = enhanced_content.split()
+        casual_words = ["like", "totally", "awesome", "rad", "dude", "epic", "kinda", "gotta"]
+        casual_removed = sum(1 for word in original_words if any(casual in word.lower() for casual in casual_words)) - \
+                        sum(1 for word in enhanced_words if any(casual in word.lower() for casual in casual_words))
+        
+        logger.info(f"⚙️ GENERATION: Time={generation_time:.1f}s, NewChars={len(enhanced_content)}, CasualRemoved={casual_removed}")
+        logger.info(f"📈 RESULTS: {current_score:.1f}→{new_score:.1f} ({improvement:+.1f}), Performance={performance_ratio:.0f}%")
+        
+        # Individual flag impact estimates
+        logger.info(f"🔍 FLAG_IMPACTS:")
+        for flag in flag_names:
+            expected_contrib = self.learning_db.proven_strategies.get(flag, {}).get("avg_improvement", 0)
+            estimated_contrib = (expected_contrib / expected_improvement * improvement) if expected_improvement > 0 else 0
+            success_rate = self.learning_db.proven_strategies.get(flag, {}).get("success_rate", 0)
+            logger.info(f"   {flag}: Expected={expected_contrib:.1f}, Estimated={estimated_contrib:+.1f}, SuccessRate={success_rate:.0%}")
+        
+        # Decision logic
+        success = improvement > 1.0
+        decision = "ACCEPT" if improvement > 0.5 else "REJECT"
+        
+        logger.info(f"⚖️ DECISION: {decision} (threshold=0.5), Success={success}, Learning={'YES' if success else 'NO'}")
+        
+        # Record in learning database with compact details
+        details = {
+            "session_id": self.session_id,
+            "generation_time": round(generation_time, 2),
+            "char_change": len(enhanced_content) - len(content),
+            "casual_words_removed": casual_removed,
+            "expected_improvement": round(expected_improvement, 1),
+            "performance_ratio": round(performance_ratio, 1),
+            "decision": decision,
+            "flag_count": len(flag_names)
+        }
+        
+        self.learning_db.record_result(
+            material, current_score, new_score or current_score, 
+            enhancement_flags, success, details
+        )
+        
+        # Update content if improved
+        if improvement > 0.5:
+            self._update_content_file(content_file, enhanced_content, new_score, enhancement_flags)
+            logger.info(f"✅ UPDATED: Content file updated with new score {new_score:.1f}")
+        else:
+            logger.info(f"⚪ KEPT: Original content retained (insufficient improvement)")
+        
+        # COMPACT FORENSIC LOG: Session Summary
+        logger.info(f"📋 SESSION_COMPLETE: {material} | {current_score:.1f}→{new_score:.1f} | {decision} | {generation_time:.1f}s")
+        
+        return {
+            "success": True,
+            "session_id": self.session_id,
+            "material": material,
+            "initial_score": current_score,
+            "final_score": new_score or current_score,
+            "improvement": improvement,
+            "decision": decision,
+            "generation_time": generation_time,
+            "performance_ratio": performance_ratio,
+            "flags_applied": flag_names,
+            "casual_words_removed": casual_removed
+        }
+
+async def demo_compact_forensic(material: str = "steel"):
+    """Demo compact forensic logging on a material that hasn't been optimized yet."""
+    
+    print("🔍 COMPACT FORENSIC LOGGING DEMO")
+    print("=" * 50)
+    
+    optimizer = CompactForensicOptimizer()
+    result = await optimizer.optimize_with_compact_logging(material)
+    
+    print(f"\n📊 COMPACT SUMMARY:")
+    print(f"   Material: {result.get('material', 'Unknown')}")
+    print(f"   Score Change: {result.get('initial_score', 0):.1f} → {result.get('final_score', 0):.1f}")
+    print(f"   Improvement: {result.get('improvement', 0):+.1f} points")
+    print(f"   Decision: {result.get('decision', 'Unknown')}")
+    print(f"   Flags: {len(result.get('flags_applied', []))}")
+    print(f"   Performance: {result.get('performance_ratio', 0):.0f}%")
+    print(f"   Session: {result.get('session_id', 'Unknown')}")
+
+if __name__ == "__main__":
+    import sys
+    material = sys.argv[1] if len(sys.argv) > 1 else "steel"
+    asyncio.run(demo_compact_forensic(material))
+"""
 Demo: Compact AI Detection Iteration Logging
 
 This script demonstrates the new optimized AI detection logging system that:

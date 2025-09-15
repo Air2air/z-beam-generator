@@ -45,6 +45,7 @@ class TextComponentGenerator(APIComponentGenerator):
         author_info: Optional[Dict] = None,
         frontmatter_data: Optional[Dict] = None,
         schema_fields: Optional[Dict] = None,
+        enhancement_flags: Optional[Dict[str, bool]] = None,
     ) -> ComponentResult:
         """
         Generate text content using frontmatter data as primary source.
@@ -59,6 +60,7 @@ class TextComponentGenerator(APIComponentGenerator):
             author_info: Author information
             frontmatter_data: Processed frontmatter data (primary source)
             schema_fields: Schema fields (not used for text)
+            enhancement_flags: Optional enhancement flags for AI detection optimization
 
         Returns:
             ComponentResult with generated content
@@ -164,6 +166,7 @@ class TextComponentGenerator(APIComponentGenerator):
                 api_client=api_client,
                 author_info=author_info,
                 frontmatter_data=frontmatter_data,
+                enhancement_flags=enhancement_flags,  # Pass enhancement flags for optimization
             )
 
             if not result.success:

@@ -1,24 +1,21 @@
 ---
 name: Aluminum
 applications:
-- industry: Automotive
-  detail: Removal of lubricants, oxides, and thermal oxides from castings and extrusions
-    prior to welding or bonding
-- industry: Aerospace
-  detail: Cleaning of airframe components and removal of anodized layers for repair
-- industry: Electronics
-  detail: De-oxidation and surface preparation of heat sinks and enclosures
+- industry: Electronics Manufacturing
+  detail: Removal of surface oxides and contaminants from aluminum substrates
+- industry: Aerospace Components
+  detail: Cleaning of thermal barrier coatings and metal matrix composites
 technicalSpecifications:
-  powerRange: 20-500W
-  pulseDuration: 10-200ns
-  wavelength: 1064nm
-  spotSize: 0.05-5.0mm
-  repetitionRate: 1-2000kHz
-  fluenceRange: 0.5–10.0 J/cm²
-  safetyClass: Class 4 (requires full enclosure and fume extraction)
-description: Technical overview of Aluminum for laser cleaning applications, detailing
-  its high reflectivity challenges, optimal 1064nm wavelength interaction, and industrial
-  applications in surface preparation.
+  powerRange: 50-200W
+  pulseDuration: 20-100ns
+  wavelength: 1064nm (primary), 532nm (optional)
+  spotSize: 0.2-1.5mm
+  repetitionRate: 20-100kHz
+  fluenceRange: 1.0–4.5 J/cm²
+  safetyClass: Class 4 (requires full enclosure)
+description: Technical overview of aluminum, Al, for laser cleaning applications,
+  including optimal 1064nm wavelength interaction, and industrial applications in
+  surface preparation.
 author: Ikmanda Roswati
 author_object:
   id: 3
@@ -28,9 +25,9 @@ author_object:
   country: Indonesia
   expertise: Ultrafast Laser Physics and Material Interactions
   image: /images/author/ikmanda-roswati.jpg
-keywords: aluminum, Al, laser ablation, laser cleaning, non-contact cleaning, pulsed
-  fiber laser, surface oxide removal, industrial laser parameters, anodized layer
-  removal, surface restoration
+keywords: aluminum, aluminum metal, laser ablation, laser cleaning, non-contact cleaning,
+  pulsed fiber laser, surface contamination removal, industrial laser parameters,
+  thermal processing, surface restoration
 category: metal
 chemicalProperties:
   symbol: Al
@@ -49,10 +46,10 @@ properties:
   thermalMin: 8 W/m·K
   thermalMax: 429 W/m·K
   thermalPercentile: 54.4
-  tensileStrength: 40-500 MPa
+  tensileStrength: 70-700 MPa
   tensileMin: 70 MPa
   tensileMax: 2000 MPa
-  tensilePercentile: 10.4
+  tensilePercentile: 16.3
   hardness: 15-120 HB
   hardnessMin: 5 HB
   hardnessMax: 500 HV
@@ -63,7 +60,7 @@ properties:
   modulusPercentile: 0.0
   laserType: Pulsed Fiber Laser
   wavelength: 1064nm
-  fluenceRange: 0.5–10.0 J/cm²
+  fluenceRange: 1.0–4.5 J/cm²
   chemicalFormula: Al
   laserAbsorptionMin: 0.02 cm⁻¹
   laserAbsorptionMax: 100 cm⁻¹
@@ -76,23 +73,31 @@ properties:
   specificHeatMin: 0.13 J/g·K
   specificHeatMax: 0.90 J/g·K
 composition:
-- Aluminum (Al) >99.0%
-- Copper (Cu) 0.05-4.0%
-- Silicon (Si) 0.05-12.0%
-- Magnesium (Mg) 0.05-5.0%
-- Manganese (Mn) 0.05-1.0%
+- aluminum (Al) 99.6%
+- Trace elements (Si, Fe, Na, Mg)
 compatibility:
 - Stainless Steel
 - Titanium Alloys
-- Copper Alloys
-- Magnesium Alloys
-regulatoryStandards: ISO 8501-1, ASTM D7127, ISO 12944-4
-images: null
+- Nickel-based Superalloys
+regulatoryStandards: ISO 18562, ASTM F2100, IEC 60601-1
+images:
+  hero:
+    alt: Aluminum surface undergoing laser cleaning showing precise contamination
+      removal
+    url: /images/aluminum-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of aluminum surface after laser treatment showing preserved
+      microstructure
+    url: /images/aluminum-laser-cleaning-micro.jpg
+title: Laser Cleaning Aluminum - Technical Guide for Optimal Processing
+headline: Comprehensive technical guide for laser cleaning metal aluminum
+environmentalImpact:
+- benefit: Chemical Solvent Elimination
 ---
 
 # Version Information
-# Generated: 2025-09-11T19:40:28.115406
-# Material: Aluminum
+# Generated: 2025-09-14T23:17:21.817569
+# Material: aluminum
 # Component: frontmatter
 # Generator: Z-Beam v2.1.0
 # Author: AI Assistant

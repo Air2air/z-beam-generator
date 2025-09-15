@@ -1,94 +1,97 @@
-Of course. I'll generate a comprehensive JSON-LD structured data snippet for an `Alumina` product, assuming it's a type of industrial or chemical product. I'll base it on common frontmatter data you might find in a CMS or static site generator.
+I'll generate JSON-LD structured data for an alumina/aluminum-related page. Here's a comprehensive example based on common frontmatter data:
 
-### 1. Example Frontmatter Data
-
-First, let's assume the following frontmatter data exists for a page about "High-Purity Alpha Alumina Powder":
-
-```yaml
-# Frontmatter (YAML format)
-title: "High-Purity Alpha Alumina Powder - 99.99%"
-description: "Industrial-grade alpha alumina powder with 99.99% purity. Ideal for ceramics, abrasives, and advanced technical applications."
-product_id: "ALO-AP-500G"
-brand: "Advanced Ceramics Corp"
-price: 89.99
-price_currency: "USD"
-availability: "InStock"
-product_image: "https://example.com/images/alumina-powder-500g.jpg"
-product_url: "https://example.com/products/alumina-powder"
-rating_value: 4.7
-review_count: 42
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://example.com/alumina-production-process"
+  },
+  "headline": "Alumina Production and Aluminum Manufacturing Process",
+  "description": "Comprehensive guide to alumina production through the Bayer process and aluminum smelting using the Hall-Héroult process",
+  "image": "https://example.com/images/alumina-production.jpg",
+  "author": {
+    "@type": "Organization",
+    "name": "Metals Manufacturing Inc.",
+    "url": "https://example.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Metals Manufacturing Inc.",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://example.com/logo.png"
+    }
+  },
+  "datePublished": "2024-01-15T08:00:00+00:00",
+  "dateModified": "2024-01-20T14:30:00+00:00",
+  "keywords": ["alumina", "aluminum oxide", "bauxite", "Bayer process", "Hall-Héroult process", "aluminum production", "refining"],
+  "articleSection": "Industrial Materials",
+  "articleBody": "Alumina (Al₂O₃) is produced from bauxite ore through the Bayer process...",
+  "wordCount": 2500,
+  "timeRequired": "PT15M",
+  "inLanguage": "en-US"
+}
 ```
 
----
-
-### 2. Generated JSON-LD
-
-Based on the frontmatter above, here is the corresponding JSON-LD structured data. This uses Schema.org's `Product` type, which is the most appropriate for a product page.
+If you're looking for product-specific JSON-LD for alumina as a material:
 
 ```json
 {
   "@context": "https://schema.org",
   "@type": "Product",
-  "name": "High-Purity Alpha Alumina Powder - 99.99%",
-  "description": "Industrial-grade alpha alumina powder with 99.99% purity. Ideal for ceramics, abrasives, and advanced technical applications.",
-  "sku": "ALO-AP-500G",
+  "name": "Industrial Grade Alumina (Al₂O₃)",
+  "description": "High-purity alumina powder for ceramic, refractory, and aluminum production applications",
+  "sku": "AL2O3-99.5",
   "brand": {
     "@type": "Brand",
-    "name": "Advanced Ceramics Corp"
+    "name": "Metals Manufacturing Inc."
   },
   "offers": {
     "@type": "Offer",
-    "url": "https://example.com/products/alumina-powder",
+    "price": "850",
     "priceCurrency": "USD",
-    "price": 89.99,
+    "priceValidUntil": "2024-12-31",
     "availability": "https://schema.org/InStock",
-    "itemCondition": "https://schema.org/NewCondition"
+    "itemCondition": "https://schema.org/NewCondition",
+    "seller": {
+      "@type": "Organization",
+      "name": "Metals Manufacturing Inc."
+    }
   },
-  "image": "https://example.com/images/alumina-powder-500g.jpg",
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": 4.7,
-    "reviewCount": 42
-  },
-  "additionalProperty": {
-    "@type": "PropertyValue",
-    "name": "Purity",
-    "value": "99.99%"
-  },
-  "category": "Industrial Materials"
+  "material": "Aluminum Oxide",
+  "chemicalComposition": "Al₂O₃ ≥ 99.5%",
+  "application": ["Ceramics", "Refractories", "Abrasives", "Aluminum Production"]
 }
 ```
 
----
+Or for a company that produces alumina:
 
-### 3. How to Implement This in Your Page
-
-You should place this JSON-LD script within the `<head>` section of your HTML page.
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>High-Purity Alpha Alumina Powder - 99.99%</title>
-    <meta name="description" content="Industrial-grade alpha alumina powder...">
-    <!-- The JSON-LD Structured Data -->
-    <script type="application/ld+json">
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Alumina Production Co.",
+  "description": "Leading producer of high-quality alumina for global aluminum industry",
+  "url": "https://aluminaproduction.com",
+  "logo": "https://aluminaproduction.com/logo.png",
+  "foundingDate": "1985",
+  "founders": [
     {
-      "@context": "https://schema.org",
-      "@type": "Product",
-      "name": "High-Purity Alpha Alumina Powder - 99.99%",
-      "description": "Industrial-grade alpha alumina powder with 99.99% purity. Ideal for ceramics, abrasives, and advanced technical applications.",
-      "sku": "ALO-AP-500G",
-      "brand": {
-        "@type": "Brand",
-        "name": "Advanced Ceramics Corp"
-
+      "@type": "Person",
+      "name": "John Smith"
+    }
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "123 Industrial Park Rd",
+    "addressLocality": "Metals City",
+    "addressRegion":
 
 ---
-Version Log - Generated: 2025-09-10T23:14:53.077440
-Material: Alumina
+Version Log - Generated: 2025-09-14T23:23:05.310628
+Material: alumina
 Component: jsonld
 Generator: Z-Beam v2.1.0
 Author: AI Assistant

@@ -1,50 +1,97 @@
-Here's JSON-LD content for Aluminum using frontmatter data:
+Of course. Here is the JSON-LD structured data for an aluminum product, generated from a set of example frontmatter data.
+
+### 1. Example Frontmatter Data
+
+First, let's assume this is the data you have in your frontmatter (in YAML format, for example):
+
+```yaml
+id: AL-6061-T6-SHEET-12x12
+name: 6061-T6 Aluminum Sheet
+description: A high-strength, heat-treatable aluminum alloy sheet, ideal for structural and general purpose applications. Offers good corrosion resistance and machinability.
+sku: ALUM-6061-12x12x0.125
+brand:
+  name: Coastal Metals
+  url: https://www.coastalmetals.example
+offers:
+  price: 45.99
+  priceCurrency: USD
+  availability: https://schema.org/InStock
+  seller:
+    name: Metal Supermarkets Online
+image: https://www.example.com/images/aluminum-6061-sheet.jpg
+productID: AL-6061-T6-SHEET-12x12
+material: Aluminum Alloy 6061-T6
+weight:
+  value: 1.75
+  unit: lb
+width:
+  value: 12
+  unit: inches
+length:
+  value: 12
+  unit: inches
+thickness:
+  value: 0.125
+  unit: inches
+```
+
+---
+
+### 2. Generated JSON-LD
+
+This JSON-LD code uses the data from the frontmatter above. It combines `Product` and `Offer` schemas, which is the standard way to represent products for sale for search engines like Google.
 
 ```json
 {
-  "@context": "https://schema.org",
-  "@type": "ChemicalSubstance",
-  "@id": "https://example.com/chemicals/aluminum",
-  "name": "Aluminum",
-  "alternateName": [
-    "Aluminium",
-    "Al"
-  ],
-  "description": "A silvery-white, soft, non-magnetic, ductile metal in the boron group. It is the most abundant metal in the Earth's crust and the third most abundant element overall.",
-  "molecularFormula": "Al",
-  "atomicNumber": 13,
-  "atomicMass": "26.98 u",
-  "casNumber": "7429-90-5",
-  "appearance": "Silvery-white metallic solid",
-  "density": "2.70 g/cm³",
-  "meltingPoint": "660.32 °C",
-  "boilingPoint": "2519 °C",
-  "electricalConductivity": "37.7×10^6 S/m",
-  "thermalConductivity": "237 W/(m·K)",
-  "category": [
-    "Metal",
-    "Chemical Element",
-    "Post-transition Metal"
-  ],
-  "uses": [
-    "Construction materials",
-    "Aerospace industry",
-    "Packaging (cans, foil)",
-    "Electrical transmission lines",
-    "Consumer electronics",
-    "Transportation (automotive parts)"
-  ],
-  "safetyConsiderations": "Generally considered safe for most applications, but aluminum dust can be explosive and aluminum compounds may have health concerns in certain forms.",
-  "dateModified": "2024-01-15",
-  "url": "https://example.com/chemicals/aluminum"
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "@id": "https://www.yourwebsite.example/product/#AL-6061-T6-SHEET-12x12",
+  "productID": "AL-6061-T6-SHEET-12x12",
+  "sku": "ALUM-6061-12x12x0.125",
+  "name": "6061-T6 Aluminum Sheet",
+  "description": "A high-strength, heat-treatable aluminum alloy sheet, ideal for structural and general purpose applications. Offers good corrosion resistance and machinability.",
+  "brand": {
+    "@type": "Brand",
+    "name": "Coastal Metals",
+    "url": "https://www.coastalmetals.example"
+  },
+  "image": "https://www.example.com/images/aluminum-6061-sheet.jpg",
+  "material": "Aluminum Alloy 6061-T6",
+  "size": "12\" x 12\" x 0.125\"",
+  "weight": {
+    "@type": "QuantitativeValue",
+    "value": "1.75",
+    "unitCode": "LBR"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": "https://www.yourwebsite.example/product/aluminum-6061-sheet/",
+    "priceCurrency": "USD",
+    "price": "45.99",
+    "availability": "https://schema.org/InStock",
+    "seller": {
+      "@type": "Organization",
+      "name": "Metal Supermarkets Online"
+    },
+    "itemOffered": {
+      "@type": "Product",
+      "name": "6061-T6 Aluminum Sheet",
+      "sku": "ALUM-6061-12x12x0.125",
+      "@id": "https://www.yourwebsite.example/product/#AL-6061-T6-SHEET-12x12"
+    }
+  }
 }
 ```
 
-If you have specific frontmatter data you'd like me to incorporate (such as specific properties, measurements, or additional metadata), please share it and I can customize the JSON-LD accordingly.
+---
+
+### 3. Key Explanations and Best Practices:
+
+1.  **
 
 ---
-Version Log - Generated: 2025-09-11T19:41:10.093647
-Material: Aluminum
+Version Log - Generated: 2025-09-14T23:24:07.466396
+Material: aluminum
 Component: jsonld
 Generator: Z-Beam v2.1.0
 Author: AI Assistant

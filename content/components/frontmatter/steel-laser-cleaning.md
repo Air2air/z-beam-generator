@@ -1,125 +1,82 @@
 ---
+name: "Steel"
 applications:
-- detail: Removal of surface oxides and contaminants from Steel substrates
-  industry: Electronics Manufacturing
-- detail: Cleaning of thermal barrier coatings and metal matrix composites
-  industry: Aerospace Components
-author: Ikmanda Roswati
-author_object:
-  country: Indonesia
-  expertise: Ultrafast Laser Physics and Material Interactions
-  id: 3
-  image: /images/author/ikmanda-roswati.jpg
-  name: Ikmanda Roswati
-  sex: male
-  title: Ph.D.
-category: metal
-chemicalProperties:
-  formula: Fe
-  materialType: metal
-  symbol: Fe
-compatibility:
-- Stainless Steel
-- Titanium Alloys
-- Nickel-based Superalloys
-composition:
-- Steel (Fe) 99.6%
-- Trace elements (Si, Fe, Na, Mg)
-description: Technical overview of Steel, Fe, for laser cleaning applications, including
-  optimal 1064nm wavelength interaction, and industrial applications in surface preparation.
-environmentalImpact:
-- benefit: Chemical Solvent Elimination
-  description: Reduces chemical usage by 100% compared to traditional solvent cleaning
-    methods
-- benefit: Water Conservation
-  description: Saves approximately 5000 liters of water per month in industrial applications
-- benefit: Energy Efficiency
-  description: Consumes 40% less energy than thermal cleaning processes
-headline: Comprehensive technical guide for laser cleaning metal Steel
-images:
-  hero:
-    alt: Steel surface undergoing laser cleaning showing precise contamination removal
-    url: /images/steel-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Steel surface after laser treatment showing preserved
-      microstructure
-    url: /images/steel-laser-cleaning-micro.jpg
-keywords: steel, steel metal, laser ablation, laser cleaning, non-contact cleaning,
-  pulsed fiber laser, surface contamination removal, industrial laser parameters,
-  thermal processing, surface restoration
-name: Steel
-outcomes:
-- metric: Achieves ISO 14644-1 Class 7 cleanliness standard
-  result: Surface Cleanliness Level
-- metric: ±5μm accuracy with no substrate damage
-  result: Material Removal Precision
-- metric: 2-5 m²/hour cleaning rate depending on contamination level
-  result: Processing Speed
-properties:
-  chemicalFormula: Fe
-  density: 7.85 g/cm³
-  densityMax: 22.6 g/cm³
-  densityMin: 0.5 g/cm³
-  densityPercentile: 33.3
-  fluenceRange: 1.0–4.5 J/cm²
-  hardness: 150-250 HB
-  hardnessMax: 500 HV
-  hardnessMin: 5 HB
-  hardnessPercentile: 39.4
-  laserAbsorptionMax: 100 cm⁻¹
-  laserAbsorptionMin: 0.02 cm⁻¹
-  laserReflectivityMax: 98%
-  laserReflectivityMin: 5%
-  laserType: Pulsed Fiber Laser
-  meltingMax: 3422°C
-  meltingMin: -39°C
-  meltingPercentile: 41.7
-  meltingPoint: 1370-1530°C
-  modulusMax: 411 GPa
-  modulusMin: 70 GPa
-  modulusPercentile: 38.1
-  specificHeatMax: 0.90 J/g·K
-  specificHeatMin: 0.13 J/g·K
-  tensileMax: 2000 MPa
-  tensileMin: 70 MPa
-  tensilePercentile: 22.3
-  tensileStrength: 400-600 MPa
-  thermalConductivity: 50.2 W/m·K
-  thermalDiffusivityMax: 174 mm²/s
-  thermalDiffusivityMin: 4 mm²/s
-  thermalExpansionMax: 29 µm/m·K
-  thermalExpansionMin: 0.5 µm/m·K
-  thermalMax: 429 W/m·K
-  thermalMin: 8 W/m·K
-  thermalPercentile: 10.0
-  wavelength: 1064nm
-  youngsModulus: 200 GPa
-regulatoryStandards: ISO 18562, ASTM F2100, IEC 60601-1
+- industry: "Automotive Manufacturing"
+  detail: "Removal of rust, paint, and coatings from steel parts and body panels"
+- industry: "Marine and Offshore"
+  detail: "Cleaning of corrosion, salt deposits, and biofouling from ship hulls and structural steel"
+- industry: "Heavy Machinery"
+  detail: "Surface preparation for welding and coating on large steel components"
 technicalSpecifications:
-  fluenceRange: 1.0–4.5 J/cm²
-  powerRange: 50-200W
-  pulseDuration: 20-100ns
-  repetitionRate: 20-100kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.2-1.5mm
-  wavelength: 1064nm (primary), 532nm (optional)
-title: Laser Cleaning Steel - Technical Guide for Optimal Processing
+  powerRange: "100-1000W"
+  pulseDuration: "50-200ns"
+  wavelength: "1064nm"
+  spotSize: "0.1-3.0mm"
+  repetitionRate: "20-300kHz"
+  fluenceRange: "0.5–10.0 J/cm²"
+  safetyClass: "Class 4 (requires full enclosure and interlocks)"
+description: "Technical overview of carbon steel (Fe-C) for laser cleaning applications, detailing optimal 1064nm wavelength interaction with iron oxides and industrial surface preparation uses."
+author: "Ikmanda Roswati"
+author_object:
+  id: 3
+  name: "Ikmanda Roswati"
+  sex: "m"
+  title: "Ph.D."
+  country: "Indonesia"
+  expertise: "Ultrafast Laser Physics and Material Interactions"
+  image: "/images/author/ikmanda-roswati.jpg"
+keywords: "steel cleaning, laser rust removal, oxide removal, surface preparation, carbon steel, laser ablation, non-contact cleaning, industrial laser cleaning, Fe-C alloy processing"
+category: "metal"
+chemicalProperties:
+  symbol: "Fe"
+  formula: "Fe-C"
+  materialType: "Ferrous alloy"
+properties:
+  density: "7.85 g/cm³"
+  densityMin: "7.75 g/cm³"
+  densityMax: "8.05 g/cm³"
+  densityPercentile: 65.8
+  meltingPoint: "1370-1530°C"
+  meltingMin: "1370°C"
+  meltingMax: "1530°C"
+  meltingPercentile: 58.2
+  thermalConductivity: "50.2 W/m·K"
+  thermalMin: "45.0 W/m·K"
+  thermalMax: "65.0 W/m·K"
+  thermalPercentile: 62.4
+  tensileStrength: "400-550 MPa"
+  tensileMin: "400 MPa"
+  tensileMax: "550 MPa"
+  tensilePercentile: 48.7
+  hardness: "120-180 HB"
+  hardnessMin: "120 HB"
+  hardnessMax: "180 HB"
+  hardnessPercentile: 42.3
+  youngsModulus: "200 GPa"
+  modulusMin: "190 GPa"
+  modulusMax: "210 GPa"
+  modulusPercentile: 75.6
+  laserType: "Pulsed Fiber Laser"
+  wavelength: "1064nm"
+  fluenceRange: "0.5–10.0 J/cm²"
+  chemicalFormula: "Fe-C"
+composition:
+- "Iron (Fe): 98.0-99.5%"
+- "Carbon (C): 0.05-2.1%"
+- "Manganese (Mn): 0.3-1.0%"
+- "Silicon (Si): 0.15-0.35%"
+- "Phosphorus (P): <0.05%"
+- "Sulfur (S): <0.05%"
+compatibility:
+- "Carbon Steel"
+- "Stainless Steel"
+- "Cast Iron"
+- "Tool Steel"
+regulatoryStandards: "ISO 8501-1, ASTM D4258, SSPC-SP" 
+
 ---
-
-
-# Version Information
-# Generated: 2025-09-11T14:07:12.757951
-# Material: Unknown
-# Component: frontmatter
-# Generator: Z-Beam v1.0.0
-# Component Version: 4.0.1
-# Author: Yi-Chun Lin
-# Platform: Darwin (3.12.4)
-# Operation: generation
-
----
-Version Log - Generated: 2025-09-11T14:07:12.758585
-Material: Steel
+Version Log - Generated: 2025-09-14T23:19:06.060903
+Material: steel
 Component: frontmatter
 Generator: Z-Beam v2.1.0
 Author: AI Assistant

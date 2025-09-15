@@ -260,6 +260,8 @@ def add_version_log_to_content(
 
     For YAML frontmatter files, add version info as comments to preserve format.
     For other content types, append as footer section.
+    If content already uses Global Metadata Delimiting Standard, skip adding version log
+    to avoid duplication (versioning system handles this).
 
     Args:
         content: Original content
@@ -268,8 +270,19 @@ def add_version_log_to_content(
         filepath: File path where content will be saved
 
     Returns:
-        Content with version log appended
+        Content with version log appended (unless already delimited)
     """
+    # Check if content already uses Global Metadata Delimiting Standard
+    has_delimiters = (
+        '<!-- CONTENT START -->' in content and 
+        '<!-- CONTENT END -->' in content and
+        '<!-- METADATA START -->' in content and 
+        '<!-- METADATA END -->' in content
+    )
+    
+    if has_delimiters:
+        # Content already properly delimited by versioning system, no need to add version log
+        return content
     # Create version log entry
     version_entry = create_version_log_entry(material, component_type, filepath)
 

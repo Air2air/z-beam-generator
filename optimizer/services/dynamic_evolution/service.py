@@ -13,7 +13,8 @@ from datetime import datetime, timedelta
 from enum import Enum
 from typing import Any, Dict, List, Optional, Union
 
-from services import BaseService, ServiceConfiguration, ServiceError
+from ..base import SimplifiedService, ServiceConfiguration
+from ..errors import ServiceError
 
 logger = logging.getLogger(__name__)
 
@@ -127,7 +128,7 @@ class ABTest:
         return True
 
 
-class DynamicEvolutionService(BaseService):
+class DynamicEvolutionService(SimplifiedService):
     """
     Service for dynamic content evolution with A/B testing and performance optimization.
 

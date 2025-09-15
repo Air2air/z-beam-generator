@@ -1,0 +1,252 @@
+# Global Metadata Delimiting Configuration
+# Z-Beam Generator Component System
+
+metadata_delimiting:
+  enabled: true
+  version: "1.0.0"
+  
+  # Standard delimiter markers (HTML-style comments)
+  delimiters:
+    content_start: "<!-- CONTENT START -->"
+    content_end: "<!-- CONTENT END -->"
+    metadata_start: "<!-- METADATA START -->"
+    metadata_end: "<!-- METADATA END -->"
+  
+  # Validation settings
+  validation:
+    require_delimiters: true
+    strict_boundary_checking: true
+    fail_on_missing_markers: false  # Allow legacy files during migration
+    content_min_size: 50  # Minimum content size in characters
+    
+  # Content extraction settings
+  extraction:
+    prefer_delimited: true  # Prefer delimited extraction over legacy patterns
+    fallback_to_legacy: true  # Use legacy patterns if delimiters not found
+    legacy_patterns:
+      - "Version Log - Generated:"
+      - "ai_detection_analysis:"
+      - "quality_analysis:"
+      - "Component Version:"
+      - "Generator: Z-Beam"
+      - "Platform: Darwin"
+    
+  # Component type configurations
+  component_types:
+    text:
+      description: "Main article content with author voice"
+      metadata_includes: 
+        - ai_detection_analysis
+        - quality_analysis
+        - version_log
+        - optimization_metadata
+      content_format: "markdown"
+      preserve_yaml_frontmatter: false
+      content_validation:
+        min_word_count: 50
+        max_word_count: 2000
+        require_headers: false
+        
+    frontmatter:
+      description: "YAML metadata for page configuration"
+      metadata_includes:
+        - version_log
+        - generation_metadata
+      content_format: "yaml"
+      preserve_yaml_frontmatter: true
+      content_validation:
+        require_yaml_format: true
+        required_fields: ["title", "description", "author"]
+        
+    table:
+      description: "Markdown tables with technical data"
+      metadata_includes:
+        - version_log
+        - generation_metadata
+      content_format: "markdown_table"
+      preserve_yaml_frontmatter: false
+      content_validation:
+        require_table_syntax: true
+        min_rows: 2
+        
+    tags:
+      description: "Comma-separated keyword tags"
+      metadata_includes:
+        - version_log
+        - generation_metadata
+      content_format: "comma_separated"
+      preserve_yaml_frontmatter: false
+      content_validation:
+        require_comma_separation: true
+        min_tags: 3
+        max_tags: 20
+        
+    jsonld:
+      description: "JSON-LD structured data blocks"
+      metadata_includes:
+        - version_log
+        - generation_metadata
+      content_format: "json_codeblock"
+      preserve_yaml_frontmatter: false
+      content_validation:
+        require_json_format: true
+        require_schema_org: true
+        
+    metatags:
+      description: "HTML meta tags in YAML format"
+      metadata_includes:
+        - version_log
+        - generation_metadata
+      content_format: "yaml"
+      preserve_yaml_frontmatter: true
+      content_validation:
+        require_meta_tags: true
+        required_meta_fields: ["description", "keywords"]
+        
+    bullets:
+      description: "Bullet point lists"
+      metadata_includes:
+        - version_log
+        - generation_metadata
+      content_format: "markdown_list"
+      preserve_yaml_frontmatter: false
+      content_validation:
+        require_bullet_syntax: true
+        min_items: 3
+        
+    caption:
+      description: "Image and figure captions"
+      metadata_includes:
+        - version_log
+        - generation_metadata
+      content_format: "text"
+      preserve_yaml_frontmatter: false
+      content_validation:
+        max_length: 500
+        min_length: 10
+        
+    author:
+      description: "Author profile information"
+      metadata_includes:
+        - version_log
+        - generation_metadata
+      content_format: "structured_text"
+      preserve_yaml_frontmatter: false
+      content_validation:
+        require_name: true
+        require_expertise: true
+        
+    badgesymbol:
+      description: "Badge and symbol definitions"
+      metadata_includes:
+        - version_log
+        - generation_metadata
+      content_format: "structured_text"
+      preserve_yaml_frontmatter: false
+      content_validation:
+        require_symbol: true
+        
+    propertiestable:
+      description: "Material properties in table format"
+      metadata_includes:
+        - version_log
+        - generation_metadata
+      content_format: "markdown_table"
+      preserve_yaml_frontmatter: false
+      content_validation:
+        require_properties: true
+        min_properties: 5
+
+# Forbidden patterns in content sections
+# These patterns should never appear in content - only in metadata
+forbidden_in_content:
+  patterns:
+    - "ai_detection_analysis:"
+    - "quality_analysis:"
+    - "Version Log - Generated:"
+    - "Component Version:"
+    - "Generator: Z-Beam"
+    - "Platform: Darwin"
+    - "score: \\d+\\.\\d+"
+    - "provider: \"winston\""
+    - "optimization_iterations:"
+    - "processing_time:"
+    - "classification:"
+    - "confidence:"
+    - "overall_score:"
+    - "formatting_score:"
+    - "technical_score:"
+    - "authenticity_score:"
+    - "readability_score:"
+    - "believability_score:"
+    - "word_count:"
+    - "author_country:"
+    - "error_type:"
+    - "credits_used:"
+    - "sentences: \\["
+    - "failing_sentences_count:"
+  
+  # What to do when forbidden patterns are found in content
+  violation_handling:
+    log_level: "WARNING"
+    fail_validation: true
+    suggest_migration: true
+
+# Migration settings
+migration:
+  create_backups: false  # Disabled to prevent inclusion in optimization
+  backup_suffix: ".backup"
+  dry_run_default: true
+  batch_size: 50  # Process files in batches
+  
+  # Files to exclude from migration and optimization
+  exclude_patterns:
+    - "*.backup"
+    - "*.tmp"
+    - "**/test_*"
+    - "**/example_*"
+    - "**/.DS_Store"
+    - "**/._*"
+  
+  # Component priority for migration (high priority first)
+  migration_priority:
+    - text  # Critical for optimization
+    - frontmatter
+    - metatags
+    - jsonld
+    - table
+    - tags
+    - bullets
+    - caption
+    - author
+    - badgesymbol
+    - propertiestable
+
+# Integration with existing systems
+integration:
+  optimizer:
+    use_delimited_extraction: true
+    fallback_to_legacy: true
+    log_extraction_method: true
+    
+  generators:
+    output_delimited_format: true
+    validate_delimiters: true
+    fail_on_invalid_format: false  # During transition period
+    
+  validation_tools:
+    run_on_generation: false  # Too slow for real-time
+    run_on_optimization: true
+    report_violations: true
+    
+# Performance settings
+performance:
+  content_extraction:
+    cache_results: true
+    cache_ttl: 3600  # 1 hour
+    max_file_size: 1048576  # 1MB
+    
+  validation:
+    parallel_processing: true
+    max_workers: 4
+    timeout_seconds: 30

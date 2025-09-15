@@ -1,8 +1,8 @@
 ---
-name: "Alumina"
+name: "alumina"
 applications:
 - industry: "Electronics Manufacturing"
-  detail: "Removal of surface oxides and contaminants from Alumina substrates"
+  detail: "Removal of surface oxides and contaminants from alumina substrates"
 - industry: "Aerospace Components"
   detail: "Cleaning of thermal barrier coatings and ceramic matrix composites"
 technicalSpecifications:
@@ -13,7 +13,7 @@ technicalSpecifications:
   repetitionRate: "20-100kHz"
   fluenceRange: "1.0–4.5 J/cm²"
   safetyClass: "Class 4 (requires full enclosure)"
-description: "Technical overview of Alumina, Al2O3, for laser cleaning applications, including optimal 1064nm wavelength interaction, and industrial applications in surface preparation."
+description: "Technical overview of alumina, Al2O3, for laser cleaning applications, including optimal 1064nm wavelength interaction, and industrial applications in surface preparation."
 author: "Alessandro Moretti"
 author_object:
   id: 2
@@ -33,23 +33,23 @@ properties:
   density: "3.95 g/cm³"
   densityMin: "3.5 g/cm³"
   densityMax: "4.1 g/cm³"
-  densityPercentile: 75.0
+  densityPercentile: 75.2
   meltingPoint: "2072°C"
   meltingMin: "2000°C"
   meltingMax: "2200°C"
-  meltingPercentile: 95.0
+  meltingPercentile: 89.5
   thermalConductivity: "30 W/m·K"
   thermalMin: "20 W/m·K"
-  thermalMax: "40 W/m·K"
-  thermalPercentile: 60.0
+  thermalMax: "35 W/m·K"
+  thermalPercentile: 62.8
   tensileStrength: "300 MPa"
   tensileMin: "200 MPa"
   tensileMax: "400 MPa"
-  tensilePercentile: 50.0
+  tensilePercentile: 45.3
   hardness: "1500-2000 HV"
   hardnessMin: "1200 HV"
-  hardnessMax: "2500 HV"
-  hardnessPercentile: 70.0
+  hardnessMax: "2300 HV"
+  hardnessPercentile: 78.0
   youngsModulus: "370 GPa"
   modulusMin: "300 GPa"
   modulusMax: "400 GPa"
@@ -59,7 +59,7 @@ properties:
   fluenceRange: "1.0–4.5 J/cm²"
   chemicalFormula: "Al2O3"
 composition:
-- "Alumina (Al2O3) 99.6%"
+- "alumina (Al2O3) 99.6%"
 - "Trace elements (Si, Fe, Na, Mg)"
 compatibility:
 - "Stainless Steel"
@@ -68,16 +68,17 @@ compatibility:
 regulatoryStandards: "ISO 18562, ASTM F2100, IEC 60601-1"
 images:
   hero:
-    alt: "Alumina surface undergoing laser cleaning showing precise contamination removal"
+    alt: "alumina surface undergoing laser cleaning showing precise contamination removal"
     url: "/images/alumina-laser-cleaning-hero.jpg"
   micro:
-    alt: "Microscopic view of Alumina surface after laser treatment showing preserved microstructure"
+    alt: "Microscopic view of alumina surface after laser treatment showing preserved microstructure"
     url: "/images/alumina-laser-cleaning-micro.jpg"
-title: "Laser Cleaning Alumina - Technical Guide for Optimal Processing"
-headline: "Comprehensive technical guide for laser cleaning ceramic surfaces using precision laser technology"
+title: "Laser Cleaning alumina - Technical Guide for Optimal Processing"
+headline: "Comprehensive technical guide for laser cleaning ceramic alumina"
+
 ---
-Version Log - Generated: 2025-09-11T21:37:01.100349
-Material: Alumina
+Version Log - Generated: 2025-09-14T23:16:16.215087
+Material: alumina
 Component: frontmatter
 Generator: Z-Beam v2.1.0
 Author: AI Assistant

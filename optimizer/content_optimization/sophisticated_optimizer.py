@@ -100,8 +100,8 @@ async def run_sophisticated_optimization(component_name: str, timeout_seconds: i
             logger.error(f"Component directory not found: {component_dir}")
             return
 
-        # Get all .md files in the component directory
-        material_files = list(component_dir.glob("*.md"))
+        # Get all .md files in the component directory (exclude backups)
+        material_files = [f for f in component_dir.glob("*.md") if not f.name.endswith('.backup')]
         if not material_files:
             logger.warning(f"No material files found in {component_dir}")
             return
@@ -113,12 +113,20 @@ async def run_sophisticated_optimization(component_name: str, timeout_seconds: i
         for file_path in material_files:
             try:
                 with open(file_path, "r", encoding="utf-8") as f:
-                    content = f.read()
+                    full_file_content = f.read()
+
+                # CRITICAL FIX: Extract only the target content, excluding all logging metadata
+                from .content_analyzer import extract_target_content_only
+                clean_content = extract_target_content_only(full_file_content)
+                
+                if not clean_content or len(clean_content) < 50:
+                    logger.error(f"   ❌ No valid content extracted from {file_path.name}")
+                    continue
 
                 # Extract material name from filename (remove -laser-cleaning.md suffix)
                 material_name = file_path.stem.replace("-laser-cleaning", "")
-                materials_content[material_name] = content
-                logger.info(f"   📄 Loaded {material_name} from {file_path.name}")
+                materials_content[material_name] = clean_content
+                logger.info(f"   📄 Loaded clean content for {material_name} ({len(clean_content)} chars)")
 
             except Exception as e:
                 logger.error(f"Error loading {file_path}: {e}")

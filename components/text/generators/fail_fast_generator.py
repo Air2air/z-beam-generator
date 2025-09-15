@@ -128,6 +128,7 @@ class FailFastTextGenerator:
         api_client,
         author_info: Dict[str, Any],
         frontmatter_data: Optional[Dict[str, Any]] = None,
+        enhancement_flags: Optional[Dict[str, bool]] = None,
     ) -> Dict[str, Any]:
         """
         Generate text using fail-fast approach.
@@ -138,6 +139,7 @@ class FailFastTextGenerator:
             api_client: API client for generation
             author_info: Author information
             frontmatter_data: Processed frontmatter data (primary source)
+            enhancement_flags: Optional enhancement flags for AI detection optimization
 
         Returns:
             Dictionary with generation results
@@ -153,6 +155,12 @@ class FailFastTextGenerator:
                 "fail_fast_generator", "API client is required for text generation"
             )
             raise GenerationError("API client is required for text generation")
+
+        # Log enhancement flags if provided
+        if enhancement_flags:
+            logger.info(f"🎯 Received enhancement flags: {list(enhancement_flags.keys())}")
+        else:
+            logger.info("🎯 No enhancement flags provided")
 
         # Load base prompt
         try:
@@ -173,6 +181,7 @@ class FailFastTextGenerator:
             material_data,
             author_info,
             frontmatter_data,
+            enhancement_flags,
         )
 
         # Generate content with retries
@@ -289,6 +298,7 @@ class FailFastTextGenerator:
         material_data: Dict[str, Any],
         author_info: Dict[str, Any],
         frontmatter_data: Optional[Dict[str, Any]] = None,
+        enhancement_flags: Optional[Dict[str, bool]] = None,
     ) -> str:
         """
         Construct the complete prompt for text generation.
@@ -301,12 +311,13 @@ class FailFastTextGenerator:
             material_data: Raw material data (fallback)
             author_info: Author information
             frontmatter_data: Processed frontmatter data (primary source)
+            enhancement_flags: Optional enhancement flags for AI detection optimization
 
         Returns:
             Complete prompt string
         """
-        # STEP 1: Add AI detection prompts FIRST
-        ai_detection_prompt = get_ai_detection_prompt()
+        # STEP 1: Add AI detection prompts FIRST (with enhancement flags if provided)
+        ai_detection_prompt = get_ai_detection_prompt(enhancement_flags)
         
         # STEP 2: Add mandatory localization chain SECOND
         try:

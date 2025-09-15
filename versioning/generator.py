@@ -4,6 +4,7 @@ Centralized Versioning System for Z-Beam Components
 
 Provides unified versioning methods for all component generators.
 Handles version stamping, legacy stamp management, and consistent formatting.
+Integrates with Global Metadata Delimiting Standard for proper content/metadata separation.
 """
 
 import json
@@ -11,6 +12,7 @@ import logging
 import platform
 import sys
 import time
+import yaml
 from datetime import datetime
 from pathlib import Path
 from typing import Dict, Optional, Any, List
@@ -29,12 +31,65 @@ class VersionGenerator:
 
     Provides consistent version stamping, legacy stamp management,
     and unified versioning format across all components.
+    Integrates with Global Metadata Delimiting Standard when enabled.
     """
 
+    def _load_delimiter_config(self):
+        """Load Global Metadata Delimiting configuration."""
+        try:
+            config_path = Path("config/metadata_delimiting.yaml")
+            if config_path.exists():
+                with open(config_path, 'r') as f:
+                    self.delimiter_config = yaml.safe_load(f)
+                logger.debug("Loaded Global Metadata Delimiting configuration")
+            else:
+                logger.warning(f"Delimiter config not found: {config_path}")
+                self.delimiter_config = None
+        except Exception as e:
+            logger.error(f"Failed to load delimiter config: {e}")
+            self.delimiter_config = None
+
+    def _should_use_delimited_format(self) -> bool:
+        """Check if delimited format should be used for output."""
+        if not self.delimiter_config:
+            return False
+        
+        try:
+            return (
+                self.delimiter_config.get('metadata_delimiting', {}).get('enabled', False) and
+                self.delimiter_config.get('integration', {}).get('generators', {}).get('output_delimited_format', False)
+            )
+        except Exception as e:
+            logger.warning(f"Error checking delimiter config: {e}")
+            return False
+
+    def _get_delimiters(self) -> Dict[str, str]:
+        """Get delimiter markers from configuration."""
+        if not self.delimiter_config:
+            return {}
+        
+        try:
+            return self.delimiter_config.get('metadata_delimiting', {}).get('delimiters', {
+                'content_start': '<!-- CONTENT START -->',
+                'content_end': '<!-- CONTENT END -->',
+                'metadata_start': '<!-- METADATA START -->',
+                'metadata_end': '<!-- METADATA END -->'
+            })
+        except Exception as e:
+            logger.warning(f"Error getting delimiters: {e}")
+            return {
+                'content_start': '<!-- CONTENT START -->',
+                'content_end': '<!-- CONTENT END -->',
+                'metadata_start': '<!-- METADATA START -->',
+                'metadata_end': '<!-- METADATA END -->'
+            }
+
     def __init__(self):
-        """Initialize the versioning generator."""
+        """Initialize the version generator."""
         self.generator_version = "1.0.0"
         self.system_info = self._get_system_info()
+        self.delimiter_config = None
+        self._load_delimiter_config()
 
     def _get_system_info(self) -> Dict[str, str]:
         """Get system information for version stamps."""
@@ -169,8 +224,9 @@ class VersionGenerator:
         """
         Stamp component output with version information.
 
+        Integrates with Global Metadata Delimiting Standard when enabled.
         For frontmatter components, adds version info as YAML comments.
-        For other components, uses standard version stamping.
+        For other components, uses standard version stamping with optional delimited format.
 
         Args:
             content: The component output content
@@ -182,7 +238,7 @@ class VersionGenerator:
             metadata: Additional metadata
 
         Returns:
-            Content with version stamp applied
+            Content with version stamp applied, optionally with delimited format
         """
         try:
             # Special handling for frontmatter - add version info as YAML comments
@@ -197,7 +253,19 @@ class VersionGenerator:
                     metadata=metadata,
                 )
             
-            # Standard handling for other components
+            # Check if we should use delimited format
+            if self._should_use_delimited_format():
+                return self._stamp_with_delimited_format(
+                    content=content,
+                    component_name=component_name,
+                    component_version=component_version,
+                    material_name=material_name,
+                    author_name=author_name,
+                    operation=operation,
+                    metadata=metadata,
+                )
+            
+            # Standard handling for other components (legacy format)
             # Generate new version stamp
             new_stamp = self.generate_version_stamp(
                 component_name=component_name,
@@ -218,6 +286,195 @@ class VersionGenerator:
             logger.error(f"Failed to stamp {component_name} output: {e}")
             # Return original content if stamping fails
             return content
+
+    def _stamp_with_delimited_format(
+        self,
+        content: str,
+        component_name: str,
+        component_version: str,
+        material_name: str,
+        author_name: Optional[str] = None,
+        operation: str = "generation",
+        metadata: Optional[Dict[str, Any]] = None,
+    ) -> str:
+        """
+        Apply version stamping using Global Metadata Delimiting Standard format.
+        
+        Separates content and metadata with proper delimiters.
+        """
+        try:
+            # Get delimiter markers
+            delimiters = self._get_delimiters()
+            
+            # Extract existing content if already delimited
+            existing_content = self._extract_content_from_delimited(content)
+            if not existing_content:
+                # Use full content if no delimiters found
+                existing_content = self._clean_content_for_delimiting(content)
+            
+            # Generate metadata section
+            metadata_section = self._generate_metadata_section(
+                component_name=component_name,
+                component_version=component_version,
+                material_name=material_name,
+                author_name=author_name,
+                operation=operation,
+                metadata=metadata,
+                original_content=content
+            )
+            
+            # Format with delimiters
+            delimited_content = (
+                f"{delimiters['content_start']}\n"
+                f"{existing_content}\n"
+                f"{delimiters['content_end']}\n\n"
+                f"{delimiters['metadata_start']}\n"
+                f"{metadata_section}\n"
+                f"{delimiters['metadata_end']}"
+            )
+            
+            logger.info(f"Applied delimited format to {component_name} for {material_name}")
+            return delimited_content
+            
+        except Exception as e:
+            logger.error(f"Failed to apply delimited format: {e}")
+            # Fallback to legacy format
+            return self.stamp_component_output(
+                content=content,
+                component_name=component_name,
+                component_version=component_version,
+                material_name=material_name,
+                author_name=author_name,
+                operation=operation,
+                metadata=metadata
+            )
+
+    def _extract_content_from_delimited(self, content: str) -> Optional[str]:
+        """Extract content from existing delimited format."""
+        delimiters = self._get_delimiters()
+        start_marker = delimiters.get('content_start', '<!-- CONTENT START -->')
+        end_marker = delimiters.get('content_end', '<!-- CONTENT END -->')
+        
+        start_idx = content.find(start_marker)
+        end_idx = content.find(end_marker)
+        
+        if start_idx >= 0 and end_idx >= 0 and end_idx > start_idx:
+            start_idx += len(start_marker)
+            return content[start_idx:end_idx].strip()
+        
+        return None
+
+    def _clean_content_for_delimiting(self, content: str) -> str:
+        """Clean content by removing existing metadata for delimiting."""
+        lines = content.split('\n')
+        cleaned_lines = []
+        skip_patterns = [
+            'Version Log - Generated:',
+            'Material:',
+            'Component:',
+            'Generator: Z-Beam',
+            'Platform: Darwin',
+            'author:',
+            'material:',
+            'component:',
+            'generated:',
+            'source:'
+        ]
+        
+        in_yaml_block = False
+        for line in lines:
+            stripped = line.strip()
+            
+            # Track YAML block boundaries
+            if stripped == '---':
+                in_yaml_block = not in_yaml_block
+                continue
+                
+            # Skip metadata patterns
+            if any(pattern in line for pattern in skip_patterns):
+                continue
+                
+            # Skip YAML frontmatter
+            if in_yaml_block:
+                continue
+                
+            # Skip empty lines at start/end
+            if not stripped and not cleaned_lines:
+                continue
+                
+            cleaned_lines.append(line)
+        
+        # Remove trailing empty lines
+        while cleaned_lines and not cleaned_lines[-1].strip():
+            cleaned_lines.pop()
+            
+        return '\n'.join(cleaned_lines)
+
+    def _generate_metadata_section(
+        self,
+        component_name: str,
+        component_version: str,
+        material_name: str,
+        author_name: Optional[str] = None,
+        operation: str = "generation",
+        metadata: Optional[Dict[str, Any]] = None,
+        original_content: str = ""
+    ) -> str:
+        """Generate metadata section for delimited format."""
+        # Extract existing metadata from original content
+        existing_metadata = self._extract_existing_metadata(original_content)
+        
+        # Generate new version stamp
+        new_stamp = self.generate_version_stamp(
+            component_name=component_name,
+            component_version=component_version,
+            material_name=material_name,
+            author_name=author_name,
+            operation=operation,
+            metadata=metadata,
+        )
+        
+        # Combine existing metadata with new stamp
+        metadata_parts = []
+        
+        if existing_metadata:
+            metadata_parts.append(existing_metadata)
+            
+        metadata_parts.append(new_stamp)
+        
+        return '\n\n'.join(metadata_parts)
+
+    def _extract_existing_metadata(self, content: str) -> str:
+        """Extract existing metadata (YAML frontmatter, version logs) from content."""
+        lines = content.split('\n')
+        metadata_lines = []
+        
+        in_yaml = False
+        for line in lines:
+            stripped = line.strip()
+            
+            # YAML frontmatter
+            if stripped == '---':
+                in_yaml = not in_yaml
+                metadata_lines.append(line)
+                continue
+                
+            if in_yaml:
+                metadata_lines.append(line)
+                continue
+                
+            # Version logs and other metadata
+            if any(pattern in line for pattern in [
+                'Version Log - Generated:',
+                'author:',
+                'material:',
+                'component:',
+                'generated:',
+                'source:'
+            ]):
+                metadata_lines.append(line)
+        
+        return '\n'.join(metadata_lines).strip() if metadata_lines else ""
 
     def stamp_frontmatter_output(
         self,
