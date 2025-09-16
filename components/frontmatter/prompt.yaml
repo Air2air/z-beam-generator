@@ -7,6 +7,8 @@ template: |
 
   REQUIRED OUTPUT FORMAT: Return ONLY the YAML content between --- markers. No additional text before or after.
 
+  Use this EXACT format for ALL frontmatter files with proper image structure:
+
   ---
   name: "{subject}"
   applications:
@@ -75,12 +77,13 @@ template: |
   - "Titanium Alloys"
   - "Nickel-based Superalloys"
   regulatoryStandards: "ISO 18562, ASTM F2100, IEC 60601-1"
+  # CRITICAL: Use EXACT image format with structured hero/micro layout
   images:
     hero:
       alt: "{subject} surface undergoing laser cleaning showing precise contamination removal"
       url: "/images/{subject_slug}-laser-cleaning-hero.jpg"
     micro:
-      alt: "Microscopic view of {subject} surface after laser treatment showing preserved microstructure"
+      alt: "Microscopic view of {subject} surface after laser cleaning showing detailed surface structure"
       url: "/images/{subject_slug}-laser-cleaning-micro.jpg"
   title: "Laser Cleaning {subject} - Technical Guide for Optimal Processing"
   headline: "Comprehensive technical guide for laser cleaning {category} {subject_lowercase}"
@@ -112,6 +115,15 @@ template: |
   ---
 
   CRITICAL: Replace ALL placeholder values with the actual {subject}-specific data. Return ONLY the YAML above with replaced values. No markdown headers, no explanations, no additional text.
+
+  CRITICAL IMAGE FORMAT RULES:
+  1. {subject_slug} MUST match the filename exactly (without .md extension)
+  2. NEVER use flat 'url:' structure
+  3. ALWAYS use structured 'images: hero: url:' format
+  4. Include descriptive alt text for accessibility
+  5. Both hero AND micro image references required
+  6. Use kebab-case consistently throughout
+  7. {exact-material-name} becomes {subject_slug} in kebab-case format
 
 generation_parameters:
   max_tokens: 4000
