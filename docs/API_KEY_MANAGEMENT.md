@@ -1,14 +1,20 @@
-# API Key Management for Testing
+# 🔑 API Key Management Guide
 
-## Problem: Recurring API Key Loss in Tests
+## 🏗️ Secure API Key Architecture (Updated)
 
-The Z-Beam Generator system has experienced recurring issues where API-dependent tests fail with "API key not found" errors, despite API keys being present in the `.env` file.
+The Z-Beam Generator now uses a **secure, fail-fast approach** to API key management with proper separation of configuration and secrets.
 
-## Root Cause
+### **✅ New Architecture (Implemented)**
+- **Primary Storage**: `.env` file (git-ignored, secure)
+- **Configuration Layer**: `config/api_keys.py` (safe to commit, loads from .env)
+- **Access Layer**: `api/key_manager.py` (standardized key access)
+- **Validation**: Immediate fail-fast validation of all required keys
 
-Tests were not properly loading environment variables from the `.env` file, causing the following errors:
-- `❌ API client not provided`
-- `❌ API client is required - no mock fallbacks available`
+### **❌ Old Problems (Solved)**
+- API keys hardcoded in `config/api_keys.py` (security risk)
+- Tests failing with "API key not found" errors
+- Duplicate storage in multiple files
+- No validation of key availability
 - `❌ No generator available for component type`
 
 ## Solution: Proper Environment Loading

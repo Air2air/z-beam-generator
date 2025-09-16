@@ -48,10 +48,10 @@ API_PROVIDERS = {
         "model": "deepseek-chat",
         "max_tokens": 4000,  # Default - will be overridden by component-specific settings
         "temperature": 0.1,  # Default - will be overridden by component-specific settings
-        "timeout_connect": 10,
-        "timeout_read": 45,
-        "max_retries": 3,
-        "retry_delay": 1.0,
+        "timeout_connect": 30,  # Increased for better reliability with large prompts
+        "timeout_read": 120,    # Increased for better reliability with complex content
+        "max_retries": 5,       # More retries for robustness
+        "retry_delay": 2.0,     # Longer delays between retries
         "enabled": True,
         "timeout": 30,
         "rate_limit": {
@@ -61,10 +61,18 @@ API_PROVIDERS = {
         "fallback_provider": None,  # FAIL-FAST: No fallbacks allowed
     },
     "winston": {
+        "name": "Winston AI Detection",
         "type": "winston", 
         "env_var": "WINSTON_API_KEY",
+        "base_url": "https://api.gowinston.ai",
+        "model": "winston-ai-detector",
+        "max_tokens": 1000,
+        "temperature": 0.1,
+        "timeout_connect": 30,  # Updated for consistency
+        "timeout_read": 120,    # Updated for consistency
+        "max_retries": 5,       # Updated for consistency
+        "retry_delay": 2.0,     # Updated for consistency
         "enabled": True,
-        "max_retries": 3,
         "timeout": 30,
         "rate_limit": {
             "requests_per_minute": 100,

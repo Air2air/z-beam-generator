@@ -114,11 +114,11 @@ API_PROVIDERS = {
         "model": "deepseek-chat",
         # Optimized operational parameters
         "max_tokens": 4000,  # Optimized for comprehensive content
-        "temperature": 0.7,  # Balanced creativity
-        "timeout_connect": 10,  # Connection timeout in seconds
-        "timeout_read": 45,  # Read timeout in seconds
-        "max_retries": 3,  # Maximum retry attempts
-        "retry_delay": 1.0,  # Delay between retries in seconds
+        "temperature": 0.1,  # Updated for consistency and precision
+        "timeout_connect": 30,  # Increased for better reliability with large prompts
+        "timeout_read": 120,  # Increased for complex content generation
+        "max_retries": 5,  # Increased for robustness
+        "retry_delay": 2.0,  # Increased delay for better service recovery
     },
     "grok": {
         "name": "Grok",
@@ -127,10 +127,10 @@ API_PROVIDERS = {
         "model": "grok-3",  # UPDATED: Changed from grok-beta to grok-3 (grok-beta deprecated 2025-09-15)
         "max_tokens": 4000,
         "temperature": 0.1,
-        "timeout_connect": 10,
-        "timeout_read": 45,
-        "max_retries": 3,
-        "retry_delay": 1.0,
+        "timeout_connect": 30,  # Updated for consistency
+        "timeout_read": 120,   # Updated for consistency
+        "max_retries": 5,      # Updated for consistency
+        "retry_delay": 2.0,    # Updated for consistency
     },
     "winston": {
         "name": "Winston AI Detection",
@@ -139,10 +139,10 @@ API_PROVIDERS = {
         "model": "winston-ai-detector",
         "max_tokens": 1000,
         "temperature": 0.1,
-        "timeout_connect": 10,
-        "timeout_read": 45,
-        "max_retries": 3,
-        "retry_delay": 1.0,
+        "timeout_connect": 30,  # Updated for consistency
+        "timeout_read": 120,   # Updated for consistency
+        "max_retries": 5,      # Updated for consistency
+        "retry_delay": 2.0,    # Updated for consistency
     }
 }
 

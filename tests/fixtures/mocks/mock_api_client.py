@@ -232,7 +232,7 @@ class MockAPIClient:
         return self.generate(request)
 
     def generate_with_retry(
-        self, request: GenerationRequest, max_retries: int = 3
+        self, request: GenerationRequest, max_retries: int = 5
     ) -> APIResponse:
         """Generate content with built-in retry logic"""
         last_response = None

@@ -35,7 +35,7 @@ class RobustMockAPIClient:
         self.provider = provider
         self.response_delay = kwargs.get("response_delay", 0.1)
         self.error_rate = kwargs.get("error_rate", 0.0)
-        self.max_retries = kwargs.get("max_retries", 3)
+        self.max_retries = kwargs.get("max_retries", 5)  # Updated to match production default
 
         # Response templates for different providers
         self.response_templates = self._load_response_templates()
