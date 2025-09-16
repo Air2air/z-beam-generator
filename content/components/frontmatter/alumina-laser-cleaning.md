@@ -1,95 +1,33 @@
 ---
-name: Alumina
 applications:
-- industry: Electronics Manufacturing
-  detail: Removal of surface oxides and contaminants from Alumina substrates
-- industry: Aerospace Components
-  detail: Cleaning of thermal barrier coatings and ceramic matrix composites
-technicalSpecifications:
-  powerRange: 50-200W
-  pulseDuration: 20-100ns
-  wavelength: 1064nm (primary), 532nm (optional)
-  spotSize: 0.2-1.5mm
-  repetitionRate: 20-100kHz
-  fluenceRange: 1.0–4.5 J/cm²
-  safetyClass: Class 4 (requires full enclosure)
-description: Technical overview of Alumina, Al2O3, for laser cleaning applications,
-  including optimal 1064nm wavelength interaction, and industrial applications in
-  surface preparation.
+- detail: Removal of surface oxides and contaminants from Alumina substrates
+  industry: Electronics Manufacturing
+- detail: Cleaning of thermal barrier coatings and ceramic matrix composites
+  industry: Aerospace Components
 author: Alessandro Moretti
 author_object:
+  country: Italy
+  expertise: Laser-Based Additive Manufacturing
   id: 2
+  image: /images/author/alessandro-moretti.jpg
   name: Alessandro Moretti
   sex: m
   title: Ph.D.
-  country: Italy
-  expertise: Laser-Based Additive Manufacturing
-  image: /images/author/alessandro-moretti.jpg
-keywords: alumina, alumina ceramic, laser ablation, laser cleaning, non-contact cleaning,
-  pulsed fiber laser, surface contamination removal, industrial laser parameters,
-  thermal processing, surface restoration
 category: ceramic
 chemicalProperties:
-  symbol: Al2O3
   formula: Al2O3
   materialType: ceramic
-properties:
-  density: 3.95 g/cm³
-  densityMin: 1.8 g/cm³
-  densityMax: 6.0 g/cm³
-  densityPercentile: 51.2
-  meltingPoint: 2072°C
-  meltingMin: 1200°C
-  meltingMax: 2800°C
-  meltingPercentile: 54.5
-  thermalConductivity: 30 W/m·K
-  thermalMin: 0.5 W/m·K
-  thermalMax: 200 W/m·K
-  thermalPercentile: 14.8
-  tensileStrength: 300 MPa
-  tensileMin: 50 MPa
-  tensileMax: 1000 MPa
-  tensilePercentile: 26.3
-  hardness: 1500-2000 HV
-  hardnessMin: 500 HV
-  hardnessMax: 2500 HV
-  hardnessPercentile: 62.5
-  youngsModulus: 370 GPa
-  modulusMin: 150 GPa
-  modulusMax: 400 GPa
-  modulusPercentile: 88.0
-  laserType: Pulsed Fiber Laser
-  wavelength: 1064nm
-  fluenceRange: 1.0–4.5 J/cm²
-  chemicalFormula: Al2O3
-  laserAbsorptionMin: 0.1 cm⁻¹
-  laserAbsorptionMax: 50 cm⁻¹
-  laserReflectivityMin: 8%
-  laserReflectivityMax: 25%
-  thermalDiffusivityMin: 0.5 mm²/s
-  thermalDiffusivityMax: 80 mm²/s
-  thermalExpansionMin: 0.5 µm/m·K
-  thermalExpansionMax: 8 µm/m·K
-  specificHeatMin: 0.4 J/g·K
-  specificHeatMax: 1.2 J/g·K
-composition:
-- Alumina (Al2O3) 99.6%
-- Trace elements (Si, Fe, Na, Mg)
+  symbol: Al2O3
 compatibility:
 - Stainless Steel
 - Titanium Alloys
 - Nickel-based Superalloys
-regulatoryStandards: ISO 18562, ASTM F2100, IEC 60601-1
-images:
-  hero:
-    alt: Alumina surface undergoing laser cleaning showing precise contamination removal
-    url: /images/alumina-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Alumina surface after laser treatment showing preserved
-      microstructure
-    url: /images/alumina-laser-cleaning-micro.jpg
-title: Laser Cleaning Alumina - Technical Guide for Optimal Processing
-headline: Comprehensive technical guide for laser cleaning ceramic alumina
+composition:
+- Alumina (Al2O3) 99.6%
+- Trace elements (Si, Fe, Na, Mg)
+description: Technical overview of Alumina, Al2O3, for laser cleaning applications,
+  including optimal 1064nm wavelength interaction, and industrial applications in
+  surface preparation.
 environmentalImpact:
 - benefit: Chemical Solvent Elimination
   description: Reduces chemical usage by 100% compared to traditional solvent cleaning
@@ -98,24 +36,86 @@ environmentalImpact:
   description: Saves approximately 5000 liters of water per month in industrial applications
 - benefit: Energy Efficiency
   description: Consumes 40% less energy than thermal cleaning processes
+headline: Comprehensive technical guide for laser cleaning ceramic alumina
+images:
+  hero:
+    alt: Alumina surface undergoing laser cleaning showing precise contamination removal
+    url: /images/alumina-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Alumina surface after laser cleaning showing detailed
+      surface structure
+    url: /images/alumina-laser-cleaning-micro.jpg
+keywords: alumina, alumina ceramic, laser ablation, laser cleaning, non-contact cleaning,
+  pulsed fiber laser, surface contamination removal, industrial laser parameters,
+  thermal processing, surface restoration
+name: Alumina
 outcomes:
-- result: Surface Cleanliness Level
-  metric: Achieves ISO 14644-1 Class 7 cleanliness standard
-- result: Material Removal Precision
-  metric: ±5μm accuracy with no substrate damage
-- result: Processing Speed
-  metric: 2-5 m²/hour cleaning rate depending on contamination level
+- metric: Achieves ISO 14644-1 Class 7 cleanliness standard
+  result: Surface Cleanliness Level
+- metric: ±5μm accuracy with no substrate damage
+  result: Material Removal Precision
+- metric: 2-5 m²/hour cleaning rate depending on contamination level
+  result: Processing Speed
 prompt_chain_verification:
-  base_config_loaded: true
-  persona_config_loaded: true
-  formatting_config_loaded: true
   ai_detection_config_loaded: true
-  persona_country: Italy
   author_id: 2
-  verification_timestamp: '2025-09-16T21:28:33Z'
-  prompt_components_integrated: 4
-  human_authenticity_focus: true
+  base_config_loaded: true
   cultural_adaptation_applied: true
+  formatting_config_loaded: true
+  human_authenticity_focus: true
+  persona_config_loaded: true
+  persona_country: Italy
+  prompt_components_integrated: 4
+  verification_timestamp: '2025-09-16T21:28:33Z'
+properties:
+  chemicalFormula: Al2O3
+  density: 3.95 g/cm³
+  densityMax: 6.0 g/cm³
+  densityMin: 1.8 g/cm³
+  densityPercentile: 51.2
+  fluenceRange: 1.0–4.5 J/cm²
+  hardness: 1500-2000 HV
+  hardnessMax: 2500 HV
+  hardnessMin: 500 HV
+  hardnessPercentile: 62.5
+  laserAbsorptionMax: 50 cm⁻¹
+  laserAbsorptionMin: 0.1 cm⁻¹
+  laserReflectivityMax: 25%
+  laserReflectivityMin: 8%
+  laserType: Pulsed Fiber Laser
+  meltingMax: 2800°C
+  meltingMin: 1200°C
+  meltingPercentile: 54.5
+  meltingPoint: 2072°C
+  modulusMax: 400 GPa
+  modulusMin: 150 GPa
+  modulusPercentile: 88.0
+  specificHeatMax: 1.2 J/g·K
+  specificHeatMin: 0.4 J/g·K
+  tensileMax: 1000 MPa
+  tensileMin: 50 MPa
+  tensilePercentile: 26.3
+  tensileStrength: 300 MPa
+  thermalConductivity: 30 W/m·K
+  thermalDiffusivityMax: 80 mm²/s
+  thermalDiffusivityMin: 0.5 mm²/s
+  thermalExpansionMax: 8 µm/m·K
+  thermalExpansionMin: 0.5 µm/m·K
+  thermalMax: 200 W/m·K
+  thermalMin: 0.5 W/m·K
+  thermalPercentile: 14.8
+  wavelength: 1064nm
+  youngsModulus: 370 GPa
+regulatoryStandards: ISO 18562, ASTM F2100, IEC 60601-1
+technicalSpecifications:
+  fluenceRange: 1.0–4.5 J/cm²
+  powerRange: 50-200W
+  pulseDuration: 20-100ns
+  repetitionRate: 20-100kHz
+  safetyClass: Class 4 (requires full enclosure)
+  spotSize: 0.2-1.5mm
+  wavelength: 1064nm (primary), 532nm (optional)
+title: Laser Cleaning Alumina - Technical Guide for Optimal Processing
 ---
 
 # Version Information

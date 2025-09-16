@@ -1,101 +1,40 @@
 ---
-name: Bronze
 applications:
-- industry: Electronics Manufacturing
-  detail: Removal of surface oxides and contaminants from Bronze connectors and components
-- industry: Aerospace Components
-  detail: Cleaning of Bronze bearings, bushings, and fittings without dimensional
+- detail: Removal of surface oxides and contaminants from Bronze connectors and components
+  industry: Electronics Manufacturing
+- detail: Cleaning of Bronze bearings, bushings, and fittings without dimensional
     alteration
-- industry: Marine Hardware
-  detail: Removal of salt corrosion and biofouling from Bronze propellers and fittings
-- industry: Art Conservation
-  detail: Non-contact cleaning of historical Bronze sculptures and artifacts
-technicalSpecifications:
-  powerRange: 20-150W
-  pulseDuration: 10-200ns
-  wavelength: 1064nm (primary), 532nm (optional)
-  spotSize: 0.05-2.0mm
-  repetitionRate: 10-500kHz
-  fluenceRange: 0.5–3.0 J/cm²
-  safetyClass: Class 4 (requires full enclosure)
-description: Technical overview of Bronze, Cu-Sn alloy, for laser cleaning applications,
-  including optimal 1064nm wavelength interaction with copper-tin matrix, and industrial
-  applications in precision surface preparation.
+  industry: Aerospace Components
+- detail: Removal of salt corrosion and biofouling from Bronze propellers and fittings
+  industry: Marine Hardware
+- detail: Non-contact cleaning of historical Bronze sculptures and artifacts
+  industry: Art Conservation
 author: Ikmanda Roswati
 author_object:
+  country: Indonesia
+  expertise: Ultrafast Laser Physics and Material Interactions
   id: 3
+  image: /images/author/ikmanda-roswati.jpg
   name: Ikmanda Roswati
   sex: m
   title: Ph.D.
-  country: Indonesia
-  expertise: Ultrafast Laser Physics and Material Interactions
-  image: /images/author/ikmanda-roswati.jpg
-keywords: bronze, bronze alloy, copper-tin, laser ablation, laser cleaning, non-contact
-  cleaning, pulsed fiber laser, oxide removal, patina removal, industrial laser parameters,
-  surface restoration
 category: metal
 chemicalProperties:
-  symbol: Bronze
   formula: Cu-Sn
   materialType: metal alloy
-properties:
-  density: 8.8 g/cm³
-  densityMin: 0.5 g/cm³
-  densityMax: 22.6 g/cm³
-  densityPercentile: 37.6
-  meltingPoint: 830-1020°C
-  meltingMin: -39°C
-  meltingMax: 3422°C
-  meltingPercentile: 26.2
-  thermalConductivity: 42-50 W/m·K
-  thermalMin: 8 W/m·K
-  thermalMax: 429 W/m·K
-  thermalPercentile: 9.0
-  tensileStrength: 350-700 MPa
-  tensileMin: 70 MPa
-  tensileMax: 2000 MPa
-  tensilePercentile: 23.6
-  hardness: 60-200 HB
-  hardnessMin: 5 HB
-  hardnessMax: 500 HV
-  hardnessPercentile: 25.3
-  youngsModulus: 110-125 GPa
-  modulusMin: 70 GPa
-  modulusMax: 411 GPa
-  modulusPercentile: 13.9
-  laserType: Pulsed Fiber Laser
-  wavelength: 1064nm
-  fluenceRange: 0.5–3.0 J/cm²
-  chemicalFormula: Cu-Sn
-  laserAbsorptionMin: 0.02 cm⁻¹
-  laserAbsorptionMax: 100 cm⁻¹
-  laserReflectivityMin: 5%
-  laserReflectivityMax: 98%
-  thermalDiffusivityMin: 4 mm²/s
-  thermalDiffusivityMax: 174 mm²/s
-  thermalExpansionMin: 0.5 µm/m·K
-  thermalExpansionMax: 29 µm/m·K
-  specificHeatMin: 0.13 J/g·K
-  specificHeatMax: 0.90 J/g·K
-composition:
-- 'Copper (Cu): 88-95%'
-- 'Tin (Sn): 5-12%'
-- Trace elements (Zn, Pb, P, Ni)
+  symbol: Bronze
 compatibility:
 - Stainless Steel
 - Brass
 - Copper Alloys
 - Aluminum Bronze
-regulatoryStandards: ISO 8501-1, ASTM B505, IEC 60825-1
-images:
-  hero:
-    alt: Bronze surface undergoing laser cleaning showing precise oxide removal
-    url: /images/bronze-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Bronze surface after laser treatment showing clean microstructure
-    url: /images/bronze-laser-cleaning-micro.jpg
-title: Laser Cleaning Bronze - Technical Guide for Optimal Processing
-headline: Comprehensive technical guide for laser cleaning bronze alloys
+composition:
+- 'Copper (Cu): 88-95%'
+- 'Tin (Sn): 5-12%'
+- Trace elements (Zn, Pb, P, Ni)
+description: Technical overview of Bronze, Cu-Sn alloy, for laser cleaning applications,
+  including optimal 1064nm wavelength interaction with copper-tin matrix, and industrial
+  applications in precision surface preparation.
 environmentalImpact:
 - benefit: Chemical Solvent Elimination
   description: Eliminates use of acidic cleaners and chemical solvents for oxide removal
@@ -103,24 +42,86 @@ environmentalImpact:
   description: Zero water consumption compared to traditional abrasive blasting methods
 - benefit: Waste Reduction
   description: Produces minimal waste that can be captured by filtration systems
+headline: Comprehensive technical guide for laser cleaning bronze alloys
+images:
+  hero:
+    alt: Bronze surface undergoing laser cleaning showing precise contamination removal
+    url: /images/bronze-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Bronze surface after laser cleaning showing detailed
+      surface structure
+    url: /images/bronze-laser-cleaning-micro.jpg
+keywords: bronze, bronze alloy, copper-tin, laser ablation, laser cleaning, non-contact
+  cleaning, pulsed fiber laser, oxide removal, patina removal, industrial laser parameters,
+  surface restoration
+name: Bronze
 outcomes:
-- result: Surface Cleanliness Level
-  metric: Achieves SA 2.5 surface preparation standard
-- result: Material Removal Precision
-  metric: Selective removal of oxides without affecting base metal
-- result: Processing Speed
-  metric: 1-3 m²/hour cleaning rate for typical corrosion removal
+- metric: Achieves SA 2.5 surface preparation standard
+  result: Surface Cleanliness Level
+- metric: Selective removal of oxides without affecting base metal
+  result: Material Removal Precision
+- metric: 1-3 m²/hour cleaning rate for typical corrosion removal
+  result: Processing Speed
 prompt_chain_verification:
-  base_config_loaded: true
-  persona_config_loaded: true
-  formatting_config_loaded: true
   ai_detection_config_loaded: true
-  persona_country: Indonesia
   author_id: 3
-  verification_timestamp: '2025-09-16T22:01:48Z'
-  prompt_components_integrated: 4
-  human_authenticity_focus: true
+  base_config_loaded: true
   cultural_adaptation_applied: true
+  formatting_config_loaded: true
+  human_authenticity_focus: true
+  persona_config_loaded: true
+  persona_country: Indonesia
+  prompt_components_integrated: 4
+  verification_timestamp: '2025-09-16T22:01:48Z'
+properties:
+  chemicalFormula: Cu-Sn
+  density: 8.8 g/cm³
+  densityMax: 22.6 g/cm³
+  densityMin: 0.5 g/cm³
+  densityPercentile: 37.6
+  fluenceRange: 0.5–3.0 J/cm²
+  hardness: 60-200 HB
+  hardnessMax: 500 HV
+  hardnessMin: 5 HB
+  hardnessPercentile: 25.3
+  laserAbsorptionMax: 100 cm⁻¹
+  laserAbsorptionMin: 0.02 cm⁻¹
+  laserReflectivityMax: 98%
+  laserReflectivityMin: 5%
+  laserType: Pulsed Fiber Laser
+  meltingMax: 3422°C
+  meltingMin: -39°C
+  meltingPercentile: 26.2
+  meltingPoint: 830-1020°C
+  modulusMax: 411 GPa
+  modulusMin: 70 GPa
+  modulusPercentile: 13.9
+  specificHeatMax: 0.90 J/g·K
+  specificHeatMin: 0.13 J/g·K
+  tensileMax: 2000 MPa
+  tensileMin: 70 MPa
+  tensilePercentile: 23.6
+  tensileStrength: 350-700 MPa
+  thermalConductivity: 42-50 W/m·K
+  thermalDiffusivityMax: 174 mm²/s
+  thermalDiffusivityMin: 4 mm²/s
+  thermalExpansionMax: 29 µm/m·K
+  thermalExpansionMin: 0.5 µm/m·K
+  thermalMax: 429 W/m·K
+  thermalMin: 8 W/m·K
+  thermalPercentile: 9.0
+  wavelength: 1064nm
+  youngsModulus: 110-125 GPa
+regulatoryStandards: ISO 8501-1, ASTM B505, IEC 60825-1
+technicalSpecifications:
+  fluenceRange: 0.5–3.0 J/cm²
+  powerRange: 20-150W
+  pulseDuration: 10-200ns
+  repetitionRate: 10-500kHz
+  safetyClass: Class 4 (requires full enclosure)
+  spotSize: 0.05-2.0mm
+  wavelength: 1064nm (primary), 532nm (optional)
+title: Laser Cleaning Bronze - Technical Guide for Optimal Processing
 ---
 
 # Version Information

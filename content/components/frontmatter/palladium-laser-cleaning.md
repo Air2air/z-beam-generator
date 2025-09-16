@@ -1,99 +1,36 @@
 ---
-name: Palladium
 applications:
-- industry: Electronics Manufacturing
-  detail: Removal of surface oxides and contaminants from Palladium electrical contacts
+- detail: Removal of surface oxides and contaminants from Palladium electrical contacts
     and substrates
-- industry: Jewelry and Catalytic Converter Restoration
-  detail: Precision cleaning of Palladium components without material loss or surface
+  industry: Electronics Manufacturing
+- detail: Precision cleaning of Palladium components without material loss or surface
     alteration
-technicalSpecifications:
-  powerRange: 20-100W
-  pulseDuration: 10-50ns
-  wavelength: 1064nm (primary), 355nm (optional)
-  spotSize: 0.05-0.8mm
-  repetitionRate: 50-200kHz
-  fluenceRange: 0.5–2.0 J/cm²
-  safetyClass: Class 4 (requires full enclosure)
-description: Technical overview of Palladium, Pd, for laser cleaning applications,
-  including optimal 1064nm wavelength interaction, and industrial applications in
-  surface preparation.
+  industry: Jewelry and Catalytic Converter Restoration
 author: Ikmanda Roswati
 author_object:
+  country: Indonesia
+  expertise: Ultrafast Laser Physics and Material Interactions
   id: 3
+  image: /images/author/ikmanda-roswati.jpg
   name: Ikmanda Roswati
   sex: m
   title: Ph.D.
-  country: Indonesia
-  expertise: Ultrafast Laser Physics and Material Interactions
-  image: /images/author/ikmanda-roswati.jpg
-keywords: palladium, palladium metal, laser ablation, laser cleaning, non-contact
-  cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters,
-  thermal processing, surface restoration
 category: metal
 chemicalProperties:
-  symbol: Pd
   formula: Pd
   materialType: metal
-properties:
-  density: 12.023 g/cm³
-  densityMin: 0.5 g/cm³
-  densityMax: 22.6 g/cm³
-  densityPercentile: 52.1
-  meltingPoint: 1554.9°C
-  meltingMin: -39°C
-  meltingMax: 3422°C
-  meltingPercentile: 44.8
-  thermalConductivity: 71.8 W/m·K
-  thermalMin: 8 W/m·K
-  thermalMax: 429 W/m·K
-  thermalPercentile: 15.2
-  tensileStrength: 180-190 MPa (annealed)
-  tensileMin: 70 MPa
-  tensileMax: 2000 MPa
-  tensilePercentile: 6.0
-  hardness: 40-50 HV (annealed)
-  hardnessMin: 5 HB
-  hardnessMax: 500 HV
-  hardnessPercentile: 8.1
-  youngsModulus: 121 GPa
-  modulusMin: 70 GPa
-  modulusMax: 411 GPa
-  modulusPercentile: 15.0
-  laserType: Pulsed Fiber Laser
-  wavelength: 1064nm
-  fluenceRange: 0.5–2.0 J/cm²
-  chemicalFormula: Pd
-  laserAbsorptionMin: 0.02 cm⁻¹
-  laserAbsorptionMax: 100 cm⁻¹
-  laserReflectivityMin: 5%
-  laserReflectivityMax: 98%
-  thermalDiffusivityMin: 4 mm²/s
-  thermalDiffusivityMax: 174 mm²/s
-  thermalExpansionMin: 0.5 µm/m·K
-  thermalExpansionMax: 29 µm/m·K
-  specificHeatMin: 0.13 J/g·K
-  specificHeatMax: 0.90 J/g·K
-composition:
-- Palladium (Pd) 99.95%
-- Trace elements (Ru, Rh, Pt, Au)
+  symbol: Pd
 compatibility:
 - Platinum
 - Gold
 - Silver
 - Rhodium
-regulatoryStandards: ISO 14644-1, ASTM B540, IEC 60825-1
-images:
-  hero:
-    alt: Palladium surface undergoing laser cleaning showing precise contamination
-      removal
-    url: /images/palladium-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Palladium surface after laser treatment showing preserved
-      microstructure
-    url: /images/palladium-laser-cleaning-micro.jpg
-title: Laser Cleaning Palladium - Technical Guide for Optimal Processing
-headline: Comprehensive technical guide for laser cleaning metal palladium
+composition:
+- Palladium (Pd) 99.95%
+- Trace elements (Ru, Rh, Pt, Au)
+description: Technical overview of Palladium, Pd, for laser cleaning applications,
+  including optimal 1064nm wavelength interaction, and industrial applications in
+  surface preparation.
 environmentalImpact:
 - benefit: Chemical Solvent Elimination
   description: Eliminates use of aggressive acids and solvents traditionally used
@@ -103,24 +40,87 @@ environmentalImpact:
     precious metals
 - benefit: Energy Efficiency
   description: 75% less energy consumption compared to thermal annealing processes
+headline: Comprehensive technical guide for laser cleaning metal palladium
+images:
+  hero:
+    alt: Palladium surface undergoing laser cleaning showing precise contamination
+      removal
+    url: /images/palladium-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Palladium surface after laser cleaning showing detailed
+      surface structure
+    url: /images/palladium-laser-cleaning-micro.jpg
+keywords: palladium, palladium metal, laser ablation, laser cleaning, non-contact
+  cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters,
+  thermal processing, surface restoration
+name: Palladium
 outcomes:
-- result: Surface Cleanliness Level
-  metric: Achieves ISO 14644-1 Class 5 cleanliness standard for electronic components
-- result: Material Removal Precision
-  metric: Sub-micron precision with zero substrate damage to precious metal
-- result: Processing Speed
-  metric: 0.5-1.2 m²/hour cleaning rate for delicate Palladium components
+- metric: Achieves ISO 14644-1 Class 5 cleanliness standard for electronic components
+  result: Surface Cleanliness Level
+- metric: Sub-micron precision with zero substrate damage to precious metal
+  result: Material Removal Precision
+- metric: 0.5-1.2 m²/hour cleaning rate for delicate Palladium components
+  result: Processing Speed
 prompt_chain_verification:
-  base_config_loaded: true
-  persona_config_loaded: true
-  formatting_config_loaded: true
   ai_detection_config_loaded: true
-  persona_country: Indonesia
   author_id: 3
-  verification_timestamp: '2025-09-16T22:15:24Z'
-  prompt_components_integrated: 4
-  human_authenticity_focus: true
+  base_config_loaded: true
   cultural_adaptation_applied: true
+  formatting_config_loaded: true
+  human_authenticity_focus: true
+  persona_config_loaded: true
+  persona_country: Indonesia
+  prompt_components_integrated: 4
+  verification_timestamp: '2025-09-16T22:15:24Z'
+properties:
+  chemicalFormula: Pd
+  density: 12.023 g/cm³
+  densityMax: 22.6 g/cm³
+  densityMin: 0.5 g/cm³
+  densityPercentile: 52.1
+  fluenceRange: 0.5–2.0 J/cm²
+  hardness: 40-50 HV (annealed)
+  hardnessMax: 500 HV
+  hardnessMin: 5 HB
+  hardnessPercentile: 8.1
+  laserAbsorptionMax: 100 cm⁻¹
+  laserAbsorptionMin: 0.02 cm⁻¹
+  laserReflectivityMax: 98%
+  laserReflectivityMin: 5%
+  laserType: Pulsed Fiber Laser
+  meltingMax: 3422°C
+  meltingMin: -39°C
+  meltingPercentile: 44.8
+  meltingPoint: 1554.9°C
+  modulusMax: 411 GPa
+  modulusMin: 70 GPa
+  modulusPercentile: 15.0
+  specificHeatMax: 0.90 J/g·K
+  specificHeatMin: 0.13 J/g·K
+  tensileMax: 2000 MPa
+  tensileMin: 70 MPa
+  tensilePercentile: 6.0
+  tensileStrength: 180-190 MPa (annealed)
+  thermalConductivity: 71.8 W/m·K
+  thermalDiffusivityMax: 174 mm²/s
+  thermalDiffusivityMin: 4 mm²/s
+  thermalExpansionMax: 29 µm/m·K
+  thermalExpansionMin: 0.5 µm/m·K
+  thermalMax: 429 W/m·K
+  thermalMin: 8 W/m·K
+  thermalPercentile: 15.2
+  wavelength: 1064nm
+  youngsModulus: 121 GPa
+regulatoryStandards: ISO 14644-1, ASTM B540, IEC 60825-1
+technicalSpecifications:
+  fluenceRange: 0.5–2.0 J/cm²
+  powerRange: 20-100W
+  pulseDuration: 10-50ns
+  repetitionRate: 50-200kHz
+  safetyClass: Class 4 (requires full enclosure)
+  spotSize: 0.05-0.8mm
+  wavelength: 1064nm (primary), 355nm (optional)
+title: Laser Cleaning Palladium - Technical Guide for Optimal Processing
 ---
 
 # Version Information
