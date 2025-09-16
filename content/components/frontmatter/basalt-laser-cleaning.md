@@ -1,10 +1,10 @@
 ---
-name: Alumina
+name: Basalt
 applications:
 - industry: Electronics Manufacturing
-  detail: Removal of surface oxides and contaminants from Alumina substrates
+  detail: Removal of surface oxides and contaminants from Basalt substrates
 - industry: Aerospace Components
-  detail: Cleaning of thermal barrier coatings and ceramic matrix composites
+  detail: Cleaning of thermal barrier coatings and stone matrix composites
 technicalSpecifications:
   powerRange: 50-200W
   pulseDuration: 20-100ns
@@ -13,7 +13,7 @@ technicalSpecifications:
   repetitionRate: 20-100kHz
   fluenceRange: 1.0–4.5 J/cm²
   safetyClass: Class 4 (requires full enclosure)
-description: Technical overview of Alumina, Al2O3, for laser cleaning applications,
+description: Technical overview of Basalt, SiO2·Al2O3·FeO, for laser cleaning applications,
   including optimal 1064nm wavelength interaction, and industrial applications in
   surface preparation.
 author: Alessandro Moretti
@@ -25,71 +25,78 @@ author_object:
   country: Italy
   expertise: Laser-Based Additive Manufacturing
   image: /images/author/alessandro-moretti.jpg
-keywords: alumina, alumina ceramic, laser ablation, laser cleaning, non-contact cleaning,
+keywords: basalt, basalt stone, laser ablation, laser cleaning, non-contact cleaning,
   pulsed fiber laser, surface contamination removal, industrial laser parameters,
   thermal processing, surface restoration
-category: ceramic
+category: stone
 chemicalProperties:
-  symbol: Al2O3
-  formula: Al2O3
-  materialType: ceramic
+  symbol: Basalt
+  formula: SiO2·Al2O3·FeO
+  materialType: stone
 properties:
-  density: 3.95 g/cm³
-  densityMin: 1.8 g/cm³
-  densityMax: 6.0 g/cm³
-  densityPercentile: 51.2
-  meltingPoint: 2072°C
+  density: 2.9 g/cm³
+  densityMin: 1.5 g/cm³
+  densityMax: 3.2 g/cm³
+  densityPercentile: 82.4
+  meltingPoint: 1170-1250°C
   meltingMin: 1200°C
-  meltingMax: 2800°C
-  meltingPercentile: 54.5
-  thermalConductivity: 30 W/m·K
-  thermalMin: 0.5 W/m·K
-  thermalMax: 200 W/m·K
-  thermalPercentile: 14.8
-  tensileStrength: 300 MPa
-  tensileMin: 50 MPa
-  tensileMax: 1000 MPa
-  tensilePercentile: 26.3
-  hardness: 1500-2000 HV
-  hardnessMin: 500 HV
-  hardnessMax: 2500 HV
-  hardnessPercentile: 62.5
-  youngsModulus: 370 GPa
-  modulusMin: 150 GPa
-  modulusMax: 400 GPa
-  modulusPercentile: 88.0
+  meltingMax: 1700°C
+  meltingPercentile: 2.0
+  thermalConductivity: 1.3-1.7 W/m·K
+  thermalMin: 0.2 W/m·K
+  thermalMax: 5.0 W/m·K
+  thermalPercentile: 27.1
+  tensileStrength: 10-30 MPa
+  tensileMin: 2 MPa
+  tensileMax: 300 MPa
+  tensilePercentile: 6.0
+  hardness: 5-6 Mohs
+  hardnessMin: 100 HV
+  hardnessMax: 800 HV
+  hardnessPercentile: 0.0
+  youngsModulus: 60-100 GPa
+  modulusMin: 10 GPa
+  modulusMax: 100 GPa
+  modulusPercentile: 77.8
   laserType: Pulsed Fiber Laser
   wavelength: 1064nm
   fluenceRange: 1.0–4.5 J/cm²
-  chemicalFormula: Al2O3
-  laserAbsorptionMin: 0.1 cm⁻¹
-  laserAbsorptionMax: 50 cm⁻¹
-  laserReflectivityMin: 8%
-  laserReflectivityMax: 25%
+  chemicalFormula: SiO2·Al2O3·FeO
+  laserAbsorptionMin: 0.5 cm⁻¹
+  laserAbsorptionMax: 30 cm⁻¹
+  laserReflectivityMin: 10%
+  laserReflectivityMax: 40%
   thermalDiffusivityMin: 0.5 mm²/s
-  thermalDiffusivityMax: 80 mm²/s
-  thermalExpansionMin: 0.5 µm/m·K
-  thermalExpansionMax: 8 µm/m·K
-  specificHeatMin: 0.4 J/g·K
-  specificHeatMax: 1.2 J/g·K
+  thermalDiffusivityMax: 3 mm²/s
+  thermalExpansionMin: 3 µm/m·K
+  thermalExpansionMax: 12 µm/m·K
+  specificHeatMin: 0.7 J/g·K
+  specificHeatMax: 1.0 J/g·K
 composition:
-- Alumina (Al2O3) 99.6%
-- Trace elements (Si, Fe, Na, Mg)
+- 'SiO2: 45-55%'
+- 'Al2O3: 14-18%'
+- 'FeO: 5-12%'
+- 'CaO: 8-12%'
+- 'MgO: 5-7%'
+- 'Na2O: 2-4%'
+- 'K2O: 1-2%'
+- 'TiO2: 1-2%'
 compatibility:
-- Stainless Steel
-- Titanium Alloys
-- Nickel-based Superalloys
+- Concrete
+- Granite
+- Marble
+- Ceramic Materials
 regulatoryStandards: ISO 18562, ASTM F2100, IEC 60601-1
 images:
   hero:
-    alt: Alumina surface undergoing laser cleaning showing precise contamination removal
-    url: /images/alumina-laser-cleaning-hero.jpg
+    alt: Basalt surface undergoing laser cleaning showing precise contamination removal
+    url: /images/basalt-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Alumina surface after laser treatment showing preserved
+    alt: Microscopic view of Basalt surface after laser treatment showing preserved
       microstructure
-    url: /images/alumina-laser-cleaning-micro.jpg
-title: Laser Cleaning Alumina - Technical Guide for Optimal Processing
-headline: Comprehensive technical guide for laser cleaning ceramic alumina
+    url: /images/basalt-laser-cleaning-micro.jpg
+title: Laser Cleaning Basalt - Technical Guide for Optimal Processing
+headline: Comprehensive technical guide for laser cleaning stone basalt
 environmentalImpact:
 - benefit: Chemical Solvent Elimination
   description: Reduces chemical usage by 100% compared to traditional solvent cleaning
@@ -112,17 +119,17 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Italy
   author_id: 2
-  verification_timestamp: '2025-09-16T21:28:33Z'
+  verification_timestamp: '2025-09-16T22:32:00Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 ---
 
 # Version Information
-# Generated: 2025-09-16T14:29:21.395618
-# Material: Alumina
+# Generated: 2025-09-16T15:32:54.802753
+# Material: Basalt
 # Component: frontmatter
 # Generator: Z-Beam v2.1.0
 # Author: AI Assistant
 # Platform: Darwin (3.12.4)
-# File: content/components/frontmatter/alumina-laser-cleaning.md
+# File: content/components/frontmatter/basalt-laser-cleaning.md

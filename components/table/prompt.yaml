@@ -1,45 +1,61 @@
+
 name: "Table Generator"
-description: "Generates deterministic technical tables following exact example format - FAIL-FAST: No fallbacks allowed"
-version: "5.0.0"
+description: "Generates deterministic YAML tables for material properties suitable for Next.js rendering - FAIL-FAST: No fallbacks allowed"
+version: "6.0.0"
 
 template: |
-  Generate technical tables for {subject} laser cleaning properties.
+  You are an expert YAML schema designer and front-end data architect for Next.js applications. Your task is to process a provided frontmatter YAML file for a material (e.g., {subject}) and generate a structured YAML output file optimized for rendering in a Next.js webpage. Focus exclusively on "table-appropriate data," which includes only the quantifiable properties from the `properties` section (e.g., density, meltingPoint, thermalConductivity, etc., along with their Min, Max, and Percentile variants). Ignore all other sections like applications, description, author, etc., as they are not tabular.
 
   CRITICAL REQUIREMENTS - FAIL-FAST ARCHITECTURE:
-  - MANDATORY: Follow the EXACT table structure and content from components/table/example_table.md
-  - NO RANDOMIZATION: Generate the same exact tables every time with identical content
-  - NO FALLBACKS: If required data is missing, fail immediately with clear error message
-  - DETERMINISTIC OUTPUT: Tables must be identical across multiple generations
+  - MANDATORY: Follow the EXACT YAML structure and content from the provided schema
+  - NO RANDOMIZATION: Generate the same exact YAML every time with identical content
+  - NO FALLBACKS: If required data is missing (e.g., no properties section or incomplete Min/Max), fail immediately with clear error message: "ERROR: Insufficient table-appropriate data in frontmatter for {subject}"
+  - DETERMINISTIC OUTPUT: YAML must be identical across multiple generations
 
-  FORMATTING REQUIREMENTS:
-  - Use proper markdown table syntax with consistent alignment
-  - Ensure all tables follow the established 3-column format
-  - Validate markdown table structure before output
-  - No additional text or explanations beyond tables
+  OUTPUT REQUIREMENTS:
+  - **Format**: Pure YAML, valid and parseable. The root key is `materialTables`. Under it, define a `tables` array of objects, each representing a categorized table.
+  - **Grouping and Categorization**:
+    - Group properties into logical categories based on materials science standards: e.g., `Physical Properties`, `Thermal Properties`, `Mechanical Properties`, `Optical Properties`, `Laser Processing Parameters`. Use Markdown-style headers for category names (e.g., `## Physical Properties`) as string values in a `header` field for each table object—this allows easy rendering as H2 headers in MDX or JSX.
+    - Only include categories with at least one property. Assign properties as follows (adapt if new ones appear, but stick to these for consistency):
+      - **Physical Properties**: density*, melting*.
+      - **Thermal Properties**: thermalConductivity*, thermalDiffusivity*, thermalExpansion*, specificHeat*.
+      - **Mechanical Properties**: tensileStrength*, hardness*, youngsModulus* (or modulus*).
+      - **Optical Properties**: laserAbsorption*, laserReflectivity*.
+      - **Laser Processing Parameters**: laserType, wavelength, fluenceRange.
+    - For properties without a specific value (e.g., only Min/Max like thermalDiffusivityMin), treat the range as the "value" (e.g., "0.1-20 mm²/s").
+    - Include `chemicalFormula` in a standalone `Composition` section if present, but only if it fits tabular format (e.g., as a single-row table with header "## Composition").
+  - **Table Structure**:
+    - Each table object has:
+      - `header`: String with MD header (e.g., "### Physical Properties").
+      - `rows`: Array of objects, each for one property.
+    - Each row object:
+      - `property`: The property name (e.g., "Density").
+      - `value`: The material-specific value/range (e.g., "2.7-3.0 g/cm³ (Al matrix), 4.5-4.8 g/cm³ (Ti matrix)").
+      - `min`: Min value (e.g., "0.9 g/cm³").
+      - `max`: Max value (e.g., "2.2 g/cm³").
+      - `percentile`: Percentile value (e.g., 100.0). Omit if not present.
+      - `unit`: The unit (e.g., "g/cm³"). Infer from the value string.
+      - `htmlVisualization`: A proposed HTML snippet (as a string) to visualize where the material's value falls within Min-Max. Use a simple inline progress bar with CSS classes for Next.js styling (assume Tailwind CSS). Structure:
+        - Parse the value as a single numeric midpoint if it's a range (e.g., for "2.7-3.0", use 2.85 as midpoint; for dual ranges like Al/Ti, average the midpoints or prioritize primary matrix).
+        - Scale: 0% at Min, 100% at Max.
+        - HTML: `<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600 h-2 rounded-full" style="width: ${percentage}%"></div></div><p class="text-xs text-center">Value at ${percentage}% of range</p>`.
+        - Calculate percentage: `((midpoint - min) / (max - min)) * 100`. Handle units by stripping them for calc (e.g., parseFloat). If value is outside range, cap at 0-100%. If no specific value, use 50% as placeholder.
+  - **Next.js Integration Notes**:
+    - Ensure YAML is importable via `gray-matter` or `js-yaml`.
+    - Add a top-level `renderInstructions` key with a string: "In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + '%' : 'N/A'}</td><td dangerouslySetInnerHTML={{__html: htmlVisualization}} /></tr>. Use MDX for headers."
+    - Keep YAML concise; no extra metadata unless specified.
 
-  REQUIRED TABLES (EXACT ORDER):
-  1. Material Properties - 8 rows with specific properties
-  2. Material Grades and Purity - 4 rows with grade specifications
-  3. Performance Metrics - 4 rows with performance data
-  4. Standards and Compliance - 4 rows with industry standards
-  5. Environmental Data - 4 rows with environmental parameters
-  6. Laser Cleaning Parameters - 6 rows with laser specifications
+  ### Input:
+  {frontmatter_yaml}
 
-  TABLE FORMAT:
-  | Property | Value | Unit |
-  | --- | --- | --- |
-  | Property Name | Specific Value | Unit |
-
-  MATERIAL-SPECIFIC DATA:
-  - Use exact values from material database for {subject}
-  - If material data is incomplete, fail with clear error message
-  - No default values or approximations allowed
+  Generate the YAML output directly. Do not add explanations or wrappers.
 
   VALIDATION:
-  - Ensure all tables have exactly the specified number of rows
-  - Verify markdown table syntax is correct
-  - Confirm all values are technically accurate for {subject}
+  - Ensure all categories have the correct properties assigned
+  - Verify YAML syntax is correct and parseable
+  - Confirm all calculations for htmlVisualization are accurate for {subject}
+  - If no properties found, output: ERROR: No table-appropriate data for {subject}
 
 parameters:
-  max_tokens: 1500
+  max_tokens: 2000
   temperature: 0.0

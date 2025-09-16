@@ -1,10 +1,11 @@
 ---
-name: Alumina
+name: Tantalum
 applications:
 - industry: Electronics Manufacturing
-  detail: Removal of surface oxides and contaminants from Alumina substrates
+  detail: Removal of surface oxides and contaminants from Tantalum capacitors and
+    substrates
 - industry: Aerospace Components
-  detail: Cleaning of thermal barrier coatings and ceramic matrix composites
+  detail: Cleaning of Tantalum heat exchangers and rocket engine components
 technicalSpecifications:
   powerRange: 50-200W
   pulseDuration: 20-100ns
@@ -13,7 +14,7 @@ technicalSpecifications:
   repetitionRate: 20-100kHz
   fluenceRange: 1.0–4.5 J/cm²
   safetyClass: Class 4 (requires full enclosure)
-description: Technical overview of Alumina, Al2O3, for laser cleaning applications,
+description: Technical overview of Tantalum, Ta, for laser cleaning applications,
   including optimal 1064nm wavelength interaction, and industrial applications in
   surface preparation.
 author: Alessandro Moretti
@@ -25,71 +26,73 @@ author_object:
   country: Italy
   expertise: Laser-Based Additive Manufacturing
   image: /images/author/alessandro-moretti.jpg
-keywords: alumina, alumina ceramic, laser ablation, laser cleaning, non-contact cleaning,
+keywords: tantalum, tantalum metal, laser ablation, laser cleaning, non-contact cleaning,
   pulsed fiber laser, surface contamination removal, industrial laser parameters,
   thermal processing, surface restoration
-category: ceramic
+category: metal
 chemicalProperties:
-  symbol: Al2O3
-  formula: Al2O3
-  materialType: ceramic
+  symbol: Ta
+  formula: Ta
+  materialType: metal
 properties:
-  density: 3.95 g/cm³
-  densityMin: 1.8 g/cm³
-  densityMax: 6.0 g/cm³
-  densityPercentile: 51.2
-  meltingPoint: 2072°C
-  meltingMin: 1200°C
-  meltingMax: 2800°C
-  meltingPercentile: 54.5
-  thermalConductivity: 30 W/m·K
-  thermalMin: 0.5 W/m·K
-  thermalMax: 200 W/m·K
-  thermalPercentile: 14.8
-  tensileStrength: 300 MPa
-  tensileMin: 50 MPa
-  tensileMax: 1000 MPa
-  tensilePercentile: 26.3
-  hardness: 1500-2000 HV
-  hardnessMin: 500 HV
-  hardnessMax: 2500 HV
-  hardnessPercentile: 62.5
-  youngsModulus: 370 GPa
-  modulusMin: 150 GPa
-  modulusMax: 400 GPa
-  modulusPercentile: 88.0
+  density: 16.69 g/cm³
+  densityMin: 0.5 g/cm³
+  densityMax: 22.6 g/cm³
+  densityPercentile: 73.3
+  meltingPoint: 3017°C
+  meltingMin: -39°C
+  meltingMax: 3422°C
+  meltingPercentile: 88.0
+  thermalConductivity: 57.5 W/m·K
+  thermalMin: 8 W/m·K
+  thermalMax: 429 W/m·K
+  thermalPercentile: 11.8
+  tensileStrength: 210-345 MPa
+  tensileMin: 70 MPa
+  tensileMax: 2000 MPa
+  tensilePercentile: 10.8
+  hardness: 800-1100 HV
+  hardnessMin: 5 HB
+  hardnessMax: 500 HV
+  hardnessPercentile: 100.0
+  youngsModulus: 186 GPa
+  modulusMin: 70 GPa
+  modulusMax: 411 GPa
+  modulusPercentile: 34.0
   laserType: Pulsed Fiber Laser
   wavelength: 1064nm
   fluenceRange: 1.0–4.5 J/cm²
-  chemicalFormula: Al2O3
-  laserAbsorptionMin: 0.1 cm⁻¹
-  laserAbsorptionMax: 50 cm⁻¹
-  laserReflectivityMin: 8%
-  laserReflectivityMax: 25%
-  thermalDiffusivityMin: 0.5 mm²/s
-  thermalDiffusivityMax: 80 mm²/s
+  chemicalFormula: Ta
+  laserAbsorptionMin: 0.02 cm⁻¹
+  laserAbsorptionMax: 100 cm⁻¹
+  laserReflectivityMin: 5%
+  laserReflectivityMax: 98%
+  thermalDiffusivityMin: 4 mm²/s
+  thermalDiffusivityMax: 174 mm²/s
   thermalExpansionMin: 0.5 µm/m·K
-  thermalExpansionMax: 8 µm/m·K
-  specificHeatMin: 0.4 J/g·K
-  specificHeatMax: 1.2 J/g·K
+  thermalExpansionMax: 29 µm/m·K
+  specificHeatMin: 0.13 J/g·K
+  specificHeatMax: 0.90 J/g·K
 composition:
-- Alumina (Al2O3) 99.6%
-- Trace elements (Si, Fe, Na, Mg)
+- Tantalum (Ta) 99.9%
+- Trace elements (Nb, Fe, Si, O)
 compatibility:
-- Stainless Steel
+- Niobium
+- Tungsten
+- Molybdenum
 - Titanium Alloys
-- Nickel-based Superalloys
-regulatoryStandards: ISO 18562, ASTM F2100, IEC 60601-1
+regulatoryStandards: ISO 18562, ASTM F560, ASTM B708
 images:
   hero:
-    alt: Alumina surface undergoing laser cleaning showing precise contamination removal
-    url: /images/alumina-laser-cleaning-hero.jpg
+    alt: Tantalum surface undergoing laser cleaning showing precise contamination
+      removal
+    url: /images/tantalum-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Alumina surface after laser treatment showing preserved
+    alt: Microscopic view of Tantalum surface after laser treatment showing preserved
       microstructure
-    url: /images/alumina-laser-cleaning-micro.jpg
-title: Laser Cleaning Alumina - Technical Guide for Optimal Processing
-headline: Comprehensive technical guide for laser cleaning ceramic alumina
+    url: /images/tantalum-laser-cleaning-micro.jpg
+title: Laser Cleaning Tantalum - Technical Guide for Optimal Processing
+headline: Comprehensive technical guide for laser cleaning metal tantalum
 environmentalImpact:
 - benefit: Chemical Solvent Elimination
   description: Reduces chemical usage by 100% compared to traditional solvent cleaning
@@ -112,17 +115,17 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Italy
   author_id: 2
-  verification_timestamp: '2025-09-16T21:28:33Z'
+  verification_timestamp: '2025-09-16T22:22:03Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 ---
 
 # Version Information
-# Generated: 2025-09-16T14:29:21.395618
-# Material: Alumina
+# Generated: 2025-09-16T15:22:52.141425
+# Material: Tantalum
 # Component: frontmatter
 # Generator: Z-Beam v2.1.0
 # Author: AI Assistant
 # Platform: Darwin (3.12.4)
-# File: content/components/frontmatter/alumina-laser-cleaning.md
+# File: content/components/frontmatter/tantalum-laser-cleaning.md
