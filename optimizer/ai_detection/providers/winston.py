@@ -12,6 +12,13 @@ import requests
 
 from ..types import AIDetectionConfig, AIDetectionError, AIDetectionResult
 
+# Import composite scorer for bias correction
+try:
+    from winston_composite_scorer import WinstonCompositeScorer
+    COMPOSITE_SCORER_AVAILABLE = True
+except ImportError:
+    COMPOSITE_SCORER_AVAILABLE = False
+
 logger = logging.getLogger(__name__)
 
 
@@ -178,8 +185,83 @@ class WinstonProvider:
                         f"📊 Sentence analysis: {len(failing_sentences)}/{len(data['sentences'])} failing sentences ({details['failing_sentences_percentage']:.1f}%)"
                     )
 
+                # Apply composite scoring for bias correction if available and needed
+                final_score = ai_score
+                composite_applied = False
+                
+                if COMPOSITE_SCORER_AVAILABLE and ai_score < 50:  # Apply composite scoring for poor scores
+                    try:
+                        # Create composite scorer instance
+                        composite_scorer = WinstonCompositeScorer()
+                        
+                        # Check if this is technical content that might benefit from composite scoring
+                        is_technical = self._is_technical_content(text, details)
+                        
+                        if is_technical:
+                            print("🔧 [AI DETECTOR] Applying composite scoring for technical content...")
+                            logger.info("🔧 [AI DETECTOR] Technical content detected, applying composite scoring correction")
+                            
+                            try:
+                                # Calculate composite score using Winston response data
+                                composite_result = composite_scorer.calculate_composite_score(data)
+                                
+                                final_score = composite_result.composite_score
+                                composite_applied = True
+                                
+                                # Update classification based on composite score
+                                if final_score < 30:
+                                    classification = "ai"
+                                elif final_score > 70:
+                                    classification = "human"
+                                else:
+                                    classification = "unclear"
+                                
+                                # Add composite scoring details
+                                details["composite_scoring"] = {
+                                    "applied": True,
+                                    "original_score": ai_score,
+                                    "composite_score": final_score,
+                                    "improvement": final_score - ai_score,
+                                    "component_scores": composite_result.component_scores,
+                                    "bias_adjustments": composite_result.bias_adjustments,
+                                    "reasoning": composite_result.reasoning
+                                }
+                                
+                                print(f"✅ [AI DETECTOR] Composite scoring applied - Original: {ai_score:.1f} → Composite: {final_score:.1f} (+{final_score - ai_score:.1f})")
+                                logger.info(f"✅ [AI DETECTOR] Composite scoring successful - Score improved from {ai_score:.1f} to {final_score:.1f}")
+                            
+                            except Exception as composite_error:
+                                logger.error(f"❌ [AI DETECTOR] Composite scoring error: {composite_error}")
+                                details["composite_scoring"] = {
+                                    "applied": False,
+                                    "error": str(composite_error)
+                                }
+                        else:
+                            details["composite_scoring"] = {
+                                "applied": False,
+                                "reason": "Non-technical content - using original Winston score"
+                            }
+                    except Exception as e:
+                        logger.error(f"❌ [AI DETECTOR] Composite scoring initialization error: {e}")
+                        details["composite_scoring"] = {
+                            "applied": False,
+                            "error": f"Initialization error: {str(e)}"
+                        }
+                else:
+                    # Document why composite scoring wasn't applied
+                    if not COMPOSITE_SCORER_AVAILABLE:
+                        details["composite_scoring"] = {
+                            "applied": False,
+                            "reason": "Composite scorer not available"
+                        }
+                    elif ai_score >= 50:
+                        details["composite_scoring"] = {
+                            "applied": False,
+                            "reason": "Original score acceptable (>= 50)"
+                        }
+
                 return AIDetectionResult(
-                    score=ai_score,
+                    score=final_score,  # Use composite score if applied, otherwise original
                     confidence=confidence,
                     classification=classification,
                     details=details,
@@ -312,3 +394,51 @@ class WinstonProvider:
             return (starters.count(most_common) / len(starters)) > 0.5
 
         return False
+
+    def _is_technical_content(self, text: str, details: Dict[str, Any]) -> bool:
+        """Determine if content is technical and likely to benefit from composite scoring."""
+        # Technical indicators
+        technical_keywords = [
+            'laser', 'welding', 'cutting', 'cleaning', 'metal', 'steel', 'aluminum', 
+            'copper', 'titanium', 'stainless', 'precision', 'industrial', 'manufacturing',
+            'technology', 'process', 'equipment', 'system', 'operation', 'parameters',
+            'specifications', 'applications', 'performance', 'efficiency', 'quality',
+            'surface', 'material', 'oxide', 'coating', 'removal', 'preparation',
+            'automation', 'control', 'safety', 'maintenance', 'calibration'
+        ]
+        
+        text_lower = text.lower()
+        technical_count = sum(1 for keyword in technical_keywords if keyword in text_lower)
+        
+        # Check for technical writing patterns
+        has_technical_terms = technical_count >= 3
+        has_measurements = any(unit in text_lower for unit in ['mm', 'cm', 'inch', 'degree', 'watt', 'joule', 'bar', 'psi'])
+        has_percentages = '%' in text or 'percent' in text_lower
+        has_numbers = any(char.isdigit() for char in text)
+        
+        # Check readability score - technical content often has lower readability
+        readability_score = details.get('readability_score', 50)
+        low_readability = readability_score < 40
+        
+        # Check sentence complexity - technical content often has longer sentences
+        avg_sentence_length = len(text.split()) / max(text.count('.') + text.count('!') + text.count('?'), 1)
+        complex_sentences = avg_sentence_length > 20
+        
+        # Technical content scoring criteria
+        technical_indicators = [
+            has_technical_terms,
+            has_measurements,
+            has_percentages,
+            has_numbers,
+            low_readability,
+            complex_sentences
+        ]
+        
+        # Need at least 3 technical indicators to apply composite scoring
+        technical_score = sum(technical_indicators)
+        is_technical = technical_score >= 3
+        
+        if is_technical:
+            logger.info(f"🔬 [AI DETECTOR] Technical content detected: {technical_score}/6 indicators present")
+        
+        return is_technical

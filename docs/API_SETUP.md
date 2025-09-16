@@ -60,7 +60,7 @@ if "timeout" in terminal_output:
 
 ### Fixed API Parameters
 - **Conservative Timeouts**: Resolved API timeout issues by using conservative parameters
-- **Optimized Token Limits**: Set `max_tokens=800` and `temperature=0.7` for reliable operation
+- **Optimized Token Limits**: Set `max_tokens=4000` and `temperature=0.1` for reliable operation
 - **Large Prompt Support**: System now handles large prompts without connection timeouts
 
 ## Supported Providers
@@ -113,7 +113,7 @@ API_PROVIDERS = {
         "base_url": "https://api.deepseek.com",
         "model": "deepseek-chat",
         # Optimized operational parameters
-        "max_tokens": 800,  # Conservative for large prompts
+        "max_tokens": 4000,  # Optimized for comprehensive content
         "temperature": 0.7,  # Balanced creativity
         "timeout_connect": 10,  # Connection timeout in seconds
         "timeout_read": 45,  # Read timeout in seconds
@@ -125,8 +125,8 @@ API_PROVIDERS = {
         "env_var": "GROK_API_KEY",
         "base_url": "https://api.x.ai",  # FIXED: Removed /v1 to prevent double-pathing
         "model": "grok-3",  # UPDATED: Changed from grok-beta to grok-3 (grok-beta deprecated 2025-09-15)
-        "max_tokens": 800,
-        "temperature": 0.7,
+        "max_tokens": 4000,
+        "temperature": 0.1,
         "timeout_connect": 10,
         "timeout_read": 45,
         "max_retries": 3,
@@ -232,7 +232,7 @@ The system now uses strict fail-fast architecture:
 
 #### **Fixed API Timeout Issues**
 - **Root Cause**: Aggressive API parameters (max_tokens=2000, temperature=0.9) caused connection timeouts
-- **Solution**: Implemented conservative parameters (max_tokens=800, temperature=0.7) for reliable operation
+- **Solution**: Implemented optimized parameters (max_tokens=4000, temperature=0.1) for comprehensive content generation
 - **Large Prompt Support**: System now handles large prompts without timeout failures
 
 #### **Files Updated for Centralization**

@@ -166,7 +166,7 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
             )
         category = material_data["category"]
 
-        # Formula is now optional for frontmatter generation
+        # Formula extraction with intelligent fallback generation
         formula = None
         if "formula" in material_data and material_data["formula"]:
             formula = material_data["formula"]
@@ -176,11 +176,8 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
             and material_data["data"]["formula"]
         ):
             formula = material_data["data"]["formula"]
-        else:
-            logger.warning(f"Material data missing 'formula' field for {material_name} - continuing without formula")
-
-        # Symbol is now optional for frontmatter generation
-        # Use formula as fallback if symbol is not available
+        
+        # Symbol extraction with intelligent fallback generation
         symbol = None
         if "symbol" in material_data and material_data["symbol"]:
             symbol = material_data["symbol"]
@@ -190,14 +187,38 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
             and material_data["data"]["symbol"]
         ):
             symbol = material_data["data"]["symbol"]
-        else:
-            # Use formula as fallback for symbol
-            if formula:
-                symbol = formula
-                logger.info(f"Using formula '{formula}' as fallback for missing symbol in {material_name}")
-            else:
-                # Symbol is now optional
-                logger.warning(f"Material data missing 'symbol' field for {material_name} - continuing without symbol")
+        
+        # Apply category-specific fallback generation if formula/symbol missing
+        if not formula or not symbol:
+            try:
+                from utils.core.chemical_fallback_generator import ChemicalFallbackGenerator
+                
+                fallback_generator = ChemicalFallbackGenerator()
+                fallback_formula, fallback_symbol = fallback_generator.generate_formula_and_symbol(
+                    material_name, category
+                )
+                
+                if not formula and fallback_formula:
+                    formula = fallback_formula
+                    logger.info(f"Generated fallback formula '{formula}' for {material_name} using category-specific rules")
+                
+                if not symbol and fallback_symbol:
+                    symbol = fallback_symbol
+                    logger.info(f"Generated fallback symbol '{symbol}' for {material_name} using category-specific rules")
+                    
+            except Exception as e:
+                logger.warning(f"Failed to generate chemical fallbacks for {material_name}: {e}")
+        
+        # Final fallback: use formula as symbol if still missing
+        if not symbol and formula:
+            symbol = formula
+            logger.info(f"Using formula '{formula}' as final fallback for missing symbol in {material_name}")
+        
+        # Log warnings for truly missing data
+        if not formula:
+            logger.warning(f"No formula available for {material_name} - continuing without formula")
+        if not symbol:
+            logger.warning(f"No symbol available for {material_name} - continuing without symbol")
 
         # FAIL-FAST: Author information is required
         if not author_info or "name" not in author_info:

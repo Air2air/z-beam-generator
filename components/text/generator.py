@@ -180,10 +180,20 @@ class TextComponentGenerator(APIComponentGenerator):
                     error_message=result.error_message,
                 )
 
+            # Apply content humanization for better AI detection scores
+            try:
+                from scripts.tools.quick_content_humanizer import QuickContentHumanizer
+                humanizer = QuickContentHumanizer()
+                humanized_content = humanizer.humanize_content(result.content)
+                logger.info(f"✨ Applied content humanization for {material_name}")
+            except Exception as e:
+                logger.warning(f"⚠️ Content humanization failed, using original content: {e}")
+                humanized_content = result.content
+
             # Format content with frontmatter at the bottom
             try:
                 formatted_content = self._format_content_with_frontmatter(
-                    result.content, material_name, author_info, frontmatter_data
+                    humanized_content, material_name, author_info, frontmatter_data
                 )
             except ValueError as e:
                 # Re-raise ValueError for missing required dependencies (fail-fast)

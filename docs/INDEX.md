@@ -8,6 +8,8 @@
 |--------------|-------|
 | **Get started immediately** | [QUICK_START.md](QUICK_START.md) |
 | **Fix API connection issues** | [api/ERROR_HANDLING.md](api/ERROR_HANDLING.md) |
+| **Optimize content with Winston.ai bias correction** | [OPTIMIZER_CONSOLIDATED_GUIDE.md](OPTIMIZER_CONSOLIDATED_GUIDE.md) |
+| **Understand Winston.ai composite scoring** | [WINSTON_COMPOSITE_SCORING_INTEGRATION.md](WINSTON_COMPOSITE_SCORING_INTEGRATION.md) |
 | **Generate content for materials** | [operations/CONTENT_GENERATION.md](operations/CONTENT_GENERATION.md) |
 | **Set up API keys** | [setup/API_CONFIGURATION.md](setup/API_CONFIGURATION.md) |
 | **Understand the architecture** | [core/ARCHITECTURE.md](core/ARCHITECTURE.md) |
@@ -23,6 +25,13 @@ Understanding how Z-Beam works fundamentally
 - [**COMPONENT_SYSTEM.md**](core/COMPONENT_SYSTEM.md) - How components interact
 - [**DATA_FLOW.md**](core/DATA_FLOW.md) - Data flow through the generation pipeline
 - [**FAIL_FAST_PRINCIPLES.md**](core/FAIL_FAST_PRINCIPLES.md) - Design philosophy and constraints
+
+### 🎯 **Optimization System** *(September 2025 Major Updates)*
+Content optimization with Winston.ai bias correction and learning algorithms
+- [**OPTIMIZER_CONSOLIDATED_GUIDE.md**](OPTIMIZER_CONSOLIDATED_GUIDE.md) - ✅ Complete optimization system guide
+- [**WINSTON_COMPOSITE_SCORING_INTEGRATION.md**](WINSTON_COMPOSITE_SCORING_INTEGRATION.md) - ✅ Winston.ai bias correction details
+- [**../optimizer/QUICK_START.md**](../optimizer/QUICK_START.md) - 5-minute optimization setup
+- [**SEAMLESS_COMPOSITE_INTEGRATION_COMPLETE.md**](SEAMLESS_COMPOSITE_INTEGRATION_COMPLETE.md) - Integration completion summary
 
 ### ⚙️ **Setup & Configuration**
 Getting Z-Beam running in your environment

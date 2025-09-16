@@ -22,7 +22,7 @@ This test suite provides extensive coverage for the Z-Beam generator components 
 ### Key Test Coverage
 - ✅ Single source of truth for API configurations
 - ✅ Elimination of duplicate API_PROVIDERS definitions
-- ✅ Conservative parameter validation (max_tokens=800, temperature=0.7)
+- ✅ Conservative parameter validation (max_tokens=4000, temperature=0.1)
 - ✅ Timeout configuration verification
 - ✅ Large prompt handling capability
 - ✅ Real-world scenario validation (Steel material generation)

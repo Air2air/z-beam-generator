@@ -46,8 +46,8 @@ API_PROVIDERS = {
         "env_var": "DEEPSEEK_API_KEY",
         "base_url": "https://api.deepseek.com",
         "model": "deepseek-chat",
-        "max_tokens": 2048,
-        "temperature": 0.7,
+        "max_tokens": 4000,  # Default - will be overridden by component-specific settings
+        "temperature": 0.1,  # Default - will be overridden by component-specific settings
         "timeout_connect": 10,
         "timeout_read": 45,
         "max_retries": 3,
@@ -111,7 +111,7 @@ COMPONENT_CONFIG = {
     "text": {
         "api_provider": "deepseek",
         "priority": 6,
-        "enabled": True,  # ENABLED for text generation
+        "enabled": False,  # ENABLED for text generation
         "data_provider": "hybrid",  # Uses frontmatter data + AI generation
     },
     "table": {
@@ -129,7 +129,7 @@ COMPONENT_CONFIG = {
     "jsonld": {
         "api_provider": "deepseek",  # Extracts from frontmatter, no AI needed
         "priority": 9,
-        "enabled": True,  # DISABLED for focused batch test
+        "enabled": False,  # DISABLED for focused batch test
         "data_provider": "hybrid",  # Pure frontmatter extraction
     },
     "author": {

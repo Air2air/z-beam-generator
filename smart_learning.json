@@ -1,6 +1,6 @@
 {
   "created_at": "2025-09-14T22:50:00.000000",
-  "total_optimizations": 3,
+  "total_optimizations": 5,
   "materials": {
     "copper": {
       "attempts": [
@@ -71,12 +71,45 @@
         }
       ],
       "best_score": 99.54
+    },
+    "titanium": {
+      "attempts": [
+        {
+          "timestamp": "2025-09-15T01:23:32.842098",
+          "initial_score": 59.5,
+          "final_score": 64.5,
+          "improvement": 5.0,
+          "enhancement_flags": {
+            "vary_sentence_structure": true,
+            "reduce_persona_intensity": true
+          },
+          "success": true,
+          "details": {
+            "expected_improvement": 2.5
+          }
+        },
+        {
+          "timestamp": "2025-09-16T10:16:18.849861",
+          "initial_score": 59.5,
+          "final_score": 64.5,
+          "improvement": 5.0,
+          "enhancement_flags": {
+            "vary_sentence_structure": true,
+            "reduce_persona_intensity": true
+          },
+          "success": true,
+          "details": {
+            "expected_improvement": 2.5
+          }
+        }
+      ],
+      "best_score": 64.5
     }
   },
   "proven_strategies": {
     "reduce_persona_intensity": {
       "priority": 1,
-      "avg_improvement": 17.93,
+      "avg_improvement": 8.2325,
       "description": "Reduces casual language and overly enthusiastic tone",
       "success_rate": 0.85
     },
@@ -100,7 +133,7 @@
     },
     "vary_sentence_structure": {
       "priority": 5,
-      "avg_improvement": 12.93,
+      "avg_improvement": 6.9825,
       "description": "Varies sentence length and structure patterns",
       "success_rate": 0.65
     },

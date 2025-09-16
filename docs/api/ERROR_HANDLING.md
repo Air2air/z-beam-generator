@@ -237,8 +237,8 @@ for endpoint in endpoints:
     "name": "DeepSeek",
     "base_url": "https://api.deepseek.com",
     "model": "deepseek-chat",
-    "max_tokens": 800,
-    "temperature": 0.7,
+    "max_tokens": 4000,
+    "temperature": 0.1,
 }
 ```
 
@@ -248,7 +248,7 @@ for endpoint in endpoints:
 - Connection pool exhaustion
 
 **Solutions:**
-- Conservative token limits (800)
+- Optimized token limits (4000)
 - Proper connection pooling
 - Request size optimization
 
@@ -379,6 +379,7 @@ for provider in providers:
 - 🔧 Setup: [API Configuration](../setup/API_CONFIGURATION.md)
 - 🧪 Testing: [API Testing](../testing/API_TESTING.md)
 - 🏗️ Architecture: [Client Architecture](CLIENT_ARCHITECTURE.md)
+- 🔄 Cache Issues: [Persistent Cache Troubleshooting](../troubleshooting/PERSISTENT_CACHE_ISSUES.md)
 
 ---
 

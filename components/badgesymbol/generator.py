@@ -24,6 +24,32 @@ class BadgesymbolComponentGenerator(HybridComponentGenerator):
     def __init__(self):
         super().__init__("badgesymbol")
 
+    def generate(
+        self,
+        material_name: str,
+        material_data: Dict,
+        api_client=None,
+        author_info: Optional[Dict] = None,
+        frontmatter_data: Optional[Dict] = None,
+        schema_fields: Optional[Dict] = None,
+    ) -> ComponentResult:
+        """
+        Generate badge symbol content with enhanced material data access for chemical fallbacks.
+        Overrides parent to ensure material_data is available for category-specific generation.
+        """
+        # Store material_data for use in extraction methods
+        self._material_data = material_data
+        
+        # Call parent generate method
+        return super().generate(
+            material_name=material_name,
+            material_data=material_data,
+            api_client=api_client,
+            author_info=author_info,
+            frontmatter_data=frontmatter_data,
+            schema_fields=schema_fields,
+        )
+
     def _extract_from_frontmatter(
         self, material_name: str, frontmatter_data: Dict
     ) -> str:
@@ -112,7 +138,7 @@ class BadgesymbolComponentGenerator(HybridComponentGenerator):
     def _extract_field_value(
         self, frontmatter_data: Dict, field_name: str, material_name: str
     ) -> str:
-        """Extract field value using multiple potential paths"""
+        """Extract field value using multiple potential paths with intelligent chemical fallbacks"""
 
         # Define field extraction paths
         field_paths = {
@@ -138,13 +164,60 @@ class BadgesymbolComponentGenerator(HybridComponentGenerator):
                     return value.lower()
                 return value
 
-        # Generate fallback values
+        # Generate intelligent category-specific fallback values
         if field_name == "symbol":
-            return material_name[:2].upper()
+            return self._generate_symbol_fallback(frontmatter_data, material_name)
         elif field_name == "materialType":
-            return "material"
+            return self._generate_material_type_fallback(frontmatter_data)
 
         return field_name
+
+    def _generate_symbol_fallback(self, frontmatter_data: Dict, material_name: str) -> str:
+        """Generate intelligent symbol fallback using category-specific rules"""
+        try:
+            from utils.core.chemical_fallback_generator import ChemicalFallbackGenerator
+            
+            # Try to extract category from frontmatter first
+            category = self._get_field(frontmatter_data, ["category"], None)
+            
+            # If not in frontmatter, try to get from stored material_data
+            if not category and hasattr(self, '_material_data') and self._material_data:
+                category = self._material_data.get('category')
+            
+            if category and material_name:
+                fallback_generator = ChemicalFallbackGenerator()
+                _, generated_symbol = fallback_generator.generate_formula_and_symbol(
+                    material_name, category
+                )
+                
+                if generated_symbol:
+                    # Apply 4-character limit for badge display
+                    if len(generated_symbol) > 4:
+                        return generated_symbol[:4].upper()
+                    return generated_symbol.upper()
+            
+        except Exception as e:
+            # Log warning but continue with basic fallback
+            logger = __import__('logging').getLogger(__name__)
+            logger.warning(f"Chemical fallback generation failed for {material_name}: {e}")
+        
+        # Basic fallback: first 2 characters of material name
+        return material_name[:2].upper() if material_name else "???"
+
+    def _generate_material_type_fallback(self, frontmatter_data: Dict) -> str:
+        """Generate material type fallback from available data"""
+        # Try to get category from frontmatter first
+        category = self._get_field(frontmatter_data, ["category"], None)
+        
+        # If not in frontmatter, try to get from stored material_data
+        if not category and hasattr(self, '_material_data') and self._material_data:
+            category = self._material_data.get('category')
+        
+        if category:
+            return category.lower()
+        
+        # Final fallback
+        return "material"
 
     def _get_field(self, data: Dict[str, Any], paths: list, default: str) -> str:
         """Get field value from nested dict using dot notation paths"""
