@@ -2,9 +2,10 @@
 name: Iron
 applications:
 - industry: Automotive Manufacturing
-  detail: Removal of rust, scale, and oxides from iron components and castings
+  detail: Removal of rust, scale, and coatings from iron components and castings
 - industry: Tool and Die Restoration
-  detail: Cleaning of oxidation and contaminants from iron-based tooling and molds
+  detail: Precision cleaning of oxidation and contaminants from iron-based molds and
+    tooling
 technicalSpecifications:
   powerRange: 100-500W
   pulseDuration: 50-200ns
@@ -13,8 +14,8 @@ technicalSpecifications:
   repetitionRate: 20-200kHz
   fluenceRange: 2.0–8.0 J/cm²
   safetyClass: Class 4
-description: Technical specifications for laser cleaning of iron and iron alloys,
-  focusing on oxide removal and surface preparation without substrate damage.
+description: Technical specifications and application parameters for laser cleaning
+  of iron and iron-based alloys using pulsed fiber laser systems.
 author: Alessandro Moretti
 author_object:
   id: 2
@@ -24,8 +25,8 @@ author_object:
   country: Italy
   expertise: Laser-Based Additive Manufacturing
   image: /images/author/alessandro-moretti.jpg
-keywords: iron cleaning, laser rust removal, oxide ablation, surface preparation,
-  industrial cleaning, non-contact cleaning
+keywords: iron cleaning, laser rust removal, surface preparation, oxide removal, non-abrasive
+  cleaning
 category: metal
 chemicalProperties:
   symbol: Fe
@@ -33,33 +34,26 @@ chemicalProperties:
   materialType: metal
 properties:
   density: 7.87 g/cm³
-  densityMin: 0.5 g/cm³
-  densityMax: 22.6 g/cm³
-  densityPercentile: 33.3
   meltingPoint: 1538°C
-  meltingMin: -39°C
-  meltingMax: 3422°C
-  meltingPercentile: 44.3
   thermalConductivity: 80.4 W/m·K
-  thermalMin: 8 W/m·K
-  thermalMax: 429 W/m·K
-  thermalPercentile: 17.2
-  tensileStrength: 350-550 MPa
-  tensileMin: 70 MPa
-  tensileMax: 2000 MPa
-  tensilePercentile: 19.7
-  hardness: 120-180 HB
-  hardnessMin: 5 HB
-  hardnessMax: 500 HV
-  hardnessPercentile: 29.3
+  tensileStrength: 540 MPa
+  hardness: 146 HB
   youngsModulus: 211 GPa
-  modulusMin: 70 GPa
-  modulusMax: 411 GPa
-  modulusPercentile: 41.3
   laserType: Pulsed Fiber Laser
   wavelength: 1064nm
   fluenceRange: 2.0–8.0 J/cm²
-  chemicalFormula: Fe
+  densityMin: 0.5 g/cm³
+  densityMax: 22.6 g/cm³
+  meltingMin: -39°C
+  meltingMax: 3422°C
+  thermalMin: 8 W/m·K
+  thermalMax: 429 W/m·K
+  tensileMin: 70 MPa
+  tensileMax: 2000 MPa
+  hardnessMin: 5 HB
+  hardnessMax: 500 HV
+  modulusMin: 70 GPa
+  modulusMax: 411 GPa
   laserAbsorptionMin: 0.02 cm⁻¹
   laserAbsorptionMax: 100 cm⁻¹
   laserReflectivityMin: 5%
@@ -70,41 +64,45 @@ properties:
   thermalExpansionMax: 29 µm/m·K
   specificHeatMin: 0.13 J/g·K
   specificHeatMax: 0.90 J/g·K
+  densityPercentile: 33.3
+  meltingPercentile: 44.3
+  thermalPercentile: 17.2
+  tensilePercentile: 24.4
+  hardnessPercentile: 28.5
+  modulusPercentile: 41.3
 composition:
-- 'Iron (Fe): 99.8%'
+- 'Iron (Fe): >99%'
 - 'Carbon (C): 0.02-0.1%'
-- 'Manganese (Mn): 0.3-0.8%'
-- 'Silicon (Si): 0.1-0.5%'
-- Other trace elements
+- 'Manganese (Mn): 0.3-0.7%'
+- 'Silicon (Si): 0.15-0.35%'
 compatibility:
 - Carbon Steel
 - Cast Iron
 - Wrought Iron
-- Low Alloy Steels
 regulatoryStandards: ISO 8501-1, ASTM D4417, IEC 60825-1
 images:
   hero:
-    alt: Laser cleaning head removing rust from iron surface with precision
+    alt: Laser cleaning iron surface showing rust removal process
     url: /images/iron-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic comparison showing clean iron surface after laser treatment
+    alt: Microscopic view of cleaned iron surface showing minimal heat affected zone
     url: /images/iron-laser-cleaning-micro.jpg
-title: Laser Cleaning of Iron - Technical Specifications and Applications
-headline: Advanced laser cleaning solutions for iron and iron-based alloys
+title: Laser Cleaning of Iron - Technical Parameters and Applications
+headline: Advanced laser cleaning solutions for iron and iron alloys
 environmentalImpact:
 - benefit: Zero Chemical Waste
-  description: Eliminates need for acidic cleaners and chemical solvents
+  description: Eliminates need for chemical solvents and acidic cleaners
 - benefit: Reduced Water Consumption
   description: No water required compared to traditional abrasive blasting methods
 - benefit: Minimal Energy Consumption
-  description: Operates at 30-40% less energy than comparable thermal cleaning systems
+  description: Precise energy application reduces overall power usage
 outcomes:
 - result: Surface Cleanliness
-  metric: Sa 2.5 surface preparation standard according to ISO 8501-1
+  metric: Sa 0.8-1.6 μm surface roughness after cleaning
 - result: Material Preservation
-  metric: Less than 5μm substrate removal with complete contaminant elimination
+  metric: Less than 5μm substrate removal depth
 - result: Processing Efficiency
-  metric: 3-8 m²/hour cleaning rate depending on contamination severity
+  metric: 1-3 m²/hour cleaning rate depending on contamination level
 prompt_chain_verification:
   base_config_loaded: true
   persona_config_loaded: true
@@ -119,7 +117,7 @@ prompt_chain_verification:
 ---
 
 # Version Information
-# Generated: 2025-09-16T15:11:22.592192
+# Generated: 2025-09-16T16:19:13.898868
 # Material: Iron
 # Component: frontmatter
 # Generator: Z-Beam v2.1.0

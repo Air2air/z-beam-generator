@@ -89,7 +89,7 @@ COMPONENT_CONFIG = {
     "frontmatter": {
         "api_provider": "deepseek",
         "priority": 1,
-        "enabled": True,  # ENABLED for frontmatter generation
+        "enabled": False,  # ENABLED for frontmatter generation
         "data_provider": "hybrid",  # Uses frontmatter data + AI generation
     },
     "metatags": {
@@ -125,7 +125,7 @@ COMPONENT_CONFIG = {
     "table": {
         "api_provider": "none",  # Static/deterministic generation
         "priority": 7,
-        "enabled": False,  # DISABLED for focused batch test
+        "enabled": True,  # DISABLED for focused batch test
         "data_provider": "static",  # No API calls needed, no frontmatter dependency
     },
     "tags": {

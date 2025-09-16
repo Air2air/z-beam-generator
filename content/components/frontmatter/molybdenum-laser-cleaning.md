@@ -13,9 +13,8 @@ technicalSpecifications:
   repetitionRate: 20-100kHz
   fluenceRange: 1.0–4.5 J/cm²
   safetyClass: Class 4 (requires full enclosure)
-description: Technical overview of Molybdenum, Mo, for laser cleaning applications,
-  including optimal 1064nm wavelength interaction, and industrial applications in
-  surface preparation.
+description: Technical overview of Molybdenum for laser cleaning applications, including
+  optimal 1064nm wavelength interaction, and industrial applications in surface preparation.
 author: Yi-Chun Lin
 author_object:
   id: 1
@@ -46,10 +45,10 @@ properties:
   thermalMin: 8 W/m·K
   thermalMax: 429 W/m·K
   thermalPercentile: 30.9
-  tensileStrength: 415-700 MPa
+  tensileStrength: 550-700 MPa
   tensileMin: 70 MPa
   tensileMax: 2000 MPa
-  tensilePercentile: 25.3
+  tensilePercentile: 28.8
   hardness: 150-250 HV
   hardnessMin: 5 HB
   hardnessMax: 500 HV
@@ -74,7 +73,7 @@ properties:
   specificHeatMax: 0.90 J/g·K
 composition:
 - Molybdenum (Mo) 99.95%
-- Trace elements (C, O, N, Fe)
+- Trace elements (Si, Fe, Na, Mg)
 compatibility:
 - Stainless Steel
 - Titanium Alloys
@@ -113,14 +112,14 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Taiwan
   author_id: 1
-  verification_timestamp: '2025-09-16T22:12:59Z'
+  verification_timestamp: '2025-09-16T23:24:01Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 ---
 
 # Version Information
-# Generated: 2025-09-16T15:13:47.319635
+# Generated: 2025-09-16T16:24:43.718529
 # Material: Molybdenum
 # Component: frontmatter
 # Generator: Z-Beam v2.1.0

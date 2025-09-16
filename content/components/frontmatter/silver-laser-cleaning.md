@@ -9,7 +9,7 @@ technicalSpecifications:
   powerRange: 10-100W
   pulseDuration: 10-50ns
   wavelength: 1064nm (primary), 532nm (optional)
-  spotSize: 0.1-0.8mm
+  spotSize: 0.05-0.8mm
   repetitionRate: 20-200kHz
   fluenceRange: 0.5–2.0 J/cm²
   safetyClass: Class 4 (requires full enclosure)
@@ -49,10 +49,10 @@ properties:
   tensileMin: 70 MPa
   tensileMax: 2000 MPa
   tensilePercentile: 7.4
-  hardness: 25-110 HV
+  hardness: 25-75 HV
   hardnessMin: 5 HB
   hardnessMax: 500 HV
-  hardnessPercentile: 12.6
+  hardnessPercentile: 9.1
   youngsModulus: 83 GPa
   modulusMin: 70 GPa
   modulusMax: 411 GPa
@@ -76,24 +76,25 @@ composition:
 - Trace elements (Cu, Zn, Pb)
 compatibility:
 - Sterling Silver
-- Fine Silver
-- Silver Plated Components
-regulatoryStandards: ISO 9001, ASTM B413, EN 12472
+- Silver Plated Copper
+- Silver Alloys
+regulatoryStandards: ISO 9001, ASTM B700, IEC 62368-1
 images:
   hero:
-    alt: Silver surface undergoing laser cleaning showing precise tarnish removal
+    alt: Silver surface undergoing laser cleaning showing precise contamination removal
     url: /images/silver-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of silver surface after laser treatment showing preserved
+    alt: Microscopic view of Silver surface after laser treatment showing preserved
       microstructure
     url: /images/silver-laser-cleaning-micro.jpg
 title: Laser Cleaning Silver - Technical Guide for Optimal Processing
-headline: Comprehensive technical guide for laser cleaning silver
+headline: Comprehensive technical guide for laser cleaning metal silver
 environmentalImpact:
 - benefit: Chemical Solvent Elimination
-  description: Reduces chemical usage by 100% compared to traditional polishing compounds
-- benefit: Material Conservation
-  description: Preserves 99.8% of original silver material compared to abrasive polishing
+  description: Reduces chemical usage by 100% compared to traditional tarnish removal
+    methods
+- benefit: Water Conservation
+  description: Eliminates water usage in silver cleaning processes
 - benefit: Energy Efficiency
   description: Consumes 60% less energy than electrochemical cleaning processes
 outcomes:
@@ -110,14 +111,14 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Italy
   author_id: 2
-  verification_timestamp: '2025-09-16T22:19:27Z'
+  verification_timestamp: '2025-09-16T23:42:28Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 ---
 
 # Version Information
-# Generated: 2025-09-16T15:20:16.297161
+# Generated: 2025-09-16T16:44:50.203286
 # Material: Silver
 # Component: frontmatter
 # Generator: Z-Beam v2.1.0

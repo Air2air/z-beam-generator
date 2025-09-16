@@ -45,14 +45,14 @@ properties:
   thermalMin: 8 W/m·K
   thermalMax: 429 W/m·K
   thermalPercentile: 19.7
-  tensileStrength: 400-600 MPa
+  tensileStrength: 345-450 MPa
   tensileMin: 70 MPa
   tensileMax: 2000 MPa
-  tensilePercentile: 22.3
-  hardness: 80-100 HB
+  tensilePercentile: 17.0
+  hardness: 80-120 HB
   hardnessMin: 5 HB
   hardnessMax: 500 HV
-  hardnessPercentile: 17.2
+  hardnessPercentile: 19.2
   youngsModulus: 200 GPa
   modulusMin: 70 GPa
   modulusMax: 411 GPa
@@ -111,14 +111,14 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Indonesia
   author_id: 3
-  verification_timestamp: '2025-09-16T22:13:47Z'
+  verification_timestamp: '2025-09-16T23:24:43Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 ---
 
 # Version Information
-# Generated: 2025-09-16T15:14:36.106173
+# Generated: 2025-09-16T16:25:26.750198
 # Material: Nickel
 # Component: frontmatter
 # Generator: Z-Beam v2.1.0
