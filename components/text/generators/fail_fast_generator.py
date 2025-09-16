@@ -191,12 +191,12 @@ class FailFastTextGenerator:
                     f"Generating text for {material_name} (attempt {attempt + 1})"
                 )
 
-                # Create generation request
+                # Create generation request - use component config
                 request = GenerationRequest(
                     prompt=full_prompt,
                     system_prompt=None,
-                    max_tokens=800,  # Use safe limit to prevent API timeouts with large prompts
-                    temperature=0.7,
+                    max_tokens=4000,  # Will be overridden by component-specific config
+                    temperature=0.1,  # Will be overridden by component-specific config
                 )
 
                 # Generate content

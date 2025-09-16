@@ -38,17 +38,17 @@ from .client_manager import (
     test_api_connectivity
 )
 
-# Environment loading (legacy - prefer key_manager for new code)
-from .env_loader import EnvLoader
+# Environment loading (DEPRECATED - use key_manager for all new code)
+# from .env_loader import EnvLoader  # REMOVED - no longer supported
 
 __all__ = [
     # Main classes
     "APIClient",
-    "APIClientFactory",
+    "APIClientFactory", 
     "APIClientCache",
     "APIKeyManager",
     "DeepSeekClient",
-    "EnvLoader",
+    # "EnvLoader",  # REMOVED - deprecated
 
     # Response and request types
     "APIResponse",

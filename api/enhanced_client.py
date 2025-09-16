@@ -135,8 +135,8 @@ class EnhancedAPIClient:
         self,
         prompt: str,
         system_prompt: Optional[str] = None,
-        max_tokens: int = 4000,
-        temperature: float = 0.7,
+        max_tokens: int = None,  # Must be provided by run.py
+        temperature: float = None,  # Must be provided by run.py
     ) -> Dict[str, Any]:
         """Generate content with optimized timeout handling"""
 

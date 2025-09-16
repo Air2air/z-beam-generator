@@ -40,8 +40,8 @@ class GenerationRequest:
 
     prompt: str
     system_prompt: Optional[str] = None
-    max_tokens: int = 4000
-    temperature: float = 0.7
+    max_tokens: int = None  # Must be provided by run.py
+    temperature: float = None  # Must be provided by run.py
     top_p: float = 1.0
     frequency_penalty: float = 0.0
     presence_penalty: float = 0.0
@@ -538,12 +538,16 @@ class APIClient:
 
         # Get config values with sensible defaults (maintains fail-fast for critical config)
         default_max_tokens = getattr(self.config, "max_tokens", None) or (
-            self.config.get("max_tokens") if hasattr(self.config, "get") else 32000
+            self.config.get("max_tokens") if hasattr(self.config, "get") else None
         )
+        if default_max_tokens is None:
+            raise RuntimeError("CONFIGURATION ERROR: max_tokens not defined in run.py API_PROVIDERS")
 
         default_temperature = getattr(self.config, "temperature", None) or (
-            self.config.get("temperature") if hasattr(self.config, "get") else 0.7
+            self.config.get("temperature") if hasattr(self.config, "get") else None
         )
+        if default_temperature is None:
+            raise RuntimeError("CONFIGURATION ERROR: temperature not defined in run.py API_PROVIDERS")
 
         request = GenerationRequest(
             prompt=prompt,

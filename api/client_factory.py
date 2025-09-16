@@ -18,21 +18,10 @@ def get_api_providers():
         from run import API_PROVIDERS
         return API_PROVIDERS
     except ImportError:
-        # Fallback minimal configuration if run.py not available
-        return {
-            "deepseek": {
-                "name": "DeepSeek",
-                "env_var": "DEEPSEEK_API_KEY",
-                "base_url": "https://api.deepseek.com",
-                "model": "deepseek-chat",
-                "max_tokens": 800,
-                "temperature": 0.7,
-                "timeout_connect": 10,
-                "timeout_read": 45,
-                "max_retries": 3,
-                "retry_delay": 1.0,
-            }
-        }
+        raise RuntimeError(
+            "CONFIGURATION ERROR: run.py not found or API_PROVIDERS not defined. "
+            "All API configurations must be defined in run.py with no fallbacks."
+        )
 
 
 class APIClientFactory:

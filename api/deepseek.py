@@ -46,7 +46,7 @@ class DeepSeekClient(APIClient):
             "max_context_length": 32000,
             "supports_function_calling": True,
             "supports_json_mode": True,
-            "optimal_temperature": 0.7,
+            "optimal_temperature": 0.1,  # Default only - use component configs
             "optimal_top_p": 0.95,
         }
 
@@ -85,50 +85,45 @@ class DeepSeekClient(APIClient):
         return response
 
     def _get_component_optimizations(self, component_type: str) -> dict:
-        """Get DeepSeek-specific optimizations for each component type"""
+        """Get component-specific optimizations, preferring prompt.yaml configs"""
+        
+        # First try to load from component's prompt.yaml
+        try:
+            import yaml
+            from pathlib import Path
+            
+            component_prompt_path = Path(f"components/{component_type}/prompt.yaml")
+            if component_prompt_path.exists():
+                with open(component_prompt_path, 'r') as f:
+                    prompt_config = yaml.safe_load(f)
+                
+                # Extract generation parameters from prompt.yaml
+                if 'generation_parameters' in prompt_config:
+                    params = prompt_config['generation_parameters']
+                    logger.info(f"Using prompt.yaml config for {component_type}: {params}")
+                    return {
+                        "max_tokens": params.get("max_tokens", 4000),
+                        "temperature": params.get("temperature", 0.1),
+                        "top_p": params.get("top_p", 0.95),
+                        "frequency_penalty": params.get("frequency_penalty", 0.0),
+                        "presence_penalty": params.get("presence_penalty", 0.0),
+                    }
+                elif 'parameters' in prompt_config:
+                    params = prompt_config['parameters']
+                    logger.info(f"Using prompt.yaml parameters for {component_type}: {params}")
+                    return {
+                        "max_tokens": params.get("max_tokens", 4000),
+                        "temperature": params.get("temperature", 0.1),
+                        "top_p": params.get("top_p", 0.95),
+                        "frequency_penalty": params.get("frequency_penalty", 0.0),
+                        "presence_penalty": params.get("presence_penalty", 0.0),
+                    }
+        except Exception as e:
+            logger.warning(f"Could not load prompt.yaml config for {component_type}: {e}")
 
-        optimizations = {
-            "frontmatter": {
-                "max_tokens": 2000,
-                "temperature": 0.3,  # More deterministic for structured data
-                "top_p": 0.8,
-                "frequency_penalty": 0.1,
-            },
-            "content": {
-                "max_tokens": 4000,
-                "temperature": 0.7,  # Balanced creativity
-                "top_p": 0.95,
-                "presence_penalty": 0.1,
-            },
-            "jsonld": {
-                "max_tokens": 1500,
-                "temperature": 0.2,  # Very deterministic for JSON
-                "top_p": 0.7,
-                "frequency_penalty": 0.2,
-            },
-            "table": {
-                "max_tokens": 1000,
-                "temperature": 0.3,  # Structured output
-                "top_p": 0.8,
-            },
-            "metatags": {
-                "max_tokens": 800,
-                "temperature": 0.4,  # Somewhat creative for SEO
-                "top_p": 0.85,
-            },
-            "tags": {"max_tokens": 500, "temperature": 0.5, "top_p": 0.9},
-            "bullets": {"max_tokens": 1200, "temperature": 0.6, "top_p": 0.9},
-            "caption": {"max_tokens": 600, "temperature": 0.6, "top_p": 0.9},
-            "propertiestable": {
-                "max_tokens": 500,
-                "temperature": 0.2,  # Very deterministic for structured tables
-                "top_p": 0.7,
-            },
-        }
-
-        return optimizations.get(
-            component_type, {"max_tokens": 3000, "temperature": 0.7, "top_p": 0.95}
-        )
+        # Fallback to component-specific defaults only if prompt.yaml not found
+        logger.info(f"Using fallback defaults for {component_type}")
+        return {"max_tokens": 4000, "temperature": 0.1, "top_p": 0.95}
 
     def _build_component_system_prompt(self, component_type: str, material: str) -> str:
         """Build component-specific system prompts for DeepSeek"""

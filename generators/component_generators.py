@@ -36,14 +36,18 @@ class BaseComponentGenerator(ABC):
     """Base class for component generators"""
 
     def __init__(self, component_type: str):
-        # Load environment variables and API keys first
+        # Load API keys using standardized approach
         try:
-            from api.env_loader import EnvLoader
-
-            EnvLoader.load_env()
+            # Load config/api_keys.py keys into environment
+            from config.api_keys import API_KEYS
+            import os
+            for key, value in API_KEYS.items():
+                if value and not os.getenv(key):
+                    os.environ[key] = str(value)
         except ImportError:
-            logger.warning(
-                "Could not load environment - continuing without API key loading"
+            raise RuntimeError(
+                "CONFIGURATION ERROR: config/api_keys.py not found. "
+                "API keys must be defined in config/api_keys.py with no fallbacks."
             )
 
         self.component_type = component_type
