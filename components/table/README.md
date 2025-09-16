@@ -1,46 +1,46 @@
-# Table Component - Complete Reference
+# Table Component - Frontmatter-Based YAML Generator
 
 ## 🎯 Overview
-The Table component generates deterministic technical data tables containing exact specifications and properties for materials used in laser cleaning applications. Uses fail-fast architecture with no fallbacks or randomization.
+The Table component generates deterministic YAML table structures from frontmatter data containing material properties. Uses fail-fast architecture with no API calls needed - processes frontmatter directly to create Next.js-optimized table data.
 
 ## 📋 Component Requirements
 
 ### **Functional Requirements**
-- Generate deterministic technical data tables following exact example format
-- Include material specifications, laser parameters, and performance characteristics
-- Support markdown table format only (no HTML or other formats)
-- Ensure data accuracy and consistency across materials
+- Generate deterministic YAML table structures from frontmatter properties data
+- Group properties into logical categories (Physical, Thermal, Mechanical, Optical, Laser Parameters)
+- Include HTML visualization snippets for Next.js rendering with Tailwind CSS
+- Support min/max ranges with percentile calculations and progress bars
 - Provide tables suitable for technical documentation and industrial use
-- **FAIL-FAST**: No fallbacks, defaults, or randomization allowed
+- **FAIL-FAST**: No API calls, no fallbacks - requires valid frontmatter data
 
 ### **Technical Requirements**
-- **Type**: Static deterministic component
-- **API Provider**: None (static generation)
-- **AI Detection**: Disabled (deterministic data generation)
-- **Priority**: 7 (later in generation pipeline)
-- **Dependencies**: Frontmatter (for material context and properties)
+- **Type**: Frontmatter-based deterministic component  
+- **API Provider**: None (processes frontmatter directly)
+- **AI Detection**: Disabled (deterministic data processing)
+- **Priority**: 7 (after frontmatter generation)
+- **Dependencies**: Frontmatter component (required for properties data)
 - **Architecture**: Fail-fast with immediate validation
 
 ### **Input Requirements**
 ```python
 Required Inputs:
-- material_name: str (e.g., "copper", "steel", "aluminum")
-- material_data: Dict containing:
-  - name: str
-  - properties: Dict (optional, uses defaults if missing)
-  - specifications: Dict (optional)
-- No API client required (static generation)
+- material_name: str (e.g., "Alumina", "Copper", "Steel")
+- frontmatter_data: Dict containing:
+  - properties: Dict with material properties (density, meltingPoint, etc.)
+  - chemicalProperties: Dict (optional, for composition)
+- No API client required (frontmatter processing only)
 ```
 
 ### **Output Requirements**
 ```python
 Output Format: ComponentResult with:
-- content: str (markdown table format - exact same output every time)
+- content: str (YAML format for Next.js consumption)
 - success: bool
 - metadata: Dict containing:
-  - row_count: int (exact count per table type)
-  - column_count: int (always 3)
-  - data_categories: List[str] (fixed categories)
+  - tables_generated: int
+  - properties_processed: int
+  - data_source: "frontmatter"
+```
 ```
 
 ## 🏗️ Architecture & Implementation
@@ -48,47 +48,61 @@ Output Format: ComponentResult with:
 ### **Core Classes**
 ```python
 class TableComponentGenerator(ComponentGenerator):
-    """Generates deterministic technical data tables - FAIL-FAST: No fallbacks"""
+    """Generates YAML tables from frontmatter data - FAIL-FAST: No API calls"""
     
     def get_component_type(self) -> str:
         return "table"
     
     def generate(self, **kwargs) -> ComponentResult:
-        """Main generation method with strict validation and immediate failure"""
+        """Main generation method processing frontmatter properties"""
 ```
 
 ### **Generation Process**
-1. **Input Validation**: Verify material data exists - FAIL IMMEDIATELY if missing
-2. **Data Extraction**: Use exact material properties from database or fail
-3. **Table Structure Creation**: Generate exact tables following example format
-4. **Content Assembly**: Combine tables in fixed order with no variation
-5. **Format Validation**: Ensure markdown syntax is perfect
-6. **Output**: Return identical content for same inputs
+1. **Input Validation**: Verify frontmatter data exists - FAIL IMMEDIATELY if missing
+2. **Property Extraction**: Extract properties from frontmatter data or fail
+3. **Category Grouping**: Group properties into logical categories (Physical, Thermal, etc.)
+4. **YAML Generation**: Create structured YAML with HTML visualizations
+5. **Validation**: Ensure YAML syntax and structure is perfect
+6. **Output**: Return deterministic YAML content for Next.js
 
-### **Table Structure**
-```markdown
-| Property | Value | Unit |
-|----------|-------|------|
-| Density | 8.96 | g/cm³ |
-| Melting Point | 1085 | °C |
-| Thermal Conductivity | 401 | W/(m·K) |
+### **YAML Structure**
+```yaml
+materialTables:
+  tables:
+    - header: "## Physical Properties"
+      rows:
+        - property: "Density"
+          value: "8.96 g/cm³"
+          min: "0.9"
+          max: "22"
+          percentile: 85.0
+          unit: "g/cm³"
+          htmlVisualization: "<div class=\"w-full bg-gray-200 rounded-full h-2\">..."
 ```
+
+### **Property Categories**
+- **Physical Properties**: density, meltingPoint
+- **Thermal Properties**: thermalConductivity, thermalDiffusivity, thermalExpansion, specificHeat  
+- **Mechanical Properties**: tensileStrength, hardness, youngsModulus
+- **Optical Properties**: laserAbsorption, laserReflectivity
+- **Laser Processing Parameters**: laserType, wavelength, fluenceRange
+- **Composition**: chemicalFormula (if present)
 
 ## 📊 Data Flow & Dependencies
 
 ### **Input Data Flow**
 ```
-Material Name + Data → Validation → Exact Table Generation → Formatted Output
+Frontmatter Data → Property Extraction → Category Grouping → YAML Generation → Next.js Tables
 ```
 
 ### **Dependency Chain**
-1. **Frontmatter Component** (Priority 1): Provides material properties and specifications
-2. **Table Component** (Priority 7): Uses frontmatter data to generate deterministic tables
+1. **Frontmatter Component** (Priority 1): Provides complete material properties data
+2. **Table Component** (Priority 7): Processes frontmatter to generate YAML tables
 
 ### **Error Handling - FAIL-FAST**
-- **Missing Material Data**: Immediate failure with clear error message
-- **Invalid Material Type**: No fallback to generic data - fail immediately
-- **Incomplete Properties**: No defaults or approximations - fail immediately
+- **Missing Frontmatter Data**: Immediate failure with clear error message
+- **No Properties Section**: Fail immediately - "No table-appropriate data"
+- **Invalid Property Format**: No defaults or approximations - fail immediately
 - **No Retry Logic**: Single attempt only, fail-fast on any issue
 
 ## 🔧 Configuration
@@ -98,40 +112,23 @@ Material Name + Data → Validation → Exact Table Generation → Formatted Out
 # In COMPONENT_CONFIG
 table:
   generator: "table"
-  api_provider: "none"  # Static generation
+  api_provider: "none"  # Frontmatter processing
   priority: 7
   required: true
   ai_detection: false
   fail_fast: true  # No fallbacks allowed
 ```
 
-### **Table Configuration**
+### **Property Mapping**
 ```yaml
-# components/table/config.yaml
-table_structure:
-  columns: 3  # Fixed: Property | Value | Unit
-  tables:
-    - material_properties: 8  # Exact row count
-    - grades: 4
-    - performance: 4
-    - standards: 4
-    - environmental: 4
-    - laser_parameters: 6
-  deterministic: true  # Always same output
-  fail_fast: true  # No fallbacks
-```
-
-### **Material Database**
-```python
-# Static material properties - no API required
-material_properties = {
-    "copper": {
-        "density": "8.96 g/cm³",
-        "melting_point": "1085°C",
-        "thermal_conductivity": "401 W/(m·K)",
-        # ... exact values for deterministic generation
-    }
-}
+# Property categories for grouping
+categories:
+  physical: ["density", "meltingPoint"]
+  thermal: ["thermalConductivity", "thermalDiffusivity", "thermalExpansion", "specificHeat"]
+  mechanical: ["tensileStrength", "hardness", "youngsModulus"] 
+  optical: ["laserAbsorption", "laserReflectivity"]
+  laser: ["laserType", "wavelength", "fluenceRange"]
+  composition: ["chemicalFormula"]
 ```
 
 ## 📝 Usage Examples
@@ -141,39 +138,106 @@ material_properties = {
 from components.table.generators.generator import TableComponentGenerator
 
 generator = TableComponentGenerator()
-result = generator.generate(
-    material_name="copper",
-    material_data={
-        "name": "Copper",
-        "properties": {}  # Optional - uses exact defaults
+
+# Frontmatter data from previous component
+frontmatter_data = {
+    'properties': {
+        'density': '8.96 g/cm³',
+        'densityMin': '0.9 g/cm³',
+        'densityMax': '22 g/cm³', 
+        'densityPercentile': 85.0,
+        'meltingPoint': '1085°C',
+        'thermalConductivity': '401 W/m·K',
+        'tensileStrength': '210 MPa',
+        'laserType': 'Pulsed Fiber Laser',
+        'wavelength': '1064nm',
+        'fluenceRange': '0.5-5 J/cm²'
+    },
+    'chemicalProperties': {
+        'formula': 'Cu'
     }
-    # No API client needed for static generation
+}
+
+result = generator.generate(
+    material_name="Copper",
+    material_data={"name": "Copper"},
+    frontmatter_data=frontmatter_data
 )
 
 if result.success:
-    print(result.content)  # Always identical markdown tables
-    print(f"Table dimensions: {result.metadata['row_count']}x{result.metadata['column_count']}")
+    yaml_content = result.content  # YAML structure for Next.js
+    print(f"Generated {result.metadata['tables_generated']} tables")
+    print(f"Processed {result.metadata['properties_processed']} properties")
 else:
-    print(f"FAIL-FAST: {result.error_message}")  # Immediate failure with clear message
+    print(f"FAIL-FAST: {result.error_message}")
 ```
 
-### **Integration with Dynamic Generator**
+### **Integration with Dynamic Generator** 
 ```python
 from generators.dynamic_generator import DynamicGenerator
 
 generator = DynamicGenerator()
 
-# Generate frontmatter first (provides material data)
-frontmatter_result = generator.generate_component("copper", "frontmatter")
+# Generate frontmatter first (provides properties data)
+frontmatter_result = generator.generate_component("Copper", "frontmatter")
 
-# Generate deterministic table using exact format
-table_result = generator.generate_component("copper", "table")
+# Extract frontmatter data for table processing
+if frontmatter_result.success:
+    frontmatter_data = frontmatter_result.metadata.get('frontmatter_data')
+    
+    # Generate YAML tables from frontmatter properties
+    table_result = generator.generate_component(
+        "Copper", 
+        "table",
+        frontmatter_data=frontmatter_data
+    )
+    
+    if table_result.success:
+        yaml_tables = table_result.content
+        # Use in Next.js application for rendering
+```
 
-# Process results - always identical output
-if table_result.success:
-    table_content = table_result.content
-    # Content is always exactly the same for same material
-    # No variation or randomization
+### **Next.js Integration**
+```javascript
+// In Next.js component
+import yaml from 'js-yaml';
+import tableYaml from './copper-tables.yaml';
+
+const TableComponent = () => {
+  const tableData = yaml.load(tableYaml);
+  
+  return (
+    <div>
+      {tableData.materialTables.tables.map((table, index) => (
+        <div key={index}>
+          <h2>{table.header.replace('## ', '')}</h2>
+          <table className="min-w-full">
+            <thead>
+              <tr>
+                <th>Property</th>
+                <th>Value</th>
+                <th>Range</th>
+                <th>Percentile</th>
+                <th>Visualization</th>
+              </tr>
+            </thead>
+            <tbody>
+              {table.rows.map((row, rowIndex) => (
+                <tr key={rowIndex}>
+                  <td>{row.property}</td>
+                  <td>{row.value} {row.unit}</td>
+                  <td>{row.min && row.max ? `${row.min}-${row.max}` : '-'}</td>
+                  <td>{row.percentile ? `${row.percentile}%` : 'N/A'}</td>
+                  <td dangerouslySetInnerHTML={{ __html: row.htmlVisualization }} />
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      ))}
+    </div>
+  );
+};
 ```
 
 ## 🧪 Testing & Validation
