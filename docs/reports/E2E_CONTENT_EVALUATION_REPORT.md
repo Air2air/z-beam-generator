@@ -17,7 +17,7 @@
   components/text/prompts/base_content_prompt.yaml  ✅
   components/text/prompts/personas/taiwan_persona.yaml  ✅
   components/text/prompts/formatting/taiwan_formatting.yaml  ❌ EMPTY
-  components/author/authors.json  ✅
+  frontmatter author_object   ✅
   ```
 - **Impact**: Unnecessary complexity and file I/O overhead
 - **Status**: ⚠️ **NEEDS SIMPLIFICATION**

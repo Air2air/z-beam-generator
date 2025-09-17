@@ -352,7 +352,7 @@ class ComponentGeneratorFactory:
 
                 return BulletsComponentGenerator()
             elif component_type == "author":
-                from generators.author_generator import AuthorComponentGenerator
+                from components.author.generator import AuthorComponentGenerator
 
                 return AuthorComponentGenerator()
             # Try hybrid components first for known hybrid components

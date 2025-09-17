@@ -6,16 +6,16 @@
 
 | I want to... | Go to |
 |--------------|-------|
-| **Get started immediately** | [QUICK_START.md](QUICK_START.md) |
+| **Get started immediately** | [setup/INSTALLATION.md](setup/INSTALLATION.md) |
 | **Fix API connection issues** | [api/ERROR_HANDLING.md](api/ERROR_HANDLING.md) |
-| **Component YAML format changes** | [SESSION_2025-09-16_YAML_STANDARDIZATION_SUMMARY.md](SESSION_2025-09-16_YAML_STANDARDIZATION_SUMMARY.md) |
-| **Table min/max column verification** | [QUICK_REFERENCE.md](QUICK_REFERENCE.md#table-components-missing-minmax-columns) |
-| **Optimize content with Winston.ai bias correction** | [OPTIMIZER_CONSOLIDATED_GUIDE.md](OPTIMIZER_CONSOLIDATED_GUIDE.md) |
-| **Understand Winston.ai composite scoring** | [WINSTON_COMPOSITE_SCORING_INTEGRATION.md](WINSTON_COMPOSITE_SCORING_INTEGRATION.md) |
 | **Generate content for materials** | [operations/CONTENT_GENERATION.md](operations/CONTENT_GENERATION.md) |
 | **Set up API keys** | [setup/API_CONFIGURATION.md](setup/API_CONFIGURATION.md) |
+| **Understand Winston.ai system** | [WINSTON_AI_COMPLETE_GUIDE.md](WINSTON_AI_COMPLETE_GUIDE.md) |
+| **Optimize content with bias correction** | [OPTIMIZER_CONSOLIDATED_GUIDE.md](OPTIMIZER_CONSOLIDATED_GUIDE.md) |
 | **Understand the architecture** | [core/ARCHITECTURE.md](core/ARCHITECTURE.md) |
-| **Add a new component** | [development/NEW_COMPONENTS.md](development/NEW_COMPONENTS.md) |
+| **Author component documentation** | [AUTHOR_COMPONENT_COMPLETE_DOCUMENTATION.md](AUTHOR_COMPONENT_COMPLETE_DOCUMENTATION.md) |
+| **Batch operations** | [operations/BATCH_OPERATIONS.md](operations/BATCH_OPERATIONS.md) |
+| **CLI commands reference** | [reference/CLI_COMMANDS.md](reference/CLI_COMMANDS.md) |
 
 ## 📚 Documentation by Category
 
@@ -24,14 +24,14 @@ Understanding how Z-Beam works fundamentally
 - [**ARCHITECTURE.md**](core/ARCHITECTURE.md) - System design and fail-fast principles
 - [**AI_DETECTION_LOCALIZATION_CHAIN_ARCHITECTURE.md**](AI_DETECTION_LOCALIZATION_CHAIN_ARCHITECTURE.md) - AI detection + localization prompt chain
 - [**LOCALIZATION_PROMPT_CHAIN_SYSTEM.md**](LOCALIZATION_PROMPT_CHAIN_SYSTEM.md) - Cultural localization system
-- [**COMPONENT_SYSTEM.md**](core/COMPONENT_SYSTEM.md) - How components interact
-- [**DATA_FLOW.md**](core/DATA_FLOW.md) - Data flow through the generation pipeline
-- [**FAIL_FAST_PRINCIPLES.md**](core/FAIL_FAST_PRINCIPLES.md) - Design philosophy and constraints
+- [**WINSTON_AI_COMPLETE_GUIDE.md**](WINSTON_AI_COMPLETE_GUIDE.md) - Complete Winston.ai integration and bias correction
+- [**DATA_FLOW.md**](core/DATA_FLOW.md) - Data flow through the generation pipeline (TODO)
+- [**FAIL_FAST_PRINCIPLES.md**](core/FAIL_FAST_PRINCIPLES.md) - Design philosophy and constraints (TODO)
 
 ### 🎯 **Optimization System** *(September 2025 Major Updates)*
 Content optimization with Winston.ai bias correction and learning algorithms
 - [**OPTIMIZER_CONSOLIDATED_GUIDE.md**](OPTIMIZER_CONSOLIDATED_GUIDE.md) - ✅ Complete optimization system guide
-- [**WINSTON_COMPOSITE_SCORING_INTEGRATION.md**](WINSTON_COMPOSITE_SCORING_INTEGRATION.md) - ✅ Winston.ai bias correction details
+- [**WINSTON_AI_COMPLETE_GUIDE.md**](WINSTON_AI_COMPLETE_GUIDE.md) - ✅ Complete Winston.ai integration, scoring, and bias correction
 - [**../optimizer/QUICK_START.md**](../optimizer/QUICK_START.md) - 5-minute optimization setup
 - [**SEAMLESS_COMPOSITE_INTEGRATION_COMPLETE.md**](SEAMLESS_COMPOSITE_INTEGRATION_COMPLETE.md) - Integration completion summary
 
@@ -39,8 +39,8 @@ Content optimization with Winston.ai bias correction and learning algorithms
 Getting Z-Beam running in your environment
 - [**INSTALLATION.md**](setup/INSTALLATION.md) - Environment setup and dependencies
 - [**API_CONFIGURATION.md**](setup/API_CONFIGURATION.md) - API keys and provider setup
-- [**TROUBLESHOOTING.md**](setup/TROUBLESHOOTING.md) - Common setup issues and solutions
-- [**VALIDATION.md**](setup/VALIDATION.md) - Health checks and system validation
+- [**TROUBLESHOOTING.md**](setup/TROUBLESHOOTING.md) - Common setup issues and solutions (TODO)
+- [**VALIDATION.md**](setup/VALIDATION.md) - Health checks and system validation (TODO)
 
 ### 🧩 **Components**
 Individual component documentation and guides
@@ -63,8 +63,8 @@ Working with external API providers
 Day-to-day usage and content generation
 - [**CONTENT_GENERATION.md**](operations/CONTENT_GENERATION.md) - How to generate content
 - [**BATCH_OPERATIONS.md**](operations/BATCH_OPERATIONS.md) - Bulk generation workflows
-- [**OPTIMIZATION.md**](operations/OPTIMIZATION.md) - Performance tuning and optimization
-- [**MAINTENANCE.md**](operations/MAINTENANCE.md) - System maintenance tasks
+- [**OPTIMIZATION.md**](operations/OPTIMIZATION.md) - Performance tuning and optimization (TODO)
+- [**MAINTENANCE.md**](operations/MAINTENANCE.md) - System maintenance tasks (TODO)
 
 ### 🧪 **Testing & Validation**
 Ensuring system reliability and correctness
@@ -83,9 +83,9 @@ For contributors and developers extending Z-Beam
 ### 📖 **Reference**
 Complete reference materials and specifications
 - [**CLI_COMMANDS.md**](reference/CLI_COMMANDS.md) - All command line options
-- [**CONFIGURATION_REFERENCE.md**](reference/CONFIGURATION_REFERENCE.md) - All config options
-- [**ERROR_CODES.md**](reference/ERROR_CODES.md) - Error code explanations
-- [**CHANGELOG.md**](reference/CHANGELOG.md) - Version history and changes
+- [**CONFIGURATION_REFERENCE.md**](reference/CONFIGURATION_REFERENCE.md) - All config options (TODO)
+- [**ERROR_CODES.md**](reference/ERROR_CODES.md) - Error code explanations (TODO)
+- [**CHANGELOG.md**](reference/CHANGELOG.md) - Version history and changes (TODO)
 
 ## 🎭 **Documentation by User Role**
 

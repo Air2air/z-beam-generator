@@ -58,7 +58,7 @@ Currently supported countries with full localization:
 ### 1. Author Resolution
 When generating content, the system:
 1. Reads the material's `author_id` from `data/materials.yaml`
-2. Resolves the author information from `components/author/authors.json`
+2. Resolves the author information from frontmatter `author_object` field
 3. Extracts the author's country
 
 ### 2. Localization Chain Construction
@@ -229,8 +229,8 @@ print(get_required_localization_prompt(author_info))
 # Validate author resolution
 python3 -c "
 import json
-with open('components/author/authors.json', 'r') as f:
-    authors = json.load(f)['authors']
+# Extract author from frontmatter author_object
+author_data = frontmatter_data.get('author_object', {})['authors']
 for author in authors:
     print(f'ID: {author[\"id\"]}, Name: {author[\"name\"]}, Country: {author[\"country\"]}')
 "
@@ -254,5 +254,5 @@ for author in authors:
 
 - `optimizer/text_optimization/prompts/personas/` (persona files)
 - `optimizer/text_optimization/prompts/formatting/` (formatting files)
-- `components/author/authors.json` (author data)
+- Frontmatter data with `author_object` field
 - `data/materials.yaml` (material-author mapping)

@@ -22,7 +22,7 @@ We modified the following files to properly extract and pass material data to th
 
 ## Testing
 We created a comprehensive test file at `tests/test_author_resolution.py` that verifies:
-- Loading authors from authors.json works correctly
+- Loading authors from frontmatter author_object works correctly
 - Author resolution from material data works correctly
 - Author resolution from material_data with nested author_id works
 - Fallback to author_id parameter works

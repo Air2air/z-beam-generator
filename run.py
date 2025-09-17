@@ -125,7 +125,7 @@ COMPONENT_CONFIG = {
     "table": {
         "api_provider": "none",  # Static/deterministic generation
         "priority": 7,
-        "enabled": True,  # DISABLED for focused batch test
+        "enabled": False,  # DISABLED for focused batch test
         "data_provider": "static",  # No API calls needed, no frontmatter dependency
     },
     "tags": {
@@ -143,7 +143,7 @@ COMPONENT_CONFIG = {
     "author": {
         "api_provider": "none",  # Static component, no API needed
         "priority": 10,
-        "enabled": False,  # DISABLED for focused batch test
+        "enabled": True,  # DISABLED for focused batch test
         "data_provider": "static",  # Static data, no dependencies
     },
 }
@@ -418,12 +418,15 @@ def main():
         try:
             # Load materials data
             materials_data_dict = load_materials()
-            materials_data = materials_data_dict.get('materials', {}).values() if 'materials' in materials_data_dict else []
             material_info = None
             
-            for material in materials_data:
-                if material.get('name', '').lower() == args.material.lower():
-                    material_info = material
+            # Search through all categories and items for the material
+            for category, category_data in materials_data_dict.get('materials', {}).items():
+                for item in category_data.get('items', []):
+                    if item.get('name', '').lower() == args.material.lower():
+                        material_info = item
+                        break
+                if material_info:
                     break
             
             if not material_info:
@@ -440,9 +443,9 @@ def main():
             for component_type in component_types:
                 print(f"📋 Generating {component_type}...")
                 
-                # For table component, we need frontmatter data first
+                # Load frontmatter data for components that need it
                 frontmatter_data = None
-                if component_type == 'table':
+                if component_type in ['table', 'author', 'metatags', 'jsonld', 'bullets', 'caption', 'tags']:
                     # Try to load existing frontmatter
                     frontmatter_path = f"content/components/frontmatter/{args.material.lower()}-laser-cleaning.md"
                     if os.path.exists(frontmatter_path):
@@ -455,8 +458,8 @@ def main():
                             yaml_content = content[yaml_start:yaml_end].strip()
                             frontmatter_data = yaml.safe_load(yaml_content)
                     
-                    if not frontmatter_data:
-                        print(f"❌ No frontmatter data found for {args.material}")
+                    if not frontmatter_data and component_type != 'frontmatter':
+                        print(f"❌ No frontmatter data found for {args.material} - {component_type} component requires frontmatter")
                         continue
                 
                 result = generator.generate_component(
@@ -470,7 +473,7 @@ def main():
                     # Save the result
                     output_dir = f"content/components/{component_type}"
                     os.makedirs(output_dir, exist_ok=True)
-                    output_file = f"{output_dir}/{args.material.lower()}-{component_type}.yaml" if component_type in ['table', 'jsonld', 'metatags'] else f"{output_dir}/{args.material.lower()}-laser-cleaning.md"
+                    output_file = f"{output_dir}/{args.material.lower()}-laser-cleaning.yaml" if component_type in ['table', 'jsonld', 'metatags', 'author'] else f"{output_dir}/{args.material.lower()}-laser-cleaning.md"
                     
                     with open(output_file, 'w') as f:
                         f.write(result.content)

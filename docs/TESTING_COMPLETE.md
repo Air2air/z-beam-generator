@@ -21,7 +21,7 @@ Generate 4 distinct content variations based on author personas specified in run
 ## Test Results Summary
 
 ### ✅ **Test 1: Author Data Loading (PASSED)**
-- **Objective:** Verify author data loading from authors.json
+- **Objective:** Verify author data loading from frontmatter author_object
 - **Result:** Successfully loaded 4 authors with complete profiles
 - **Validation:** All expected authors present with correct details
 - **Authors Verified:** Yi-Chun Lin, Alessandro Moretti, Ikmanda Roswati, Todd Dunning
@@ -172,7 +172,7 @@ properties:
 ```
 
 ### **Author System Integration**
-- **Data Source:** `components/author/authors.json`
+- **Data Source:** Frontmatter `author_object` field
 - **Author Matching:** Automatic name-based lookup from frontmatter `author` field
 - **Fallback Behavior:** Defaults to Alessandro Moretti (ID: 2) if author not found or missing
 - **Error Handling:** Graceful degradation with warnings for missing/invalid authors
@@ -261,7 +261,7 @@ The Content Calculator successfully implements **4 distinct author personas** th
 **Enhanced Features:**
 - **Automatic Author Detection:** No manual author specification required
 - **Frontmatter Integration:** Seamless compatibility with existing content structure
-- **Dynamic Country Extraction:** Uses actual country data from authors.json
+- **Dynamic Country Extraction:** Uses actual country data from frontmatter author_object
 - **Graceful Degradation:** Intelligent fallbacks for missing/invalid author data
 - **Cultural Authenticity:** Sophisticated persona implementation with linguistic nuances
 - **Keywords Removed:** Clean content without keyword sections per user requirements

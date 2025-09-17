@@ -2,24 +2,24 @@
 """
 Author Component Generator
 
-Generates author information content using local JSON data.
-Uses consolidated component base utilities for reduced code duplication.
+Generates author information in YAML format using frontmatter data only.
+No backward compatibility, no API calls - pure frontmatter extraction.
 """
 
 import json
 from pathlib import Path
 from typing import Dict, Any, Optional
+import yaml
 
 from versioning import stamp_component_output
-
 from generators.component_generators import ComponentResult
 
 
 class AuthorComponentGenerator:
-    """Generator for author components using local author data"""
+    """Generator for author components using frontmatter data only"""
 
     def __init__(self):
-        self.authors_file = Path(__file__).parent / "authors.json"
+        self.component_type = "author"
 
     def generate(
         self,
@@ -30,76 +30,72 @@ class AuthorComponentGenerator:
         frontmatter_data: Optional[Dict] = None,
         schema_fields: Optional[Dict] = None,
     ) -> ComponentResult:
-        """Generate author component content using author system"""
+        """Generate author component content using frontmatter data only"""
         try:
             # Validate required data
             if not material_name:
                 return self.create_error_result("Material name is required")
+            
+            if not frontmatter_data:
+                return self.create_error_result("Frontmatter data is required - fail-fast architecture requires frontmatter author information")
 
-            # Determine author ID to use
-            author_id = author_info.get("id", 1) if author_info else 1
-
-            # Get author data
-            author_data = self._get_author_by_id(author_id)
+            # Extract author data from frontmatter
+            author_data = frontmatter_data.get("author_object")
             if not author_data:
-                return self.create_error_result(f"Author with ID {author_id} not found")
+                return self.create_error_result("No author_object found in frontmatter data")
 
-            # Generate content
-            content = self._create_author_content(material_name, author_data)
+            # Generate YAML content from frontmatter author data
+            yaml_content = self._create_author_yaml(material_name, author_data)
 
-            # Apply centralized version stamping
-            versioned_content = stamp_component_output("author", content)
-
+            # Return clean YAML without versioning delimiters
             return ComponentResult(
-                component_type="author", content=versioned_content, success=True
+                component_type="author", content=yaml_content, success=True
             )
 
         except Exception as e:
             return self.create_error_result(f"Content generation failed: {e}")
 
-    def _get_author_by_id(self, author_id: int) -> Optional[Dict[str, Any]]:
-        """Get author data by ID"""
-        try:
-            if not self.authors_file.exists():
-                return None
+    def _create_author_yaml(self, material_name: str, author_data: Dict) -> str:
+        """Create author content in YAML format from frontmatter author data"""
+        
+        # Extract author information
+        author_name = author_data.get("name", "Unknown Author")
+        author_title = author_data.get("title", "")
+        author_expertise = author_data.get("expertise", "Laser Processing Expert")
+        country = author_data.get("country", "")
+        author_id = author_data.get("id", 1)
+        image_url = author_data.get("image", "")
+        sex = author_data.get("sex", "")
 
-            with open(self.authors_file, "r", encoding="utf-8") as f:
-                authors_data = json.load(f)
+        # Create structured author data
+        author_structure = {
+            "authorInfo": {
+                "id": author_id,
+                "name": author_name,
+                "title": author_title,
+                "expertise": author_expertise,
+                "country": country,
+                "sex": sex,
+                "image": image_url,
+                "profile": {
+                    "description": f"{author_name} is a {author_expertise.lower()}{' based in ' + country if country else ''}. With extensive experience in laser processing and material science, {author_name.split()[0]} specializes in advanced laser cleaning applications and industrial material processing technologies.",
+                    "expertiseAreas": [
+                        "Laser cleaning systems and applications",
+                        "Material science and processing", 
+                        "Industrial automation and safety protocols",
+                        "Technical consultation and process optimization"
+                    ],
+                    "contactNote": f"Contact {author_name.split()[0]} for expert consultation on laser cleaning applications for {material_name} and related materials."
+                }
+            },
+            "materialContext": {
+                "specialization": f"{material_name} laser cleaning applications"
+            }
+        }
 
-            for author in authors_data.get("authors", []):
-                if author.get("id") == author_id:
-                    return author
-            return None
-
-        except Exception as e:
-            print(f"Error loading author data: {e}")
-            return None
-
-    def _create_author_content(self, material_name: str, author_data: Dict) -> str:
-        """Create author content from author data"""
-        author_name = author_data["name"]
-        author_title = author_data["title"]
-        author_expertise = author_data["expertise"]
-        country = author_data["country"]
-
-        content = f"""
-## About the Author
-
-**{author_name}**
-*{author_title}*
-
-{author_name} is a {author_expertise.lower()} based in {country}. With extensive experience in laser processing and material science, {author_name.split()[0]} specializes in advanced laser cleaning applications and industrial material processing technologies.
-
-### Expertise Areas
-- Laser cleaning systems and applications
-- Material science and processing
-- Industrial automation and safety protocols
-- Technical consultation and process optimization
-
-*Contact {author_name.split()[0]} for expert consultation on laser cleaning applications for {material_name} and related materials.*
-""".strip()
-
-        return content
+        # Convert to clean YAML without delimiters
+        yaml_output = yaml.dump(author_structure, default_flow_style=False, sort_keys=False, width=1000)
+        return yaml_output.strip()
 
     def create_error_result(self, error_message: str) -> ComponentResult:
         """Create a ComponentResult for error cases"""
@@ -111,101 +107,29 @@ class AuthorComponentGenerator:
         )
 
 
-# Legacy compatibility classes and functions
-class AuthorGenerator:
-    """Legacy author generator for backward compatibility"""
-
-    def __init__(self):
-        self.generator = AuthorComponentGenerator()
-        self.authors_file = Path("components/author/authors.json")
-        self.template_file = Path("components/author/example_author.md")
-
-    def _load_authors(self) -> Dict[str, Any]:
-        """Load authors data from JSON file"""
-        try:
-            with open(self.authors_file, "r", encoding="utf-8") as f:
-                return json.load(f)
-        except (FileNotFoundError, json.JSONDecodeError) as e:
-            print(f"❌ Error loading authors data: {e}")
-            return {"authors": []}
-
-    def get_author_by_id(self, author_id: int) -> Dict[str, Any]:
-        """Get author data by ID"""
-        authors_data = self._load_authors()
-        for author in authors_data.get("authors", []):
-            if author.get("id") == author_id:
-                return author
-        return {}
-
-    def generate(self, material: str, author_id: int = 1) -> str:
-        """Legacy generate method"""
-        author_info = {"id": author_id}
-        material_data = {"name": material}
-
-        # Call the correct method from AuthorComponentGenerator
-        result = self.generator.generate(
-            material, material_data, author_info=author_info
-        )
-
-        if result.success:
-            return result.content
-        else:
-            return f"Error generating author content: {result.error_message}"
-
-    def get_component_info(self) -> Dict[str, Any]:
-        """Get component information"""
-        return {
-            "name": "author",
-            "description": "Author information component",
-            "version": "2.0.0",  # Updated version
-            "requires_api": False,
-            "type": "static",
-        }
-
-    @staticmethod
-    def _create_author_template(material: str, author: Dict[str, Any]) -> str:
-        """Create standardized author content template (legacy method for compatibility)"""
-        # Use the provided author data directly instead of loading from JSON
-        author_name = author["name"]
-        author_title = author["title"]
-        author_expertise = author["expertise"]
-        country = author["country"]
-
-        content = f"""
-## About the Author
-
-**{author_name}**
-*{author_title}*
-
-{author_name} is a {author_expertise.lower()} based in {country}. With extensive experience in laser processing and material science, {author_name.split()[0]} specializes in advanced laser cleaning applications and industrial material processing technologies.
-
-### Expertise Areas
-- Laser cleaning systems and applications
-- Material science and processing
-- Industrial automation and safety protocols
-- Technical consultation and process optimization
-
-*Contact {author_name.split()[0]} for expert consultation on laser cleaning applications for {material} and related materials.*
-""".strip()
-
-        return content
-
-
-def generate_author_content(material: str, author_id: int = 1) -> str:
-    """Legacy function for backward compatibility"""
-    generator = AuthorGenerator()
-    return generator.generate(material, author_id)
-
-
-def create_author_content_from_data(material: str, author: Dict[str, Any]) -> str:
-    """Create author content directly from author data (most efficient)"""
-    return AuthorGenerator._create_author_template(material, author)
-
-
 if __name__ == "__main__":
     # Test the generator
-    generator = AuthorGenerator()
-    test_content = generator.generate("Aluminum", 1)
     print("🧪 Author Component Test:")
     print("=" * 50)
-    print(test_content)
+    
+    # Sample frontmatter data
+    test_frontmatter = {
+        "author_object": {
+            "id": 1,
+            "name": "Yi-Chun Lin",
+            "title": "Ph.D.",
+            "expertise": "Laser Materials Processing",
+            "country": "Taiwan",
+            "sex": "f",
+            "image": "/images/author/yi-chun-lin.jpg"
+        }
+    }
+    
+    generator = AuthorComponentGenerator()
+    result = generator.generate("Aluminum", {"name": "Aluminum"}, frontmatter_data=test_frontmatter)
+    
+    if result.success:
+        print("✅ Generation successful")
+        print(result.content)
+    else:
+        print("❌ Generation failed:", result.error_message)
