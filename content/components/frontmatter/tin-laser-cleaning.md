@@ -44,7 +44,7 @@ images:
     alt: Microscopic view of Tin surface after laser cleaning showing detailed surface
       structure
     url: /images/tin-laser-cleaning-micro.jpg
-title: Laser Cleaning Tin - Technical Guide for Optimal Processing
+title: Laser Cleaning Tin
 headline: Comprehensive technical guide for laser cleaning metal tin
 environmentalImpact:
 - benefit: Chemical Solvent Elimination

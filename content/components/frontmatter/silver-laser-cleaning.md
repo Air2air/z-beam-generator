@@ -44,7 +44,7 @@ images:
     alt: Microscopic view of Silver surface after laser cleaning showing detailed
       surface structure
     url: /images/silver-laser-cleaning-micro.jpg
-title: Laser Cleaning Silver - Technical Guide for Optimal Processing
+title: Laser Cleaning Silver
 headline: Comprehensive technical guide for laser cleaning metal silver
 environmentalImpact:
 - benefit: Chemical Solvent Elimination

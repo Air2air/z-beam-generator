@@ -47,7 +47,7 @@ images:
     alt: Microscopic view of Zirconia surface after laser cleaning showing detailed
       surface structure
     url: /images/zirconia-laser-cleaning-micro.jpg
-title: Laser Cleaning Zirconia - Technical Guide for Optimal Processing
+title: Laser Cleaning Zirconia
 headline: Comprehensive technical guide for laser cleaning ceramic zirconia
 environmentalImpact:
 - benefit: Chemical Solvent Elimination

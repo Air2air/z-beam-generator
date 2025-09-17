@@ -44,7 +44,7 @@ images:
     alt: Microscopic view of Silicon surface after laser cleaning showing detailed
       surface structure
     url: /images/silicon-laser-cleaning-micro.jpg
-title: Laser Cleaning Silicon - Technical Guide for Optimal Processing
+title: Laser Cleaning Silicon
 headline: Comprehensive technical guide for laser cleaning semiconductor silicon
 environmentalImpact:
 - benefit: Chemical Solvent Elimination

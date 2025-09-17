@@ -49,7 +49,7 @@ images:
     alt: Microscopic view of Cedar surface after laser cleaning showing detailed surface
       structure
     url: /images/cedar-laser-cleaning-micro.jpg
-title: Laser Cleaning Cedar Wood - Technical Guide for Optimal Processing
+title: Laser Cleaning Cedar Wood
 headline: Comprehensive technical guide for laser cleaning cedar wood surfaces
 environmentalImpact:
 - benefit: Chemical Solvent Elimination

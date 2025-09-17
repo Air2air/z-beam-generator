@@ -50,7 +50,7 @@ images:
     alt: Microscopic view of Aluminum surface after laser cleaning showing detailed
       surface structure
     url: /images/aluminum-laser-cleaning-micro.jpg
-title: Laser Cleaning Aluminum - Technical Guide for Optimal Processing
+title: Laser Cleaning Aluminum
 headline: Comprehensive technical guide for laser cleaning aluminum surfaces
 environmentalImpact:
 - benefit: Chemical Solvent Elimination

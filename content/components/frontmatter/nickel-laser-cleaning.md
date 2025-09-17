@@ -44,7 +44,7 @@ images:
     alt: Microscopic view of Nickel surface after laser cleaning showing detailed
       surface structure
     url: /images/nickel-laser-cleaning-micro.jpg
-title: Laser Cleaning Nickel - Technical Guide for Optimal Processing
+title: Laser Cleaning Nickel
 headline: Comprehensive technical guide for laser cleaning metal nickel
 environmentalImpact:
 - benefit: Chemical Solvent Elimination

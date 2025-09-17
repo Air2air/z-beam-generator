@@ -45,7 +45,7 @@ images:
     alt: Microscopic view of Ruthenium surface after laser cleaning showing detailed
       surface structure
     url: /images/ruthenium-laser-cleaning-micro.jpg
-title: Laser Cleaning Ruthenium - Technical Guide for Optimal Processing
+title: Laser Cleaning Ruthenium
 headline: Comprehensive technical guide for laser cleaning ruthenium metal
 environmentalImpact:
 - benefit: Chemical Solvent Elimination

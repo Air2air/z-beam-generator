@@ -46,7 +46,7 @@ images:
     alt: Microscopic view of Fused Silica surface after laser cleaning showing detailed
       surface structure
     url: /images/fused-silica-laser-cleaning-micro.jpg
-title: Laser Cleaning Fused Silica - Technical Guide for Optimal Processing
+title: Laser Cleaning Fused Silica
 headline: Comprehensive technical guide for laser cleaning glass fused silica
 environmentalImpact:
 - benefit: Chemical Solvent Elimination

@@ -51,7 +51,7 @@ images:
     alt: Microscopic view of Brass surface after laser cleaning showing detailed surface
       structure
     url: /images/brass-laser-cleaning-micro.jpg
-title: Laser Cleaning Brass - Technical Guide for Optimal Processing
+title: Laser Cleaning Brass
 headline: Comprehensive technical guide for laser cleaning brass alloys
 environmentalImpact:
 - benefit: Chemical Solvent Elimination

@@ -47,7 +47,7 @@ images:
     alt: Microscopic view of Shale surface after laser cleaning showing detailed surface
       structure
     url: /images/shale-laser-cleaning-micro.jpg
-title: Laser Cleaning Shale - Technical Guide for Optimal Processing
+title: Laser Cleaning Shale
 headline: Comprehensive technical guide for laser cleaning stone shale
 environmentalImpact:
 - benefit: Chemical Solvent Elimination

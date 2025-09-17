@@ -45,7 +45,7 @@ images:
     alt: Microscopic view of Vanadium surface after laser cleaning showing detailed
       surface structure
     url: /images/vanadium-laser-cleaning-micro.jpg
-title: Laser Cleaning Vanadium - Technical Guide for Optimal Processing
+title: Laser Cleaning Vanadium
 headline: Comprehensive technical guide for laser cleaning metal vanadium
 environmentalImpact:
 - benefit: Chemical Solvent Elimination

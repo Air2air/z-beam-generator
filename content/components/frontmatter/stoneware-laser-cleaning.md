@@ -47,7 +47,7 @@ images:
     alt: Microscopic view of Stoneware surface after laser cleaning showing detailed
       surface structure
     url: /images/stoneware-laser-cleaning-micro.jpg
-title: Laser Cleaning Stoneware - Technical Guide for Optimal Processing
+title: Laser Cleaning Stoneware
 headline: Comprehensive technical guide for laser cleaning ceramic stoneware
 environmentalImpact:
 - benefit: Chemical Solvent Elimination

@@ -49,7 +49,7 @@ images:
     alt: Microscopic view of Poplar surface after laser cleaning showing detailed
       surface structure
     url: /images/poplar-laser-cleaning-micro.jpg
-title: Laser Cleaning Poplar Wood - Technical Guide for Optimal Processing
+title: Laser Cleaning Poplar Wood
 headline: Comprehensive technical guide for laser cleaning poplar wood without thermal
   damage
 environmentalImpact:

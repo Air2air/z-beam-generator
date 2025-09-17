@@ -49,7 +49,7 @@ images:
     alt: Microscopic view of Alabaster surface after laser cleaning showing detailed
       surface structure
     url: /images/alabaster-laser-cleaning-micro.jpg
-title: Laser Cleaning Alabaster - Technical Guide for Optimal Processing
+title: Laser Cleaning Alabaster
 headline: Comprehensive technical guide for laser cleaning stone alabaster
 environmentalImpact:
 - benefit: Chemical Solvent Elimination

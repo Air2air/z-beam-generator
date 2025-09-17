@@ -50,7 +50,7 @@ images:
     alt: Microscopic view of Magnesium surface after laser cleaning showing detailed
       surface structure
     url: /images/magnesium-laser-cleaning-micro.jpg
-title: Laser Cleaning Magnesium - Technical Guide for Optimal Processing
+title: Laser Cleaning Magnesium
 headline: Comprehensive technical guide for laser cleaning magnesium alloys
 environmentalImpact:
 - benefit: Chemical Solvent Elimination

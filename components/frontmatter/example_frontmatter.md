@@ -75,7 +75,7 @@ images:
   micro:
     alt: "Microscopic view of stoneware surface after laser treatment showing preserved microstructure"
     url: "/images/stoneware-laser-cleaning-micro.jpg"
-title: "Laser Cleaning Stoneware - Technical Guide for Optimal Processing"
+title: "Laser Cleaning Stoneware"
 headline: "Comprehensive technical guide for laser cleaning ceramic stoneware"
 environmentalImpact:
 - benefit: "Reduced chemical waste"

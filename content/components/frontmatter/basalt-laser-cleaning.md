@@ -52,7 +52,7 @@ images:
     alt: Microscopic view of Basalt surface after laser cleaning showing detailed
       surface structure
     url: /images/basalt-laser-cleaning-micro.jpg
-title: Laser Cleaning Basalt - Technical Guide for Optimal Processing
+title: Laser Cleaning Basalt
 headline: Comprehensive technical guide for laser cleaning stone basalt
 environmentalImpact:
 - benefit: Chemical Solvent Elimination

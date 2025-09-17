@@ -51,7 +51,7 @@ images:
     alt: Microscopic view of Float Glass surface after laser cleaning showing detailed
       surface structure
     url: /images/float-glass-laser-cleaning-micro.jpg
-title: Laser Cleaning Float Glass - Technical Guide for Optimal Processing
+title: Laser Cleaning Float Glass
 headline: Comprehensive technical guide for laser cleaning soda-lime float glass
 environmentalImpact:
 - benefit: Chemical Solvent Elimination

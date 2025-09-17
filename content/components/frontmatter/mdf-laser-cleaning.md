@@ -47,7 +47,7 @@ images:
     alt: Microscopic view of MDF surface after laser cleaning showing detailed surface
       structure
     url: /images/mdf-laser-cleaning-micro.jpg
-title: Laser Cleaning MDF - Technical Guide for Optimal Processing
+title: Laser Cleaning MDF
 headline: Comprehensive technical guide for laser cleaning Medium Density Fiberboard
 environmentalImpact:
 - benefit: Chemical Solvent Elimination

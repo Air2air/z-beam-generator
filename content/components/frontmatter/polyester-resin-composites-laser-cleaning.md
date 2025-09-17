@@ -48,7 +48,7 @@ images:
     alt: Microscopic view of Polyester Resin Composites surface after laser cleaning
       showing detailed surface structure
     url: /images/polyester-resin-composites-laser-cleaning-micro.jpg
-title: Laser Cleaning Polyester Resin Composites - Technical Guide for Optimal Processing
+title: Laser Cleaning Polyester Resin Composites
 headline: Precision laser cleaning for Glass Reinforced Polyester (GRP) composites
   without substrate damage
 environmentalImpact:

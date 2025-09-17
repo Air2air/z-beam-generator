@@ -48,7 +48,7 @@ images:
     alt: Microscopic view of Bamboo surface after laser cleaning showing detailed
       surface structure
     url: /images/bamboo-laser-cleaning-micro.jpg
-title: Laser Cleaning Bamboo - Technical Guide for Optimal Processing
+title: Laser Cleaning Bamboo
 headline: Comprehensive technical guide for laser cleaning natural bamboo materials
 environmentalImpact:
 - benefit: Chemical Solvent Elimination

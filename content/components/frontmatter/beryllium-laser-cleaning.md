@@ -46,7 +46,7 @@ images:
     alt: Microscopic view of Beryllium surface after laser cleaning showing detailed
       surface structure
     url: /images/beryllium-laser-cleaning-micro.jpg
-title: Laser Cleaning Beryllium - Technical Guide for Optimal Processing
+title: Laser Cleaning Beryllium
 headline: Comprehensive technical guide for laser cleaning metal beryllium
 environmentalImpact:
 - benefit: Chemical Solvent Elimination

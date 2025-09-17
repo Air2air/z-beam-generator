@@ -131,7 +131,7 @@ COMPONENT_CONFIG = {
     "tags": {
         "api_provider": "deepseek",
         "priority": 8,
-        "enabled": False,  # DISABLED for focused batch test
+        "enabled": True,  # ENABLED for tags component testing
         "data_provider": "hybrid",  # Uses frontmatter data + AI generation
     },
     "jsonld": {

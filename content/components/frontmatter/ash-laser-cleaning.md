@@ -49,7 +49,7 @@ images:
     alt: Microscopic view of Ash surface after laser cleaning showing detailed surface
       structure
     url: /images/ash-laser-cleaning-micro.jpg
-title: Laser Cleaning Ash Wood - Technical Guide for Optimal Processing
+title: Laser Cleaning Ash Wood
 headline: Comprehensive technical guide for laser cleaning ash wood surfaces
 environmentalImpact:
 - benefit: Chemical Solvent Elimination

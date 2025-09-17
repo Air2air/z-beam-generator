@@ -49,7 +49,7 @@ images:
     alt: Microscopic view of Oak surface after laser cleaning showing detailed surface
       structure
     url: /images/oak-laser-cleaning-micro.jpg
-title: Laser Cleaning Oak Wood - Technical Guide for Optimal Processing
+title: Laser Cleaning Oak Wood
 headline: Comprehensive technical guide for laser cleaning oak wood surfaces
 environmentalImpact:
 - benefit: Chemical Solvent Elimination

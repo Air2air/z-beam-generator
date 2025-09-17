@@ -47,7 +47,7 @@ images:
     alt: Microscopic view of Maple surface after laser cleaning showing detailed surface
       structure
     url: /images/maple-laser-cleaning-micro.jpg
-title: Laser Cleaning Maple Wood - Technical Guide for Optimal Processing
+title: Laser Cleaning Maple Wood
 headline: Comprehensive technical guide for laser cleaning maple wood surfaces
 environmentalImpact:
 - benefit: Chemical Solvent Elimination

@@ -667,7 +667,7 @@ images:
   micro:
     alt: "Microscopic view of {material_name} surface after laser treatment showing preserved microstructure"
     url: "/images/{material_name.lower()}-laser-cleaning-micro.jpg"
-title: "Laser Cleaning {material_name} - Technical Guide for Optimal Processing"
+title: "Laser Cleaning {material_name}"
 headline: "Comprehensive technical guide for laser cleaning metal {material_name}"
 environmentalImpact:
 - benefit: "Chemical Solvent Elimination"

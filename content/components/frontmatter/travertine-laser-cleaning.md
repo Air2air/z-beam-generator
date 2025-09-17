@@ -48,7 +48,7 @@ images:
     alt: Microscopic view of Travertine surface after laser cleaning showing detailed
       surface structure
     url: /images/travertine-laser-cleaning-micro.jpg
-title: Laser Cleaning Travertine - Technical Guide for Optimal Processing
+title: Laser Cleaning Travertine
 headline: Comprehensive technical guide for laser cleaning stone travertine
 environmentalImpact:
 - benefit: Chemical Solvent Elimination

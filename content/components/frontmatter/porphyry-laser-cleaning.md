@@ -47,7 +47,7 @@ images:
     alt: Microscopic view of Porphyry surface after laser cleaning showing detailed
       surface structure
     url: /images/porphyry-laser-cleaning-micro.jpg
-title: Laser Cleaning Porphyry - Technical Guide for Optimal Processing
+title: Laser Cleaning Porphyry
 headline: Comprehensive technical guide for laser cleaning stone porphyry
 environmentalImpact:
 - benefit: Chemical Solvent Elimination

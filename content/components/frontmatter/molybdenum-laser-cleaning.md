@@ -45,7 +45,7 @@ images:
     alt: Microscopic view of Molybdenum surface after laser cleaning showing detailed
       surface structure
     url: /images/molybdenum-laser-cleaning-micro.jpg
-title: Laser Cleaning Molybdenum - Technical Guide for Optimal Processing
+title: Laser Cleaning Molybdenum
 headline: Comprehensive technical guide for laser cleaning metal molybdenum
 environmentalImpact:
 - benefit: Chemical Solvent Elimination

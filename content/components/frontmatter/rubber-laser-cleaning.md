@@ -48,7 +48,7 @@ images:
     alt: Microscopic view of Rubber surface after laser cleaning showing detailed
       surface structure
     url: /images/rubber-laser-cleaning-micro.jpg
-title: Laser Cleaning Rubber - Technical Guide for Optimal Processing
+title: Laser Cleaning Rubber
 headline: Comprehensive technical guide for laser cleaning rubber compounds and elastomers
 environmentalImpact:
 - benefit: Chemical Solvent Elimination

@@ -48,7 +48,7 @@ images:
     alt: Microscopic view of Kevlar-Reinforced Polymer surface after laser cleaning
       showing detailed surface structure
     url: /images/kevlar-reinforced-polymer-laser-cleaning-micro.jpg
-title: Laser Cleaning Kevlar-Reinforced Polymer - Technical Guide for Optimal Processing
+title: Laser Cleaning Kevlar-Reinforced Polymer
 headline: Comprehensive technical guide for laser cleaning composite kevlar-reinforced
   polymer
 environmentalImpact:

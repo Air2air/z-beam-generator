@@ -48,7 +48,7 @@ images:
     alt: Microscopic view of Phenolic Resin Composites surface after laser cleaning
       showing detailed surface structure
     url: /images/phenolic-resin-composites-laser-cleaning-micro.jpg
-title: Laser Cleaning Phenolic Resin Composites - Technical Guide for Optimal Processing
+title: Laser Cleaning Phenolic Resin Composites
 headline: Comprehensive technical guide for laser cleaning phenolic resin composite
   materials
 environmentalImpact:

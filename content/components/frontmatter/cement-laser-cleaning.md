@@ -51,7 +51,7 @@ images:
     alt: Microscopic view of Cement surface after laser cleaning showing detailed
       surface structure
     url: /images/cement-laser-cleaning-micro.jpg
-title: Laser Cleaning Cement - Technical Guide for Optimal Processing
+title: Laser Cleaning Cement
 headline: Comprehensive technical guide for laser cleaning cement surfaces
 environmentalImpact:
 - benefit: Chemical Solvent Elimination

@@ -49,7 +49,7 @@ images:
     alt: Microscopic view of Beech surface after laser cleaning showing detailed surface
       structure
     url: /images/beech-laser-cleaning-micro.jpg
-title: Laser Cleaning Beech Wood - Technical Guide for Optimal Processing
+title: Laser Cleaning Beech Wood
 headline: Comprehensive technical guide for laser cleaning beech wood surfaces
 environmentalImpact:
 - benefit: Chemical Solvent Elimination

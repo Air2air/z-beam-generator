@@ -49,7 +49,7 @@ images:
     alt: Microscopic view of Slate surface after laser cleaning showing detailed surface
       structure
     url: /images/slate-laser-cleaning-micro.jpg
-title: Laser Cleaning Slate - Technical Guide for Optimal Processing
+title: Laser Cleaning Slate
 headline: Comprehensive technical guide for laser cleaning natural slate surfaces
 environmentalImpact:
 - benefit: Chemical Solvent Elimination

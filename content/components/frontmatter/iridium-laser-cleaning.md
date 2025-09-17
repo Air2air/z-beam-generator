@@ -44,7 +44,7 @@ images:
     alt: Microscopic view of Iridium surface after laser cleaning showing detailed
       surface structure
     url: /images/iridium-laser-cleaning-micro.jpg
-title: Laser Cleaning Iridium - Technical Guide for Optimal Processing
+title: Laser Cleaning Iridium
 headline: Comprehensive technical guide for laser cleaning metal iridium
 environmentalImpact:
 - benefit: Chemical Solvent Elimination

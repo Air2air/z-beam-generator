@@ -46,7 +46,7 @@ images:
     alt: Microscopic view of Zirconium surface after laser cleaning showing detailed
       surface structure
     url: /images/zirconium-laser-cleaning-micro.jpg
-title: Laser Cleaning Zirconium - Technical Guide for Optimal Processing
+title: Laser Cleaning Zirconium
 headline: Comprehensive technical guide for laser cleaning metal zirconium
 environmentalImpact:
 - benefit: Chemical Solvent Elimination

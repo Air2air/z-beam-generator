@@ -47,7 +47,7 @@ images:
     alt: Microscopic view of Breccia surface after laser cleaning showing detailed
       surface structure
     url: /images/breccia-laser-cleaning-micro.jpg
-title: Laser Cleaning Breccia - Technical Guide for Optimal Processing
+title: Laser Cleaning Breccia
 headline: Comprehensive technical guide for laser cleaning stone breccia
 environmentalImpact:
 - benefit: Chemical Solvent Elimination

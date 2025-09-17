@@ -73,7 +73,7 @@ images:
   micro:
     alt: "Microscopic view of Aluminum surface after laser treatment showing preserved microstructure"
     url: "/images/aluminum-laser-cleaning-micro.jpg"
-title: "Laser Cleaning Aluminum - Technical Guide for Optimal Processing"
+title: "Laser Cleaning Aluminum"
 headline: "Comprehensive technical guide for laser cleaning metal aluminum"
 environmentalImpact:
 - benefit: "Chemical Solvent Elimination"

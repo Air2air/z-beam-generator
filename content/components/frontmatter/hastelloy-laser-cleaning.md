@@ -53,7 +53,7 @@ images:
     alt: Microscopic view of Hastelloy surface after laser cleaning showing detailed
       surface structure
     url: /images/hastelloy-laser-cleaning-micro.jpg
-title: Laser Cleaning Hastelloy Alloys - Technical Guide for Optimal Processing
+title: Laser Cleaning Hastelloy Alloys
 headline: Comprehensive technical guide for laser cleaning Hastelloy nickel-based
   superalloys
 environmentalImpact:

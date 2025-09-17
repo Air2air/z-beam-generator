@@ -45,7 +45,7 @@ images:
     alt: Microscopic view of Calcite surface after laser cleaning showing detailed
       surface structure
     url: /images/calcite-laser-cleaning-micro.jpg
-title: Laser Cleaning Calcite - Technical Guide for Optimal Processing
+title: Laser Cleaning Calcite
 headline: Comprehensive technical guide for laser cleaning calcite crystals and substrates
 environmentalImpact:
 - benefit: Chemical Solvent Elimination

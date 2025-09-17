@@ -44,7 +44,7 @@ images:
     alt: Microscopic view of Hafnium surface after laser cleaning showing detailed
       surface structure
     url: /images/hafnium-laser-cleaning-micro.jpg
-title: Laser Cleaning Hafnium - Technical Guide for Optimal Processing
+title: Laser Cleaning Hafnium
 headline: Comprehensive technical guide for laser cleaning metal hafnium
 environmentalImpact:
 - benefit: Chemical Solvent Elimination

@@ -51,7 +51,7 @@ images:
     alt: Microscopic view of Stainless Steel surface after laser cleaning showing
       detailed surface structure
     url: /images/stainless-steel-laser-cleaning-micro.jpg
-title: Laser Cleaning Stainless Steel - Technical Guide for Optimal Processing
+title: Laser Cleaning Stainless Steel
 headline: Comprehensive technical guide for laser cleaning metal stainless steel
 environmentalImpact:
 - benefit: Chemical Solvent Elimination

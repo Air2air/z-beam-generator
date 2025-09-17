@@ -44,7 +44,7 @@ images:
     alt: Microscopic view of Niobium surface after laser cleaning showing detailed
       surface structure
     url: /images/niobium-laser-cleaning-micro.jpg
-title: Laser Cleaning Niobium - Technical Guide for Optimal Processing
+title: Laser Cleaning Niobium
 headline: Comprehensive technical guide for laser cleaning metal niobium
 environmentalImpact:
 - benefit: Chemical Solvent Elimination

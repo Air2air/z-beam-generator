@@ -64,13 +64,55 @@ class TagsComponentGenerator(APIComponentGenerator):
 
             # Handle APIResponse object
             if api_response.success:
-                content = api_response.content
+                content = api_response.content.strip()
                 logger.info(f"Generated tags for {material_name}")
 
-                # Apply centralized version stamping (will prepend to any existing legacy stamps)
-                from versioning import stamp_component_output
-
-                final_content = stamp_component_output("tags", content)
+                # Convert comma-separated tags to list and filter out excluded terms
+                tags_list = [tag.strip() for tag in content.split(',') if tag.strip()]
+                
+                # Filter out excluded terms
+                material_name_lower = material_name.lower()
+                material_formula = template_vars.get("material_formula", "").lower()
+                
+                excluded_terms = {
+                    "laser", "cleaning", "non-contact", "ablation", "beam", "photon", "wavelength",
+                    "nm", "micron", "µm", "mm", "energy", "joule", "watt", "power", "frequency",
+                    "hz", "khz", "mhz", "pulse", "cw", "continuous", "wave", "radiation", "light",
+                    "optics", "optical", "surface-treatment", "expert", material_name_lower
+                }
+                
+                if material_formula:
+                    excluded_terms.add(material_formula)
+                
+                # Filter tags
+                filtered_tags = [tag for tag in tags_list if tag.lower() not in excluded_terms]
+                
+                # Ensure we have 8 tags - if filtered too many, pad with category terms
+                if len(filtered_tags) < 8:
+                    padding_tags = ["manufacturing", "industrial", "decontamination", "restoration", "texturing", "polishing"]
+                    for pad_tag in padding_tags:
+                        if len(filtered_tags) >= 8:
+                            break
+                        if pad_tag not in [t.lower() for t in filtered_tags]:
+                            filtered_tags.append(pad_tag)
+                
+                # Take only first 8 tags
+                final_tags = filtered_tags[:8]
+                
+                # Create structured YAML output without HTML comments for clean format
+                yaml_content = self._format_as_yaml(material_name, final_tags, template_vars)
+                
+                # For YAML format, use simpler versioning without HTML comments
+                from datetime import datetime
+                version_info = f"""---
+Material: "{material_name.lower()}"
+Component: tags
+Generated: {datetime.now().isoformat()}
+Generator: Z-Beam v1.0.0
+Format: YAML v2.0
+---"""
+                
+                final_content = f"{yaml_content}\n\n{version_info}"
 
                 return ComponentResult(
                     component_type="tags", content=final_content, success=True
@@ -87,6 +129,75 @@ class TagsComponentGenerator(APIComponentGenerator):
 
         except Exception as e:
             logger.error(f"Error generating tags for {material_name}: {e}")
+            return ComponentResult(
+                component_type="tags",
+                content="",
+                success=False,
+                error_message=str(e),
+            )
+
+    def _format_as_yaml(self, material_name: str, tags_list: list, template_vars: Dict) -> str:
+        """Format tags as structured YAML for Next.js consumption"""
+        from datetime import datetime
+        
+        # Categorize tags
+        material_tags = []
+        industry_tags = []
+        process_tags = []
+        author_tags = []
+        other_tags = []
+        
+        # Known categories for classification
+        industries = {'aerospace', 'automotive', 'manufacturing', 'electronics', 'marine', 'medical', 'industrial'}
+        processes = {'decoating', 'decontamination', 'restoration', 'polishing', 'texturing', 'etching', 'passivation', 'anodizing'}
+        
+        material_name_lower = material_name.lower()
+        material_formula = template_vars.get("material_formula", "").lower()
+        
+        for tag in tags_list:
+            tag_clean = tag.strip().lower()
+            # Since we exclude material names now, this section won't match
+            if tag_clean in industries:
+                industry_tags.append(tag_clean)
+            elif tag_clean in processes:
+                process_tags.append(tag_clean)
+            elif '-' in tag_clean and len(tag_clean.split('-')) == 2:  # Likely author name
+                author_tags.append(tag_clean)
+            else:
+                other_tags.append(tag_clean)
+        
+        # Format as proper YAML
+        yaml_content = "tags:\n"
+        for tag in tags_list:
+            yaml_content += f"  - {tag.strip()}\n"
+        
+        yaml_content += f"material: \"{material_name.lower()}\"\n"
+        yaml_content += f"count: {len(tags_list)}\n"
+        yaml_content += "categories:\n"
+        
+        yaml_content += "  industry:\n"
+        for tag in industry_tags:
+            yaml_content += f"    - {tag}\n"
+        
+        yaml_content += "  process:\n"
+        for tag in process_tags:
+            yaml_content += f"    - {tag}\n"
+        
+        yaml_content += "  author:\n"
+        for tag in author_tags:
+            yaml_content += f"    - {tag}\n"
+        
+        yaml_content += "  other:\n"
+        for tag in other_tags:
+            yaml_content += f"    - {tag}\n"
+        
+        yaml_content += "metadata:\n"
+        yaml_content += f"  generated: \"{datetime.now().isoformat()}\"\n"
+        yaml_content += "  format: \"yaml\"\n"
+        yaml_content += "  version: \"2.0\""
+        
+        return yaml_content
+
     def _create_template_vars(
         self,
         material_name: str,
@@ -108,22 +219,46 @@ class TagsComponentGenerator(APIComponentGenerator):
     def _build_api_prompt(self, template_vars: Dict, frontmatter_data: Optional[Dict] = None) -> str:
         """Build API prompt for tags generation"""
         material_name = template_vars["material_name"]
+        material_formula = template_vars.get("material_formula", "")
+        material_category = template_vars.get("material_category", "")
         
-        prompt = f"""Generate navigation tags for {material_name} laser cleaning.
+        prompt = f"""Generate navigation tags for {material_name} surface treatment.
 
-Output EXACTLY 8 tags as a comma-separated list like this example:
-ablation, fused-silica, sio2, cleaning, laser, aerospace, non-contact, yi-chun-lin
+Output EXACTLY 12 tags as a comma-separated list like this example:
+aerospace, automotive, manufacturing, electronics, anodizing, passivation, decoating, restoration, polishing, texturing, metal, industrial
 
 REQUIREMENTS:
-- Output exactly 8 tags
-- Use single words or hyphenated terms only
-- Include material name (use {material_name})
-- Include "ablation", "cleaning", "laser"
-- Include 1-2 industry applications (aerospace, automotive, manufacturing, electronics, etc.)
-- Include "non-contact"
-- Include 1 author slug using {template_vars.get('author_name', 'expert')} (already in lowercase hyphenated format)
-- Make tags relevant to {material_name} laser cleaning
+- Output exactly 12 tags (we will filter to final 8)
+- Use single words or hyphenated terms only"""
+        
+        # Add formula if available
+        if material_formula:
+            prompt += f"\n- Include chemical formula or symbol ({material_formula.lower()})"
+        
+        # Build exclusion list
+        exclusions = [
+            "laser", "cleaning", "non-contact", "ablation", "beam", "photon", "wavelength", 
+            "nm", "micron", "µm", "mm", "energy", "joule", "watt", "power", "frequency", 
+            "hz", "khz", "mhz", "pulse", "cw", "continuous", "wave", "radiation", "light", 
+            "optics", "optical", "surface-treatment", "expert", material_name.lower()
+        ]
+        
+        # Add chemical formula to exclusions if present
+        if material_formula:
+            exclusions.append(material_formula.lower())
+        
+        exclusion_text = ", ".join(exclusions)
+        
+        prompt += f"""
+- Include 2-3 industry applications (aerospace, automotive, manufacturing, electronics, marine, medical, etc.)
+- Include relevant process terms (decoating, decontamination, restoration, etching, passivation, polishing, texturing, etc.)
+- Include material category terms (metal, polymer, ceramic, composite, etc.) if relevant
+- Include 1 author slug: {template_vars.get('author_name', 'expert').lower().replace(' ', '-')}
+- Make tags specific and valuable for {material_name} applications
 - Use lowercase throughout
+- DO NOT INCLUDE any of these terms: {exclusion_text}
+- DO NOT use the material name '{material_name.lower()}' as a tag
+- Focus on applications, processes, and industries, NOT the material itself
 - Output ONLY the comma-separated list, no other text"""
 
         return prompt

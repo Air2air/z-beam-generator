@@ -48,7 +48,7 @@ images:
     alt: Microscopic view of Pine surface after laser cleaning showing detailed surface
       structure
     url: /images/pine-laser-cleaning-micro.jpg
-title: Laser Cleaning Pine Wood - Technical Guide for Optimal Processing
+title: Laser Cleaning Pine Wood
 headline: Comprehensive technical guide for laser cleaning pine wood surfaces
 environmentalImpact:
 - benefit: Chemical Solvent Elimination

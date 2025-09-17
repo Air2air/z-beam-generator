@@ -46,7 +46,7 @@ images:
     alt: Microscopic view of Platinum surface after laser cleaning showing detailed
       surface structure
     url: /images/platinum-laser-cleaning-micro.jpg
-title: Laser Cleaning Platinum - Technical Guide for Optimal Processing
+title: Laser Cleaning Platinum
 headline: Comprehensive technical guide for laser cleaning metal platinum
 environmentalImpact:
 - benefit: Chemical Solvent Elimination

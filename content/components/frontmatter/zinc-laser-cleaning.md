@@ -44,7 +44,7 @@ images:
     alt: Microscopic view of Zinc surface after laser cleaning showing detailed surface
       structure
     url: /images/zinc-laser-cleaning-micro.jpg
-title: Laser Cleaning Zinc - Technical Guide for Optimal Processing
+title: Laser Cleaning Zinc
 headline: Comprehensive technical guide for laser cleaning metal zinc
 environmentalImpact:
 - benefit: Chemical Solvent Elimination

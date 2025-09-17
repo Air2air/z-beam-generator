@@ -48,7 +48,7 @@ images:
     alt: Microscopic view of Soapstone surface after laser cleaning showing detailed
       surface structure
     url: /images/soapstone-laser-cleaning-micro.jpg
-title: Laser Cleaning Soapstone - Technical Guide for Optimal Processing
+title: Laser Cleaning Soapstone
 headline: Comprehensive technical guide for laser cleaning stone soapstone
 environmentalImpact:
 - benefit: Chemical Solvent Elimination

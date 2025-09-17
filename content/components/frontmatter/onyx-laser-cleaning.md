@@ -45,7 +45,7 @@ images:
     alt: Microscopic view of Onyx surface after laser cleaning showing detailed surface
       structure
     url: /images/onyx-laser-cleaning-micro.jpg
-title: Laser Cleaning Onyx - Technical Guide for Optimal Processing
+title: Laser Cleaning Onyx
 headline: Comprehensive technical guide for laser cleaning stone onyx
 environmentalImpact:
 - benefit: Chemical Solvent Elimination

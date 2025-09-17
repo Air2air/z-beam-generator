@@ -46,7 +46,7 @@ images:
     alt: Microscopic view of Indium surface after laser cleaning showing detailed
       surface structure
     url: /images/indium-laser-cleaning-micro.jpg
-title: Laser Cleaning Indium - Technical Guide for Optimal Processing
+title: Laser Cleaning Indium
 headline: Comprehensive technical guide for laser cleaning metal indium
 environmentalImpact:
 - benefit: Chemical Solvent Elimination

@@ -44,7 +44,7 @@ images:
     alt: Microscopic view of Gold surface after laser cleaning showing detailed surface
       structure
     url: /images/gold-laser-cleaning-micro.jpg
-title: Laser Cleaning Gold - Technical Guide for Optimal Processing
+title: Laser Cleaning Gold
 headline: Precision laser cleaning of gold for jewelry and electronics applications
 environmentalImpact:
 - benefit: Chemical Solvent Elimination
