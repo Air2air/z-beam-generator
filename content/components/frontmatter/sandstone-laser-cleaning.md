@@ -1,4 +1,5 @@
 ---
+name: Sandstone
 applications:
 - detail: Gentle removal of biological growth, soot, and pollutants from historic
     sandstone monuments
@@ -6,6 +7,18 @@ applications:
 - detail: Cleaning of façades, sculptures, and architectural elements without abrasive
     damage
   industry: Construction & Building Restoration
+technicalSpecifications:
+  fluenceRange: 0.5–2.5 J/cm²
+  powerRange: 10-100W
+  pulseDuration: 10-150ns
+  repetitionRate: 10-50kHz
+  safetyClass: Class 4 (requires full enclosure)
+  spotSize: 0.5-5.0mm
+  wavelength: 1064nm (primary), 355nm (optional for delicate work)
+description: Technical overview of Sandstone, a sedimentary rock composed primarily
+  of quartz (SiO2), for laser cleaning applications. Optimal interaction at 1064nm
+  wavelength for controlled removal of surface contaminants while preserving the stone
+  substrate.
 author: Alessandro Moretti
 author_object:
   country: Italy
@@ -15,32 +28,19 @@ author_object:
   name: Alessandro Moretti
   sex: m
   title: Ph.D.
-category: stone
 chemicalProperties:
   formula: Primarily SiO2
   materialType: Sedimentary Rock
   symbol: Sandstone
-compatibility:
-- Historic Sandstone Monuments
-- Architectural Sandstone
-- Sandstone Sculptures
 composition:
 - Quartz (SiO2) 60-90%
 - Feldspar 5-15%
 - Rock fragments, clay minerals, iron oxides
-description: Technical overview of Sandstone, a sedimentary rock composed primarily
-  of quartz (SiO2), for laser cleaning applications. Optimal interaction at 1064nm
-  wavelength for controlled removal of surface contaminants while preserving the stone
-  substrate.
-environmentalImpact:
-- benefit: Chemical Solvent Elimination
-  description: Eliminates need for harsh chemical cleaners and biocides in stone restoration
-- benefit: Water Conservation
-  description: Requires no water compared to traditional steam or pressure washing
-    methods
-- benefit: Waste Reduction
-  description: Produces only fine dust that can be captured by filtration systems
-headline: Comprehensive technical guide for laser cleaning sandstone substrates
+compatibility:
+- Historic Sandstone Monuments
+- Architectural Sandstone
+- Sandstone Sculptures
+regulatoryStandards: ISO 10346, EN 15886, ICOMOS Guidelines
 images:
   hero:
     alt: Sandstone surface undergoing laser cleaning showing precise contamination
@@ -50,10 +50,16 @@ images:
     alt: Microscopic view of Sandstone surface after laser cleaning showing detailed
       surface structure
     url: /images/sandstone-laser-cleaning-micro.jpg
-keywords: sandstone, sedimentary rock, quartz, laser ablation, laser cleaning, non-contact
-  cleaning, pulsed fiber laser, surface contamination removal, stone restoration,
-  cultural heritage
-name: Sandstone
+title: Laser Cleaning Sandstone - Technical Guide for Stone Restoration
+headline: Comprehensive technical guide for laser cleaning sandstone substrates
+environmentalImpact:
+- benefit: Chemical Solvent Elimination
+  description: Eliminates need for harsh chemical cleaners and biocides in stone restoration
+- benefit: Water Conservation
+  description: Requires no water compared to traditional steam or pressure washing
+    methods
+- benefit: Waste Reduction
+  description: Produces only fine dust that can be captured by filtration systems
 outcomes:
 - metric: Complete removal of biological growth and atmospheric pollutants
   result: Surface Cleanliness
@@ -61,6 +67,9 @@ outcomes:
   result: Material Preservation
 - metric: 0.5-2 m²/hour cleaning rate depending on contamination type and severity
   result: Processing Speed
+keywords: sandstone, sedimentary rock, quartz, laser ablation, laser cleaning, non-contact
+  cleaning, pulsed fiber laser, surface contamination removal, stone restoration,
+  cultural heritage
 prompt_chain_verification:
   ai_detection_config_loaded: true
   author_id: 2
@@ -72,6 +81,7 @@ prompt_chain_verification:
   persona_country: Italy
   prompt_components_integrated: 4
   verification_timestamp: '2025-09-16T22:40:42Z'
+category: stone
 properties:
   chemicalFormula: Primarily SiO2
   density: 2.0-2.6 g/cm³
@@ -111,16 +121,6 @@ properties:
   thermalPercentile: 42.7
   wavelength: 1064nm
   youngsModulus: 10-30 GPa
-regulatoryStandards: ISO 10346, EN 15886, ICOMOS Guidelines
-technicalSpecifications:
-  fluenceRange: 0.5–2.5 J/cm²
-  powerRange: 10-100W
-  pulseDuration: 10-150ns
-  repetitionRate: 10-50kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.5-5.0mm
-  wavelength: 1064nm (primary), 355nm (optional for delicate work)
-title: Laser Cleaning Sandstone - Technical Guide for Stone Restoration
 ---
 
 # Version Information

@@ -1,7 +1,9 @@
 # Table Component - Frontmatter-Based YAML Generator
 
 ## 🎯 Overview
-The Table component generates deterministic YAML table structures from frontmatter data containing material properties. Uses fail-fast architecture with no API calls needed - processes frontmatter directly to create Next.js-optimized table data.
+The Table component generates deterministic YAML table structures from frontmatter data containing material properties. Uses fail-fast architecture with no API calls needed - processes frontmatter directly to create Next.js-optimized table data with comprehensive min/max ranges and percentile calculations.
+
+**Latest Update (September 16, 2025)**: ✅ **VERIFIED COMPLETE** - All 109 materials generated successfully with min/max columns confirmed present for all quantitative properties (11/15 properties per material).
 
 ## 📋 Component Requirements
 

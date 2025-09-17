@@ -1,4 +1,5 @@
 ---
+name: Marble
 applications:
 - detail: Removal of biological growth, atmospheric pollution crusts, and surface
     contaminants from historical marble artifacts
@@ -6,6 +7,17 @@ applications:
 - detail: Cleaning of soiling, graffiti, and discoloration from architectural marble
     surfaces
   industry: Monumental Stonework
+technicalSpecifications:
+  fluenceRange: 0.5–2.5 J/cm²
+  powerRange: 10-100W
+  pulseDuration: 10-200ns
+  repetitionRate: 10-50kHz
+  safetyClass: Class 4 (requires full enclosure)
+  spotSize: 0.5-3.0mm
+  wavelength: 1064nm (primary), 355nm (optional for delicate work)
+description: Technical overview of Marble, CaCO3, for laser cleaning applications,
+  including optimal 1064nm wavelength interaction, and industrial applications in
+  surface preparation.
 author: Ikmanda Roswati
 author_object:
   country: Indonesia
@@ -15,22 +27,29 @@ author_object:
   name: Ikmanda Roswati
   sex: m
   title: Ph.D.
-category: stone
 chemicalProperties:
   formula: CaCO3
   materialType: stone
   symbol: Marble
-compatibility:
-- Historical Marble Artifacts
-- Architectural Marble Surfaces
-- Sculptural Marble
 composition:
 - Calcium Carbonate (CaCO3) 90-99%
 - Dolomite (CaMg(CO3)2)
 - Other minerals (quartz, mica, clay minerals, iron oxides)
-description: Technical overview of Marble, CaCO3, for laser cleaning applications,
-  including optimal 1064nm wavelength interaction, and industrial applications in
-  surface preparation.
+compatibility:
+- Historical Marble Artifacts
+- Architectural Marble Surfaces
+- Sculptural Marble
+regulatoryStandards: EN 15886, EN 15898, ICOMOS Guidelines
+images:
+  hero:
+    alt: Marble surface undergoing laser cleaning showing precise contamination removal
+    url: /images/marble-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Marble surface after laser cleaning showing detailed
+      surface structure
+    url: /images/marble-laser-cleaning-micro.jpg
+title: Laser Cleaning Marble - Technical Guide for Optimal Processing
+headline: Comprehensive technical guide for laser cleaning stone marble
 environmentalImpact:
 - benefit: Chemical Solvent Elimination
   description: Eliminates need for harsh chemical cleaners and poultices traditionally
@@ -41,19 +60,6 @@ environmentalImpact:
 - benefit: Waste Reduction
   description: Produces minimal waste as removed contaminants are captured by filtration
     systems
-headline: Comprehensive technical guide for laser cleaning stone marble
-images:
-  hero:
-    alt: Marble surface undergoing laser cleaning showing precise contamination removal
-    url: /images/marble-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Marble surface after laser cleaning showing detailed
-      surface structure
-    url: /images/marble-laser-cleaning-micro.jpg
-keywords: marble, marble stone, laser ablation, laser cleaning, non-contact cleaning,
-  pulsed fiber laser, surface contamination removal, industrial laser parameters,
-  thermal processing, surface restoration
-name: Marble
 outcomes:
 - metric: Achieves controlled removal of surface layers without damaging the original
     stone substrate
@@ -63,6 +69,9 @@ outcomes:
   result: Material Removal Precision
 - metric: 0.5-2 m²/hour cleaning rate depending on contamination type and laser parameters
   result: Processing Speed
+keywords: marble, marble stone, laser ablation, laser cleaning, non-contact cleaning,
+  pulsed fiber laser, surface contamination removal, industrial laser parameters,
+  thermal processing, surface restoration
 prompt_chain_verification:
   ai_detection_config_loaded: true
   author_id: 3
@@ -74,6 +83,7 @@ prompt_chain_verification:
   persona_country: Indonesia
   prompt_components_integrated: 4
   verification_timestamp: '2025-09-16T22:38:09Z'
+category: stone
 properties:
   chemicalFormula: CaCO3
   density: 2.7 g/cm³
@@ -113,16 +123,6 @@ properties:
   thermalPercentile: 54.2
   wavelength: 1064nm
   youngsModulus: 50-70 GPa
-regulatoryStandards: EN 15886, EN 15898, ICOMOS Guidelines
-technicalSpecifications:
-  fluenceRange: 0.5–2.5 J/cm²
-  powerRange: 10-100W
-  pulseDuration: 10-200ns
-  repetitionRate: 10-50kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.5-3.0mm
-  wavelength: 1064nm (primary), 355nm (optional for delicate work)
-title: Laser Cleaning Marble - Technical Guide for Optimal Processing
 ---
 
 # Version Information

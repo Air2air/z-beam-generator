@@ -1,10 +1,22 @@
 ---
+name: Rhodium
 applications:
 - detail: Removal of surface oxides and contaminants from Rhodium-plated connectors
     and contacts
   industry: Electronics Manufacturing
 - detail: Cleaning of Rhodium-coated electrical components and sensor contacts
   industry: Aerospace Components
+technicalSpecifications:
+  fluenceRange: 0.5–3.0 J/cm²
+  powerRange: 20-100W
+  pulseDuration: 10-50ns
+  repetitionRate: 10-200kHz
+  safetyClass: Class 4 (requires full enclosure)
+  spotSize: 0.1-0.8mm
+  wavelength: 1064nm (primary), 355nm (optional)
+description: Technical overview of Rhodium for laser cleaning applications, including
+  optimal 1064nm wavelength interaction, and industrial applications in precision
+  surface preparation.
 author: Alessandro Moretti
 author_object:
   country: Italy
@@ -14,30 +26,19 @@ author_object:
   name: Alessandro Moretti
   sex: m
   title: Ph.D.
-category: precious-metal
 chemicalProperties:
   formula: Rh
   materialType: precious-metal
   symbol: Rh
+composition:
+- Rhodium (Rh) 99.95%
+- Trace elements (Pt, Pd, Ir)
 compatibility:
 - Gold
 - Platinum
 - Palladium
 - Stainless Steel
-composition:
-- Rhodium (Rh) 99.95%
-- Trace elements (Pt, Pd, Ir)
-description: Technical overview of Rhodium for laser cleaning applications, including
-  optimal 1064nm wavelength interaction, and industrial applications in precision
-  surface preparation.
-environmentalImpact:
-- benefit: Chemical Solvent Elimination
-  description: Eliminates use of cyanide-based electroplating stripping solutions
-- benefit: Water Conservation
-  description: Reduces water consumption by 95% compared to chemical stripping methods
-- benefit: Energy Efficiency
-  description: Consumes 60% less energy than thermal decomposition processes
-headline: Comprehensive technical guide for laser cleaning precious metal rhodium
+regulatoryStandards: ISO 14644-1, ASTM B734, IEC 60825-1
 images:
   hero:
     alt: Rhodium surface undergoing laser cleaning showing precise contamination removal
@@ -46,10 +47,15 @@ images:
     alt: Microscopic view of Rhodium surface after laser cleaning showing detailed
       surface structure
     url: /images/rhodium-laser-cleaning-micro.jpg
-keywords: rhodium, rhodium plating, laser ablation, laser cleaning, non-contact cleaning,
-  pulsed fiber laser, surface contamination removal, industrial laser parameters,
-  precious metal cleaning, surface restoration
-name: Rhodium
+title: Laser Cleaning Rhodium - Technical Guide for Optimal Processing
+headline: Comprehensive technical guide for laser cleaning precious metal rhodium
+environmentalImpact:
+- benefit: Chemical Solvent Elimination
+  description: Eliminates use of cyanide-based electroplating stripping solutions
+- benefit: Water Conservation
+  description: Reduces water consumption by 95% compared to chemical stripping methods
+- benefit: Energy Efficiency
+  description: Consumes 60% less energy than thermal decomposition processes
 outcomes:
 - metric: Achieves ISO 14644-1 Class 5 cleanliness standard
   result: Surface Cleanliness Level
@@ -57,6 +63,9 @@ outcomes:
   result: Material Removal Precision
 - metric: 0.5-2 m²/hour cleaning rate depending on coating thickness
   result: Processing Speed
+keywords: rhodium, rhodium plating, laser ablation, laser cleaning, non-contact cleaning,
+  pulsed fiber laser, surface contamination removal, industrial laser parameters,
+  precious metal cleaning, surface restoration
 prompt_chain_verification:
   ai_detection_config_loaded: true
   author_id: 2
@@ -68,6 +77,7 @@ prompt_chain_verification:
   persona_country: Italy
   prompt_components_integrated: 4
   verification_timestamp: '2025-09-16T22:17:49Z'
+category: precious-metal
 properties:
   chemicalFormula: Rh
   density: 12.41 g/cm³
@@ -107,16 +117,6 @@ properties:
   thermalPercentile: 33.7
   wavelength: 1064nm
   youngsModulus: 380 GPa
-regulatoryStandards: ISO 14644-1, ASTM B734, IEC 60825-1
-technicalSpecifications:
-  fluenceRange: 0.5–3.0 J/cm²
-  powerRange: 20-100W
-  pulseDuration: 10-50ns
-  repetitionRate: 10-200kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.1-0.8mm
-  wavelength: 1064nm (primary), 355nm (optional)
-title: Laser Cleaning Rhodium - Technical Guide for Optimal Processing
 ---
 
 # Version Information

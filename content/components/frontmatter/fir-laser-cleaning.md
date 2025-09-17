@@ -1,4 +1,5 @@
 ---
+name: Fir
 applications:
 - detail: Removal of surface contaminants, old finishes, and biological growth from
     fir wood surfaces
@@ -6,6 +7,17 @@ applications:
 - detail: Gentle cleaning of fir wood artifacts and architectural elements without
     damaging the wood grain
   industry: Historical Restoration
+technicalSpecifications:
+  fluenceRange: 0.5–2.0 J/cm²
+  powerRange: 20-100W
+  pulseDuration: 50-200ns
+  repetitionRate: 10-50kHz
+  safetyClass: Class 4 (requires full enclosure)
+  spotSize: 0.5-3.0mm
+  wavelength: 1064nm (primary), 355nm (optional for delicate work)
+description: Technical overview of Fir wood for laser cleaning applications, including
+  optimal wavelength interaction with cellulose structure, and applications in wood
+  surface restoration.
 author: Todd Dunning
 author_object:
   country: United States (California)
@@ -15,32 +27,20 @@ author_object:
   name: Todd Dunning
   sex: m
   title: MA
-category: wood
 chemicalProperties:
   formula: C6H10O5 (cellulose)
   materialType: Softwood
   symbol: Fir
-compatibility:
-- Solid Wood Surfaces
-- Wood Veneers
-- Finished Wood Products
 composition:
 - Cellulose (C6H10O5) 45-50%
 - Lignin 25-30%
 - Hemicellulose 20-25%
 - Extractives 2-5%
-description: Technical overview of Fir wood for laser cleaning applications, including
-  optimal wavelength interaction with cellulose structure, and applications in wood
-  surface restoration.
-environmentalImpact:
-- benefit: Chemical Solvent Elimination
-  description: Eliminates need for harsh chemical strippers and cleaners in wood restoration
-- benefit: Minimal Waste Generation
-  description: Produces only vaporized contaminants with no secondary waste streams
-- benefit: Energy Efficiency
-  description: Consumes 60% less energy than traditional sanding and chemical stripping
-    methods
-headline: Comprehensive technical guide for laser cleaning fir wood surfaces
+compatibility:
+- Solid Wood Surfaces
+- Wood Veneers
+- Finished Wood Products
+regulatoryStandards: ISO 13061, ASTM D143, ANSI/HPVA HP-1
 images:
   hero:
     alt: Fir surface undergoing laser cleaning showing precise contamination removal
@@ -49,10 +49,16 @@ images:
     alt: Microscopic view of Fir surface after laser cleaning showing detailed surface
       structure
     url: /images/fir-laser-cleaning-micro.jpg
-keywords: fir wood, laser cleaning, wood restoration, cellulose ablation, non-contact
-  wood cleaning, pulsed laser, surface contamination removal, historical preservation,
-  wood grain preservation
-name: Fir
+title: Laser Cleaning Fir Wood - Technical Guide for Optimal Processing
+headline: Comprehensive technical guide for laser cleaning fir wood surfaces
+environmentalImpact:
+- benefit: Chemical Solvent Elimination
+  description: Eliminates need for harsh chemical strippers and cleaners in wood restoration
+- benefit: Minimal Waste Generation
+  description: Produces only vaporized contaminants with no secondary waste streams
+- benefit: Energy Efficiency
+  description: Consumes 60% less energy than traditional sanding and chemical stripping
+    methods
 outcomes:
 - metric: Complete removal of surface contaminants without damaging wood fibers
   result: Surface Cleanliness
@@ -60,6 +66,9 @@ outcomes:
   result: Material Preservation
 - metric: 0.5-2 m²/hour cleaning rate depending on contamination level
   result: Processing Speed
+keywords: fir wood, laser cleaning, wood restoration, cellulose ablation, non-contact
+  wood cleaning, pulsed laser, surface contamination removal, historical preservation,
+  wood grain preservation
 prompt_chain_verification:
   ai_detection_config_loaded: true
   author_id: 4
@@ -71,6 +80,7 @@ prompt_chain_verification:
   persona_country: United States (California)
   prompt_components_integrated: 4
   verification_timestamp: '2025-09-16T22:51:43Z'
+category: wood
 properties:
   chemicalFormula: C6H10O5 (cellulose)
   density: 0.45-0.55 g/cm³
@@ -109,16 +119,6 @@ properties:
   thermalPercentile: 27.8
   wavelength: 1064nm
   youngsModulus: 10-12 GPa
-regulatoryStandards: ISO 13061, ASTM D143, ANSI/HPVA HP-1
-technicalSpecifications:
-  fluenceRange: 0.5–2.0 J/cm²
-  powerRange: 20-100W
-  pulseDuration: 50-200ns
-  repetitionRate: 10-50kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.5-3.0mm
-  wavelength: 1064nm (primary), 355nm (optional for delicate work)
-title: Laser Cleaning Fir Wood - Technical Guide for Optimal Processing
 ---
 
 # Version Information

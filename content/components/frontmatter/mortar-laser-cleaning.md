@@ -1,10 +1,22 @@
 ---
+name: Mortar
 applications:
 - detail: Removal of biological growth, soot, and atmospheric pollutants from historic
     and modern masonry
   industry: Construction & Restoration
 - detail: Cleaning of mortar joints in preparation for repointing and structural repair
   industry: Industrial Maintenance
+technicalSpecifications:
+  fluenceRange: 0.5–2.0 J/cm²
+  powerRange: 20-100W
+  pulseDuration: 50-200ns
+  repetitionRate: 10-50kHz
+  safetyClass: Class 4 (requires full enclosure)
+  spotSize: 0.5-3.0mm
+  wavelength: 1064nm
+description: Technical overview of cementitious mortar for laser cleaning applications,
+  detailing the interaction mechanism with near-infrared laser radiation and its use
+  in delicate surface restoration.
 author: Alessandro Moretti
 author_object:
   country: Italy
@@ -14,23 +26,31 @@ author_object:
   name: Alessandro Moretti
   sex: m
   title: Ph.D.
-category: masonry
 chemicalProperties:
   formula: CaO·SiO₂ + Aggregate
   materialType: cementitious composite
   symbol: Mortar
-compatibility:
-- Brick
-- Stone
-- Concrete
 composition:
 - Portland Cement (CaO·SiO₂) 20-30%
 - Sand (SiO₂) 60-70%
 - Water (H₂O) 5-10%
 - Hydration Products (C-S-H gel, Ca(OH)₂)
-description: Technical overview of cementitious mortar for laser cleaning applications,
-  detailing the interaction mechanism with near-infrared laser radiation and its use
-  in delicate surface restoration.
+compatibility:
+- Brick
+- Stone
+- Concrete
+regulatoryStandards: ISO 13788, ASTM C270, EN 998-2
+images:
+  hero:
+    alt: Mortar surface undergoing laser cleaning showing precise contamination removal
+    url: /images/mortar-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Mortar surface after laser cleaning showing detailed
+      surface structure
+    url: /images/mortar-laser-cleaning-micro.jpg
+title: Laser Cleaning of Mortar - Technical Guide for Masonry Restoration
+headline: Precision laser cleaning techniques for cementitious mortar in construction
+  and restoration
 environmentalImpact:
 - benefit: Abrasive Media Elimination
   description: Eliminates use of sandblasting and other abrasive media that damage
@@ -41,19 +61,6 @@ environmentalImpact:
 - benefit: Chemical-Free Process
   description: Removes contaminants without the use of harsh chemicals that can penetrate
     and damage porous masonry
-headline: Precision laser cleaning techniques for cementitious mortar in construction
-  and restoration
-images:
-  hero:
-    alt: Mortar surface undergoing laser cleaning showing precise contamination removal
-    url: /images/mortar-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Mortar surface after laser cleaning showing detailed
-      surface structure
-    url: /images/mortar-laser-cleaning-micro.jpg
-keywords: mortar, masonry, laser cleaning, non-abrasive cleaning, historic preservation,
-  cementitious materials, surface contamination removal, laser parameters, restoration
-name: Mortar
 outcomes:
 - metric: Removes 95-99% of biological and atmospheric contaminants without damaging
     the mortar
@@ -62,6 +69,8 @@ outcomes:
   result: Material Preservation
 - metric: 0.5-1.5 m²/hour cleaning rate depending on contamination type and severity
   result: Processing Speed
+keywords: mortar, masonry, laser cleaning, non-abrasive cleaning, historic preservation,
+  cementitious materials, surface contamination removal, laser parameters, restoration
 prompt_chain_verification:
   ai_detection_config_loaded: true
   author_id: 2
@@ -73,6 +82,7 @@ prompt_chain_verification:
   persona_country: Italy
   prompt_components_integrated: 4
   verification_timestamp: '2025-09-16T21:53:43Z'
+category: masonry
 properties:
   chemicalFormula: CaO·SiO₂ + Aggregate
   density: 2.2 g/cm³
@@ -112,16 +122,6 @@ properties:
   thermalPercentile: 73.7
   wavelength: 1064nm
   youngsModulus: 20 GPa
-regulatoryStandards: ISO 13788, ASTM C270, EN 998-2
-technicalSpecifications:
-  fluenceRange: 0.5–2.0 J/cm²
-  powerRange: 20-100W
-  pulseDuration: 50-200ns
-  repetitionRate: 10-50kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.5-3.0mm
-  wavelength: 1064nm
-title: Laser Cleaning of Mortar - Technical Guide for Masonry Restoration
 ---
 
 # Version Information

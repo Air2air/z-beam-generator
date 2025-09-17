@@ -1,4 +1,5 @@
 ---
+name: Aluminum
 applications:
 - detail: Removal of lubricants, oxides, and thermal oxides from castings and extrusions
     prior to welding or bonding
@@ -7,6 +8,16 @@ applications:
   industry: Aerospace
 - detail: De-oxidation and surface preparation of heat sinks and enclosures
   industry: Electronics
+technicalSpecifications:
+  fluenceRange: 0.5–3.0 J/cm²
+  powerRange: 20-500W
+  pulseDuration: 10-200ns
+  repetitionRate: 10-2000kHz
+  safetyClass: Class 4
+  spotSize: 0.05-3.0mm
+  wavelength: 1064nm
+description: Technical overview of Aluminum for laser cleaning applications, including
+  optimal 1064nm wavelength interaction, and industrial applications in surface preparation.
 author: Ikmanda Roswati
 author_object:
   country: Indonesia
@@ -16,30 +27,20 @@ author_object:
   name: Ikmanda Roswati
   sex: m
   title: Ph.D.
-category: metal
 chemicalProperties:
   formula: Al
   materialType: metal
   symbol: Al
-compatibility:
-- Aluminum Alloys
-- Stainless Steel
-- Titanium
 composition:
 - Aluminum (Al) >99.0%
 - Silicon (Si) <1.0%
 - Iron (Fe) <0.5%
 - Copper (Cu) <0.1%
-description: Technical overview of Aluminum for laser cleaning applications, including
-  optimal 1064nm wavelength interaction, and industrial applications in surface preparation.
-environmentalImpact:
-- benefit: Chemical Solvent Elimination
-  description: Eliminates use of alkaline cleaners and acidic etchants
-- benefit: Water Conservation
-  description: Zero water consumption during the cleaning process
-- benefit: Waste Reduction
-  description: No secondary waste streams from contaminated cleaning media
-headline: Comprehensive technical guide for laser cleaning aluminum surfaces
+compatibility:
+- Aluminum Alloys
+- Stainless Steel
+- Titanium
+regulatoryStandards: ISO 8501-1, ASTM D7127, IEC 60825-1
 images:
   hero:
     alt: Aluminum surface undergoing laser cleaning showing precise contamination
@@ -49,10 +50,15 @@ images:
     alt: Microscopic view of Aluminum surface after laser cleaning showing detailed
       surface structure
     url: /images/aluminum-laser-cleaning-micro.jpg
-keywords: aluminum, laser ablation, laser cleaning, non-contact cleaning, pulsed fiber
-  laser, surface contamination removal, industrial laser parameters, anodized layer
-  removal
-name: Aluminum
+title: Laser Cleaning Aluminum - Technical Guide for Optimal Processing
+headline: Comprehensive technical guide for laser cleaning aluminum surfaces
+environmentalImpact:
+- benefit: Chemical Solvent Elimination
+  description: Eliminates use of alkaline cleaners and acidic etchants
+- benefit: Water Conservation
+  description: Zero water consumption during the cleaning process
+- benefit: Waste Reduction
+  description: No secondary waste streams from contaminated cleaning media
 outcomes:
 - metric: Achieves surface cleanliness to SAE AMS 2700C standards
   result: Surface Cleanliness
@@ -60,6 +66,9 @@ outcomes:
   result: Material Removal Precision
 - metric: 0.5-2.0 m²/hour depending on contamination type and thickness
   result: Processing Speed
+keywords: aluminum, laser ablation, laser cleaning, non-contact cleaning, pulsed fiber
+  laser, surface contamination removal, industrial laser parameters, anodized layer
+  removal
 prompt_chain_verification:
   ai_detection_config_loaded: true
   author_id: 3
@@ -71,6 +80,7 @@ prompt_chain_verification:
   persona_country: Indonesia
   prompt_components_integrated: 4
   verification_timestamp: '2025-09-16T21:59:10Z'
+category: metal
 properties:
   chemicalFormula: Al
   density: 2.70 g/cm³
@@ -110,16 +120,6 @@ properties:
   thermalPercentile: 54.4
   wavelength: 1064nm
   youngsModulus: 69 GPa
-regulatoryStandards: ISO 8501-1, ASTM D7127, IEC 60825-1
-technicalSpecifications:
-  fluenceRange: 0.5–3.0 J/cm²
-  powerRange: 20-500W
-  pulseDuration: 10-200ns
-  repetitionRate: 10-2000kHz
-  safetyClass: Class 4
-  spotSize: 0.05-3.0mm
-  wavelength: 1064nm
-title: Laser Cleaning Aluminum - Technical Guide for Optimal Processing
 ---
 
 # Version Information

@@ -1,10 +1,22 @@
 ---
+name: Stucco
 applications:
 - detail: Removal of dirt, soot, and biological growth from historical and modern
     stucco facades
   industry: Construction & Restoration
 - detail: Gentle cleaning of decorative stucco elements without abrasive damage
   industry: Monument Preservation
+technicalSpecifications:
+  fluenceRange: 0.5–2.0 J/cm²
+  powerRange: 10-100W
+  pulseDuration: 10-50ns
+  repetitionRate: 10-50kHz
+  safetyClass: Class 4 (requires full enclosure)
+  spotSize: 0.5-3.0mm
+  wavelength: 1064nm (primary), 532nm (optional)
+description: Technical overview of Stucco, a cementitious plaster material, for laser
+  cleaning applications, including optimal 1064nm wavelength interaction, and industrial
+  applications in building restoration.
 author: Yi-Chun Lin
 author_object:
   country: Taiwan
@@ -14,32 +26,20 @@ author_object:
   name: Yi-Chun Lin
   sex: f
   title: Ph.D.
-category: masonry
 chemicalProperties:
   formula: CaCO3/CaSO4·2H2O (composition varies)
   materialType: cementitious plaster
   symbol: Stucco
-compatibility:
-- Traditional Lime Stucco
-- Portland Cement Stucco
-- Synthetic Stucco (EIFS)
 composition:
 - Calcium carbonate (CaCO3) 40-70%
 - Calcium sulfate (CaSO4·2H2O) 20-40%
 - Sand and aggregates 10-30%
 - Hydrated lime (Ca(OH)2) 5-15%
-description: Technical overview of Stucco, a cementitious plaster material, for laser
-  cleaning applications, including optimal 1064nm wavelength interaction, and industrial
-  applications in building restoration.
-environmentalImpact:
-- benefit: Chemical Solvent Elimination
-  description: Reduces chemical usage by 100% compared to traditional chemical cleaning
-    methods
-- benefit: Water Conservation
-  description: Eliminates water usage completely compared to pressure washing techniques
-- benefit: Waste Reduction
-  description: Produces no secondary waste streams from cleaning materials
-headline: Comprehensive technical guide for laser cleaning stucco surfaces in restoration
+compatibility:
+- Traditional Lime Stucco
+- Portland Cement Stucco
+- Synthetic Stucco (EIFS)
+regulatoryStandards: ASTM C926, ASTM C1063, ICOMOS Guidelines
 images:
   hero:
     alt: Stucco surface undergoing laser cleaning showing precise contamination removal
@@ -48,10 +48,16 @@ images:
     alt: Microscopic view of Stucco surface after laser cleaning showing detailed
       surface structure
     url: /images/stucco-laser-cleaning-micro.jpg
-keywords: stucco, stucco cleaning, laser ablation, architectural restoration, non-contact
-  cleaning, pulsed fiber laser, surface contamination removal, historical preservation,
-  masonry cleaning
-name: Stucco
+title: Laser Cleaning Stucco - Technical Guide for Architectural Restoration
+headline: Comprehensive technical guide for laser cleaning stucco surfaces in restoration
+environmentalImpact:
+- benefit: Chemical Solvent Elimination
+  description: Reduces chemical usage by 100% compared to traditional chemical cleaning
+    methods
+- benefit: Water Conservation
+  description: Eliminates water usage completely compared to pressure washing techniques
+- benefit: Waste Reduction
+  description: Produces no secondary waste streams from cleaning materials
 outcomes:
 - metric: Achieves visual cleanliness without surface erosion
   result: Surface Cleanliness
@@ -59,6 +65,9 @@ outcomes:
   result: Material Preservation
 - metric: 0.5-2 m²/hour cleaning rate depending on contamination level
   result: Processing Speed
+keywords: stucco, stucco cleaning, laser ablation, architectural restoration, non-contact
+  cleaning, pulsed fiber laser, surface contamination removal, historical preservation,
+  masonry cleaning
 prompt_chain_verification:
   ai_detection_config_loaded: true
   author_id: 1
@@ -70,6 +79,7 @@ prompt_chain_verification:
   persona_country: Taiwan
   prompt_components_integrated: 4
   verification_timestamp: '2025-09-16T21:55:30Z'
+category: masonry
 properties:
   chemicalFormula: Variable (typically CaCO3/CaSO4·2H2O based)
   density: 1.8-2.2 g/cm³
@@ -109,16 +119,6 @@ properties:
   thermalPercentile: 42.1
   wavelength: 1064nm
   youngsModulus: 10-25 GPa
-regulatoryStandards: ASTM C926, ASTM C1063, ICOMOS Guidelines
-technicalSpecifications:
-  fluenceRange: 0.5–2.0 J/cm²
-  powerRange: 10-100W
-  pulseDuration: 10-50ns
-  repetitionRate: 10-50kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.5-3.0mm
-  wavelength: 1064nm (primary), 532nm (optional)
-title: Laser Cleaning Stucco - Technical Guide for Architectural Restoration
 ---
 
 # Version Information

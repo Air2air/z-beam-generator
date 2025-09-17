@@ -1,9 +1,20 @@
 ---
+name: Gold
 applications:
 - detail: Removal of tarnish and surface contaminants from gold jewelry and artifacts
   industry: Jewelry Manufacturing
 - detail: Cleaning of gold contacts and connectors without damaging the substrate
   industry: Electronics
+technicalSpecifications:
+  fluenceRange: 0.5–2.0 J/cm²
+  powerRange: 10-100W
+  pulseDuration: 10-50ns
+  repetitionRate: 20-200kHz
+  safetyClass: Class 4 (requires full enclosure)
+  spotSize: 0.1-0.8mm
+  wavelength: 1064nm (primary), 532nm (optional)
+description: Technical overview of Gold, Au, for laser cleaning applications, including
+  optimal 1064nm wavelength interaction, and industrial applications in surface preparation.
 author: Alessandro Moretti
 author_object:
   country: Italy
@@ -13,28 +24,18 @@ author_object:
   name: Alessandro Moretti
   sex: m
   title: Ph.D.
-category: precious metal
 chemicalProperties:
   formula: Au
   materialType: precious metal
   symbol: Au
+composition:
+- Gold (Au) 99.9%
+- Alloying elements (Cu, Ag, Zn) depending on karat
 compatibility:
 - Platinum
 - Silver
 - Copper Alloys
-composition:
-- Gold (Au) 99.9%
-- Alloying elements (Cu, Ag, Zn) depending on karat
-description: Technical overview of Gold, Au, for laser cleaning applications, including
-  optimal 1064nm wavelength interaction, and industrial applications in surface preparation.
-environmentalImpact:
-- benefit: Chemical Solvent Elimination
-  description: Eliminates use of cyanide-based and other toxic cleaning chemicals
-- benefit: Water Conservation
-  description: Zero water consumption compared to traditional cleaning methods
-- benefit: Material Conservation
-  description: Preserves 99.9% of gold material during cleaning process
-headline: Precision laser cleaning of gold for jewelry and electronics applications
+regulatoryStandards: ISO 9202, ASTM B562, IEC 60825-1
 images:
   hero:
     alt: Gold surface undergoing laser cleaning showing precise contamination removal
@@ -43,10 +44,15 @@ images:
     alt: Microscopic view of Gold surface after laser cleaning showing detailed surface
       structure
     url: /images/gold-laser-cleaning-micro.jpg
-keywords: gold, gold metal, laser ablation, laser cleaning, non-contact cleaning,
-  pulsed fiber laser, surface contamination removal, industrial laser parameters,
-  thermal processing, surface restoration
-name: Gold
+title: Laser Cleaning Gold - Technical Guide for Optimal Processing
+headline: Precision laser cleaning of gold for jewelry and electronics applications
+environmentalImpact:
+- benefit: Chemical Solvent Elimination
+  description: Eliminates use of cyanide-based and other toxic cleaning chemicals
+- benefit: Water Conservation
+  description: Zero water consumption compared to traditional cleaning methods
+- benefit: Material Conservation
+  description: Preserves 99.9% of gold material during cleaning process
 outcomes:
 - metric: Achieves ISO 8501-1 Sa 2.5 cleanliness standard
   result: Surface Cleanliness Level
@@ -54,6 +60,9 @@ outcomes:
   result: Material Preservation
 - metric: 0.5-2 m²/hour cleaning rate depending on contamination level
   result: Processing Speed
+keywords: gold, gold metal, laser ablation, laser cleaning, non-contact cleaning,
+  pulsed fiber laser, surface contamination removal, industrial laser parameters,
+  thermal processing, surface restoration
 prompt_chain_verification:
   ai_detection_config_loaded: true
   author_id: 2
@@ -65,6 +74,7 @@ prompt_chain_verification:
   persona_country: Italy
   prompt_components_integrated: 4
   verification_timestamp: '2025-09-16T22:05:19Z'
+category: precious metal
 properties:
   chemicalFormula: Au
   density: 19.32 g/cm³
@@ -104,16 +114,6 @@ properties:
   thermalPercentile: 73.6
   wavelength: 1064nm
   youngsModulus: 79 GPa
-regulatoryStandards: ISO 9202, ASTM B562, IEC 60825-1
-technicalSpecifications:
-  fluenceRange: 0.5–2.0 J/cm²
-  powerRange: 10-100W
-  pulseDuration: 10-50ns
-  repetitionRate: 20-200kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.1-0.8mm
-  wavelength: 1064nm (primary), 532nm (optional)
-title: Laser Cleaning Gold - Technical Guide for Optimal Processing
 ---
 
 # Version Information

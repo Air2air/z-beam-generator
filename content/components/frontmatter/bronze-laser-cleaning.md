@@ -1,4 +1,5 @@
 ---
+name: Bronze
 applications:
 - detail: Removal of surface oxides and contaminants from Bronze connectors and components
   industry: Electronics Manufacturing
@@ -9,6 +10,17 @@ applications:
   industry: Marine Hardware
 - detail: Non-contact cleaning of historical Bronze sculptures and artifacts
   industry: Art Conservation
+technicalSpecifications:
+  fluenceRange: 0.5–3.0 J/cm²
+  powerRange: 20-150W
+  pulseDuration: 10-200ns
+  repetitionRate: 10-500kHz
+  safetyClass: Class 4 (requires full enclosure)
+  spotSize: 0.05-2.0mm
+  wavelength: 1064nm (primary), 532nm (optional)
+description: Technical overview of Bronze, Cu-Sn alloy, for laser cleaning applications,
+  including optimal 1064nm wavelength interaction with copper-tin matrix, and industrial
+  applications in precision surface preparation.
 author: Ikmanda Roswati
 author_object:
   country: Indonesia
@@ -18,31 +30,20 @@ author_object:
   name: Ikmanda Roswati
   sex: m
   title: Ph.D.
-category: metal
 chemicalProperties:
   formula: Cu-Sn
   materialType: metal alloy
   symbol: Bronze
+composition:
+- 'Copper (Cu): 88-95%'
+- 'Tin (Sn): 5-12%'
+- Trace elements (Zn, Pb, P, Ni)
 compatibility:
 - Stainless Steel
 - Brass
 - Copper Alloys
 - Aluminum Bronze
-composition:
-- 'Copper (Cu): 88-95%'
-- 'Tin (Sn): 5-12%'
-- Trace elements (Zn, Pb, P, Ni)
-description: Technical overview of Bronze, Cu-Sn alloy, for laser cleaning applications,
-  including optimal 1064nm wavelength interaction with copper-tin matrix, and industrial
-  applications in precision surface preparation.
-environmentalImpact:
-- benefit: Chemical Solvent Elimination
-  description: Eliminates use of acidic cleaners and chemical solvents for oxide removal
-- benefit: Water Conservation
-  description: Zero water consumption compared to traditional abrasive blasting methods
-- benefit: Waste Reduction
-  description: Produces minimal waste that can be captured by filtration systems
-headline: Comprehensive technical guide for laser cleaning bronze alloys
+regulatoryStandards: ISO 8501-1, ASTM B505, IEC 60825-1
 images:
   hero:
     alt: Bronze surface undergoing laser cleaning showing precise contamination removal
@@ -51,10 +52,15 @@ images:
     alt: Microscopic view of Bronze surface after laser cleaning showing detailed
       surface structure
     url: /images/bronze-laser-cleaning-micro.jpg
-keywords: bronze, bronze alloy, copper-tin, laser ablation, laser cleaning, non-contact
-  cleaning, pulsed fiber laser, oxide removal, patina removal, industrial laser parameters,
-  surface restoration
-name: Bronze
+title: Laser Cleaning Bronze - Technical Guide for Optimal Processing
+headline: Comprehensive technical guide for laser cleaning bronze alloys
+environmentalImpact:
+- benefit: Chemical Solvent Elimination
+  description: Eliminates use of acidic cleaners and chemical solvents for oxide removal
+- benefit: Water Conservation
+  description: Zero water consumption compared to traditional abrasive blasting methods
+- benefit: Waste Reduction
+  description: Produces minimal waste that can be captured by filtration systems
 outcomes:
 - metric: Achieves SA 2.5 surface preparation standard
   result: Surface Cleanliness Level
@@ -62,6 +68,9 @@ outcomes:
   result: Material Removal Precision
 - metric: 1-3 m²/hour cleaning rate for typical corrosion removal
   result: Processing Speed
+keywords: bronze, bronze alloy, copper-tin, laser ablation, laser cleaning, non-contact
+  cleaning, pulsed fiber laser, oxide removal, patina removal, industrial laser parameters,
+  surface restoration
 prompt_chain_verification:
   ai_detection_config_loaded: true
   author_id: 3
@@ -73,6 +82,7 @@ prompt_chain_verification:
   persona_country: Indonesia
   prompt_components_integrated: 4
   verification_timestamp: '2025-09-16T22:01:48Z'
+category: metal
 properties:
   chemicalFormula: Cu-Sn
   density: 8.8 g/cm³
@@ -112,16 +122,6 @@ properties:
   thermalPercentile: 9.0
   wavelength: 1064nm
   youngsModulus: 110-125 GPa
-regulatoryStandards: ISO 8501-1, ASTM B505, IEC 60825-1
-technicalSpecifications:
-  fluenceRange: 0.5–3.0 J/cm²
-  powerRange: 20-150W
-  pulseDuration: 10-200ns
-  repetitionRate: 10-500kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.05-2.0mm
-  wavelength: 1064nm (primary), 532nm (optional)
-title: Laser Cleaning Bronze - Technical Guide for Optimal Processing
 ---
 
 # Version Information

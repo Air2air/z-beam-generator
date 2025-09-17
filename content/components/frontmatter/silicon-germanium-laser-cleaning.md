@@ -1,4 +1,5 @@
 ---
+name: Silicon Germanium
 applications:
 - detail: Removal of native oxides and organic contaminants from SiGe wafers prior
     to epitaxial growth
@@ -6,6 +7,17 @@ applications:
 - detail: Surface preparation of SiGe photodetectors and integrated circuits for improved
     performance
   industry: Optoelectronics
+technicalSpecifications:
+  fluenceRange: 0.5–2.5 J/cm²
+  powerRange: 10-100W
+  pulseDuration: 10-50ns
+  repetitionRate: 50-200kHz
+  safetyClass: Class 4 (requires full enclosure)
+  spotSize: 0.1-0.8mm
+  wavelength: 1064nm (primary), 355nm (optional)
+description: Technical overview of Silicon Germanium (SiGe) for laser cleaning applications,
+  including optimal wavelength interaction with SiGe alloys, and industrial applications
+  in semiconductor manufacturing.
 author: Todd Dunning
 author_object:
   country: United States (California)
@@ -15,31 +27,19 @@ author_object:
   name: Todd Dunning
   sex: m
   title: MA
-category: semiconductor
 chemicalProperties:
   formula: Si₁₋ₓGeₓ
   materialType: semiconductor alloy
   symbol: SiGe
-compatibility:
-- Silicon
-- Gallium Arsenide
-- Silicon Carbide
 composition:
 - Silicon (Si) 70-95%
 - Germanium (Ge) 5-30%
 - Dopants (B, P, As) <1%
-description: Technical overview of Silicon Germanium (SiGe) for laser cleaning applications,
-  including optimal wavelength interaction with SiGe alloys, and industrial applications
-  in semiconductor manufacturing.
-environmentalImpact:
-- benefit: Chemical Solvent Elimination
-  description: Eliminates use of RCA cleaning chemicals (SC-1, SC-2) and organic solvents
-- benefit: Water Conservation
-  description: Reduces DI water consumption by 95% compared to wet cleaning methods
-- benefit: Energy Efficiency
-  description: 60% lower energy consumption than plasma cleaning systems
-headline: Precision laser cleaning techniques for Silicon Germanium semiconductor
-  substrates
+compatibility:
+- Silicon
+- Gallium Arsenide
+- Silicon Carbide
+regulatoryStandards: SEMI Standards, ISO 14644-1, IEC 60825-1
 images:
   hero:
     alt: Silicon Germanium surface undergoing laser cleaning showing precise contamination
@@ -49,10 +49,16 @@ images:
     alt: Microscopic view of Silicon Germanium surface after laser cleaning showing
       detailed surface structure
     url: /images/silicon-germanium-laser-cleaning-micro.jpg
-keywords: silicon germanium, SiGe semiconductor, laser ablation, laser cleaning, non-contact
-  cleaning, pulsed fiber laser, surface contamination removal, semiconductor processing,
-  wafer cleaning, surface preparation
-name: Silicon Germanium
+title: Laser Cleaning Silicon Germanium - Technical Guide for Semiconductor Applications
+headline: Precision laser cleaning techniques for Silicon Germanium semiconductor
+  substrates
+environmentalImpact:
+- benefit: Chemical Solvent Elimination
+  description: Eliminates use of RCA cleaning chemicals (SC-1, SC-2) and organic solvents
+- benefit: Water Conservation
+  description: Reduces DI water consumption by 95% compared to wet cleaning methods
+- benefit: Energy Efficiency
+  description: 60% lower energy consumption than plasma cleaning systems
 outcomes:
 - metric: Achieves <10 atoms/cm² contamination levels meeting SEMI standards
   result: Surface Cleanliness Level
@@ -60,6 +66,9 @@ outcomes:
   result: Material Removal Precision
 - metric: 15-30 wafers/hour throughput depending on contamination level
   result: Processing Speed
+keywords: silicon germanium, SiGe semiconductor, laser ablation, laser cleaning, non-contact
+  cleaning, pulsed fiber laser, surface contamination removal, semiconductor processing,
+  wafer cleaning, surface preparation
 prompt_chain_verification:
   ai_detection_config_loaded: true
   author_id: 4
@@ -71,6 +80,7 @@ prompt_chain_verification:
   persona_country: United States (California)
   prompt_components_integrated: 4
   verification_timestamp: '2025-09-16T22:30:12Z'
+category: semiconductor
 properties:
   chemicalFormula: Si₁₋ₓGeₓ
   density: 4.2-5.3 g/cm³
@@ -110,16 +120,6 @@ properties:
   thermalPercentile: 8.4
   wavelength: 1064nm
   youngsModulus: 130-160 GPa
-regulatoryStandards: SEMI Standards, ISO 14644-1, IEC 60825-1
-technicalSpecifications:
-  fluenceRange: 0.5–2.5 J/cm²
-  powerRange: 10-100W
-  pulseDuration: 10-50ns
-  repetitionRate: 50-200kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.1-0.8mm
-  wavelength: 1064nm (primary), 355nm (optional)
-title: Laser Cleaning Silicon Germanium - Technical Guide for Semiconductor Applications
 ---
 
 # Version Information

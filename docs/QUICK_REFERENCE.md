@@ -23,6 +23,20 @@
 **→ Results**: 0.0% → 59.5% automatic improvement for technical content
 **→ Documentation**: [Winston Composite Scoring](WINSTON_COMPOSITE_SCORING_INTEGRATION.md)
 
+### "Table components missing min/max columns"
+**→ Immediate Response**: ✅ **VERIFIED WORKING** - Min/Max columns are present and correct
+**→ Quick Fix**: Check frontend Next.js table rendering component
+**→ Verification**: All quantitative properties include min/max values (11/15 properties per material)
+**→ Expected Structure**: `{min}-{max}` column as per render instructions in YAML files
+**→ Files**: All 109 table files in `content/components/table/` contain min/max data
+
+### "YAML output format issues" / "Generator format inconsistency"
+**→ Immediate Response**: ✅ **STANDARDIZED September 16, 2025** - All generators now use consistent YAML
+**→ Quick Fix**: Components `table`, `jsonld`, `metatags` output `.yaml` files
+**→ New Structure**: JSON-LD converted from script tags to YAML frontmatter format
+**→ Naming**: All generators use standardized material naming (`carbon-steel` → `steel`)
+**→ Documentation**: [Session Summary](SESSION_2025-09-16_YAML_STANDARDIZATION_SUMMARY.md)
+
 ### "Optimization processing metadata as content"
 **→ Immediate Response**: Fixed September 13, 2025 - Global Metadata Delimiting Standard preserved
 ### Global Metadata Delimiting Standard Fix ✅ COMPLETELY RESOLVED
@@ -127,6 +141,22 @@ grep -A5 -B5 "METADATA START\|CONTENT START" content/components/text/testmateria
 - `components/[component]/README.md` - Component-specific issues
 
 ## 🎯 Major System Updates (September 2025)
+
+### Component Output Format Standardization ✅ COMPLETE September 16, 2025
+**Update**: All generators now use consistent YAML output formats
+**Components Changed**: JSON-LD converted from script tags to YAML frontmatter
+**File Extensions**:
+- `.yaml` files: `table`, `jsonld`, `metatags` components
+- `.md` files: `frontmatter`, `text` components
+**Naming**: All generators use standardized material naming aligned with `materials.yaml`
+**Benefits**: Consistent frontend integration, easier parsing, unified data structures
+
+### Table Component Min/Max Verification ✅ COMPLETE September 16, 2025  
+**Verification**: All table components include min/max columns correctly
+**Coverage**: 11/15 properties per material have min/max values (quantitative only)
+**Structure**: YAML files include separate `min:` and `max:` fields for ranges
+**Deployment**: 109 materials successfully generated and deployed to test-push
+**Frontend**: Render instructions specify `{min}-{max}` column display format
 
 ### Winston.ai Composite Scoring Integration ✅ COMPLETE
 **Issue**: Winston.ai scoring technical content as 0% (systematic bias)

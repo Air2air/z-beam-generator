@@ -3,6 +3,8 @@
 ## Overview
 The JSON-LD component generates structured data in schema.org format for material laser cleaning pages. It provides machine-readable metadata for search engines and enhances SEO performance.
 
+**Latest Update (September 16, 2025)**: ✅ **CONVERTED TO YAML FORMAT** - Output changed from JSON script tags to YAML frontmatter format with `jsonld:` key structure. Added comprehensive standardized naming method for consistent URL and image path generation aligned with `materials.yaml`.
+
 ## Key Files
 
 ### Core Implementation
@@ -89,6 +91,30 @@ The component implements several schema.org types:
 
 ## Example Output
 
+**New YAML Format (September 16, 2025)**:
+```yaml
+---
+jsonld:
+  '@context': https://schema.org
+  '@type': Article
+  headline: Aluminum Laser Cleaning
+  description: Comprehensive technical guide covering laser cleaning methodologies...
+  author:
+    '@type': Person
+    name: Dr. Emily Chen
+  datePublished: '2025-09-16T15:30:00Z'
+  image:
+  - '@type': ImageObject
+    url: /images/aluminum-laser-cleaning-hero.jpg
+    name: Aluminum Laser Cleaning Before/After Comparison
+  about:
+  - '@type': Material
+    name: Aluminum
+    category: metal
+---
+```
+
+**Previous JSON Format** (deprecated):
 ```json
 {
   "@context": "https://schema.org",

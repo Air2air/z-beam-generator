@@ -8,6 +8,7 @@ Integrated with the modular component architecture.
 
 import json
 import sys
+import yaml
 from pathlib import Path
 from typing import Dict, Optional
 
@@ -44,6 +45,44 @@ class JsonldComponentGenerator(HybridComponentGenerator):
             frontmatter_data=frontmatter_data,
             schema_fields=schema_fields,
         )
+
+    def _apply_standardized_naming(self, material_name_lower: str) -> str:
+        """Apply naming standardization aligned with materials.yaml single source of truth"""
+        # Basic kebab-case conversion
+        slug = material_name_lower.replace(" ", "-")
+        
+        # Apply standardizations aligned with materials.yaml database
+        naming_mappings = {
+            # Hyphenation standardizations
+            "terra-cotta": "terracotta",
+            # Composite material naming (align with materials.yaml authority)
+            "fiber-reinforced-polymer": "fiber-reinforced-polyurethane-frpu",
+            "carbon-fiber-reinforced-polymer": "carbon-fiber-reinforced-polymer",
+            "glass-fiber-reinforced-polymers": "glass-fiber-reinforced-polymers-gfrp",
+            "metal-matrix-composites": "metal-matrix-composites-mmcs",
+            "ceramic-matrix-composites": "ceramic-matrix-composites-cmcs",
+            # Wood materials (remove any wood- prefix as materials.yaml defines them without prefix)
+            "wood-oak": "oak",
+            "wood-pine": "pine",
+            "wood-maple": "maple",
+            # Steel standardization (materials.yaml has Steel and Stainless Steel)
+            "stainless-steel": "stainless-steel",
+            "carbon-steel": "steel",  # Consolidate to main steel type per materials.yaml
+            "galvanized-steel": "steel",
+            "tool-steel": "steel",
+            # Standardize common variants
+            "aluminium": "aluminum",
+        }
+        
+        # Apply standardization if material matches known mappings
+        if slug in naming_mappings:
+            slug = naming_mappings[slug]
+            
+        # Remove wood- prefix (wood materials are defined without prefix in materials.yaml)
+        if slug.startswith("wood-"):
+            slug = slug[5:]  # Remove "wood-" prefix
+            
+        return slug
 
     def _extract_from_frontmatter(
         self, material_name: str, frontmatter_data: Dict
@@ -115,9 +154,14 @@ class JsonldComponentGenerator(HybridComponentGenerator):
                 f"No valid configuration found for JSON-LD generation of {material_name} - fail-fast architecture requires either example file or schema"
             )
 
-        # Format as proper JSON-LD script tag
-        json_content = json.dumps(jsonld_data, indent=2)
-        content = f'<script type="application/ld+json">\n{json_content}\n</script>'
+        # Format as YAML frontmatter structure
+        jsonld_yaml_data = {
+            "jsonld": jsonld_data
+        }
+        
+        # Convert to YAML string with frontmatter delimiters
+        yaml_content = yaml.dump(jsonld_yaml_data, default_flow_style=False, sort_keys=False, allow_unicode=True)
+        content = f"---\n{yaml_content.strip()}\n---"
 
         # Apply centralized version stamping
         return stamp_component_output("jsonld", content)
@@ -153,14 +197,17 @@ class JsonldComponentGenerator(HybridComponentGenerator):
         # Ensure material name is in title case
         material_name_title = material_name.title()
         
+        # Apply standardized naming for URLs and image paths
+        material_slug = self._apply_standardized_naming(material_name.lower())
+        
         # Extract common technical data for reuse
         tech_specs = {}
         try:
             tech_specs["wavelength"] = self._get_field(
-                frontmatter_data, ["technicalSpecifications.wavelength", "wavelength"]
+                frontmatter_data, ["technicalSpecifications.wavelength", "wavelength", "properties.wavelength"]
             )
             tech_specs["fluence"] = self._get_field(
-                frontmatter_data, ["technicalSpecifications.fluenceRange", "fluenceRange"]
+                frontmatter_data, ["technicalSpecifications.fluenceRange", "fluenceRange", "properties.fluenceRange"]
             )
             tech_specs["applications"] = self._get_field(frontmatter_data, ["applications"])
         except Exception as e:
@@ -172,38 +219,78 @@ class JsonldComponentGenerator(HybridComponentGenerator):
             if key in ["@context", "@type"]:
                 result[key] = example_value
             elif key == "headline":
-                result[key] = f"Laser Cleaning of {material_name_title} Materials"
+                result[key] = f"{material_name_title} Laser Cleaning"
             elif key == "alternativeHeadline":
                 result[key] = f"Advanced Laser Ablation Techniques for {material_name_title} Surface Treatment"
             elif key == "description":
                 result[key] = f"Comprehensive technical guide covering laser cleaning methodologies for {material_name_title} materials, including optimal parameters, industrial applications, and surface treatment benefits."
             elif key == "abstract":
                 # Use pre-extracted technical data for abstract
-                wavelength = tech_specs.get("wavelength", "standard")
-                fluence = tech_specs.get("fluence", "variable")
+                wavelength = tech_specs.get("wavelength", "1064nm")
+                fluence = tech_specs.get("fluence", "variable fluence")
                 applications = tech_specs.get("applications", "industrial applications")
-                result[key] = f"Advanced laser cleaning techniques for {material_name_title} materials using {wavelength} wavelength at {fluence} fluence for {applications}."
+                result[key] = f"Advanced laser cleaning techniques for {material_name_title} materials using {wavelength} wavelength at {fluence} for {applications}."
             elif key == "keywords":
                 # Keywords should be lowercase for SEO best practices
-                result[key] = f"laser cleaning, {material_name.lower()}, surface treatment, ablation, industrial cleaning"
+                result[key] = [
+                    material_name.lower(),
+                    f"{material_name.lower()} laser cleaning",
+                    f"{material_name.lower()} metal" if frontmatter_data.get("category") == "metal" else material_name.lower(),
+                    "laser ablation",
+                    "non-contact cleaning",
+                    "surface treatment",
+                    "industrial laser"
+                ]
             elif key == "name":
                 result[key] = f"{material_name_title} Laser Cleaning Guide"
+            elif key == "image" and isinstance(example_value, list):
+                # Handle image array with standardized naming
+                result[key] = []
+                for img in example_value:
+                    if isinstance(img, dict) and "url" in img:
+                        new_img = img.copy()
+                        # Update image URL to use standardized naming
+                        if "hero" in img["url"]:
+                            new_img["url"] = f"/images/{material_slug}-laser-cleaning-hero.jpg"
+                        elif "micro" in img["url"]:
+                            new_img["url"] = f"/images/{material_slug}-laser-cleaning-micro.jpg"
+                        # Update image name and caption to use correct material name
+                        if "name" in new_img:
+                            new_img["name"] = new_img["name"].replace("Aluminum", material_name_title)
+                        if "caption" in new_img:
+                            new_img["caption"] = new_img["caption"].replace("Aluminum", material_name_title)
+                        if "description" in new_img:
+                            new_img["description"] = new_img["description"].replace("Aluminum", material_name_title)
+                        result[key].append(new_img)
+                    else:
+                        result[key].append(img)
+            elif key == "video" and isinstance(example_value, dict):
+                # Handle video object with standardized naming
+                result[key] = example_value.copy()
+                if "thumbnailUrl" in result[key]:
+                    result[key]["thumbnailUrl"] = f"/images/{material_slug}-laser-video-thumb.jpg"
+                if "contentUrl" in result[key]:
+                    result[key]["contentUrl"] = f"/videos/{material_slug}-laser-cleaning-demo.mp4"
+                if "name" in result[key]:
+                    result[key]["name"] = result[key]["name"].replace("Aluminum", material_name_title)
+                if "description" in result[key]:
+                    result[key]["description"] = result[key]["description"].replace("Aluminum", material_name_title)
             elif key == "articleBody":
                 # Generate comprehensive article body with available technical data
                 density = self._get_field_safe(frontmatter_data, ["properties.density", "physicalProperties.density", "density"], "standard")
                 thermal_conductivity = self._get_field_safe(frontmatter_data, ["properties.thermalConductivity", "physicalProperties.thermalConductivity", "thermalConductivity"], "variable")
-                wavelength = tech_specs.get("wavelength", "standard")
-                fluence = tech_specs.get("fluence", "variable")
+                wavelength = tech_specs.get("wavelength", "1064nm")
+                fluence = tech_specs.get("fluence", "variable fluence")
                 pulse_duration = self._get_field_safe(frontmatter_data, ["technicalSpecifications.pulseDuration", "pulseDuration"], "nanosecond")
                 
-                result[key] = f"{material_name_title} is a lightweight metal with {density} density and {thermal_conductivity} thermal conductivity extensively used in aircraft component cleaning, automotive engine part restoration. Laser cleaning utilizes {wavelength} wavelength at {fluence} fluence and {pulse_duration} pulse duration to remove oxidation and thermal coatings, paint and corrosion layers while preserving material integrity. The process operates at controlled power levels with precise beam control for optimal surface treatment. Key advantages include non-contact processing, selective contamination removal, and environmental safety compared to chemical methods."
+                result[key] = f"{material_name_title} is a material with {density} density and {thermal_conductivity} thermal conductivity extensively used in industrial applications. Laser cleaning utilizes {wavelength} wavelength at {fluence} to remove contamination layers while preserving material integrity. The process operates at controlled power levels with precise beam control for optimal surface treatment. Key advantages include non-contact processing, selective contamination removal, and environmental safety compared to chemical methods."
             elif key == "wordCount":
                 # Calculate actual word count from articleBody
                 article_body = result.get("articleBody", "")
                 result[key] = len(article_body.split()) if article_body else 0
             elif isinstance(example_value, dict):
                 result[key] = self._build_nested_structure(
-                    frontmatter_data, example_value, key, self._author_info
+                    frontmatter_data, example_value, key, self._author_info, material_name_title, material_slug
                 )
             elif isinstance(example_value, list):
                 # Only process arrays that are expected to contain property objects
@@ -301,6 +388,8 @@ class JsonldComponentGenerator(HybridComponentGenerator):
         example_structure: Dict,
         parent_key: str,
         author_info: Optional[Dict],
+        material_name_title: str = None,
+        material_slug: str = None,
     ) -> Dict:
         """Build nested dictionary structure"""
         result = {}
@@ -313,6 +402,23 @@ class JsonldComponentGenerator(HybridComponentGenerator):
                     result[key] = author_info["name"]
                 else:
                     result[key] = self._get_field(frontmatter_data, ["author"])
+            elif key == "url":
+                if parent_key == "author":
+                    if author_info and "url" in author_info:
+                        result[key] = author_info["url"]
+                    else:
+                        result[key] = "https://zbeamlasercleaning.com"
+                elif material_slug:
+                    # Use standardized material slug for URLs
+                    result[key] = f"https://zbeamlasercleaning.com/materials/{material_slug}-laser-cleaning"
+                else:
+                    result[key] = example_value
+            elif key == "@id" and material_slug:
+                # Use standardized material slug for @id fields
+                result[key] = f"https://zbeamlasercleaning.com/materials/{material_slug}-laser-cleaning"
+            elif isinstance(example_value, str) and material_name_title and "Aluminum" in example_value:
+                # Replace placeholder material name with actual material name
+                result[key] = example_value.replace("Aluminum", material_name_title)
             else:
                 field_path = (
                     f"{parent_key}.{key}"

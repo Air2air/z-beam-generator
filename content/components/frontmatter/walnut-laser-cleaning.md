@@ -1,10 +1,22 @@
 ---
+name: Walnut
 applications:
 - detail: Removal of old finishes, stains, and surface contaminants from walnut wood
   industry: Woodworking & Furniture
 - detail: Gentle cleaning of antique walnut furniture and artifacts without damaging
     the wood grain
   industry: Cultural Heritage Restoration
+technicalSpecifications:
+  fluenceRange: 0.5–2.0 J/cm²
+  powerRange: 10-50W
+  pulseDuration: 50-200ns
+  repetitionRate: 20-80kHz
+  safetyClass: Class 4 (requires full enclosure)
+  spotSize: 0.5-3.0mm
+  wavelength: 1064nm (primary), 355nm (optional for delicate work)
+description: Technical overview of walnut wood for laser cleaning applications, including
+  optimal wavelength interaction for organic material removal, and applications in
+  wood restoration.
 author: Yi-Chun Lin
 author_object:
   country: Taiwan
@@ -14,31 +26,20 @@ author_object:
   name: Yi-Chun Lin
   sex: f
   title: Ph.D.
-category: wood
 chemicalProperties:
   formula: C6H10O5 (cellulose/lignin composition)
   materialType: hardwood
   symbol: Walnut
-compatibility:
-- Wood Finishes (varnish, shellac)
-- Metal Inlays
-- Adhesives
 composition:
 - 'Cellulose: 40-50%'
 - 'Lignin: 20-30%'
 - 'Hemicellulose: 15-25%'
 - 'Extractives: 5-10%'
-description: Technical overview of walnut wood for laser cleaning applications, including
-  optimal wavelength interaction for organic material removal, and applications in
-  wood restoration.
-environmentalImpact:
-- benefit: Chemical Solvent Elimination
-  description: Eliminates need for harsh chemical strippers and solvents in wood refinishing
-- benefit: Waste Reduction
-  description: Produces minimal waste compared to mechanical sanding methods
-- benefit: Energy Efficiency
-  description: Consumes 60% less energy than thermal stripping processes
-headline: Comprehensive technical guide for laser cleaning walnut wood surfaces
+compatibility:
+- Wood Finishes (varnish, shellac)
+- Metal Inlays
+- Adhesives
+regulatoryStandards: ISO 13061 (wood properties), ASTM D358 (wood testing)
 images:
   hero:
     alt: Walnut surface undergoing laser cleaning showing precise contamination removal
@@ -47,10 +48,15 @@ images:
     alt: Microscopic view of Walnut surface after laser cleaning showing detailed
       surface structure
     url: /images/walnut-laser-cleaning-micro.jpg
-keywords: walnut, walnut wood, laser ablation, laser cleaning, non-contact cleaning,
-  pulsed fiber laser, wood restoration, surface contamination removal, industrial
-  laser parameters
-name: Walnut
+title: Laser Cleaning Walnut Wood - Technical Guide for Optimal Processing
+headline: Comprehensive technical guide for laser cleaning walnut wood surfaces
+environmentalImpact:
+- benefit: Chemical Solvent Elimination
+  description: Eliminates need for harsh chemical strippers and solvents in wood refinishing
+- benefit: Waste Reduction
+  description: Produces minimal waste compared to mechanical sanding methods
+- benefit: Energy Efficiency
+  description: Consumes 60% less energy than thermal stripping processes
 outcomes:
 - metric: Complete removal of finishes without damaging wood substrate
   result: Surface Cleanliness
@@ -58,6 +64,9 @@ outcomes:
   result: Material Removal Precision
 - metric: 0.5-2 m²/hour cleaning rate depending on finish thickness
   result: Processing Speed
+keywords: walnut, walnut wood, laser ablation, laser cleaning, non-contact cleaning,
+  pulsed fiber laser, wood restoration, surface contamination removal, industrial
+  laser parameters
 prompt_chain_verification:
   ai_detection_config_loaded: true
   author_id: 1
@@ -69,6 +78,7 @@ prompt_chain_verification:
   persona_country: Taiwan
   prompt_components_integrated: 4
   verification_timestamp: '2025-09-16T23:02:05Z'
+category: wood
 properties:
   charringMax: 300°C
   charringMin: 150°C
@@ -110,16 +120,6 @@ properties:
   thermalPercentile: 22.2
   wavelength: 1064nm
   youngsModulus: 10.2 GPa
-regulatoryStandards: ISO 13061 (wood properties), ASTM D358 (wood testing)
-technicalSpecifications:
-  fluenceRange: 0.5–2.0 J/cm²
-  powerRange: 10-50W
-  pulseDuration: 50-200ns
-  repetitionRate: 20-80kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.5-3.0mm
-  wavelength: 1064nm (primary), 355nm (optional for delicate work)
-title: Laser Cleaning Walnut Wood - Technical Guide for Optimal Processing
 ---
 
 # Version Information

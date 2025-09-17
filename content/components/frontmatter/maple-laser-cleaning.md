@@ -1,10 +1,21 @@
 ---
+name: Maple
 applications:
 - detail: Gentle removal of dirt, grime, and old finishes from maple wood surfaces
   industry: Woodworking & Furniture
 - detail: Precision cleaning of maple violins, guitars, and other instruments without
     damaging the delicate wood grain
   industry: Musical Instrument Restoration
+technicalSpecifications:
+  fluenceRange: 0.2–1.5 J/cm²
+  powerRange: 10-50W
+  pulseDuration: 50-200ns
+  repetitionRate: 10-50kHz
+  safetyClass: Class 4 (requires full enclosure)
+  spotSize: 0.5-3.0mm
+  wavelength: 1064nm (primary), 355nm (optional for delicate work)
+description: Technical overview of Maple wood for laser cleaning applications, including
+  optimal low-fluence 1064nm wavelength interaction for non-destructive surface cleaning.
 author: Alessandro Moretti
 author_object:
   country: Italy
@@ -14,30 +25,20 @@ author_object:
   name: Alessandro Moretti
   sex: m
   title: Ph.D.
-category: wood
 chemicalProperties:
   formula: C6H10O5 (cellulose)
   materialType: hardwood
   symbol: Maple
-compatibility:
-- Hardwoods
-- Softwoods
-- Wood Composites
 composition:
 - Cellulose (C6H10O5) 40-50%
 - Hemicellulose 20-30%
 - Lignin 20-30%
 - Extractives 1-5%
-description: Technical overview of Maple wood for laser cleaning applications, including
-  optimal low-fluence 1064nm wavelength interaction for non-destructive surface cleaning.
-environmentalImpact:
-- benefit: Chemical Solvent Elimination
-  description: Eliminates need for harsh chemical strippers and solvents in wood restoration
-- benefit: Waste Reduction
-  description: Produces minimal waste compared to sanding and chemical methods
-- benefit: Energy Efficiency
-  description: Low power consumption compared to traditional wood stripping methods
-headline: Comprehensive technical guide for laser cleaning maple wood surfaces
+compatibility:
+- Hardwoods
+- Softwoods
+- Wood Composites
+regulatoryStandards: ISO 13061 (wood physical properties), ASTM D143 (wood testing)
 images:
   hero:
     alt: Maple surface undergoing laser cleaning showing precise contamination removal
@@ -46,10 +47,15 @@ images:
     alt: Microscopic view of Maple surface after laser cleaning showing detailed surface
       structure
     url: /images/maple-laser-cleaning-micro.jpg
-keywords: maple wood, laser cleaning, wood restoration, non-abrasive cleaning, pulsed
-  laser, surface contamination removal, wood grain preservation, musical instrument
-  cleaning
-name: Maple
+title: Laser Cleaning Maple Wood - Technical Guide for Optimal Processing
+headline: Comprehensive technical guide for laser cleaning maple wood surfaces
+environmentalImpact:
+- benefit: Chemical Solvent Elimination
+  description: Eliminates need for harsh chemical strippers and solvents in wood restoration
+- benefit: Waste Reduction
+  description: Produces minimal waste compared to sanding and chemical methods
+- benefit: Energy Efficiency
+  description: Low power consumption compared to traditional wood stripping methods
 outcomes:
 - metric: Complete removal of surface contaminants without damaging wood fibers
   result: Surface Cleanliness
@@ -57,6 +63,9 @@ outcomes:
   result: Material Preservation
 - metric: 0.5-2 m²/hour cleaning rate depending on contamination level
   result: Processing Speed
+keywords: maple wood, laser cleaning, wood restoration, non-abrasive cleaning, pulsed
+  laser, surface contamination removal, wood grain preservation, musical instrument
+  cleaning
 prompt_chain_verification:
   ai_detection_config_loaded: true
   author_id: 2
@@ -68,6 +77,7 @@ prompt_chain_verification:
   persona_country: Italy
   prompt_components_integrated: 4
   verification_timestamp: '2025-09-16T22:54:24Z'
+category: wood
 properties:
   charPoint: 200-300°C
   chemicalFormula: C6H10O5 (cellulose)
@@ -107,16 +117,6 @@ properties:
   thermalPercentile: 33.3
   wavelength: 1064nm
   youngsModulus: 10.8 GPa
-regulatoryStandards: ISO 13061 (wood physical properties), ASTM D143 (wood testing)
-technicalSpecifications:
-  fluenceRange: 0.2–1.5 J/cm²
-  powerRange: 10-50W
-  pulseDuration: 50-200ns
-  repetitionRate: 10-50kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.5-3.0mm
-  wavelength: 1064nm (primary), 355nm (optional for delicate work)
-title: Laser Cleaning Maple Wood - Technical Guide for Optimal Processing
 ---
 
 # Version Information

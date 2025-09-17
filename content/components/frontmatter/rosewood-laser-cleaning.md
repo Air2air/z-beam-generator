@@ -1,4 +1,5 @@
 ---
+name: Rosewood
 applications:
 - detail: Removal of surface contaminants, old finishes, and oxidation from rosewood
     surfaces
@@ -6,6 +7,17 @@ applications:
 - detail: Precision cleaning of rosewood fretboards and instrument components without
     damaging delicate wood grain
   industry: Musical Instrument Restoration
+technicalSpecifications:
+  fluenceRange: 0.5–2.5 J/cm²
+  powerRange: 20-100W
+  pulseDuration: 50-200ns
+  repetitionRate: 10-50kHz
+  safetyClass: Class 4 (requires full enclosure and fume extraction)
+  spotSize: 0.1-2.0mm
+  wavelength: 1064nm (primary), 355nm (optional for delicate work)
+description: Technical overview of Rosewood (Dalbergia genus) for laser cleaning applications,
+  including optimal 1064nm wavelength interaction with wood cellulose and lignin,
+  and specialized applications in wood restoration.
 author: Ikmanda Roswati
 author_object:
   country: Indonesia
@@ -15,33 +27,20 @@ author_object:
   name: Ikmanda Roswati
   sex: m
   title: Ph.D.
-category: wood
 chemicalProperties:
   formula: C6H10O5 (cellulose base)
   materialType: Hardwood
   symbol: Wood
-compatibility:
-- All Wood Types
-- Metal Inlays
-- Wood Finishes and Adhesives
 composition:
 - Cellulose (C6H10O5) 40-50%
 - Lignin 20-30%
 - Hemicellulose 15-25%
 - Extractives (oils, resins) 3-8%
-description: Technical overview of Rosewood (Dalbergia genus) for laser cleaning applications,
-  including optimal 1064nm wavelength interaction with wood cellulose and lignin,
-  and specialized applications in wood restoration.
-environmentalImpact:
-- benefit: Chemical Solvent Elimination
-  description: Eliminates need for harsh chemical strippers and solvents in wood restoration
-- benefit: Waste Reduction
-  description: Produces 95% less waste compared to traditional sanding and chemical
-    methods
-- benefit: Energy Efficiency
-  description: Consumes 60% less energy than thermal wood stripping processes
-headline: Comprehensive technical guide for laser cleaning and restoring rosewood
-  surfaces
+compatibility:
+- All Wood Types
+- Metal Inlays
+- Wood Finishes and Adhesives
+regulatoryStandards: ISO 13061, ASTM D143, IEC 60825-1
 images:
   hero:
     alt: Rosewood surface undergoing laser cleaning showing precise contamination
@@ -51,10 +50,17 @@ images:
     alt: Microscopic view of Rosewood surface after laser cleaning showing detailed
       surface structure
     url: /images/rosewood-laser-cleaning-micro.jpg
-keywords: rosewood, dalbergia, wood laser cleaning, laser wood restoration, non-ablative
-  cleaning, pulsed fiber laser, wood surface treatment, musical instrument cleaning,
-  furniture restoration
-name: Rosewood
+title: Laser Cleaning Rosewood - Technical Guide for Wood Restoration
+headline: Comprehensive technical guide for laser cleaning and restoring rosewood
+  surfaces
+environmentalImpact:
+- benefit: Chemical Solvent Elimination
+  description: Eliminates need for harsh chemical strippers and solvents in wood restoration
+- benefit: Waste Reduction
+  description: Produces 95% less waste compared to traditional sanding and chemical
+    methods
+- benefit: Energy Efficiency
+  description: Consumes 60% less energy than thermal wood stripping processes
 outcomes:
 - metric: Achieves complete contaminant removal while preserving natural wood patina
   result: Surface Cleanliness
@@ -62,6 +68,9 @@ outcomes:
   result: Material Preservation
 - metric: 0.5-2 m²/hour cleaning rate depending on contamination level and wood density
   result: Processing Speed
+keywords: rosewood, dalbergia, wood laser cleaning, laser wood restoration, non-ablative
+  cleaning, pulsed fiber laser, wood surface treatment, musical instrument cleaning,
+  furniture restoration
 prompt_chain_verification:
   ai_detection_config_loaded: true
   author_id: 3
@@ -73,6 +82,7 @@ prompt_chain_verification:
   persona_country: Indonesia
   prompt_components_integrated: 4
   verification_timestamp: '2025-09-16T23:00:22Z'
+category: wood
 properties:
   chemicalFormula: C6H10O5 (cellulose)
   decompositionMax: 400°C
@@ -114,16 +124,6 @@ properties:
   thermalPercentile: 30.6
   wavelength: 1064nm
   youngsModulus: 10-15 GPa
-regulatoryStandards: ISO 13061, ASTM D143, IEC 60825-1
-technicalSpecifications:
-  fluenceRange: 0.5–2.5 J/cm²
-  powerRange: 20-100W
-  pulseDuration: 50-200ns
-  repetitionRate: 10-50kHz
-  safetyClass: Class 4 (requires full enclosure and fume extraction)
-  spotSize: 0.1-2.0mm
-  wavelength: 1064nm (primary), 355nm (optional for delicate work)
-title: Laser Cleaning Rosewood - Technical Guide for Wood Restoration
 ---
 
 # Version Information

@@ -1,10 +1,22 @@
 ---
+name: Ceramic Matrix Composites (CMCs)
 applications:
 - detail: Removal of oxidation and environmental contaminants from CMC turbine blades
     and components
   industry: Aerospace
 - detail: Surface preparation of CMC components for thermal barrier coating application
   industry: Energy
+technicalSpecifications:
+  fluenceRange: 0.5–3.0 J/cm²
+  powerRange: 20-150W
+  pulseDuration: 10-200ns
+  repetitionRate: 10-200kHz
+  safetyClass: Class 4 (requires full enclosure)
+  spotSize: 0.1-2.0mm
+  wavelength: 1064nm (primary), 355nm (optional)
+description: Laser cleaning parameters for Ceramic Matrix Composites (CMCs) including
+  SiC/SiC and C/C composites, focusing on non-destructive contaminant removal without
+  fiber damage.
 author: Todd Dunning
 author_object:
   country: United States (California)
@@ -14,22 +26,31 @@ author_object:
   name: Todd Dunning
   sex: m
   title: MA
-category: composite
 chemicalProperties:
   formula: SiC/SiC or C/C
   materialType: ceramic composite
   symbol: CMC
-compatibility:
-- Superalloys
-- Titanium Alloys
-- Refractory Metals
 composition:
 - Silicon Carbide Matrix 60-70%
 - Carbon or Silicon Carbide Fibers 30-40%
 - Interphase coating (PyC/BN) 1-2%
-description: Laser cleaning parameters for Ceramic Matrix Composites (CMCs) including
-  SiC/SiC and C/C composites, focusing on non-destructive contaminant removal without
-  fiber damage.
+compatibility:
+- Superalloys
+- Titanium Alloys
+- Refractory Metals
+regulatoryStandards: ISO 14952, ASTM E1256, NADCAP AC7114
+images:
+  hero:
+    alt: Ceramic Matrix Composites (CMCs) surface undergoing laser cleaning showing
+      precise contamination removal
+    url: /images/ceramic-matrix-composites-(cmcs)-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Ceramic Matrix Composites (CMCs) surface after laser
+      cleaning showing detailed surface structure
+    url: /images/ceramic-matrix-composites-(cmcs)-laser-cleaning-micro.jpg
+title: Laser Cleaning of Ceramic Matrix Composites - Technical Parameters and Applications
+headline: Advanced laser cleaning techniques for Ceramic Matrix Composites in aerospace
+  and energy applications
 environmentalImpact:
 - benefit: Solvent-Free Processing
   description: Eliminates use of hazardous chemical solvents and associated VOC emissions
@@ -37,21 +58,6 @@ environmentalImpact:
   description: Produces only ablated contaminant particles, no liquid waste streams
 - benefit: Energy Efficient
   description: Requires 60% less energy than thermal or chemical cleaning methods
-headline: Advanced laser cleaning techniques for Ceramic Matrix Composites in aerospace
-  and energy applications
-images:
-  hero:
-    alt: Ceramic Matrix Composites (CMCs) surface undergoing laser cleaning showing
-      precise contamination removal
-    url: /images/ceramic-matrix-composites-cmcs-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Ceramic Matrix Composites (CMCs) surface after laser
-      cleaning showing detailed surface structure
-    url: /images/ceramic-matrix-composites-cmcs-laser-cleaning-micro.jpg
-keywords: ceramic matrix composites, cmc laser cleaning, silicon carbide composites,
-  carbon-carbon composites, aerospace composites, non-destructive cleaning, laser
-  surface treatment
-name: Ceramic Matrix Composites (CMCs)
 outcomes:
 - metric: Achieves particulate contamination level <100 particles/cm² >0.5μm
   result: Surface Cleanliness
@@ -59,6 +65,9 @@ outcomes:
   result: Fiber Preservation
 - metric: 0.5-2.0 m²/hour depending on contamination severity
   result: Processing Rate
+keywords: ceramic matrix composites, cmc laser cleaning, silicon carbide composites,
+  carbon-carbon composites, aerospace composites, non-destructive cleaning, laser
+  surface treatment
 prompt_chain_verification:
   ai_detection_config_loaded: true
   author_id: 4
@@ -70,6 +79,7 @@ prompt_chain_verification:
   persona_country: United States (California)
   prompt_components_integrated: 4
   verification_timestamp: '2025-09-16T21:43:20Z'
+category: composite
 properties:
   chemicalFormula: SiC/SiC or C/C
   density: 2.5-3.2 g/cm³
@@ -109,16 +119,6 @@ properties:
   thermalPercentile: 33.2
   wavelength: 1064nm
   youngsModulus: 350-400 GPa
-regulatoryStandards: ISO 14952, ASTM E1256, NADCAP AC7114
-technicalSpecifications:
-  fluenceRange: 0.5–3.0 J/cm²
-  powerRange: 20-150W
-  pulseDuration: 10-200ns
-  repetitionRate: 10-200kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.1-2.0mm
-  wavelength: 1064nm (primary), 355nm (optional)
-title: Laser Cleaning of Ceramic Matrix Composites - Technical Parameters and Applications
 ---
 
 # Version Information

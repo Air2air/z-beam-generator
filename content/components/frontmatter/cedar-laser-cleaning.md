@@ -1,10 +1,22 @@
 ---
+name: Cedar
 applications:
 - detail: Removal of surface contaminants, stains, and oxidation from cedar wood surfaces
   industry: Woodworking & Furniture
 - detail: Gentle cleaning of antique cedar artifacts and structures without damaging
     wood grain
   industry: Historical Preservation
+technicalSpecifications:
+  fluenceRange: 0.5–2.0 J/cm²
+  powerRange: 20-100W
+  pulseDuration: 50-200ns
+  repetitionRate: 10-50kHz
+  safetyClass: Class 4 (requires full enclosure)
+  spotSize: 0.5-3.0mm
+  wavelength: 1064nm (primary), 355nm (optional)
+description: Technical overview of Cedar wood for laser cleaning applications, including
+  optimal wavelength interaction with lignin and cellulose, and specialized applications
+  in wood restoration.
 author: Alessandro Moretti
 author_object:
   country: Italy
@@ -14,33 +26,21 @@ author_object:
   name: Alessandro Moretti
   sex: m
   title: Ph.D.
-category: wood
 chemicalProperties:
   formula: C6H10O5 (cellulose base)
   materialType: softwood
   symbol: Cedar
-compatibility:
-- Western Red Cedar
-- Eastern White Cedar
-- Spanish Cedar
-- Japanese Cedar
 composition:
 - Cellulose 40-45%
 - Lignin 25-30%
 - Hemicellulose 20-25%
 - Extractives 3-5%
-description: Technical overview of Cedar wood for laser cleaning applications, including
-  optimal wavelength interaction with lignin and cellulose, and specialized applications
-  in wood restoration.
-environmentalImpact:
-- benefit: Chemical Solvent Elimination
-  description: Eliminates need for harsh chemical cleaners and preservatives in wood
-    treatment
-- benefit: Water Conservation
-  description: Reduces water usage by 95% compared to traditional wood washing methods
-- benefit: Waste Reduction
-  description: Minimizes wood material loss during cleaning process
-headline: Comprehensive technical guide for laser cleaning cedar wood surfaces
+compatibility:
+- Western Red Cedar
+- Eastern White Cedar
+- Spanish Cedar
+- Japanese Cedar
+regulatoryStandards: ASTM D2017, ISO 13061, ANSI/AWI 0601
 images:
   hero:
     alt: Cedar surface undergoing laser cleaning showing precise contamination removal
@@ -49,9 +49,16 @@ images:
     alt: Microscopic view of Cedar surface after laser cleaning showing detailed surface
       structure
     url: /images/cedar-laser-cleaning-micro.jpg
-keywords: cedar wood, laser cleaning, wood restoration, lignin ablation, surface cleaning,
-  non-contact wood treatment, historical preservation, furniture restoration
-name: Cedar
+title: Laser Cleaning Cedar Wood - Technical Guide for Optimal Processing
+headline: Comprehensive technical guide for laser cleaning cedar wood surfaces
+environmentalImpact:
+- benefit: Chemical Solvent Elimination
+  description: Eliminates need for harsh chemical cleaners and preservatives in wood
+    treatment
+- benefit: Water Conservation
+  description: Reduces water usage by 95% compared to traditional wood washing methods
+- benefit: Waste Reduction
+  description: Minimizes wood material loss during cleaning process
 outcomes:
 - metric: Achieves 99.9% contaminant removal without damaging wood fibers
   result: Surface Cleanliness
@@ -59,6 +66,8 @@ outcomes:
   result: Material Preservation
 - metric: 0.5-2 m²/hour cleaning rate depending on contamination level
   result: Processing Speed
+keywords: cedar wood, laser cleaning, wood restoration, lignin ablation, surface cleaning,
+  non-contact wood treatment, historical preservation, furniture restoration
 prompt_chain_verification:
   ai_detection_config_loaded: true
   author_id: 2
@@ -70,6 +79,7 @@ prompt_chain_verification:
   persona_country: Italy
   prompt_components_integrated: 4
   verification_timestamp: '2025-09-16T22:49:55Z'
+category: wood
 properties:
   chemicalFormula: C6H10O5 (cellulose)
   density: 0.35-0.45 g/cm³
@@ -109,16 +119,6 @@ properties:
   thermalPercentile: 22.2
   wavelength: 1064nm
   youngsModulus: 8-12 GPa
-regulatoryStandards: ASTM D2017, ISO 13061, ANSI/AWI 0601
-technicalSpecifications:
-  fluenceRange: 0.5–2.0 J/cm²
-  powerRange: 20-100W
-  pulseDuration: 50-200ns
-  repetitionRate: 10-50kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.5-3.0mm
-  wavelength: 1064nm (primary), 355nm (optional)
-title: Laser Cleaning Cedar Wood - Technical Guide for Optimal Processing
 ---
 
 # Version Information

@@ -1,10 +1,22 @@
 ---
+name: Pine
 applications:
 - detail: Removal of surface contaminants, stains, and oxidation from pine wood surfaces
   industry: Woodworking & Furniture
 - detail: Gentle cleaning of antique pine artifacts and structures without damaging
     wood fibers
   industry: Historical Restoration
+technicalSpecifications:
+  fluenceRange: 0.5–2.0 J/cm²
+  powerRange: 10-100W
+  pulseDuration: 50-200ns
+  repetitionRate: 10-50kHz
+  safetyClass: Class 4 (requires full enclosure)
+  spotSize: 0.5-3.0mm
+  wavelength: 1064nm (primary), 355nm (optional for delicate work)
+description: Technical overview of Pine wood for laser cleaning applications, including
+  optimal wavelength interaction with cellulose and lignin, and applications in wood
+  surface restoration.
 author: Yi-Chun Lin
 author_object:
   country: Taiwan
@@ -14,32 +26,20 @@ author_object:
   name: Yi-Chun Lin
   sex: f
   title: Ph.D.
-category: wood
 chemicalProperties:
   formula: C6H10O5 (cellulose)
   materialType: softwood
   symbol: Pine
-compatibility:
-- Softwoods
-- Hardwoods
-- Wood Composites
 composition:
 - Cellulose 40-45%
 - Lignin 25-30%
 - Hemicellulose 20-25%
 - Extractives 5-10%
-description: Technical overview of Pine wood for laser cleaning applications, including
-  optimal wavelength interaction with cellulose and lignin, and applications in wood
-  surface restoration.
-environmentalImpact:
-- benefit: Chemical Solvent Elimination
-  description: Eliminates need for chemical strippers and solvents in wood cleaning
-- benefit: Water Conservation
-  description: No water required compared to traditional steam or water blasting methods
-- benefit: Waste Reduction
-  description: Produces minimal waste as contaminants are vaporized rather than washed
-    away
-headline: Comprehensive technical guide for laser cleaning pine wood surfaces
+compatibility:
+- Softwoods
+- Hardwoods
+- Wood Composites
+regulatoryStandards: ISO 13061, ASTM D143, EN 350
 images:
   hero:
     alt: Pine surface undergoing laser cleaning showing precise contamination removal
@@ -48,10 +48,16 @@ images:
     alt: Microscopic view of Pine surface after laser cleaning showing detailed surface
       structure
     url: /images/pine-laser-cleaning-micro.jpg
-keywords: pine wood, laser cleaning, wood restoration, cellulose ablation, lignin
-  removal, non-contact wood cleaning, historical preservation, surface contamination
-  removal
-name: Pine
+title: Laser Cleaning Pine Wood - Technical Guide for Optimal Processing
+headline: Comprehensive technical guide for laser cleaning pine wood surfaces
+environmentalImpact:
+- benefit: Chemical Solvent Elimination
+  description: Eliminates need for chemical strippers and solvents in wood cleaning
+- benefit: Water Conservation
+  description: No water required compared to traditional steam or water blasting methods
+- benefit: Waste Reduction
+  description: Produces minimal waste as contaminants are vaporized rather than washed
+    away
 outcomes:
 - metric: Achieves complete removal of surface contaminants without damaging wood
     fibers
@@ -60,6 +66,9 @@ outcomes:
   result: Material Preservation
 - metric: 0.5-2 m²/hour cleaning rate depending on contamination level and wood condition
   result: Processing Speed
+keywords: pine wood, laser cleaning, wood restoration, cellulose ablation, lignin
+  removal, non-contact wood cleaning, historical preservation, surface contamination
+  removal
 prompt_chain_verification:
   ai_detection_config_loaded: true
   author_id: 1
@@ -71,6 +80,7 @@ prompt_chain_verification:
   persona_country: Taiwan
   prompt_components_integrated: 4
   verification_timestamp: '2025-09-16T22:56:52Z'
+category: wood
 properties:
   chemicalFormula: C6H10O5 (cellulose)
   density: 0.35-0.60 g/cm³
@@ -110,16 +120,6 @@ properties:
   thermalPercentile: 22.2
   wavelength: 1064nm
   youngsModulus: 8-13 GPa
-regulatoryStandards: ISO 13061, ASTM D143, EN 350
-technicalSpecifications:
-  fluenceRange: 0.5–2.0 J/cm²
-  powerRange: 10-100W
-  pulseDuration: 50-200ns
-  repetitionRate: 10-50kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.5-3.0mm
-  wavelength: 1064nm (primary), 355nm (optional for delicate work)
-title: Laser Cleaning Pine Wood - Technical Guide for Optimal Processing
 ---
 
 # Version Information

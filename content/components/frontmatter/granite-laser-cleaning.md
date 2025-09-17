@@ -1,4 +1,5 @@
 ---
+name: Granite
 applications:
 - detail: Removal of biological growth, soot, and atmospheric pollutants from granite
     surfaces
@@ -6,6 +7,18 @@ applications:
 - detail: Cleaning of surface residues, adhesives, and paint from granite slabs and
     countertops
   industry: Construction & Fabrication
+technicalSpecifications:
+  fluenceRange: 0.5–3.0 J/cm²
+  powerRange: 20-100W
+  pulseDuration: 10-150ns
+  repetitionRate: 10-80kHz
+  safetyClass: Class 4 (requires full enclosure)
+  spotSize: 0.1-2.0mm
+  wavelength: 1064nm (primary), 532nm (optional)
+description: Technical overview of Granite, a felsic intrusive igneous rock composed
+  primarily of quartz, alkali feldspar, and plagioclase, for laser cleaning applications,
+  including optimal 1064nm wavelength interaction, and industrial applications in
+  surface restoration.
 author: Ikmanda Roswati
 author_object:
   country: Indonesia
@@ -15,33 +28,20 @@ author_object:
   name: Ikmanda Roswati
   sex: m
   title: Ph.D.
-category: stone
 chemicalProperties:
   formula: SiO2 (Quartz), KAlSi3O8 (Feldspar), NaAlSi3O8-CaAl2Si2O8 (Plagioclase)
   materialType: igneous rock
   symbol: Granite
-compatibility:
-- Natural Stone
-- Concrete
-- Brick
 composition:
 - Quartz (SiO2) 20-60%
 - Alkali Feldspar (KAlSi3O8) 35-90%
 - Plagioclase Feldspar (NaAlSi3O8-CaAl2Si2O8) 0-65%
 - Mica (Biotite, Muscovite) 5-15%
-description: Technical overview of Granite, a felsic intrusive igneous rock composed
-  primarily of quartz, alkali feldspar, and plagioclase, for laser cleaning applications,
-  including optimal 1064nm wavelength interaction, and industrial applications in
-  surface restoration.
-environmentalImpact:
-- benefit: Chemical Solvent Elimination
-  description: Reduces chemical usage by 100% compared to traditional chemical cleaning
-    methods
-- benefit: Water Conservation
-  description: Eliminates water usage completely in the cleaning process
-- benefit: Waste Reduction
-  description: Produces no secondary waste streams compared to abrasive blasting
-headline: Comprehensive technical guide for laser cleaning and restoring granite surfaces
+compatibility:
+- Natural Stone
+- Concrete
+- Brick
+regulatoryStandards: ASTM C97, ASTM C170, EN 12372
 images:
   hero:
     alt: Granite surface undergoing laser cleaning showing precise contamination removal
@@ -50,10 +50,16 @@ images:
     alt: Microscopic view of Granite surface after laser cleaning showing detailed
       surface structure
     url: /images/granite-laser-cleaning-micro.jpg
-keywords: granite, granite stone, laser ablation, laser cleaning, non-contact cleaning,
-  pulsed fiber laser, surface contamination removal, industrial laser parameters,
-  stone restoration, monument cleaning
-name: Granite
+title: Laser Cleaning Granite - Technical Guide for Optimal Processing
+headline: Comprehensive technical guide for laser cleaning and restoring granite surfaces
+environmentalImpact:
+- benefit: Chemical Solvent Elimination
+  description: Reduces chemical usage by 100% compared to traditional chemical cleaning
+    methods
+- benefit: Water Conservation
+  description: Eliminates water usage completely in the cleaning process
+- benefit: Waste Reduction
+  description: Produces no secondary waste streams compared to abrasive blasting
 outcomes:
 - metric: Achieves complete removal of biological and atmospheric contaminants
   result: Surface Cleanliness Level
@@ -61,6 +67,9 @@ outcomes:
   result: Material Removal Precision
 - metric: 0.5-2 m²/hour cleaning rate depending on contamination type and severity
   result: Processing Speed
+keywords: granite, granite stone, laser ablation, laser cleaning, non-contact cleaning,
+  pulsed fiber laser, surface contamination removal, industrial laser parameters,
+  stone restoration, monument cleaning
 prompt_chain_verification:
   ai_detection_config_loaded: true
   author_id: 3
@@ -72,6 +81,7 @@ prompt_chain_verification:
   persona_country: Indonesia
   prompt_components_integrated: 4
   verification_timestamp: '2025-09-16T22:35:29Z'
+category: stone
 properties:
   chemicalFormula: SiO2, KAlSi3O8, NaAlSi3O8, CaAl2Si2O8
   density: 2.65-2.75 g/cm³
@@ -111,16 +121,6 @@ properties:
   thermalPercentile: 59.4
   wavelength: 1064nm
   youngsModulus: 40-70 GPa
-regulatoryStandards: ASTM C97, ASTM C170, EN 12372
-technicalSpecifications:
-  fluenceRange: 0.5–3.0 J/cm²
-  powerRange: 20-100W
-  pulseDuration: 10-150ns
-  repetitionRate: 10-80kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.1-2.0mm
-  wavelength: 1064nm (primary), 532nm (optional)
-title: Laser Cleaning Granite - Technical Guide for Optimal Processing
 ---
 
 # Version Information

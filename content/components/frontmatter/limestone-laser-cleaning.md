@@ -1,4 +1,5 @@
 ---
+name: Limestone
 applications:
 - detail: Gentle removal of biological growth, soot, and pollutants from historical
     limestone structures
@@ -6,6 +7,17 @@ applications:
 - detail: Surface preparation of limestone blocks and panels for bonding or coating
     applications
   industry: Construction & Fabrication
+technicalSpecifications:
+  fluenceRange: 0.5–3.0 J/cm²
+  powerRange: 10-100W
+  pulseDuration: 10-150ns
+  repetitionRate: 10-80kHz
+  safetyClass: Class 4 (requires full enclosure)
+  spotSize: 0.1-3.0mm
+  wavelength: 1064nm (primary), 355nm (optional for delicate work)
+description: Technical overview of Limestone (CaCO3) for laser cleaning applications,
+  detailing the optimal interaction with 1064nm wavelength to avoid yellowing and
+  ensure non-destructive ablation of surface contaminants.
 author: Alessandro Moretti
 author_object:
   country: Italy
@@ -15,24 +27,32 @@ author_object:
   name: Alessandro Moretti
   sex: m
   title: Ph.D.
-category: stone
 chemicalProperties:
   formula: CaCO3
   materialType: sedimentary rock
   symbol: Limestone
-compatibility:
-- Historical Masonry
-- Marble
-- Sandstone
 composition:
 - Calcium Carbonate (CaCO3) 90-99%
 - Clay Minerals
 - Quartz (SiO2)
 - Iron Oxides
 - Other impurities
-description: Technical overview of Limestone (CaCO3) for laser cleaning applications,
-  detailing the optimal interaction with 1064nm wavelength to avoid yellowing and
-  ensure non-destructive ablation of surface contaminants.
+compatibility:
+- Historical Masonry
+- Marble
+- Sandstone
+regulatoryStandards: EN 15898, EN 17138, ICOMOS Guidelines
+images:
+  hero:
+    alt: Limestone surface undergoing laser cleaning showing precise contamination
+      removal
+    url: /images/limestone-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Limestone surface after laser cleaning showing detailed
+      surface structure
+    url: /images/limestone-laser-cleaning-micro.jpg
+title: Laser Cleaning Limestone - Technical Guide for Restoration and Surface Preparation
+headline: Precise and non-destructive laser cleaning techniques for limestone preservation
 environmentalImpact:
 - benefit: Chemical-Free Process
   description: Eliminates need for harsh chemical cleaners and poultices, preventing
@@ -43,20 +63,6 @@ environmentalImpact:
 - benefit: Waste Reduction
   description: Contaminants are vaporized rather than washed away, resulting in minimal
     hazardous waste
-headline: Precise and non-destructive laser cleaning techniques for limestone preservation
-images:
-  hero:
-    alt: Limestone surface undergoing laser cleaning showing precise contamination
-      removal
-    url: /images/limestone-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Limestone surface after laser cleaning showing detailed
-      surface structure
-    url: /images/limestone-laser-cleaning-micro.jpg
-keywords: limestone, calcium carbonate, laser ablation, stone cleaning, architectural
-  restoration, non-contact cleaning, pulsed laser, surface contamination removal,
-  historical preservation
-name: Limestone
 outcomes:
 - metric: Complete removal of biological patina and atmospheric crust without damage
     to the substrate
@@ -65,6 +71,9 @@ outcomes:
   result: Material Preservation
 - metric: 0.5-2 m²/hour cleaning rate depending on contamination type and intensity
   result: Processing Speed
+keywords: limestone, calcium carbonate, laser ablation, stone cleaning, architectural
+  restoration, non-contact cleaning, pulsed laser, surface contamination removal,
+  historical preservation
 prompt_chain_verification:
   ai_detection_config_loaded: true
   author_id: 2
@@ -76,6 +85,7 @@ prompt_chain_verification:
   persona_country: Italy
   prompt_components_integrated: 4
   verification_timestamp: '2025-09-16T22:36:25Z'
+category: stone
 properties:
   chemicalFormula: CaCO3
   compressiveStrength: 10-100 MPa
@@ -115,16 +125,6 @@ properties:
   thermalPercentile: 25.0
   wavelength: 1064nm
   youngsModulus: 40-80 GPa
-regulatoryStandards: EN 15898, EN 17138, ICOMOS Guidelines
-technicalSpecifications:
-  fluenceRange: 0.5–3.0 J/cm²
-  powerRange: 10-100W
-  pulseDuration: 10-150ns
-  repetitionRate: 10-80kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.1-3.0mm
-  wavelength: 1064nm (primary), 355nm (optional for delicate work)
-title: Laser Cleaning Limestone - Technical Guide for Restoration and Surface Preparation
 ---
 
 # Version Information

@@ -1,10 +1,22 @@
 ---
+name: Bamboo
 applications:
 - detail: Removal of surface stains, mold, and aging patina from bamboo products
   industry: Woodworking & Furniture
 - detail: Cleaning of bamboo structural components and composite materials prior to
     finishing
   industry: Construction Materials
+technicalSpecifications:
+  fluenceRange: 0.5–2.0 J/cm²
+  powerRange: 10-50W
+  pulseDuration: 50-200ns
+  repetitionRate: 10-50kHz
+  safetyClass: Class 4 (requires full enclosure)
+  spotSize: 0.5-3.0mm
+  wavelength: 1064nm (primary), 355nm (optional)
+description: Technical overview of Bamboo, C6H10O5, for laser cleaning applications,
+  including optimal 1064nm wavelength interaction with cellulose fibers, and industrial
+  applications in surface restoration.
 author: Yi-Chun Lin
 author_object:
   country: Taiwan
@@ -14,23 +26,30 @@ author_object:
   name: Yi-Chun Lin
   sex: f
   title: Ph.D.
-category: wood
 chemicalProperties:
   formula: C6H10O5
   materialType: natural fiber composite
   symbol: Wood
-compatibility:
-- Natural Bamboo
-- Bamboo Composites
-- Wood Substrates
 composition:
 - Cellulose 40-60%
 - Hemicellulose 20-30%
 - Lignin 20-30%
 - Silica 0.5-4%
-description: Technical overview of Bamboo, C6H10O5, for laser cleaning applications,
-  including optimal 1064nm wavelength interaction with cellulose fibers, and industrial
-  applications in surface restoration.
+compatibility:
+- Natural Bamboo
+- Bamboo Composites
+- Wood Substrates
+regulatoryStandards: ISO 13061, ASTM D143, JIS A 5905
+images:
+  hero:
+    alt: Bamboo surface undergoing laser cleaning showing precise contamination removal
+    url: /images/bamboo-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Bamboo surface after laser cleaning showing detailed
+      surface structure
+    url: /images/bamboo-laser-cleaning-micro.jpg
+title: Laser Cleaning Bamboo - Technical Guide for Optimal Processing
+headline: Comprehensive technical guide for laser cleaning natural bamboo materials
 environmentalImpact:
 - benefit: Chemical Solvent Elimination
   description: Eliminates need for chemical strippers and preservatives in bamboo
@@ -40,19 +59,6 @@ environmentalImpact:
     methods
 - benefit: Waste Reduction
   description: Produces minimal airborne particulate compared to mechanical sanding
-headline: Comprehensive technical guide for laser cleaning natural bamboo materials
-images:
-  hero:
-    alt: Bamboo surface undergoing laser cleaning showing precise contamination removal
-    url: /images/bamboo-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Bamboo surface after laser cleaning showing detailed
-      surface structure
-    url: /images/bamboo-laser-cleaning-micro.jpg
-keywords: bamboo, bamboo wood, laser ablation, laser cleaning, non-contact cleaning,
-  pulsed fiber laser, surface contamination removal, industrial laser parameters,
-  thermal processing, surface restoration
-name: Bamboo
 outcomes:
 - metric: Achieves visually clean surface with preserved natural texture
   result: Surface Cleanliness Level
@@ -61,6 +67,9 @@ outcomes:
 - metric: 0.5-2 m²/hour cleaning rate depending on contamination level and bamboo
     density
   result: Processing Speed
+keywords: bamboo, bamboo wood, laser ablation, laser cleaning, non-contact cleaning,
+  pulsed fiber laser, surface contamination removal, industrial laser parameters,
+  thermal processing, surface restoration
 prompt_chain_verification:
   ai_detection_config_loaded: true
   author_id: 1
@@ -72,6 +81,7 @@ prompt_chain_verification:
   persona_country: Taiwan
   prompt_components_integrated: 4
   verification_timestamp: '2025-09-16T22:47:19Z'
+category: wood
 properties:
   chemicalFormula: C6H10O5
   decompositionPoint: 200-300°C
@@ -111,16 +121,6 @@ properties:
   thermalPercentile: 44.4
   wavelength: 1064nm
   youngsModulus: 10-20 GPa
-regulatoryStandards: ISO 13061, ASTM D143, JIS A 5905
-technicalSpecifications:
-  fluenceRange: 0.5–2.0 J/cm²
-  powerRange: 10-50W
-  pulseDuration: 50-200ns
-  repetitionRate: 10-50kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.5-3.0mm
-  wavelength: 1064nm (primary), 355nm (optional)
-title: Laser Cleaning Bamboo - Technical Guide for Optimal Processing
 ---
 
 # Version Information

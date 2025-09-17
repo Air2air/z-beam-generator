@@ -1,9 +1,20 @@
 ---
+name: Rhenium
 applications:
 - detail: Removal of surface oxides and contaminants from Rhenium substrates
   industry: Electronics Manufacturing
 - detail: Cleaning of thermal barrier coatings and metal matrix composites
   industry: Aerospace Components
+technicalSpecifications:
+  fluenceRange: 1.0–4.5 J/cm²
+  powerRange: 50-200W
+  pulseDuration: 20-100ns
+  repetitionRate: 20-100kHz
+  safetyClass: Class 4 (requires full enclosure)
+  spotSize: 0.2-1.5mm
+  wavelength: 1064nm (primary), 532nm (optional)
+description: Technical overview of Rhenium, Re, for laser cleaning applications, including
+  optimal 1064nm wavelength interaction, and industrial applications in surface preparation.
 author: Yi-Chun Lin
 author_object:
   country: Taiwan
@@ -13,29 +24,18 @@ author_object:
   name: Yi-Chun Lin
   sex: f
   title: Ph.D.
-category: metal
 chemicalProperties:
   formula: Re
   materialType: metal
   symbol: Re
+composition:
+- Rhenium (Re) 99.99%
+- Trace elements (W, Mo, C, O)
 compatibility:
 - Tungsten
 - Molybdenum
 - Nickel-based Superalloys
-composition:
-- Rhenium (Re) 99.99%
-- Trace elements (W, Mo, C, O)
-description: Technical overview of Rhenium, Re, for laser cleaning applications, including
-  optimal 1064nm wavelength interaction, and industrial applications in surface preparation.
-environmentalImpact:
-- benefit: Chemical Solvent Elimination
-  description: Reduces chemical usage by 100% compared to traditional solvent cleaning
-    methods
-- benefit: Water Conservation
-  description: Saves approximately 5000 liters of water per month in industrial applications
-- benefit: Energy Efficiency
-  description: Consumes 40% less energy than thermal cleaning processes
-headline: Comprehensive technical guide for laser cleaning metal rhenium
+regulatoryStandards: ISO 18562, ASTM F2100, IEC 60601-1
 images:
   hero:
     alt: Rhenium surface undergoing laser cleaning showing precise contamination removal
@@ -44,10 +44,16 @@ images:
     alt: Microscopic view of Rhenium surface after laser cleaning showing detailed
       surface structure
     url: /images/rhenium-laser-cleaning-micro.jpg
-keywords: rhenium, rhenium metal, laser ablation, laser cleaning, non-contact cleaning,
-  pulsed fiber laser, surface contamination removal, industrial laser parameters,
-  thermal processing, surface restoration
-name: Rhenium
+title: Laser Cleaning Rhenium - Technical Guide for Optimal Processing
+headline: Comprehensive technical guide for laser cleaning metal rhenium
+environmentalImpact:
+- benefit: Chemical Solvent Elimination
+  description: Reduces chemical usage by 100% compared to traditional solvent cleaning
+    methods
+- benefit: Water Conservation
+  description: Saves approximately 5000 liters of water per month in industrial applications
+- benefit: Energy Efficiency
+  description: Consumes 40% less energy than thermal cleaning processes
 outcomes:
 - metric: Achieves ISO 14644-1 Class 7 cleanliness standard
   result: Surface Cleanliness Level
@@ -55,6 +61,9 @@ outcomes:
   result: Material Removal Precision
 - metric: 2-5 m²/hour cleaning rate depending on contamination level
   result: Processing Speed
+keywords: rhenium, rhenium metal, laser ablation, laser cleaning, non-contact cleaning,
+  pulsed fiber laser, surface contamination removal, industrial laser parameters,
+  thermal processing, surface restoration
 prompt_chain_verification:
   ai_detection_config_loaded: true
   author_id: 1
@@ -66,6 +75,7 @@ prompt_chain_verification:
   persona_country: Taiwan
   prompt_components_integrated: 4
   verification_timestamp: '2025-09-16T22:17:01Z'
+category: metal
 properties:
   chemicalFormula: Re
   density: 21.02 g/cm³
@@ -105,16 +115,6 @@ properties:
   thermalPercentile: 9.5
   wavelength: 1064nm
   youngsModulus: 463 GPa
-regulatoryStandards: ISO 18562, ASTM F2100, IEC 60601-1
-technicalSpecifications:
-  fluenceRange: 1.0–4.5 J/cm²
-  powerRange: 50-200W
-  pulseDuration: 20-100ns
-  repetitionRate: 20-100kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.2-1.5mm
-  wavelength: 1064nm (primary), 532nm (optional)
-title: Laser Cleaning Rhenium - Technical Guide for Optimal Processing
 ---
 
 # Version Information

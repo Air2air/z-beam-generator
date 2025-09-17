@@ -1,10 +1,21 @@
 ---
+name: Lead
 applications:
 - detail: Removal of surface oxides and contaminants from lead solder and component
     terminals
   industry: Electronics Manufacturing
 - detail: Cleaning of lead plates and terminals in lead-acid battery production
   industry: Battery Manufacturing
+technicalSpecifications:
+  fluenceRange: 0.5–2.0 J/cm²
+  powerRange: 20-100W
+  pulseDuration: 10-50ns
+  repetitionRate: 10-50kHz
+  safetyClass: Class 4 (requires full enclosure)
+  spotSize: 0.1-0.8mm
+  wavelength: 1064nm (primary), 355nm (optional)
+description: Technical overview of Lead, Pb, for laser cleaning applications, including
+  optimal 1064nm wavelength interaction, and industrial applications in surface preparation.
 author: Todd Dunning
 author_object:
   country: United States (California)
@@ -14,28 +25,18 @@ author_object:
   name: Todd Dunning
   sex: m
   title: MA
-category: metal
 chemicalProperties:
   formula: Pb
   materialType: metal
   symbol: Pb
+composition:
+- Lead (Pb) 99.9%
+- Trace elements (Sb, Sn, Cu, As)
 compatibility:
 - Lead Alloys
 - Copper
 - Tin
-composition:
-- Lead (Pb) 99.9%
-- Trace elements (Sb, Sn, Cu, As)
-description: Technical overview of Lead, Pb, for laser cleaning applications, including
-  optimal 1064nm wavelength interaction, and industrial applications in surface preparation.
-environmentalImpact:
-- benefit: Chemical Solvent Elimination
-  description: Eliminates use of hazardous chemical solvents for lead surface cleaning
-- benefit: Lead Waste Reduction
-  description: Minimizes lead particulate waste compared to mechanical cleaning methods
-- benefit: Energy Efficiency
-  description: Consumes 60% less energy than traditional abrasive cleaning processes
-headline: Comprehensive technical guide for laser cleaning metal lead
+regulatoryStandards: OSHA 1910.1025, EPA Lead Regulations, RoHS Compliance
 images:
   hero:
     alt: Lead surface undergoing laser cleaning showing precise contamination removal
@@ -44,10 +45,15 @@ images:
     alt: Microscopic view of Lead surface after laser cleaning showing detailed surface
       structure
     url: /images/lead-laser-cleaning-micro.jpg
-keywords: lead, lead metal, laser ablation, laser cleaning, non-contact cleaning,
-  pulsed fiber laser, surface contamination removal, industrial laser parameters,
-  thermal processing, surface restoration
-name: Lead
+title: Laser Cleaning Lead - Technical Guide for Optimal Processing
+headline: Comprehensive technical guide for laser cleaning metal lead
+environmentalImpact:
+- benefit: Chemical Solvent Elimination
+  description: Eliminates use of hazardous chemical solvents for lead surface cleaning
+- benefit: Lead Waste Reduction
+  description: Minimizes lead particulate waste compared to mechanical cleaning methods
+- benefit: Energy Efficiency
+  description: Consumes 60% less energy than traditional abrasive cleaning processes
 outcomes:
 - metric: Achieves ISO 8501-1 Sa 2.5 cleanliness standard
   result: Surface Cleanliness Level
@@ -55,6 +61,9 @@ outcomes:
   result: Material Removal Precision
 - metric: 1-3 m²/hour cleaning rate depending on oxide thickness
   result: Processing Speed
+keywords: lead, lead metal, laser ablation, laser cleaning, non-contact cleaning,
+  pulsed fiber laser, surface contamination removal, industrial laser parameters,
+  thermal processing, surface restoration
 prompt_chain_verification:
   ai_detection_config_loaded: true
   author_id: 4
@@ -66,6 +75,7 @@ prompt_chain_verification:
   persona_country: United States (California)
   prompt_components_integrated: 4
   verification_timestamp: '2025-09-16T22:11:22Z'
+category: metal
 properties:
   chemicalFormula: Pb
   density: 11.34 g/cm³
@@ -105,16 +115,6 @@ properties:
   thermalPercentile: 6.5
   wavelength: 1064nm
   youngsModulus: 16 GPa
-regulatoryStandards: OSHA 1910.1025, EPA Lead Regulations, RoHS Compliance
-technicalSpecifications:
-  fluenceRange: 0.5–2.0 J/cm²
-  powerRange: 20-100W
-  pulseDuration: 10-50ns
-  repetitionRate: 10-50kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.1-0.8mm
-  wavelength: 1064nm (primary), 355nm (optional)
-title: Laser Cleaning Lead - Technical Guide for Optimal Processing
 ---
 
 # Version Information

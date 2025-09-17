@@ -1,10 +1,22 @@
 ---
+name: Hastelloy
 applications:
 - detail: Removal of oxides, corrosion products, and embedded contaminants from reactor
     components
   industry: Chemical Processing
 - detail: Cleaning of turbine components, exhaust systems, and high-temperature parts
   industry: Aerospace
+technicalSpecifications:
+  fluenceRange: 0.5–8.0 J/cm²
+  powerRange: 20-500W
+  pulseDuration: 10-200ns
+  repetitionRate: 10-200kHz
+  safetyClass: Class 4 (requires full enclosure)
+  spotSize: 0.05-2.0mm
+  wavelength: 1064nm (primary), 355nm (optional)
+description: Technical overview of Hastelloy alloys for laser cleaning applications,
+  focusing on nickel-molybdenum-chromium superalloys and their interaction with laser
+  wavelengths for precision surface preparation.
 author: Yi-Chun Lin
 author_object:
   country: Taiwan
@@ -14,16 +26,10 @@ author_object:
   name: Yi-Chun Lin
   sex: f
   title: Ph.D.
-category: metal
 chemicalProperties:
   formula: Ni-Mo-Cr (C-22, C-276, X)
   materialType: nickel-based superalloy
   symbol: Hastelloy
-compatibility:
-- Stainless Steel
-- Titanium Alloys
-- Nickel-based Superalloys
-- Cobalt Alloys
 composition:
 - 'Nickel: 56-62%'
 - 'Chromium: 14.5-22.5%'
@@ -32,20 +38,12 @@ composition:
 - 'Iron: 4-7%'
 - 'Cobalt: 2.5% max'
 - 'Other: <1%'
-description: Technical overview of Hastelloy alloys for laser cleaning applications,
-  focusing on nickel-molybdenum-chromium superalloys and their interaction with laser
-  wavelengths for precision surface preparation.
-environmentalImpact:
-- benefit: Chemical Solvent Elimination
-  description: Eliminates use of hazardous acids and solvents traditionally used for
-    Hastelloy cleaning
-- benefit: Waste Reduction
-  description: Produces minimal waste compared to chemical and abrasive cleaning methods
-- benefit: Energy Efficiency
-  description: Requires 60% less energy than thermal cleaning processes for high-temperature
-    alloys
-headline: Comprehensive technical guide for laser cleaning Hastelloy nickel-based
-  superalloys
+compatibility:
+- Stainless Steel
+- Titanium Alloys
+- Nickel-based Superalloys
+- Cobalt Alloys
+regulatoryStandards: ASTM B575, ASTM B574, ASME SB575, NACE MR0175
 images:
   hero:
     alt: Hastelloy surface undergoing laser cleaning showing precise contamination
@@ -55,10 +53,18 @@ images:
     alt: Microscopic view of Hastelloy surface after laser cleaning showing detailed
       surface structure
     url: /images/hastelloy-laser-cleaning-micro.jpg
-keywords: hastelloy, nickel alloy, laser ablation, laser cleaning, non-contact cleaning,
-  pulsed fiber laser, surface contamination removal, industrial laser parameters,
-  corrosion removal, surface restoration
-name: Hastelloy
+title: Laser Cleaning Hastelloy Alloys - Technical Guide for Optimal Processing
+headline: Comprehensive technical guide for laser cleaning Hastelloy nickel-based
+  superalloys
+environmentalImpact:
+- benefit: Chemical Solvent Elimination
+  description: Eliminates use of hazardous acids and solvents traditionally used for
+    Hastelloy cleaning
+- benefit: Waste Reduction
+  description: Produces minimal waste compared to chemical and abrasive cleaning methods
+- benefit: Energy Efficiency
+  description: Requires 60% less energy than thermal cleaning processes for high-temperature
+    alloys
 outcomes:
 - metric: Achieves ASTM B912 level for passive surface conditions
   result: Surface Cleanliness
@@ -66,6 +72,9 @@ outcomes:
   result: Material Preservation
 - metric: 1-3 m²/hour cleaning rate depending on contamination severity
   result: Processing Speed
+keywords: hastelloy, nickel alloy, laser ablation, laser cleaning, non-contact cleaning,
+  pulsed fiber laser, surface contamination removal, industrial laser parameters,
+  corrosion removal, surface restoration
 prompt_chain_verification:
   ai_detection_config_loaded: true
   author_id: 1
@@ -77,6 +86,7 @@ prompt_chain_verification:
   persona_country: Taiwan
   prompt_components_integrated: 4
   verification_timestamp: '2025-09-16T22:07:00Z'
+category: metal
 properties:
   chemicalFormula: Ni-Cr-Mo-W-Fe
   density: 8.69 g/cm³
@@ -116,16 +126,6 @@ properties:
   thermalPercentile: 0.7
   wavelength: 1064nm
   youngsModulus: 205 GPa
-regulatoryStandards: ASTM B575, ASTM B574, ASME SB575, NACE MR0175
-technicalSpecifications:
-  fluenceRange: 0.5–8.0 J/cm²
-  powerRange: 20-500W
-  pulseDuration: 10-200ns
-  repetitionRate: 10-200kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.05-2.0mm
-  wavelength: 1064nm (primary), 355nm (optional)
-title: Laser Cleaning Hastelloy Alloys - Technical Guide for Optimal Processing
 ---
 
 # Version Information

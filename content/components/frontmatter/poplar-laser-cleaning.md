@@ -1,4 +1,5 @@
 ---
+name: Poplar
 applications:
 - detail: Gentle removal of surface dirt, stains, and old finishes from poplar wood
     components
@@ -6,6 +7,17 @@ applications:
 - detail: Non-invasive cleaning of historical artifacts and sculptures made from poplar
     wood
   industry: Cultural Heritage Restoration
+technicalSpecifications:
+  fluenceRange: 0.2–1.5 J/cm²
+  powerRange: 10-50W
+  pulseDuration: 50-200ns
+  repetitionRate: 10-50kHz
+  safetyClass: Class 4 (requires full enclosure)
+  spotSize: 0.5-3.0mm
+  wavelength: 1064nm (primary), 532nm (optional for delicate work)
+description: Technical overview of Poplar wood for laser cleaning applications, including
+  optimal low-fluence 1064nm wavelength interaction to avoid charring, and specialized
+  applications in wood restoration.
 author: Alessandro Moretti
 author_object:
   country: Italy
@@ -15,32 +27,20 @@ author_object:
   name: Alessandro Moretti
   sex: m
   title: Ph.D.
-category: wood
 chemicalProperties:
   formula: C6H10O5 (cellulose)
   materialType: Hardwood
   symbol: Poplar
-compatibility:
-- Wood Finishes
-- Wood Stains
-- Wood Glues
 composition:
 - Cellulose (C6H10O5) 45-50%
 - Hemicellulose 25-30%
 - Lignin 20-25%
 - Extractives 1-3%
-description: Technical overview of Poplar wood for laser cleaning applications, including
-  optimal low-fluence 1064nm wavelength interaction to avoid charring, and specialized
-  applications in wood restoration.
-environmentalImpact:
-- benefit: Chemical Solvent Elimination
-  description: Eliminates need for harsh chemical strippers and solvents in wood refinishing
-- benefit: Waste Reduction
-  description: Produces minimal waste compared to sanding and chemical methods
-- benefit: Energy Efficiency
-  description: Consumes 60% less energy than thermal wood stripping processes
-headline: Comprehensive technical guide for laser cleaning poplar wood without thermal
-  damage
+compatibility:
+- Wood Finishes
+- Wood Stains
+- Wood Glues
+regulatoryStandards: ISO 13061, ASTM D143, EN 350
 images:
   hero:
     alt: Poplar surface undergoing laser cleaning showing precise contamination removal
@@ -49,10 +49,16 @@ images:
     alt: Microscopic view of Poplar surface after laser cleaning showing detailed
       surface structure
     url: /images/poplar-laser-cleaning-micro.jpg
-keywords: poplar, poplar wood, laser ablation, laser cleaning, wood restoration, non-contact
-  cleaning, pulsed fiber laser, surface contamination removal, wood processing, cultural
-  heritage
-name: Poplar
+title: Laser Cleaning Poplar Wood - Technical Guide for Optimal Processing
+headline: Comprehensive technical guide for laser cleaning poplar wood without thermal
+  damage
+environmentalImpact:
+- benefit: Chemical Solvent Elimination
+  description: Eliminates need for harsh chemical strippers and solvents in wood refinishing
+- benefit: Waste Reduction
+  description: Produces minimal waste compared to sanding and chemical methods
+- benefit: Energy Efficiency
+  description: Consumes 60% less energy than thermal wood stripping processes
 outcomes:
 - metric: Complete removal of surface contaminants without wood fiber damage
   result: Surface Cleanliness
@@ -60,6 +66,9 @@ outcomes:
   result: Material Removal Precision
 - metric: 0.5-2 m²/hour cleaning rate depending on contamination type
   result: Processing Speed
+keywords: poplar, poplar wood, laser ablation, laser cleaning, wood restoration, non-contact
+  cleaning, pulsed fiber laser, surface contamination removal, wood processing, cultural
+  heritage
 prompt_chain_verification:
   ai_detection_config_loaded: true
   author_id: 2
@@ -71,6 +80,7 @@ prompt_chain_verification:
   persona_country: Italy
   prompt_components_integrated: 4
   verification_timestamp: '2025-09-16T22:58:36Z'
+category: wood
 properties:
   charringMax: 300°C
   charringMin: 150°C
@@ -112,16 +122,6 @@ properties:
   thermalPercentile: 22.2
   wavelength: 1064nm
   youngsModulus: 8.0 GPa
-regulatoryStandards: ISO 13061, ASTM D143, EN 350
-technicalSpecifications:
-  fluenceRange: 0.2–1.5 J/cm²
-  powerRange: 10-50W
-  pulseDuration: 50-200ns
-  repetitionRate: 10-50kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.5-3.0mm
-  wavelength: 1064nm (primary), 532nm (optional for delicate work)
-title: Laser Cleaning Poplar Wood - Technical Guide for Optimal Processing
 ---
 
 # Version Information

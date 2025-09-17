@@ -1,4 +1,5 @@
 ---
+name: Magnesium
 applications:
 - detail: Cleaning of magnesium alloy castings and components prior to welding or
     coating
@@ -6,6 +7,17 @@ applications:
 - detail: Removal of oxides and contaminants from magnesium structural components
     and housings
   industry: Aerospace
+technicalSpecifications:
+  fluenceRange: 0.5–2.0 J/cm²
+  powerRange: 20-100W
+  pulseDuration: 10-50ns
+  repetitionRate: 20-80kHz
+  safetyClass: Class 4 (requires full enclosure)
+  spotSize: 0.1-0.8mm
+  wavelength: 1064nm (primary), 355nm (optional)
+description: Technical overview of Magnesium, Mg, for laser cleaning applications,
+  including optimal 1064nm wavelength interaction, and industrial applications in
+  surface preparation.
 author: Todd Dunning
 author_object:
   country: United States (California)
@@ -15,31 +27,20 @@ author_object:
   name: Todd Dunning
   sex: m
   title: MA
-category: metal
 chemicalProperties:
   formula: Mg
   materialType: metal
   symbol: Mg
-compatibility:
-- Aluminum Alloys
-- Titanium Alloys
-- Stainless Steel
 composition:
 - Magnesium (Mg) 90-99%
 - Aluminum (Al) 3-9%
 - Zinc (Zn) 0.5-3%
 - Manganese (Mn) 0.1-0.5%
-description: Technical overview of Magnesium, Mg, for laser cleaning applications,
-  including optimal 1064nm wavelength interaction, and industrial applications in
-  surface preparation.
-environmentalImpact:
-- benefit: Chemical Solvent Elimination
-  description: Eliminates use of chromate conversion coatings and acid treatments
-- benefit: Waste Reduction
-  description: Produces minimal waste compared to chemical cleaning methods
-- benefit: Energy Efficiency
-  description: Low power consumption with precise energy delivery
-headline: Comprehensive technical guide for laser cleaning magnesium alloys
+compatibility:
+- Aluminum Alloys
+- Titanium Alloys
+- Stainless Steel
+regulatoryStandards: ASTM B93, ASTM B107, ISO 16220
 images:
   hero:
     alt: Magnesium surface undergoing laser cleaning showing precise contamination
@@ -49,10 +50,15 @@ images:
     alt: Microscopic view of Magnesium surface after laser cleaning showing detailed
       surface structure
     url: /images/magnesium-laser-cleaning-micro.jpg
-keywords: magnesium, magnesium alloy, laser ablation, laser cleaning, non-contact
-  cleaning, pulsed fiber laser, surface oxide removal, industrial laser parameters,
-  thermal processing, surface restoration
-name: Magnesium
+title: Laser Cleaning Magnesium - Technical Guide for Optimal Processing
+headline: Comprehensive technical guide for laser cleaning magnesium alloys
+environmentalImpact:
+- benefit: Chemical Solvent Elimination
+  description: Eliminates use of chromate conversion coatings and acid treatments
+- benefit: Waste Reduction
+  description: Produces minimal waste compared to chemical cleaning methods
+- benefit: Energy Efficiency
+  description: Low power consumption with precise energy delivery
 outcomes:
 - metric: Achieves ISO 8501-1 Sa 2.5 cleanliness standard
   result: Surface Cleanliness Level
@@ -60,6 +66,9 @@ outcomes:
   result: Material Removal Precision
 - metric: 1-3 m²/hour cleaning rate depending on oxide thickness
   result: Processing Speed
+keywords: magnesium, magnesium alloy, laser ablation, laser cleaning, non-contact
+  cleaning, pulsed fiber laser, surface oxide removal, industrial laser parameters,
+  thermal processing, surface restoration
 prompt_chain_verification:
   ai_detection_config_loaded: true
   author_id: 4
@@ -71,6 +80,7 @@ prompt_chain_verification:
   persona_country: United States (California)
   prompt_components_integrated: 4
   verification_timestamp: '2025-09-16T23:22:29Z'
+category: metal
 properties:
   chemicalFormula: Mg
   density: 1.74 g/cm³
@@ -110,16 +120,6 @@ properties:
   thermalPercentile: 35.2
   wavelength: 1064nm
   youngsModulus: 45 GPa
-regulatoryStandards: ASTM B93, ASTM B107, ISO 16220
-technicalSpecifications:
-  fluenceRange: 0.5–2.0 J/cm²
-  powerRange: 20-100W
-  pulseDuration: 10-50ns
-  repetitionRate: 20-80kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.1-0.8mm
-  wavelength: 1064nm (primary), 355nm (optional)
-title: Laser Cleaning Magnesium - Technical Guide for Optimal Processing
 ---
 
 # Version Information

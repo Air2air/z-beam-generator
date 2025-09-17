@@ -1,4 +1,5 @@
 ---
+name: Birch
 applications:
 - detail: Removal of surface stains, old finishes, and biological growth from birch
     wood
@@ -6,6 +7,17 @@ applications:
 - detail: Gentle cleaning of birch artifacts and historical objects without damaging
     the wood grain
   industry: Cultural Heritage Restoration
+technicalSpecifications:
+  fluenceRange: 0.5–2.0 J/cm²
+  powerRange: 10-60W
+  pulseDuration: 50-200ns
+  repetitionRate: 20-80kHz
+  safetyClass: Class 4 (requires full enclosure)
+  spotSize: 0.1-2.0mm
+  wavelength: 1064nm (primary), 355nm (optional for delicate work)
+description: Technical overview of Birch wood for laser cleaning applications, including
+  optimal wavelength interaction for lignin and cellulose ablation, and industrial
+  applications in surface preparation.
 author: Yi-Chun Lin
 author_object:
   country: Taiwan
@@ -15,23 +27,30 @@ author_object:
   name: Yi-Chun Lin
   sex: f
   title: Ph.D.
-category: wood
 chemicalProperties:
   formula: C6H10O5 (cellulose)
   materialType: Hardwood
   symbol: Birch
-compatibility:
-- Solid Wood Surfaces
-- Veneers
-- Plywood
 composition:
 - Cellulose 40-45%
 - Hemicellulose 25-35%
 - Lignin 18-25%
 - Extractives 1-3%
-description: Technical overview of Birch wood for laser cleaning applications, including
-  optimal wavelength interaction for lignin and cellulose ablation, and industrial
-  applications in surface preparation.
+compatibility:
+- Solid Wood Surfaces
+- Veneers
+- Plywood
+regulatoryStandards: ISO 13061, ASTM D2395, IEC 60825-1
+images:
+  hero:
+    alt: Birch surface undergoing laser cleaning showing precise contamination removal
+    url: /images/birch-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Birch surface after laser cleaning showing detailed surface
+      structure
+    url: /images/birch-laser-cleaning-micro.jpg
+title: Laser Cleaning Birch Wood - Technical Guide for Optimal Processing
+headline: Comprehensive technical guide for laser cleaning birch wood surfaces
 environmentalImpact:
 - benefit: Chemical Solvent Elimination
   description: Reduces chemical usage by 100% compared to traditional solvent stripping
@@ -41,19 +60,6 @@ environmentalImpact:
 - benefit: Waste Reduction
   description: Produces minimal waste as contaminants are vaporized rather than washed
     away
-headline: Comprehensive technical guide for laser cleaning birch wood surfaces
-images:
-  hero:
-    alt: Birch surface undergoing laser cleaning showing precise contamination removal
-    url: /images/birch-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Birch surface after laser cleaning showing detailed surface
-      structure
-    url: /images/birch-laser-cleaning-micro.jpg
-keywords: birch, birch wood, laser ablation, laser cleaning, non-contact cleaning,
-  pulsed fiber laser, wood surface cleaning, industrial laser parameters, wood restoration,
-  cultural heritage
-name: Birch
 outcomes:
 - metric: Achieves complete removal of surface contaminants without wood damage
   result: Surface Cleanliness Level
@@ -61,6 +67,9 @@ outcomes:
   result: Material Removal Precision
 - metric: 0.5-2 m²/hour cleaning rate depending on contamination type and severity
   result: Processing Speed
+keywords: birch, birch wood, laser ablation, laser cleaning, non-contact cleaning,
+  pulsed fiber laser, wood surface cleaning, industrial laser parameters, wood restoration,
+  cultural heritage
 prompt_chain_verification:
   ai_detection_config_loaded: true
   author_id: 1
@@ -72,6 +81,7 @@ prompt_chain_verification:
   persona_country: Taiwan
   prompt_components_integrated: 4
   verification_timestamp: '2025-09-16T22:49:02Z'
+category: wood
 properties:
   charPoint: 200-300°C
   chemicalFormula: C6H10O5 (cellulose)
@@ -111,16 +121,6 @@ properties:
   thermalPercentile: 36.1
   wavelength: 1064nm
   youngsModulus: 14 GPa
-regulatoryStandards: ISO 13061, ASTM D2395, IEC 60825-1
-technicalSpecifications:
-  fluenceRange: 0.5–2.0 J/cm²
-  powerRange: 10-60W
-  pulseDuration: 50-200ns
-  repetitionRate: 20-80kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.1-2.0mm
-  wavelength: 1064nm (primary), 355nm (optional for delicate work)
-title: Laser Cleaning Birch Wood - Technical Guide for Optimal Processing
 ---
 
 # Version Information

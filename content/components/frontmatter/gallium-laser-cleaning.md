@@ -1,4 +1,5 @@
 ---
+name: Gallium
 applications:
 - detail: Removal of surface oxides and contaminants from Gallium Arsenide (GaAs)
     wafers and substrates
@@ -6,6 +7,17 @@ applications:
 - detail: Precision cleaning of Gallium Nitride (GaN) components for high-electron-mobility
     transistors
   industry: Semiconductor
+technicalSpecifications:
+  fluenceRange: 0.5–2.0 J/cm²
+  powerRange: 10-50W
+  pulseDuration: 10-50ns
+  repetitionRate: 50-200kHz
+  safetyClass: Class 4 (requires full enclosure)
+  spotSize: 0.05-0.5mm
+  wavelength: 1064nm (primary), 355nm (optional)
+description: Technical overview of Gallium and its compounds for laser cleaning applications,
+  including optimal wavelength interaction for low melting point materials, and industrial
+  applications in semiconductor manufacturing.
 author: Ikmanda Roswati
 author_object:
   country: Indonesia
@@ -15,32 +27,19 @@ author_object:
   name: Ikmanda Roswati
   sex: m
   title: Ph.D.
-category: metal
 chemicalProperties:
   formula: Ga
   materialType: metal
   symbol: Ga
+composition:
+- Gallium (Ga) 99.999%
+- Trace elements (Si, Fe, Zn, Mg)
 compatibility:
 - Gallium Arsenide (GaAs)
 - Gallium Nitride (GaN)
 - Silicon Wafers
 - Sapphire Substrates
-composition:
-- Gallium (Ga) 99.999%
-- Trace elements (Si, Fe, Zn, Mg)
-description: Technical overview of Gallium and its compounds for laser cleaning applications,
-  including optimal wavelength interaction for low melting point materials, and industrial
-  applications in semiconductor manufacturing.
-environmentalImpact:
-- benefit: Chemical Solvent Elimination
-  description: Eliminates use of hazardous solvents like acetone and isopropanol in
-    wafer cleaning
-- benefit: Water Conservation
-  description: Reduces ultra-pure water consumption by 95% compared to RCA cleaning
-- benefit: Energy Efficiency
-  description: Consumes 60% less energy than plasma cleaning processes
-headline: Precision laser cleaning technical guide for Gallium and its semiconductor
-  compounds
+regulatoryStandards: ISO 14644-1, SEMI S2, IEC 60825-1
 images:
   hero:
     alt: Gallium surface undergoing laser cleaning showing precise contamination removal
@@ -49,10 +48,18 @@ images:
     alt: Microscopic view of Gallium surface after laser cleaning showing detailed
       surface structure
     url: /images/gallium-laser-cleaning-micro.jpg
-keywords: gallium, gallium arsenide, GaAs, gallium nitride, GaN, laser ablation, laser
-  cleaning, semiconductor cleaning, non-contact cleaning, pulsed laser, surface contamination
-  removal, industrial laser parameters
-name: Gallium
+title: Laser Cleaning Gallium and Gallium Compounds - Technical Guide for Semiconductor
+  Applications
+headline: Precision laser cleaning technical guide for Gallium and its semiconductor
+  compounds
+environmentalImpact:
+- benefit: Chemical Solvent Elimination
+  description: Eliminates use of hazardous solvents like acetone and isopropanol in
+    wafer cleaning
+- benefit: Water Conservation
+  description: Reduces ultra-pure water consumption by 95% compared to RCA cleaning
+- benefit: Energy Efficiency
+  description: Consumes 60% less energy than plasma cleaning processes
 outcomes:
 - metric: Achieves SEMI Standard M1-0215 cleanliness specification
   result: Surface Cleanliness Level
@@ -60,6 +67,9 @@ outcomes:
   result: Material Removal Precision
 - metric: 5-15 wafers/hour cleaning rate depending on contamination level
   result: Processing Speed
+keywords: gallium, gallium arsenide, GaAs, gallium nitride, GaN, laser ablation, laser
+  cleaning, semiconductor cleaning, non-contact cleaning, pulsed laser, surface contamination
+  removal, industrial laser parameters
 prompt_chain_verification:
   ai_detection_config_loaded: true
   author_id: 3
@@ -71,6 +81,7 @@ prompt_chain_verification:
   persona_country: Indonesia
   prompt_components_integrated: 4
   verification_timestamp: '2025-09-16T22:04:24Z'
+category: metal
 properties:
   chemicalFormula: Ga
   density: 5.91 g/cm³
@@ -110,17 +121,6 @@ properties:
   thermalPercentile: 7.7
   wavelength: 1064nm
   youngsModulus: 9.8 GPa
-regulatoryStandards: ISO 14644-1, SEMI S2, IEC 60825-1
-technicalSpecifications:
-  fluenceRange: 0.5–2.0 J/cm²
-  powerRange: 10-50W
-  pulseDuration: 10-50ns
-  repetitionRate: 50-200kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.05-0.5mm
-  wavelength: 1064nm (primary), 355nm (optional)
-title: Laser Cleaning Gallium and Gallium Compounds - Technical Guide for Semiconductor
-  Applications
 ---
 
 # Version Information

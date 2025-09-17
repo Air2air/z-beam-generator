@@ -1,4 +1,5 @@
 ---
+name: Steel
 applications:
 - detail: Removal of rust, scale, and coatings from steel components and body panels
   industry: Automotive Manufacturing
@@ -7,6 +8,17 @@ applications:
 - detail: Gentle removal of centuries of corrosion from historical steel artifacts
     without damage
   industry: Historical Restoration
+technicalSpecifications:
+  fluenceRange: 0.5–5.0 J/cm²
+  powerRange: 100-1000W
+  pulseDuration: 10-200ns
+  repetitionRate: 20-300kHz
+  safetyClass: Class 4 (requires full enclosure and operator protection)
+  spotSize: 0.1-2.0mm
+  wavelength: 1064nm (primary), 532nm (optional)
+description: Technical overview of carbon steel (Fe-C) for laser cleaning applications,
+  focusing on optimal 1064nm wavelength interaction with iron oxides and industrial
+  surface preparation techniques.
 author: Ikmanda Roswati
 author_object:
   country: Indonesia
@@ -16,33 +28,22 @@ author_object:
   name: Ikmanda Roswati
   sex: m
   title: Ph.D.
-category: metal
 chemicalProperties:
   formula: Fe-C
   materialType: ferrous metal
   symbol: Fe
-compatibility:
-- Stainless Steel
-- Cast Iron
-- Carbon Steel Alloys
-- Tool Steel
 composition:
 - 'Iron (Fe): 98.0-99.5%'
 - 'Carbon (C): 0.05-2.1%'
 - 'Manganese (Mn): 0.3-1.0%'
 - 'Silicon (Si): 0.1-0.5%'
 - Other trace elements
-description: Technical overview of carbon steel (Fe-C) for laser cleaning applications,
-  focusing on optimal 1064nm wavelength interaction with iron oxides and industrial
-  surface preparation techniques.
-environmentalImpact:
-- benefit: Chemical Solvent Elimination
-  description: Eliminates use of hazardous chemicals like acids and solvents for derusting
-- benefit: Waste Reduction
-  description: Produces minimal waste compared to abrasive blasting methods
-- benefit: Energy Efficiency
-  description: Consumes 60% less energy than traditional mechanical cleaning methods
-headline: Comprehensive technical guide for laser cleaning carbon steel surfaces
+compatibility:
+- Stainless Steel
+- Cast Iron
+- Carbon Steel Alloys
+- Tool Steel
+regulatoryStandards: ISO 8501-1, ASTM D4417, IEC 60825-1
 images:
   hero:
     alt: Steel surface undergoing laser cleaning showing precise contamination removal
@@ -51,10 +52,15 @@ images:
     alt: Microscopic view of Steel surface after laser cleaning showing detailed surface
       structure
     url: /images/steel-laser-cleaning-micro.jpg
-keywords: steel cleaning, carbon steel, laser rust removal, oxide removal, non-contact
-  cleaning, pulsed fiber laser, surface decontamination, industrial laser parameters,
-  corrosion removal
-name: Steel
+title: Laser Cleaning Steel - Technical Guide for Optimal Rust and Contaminant Removal
+headline: Comprehensive technical guide for laser cleaning carbon steel surfaces
+environmentalImpact:
+- benefit: Chemical Solvent Elimination
+  description: Eliminates use of hazardous chemicals like acids and solvents for derusting
+- benefit: Waste Reduction
+  description: Produces minimal waste compared to abrasive blasting methods
+- benefit: Energy Efficiency
+  description: Consumes 60% less energy than traditional mechanical cleaning methods
 outcomes:
 - metric: Achieves SA 2.5 to SA 3.0 surface preparation standard
   result: Surface Cleanliness Level
@@ -62,6 +68,9 @@ outcomes:
   result: Material Removal Precision
 - metric: 3-8 m²/hour cleaning rate depending on corrosion thickness
   result: Processing Speed
+keywords: steel cleaning, carbon steel, laser rust removal, oxide removal, non-contact
+  cleaning, pulsed fiber laser, surface decontamination, industrial laser parameters,
+  corrosion removal
 prompt_chain_verification:
   ai_detection_config_loaded: true
   author_id: 3
@@ -73,6 +82,7 @@ prompt_chain_verification:
   persona_country: Indonesia
   prompt_components_integrated: 4
   verification_timestamp: '2025-09-16T22:21:08Z'
+category: metal
 properties:
   chemicalFormula: Fe-C
   density: 7.85 g/cm³
@@ -112,16 +122,6 @@ properties:
   thermalPercentile: 10.0
   wavelength: 1064nm
   youngsModulus: 200 GPa
-regulatoryStandards: ISO 8501-1, ASTM D4417, IEC 60825-1
-technicalSpecifications:
-  fluenceRange: 0.5–5.0 J/cm²
-  powerRange: 100-1000W
-  pulseDuration: 10-200ns
-  repetitionRate: 20-300kHz
-  safetyClass: Class 4 (requires full enclosure and operator protection)
-  spotSize: 0.1-2.0mm
-  wavelength: 1064nm (primary), 532nm (optional)
-title: Laser Cleaning Steel - Technical Guide for Optimal Rust and Contaminant Removal
 ---
 
 # Version Information

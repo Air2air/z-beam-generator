@@ -149,6 +149,44 @@ Include appropriate technical details about laser cleaning parameters, applicati
                 schema_fields=schema_fields,
             )
 
+    def _apply_standardized_naming(self, material_name_lower: str) -> str:
+        """Apply naming standardization aligned with materials.yaml single source of truth"""
+        # Basic kebab-case conversion
+        slug = material_name_lower.replace(" ", "-")
+        
+        # Apply standardizations aligned with materials.yaml database
+        naming_mappings = {
+            # Hyphenation standardizations
+            "terra-cotta": "terracotta",
+            # Composite material naming (align with materials.yaml authority)
+            "fiber-reinforced-polymer": "fiber-reinforced-polyurethane-frpu",
+            "carbon-fiber-reinforced-polymer": "carbon-fiber-reinforced-polymer",
+            "glass-fiber-reinforced-polymers": "glass-fiber-reinforced-polymers-gfrp",
+            "metal-matrix-composites": "metal-matrix-composites-mmcs",
+            "ceramic-matrix-composites": "ceramic-matrix-composites-cmcs",
+            # Wood materials (remove any wood- prefix as materials.yaml defines them without prefix)
+            "wood-oak": "oak",
+            "wood-pine": "pine",
+            "wood-maple": "maple",
+            # Steel standardization (materials.yaml has Steel and Stainless Steel)
+            "stainless-steel": "stainless-steel",
+            "carbon-steel": "steel",  # Consolidate to main steel type per materials.yaml
+            "galvanized-steel": "steel",
+            "tool-steel": "steel",
+            # Standardize common variants
+            "aluminium": "aluminum",
+        }
+        
+        # Apply standardization if material matches known mappings
+        if slug in naming_mappings:
+            slug = naming_mappings[slug]
+            
+        # Remove wood- prefix (wood materials are defined without prefix in materials.yaml)
+        if slug.startswith("wood-"):
+            slug = slug[5:]  # Remove "wood-" prefix
+            
+        return slug
+
     def _extract_from_frontmatter(
         self, material_name: str, frontmatter_data: Dict
     ) -> str:
@@ -199,16 +237,19 @@ Include appropriate technical details about laser cleaning parameters, applicati
         meta_tags.append({"name": "msapplication-TileColor", "content": "#2563eb"})
         meta_tags.append({"name": "msapplication-config", "content": "/browserconfig.xml"})
         
+        # Apply standardized naming for image paths
+        material_slug = self._apply_standardized_naming(material_name.lower())
+        
         # Create opengraph list
         opengraph = []
         opengraph.append({"property": "og:title", "content": og_title})
         opengraph.append({"property": "og:description", "content": description})
         opengraph.append({"property": "og:type", "content": "article"})
-        opengraph.append({"property": "og:image", "content": f"/images/{material_name.lower()}-laser-cleaning-hero.jpg"})
+        opengraph.append({"property": "og:image", "content": f"/images/{material_slug}-laser-cleaning-hero.jpg"})
         opengraph.append({"property": "og:image:alt", "content": f"{material_name} laser cleaning process showing precision {category} restoration and surface treatment"})
         opengraph.append({"property": "og:image:width", "content": "1200"})
         opengraph.append({"property": "og:image:height", "content": "630"})
-        opengraph.append({"property": "og:url", "content": f"https://z-beam.com/{material_name.lower()}-laser-cleaning"})
+        opengraph.append({"property": "og:url", "content": f"https://z-beam.com/{material_slug}-laser-cleaning"})
         opengraph.append({"property": "og:site_name", "content": "Z-Beam Laser Processing Guide"})
         opengraph.append({"property": "og:locale", "content": "en_US"})
         opengraph.append({"property": "article:author", "content": author})
@@ -220,13 +261,13 @@ Include appropriate technical details about laser cleaning parameters, applicati
         twitter.append({"name": "twitter:card", "content": "summary_large_image"})
         twitter.append({"name": "twitter:title", "content": twitter_title})
         twitter.append({"name": "twitter:description", "content": description})
-        twitter.append({"name": "twitter:image", "content": f"/images/{material_name.lower()}-laser-cleaning-hero.jpg"})
+        twitter.append({"name": "twitter:image", "content": f"/images/{material_slug}-laser-cleaning-hero.jpg"})
         twitter.append({"name": "twitter:image:alt", "content": f"{material_name} {category} laser cleaning technical guide"})
         twitter.append({"name": "twitter:site", "content": "@z-beamTech"})
         twitter.append({"name": "twitter:creator", "content": "@z-beamTech"})
         
         # Create canonical and alternate URLs
-        canonical = f"https://z-beam.com/{material_name.lower()}-laser-cleaning"
+        canonical = f"https://z-beam.com/{material_slug}-laser-cleaning"
         alternate = [{"hreflang": "en", "href": canonical}]
         
         # Build the complete meta tags structure

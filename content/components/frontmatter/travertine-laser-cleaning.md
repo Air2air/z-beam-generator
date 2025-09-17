@@ -1,4 +1,5 @@
 ---
+name: Travertine
 applications:
 - detail: Removal of biological growth, pollution deposits, and surface stains from
     travertine facades and monuments
@@ -6,6 +7,17 @@ applications:
 - detail: Gentle cleaning of delicate travertine sculptures and historical artifacts
     without abrasive contact
   industry: Heritage Conservation
+technicalSpecifications:
+  fluenceRange: 0.5–3.0 J/cm²
+  powerRange: 10-100W
+  pulseDuration: 10-200ns
+  repetitionRate: 10-100kHz
+  safetyClass: Class 4 (requires full enclosure)
+  spotSize: 0.1-2.0mm
+  wavelength: 1064nm (primary), 532nm (optional)
+description: Technical overview of Travertine, CaCO3, for laser cleaning applications,
+  including optimal 1064nm wavelength interaction, and industrial applications in
+  surface preparation.
 author: Yi-Chun Lin
 author_object:
   country: Taiwan
@@ -15,30 +27,18 @@ author_object:
   name: Yi-Chun Lin
   sex: f
   title: Ph.D.
-category: stone
 chemicalProperties:
   formula: CaCO3
   materialType: stone
   symbol: Travertine
+composition:
+- Calcium Carbonate (CaCO3) 94-99%
+- Iron Oxides, Clay, Organic Matter 1-6%
 compatibility:
 - Marble
 - Limestone
 - Sandstone
-composition:
-- Calcium Carbonate (CaCO3) 94-99%
-- Iron Oxides, Clay, Organic Matter 1-6%
-description: Technical overview of Travertine, CaCO3, for laser cleaning applications,
-  including optimal 1064nm wavelength interaction, and industrial applications in
-  surface preparation.
-environmentalImpact:
-- benefit: Chemical Solvent Elimination
-  description: Reduces chemical usage by 100% compared to traditional solvent cleaning
-    methods
-- benefit: Water Conservation
-  description: Saves approximately 2000 liters of water per month in restoration applications
-- benefit: Energy Efficiency
-  description: Consumes 60% less energy than abrasive blasting processes
-headline: Comprehensive technical guide for laser cleaning stone travertine
+regulatoryStandards: ISO 18562, ASTM F2100, IEC 60601-1
 images:
   hero:
     alt: Travertine surface undergoing laser cleaning showing precise contamination
@@ -48,10 +48,16 @@ images:
     alt: Microscopic view of Travertine surface after laser cleaning showing detailed
       surface structure
     url: /images/travertine-laser-cleaning-micro.jpg
-keywords: travertine, travertine stone, laser ablation, laser cleaning, non-contact
-  cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters,
-  thermal processing, surface restoration
-name: Travertine
+title: Laser Cleaning Travertine - Technical Guide for Optimal Processing
+headline: Comprehensive technical guide for laser cleaning stone travertine
+environmentalImpact:
+- benefit: Chemical Solvent Elimination
+  description: Reduces chemical usage by 100% compared to traditional solvent cleaning
+    methods
+- benefit: Water Conservation
+  description: Saves approximately 2000 liters of water per month in restoration applications
+- benefit: Energy Efficiency
+  description: Consumes 60% less energy than abrasive blasting processes
 outcomes:
 - metric: Achieves visual cleanliness without surface etching or damage
   result: Surface Cleanliness Level
@@ -59,6 +65,9 @@ outcomes:
   result: Material Removal Precision
 - metric: 0.5-2 m²/hour cleaning rate depending on contamination type and density
   result: Processing Speed
+keywords: travertine, travertine stone, laser ablation, laser cleaning, non-contact
+  cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters,
+  thermal processing, surface restoration
 prompt_chain_verification:
   ai_detection_config_loaded: true
   author_id: 1
@@ -70,6 +79,7 @@ prompt_chain_verification:
   persona_country: Taiwan
   prompt_components_integrated: 4
   verification_timestamp: '2025-09-16T22:45:42Z'
+category: stone
 properties:
   chemicalFormula: CaCO3
   density: 2.3-2.7 g/cm³
@@ -109,16 +119,6 @@ properties:
   thermalPercentile: 22.8
   wavelength: 1064nm
   youngsModulus: 40-70 GPa
-regulatoryStandards: ISO 18562, ASTM F2100, IEC 60601-1
-technicalSpecifications:
-  fluenceRange: 0.5–3.0 J/cm²
-  powerRange: 10-100W
-  pulseDuration: 10-200ns
-  repetitionRate: 10-100kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.1-2.0mm
-  wavelength: 1064nm (primary), 532nm (optional)
-title: Laser Cleaning Travertine - Technical Guide for Optimal Processing
 ---
 
 # Version Information

@@ -1,4 +1,5 @@
 ---
+name: Teak
 applications:
 - detail: Gentle removal of surface dirt, old finishes, and biological growth from
     teak wood
@@ -6,6 +7,17 @@ applications:
 - detail: Restoration of teak decking and fixtures without damaging the wood's natural
     oils
   industry: Marine & Outdoor
+technicalSpecifications:
+  fluenceRange: 0.5–2.0 J/cm²
+  powerRange: 20-80W
+  pulseDuration: 50-200ns
+  repetitionRate: 10-50kHz
+  safetyClass: Class 4 (requires full enclosure)
+  spotSize: 0.5-3.0mm
+  wavelength: 1064nm (primary), 355nm (optional for delicate work)
+description: Technical overview of Teak wood for laser cleaning applications, including
+  optimal low-fluence parameters to preserve the wood's natural integrity and silica
+  content.
 author: Ikmanda Roswati
 author_object:
   country: Indonesia
@@ -15,31 +27,20 @@ author_object:
   name: Ikmanda Roswati
   sex: m
   title: Ph.D.
-category: wood
 chemicalProperties:
   formula: C6H10O5 (cellulose/lignin)
   materialType: Hardwood
   symbol: Teak
-compatibility:
-- Low-Fluence Laser Cleaning
-- Chemical-Free Restoration
-- Outdoor Weathering
 composition:
 - Cellulose 40-50%
 - Lignin 30-40%
 - Silica 0.5-1.5%
 - Natural Oils 2-5%
-description: Technical overview of Teak wood for laser cleaning applications, including
-  optimal low-fluence parameters to preserve the wood's natural integrity and silica
-  content.
-environmentalImpact:
-- benefit: Chemical Solvent Elimination
-  description: Eliminates need for harsh chemical strippers and cleaners
-- benefit: Water Conservation
-  description: 100% dry process with zero water consumption
-- benefit: Waste Reduction
-  description: Produces only fine particulate waste, no liquid or chemical waste
-headline: Comprehensive technical guide for laser cleaning and restoring teak wood
+compatibility:
+- Low-Fluence Laser Cleaning
+- Chemical-Free Restoration
+- Outdoor Weathering
+regulatoryStandards: ISO 13061 (Wood physical properties), ASTM D1037 (Wood testing)
 images:
   hero:
     alt: Teak surface undergoing laser cleaning showing precise contamination removal
@@ -48,10 +49,15 @@ images:
     alt: Microscopic view of Teak surface after laser cleaning showing detailed surface
       structure
     url: /images/teak-laser-cleaning-micro.jpg
-keywords: teak, teak wood, laser ablation, laser cleaning, non-contact cleaning, wood
-  restoration, surface contamination removal, silica content, outdoor furniture, marine
-  wood
-name: Teak
+title: Laser Cleaning Teak Wood - Technical Guide for Optimal Restoration
+headline: Comprehensive technical guide for laser cleaning and restoring teak wood
+environmentalImpact:
+- benefit: Chemical Solvent Elimination
+  description: Eliminates need for harsh chemical strippers and cleaners
+- benefit: Water Conservation
+  description: 100% dry process with zero water consumption
+- benefit: Waste Reduction
+  description: Produces only fine particulate waste, no liquid or chemical waste
 outcomes:
 - metric: Complete removal of biological growth and surface contaminants
   result: Surface Cleanliness
@@ -59,6 +65,9 @@ outcomes:
   result: Material Preservation
 - metric: 1-3 m²/hour cleaning rate depending on contamination level
   result: Processing Speed
+keywords: teak, teak wood, laser ablation, laser cleaning, non-contact cleaning, wood
+  restoration, surface contamination removal, silica content, outdoor furniture, marine
+  wood
 prompt_chain_verification:
   ai_detection_config_loaded: true
   author_id: 3
@@ -70,6 +79,7 @@ prompt_chain_verification:
   persona_country: Indonesia
   prompt_components_integrated: 4
   verification_timestamp: '2025-09-16T23:01:14Z'
+category: wood
 properties:
   chemicalFormula: C6H10O5 (cellulose/lignin)
   decompositionPoint: 200-300°C
@@ -108,16 +118,6 @@ properties:
   thermalPercentile: 22.2
   wavelength: 1064nm
   youngsModulus: 10.5 GPa
-regulatoryStandards: ISO 13061 (Wood physical properties), ASTM D1037 (Wood testing)
-technicalSpecifications:
-  fluenceRange: 0.5–2.0 J/cm²
-  powerRange: 20-80W
-  pulseDuration: 50-200ns
-  repetitionRate: 10-50kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.5-3.0mm
-  wavelength: 1064nm (primary), 355nm (optional for delicate work)
-title: Laser Cleaning Teak Wood - Technical Guide for Optimal Restoration
 ---
 
 # Version Information

@@ -1,10 +1,22 @@
 ---
+name: Phenolic Resin Composites
 applications:
 - detail: Removal of surface oxides and contaminants from printed circuit boards and
     composite substrates
   industry: Electronics Manufacturing
 - detail: Cleaning of thermal protection systems and composite structural components
   industry: Aerospace Components
+technicalSpecifications:
+  fluenceRange: 0.5–2.5 J/cm²
+  powerRange: 10-100W
+  pulseDuration: 50-200ns
+  repetitionRate: 10-50kHz
+  safetyClass: Class 4 (requires full enclosure)
+  spotSize: 0.1-2.0mm
+  wavelength: 1064nm (primary), 355nm (optional)
+description: Technical overview of Phenolic Resin Composites for laser cleaning applications,
+  including optimal wavelength interaction parameters for resin matrix and fiber reinforcement,
+  and industrial applications in surface preparation.
 author: Todd Dunning
 author_object:
   country: United States (California)
@@ -14,32 +26,19 @@ author_object:
   name: Todd Dunning
   sex: m
   title: MA
-category: composite
 chemicalProperties:
   formula: Phenolic-Carbon/Glass Fiber
   materialType: polymer composite
   symbol: PRC
-compatibility:
-- Carbon Fiber Composites
-- Glass Fiber Composites
-- Polymer Matrix Composites
 composition:
 - Phenolic Resin Matrix 40-60%
 - Carbon/Glass Fiber Reinforcement 40-60%
 - Additives and Fillers 2-5%
-description: Technical overview of Phenolic Resin Composites for laser cleaning applications,
-  including optimal wavelength interaction parameters for resin matrix and fiber reinforcement,
-  and industrial applications in surface preparation.
-environmentalImpact:
-- benefit: Chemical Solvent Elimination
-  description: Reduces VOC emissions by 100% compared to traditional solvent cleaning
-    methods
-- benefit: Waste Reduction
-  description: Eliminates abrasive media waste and solvent disposal requirements
-- benefit: Energy Efficiency
-  description: Consumes 60% less energy than mechanical abrasion processes
-headline: Comprehensive technical guide for laser cleaning phenolic resin composite
-  materials
+compatibility:
+- Carbon Fiber Composites
+- Glass Fiber Composites
+- Polymer Matrix Composites
+regulatoryStandards: ISO 14125, ASTM D3039, ASTM D256
 images:
   hero:
     alt: Phenolic Resin Composites surface undergoing laser cleaning showing precise
@@ -49,10 +48,17 @@ images:
     alt: Microscopic view of Phenolic Resin Composites surface after laser cleaning
       showing detailed surface structure
     url: /images/phenolic-resin-composites-laser-cleaning-micro.jpg
-keywords: phenolic resin composites, carbon phenolic, laser ablation, laser cleaning,
-  composite materials, non-contact cleaning, pulsed fiber laser, surface contamination
-  removal, industrial laser parameters, thermal processing
-name: Phenolic Resin Composites
+title: Laser Cleaning Phenolic Resin Composites - Technical Guide for Optimal Processing
+headline: Comprehensive technical guide for laser cleaning phenolic resin composite
+  materials
+environmentalImpact:
+- benefit: Chemical Solvent Elimination
+  description: Reduces VOC emissions by 100% compared to traditional solvent cleaning
+    methods
+- benefit: Waste Reduction
+  description: Eliminates abrasive media waste and solvent disposal requirements
+- benefit: Energy Efficiency
+  description: Consumes 60% less energy than mechanical abrasion processes
 outcomes:
 - metric: Achieves ISO 8501-1 Sa 2.5 cleanliness standard
   result: Surface Cleanliness Level
@@ -60,6 +66,9 @@ outcomes:
   result: Material Removal Precision
 - metric: 0.5-2 m²/hour cleaning rate depending on contamination level
   result: Processing Speed
+keywords: phenolic resin composites, carbon phenolic, laser ablation, laser cleaning,
+  composite materials, non-contact cleaning, pulsed fiber laser, surface contamination
+  removal, industrial laser parameters, thermal processing
 prompt_chain_verification:
   ai_detection_config_loaded: true
   author_id: 4
@@ -71,6 +80,7 @@ prompt_chain_verification:
   persona_country: United States (California)
   prompt_components_integrated: 4
   verification_timestamp: '2025-09-16T21:36:15Z'
+category: composite
 properties:
   chemicalFormula: Phenolic-Carbon/Glass Fiber
   conductivityMax: 50 W/m·K
@@ -112,16 +122,6 @@ properties:
   thermalPercentile: 0.4
   wavelength: 1064nm
   youngsModulus: 10-30 GPa
-regulatoryStandards: ISO 14125, ASTM D3039, ASTM D256
-technicalSpecifications:
-  fluenceRange: 0.5–2.5 J/cm²
-  powerRange: 10-100W
-  pulseDuration: 50-200ns
-  repetitionRate: 10-50kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.1-2.0mm
-  wavelength: 1064nm (primary), 355nm (optional)
-title: Laser Cleaning Phenolic Resin Composites - Technical Guide for Optimal Processing
 ---
 
 # Version Information

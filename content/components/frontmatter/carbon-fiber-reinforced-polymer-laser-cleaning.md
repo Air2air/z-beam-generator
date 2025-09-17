@@ -1,4 +1,5 @@
 ---
+name: Carbon Fiber Reinforced Polymer
 applications:
 - detail: Removal of release agents, mold residues, and surface contaminants from
     CFRP components
@@ -6,6 +7,17 @@ applications:
 - detail: Surface preparation for adhesive bonding and painting of carbon fiber composite
     parts
   industry: Automotive
+technicalSpecifications:
+  fluenceRange: 0.5–3.0 J/cm²
+  powerRange: 20-100W
+  pulseDuration: 10-200ns
+  repetitionRate: 10-500kHz
+  safetyClass: Class 4 (requires full enclosure)
+  spotSize: 0.1-2.0mm
+  wavelength: 1064nm (primary), 355nm (optional)
+description: Technical overview of Carbon Fiber Reinforced Polymer laser cleaning
+  applications, including optimal wavelength interaction with epoxy matrix and carbon
+  fibers, and industrial applications in composite manufacturing.
 author: Yi-Chun Lin
 author_object:
   country: Taiwan
@@ -15,30 +27,19 @@ author_object:
   name: Yi-Chun Lin
   sex: f
   title: Ph.D.
-category: composite
 chemicalProperties:
   formula: C-Polymer (Epoxy/Carbon Fiber)
   materialType: polymer composite
   symbol: CFRP
-compatibility:
-- Epoxy Resins
-- Carbon Fibers
-- Thermoplastic Matrices
 composition:
 - Carbon Fiber 50-70%
 - Epoxy Resin 30-50%
 - Additives <5%
-description: Technical overview of Carbon Fiber Reinforced Polymer laser cleaning
-  applications, including optimal wavelength interaction with epoxy matrix and carbon
-  fibers, and industrial applications in composite manufacturing.
-environmentalImpact:
-- benefit: Solvent-Free Processing
-  description: Eliminates VOC emissions from chemical cleaning solvents
-- benefit: Reduced Waste
-  description: Minimal waste generation compared to abrasive cleaning methods
-- benefit: Energy Efficient
-  description: Lower energy consumption than thermal decomposition methods
-headline: Advanced laser cleaning techniques for Carbon Fiber Reinforced Polymer composites
+compatibility:
+- Epoxy Resins
+- Carbon Fibers
+- Thermoplastic Matrices
+regulatoryStandards: ISO 13003, ASTM D3039, SACMA SRM 1R-94
 images:
   hero:
     alt: Carbon Fiber Reinforced Polymer surface undergoing laser cleaning showing
@@ -48,10 +49,16 @@ images:
     alt: Microscopic view of Carbon Fiber Reinforced Polymer surface after laser cleaning
       showing detailed surface structure
     url: /images/carbon-fiber-reinforced-polymer-laser-cleaning-micro.jpg
-keywords: carbon fiber reinforced polymer, CFRP, composite laser cleaning, epoxy removal,
-  surface preparation, non-destructive cleaning, aerospace composites, automotive
-  composites, laser ablation parameters
-name: Carbon Fiber Reinforced Polymer
+title: Laser Cleaning Carbon Fiber Reinforced Polymer - Technical Guide for Composite
+  Processing
+headline: Advanced laser cleaning techniques for Carbon Fiber Reinforced Polymer composites
+environmentalImpact:
+- benefit: Solvent-Free Processing
+  description: Eliminates VOC emissions from chemical cleaning solvents
+- benefit: Reduced Waste
+  description: Minimal waste generation compared to abrasive cleaning methods
+- benefit: Energy Efficient
+  description: Lower energy consumption than thermal decomposition methods
 outcomes:
 - metric: Achieves contact angle < 40° for improved adhesion
   result: Surface Cleanliness
@@ -59,6 +66,9 @@ outcomes:
   result: Fiber Preservation
 - metric: 0.5-2.0 m²/hour depending on contamination type and thickness
   result: Processing Rate
+keywords: carbon fiber reinforced polymer, CFRP, composite laser cleaning, epoxy removal,
+  surface preparation, non-destructive cleaning, aerospace composites, automotive
+  composites, laser ablation parameters
 prompt_chain_verification:
   ai_detection_config_loaded: true
   author_id: 1
@@ -70,6 +80,7 @@ prompt_chain_verification:
   persona_country: Taiwan
   prompt_components_integrated: 4
   verification_timestamp: '2025-09-16T21:32:45Z'
+category: composite
 properties:
   chemicalFormula: C-Polymer (Epoxy Matrix)
   decompositionTemperature: 300-400°C
@@ -106,17 +117,6 @@ properties:
   thermalPercentile: 1.5
   wavelength: 1064nm, 355nm
   youngsModulus: 70-150 GPa (fiber direction)
-regulatoryStandards: ISO 13003, ASTM D3039, SACMA SRM 1R-94
-technicalSpecifications:
-  fluenceRange: 0.5–3.0 J/cm²
-  powerRange: 20-100W
-  pulseDuration: 10-200ns
-  repetitionRate: 10-500kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.1-2.0mm
-  wavelength: 1064nm (primary), 355nm (optional)
-title: Laser Cleaning Carbon Fiber Reinforced Polymer - Technical Guide for Composite
-  Processing
 ---
 
 # Version Information

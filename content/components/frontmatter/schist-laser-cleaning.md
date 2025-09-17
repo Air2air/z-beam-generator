@@ -1,9 +1,21 @@
 ---
+name: Schist
 applications:
 - detail: Removal of surface oxides and contaminants from Schist substrates
   industry: Electronics Manufacturing
 - detail: Cleaning of thermal barrier coatings and stone matrix composites
   industry: Aerospace Components
+technicalSpecifications:
+  fluenceRange: 1.0–4.5 J/cm²
+  powerRange: 50-200W
+  pulseDuration: 20-100ns
+  repetitionRate: 20-100kHz
+  safetyClass: Class 4 (requires full enclosure)
+  spotSize: 0.2-1.5mm
+  wavelength: 1064nm (primary), 532nm (optional)
+description: Technical overview of Schist, None, for laser cleaning applications,
+  including optimal 1064nm wavelength interaction, and industrial applications in
+  surface preparation.
 author: Ikmanda Roswati
 author_object:
   country: Indonesia
@@ -13,32 +25,20 @@ author_object:
   name: Ikmanda Roswati
   sex: m
   title: Ph.D.
-category: stone
 chemicalProperties:
   formula: None
   materialType: stone
   symbol: None
-compatibility:
-- Stone and Masonry
-- Concrete
-- Historical Artifacts
 composition:
 - Mica minerals (muscovite, biotite) 40-60%
 - Quartz 20-40%
 - Feldspar 5-15%
 - Other minerals (garnet, staurolite, kyanite) 0-15%
-description: Technical overview of Schist, None, for laser cleaning applications,
-  including optimal 1064nm wavelength interaction, and industrial applications in
-  surface preparation.
-environmentalImpact:
-- benefit: Chemical Solvent Elimination
-  description: Reduces chemical usage by 100% compared to traditional solvent cleaning
-    methods
-- benefit: Water Conservation
-  description: Saves approximately 5000 liters of water per month in industrial applications
-- benefit: Energy Efficiency
-  description: Consumes 40% less energy than thermal cleaning processes
-headline: Comprehensive technical guide for laser cleaning stone schist
+compatibility:
+- Stone and Masonry
+- Concrete
+- Historical Artifacts
+regulatoryStandards: ISO 18562, ASTM F2100, IEC 60601-1
 images:
   hero:
     alt: Schist surface undergoing laser cleaning showing precise contamination removal
@@ -47,10 +47,16 @@ images:
     alt: Microscopic view of Schist surface after laser cleaning showing detailed
       surface structure
     url: /images/schist-laser-cleaning-micro.jpg
-keywords: schist, schist stone, laser ablation, laser cleaning, non-contact cleaning,
-  pulsed fiber laser, surface contamination removal, industrial laser parameters,
-  thermal processing, surface restoration
-name: Schist
+title: Laser Cleaning Schist - Technical Guide for Optimal Processing
+headline: Comprehensive technical guide for laser cleaning stone schist
+environmentalImpact:
+- benefit: Chemical Solvent Elimination
+  description: Reduces chemical usage by 100% compared to traditional solvent cleaning
+    methods
+- benefit: Water Conservation
+  description: Saves approximately 5000 liters of water per month in industrial applications
+- benefit: Energy Efficiency
+  description: Consumes 40% less energy than thermal cleaning processes
 outcomes:
 - metric: Achieves ISO 14644-1 Class 7 cleanliness standard
   result: Surface Cleanliness Level
@@ -58,6 +64,9 @@ outcomes:
   result: Material Removal Precision
 - metric: 2-5 m²/hour cleaning rate depending on contamination level
   result: Processing Speed
+keywords: schist, schist stone, laser ablation, laser cleaning, non-contact cleaning,
+  pulsed fiber laser, surface contamination removal, industrial laser parameters,
+  thermal processing, surface restoration
 prompt_chain_verification:
   ai_detection_config_loaded: true
   author_id: 3
@@ -69,6 +78,7 @@ prompt_chain_verification:
   persona_country: Indonesia
   prompt_components_integrated: 4
   verification_timestamp: '2025-09-16T22:41:35Z'
+category: stone
 properties:
   chemicalFormula: None
   density: 2.6-2.9 g/cm³
@@ -108,16 +118,6 @@ properties:
   thermalPercentile: 53.1
   wavelength: 1064nm
   youngsModulus: 50-80 GPa
-regulatoryStandards: ISO 18562, ASTM F2100, IEC 60601-1
-technicalSpecifications:
-  fluenceRange: 1.0–4.5 J/cm²
-  powerRange: 50-200W
-  pulseDuration: 20-100ns
-  repetitionRate: 20-100kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.2-1.5mm
-  wavelength: 1064nm (primary), 532nm (optional)
-title: Laser Cleaning Schist - Technical Guide for Optimal Processing
 ---
 
 # Version Information

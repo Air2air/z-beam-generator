@@ -1,9 +1,21 @@
 ---
+name: MDF
 applications:
 - detail: Removal of surface contaminants, adhesives, and coatings from MDF panels
   industry: Furniture Manufacturing
 - detail: Cleaning of MDF components prior to finishing or bonding operations
   industry: Construction and Joinery
+technicalSpecifications:
+  fluenceRange: 0.5–2.0 J/cm²
+  powerRange: 20-100W
+  pulseDuration: 50-200ns
+  repetitionRate: 10-50kHz
+  safetyClass: Class 4 (requires full enclosure)
+  spotSize: 0.5-3.0mm
+  wavelength: 1064nm (primary), 355nm (optional)
+description: Technical overview of Medium Density Fiberboard (MDF) for laser cleaning
+  applications, including optimal wavelength interaction and industrial surface preparation
+  techniques.
 author: Ikmanda Roswati
 author_object:
   country: Indonesia
@@ -13,31 +25,20 @@ author_object:
   name: Ikmanda Roswati
   sex: m
   title: Ph.D.
-category: wood
 chemicalProperties:
   formula: C6H10O5+Resin
   materialType: Wood Composite
   symbol: MDF
-compatibility:
-- Wood Finishes
-- Adhesives
-- Coatings
 composition:
 - Wood Fibers 82%
 - Urea-Formaldehyde Resin 12%
 - Wax 4%
 - Moisture 2%
-description: Technical overview of Medium Density Fiberboard (MDF) for laser cleaning
-  applications, including optimal wavelength interaction and industrial surface preparation
-  techniques.
-environmentalImpact:
-- benefit: Chemical Solvent Elimination
-  description: Eliminates use of chemical solvents for surface cleaning
-- benefit: Reduced Waste
-  description: Minimizes waste generation compared to mechanical sanding methods
-- benefit: Energy Efficiency
-  description: Lower energy consumption compared to thermal cleaning processes
-headline: Comprehensive technical guide for laser cleaning Medium Density Fiberboard
+compatibility:
+- Wood Finishes
+- Adhesives
+- Coatings
+regulatoryStandards: CARB Phase 2, EPA TSCA, ISO 12460
 images:
   hero:
     alt: MDF surface undergoing laser cleaning showing precise contamination removal
@@ -46,9 +47,15 @@ images:
     alt: Microscopic view of MDF surface after laser cleaning showing detailed surface
       structure
     url: /images/mdf-laser-cleaning-micro.jpg
-keywords: mdf, medium density fiberboard, laser cleaning, wood composite, surface
-  preparation, non-abrasive cleaning, resin removal, furniture manufacturing
-name: MDF
+title: Laser Cleaning MDF - Technical Guide for Optimal Processing
+headline: Comprehensive technical guide for laser cleaning Medium Density Fiberboard
+environmentalImpact:
+- benefit: Chemical Solvent Elimination
+  description: Eliminates use of chemical solvents for surface cleaning
+- benefit: Reduced Waste
+  description: Minimizes waste generation compared to mechanical sanding methods
+- benefit: Energy Efficiency
+  description: Lower energy consumption compared to thermal cleaning processes
 outcomes:
 - metric: Achieves dust-free surface ready for finishing
   result: Surface Cleanliness
@@ -56,6 +63,8 @@ outcomes:
   result: Material Removal Precision
 - metric: 1-3 m²/hour cleaning rate depending on contamination level
   result: Processing Speed
+keywords: mdf, medium density fiberboard, laser cleaning, wood composite, surface
+  preparation, non-abrasive cleaning, resin removal, furniture manufacturing
 prompt_chain_verification:
   ai_detection_config_loaded: true
   author_id: 3
@@ -67,6 +76,7 @@ prompt_chain_verification:
   persona_country: Indonesia
   prompt_components_integrated: 4
   verification_timestamp: '2025-09-16T22:55:17Z'
+category: wood
 properties:
   chemicalFormula: C6H10O5+Resin
   decompositionPoint: 180-200°C
@@ -105,16 +115,6 @@ properties:
   thermalPercentile: 26.4
   wavelength: 1064nm
   youngsModulus: 3.0-4.0 GPa
-regulatoryStandards: CARB Phase 2, EPA TSCA, ISO 12460
-technicalSpecifications:
-  fluenceRange: 0.5–2.0 J/cm²
-  powerRange: 20-100W
-  pulseDuration: 50-200ns
-  repetitionRate: 10-50kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.5-3.0mm
-  wavelength: 1064nm (primary), 355nm (optional)
-title: Laser Cleaning MDF - Technical Guide for Optimal Processing
 ---
 
 # Version Information

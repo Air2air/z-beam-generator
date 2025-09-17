@@ -1,9 +1,21 @@
 ---
+name: Bluestone
 applications:
 - detail: Removal of surface oxides and contaminants from Bluestone substrates
   industry: Electronics Manufacturing
 - detail: Cleaning of thermal barrier coatings and stone matrix composites
   industry: Aerospace Components
+technicalSpecifications:
+  fluenceRange: 1.0–4.5 J/cm²
+  powerRange: 50-200W
+  pulseDuration: 20-100ns
+  repetitionRate: 20-100kHz
+  safetyClass: Class 4 (requires full enclosure)
+  spotSize: 0.2-1.5mm
+  wavelength: 1064nm (primary), 532nm (optional)
+description: Technical overview of Bluestone, None, for laser cleaning applications,
+  including optimal 1064nm wavelength interaction, and industrial applications in
+  surface preparation.
 author: Alessandro Moretti
 author_object:
   country: Italy
@@ -13,33 +25,20 @@ author_object:
   name: Alessandro Moretti
   sex: m
   title: Ph.D.
-category: stone
 chemicalProperties:
   formula: None
   materialType: stone
   symbol: None
-compatibility:
-- Granite
-- Marble
-- Sandstone
 composition:
 - Feldspar (KAlSi₃O₈ - NaAlSi₃O₈ - CaAl₂Si₂O₈) 60%
 - Quartz (SiO₂) 25%
 - Biotite Mica (K(Mg,Fe)₃AlSi₃O₁₀(F,OH)₂) 10%
 - Other minerals (Chlorite, Epidote) 5%
-description: Technical overview of Bluestone, None, for laser cleaning applications,
-  including optimal 1064nm wavelength interaction, and industrial applications in
-  surface preparation.
-environmentalImpact:
-- benefit: Chemical Solvent Elimination
-  description: Reduces chemical usage by 100% compared to traditional solvent cleaning
-    methods
-- benefit: Water Conservation
-  description: Saves approximately 2000 liters of water per month in stone restoration
-    applications
-- benefit: Energy Efficiency
-  description: Consumes 60% less energy than abrasive blasting processes
-headline: Comprehensive technical guide for laser cleaning stone bluestone
+compatibility:
+- Granite
+- Marble
+- Sandstone
+regulatoryStandards: ASTM C97, ASTM C170, EN 1341
 images:
   hero:
     alt: Bluestone surface undergoing laser cleaning showing precise contamination
@@ -49,10 +48,17 @@ images:
     alt: Microscopic view of Bluestone surface after laser cleaning showing detailed
       surface structure
     url: /images/bluestone-laser-cleaning-micro.jpg
-keywords: bluestone, bluestone stone, laser ablation, laser cleaning, non-contact
-  cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters,
-  thermal processing, surface restoration
-name: Bluestone
+title: Laser Cleaning Bluestone - Technical Guide for Optimal Processing
+headline: Comprehensive technical guide for laser cleaning stone bluestone
+environmentalImpact:
+- benefit: Chemical Solvent Elimination
+  description: Reduces chemical usage by 100% compared to traditional solvent cleaning
+    methods
+- benefit: Water Conservation
+  description: Saves approximately 2000 liters of water per month in stone restoration
+    applications
+- benefit: Energy Efficiency
+  description: Consumes 60% less energy than abrasive blasting processes
 outcomes:
 - metric: Achieves 99.9% contaminant removal without surface etching
   result: Surface Cleanliness Level
@@ -60,6 +66,9 @@ outcomes:
   result: Material Removal Precision
 - metric: 0.5-1.5 m²/hour cleaning rate depending on contamination level
   result: Processing Speed
+keywords: bluestone, bluestone stone, laser ablation, laser cleaning, non-contact
+  cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters,
+  thermal processing, surface restoration
 prompt_chain_verification:
   ai_detection_config_loaded: true
   author_id: 2
@@ -71,6 +80,7 @@ prompt_chain_verification:
   persona_country: Italy
   prompt_components_integrated: 4
   verification_timestamp: '2025-09-16T22:32:54Z'
+category: stone
 properties:
   chemicalFormula: None
   density: 2.4 g/cm³
@@ -110,16 +120,6 @@ properties:
   thermalPercentile: 27.1
   wavelength: 1064nm
   youngsModulus: 50 GPa
-regulatoryStandards: ASTM C97, ASTM C170, EN 1341
-technicalSpecifications:
-  fluenceRange: 1.0–4.5 J/cm²
-  powerRange: 50-200W
-  pulseDuration: 20-100ns
-  repetitionRate: 20-100kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.2-1.5mm
-  wavelength: 1064nm (primary), 532nm (optional)
-title: Laser Cleaning Bluestone - Technical Guide for Optimal Processing
 ---
 
 # Version Information

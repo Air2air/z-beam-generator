@@ -1,4 +1,5 @@
 ---
+name: Willow
 applications:
 - detail: Gentle removal of dirt, soot, and biological growth from antique willow
     wood surfaces
@@ -6,6 +7,17 @@ applications:
 - detail: Precise cleaning of willow wood components in pianos and other instruments
     without damaging the delicate grain
   industry: Musical Instrument Restoration
+technicalSpecifications:
+  fluenceRange: 0.2–1.2 J/cm²
+  powerRange: 10-40W
+  pulseDuration: 50-200ns
+  repetitionRate: 20-50kHz
+  safetyClass: Class 4 (requires full enclosure)
+  spotSize: 0.5-3.0mm
+  wavelength: 1064nm (primary), 532nm (optional)
+description: Technical overview of Willow wood, primarily composed of cellulose (C6H10O5)n,
+  for specialized laser cleaning applications, detailing optimal low-fluence 1064nm
+  wavelength interaction for safe surface preparation.
 author: Alessandro Moretti
 author_object:
   country: Italy
@@ -15,31 +27,20 @@ author_object:
   name: Alessandro Moretti
   sex: m
   title: Ph.D.
-category: wood
 chemicalProperties:
   formula: (C6H10O5)n
   materialType: Lignocellulosic Material
   symbol: Wood
-compatibility:
-- Willow Wood
-- Other Hardwoods
-- Wood Composites
 composition:
 - Cellulose (C6H10O5)n 40-45%
 - Hemicellulose 20-25%
 - Lignin 20-25%
 - Extractives 5-10%
-description: Technical overview of Willow wood, primarily composed of cellulose (C6H10O5)n,
-  for specialized laser cleaning applications, detailing optimal low-fluence 1064nm
-  wavelength interaction for safe surface preparation.
-environmentalImpact:
-- benefit: Chemical Solvent Elimination
-  description: Eliminates need for harsh chemical cleaners in wood restoration
-- benefit: Water Conservation
-  description: Completely dry process requiring zero water consumption
-- benefit: Waste Reduction
-  description: Produces minimal waste compared to mechanical sanding methods
-headline: Comprehensive technical guide for laser cleaning willow wood without damage
+compatibility:
+- Willow Wood
+- Other Hardwoods
+- Wood Composites
+regulatoryStandards: ISO 13061, ASTM D143, EN 350
 images:
   hero:
     alt: Willow surface undergoing laser cleaning showing precise contamination removal
@@ -48,10 +49,15 @@ images:
     alt: Microscopic view of Willow surface after laser cleaning showing detailed
       surface structure
     url: /images/willow-laser-cleaning-micro.jpg
-keywords: willow wood, laser cleaning, wood restoration, non-abrasive cleaning, pulsed
-  fiber laser, cultural heritage preservation, surface contamination removal, low-fluence
-  laser parameters
-name: Willow
+title: Laser Cleaning Willow Wood - Technical Guide for Gentle Processing
+headline: Comprehensive technical guide for laser cleaning willow wood without damage
+environmentalImpact:
+- benefit: Chemical Solvent Elimination
+  description: Eliminates need for harsh chemical cleaners in wood restoration
+- benefit: Water Conservation
+  description: Completely dry process requiring zero water consumption
+- benefit: Waste Reduction
+  description: Produces minimal waste compared to mechanical sanding methods
 outcomes:
 - metric: Maintains original wood patina and surface integrity
   result: Surface Preservation
@@ -59,6 +65,9 @@ outcomes:
   result: Cleaning Precision
 - metric: 0.5-1.5 m²/hour cleaning rate depending on contamination level
   result: Processing Speed
+keywords: willow wood, laser cleaning, wood restoration, non-abrasive cleaning, pulsed
+  fiber laser, cultural heritage preservation, surface contamination removal, low-fluence
+  laser parameters
 prompt_chain_verification:
   ai_detection_config_loaded: true
   author_id: 2
@@ -70,6 +79,7 @@ prompt_chain_verification:
   persona_country: Italy
   prompt_components_integrated: 4
   verification_timestamp: '2025-09-16T23:02:54Z'
+category: wood
 properties:
   chemicalFormula: (C6H10O5)n
   conductivityMax: 0.16 W/m·K
@@ -111,16 +121,6 @@ properties:
   thermalPercentile: 22.2
   wavelength: 1064nm
   youngsModulus: 9.0 GPa
-regulatoryStandards: ISO 13061, ASTM D143, EN 350
-technicalSpecifications:
-  fluenceRange: 0.2–1.2 J/cm²
-  powerRange: 10-40W
-  pulseDuration: 50-200ns
-  repetitionRate: 20-50kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.5-3.0mm
-  wavelength: 1064nm (primary), 532nm (optional)
-title: Laser Cleaning Willow Wood - Technical Guide for Gentle Processing
 ---
 
 # Version Information

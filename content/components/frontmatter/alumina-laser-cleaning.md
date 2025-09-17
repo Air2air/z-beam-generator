@@ -1,9 +1,21 @@
 ---
+name: Alumina
 applications:
 - detail: Removal of surface oxides and contaminants from Alumina substrates
   industry: Electronics Manufacturing
 - detail: Cleaning of thermal barrier coatings and ceramic matrix composites
   industry: Aerospace Components
+technicalSpecifications:
+  fluenceRange: 1.0–4.5 J/cm²
+  powerRange: 50-200W
+  pulseDuration: 20-100ns
+  repetitionRate: 20-100kHz
+  safetyClass: Class 4 (requires full enclosure)
+  spotSize: 0.2-1.5mm
+  wavelength: 1064nm (primary), 532nm (optional)
+description: Technical overview of Alumina, Al2O3, for laser cleaning applications,
+  including optimal 1064nm wavelength interaction, and industrial applications in
+  surface preparation.
 author: Alessandro Moretti
 author_object:
   country: Italy
@@ -13,30 +25,18 @@ author_object:
   name: Alessandro Moretti
   sex: m
   title: Ph.D.
-category: ceramic
 chemicalProperties:
   formula: Al2O3
   materialType: ceramic
   symbol: Al2O3
+composition:
+- Alumina (Al2O3) 99.6%
+- Trace elements (Si, Fe, Na, Mg)
 compatibility:
 - Stainless Steel
 - Titanium Alloys
 - Nickel-based Superalloys
-composition:
-- Alumina (Al2O3) 99.6%
-- Trace elements (Si, Fe, Na, Mg)
-description: Technical overview of Alumina, Al2O3, for laser cleaning applications,
-  including optimal 1064nm wavelength interaction, and industrial applications in
-  surface preparation.
-environmentalImpact:
-- benefit: Chemical Solvent Elimination
-  description: Reduces chemical usage by 100% compared to traditional solvent cleaning
-    methods
-- benefit: Water Conservation
-  description: Saves approximately 5000 liters of water per month in industrial applications
-- benefit: Energy Efficiency
-  description: Consumes 40% less energy than thermal cleaning processes
-headline: Comprehensive technical guide for laser cleaning ceramic alumina
+regulatoryStandards: ISO 18562, ASTM F2100, IEC 60601-1
 images:
   hero:
     alt: Alumina surface undergoing laser cleaning showing precise contamination removal
@@ -45,10 +45,16 @@ images:
     alt: Microscopic view of Alumina surface after laser cleaning showing detailed
       surface structure
     url: /images/alumina-laser-cleaning-micro.jpg
-keywords: alumina, alumina ceramic, laser ablation, laser cleaning, non-contact cleaning,
-  pulsed fiber laser, surface contamination removal, industrial laser parameters,
-  thermal processing, surface restoration
-name: Alumina
+title: Laser Cleaning Alumina - Technical Guide for Optimal Processing
+headline: Comprehensive technical guide for laser cleaning ceramic alumina
+environmentalImpact:
+- benefit: Chemical Solvent Elimination
+  description: Reduces chemical usage by 100% compared to traditional solvent cleaning
+    methods
+- benefit: Water Conservation
+  description: Saves approximately 5000 liters of water per month in industrial applications
+- benefit: Energy Efficiency
+  description: Consumes 40% less energy than thermal cleaning processes
 outcomes:
 - metric: Achieves ISO 14644-1 Class 7 cleanliness standard
   result: Surface Cleanliness Level
@@ -56,6 +62,9 @@ outcomes:
   result: Material Removal Precision
 - metric: 2-5 m²/hour cleaning rate depending on contamination level
   result: Processing Speed
+keywords: alumina, alumina ceramic, laser ablation, laser cleaning, non-contact cleaning,
+  pulsed fiber laser, surface contamination removal, industrial laser parameters,
+  thermal processing, surface restoration
 prompt_chain_verification:
   ai_detection_config_loaded: true
   author_id: 2
@@ -67,6 +76,7 @@ prompt_chain_verification:
   persona_country: Italy
   prompt_components_integrated: 4
   verification_timestamp: '2025-09-16T21:28:33Z'
+category: ceramic
 properties:
   chemicalFormula: Al2O3
   density: 3.95 g/cm³
@@ -106,16 +116,6 @@ properties:
   thermalPercentile: 14.8
   wavelength: 1064nm
   youngsModulus: 370 GPa
-regulatoryStandards: ISO 18562, ASTM F2100, IEC 60601-1
-technicalSpecifications:
-  fluenceRange: 1.0–4.5 J/cm²
-  powerRange: 50-200W
-  pulseDuration: 20-100ns
-  repetitionRate: 20-100kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.2-1.5mm
-  wavelength: 1064nm (primary), 532nm (optional)
-title: Laser Cleaning Alumina - Technical Guide for Optimal Processing
 ---
 
 # Version Information

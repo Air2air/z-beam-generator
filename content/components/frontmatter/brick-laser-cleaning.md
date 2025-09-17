@@ -1,4 +1,5 @@
 ---
+name: Brick
 applications:
 - detail: Removal of soot, pollution deposits, and biological growth from historical
     brick masonry
@@ -6,6 +7,17 @@ applications:
 - detail: Cleaning of fire-damaged brickwork and removal of paint/graffiti from brick
     surfaces
   industry: Industrial Maintenance
+technicalSpecifications:
+  fluenceRange: 0.5–3.0 J/cm²
+  powerRange: 20-100W
+  pulseDuration: 10-200ns
+  repetitionRate: 10-50kHz
+  safetyClass: Class 4 (requires full enclosure)
+  spotSize: 0.5-3.0mm
+  wavelength: 1064nm (primary), 532nm (optional)
+description: Technical overview of fired clay brick for laser cleaning applications,
+  including optimal 1064nm wavelength interaction with mineral components, and industrial
+  applications in building restoration and surface preparation.
 author: Alessandro Moretti
 author_object:
   country: Italy
@@ -15,33 +27,21 @@ author_object:
   name: Alessandro Moretti
   sex: m
   title: Ph.D.
-category: masonry
 chemicalProperties:
   formula: SiO2·Al2O3·Fe2O3·CaO·MgO
   materialType: fired clay masonry
   symbol: Brick
-compatibility:
-- Historical Masonry
-- Terracotta
-- Fired Clay Products
 composition:
 - Silica (SiO2) 50-60%
 - Alumina (Al2O3) 20-30%
 - Iron Oxide (Fe2O3) 5-8%
 - Lime (CaO) 1-5%
 - Magnesia (MgO) 1-3%
-description: Technical overview of fired clay brick for laser cleaning applications,
-  including optimal 1064nm wavelength interaction with mineral components, and industrial
-  applications in building restoration and surface preparation.
-environmentalImpact:
-- benefit: Chemical Solvent Elimination
-  description: Reduces chemical usage by 100% compared to traditional chemical cleaning
-    methods
-- benefit: Water Conservation
-  description: Eliminates water usage completely compared to pressure washing techniques
-- benefit: Waste Reduction
-  description: Produces no secondary waste streams from cleaning processes
-headline: Comprehensive technical guide for laser cleaning fired clay brick surfaces
+compatibility:
+- Historical Masonry
+- Terracotta
+- Fired Clay Products
+regulatoryStandards: EN 15898, EN 17138, ASTM E2167
 images:
   hero:
     alt: Brick surface undergoing laser cleaning showing precise contamination removal
@@ -50,10 +50,16 @@ images:
     alt: Microscopic view of Brick surface after laser cleaning showing detailed surface
       structure
     url: /images/brick-laser-cleaning-micro.jpg
-keywords: brick, brick masonry, laser ablation, laser cleaning, non-contact cleaning,
-  pulsed fiber laser, surface contamination removal, historical restoration, graffiti
-  removal, building conservation
-name: Brick
+title: Laser Cleaning Brick - Technical Guide for Masonry Restoration
+headline: Comprehensive technical guide for laser cleaning fired clay brick surfaces
+environmentalImpact:
+- benefit: Chemical Solvent Elimination
+  description: Reduces chemical usage by 100% compared to traditional chemical cleaning
+    methods
+- benefit: Water Conservation
+  description: Eliminates water usage completely compared to pressure washing techniques
+- benefit: Waste Reduction
+  description: Produces no secondary waste streams from cleaning processes
 outcomes:
 - metric: Achieves 95-99% contaminant removal without substrate damage
   result: Surface Cleanliness Level
@@ -62,6 +68,9 @@ outcomes:
   result: Material Removal Precision
 - metric: 0.5-2 m²/hour cleaning rate depending on contamination type and thickness
   result: Processing Speed
+keywords: brick, brick masonry, laser ablation, laser cleaning, non-contact cleaning,
+  pulsed fiber laser, surface contamination removal, historical restoration, graffiti
+  removal, building conservation
 prompt_chain_verification:
   ai_detection_config_loaded: true
   author_id: 2
@@ -73,6 +82,7 @@ prompt_chain_verification:
   persona_country: Italy
   prompt_components_integrated: 4
   verification_timestamp: '2025-09-16T21:51:02Z'
+category: masonry
 properties:
   chemicalFormula: SiO2·Al2O3·Fe2O3·CaO·MgO
   density: 1.8-2.0 g/cm³
@@ -112,16 +122,6 @@ properties:
   thermalPercentile: 47.4
   wavelength: 1064nm
   youngsModulus: 10-30 GPa
-regulatoryStandards: EN 15898, EN 17138, ASTM E2167
-technicalSpecifications:
-  fluenceRange: 0.5–3.0 J/cm²
-  powerRange: 20-100W
-  pulseDuration: 10-200ns
-  repetitionRate: 10-50kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.5-3.0mm
-  wavelength: 1064nm (primary), 532nm (optional)
-title: Laser Cleaning Brick - Technical Guide for Masonry Restoration
 ---
 
 # Version Information

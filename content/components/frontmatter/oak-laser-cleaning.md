@@ -1,4 +1,5 @@
 ---
+name: Oak
 applications:
 - detail: Removal of surface contaminants, old finishes, and oxidation from oak wood
     surfaces
@@ -6,6 +7,17 @@ applications:
 - detail: Gentle cleaning of antique oak furniture and architectural elements without
     damage
   industry: Historical Restoration
+technicalSpecifications:
+  fluenceRange: 0.5–2.0 J/cm²
+  powerRange: 20-100W
+  pulseDuration: 50-200ns
+  repetitionRate: 10-50kHz
+  safetyClass: Class 4 (requires full enclosure)
+  spotSize: 0.5-3.0mm
+  wavelength: 1064nm (primary), 355nm (optional)
+description: Technical overview of Oak wood for laser cleaning applications, including
+  optimal 1064nm wavelength interaction with lignin and cellulose, and industrial
+  applications in wood surface restoration.
 author: Yi-Chun Lin
 author_object:
   country: Taiwan
@@ -15,31 +27,20 @@ author_object:
   name: Yi-Chun Lin
   sex: f
   title: Ph.D.
-category: wood
 chemicalProperties:
   formula: C6H10O5 (cellulose)
   materialType: hardwood
   symbol: Oak
-compatibility:
-- Solid Oak
-- Oak Veneers
-- Oak Composites
 composition:
 - 'Cellulose: 40-50%'
 - 'Lignin: 20-30%'
 - 'Hemicellulose: 15-25%'
 - 'Extractives: 5-10%'
-description: Technical overview of Oak wood for laser cleaning applications, including
-  optimal 1064nm wavelength interaction with lignin and cellulose, and industrial
-  applications in wood surface restoration.
-environmentalImpact:
-- benefit: Chemical Solvent Elimination
-  description: Eliminates need for harsh chemical strippers and solvents in wood restoration
-- benefit: Waste Reduction
-  description: Produces minimal waste compared to mechanical sanding methods
-- benefit: Energy Efficiency
-  description: Low energy consumption with precise material removal
-headline: Comprehensive technical guide for laser cleaning oak wood surfaces
+compatibility:
+- Solid Oak
+- Oak Veneers
+- Oak Composites
+regulatoryStandards: ISO 13061, ASTM D2395, EN 350
 images:
   hero:
     alt: Oak surface undergoing laser cleaning showing precise contamination removal
@@ -48,9 +49,15 @@ images:
     alt: Microscopic view of Oak surface after laser cleaning showing detailed surface
       structure
     url: /images/oak-laser-cleaning-micro.jpg
-keywords: oak wood, laser cleaning, wood restoration, lignin ablation, cellulose preservation,
-  non-contact wood cleaning, pulsed laser, surface contamination removal
-name: Oak
+title: Laser Cleaning Oak Wood - Technical Guide for Optimal Processing
+headline: Comprehensive technical guide for laser cleaning oak wood surfaces
+environmentalImpact:
+- benefit: Chemical Solvent Elimination
+  description: Eliminates need for harsh chemical strippers and solvents in wood restoration
+- benefit: Waste Reduction
+  description: Produces minimal waste compared to mechanical sanding methods
+- benefit: Energy Efficiency
+  description: Low energy consumption with precise material removal
 outcomes:
 - metric: Complete removal of contaminants without damaging wood fibers
   result: Surface Cleanliness
@@ -58,6 +65,8 @@ outcomes:
   result: Material Preservation
 - metric: 0.5-2 m²/hour cleaning rate depending on contamination level
   result: Processing Speed
+keywords: oak wood, laser cleaning, wood restoration, lignin ablation, cellulose preservation,
+  non-contact wood cleaning, pulsed laser, surface contamination removal
 prompt_chain_verification:
   ai_detection_config_loaded: true
   author_id: 1
@@ -69,6 +78,7 @@ prompt_chain_verification:
   persona_country: Taiwan
   prompt_components_integrated: 4
   verification_timestamp: '2025-09-16T22:56:07Z'
+category: wood
 properties:
   chemicalFormula: C6H10O5 (cellulose)
   density: 0.75 g/cm³
@@ -107,16 +117,6 @@ properties:
   thermalPercentile: 36.1
   wavelength: 1064nm
   youngsModulus: 12 GPa
-regulatoryStandards: ISO 13061, ASTM D2395, EN 350
-technicalSpecifications:
-  fluenceRange: 0.5–2.0 J/cm²
-  powerRange: 20-100W
-  pulseDuration: 50-200ns
-  repetitionRate: 10-50kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.5-3.0mm
-  wavelength: 1064nm (primary), 355nm (optional)
-title: Laser Cleaning Oak Wood - Technical Guide for Optimal Processing
 ---
 
 # Version Information

@@ -3,6 +3,8 @@
 ## 🎯 Overview
 The MetaTags component generates YAML frontmatter with comprehensive meta tags and structured metadata for laser cleaning content, providing SEO optimization and social media sharing support for Next.js and static site generators.
 
+**Latest Update (September 16, 2025)**: ✅ **ENHANCED** - Added comprehensive standardized naming method with support for composite materials, wood materials, and steel consolidation. All image URLs and canonical URLs use standardized material slugs aligned with `materials.yaml`.
+
 ## 📋 Component Requirements
 
 ### **Functional Requirements**

@@ -386,12 +386,113 @@ def create_dynamic_ai_detection_config(
 
 
 # =================================================================================
-# MAIN ENTRY POINT - Delegates to main_runner.py
+# MAIN ENTRY POINT
 # =================================================================================
 
+def main():
+    """Main application entry point with basic command line interface."""
+    import argparse
+    import os
+    from generators.dynamic_generator import DynamicGenerator
+    from api.client_factory import create_api_client
+    from data.materials import load_materials
+    
+    parser = argparse.ArgumentParser(description="Z-Beam Content Generator")
+    parser.add_argument("--material", help="Generate content for specific material")
+    parser.add_argument("--components", help="Comma-separated list of components to generate")
+    parser.add_argument("--all", action="store_true", help="Generate all materials")
+    parser.add_argument("--test", action="store_true", help="Run test mode")
+    
+    args = parser.parse_args()
+    
+    if args.test:
+        print("🧪 Test mode - basic functionality check")
+        from components.table.generators.generator import TableComponentGenerator
+        generator = TableComponentGenerator()
+        print(f"✅ Table generator loaded: {generator.component_type}")
+        return True
+    
+    if args.material and args.components:
+        print(f"🚀 Generating {args.components} for {args.material}")
+        
+        try:
+            # Load materials data
+            materials_data_dict = load_materials()
+            materials_data = materials_data_dict.get('materials', {}).values() if 'materials' in materials_data_dict else []
+            material_info = None
+            
+            for material in materials_data:
+                if material.get('name', '').lower() == args.material.lower():
+                    material_info = material
+                    break
+            
+            if not material_info:
+                print(f"❌ Material '{args.material}' not found")
+                return False
+            
+            # Create API client and generator
+            api_client = create_api_client("deepseek")
+            generator = DynamicGenerator()
+            
+            # Split components
+            component_types = [c.strip() for c in args.components.split(',')]
+            
+            for component_type in component_types:
+                print(f"📋 Generating {component_type}...")
+                
+                # For table component, we need frontmatter data first
+                frontmatter_data = None
+                if component_type == 'table':
+                    # Try to load existing frontmatter
+                    frontmatter_path = f"content/components/frontmatter/{args.material.lower()}-laser-cleaning.md"
+                    if os.path.exists(frontmatter_path):
+                        import yaml
+                        with open(frontmatter_path, 'r') as f:
+                            content = f.read()
+                        yaml_start = content.find('---') + 3
+                        yaml_end = content.find('---', yaml_start)
+                        if yaml_start > 2 and yaml_end > yaml_start:
+                            yaml_content = content[yaml_start:yaml_end].strip()
+                            frontmatter_data = yaml.safe_load(yaml_content)
+                    
+                    if not frontmatter_data:
+                        print(f"❌ No frontmatter data found for {args.material}")
+                        continue
+                
+                result = generator.generate_component(
+                    material=args.material,
+                    component_type=component_type,
+                    api_client=api_client,
+                    frontmatter_data=frontmatter_data
+                )
+                
+                if result.success:
+                    # Save the result
+                    output_dir = f"content/components/{component_type}"
+                    os.makedirs(output_dir, exist_ok=True)
+                    output_file = f"{output_dir}/{args.material.lower()}-{component_type}.yaml" if component_type in ['table', 'jsonld', 'metatags'] else f"{output_dir}/{args.material.lower()}-laser-cleaning.md"
+                    
+                    with open(output_file, 'w') as f:
+                        f.write(result.content)
+                    
+                    print(f"✅ {component_type} generated successfully → {output_file}")
+                else:
+                    print(f"❌ {component_type} generation failed: {result.error_message}")
+            
+            return True
+            
+        except Exception as e:
+            print(f"❌ Generation failed: {e}")
+            import traceback
+            traceback.print_exc()
+            return False
+    
+    else:
+        parser.print_help()
+        return True
+
+
 if __name__ == "__main__":
-    # Import and run the main application logic
-    from main_runner import main
     import sys
     
     try:

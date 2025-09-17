@@ -1,4 +1,5 @@
 ---
+name: Hickory
 applications:
 - detail: Removal of surface stains, finishes, and contaminants from Hickory wood
     components
@@ -6,6 +7,17 @@ applications:
 - detail: Precision cleaning of Hickory drum shells and instrument parts without damaging
     the wood grain
   industry: Musical Instrument Manufacturing
+technicalSpecifications:
+  fluenceRange: 0.5–2.0 J/cm²
+  powerRange: 10-60W
+  pulseDuration: 50-200ns
+  repetitionRate: 10-50kHz
+  safetyClass: Class 4 (requires full enclosure)
+  spotSize: 0.5-3.0mm
+  wavelength: 1064nm (primary), 355nm (optional for delicate work)
+description: Technical overview of Hickory wood for laser cleaning applications, including
+  optimal 1064nm wavelength interaction with cellulose structure, and industrial applications
+  in wood surface restoration.
 author: Alessandro Moretti
 author_object:
   country: Italy
@@ -15,23 +27,30 @@ author_object:
   name: Alessandro Moretti
   sex: m
   title: Ph.D.
-category: wood
 chemicalProperties:
   formula: C6H10O5 (cellulose)
   materialType: hardwood
   symbol: Wood
-compatibility:
-- Hardwoods
-- Softwoods
-- Wood Composites
 composition:
 - Cellulose (C6H10O5) 45-50%
 - Lignin 25-30%
 - Hemicellulose 20-25%
 - Extractives 2-5%
-description: Technical overview of Hickory wood for laser cleaning applications, including
-  optimal 1064nm wavelength interaction with cellulose structure, and industrial applications
-  in wood surface restoration.
+compatibility:
+- Hardwoods
+- Softwoods
+- Wood Composites
+regulatoryStandards: ISO 13061, ASTM D143, ANSI/HPVA HP-1
+images:
+  hero:
+    alt: Hickory surface undergoing laser cleaning showing precise contamination removal
+    url: /images/hickory-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Hickory surface after laser cleaning showing detailed
+      surface structure
+    url: /images/hickory-laser-cleaning-micro.jpg
+title: Laser Cleaning Hickory Wood - Technical Guide for Optimal Processing
+headline: Comprehensive technical guide for laser cleaning hickory wood surfaces
 environmentalImpact:
 - benefit: Chemical Solvent Elimination
   description: Reduces chemical usage by 100% compared to traditional wood stripping
@@ -41,19 +60,6 @@ environmentalImpact:
     stripping
 - benefit: Energy Efficiency
   description: Consumes 60% less energy than thermal wood stripping processes
-headline: Comprehensive technical guide for laser cleaning hickory wood surfaces
-images:
-  hero:
-    alt: Hickory surface undergoing laser cleaning showing precise contamination removal
-    url: /images/hickory-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Hickory surface after laser cleaning showing detailed
-      surface structure
-    url: /images/hickory-laser-cleaning-micro.jpg
-keywords: hickory, hickory wood, laser ablation, laser cleaning, wood restoration,
-  non-contact cleaning, pulsed fiber laser, surface contamination removal, wood grain
-  preservation, furniture restoration
-name: Hickory
 outcomes:
 - metric: Achieves complete removal of finishes and contaminants without wood damage
   result: Surface Cleanliness Level
@@ -61,6 +67,9 @@ outcomes:
   result: Material Removal Precision
 - metric: 0.5-2 m²/hour cleaning rate depending on finish thickness
   result: Processing Speed
+keywords: hickory, hickory wood, laser ablation, laser cleaning, wood restoration,
+  non-contact cleaning, pulsed fiber laser, surface contamination removal, wood grain
+  preservation, furniture restoration
 prompt_chain_verification:
   ai_detection_config_loaded: true
   author_id: 2
@@ -72,6 +81,7 @@ prompt_chain_verification:
   persona_country: Italy
   prompt_components_integrated: 4
   verification_timestamp: '2025-09-16T22:52:35Z'
+category: wood
 properties:
   charMax: 400°C
   charMin: 150°C
@@ -113,16 +123,6 @@ properties:
   thermalPercentile: 33.3
   wavelength: 1064nm
   youngsModulus: 13.2 GPa
-regulatoryStandards: ISO 13061, ASTM D143, ANSI/HPVA HP-1
-technicalSpecifications:
-  fluenceRange: 0.5–2.0 J/cm²
-  powerRange: 10-60W
-  pulseDuration: 50-200ns
-  repetitionRate: 10-50kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.5-3.0mm
-  wavelength: 1064nm (primary), 355nm (optional for delicate work)
-title: Laser Cleaning Hickory Wood - Technical Guide for Optimal Processing
 ---
 
 # Version Information

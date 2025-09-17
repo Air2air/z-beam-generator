@@ -1,10 +1,22 @@
 ---
+name: Rubber
 applications:
 - detail: Removal of mold release agents and surface contaminants from rubber compounds
   industry: Tire Manufacturing
 - detail: Cleaning of rubber seals, gaskets, and vibration dampeners prior to bonding
     or painting
   industry: Automotive Components
+technicalSpecifications:
+  fluenceRange: 0.5–2.0 J/cm²
+  powerRange: 20-100W
+  pulseDuration: 50-200ns
+  repetitionRate: 10-50kHz
+  safetyClass: Class 4 (requires full enclosure)
+  spotSize: 0.5-3.0mm
+  wavelength: 1064nm (primary), 355nm (optional)
+description: Technical overview of Rubber, a polymer material, for laser cleaning
+  applications, including optimal 1064nm wavelength interaction with carbon-black
+  filled compounds, and industrial applications in surface preparation.
 author: Todd Dunning
 author_object:
   country: United States (California)
@@ -14,32 +26,20 @@ author_object:
   name: Todd Dunning
   sex: m
   title: MA
-category: polymer
 chemicalProperties:
   formula: Variable (C5H8)n
   materialType: elastomer
   symbol: Rubber
-compatibility:
-- Natural Rubber
-- Synthetic Rubber (SBR, EPDM, Nitrile)
-- Silicone Rubber
 composition:
 - Natural/Synthetic Rubber Polymer 40-60%
 - Carbon Black 20-35%
 - Processing Oils 5-15%
 - Vulcanizing Agents 1-3%
-description: Technical overview of Rubber, a polymer material, for laser cleaning
-  applications, including optimal 1064nm wavelength interaction with carbon-black
-  filled compounds, and industrial applications in surface preparation.
-environmentalImpact:
-- benefit: Chemical Solvent Elimination
-  description: Eliminates use of chlorinated solvents and VOC-emitting cleaners
-- benefit: Waste Reduction
-  description: Reduces contaminated waste materials by 95% compared to mechanical
-    methods
-- benefit: Energy Efficiency
-  description: Consumes 60% less energy than thermal cleaning processes
-headline: Comprehensive technical guide for laser cleaning rubber compounds and elastomers
+compatibility:
+- Natural Rubber
+- Synthetic Rubber (SBR, EPDM, Nitrile)
+- Silicone Rubber
+regulatoryStandards: ISO 4649, ASTM D2000, SAE J200
 images:
   hero:
     alt: Rubber surface undergoing laser cleaning showing precise contamination removal
@@ -48,10 +48,16 @@ images:
     alt: Microscopic view of Rubber surface after laser cleaning showing detailed
       surface structure
     url: /images/rubber-laser-cleaning-micro.jpg
-keywords: rubber, elastomer, laser ablation, laser cleaning, non-contact cleaning,
-  pulsed fiber laser, mold release removal, industrial laser parameters, surface restoration,
-  tire manufacturing
-name: Rubber
+title: Laser Cleaning Rubber - Technical Guide for Optimal Processing
+headline: Comprehensive technical guide for laser cleaning rubber compounds and elastomers
+environmentalImpact:
+- benefit: Chemical Solvent Elimination
+  description: Eliminates use of chlorinated solvents and VOC-emitting cleaners
+- benefit: Waste Reduction
+  description: Reduces contaminated waste materials by 95% compared to mechanical
+    methods
+- benefit: Energy Efficiency
+  description: Consumes 60% less energy than thermal cleaning processes
 outcomes:
 - metric: Achieves >99.5% contaminant removal without substrate damage
   result: Surface Cleanliness Level
@@ -59,6 +65,9 @@ outcomes:
   result: Material Removal Precision
 - metric: 1-3 m²/hour cleaning rate depending on compound and contamination
   result: Processing Speed
+keywords: rubber, elastomer, laser ablation, laser cleaning, non-contact cleaning,
+  pulsed fiber laser, mold release removal, industrial laser parameters, surface restoration,
+  tire manufacturing
 prompt_chain_verification:
   ai_detection_config_loaded: true
   author_id: 4
@@ -70,6 +79,7 @@ prompt_chain_verification:
   persona_country: United States (California)
   prompt_components_integrated: 4
   verification_timestamp: '2025-09-16T21:38:01Z'
+category: polymer
 properties:
   chemicalFormula: Variable (C5H8)n
   density: 0.92-1.2 g/cm³
@@ -109,16 +119,6 @@ properties:
   thermalPercentile: 0.2
   wavelength: 1064nm
   youngsModulus: 1-10 MPa
-regulatoryStandards: ISO 4649, ASTM D2000, SAE J200
-technicalSpecifications:
-  fluenceRange: 0.5–2.0 J/cm²
-  powerRange: 20-100W
-  pulseDuration: 50-200ns
-  repetitionRate: 10-50kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.5-3.0mm
-  wavelength: 1064nm (primary), 355nm (optional)
-title: Laser Cleaning Rubber - Technical Guide for Optimal Processing
 ---
 
 # Version Information

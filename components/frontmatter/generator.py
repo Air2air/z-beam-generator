@@ -147,6 +147,29 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
                 error_message=str(e),
             )
 
+    def _apply_standardized_naming(self, material_name_lower: str) -> str:
+        """Apply naming standardization aligned with materials.yaml single source of truth"""
+        # Basic kebab-case conversion
+        slug = material_name_lower.replace(" ", "-")
+        
+        # Apply standardizations aligned with materials.yaml database
+        naming_mappings = {
+            # Hyphenation standardizations
+            "terra-cotta": "terracotta",
+            # Alignment with materials.yaml single source of truth
+            # (materials.yaml defines only "Steel" and "Stainless Steel", not specific variants)
+        }
+        
+        # Apply standardization if material matches known mappings
+        if slug in naming_mappings:
+            slug = naming_mappings[slug]
+            
+        # Remove wood- prefix (wood materials are defined without prefix in materials.yaml)
+        if slug.startswith("wood-"):
+            slug = slug[5:]  # Remove "wood-" prefix
+            
+        return slug
+
     def _create_template_vars(
         self,
         material_name,
@@ -157,7 +180,9 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
     ):
         """Create template variables for frontmatter generation."""
         subject_lowercase = material_name.lower()
-        subject_slug = subject_lowercase.replace(" ", "-")
+        
+        # Apply standardized naming convention that matches the resolved image naming
+        subject_slug = self._apply_standardized_naming(subject_lowercase)
 
         # FAIL-FAST: Category is required for frontmatter generation
         if "category" not in material_data:

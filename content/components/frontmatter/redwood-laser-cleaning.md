@@ -1,4 +1,5 @@
 ---
+name: Redwood
 applications:
 - detail: Gentle removal of surface dirt, grime, and old finishes from Redwood artifacts
     and furniture
@@ -6,6 +7,17 @@ applications:
 - detail: Non-contact cleaning of delicate Redwood structures and carvings without
     abrasion
   industry: Historical Preservation
+technicalSpecifications:
+  fluenceRange: 0.5–2.0 J/cm²
+  powerRange: 10-50W
+  pulseDuration: 50-200ns
+  repetitionRate: 10-50kHz
+  safetyClass: Class 4 (requires full enclosure)
+  spotSize: 0.5-3.0mm
+  wavelength: 1064nm (primary), 355nm (optional for selective coating removal)
+description: Technical overview of Redwood (Sequoia sempervirens) for laser cleaning
+  applications, including optimal low-fluence 1064nm wavelength interaction for organic
+  material preservation.
 author: Todd Dunning
 author_object:
   country: United States (California)
@@ -15,31 +27,20 @@ author_object:
   name: Todd Dunning
   sex: m
   title: MA
-category: wood
 chemicalProperties:
   formula: C6H10O5 (approx. cellulose composition)
   materialType: Softwood
   symbol: Redwood
-compatibility:
-- Historical Wooden Artifacts
-- Furniture and Carvings
-- Architectural Elements
 composition:
 - Cellulose (C6H10O5)n ~45%
 - Lignin (C9H10O2,OCH3)n ~30%
 - Hemicellulose ~20%
 - Extractives (tannins, oils) ~5%
-description: Technical overview of Redwood (Sequoia sempervirens) for laser cleaning
-  applications, including optimal low-fluence 1064nm wavelength interaction for organic
-  material preservation.
-environmentalImpact:
-- benefit: Chemical Solvent Elimination
-  description: Eliminates need for harsh chemical strippers and cleaners on wood surfaces
-- benefit: Water Conservation
-  description: Zero water usage compared to traditional wood washing methods
-- benefit: Waste Reduction
-  description: Produces only vaporized contaminants, no secondary waste materials
-headline: Comprehensive technical guide for laser cleaning Redwood wood surfaces
+compatibility:
+- Historical Wooden Artifacts
+- Furniture and Carvings
+- Architectural Elements
+regulatoryStandards: ISO 13061 (wood physical properties), ASTM D143 (wood testing)
 images:
   hero:
     alt: Redwood surface undergoing laser cleaning showing precise contamination removal
@@ -48,10 +49,15 @@ images:
     alt: Microscopic view of Redwood surface after laser cleaning showing detailed
       surface structure
     url: /images/redwood-laser-cleaning-micro.jpg
-keywords: redwood, sequoia sempervirens, wood laser cleaning, laser ablation, cultural
-  heritage conservation, non-contact wood cleaning, pulsed fiber laser, surface contamination
-  removal, historical preservation
-name: Redwood
+title: Laser Cleaning Redwood - Technical Guide for Gentle Wood Processing
+headline: Comprehensive technical guide for laser cleaning Redwood wood surfaces
+environmentalImpact:
+- benefit: Chemical Solvent Elimination
+  description: Eliminates need for harsh chemical strippers and cleaners on wood surfaces
+- benefit: Water Conservation
+  description: Zero water usage compared to traditional wood washing methods
+- benefit: Waste Reduction
+  description: Produces only vaporized contaminants, no secondary waste materials
 outcomes:
 - metric: Complete removal of surface contaminants without altering wood patina
   result: Surface Cleanliness
@@ -59,6 +65,9 @@ outcomes:
   result: Material Preservation
 - metric: 0.5-2 m²/hour cleaning rate depending on contamination level
   result: Processing Speed
+keywords: redwood, sequoia sempervirens, wood laser cleaning, laser ablation, cultural
+  heritage conservation, non-contact wood cleaning, pulsed fiber laser, surface contamination
+  removal, historical preservation
 prompt_chain_verification:
   ai_detection_config_loaded: true
   author_id: 4
@@ -70,6 +79,7 @@ prompt_chain_verification:
   persona_country: United States (California)
   prompt_components_integrated: 4
   verification_timestamp: '2025-09-16T22:59:28Z'
+category: wood
 properties:
   chemicalComposition: Cellulose, Lignin, Hemicellulose
   decompositionMax: 400°C
@@ -111,16 +121,6 @@ properties:
   thermalPercentile: 22.2
   wavelength: 1064nm
   youngsModulus: 8-12 GPa
-regulatoryStandards: ISO 13061 (wood physical properties), ASTM D143 (wood testing)
-technicalSpecifications:
-  fluenceRange: 0.5–2.0 J/cm²
-  powerRange: 10-50W
-  pulseDuration: 50-200ns
-  repetitionRate: 10-50kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.5-3.0mm
-  wavelength: 1064nm (primary), 355nm (optional for selective coating removal)
-title: Laser Cleaning Redwood - Technical Guide for Gentle Wood Processing
 ---
 
 # Version Information

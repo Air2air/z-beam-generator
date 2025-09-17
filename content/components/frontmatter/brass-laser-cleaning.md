@@ -1,4 +1,5 @@
 ---
+name: Brass
 applications:
 - detail: Removal of surface oxides and contaminants from brass connectors and components
   industry: Electronics Manufacturing
@@ -9,6 +10,17 @@ applications:
 - detail: Precision cleaning of brass instrument valves and slides without abrasive
     damage
   industry: Musical Instruments
+technicalSpecifications:
+  fluenceRange: 0.8–3.2 J/cm²
+  powerRange: 20-100W
+  pulseDuration: 10-50ns
+  repetitionRate: 20-80kHz
+  safetyClass: Class 4 (requires full enclosure and fume extraction)
+  spotSize: 0.1-0.8mm
+  wavelength: 1064nm (primary), 532nm (optional for delicate applications)
+description: Technical overview of Brass (Cu-Zn alloy) for laser cleaning applications,
+  including optimal 1064nm wavelength interaction with copper content, and industrial
+  applications in surface preparation and restoration.
 author: Todd Dunning
 author_object:
   country: United States (California)
@@ -18,22 +30,29 @@ author_object:
   name: Todd Dunning
   sex: m
   title: MA
-category: metal
 chemicalProperties:
   formula: Cu-Zn
   materialType: alloy
   symbol: Brass
-compatibility:
-- Copper Alloys
-- Stainless Steel
-- Bronze
 composition:
 - 'Copper (Cu): 60-90%'
 - 'Zinc (Zn): 10-40%'
 - Trace elements (Pb, Fe, Sn, Al)
-description: Technical overview of Brass (Cu-Zn alloy) for laser cleaning applications,
-  including optimal 1064nm wavelength interaction with copper content, and industrial
-  applications in surface preparation and restoration.
+compatibility:
+- Copper Alloys
+- Stainless Steel
+- Bronze
+regulatoryStandards: ISO 9001, ASTM B36, ASTM B134
+images:
+  hero:
+    alt: Brass surface undergoing laser cleaning showing precise contamination removal
+    url: /images/brass-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Brass surface after laser cleaning showing detailed surface
+      structure
+    url: /images/brass-laser-cleaning-micro.jpg
+title: Laser Cleaning Brass - Technical Guide for Optimal Processing
+headline: Comprehensive technical guide for laser cleaning brass alloys
 environmentalImpact:
 - benefit: Chemical Solvent Elimination
   description: Eliminates use of acidic cleaners and chemical solvents for tarnish
@@ -43,19 +62,6 @@ environmentalImpact:
 - benefit: Waste Reduction
   description: Produces only minimal metallic oxide powder waste that can be collected
     and recycled
-headline: Comprehensive technical guide for laser cleaning brass alloys
-images:
-  hero:
-    alt: Brass surface undergoing laser cleaning showing precise contamination removal
-    url: /images/brass-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Brass surface after laser cleaning showing detailed surface
-      structure
-    url: /images/brass-laser-cleaning-micro.jpg
-keywords: brass, brass alloy, copper-zinc, laser ablation, laser cleaning, non-contact
-  cleaning, pulsed fiber laser, surface oxide removal, tarnish removal, industrial
-  laser parameters, surface restoration
-name: Brass
 outcomes:
 - metric: Achieves ISO 8501-1 Sa 2.5 cleanliness standard
   result: Surface Cleanliness Level
@@ -63,6 +69,9 @@ outcomes:
   result: Material Removal Precision
 - metric: 1-3 m²/hour cleaning rate depending on tarnish thickness
   result: Processing Speed
+keywords: brass, brass alloy, copper-zinc, laser ablation, laser cleaning, non-contact
+  cleaning, pulsed fiber laser, surface oxide removal, tarnish removal, industrial
+  laser parameters, surface restoration
 prompt_chain_verification:
   ai_detection_config_loaded: true
   author_id: 4
@@ -74,6 +83,7 @@ prompt_chain_verification:
   persona_country: United States (California)
   prompt_components_integrated: 4
   verification_timestamp: '2025-09-16T22:00:53Z'
+category: metal
 properties:
   chemicalFormula: Cu-Zn
   density: 8.4-8.7 g/cm³
@@ -113,16 +123,6 @@ properties:
   thermalPercentile: 25.9
   wavelength: 1064nm
   youngsModulus: 97-110 GPa
-regulatoryStandards: ISO 9001, ASTM B36, ASTM B134
-technicalSpecifications:
-  fluenceRange: 0.8–3.2 J/cm²
-  powerRange: 20-100W
-  pulseDuration: 10-50ns
-  repetitionRate: 20-80kHz
-  safetyClass: Class 4 (requires full enclosure and fume extraction)
-  spotSize: 0.1-0.8mm
-  wavelength: 1064nm (primary), 532nm (optional for delicate applications)
-title: Laser Cleaning Brass - Technical Guide for Optimal Processing
 ---
 
 # Version Information

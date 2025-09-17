@@ -1,10 +1,22 @@
 ---
+name: Cherry
 applications:
 - detail: Removal of surface stains, finishes, and contaminants from cherry wood substrates
   industry: Woodworking & Furniture
 - detail: Gentle cleaning and restoration of vintage cherry wood instruments without
     damaging delicate surfaces
   industry: Musical Instrument Manufacturing
+technicalSpecifications:
+  fluenceRange: 0.5–2.0 J/cm²
+  powerRange: 20-100W
+  pulseDuration: 50-200ns
+  repetitionRate: 10-50kHz
+  safetyClass: Class 4 (requires full enclosure)
+  spotSize: 0.5-3.0mm
+  wavelength: 1064nm (primary), 355nm (optional for delicate work)
+description: Technical overview of cherry wood (Prunus avium) for laser cleaning applications,
+  including optimal wavelength interaction with lignin and cellulose, and applications
+  in wood restoration and surface preparation.
 author: Yi-Chun Lin
 author_object:
   country: Taiwan
@@ -14,32 +26,20 @@ author_object:
   name: Yi-Chun Lin
   sex: f
   title: Ph.D.
-category: wood
 chemicalProperties:
   formula: C6H10O5 (cellulose base)
   materialType: Hardwood
   symbol: Cherry Wood
-compatibility:
-- Hardwoods
-- Finished Wood Surfaces
-- Wood Veneers
 composition:
 - 'Cellulose (C6H10O5)n: 40-50%'
 - 'Lignin: 20-30%'
 - 'Hemicellulose: 20-30%'
 - 'Extractives: 2-5%'
-description: Technical overview of cherry wood (Prunus avium) for laser cleaning applications,
-  including optimal wavelength interaction with lignin and cellulose, and applications
-  in wood restoration and surface preparation.
-environmentalImpact:
-- benefit: Chemical Solvent Elimination
-  description: Eliminates need for harsh chemical strippers and solvents in wood restoration
-- benefit: Dust Reduction
-  description: Reduces airborne wood dust by 95% compared to mechanical sanding
-- benefit: Water Conservation
-  description: Eliminates water usage in cleaning and preparation processes
-headline: Comprehensive technical guide for laser cleaning and restoration of cherry
-  wood surfaces
+compatibility:
+- Hardwoods
+- Finished Wood Surfaces
+- Wood Veneers
+regulatoryStandards: ISO 13061, ASTM D2395, OSHA Wood Dust Standards
 images:
   hero:
     alt: Cherry surface undergoing laser cleaning showing precise contamination removal
@@ -48,9 +48,16 @@ images:
     alt: Microscopic view of Cherry surface after laser cleaning showing detailed
       surface structure
     url: /images/cherry-laser-cleaning-micro.jpg
-keywords: cherry wood, laser cleaning, wood restoration, non-contact cleaning, pulsed
-  fiber laser, surface contamination removal, lignin ablation, wood surface treatment
-name: Cherry
+title: Laser Cleaning Cherry Wood - Technical Guide for Optimal Processing
+headline: Comprehensive technical guide for laser cleaning and restoration of cherry
+  wood surfaces
+environmentalImpact:
+- benefit: Chemical Solvent Elimination
+  description: Eliminates need for harsh chemical strippers and solvents in wood restoration
+- benefit: Dust Reduction
+  description: Reduces airborne wood dust by 95% compared to mechanical sanding
+- benefit: Water Conservation
+  description: Eliminates water usage in cleaning and preparation processes
 outcomes:
 - metric: Complete removal of finishes and contaminants without damaging wood fibers
   result: Surface Cleanliness
@@ -58,6 +65,8 @@ outcomes:
   result: Material Preservation
 - metric: 0.5-2 m²/hour cleaning rate depending on contamination level
   result: Processing Speed
+keywords: cherry wood, laser cleaning, wood restoration, non-contact cleaning, pulsed
+  fiber laser, surface contamination removal, lignin ablation, wood surface treatment
 prompt_chain_verification:
   ai_detection_config_loaded: true
   author_id: 1
@@ -69,6 +78,7 @@ prompt_chain_verification:
   persona_country: Taiwan
   prompt_components_integrated: 4
   verification_timestamp: '2025-09-16T22:50:48Z'
+category: wood
 properties:
   charringPoint: 200-250°C
   chemicalComposition: Cellulose 40-50%, Lignin 20-30%, Hemicellulose 20-30%
@@ -110,16 +120,6 @@ properties:
   thermalPercentile: 29.2
   wavelength: 1064nm
   youngsModulus: 10.3 GPa
-regulatoryStandards: ISO 13061, ASTM D2395, OSHA Wood Dust Standards
-technicalSpecifications:
-  fluenceRange: 0.5–2.0 J/cm²
-  powerRange: 20-100W
-  pulseDuration: 50-200ns
-  repetitionRate: 10-50kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.5-3.0mm
-  wavelength: 1064nm (primary), 355nm (optional for delicate work)
-title: Laser Cleaning Cherry Wood - Technical Guide for Optimal Processing
 ---
 
 # Version Information

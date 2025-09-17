@@ -1,4 +1,5 @@
 ---
+name: Float Glass
 applications:
 - detail: Removal of surface oxides and contaminants from display and touch panel
     glass substrates
@@ -6,6 +7,17 @@ applications:
 - detail: Precision cleaning of coated and uncoated float glass panels prior to further
     processing
   industry: Architectural and Automotive Glass
+technicalSpecifications:
+  fluenceRange: 0.5–3.0 J/cm²
+  powerRange: 10-100W
+  pulseDuration: 10-200ns
+  repetitionRate: 10-200kHz
+  safetyClass: Class 4 (requires full enclosure)
+  spotSize: 0.1-2.0mm
+  wavelength: 1064nm (primary), 355nm (optional)
+description: Technical overview of soda-lime float glass for laser cleaning applications,
+  including optimal wavelength interaction with surface contaminants, and industrial
+  applications in high-precision glass manufacturing.
 author: Yi-Chun Lin
 author_object:
   country: Taiwan
@@ -15,33 +27,21 @@ author_object:
   name: Yi-Chun Lin
   sex: f
   title: Ph.D.
-category: glass
 chemicalProperties:
   formula: Na2O·CaO·6SiO2
   materialType: soda-lime glass
   symbol: FG
-compatibility:
-- Soda-Lime Glass
-- Borosilicate Glass
-- Aluminosilicate Glass
 composition:
 - Silica (SiO2) 70-75%
 - Sodium Oxide (Na2O) 12-16%
 - Calcium Oxide (CaO) 8-12%
 - Magnesium Oxide (MgO) 1-4%
 - Aluminum Oxide (Al2O3) 0-2%
-description: Technical overview of soda-lime float glass for laser cleaning applications,
-  including optimal wavelength interaction with surface contaminants, and industrial
-  applications in high-precision glass manufacturing.
-environmentalImpact:
-- benefit: Chemical Solvent Elimination
-  description: Eliminates use of harsh chemical cleaners and solvents in glass processing
-- benefit: Water Conservation
-  description: Reduces water consumption by 90% compared to traditional aqueous cleaning
-    methods
-- benefit: Energy Efficiency
-  description: Consumes 60% less energy than thermal or ultrasonic cleaning processes
-headline: Comprehensive technical guide for laser cleaning soda-lime float glass
+compatibility:
+- Soda-Lime Glass
+- Borosilicate Glass
+- Aluminosilicate Glass
+regulatoryStandards: ISO 12543, ASTM C1036, EN 572-1
 images:
   hero:
     alt: Float Glass surface undergoing laser cleaning showing precise contamination
@@ -51,10 +51,16 @@ images:
     alt: Microscopic view of Float Glass surface after laser cleaning showing detailed
       surface structure
     url: /images/float-glass-laser-cleaning-micro.jpg
-keywords: float glass, soda-lime glass, laser ablation, laser cleaning, non-contact
-  cleaning, pulsed laser, surface contamination removal, glass manufacturing, display
-  glass, architectural glass
-name: Float Glass
+title: Laser Cleaning Float Glass - Technical Guide for Optimal Processing
+headline: Comprehensive technical guide for laser cleaning soda-lime float glass
+environmentalImpact:
+- benefit: Chemical Solvent Elimination
+  description: Eliminates use of harsh chemical cleaners and solvents in glass processing
+- benefit: Water Conservation
+  description: Reduces water consumption by 90% compared to traditional aqueous cleaning
+    methods
+- benefit: Energy Efficiency
+  description: Consumes 60% less energy than thermal or ultrasonic cleaning processes
 outcomes:
 - metric: Achieves particle counts below 100 particles/cm² >0.3μm
   result: Surface Cleanliness Level
@@ -62,6 +68,9 @@ outcomes:
   result: Material Removal Precision
 - metric: 0.5-2.0 m²/hour cleaning rate depending on contamination level
   result: Processing Speed
+keywords: float glass, soda-lime glass, laser ablation, laser cleaning, non-contact
+  cleaning, pulsed laser, surface contamination removal, glass manufacturing, display
+  glass, architectural glass
 prompt_chain_verification:
   ai_detection_config_loaded: true
   author_id: 1
@@ -73,6 +82,7 @@ prompt_chain_verification:
   persona_country: Taiwan
   prompt_components_integrated: 4
   verification_timestamp: '2025-09-16T21:45:03Z'
+category: glass
 properties:
   chemicalFormula: Na2O·CaO·6SiO2
   density: 2.5 g/cm³
@@ -112,16 +122,6 @@ properties:
   thermalPercentile: 33.3
   wavelength: 1064nm
   youngsModulus: 70-80 GPa
-regulatoryStandards: ISO 12543, ASTM C1036, EN 572-1
-technicalSpecifications:
-  fluenceRange: 0.5–3.0 J/cm²
-  powerRange: 10-100W
-  pulseDuration: 10-200ns
-  repetitionRate: 10-200kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.1-2.0mm
-  wavelength: 1064nm (primary), 355nm (optional)
-title: Laser Cleaning Float Glass - Technical Guide for Optimal Processing
 ---
 
 # Version Information

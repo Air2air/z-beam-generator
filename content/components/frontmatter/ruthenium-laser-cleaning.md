@@ -1,9 +1,20 @@
 ---
+name: Ruthenium
 applications:
 - detail: Removal of surface oxides and contaminants from Ruthenium substrates
   industry: Electronics Manufacturing
 - detail: Cleaning of thermal barrier coatings and metal matrix composites
   industry: Aerospace Components
+technicalSpecifications:
+  fluenceRange: 1.0–4.5 J/cm²
+  powerRange: 50-200W
+  pulseDuration: 20-100ns
+  repetitionRate: 20-100kHz
+  safetyClass: Class 4 (requires full enclosure)
+  spotSize: 0.2-1.5mm
+  wavelength: 1064nm (primary), 532nm (optional)
+description: Technical overview of Ruthenium laser cleaning applications, including
+  optimal 1064nm wavelength interaction, and industrial applications in surface preparation.
 author: Yi-Chun Lin
 author_object:
   country: Taiwan
@@ -13,29 +24,18 @@ author_object:
   name: Yi-Chun Lin
   sex: f
   title: Ph.D.
-category: metal
 chemicalProperties:
   formula: Ru
   materialType: metal
   symbol: Ru
+composition:
+- Ruthenium (Ru) 99.95%
+- Trace elements (Pt, Pd, Rh, Ir)
 compatibility:
 - Platinum Group Metals
 - Titanium Alloys
 - Nickel-based Superalloys
-composition:
-- Ruthenium (Ru) 99.95%
-- Trace elements (Pt, Pd, Rh, Ir)
-description: Technical overview of Ruthenium laser cleaning applications, including
-  optimal 1064nm wavelength interaction, and industrial applications in surface preparation.
-environmentalImpact:
-- benefit: Chemical Solvent Elimination
-  description: Reduces chemical usage by 100% compared to traditional solvent cleaning
-    methods
-- benefit: Water Conservation
-  description: Saves approximately 5000 liters of water per month in industrial applications
-- benefit: Energy Efficiency
-  description: Consumes 40% less energy than thermal cleaning processes
-headline: Comprehensive technical guide for laser cleaning ruthenium metal
+regulatoryStandards: ISO 18562, ASTM F2100, IEC 60601-1
 images:
   hero:
     alt: Ruthenium surface undergoing laser cleaning showing precise contamination
@@ -45,10 +45,16 @@ images:
     alt: Microscopic view of Ruthenium surface after laser cleaning showing detailed
       surface structure
     url: /images/ruthenium-laser-cleaning-micro.jpg
-keywords: ruthenium, ruthenium metal, laser ablation, laser cleaning, non-contact
-  cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters,
-  thermal processing, surface restoration
-name: Ruthenium
+title: Laser Cleaning Ruthenium - Technical Guide for Optimal Processing
+headline: Comprehensive technical guide for laser cleaning ruthenium metal
+environmentalImpact:
+- benefit: Chemical Solvent Elimination
+  description: Reduces chemical usage by 100% compared to traditional solvent cleaning
+    methods
+- benefit: Water Conservation
+  description: Saves approximately 5000 liters of water per month in industrial applications
+- benefit: Energy Efficiency
+  description: Consumes 40% less energy than thermal cleaning processes
 outcomes:
 - metric: Achieves ISO 14644-1 Class 7 cleanliness standard
   result: Surface Cleanliness Level
@@ -56,6 +62,9 @@ outcomes:
   result: Material Removal Precision
 - metric: 1.5-4 m²/hour cleaning rate depending on contamination level
   result: Processing Speed
+keywords: ruthenium, ruthenium metal, laser ablation, laser cleaning, non-contact
+  cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters,
+  thermal processing, surface restoration
 prompt_chain_verification:
   ai_detection_config_loaded: true
   author_id: 1
@@ -67,6 +76,7 @@ prompt_chain_verification:
   persona_country: Taiwan
   prompt_components_integrated: 4
   verification_timestamp: '2025-09-16T22:18:39Z'
+category: metal
 properties:
   chemicalFormula: Ru
   density: 12.45 g/cm³
@@ -106,16 +116,6 @@ properties:
   thermalPercentile: 25.9
   wavelength: 1064nm
   youngsModulus: 447 GPa
-regulatoryStandards: ISO 18562, ASTM F2100, IEC 60601-1
-technicalSpecifications:
-  fluenceRange: 1.0–4.5 J/cm²
-  powerRange: 50-200W
-  pulseDuration: 20-100ns
-  repetitionRate: 20-100kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.2-1.5mm
-  wavelength: 1064nm (primary), 532nm (optional)
-title: Laser Cleaning Ruthenium - Technical Guide for Optimal Processing
 ---
 
 # Version Information

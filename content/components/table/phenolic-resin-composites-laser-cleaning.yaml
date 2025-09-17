@@ -1,0 +1,120 @@
+materialTables:
+  tables:
+  - header: '## Physical Properties'
+    rows:
+    - property: Density
+      value: "1.4-1.8 g/cm\xB3"
+      unit: "g/cm\xB3"
+      min: "0.9 g/cm\xB3"
+      max: "2.2 g/cm\xB3"
+      percentile: 53.8
+      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
+        h-2 rounded-full" style="width: 50%"></div></div><p class="text-xs text-center">Value
+        at 50% of range</p>'
+  - header: '## Thermal Properties'
+    rows:
+    - property: Thermal Conductivity
+      value: "0.2-0.5 W/m\xB7K"
+      unit: "W/m\xB7K"
+      min: "0.1 W/m\xB7K"
+      max: "60 W/m\xB7K"
+      percentile: 0.4
+      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
+        h-2 rounded-full" style="width: 4%"></div></div><p class="text-xs text-center">Value
+        at 4% of range</p>'
+    - property: Thermal Diffusivity
+      value: "0.1 mm\xB2/s-20 mm\xB2/s mm\xB2/s"
+      unit: "mm\xB2/s"
+      min: "0.1 mm\xB2/s"
+      max: "20 mm\xB2/s"
+      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
+        h-2 rounded-full" style="width: 50%"></div></div><p class="text-xs text-center">Value
+        at 50% of range</p>'
+    - property: Thermal Expansion
+      value: "1 \xB5m/m\xB7K-60 \xB5m/m\xB7K \xB5m/m\xB7K"
+      unit: "\xB5m/m\xB7K"
+      min: "1 \xB5m/m\xB7K"
+      max: "60 \xB5m/m\xB7K"
+      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
+        h-2 rounded-full" style="width: 50%"></div></div><p class="text-xs text-center">Value
+        at 50% of range</p>'
+    - property: Specific Heat
+      value: "0.8 J/g\xB7K-2.0 J/g\xB7K J/g\xB7K"
+      unit: "J/g\xB7K"
+      min: "0.8 J/g\xB7K"
+      max: "2.0 J/g\xB7K"
+      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
+        h-2 rounded-full" style="width: 50%"></div></div><p class="text-xs text-center">Value
+        at 50% of range</p>'
+  - header: '## Mechanical Properties'
+    rows:
+    - property: Tensile Strength
+      value: 100-300 MPa
+      unit: MPa
+      min: 100 MPa
+      max: 7000 MPa
+      percentile: 1.4
+      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
+        h-2 rounded-full" style="width: 1%"></div></div><p class="text-xs text-center">Value
+        at 1% of range</p>'
+    - property: Hardness
+      value: 80-120 Barcol
+      unit: HV
+      min: 10 HB
+      max: 80 HRC
+      percentile: 100.0
+      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
+        h-2 rounded-full" style="width: 100%"></div></div><p class="text-xs text-center">Value
+        at 100% of range</p>'
+    - property: Young's Modulus
+      value: 10-30 GPa
+      unit: GPa
+      min: 1 GPa
+      max: 300 GPa
+      percentile: 6.4
+      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
+        h-2 rounded-full" style="width: 6%"></div></div><p class="text-xs text-center">Value
+        at 6% of range</p>'
+  - header: '## Optical Properties'
+    rows:
+    - property: Laser Absorption
+      value: "1 cm\u207B\xB9-80 cm\u207B\xB9 cm\u207B\xB9"
+      unit: "cm\u207B\xB9"
+      min: "1 cm\u207B\xB9"
+      max: "80 cm\u207B\xB9"
+      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
+        h-2 rounded-full" style="width: 50%"></div></div><p class="text-xs text-center">Value
+        at 50% of range</p>'
+    - property: Laser Reflectivity
+      value: 3%-15%%
+      unit: '%'
+      min: 3%
+      max: 15%
+      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
+        h-2 rounded-full" style="width: 50%"></div></div><p class="text-xs text-center">Value
+        at 50% of range</p>'
+  - header: '## Laser Processing Parameters'
+    rows:
+    - property: Laser Type
+      value: Pulsed Fiber Laser
+      unit: '-'
+      htmlVisualization: <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded">Standard</span>
+    - property: Wavelength
+      value: 1064nm
+      unit: nm
+      htmlVisualization: <span class="px-2 py-1 bg-green-100 text-green-800 rounded">Optimal</span>
+    - property: Fluence Range
+      value: "0.5\u20132.5 J/cm\xB2"
+      unit: "J/cm\xB2"
+      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-orange-600
+        h-2 rounded-full" style="width: 75%"></div></div>'
+  - header: '## Composition'
+    rows:
+    - property: Chemical Formula
+      value: Phenolic-Carbon/Glass Fiber
+      unit: '-'
+      htmlVisualization: <span class="font-mono text-sm bg-gray-100 px-2 py-1 rounded">Chemical</span>
+renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with
+  <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile
+  ? percentile + ''%'' : ''N/A''}</td><td dangerouslySetInnerHTML={{__html: htmlVisualization}}
+  /></tr>. Use MDX for headers.'

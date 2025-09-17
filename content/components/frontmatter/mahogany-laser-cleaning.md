@@ -1,4 +1,5 @@
 ---
+name: Mahogany
 applications:
 - detail: Gentle removal of dirt, grime, and old finishes from antique and high-value
     mahogany pieces
@@ -6,6 +7,17 @@ applications:
 - detail: Cleaning of weathered surfaces and biological growth from mahogany decks
     and trim
   industry: Marine Woodwork
+technicalSpecifications:
+  fluenceRange: 0.5–2.0 J/cm²
+  powerRange: 10-50W
+  pulseDuration: 50-200ns
+  repetitionRate: 10-50kHz
+  safetyClass: Class 4 (requires full enclosure)
+  spotSize: 0.5-3.0mm
+  wavelength: 1064nm (primary), 532nm (optional for delicate work)
+description: Technical overview of Mahogany for laser cleaning applications, including
+  optimal low-fluence wavelength interaction for wood surface restoration without
+  charring.
 author: Yi-Chun Lin
 author_object:
   country: Taiwan
@@ -15,32 +27,20 @@ author_object:
   name: Yi-Chun Lin
   sex: f
   title: Ph.D.
-category: wood
 chemicalProperties:
   formula: Complex organic polymer (lignin, cellulose, hemicellulose)
   materialType: Hardwood
   symbol: Mahogany
-compatibility:
-- Wood Finishes
-- Wood Adhesives
-- Wood Preservatives
 composition:
 - Cellulose 40-50%
 - Lignin 20-30%
 - Hemicellulose 15-25%
 - Extractives 2-5%
-description: Technical overview of Mahogany for laser cleaning applications, including
-  optimal low-fluence wavelength interaction for wood surface restoration without
-  charring.
-environmentalImpact:
-- benefit: Chemical Solvent Elimination
-  description: Eliminates need for harsh chemical strippers and solvents in wood restoration
-- benefit: Waste Reduction
-  description: Produces minimal waste compared to traditional sanding and chemical
-    methods
-- benefit: Energy Efficiency
-  description: Consumes 60% less energy than thermal stripping processes
-headline: Comprehensive technical guide for laser cleaning mahogany wood surfaces
+compatibility:
+- Wood Finishes
+- Wood Adhesives
+- Wood Preservatives
+regulatoryStandards: ASTM D2574, ISO 13061, ANSI/BIFMA X5.1
 images:
   hero:
     alt: Mahogany surface undergoing laser cleaning showing precise contamination
@@ -50,10 +50,16 @@ images:
     alt: Microscopic view of Mahogany surface after laser cleaning showing detailed
       surface structure
     url: /images/mahogany-laser-cleaning-micro.jpg
-keywords: mahogany, mahogany wood, laser ablation, laser cleaning, wood restoration,
-  non-contact cleaning, pulsed fiber laser, surface contamination removal, antique
-  furniture cleaning
-name: Mahogany
+title: Laser Cleaning Mahogany - Technical Guide for Wood Restoration
+headline: Comprehensive technical guide for laser cleaning mahogany wood surfaces
+environmentalImpact:
+- benefit: Chemical Solvent Elimination
+  description: Eliminates need for harsh chemical strippers and solvents in wood restoration
+- benefit: Waste Reduction
+  description: Produces minimal waste compared to traditional sanding and chemical
+    methods
+- benefit: Energy Efficiency
+  description: Consumes 60% less energy than thermal stripping processes
 outcomes:
 - metric: Complete removal of surface contaminants without wood damage
   result: Surface Cleanliness
@@ -61,6 +67,9 @@ outcomes:
   result: Material Preservation
 - metric: 0.5-2 m²/hour cleaning rate depending on contamination level
   result: Processing Speed
+keywords: mahogany, mahogany wood, laser ablation, laser cleaning, wood restoration,
+  non-contact cleaning, pulsed fiber laser, surface contamination removal, antique
+  furniture cleaning
 prompt_chain_verification:
   ai_detection_config_loaded: true
   author_id: 1
@@ -72,6 +81,7 @@ prompt_chain_verification:
   persona_country: Taiwan
   prompt_components_integrated: 4
   verification_timestamp: '2025-09-16T22:53:30Z'
+category: wood
 properties:
   chemicalFormula: Complex organic polymer
   decompositionPoint: 200-300°C
@@ -111,16 +121,6 @@ properties:
   thermalPercentile: 29.2
   wavelength: 1064nm
   youngsModulus: 9.7-11.0 GPa
-regulatoryStandards: ASTM D2574, ISO 13061, ANSI/BIFMA X5.1
-technicalSpecifications:
-  fluenceRange: 0.5–2.0 J/cm²
-  powerRange: 10-50W
-  pulseDuration: 50-200ns
-  repetitionRate: 10-50kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.5-3.0mm
-  wavelength: 1064nm (primary), 532nm (optional for delicate work)
-title: Laser Cleaning Mahogany - Technical Guide for Wood Restoration
 ---
 
 # Version Information

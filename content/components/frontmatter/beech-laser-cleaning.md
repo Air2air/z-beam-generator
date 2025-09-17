@@ -1,4 +1,5 @@
 ---
+name: Beech
 applications:
 - detail: Removal of surface stains, coatings, and biological contaminants from beech
     wood components
@@ -6,6 +7,17 @@ applications:
 - detail: Gentle cleaning of antique beech wood artifacts and sculptures without abrasive
     damage
   industry: Cultural Heritage Restoration
+technicalSpecifications:
+  fluenceRange: 0.5–2.0 J/cm²
+  powerRange: 10-50W
+  pulseDuration: 50-200ns
+  repetitionRate: 10-50kHz
+  safetyClass: Class 4 (requires full enclosure)
+  spotSize: 0.5-3.0mm
+  wavelength: 1064nm (primary), 355nm (optional for delicate work)
+description: Technical overview of Beech wood, C6H10O5, for laser cleaning applications,
+  including optimal 1064nm wavelength interaction with lignin and cellulose, and specialized
+  applications in wood restoration.
 author: Ikmanda Roswati
 author_object:
   country: Indonesia
@@ -15,32 +27,20 @@ author_object:
   name: Ikmanda Roswati
   sex: m
   title: Ph.D.
-category: wood
 chemicalProperties:
   formula: C6H10O5
   materialType: Hardwood
   symbol: Beech
-compatibility:
-- Clear Coatings
-- Oil Finishes
-- Wax Treatments
 composition:
 - 'Cellulose: 40-45%'
 - 'Hemicellulose: 25-35%'
 - 'Lignin: 20-25%'
 - 'Extractives: 3-5%'
-description: Technical overview of Beech wood, C6H10O5, for laser cleaning applications,
-  including optimal 1064nm wavelength interaction with lignin and cellulose, and specialized
-  applications in wood restoration.
-environmentalImpact:
-- benefit: Chemical Solvent Elimination
-  description: Eliminates need for harsh chemical strippers and solvents in wood restoration
-- benefit: Water Conservation
-  description: Reduces water usage by 95% compared to traditional steam cleaning methods
-- benefit: Waste Reduction
-  description: Produces minimal waste as removed material is vaporized rather than
-    creating slurry
-headline: Comprehensive technical guide for laser cleaning beech wood surfaces
+compatibility:
+- Clear Coatings
+- Oil Finishes
+- Wax Treatments
+regulatoryStandards: ISO 13061, ASTM D143, EN 350
 images:
   hero:
     alt: Beech surface undergoing laser cleaning showing precise contamination removal
@@ -49,10 +49,16 @@ images:
     alt: Microscopic view of Beech surface after laser cleaning showing detailed surface
       structure
     url: /images/beech-laser-cleaning-micro.jpg
-keywords: beech wood, laser cleaning, wood restoration, non-abrasive cleaning, lignin
-  ablation, cellulose preservation, cultural heritage, furniture restoration, laser
-  parameters for wood
-name: Beech
+title: Laser Cleaning Beech Wood - Technical Guide for Optimal Processing
+headline: Comprehensive technical guide for laser cleaning beech wood surfaces
+environmentalImpact:
+- benefit: Chemical Solvent Elimination
+  description: Eliminates need for harsh chemical strippers and solvents in wood restoration
+- benefit: Water Conservation
+  description: Reduces water usage by 95% compared to traditional steam cleaning methods
+- benefit: Waste Reduction
+  description: Produces minimal waste as removed material is vaporized rather than
+    creating slurry
 outcomes:
 - metric: Achieves complete removal of surface contaminants without damaging wood
     fibers
@@ -61,6 +67,9 @@ outcomes:
   result: Material Preservation
 - metric: 0.5-2 m²/hour cleaning rate depending on contamination type and severity
   result: Processing Speed
+keywords: beech wood, laser cleaning, wood restoration, non-abrasive cleaning, lignin
+  ablation, cellulose preservation, cultural heritage, furniture restoration, laser
+  parameters for wood
 prompt_chain_verification:
   ai_detection_config_loaded: true
   author_id: 3
@@ -72,6 +81,7 @@ prompt_chain_verification:
   persona_country: Indonesia
   prompt_components_integrated: 4
   verification_timestamp: '2025-09-16T22:48:11Z'
+category: wood
 properties:
   chemicalFormula: C6H10O5
   density: 0.72 g/cm³
@@ -113,16 +123,6 @@ properties:
   thermalPercentile: 33.3
   wavelength: 1064nm
   youngsModulus: 14 GPa
-regulatoryStandards: ISO 13061, ASTM D143, EN 350
-technicalSpecifications:
-  fluenceRange: 0.5–2.0 J/cm²
-  powerRange: 10-50W
-  pulseDuration: 50-200ns
-  repetitionRate: 10-50kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.5-3.0mm
-  wavelength: 1064nm (primary), 355nm (optional for delicate work)
-title: Laser Cleaning Beech Wood - Technical Guide for Optimal Processing
 ---
 
 # Version Information

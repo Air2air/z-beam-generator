@@ -1,10 +1,22 @@
 ---
+name: Kevlar-Reinforced Polymer
 applications:
 - detail: Removal of surface oxides and contaminants from Kevlar-Reinforced Polymer
     substrates
   industry: Electronics Manufacturing
 - detail: Cleaning of thermal barrier coatings and composite matrix composites
   industry: Aerospace Components
+technicalSpecifications:
+  fluenceRange: 1.0–4.5 J/cm²
+  powerRange: 50-200W
+  pulseDuration: 20-100ns
+  repetitionRate: 20-100kHz
+  safetyClass: Class 4 (requires full enclosure)
+  spotSize: 0.2-1.5mm
+  wavelength: 1064nm (primary), 532nm (optional)
+description: Technical overview of Kevlar-Reinforced Polymer, Aramid-Polymer, for
+  laser cleaning applications, including optimal 1064nm wavelength interaction, and
+  industrial applications in surface preparation.
 author: Ikmanda Roswati
 author_object:
   country: Indonesia
@@ -14,32 +26,19 @@ author_object:
   name: Ikmanda Roswati
   sex: m
   title: Ph.D.
-category: composite
 chemicalProperties:
   formula: Aramid-Polymer
   materialType: composite
   symbol: KRP
-compatibility:
-- Epoxy Resins
-- Polyester Resins
-- Vinyl Ester Resins
 composition:
 - Poly-paraphenylene terephthalamide (Kevlar) 50-60%
 - Polymer matrix (epoxy, polyester, or vinyl ester) 40-50%
 - Additives and coupling agents <2%
-description: Technical overview of Kevlar-Reinforced Polymer, Aramid-Polymer, for
-  laser cleaning applications, including optimal 1064nm wavelength interaction, and
-  industrial applications in surface preparation.
-environmentalImpact:
-- benefit: Chemical Solvent Elimination
-  description: Reduces chemical usage by 100% compared to traditional solvent cleaning
-    methods
-- benefit: Water Conservation
-  description: Saves approximately 5000 liters of water per month in industrial applications
-- benefit: Energy Efficiency
-  description: Consumes 40% less energy than thermal cleaning processes
-headline: Comprehensive technical guide for laser cleaning composite kevlar-reinforced
-  polymer
+compatibility:
+- Epoxy Resins
+- Polyester Resins
+- Vinyl Ester Resins
+regulatoryStandards: ISO 527-5, ASTM D3039, MIL-HDBK-17-3F
 images:
   hero:
     alt: Kevlar-Reinforced Polymer surface undergoing laser cleaning showing precise
@@ -49,10 +48,17 @@ images:
     alt: Microscopic view of Kevlar-Reinforced Polymer surface after laser cleaning
       showing detailed surface structure
     url: /images/kevlar-reinforced-polymer-laser-cleaning-micro.jpg
-keywords: kevlar-reinforced polymer, kevlar-reinforced polymer composite, laser ablation,
-  laser cleaning, non-contact cleaning, pulsed fiber laser, surface contamination
-  removal, industrial laser parameters, thermal processing, surface restoration
-name: Kevlar-Reinforced Polymer
+title: Laser Cleaning Kevlar-Reinforced Polymer - Technical Guide for Optimal Processing
+headline: Comprehensive technical guide for laser cleaning composite kevlar-reinforced
+  polymer
+environmentalImpact:
+- benefit: Chemical Solvent Elimination
+  description: Reduces chemical usage by 100% compared to traditional solvent cleaning
+    methods
+- benefit: Water Conservation
+  description: Saves approximately 5000 liters of water per month in industrial applications
+- benefit: Energy Efficiency
+  description: Consumes 40% less energy than thermal cleaning processes
 outcomes:
 - metric: Achieves ISO 14644-1 Class 7 cleanliness standard
   result: Surface Cleanliness Level
@@ -60,6 +66,9 @@ outcomes:
   result: Material Removal Precision
 - metric: 2-5 m²/hour cleaning rate depending on contamination level
   result: Processing Speed
+keywords: kevlar-reinforced polymer, kevlar-reinforced polymer composite, laser ablation,
+  laser cleaning, non-contact cleaning, pulsed fiber laser, surface contamination
+  removal, industrial laser parameters, thermal processing, surface restoration
 prompt_chain_verification:
   ai_detection_config_loaded: true
   author_id: 3
@@ -71,6 +80,7 @@ prompt_chain_verification:
   persona_country: Indonesia
   prompt_components_integrated: 4
   verification_timestamp: '2025-09-16T21:35:21Z'
+category: composite
 properties:
   chemicalFormula: Aramid-Polymer
   density: 1.44 g/cm³
@@ -110,16 +120,6 @@ properties:
   thermalPercentile: 0.0
   wavelength: 1064nm
   youngsModulus: 124-131 GPa
-regulatoryStandards: ISO 527-5, ASTM D3039, MIL-HDBK-17-3F
-technicalSpecifications:
-  fluenceRange: 1.0–4.5 J/cm²
-  powerRange: 50-200W
-  pulseDuration: 20-100ns
-  repetitionRate: 20-100kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.2-1.5mm
-  wavelength: 1064nm (primary), 532nm (optional)
-title: Laser Cleaning Kevlar-Reinforced Polymer - Technical Guide for Optimal Processing
 ---
 
 # Version Information

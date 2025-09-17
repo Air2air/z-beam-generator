@@ -1,4 +1,5 @@
 ---
+name: Epoxy Resin Composites
 applications:
 - detail: Removal of flux residues and surface contaminants from epoxy printed circuit
     boards (PCBs) and encapsulants
@@ -6,6 +7,17 @@ applications:
 - detail: Selective removal of damaged resin from carbon fiber reinforced polymer
     (CFRP) components for repair
   industry: Aerospace
+technicalSpecifications:
+  fluenceRange: 0.5–3.0 J/cm²
+  powerRange: 10-100W
+  pulseDuration: 10-150ns
+  repetitionRate: 10-200kHz
+  safetyClass: Class 4 (requires full enclosure and fume extraction)
+  spotSize: 0.1-2.0mm
+  wavelength: 1064nm (primary), 355nm (optional for selective removal)
+description: Technical overview of Epoxy Resin Composites for laser cleaning applications,
+  focusing on controlled ablation of epoxy matrix without damaging reinforcing fibers,
+  and industrial applications in surface preparation and repair.
 author: Yi-Chun Lin
 author_object:
   country: Taiwan
@@ -15,32 +27,19 @@ author_object:
   name: Yi-Chun Lin
   sex: f
   title: Ph.D.
-category: composite
 chemicalProperties:
   formula: Epoxy Matrix + Fiber Reinforcement
   materialType: polymer composite
   symbol: ERC
-compatibility:
-- Carbon Fiber Reinforced Polymer (CFRP)
-- Glass Fiber Reinforced Polymer (GFRP)
-- Aramid Fiber Composites
 composition:
 - Epoxy Resin (DGEBA, TGDDM, etc.) 30-60%
 - Carbon/Glass Fiber Reinforcement 40-70%
 - Curing Agents, Fillers, Additives 5-15%
-description: Technical overview of Epoxy Resin Composites for laser cleaning applications,
-  focusing on controlled ablation of epoxy matrix without damaging reinforcing fibers,
-  and industrial applications in surface preparation and repair.
-environmentalImpact:
-- benefit: Solvent-Free Processing
-  description: Eliminates use of chemical solvents and associated VOC emissions
-- benefit: Minimal Waste Generation
-  description: Produces only ablated particulate waste, reducing hazardous waste by
-    95%
-- benefit: Energy Efficient
-  description: Consumes 60% less energy than traditional abrasive blasting methods
-headline: Precision laser cleaning of epoxy composites for surface preparation and
-  repair applications
+compatibility:
+- Carbon Fiber Reinforced Polymer (CFRP)
+- Glass Fiber Reinforced Polymer (GFRP)
+- Aramid Fiber Composites
+regulatoryStandards: ISO 13003, ASTM D7137, NADCAP AC7121
 images:
   hero:
     alt: Epoxy Resin Composites surface undergoing laser cleaning showing precise
@@ -50,10 +49,17 @@ images:
     alt: Microscopic view of Epoxy Resin Composites surface after laser cleaning showing
       detailed surface structure
     url: /images/epoxy-resin-composites-laser-cleaning-micro.jpg
-keywords: epoxy resin composites, CFRP, GFRP, laser ablation, laser cleaning, composite
-  repair, surface preparation, pulsed fiber laser, non-destructive cleaning, thermal
-  decomposition
-name: Epoxy Resin Composites
+title: Laser Cleaning Epoxy Resin Composites - Technical Guide for Optimal Processing
+headline: Precision laser cleaning of epoxy composites for surface preparation and
+  repair applications
+environmentalImpact:
+- benefit: Solvent-Free Processing
+  description: Eliminates use of chemical solvents and associated VOC emissions
+- benefit: Minimal Waste Generation
+  description: Produces only ablated particulate waste, reducing hazardous waste by
+    95%
+- benefit: Energy Efficient
+  description: Consumes 60% less energy than traditional abrasive blasting methods
 outcomes:
 - metric: Achieves contact angle < 40° for improved adhesion
   result: Surface Cleanliness
@@ -61,6 +67,9 @@ outcomes:
   result: Fiber Preservation
 - metric: 0.5-2.0 m²/hour cleaning rate depending on contamination level and complexity
   result: Processing Speed
+keywords: epoxy resin composites, CFRP, GFRP, laser ablation, laser cleaning, composite
+  repair, surface preparation, pulsed fiber laser, non-destructive cleaning, thermal
+  decomposition
 prompt_chain_verification:
   ai_detection_config_loaded: true
   author_id: 1
@@ -72,6 +81,7 @@ prompt_chain_verification:
   persona_country: Taiwan
   prompt_components_integrated: 4
   verification_timestamp: '2025-09-16T21:33:35Z'
+category: composite
 properties:
   ablationThreshold: 0.8-1.2 J/cm²
   density: 1.2-2.0 g/cm³
@@ -111,16 +121,6 @@ properties:
   thermalPercentile: 0.4
   wavelength: 1064nm, 355nm
   youngsModulus: 20-70 GPa
-regulatoryStandards: ISO 13003, ASTM D7137, NADCAP AC7121
-technicalSpecifications:
-  fluenceRange: 0.5–3.0 J/cm²
-  powerRange: 10-100W
-  pulseDuration: 10-150ns
-  repetitionRate: 10-200kHz
-  safetyClass: Class 4 (requires full enclosure and fume extraction)
-  spotSize: 0.1-2.0mm
-  wavelength: 1064nm (primary), 355nm (optional for selective removal)
-title: Laser Cleaning Epoxy Resin Composites - Technical Guide for Optimal Processing
 ---
 
 # Version Information

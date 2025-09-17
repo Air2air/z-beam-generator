@@ -1,4 +1,5 @@
 ---
+name: Alabaster
 applications:
 - detail: Gentle removal of surface dirt, soot, and biological growth from historical
     alabaster sculptures and artifacts
@@ -6,6 +7,17 @@ applications:
 - detail: Cleaning of alabaster cladding, decorative elements, and inlays without
     water or abrasives
   industry: Construction & Architecture
+technicalSpecifications:
+  fluenceRange: 0.5–2.0 J/cm²
+  powerRange: 10-50W
+  pulseDuration: 10-50ns
+  repetitionRate: 10-50kHz
+  safetyClass: Class 4 (requires full enclosure)
+  spotSize: 0.1-0.8mm
+  wavelength: 1064nm (primary), 532nm (optional for delicate work)
+description: Technical overview of Alabaster, CaSO4·2H2O, for laser cleaning applications,
+  including optimal 1064nm wavelength interaction, and industrial applications in
+  surface preparation.
 author: Yi-Chun Lin
 author_object:
   country: Taiwan
@@ -15,31 +27,19 @@ author_object:
   name: Yi-Chun Lin
   sex: f
   title: Ph.D.
-category: stone
 chemicalProperties:
   formula: CaSO4·2H2O
   materialType: stone
   symbol: CaSO4·2H2O
-compatibility:
-- Historical Artifacts
-- Decorative Stone
-- Sculptural Elements
 composition:
 - Gypsum (CaSO4·2H2O) 95-99%
 - Calcite (CaCO3) 1-5%
 - Trace minerals (clay, iron oxides, silica)
-description: Technical overview of Alabaster, CaSO4·2H2O, for laser cleaning applications,
-  including optimal 1064nm wavelength interaction, and industrial applications in
-  surface preparation.
-environmentalImpact:
-- benefit: Chemical Solvent Elimination
-  description: Eliminates need for harsh chemical cleaners and acidic solutions traditionally
-    used on stone
-- benefit: Water Conservation
-  description: Zero water consumption compared to traditional stone cleaning methods
-- benefit: Waste Reduction
-  description: Produces only minimal, contained particulate waste without liquid runoff
-headline: Comprehensive technical guide for laser cleaning stone alabaster
+compatibility:
+- Historical Artifacts
+- Decorative Stone
+- Sculptural Elements
+regulatoryStandards: ISO 10332, ASTM C119, EN 14630
 images:
   hero:
     alt: Alabaster surface undergoing laser cleaning showing precise contamination
@@ -49,10 +49,16 @@ images:
     alt: Microscopic view of Alabaster surface after laser cleaning showing detailed
       surface structure
     url: /images/alabaster-laser-cleaning-micro.jpg
-keywords: alabaster, alabaster stone, laser ablation, laser cleaning, non-contact
-  cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters,
-  thermal processing, surface restoration
-name: Alabaster
+title: Laser Cleaning Alabaster - Technical Guide for Optimal Processing
+headline: Comprehensive technical guide for laser cleaning stone alabaster
+environmentalImpact:
+- benefit: Chemical Solvent Elimination
+  description: Eliminates need for harsh chemical cleaners and acidic solutions traditionally
+    used on stone
+- benefit: Water Conservation
+  description: Zero water consumption compared to traditional stone cleaning methods
+- benefit: Waste Reduction
+  description: Produces only minimal, contained particulate waste without liquid runoff
 outcomes:
 - metric: Complete removal of surface contaminants while preserving original patina
   result: Surface Cleanliness
@@ -60,6 +66,9 @@ outcomes:
   result: Material Preservation
 - metric: 0.5-1.5 m²/hour cleaning rate depending on contamination level and delicacy
   result: Processing Speed
+keywords: alabaster, alabaster stone, laser ablation, laser cleaning, non-contact
+  cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters,
+  thermal processing, surface restoration
 prompt_chain_verification:
   ai_detection_config_loaded: true
   author_id: 1
@@ -71,6 +80,7 @@ prompt_chain_verification:
   persona_country: Taiwan
   prompt_components_integrated: 4
   verification_timestamp: '2025-09-16T22:31:06Z'
+category: stone
 properties:
   chemicalFormula: CaSO4·2H2O
   density: 2.3 g/cm³
@@ -110,16 +120,6 @@ properties:
   thermalPercentile: 22.9
   wavelength: 1064nm
   youngsModulus: 25 GPa
-regulatoryStandards: ISO 10332, ASTM C119, EN 14630
-technicalSpecifications:
-  fluenceRange: 0.5–2.0 J/cm²
-  powerRange: 10-50W
-  pulseDuration: 10-50ns
-  repetitionRate: 10-50kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.1-0.8mm
-  wavelength: 1064nm (primary), 532nm (optional for delicate work)
-title: Laser Cleaning Alabaster - Technical Guide for Optimal Processing
 ---
 
 # Version Information

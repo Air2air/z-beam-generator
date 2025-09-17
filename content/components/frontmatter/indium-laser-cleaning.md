@@ -1,10 +1,22 @@
 ---
+name: Indium
 applications:
 - detail: Removal of surface oxides and contaminants from Indium solder bumps and
     contacts
   industry: Electronics Manufacturing
 - detail: Cleaning of Indium-based thermal interface materials and bonding surfaces
   industry: Semiconductor Packaging
+technicalSpecifications:
+  fluenceRange: 0.5–2.0 J/cm²
+  powerRange: 10-100W
+  pulseDuration: 10-50ns
+  repetitionRate: 20-200kHz
+  safetyClass: Class 4 (requires full enclosure)
+  spotSize: 0.05-0.5mm
+  wavelength: 1064nm (primary), 532nm (optional)
+description: Technical overview of Indium for laser cleaning applications, including
+  optimal 1064nm wavelength interaction, and industrial applications in electronics
+  manufacturing.
 author: Todd Dunning
 author_object:
   country: United States (California)
@@ -14,30 +26,18 @@ author_object:
   name: Todd Dunning
   sex: m
   title: MA
-category: metal
 chemicalProperties:
   formula: In
   materialType: metal
   symbol: In
+composition:
+- Indium (In) 99.99%
+- Trace elements (Pb, Sn, Cd, Tl)
 compatibility:
 - Gallium Arsenide
 - Copper
 - Germanium
-composition:
-- Indium (In) 99.99%
-- Trace elements (Pb, Sn, Cd, Tl)
-description: Technical overview of Indium for laser cleaning applications, including
-  optimal 1064nm wavelength interaction, and industrial applications in electronics
-  manufacturing.
-environmentalImpact:
-- benefit: Chemical Solvent Elimination
-  description: Reduces chemical usage by 100% compared to traditional solvent cleaning
-    methods
-- benefit: Water Conservation
-  description: Saves approximately 2000 liters of water per month in electronics manufacturing
-- benefit: Energy Efficiency
-  description: Consumes 60% less energy than thermal cleaning processes
-headline: Comprehensive technical guide for laser cleaning metal indium
+regulatoryStandards: ISO 14644-1, ASTM B774, IEC 60825-1
 images:
   hero:
     alt: Indium surface undergoing laser cleaning showing precise contamination removal
@@ -46,10 +46,16 @@ images:
     alt: Microscopic view of Indium surface after laser cleaning showing detailed
       surface structure
     url: /images/indium-laser-cleaning-micro.jpg
-keywords: indium, indium metal, laser ablation, laser cleaning, non-contact cleaning,
-  pulsed fiber laser, surface contamination removal, industrial laser parameters,
-  thermal processing, surface restoration
-name: Indium
+title: Laser Cleaning Indium - Technical Guide for Optimal Processing
+headline: Comprehensive technical guide for laser cleaning metal indium
+environmentalImpact:
+- benefit: Chemical Solvent Elimination
+  description: Reduces chemical usage by 100% compared to traditional solvent cleaning
+    methods
+- benefit: Water Conservation
+  description: Saves approximately 2000 liters of water per month in electronics manufacturing
+- benefit: Energy Efficiency
+  description: Consumes 60% less energy than thermal cleaning processes
 outcomes:
 - metric: Achieves ISO 14644-1 Class 5 cleanliness standard
   result: Surface Cleanliness Level
@@ -57,6 +63,9 @@ outcomes:
   result: Material Removal Precision
 - metric: 0.5-1.5 m²/hour cleaning rate depending on contamination level
   result: Processing Speed
+keywords: indium, indium metal, laser ablation, laser cleaning, non-contact cleaning,
+  pulsed fiber laser, surface contamination removal, industrial laser parameters,
+  thermal processing, surface restoration
 prompt_chain_verification:
   ai_detection_config_loaded: true
   author_id: 4
@@ -68,6 +77,7 @@ prompt_chain_verification:
   persona_country: United States (California)
   prompt_components_integrated: 4
   verification_timestamp: '2025-09-16T22:08:55Z'
+category: metal
 properties:
   chemicalFormula: In
   density: 7.31 g/cm³
@@ -107,16 +117,6 @@ properties:
   thermalPercentile: 17.5
   wavelength: 1064nm
   youngsModulus: 11 GPa
-regulatoryStandards: ISO 14644-1, ASTM B774, IEC 60825-1
-technicalSpecifications:
-  fluenceRange: 0.5–2.0 J/cm²
-  powerRange: 10-100W
-  pulseDuration: 10-50ns
-  repetitionRate: 20-200kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.05-0.5mm
-  wavelength: 1064nm (primary), 532nm (optional)
-title: Laser Cleaning Indium - Technical Guide for Optimal Processing
 ---
 
 # Version Information

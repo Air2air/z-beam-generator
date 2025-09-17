@@ -1,4 +1,5 @@
 ---
+name: Thermoplastic Elastomer
 applications:
 - detail: Removal of mold release agents and surface contaminants from TPE connectors
     and seals
@@ -6,6 +7,17 @@ applications:
 - detail: Cleaning of TPE seals, gaskets, and interior components prior to bonding
     or coating
   industry: Automotive Components
+technicalSpecifications:
+  fluenceRange: 0.5–2.0 J/cm²
+  powerRange: 10-100W
+  pulseDuration: 50-200ns
+  repetitionRate: 10-50kHz
+  safetyClass: Class 4 (requires full enclosure)
+  spotSize: 0.1-2.0mm
+  wavelength: 1064nm (primary), 355nm (optional)
+description: Technical overview of Thermoplastic Elastomer laser cleaning applications,
+  including optimal wavelength interaction with TPE polymers, and industrial applications
+  in surface preparation.
 author: Alessandro Moretti
 author_object:
   country: Italy
@@ -15,32 +27,20 @@ author_object:
   name: Alessandro Moretti
   sex: m
   title: Ph.D.
-category: polymer
 chemicalProperties:
   formula: TPE-Polymer
   materialType: polymer
   symbol: TPE
+composition:
+- Styrenic Block Copolymers (SBC) 40-60%
+- Polyolefin Blends (TPO) 20-40%
+- Additives and Fillers 5-15%
 compatibility:
 - Polypropylene
 - Polyethylene
 - ABS
 - Polycarbonate
-composition:
-- Styrenic Block Copolymers (SBC) 40-60%
-- Polyolefin Blends (TPO) 20-40%
-- Additives and Fillers 5-15%
-description: Technical overview of Thermoplastic Elastomer laser cleaning applications,
-  including optimal wavelength interaction with TPE polymers, and industrial applications
-  in surface preparation.
-environmentalImpact:
-- benefit: Chemical Solvent Elimination
-  description: Eliminates use of VOC-containing solvents for TPE cleaning operations
-- benefit: Water Conservation
-  description: Reduces water consumption by 95% compared to aqueous cleaning methods
-- benefit: Energy Efficiency
-  description: Consumes 60% less energy than thermal cleaning processes for TPE
-headline: Comprehensive technical guide for laser cleaning thermoplastic elastomer
-  materials
+regulatoryStandards: ISO 10993, FDA 21 CFR 177.2600, RoHS Compliant
 images:
   hero:
     alt: Thermoplastic Elastomer surface undergoing laser cleaning showing precise
@@ -50,10 +50,16 @@ images:
     alt: Microscopic view of Thermoplastic Elastomer surface after laser cleaning
       showing detailed surface structure
     url: /images/thermoplastic-elastomer-laser-cleaning-micro.jpg
-keywords: thermoplastic elastomer, TPE, laser ablation, laser cleaning, non-contact
-  cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters,
-  polymer processing, surface restoration
-name: Thermoplastic Elastomer
+title: Laser Cleaning Thermoplastic Elastomer - Technical Guide for Optimal Processing
+headline: Comprehensive technical guide for laser cleaning thermoplastic elastomer
+  materials
+environmentalImpact:
+- benefit: Chemical Solvent Elimination
+  description: Eliminates use of VOC-containing solvents for TPE cleaning operations
+- benefit: Water Conservation
+  description: Reduces water consumption by 95% compared to aqueous cleaning methods
+- benefit: Energy Efficiency
+  description: Consumes 60% less energy than thermal cleaning processes for TPE
 outcomes:
 - metric: Achieves ISO 8501-1 Sa 2.5 cleanliness standard
   result: Surface Cleanliness Level
@@ -61,6 +67,9 @@ outcomes:
   result: Material Removal Precision
 - metric: 1-3 m²/hour cleaning rate depending on contamination level
   result: Processing Speed
+keywords: thermoplastic elastomer, TPE, laser ablation, laser cleaning, non-contact
+  cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters,
+  polymer processing, surface restoration
 prompt_chain_verification:
   ai_detection_config_loaded: true
   author_id: 2
@@ -72,6 +81,7 @@ prompt_chain_verification:
   persona_country: Italy
   prompt_components_integrated: 4
   verification_timestamp: '2025-09-16T21:38:54Z'
+category: polymer
 properties:
   chemicalFormula: TPE-Polymer
   density: 0.9-1.2 g/cm³
@@ -111,16 +121,6 @@ properties:
   thermalPercentile: 0.3
   wavelength: 1064nm
   youngsModulus: 0.1-1.0 GPa
-regulatoryStandards: ISO 10993, FDA 21 CFR 177.2600, RoHS Compliant
-technicalSpecifications:
-  fluenceRange: 0.5–2.0 J/cm²
-  powerRange: 10-100W
-  pulseDuration: 50-200ns
-  repetitionRate: 10-50kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.1-2.0mm
-  wavelength: 1064nm (primary), 355nm (optional)
-title: Laser Cleaning Thermoplastic Elastomer - Technical Guide for Optimal Processing
 ---
 
 # Version Information

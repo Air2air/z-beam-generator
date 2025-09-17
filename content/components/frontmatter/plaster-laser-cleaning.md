@@ -1,10 +1,22 @@
 ---
+name: Plaster
 applications:
 - detail: Removal of surface dirt, soot, and biological growth from historical plasterwork
   industry: Construction & Restoration
 - detail: Gentle cleaning of delicate plaster sculptures and decorative elements without
     abrasion
   industry: Art Conservation
+technicalSpecifications:
+  fluenceRange: 0.5–2.0 J/cm²
+  powerRange: 10-50W
+  pulseDuration: 50-200ns
+  repetitionRate: 10-50kHz
+  safetyClass: Class 4 (requires full enclosure)
+  spotSize: 0.5-3.0mm
+  wavelength: 1064nm (primary), 532nm (optional)
+description: Technical overview of Plaster (CaSO4·2H2O) for laser cleaning applications,
+  including optimal 1064nm wavelength interaction with gypsum-based materials, and
+  applications in heritage conservation and surface preparation.
 author: Alessandro Moretti
 author_object:
   country: Italy
@@ -14,31 +26,19 @@ author_object:
   name: Alessandro Moretti
   sex: m
   title: Ph.D.
-category: masonry
 chemicalProperties:
   formula: CaSO4·2H2O
   materialType: masonry
   symbol: Plaster
-compatibility:
-- Historical Plaster
-- Gypsum Plaster
-- Lime Plaster
 composition:
 - Calcium Sulfate Dihydrate (CaSO4·2H2O) 85-95%
 - Water of Crystallization 15-20%
 - Additives (sand, lime, fibers) 0-5%
-description: Technical overview of Plaster (CaSO4·2H2O) for laser cleaning applications,
-  including optimal 1064nm wavelength interaction with gypsum-based materials, and
-  applications in heritage conservation and surface preparation.
-environmentalImpact:
-- benefit: Chemical Solvent Elimination
-  description: Eliminates use of harsh chemical cleaners and solvents entirely
-- benefit: Water Conservation
-  description: Requires no water compared to traditional wet cleaning methods
-- benefit: Minimal Waste Generation
-  description: Produces only vaporized contaminants with no secondary waste
-headline: Comprehensive technical guide for laser cleaning plaster surfaces in conservation
-  applications
+compatibility:
+- Historical Plaster
+- Gypsum Plaster
+- Lime Plaster
+regulatoryStandards: ISO 10332, ASTM C28, EN 13279
 images:
   hero:
     alt: Plaster surface undergoing laser cleaning showing precise contamination removal
@@ -47,9 +47,16 @@ images:
     alt: Microscopic view of Plaster surface after laser cleaning showing detailed
       surface structure
     url: /images/plaster-laser-cleaning-micro.jpg
-keywords: plaster, gypsum, laser cleaning, heritage conservation, non-abrasive cleaning,
-  pulsed laser, surface contamination removal, historical preservation, cultural heritage
-name: Plaster
+title: Laser Cleaning Plaster - Technical Guide for Conservation & Restoration
+headline: Comprehensive technical guide for laser cleaning plaster surfaces in conservation
+  applications
+environmentalImpact:
+- benefit: Chemical Solvent Elimination
+  description: Eliminates use of harsh chemical cleaners and solvents entirely
+- benefit: Water Conservation
+  description: Requires no water compared to traditional wet cleaning methods
+- benefit: Minimal Waste Generation
+  description: Produces only vaporized contaminants with no secondary waste
 outcomes:
 - metric: Achieves gentle removal of surface contaminants without damaging substrate
   result: Surface Cleanliness
@@ -57,6 +64,8 @@ outcomes:
   result: Material Preservation
 - metric: 0.5-2.0 m²/hour cleaning rate with precise depth control
   result: Processing Control
+keywords: plaster, gypsum, laser cleaning, heritage conservation, non-abrasive cleaning,
+  pulsed laser, surface contamination removal, historical preservation, cultural heritage
 prompt_chain_verification:
   ai_detection_config_loaded: true
   author_id: 2
@@ -68,6 +77,7 @@ prompt_chain_verification:
   persona_country: Italy
   prompt_components_integrated: 4
   verification_timestamp: '2025-09-16T21:54:37Z'
+category: masonry
 properties:
   chemicalFormula: CaSO4·2H2O
   density: 2.3 g/cm³
@@ -107,16 +117,6 @@ properties:
   thermalPercentile: 21.1
   wavelength: 1064nm
   youngsModulus: 20 GPa
-regulatoryStandards: ISO 10332, ASTM C28, EN 13279
-technicalSpecifications:
-  fluenceRange: 0.5–2.0 J/cm²
-  powerRange: 10-50W
-  pulseDuration: 50-200ns
-  repetitionRate: 10-50kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.5-3.0mm
-  wavelength: 1064nm (primary), 532nm (optional)
-title: Laser Cleaning Plaster - Technical Guide for Conservation & Restoration
 ---
 
 # Version Information

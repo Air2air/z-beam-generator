@@ -1,4 +1,5 @@
 ---
+name: Terracotta
 applications:
 - detail: Removal of surface dirt, biological growth, and pollutants from historical
     terracotta artifacts and architectural elements
@@ -6,6 +7,17 @@ applications:
 - detail: Cleaning of new and aged terracotta tiles, bricks, and decorative elements
     without surface damage
   industry: Construction Materials
+technicalSpecifications:
+  fluenceRange: 0.5–2.5 J/cm²
+  powerRange: 10-100W
+  pulseDuration: 10-150ns
+  repetitionRate: 10-50kHz
+  safetyClass: Class 4 (requires full enclosure)
+  spotSize: 0.5-3.0mm
+  wavelength: 1064nm (primary), 532nm (optional)
+description: Technical overview of Terracotta, a fired clay ceramic, for laser cleaning
+  applications, including optimal 1064nm wavelength interaction for contaminant removal
+  without damaging the porous substrate.
 author: Yi-Chun Lin
 author_object:
   country: Taiwan
@@ -15,23 +27,32 @@ author_object:
   name: Yi-Chun Lin
   sex: f
   title: Ph.D.
-category: ceramics
 chemicalProperties:
   formula: Complex Silicate (Clay-based)
   materialType: Ceramic
   symbol: TC
-compatibility:
-- Historical Terracotta
-- Architectural Terracotta
-- Fired Clay Ceramics
 composition:
 - Clay minerals (Kaolinite, Illite) 50-60%
 - Quartz (SiO2) 20-30%
 - Feldspar 5-10%
 - Iron oxides (Fe2O3) 5-8%
-description: Technical overview of Terracotta, a fired clay ceramic, for laser cleaning
-  applications, including optimal 1064nm wavelength interaction for contaminant removal
-  without damaging the porous substrate.
+compatibility:
+- Historical Terracotta
+- Architectural Terracotta
+- Fired Clay Ceramics
+regulatoryStandards: ISO 10332, ASTM C67, EN 771-1
+images:
+  hero:
+    alt: Terracotta surface undergoing laser cleaning showing precise contamination
+      removal
+    url: /images/terracotta-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Terracotta surface after laser cleaning showing detailed
+      surface structure
+    url: /images/terracotta-laser-cleaning-micro.jpg
+title: Laser Cleaning Terracotta - Technical Guide for Conservation & Restoration
+headline: Precision laser cleaning techniques for terracotta conservation and architectural
+  restoration
 environmentalImpact:
 - benefit: Chemical-Free Cleaning
   description: Eliminates need for harsh chemical cleaners and acidic solutions traditionally
@@ -42,21 +63,6 @@ environmentalImpact:
 - benefit: Waste Reduction
   description: Produces only minimal particulate waste that can be easily captured
     with filtration systems
-headline: Precision laser cleaning techniques for terracotta conservation and architectural
-  restoration
-images:
-  hero:
-    alt: Terracotta surface undergoing laser cleaning showing precise contamination
-      removal
-    url: /images/terracotta-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Terracotta surface after laser cleaning showing detailed
-      surface structure
-    url: /images/terracotta-laser-cleaning-micro.jpg
-keywords: terracotta, ceramic, laser cleaning, architectural conservation, surface
-  contamination removal, cultural heritage, non-abrasive cleaning, pulsed laser, surface
-  restoration
-name: Terracotta
 outcomes:
 - metric: Removes 95-99% of surface contaminants while preserving original patina
     and surface texture
@@ -65,6 +71,9 @@ outcomes:
   result: Material Preservation
 - metric: 0.5-2 m²/hour cleaning rate depending on contamination type and severity
   result: Processing Speed
+keywords: terracotta, ceramic, laser cleaning, architectural conservation, surface
+  contamination removal, cultural heritage, non-abrasive cleaning, pulsed laser, surface
+  restoration
 prompt_chain_verification:
   ai_detection_config_loaded: true
   author_id: 1
@@ -76,6 +85,7 @@ prompt_chain_verification:
   persona_country: Taiwan
   prompt_components_integrated: 4
   verification_timestamp: '2025-09-16T21:56:24Z'
+category: ceramics
 properties:
   chemicalFormula: Complex Silicate (Clay-based)
   density: 1.8-2.2 g/cm³
@@ -115,16 +125,6 @@ properties:
   thermalPercentile: 47.4
   wavelength: 1064nm
   youngsModulus: 10-20 GPa
-regulatoryStandards: ISO 10332, ASTM C67, EN 771-1
-technicalSpecifications:
-  fluenceRange: 0.5–2.5 J/cm²
-  powerRange: 10-100W
-  pulseDuration: 10-150ns
-  repetitionRate: 10-50kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.5-3.0mm
-  wavelength: 1064nm (primary), 532nm (optional)
-title: Laser Cleaning Terracotta - Technical Guide for Conservation & Restoration
 ---
 
 # Version Information

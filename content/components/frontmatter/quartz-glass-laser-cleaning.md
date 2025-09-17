@@ -1,4 +1,5 @@
 ---
+name: Quartz Glass
 applications:
 - detail: Removal of photoresist residues and surface contaminants from quartz wafers
     and components
@@ -6,6 +7,17 @@ applications:
 - detail: Cleaning of quartz lenses, windows, and optical components without surface
     damage
   industry: Optics and Photonics
+technicalSpecifications:
+  fluenceRange: 0.5–2.5 J/cm²
+  powerRange: 10-100W
+  pulseDuration: 10-50ns
+  repetitionRate: 20-200kHz
+  safetyClass: Class 4 (requires full enclosure)
+  spotSize: 0.1-0.8mm
+  wavelength: 1064nm (primary), 355nm (optional)
+description: Technical overview of Quartz Glass (SiO₂) for laser cleaning applications,
+  including optimal wavelength interaction at 1064nm and 355nm, and industrial applications
+  in high-precision surface preparation.
 author: Alessandro Moretti
 author_object:
   country: Italy
@@ -15,30 +27,18 @@ author_object:
   name: Alessandro Moretti
   sex: m
   title: Ph.D.
-category: glass
 chemicalProperties:
   formula: SiO2
   materialType: glass
   symbol: SiO₂
+composition:
+- Silicon Dioxide (SiO₂) 99.9%
+- Trace elements (Al, Na, K, Li)
 compatibility:
 - Silicon Wafers
 - Optical Coatings
 - Ceramic Materials
-composition:
-- Silicon Dioxide (SiO₂) 99.9%
-- Trace elements (Al, Na, K, Li)
-description: Technical overview of Quartz Glass (SiO₂) for laser cleaning applications,
-  including optimal wavelength interaction at 1064nm and 355nm, and industrial applications
-  in high-precision surface preparation.
-environmentalImpact:
-- benefit: Chemical-Free Processing
-  description: Eliminates use of hazardous solvents and acids in quartz cleaning processes
-- benefit: Waterless Operation
-  description: Zero water consumption compared to traditional ultrasonic cleaning
-    methods
-- benefit: Energy Efficient
-  description: 75% less energy consumption than thermal or chemical cleaning methods
-headline: Advanced technical guide for laser cleaning of quartz glass components
+regulatoryStandards: ISO 10110, SEMI Standards, MIL-PRF-13830B
 images:
   hero:
     alt: Quartz Glass surface undergoing laser cleaning showing precise contamination
@@ -48,10 +48,16 @@ images:
     alt: Microscopic view of Quartz Glass surface after laser cleaning showing detailed
       surface structure
     url: /images/quartz-glass-laser-cleaning-micro.jpg
-keywords: quartz glass, fused silica, laser ablation, laser cleaning, non-contact
-  cleaning, pulsed laser, surface contamination removal, optical components cleaning,
-  semiconductor cleaning
-name: Quartz Glass
+title: Laser Cleaning Quartz Glass - Technical Guide for High-Precision Applications
+headline: Advanced technical guide for laser cleaning of quartz glass components
+environmentalImpact:
+- benefit: Chemical-Free Processing
+  description: Eliminates use of hazardous solvents and acids in quartz cleaning processes
+- benefit: Waterless Operation
+  description: Zero water consumption compared to traditional ultrasonic cleaning
+    methods
+- benefit: Energy Efficient
+  description: 75% less energy consumption than thermal or chemical cleaning methods
 outcomes:
 - metric: Achieves Class 100 (ISO 5) cleanroom standards
   result: Surface Cleanliness
@@ -59,6 +65,9 @@ outcomes:
   result: Damage-Free Processing
 - metric: 1-3 m²/hour cleaning rate with micron-level precision
   result: Processing Throughput
+keywords: quartz glass, fused silica, laser ablation, laser cleaning, non-contact
+  cleaning, pulsed laser, surface contamination removal, optical components cleaning,
+  semiconductor cleaning
 prompt_chain_verification:
   ai_detection_config_loaded: true
   author_id: 2
@@ -70,6 +79,7 @@ prompt_chain_verification:
   persona_country: Italy
   prompt_components_integrated: 4
   verification_timestamp: '2025-09-16T21:48:25Z'
+category: glass
 properties:
   chemicalFormula: SiO2
   density: 2.2 g/cm³
@@ -109,16 +119,6 @@ properties:
   thermalPercentile: 60.0
   wavelength: 1064nm
   youngsModulus: 72 GPa
-regulatoryStandards: ISO 10110, SEMI Standards, MIL-PRF-13830B
-technicalSpecifications:
-  fluenceRange: 0.5–2.5 J/cm²
-  powerRange: 10-100W
-  pulseDuration: 10-50ns
-  repetitionRate: 20-200kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.1-0.8mm
-  wavelength: 1064nm (primary), 355nm (optional)
-title: Laser Cleaning Quartz Glass - Technical Guide for High-Precision Applications
 ---
 
 # Version Information

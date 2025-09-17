@@ -1,4 +1,5 @@
 ---
+name: Slate
 applications:
 - detail: Removal of biological growth, pollution deposits, and paint from slate roofing
     and tiles
@@ -6,6 +7,17 @@ applications:
 - detail: Gentle cleaning of historical slate artifacts and engraved slate surfaces
     without abrasion
   industry: Monument Conservation
+technicalSpecifications:
+  fluenceRange: 0.5–2.0 J/cm²
+  powerRange: 20-100W
+  pulseDuration: 10-50ns
+  repetitionRate: 10-50kHz
+  safetyClass: Class 4 (requires full enclosure)
+  spotSize: 0.5-3.0mm
+  wavelength: 1064nm (primary), 532nm (optional)
+description: Technical overview of Slate, a fine-grained metamorphic rock, for laser
+  cleaning applications, including optimal 1064nm wavelength interaction with its
+  layered silicate structure, and applications in building restoration.
 author: Ikmanda Roswati
 author_object:
   country: Indonesia
@@ -15,23 +27,30 @@ author_object:
   name: Ikmanda Roswati
   sex: m
   title: Ph.D.
-category: stone
 chemicalProperties:
   formula: Variable (primarily quartz, muscovite, illite, chlorite)
   materialType: metamorphic rock
   symbol: Slate
-compatibility:
-- Historical Slate Artifacts
-- Architectural Slate
-- Slate Roofing Tiles
 composition:
 - Quartz (SiO₂) 20-40%
 - Muscovite/Illite (KAl₂(AlSi₃O₁₀)(OH)₂) 30-50%
 - Chlorite ((Mg,Fe)₃(Si,Al)₄O₁₀(OH)₂·(Mg,Fe)₃(OH)₆) 5-15%
 - Other minerals (hematite, pyrite, carbonates) 1-5%
-description: Technical overview of Slate, a fine-grained metamorphic rock, for laser
-  cleaning applications, including optimal 1064nm wavelength interaction with its
-  layered silicate structure, and applications in building restoration.
+compatibility:
+- Historical Slate Artifacts
+- Architectural Slate
+- Slate Roofing Tiles
+regulatoryStandards: ISO 18562, ASTM C406, EN 12326
+images:
+  hero:
+    alt: Slate surface undergoing laser cleaning showing precise contamination removal
+    url: /images/slate-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Slate surface after laser cleaning showing detailed surface
+      structure
+    url: /images/slate-laser-cleaning-micro.jpg
+title: Laser Cleaning Slate - Technical Guide for Optimal Processing
+headline: Comprehensive technical guide for laser cleaning natural slate surfaces
 environmentalImpact:
 - benefit: Chemical Solvent Elimination
   description: Eliminates need for harsh chemical cleaners and biocides on historical
@@ -41,19 +60,6 @@ environmentalImpact:
 - benefit: Waste Reduction
   description: Produces minimal waste as contaminants are vaporized rather than washed
     away
-headline: Comprehensive technical guide for laser cleaning natural slate surfaces
-images:
-  hero:
-    alt: Slate surface undergoing laser cleaning showing precise contamination removal
-    url: /images/slate-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Slate surface after laser cleaning showing detailed surface
-      structure
-    url: /images/slate-laser-cleaning-micro.jpg
-keywords: slate, slate stone, laser ablation, laser cleaning, non-contact cleaning,
-  pulsed fiber laser, surface contamination removal, building restoration, historical
-  preservation, metamorphic rock
-name: Slate
 outcomes:
 - metric: Achieves 95-99% contamination removal without surface damage
   result: Surface Cleanliness Level
@@ -61,6 +67,9 @@ outcomes:
   result: Material Preservation
 - metric: 0.5-2 m²/hour cleaning rate depending on contamination type
   result: Processing Speed
+keywords: slate, slate stone, laser ablation, laser cleaning, non-contact cleaning,
+  pulsed fiber laser, surface contamination removal, building restoration, historical
+  preservation, metamorphic rock
 prompt_chain_verification:
   ai_detection_config_loaded: true
   author_id: 3
@@ -72,6 +81,7 @@ prompt_chain_verification:
   persona_country: Indonesia
   prompt_components_integrated: 4
   verification_timestamp: '2025-09-16T22:44:01Z'
+category: stone
 properties:
   chemicalFormula: Variable (SiO₂ + Al₂O₃ + K₂O + FeO + MgO)
   density: 2.6-2.9 g/cm³
@@ -111,16 +121,6 @@ properties:
   thermalPercentile: 42.7
   wavelength: 1064nm
   youngsModulus: 50-80 GPa
-regulatoryStandards: ISO 18562, ASTM C406, EN 12326
-technicalSpecifications:
-  fluenceRange: 0.5–2.0 J/cm²
-  powerRange: 20-100W
-  pulseDuration: 10-50ns
-  repetitionRate: 10-50kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.5-3.0mm
-  wavelength: 1064nm (primary), 532nm (optional)
-title: Laser Cleaning Slate - Technical Guide for Optimal Processing
 ---
 
 # Version Information

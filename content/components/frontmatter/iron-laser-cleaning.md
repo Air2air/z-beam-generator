@@ -1,10 +1,21 @@
 ---
+name: Iron
 applications:
 - detail: Removal of rust, scale, and coatings from iron components and castings
   industry: Automotive Manufacturing
 - detail: Precision cleaning of oxidation and contaminants from iron-based molds and
     tooling
   industry: Tool and Die Restoration
+technicalSpecifications:
+  fluenceRange: 2.0–8.0 J/cm²
+  powerRange: 100-500W
+  pulseDuration: 50-200ns
+  repetitionRate: 20-200kHz
+  safetyClass: Class 4
+  spotSize: 0.05-2.0mm
+  wavelength: 1064nm
+description: Technical specifications and application parameters for laser cleaning
+  of iron and iron-based alloys using pulsed fiber laser systems.
 author: Alessandro Moretti
 author_object:
   country: Italy
@@ -14,30 +25,20 @@ author_object:
   name: Alessandro Moretti
   sex: m
   title: Ph.D.
-category: metal
 chemicalProperties:
   formula: Fe
   materialType: metal
   symbol: Fe
-compatibility:
-- Carbon Steel
-- Cast Iron
-- Wrought Iron
 composition:
 - 'Iron (Fe): >99%'
 - 'Carbon (C): 0.02-0.1%'
 - 'Manganese (Mn): 0.3-0.7%'
 - 'Silicon (Si): 0.15-0.35%'
-description: Technical specifications and application parameters for laser cleaning
-  of iron and iron-based alloys using pulsed fiber laser systems.
-environmentalImpact:
-- benefit: Zero Chemical Waste
-  description: Eliminates need for chemical solvents and acidic cleaners
-- benefit: Reduced Water Consumption
-  description: No water required compared to traditional abrasive blasting methods
-- benefit: Minimal Energy Consumption
-  description: Precise energy application reduces overall power usage
-headline: Advanced laser cleaning solutions for iron and iron alloys
+compatibility:
+- Carbon Steel
+- Cast Iron
+- Wrought Iron
+regulatoryStandards: ISO 8501-1, ASTM D4417, IEC 60825-1
 images:
   hero:
     alt: Iron surface undergoing laser cleaning showing precise contamination removal
@@ -46,9 +47,15 @@ images:
     alt: Microscopic view of Iron surface after laser cleaning showing detailed surface
       structure
     url: /images/iron-laser-cleaning-micro.jpg
-keywords: iron cleaning, laser rust removal, surface preparation, oxide removal, non-abrasive
-  cleaning
-name: Iron
+title: Laser Cleaning of Iron - Technical Parameters and Applications
+headline: Advanced laser cleaning solutions for iron and iron alloys
+environmentalImpact:
+- benefit: Zero Chemical Waste
+  description: Eliminates need for chemical solvents and acidic cleaners
+- benefit: Reduced Water Consumption
+  description: No water required compared to traditional abrasive blasting methods
+- benefit: Minimal Energy Consumption
+  description: Precise energy application reduces overall power usage
 outcomes:
 - metric: Sa 0.8-1.6 μm surface roughness after cleaning
   result: Surface Cleanliness
@@ -56,6 +63,8 @@ outcomes:
   result: Material Preservation
 - metric: 1-3 m²/hour cleaning rate depending on contamination level
   result: Processing Efficiency
+keywords: iron cleaning, laser rust removal, surface preparation, oxide removal, non-abrasive
+  cleaning
 prompt_chain_verification:
   ai_detection_config_loaded: true
   author_id: 2
@@ -67,6 +76,7 @@ prompt_chain_verification:
   persona_country: Italy
   prompt_components_integrated: 4
   verification_timestamp: '2024-12-19T14:30:00Z'
+category: metal
 properties:
   density: 7.87 g/cm³
   densityMax: 22.6 g/cm³
@@ -105,16 +115,6 @@ properties:
   thermalPercentile: 17.2
   wavelength: 1064nm
   youngsModulus: 211 GPa
-regulatoryStandards: ISO 8501-1, ASTM D4417, IEC 60825-1
-technicalSpecifications:
-  fluenceRange: 2.0–8.0 J/cm²
-  powerRange: 100-500W
-  pulseDuration: 50-200ns
-  repetitionRate: 20-200kHz
-  safetyClass: Class 4
-  spotSize: 0.05-2.0mm
-  wavelength: 1064nm
-title: Laser Cleaning of Iron - Technical Parameters and Applications
 ---
 
 # Version Information

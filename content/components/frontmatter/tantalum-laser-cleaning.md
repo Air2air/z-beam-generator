@@ -1,10 +1,22 @@
 ---
+name: Tantalum
 applications:
 - detail: Removal of surface oxides and contaminants from Tantalum capacitors and
     substrates
   industry: Electronics Manufacturing
 - detail: Cleaning of Tantalum heat exchangers and rocket engine components
   industry: Aerospace Components
+technicalSpecifications:
+  fluenceRange: 1.0–4.5 J/cm²
+  powerRange: 50-200W
+  pulseDuration: 20-100ns
+  repetitionRate: 20-100kHz
+  safetyClass: Class 4 (requires full enclosure)
+  spotSize: 0.2-1.5mm
+  wavelength: 1064nm (primary), 532nm (optional)
+description: Technical overview of Tantalum, Ta, for laser cleaning applications,
+  including optimal 1064nm wavelength interaction, and industrial applications in
+  surface preparation.
 author: Alessandro Moretti
 author_object:
   country: Italy
@@ -14,31 +26,19 @@ author_object:
   name: Alessandro Moretti
   sex: m
   title: Ph.D.
-category: metal
 chemicalProperties:
   formula: Ta
   materialType: metal
   symbol: Ta
+composition:
+- Tantalum (Ta) 99.9%
+- Trace elements (Nb, Fe, Si, O)
 compatibility:
 - Niobium
 - Tungsten
 - Molybdenum
 - Titanium Alloys
-composition:
-- Tantalum (Ta) 99.9%
-- Trace elements (Nb, Fe, Si, O)
-description: Technical overview of Tantalum, Ta, for laser cleaning applications,
-  including optimal 1064nm wavelength interaction, and industrial applications in
-  surface preparation.
-environmentalImpact:
-- benefit: Chemical Solvent Elimination
-  description: Reduces chemical usage by 100% compared to traditional solvent cleaning
-    methods
-- benefit: Water Conservation
-  description: Saves approximately 5000 liters of water per month in industrial applications
-- benefit: Energy Efficiency
-  description: Consumes 40% less energy than thermal cleaning processes
-headline: Comprehensive technical guide for laser cleaning metal tantalum
+regulatoryStandards: ISO 18562, ASTM F560, ASTM B708
 images:
   hero:
     alt: Tantalum surface undergoing laser cleaning showing precise contamination
@@ -48,10 +48,16 @@ images:
     alt: Microscopic view of Tantalum surface after laser cleaning showing detailed
       surface structure
     url: /images/tantalum-laser-cleaning-micro.jpg
-keywords: tantalum, tantalum metal, laser ablation, laser cleaning, non-contact cleaning,
-  pulsed fiber laser, surface contamination removal, industrial laser parameters,
-  thermal processing, surface restoration
-name: Tantalum
+title: Laser Cleaning Tantalum - Technical Guide for Optimal Processing
+headline: Comprehensive technical guide for laser cleaning metal tantalum
+environmentalImpact:
+- benefit: Chemical Solvent Elimination
+  description: Reduces chemical usage by 100% compared to traditional solvent cleaning
+    methods
+- benefit: Water Conservation
+  description: Saves approximately 5000 liters of water per month in industrial applications
+- benefit: Energy Efficiency
+  description: Consumes 40% less energy than thermal cleaning processes
 outcomes:
 - metric: Achieves ISO 14644-1 Class 7 cleanliness standard
   result: Surface Cleanliness Level
@@ -59,6 +65,9 @@ outcomes:
   result: Material Removal Precision
 - metric: 2-5 m²/hour cleaning rate depending on contamination level
   result: Processing Speed
+keywords: tantalum, tantalum metal, laser ablation, laser cleaning, non-contact cleaning,
+  pulsed fiber laser, surface contamination removal, industrial laser parameters,
+  thermal processing, surface restoration
 prompt_chain_verification:
   ai_detection_config_loaded: true
   author_id: 2
@@ -70,6 +79,7 @@ prompt_chain_verification:
   persona_country: Italy
   prompt_components_integrated: 4
   verification_timestamp: '2025-09-16T22:22:03Z'
+category: metal
 properties:
   chemicalFormula: Ta
   density: 16.69 g/cm³
@@ -109,16 +119,6 @@ properties:
   thermalPercentile: 11.8
   wavelength: 1064nm
   youngsModulus: 186 GPa
-regulatoryStandards: ISO 18562, ASTM F560, ASTM B708
-technicalSpecifications:
-  fluenceRange: 1.0–4.5 J/cm²
-  powerRange: 50-200W
-  pulseDuration: 20-100ns
-  repetitionRate: 20-100kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.2-1.5mm
-  wavelength: 1064nm (primary), 532nm (optional)
-title: Laser Cleaning Tantalum - Technical Guide for Optimal Processing
 ---
 
 # Version Information

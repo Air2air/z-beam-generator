@@ -1,4 +1,5 @@
 ---
+name: Palladium
 applications:
 - detail: Removal of surface oxides and contaminants from Palladium electrical contacts
     and substrates
@@ -6,6 +7,17 @@ applications:
 - detail: Precision cleaning of Palladium components without material loss or surface
     alteration
   industry: Jewelry and Catalytic Converter Restoration
+technicalSpecifications:
+  fluenceRange: 0.5–2.0 J/cm²
+  powerRange: 20-100W
+  pulseDuration: 10-50ns
+  repetitionRate: 50-200kHz
+  safetyClass: Class 4 (requires full enclosure)
+  spotSize: 0.05-0.8mm
+  wavelength: 1064nm (primary), 355nm (optional)
+description: Technical overview of Palladium, Pd, for laser cleaning applications,
+  including optimal 1064nm wavelength interaction, and industrial applications in
+  surface preparation.
 author: Ikmanda Roswati
 author_object:
   country: Indonesia
@@ -15,32 +27,19 @@ author_object:
   name: Ikmanda Roswati
   sex: m
   title: Ph.D.
-category: metal
 chemicalProperties:
   formula: Pd
   materialType: metal
   symbol: Pd
+composition:
+- Palladium (Pd) 99.95%
+- Trace elements (Ru, Rh, Pt, Au)
 compatibility:
 - Platinum
 - Gold
 - Silver
 - Rhodium
-composition:
-- Palladium (Pd) 99.95%
-- Trace elements (Ru, Rh, Pt, Au)
-description: Technical overview of Palladium, Pd, for laser cleaning applications,
-  including optimal 1064nm wavelength interaction, and industrial applications in
-  surface preparation.
-environmentalImpact:
-- benefit: Chemical Solvent Elimination
-  description: Eliminates use of aggressive acids and solvents traditionally used
-    for Palladium cleaning
-- benefit: Material Conservation
-  description: Prevents material loss associated with abrasive cleaning methods for
-    precious metals
-- benefit: Energy Efficiency
-  description: 75% less energy consumption compared to thermal annealing processes
-headline: Comprehensive technical guide for laser cleaning metal palladium
+regulatoryStandards: ISO 14644-1, ASTM B540, IEC 60825-1
 images:
   hero:
     alt: Palladium surface undergoing laser cleaning showing precise contamination
@@ -50,10 +49,17 @@ images:
     alt: Microscopic view of Palladium surface after laser cleaning showing detailed
       surface structure
     url: /images/palladium-laser-cleaning-micro.jpg
-keywords: palladium, palladium metal, laser ablation, laser cleaning, non-contact
-  cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters,
-  thermal processing, surface restoration
-name: Palladium
+title: Laser Cleaning Palladium - Technical Guide for Optimal Processing
+headline: Comprehensive technical guide for laser cleaning metal palladium
+environmentalImpact:
+- benefit: Chemical Solvent Elimination
+  description: Eliminates use of aggressive acids and solvents traditionally used
+    for Palladium cleaning
+- benefit: Material Conservation
+  description: Prevents material loss associated with abrasive cleaning methods for
+    precious metals
+- benefit: Energy Efficiency
+  description: 75% less energy consumption compared to thermal annealing processes
 outcomes:
 - metric: Achieves ISO 14644-1 Class 5 cleanliness standard for electronic components
   result: Surface Cleanliness Level
@@ -61,6 +67,9 @@ outcomes:
   result: Material Removal Precision
 - metric: 0.5-1.2 m²/hour cleaning rate for delicate Palladium components
   result: Processing Speed
+keywords: palladium, palladium metal, laser ablation, laser cleaning, non-contact
+  cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters,
+  thermal processing, surface restoration
 prompt_chain_verification:
   ai_detection_config_loaded: true
   author_id: 3
@@ -72,6 +81,7 @@ prompt_chain_verification:
   persona_country: Indonesia
   prompt_components_integrated: 4
   verification_timestamp: '2025-09-16T22:15:24Z'
+category: metal
 properties:
   chemicalFormula: Pd
   density: 12.023 g/cm³
@@ -111,16 +121,6 @@ properties:
   thermalPercentile: 15.2
   wavelength: 1064nm
   youngsModulus: 121 GPa
-regulatoryStandards: ISO 14644-1, ASTM B540, IEC 60825-1
-technicalSpecifications:
-  fluenceRange: 0.5–2.0 J/cm²
-  powerRange: 20-100W
-  pulseDuration: 10-50ns
-  repetitionRate: 50-200kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.05-0.8mm
-  wavelength: 1064nm (primary), 355nm (optional)
-title: Laser Cleaning Palladium - Technical Guide for Optimal Processing
 ---
 
 # Version Information

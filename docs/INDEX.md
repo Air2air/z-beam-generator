@@ -8,6 +8,8 @@
 |--------------|-------|
 | **Get started immediately** | [QUICK_START.md](QUICK_START.md) |
 | **Fix API connection issues** | [api/ERROR_HANDLING.md](api/ERROR_HANDLING.md) |
+| **Component YAML format changes** | [SESSION_2025-09-16_YAML_STANDARDIZATION_SUMMARY.md](SESSION_2025-09-16_YAML_STANDARDIZATION_SUMMARY.md) |
+| **Table min/max column verification** | [QUICK_REFERENCE.md](QUICK_REFERENCE.md#table-components-missing-minmax-columns) |
 | **Optimize content with Winston.ai bias correction** | [OPTIMIZER_CONSOLIDATED_GUIDE.md](OPTIMIZER_CONSOLIDATED_GUIDE.md) |
 | **Understand Winston.ai composite scoring** | [WINSTON_COMPOSITE_SCORING_INTEGRATION.md](WINSTON_COMPOSITE_SCORING_INTEGRATION.md) |
 | **Generate content for materials** | [operations/CONTENT_GENERATION.md](operations/CONTENT_GENERATION.md) |

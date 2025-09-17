@@ -1,9 +1,21 @@
 ---
+name: Plywood
 applications:
 - detail: Removal of surface contaminants, adhesives, and finishes from plywood substrates
   industry: Woodworking & Furniture
 - detail: Cleaning of plywood surfaces for bonding, painting, or restoration applications
   industry: Construction Materials
+technicalSpecifications:
+  fluenceRange: 0.5–2.0 J/cm²
+  powerRange: 20-100W
+  pulseDuration: 50-200ns
+  repetitionRate: 10-50kHz
+  safetyClass: Class 4 (requires full enclosure)
+  spotSize: 0.5-3.0mm
+  wavelength: 1064nm (primary), 355nm (optional)
+description: Technical overview of Plywood, a wood-based composite material, for laser
+  cleaning applications, including optimal 1064nm wavelength interaction with wood
+  fibers and adhesive layers.
 author: Todd Dunning
 author_object:
   country: United States (California)
@@ -13,31 +25,20 @@ author_object:
   name: Todd Dunning
   sex: m
   title: MA
-category: wood
 chemicalProperties:
   formula: Wood veneers + adhesive (typically phenolic or urea-formaldehyde)
   materialType: wood composite
   symbol: Plywood
-compatibility:
-- Wood surfaces
-- Painted surfaces
-- Adhesive layers
 composition:
 - Cellulose 40-50%
 - Lignin 20-30%
 - Hemicellulose 15-25%
 - Adhesive resin 5-10%
-description: Technical overview of Plywood, a wood-based composite material, for laser
-  cleaning applications, including optimal 1064nm wavelength interaction with wood
-  fibers and adhesive layers.
-environmentalImpact:
-- benefit: Chemical Solvent Elimination
-  description: Eliminates need for chemical strippers and solvents in surface preparation
-- benefit: Minimal Waste Generation
-  description: Produces only vaporized contaminants with no secondary waste streams
-- benefit: Energy Efficiency
-  description: Consumes 60% less energy than sanding or chemical stripping methods
-headline: Comprehensive technical guide for laser cleaning wood plywood surfaces
+compatibility:
+- Wood surfaces
+- Painted surfaces
+- Adhesive layers
+regulatoryStandards: ISO 12460, ASTM D3434, CARB ATCM 93120
 images:
   hero:
     alt: Plywood surface undergoing laser cleaning showing precise contamination removal
@@ -46,9 +47,15 @@ images:
     alt: Microscopic view of Plywood surface after laser cleaning showing detailed
       surface structure
     url: /images/plywood-laser-cleaning-micro.jpg
-keywords: plywood, wood composite, laser cleaning, surface preparation, adhesive removal,
-  wood restoration, non-destructive cleaning, laser parameters for wood
-name: Plywood
+title: Laser Cleaning Plywood - Technical Guide for Optimal Processing
+headline: Comprehensive technical guide for laser cleaning wood plywood surfaces
+environmentalImpact:
+- benefit: Chemical Solvent Elimination
+  description: Eliminates need for chemical strippers and solvents in surface preparation
+- benefit: Minimal Waste Generation
+  description: Produces only vaporized contaminants with no secondary waste streams
+- benefit: Energy Efficiency
+  description: Consumes 60% less energy than sanding or chemical stripping methods
 outcomes:
 - metric: Achieves visually clean surface suitable for bonding or finishing
   result: Surface Cleanliness Level
@@ -56,6 +63,8 @@ outcomes:
   result: Material Removal Precision
 - metric: 1-3 m²/hour cleaning rate depending on contamination type
   result: Processing Speed
+keywords: plywood, wood composite, laser cleaning, surface preparation, adhesive removal,
+  wood restoration, non-destructive cleaning, laser parameters for wood
 prompt_chain_verification:
   ai_detection_config_loaded: true
   author_id: 4
@@ -67,6 +76,7 @@ prompt_chain_verification:
   persona_country: United States (California)
   prompt_components_integrated: 4
   verification_timestamp: '2025-09-16T22:57:44Z'
+category: wood
 properties:
   chemicalFormula: Wood veneers + adhesive
   density: 0.5-0.7 g/cm³
@@ -106,16 +116,6 @@ properties:
   thermalPercentile: 26.4
   wavelength: 1064nm
   youngsModulus: 8-12 GPa
-regulatoryStandards: ISO 12460, ASTM D3434, CARB ATCM 93120
-technicalSpecifications:
-  fluenceRange: 0.5–2.0 J/cm²
-  powerRange: 20-100W
-  pulseDuration: 50-200ns
-  repetitionRate: 10-50kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.5-3.0mm
-  wavelength: 1064nm (primary), 355nm (optional)
-title: Laser Cleaning Plywood - Technical Guide for Optimal Processing
 ---
 
 # Version Information
