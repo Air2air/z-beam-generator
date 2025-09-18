@@ -32,6 +32,7 @@ class ChemicalFallbackGenerator:
                 "pure_elements": {
                     # Common pure metals - elemental symbols
                     "aluminum": ("Al", "Al"),
+                    "beryllium": ("Be", "Be"),
                     "copper": ("Cu", "Cu"),
                     "iron": ("Fe", "Fe"),
                     "steel": ("Fe-C", "Fe"),  # Steel is iron-carbon alloy
@@ -161,11 +162,13 @@ class ChemicalFallbackGenerator:
                     "limestone": ("CaCO3", "Limestone"),
                     "travertine": ("CaCO3", "Travertine"),
                     "dolomite": ("CaMg(CO3)2", "Dolomite"),
+                    "alabaster": ("CaSO4·2H2O", "Alabaster"),  # Gypsum-based
                 },
                 "igneous": {
                     "basalt": ("SiO2·Al2O3·FeO", "Basalt"),
                     "obsidian": ("SiO2", "Obsidian"),
                     "pumice": ("SiO2·Al2O3", "Pumice"),
+                    "bluestone": ("SiO2·Al2O3", "Bluestone"),  # Sandstone variety
                 }
             },
             "wood": {

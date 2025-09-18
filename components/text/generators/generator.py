@@ -88,7 +88,13 @@ class TextComponentGenerator(APIComponentGenerator):
 
             # Generate content with provided author info
             if not author_info:
-                raise ValueError("Author information is required for text generation")
+                # Extract author info from frontmatter if available
+                if frontmatter_data and "author" in frontmatter_data:
+                    logger.info(f"Using author from frontmatter: {frontmatter_data['author']}")
+                    author_info = {"name": frontmatter_data["author"]}
+                else:
+                    logger.warning("No author information provided, text generation may not work optimally")
+                    author_info = None
 
             # Simple text generation
             result = generator.generate(

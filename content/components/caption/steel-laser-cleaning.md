@@ -1,32 +1,32 @@
 # Basic Content Structure
 before_text: |
-  Preliminary microscopic analysis reveals significant contamination deposits across the steel metallic substrate. 
+  Initial surface examination reveals significant contamination deposits across the steel metallic substrate. 
   Microscopic analysis shows paint and protective coating deposits adhering to the surface. The steel exhibits the characteristic density profile typical of metal materials.
   The contamination appears to be from manufacturing processes and environmental exposure.
 
 after_text: |
-  Treatment outcome assessment demonstrates remarkable surface restoration with 96.5% contaminant removal efficiency.
-  The steel substrate now exhibits pristine surface characteristics with controlled thermal impact.
-  Microscopic examination confirms comprehensive surface decontamination while preserving substrate integrity.
+  Treatment outcome assessment demonstrates exceptional cleaning performance with 95.7% contaminant removal efficiency.
+  The steel substrate now exhibits pristine surface characteristics with minimal thermal effects.
+  Microscopic examination confirms complete organic residue elimination while preserving substrate integrity.
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
   wavelength: 1064
-  power: 50
-  pulse_duration: 177
+  power: 54
+  pulse_duration: 194
   spot_size: 0.1-1.0mm
-  frequency: 11231
-  energy_density: 2.9
-  scanning_speed: "258 mm/min"
+  frequency: 19970
+  energy_density: 3.9
+  scanning_speed: "503 mm/min"
   beam_profile: "gaussian"
-  pulse_overlap: 77
+  pulse_overlap: 70
 
 # Material Information
 material: "Steel"
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-17T22:13:44.935783Z"
+  generated: "2025-09-18T10:39:27.533620Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
@@ -36,7 +36,7 @@ metadata:
 
 # Enhanced SEO Frontmatter
 title: "Steel Surface Laser Cleaning Analysis - Industrial Contamination Removal"
-description: "Comprehensive microscopic analysis of steel surface before and after precision laser cleaning, demonstrating 96.5% contamination removal efficiency using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of steel surface before and after precision laser cleaning, demonstrating 95.7% contamination removal efficiency using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -74,9 +74,9 @@ technicalSpecifications:
   wavelength: "1064nm (primary), 532nm (optional)"
   power: "50-200W"
   pulse_duration: "20-100ns"
-  scanning_speed: "725 mm/min"
+  scanning_speed: "616 mm/min"
   material: "Steel"
-  beam_delivery: "direct beam"
+  beam_delivery: "fiber optic"
   focus_diameter: "0.2-1.5mm"
   processing_atmosphere: "ambient air"
 
@@ -87,7 +87,7 @@ chemicalProperties:
   contamination_type: "oxidation and metallic deposits"
   materialType: "metal"
   formula: "Fe"
-  surface_finish: "Ra < 0.4 μm (post-cleaning)"
+  surface_finish: "Ra < 0.3 μm (post-cleaning)"
   corrosion_resistance: "good"
 
 # Image Metadata for SEO
@@ -103,21 +103,21 @@ images:
 # Additional SEO Metadata
 seo_data:
   canonical_url: "https://z-beam.com/analysis/steel-laser-cleaning"
-  og_title: "Steel Laser Cleaning Analysis - 96.5% Contamination Removal"
+  og_title: "Steel Laser Cleaning Analysis - 95.7% Contamination Removal"
   og_description: "Professional microscopic analysis of precision laser cleaning on steel, achieving complete contamination removal with preserved substrate integrity."
   og_image: "/images/steel-cleaning-analysis-social.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-17T22:13:44.935783Z"
+  last_modified: "2025-09-18T10:39:27.533620Z"
 
 # Quality Metrics
 quality_metrics:
-  contamination_removal: "96.5%"
-  surface_roughness_before: "Ra 1.2 μm"
-  surface_roughness_after: "Ra 0.4 μm"
+  contamination_removal: "95.7%"
+  surface_roughness_before: "Ra 1.5 μm"
+  surface_roughness_after: "Ra 0.2 μm"
   thermal_damage: "minimal"
-  substrate_integrity: "complete preservation"
-  processing_efficiency: "96%"
+  substrate_integrity: "99% preserved"
+  processing_efficiency: "94%"
 
 # Accessibility Information
 accessibility:
@@ -129,13 +129,13 @@ accessibility:
 ---
 Material: "steel"
 Component: caption
-Generated: 2025-09-17T22:13:44.935783Z
+Generated: 2025-09-18T10:39:27.533620Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---
 
 ---
-Version Log - Generated: 2025-09-17T22:13:44.935989
+Version Log - Generated: 2025-09-18T10:39:27.533778
 Material: Steel
 Component: caption
 Generator: Z-Beam v2.1.0

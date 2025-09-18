@@ -145,9 +145,17 @@ class TextComponentGenerator(APIComponentGenerator):
                 skip_ai_detection=True,  # No AI detection in basic text component
             )
 
-            # Generate content with provided author info
+            # Extract or validate author info
             if not author_info:
-                raise ValueError("Author information is required for text generation")
+                # Try to extract author info from frontmatter
+                if frontmatter_data and "author" in frontmatter_data:
+                    logger.info(f"Extracting author info from frontmatter: {frontmatter_data['author']}")
+                    author_info = {"name": frontmatter_data["author"]}
+                    # Extract country if available in frontmatter
+                    if "author_object" in frontmatter_data and "country" in frontmatter_data["author_object"]:
+                        author_info["country"] = frontmatter_data["author_object"]["country"]
+                else:
+                    raise ValueError("Author information is required for text generation")
 
             # CRITICAL: Validate localization support before generation
             author_country = author_info.get('country', 'USA')
@@ -190,20 +198,34 @@ class TextComponentGenerator(APIComponentGenerator):
                 logger.warning(f"⚠️ Content humanization failed, using original content: {e}")
                 humanized_content = result.content
 
-            # Format content with frontmatter at the bottom
+            # Clean content by removing preamble text before passing to versioning
             try:
-                formatted_content = self._format_content_with_frontmatter(
-                    humanized_content, material_name, author_info, frontmatter_data
-                )
-            except ValueError as e:
-                # Re-raise ValueError for missing required dependencies (fail-fast)
-                logger.error(f"Validation error in content formatting: {e}")
-                raise
+                clean_content = self._remove_preamble_text(humanized_content.strip())
+                clean_content = self._remove_existing_frontmatter(clean_content)
+            except Exception as e:
+                logger.warning(f"Content cleaning failed, using original: {e}")
+                clean_content = humanized_content
+                
+            # Extract author name for versioning system
+            if author_info and "name" in author_info:
+                author_name = author_info["name"]
+            elif frontmatter_data and "author" in frontmatter_data:
+                author_name = frontmatter_data["author"]
+            else:
+                author_name = None
 
-            # Apply centralized version stamping (will prepend to any existing legacy stamps)
-            from versioning import stamp_component_output
+            # Apply centralized version stamping with Global Metadata Delimiting Standard
+            # The versioning system will properly position author frontmatter between delimiters
+            from versioning import stamp_component_output_full
 
-            final_content = stamp_component_output("text", formatted_content)
+            final_content = stamp_component_output_full(
+                content=clean_content,
+                component_name="text", 
+                component_version="3.0.0",
+                material_name=material_name,
+                author_name=author_name,
+                operation="generation"
+            )
 
             return ComponentResult(
                 component_type="text",

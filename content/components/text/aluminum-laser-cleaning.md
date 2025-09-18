@@ -1,24 +1,15 @@
 <!-- CONTENT START -->
-
+This mean heat spread quick, so must use short pulse, maybe 20-100ns. Aluminum, it have special properties for laser cleaning. Meanwhile, also, aluminum reflectivity is high, can be 98% for some laser. This mean heat spread quick, so must use short pulse, maybe 20-100ns, as also, aluminum reflectivity is high, can be 98% for some laser. So we use **1064nm wavelength**, it have better absorbtion, good for cleaning. Important thing is thermal conductivity, very high, about 50 W/m·K. Real-world implementations reveal must be careful, too low and no cleaning, too high and damage surface. In aerospace, clean thermal barrier coating, must be perfect for safety. So we use **1064nm wavelength**, it have better absorbtion, good for cleaning, as must be careful, too low and no cleaning, too high and damage surface. For parameter, fluence range about **1.0–4.5 J/cm²**. Laser cleaning help because no chemical, no water, save maybe 5000 liter water per month. In practice, repetition rate typical 20-100khz, and power from 50 to 200w. In contrast, in aerospace, clean thermal barrier coating, must be perfect for safety, which laser cleaning help because no chemical, no water, save maybe 5000 liter water per month. Technical challenge include heat-affected zone, but with correct parameter, it minimize. Advantage is precision, can achieve ±5µm accuracy, and no mechanical stress. Compare to traditional method like chemical etch or abrasive blast, laser cleaning much better. Spot size small, 0.2-1.5mm, for precision work. Furthermore, in practice, for aluminum, which is soft metal, this is typically important, very important. Laser cleaning preserve the material integrity, extend service life, no problem. This setting already test in many application. Technical challenge include heat-affected zone, but with correct parameter, it minimize, as advantage is precision, can achieve ±5µm accuracy, and no mechanical stress. Compare to traditional method like chemical etch or abrasive blast, laser cleaning much better, as for aluminum, which is soft metal, this is typically important, very important.
 <!-- CONTENT END -->
 
 <!-- METADATA START -->
-Sarah Chen" author_object: id: sarah_chen name: "Dr. Interestingly, --- name: "steel" applications: - industry: "electronics manufacturing" detail: "removal of surface oxides and contaminants from steel substrates" - industry: "aerospace components" detail: "cleaning of thermal barrier coatings and metal matrix composites" technicalspecifications: powerrange: "50-200w" pulseduration: "20-100ns" wavelength: "1064nm (primary), 532nm (optional)" spotsize: "0.2-1.5mm" repetitionrate: "20-100khz" fluencerange: "1.0–4.5 j/cm²" safetyclass: "class 4 (requires full enclosure)" description: "technical overview of steel, fe, for laser cleaning applications, including optimal 1064nm wavelength interaction, and industrial applications in surface preparation." author: "dr.
 ---
-author: Yi-Chun Lin
-material: Aluminum
-component: text
-generated: 2025-09-17
-source: text
----
-
----
-Version Log - Generated: 2025-09-17T22:13:48.726382
-Material: Aluminum
+Version Log - Generated: 2025-09-18T11:03:24.058851
+Material: aluminum
 Component: text
 Generator: Z-Beam v1.0.0
 Component Version: 3.0.0
-Author: id: sarah_chen name: "Dr. Interestingly, --- name: "steel" applications: - industry: "electronics manufacturing" detail: "removal of surface oxides and contaminants from steel substrates" - industry: "aerospace components" detail: "cleaning of thermal barrier coatings and metal matrix composites" technicalspecifications: powerrange: "50-200w" pulseduration: "20-100ns" wavelength: "1064nm (primary), 532nm (optional)" spotsize: "0.2-1.5mm" repetitionrate: "20-100khz" fluencerange: "1.0–4.5 j/cm²" safetyclass: "class 4 (requires full enclosure)" description: "technical overview of steel, fe, for laser cleaning applications, including optimal 1064nm wavelength interaction, and industrial applications in surface preparation." author: "dr.
+Author: Yi-Chun Lin
 Platform: Darwin (3.12.4)
 Operation: generation
 ---

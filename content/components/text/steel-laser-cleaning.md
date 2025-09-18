@@ -1,24 +1,15 @@
 <!-- CONTENT START -->
-
+Steel, it is very common material, but laser cleaning for steel need careful parameter setting. Important thing is the **wavelength selection**. But sometimes, for thin oxide layer, maybe 532nm also can use. In practice, it show that thermal conductivity of steel, about 50.2 W/m·K, help to dissipate heat quickly, so heat-affected zone is minimal. Field experience shows the fluence range, it must be between 1.0 to 4.5 j/cm². Consequently, for steel, 1064nm wavelength is most common, very good absorbtion. Consequently, too low, cleaning not effective; too high, risk for substrate damage. Steel, it is very common material, but laser cleaning for steel need careful parameter setting, which but sometimes, for thin oxide layer, maybe 532nm also can use. Professional experience suggests the laser cleaning method is good, really good, because no chemical solvent, no water waste. This is typically important, very important. Additionally, **key laser parameters** already standardized for many application. The fluence range, it must be between 1.0 to 4.5 J/cm², as too low, cleaning not effective; too high, risk for substrate damage. Main challenge is to remove contaminant but no damage the base material. Power range from 50 to 200W, pulse duration 20-100ns. Meanwhile, repetition rate, we set 20-100khz. Success indicator is surface cleanliness achieve ISO Class 7 standard, and material removal precision within ±5µm. Compared to traditional method like abrasive blasting or chemical etch, laser cleaning give more precision. The laser cleaning method is good, really good, because no chemical solvent, no water waste, which main challenge is to remove contaminant but no damage the base material. Already finish many project with this method, no problem, very helpful. Success indicator is surface cleanliness achieve ISO Class 7 standard, and material removal precision within ±5µm, and compared to traditional method like abrasive blasting or chemical etch, laser cleaning give more precision.
 <!-- CONTENT END -->
 
 <!-- METADATA START -->
-Sarah Chen" author_object: id: sarah_chen name: "Dr. --- name: "Steel" applications: - industry: "Electronics Manufacturing" detail: "Removal of surface oxides and contaminants from Steel substrates" - industry: "Aerospace Components" detail: "Cleaning of thermal barrier coatings and metal matrix composites" technicalSpecifications: powerRange: "50-200W" pulseDuration: "20-100ns" wavelength: "1064nm (primary), 532nm (optional)" spotSize: "0.2-1.5mm" repetitionRate: "20-100kHz" fluenceRange: "1.0–4.5 J/cm²" safetyClass: "Class 4 (requires full enclosure)" description: "Technical overview of Steel, Fe, for laser cleaning applications, including optimal 1064nm wavelength interaction, and industrial applications in surface preparation." author: "Dr.
 ---
-author: Yi-Chun Lin
-material: Steel
-component: text
-generated: 2025-09-17
-source: text
----
-
----
-Version Log - Generated: 2025-09-17T22:13:48.444549
-Material: Steel
+Version Log - Generated: 2025-09-18T11:04:27.899054
+Material: steel
 Component: text
 Generator: Z-Beam v1.0.0
 Component Version: 3.0.0
-Author: id: sarah_chen name: "Dr. --- name: "Steel" applications: - industry: "Electronics Manufacturing" detail: "Removal of surface oxides and contaminants from Steel substrates" - industry: "Aerospace Components" detail: "Cleaning of thermal barrier coatings and metal matrix composites" technicalSpecifications: powerRange: "50-200W" pulseDuration: "20-100ns" wavelength: "1064nm (primary), 532nm (optional)" spotSize: "0.2-1.5mm" repetitionRate: "20-100kHz" fluenceRange: "1.0–4.5 J/cm²" safetyClass: "Class 4 (requires full enclosure)" description: "Technical overview of Steel, Fe, for laser cleaning applications, including optimal 1064nm wavelength interaction, and industrial applications in surface preparation." author: "Dr.
+Author: Yi-Chun Lin
 Platform: Darwin (3.12.4)
 Operation: generation
 ---

@@ -5,28 +5,28 @@ before_text: |
   The contamination appears to be from manufacturing processes and environmental exposure.
 
 after_text: |
-  Post-laser cleaning analysis demonstrates remarkable surface restoration with 96.9% contaminant removal efficiency.
-  The aluminum substrate now exhibits pristine surface characteristics with controlled thermal impact.
-  Microscopic examination confirms comprehensive surface decontamination while maintaining material properties.
+  Post-processing microscopic evaluation demonstrates exceptional cleaning performance with 95.7% contaminant removal efficiency.
+  The aluminum substrate now exhibits pristine surface characteristics with negligible substrate modification.
+  Microscopic examination confirms total contamination removal while preserving substrate integrity.
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
   wavelength: 1064
-  power: 109
-  pulse_duration: 94
+  power: 192
+  pulse_duration: 186
   spot_size: 0.1-1.0mm
-  frequency: 49087
-  energy_density: 4.0
-  scanning_speed: "355 mm/min"
+  frequency: 23562
+  energy_density: 3.2
+  scanning_speed: "531 mm/min"
   beam_profile: "gaussian"
-  pulse_overlap: 78
+  pulse_overlap: 72
 
 # Material Information
 material: "Aluminum"
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-17T22:11:33.787364Z"
+  generated: "2025-09-18T10:37:26.175884Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
@@ -36,7 +36,7 @@ metadata:
 
 # Enhanced SEO Frontmatter
 title: "Aluminum Surface Laser Cleaning Analysis - Industrial Contamination Removal"
-description: "Comprehensive microscopic analysis of aluminum surface before and after precision laser cleaning, demonstrating 96.9% contamination removal efficiency using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of aluminum surface before and after precision laser cleaning, demonstrating 95.7% contamination removal efficiency using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -74,9 +74,9 @@ technicalSpecifications:
   wavelength: "1064nm (primary), 532nm (optional)"
   power: "50-200W"
   pulse_duration: "20-100ns"
-  scanning_speed: "572 mm/min"
+  scanning_speed: "623 mm/min"
   material: "Aluminum"
-  beam_delivery: "direct beam"
+  beam_delivery: "galvanometer scanning"
   focus_diameter: "0.2-1.5mm"
   processing_atmosphere: "inert atmosphere"
 
@@ -87,8 +87,8 @@ chemicalProperties:
   contamination_type: "oxidation and metallic deposits"
   materialType: "metal"
   formula: "Al"
-  surface_finish: "Ra < 0.6 μm (post-cleaning)"
-  corrosion_resistance: "excellent"
+  surface_finish: "Ra < 0.8 μm (post-cleaning)"
+  corrosion_resistance: "good"
 
 # Image Metadata for SEO
 images:
@@ -103,21 +103,21 @@ images:
 # Additional SEO Metadata
 seo_data:
   canonical_url: "https://z-beam.com/analysis/aluminum-laser-cleaning"
-  og_title: "Aluminum Laser Cleaning Analysis - 96.9% Contamination Removal"
+  og_title: "Aluminum Laser Cleaning Analysis - 95.7% Contamination Removal"
   og_description: "Professional microscopic analysis of precision laser cleaning on aluminum, achieving complete contamination removal with preserved substrate integrity."
   og_image: "/images/aluminum-cleaning-analysis-social.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-17T22:11:33.787364Z"
+  last_modified: "2025-09-18T10:37:26.175884Z"
 
 # Quality Metrics
 quality_metrics:
-  contamination_removal: "96.9%"
-  surface_roughness_before: "Ra 2.2 μm"
-  surface_roughness_after: "Ra 0.6 μm"
-  thermal_damage: "none detected"
-  substrate_integrity: "complete preservation"
-  processing_efficiency: "97%"
+  contamination_removal: "95.7%"
+  surface_roughness_before: "Ra 1.4 μm"
+  surface_roughness_after: "Ra 0.5 μm"
+  thermal_damage: "negligible"
+  substrate_integrity: "excellent"
+  processing_efficiency: "96%"
 
 # Accessibility Information
 accessibility:
@@ -129,13 +129,13 @@ accessibility:
 ---
 Material: "aluminum"
 Component: caption
-Generated: 2025-09-17T22:11:33.787364Z
+Generated: 2025-09-18T10:37:26.175884Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---
 
 ---
-Version Log - Generated: 2025-09-17T22:11:33.787553
+Version Log - Generated: 2025-09-18T10:37:26.176104
 Material: Aluminum
 Component: caption
 Generator: Z-Beam v2.1.0

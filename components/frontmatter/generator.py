@@ -279,6 +279,8 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
             "exact-material-name": subject_slug,  # Required for template compatibility
             "material_formula": formula,
             "material_symbol": symbol,
+            "formula": formula,  # For compatibility with chemical fallback tests
+            "symbol": symbol,   # For compatibility with chemical fallback tests
             "material_type": material_data.get("material_type")
             if "material_type" in material_data
             else category,
