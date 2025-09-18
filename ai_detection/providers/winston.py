@@ -191,12 +191,12 @@ class WinstonProvider:
                 # Handle validation errors (like text too short)
                 error_data = response.json()
                 error_desc = error_data.get("description", "Validation failed")
-                from utils.loud_errors import validation_failure
+                from utils.ai.loud_errors import validation_failure
 
                 validation_failure("winston_ai", error_desc, field="text_content")
                 raise AIDetectionError(f"Winston.ai validation failed: {error_desc}")
             else:
-                from utils.loud_errors import api_failure
+                from utils.ai.loud_errors import api_failure
 
                 api_failure(
                     "winston_ai", f"API error {response.status_code}", retry_count=None

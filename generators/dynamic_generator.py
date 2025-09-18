@@ -379,7 +379,7 @@ EXAMPLES:
         if component_result["success"]:
             print(f"   ✅ {component_type}")
         else:
-            from utils.loud_errors import component_failure
+            from utils.ai.loud_errors import component_failure
 
             component_failure(
                 "dynamic_generator",

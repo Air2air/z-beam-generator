@@ -101,7 +101,7 @@ class StaticComponentGenerator(BaseComponentGenerator):
             )
             return self._create_result(content, success=True)
         except Exception as e:
-            from utils.loud_errors import component_failure
+            from utils.ai.loud_errors import component_failure
 
             component_failure(self.component_type, str(e), material=material_name)
             return self._create_result("", success=False, error_message=str(e))
@@ -197,7 +197,7 @@ class APIComponentGenerator(BaseComponentGenerator):
                 return self._create_result(content, success=True)
 
         except Exception as e:
-            from utils.loud_errors import api_failure
+            from utils.ai.loud_errors import api_failure
 
             api_failure(self.component_type, str(e), retry_count=None)
             return self._create_result("", success=False, error_message=str(e))
@@ -273,7 +273,7 @@ class AuthorComponentGenerator(StaticComponentGenerator):
             return create_author_content_from_data(material_name, author)
 
         except Exception as e:
-            from utils.loud_errors import component_failure
+            from utils.ai.loud_errors import component_failure
 
             component_failure("author", str(e), material=material_name)
             return f"Error loading author information: {e}"
@@ -409,7 +409,7 @@ class ComponentGeneratorFactory:
                         continue
 
                 # If both import paths failed
-                from utils.loud_errors import dependency_failure
+                from utils.ai.loud_errors import dependency_failure
 
                 dependency_failure(
                     f"{component_type}_generator",
@@ -419,7 +419,7 @@ class ComponentGeneratorFactory:
                 return None
 
         except ImportError as e:
-            from utils.loud_errors import dependency_failure
+            from utils.ai.loud_errors import dependency_failure
 
             dependency_failure(
                 f"{component_type}_generator",

@@ -40,7 +40,7 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
             self.prompt_config = load_component_config("frontmatter", "prompt.yaml")
             logger.info("Loaded optimized comprehensive prompt configuration for frontmatter")
         except Exception as e:
-            from utils.loud_errors import configuration_failure
+            from utils.ai.loud_errors import configuration_failure
 
             configuration_failure(
                 "frontmatter_generator", f"Error loading prompt configuration: {e}"
@@ -60,7 +60,7 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
         """Generate frontmatter using API"""
         try:
             if not api_client:
-                from utils.loud_errors import dependency_failure
+                from utils.ai.loud_errors import dependency_failure
 
                 dependency_failure(
                     "frontmatter_generator",
@@ -108,7 +108,7 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
                 )
             else:
                 error_msg = api_response.error or "API call failed"
-                from utils.loud_errors import api_failure
+                from utils.ai.loud_errors import api_failure
 
                 api_failure(
                     "frontmatter_generator",
@@ -124,7 +124,7 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
                 )
 
         except Exception as e:
-            from utils.loud_errors import component_failure
+            from utils.ai.loud_errors import component_failure
 
             component_failure(
                 "frontmatter_generator",
@@ -333,7 +333,7 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
             formatted_prompt = template.format(**template_vars)
             return formatted_prompt
         except KeyError as e:
-            from utils.loud_errors import validation_failure
+            from utils.ai.loud_errors import validation_failure
 
             validation_failure(
                 "frontmatter_generator", f"Missing template variable: {e}", field=str(e)
@@ -341,7 +341,7 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
             logger.error(f"Missing template variable: {e}")
             raise ValueError(f"Missing template variable: {e}")
         except Exception as e:
-            from utils.loud_errors import validation_failure
+            from utils.ai.loud_errors import validation_failure
 
             validation_failure(
                 "frontmatter_generator",

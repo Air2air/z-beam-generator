@@ -97,7 +97,7 @@ class ComponentGeneratorFactory:
                 return generator
 
             logger.error(f"No generator found for component type: {component_type}")
-            from utils.loud_errors import component_failure
+            from utils.ai.loud_errors import component_failure
 
             component_failure(
                 "component_generator_factory",
@@ -107,7 +107,7 @@ class ComponentGeneratorFactory:
             return None
 
         except Exception as e:
-            from utils.loud_errors import component_failure
+            from utils.ai.loud_errors import component_failure
 
             component_failure(
                 "component_generator_factory",

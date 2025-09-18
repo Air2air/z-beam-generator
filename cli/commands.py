@@ -385,7 +385,7 @@ def run_content_batch_generation():
                         successful_generations += 1
 
                 except Exception as e:
-                    from utils.loud_errors import component_failure
+                    from utils.ai.loud_errors import component_failure
 
                     component_failure(
                         "material_generation", str(e), material=material_name
@@ -407,7 +407,7 @@ def run_content_batch_generation():
         )
 
     except ImportError as e:
-        from utils.loud_errors import dependency_failure
+        from utils.ai.loud_errors import dependency_failure
 
         dependency_failure(
             "module_import",
@@ -415,7 +415,7 @@ def run_content_batch_generation():
             impact="Content batch generation cannot proceed",
         )
     except Exception as e:
-        from utils.loud_errors import critical_error
+        from utils.ai.loud_errors import critical_error
 
         critical_error(
             "Content batch generation failed",
@@ -439,7 +439,7 @@ def run_optimization(component_name: str):
             run_sophisticated_optimization(component_name, timeout_seconds=600)
         )
     except Exception as e:
-        from utils.loud_errors import api_failure
+        from utils.ai.loud_errors import api_failure
 
         api_failure("optimization_service", str(e), retry_count=None)
 
@@ -508,7 +508,7 @@ def run_batch_generation(material_name: Optional[str] = None, components: Option
                 print(f"🎯 Total tokens: {result['total_tokens']}")
 
             except Exception as e:
-                from utils.loud_errors import critical_error
+                from utils.ai.loud_errors import critical_error
 
                 critical_error(
                     f"Content generation failed for {material_name}",
@@ -653,7 +653,7 @@ def run_batch_generation(material_name: Optional[str] = None, components: Option
                                 print(f"   ✅ Success rate: {(successful_generations/processed_materials*100):.1f}%")
 
                         except Exception as e:
-                            from utils.loud_errors import component_failure
+                            from utils.ai.loud_errors import component_failure
 
                             component_failure(
                                 "material_generation", str(e), material=material_name
@@ -716,7 +716,7 @@ def run_batch_generation(material_name: Optional[str] = None, components: Option
                     print("⚠️  Results below expectations. Check API connectivity and timeout settings.")
 
             except ImportError as e:
-                from utils.loud_errors import dependency_failure
+                from utils.ai.loud_errors import dependency_failure
 
                 dependency_failure(
                     "module_import",
@@ -724,7 +724,7 @@ def run_batch_generation(material_name: Optional[str] = None, components: Option
                     impact="Batch generation cannot proceed",
                 )
             except Exception as e:
-                from utils.loud_errors import critical_error
+                from utils.ai.loud_errors import critical_error
 
                 critical_error(
                     "Batch generation failed",
@@ -733,7 +733,7 @@ def run_batch_generation(material_name: Optional[str] = None, components: Option
                 )
 
     except ImportError as e:
-        from utils.loud_errors import dependency_failure
+        from utils.ai.loud_errors import dependency_failure
 
         dependency_failure(
             "generator_module",

@@ -9,12 +9,11 @@ Validates the integrity of the three-layer architecture:
 Ensures fail-fast validation while preserving architectural integrity.
 """
 
-import os
 import time
 from dataclasses import dataclass
-from typing import Any, Dict, List, Optional
+from typing import Dict, List, Optional
 
-import yaml
+from utils.config_loader import config_loader
 
 
 @dataclass
@@ -47,8 +46,8 @@ class LayerValidator:
     """Validate three-layer architecture integrity"""
 
     def __init__(self):
-        self.config_cache = {}
-        self.cache_timeout = 300  # 5 minutes
+        # Caching now handled by centralized config_loader
+        pass
 
     def validate_base_layer(self, base_config: Dict) -> ValidationResult:
         """Validate base content prompt structure"""
@@ -159,22 +158,10 @@ class LayerValidator:
         return ValidationResult(True, "Three-layer integrity validated")
 
     def _load_config(self, config_path: str) -> Optional[Dict]:
-        """Load configuration with caching"""
-        cache_key = config_path
-        current_time = time.time()
-
-        # Check cache
-        if cache_key in self.config_cache:
-            cached_time, cached_config = self.config_cache[cache_key]
-            if current_time - cached_time < self.cache_timeout:
-                return cached_config
-
-        # Load from file
+        """Load configuration using centralized config loader with caching"""
         try:
-            with open(config_path, "r", encoding="utf-8") as f:
-                config = yaml.safe_load(f)
-                self.config_cache[cache_key] = (current_time, config)
-                return config
+            config = config_loader.load_yaml_config(config_path)
+            return config
         except Exception as e:
             print(f"Failed to load config {config_path}: {e}")
             return None

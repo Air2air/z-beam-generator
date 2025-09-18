@@ -183,7 +183,7 @@ class APIClient:
                 return True
             else:
                 print(f"❌ [API CLIENT] Connection test failed: {response.error}")
-                from utils.loud_errors import api_failure
+                from utils.ai.loud_errors import api_failure
 
                 api_failure(
                     "api_client",
@@ -194,7 +194,7 @@ class APIClient:
 
         except Exception as e:
             print(f"💥 [API CLIENT] Connection test error: {str(e)}")
-            from utils.loud_errors import api_failure
+            from utils.ai.loud_errors import api_failure
 
             api_failure(
                 "api_client",
@@ -355,7 +355,7 @@ class APIClient:
             print("📡 [API CLIENT] Connection established, waiting for response...")
         except requests.exceptions.ReadTimeout:
             # Handle read timeout specifically
-            from utils.loud_errors import network_failure
+            from utils.ai.loud_errors import network_failure
 
             network_failure("api_client", f"Read timeout after {self.timeout_read}s")
             return APIResponse(
@@ -366,7 +366,7 @@ class APIClient:
             )
         except requests.exceptions.ConnectTimeout:
             # Handle connection timeout specifically
-            from utils.loud_errors import network_failure
+            from utils.ai.loud_errors import network_failure
 
             network_failure(
                 "api_client", f"Connection timeout after {self.timeout_connect}s"
@@ -395,7 +395,7 @@ class APIClient:
                 f"📦 [API CLIENT] Content loaded successfully ({len(content_data)} bytes)"
             )
         except Exception as e:
-            from utils.loud_errors import network_failure
+            from utils.ai.loud_errors import network_failure
 
             network_failure(
                 "api_client", f"Content reading error: {e}"
@@ -412,7 +412,7 @@ class APIClient:
             try:
                 data = response.json()
             except json.JSONDecodeError as e:
-                from utils.loud_errors import api_failure
+                from utils.ai.loud_errors import api_failure
 
                 api_failure("api_client", f"JSON decode error: {e}", retry_count=None)
                 return APIResponse(

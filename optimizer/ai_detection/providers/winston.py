@@ -272,12 +272,12 @@ class WinstonProvider:
                 # Handle validation errors (like text too short)
                 error_data = response.json()
                 error_desc = error_data.get("description", "Validation failed")
-                from utils.loud_errors import validation_failure
+                from utils.ai.loud_errors import validation_failure
 
                 validation_failure("winston_ai", error_desc, field="text_content")
                 raise AIDetectionError(f"Winston.ai validation failed: {error_desc}")
             else:
-                from utils.loud_errors import api_failure
+                from utils.ai.loud_errors import api_failure
 
                 api_failure(
                     "winston_ai",
@@ -287,17 +287,17 @@ class WinstonProvider:
                 raise AIDetectionError(f"API error {response.status_code}")
 
         except requests.exceptions.Timeout:
-            from utils.loud_errors import network_failure
+            from utils.ai.loud_errors import network_failure
 
             network_failure("winston_ai", "API request timeout")
             raise AIDetectionError("Winston.ai API request timeout")
         except requests.exceptions.RequestException as e:
-            from utils.loud_errors import network_failure
+            from utils.ai.loud_errors import network_failure
 
             network_failure("winston_ai", f"API request failed: {e}")
             raise AIDetectionError(f"Winston.ai API request failed: {e}")
         except Exception as e:
-            from utils.loud_errors import api_failure
+            from utils.ai.loud_errors import api_failure
 
             api_failure("winston_ai", f"Analysis failed: {e}", retry_count=None)
             raise AIDetectionError(f"Analysis failed: {e}")
@@ -337,7 +337,7 @@ class WinstonProvider:
                 return False
 
         except Exception as e:
-            from utils.loud_errors import network_failure
+            from utils.ai.loud_errors import network_failure
 
             network_failure("winston_ai", f"Connectivity test failed: {e}")
             return False

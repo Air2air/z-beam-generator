@@ -54,7 +54,7 @@ class AIDetectionService:
             )
 
         except Exception as e:
-            from utils.loud_errors import api_failure
+            from utils.ai.loud_errors import api_failure
 
             api_failure(
                 "ai_detection_service", f"AI detection failed: {e}", retry_count=None

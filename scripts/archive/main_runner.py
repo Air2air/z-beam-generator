@@ -769,7 +769,7 @@ def main():
                                 successful_generations += 1
 
                         except Exception as e:
-                            from utils.loud_errors import component_failure
+                            from utils.ai.loud_errors import component_failure
                             component_failure(
                                 "material_generation", str(e), material=material_name
                             )
@@ -790,14 +790,14 @@ def main():
                 )
 
             except ImportError as e:
-                from utils.loud_errors import dependency_failure
+                from utils.ai.loud_errors import dependency_failure
                 dependency_failure(
                     "module_import",
                     str(e),
                     impact="Content batch generation cannot proceed",
                 )
             except Exception as e:
-                from utils.loud_errors import critical_error
+                from utils.ai.loud_errors import critical_error
                 critical_error(
                     "Content batch generation failed",
                     details=str(e),
@@ -820,7 +820,7 @@ def main():
                     run_sophisticated_optimization(component_name, timeout_seconds=600)
                 )
             except Exception as e:
-                from utils.loud_errors import api_failure
+                from utils.ai.loud_errors import api_failure
                 api_failure("optimization_service", str(e), retry_count=None)
 
         elif args.material or args.all:
@@ -885,7 +885,7 @@ def main():
                         print(f"🎯 Total tokens: {result['total_tokens']}")
 
                     except Exception as e:
-                        from utils.loud_errors import critical_error
+                        from utils.ai.loud_errors import critical_error
                         critical_error(
                             f"Content generation failed for {args.material}",
                             details=str(e),
@@ -1028,7 +1028,7 @@ def main():
                                         print(f"   ✅ Success rate: {(successful_generations/processed_materials*100):.1f}%")
 
                                 except Exception as e:
-                                    from utils.loud_errors import component_failure
+                                    from utils.ai.loud_errors import component_failure
                                     component_failure(
                                         "material_generation", str(e), material=material_name
                                     )
@@ -1090,14 +1090,14 @@ def main():
                             print("⚠️  Results below expectations. Check API connectivity and timeout settings.")
 
                     except ImportError as e:
-                        from utils.loud_errors import dependency_failure
+                        from utils.ai.loud_errors import dependency_failure
                         dependency_failure(
                             "module_import",
                             str(e),
                             impact="Batch generation cannot proceed",
                         )
                     except Exception as e:
-                        from utils.loud_errors import critical_error
+                        from utils.ai.loud_errors import critical_error
                         critical_error(
                             "Batch generation failed",
                             details=str(e),
@@ -1105,7 +1105,7 @@ def main():
                         )
 
             except ImportError as e:
-                from utils.loud_errors import dependency_failure
+                from utils.ai.loud_errors import dependency_failure
                 dependency_failure(
                     "generator_module",
                     str(e),
@@ -1150,7 +1150,7 @@ def main():
             print("💡 TIP: Use --help for complete command reference")
 
     except Exception as e:
-        from utils.loud_errors import critical_error
+        from utils.ai.loud_errors import critical_error
         critical_error(
             "Application execution failed", details=str(e), context="Main application"
         )

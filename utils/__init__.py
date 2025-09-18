@@ -65,9 +65,23 @@ from .validation.placeholder_validator import validate_placeholder_content, has_
 
 # Configuration
 # Configuration now centralized in run.py - no separate config utilities needed
+from .config_loader import (
+    dump_yaml_with_defaults,
+    parse_yaml_frontmatter,
+    safe_yaml_load,
+)
 
-# AI and error handling
-from .loud_errors import component_failure
+# AI and error handling - Use consolidated system
+from .ai.loud_errors import (
+    critical_error,
+    component_failure,
+    api_failure,
+    validation_failure,
+    dependency_failure,
+    configuration_failure,
+    network_failure,
+    LoudError,
+)
 
 __all__ = [
     # Core utilities
@@ -93,7 +107,9 @@ __all__ = [
     "get_author_info_for_material",
 
     # File operations
-    "PathManager",
+    "PathManager", 
+    "UnifiedImportManager",
+    "import_manager",
     "ImportErrorHandler",
     "ImportManager",
 
@@ -107,11 +123,23 @@ __all__ = [
     # Configuration
     "ConfigLoader",
     "load_yaml_file",
-    "load_component_config",
+    "load_component_config", 
     "load_ai_detection_config",
     "check_environment",
     "format_environment_report",
+    
+    # Standardized YAML utilities
+    "dump_yaml_with_defaults",
+    "parse_yaml_frontmatter", 
+    "safe_yaml_load",
 
     # AI and error handling
+    "critical_error",
     "component_failure",
+    "api_failure", 
+    "validation_failure",
+    "dependency_failure",
+    "configuration_failure",
+    "network_failure",
+    "LoudError",
 ]

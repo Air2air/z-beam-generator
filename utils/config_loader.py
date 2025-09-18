@@ -221,5 +221,90 @@ def create_config_loader() -> ConfigLoader:
     return ConfigLoader()
 
 
+# ===== STANDARDIZED YAML UTILITIES =====
+# These functions replace common YAML processing patterns throughout the codebase
+
+def dump_yaml_with_defaults(data: Dict[str, Any], **kwargs) -> str:
+    """
+    Dump YAML with standardized default arguments.
+    
+    Replaces common pattern:
+        yaml.dump(data, default_flow_style=False, sort_keys=False, allow_unicode=True)
+    
+    With:
+        dump_yaml_with_defaults(data)
+    """
+    default_args = {
+        'default_flow_style': False,
+        'sort_keys': False,
+        'allow_unicode': True,
+        'width': 1000,  # Prevent excessive line wrapping
+    }
+    default_args.update(kwargs)
+    return yaml.dump(data, **default_args)
+
+
+def parse_yaml_frontmatter(content: str) -> Optional[Dict[str, Any]]:
+    """
+    Parse YAML frontmatter from content with standard delimiters.
+    
+    Handles both:
+    - Standard frontmatter: --- YAML ---
+    - Code block format: ```yaml YAML ```
+    """
+    content = content.strip()
+    
+    # Standard frontmatter format
+    if content.startswith("---"):
+        end_marker = content.find("---", 3)
+        if end_marker != -1:
+            yaml_content = content[3:end_marker].strip()
+            try:
+                return yaml.safe_load(yaml_content)
+            except yaml.YAMLError as e:
+                logger.error(f"YAML parsing error in frontmatter: {e}")
+                return None
+    
+    # Code block format
+    elif content.startswith("```yaml"):
+        end_marker = content.find("```", 7)
+        if end_marker != -1:
+            yaml_content = content[7:end_marker].strip()
+            try:
+                return yaml.safe_load(yaml_content)
+            except yaml.YAMLError as e:
+                logger.error(f"YAML parsing error in code block: {e}")
+                return None
+    
+    # Try parsing entire content as YAML (fallback)
+    try:
+        return yaml.safe_load(content)
+    except yaml.YAMLError as e:
+        logger.error(f"YAML parsing error: {e}")
+        return None
+
+
+def safe_yaml_load(file_path: str) -> Optional[Dict[str, Any]]:
+    """
+    Safely load YAML file with error handling.
+    
+    Replaces common pattern:
+        try:
+            with open(file_path, 'r', encoding='utf-8') as f:
+                data = yaml.safe_load(f)
+        except Exception as e:
+            # handle error
+    
+    With:
+        data = safe_yaml_load(file_path)
+    """
+    try:
+        with open(file_path, 'r', encoding='utf-8') as f:
+            return yaml.safe_load(f)
+    except Exception as e:
+        logger.error(f"Error loading YAML file {file_path}: {e}")
+        return None
+
+
 # Global instance for easy access
 config_loader = ConfigLoader()

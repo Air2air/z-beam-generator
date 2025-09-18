@@ -109,7 +109,7 @@ class FailFastTextGenerator:
 
         for file_path in required_files:
             if not Path(file_path).exists():
-                from utils.loud_errors import configuration_failure
+                from utils.ai.loud_errors import configuration_failure
 
                 configuration_failure(
                     "fail_fast_generator",
@@ -149,7 +149,7 @@ class FailFastTextGenerator:
             RetryableError: For temporary failures
         """
         if not api_client:
-            from utils.loud_errors import dependency_failure
+            from utils.ai.loud_errors import dependency_failure
 
             dependency_failure(
                 "fail_fast_generator", "API client is required for text generation"
@@ -167,7 +167,7 @@ class FailFastTextGenerator:
             with open("components/text/prompts/base_content_prompt.yaml", "r") as f:
                 base_prompt_data = yaml.safe_load(f)
         except Exception as e:
-            from utils.loud_errors import configuration_failure
+            from utils.ai.loud_errors import configuration_failure
 
             configuration_failure(
                 "fail_fast_generator", f"Failed to load base prompt: {e}"
@@ -222,7 +222,7 @@ class FailFastTextGenerator:
                         continue
                     else:
                         # Non-retryable error or max retries reached
-                        from utils.loud_errors import api_failure
+                        from utils.ai.loud_errors import api_failure
                         api_failure(
                             "fail_fast_generator",
                             f"API error: {error_msg}",
@@ -239,7 +239,7 @@ class FailFastTextGenerator:
                         time.sleep(self.retry_delay)
                         continue
                     else:
-                        from utils.loud_errors import api_failure
+                        from utils.ai.loud_errors import api_failure
 
                         api_failure(
                             "fail_fast_generator",
@@ -274,7 +274,7 @@ class FailFastTextGenerator:
                     )
                     time.sleep(self.retry_delay)
                 else:
-                    from utils.loud_errors import api_failure
+                    from utils.ai.loud_errors import api_failure
 
                     api_failure(
                         "fail_fast_generator",
@@ -286,7 +286,7 @@ class FailFastTextGenerator:
                     )
 
         # This should never be reached
-        from utils.loud_errors import critical_failure
+        from utils.ai.loud_errors import critical_failure
 
         critical_failure("fail_fast_generator", "Unexpected error in generation loop")
         raise GenerationError("Unexpected error in generation loop")
@@ -323,7 +323,7 @@ class FailFastTextGenerator:
         try:
             localization_prompt = get_required_localization_prompt(author_info)
         except Exception as e:
-            from utils.loud_errors import validation_failure
+            from utils.ai.loud_errors import validation_failure
             validation_failure(
                 "fail_fast_generator",
                 f"Failed to load required localization prompts: {e}",
@@ -340,7 +340,7 @@ class FailFastTextGenerator:
         # Add author information
         author_name = author_info.get("name")
         if not author_name:
-            from utils.loud_errors import validation_failure
+            from utils.ai.loud_errors import validation_failure
 
             validation_failure(
                 "fail_fast_generator",

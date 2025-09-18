@@ -160,7 +160,7 @@ def run_dynamic_generation(
                         frontmatter_data = None
 
             else:
-                from utils.loud_errors import component_failure
+                from utils.ai.loud_errors import component_failure
 
                 component_failure(
                     "workflow_manager",
@@ -173,7 +173,7 @@ def run_dynamic_generation(
                 )
 
         except Exception as e:
-            from utils.loud_errors import component_failure
+            from utils.ai.loud_errors import component_failure
 
             component_failure(
                 "workflow_manager",

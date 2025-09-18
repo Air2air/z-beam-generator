@@ -16,7 +16,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Dict, List, Optional
 
-from utils.loud_errors import LoudError
+from utils.ai.loud_errors import LoudError
 
 logger = logging.getLogger(__name__)
 
