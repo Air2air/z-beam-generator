@@ -138,33 +138,14 @@ class UnifiedImportManager:
         return module
 
     def setup_component_fallbacks(self):
-        """Setup common component fallbacks for Z-Beam system."""
-        mock_generator = self.create_mock_module(
-            generate=lambda *args, **kwargs: {
-                "component_type": "mock",
-                "content": "Mock content - component not available",
-                "success": False,
-                "error": "Component module not found",
-            }
-        )
-
-        # Register fallbacks for Z-Beam components
-        common_components = [
-            "components.author.generator",
-            "components.table.generator", 
-            "components.frontmatter.generator",
-            "components.badgesymbol.generator",
-            "components.jsonld.generator",
-            "components.metatags.generator",
-            "components.propertiestable.generator",
-            "components.tags.generator",
-            "components.bullets.generator",
-            "components.caption.generator",
-            "components.text.generator",
-        ]
-
-        for component in common_components:
-            self.register_fallback(component, mock_generator)
+        """
+        GROK COMPLIANCE: No fallbacks in production.
+        This method is disabled to enforce fail-fast architecture.
+        Components must be explicitly imported or system fails immediately.
+        """
+        # REMOVED: All fallback/mock logic violates GROK fail-fast principles
+        # System must fail immediately if components are missing
+        pass
 
     # ===== VALIDATION FUNCTIONALITY =====
 

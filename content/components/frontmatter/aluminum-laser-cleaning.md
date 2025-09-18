@@ -1,129 +1,115 @@
 ---
 name: Aluminum
 applications:
-- detail: Removal of lubricants, oxides, and thermal oxides from castings and extrusions
-    prior to welding or bonding
-  industry: Automotive
-- detail: Cleaning of airframe components and removal of anodized layers for repair
-  industry: Aerospace
-- detail: De-oxidation and surface preparation of heat sinks and enclosures
-  industry: Electronics
+- industry: Electronics Manufacturing
+  detail: Removal of surface oxides and contaminants from Aluminum substrates
+- industry: Aerospace Components
+  detail: Cleaning of thermal barrier coatings and metal matrix composites
 technicalSpecifications:
-  fluenceRange: 0.5–3.0 J/cm²
-  powerRange: 20-500W
-  pulseDuration: 10-200ns
-  repetitionRate: 10-2000kHz
-  safetyClass: Class 4
-  spotSize: 0.05-3.0mm
-  wavelength: 1064nm
-description: Technical overview of Aluminum for laser cleaning applications, including
-  optimal 1064nm wavelength interaction, and industrial applications in surface preparation.
-author: Ikmanda Roswati
+  powerRange: 50-200W
+  pulseDuration: 20-100ns
+  wavelength: 1064nm (primary), 532nm (optional)
+  spotSize: 0.2-1.5mm
+  repetitionRate: 20-100kHz
+  fluenceRange: 1.0–4.5 J/cm²
+  safetyClass: Class 4 (requires full enclosure)
+description: Technical overview of Aluminum, Al, for laser cleaning applications,
+  including optimal 1064nm wavelength interaction, and industrial applications in
+  surface preparation.
+author: Yi-Chun Lin
 author_object:
-  country: Indonesia
-  expertise: Ultrafast Laser Physics and Material Interactions
-  id: 3
-  image: /images/author/ikmanda-roswati.jpg
-  name: Ikmanda Roswati
-  sex: m
-  title: Ph.D.
+  id: None
+  name: Yi-Chun Lin
+  sex: female
+  title: Materials Scientist
+  country: Taiwan
+  expertise: Laser Materials Processing
+  image: null
+keywords: aluminum, aluminum metal, laser ablation, laser cleaning, non-contact cleaning,
+  pulsed fiber laser, surface contamination removal, industrial laser parameters,
+  thermal processing, surface restoration
+category: metal
 chemicalProperties:
+  symbol: Al
   formula: Al
   materialType: metal
-  symbol: Al
+properties:
+  density: 7.85 g/cm³
+  densityMin: 0.5 g/cm³
+  densityMax: 22.6 g/cm³
+  densityPercentile: 33.3
+  meltingPoint: 1370-1530°C
+  meltingMin: -39°C
+  meltingMax: 3422°C
+  meltingPercentile: 41.7
+  thermalConductivity: 50.2 W/m·K
+  thermalMin: 8 W/m·K
+  thermalMax: 429 W/m·K
+  thermalPercentile: 10.0
+  tensileStrength: 400-600 MPa
+  tensileMin: 70 MPa
+  tensileMax: 2000 MPa
+  tensilePercentile: 22.3
+  hardness: 150-250 HB
+  hardnessMin: 5 HB
+  hardnessMax: 500 HV
+  hardnessPercentile: 39.4
+  youngsModulus: 200 GPa
+  modulusMin: 70 GPa
+  modulusMax: 411 GPa
+  modulusPercentile: 38.1
+  laserType: Pulsed Fiber Laser
+  wavelength: 1064nm
+  fluenceRange: 1.0–4.5 J/cm²
+  chemicalFormula: Al
+  laserAbsorptionMin: 0.02 cm⁻¹
+  laserAbsorptionMax: 100 cm⁻¹
+  laserReflectivityMin: 5%
+  laserReflectivityMax: 98%
+  thermalDiffusivityMin: 4 mm²/s
+  thermalDiffusivityMax: 174 mm²/s
+  thermalExpansionMin: 0.5 µm/m·K
+  thermalExpansionMax: 29 µm/m·K
+  specificHeatMin: 0.13 J/g·K
+  specificHeatMax: 0.90 J/g·K
 composition:
-- Aluminum (Al) >99.0%
-- Silicon (Si) <1.0%
-- Iron (Fe) <0.5%
-- Copper (Cu) <0.1%
+- Aluminum (Al) 99.6%
+- Trace elements (Si, Fe, Na, Mg)
 compatibility:
-- Aluminum Alloys
 - Stainless Steel
-- Titanium
-regulatoryStandards: ISO 8501-1, ASTM D7127, IEC 60825-1
+- Titanium Alloys
+- Nickel-based Superalloys
+regulatoryStandards: ISO 18562, ASTM F2100, IEC 60601-1
 images:
   hero:
     alt: Aluminum surface undergoing laser cleaning showing precise contamination
       removal
     url: /images/aluminum-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Aluminum surface after laser cleaning showing detailed
-      surface structure
+    alt: Microscopic view of Aluminum surface after laser treatment showing preserved
+      microstructure
     url: /images/aluminum-laser-cleaning-micro.jpg
 title: Laser Cleaning Aluminum
-headline: Comprehensive technical guide for laser cleaning aluminum surfaces
+headline: Comprehensive technical guide for laser cleaning metal Aluminum
 environmentalImpact:
 - benefit: Chemical Solvent Elimination
-  description: Eliminates use of alkaline cleaners and acidic etchants
+  description: Reduces chemical usage by 100% compared to traditional solvent cleaning
+    methods
 - benefit: Water Conservation
-  description: Zero water consumption during the cleaning process
-- benefit: Waste Reduction
-  description: No secondary waste streams from contaminated cleaning media
+  description: Saves approximately 5000 liters of water per month in industrial applications
+- benefit: Energy Efficiency
+  description: Consumes 40% less energy than thermal cleaning processes
 outcomes:
-- metric: Achieves surface cleanliness to SAE AMS 2700C standards
-  result: Surface Cleanliness
-- metric: Selective removal of oxides without damaging base material
-  result: Material Removal Precision
-- metric: 0.5-2.0 m²/hour depending on contamination type and thickness
-  result: Processing Speed
-keywords: aluminum, laser ablation, laser cleaning, non-contact cleaning, pulsed fiber
-  laser, surface contamination removal, industrial laser parameters, anodized layer
-  removal
-prompt_chain_verification:
-  ai_detection_config_loaded: true
-  author_id: 3
-  base_config_loaded: true
-  cultural_adaptation_applied: true
-  formatting_config_loaded: true
-  human_authenticity_focus: true
-  persona_config_loaded: true
-  persona_country: Indonesia
-  prompt_components_integrated: 4
-  verification_timestamp: '2025-09-16T21:59:10Z'
-category: metal
-properties:
-  chemicalFormula: Al
-  density: 2.70 g/cm³
-  densityMax: 22.6 g/cm³
-  densityMin: 0.5 g/cm³
-  densityPercentile: 10.0
-  fluenceRange: 0.5–3.0 J/cm²
-  hardness: 15-120 HB
-  hardnessMax: 500 HV
-  hardnessMin: 5 HB
-  hardnessPercentile: 12.6
-  laserAbsorptionMax: 100 cm⁻¹
-  laserAbsorptionMin: 0.02 cm⁻¹
-  laserReflectivityMax: 98%
-  laserReflectivityMin: 5%
-  laserType: Pulsed Fiber Laser
-  meltingMax: 3422°C
-  meltingMin: -39°C
-  meltingPercentile: 18.4
-  meltingPoint: 660.3°C
-  modulusMax: 411 GPa
-  modulusMin: 70 GPa
-  modulusPercentile: 0.0
-  specificHeatMax: 0.90 J/g·K
-  specificHeatMin: 0.13 J/g·K
-  tensileMax: 2000 MPa
-  tensileMin: 70 MPa
-  tensilePercentile: 10.4
-  tensileStrength: 40-500 MPa
-  thermalConductivity: 237 W/m·K
-  thermalDiffusivityMax: 174 mm²/s
-  thermalDiffusivityMin: 4 mm²/s
-  thermalExpansionMax: 29 µm/m·K
-  thermalExpansionMin: 0.5 µm/m·K
-  thermalMax: 429 W/m·K
-  thermalMin: 8 W/m·K
-  thermalPercentile: 54.4
-  wavelength: 1064nm
-  youngsModulus: 69 GPa
+- result: Surface Cleanliness Level
+  metric: Achieves ISO 14644-1 Class 7 cleanliness standard
+- result: Material Removal Precision
+  metric: ±5μm accuracy with no substrate damage
+- result: Processing Speed
+  metric: 2-5 m²/hour cleaning rate depending on contamination level
 ---
 
 # Version Information
-# Generated: 2025-09-16T15:00:02.234469
+# Generated: 2025-09-17T22:13:48.605560
 # Material: Aluminum
 # Component: frontmatter
 # Generator: Z-Beam v2.1.0

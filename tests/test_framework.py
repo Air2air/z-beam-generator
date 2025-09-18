@@ -177,7 +177,7 @@ class RobustTestCase(unittest.TestCase):
         self.test_author_info = {
             "id": 1,
             "name": "Test Author",
-            "country": "Test Country",
+            "country": "usa",
         }
 
         logger.debug(f"🧪 Test {self._testMethodName} setup complete")

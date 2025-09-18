@@ -135,10 +135,10 @@ COMPONENT_CONFIG = {
         "data_provider": "hybrid",  # Uses frontmatter data + AI generation
     },
     "jsonld": {
-        "api_provider": "deepseek",  # Extracts from frontmatter, no AI needed
+        "api_provider": "deepseek",  # Uses both frontmatter extraction and AI enhancement
         "priority": 9,
-        "enabled": False,  # DISABLED for focused batch test
-        "data_provider": "hybrid",  # Pure frontmatter extraction
+        "enabled": True,  # ENABLED for JSON-LD generation
+        "data_provider": "hybrid",  # Combines frontmatter data with AI generation for maximum richness
     },
     "author": {
         "api_provider": "none",  # Static component, no API needed

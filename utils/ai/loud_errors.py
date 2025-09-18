@@ -58,7 +58,7 @@ class LoudError:
 
     @staticmethod
     def component_failure(
-        component_name: str, error: str, material: Optional[str] = None
+        component_name: str, error: str, material: Optional[str] = None, **kwargs
     ) -> None:
         """Display a component failure with high visibility"""
         print(
@@ -72,6 +72,10 @@ class LoudError:
 
         if material:
             print(f"{Colors.RED}MATERIAL: {material}{Colors.RESET}", file=sys.stderr)
+
+        # Show component type if provided
+        if "component_type" in kwargs:
+            print(f"{Colors.RED}COMPONENT: {kwargs['component_type']}{Colors.RESET}", file=sys.stderr)
 
         print(f"{Colors.RED}ERROR: {error}{Colors.RESET}", file=sys.stderr)
         print(

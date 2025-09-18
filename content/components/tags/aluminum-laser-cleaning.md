@@ -1,36 +1,46 @@
 tags:
-  - aerospace
-  - automotive
-  - electronics
-  - anodizing
-  - passivation
-  - decoating
-  - restoration
-  - polishing
+  - laser-cleaning
+  - surface-preparation
+  - industrial-technology
+  - manufacturing-processes
+  - contamination-removal
+  - material-processing
+  - quality-control
+  - precision-cleaning
 material: "aluminum"
 count: 8
 categories:
   industry:
-    - aerospace
-    - automotive
-    - electronics
   process:
-    - anodizing
-    - passivation
-    - decoating
-    - restoration
-    - polishing
   author:
+    - laser-cleaning
+    - surface-preparation
+    - industrial-technology
+    - manufacturing-processes
+    - contamination-removal
+    - material-processing
+    - quality-control
+    - precision-cleaning
   other:
 metadata:
-  generated: "2025-09-17T11:54:21.831172"
+  generated: "2025-09-17T22:11:33.773687"
   format: "yaml"
   version: "2.0"
 
 ---
 Material: "aluminum"
 Component: tags
-Generated: 2025-09-17T11:54:21.831196
+Generated: 2025-09-17T22:11:33.773710
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
+---
+
+---
+Version Log - Generated: 2025-09-17T22:11:33.773994
+Material: Aluminum
+Component: tags
+Generator: Z-Beam v2.1.0
+Author: AI Assistant
+Platform: Darwin (3.12.4)
+File: content/components/tags/aluminum-laser-cleaning.md
 ---

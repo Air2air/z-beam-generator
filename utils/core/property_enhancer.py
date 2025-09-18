@@ -182,6 +182,8 @@ def enhance_generated_frontmatter(content: str, category: str) -> str:
             parts = content.split("---", 2)
             if len(parts) >= 2:
                 yaml_content = parts[1].strip()
+                # Extract body content if it exists
+                body_content = parts[2] if len(parts) > 2 else ""
         
         # If we extracted YAML content, validate and process it
         if yaml_content:
@@ -209,7 +211,13 @@ def enhance_generated_frontmatter(content: str, category: str) -> str:
             )
 
             # Always return in proper frontmatter format
-            return f"---\n{enhanced_yaml}---"
+            result = f"---\n{enhanced_yaml}---"
+            
+            # Append body content if it exists
+            if 'body_content' in locals() and body_content:
+                result += body_content
+                
+            return result
 
         # If we couldn't extract valid YAML, return original content
         logger.warning("Could not extract valid YAML content from response")
