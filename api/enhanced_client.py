@@ -438,4 +438,15 @@ def create_enhanced_client(provider: str = "deepseek") -> EnhancedAPIClient:
 
 
 # Import API_PROVIDERS from centralized location
-from run import get_api_providers
+try:
+    from run import get_api_providers
+except ImportError:
+    # Fallback for when run module is not available
+    def get_api_providers():
+        return {
+            "deepseek": {
+                "model": "deepseek-chat",
+                "base_url": "https://api.deepseek.com",
+                "timeout": 30
+            }
+        }

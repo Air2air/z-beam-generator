@@ -249,9 +249,3 @@ Generate high-quality, accurate, and professional content that follows industry 
 def create_deepseek_client(**kwargs) -> DeepSeekClient:
     """Create a properly configured DeepSeek client"""
     return DeepSeekClient(**kwargs)
-
-
-# Backward compatibility alias
-def create_api_client(**kwargs) -> DeepSeekClient:
-    """Create API client (backward compatibility)"""
-    return create_deepseek_client(**kwargs)

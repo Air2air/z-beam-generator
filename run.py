@@ -89,49 +89,49 @@ COMPONENT_CONFIG = {
     "frontmatter": {
         "api_provider": "deepseek",
         "priority": 1,
-        "enabled": False,  # ENABLED for frontmatter generation
+        "enabled": False,  # DISABLED for caption-focused generation
         "data_provider": "hybrid",  # Uses frontmatter data + AI generation
     },
     "metatags": {
         "api_provider": "deepseek",
         "priority": 2,
-        "enabled": False,  # DISABLED for focused batch test
+        "enabled": False,  # DISABLED for caption-focused generation
         "data_provider": "hybrid",  # Uses frontmatter data + AI generation
     },
     "badgesymbol": {
         "api_provider": "none",  # Static/deterministic generation
         "priority": 3,
-        "enabled": False,  # DISABLED for focused batch test
+        "enabled": False,  # DISABLED for caption-focused generation
         "data_provider": "static",  # No API calls needed, deterministic
     },
     "bullets": {
         "api_provider": "deepseek",
         "priority": 4,
-        "enabled": False,  # DISABLED for focused batch test
+        "enabled": False,  # DISABLED for caption-focused generation
         "data_provider": "hybrid",  # Uses frontmatter data + AI generation
     },
     "caption": {
         "api_provider": "deepseek",
         "priority": 5,
-        "enabled": False,  # DISABLED for focused batch test
+        "enabled": True,  # ENABLED for caption generation
         "data_provider": "hybrid",  # Uses frontmatter data + AI generation
     },
     "text": {
         "api_provider": "deepseek",
         "priority": 6,
-        "enabled": False,  # ENABLED for text generation
+        "enabled": False,  # DISABLED for caption-focused generation
         "data_provider": "hybrid",  # Uses frontmatter data + AI generation
     },
     "table": {
         "api_provider": "none",  # Static/deterministic generation
         "priority": 7,
-        "enabled": False,  # DISABLED for focused batch test
+        "enabled": False,  # DISABLED for caption-focused generation
         "data_provider": "static",  # No API calls needed, no frontmatter dependency
     },
     "tags": {
         "api_provider": "deepseek",
         "priority": 8,
-        "enabled": True,  # ENABLED for tags component testing
+        "enabled": False,  # DISABLED for caption-focused generation
         "data_provider": "hybrid",  # Uses frontmatter data + AI generation
     },
     "jsonld": {
@@ -143,7 +143,7 @@ COMPONENT_CONFIG = {
     "author": {
         "api_provider": "none",  # Static component, no API needed
         "priority": 10,
-        "enabled": True,  # DISABLED for focused batch test
+        "enabled": False,  # DISABLED for caption-focused generation
         "data_provider": "static",  # Static data, no dependencies
     },
 }
@@ -412,8 +412,18 @@ def main():
         print(f"✅ Table generator loaded: {generator.component_type}")
         return True
     
-    if args.material and args.components:
-        print(f"🚀 Generating {args.components} for {args.material}")
+    if args.material:
+        if args.components:
+            # Use specified components
+            component_types = [c.strip() for c in args.components.split(',')]
+            print(f"🚀 Generating {args.components} for {args.material}")
+        else:
+            # Use enabled components from configuration
+            component_types = [comp for comp, config in COMPONENT_CONFIG.items() if config.get('enabled', False)]
+            if not component_types:
+                print("❌ No components are enabled in configuration")
+                return False
+            print(f"🚀 Generating enabled components ({', '.join(component_types)}) for {args.material}")
         
         try:
             # Load materials data
@@ -437,8 +447,7 @@ def main():
             api_client = create_api_client("deepseek")
             generator = DynamicGenerator()
             
-            # Split components
-            component_types = [c.strip() for c in args.components.split(',')]
+            # Split components - already done above
             
             for component_type in component_types:
                 print(f"📋 Generating {component_type}...")
@@ -447,7 +456,7 @@ def main():
                 frontmatter_data = None
                 if component_type in ['table', 'author', 'metatags', 'jsonld', 'bullets', 'caption', 'tags']:
                     # Try to load existing frontmatter
-                    frontmatter_path = f"content/components/frontmatter/{args.material.lower()}-laser-cleaning.md"
+                    frontmatter_path = f"content/components/frontmatter/{args.material.lower().replace(' ', '-').replace('_', '-')}-laser-cleaning.md"
                     if os.path.exists(frontmatter_path):
                         import yaml
                         with open(frontmatter_path, 'r') as f:
@@ -473,7 +482,7 @@ def main():
                     # Save the result
                     output_dir = f"content/components/{component_type}"
                     os.makedirs(output_dir, exist_ok=True)
-                    output_file = f"{output_dir}/{args.material.lower()}-laser-cleaning.yaml" if component_type in ['table', 'jsonld', 'metatags', 'author'] else f"{output_dir}/{args.material.lower()}-laser-cleaning.md"
+                    output_file = f"{output_dir}/{args.material.lower()}-laser-cleaning.yaml" if component_type in ['table', 'jsonld', 'metatags', 'author', 'caption'] else f"{output_dir}/{args.material.lower()}-laser-cleaning.md"
                     
                     with open(output_file, 'w') as f:
                         f.write(result.content)

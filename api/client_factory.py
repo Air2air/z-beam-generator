@@ -206,7 +206,3 @@ def get_api_client_for_component(component_type: str, **kwargs) -> APIClient:
 def is_test_mode() -> bool:
     """Check if we're in test mode"""
     return APIClientFactory.is_test_mode()
-
-
-# Global instance for easy access
-api_client_factory = APIClientFactory()

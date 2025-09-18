@@ -1,0 +1,135 @@
+# Basic Content Structure
+before_text: |
+  Initial surface examination reveals significant contamination deposits across the copper metallic substrate. 
+  Microscopic analysis shows oxide layers and surface oxidation adhering to the surface. The copper exhibits the characteristic density profile typical of metal materials.
+  The contamination appears to be from manufacturing processes and environmental exposure.
+
+after_text: |
+  Post-laser cleaning analysis demonstrates exceptional cleaning performance with 96.2% contaminant removal efficiency.
+  The copper substrate now exhibits pristine surface characteristics with controlled thermal impact.
+  Microscopic examination confirms complete organic residue elimination while maintaining material properties.
+
+# YAML v2.0 Laser Parameters
+laser_parameters:
+  wavelength: 1064
+  power: 33
+  pulse_duration: 31
+  spot_size: 0.1-2.0mm
+  frequency: 22986
+  energy_density: 2.1
+  scanning_speed: "262 mm/min"
+  beam_profile: "gaussian"
+  pulse_overlap: 76
+
+# Material Information
+material: "Copper"
+
+# Technical Metadata
+metadata:
+  generated: "2025-09-17T18:11:42.211384Z"
+  format: "yaml"
+  version: "2.0"
+  analysis_method: "atomic_force_microscopy"
+  magnification: "1000x"
+  field_of_view: "200 μm"
+  image_resolution: "2048x1536"
+
+# Enhanced SEO Frontmatter
+title: "Copper Surface Laser Cleaning Analysis - Industrial Contamination Removal"
+description: "Comprehensive microscopic analysis of copper surface before and after precision laser cleaning, demonstrating 96.2% contamination removal efficiency using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
+
+# SEO Keywords
+keywords:
+  - "laser cleaning"
+  - "copper surface treatment"
+  - "microscopic surface analysis"
+  - "materials processing"
+  - "precision cleaning"
+  - "surface topography"
+  - "laser ablation"
+  - "copper"
+  - "contamination analysis"
+  - "copper metal"
+  - "non-contact cleaning"
+  - "electronics manufacturing applications"
+  - "metal surface treatment"
+  - "corrosion removal"
+  - "oxide layer removal"
+
+# Author Information with SEO Enhancement
+author: "Todd Dunning"
+author_object:
+  name: "Todd Dunning"
+  email: "todd.dunning@materials-lab.com"
+  affiliation: "Advanced Materials Processing Laboratory"
+  title: "MA Optical Materials for Laser Systems"
+  expertise:
+    - "Laser Materials Processing"
+    - "Surface Analysis"
+    - "Materials Science"
+    - "Optical Materials for Laser Systems"
+
+# Technical Specifications for SEO
+technicalSpecifications:
+  wavelength: "1064nm (primary), 532nm (optional)"
+  power: "20-100W"
+  pulse_duration: "10-50ns"
+  scanning_speed: "252 mm/min"
+  material: "Copper"
+  beam_delivery: "fiber optic"
+  focus_diameter: "0.1-0.8mm"
+  processing_atmosphere: "ambient air"
+
+# Chemical Properties for Enhanced SEO
+chemicalProperties:
+  composition: "Copper (Cu) 99.9%, Trace elements (O, Ag, Pb, Fe)"
+  surface_treatment: "laser cleaning"
+  contamination_type: "oxidation and metallic deposits"
+  materialType: "metal"
+  formula: "Cu"
+  surface_finish: "Ra < 1.0 μm (post-cleaning)"
+  corrosion_resistance: "good"
+
+# Image Metadata for SEO
+images:
+  micro:
+    url: "/images/copper-cleaning-analysis.jpg"
+    alt: "Microscopic comparison of copper surface before and after laser cleaning showing complete contamination removal"
+    width: 800
+    height: 450
+    format: "JPEG"
+    caption: "High-resolution microscopic analysis demonstrating precision laser cleaning effectiveness on copper"
+
+# Additional SEO Metadata
+seo_data:
+  canonical_url: "https://z-beam.com/analysis/copper-laser-cleaning"
+  og_title: "Copper Laser Cleaning Analysis - 96.2% Contamination Removal"
+  og_description: "Professional microscopic analysis of precision laser cleaning on copper, achieving complete contamination removal with preserved substrate integrity."
+  og_image: "/images/copper-cleaning-analysis-social.jpg"
+  twitter_card: "summary_large_image"
+  schema_type: "AnalysisNewsArticle"
+  last_modified: "2025-09-17T18:11:42.211384Z"
+
+# Quality Metrics
+quality_metrics:
+  contamination_removal: "96.2%"
+  surface_roughness_before: "Ra 2.1 μm"
+  surface_roughness_after: "Ra 1.0 μm"
+  thermal_damage: "negligible"
+  substrate_integrity: "99% preserved"
+  processing_efficiency: "92%"
+
+# Accessibility Information
+accessibility:
+  alt_text_detailed: "Split-screen microscopic image showing copper surface before laser cleaning (left) with visible contamination deposits and after cleaning (right) with pristine surface finish"
+  caption_language: "en"
+  technical_level: "professional"
+  visual_description: "High-contrast microscopic imagery clearly showing copper surface transformation through laser cleaning"
+
+---
+Material: "copper"
+Component: caption
+Generated: 2025-09-17T18:11:42.211384Z
+Generator: Z-Beam v1.0.0
+Format: YAML v2.0
+---

@@ -34,19 +34,11 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
     def _load_prompt_config(self):
         """Load prompt configuration from YAML file"""
         try:
-            from pathlib import Path
+            from utils.config_loader import load_component_config
 
-            import yaml
-
-            # Use the optimized comprehensive prompt file
-            prompt_file = self.component_dir / "prompt.yaml"
-            if prompt_file.exists():
-                with open(prompt_file, "r", encoding="utf-8") as f:
-                    self.prompt_config = yaml.safe_load(f)
-                logger.info("Loaded optimized comprehensive prompt configuration for frontmatter")
-            else:
-                logger.warning(f"Comprehensive prompt configuration file not found: {prompt_file}")
-                self.prompt_config = {}
+            # Use centralized config loader with caching and fail-fast behavior
+            self.prompt_config = load_component_config("frontmatter", "prompt.yaml")
+            logger.info("Loaded optimized comprehensive prompt configuration for frontmatter")
         except Exception as e:
             from utils.loud_errors import configuration_failure
 
@@ -284,6 +276,7 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
             "subject": material_name,
             "subject_lowercase": subject_lowercase,
             "subject_slug": subject_slug,
+            "exact-material-name": subject_slug,  # Required for template compatibility
             "material_formula": formula,
             "material_symbol": symbol,
             "material_type": material_data.get("material_type")

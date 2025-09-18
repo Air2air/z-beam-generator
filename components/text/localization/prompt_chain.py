@@ -9,9 +9,8 @@ CRITICAL REQUIREMENT: All text generation (generator or optimizer) must use this
 """
 
 import os
-import yaml
-from typing import Dict, Any, Optional, Tuple
-from pathlib import Path
+from typing import Dict, Any, Optional
+from utils.config_loader import load_yaml_config
 
 
 class LocalizationPromptChain:
@@ -71,9 +70,8 @@ class LocalizationPromptChain:
         try:
             persona_file = f"{self.personas_path}/{country}_persona.yaml"
             if os.path.exists(persona_file):
-                with open(persona_file, 'r', encoding='utf-8') as f:
-                    data = yaml.safe_load(f)
-                    return self._extract_persona_content(data)
+                data = load_yaml_config(persona_file, f"persona_{country}")
+                return self._extract_persona_content(data)
         except Exception as e:
             print(f"Warning: Could not load persona for {country}: {e}")
         return None
@@ -83,9 +81,8 @@ class LocalizationPromptChain:
         try:
             formatting_file = f"{self.formatting_path}/{country}_formatting.yaml"
             if os.path.exists(formatting_file):
-                with open(formatting_file, 'r', encoding='utf-8') as f:
-                    data = yaml.safe_load(f)
-                    return self._extract_formatting_content(data)
+                data = load_yaml_config(formatting_file, f"formatting_{country}")
+                return self._extract_formatting_content(data)
         except Exception as e:
             print(f"Warning: Could not load formatting for {country}: {e}")
         return None

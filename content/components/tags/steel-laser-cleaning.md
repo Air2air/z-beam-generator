@@ -1,44 +1,36 @@
-<!-- CONTENT START -->
 tags:
-  - automotive
   - aerospace
+  - automotive
   - manufacturing
   - passivation
-  - etching
-  - expert
-  - industrial
-  - decontamination
+  - pickling
+  - electroplating
+  - galvanizing
+  - phosphating
+material: "steel"
 count: 8
 categories:
   industry:
-    - automotive
     - aerospace
+    - automotive
     - manufacturing
-    - industrial
   process:
     - passivation
-    - etching
-    - decontamination
+  author:
   other:
-    - expert
+    - pickling
+    - electroplating
+    - galvanizing
+    - phosphating
 metadata:
+  generated: "2025-09-17T16:33:05.502424"
   format: "yaml"
   version: "2.0"
-<!-- CONTENT END -->
-
-<!-- METADATA START -->
-material: "steel"
-  author:
-  generated: "2025-09-17T11:51:10.900953"
 
 ---
-Version Log - Generated: 2025-09-17T11:51:10.921555
 Material: "steel"
 Component: tags
+Generated: 2025-09-17T16:33:05.502455
 Generator: Z-Beam v1.0.0
-Component Version: 1.0.0
-Author: AI Assistant
-Platform: Darwin (3.12.4)
-Operation: generation
+Format: YAML v2.0
 ---
-<!-- METADATA END -->

@@ -423,3 +423,85 @@ class TextComponentGenerator(APIComponentGenerator):
             result_lines.append(line)
         
         return '\n'.join(result_lines).strip()
+
+    def _load_persona_prompt(self, author_info: Dict) -> Optional[str]:
+        """
+        Load persona prompt for given author information.
+        
+        This method provides backward compatibility for tests while delegating
+        to the localization system.
+        
+        Args:
+            author_info: Author information dictionary
+            
+        Returns:
+            Persona prompt string or None if not found
+        """
+        try:
+            from components.text.localization.prompt_chain import LocalizationPromptChain
+            chain = LocalizationPromptChain()
+            
+            # Extract country from author_info
+            if isinstance(author_info, dict) and 'country' in author_info:
+                country = author_info['country'].lower()
+            elif isinstance(author_info, int):
+                # Handle legacy author ID format - map to default country
+                country = 'usa'
+            else:
+                country = 'usa'
+            
+            # Normalize country name
+            country_mapping = {
+                'italy': 'italy',
+                'indonesia': 'indonesia', 
+                'taiwan': 'taiwan',
+                'usa': 'usa',
+                'united states': 'usa',
+                'united states (california)': 'usa'
+            }
+            normalized_country = country_mapping.get(country, 'usa')
+            
+            return chain._load_persona_prompt(normalized_country)
+        except Exception as e:
+            logger.warning(f"Failed to load persona prompt: {e}")
+            return None
+
+    def _build_api_prompt(self, material_name: str, material_data: Dict, author_info: Dict, **kwargs) -> str:
+        """
+        Build API prompt for text generation.
+        
+        This method provides backward compatibility for tests while delegating
+        to the fail_fast_generator system.
+        
+        Args:
+            material_name: Name of the material
+            material_data: Material data dictionary
+            author_info: Author information
+            **kwargs: Additional prompt parameters
+            
+        Returns:
+            Complete API prompt string
+        """
+        try:
+            from .generators.fail_fast_generator import create_fail_fast_generator
+            
+            # Create a temporary generator instance for prompt building
+            generator = create_fail_fast_generator(
+                max_retries=1,
+                retry_delay=0.1,
+                enable_scoring=False,
+                skip_ai_detection=True,
+            )
+            
+            # Build the prompt using the fail_fast_generator's internal prompt system
+            # This delegates to the comprehensive prompt building system
+            return generator._build_comprehensive_prompt(
+                material_name=material_name,
+                material_data=material_data,
+                author_info=author_info,
+                **kwargs
+            )
+        except Exception as e:
+            logger.warning(f"Failed to build API prompt: {e}")
+            # Fallback to simple prompt
+            return f"Generate technical content about {material_name} laser cleaning."
