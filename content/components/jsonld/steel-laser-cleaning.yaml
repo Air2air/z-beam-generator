@@ -14,13 +14,13 @@ jsonld:
       name: Thermal Conductivity
       value: 50.2 W/m·K
     - '@type': PropertyValue
-      name: ThermalDiffusivity
+      name: Thermal Diffusivity
       value: 4 mm²/s - 174 mm²/s
     - '@type': PropertyValue
-      name: ThermalExpansion
+      name: Thermal Expansion
       value: 0.5 µm/m·K - 29 µm/m·K
     - '@type': PropertyValue
-      name: specificHeat
+      name: Specific Heat
       value: 0.13 J/g·K - 0.90 J/g·K
     - '@type': PropertyValue
       name: Tensile Strength
@@ -32,20 +32,20 @@ jsonld:
       name: Hardness
       value: 150-250 HB
     - '@type': PropertyValue
-      name: LaserAbsorption
+      name: Laser Absorption
       value: 0.02 cm⁻¹ - 100 cm⁻¹
     - '@type': PropertyValue
-      name: LaserReflectivity
+      name: Laser Reflectivity
       value: 5% - 98%
     - '@type': PropertyValue
       name: Chemical Formula
-      value: Cu
+      value: Fe
     - '@type': PropertyValue
       name: Material Type
       value: metal
     - '@type': PropertyValue
       name: Chemical Symbol
-      value: Cu
+      value: Fe
     - '@type': PropertyValue
       name: Laser Wavelength
       value: 1064nm (primary), 532nm (optional)
@@ -69,7 +69,7 @@ jsonld:
       value: Class 4 (requires full enclosure)
     - '@type': PropertyValue
       name: Chemical Composition
-      value: Copper (Cu) 99.6%, Trace elements (Si, Fe, Na, Mg)
+      value: Steel (Fe) 99.6%, Trace elements (Si, Fe, Na, Mg)
     - '@type': PropertyValue
       name: Material Compatibility
       value: Stainless Steel, Titanium Alloys, Nickel-based Superalloys
@@ -77,26 +77,26 @@ jsonld:
       name: Regulatory Standards
       value: ISO 18562, ASTM F2100, IEC 60601-1
     alternateName:
-    - Cu
-    - Cu
+    - Fe
+    - Fe
     category: metal
-    description: Technical overview of Copper, Cu, for laser cleaning applications,
+    description: Technical overview of Steel, Fe, for laser cleaning applications,
       including optimal 1064nm wavelength interaction, and industrial applications
       in surface preparation.
-    identifier: Cu
-    name: Copper
+    identifier: Fe
+    name: Steel
   - '@type': Process
-    description: Non-contact surface treatment process optimized for Copper materials
+    description: Non-contact surface treatment process optimized for Steel materials
     name: Laser Cleaning
-  abstract: 'Advanced laser cleaning techniques for Copper using 1064nm (primary),
+  abstract: 'Advanced laser cleaning techniques for Steel using 1064nm (primary),
     532nm (optional) wavelength at 1.0–4.5 J/cm² with 20-100ns and 50-200W for Electronics
     Manufacturing and Aerospace Components. Material properties: 7.85 g/cm³ density,
     50.2 W/m·K thermal conductivity.'
   alternativeHeadline: Advanced Laser Ablation Techniques for Electronics Manufacturing
-    using Copper
-  articleBody: Technical overview of Copper, Cu, for laser cleaning applications,
-    including optimal 1064nm wavelength interaction, and industrial applications in
-    surface preparation.
+    using Steel
+  articleBody: Technical overview of Steel, Fe, for laser cleaning applications, including
+    optimal 1064nm wavelength interaction, and industrial applications in surface
+    preparation.
   articleSection: Materials Processing
   author:
     '@type': Person
@@ -104,11 +104,11 @@ jsonld:
       '@type': Organization
       name: Advanced Materials Research Institute - Taiwan
     image: null
-    jobTitle: Materials Scientist in Laser Materials Processing
+    jobTitle: Materials Scientist in Materials Science
     knowsAbout:
     - Laser Materials Processing
-    - Copper Surface Engineering
-    - Laser Materials Processing
+    - Steel Surface Engineering
+    - Materials Science
     name: Yi-Chun Lin
     nationality: Taiwan
   breadcrumb:
@@ -123,8 +123,8 @@ jsonld:
       name: Metal
       position: 2
     - '@type': ListItem
-      item: https://z-beam.com/copper-laser-cleaning
-      name: Copper
+      item: https://z-beam.com/steel-laser-cleaning
+      name: Steel
       position: 3
   copyrightHolder:
     '@type': Organization
@@ -136,67 +136,67 @@ jsonld:
     - https://www.linkedin.com/company/z-beam
     url: https://z-beam.com
   copyrightYear: 2025
-  dateModified: '2025-09-18T18:34:35Z'
-  datePublished: '2025-09-18T18:34:35Z'
+  dateModified: '2025-09-18T18:38:03Z'
+  datePublished: '2025-09-18T18:38:03Z'
   description: Comprehensive technical guide covering laser cleaning methodologies
-    for Copper metal, including 1064nm (primary), 532nm (optional) wavelength optimization,
+    for Steel metal, including 1064nm (primary), 532nm (optional) wavelength optimization,
     industrial applications, and surface treatment benefits with detailed material
     properties.
-  headline: Copper Laser Cleaning
+  headline: Steel Laser Cleaning
   image:
   - '@type': ImageObject
-    caption: Copper surface undergoing laser cleaning showing precise contamination
+    caption: Steel surface undergoing laser cleaning showing precise contamination
       removal
-    description: High-resolution demonstration of Copper component processed with
-      1064nm (primary), 532nm (optional) wavelength at 1.0–4.5 J/cm², showing complete
-      contamination removal while preserving material integrity
+    description: High-resolution demonstration of Steel component processed with 1064nm
+      (primary), 532nm (optional) wavelength at 1.0–4.5 J/cm², showing complete contamination
+      removal while preserving material integrity
     encodingFormat: image/jpeg
     height: 800
-    name: Copper Laser Cleaning Before/After Comparison
+    name: Steel Laser Cleaning Before/After Comparison
     representativeOfPage: true
-    url: https://z-beam.com/images/copper-laser-cleaning-hero.jpg
+    url: https://z-beam.com/images/steel-laser-cleaning-hero.jpg
     width: 1200
   - '@type': ImageObject
-    caption: Microscopic view of Copper surface after laser treatment showing preserved
+    caption: Microscopic view of Steel surface after laser treatment showing preserved
       microstructure
-    description: Scanning electron micrographs of Copper surface processed with 1064nm
+    description: Scanning electron micrographs of Steel surface processed with 1064nm
       (primary), 532nm (optional) wavelength, verified at high magnification showing
       detailed surface structure
     encodingFormat: image/jpeg
     height: 600
-    name: Copper Surface Microstructure Analysis
-    url: https://z-beam.com/images/copper-laser-cleaning-micro.jpg
+    name: Steel Surface Microstructure Analysis
+    url: https://z-beam.com/images/steel-laser-cleaning-micro.jpg
     width: 800
   inLanguage: en-US
   isAccessibleForFree: true
   isPartOf:
     '@type': WebSite
     name: Z-Beam Laser Processing Guide
-    url: https://z-beam.com/copper-laser-cleaning
+    url: https://z-beam.com/steel-laser-cleaning
   keywords:
-  - copper
-  - copper laser cleaning
+  - steel
+  - steel laser cleaning
   - laser ablation
   - non-contact cleaning
   - surface treatment
-  - copper metal
+  - steel metal
   - metal laser processing
   - electronics-manufacturing-laser-cleaning
   - aerospace-components-laser-cleaning
   - 1064(primary),532(optional)-laser
-  - Cu-laser-processing
+  - Fe-laser-processing
   - eco-friendly-cleaning
   - sustainable-processing
   license: https://creativecommons.org/licenses/by/4.0/
   mainEntity:
     '@type': HowTo
-    description: Step-by-step process for laser cleaning Copper materials using optimized
+    description: Step-by-step process for laser cleaning Steel materials using optimized
       parameters
-    name: How to Laser Clean Copper
+    name: How to Laser Clean Steel
     step:
     - '@type': HowToStep
       name: Material Preparation
-      text: Secure Copper component in laser processing fixture ensuring stable positioning
+      text: Secure Steel component in laser processing fixture ensuring stable positioning
         and adequate ventilation for Class 4 (requires full enclosure) operation.
     - '@type': HowToStep
       name: Parameter Configuration
@@ -205,17 +205,17 @@ jsonld:
     - '@type': HowToStep
       name: Surface Treatment
       text: Execute systematic scanning pattern with 0.2-1.5mm maintaining consistent
-        standoff distance for Copper processing.
+        standoff distance for Steel processing.
     - '@type': HowToStep
       name: Quality Verification
-      text: Inspect cleaned Copper surface using optical microscopy to verify contaminant
+      text: Inspect cleaned Steel surface using optical microscopy to verify contaminant
         removal and material integrity preservation.
   mentions:
   - aerospace
   - manufacturing
-  - components
   - electronics
+  - components
   potentialAction:
     '@type': ReadAction
-    target: https://z-beam.com/copper-laser-cleaning
+    target: https://z-beam.com/steel-laser-cleaning
   wordCount: 20
