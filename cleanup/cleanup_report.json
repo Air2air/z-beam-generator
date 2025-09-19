@@ -1,70 +1,78 @@
 {
   "dry_run": true,
-  "timestamp": "2025-09-11T12:12:02.455110",
+  "timestamp": "2025-09-18T11:19:45.395806",
   "dead_files": [],
   "unused_component_files": [
     [
+      "components/propertiestable/mock_generator.py",
+      "Unused: component 'propertiestable' not in configuration"
+    ],
+    [
+      "components/propertiestable/__init__.py",
+      "Unused: component 'propertiestable' not in configuration"
+    ],
+    [
+      "components/propertiestable/prompt.yaml",
+      "Unused: component 'propertiestable' not in configuration"
+    ],
+    [
+      "components/propertiestable/README.md",
+      "Unused: component 'propertiestable' not in configuration"
+    ],
+    [
+      "components/propertiestable/example_propertiestable.md",
+      "Unused: component 'propertiestable' not in configuration"
+    ],
+    [
+      "components/propertiestable/generator.py",
+      "Unused: component 'propertiestable' not in configuration"
+    ],
+    [
+      "components/propertiestable/__pycache__/mock_generator.cpython-312.pyc",
+      "Unused: component 'propertiestable' not in configuration"
+    ],
+    [
+      "components/propertiestable/__pycache__/generator.cpython-312.pyc",
+      "Unused: component 'propertiestable' not in configuration"
+    ],
+    [
+      "components/propertiestable/__pycache__/__init__.cpython-312.pyc",
+      "Unused: component 'propertiestable' not in configuration"
+    ],
+    [
+      "components/propertiestable/testing/test_propertiestable.py",
+      "Unused: component 'propertiestable' not in configuration"
+    ],
+    [
+      "components/propertiestable/testing/__pycache__/test_propertiestable.cpython-312-pytest-8.4.1.pyc",
+      "Unused: component 'propertiestable' not in configuration"
+    ],
+    [
       "components/__pycache__/__init__.cpython-312.pyc",
       "Unused: component '__pycache__' not in configuration"
-    ],
-    [
-      "components/badgesymbol/validator.py",
-      "Unused: component 'badgesymbol' not in configuration"
-    ],
-    [
-      "components/badgesymbol/mock_generator.py",
-      "Unused: component 'badgesymbol' not in configuration"
-    ],
-    [
-      "components/badgesymbol/post_processor.py",
-      "Unused: component 'badgesymbol' not in configuration"
-    ],
-    [
-      "components/badgesymbol/__init__.py",
-      "Unused: component 'badgesymbol' not in configuration"
-    ],
-    [
-      "components/badgesymbol/prompt.yaml",
-      "Unused: component 'badgesymbol' not in configuration"
-    ],
-    [
-      "components/badgesymbol/README.md",
-      "Unused: component 'badgesymbol' not in configuration"
-    ],
-    [
-      "components/badgesymbol/generator.py",
-      "Unused: component 'badgesymbol' not in configuration"
-    ],
-    [
-      "components/badgesymbol/example_badgesymbol.md",
-      "Unused: component 'badgesymbol' not in configuration"
-    ],
-    [
-      "components/badgesymbol/__pycache__/generator.cpython-312.pyc",
-      "Unused: component 'badgesymbol' not in configuration"
-    ],
-    [
-      "components/badgesymbol/__pycache__/__init__.cpython-312.pyc",
-      "Unused: component 'badgesymbol' not in configuration"
     ]
   ],
   "temp_files": [
     [
       "generators/dynamic_generator.py.bak",
       "Temporary file matching pattern: *.bak"
-    ],
-    [
-      "run.py.backup",
-      "Temporary file matching pattern: *.backup"
     ]
   ],
   "empty_dirs": [
     [
-      "test_cache",
+      "cache",
       "Empty directory"
     ],
     [
-      "content/components/author",
+      "config/backups",
+      "Empty directory"
+    ],
+    [
+      "content/components/badgesymbol",
+      "Empty directory"
+    ],
+    [
+      "components/bullets/testing",
       "Empty directory"
     ],
     [
@@ -78,57 +86,8 @@
   ],
   "outdated_files": [],
   "broken_links": [],
-  "misplaced_test_files": [
-    [
-      "test_workflow_formula_optional.py",
-      "Test file/directory in root - should be in tests/"
-    ],
-    [
-      "test_api_client_caching.py",
-      "Test file/directory in root - should be in tests/"
-    ],
-    [
-      "test_frontmatter.py",
-      "Test file/directory in root - should be in tests/"
-    ],
-    [
-      "test_formula_direct.py",
-      "Test file/directory in root - should be in tests/"
-    ],
-    [
-      "test_formula_optional.py",
-      "Test file/directory in root - should be in tests/"
-    ],
-    [
-      "test_cache_persistence.py",
-      "Test file/directory in root - should be in tests/"
-    ],
-    [
-      "test_api_client_demo.py",
-      "Test file/directory in root - should be in tests/"
-    ],
-    [
-      "test_override_material.py",
-      "Test file/directory in root - should be in tests/"
-    ],
-    [
-      "test_frontmatter_proper.py",
-      "Test file/directory in root - should be in tests/"
-    ],
-    [
-      "network_test.py",
-      "Test file/directory in root - should be in tests/"
-    ]
-  ],
+  "misplaced_test_files": [],
   "misplaced_doc_files": [
-    [
-      "CRITICAL_FIXES_SUMMARY.md",
-      "Documentation file in root - should be in docs/"
-    ],
-    [
-      "CHANGE_SUMMARY.md",
-      "Documentation file in root - should be in docs/"
-    ],
     [
       "GROK_INSTRUCTIONS.md",
       "Documentation file in root - should be in docs/"

@@ -1,44 +1,162 @@
 ---
 name: Plywood
-applications:
-- detail: Removal of surface contaminants, adhesives, and finishes from plywood substrates
-  industry: Woodworking & Furniture
-- detail: Cleaning of plywood surfaces for bonding, painting, or restoration applications
-  industry: Construction Materials
-technicalSpecifications:
+category: wood
+title: Laser Cleaning Plywood
+headline: Comprehensive technical guide for laser cleaning wood plywood
+description: Technical overview of Plywood, C6H10O5+Adhesive, for laser cleaning applications,
+  including optimal 1064nm wavelength interaction, and industrial applications in
+  surface preparation.
+keywords: plywood, plywood wood, laser ablation, laser cleaning, non-contact cleaning,
+  pulsed fiber laser, surface contamination removal, industrial laser parameters,
+  thermal processing, surface restoration
+chemicalProperties:
+  symbol: Plywood
+  formula: C6H10O5+Adhesive
+  materialType: wood
+properties:
+  density: 0.5-0.7 g/cm³
+  densityNumeric: 0.6
+  densityUnit: g/cm³
+  densityMin: 0.3 g/cm³
+  densityMinNumeric: 0.3
+  densityMinUnit: g/cm³
+  densityMax: 0.9 g/cm³
+  densityMaxNumeric: 0.9
+  densityMaxUnit: g/cm³
+  densityPercentile: 42.1
+  meltingPoint: 180-250°C
+  meltingPointNumeric: 215.0
+  meltingPointUnit: °C
+  meltingPercentile: 18.5
+  thermalConductivity: 0.12 W/m·K
+  thermalConductivityNumeric: 0.12
+  thermalConductivityUnit: W/m·K
+  thermalPercentile: 5.2
+  tensileStrength: 30-50 MPa
+  tensileStrengthNumeric: 40.0
+  tensileStrengthUnit: MPa
+  tensilePercentile: 8.3
+  hardness: 2-4 HB
+  hardnessNumeric: 3.0
+  hardnessUnit: HB
+  hardnessMin: 1 HB
+  hardnessMinNumeric: 1.0
+  hardnessMinUnit: HB
+  hardnessMax: 6 HB
+  hardnessMaxNumeric: 6.0
+  hardnessMaxUnit: HB
+  hardnessPercentile: 2.0
+  youngsModulus: 8-12 GPa
+  youngsModulusNumeric: 10.0
+  youngsModulusUnit: GPa
+  modulusMin: 5 GPa
+  modulusMinNumeric: 5.0
+  modulusMinUnit: GPa
+  modulusMax: 15 GPa
+  modulusMaxNumeric: 15.0
+  modulusMaxUnit: GPa
+  modulusPercentile: 12.0
+  laserType: Pulsed Fiber Laser
+  wavelength: 1064nm
   fluenceRange: 0.5–2.0 J/cm²
+  chemicalFormula: C6H10O5+Adhesive
+composition:
+- Cellulose (C6H10O5) 40-50%
+- Lignin 20-30%
+- Hemicellulose 15-25%
+- Adhesives (urea-formaldehyde, phenol-formaldehyde) 5-10%
+machineSettings:
   powerRange: 20-100W
+  powerRangeNumeric: 60.0
+  powerRangeUnit: W
+  powerRangeMin: 20W
+  powerRangeMinNumeric: 20.0
+  powerRangeMinUnit: W
+  powerRangeMax: 500W
+  powerRangeMaxNumeric: 500.0
+  powerRangeMaxUnit: W
   pulseDuration: 50-200ns
-  repetitionRate: 10-50kHz
-  safetyClass: Class 4 (requires full enclosure)
+  pulseDurationNumeric: 125.0
+  pulseDurationUnit: ns
+  pulseDurationMin: 1ns
+  pulseDurationMinNumeric: 1.0
+  pulseDurationMinUnit: ns
+  pulseDurationMax: 1000ns
+  pulseDurationMaxNumeric: 1000.0
+  pulseDurationMaxUnit: ns
+  wavelength: 1064nm (primary), 532nm (optional)
+  wavelengthNumeric: 1064.0
+  wavelengthUnit: nm
+  wavelengthMin: 355nm
+  wavelengthMinNumeric: 355.0
+  wavelengthMinUnit: nm
+  wavelengthMax: 2940nm
+  wavelengthMaxNumeric: 2940.0
+  wavelengthMaxUnit: nm
   spotSize: 0.5-3.0mm
-  wavelength: 1064nm (primary), 355nm (optional)
-description: Technical overview of Plywood, a wood-based composite material, for laser
-  cleaning applications, including optimal 1064nm wavelength interaction with wood
-  fibers and adhesive layers.
+  spotSizeNumeric: 1.75
+  spotSizeUnit: mm
+  spotSizeMin: 0.01mm
+  spotSizeMinNumeric: 0.01
+  spotSizeMinUnit: mm
+  spotSizeMax: 10mm
+  spotSizeMaxNumeric: 10.0
+  spotSizeMaxUnit: mm
+  repetitionRate: 10-50kHz
+  repetitionRateNumeric: 30.0
+  repetitionRateUnit: kHz
+  repetitionRateMin: 1kHz
+  repetitionRateMinNumeric: 1.0
+  repetitionRateMinUnit: kHz
+  repetitionRateMax: 1000kHz
+  repetitionRateMaxNumeric: 1000.0
+  repetitionRateMaxUnit: kHz
+  fluenceRange: 0.5–2.0 J/cm²
+  fluenceRangeNumeric: 0.5
+  fluenceRangeUnit: J/cm²
+  fluenceRangeMin: 0.1J/cm²
+  fluenceRangeMinNumeric: 0.1
+  fluenceRangeMinUnit: J/cm²
+  fluenceRangeMax: 50J/cm²
+  fluenceRangeMaxNumeric: 50.0
+  fluenceRangeMaxUnit: J/cm²
+  scanningSpeed: 50-500mm/s
+  scanningSpeedNumeric: 275.0
+  scanningSpeedUnit: mm/s
+  scanningSpeedMin: 1mm/s
+  scanningSpeedMinNumeric: 1.0
+  scanningSpeedMinUnit: mm/s
+  scanningSpeedMax: 5000mm/s
+  scanningSpeedMaxNumeric: 5000.0
+  scanningSpeedMaxUnit: mm/s
+  beamProfile: Gaussian TEM00
+  beamProfileOptions:
+  - Gaussian TEM00
+  - Top-hat
+  - Donut
+  - Multi-mode
+  safetyClass: Class 4 (requires full enclosure)
+applications:
+- industry: Woodworking & Furniture
+  detail: Removal of surface contaminants, adhesives, and coatings from plywood substrates
+- industry: Construction Materials
+  detail: Cleaning of mold, stains, and surface imperfections from engineered wood
+    products
+compatibility:
+- Wood Composites
+- Particle Board
+- MDF
+- Solid Wood
+regulatoryStandards: ISO 12460, ASTM D3434, CARB Phase 2
 author: Todd Dunning
 author_object:
-  country: United States (California)
-  expertise: Optical Materials for Laser Systems
   id: 4
-  image: /images/author/todd-dunning.jpg
   name: Todd Dunning
   sex: m
   title: MA
-chemicalProperties:
-  formula: Wood veneers + adhesive (typically phenolic or urea-formaldehyde)
-  materialType: wood composite
-  symbol: Plywood
-composition:
-- Cellulose 40-50%
-- Lignin 20-30%
-- Hemicellulose 15-25%
-- Adhesive resin 5-10%
-compatibility:
-- Wood surfaces
-- Painted surfaces
-- Adhesive layers
-regulatoryStandards: ISO 12460, ASTM D3434, CARB ATCM 93120
+  country: United States (California)
+  expertise: Optical Materials for Laser Systems
+  image: /images/author/todd-dunning.jpg
 images:
   hero:
     alt: Plywood surface undergoing laser cleaning showing precise contamination removal
@@ -47,82 +165,31 @@ images:
     alt: Microscopic view of Plywood surface after laser cleaning showing detailed
       surface structure
     url: /images/plywood-laser-cleaning-micro.jpg
-title: Laser Cleaning Plywood
-headline: Comprehensive technical guide for laser cleaning wood plywood surfaces
 environmentalImpact:
 - benefit: Chemical Solvent Elimination
-  description: Eliminates need for chemical strippers and solvents in surface preparation
-- benefit: Minimal Waste Generation
-  description: Produces only vaporized contaminants with no secondary waste streams
-- benefit: Energy Efficiency
-  description: Consumes 60% less energy than sanding or chemical stripping methods
+  description: Reduces formaldehyde and VOC emissions from traditional chemical cleaning
+    methods
+- benefit: Water Conservation
+  description: Eliminates water usage completely compared to wet cleaning processes
+- benefit: Waste Reduction
+  description: Produces minimal waste with 95% less material loss than mechanical
+    methods
 outcomes:
-- metric: Achieves visually clean surface suitable for bonding or finishing
-  result: Surface Cleanliness Level
-- metric: Selective removal of contaminants without damaging wood fibers
-  result: Material Removal Precision
-- metric: 1-3 m²/hour cleaning rate depending on contamination type
-  result: Processing Speed
-keywords: plywood, wood composite, laser cleaning, surface preparation, adhesive removal,
-  wood restoration, non-destructive cleaning, laser parameters for wood
+- result: Surface Cleanliness Level
+  metric: Achieves ISO 8501-1 Sa 2.5 cleanliness standard
+- result: Material Removal Precision
+  metric: ±20μm accuracy with minimal substrate damage
+- result: Processing Speed
+  metric: 1-3 m²/hour cleaning rate depending on contamination level
 prompt_chain_verification:
-  ai_detection_config_loaded: true
-  author_id: 4
   base_config_loaded: true
-  cultural_adaptation_applied: true
-  formatting_config_loaded: true
-  human_authenticity_focus: true
   persona_config_loaded: true
+  formatting_config_loaded: true
+  ai_detection_config_loaded: true
   persona_country: United States (California)
+  author_id: 4
+  verification_timestamp: '2025-09-19T05:55:25Z'
   prompt_components_integrated: 4
-  verification_timestamp: '2025-09-16T22:57:44Z'
-category: wood
-properties:
-  chemicalFormula: Wood veneers + adhesive
-  density: 0.5-0.7 g/cm³
-  densityMax: 1.3 g/cm³
-  densityMin: 0.1 g/cm³
-  densityPercentile: 41.7
-  fluenceRange: 0.5–2.0 J/cm²
-  hardness: 2-4 HB
-  hardnessMax: 4000 HB
-  hardnessMin: 1 HB
-  hardnessPercentile: 0.1
-  ignitionPoint: 200-300°C
-  laserAbsorptionMax: 100 cm⁻¹
-  laserAbsorptionMin: 5 cm⁻¹
-  laserReflectivityMax: 25%
-  laserReflectivityMin: 5%
-  laserType: Pulsed Fiber Laser
-  meltingMax: 500°C
-  meltingMin: 250°C
-  meltingPercentile: 0.0
-  modulusMax: 20 GPa
-  modulusMin: 4 GPa
-  modulusPercentile: 37.5
-  specificHeatMax: 2.5 J/g·K
-  specificHeatMin: 1.2 J/g·K
-  tensileMax: 200 MPa
-  tensileMin: 20 MPa
-  tensilePercentile: 5.6
-  tensileStrength: 20-40 MPa
-  thermalConductivity: 0.12-0.15 W/m·K
-  thermalDiffusivityMax: 0.4 mm²/s
-  thermalDiffusivityMin: 0.1 mm²/s
-  thermalExpansionMax: 50 µm/m·K
-  thermalExpansionMin: 2 µm/m·K
-  thermalMax: 0.4 W/m·K
-  thermalMin: 0.04 W/m·K
-  thermalPercentile: 26.4
-  wavelength: 1064nm
-  youngsModulus: 8-12 GPa
+  human_authenticity_focus: true
+  cultural_adaptation_applied: true
 ---
-
-# Version Information
-# Generated: 2025-09-16T15:58:36.132911
-# Material: Plywood
-# Component: frontmatter
-# Generator: Z-Beam v2.1.0
-# Author: AI Assistant
-# Platform: Darwin (3.12.4)
-# File: content/components/frontmatter/plywood-laser-cleaning.md

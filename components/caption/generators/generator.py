@@ -2,7 +2,32 @@
 """
 Caption Component Generator
 
-Generates technical image captions for laser cleaning applications.
+Generates technical image captions for laser        # Validate required material data - fai  frequency: {laser_param  laser_parameters:
+  wavelength: {laser_params['wavelength']}
+  power: {laser_params['power']}
+  pulse_duration: {laser_params['pulse_duration']}
+  spot_size: {laser_params['spot_size']}
+  frequency: {laser_params['frequency']}
+  energy_density: {laser_params['energy_density']}
+  scanning_speed: "{laser_params['scanning_speed']}"
+  beam_profile: "{laser_params['beam_profile']}"tion: {laser_params['pulse_duration']}
+  spot_size: {laser_params['spot_size']}
+  frequency: {laser_params['frequency']}
+  energy_density: {laser_params['energy_density']}
+  scanning_speed: "{laser_params['scanning_speed']}"
+  beam_profile: "{laser_params['beam_profile']}"uency']}
+  energy_density: {laser_params['energy_density']}
+  scanning_speed: "{laser_params['scanning_speed']}"
+  beam_profile: "{laser_params['beam_profile']}"
+  pulse_overlap: {laser_params['pulse_overlap']}t architecture
+        if 'formula' not in material_data:
+            raise ValueError("Material formula is required - fail-fast architecture requires complete material data")
+        if 'category' not in material_data:
+            raise ValueError("Material category is required - fail-fast architecture requires complete material data")
+            
+        # Get material properties from material data
+        material_formula = material_data['formula']
+        material_category = material_data['category'].lower()eaning applications.
 Uses consolidated component base utilities for reduced code duplication.
 Now supports comprehensive YAML v2.0 format with enhanced SEO metadata,
 quality metrics, and accessibility information.
@@ -47,9 +72,19 @@ class CaptionComponentGenerator(StaticComponentGenerator):
         cache_key = material_name.lower()
         if cache_key not in self._frontmatter_cache:
             try:
-                # Convert material name to filename format
-                filename = f"{material_name.lower().replace(' ', '-').replace('_', '-')}-laser-cleaning.md"
-                frontmatter_path = Path(__file__).parents[3] / "content" / "components" / "frontmatter" / filename
+                # Convert material name to filename format - try multiple variations
+                filename_variations = [
+                    f"{material_name.lower().replace(' ', '-').replace('_', '-')}-laser-cleaning.md",  # dashes
+                    f"{material_name.lower()}-laser-cleaning.md",  # preserve spaces as spaces  
+                    f"{material_name}-laser-cleaning.md"  # preserve original case and spaces
+                ]
+                
+                frontmatter_path = None
+                for filename in filename_variations:
+                    potential_path = Path(__file__).parents[3] / "content" / "components" / "frontmatter" / filename
+                    if potential_path.exists():
+                        frontmatter_path = potential_path
+                        break
                 
                 if frontmatter_path.exists():
                     with open(frontmatter_path, 'r') as f:
@@ -98,13 +133,26 @@ class CaptionComponentGenerator(StaticComponentGenerator):
         import datetime
         import random
         
-        # Get material properties from material_data
-        material_formula = material_data.get('formula', '')
-        material_category = material_data.get('category', '').lower()
+        # Load frontmatter data for this material (single source of truth)
+        frontmatter_data = self._load_frontmatter_data(material_name)
+        
+        # Store frontmatter data for use in other methods
+        self._current_frontmatter_data = frontmatter_data
+        
+        # Get material properties from frontmatter or fallback to material_data
+        if frontmatter_data:
+            material_formula = frontmatter_data.get('chemicalProperties', {}).get('formula', 
+                              frontmatter_data.get('properties', {}).get('chemicalFormula', 
+                              material_data.get('formula', '')))
+            material_category = frontmatter_data.get('category', material_data.get('category', '')).lower()
+        else:
+            # Fallback to material_data (legacy compatibility)
+            material_formula = material_data.get('formula', '')
+            material_category = material_data.get('category', '').lower()
+            
         laser_params = self._get_material_laser_params(material_data)
         
         # Generate contamination and analysis details
-        frontmatter_data = self._load_frontmatter_data(material_name)
         contamination_type = self._get_material_contamination(material_category, frontmatter_data)
         analysis_details = self._get_analysis_details()
         quality_metrics = self._generate_quality_metrics(frontmatter_data)
@@ -217,12 +265,9 @@ seo_data:
 
 # Quality Metrics
 quality_metrics:
-  contamination_removal: "{quality_metrics['contamination_removal']}"
   surface_roughness_before: "{quality_metrics['surface_roughness_before']}"
   surface_roughness_after: "{quality_metrics['surface_roughness_after']}"
-  thermal_damage: "{quality_metrics['thermal_damage']}"
   substrate_integrity: "{quality_metrics['substrate_integrity']}"
-  processing_efficiency: "{quality_metrics['processing_efficiency']}"
 
 # Accessibility Information
 accessibility:
@@ -242,33 +287,63 @@ Format: YAML v2.0
         return yaml_content
 
     def _get_material_laser_params(self, material_data: Dict) -> Dict[str, Any]:
-        """Get laser parameters from material data or generate realistic defaults"""
-        if 'laser_parameters' in material_data:
-            params = material_data['laser_parameters'].copy()
-            # Convert ranges to specific values
-            if isinstance(params.get('power_range'), str):
-                power_range = params['power_range'].replace('W', '').split('-')
-                params['power'] = random.randint(int(power_range[0]), int(power_range[1]))
-            elif 'power' not in params:
-                params['power'] = random.choice([20, 30, 50, 75, 100, 150, 200])
+        """Get laser parameters from frontmatter data - fail-fast, no fallbacks"""
+        
+        # First try to get laser parameters from frontmatter data (single source of truth)
+        if hasattr(self, '_current_frontmatter_data') and self._current_frontmatter_data:
+            frontmatter_data = self._current_frontmatter_data
             
-            if isinstance(params.get('pulse_duration'), str):
-                duration_range = params['pulse_duration'].replace('ns', '').split('-')
-                params['pulse_duration'] = random.randint(int(duration_range[0]), int(duration_range[1]))
-            elif 'pulse_duration' not in params:
-                params['pulse_duration'] = random.choice([10, 20, 50, 100, 200])
+            # Check for technicalSpecifications or machineSettings in frontmatter (preferred)
+            if 'technicalSpecifications' in frontmatter_data:
+                tech_specs = frontmatter_data['technicalSpecifications']
+            elif 'machineSettings' in frontmatter_data:
+                tech_specs = frontmatter_data['machineSettings']
+                
+                # Map frontmatter technicalSpecifications to laser_parameters format
+                laser_params = {}
+                
+                # Required field mappings - only map fields that exist in frontmatter
+                field_mappings = {
+                    'wavelength': (['wavelength'], None),
+                    'power': (['powerRange', 'power'], None),
+                    'pulse_duration': (['pulseDuration', 'pulse_duration'], None),
+                    'spot_size': (['spotSize', 'spot_size'], None),
+                    'frequency': (['repetitionRate', 'frequency'], None),
+                    'energy_density': (['fluenceRange', 'energy_density'], None),
+                    'scanning_speed': (['scanningSpeed', 'scanning_speed'], None),
+                    'beam_profile': (['beamProfile', 'beam_profile'], None),
+                    # This field doesn't exist in frontmatter machineSettings - will be removed from output
+                    # 'pulse_overlap': (['pulseOverlap', 'pulse_overlap'], None)
+                }
+                
+                for param_key, (possible_frontmatter_keys, default_value) in field_mappings.items():
+                    value = None
+                    for fm_key in possible_frontmatter_keys:
+                        if fm_key in tech_specs:
+                            value = tech_specs[fm_key]
+                            break
+                    
+                    # Fail-fast: no defaults, require all parameters from frontmatter
+                    if value is None:
+                        raise ValueError(f"Required laser parameter '{param_key}' missing from frontmatter machineSettings - fail-fast architecture requires complete laser specifications. Available fields: {list(tech_specs.keys())}")
+                    
+                    laser_params[param_key] = value
+                
+                return laser_params
+        
+        # Fallback to material_data only if frontmatter is not available (legacy compatibility)
+        if 'laser_parameters' not in material_data:
+            raise ValueError("Laser parameters are required in material data - fail-fast architecture requires complete laser specifications")
             
-            if 'wavelength_optimal' in params:
-                params['wavelength'] = int(params['wavelength_optimal'].replace('nm', '').strip())
-            elif 'wavelength' not in params:
-                params['wavelength'] = random.choice([355, 532, 1064, 1070])
-            
-            if 'spot_size' not in params:
-                params['spot_size'] = random.randint(50, 500)
-            
-            return params
-        else:
-            return self._get_random_laser_params()
+        params = material_data['laser_parameters'].copy()
+        
+        # Validate required laser parameter fields
+        required_fields = ['wavelength', 'power', 'pulse_duration', 'spot_size', 'frequency', 'energy_density', 'scanning_speed', 'beam_profile']
+        for field in required_fields:
+            if field not in params:
+                raise ValueError(f"Required laser parameter '{field}' missing from material data - fail-fast architecture requires complete laser specifications")
+        
+        return params
 
     def _get_material_contamination(self, material_category: str, frontmatter_data: Dict = None) -> str:
         """Get contamination type based on material category and frontmatter data"""
@@ -277,7 +352,9 @@ Format: YAML v2.0
         if frontmatter_data and 'applications' in frontmatter_data:
             industry_contamination = []
             for app in frontmatter_data['applications']:
-                detail = app.get('detail', '').lower()
+                if 'detail' not in app:
+                    raise ValueError("Application detail is required in frontmatter data - fail-fast architecture requires complete application information")
+                detail = app['detail'].lower()
                 
                 # Extract contamination types from application details
                 if 'lubricant' in detail or 'oil' in detail:
@@ -364,11 +441,11 @@ Format: YAML v2.0
             ]
         }
         
-        category_contamination = contamination_by_category.get(material_category, [
-            'surface contaminants and particulate deposits',
-            'environmental residues and atmospheric films',
-            'processing residues and surface impurities'
-        ])
+        # Require material category to be in supported categories - fail-fast
+        if material_category not in contamination_by_category:
+            raise ValueError(f"Unsupported material category '{material_category}' - fail-fast architecture requires supported material categories: {list(contamination_by_category.keys())}")
+        
+        category_contamination = contamination_by_category[material_category]
         
         return random.choice(category_contamination)
 
@@ -405,9 +482,6 @@ Format: YAML v2.0
                         else:  # Softer materials
                             surface_roughness_context = ('high', 2.0, 5.0)
         
-        # Generate contamination removal based on laser parameters and material
-        contamination_removal = f"{random.uniform(95.0, 99.9):.1f}%"
-        
         # Generate surface roughness based on material hardness
         if surface_roughness_context:
             level, min_before, max_before = surface_roughness_context
@@ -420,24 +494,14 @@ Format: YAML v2.0
             before_roughness = f"Ra {random.uniform(1.5, 5.0):.1f} μm"
             after_roughness = f"Ra {random.uniform(0.2, 1.0):.1f} μm"
         
-        # Thermal damage assessment based on material properties
-        thermal_damage_options = ['none detected', 'minimal', 'trace amounts', 'negligible']
-        thermal_damage = random.choice(thermal_damage_options)
-        
         # Substrate integrity based on laser parameters and material toughness
         integrity_options = ['100% preserved', '99% preserved', 'excellent', 'complete preservation']
         substrate_integrity = random.choice(integrity_options)
         
-        # Processing efficiency based on material properties
-        processing_efficiency = f"{random.randint(90, 98)}%"
-        
         return {
-            'contamination_removal': contamination_removal,
             'surface_roughness_before': before_roughness,
             'surface_roughness_after': after_roughness,
-            'thermal_damage': thermal_damage,
-            'substrate_integrity': substrate_integrity,
-            'processing_efficiency': processing_efficiency
+            'substrate_integrity': substrate_integrity
         }
 
     def _generate_before_text(self, material_name: str, contamination_type: str, material_category: str, frontmatter_data: Dict = None) -> str:
@@ -515,7 +579,7 @@ Format: YAML v2.0
         integrity_desc = ['preserving substrate integrity', 'maintaining material properties', 'ensuring structural preservation']
         integrity = random.choice(integrity_desc)
         
-        return f"""{analysis} demonstrates {result} with {quality_metrics['contamination_removal']} contaminant removal efficiency.
+        return f"""{analysis} demonstrates {result} through comprehensive laser processing.
   The {material_name.lower()} substrate now exhibits pristine surface characteristics with {thermal_effect}.
   Microscopic examination confirms {examination} while {integrity}."""
 
@@ -632,7 +696,6 @@ Format: YAML v2.0
     def _generate_seo_metadata(self, material_name: str, material_category: str, quality_metrics: Dict, frontmatter_data: Dict = None) -> Dict[str, str]:
         """Generate comprehensive SEO metadata using material-specific data"""
         material_lower = material_name.lower()
-        removal_percent = quality_metrics['contamination_removal']
         
         # Enhanced title with material-specific context
         title_contexts = {
@@ -651,12 +714,12 @@ Format: YAML v2.0
         
         # Description with technical specifications from frontmatter
         technical_detail = ""
-        if frontmatter_data and 'technicalSpecifications' in frontmatter_data:
-            tech_specs = frontmatter_data['technicalSpecifications']
+        if frontmatter_data and ('technicalSpecifications' in frontmatter_data or 'machineSettings' in frontmatter_data):
+            tech_specs = frontmatter_data.get('technicalSpecifications', frontmatter_data.get('machineSettings', {}))
             wavelength = tech_specs.get('wavelength', '1064nm')
             technical_detail = f" using {wavelength} wavelength laser processing"
         
-        description = f"Comprehensive microscopic analysis of {material_lower} surface before and after precision laser cleaning, demonstrating {removal_percent} contamination removal efficiency{technical_detail} with advanced laser processing techniques."
+        description = f"Comprehensive microscopic analysis of {material_lower} surface before and after precision laser cleaning, achieving optimal surface restoration{technical_detail} with advanced laser processing techniques."
         
         # Keywords from frontmatter if available
         base_keywords = [
@@ -701,7 +764,7 @@ Format: YAML v2.0
         # Remove duplicates while preserving order
         keywords = list(dict.fromkeys(keywords))[:15]  # Limit to 15 keywords
         
-        og_title = f"{material_name} Laser Cleaning Analysis - {removal_percent} Contamination Removal"
+        og_title = f"{material_name} Laser Cleaning Analysis - Surface Restoration"
         og_description = f"Professional microscopic analysis of precision laser cleaning on {material_lower}, achieving complete contamination removal with preserved substrate integrity."
         
         image_alt = f"Microscopic comparison of {material_lower} surface before and after laser cleaning showing complete contamination removal"
@@ -726,8 +789,8 @@ Format: YAML v2.0
         """Generate technical specifications using frontmatter data when available"""
         
         # Use frontmatter technical specifications if available
-        if frontmatter_data and 'technicalSpecifications' in frontmatter_data:
-            tech_specs = frontmatter_data['technicalSpecifications']
+        if frontmatter_data and ('technicalSpecifications' in frontmatter_data or 'machineSettings' in frontmatter_data):
+            tech_specs = frontmatter_data.get('technicalSpecifications', frontmatter_data.get('machineSettings', {}))
             return {
                 'wavelength': str(tech_specs.get('wavelength', f"{laser_params['wavelength']} nm")),
                 'power': str(tech_specs.get('powerRange', f"{laser_params['power']} W")),
@@ -807,20 +870,6 @@ Format: YAML v2.0
             'formula': formula,
             'surface_finish': f"Ra < {random.uniform(0.3, 1.0):.1f} μm (post-cleaning)",
             'corrosion_resistance': corrosion_resistance.get(material_category, 'good')
-        }
-
-    def _get_random_laser_params(self) -> Dict[str, Any]:
-        """Get random laser parameters for fallback"""
-        wavelengths = [355, 532, 1064, 1070]
-        powers = [20, 30, 50, 75, 100, 150, 200]
-        pulse_durations = [10, 20, 50, 100, 200]
-        spot_sizes = [50, 100, 200, 300, 500]
-
-        return {
-            "wavelength": random.choice(wavelengths),
-            "power": random.choice(powers),
-            "pulse_duration": random.choice(pulse_durations),
-            "spot_size": random.choice(spot_sizes),
         }
 
     def _format_keywords_list(self, keywords: list) -> str:

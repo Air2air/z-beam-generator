@@ -1,42 +1,42 @@
 # Basic Content Structure
 before_text: |
-  Pre-treatment surface assessment reveals significant contamination deposits across the quartz glass glass substrate. 
-  Microscopic analysis shows adhesive residues and bonding agents adhering to the surface. The quartz glass exhibits the characteristic density profile typical of glass materials.
+  Preliminary microscopic analysis reveals significant contamination deposits across the quartz glass glass substrate. 
+  Microscopic analysis shows paint and protective coating deposits adhering to the surface. The quartz glass exhibits the characteristic density profile typical of glass materials.
   The contamination appears to be from atmospheric deposition and processing residues.
 
 after_text: |
-  Post-laser cleaning analysis demonstrates exceptional cleaning performance with 99.5% contaminant removal efficiency.
-  The quartz glass substrate now exhibits pristine surface characteristics with maintained optical clarity.
+  Post-processing microscopic evaluation demonstrates outstanding contamination removal through comprehensive laser processing.
+  The quartz glass substrate now exhibits pristine surface characteristics with preserved transparency.
   Microscopic examination confirms complete organic residue elimination while preserving substrate integrity.
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064
-  power: 34
-  pulse_duration: 99
-  spot_size: 0.1-2.0mm
-  frequency: 28691
-  energy_density: 3.4
-  scanning_speed: "605 mm/min"
-  beam_profile: "gaussian"
-  pulse_overlap: 76
+  wavelength: 1064nm (primary), 532nm (optional)
+  power: 50-200W
+  pulse_duration: 20-100ns
+  spot_size: 0.2-1.5mm
+  frequency: 20-100kHz
+  energy_density: 1.0–4.5 J/cm²
+  scanning_speed: "50-500mm/s"
+  beam_profile: "Gaussian TEM00"
+  pulse_overlap: 89
 
 # Material Information
 material: "Quartz Glass"
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-17T18:20:03.670781Z"
+  generated: "2025-09-19T00:08:06.740437Z"
   format: "yaml"
   version: "2.0"
-  analysis_method: "atomic_force_microscopy"
+  analysis_method: "scanning_electron_microscopy"
   magnification: "1000x"
   field_of_view: "200 μm"
-  image_resolution: "4096x3072"
+  image_resolution: "3840x2160"
 
 # Enhanced SEO Frontmatter
 title: "Quartz Glass Surface Laser Cleaning Analysis - Optical Surface Cleaning"
-description: "Comprehensive microscopic analysis of quartz glass surface before and after precision laser cleaning, demonstrating 99.5% contamination removal efficiency using 1064nm (primary), 355nm (optional) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of quartz glass surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -49,9 +49,9 @@ keywords:
   - "laser ablation"
   - "quartz glass"
   - "contamination analysis"
-  - "fused silica"
+  - "quartz glass glass"
   - "non-contact cleaning"
-  - "semiconductor manufacturing applications"
+  - "electronics manufacturing applications"
   - "optical cleaning"
   - "glass surface treatment"
   - "transparent materials"
@@ -71,23 +71,23 @@ author_object:
 
 # Technical Specifications for SEO
 technicalSpecifications:
-  wavelength: "1064nm (primary), 355nm (optional)"
-  power: "10-100W"
-  pulse_duration: "10-50ns"
-  scanning_speed: "722 mm/min"
+  wavelength: "1064nm (primary), 532nm (optional)"
+  power: "50-200W"
+  pulse_duration: "20-100ns"
+  scanning_speed: "50-500mm/s"
   material: "Quartz Glass"
-  beam_delivery: "galvanometer scanning"
-  focus_diameter: "0.1-0.8mm"
-  processing_atmosphere: "ambient air"
+  beam_delivery: "fiber optic"
+  focus_diameter: "0.2-1.5mm"
+  processing_atmosphere: "inert atmosphere"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Silicon Dioxide (SiO₂) 99.9%, Trace elements (Al, Na, K, Li)"
+  composition: "Quartz Glass (SiO2) 99.6%, Trace elements (Si, Fe, Na, Mg)"
   surface_treatment: "laser cleaning"
   contamination_type: "optical contamination and surface films"
   materialType: "glass"
   formula: "SiO2"
-  surface_finish: "Ra < 0.4 μm (post-cleaning)"
+  surface_finish: "Ra < 0.6 μm (post-cleaning)"
   corrosion_resistance: "excellent"
 
 # Image Metadata for SEO
@@ -103,21 +103,18 @@ images:
 # Additional SEO Metadata
 seo_data:
   canonical_url: "https://z-beam.com/analysis/quartz-glass-laser-cleaning"
-  og_title: "Quartz Glass Laser Cleaning Analysis - 99.5% Contamination Removal"
+  og_title: "Quartz Glass Laser Cleaning Analysis - Surface Restoration"
   og_description: "Professional microscopic analysis of precision laser cleaning on quartz glass, achieving complete contamination removal with preserved substrate integrity."
   og_image: "/images/quartz-glass-cleaning-analysis-social.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-17T18:20:03.670781Z"
+  last_modified: "2025-09-19T00:08:06.740437Z"
 
 # Quality Metrics
 quality_metrics:
-  contamination_removal: "99.5%"
-  surface_roughness_before: "Ra 2.0 μm"
-  surface_roughness_after: "Ra 0.4 μm"
-  thermal_damage: "negligible"
-  substrate_integrity: "100% preserved"
-  processing_efficiency: "90%"
+  surface_roughness_before: "Ra 2.8 μm"
+  surface_roughness_after: "Ra 0.9 μm"
+  substrate_integrity: "99% preserved"
 
 # Accessibility Information
 accessibility:
@@ -129,7 +126,7 @@ accessibility:
 ---
 Material: "quartz glass"
 Component: caption
-Generated: 2025-09-17T18:20:03.670781Z
+Generated: 2025-09-19T00:08:06.740437Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

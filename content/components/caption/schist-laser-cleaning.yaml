@@ -1,42 +1,42 @@
 # Basic Content Structure
 before_text: |
-  Pre-treatment surface assessment reveals significant contamination deposits across the schist stone surface. 
+  Initial surface examination reveals significant contamination deposits across the schist stone surface. 
   Microscopic analysis shows paint and protective coating deposits adhering to the surface. The schist exhibits the characteristic density profile typical of stone materials.
   The contamination appears to be from weathering and environmental exposure.
 
 after_text: |
-  Post-processing microscopic evaluation demonstrates outstanding contamination removal with 95.0% contaminant removal efficiency.
+  Post-processing microscopic evaluation demonstrates remarkable surface restoration through comprehensive laser processing.
   The schist substrate now exhibits pristine surface characteristics with no thermal cracking.
-  Microscopic examination confirms comprehensive surface decontamination while maintaining material properties.
+  Microscopic examination confirms complete organic residue elimination while ensuring structural preservation.
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064
-  power: 152
-  pulse_duration: 79
-  spot_size: 0.1-1.0mm
-  frequency: 25614
-  energy_density: 2.4
-  scanning_speed: "307 mm/min"
-  beam_profile: "gaussian"
-  pulse_overlap: 81
+  wavelength: 1064nm (primary), 532nm (optional)
+  power: 50-200W
+  pulse_duration: 20-100ns
+  spot_size: 0.2-1.5mm
+  frequency: 20-100kHz
+  energy_density: 1.0–4.5 J/cm²
+  scanning_speed: "50-500mm/s"
+  beam_profile: "Gaussian TEM00"
+  pulse_overlap: 86
 
 # Material Information
 material: "Schist"
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-17T18:12:42.516715Z"
+  generated: "2025-09-19T00:08:47.011672Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
   magnification: "1000x"
   field_of_view: "200 μm"
-  image_resolution: "2048x1536"
+  image_resolution: "3840x2160"
 
 # Enhanced SEO Frontmatter
 title: "Schist Surface Laser Cleaning Analysis - Heritage Conservation Cleaning"
-description: "Comprehensive microscopic analysis of schist surface before and after precision laser cleaning, demonstrating 95.0% contamination removal efficiency using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of schist surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -74,20 +74,20 @@ technicalSpecifications:
   wavelength: "1064nm (primary), 532nm (optional)"
   power: "50-200W"
   pulse_duration: "20-100ns"
-  scanning_speed: "779 mm/min"
+  scanning_speed: "50-500mm/s"
   material: "Schist"
-  beam_delivery: "fiber optic"
+  beam_delivery: "galvanometer scanning"
   focus_diameter: "0.2-1.5mm"
-  processing_atmosphere: "controlled environment"
+  processing_atmosphere: "inert atmosphere"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Mica minerals (muscovite, biotite) 40-60%, Quartz 20-40%, Feldspar 5-15%"
+  composition: "Quartz (SiO₂) 40-60%, Mica (Muscovite/Biotite) 20-40%, Feldspar 10-20%"
   surface_treatment: "laser cleaning"
   contamination_type: "weathering and biological deposits"
   materialType: "stone"
   formula: "None"
-  surface_finish: "Ra < 0.5 μm (post-cleaning)"
+  surface_finish: "Ra < 0.8 μm (post-cleaning)"
   corrosion_resistance: "good"
 
 # Image Metadata for SEO
@@ -103,21 +103,18 @@ images:
 # Additional SEO Metadata
 seo_data:
   canonical_url: "https://z-beam.com/analysis/schist-laser-cleaning"
-  og_title: "Schist Laser Cleaning Analysis - 95.0% Contamination Removal"
+  og_title: "Schist Laser Cleaning Analysis - Surface Restoration"
   og_description: "Professional microscopic analysis of precision laser cleaning on schist, achieving complete contamination removal with preserved substrate integrity."
   og_image: "/images/schist-cleaning-analysis-social.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-17T18:12:42.516715Z"
+  last_modified: "2025-09-19T00:08:47.011672Z"
 
 # Quality Metrics
 quality_metrics:
-  contamination_removal: "95.0%"
-  surface_roughness_before: "Ra 4.6 μm"
-  surface_roughness_after: "Ra 0.9 μm"
-  thermal_damage: "minimal"
-  substrate_integrity: "99% preserved"
-  processing_efficiency: "90%"
+  surface_roughness_before: "Ra 2.6 μm"
+  surface_roughness_after: "Ra 0.4 μm"
+  substrate_integrity: "100% preserved"
 
 # Accessibility Information
 accessibility:
@@ -129,7 +126,7 @@ accessibility:
 ---
 Material: "schist"
 Component: caption
-Generated: 2025-09-17T18:12:42.516715Z
+Generated: 2025-09-19T00:08:47.011672Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

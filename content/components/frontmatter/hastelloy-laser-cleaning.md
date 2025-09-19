@@ -1,49 +1,160 @@
 ---
 name: Hastelloy
-applications:
-- detail: Removal of oxides, corrosion products, and embedded contaminants from reactor
-    components
-  industry: Chemical Processing
-- detail: Cleaning of turbine components, exhaust systems, and high-temperature parts
-  industry: Aerospace
-technicalSpecifications:
-  fluenceRange: 0.5–8.0 J/cm²
-  powerRange: 20-500W
-  pulseDuration: 10-200ns
-  repetitionRate: 10-200kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.05-2.0mm
-  wavelength: 1064nm (primary), 355nm (optional)
-description: Technical overview of Hastelloy alloys for laser cleaning applications,
-  focusing on nickel-molybdenum-chromium superalloys and their interaction with laser
-  wavelengths for precision surface preparation.
-author: Yi-Chun Lin
-author_object:
-  country: Taiwan
-  expertise: Laser Materials Processing
-  id: 1
-  image: /images/author/yi-chun-lin.jpg
-  name: Yi-Chun Lin
-  sex: f
-  title: Ph.D.
+category: metal
+title: Laser Cleaning Hastelloy
+headline: Comprehensive technical guide for laser cleaning metal hastelloy
+description: Technical overview of Hastelloy, Ni-Mo-Cr, for laser cleaning applications,
+  including optimal 1064nm wavelength interaction, and industrial applications in
+  surface preparation.
+keywords: hastelloy, hastelloy metal, laser ablation, laser cleaning, non-contact
+  cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters,
+  thermal processing, surface restoration
 chemicalProperties:
-  formula: Ni-Mo-Cr (C-22, C-276, X)
-  materialType: nickel-based superalloy
   symbol: Hastelloy
+  formula: Ni-Mo-Cr
+  materialType: metal
+properties:
+  density: 8.89 g/cm³
+  densityNumeric: 8.89
+  densityUnit: g/cm³
+  densityMin: 1.8 g/cm³
+  densityMinNumeric: 1.8
+  densityMinUnit: g/cm³
+  densityMax: 6.0 g/cm³
+  densityMaxNumeric: 6.0
+  densityMaxUnit: g/cm³
+  densityPercentile: 51.2
+  meltingPoint: 1320-1370°C
+  meltingPointNumeric: 1345.0
+  meltingPointUnit: °C
+  meltingPercentile: 54.5
+  thermalConductivity: 10.1 W/m·K
+  thermalConductivityNumeric: 10.1
+  thermalConductivityUnit: W/m·K
+  thermalPercentile: 14.8
+  tensileStrength: 690-890 MPa
+  tensileStrengthNumeric: 790.0
+  tensileStrengthUnit: MPa
+  tensilePercentile: 26.3
+  hardness: 200-240 HB
+  hardnessNumeric: 220.0
+  hardnessUnit: HB
+  hardnessMin: 500 HV
+  hardnessMinNumeric: 500.0
+  hardnessMinUnit: HV
+  hardnessMax: 2500 HV
+  hardnessMaxNumeric: 2500.0
+  hardnessMaxUnit: HV
+  hardnessPercentile: 0.0
+  youngsModulus: 205 GPa
+  youngsModulusNumeric: 205.0
+  youngsModulusUnit: GPa
+  modulusMin: 150 GPa
+  modulusMinNumeric: 150.0
+  modulusMinUnit: GPa
+  modulusMax: 400 GPa
+  modulusMaxNumeric: 400.0
+  modulusMaxUnit: GPa
+  modulusPercentile: 92.0
+  laserType: Pulsed Fiber Laser
+  wavelength: 1064nm
+  fluenceRange: 1.0–4.5 J/cm²
+  chemicalFormula: Ni-Mo-Cr
 composition:
-- 'Nickel: 56-62%'
-- 'Chromium: 14.5-22.5%'
-- 'Molybdenum: 12.5-16.5%'
-- 'Tungsten: 3-4.5%'
-- 'Iron: 4-7%'
-- 'Cobalt: 2.5% max'
-- 'Other: <1%'
+- Nickel (Ni) 58%
+- Molybdenum (Mo) 28%
+- Chromium (Cr) 14%
+- Trace elements (Fe, Co, W, Mn, Si, C)
+machineSettings:
+  powerRange: 50-200W
+  powerRangeNumeric: 125.0
+  powerRangeUnit: W
+  powerRangeMin: 20W
+  powerRangeMinNumeric: 20.0
+  powerRangeMinUnit: W
+  powerRangeMax: 500W
+  powerRangeMaxNumeric: 500.0
+  powerRangeMaxUnit: W
+  pulseDuration: 20-100ns
+  pulseDurationNumeric: 60.0
+  pulseDurationUnit: ns
+  pulseDurationMin: 1ns
+  pulseDurationMinNumeric: 1.0
+  pulseDurationMinUnit: ns
+  pulseDurationMax: 1000ns
+  pulseDurationMaxNumeric: 1000.0
+  pulseDurationMaxUnit: ns
+  wavelength: 1064nm (primary), 532nm (optional)
+  wavelengthNumeric: 1064.0
+  wavelengthUnit: nm
+  wavelengthMin: 355nm
+  wavelengthMinNumeric: 355.0
+  wavelengthMinUnit: nm
+  wavelengthMax: 2940nm
+  wavelengthMaxNumeric: 2940.0
+  wavelengthMaxUnit: nm
+  spotSize: 0.2-1.5mm
+  spotSizeNumeric: 0.85
+  spotSizeUnit: mm
+  spotSizeMin: 0.01mm
+  spotSizeMinNumeric: 0.01
+  spotSizeMinUnit: mm
+  spotSizeMax: 10mm
+  spotSizeMaxNumeric: 10.0
+  spotSizeMaxUnit: mm
+  repetitionRate: 20-100kHz
+  repetitionRateNumeric: 60.0
+  repetitionRateUnit: kHz
+  repetitionRateMin: 1kHz
+  repetitionRateMinNumeric: 1.0
+  repetitionRateMinUnit: kHz
+  repetitionRateMax: 1000kHz
+  repetitionRateMaxNumeric: 1000.0
+  repetitionRateMaxUnit: kHz
+  fluenceRange: 1.0–4.5 J/cm²
+  fluenceRangeNumeric: 1.0
+  fluenceRangeUnit: J/cm²
+  fluenceRangeMin: 0.1J/cm²
+  fluenceRangeMinNumeric: 0.1
+  fluenceRangeMinUnit: J/cm²
+  fluenceRangeMax: 50J/cm²
+  fluenceRangeMaxNumeric: 50.0
+  fluenceRangeMaxUnit: J/cm²
+  scanningSpeed: 50-500mm/s
+  scanningSpeedNumeric: 275.0
+  scanningSpeedUnit: mm/s
+  scanningSpeedMin: 1mm/s
+  scanningSpeedMinNumeric: 1.0
+  scanningSpeedMinUnit: mm/s
+  scanningSpeedMax: 5000mm/s
+  scanningSpeedMaxNumeric: 5000.0
+  scanningSpeedMaxUnit: mm/s
+  beamProfile: Gaussian TEM00
+  beamProfileOptions:
+  - Gaussian TEM00
+  - Top-hat
+  - Donut
+  - Multi-mode
+  safetyClass: Class 4 (requires full enclosure)
+applications:
+- industry: Electronics Manufacturing
+  detail: Removal of surface oxides and contaminants from Hastelloy substrates
+- industry: Aerospace Components
+  detail: Cleaning of thermal barrier coatings and metal matrix composites
 compatibility:
 - Stainless Steel
 - Titanium Alloys
 - Nickel-based Superalloys
-- Cobalt Alloys
-regulatoryStandards: ASTM B575, ASTM B574, ASME SB575, NACE MR0175
+regulatoryStandards: ISO 18562, ASTM F2100, IEC 60601-1
+author: Yi-Chun Lin
+author_object:
+  id: 1
+  name: Yi-Chun Lin
+  sex: f
+  title: Ph.D.
+  country: Taiwan
+  expertise: Laser Materials Processing
+  image: /images/author/yi-chun-lin.jpg
 images:
   hero:
     alt: Hastelloy surface undergoing laser cleaning showing precise contamination
@@ -53,86 +164,30 @@ images:
     alt: Microscopic view of Hastelloy surface after laser cleaning showing detailed
       surface structure
     url: /images/hastelloy-laser-cleaning-micro.jpg
-title: Laser Cleaning Hastelloy Alloys
-headline: Comprehensive technical guide for laser cleaning Hastelloy nickel-based
-  superalloys
 environmentalImpact:
 - benefit: Chemical Solvent Elimination
-  description: Eliminates use of hazardous acids and solvents traditionally used for
-    Hastelloy cleaning
-- benefit: Waste Reduction
-  description: Produces minimal waste compared to chemical and abrasive cleaning methods
+  description: Reduces chemical usage by 100% compared to traditional solvent cleaning
+    methods
+- benefit: Water Conservation
+  description: Saves approximately 5000 liters of water per month in industrial applications
 - benefit: Energy Efficiency
-  description: Requires 60% less energy than thermal cleaning processes for high-temperature
-    alloys
+  description: Consumes 40% less energy than thermal cleaning processes
 outcomes:
-- metric: Achieves ASTM B912 level for passive surface conditions
-  result: Surface Cleanliness
-- metric: Less than 5μm material removal with no heat-affected zone
-  result: Material Preservation
-- metric: 1-3 m²/hour cleaning rate depending on contamination severity
-  result: Processing Speed
-keywords: hastelloy, nickel alloy, laser ablation, laser cleaning, non-contact cleaning,
-  pulsed fiber laser, surface contamination removal, industrial laser parameters,
-  corrosion removal, surface restoration
+- result: Surface Cleanliness Level
+  metric: Achieves ISO 14644-1 Class 7 cleanliness standard
+- result: Material Removal Precision
+  metric: ±5μm accuracy with no substrate damage
+- result: Processing Speed
+  metric: 2-5 m²/hour cleaning rate depending on contamination level
 prompt_chain_verification:
-  ai_detection_config_loaded: true
-  author_id: 1
   base_config_loaded: true
-  cultural_adaptation_applied: true
-  formatting_config_loaded: true
-  human_authenticity_focus: true
   persona_config_loaded: true
+  formatting_config_loaded: true
+  ai_detection_config_loaded: true
   persona_country: Taiwan
+  author_id: 1
+  verification_timestamp: '2025-09-19T05:25:33Z'
   prompt_components_integrated: 4
-  verification_timestamp: '2025-09-16T22:07:00Z'
-category: metal
-properties:
-  chemicalFormula: Ni-Cr-Mo-W-Fe
-  density: 8.69 g/cm³
-  densityMax: 22.6 g/cm³
-  densityMin: 0.5 g/cm³
-  densityPercentile: 37.1
-  fluenceRange: 0.5–8.0 J/cm²
-  hardness: 180-220 HB
-  hardnessMax: 500 HV
-  hardnessMin: 5 HB
-  hardnessPercentile: 39.4
-  laserAbsorptionMax: 100 cm⁻¹
-  laserAbsorptionMin: 0.02 cm⁻¹
-  laserReflectivityMax: 98%
-  laserReflectivityMin: 5%
-  laserType: Pulsed Fiber Laser
-  meltingMax: 3422°C
-  meltingMin: -39°C
-  meltingPercentile: 38.6
-  meltingPoint: 1320-1370°C
-  modulusMax: 411 GPa
-  modulusMin: 70 GPa
-  modulusPercentile: 39.6
-  specificHeatMax: 0.90 J/g·K
-  specificHeatMin: 0.13 J/g·K
-  tensileMax: 2000 MPa
-  tensileMin: 70 MPa
-  tensilePercentile: 35.7
-  tensileStrength: 690-827 MPa
-  thermalConductivity: 9.8-12.1 W/m·K
-  thermalDiffusivityMax: 174 mm²/s
-  thermalDiffusivityMin: 4 mm²/s
-  thermalExpansionMax: 29 µm/m·K
-  thermalExpansionMin: 0.5 µm/m·K
-  thermalMax: 429 W/m·K
-  thermalMin: 8 W/m·K
-  thermalPercentile: 0.7
-  wavelength: 1064nm
-  youngsModulus: 205 GPa
+  human_authenticity_focus: true
+  cultural_adaptation_applied: true
 ---
-
-# Version Information
-# Generated: 2025-09-16T15:07:57.166449
-# Material: Hastelloy
-# Component: frontmatter
-# Generator: Z-Beam v2.1.0
-# Author: AI Assistant
-# Platform: Darwin (3.12.4)
-# File: content/components/frontmatter/hastelloy-laser-cleaning.md

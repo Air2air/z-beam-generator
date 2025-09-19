@@ -1,135 +1,196 @@
 ---
 name: Marble
-applications:
-- detail: Removal of biological growth, atmospheric pollution crusts, and surface
-    contaminants from historical marble artifacts
-  industry: Restoration & Conservation
-- detail: Cleaning of soiling, graffiti, and discoloration from architectural marble
-    surfaces
-  industry: Monumental Stonework
-technicalSpecifications:
-  fluenceRange: 0.5–2.5 J/cm²
+category: stone
+title: Laser Cleaning Marble
+headline: Comprehensive technical guide for laser cleaning marble surfaces
+description: Technical overview of marble, CaCO3, for laser cleaning applications,
+  including optimal 1064nm wavelength interaction, and applications in cultural heritage
+  and architectural restoration.
+keywords: marble, marble stone, laser ablation, laser cleaning, non-contact cleaning,
+  pulsed fiber laser, surface contamination removal, stone restoration, cultural heritage
+  preservation, architectural cleaning
+chemicalProperties:
+  symbol: Marble
+  formula: CaCO3
+  materialType: stone
+properties:
+  density: 2.7 g/cm³
+  densityNumeric: 2.7
+  densityUnit: g/cm³
+  densityMin: 2.5 g/cm³
+  densityMinNumeric: 2.5
+  densityMinUnit: g/cm³
+  densityMax: 2.9 g/cm³
+  densityMaxNumeric: 2.9
+  densityMaxUnit: g/cm³
+  densityPercentile: 48.2
+  meltingPoint: 825°C (decomposition)
+  meltingPointNumeric: 825.0
+  meltingPointUnit: °C
+  meltingPercentile: 32.1
+  thermalConductivity: 2.8 W/m·K
+  thermalConductivityNumeric: 2.8
+  thermalConductivityUnit: W/m·K
+  thermalPercentile: 45.6
+  tensileStrength: 8-15 MPa
+  tensileStrengthNumeric: 11.5
+  tensileStrengthUnit: MPa
+  tensilePercentile: 12.8
+  hardness: 3-4 Mohs
+  hardnessNumeric: 3.5
+  hardnessUnit: Mohs
+  hardnessMin: 2 Mohs
+  hardnessMinNumeric: 2.0
+  hardnessMinUnit: Mohs
+  hardnessMax: 5 Mohs
+  hardnessMaxNumeric: 5.0
+  hardnessMaxUnit: Mohs
+  hardnessPercentile: 35.4
+  youngsModulus: 50-70 GPa
+  youngsModulusNumeric: 60.0
+  youngsModulusUnit: GPa
+  modulusMin: 40 GPa
+  modulusMinNumeric: 40.0
+  modulusMinUnit: GPa
+  modulusMax: 90 GPa
+  modulusMaxNumeric: 90.0
+  modulusMaxUnit: GPa
+  modulusPercentile: 42.1
+  laserType: Pulsed Fiber Laser
+  wavelength: 1064nm
+  fluenceRange: 0.5–3.0 J/cm²
+  chemicalFormula: CaCO3
+composition:
+- Calcium Carbonate (CaCO3) 90-99%
+- Dolomite (CaMg(CO3)2) 1-10%
+- Trace minerals (quartz, mica, clay minerals)
+machineSettings:
   powerRange: 10-100W
+  powerRangeNumeric: 55.0
+  powerRangeUnit: W
+  powerRangeMin: 20W
+  powerRangeMinNumeric: 20.0
+  powerRangeMinUnit: W
+  powerRangeMax: 500W
+  powerRangeMaxNumeric: 500.0
+  powerRangeMaxUnit: W
   pulseDuration: 10-200ns
-  repetitionRate: 10-50kHz
+  pulseDurationNumeric: 105.0
+  pulseDurationUnit: ns
+  pulseDurationMin: 1ns
+  pulseDurationMinNumeric: 1.0
+  pulseDurationMinUnit: ns
+  pulseDurationMax: 1000ns
+  pulseDurationMaxNumeric: 1000.0
+  pulseDurationMaxUnit: ns
+  wavelength: 1064nm (primary), 355nm (optional)
+  wavelengthNumeric: 1064.0
+  wavelengthUnit: nm
+  wavelengthMin: 355nm
+  wavelengthMinNumeric: 355.0
+  wavelengthMinUnit: nm
+  wavelengthMax: 2940nm
+  wavelengthMaxNumeric: 2940.0
+  wavelengthMaxUnit: nm
+  spotSize: 0.1-2.0mm
+  spotSizeNumeric: 1.05
+  spotSizeUnit: mm
+  spotSizeMin: 0.01mm
+  spotSizeMinNumeric: 0.01
+  spotSizeMinUnit: mm
+  spotSizeMax: 10mm
+  spotSizeMaxNumeric: 10.0
+  spotSizeMaxUnit: mm
+  repetitionRate: 10-100kHz
+  repetitionRateNumeric: 55.0
+  repetitionRateUnit: kHz
+  repetitionRateMin: 1kHz
+  repetitionRateMinNumeric: 1.0
+  repetitionRateMinUnit: kHz
+  repetitionRateMax: 1000kHz
+  repetitionRateMaxNumeric: 1000.0
+  repetitionRateMaxUnit: kHz
+  fluenceRange: 0.5–3.0 J/cm²
+  fluenceRangeNumeric: 0.5
+  fluenceRangeUnit: J/cm²
+  fluenceRangeMin: 0.1J/cm²
+  fluenceRangeMinNumeric: 0.1
+  fluenceRangeMinUnit: J/cm²
+  fluenceRangeMax: 50J/cm²
+  fluenceRangeMaxNumeric: 50.0
+  fluenceRangeMaxUnit: J/cm²
+  scanningSpeed: 50-500mm/s
+  scanningSpeedNumeric: 275.0
+  scanningSpeedUnit: mm/s
+  scanningSpeedMin: 1mm/s
+  scanningSpeedMinNumeric: 1.0
+  scanningSpeedMinUnit: mm/s
+  scanningSpeedMax: 5000mm/s
+  scanningSpeedMaxNumeric: 5000.0
+  scanningSpeedMaxUnit: mm/s
+  beamProfile: Gaussian TEM00
+  beamProfileOptions:
+  - Gaussian TEM00
+  - Top-hat
+  - Donut
+  - Multi-mode
   safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.5-3.0mm
-  wavelength: 1064nm (primary), 355nm (optional for delicate work)
-description: Technical overview of Marble, CaCO3, for laser cleaning applications,
-  including optimal 1064nm wavelength interaction, and industrial applications in
-  surface preparation.
+applications:
+- industry: Restoration & Conservation
+  detail: Removal of biological growth, atmospheric deposits, and previous restoration
+    materials from marble surfaces
+- industry: Monument Preservation
+  detail: Gentle cleaning of historical marble sculptures and architectural elements
+    without mechanical abrasion
+compatibility:
+- Historical Marble
+- Carrara Marble
+- Calcite-based Stones
+regulatoryStandards: EN 15886, EN 15898, ISO 18562
 author: Ikmanda Roswati
 author_object:
-  country: Indonesia
-  expertise: Ultrafast Laser Physics and Material Interactions
   id: 3
-  image: /images/author/ikmanda-roswati.jpg
   name: Ikmanda Roswati
   sex: m
   title: Ph.D.
-chemicalProperties:
-  formula: CaCO3
-  materialType: stone
-  symbol: Marble
-composition:
-- Calcium Carbonate (CaCO3) 90-99%
-- Dolomite (CaMg(CO3)2)
-- Other minerals (quartz, mica, clay minerals, iron oxides)
-compatibility:
-- Historical Marble Artifacts
-- Architectural Marble Surfaces
-- Sculptural Marble
-regulatoryStandards: EN 15886, EN 15898, ICOMOS Guidelines
+  country: Indonesia
+  expertise: Ultrafast Laser Physics and Material Interactions
+  image: /images/author/ikmanda-roswati.jpg
 images:
   hero:
     alt: Marble surface undergoing laser cleaning showing precise contamination removal
     url: /images/marble-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Marble surface after laser cleaning showing detailed
+    alt: Microscopic view of marble surface after laser cleaning showing detailed
       surface structure
     url: /images/marble-laser-cleaning-micro.jpg
-title: Laser Cleaning Marble
-headline: Comprehensive technical guide for laser cleaning stone marble
 environmentalImpact:
 - benefit: Chemical Solvent Elimination
-  description: Eliminates need for harsh chemical cleaners and poultices traditionally
-    used in marble conservation
+  description: Eliminates need for harsh chemical cleaners and acidic solutions in
+    stone restoration
 - benefit: Water Conservation
-  description: Reduces water usage by 95% compared to hydro-cleaning methods for marble
-    surfaces
+  description: Reduces water consumption by 95% compared to traditional pressure washing
+    methods
 - benefit: Waste Reduction
   description: Produces minimal waste as removed contaminants are captured by filtration
     systems
 outcomes:
-- metric: Achieves controlled removal of surface layers without damaging the original
-    stone substrate
-  result: Surface Cleanliness
-- metric: Micron-level control allowing selective removal of contaminants while preserving
-    patina
-  result: Material Removal Precision
-- metric: 0.5-2 m²/hour cleaning rate depending on contamination type and laser parameters
-  result: Processing Speed
-keywords: marble, marble stone, laser ablation, laser cleaning, non-contact cleaning,
-  pulsed fiber laser, surface contamination removal, industrial laser parameters,
-  thermal processing, surface restoration
+- result: Surface Cleanliness
+  metric: Achieves complete removal of biological growth and atmospheric deposits
+    without surface damage
+- result: Material Preservation
+  metric: Maintains original surface patina and micro-texture of historical marble
+- result: Processing Speed
+  metric: 0.5-2 m²/hour cleaning rate depending on contamination type and severity
 prompt_chain_verification:
-  ai_detection_config_loaded: true
-  author_id: 3
   base_config_loaded: true
-  cultural_adaptation_applied: true
-  formatting_config_loaded: true
-  human_authenticity_focus: true
   persona_config_loaded: true
+  formatting_config_loaded: true
+  ai_detection_config_loaded: true
   persona_country: Indonesia
+  author_id: 3
+  verification_timestamp: '2025-09-19T05:37:53Z'
   prompt_components_integrated: 4
-  verification_timestamp: '2025-09-16T22:38:09Z'
-category: stone
-properties:
-  chemicalFormula: CaCO3
-  density: 2.7 g/cm³
-  densityMax: 3.2 g/cm³
-  densityMin: 1.5 g/cm³
-  densityPercentile: 70.6
-  fluenceRange: 0.5–2.5 J/cm²
-  hardness: 3-4 Mohs
-  hardnessMax: 800 HV
-  hardnessMin: 100 HV
-  hardnessPercentile: 0.0
-  laserAbsorptionMax: 30 cm⁻¹
-  laserAbsorptionMin: 0.5 cm⁻¹
-  laserReflectivityMax: 40%
-  laserReflectivityMin: 10%
-  laserType: Q-Switched Nd:YAG Laser
-  meltingMax: 1700°C
-  meltingMin: 1200°C
-  meltingPercentile: 0.0
-  meltingPoint: 825°C (decomposes)
-  modulusMax: 100 GPa
-  modulusMin: 10 GPa
-  modulusPercentile: 55.6
-  specificHeatMax: 1.0 J/g·K
-  specificHeatMin: 0.7 J/g·K
-  tensileMax: 300 MPa
-  tensileMin: 2 MPa
-  tensilePercentile: 3.2
-  tensileStrength: 8-15 MPa
-  thermalConductivity: 2.8 W/m·K
-  thermalDiffusivityMax: 3 mm²/s
-  thermalDiffusivityMin: 0.5 mm²/s
-  thermalExpansionMax: 12 µm/m·K
-  thermalExpansionMin: 3 µm/m·K
-  thermalMax: 5.0 W/m·K
-  thermalMin: 0.2 W/m·K
-  thermalPercentile: 54.2
-  wavelength: 1064nm
-  youngsModulus: 50-70 GPa
+  human_authenticity_focus: true
+  cultural_adaptation_applied: true
 ---
-
-# Version Information
-# Generated: 2025-09-16T15:39:01.884366
-# Material: Marble
-# Component: frontmatter
-# Generator: Z-Beam v2.1.0
-# Author: AI Assistant
-# Platform: Darwin (3.12.4)
-# File: content/components/frontmatter/marble-laser-cleaning.md

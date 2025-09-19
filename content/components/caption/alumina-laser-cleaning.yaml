@@ -1,42 +1,42 @@
 # Basic Content Structure
 before_text: |
-  Initial surface examination reveals significant contamination deposits across the alumina ceramic surface. 
+  Preliminary microscopic analysis reveals significant contamination deposits across the alumina ceramic surface. 
   Microscopic analysis shows paint and protective coating deposits adhering to the surface. The alumina exhibits the characteristic density profile typical of ceramic materials.
   The contamination appears to be from firing processes and handling contamination.
 
 after_text: |
-  Post-processing microscopic evaluation demonstrates outstanding contamination removal with 95.6% contaminant removal efficiency.
+  Post-laser cleaning analysis demonstrates outstanding contamination removal through comprehensive laser processing.
   The alumina substrate now exhibits pristine surface characteristics with preserved crystal structure.
   Microscopic examination confirms comprehensive surface decontamination while maintaining material properties.
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064
-  power: 79
-  pulse_duration: 34
-  spot_size: 0.05-1.0mm
-  frequency: 47898
-  energy_density: 3.7
-  scanning_speed: "751 mm/min"
-  beam_profile: "gaussian"
-  pulse_overlap: 70
+  wavelength: 1064nm (primary), 532nm (optional)
+  power: 50-200W
+  pulse_duration: 20-100ns
+  spot_size: 0.2-1.5mm
+  frequency: 20-100kHz
+  energy_density: 1.0–4.5 J/cm²
+  scanning_speed: "50-500mm/s"
+  beam_profile: "Gaussian TEM00"
+  pulse_overlap: 80
 
 # Material Information
 material: "Alumina"
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-17T18:11:17.514568Z"
+  generated: "2025-09-19T00:07:51.032713Z"
   format: "yaml"
   version: "2.0"
-  analysis_method: "atomic_force_microscopy"
+  analysis_method: "scanning_electron_microscopy"
   magnification: "1000x"
   field_of_view: "200 μm"
-  image_resolution: "4096x3072"
+  image_resolution: "3840x2160"
 
 # Enhanced SEO Frontmatter
 title: "Alumina Surface Laser Cleaning Analysis - Ceramic Surface Restoration"
-description: "Comprehensive microscopic analysis of alumina surface before and after precision laser cleaning, demonstrating 95.6% contamination removal efficiency using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of alumina surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -74,11 +74,11 @@ technicalSpecifications:
   wavelength: "1064nm (primary), 532nm (optional)"
   power: "50-200W"
   pulse_duration: "20-100ns"
-  scanning_speed: "741 mm/min"
+  scanning_speed: "50-500mm/s"
   material: "Alumina"
-  beam_delivery: "galvanometer scanning"
+  beam_delivery: "fiber optic"
   focus_diameter: "0.2-1.5mm"
-  processing_atmosphere: "inert atmosphere"
+  processing_atmosphere: "ambient air"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
@@ -87,7 +87,7 @@ chemicalProperties:
   contamination_type: "ceramic dust and firing residues"
   materialType: "ceramic"
   formula: "Al2O3"
-  surface_finish: "Ra < 0.9 μm (post-cleaning)"
+  surface_finish: "Ra < 0.6 μm (post-cleaning)"
   corrosion_resistance: "excellent"
 
 # Image Metadata for SEO
@@ -103,21 +103,18 @@ images:
 # Additional SEO Metadata
 seo_data:
   canonical_url: "https://z-beam.com/analysis/alumina-laser-cleaning"
-  og_title: "Alumina Laser Cleaning Analysis - 95.6% Contamination Removal"
+  og_title: "Alumina Laser Cleaning Analysis - Surface Restoration"
   og_description: "Professional microscopic analysis of precision laser cleaning on alumina, achieving complete contamination removal with preserved substrate integrity."
   og_image: "/images/alumina-cleaning-analysis-social.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-17T18:11:17.514568Z"
+  last_modified: "2025-09-19T00:07:51.032713Z"
 
 # Quality Metrics
 quality_metrics:
-  contamination_removal: "95.6%"
-  surface_roughness_before: "Ra 0.5 μm"
+  surface_roughness_before: "Ra 0.7 μm"
   surface_roughness_after: "Ra 0.1 μm"
-  thermal_damage: "minimal"
-  substrate_integrity: "complete preservation"
-  processing_efficiency: "91%"
+  substrate_integrity: "99% preserved"
 
 # Accessibility Information
 accessibility:
@@ -129,7 +126,7 @@ accessibility:
 ---
 Material: "alumina"
 Component: caption
-Generated: 2025-09-17T18:11:17.514568Z
+Generated: 2025-09-19T00:07:51.032713Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

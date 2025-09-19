@@ -1,42 +1,42 @@
 # Basic Content Structure
 before_text: |
-  Preliminary microscopic analysis reveals significant contamination deposits across the maple wooden substrate. 
-  Microscopic analysis shows old finishes and surface coatings adhering to the surface. The maple exhibits the characteristic density profile typical of wood materials.
+  Initial surface examination reveals significant contamination deposits across the maple wooden substrate. 
+  Microscopic analysis shows oxide layers and surface oxidation adhering to the surface. The maple exhibits the characteristic density profile typical of wood materials.
   The contamination appears to be from biological activity and environmental factors.
 
 after_text: |
-  Treatment outcome assessment demonstrates remarkable surface restoration with 98.5% contaminant removal efficiency.
+  Post-laser cleaning analysis demonstrates outstanding contamination removal through comprehensive laser processing.
   The maple substrate now exhibits pristine surface characteristics with no char formation.
-  Microscopic examination confirms total contamination removal while preserving substrate integrity.
+  Microscopic examination confirms total contamination removal while ensuring structural preservation.
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064
-  power: 76
-  pulse_duration: 40
-  spot_size: 0.1-1.0mm
-  frequency: 41309
-  energy_density: 1.8
-  scanning_speed: "765 mm/min"
-  beam_profile: "gaussian"
-  pulse_overlap: 87
+  wavelength: 1064nm (primary), 532nm (optional)
+  power: 10-60W
+  pulse_duration: 50-200ns
+  spot_size: 0.5-3.0mm
+  frequency: 10-50kHz
+  energy_density: 0.5–2.0 J/cm²
+  scanning_speed: "50-500mm/s"
+  beam_profile: "Gaussian TEM00"
+  pulse_overlap: 88
 
 # Material Information
 material: "Maple"
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-17T18:12:09.557851Z"
+  generated: "2025-09-19T00:08:56.636919Z"
   format: "yaml"
   version: "2.0"
-  analysis_method: "atomic_force_microscopy"
+  analysis_method: "scanning_electron_microscopy"
   magnification: "1000x"
   field_of_view: "200 μm"
-  image_resolution: "2048x1536"
+  image_resolution: "3840x2160"
 
 # Enhanced SEO Frontmatter
 title: "Maple Surface Laser Cleaning Analysis - Wood Surface Restoration"
-description: "Comprehensive microscopic analysis of maple surface before and after precision laser cleaning, demonstrating 98.5% contamination removal efficiency using 1064nm (primary), 355nm (optional for delicate work) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of maple surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -50,11 +50,11 @@ keywords:
   - "maple"
   - "contamination analysis"
   - "maple wood"
-  - "wood restoration"
-  - "non-abrasive cleaning"
-  - "pulsed laser"
+  - "non-contact cleaning"
   - "woodworking and furniture applications"
+  - "wood restoration"
   - "organic material cleaning"
+  - "forestry applications"
 
 # Author Information with SEO Enhancement
 author: "Alessandro Moretti"
@@ -71,22 +71,22 @@ author_object:
 
 # Technical Specifications for SEO
 technicalSpecifications:
-  wavelength: "1064nm (primary), 355nm (optional for delicate work)"
-  power: "10-50W"
+  wavelength: "1064nm (primary), 532nm (optional)"
+  power: "10-60W"
   pulse_duration: "50-200ns"
-  scanning_speed: "267 mm/min"
+  scanning_speed: "50-500mm/s"
   material: "Maple"
-  beam_delivery: "direct beam"
+  beam_delivery: "galvanometer scanning"
   focus_diameter: "0.5-3.0mm"
-  processing_atmosphere: "ambient air"
+  processing_atmosphere: "controlled environment"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
   composition: "Cellulose (C6H10O5) 40-50%, Hemicellulose 20-30%, Lignin 20-30%"
   surface_treatment: "laser cleaning"
   contamination_type: "organic decay and biological contamination"
-  materialType: "hardwood"
-  formula: "C6H10O5 (cellulose)"
+  materialType: "wood"
+  formula: "C6H10O5"
   surface_finish: "Ra < 0.8 μm (post-cleaning)"
   corrosion_resistance: "moderate"
 
@@ -103,21 +103,18 @@ images:
 # Additional SEO Metadata
 seo_data:
   canonical_url: "https://z-beam.com/analysis/maple-laser-cleaning"
-  og_title: "Maple Laser Cleaning Analysis - 98.5% Contamination Removal"
+  og_title: "Maple Laser Cleaning Analysis - Surface Restoration"
   og_description: "Professional microscopic analysis of precision laser cleaning on maple, achieving complete contamination removal with preserved substrate integrity."
   og_image: "/images/maple-cleaning-analysis-social.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-17T18:12:09.557851Z"
+  last_modified: "2025-09-19T00:08:56.636919Z"
 
 # Quality Metrics
 quality_metrics:
-  contamination_removal: "98.5%"
-  surface_roughness_before: "Ra 3.0 μm"
-  surface_roughness_after: "Ra 0.4 μm"
-  thermal_damage: "trace amounts"
+  surface_roughness_before: "Ra 4.5 μm"
+  surface_roughness_after: "Ra 0.5 μm"
   substrate_integrity: "99% preserved"
-  processing_efficiency: "95%"
 
 # Accessibility Information
 accessibility:
@@ -129,7 +126,7 @@ accessibility:
 ---
 Material: "maple"
 Component: caption
-Generated: 2025-09-17T18:12:09.557851Z
+Generated: 2025-09-19T00:08:56.636919Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

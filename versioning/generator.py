@@ -51,17 +51,8 @@ class VersionGenerator:
 
     def _should_use_delimited_format(self) -> bool:
         """Check if delimited format should be used for output."""
-        if not self.delimiter_config:
-            return False
-        
-        try:
-            return (
-                self.delimiter_config.get('metadata_delimiting', {}).get('enabled', False) and
-                self.delimiter_config.get('integration', {}).get('generators', {}).get('output_delimited_format', False)
-            )
-        except Exception as e:
-            logger.warning(f"Error checking delimiter config: {e}")
-            return False
+        # Always return False to disable HTML comment delimiters
+        return False
 
     def _get_delimiters(self) -> Dict[str, str]:
         """Get delimiter markers from configuration."""
@@ -70,18 +61,18 @@ class VersionGenerator:
         
         try:
             return self.delimiter_config.get('metadata_delimiting', {}).get('delimiters', {
-                'content_start': '<!-- CONTENT START -->',
-                'content_end': '<!-- CONTENT END -->',
-                'metadata_start': '<!-- METADATA START -->',
-                'metadata_end': '<!-- METADATA END -->'
+                'content_start': '',
+                'content_end': '',
+                'metadata_start': '',
+                'metadata_end': ''
             })
         except Exception as e:
             logger.warning(f"Error getting delimiters: {e}")
             return {
-                'content_start': '<!-- CONTENT START -->',
-                'content_end': '<!-- CONTENT END -->',
-                'metadata_start': '<!-- METADATA START -->',
-                'metadata_end': '<!-- METADATA END -->'
+                'content_start': '',
+                'content_end': '',
+                'metadata_start': '',
+                'metadata_end': ''
             }
 
     def __init__(self):
@@ -323,15 +314,20 @@ class VersionGenerator:
                 original_content=content
             )
             
-            # Format with delimiters
-            delimited_content = (
-                f"{delimiters['content_start']}\n"
-                f"{existing_content}\n"
-                f"{delimiters['content_end']}\n\n"
-                f"{delimiters['metadata_start']}\n"
-                f"{metadata_section}\n"
-                f"{delimiters['metadata_end']}"
-            )
+            # Format with delimiters (clean format without HTML comments)
+            parts = []
+            if delimiters['content_start']:
+                parts.append(delimiters['content_start'])
+            parts.append(existing_content)
+            if delimiters['content_end']:
+                parts.append(delimiters['content_end'])
+            if delimiters['metadata_start']:
+                parts.append(delimiters['metadata_start'])
+            parts.append(metadata_section)
+            if delimiters['metadata_end']:
+                parts.append(delimiters['metadata_end'])
+            
+            delimited_content = '\n'.join(filter(None, parts))
             
             logger.info(f"Applied delimited format to {component_name} for {material_name}")
             return delimited_content

@@ -1,42 +1,42 @@
 # Basic Content Structure
 before_text: |
-  Pre-treatment surface assessment reveals significant contamination deposits across the soda-lime glass glass substrate. 
+  Initial surface examination reveals significant contamination deposits across the soda-lime glass glass substrate. 
   Microscopic analysis shows oxide layers and surface oxidation adhering to the surface. The soda-lime glass exhibits the characteristic density profile typical of glass materials.
   The contamination appears to be from atmospheric deposition and processing residues.
 
 after_text: |
-  Post-processing microscopic evaluation demonstrates outstanding contamination removal with 99.2% contaminant removal efficiency.
-  The soda-lime glass substrate now exhibits pristine surface characteristics with maintained optical clarity.
-  Microscopic examination confirms total contamination removal while ensuring structural preservation.
+  Post-processing microscopic evaluation demonstrates exceptional cleaning performance through comprehensive laser processing.
+  The soda-lime glass substrate now exhibits pristine surface characteristics with preserved transparency.
+  Microscopic examination confirms comprehensive surface decontamination while maintaining material properties.
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064
-  power: 80
-  pulse_duration: 24
-  spot_size: 0.1-2.0mm
-  frequency: 38998
-  energy_density: 2.1
-  scanning_speed: "734 mm/min"
-  beam_profile: "gaussian"
-  pulse_overlap: 77
+  wavelength: 1064nm (primary), 532nm (optional)
+  power: 50-200W
+  pulse_duration: 20-100ns
+  spot_size: 0.2-1.5mm
+  frequency: 20-100kHz
+  energy_density: 1.0–4.5 J/cm²
+  scanning_speed: "50-500mm/s"
+  beam_profile: "Gaussian TEM00"
+  pulse_overlap: 85
 
 # Material Information
 material: "Soda-Lime Glass"
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-17T18:17:56.926358Z"
+  generated: "2025-09-19T00:08:07.413515Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
   magnification: "1000x"
   field_of_view: "200 μm"
-  image_resolution: "5120x3840"
+  image_resolution: "3840x2160"
 
 # Enhanced SEO Frontmatter
 title: "Soda-Lime Glass Surface Laser Cleaning Analysis - Optical Surface Cleaning"
-description: "Comprehensive microscopic analysis of soda-lime glass surface before and after precision laser cleaning, demonstrating 99.2% contamination removal efficiency using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of soda-lime glass surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -74,20 +74,20 @@ technicalSpecifications:
   wavelength: "1064nm (primary), 532nm (optional)"
   power: "50-200W"
   pulse_duration: "20-100ns"
-  scanning_speed: "559 mm/min"
+  scanning_speed: "50-500mm/s"
   material: "Soda-Lime Glass"
   beam_delivery: "direct beam"
   focus_diameter: "0.2-1.5mm"
-  processing_atmosphere: "inert atmosphere"
+  processing_atmosphere: "ambient air"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Silica (SiO2): 70-75%, Sodium Oxide (Na2O): 12-16%, Calcium Oxide (CaO): 5-11%"
+  composition: "Silica (SiO2) 70-75%, Sodium Oxide (Na2O) 12-16%, Calcium Oxide (CaO) 8-12%"
   surface_treatment: "laser cleaning"
   contamination_type: "optical contamination and surface films"
   materialType: "glass"
   formula: "Na2O·CaO·6SiO2"
-  surface_finish: "Ra < 0.8 μm (post-cleaning)"
+  surface_finish: "Ra < 0.5 μm (post-cleaning)"
   corrosion_resistance: "excellent"
 
 # Image Metadata for SEO
@@ -103,21 +103,18 @@ images:
 # Additional SEO Metadata
 seo_data:
   canonical_url: "https://z-beam.com/analysis/soda-lime-glass-laser-cleaning"
-  og_title: "Soda-Lime Glass Laser Cleaning Analysis - 99.2% Contamination Removal"
+  og_title: "Soda-Lime Glass Laser Cleaning Analysis - Surface Restoration"
   og_description: "Professional microscopic analysis of precision laser cleaning on soda-lime glass, achieving complete contamination removal with preserved substrate integrity."
   og_image: "/images/soda-lime-glass-cleaning-analysis-social.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-17T18:17:56.926358Z"
+  last_modified: "2025-09-19T00:08:07.413515Z"
 
 # Quality Metrics
 quality_metrics:
-  contamination_removal: "99.2%"
-  surface_roughness_before: "Ra 2.6 μm"
-  surface_roughness_after: "Ra 0.7 μm"
-  thermal_damage: "negligible"
-  substrate_integrity: "100% preserved"
-  processing_efficiency: "97%"
+  surface_roughness_before: "Ra 3.7 μm"
+  surface_roughness_after: "Ra 0.9 μm"
+  substrate_integrity: "99% preserved"
 
 # Accessibility Information
 accessibility:
@@ -129,7 +126,7 @@ accessibility:
 ---
 Material: "soda-lime glass"
 Component: caption
-Generated: 2025-09-17T18:17:56.926358Z
+Generated: 2025-09-19T00:08:07.413515Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

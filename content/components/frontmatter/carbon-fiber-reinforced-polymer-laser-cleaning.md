@@ -1,45 +1,162 @@
 ---
 name: Carbon Fiber Reinforced Polymer
-applications:
-- detail: Removal of release agents, mold residues, and surface contaminants from
-    CFRP components
-  industry: Aerospace
-- detail: Surface preparation for adhesive bonding and painting of carbon fiber composite
-    parts
-  industry: Automotive
-technicalSpecifications:
-  fluenceRange: 0.5–3.0 J/cm²
-  powerRange: 20-100W
-  pulseDuration: 10-200ns
-  repetitionRate: 10-500kHz
+category: composite
+title: Laser Cleaning Carbon Fiber Reinforced Polymer
+headline: Comprehensive technical guide for laser cleaning composite carbon fiber
+  reinforced polymer
+description: Technical overview of Carbon Fiber Reinforced Polymer, C-Polymer, for
+  laser cleaning applications, including optimal 1064nm wavelength interaction, and
+  industrial applications in surface preparation.
+keywords: carbon fiber reinforced polymer, carbon fiber reinforced polymer composite,
+  laser ablation, laser cleaning, non-contact cleaning, pulsed fiber laser, surface
+  contamination removal, industrial laser parameters, thermal processing, surface
+  restoration
+chemicalProperties:
+  symbol: CFRP
+  formula: C-Polymer
+  materialType: composite
+properties:
+  density: 1.6 g/cm³
+  densityNumeric: 1.6
+  densityUnit: g/cm³
+  densityMin: 1.4 g/cm³
+  densityMinNumeric: 1.4
+  densityMinUnit: g/cm³
+  densityMax: 2.0 g/cm³
+  densityMaxNumeric: 2.0
+  densityMaxUnit: g/cm³
+  densityPercentile: 45.0
+  meltingPoint: N/A (Decomposes) °C
+  meltingPointNumeric: 0.0
+  meltingPointUnit: ''
+  meltingPercentile: 30.0
+  thermalConductivity: 5-50 W/m·K
+  thermalConductivityNumeric: 27.5
+  thermalConductivityUnit: W/m·K
+  thermalPercentile: 25.0
+  tensileStrength: 600-1600 MPa
+  tensileStrengthNumeric: 1100.0
+  tensileStrengthUnit: MPa
+  tensilePercentile: 85.0
+  hardness: N/A HB
+  hardnessNumeric: 0.0
+  hardnessUnit: ''
+  hardnessMin: N/A
+  hardnessMinNumeric: null
+  hardnessMinUnit: null
+  hardnessMax: N/A
+  hardnessMaxNumeric: null
+  hardnessMaxUnit: null
+  hardnessPercentile: 0.0
+  youngsModulus: 70-200 GPa
+  youngsModulusNumeric: 135.0
+  youngsModulusUnit: GPa
+  modulusMin: 150 GPa
+  modulusMinNumeric: 150.0
+  modulusMinUnit: GPa
+  modulusMax: 400 GPa
+  modulusMaxNumeric: 400.0
+  modulusMaxUnit: GPa
+  modulusPercentile: 60.0
+  laserType: Pulsed Fiber Laser
+  wavelength: 1064nm
+  fluenceRange: 1.0–4.5 J/cm²
+  chemicalFormula: C-Polymer
+composition:
+- Carbon Fiber 50-70%
+- Polymer Matrix (Epoxy, Vinyl Ester, or Polyester) 30-50%
+- Additives and Fillers <5%
+machineSettings:
+  powerRange: 50-200W
+  powerRangeNumeric: 125.0
+  powerRangeUnit: W
+  powerRangeMin: 20W
+  powerRangeMinNumeric: 20.0
+  powerRangeMinUnit: W
+  powerRangeMax: 500W
+  powerRangeMaxNumeric: 500.0
+  powerRangeMaxUnit: W
+  pulseDuration: 20-100ns
+  pulseDurationNumeric: 60.0
+  pulseDurationUnit: ns
+  pulseDurationMin: 1ns
+  pulseDurationMinNumeric: 1.0
+  pulseDurationMinUnit: ns
+  pulseDurationMax: 1000ns
+  pulseDurationMaxNumeric: 1000.0
+  pulseDurationMaxUnit: ns
+  wavelength: 1064nm (primary), 532nm (optional)
+  wavelengthNumeric: 1064.0
+  wavelengthUnit: nm
+  wavelengthMin: 355nm
+  wavelengthMinNumeric: 355.0
+  wavelengthMinUnit: nm
+  wavelengthMax: 2940nm
+  wavelengthMaxNumeric: 2940.0
+  wavelengthMaxUnit: nm
+  spotSize: 0.2-1.5mm
+  spotSizeNumeric: 0.85
+  spotSizeUnit: mm
+  spotSizeMin: 0.01mm
+  spotSizeMinNumeric: 0.01
+  spotSizeMinUnit: mm
+  spotSizeMax: 10mm
+  spotSizeMaxNumeric: 10.0
+  spotSizeMaxUnit: mm
+  repetitionRate: 20-100kHz
+  repetitionRateNumeric: 60.0
+  repetitionRateUnit: kHz
+  repetitionRateMin: 1kHz
+  repetitionRateMinNumeric: 1.0
+  repetitionRateMinUnit: kHz
+  repetitionRateMax: 1000kHz
+  repetitionRateMaxNumeric: 1000.0
+  repetitionRateMaxUnit: kHz
+  fluenceRange: 1.0–4.5 J/cm²
+  fluenceRangeNumeric: 1.0
+  fluenceRangeUnit: J/cm²
+  fluenceRangeMin: 0.1J/cm²
+  fluenceRangeMinNumeric: 0.1
+  fluenceRangeMinUnit: J/cm²
+  fluenceRangeMax: 50J/cm²
+  fluenceRangeMaxNumeric: 50.0
+  fluenceRangeMaxUnit: J/cm²
+  scanningSpeed: 50-500mm/s
+  scanningSpeedNumeric: 275.0
+  scanningSpeedUnit: mm/s
+  scanningSpeedMin: 1mm/s
+  scanningSpeedMinNumeric: 1.0
+  scanningSpeedMinUnit: mm/s
+  scanningSpeedMax: 5000mm/s
+  scanningSpeedMaxNumeric: 5000.0
+  scanningSpeedMaxUnit: mm/s
+  beamProfile: Gaussian TEM00
+  beamProfileOptions:
+  - Gaussian TEM00
+  - Top-hat
+  - Donut
+  - Multi-mode
   safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.1-2.0mm
-  wavelength: 1064nm (primary), 355nm (optional)
-description: Technical overview of Carbon Fiber Reinforced Polymer laser cleaning
-  applications, including optimal wavelength interaction with epoxy matrix and carbon
-  fibers, and industrial applications in composite manufacturing.
+applications:
+- industry: Electronics Manufacturing
+  detail: Removal of surface oxides and contaminants from Carbon Fiber Reinforced
+    Polymer substrates
+- industry: Aerospace Components
+  detail: Cleaning of thermal barrier coatings and composite matrix composites
+compatibility:
+- Epoxy Resins
+- Thermoset Polymers
+- Composite Adhesives
+regulatoryStandards: ISO 527-5, ASTM D3039, ASTM D3171
 author: Yi-Chun Lin
 author_object:
-  country: Taiwan
-  expertise: Laser Materials Processing
   id: 1
-  image: /images/author/yi-chun-lin.jpg
   name: Yi-Chun Lin
   sex: f
   title: Ph.D.
-chemicalProperties:
-  formula: C-Polymer (Epoxy/Carbon Fiber)
-  materialType: polymer composite
-  symbol: CFRP
-composition:
-- Carbon Fiber 50-70%
-- Epoxy Resin 30-50%
-- Additives <5%
-compatibility:
-- Epoxy Resins
-- Carbon Fibers
-- Thermoplastic Matrices
-regulatoryStandards: ISO 13003, ASTM D3039, SACMA SRM 1R-94
+  country: Taiwan
+  expertise: Laser Materials Processing
+  image: /images/author/yi-chun-lin.jpg
 images:
   hero:
     alt: Carbon Fiber Reinforced Polymer surface undergoing laser cleaning showing
@@ -49,81 +166,30 @@ images:
     alt: Microscopic view of Carbon Fiber Reinforced Polymer surface after laser cleaning
       showing detailed surface structure
     url: /images/carbon-fiber-reinforced-polymer-laser-cleaning-micro.jpg
-title: Laser Cleaning Carbon Fiber Reinforced Polymer - Technical Guide for Composite
-  Processing
-headline: Advanced laser cleaning techniques for Carbon Fiber Reinforced Polymer composites
 environmentalImpact:
-- benefit: Solvent-Free Processing
-  description: Eliminates VOC emissions from chemical cleaning solvents
-- benefit: Reduced Waste
-  description: Minimal waste generation compared to abrasive cleaning methods
-- benefit: Energy Efficient
-  description: Lower energy consumption than thermal decomposition methods
+- benefit: Chemical Solvent Elimination
+  description: Reduces chemical usage by 100% compared to traditional solvent cleaning
+    methods
+- benefit: Water Conservation
+  description: Saves approximately 5000 liters of water per month in industrial applications
+- benefit: Energy Efficiency
+  description: Consumes 40% less energy than thermal cleaning processes
 outcomes:
-- metric: Achieves contact angle < 40° for improved adhesion
-  result: Surface Cleanliness
-- metric: < 5μm surface layer removal with minimal fiber damage
-  result: Fiber Preservation
-- metric: 0.5-2.0 m²/hour depending on contamination type and thickness
-  result: Processing Rate
-keywords: carbon fiber reinforced polymer, CFRP, composite laser cleaning, epoxy removal,
-  surface preparation, non-destructive cleaning, aerospace composites, automotive
-  composites, laser ablation parameters
+- result: Surface Cleanliness Level
+  metric: Achieves ISO 14644-1 Class 7 cleanliness standard
+- result: Material Removal Precision
+  metric: ±5μm accuracy with no substrate damage
+- result: Processing Speed
+  metric: 2-5 m²/hour cleaning rate depending on contamination level
 prompt_chain_verification:
-  ai_detection_config_loaded: true
-  author_id: 1
   base_config_loaded: true
-  cultural_adaptation_applied: true
-  formatting_config_loaded: true
-  human_authenticity_focus: true
   persona_config_loaded: true
+  formatting_config_loaded: true
+  ai_detection_config_loaded: true
   persona_country: Taiwan
+  author_id: 1
+  verification_timestamp: '2025-09-19T05:07:46Z'
   prompt_components_integrated: 4
-  verification_timestamp: '2025-09-16T21:32:45Z'
-category: composite
-properties:
-  chemicalFormula: C-Polymer (Epoxy Matrix)
-  decompositionTemperature: 300-400°C
-  density: 1.5-1.6 g/cm³
-  densityMax: 2.2 g/cm³
-  densityMin: 0.9 g/cm³
-  densityPercentile: 50.0
-  fluenceRange: 0.5–3.0 J/cm²
-  hardnessMax: 80 HRC
-  hardnessMin: 10 HB
-  laserAbsorptionMax: 80 cm⁻¹
-  laserAbsorptionMin: 1 cm⁻¹
-  laserReflectivityMax: 15%
-  laserReflectivityMin: 3%
-  laserType: Pulsed Fiber Laser, Nd:YAG
-  meltingMax: 400°C
-  meltingMin: 150°C
-  modulusMax: 300 GPa
-  modulusMin: 1 GPa
-  modulusPercentile: 36.5
-  specificHeatMax: 2.0 J/g·K
-  specificHeatMin: 0.8 J/g·K
-  tensileMax: 7000 MPa
-  tensileMin: 100 MPa
-  tensilePercentile: 8.7
-  tensileStrength: 600-800 MPa (fiber direction)
-  thermalConductivity: 0.8-1.2 W/m·K (through-plane), 5-10 W/m·K (in-plane)
-  thermalDiffusivityMax: 20 mm²/s
-  thermalDiffusivityMin: 0.1 mm²/s
-  thermalExpansionMax: 60 µm/m·K
-  thermalExpansionMin: 1 µm/m·K
-  thermalMax: 60 W/m·K
-  thermalMin: 0.1 W/m·K
-  thermalPercentile: 1.5
-  wavelength: 1064nm, 355nm
-  youngsModulus: 70-150 GPa (fiber direction)
+  human_authenticity_focus: true
+  cultural_adaptation_applied: true
 ---
-
-# Version Information
-# Generated: 2025-09-16T14:33:35.789068
-# Material: Carbon Fiber Reinforced Polymer
-# Component: frontmatter
-# Generator: Z-Beam v2.1.0
-# Author: AI Assistant
-# Platform: Darwin (3.12.4)
-# File: content/components/frontmatter/carbon-fiber-reinforced-polymer-laser-cleaning.md

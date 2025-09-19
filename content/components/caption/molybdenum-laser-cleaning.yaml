@@ -5,38 +5,38 @@ before_text: |
   The contamination appears to be from manufacturing processes and environmental exposure.
 
 after_text: |
-  Post-processing microscopic evaluation demonstrates remarkable surface restoration with 96.3% contaminant removal efficiency.
+  Treatment outcome assessment demonstrates exceptional cleaning performance through comprehensive laser processing.
   The molybdenum substrate now exhibits pristine surface characteristics with controlled thermal impact.
-  Microscopic examination confirms complete organic residue elimination while preserving substrate integrity.
+  Microscopic examination confirms total contamination removal while maintaining material properties.
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064
-  power: 135
-  pulse_duration: 27
-  spot_size: 0.05-1.0mm
-  frequency: 16345
-  energy_density: 4.0
-  scanning_speed: "331 mm/min"
-  beam_profile: "gaussian"
-  pulse_overlap: 87
+  wavelength: 1064nm (primary), 532nm (optional)
+  power: 50-200W
+  pulse_duration: 20-100ns
+  spot_size: 0.2-1.5mm
+  frequency: 20-100kHz
+  energy_density: 1.0–4.5 J/cm²
+  scanning_speed: "50-500mm/s"
+  beam_profile: "Gaussian TEM00"
+  pulse_overlap: 73
 
 # Material Information
 material: "Molybdenum"
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-17T18:12:13.806509Z"
+  generated: "2025-09-19T00:08:24.582396Z"
   format: "yaml"
   version: "2.0"
-  analysis_method: "optical_microscopy"
+  analysis_method: "scanning_electron_microscopy"
   magnification: "1000x"
   field_of_view: "200 μm"
-  image_resolution: "5120x3840"
+  image_resolution: "3840x2160"
 
 # Enhanced SEO Frontmatter
 title: "Molybdenum Surface Laser Cleaning Analysis - Industrial Contamination Removal"
-description: "Comprehensive microscopic analysis of molybdenum surface before and after precision laser cleaning, demonstrating 96.3% contamination removal efficiency using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of molybdenum surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -74,11 +74,11 @@ technicalSpecifications:
   wavelength: "1064nm (primary), 532nm (optional)"
   power: "50-200W"
   pulse_duration: "20-100ns"
-  scanning_speed: "662 mm/min"
+  scanning_speed: "50-500mm/s"
   material: "Molybdenum"
-  beam_delivery: "direct beam"
+  beam_delivery: "fiber optic"
   focus_diameter: "0.2-1.5mm"
-  processing_atmosphere: "ambient air"
+  processing_atmosphere: "controlled environment"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
@@ -87,8 +87,8 @@ chemicalProperties:
   contamination_type: "oxidation and metallic deposits"
   materialType: "metal"
   formula: "Mo"
-  surface_finish: "Ra < 0.7 μm (post-cleaning)"
-  corrosion_resistance: "moderate"
+  surface_finish: "Ra < 0.4 μm (post-cleaning)"
+  corrosion_resistance: "excellent"
 
 # Image Metadata for SEO
 images:
@@ -103,21 +103,18 @@ images:
 # Additional SEO Metadata
 seo_data:
   canonical_url: "https://z-beam.com/analysis/molybdenum-laser-cleaning"
-  og_title: "Molybdenum Laser Cleaning Analysis - 96.3% Contamination Removal"
+  og_title: "Molybdenum Laser Cleaning Analysis - Surface Restoration"
   og_description: "Professional microscopic analysis of precision laser cleaning on molybdenum, achieving complete contamination removal with preserved substrate integrity."
   og_image: "/images/molybdenum-cleaning-analysis-social.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-17T18:12:13.806509Z"
+  last_modified: "2025-09-19T00:08:24.582396Z"
 
 # Quality Metrics
 quality_metrics:
-  contamination_removal: "96.3%"
-  surface_roughness_before: "Ra 2.3 μm"
-  surface_roughness_after: "Ra 0.6 μm"
-  thermal_damage: "trace amounts"
-  substrate_integrity: "excellent"
-  processing_efficiency: "92%"
+  surface_roughness_before: "Ra 1.3 μm"
+  surface_roughness_after: "Ra 0.4 μm"
+  substrate_integrity: "100% preserved"
 
 # Accessibility Information
 accessibility:
@@ -129,7 +126,7 @@ accessibility:
 ---
 Material: "molybdenum"
 Component: caption
-Generated: 2025-09-17T18:12:13.806509Z
+Generated: 2025-09-19T00:08:24.582396Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

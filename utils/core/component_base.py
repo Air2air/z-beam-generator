@@ -15,14 +15,7 @@ from typing import Any, Dict, Optional
 import yaml
 
 from generators.component_generators import ComponentResult
-# Component config now in run.py - use COMPONENT_CONFIG directly
-def load_component_config(component_name: str):
-    """Load component config from run.py"""
-    try:
-        from run import COMPONENT_CONFIG
-        return COMPONENT_CONFIG.get(component_name, {})
-    except ImportError:
-        return {}
+# Component config loading moved to utils.config_loader for centralization
 
 
 def load_template(template_path: Path) -> Optional[Dict[str, Any]]:
@@ -59,21 +52,7 @@ def handle_generation_error(
     )
 
 
-# Common validation functions
-def validate_required_fields(
-    data: Dict, required_fields: list, component_type: str
-) -> Optional[str]:
-    """Validate that required fields are present in data"""
-    missing_fields = []
-    for field in required_fields:
-        if field not in data or data[field] is None:
-            missing_fields.append(field)
-
-    if missing_fields:
-        return (
-            f"Missing required fields for {component_type}: {', '.join(missing_fields)}"
-        )
-    return None
+# Common validation functions moved to utils.validation.base_validator for centralization
 
 
 def sanitize_material_name(material_name: str) -> str:

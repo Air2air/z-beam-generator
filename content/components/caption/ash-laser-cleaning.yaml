@@ -1,42 +1,42 @@
 # Basic Content Structure
 before_text: |
-  Pre-treatment surface assessment reveals significant contamination deposits across the ash wooden substrate. 
-  Microscopic analysis shows adhesive residues and bonding agents adhering to the surface. The ash exhibits the characteristic density profile typical of wood materials.
+  Initial surface examination reveals significant contamination deposits across the ash wooden substrate. 
+  Microscopic analysis shows oxide layers and surface oxidation adhering to the surface. The ash exhibits the characteristic density profile typical of wood materials.
   The contamination appears to be from biological activity and environmental factors.
 
 after_text: |
-  Treatment outcome assessment demonstrates remarkable surface restoration with 99.6% contaminant removal efficiency.
-  The ash substrate now exhibits pristine surface characteristics with preserved fiber structure.
-  Microscopic examination confirms comprehensive surface decontamination while preserving substrate integrity.
+  Post-processing microscopic evaluation demonstrates outstanding contamination removal through comprehensive laser processing.
+  The ash substrate now exhibits pristine surface characteristics with controlled thermal exposure.
+  Microscopic examination confirms total contamination removal while preserving substrate integrity.
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064
-  power: 56
-  pulse_duration: 46
-  spot_size: 0.1-2.0mm
-  frequency: 34483
-  energy_density: 3.5
-  scanning_speed: "519 mm/min"
-  beam_profile: "gaussian"
-  pulse_overlap: 79
+  wavelength: 1064nm (primary), 532nm (optional)
+  power: 50-200W
+  pulse_duration: 20-100ns
+  spot_size: 0.2-1.5mm
+  frequency: 20-100kHz
+  energy_density: 1.0–4.5 J/cm²
+  scanning_speed: "50-500mm/s"
+  beam_profile: "Gaussian TEM00"
+  pulse_overlap: 85
 
 # Material Information
 material: "Ash"
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-17T18:11:19.802481Z"
+  generated: "2025-09-19T00:08:50.860133Z"
   format: "yaml"
   version: "2.0"
-  analysis_method: "optical_microscopy"
+  analysis_method: "scanning_electron_microscopy"
   magnification: "1000x"
   field_of_view: "200 μm"
-  image_resolution: "4096x3072"
+  image_resolution: "3840x2160"
 
 # Enhanced SEO Frontmatter
 title: "Ash Surface Laser Cleaning Analysis - Wood Surface Restoration"
-description: "Comprehensive microscopic analysis of ash surface before and after precision laser cleaning, demonstrating 99.6% contamination removal efficiency using 1064nm (primary), 355nm (optional for delicate work) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of ash surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -50,11 +50,11 @@ keywords:
   - "ash"
   - "contamination analysis"
   - "ash wood"
+  - "non-contact cleaning"
+  - "electronics manufacturing applications"
   - "wood restoration"
-  - "soot removal"
-  - "fire damage"
-  - "woodworking and furniture applications"
   - "organic material cleaning"
+  - "forestry applications"
 
 # Author Information with SEO Enhancement
 author: "Todd Dunning"
@@ -71,23 +71,23 @@ author_object:
 
 # Technical Specifications for SEO
 technicalSpecifications:
-  wavelength: "1064nm (primary), 355nm (optional for delicate work)"
-  power: "10-50W"
-  pulse_duration: "50-200ns"
-  scanning_speed: "520 mm/min"
+  wavelength: "1064nm (primary), 532nm (optional)"
+  power: "50-200W"
+  pulse_duration: "20-100ns"
+  scanning_speed: "50-500mm/s"
   material: "Ash"
-  beam_delivery: "direct beam"
-  focus_diameter: "0.1-0.8mm"
+  beam_delivery: "galvanometer scanning"
+  focus_diameter: "0.2-1.5mm"
   processing_atmosphere: "inert atmosphere"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Cellulose: 40-45%, Hemicellulose: 25-30%, Lignin: 20-25%"
+  composition: "Cellulose (C6H10O5) 40-45%, Hemicellulose 25-30%, Lignin 20-25%"
   surface_treatment: "laser cleaning"
   contamination_type: "organic decay and biological contamination"
-  materialType: "Hardwood"
-  formula: "C6H10O5 (cellulose primary component)"
-  surface_finish: "Ra < 0.8 μm (post-cleaning)"
+  materialType: "wood"
+  formula: "C6H10O5"
+  surface_finish: "Ra < 0.9 μm (post-cleaning)"
   corrosion_resistance: "moderate"
 
 # Image Metadata for SEO
@@ -103,21 +103,18 @@ images:
 # Additional SEO Metadata
 seo_data:
   canonical_url: "https://z-beam.com/analysis/ash-laser-cleaning"
-  og_title: "Ash Laser Cleaning Analysis - 99.6% Contamination Removal"
+  og_title: "Ash Laser Cleaning Analysis - Surface Restoration"
   og_description: "Professional microscopic analysis of precision laser cleaning on ash, achieving complete contamination removal with preserved substrate integrity."
   og_image: "/images/ash-cleaning-analysis-social.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-17T18:11:19.802481Z"
+  last_modified: "2025-09-19T00:08:50.860133Z"
 
 # Quality Metrics
 quality_metrics:
-  contamination_removal: "99.6%"
-  surface_roughness_before: "Ra 1.8 μm"
-  surface_roughness_after: "Ra 0.9 μm"
-  thermal_damage: "none detected"
+  surface_roughness_before: "Ra 1.6 μm"
+  surface_roughness_after: "Ra 0.3 μm"
   substrate_integrity: "99% preserved"
-  processing_efficiency: "96%"
 
 # Accessibility Information
 accessibility:
@@ -129,7 +126,7 @@ accessibility:
 ---
 Material: "ash"
 Component: caption
-Generated: 2025-09-17T18:11:19.802481Z
+Generated: 2025-09-19T00:08:50.860133Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

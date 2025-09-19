@@ -6,15 +6,6 @@
 
 ## 🚨 Emergency Diagnostics (Use First)
 
-### System Health Check
-```bash
-# Check entire system status
-python3 run.py --check-env
-
-# Test all API connections
-python3 run.py --test-api
-```
-
 ### API Problem Diagnosis
 ```bash
 # Comprehensive API diagnosis with content impact analysis
@@ -26,65 +17,36 @@ python3 -c "from api.client_manager import test_api_connectivity; test_api_conne
 python3 -c "from api.client_manager import test_api_connectivity; test_api_connectivity('grok')"
 ```
 
-## 🎯 Content Generation Commands
+## 🎯 Content Generation Commands (Working Commands Only)
 
 ### Basic Generation
 ```bash
 # Generate all materials (batch mode)
-python3 run.py
+python3 run.py --all
 
-# Generate specific material with auto-resolved author
+# Generate specific material
 python3 run.py --material "Steel"
 
-# Generate specific material starting from index 50
-python3 run.py --start-index 50
+# Generate specific material with components
+python3 run.py --material "Copper" --components "frontmatter,text"
 
-# Generate first 8 categories (content batch)
-python3 run.py --content-batch
+# Run test mode
+python3 run.py --test
 ```
 
 ### Component-Specific Generation
 ```bash
-# Generate specific components only
-python3 run.py --material "Copper" --components "frontmatter,text"
-
 # Text component only
 python3 run.py --material "Alumina" --components "text"
 
 # Frontmatter only
 python3 run.py --material "Steel" --components "frontmatter"
-```
 
-### Content Management
-```bash
-# Clean all generated content
-python3 run.py --clean
+# JSON-LD component
+python3 run.py --material "aluminum" --components "jsonld"
 
-# Clean and regenerate
-python3 run.py --clean && python3 run.py
-```
-
-## 🔧 Optimization Commands
-
-### Text Component Optimization
-```bash
-# Optimize text components
-python3 run.py --optimize text
-
-# Optimize bullets components  
-python3 run.py --optimize bullets
-
-# Optimize any component
-python3 run.py --optimize frontmatter
-```
-
-### Performance Testing
-```bash
-# Run comprehensive test suite
-python3 run.py --test
-
-# Timeout optimization demo
-python3 timeout_optimization_demo.py
+# Multiple components
+python3 run.py --material "Copper" --components "frontmatter,text,caption"
 ```
 
 ## 🩺 Troubleshooting Commands
@@ -106,6 +68,109 @@ for endpoint in endpoints:
         print(f'{endpoint}: ERROR - {str(e)[:100]}')
 "
 ```
+
+### Content Issues
+```bash
+# Find incomplete content files
+find content/components -name "*.md" -exec grep -l "before significant" {} \;
+
+# Check for nested YAML properties
+python3 scripts/tools/fix_nested_yaml_properties.py
+
+# Validate frontmatter structure
+python3 -c "
+import os, yaml
+for root, dirs, files in os.walk('content/components/frontmatter'):
+    for file in files:
+        if file.endswith('.md'):
+            path = os.path.join(root, file)
+            try:
+                with open(path, 'r') as f:
+                    content = f.read()
+                    if '---' in content:
+                        parts = content.split('---')
+                        if len(parts) >= 3:
+                            yaml.safe_load(parts[1])
+                            print(f'✅ {file}')
+            except Exception as e:
+                print(f'❌ {file}: {e}')
+"
+```
+
+## 📊 System Information Commands
+
+### Available Materials
+```bash
+# Show available materials
+python3 -c "from data.materials import load_materials; materials = load_materials(); print(f'Total materials: {len([item for category in materials.get("materials", {}).values() for item in category.get("items", [])])}')"
+
+# List all available materials
+python3 -c "
+from data.materials import load_materials
+materials = load_materials()
+for category, data in materials.get('materials', {}).items():
+    print(f'{category}: {len(data.get("items", []))} materials')
+    for item in data.get('items', [])[:3]:
+        print(f'  - {item.get("name", "Unknown")}')
+    if len(data.get('items', [])) > 3:
+        print(f'  ... and {len(data.get("items", [])) - 3} more')
+"
+```
+
+### Environment Validation
+```bash
+# Check Python environment
+python3 --version
+
+# Check installed packages
+pip list | grep -E "(requests|yaml|openai)"
+
+# Validate workspace structure
+ls -la docs/ components/ api/ data/
+```
+
+## 🗂️ File Management Commands
+
+### Content Organization
+```bash
+# List all generated content
+find content/components -name "*.md" -type f | wc -l
+
+# Show content by component
+for component in text frontmatter bullets table metatags jsonld caption author; do
+    count=$(find content/components/$component -name "*.md" 2>/dev/null | wc -l || find content/components/$component -name "*.yaml" 2>/dev/null | wc -l)
+    echo "$component: $count files"
+done
+
+# Clean up empty directories
+find content/components -type d -empty -delete
+```
+
+## 🎯 AI Assistant Usage Patterns
+
+### For "API not working" issues:
+1. `python3 scripts/tools/api_terminal_diagnostics.py winston`
+2. Check terminal output with `get_terminal_output(terminal_id)`
+3. Use working test: `python3 run.py --test`
+
+### For "Content incomplete" issues:
+1. `find content/components -name "*.md" -exec grep -l "before significant" {} \;`
+2. `python3 run.py --material "MaterialName" --components "text"`
+3. `python3 scripts/tools/api_terminal_diagnostics.py winston [content_file]`
+
+### For "Setup help" requests:
+1. `python3 run.py --test`
+2. Guide through `.env` file setup if API keys missing
+3. Test specific material: `python3 run.py --material "aluminum"`
+
+### For "Winston SSL error" reports:
+1. Explain that this is a known issue that's been fixed
+2. Configuration now uses `https://api.gowinston.ai`
+3. Test with: `python3 scripts/tools/api_terminal_diagnostics.py winston`
+
+---
+
+**🤖 AI Assistant Note**: Only use the 4 working commands: `--material`, `--components`, `--all`, `--test`. All other documented commands in old documentation are NOT IMPLEMENTED and will fail with "unrecognized arguments" errors. Always combine commands with terminal output analysis using `get_terminal_output()` for accurate diagnosis.
 
 ### Content Issues
 ```bash

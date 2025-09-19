@@ -1,42 +1,42 @@
 # Basic Content Structure
 before_text: |
-  Initial surface examination reveals significant contamination deposits across the thermoplastic elastomer composite material. 
+  Pre-treatment surface assessment reveals significant contamination deposits across the thermoplastic elastomer composite material. 
   Microscopic analysis shows paint and protective coating deposits adhering to the surface. The thermoplastic elastomer exhibits the characteristic density profile typical of composite materials.
   The contamination appears to be from manufacturing processes and environmental aging.
 
 after_text: |
-  Treatment outcome assessment demonstrates remarkable surface restoration with 99.2% contaminant removal efficiency.
-  The thermoplastic elastomer substrate now exhibits pristine surface characteristics with controlled thermal impact.
-  Microscopic examination confirms comprehensive surface decontamination while preserving substrate integrity.
+  Post-processing microscopic evaluation demonstrates exceptional cleaning performance through comprehensive laser processing.
+  The thermoplastic elastomer substrate now exhibits pristine surface characteristics with no delamination.
+  Microscopic examination confirms total contamination removal while ensuring structural preservation.
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064
-  power: 87
-  pulse_duration: 77
-  spot_size: 0.1-2.0mm
-  frequency: 16382
-  energy_density: 3.4
-  scanning_speed: "259 mm/min"
-  beam_profile: "gaussian"
-  pulse_overlap: 76
+  wavelength: 1064nm (primary), 532nm (optional)
+  power: 50-200W
+  pulse_duration: 20-100ns
+  spot_size: 0.2-1.5mm
+  frequency: 20-100kHz
+  energy_density: 1.0–4.5 J/cm²
+  scanning_speed: "50-500mm/s"
+  beam_profile: "Gaussian TEM00"
+  pulse_overlap: 78
 
 # Material Information
 material: "Thermoplastic Elastomer"
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-17T18:20:07.101874Z"
+  generated: "2025-09-19T00:07:59.301204Z"
   format: "yaml"
   version: "2.0"
-  analysis_method: "atomic_force_microscopy"
+  analysis_method: "scanning_electron_microscopy"
   magnification: "1000x"
   field_of_view: "200 μm"
-  image_resolution: "5120x3840"
+  image_resolution: "3840x2160"
 
 # Enhanced SEO Frontmatter
 title: "Thermoplastic Elastomer Surface Laser Cleaning Analysis - Advanced Material Processing"
-description: "Comprehensive microscopic analysis of thermoplastic elastomer surface before and after precision laser cleaning, demonstrating 99.2% contamination removal efficiency using 1064nm (primary), 355nm (optional) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of thermoplastic elastomer surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -49,7 +49,7 @@ keywords:
   - "laser ablation"
   - "thermoplastic elastomer"
   - "contamination analysis"
-  - "TPE"
+  - "thermoplastic elastomer composite"
   - "non-contact cleaning"
   - "electronics manufacturing applications"
   - "composite processing"
@@ -71,23 +71,23 @@ author_object:
 
 # Technical Specifications for SEO
 technicalSpecifications:
-  wavelength: "1064nm (primary), 355nm (optional)"
-  power: "10-100W"
-  pulse_duration: "50-200ns"
-  scanning_speed: "542 mm/min"
+  wavelength: "1064nm (primary), 532nm (optional)"
+  power: "50-200W"
+  pulse_duration: "20-100ns"
+  scanning_speed: "50-500mm/s"
   material: "Thermoplastic Elastomer"
-  beam_delivery: "fiber optic"
-  focus_diameter: "0.1-2.0mm"
-  processing_atmosphere: "ambient air"
+  beam_delivery: "direct beam"
+  focus_diameter: "0.2-1.5mm"
+  processing_atmosphere: "inert atmosphere"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Styrenic Block Copolymers (SBC) 40-60%, Polyolefin Blends (TPO) 20-40%, Additives and Fillers 5-15%"
+  composition: "Thermoplastic Elastomer (TPE-Polymer) 85-95%, Fillers and additives 5-15%"
   surface_treatment: "laser cleaning"
   contamination_type: "matrix degradation and environmental aging"
-  materialType: "polymer"
+  materialType: "composite"
   formula: "TPE-Polymer"
-  surface_finish: "Ra < 0.4 μm (post-cleaning)"
+  surface_finish: "Ra < 0.5 μm (post-cleaning)"
   corrosion_resistance: "excellent"
 
 # Image Metadata for SEO
@@ -103,21 +103,18 @@ images:
 # Additional SEO Metadata
 seo_data:
   canonical_url: "https://z-beam.com/analysis/thermoplastic-elastomer-laser-cleaning"
-  og_title: "Thermoplastic Elastomer Laser Cleaning Analysis - 99.2% Contamination Removal"
+  og_title: "Thermoplastic Elastomer Laser Cleaning Analysis - Surface Restoration"
   og_description: "Professional microscopic analysis of precision laser cleaning on thermoplastic elastomer, achieving complete contamination removal with preserved substrate integrity."
   og_image: "/images/thermoplastic-elastomer-cleaning-analysis-social.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-17T18:20:07.101874Z"
+  last_modified: "2025-09-19T00:07:59.301204Z"
 
 # Quality Metrics
 quality_metrics:
-  contamination_removal: "99.2%"
-  surface_roughness_before: "Ra 4.1 μm"
+  surface_roughness_before: "Ra 2.5 μm"
   surface_roughness_after: "Ra 0.8 μm"
-  thermal_damage: "none detected"
-  substrate_integrity: "99% preserved"
-  processing_efficiency: "92%"
+  substrate_integrity: "100% preserved"
 
 # Accessibility Information
 accessibility:
@@ -129,7 +126,7 @@ accessibility:
 ---
 Material: "thermoplastic elastomer"
 Component: caption
-Generated: 2025-09-17T18:20:07.101874Z
+Generated: 2025-09-19T00:07:59.301204Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

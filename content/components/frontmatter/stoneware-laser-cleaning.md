@@ -1,43 +1,159 @@
 ---
 name: Stoneware
-applications:
-- detail: Removal of surface oxides and contaminants from Stoneware substrates
-  industry: Electronics Manufacturing
-- detail: Cleaning of thermal barrier coatings and ceramic matrix composites
-  industry: Aerospace Components
-technicalSpecifications:
-  fluenceRange: 1.0–4.5 J/cm²
-  powerRange: 50-200W
-  pulseDuration: 20-100ns
-  repetitionRate: 20-100kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.2-1.5mm
-  wavelength: 1064nm (primary), 532nm (optional)
+category: ceramic
+title: Laser Cleaning Stoneware
+headline: Comprehensive technical guide for laser cleaning ceramic stoneware
 description: Technical overview of Stoneware, Al2O3·SiO2, for laser cleaning applications,
   including optimal 1064nm wavelength interaction, and industrial applications in
   surface preparation.
-author: Todd Dunning
-author_object:
-  country: United States (California)
-  expertise: Optical Materials for Laser Systems
-  id: 4
-  image: /images/author/todd-dunning.jpg
-  name: Todd Dunning
-  sex: m
-  title: MA
+keywords: stoneware, stoneware ceramic, laser ablation, laser cleaning, non-contact
+  cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters,
+  thermal processing, surface restoration
 chemicalProperties:
+  symbol: Stoneware
   formula: Al2O3·SiO2
   materialType: ceramic
-  symbol: Stoneware
+properties:
+  density: 2.3-2.5 g/cm³
+  densityNumeric: 2.4
+  densityUnit: g/cm³
+  densityMin: 1.8 g/cm³
+  densityMinNumeric: 1.8
+  densityMinUnit: g/cm³
+  densityMax: 6.0 g/cm³
+  densityMaxNumeric: 6.0
+  densityMaxUnit: g/cm³
+  densityPercentile: 45.2
+  meltingPoint: 1200-1400°C
+  meltingPointNumeric: 1300.0
+  meltingPointUnit: °C
+  meltingPercentile: 32.5
+  thermalConductivity: 1.5-2.0 W/m·K
+  thermalConductivityNumeric: 1.75
+  thermalConductivityUnit: W/m·K
+  thermalPercentile: 2.8
+  tensileStrength: 30-50 MPa
+  tensileStrengthNumeric: 40.0
+  tensileStrengthUnit: MPa
+  tensilePercentile: 8.3
+  hardness: 6-7 Mohs
+  hardnessNumeric: 6.5
+  hardnessUnit: Mohs
+  hardnessMin: 500 HV
+  hardnessMinNumeric: 500.0
+  hardnessMinUnit: HV
+  hardnessMax: 2500 HV
+  hardnessMaxNumeric: 2500.0
+  hardnessMaxUnit: HV
+  hardnessPercentile: 0.0
+  youngsModulus: 60-70 GPa
+  youngsModulusNumeric: 65.0
+  youngsModulusUnit: GPa
+  modulusMin: 150 GPa
+  modulusMinNumeric: 150.0
+  modulusMinUnit: GPa
+  modulusMax: 400 GPa
+  modulusMaxNumeric: 400.0
+  modulusMaxUnit: GPa
+  modulusPercentile: 15.0
+  laserType: Pulsed Fiber Laser
+  wavelength: 1064nm
+  fluenceRange: 1.0–4.5 J/cm²
+  chemicalFormula: Al2O3·SiO2
 composition:
 - Alumina (Al2O3) 25-40%
 - Silica (SiO2) 50-70%
-- Fluxes (Fe2O3, CaO, MgO, K2O, Na2O) 4-8%
+- Fluxes (Feldspar, Iron Oxide) 5-15%
+machineSettings:
+  powerRange: 50-200W
+  powerRangeNumeric: 125.0
+  powerRangeUnit: W
+  powerRangeMin: 20W
+  powerRangeMinNumeric: 20.0
+  powerRangeMinUnit: W
+  powerRangeMax: 500W
+  powerRangeMaxNumeric: 500.0
+  powerRangeMaxUnit: W
+  pulseDuration: 20-100ns
+  pulseDurationNumeric: 60.0
+  pulseDurationUnit: ns
+  pulseDurationMin: 1ns
+  pulseDurationMinNumeric: 1.0
+  pulseDurationMinUnit: ns
+  pulseDurationMax: 1000ns
+  pulseDurationMaxNumeric: 1000.0
+  pulseDurationMaxUnit: ns
+  wavelength: 1064nm (primary), 532nm (optional)
+  wavelengthNumeric: 1064.0
+  wavelengthUnit: nm
+  wavelengthMin: 355nm
+  wavelengthMinNumeric: 355.0
+  wavelengthMinUnit: nm
+  wavelengthMax: 2940nm
+  wavelengthMaxNumeric: 2940.0
+  wavelengthMaxUnit: nm
+  spotSize: 0.2-1.5mm
+  spotSizeNumeric: 0.85
+  spotSizeUnit: mm
+  spotSizeMin: 0.01mm
+  spotSizeMinNumeric: 0.01
+  spotSizeMinUnit: mm
+  spotSizeMax: 10mm
+  spotSizeMaxNumeric: 10.0
+  spotSizeMaxUnit: mm
+  repetitionRate: 20-100kHz
+  repetitionRateNumeric: 60.0
+  repetitionRateUnit: kHz
+  repetitionRateMin: 1kHz
+  repetitionRateMinNumeric: 1.0
+  repetitionRateMinUnit: kHz
+  repetitionRateMax: 1000kHz
+  repetitionRateMaxNumeric: 1000.0
+  repetitionRateMaxUnit: kHz
+  fluenceRange: 1.0–4.5 J/cm²
+  fluenceRangeNumeric: 1.0
+  fluenceRangeUnit: J/cm²
+  fluenceRangeMin: 0.1J/cm²
+  fluenceRangeMinNumeric: 0.1
+  fluenceRangeMinUnit: J/cm²
+  fluenceRangeMax: 50J/cm²
+  fluenceRangeMaxNumeric: 50.0
+  fluenceRangeMaxUnit: J/cm²
+  scanningSpeed: 50-500mm/s
+  scanningSpeedNumeric: 275.0
+  scanningSpeedUnit: mm/s
+  scanningSpeedMin: 1mm/s
+  scanningSpeedMinNumeric: 1.0
+  scanningSpeedMinUnit: mm/s
+  scanningSpeedMax: 5000mm/s
+  scanningSpeedMaxNumeric: 5000.0
+  scanningSpeedMaxUnit: mm/s
+  beamProfile: Gaussian TEM00
+  beamProfileOptions:
+  - Gaussian TEM00
+  - Top-hat
+  - Donut
+  - Multi-mode
+  safetyClass: Class 4 (requires full enclosure)
+applications:
+- industry: Electronics Manufacturing
+  detail: Removal of surface oxides and contaminants from Stoneware substrates
+- industry: Aerospace Components
+  detail: Cleaning of thermal barrier coatings and ceramic matrix composites
 compatibility:
 - Stoneware Ceramics
 - Porcelain
 - Refractory Materials
-regulatoryStandards: ISO 13006, ASTM C242, EN 14411
+regulatoryStandards: ISO 13006, ASTM C242, IEC 60601-1
+author: Todd Dunning
+author_object:
+  id: 4
+  name: Todd Dunning
+  sex: m
+  title: MA
+  country: United States (California)
+  expertise: Optical Materials for Laser Systems
+  image: /images/author/todd-dunning.jpg
 images:
   hero:
     alt: Stoneware surface undergoing laser cleaning showing precise contamination
@@ -47,8 +163,6 @@ images:
     alt: Microscopic view of Stoneware surface after laser cleaning showing detailed
       surface structure
     url: /images/stoneware-laser-cleaning-micro.jpg
-title: Laser Cleaning Stoneware
-headline: Comprehensive technical guide for laser cleaning ceramic stoneware
 environmentalImpact:
 - benefit: Chemical Solvent Elimination
   description: Reduces chemical usage by 100% compared to traditional solvent cleaning
@@ -58,73 +172,21 @@ environmentalImpact:
 - benefit: Energy Efficiency
   description: Consumes 40% less energy than thermal cleaning processes
 outcomes:
-- metric: Achieves ISO 14644-1 Class 7 cleanliness standard
-  result: Surface Cleanliness Level
-- metric: ±5μm accuracy with no substrate damage
-  result: Material Removal Precision
-- metric: 2-5 m²/hour cleaning rate depending on contamination level
-  result: Processing Speed
-keywords: stoneware, stoneware ceramic, laser ablation, laser cleaning, non-contact
-  cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters,
-  thermal processing, surface restoration
+- result: Surface Cleanliness Level
+  metric: Achieves ISO 14644-1 Class 7 cleanliness standard
+- result: Material Removal Precision
+  metric: ±5μm accuracy with no substrate damage
+- result: Processing Speed
+  metric: 2-5 m²/hour cleaning rate depending on contamination level
 prompt_chain_verification:
-  ai_detection_config_loaded: true
-  author_id: 4
   base_config_loaded: true
-  cultural_adaptation_applied: true
-  formatting_config_loaded: true
-  human_authenticity_focus: true
   persona_config_loaded: true
+  formatting_config_loaded: true
+  ai_detection_config_loaded: true
   persona_country: United States (California)
+  author_id: 4
+  verification_timestamp: '2025-09-19T06:19:12Z'
   prompt_components_integrated: 4
-  verification_timestamp: '2025-09-16T21:31:03Z'
-category: ceramic
-properties:
-  chemicalFormula: Al2O3·SiO2
-  density: 2.3-2.5 g/cm³
-  densityMax: 6.0 g/cm³
-  densityMin: 1.8 g/cm³
-  densityPercentile: 14.3
-  fluenceRange: 1.0–4.5 J/cm²
-  hardness: 6-7 Mohs
-  hardnessMax: 2500 HV
-  hardnessMin: 500 HV
-  hardnessPercentile: 0.0
-  laserAbsorptionMax: 50 cm⁻¹
-  laserAbsorptionMin: 0.1 cm⁻¹
-  laserReflectivityMax: 25%
-  laserReflectivityMin: 8%
-  laserType: Pulsed Fiber Laser
-  meltingMax: 2800°C
-  meltingMin: 1200°C
-  meltingPercentile: 2.5
-  meltingPoint: 1200-1280°C
-  modulusMax: 400 GPa
-  modulusMin: 150 GPa
-  modulusPercentile: 0.0
-  specificHeatMax: 1.2 J/g·K
-  specificHeatMin: 0.4 J/g·K
-  tensileMax: 1000 MPa
-  tensileMin: 50 MPa
-  tensilePercentile: 0.0
-  tensileStrength: 20-40 MPa
-  thermalConductivity: 1.5-2.0 W/m·K
-  thermalDiffusivityMax: 80 mm²/s
-  thermalDiffusivityMin: 0.5 mm²/s
-  thermalExpansionMax: 8 µm/m·K
-  thermalExpansionMin: 0.5 µm/m·K
-  thermalMax: 200 W/m·K
-  thermalMin: 0.5 W/m·K
-  thermalPercentile: 0.6
-  wavelength: 1064nm
-  youngsModulus: 50-70 GPa
+  human_authenticity_focus: true
+  cultural_adaptation_applied: true
 ---
-
-# Version Information
-# Generated: 2025-09-16T14:31:54.941141
-# Material: Stoneware
-# Component: frontmatter
-# Generator: Z-Beam v2.1.0
-# Author: AI Assistant
-# Platform: Darwin (3.12.4)
-# File: content/components/frontmatter/stoneware-laser-cleaning.md

@@ -1,42 +1,42 @@
 # Basic Content Structure
 before_text: |
-  Preliminary microscopic analysis reveals significant contamination deposits across the travertine stone surface. 
-  Microscopic analysis shows biological growth and organic deposits adhering to the surface. The travertine exhibits the characteristic density profile typical of stone materials.
+  Pre-treatment surface assessment reveals significant contamination deposits across the travertine stone surface. 
+  Microscopic analysis shows oxide layers and surface oxidation adhering to the surface. The travertine exhibits the characteristic density profile typical of stone materials.
   The contamination appears to be from weathering and environmental exposure.
 
 after_text: |
-  Post-laser cleaning analysis demonstrates outstanding contamination removal with 95.6% contaminant removal efficiency.
-  The travertine substrate now exhibits pristine surface characteristics with minimal thermal expansion.
-  Microscopic examination confirms complete organic residue elimination while maintaining material properties.
+  Post-laser cleaning analysis demonstrates outstanding contamination removal through comprehensive laser processing.
+  The travertine substrate now exhibits pristine surface characteristics with preserved structural integrity.
+  Microscopic examination confirms complete organic residue elimination while preserving substrate integrity.
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064
-  power: 62
-  pulse_duration: 30
-  spot_size: 0.1-2.0mm
-  frequency: 28332
-  energy_density: 3.6
-  scanning_speed: "788 mm/min"
-  beam_profile: "gaussian"
-  pulse_overlap: 90
+  wavelength: 1064nm (primary), 532nm (optional)
+  power: 50-200W
+  pulse_duration: 20-100ns
+  spot_size: 0.2-1.5mm
+  frequency: 20-100kHz
+  energy_density: 1.0–4.5 J/cm²
+  scanning_speed: "50-500mm/s"
+  beam_profile: "Gaussian TEM00"
+  pulse_overlap: 84
 
 # Material Information
 material: "Travertine"
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-17T18:13:06.135533Z"
+  generated: "2025-09-19T00:08:50.203399Z"
   format: "yaml"
   version: "2.0"
-  analysis_method: "atomic_force_microscopy"
+  analysis_method: "scanning_electron_microscopy"
   magnification: "1000x"
   field_of_view: "200 μm"
   image_resolution: "3840x2160"
 
 # Enhanced SEO Frontmatter
 title: "Travertine Surface Laser Cleaning Analysis - Heritage Conservation Cleaning"
-description: "Comprehensive microscopic analysis of travertine surface before and after precision laser cleaning, demonstrating 95.6% contamination removal efficiency using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of travertine surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -51,7 +51,7 @@ keywords:
   - "contamination analysis"
   - "travertine stone"
   - "non-contact cleaning"
-  - "construction and restoration applications"
+  - "electronics manufacturing applications"
   - "stone conservation"
   - "heritage preservation"
   - "architectural restoration"
@@ -72,23 +72,23 @@ author_object:
 # Technical Specifications for SEO
 technicalSpecifications:
   wavelength: "1064nm (primary), 532nm (optional)"
-  power: "10-100W"
-  pulse_duration: "10-200ns"
-  scanning_speed: "468 mm/min"
+  power: "50-200W"
+  pulse_duration: "20-100ns"
+  scanning_speed: "50-500mm/s"
   material: "Travertine"
   beam_delivery: "galvanometer scanning"
-  focus_diameter: "0.1-2.0mm"
-  processing_atmosphere: "inert atmosphere"
+  focus_diameter: "0.2-1.5mm"
+  processing_atmosphere: "controlled environment"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Calcium Carbonate (CaCO3) 94-99%, Iron Oxides, Clay, Organic Matter 1-6%"
+  composition: "Calcium Carbonate (CaCO3) 95-99%, Iron Oxides (Fe2O3) 0.5-2%, Silica (SiO2) 0.5-1.5%"
   surface_treatment: "laser cleaning"
   contamination_type: "weathering and biological deposits"
   materialType: "stone"
   formula: "CaCO3"
-  surface_finish: "Ra < 0.5 μm (post-cleaning)"
-  corrosion_resistance: "moderate"
+  surface_finish: "Ra < 0.8 μm (post-cleaning)"
+  corrosion_resistance: "good"
 
 # Image Metadata for SEO
 images:
@@ -103,21 +103,18 @@ images:
 # Additional SEO Metadata
 seo_data:
   canonical_url: "https://z-beam.com/analysis/travertine-laser-cleaning"
-  og_title: "Travertine Laser Cleaning Analysis - 95.6% Contamination Removal"
+  og_title: "Travertine Laser Cleaning Analysis - Surface Restoration"
   og_description: "Professional microscopic analysis of precision laser cleaning on travertine, achieving complete contamination removal with preserved substrate integrity."
   og_image: "/images/travertine-cleaning-analysis-social.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-17T18:13:06.135533Z"
+  last_modified: "2025-09-19T00:08:50.203399Z"
 
 # Quality Metrics
 quality_metrics:
-  contamination_removal: "95.6%"
-  surface_roughness_before: "Ra 1.7 μm"
-  surface_roughness_after: "Ra 0.8 μm"
-  thermal_damage: "minimal"
+  surface_roughness_before: "Ra 3.7 μm"
+  surface_roughness_after: "Ra 0.3 μm"
   substrate_integrity: "complete preservation"
-  processing_efficiency: "93%"
 
 # Accessibility Information
 accessibility:
@@ -129,7 +126,7 @@ accessibility:
 ---
 Material: "travertine"
 Component: caption
-Generated: 2025-09-17T18:13:06.135533Z
+Generated: 2025-09-19T00:08:50.203399Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

@@ -1,47 +1,161 @@
 ---
 name: Float Glass
-applications:
-- detail: Removal of surface oxides and contaminants from display and touch panel
-    glass substrates
-  industry: Electronics Manufacturing
-- detail: Precision cleaning of coated and uncoated float glass panels prior to further
-    processing
-  industry: Architectural and Automotive Glass
-technicalSpecifications:
-  fluenceRange: 0.5–3.0 J/cm²
-  powerRange: 10-100W
-  pulseDuration: 10-200ns
-  repetitionRate: 10-200kHz
+category: glass
+title: Laser Cleaning Float Glass
+headline: Comprehensive technical guide for laser cleaning glass float glass
+description: Technical overview of Float Glass, Na2O·CaO·6SiO2, for laser cleaning
+  applications, including optimal 1064nm wavelength interaction, and industrial applications
+  in surface preparation.
+keywords: float glass, float glass glass, laser ablation, laser cleaning, non-contact
+  cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters,
+  thermal processing, surface restoration
+chemicalProperties:
+  symbol: FG
+  formula: Na2O·CaO·6SiO2
+  materialType: glass
+properties:
+  density: 2.5 g/cm³
+  densityNumeric: 2.5
+  densityUnit: g/cm³
+  densityMin: 1.8 g/cm³
+  densityMinNumeric: 1.8
+  densityMinUnit: g/cm³
+  densityMax: 6.0 g/cm³
+  densityMaxNumeric: 6.0
+  densityMaxUnit: g/cm³
+  densityPercentile: 51.2
+  meltingPoint: 1370-1530°C
+  meltingPointNumeric: 1450.0
+  meltingPointUnit: °C
+  meltingPercentile: 54.5
+  thermalConductivity: 1.0 W/m·K
+  thermalConductivityNumeric: 1.0
+  thermalConductivityUnit: W/m·K
+  thermalPercentile: 14.8
+  tensileStrength: 30-90 MPa
+  tensileStrengthNumeric: 60.0
+  tensileStrengthUnit: MPa
+  tensilePercentile: 26.3
+  hardness: 5.5-6.5 Mohs
+  hardnessNumeric: 6.0
+  hardnessUnit: Mohs
+  hardnessMin: 500 HV
+  hardnessMinNumeric: 500.0
+  hardnessMinUnit: HV
+  hardnessMax: 2500 HV
+  hardnessMaxNumeric: 2500.0
+  hardnessMaxUnit: HV
+  hardnessPercentile: 0.0
+  youngsModulus: 70-80 GPa
+  youngsModulusNumeric: 75.0
+  youngsModulusUnit: GPa
+  modulusMin: 150 GPa
+  modulusMinNumeric: 150.0
+  modulusMinUnit: GPa
+  modulusMax: 400 GPa
+  modulusMaxNumeric: 400.0
+  modulusMaxUnit: GPa
+  modulusPercentile: 92.0
+  laserType: Pulsed Fiber Laser
+  wavelength: 1064nm
+  fluenceRange: 1.0–4.5 J/cm²
+  chemicalFormula: Na2O·CaO·6SiO2
+composition:
+- Silica (SiO2) 72-73%
+- Sodium Oxide (Na2O) 13-14%
+- Calcium Oxide (CaO) 8-9%
+- Magnesium Oxide (MgO) 3-4%
+- Aluminum Oxide (Al2O3) 1-2%
+machineSettings:
+  powerRange: 50-200W
+  powerRangeNumeric: 125.0
+  powerRangeUnit: W
+  powerRangeMin: 20W
+  powerRangeMinNumeric: 20.0
+  powerRangeMinUnit: W
+  powerRangeMax: 500W
+  powerRangeMaxNumeric: 500.0
+  powerRangeMaxUnit: W
+  pulseDuration: 20-100ns
+  pulseDurationNumeric: 60.0
+  pulseDurationUnit: ns
+  pulseDurationMin: 1ns
+  pulseDurationMinNumeric: 1.0
+  pulseDurationMinUnit: ns
+  pulseDurationMax: 1000ns
+  pulseDurationMaxNumeric: 1000.0
+  pulseDurationMaxUnit: ns
+  wavelength: 1064nm (primary), 532nm (optional)
+  wavelengthNumeric: 1064.0
+  wavelengthUnit: nm
+  wavelengthMin: 355nm
+  wavelengthMinNumeric: 355.0
+  wavelengthMinUnit: nm
+  wavelengthMax: 2940nm
+  wavelengthMaxNumeric: 2940.0
+  wavelengthMaxUnit: nm
+  spotSize: 0.2-1.5mm
+  spotSizeNumeric: 0.85
+  spotSizeUnit: mm
+  spotSizeMin: 0.01mm
+  spotSizeMinNumeric: 0.01
+  spotSizeMinUnit: mm
+  spotSizeMax: 10mm
+  spotSizeMaxNumeric: 10.0
+  spotSizeMaxUnit: mm
+  repetitionRate: 20-100kHz
+  repetitionRateNumeric: 60.0
+  repetitionRateUnit: kHz
+  repetitionRateMin: 1kHz
+  repetitionRateMinNumeric: 1.0
+  repetitionRateMinUnit: kHz
+  repetitionRateMax: 1000kHz
+  repetitionRateMaxNumeric: 1000.0
+  repetitionRateMaxUnit: kHz
+  fluenceRange: 1.0–4.5 J/cm²
+  fluenceRangeNumeric: 1.0
+  fluenceRangeUnit: J/cm²
+  fluenceRangeMin: 0.1J/cm²
+  fluenceRangeMinNumeric: 0.1
+  fluenceRangeMinUnit: J/cm²
+  fluenceRangeMax: 50J/cm²
+  fluenceRangeMaxNumeric: 50.0
+  fluenceRangeMaxUnit: J/cm²
+  scanningSpeed: 50-500mm/s
+  scanningSpeedNumeric: 275.0
+  scanningSpeedUnit: mm/s
+  scanningSpeedMin: 1mm/s
+  scanningSpeedMinNumeric: 1.0
+  scanningSpeedMinUnit: mm/s
+  scanningSpeedMax: 5000mm/s
+  scanningSpeedMaxNumeric: 5000.0
+  scanningSpeedMaxUnit: mm/s
+  beamProfile: Gaussian TEM00
+  beamProfileOptions:
+  - Gaussian TEM00
+  - Top-hat
+  - Donut
+  - Multi-mode
   safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.1-2.0mm
-  wavelength: 1064nm (primary), 355nm (optional)
-description: Technical overview of soda-lime float glass for laser cleaning applications,
-  including optimal wavelength interaction with surface contaminants, and industrial
-  applications in high-precision glass manufacturing.
+applications:
+- industry: Electronics Manufacturing
+  detail: Removal of surface oxides and contaminants from Float Glass substrates
+- industry: Aerospace Components
+  detail: Cleaning of thermal barrier coatings and glass matrix composites
+compatibility:
+- Stainless Steel
+- Titanium Alloys
+- Nickel-based Superalloys
+regulatoryStandards: ISO 18562, ASTM F2100, IEC 60601-1
 author: Yi-Chun Lin
 author_object:
-  country: Taiwan
-  expertise: Laser Materials Processing
   id: 1
-  image: /images/author/yi-chun-lin.jpg
   name: Yi-Chun Lin
   sex: f
   title: Ph.D.
-chemicalProperties:
-  formula: Na2O·CaO·6SiO2
-  materialType: soda-lime glass
-  symbol: FG
-composition:
-- Silica (SiO2) 70-75%
-- Sodium Oxide (Na2O) 12-16%
-- Calcium Oxide (CaO) 8-12%
-- Magnesium Oxide (MgO) 1-4%
-- Aluminum Oxide (Al2O3) 0-2%
-compatibility:
-- Soda-Lime Glass
-- Borosilicate Glass
-- Aluminosilicate Glass
-regulatoryStandards: ISO 12543, ASTM C1036, EN 572-1
+  country: Taiwan
+  expertise: Laser Materials Processing
+  image: /images/author/yi-chun-lin.jpg
 images:
   hero:
     alt: Float Glass surface undergoing laser cleaning showing precise contamination
@@ -51,84 +165,30 @@ images:
     alt: Microscopic view of Float Glass surface after laser cleaning showing detailed
       surface structure
     url: /images/float-glass-laser-cleaning-micro.jpg
-title: Laser Cleaning Float Glass
-headline: Comprehensive technical guide for laser cleaning soda-lime float glass
 environmentalImpact:
 - benefit: Chemical Solvent Elimination
-  description: Eliminates use of harsh chemical cleaners and solvents in glass processing
-- benefit: Water Conservation
-  description: Reduces water consumption by 90% compared to traditional aqueous cleaning
+  description: Reduces chemical usage by 100% compared to traditional solvent cleaning
     methods
+- benefit: Water Conservation
+  description: Saves approximately 5000 liters of water per month in industrial applications
 - benefit: Energy Efficiency
-  description: Consumes 60% less energy than thermal or ultrasonic cleaning processes
+  description: Consumes 40% less energy than thermal cleaning processes
 outcomes:
-- metric: Achieves particle counts below 100 particles/cm² >0.3μm
-  result: Surface Cleanliness Level
-- metric: Selective contaminant removal with <1μm substrate damage
-  result: Material Removal Precision
-- metric: 0.5-2.0 m²/hour cleaning rate depending on contamination level
-  result: Processing Speed
-keywords: float glass, soda-lime glass, laser ablation, laser cleaning, non-contact
-  cleaning, pulsed laser, surface contamination removal, glass manufacturing, display
-  glass, architectural glass
+- result: Surface Cleanliness Level
+  metric: Achieves ISO 14644-1 Class 7 cleanliness standard
+- result: Material Removal Precision
+  metric: ±5μm accuracy with no substrate damage
+- result: Processing Speed
+  metric: 2-5 m²/hour cleaning rate depending on contamination level
 prompt_chain_verification:
-  ai_detection_config_loaded: true
-  author_id: 1
   base_config_loaded: true
-  cultural_adaptation_applied: true
-  formatting_config_loaded: true
-  human_authenticity_focus: true
   persona_config_loaded: true
+  formatting_config_loaded: true
+  ai_detection_config_loaded: true
   persona_country: Taiwan
+  author_id: 1
+  verification_timestamp: '2025-09-19T05:18:14Z'
   prompt_components_integrated: 4
-  verification_timestamp: '2025-09-16T21:45:03Z'
-category: glass
-properties:
-  chemicalFormula: Na2O·CaO·6SiO2
-  density: 2.5 g/cm³
-  densityMax: 8.0 g/cm³
-  densityMin: 2.2 g/cm³
-  densityPercentile: 5.2
-  fluenceRange: 0.5–3.0 J/cm²
-  hardness: 5.5-6.5 Mohs
-  hardnessMax: 750 HV
-  hardnessMin: 450 HV
-  hardnessPercentile: 0.0
-  laserAbsorptionMax: 10 cm⁻¹
-  laserAbsorptionMin: 0.01 cm⁻¹
-  laserReflectivityMax: 15%
-  laserReflectivityMin: 4%
-  laserType: Pulsed Nd:YAG Laser
-  meltingMax: 1700°C
-  meltingMin: 573°C
-  meltingPercentile: 46.8
-  meltingPoint: 1000-1200°C
-  modulusMax: 90 GPa
-  modulusMin: 50 GPa
-  modulusPercentile: 62.5
-  specificHeatMax: 1.0 J/g·K
-  specificHeatMin: 0.7 J/g·K
-  tensileMax: 200 MPa
-  tensileMin: 30 MPa
-  tensilePercentile: 17.6
-  tensileStrength: 30-90 MPa
-  thermalConductivity: 1.0 W/m·K
-  thermalDiffusivityMax: 1.4 mm²/s
-  thermalDiffusivityMin: 0.4 mm²/s
-  thermalExpansionMax: 9 µm/m·K
-  thermalExpansionMin: 0.5 µm/m·K
-  thermalMax: 2.0 W/m·K
-  thermalMin: 0.5 W/m·K
-  thermalPercentile: 33.3
-  wavelength: 1064nm
-  youngsModulus: 70-80 GPa
+  human_authenticity_focus: true
+  cultural_adaptation_applied: true
 ---
-
-# Version Information
-# Generated: 2025-09-16T14:45:57.024655
-# Material: Float Glass
-# Component: frontmatter
-# Generator: Z-Beam v2.1.0
-# Author: AI Assistant
-# Platform: Darwin (3.12.4)
-# File: content/components/frontmatter/float-glass-laser-cleaning.md

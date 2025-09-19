@@ -1,45 +1,160 @@
 ---
 name: Stucco
-applications:
-- detail: Removal of dirt, soot, and biological growth from historical and modern
-    stucco facades
-  industry: Construction & Restoration
-- detail: Gentle cleaning of decorative stucco elements without abrasive damage
-  industry: Monument Preservation
-technicalSpecifications:
+category: masonry
+title: Laser Cleaning Stucco
+headline: Comprehensive technical guide for laser cleaning masonry stucco
+description: Technical overview of Stucco, CaSO4·2H2O, for laser cleaning applications,
+  including optimal 1064nm wavelength interaction, and industrial applications in
+  architectural restoration.
+keywords: stucco, stucco masonry, laser ablation, laser cleaning, non-contact cleaning,
+  pulsed fiber laser, surface contamination removal, architectural restoration, historical
+  preservation, surface cleaning
+chemicalProperties:
+  symbol: Stucco
+  formula: CaSO4·2H2O
+  materialType: masonry
+properties:
+  density: 1.2 g/cm³
+  densityNumeric: 1.2
+  densityUnit: g/cm³
+  densityMin: 0.8 g/cm³
+  densityMinNumeric: 0.8
+  densityMinUnit: g/cm³
+  densityMax: 1.8 g/cm³
+  densityMaxNumeric: 1.8
+  densityMaxUnit: g/cm³
+  densityPercentile: 45.0
+  meltingPoint: 1450°C
+  meltingPointNumeric: 1450.0
+  meltingPointUnit: °C
+  meltingPercentile: 62.5
+  thermalConductivity: 0.8 W/m·K
+  thermalConductivityNumeric: 0.8
+  thermalConductivityUnit: W/m·K
+  thermalPercentile: 42.9
+  tensileStrength: 2-4 MPa
+  tensileStrengthNumeric: 3.0
+  tensileStrengthUnit: MPa
+  tensilePercentile: 8.3
+  hardness: 2-3 Mohs
+  hardnessNumeric: 2.5
+  hardnessUnit: Mohs
+  hardnessMin: 1 Mohs
+  hardnessMinNumeric: 1.0
+  hardnessMinUnit: Mohs
+  hardnessMax: 4 Mohs
+  hardnessMaxNumeric: 4.0
+  hardnessMaxUnit: Mohs
+  hardnessPercentile: 50.0
+  youngsModulus: 15 GPa
+  youngsModulusNumeric: 15.0
+  youngsModulusUnit: GPa
+  modulusMin: 10 GPa
+  modulusMinNumeric: 10.0
+  modulusMinUnit: GPa
+  modulusMax: 25 GPa
+  modulusMaxNumeric: 25.0
+  modulusMaxUnit: GPa
+  modulusPercentile: 33.3
+  laserType: Pulsed Fiber Laser
+  wavelength: 1064nm
   fluenceRange: 0.5–2.0 J/cm²
-  powerRange: 10-100W
+  chemicalFormula: CaSO4·2H2O
+composition:
+- Calcium Sulfate Dihydrate (CaSO4·2H2O) 85-95%
+- Sand and aggregates 5-15%
+- Lime and other binders 0-5%
+machineSettings:
+  powerRange: 20-100W
+  powerRangeNumeric: 60.0
+  powerRangeUnit: W
+  powerRangeMin: 20W
+  powerRangeMinNumeric: 20.0
+  powerRangeMinUnit: W
+  powerRangeMax: 500W
+  powerRangeMaxNumeric: 500.0
+  powerRangeMaxUnit: W
   pulseDuration: 10-50ns
-  repetitionRate: 10-50kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.5-3.0mm
+  pulseDurationNumeric: 30.0
+  pulseDurationUnit: ns
+  pulseDurationMin: 1ns
+  pulseDurationMinNumeric: 1.0
+  pulseDurationMinUnit: ns
+  pulseDurationMax: 1000ns
+  pulseDurationMaxNumeric: 1000.0
+  pulseDurationMaxUnit: ns
   wavelength: 1064nm (primary), 532nm (optional)
-description: Technical overview of Stucco, a cementitious plaster material, for laser
-  cleaning applications, including optimal 1064nm wavelength interaction, and industrial
-  applications in building restoration.
+  wavelengthNumeric: 1064.0
+  wavelengthUnit: nm
+  wavelengthMin: 355nm
+  wavelengthMinNumeric: 355.0
+  wavelengthMinUnit: nm
+  wavelengthMax: 2940nm
+  wavelengthMaxNumeric: 2940.0
+  wavelengthMaxUnit: nm
+  spotSize: 0.3-2.0mm
+  spotSizeNumeric: 1.15
+  spotSizeUnit: mm
+  spotSizeMin: 0.01mm
+  spotSizeMinNumeric: 0.01
+  spotSizeMinUnit: mm
+  spotSizeMax: 10mm
+  spotSizeMaxNumeric: 10.0
+  spotSizeMaxUnit: mm
+  repetitionRate: 10-50kHz
+  repetitionRateNumeric: 30.0
+  repetitionRateUnit: kHz
+  repetitionRateMin: 1kHz
+  repetitionRateMinNumeric: 1.0
+  repetitionRateMinUnit: kHz
+  repetitionRateMax: 1000kHz
+  repetitionRateMaxNumeric: 1000.0
+  repetitionRateMaxUnit: kHz
+  fluenceRange: 0.5–2.0 J/cm²
+  fluenceRangeNumeric: 0.5
+  fluenceRangeUnit: J/cm²
+  fluenceRangeMin: 0.1J/cm²
+  fluenceRangeMinNumeric: 0.1
+  fluenceRangeMinUnit: J/cm²
+  fluenceRangeMax: 50J/cm²
+  fluenceRangeMaxNumeric: 50.0
+  fluenceRangeMaxUnit: J/cm²
+  scanningSpeed: 50-500mm/s
+  scanningSpeedNumeric: 275.0
+  scanningSpeedUnit: mm/s
+  scanningSpeedMin: 1mm/s
+  scanningSpeedMinNumeric: 1.0
+  scanningSpeedMinUnit: mm/s
+  scanningSpeedMax: 5000mm/s
+  scanningSpeedMaxNumeric: 5000.0
+  scanningSpeedMaxUnit: mm/s
+  beamProfile: Gaussian TEM00
+  beamProfileOptions:
+  - Gaussian TEM00
+  - Top-hat
+  - Donut
+  - Multi-mode
+  safetyClass: Class 4 (requires full enclosure)
+applications:
+- industry: Building Restoration
+  detail: Removal of dirt, grime, and biological growth from historical stucco facades
+- industry: Monument Conservation
+  detail: Gentle cleaning of decorative stucco elements without damaging underlying
+    material
+compatibility:
+- Traditional Masonry
+- Historical Building Materials
+- Architectural Surfaces
+regulatoryStandards: ASTM E2167, EN 15898, ISO 10332
 author: Yi-Chun Lin
 author_object:
-  country: Taiwan
-  expertise: Laser Materials Processing
   id: 1
-  image: /images/author/yi-chun-lin.jpg
   name: Yi-Chun Lin
   sex: f
   title: Ph.D.
-chemicalProperties:
-  formula: CaCO3/CaSO4·2H2O (composition varies)
-  materialType: cementitious plaster
-  symbol: Stucco
-composition:
-- Calcium carbonate (CaCO3) 40-70%
-- Calcium sulfate (CaSO4·2H2O) 20-40%
-- Sand and aggregates 10-30%
-- Hydrated lime (Ca(OH)2) 5-15%
-compatibility:
-- Traditional Lime Stucco
-- Portland Cement Stucco
-- Synthetic Stucco (EIFS)
-regulatoryStandards: ASTM C926, ASTM C1063, ICOMOS Guidelines
+  country: Taiwan
+  expertise: Laser Materials Processing
+  image: /images/author/yi-chun-lin.jpg
 images:
   hero:
     alt: Stucco surface undergoing laser cleaning showing precise contamination removal
@@ -48,84 +163,31 @@ images:
     alt: Microscopic view of Stucco surface after laser cleaning showing detailed
       surface structure
     url: /images/stucco-laser-cleaning-micro.jpg
-title: Laser Cleaning Stucco - Technical Guide for Architectural Restoration
-headline: Comprehensive technical guide for laser cleaning stucco surfaces in restoration
 environmentalImpact:
 - benefit: Chemical Solvent Elimination
-  description: Reduces chemical usage by 100% compared to traditional chemical cleaning
+  description: Reduces chemical usage by 100% compared to traditional solvent cleaning
     methods
 - benefit: Water Conservation
-  description: Eliminates water usage completely compared to pressure washing techniques
-- benefit: Waste Reduction
-  description: Produces no secondary waste streams from cleaning materials
+  description: Eliminates water usage completely compared to pressure washing methods
+- benefit: Minimal Waste Generation
+  description: Produces only dry particulate waste that can be easily collected and
+    disposed
 outcomes:
-- metric: Achieves visual cleanliness without surface erosion
-  result: Surface Cleanliness
-- metric: Preserves original surface texture and historical integrity
-  result: Material Preservation
-- metric: 0.5-2 m²/hour cleaning rate depending on contamination level
-  result: Processing Speed
-keywords: stucco, stucco cleaning, laser ablation, architectural restoration, non-contact
-  cleaning, pulsed fiber laser, surface contamination removal, historical preservation,
-  masonry cleaning
+- result: Surface Cleanliness Level
+  metric: Achieves visual cleanliness without surface erosion or damage
+- result: Material Removal Precision
+  metric: Selective removal of contaminants while preserving original stucco surface
+- result: Processing Speed
+  metric: 1-3 m²/hour cleaning rate depending on contamination level and surface complexity
 prompt_chain_verification:
-  ai_detection_config_loaded: true
-  author_id: 1
   base_config_loaded: true
-  cultural_adaptation_applied: true
-  formatting_config_loaded: true
-  human_authenticity_focus: true
   persona_config_loaded: true
+  formatting_config_loaded: true
+  ai_detection_config_loaded: true
   persona_country: Taiwan
+  author_id: 1
+  verification_timestamp: '2025-09-19T06:20:03Z'
   prompt_components_integrated: 4
-  verification_timestamp: '2025-09-16T21:55:30Z'
-category: masonry
-properties:
-  chemicalFormula: Variable (typically CaCO3/CaSO4·2H2O based)
-  density: 1.8-2.2 g/cm³
-  densityMax: 2.8 g/cm³
-  densityMin: 1.2 g/cm³
-  densityPercentile: 50.0
-  fluenceRange: 0.5–2.0 J/cm²
-  hardness: 2-4 Mohs
-  hardnessMax: 300 HV
-  hardnessMin: 20 HV
-  hardnessPercentile: 0.0
-  laserAbsorptionMax: 50 cm⁻¹
-  laserAbsorptionMin: 0.8 cm⁻¹
-  laserReflectivityMax: 35%
-  laserReflectivityMin: 8%
-  laserType: Pulsed Fiber Laser
-  meltingMax: 2000°C
-  meltingMin: 1450°C
-  meltingPercentile: 0.0
-  meltingPoint: Decomposes before melting
-  modulusMax: 50 GPa
-  modulusMin: 15 GPa
-  modulusPercentile: 7.1
-  specificHeatMax: 1.1 J/g·K
-  specificHeatMin: 0.8 J/g·K
-  tensileMax: 50 MPa
-  tensileMin: 1 MPa
-  tensilePercentile: 3.1
-  tensileStrength: 1-4 MPa
-  thermalConductivity: 0.7-1.1 W/m·K
-  thermalDiffusivityMax: 1.5 mm²/s
-  thermalDiffusivityMin: 0.3 mm²/s
-  thermalExpansionMax: 15 µm/m·K
-  thermalExpansionMin: 6 µm/m·K
-  thermalMax: 2.0 W/m·K
-  thermalMin: 0.1 W/m·K
-  thermalPercentile: 42.1
-  wavelength: 1064nm
-  youngsModulus: 10-25 GPa
+  human_authenticity_focus: true
+  cultural_adaptation_applied: true
 ---
-
-# Version Information
-# Generated: 2025-09-16T14:56:24.239188
-# Material: Stucco
-# Component: frontmatter
-# Generator: Z-Beam v2.1.0
-# Author: AI Assistant
-# Platform: Darwin (3.12.4)
-# File: content/components/frontmatter/stucco-laser-cleaning.md

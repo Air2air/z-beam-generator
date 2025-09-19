@@ -1,6 +1,20 @@
 # API Client Caching
 
-This document describes the API client caching system used in the Z-Beam Generator.
+T## Cache Management Commands (NOT IMPLEMENTED)
+
+⚠️ **IMPORTANT**: The following commands are documented but NOT IMPLEMENTED in run.py:
+
+- `--preload-cache` - NOT WORKING
+- `--cache-stats` - NOT WORKING  
+- `--clear-cache` - NOT WORKING
+
+**Working Alternative**: Use direct Python scripts for cache management:
+```bash
+# Check cache directly
+python3 -c "from api.persistent_cache import PersistentCache; cache = PersistentCache(); print(f'Cache entries: {len(cache._cache)}')"
+
+# Clear cache manually
+python3 -c "from api.persistent_cache import PersistentCache; cache = PersistentCache(); cache.clear()"bes the API client caching system used in the Z-Beam Generator.
 
 ## Overview
 
@@ -78,7 +92,7 @@ The caching system is implemented using several components:
 
 ## Cache Statistics
 
-Cache statistics can be viewed using the `--cache-stats` command. Key metrics include:
+Cache statistics can be viewed using direct Python commands:
 
 - **Hit rate**: Percentage of requests served from cache
 - **Cache hits**: Number of times a client was retrieved from cache
@@ -99,7 +113,7 @@ For optimal performance:
 
 If you encounter issues with the cache:
 
-1. Try clearing the cache with `--clear-cache`
+1. Try clearing the cache with direct Python commands
 2. Check detailed cache information with `--cache-info`
 3. Temporarily disable persistence with `--no-persistent-cache`
 4. Ensure your temporary directory has proper permissions

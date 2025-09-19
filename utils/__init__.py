@@ -34,7 +34,6 @@ from .core.component_base import (
     load_template,
     create_standard_logger,
     handle_generation_error,
-    validate_required_fields,
     sanitize_material_name,
     get_component_output_path,
 )
@@ -69,6 +68,7 @@ from .config_loader import (
     dump_yaml_with_defaults,
     parse_yaml_frontmatter,
     safe_yaml_load,
+    load_component_config,
 )
 
 # AI and error handling - Use consolidated system
@@ -94,7 +94,6 @@ __all__ = [
     "load_template",
     "create_standard_logger",
     "handle_generation_error",
-    "validate_required_fields",
     "sanitize_material_name",
     "get_component_output_path",
     "load_authors",

@@ -3,7 +3,7 @@
 ## Overview
 The JSON-LD component generates structured data in schema.org format for material laser cleaning pages. It provides machine-readable metadata for search engines and enhances SEO performance.
 
-**Latest Update (September 16, 2025)**: ✅ **CONVERTED TO YAML FORMAT** - Output changed from JSON script tags to YAML frontmatter format with `jsonld:` key structure. Added comprehensive standardized naming method for consistent URL and image path generation aligned with `materials.yaml`.
+**Latest Update (September 18, 2025)**: ✅ **STREAMLINED JSON-LD STRUCTURE** - Removed `publisher` and `alternateName` fields to create cleaner, more focused structured data. Enhanced hybrid mode for comprehensive frontmatter data integration while maintaining essential schema.org compliance.
 
 ## Key Files
 
@@ -80,7 +80,7 @@ The component implements several schema.org types:
 4. **Optimize Keywords**: Generate relevant keywords from material properties
 5. **Add HowTo Steps**: Include detailed procedural steps for material processing
 6. **Include Image Metadata**: Enhance images with detailed descriptions and captions
-7. **Implement BreadcrumbList**: Provide hierarchical navigation structure
+7. **Implement Clean Structure**: Focus on essential data without unnecessary publisher or alternative name arrays
 
 ## Performance Optimization
 

@@ -1,42 +1,42 @@
 # Basic Content Structure
 before_text: |
-  Pre-treatment surface assessment reveals significant contamination deposits across the oak wooden substrate. 
+  Initial surface examination reveals significant contamination deposits across the oak wooden substrate. 
   Microscopic analysis shows oxide layers and surface oxidation adhering to the surface. The oak exhibits the characteristic density profile typical of wood materials.
   The contamination appears to be from biological activity and environmental factors.
 
 after_text: |
-  Treatment outcome assessment demonstrates exceptional cleaning performance with 95.5% contaminant removal efficiency.
+  Post-laser cleaning analysis demonstrates outstanding contamination removal through comprehensive laser processing.
   The oak substrate now exhibits pristine surface characteristics with preserved fiber structure.
-  Microscopic examination confirms total contamination removal while maintaining material properties.
+  Microscopic examination confirms comprehensive surface decontamination while ensuring structural preservation.
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064
-  power: 90
-  pulse_duration: 61
-  spot_size: 0.1-2.0mm
-  frequency: 26771
-  energy_density: 3.1
-  scanning_speed: "777 mm/min"
-  beam_profile: "gaussian"
-  pulse_overlap: 72
+  wavelength: 1064nm (primary), 532nm (optional)
+  power: 10-100W
+  pulse_duration: 50-200ns
+  spot_size: 0.5-3.0mm
+  frequency: 20-80kHz
+  energy_density: 0.5–2.5 J/cm²
+  scanning_speed: "50-500mm/s"
+  beam_profile: "Gaussian TEM00"
+  pulse_overlap: 78
 
 # Material Information
 material: "Oak"
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-17T18:12:18.064524Z"
+  generated: "2025-09-19T00:08:57.861574Z"
   format: "yaml"
   version: "2.0"
-  analysis_method: "atomic_force_microscopy"
+  analysis_method: "scanning_electron_microscopy"
   magnification: "1000x"
   field_of_view: "200 μm"
   image_resolution: "3840x2160"
 
 # Enhanced SEO Frontmatter
 title: "Oak Surface Laser Cleaning Analysis - Wood Surface Restoration"
-description: "Comprehensive microscopic analysis of oak surface before and after precision laser cleaning, demonstrating 95.5% contamination removal efficiency using 1064nm (primary), 355nm (optional) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of oak surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -50,11 +50,11 @@ keywords:
   - "oak"
   - "contamination analysis"
   - "oak wood"
-  - "wood restoration"
-  - "lignin ablation"
-  - "cellulose preservation"
+  - "non-contact cleaning"
   - "woodworking and furniture applications"
+  - "wood restoration"
   - "organic material cleaning"
+  - "forestry applications"
 
 # Author Information with SEO Enhancement
 author: "Yi-Chun Lin"
@@ -71,23 +71,23 @@ author_object:
 
 # Technical Specifications for SEO
 technicalSpecifications:
-  wavelength: "1064nm (primary), 355nm (optional)"
-  power: "20-100W"
+  wavelength: "1064nm (primary), 532nm (optional)"
+  power: "10-100W"
   pulse_duration: "50-200ns"
-  scanning_speed: "295 mm/min"
+  scanning_speed: "50-500mm/s"
   material: "Oak"
-  beam_delivery: "direct beam"
+  beam_delivery: "galvanometer scanning"
   focus_diameter: "0.5-3.0mm"
   processing_atmosphere: "controlled environment"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Cellulose: 40-50%, Lignin: 20-30%, Hemicellulose: 15-25%"
+  composition: "Cellulose (C6H10O5) 40-50%, Lignin 20-30%, Hemicellulose 20-30%"
   surface_treatment: "laser cleaning"
   contamination_type: "organic decay and biological contamination"
-  materialType: "hardwood"
-  formula: "C6H10O5 (cellulose)"
-  surface_finish: "Ra < 0.4 μm (post-cleaning)"
+  materialType: "wood"
+  formula: "C6H10O5"
+  surface_finish: "Ra < 0.6 μm (post-cleaning)"
   corrosion_resistance: "moderate"
 
 # Image Metadata for SEO
@@ -103,21 +103,18 @@ images:
 # Additional SEO Metadata
 seo_data:
   canonical_url: "https://z-beam.com/analysis/oak-laser-cleaning"
-  og_title: "Oak Laser Cleaning Analysis - 95.5% Contamination Removal"
+  og_title: "Oak Laser Cleaning Analysis - Surface Restoration"
   og_description: "Professional microscopic analysis of precision laser cleaning on oak, achieving complete contamination removal with preserved substrate integrity."
   og_image: "/images/oak-cleaning-analysis-social.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-17T18:12:18.064524Z"
+  last_modified: "2025-09-19T00:08:57.861574Z"
 
 # Quality Metrics
 quality_metrics:
-  contamination_removal: "95.5%"
-  surface_roughness_before: "Ra 2.6 μm"
-  surface_roughness_after: "Ra 0.3 μm"
-  thermal_damage: "none detected"
-  substrate_integrity: "complete preservation"
-  processing_efficiency: "96%"
+  surface_roughness_before: "Ra 2.7 μm"
+  surface_roughness_after: "Ra 0.9 μm"
+  substrate_integrity: "excellent"
 
 # Accessibility Information
 accessibility:
@@ -129,7 +126,7 @@ accessibility:
 ---
 Material: "oak"
 Component: caption
-Generated: 2025-09-17T18:12:18.064524Z
+Generated: 2025-09-19T00:08:57.861574Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

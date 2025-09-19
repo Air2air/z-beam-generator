@@ -1,43 +1,159 @@
 ---
 name: Urethane Composites
-applications:
-- detail: Removal of surface oxides and contaminants from Urethane Composites substrates
-  industry: Electronics Manufacturing
-- detail: Cleaning of thermal barrier coatings and composite matrix composites
-  industry: Aerospace Components
-technicalSpecifications:
-  fluenceRange: 1.0–4.5 J/cm²
-  powerRange: 50-200W
-  pulseDuration: 20-100ns
-  repetitionRate: 20-100kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.2-1.5mm
-  wavelength: 1064nm (primary), 532nm (optional)
+category: composite
+title: Laser Cleaning Urethane Composites
+headline: Comprehensive technical guide for laser cleaning composite urethane composites
 description: Technical overview of Urethane Composites, Urethane-Fiber, for laser
   cleaning applications, including optimal 1064nm wavelength interaction, and industrial
   applications in surface preparation.
+keywords: urethane composites, urethane composites composite, laser ablation, laser
+  cleaning, non-contact cleaning, pulsed fiber laser, surface contamination removal,
+  industrial laser parameters, thermal processing, surface restoration
+chemicalProperties:
+  symbol: UC
+  formula: Urethane-Fiber
+  materialType: composite
+properties:
+  density: 1.1-1.3 g/cm³
+  densityNumeric: 1.2000000000000002
+  densityUnit: g/cm³
+  densityMin: 0.8 g/cm³
+  densityMinNumeric: 0.8
+  densityMinUnit: g/cm³
+  densityMax: 1.5 g/cm³
+  densityMaxNumeric: 1.5
+  densityMaxUnit: g/cm³
+  densityPercentile: 45.8
+  meltingPoint: 180-220°C
+  meltingPointNumeric: 200.0
+  meltingPointUnit: °C
+  meltingPercentile: 32.1
+  thermalConductivity: 0.2-0.3 W/m·K
+  thermalConductivityNumeric: 0.25
+  thermalConductivityUnit: W/m·K
+  thermalPercentile: 68.4
+  tensileStrength: 30-70 MPa
+  tensileStrengthNumeric: 50.0
+  tensileStrengthUnit: MPa
+  tensilePercentile: 41.7
+  hardness: 80-95 Shore A
+  hardnessNumeric: 87.5
+  hardnessUnit: Shore
+  hardnessMin: 70 Shore A
+  hardnessMinNumeric: 70.0
+  hardnessMinUnit: Shore
+  hardnessMax: 100 Shore A
+  hardnessMaxNumeric: 100.0
+  hardnessMaxUnit: Shore
+  hardnessPercentile: 62.3
+  youngsModulus: 0.5-1.5 GPa
+  youngsModulusNumeric: 1.0
+  youngsModulusUnit: GPa
+  modulusMin: 0.3 GPa
+  modulusMinNumeric: 0.3
+  modulusMinUnit: GPa
+  modulusMax: 2.0 GPa
+  modulusMaxNumeric: 2.0
+  modulusMaxUnit: GPa
+  modulusPercentile: 38.9
+  laserType: Pulsed Fiber Laser
+  wavelength: 1064nm
+  fluenceRange: 1.0–4.5 J/cm²
+  chemicalFormula: Urethane-Fiber
+composition:
+- Polyurethane Matrix 60-70%
+- Glass/Carbon Fiber Reinforcement 30-40%
+- Additives and Fillers 2-5%
+machineSettings:
+  powerRange: 50-200W
+  powerRangeNumeric: 125.0
+  powerRangeUnit: W
+  powerRangeMin: 20W
+  powerRangeMinNumeric: 20.0
+  powerRangeMinUnit: W
+  powerRangeMax: 500W
+  powerRangeMaxNumeric: 500.0
+  powerRangeMaxUnit: W
+  pulseDuration: 20-100ns
+  pulseDurationNumeric: 60.0
+  pulseDurationUnit: ns
+  pulseDurationMin: 1ns
+  pulseDurationMinNumeric: 1.0
+  pulseDurationMinUnit: ns
+  pulseDurationMax: 1000ns
+  pulseDurationMaxNumeric: 1000.0
+  pulseDurationMaxUnit: ns
+  wavelength: 1064nm (primary), 532nm (optional)
+  wavelengthNumeric: 1064.0
+  wavelengthUnit: nm
+  wavelengthMin: 355nm
+  wavelengthMinNumeric: 355.0
+  wavelengthMinUnit: nm
+  wavelengthMax: 2940nm
+  wavelengthMaxNumeric: 2940.0
+  wavelengthMaxUnit: nm
+  spotSize: 0.2-1.5mm
+  spotSizeNumeric: 0.85
+  spotSizeUnit: mm
+  spotSizeMin: 0.01mm
+  spotSizeMinNumeric: 0.01
+  spotSizeMinUnit: mm
+  spotSizeMax: 10mm
+  spotSizeMaxNumeric: 10.0
+  spotSizeMaxUnit: mm
+  repetitionRate: 20-100kHz
+  repetitionRateNumeric: 60.0
+  repetitionRateUnit: kHz
+  repetitionRateMin: 1kHz
+  repetitionRateMinNumeric: 1.0
+  repetitionRateMinUnit: kHz
+  repetitionRateMax: 1000kHz
+  repetitionRateMaxNumeric: 1000.0
+  repetitionRateMaxUnit: kHz
+  fluenceRange: 1.0–4.5 J/cm²
+  fluenceRangeNumeric: 1.0
+  fluenceRangeUnit: J/cm²
+  fluenceRangeMin: 0.1J/cm²
+  fluenceRangeMinNumeric: 0.1
+  fluenceRangeMinUnit: J/cm²
+  fluenceRangeMax: 50J/cm²
+  fluenceRangeMaxNumeric: 50.0
+  fluenceRangeMaxUnit: J/cm²
+  scanningSpeed: 50-500mm/s
+  scanningSpeedNumeric: 275.0
+  scanningSpeedUnit: mm/s
+  scanningSpeedMin: 1mm/s
+  scanningSpeedMinNumeric: 1.0
+  scanningSpeedMinUnit: mm/s
+  scanningSpeedMax: 5000mm/s
+  scanningSpeedMaxNumeric: 5000.0
+  scanningSpeedMaxUnit: mm/s
+  beamProfile: Gaussian TEM00
+  beamProfileOptions:
+  - Gaussian TEM00
+  - Top-hat
+  - Donut
+  - Multi-mode
+  safetyClass: Class 4 (requires full enclosure)
+applications:
+- industry: Electronics Manufacturing
+  detail: Removal of surface oxides and contaminants from Urethane Composites substrates
+- industry: Aerospace Components
+  detail: Cleaning of thermal barrier coatings and composite matrix composites
+compatibility:
+- Epoxy Resins
+- Polycarbonate
+- ABS Plastics
+regulatoryStandards: ISO 10993, ASTM D638, UL 94
 author: Ikmanda Roswati
 author_object:
-  country: Indonesia
-  expertise: Ultrafast Laser Physics and Material Interactions
   id: 3
-  image: /images/author/ikmanda-roswati.jpg
   name: Ikmanda Roswati
   sex: m
   title: Ph.D.
-chemicalProperties:
-  formula: Urethane-Fiber
-  materialType: composite
-  symbol: UC
-composition:
-- Polyurethane Matrix 60-80%
-- Reinforcing Fibers (Glass/Carbon) 20-40%
-- Additives and Fillers 1-5%
-compatibility:
-- Epoxy Composites
-- Thermoplastics
-- Aluminum Alloys
-regulatoryStandards: ISO 9001, ASTM D4066, UL 94
+  country: Indonesia
+  expertise: Ultrafast Laser Physics and Material Interactions
+  image: /images/author/ikmanda-roswati.jpg
 images:
   hero:
     alt: Urethane Composites surface undergoing laser cleaning showing precise contamination
@@ -47,8 +163,6 @@ images:
     alt: Microscopic view of Urethane Composites surface after laser cleaning showing
       detailed surface structure
     url: /images/urethane-composites-laser-cleaning-micro.jpg
-title: Laser Cleaning Urethane Composites
-headline: Comprehensive technical guide for laser cleaning composite urethane composites
 environmentalImpact:
 - benefit: Chemical Solvent Elimination
   description: Reduces chemical usage by 100% compared to traditional solvent cleaning
@@ -58,73 +172,21 @@ environmentalImpact:
 - benefit: Energy Efficiency
   description: Consumes 40% less energy than thermal cleaning processes
 outcomes:
-- metric: Achieves ISO 14644-1 Class 7 cleanliness standard
-  result: Surface Cleanliness Level
-- metric: ±5μm accuracy with no substrate damage
-  result: Material Removal Precision
-- metric: 2-5 m²/hour cleaning rate depending on contamination level
-  result: Processing Speed
-keywords: urethane composites, urethane composites composite, laser ablation, laser
-  cleaning, non-contact cleaning, pulsed fiber laser, surface contamination removal,
-  industrial laser parameters, thermal processing, surface restoration
+- result: Surface Cleanliness Level
+  metric: Achieves ISO 14644-1 Class 7 cleanliness standard
+- result: Material Removal Precision
+  metric: ±5μm accuracy with no substrate damage
+- result: Processing Speed
+  metric: 2-5 m²/hour cleaning rate depending on contamination level
 prompt_chain_verification:
-  ai_detection_config_loaded: true
-  author_id: 3
   base_config_loaded: true
-  cultural_adaptation_applied: true
-  formatting_config_loaded: true
-  human_authenticity_focus: true
   persona_config_loaded: true
+  formatting_config_loaded: true
+  ai_detection_config_loaded: true
   persona_country: Indonesia
+  author_id: 3
+  verification_timestamp: '2025-09-19T06:28:19Z'
   prompt_components_integrated: 4
-  verification_timestamp: '2025-09-16T21:39:48Z'
-category: composite
-properties:
-  chemicalFormula: Urethane-Fiber
-  density: 1.1-1.3 g/cm³
-  densityMax: 2.2 g/cm³
-  densityMin: 0.9 g/cm³
-  densityPercentile: 23.1
-  fluenceRange: 1.0–4.5 J/cm²
-  hardness: 80-95 Shore A
-  hardnessMax: 80 HRC
-  hardnessMin: 10 HB
-  hardnessPercentile: 100.0
-  laserAbsorptionMax: 80 cm⁻¹
-  laserAbsorptionMin: 1 cm⁻¹
-  laserReflectivityMax: 15%
-  laserReflectivityMin: 3%
-  laserType: Pulsed Fiber Laser
-  meltingMax: 400°C
-  meltingMin: 150°C
-  meltingPercentile: 20.0
-  meltingPoint: 180-220°C
-  modulusMax: 300 GPa
-  modulusMin: 1 GPa
-  modulusPercentile: 0.0
-  specificHeatMax: 2.0 J/g·K
-  specificHeatMin: 0.8 J/g·K
-  tensileMax: 7000 MPa
-  tensileMin: 100 MPa
-  tensilePercentile: 0.0
-  tensileStrength: 30-70 MPa
-  thermalConductivity: 0.2-0.3 W/m·K
-  thermalDiffusivityMax: 20 mm²/s
-  thermalDiffusivityMin: 0.1 mm²/s
-  thermalExpansionMax: 60 µm/m·K
-  thermalExpansionMin: 1 µm/m·K
-  thermalMax: 60 W/m·K
-  thermalMin: 0.1 W/m·K
-  thermalPercentile: 0.3
-  wavelength: 1064nm
-  youngsModulus: 0.01-0.1 GPa
+  human_authenticity_focus: true
+  cultural_adaptation_applied: true
 ---
-
-# Version Information
-# Generated: 2025-09-16T14:40:41.351276
-# Material: Urethane Composites
-# Component: frontmatter
-# Generator: Z-Beam v2.1.0
-# Author: AI Assistant
-# Platform: Darwin (3.12.4)
-# File: content/components/frontmatter/urethane-composites-laser-cleaning.md

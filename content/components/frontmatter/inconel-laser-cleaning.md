@@ -1,48 +1,161 @@
 ---
 name: Inconel
-applications:
-- detail: Cleaning of turbine blades, engine components, and exhaust systems
-  industry: Aerospace
-- detail: Removal of salt deposits, corrosion, and biofouling from seawater-exposed
-    components
-  industry: Marine Engineering
-- detail: Decoating and surface preparation of reactors, valves, and piping systems
-  industry: Chemical Processing
-technicalSpecifications:
-  fluenceRange: 0.5–8.0 J/cm²
-  powerRange: 100-500W
-  pulseDuration: 10-200ns
-  repetitionRate: 20-300kHz
-  safetyClass: Class 4 (requires full enclosure and fume extraction)
-  spotSize: 0.05-2.0mm
-  wavelength: 1064nm (primary), 355nm (optional for precision cleaning)
-description: Technical overview of Inconel alloys (primarily Ni-Cr based) for laser
-  cleaning applications, focusing on oxide layer removal, surface restoration, and
-  preparation for welding or coating without substrate damage.
-author: Ikmanda Roswati
-author_object:
-  country: Indonesia
-  expertise: Ultrafast Laser Physics and Material Interactions
-  id: 3
-  image: /images/author/ikmanda-roswati.jpg
-  name: Ikmanda Roswati
-  sex: m
-  title: Ph.D.
+category: metal
+title: Laser Cleaning Inconel
+headline: Comprehensive technical guide for laser cleaning metal inconel
+description: Technical overview of Inconel, Ni-Cr-Fe, for laser cleaning applications,
+  including optimal 1064nm wavelength interaction, and industrial applications in
+  surface preparation.
+keywords: inconel, inconel metal, laser ablation, laser cleaning, non-contact cleaning,
+  pulsed fiber laser, surface contamination removal, industrial laser parameters,
+  thermal processing, surface restoration
 chemicalProperties:
-  formula: Ni-Cr (with Fe, Mo, Nb additions)
-  materialType: nickel-based superalloy
   symbol: Inconel
+  formula: Ni-Cr-Fe
+  materialType: metal
+properties:
+  density: 8.44 g/cm³
+  densityNumeric: 8.44
+  densityUnit: g/cm³
+  densityMin: 1.8 g/cm³
+  densityMinNumeric: 1.8
+  densityMinUnit: g/cm³
+  densityMax: 6.0 g/cm³
+  densityMaxNumeric: 6.0
+  densityMaxUnit: g/cm³
+  densityPercentile: 51.2
+  meltingPoint: 1370-1530°C
+  meltingPointNumeric: 1450.0
+  meltingPointUnit: °C
+  meltingPercentile: 54.5
+  thermalConductivity: 11.2 W/m·K
+  thermalConductivityNumeric: 11.2
+  thermalConductivityUnit: W/m·K
+  thermalPercentile: 14.8
+  tensileStrength: 400-600 MPa
+  tensileStrengthNumeric: 500.0
+  tensileStrengthUnit: MPa
+  tensilePercentile: 26.3
+  hardness: 150-250 HB
+  hardnessNumeric: 200.0
+  hardnessUnit: HB
+  hardnessMin: 500 HV
+  hardnessMinNumeric: 500.0
+  hardnessMinUnit: HV
+  hardnessMax: 2500 HV
+  hardnessMaxNumeric: 2500.0
+  hardnessMaxUnit: HV
+  hardnessPercentile: 0.0
+  youngsModulus: 200 GPa
+  youngsModulusNumeric: 200.0
+  youngsModulusUnit: GPa
+  modulusMin: 150 GPa
+  modulusMinNumeric: 150.0
+  modulusMinUnit: GPa
+  modulusMax: 400 GPa
+  modulusMaxNumeric: 400.0
+  modulusMaxUnit: GPa
+  modulusPercentile: 92.0
+  laserType: Pulsed Fiber Laser
+  wavelength: 1064nm
+  fluenceRange: 1.0–4.5 J/cm²
+  chemicalFormula: Ni-Cr-Fe
 composition:
-- 'Nickel (Ni): 58.0% min'
-- 'Chromium (Cr): 20.0-23.0%'
-- 'Iron (Fe): 5.0% max'
-- 'Molybdenum (Mo): 8.0-10.0%'
-- 'Niobium (Nb): 3.15-4.15%'
+- Nickel (Ni) 58.0%
+- Chromium (Cr) 22.0%
+- Iron (Fe) 18.0%
+- Molybdenum (Mo) 1.5%
+- Trace elements (Si, Mn, Cu, Al, Ti)
+machineSettings:
+  powerRange: 50-200W
+  powerRangeNumeric: 125.0
+  powerRangeUnit: W
+  powerRangeMin: 20W
+  powerRangeMinNumeric: 20.0
+  powerRangeMinUnit: W
+  powerRangeMax: 500W
+  powerRangeMaxNumeric: 500.0
+  powerRangeMaxUnit: W
+  pulseDuration: 20-100ns
+  pulseDurationNumeric: 60.0
+  pulseDurationUnit: ns
+  pulseDurationMin: 1ns
+  pulseDurationMinNumeric: 1.0
+  pulseDurationMinUnit: ns
+  pulseDurationMax: 1000ns
+  pulseDurationMaxNumeric: 1000.0
+  pulseDurationMaxUnit: ns
+  wavelength: 1064nm (primary), 532nm (optional)
+  wavelengthNumeric: 1064.0
+  wavelengthUnit: nm
+  wavelengthMin: 355nm
+  wavelengthMinNumeric: 355.0
+  wavelengthMinUnit: nm
+  wavelengthMax: 2940nm
+  wavelengthMaxNumeric: 2940.0
+  wavelengthMaxUnit: nm
+  spotSize: 0.2-1.5mm
+  spotSizeNumeric: 0.85
+  spotSizeUnit: mm
+  spotSizeMin: 0.01mm
+  spotSizeMinNumeric: 0.01
+  spotSizeMinUnit: mm
+  spotSizeMax: 10mm
+  spotSizeMaxNumeric: 10.0
+  spotSizeMaxUnit: mm
+  repetitionRate: 20-100kHz
+  repetitionRateNumeric: 60.0
+  repetitionRateUnit: kHz
+  repetitionRateMin: 1kHz
+  repetitionRateMinNumeric: 1.0
+  repetitionRateMinUnit: kHz
+  repetitionRateMax: 1000kHz
+  repetitionRateMaxNumeric: 1000.0
+  repetitionRateMaxUnit: kHz
+  fluenceRange: 1.0–4.5 J/cm²
+  fluenceRangeNumeric: 1.0
+  fluenceRangeUnit: J/cm²
+  fluenceRangeMin: 0.1J/cm²
+  fluenceRangeMinNumeric: 0.1
+  fluenceRangeMinUnit: J/cm²
+  fluenceRangeMax: 50J/cm²
+  fluenceRangeMaxNumeric: 50.0
+  fluenceRangeMaxUnit: J/cm²
+  scanningSpeed: 50-500mm/s
+  scanningSpeedNumeric: 275.0
+  scanningSpeedUnit: mm/s
+  scanningSpeedMin: 1mm/s
+  scanningSpeedMinNumeric: 1.0
+  scanningSpeedMinUnit: mm/s
+  scanningSpeedMax: 5000mm/s
+  scanningSpeedMaxNumeric: 5000.0
+  scanningSpeedMaxUnit: mm/s
+  beamProfile: Gaussian TEM00
+  beamProfileOptions:
+  - Gaussian TEM00
+  - Top-hat
+  - Donut
+  - Multi-mode
+  safetyClass: Class 4 (requires full enclosure)
+applications:
+- industry: Electronics Manufacturing
+  detail: Removal of surface oxides and contaminants from Inconel substrates
+- industry: Aerospace Components
+  detail: Cleaning of thermal barrier coatings and metal matrix composites
 compatibility:
 - Stainless Steel
 - Titanium Alloys
-- Cobalt-based Superalloys
-regulatoryStandards: AMS 5666, ASTM B637, ASME SB637, NADCAP AC7114
+- Nickel-based Superalloys
+regulatoryStandards: ISO 18562, ASTM F2100, IEC 60601-1
+author: Ikmanda Roswati
+author_object:
+  id: 3
+  name: Ikmanda Roswati
+  sex: m
+  title: Ph.D.
+  country: Indonesia
+  expertise: Ultrafast Laser Physics and Material Interactions
+  image: /images/author/ikmanda-roswati.jpg
 images:
   hero:
     alt: Inconel surface undergoing laser cleaning showing precise contamination removal
@@ -51,84 +164,30 @@ images:
     alt: Microscopic view of Inconel surface after laser cleaning showing detailed
       surface structure
     url: /images/inconel-laser-cleaning-micro.jpg
-title: Laser Cleaning Inconel Alloys - Technical Guide for Aerospace and Marine Applications
-headline: Advanced laser cleaning techniques for Inconel superalloys in extreme environments
 environmentalImpact:
 - benefit: Chemical Solvent Elimination
-  description: Eliminates use of hazardous chemicals like nitric-hydrofluoric acid
-    mixtures for descaling
-- benefit: Water Conservation
-  description: Reduces water consumption by 95% compared to traditional abrasive blasting
+  description: Reduces chemical usage by 100% compared to traditional solvent cleaning
     methods
-- benefit: Waste Reduction
-  description: Produces 99% less waste compared to chemical etching processes
+- benefit: Water Conservation
+  description: Saves approximately 5000 liters of water per month in industrial applications
+- benefit: Energy Efficiency
+  description: Consumes 40% less energy than thermal cleaning processes
 outcomes:
-- metric: Achieves < 10 μg/cm² contaminant levels per ASTM B912
-  result: Surface Cleanliness
-- metric: < 5μm surface alteration depth with no intergranular attack
-  result: Material Preservation
-- metric: 1-3 m²/hour cleaning rate for heavy oxide layers
-  result: Processing Efficiency
-keywords: inconel, nickel-chromium alloy, laser ablation, oxide removal, surface preparation,
-  non-destructive cleaning, aerospace alloys, high-temperature corrosion resistance
+- result: Surface Cleanliness Level
+  metric: Achieves ISO 14644-1 Class 7 cleanliness standard
+- result: Material Removal Precision
+  metric: ±5μm accuracy with no substrate damage
+- result: Processing Speed
+  metric: 2-5 m²/hour cleaning rate depending on contamination level
 prompt_chain_verification:
-  ai_detection_config_loaded: true
-  author_id: 3
   base_config_loaded: true
-  cultural_adaptation_applied: true
-  formatting_config_loaded: true
-  human_authenticity_focus: true
   persona_config_loaded: true
+  formatting_config_loaded: true
+  ai_detection_config_loaded: true
   persona_country: Indonesia
+  author_id: 3
+  verification_timestamp: '2025-09-19T05:27:22Z'
   prompt_components_integrated: 4
-  verification_timestamp: '2025-09-16T22:07:57Z'
-category: superalloy
-properties:
-  chemicalFormula: Ni-Cr-Fe (with Mo, Nb)
-  density: 8.19-8.59 g/cm³
-  densityMax: 22.6 g/cm³
-  densityMin: 0.5 g/cm³
-  densityPercentile: 35.7
-  fluenceRange: 0.5–8.0 J/cm²
-  hardness: 200-350 HB
-  hardnessMax: 500 HV
-  hardnessMin: 5 HB
-  hardnessPercentile: 54.5
-  laserAbsorptionMax: 100 cm⁻¹
-  laserAbsorptionMin: 0.02 cm⁻¹
-  laserReflectivityMax: 98%
-  laserReflectivityMin: 5%
-  laserType: Pulsed Fiber Laser
-  meltingMax: 3422°C
-  meltingMin: -39°C
-  meltingPercentile: 40.5
-  meltingPoint: 1390-1425°C
-  modulusMax: 411 GPa
-  modulusMin: 70 GPa
-  modulusPercentile: 41.1
-  specificHeatMax: 0.90 J/g·K
-  specificHeatMin: 0.13 J/g·K
-  tensileMax: 2000 MPa
-  tensileMin: 70 MPa
-  tensilePercentile: 41.7
-  tensileStrength: 550-1200 MPa
-  thermalConductivity: 11.2-14.8 W/m·K
-  thermalDiffusivityMax: 174 mm²/s
-  thermalDiffusivityMin: 4 mm²/s
-  thermalExpansionMax: 29 µm/m·K
-  thermalExpansionMin: 0.5 µm/m·K
-  thermalMax: 429 W/m·K
-  thermalMin: 8 W/m·K
-  thermalPercentile: 1.2
-  wavelength: 1064nm
-  youngsModulus: 205-215 GPa
+  human_authenticity_focus: true
+  cultural_adaptation_applied: true
 ---
-
-# Version Information
-# Generated: 2025-09-16T15:08:54.912102
-# Material: Inconel
-# Component: frontmatter
-# Generator: Z-Beam v2.1.0
-# Author: AI Assistant
-# Platform: Darwin (3.12.4)
-# File: content/components/frontmatter/inconel-laser-cleaning.md

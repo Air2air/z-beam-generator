@@ -1,41 +1,157 @@
 ---
 name: Gold
-applications:
-- detail: Removal of tarnish and surface contaminants from gold jewelry and artifacts
-  industry: Jewelry Manufacturing
-- detail: Cleaning of gold contacts and connectors without damaging the substrate
-  industry: Electronics
-technicalSpecifications:
-  fluenceRange: 0.5–2.0 J/cm²
-  powerRange: 10-100W
-  pulseDuration: 10-50ns
-  repetitionRate: 20-200kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.1-0.8mm
-  wavelength: 1064nm (primary), 532nm (optional)
+category: metal
+title: Laser Cleaning Gold
+headline: Comprehensive technical guide for laser cleaning metal gold
 description: Technical overview of Gold, Au, for laser cleaning applications, including
   optimal 1064nm wavelength interaction, and industrial applications in surface preparation.
+keywords: gold, gold metal, laser ablation, laser cleaning, non-contact cleaning,
+  pulsed fiber laser, surface contamination removal, industrial laser parameters,
+  thermal processing, surface restoration
+chemicalProperties:
+  symbol: Au
+  formula: Au
+  materialType: metal
+properties:
+  density: 19.32 g/cm³
+  densityNumeric: 19.32
+  densityUnit: g/cm³
+  densityMin: 1.8 g/cm³
+  densityMinNumeric: 1.8
+  densityMinUnit: g/cm³
+  densityMax: 6.0 g/cm³
+  densityMaxNumeric: 6.0
+  densityMaxUnit: g/cm³
+  densityPercentile: 51.2
+  meltingPoint: 1064°C
+  meltingPointNumeric: 1064.0
+  meltingPointUnit: °C
+  meltingPercentile: 54.5
+  thermalConductivity: 318 W/m·K
+  thermalConductivityNumeric: 318.0
+  thermalConductivityUnit: W/m·K
+  thermalPercentile: 14.8
+  tensileStrength: 120 MPa
+  tensileStrengthNumeric: 120.0
+  tensileStrengthUnit: MPa
+  tensilePercentile: 26.3
+  hardness: 25 HV
+  hardnessNumeric: 25.0
+  hardnessUnit: HV
+  hardnessMin: 500 HV
+  hardnessMinNumeric: 500.0
+  hardnessMinUnit: HV
+  hardnessMax: 2500 HV
+  hardnessMaxNumeric: 2500.0
+  hardnessMaxUnit: HV
+  hardnessPercentile: 0.0
+  youngsModulus: 79 GPa
+  youngsModulusNumeric: 79.0
+  youngsModulusUnit: GPa
+  modulusMin: 150 GPa
+  modulusMinNumeric: 150.0
+  modulusMinUnit: GPa
+  modulusMax: 400 GPa
+  modulusMaxNumeric: 400.0
+  modulusMaxUnit: GPa
+  modulusPercentile: 92.0
+  laserType: Pulsed Fiber Laser
+  wavelength: 1064nm
+  fluenceRange: 1.0–4.5 J/cm²
+  chemicalFormula: Au
+composition:
+- Gold (Au) 99.6%
+- Trace elements (Si, Fe, Na, Mg)
+machineSettings:
+  powerRange: 50-200W
+  powerRangeNumeric: 125.0
+  powerRangeUnit: W
+  powerRangeMin: 20W
+  powerRangeMinNumeric: 20.0
+  powerRangeMinUnit: W
+  powerRangeMax: 500W
+  powerRangeMaxNumeric: 500.0
+  powerRangeMaxUnit: W
+  pulseDuration: 20-100ns
+  pulseDurationNumeric: 60.0
+  pulseDurationUnit: ns
+  pulseDurationMin: 1ns
+  pulseDurationMinNumeric: 1.0
+  pulseDurationMinUnit: ns
+  pulseDurationMax: 1000ns
+  pulseDurationMaxNumeric: 1000.0
+  pulseDurationMaxUnit: ns
+  wavelength: 1064nm (primary), 532nm (optional)
+  wavelengthNumeric: 1064.0
+  wavelengthUnit: nm
+  wavelengthMin: 355nm
+  wavelengthMinNumeric: 355.0
+  wavelengthMinUnit: nm
+  wavelengthMax: 2940nm
+  wavelengthMaxNumeric: 2940.0
+  wavelengthMaxUnit: nm
+  spotSize: 0.2-1.5mm
+  spotSizeNumeric: 0.85
+  spotSizeUnit: mm
+  spotSizeMin: 0.01mm
+  spotSizeMinNumeric: 0.01
+  spotSizeMinUnit: mm
+  spotSizeMax: 10mm
+  spotSizeMaxNumeric: 10.0
+  spotSizeMaxUnit: mm
+  repetitionRate: 20-100kHz
+  repetitionRateNumeric: 60.0
+  repetitionRateUnit: kHz
+  repetitionRateMin: 1kHz
+  repetitionRateMinNumeric: 1.0
+  repetitionRateMinUnit: kHz
+  repetitionRateMax: 1000kHz
+  repetitionRateMaxNumeric: 1000.0
+  repetitionRateMaxUnit: kHz
+  fluenceRange: 1.0–4.5 J/cm²
+  fluenceRangeNumeric: 1.0
+  fluenceRangeUnit: J/cm²
+  fluenceRangeMin: 0.1J/cm²
+  fluenceRangeMinNumeric: 0.1
+  fluenceRangeMinUnit: J/cm²
+  fluenceRangeMax: 50J/cm²
+  fluenceRangeMaxNumeric: 50.0
+  fluenceRangeMaxUnit: J/cm²
+  scanningSpeed: 50-500mm/s
+  scanningSpeedNumeric: 275.0
+  scanningSpeedUnit: mm/s
+  scanningSpeedMin: 1mm/s
+  scanningSpeedMinNumeric: 1.0
+  scanningSpeedMinUnit: mm/s
+  scanningSpeedMax: 5000mm/s
+  scanningSpeedMaxNumeric: 5000.0
+  scanningSpeedMaxUnit: mm/s
+  beamProfile: Gaussian TEM00
+  beamProfileOptions:
+  - Gaussian TEM00
+  - Top-hat
+  - Donut
+  - Multi-mode
+  safetyClass: Class 4 (requires full enclosure)
+applications:
+- industry: Electronics Manufacturing
+  detail: Removal of surface oxides and contaminants from Gold substrates
+- industry: Aerospace Components
+  detail: Cleaning of thermal barrier coatings and metal matrix composites
+compatibility:
+- Stainless Steel
+- Titanium Alloys
+- Nickel-based Superalloys
+regulatoryStandards: ISO 18562, ASTM F2100, IEC 60601-1
 author: Alessandro Moretti
 author_object:
-  country: Italy
-  expertise: Laser-Based Additive Manufacturing
   id: 2
-  image: /images/author/alessandro-moretti.jpg
   name: Alessandro Moretti
   sex: m
   title: Ph.D.
-chemicalProperties:
-  formula: Au
-  materialType: precious metal
-  symbol: Au
-composition:
-- Gold (Au) 99.9%
-- Alloying elements (Cu, Ag, Zn) depending on karat
-compatibility:
-- Platinum
-- Silver
-- Copper Alloys
-regulatoryStandards: ISO 9202, ASTM B562, IEC 60825-1
+  country: Italy
+  expertise: Laser-Based Additive Manufacturing
+  image: /images/author/alessandro-moretti.jpg
 images:
   hero:
     alt: Gold surface undergoing laser cleaning showing precise contamination removal
@@ -44,83 +160,30 @@ images:
     alt: Microscopic view of Gold surface after laser cleaning showing detailed surface
       structure
     url: /images/gold-laser-cleaning-micro.jpg
-title: Laser Cleaning Gold
-headline: Precision laser cleaning of gold for jewelry and electronics applications
 environmentalImpact:
 - benefit: Chemical Solvent Elimination
-  description: Eliminates use of cyanide-based and other toxic cleaning chemicals
+  description: Reduces chemical usage by 100% compared to traditional solvent cleaning
+    methods
 - benefit: Water Conservation
-  description: Zero water consumption compared to traditional cleaning methods
-- benefit: Material Conservation
-  description: Preserves 99.9% of gold material during cleaning process
+  description: Saves approximately 5000 liters of water per month in industrial applications
+- benefit: Energy Efficiency
+  description: Consumes 40% less energy than thermal cleaning processes
 outcomes:
-- metric: Achieves ISO 8501-1 Sa 2.5 cleanliness standard
-  result: Surface Cleanliness Level
-- metric: Less than 0.1μm material removal with no substrate damage
-  result: Material Preservation
-- metric: 0.5-2 m²/hour cleaning rate depending on contamination level
-  result: Processing Speed
-keywords: gold, gold metal, laser ablation, laser cleaning, non-contact cleaning,
-  pulsed fiber laser, surface contamination removal, industrial laser parameters,
-  thermal processing, surface restoration
+- result: Surface Cleanliness Level
+  metric: Achieves ISO 14644-1 Class 7 cleanliness standard
+- result: Material Removal Precision
+  metric: ±5μm accuracy with no substrate damage
+- result: Processing Speed
+  metric: 2-5 m²/hour cleaning rate depending on contamination level
 prompt_chain_verification:
-  ai_detection_config_loaded: true
-  author_id: 2
   base_config_loaded: true
-  cultural_adaptation_applied: true
-  formatting_config_loaded: true
-  human_authenticity_focus: true
   persona_config_loaded: true
+  formatting_config_loaded: true
+  ai_detection_config_loaded: true
   persona_country: Italy
+  author_id: 2
+  verification_timestamp: '2025-09-19T05:22:54Z'
   prompt_components_integrated: 4
-  verification_timestamp: '2025-09-16T22:05:19Z'
-category: precious metal
-properties:
-  chemicalFormula: Au
-  density: 19.32 g/cm³
-  densityMax: 22.6 g/cm³
-  densityMin: 0.5 g/cm³
-  densityPercentile: 85.2
-  fluenceRange: 0.5–2.0 J/cm²
-  hardness: 25-40 HV
-  hardnessMax: 500 HV
-  hardnessMin: 5 HB
-  hardnessPercentile: 5.6
-  laserAbsorptionMax: 100 cm⁻¹
-  laserAbsorptionMin: 0.02 cm⁻¹
-  laserReflectivityMax: 98%
-  laserReflectivityMin: 5%
-  laserType: Pulsed Fiber Laser
-  meltingMax: 3422°C
-  meltingMin: -39°C
-  meltingPercentile: 30.3
-  meltingPoint: 1064°C
-  modulusMax: 411 GPa
-  modulusMin: 70 GPa
-  modulusPercentile: 2.6
-  specificHeatMax: 0.90 J/g·K
-  specificHeatMin: 0.13 J/g·K
-  tensileMax: 2000 MPa
-  tensileMin: 70 MPa
-  tensilePercentile: 4.1
-  tensileStrength: 120-180 MPa
-  thermalConductivity: 318 W/m·K
-  thermalDiffusivityMax: 174 mm²/s
-  thermalDiffusivityMin: 4 mm²/s
-  thermalExpansionMax: 29 µm/m·K
-  thermalExpansionMin: 0.5 µm/m·K
-  thermalMax: 429 W/m·K
-  thermalMin: 8 W/m·K
-  thermalPercentile: 73.6
-  wavelength: 1064nm
-  youngsModulus: 79 GPa
+  human_authenticity_focus: true
+  cultural_adaptation_applied: true
 ---
-
-# Version Information
-# Generated: 2025-09-16T15:06:09.850071
-# Material: Gold
-# Component: frontmatter
-# Generator: Z-Beam v2.1.0
-# Author: AI Assistant
-# Platform: Darwin (3.12.4)
-# File: content/components/frontmatter/gold-laser-cleaning.md

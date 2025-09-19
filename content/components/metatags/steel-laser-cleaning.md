@@ -15,7 +15,7 @@ meta_tags:
     contamination-removal, material-processing, quality-control, precision-cleaning,
     automation, industrial-applications
 - name: author
-  content: Test Author
+  content: Yi-Chun Lin
 - name: category
   content: metal
 - name: robots
@@ -65,7 +65,7 @@ opengraph:
 - property: og:locale
   content: en_US
 - property: article:author
-  content: Test Author
+  content: Yi-Chun Lin
 - property: article:section
   content: Steel Processing
 - property: article:tag
@@ -94,7 +94,7 @@ alternate:
 ---
 
 ---
-Version Log - Generated: 2025-09-18T10:39:27.513705
+Version Log - Generated: 2025-09-18T12:26:04.331981
 Material: Unknown
 Component: metatags
 Generator: Z-Beam v1.0.0

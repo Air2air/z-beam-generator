@@ -1,42 +1,42 @@
 # Basic Content Structure
 before_text: |
-  Pre-treatment surface assessment reveals significant contamination deposits across the silicon carbide semiconductor substrate. 
-  Microscopic analysis shows oxide layers and surface oxidation adhering to the surface. The silicon carbide exhibits the characteristic density profile typical of semiconductor materials.
+  Preliminary microscopic analysis reveals significant contamination deposits across the silicon carbide semiconductor substrate. 
+  Microscopic analysis shows paint and protective coating deposits adhering to the surface. The silicon carbide exhibits the characteristic density profile typical of semiconductor materials.
   The contamination appears to be from fabrication processes and cleanroom contamination.
 
 after_text: |
-  Treatment outcome assessment demonstrates exceptional cleaning performance with 97.2% contaminant removal efficiency.
-  The silicon carbide substrate now exhibits pristine surface characteristics with minimal thermal stress.
+  Treatment outcome assessment demonstrates remarkable surface restoration through comprehensive laser processing.
+  The silicon carbide substrate now exhibits pristine surface characteristics with preserved crystalline structure.
   Microscopic examination confirms total contamination removal while ensuring structural preservation.
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064
-  power: 171
-  pulse_duration: 34
-  spot_size: 0.05-1.0mm
-  frequency: 40377
-  energy_density: 1.8
-  scanning_speed: "556 mm/min"
-  beam_profile: "gaussian"
-  pulse_overlap: 77
+  wavelength: 1064nm (primary), 532nm (optional)
+  power: 50-200W
+  pulse_duration: 20-100ns
+  spot_size: 0.2-1.5mm
+  frequency: 20-100kHz
+  energy_density: 1.0–4.5 J/cm²
+  scanning_speed: "50-500mm/s"
+  beam_profile: "Gaussian TEM00"
+  pulse_overlap: 89
 
 # Material Information
 material: "Silicon Carbide"
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-17T18:20:04.229455Z"
+  generated: "2025-09-19T00:08:37.186383Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
   magnification: "1000x"
   field_of_view: "200 μm"
-  image_resolution: "2048x1536"
+  image_resolution: "3840x2160"
 
 # Enhanced SEO Frontmatter
 title: "Silicon Carbide Surface Laser Cleaning Analysis - Precision Wafer Cleaning"
-description: "Comprehensive microscopic analysis of silicon carbide surface before and after precision laser cleaning, demonstrating 97.2% contamination removal efficiency using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of silicon carbide surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -74,7 +74,7 @@ technicalSpecifications:
   wavelength: "1064nm (primary), 532nm (optional)"
   power: "50-200W"
   pulse_duration: "20-100ns"
-  scanning_speed: "662 mm/min"
+  scanning_speed: "50-500mm/s"
   material: "Silicon Carbide"
   beam_delivery: "galvanometer scanning"
   focus_diameter: "0.2-1.5mm"
@@ -82,12 +82,12 @@ technicalSpecifications:
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Silicon Carbide (SiC) 99.6%, Trace elements (Si, Fe, Al, Ca)"
+  composition: "Silicon Carbide (SiC) 99.6%, Trace elements (Si, Fe, Na, Mg)"
   surface_treatment: "laser cleaning"
   contamination_type: "organic contamination and processing residues"
   materialType: "semiconductor"
   formula: "SiC"
-  surface_finish: "Ra < 0.7 μm (post-cleaning)"
+  surface_finish: "Ra < 0.3 μm (post-cleaning)"
   corrosion_resistance: "excellent"
 
 # Image Metadata for SEO
@@ -103,21 +103,18 @@ images:
 # Additional SEO Metadata
 seo_data:
   canonical_url: "https://z-beam.com/analysis/silicon-carbide-laser-cleaning"
-  og_title: "Silicon Carbide Laser Cleaning Analysis - 97.2% Contamination Removal"
+  og_title: "Silicon Carbide Laser Cleaning Analysis - Surface Restoration"
   og_description: "Professional microscopic analysis of precision laser cleaning on silicon carbide, achieving complete contamination removal with preserved substrate integrity."
   og_image: "/images/silicon-carbide-cleaning-analysis-social.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-17T18:20:04.229455Z"
+  last_modified: "2025-09-19T00:08:37.186383Z"
 
 # Quality Metrics
 quality_metrics:
-  contamination_removal: "97.2%"
-  surface_roughness_before: "Ra 0.5 μm"
-  surface_roughness_after: "Ra 0.3 μm"
-  thermal_damage: "none detected"
-  substrate_integrity: "100% preserved"
-  processing_efficiency: "97%"
+  surface_roughness_before: "Ra 0.2 μm"
+  surface_roughness_after: "Ra 0.1 μm"
+  substrate_integrity: "excellent"
 
 # Accessibility Information
 accessibility:
@@ -129,7 +126,7 @@ accessibility:
 ---
 Material: "silicon carbide"
 Component: caption
-Generated: 2025-09-17T18:20:04.229455Z
+Generated: 2025-09-19T00:08:37.186383Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

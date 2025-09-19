@@ -93,10 +93,10 @@ COMPONENT_CONFIG = {
         "data_provider": "hybrid",  # Uses frontmatter data + AI generation
     },
     "metatags": {
-        "api_provider": "deepseek",
+        "api_provider": "none",  # No API needed - uses frontmatter exclusively
         "priority": 2,
         "enabled": False,  # DISABLED for caption-focused generation
-        "data_provider": "hybrid",  # Uses frontmatter data + AI generation
+        "data_provider": "frontmatter",  # Uses frontmatter data exclusively
     },
     "badgesymbol": {
         "api_provider": "none",  # Static/deterministic generation
@@ -111,10 +111,10 @@ COMPONENT_CONFIG = {
         "data_provider": "hybrid",  # Uses frontmatter data + AI generation
     },
     "caption": {
-        "api_provider": "deepseek",
+        "api_provider": "none",
         "priority": 5,
         "enabled": True,  # ENABLED for caption generation
-        "data_provider": "hybrid",  # Uses frontmatter data + AI generation
+        "data_provider": "static",  # Uses frontmatter data + AI generation
     },
     "text": {
         "api_provider": "deepseek",
@@ -135,10 +135,10 @@ COMPONENT_CONFIG = {
         "data_provider": "hybrid",  # Uses frontmatter data + AI generation
     },
     "jsonld": {
-        "api_provider": "deepseek",  # Uses both frontmatter extraction and AI enhancement
+        "api_provider": "none",  # Uses both frontmatter extraction and AI enhancement
         "priority": 9,
         "enabled": True,  # ENABLED for JSON-LD generation
-        "data_provider": "hybrid",  # Combines frontmatter data with AI generation for maximum richness
+        "data_provider": "static",  # Combines frontmatter data with AI generation for maximum richness
     },
     "author": {
         "api_provider": "none",  # Static component, no API needed

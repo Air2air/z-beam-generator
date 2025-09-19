@@ -1,42 +1,42 @@
 # Basic Content Structure
 before_text: |
-  Initial surface examination reveals significant contamination deposits across the rhodium metallic substrate. 
-  Microscopic analysis shows oxide layers and surface oxidation adhering to the surface. The rhodium exhibits the characteristic density profile typical of metal materials.
+  Preliminary microscopic analysis reveals significant contamination deposits across the rhodium metallic substrate. 
+  Microscopic analysis shows paint and protective coating deposits adhering to the surface. The rhodium exhibits the characteristic density profile typical of metal materials.
   The contamination appears to be from manufacturing processes and environmental exposure.
 
 after_text: |
-  Post-laser cleaning analysis demonstrates remarkable surface restoration with 98.4% contaminant removal efficiency.
-  The rhodium substrate now exhibits pristine surface characteristics with controlled thermal impact.
-  Microscopic examination confirms total contamination removal while ensuring structural preservation.
+  Treatment outcome assessment demonstrates outstanding contamination removal through comprehensive laser processing.
+  The rhodium substrate now exhibits pristine surface characteristics with minimal thermal effects.
+  Microscopic examination confirms comprehensive surface decontamination while ensuring structural preservation.
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064
-  power: 58
-  pulse_duration: 22
-  spot_size: 0.1-2.0mm
-  frequency: 27513
-  energy_density: 2.5
-  scanning_speed: "730 mm/min"
-  beam_profile: "gaussian"
-  pulse_overlap: 78
+  wavelength: 1064nm (primary), 532nm (optional)
+  power: 50-200W
+  pulse_duration: 20-100ns
+  spot_size: 0.2-1.5mm
+  frequency: 20-100kHz
+  energy_density: 1.0–4.5 J/cm²
+  scanning_speed: "50-500mm/s"
+  beam_profile: "Gaussian TEM00"
+  pulse_overlap: 74
 
 # Material Information
 material: "Rhodium"
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-17T18:12:36.928181Z"
+  generated: "2025-09-19T00:08:28.476072Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
   magnification: "1000x"
   field_of_view: "200 μm"
-  image_resolution: "4096x3072"
+  image_resolution: "3840x2160"
 
 # Enhanced SEO Frontmatter
 title: "Rhodium Surface Laser Cleaning Analysis - Industrial Contamination Removal"
-description: "Comprehensive microscopic analysis of rhodium surface before and after precision laser cleaning, demonstrating 98.4% contamination removal efficiency using 1064nm (primary), 355nm (optional) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of rhodium surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -49,7 +49,7 @@ keywords:
   - "laser ablation"
   - "rhodium"
   - "contamination analysis"
-  - "rhodium plating"
+  - "rhodium metal"
   - "non-contact cleaning"
   - "electronics manufacturing applications"
   - "metal surface treatment"
@@ -71,24 +71,24 @@ author_object:
 
 # Technical Specifications for SEO
 technicalSpecifications:
-  wavelength: "1064nm (primary), 355nm (optional)"
-  power: "20-100W"
-  pulse_duration: "10-50ns"
-  scanning_speed: "790 mm/min"
+  wavelength: "1064nm (primary), 532nm (optional)"
+  power: "50-200W"
+  pulse_duration: "20-100ns"
+  scanning_speed: "50-500mm/s"
   material: "Rhodium"
-  beam_delivery: "direct beam"
-  focus_diameter: "0.1-0.8mm"
+  beam_delivery: "galvanometer scanning"
+  focus_diameter: "0.2-1.5mm"
   processing_atmosphere: "controlled environment"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Rhodium (Rh) 99.95%, Trace elements (Pt, Pd, Ir)"
+  composition: "Rhodium (Rh) 99.9%, Trace elements (Pt, Pd, Ir)"
   surface_treatment: "laser cleaning"
   contamination_type: "oxidation and metallic deposits"
-  materialType: "precious-metal"
+  materialType: "metal"
   formula: "Rh"
   surface_finish: "Ra < 0.8 μm (post-cleaning)"
-  corrosion_resistance: "excellent"
+  corrosion_resistance: "good"
 
 # Image Metadata for SEO
 images:
@@ -103,21 +103,18 @@ images:
 # Additional SEO Metadata
 seo_data:
   canonical_url: "https://z-beam.com/analysis/rhodium-laser-cleaning"
-  og_title: "Rhodium Laser Cleaning Analysis - 98.4% Contamination Removal"
+  og_title: "Rhodium Laser Cleaning Analysis - Surface Restoration"
   og_description: "Professional microscopic analysis of precision laser cleaning on rhodium, achieving complete contamination removal with preserved substrate integrity."
   og_image: "/images/rhodium-cleaning-analysis-social.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-17T18:12:36.928181Z"
+  last_modified: "2025-09-19T00:08:28.476072Z"
 
 # Quality Metrics
 quality_metrics:
-  contamination_removal: "98.4%"
-  surface_roughness_before: "Ra 0.6 μm"
+  surface_roughness_before: "Ra 0.4 μm"
   surface_roughness_after: "Ra 0.1 μm"
-  thermal_damage: "negligible"
-  substrate_integrity: "complete preservation"
-  processing_efficiency: "94%"
+  substrate_integrity: "99% preserved"
 
 # Accessibility Information
 accessibility:
@@ -129,7 +126,7 @@ accessibility:
 ---
 Material: "rhodium"
 Component: caption
-Generated: 2025-09-17T18:12:36.928181Z
+Generated: 2025-09-19T00:08:28.476072Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

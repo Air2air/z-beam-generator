@@ -3,39 +3,39 @@ materialTables:
   - header: '## Physical Properties'
     rows:
     - property: Density
-      value: "2.70 g/cm\xB3"
+      value: '2.7'
       unit: "g/cm\xB3"
-      min: "0.5 g/cm\xB3"
-      max: "22.6 g/cm\xB3"
+      min: '0.5'
+      max: '22.6'
       percentile: 10.0
       htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 50%"></div></div><p class="text-xs text-center">Value
-        at 50% of range</p>'
+        h-2 rounded-full" style="width: 9%"></div></div><p class="text-xs text-center">Value
+        at 9% of range</p>'
     - property: Melting Point
-      value: "660.3\xB0C"
+      value: '660'
       unit: "\xB0C"
-      min: "-39\xB0C"
-      max: "3422\xB0C"
+      min: '-39'
+      max: '3422'
       percentile: 18.4
       htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 100%"></div></div><p class="text-xs text-center">Value
-        at 100% of range</p>'
+        h-2 rounded-full" style="width: 20%"></div></div><p class="text-xs text-center">Value
+        at 20% of range</p>'
   - header: '## Thermal Properties'
     rows:
     - property: Thermal Conductivity
-      value: "237 W/m\xB7K"
+      value: '237'
       unit: "W/m\xB7K"
-      min: "8 W/m\xB7K"
-      max: "429 W/m\xB7K"
+      min: '8'
+      max: '429'
       percentile: 54.4
       htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
         h-2 rounded-full" style="width: 54%"></div></div><p class="text-xs text-center">Value
         at 54% of range</p>'
     - property: Thermal Diffusivity
-      value: "4 mm\xB2/s-174 mm\xB2/s mm\xB2/s"
+      value: '89.0'
       unit: "mm\xB2/s"
-      min: "4 mm\xB2/s"
-      max: "174 mm\xB2/s"
+      min: '4'
+      max: '174'
       htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
         h-2 rounded-full" style="width: 50%"></div></div><p class="text-xs text-center">Value
         at 50% of range</p>'
@@ -58,28 +58,28 @@ materialTables:
   - header: '## Mechanical Properties'
     rows:
     - property: Tensile Strength
-      value: 40-500 MPa
+      value: '385'
       unit: MPa
-      min: 70 MPa
-      max: 2000 MPa
-      percentile: 10.4
+      min: '70'
+      max: '2000'
+      percentile: 16.3
       htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 10%"></div></div><p class="text-xs text-center">Value
-        at 10% of range</p>'
+        h-2 rounded-full" style="width: 16%"></div></div><p class="text-xs text-center">Value
+        at 16% of range</p>'
     - property: Hardness
-      value: 15-120 HB
-      unit: HV
-      min: 5 HB
-      max: 500 HV
+      value: '67.5'
+      unit: HB
+      min: '5'
+      max: '500'
       percentile: 12.6
       htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
         h-2 rounded-full" style="width: 12%"></div></div><p class="text-xs text-center">Value
         at 12% of range</p>'
     - property: Young's Modulus
-      value: 69 GPa
+      value: '69'
       unit: GPa
-      min: 70 GPa
-      max: 411 GPa
+      min: '70'
+      max: '411'
       percentile: 0.0
       htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
         h-2 rounded-full" style="width: 0%"></div></div><p class="text-xs text-center">Value
@@ -87,18 +87,18 @@ materialTables:
   - header: '## Optical Properties'
     rows:
     - property: Laser Absorption
-      value: "0.02 cm\u207B\xB9-100 cm\u207B\xB9 cm\u207B\xB9"
+      value: '50.01'
       unit: "cm\u207B\xB9"
-      min: "0.02 cm\u207B\xB9"
-      max: "100 cm\u207B\xB9"
+      min: '0.02'
+      max: '100'
       htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 50%"></div></div><p class="text-xs text-center">Value
-        at 50% of range</p>'
+        h-2 rounded-full" style="width: 49%"></div></div><p class="text-xs text-center">Value
+        at 49% of range</p>'
     - property: Laser Reflectivity
-      value: 5%-98%%
+      value: '51.5'
       unit: '%'
-      min: 5%
-      max: 98%
+      min: '5'
+      max: '98'
       htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
         h-2 rounded-full" style="width: 50%"></div></div><p class="text-xs text-center">Value
         at 50% of range</p>'
@@ -113,7 +113,7 @@ materialTables:
       unit: nm
       htmlVisualization: <span class="px-2 py-1 bg-green-100 text-green-800 rounded">Optimal</span>
     - property: Fluence Range
-      value: "0.5\u20133.0 J/cm\xB2"
+      value: "1.0\u20134.5 J/cm\xB2"
       unit: "J/cm\xB2"
       htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-orange-600
         h-2 rounded-full" style="width: 75%"></div></div>'

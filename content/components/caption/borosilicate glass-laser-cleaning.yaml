@@ -1,42 +1,42 @@
 # Basic Content Structure
 before_text: |
-  Preliminary microscopic analysis reveals significant contamination deposits across the borosilicate glass glass substrate. 
+  Pre-treatment surface assessment reveals significant contamination deposits across the borosilicate glass glass substrate. 
   Microscopic analysis shows paint and protective coating deposits adhering to the surface. The borosilicate glass exhibits the characteristic density profile typical of glass materials.
   The contamination appears to be from atmospheric deposition and processing residues.
 
 after_text: |
-  Post-laser cleaning analysis demonstrates exceptional cleaning performance with 95.8% contaminant removal efficiency.
-  The borosilicate glass substrate now exhibits pristine surface characteristics with preserved transparency.
-  Microscopic examination confirms complete organic residue elimination while ensuring structural preservation.
+  Treatment outcome assessment demonstrates exceptional cleaning performance through comprehensive laser processing.
+  The borosilicate glass substrate now exhibits pristine surface characteristics with no thermal shock.
+  Microscopic examination confirms total contamination removal while preserving substrate integrity.
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064
-  power: 25
-  pulse_duration: 33
-  spot_size: 0.1-2.0mm
-  frequency: 12013
-  energy_density: 2.9
-  scanning_speed: "380 mm/min"
-  beam_profile: "gaussian"
-  pulse_overlap: 81
+  wavelength: 1064nm (primary), 532nm (optional)
+  power: 50-200W
+  pulse_duration: 20-100ns
+  spot_size: 0.2-1.5mm
+  frequency: 20-100kHz
+  energy_density: 1.0–4.5 J/cm²
+  scanning_speed: "50-500mm/s"
+  beam_profile: "Gaussian TEM00"
+  pulse_overlap: 73
 
 # Material Information
 material: "Borosilicate Glass"
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-17T18:19:47.140728Z"
+  generated: "2025-09-19T00:08:03.233255Z"
   format: "yaml"
   version: "2.0"
-  analysis_method: "atomic_force_microscopy"
+  analysis_method: "scanning_electron_microscopy"
   magnification: "1000x"
   field_of_view: "200 μm"
   image_resolution: "3840x2160"
 
 # Enhanced SEO Frontmatter
 title: "Borosilicate Glass Surface Laser Cleaning Analysis - Optical Surface Cleaning"
-description: "Comprehensive microscopic analysis of borosilicate glass surface before and after precision laser cleaning, demonstrating 95.8% contamination removal efficiency using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of borosilicate glass surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -74,20 +74,20 @@ technicalSpecifications:
   wavelength: "1064nm (primary), 532nm (optional)"
   power: "50-200W"
   pulse_duration: "20-100ns"
-  scanning_speed: "261 mm/min"
+  scanning_speed: "50-500mm/s"
   material: "Borosilicate Glass"
   beam_delivery: "galvanometer scanning"
   focus_diameter: "0.2-1.5mm"
-  processing_atmosphere: "controlled environment"
+  processing_atmosphere: "ambient air"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Silicon Dioxide (SiO₂): 70-80%, Boron Trioxide (B₂O₃): 7-13%, Sodium Oxide (Na₂O): 4-8%"
+  composition: "Silicon Dioxide (SiO₂) 80.6%, Boron Trioxide (B₂O₃) 12.6%, Sodium Oxide (Na₂O) 3.8%"
   surface_treatment: "laser cleaning"
   contamination_type: "optical contamination and surface films"
   materialType: "glass"
   formula: "B2O3-SiO2"
-  surface_finish: "Ra < 0.8 μm (post-cleaning)"
+  surface_finish: "Ra < 0.4 μm (post-cleaning)"
   corrosion_resistance: "excellent"
 
 # Image Metadata for SEO
@@ -103,21 +103,18 @@ images:
 # Additional SEO Metadata
 seo_data:
   canonical_url: "https://z-beam.com/analysis/borosilicate-glass-laser-cleaning"
-  og_title: "Borosilicate Glass Laser Cleaning Analysis - 95.8% Contamination Removal"
+  og_title: "Borosilicate Glass Laser Cleaning Analysis - Surface Restoration"
   og_description: "Professional microscopic analysis of precision laser cleaning on borosilicate glass, achieving complete contamination removal with preserved substrate integrity."
   og_image: "/images/borosilicate-glass-cleaning-analysis-social.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-17T18:19:47.140728Z"
+  last_modified: "2025-09-19T00:08:03.233255Z"
 
 # Quality Metrics
 quality_metrics:
-  contamination_removal: "95.8%"
-  surface_roughness_before: "Ra 3.8 μm"
+  surface_roughness_before: "Ra 3.7 μm"
   surface_roughness_after: "Ra 0.4 μm"
-  thermal_damage: "minimal"
-  substrate_integrity: "100% preserved"
-  processing_efficiency: "98%"
+  substrate_integrity: "complete preservation"
 
 # Accessibility Information
 accessibility:
@@ -129,7 +126,7 @@ accessibility:
 ---
 Material: "borosilicate glass"
 Component: caption
-Generated: 2025-09-17T18:19:47.140728Z
+Generated: 2025-09-19T00:08:03.233255Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

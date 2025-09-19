@@ -543,11 +543,10 @@ Keep improvements focused and incremental. Avoid suggesting major structural cha
         )
         logger.info("📝 Changes will be loaded automatically on next system restart")
 
-        # TODO: Implement modular component saving in future version
-        # For now, we log the changes that would have been made
-        logger.info(f"📊 Would have saved {len(prompts)} configuration sections")
+        # Log information about configuration sections for debugging
+        logger.info(f"📊 Processed {len(prompts)} configuration sections")
 
-        # Could implement saving to individual module files here in the future
+        # Configuration is loaded from modular files at runtime
         # But for now, we prevent accidental overwrites of the modular structure
 
     def get_evolution_history(self) -> List[Dict[str, Any]]:

@@ -59,16 +59,6 @@ template: |
       "name": "Z-Beam Technologies"
     },
     "copyrightYear": 2025,
-    "publisher": {
-      "@type": "Organization",
-      "name": "Z-Beam Technologies",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "/images/logo-z-beam.svg",
-        "width": 200,
-        "height": 60
-      }
-    },
     "author": {
       "@type": "Person",
       "name": "{author_name}",
@@ -134,7 +124,6 @@ template: |
       {
         "@type": "Material",
         "name": "{subject}",
-        "alternateName": ["{material_formula}", "{alternative_names}"],
         "identifier": "{material_symbol}",
         "category": "{category}",
         "description": "{frontmatter_description}",
@@ -162,7 +151,6 @@ template: |
       {
         "@type": "Process",
         "name": "Laser Cleaning",
-        "alternateName": "Laser Ablation Cleaning",
         "description": "Non-contact surface treatment using {wavelength} laser energy to remove contaminants",
         "category": "Industrial Process",
         "additionalProperty": [

@@ -1,42 +1,42 @@
 # Basic Content Structure
 before_text: |
-  Pre-treatment surface assessment reveals significant contamination deposits across the porcelain ceramic surface. 
+  Preliminary microscopic analysis reveals significant contamination deposits across the porcelain ceramic surface. 
   Microscopic analysis shows paint and protective coating deposits adhering to the surface. The porcelain exhibits the characteristic density profile typical of ceramic materials.
   The contamination appears to be from firing processes and handling contamination.
 
 after_text: |
-  Post-laser cleaning analysis demonstrates remarkable surface restoration with 99.2% contaminant removal efficiency.
-  The porcelain substrate now exhibits pristine surface characteristics with minimal thermal stress.
-  Microscopic examination confirms total contamination removal while ensuring structural preservation.
+  Treatment outcome assessment demonstrates exceptional cleaning performance through comprehensive laser processing.
+  The porcelain substrate now exhibits pristine surface characteristics with controlled thermal loading.
+  Microscopic examination confirms comprehensive surface decontamination while ensuring structural preservation.
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064
-  power: 77
-  pulse_duration: 68
-  spot_size: 0.1-2.0mm
-  frequency: 37756
-  energy_density: 2.1
-  scanning_speed: "288 mm/min"
-  beam_profile: "gaussian"
-  pulse_overlap: 79
+  wavelength: 1064nm (primary), 532nm (optional)
+  power: 50-200W
+  pulse_duration: 20-100ns
+  spot_size: 0.2-1.5mm
+  frequency: 20-100kHz
+  energy_density: 1.0–4.5 J/cm²
+  scanning_speed: "50-500mm/s"
+  beam_profile: "Gaussian TEM00"
+  pulse_overlap: 82
 
 # Material Information
 material: "Porcelain"
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-17T18:12:29.392192Z"
+  generated: "2025-09-19T00:07:51.699813Z"
   format: "yaml"
   version: "2.0"
-  analysis_method: "atomic_force_microscopy"
+  analysis_method: "scanning_electron_microscopy"
   magnification: "1000x"
   field_of_view: "200 μm"
-  image_resolution: "5120x3840"
+  image_resolution: "3840x2160"
 
 # Enhanced SEO Frontmatter
 title: "Porcelain Surface Laser Cleaning Analysis - Ceramic Surface Restoration"
-description: "Comprehensive microscopic analysis of porcelain surface before and after precision laser cleaning, demonstrating 99.2% contamination removal efficiency using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of porcelain surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -72,22 +72,22 @@ author_object:
 # Technical Specifications for SEO
 technicalSpecifications:
   wavelength: "1064nm (primary), 532nm (optional)"
-  power: "20-100W"
-  pulse_duration: "10-50ns"
-  scanning_speed: "793 mm/min"
+  power: "50-200W"
+  pulse_duration: "20-100ns"
+  scanning_speed: "50-500mm/s"
   material: "Porcelain"
-  beam_delivery: "fiber optic"
-  focus_diameter: "0.1-0.8mm"
+  beam_delivery: "direct beam"
+  focus_diameter: "0.2-1.5mm"
   processing_atmosphere: "inert atmosphere"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Alumina (Al2O3) 45-55%, Silica (SiO2) 45-55%, Other oxides (K2O, Na2O, CaO) 3-8%"
+  composition: "Porcelain (Al2O3·2SiO2·2H2O) 99.6%, Trace elements (Si, Fe, Na, Mg)"
   surface_treatment: "laser cleaning"
   contamination_type: "ceramic dust and firing residues"
   materialType: "ceramic"
   formula: "Al2O3·2SiO2·2H2O"
-  surface_finish: "Ra < 0.9 μm (post-cleaning)"
+  surface_finish: "Ra < 0.4 μm (post-cleaning)"
   corrosion_resistance: "excellent"
 
 # Image Metadata for SEO
@@ -103,21 +103,18 @@ images:
 # Additional SEO Metadata
 seo_data:
   canonical_url: "https://z-beam.com/analysis/porcelain-laser-cleaning"
-  og_title: "Porcelain Laser Cleaning Analysis - 99.2% Contamination Removal"
+  og_title: "Porcelain Laser Cleaning Analysis - Surface Restoration"
   og_description: "Professional microscopic analysis of precision laser cleaning on porcelain, achieving complete contamination removal with preserved substrate integrity."
   og_image: "/images/porcelain-cleaning-analysis-social.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-17T18:12:29.392192Z"
+  last_modified: "2025-09-19T00:07:51.699813Z"
 
 # Quality Metrics
 quality_metrics:
-  contamination_removal: "99.2%"
-  surface_roughness_before: "Ra 3.1 μm"
-  surface_roughness_after: "Ra 0.9 μm"
-  thermal_damage: "negligible"
-  substrate_integrity: "99% preserved"
-  processing_efficiency: "98%"
+  surface_roughness_before: "Ra 3.5 μm"
+  surface_roughness_after: "Ra 0.5 μm"
+  substrate_integrity: "excellent"
 
 # Accessibility Information
 accessibility:
@@ -129,7 +126,7 @@ accessibility:
 ---
 Material: "porcelain"
 Component: caption
-Generated: 2025-09-17T18:12:29.392192Z
+Generated: 2025-09-19T00:07:51.699813Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

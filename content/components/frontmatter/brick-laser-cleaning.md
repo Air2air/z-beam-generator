@@ -1,134 +1,197 @@
 ---
 name: Brick
-applications:
-- detail: Removal of soot, pollution deposits, and biological growth from historical
-    brick masonry
-  industry: Construction Restoration
-- detail: Cleaning of fire-damaged brickwork and removal of paint/graffiti from brick
-    surfaces
-  industry: Industrial Maintenance
-technicalSpecifications:
-  fluenceRange: 0.5–3.0 J/cm²
+category: masonry
+title: Laser Cleaning Brick
+headline: Comprehensive technical guide for laser cleaning brick masonry surfaces
+description: Technical overview of brick masonry for laser cleaning applications,
+  including optimal 1064nm wavelength interaction with clay-based materials, and industrial
+  applications in surface restoration.
+keywords: brick, brick masonry, laser ablation, laser cleaning, non-contact cleaning,
+  pulsed fiber laser, surface contamination removal, historical restoration, masonry
+  cleaning
+chemicalProperties:
+  symbol: Brick
+  formula: SiO₂·Al₂O₃·Fe₂O₃·CaO·MgO
+  materialType: ceramic masonry
+properties:
+  density: 1.8-2.0 g/cm³
+  densityNumeric: 1.9
+  densityUnit: g/cm³
+  densityMin: 1.6 g/cm³
+  densityMinNumeric: 1.6
+  densityMinUnit: g/cm³
+  densityMax: 2.4 g/cm³
+  densityMaxNumeric: 2.4
+  densityMaxUnit: g/cm³
+  densityPercentile: 42.8
+  meltingPoint: 1200-1400°C
+  meltingPointNumeric: 1300.0
+  meltingPointUnit: °C
+  meltingPercentile: 38.2
+  thermalConductivity: 0.7-1.3 W/m·K
+  thermalConductivityNumeric: 1.0
+  thermalConductivityUnit: W/m·K
+  thermalPercentile: 22.5
+  tensileStrength: 10-30 MPa
+  tensileStrengthNumeric: 20.0
+  tensileStrengthUnit: MPa
+  tensilePercentile: 8.7
+  hardness: 3-4 Mohs
+  hardnessNumeric: 3.5
+  hardnessUnit: Mohs
+  hardnessMin: 2 Mohs
+  hardnessMinNumeric: 2.0
+  hardnessMinUnit: Mohs
+  hardnessMax: 7 Mohs
+  hardnessMaxNumeric: 7.0
+  hardnessMaxUnit: Mohs
+  hardnessPercentile: 15.3
+  youngsModulus: 10-30 GPa
+  youngsModulusNumeric: 20.0
+  youngsModulusUnit: GPa
+  modulusMin: 5 GPa
+  modulusMinNumeric: 5.0
+  modulusMinUnit: GPa
+  modulusMax: 50 GPa
+  modulusMaxNumeric: 50.0
+  modulusMaxUnit: GPa
+  modulusPercentile: 12.8
+  laserType: Pulsed Fiber Laser
+  wavelength: 1064nm
+  fluenceRange: 0.5–2.0 J/cm²
+  chemicalFormula: SiO₂·Al₂O₃·Fe₂O₃·CaO·MgO
+composition:
+- Silica (SiO₂) 50-60%
+- Alumina (Al₂O₃) 20-30%
+- Iron Oxide (Fe₂O₃) 5-10%
+- Lime (CaO) 2-5%
+- Magnesia (MgO) 1-3%
+machineSettings:
   powerRange: 20-100W
-  pulseDuration: 10-200ns
-  repetitionRate: 10-50kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.5-3.0mm
+  powerRangeNumeric: 60.0
+  powerRangeUnit: W
+  powerRangeMin: 20W
+  powerRangeMinNumeric: 20.0
+  powerRangeMinUnit: W
+  powerRangeMax: 500W
+  powerRangeMaxNumeric: 500.0
+  powerRangeMaxUnit: W
+  pulseDuration: 50-200ns
+  pulseDurationNumeric: 125.0
+  pulseDurationUnit: ns
+  pulseDurationMin: 1ns
+  pulseDurationMinNumeric: 1.0
+  pulseDurationMinUnit: ns
+  pulseDurationMax: 1000ns
+  pulseDurationMaxNumeric: 1000.0
+  pulseDurationMaxUnit: ns
   wavelength: 1064nm (primary), 532nm (optional)
-description: Technical overview of fired clay brick for laser cleaning applications,
-  including optimal 1064nm wavelength interaction with mineral components, and industrial
-  applications in building restoration and surface preparation.
+  wavelengthNumeric: 1064.0
+  wavelengthUnit: nm
+  wavelengthMin: 355nm
+  wavelengthMinNumeric: 355.0
+  wavelengthMinUnit: nm
+  wavelengthMax: 2940nm
+  wavelengthMaxNumeric: 2940.0
+  wavelengthMaxUnit: nm
+  spotSize: 0.5-3.0mm
+  spotSizeNumeric: 1.75
+  spotSizeUnit: mm
+  spotSizeMin: 0.01mm
+  spotSizeMinNumeric: 0.01
+  spotSizeMinUnit: mm
+  spotSizeMax: 10mm
+  spotSizeMaxNumeric: 10.0
+  spotSizeMaxUnit: mm
+  repetitionRate: 10-50kHz
+  repetitionRateNumeric: 30.0
+  repetitionRateUnit: kHz
+  repetitionRateMin: 1kHz
+  repetitionRateMinNumeric: 1.0
+  repetitionRateMinUnit: kHz
+  repetitionRateMax: 1000kHz
+  repetitionRateMaxNumeric: 1000.0
+  repetitionRateMaxUnit: kHz
+  fluenceRange: 0.5–2.0 J/cm²
+  fluenceRangeNumeric: 0.5
+  fluenceRangeUnit: J/cm²
+  fluenceRangeMin: 0.1J/cm²
+  fluenceRangeMinNumeric: 0.1
+  fluenceRangeMinUnit: J/cm²
+  fluenceRangeMax: 50J/cm²
+  fluenceRangeMaxNumeric: 50.0
+  fluenceRangeMaxUnit: J/cm²
+  scanningSpeed: 50-500mm/s
+  scanningSpeedNumeric: 275.0
+  scanningSpeedUnit: mm/s
+  scanningSpeedMin: 1mm/s
+  scanningSpeedMinNumeric: 1.0
+  scanningSpeedMinUnit: mm/s
+  scanningSpeedMax: 5000mm/s
+  scanningSpeedMaxNumeric: 5000.0
+  scanningSpeedMaxUnit: mm/s
+  beamProfile: Gaussian TEM00
+  beamProfileOptions:
+  - Gaussian TEM00
+  - Top-hat
+  - Donut
+  - Multi-mode
+  safetyClass: Class 4 (requires full enclosure)
+applications:
+- industry: Construction Restoration
+  detail: Removal of surface contaminants, soot, and biological growth from historical
+    brick masonry
+- industry: Industrial Maintenance
+  detail: Cleaning of industrial brick surfaces including kilns, furnaces, and chimneys
+compatibility:
+- Historical Masonry
+- Industrial Brick Structures
+- Terracotta Materials
+regulatoryStandards: ISO 13823, ASTM C67, EN 771-1
 author: Alessandro Moretti
 author_object:
-  country: Italy
-  expertise: Laser-Based Additive Manufacturing
   id: 2
-  image: /images/author/alessandro-moretti.jpg
   name: Alessandro Moretti
   sex: m
   title: Ph.D.
-chemicalProperties:
-  formula: SiO2·Al2O3·Fe2O3·CaO·MgO
-  materialType: fired clay masonry
-  symbol: Brick
-composition:
-- Silica (SiO2) 50-60%
-- Alumina (Al2O3) 20-30%
-- Iron Oxide (Fe2O3) 5-8%
-- Lime (CaO) 1-5%
-- Magnesia (MgO) 1-3%
-compatibility:
-- Historical Masonry
-- Terracotta
-- Fired Clay Products
-regulatoryStandards: EN 15898, EN 17138, ASTM E2167
+  country: Italy
+  expertise: Laser-Based Additive Manufacturing
+  image: /images/author/alessandro-moretti.jpg
 images:
   hero:
-    alt: Brick surface undergoing laser cleaning showing precise contamination removal
+    alt: Brick wall surface undergoing laser cleaning showing precise contamination
+      removal
     url: /images/brick-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Brick surface after laser cleaning showing detailed surface
+    alt: Microscopic view of brick surface after laser cleaning showing detailed pore
       structure
     url: /images/brick-laser-cleaning-micro.jpg
-title: Laser Cleaning Brick - Technical Guide for Masonry Restoration
-headline: Comprehensive technical guide for laser cleaning fired clay brick surfaces
 environmentalImpact:
 - benefit: Chemical Solvent Elimination
-  description: Reduces chemical usage by 100% compared to traditional chemical cleaning
-    methods
+  description: Eliminates use of harsh chemical cleaners and acidic solutions for
+    brick restoration
 - benefit: Water Conservation
-  description: Eliminates water usage completely compared to pressure washing techniques
-- benefit: Waste Reduction
-  description: Produces no secondary waste streams from cleaning processes
+  description: Reduces water consumption by 95% compared to traditional pressure washing
+    methods
+- benefit: Minimal Waste Generation
+  description: Produces only fine particulate waste that can be easily collected and
+    disposed
 outcomes:
-- metric: Achieves 95-99% contaminant removal without substrate damage
-  result: Surface Cleanliness Level
-- metric: Selective removal of surface contaminants while preserving original brick
-    surface
-  result: Material Removal Precision
-- metric: 0.5-2 m²/hour cleaning rate depending on contamination type and thickness
-  result: Processing Speed
-keywords: brick, brick masonry, laser ablation, laser cleaning, non-contact cleaning,
-  pulsed fiber laser, surface contamination removal, historical restoration, graffiti
-  removal, building conservation
+- result: Surface Cleanliness Level
+  metric: Achieves 99% contaminant removal without surface damage
+- result: Material Preservation
+  metric: Maintains original brick surface integrity and historical patina
+- result: Processing Speed
+  metric: 1-3 m²/hour cleaning rate depending on contamination type and severity
 prompt_chain_verification:
-  ai_detection_config_loaded: true
-  author_id: 2
   base_config_loaded: true
-  cultural_adaptation_applied: true
-  formatting_config_loaded: true
-  human_authenticity_focus: true
   persona_config_loaded: true
+  formatting_config_loaded: true
+  ai_detection_config_loaded: true
   persona_country: Italy
+  author_id: 2
+  verification_timestamp: '2025-09-19T05:05:09Z'
   prompt_components_integrated: 4
-  verification_timestamp: '2025-09-16T21:51:02Z'
-category: masonry
-properties:
-  chemicalFormula: SiO2·Al2O3·Fe2O3·CaO·MgO
-  density: 1.8-2.0 g/cm³
-  densityMax: 2.8 g/cm³
-  densityMin: 1.2 g/cm³
-  densityPercentile: 43.8
-  fluenceRange: 0.5–3.0 J/cm²
-  hardness: 3-4 Mohs
-  hardnessMax: 300 HV
-  hardnessMin: 20 HV
-  hardnessPercentile: 0.0
-  laserAbsorptionMax: 50 cm⁻¹
-  laserAbsorptionMin: 0.8 cm⁻¹
-  laserReflectivityMax: 35%
-  laserReflectivityMin: 8%
-  laserType: Pulsed Fiber Laser
-  meltingMax: 2000°C
-  meltingMin: 1450°C
-  meltingPercentile: 0.0
-  meltingPoint: 1200-1400°C
-  modulusMax: 50 GPa
-  modulusMin: 15 GPa
-  modulusPercentile: 14.3
-  specificHeatMax: 1.1 J/g·K
-  specificHeatMin: 0.8 J/g·K
-  tensileMax: 50 MPa
-  tensileMin: 1 MPa
-  tensilePercentile: 38.8
-  tensileStrength: 10-30 MPa
-  thermalConductivity: 0.7-1.3 W/m·K
-  thermalDiffusivityMax: 1.5 mm²/s
-  thermalDiffusivityMin: 0.3 mm²/s
-  thermalExpansionMax: 15 µm/m·K
-  thermalExpansionMin: 6 µm/m·K
-  thermalMax: 2.0 W/m·K
-  thermalMin: 0.1 W/m·K
-  thermalPercentile: 47.4
-  wavelength: 1064nm
-  youngsModulus: 10-30 GPa
+  human_authenticity_focus: true
+  cultural_adaptation_applied: true
 ---
-
-# Version Information
-# Generated: 2025-09-16T14:51:56.621406
-# Material: Brick
-# Component: frontmatter
-# Generator: Z-Beam v2.1.0
-# Author: AI Assistant
-# Platform: Darwin (3.12.4)
-# File: content/components/frontmatter/brick-laser-cleaning.md

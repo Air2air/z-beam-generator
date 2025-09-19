@@ -1,42 +1,42 @@
 # Basic Content Structure
 before_text: |
   Preliminary microscopic analysis reveals significant contamination deposits across the onyx stone surface. 
-  Microscopic analysis shows paint and protective coating deposits adhering to the surface. The onyx exhibits the characteristic density profile typical of stone materials.
+  Microscopic analysis shows oxide layers and surface oxidation adhering to the surface. The onyx exhibits the characteristic density profile typical of stone materials.
   The contamination appears to be from weathering and environmental exposure.
 
 after_text: |
-  Post-laser cleaning analysis demonstrates remarkable surface restoration with 99.2% contaminant removal efficiency.
-  The onyx substrate now exhibits pristine surface characteristics with preserved structural integrity.
-  Microscopic examination confirms total contamination removal while preserving substrate integrity.
+  Treatment outcome assessment demonstrates outstanding contamination removal through comprehensive laser processing.
+  The onyx substrate now exhibits pristine surface characteristics with no thermal cracking.
+  Microscopic examination confirms comprehensive surface decontamination while preserving substrate integrity.
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064
-  power: 116
-  pulse_duration: 39
-  spot_size: 0.05-1.0mm
-  frequency: 12598
-  energy_density: 1.9
-  scanning_speed: "683 mm/min"
-  beam_profile: "gaussian"
-  pulse_overlap: 81
+  wavelength: 1064nm (primary), 532nm (optional)
+  power: 50-200W
+  pulse_duration: 20-100ns
+  spot_size: 0.2-1.5mm
+  frequency: 20-100kHz
+  energy_density: 1.0–4.5 J/cm²
+  scanning_speed: "50-500mm/s"
+  beam_profile: "Gaussian TEM00"
+  pulse_overlap: 82
 
 # Material Information
 material: "Onyx"
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-17T18:12:19.106851Z"
+  generated: "2025-09-19T00:08:44.479129Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
   magnification: "1000x"
   field_of_view: "200 μm"
-  image_resolution: "2048x1536"
+  image_resolution: "3840x2160"
 
 # Enhanced SEO Frontmatter
 title: "Onyx Surface Laser Cleaning Analysis - Heritage Conservation Cleaning"
-description: "Comprehensive microscopic analysis of onyx surface before and after precision laser cleaning, demonstrating 99.2% contamination removal efficiency using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of onyx surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -74,21 +74,21 @@ technicalSpecifications:
   wavelength: "1064nm (primary), 532nm (optional)"
   power: "50-200W"
   pulse_duration: "20-100ns"
-  scanning_speed: "227 mm/min"
+  scanning_speed: "50-500mm/s"
   material: "Onyx"
-  beam_delivery: "fiber optic"
+  beam_delivery: "galvanometer scanning"
   focus_diameter: "0.2-1.5mm"
-  processing_atmosphere: "controlled environment"
+  processing_atmosphere: "ambient air"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Silicon Dioxide (SiO₂) 95-99%, Trace elements (Al, Fe, Ca, Na, Mg)"
+  composition: "Silicon Dioxide (SiO₂) 95-99%, Iron Oxide (Fe₂O₃) 0.5-2%, Aluminum Oxide (Al₂O₃) 0.5-1.5%"
   surface_treatment: "laser cleaning"
   contamination_type: "weathering and biological deposits"
   materialType: "stone"
   formula: "None"
-  surface_finish: "Ra < 0.9 μm (post-cleaning)"
-  corrosion_resistance: "good"
+  surface_finish: "Ra < 0.3 μm (post-cleaning)"
+  corrosion_resistance: "moderate"
 
 # Image Metadata for SEO
 images:
@@ -103,21 +103,18 @@ images:
 # Additional SEO Metadata
 seo_data:
   canonical_url: "https://z-beam.com/analysis/onyx-laser-cleaning"
-  og_title: "Onyx Laser Cleaning Analysis - 99.2% Contamination Removal"
+  og_title: "Onyx Laser Cleaning Analysis - Surface Restoration"
   og_description: "Professional microscopic analysis of precision laser cleaning on onyx, achieving complete contamination removal with preserved substrate integrity."
   og_image: "/images/onyx-cleaning-analysis-social.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-17T18:12:19.106851Z"
+  last_modified: "2025-09-19T00:08:44.479129Z"
 
 # Quality Metrics
 quality_metrics:
-  contamination_removal: "99.2%"
-  surface_roughness_before: "Ra 4.9 μm"
+  surface_roughness_before: "Ra 3.4 μm"
   surface_roughness_after: "Ra 0.6 μm"
-  thermal_damage: "trace amounts"
-  substrate_integrity: "complete preservation"
-  processing_efficiency: "92%"
+  substrate_integrity: "100% preserved"
 
 # Accessibility Information
 accessibility:
@@ -129,7 +126,7 @@ accessibility:
 ---
 Material: "onyx"
 Component: caption
-Generated: 2025-09-17T18:12:19.106851Z
+Generated: 2025-09-19T00:08:44.479129Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

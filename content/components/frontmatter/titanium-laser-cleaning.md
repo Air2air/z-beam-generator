@@ -1,96 +1,167 @@
 ---
 name: Titanium
-applications:
-- industry: Electronics Manufacturing
-  detail: Removal of surface oxides and contaminants from Titanium substrates
-- industry: Aerospace Components
-  detail: Cleaning of thermal barrier coatings and metal matrix composites
-technicalSpecifications:
-  powerRange: 50-200W
-  pulseDuration: 20-100ns
-  wavelength: 1064nm (primary), 532nm (optional)
-  spotSize: 0.2-1.5mm
-  repetitionRate: 20-100kHz
-  fluenceRange: 1.0–4.5 J/cm²
-  safetyClass: Class 4 (requires full enclosure)
+category: metal
+title: Laser Cleaning Titanium
+headline: Comprehensive technical guide for laser cleaning metal titanium
 description: Technical overview of Titanium, Ti, for laser cleaning applications,
   including optimal 1064nm wavelength interaction, and industrial applications in
   surface preparation.
-author: Yi-Chun Lin
-author_object:
-  id: None
-  name: Yi-Chun Lin
-  sex: female
-  title: Materials Scientist
-  country: Taiwan
-  expertise: Laser Materials Processing
-  image: null
 keywords: titanium, titanium metal, laser ablation, laser cleaning, non-contact cleaning,
   pulsed fiber laser, surface contamination removal, industrial laser parameters,
   thermal processing, surface restoration
-category: metal
 chemicalProperties:
   symbol: Ti
   formula: Ti
   materialType: metal
 properties:
-  density: 7.85 g/cm³
-  densityMin: 0.5 g/cm³
-  densityMax: 22.6 g/cm³
-  densityPercentile: 33.3
-  meltingPoint: 1370-1530°C
-  meltingMin: -39°C
-  meltingMax: 3422°C
-  meltingPercentile: 41.7
-  thermalConductivity: 50.2 W/m·K
-  thermalMin: 8 W/m·K
-  thermalMax: 429 W/m·K
-  thermalPercentile: 10.0
-  tensileStrength: 400-600 MPa
-  tensileMin: 70 MPa
-  tensileMax: 2000 MPa
-  tensilePercentile: 22.3
-  hardness: 150-250 HB
-  hardnessMin: 5 HB
-  hardnessMax: 500 HV
-  hardnessPercentile: 39.4
-  youngsModulus: 200 GPa
-  modulusMin: 70 GPa
-  modulusMax: 411 GPa
-  modulusPercentile: 38.1
+  density: 4.51 g/cm³
+  densityNumeric: 4.51
+  densityUnit: g/cm³
+  densityMin: 1.8 g/cm³
+  densityMinNumeric: 1.8
+  densityMinUnit: g/cm³
+  densityMax: 6.0 g/cm³
+  densityMaxNumeric: 6.0
+  densityMaxUnit: g/cm³
+  densityPercentile: 67.8
+  meltingPoint: 1668°C
+  meltingPointNumeric: 1668.0
+  meltingPointUnit: °C
+  meltingPercentile: 58.9
+  thermalConductivity: 21.9 W/m·K
+  thermalConductivityNumeric: 21.9
+  thermalConductivityUnit: W/m·K
+  thermalPercentile: 10.7
+  tensileStrength: 240-550 MPa
+  tensileStrengthNumeric: 395.0
+  tensileStrengthUnit: MPa
+  tensilePercentile: 19.5
+  hardness: 70-74 HRB
+  hardnessNumeric: 72.0
+  hardnessUnit: HRB
+  hardnessMin: 500 HV
+  hardnessMinNumeric: 500.0
+  hardnessMinUnit: HV
+  hardnessMax: 2500 HV
+  hardnessMaxNumeric: 2500.0
+  hardnessMaxUnit: HV
+  hardnessPercentile: 0.0
+  youngsModulus: 116 GPa
+  youngsModulusNumeric: 116.0
+  youngsModulusUnit: GPa
+  modulusMin: 150 GPa
+  modulusMinNumeric: 150.0
+  modulusMinUnit: GPa
+  modulusMax: 400 GPa
+  modulusMaxNumeric: 400.0
+  modulusMaxUnit: GPa
+  modulusPercentile: 0.0
   laserType: Pulsed Fiber Laser
   wavelength: 1064nm
   fluenceRange: 1.0–4.5 J/cm²
   chemicalFormula: Ti
-  laserAbsorptionMin: 0.02 cm⁻¹
-  laserAbsorptionMax: 100 cm⁻¹
-  laserReflectivityMin: 5%
-  laserReflectivityMax: 98%
-  thermalDiffusivityMin: 4 mm²/s
-  thermalDiffusivityMax: 174 mm²/s
-  thermalExpansionMin: 0.5 µm/m·K
-  thermalExpansionMax: 29 µm/m·K
-  specificHeatMin: 0.13 J/g·K
-  specificHeatMax: 0.90 J/g·K
 composition:
 - Titanium (Ti) 99.6%
 - Trace elements (Si, Fe, Na, Mg)
+machineSettings:
+  powerRange: 50-200W
+  powerRangeNumeric: 125.0
+  powerRangeUnit: W
+  powerRangeMin: 20W
+  powerRangeMinNumeric: 20.0
+  powerRangeMinUnit: W
+  powerRangeMax: 500W
+  powerRangeMaxNumeric: 500.0
+  powerRangeMaxUnit: W
+  pulseDuration: 20-100ns
+  pulseDurationNumeric: 60.0
+  pulseDurationUnit: ns
+  pulseDurationMin: 1ns
+  pulseDurationMinNumeric: 1.0
+  pulseDurationMinUnit: ns
+  pulseDurationMax: 1000ns
+  pulseDurationMaxNumeric: 1000.0
+  pulseDurationMaxUnit: ns
+  wavelength: 1064nm (primary), 532nm (optional)
+  wavelengthNumeric: 1064.0
+  wavelengthUnit: nm
+  wavelengthMin: 355nm
+  wavelengthMinNumeric: 355.0
+  wavelengthMinUnit: nm
+  wavelengthMax: 2940nm
+  wavelengthMaxNumeric: 2940.0
+  wavelengthMaxUnit: nm
+  spotSize: 0.2-1.5mm
+  spotSizeNumeric: 0.85
+  spotSizeUnit: mm
+  spotSizeMin: 0.01mm
+  spotSizeMinNumeric: 0.01
+  spotSizeMinUnit: mm
+  spotSizeMax: 10mm
+  spotSizeMaxNumeric: 10.0
+  spotSizeMaxUnit: mm
+  repetitionRate: 20-100kHz
+  repetitionRateNumeric: 60.0
+  repetitionRateUnit: kHz
+  repetitionRateMin: 1kHz
+  repetitionRateMinNumeric: 1.0
+  repetitionRateMinUnit: kHz
+  repetitionRateMax: 1000kHz
+  repetitionRateMaxNumeric: 1000.0
+  repetitionRateMaxUnit: kHz
+  fluenceRange: 1.0–4.5 J/cm²
+  fluenceRangeNumeric: 1.0
+  fluenceRangeUnit: J/cm²
+  fluenceRangeMin: 0.1J/cm²
+  fluenceRangeMinNumeric: 0.1
+  fluenceRangeMinUnit: J/cm²
+  fluenceRangeMax: 50J/cm²
+  fluenceRangeMaxNumeric: 50.0
+  fluenceRangeMaxUnit: J/cm²
+  scanningSpeed: 50-500mm/s
+  scanningSpeedNumeric: 275.0
+  scanningSpeedUnit: mm/s
+  scanningSpeedMin: 1mm/s
+  scanningSpeedMinNumeric: 1.0
+  scanningSpeedMinUnit: mm/s
+  scanningSpeedMax: 5000mm/s
+  scanningSpeedMaxNumeric: 5000.0
+  scanningSpeedMaxUnit: mm/s
+  beamProfile: Gaussian TEM00
+  beamProfileOptions:
+  - Gaussian TEM00
+  - Top-hat
+  - Donut
+  - Multi-mode
+  safetyClass: Class 4 (requires full enclosure)
+applications:
+- industry: Electronics Manufacturing
+  detail: Removal of surface oxides and contaminants from Titanium substrates
+- industry: Aerospace Components
+  detail: Cleaning of thermal barrier coatings and metal matrix composites
 compatibility:
 - Stainless Steel
 - Titanium Alloys
 - Nickel-based Superalloys
 regulatoryStandards: ISO 18562, ASTM F2100, IEC 60601-1
+author: Todd Dunning
+author_object:
+  id: 4
+  name: Todd Dunning
+  sex: m
+  title: MA
+  country: United States (California)
+  expertise: Optical Materials for Laser Systems
+  image: /images/author/todd-dunning.jpg
 images:
   hero:
     alt: Titanium surface undergoing laser cleaning showing precise contamination
       removal
     url: /images/titanium-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Titanium surface after laser treatment showing preserved
-      microstructure
+    alt: Microscopic view of Titanium surface after laser cleaning showing detailed
+      surface structure
     url: /images/titanium-laser-cleaning-micro.jpg
-title: Laser Cleaning Titanium
-headline: Comprehensive technical guide for laser cleaning metal Titanium
 environmentalImpact:
 - benefit: Chemical Solvent Elimination
   description: Reduces chemical usage by 100% compared to traditional solvent cleaning
@@ -106,13 +177,15 @@ outcomes:
   metric: ±5μm accuracy with no substrate damage
 - result: Processing Speed
   metric: 2-5 m²/hour cleaning rate depending on contamination level
+prompt_chain_verification:
+  base_config_loaded: true
+  persona_config_loaded: true
+  formatting_config_loaded: true
+  ai_detection_config_loaded: true
+  persona_country: United States (California)
+  author_id: 4
+  verification_timestamp: '2025-09-19T06:25:53Z'
+  prompt_components_integrated: 4
+  human_authenticity_focus: true
+  cultural_adaptation_applied: true
 ---
-
-# Version Information
-# Generated: 2025-09-18T10:39:29.971616
-# Material: Titanium
-# Component: frontmatter
-# Generator: Z-Beam v2.1.0
-# Author: AI Assistant
-# Platform: Darwin (3.12.4)
-# File: content/components/frontmatter/titanium-laser-cleaning.md

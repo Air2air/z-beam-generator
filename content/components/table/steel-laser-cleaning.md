@@ -130,7 +130,7 @@ renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> w
 
 
 ---
-Version Log - Generated: 2025-09-18T10:39:27.463023
+Version Log - Generated: 2025-09-18T12:26:04.797984
 Material: Steel
 Component: table
 Generator: Z-Beam v2.1.0

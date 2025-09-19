@@ -5,20 +5,20 @@ before_text: |
   The contamination appears to be from atmospheric deposition and processing residues.
 
 after_text: |
-  Post-processing microscopic evaluation demonstrates remarkable surface restoration with 98.3% contaminant removal efficiency.
-  The fused silica substrate now exhibits pristine surface characteristics with no thermal shock.
-  Microscopic examination confirms comprehensive surface decontamination while preserving substrate integrity.
+  Treatment outcome assessment demonstrates remarkable surface restoration through comprehensive laser processing.
+  The fused silica substrate now exhibits pristine surface characteristics with maintained optical clarity.
+  Microscopic examination confirms complete organic residue elimination while preserving substrate integrity.
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064
-  power: 57
-  pulse_duration: 38
-  spot_size: 0.1-2.0mm
-  frequency: 25497
-  energy_density: 1.7
-  scanning_speed: "617 mm/min"
-  beam_profile: "gaussian"
+  wavelength: 1064nm (primary), 532nm (optional)
+  power: 50-200W
+  pulse_duration: 20-100ns
+  spot_size: 0.2-1.5mm
+  frequency: 20-100kHz
+  energy_density: 1.0–4.5 J/cm²
+  scanning_speed: "50-500mm/s"
+  beam_profile: "Gaussian TEM00"
   pulse_overlap: 74
 
 # Material Information
@@ -26,17 +26,17 @@ material: "Fused Silica"
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-17T18:20:01.919719Z"
+  generated: "2025-09-19T00:08:04.659242Z"
   format: "yaml"
   version: "2.0"
-  analysis_method: "atomic_force_microscopy"
+  analysis_method: "scanning_electron_microscopy"
   magnification: "1000x"
   field_of_view: "200 μm"
-  image_resolution: "2048x1536"
+  image_resolution: "3840x2160"
 
 # Enhanced SEO Frontmatter
 title: "Fused Silica Surface Laser Cleaning Analysis - Optical Surface Cleaning"
-description: "Comprehensive microscopic analysis of fused silica surface before and after precision laser cleaning, demonstrating 98.3% contamination removal efficiency using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of fused silica surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -74,20 +74,20 @@ technicalSpecifications:
   wavelength: "1064nm (primary), 532nm (optional)"
   power: "50-200W"
   pulse_duration: "20-100ns"
-  scanning_speed: "768 mm/min"
+  scanning_speed: "50-500mm/s"
   material: "Fused Silica"
-  beam_delivery: "direct beam"
+  beam_delivery: "fiber optic"
   focus_diameter: "0.2-1.5mm"
   processing_atmosphere: "ambient air"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Silicon Dioxide (SiO₂) 99.9%, Trace elements (Al, Na, K, Fe)"
+  composition: "Fused Silica (SiO2) 99.6%, Trace elements (Si, Fe, Na, Mg)"
   surface_treatment: "laser cleaning"
   contamination_type: "optical contamination and surface films"
   materialType: "glass"
   formula: "SiO2"
-  surface_finish: "Ra < 0.7 μm (post-cleaning)"
+  surface_finish: "Ra < 0.6 μm (post-cleaning)"
   corrosion_resistance: "excellent"
 
 # Image Metadata for SEO
@@ -103,21 +103,18 @@ images:
 # Additional SEO Metadata
 seo_data:
   canonical_url: "https://z-beam.com/analysis/fused-silica-laser-cleaning"
-  og_title: "Fused Silica Laser Cleaning Analysis - 98.3% Contamination Removal"
+  og_title: "Fused Silica Laser Cleaning Analysis - Surface Restoration"
   og_description: "Professional microscopic analysis of precision laser cleaning on fused silica, achieving complete contamination removal with preserved substrate integrity."
   og_image: "/images/fused-silica-cleaning-analysis-social.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-17T18:20:01.919719Z"
+  last_modified: "2025-09-19T00:08:04.659242Z"
 
 # Quality Metrics
 quality_metrics:
-  contamination_removal: "98.3%"
-  surface_roughness_before: "Ra 0.6 μm"
-  surface_roughness_after: "Ra 0.1 μm"
-  thermal_damage: "minimal"
-  substrate_integrity: "99% preserved"
-  processing_efficiency: "96%"
+  surface_roughness_before: "Ra 0.2 μm"
+  surface_roughness_after: "Ra 0.2 μm"
+  substrate_integrity: "complete preservation"
 
 # Accessibility Information
 accessibility:
@@ -129,7 +126,7 @@ accessibility:
 ---
 Material: "fused silica"
 Component: caption
-Generated: 2025-09-17T18:20:01.919719Z
+Generated: 2025-09-19T00:08:04.659242Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

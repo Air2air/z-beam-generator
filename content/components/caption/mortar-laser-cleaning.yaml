@@ -1,42 +1,42 @@
 # Basic Content Structure
 before_text: |
-  Initial surface examination reveals significant contamination deposits across the mortar masonry surface. 
-  Microscopic analysis shows biological growth and organic deposits adhering to the surface. The mortar exhibits the characteristic density profile typical of masonry materials.
+  Pre-treatment surface assessment reveals significant contamination deposits across the mortar masonry surface. 
+  Microscopic analysis shows industrial lubricants and oil residues adhering to the surface. The mortar exhibits the characteristic density profile typical of masonry materials.
   The contamination appears to be from construction activities and atmospheric exposure.
 
 after_text: |
-  Post-laser cleaning analysis demonstrates outstanding contamination removal with 97.0% contaminant removal efficiency.
+  Treatment outcome assessment demonstrates outstanding contamination removal through comprehensive laser processing.
   The mortar substrate now exhibits pristine surface characteristics with preserved structural soundness.
-  Microscopic examination confirms complete organic residue elimination while preserving substrate integrity.
+  Microscopic examination confirms complete organic residue elimination while maintaining material properties.
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064
-  power: 66
-  pulse_duration: 55
-  spot_size: 0.1-1.0mm
-  frequency: 42546
-  energy_density: 3.1
-  scanning_speed: "437 mm/min"
-  beam_profile: "gaussian"
-  pulse_overlap: 72
+  wavelength: 1064nm (primary), 532nm (optional)
+  power: 20-100W
+  pulse_duration: 50-200ns
+  spot_size: 0.5-2.0mm
+  frequency: 10-50kHz
+  energy_density: 0.5–2.0 J/cm²
+  scanning_speed: "50-500mm/s"
+  beam_profile: "Gaussian TEM00"
+  pulse_overlap: 84
 
 # Material Information
 material: "Mortar"
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-17T18:12:14.849339Z"
+  generated: "2025-09-19T00:08:10.843334Z"
   format: "yaml"
   version: "2.0"
-  analysis_method: "optical_microscopy"
+  analysis_method: "scanning_electron_microscopy"
   magnification: "1000x"
   field_of_view: "200 μm"
   image_resolution: "3840x2160"
 
 # Enhanced SEO Frontmatter
 title: "Mortar Surface Laser Cleaning Analysis - Masonry Surface Restoration"
-description: "Comprehensive microscopic analysis of mortar surface before and after precision laser cleaning, demonstrating 97.0% contamination removal efficiency using 1064nm wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of mortar surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -49,12 +49,12 @@ keywords:
   - "laser ablation"
   - "mortar"
   - "contamination analysis"
-  - "masonry"
-  - "non-abrasive cleaning"
-  - "historic preservation"
+  - "masonry mortar"
+  - "non-contact cleaning"
   - "construction and restoration applications"
   - "masonry restoration"
   - "building conservation"
+  - "construction cleaning"
 
 # Author Information with SEO Enhancement
 author: "Alessandro Moretti"
@@ -71,23 +71,23 @@ author_object:
 
 # Technical Specifications for SEO
 technicalSpecifications:
-  wavelength: "1064nm"
+  wavelength: "1064nm (primary), 532nm (optional)"
   power: "20-100W"
   pulse_duration: "50-200ns"
-  scanning_speed: "473 mm/min"
+  scanning_speed: "50-500mm/s"
   material: "Mortar"
-  beam_delivery: "galvanometer scanning"
-  focus_diameter: "0.5-3.0mm"
+  beam_delivery: "direct beam"
+  focus_diameter: "0.5-2.0mm"
   processing_atmosphere: "controlled environment"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Portland Cement (CaO·SiO₂) 20-30%, Sand (SiO₂) 60-70%, Water (H₂O) 5-10%"
+  composition: "Portland Cement 20-30%, Hydrated Lime 5-15%, Sand 55-75%"
   surface_treatment: "laser cleaning"
   contamination_type: "construction residues and atmospheric deposits"
-  materialType: "cementitious composite"
-  formula: "CaO·SiO₂ + Aggregate"
-  surface_finish: "Ra < 1.0 μm (post-cleaning)"
+  materialType: "masonry"
+  formula: "Cement + Lime + Sand + Water"
+  surface_finish: "Ra < 0.6 μm (post-cleaning)"
   corrosion_resistance: "good"
 
 # Image Metadata for SEO
@@ -103,21 +103,18 @@ images:
 # Additional SEO Metadata
 seo_data:
   canonical_url: "https://z-beam.com/analysis/mortar-laser-cleaning"
-  og_title: "Mortar Laser Cleaning Analysis - 97.0% Contamination Removal"
+  og_title: "Mortar Laser Cleaning Analysis - Surface Restoration"
   og_description: "Professional microscopic analysis of precision laser cleaning on mortar, achieving complete contamination removal with preserved substrate integrity."
   og_image: "/images/mortar-cleaning-analysis-social.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-17T18:12:14.849339Z"
+  last_modified: "2025-09-19T00:08:10.843334Z"
 
 # Quality Metrics
 quality_metrics:
-  contamination_removal: "97.0%"
-  surface_roughness_before: "Ra 4.3 μm"
+  surface_roughness_before: "Ra 2.5 μm"
   surface_roughness_after: "Ra 0.5 μm"
-  thermal_damage: "trace amounts"
-  substrate_integrity: "100% preserved"
-  processing_efficiency: "91%"
+  substrate_integrity: "excellent"
 
 # Accessibility Information
 accessibility:
@@ -129,7 +126,7 @@ accessibility:
 ---
 Material: "mortar"
 Component: caption
-Generated: 2025-09-17T18:12:14.849339Z
+Generated: 2025-09-19T00:08:10.843334Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

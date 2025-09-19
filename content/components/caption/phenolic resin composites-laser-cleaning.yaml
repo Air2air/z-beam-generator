@@ -1,24 +1,24 @@
 # Basic Content Structure
 before_text: |
-  Preliminary microscopic analysis reveals significant contamination deposits across the phenolic resin composites composite material. 
+  Initial surface examination reveals significant contamination deposits across the phenolic resin composites composite material. 
   Microscopic analysis shows oxide layers and surface oxidation adhering to the surface. The phenolic resin composites exhibits the characteristic density profile typical of composite materials.
   The contamination appears to be from manufacturing processes and environmental aging.
 
 after_text: |
-  Post-laser cleaning analysis demonstrates remarkable surface restoration with 95.1% contaminant removal efficiency.
+  Post-laser cleaning analysis demonstrates remarkable surface restoration through comprehensive laser processing.
   The phenolic resin composites substrate now exhibits pristine surface characteristics with minimal matrix heating.
-  Microscopic examination confirms complete organic residue elimination while maintaining material properties.
+  Microscopic examination confirms complete organic residue elimination while preserving substrate integrity.
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064
-  power: 130
-  pulse_duration: 191
-  spot_size: 0.05-1.0mm
-  frequency: 22040
-  energy_density: 1.9
-  scanning_speed: "396 mm/min"
-  beam_profile: "gaussian"
+  wavelength: 1064nm (primary), 355nm (optional)
+  power: 20-100W
+  pulse_duration: 50-200ns
+  spot_size: 0.1-2.0mm
+  frequency: 10-50kHz
+  energy_density: 0.5–3.0 J/cm²
+  scanning_speed: "50-500mm/s"
+  beam_profile: "Gaussian TEM00"
   pulse_overlap: 86
 
 # Material Information
@@ -26,17 +26,17 @@ material: "Phenolic Resin Composites"
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-17T18:20:24.904982Z"
+  generated: "2025-09-19T00:07:57.251254Z"
   format: "yaml"
   version: "2.0"
-  analysis_method: "optical_microscopy"
+  analysis_method: "scanning_electron_microscopy"
   magnification: "1000x"
   field_of_view: "200 μm"
-  image_resolution: "4096x3072"
+  image_resolution: "3840x2160"
 
 # Enhanced SEO Frontmatter
 title: "Phenolic Resin Composites Surface Laser Cleaning Analysis - Advanced Material Processing"
-description: "Comprehensive microscopic analysis of phenolic resin composites surface before and after precision laser cleaning, demonstrating 95.1% contamination removal efficiency using 1064nm (primary), 355nm (optional) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of phenolic resin composites surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 355nm (optional) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -49,8 +49,8 @@ keywords:
   - "laser ablation"
   - "phenolic resin composites"
   - "contamination analysis"
-  - "carbon phenolic"
-  - "composite materials"
+  - "phenolic-fiber composite"
+  - "non-contact cleaning"
   - "electronics manufacturing applications"
   - "composite processing"
   - "advanced materials"
@@ -72,22 +72,22 @@ author_object:
 # Technical Specifications for SEO
 technicalSpecifications:
   wavelength: "1064nm (primary), 355nm (optional)"
-  power: "10-100W"
+  power: "20-100W"
   pulse_duration: "50-200ns"
-  scanning_speed: "364 mm/min"
+  scanning_speed: "50-500mm/s"
   material: "Phenolic Resin Composites"
-  beam_delivery: "direct beam"
+  beam_delivery: "galvanometer scanning"
   focus_diameter: "0.1-2.0mm"
-  processing_atmosphere: "ambient air"
+  processing_atmosphere: "inert atmosphere"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Phenolic Resin Matrix 40-60%, Carbon/Glass Fiber Reinforcement 40-60%, Additives and Fillers 2-5%"
+  composition: "Phenolic Resin 40-60%, Cellulose Fiber 30-50%, Additives and Fillers 5-15%"
   surface_treatment: "laser cleaning"
   contamination_type: "matrix degradation and environmental aging"
-  materialType: "polymer composite"
-  formula: "Phenolic-Carbon/Glass Fiber"
-  surface_finish: "Ra < 0.5 μm (post-cleaning)"
+  materialType: "composite"
+  formula: "Phenolic-Fiber"
+  surface_finish: "Ra < 0.3 μm (post-cleaning)"
   corrosion_resistance: "excellent"
 
 # Image Metadata for SEO
@@ -103,21 +103,18 @@ images:
 # Additional SEO Metadata
 seo_data:
   canonical_url: "https://z-beam.com/analysis/phenolic-resin-composites-laser-cleaning"
-  og_title: "Phenolic Resin Composites Laser Cleaning Analysis - 95.1% Contamination Removal"
+  og_title: "Phenolic Resin Composites Laser Cleaning Analysis - Surface Restoration"
   og_description: "Professional microscopic analysis of precision laser cleaning on phenolic resin composites, achieving complete contamination removal with preserved substrate integrity."
   og_image: "/images/phenolic-resin-composites-cleaning-analysis-social.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-17T18:20:24.904982Z"
+  last_modified: "2025-09-19T00:07:57.251254Z"
 
 # Quality Metrics
 quality_metrics:
-  contamination_removal: "95.1%"
-  surface_roughness_before: "Ra 2.4 μm"
-  surface_roughness_after: "Ra 0.5 μm"
-  thermal_damage: "negligible"
+  surface_roughness_before: "Ra 2.3 μm"
+  surface_roughness_after: "Ra 0.7 μm"
   substrate_integrity: "complete preservation"
-  processing_efficiency: "90%"
 
 # Accessibility Information
 accessibility:
@@ -129,7 +126,7 @@ accessibility:
 ---
 Material: "phenolic resin composites"
 Component: caption
-Generated: 2025-09-17T18:20:24.904982Z
+Generated: 2025-09-19T00:07:57.251254Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

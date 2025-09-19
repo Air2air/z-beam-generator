@@ -1,132 +1,194 @@
 ---
-name: Glass Fiber Reinforced Polymers (GFRP)
-applications:
-- detail: Removal of surface oxides and contaminants from GFRP substrates prior to
-    coating or bonding
-  industry: Electronics Manufacturing
-- detail: Cleaning of GFRP composite parts for repair and surface preparation
-  industry: Aerospace Components
-technicalSpecifications:
-  fluenceRange: 0.5–3.0 J/cm²
-  powerRange: 10-100W
-  pulseDuration: 10-200ns
-  repetitionRate: 20-200kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.1-2.0mm
-  wavelength: 1064nm (primary), 355nm (optional)
-description: Technical overview of Glass Fiber Reinforced Polymers (GFRP) for laser
-  cleaning applications, including optimal wavelength interaction with polymer matrix
-  and glass fibers, and industrial applications in composite surface preparation.
-author: Yi-Chun Lin
-author_object:
-  country: Taiwan
-  expertise: Laser Materials Processing
-  id: 1
-  image: /images/author/yi-chun-lin.jpg
-  name: Yi-Chun Lin
-  sex: f
-  title: Ph.D.
+name: Glass Fiber Reinforced Polymers GFRP
+category: composite
+title: Laser Cleaning Glass Fiber Reinforced Polymers GFRP
+headline: Comprehensive technical guide for laser cleaning glass fiber reinforced
+  polymers gfrp composites
+description: Technical overview of Glass Fiber Reinforced Polymers GFRP composite
+  materials for laser cleaning applications, including optimal wavelength interaction
+  and industrial applications in surface preparation.
+keywords: glass fiber reinforced polymers gfrp, gfrp composite, laser ablation, laser
+  cleaning, non-contact cleaning, pulsed fiber laser, surface contamination removal,
+  composite material processing, surface restoration
 chemicalProperties:
-  formula: SiO₂-Polymer Matrix
-  materialType: composite
   symbol: GFRP
+  formula: SiO2-Polymer
+  materialType: composite
+properties:
+  density: 1.8-2.2 g/cm³
+  densityNumeric: 2.0
+  densityUnit: g/cm³
+  densityMin: 1.5 g/cm³
+  densityMinNumeric: 1.5
+  densityMinUnit: g/cm³
+  densityMax: 2.5 g/cm³
+  densityMaxNumeric: 2.5
+  densityMaxUnit: g/cm³
+  densityPercentile: 42.1
+  meltingPoint: 1200-1400°C
+  meltingPointNumeric: 1300.0
+  meltingPointUnit: °C
+  meltingPercentile: 48.7
+  thermalConductivity: 0.3-0.5 W/m·K
+  thermalConductivityNumeric: 0.4
+  thermalConductivityUnit: W/m·K
+  thermalPercentile: 35.2
+  tensileStrength: 300-600 MPa
+  tensileStrengthNumeric: 450.0
+  tensileStrengthUnit: MPa
+  tensilePercentile: 45.8
+  hardness: 80-120 HB
+  hardnessNumeric: 100.0
+  hardnessUnit: HB
+  hardnessMin: 50 HB
+  hardnessMinNumeric: 50.0
+  hardnessMinUnit: HB
+  hardnessMax: 150 HB
+  hardnessMaxNumeric: 150.0
+  hardnessMaxUnit: HB
+  hardnessPercentile: 28.4
+  youngsModulus: 40-70 GPa
+  youngsModulusNumeric: 55.0
+  youngsModulusUnit: GPa
+  modulusMin: 30 GPa
+  modulusMinNumeric: 30.0
+  modulusMinUnit: GPa
+  modulusMax: 90 GPa
+  modulusMaxNumeric: 90.0
+  modulusMaxUnit: GPa
+  modulusPercentile: 52.6
+  laserType: Pulsed Fiber Laser
+  wavelength: 1064nm
+  fluenceRange: 0.5–2.5 J/cm²
+  chemicalFormula: SiO2-Polymer
 composition:
-- Glass fibers (SiO₂) 50-70%
-- Polymer matrix (Epoxy/Polyester) 30-50%
+- Glass fibers (SiO2) 60-70%
+- Polymer matrix (epoxy/polyester) 30-40%
 - Additives and coupling agents 1-5%
+machineSettings:
+  powerRange: 20-100W
+  powerRangeNumeric: 60.0
+  powerRangeUnit: W
+  powerRangeMin: 20W
+  powerRangeMinNumeric: 20.0
+  powerRangeMinUnit: W
+  powerRangeMax: 500W
+  powerRangeMaxNumeric: 500.0
+  powerRangeMaxUnit: W
+  pulseDuration: 10-50ns
+  pulseDurationNumeric: 30.0
+  pulseDurationUnit: ns
+  pulseDurationMin: 1ns
+  pulseDurationMinNumeric: 1.0
+  pulseDurationMinUnit: ns
+  pulseDurationMax: 1000ns
+  pulseDurationMaxNumeric: 1000.0
+  pulseDurationMaxUnit: ns
+  wavelength: 1064nm (primary), 355nm (optional)
+  wavelengthNumeric: 1064.0
+  wavelengthUnit: nm
+  wavelengthMin: 355nm
+  wavelengthMinNumeric: 355.0
+  wavelengthMinUnit: nm
+  wavelengthMax: 2940nm
+  wavelengthMaxNumeric: 2940.0
+  wavelengthMaxUnit: nm
+  spotSize: 0.1-0.8mm
+  spotSizeNumeric: 0.45
+  spotSizeUnit: mm
+  spotSizeMin: 0.01mm
+  spotSizeMinNumeric: 0.01
+  spotSizeMinUnit: mm
+  spotSizeMax: 10mm
+  spotSizeMaxNumeric: 10.0
+  spotSizeMaxUnit: mm
+  repetitionRate: 20-80kHz
+  repetitionRateNumeric: 50.0
+  repetitionRateUnit: kHz
+  repetitionRateMin: 1kHz
+  repetitionRateMinNumeric: 1.0
+  repetitionRateMinUnit: kHz
+  repetitionRateMax: 1000kHz
+  repetitionRateMaxNumeric: 1000.0
+  repetitionRateMaxUnit: kHz
+  fluenceRange: 0.5–2.5 J/cm²
+  fluenceRangeNumeric: 0.5
+  fluenceRangeUnit: J/cm²
+  fluenceRangeMin: 0.1J/cm²
+  fluenceRangeMinNumeric: 0.1
+  fluenceRangeMinUnit: J/cm²
+  fluenceRangeMax: 50J/cm²
+  fluenceRangeMaxNumeric: 50.0
+  fluenceRangeMaxUnit: J/cm²
+  scanningSpeed: 50-500mm/s
+  scanningSpeedNumeric: 275.0
+  scanningSpeedUnit: mm/s
+  scanningSpeedMin: 1mm/s
+  scanningSpeedMinNumeric: 1.0
+  scanningSpeedMinUnit: mm/s
+  scanningSpeedMax: 5000mm/s
+  scanningSpeedMaxNumeric: 5000.0
+  scanningSpeedMaxUnit: mm/s
+  beamProfile: Gaussian TEM00
+  beamProfileOptions:
+  - Gaussian TEM00
+  - Top-hat
+  - Donut
+  - Multi-mode
+  safetyClass: Class 4 (requires full enclosure)
+applications:
+- industry: Electronics Manufacturing
+  detail: Removal of surface oxides and contaminants from GFRP circuit boards and
+    components
+- industry: Aerospace Components
+  detail: Precision cleaning of GFRP composite structures and thermal protection systems
 compatibility:
 - Epoxy Resins
 - Polyester Resins
 - Composite Adhesives
-regulatoryStandards: ISO 14130, ASTM D2584, ASTM D3039
+regulatoryStandards: ISO 14125, ASTM D2584, IEC 60893
+author: Yi-Chun Lin
+author_object:
+  id: 1
+  name: Yi-Chun Lin
+  sex: f
+  title: Ph.D.
+  country: Taiwan
+  expertise: Laser Materials Processing
+  image: /images/author/yi-chun-lin.jpg
 images:
   hero:
-    alt: Glass Fiber Reinforced Polymers (GFRP) surface undergoing laser cleaning
-      showing precise contamination removal
-    url: /images/glass-fiber-reinforced-polymers-(gfrp)-laser-cleaning-hero.jpg
+    alt: Glass Fiber Reinforced Polymers GFRP surface undergoing laser cleaning showing
+      precise contamination removal
+    url: /images/glass-fiber-reinforced-polymers-gfrp-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Glass Fiber Reinforced Polymers (GFRP) surface after
-      laser cleaning showing detailed surface structure
-    url: /images/glass-fiber-reinforced-polymers-(gfrp)-laser-cleaning-micro.jpg
-title: Laser Cleaning Glass Fiber Reinforced Polymers (GFRP) - Technical Guide for
-  Optimal Processing
-headline: Comprehensive technical guide for laser cleaning Glass Fiber Reinforced
-  Polymers (GFRP) composites
+    alt: Microscopic view of Glass Fiber Reinforced Polymers GFRP surface after laser
+      cleaning showing detailed fiber-matrix structure
+    url: /images/glass-fiber-reinforced-polymers-gfrp-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Solvent Elimination
-  description: Eliminates use of acetone and other solvents for composite cleaning
-- benefit: Reduced Waste Generation
-  description: Produces minimal particulate waste compared to mechanical abrasion
-    methods
+  description: Eliminates VOC emissions and hazardous chemical waste from traditional
+    cleaning methods
+- benefit: Water Conservation
+  description: Zero water consumption compared to aqueous cleaning processes
 - benefit: Energy Efficiency
-  description: Consumes 60% less energy than thermal decomposition cleaning
+  description: 30% less energy consumption than thermal decomposition cleaning
 outcomes:
-- metric: Achieves contamination-free surface suitable for bonding and coating
-  result: Surface Cleanliness Level
-- metric: Maintains >99% fiber integrity with no thermal damage
-  result: Fiber Preservation
-- metric: 0.5-2 m²/hour cleaning rate depending on contamination level
-  result: Processing Speed
-keywords: glass fiber reinforced polymer, gfrp composite, laser ablation, laser cleaning,
-  non-contact cleaning, pulsed fiber laser, surface contamination removal, composite
-  surface preparation, polymer matrix cleaning
+- result: Surface Cleanliness Level
+  metric: Achieves ISO 8501-1 Sa 2.5 cleanliness standard
+- result: Material Removal Precision
+  metric: ±2μm accuracy with no fiber damage
+- result: Processing Speed
+  metric: 1-3 m²/hour cleaning rate depending on contamination level
 prompt_chain_verification:
-  ai_detection_config_loaded: true
-  author_id: 1
   base_config_loaded: true
-  cultural_adaptation_applied: true
-  formatting_config_loaded: true
-  human_authenticity_focus: true
   persona_config_loaded: true
+  formatting_config_loaded: true
+  ai_detection_config_loaded: true
   persona_country: Taiwan
+  author_id: 1
+  verification_timestamp: '2025-09-19T05:21:59Z'
   prompt_components_integrated: 4
-  verification_timestamp: '2025-09-16T21:40:41Z'
-category: composite
-properties:
-  chemicalFormula: SiO₂-Polymer Matrix
-  density: 1.8-2.2 g/cm³
-  densityMax: 2.2 g/cm³
-  densityMin: 0.9 g/cm³
-  densityPercentile: 84.6
-  fluenceRange: 0.5–3.0 J/cm²
-  glassTransitionTemp: 120-180°C
-  hardness: 80-120 Barcol
-  hardnessMax: 80 HRC
-  hardnessMin: 10 HB
-  hardnessPercentile: 100.0
-  laserAbsorptionMax: 80 cm⁻¹
-  laserAbsorptionMin: 1 cm⁻¹
-  laserReflectivityMax: 15%
-  laserReflectivityMin: 3%
-  laserType: Pulsed Fiber Laser
-  meltingMax: 400°C
-  meltingMin: 150°C
-  modulusMax: 300 GPa
-  modulusMin: 1 GPa
-  modulusPercentile: 9.7
-  specificHeatMax: 2.0 J/g·K
-  specificHeatMin: 0.8 J/g·K
-  tensileMax: 7000 MPa
-  tensileMin: 100 MPa
-  tensilePercentile: 5.1
-  tensileStrength: 300-600 MPa
-  thermalConductivity: 0.3-0.5 W/m·K
-  thermalDiffusivityMax: 20 mm²/s
-  thermalDiffusivityMin: 0.1 mm²/s
-  thermalExpansionMax: 60 µm/m·K
-  thermalExpansionMin: 1 µm/m·K
-  thermalMax: 60 W/m·K
-  thermalMin: 0.1 W/m·K
-  thermalPercentile: 0.5
-  wavelength: 1064nm
-  youngsModulus: 20-40 GPa
+  human_authenticity_focus: true
+  cultural_adaptation_applied: true
 ---
-
-# Version Information
-# Generated: 2025-09-16T14:41:34.092542
-# Material: Glass Fiber Reinforced Polymers GFRP
-# Component: frontmatter
-# Generator: Z-Beam v2.1.0
-# Author: AI Assistant
-# Platform: Darwin (3.12.4)
-# File: content/components/frontmatter/glass-fiber-reinforced-polymers-gfrp-laser-cleaning.md

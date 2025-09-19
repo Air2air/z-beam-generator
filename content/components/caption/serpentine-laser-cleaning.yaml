@@ -1,42 +1,42 @@
 # Basic Content Structure
 before_text: |
-  Pre-treatment surface assessment reveals significant contamination deposits across the serpentine stone surface. 
-  Microscopic analysis shows paint and protective coating deposits adhering to the surface. The serpentine exhibits the characteristic density profile typical of stone materials.
+  Initial surface examination reveals significant contamination deposits across the serpentine stone surface. 
+  Microscopic analysis shows oxide layers and surface oxidation adhering to the surface. The serpentine exhibits the characteristic density profile typical of stone materials.
   The contamination appears to be from weathering and environmental exposure.
 
 after_text: |
-  Post-laser cleaning analysis demonstrates remarkable surface restoration with 98.1% contaminant removal efficiency.
+  Post-processing microscopic evaluation demonstrates remarkable surface restoration through comprehensive laser processing.
   The serpentine substrate now exhibits pristine surface characteristics with no thermal cracking.
-  Microscopic examination confirms total contamination removal while maintaining material properties.
+  Microscopic examination confirms complete organic residue elimination while ensuring structural preservation.
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064
-  power: 52
-  pulse_duration: 37
-  spot_size: 0.1-1.0mm
-  frequency: 49345
-  energy_density: 3.9
-  scanning_speed: "656 mm/min"
-  beam_profile: "gaussian"
-  pulse_overlap: 86
+  wavelength: 1064nm (primary), 532nm (optional)
+  power: 50-200W
+  pulse_duration: 20-100ns
+  spot_size: 0.2-1.5mm
+  frequency: 20-100kHz
+  energy_density: 1.0–4.5 J/cm²
+  scanning_speed: "50-500mm/s"
+  beam_profile: "Gaussian TEM00"
+  pulse_overlap: 78
 
 # Material Information
 material: "Serpentine"
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-17T18:12:43.623907Z"
+  generated: "2025-09-19T00:08:47.662257Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
   magnification: "1000x"
   field_of_view: "200 μm"
-  image_resolution: "5120x3840"
+  image_resolution: "3840x2160"
 
 # Enhanced SEO Frontmatter
 title: "Serpentine Surface Laser Cleaning Analysis - Heritage Conservation Cleaning"
-description: "Comprehensive microscopic analysis of serpentine surface before and after precision laser cleaning, demonstrating 98.1% contamination removal efficiency using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of serpentine surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -74,7 +74,7 @@ technicalSpecifications:
   wavelength: "1064nm (primary), 532nm (optional)"
   power: "50-200W"
   pulse_duration: "20-100ns"
-  scanning_speed: "200 mm/min"
+  scanning_speed: "50-500mm/s"
   material: "Serpentine"
   beam_delivery: "direct beam"
   focus_diameter: "0.2-1.5mm"
@@ -82,12 +82,12 @@ technicalSpecifications:
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Serpentine (Mg₃Si₂O₅(OH)₄) 85-95%, Chrysotile, Lizardite, Antigorite varieties, Trace elements (Fe, Ni, Cr, Co)"
+  composition: "Magnesium Silicate Hydroxide (Mg₃Si₂O₅(OH)₄) 85-95%, Trace elements (Fe, Cr, Ni, Al)"
   surface_treatment: "laser cleaning"
   contamination_type: "weathering and biological deposits"
   materialType: "stone"
   formula: "Sn"
-  surface_finish: "Ra < 0.8 μm (post-cleaning)"
+  surface_finish: "Ra < 0.7 μm (post-cleaning)"
   corrosion_resistance: "moderate"
 
 # Image Metadata for SEO
@@ -103,21 +103,18 @@ images:
 # Additional SEO Metadata
 seo_data:
   canonical_url: "https://z-beam.com/analysis/serpentine-laser-cleaning"
-  og_title: "Serpentine Laser Cleaning Analysis - 98.1% Contamination Removal"
+  og_title: "Serpentine Laser Cleaning Analysis - Surface Restoration"
   og_description: "Professional microscopic analysis of precision laser cleaning on serpentine, achieving complete contamination removal with preserved substrate integrity."
   og_image: "/images/serpentine-cleaning-analysis-social.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-17T18:12:43.623907Z"
+  last_modified: "2025-09-19T00:08:47.662257Z"
 
 # Quality Metrics
 quality_metrics:
-  contamination_removal: "98.1%"
-  surface_roughness_before: "Ra 3.9 μm"
-  surface_roughness_after: "Ra 1.0 μm"
-  thermal_damage: "negligible"
-  substrate_integrity: "complete preservation"
-  processing_efficiency: "92%"
+  surface_roughness_before: "Ra 1.9 μm"
+  surface_roughness_after: "Ra 0.8 μm"
+  substrate_integrity: "100% preserved"
 
 # Accessibility Information
 accessibility:
@@ -129,7 +126,7 @@ accessibility:
 ---
 Material: "serpentine"
 Component: caption
-Generated: 2025-09-17T18:12:43.623907Z
+Generated: 2025-09-19T00:08:47.662257Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

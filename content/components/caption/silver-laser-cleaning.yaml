@@ -1,42 +1,42 @@
 # Basic Content Structure
 before_text: |
   Pre-treatment surface assessment reveals significant contamination deposits across the silver metallic substrate. 
-  Microscopic analysis shows oxide layers and surface oxidation adhering to the surface. The silver exhibits the characteristic density profile typical of metal materials.
+  Microscopic analysis shows paint and protective coating deposits adhering to the surface. The silver exhibits the characteristic density profile typical of metal materials.
   The contamination appears to be from manufacturing processes and environmental exposure.
 
 after_text: |
-  Post-laser cleaning analysis demonstrates exceptional cleaning performance with 96.5% contaminant removal efficiency.
+  Post-processing microscopic evaluation demonstrates remarkable surface restoration through comprehensive laser processing.
   The silver substrate now exhibits pristine surface characteristics with controlled thermal impact.
   Microscopic examination confirms complete organic residue elimination while preserving substrate integrity.
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064
-  power: 47
-  pulse_duration: 53
-  spot_size: 0.1-2.0mm
-  frequency: 14454
-  energy_density: 3.9
-  scanning_speed: "781 mm/min"
-  beam_profile: "gaussian"
-  pulse_overlap: 74
+  wavelength: 1064nm (primary), 532nm (optional)
+  power: 50-200W
+  pulse_duration: 20-100ns
+  spot_size: 0.2-1.5mm
+  frequency: 20-100kHz
+  energy_density: 1.0–4.5 J/cm²
+  scanning_speed: "50-500mm/s"
+  beam_profile: "Gaussian TEM00"
+  pulse_overlap: 90
 
 # Material Information
 material: "Silver"
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-17T18:12:50.325863Z"
+  generated: "2025-09-19T00:08:29.770825Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
   magnification: "1000x"
   field_of_view: "200 μm"
-  image_resolution: "5120x3840"
+  image_resolution: "3840x2160"
 
 # Enhanced SEO Frontmatter
 title: "Silver Surface Laser Cleaning Analysis - Industrial Contamination Removal"
-description: "Comprehensive microscopic analysis of silver surface before and after precision laser cleaning, demonstrating 96.5% contamination removal efficiency using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of silver surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -51,7 +51,7 @@ keywords:
   - "contamination analysis"
   - "silver metal"
   - "non-contact cleaning"
-  - "jewelry manufacturing applications"
+  - "electronics manufacturing applications"
   - "metal surface treatment"
   - "corrosion removal"
   - "oxide layer removal"
@@ -72,12 +72,12 @@ author_object:
 # Technical Specifications for SEO
 technicalSpecifications:
   wavelength: "1064nm (primary), 532nm (optional)"
-  power: "10-100W"
-  pulse_duration: "10-50ns"
-  scanning_speed: "310 mm/min"
+  power: "50-200W"
+  pulse_duration: "20-100ns"
+  scanning_speed: "50-500mm/s"
   material: "Silver"
   beam_delivery: "direct beam"
-  focus_diameter: "0.05-0.8mm"
+  focus_diameter: "0.2-1.5mm"
   processing_atmosphere: "ambient air"
 
 # Chemical Properties for Enhanced SEO
@@ -87,7 +87,7 @@ chemicalProperties:
   contamination_type: "oxidation and metallic deposits"
   materialType: "metal"
   formula: "Ag"
-  surface_finish: "Ra < 0.8 μm (post-cleaning)"
+  surface_finish: "Ra < 0.7 μm (post-cleaning)"
   corrosion_resistance: "moderate"
 
 # Image Metadata for SEO
@@ -103,21 +103,18 @@ images:
 # Additional SEO Metadata
 seo_data:
   canonical_url: "https://z-beam.com/analysis/silver-laser-cleaning"
-  og_title: "Silver Laser Cleaning Analysis - 96.5% Contamination Removal"
+  og_title: "Silver Laser Cleaning Analysis - Surface Restoration"
   og_description: "Professional microscopic analysis of precision laser cleaning on silver, achieving complete contamination removal with preserved substrate integrity."
   og_image: "/images/silver-cleaning-analysis-social.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-17T18:12:50.325863Z"
+  last_modified: "2025-09-19T00:08:29.770825Z"
 
 # Quality Metrics
 quality_metrics:
-  contamination_removal: "96.5%"
-  surface_roughness_before: "Ra 4.3 μm"
-  surface_roughness_after: "Ra 1.1 μm"
-  thermal_damage: "trace amounts"
-  substrate_integrity: "complete preservation"
-  processing_efficiency: "90%"
+  surface_roughness_before: "Ra 4.9 μm"
+  surface_roughness_after: "Ra 1.8 μm"
+  substrate_integrity: "99% preserved"
 
 # Accessibility Information
 accessibility:
@@ -129,7 +126,7 @@ accessibility:
 ---
 Material: "silver"
 Component: caption
-Generated: 2025-09-17T18:12:50.325863Z
+Generated: 2025-09-19T00:08:29.770825Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

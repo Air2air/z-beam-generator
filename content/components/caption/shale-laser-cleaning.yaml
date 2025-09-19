@@ -1,42 +1,42 @@
 # Basic Content Structure
 before_text: |
-  Pre-treatment surface assessment reveals significant contamination deposits across the shale stone surface. 
+  Initial surface examination reveals significant contamination deposits across the shale stone surface. 
   Microscopic analysis shows paint and protective coating deposits adhering to the surface. The shale exhibits the characteristic density profile typical of stone materials.
   The contamination appears to be from weathering and environmental exposure.
 
 after_text: |
-  Treatment outcome assessment demonstrates outstanding contamination removal with 98.5% contaminant removal efficiency.
-  The shale substrate now exhibits pristine surface characteristics with no thermal cracking.
-  Microscopic examination confirms comprehensive surface decontamination while maintaining material properties.
+  Post-processing microscopic evaluation demonstrates remarkable surface restoration through comprehensive laser processing.
+  The shale substrate now exhibits pristine surface characteristics with minimal thermal expansion.
+  Microscopic examination confirms complete organic residue elimination while maintaining material properties.
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064
-  power: 193
-  pulse_duration: 43
-  spot_size: 0.5-3.0mm
-  frequency: 20229
-  energy_density: 3.8
-  scanning_speed: "763 mm/min"
-  beam_profile: "gaussian"
-  pulse_overlap: 83
+  wavelength: 1064nm (primary), 532nm (optional)
+  power: 50-200W
+  pulse_duration: 20-100ns
+  spot_size: 0.2-1.5mm
+  frequency: 20-100kHz
+  energy_density: 1.0–4.5 J/cm²
+  scanning_speed: "50-500mm/s"
+  beam_profile: "Gaussian TEM00"
+  pulse_overlap: 85
 
 # Material Information
 material: "Shale"
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-17T18:12:44.871643Z"
+  generated: "2025-09-19T00:08:48.282179Z"
   format: "yaml"
   version: "2.0"
-  analysis_method: "optical_microscopy"
+  analysis_method: "scanning_electron_microscopy"
   magnification: "1000x"
   field_of_view: "200 μm"
-  image_resolution: "5120x3840"
+  image_resolution: "3840x2160"
 
 # Enhanced SEO Frontmatter
 title: "Shale Surface Laser Cleaning Analysis - Heritage Conservation Cleaning"
-description: "Comprehensive microscopic analysis of shale surface before and after precision laser cleaning, demonstrating 98.5% contamination removal efficiency using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of shale surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -74,21 +74,21 @@ technicalSpecifications:
   wavelength: "1064nm (primary), 532nm (optional)"
   power: "50-200W"
   pulse_duration: "20-100ns"
-  scanning_speed: "630 mm/min"
+  scanning_speed: "50-500mm/s"
   material: "Shale"
-  beam_delivery: "direct beam"
+  beam_delivery: "fiber optic"
   focus_diameter: "0.2-1.5mm"
-  processing_atmosphere: "ambient air"
+  processing_atmosphere: "inert atmosphere"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Clay minerals (illite, kaolinite) 40-60%, Quartz 20-40%, Feldspar 5-15%"
+  composition: "Clay minerals (illite, kaolinite) 60-70%, Quartz 20-30%, Feldspar 5-10%"
   surface_treatment: "laser cleaning"
   contamination_type: "weathering and biological deposits"
   materialType: "stone"
   formula: "None"
-  surface_finish: "Ra < 1.0 μm (post-cleaning)"
-  corrosion_resistance: "moderate"
+  surface_finish: "Ra < 0.4 μm (post-cleaning)"
+  corrosion_resistance: "good"
 
 # Image Metadata for SEO
 images:
@@ -103,21 +103,18 @@ images:
 # Additional SEO Metadata
 seo_data:
   canonical_url: "https://z-beam.com/analysis/shale-laser-cleaning"
-  og_title: "Shale Laser Cleaning Analysis - 98.5% Contamination Removal"
+  og_title: "Shale Laser Cleaning Analysis - Surface Restoration"
   og_description: "Professional microscopic analysis of precision laser cleaning on shale, achieving complete contamination removal with preserved substrate integrity."
   og_image: "/images/shale-cleaning-analysis-social.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-17T18:12:44.871643Z"
+  last_modified: "2025-09-19T00:08:48.282179Z"
 
 # Quality Metrics
 quality_metrics:
-  contamination_removal: "98.5%"
-  surface_roughness_before: "Ra 2.3 μm"
-  surface_roughness_after: "Ra 0.3 μm"
-  thermal_damage: "trace amounts"
-  substrate_integrity: "99% preserved"
-  processing_efficiency: "90%"
+  surface_roughness_before: "Ra 5.0 μm"
+  surface_roughness_after: "Ra 0.5 μm"
+  substrate_integrity: "complete preservation"
 
 # Accessibility Information
 accessibility:
@@ -129,7 +126,7 @@ accessibility:
 ---
 Material: "shale"
 Component: caption
-Generated: 2025-09-17T18:12:44.871643Z
+Generated: 2025-09-19T00:08:48.282179Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

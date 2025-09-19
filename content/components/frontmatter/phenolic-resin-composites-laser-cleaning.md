@@ -1,134 +1,193 @@
 ---
 name: Phenolic Resin Composites
-applications:
-- detail: Removal of surface oxides and contaminants from printed circuit boards and
-    composite substrates
-  industry: Electronics Manufacturing
-- detail: Cleaning of thermal protection systems and composite structural components
-  industry: Aerospace Components
-technicalSpecifications:
-  fluenceRange: 0.5–2.5 J/cm²
-  powerRange: 10-100W
+category: composite
+title: Laser Cleaning Phenolic Resin Composites
+headline: Comprehensive technical guide for laser cleaning phenolic resin composites
+description: Technical overview of phenolic resin composites for laser cleaning applications,
+  including optimal 1064nm wavelength interaction, and industrial applications in
+  surface preparation.
+keywords: phenolic resin composites, phenolic-fiber composite, laser ablation, laser
+  cleaning, non-contact cleaning, pulsed fiber laser, surface contamination removal,
+  industrial laser parameters, thermal processing, surface restoration
+chemicalProperties:
+  symbol: PhRC
+  formula: Phenolic-Fiber
+  materialType: composite
+properties:
+  density: 1.3-1.9 g/cm³
+  densityNumeric: 1.6
+  densityUnit: g/cm³
+  densityMin: 1.2 g/cm³
+  densityMinNumeric: 1.2
+  densityMinUnit: g/cm³
+  densityMax: 2.2 g/cm³
+  densityMaxNumeric: 2.2
+  densityMaxUnit: g/cm³
+  densityPercentile: 42.8
+  meltingPoint: 150-200°C
+  meltingPointNumeric: 175.0
+  meltingPointUnit: °C
+  meltingPercentile: 35.2
+  thermalConductivity: 0.15-0.25 W/m·K
+  thermalConductivityNumeric: 0.2
+  thermalConductivityUnit: W/m·K
+  thermalPercentile: 18.7
+  tensileStrength: 30-60 MPa
+  tensileStrengthNumeric: 45.0
+  tensileStrengthUnit: MPa
+  tensilePercentile: 15.4
+  hardness: 80-120 HB
+  hardnessNumeric: 100.0
+  hardnessUnit: HB
+  hardnessMin: 60 HB
+  hardnessMinNumeric: 60.0
+  hardnessMinUnit: HB
+  hardnessMax: 150 HB
+  hardnessMaxNumeric: 150.0
+  hardnessMaxUnit: HB
+  hardnessPercentile: 22.1
+  youngsModulus: 3-8 GPa
+  youngsModulusNumeric: 5.5
+  youngsModulusUnit: GPa
+  modulusMin: 2 GPa
+  modulusMinNumeric: 2.0
+  modulusMinUnit: GPa
+  modulusMax: 12 GPa
+  modulusMaxNumeric: 12.0
+  modulusMaxUnit: GPa
+  modulusPercentile: 28.9
+  laserType: Pulsed Fiber Laser
+  wavelength: 1064nm
+  fluenceRange: 0.5–3.0 J/cm²
+  chemicalFormula: Phenolic-Fiber
+composition:
+- Phenolic Resin 40-60%
+- Cellulose Fiber 30-50%
+- Additives and Fillers 5-15%
+machineSettings:
+  powerRange: 20-100W
+  powerRangeNumeric: 60.0
+  powerRangeUnit: W
+  powerRangeMin: 20W
+  powerRangeMinNumeric: 20.0
+  powerRangeMinUnit: W
+  powerRangeMax: 500W
+  powerRangeMaxNumeric: 500.0
+  powerRangeMaxUnit: W
   pulseDuration: 50-200ns
-  repetitionRate: 10-50kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.1-2.0mm
+  pulseDurationNumeric: 125.0
+  pulseDurationUnit: ns
+  pulseDurationMin: 1ns
+  pulseDurationMinNumeric: 1.0
+  pulseDurationMinUnit: ns
+  pulseDurationMax: 1000ns
+  pulseDurationMaxNumeric: 1000.0
+  pulseDurationMaxUnit: ns
   wavelength: 1064nm (primary), 355nm (optional)
-description: Technical overview of Phenolic Resin Composites for laser cleaning applications,
-  including optimal wavelength interaction parameters for resin matrix and fiber reinforcement,
-  and industrial applications in surface preparation.
+  wavelengthNumeric: 1064.0
+  wavelengthUnit: nm
+  wavelengthMin: 355nm
+  wavelengthMinNumeric: 355.0
+  wavelengthMinUnit: nm
+  wavelengthMax: 2940nm
+  wavelengthMaxNumeric: 2940.0
+  wavelengthMaxUnit: nm
+  spotSize: 0.1-2.0mm
+  spotSizeNumeric: 1.05
+  spotSizeUnit: mm
+  spotSizeMin: 0.01mm
+  spotSizeMinNumeric: 0.01
+  spotSizeMinUnit: mm
+  spotSizeMax: 10mm
+  spotSizeMaxNumeric: 10.0
+  spotSizeMaxUnit: mm
+  repetitionRate: 10-50kHz
+  repetitionRateNumeric: 30.0
+  repetitionRateUnit: kHz
+  repetitionRateMin: 1kHz
+  repetitionRateMinNumeric: 1.0
+  repetitionRateMinUnit: kHz
+  repetitionRateMax: 1000kHz
+  repetitionRateMaxNumeric: 1000.0
+  repetitionRateMaxUnit: kHz
+  fluenceRange: 0.5–3.0 J/cm²
+  fluenceRangeNumeric: 0.5
+  fluenceRangeUnit: J/cm²
+  fluenceRangeMin: 0.1J/cm²
+  fluenceRangeMinNumeric: 0.1
+  fluenceRangeMinUnit: J/cm²
+  fluenceRangeMax: 50J/cm²
+  fluenceRangeMaxNumeric: 50.0
+  fluenceRangeMaxUnit: J/cm²
+  scanningSpeed: 50-500mm/s
+  scanningSpeedNumeric: 275.0
+  scanningSpeedUnit: mm/s
+  scanningSpeedMin: 1mm/s
+  scanningSpeedMinNumeric: 1.0
+  scanningSpeedMinUnit: mm/s
+  scanningSpeedMax: 5000mm/s
+  scanningSpeedMaxNumeric: 5000.0
+  scanningSpeedMaxUnit: mm/s
+  beamProfile: Gaussian TEM00
+  beamProfileOptions:
+  - Gaussian TEM00
+  - Top-hat
+  - Donut
+  - Multi-mode
+  safetyClass: Class 4 (requires full enclosure)
+applications:
+- industry: Electronics Manufacturing
+  detail: Removal of surface oxides and contaminants from phenolic resin composite
+    substrates
+- industry: Aerospace Components
+  detail: Cleaning of thermal barrier coatings and composite matrix surfaces
+compatibility:
+- Epoxy Resins
+- Fiberglass
+- Carbon Fiber Composites
+regulatoryStandards: ISO 14527, ASTM D5941, IEC 60811
 author: Todd Dunning
 author_object:
-  country: United States (California)
-  expertise: Optical Materials for Laser Systems
   id: 4
-  image: /images/author/todd-dunning.jpg
   name: Todd Dunning
   sex: m
   title: MA
-chemicalProperties:
-  formula: Phenolic-Carbon/Glass Fiber
-  materialType: polymer composite
-  symbol: PRC
-composition:
-- Phenolic Resin Matrix 40-60%
-- Carbon/Glass Fiber Reinforcement 40-60%
-- Additives and Fillers 2-5%
-compatibility:
-- Carbon Fiber Composites
-- Glass Fiber Composites
-- Polymer Matrix Composites
-regulatoryStandards: ISO 14125, ASTM D3039, ASTM D256
+  country: United States (California)
+  expertise: Optical Materials for Laser Systems
+  image: /images/author/todd-dunning.jpg
 images:
   hero:
-    alt: Phenolic Resin Composites surface undergoing laser cleaning showing precise
+    alt: Phenolic resin composite surface undergoing laser cleaning showing precise
       contamination removal
     url: /images/phenolic-resin-composites-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Phenolic Resin Composites surface after laser cleaning
+    alt: Microscopic view of phenolic resin composite surface after laser cleaning
       showing detailed surface structure
     url: /images/phenolic-resin-composites-laser-cleaning-micro.jpg
-title: Laser Cleaning Phenolic Resin Composites
-headline: Comprehensive technical guide for laser cleaning phenolic resin composite
-  materials
 environmentalImpact:
 - benefit: Chemical Solvent Elimination
-  description: Reduces VOC emissions by 100% compared to traditional solvent cleaning
+  description: Reduces chemical usage by 95% compared to traditional solvent cleaning
     methods
-- benefit: Waste Reduction
-  description: Eliminates abrasive media waste and solvent disposal requirements
+- benefit: Water Conservation
+  description: Saves approximately 2000 liters of water per month in industrial applications
 - benefit: Energy Efficiency
-  description: Consumes 60% less energy than mechanical abrasion processes
+  description: Consumes 60% less energy than thermal cleaning processes
 outcomes:
-- metric: Achieves ISO 8501-1 Sa 2.5 cleanliness standard
-  result: Surface Cleanliness Level
-- metric: Selective resin removal without fiber damage
-  result: Material Removal Precision
-- metric: 0.5-2 m²/hour cleaning rate depending on contamination level
-  result: Processing Speed
-keywords: phenolic resin composites, carbon phenolic, laser ablation, laser cleaning,
-  composite materials, non-contact cleaning, pulsed fiber laser, surface contamination
-  removal, industrial laser parameters, thermal processing
+- result: Surface Cleanliness Level
+  metric: Achieves ISO 14644-1 Class 8 cleanliness standard
+- result: Material Removal Precision
+  metric: ±2μm accuracy with minimal substrate damage
+- result: Processing Speed
+  metric: 1-3 m²/hour cleaning rate depending on contamination level
 prompt_chain_verification:
-  ai_detection_config_loaded: true
-  author_id: 4
   base_config_loaded: true
-  cultural_adaptation_applied: true
-  formatting_config_loaded: true
-  human_authenticity_focus: true
   persona_config_loaded: true
+  formatting_config_loaded: true
+  ai_detection_config_loaded: true
   persona_country: United States (California)
+  author_id: 4
+  verification_timestamp: '2025-09-19T05:45:36Z'
   prompt_components_integrated: 4
-  verification_timestamp: '2025-09-16T21:36:15Z'
-category: composite
-properties:
-  chemicalFormula: Phenolic-Carbon/Glass Fiber
-  conductivityMax: 50 W/m·K
-  conductivityMin: 0.1 W/m·K
-  conductivityPercentile: 8.5
-  decompositionPoint: 300-400°C
-  density: 1.4-1.8 g/cm³
-  densityMax: 2.2 g/cm³
-  densityMin: 0.9 g/cm³
-  densityPercentile: 53.8
-  fluenceRange: 0.5–2.5 J/cm²
-  hardness: 80-120 Barcol
-  hardnessMax: 80 HRC
-  hardnessMin: 10 HB
-  hardnessPercentile: 100.0
-  laserAbsorptionMax: 80 cm⁻¹
-  laserAbsorptionMin: 1 cm⁻¹
-  laserReflectivityMax: 15%
-  laserReflectivityMin: 3%
-  laserType: Pulsed Fiber Laser
-  meltingMax: 400°C
-  meltingMin: 150°C
-  modulusMax: 300 GPa
-  modulusMin: 1 GPa
-  modulusPercentile: 6.4
-  specificHeatMax: 2.0 J/g·K
-  specificHeatMin: 0.8 J/g·K
-  tensileMax: 7000 MPa
-  tensileMin: 100 MPa
-  tensilePercentile: 1.4
-  tensileStrength: 100-300 MPa
-  thermalConductivity: 0.2-0.5 W/m·K
-  thermalDiffusivityMax: 20 mm²/s
-  thermalDiffusivityMin: 0.1 mm²/s
-  thermalExpansionMax: 60 µm/m·K
-  thermalExpansionMin: 1 µm/m·K
-  thermalMax: 60 W/m·K
-  thermalMin: 0.1 W/m·K
-  thermalPercentile: 0.4
-  wavelength: 1064nm
-  youngsModulus: 10-30 GPa
+  human_authenticity_focus: true
+  cultural_adaptation_applied: true
 ---
-
-# Version Information
-# Generated: 2025-09-16T14:37:07.804447
-# Material: Phenolic Resin Composites
-# Component: frontmatter
-# Generator: Z-Beam v2.1.0
-# Author: AI Assistant
-# Platform: Darwin (3.12.4)
-# File: content/components/frontmatter/phenolic-resin-composites-laser-cleaning.md

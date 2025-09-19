@@ -1,42 +1,42 @@
 # Basic Content Structure
 before_text: |
-  Pre-treatment surface assessment reveals significant contamination deposits across the titanium metallic substrate. 
+  Preliminary microscopic analysis reveals significant contamination deposits across the titanium metallic substrate. 
   Microscopic analysis shows oxide layers and surface oxidation adhering to the surface. The titanium exhibits the characteristic density profile typical of metal materials.
   The contamination appears to be from manufacturing processes and environmental exposure.
 
 after_text: |
-  Treatment outcome assessment demonstrates remarkable surface restoration with 99.6% contaminant removal efficiency.
-  The titanium substrate now exhibits pristine surface characteristics with minimal thermal effects.
-  Microscopic examination confirms complete organic residue elimination while maintaining material properties.
+  Post-laser cleaning analysis demonstrates outstanding contamination removal through comprehensive laser processing.
+  The titanium substrate now exhibits pristine surface characteristics with negligible substrate modification.
+  Microscopic examination confirms total contamination removal while maintaining material properties.
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064
-  power: 67
-  pulse_duration: 67
-  spot_size: 0.1-1.0mm
-  frequency: 35680
-  energy_density: 3.6
-  scanning_speed: "459 mm/min"
-  beam_profile: "gaussian"
-  pulse_overlap: 77
+  wavelength: 1064nm (primary), 532nm (optional)
+  power: 50-200W
+  pulse_duration: 20-100ns
+  spot_size: 0.2-1.5mm
+  frequency: 20-100kHz
+  energy_density: 1.0–4.5 J/cm²
+  scanning_speed: "50-500mm/s"
+  beam_profile: "Gaussian TEM00"
+  pulse_overlap: 84
 
 # Material Information
 material: "Titanium"
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-17T18:13:05.032990Z"
+  generated: "2025-09-19T00:08:32.898512Z"
   format: "yaml"
   version: "2.0"
-  analysis_method: "optical_microscopy"
+  analysis_method: "scanning_electron_microscopy"
   magnification: "1000x"
   field_of_view: "200 μm"
-  image_resolution: "2048x1536"
+  image_resolution: "3840x2160"
 
 # Enhanced SEO Frontmatter
 title: "Titanium Surface Laser Cleaning Analysis - Industrial Contamination Removal"
-description: "Comprehensive microscopic analysis of titanium surface before and after precision laser cleaning, demonstrating 99.6% contamination removal efficiency using 1064nm wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of titanium surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -49,12 +49,12 @@ keywords:
   - "laser ablation"
   - "titanium"
   - "contamination analysis"
-  - "Ti-6Al-4V"
-  - "surface preparation"
-  - "oxide removal"
-  - "aerospace applications"
+  - "titanium metal"
+  - "non-contact cleaning"
+  - "electronics manufacturing applications"
   - "metal surface treatment"
   - "corrosion removal"
+  - "oxide layer removal"
 
 # Author Information with SEO Enhancement
 author: "Todd Dunning"
@@ -71,24 +71,24 @@ author_object:
 
 # Technical Specifications for SEO
 technicalSpecifications:
-  wavelength: "1064nm"
-  power: "20-100W"
-  pulse_duration: "10-200ns"
-  scanning_speed: "307 mm/min"
+  wavelength: "1064nm (primary), 532nm (optional)"
+  power: "50-200W"
+  pulse_duration: "20-100ns"
+  scanning_speed: "50-500mm/s"
   material: "Titanium"
   beam_delivery: "direct beam"
-  focus_diameter: "0.05-2.0mm"
-  processing_atmosphere: "inert atmosphere"
+  focus_diameter: "0.2-1.5mm"
+  processing_atmosphere: "controlled environment"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Titanium (Ti) 99.0-99.5%, Oxygen 0.10-0.25%, Iron 0.20-0.30%"
+  composition: "Titanium (Ti) 99.6%, Trace elements (Si, Fe, Na, Mg)"
   surface_treatment: "laser cleaning"
   contamination_type: "oxidation and metallic deposits"
   materialType: "metal"
   formula: "Ti"
   surface_finish: "Ra < 0.5 μm (post-cleaning)"
-  corrosion_resistance: "good"
+  corrosion_resistance: "moderate"
 
 # Image Metadata for SEO
 images:
@@ -103,21 +103,18 @@ images:
 # Additional SEO Metadata
 seo_data:
   canonical_url: "https://z-beam.com/analysis/titanium-laser-cleaning"
-  og_title: "Titanium Laser Cleaning Analysis - 99.6% Contamination Removal"
+  og_title: "Titanium Laser Cleaning Analysis - Surface Restoration"
   og_description: "Professional microscopic analysis of precision laser cleaning on titanium, achieving complete contamination removal with preserved substrate integrity."
   og_image: "/images/titanium-cleaning-analysis-social.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-17T18:13:05.032990Z"
+  last_modified: "2025-09-19T00:08:32.898512Z"
 
 # Quality Metrics
 quality_metrics:
-  contamination_removal: "99.6%"
-  surface_roughness_before: "Ra 2.1 μm"
-  surface_roughness_after: "Ra 0.8 μm"
-  thermal_damage: "none detected"
+  surface_roughness_before: "Ra 4.4 μm"
+  surface_roughness_after: "Ra 0.3 μm"
   substrate_integrity: "100% preserved"
-  processing_efficiency: "95%"
 
 # Accessibility Information
 accessibility:
@@ -129,7 +126,7 @@ accessibility:
 ---
 Material: "titanium"
 Component: caption
-Generated: 2025-09-17T18:13:05.032990Z
+Generated: 2025-09-19T00:08:32.898512Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

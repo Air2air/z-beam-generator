@@ -1,45 +1,161 @@
 ---
 name: Alabaster
-applications:
-- detail: Gentle removal of surface dirt, soot, and biological growth from historical
-    alabaster sculptures and artifacts
-  industry: Art Restoration
-- detail: Cleaning of alabaster cladding, decorative elements, and inlays without
-    water or abrasives
-  industry: Construction & Architecture
-technicalSpecifications:
-  fluenceRange: 0.5–2.0 J/cm²
-  powerRange: 10-50W
-  pulseDuration: 10-50ns
-  repetitionRate: 10-50kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.1-0.8mm
-  wavelength: 1064nm (primary), 532nm (optional for delicate work)
+category: stone
+title: Laser Cleaning Alabaster
+headline: Comprehensive technical guide for laser cleaning stone alabaster
 description: Technical overview of Alabaster, CaSO4·2H2O, for laser cleaning applications,
   including optimal 1064nm wavelength interaction, and industrial applications in
   surface preparation.
+keywords: alabaster, alabaster stone, laser ablation, laser cleaning, non-contact
+  cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters,
+  thermal processing, surface restoration
+chemicalProperties:
+  symbol: Alabaster
+  formula: CaSO4·2H2O
+  materialType: stone
+properties:
+  density: 2.3 g/cm³
+  densityNumeric: 2.3
+  densityUnit: g/cm³
+  densityMin: 1.8 g/cm³
+  densityMinNumeric: 1.8
+  densityMinUnit: g/cm³
+  densityMax: 6.0 g/cm³
+  densityMaxNumeric: 6.0
+  densityMaxUnit: g/cm³
+  densityPercentile: 12.5
+  meltingPoint: 1450°C
+  meltingPointNumeric: 1450.0
+  meltingPointUnit: °C
+  meltingPercentile: 25.0
+  thermalConductivity: 1.3 W/m·K
+  thermalConductivityNumeric: 1.3
+  thermalConductivityUnit: W/m·K
+  thermalPercentile: 0.5
+  tensileStrength: 15 MPa
+  tensileStrengthNumeric: 15.0
+  tensileStrengthUnit: MPa
+  tensilePercentile: 0.0
+  hardness: 2.0 Mohs
+  hardnessNumeric: 2.0
+  hardnessUnit: Mohs
+  hardnessMin: 500 HV
+  hardnessMinNumeric: 500.0
+  hardnessMinUnit: HV
+  hardnessMax: 2500 HV
+  hardnessMaxNumeric: 2500.0
+  hardnessMaxUnit: HV
+  hardnessPercentile: 0.0
+  youngsModulus: 20 GPa
+  youngsModulusNumeric: 20.0
+  youngsModulusUnit: GPa
+  modulusMin: 150 GPa
+  modulusMinNumeric: 150.0
+  modulusMinUnit: GPa
+  modulusMax: 400 GPa
+  modulusMaxNumeric: 400.0
+  modulusMaxUnit: GPa
+  modulusPercentile: 0.0
+  laserType: Pulsed Fiber Laser
+  wavelength: 1064nm
+  fluenceRange: 0.5–2.0 J/cm²
+  chemicalFormula: CaSO4·2H2O
+composition:
+- Calcium Sulfate Dihydrate (CaSO4·2H2O) 95-99%
+- Calcite (CaCO3) 1-5%
+- Trace minerals and impurities
+machineSettings:
+  powerRange: 10-50W
+  powerRangeNumeric: 30.0
+  powerRangeUnit: W
+  powerRangeMin: 20W
+  powerRangeMinNumeric: 20.0
+  powerRangeMinUnit: W
+  powerRangeMax: 500W
+  powerRangeMaxNumeric: 500.0
+  powerRangeMaxUnit: W
+  pulseDuration: 10-50ns
+  pulseDurationNumeric: 30.0
+  pulseDurationUnit: ns
+  pulseDurationMin: 1ns
+  pulseDurationMinNumeric: 1.0
+  pulseDurationMinUnit: ns
+  pulseDurationMax: 1000ns
+  pulseDurationMaxNumeric: 1000.0
+  pulseDurationMaxUnit: ns
+  wavelength: 1064nm (primary), 532nm (optional)
+  wavelengthNumeric: 1064.0
+  wavelengthUnit: nm
+  wavelengthMin: 355nm
+  wavelengthMinNumeric: 355.0
+  wavelengthMinUnit: nm
+  wavelengthMax: 2940nm
+  wavelengthMaxNumeric: 2940.0
+  wavelengthMaxUnit: nm
+  spotSize: 0.1-0.8mm
+  spotSizeNumeric: 0.45
+  spotSizeUnit: mm
+  spotSizeMin: 0.01mm
+  spotSizeMinNumeric: 0.01
+  spotSizeMinUnit: mm
+  spotSizeMax: 10mm
+  spotSizeMaxNumeric: 10.0
+  spotSizeMaxUnit: mm
+  repetitionRate: 10-50kHz
+  repetitionRateNumeric: 30.0
+  repetitionRateUnit: kHz
+  repetitionRateMin: 1kHz
+  repetitionRateMinNumeric: 1.0
+  repetitionRateMinUnit: kHz
+  repetitionRateMax: 1000kHz
+  repetitionRateMaxNumeric: 1000.0
+  repetitionRateMaxUnit: kHz
+  fluenceRange: 0.5–2.0 J/cm²
+  fluenceRangeNumeric: 0.5
+  fluenceRangeUnit: J/cm²
+  fluenceRangeMin: 0.1J/cm²
+  fluenceRangeMinNumeric: 0.1
+  fluenceRangeMinUnit: J/cm²
+  fluenceRangeMax: 50J/cm²
+  fluenceRangeMaxNumeric: 50.0
+  fluenceRangeMaxUnit: J/cm²
+  scanningSpeed: 50-500mm/s
+  scanningSpeedNumeric: 275.0
+  scanningSpeedUnit: mm/s
+  scanningSpeedMin: 1mm/s
+  scanningSpeedMinNumeric: 1.0
+  scanningSpeedMinUnit: mm/s
+  scanningSpeedMax: 5000mm/s
+  scanningSpeedMaxNumeric: 5000.0
+  scanningSpeedMaxUnit: mm/s
+  beamProfile: Gaussian TEM00
+  beamProfileOptions:
+  - Gaussian TEM00
+  - Top-hat
+  - Donut
+  - Multi-mode
+  safetyClass: Class 4 (requires full enclosure)
+applications:
+- industry: Art Restoration
+  detail: Gentle removal of surface dirt, soot, and biological growth from delicate
+    alabaster sculptures and artifacts
+- industry: Architectural Conservation
+  detail: Cleaning of historical alabaster facades, monuments, and interior decorative
+    elements
+compatibility:
+- Low-Fluence Laser Cleaning
+- Gentle Ablative Processes
+- Non-Contact Surface Treatment
+regulatoryStandards: ISO 18562, ASTM F2100, IEC 60601-1
 author: Yi-Chun Lin
 author_object:
-  country: Taiwan
-  expertise: Laser Materials Processing
   id: 1
-  image: /images/author/yi-chun-lin.jpg
   name: Yi-Chun Lin
   sex: f
   title: Ph.D.
-chemicalProperties:
-  formula: CaSO4·2H2O
-  materialType: stone
-  symbol: CaSO4·2H2O
-composition:
-- Gypsum (CaSO4·2H2O) 95-99%
-- Calcite (CaCO3) 1-5%
-- Trace minerals (clay, iron oxides, silica)
-compatibility:
-- Historical Artifacts
-- Decorative Stone
-- Sculptural Elements
-regulatoryStandards: ISO 10332, ASTM C119, EN 14630
+  country: Taiwan
+  expertise: Laser Materials Processing
+  image: /images/author/yi-chun-lin.jpg
 images:
   hero:
     alt: Alabaster surface undergoing laser cleaning showing precise contamination
@@ -49,84 +165,31 @@ images:
     alt: Microscopic view of Alabaster surface after laser cleaning showing detailed
       surface structure
     url: /images/alabaster-laser-cleaning-micro.jpg
-title: Laser Cleaning Alabaster
-headline: Comprehensive technical guide for laser cleaning stone alabaster
 environmentalImpact:
 - benefit: Chemical Solvent Elimination
-  description: Eliminates need for harsh chemical cleaners and acidic solutions traditionally
-    used on stone
+  description: Eliminates need for harsh chemical cleaners that can damage porous
+    alabaster
 - benefit: Water Conservation
-  description: Zero water consumption compared to traditional stone cleaning methods
-- benefit: Waste Reduction
-  description: Produces only minimal, contained particulate waste without liquid runoff
+  description: Removes requirement for water-based cleaning that can cause staining
+    and deterioration
+- benefit: Precision Material Preservation
+  description: Minimizes material loss compared to mechanical cleaning methods
 outcomes:
-- metric: Complete removal of surface contaminants while preserving original patina
-  result: Surface Cleanliness
-- metric: Zero substrate damage with precise ablation depth control
-  result: Material Preservation
-- metric: 0.5-1.5 m²/hour cleaning rate depending on contamination level and delicacy
-  result: Processing Speed
-keywords: alabaster, alabaster stone, laser ablation, laser cleaning, non-contact
-  cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters,
-  thermal processing, surface restoration
+- result: Surface Cleanliness Level
+  metric: Achieves complete removal of surface contaminants without substrate alteration
+- result: Material Removal Precision
+  metric: Sub-micron layer control with preservation of original surface details
+- result: Processing Speed
+  metric: 0.5-1.5 m²/hour cleaning rate for delicate conservation work
 prompt_chain_verification:
-  ai_detection_config_loaded: true
-  author_id: 1
   base_config_loaded: true
-  cultural_adaptation_applied: true
-  formatting_config_loaded: true
-  human_authenticity_focus: true
   persona_config_loaded: true
+  formatting_config_loaded: true
+  ai_detection_config_loaded: true
   persona_country: Taiwan
+  author_id: 1
+  verification_timestamp: '2025-09-19T04:52:57Z'
   prompt_components_integrated: 4
-  verification_timestamp: '2025-09-16T22:31:06Z'
-category: stone
-properties:
-  chemicalFormula: CaSO4·2H2O
-  density: 2.3 g/cm³
-  densityMax: 3.2 g/cm³
-  densityMin: 1.5 g/cm³
-  densityPercentile: 47.1
-  fluenceRange: 0.5–2.0 J/cm²
-  hardness: 2-3 Mohs
-  hardnessMax: 800 HV
-  hardnessMin: 100 HV
-  hardnessPercentile: 0.0
-  laserAbsorptionMax: 30 cm⁻¹
-  laserAbsorptionMin: 0.5 cm⁻¹
-  laserReflectivityMax: 40%
-  laserReflectivityMin: 10%
-  laserType: Pulsed Fiber Laser
-  meltingMax: 1700°C
-  meltingMin: 1200°C
-  meltingPercentile: 50.0
-  meltingPoint: 1450°C
-  modulusMax: 100 GPa
-  modulusMin: 10 GPa
-  modulusPercentile: 16.7
-  specificHeatMax: 1.0 J/g·K
-  specificHeatMin: 0.7 J/g·K
-  tensileMax: 300 MPa
-  tensileMin: 2 MPa
-  tensilePercentile: 4.4
-  tensileStrength: 15 MPa
-  thermalConductivity: 1.3 W/m·K
-  thermalDiffusivityMax: 3 mm²/s
-  thermalDiffusivityMin: 0.5 mm²/s
-  thermalExpansionMax: 12 µm/m·K
-  thermalExpansionMin: 3 µm/m·K
-  thermalMax: 5.0 W/m·K
-  thermalMin: 0.2 W/m·K
-  thermalPercentile: 22.9
-  wavelength: 1064nm
-  youngsModulus: 25 GPa
+  human_authenticity_focus: true
+  cultural_adaptation_applied: true
 ---
-
-# Version Information
-# Generated: 2025-09-16T15:31:59.882832
-# Material: Alabaster
-# Component: frontmatter
-# Generator: Z-Beam v2.1.0
-# Author: AI Assistant
-# Platform: Darwin (3.12.4)
-# File: content/components/frontmatter/alabaster-laser-cleaning.md

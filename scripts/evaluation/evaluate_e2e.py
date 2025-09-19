@@ -155,7 +155,7 @@ def test_original_generator(material):
     """Test the original generator."""
     try:
         from api.client import MockAPIClient
-        from components.text.generators.generator import TextComponentGenerator
+        from components.text.generator import TextComponentGenerator
 
         start_time = time.time()
 

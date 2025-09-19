@@ -58,14 +58,20 @@ class AuthorComponentGenerator:
     def _create_author_yaml(self, material_name: str, author_data: Dict) -> str:
         """Create author content in YAML format from frontmatter author data"""
         
-        # Extract author information
-        author_name = author_data.get("name", "Unknown Author")
-        author_title = author_data.get("title", "")
-        author_expertise = author_data.get("expertise", "Laser Processing Expert")
-        country = author_data.get("country", "")
-        author_id = author_data.get("id", 1)
-        image_url = author_data.get("image", "")
-        sex = author_data.get("sex", "")
+        # Validate required author fields - fail-fast architecture, no fallbacks
+        required_fields = ["name", "title", "expertise", "country", "id", "image", "sex"]
+        for field in required_fields:
+            if field not in author_data:
+                raise ValueError(f"Required author field '{field}' missing from frontmatter data - fail-fast architecture requires complete author information")
+        
+        # Extract author information - no fallback values
+        author_name = author_data["name"]
+        author_title = author_data["title"]
+        author_expertise = author_data["expertise"]
+        country = author_data["country"]
+        author_id = author_data["id"]
+        image_url = author_data["image"]
+        sex = author_data["sex"]
 
         # Create structured author data
         author_structure = {

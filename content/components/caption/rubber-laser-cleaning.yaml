@@ -1,42 +1,42 @@
 # Basic Content Structure
 before_text: |
-  Pre-treatment surface assessment reveals significant contamination deposits across the rubber composite material. 
-  Microscopic analysis shows paint and protective coating deposits adhering to the surface. The rubber exhibits the characteristic density profile typical of composite materials.
+  Initial surface examination reveals significant contamination deposits across the rubber composite material. 
+  Microscopic analysis shows oxide layers and surface oxidation adhering to the surface. The rubber exhibits the characteristic density profile typical of composite materials.
   The contamination appears to be from manufacturing processes and environmental aging.
 
 after_text: |
-  Post-processing microscopic evaluation demonstrates exceptional cleaning performance with 97.1% contaminant removal efficiency.
-  The rubber substrate now exhibits pristine surface characteristics with minimal thermal effects.
-  Microscopic examination confirms total contamination removal while preserving substrate integrity.
+  Post-processing microscopic evaluation demonstrates remarkable surface restoration through comprehensive laser processing.
+  The rubber substrate now exhibits pristine surface characteristics with preserved fiber-matrix bond.
+  Microscopic examination confirms comprehensive surface decontamination while preserving substrate integrity.
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064
-  power: 97
-  pulse_duration: 77
-  spot_size: 0.1-2.0mm
-  frequency: 34326
-  energy_density: 2.3
-  scanning_speed: "689 mm/min"
-  beam_profile: "gaussian"
-  pulse_overlap: 78
+  wavelength: 1064nm (primary), 532nm (optional)
+  power: 50-200W
+  pulse_duration: 20-100ns
+  spot_size: 0.2-1.5mm
+  frequency: 20-100kHz
+  energy_density: 1.0–4.5 J/cm²
+  scanning_speed: "50-500mm/s"
+  beam_profile: "Gaussian TEM00"
+  pulse_overlap: 88
 
 # Material Information
 material: "Rubber"
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-17T18:12:39.248620Z"
+  generated: "2025-09-19T00:07:58.672789Z"
   format: "yaml"
   version: "2.0"
-  analysis_method: "optical_microscopy"
+  analysis_method: "scanning_electron_microscopy"
   magnification: "1000x"
   field_of_view: "200 μm"
   image_resolution: "3840x2160"
 
 # Enhanced SEO Frontmatter
 title: "Rubber Surface Laser Cleaning Analysis - Advanced Material Processing"
-description: "Comprehensive microscopic analysis of rubber surface before and after precision laser cleaning, demonstrating 97.1% contamination removal efficiency using 1064nm (primary), 355nm (optional) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of rubber surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -49,9 +49,9 @@ keywords:
   - "laser ablation"
   - "rubber"
   - "contamination analysis"
-  - "elastomer"
+  - "rubber composite"
   - "non-contact cleaning"
-  - "tire manufacturing applications"
+  - "electronics manufacturing applications"
   - "composite processing"
   - "advanced materials"
   - "polymer matrix cleaning"
@@ -71,23 +71,23 @@ author_object:
 
 # Technical Specifications for SEO
 technicalSpecifications:
-  wavelength: "1064nm (primary), 355nm (optional)"
-  power: "20-100W"
-  pulse_duration: "50-200ns"
-  scanning_speed: "558 mm/min"
+  wavelength: "1064nm (primary), 532nm (optional)"
+  power: "50-200W"
+  pulse_duration: "20-100ns"
+  scanning_speed: "50-500mm/s"
   material: "Rubber"
-  beam_delivery: "galvanometer scanning"
-  focus_diameter: "0.5-3.0mm"
+  beam_delivery: "direct beam"
+  focus_diameter: "0.2-1.5mm"
   processing_atmosphere: "controlled environment"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Natural/Synthetic Rubber Polymer 40-60%, Carbon Black 20-35%, Processing Oils 5-15%"
+  composition: "Natural Rubber (C5H8) 40-60%, Synthetic Polymers 20-40%, Carbon Black 20-30%"
   surface_treatment: "laser cleaning"
   contamination_type: "matrix degradation and environmental aging"
-  materialType: "elastomer"
-  formula: "Variable (C5H8)n"
-  surface_finish: "Ra < 0.8 μm (post-cleaning)"
+  materialType: "composite"
+  formula: "C5H8"
+  surface_finish: "Ra < 0.9 μm (post-cleaning)"
   corrosion_resistance: "excellent"
 
 # Image Metadata for SEO
@@ -103,21 +103,18 @@ images:
 # Additional SEO Metadata
 seo_data:
   canonical_url: "https://z-beam.com/analysis/rubber-laser-cleaning"
-  og_title: "Rubber Laser Cleaning Analysis - 97.1% Contamination Removal"
+  og_title: "Rubber Laser Cleaning Analysis - Surface Restoration"
   og_description: "Professional microscopic analysis of precision laser cleaning on rubber, achieving complete contamination removal with preserved substrate integrity."
   og_image: "/images/rubber-cleaning-analysis-social.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-17T18:12:39.248620Z"
+  last_modified: "2025-09-19T00:07:58.672789Z"
 
 # Quality Metrics
 quality_metrics:
-  contamination_removal: "97.1%"
   surface_roughness_before: "Ra 1.6 μm"
-  surface_roughness_after: "Ra 0.9 μm"
-  thermal_damage: "minimal"
-  substrate_integrity: "100% preserved"
-  processing_efficiency: "93%"
+  surface_roughness_after: "Ra 0.5 μm"
+  substrate_integrity: "excellent"
 
 # Accessibility Information
 accessibility:
@@ -129,7 +126,7 @@ accessibility:
 ---
 Material: "rubber"
 Component: caption
-Generated: 2025-09-17T18:12:39.248620Z
+Generated: 2025-09-19T00:07:58.672789Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

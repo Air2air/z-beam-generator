@@ -1,46 +1,160 @@
 ---
 name: Rosewood
+category: wood
+title: Laser Cleaning Rosewood
+headline: Comprehensive technical guide for laser cleaning wood rosewood
+description: Technical overview of Rosewood, C6H10O5, for laser cleaning applications,
+  including optimal 1064nm wavelength interaction, and industrial applications in
+  surface preparation.
+keywords: rosewood, rosewood wood, laser ablation, laser cleaning, non-contact cleaning,
+  pulsed fiber laser, surface contamination removal, industrial laser parameters,
+  thermal processing, surface restoration
+chemicalProperties:
+  symbol: Wood
+  formula: C6H10O5
+  materialType: wood
+properties:
+  density: 0.8 g/cm³
+  densityNumeric: 0.8
+  densityUnit: g/cm³
+  densityMin: 0.6 g/cm³
+  densityMinNumeric: 0.6
+  densityMinUnit: g/cm³
+  densityMax: 1.2 g/cm³
+  densityMaxNumeric: 1.2
+  densityMaxUnit: g/cm³
+  densityPercentile: 45.2
+  meltingPoint: 200-300°C
+  meltingPointNumeric: 250.0
+  meltingPointUnit: °C
+  meltingPercentile: 32.1
+  thermalConductivity: 0.12 W/m·K
+  thermalConductivityNumeric: 0.12
+  thermalConductivityUnit: W/m·K
+  thermalPercentile: 18.5
+  tensileStrength: 80-120 MPa
+  tensileStrengthNumeric: 100.0
+  tensileStrengthUnit: MPa
+  tensilePercentile: 22.8
+  hardness: 2.5-4.0 HB
+  hardnessNumeric: 3.25
+  hardnessUnit: HB
+  hardnessMin: 1.5 HB
+  hardnessMinNumeric: 1.5
+  hardnessMinUnit: HB
+  hardnessMax: 5.0 HB
+  hardnessMaxNumeric: 5.0
+  hardnessMaxUnit: HB
+  hardnessPercentile: 15.3
+  youngsModulus: 10 GPa
+  youngsModulusNumeric: 10.0
+  youngsModulusUnit: GPa
+  modulusMin: 8 GPa
+  modulusMinNumeric: 8.0
+  modulusMinUnit: GPa
+  modulusMax: 15 GPa
+  modulusMaxNumeric: 15.0
+  modulusMaxUnit: GPa
+  modulusPercentile: 28.7
+  laserType: Pulsed Fiber Laser
+  wavelength: 1064nm
+  fluenceRange: 1.0–4.5 J/cm²
+  chemicalFormula: C6H10O5
+composition:
+- Cellulose (C6H10O5) 45-50%
+- Lignin 20-30%
+- Hemicellulose 15-25%
+- Extractives 2-5%
+machineSettings:
+  powerRange: 50-200W
+  powerRangeNumeric: 125.0
+  powerRangeUnit: W
+  powerRangeMin: 20W
+  powerRangeMinNumeric: 20.0
+  powerRangeMinUnit: W
+  powerRangeMax: 500W
+  powerRangeMaxNumeric: 500.0
+  powerRangeMaxUnit: W
+  pulseDuration: 20-100ns
+  pulseDurationNumeric: 60.0
+  pulseDurationUnit: ns
+  pulseDurationMin: 1ns
+  pulseDurationMinNumeric: 1.0
+  pulseDurationMinUnit: ns
+  pulseDurationMax: 1000ns
+  pulseDurationMaxNumeric: 1000.0
+  pulseDurationMaxUnit: ns
+  wavelength: 1064nm (primary), 532nm (optional)
+  wavelengthNumeric: 1064.0
+  wavelengthUnit: nm
+  wavelengthMin: 355nm
+  wavelengthMinNumeric: 355.0
+  wavelengthMinUnit: nm
+  wavelengthMax: 2940nm
+  wavelengthMaxNumeric: 2940.0
+  wavelengthMaxUnit: nm
+  spotSize: 0.2-1.5mm
+  spotSizeNumeric: 0.85
+  spotSizeUnit: mm
+  spotSizeMin: 0.01mm
+  spotSizeMinNumeric: 0.01
+  spotSizeMinUnit: mm
+  spotSizeMax: 10mm
+  spotSizeMaxNumeric: 10.0
+  spotSizeMaxUnit: mm
+  repetitionRate: 20-100kHz
+  repetitionRateNumeric: 60.0
+  repetitionRateUnit: kHz
+  repetitionRateMin: 1kHz
+  repetitionRateMinNumeric: 1.0
+  repetitionRateMinUnit: kHz
+  repetitionRateMax: 1000kHz
+  repetitionRateMaxNumeric: 1000.0
+  repetitionRateMaxUnit: kHz
+  fluenceRange: 1.0–4.5 J/cm²
+  fluenceRangeNumeric: 1.0
+  fluenceRangeUnit: J/cm²
+  fluenceRangeMin: 0.1J/cm²
+  fluenceRangeMinNumeric: 0.1
+  fluenceRangeMinUnit: J/cm²
+  fluenceRangeMax: 50J/cm²
+  fluenceRangeMaxNumeric: 50.0
+  fluenceRangeMaxUnit: J/cm²
+  scanningSpeed: 50-500mm/s
+  scanningSpeedNumeric: 275.0
+  scanningSpeedUnit: mm/s
+  scanningSpeedMin: 1mm/s
+  scanningSpeedMinNumeric: 1.0
+  scanningSpeedMinUnit: mm/s
+  scanningSpeedMax: 5000mm/s
+  scanningSpeedMaxNumeric: 5000.0
+  scanningSpeedMaxUnit: mm/s
+  beamProfile: Gaussian TEM00
+  beamProfileOptions:
+  - Gaussian TEM00
+  - Top-hat
+  - Donut
+  - Multi-mode
+  safetyClass: Class 4 (requires full enclosure)
 applications:
-- detail: Removal of surface contaminants, old finishes, and oxidation from rosewood
-    surfaces
-  industry: Woodworking & Furniture
-- detail: Precision cleaning of rosewood fretboards and instrument components without
-    damaging delicate wood grain
-  industry: Musical Instrument Restoration
-technicalSpecifications:
-  fluenceRange: 0.5–2.5 J/cm²
-  powerRange: 20-100W
-  pulseDuration: 50-200ns
-  repetitionRate: 10-50kHz
-  safetyClass: Class 4 (requires full enclosure and fume extraction)
-  spotSize: 0.1-2.0mm
-  wavelength: 1064nm (primary), 355nm (optional for delicate work)
-description: Technical overview of Rosewood (Dalbergia genus) for laser cleaning applications,
-  including optimal 1064nm wavelength interaction with wood cellulose and lignin,
-  and specialized applications in wood restoration.
+- industry: Electronics Manufacturing
+  detail: Removal of surface oxides and contaminants from Rosewood substrates
+- industry: Aerospace Components
+  detail: Cleaning of thermal barrier coatings and wood matrix composites
+compatibility:
+- Wood Substrates
+- Composite Materials
+- Delicate Wood Surfaces
+regulatoryStandards: ISO 13061, ASTM D143, EN 350
 author: Ikmanda Roswati
 author_object:
-  country: Indonesia
-  expertise: Ultrafast Laser Physics and Material Interactions
   id: 3
-  image: /images/author/ikmanda-roswati.jpg
   name: Ikmanda Roswati
   sex: m
   title: Ph.D.
-chemicalProperties:
-  formula: C6H10O5 (cellulose base)
-  materialType: Hardwood
-  symbol: Wood
-composition:
-- Cellulose (C6H10O5) 40-50%
-- Lignin 20-30%
-- Hemicellulose 15-25%
-- Extractives (oils, resins) 3-8%
-compatibility:
-- All Wood Types
-- Metal Inlays
-- Wood Finishes and Adhesives
-regulatoryStandards: ISO 13061, ASTM D143, IEC 60825-1
+  country: Indonesia
+  expertise: Ultrafast Laser Physics and Material Interactions
+  image: /images/author/ikmanda-roswati.jpg
 images:
   hero:
     alt: Rosewood surface undergoing laser cleaning showing precise contamination
@@ -50,87 +164,31 @@ images:
     alt: Microscopic view of Rosewood surface after laser cleaning showing detailed
       surface structure
     url: /images/rosewood-laser-cleaning-micro.jpg
-title: Laser Cleaning Rosewood - Technical Guide for Wood Restoration
-headline: Comprehensive technical guide for laser cleaning and restoring rosewood
-  surfaces
 environmentalImpact:
 - benefit: Chemical Solvent Elimination
-  description: Eliminates need for harsh chemical strippers and solvents in wood restoration
-- benefit: Waste Reduction
-  description: Produces 95% less waste compared to traditional sanding and chemical
+  description: Reduces chemical usage by 100% compared to traditional solvent cleaning
     methods
+- benefit: Water Conservation
+  description: Saves approximately 2000 liters of water per month in wood processing
+    applications
 - benefit: Energy Efficiency
-  description: Consumes 60% less energy than thermal wood stripping processes
+  description: Consumes 60% less energy than traditional sanding and chemical treatments
 outcomes:
-- metric: Achieves complete contaminant removal while preserving natural wood patina
-  result: Surface Cleanliness
-- metric: Removes less than 0.1mm of wood surface with precise depth control
-  result: Material Preservation
-- metric: 0.5-2 m²/hour cleaning rate depending on contamination level and wood density
-  result: Processing Speed
-keywords: rosewood, dalbergia, wood laser cleaning, laser wood restoration, non-ablative
-  cleaning, pulsed fiber laser, wood surface treatment, musical instrument cleaning,
-  furniture restoration
+- result: Surface Cleanliness Level
+  metric: Achieves ISO 8501-1 Sa 2.5 cleanliness standard
+- result: Material Removal Precision
+  metric: ±10μm accuracy with minimal substrate impact
+- result: Processing Speed
+  metric: 3-8 m²/hour cleaning rate depending on wood density and contamination
 prompt_chain_verification:
-  ai_detection_config_loaded: true
-  author_id: 3
   base_config_loaded: true
-  cultural_adaptation_applied: true
-  formatting_config_loaded: true
-  human_authenticity_focus: true
   persona_config_loaded: true
+  formatting_config_loaded: true
+  ai_detection_config_loaded: true
   persona_country: Indonesia
+  author_id: 3
+  verification_timestamp: '2025-09-19T06:04:40Z'
   prompt_components_integrated: 4
-  verification_timestamp: '2025-09-16T23:00:22Z'
-category: wood
-properties:
-  chemicalFormula: C6H10O5 (cellulose)
-  decompositionMax: 400°C
-  decompositionMin: 150°C
-  decompositionPercentile: 58.7
-  decompositionPoint: 200-300°C
-  density: 0.8-1.0 g/cm³
-  densityMax: 1.3 g/cm³
-  densityMin: 0.1 g/cm³
-  densityPercentile: 66.7
-  fluenceRange: 0.5–2.5 J/cm²
-  hardness: 2.5-3.5 HB
-  hardnessMax: 4000 HB
-  hardnessMin: 1 HB
-  hardnessPercentile: 0.1
-  laserAbsorptionMax: 100 cm⁻¹
-  laserAbsorptionMin: 5 cm⁻¹
-  laserReflectivityMax: 25%
-  laserReflectivityMin: 5%
-  laserType: Pulsed Fiber Laser
-  meltingMax: 500°C
-  meltingMin: 250°C
-  modulusMax: 20 GPa
-  modulusMin: 4 GPa
-  modulusPercentile: 53.1
-  specificHeatMax: 2.5 J/g·K
-  specificHeatMin: 1.2 J/g·K
-  tensileMax: 200 MPa
-  tensileMin: 20 MPa
-  tensilePercentile: 44.4
-  tensileStrength: 80-120 MPa
-  thermalConductivity: 0.12-0.18 W/m·K
-  thermalDiffusivityMax: 0.4 mm²/s
-  thermalDiffusivityMin: 0.1 mm²/s
-  thermalExpansionMax: 50 µm/m·K
-  thermalExpansionMin: 2 µm/m·K
-  thermalMax: 0.4 W/m·K
-  thermalMin: 0.04 W/m·K
-  thermalPercentile: 30.6
-  wavelength: 1064nm
-  youngsModulus: 10-15 GPa
+  human_authenticity_focus: true
+  cultural_adaptation_applied: true
 ---
-
-# Version Information
-# Generated: 2025-09-16T16:01:14.514415
-# Material: Rosewood
-# Component: frontmatter
-# Generator: Z-Beam v2.1.0
-# Author: AI Assistant
-# Platform: Darwin (3.12.4)
-# File: content/components/frontmatter/rosewood-laser-cleaning.md

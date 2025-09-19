@@ -234,49 +234,7 @@ class APIComponentGenerator(BaseComponentGenerator):
 
 
 # Specific component generators
-
-
-class AuthorComponentGenerator(StaticComponentGenerator):
-    """Generator for author components"""
-
-    def __init__(self):
-        super().__init__("author")
-
-    def _generate_static_content(
-        self,
-        material_name: str,
-        material_data: Dict,
-        author_info: Optional[Dict] = None,
-        frontmatter_data: Optional[Dict] = None,
-    ) -> str:
-        """Generate author component content"""
-        try:
-            from components.author.generator import create_author_content_from_data
-            from utils.author_manager import get_author_by_id
-
-            # FAIL-FAST: Author information is required - no defaults
-            if not author_info or "id" not in author_info:
-                raise GenerationError(
-                    "Author information with 'id' field is required for author component generation"
-                )
-
-            author_id = author_info["id"]
-
-            # Get author data - fail fast if not found
-            author = get_author_by_id(author_id)
-            if not author:
-                raise GenerationError(
-                    f"Author with ID {author_id} not found in configuration"
-                )
-
-            # Generate content
-            return create_author_content_from_data(material_name, author)
-
-        except Exception as e:
-            from utils.ai.loud_errors import component_failure
-
-            component_failure("author", str(e), material=material_name)
-            return f"Error loading author information: {e}"
+# (Author component generator moved to components/author/generator.py)
 
 
 # Component generator factory

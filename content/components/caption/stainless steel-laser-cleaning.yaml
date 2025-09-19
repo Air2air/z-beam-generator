@@ -1,42 +1,42 @@
 # Basic Content Structure
 before_text: |
-  Initial surface examination reveals significant contamination deposits across the stainless steel metallic substrate. 
-  Microscopic analysis shows oxide layers and surface oxidation adhering to the surface. The stainless steel exhibits the characteristic density profile typical of metal materials.
+  Preliminary microscopic analysis reveals significant contamination deposits across the stainless steel metallic substrate. 
+  Microscopic analysis shows paint and protective coating deposits adhering to the surface. The stainless steel exhibits the characteristic density profile typical of metal materials.
   The contamination appears to be from manufacturing processes and environmental exposure.
 
 after_text: |
-  Post-laser cleaning analysis demonstrates remarkable surface restoration with 96.5% contaminant removal efficiency.
+  Post-processing microscopic evaluation demonstrates remarkable surface restoration through comprehensive laser processing.
   The stainless steel substrate now exhibits pristine surface characteristics with negligible substrate modification.
-  Microscopic examination confirms total contamination removal while maintaining material properties.
+  Microscopic examination confirms comprehensive surface decontamination while maintaining material properties.
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064
-  power: 160
-  pulse_duration: 144
-  spot_size: 0.05-1.0mm
-  frequency: 11787
-  energy_density: 2.3
-  scanning_speed: "667 mm/min"
-  beam_profile: "gaussian"
-  pulse_overlap: 73
+  wavelength: 1064nm (primary), 532nm (optional)
+  power: 50-200W
+  pulse_duration: 20-100ns
+  spot_size: 0.2-1.5mm
+  frequency: 20-100kHz
+  energy_density: 1.0–4.5 J/cm²
+  scanning_speed: "50-500mm/s"
+  beam_profile: "Gaussian TEM00"
+  pulse_overlap: 83
 
 # Material Information
 material: "Stainless Steel"
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-17T18:20:05.922118Z"
+  generated: "2025-09-19T00:08:30.389123Z"
   format: "yaml"
   version: "2.0"
-  analysis_method: "atomic_force_microscopy"
+  analysis_method: "scanning_electron_microscopy"
   magnification: "1000x"
   field_of_view: "200 μm"
   image_resolution: "3840x2160"
 
 # Enhanced SEO Frontmatter
 title: "Stainless Steel Surface Laser Cleaning Analysis - Industrial Contamination Removal"
-description: "Comprehensive microscopic analysis of stainless steel surface before and after precision laser cleaning, demonstrating 96.5% contamination removal efficiency using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of stainless steel surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -74,7 +74,7 @@ technicalSpecifications:
   wavelength: "1064nm (primary), 532nm (optional)"
   power: "50-200W"
   pulse_duration: "20-100ns"
-  scanning_speed: "378 mm/min"
+  scanning_speed: "50-500mm/s"
   material: "Stainless Steel"
   beam_delivery: "direct beam"
   focus_diameter: "0.2-1.5mm"
@@ -82,12 +82,12 @@ technicalSpecifications:
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Iron (Fe): 70-75%, Chromium (Cr): 16-26%, Nickel (Ni): 6-14%"
+  composition: "Stainless Steel (Fe-Cr-Ni) 99.6%, Trace elements (Si, Fe, Na, Mg)"
   surface_treatment: "laser cleaning"
   contamination_type: "oxidation and metallic deposits"
   materialType: "metal"
   formula: "Fe-Cr-Ni"
-  surface_finish: "Ra < 0.5 μm (post-cleaning)"
+  surface_finish: "Ra < 0.8 μm (post-cleaning)"
   corrosion_resistance: "moderate"
 
 # Image Metadata for SEO
@@ -103,21 +103,18 @@ images:
 # Additional SEO Metadata
 seo_data:
   canonical_url: "https://z-beam.com/analysis/stainless-steel-laser-cleaning"
-  og_title: "Stainless Steel Laser Cleaning Analysis - 96.5% Contamination Removal"
+  og_title: "Stainless Steel Laser Cleaning Analysis - Surface Restoration"
   og_description: "Professional microscopic analysis of precision laser cleaning on stainless steel, achieving complete contamination removal with preserved substrate integrity."
   og_image: "/images/stainless-steel-cleaning-analysis-social.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-17T18:20:05.922118Z"
+  last_modified: "2025-09-19T00:08:30.389123Z"
 
 # Quality Metrics
 quality_metrics:
-  contamination_removal: "96.5%"
-  surface_roughness_before: "Ra 2.1 μm"
-  surface_roughness_after: "Ra 0.4 μm"
-  thermal_damage: "negligible"
-  substrate_integrity: "100% preserved"
-  processing_efficiency: "97%"
+  surface_roughness_before: "Ra 1.6 μm"
+  surface_roughness_after: "Ra 0.7 μm"
+  substrate_integrity: "99% preserved"
 
 # Accessibility Information
 accessibility:
@@ -129,7 +126,7 @@ accessibility:
 ---
 Material: "stainless steel"
 Component: caption
-Generated: 2025-09-17T18:20:05.922118Z
+Generated: 2025-09-19T00:08:30.389123Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

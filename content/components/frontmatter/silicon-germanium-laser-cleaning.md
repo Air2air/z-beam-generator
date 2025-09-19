@@ -1,45 +1,160 @@
 ---
 name: Silicon Germanium
-applications:
-- detail: Removal of native oxides and organic contaminants from SiGe wafers prior
-    to epitaxial growth
-  industry: Semiconductor Manufacturing
-- detail: Surface preparation of SiGe photodetectors and integrated circuits for improved
-    performance
-  industry: Optoelectronics
-technicalSpecifications:
-  fluenceRange: 0.5–2.5 J/cm²
-  powerRange: 10-100W
-  pulseDuration: 10-50ns
-  repetitionRate: 50-200kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.1-0.8mm
-  wavelength: 1064nm (primary), 355nm (optional)
-description: Technical overview of Silicon Germanium (SiGe) for laser cleaning applications,
-  including optimal wavelength interaction with SiGe alloys, and industrial applications
-  in semiconductor manufacturing.
-author: Todd Dunning
-author_object:
-  country: United States (California)
-  expertise: Optical Materials for Laser Systems
-  id: 4
-  image: /images/author/todd-dunning.jpg
-  name: Todd Dunning
-  sex: m
-  title: MA
+category: semiconductor
+title: Laser Cleaning Silicon Germanium
+headline: Comprehensive technical guide for laser cleaning semiconductor silicon germanium
+description: Technical overview of Silicon Germanium, SiGe, for laser cleaning applications,
+  including optimal 1064nm wavelength interaction, and industrial applications in
+  surface preparation.
+keywords: silicon germanium, silicon germanium semiconductor, laser ablation, laser
+  cleaning, non-contact cleaning, pulsed fiber laser, surface contamination removal,
+  industrial laser parameters, thermal processing, surface restoration
 chemicalProperties:
-  formula: Si₁₋ₓGeₓ
-  materialType: semiconductor alloy
   symbol: SiGe
+  formula: Si₁₋ₓGeₓ
+  materialType: semiconductor
+properties:
+  density: 5.32 g/cm³
+  densityNumeric: 5.32
+  densityUnit: g/cm³
+  densityMin: 2.3 g/cm³
+  densityMinNumeric: 2.3
+  densityMinUnit: g/cm³
+  densityMax: 7.9 g/cm³
+  densityMaxNumeric: 7.9
+  densityMaxUnit: g/cm³
+  densityPercentile: 48.7
+  meltingPoint: 1210-1410°C
+  meltingPointNumeric: 1310.0
+  meltingPointUnit: °C
+  meltingPercentile: 42.1
+  thermalConductivity: 45-90 W/m·K
+  thermalConductivityNumeric: 67.5
+  thermalConductivityUnit: W/m·K
+  thermalPercentile: 32.5
+  tensileStrength: 150-300 MPa
+  tensileStrengthNumeric: 225.0
+  tensileStrengthUnit: MPa
+  tensilePercentile: 18.9
+  hardness: 800-1200 HV
+  hardnessNumeric: 1000.0
+  hardnessUnit: HV
+  hardnessMin: 100 HV
+  hardnessMinNumeric: 100.0
+  hardnessMinUnit: HV
+  hardnessMax: 3000 HV
+  hardnessMaxNumeric: 3000.0
+  hardnessMaxUnit: HV
+  hardnessPercentile: 65.3
+  youngsModulus: 130-160 GPa
+  youngsModulusNumeric: 145.0
+  youngsModulusUnit: GPa
+  modulusMin: 70 GPa
+  modulusMinNumeric: 70.0
+  modulusMinUnit: GPa
+  modulusMax: 400 GPa
+  modulusMaxNumeric: 400.0
+  modulusMaxUnit: GPa
+  modulusPercentile: 45.8
+  laserType: Pulsed Fiber Laser
+  wavelength: 1064nm
+  fluenceRange: 1.0–4.5 J/cm²
+  chemicalFormula: Si₁₋ₓGeₓ
 composition:
 - Silicon (Si) 70-95%
 - Germanium (Ge) 5-30%
-- Dopants (B, P, As) <1%
+- Trace elements (B, P, As, Sb)
+machineSettings:
+  powerRange: 50-200W
+  powerRangeNumeric: 125.0
+  powerRangeUnit: W
+  powerRangeMin: 20W
+  powerRangeMinNumeric: 20.0
+  powerRangeMinUnit: W
+  powerRangeMax: 500W
+  powerRangeMaxNumeric: 500.0
+  powerRangeMaxUnit: W
+  pulseDuration: 20-100ns
+  pulseDurationNumeric: 60.0
+  pulseDurationUnit: ns
+  pulseDurationMin: 1ns
+  pulseDurationMinNumeric: 1.0
+  pulseDurationMinUnit: ns
+  pulseDurationMax: 1000ns
+  pulseDurationMaxNumeric: 1000.0
+  pulseDurationMaxUnit: ns
+  wavelength: 1064nm (primary), 532nm (optional)
+  wavelengthNumeric: 1064.0
+  wavelengthUnit: nm
+  wavelengthMin: 355nm
+  wavelengthMinNumeric: 355.0
+  wavelengthMinUnit: nm
+  wavelengthMax: 2940nm
+  wavelengthMaxNumeric: 2940.0
+  wavelengthMaxUnit: nm
+  spotSize: 0.2-1.5mm
+  spotSizeNumeric: 0.85
+  spotSizeUnit: mm
+  spotSizeMin: 0.01mm
+  spotSizeMinNumeric: 0.01
+  spotSizeMinUnit: mm
+  spotSizeMax: 10mm
+  spotSizeMaxNumeric: 10.0
+  spotSizeMaxUnit: mm
+  repetitionRate: 20-100kHz
+  repetitionRateNumeric: 60.0
+  repetitionRateUnit: kHz
+  repetitionRateMin: 1kHz
+  repetitionRateMinNumeric: 1.0
+  repetitionRateMinUnit: kHz
+  repetitionRateMax: 1000kHz
+  repetitionRateMaxNumeric: 1000.0
+  repetitionRateMaxUnit: kHz
+  fluenceRange: 1.0–4.5 J/cm²
+  fluenceRangeNumeric: 1.0
+  fluenceRangeUnit: J/cm²
+  fluenceRangeMin: 0.1J/cm²
+  fluenceRangeMinNumeric: 0.1
+  fluenceRangeMinUnit: J/cm²
+  fluenceRangeMax: 50J/cm²
+  fluenceRangeMaxNumeric: 50.0
+  fluenceRangeMaxUnit: J/cm²
+  scanningSpeed: 50-500mm/s
+  scanningSpeedNumeric: 275.0
+  scanningSpeedUnit: mm/s
+  scanningSpeedMin: 1mm/s
+  scanningSpeedMinNumeric: 1.0
+  scanningSpeedMinUnit: mm/s
+  scanningSpeedMax: 5000mm/s
+  scanningSpeedMaxNumeric: 5000.0
+  scanningSpeedMaxUnit: mm/s
+  beamProfile: Gaussian TEM00
+  beamProfileOptions:
+  - Gaussian TEM00
+  - Top-hat
+  - Donut
+  - Multi-mode
+  safetyClass: Class 4 (requires full enclosure)
+applications:
+- industry: Electronics Manufacturing
+  detail: Removal of surface oxides and contaminants from Silicon Germanium substrates
+- industry: Aerospace Components
+  detail: Cleaning of thermal barrier coatings and semiconductor matrix composites
 compatibility:
 - Silicon
+- Germanium
 - Gallium Arsenide
 - Silicon Carbide
-regulatoryStandards: SEMI Standards, ISO 14644-1, IEC 60825-1
+regulatoryStandards: ISO 14644-1, SEMI S2, IEC 60825-1
+author: Todd Dunning
+author_object:
+  id: 4
+  name: Todd Dunning
+  sex: m
+  title: MA
+  country: United States (California)
+  expertise: Optical Materials for Laser Systems
+  image: /images/author/todd-dunning.jpg
 images:
   hero:
     alt: Silicon Germanium surface undergoing laser cleaning showing precise contamination
@@ -49,84 +164,30 @@ images:
     alt: Microscopic view of Silicon Germanium surface after laser cleaning showing
       detailed surface structure
     url: /images/silicon-germanium-laser-cleaning-micro.jpg
-title: Laser Cleaning Silicon Germanium - Technical Guide for Semiconductor Applications
-headline: Precision laser cleaning techniques for Silicon Germanium semiconductor
-  substrates
 environmentalImpact:
 - benefit: Chemical Solvent Elimination
-  description: Eliminates use of RCA cleaning chemicals (SC-1, SC-2) and organic solvents
+  description: Reduces chemical usage by 100% compared to traditional solvent cleaning
+    methods
 - benefit: Water Conservation
-  description: Reduces DI water consumption by 95% compared to wet cleaning methods
+  description: Saves approximately 5000 liters of water per month in industrial applications
 - benefit: Energy Efficiency
-  description: 60% lower energy consumption than plasma cleaning systems
+  description: Consumes 40% less energy than thermal cleaning processes
 outcomes:
-- metric: Achieves <10 atoms/cm² contamination levels meeting SEMI standards
-  result: Surface Cleanliness Level
-- metric: Sub-nanometer control with no crystal lattice damage
-  result: Material Removal Precision
-- metric: 15-30 wafers/hour throughput depending on contamination level
-  result: Processing Speed
-keywords: silicon germanium, SiGe semiconductor, laser ablation, laser cleaning, non-contact
-  cleaning, pulsed fiber laser, surface contamination removal, semiconductor processing,
-  wafer cleaning, surface preparation
+- result: Surface Cleanliness Level
+  metric: Achieves ISO 14644-1 Class 7 cleanliness standard
+- result: Material Removal Precision
+  metric: ±5μm accuracy with no substrate damage
+- result: Processing Speed
+  metric: 2-5 m²/hour cleaning rate depending on contamination level
 prompt_chain_verification:
-  ai_detection_config_loaded: true
-  author_id: 4
   base_config_loaded: true
-  cultural_adaptation_applied: true
-  formatting_config_loaded: true
-  human_authenticity_focus: true
   persona_config_loaded: true
+  formatting_config_loaded: true
+  ai_detection_config_loaded: true
   persona_country: United States (California)
+  author_id: 4
+  verification_timestamp: '2025-09-19T06:12:10Z'
   prompt_components_integrated: 4
-  verification_timestamp: '2025-09-16T22:30:12Z'
-category: semiconductor
-properties:
-  chemicalFormula: Si₁₋ₓGeₓ
-  density: 4.2-5.3 g/cm³
-  densityMax: 5.3 g/cm³
-  densityMin: 2.3 g/cm³
-  densityPercentile: 81.7
-  fluenceRange: 0.5–2.5 J/cm²
-  hardness: 800-1200 HV
-  hardnessMax: 2800 HV
-  hardnessMin: 900 HV
-  hardnessPercentile: 5.3
-  laserAbsorptionMax: 1000 cm⁻¹
-  laserAbsorptionMin: 0.1 cm⁻¹
-  laserReflectivityMax: 45%
-  laserReflectivityMin: 15%
-  laserType: Pulsed Fiber Laser
-  meltingMax: 2830°C
-  meltingMin: 937°C
-  meltingPercentile: 7.2
-  meltingPoint: 938-1210°C
-  modulusMax: 450 GPa
-  modulusMin: 130 GPa
-  modulusPercentile: 4.7
-  specificHeatMax: 0.7 J/g·K
-  specificHeatMin: 0.3 J/g·K
-  tensileMax: 400 MPa
-  tensileMin: 100 MPa
-  tensilePercentile: 41.7
-  tensileStrength: 150-300 MPa
-  thermalConductivity: 25-60 W/m·K
-  thermalDiffusivityMax: 150 mm²/s
-  thermalDiffusivityMin: 0.5 mm²/s
-  thermalExpansionMax: 6 µm/m·K
-  thermalExpansionMin: 2 µm/m·K
-  thermalMax: 490 W/m·K
-  thermalMin: 1.5 W/m·K
-  thermalPercentile: 8.4
-  wavelength: 1064nm
-  youngsModulus: 130-160 GPa
+  human_authenticity_focus: true
+  cultural_adaptation_applied: true
 ---
-
-# Version Information
-# Generated: 2025-09-16T15:31:06.307077
-# Material: Silicon Germanium
-# Component: frontmatter
-# Generator: Z-Beam v2.1.0
-# Author: AI Assistant
-# Platform: Darwin (3.12.4)
-# File: content/components/frontmatter/silicon-germanium-laser-cleaning.md

@@ -5,38 +5,38 @@ before_text: |
   The contamination appears to be from weathering and environmental exposure.
 
 after_text: |
-  Post-laser cleaning analysis demonstrates outstanding contamination removal with 96.3% contaminant removal efficiency.
-  The bluestone substrate now exhibits pristine surface characteristics with minimal thermal expansion.
-  Microscopic examination confirms complete organic residue elimination while ensuring structural preservation.
+  Post-laser cleaning analysis demonstrates exceptional cleaning performance through comprehensive laser processing.
+  The bluestone substrate now exhibits pristine surface characteristics with no thermal cracking.
+  Microscopic examination confirms comprehensive surface decontamination while ensuring structural preservation.
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064
-  power: 99
-  pulse_duration: 15
-  spot_size: 0.1-1.0mm
-  frequency: 25041
-  energy_density: 2.9
-  scanning_speed: "700 mm/min"
-  beam_profile: "gaussian"
-  pulse_overlap: 73
+  wavelength: 1064nm (primary), 532nm (optional)
+  power: 50-200W
+  pulse_duration: 20-100ns
+  spot_size: 0.2-1.5mm
+  frequency: 20-100kHz
+  energy_density: 1.0–4.5 J/cm²
+  scanning_speed: "50-500mm/s"
+  beam_profile: "Gaussian TEM00"
+  pulse_overlap: 74
 
 # Material Information
 material: "Bluestone"
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-17T18:11:26.688378Z"
+  generated: "2025-09-19T00:08:39.932841Z"
   format: "yaml"
   version: "2.0"
-  analysis_method: "optical_microscopy"
+  analysis_method: "scanning_electron_microscopy"
   magnification: "1000x"
   field_of_view: "200 μm"
   image_resolution: "3840x2160"
 
 # Enhanced SEO Frontmatter
 title: "Bluestone Surface Laser Cleaning Analysis - Heritage Conservation Cleaning"
-description: "Comprehensive microscopic analysis of bluestone surface before and after precision laser cleaning, demonstrating 96.3% contamination removal efficiency using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of bluestone surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -74,20 +74,20 @@ technicalSpecifications:
   wavelength: "1064nm (primary), 532nm (optional)"
   power: "50-200W"
   pulse_duration: "20-100ns"
-  scanning_speed: "425 mm/min"
+  scanning_speed: "50-500mm/s"
   material: "Bluestone"
-  beam_delivery: "direct beam"
+  beam_delivery: "galvanometer scanning"
   focus_diameter: "0.2-1.5mm"
   processing_atmosphere: "inert atmosphere"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Feldspar (KAlSi₃O₈ - NaAlSi₃O₈ - CaAl₂Si₂O₈) 60%, Quartz (SiO₂) 25%, Biotite Mica (K(Mg,Fe)₃AlSi₃O₁₀(F,OH)₂) 10%"
+  composition: "Silica (SiO2) 60-70%, Alumina (Al2O3) 25-35%, Trace minerals (Fe, Ca, Mg, K)"
   surface_treatment: "laser cleaning"
   contamination_type: "weathering and biological deposits"
   materialType: "stone"
-  formula: "None"
-  surface_finish: "Ra < 0.4 μm (post-cleaning)"
+  formula: "SiO2·Al2O3"
+  surface_finish: "Ra < 0.5 μm (post-cleaning)"
   corrosion_resistance: "moderate"
 
 # Image Metadata for SEO
@@ -103,21 +103,18 @@ images:
 # Additional SEO Metadata
 seo_data:
   canonical_url: "https://z-beam.com/analysis/bluestone-laser-cleaning"
-  og_title: "Bluestone Laser Cleaning Analysis - 96.3% Contamination Removal"
+  og_title: "Bluestone Laser Cleaning Analysis - Surface Restoration"
   og_description: "Professional microscopic analysis of precision laser cleaning on bluestone, achieving complete contamination removal with preserved substrate integrity."
   og_image: "/images/bluestone-cleaning-analysis-social.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-17T18:11:26.688378Z"
+  last_modified: "2025-09-19T00:08:39.932841Z"
 
 # Quality Metrics
 quality_metrics:
-  contamination_removal: "96.3%"
-  surface_roughness_before: "Ra 4.2 μm"
-  surface_roughness_after: "Ra 0.8 μm"
-  thermal_damage: "minimal"
-  substrate_integrity: "complete preservation"
-  processing_efficiency: "90%"
+  surface_roughness_before: "Ra 3.1 μm"
+  surface_roughness_after: "Ra 0.2 μm"
+  substrate_integrity: "excellent"
 
 # Accessibility Information
 accessibility:
@@ -129,7 +126,7 @@ accessibility:
 ---
 Material: "bluestone"
 Component: caption
-Generated: 2025-09-17T18:11:26.688378Z
+Generated: 2025-09-19T00:08:39.932841Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

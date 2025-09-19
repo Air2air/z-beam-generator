@@ -1,42 +1,42 @@
 # Basic Content Structure
 before_text: |
-  Initial surface examination reveals significant contamination deposits across the gallium metallic substrate. 
-  Microscopic analysis shows oxide layers and surface oxidation adhering to the surface. The gallium exhibits the characteristic density profile typical of metal materials.
+  Preliminary microscopic analysis reveals significant contamination deposits across the gallium metallic substrate. 
+  Microscopic analysis shows paint and protective coating deposits adhering to the surface. The gallium exhibits the characteristic density profile typical of metal materials.
   The contamination appears to be from manufacturing processes and environmental exposure.
 
 after_text: |
-  Treatment outcome assessment demonstrates remarkable surface restoration with 99.4% contaminant removal efficiency.
+  Post-laser cleaning analysis demonstrates exceptional cleaning performance through comprehensive laser processing.
   The gallium substrate now exhibits pristine surface characteristics with negligible substrate modification.
-  Microscopic examination confirms complete organic residue elimination while maintaining material properties.
+  Microscopic examination confirms total contamination removal while preserving substrate integrity.
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064
-  power: 172
-  pulse_duration: 39
-  spot_size: 0.05-1.0mm
-  frequency: 18839
-  energy_density: 3.4
-  scanning_speed: "654 mm/min"
-  beam_profile: "gaussian"
-  pulse_overlap: 90
+  wavelength: 1064nm (primary), 532nm (optional)
+  power: 50-200W
+  pulse_duration: 20-100ns
+  spot_size: 0.2-1.5mm
+  frequency: 20-100kHz
+  energy_density: 1.0–4.5 J/cm²
+  scanning_speed: "50-500mm/s"
+  beam_profile: "Gaussian TEM00"
+  pulse_overlap: 71
 
 # Material Information
 material: "Gallium"
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-17T18:11:50.059467Z"
+  generated: "2025-09-19T00:08:17.426705Z"
   format: "yaml"
   version: "2.0"
-  analysis_method: "optical_microscopy"
+  analysis_method: "scanning_electron_microscopy"
   magnification: "1000x"
   field_of_view: "200 μm"
-  image_resolution: "4096x3072"
+  image_resolution: "3840x2160"
 
 # Enhanced SEO Frontmatter
 title: "Gallium Surface Laser Cleaning Analysis - Industrial Contamination Removal"
-description: "Comprehensive microscopic analysis of gallium surface before and after precision laser cleaning, demonstrating 99.4% contamination removal efficiency using 1064nm (primary), 355nm (optional) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of gallium surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -49,12 +49,12 @@ keywords:
   - "laser ablation"
   - "gallium"
   - "contamination analysis"
-  - "gallium arsenide"
-  - "GaAs"
-  - "gallium nitride"
-  - "GaN"
+  - "gallium metal"
+  - "non-contact cleaning"
   - "electronics manufacturing applications"
   - "metal surface treatment"
+  - "corrosion removal"
+  - "oxide layer removal"
 
 # Author Information with SEO Enhancement
 author: "Ikmanda Roswati"
@@ -71,23 +71,23 @@ author_object:
 
 # Technical Specifications for SEO
 technicalSpecifications:
-  wavelength: "1064nm (primary), 355nm (optional)"
-  power: "10-50W"
-  pulse_duration: "10-50ns"
-  scanning_speed: "604 mm/min"
+  wavelength: "1064nm (primary), 532nm (optional)"
+  power: "50-200W"
+  pulse_duration: "20-100ns"
+  scanning_speed: "50-500mm/s"
   material: "Gallium"
-  beam_delivery: "fiber optic"
-  focus_diameter: "0.05-0.5mm"
-  processing_atmosphere: "inert atmosphere"
+  beam_delivery: "galvanometer scanning"
+  focus_diameter: "0.2-1.5mm"
+  processing_atmosphere: "controlled environment"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Gallium (Ga) 99.999%, Trace elements (Si, Fe, Zn, Mg)"
+  composition: "Gallium (Ga) 99.99%, Trace elements (Zn, Si, Fe, Mg)"
   surface_treatment: "laser cleaning"
   contamination_type: "oxidation and metallic deposits"
   materialType: "metal"
   formula: "Ga"
-  surface_finish: "Ra < 0.5 μm (post-cleaning)"
+  surface_finish: "Ra < 1.0 μm (post-cleaning)"
   corrosion_resistance: "moderate"
 
 # Image Metadata for SEO
@@ -103,21 +103,18 @@ images:
 # Additional SEO Metadata
 seo_data:
   canonical_url: "https://z-beam.com/analysis/gallium-laser-cleaning"
-  og_title: "Gallium Laser Cleaning Analysis - 99.4% Contamination Removal"
+  og_title: "Gallium Laser Cleaning Analysis - Surface Restoration"
   og_description: "Professional microscopic analysis of precision laser cleaning on gallium, achieving complete contamination removal with preserved substrate integrity."
   og_image: "/images/gallium-cleaning-analysis-social.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-17T18:11:50.059467Z"
+  last_modified: "2025-09-19T00:08:17.426705Z"
 
 # Quality Metrics
 quality_metrics:
-  contamination_removal: "99.4%"
-  surface_roughness_before: "Ra 2.7 μm"
+  surface_roughness_before: "Ra 2.3 μm"
   surface_roughness_after: "Ra 0.6 μm"
-  thermal_damage: "none detected"
-  substrate_integrity: "complete preservation"
-  processing_efficiency: "91%"
+  substrate_integrity: "99% preserved"
 
 # Accessibility Information
 accessibility:
@@ -129,7 +126,7 @@ accessibility:
 ---
 Material: "gallium"
 Component: caption
-Generated: 2025-09-17T18:11:50.059467Z
+Generated: 2025-09-19T00:08:17.426705Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

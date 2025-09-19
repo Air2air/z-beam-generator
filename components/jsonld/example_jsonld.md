@@ -39,19 +39,9 @@
   "license": "https://creativecommons.org/licenses/by/4.0/",
   "copyrightHolder": {
     "@type": "Organization",
-    "name": "Z-Beam Technologies"
+    "name": "Z-Beam"
   },
   "copyrightYear": 2025,
-  "publisher": {
-    "@type": "Organization",
-    "name": "Z-Beam Technologies",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "/images/logo-z-beam.svg",
-      "width": 200,
-      "height": 60
-    }
-  },
   "author": {
     "@type": "Person",
     "name": "Dr. Emily Chen",
@@ -65,11 +55,6 @@
       "Aluminum Surface Engineering",
       "Industrial Laser Applications"
     ]
-  },
-  "reviewedBy": {
-    "@type": "Person",
-    "name": "Dr. Chen",
-    "jobTitle": "Materials Science Director"
   },
   "datePublished": "2025-01-27T15:30:00Z",
   "dateModified": "2025-01-27T15:30:00Z",
@@ -102,23 +87,10 @@
       }
     }
   ],
-  "video": {
-    "@type": "VideoObject",
-    "name": "Aluminum Laser Cleaning Process Demonstration",
-    "description": "Real-time demonstration of 1064nm laser cleaning process on Aluminum metal components",
-    "thumbnailUrl": "/images/aluminum-laser-video-thumb.jpg",
-    "uploadDate": "2025-01-27T15:30:00Z",
-    "duration": "PT3M45S",
-    "contentUrl": "/videos/aluminum-laser-cleaning-demo.mp4"
-  },
   "about": [
     {
       "@type": "Material",
       "name": "Aluminum",
-      "alternateName": [
-        "Al",
-        "Aluminium"
-      ],
       "identifier": "Al",
       "category": "metal",
       "description": "High-strength aluminum alloy for precision laser cleaning applications",
@@ -185,23 +157,6 @@
   "mentions": [
     "aerospace",
     "automotive"
-  ],
-  "citation": [
-    {
-      "@type": "ScholarlyArticle",
-      "name": "Laser Processing of Metal Materials",
-      "author": "Journal of Materials Processing Technology"
-    },
-    {
-      "@type": "ScholarlyArticle",
-      "name": "Surface Treatment Applications for Aluminum",
-      "author": "Applied Surface Science"
-    },
-    {
-      "@type": "ScholarlyArticle",
-      "name": "Laser Cleaning in Aerospace Applications",
-      "author": "Aerospace Materials Research"
-    }
   ],
   "isPartOf": {
     "@type": "WebSite",

@@ -7,15 +7,17 @@ No API requests needed - processes frontmatter directly.
 Follows fail-fast architecture with no fallbacks.
 """
 
+import logging
 import yaml
 from pathlib import Path
-from typing import Any, Dict, Optional
+from typing import Any, Dict, Optional, Union
 
 from generators.component_generators import StaticComponentGenerator
 from utils.core.component_base import (
     handle_generation_error,
-    validate_required_fields,
 )
+
+logger = logging.getLogger(__name__)
 
 
 class TableComponentGenerator(StaticComponentGenerator):
@@ -41,10 +43,13 @@ class TableComponentGenerator(StaticComponentGenerator):
             if not frontmatter_data:
                 raise Exception("Frontmatter data is required - fail-fast architecture requires frontmatter properties")
 
-            # Extract properties from frontmatter - FAIL-FAST if insufficient data
-            properties = frontmatter_data.get('properties', {})
+            # Extract properties from frontmatter - fail-fast if insufficient data
+            if 'properties' not in frontmatter_data:
+                raise Exception("Properties section is required in frontmatter data - fail-fast architecture requires complete material properties")
+                
+            properties = frontmatter_data['properties']
             if not properties:
-                raise Exception(f"ERROR: No table-appropriate data in frontmatter for {material_name}")
+                raise Exception(f"Empty properties section in frontmatter for {material_name} - fail-fast architecture requires material property data")
 
             # Generate deterministic YAML table content
             table_yaml = self._generate_yaml_tables(material_name, frontmatter_data)
@@ -127,58 +132,63 @@ class TableComponentGenerator(StaticComponentGenerator):
         return yaml.dump(yaml_data, default_flow_style=False, sort_keys=False)
 
     def _extract_physical_properties(self, properties: Dict) -> list:
-        """Extract physical properties (density, melting point)"""
+        """Extract physical properties using clean frontmatter data"""
         rows = []
         
-        # Density
-        if 'density' in properties:
+        # Density - use numeric values directly from frontmatter
+        if 'densityNumeric' in properties:
             rows.append(self._create_property_row(
                 'Density', 
-                properties['density'],
-                properties.get('densityMin'),
-                properties.get('densityMax'), 
+                properties['densityNumeric'],
+                properties.get('densityMinNumeric'),
+                properties.get('densityMaxNumeric'), 
                 properties.get('densityPercentile'),
-                'g/cm³'
+                properties.get('densityUnit', 'g/cm³')
             ))
         
-        # Melting Point
-        if 'meltingPoint' in properties:
+        # Melting Point - use numeric values directly from frontmatter
+        if 'meltingPointNumeric' in properties:
             rows.append(self._create_property_row(
                 'Melting Point',
-                properties['meltingPoint'],
-                properties.get('meltingMin'),
-                properties.get('meltingMax'),
+                properties['meltingPointNumeric'],
+                properties.get('meltingMinNumeric'),
+                properties.get('meltingMaxNumeric'),
                 properties.get('meltingPercentile'),
-                '°C'
+                properties.get('meltingPointUnit', '°C')
             ))
         
         return rows
 
     def _extract_thermal_properties(self, properties: Dict) -> list:
-        """Extract thermal properties"""
+        """Extract thermal properties using clean frontmatter data"""
         rows = []
         
-        # Thermal Conductivity
-        if 'thermalConductivity' in properties:
+        # Thermal Conductivity - use numeric values directly from frontmatter
+        if 'thermalConductivityNumeric' in properties:
             rows.append(self._create_property_row(
                 'Thermal Conductivity',
-                properties['thermalConductivity'],
-                properties.get('thermalMin'),
-                properties.get('thermalMax'),
+                properties['thermalConductivityNumeric'],
+                properties.get('thermalMinNumeric'),
+                properties.get('thermalMaxNumeric'),
                 properties.get('thermalPercentile'),
-                'W/m·K'
+                properties.get('thermalConductivityUnit', 'W/m·K')
             ))
         
-        # Thermal Diffusivity (range only)
-        if 'thermalDiffusivityMin' in properties and 'thermalDiffusivityMax' in properties:
-            value_range = f"{properties['thermalDiffusivityMin']}-{properties['thermalDiffusivityMax']} mm²/s"
+        # Thermal Diffusivity (range only) - use numeric values directly
+        if 'thermalDiffusivityMinNumeric' in properties and 'thermalDiffusivityMaxNumeric' in properties:
+            diffusivity_min = properties['thermalDiffusivityMinNumeric']
+            diffusivity_max = properties['thermalDiffusivityMaxNumeric']
+            diffusivity_unit = properties.get('thermalDiffusivityUnit', 'mm²/s')
+            # Calculate midpoint for display
+            midpoint_value = (diffusivity_min + diffusivity_max) / 2
+            
             rows.append(self._create_property_row(
                 'Thermal Diffusivity',
-                value_range,
-                properties['thermalDiffusivityMin'],
-                properties['thermalDiffusivityMax'],
+                midpoint_value,
+                diffusivity_min,
+                diffusivity_max,
                 None,
-                'mm²/s'
+                diffusivity_unit
             ))
         
         # Thermal Expansion (range only)
@@ -208,70 +218,80 @@ class TableComponentGenerator(StaticComponentGenerator):
         return rows
 
     def _extract_mechanical_properties(self, properties: Dict) -> list:
-        """Extract mechanical properties"""
+        """Extract mechanical properties using clean frontmatter data"""
         rows = []
         
-        # Tensile Strength
-        if 'tensileStrength' in properties:
+        # Tensile Strength - use numeric values directly from frontmatter
+        if 'tensileStrengthNumeric' in properties:
             rows.append(self._create_property_row(
                 'Tensile Strength',
-                properties['tensileStrength'],
-                properties.get('tensileMin'),
-                properties.get('tensileMax'),
+                properties['tensileStrengthNumeric'],
+                properties.get('tensileMinNumeric'),
+                properties.get('tensileMaxNumeric'),
                 properties.get('tensilePercentile'),
-                'MPa'
+                properties.get('tensileStrengthUnit', 'MPa')
             ))
         
-        # Hardness
-        if 'hardness' in properties:
+        # Hardness - use numeric values directly from frontmatter  
+        if 'hardnessNumeric' in properties:
             rows.append(self._create_property_row(
                 'Hardness',
-                properties['hardness'],
-                properties.get('hardnessMin'),
-                properties.get('hardnessMax'),
+                properties['hardnessNumeric'],
+                properties.get('hardnessMinNumeric'),
+                properties.get('hardnessMaxNumeric'),
                 properties.get('hardnessPercentile'),
-                'HV'
+                properties.get('hardnessUnit', 'HV')
             ))
         
-        # Young's Modulus
-        if 'youngsModulus' in properties:
+        # Young's Modulus - use numeric values directly from frontmatter
+        if 'youngsModulusNumeric' in properties:
             rows.append(self._create_property_row(
                 "Young's Modulus",
-                properties['youngsModulus'],
-                properties.get('modulusMin'),
-                properties.get('modulusMax'),
+                properties['youngsModulusNumeric'],
+                properties.get('modulusMinNumeric'),
+                properties.get('modulusMaxNumeric'),
                 properties.get('modulusPercentile'),
-                'GPa'
+                properties.get('youngsModulusUnit', 'GPa')
             ))
         
         return rows
 
     def _extract_optical_properties(self, properties: Dict) -> list:
-        """Extract optical properties"""
+        """Extract optical properties using clean frontmatter data"""
         rows = []
         
-        # Laser Absorption (range only)
-        if 'laserAbsorptionMin' in properties and 'laserAbsorptionMax' in properties:
-            value_range = f"{properties['laserAbsorptionMin']}-{properties['laserAbsorptionMax']} cm⁻¹"
+        # Laser Absorption (range only) - use numeric values directly
+        if 'laserAbsorptionMinNumeric' in properties and 'laserAbsorptionMaxNumeric' in properties:
+            absorption_min = properties['laserAbsorptionMinNumeric']
+            absorption_max = properties['laserAbsorptionMaxNumeric']
+            absorption_unit = properties.get('laserAbsorptionUnit', 'cm⁻¹')
+            # Calculate midpoint for display
+            midpoint_value = (absorption_min + absorption_max) / 2
+            
             rows.append(self._create_property_row(
                 'Laser Absorption',
-                value_range,
-                properties['laserAbsorptionMin'],
-                properties['laserAbsorptionMax'],
+                midpoint_value,
+                absorption_min,
+                absorption_max,
                 None,
-                'cm⁻¹'
+                absorption_unit
             ))
         
-        # Laser Reflectivity (range only)
-        if 'laserReflectivityMin' in properties and 'laserReflectivityMax' in properties:
-            value_range = f"{properties['laserReflectivityMin']}-{properties['laserReflectivityMax']}%"
+        # Laser Reflectivity (range only) - use numeric values directly
+        if 'laserReflectivityMinNumeric' in properties and 'laserReflectivityMaxNumeric' in properties:
+            reflectivity_min = properties['laserReflectivityMinNumeric']
+            reflectivity_max = properties['laserReflectivityMaxNumeric']
+            reflectivity_unit = properties.get('laserReflectivityUnit', '%')
+            # Calculate midpoint for display  
+            midpoint_value = (reflectivity_min + reflectivity_max) / 2
+            
             rows.append(self._create_property_row(
                 'Laser Reflectivity',
-                value_range,
-                properties['laserReflectivityMin'],
-                properties['laserReflectivityMax'],
+                midpoint_value,
+                reflectivity_min,
+                reflectivity_max,
                 None,
-                '%'
+                reflectivity_unit
             ))
         
         return rows
@@ -354,32 +374,25 @@ class TableComponentGenerator(StaticComponentGenerator):
         
         return row
 
-    def _calculate_percentage(self, value: str, min_val: str, max_val: str) -> int:
-        """Calculate percentage position within min-max range"""
+    def _calculate_percentage(self, value: Union[str, float], min_val: Union[str, float], max_val: Union[str, float]) -> int:
+        """Calculate percentage position within min-max range using clean frontmatter data"""
         try:
-            # Extract numeric value (handle ranges like "2.7-3.0")
-            if '-' in str(value) and '°C' not in str(value):
-                # Handle ranges by taking midpoint
-                parts = str(value).split('-')
-                if len(parts) == 2:
-                    val1 = float(''.join(c for c in parts[0] if c.replace('.', '').isdigit()))
-                    val2 = float(''.join(c for c in parts[1] if c.replace('.', '').isdigit()))
-                    numeric_value = (val1 + val2) / 2
-                else:
-                    numeric_value = float(''.join(c for c in str(value) if c.replace('.', '').isdigit()))
-            else:
-                numeric_value = float(''.join(c for c in str(value) if c.replace('.', '').isdigit()))
+            # Convert all values to numeric - frontmatter provides clean data
+            numeric_value = float(value)
+            min_numeric = float(min_val)
+            max_numeric = float(max_val)
             
-            min_numeric = float(''.join(c for c in str(min_val) if c.replace('.', '').isdigit()))
-            max_numeric = float(''.join(c for c in str(max_val) if c.replace('.', '').isdigit()))
-            
+            # Avoid division by zero
             if max_numeric <= min_numeric:
                 return 50
-            
+                
+            # Calculate percentage
             percentage = ((numeric_value - min_numeric) / (max_numeric - min_numeric)) * 100
             return max(0, min(100, int(percentage)))
-        except:
-            return 50  # Default to middle if calculation fails
+            
+        except Exception as e:
+            logger.warning(f"Percentage calculation failed for value '{value}' in range '{min_val}'-'{max_val}': {e}")
+            return 50  # Default to middle
 
     def _extract_table_categories(self, properties: Dict) -> list:
         """Get list of categories that would be generated"""

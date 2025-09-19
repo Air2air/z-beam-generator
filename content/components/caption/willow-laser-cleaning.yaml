@@ -1,42 +1,42 @@
 # Basic Content Structure
 before_text: |
   Pre-treatment surface assessment reveals significant contamination deposits across the willow wooden substrate. 
-  Microscopic analysis shows biological growth and organic deposits adhering to the surface. The willow exhibits the characteristic density profile typical of wood materials.
+  Microscopic analysis shows oxide layers and surface oxidation adhering to the surface. The willow exhibits the characteristic density profile typical of wood materials.
   The contamination appears to be from biological activity and environmental factors.
 
 after_text: |
-  Treatment outcome assessment demonstrates outstanding contamination removal with 95.7% contaminant removal efficiency.
+  Post-laser cleaning analysis demonstrates outstanding contamination removal through comprehensive laser processing.
   The willow substrate now exhibits pristine surface characteristics with controlled thermal exposure.
-  Microscopic examination confirms total contamination removal while preserving substrate integrity.
+  Microscopic examination confirms comprehensive surface decontamination while ensuring structural preservation.
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064
-  power: 25
-  pulse_duration: 98
-  spot_size: 0.1-2.0mm
-  frequency: 49137
-  energy_density: 3.0
-  scanning_speed: "511 mm/min"
-  beam_profile: "gaussian"
-  pulse_overlap: 79
+  wavelength: 1064nm (primary), 532nm (optional)
+  power: 20-100W
+  pulse_duration: 50-200ns
+  spot_size: 0.5-2.0mm
+  frequency: 10-50kHz
+  energy_density: 0.5–2.0 J/cm²
+  scanning_speed: "50-500mm/s"
+  beam_profile: "Gaussian TEM00"
+  pulse_overlap: 87
 
 # Material Information
 material: "Willow"
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-17T18:13:11.576519Z"
+  generated: "2025-09-19T00:09:02.986837Z"
   format: "yaml"
   version: "2.0"
-  analysis_method: "atomic_force_microscopy"
+  analysis_method: "scanning_electron_microscopy"
   magnification: "1000x"
   field_of_view: "200 μm"
   image_resolution: "3840x2160"
 
 # Enhanced SEO Frontmatter
 title: "Willow Surface Laser Cleaning Analysis - Wood Surface Restoration"
-description: "Comprehensive microscopic analysis of willow surface before and after precision laser cleaning, demonstrating 95.7% contamination removal efficiency using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of willow surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -50,11 +50,11 @@ keywords:
   - "willow"
   - "contamination analysis"
   - "willow wood"
+  - "non-contact cleaning"
+  - "wood manufacturing applications"
   - "wood restoration"
-  - "non-abrasive cleaning"
-  - "pulsed fiber laser"
-  - "woodworking and furniture applications"
   - "organic material cleaning"
+  - "forestry applications"
 
 # Author Information with SEO Enhancement
 author: "Alessandro Moretti"
@@ -72,22 +72,22 @@ author_object:
 # Technical Specifications for SEO
 technicalSpecifications:
   wavelength: "1064nm (primary), 532nm (optional)"
-  power: "10-40W"
+  power: "20-100W"
   pulse_duration: "50-200ns"
-  scanning_speed: "533 mm/min"
+  scanning_speed: "50-500mm/s"
   material: "Willow"
-  beam_delivery: "galvanometer scanning"
-  focus_diameter: "0.5-3.0mm"
+  beam_delivery: "direct beam"
+  focus_diameter: "0.5-2.0mm"
   processing_atmosphere: "controlled environment"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Cellulose (C6H10O5)n 40-45%, Hemicellulose 20-25%, Lignin 20-25%"
+  composition: "Cellulose (C6H10O5) 40-50%, Lignin 20-30%, Hemicellulose 20-30%"
   surface_treatment: "laser cleaning"
   contamination_type: "organic decay and biological contamination"
-  materialType: "Lignocellulosic Material"
-  formula: "(C6H10O5)n"
-  surface_finish: "Ra < 0.4 μm (post-cleaning)"
+  materialType: "wood"
+  formula: "C6H10O5"
+  surface_finish: "Ra < 0.8 μm (post-cleaning)"
   corrosion_resistance: "moderate"
 
 # Image Metadata for SEO
@@ -103,21 +103,18 @@ images:
 # Additional SEO Metadata
 seo_data:
   canonical_url: "https://z-beam.com/analysis/willow-laser-cleaning"
-  og_title: "Willow Laser Cleaning Analysis - 95.7% Contamination Removal"
+  og_title: "Willow Laser Cleaning Analysis - Surface Restoration"
   og_description: "Professional microscopic analysis of precision laser cleaning on willow, achieving complete contamination removal with preserved substrate integrity."
   og_image: "/images/willow-cleaning-analysis-social.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-17T18:13:11.576519Z"
+  last_modified: "2025-09-19T00:09:02.986837Z"
 
 # Quality Metrics
 quality_metrics:
-  contamination_removal: "95.7%"
-  surface_roughness_before: "Ra 3.4 μm"
-  surface_roughness_after: "Ra 1.1 μm"
-  thermal_damage: "minimal"
+  surface_roughness_before: "Ra 4.1 μm"
+  surface_roughness_after: "Ra 1.7 μm"
   substrate_integrity: "excellent"
-  processing_efficiency: "95%"
 
 # Accessibility Information
 accessibility:
@@ -129,7 +126,7 @@ accessibility:
 ---
 Material: "willow"
 Component: caption
-Generated: 2025-09-17T18:13:11.576519Z
+Generated: 2025-09-19T00:09:02.986837Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

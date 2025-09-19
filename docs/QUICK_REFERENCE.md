@@ -13,12 +13,12 @@
 
 ### "Content incomplete" / "Text cuts off"
 **→ Immediate Response**: API failure during generation
-**→ Quick Fix**: `python3 run.py --material "MaterialName" --components "text"`
+**→ Quick Fix**: `**→ Quick Fix**: Use working diagnostic: `python3 scripts/tools/api_terminal_diagnostics.py winston``
 **→ Root Cause**: Winston API timeout - check [Content Impact Analysis](api/ERROR_HANDLING.md#content-impact)
 
 ### "Winston.ai scoring technical content as 0%" / "AI detector shows poor results"
 **→ Immediate Response**: ✅ **SOLVED** - Winston.ai Composite Scoring Auto-Applied September 15, 2025
-**→ Quick Fix**: Use existing `python3 run.py --optimize text --material copper` command
+**→ Quick Fix**: Use working command: `python3 run.py --material "copper" --components "text"`
 **→ Expected Output**: `🔧 [AI DETECTOR] Applying composite scoring for technical content...`
 **→ Results**: 0.0% → 59.5% automatic improvement for technical content
 **→ Documentation**: [Winston Composite Scoring](WINSTON_COMPOSITE_SCORING_INTEGRATION.md)
@@ -198,7 +198,7 @@ python3 scripts/tools/api_terminal_diagnostics.py winston
 ### Content Generation
 ```bash
 # Generate all materials (batch mode)
-python3 run.py
+python3 run.py --all
 
 # Generate specific material
 python3 run.py --material "Steel"
@@ -206,14 +206,14 @@ python3 run.py --material "Steel"
 # Generate specific components only
 python3 run.py --material "Copper" --components "frontmatter,text"
 
-# Clean and regenerate
-python3 run.py --clean
+# Test mode
+python3 run.py --test
 ```
 
-### Content Optimization (September 2025 Enhanced)
+### Content Generation (Working Commands Only)
 ```bash
-# Basic optimization with automatic Winston.ai bias correction
-python3 run.py --optimize text --material copper
+# Generate specific material with components 
+python3 run.py --material "copper" --components "text"
 
 # Learning optimizer (gets smarter with each run)
 python3 smart_optimize.py steel
@@ -221,8 +221,8 @@ python3 smart_optimize.py steel
 # Test composite scoring directly
 python3 apply_composite_scoring.py
 
-# Generate and optimize in one command
-python3 run.py --material aluminum --components text --optimize
+# Generate multiple components
+python3 run.py --material "aluminum" --components "text,frontmatter"
 ```
 
 ### Troubleshooting
@@ -268,9 +268,9 @@ find content/components -name "*.md" -exec grep -l "before significant" {} \;
 4. **Point to specific docs**: Use the file location map above
 
 ### When User Needs Setup Help
-1. **Start with environment check**: `python3 run.py --check-env`
+1. **Start with test mode**: `python3 run.py --test`
 2. **Guide through API setup**: Point to `setup/API_CONFIGURATION.md`
-3. **Validate with tests**: `python3 run.py --test-api`
+3. **Use diagnostic tools**: `python3 scripts/tools/api_terminal_diagnostics.py winston`
 4. **Provide quick commands**: Use the essential commands above
 
 ### When User Has Generation Issues

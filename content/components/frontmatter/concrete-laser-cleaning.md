@@ -1,130 +1,193 @@
 ---
 name: Concrete
-applications:
-- detail: Removal of surface contaminants, paint, and graffiti from concrete structures
-  industry: Construction & Restoration
-- detail: Cleaning of molds, formwork, and industrial flooring prior to recoating
-  industry: Industrial Maintenance
-technicalSpecifications:
+category: masonry
+title: Laser Cleaning Concrete
+headline: Comprehensive technical guide for laser cleaning masonry concrete
+description: Technical overview of concrete, CaO·SiO2·Al2O3+Aggregate, for laser cleaning
+  applications, including optimal 1064nm wavelength interaction, and industrial applications
+  in surface preparation.
+keywords: concrete, concrete masonry, laser ablation, laser cleaning, non-contact
+  cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters,
+  thermal processing, surface restoration
+chemicalProperties:
+  symbol: Concrete
+  formula: CaO·SiO2·Al2O3+Aggregate
+  materialType: masonry
+properties:
+  density: 2.4 g/cm³
+  densityNumeric: 2.4
+  densityUnit: g/cm³
+  densityMin: 1.8 g/cm³
+  densityMinNumeric: 1.8
+  densityMinUnit: g/cm³
+  densityMax: 2.8 g/cm³
+  densityMaxNumeric: 2.8
+  densityMaxUnit: g/cm³
+  densityPercentile: 60.0
+  meltingPoint: N/A (decomposes) °C
+  meltingPointNumeric: 0.0
+  meltingPointUnit: ''
+  meltingPercentile: 0.0
+  thermalConductivity: 1.7 W/m·K
+  thermalConductivityNumeric: 1.7
+  thermalConductivityUnit: W/m·K
+  thermalPercentile: 45.0
+  tensileStrength: 2-5 MPa
+  tensileStrengthNumeric: 3.5
+  tensileStrengthUnit: MPa
+  tensilePercentile: 30.0
+  hardness: 4-6 Mohs
+  hardnessNumeric: 5.0
+  hardnessUnit: Mohs
+  hardnessMin: 3 Mohs
+  hardnessMinNumeric: 3.0
+  hardnessMinUnit: Mohs
+  hardnessMax: 8 Mohs
+  hardnessMaxNumeric: 8.0
+  hardnessMaxUnit: Mohs
+  hardnessPercentile: 50.0
+  youngsModulus: 30 GPa
+  youngsModulusNumeric: 30.0
+  youngsModulusUnit: GPa
+  modulusMin: 20 GPa
+  modulusMinNumeric: 20.0
+  modulusMinUnit: GPa
+  modulusMax: 50 GPa
+  modulusMaxNumeric: 50.0
+  modulusMaxUnit: GPa
+  modulusPercentile: 50.0
+  laserType: Pulsed Fiber Laser
+  wavelength: 1064nm
   fluenceRange: 0.5–2.0 J/cm²
+  chemicalFormula: CaO·SiO2·Al2O3+Aggregate
+composition:
+- Portland Cement (CaO·SiO2·Al2O3) 10-15%
+- Aggregate (sand, gravel) 60-75%
+- Water 15-20%
+- Additives & Admixtures 1-5%
+machineSettings:
   powerRange: 100-500W
+  powerRangeNumeric: 300.0
+  powerRangeUnit: W
+  powerRangeMin: 20W
+  powerRangeMinNumeric: 20.0
+  powerRangeMinUnit: W
+  powerRangeMax: 500W
+  powerRangeMaxNumeric: 500.0
+  powerRangeMaxUnit: W
   pulseDuration: 50-200ns
+  pulseDurationNumeric: 125.0
+  pulseDurationUnit: ns
+  pulseDurationMin: 1ns
+  pulseDurationMinNumeric: 1.0
+  pulseDurationMinUnit: ns
+  pulseDurationMax: 1000ns
+  pulseDurationMaxNumeric: 1000.0
+  pulseDurationMaxUnit: ns
+  wavelength: 1064nm (primary), 532nm (optional)
+  wavelengthNumeric: 1064.0
+  wavelengthUnit: nm
+  wavelengthMin: 355nm
+  wavelengthMinNumeric: 355.0
+  wavelengthMinUnit: nm
+  wavelengthMax: 2940nm
+  wavelengthMaxNumeric: 2940.0
+  wavelengthMaxUnit: nm
+  spotSize: 2-10mm
+  spotSizeNumeric: 6.0
+  spotSizeUnit: mm
+  spotSizeMin: 0.01mm
+  spotSizeMinNumeric: 0.01
+  spotSizeMinUnit: mm
+  spotSizeMax: 10mm
+  spotSizeMaxNumeric: 10.0
+  spotSizeMaxUnit: mm
   repetitionRate: 20-50kHz
+  repetitionRateNumeric: 35.0
+  repetitionRateUnit: kHz
+  repetitionRateMin: 1kHz
+  repetitionRateMinNumeric: 1.0
+  repetitionRateMinUnit: kHz
+  repetitionRateMax: 1000kHz
+  repetitionRateMaxNumeric: 1000.0
+  repetitionRateMaxUnit: kHz
+  fluenceRange: 0.5–2.0 J/cm²
+  fluenceRangeNumeric: 0.5
+  fluenceRangeUnit: J/cm²
+  fluenceRangeMin: 0.1J/cm²
+  fluenceRangeMinNumeric: 0.1
+  fluenceRangeMinUnit: J/cm²
+  fluenceRangeMax: 50J/cm²
+  fluenceRangeMaxNumeric: 50.0
+  fluenceRangeMaxUnit: J/cm²
+  scanningSpeed: 50-500mm/s
+  scanningSpeedNumeric: 275.0
+  scanningSpeedUnit: mm/s
+  scanningSpeedMin: 1mm/s
+  scanningSpeedMinNumeric: 1.0
+  scanningSpeedMinUnit: mm/s
+  scanningSpeedMax: 5000mm/s
+  scanningSpeedMaxNumeric: 5000.0
+  scanningSpeedMaxUnit: mm/s
+  beamProfile: Gaussian TEM00
+  beamProfileOptions:
+  - Gaussian TEM00
+  - Top-hat
+  - Donut
+  - Multi-mode
   safetyClass: Class 4 (requires full enclosure)
-  spotSize: 5-20mm
-  wavelength: 1064nm (primary)
-description: Technical overview of Concrete, a composite material of cement, aggregate,
-  and water, for laser cleaning applications, including optimal 1064nm wavelength
-  interaction for surface contaminant removal.
+applications:
+- industry: Construction & Demolition
+  detail: Removal of surface contaminants, paint, and graffiti from concrete structures
+- industry: Industrial Restoration
+  detail: Cleaning of concrete surfaces in preparation for coatings and repairs
+compatibility:
+- Concrete Structures
+- Reinforced Concrete
+- Precast Concrete Elements
+regulatoryStandards: ASTM C39, ASTM C109, EN 12390
 author: Ikmanda Roswati
 author_object:
-  country: Indonesia
-  expertise: Ultrafast Laser Physics and Material Interactions
   id: 3
-  image: /images/author/ikmanda-roswati.jpg
   name: Ikmanda Roswati
   sex: m
   title: Ph.D.
-chemicalProperties:
-  formula: CaO·SiO2·Al2O3+Aggregate+H2O
-  materialType: composite masonry
-  symbol: Concrete
-composition:
-- Cement (CaO·SiO2·Al2O3) 10-15%
-- Aggregate (sand, gravel) 60-75%
-- Water 15-20%
-- Air voids 5-8%
-compatibility:
-- Construction Materials
-- Masonry Substrates
-- Reinforced Concrete
-regulatoryStandards: ASTM D4258, ASTM D4259, ISO 8501-1
+  country: Indonesia
+  expertise: Ultrafast Laser Physics and Material Interactions
+  image: /images/author/ikmanda-roswati.jpg
 images:
   hero:
     alt: Concrete surface undergoing laser cleaning showing precise contamination
       removal
     url: /images/concrete-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Concrete surface after laser cleaning showing detailed
+    alt: Microscopic view of concrete surface after laser cleaning showing detailed
       surface structure
     url: /images/concrete-laser-cleaning-micro.jpg
-title: Laser Cleaning Concrete - Technical Guide for Surface Restoration
-headline: Comprehensive technical guide for laser cleaning concrete surfaces
 environmentalImpact:
 - benefit: Chemical Solvent Elimination
-  description: Eliminates need for chemical paint strippers and cleaning solvents
-- benefit: Dust Control
-  description: Reduces airborne particulate matter by 95% compared to mechanical methods
-- benefit: Waste Reduction
-  description: Produces no secondary waste streams from cleaning materials
+  description: Reduces chemical usage by 100% compared to traditional solvent cleaning
+    methods
+- benefit: Water Conservation
+  description: Saves approximately 3000 liters of water per month in industrial applications
+- benefit: Dust Reduction
+  description: Eliminates 95% of airborne dust particles compared to mechanical cleaning
 outcomes:
-- metric: Achieves SSPC-SP 2/NACE No. 2 hand tool cleaning standard
-  result: Surface Cleanliness
-- metric: Selective contaminant removal without damaging concrete substrate
-  result: Material Removal Precision
-- metric: 10-30 m²/hour cleaning rate depending on contamination type
-  result: Processing Speed
-keywords: concrete, masonry, laser ablation, laser cleaning, non-contact cleaning,
-  pulsed fiber laser, surface contamination removal, graffiti removal, paint stripping,
-  surface restoration
+- result: Surface Cleanliness Level
+  metric: Achieves SSPC-SP 2/NACE No. 2 cleanliness standard
+- result: Material Removal Precision
+  metric: Selective removal of contaminants without damaging concrete substrate
+- result: Processing Speed
+  metric: 5-15 m²/hour cleaning rate depending on contamination level
 prompt_chain_verification:
-  ai_detection_config_loaded: true
-  author_id: 3
   base_config_loaded: true
-  cultural_adaptation_applied: true
-  formatting_config_loaded: true
-  human_authenticity_focus: true
   persona_config_loaded: true
+  formatting_config_loaded: true
+  ai_detection_config_loaded: true
   persona_country: Indonesia
+  author_id: 3
+  verification_timestamp: '2025-09-19T05:12:59Z'
   prompt_components_integrated: 4
-  verification_timestamp: '2025-09-16T21:52:51Z'
-category: masonry
-properties:
-  chemicalFormula: CaO·SiO2·Al2O3+Aggregate+H2O
-  density: 2.4 g/cm³
-  densityMax: 2.8 g/cm³
-  densityMin: 1.2 g/cm³
-  densityPercentile: 75.0
-  fluenceRange: 0.5–2.0 J/cm²
-  hardness: 5-7 Mohs
-  hardnessMax: 300 HV
-  hardnessMin: 20 HV
-  hardnessPercentile: 0.0
-  laserAbsorptionMax: 50 cm⁻¹
-  laserAbsorptionMin: 0.8 cm⁻¹
-  laserReflectivityMax: 35%
-  laserReflectivityMin: 8%
-  laserType: Pulsed Fiber Laser
-  meltingMax: 2000°C
-  meltingMin: 1450°C
-  meltingPercentile: 0.0
-  meltingPoint: N/A (decomposes)
-  modulusMax: 50 GPa
-  modulusMin: 15 GPa
-  modulusPercentile: 42.9
-  specificHeatMax: 1.1 J/g·K
-  specificHeatMin: 0.8 J/g·K
-  tensileMax: 50 MPa
-  tensileMin: 1 MPa
-  tensilePercentile: 5.1
-  tensileStrength: 2-5 MPa
-  thermalConductivity: 1.5 W/m·K
-  thermalDiffusivityMax: 1.5 mm²/s
-  thermalDiffusivityMin: 0.3 mm²/s
-  thermalExpansionMax: 15 µm/m·K
-  thermalExpansionMin: 6 µm/m·K
-  thermalMax: 2.0 W/m·K
-  thermalMin: 0.1 W/m·K
-  thermalPercentile: 73.7
-  wavelength: 1064nm
-  youngsModulus: 20-40 GPa
+  human_authenticity_focus: true
+  cultural_adaptation_applied: true
 ---
-
-# Version Information
-# Generated: 2025-09-16T14:53:43.329352
-# Material: Concrete
-# Component: frontmatter
-# Generator: Z-Beam v2.1.0
-# Author: AI Assistant
-# Platform: Darwin (3.12.4)
-# File: content/components/frontmatter/concrete-laser-cleaning.md

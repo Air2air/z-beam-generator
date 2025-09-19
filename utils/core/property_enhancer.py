@@ -5,9 +5,10 @@ Enhances frontmatter properties with min/max context and percentile calculations
 
 import logging
 import os
+import re
 import sys
 from pathlib import Path
-from typing import Any, Dict
+from typing import Any, Dict, Tuple
 
 import yaml
 
@@ -18,6 +19,99 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from utils.core.percentile_calculator import calculate_property_percentiles
 
 logger = logging.getLogger(__name__)
+
+
+def extract_numeric_and_unit(value_str: str) -> tuple[float, str]:
+    """
+    Extract numeric value and unit from a property string.
+    
+    Args:
+        value_str: Property string like "2.70 g/cm³" or "385 MPa"
+        
+    Returns:
+        Tuple of (numeric_value, unit)
+        
+    Examples:
+        "2.70 g/cm³" -> (2.70, "g/cm³")
+        "385 MPa" -> (385.0, "MPa")
+        "1668°C" -> (1668.0, "°C")
+    """
+    if not value_str:
+        return 0.0, ""
+    
+    # Handle range values by taking the midpoint
+    if '-' in value_str and not value_str.startswith('-'):  # Avoid negative numbers
+        # Split on dash and take midpoint
+        parts = value_str.split('-')
+        if len(parts) == 2:
+            try:
+                # Extract numbers from both parts
+                import re
+                num1_match = re.search(r'[\d.]+', parts[0].strip())
+                num2_match = re.search(r'[\d.]+', parts[1].strip())
+                
+                if num1_match and num2_match:
+                    num1 = float(num1_match.group())
+                    num2 = float(num2_match.group())
+                    midpoint = (num1 + num2) / 2
+                    
+                    # Extract unit from second part
+                    unit_match = re.search(r'[a-zA-Z°/³²]+', parts[1].strip())
+                    unit = unit_match.group() if unit_match else ""
+                    
+                    return midpoint, unit
+            except (ValueError, AttributeError):
+                pass
+    
+    # Extract single value
+    import re
+    try:
+        # Find first number (including decimals)
+        num_match = re.search(r'[\d.]+', value_str)
+        if num_match:
+            numeric_value = float(num_match.group())
+            
+            # Extract unit (everything after the number)
+            unit_match = re.search(r'[a-zA-Z°/³²]+', value_str)
+            unit = unit_match.group() if unit_match else ""
+            
+            return numeric_value, unit
+    except (ValueError, AttributeError):
+        pass
+    
+    return 0.0, ""
+
+
+def add_triple_format_fields(properties: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    Add numeric and unit fields for triple format compatibility.
+    
+    For each property like "density": "2.70 g/cm³", adds:
+    - "densityNumeric": 2.70
+    - "densityUnit": "g/cm³"
+    """
+    # Properties that need triple format
+    triple_properties = {
+        "density": ("densityNumeric", "densityUnit"),
+        "meltingPoint": ("meltingPointNumeric", "meltingPointUnit"),
+        "thermalConductivity": ("thermalConductivityNumeric", "thermalConductivityUnit"),
+        "tensileStrength": ("tensileStrengthNumeric", "tensileStrengthUnit"),
+        "hardness": ("hardnessNumeric", "hardnessUnit"),
+        "youngsModulus": ("youngsModulusNumeric", "youngsModulusUnit"),
+    }
+    
+    for prop_key, (numeric_key, unit_key) in triple_properties.items():
+        if prop_key in properties:
+            value_str = str(properties[prop_key])
+            numeric_value, unit = extract_numeric_and_unit(value_str)
+            
+            # Add numeric and unit fields
+            properties[numeric_key] = numeric_value
+            properties[unit_key] = unit
+            
+            logger.debug(f"Added triple format for {prop_key}: {value_str} -> {numeric_value} {unit}")
+    
+    return properties
 
 
 def load_category_ranges() -> Dict[str, Any]:
@@ -135,11 +229,14 @@ def enhance_frontmatter_with_context(
     # Calculate percentiles for all properties
     properties = calculate_property_percentiles(properties, category_ranges, category)
 
+    # Add triple format fields (numeric and unit) for component compatibility
+    properties = add_triple_format_fields(properties)
+
     # Update the frontmatter with enhanced properties
     frontmatter_data["properties"] = properties
 
     logger.info(
-        f"Enhanced frontmatter for {category} category with min/max context and percentiles"
+        f"Enhanced frontmatter for {category} category with min/max context, percentiles, and triple format fields"
     )
     return frontmatter_data
 

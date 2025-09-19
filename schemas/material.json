@@ -7,7 +7,206 @@
       "jsonld": {
         "schemaType": "Product"
       },
-      "contentGeneration": {
+           "thermalPercentile": {
+            "type": "number",
+            "description": "Material thermal conductivity percentile ranking",
+            "example": 54.4
+          },
+          "densityNumeric": {
+            "type": "number", 
+            "description": "Density value without units for calculations",
+            "example": 2.70
+          },
+          "densityMinNumeric": {
+            "type": "number",
+            "description": "Minimum density value without units for calculations", 
+            "example": 0.5
+          },
+          "densityMaxNumeric": {
+            "type": "number",
+            "description": "Maximum density value without units for calculations",
+            "example": 22.6
+          },
+          "meltingPointNumeric": {
+            "type": "number",
+            "description": "Melting point value without units for calculations (Celsius)",
+            "example": 660
+          },
+          "meltingMinNumeric": {
+            "type": "number", 
+            "description": "Minimum melting point without units for calculations (Celsius)",
+            "example": -39
+          },
+          "meltingMaxNumeric": {
+            "type": "number",
+            "description": "Maximum melting point without units for calculations (Celsius)", 
+            "example": 3422
+          },
+          "thermalConductivityNumeric": {
+            "type": "number",
+            "description": "Thermal conductivity value without units for calculations (W/m·K)",
+            "example": 237
+          },
+          "thermalMinNumeric": {
+            "type": "number",
+            "description": "Minimum thermal conductivity without units for calculations (W/m·K)",
+            "example": 8
+          },
+          "thermalMaxNumeric": {
+            "type": "number", 
+            "description": "Maximum thermal conductivity without units for calculations (W/m·K)",
+            "example": 429
+          },
+          "densityUnit": {
+            "type": "string",
+            "description": "Unit of measurement for density values",
+            "example": "g/cm³"
+          },
+          "meltingPointUnit": {
+            "type": "string",
+            "description": "Unit of measurement for melting point values", 
+            "example": "°C"
+          },
+          "thermalConductivityUnit": {
+            "type": "string",
+            "description": "Unit of measurement for thermal conductivity values",
+            "example": "W/m·K"
+          },
+          "tensileStrengthNumeric": {
+            "type": "number",
+            "description": "Tensile strength value without units for calculations",
+            "example": 385
+          },
+          "tensileMinNumeric": {
+            "type": "number",
+            "description": "Minimum tensile strength without units for calculations",
+            "example": 70
+          },
+          "tensileMaxNumeric": {
+            "type": "number", 
+            "description": "Maximum tensile strength without units for calculations",
+            "example": 2000
+          },
+          "tensileStrengthUnit": {
+            "type": "string",
+            "description": "Unit of measurement for tensile strength values",
+            "example": "MPa"
+          },
+          "hardnessNumeric": {
+            "type": "number",
+            "description": "Hardness value without units for calculations",
+            "example": 67.5
+          },
+          "hardnessMinNumeric": {
+            "type": "number",
+            "description": "Minimum hardness without units for calculations", 
+            "example": 5
+          },
+          "hardnessMaxNumeric": {
+            "type": "number",
+            "description": "Maximum hardness without units for calculations",
+            "example": 500
+          },
+          "hardnessUnit": {
+            "type": "string",
+            "description": "Unit of measurement for hardness values",
+            "example": "HB"
+          },
+          "youngsModulusNumeric": {
+            "type": "number",
+            "description": "Young's modulus value without units for calculations",
+            "example": 69
+          },
+          "modulusMinNumeric": {
+            "type": "number",
+            "description": "Minimum Young's modulus without units for calculations",
+            "example": 70
+          },
+          "modulusMaxNumeric": {
+            "type": "number",
+            "description": "Maximum Young's modulus without units for calculations", 
+            "example": 411
+          },
+          "youngsModulusUnit": {
+            "type": "string",
+            "description": "Unit of measurement for Young's modulus values",
+            "example": "GPa"
+          },
+          "thermalExpansionMinNumeric": {
+            "type": "number",
+            "description": "Minimum thermal expansion without units for calculations",
+            "example": 0.5
+          },
+          "thermalExpansionMaxNumeric": {
+            "type": "number",
+            "description": "Maximum thermal expansion without units for calculations",
+            "example": 29
+          },
+          "thermalExpansionUnit": {
+            "type": "string",
+            "description": "Unit of measurement for thermal expansion values",
+            "example": "µm/m·K"
+          },
+          "specificHeatMinNumeric": {
+            "type": "number",
+            "description": "Minimum specific heat without units for calculations",
+            "example": 0.13
+          },
+          "specificHeatMaxNumeric": {
+            "type": "number",
+            "description": "Maximum specific heat without units for calculations",
+            "example": 0.90
+          },
+          "specificHeatUnit": {
+            "type": "string",
+            "description": "Unit of measurement for specific heat values",
+            "example": "J/g·K"
+          },
+          "laserAbsorptionMinNumeric": {
+            "type": "number",
+            "description": "Minimum laser absorption without units for calculations",
+            "example": 0.02
+          },
+          "laserAbsorptionMaxNumeric": {
+            "type": "number",
+            "description": "Maximum laser absorption without units for calculations",
+            "example": 100
+          },
+          "laserAbsorptionUnit": {
+            "type": "string",
+            "description": "Unit of measurement for laser absorption values",
+            "example": "cm⁻¹"
+          },
+          "laserReflectivityMinNumeric": {
+            "type": "number",
+            "description": "Minimum laser reflectivity without units for calculations",
+            "example": 5
+          },
+          "laserReflectivityMaxNumeric": {
+            "type": "number",
+            "description": "Maximum laser reflectivity without units for calculations",
+            "example": 98
+          },
+          "laserReflectivityUnit": {
+            "type": "string",
+            "description": "Unit of measurement for laser reflectivity values",
+            "example": "%"
+          },
+          "thermalDiffusivityMinNumeric": {
+            "type": "number",
+            "description": "Minimum thermal diffusivity without units for calculations",
+            "example": 4
+          },
+          "thermalDiffusivityMaxNumeric": {
+            "type": "number",
+            "description": "Maximum thermal diffusivity without units for calculations",
+            "example": 174
+          },
+          "thermalDiffusivityUnit": {
+            "type": "string",
+            "description": "Unit of measurement for thermal diffusivity values",
+            "example": "mm²/s"
+          },"contentGeneration": {
         "dynamicSectionsFromFrontmatter": true,
         "fieldContentMapping": {
           "properties": "Detail the physical and chemical properties of {subject} relevant to laser cleaning",
@@ -502,6 +701,16 @@
             "type": "string",
             "description": "Pulse duration",
             "example": "10–200ns"
+          },
+          "spotSize": {
+            "type": "string",
+            "description": "Laser spot size",
+            "example": "0.2-1.5mm"
+          },
+          "repetitionRate": {
+            "type": "string",
+            "description": "Laser repetition rate",
+            "example": "20-100kHz"
           },
           "frequency": {
             "type": "number",

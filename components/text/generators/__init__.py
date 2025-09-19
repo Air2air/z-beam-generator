@@ -6,6 +6,6 @@ This module contains the text generation implementations.
 """
 
 from .fail_fast_generator import create_fail_fast_generator
-from .generator import TextComponentGenerator
+from ..generator import TextComponentGenerator
 
 __all__ = ["TextComponentGenerator", "create_fail_fast_generator"]

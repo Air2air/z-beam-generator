@@ -1,44 +1,159 @@
 ---
 name: Bluestone
-applications:
-- detail: Removal of surface oxides and contaminants from Bluestone substrates
-  industry: Electronics Manufacturing
-- detail: Cleaning of thermal barrier coatings and stone matrix composites
-  industry: Aerospace Components
-technicalSpecifications:
-  fluenceRange: 1.0–4.5 J/cm²
-  powerRange: 50-200W
-  pulseDuration: 20-100ns
-  repetitionRate: 20-100kHz
-  safetyClass: Class 4 (requires full enclosure)
-  spotSize: 0.2-1.5mm
-  wavelength: 1064nm (primary), 532nm (optional)
-description: Technical overview of Bluestone, None, for laser cleaning applications,
+category: stone
+title: Laser Cleaning Bluestone
+headline: Comprehensive technical guide for laser cleaning stone bluestone
+description: Technical overview of Bluestone, SiO2·Al2O3, for laser cleaning applications,
   including optimal 1064nm wavelength interaction, and industrial applications in
   surface preparation.
+keywords: bluestone, bluestone stone, laser ablation, laser cleaning, non-contact
+  cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters,
+  thermal processing, surface restoration
+chemicalProperties:
+  symbol: Bluestone
+  formula: SiO2·Al2O3
+  materialType: stone
+properties:
+  density: 2.6-2.8 g/cm³
+  densityNumeric: 2.7
+  densityUnit: g/cm³
+  densityMin: 2.0 g/cm³
+  densityMinNumeric: 2.0
+  densityMinUnit: g/cm³
+  densityMax: 3.5 g/cm³
+  densityMaxNumeric: 3.5
+  densityMaxUnit: g/cm³
+  densityPercentile: 62.4
+  meltingPoint: 1650-1750°C
+  meltingPointNumeric: 1700.0
+  meltingPointUnit: °C
+  meltingPercentile: 68.2
+  thermalConductivity: 1.3-1.5 W/m·K
+  thermalConductivityNumeric: 1.4
+  thermalConductivityUnit: W/m·K
+  thermalPercentile: 0.8
+  tensileStrength: 8-15 MPa
+  tensileStrengthNumeric: 11.5
+  tensileStrengthUnit: MPa
+  tensilePercentile: 0.3
+  hardness: 6-7 Mohs
+  hardnessNumeric: 6.5
+  hardnessUnit: Mohs
+  hardnessMin: 1 Mohs
+  hardnessMinNumeric: 1.0
+  hardnessMinUnit: Mohs
+  hardnessMax: 10 Mohs
+  hardnessMaxNumeric: 10.0
+  hardnessMaxUnit: Mohs
+  hardnessPercentile: 75.0
+  youngsModulus: 50-70 GPa
+  youngsModulusNumeric: 60.0
+  youngsModulusUnit: GPa
+  modulusMin: 1 GPa
+  modulusMinNumeric: 1.0
+  modulusMinUnit: GPa
+  modulusMax: 400 GPa
+  modulusMaxNumeric: 400.0
+  modulusMaxUnit: GPa
+  modulusPercentile: 42.5
+  laserType: Pulsed Fiber Laser
+  wavelength: 1064nm
+  fluenceRange: 1.0–4.5 J/cm²
+  chemicalFormula: SiO2·Al2O3
+composition:
+- Silica (SiO2) 60-70%
+- Alumina (Al2O3) 25-35%
+- Trace minerals (Fe, Ca, Mg, K)
+machineSettings:
+  powerRange: 50-200W
+  powerRangeNumeric: 125.0
+  powerRangeUnit: W
+  powerRangeMin: 20W
+  powerRangeMinNumeric: 20.0
+  powerRangeMinUnit: W
+  powerRangeMax: 500W
+  powerRangeMaxNumeric: 500.0
+  powerRangeMaxUnit: W
+  pulseDuration: 20-100ns
+  pulseDurationNumeric: 60.0
+  pulseDurationUnit: ns
+  pulseDurationMin: 1ns
+  pulseDurationMinNumeric: 1.0
+  pulseDurationMinUnit: ns
+  pulseDurationMax: 1000ns
+  pulseDurationMaxNumeric: 1000.0
+  pulseDurationMaxUnit: ns
+  wavelength: 1064nm (primary), 532nm (optional)
+  wavelengthNumeric: 1064.0
+  wavelengthUnit: nm
+  wavelengthMin: 355nm
+  wavelengthMinNumeric: 355.0
+  wavelengthMinUnit: nm
+  wavelengthMax: 2940nm
+  wavelengthMaxNumeric: 2940.0
+  wavelengthMaxUnit: nm
+  spotSize: 0.2-1.5mm
+  spotSizeNumeric: 0.85
+  spotSizeUnit: mm
+  spotSizeMin: 0.01mm
+  spotSizeMinNumeric: 0.01
+  spotSizeMinUnit: mm
+  spotSizeMax: 10mm
+  spotSizeMaxNumeric: 10.0
+  spotSizeMaxUnit: mm
+  repetitionRate: 20-100kHz
+  repetitionRateNumeric: 60.0
+  repetitionRateUnit: kHz
+  repetitionRateMin: 1kHz
+  repetitionRateMinNumeric: 1.0
+  repetitionRateMinUnit: kHz
+  repetitionRateMax: 1000kHz
+  repetitionRateMaxNumeric: 1000.0
+  repetitionRateMaxUnit: kHz
+  fluenceRange: 1.0–4.5 J/cm²
+  fluenceRangeNumeric: 1.0
+  fluenceRangeUnit: J/cm²
+  fluenceRangeMin: 0.1J/cm²
+  fluenceRangeMinNumeric: 0.1
+  fluenceRangeMinUnit: J/cm²
+  fluenceRangeMax: 50J/cm²
+  fluenceRangeMaxNumeric: 50.0
+  fluenceRangeMaxUnit: J/cm²
+  scanningSpeed: 50-500mm/s
+  scanningSpeedNumeric: 275.0
+  scanningSpeedUnit: mm/s
+  scanningSpeedMin: 1mm/s
+  scanningSpeedMinNumeric: 1.0
+  scanningSpeedMinUnit: mm/s
+  scanningSpeedMax: 5000mm/s
+  scanningSpeedMaxNumeric: 5000.0
+  scanningSpeedMaxUnit: mm/s
+  beamProfile: Gaussian TEM00
+  beamProfileOptions:
+  - Gaussian TEM00
+  - Top-hat
+  - Donut
+  - Multi-mode
+  safetyClass: Class 4 (requires full enclosure)
+applications:
+- industry: Electronics Manufacturing
+  detail: Removal of surface oxides and contaminants from Bluestone substrates
+- industry: Aerospace Components
+  detail: Cleaning of thermal barrier coatings and stone matrix composites
+compatibility:
+- Stone Substrates
+- Ceramic Coatings
+- Mineral Composites
+regulatoryStandards: ISO 18562, ASTM F2100, IEC 60601-1
 author: Alessandro Moretti
 author_object:
-  country: Italy
-  expertise: Laser-Based Additive Manufacturing
   id: 2
-  image: /images/author/alessandro-moretti.jpg
   name: Alessandro Moretti
   sex: m
   title: Ph.D.
-chemicalProperties:
-  formula: None
-  materialType: stone
-  symbol: None
-composition:
-- Feldspar (KAlSi₃O₈ - NaAlSi₃O₈ - CaAl₂Si₂O₈) 60%
-- Quartz (SiO₂) 25%
-- Biotite Mica (K(Mg,Fe)₃AlSi₃O₁₀(F,OH)₂) 10%
-- Other minerals (Chlorite, Epidote) 5%
-compatibility:
-- Granite
-- Marble
-- Sandstone
-regulatoryStandards: ASTM C97, ASTM C170, EN 1341
+  country: Italy
+  expertise: Laser-Based Additive Manufacturing
+  image: /images/author/alessandro-moretti.jpg
 images:
   hero:
     alt: Bluestone surface undergoing laser cleaning showing precise contamination
@@ -48,85 +163,31 @@ images:
     alt: Microscopic view of Bluestone surface after laser cleaning showing detailed
       surface structure
     url: /images/bluestone-laser-cleaning-micro.jpg
-title: Laser Cleaning Bluestone
-headline: Comprehensive technical guide for laser cleaning stone bluestone
 environmentalImpact:
 - benefit: Chemical Solvent Elimination
   description: Reduces chemical usage by 100% compared to traditional solvent cleaning
     methods
 - benefit: Water Conservation
-  description: Saves approximately 2000 liters of water per month in stone restoration
+  description: Saves approximately 3000 liters of water per month in stone processing
     applications
 - benefit: Energy Efficiency
-  description: Consumes 60% less energy than abrasive blasting processes
+  description: Consumes 35% less energy than abrasive cleaning processes
 outcomes:
-- metric: Achieves 99.9% contaminant removal without surface etching
-  result: Surface Cleanliness Level
-- metric: ±50μm accuracy with minimal substrate impact
-  result: Material Removal Precision
-- metric: 0.5-1.5 m²/hour cleaning rate depending on contamination level
-  result: Processing Speed
-keywords: bluestone, bluestone stone, laser ablation, laser cleaning, non-contact
-  cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters,
-  thermal processing, surface restoration
+- result: Surface Cleanliness Level
+  metric: Achieves ISO 14644-1 Class 8 cleanliness standard
+- result: Material Removal Precision
+  metric: ±10μm accuracy with minimal substrate impact
+- result: Processing Speed
+  metric: 1.5-3 m²/hour cleaning rate depending on contamination level
 prompt_chain_verification:
-  ai_detection_config_loaded: true
-  author_id: 2
   base_config_loaded: true
-  cultural_adaptation_applied: true
-  formatting_config_loaded: true
-  human_authenticity_focus: true
   persona_config_loaded: true
+  formatting_config_loaded: true
+  ai_detection_config_loaded: true
   persona_country: Italy
+  author_id: 2
+  verification_timestamp: '2025-09-19T05:00:40Z'
   prompt_components_integrated: 4
-  verification_timestamp: '2025-09-16T22:32:54Z'
-category: stone
-properties:
-  chemicalFormula: None
-  density: 2.4 g/cm³
-  densityMax: 3.2 g/cm³
-  densityMin: 1.5 g/cm³
-  densityPercentile: 52.9
-  fluenceRange: 1.0–4.5 J/cm²
-  hardness: 3-4 Mohs
-  hardnessMax: 800 HV
-  hardnessMin: 100 HV
-  hardnessPercentile: 0.0
-  laserAbsorptionMax: 30 cm⁻¹
-  laserAbsorptionMin: 0.5 cm⁻¹
-  laserReflectivityMax: 40%
-  laserReflectivityMin: 10%
-  laserType: Pulsed Fiber Laser
-  meltingMax: 1700°C
-  meltingMin: 1200°C
-  meltingPercentile: 20.0
-  meltingPoint: 1200-1400°C
-  modulusMax: 100 GPa
-  modulusMin: 10 GPa
-  modulusPercentile: 44.4
-  specificHeatMax: 1.0 J/g·K
-  specificHeatMin: 0.7 J/g·K
-  tensileMax: 300 MPa
-  tensileMin: 2 MPa
-  tensilePercentile: 6.0
-  tensileStrength: 10-30 MPa
-  thermalConductivity: 1.5 W/m·K
-  thermalDiffusivityMax: 3 mm²/s
-  thermalDiffusivityMin: 0.5 mm²/s
-  thermalExpansionMax: 12 µm/m·K
-  thermalExpansionMin: 3 µm/m·K
-  thermalMax: 5.0 W/m·K
-  thermalMin: 0.2 W/m·K
-  thermalPercentile: 27.1
-  wavelength: 1064nm
-  youngsModulus: 50 GPa
+  human_authenticity_focus: true
+  cultural_adaptation_applied: true
 ---
-
-# Version Information
-# Generated: 2025-09-16T15:33:49.162366
-# Material: Bluestone
-# Component: frontmatter
-# Generator: Z-Beam v2.1.0
-# Author: AI Assistant
-# Platform: Darwin (3.12.4)
-# File: content/components/frontmatter/bluestone-laser-cleaning.md

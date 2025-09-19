@@ -1,42 +1,42 @@
 # Basic Content Structure
 before_text: |
-  Preliminary microscopic analysis reveals significant contamination deposits across the cherry wooden substrate. 
-  Microscopic analysis shows old finishes and surface coatings adhering to the surface. The cherry exhibits the characteristic density profile typical of wood materials.
+  Initial surface examination reveals significant contamination deposits across the cherry wooden substrate. 
+  Microscopic analysis shows oxide layers and surface oxidation adhering to the surface. The cherry exhibits the characteristic density profile typical of wood materials.
   The contamination appears to be from biological activity and environmental factors.
 
 after_text: |
-  Treatment outcome assessment demonstrates remarkable surface restoration with 98.0% contaminant removal efficiency.
+  Post-laser cleaning analysis demonstrates exceptional cleaning performance through comprehensive laser processing.
   The cherry substrate now exhibits pristine surface characteristics with preserved fiber structure.
-  Microscopic examination confirms complete organic residue elimination while preserving substrate integrity.
+  Microscopic examination confirms total contamination removal while ensuring structural preservation.
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064
-  power: 74
-  pulse_duration: 42
-  spot_size: 0.1-1.0mm
-  frequency: 40446
-  energy_density: 2.8
-  scanning_speed: "375 mm/min"
-  beam_profile: "gaussian"
-  pulse_overlap: 81
+  wavelength: 1064nm (primary), 532nm (optional)
+  power: 10-100W
+  pulse_duration: 50-200ns
+  spot_size: 0.5-2.0mm
+  frequency: 10-50kHz
+  energy_density: 0.5–2.0 J/cm²
+  scanning_speed: "50-500mm/s"
+  beam_profile: "Gaussian TEM00"
+  pulse_overlap: 88
 
 # Material Information
 material: "Cherry"
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-17T18:11:38.986194Z"
+  generated: "2025-09-19T00:08:54.024006Z"
   format: "yaml"
   version: "2.0"
-  analysis_method: "optical_microscopy"
+  analysis_method: "scanning_electron_microscopy"
   magnification: "1000x"
   field_of_view: "200 μm"
   image_resolution: "3840x2160"
 
 # Enhanced SEO Frontmatter
 title: "Cherry Surface Laser Cleaning Analysis - Wood Surface Restoration"
-description: "Comprehensive microscopic analysis of cherry surface before and after precision laser cleaning, demonstrating 98.0% contamination removal efficiency using 1064nm (primary), 355nm (optional for delicate work) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of cherry surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -50,11 +50,11 @@ keywords:
   - "cherry"
   - "contamination analysis"
   - "cherry wood"
-  - "wood restoration"
   - "non-contact cleaning"
-  - "pulsed fiber laser"
   - "woodworking and furniture applications"
+  - "wood restoration"
   - "organic material cleaning"
+  - "forestry applications"
 
 # Author Information with SEO Enhancement
 author: "Yi-Chun Lin"
@@ -71,23 +71,23 @@ author_object:
 
 # Technical Specifications for SEO
 technicalSpecifications:
-  wavelength: "1064nm (primary), 355nm (optional for delicate work)"
-  power: "20-100W"
+  wavelength: "1064nm (primary), 532nm (optional)"
+  power: "10-100W"
   pulse_duration: "50-200ns"
-  scanning_speed: "499 mm/min"
+  scanning_speed: "50-500mm/s"
   material: "Cherry"
-  beam_delivery: "direct beam"
-  focus_diameter: "0.5-3.0mm"
-  processing_atmosphere: "controlled environment"
+  beam_delivery: "galvanometer scanning"
+  focus_diameter: "0.5-2.0mm"
+  processing_atmosphere: "inert atmosphere"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Cellulose (C6H10O5)n: 40-50%, Lignin: 20-30%, Hemicellulose: 20-30%"
+  composition: "Cellulose (C6H10O5) 40-50%, Lignin 20-30%, Hemicellulose 15-25%"
   surface_treatment: "laser cleaning"
   contamination_type: "organic decay and biological contamination"
-  materialType: "Hardwood"
-  formula: "C6H10O5 (cellulose base)"
-  surface_finish: "Ra < 0.7 μm (post-cleaning)"
+  materialType: "hardwood"
+  formula: "C6H10O5 (cellulose)"
+  surface_finish: "Ra < 0.6 μm (post-cleaning)"
   corrosion_resistance: "moderate"
 
 # Image Metadata for SEO
@@ -103,21 +103,18 @@ images:
 # Additional SEO Metadata
 seo_data:
   canonical_url: "https://z-beam.com/analysis/cherry-laser-cleaning"
-  og_title: "Cherry Laser Cleaning Analysis - 98.0% Contamination Removal"
+  og_title: "Cherry Laser Cleaning Analysis - Surface Restoration"
   og_description: "Professional microscopic analysis of precision laser cleaning on cherry, achieving complete contamination removal with preserved substrate integrity."
   og_image: "/images/cherry-cleaning-analysis-social.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-17T18:11:38.986194Z"
+  last_modified: "2025-09-19T00:08:54.024006Z"
 
 # Quality Metrics
 quality_metrics:
-  contamination_removal: "98.0%"
-  surface_roughness_before: "Ra 4.9 μm"
-  surface_roughness_after: "Ra 0.5 μm"
-  thermal_damage: "minimal"
-  substrate_integrity: "99% preserved"
-  processing_efficiency: "98%"
+  surface_roughness_before: "Ra 4.4 μm"
+  surface_roughness_after: "Ra 0.7 μm"
+  substrate_integrity: "complete preservation"
 
 # Accessibility Information
 accessibility:
@@ -129,7 +126,7 @@ accessibility:
 ---
 Material: "cherry"
 Component: caption
-Generated: 2025-09-17T18:11:38.986194Z
+Generated: 2025-09-19T00:08:54.024006Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---
