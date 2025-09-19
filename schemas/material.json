@@ -1,7 +1,7 @@
 {
   "materialProfile": {
     "name": "material",
-    "version": "1.7",
+    "version": "1.8",
     "schemaType": "MaterialProfile",
     "generatorConfig": {
       "jsonld": {
@@ -150,6 +150,161 @@
             "type": "string",
             "description": "Chemical formula or scientific symbol",
             "example": "Al₂O₃"
+          },
+          "densityMin": {
+            "type": "string",
+            "description": "Minimum density range",
+            "example": "0.5 g/cm³"
+          },
+          "densityMax": {
+            "type": "string",
+            "description": "Maximum density range",
+            "example": "22.6 g/cm³"
+          },
+          "densityPercentile": {
+            "type": "number",
+            "description": "Density percentile ranking",
+            "example": 10.0
+          },
+          "meltingMin": {
+            "type": "string",
+            "description": "Minimum melting point range",
+            "example": "-39°C"
+          },
+          "meltingMax": {
+            "type": "string",
+            "description": "Maximum melting point range",
+            "example": "3422°C"
+          },
+          "meltingPercentile": {
+            "type": "number",
+            "description": "Melting point percentile ranking",
+            "example": 18.4
+          },
+          "thermalMin": {
+            "type": "string",
+            "description": "Minimum thermal conductivity range",
+            "example": "8 W/m·K"
+          },
+          "thermalMax": {
+            "type": "string",
+            "description": "Maximum thermal conductivity range",
+            "example": "429 W/m·K"
+          },
+          "thermalPercentile": {
+            "type": "number",
+            "description": "Thermal conductivity percentile ranking",
+            "example": 54.4
+          },
+          "tensileStrength": {
+            "type": "string",
+            "description": "Tensile strength",
+            "example": "70-700 MPa"
+          },
+          "tensileMin": {
+            "type": "string",
+            "description": "Minimum tensile strength range",
+            "example": "70 MPa"
+          },
+          "tensileMax": {
+            "type": "string",
+            "description": "Maximum tensile strength range",
+            "example": "2000 MPa"
+          },
+          "tensilePercentile": {
+            "type": "number",
+            "description": "Tensile strength percentile ranking",
+            "example": 16.3
+          },
+          "hardness": {
+            "type": "string",
+            "description": "Material hardness",
+            "example": "15-120 HB"
+          },
+          "hardnessMin": {
+            "type": "string",
+            "description": "Minimum hardness range",
+            "example": "5 HB"
+          },
+          "hardnessMax": {
+            "type": "string",
+            "description": "Maximum hardness range",
+            "example": "500 HV"
+          },
+          "hardnessPercentile": {
+            "type": "number",
+            "description": "Hardness percentile ranking",
+            "example": 12.6
+          },
+          "youngsModulus": {
+            "type": "string",
+            "description": "Young's modulus",
+            "example": "69 GPa"
+          },
+          "modulusMin": {
+            "type": "string",
+            "description": "Minimum Young's modulus range",
+            "example": "70 GPa"
+          },
+          "modulusMax": {
+            "type": "string",
+            "description": "Maximum Young's modulus range",
+            "example": "411 GPa"
+          },
+          "modulusPercentile": {
+            "type": "number",
+            "description": "Young's modulus percentile ranking",
+            "example": 0.0
+          },
+          "laserAbsorptionMin": {
+            "type": "string",
+            "description": "Minimum laser absorption range",
+            "example": "0.02 cm⁻¹"
+          },
+          "laserAbsorptionMax": {
+            "type": "string",
+            "description": "Maximum laser absorption range",
+            "example": "100 cm⁻¹"
+          },
+          "laserReflectivityMin": {
+            "type": "string",
+            "description": "Minimum laser reflectivity range",
+            "example": "5%"
+          },
+          "laserReflectivityMax": {
+            "type": "string",
+            "description": "Maximum laser reflectivity range",
+            "example": "98%"
+          },
+          "thermalDiffusivityMin": {
+            "type": "string",
+            "description": "Minimum thermal diffusivity range",
+            "example": "4 mm²/s"
+          },
+          "thermalDiffusivityMax": {
+            "type": "string",
+            "description": "Maximum thermal diffusivity range",
+            "example": "174 mm²/s"
+          },
+          "thermalExpansionMin": {
+            "type": "string",
+            "description": "Minimum thermal expansion range",
+            "example": "0.5 µm/m·K"
+          },
+          "thermalExpansionMax": {
+            "type": "string",
+            "description": "Maximum thermal expansion range",
+            "example": "29 µm/m·K"
+          },
+          "specificHeatMin": {
+            "type": "string",
+            "description": "Minimum specific heat range",
+            "example": "0.13 J/g·K"
+          },
+          "specificHeatMax": {
+            "type": "string",
+            "description": "Maximum specific heat range",
+            "example": "0.90 J/g·K"
           }
         },
         "description": "Physical, chemical, and laser cleaning parameters"
@@ -527,6 +682,49 @@
         },
         "description": "Technical metadata for analysis tracking and documentation"
       },
+      "author_object": {
+        "type": "object",
+        "required": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique author identifier",
+            "example": 3
+          },
+          "name": {
+            "type": "string",
+            "description": "Full author name",
+            "example": "Ikmanda Roswati"
+          },
+          "sex": {
+            "type": "string",
+            "description": "Gender identifier",
+            "enum": ["m", "f"],
+            "example": "m"
+          },
+          "title": {
+            "type": "string",
+            "description": "Academic or professional title",
+            "example": "Ph.D."
+          },
+          "country": {
+            "type": "string",
+            "description": "Author's country",
+            "example": "Indonesia"
+          },
+          "expertise": {
+            "type": "string",
+            "description": "Primary area of expertise",
+            "example": "Ultrafast Laser Physics and Material Interactions"
+          },
+          "image": {
+            "type": "string",
+            "description": "Path to author image",
+            "example": "/images/author/ikmanda-roswati.jpg"
+          }
+        },
+        "description": "Detailed author information for content attribution"
+      },
       "validation": {
         "frontmatter": {
           "requiredFields": [
@@ -552,7 +750,8 @@
             "quality_metrics",
             "seo_data",
             "accessibility",
-            "metadata"
+            "metadata",
+            "author_object"
           ]
         }
       }
