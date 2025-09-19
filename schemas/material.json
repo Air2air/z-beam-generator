@@ -1,7 +1,7 @@
 {
   "materialProfile": {
     "name": "material",
-    "version": "1.6",
+    "version": "1.7",
     "schemaType": "MaterialProfile",
     "generatorConfig": {
       "jsonld": {
@@ -347,9 +347,185 @@
             "type": "string",
             "description": "Pulse duration",
             "example": "10–200ns"
+          },
+          "frequency": {
+            "type": "number",
+            "description": "Laser frequency in Hz",
+            "example": 32101
+          },
+          "energy_density": {
+            "type": "number",
+            "description": "Energy density in J/cm²",
+            "example": 1.6
+          },
+          "scanning_speed": {
+            "type": "string",
+            "description": "Scanning speed",
+            "example": "599 mm/min"
+          },
+          "beam_profile": {
+            "type": "string",
+            "description": "Beam profile shape",
+            "enum": ["gaussian", "flat-top", "donut", "custom"],
+            "example": "gaussian"
+          },
+          "pulse_overlap": {
+            "type": "number",
+            "description": "Pulse overlap percentage",
+            "example": 88
           }
         },
         "description": "Technical parameters for material/thesaurus articles"
+      },
+      "quality_metrics": {
+        "type": "object",
+        "required": false,
+        "properties": {
+          "contamination_removal": {
+            "type": "string",
+            "description": "Percentage of contamination removal achieved",
+            "example": "95.1%"
+          },
+          "surface_roughness_before": {
+            "type": "string",
+            "description": "Surface roughness measurement before cleaning",
+            "example": "Ra 4.4 μm"
+          },
+          "surface_roughness_after": {
+            "type": "string",
+            "description": "Surface roughness measurement after cleaning",
+            "example": "Ra 0.6 μm"
+          },
+          "thermal_damage": {
+            "type": "string",
+            "description": "Level of thermal damage to substrate",
+            "example": "trace amounts"
+          },
+          "substrate_integrity": {
+            "type": "string",
+            "description": "Percentage of substrate integrity preserved",
+            "example": "99% preserved"
+          },
+          "processing_efficiency": {
+            "type": "string",
+            "description": "Overall processing efficiency percentage",
+            "example": "94%"
+          }
+        },
+        "description": "Quality and performance metrics for laser cleaning results"
+      },
+      "seo_data": {
+        "type": "object",
+        "required": false,
+        "properties": {
+          "canonical_url": {
+            "type": "string",
+            "description": "Canonical URL for SEO",
+            "example": "https://z-beam.com/analysis/aluminum-laser-cleaning"
+          },
+          "og_title": {
+            "type": "string",
+            "description": "Open Graph title for social media",
+            "example": "Aluminum Laser Cleaning Analysis - 95.1% Contamination Removal"
+          },
+          "og_description": {
+            "type": "string",
+            "description": "Open Graph description for social media",
+            "example": "Professional microscopic analysis of precision laser cleaning on aluminum"
+          },
+          "og_image": {
+            "type": "string",
+            "description": "Open Graph image URL for social media",
+            "example": "/images/aluminum-cleaning-analysis-social.jpg"
+          },
+          "twitter_card": {
+            "type": "string",
+            "description": "Twitter card type",
+            "example": "summary_large_image"
+          },
+          "schema_type": {
+            "type": "string",
+            "description": "Schema.org type for structured data",
+            "example": "AnalysisNewsArticle"
+          },
+          "last_modified": {
+            "type": "string",
+            "description": "Last modification timestamp",
+            "example": "2025-09-17T18:11:18.585479Z"
+          }
+        },
+        "description": "SEO optimization data for web presence and social media"
+      },
+      "accessibility": {
+        "type": "object",
+        "required": false,
+        "properties": {
+          "alt_text_detailed": {
+            "type": "string",
+            "description": "Detailed alternative text for screen readers",
+            "example": "Split-screen microscopic image showing aluminum surface before laser cleaning with visible contamination deposits and after cleaning with pristine surface finish"
+          },
+          "caption_language": {
+            "type": "string",
+            "description": "Language code for caption content",
+            "example": "en"
+          },
+          "technical_level": {
+            "type": "string",
+            "description": "Technical complexity level for audience targeting",
+            "enum": ["beginner", "intermediate", "advanced", "professional"],
+            "example": "professional"
+          },
+          "visual_description": {
+            "type": "string",
+            "description": "Detailed visual description for accessibility",
+            "example": "High-contrast microscopic imagery clearly showing aluminum surface transformation through laser cleaning"
+          }
+        },
+        "description": "Accessibility compliance information for inclusive design"
+      },
+      "metadata": {
+        "type": "object",
+        "required": false,
+        "properties": {
+          "analysis_method": {
+            "type": "string",
+            "description": "Method used for surface analysis",
+            "enum": ["optical_microscopy", "atomic_force_microscopy", "scanning_electron_microscopy", "profilometry"],
+            "example": "atomic_force_microscopy"
+          },
+          "magnification": {
+            "type": "string",
+            "description": "Magnification level used in analysis",
+            "example": "1000x"
+          },
+          "field_of_view": {
+            "type": "string",
+            "description": "Field of view for microscopic analysis",
+            "example": "200 μm"
+          },
+          "image_resolution": {
+            "type": "string",
+            "description": "Resolution of captured images",
+            "example": "4096x3072"
+          },
+          "generated": {
+            "type": "string",
+            "description": "Generation timestamp",
+            "example": "2025-09-17T18:11:18.585479Z"
+          },
+          "format": {
+            "type": "string",
+            "description": "Data format version",
+            "example": "yaml"
+          },
+          "version": {
+            "type": "string",
+            "description": "Metadata version",
+            "example": "2.0"
+          }
+        },
+        "description": "Technical metadata for analysis tracking and documentation"
       },
       "validation": {
         "frontmatter": {
@@ -371,6 +547,12 @@
             "headline",
             "environmentalImpact",
             "outcomes"
+          ],
+          "optionalFields": [
+            "quality_metrics",
+            "seo_data",
+            "accessibility",
+            "metadata"
           ]
         }
       }
