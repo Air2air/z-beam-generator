@@ -242,7 +242,7 @@ class PropertiesTableGenerator:
             None,  # No default - fail fast
         )
         if symbol is None:
-            symbol = material_name[:3].upper()  # Only fallback for symbol
+            raise ValueError(f"Chemical symbol not found in frontmatter for {material_name} - fail-fast architecture requires all data to be explicit")
 
         category = self._get_field(frontmatter_data, ["category"], None)
         if category is None:

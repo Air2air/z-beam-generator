@@ -463,16 +463,13 @@ class TextComponentGenerator(APIComponentGenerator):
             from components.text.localization.prompt_chain import LocalizationPromptChain
             chain = LocalizationPromptChain()
             
-            # Extract country from author_info
+            # Extract country from author_info - FAIL-FAST: No defaults
             if isinstance(author_info, dict) and 'country' in author_info:
                 country = author_info['country'].lower()
-            elif isinstance(author_info, int):
-                # Handle legacy author ID format - map to default country
-                country = 'usa'
             else:
-                country = 'usa'
+                raise ValueError("Author country information not found - fail-fast architecture requires complete author data")
             
-            # Normalize country name
+            # Validate country support
             country_mapping = {
                 'italy': 'italy',
                 'indonesia': 'indonesia', 
@@ -481,7 +478,11 @@ class TextComponentGenerator(APIComponentGenerator):
                 'united states': 'usa',
                 'united states (california)': 'usa'
             }
-            normalized_country = country_mapping.get(country, 'usa')
+            
+            if country not in country_mapping:
+                raise ValueError(f"Unsupported country '{country}' - fail-fast architecture requires supported localization")
+            
+            normalized_country = country_mapping[country]
             
             return chain._load_persona_prompt(normalized_country)
         except Exception as e:
@@ -524,6 +525,6 @@ class TextComponentGenerator(APIComponentGenerator):
                 **kwargs
             )
         except Exception as e:
-            logger.warning(f"Failed to build API prompt: {e}")
-            # Fallback to simple prompt
-            return f"Generate technical content about {material_name} laser cleaning."
+            logger.error(f"Failed to build API prompt: {e}")
+            # FAIL-FAST: No fallback prompts allowed
+            raise ValueError(f"Failed to build comprehensive prompt for {material_name}: {e}")

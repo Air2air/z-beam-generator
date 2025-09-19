@@ -720,8 +720,8 @@ Category: {material_data.get('category', 'material')}
                         "nationality": author_obj.get("country", "")
                     }
                 else:
-                    # Fallback to example structure
-                    result[key] = example_value
+                    # FAIL-FAST: Author information must be provided
+                    raise ValueError(f"Author information not found in frontmatter for {material_slug} - fail-fast architecture requires complete data")
             elif key == "image":
                 # Enhanced image array using frontmatter images data with absolute URLs
                 result[key] = []
@@ -730,10 +730,10 @@ Category: {material_data.get('category', 'material')}
                 if images.get("hero"):
                     hero_img = {
                         "@type": "ImageObject",
-                        "url": f"https://z-beam.com{images['hero'].get('url', f'/images/{material_slug}-laser-cleaning-hero.jpg')}",
+                        "url": f"https://z-beam.com{images['hero']['url']}",
                         "name": f"{material_name_title} Laser Cleaning Before/After Comparison",
-                        "caption": images["hero"].get("alt", f"{material_name_title} surface undergoing laser cleaning"),
-                        "description": f"High-resolution demonstration of {material_name_title} component processed with {tech_specs.get('wavelength', '1064nm')} wavelength at {tech_specs.get('fluenceRange', 'optimized fluence')}, showing complete contamination removal while preserving material integrity",
+                        "caption": images["hero"]["alt"],
+                        "description": f"High-resolution demonstration of {material_name_title} component processed with {tech_specs['wavelength']} wavelength at {tech_specs['fluenceRange']}, showing complete contamination removal while preserving material integrity",
                         "width": 1200,
                         "height": 800,
                         "encodingFormat": "image/jpeg",
@@ -949,10 +949,10 @@ Category: {material_data.get('category', 'material')}
             "description": self._get_field(
                 frontmatter_data,
                 ["description"]
-            ),  # Generated fallback
+            ),  # Must exist - no fallbacks
             "category": self._get_field(
                 frontmatter_data, ["category", "type"]
-            ),  # No default - must exist
+            ),  # Must exist - no fallbacks
         }
 
         # Add chemical composition if available
@@ -1358,10 +1358,3 @@ Category: {material_data.get('category', 'material')}
         raise Exception(
             f"Required field not found in data. Searched paths: {paths} - fail-fast architecture requires complete data"
         )
-        
-    def _get_field_safe(self, data: Dict, paths: list, default_value: str = "") -> str:
-        """Extract field using dot notation paths with a default value if not found"""
-        try:
-            return self._get_field(data, paths)
-        except Exception:
-            return default_value

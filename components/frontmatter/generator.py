@@ -178,7 +178,7 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
             )
         category = material_data["category"]
 
-        # Formula extraction with intelligent fallback generation
+        # Extract chemical properties with strict validation - NO FALLBACKS
         formula = None
         if "formula" in material_data and material_data["formula"]:
             formula = material_data["formula"]
@@ -189,7 +189,7 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
         ):
             formula = material_data["data"]["formula"]
         
-        # Symbol extraction with intelligent fallback generation
+        # Extract symbol with strict validation - NO FALLBACKS
         symbol = None
         if "symbol" in material_data and material_data["symbol"]:
             symbol = material_data["symbol"]
@@ -200,37 +200,11 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
         ):
             symbol = material_data["data"]["symbol"]
         
-        # Apply category-specific fallback generation if formula/symbol missing
-        if not formula or not symbol:
-            try:
-                from utils.core.chemical_fallback_generator import ChemicalFallbackGenerator
-                
-                fallback_generator = ChemicalFallbackGenerator()
-                fallback_formula, fallback_symbol = fallback_generator.generate_formula_and_symbol(
-                    material_name, category
-                )
-                
-                if not formula and fallback_formula:
-                    formula = fallback_formula
-                    logger.info(f"Generated fallback formula '{formula}' for {material_name} using category-specific rules")
-                
-                if not symbol and fallback_symbol:
-                    symbol = fallback_symbol
-                    logger.info(f"Generated fallback symbol '{symbol}' for {material_name} using category-specific rules")
-                    
-            except Exception as e:
-                logger.warning(f"Failed to generate chemical fallbacks for {material_name}: {e}")
-        
-        # Final fallback: use formula as symbol if still missing
-        if not symbol and formula:
-            symbol = formula
-            logger.info(f"Using formula '{formula}' as final fallback for missing symbol in {material_name}")
-        
-        # Log warnings for truly missing data
+        # FAIL-FAST: Chemical properties must be provided in material data
         if not formula:
-            logger.warning(f"No formula available for {material_name} - continuing without formula")
+            raise ValueError(f"Chemical formula not found in material data for {material_name} - fail-fast architecture requires all data to be explicit")
         if not symbol:
-            logger.warning(f"No symbol available for {material_name} - continuing without symbol")
+            raise ValueError(f"Chemical symbol not found in material data for {material_name} - fail-fast architecture requires all data to be explicit")
 
         # FAIL-FAST: Author information is required
         if not author_info or "name" not in author_info:
@@ -274,8 +248,8 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
             "exact-material-name": subject_slug,  # Required for template compatibility
             "material_formula": formula,
             "material_symbol": symbol,
-            "formula": formula,  # For compatibility with chemical fallback tests
-            "symbol": symbol,   # For compatibility with chemical fallback tests
+            "formula": formula,
+            "symbol": symbol,
             "material_type": material_data.get("material_type")
             if "material_type" in material_data
             else category,

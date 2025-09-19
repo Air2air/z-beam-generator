@@ -2,11 +2,10 @@
 """
 Bullets Component Generator
 
-Generates technical bullet points for laser cleaning applications.
-Uses consolidated component base utilities for reduced code duplication.
+Generates technical bullet points for laser cleaning applications using frontmatter data.
+FAIL-FAST: Requires all laser parameters from frontmatter - no defaults or random generation.
 """
 
-import random
 from pathlib import Path
 from typing import Any, Dict, Optional
 
@@ -29,14 +28,16 @@ class BulletsComponentGenerator(StaticComponentGenerator):
         frontmatter_data: Optional[Dict] = None,
         schema_fields: Optional[Dict] = None,
     ) -> str:
-        """Generate bullets component content"""
+        """Generate bullets component content using frontmatter data"""
         try:
-            # Validate required data
+            # FAIL-FAST: Validate required inputs
             if not material_name:
-                raise ValueError("Material name is required")
+                raise ValueError("Material name is required for bullets generation")
+            if not frontmatter_data:
+                raise ValueError("Frontmatter data is required for bullets generation - no fallbacks allowed")
 
-            # Generate bullets content
-            content = self._create_bullets_content(material_name, material_data)
+            # Generate bullets content using frontmatter data
+            content = self._create_bullets_content(material_name, frontmatter_data)
 
             # Apply centralized version stamping
             return stamp_component_output("bullets", content)
@@ -44,96 +45,87 @@ class BulletsComponentGenerator(StaticComponentGenerator):
         except Exception as e:
             raise Exception(f"Error generating bullets content: {e}")
 
-    def _create_bullets_content(self, material_name: str, material_data: Dict) -> str:
-        """Create bullets content with technical details"""
+    def _create_bullets_content(self, material_name: str, frontmatter_data: Dict) -> str:
+        """Create bullets content using frontmatter machine settings and properties"""
+        # Extract machine settings from frontmatter
+        machine_settings = frontmatter_data.get("machineSettings", {})
+        if not machine_settings:
+            raise ValueError(f"Machine settings not found in frontmatter for {material_name} - fail-fast requires complete data")
+
+        # Extract properties from frontmatter
+        properties = frontmatter_data.get("properties", {})
+        if not properties:
+            raise ValueError(f"Properties not found in frontmatter for {material_name} - fail-fast requires complete data")
+
         bullets = []
 
-        # Generate 4 technical bullet points (matching example file count)
-        bullets.append(self._generate_wavelength_bullet(material_name))
-        bullets.append(self._generate_precision_bullet(material_name))
-        bullets.append(self._generate_applications_bullet(material_name))
-        bullets.append(self._generate_thermal_bullet(material_name))
+        # Generate 4 technical bullet points using actual frontmatter data
+        bullets.append(self._generate_wavelength_bullet(material_name, machine_settings))
+        bullets.append(self._generate_precision_bullet(material_name, machine_settings))
+        bullets.append(self._generate_applications_bullet(material_name, properties))
+        bullets.append(self._generate_thermal_bullet(material_name, machine_settings))
 
-        # Apply word count limits similar to example file (100-150 words total)
-        content = "\n\n".join(bullets)
-        words = content.split()
-        if len(words) > 150:  # Max ~150 words total
-            # Truncate to approximately 150 words while preserving bullet structure
-            truncated_words = words[:150]
-            content = " ".join(truncated_words)
-            # Ensure we end at a complete bullet if possible
-            if not content.endswith("."):
-                content = content.rsplit(".", 1)[0] + "."
+        return "\n\n".join(bullets)
 
-        return content
+    def _generate_wavelength_bullet(self, material_name: str, machine_settings: Dict) -> str:
+        """Generate wavelength-focused bullet using frontmatter data"""
+        wavelength = machine_settings.get("wavelength")
+        if not wavelength:
+            raise ValueError(f"Wavelength not found in machine settings for {material_name}")
+        
+        power_range = machine_settings.get("powerRange", "")
+        fluence_range = machine_settings.get("fluenceRange", "")
+        
+        # Build description with available parameters
+        power_desc = f" with {power_range} power output" if power_range else ""
+        fluence_desc = f" at {fluence_range} fluence levels" if fluence_range else ""
+        
+        return f"• **Optimal Wavelength for Laser Cleaning**: {material_name} exhibits optimal response to {wavelength} laser systems{power_desc}{fluence_desc}, providing precise energy absorption for effective contaminant removal while minimizing thermal damage."
 
-    def _generate_wavelength_bullet(self, material_name: str) -> str:
-        """Generate wavelength-focused bullet"""
-        wavelengths = [355, 532, 1064, 266]
-        wavelength = random.choice(wavelengths)
+    def _generate_precision_bullet(self, material_name: str, machine_settings: Dict) -> str:
+        """Generate precision-focused bullet using machine settings"""
+        pulse_duration = machine_settings.get("pulseDuration")
+        spot_size = machine_settings.get("spotSize")
+        
+        if not pulse_duration:
+            raise ValueError(f"Pulse duration not found in machine settings for {material_name}")
+        if not spot_size:
+            raise ValueError(f"Spot size not found in machine settings for {material_name}")
 
-        descriptions = [
-            f"exhibits high reflectivity, making the {wavelength}nm wavelength (common in pulsed fiber lasers) ideal for effective laser ablation",
-            f"responds well to {wavelength}nm wavelength lasers, providing optimal energy absorption for contaminant removal",
-            f"benefits from {wavelength}nm laser systems, which offer excellent coupling efficiency for surface cleaning",
-            f"works effectively with {wavelength}nm wavelength, delivering precise ablation while controlling thermal effects",
-        ]
+        return f"• **Non-Contact Precision Cleaning**: Laser cleaning removes surface contaminants from {material_name} using {pulse_duration} pulse duration and {spot_size} spot size, ensuring selective material removal without mechanical contact or substrate damage."
 
-        return f"• **Optimal Wavelength for Laser Cleaning**: {material_name} {random.choice(descriptions)} while minimizing thermal damage."
+    def _generate_applications_bullet(self, material_name: str, properties: Dict) -> str:
+        """Generate applications-focused bullet using material properties"""
+        category = properties.get("category")
+        if not category:
+            raise ValueError(f"Category not found in properties for {material_name}")
+        
+        # Map categories to relevant applications
+        industry_map = {
+            "Metal": "aerospace, automotive, and electronics industries",
+            "Alloy": "aerospace, marine, and manufacturing industries", 
+            "Wood": "furniture, construction, and restoration industries",
+            "Stone": "construction, architectural, and restoration industries",
+            "Glass": "electronics, optical, and semiconductor industries",
+            "Composite": "aerospace, automotive, and marine industries",
+            "Ceramic": "semiconductor, medical, and precision engineering industries"
+        }
+        
+        industries = industry_map.get(category, "industrial and manufacturing applications")
+        
+        return f"• **Industrial Applications**: Widely used in {industries} for {material_name} surface preparation, contamination removal, and restoration processes requiring precise material handling."
 
-    def _generate_precision_bullet(self, material_name: str) -> str:
-        """Generate precision-focused bullet"""
-        contaminants = [
-            "oxides, oils, coatings",
-            "surface contaminants and residues",
-            "industrial deposits and films",
-            "environmental contaminants and buildup",
-        ]
+    def _generate_thermal_bullet(self, material_name: str, machine_settings: Dict) -> str:
+        """Generate thermal considerations bullet using machine settings"""
+        repetition_rate = machine_settings.get("repetitionRate")
+        scanning_speed = machine_settings.get("scanningSpeed")
+        
+        if not repetition_rate:
+            raise ValueError(f"Repetition rate not found in machine settings for {material_name}")
+        if not scanning_speed:
+            raise ValueError(f"Scanning speed not found in machine settings for {material_name}")
 
-        benefits = [
-            "preserving substrate integrity and reducing material waste",
-            "maintaining surface quality and dimensional accuracy",
-            "ensuring consistent cleaning results without mechanical stress",
-            "providing selective removal without affecting base material properties",
-        ]
-
-        return f"• **Non-Contact Precision Cleaning**: Laser cleaning removes {random.choice(contaminants)} from {material_name} without mechanical contact, {random.choice(benefits)}."
-
-    def _generate_applications_bullet(self, material_name: str) -> str:
-        """Generate applications-focused bullet"""
-        industries = [
-            "electronics, aerospace, and automotive",
-            "semiconductor, medical, and manufacturing",
-            "aerospace, marine, and industrial equipment",
-            "automotive, electronics, and precision engineering",
-        ]
-
-        purposes = [
-            f"restoring {material_name} surfaces, enhancing conductivity, and preparing for soldering or bonding",
-            f"improving {material_name} surface finish, removing coatings, and preparing for further processing",
-            f"cleaning critical {material_name} components, removing residues, and ensuring surface quality",
-            f"preparing {material_name} surfaces for coating, improving adhesion, and extending component life",
-        ]
-
-        return f"• **Industrial Applications**: Widely used in {random.choice(industries)} industries for {random.choice(purposes)}."
-
-    def _generate_thermal_bullet(self, material_name: str) -> str:
-        """Generate thermal considerations bullet"""
-        considerations = [
-            f"Requires precise pulse duration and energy control to avoid excessive heat buildup in {material_name}",
-            f"Demands careful parameter selection to prevent thermal stress and distortion of {material_name}",
-            f"Needs optimized laser settings to minimize thermal effects on sensitive {material_name} surfaces",
-            f"Benefits from controlled energy delivery to prevent unwanted modification of {material_name}",
-        ]
-
-        outcomes = [
-            "ensuring efficient contamination removal without melting or warping the substrate",
-            "providing effective cleaning while maintaining material integrity and properties",
-            "delivering precise ablation without compromising structural characteristics",
-            "achieving thorough cleaning with minimal thermal impact on the base material",
-        ]
-
-        return f"• **Thermal Processing Considerations**: {random.choice(considerations)}, {random.choice(outcomes)}."
+        return f"• **Thermal Processing Considerations**: Optimized {repetition_rate} repetition rate and {scanning_speed} scanning speed ensure precise energy delivery to {material_name}, minimizing heat accumulation while achieving effective surface processing without thermal stress or distortion."
 
 
 

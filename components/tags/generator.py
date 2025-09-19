@@ -72,7 +72,7 @@ class TagsComponentGenerator(APIComponentGenerator):
                 
                 # Filter out excluded terms
                 material_name_lower = material_name.lower()
-                material_formula = template_vars.get("material_formula", "").lower()
+                material_formula = template_vars["material_formula"].lower()
                 
                 excluded_terms = {
                     "laser", "cleaning", "non-contact", "ablation", "beam", "photon", "wavelength",
@@ -152,7 +152,7 @@ Format: YAML v2.0
         processes = {'decoating', 'decontamination', 'restoration', 'polishing', 'texturing', 'etching', 'passivation', 'anodizing'}
         
         material_name_lower = material_name.lower()
-        material_formula = template_vars.get("material_formula", "").lower()
+        material_formula = template_vars["material_formula"].lower()
         
         for tag in tags_list:
             tag_clean = tag.strip().lower()
@@ -207,20 +207,32 @@ Format: YAML v2.0
         schema_fields: Optional[Dict] = None,
     ) -> Dict:
         """Create template variables for tags generation"""
+        # FAIL-FAST: Validate required material data
+        if not material_data.get("category"):
+            raise ValueError(f"Material category not found for {material_name} - fail-fast architecture requires complete data")
+        if not material_data.get("formula"):
+            raise ValueError(f"Material formula not found for {material_name} - fail-fast architecture requires complete data")
+        if not material_data.get("symbol"):
+            raise ValueError(f"Material symbol not found for {material_name} - fail-fast architecture requires complete data")
+        if not author_info or not author_info.get("name"):
+            raise ValueError(f"Author name not found for {material_name} - fail-fast architecture requires complete data")
+        if not author_info.get("country"):
+            raise ValueError(f"Author country not found for {material_name} - fail-fast architecture requires complete data")
+
         return {
             "material_name": material_name,
-            "material_category": material_data.get("category", "material"),
-            "material_formula": material_data.get("formula", ""),
-            "material_symbol": material_data.get("symbol", ""),
-            "author_name": author_info.get("name", "Expert") if author_info else "Expert",
-            "author_country": author_info.get("country", "Unknown") if author_info else "Unknown",
+            "material_category": material_data["category"],
+            "material_formula": material_data["formula"],
+            "material_symbol": material_data["symbol"],
+            "author_name": author_info["name"],
+            "author_country": author_info["country"],
         }
 
     def _build_api_prompt(self, template_vars: Dict, frontmatter_data: Optional[Dict] = None) -> str:
         """Build API prompt for tags generation"""
         material_name = template_vars["material_name"]
-        material_formula = template_vars.get("material_formula", "")
-        material_category = template_vars.get("material_category", "")
+        material_formula = template_vars["material_formula"]
+        material_category = template_vars["material_category"]
         
         prompt = f"""Generate navigation tags for {material_name} surface treatment.
 
@@ -253,7 +265,7 @@ REQUIREMENTS:
 - Include 2-3 industry applications (aerospace, automotive, manufacturing, electronics, marine, medical, etc.)
 - Include relevant process terms (decoating, decontamination, restoration, etching, passivation, polishing, texturing, etc.)
 - Include material category terms (metal, polymer, ceramic, composite, etc.) if relevant
-- Include 1 author slug: {template_vars.get('author_name', 'expert').lower().replace(' ', '-')}
+- Include 1 author slug: {template_vars['author_name'].lower().replace(' ', '-')}
 - Make tags specific and valuable for {material_name} applications
 - Use lowercase throughout
 - DO NOT INCLUDE any of these terms: {exclusion_text}
