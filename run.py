@@ -34,6 +34,9 @@ The main application logic has been moved to main_runner.py for better organizat
   python3 run.py --all                     # All materials
   python3 run.py --content-batch           # First 8 categories
 
+🚀 DEPLOYMENT:
+  python3 run.py --deploy                  # Deploy to Next.js production site
+
 🧪 TESTING & VALIDATION:
   python3 run.py --test                    # Full test suite
   python3 run.py --test-api                # Test API connections
@@ -476,6 +479,123 @@ def create_dynamic_ai_detection_config(
 
 
 # =================================================================================
+# DEPLOYMENT FUNCTIONS
+# =================================================================================
+
+def deploy_to_production():
+    """Deploy generated content to Next.js production site."""
+    import shutil
+    import os
+    
+    # Define source and target paths
+    source_dir = "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/content/components"
+    target_dir = "/Users/todddunning/Desktop/Z-Beam/z-beam-test-push/content/components"
+    
+    try:
+        # Verify source directory exists
+        if not os.path.exists(source_dir):
+            print(f"❌ Source directory not found: {source_dir}")
+            return False
+        
+        # Verify target directory exists
+        if not os.path.exists(target_dir):
+            print(f"❌ Target directory not found: {target_dir}")
+            return False
+        
+        print("🚀 Deploying content from generator to Next.js production site...")
+        print(f"📂 Source: {source_dir}")
+        print(f"📂 Target: {target_dir}")
+        
+        # Get list of component directories in source
+        source_components = [d for d in os.listdir(source_dir) 
+                           if os.path.isdir(os.path.join(source_dir, d)) and not d.startswith('.')]
+        
+        if not source_components:
+            print("⚠️ No component directories found in source")
+            return False
+        
+        print(f"📋 Found {len(source_components)} component types to deploy: {', '.join(source_components)}")
+        
+        deployment_stats = {
+            "updated": 0,
+            "created": 0,
+            "errors": 0,
+            "skipped": 0
+        }
+        
+        # Deploy each component type
+        for component_type in source_components:
+            component_source = os.path.join(source_dir, component_type)
+            component_target = os.path.join(target_dir, component_type)
+            
+            print(f"\n📦 Deploying {component_type} component...")
+            
+            # Create target component directory if it doesn't exist
+            os.makedirs(component_target, exist_ok=True)
+            
+            # Get list of files in source component directory
+            try:
+                source_files = [f for f in os.listdir(component_source) 
+                              if os.path.isfile(os.path.join(component_source, f)) and not f.startswith('.')]
+                
+                if not source_files:
+                    print(f"  ⚠️ No files found in {component_type}")
+                    deployment_stats["skipped"] += 1
+                    continue
+                
+                # Copy each file
+                for filename in source_files:
+                    source_file = os.path.join(component_source, filename)
+                    target_file = os.path.join(component_target, filename)
+                    
+                    try:
+                        # Check if target file exists
+                        file_exists = os.path.exists(target_file)
+                        
+                        # Copy the file
+                        shutil.copy2(source_file, target_file)
+                        
+                        if file_exists:
+                            print(f"  ✅ Updated: {filename}")
+                            deployment_stats["updated"] += 1
+                        else:
+                            print(f"  ✨ Created: {filename}")
+                            deployment_stats["created"] += 1
+                            
+                    except Exception as e:
+                        print(f"  ❌ Error copying {filename}: {e}")
+                        deployment_stats["errors"] += 1
+                        
+            except Exception as e:
+                print(f"  ❌ Error processing {component_type}: {e}")
+                deployment_stats["errors"] += 1
+        
+        # Print deployment summary
+        print("\n🏁 Deployment completed!")
+        print("📊 Statistics:")
+        print(f"  ✨ Created: {deployment_stats['created']} files")
+        print(f"  ✅ Updated: {deployment_stats['updated']} files")
+        print(f"  ⚠️ Skipped: {deployment_stats['skipped']} components")
+        print(f"  ❌ Errors: {deployment_stats['errors']} files")
+        
+        # Success if at least some files were deployed and no errors
+        success = (deployment_stats["created"] + deployment_stats["updated"]) > 0 and deployment_stats["errors"] == 0
+        
+        if success:
+            print("🎉 Deployment successful! Next.js production site updated.")
+        else:
+            print("⚠️ Deployment completed with issues.")
+            
+        return success
+        
+    except Exception as e:
+        print(f"❌ Deployment failed: {e}")
+        import traceback
+        traceback.print_exc()
+        return False
+
+
+# =================================================================================
 # MAIN ENTRY POINT
 # =================================================================================
 
@@ -492,8 +612,13 @@ def main():
     parser.add_argument("--components", help="Comma-separated list of components to generate")
     parser.add_argument("--all", action="store_true", help="Generate all materials")
     parser.add_argument("--test", action="store_true", help="Run test mode")
+    parser.add_argument("--deploy", action="store_true", help="Deploy generated content to Next.js production site")
     
     args = parser.parse_args()
+    
+    # Handle deployment to Next.js production site
+    if args.deploy:
+        return deploy_to_production()
     
     if args.test:
         print("🧪 Test mode - basic functionality check")
