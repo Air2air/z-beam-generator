@@ -3,11 +3,11 @@ name: Brass
 category: metal
 title: Brass Laser Cleaning
 headline: Comprehensive technical guide for laser cleaning metal brass
-description: Laser cleaning of brass (Cu-Zn alloy) utilizes precise pulsed fiber laser
-  parameters to achieve selective ablation of surface contaminants while preserving
-  the base material. The process exploits the differential absorption characteristics
-  between contaminants and the brass substrate, with optimal results achieved at 1064
-  nm wavelength where brass exhibits moderate absorption.
+description: "Laser cleaning of brass (Cu-Zn alloy) exploits the high absorption of\
+  \ near-IR wavelengths by zinc oxide tarnish layers. The process utilizes short pulses\
+  \ to selectively ablate contaminants while the high thermal conductivity of brass\
+  \ (109-125 W/m\xB7K) rapidly dissipates heat, preventing melting or zinc depletion\
+  \ at the surface."
 keywords: brass, brass metal, laser ablation, laser cleaning, non-contact cleaning,
   pulsed fiber laser, surface contamination removal, industrial laser parameters,
   thermal processing, surface restoration
@@ -17,11 +17,65 @@ chemicalProperties:
   materialType: metal
 properties:
   density: "8.4-8.73 g/cm\xB3"
+  densityNumeric: 8.57
+  densityUnit: "g/cm\xB3"
+  densityMin: "1.8 g/cm\xB3"
+  densityMinNumeric: 1.8
+  densityMinUnit: "g/cm\xB3"
+  densityMax: "6.0 g/cm\xB3"
+  densityMaxNumeric: 6.0
+  densityMaxUnit: "g/cm\xB3"
+  densityPercentile: 100.0
   meltingPoint: "900-940\xB0C"
+  meltingPointNumeric: 920.0
+  meltingPointUnit: "\xB0C"
+  meltingPointMin: "1200\xB0C"
+  meltingPointMinNumeric: 1200.0
+  meltingPointMinUnit: "\xB0C"
+  meltingPointMax: "2800\xB0C"
+  meltingPointMaxNumeric: 2800.0
+  meltingPointMaxUnit: "\xB0C"
+  meltingPercentile: 0.0
   thermalConductivity: "109-125 W/(m\xB7K)"
+  thermalConductivityNumeric: 117.0
+  thermalConductivityUnit: W/
+  thermalConductivityMin: "0.5 W/m\xB7K"
+  thermalConductivityMinNumeric: 0.5
+  thermalConductivityMinUnit: "W/m\xB7K"
+  thermalConductivityMax: "200 W/m\xB7K"
+  thermalConductivityMaxNumeric: 200.0
+  thermalConductivityMaxUnit: "W/m\xB7K"
+  thermalPercentile: 58.4
   tensileStrength: 338-469 MPa
+  tensileStrengthNumeric: 403.5
+  tensileStrengthUnit: MPa
+  tensileStrengthMin: 50 MPa
+  tensileStrengthMinNumeric: 50.0
+  tensileStrengthMinUnit: MPa
+  tensileStrengthMax: 1000 MPa
+  tensileStrengthMaxNumeric: 1000.0
+  tensileStrengthMaxUnit: MPa
+  tensilePercentile: 37.2
   hardness: 60-100 HV (Vickers)
+  hardnessNumeric: 80.0
+  hardnessUnit: HV
+  hardnessMin: 1 Mohs
+  hardnessMinNumeric: 1.0
+  hardnessMinUnit: Mohs
+  hardnessMax: 10 Mohs
+  hardnessMaxNumeric: 10.0
+  hardnessMaxUnit: Mohs
+  hardnessPercentile: 100.0
   youngsModulus: 97-110 GPa
+  youngsModulusNumeric: 103.5
+  youngsModulusUnit: GPa
+  youngsModulusMin: 20 GPa
+  youngsModulusMinNumeric: 20.0
+  youngsModulusMinUnit: GPa
+  youngsModulusMax: 80 GPa
+  youngsModulusMaxNumeric: 80.0
+  youngsModulusMaxUnit: GPa
+  modulusPercentile: 100.0
   laserType: Pulsed fiber laser
   wavelength: 1064nm
   fluenceRange: "0.5\u20135 J/cm\xB2"
@@ -91,11 +145,11 @@ applications:
 - 'Marine: Brass fitting and propeller maintenance'
 - 'Plumbing: Valve and fitting restoration'
 compatibility:
-- Stainless steel fixtures and mounts
-- Aluminum shielding and enclosures
-- Copper-based alloys with similar processing parameters
-regulatoryStandards: IEC 60825-1 (Laser Safety), ISO 11553 (Safety of Laser Processing
-  Machines), OSHA 29 CFR 1910.97 (Non-Ionizing Radiation)
+- Stainless Steel (for system components)
+- Aluminum (for fixtures and mounts)
+- Fused Silica (for protective windows)
+regulatoryStandards: ISO 9013:2017 (Thermal cutting classification), IEC 60825-1 (Laser
+  safety), OSHA 29 CFR 1910.133 (Eye and face protection)
 author: Todd Dunning
 author_object:
   id: 4
@@ -115,24 +169,30 @@ images:
     url: /images/brass-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Zero chemical waste generation
-  description: Eliminates use of acidic cleaners (nitric, sulfuric acid) and solvent-based
-    degreasers that produce hazardous waste requiring special disposal
-- benefit: 97% reduction in water consumption
-  description: "Replaces water-intensive abrasive blasting and chemical rinsing processes,\
-    \ reducing water usage from approximately 50L/m\xB2 to <1.5L/m\xB2"
+  description: Eliminates use of acidic tarnish removers (e.g., hydrochloric acid
+    baths) and associated neutralization waste streams, reducing hazardous waste by
+    100% compared to chemical methods.
+- benefit: '>90% reduction in water consumption'
+  description: Dry process eliminates water usage required for rinsing and high-pressure
+    water jet cleaning, conserving approximately 500-1000 liters per cleaning cycle
+    for large marine components.
 outcomes:
-- result: Surface contamination removal efficiency
-  metric: '>99.5% removal of oxides, oils, and organic contaminants with <0.1% base
-    material loss'
-- result: Processing speed
-  metric: "0.5-2.5 m\xB2/hour depending on contamination level and required precision"
+- result: Surface cleanliness to Sa 2.5 (ISO 8501-1)
+  metric: "Achievable surface profile with <5 \xB5m roughness change (Ra) and zero\
+    \ substrate damage."
+- result: "Processing rates of 0.5-2.0 m\xB2/hour"
+  metric: For removal of light-moderate tarnish layers at 100W average power and 500
+    mm/s scan speed.
 technicalSpecifications:
-  powerRange: 20-100 W (pulsed fiber laser)
+  powerRange: 20-100 W (pulsed)
   pulseDuration: 10-100 ns
-  wavelength: 1064 nm (primary), 532 nm (for higher precision)
-  spotSize: 0.1-2.0 mm
-  repetitionRate: 10-50 kHz
-  fluenceRange: "0.5\u20135 J/cm\xB2"
+  wavelength: 1064 nm (primary), 532 nm (for high-precision work)
+  spotSize: "50-200 \xB5m"
+  repetitionRate: 20-100 kHz
+  fluenceRange: "0.5-5 J/cm\xB2"
+  scanningSpeed: 100-2000 mm/s
+  beamProfile: Top-hat (flat-top)
+  beamProfileOptions: Top-hat, Gaussian, Donut
   safetyClass: Class 4 (IEC 60825-1)
 prompt_chain_verification:
   base_config_loaded: true
@@ -141,7 +201,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: United States (California)
   author_id: 4
-  verification_timestamp: '2025-09-20T07:46:35Z'
+  verification_timestamp: '2025-09-20T21:08:31Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true

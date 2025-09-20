@@ -1,73 +1,94 @@
 ---
 name: Birch
 category: wood
-title: Laser Cleaning Birch
-headline: Comprehensive technical guide for laser cleaning birch wood surfaces
-description: Technical overview of Birch wood for laser cleaning applications, including
-  optimal 1064nm wavelength interaction with cellulose structure, and industrial applications
-  in wood surface restoration.
-keywords: birch, birch wood, laser ablation, laser cleaning, wood restoration, non-contact
-  cleaning, pulsed fiber laser, surface contamination removal, wood processing, surface
-  restoration
+title: Birch Laser Cleaning
+headline: Comprehensive technical guide for laser cleaning wood birch
+description: Birch wood responds optimally to near-infrared laser cleaning due to
+  its cellulose and lignin composition. The 1064 nm wavelength provides effective
+  absorption for controlled ablation of surface contaminants while preserving the
+  underlying wood structure through precise thermal management.
+keywords: birch, birch wood, laser ablation, laser cleaning, non-contact cleaning,
+  pulsed fiber laser, surface contamination removal, industrial laser parameters,
+  thermal processing, surface restoration
 chemicalProperties:
-  symbol: Birch
-  formula: C6H10O5
+  symbol: "C\u2086H\u2081\u2080O\u2085 (cellulose base)"
+  formula: "Complex organic polymer (primarily cellulose C\u2086H\u2081\u2080O\u2085\
+    , lignin C\u2089H\u2081\u2080O\u2082, hemicellulose)"
   materialType: wood
 properties:
-  density: 0.65 g/cm³
-  densityNumeric: 0.65
-  densityUnit: g/cm³
-  densityMin: 0.5 g/cm³
-  densityMinNumeric: 0.5
-  densityMinUnit: g/cm³
-  densityMax: 0.8 g/cm³
-  densityMaxNumeric: 0.8
-  densityMaxUnit: g/cm³
-  densityPercentile: 42.1
-  meltingPoint: 280-350°C
-  meltingPointNumeric: 315.0
-  meltingPointUnit: °C
-  meltingPercentile: 35.8
-  thermalConductivity: 0.14 W/m·K
+  density: "670 kg/m\xB3 (average for European birch)"
+  densityNumeric: 670.0
+  densityUnit: "kg/m\xB3"
+  densityMin: "1.8 g/cm\xB3"
+  densityMinNumeric: 1.8
+  densityMinUnit: "g/cm\xB3"
+  densityMax: "6.0 g/cm\xB3"
+  densityMaxNumeric: 6.0
+  densityMaxUnit: "g/cm\xB3"
+  densityPercentile: 100.0
+  meltingPoint: "Decomposes at ~280\xB0C (does not melt, undergoes pyrolysis)"
+  meltingPointNumeric: 280.0
+  meltingPointUnit: Decomposes
+  meltingPointMin: "1200\xB0C"
+  meltingPointMinNumeric: 1200.0
+  meltingPointMinUnit: "\xB0C"
+  meltingPointMax: "2800\xB0C"
+  meltingPointMaxNumeric: 2800.0
+  meltingPointMaxUnit: "\xB0C"
+  meltingPercentile: 0.0
+  thermalConductivity: "0.14 W/(m\xB7K) (radial direction)"
   thermalConductivityNumeric: 0.14
-  thermalConductivityUnit: W/m·K
-  thermalPercentile: 28.6
-  tensileStrength: 85-120 MPa
-  tensileStrengthNumeric: 102.5
+  thermalConductivityUnit: W/
+  thermalConductivityMin: "0.5 W/m\xB7K"
+  thermalConductivityMinNumeric: 0.5
+  thermalConductivityMinUnit: "W/m\xB7K"
+  thermalConductivityMax: "200 W/m\xB7K"
+  thermalConductivityMaxNumeric: 200.0
+  thermalConductivityMaxUnit: "W/m\xB7K"
+  thermalPercentile: 0.0
+  tensileStrength: 120 MPa (parallel to grain)
+  tensileStrengthNumeric: 120.0
   tensileStrengthUnit: MPa
-  tensilePercentile: 45.2
-  hardness: 2.5-3.0 HB
-  hardnessNumeric: 2.75
-  hardnessUnit: HB
-  hardnessMin: 1.0 HB
+  tensileStrengthMin: 50 MPa
+  tensileStrengthMinNumeric: 50.0
+  tensileStrengthMinUnit: MPa
+  tensileStrengthMax: 1000 MPa
+  tensileStrengthMaxNumeric: 1000.0
+  tensileStrengthMaxUnit: MPa
+  tensilePercentile: 7.4
+  hardness: 3.0-3.5 kN (Janka hardness scale)
+  hardnessNumeric: 3.25
+  hardnessUnit: kN
+  hardnessMin: 1 Mohs
   hardnessMinNumeric: 1.0
-  hardnessMinUnit: HB
-  hardnessMax: 5.0 HB
-  hardnessMaxNumeric: 5.0
-  hardnessMaxUnit: HB
-  hardnessPercentile: 38.7
-  youngsModulus: 10-15 GPa
-  youngsModulusNumeric: 12.5
+  hardnessMinUnit: Mohs
+  hardnessMax: 10 Mohs
+  hardnessMaxNumeric: 10.0
+  hardnessMaxUnit: Mohs
+  hardnessPercentile: 25.0
+  youngsModulus: 14.1 GPa (parallel to grain)
+  youngsModulusNumeric: 14.1
   youngsModulusUnit: GPa
-  modulusMin: 8 GPa
-  modulusMinNumeric: 8.0
-  modulusMinUnit: GPa
-  modulusMax: 20 GPa
-  modulusMaxNumeric: 20.0
-  modulusMaxUnit: GPa
-  modulusPercentile: 32.5
-  laserType: Pulsed Fiber Laser
-  wavelength: 1064nm
-  fluenceRange: 0.5–2.5 J/cm²
-  chemicalFormula: C6H10O5
+  youngsModulusMin: 20 GPa
+  youngsModulusMinNumeric: 20.0
+  youngsModulusMinUnit: GPa
+  youngsModulusMax: 80 GPa
+  youngsModulusMaxNumeric: 80.0
+  youngsModulusMaxUnit: GPa
+  modulusPercentile: 0.0
+  laserType: Pulsed fiber laser
+  wavelength: 1064 nm
+  fluenceRange: "0.5\u20135 J/cm\xB2"
+  chemicalFormula: "Complex organic polymer (cellulose C\u2086H\u2081\u2080O\u2085\
+    , lignin C\u2089H\u2081\u2080O\u2082, hemicellulose)"
 composition:
-- Cellulose (C6H10O5) 40-45%
-- Hemicellulose 25-35%
-- Lignin 18-25%
-- Extractives 1-3%
+- 'Cellulose: 40-45%'
+- 'Hemicellulose: 25-30%'
+- 'Lignin: 20-25%'
+- 'Extractives: 3-5%'
 machineSettings:
-  powerRange: 10-100W
-  powerRangeNumeric: 55.0
+  powerRange: 20-100W
+  powerRangeNumeric: 60.0
   powerRangeUnit: W
   powerRangeMin: 20W
   powerRangeMinNumeric: 20.0
@@ -75,8 +96,8 @@ machineSettings:
   powerRangeMax: 500W
   powerRangeMaxNumeric: 500.0
   powerRangeMaxUnit: W
-  pulseDuration: 50-200ns
-  pulseDurationNumeric: 125.0
+  pulseDuration: 10-100ns
+  pulseDurationNumeric: 55.0
   pulseDurationUnit: ns
   pulseDurationMin: 1ns
   pulseDurationMinNumeric: 1.0
@@ -84,7 +105,7 @@ machineSettings:
   pulseDurationMax: 1000ns
   pulseDurationMaxNumeric: 1000.0
   pulseDurationMaxUnit: ns
-  wavelength: 1064nm (primary), 355nm (optional)
+  wavelength: 1064 nm (primary), 532nm (optional)
   wavelengthNumeric: 1064.0
   wavelengthUnit: nm
   wavelengthMin: 355nm
@@ -93,8 +114,8 @@ machineSettings:
   wavelengthMax: 2940nm
   wavelengthMaxNumeric: 2940.0
   wavelengthMaxUnit: nm
-  spotSize: 0.5-3.0mm
-  spotSizeNumeric: 1.75
+  spotSize: 0.1-2.0mm
+  spotSizeNumeric: 1.05
   spotSizeUnit: mm
   spotSizeMin: 0.01mm
   spotSizeMinNumeric: 0.01
@@ -102,8 +123,8 @@ machineSettings:
   spotSizeMax: 10mm
   spotSizeMaxNumeric: 10.0
   spotSizeMaxUnit: mm
-  repetitionRate: 20-80kHz
-  repetitionRateNumeric: 50.0
+  repetitionRate: 10-50kHz
+  repetitionRateNumeric: 30.0
   repetitionRateUnit: kHz
   repetitionRateMin: 1kHz
   repetitionRateMinNumeric: 1.0
@@ -111,43 +132,23 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: 0.5–2.5 J/cm²
+  fluenceRange: "0.5\u20135 J/cm\xB2"
   fluenceRangeNumeric: 0.5
-  fluenceRangeUnit: J/cm²
-  fluenceRangeMin: 0.1J/cm²
+  fluenceRangeUnit: "J/cm\xB2"
+  fluenceRangeMin: "0.1J/cm\xB2"
   fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: J/cm²
-  fluenceRangeMax: 50J/cm²
+  fluenceRangeMinUnit: "J/cm\xB2"
+  fluenceRangeMax: "50J/cm\xB2"
   fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: J/cm²
-  scanningSpeed: 50-500mm/s
-  scanningSpeedNumeric: 275.0
-  scanningSpeedUnit: mm/s
-  scanningSpeedMin: 1mm/s
-  scanningSpeedMinNumeric: 1.0
-  scanningSpeedMinUnit: mm/s
-  scanningSpeedMax: 5000mm/s
-  scanningSpeedMaxNumeric: 5000.0
-  scanningSpeedMaxUnit: mm/s
-  beamProfile: Gaussian TEM00
-  beamProfileOptions:
-  - Gaussian TEM00
-  - Top-hat
-  - Donut
-  - Multi-mode
-  safetyClass: Class 4 (requires full enclosure)
+  fluenceRangeMaxUnit: "J/cm\xB2"
 applications:
-- industry: Woodworking & Furniture
-  detail: Removal of surface contaminants, stains, and old finishes from birch wood
-    surfaces
-- industry: Cultural Heritage Restoration
-  detail: Gentle cleaning of birch artifacts and historical wood objects without damaging
-    delicate surfaces
+- 'Woodworking: Laser cleaning for restoring antique birch furniture'
+- 'Construction: Removing surface contaminants from birch wood panels'
 compatibility:
-- Hardwoods
-- Softwoods
-- Wood Composites
-regulatoryStandards: ISO 13061, ASTM D143, EN 350
+- Pulsed fiber lasers with precise thermal control
+- Wood species with similar density and composition (maple, beech)
+regulatoryStandards: ISO 11553-1:2020 (Safety of machinery - Laser processing machines),
+  EN 60825-1:2014 (Laser product safety)
 author: Yi-Chun Lin
 author_object:
   id: 1
@@ -159,29 +160,35 @@ author_object:
   image: /images/author/yi-chun-lin.jpg
 images:
   hero:
-    alt: Birch wood surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Birch surface undergoing laser cleaning showing precise contamination removal
     url: /images/birch-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of birch wood surface after laser cleaning showing detailed
-      grain structure
+    alt: Microscopic view of Birch surface after laser cleaning showing detailed surface
+      structure
     url: /images/birch-laser-cleaning-micro.jpg
 environmentalImpact:
-- benefit: Chemical Solvent Elimination
-  description: Reduces chemical usage by 100% compared to traditional wood stripping
-    methods
-- benefit: Water Conservation
-  description: Eliminates water usage completely in wood cleaning processes
-- benefit: Waste Reduction
-  description: Produces minimal waste compared to sanding and chemical stripping methods
+- benefit: Zero chemical waste generation
+  description: Eliminates need for chemical strippers and solvents, reducing hazardous
+    waste by 100% compared to traditional chemical cleaning methods
+- benefit: Reduced energy consumption
+  description: Laser cleaning consumes approximately 60% less energy than sandblasting
+    or thermal cleaning methods for birch wood surface preparation
 outcomes:
-- result: Surface Cleanliness Level
-  metric: Achieves complete removal of surface contaminants without damaging wood
-    fibers
-- result: Material Removal Precision
-  metric: ±20μm accuracy with controlled depth removal
-- result: Processing Speed
-  metric: 0.5-2 m²/hour cleaning rate depending on contamination level
+- result: Surface contamination removal efficiency
+  metric: ">95% removal of surface contaminants with <5 \xB5m substrate damage"
+- result: Processing speed for large surfaces
+  metric: "0.5-2.0 m\xB2/hour depending on contamination level and laser parameters"
+technicalSpecifications:
+  powerRange: 20-100 W
+  pulseDuration: 10-100 ns
+  wavelength: 1064 nm (primary), 532 nm (optional for finer detail)
+  spotSize: 0.1-2.0 mm
+  repetitionRate: 10-50 kHz
+  fluenceRange: "0.5-5 J/cm\xB2"
+  scanningSpeed: 100-1000 mm/s
+  beamProfile: Top-hat (flat-top)
+  beamProfileOptions: Top-hat, Gaussian, Multi-spot
+  safetyClass: Class 4
 prompt_chain_verification:
   base_config_loaded: true
   persona_config_loaded: true
@@ -189,8 +196,21 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Taiwan
   author_id: 1
-  verification_timestamp: '2025-09-19T04:59:48Z'
+  verification_timestamp: '2025-09-20T21:57:59Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
+laser_parameters:
+  fluence_threshold: "0.5\u20135 J/cm\xB2"
+  pulse_duration: 10-100ns
+  wavelength_optimal: 1064 nm
+  power_range: 20-100W
+  repetition_rate: 10-50kHz
+  spot_size: 0.1-2.0mm
+  laser_type: Pulsed fiber laser
+tags:
+- Construction
+- Woodworking
+complexity: medium
+difficultyScore: 3
 ---

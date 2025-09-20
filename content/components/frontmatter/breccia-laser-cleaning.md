@@ -4,18 +4,20 @@ category: stone
 title: Breccia Laser Cleaning
 headline: Comprehensive technical guide for laser cleaning stone breccia
 description: Breccia laser cleaning utilizes precise pulsed laser ablation to remove
-  surface contaminants from the composite stone matrix. The process exploits differential
-  absorption between contaminants and the calcium carbonate/quartz substrate, enabling
-  selective removal without mechanical or chemical damage to the fragile stone surface.
+  surface contaminants from the composite stone matrix. The process exploits the differential
+  absorption between the contamination layer and the breccia substrate, typically
+  composed of carbonate and silicate fragments. Optimal parameters are tuned to the
+  specific mineralogical composition to achieve selective removal without thermal
+  damage to the cementing matrix or clasts.
 keywords: breccia, breccia stone, laser ablation, laser cleaning, non-contact cleaning,
   pulsed fiber laser, surface contamination removal, industrial laser parameters,
   thermal processing, surface restoration
 chemicalProperties:
-  symbol: N/A (composite stone)
-  formula: "Variable (primarily CaCO\u2083 + SiO\u2082)"
+  symbol: N/A (composite rock)
+  formula: Variable (composite rock)
   materialType: sedimentary rock
 properties:
-  density: "2.5-2.8 g/cm\xB3 (varies with clast composition)"
+  density: "2.5-2.8 g/cm\xB3 (varies with composition)"
   densityNumeric: 2.65
   densityUnit: "g/cm\xB3"
   densityMin: "1.8 g/cm\xB3"
@@ -25,7 +27,8 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 20.2
-  meltingPoint: "~1250-1350\xB0C (decomposition of calcium carbonate component)"
+  meltingPoint: "~1200-1400\xB0C (decomposition of carbonate components begins at\
+    \ lower temperatures)"
   meltingPointNumeric: 1300.0
   meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"
@@ -35,8 +38,8 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "\xB0C"
   meltingPercentile: 6.2
-  thermalConductivity: "2.0-3.0 W/(m\xB7K) (depending on mineral composition)"
-  thermalConductivityNumeric: 2.5
+  thermalConductivity: "2.0-3.5 W/(m\xB7K)"
+  thermalConductivityNumeric: 2.75
   thermalConductivityUnit: W/
   thermalConductivityMin: "0.5 W/m\xB7K"
   thermalConductivityMinNumeric: 0.5
@@ -44,9 +47,9 @@ properties:
   thermalConductivityMax: "200 W/m\xB7K"
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m\xB7K"
-  thermalPercentile: 1.0
-  tensileStrength: 5-15 MPa (highly anisotropic depending on cementation)
-  tensileStrengthNumeric: 10.0
+  thermalPercentile: 1.1
+  tensileStrength: 4-10 MPa
+  tensileStrengthNumeric: 7.0
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
   tensileStrengthMinNumeric: 50.0
@@ -55,7 +58,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 0.0
-  hardness: 3-6 Mohs (varies with clast hardness and cement type)
+  hardness: 3-6 Mohs (depending on clast composition)
   hardnessNumeric: 4.5
   hardnessUnit: Mohs
   hardnessMin: 1 Mohs
@@ -65,7 +68,7 @@ properties:
   hardnessMaxNumeric: 10.0
   hardnessMaxUnit: Mohs
   hardnessPercentile: 38.9
-  youngsModulus: 10-40 GPa (highly variable based on porosity and cementation)
+  youngsModulus: 10-40 GPa
   youngsModulusNumeric: 25.0
   youngsModulusUnit: GPa
   youngsModulusMin: 20 GPa
@@ -78,13 +81,11 @@ properties:
   laserType: Pulsed fiber laser
   wavelength: 1064nm
   fluenceRange: "1.0-10 J/cm\xB2"
-  chemicalFormula: "Variable composite (primarily CaCO\u2083 + SiO\u2082 + various\
-    \ mineral clasts)"
+  chemicalFormula: "Variable composite (typically CaCO\u2083, SiO\u2082, various silicates)"
 composition:
-- "Calcium carbonate (CaCO\u2083) matrix: 40-70% (as calcite cement)"
-- "Quartz (SiO\u2082) clasts: 20-50% (angular fragments)"
-- 'Feldspar, mica, and other mineral fragments: 5-20%'
-- 'Iron oxides and clay minerals: 2-10% (coloring agents)'
+- 'Angular rock fragments (clasts): 50-70% (limestone, chert, quartzite, other sedimentary
+  rocks)'
+- 'Fine-grained matrix: 30-50% (calcite, silica, iron oxides, clay minerals)'
 machineSettings:
   powerRange: 50-200W
   powerRangeNumeric: 125.0
@@ -140,32 +141,15 @@ machineSettings:
   fluenceRangeMax: "50J/cm\xB2"
   fluenceRangeMaxNumeric: 50.0
   fluenceRangeMaxUnit: "J/cm\xB2"
-  scanningSpeed: 50-500mm/s
-  scanningSpeedNumeric: 275.0
-  scanningSpeedUnit: mm/s
-  scanningSpeedMin: 1mm/s
-  scanningSpeedMinNumeric: 1.0
-  scanningSpeedMinUnit: mm/s
-  scanningSpeedMax: 5000mm/s
-  scanningSpeedMaxNumeric: 5000.0
-  scanningSpeedMaxUnit: mm/s
-  beamProfile: Gaussian TEM00
-  beamProfileOptions:
-  - Gaussian TEM00
-  - Top-hat
-  - Donut
-  - Multi-mode
-  safetyClass: Class 4 (requires full enclosure)
 applications:
 - 'Construction: Restoration of historic buildings and monuments'
 - 'Art and Restoration: Cleaning and surface preparation of sculptures and artworks'
 compatibility:
-- Marble and limestone (similar calcium carbonate composition)
-- Sandstone (similar silica content and porosity characteristics)
-- Terracotta and fired clay products (similar thermal response)
+- Compatible with most carbonate-based stones (limestone, marble)
+- Similar processing parameters to other porous sedimentary stones
 regulatoryStandards: EN 15898:2019 (Conservation of cultural heritage - Main general
-  terms and definitions), EN 15886:2010 (Conservation of cultural property - Test
-  methods - Color measurement of surfaces)
+  terms and definitions), EN 17138:2018 (Conservation of cultural heritage - Methods
+  and materials for cleaning porous inorganic materials)
 author: Yi-Chun Lin
 author_object:
   id: 1
@@ -185,28 +169,33 @@ images:
     url: /images/breccia-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Zero chemical waste generation
-  description: "Eliminates use of acidic cleaners, solvents, and chemical poultices\
-    \ that produce hazardous waste streams of 50-100 liters per m\xB2 in traditional\
-    \ cleaning"
-- benefit: 95% reduction in water consumption
-  description: "Dry process eliminates the 200-500 liters/m\xB2 water usage required\
-    \ for chemical rinsing and poultice removal in traditional methods"
+  description: Eliminates use of hazardous chemicals (acids, solvents) and associated
+    disposal requirements, reducing environmental contamination risk by 100% compared
+    to chemical methods
+- benefit: Significantly reduced water consumption
+  description: Uses no water compared to traditional high-pressure water cleaning
+    methods, saving approximately 50-200 liters per square meter of treated surface
 outcomes:
-- result: Surface contamination removal precision
-  metric: "Selective removal to within 50-100 \u03BCm depth control without substrate\
-    \ damage"
-- result: Processing efficiency
-  metric: "0.5-2.0 m\xB2/hour cleaning rate depending on contamination severity and\
-    \ laser parameters"
+- result: Selective contaminant removal
+  metric: '>95% contaminant removal with <2% substrate loss, preserving original surface
+    morphology and patina'
+- result: Non-contact processing
+  metric: "Zero mechanical damage to fragile surfaces, achieving surface roughness\
+    \ preservation within \xB15% of original state"
 technicalSpecifications:
   powerRange: 50-200 W (average power for pulsed fiber lasers)
   pulseDuration: 10-50 ns
-  wavelength: 1064 nm (primary), 532 nm (optional for selective absorption)
+  wavelength: 1064 nm (primary), 532 nm (optional for specific contaminant targeting)
   spotSize: 0.1-1.0 mm
   repetitionRate: 20-100 kHz
-  fluenceRange: "1.0-10 J/cm\xB2 (ablation threshold varies with breccia composition)"
-  safetyClass: Class 4 laser safety requirements with fume extraction for particulate
-    matter
+  fluenceRange: "1.0-10 J/cm\xB2 (ablation threshold varies with breccia composition\
+    \ and contamination type)"
+  scanningSpeed: 500-5000 mm/s
+  beamProfile: Top-hat (flat-top) for uniform energy distribution and controlled ablation
+    depth
+  beamProfileOptions: Top-hat, Gaussian, Multimode
+  safetyClass: Class 4 (requires full enclosure, interlocks, and personal protective
+    equipment)
 prompt_chain_verification:
   base_config_loaded: true
   persona_config_loaded: true
@@ -214,7 +203,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Taiwan
   author_id: 1
-  verification_timestamp: '2025-09-20T07:59:17Z'
+  verification_timestamp: '2025-09-20T21:41:52Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true

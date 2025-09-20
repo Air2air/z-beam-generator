@@ -1,25 +1,89 @@
 ---
 name: Alabaster
 category: stone
-title: Laser Cleaning Alabaster
+title: Alabaster Laser Cleaning
 headline: Comprehensive technical guide for laser cleaning stone alabaster
-description: "Technical overview of Alabaster, CaSO4\xB72H2O, for laser cleaning applications,\
-  \ including optimal wavelength interaction, and industrial applications in surface\
-  \ preparation."
+description: Laser cleaning of alabaster utilizes precise pulsed laser ablation to
+  remove surface contaminants while preserving the delicate dihydrate gypsum structure.
+  The process exploits the differential absorption between contaminants and the alabaster
+  substrate, typically using IR wavelengths for crust removal and visible wavelengths
+  for finer work on sensitive surfaces.
 keywords: alabaster, alabaster stone, laser ablation, laser cleaning, non-contact
   cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters,
   thermal processing, surface restoration
 chemicalProperties:
+  symbol: "CaSO4\xB72H2O"
   formula: "CaSO4\xB72H2O"
   materialType: stone
 properties:
-  laserType: Pulsed Fiber Laser
+  density: "2.30-2.33 g/cm\xB3"
+  densityNumeric: 2.31
+  densityUnit: "g/cm\xB3"
+  densityMin: "1.8 g/cm\xB3"
+  densityMinNumeric: 1.8
+  densityMinUnit: "g/cm\xB3"
+  densityMax: "6.0 g/cm\xB3"
+  densityMaxNumeric: 6.0
+  densityMaxUnit: "g/cm\xB3"
+  densityPercentile: 12.1
+  meltingPoint: "128-163\xB0C (dehydration begins)"
+  meltingPointNumeric: 145.5
+  meltingPointUnit: "\xB0C"
+  meltingPointMin: "1200\xB0C"
+  meltingPointMinNumeric: 1200.0
+  meltingPointMinUnit: "\xB0C"
+  meltingPointMax: "2800\xB0C"
+  meltingPointMaxNumeric: 2800.0
+  meltingPointMaxUnit: "\xB0C"
+  meltingPercentile: 0.0
+  thermalConductivity: "1.26-1.33 W/(m\xB7K)"
+  thermalConductivityNumeric: 1.29
+  thermalConductivityUnit: W/
+  thermalConductivityMin: "0.5 W/m\xB7K"
+  thermalConductivityMinNumeric: 0.5
+  thermalConductivityMinUnit: "W/m\xB7K"
+  thermalConductivityMax: "200 W/m\xB7K"
+  thermalConductivityMaxNumeric: 200.0
+  thermalConductivityMaxUnit: "W/m\xB7K"
+  thermalPercentile: 0.4
+  tensileStrength: 2-4 MPa
+  tensileStrengthNumeric: 3.0
+  tensileStrengthUnit: MPa
+  tensileStrengthMin: 50 MPa
+  tensileStrengthMinNumeric: 50.0
+  tensileStrengthMinUnit: MPa
+  tensileStrengthMax: 1000 MPa
+  tensileStrengthMaxNumeric: 1000.0
+  tensileStrengthMaxUnit: MPa
+  tensilePercentile: 0.0
+  hardness: 1.5-2.0 Mohs
+  hardnessNumeric: 1.75
+  hardnessUnit: Mohs
+  hardnessMin: 1 Mohs
+  hardnessMinNumeric: 1.0
+  hardnessMinUnit: Mohs
+  hardnessMax: 10 Mohs
+  hardnessMaxNumeric: 10.0
+  hardnessMaxUnit: Mohs
+  hardnessPercentile: 8.3
+  youngsModulus: 18-25 GPa
+  youngsModulusNumeric: 21.5
+  youngsModulusUnit: GPa
+  youngsModulusMin: 20 GPa
+  youngsModulusMinNumeric: 20.0
+  youngsModulusMinUnit: GPa
+  youngsModulusMax: 80 GPa
+  youngsModulusMaxNumeric: 80.0
+  youngsModulusMaxUnit: GPa
+  modulusPercentile: 2.5
+  laserType: Pulsed fiber laser
   wavelength: 1064nm
   fluenceRange: "0.5-5 J/cm\xB2"
   chemicalFormula: "CaSO4\xB72H2O"
 composition:
-- "CaSO4\xB72H2O - Primary constituent"
-- Trace minerals and impurities
+- "Calcium sulfate dihydrate (CaSO4\xB72H2O): 90-99%"
+- 'Calcium carbonate (CaCO3): 0.5-5%'
+- 'Silica (SiO2) and other mineral impurities: 0.1-3%'
 machineSettings:
   powerRange: 20-100W
   powerRangeNumeric: 60.0
@@ -39,7 +103,7 @@ machineSettings:
   pulseDurationMax: 1000ns
   pulseDurationMaxNumeric: 1000.0
   pulseDurationMaxUnit: ns
-  wavelength: 1064nm
+  wavelength: 1064nm (primary), 532nm (optional)
   wavelengthNumeric: 1064.0
   wavelengthUnit: nm
   wavelengthMin: 355nm
@@ -48,6 +112,15 @@ machineSettings:
   wavelengthMax: 2940nm
   wavelengthMaxNumeric: 2940.0
   wavelengthMaxUnit: nm
+  spotSize: 0.1-2.0mm
+  spotSizeNumeric: 1.05
+  spotSizeUnit: mm
+  spotSizeMin: 0.01mm
+  spotSizeMinNumeric: 0.01
+  spotSizeMinUnit: mm
+  spotSizeMax: 10mm
+  spotSizeMaxNumeric: 10.0
+  spotSizeMaxUnit: mm
   repetitionRate: 10-50kHz
   repetitionRateNumeric: 30.0
   repetitionRateUnit: kHz
@@ -66,25 +139,25 @@ machineSettings:
   fluenceRangeMax: "50J/cm\xB2"
   fluenceRangeMaxNumeric: 50.0
   fluenceRangeMaxUnit: "J/cm\xB2"
-  beamProfile: Gaussian TEM00
-  beamProfileOptions:
-  - Gaussian TEM00
-  - Top-hat
-  - Donut
-  - Multi-mode
-  safetyClass: Class 4 (requires full enclosure)
 applications:
 - 'Art Restoration: Cleaning and restoration of alabaster sculptures and artifacts'
 - 'Construction: Surface preparation and cleaning of alabaster architectural elements'
 compatibility:
-- Low-Fluence Laser Cleaning
-- Gentle Ablative Processes
-- Non-Contact Surface Treatment
-regulatoryStandards: ISO 18562, ASTM F2100, IEC 60601-1
+- Marble (calcium carbonate-based stones)
+- Limestone
+- Sandstone (with appropriate parameter adjustment)
+regulatoryStandards: EN 15898:2019 (Conservation of cultural heritage - Main general
+  terms and definitions), EN 15886:2010 (Conservation of cultural property - Test
+  methods - Color measurement of surfaces)
 author: Yi-Chun Lin
 author_object:
   id: 1
   name: Yi-Chun Lin
+  sex: f
+  title: Ph.D.
+  country: Taiwan
+  expertise: Laser Materials Processing
+  image: /images/author/yi-chun-lin.jpg
 images:
   hero:
     alt: Alabaster surface undergoing laser cleaning showing precise contamination
@@ -95,35 +168,53 @@ images:
       surface structure
     url: /images/alabaster-laser-cleaning-micro.jpg
 environmentalImpact:
-- benefit: Chemical Solvent Elimination
-  description: Eliminates need for harsh chemical cleaners that can damage alabaster
-- benefit: Water Conservation
-  description: Removes requirement for water-based cleaning that can cause staining
-    and deterioration
-- benefit: Precision Material Preservation
-  description: Minimizes material loss compared to mechanical cleaning methods
+- benefit: Zero chemical waste generation
+  description: Eliminates use of ammonium carbonate compresses, EDTA, and other chemical
+    cleaners that require hazardous waste disposal
+- benefit: 95% reduction in water consumption
+  description: Traditional cleaning methods consume 5-10 liters of water per square
+    meter compared to dry laser process
 outcomes:
-- result: Surface Cleanliness Level
-  metric: Achieves complete removal of surface contaminants without substrate alteration
-- result: Material Removal Precision
-  metric: Sub-micron layer control with preservation of original surface details
-- result: Processing Speed
-  metric: "0.5-1.5 m\xB2/hour cleaning rate for delicate conservation work"
-chemicalFormula: "CaSO4\xB72H2O"
-tags:
-- Construction
-- Art Restoration
-complexity: medium
-difficultyScore: 3
+- result: Sub-micron precision contaminant removal
+  metric: ">99% contaminant removal with <5\xB5m substrate loss"
+- result: Non-contact processing
+  metric: Zero mechanical abrasion, enabling treatment of fragile surfaces with 50-2000
+    mm/s processing speeds
+technicalSpecifications:
+  powerRange: 10-50 W (average power for pulsed lasers)
+  pulseDuration: 10-150 ns
+  wavelength: 1064 nm (IR), 532 nm (green) for enhanced control on delicate surfaces
+  spotSize: 0.05-2.0 mm (adjustable for precision work vs. larger area cleaning)
+  repetitionRate: 10-100 kHz
+  fluenceRange: "0.3-2.5 J/cm\xB2 (below the ablation threshold of pure alabaster\
+    \ ~3.0 J/cm\xB2)"
+  scanningSpeed: 100-2000 mm/s
+  beamProfile: Top-hat (flat-top) preferred for uniform energy distribution
+  beamProfileOptions: Top-hat, Gaussian, Multi-spot
+  safetyClass: Class 4 laser product (EN 60825-1)
 prompt_chain_verification:
   base_config_loaded: true
   persona_config_loaded: true
   formatting_config_loaded: true
   ai_detection_config_loaded: true
-  persona_country: Unknown
+  persona_country: Taiwan
   author_id: 1
-  verification_timestamp: '2025-09-20T07:14:17Z'
+  verification_timestamp: '2025-09-20T21:39:10Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
+chemicalFormula: "CaSO4\xB72H2O"
+laser_parameters:
+  fluence_threshold: "0.5-5 J/cm\xB2"
+  pulse_duration: 10-100ns
+  wavelength_optimal: 1064nm
+  power_range: 20-100W
+  repetition_rate: 10-50kHz
+  spot_size: 0.1-2.0mm
+  laser_type: Pulsed fiber laser
+tags:
+- Construction
+- Art Restoration
+complexity: medium
+difficultyScore: 3
 ---

@@ -3,11 +3,11 @@ name: Porcelain
 category: ceramic
 title: Porcelain Laser Cleaning
 headline: Comprehensive technical guide for laser cleaning ceramic porcelain
-description: Porcelain laser cleaning utilizes precise pulsed fiber lasers to selectively
-  ablate surface contaminants while preserving the underlying kaolinite-based ceramic
-  structure. The process exploits the differential absorption between contaminants
-  and the Al2O3-SiO2 matrix, enabling non-destructive restoration and industrial cleaning
-  without chemical solvents or mechanical abrasion.
+description: "Porcelain laser cleaning utilizes precise pulsed fiber lasers to remove\
+  \ surface contaminants through selective ablation, leveraging the material's high\
+  \ thermal stability (1350\xB0C melting point) and mechanical hardness (7 Mohs).\
+  \ The process preserves the underlying ceramic structure while removing organic\
+  \ and inorganic surface layers."
 keywords: porcelain, porcelain ceramic, laser ablation, laser cleaning, non-contact
   cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters,
   thermal processing, surface restoration
@@ -17,11 +17,65 @@ chemicalProperties:
   materialType: ceramic
 properties:
   density: "2.3-2.5 g/cm\xB3"
-  meltingPoint: "1650-1750 \xB0C"
+  densityNumeric: 2.4
+  densityUnit: "g/cm\xB3"
+  densityMin: "1.8 g/cm\xB3"
+  densityMinNumeric: 1.8
+  densityMinUnit: "g/cm\xB3"
+  densityMax: "6.0 g/cm\xB3"
+  densityMaxNumeric: 6.0
+  densityMaxUnit: "g/cm\xB3"
+  densityPercentile: 14.3
+  meltingPoint: "1350-1650\xB0C"
+  meltingPointNumeric: 1500.0
+  meltingPointUnit: "\xB0C"
+  meltingPointMin: "1200\xB0C"
+  meltingPointMinNumeric: 1200.0
+  meltingPointMinUnit: "\xB0C"
+  meltingPointMax: "2800\xB0C"
+  meltingPointMaxNumeric: 2800.0
+  meltingPointMaxUnit: "\xB0C"
+  meltingPercentile: 18.8
   thermalConductivity: "1.5 W/(m\xB7K)"
-  tensileStrength: 25-50 MPa
-  hardness: 7-8 Mohs (550-650 HV)
-  youngsModulus: 70-85 GPa
+  thermalConductivityNumeric: 1.5
+  thermalConductivityUnit: W/
+  thermalConductivityMin: "0.5 W/m\xB7K"
+  thermalConductivityMinNumeric: 0.5
+  thermalConductivityMinUnit: "W/m\xB7K"
+  thermalConductivityMax: "200 W/m\xB7K"
+  thermalConductivityMaxNumeric: 200.0
+  thermalConductivityMaxUnit: "W/m\xB7K"
+  thermalPercentile: 0.5
+  tensileStrength: 30-50 MPa
+  tensileStrengthNumeric: 40.0
+  tensileStrengthUnit: MPa
+  tensileStrengthMin: 50 MPa
+  tensileStrengthMinNumeric: 50.0
+  tensileStrengthMinUnit: MPa
+  tensileStrengthMax: 1000 MPa
+  tensileStrengthMaxNumeric: 1000.0
+  tensileStrengthMaxUnit: MPa
+  tensilePercentile: 0.0
+  hardness: 7 Mohs (600-800 HV)
+  hardnessNumeric: 700.0
+  hardnessUnit: HV
+  hardnessMin: 1 Mohs
+  hardnessMinNumeric: 1.0
+  hardnessMinUnit: Mohs
+  hardnessMax: 10 Mohs
+  hardnessMaxNumeric: 10.0
+  hardnessMaxUnit: Mohs
+  hardnessPercentile: 100.0
+  youngsModulus: 70-90 GPa
+  youngsModulusNumeric: 80.0
+  youngsModulusUnit: GPa
+  youngsModulusMin: 20 GPa
+  youngsModulusMinNumeric: 20.0
+  youngsModulusMinUnit: GPa
+  youngsModulusMax: 80 GPa
+  youngsModulusMaxNumeric: 80.0
+  youngsModulusMaxUnit: GPa
+  modulusPercentile: 100.0
   laserType: Pulsed fiber laser
   wavelength: 1064nm
   fluenceRange: "0.5\u20135 J/cm\xB2"
@@ -30,7 +84,7 @@ composition:
 - 'Kaolinite (Al2Si2O5(OH)4): 50-60%'
 - 'Quartz (SiO2): 20-30%'
 - 'Feldspar (KAlSi3O8): 15-25%'
-- 'Other oxides (CaO, MgO): <5%'
+- 'Other oxides (CaO, MgO, Na2O): 5-10%'
 machineSettings:
   powerRange: 20-100W
   powerRangeNumeric: 60.0
@@ -93,9 +147,9 @@ applications:
   artifacts'
 compatibility:
 - Alumina ceramics (similar thermal properties)
-- Silicate-based materials with comparable absorption coefficients
-regulatoryStandards: IEC 60825-1 (Laser safety), ASTM C242 (Standard terminology of
-  ceramic whitewares), EN 60335 (Household appliance safety for cleaned components)
+- Silicon carbide ceramics (compatible processing parameters)
+regulatoryStandards: IEC 60825-1 (Laser safety), ISO 11553 (Safety of laser processing
+  machines), ASTM C242 (Standard terminology of ceramic whitewares)
 author: Ikmanda Roswati
 author_object:
   id: 3
@@ -115,12 +169,12 @@ images:
       surface structure
     url: /images/porcelain-laser-cleaning-micro.jpg
 environmentalImpact:
-- benefit: Elimination of chemical solvents
-  description: Removes need for hazardous solvents like hydrofluoric acid traditionally
-    used in porcelain cleaning, reducing toxic waste by 100%
+- benefit: Zero chemical waste generation
+  description: Eliminates use of hazardous solvents and acids traditionally used in
+    porcelain cleaning, reducing chemical disposal by 100%
 - benefit: Reduced water consumption
   description: Eliminates water-intensive cleaning processes, saving approximately
-    200-300 liters per square meter of cleaned surface
+    200-500 liters per square meter of porcelain cleaned
 outcomes:
 - result: Surface contamination removal efficiency
   metric: '>99% removal of organic contaminants without substrate damage'
@@ -132,7 +186,10 @@ technicalSpecifications:
   wavelength: 1064 nm (primary), 532 nm (optional for finer control)
   spotSize: 0.1-2.0 mm
   repetitionRate: 10-50 kHz
-  fluenceRange: "0.5\u20135 J/cm\xB2"
+  fluenceRange: "0.5-5 J/cm\xB2"
+  scanningSpeed: 100-1000 mm/s
+  beamProfile: Top-hat or Gaussian
+  beamProfileOptions: Top-hat for uniform cleaning, Gaussian for precision work
   safetyClass: Class 4 laser safety required with appropriate PPE and enclosure
 prompt_chain_verification:
   base_config_loaded: true
@@ -141,7 +198,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Indonesia
   author_id: 3
-  verification_timestamp: '2025-09-20T07:49:25Z'
+  verification_timestamp: '2025-09-20T20:38:16Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true

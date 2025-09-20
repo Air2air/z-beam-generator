@@ -1,74 +1,95 @@
 ---
 name: Brick
 category: masonry
-title: Laser Cleaning Brick
-headline: Comprehensive technical guide for laser cleaning brick masonry surfaces
-description: Technical overview of brick masonry for laser cleaning applications,
-  including optimal 1064nm wavelength interaction with clay-based materials, and industrial
-  applications in surface restoration.
+title: Brick Laser Cleaning
+headline: Comprehensive technical guide for laser cleaning masonry brick
+description: Laser cleaning of brick utilizes precise thermal ablation where contaminants
+  absorb laser energy more efficiently than the brick substrate, enabling selective
+  removal without damaging the clay-based masonry material. Optimal parameters prevent
+  thermal stress and preserve historical surfaces.
 keywords: brick, brick masonry, laser ablation, laser cleaning, non-contact cleaning,
-  pulsed fiber laser, surface contamination removal, historical restoration, masonry
-  cleaning
+  pulsed fiber laser, surface contamination removal, industrial laser parameters,
+  thermal processing, surface restoration
 chemicalProperties:
-  symbol: Brick
-  formula: SiO₂·Al₂O₃·Fe₂O₃·CaO·MgO
-  materialType: ceramic masonry
+  symbol: N/A (composite material)
+  formula: "Variable composition (primarily SiO\u2082, Al\u2082O\u2083, Fe\u2082O\u2083\
+    , CaO)"
+  materialType: masonry
 properties:
-  density: 1.8-2.0 g/cm³
-  densityNumeric: 1.9
-  densityUnit: g/cm³
-  densityMin: 1.6 g/cm³
-  densityMinNumeric: 1.6
-  densityMinUnit: g/cm³
-  densityMax: 2.4 g/cm³
-  densityMaxNumeric: 2.4
-  densityMaxUnit: g/cm³
-  densityPercentile: 42.8
-  meltingPoint: 1200-1400°C
-  meltingPointNumeric: 1300.0
-  meltingPointUnit: °C
-  meltingPercentile: 38.2
-  thermalConductivity: 0.7-1.3 W/m·K
-  thermalConductivityNumeric: 1.0
-  thermalConductivityUnit: W/m·K
-  thermalPercentile: 22.5
-  tensileStrength: 10-30 MPa
-  tensileStrengthNumeric: 20.0
+  density: "1600-2000 kg/m\xB3"
+  densityNumeric: 1800.0
+  densityUnit: "kg/m\xB3"
+  densityMin: "1.8 g/cm\xB3"
+  densityMinNumeric: 1.8
+  densityMinUnit: "g/cm\xB3"
+  densityMax: "6.0 g/cm\xB3"
+  densityMaxNumeric: 6.0
+  densityMaxUnit: "g/cm\xB3"
+  densityPercentile: 100.0
+  meltingPoint: "1200-1450 \xB0C"
+  meltingPointNumeric: 1325.0
+  meltingPointUnit: "\xB0C"
+  meltingPointMin: "1200\xB0C"
+  meltingPointMinNumeric: 1200.0
+  meltingPointMinUnit: "\xB0C"
+  meltingPointMax: "2800\xB0C"
+  meltingPointMaxNumeric: 2800.0
+  meltingPointMaxUnit: "\xB0C"
+  meltingPercentile: 7.8
+  thermalConductivity: "0.6-1.0 W/(m\xB7K)"
+  thermalConductivityNumeric: 0.8
+  thermalConductivityUnit: W/
+  thermalConductivityMin: "0.5 W/m\xB7K"
+  thermalConductivityMinNumeric: 0.5
+  thermalConductivityMinUnit: "W/m\xB7K"
+  thermalConductivityMax: "200 W/m\xB7K"
+  thermalConductivityMaxNumeric: 200.0
+  thermalConductivityMaxUnit: "W/m\xB7K"
+  thermalPercentile: 0.2
+  tensileStrength: 1.5-3.5 MPa
+  tensileStrengthNumeric: 2.5
   tensileStrengthUnit: MPa
-  tensilePercentile: 8.7
+  tensileStrengthMin: 50 MPa
+  tensileStrengthMinNumeric: 50.0
+  tensileStrengthMinUnit: MPa
+  tensileStrengthMax: 1000 MPa
+  tensileStrengthMaxNumeric: 1000.0
+  tensileStrengthMaxUnit: MPa
+  tensilePercentile: 0.0
   hardness: 3-4 Mohs
   hardnessNumeric: 3.5
   hardnessUnit: Mohs
-  hardnessMin: 2 Mohs
-  hardnessMinNumeric: 2.0
+  hardnessMin: 1 Mohs
+  hardnessMinNumeric: 1.0
   hardnessMinUnit: Mohs
-  hardnessMax: 7 Mohs
-  hardnessMaxNumeric: 7.0
+  hardnessMax: 10 Mohs
+  hardnessMaxNumeric: 10.0
   hardnessMaxUnit: Mohs
-  hardnessPercentile: 15.3
-  youngsModulus: 10-30 GPa
-  youngsModulusNumeric: 20.0
+  hardnessPercentile: 27.8
+  youngsModulus: 10-20 GPa
+  youngsModulusNumeric: 15.0
   youngsModulusUnit: GPa
-  modulusMin: 5 GPa
-  modulusMinNumeric: 5.0
-  modulusMinUnit: GPa
-  modulusMax: 50 GPa
-  modulusMaxNumeric: 50.0
-  modulusMaxUnit: GPa
-  modulusPercentile: 12.8
-  laserType: Pulsed Fiber Laser
+  youngsModulusMin: 20 GPa
+  youngsModulusMinNumeric: 20.0
+  youngsModulusMinUnit: GPa
+  youngsModulusMax: 80 GPa
+  youngsModulusMaxNumeric: 80.0
+  youngsModulusMaxUnit: GPa
+  modulusPercentile: 0.0
+  laserType: Nd:YAG laser
   wavelength: 1064nm
-  fluenceRange: 0.5–2.0 J/cm²
-  chemicalFormula: SiO₂·Al₂O₃·Fe₂O₃·CaO·MgO
+  fluenceRange: "1.0\u201310 J/cm\xB2"
+  chemicalFormula: Variable (clay-based ceramic composite)
 composition:
-- Silica (SiO₂) 50-60%
-- Alumina (Al₂O₃) 20-30%
-- Iron Oxide (Fe₂O₃) 5-10%
-- Lime (CaO) 2-5%
-- Magnesia (MgO) 1-3%
+- "Silica (SiO\u2082): 50-60%"
+- "Alumina (Al\u2082O\u2083): 20-30%"
+- "Iron oxide (Fe\u2082O\u2083): 5-8%"
+- 'Calcium oxide (CaO): 1-5%'
+- 'Magnesium oxide (MgO): 1-3%'
+- "Alkali oxides (K\u2082O, Na\u2082O): 1-3%"
 machineSettings:
-  powerRange: 20-100W
-  powerRangeNumeric: 60.0
+  powerRange: 50-200W
+  powerRangeNumeric: 125.0
   powerRangeUnit: W
   powerRangeMin: 20W
   powerRangeMinNumeric: 20.0
@@ -76,8 +97,8 @@ machineSettings:
   powerRangeMax: 500W
   powerRangeMaxNumeric: 500.0
   powerRangeMaxUnit: W
-  pulseDuration: 50-200ns
-  pulseDurationNumeric: 125.0
+  pulseDuration: 10-50ns
+  pulseDurationNumeric: 30.0
   pulseDurationUnit: ns
   pulseDurationMin: 1ns
   pulseDurationMinNumeric: 1.0
@@ -103,8 +124,8 @@ machineSettings:
   spotSizeMax: 10mm
   spotSizeMaxNumeric: 10.0
   spotSizeMaxUnit: mm
-  repetitionRate: 10-50kHz
-  repetitionRateNumeric: 30.0
+  repetitionRate: 20-100kHz
+  repetitionRateNumeric: 60.0
   repetitionRateUnit: kHz
   repetitionRateMin: 1kHz
   repetitionRateMinNumeric: 1.0
@@ -112,42 +133,25 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: 0.5–2.0 J/cm²
-  fluenceRangeNumeric: 0.5
-  fluenceRangeUnit: J/cm²
-  fluenceRangeMin: 0.1J/cm²
+  fluenceRange: "1.0\u201310 J/cm\xB2"
+  fluenceRangeNumeric: 1.0
+  fluenceRangeUnit: "J/cm\xB2"
+  fluenceRangeMin: "0.1J/cm\xB2"
   fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: J/cm²
-  fluenceRangeMax: 50J/cm²
+  fluenceRangeMinUnit: "J/cm\xB2"
+  fluenceRangeMax: "50J/cm\xB2"
   fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: J/cm²
-  scanningSpeed: 50-500mm/s
-  scanningSpeedNumeric: 275.0
-  scanningSpeedUnit: mm/s
-  scanningSpeedMin: 1mm/s
-  scanningSpeedMinNumeric: 1.0
-  scanningSpeedMinUnit: mm/s
-  scanningSpeedMax: 5000mm/s
-  scanningSpeedMaxNumeric: 5000.0
-  scanningSpeedMaxUnit: mm/s
-  beamProfile: Gaussian TEM00
-  beamProfileOptions:
-  - Gaussian TEM00
-  - Top-hat
-  - Donut
-  - Multi-mode
-  safetyClass: Class 4 (requires full enclosure)
+  fluenceRangeMaxUnit: "J/cm\xB2"
 applications:
-- industry: Construction Restoration
-  detail: Removal of surface contaminants, soot, and biological growth from historical
-    brick masonry
-- industry: Industrial Maintenance
-  detail: Cleaning of industrial brick surfaces including kilns, furnaces, and chimneys
+- 'Construction: Removal of surface contaminants and efflorescence from brick facades'
+- 'Restoration: Cleaning historical brick structures without damaging the material'
 compatibility:
-- Historical Masonry
-- Industrial Brick Structures
-- Terracotta Materials
-regulatoryStandards: ISO 13823, ASTM C67, EN 771-1
+- Terracotta and ceramic materials
+- Natural stone with similar mineral composition
+- Mortar and cementitious materials
+regulatoryStandards: EN 15898:2019 (Conservation of cultural heritage - Main general
+  terms and definitions), EN 17138:2018 (Conservation of cultural heritage - Methods
+  and materials for cleaning porous inorganic materials)
 author: Alessandro Moretti
 author_object:
   id: 2
@@ -159,30 +163,36 @@ author_object:
   image: /images/author/alessandro-moretti.jpg
 images:
   hero:
-    alt: Brick wall surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Brick surface undergoing laser cleaning showing precise contamination removal
     url: /images/brick-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of brick surface after laser cleaning showing detailed pore
+    alt: Microscopic view of Brick surface after laser cleaning showing detailed surface
       structure
     url: /images/brick-laser-cleaning-micro.jpg
 environmentalImpact:
-- benefit: Chemical Solvent Elimination
-  description: Eliminates use of harsh chemical cleaners and acidic solutions for
-    brick restoration
-- benefit: Water Conservation
-  description: Reduces water consumption by 95% compared to traditional pressure washing
-    methods
-- benefit: Minimal Waste Generation
-  description: Produces only fine particulate waste that can be easily collected and
-    disposed
+- benefit: Zero chemical waste generation
+  description: Eliminates 100% of chemical solvents and abrasive media typically used
+    in traditional brick cleaning methods
+- benefit: Reduced water consumption
+  description: Uses no water compared to high-pressure water cleaning methods that
+    consume 20-50 liters per square meter
 outcomes:
-- result: Surface Cleanliness Level
-  metric: Achieves 99% contaminant removal without surface damage
-- result: Material Preservation
-  metric: Maintains original brick surface integrity and historical patina
-- result: Processing Speed
-  metric: 1-3 m²/hour cleaning rate depending on contamination type and severity
+- result: Surface contamination removal efficiency
+  metric: '>95% removal of biological growth, pollutants, and surface deposits without
+    substrate damage'
+- result: Processing speed
+  metric: "0.5-2.0 m\xB2/hour depending on contamination type and laser parameters"
+technicalSpecifications:
+  powerRange: 50-200 W
+  pulseDuration: 10-50 ns
+  wavelength: 1064 nm (primary), 532 nm (optional for selective removal)
+  spotSize: 0.5-3.0 mm
+  repetitionRate: 20-100 kHz
+  fluenceRange: "1.0-10 J/cm\xB2"
+  scanningSpeed: 100-500 mm/s
+  beamProfile: Top-hat (flat-top)
+  beamProfileOptions: Top-hat, Gaussian, Multi-spot
+  safetyClass: Class 4
 prompt_chain_verification:
   base_config_loaded: true
   persona_config_loaded: true
@@ -190,8 +200,21 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Italy
   author_id: 2
-  verification_timestamp: '2025-09-19T05:05:09Z'
+  verification_timestamp: '2025-09-20T21:00:10Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
+laser_parameters:
+  fluence_threshold: "1.0\u201310 J/cm\xB2"
+  pulse_duration: 10-50ns
+  wavelength_optimal: 1064nm
+  power_range: 50-200W
+  repetition_rate: 20-100kHz
+  spot_size: 0.5-3.0mm
+  laser_type: Nd:YAG laser
+tags:
+- Construction
+- Restoration
+complexity: low
+difficultyScore: 2
 ---
