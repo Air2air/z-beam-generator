@@ -300,7 +300,7 @@ class ComponentGeneratorFactory:
         try:
             # Import API generators dynamically
             if component_type == "frontmatter":
-                from components.frontmatter.generator import (
+                from frontmatter.management.generator import (
                     FrontmatterComponentGenerator,
                 )
 

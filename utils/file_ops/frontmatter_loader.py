@@ -25,11 +25,26 @@ def load_frontmatter_data(material_name: str) -> Optional[Dict]:
     """
     # Create safe filename from material name
     safe_material = material_name.lower().replace(" ", "-").replace("/", "-")
-    filename = f"{safe_material}-laser-cleaning.md"
     
-    # Construct file path to frontmatter file
-    frontmatter_dir = Path("content") / "components" / "frontmatter"
-    filepath = frontmatter_dir / filename
+    # Try new frontmatter system first (YAML format)
+    yaml_filename = f"{safe_material}.yaml"
+    frontmatter_dir = Path("frontmatter") / "materials"
+    yaml_filepath = frontmatter_dir / yaml_filename
+    
+    if yaml_filepath.exists():
+        try:
+            with open(yaml_filepath, "r", encoding="utf-8") as f:
+                frontmatter_data = yaml.safe_load(f)
+                if frontmatter_data:
+                    logger.info(f"Successfully loaded frontmatter data for {material_name} from new system (YAML)")
+                    return frontmatter_data
+        except Exception as e:
+            logger.warning(f"Failed to load from new system: {e}")
+    
+    # Fallback to old frontmatter system (MD format)
+    md_filename = f"{safe_material}-laser-cleaning.md"
+    old_frontmatter_dir = Path("content") / "components" / "frontmatter"
+    filepath = old_frontmatter_dir / md_filename
     
     # Check if frontmatter file exists
     if not filepath.exists():

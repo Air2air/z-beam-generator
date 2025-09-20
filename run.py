@@ -561,7 +561,7 @@ def main():
                 frontmatter_data = None
                 if component_type in ['table', 'author', 'metatags', 'jsonld', 'bullets', 'caption', 'tags']:
                     # Try to load existing frontmatter
-                    frontmatter_path = f"frontmatter/materials/{args.material.lower().replace(' ', '-').replace('_', '-')}-laser-cleaning.md"
+                    frontmatter_path = f"content/components/frontmatter/{args.material.lower().replace(' ', '-').replace('_', '-')}-laser-cleaning.md"
                     if os.path.exists(frontmatter_path):
                         import yaml
                         with open(frontmatter_path, 'r') as f:
@@ -600,6 +600,127 @@ def main():
             
         except Exception as e:
             print(f"❌ Generation failed: {e}")
+            import traceback
+            traceback.print_exc()
+            return False
+    
+    elif args.all:
+        # Generate for all materials
+        if args.components:
+            component_types = [c.strip() for c in args.components.split(',')]
+            print(f"🚀 Generating {args.components} for all materials")
+        else:
+            # Use enabled components from configuration
+            component_types = [comp for comp, config in COMPONENT_CONFIG.items() if config.get('enabled', False)]
+            if not component_types:
+                print("❌ No components are enabled in configuration")
+                return False
+            print(f"🚀 Generating enabled components ({', '.join(component_types)}) for all materials")
+        
+        try:
+            # Load materials data
+            materials_data_dict = load_materials()
+            all_materials = []
+            
+            # Get all materials from all categories
+            for category, category_data in materials_data_dict.get('materials', {}).items():
+                for item in category_data.get('items', []):
+                    material_name = item.get('name', '')
+                    if material_name:
+                        all_materials.append((material_name, item))
+            
+            if not all_materials:
+                print("❌ No materials found in database")
+                return False
+            
+            print(f"📋 Found {len(all_materials)} materials to process")
+            
+            # Check if any components require API clients
+            requires_api = any(
+                COMPONENT_CONFIG.get(comp, {}).get('api_provider', 'none') != 'none' 
+                for comp in component_types
+            )
+            
+            # Initialize API client if needed
+            api_client = None
+            if requires_api:
+                from api.client_cache import get_cached_api_client
+                # Try to get a working API client
+                for provider in ['deepseek', 'grok', 'winston']:
+                    try:
+                        api_client = get_cached_api_client(provider)
+                        if api_client:
+                            print(f"🔧 Using API provider: {provider}")
+                            break
+                    except Exception as e:
+                        print(f"⚠️ Failed to initialize {provider}: {e}")
+                        continue
+                
+                if not api_client:
+                    print("❌ Failed to initialize any API client")
+                    return False
+            
+            # Process each material
+            generator = DynamicGenerator()
+            success_count = 0
+            failure_count = 0
+            
+            for material_name, material_info in all_materials:
+                print(f"\n📋 Processing {material_name}...")
+                
+                for component_type in component_types:
+                    try:
+                        # Load frontmatter data for components that need it
+                        frontmatter_data = None
+                        if component_type in ['table', 'author', 'metatags', 'jsonld', 'bullets', 'caption', 'tags']:
+                            # Try to load existing frontmatter
+                            frontmatter_path = f"content/components/frontmatter/{material_name.lower().replace(' ', '-').replace('_', '-')}-laser-cleaning.md"
+                            if os.path.exists(frontmatter_path):
+                                import yaml
+                                with open(frontmatter_path, 'r') as f:
+                                    content = f.read()
+                                yaml_start = content.find('---') + 3
+                                yaml_end = content.find('---', yaml_start)
+                                if yaml_start > 2 and yaml_end > yaml_start:
+                                    yaml_content = content[yaml_start:yaml_end].strip()
+                                    frontmatter_data = yaml.safe_load(yaml_content)
+                            
+                            if not frontmatter_data and component_type != 'frontmatter':
+                                print(f"  ⚠️ No frontmatter data found for {material_name} - skipping {component_type}")
+                                continue
+                        
+                        result = generator.generate_component(
+                            material=material_name,
+                            component_type=component_type,
+                            api_client=api_client,
+                            frontmatter_data=frontmatter_data
+                        )
+                        
+                        if result.success:
+                            # Save the result
+                            output_dir = f"content/components/{component_type}"
+                            os.makedirs(output_dir, exist_ok=True)
+                            filename = material_name.lower().replace(' ', '-').replace('_', '-')
+                            output_file = f"{output_dir}/{filename}-laser-cleaning.yaml" if component_type in ['table', 'jsonld', 'metatags', 'author', 'caption'] else f"{output_dir}/{filename}-laser-cleaning.md"
+                            
+                            with open(output_file, 'w') as f:
+                                f.write(result.content)
+                            
+                            print(f"  ✅ {component_type} → {output_file}")
+                            success_count += 1
+                        else:
+                            print(f"  ❌ {component_type} failed: {result.error_message}")
+                            failure_count += 1
+                    
+                    except Exception as e:
+                        print(f"  ❌ {component_type} error: {e}")
+                        failure_count += 1
+            
+            print(f"\n🏁 Generation completed: {success_count} successes, {failure_count} failures")
+            return True
+            
+        except Exception as e:
+            print(f"❌ All materials generation failed: {e}")
             import traceback
             traceback.print_exc()
             return False

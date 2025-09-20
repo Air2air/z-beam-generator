@@ -235,7 +235,7 @@ Include appropriate technical details about laser cleaning parameters, applicati
         meta_tags.append({"name": "laser:wavelength", "content": wavelength})
         meta_tags.append({"name": "application-name", "content": "Z-Beam Laser Processing Guide"})
         meta_tags.append({"name": "msapplication-TileColor", "content": "#2563eb"})
-        meta_tags.append({"name": "msapplication-config", "content": "/browserconfig.xml"})
+        meta_tags.append({"name": "msapplication-config", "content": "https://z-beam.com/browserconfig.xml"})
         
         # Apply standardized naming for image paths
         material_slug = self._apply_standardized_naming(material_name.lower())
@@ -245,7 +245,7 @@ Include appropriate technical details about laser cleaning parameters, applicati
         opengraph.append({"property": "og:title", "content": og_title})
         opengraph.append({"property": "og:description", "content": description})
         opengraph.append({"property": "og:type", "content": "article"})
-        opengraph.append({"property": "og:image", "content": f"/images/{material_slug}-laser-cleaning-hero.jpg"})
+        opengraph.append({"property": "og:image", "content": f"https://z-beam.com/images/{material_slug}-laser-cleaning-hero.jpg"})
         opengraph.append({"property": "og:image:alt", "content": f"{material_name} laser cleaning process showing precision {category} restoration and surface treatment"})
         opengraph.append({"property": "og:image:width", "content": "1200"})
         opengraph.append({"property": "og:image:height", "content": "630"})
@@ -261,7 +261,7 @@ Include appropriate technical details about laser cleaning parameters, applicati
         twitter.append({"name": "twitter:card", "content": "summary_large_image"})
         twitter.append({"name": "twitter:title", "content": twitter_title})
         twitter.append({"name": "twitter:description", "content": description})
-        twitter.append({"name": "twitter:image", "content": f"/images/{material_slug}-laser-cleaning-hero.jpg"})
+        twitter.append({"name": "twitter:image", "content": f"https://z-beam.com/images/{material_slug}-laser-cleaning-hero.jpg"})
         twitter.append({"name": "twitter:image:alt", "content": f"{material_name} {category} laser cleaning technical guide"})
         twitter.append({"name": "twitter:site", "content": "@z-beamTech"})
         twitter.append({"name": "twitter:creator", "content": "@z-beamTech"})

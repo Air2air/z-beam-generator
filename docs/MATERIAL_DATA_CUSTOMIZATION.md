@@ -24,7 +24,7 @@ When testing components with modified material data (such as removing optional f
 
 ```python
 # Import necessary components
-from components.frontmatter.generator import FrontmatterComponentGenerator
+from frontmatter.management.generator import FrontmatterComponentGenerator
 from api.client_cache import get_cached_api_client
 from utils.core.author_manager import get_author_info_for_material
 

@@ -162,7 +162,7 @@ class JsonldComponentGenerator(HybridComponentGenerator):
             if properties:
                 key_props = []
                 for prop in ["density", "meltingPoint", "thermalConductivity", "wavelength"]:
-                    if prop in properties:
+                    if prop in properties and properties[prop]:
                         key_props.append(f"{prop}: {properties[prop]}")
                 if key_props:
                     context_parts.append(f"Key Properties: {', '.join(key_props[:4])}")
@@ -733,7 +733,7 @@ Category: {material_data.get('category', 'material')}
                         "url": f"https://z-beam.com{images['hero']['url']}",
                         "name": f"{material_name_title} Laser Cleaning Before/After Comparison",
                         "caption": images["hero"]["alt"],
-                        "description": f"High-resolution demonstration of {material_name_title} component processed with {tech_specs['wavelength']} wavelength at {tech_specs['fluenceRange']}, showing complete contamination removal while preserving material integrity",
+                        "description": f"High-resolution demonstration of {material_name_title} component processed with {tech_specs.get('wavelength', '1064nm')} wavelength at {tech_specs.get('fluenceRange', 'optimized fluence')}, showing complete contamination removal while preserving material integrity",
                         "width": 1200,
                         "height": 800,
                         "encodingFormat": "image/jpeg",
@@ -841,7 +841,7 @@ Category: {material_data.get('category', 'material')}
                     "url": "https://z-beam.com",
                     "logo": {
                         "@type": "ImageObject",
-                        "url": "https://www.z-beam.com/images/site/logo/logo_.png"
+                        "url": "https://z-beam.com/images/site/logo/logo_.png"
                     },
                     "sameAs": [
                         "https://www.linkedin.com/company/z-beam"
@@ -855,7 +855,7 @@ Category: {material_data.get('category', 'material')}
                     "url": "https://z-beam.com",
                     "logo": {
                         "@type": "ImageObject",
-                        "url": "https://www.z-beam.com/images/site/logo/logo_.png"
+                        "url": "https://z-beam.com/images/site/logo/logo_.png"
                     },
                     "sameAs": [
                         "https://www.linkedin.com/company/z-beam"
@@ -926,7 +926,7 @@ Category: {material_data.get('category', 'material')}
                 "url": "https://z-beam.com",
                 "logo": {
                     "@type": "ImageObject",
-                    "url": "https://www.z-beam.com/images/site/logo/logo_.png"
+                    "url": "https://z-beam.com/images/site/logo/logo_.png"
                 },
                 "sameAs": [
                     "https://www.linkedin.com/company/z-beam"
@@ -1034,7 +1034,7 @@ Category: {material_data.get('category', 'material')}
                         result[key] = "https://z-beam.com"
                 elif parent_key == "logo":
                     # Set specific logo URL
-                    result[key] = "https://www.z-beam.com/images/site/logo/logo_.png"
+                    result[key] = "https://z-beam.com/images/site/logo/logo_.png"
                 elif material_slug:
                     # Use standardized material slug for URLs
                     result[key] = f"https://z-beam.com/{material_slug}-laser-cleaning"
