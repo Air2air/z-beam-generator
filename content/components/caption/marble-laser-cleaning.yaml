@@ -1,13 +1,13 @@
 # Basic Content Structure
 before_text: |
-  Pre-treatment surface assessment reveals significant contamination deposits across the marble stone surface. 
+  Initial surface examination reveals significant contamination deposits across the marble Technical overview of marble, CaCO3, for laser cleaning applications, including optimal 1064nm wavelength interaction, and applications in cultural heritage and architectural restoration.. 
   Microscopic analysis shows biological growth and organic deposits adhering to the surface. The marble exhibits the characteristic density profile typical of stone materials.
-  The contamination appears to be from weathering and environmental exposure.
+  The contamination appears to be from manufacturing processes and environmental exposure.
 
 after_text: |
-  Treatment outcome assessment demonstrates remarkable surface restoration through comprehensive laser processing.
-  The marble substrate now exhibits pristine surface characteristics with no thermal cracking.
-  Microscopic examination confirms complete organic residue elimination while maintaining material properties.
+  Post-laser cleaning analysis demonstrates remarkable surface restoration through comprehensive laser processing.
+  The marble substrate now exhibits pristine surface characteristics with minimal thermal effects.
+  Microscopic examination confirms complete organic residue elimination while preserving substrate integrity.
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
@@ -19,14 +19,19 @@ laser_parameters:
   energy_density: 0.5–3.0 J/cm²
   scanning_speed: "50-500mm/s"
   beam_profile: "Gaussian TEM00"
-  pulse_overlap: 78
 
 # Material Information
 material: "Marble"
 
+# Data Source and Quality Information
+data_completeness:
+  laser_parameters_source: "frontmatter"
+  frontmatter_available: true
+  note: "Fail-fast component - requires complete frontmatter data"
+
 # Technical Metadata
 metadata:
-  generated: "2025-09-19T00:08:43.837105Z"
+  generated: "2025-09-19T16:55:26.018423Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
@@ -87,13 +92,13 @@ chemicalProperties:
   contamination_type: "weathering and biological deposits"
   materialType: "stone"
   formula: "CaCO3"
-  surface_finish: "Ra < 0.9 μm (post-cleaning)"
+  surface_finish: "Ra < 0.6 μm (post-cleaning)"
   corrosion_resistance: "good"
 
 # Image Metadata for SEO
 images:
   micro:
-    url: "/images/marble-cleaning-analysis.jpg"
+    url: "/images/marble-laser-cleaning-micro.jpg"
     alt: "Microscopic comparison of marble surface before and after laser cleaning showing complete contamination removal"
     width: 800
     height: 450
@@ -102,18 +107,18 @@ images:
 
 # Additional SEO Metadata
 seo_data:
-  canonical_url: "https://z-beam.com/analysis/marble-laser-cleaning"
+  canonical_url: "/marble-laser-cleaning"
   og_title: "Marble Laser Cleaning Analysis - Surface Restoration"
   og_description: "Professional microscopic analysis of precision laser cleaning on marble, achieving complete contamination removal with preserved substrate integrity."
-  og_image: "/images/marble-cleaning-analysis-social.jpg"
+  og_image: "/images/marble-laser-cleaning-micro.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-19T00:08:43.837105Z"
+  last_modified: "2025-09-19T16:55:26.018423Z"
 
 # Quality Metrics
 quality_metrics:
-  surface_roughness_before: "Ra 1.8 μm"
-  surface_roughness_after: "Ra 0.9 μm"
+  surface_roughness_before: "Ra 3.2 μm"
+  surface_roughness_after: "Ra 0.6 μm"
   substrate_integrity: "100% preserved"
 
 # Accessibility Information
@@ -126,7 +131,7 @@ accessibility:
 ---
 Material: "marble"
 Component: caption
-Generated: 2025-09-19T00:08:43.837105Z
+Generated: 2025-09-19T16:55:26.018423Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

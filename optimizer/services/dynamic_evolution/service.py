@@ -157,6 +157,22 @@ class DynamicEvolutionService(SimplifiedService):
                 elif setting == "evolution_history_size":
                     self.config.settings[setting] = 50
 
+    async def _initialize_service(self) -> None:
+        """Service-specific initialization logic."""
+        logger.info("Initializing DynamicEvolutionService")
+        # Initialize any async resources here
+        pass
+
+    def _check_health(self) -> Dict[str, Any]:
+        """Service-specific health check logic."""
+        health_status = {
+            'templates_count': len(self.templates),
+            'active_ab_tests': len(self.active_ab_tests),
+            'evolution_history_size': len(self.evolution_history),
+            'status': 'healthy'
+        }
+        return health_status
+
     def _initialize(self) -> None:
         """Initialize the service."""
         logger.info("Initializing DynamicEvolutionService")

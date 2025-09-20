@@ -128,5 +128,80 @@ def get_components_sorted_by_priority(include_disabled=False):
 
 def get_enabled_components():
     """Get list of enabled components."""
-    components_config = COMPONENT_CONFIG
-    return [comp for comp, config in components_config.items() if config.get("enabled", True)]
+    return [
+        comp
+        for comp, config in COMPONENT_CONFIG.items()
+        if config.get("enabled", False)
+    ]
+
+
+# CONSOLIDATION ENHANCEMENT: Adapter for unified component configuration
+class ComponentConfigAdapter:
+    """
+    Adapter for unified component configuration access while preserving existing interfaces.
+    Consolidates access to component settings and API provider information.
+    """
+    
+    @staticmethod
+    def get_component_config() -> dict:
+        """Get complete component configuration"""
+        return COMPONENT_CONFIG.copy()
+    
+    @staticmethod
+    def get_enabled_components() -> list:
+        """Get list of enabled components"""
+        return [
+            comp for comp, config in COMPONENT_CONFIG.items() 
+            if config.get("enabled", False)
+        ]
+    
+    @staticmethod
+    def get_disabled_components() -> list:
+        """Get list of disabled components"""
+        return [
+            comp for comp, config in COMPONENT_CONFIG.items() 
+            if not config.get("enabled", False)
+        ]
+    
+    @staticmethod
+    def get_component_priority(component: str) -> int:
+        """Get priority for a specific component"""
+        return COMPONENT_CONFIG.get(component, {}).get("priority", 999)
+    
+    @staticmethod
+    def get_components_by_provider(provider: str, include_disabled: bool = False) -> list:
+        """Get components using a specific data provider"""
+        components = []
+        for comp, config in COMPONENT_CONFIG.items():
+            if include_disabled or config.get("enabled", False):
+                if config.get("data_provider") == provider:
+                    components.append(comp)
+        return components
+    
+    @staticmethod
+    def validate_component_config(component: str) -> bool:
+        """Validate that a component is properly configured"""
+        if component not in COMPONENT_CONFIG:
+            return False
+        
+        config = COMPONENT_CONFIG[component]
+        required_fields = ["enabled", "data_provider", "priority"]
+        
+        return all(field in config for field in required_fields)
+    
+    @staticmethod
+    def get_api_provider_info() -> dict:
+        """Get API provider information for display"""
+        providers = get_api_providers()
+        info = {}
+        
+        for provider_id, provider_config in providers.items():
+            env_key = provider_config.get("env_var", f"{provider_id.upper()}_API_KEY")
+            info[provider_id] = {
+                "name": provider_config.get("name", provider_id.title()),
+                "env_var": env_key,
+                "has_key": bool(os.getenv(env_key)),
+                "base_url": provider_config.get("base_url", "unknown")
+            }
+        
+        return info

@@ -1,21 +1,16 @@
-<!-- CONTENT START -->
-
-<!-- CONTENT END -->
-
-<!-- METADATA START -->
 ---
 title: Aluminum Laser Cleaning
 meta_tags:
 - name: description
-  content: Technical overview of Aluminum, Al, for laser cleaning applications, including
+  content: Technical overview of Steel, Fe, for laser cleaning applications, including
     optimal 1064nm wavelength interaction, and industrial applications in surface
     preparation.
 - name: keywords
-  content: laser-cleaning, surface-preparation, industrial-technology, manufacturing-processes,
-    contamination-removal, material-processing, quality-control, precision-cleaning,
-    automation, industrial-applications
+  content: steel, steel metal, laser ablation, laser cleaning, non-contact cleaning,
+    pulsed fiber laser, surface contamination removal, industrial laser parameters,
+    thermal processing, surface restoration
 - name: author
-  content: Test Author
+  content: Dr. Sarah Chen
 - name: category
   content: metal
 - name: robots
@@ -44,7 +39,7 @@ opengraph:
 - property: og:title
   content: Aluminum Laser Cleaning
 - property: og:description
-  content: Technical overview of Aluminum, Al, for laser cleaning applications, including
+  content: Technical overview of Steel, Fe, for laser cleaning applications, including
     optimal 1064nm wavelength interaction, and industrial applications in surface
     preparation.
 - property: og:type
@@ -65,7 +60,7 @@ opengraph:
 - property: og:locale
   content: en_US
 - property: article:author
-  content: Test Author
+  content: Dr. Sarah Chen
 - property: article:section
   content: Aluminum Processing
 - property: article:tag
@@ -76,7 +71,7 @@ twitter:
 - name: twitter:title
   content: Aluminum Laser Cleaning
 - name: twitter:description
-  content: Technical overview of Aluminum, Al, for laser cleaning applications, including
+  content: Technical overview of Steel, Fe, for laser cleaning applications, including
     optimal 1064nm wavelength interaction, and industrial applications in surface
     preparation.
 - name: twitter:image
@@ -94,7 +89,7 @@ alternate:
 ---
 
 ---
-Version Log - Generated: 2025-09-18T12:26:06.103654
+Version Log - Generated: 2025-09-19T16:58:44.451273
 Material: Unknown
 Component: metatags
 Generator: Z-Beam v1.0.0
@@ -103,4 +98,12 @@ Author: AI Assistant
 Platform: Darwin (3.12.4)
 Operation: generation
 ---
-<!-- METADATA END -->
+
+# Version Information
+# Generated: 2025-09-19T16:58:44.451795
+# Material: Aluminum
+# Component: metatags
+# Generator: Z-Beam v2.1.0
+# Author: AI Assistant
+# Platform: Darwin (3.12.4)
+# File: content/components/metatags/aluminum-laser-cleaning.md

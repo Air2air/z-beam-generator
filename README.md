@@ -1,10 +1,11 @@
 # Z-Beam Generator
 
-A dynamic, schema-driven content generator for laser cleaning technical documentation with real-time status updates and iterative AI detection improvement.
+A dynamic, schema-driven content generator for laser cleaning technical documentation with enhanced frontmatter management, real-time status updates, and robust fail-fast architecture.
 
 ## ✨ Features
 
 - **📊 Schema-Driven**: Fully dynamic content generation using JSON schemas
+- **🗂️ Enhanced Frontmatter Management**: Root-level frontmatter system with comprehensive validation *(September 2025 - DEPLOYED)*
 - **🤖 AI-Powered**: Integration with DeepSeek API for intelligent content creation
 - **📈 Real-Time Status Updates**: Live progress tracking every 10 seconds during generation
 - **🔄 Iterative AI Detection**: Winston.ai integration for content quality improvement
@@ -15,8 +16,61 @@ A dynamic, schema-driven content generator for laser cleaning technical document
 - **📋 Frontmatter Dependency Validation**: Cascading failure prevention and risk assessment
 - **🎭 Cultural Authenticity Protection**: Persona drift detection and quality assurance
 - **🔧 Flexible Architecture**: Clean, maintainable codebase with health monitoring
+- **💾 109 Materials Ready**: Complete material database with YAML frontmatter *(September 2025)*
+
+## 🏗️ Architecture Overview
+
+### Root-Level Structure
+```
+z-beam-generator/
+├── frontmatter/                    # Enhanced frontmatter management system
+│   ├── materials/                  # Material-specific frontmatter files
+│   ├── schemas/                    # JSON Schema validation
+│   ├── management/                 # Management tools and utilities
+│   └── requirements.txt           # Additional dependencies
+├── content/
+│   └── components/                 # Generated component outputs
+├── components/                     # Component generators
+├── data/                          # Base material data and schemas
+└── ...
+```
+
+### Frontmatter-First Architecture
+The system now uses a **frontmatter-first approach** where validated material data drives all component generation:
+
+1. **Root-Level Frontmatter**: Material data elevated to project root for better visibility
+2. **Schema Validation**: JSON Schema enforces data integrity across 109+ materials
+3. **Fail-Fast Components**: Components validate frontmatter before generation
+4. **Enhanced Error Handling**: Specific, actionable error messages with field-level validation
 
 ## 🚀 Recent Updates (September 2025)
+
+### Enhanced Frontmatter Management System (v3.0.0) - **LATEST**
+
+Major architectural enhancement moving frontmatter to root level with comprehensive validation:
+
+#### ✅ **New Frontmatter Architecture**
+- **Root-Level Elevation**: Frontmatter moved from `content/components/frontmatter/` to `frontmatter/materials/`
+- **Schema-Driven Validation**: JSON Schema validation for all 109 material frontmatter files
+- **Enhanced Management Tools**: `FrontmatterManager` class with caching, validation, and integrity checking
+- **Migration System**: Automated migration tools with backup and path updating capabilities
+- **Fail-Fast Integration**: Enhanced component generators with strict validation requirements
+
+#### 🔧 **Key Components**
+- **`FrontmatterManager`**: Centralized loading, validation, and caching system
+- **Migration Tools**: Comprehensive migration script with dry-run capability
+- **Enhanced Generators**: Base classes for robust component generation with validation
+- **Field Management**: Automated field updating and maintenance tools
+- **Integrity Reporting**: Comprehensive validation and completeness reporting
+
+#### 📊 **Benefits Achieved**
+- **Data Quality**: Schema validation ensures consistent, valid frontmatter across all materials
+- **System Reliability**: Fail-fast validation catches issues before component generation
+- **Developer Productivity**: Automated tools reduce manual frontmatter management
+- **Architecture Clarity**: Clear separation between data (`frontmatter/`) and outputs (`content/`)
+- **Future Flexibility**: Extensible system supports evolving requirements
+
+For detailed implementation guide, see [Frontmatter Architecture Proposal](docs/FRONTMATTER_ARCHITECTURE_PROPOSAL.md)
 
 ### Material Data Structure Improvements (v2.2.1)
 
@@ -828,6 +882,7 @@ python3 test_validation_diagnostics.py   # Test validation system
 - [Testing Framework](tests/README.md)
 - [Frontmatter Dependencies](docs/FRONTMATTER_DEPENDENCY_ARCHITECTURE.md)
 - [Component Standards](docs/COMPONENT_STANDARDS.md)
+- [Component Architecture Standards](docs/COMPONENT_ARCHITECTURE_STANDARDS.md) ⚠️ **Required Reading**
 
 ## 🤝 Contributing
 

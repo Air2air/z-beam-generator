@@ -381,7 +381,7 @@ if __name__ == "__main__":
         sys.exit(1)
     
     material = sys.argv[1]
-    frontmatter_path = Path(f"content/components/frontmatter/{material}-laser-cleaning.md")
+    frontmatter_path = Path(f"frontmatter/materials/{material}-laser-cleaning.md")
     
     valid, errors = validate_material_frontmatter(material, frontmatter_path)
     

@@ -22,11 +22,24 @@ class CircuitState(Enum):
 
 @dataclass
 class CircuitBreakerConfig:
-    """Configuration for circuit breaker behavior"""
-    failure_threshold: int = 5  # Failures before opening circuit
-    recovery_timeout: int = 60  # Seconds before attempting recovery
-    expected_exception: tuple = (Exception,)  # Exceptions that count as failures
-    success_threshold: int = 3  # Successes needed to close circuit in half-open state
+    """Configuration for circuit breaker behavior from centralized config"""
+    
+    def __init__(self):
+        # Get defaults from centralized configuration
+        try:
+            from run import get_circuit_breaker_config
+            config = get_circuit_breaker_config()
+            self.failure_threshold = config.get("failure_threshold", 3)
+            self.recovery_timeout = config.get("recovery_timeout", 60)
+            self.half_open_max_calls = config.get("half_open_max_calls", 5)
+        except ImportError:
+            # Fallback values if run.py not available
+            self.failure_threshold = 3
+            self.recovery_timeout = 60
+            self.half_open_max_calls = 5
+        
+        self.expected_exception = (Exception,)  # Exceptions that count as failures
+        self.success_threshold = 3  # Successes needed to close circuit in half-open state
 
 @dataclass
 class ProviderHealth:

@@ -1,8 +1,3 @@
-<!-- CONTENT START -->
-
-<!-- CONTENT END -->
-
-<!-- METADATA START -->
 ---
 title: Steel Laser Cleaning
 meta_tags:
@@ -11,11 +6,11 @@ meta_tags:
     optimal 1064nm wavelength interaction, and industrial applications in surface
     preparation.
 - name: keywords
-  content: laser-cleaning, surface-preparation, industrial-technology, manufacturing-processes,
-    contamination-removal, material-processing, quality-control, precision-cleaning,
-    automation, industrial-applications
+  content: steel, steel metal, laser ablation, laser cleaning, non-contact cleaning,
+    pulsed fiber laser, surface contamination removal, industrial laser parameters,
+    thermal processing, surface restoration
 - name: author
-  content: Yi-Chun Lin
+  content: Dr. Sarah Chen
 - name: category
   content: metal
 - name: robots
@@ -65,7 +60,7 @@ opengraph:
 - property: og:locale
   content: en_US
 - property: article:author
-  content: Yi-Chun Lin
+  content: Dr. Sarah Chen
 - property: article:section
   content: Steel Processing
 - property: article:tag
@@ -94,7 +89,7 @@ alternate:
 ---
 
 ---
-Version Log - Generated: 2025-09-18T12:26:04.331981
+Version Log - Generated: 2025-09-19T16:58:42.261268
 Material: Unknown
 Component: metatags
 Generator: Z-Beam v1.0.0
@@ -103,4 +98,12 @@ Author: AI Assistant
 Platform: Darwin (3.12.4)
 Operation: generation
 ---
-<!-- METADATA END -->
+
+# Version Information
+# Generated: 2025-09-19T16:58:42.261602
+# Material: Steel
+# Component: metatags
+# Generator: Z-Beam v2.1.0
+# Author: AI Assistant
+# Platform: Darwin (3.12.4)
+# File: content/components/metatags/steel-laser-cleaning.md

@@ -1,13 +1,13 @@
 # Basic Content Structure
 before_text: |
-  Preliminary microscopic analysis reveals significant contamination deposits across the walnut wooden substrate. 
+  Initial surface examination reveals significant contamination deposits across the walnut Technical overview of walnut wood for laser cleaning applications, including optimal 1064nm wavelength interaction with cellulose structure, and applications in wood surface restoration.. 
   Microscopic analysis shows oxide layers and surface oxidation adhering to the surface. The walnut exhibits the characteristic density profile typical of wood materials.
-  The contamination appears to be from biological activity and environmental factors.
+  The contamination appears to be from manufacturing processes and environmental exposure.
 
 after_text: |
   Post-laser cleaning analysis demonstrates remarkable surface restoration through comprehensive laser processing.
-  The walnut substrate now exhibits pristine surface characteristics with controlled thermal exposure.
-  Microscopic examination confirms complete organic residue elimination while maintaining material properties.
+  The walnut substrate now exhibits pristine surface characteristics with minimal char formation.
+  Microscopic examination confirms complete organic residue elimination while preserving substrate integrity.
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
@@ -19,14 +19,19 @@ laser_parameters:
   energy_density: 0.5–2.0 J/cm²
   scanning_speed: "50-500mm/s"
   beam_profile: "Gaussian TEM00"
-  pulse_overlap: 70
 
 # Material Information
 material: "Walnut"
 
+# Data Source and Quality Information
+data_completeness:
+  laser_parameters_source: "frontmatter"
+  frontmatter_available: true
+  note: "Fail-fast component - requires complete frontmatter data"
+
 # Technical Metadata
 metadata:
-  generated: "2025-09-19T00:09:02.342284Z"
+  generated: "2025-09-19T16:55:26.496627Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
@@ -75,9 +80,9 @@ technicalSpecifications:
   pulse_duration: "50-200ns"
   scanning_speed: "50-500mm/s"
   material: "Walnut"
-  beam_delivery: "galvanometer scanning"
+  beam_delivery: "fiber optic"
   focus_diameter: "0.1-0.8mm"
-  processing_atmosphere: "inert atmosphere"
+  processing_atmosphere: "ambient air"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
@@ -86,13 +91,13 @@ chemicalProperties:
   contamination_type: "organic decay and biological contamination"
   materialType: "hardwood"
   formula: "C6H10O5 (cellulose)"
-  surface_finish: "Ra < 0.7 μm (post-cleaning)"
+  surface_finish: "Ra < 0.6 μm (post-cleaning)"
   corrosion_resistance: "moderate"
 
 # Image Metadata for SEO
 images:
   micro:
-    url: "/images/walnut-cleaning-analysis.jpg"
+    url: "/images/walnut-laser-cleaning-micro.jpg"
     alt: "Microscopic comparison of walnut surface before and after laser cleaning showing complete contamination removal"
     width: 800
     height: 450
@@ -101,19 +106,19 @@ images:
 
 # Additional SEO Metadata
 seo_data:
-  canonical_url: "https://z-beam.com/analysis/walnut-laser-cleaning"
+  canonical_url: "/walnut-laser-cleaning"
   og_title: "Walnut Laser Cleaning Analysis - Surface Restoration"
   og_description: "Professional microscopic analysis of precision laser cleaning on walnut, achieving complete contamination removal with preserved substrate integrity."
-  og_image: "/images/walnut-cleaning-analysis-social.jpg"
+  og_image: "/images/walnut-laser-cleaning-micro.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-19T00:09:02.342284Z"
+  last_modified: "2025-09-19T16:55:26.496627Z"
 
 # Quality Metrics
 quality_metrics:
-  surface_roughness_before: "Ra 3.3 μm"
-  surface_roughness_after: "Ra 1.0 μm"
-  substrate_integrity: "99% preserved"
+  surface_roughness_before: "Ra 5.0 μm"
+  surface_roughness_after: "Ra 1.5 μm"
+  substrate_integrity: "100% preserved"
 
 # Accessibility Information
 accessibility:
@@ -125,7 +130,7 @@ accessibility:
 ---
 Material: "walnut"
 Component: caption
-Generated: 2025-09-19T00:09:02.342284Z
+Generated: 2025-09-19T16:55:26.496627Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

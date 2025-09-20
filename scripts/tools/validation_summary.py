@@ -95,7 +95,7 @@ def show_file_extensions_rationale():
     print("=" * 70)
     
     print("\n✅ CURRENT STRUCTURE (CORRECT):")
-    print("   content/components/frontmatter/*.md    - YAML frontmatter + markdown")
+    print("   frontmatter/materials/*.md    - YAML frontmatter + markdown")
     print("   content/components/caption/*.yaml      - Pure YAML output")
     print("   content/components/jsonld/*.yaml       - Pure YAML output")
     print("   content/components/table/*.yaml        - Pure YAML output")

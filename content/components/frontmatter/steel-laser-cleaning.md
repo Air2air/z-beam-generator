@@ -2,193 +2,126 @@
 name: Steel
 category: metal
 title: Laser Cleaning Steel
-headline: Comprehensive technical guide for laser cleaning metal steel
-description: Technical overview of Steel, Fe-C alloy, for laser cleaning applications,
-  including optimal 1064nm wavelength interaction, and industrial applications in
-  surface preparation and restoration.
+headline: Comprehensive technical guide for laser cleaning metal Steel
+description: Technical overview of Steel, Fe, for laser cleaning applications, including
+  optimal 1064nm wavelength interaction, and industrial applications in surface preparation.
 keywords: steel, steel metal, laser ablation, laser cleaning, non-contact cleaning,
   pulsed fiber laser, surface contamination removal, industrial laser parameters,
   thermal processing, surface restoration
 chemicalProperties:
   symbol: Fe
-  formula: Fe-C
+  formula: Fe
   materialType: metal
 properties:
-  density: 7.85 g/cm³
+  density: "7.85 g/cm\xB3"
   densityNumeric: 7.85
-  densityUnit: g/cm³
-  densityMin: 7.7 g/cm³
-  densityMinNumeric: 7.7
-  densityMinUnit: g/cm³
-  densityMax: 8.0 g/cm³
-  densityMaxNumeric: 8.0
-  densityMaxUnit: g/cm³
-  densityPercentile: 75.2
-  meltingPoint: 1370-1530°C
+  densityUnit: "g/cm\xB3"
+  densityMin: "1.8 g/cm\xB3"
+  densityMinNumeric: 1.8
+  densityMinUnit: "g/cm\xB3"
+  densityMax: "6.0 g/cm\xB3"
+  densityMaxNumeric: 6.0
+  densityMaxUnit: "g/cm\xB3"
+  densityPercentile: 51.2
+  meltingPoint: "1370-1530\xB0C"
   meltingPointNumeric: 1450.0
-  meltingPointUnit: °C
-  meltingPercentile: 65.8
-  thermalConductivity: 50.2 W/m·K
+  meltingPointUnit: "\xB0C"
+  meltingPercentile: 54.5
+  thermalConductivity: "50.2 W/m\xB7K"
   thermalConductivityNumeric: 50.2
-  thermalConductivityUnit: W/m·K
-  thermalPercentile: 68.3
+  thermalConductivityUnit: "W/m\xB7K"
+  thermalPercentile: 14.8
   tensileStrength: 400-600 MPa
   tensileStrengthNumeric: 500.0
   tensileStrengthUnit: MPa
-  tensilePercentile: 45.2
+  tensilePercentile: 26.3
   hardness: 150-250 HB
   hardnessNumeric: 200.0
   hardnessUnit: HB
-  hardnessMin: 100 HB
-  hardnessMinNumeric: 100.0
-  hardnessMinUnit: HB
-  hardnessMax: 600 HB
-  hardnessMaxNumeric: 600.0
-  hardnessMaxUnit: HB
-  hardnessPercentile: 42.1
+  hardnessMin: 500 HV
+  hardnessMinNumeric: 500.0
+  hardnessMinUnit: HV
+  hardnessMax: 2500 HV
+  hardnessMaxNumeric: 2500.0
+  hardnessMaxUnit: HV
+  hardnessPercentile: 0.0
   youngsModulus: 200 GPa
   youngsModulusNumeric: 200.0
   youngsModulusUnit: GPa
-  modulusMin: 190 GPa
-  modulusMinNumeric: 190.0
+  modulusMin: 150 GPa
+  modulusMinNumeric: 150.0
   modulusMinUnit: GPa
-  modulusMax: 210 GPa
-  modulusMaxNumeric: 210.0
+  modulusMax: 400 GPa
+  modulusMaxNumeric: 400.0
   modulusMaxUnit: GPa
-  modulusPercentile: 85.0
+  modulusPercentile: 92.0
   laserType: Pulsed Fiber Laser
   wavelength: 1064nm
-  fluenceRange: 1.5–6.0 J/cm²
-  chemicalFormula: Fe-C
+  fluenceRange: "1.0\u20134.5 J/cm\xB2"
+  chemicalFormula: Fe
 composition:
-- Iron (Fe) 98.0-99.5%
-- Carbon (C) 0.2-2.1%
-- Manganese (Mn) 0.3-1.0%
-- Silicon (Si) 0.2-0.6%
-- Trace elements (S, P, Cu)
-machineSettings:
-  powerRange: 100-500W
-  powerRangeNumeric: 300.0
-  powerRangeUnit: W
-  powerRangeMin: 20W
-  powerRangeMinNumeric: 20.0
-  powerRangeMinUnit: W
-  powerRangeMax: 500W
-  powerRangeMaxNumeric: 500.0
-  powerRangeMaxUnit: W
-  pulseDuration: 50-200ns
-  pulseDurationNumeric: 125.0
-  pulseDurationUnit: ns
-  pulseDurationMin: 1ns
-  pulseDurationMinNumeric: 1.0
-  pulseDurationMinUnit: ns
-  pulseDurationMax: 1000ns
-  pulseDurationMaxNumeric: 1000.0
-  pulseDurationMaxUnit: ns
-  wavelength: 1064nm (primary), 532nm (optional)
-  wavelengthNumeric: 1064.0
-  wavelengthUnit: nm
-  wavelengthMin: 355nm
-  wavelengthMinNumeric: 355.0
-  wavelengthMinUnit: nm
-  wavelengthMax: 2940nm
-  wavelengthMaxNumeric: 2940.0
-  wavelengthMaxUnit: nm
-  spotSize: 0.3-2.0mm
-  spotSizeNumeric: 1.15
-  spotSizeUnit: mm
-  spotSizeMin: 0.01mm
-  spotSizeMinNumeric: 0.01
-  spotSizeMinUnit: mm
-  spotSizeMax: 10mm
-  spotSizeMaxNumeric: 10.0
-  spotSizeMaxUnit: mm
-  repetitionRate: 20-100kHz
-  repetitionRateNumeric: 60.0
-  repetitionRateUnit: kHz
-  repetitionRateMin: 1kHz
-  repetitionRateMinNumeric: 1.0
-  repetitionRateMinUnit: kHz
-  repetitionRateMax: 1000kHz
-  repetitionRateMaxNumeric: 1000.0
-  repetitionRateMaxUnit: kHz
-  fluenceRange: 1.5–6.0 J/cm²
-  fluenceRangeNumeric: 1.5
-  fluenceRangeUnit: J/cm²
-  fluenceRangeMin: 0.1J/cm²
-  fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: J/cm²
-  fluenceRangeMax: 50J/cm²
-  fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: J/cm²
-  scanningSpeed: 50-500mm/s
-  scanningSpeedNumeric: 275.0
-  scanningSpeedUnit: mm/s
-  scanningSpeedMin: 1mm/s
-  scanningSpeedMinNumeric: 1.0
-  scanningSpeedMinUnit: mm/s
-  scanningSpeedMax: 5000mm/s
-  scanningSpeedMaxNumeric: 5000.0
-  scanningSpeedMaxUnit: mm/s
-  beamProfile: Gaussian TEM00
-  beamProfileOptions:
-  - Gaussian TEM00
-  - Top-hat
-  - Donut
-  - Multi-mode
-  safetyClass: Class 4 (requires full enclosure)
+- Steel (Fe) 99.6%
+- Trace elements (Si, Fe, Na, Mg)
 applications:
-- industry: Automotive Manufacturing
-  detail: Removal of rust, paint, and surface contaminants from Steel components
-- industry: Marine Equipment
-  detail: Cleaning of corrosion and marine deposits from Steel surfaces
+- industry: Electronics Manufacturing
+  detail: Removal of surface oxides and contaminants from Steel substrates
+- industry: Aerospace Components
+  detail: Cleaning of thermal barrier coatings and metal matrix composites
 compatibility:
-- Carbon Steel
 - Stainless Steel
-- Cast Iron
-- Tool Steel
-regulatoryStandards: ISO 8501-1, ASTM D3276, SSPC-SP 1
-author: Ikmanda Roswati
+- Titanium Alloys
+- Nickel-based Superalloys
+regulatoryStandards: ISO 18562, ASTM F2100, IEC 60601-1
+author: Dr. Sarah Chen
 author_object:
-  id: 3
-  name: Ikmanda Roswati
-  sex: m
-  title: Ph.D.
-  country: Indonesia
-  expertise: Ultrafast Laser Physics and Material Interactions
-  image: /images/author/ikmanda-roswati.jpg
+  id: sarah_chen
+  name: Dr. Sarah Chen
+  sex: female
+  title: Materials Scientist
+  country: China
+  expertise: Laser Materials Processing
+  image: null
 images:
   hero:
     alt: Steel surface undergoing laser cleaning showing precise contamination removal
     url: /images/steel-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Steel surface after laser cleaning showing detailed surface
-      structure
+    alt: Microscopic view of Steel surface after laser treatment showing preserved
+      microstructure
     url: /images/steel-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Solvent Elimination
   description: Reduces chemical usage by 100% compared to traditional solvent cleaning
     methods
 - benefit: Water Conservation
-  description: Saves approximately 3000 liters of water per month in industrial applications
+  description: Saves approximately 5000 liters of water per month in industrial applications
 - benefit: Energy Efficiency
-  description: Consumes 35% less energy than abrasive blasting processes
+  description: Consumes 40% less energy than thermal cleaning processes
 outcomes:
 - result: Surface Cleanliness Level
-  metric: Achieves SA 2.5 surface preparation standard
+  metric: Achieves ISO 14644-1 Class 7 cleanliness standard
 - result: Material Removal Precision
-  metric: ±10μm accuracy with minimal substrate damage
+  metric: "\xB15\u03BCm accuracy with no substrate damage"
 - result: Processing Speed
-  metric: 3-8 m²/hour cleaning rate depending on contamination level
-prompt_chain_verification:
-  base_config_loaded: true
-  persona_config_loaded: true
-  formatting_config_loaded: true
-  ai_detection_config_loaded: true
-  persona_country: Indonesia
-  author_id: 3
-  verification_timestamp: '2025-09-19T06:18:21Z'
-  prompt_components_integrated: 4
-  human_authenticity_focus: true
-  cultural_adaptation_applied: true
+  metric: "2-5 m\xB2/hour cleaning rate depending on contamination level"
+technicalSpecifications:
+  powerRange: 50-200W
+  pulseDuration: 20-100ns
+  wavelength: 1064nm (primary), 532nm (optional)
+  spotSize: 0.2-1.5mm
+  repetitionRate: 20-100kHz
+  fluenceRange: "1.0\u20134.5 J/cm\xB2"
+  safetyClass: Class 4 (requires full enclosure)
+  materialProperties: {}
+  laserParameters: {}
+  processingGuidelines: {}
 ---
+
+# Version Information
+# Generated: 2025-09-19T16:58:59.290348
+# Material: Steel
+# Component: frontmatter
+# Generator: Z-Beam v2.1.0
+# Author: AI Assistant
+# Platform: Darwin (3.12.4)
+# File: content/components/frontmatter/steel-laser-cleaning.md

@@ -38,12 +38,19 @@ def run_tags_generation(material):
             "--components", "tags"
         ]
         
+        # Get timeout from centralized configuration
+        try:
+            from run import get_batch_timeout
+            timeout = get_batch_timeout("tags_generation")
+        except ImportError:
+            timeout = 120  # Fallback if run.py not available
+        
         result = subprocess.run(
             cmd, 
             cwd=project_root,
             capture_output=True, 
             text=True, 
-            timeout=120  # 2 minute timeout per material
+            timeout=timeout
         )
         
         if result.returncode == 0:

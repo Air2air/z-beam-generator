@@ -27,11 +27,18 @@ def run_frontmatter_generation(material_name: str) -> bool:
             "--components", "frontmatter"
         ]
         
+        # Get timeout from centralized configuration
+        try:
+            from run import get_batch_timeout
+            timeout = get_batch_timeout("frontmatter_generation")
+        except ImportError:
+            timeout = 60  # Fallback if run.py not available
+        
         result = subprocess.run(
             cmd, 
             capture_output=True, 
             text=True, 
-            timeout=120
+            timeout=timeout
         )
         
         if result.returncode == 0:
@@ -78,7 +85,7 @@ def main():
     
     if successful > 0:
         print(f"\n📁 Generated files:")
-        subprocess.run(["ls", "-la", "content/components/frontmatter/*-laser-cleaning.md"], shell=True)
+        subprocess.run(["ls", "-la", "frontmatter/materials/*-laser-cleaning.md"], shell=True)
 
 if __name__ == "__main__":
     main()

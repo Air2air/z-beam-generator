@@ -38,12 +38,19 @@ def run_caption_generation(material):
             "--components", "caption"
         ]
         
+        # Get timeout from centralized configuration
+        try:
+            from run import get_batch_timeout
+            timeout = get_batch_timeout("caption_generation")
+        except ImportError:
+            timeout = 60  # Fallback if run.py not available
+        
         result = subprocess.run(
             cmd, 
             cwd=project_root,
             capture_output=True, 
             text=True, 
-            timeout=120  # 2 minute timeout per material
+            timeout=timeout
         )
         
         if result.returncode == 0:
@@ -54,7 +61,7 @@ def run_caption_generation(material):
             return False
             
     except subprocess.TimeoutExpired:
-        print(f"⏰ {material}: Timeout (>2 minutes)")
+        print(f"⏰ {material}: Timeout (>{timeout}s)")
         return False
     except Exception as e:
         print(f"❌ {material}: Error - {str(e)}")

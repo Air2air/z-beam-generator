@@ -4,7 +4,37 @@
 
 ---
 
+# Quick Reference for AI Assistants
+
+**🤖 Optimized for AI assistant navigation and problem resolution**
+
+---
+
 ## 🎯 Most Common User Questions → Direct Solutions
+
+### "Frontmatter not found" / "No frontmatter data"
+**→ Immediate Response**: ✅ **ENHANCED with Root-Level System** - Use new FrontmatterManager
+**→ Quick Fix**: `python3 frontmatter/management/migrator.py --dry-run` to check status
+**→ Migration Required**: Run `python3 frontmatter/management/migrator.py --execute`
+**→ New Location**: `frontmatter/materials/` instead of `content/components/frontmatter/`
+**→ Documentation**: [Frontmatter Architecture Proposal](FRONTMATTER_ARCHITECTURE_PROPOSAL.md)
+
+### "Schema validation failed" / "Invalid frontmatter"
+**→ Immediate Response**: Use enhanced frontmatter validation system
+**→ Quick Fix**: 
+```python
+from frontmatter.management.manager import frontmatter_manager
+is_valid, errors = frontmatter_manager.validate_material("Steel")
+```
+**→ Comprehensive Check**: `python3 scripts/tools/frontmatter_integrity_check.py`
+**→ Field Updates**: Use `python3 scripts/tools/update_frontmatter_fields.py --material "MaterialName"`
+
+### "Component generation failed" / "Required fields missing"
+**→ Immediate Response**: Enhanced fail-fast validation with specific field requirements
+**→ Quick Fix**: Check component-specific requirements in error message
+**→ Field Management**: `python3 scripts/tools/update_frontmatter_fields.py --dry-run`
+**→ Common Missing**: `substrateDescription`, `technicalSpecifications.contaminationSource`, `technicalSpecifications.thermalEffect`
+**→ Auto-Fix**: Run field updater for missing fields across all materials
 
 ### "API not working" / "Connection failed"
 **→ Immediate Response**: Check [API Error Handling](api/ERROR_HANDLING.md#winston-ssl-issues)
@@ -13,7 +43,7 @@
 
 ### "Content incomplete" / "Text cuts off"
 **→ Immediate Response**: API failure during generation
-**→ Quick Fix**: `**→ Quick Fix**: Use working diagnostic: `python3 scripts/tools/api_terminal_diagnostics.py winston``
+**→ Quick Fix**: Use working diagnostic: `python3 scripts/tools/api_terminal_diagnostics.py winston`
 **→ Root Cause**: Winston API timeout - check [Content Impact Analysis](api/ERROR_HANDLING.md#content-impact)
 
 ### "Winston.ai scoring technical content as 0%" / "AI detector shows poor results"

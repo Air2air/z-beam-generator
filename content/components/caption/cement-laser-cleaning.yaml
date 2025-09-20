@@ -1,13 +1,13 @@
 # Basic Content Structure
 before_text: |
-  Preliminary microscopic analysis reveals significant contamination deposits across the cement masonry surface. 
+  Initial surface examination reveals significant contamination deposits across the cement Technical overview of cement, CaO·SiO2·Al2O3, for laser cleaning applications, including optimal 1064nm wavelength interaction, and industrial applications in surface preparation.. 
   Microscopic analysis shows biological growth and organic deposits adhering to the surface. The cement exhibits the characteristic density profile typical of masonry materials.
-  The contamination appears to be from construction activities and atmospheric exposure.
+  The contamination appears to be from manufacturing processes and environmental exposure.
 
 after_text: |
-  Post-processing microscopic evaluation demonstrates remarkable surface restoration through comprehensive laser processing.
-  The cement substrate now exhibits pristine surface characteristics with no thermal cracking.
-  Microscopic examination confirms comprehensive surface decontamination while maintaining material properties.
+  Post-laser cleaning analysis demonstrates remarkable surface restoration through comprehensive laser processing.
+  The cement substrate now exhibits pristine surface characteristics with minimal thermal effects.
+  Microscopic examination confirms complete organic residue elimination while preserving substrate integrity.
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
@@ -19,14 +19,19 @@ laser_parameters:
   energy_density: 0.5–2.0 J/cm²
   scanning_speed: "50-500mm/s"
   beam_profile: "Gaussian TEM00"
-  pulse_overlap: 75
 
 # Material Information
 material: "Cement"
 
+# Data Source and Quality Information
+data_completeness:
+  laser_parameters_source: "frontmatter"
+  frontmatter_available: true
+  note: "Fail-fast component - requires complete frontmatter data"
+
 # Technical Metadata
 metadata:
-  generated: "2025-09-19T00:08:09.382108Z"
+  generated: "2025-09-19T16:55:25.230147Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
@@ -76,9 +81,9 @@ technicalSpecifications:
   pulse_duration: "50-200ns"
   scanning_speed: "50-500mm/s"
   material: "Cement"
-  beam_delivery: "direct beam"
+  beam_delivery: "fiber optic"
   focus_diameter: "0.5-2.0mm"
-  processing_atmosphere: "controlled environment"
+  processing_atmosphere: "ambient air"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
@@ -87,13 +92,13 @@ chemicalProperties:
   contamination_type: "construction residues and atmospheric deposits"
   materialType: "masonry"
   formula: "CaO·SiO2·Al2O3"
-  surface_finish: "Ra < 0.3 μm (post-cleaning)"
+  surface_finish: "Ra < 0.6 μm (post-cleaning)"
   corrosion_resistance: "good"
 
 # Image Metadata for SEO
 images:
   micro:
-    url: "/images/cement-cleaning-analysis.jpg"
+    url: "/images/cement-laser-cleaning-micro.jpg"
     alt: "Microscopic comparison of cement surface before and after laser cleaning showing complete contamination removal"
     width: 800
     height: 450
@@ -102,19 +107,19 @@ images:
 
 # Additional SEO Metadata
 seo_data:
-  canonical_url: "https://z-beam.com/analysis/cement-laser-cleaning"
+  canonical_url: "/cement-laser-cleaning"
   og_title: "Cement Laser Cleaning Analysis - Surface Restoration"
   og_description: "Professional microscopic analysis of precision laser cleaning on cement, achieving complete contamination removal with preserved substrate integrity."
-  og_image: "/images/cement-cleaning-analysis-social.jpg"
+  og_image: "/images/cement-laser-cleaning-micro.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-19T00:08:09.382108Z"
+  last_modified: "2025-09-19T16:55:25.230147Z"
 
 # Quality Metrics
 quality_metrics:
-  surface_roughness_before: "Ra 4.7 μm"
+  surface_roughness_before: "Ra 3.2 μm"
   surface_roughness_after: "Ra 0.6 μm"
-  substrate_integrity: "excellent"
+  substrate_integrity: "100% preserved"
 
 # Accessibility Information
 accessibility:
@@ -126,7 +131,7 @@ accessibility:
 ---
 Material: "cement"
 Component: caption
-Generated: 2025-09-19T00:08:09.382108Z
+Generated: 2025-09-19T16:55:25.230147Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

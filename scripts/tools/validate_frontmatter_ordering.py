@@ -248,7 +248,7 @@ class FrontmatterOrderingValidator:
 
     def validate_all_files(self) -> Dict[str, Any]:
         """Validate all frontmatter files"""
-        frontmatter_dir = Path("content/components/frontmatter")
+        frontmatter_dir = Path("frontmatter/materials")
         
         if not frontmatter_dir.exists():
             return {"error": "Frontmatter directory not found"}

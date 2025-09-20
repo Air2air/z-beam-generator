@@ -100,8 +100,8 @@ def main():
     
     # List of files with known nested property issues
     problematic_files = [
-        "content/components/frontmatter/phenolic-resin-composites-laser-cleaning.md",
-        "content/components/frontmatter/thermoplastic-elastomer-laser-cleaning.md"
+        "frontmatter/materials/phenolic-resin-composites-laser-cleaning.md",
+        "frontmatter/materials/thermoplastic-elastomer-laser-cleaning.md"
     ]
     
     print("🔧 CRITICAL FIX: Nested YAML Property Generation Bug")

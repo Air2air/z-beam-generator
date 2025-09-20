@@ -1,32 +1,37 @@
 # Basic Content Structure
 before_text: |
-  Initial surface examination reveals significant contamination deposits across the steel metallic substrate. 
-  Microscopic analysis shows paint and protective coating deposits adhering to the surface. The steel exhibits the characteristic density profile typical of metal materials.
+  Initial surface examination reveals significant contamination deposits across the steel Technical overview of Steel, Fe, for laser cleaning applications, including optimal 1064nm wavelength interaction, and industrial applications in surface preparation.. 
+  Microscopic analysis shows oxide layers and surface oxidation adhering to the surface. The steel exhibits the characteristic density profile typical of metal materials.
   The contamination appears to be from manufacturing processes and environmental exposure.
 
 after_text: |
-  Post-processing microscopic evaluation demonstrates outstanding contamination removal through comprehensive laser processing.
-  The steel substrate now exhibits pristine surface characteristics with controlled thermal impact.
-  Microscopic examination confirms total contamination removal while ensuring structural preservation.
+  Post-laser cleaning analysis demonstrates remarkable surface restoration through comprehensive laser processing.
+  The steel substrate now exhibits pristine surface characteristics with minimal thermal effects.
+  Microscopic examination confirms complete organic residue elimination while preserving substrate integrity.
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
   wavelength: 1064nm (primary), 532nm (optional)
-  power: 100-500W
-  pulse_duration: 50-200ns
-  spot_size: 0.3-2.0mm
+  power: 50-200W
+  pulse_duration: 20-100ns
+  spot_size: 0.2-1.5mm
   frequency: 20-100kHz
-  energy_density: 1.5–6.0 J/cm²
-  scanning_speed: "50-500mm/s"
-  beam_profile: "Gaussian TEM00"
-  pulse_overlap: 86
+  energy_density: 1.0–4.5 J/cm²
+  scanning_speed: "None"
+  beam_profile: "None"
 
 # Material Information
 material: "Steel"
 
+# Data Source and Quality Information
+data_completeness:
+  laser_parameters_source: "frontmatter"
+  frontmatter_available: true
+  note: "Fail-fast component - requires complete frontmatter data"
+
 # Technical Metadata
 metadata:
-  generated: "2025-09-19T00:08:31.005051Z"
+  generated: "2025-09-19T16:55:25.708031Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
@@ -51,49 +56,49 @@ keywords:
   - "contamination analysis"
   - "steel metal"
   - "non-contact cleaning"
-  - "automotive manufacturing applications"
+  - "electronics manufacturing applications"
   - "metal surface treatment"
   - "corrosion removal"
   - "oxide layer removal"
 
 # Author Information with SEO Enhancement
-author: "Ikmanda Roswati"
+author: "Dr. Sarah Chen"
 author_object:
-  name: "Ikmanda Roswati"
-  email: "ikmanda.roswati@materials-lab.com"
+  name: "Dr. Sarah Chen"
+  email: "dr..sarah.chen@materials-lab.com"
   affiliation: "Advanced Materials Processing Laboratory"
-  title: "Ph.D. Ultrafast Laser Physics and Material Interactions"
+  title: "Materials Scientist Laser Materials Processing"
   expertise:
     - "Laser Materials Processing"
     - "Surface Analysis"
     - "Materials Science"
-    - "Ultrafast Laser Physics and Material Interactions"
+    - "Laser Materials Processing"
 
 # Technical Specifications for SEO
 technicalSpecifications:
   wavelength: "1064nm (primary), 532nm (optional)"
-  power: "100-500W"
-  pulse_duration: "50-200ns"
-  scanning_speed: "50-500mm/s"
+  power: "50-200W"
+  pulse_duration: "20-100ns"
+  scanning_speed: "None"
   material: "Steel"
   beam_delivery: "fiber optic"
-  focus_diameter: "0.3-2.0mm"
-  processing_atmosphere: "inert atmosphere"
+  focus_diameter: "0.2-1.5mm"
+  processing_atmosphere: "ambient air"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Iron (Fe) 98.0-99.5%, Carbon (C) 0.2-2.1%, Manganese (Mn) 0.3-1.0%"
+  composition: "Steel (Fe) 99.6%, Trace elements (Si, Fe, Na, Mg)"
   surface_treatment: "laser cleaning"
   contamination_type: "oxidation and metallic deposits"
   materialType: "metal"
-  formula: "Fe-C"
+  formula: "Fe"
   surface_finish: "Ra < 0.6 μm (post-cleaning)"
-  corrosion_resistance: "good"
+  corrosion_resistance: "excellent"
 
 # Image Metadata for SEO
 images:
   micro:
-    url: "/images/steel-cleaning-analysis.jpg"
+    url: "/images/steel-laser-cleaning-micro.jpg"
     alt: "Microscopic comparison of steel surface before and after laser cleaning showing complete contamination removal"
     width: 800
     height: 450
@@ -102,18 +107,18 @@ images:
 
 # Additional SEO Metadata
 seo_data:
-  canonical_url: "https://z-beam.com/analysis/steel-laser-cleaning"
+  canonical_url: "/steel-laser-cleaning"
   og_title: "Steel Laser Cleaning Analysis - Surface Restoration"
   og_description: "Professional microscopic analysis of precision laser cleaning on steel, achieving complete contamination removal with preserved substrate integrity."
-  og_image: "/images/steel-cleaning-analysis-social.jpg"
+  og_image: "/images/steel-laser-cleaning-micro.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-19T00:08:31.005051Z"
+  last_modified: "2025-09-19T16:55:25.708031Z"
 
 # Quality Metrics
 quality_metrics:
   surface_roughness_before: "Ra 2.5 μm"
-  surface_roughness_after: "Ra 0.6 μm"
+  surface_roughness_after: "Ra 0.8 μm"
   substrate_integrity: "100% preserved"
 
 # Accessibility Information
@@ -126,7 +131,7 @@ accessibility:
 ---
 Material: "steel"
 Component: caption
-Generated: 2025-09-19T00:08:31.005051Z
+Generated: 2025-09-19T16:55:25.708031Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

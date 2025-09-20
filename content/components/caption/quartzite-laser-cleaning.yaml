@@ -1,13 +1,13 @@
 # Basic Content Structure
 before_text: |
-  Initial surface examination reveals significant contamination deposits across the quartzite stone surface. 
-  Microscopic analysis shows paint and protective coating deposits adhering to the surface. The quartzite exhibits the characteristic density profile typical of stone materials.
-  The contamination appears to be from weathering and environmental exposure.
+  Initial surface examination reveals significant contamination deposits across the quartzite Technical overview of Quartzite, SiO2, for laser cleaning applications, including optimal 1064nm wavelength interaction, and industrial applications in surface preparation.. 
+  Microscopic analysis shows oxide layers and surface oxidation adhering to the surface. The quartzite exhibits the characteristic density profile typical of stone materials.
+  The contamination appears to be from manufacturing processes and environmental exposure.
 
 after_text: |
-  Treatment outcome assessment demonstrates remarkable surface restoration through comprehensive laser processing.
-  The quartzite substrate now exhibits pristine surface characteristics with preserved structural integrity.
-  Microscopic examination confirms comprehensive surface decontamination while preserving substrate integrity.
+  Post-laser cleaning analysis demonstrates remarkable surface restoration through comprehensive laser processing.
+  The quartzite substrate now exhibits pristine surface characteristics with minimal thermal effects.
+  Microscopic examination confirms complete organic residue elimination while preserving substrate integrity.
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
@@ -19,14 +19,19 @@ laser_parameters:
   energy_density: 1.0–4.5 J/cm²
   scanning_speed: "50-500mm/s"
   beam_profile: "Gaussian TEM00"
-  pulse_overlap: 90
 
 # Material Information
 material: "Quartzite"
 
+# Data Source and Quality Information
+data_completeness:
+  laser_parameters_source: "frontmatter"
+  frontmatter_available: true
+  note: "Fail-fast component - requires complete frontmatter data"
+
 # Technical Metadata
 metadata:
-  generated: "2025-09-19T00:08:45.150272Z"
+  generated: "2025-09-19T16:55:26.055720Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
@@ -87,13 +92,13 @@ chemicalProperties:
   contamination_type: "weathering and biological deposits"
   materialType: "stone"
   formula: "SiO2"
-  surface_finish: "Ra < 0.9 μm (post-cleaning)"
+  surface_finish: "Ra < 0.6 μm (post-cleaning)"
   corrosion_resistance: "good"
 
 # Image Metadata for SEO
 images:
   micro:
-    url: "/images/quartzite-cleaning-analysis.jpg"
+    url: "/images/quartzite-laser-cleaning-micro.jpg"
     alt: "Microscopic comparison of quartzite surface before and after laser cleaning showing complete contamination removal"
     width: 800
     height: 450
@@ -102,19 +107,19 @@ images:
 
 # Additional SEO Metadata
 seo_data:
-  canonical_url: "https://z-beam.com/analysis/quartzite-laser-cleaning"
+  canonical_url: "/quartzite-laser-cleaning"
   og_title: "Quartzite Laser Cleaning Analysis - Surface Restoration"
   og_description: "Professional microscopic analysis of precision laser cleaning on quartzite, achieving complete contamination removal with preserved substrate integrity."
-  og_image: "/images/quartzite-cleaning-analysis-social.jpg"
+  og_image: "/images/quartzite-laser-cleaning-micro.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-19T00:08:45.150272Z"
+  last_modified: "2025-09-19T16:55:26.055720Z"
 
 # Quality Metrics
 quality_metrics:
-  surface_roughness_before: "Ra 2.1 μm"
-  surface_roughness_after: "Ra 0.7 μm"
-  substrate_integrity: "excellent"
+  surface_roughness_before: "Ra 3.2 μm"
+  surface_roughness_after: "Ra 0.6 μm"
+  substrate_integrity: "100% preserved"
 
 # Accessibility Information
 accessibility:
@@ -126,7 +131,7 @@ accessibility:
 ---
 Material: "quartzite"
 Component: caption
-Generated: 2025-09-19T00:08:45.150272Z
+Generated: 2025-09-19T16:55:26.055720Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

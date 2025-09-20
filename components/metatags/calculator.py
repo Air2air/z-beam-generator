@@ -345,18 +345,12 @@ class MetatagsCalculator:
         if "wavelength" in properties:
             return str(properties["wavelength"])
 
-        # Category-specific defaults
-        default_wavelengths = {
-            "metal": "1064nm",
-            "ceramic": "532nm",
-            "stone": "1064nm",
-            "glass": "355nm",
-            "composite": "1064nm",
-            "wood": "532nm",
-            "semiconductor": "355nm",
-        }
-
-        return default_wavelengths.get(self.category, "1064nm")
+        # Fail-fast: require wavelength from frontmatter - no defaults
+        if self.category not in ["metal", "ceramic", "stone", "glass", "composite", "wood", "semiconductor"]:
+            raise ValueError(f"Unsupported material category: {self.category}")
+        
+        # If no wavelength data available from frontmatter, fail fast
+        raise ValueError(f"No wavelength data available for {self.category} - frontmatter technicalSpecifications required")
 
     def _extract_primary_applications(self) -> str:
         """Extract primary applications from frontmatter."""
@@ -371,18 +365,12 @@ class MetatagsCalculator:
                 elif industry:
                     return f"{industry} applications"
 
-        # Category-based defaults
-        default_applications = {
-            "metal": "industrial manufacturing",
-            "ceramic": "heritage conservation",
-            "stone": "architectural restoration",
-            "glass": "optical applications",
-            "composite": "aerospace components",
-            "wood": "cultural preservation",
-            "semiconductor": "electronics manufacturing",
-        }
-
-        return default_applications.get(self.category, "industrial applications")
+        # Fail-fast: require applications from frontmatter - no defaults
+        if self.category not in ["metal", "ceramic", "stone", "glass", "composite", "wood", "semiconductor"]:
+            raise ValueError(f"Unsupported material category: {self.category}")
+            
+        # If no applications data available from frontmatter, fail fast
+        raise ValueError(f"No applications data available for {self.category} - frontmatter applications required")
 
     def _generate_slug(self, text: str) -> str:
         """Generate URL-friendly slug from text."""

@@ -883,13 +883,13 @@ Category: {material_data.get('category', 'material')}
                             "@type": "ListItem",
                             "position": 1,
                             "name": "Materials",
-                            "item": "https://z-beam.com/materials"
+                            "item": f"https://z-beam.com/{material_slug}-laser-cleaning"
                         },
                         {
                             "@type": "ListItem", 
                             "position": 2,
                             "name": category.title(),
-                            "item": f"https://z-beam.com/materials/{category}"
+                            "item": f"https://z-beam.com/{material_slug}-laser-cleaning"
                         },
                         {
                             "@type": "ListItem",

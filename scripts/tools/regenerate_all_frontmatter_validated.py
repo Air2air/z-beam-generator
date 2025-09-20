@@ -29,8 +29,8 @@ from typing import Dict, List, Optional, Tuple
 project_root = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(project_root))
 
-from components.frontmatter.validator import FrontmatterValidator
-from components.frontmatter.generator import FrontmatterComponentGenerator
+from frontmatter.management.validator import FrontmatterValidator
+from frontmatter.management.generator import FrontmatterComponentGenerator
 from utils.core.slug_utils import extract_material_from_filename
 import run
 

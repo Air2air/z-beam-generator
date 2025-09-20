@@ -228,37 +228,11 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
         ):
             symbol = material_data["data"]["symbol"]
         
-        # Apply category-specific fallback generation if formula/symbol missing
-        if not formula or not symbol:
-            try:
-                from utils.core.chemical_fallback_generator import ChemicalFallbackGenerator
-                
-                fallback_generator = ChemicalFallbackGenerator()
-                fallback_formula, fallback_symbol = fallback_generator.generate_formula_and_symbol(
-                    material_name, category
-                )
-                
-                if not formula and fallback_formula:
-                    formula = fallback_formula
-                    logger.info(f"Generated fallback formula '{formula}' for {material_name} using category-specific rules")
-                
-                if not symbol and fallback_symbol:
-                    symbol = fallback_symbol
-                    logger.info(f"Generated fallback symbol '{symbol}' for {material_name} using category-specific rules")
-                    
-            except Exception as e:
-                logger.warning(f"Failed to generate chemical fallbacks for {material_name}: {e}")
-        
-        # Final fallback: use formula as symbol if still missing
-        if not symbol and formula:
-            symbol = formula
-            logger.info(f"Using formula '{formula}' as final fallback for missing symbol in {material_name}")
-        
-        # Log warnings for truly missing data
+        # FAIL-FAST: No fallback generation - fail if formula/symbol missing
         if not formula:
-            logger.warning(f"No formula available for {material_name} - continuing without formula")
+            raise ValueError(f"No formula available for {material_name} - frontmatter generation failed")
         if not symbol:
-            logger.warning(f"No symbol available for {material_name} - continuing without symbol")
+            raise ValueError(f"No symbol available for {material_name} - frontmatter generation failed")
         
         return formula, symbol
 

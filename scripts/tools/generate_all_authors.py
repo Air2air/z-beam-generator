@@ -9,7 +9,7 @@ import glob
 
 def main():
     # Get all frontmatter files
-    frontmatter_dir = "content/components/frontmatter"
+    frontmatter_dir = "frontmatter/materials"
     frontmatter_files = glob.glob(f"{frontmatter_dir}/*-laser-cleaning.md")
     
     # Extract material names (convert kebab-case to Title Case for run.py)

@@ -178,7 +178,7 @@ def extract_author_info_from_frontmatter_file(
 
         # Look for the frontmatter file
         frontmatter_path = (
-            Path("content/components/frontmatter")
+            Path("frontmatter/materials")
             / f"{material_name}-laser-cleaning.md"
         )
 

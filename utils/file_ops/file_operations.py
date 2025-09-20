@@ -46,6 +46,38 @@ def save_component_to_file(content: str, filepath: str) -> None:
         raise OSError(f"Failed to save file {filepath}: {e}")
 
 
+def get_component_file_extension(component_type: str) -> str:
+    """
+    Get the correct file extension for a component type.
+    
+    Args:
+        component_type: Component type
+        
+    Returns:
+        File extension including the dot (e.g., '.yaml', '.md')
+    """
+    # Map component types to extensions
+    yaml_components = ['table', 'jsonld', 'metatags', 'author', 'caption']
+    return '.yaml' if component_type in yaml_components else '.md'
+
+
+def create_safe_filename(material: str, component_type: str) -> str:
+    """
+    Create a safe filename from material name and component type.
+    
+    Args:
+        material: Material name
+        component_type: Component type
+        
+    Returns:
+        Safe filename with proper extension
+    """
+    # Create safe filename from material name - replace spaces and special chars with hyphens
+    safe_material = material.lower().replace(" ", "-").replace("/", "-").replace("_", "-")
+    extension = get_component_file_extension(component_type)
+    return f"{safe_material}-laser-cleaning{extension}"
+
+
 def save_component_to_file_original(
     material: str, component_type: str, content: str
 ) -> str:
@@ -63,9 +95,8 @@ def save_component_to_file_original(
     Raises:
         OSError: If file cannot be written
     """
-    # Create safe filename from material name
-    safe_material = material.lower().replace(" ", "-").replace("/", "-")
-    filename = f"{safe_material}-laser-cleaning.md"
+    # Create safe filename with correct extension
+    filename = create_safe_filename(material, component_type)
 
     # Map component types to correct directories
     # Note: "content" component type has been removed - use "text" instead

@@ -1,13 +1,13 @@
 # Basic Content Structure
 before_text: |
-  Initial surface examination reveals significant contamination deposits across the shale stone surface. 
-  Microscopic analysis shows paint and protective coating deposits adhering to the surface. The shale exhibits the characteristic density profile typical of stone materials.
-  The contamination appears to be from weathering and environmental exposure.
+  Initial surface examination reveals significant contamination deposits across the shale Technical overview of Shale, None, for laser cleaning applications, including optimal 1064nm wavelength interaction, and industrial applications in surface preparation.. 
+  Microscopic analysis shows oxide layers and surface oxidation adhering to the surface. The shale exhibits the characteristic density profile typical of stone materials.
+  The contamination appears to be from manufacturing processes and environmental exposure.
 
 after_text: |
-  Post-processing microscopic evaluation demonstrates remarkable surface restoration through comprehensive laser processing.
-  The shale substrate now exhibits pristine surface characteristics with minimal thermal expansion.
-  Microscopic examination confirms complete organic residue elimination while maintaining material properties.
+  Post-laser cleaning analysis demonstrates remarkable surface restoration through comprehensive laser processing.
+  The shale substrate now exhibits pristine surface characteristics with minimal thermal effects.
+  Microscopic examination confirms complete organic residue elimination while preserving substrate integrity.
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
@@ -19,14 +19,19 @@ laser_parameters:
   energy_density: 1.0–4.5 J/cm²
   scanning_speed: "50-500mm/s"
   beam_profile: "Gaussian TEM00"
-  pulse_overlap: 85
 
 # Material Information
 material: "Shale"
 
+# Data Source and Quality Information
+data_completeness:
+  laser_parameters_source: "frontmatter"
+  frontmatter_available: true
+  note: "Fail-fast component - requires complete frontmatter data"
+
 # Technical Metadata
 metadata:
-  generated: "2025-09-19T00:08:48.282179Z"
+  generated: "2025-09-19T16:55:26.127294Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
@@ -78,7 +83,7 @@ technicalSpecifications:
   material: "Shale"
   beam_delivery: "fiber optic"
   focus_diameter: "0.2-1.5mm"
-  processing_atmosphere: "inert atmosphere"
+  processing_atmosphere: "ambient air"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
@@ -87,13 +92,13 @@ chemicalProperties:
   contamination_type: "weathering and biological deposits"
   materialType: "stone"
   formula: "None"
-  surface_finish: "Ra < 0.4 μm (post-cleaning)"
+  surface_finish: "Ra < 0.6 μm (post-cleaning)"
   corrosion_resistance: "good"
 
 # Image Metadata for SEO
 images:
   micro:
-    url: "/images/shale-cleaning-analysis.jpg"
+    url: "/images/shale-laser-cleaning-micro.jpg"
     alt: "Microscopic comparison of shale surface before and after laser cleaning showing complete contamination removal"
     width: 800
     height: 450
@@ -102,19 +107,19 @@ images:
 
 # Additional SEO Metadata
 seo_data:
-  canonical_url: "https://z-beam.com/analysis/shale-laser-cleaning"
+  canonical_url: "/shale-laser-cleaning"
   og_title: "Shale Laser Cleaning Analysis - Surface Restoration"
   og_description: "Professional microscopic analysis of precision laser cleaning on shale, achieving complete contamination removal with preserved substrate integrity."
-  og_image: "/images/shale-cleaning-analysis-social.jpg"
+  og_image: "/images/shale-laser-cleaning-micro.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-19T00:08:48.282179Z"
+  last_modified: "2025-09-19T16:55:26.127294Z"
 
 # Quality Metrics
 quality_metrics:
-  surface_roughness_before: "Ra 5.0 μm"
-  surface_roughness_after: "Ra 0.5 μm"
-  substrate_integrity: "complete preservation"
+  surface_roughness_before: "Ra 3.2 μm"
+  surface_roughness_after: "Ra 0.6 μm"
+  substrate_integrity: "100% preserved"
 
 # Accessibility Information
 accessibility:
@@ -126,7 +131,7 @@ accessibility:
 ---
 Material: "shale"
 Component: caption
-Generated: 2025-09-19T00:08:48.282179Z
+Generated: 2025-09-19T16:55:26.127294Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

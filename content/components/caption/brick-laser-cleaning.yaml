@@ -1,13 +1,13 @@
 # Basic Content Structure
 before_text: |
-  Initial surface examination reveals significant contamination deposits across the brick masonry surface. 
+  Initial surface examination reveals significant contamination deposits across the brick Technical overview of brick masonry for laser cleaning applications, including optimal 1064nm wavelength interaction with clay-based materials, and industrial applications in surface restoration.. 
   Microscopic analysis shows biological growth and organic deposits adhering to the surface. The brick exhibits the characteristic density profile typical of masonry materials.
-  The contamination appears to be from construction activities and atmospheric exposure.
+  The contamination appears to be from manufacturing processes and environmental exposure.
 
 after_text: |
-  Post-laser cleaning analysis demonstrates outstanding contamination removal through comprehensive laser processing.
-  The brick substrate now exhibits pristine surface characteristics with preserved structural soundness.
-  Microscopic examination confirms complete organic residue elimination while maintaining material properties.
+  Post-laser cleaning analysis demonstrates remarkable surface restoration through comprehensive laser processing.
+  The brick substrate now exhibits pristine surface characteristics with minimal thermal effects.
+  Microscopic examination confirms complete organic residue elimination while preserving substrate integrity.
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
@@ -19,14 +19,19 @@ laser_parameters:
   energy_density: 0.5–2.0 J/cm²
   scanning_speed: "50-500mm/s"
   beam_profile: "Gaussian TEM00"
-  pulse_overlap: 90
 
 # Material Information
 material: "Brick"
 
+# Data Source and Quality Information
+data_completeness:
+  laser_parameters_source: "frontmatter"
+  frontmatter_available: true
+  note: "Fail-fast component - requires complete frontmatter data"
+
 # Technical Metadata
 metadata:
-  generated: "2025-09-19T00:08:08.688433Z"
+  generated: "2025-09-19T16:55:25.214701Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
@@ -78,7 +83,7 @@ technicalSpecifications:
   material: "Brick"
   beam_delivery: "fiber optic"
   focus_diameter: "0.5-3.0mm"
-  processing_atmosphere: "inert atmosphere"
+  processing_atmosphere: "ambient air"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
@@ -87,13 +92,13 @@ chemicalProperties:
   contamination_type: "construction residues and atmospheric deposits"
   materialType: "ceramic masonry"
   formula: "SiO₂·Al₂O₃·Fe₂O₃·CaO·MgO"
-  surface_finish: "Ra < 0.4 μm (post-cleaning)"
+  surface_finish: "Ra < 0.6 μm (post-cleaning)"
   corrosion_resistance: "good"
 
 # Image Metadata for SEO
 images:
   micro:
-    url: "/images/brick-cleaning-analysis.jpg"
+    url: "/images/brick-laser-cleaning-micro.jpg"
     alt: "Microscopic comparison of brick surface before and after laser cleaning showing complete contamination removal"
     width: 800
     height: 450
@@ -102,18 +107,18 @@ images:
 
 # Additional SEO Metadata
 seo_data:
-  canonical_url: "https://z-beam.com/analysis/brick-laser-cleaning"
+  canonical_url: "/brick-laser-cleaning"
   og_title: "Brick Laser Cleaning Analysis - Surface Restoration"
   og_description: "Professional microscopic analysis of precision laser cleaning on brick, achieving complete contamination removal with preserved substrate integrity."
-  og_image: "/images/brick-cleaning-analysis-social.jpg"
+  og_image: "/images/brick-laser-cleaning-micro.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-19T00:08:08.688433Z"
+  last_modified: "2025-09-19T16:55:25.214701Z"
 
 # Quality Metrics
 quality_metrics:
-  surface_roughness_before: "Ra 1.9 μm"
-  surface_roughness_after: "Ra 0.7 μm"
+  surface_roughness_before: "Ra 3.2 μm"
+  surface_roughness_after: "Ra 0.6 μm"
   substrate_integrity: "100% preserved"
 
 # Accessibility Information
@@ -126,7 +131,7 @@ accessibility:
 ---
 Material: "brick"
 Component: caption
-Generated: 2025-09-19T00:08:08.688433Z
+Generated: 2025-09-19T16:55:25.214701Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

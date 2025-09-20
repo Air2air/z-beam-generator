@@ -5,6 +5,6 @@ Text Component Package
 This package provides text generation capabilities for the Z-Beam system.
 """
 
-from .generators.generator import TextComponentGenerator
+from .generator import TextComponentGenerator
 
 __all__ = ["TextComponentGenerator"]

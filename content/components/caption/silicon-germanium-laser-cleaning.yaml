@@ -1,0 +1,137 @@
+# Basic Content Structure
+before_text: |
+  Initial surface examination reveals significant contamination deposits across the silicon germanium Technical overview of Silicon Germanium, SiGe, for laser cleaning applications, including optimal 1064nm wavelength interaction, and industrial applications in surface preparation.. 
+  Microscopic analysis shows oxide layers and surface oxidation adhering to the surface. The silicon germanium exhibits the characteristic density profile typical of semiconductor materials.
+  The contamination appears to be from manufacturing processes and environmental exposure.
+
+after_text: |
+  Post-laser cleaning analysis demonstrates remarkable surface restoration through comprehensive laser processing.
+  The silicon germanium substrate now exhibits pristine surface characteristics with minimal thermal effects.
+  Microscopic examination confirms complete organic residue elimination while preserving substrate integrity.
+
+# YAML v2.0 Laser Parameters
+laser_parameters:
+  wavelength: 1064nm (primary), 532nm (optional)
+  power: 50-200W
+  pulse_duration: 20-100ns
+  spot_size: 0.2-1.5mm
+  frequency: 20-100kHz
+  energy_density: 1.0–4.5 J/cm²
+  scanning_speed: "50-500mm/s"
+  beam_profile: "Gaussian TEM00"
+
+# Material Information
+material: "Silicon Germanium"
+
+# Data Source and Quality Information
+data_completeness:
+  laser_parameters_source: "frontmatter"
+  frontmatter_available: true
+  note: "Fail-fast component - requires complete frontmatter data"
+
+# Technical Metadata
+metadata:
+  generated: "2025-09-19T16:55:25.875014Z"
+  format: "yaml"
+  version: "2.0"
+  analysis_method: "scanning_electron_microscopy"
+  magnification: "1000x"
+  field_of_view: "200 μm"
+  image_resolution: "3840x2160"
+
+# Enhanced SEO Frontmatter
+title: "Silicon Germanium Surface Laser Cleaning Analysis - Precision Wafer Cleaning"
+description: "Comprehensive microscopic analysis of silicon germanium surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
+
+# SEO Keywords
+keywords:
+  - "laser cleaning"
+  - "silicon germanium surface treatment"
+  - "microscopic surface analysis"
+  - "materials processing"
+  - "precision cleaning"
+  - "surface topography"
+  - "laser ablation"
+  - "silicon germanium"
+  - "contamination analysis"
+  - "silicon germanium semiconductor"
+  - "non-contact cleaning"
+  - "electronics manufacturing applications"
+  - "wafer cleaning"
+  - "semiconductor processing"
+  - "microelectronics"
+
+# Author Information with SEO Enhancement
+author: "Todd Dunning"
+author_object:
+  name: "Todd Dunning"
+  email: "todd.dunning@materials-lab.com"
+  affiliation: "Advanced Materials Processing Laboratory"
+  title: "MA Optical Materials for Laser Systems"
+  expertise:
+    - "Laser Materials Processing"
+    - "Surface Analysis"
+    - "Materials Science"
+    - "Optical Materials for Laser Systems"
+
+# Technical Specifications for SEO
+technicalSpecifications:
+  wavelength: "1064nm (primary), 532nm (optional)"
+  power: "50-200W"
+  pulse_duration: "20-100ns"
+  scanning_speed: "50-500mm/s"
+  material: "Silicon Germanium"
+  beam_delivery: "fiber optic"
+  focus_diameter: "0.2-1.5mm"
+  processing_atmosphere: "ambient air"
+
+# Chemical Properties for Enhanced SEO
+chemicalProperties:
+  composition: "Silicon (Si) 70-95%, Germanium (Ge) 5-30%, Trace elements (B, P, As, Sb)"
+  surface_treatment: "laser cleaning"
+  contamination_type: "organic contamination and processing residues"
+  materialType: "semiconductor"
+  formula: "Si₁₋ₓGeₓ"
+  surface_finish: "Ra < 0.6 μm (post-cleaning)"
+  corrosion_resistance: "excellent"
+
+# Image Metadata for SEO
+images:
+  micro:
+    url: "/images/silicon-germanium-laser-cleaning-micro.jpg"
+    alt: "Microscopic comparison of silicon germanium surface before and after laser cleaning showing complete contamination removal"
+    width: 800
+    height: 450
+    format: "JPEG"
+    caption: "High-resolution microscopic analysis demonstrating precision laser cleaning effectiveness on silicon germanium"
+
+# Additional SEO Metadata
+seo_data:
+  canonical_url: "/silicon-germanium-laser-cleaning"
+  og_title: "Silicon Germanium Laser Cleaning Analysis - Surface Restoration"
+  og_description: "Professional microscopic analysis of precision laser cleaning on silicon germanium, achieving complete contamination removal with preserved substrate integrity."
+  og_image: "/images/silicon-germanium-laser-cleaning-micro.jpg"
+  twitter_card: "summary_large_image"
+  schema_type: "AnalysisNewsArticle"
+  last_modified: "2025-09-19T16:55:25.875014Z"
+
+# Quality Metrics
+quality_metrics:
+  surface_roughness_before: "Ra 0.8 μm"
+  surface_roughness_after: "Ra 0.2 μm"
+  substrate_integrity: "100% preserved"
+
+# Accessibility Information
+accessibility:
+  alt_text_detailed: "Split-screen microscopic image showing silicon germanium surface before laser cleaning (left) with visible contamination deposits and after cleaning (right) with pristine surface finish"
+  caption_language: "en"
+  technical_level: "professional"
+  visual_description: "High-contrast microscopic imagery clearly showing silicon germanium surface transformation through laser cleaning"
+
+---
+Material: "silicon germanium"
+Component: caption
+Generated: 2025-09-19T16:55:25.875014Z
+Generator: Z-Beam v1.0.0
+Format: YAML v2.0
+---

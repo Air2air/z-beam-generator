@@ -100,7 +100,7 @@ def main():
         print(f"⚡ Average time per material: {total_time/len(materials):.1f} seconds")
         
         # Check results
-        frontmatter_dir = Path("content/components/frontmatter")
+        frontmatter_dir = Path("frontmatter/materials")
         generated_files = list(frontmatter_dir.glob("*-laser-cleaning.md"))
         print(f"📁 Generated files found: {len(generated_files)}")
         

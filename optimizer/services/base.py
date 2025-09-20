@@ -77,7 +77,7 @@ class SimplifiedService(ABC):
             return
 
         try:
-            self._initialize_service()
+            await self._initialize_service()
             self._initialized = True
             self.logger.info(f"Service {self.config.name} initialized successfully")
         except Exception as e:
@@ -85,7 +85,7 @@ class SimplifiedService(ABC):
             raise
 
     @abstractmethod
-    def _initialize_service(self) -> None:
+    async def _initialize_service(self) -> None:
         """Service-specific initialization logic."""
         pass
 

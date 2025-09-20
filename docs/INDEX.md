@@ -33,7 +33,7 @@ Content optimization with Winston.ai bias correction and learning algorithms
 - [**OPTIMIZER_CONSOLIDATED_GUIDE.md**](OPTIMIZER_CONSOLIDATED_GUIDE.md) - ✅ Complete optimization system guide
 - [**WINSTON_AI_COMPLETE_GUIDE.md**](WINSTON_AI_COMPLETE_GUIDE.md) - ✅ Complete Winston.ai integration, scoring, and bias correction
 - [**../optimizer/QUICK_START.md**](../optimizer/QUICK_START.md) - 5-minute optimization setup
-- [**SEAMLESS_COMPOSITE_INTEGRATION_COMPLETE.md**](SEAMLESS_COMPOSITE_INTEGRATION_COMPLETE.md) - Integration completion summary
+- [**completion_summaries/CONSOLIDATED_COMPLETION_SUMMARIES.md**](completion_summaries/CONSOLIDATED_COMPLETION_SUMMARIES.md) - All completion summaries consolidated
 
 ### ⚙️ **Setup & Configuration**
 Getting Z-Beam running in your environment
@@ -51,6 +51,14 @@ Individual component documentation and guides
 - [**table/**](components/table/) - Table generation
 - [**metatags/**](components/metatags/) - HTML meta tag generation
 - [**jsonld/**](components/jsonld/) - JSON-LD structured data
+- [**frontmatter/**](components/frontmatter/) - Enhanced frontmatter management system *(September 2025 - DEPLOYED)*
+
+### 📋 **Frontmatter System** *(September 2025 Major Release)*
+New centralized frontmatter architecture deployed
+- [**FRONTMATTER_SYSTEM_DEPLOYMENT_COMPLETE.md**](FRONTMATTER_SYSTEM_DEPLOYMENT_COMPLETE.md) - ✅ Complete deployment summary
+- [**FRONTMATTER_ARCHITECTURE_PROPOSAL.md**](FRONTMATTER_ARCHITECTURE_PROPOSAL.md) - Original architecture design
+- [**completion_summaries/**](completion_summaries/) - Historical completion summaries (consolidated)
+- [**frontmatter/API_DOCUMENTATION.md**](../frontmatter/API_DOCUMENTATION.md) - FrontmatterManager API reference
 
 ### 🌐 **API Management**
 Working with external API providers

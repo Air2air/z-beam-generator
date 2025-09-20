@@ -2,8 +2,28 @@
 """
 Z-Beam Generator - User Configuration & Quick Start Guide
 
-This file contains only the user-configurable settings and instructions.
+This file contains ALL user-configurable settings and instructions.
 The main application logic has been moved to main_runner.py for better organization.
+
+═══════════════════════════════════════════════════════════════════════════════
+📋 CONFIGURATION STATUS: ALL HARDCODED CONFIGS REMOVED
+═══════════════════════════════════════════════════════════════════════════════
+
+✅ CENTRALIZED CONFIGURATIONS:
+  • API Provider Settings (timeout, retries, tokens, temperature)
+  • Component Generation Settings (priorities, enabled/disabled)
+  • AI Detection & Optimization Settings
+  • Batch Operation Timeouts (caption, frontmatter, jsonld, tags)
+  • Enhanced API Client Settings (timeouts, retries, jitter)
+  • Circuit Breaker Settings (failure thresholds, recovery)
+  • Optimizer Service Settings (personas, quality thresholds)
+
+🚫 REMOVED HARDCODED CONFIGS FROM:
+  • api/enhanced_client.py - Now uses GLOBAL_OPERATIONAL_CONFIG
+  • api/config.py - Now uses centralized fallbacks
+  • api/circuit_breaker.py - Now uses centralized config
+  • scripts/batch_*.py - Now uses centralized timeouts
+  • generate_all_*.py - Now uses centralized timeouts
 
 ═══════════════════════════════════════════════════════════════════════════════
 📋 QUICK START GUIDE
@@ -32,9 +52,54 @@ The main application logic has been moved to main_runner.py for better organizat
 💡 For complete command reference: python3 run.py --help
 
 ═══════════════════════════════════════════════════════════════════════════════
-📝 USER CONFIGURATION SETTINGS
+📝 GLOBAL CONFIGURATION SETTINGS - USER SETTABLE
 ═══════════════════════════════════════════════════════════════════════════════
 """
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# 📝 GLOBAL CONFIGURATION SETTINGS - USER SETTABLE
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# Global Timeout and Operational Settings - USER SETTABLE
+# All timeout values, retry settings, and operational parameters
+GLOBAL_OPERATIONAL_CONFIG = {
+    # Default timeout settings for scripts and batch operations
+    "batch_timeouts": {
+        "default_per_material": 120,  # 2 minutes per material
+        "caption_generation": 60,     # 1 minute for caption generation  
+        "frontmatter_generation": 60, # 1 minute for frontmatter
+        "jsonld_generation": 120,     # 2 minutes for JSON-LD
+        "tags_generation": 120,       # 2 minutes for tags
+    },
+    
+    # Enhanced API Client Default Settings
+    "enhanced_client_defaults": {
+        "connect_timeout": 15.0,      # Increased for slow networks
+        "read_timeout": 90.0,         # Increased for complex content generation
+        "total_timeout": 120.0,       # Maximum total request time
+        "max_retries": 5,             # More retries for intermittent issues
+        "base_retry_delay": 2.0,      # Longer base delay
+        "max_retry_delay": 30.0,      # Cap exponential backoff
+        "jitter_factor": 0.1,         # Add randomness to prevent thundering herd
+    },
+    
+    # Circuit Breaker Configuration
+    "circuit_breaker": {
+        "failure_threshold": 3,       # Number of failures before opening circuit
+        "recovery_timeout": 60,       # Seconds before attempting recovery
+        "half_open_max_calls": 5,     # Max calls in half-open state
+    },
+    
+    # API Config Fallback Values (should rarely be used with proper run.py config)
+    "api_config_fallbacks": {
+        "max_tokens": 4000,
+        "temperature": 0.7,
+        "timeout_connect": 10,
+        "timeout_read": 30,
+        "max_retries": 3,
+        "retry_delay": 1.0,
+    }
+}
 
 # API Provider Configuration - USER SETTABLE
 # Configure which API providers to use for different operations
@@ -87,61 +152,61 @@ API_PROVIDERS = {
 # Lower priority numbers = generated first
 COMPONENT_CONFIG = {
     "frontmatter": {
-        "api_provider": "deepseek",
+        "api_provider": "deepseek",  # ✅ API-BASED COMPONENT
         "priority": 1,
         "enabled": False,  # DISABLED for caption-focused generation
         "data_provider": "hybrid",  # Uses frontmatter data + AI generation
     },
     "metatags": {
-        "api_provider": "none",  # No API needed - uses frontmatter exclusively
+        "api_provider": "none",  # ❌ NO API - uses frontmatter exclusively
         "priority": 2,
         "enabled": False,  # DISABLED for caption-focused generation
         "data_provider": "frontmatter",  # Uses frontmatter data exclusively
     },
     "badgesymbol": {
-        "api_provider": "none",  # Static/deterministic generation
+        "api_provider": "none",  # ❌ NO API - static/deterministic generation
         "priority": 3,
         "enabled": False,  # DISABLED for caption-focused generation
         "data_provider": "static",  # No API calls needed, deterministic
     },
     "bullets": {
-        "api_provider": "deepseek",
+        "api_provider": "none",  # ❌ NO API - changed from deepseek to none
         "priority": 4,
         "enabled": False,  # DISABLED for caption-focused generation
-        "data_provider": "hybrid",  # Uses frontmatter data + AI generation
+        "data_provider": "static",  # Changed from hybrid to static - no API needed
     },
     "caption": {
-        "api_provider": "none",
+        "api_provider": "none",  # ❌ NO API - static/deterministic generation
         "priority": 5,
         "enabled": True,  # ENABLED for caption generation
-        "data_provider": "static",  # Uses frontmatter data + AI generation
+        "data_provider": "static",  # Uses frontmatter data only
     },
     "text": {
-        "api_provider": "deepseek",
+        "api_provider": "deepseek",  # ✅ API-BASED COMPONENT
         "priority": 6,
         "enabled": False,  # DISABLED for caption-focused generation
         "data_provider": "hybrid",  # Uses frontmatter data + AI generation
     },
     "table": {
-        "api_provider": "none",  # Static/deterministic generation
+        "api_provider": "none",  # ❌ NO API - static/deterministic generation
         "priority": 7,
         "enabled": False,  # DISABLED for caption-focused generation
         "data_provider": "static",  # No API calls needed, no frontmatter dependency
     },
     "tags": {
-        "api_provider": "deepseek",
+        "api_provider": "none",  # ❌ NO API - changed from deepseek to none
         "priority": 8,
         "enabled": False,  # DISABLED for caption-focused generation
-        "data_provider": "hybrid",  # Uses frontmatter data + AI generation
+        "data_provider": "static",  # Changed from hybrid to static - no API needed
     },
     "jsonld": {
-        "api_provider": "none",  # Uses both frontmatter extraction and AI enhancement
+        "api_provider": "none",  # ❌ NO API - uses frontmatter extraction only
         "priority": 9,
         "enabled": True,  # ENABLED for JSON-LD generation
-        "data_provider": "static",  # Combines frontmatter data with AI generation for maximum richness
+        "data_provider": "static",  # Uses frontmatter data only
     },
     "author": {
-        "api_provider": "none",  # Static component, no API needed
+        "api_provider": "none",  # ❌ NO API - static component
         "priority": 10,
         "enabled": False,  # DISABLED for caption-focused generation
         "data_provider": "static",  # Static data, no dependencies
@@ -303,6 +368,31 @@ def get_optimizer_config(service_name: str = None):
     return OPTIMIZER_CONFIG
 
 
+def get_global_operational_config():
+    """Get global operational configuration."""
+    return GLOBAL_OPERATIONAL_CONFIG
+
+
+def get_batch_timeout(operation_type: str = "default_per_material"):
+    """Get timeout for batch operations."""
+    return GLOBAL_OPERATIONAL_CONFIG["batch_timeouts"].get(operation_type, 120)
+
+
+def get_enhanced_client_config():
+    """Get enhanced API client configuration."""
+    return GLOBAL_OPERATIONAL_CONFIG["enhanced_client_defaults"]
+
+
+def get_circuit_breaker_config():
+    """Get circuit breaker configuration."""
+    return GLOBAL_OPERATIONAL_CONFIG["circuit_breaker"]
+
+
+def get_api_config_fallbacks():
+    """Get API configuration fallback values."""
+    return GLOBAL_OPERATIONAL_CONFIG["api_config_fallbacks"]
+
+
 def get_ai_detection_config():
     """Get AI detection configuration."""
     return get_optimizer_config("ai_detection_service")
@@ -442,12 +532,27 @@ def main():
             if not material_info:
                 print(f"❌ Material '{args.material}' not found")
                 return False
+
+            # Check if any components require API clients
+            requires_api = any(
+                COMPONENT_CONFIG.get(comp, {}).get('api_provider', 'none') != 'none' 
+                for comp in component_types
+            )
             
-            # Create API client and generator
-            api_client = create_api_client("deepseek")
-            generator = DynamicGenerator()
+            # Create API client only if needed
+            api_client = None
+            if requires_api:
+                # Find the first non-none API provider for enabled components
+                api_provider = None
+                for comp in component_types:
+                    provider = COMPONENT_CONFIG.get(comp, {}).get('api_provider', 'none')
+                    if provider != 'none':
+                        api_provider = provider
+                        break
+                if api_provider:
+                    api_client = create_api_client(api_provider)
             
-            # Split components - already done above
+            generator = DynamicGenerator()            # Split components - already done above
             
             for component_type in component_types:
                 print(f"📋 Generating {component_type}...")
@@ -456,7 +561,7 @@ def main():
                 frontmatter_data = None
                 if component_type in ['table', 'author', 'metatags', 'jsonld', 'bullets', 'caption', 'tags']:
                     # Try to load existing frontmatter
-                    frontmatter_path = f"content/components/frontmatter/{args.material.lower().replace(' ', '-').replace('_', '-')}-laser-cleaning.md"
+                    frontmatter_path = f"frontmatter/materials/{args.material.lower().replace(' ', '-').replace('_', '-')}-laser-cleaning.md"
                     if os.path.exists(frontmatter_path):
                         import yaml
                         with open(frontmatter_path, 'r') as f:

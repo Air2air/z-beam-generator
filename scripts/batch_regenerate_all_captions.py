@@ -40,12 +40,19 @@ def regenerate_caption(material_name, index, total):
             "--components", "caption"
         ]
         
+        # Get timeout from centralized configuration
+        try:
+            from run import get_batch_timeout
+            timeout = get_batch_timeout("caption_generation")
+        except ImportError:
+            timeout = 60  # Fallback if run.py not available
+        
         result = subprocess.run(
             cmd, 
             cwd=PROJECT_ROOT,
             capture_output=True, 
             text=True, 
-            timeout=120
+            timeout=timeout
         )
         
         if result.returncode == 0:

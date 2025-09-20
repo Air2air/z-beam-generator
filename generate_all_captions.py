@@ -26,11 +26,18 @@ def load_materials():
 def generate_caption_for_material(material_name):
     """Generate caption for a single material"""
     try:
+        # Get timeout from centralized configuration
+        try:
+            from run import get_batch_timeout
+            timeout = get_batch_timeout("caption_generation")
+        except ImportError:
+            timeout = 60  # Fallback if run.py not available
+        
         result = subprocess.run(
             ['python3', 'run.py', '--material', material_name, '--components', 'caption'],
             capture_output=True,
             text=True,
-            timeout=60  # 60 second timeout per material
+            timeout=timeout
         )
         
         if result.returncode == 0:

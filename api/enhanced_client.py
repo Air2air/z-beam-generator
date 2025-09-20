@@ -22,15 +22,29 @@ logger = logging.getLogger(__name__)
 
 @dataclass
 class TimeoutConfig:
-    """Advanced timeout configuration with intelligent defaults"""
+    """Advanced timeout configuration with intelligent defaults from run.py"""
 
-    connect_timeout: float = 15.0  # Increased for slow networks
-    read_timeout: float = 90.0     # Increased for complex content generation
-    total_timeout: float = 120.0   # Maximum total request time
-    max_retries: int = 5           # More retries for intermittent issues
-    base_retry_delay: float = 2.0  # Longer base delay
-    max_retry_delay: float = 30.0  # Cap exponential backoff
-    jitter_factor: float = 0.1     # Add randomness to prevent thundering herd
+    def __init__(self):
+        # Get defaults from centralized configuration
+        try:
+            from run import get_enhanced_client_config
+            config = get_enhanced_client_config()
+            self.connect_timeout = config["connect_timeout"]
+            self.read_timeout = config["read_timeout"]
+            self.total_timeout = config["total_timeout"]
+            self.max_retries = config["max_retries"]
+            self.base_retry_delay = config["base_retry_delay"]
+            self.max_retry_delay = config["max_retry_delay"]
+            self.jitter_factor = config["jitter_factor"]
+        except ImportError:
+            # Fallback values if run.py not available (should not happen in production)
+            self.connect_timeout = 15.0
+            self.read_timeout = 90.0
+            self.total_timeout = 120.0
+            self.max_retries = 5
+            self.base_retry_delay = 2.0
+            self.max_retry_delay = 30.0
+            self.jitter_factor = 0.1
 
 
 class EnhancedAPIClient:

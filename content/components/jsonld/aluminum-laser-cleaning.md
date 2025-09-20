@@ -1,0 +1,226 @@
+jsonld:
+  '@context': https://schema.org
+  '@type': Article
+  about:
+  - '@type': Material
+    additionalProperty:
+    - '@type': PropertyValue
+      name: Density
+      value: 7.85 g/cm³
+    - '@type': PropertyValue
+      name: Melting Point
+      value: 1370-1530°C
+    - '@type': PropertyValue
+      name: Thermal Conductivity
+      value: 50.2 W/m·K
+    - '@type': PropertyValue
+      name: Tensile Strength
+      value: 400-600 MPa
+    - '@type': PropertyValue
+      name: Young's Modulus
+      value: 200 GPa
+    - '@type': PropertyValue
+      name: Hardness
+      value: 150-250 HB
+    - '@type': PropertyValue
+      name: Chemical Formula
+      value: Fe
+    - '@type': PropertyValue
+      name: Material Type
+      value: metal
+    - '@type': PropertyValue
+      name: Chemical Symbol
+      value: Fe
+    - '@type': PropertyValue
+      name: Laser Wavelength
+      value: 1064nm (primary), 532nm (optional)
+    - '@type': PropertyValue
+      name: Laser Fluence Range
+      value: 1.0–4.5 J/cm²
+    - '@type': PropertyValue
+      name: Laser Power Range
+      value: 50-200W
+    - '@type': PropertyValue
+      name: Laser Pulse Duration
+      value: 20-100ns
+    - '@type': PropertyValue
+      name: Laser Repetition Rate
+      value: 20-100kHz
+    - '@type': PropertyValue
+      name: Laser Spot Size
+      value: 0.2-1.5mm
+    - '@type': PropertyValue
+      name: Laser Safety Class
+      value: Class 4 (requires full enclosure)
+    - '@type': PropertyValue
+      name: Chemical Composition
+      value: Steel (Fe) 99.6%, Trace elements (Si, Fe, Na, Mg)
+    - '@type': PropertyValue
+      name: Material Compatibility
+      value: Stainless Steel, Titanium Alloys, Nickel-based Superalloys
+    - '@type': PropertyValue
+      name: Regulatory Standards
+      value: ISO 18562, ASTM F2100, IEC 60601-1
+    alternateName:
+    - Fe
+    category: metal
+    description: Technical overview of Steel, Fe, for laser cleaning applications,
+      including optimal 1064nm wavelength interaction, and industrial applications
+      in surface preparation.
+    identifier: Fe
+    name: Aluminum
+  - '@type': Process
+    description: Non-contact surface treatment process optimized for Aluminum materials
+    name: Laser Cleaning
+  abstract: 'Advanced laser cleaning techniques for Aluminum using 1064nm (primary),
+    532nm (optional) wavelength at 1.0–4.5 J/cm² with 20-100ns and 50-200W for Electronics
+    Manufacturing and Aerospace Components. Material properties: 7.85 g/cm³ density,
+    50.2 W/m·K thermal conductivity.'
+  alternativeHeadline: Advanced Laser Ablation Techniques for Electronics Manufacturing
+    using Aluminum
+  articleBody: Technical overview of Steel, Fe, for laser cleaning applications, including
+    optimal 1064nm wavelength interaction, and industrial applications in surface
+    preparation.
+  articleSection: Materials Processing
+  author:
+    '@type': Person
+    affiliation:
+      '@type': Organization
+      name: Advanced Materials Research Institute - China
+    image: null
+    jobTitle: Materials Scientist in Laser Materials Processing
+    knowsAbout:
+    - Laser Materials Processing
+    - Aluminum Surface Engineering
+    - Laser Materials Processing
+    name: Dr. Sarah Chen
+    nationality: China
+  breadcrumb:
+    '@type': BreadcrumbList
+    itemListElement:
+    - '@type': ListItem
+      item: https://z-beam.com/aluminum-laser-cleaning
+      name: Materials
+      position: 1
+    - '@type': ListItem
+      item: https://z-beam.com/aluminum-laser-cleaning
+      name: Metal
+      position: 2
+    - '@type': ListItem
+      item: https://z-beam.com/aluminum-laser-cleaning
+      name: Aluminum
+      position: 3
+  copyrightHolder:
+    '@type': Organization
+    logo:
+      '@type': ImageObject
+      url: https://www.z-beam.com/images/site/logo/logo_.png
+    name: Z-Beam
+    sameAs:
+    - https://www.linkedin.com/company/z-beam
+    url: https://z-beam.com
+  copyrightYear: 2025
+  dateModified: '2025-09-19T16:58:44Z'
+  datePublished: '2025-09-19T16:58:44Z'
+  description: Comprehensive technical guide covering laser cleaning methodologies
+    for Aluminum metal, including 1064nm (primary), 532nm (optional) wavelength optimization,
+    industrial applications, and surface treatment benefits with detailed material
+    properties.
+  headline: Aluminum Laser Cleaning
+  image:
+  - '@type': ImageObject
+    caption: Steel surface undergoing laser cleaning showing precise contamination
+      removal
+    description: High-resolution demonstration of Aluminum component processed with
+      1064nm (primary), 532nm (optional) wavelength at 1.0–4.5 J/cm², showing complete
+      contamination removal while preserving material integrity
+    encodingFormat: image/jpeg
+    height: 800
+    name: Aluminum Laser Cleaning Before/After Comparison
+    representativeOfPage: true
+    url: https://z-beam.com/images/steel-laser-cleaning-hero.jpg
+    width: 1200
+  - '@type': ImageObject
+    caption: Microscopic view of Steel surface after laser treatment showing preserved
+      microstructure
+    description: Scanning electron micrographs of Aluminum surface processed with
+      1064nm (primary), 532nm (optional) wavelength, verified at high magnification
+      showing detailed surface structure
+    encodingFormat: image/jpeg
+    height: 600
+    name: Aluminum Surface Microstructure Analysis
+    url: https://z-beam.com/images/steel-laser-cleaning-micro.jpg
+    width: 800
+  inLanguage: en-US
+  isAccessibleForFree: true
+  isPartOf:
+    '@type': WebSite
+    name: Z-Beam Laser Processing Guide
+    url: https://z-beam.com/aluminum-laser-cleaning
+  keywords:
+  - aluminum
+  - aluminum laser cleaning
+  - laser ablation
+  - non-contact cleaning
+  - surface treatment
+  - aluminum metal
+  - metal laser processing
+  - electronics-manufacturing-laser-cleaning
+  - aerospace-components-laser-cleaning
+  - 1064(primary),532(optional)-laser
+  - Fe-laser-processing
+  - eco-friendly-cleaning
+  - sustainable-processing
+  license: https://creativecommons.org/licenses/by/4.0/
+  mainEntity:
+    '@type': HowTo
+    description: Step-by-step process for laser cleaning Aluminum materials using
+      optimized parameters
+    name: How to Laser Clean Aluminum
+    step:
+    - '@type': HowToStep
+      name: Material Preparation
+      text: Secure Aluminum component in laser processing fixture ensuring stable
+        positioning and adequate ventilation for Class 4 (requires full enclosure)
+        operation.
+    - '@type': HowToStep
+      name: Parameter Configuration
+      text: 'Configure laser parameters: 1064nm (primary), 532nm (optional) wavelength,
+        1.0–4.5 J/cm², 20-100ns, 20-100kHz.'
+    - '@type': HowToStep
+      name: Surface Treatment
+      text: Execute systematic scanning pattern with 0.2-1.5mm maintaining consistent
+        standoff distance for Aluminum processing.
+    - '@type': HowToStep
+      name: Quality Verification
+      text: Inspect cleaned Aluminum surface using optical microscopy to verify contaminant
+        removal and material integrity preservation.
+  mentions:
+  - electronics
+  - aerospace
+  - manufacturing
+  - components
+  potentialAction:
+    '@type': ReadAction
+    target: https://z-beam.com/aluminum-laser-cleaning
+  publisher:
+    '@type': Organization
+    logo:
+      '@type': ImageObject
+      url: https://www.z-beam.com/images/site/logo/logo_.png
+    name: Z-Beam
+    sameAs:
+    - https://www.linkedin.com/company/z-beam
+    url: https://z-beam.com
+  wordCount: 20
+
+
+---
+Version Log - Generated: 2025-09-19T16:58:44.699482
+Material: Aluminum
+Component: jsonld
+Generator: Z-Beam v2.1.0
+Author: AI Assistant
+Platform: Darwin (3.12.4)
+File: content/components/jsonld/aluminum-laser-cleaning.md
+---

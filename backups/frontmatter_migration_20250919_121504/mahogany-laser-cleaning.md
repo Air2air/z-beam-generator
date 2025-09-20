@@ -1,0 +1,194 @@
+---
+name: Mahogany
+category: wood
+title: Laser Cleaning Mahogany
+headline: Comprehensive technical guide for laser cleaning mahogany wood surfaces
+description: Technical overview of Mahogany wood for laser cleaning applications,
+  including optimal 1064nm wavelength interaction with wood cellulose structure, and
+  applications in wood restoration and conservation.
+keywords: mahogany, mahogany wood, laser ablation, laser cleaning, wood restoration,
+  non-contact cleaning, pulsed fiber laser, surface contamination removal, wood conservation,
+  laser wood cleaning
+chemicalProperties:
+  symbol: Mahogany
+  formula: C6H10O5 (cellulose)
+  materialType: hardwood
+properties:
+  density: 0.65 g/cm³
+  densityNumeric: 0.65
+  densityUnit: g/cm³
+  densityMin: 0.4 g/cm³
+  densityMinNumeric: 0.4
+  densityMinUnit: g/cm³
+  densityMax: 0.85 g/cm³
+  densityMaxNumeric: 0.85
+  densityMaxUnit: g/cm³
+  densityPercentile: 42.8
+  meltingPoint: 200-250°C (decomposition)
+  meltingPointNumeric: 225.0
+  meltingPointUnit: °C
+  meltingPercentile: 18.2
+  thermalConductivity: 0.12 W/m·K
+  thermalConductivityNumeric: 0.12
+  thermalConductivityUnit: W/m·K
+  thermalPercentile: 22.5
+  tensileStrength: 80-120 MPa
+  tensileStrengthNumeric: 100.0
+  tensileStrengthUnit: MPa
+  tensilePercentile: 15.8
+  hardness: 800-1200 N (Janka)
+  hardnessNumeric: 1000.0
+  hardnessUnit: N
+  hardnessMin: 600 N
+  hardnessMinNumeric: 600.0
+  hardnessMinUnit: N
+  hardnessMax: 1600 N
+  hardnessMaxNumeric: 1600.0
+  hardnessMaxUnit: N
+  hardnessPercentile: 35.4
+  youngsModulus: 9.7 GPa
+  youngsModulusNumeric: 9.7
+  youngsModulusUnit: GPa
+  modulusMin: 8.0 GPa
+  modulusMinNumeric: 8.0
+  modulusMinUnit: GPa
+  modulusMax: 12.0 GPa
+  modulusMaxNumeric: 12.0
+  modulusMaxUnit: GPa
+  modulusPercentile: 28.6
+  laserType: Pulsed Fiber Laser
+  wavelength: 1064nm
+  fluenceRange: 0.5–2.0 J/cm²
+  chemicalFormula: C6H10O5 (cellulose)
+composition:
+- Cellulose (C6H10O5) 45-50%
+- Lignin 25-30%
+- Hemicellulose 20-25%
+- Extractives 2-5%
+machineSettings:
+  powerRange: 20-100W
+  powerRangeNumeric: 60.0
+  powerRangeUnit: W
+  powerRangeMin: 20W
+  powerRangeMinNumeric: 20.0
+  powerRangeMinUnit: W
+  powerRangeMax: 500W
+  powerRangeMaxNumeric: 500.0
+  powerRangeMaxUnit: W
+  pulseDuration: 50-200ns
+  pulseDurationNumeric: 125.0
+  pulseDurationUnit: ns
+  pulseDurationMin: 1ns
+  pulseDurationMinNumeric: 1.0
+  pulseDurationMinUnit: ns
+  pulseDurationMax: 1000ns
+  pulseDurationMaxNumeric: 1000.0
+  pulseDurationMaxUnit: ns
+  wavelength: 1064nm (primary), 532nm (optional)
+  wavelengthNumeric: 1064.0
+  wavelengthUnit: nm
+  wavelengthMin: 355nm
+  wavelengthMinNumeric: 355.0
+  wavelengthMinUnit: nm
+  wavelengthMax: 2940nm
+  wavelengthMaxNumeric: 2940.0
+  wavelengthMaxUnit: nm
+  spotSize: 0.5-2.0mm
+  spotSizeNumeric: 1.25
+  spotSizeUnit: mm
+  spotSizeMin: 0.01mm
+  spotSizeMinNumeric: 0.01
+  spotSizeMinUnit: mm
+  spotSizeMax: 10mm
+  spotSizeMaxNumeric: 10.0
+  spotSizeMaxUnit: mm
+  repetitionRate: 10-50kHz
+  repetitionRateNumeric: 30.0
+  repetitionRateUnit: kHz
+  repetitionRateMin: 1kHz
+  repetitionRateMinNumeric: 1.0
+  repetitionRateMinUnit: kHz
+  repetitionRateMax: 1000kHz
+  repetitionRateMaxNumeric: 1000.0
+  repetitionRateMaxUnit: kHz
+  fluenceRange: 0.5–2.0 J/cm²
+  fluenceRangeNumeric: 0.5
+  fluenceRangeUnit: J/cm²
+  fluenceRangeMin: 0.1J/cm²
+  fluenceRangeMinNumeric: 0.1
+  fluenceRangeMinUnit: J/cm²
+  fluenceRangeMax: 50J/cm²
+  fluenceRangeMaxNumeric: 50.0
+  fluenceRangeMaxUnit: J/cm²
+  scanningSpeed: 50-500mm/s
+  scanningSpeedNumeric: 275.0
+  scanningSpeedUnit: mm/s
+  scanningSpeedMin: 1mm/s
+  scanningSpeedMinNumeric: 1.0
+  scanningSpeedMinUnit: mm/s
+  scanningSpeedMax: 5000mm/s
+  scanningSpeedMaxNumeric: 5000.0
+  scanningSpeedMaxUnit: mm/s
+  beamProfile: Gaussian TEM00
+  beamProfileOptions:
+  - Gaussian TEM00
+  - Top-hat
+  - Donut
+  - Multi-mode
+  safetyClass: Class 4 (requires full enclosure)
+applications:
+- industry: Wood Restoration
+  detail: Removal of surface contaminants, old finishes, and biological growth from
+    mahogany surfaces
+- industry: Marine Components
+  detail: Cleaning of mahogany decking and trim without damaging the wood grain structure
+compatibility:
+- Wood Finishes
+- Wood Preservatives
+- Traditional Wood Cleaning Methods
+regulatoryStandards: ISO 13061, ASTM D143, EN 350
+author: Yi-Chun Lin
+author_object:
+  id: 1
+  name: Yi-Chun Lin
+  sex: f
+  title: Ph.D.
+  country: Taiwan
+  expertise: Laser Materials Processing
+  image: /images/author/yi-chun-lin.jpg
+images:
+  hero:
+    alt: Mahogany wood surface undergoing laser cleaning showing precise removal of
+      surface contaminants
+    url: /images/mahogany-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of mahogany wood grain after laser cleaning showing preserved
+      natural structure
+    url: /images/mahogany-laser-cleaning-micro.jpg
+environmentalImpact:
+- benefit: Chemical Solvent Elimination
+  description: Eliminates need for harsh chemical strippers and solvents in wood restoration
+- benefit: Water Conservation
+  description: Zero water usage compared to traditional pressure washing methods
+- benefit: Waste Reduction
+  description: Produces minimal waste as removed material is vaporized rather than
+    washed away
+outcomes:
+- result: Surface Cleanliness
+  metric: Complete removal of surface contaminants without damaging wood fibers
+- result: Material Preservation
+  metric: Preserves original wood patina and character while removing unwanted layers
+- result: Processing Speed
+  metric: 0.5-2 m²/hour cleaning rate depending on contamination type and severity
+prompt_chain_verification:
+  base_config_loaded: true
+  persona_config_loaded: true
+  formatting_config_loaded: true
+  ai_detection_config_loaded: true
+  persona_country: Taiwan
+  author_id: 1
+  verification_timestamp: '2025-09-19T05:36:02Z'
+  prompt_components_integrated: 4
+  human_authenticity_focus: true
+  cultural_adaptation_applied: true
+---

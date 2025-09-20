@@ -1,0 +1,145 @@
+{
+  "migration_summary": {
+    "timestamp": "2025-09-19T12:15:05.247982",
+    "dry_run": false,
+    "project_root": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator",
+    "source_directory": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/content/components/frontmatter",
+    "target_directory": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/frontmatter/materials",
+    "backup_directory": "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/backups/frontmatter_migration_20250919_121504"
+  },
+  "statistics": {
+    "total_files": 109,
+    "migrated_files": 109,
+    "failed_files": 0,
+    "backed_up_files": 109
+  },
+  "files_needing_updates": [
+    {
+      "file": "run.py",
+      "pattern_found": "content/components/frontmatter"
+    },
+    {
+      "file": "generate_all_frontmatter.py",
+      "pattern_found": "content/components/frontmatter"
+    },
+    {
+      "file": "test_enhanced_frontmatter_generator.py",
+      "pattern_found": "content/components/frontmatter"
+    },
+    {
+      "file": "batch_generate_jsonld.py",
+      "pattern_found": "content/components/frontmatter"
+    },
+    {
+      "file": "generate_all_jsonld.py",
+      "pattern_found": "content/components/frontmatter"
+    },
+    {
+      "file": "tests/test_author_resolution.py",
+      "pattern_found": "content/components/frontmatter"
+    },
+    {
+      "file": "scripts/batch_caption_generation.py",
+      "pattern_found": "frontmatter_dir.glob"
+    },
+    {
+      "file": "scripts/batch_regenerate_all_captions.py",
+      "pattern_found": "frontmatter_dir.glob"
+    },
+    {
+      "file": "scripts/batch_tags_generation.py",
+      "pattern_found": "frontmatter_dir.glob"
+    },
+    {
+      "file": "tests/unit/test_material_loading.py",
+      "pattern_found": "content/components/frontmatter"
+    },
+    {
+      "file": "tests/integration/test_integration.py",
+      "pattern_found": "content/components/frontmatter"
+    },
+    {
+      "file": "tests/frontmatter/test_migration.py",
+      "pattern_found": "content/components/frontmatter"
+    },
+    {
+      "file": "tests/frontmatter/test_manager.py",
+      "pattern_found": "content/components/frontmatter"
+    },
+    {
+      "file": "tests/frontmatter/run_all_tests.py",
+      "pattern_found": "content/components/frontmatter"
+    },
+    {
+      "file": "tests/e2e/test_comprehensive_workflow_refactored.py",
+      "pattern_found": "frontmatter_dir.glob"
+    },
+    {
+      "file": "tests/e2e/test_file_io_validation.py",
+      "pattern_found": "frontmatter_dir.glob"
+    },
+    {
+      "file": "tests/e2e/test_component_specific.py",
+      "pattern_found": "frontmatter_dir.glob"
+    },
+    {
+      "file": "frontmatter/management/enhanced_generator.py",
+      "pattern_found": "content/components/frontmatter"
+    },
+    {
+      "file": "frontmatter/management/migrator.py",
+      "pattern_found": "content/components/frontmatter"
+    },
+    {
+      "file": "frontmatter/management/manager.py",
+      "pattern_found": "content/components/frontmatter"
+    },
+    {
+      "file": "utils/core/author_manager.py",
+      "pattern_found": "content/components/frontmatter"
+    },
+    {
+      "file": "scripts/tools/validate_frontmatter_ordering.py",
+      "pattern_found": "content/components/frontmatter"
+    },
+    {
+      "file": "scripts/tools/frontmatter_data_validation.py",
+      "pattern_found": "content/components/frontmatter"
+    },
+    {
+      "file": "scripts/tools/regenerate_all_frontmatter_validated.py",
+      "pattern_found": "frontmatter_dir.glob"
+    },
+    {
+      "file": "scripts/tools/update_frontmatter_fields.py",
+      "pattern_found": "frontmatter_dir.glob"
+    },
+    {
+      "file": "scripts/tools/fix_nested_yaml_properties.py",
+      "pattern_found": "content/components/frontmatter"
+    },
+    {
+      "file": "scripts/tools/validation_summary.py",
+      "pattern_found": "content/components/frontmatter"
+    },
+    {
+      "file": "scripts/tools/quick_generate_frontmatter.py",
+      "pattern_found": "content/components/frontmatter"
+    },
+    {
+      "file": "scripts/tools/generate_all_authors.py",
+      "pattern_found": "content/components/frontmatter"
+    },
+    {
+      "file": "scripts/tools/generate_all_jsonld.py",
+      "pattern_found": "content/components/frontmatter"
+    }
+  ],
+  "next_steps": [
+    "1. Review migration results",
+    "2. Run the generated path update script",
+    "3. Update component generators to use new FrontmatterManager",
+    "4. Test all functionality with new structure",
+    "5. Remove old frontmatter directory when confident"
+  ]
+}

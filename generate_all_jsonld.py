@@ -12,7 +12,7 @@ from pathlib import Path
 
 def get_all_materials():
     """Get list of all materials from frontmatter directory."""
-    frontmatter_dir = Path("content/components/frontmatter")
+    frontmatter_dir = Path("frontmatter/materials")
     materials = []
     
     if not frontmatter_dir.exists():
@@ -34,11 +34,18 @@ def generate_jsonld_for_material(material_name):
         # Use the working CLI command format
         cmd = ["python3", "run.py", "--material", material_name, "--components", "jsonld"]
         
+        # Get timeout from centralized configuration
+        try:
+            from run import get_batch_timeout
+            timeout = get_batch_timeout("jsonld_generation")
+        except ImportError:
+            timeout = 120  # Fallback if run.py not available
+        
         result = subprocess.run(
             cmd,
             capture_output=True,
             text=True,
-            timeout=120  # 2 minute timeout per material
+            timeout=timeout
         )
         
         if result.returncode == 0:

@@ -13,7 +13,7 @@ from pathlib import Path
 
 def get_all_materials():
     """Get list of all materials from frontmatter directory."""
-    frontmatter_dir = Path("content/components/frontmatter")
+    frontmatter_dir = Path("frontmatter/materials")
     materials = []
     
     for file in frontmatter_dir.glob("*-laser-cleaning.md"):
