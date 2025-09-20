@@ -116,22 +116,22 @@ def add_triple_format_fields(properties: Dict[str, Any]) -> Dict[str, Any]:
 
 def load_category_ranges() -> Dict[str, Any]:
     """
-    Load category ranges from data/category_ranges.yaml
+    Load category ranges from materials.yaml integrated structure
 
     Returns:
         Dictionary containing category range data for all material categories
     """
     try:
-        ranges_path = Path("data/category_ranges.yaml")
-        if not ranges_path.exists():
-            logger.warning(f"Category ranges file not found: {ranges_path}")
+        materials_path = Path("data/materials.yaml")
+        if not materials_path.exists():
+            logger.warning(f"Materials file not found: {materials_path}")
             return {}
 
-        with open(ranges_path, "r", encoding="utf-8") as f:
+        with open(materials_path, "r", encoding="utf-8") as f:
             data = yaml.safe_load(f)
 
-        # Return the 'categories' section which contains the actual range data
-        return data.get("categories", {})
+        # Return the 'category_ranges' section which contains the actual range data
+        return data.get("category_ranges", {})
 
     except Exception as e:
         logger.error(f"Error loading category ranges: {e}")

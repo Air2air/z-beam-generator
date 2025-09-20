@@ -1,168 +1,206 @@
-jsonld:
-  '@context': https://schema.org
-  '@type': Article
-  about:
-  - '@type': Material
-    additionalProperty:
-    - '@type': PropertyValue
-      name: Chemical Formula
-      value: Al
-    - '@type': PropertyValue
-      name: Material Type
-      value: metal
-    - '@type': PropertyValue
-      name: Chemical Symbol
-      value: Al
-    - '@type': PropertyValue
-      name: Chemical Composition
-      value: Al 99.0-99.9%, Trace elements (Si, Fe, Cu, Mn, Mg, Zn, Ti)
-    - '@type': PropertyValue
-      name: Material Compatibility
-      value: Stainless Steel, Titanium Alloys, Copper Alloys
-    - '@type': PropertyValue
-      name: Regulatory Standards
-      value: ISO 18562, ASTM F2100, IEC 60601-1
-    alternateName:
-    - Al
-    category: metal
-    description: Technical overview of Aluminum, Al, for laser cleaning applications,
-      including optimal 1064nm wavelength interaction, and industrial applications
-      in surface preparation.
-    identifier: Al
-    name: Aluminum
-  - '@type': Process
-    description: Non-contact surface treatment process optimized for Aluminum materials
-    name: Laser Cleaning
-  abstract: Advanced laser cleaning techniques for Aluminum using 1064nm wavelength
-    at optimized fluence with nanosecond pulses and controlled power for Automotive
-    and Aerospace.
-  alternativeHeadline: Advanced Laser Ablation Techniques for Automotive using Aluminum
-  articleBody: Technical overview of Aluminum, Al, for laser cleaning applications,
-    including optimal 1064nm wavelength interaction, and industrial applications in
-    surface preparation.
-  articleSection: Materials Processing
-  author:
-    '@type': Person
-    affiliation:
-      '@type': Organization
-      name: Advanced Materials Research Institute - Indonesia
-    image: /images/author/ikmanda-roswati.jpg
-    jobTitle: Ph.D. in Ultrafast Laser Physics and Material Interactions
-    knowsAbout:
-    - Laser Materials Processing
-    - Aluminum Surface Engineering
-    - Ultrafast Laser Physics and Material Interactions
-    name: Ikmanda Roswati
-    nationality: Indonesia
-  breadcrumb:
-    '@type': BreadcrumbList
-    itemListElement:
-    - '@type': ListItem
-      item: https://z-beam.com/aluminum-laser-cleaning
-      name: Materials
-      position: 1
-    - '@type': ListItem
-      item: https://z-beam.com/aluminum-laser-cleaning
-      name: Metal
-      position: 2
-    - '@type': ListItem
-      item: https://z-beam.com/aluminum-laser-cleaning
-      name: Aluminum
-      position: 3
-  copyrightHolder:
-    '@type': Organization
-    logo:
-      '@type': ImageObject
-      url: https://z-beam.com/images/site/logo/logo_.png
-    name: Z-Beam
-    sameAs:
-    - https://www.linkedin.com/company/z-beam
-    url: https://z-beam.com
-  copyrightYear: 2025
-  dateModified: '2025-09-19T18:22:34Z'
-  datePublished: '2025-09-19T18:22:34Z'
-  description: Comprehensive technical guide covering laser cleaning methodologies
-    for Aluminum metal, including laser wavelength optimization, industrial applications,
-    and surface treatment benefits with detailed material properties.
-  headline: Aluminum Laser Cleaning
-  image:
-  - '@type': ImageObject
-    caption: aluminum surface undergoing laser cleaning showing precise contamination
-      removal
-    description: High-resolution demonstration of Aluminum component processed with
-      1064nm wavelength at optimized fluence, showing complete contamination removal
-      while preserving material integrity
-    encodingFormat: image/jpeg
-    height: 800
-    name: Aluminum Laser Cleaning Before/After Comparison
-    representativeOfPage: true
-    url: https://z-beam.com/images/aluminum-laser-cleaning-hero.jpg
-    width: 1200
-  - '@type': ImageObject
-    caption: Microscopic view of aluminum surface after laser cleaning showing detailed
-      surface structure
-    description: Scanning electron micrographs of Aluminum surface processed with
-      1064nm wavelength, verified at high magnification showing detailed surface structure
-    encodingFormat: image/jpeg
-    height: 600
-    name: Aluminum Surface Microstructure Analysis
-    url: https://z-beam.com/images/aluminum-laser-cleaning-micro.jpg
-    width: 800
-  inLanguage: en-US
-  isAccessibleForFree: true
-  isPartOf:
-    '@type': WebSite
-    name: Z-Beam Laser Processing Guide
-    url: https://z-beam.com/aluminum-laser-cleaning
-  keywords:
-  - aluminum
-  - aluminum laser cleaning
-  - laser ablation
-  - non-contact cleaning
-  - surface treatment
-  - aluminum metal
-  - metal laser processing
-  - automotive-laser-cleaning
-  - aerospace-laser-cleaning
-  - Al-laser-processing
-  - eco-friendly-cleaning
-  - sustainable-processing
-  license: https://creativecommons.org/licenses/by/4.0/
-  mainEntity:
-    '@type': HowTo
-    description: Step-by-step process for laser cleaning Aluminum materials using
-      optimized parameters
-    name: How to Laser Clean Aluminum
-    step:
-    - '@type': HowToStep
-      name: Material Preparation
-      text: Secure Aluminum component in laser processing fixture ensuring stable
-        positioning and adequate ventilation for industrial safety operation.
-    - '@type': HowToStep
-      name: Parameter Configuration
-      text: 'Configure laser parameters: 1064nm wavelength, optimized fluence, nanosecond
-        pulse duration, optimized repetition rate.'
-    - '@type': HowToStep
-      name: Surface Treatment
-      text: Execute systematic scanning pattern with precision spot size maintaining
-        consistent standoff distance for Aluminum processing.
-    - '@type': HowToStep
-      name: Quality Verification
-      text: Inspect cleaned Aluminum surface using optical microscopy to verify contaminant
-        removal and material integrity preservation.
-  mentions:
-  - automotive
-  - aerospace
-  potentialAction:
-    '@type': ReadAction
-    target: https://z-beam.com/aluminum-laser-cleaning
-  publisher:
-    '@type': Organization
-    logo:
-      '@type': ImageObject
-      url: https://z-beam.com/images/site/logo/logo_.png
-    name: Z-Beam
-    sameAs:
-    - https://www.linkedin.com/company/z-beam
-    url: https://z-beam.com
-  wordCount: 20
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Aluminum Laser Cleaning",
+  "alternativeHeadline": "Advanced Laser Ablation Techniques for Automotive using Aluminum",
+  "description": "Comprehensive technical guide covering laser cleaning methodologies for Aluminum metal, including laser wavelength optimization, industrial applications, and surface treatment benefits with detailed material properties.",
+  "abstract": "Advanced laser cleaning techniques for Aluminum using 1064nm wavelength at optimized fluence with nanosecond pulses and controlled power for Automotive and Aerospace.",
+  "keywords": [
+    "aluminum",
+    "aluminum laser cleaning",
+    "laser ablation",
+    "non-contact cleaning",
+    "surface treatment",
+    "aluminum metal",
+    "metal laser processing",
+    "automotive-laser-cleaning",
+    "aerospace-laser-cleaning",
+    "Al-laser-processing",
+    "eco-friendly-cleaning",
+    "sustainable-processing"
+  ],
+  "articleBody": "Technical overview of Aluminum, Al, for laser cleaning applications, including optimal 1064nm wavelength interaction, and industrial applications in surface preparation.",
+  "wordCount": 20,
+  "articleSection": "Materials Processing",
+  "inLanguage": "en-US",
+  "isAccessibleForFree": true,
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "copyrightHolder": {
+    "@type": "Organization",
+    "name": "Z-Beam",
+    "url": "https://z-beam.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://z-beam.com/images/site/logo/logo_.png"
+    },
+    "sameAs": [
+      "https://linkedin.com/company/z-beam"
+    ]
+  },
+  "copyrightYear": 2025,
+  "author": {
+    "@type": "Person",
+    "name": "Ikmanda Roswati",
+    "jobTitle": "Ph.D. in Ultrafast Laser Physics and Material Interactions",
+    "affiliation": {
+      "@type": "Organization",
+      "name": "Advanced Materials Research Institute - Indonesia"
+    },
+    "knowsAbout": [
+      "Laser Materials Processing",
+      "Aluminum Surface Engineering",
+      "Ultrafast Laser Physics and Material Interactions"
+    ],
+    "image": "https://z-beam.com/images/author/ikmanda-roswati.jpg",
+    "nationality": "Indonesia"
+  },
+  "datePublished": "2025-09-19T18:38:08Z",
+  "dateModified": "2025-09-19T18:38:08Z",
+  "image": [
+    {
+      "@type": "ImageObject",
+      "url": "https://z-beam.com/images/aluminum-laser-cleaning-hero.jpg",
+      "name": "Aluminum Laser Cleaning Before/After Comparison",
+      "caption": "aluminum surface undergoing laser cleaning showing precise contamination removal",
+      "description": "High-resolution demonstration of Aluminum component processed with 1064nm wavelength at optimized fluence, showing complete contamination removal while preserving material integrity",
+      "width": 1200,
+      "height": 800,
+      "encodingFormat": "image/jpeg",
+      "representativeOfPage": true
+    },
+    {
+      "@type": "ImageObject",
+      "url": "https://z-beam.com/images/aluminum-laser-cleaning-micro.jpg",
+      "name": "Aluminum Surface Microstructure Analysis",
+      "caption": "Microscopic view of aluminum surface after laser cleaning showing detailed surface structure",
+      "description": "Scanning electron micrographs of Aluminum surface processed with 1064nm wavelength, verified at high magnification showing detailed surface structure",
+      "width": 800,
+      "height": 600,
+      "encodingFormat": "image/jpeg"
+    }
+  ],
+  "about": [
+    {
+      "@type": "Material",
+      "name": "Aluminum",
+      "alternateName": [
+        "Al"
+      ],
+      "identifier": "Al",
+      "category": "metal",
+      "description": "Technical overview of Aluminum, Al, for laser cleaning applications, including optimal 1064nm wavelength interaction, and industrial applications in surface preparation.",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Chemical Formula",
+          "value": "Al"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Material Type",
+          "value": "metal"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Chemical Symbol",
+          "value": "Al"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Chemical Composition",
+          "value": "Al 99.0-99.9%, Trace elements (Si, Fe, Cu, Mn, Mg, Zn, Ti)"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Material Compatibility",
+          "value": "Stainless Steel, Titanium Alloys, Copper Alloys"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Regulatory Standards",
+          "value": "ISO 18562, ASTM F2100, IEC 60601-1"
+        }
+      ]
+    },
+    {
+      "@type": "Process",
+      "name": "Laser Cleaning",
+      "description": "Non-contact surface treatment process optimized for Aluminum materials"
+    }
+  ],
+  "mainEntity": {
+    "@type": "HowTo",
+    "name": "How to Laser Clean Aluminum",
+    "description": "Step-by-step process for laser cleaning Aluminum materials using optimized parameters",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "name": "Material Preparation",
+        "text": "Secure Aluminum component in laser processing fixture ensuring stable positioning and adequate ventilation for industrial safety operation."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Parameter Configuration",
+        "text": "Configure laser parameters: 1064nm wavelength, optimized fluence, nanosecond pulse duration, optimized repetition rate."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Surface Treatment",
+        "text": "Execute systematic scanning pattern with precision spot size maintaining consistent standoff distance for Aluminum processing."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Quality Verification",
+        "text": "Inspect cleaned Aluminum surface using optical microscopy to verify contaminant removal and material integrity preservation."
+      }
+    ]
+  },
+  "mentions": [
+    "aerospace",
+    "automotive"
+  ],
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Z-Beam Laser Processing Guide",
+    "url": "https://z-beam.com/aluminum-laser-cleaning"
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Materials",
+        "item": "https://z-beam.com/aluminum-laser-cleaning"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Metal",
+        "item": "https://z-beam.com/aluminum-laser-cleaning"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Aluminum",
+        "item": "https://z-beam.com/aluminum-laser-cleaning"
+      }
+    ]
+  },
+  "potentialAction": {
+    "@type": "ReadAction",
+    "target": "https://z-beam.com/aluminum-laser-cleaning"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Z-Beam",
+    "url": "https://z-beam.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://z-beam.com/images/site/logo/logo_.png"
+    },
+    "sameAs": [
+      "https://linkedin.com/company/z-beam"
+    ]
+  }
+}

@@ -323,7 +323,7 @@ Automatic author resolution from materials data:
 
 #### 4. Property Enhancement System
 Post-processing enhancement with percentile calculations:
-- Loads category ranges from `data/category_ranges.yaml`
+- Loads category ranges from `data/materials.yaml` (category_ranges section)
 - Calculates min/max values and percentiles for properties
 - Enhances frontmatter with contextual property data
 

@@ -3,28 +3,40 @@ description: "Generates comprehensive YAML frontmatter for laser cleaning articl
 version: "4.0.1"
 
 template: |
-  TASK: Generate ONLY valid YAML frontmatter data for {subject} laser cleaning. Do NOT generate any markdown, descriptive text, or explanations.
+  TASK: You are a technical laser systems engineer. Generate ONLY valid YAML frontmatter data for {subject} laser cleaning. Research all specific technical properties, applications, and specifications for {subject} ({material_formula}). Do NOT use generic defaults or placeholders.
 
   REQUIRED OUTPUT FORMAT: Return ONLY the YAML content between --- markers. No additional text before or after.
 
-  Use this EXACT format for ALL frontmatter files with proper image structure:
+  RESEARCH REQUIREMENTS:
+  - Find ACTUAL density, melting point, thermal conductivity, hardness, tensile strength for {subject}
+  - Research REAL industrial applications where {subject} laser cleaning is used
+  - Determine SPECIFIC laser parameters for {subject} (power, wavelength, fluence)
+  - Find ACTUAL composition breakdown for {subject}
+  - Research REAL regulatory standards that apply to {subject} laser cleaning
+  - Find ACTUAL compatibility materials for {subject} in laser processing
+  - Research SPECIFIC environmental benefits for {subject} laser vs traditional cleaning
+
+  YAML Structure (populate with RESEARCHED values, not defaults):
 
   ---
   name: "{subject}"
   applications:
-  - industry: "Electronics Manufacturing"
-    detail: "Removal of surface oxides and contaminants from {subject} substrates"
-  - industry: "Aerospace Components"
-    detail: "Cleaning of thermal barrier coatings and {category} matrix composites"
+  - industry: "[RESEARCH: Real industry that uses {subject} laser cleaning]"
+    detail: "[RESEARCH: Specific application details for {subject}]"
+  - industry: "[RESEARCH: Another real industry application]"
+    detail: "[RESEARCH: Specific technical process details]"
   technicalSpecifications:
-    powerRange: "50-200W"
-    pulseDuration: "20-100ns"
-    wavelength: "1064nm (primary), 532nm (optional)"
-    spotSize: "0.2-1.5mm"
-    repetitionRate: "20-100kHz"
-    fluenceRange: "1.0–4.5 J/cm²"
-    safetyClass: "Class 4 (requires full enclosure)"
-  description: "Technical overview of {subject}, {material_formula}, for laser cleaning applications, including optimal 1064nm wavelength interaction, and industrial applications in surface preparation."
+    powerRange: "[RESEARCH: Actual power range for {subject} laser cleaning]"
+    pulseDuration: "[RESEARCH: Actual pulse duration for {subject}]"
+    wavelength: "[RESEARCH: Optimal wavelength(s) for {subject}]"
+    spotSize: "[RESEARCH: Typical spot sizes for {subject} processing]"
+    repetitionRate: "[RESEARCH: Actual rep rates for {subject}]"
+    fluenceRange: "[RESEARCH: Actual fluence threshold for {subject}]"
+    scanningSpeed: "[RESEARCH: Optimal scanning speeds for {subject} laser cleaning]"
+    beamProfile: "[RESEARCH: Optimal beam profile for {subject} processing]"
+    beamProfileOptions: "[RESEARCH: Available beam profiles for {subject} processing]"
+    safetyClass: "[RESEARCH: Required laser safety class for {subject} processing]"
+  description: "[RESEARCH: Technical description specific to {subject} laser cleaning properties and applications]"
   author: "{author_name}"
   author_object:
     id: {author_id}
@@ -41,42 +53,23 @@ template: |
     formula: "{material_formula}"
     materialType: "{material_type}"
   properties:
-    density: "7.85 g/cm³"
-    densityMin: "1.8 g/cm³"
-    densityMax: "6.0 g/cm³"
-    densityPercentile: 51.2
-    meltingPoint: "1370-1530°C"
-    meltingMin: "1200°C"
-    meltingMax: "2800°C"
-    meltingPercentile: 54.5
-    thermalConductivity: "50.2 W/m·K"
-    thermalMin: "0.5 W/m·K"
-    thermalMax: "200 W/m·K"
-    thermalPercentile: 14.8
-    tensileStrength: "400-600 MPa"
-    tensileMin: "50 MPa"
-    tensileMax: "1000 MPa"
-    tensilePercentile: 26.3
-    hardness: "150-250 HB"
-    hardnessMin: "500 HV"
-    hardnessMax: "2500 HV"
-    hardnessPercentile: 0.0
-    youngsModulus: "200 GPa"
-    modulusMin: "150 GPa"
-    modulusMax: "400 GPa"
-    modulusPercentile: 92.0
-    laserType: "Pulsed Fiber Laser"
-    wavelength: "1064nm"
-    fluenceRange: "1.0–4.5 J/cm²"
+    density: "[RESEARCH: Actual density of {subject} with proper units]"
+    meltingPoint: "[RESEARCH: Actual melting point of {subject}]"
+    thermalConductivity: "[RESEARCH: Actual thermal conductivity of {subject}]"
+    tensileStrength: "[RESEARCH: Actual tensile strength of {subject}]"
+    hardness: "[RESEARCH: Actual hardness of {subject} with proper scale]"
+    youngsModulus: "[RESEARCH: Actual Young's modulus of {subject}]"
+    laserType: "[RESEARCH: Optimal laser type for {subject}]"
+    wavelength: "[RESEARCH: Optimal wavelength for {subject} absorption]"
+    fluenceRange: "[RESEARCH: Actual damage/ablation threshold for {subject}]"
     chemicalFormula: "{material_formula}"
   composition:
-  - "{subject} ({material_formula}) 99.6%"
-  - "Trace elements (Si, Fe, Na, Mg)"
+  - "[RESEARCH: Actual primary component of {subject} with percentage]"
+  - "[RESEARCH: Secondary components of {subject} with percentages]"
   compatibility:
-  - "Stainless Steel"
-  - "Titanium Alloys"
-  - "Nickel-based Superalloys"
-  regulatoryStandards: "ISO 18562, ASTM F2100, IEC 60601-1"
+  - "[RESEARCH: Materials actually compatible with {subject} in laser processing]"
+  - "[RESEARCH: Materials that process similarly to {subject}]"
+  regulatoryStandards: "[RESEARCH: Actual regulatory standards for {subject} laser processing]"
   # CRITICAL: Use EXACT image format with structured hero/micro layout and standardized naming
   images:
     hero:
@@ -88,19 +81,15 @@ template: |
   title: "{subject} Laser Cleaning"
   headline: "Comprehensive technical guide for laser cleaning {category} {subject_lowercase}"
   environmentalImpact:
-  - benefit: "Chemical Solvent Elimination"
-    description: "Reduces chemical usage by 100% compared to traditional solvent cleaning methods"
-  - benefit: "Water Conservation"
-    description: "Saves approximately 5000 liters of water per month in industrial applications"
-  - benefit: "Energy Efficiency"
-    description: "Consumes 40% less energy than thermal cleaning processes"
+  - benefit: "[RESEARCH: Specific environmental benefit for {subject} laser cleaning]"
+    description: "[RESEARCH: Quantified environmental impact for {subject}]"
+  - benefit: "[RESEARCH: Another environmental benefit specific to {subject}]"
+    description: "[RESEARCH: Specific metrics for {subject} environmental impact]"
   outcomes:
-  - result: "Surface Cleanliness Level"
-    metric: "Achieves ISO 14644-1 Class 7 cleanliness standard"
-  - result: "Material Removal Precision"
-    metric: "±5μm accuracy with no substrate damage"
-  - result: "Processing Speed"
-    metric: "2-5 m²/hour cleaning rate depending on contamination level"
+  - result: "[RESEARCH: Actual achievable result for {subject} laser cleaning]"
+    metric: "[RESEARCH: Specific measured outcome for {subject}]"
+  - result: "[RESEARCH: Processing capability for {subject}]"
+    metric: "[RESEARCH: Actual processing speeds/accuracy for {subject}]"
   prompt_chain_verification:
     base_config_loaded: true
     persona_config_loaded: true
@@ -114,7 +103,12 @@ template: |
     cultural_adaptation_applied: true
   ---
 
-  CRITICAL: Replace ALL placeholder values with the actual {subject}-specific data. Return ONLY the YAML above with replaced values. No markdown headers, no explanations, no additional text.
+  CRITICAL VALIDATION:
+  - Every technical value must be researched and specific to {subject}
+  - No generic defaults allowed - research actual {subject} properties
+  - Applications must be real industries using {subject} laser cleaning
+  - Laser parameters must be optimized for {subject} material properties
+  - Environmental impact must be specific to {subject} vs traditional {subject} cleaning methods
 
   CRITICAL IMAGE FORMAT RULES:
   1. {subject_slug} MUST match the filename exactly (without .md extension)

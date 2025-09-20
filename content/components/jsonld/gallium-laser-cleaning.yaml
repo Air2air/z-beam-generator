@@ -1,190 +1,238 @@
-jsonld:
-  '@context': https://schema.org
-  '@type': Article
-  about:
-  - '@type': Material
-    additionalProperty:
-    - '@type': PropertyValue
-      name: Density
-      value: 5.91 g/cm³
-    - '@type': PropertyValue
-      name: Melting Point
-      value: 29.76°C
-    - '@type': PropertyValue
-      name: Thermal Conductivity
-      value: 40.6 W/m·K
-    - '@type': PropertyValue
-      name: Tensile Strength
-      value: N/A (liquid at room temperature) MPa
-    - '@type': PropertyValue
-      name: Young's Modulus
-      value: 9.8 GPa
-    - '@type': PropertyValue
-      name: Hardness
-      value: 1.5 Mohs
-    - '@type': PropertyValue
-      name: Chemical Formula
-      value: Ga
-    - '@type': PropertyValue
-      name: Material Type
-      value: metal
-    - '@type': PropertyValue
-      name: Chemical Symbol
-      value: Ga
-    - '@type': PropertyValue
-      name: Chemical Composition
-      value: Gallium (Ga) 99.99%, Trace elements (Zn, Si, Fe, Mg)
-    - '@type': PropertyValue
-      name: Material Compatibility
-      value: Gallium Arsenide, Silicon Wafers, Glass Substrates
-    - '@type': PropertyValue
-      name: Regulatory Standards
-      value: ISO 14644-1, ASTM E595, IEC 60825-1
-    alternateName:
-    - Ga
-    category: metal
-    description: Technical overview of Gallium for laser cleaning applications, including
-      optimal 1064nm wavelength interaction, and industrial applications in surface
-      preparation.
-    identifier: Ga
-    name: Gallium
-  - '@type': Process
-    description: Non-contact surface treatment process optimized for Gallium materials
-    name: Laser Cleaning
-  abstract: 'Advanced laser cleaning techniques for Gallium using 1064nm wavelength
-    at optimized fluence with nanosecond pulses and controlled power for Electronics
-    Manufacturing and Aerospace Components. Material properties: 5.91 g/cm³ density,
-    40.6 W/m·K thermal conductivity.'
-  alternativeHeadline: Advanced Laser Ablation Techniques for Electronics Manufacturing
-    using Gallium
-  articleBody: Technical overview of Gallium for laser cleaning applications, including
-    optimal 1064nm wavelength interaction, and industrial applications in surface
-    preparation.
-  articleSection: Materials Processing
-  author:
-    '@type': Person
-    affiliation:
-      '@type': Organization
-      name: Advanced Materials Research Institute - Indonesia
-    image: /images/author/ikmanda-roswati.jpg
-    jobTitle: Ph.D. in Ultrafast Laser Physics and Material Interactions
-    knowsAbout:
-    - Laser Materials Processing
-    - Gallium Surface Engineering
-    - Ultrafast Laser Physics and Material Interactions
-    name: Ikmanda Roswati
-    nationality: Indonesia
-  breadcrumb:
-    '@type': BreadcrumbList
-    itemListElement:
-    - '@type': ListItem
-      item: https://z-beam.com/gallium-laser-cleaning
-      name: Materials
-      position: 1
-    - '@type': ListItem
-      item: https://z-beam.com/gallium-laser-cleaning
-      name: Metal
-      position: 2
-    - '@type': ListItem
-      item: https://z-beam.com/gallium-laser-cleaning
-      name: Gallium
-      position: 3
-  copyrightHolder:
-    '@type': Organization
-    logo:
-      '@type': ImageObject
-      url: https://z-beam.com/images/site/logo/logo_.png
-    name: Z-Beam
-    sameAs:
-    - https://www.linkedin.com/company/z-beam
-    url: https://z-beam.com
-  copyrightYear: 2025
-  dateModified: '2025-09-19T18:22:34Z'
-  datePublished: '2025-09-19T18:22:34Z'
-  description: Comprehensive technical guide covering laser cleaning methodologies
-    for Gallium metal, including laser wavelength optimization, industrial applications,
-    and surface treatment benefits with detailed material properties.
-  headline: Gallium Laser Cleaning
-  image:
-  - '@type': ImageObject
-    caption: Gallium surface undergoing laser cleaning showing precise contamination
-      removal
-    description: High-resolution demonstration of Gallium component processed with
-      1064nm wavelength at optimized fluence, showing complete contamination removal
-      while preserving material integrity
-    encodingFormat: image/jpeg
-    height: 800
-    name: Gallium Laser Cleaning Before/After Comparison
-    representativeOfPage: true
-    url: https://z-beam.com/images/gallium-laser-cleaning-hero.jpg
-    width: 1200
-  - '@type': ImageObject
-    caption: Microscopic view of Gallium surface after laser cleaning showing detailed
-      surface structure
-    description: Scanning electron micrographs of Gallium surface processed with 1064nm
-      wavelength, verified at high magnification showing detailed surface structure
-    encodingFormat: image/jpeg
-    height: 600
-    name: Gallium Surface Microstructure Analysis
-    url: https://z-beam.com/images/gallium-laser-cleaning-micro.jpg
-    width: 800
-  inLanguage: en-US
-  isAccessibleForFree: true
-  isPartOf:
-    '@type': WebSite
-    name: Z-Beam Laser Processing Guide
-    url: https://z-beam.com/gallium-laser-cleaning
-  keywords:
-  - gallium
-  - gallium laser cleaning
-  - laser ablation
-  - non-contact cleaning
-  - surface treatment
-  - gallium metal
-  - metal laser processing
-  - electronics-manufacturing-laser-cleaning
-  - aerospace-components-laser-cleaning
-  - Ga-laser-processing
-  - eco-friendly-cleaning
-  - sustainable-processing
-  license: https://creativecommons.org/licenses/by/4.0/
-  mainEntity:
-    '@type': HowTo
-    description: Step-by-step process for laser cleaning Gallium materials using optimized
-      parameters
-    name: How to Laser Clean Gallium
-    step:
-    - '@type': HowToStep
-      name: Material Preparation
-      text: Secure Gallium component in laser processing fixture ensuring stable positioning
-        and adequate ventilation for industrial safety operation.
-    - '@type': HowToStep
-      name: Parameter Configuration
-      text: 'Configure laser parameters: 1064nm wavelength, optimized fluence, nanosecond
-        pulse duration, optimized repetition rate.'
-    - '@type': HowToStep
-      name: Surface Treatment
-      text: Execute systematic scanning pattern with precision spot size maintaining
-        consistent standoff distance for Gallium processing.
-    - '@type': HowToStep
-      name: Quality Verification
-      text: Inspect cleaned Gallium surface using optical microscopy to verify contaminant
-        removal and material integrity preservation.
-  mentions:
-  - electronics
-  - manufacturing
-  - aerospace
-  - components
-  potentialAction:
-    '@type': ReadAction
-    target: https://z-beam.com/gallium-laser-cleaning
-  publisher:
-    '@type': Organization
-    logo:
-      '@type': ImageObject
-      url: https://z-beam.com/images/site/logo/logo_.png
-    name: Z-Beam
-    sameAs:
-    - https://www.linkedin.com/company/z-beam
-    url: https://z-beam.com
-  wordCount: 19
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Gallium Laser Cleaning",
+  "alternativeHeadline": "Advanced Laser Ablation Techniques for Electronics Manufacturing using Gallium",
+  "description": "Comprehensive technical guide covering laser cleaning methodologies for Gallium metal, including laser wavelength optimization, industrial applications, and surface treatment benefits with detailed material properties.",
+  "abstract": "Advanced laser cleaning techniques for Gallium using 1064nm wavelength at optimized fluence with nanosecond pulses and controlled power for Electronics Manufacturing and Aerospace Components. Material properties: 5.91 g/cm³ density, 40.6 W/m·K thermal conductivity.",
+  "keywords": [
+    "gallium",
+    "gallium laser cleaning",
+    "laser ablation",
+    "non-contact cleaning",
+    "surface treatment",
+    "gallium metal",
+    "metal laser processing",
+    "electronics-manufacturing-laser-cleaning",
+    "aerospace-components-laser-cleaning",
+    "Ga-laser-processing",
+    "eco-friendly-cleaning",
+    "sustainable-processing"
+  ],
+  "articleBody": "Technical overview of Gallium for laser cleaning applications, including optimal 1064nm wavelength interaction, and industrial applications in surface preparation.",
+  "wordCount": 19,
+  "articleSection": "Materials Processing",
+  "inLanguage": "en-US",
+  "isAccessibleForFree": true,
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "copyrightHolder": {
+    "@type": "Organization",
+    "name": "Z-Beam",
+    "url": "https://z-beam.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://z-beam.com/images/site/logo/logo_.png"
+    },
+    "sameAs": [
+      "https://linkedin.com/company/z-beam"
+    ]
+  },
+  "copyrightYear": 2025,
+  "author": {
+    "@type": "Person",
+    "name": "Ikmanda Roswati",
+    "jobTitle": "Ph.D. in Ultrafast Laser Physics and Material Interactions",
+    "affiliation": {
+      "@type": "Organization",
+      "name": "Advanced Materials Research Institute - Indonesia"
+    },
+    "knowsAbout": [
+      "Laser Materials Processing",
+      "Gallium Surface Engineering",
+      "Ultrafast Laser Physics and Material Interactions"
+    ],
+    "image": "https://z-beam.com/images/author/ikmanda-roswati.jpg",
+    "nationality": "Indonesia"
+  },
+  "datePublished": "2025-09-19T18:38:09Z",
+  "dateModified": "2025-09-19T18:38:09Z",
+  "image": [
+    {
+      "@type": "ImageObject",
+      "url": "https://z-beam.com/images/gallium-laser-cleaning-hero.jpg",
+      "name": "Gallium Laser Cleaning Before/After Comparison",
+      "caption": "Gallium surface undergoing laser cleaning showing precise contamination removal",
+      "description": "High-resolution demonstration of Gallium component processed with 1064nm wavelength at optimized fluence, showing complete contamination removal while preserving material integrity",
+      "width": 1200,
+      "height": 800,
+      "encodingFormat": "image/jpeg",
+      "representativeOfPage": true
+    },
+    {
+      "@type": "ImageObject",
+      "url": "https://z-beam.com/images/gallium-laser-cleaning-micro.jpg",
+      "name": "Gallium Surface Microstructure Analysis",
+      "caption": "Microscopic view of Gallium surface after laser cleaning showing detailed surface structure",
+      "description": "Scanning electron micrographs of Gallium surface processed with 1064nm wavelength, verified at high magnification showing detailed surface structure",
+      "width": 800,
+      "height": 600,
+      "encodingFormat": "image/jpeg"
+    }
+  ],
+  "about": [
+    {
+      "@type": "Material",
+      "name": "Gallium",
+      "alternateName": [
+        "Ga"
+      ],
+      "identifier": "Ga",
+      "category": "metal",
+      "description": "Technical overview of Gallium for laser cleaning applications, including optimal 1064nm wavelength interaction, and industrial applications in surface preparation.",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Density",
+          "value": "5.91 g/cm³"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Melting Point",
+          "value": "29.76°C"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Thermal Conductivity",
+          "value": "40.6 W/m·K"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Tensile Strength",
+          "value": "N/A (liquid at room temperature) MPa"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Young's Modulus",
+          "value": "9.8 GPa"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Hardness",
+          "value": "1.5 Mohs"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Chemical Formula",
+          "value": "Ga"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Material Type",
+          "value": "metal"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Chemical Symbol",
+          "value": "Ga"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Chemical Composition",
+          "value": "Gallium (Ga) 99.99%, Trace elements (Zn, Si, Fe, Mg)"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Material Compatibility",
+          "value": "Gallium Arsenide, Silicon Wafers, Glass Substrates"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Regulatory Standards",
+          "value": "ISO 14644-1, ASTM E595, IEC 60825-1"
+        }
+      ]
+    },
+    {
+      "@type": "Process",
+      "name": "Laser Cleaning",
+      "description": "Non-contact surface treatment process optimized for Gallium materials"
+    }
+  ],
+  "mainEntity": {
+    "@type": "HowTo",
+    "name": "How to Laser Clean Gallium",
+    "description": "Step-by-step process for laser cleaning Gallium materials using optimized parameters",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "name": "Material Preparation",
+        "text": "Secure Gallium component in laser processing fixture ensuring stable positioning and adequate ventilation for industrial safety operation."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Parameter Configuration",
+        "text": "Configure laser parameters: 1064nm wavelength, optimized fluence, nanosecond pulse duration, optimized repetition rate."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Surface Treatment",
+        "text": "Execute systematic scanning pattern with precision spot size maintaining consistent standoff distance for Gallium processing."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Quality Verification",
+        "text": "Inspect cleaned Gallium surface using optical microscopy to verify contaminant removal and material integrity preservation."
+      }
+    ]
+  },
+  "mentions": [
+    "aerospace",
+    "electronics",
+    "components",
+    "manufacturing"
+  ],
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Z-Beam Laser Processing Guide",
+    "url": "https://z-beam.com/gallium-laser-cleaning"
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Materials",
+        "item": "https://z-beam.com/gallium-laser-cleaning"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Metal",
+        "item": "https://z-beam.com/gallium-laser-cleaning"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Gallium",
+        "item": "https://z-beam.com/gallium-laser-cleaning"
+      }
+    ]
+  },
+  "potentialAction": {
+    "@type": "ReadAction",
+    "target": "https://z-beam.com/gallium-laser-cleaning"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Z-Beam",
+    "url": "https://z-beam.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://z-beam.com/images/site/logo/logo_.png"
+    },
+    "sameAs": [
+      "https://linkedin.com/company/z-beam"
+    ]
+  }
+}

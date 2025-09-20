@@ -1,119 +1,200 @@
 materialTables:
   tables:
-  - header: '## Physical Properties'
+  - header: '## Chemical Properties'
+    rows:
+    - property: Chemical Formula
+      value: C6H10O5
+      unit: '-'
+      htmlVisualization: <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded
+        text-sm">Chemical</span>
+    - property: Chemical Symbol
+      value: Maple
+      unit: '-'
+      htmlVisualization: <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded
+        text-sm">Chemical</span>
+    - property: Material Type
+      value: Wood
+      unit: '-'
+      htmlVisualization: <span class="px-2 py-1 bg-purple-100 text-purple-800 rounded
+        text-sm">Classification</span>
+    - property: Composition
+      value: Cellulose (C6H10O5) 40-50%, Hemicellulose 20-30%, Lignin 20-30%, Extractives
+        1-5%
+      unit: '-'
+      htmlVisualization: <span class="px-2 py-1 bg-green-100 text-green-800 rounded
+        text-sm">Composition</span>
+  - header: '## Physical & Mechanical Properties'
     rows:
     - property: Density
       value: "0.62-0.75 g/cm\xB3"
       unit: "g/cm\xB3"
-      min: "0.1 g/cm\xB3"
-      max: "1.3 g/cm\xB3"
-      percentile: 48.8
+      min: '0.3'
+      max: '1.2'
+      percentile: 45.8
       htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 50%"></div></div><p class="text-xs text-center">Value
-        at 50% of range</p>'
-  - header: '## Thermal Properties'
-    rows:
+        h-2 rounded-full" style="width: 42%"></div></div><p class="text-xs text-center">Value
+        at 42% of range</p>'
+    - property: Melting Point
+      value: "Decomposes at 200-300\xB0C"
+      unit: "\xB0C"
+      percentile: 32.1
+      htmlVisualization: <span class="text-gray-500">-</span>
     - property: Thermal Conductivity
       value: "0.16 W/m\xB7K"
       unit: "W/m\xB7K"
-      min: "0.04 W/m\xB7K"
-      max: "0.4 W/m\xB7K"
-      percentile: 33.3
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 50%"></div></div><p class="text-xs text-center">Value
-        at 50% of range</p>'
-    - property: Thermal Diffusivity
-      value: "0.1 mm\xB2/s-0.4 mm\xB2/s mm\xB2/s"
-      unit: "mm\xB2/s"
-      min: "0.1 mm\xB2/s"
-      max: "0.4 mm\xB2/s"
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 50%"></div></div><p class="text-xs text-center">Value
-        at 50% of range</p>'
-    - property: Thermal Expansion
-      value: "2 \xB5m/m\xB7K-50 \xB5m/m\xB7K \xB5m/m\xB7K"
-      unit: "\xB5m/m\xB7K"
-      min: "2 \xB5m/m\xB7K"
-      max: "50 \xB5m/m\xB7K"
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 50%"></div></div><p class="text-xs text-center">Value
-        at 50% of range</p>'
-    - property: Specific Heat
-      value: "1.2 J/g\xB7K-2.5 J/g\xB7K J/g\xB7K"
-      unit: "J/g\xB7K"
-      min: "1.2 J/g\xB7K"
-      max: "2.5 J/g\xB7K"
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 50%"></div></div><p class="text-xs text-center">Value
-        at 50% of range</p>'
-  - header: '## Mechanical Properties'
-    rows:
+      percentile: 18.5
+      htmlVisualization: <span class="text-gray-500">-</span>
     - property: Tensile Strength
       value: 70-110 MPa
       unit: MPa
-      min: 20 MPa
-      max: 200 MPa
-      percentile: 38.9
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 38%"></div></div><p class="text-xs text-center">Value
-        at 38% of range</p>'
+      percentile: 28.7
+      htmlVisualization: <span class="text-gray-500">-</span>
     - property: Hardness
-      value: 1450 N (Janka)
-      unit: HV
-      min: 1 HB
-      max: 4000 HB
-      percentile: 36.2
+      value: 1450 N Janka
+      unit: N
+      min: '500.0'
+      max: '5000.0'
+      percentile: 42.3
       htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 36%"></div></div><p class="text-xs text-center">Value
-        at 36% of range</p>'
+        h-2 rounded-full" style="width: 21%"></div></div><p class="text-xs text-center">Value
+        at 21% of range</p>'
     - property: Young's Modulus
       value: 10.8 GPa
       unit: GPa
-      min: 4 GPa
-      max: 20 GPa
-      percentile: 42.5
+      min: '5.0'
+      max: '20.0'
+      percentile: 35.6
       htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 100%"></div></div><p class="text-xs text-center">Value
-        at 100% of range</p>'
-  - header: '## Optical Properties'
-    rows:
-    - property: Laser Absorption
-      value: "5 cm\u207B\xB9-100 cm\u207B\xB9 cm\u207B\xB9"
-      unit: "cm\u207B\xB9"
-      min: "5 cm\u207B\xB9"
-      max: "100 cm\u207B\xB9"
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 50%"></div></div><p class="text-xs text-center">Value
-        at 50% of range</p>'
-    - property: Laser Reflectivity
-      value: 5%-25%%
-      unit: '%'
-      min: 5%
-      max: 25%
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 50%"></div></div><p class="text-xs text-center">Value
-        at 50% of range</p>'
+        h-2 rounded-full" style="width: 38%"></div></div><p class="text-xs text-center">Value
+        at 38% of range</p>'
   - header: '## Laser Processing Parameters'
     rows:
-    - property: Laser Type
-      value: Low-Power Pulsed Laser
-      unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded">Standard</span>
+    - property: Power Range
+      value: 10-60W
+      unit: W
+      min: '20.0'
+      max: '500.0'
+      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
+        h-2 rounded-full" style="width: 3%"></div></div><p class="text-xs text-center">Value
+        at 3% of range</p>'
+    - property: Pulse Duration
+      value: 50-200ns
+      unit: ns
+      min: '1.0'
+      max: '1000.0'
+      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
+        h-2 rounded-full" style="width: 12%"></div></div><p class="text-xs text-center">Value
+        at 12% of range</p>'
     - property: Wavelength
-      value: 1064nm
+      value: 1064nm (primary), 532nm (optional)
       unit: nm
-      htmlVisualization: <span class="px-2 py-1 bg-green-100 text-green-800 rounded">Optimal</span>
+      min: '355.0'
+      max: '2940.0'
+      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
+        h-2 rounded-full" style="width: 27%"></div></div><p class="text-xs text-center">Value
+        at 27% of range</p>'
+    - property: Spot Size
+      value: 0.5-3.0mm
+      unit: mm
+      min: '0.01'
+      max: '10.0'
+      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
+        h-2 rounded-full" style="width: 17%"></div></div><p class="text-xs text-center">Value
+        at 17% of range</p>'
+    - property: Repetition Rate
+      value: 10-50kHz
+      unit: kHz
+      min: '1.0'
+      max: '1000.0'
+      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
+        h-2 rounded-full" style="width: 2%"></div></div><p class="text-xs text-center">Value
+        at 2% of range</p>'
     - property: Fluence Range
-      value: "0.2\u20131.5 J/cm\xB2"
+      value: "0.5\u20132.0 J/cm\xB2"
       unit: "J/cm\xB2"
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-orange-600
-        h-2 rounded-full" style="width: 75%"></div></div>'
-  - header: '## Composition'
-    rows:
-    - property: Chemical Formula
-      value: C6H10O5 (cellulose)
+      min: '0.1'
+      max: '50.0'
+      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
+        h-2 rounded-full" style="width: 0%"></div></div><p class="text-xs text-center">Value
+        at 0% of range</p>'
+    - property: Scanning Speed
+      value: 50-500mm/s
+      unit: mm/s
+      min: '1.0'
+      max: '5000.0'
+      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
+        h-2 rounded-full" style="width: 5%"></div></div><p class="text-xs text-center">Value
+        at 5% of range</p>'
+    - property: Beam Profile
+      value: Gaussian TEM00
       unit: '-'
-      htmlVisualization: <span class="font-mono text-sm bg-gray-100 px-2 py-1 rounded">Chemical</span>
+      htmlVisualization: <span class="px-2 py-1 bg-gray-100 text-gray-800 rounded
+        text-sm">System</span>
+    - property: Safety Class
+      value: Class 4 (requires full enclosure)
+      unit: '-'
+      htmlVisualization: <span class="px-2 py-1 bg-red-100 text-red-800 rounded text-sm">Safety</span>
+  - header: '## Applications & Industries'
+    rows:
+    - property: Woodworking & Furniture
+      value: Removal of surface contaminants, stains, and oxidation from maple wood
+        surfaces
+      unit: '-'
+      htmlVisualization: <span class="px-2 py-1 bg-indigo-100 text-indigo-800 rounded
+        text-sm">Application</span>
+    - property: Musical Instrument Manufacturing
+      value: Precision cleaning of maple guitar necks, violin bodies, and piano components
+      unit: '-'
+      htmlVisualization: <span class="px-2 py-1 bg-indigo-100 text-indigo-800 rounded
+        text-sm">Application</span>
+  - header: '## Performance Metrics'
+    rows:
+    - property: Surface Cleanliness Level
+      value: Achieves complete removal of surface contaminants without damaging wood
+        fibers
+      unit: '-'
+      htmlVisualization: <span class="px-2 py-1 bg-green-100 text-green-800 rounded
+        text-sm">Performance</span>
+    - property: Material Removal Precision
+      value: "\xB120\u03BCm accuracy with minimal wood removal"
+      unit: '-'
+      htmlVisualization: <span class="px-2 py-1 bg-green-100 text-green-800 rounded
+        text-sm">Performance</span>
+    - property: Processing Speed
+      value: "1-3 m\xB2/hour cleaning rate depending on contamination level"
+      unit: '-'
+      htmlVisualization: <span class="px-2 py-1 bg-green-100 text-green-800 rounded
+        text-sm">Performance</span>
+  - header: '## Environmental Impact'
+    rows:
+    - property: Chemical Solvent Elimination
+      value: Reduces chemical usage by 100% compared to traditional wood cleaning
+        solvents
+      unit: '-'
+      htmlVisualization: <span class="px-2 py-1 bg-emerald-100 text-emerald-800 rounded
+        text-sm">Environmental</span>
+    - property: Water Conservation
+      value: Eliminates water usage completely in wood surface preparation
+      unit: '-'
+      htmlVisualization: <span class="px-2 py-1 bg-emerald-100 text-emerald-800 rounded
+        text-sm">Environmental</span>
+    - property: Energy Efficiency
+      value: Consumes 60% less energy than sanding and chemical stripping processes
+      unit: '-'
+      htmlVisualization: <span class="px-2 py-1 bg-emerald-100 text-emerald-800 rounded
+        text-sm">Environmental</span>
+  - header: '## Compatibility & Standards'
+    rows:
+    - property: Material Compatibility
+      value: Hardwoods, Softwoods, Wood Composites
+      unit: '-'
+      htmlVisualization: <span class="px-2 py-1 bg-cyan-100 text-cyan-800 rounded
+        text-sm">Compatibility</span>
+    - property: Regulatory Standards
+      value: ISO 13061, ASTM D143, EN 350
+      unit: '-'
+      htmlVisualization: <span class="px-2 py-1 bg-violet-100 text-violet-800 rounded
+        text-sm">Compliance</span>
 renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with
   <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile
   ? percentile + ''%'' : ''N/A''}</td><td dangerouslySetInnerHTML={{__html: htmlVisualization}}

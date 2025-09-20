@@ -163,52 +163,60 @@ class DynamicGenerator:
         api_client,
         author_info: Optional[Dict] = None,
         frontmatter_data: Optional[Dict] = None,
+        material_data: Optional[Dict] = None,
     ) -> ComponentResult:
         """Generate a single component for a material"""
         try:
-            # Get material data
-            materials_data = self.materials_data
-            if not materials_data:
-                return ComponentResult(
-                    component_type=component_type,
-                    content="",
-                    success=False,
-                    error_message="No materials data available",
-                )
+            # Use passed material_data if available, otherwise lookup from materials database
+            if material_data is not None:
+                # Material data already provided - use it directly
+                pass
+            else:
+                # Get material data from database
+                materials_data = self.materials_data
+                if not materials_data:
+                    return ComponentResult(
+                        component_type=component_type,
+                        content="",
+                        success=False,
+                        error_message="No materials data available",
+                    )
 
-            # Find material data - materials.yaml has materials -> category -> items structure
-            material_data = None
-            if "materials" in materials_data:
-                materials_section = materials_data["materials"]
-                for category, category_data in materials_section.items():
-                    if isinstance(category_data, dict) and "items" in category_data:
-                        for item in category_data["items"]:
-                            if "name" in item and item["name"].lower() == material.lower():
-                                material_data = item
+                # Find material data - materials.yaml has materials -> category -> items structure
+                material_data = None
+                if "materials" in materials_data:
+                    materials_section = materials_data["materials"]
+                    for category, category_data in materials_section.items():
+                        if isinstance(category_data, dict) and "items" in category_data:
+                            for item in category_data["items"]:
+                                if "name" in item and item["name"].lower() == material.lower():
+                                    material_data = item
+                                    break
+                            if material_data:
                                 break
-                        if material_data:
-                            break
 
-            if not material_data:
-                # Try once more with an exact match for compatibility with old tests
-                for category, category_data in materials_section.items():
-                    if isinstance(category_data, dict) and "items" in category_data:
-                        for item in category_data["items"]:
-                            if "name" in item and item["name"] == material:
-                                material_data = item
+                if not material_data:
+                    # Try once more with an exact match for compatibility with old tests
+                    for category, category_data in materials_section.items():
+                        if isinstance(category_data, dict) and "items" in category_data:
+                            for item in category_data["items"]:
+                                if "name" in item and item["name"] == material:
+                                    material_data = item
+                                    break
+                            if material_data:
                                 break
-                        if material_data:
-                            break
 
-            if not material_data:
-                available_materials = self.get_available_materials()
-                error_message = f"Material '{material}' not found. Available materials: {', '.join(available_materials)}"
-                return ComponentResult(
-                    component_type=component_type,
-                    content="",
-                    success=False,
-                    error_message=error_message,
-                )
+                if not material_data:
+                    available_materials = self.get_available_materials()
+                    error_message = f"Material '{material}' not found. Available materials: {', '.join(available_materials)}"
+                    return ComponentResult(
+                        component_type=component_type,
+                        content="",
+                        success=False,
+                        error_message=error_message,
+                    )
+
+            # Now we have material_data either from parameter or database lookup
 
             # Use ComponentGeneratorFactory to create the appropriate generator
             factory = ComponentGeneratorFactory()

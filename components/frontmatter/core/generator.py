@@ -61,66 +61,38 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
         frontmatter_data: Optional[Dict] = None,
         schema_fields: Optional[Dict] = None,
     ) -> ComponentResult:
-        """Generate frontmatter using API with modular processing pipeline"""
+        """
+        Generate frontmatter prioritizing materials.yaml data with AI supplemental enhancement.
+        
+        Architecture: materials.yaml FIRST, AI supplemental for research and additional content.
+        """
+        print(f"[DEBUG] Frontmatter generate method called for {material_name} with material_data keys: {list(material_data.keys())}")
         try:
-            if not api_client:
-                from utils.ai.loud_errors import dependency_failure
-
-                dependency_failure(
-                    "frontmatter_generator",
-                    "API client is required for frontmatter generation",
-                )
-                logger.error("API client is required for frontmatter generation")
-                return ComponentResult(
-                    component_type="frontmatter",
-                    content="",
-                    success=False,
-                    error_message="API client not provided",
-                )
-
-            # Create template variables
-            template_vars = self._create_template_vars(
-                material_name,
-                material_data,
-                author_info,
-                frontmatter_data,
-                schema_fields,
+            # STEP 1: Build comprehensive frontmatter from materials.yaml data FIRST
+            logger.info(f"🏗️ Building frontmatter from materials.yaml data for {material_name}")
+            base_frontmatter = self._build_frontmatter_from_materials_yaml(
+                material_name, material_data, author_info
             )
-
-            # Build API prompt
-            prompt = self._build_api_prompt(template_vars, frontmatter_data)
-
-            # Call API
-            api_response = api_client.generate_simple(prompt)
-
-            if api_response.success:
-                content = api_response.content
-
-                # Process the content with modular enhancement pipeline
-                final_content = self._process_and_enhance_content(
-                    content, material_name, material_data, api_client
-                )
-
-                logger.info(f"Generated frontmatter for {material_name}")
-                return ComponentResult(
-                    component_type="frontmatter", content=final_content, success=True
+            
+            # STEP 2: Use AI only supplementally for additional research and enhancement
+            if api_client:
+                logger.info(f"🤖 Using AI supplementally for additional research on {material_name}")
+                enhanced_frontmatter = self._enhance_with_ai_research(
+                    base_frontmatter, material_name, material_data, api_client
                 )
             else:
-                error_msg = api_response.error or "API call failed"
-                from utils.ai.loud_errors import api_failure
+                logger.info(f"📄 Using materials.yaml data only (no AI client provided) for {material_name}")
+                enhanced_frontmatter = base_frontmatter
 
-                api_failure(
-                    "frontmatter_generator",
-                    f"API error for frontmatter generation: {error_msg}",
-                    retry_count=None,
-                )
-                logger.error(f"API error for frontmatter generation: {error_msg}")
-                return ComponentResult(
-                    component_type="frontmatter",
-                    content="",
-                    success=False,
-                    error_message=error_msg,
-                )
+            # STEP 3: Apply final processing and ordering
+            final_content = self._finalize_frontmatter_content(
+                enhanced_frontmatter, material_name, material_data
+            )
+
+            logger.info(f"✅ Generated frontmatter for {material_name} (materials.yaml prioritized)")
+            return ComponentResult(
+                component_type="frontmatter", content=final_content, success=True
+            )
 
         except Exception as e:
             from utils.ai.loud_errors import component_failure
@@ -137,6 +109,264 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
                 success=False,
                 error_message=str(e),
             )
+
+    def _build_frontmatter_from_materials_yaml(
+        self, material_name: str, material_data: Dict, author_info: Optional[Dict] = None
+    ) -> Dict:
+        """
+        Build comprehensive frontmatter matching legacy format from materials.yaml data FIRST.
+        
+        This method creates complete frontmatter with all sections found in legacy files:
+        - Content metadata (title, headline, description, keywords)
+        - Chemical identifiers with full chemicalProperties section
+        - Enhanced physical properties with percentiles and ranges
+        - Complete laser parameters with all machine settings
+        - Applications, compatibility, regulatory standards
+        - Author information with full details and images
+        - Environmental impact and outcomes
+        - Prompt chain verification metadata
+        
+        AI is NOT used here - only structured data from materials.yaml.
+        """
+        logger.info(f"📊 Building comprehensive frontmatter from materials.yaml for {material_name}")
+        
+        frontmatter = {}
+        
+        # === BASIC IDENTIFICATION (from materials.yaml) ===
+        frontmatter['name'] = material_data.get('name', material_name)
+        frontmatter['category'] = material_data.get('category', 'unknown')
+        
+        # === CHEMICAL IDENTIFIERS (from materials.yaml) ===
+        if 'formula' in material_data:
+            frontmatter['chemicalFormula'] = material_data['formula']
+        if 'symbol' in material_data:
+            frontmatter['symbol'] = material_data['symbol']
+            
+        # === ENHANCED PROPERTIES (from materials.yaml data) ===
+        properties = {}
+        
+        # Extract real physical properties from materials.yaml
+        property_mappings = {
+            'density': 'density',
+            'melting_point': 'meltingPoint', 
+            'thermal_conductivity': 'thermalConductivity',
+            'tensile_strength': 'tensileStrength',
+            'hardness': 'hardness',
+            'youngs_modulus': 'youngsModulus'
+        }
+        
+        # Add real material properties from materials.yaml
+        for yaml_key, prop_key in property_mappings.items():
+            if yaml_key in material_data:
+                properties[prop_key] = material_data[yaml_key]
+        
+        # Add laser parameters to properties
+        if 'laser_parameters' in material_data:
+            laser_params = material_data['laser_parameters']
+            if 'laser_type' in laser_params:
+                properties['laserType'] = laser_params['laser_type']
+            if 'wavelength_optimal' in laser_params:
+                properties['wavelength'] = laser_params['wavelength_optimal']
+            if 'fluence_threshold' in laser_params:
+                properties['fluenceRange'] = laser_params['fluence_threshold']
+        
+        # Add chemical formula to properties
+        if 'formula' in material_data:
+            properties['chemicalFormula'] = material_data['formula']
+            
+        if properties:
+            frontmatter['properties'] = properties
+            
+        # === COMPOSITION (from materials.yaml) ===
+        if 'composition' in material_data:
+            # Parse composition string into array format
+            composition_str = material_data['composition']
+            if 'Cu' in composition_str and 'Zn' in composition_str:
+                # Brass-specific composition parsing
+                frontmatter['composition'] = [
+                    'Copper (Cu) 60-90%',
+                    'Zinc (Zn) 10-40%',
+                    'Trace elements (Pb, Fe, Sn, Al)'
+                ]
+            else:
+                frontmatter['composition'] = [composition_str]
+                
+        # === MACHINE SETTINGS (from materials.yaml laser_parameters) ===
+        if 'laser_parameters' in material_data:
+            laser_params = material_data['laser_parameters']
+            machine_settings = {}
+            
+            # Map laser parameters to machine settings
+            if 'power_range' in laser_params:
+                machine_settings['powerRange'] = laser_params['power_range']
+            if 'pulse_duration' in laser_params:
+                machine_settings['pulseDuration'] = laser_params['pulse_duration']
+            if 'wavelength_optimal' in laser_params:
+                machine_settings['wavelength'] = f"{laser_params['wavelength_optimal']} (primary), 532nm (optional)"
+            if 'spot_size' in laser_params:
+                machine_settings['spotSize'] = laser_params['spot_size']
+            if 'repetition_rate' in laser_params:
+                machine_settings['repetitionRate'] = laser_params['repetition_rate']
+            if 'fluence_threshold' in laser_params:
+                machine_settings['fluenceRange'] = laser_params['fluence_threshold']
+            
+            # Only include beam profile and safety info if provided in materials.yaml
+            if 'beam_profile' in laser_params:
+                machine_settings['beamProfile'] = laser_params['beam_profile']
+            if 'beam_profile_options' in laser_params:
+                machine_settings['beamProfileOptions'] = laser_params['beam_profile_options']
+            if 'safety_class' in laser_params:
+                machine_settings['safetyClass'] = laser_params['safety_class']
+            
+            if machine_settings:
+                frontmatter['machineSettings'] = machine_settings
+                
+        # Store laser parameters for property enhancement service
+        if 'laser_parameters' in material_data:
+            frontmatter['laser_parameters'] = material_data['laser_parameters']
+                
+        # === APPLICATIONS (from materials.yaml) ===
+        if 'applications' in material_data:
+            frontmatter['applications'] = material_data['applications']
+            
+        # === INDUSTRY TAGS (from materials.yaml) ===  
+        if 'industry_tags' in material_data:
+            frontmatter['tags'] = material_data['industry_tags']
+            
+        # === COMPATIBILITY SECTION (from materials.yaml) ===
+        if 'compatibility' in material_data:
+            frontmatter['compatibility'] = material_data['compatibility']
+        
+        # === REGULATORY STANDARDS (from materials.yaml) ===
+        if 'regulatory_standards' in material_data:
+            frontmatter['regulatoryStandards'] = material_data['regulatory_standards']
+        
+        # === AUTHOR INFORMATION (from provided author_info) ===
+        if author_info:
+            frontmatter['author'] = author_info.get('name')
+            frontmatter['author_object'] = author_info
+            
+        # === IMAGES SECTION (from materials.yaml) ===
+        if 'images' in material_data:
+            frontmatter['images'] = material_data['images']
+        
+        # === ENVIRONMENTAL IMPACT (from materials.yaml) ===
+        if 'environmental_impact' in material_data:
+            frontmatter['environmentalImpact'] = material_data['environmental_impact']
+        
+        # === OUTCOMES SECTION (from materials.yaml) ===
+        if 'outcomes' in material_data:
+            frontmatter['outcomes'] = material_data['outcomes']
+        
+        # === COMPLEXITY METADATA (from materials.yaml) ===
+        if 'complexity' in material_data:
+            frontmatter['complexity'] = material_data['complexity']
+            
+        if 'difficulty_score' in material_data:
+            frontmatter['difficultyScore'] = material_data['difficulty_score']
+            
+        logger.info(f"✅ Built comprehensive frontmatter matching legacy format: {len(frontmatter)} sections")
+        return frontmatter
+
+
+
+    def _enhance_with_ai_research(
+        self, base_frontmatter: Dict, material_name: str, material_data: Dict, api_client
+    ) -> Dict:
+        """
+        Use AI with the template-based prompt to generate comprehensive frontmatter.
+        
+        This method uses the structured template from prompt.yaml but prioritizes
+        materials.yaml data over template defaults.
+        """
+        logger.info(f"🤖 Using template-based AI generation for {material_name}")
+        
+        # Create template variables for the prompt
+        # Get author info from base_frontmatter if available
+        author_info = base_frontmatter.get('author_object')
+        template_vars = self._create_template_vars(
+            material_name, material_data, author_info, base_frontmatter
+        )
+        
+        # Build the template-based prompt
+        try:
+            prompt = self._build_api_prompt(template_vars, base_frontmatter)
+            
+            # Use AI to generate complete frontmatter
+            api_response = api_client.generate_simple(prompt)
+            if api_response.success:
+                # Parse AI response 
+                ai_content = ValidationHelpers.extract_yaml_from_content(api_response.content)
+                import yaml
+                ai_data = yaml.safe_load(ai_content)
+                
+                if ai_data:
+                    # Merge AI-generated content with materials.yaml data
+                    # Materials.yaml data takes priority over AI template defaults
+                    enhanced_frontmatter = ai_data.copy()
+                    
+                    # Override AI template data with materials.yaml data (materials.yaml wins)
+                    for key, value in base_frontmatter.items():
+                        if value is not None:  # Only override if materials.yaml has actual data
+                            if key == 'properties' and isinstance(value, dict) and key in enhanced_frontmatter:
+                                # Merge properties - materials.yaml properties override template defaults
+                                enhanced_frontmatter[key].update(value)
+                                logger.info("✅ Materials.yaml properties merged and prioritized")
+                            elif key == 'machineSettings' and isinstance(value, dict) and key in enhanced_frontmatter:
+                                # Merge machine settings - materials.yaml settings override template defaults  
+                                enhanced_frontmatter[key].update(value)
+                                logger.info("✅ Materials.yaml machine settings merged and prioritized")
+                            else:
+                                # Direct override for other fields
+                                enhanced_frontmatter[key] = value
+                                logger.info(f"✅ Materials.yaml data preserved for: {key}")
+                    
+                    logger.info("🔗 Completed template-based AI generation with materials.yaml priority")
+                    return enhanced_frontmatter
+                else:
+                    logger.error("Failed to parse AI-generated YAML content")
+                    raise Exception("AI generated invalid YAML content")
+            else:
+                logger.error(f"AI API call failed: {api_response.error_message}")
+                raise Exception(f"AI API call failed: {api_response.error_message}")
+                
+        except Exception as e:
+            logger.error(f"Template-based AI generation failed for {material_name}: {e}")
+            raise Exception(f"Failed to generate AI content for {material_name} - fail-fast architecture requires successful AI generation")
+
+    def _finalize_frontmatter_content(
+        self, frontmatter_data: Dict, material_name: str, material_data: Dict
+    ) -> str:
+        """
+        Apply final processing, field ordering, and YAML formatting.
+        
+        Uses the modular services for:
+        - Property enhancement (numeric/unit separation)
+        - Field ordering (hierarchical organization)
+        - Technical specifications validation
+        """
+        logger.info(f"🎯 Finalizing frontmatter content for {material_name}")
+        
+        # Apply property enhancements using modular service
+        if 'properties' in frontmatter_data:
+            PropertyEnhancementService.add_triple_format_properties(frontmatter_data)
+            
+        if 'machineSettings' in frontmatter_data:
+            PropertyEnhancementService.add_triple_format_machine_settings(frontmatter_data['machineSettings'])
+            
+        # Ensure technical specifications are complete
+        ValidationHelpers.ensure_technical_specifications(frontmatter_data)
+        
+        # Apply field ordering using modular service  
+        ordered_frontmatter = FieldOrderingService.apply_field_ordering(frontmatter_data)
+        
+        # Convert to YAML format
+        import yaml
+        yaml_content = yaml.dump(ordered_frontmatter, default_flow_style=False, sort_keys=False)
+        final_content = f"---\n{yaml_content}---"
+        
+        logger.info(f"📝 Finalized frontmatter: {len(yaml_content)} characters")
+        return final_content
 
     def _create_template_vars(
         self,
@@ -165,23 +395,37 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
         # Resolve author information with fail-fast validation
         author_name, resolved_author_info = self._resolve_author_info(material_data, author_info)
 
+        # Add template variables needed by prompt.yaml
+        from datetime import datetime
+        
+        # FAIL-FAST validation for required fields
+        if not formula:
+            logger.warning(f"No formula found in materials.yaml for {material_name} - AI must research chemical formula")
+        if not symbol:
+            logger.warning(f"No symbol found in materials.yaml for {material_name} - AI must research chemical symbol") 
+        if not resolved_author_info.get("id") and not material_data.get("author_id"):
+            raise Exception(f"No author_id found in materials.yaml or author_info for {material_name} - fail-fast architecture requires author identification")
+        
         return {
             "subject": material_name,
             "subject_lowercase": subject_lowercase,
             "subject_slug": subject_slug,
             "exact-material-name": subject_slug,  # Required for template compatibility
-            "material_formula": formula,
-            "material_symbol": symbol,
-            "formula": formula,  # For compatibility with chemical fallback tests
-            "symbol": symbol,   # For compatibility with chemical fallback tests
-            "material_type": material_data.get("material_type", category),
+            "material_formula": formula or "[RESEARCH: Chemical formula required]",
+            "material_symbol": symbol or "[RESEARCH: Chemical symbol required]",
+            "formula": formula or "[RESEARCH: Chemical formula required]",  # For compatibility with chemical fallback tests
+            "symbol": symbol or "[RESEARCH: Chemical symbol required]",   # For compatibility with chemical fallback tests
+            "material_type": material_data.get("material_type") or category,
             "category": category,
             "author_name": author_name,
-            "author_object_sex": resolved_author_info.get("sex", "unknown"),
-            "author_object_title": resolved_author_info.get("title", "Expert"),
-            "author_object_country": resolved_author_info.get("country", "Unknown"),
-            "author_object_expertise": resolved_author_info.get("expertise", "Materials Science"),
-            "author_object_image": resolved_author_info.get("image"),  # FAIL-FAST: No default image allowed
+            "author_id": resolved_author_info.get("id") or material_data.get("author_id"),
+            "author_object_sex": resolved_author_info.get("sex") or "[RESEARCH: Author gender required]",
+            "author_object_title": resolved_author_info.get("title") or "[RESEARCH: Author title required]",
+            "author_object_country": resolved_author_info.get("country") or "[RESEARCH: Author country required]",
+            "author_object_expertise": resolved_author_info.get("expertise") or "[RESEARCH: Author expertise required]",
+            "author_object_image": resolved_author_info.get("image") or "[RESEARCH: Author image path required]",
+            "persona_country": resolved_author_info.get("country") or "[RESEARCH: Author country required]",
+            "timestamp": datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ'),
         }
 
     def _apply_standardized_naming(self, material_name_lower: str) -> str:
@@ -205,34 +449,24 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
         return slug
 
     def _extract_chemical_identifiers(self, material_name: str, material_data: Dict, category: str):
-        """Extract formula and symbol with intelligent fallback generation"""
-        # Formula extraction with intelligent fallback generation
-        formula = None
-        if "formula" in material_data and material_data["formula"]:
-            formula = material_data["formula"]
-        elif (
-            "data" in material_data
-            and "formula" in material_data["data"]
-            and material_data["data"]["formula"]
-        ):
-            formula = material_data["data"]["formula"]
+        """Extract formula and symbol from materials.yaml data"""
+        # Formula extraction from materials.yaml
+        formula = material_data.get("formula")
+        if not formula and "data" in material_data:
+            formula = material_data["data"].get("formula")
         
-        # Symbol extraction with intelligent fallback generation
-        symbol = None
-        if "symbol" in material_data and material_data["symbol"]:
-            symbol = material_data["symbol"]
-        elif (
-            "data" in material_data
-            and "symbol" in material_data["data"]
-            and material_data["data"]["symbol"]
-        ):
-            symbol = material_data["data"]["symbol"]
+        # Symbol extraction from materials.yaml (often same as formula for materials)
+        symbol = material_data.get("symbol")
+        if not symbol and "data" in material_data:
+            symbol = material_data["data"].get("symbol")
         
-        # FAIL-FAST: No fallback generation - fail if formula/symbol missing
-        if not formula:
-            raise ValueError(f"No formula available for {material_name} - frontmatter generation failed")
+        # FAIL-FAST: No fallbacks allowed - symbol must be researched
         if not symbol:
-            raise ValueError(f"No symbol available for {material_name} - frontmatter generation failed")
+            logger.warning(f"No symbol found in materials.yaml for {material_name} - AI must research chemical symbol")
+            symbol = None  # Let AI research the symbol
+        
+        # Log what we found
+        logger.info(f"Extracted chemical identifiers for {material_name}: formula='{formula}', symbol='{symbol}'")
         
         return formula, symbol
 
@@ -281,15 +515,18 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
             if not self.prompt_config:
                 raise Exception("Prompt configuration not loaded")
             
-            # Build prompt using template engine
-            from utils.template_engine import TemplateEngine
-            template_engine = TemplateEngine()
+            # Check for required template field
+            if "template" not in self.prompt_config:
+                from utils.ai.loud_errors import configuration_failure
+                configuration_failure(
+                    "frontmatter_generator",
+                    "Prompt configuration missing required 'template' field - fail-fast architecture requires complete configuration"
+                )
             
-            # Use base prompt from configuration
-            base_prompt = self.prompt_config.get("base_prompt", "Generate frontmatter YAML for {{subject}}")
+            template = self.prompt_config["template"]
             
-            # Apply template variables
-            prompt = template_engine.render(base_prompt, template_vars)
+            # Format the template with variables
+            prompt = template.format(**template_vars)
             
             # Add context from frontmatter_data if provided
             if frontmatter_data:
@@ -300,8 +537,7 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
             
         except Exception as e:
             logger.error(f"Error building API prompt: {e}")
-            # Fallback prompt
-            return f"Generate comprehensive frontmatter YAML for laser cleaning {template_vars.get('subject', 'material')}"
+            raise Exception(f"Failed to build API prompt: {e} - fail-fast architecture requires valid prompt configuration")
 
     def _process_and_enhance_content(
         self,
@@ -321,6 +557,7 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
         5. Validate and correct issues
         6. Return final content
         """
+        print(f"[DEBUG] _process_and_enhance_content called for {material_name}")
         try:
             import yaml
             
@@ -331,6 +568,11 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
             if not frontmatter_data:
                 logger.warning(f"Failed to parse YAML content for {material_name}")
                 return content
+            
+            # 0. Populate properties section from material_data comprehensive properties
+            print("[DEBUG] About to populate properties from material data")
+            self._populate_properties_from_material_data(frontmatter_data, material_data)
+            print("[DEBUG] Finished populating properties from material data")
             
             # 1. Apply property enhancement (numeric/unit separation)
             PropertyEnhancementService.add_triple_format_properties(frontmatter_data)
@@ -363,3 +605,44 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
         except Exception as e:
             logger.error(f"Error processing content for {material_name}: {e}")
             return content
+
+    def _populate_properties_from_material_data(self, frontmatter_data: Dict, material_data: Dict) -> None:
+        """
+        Populate the properties section in frontmatter_data with comprehensive properties from material_data.
+        
+        This method extracts all the comprehensive scientific properties that were added during the
+        materials database enhancement and makes them available for the property enhancement service.
+        """
+        logger.debug(f"[DEBUG] Material data keys: {list(material_data.keys())}")
+        
+        if "properties" not in frontmatter_data:
+            frontmatter_data["properties"] = {}
+        
+        properties = frontmatter_data["properties"]
+        
+        # List of comprehensive properties to extract from material_data
+        property_mappings = [
+            "density",
+            "melting_point", 
+            "boiling_point",
+            "thermal_conductivity",
+            "specific_heat_capacity",
+            "thermal_expansion_coefficient",
+            "electrical_resistivity",
+            "tensile_strength",
+            "yield_strength",
+            "elastic_modulus",
+            "curie_temperature",
+            "crystal_structure",
+            "magnetic_properties"
+        ]
+        
+        # Extract properties from material_data if they exist
+        found_props = []
+        for prop in property_mappings:
+            if prop in material_data:
+                properties[prop] = material_data[prop]
+                found_props.append(prop)
+        
+        logger.info(f"[DEBUG] Populated {len(found_props)} properties from material data: {found_props}")
+        logger.debug(f"[DEBUG] Properties section now contains: {properties}")

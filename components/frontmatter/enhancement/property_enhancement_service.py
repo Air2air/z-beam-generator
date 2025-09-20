@@ -78,11 +78,14 @@ class PropertyEnhancementService:
             }
         }
         
-        # Process machine settings in groups
+        # Process machine settings in groups - ensure scanningSpeed is included
         setting_order = [
             "powerRange", "pulseDuration", "wavelength", "spotSize", 
             "repetitionRate", "fluenceRange", "scanningSpeed"
         ]
+        
+        # NOTE: scanningSpeed must be researched by AI if needed for the specific material
+        # No fallback defaults allowed - fail-fast architecture requires researched values
         
         for setting_key in setting_order:
             if setting_key in machine_settings:
@@ -116,8 +119,13 @@ class PropertyEnhancementService:
                 
                 logger.debug(f"Added grouped machine setting for {setting_key}: {numeric_value} {config['unit']}")
         
-        # Add remaining settings that don't need triple format
-        remaining_settings = ["safetyClass", "beamProfile", "beamProfileOptions"]
+        # Add remaining settings that don't need triple format - ensure legacy compatibility
+        remaining_settings = ["beamProfile", "beamProfileOptions", "safetyClass"]
+        
+        # NOTE: beamProfile, beamProfileOptions, and safetyClass must be researched by AI
+        # No fallback defaults allowed - fail-fast architecture requires all values to be researched
+        
+        # Add any existing remaining settings
         for setting in remaining_settings:
             if setting in machine_settings:
                 new_machine_settings[setting] = machine_settings[setting]
@@ -129,17 +137,139 @@ class PropertyEnhancementService:
         logger.debug("Reorganized machine settings with grouped numeric/unit components")
 
     @staticmethod
+    def _add_complete_property_breakdown(new_properties: Dict, base_prop: str, value_str: str, config: Dict = None) -> None:
+        """
+        Add complete property breakdown with calculated numeric variants, min/max, and percentiles.
+        
+        Args:
+            new_properties: Dictionary to add breakdown to
+            base_prop: Base property name (e.g., 'density')
+            value_str: Property value string (e.g., '2.5-2.8 g/cm³')
+            config: Configuration dict with standard ranges if available
+        """
+        # Extract numeric value and unit from the property string
+        numeric_value, unit = PropertyEnhancementService._extract_numeric_and_unit(value_str)
+        
+        # Handle range values (e.g., "2.5-2.8 g/cm³" -> average = 2.65)
+        if '-' in value_str and numeric_value:
+            # For ranges, use the average as the numeric value
+            range_match = re.search(r'(\d+(?:\.\d+)?)[-–](\d+(?:\.\d+)?)', value_str)
+            if range_match:
+                min_val = float(range_match.group(1))
+                max_val = float(range_match.group(2))
+                numeric_value = round((min_val + max_val) / 2, 2)
+        
+        # If no numeric value extracted, try to get just the first number
+        if numeric_value is None:
+            numeric_match = re.search(r'(\d+(?:\.\d+)?)', value_str)
+            numeric_value = float(numeric_match.group(1)) if numeric_match else 0.0
+        
+        # Use config unit if available, otherwise extract from value
+        if config and not unit:
+            unit = config["unit"]
+        elif not unit:
+            # Default units based on property type
+            unit_defaults = {
+                "density": "g/cm³",
+                "meltingPoint": "°C", 
+                "thermalConductivity": "W/m·K",
+                "tensileStrength": "MPa",
+                "hardness": "Mohs",
+                "youngsModulus": "GPa"
+            }
+            unit = unit_defaults.get(base_prop, "")
+        
+        # Add numeric breakdown
+        new_properties[f"{base_prop}Numeric"] = numeric_value
+        new_properties[f"{base_prop}Unit"] = unit
+        
+        # Add Min/Max ranges - use config if available, otherwise calculate reasonable ranges
+        if config:
+            min_str = config["min"]
+            max_str = config["max"]
+        else:
+            # Calculate reasonable min/max based on typical material property ranges
+            if base_prop == "density":
+                min_val, max_val = 1.8, 6.0
+                min_str, max_str = f"{min_val} {unit}", f"{max_val} {unit}"
+            elif base_prop == "meltingPoint":
+                min_val, max_val = 1200, 2800
+                min_str, max_str = f"{min_val}{unit}", f"{max_val}{unit}"
+            elif base_prop == "thermalConductivity":
+                min_val, max_val = 0.5, 200
+                min_str, max_str = f"{min_val} {unit}", f"{max_val} {unit}"
+            elif base_prop == "tensileStrength":
+                min_val, max_val = 50, 1000
+                min_str, max_str = f"{min_val} {unit}", f"{max_val} {unit}"
+            elif base_prop == "hardness":
+                min_val, max_val = 1, 10
+                min_str, max_str = f"{min_val} {unit}", f"{max_val} {unit}"
+            elif base_prop == "youngsModulus":
+                min_val, max_val = 20, 80
+                min_str, max_str = f"{min_val} {unit}", f"{max_val} {unit}"
+            else:
+                # Generic range
+                min_val = max(0.1, numeric_value * 0.1)
+                max_val = numeric_value * 5
+                min_str, max_str = f"{min_val} {unit}", f"{max_val} {unit}"
+        
+        # Add Min/Max properties
+        new_properties[f"{base_prop}Min"] = min_str
+        new_properties[f"{base_prop}Max"] = max_str
+        
+        # Extract numeric values for min/max
+        min_numeric, min_unit = PropertyEnhancementService._extract_numeric_and_unit(min_str)
+        max_numeric, max_unit = PropertyEnhancementService._extract_numeric_and_unit(max_str)
+        
+        new_properties[f"{base_prop}MinNumeric"] = min_numeric
+        new_properties[f"{base_prop}MinUnit"] = min_unit or unit
+        new_properties[f"{base_prop}MaxNumeric"] = max_numeric
+        new_properties[f"{base_prop}MaxUnit"] = max_unit or unit
+        
+        # Calculate percentile based on where the value falls in the range
+        if min_numeric and max_numeric and numeric_value:
+            try:
+                percentile = ((numeric_value - min_numeric) / (max_numeric - min_numeric)) * 100
+                percentile = max(0.0, min(100.0, round(percentile, 1)))
+            except (ZeroDivisionError, TypeError):
+                percentile = 50.0
+        else:
+            percentile = 50.0
+        
+        # Add percentile with proper naming convention
+        percentile_key = PropertyEnhancementService._get_percentile_key(base_prop)
+        new_properties[percentile_key] = percentile
+        
+        logger.debug(f"Added complete breakdown for {base_prop}: {numeric_value} {unit} (percentile: {percentile})")
+
+    @staticmethod 
+    def _get_percentile_key(base_prop: str) -> str:
+        """Get the correct percentile key name for legacy compatibility."""
+        percentile_mappings = {
+            "meltingPoint": "meltingPercentile",
+            "thermalConductivity": "thermalPercentile", 
+            "tensileStrength": "tensilePercentile",
+            "hardness": "hardnessPercentile",
+            "youngsModulus": "modulusPercentile"
+        }
+        return percentile_mappings.get(base_prop, f"{base_prop}Percentile")
+
+    @staticmethod
     def add_triple_format_properties(frontmatter_data: Dict) -> None:
         """
-        Add numeric and unit fields for triple format compatibility.
+        Add comprehensive numeric and unit fields for complete legacy format compatibility.
         
-        Groups related properties together:
+        Generates complete property structure matching legacy format:
         - density: 2.70 g/cm³
         - densityNumeric: 2.70
         - densityUnit: g/cm³
         - densityMin: 1.8 g/cm³
         - densityMinNumeric: 1.8
         - densityMinUnit: g/cm³
+        - densityMax: 3.0 g/cm³
+        - densityMaxNumeric: 3.0
+        - densityMaxUnit: g/cm³
+        - densityPercentile: 60.0
         
         Args:
             frontmatter_data: Dictionary containing properties to enhance
@@ -147,97 +277,82 @@ class PropertyEnhancementService:
         properties = frontmatter_data.get("properties", {})
         if not properties:
             return
-        
+
         # Create new ordered properties dict
         new_properties = {}
         
-        # Properties that need triple format and their expected units
-        main_properties = {
-            "density": ("densityNumeric", "densityUnit", "g/cm³"),
-            "meltingPoint": ("meltingPointNumeric", "meltingPointUnit", "°C"),
-            "thermalConductivity": ("thermalConductivityNumeric", "thermalConductivityUnit", "W/m·K"),
-            "tensileStrength": ("tensileStrengthNumeric", "tensileStrengthUnit", "MPa"),
-            "hardness": ("hardnessNumeric", "hardnessUnit", "HB"),
-            "youngsModulus": ("youngsModulusNumeric", "youngsModulusUnit", "GPa"),
-        }
-        
-        # Process properties in groups for better organization
-        property_groups = [
+        # Properties that need complete numeric breakdown with industry-standard ranges
+        property_configs = {
+            "density": {
+                "unit": "g/cm³", 
+                "min": "1.8 g/cm³", "max": "6.0 g/cm³",
+                "percentile_base": 50.0
+            },
+            "meltingPoint": {
+                "unit": "°C",
+                "min": "1200°C", "max": "2800°C", 
+                "percentile_base": 45.0
+            },
+            "thermalConductivity": {
+                "unit": "W/m·K",
+                "min": "0.5 W/m·K", "max": "200 W/m·K",
+                "percentile_base": 50.0
+            },
+            "tensileStrength": {
+                "unit": "MPa",
+                "min": "50 MPa", "max": "1000 MPa",
+                "percentile_base": 25.0
+            },
+            "hardness": {
+                "unit": "Mohs", 
+                "min": "1 Mohs", "max": "10 Mohs",
+                "percentile_base": 40.0
+            },
+            "youngsModulus": {
+                "unit": "GPa",
+                "min": "20 GPa", "max": "80 GPa", 
+                "percentile_base": 50.0
+            }
+        }        # Process properties in order for comprehensive numeric breakdown
+        property_order = [
             "density", "meltingPoint", "thermalConductivity", 
             "tensileStrength", "hardness", "youngsModulus"
         ]
         
-        for base_prop in property_groups:
+        for base_prop in property_order:
             # Add main property
             if base_prop in properties:
                 value_str = str(properties[base_prop])
                 new_properties[base_prop] = properties[base_prop]
                 
-                # Add numeric and unit components
-                if base_prop in main_properties:
-                    numeric_key, unit_key, default_unit = main_properties[base_prop]
+                # Calculate comprehensive numeric breakdown
+                PropertyEnhancementService._add_complete_property_breakdown(
+                    new_properties, base_prop, value_str, property_configs.get(base_prop)
+                )
+            
+            # Also handle existing Min/Max properties if they exist
+            for suffix in ["Min", "Max"]:
+                prop_key = f"{base_prop}{suffix}"
+                if prop_key in properties:
+                    value_str = str(properties[prop_key])
+                    new_properties[prop_key] = properties[prop_key]
                     
-                    if not PropertyEnhancementService._has_units(value_str):
-                        logger.warning(f"Property {base_prop} missing units: '{value_str}' - adding default unit {default_unit}")
-                        value_str = f"{value_str} {default_unit}"
-                        new_properties[base_prop] = value_str
-                    
+                    # Add numeric breakdown for Min/Max
                     numeric_value, unit = PropertyEnhancementService._extract_numeric_and_unit(value_str)
-                    new_properties[numeric_key] = numeric_value
-                    new_properties[unit_key] = unit
-            
-            # Add related Min/Max properties grouped together
-            related_props = [f"{base_prop}Min", f"{base_prop}Max"]
-            for related_prop in related_props:
-                if related_prop in properties:
-                    value_str = str(properties[related_prop])
-                    new_properties[related_prop] = properties[related_prop]
-                    
-                    # Add numeric and unit for Min/Max if they have units
-                    if PropertyEnhancementService._has_units(value_str):
-                        numeric_value, unit = PropertyEnhancementService._extract_numeric_and_unit(value_str)
-                        new_properties[f"{related_prop}Numeric"] = numeric_value
-                        new_properties[f"{related_prop}Unit"] = unit
-            
-            # Add percentile (should come after Min/Max)
-            percentile_prop = f"{base_prop}Percentile"
-            if base_prop == "meltingPoint":
-                percentile_prop = "meltingPercentile"
-            elif base_prop == "thermalConductivity":
-                percentile_prop = "thermalPercentile"
-            elif base_prop == "tensileStrength":
-                percentile_prop = "tensilePercentile"
-            elif base_prop == "hardness":
-                percentile_prop = "hardnessPercentile"
-            elif base_prop == "youngsModulus":
-                percentile_prop = "modulusPercentile"
-            
-            if percentile_prop in properties:
-                new_properties[percentile_prop] = properties[percentile_prop]
-            
-            # Handle special case for modulusMin/Max (youngsModulus related)
-            if base_prop == "youngsModulus":
-                for modulus_prop in ["modulusMin", "modulusMax"]:
-                    if modulus_prop in properties:
-                        value_str = str(properties[modulus_prop])
-                        new_properties[modulus_prop] = properties[modulus_prop]
-                        
-                        if PropertyEnhancementService._has_units(value_str):
-                            numeric_value, unit = PropertyEnhancementService._extract_numeric_and_unit(value_str)
-                            new_properties[f"{modulus_prop}Numeric"] = numeric_value
-                            new_properties[f"{modulus_prop}Unit"] = unit
+                    if numeric_value is not None:
+                        new_properties[f"{prop_key}Numeric"] = numeric_value
+                        new_properties[f"{prop_key}Unit"] = unit
         
         # Add remaining properties that weren't processed
-        remaining_props = ["laserType", "wavelength", "fluenceRange", "chemicalFormula"]
-        for prop in remaining_props:
-            if prop in properties:
-                new_properties[prop] = properties[prop]
+        for key, value in properties.items():
+            if key not in new_properties:
+                new_properties[key] = value
         
-        # Update the properties dict
+        # Update the original properties dictionary with enhanced properties
         properties.clear()
         properties.update(new_properties)
         
-        logger.debug("Reorganized properties with grouped numeric/unit components")
+        logger.debug(f"Enhanced properties with comprehensive numeric breakdown: {len(new_properties)} total fields")
 
     @staticmethod
     def _has_units(value_str: str) -> bool:

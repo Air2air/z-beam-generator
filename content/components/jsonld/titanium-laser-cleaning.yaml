@@ -1,190 +1,238 @@
-jsonld:
-  '@context': https://schema.org
-  '@type': Article
-  about:
-  - '@type': Material
-    additionalProperty:
-    - '@type': PropertyValue
-      name: Density
-      value: 4.51 g/cm³
-    - '@type': PropertyValue
-      name: Melting Point
-      value: 1668°C
-    - '@type': PropertyValue
-      name: Thermal Conductivity
-      value: 21.9 W/m·K
-    - '@type': PropertyValue
-      name: Tensile Strength
-      value: 240-550 MPa
-    - '@type': PropertyValue
-      name: Young's Modulus
-      value: 116 GPa
-    - '@type': PropertyValue
-      name: Hardness
-      value: 70-74 HRB
-    - '@type': PropertyValue
-      name: Chemical Formula
-      value: Ti
-    - '@type': PropertyValue
-      name: Material Type
-      value: metal
-    - '@type': PropertyValue
-      name: Chemical Symbol
-      value: Ti
-    - '@type': PropertyValue
-      name: Chemical Composition
-      value: Titanium (Ti) 99.6%, Trace elements (Si, Fe, Na, Mg)
-    - '@type': PropertyValue
-      name: Material Compatibility
-      value: Stainless Steel, Titanium Alloys, Nickel-based Superalloys
-    - '@type': PropertyValue
-      name: Regulatory Standards
-      value: ISO 18562, ASTM F2100, IEC 60601-1
-    alternateName:
-    - Ti
-    category: metal
-    description: Technical overview of Titanium, Ti, for laser cleaning applications,
-      including optimal 1064nm wavelength interaction, and industrial applications
-      in surface preparation.
-    identifier: Ti
-    name: Titanium
-  - '@type': Process
-    description: Non-contact surface treatment process optimized for Titanium materials
-    name: Laser Cleaning
-  abstract: 'Advanced laser cleaning techniques for Titanium using 1064nm wavelength
-    at optimized fluence with nanosecond pulses and controlled power for Electronics
-    Manufacturing and Aerospace Components. Material properties: 4.51 g/cm³ density,
-    21.9 W/m·K thermal conductivity.'
-  alternativeHeadline: Advanced Laser Ablation Techniques for Electronics Manufacturing
-    using Titanium
-  articleBody: Technical overview of Titanium, Ti, for laser cleaning applications,
-    including optimal 1064nm wavelength interaction, and industrial applications in
-    surface preparation.
-  articleSection: Materials Processing
-  author:
-    '@type': Person
-    affiliation:
-      '@type': Organization
-      name: Advanced Materials Research Institute - United States (California)
-    image: /images/author/todd-dunning.jpg
-    jobTitle: MA in Optical Materials for Laser Systems
-    knowsAbout:
-    - Laser Materials Processing
-    - Titanium Surface Engineering
-    - Optical Materials for Laser Systems
-    name: Todd Dunning
-    nationality: United States (California)
-  breadcrumb:
-    '@type': BreadcrumbList
-    itemListElement:
-    - '@type': ListItem
-      item: https://z-beam.com/titanium-laser-cleaning
-      name: Materials
-      position: 1
-    - '@type': ListItem
-      item: https://z-beam.com/titanium-laser-cleaning
-      name: Metal
-      position: 2
-    - '@type': ListItem
-      item: https://z-beam.com/titanium-laser-cleaning
-      name: Titanium
-      position: 3
-  copyrightHolder:
-    '@type': Organization
-    logo:
-      '@type': ImageObject
-      url: https://z-beam.com/images/site/logo/logo_.png
-    name: Z-Beam
-    sameAs:
-    - https://www.linkedin.com/company/z-beam
-    url: https://z-beam.com
-  copyrightYear: 2025
-  dateModified: '2025-09-19T18:22:35Z'
-  datePublished: '2025-09-19T18:22:35Z'
-  description: Comprehensive technical guide covering laser cleaning methodologies
-    for Titanium metal, including laser wavelength optimization, industrial applications,
-    and surface treatment benefits with detailed material properties.
-  headline: Titanium Laser Cleaning
-  image:
-  - '@type': ImageObject
-    caption: Titanium surface undergoing laser cleaning showing precise contamination
-      removal
-    description: High-resolution demonstration of Titanium component processed with
-      1064nm wavelength at optimized fluence, showing complete contamination removal
-      while preserving material integrity
-    encodingFormat: image/jpeg
-    height: 800
-    name: Titanium Laser Cleaning Before/After Comparison
-    representativeOfPage: true
-    url: https://z-beam.com/images/titanium-laser-cleaning-hero.jpg
-    width: 1200
-  - '@type': ImageObject
-    caption: Microscopic view of Titanium surface after laser cleaning showing detailed
-      surface structure
-    description: Scanning electron micrographs of Titanium surface processed with
-      1064nm wavelength, verified at high magnification showing detailed surface structure
-    encodingFormat: image/jpeg
-    height: 600
-    name: Titanium Surface Microstructure Analysis
-    url: https://z-beam.com/images/titanium-laser-cleaning-micro.jpg
-    width: 800
-  inLanguage: en-US
-  isAccessibleForFree: true
-  isPartOf:
-    '@type': WebSite
-    name: Z-Beam Laser Processing Guide
-    url: https://z-beam.com/titanium-laser-cleaning
-  keywords:
-  - titanium
-  - titanium laser cleaning
-  - laser ablation
-  - non-contact cleaning
-  - surface treatment
-  - titanium metal
-  - metal laser processing
-  - electronics-manufacturing-laser-cleaning
-  - aerospace-components-laser-cleaning
-  - Ti-laser-processing
-  - eco-friendly-cleaning
-  - sustainable-processing
-  license: https://creativecommons.org/licenses/by/4.0/
-  mainEntity:
-    '@type': HowTo
-    description: Step-by-step process for laser cleaning Titanium materials using
-      optimized parameters
-    name: How to Laser Clean Titanium
-    step:
-    - '@type': HowToStep
-      name: Material Preparation
-      text: Secure Titanium component in laser processing fixture ensuring stable
-        positioning and adequate ventilation for industrial safety operation.
-    - '@type': HowToStep
-      name: Parameter Configuration
-      text: 'Configure laser parameters: 1064nm wavelength, optimized fluence, nanosecond
-        pulse duration, optimized repetition rate.'
-    - '@type': HowToStep
-      name: Surface Treatment
-      text: Execute systematic scanning pattern with precision spot size maintaining
-        consistent standoff distance for Titanium processing.
-    - '@type': HowToStep
-      name: Quality Verification
-      text: Inspect cleaned Titanium surface using optical microscopy to verify contaminant
-        removal and material integrity preservation.
-  mentions:
-  - electronics
-  - manufacturing
-  - aerospace
-  - components
-  potentialAction:
-    '@type': ReadAction
-    target: https://z-beam.com/titanium-laser-cleaning
-  publisher:
-    '@type': Organization
-    logo:
-      '@type': ImageObject
-      url: https://z-beam.com/images/site/logo/logo_.png
-    name: Z-Beam
-    sameAs:
-    - https://www.linkedin.com/company/z-beam
-    url: https://z-beam.com
-  wordCount: 20
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Titanium Laser Cleaning",
+  "alternativeHeadline": "Advanced Laser Ablation Techniques for Electronics Manufacturing using Titanium",
+  "description": "Comprehensive technical guide covering laser cleaning methodologies for Titanium metal, including laser wavelength optimization, industrial applications, and surface treatment benefits with detailed material properties.",
+  "abstract": "Advanced laser cleaning techniques for Titanium using 1064nm wavelength at optimized fluence with nanosecond pulses and controlled power for Electronics Manufacturing and Aerospace Components. Material properties: 4.51 g/cm³ density, 21.9 W/m·K thermal conductivity.",
+  "keywords": [
+    "titanium",
+    "titanium laser cleaning",
+    "laser ablation",
+    "non-contact cleaning",
+    "surface treatment",
+    "titanium metal",
+    "metal laser processing",
+    "electronics-manufacturing-laser-cleaning",
+    "aerospace-components-laser-cleaning",
+    "Ti-laser-processing",
+    "eco-friendly-cleaning",
+    "sustainable-processing"
+  ],
+  "articleBody": "Technical overview of Titanium, Ti, for laser cleaning applications, including optimal 1064nm wavelength interaction, and industrial applications in surface preparation.",
+  "wordCount": 20,
+  "articleSection": "Materials Processing",
+  "inLanguage": "en-US",
+  "isAccessibleForFree": true,
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "copyrightHolder": {
+    "@type": "Organization",
+    "name": "Z-Beam",
+    "url": "https://z-beam.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://z-beam.com/images/site/logo/logo_.png"
+    },
+    "sameAs": [
+      "https://linkedin.com/company/z-beam"
+    ]
+  },
+  "copyrightYear": 2025,
+  "author": {
+    "@type": "Person",
+    "name": "Todd Dunning",
+    "jobTitle": "MA in Optical Materials for Laser Systems",
+    "affiliation": {
+      "@type": "Organization",
+      "name": "Advanced Materials Research Institute - United States (California)"
+    },
+    "knowsAbout": [
+      "Laser Materials Processing",
+      "Titanium Surface Engineering",
+      "Optical Materials for Laser Systems"
+    ],
+    "image": "https://z-beam.com/images/author/todd-dunning.jpg",
+    "nationality": "United States (California)"
+  },
+  "datePublished": "2025-09-19T18:38:09Z",
+  "dateModified": "2025-09-19T18:38:09Z",
+  "image": [
+    {
+      "@type": "ImageObject",
+      "url": "https://z-beam.com/images/titanium-laser-cleaning-hero.jpg",
+      "name": "Titanium Laser Cleaning Before/After Comparison",
+      "caption": "Titanium surface undergoing laser cleaning showing precise contamination removal",
+      "description": "High-resolution demonstration of Titanium component processed with 1064nm wavelength at optimized fluence, showing complete contamination removal while preserving material integrity",
+      "width": 1200,
+      "height": 800,
+      "encodingFormat": "image/jpeg",
+      "representativeOfPage": true
+    },
+    {
+      "@type": "ImageObject",
+      "url": "https://z-beam.com/images/titanium-laser-cleaning-micro.jpg",
+      "name": "Titanium Surface Microstructure Analysis",
+      "caption": "Microscopic view of Titanium surface after laser cleaning showing detailed surface structure",
+      "description": "Scanning electron micrographs of Titanium surface processed with 1064nm wavelength, verified at high magnification showing detailed surface structure",
+      "width": 800,
+      "height": 600,
+      "encodingFormat": "image/jpeg"
+    }
+  ],
+  "about": [
+    {
+      "@type": "Material",
+      "name": "Titanium",
+      "alternateName": [
+        "Ti"
+      ],
+      "identifier": "Ti",
+      "category": "metal",
+      "description": "Technical overview of Titanium, Ti, for laser cleaning applications, including optimal 1064nm wavelength interaction, and industrial applications in surface preparation.",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Density",
+          "value": "4.51 g/cm³"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Melting Point",
+          "value": "1668°C"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Thermal Conductivity",
+          "value": "21.9 W/m·K"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Tensile Strength",
+          "value": "240-550 MPa"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Young's Modulus",
+          "value": "116 GPa"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Hardness",
+          "value": "70-74 HRB"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Chemical Formula",
+          "value": "Ti"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Material Type",
+          "value": "metal"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Chemical Symbol",
+          "value": "Ti"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Chemical Composition",
+          "value": "Titanium (Ti) 99.6%, Trace elements (Si, Fe, Na, Mg)"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Material Compatibility",
+          "value": "Stainless Steel, Titanium Alloys, Nickel-based Superalloys"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Regulatory Standards",
+          "value": "ISO 18562, ASTM F2100, IEC 60601-1"
+        }
+      ]
+    },
+    {
+      "@type": "Process",
+      "name": "Laser Cleaning",
+      "description": "Non-contact surface treatment process optimized for Titanium materials"
+    }
+  ],
+  "mainEntity": {
+    "@type": "HowTo",
+    "name": "How to Laser Clean Titanium",
+    "description": "Step-by-step process for laser cleaning Titanium materials using optimized parameters",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "name": "Material Preparation",
+        "text": "Secure Titanium component in laser processing fixture ensuring stable positioning and adequate ventilation for industrial safety operation."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Parameter Configuration",
+        "text": "Configure laser parameters: 1064nm wavelength, optimized fluence, nanosecond pulse duration, optimized repetition rate."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Surface Treatment",
+        "text": "Execute systematic scanning pattern with precision spot size maintaining consistent standoff distance for Titanium processing."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Quality Verification",
+        "text": "Inspect cleaned Titanium surface using optical microscopy to verify contaminant removal and material integrity preservation."
+      }
+    ]
+  },
+  "mentions": [
+    "aerospace",
+    "electronics",
+    "components",
+    "manufacturing"
+  ],
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Z-Beam Laser Processing Guide",
+    "url": "https://z-beam.com/titanium-laser-cleaning"
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Materials",
+        "item": "https://z-beam.com/titanium-laser-cleaning"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Metal",
+        "item": "https://z-beam.com/titanium-laser-cleaning"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Titanium",
+        "item": "https://z-beam.com/titanium-laser-cleaning"
+      }
+    ]
+  },
+  "potentialAction": {
+    "@type": "ReadAction",
+    "target": "https://z-beam.com/titanium-laser-cleaning"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Z-Beam",
+    "url": "https://z-beam.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://z-beam.com/images/site/logo/logo_.png"
+    },
+    "sameAs": [
+      "https://linkedin.com/company/z-beam"
+    ]
+  }
+}

@@ -1,190 +1,238 @@
-jsonld:
-  '@context': https://schema.org
-  '@type': Article
-  about:
-  - '@type': Material
-    additionalProperty:
-    - '@type': PropertyValue
-      name: Density
-      value: 16.69 g/cm³
-    - '@type': PropertyValue
-      name: Melting Point
-      value: 3017°C
-    - '@type': PropertyValue
-      name: Thermal Conductivity
-      value: 57.5 W/m·K
-    - '@type': PropertyValue
-      name: Tensile Strength
-      value: 310 MPa
-    - '@type': PropertyValue
-      name: Young's Modulus
-      value: 186 GPa
-    - '@type': PropertyValue
-      name: Hardness
-      value: 800-1100 HV
-    - '@type': PropertyValue
-      name: Chemical Formula
-      value: Ta
-    - '@type': PropertyValue
-      name: Material Type
-      value: metal
-    - '@type': PropertyValue
-      name: Chemical Symbol
-      value: Ta
-    - '@type': PropertyValue
-      name: Chemical Composition
-      value: Tantalum (Ta) 99.9%, Trace elements (Nb, Fe, Si, Ti, W)
-    - '@type': PropertyValue
-      name: Material Compatibility
-      value: Stainless Steel, Titanium Alloys, Nickel-based Superalloys
-    - '@type': PropertyValue
-      name: Regulatory Standards
-      value: ISO 18562, ASTM F2100, IEC 60601-1
-    alternateName:
-    - Ta
-    category: metal
-    description: Technical overview of Tantalum, Ta, for laser cleaning applications,
-      including optimal 1064nm wavelength interaction, and industrial applications
-      in surface preparation.
-    identifier: Ta
-    name: Tantalum
-  - '@type': Process
-    description: Non-contact surface treatment process optimized for Tantalum materials
-    name: Laser Cleaning
-  abstract: 'Advanced laser cleaning techniques for Tantalum using 1064nm wavelength
-    at optimized fluence with nanosecond pulses and controlled power for Electronics
-    Manufacturing and Aerospace Components. Material properties: 16.69 g/cm³ density,
-    57.5 W/m·K thermal conductivity.'
-  alternativeHeadline: Advanced Laser Ablation Techniques for Electronics Manufacturing
-    using Tantalum
-  articleBody: Technical overview of Tantalum, Ta, for laser cleaning applications,
-    including optimal 1064nm wavelength interaction, and industrial applications in
-    surface preparation.
-  articleSection: Materials Processing
-  author:
-    '@type': Person
-    affiliation:
-      '@type': Organization
-      name: Advanced Materials Research Institute - Italy
-    image: /images/author/alessandro-moretti.jpg
-    jobTitle: Ph.D. in Laser-Based Additive Manufacturing
-    knowsAbout:
-    - Laser Materials Processing
-    - Tantalum Surface Engineering
-    - Laser-Based Additive Manufacturing
-    name: Alessandro Moretti
-    nationality: Italy
-  breadcrumb:
-    '@type': BreadcrumbList
-    itemListElement:
-    - '@type': ListItem
-      item: https://z-beam.com/tantalum-laser-cleaning
-      name: Materials
-      position: 1
-    - '@type': ListItem
-      item: https://z-beam.com/tantalum-laser-cleaning
-      name: Metal
-      position: 2
-    - '@type': ListItem
-      item: https://z-beam.com/tantalum-laser-cleaning
-      name: Tantalum
-      position: 3
-  copyrightHolder:
-    '@type': Organization
-    logo:
-      '@type': ImageObject
-      url: https://z-beam.com/images/site/logo/logo_.png
-    name: Z-Beam
-    sameAs:
-    - https://www.linkedin.com/company/z-beam
-    url: https://z-beam.com
-  copyrightYear: 2025
-  dateModified: '2025-09-19T18:22:35Z'
-  datePublished: '2025-09-19T18:22:35Z'
-  description: Comprehensive technical guide covering laser cleaning methodologies
-    for Tantalum metal, including laser wavelength optimization, industrial applications,
-    and surface treatment benefits with detailed material properties.
-  headline: Tantalum Laser Cleaning
-  image:
-  - '@type': ImageObject
-    caption: Tantalum surface undergoing laser cleaning showing precise contamination
-      removal
-    description: High-resolution demonstration of Tantalum component processed with
-      1064nm wavelength at optimized fluence, showing complete contamination removal
-      while preserving material integrity
-    encodingFormat: image/jpeg
-    height: 800
-    name: Tantalum Laser Cleaning Before/After Comparison
-    representativeOfPage: true
-    url: https://z-beam.com/images/tantalum-laser-cleaning-hero.jpg
-    width: 1200
-  - '@type': ImageObject
-    caption: Microscopic view of Tantalum surface after laser cleaning showing detailed
-      surface structure
-    description: Scanning electron micrographs of Tantalum surface processed with
-      1064nm wavelength, verified at high magnification showing detailed surface structure
-    encodingFormat: image/jpeg
-    height: 600
-    name: Tantalum Surface Microstructure Analysis
-    url: https://z-beam.com/images/tantalum-laser-cleaning-micro.jpg
-    width: 800
-  inLanguage: en-US
-  isAccessibleForFree: true
-  isPartOf:
-    '@type': WebSite
-    name: Z-Beam Laser Processing Guide
-    url: https://z-beam.com/tantalum-laser-cleaning
-  keywords:
-  - tantalum
-  - tantalum laser cleaning
-  - laser ablation
-  - non-contact cleaning
-  - surface treatment
-  - tantalum metal
-  - metal laser processing
-  - electronics-manufacturing-laser-cleaning
-  - aerospace-components-laser-cleaning
-  - Ta-laser-processing
-  - eco-friendly-cleaning
-  - sustainable-processing
-  license: https://creativecommons.org/licenses/by/4.0/
-  mainEntity:
-    '@type': HowTo
-    description: Step-by-step process for laser cleaning Tantalum materials using
-      optimized parameters
-    name: How to Laser Clean Tantalum
-    step:
-    - '@type': HowToStep
-      name: Material Preparation
-      text: Secure Tantalum component in laser processing fixture ensuring stable
-        positioning and adequate ventilation for industrial safety operation.
-    - '@type': HowToStep
-      name: Parameter Configuration
-      text: 'Configure laser parameters: 1064nm wavelength, optimized fluence, nanosecond
-        pulse duration, optimized repetition rate.'
-    - '@type': HowToStep
-      name: Surface Treatment
-      text: Execute systematic scanning pattern with precision spot size maintaining
-        consistent standoff distance for Tantalum processing.
-    - '@type': HowToStep
-      name: Quality Verification
-      text: Inspect cleaned Tantalum surface using optical microscopy to verify contaminant
-        removal and material integrity preservation.
-  mentions:
-  - electronics
-  - manufacturing
-  - aerospace
-  - components
-  potentialAction:
-    '@type': ReadAction
-    target: https://z-beam.com/tantalum-laser-cleaning
-  publisher:
-    '@type': Organization
-    logo:
-      '@type': ImageObject
-      url: https://z-beam.com/images/site/logo/logo_.png
-    name: Z-Beam
-    sameAs:
-    - https://www.linkedin.com/company/z-beam
-    url: https://z-beam.com
-  wordCount: 20
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Tantalum Laser Cleaning",
+  "alternativeHeadline": "Advanced Laser Ablation Techniques for Electronics Manufacturing using Tantalum",
+  "description": "Comprehensive technical guide covering laser cleaning methodologies for Tantalum metal, including laser wavelength optimization, industrial applications, and surface treatment benefits with detailed material properties.",
+  "abstract": "Advanced laser cleaning techniques for Tantalum using 1064nm wavelength at optimized fluence with nanosecond pulses and controlled power for Electronics Manufacturing and Aerospace Components. Material properties: 16.69 g/cm³ density, 57.5 W/m·K thermal conductivity.",
+  "keywords": [
+    "tantalum",
+    "tantalum laser cleaning",
+    "laser ablation",
+    "non-contact cleaning",
+    "surface treatment",
+    "tantalum metal",
+    "metal laser processing",
+    "electronics-manufacturing-laser-cleaning",
+    "aerospace-components-laser-cleaning",
+    "Ta-laser-processing",
+    "eco-friendly-cleaning",
+    "sustainable-processing"
+  ],
+  "articleBody": "Technical overview of Tantalum, Ta, for laser cleaning applications, including optimal 1064nm wavelength interaction, and industrial applications in surface preparation.",
+  "wordCount": 20,
+  "articleSection": "Materials Processing",
+  "inLanguage": "en-US",
+  "isAccessibleForFree": true,
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "copyrightHolder": {
+    "@type": "Organization",
+    "name": "Z-Beam",
+    "url": "https://z-beam.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://z-beam.com/images/site/logo/logo_.png"
+    },
+    "sameAs": [
+      "https://linkedin.com/company/z-beam"
+    ]
+  },
+  "copyrightYear": 2025,
+  "author": {
+    "@type": "Person",
+    "name": "Alessandro Moretti",
+    "jobTitle": "Ph.D. in Laser-Based Additive Manufacturing",
+    "affiliation": {
+      "@type": "Organization",
+      "name": "Advanced Materials Research Institute - Italy"
+    },
+    "knowsAbout": [
+      "Laser Materials Processing",
+      "Tantalum Surface Engineering",
+      "Laser-Based Additive Manufacturing"
+    ],
+    "image": "https://z-beam.com/images/author/alessandro-moretti.jpg",
+    "nationality": "Italy"
+  },
+  "datePublished": "2025-09-19T18:38:09Z",
+  "dateModified": "2025-09-19T18:38:09Z",
+  "image": [
+    {
+      "@type": "ImageObject",
+      "url": "https://z-beam.com/images/tantalum-laser-cleaning-hero.jpg",
+      "name": "Tantalum Laser Cleaning Before/After Comparison",
+      "caption": "Tantalum surface undergoing laser cleaning showing precise contamination removal",
+      "description": "High-resolution demonstration of Tantalum component processed with 1064nm wavelength at optimized fluence, showing complete contamination removal while preserving material integrity",
+      "width": 1200,
+      "height": 800,
+      "encodingFormat": "image/jpeg",
+      "representativeOfPage": true
+    },
+    {
+      "@type": "ImageObject",
+      "url": "https://z-beam.com/images/tantalum-laser-cleaning-micro.jpg",
+      "name": "Tantalum Surface Microstructure Analysis",
+      "caption": "Microscopic view of Tantalum surface after laser cleaning showing detailed surface structure",
+      "description": "Scanning electron micrographs of Tantalum surface processed with 1064nm wavelength, verified at high magnification showing detailed surface structure",
+      "width": 800,
+      "height": 600,
+      "encodingFormat": "image/jpeg"
+    }
+  ],
+  "about": [
+    {
+      "@type": "Material",
+      "name": "Tantalum",
+      "alternateName": [
+        "Ta"
+      ],
+      "identifier": "Ta",
+      "category": "metal",
+      "description": "Technical overview of Tantalum, Ta, for laser cleaning applications, including optimal 1064nm wavelength interaction, and industrial applications in surface preparation.",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Density",
+          "value": "16.69 g/cm³"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Melting Point",
+          "value": "3017°C"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Thermal Conductivity",
+          "value": "57.5 W/m·K"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Tensile Strength",
+          "value": "310 MPa"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Young's Modulus",
+          "value": "186 GPa"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Hardness",
+          "value": "800-1100 HV"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Chemical Formula",
+          "value": "Ta"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Material Type",
+          "value": "metal"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Chemical Symbol",
+          "value": "Ta"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Chemical Composition",
+          "value": "Tantalum (Ta) 99.9%, Trace elements (Nb, Fe, Si, Ti, W)"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Material Compatibility",
+          "value": "Stainless Steel, Titanium Alloys, Nickel-based Superalloys"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Regulatory Standards",
+          "value": "ISO 18562, ASTM F2100, IEC 60601-1"
+        }
+      ]
+    },
+    {
+      "@type": "Process",
+      "name": "Laser Cleaning",
+      "description": "Non-contact surface treatment process optimized for Tantalum materials"
+    }
+  ],
+  "mainEntity": {
+    "@type": "HowTo",
+    "name": "How to Laser Clean Tantalum",
+    "description": "Step-by-step process for laser cleaning Tantalum materials using optimized parameters",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "name": "Material Preparation",
+        "text": "Secure Tantalum component in laser processing fixture ensuring stable positioning and adequate ventilation for industrial safety operation."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Parameter Configuration",
+        "text": "Configure laser parameters: 1064nm wavelength, optimized fluence, nanosecond pulse duration, optimized repetition rate."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Surface Treatment",
+        "text": "Execute systematic scanning pattern with precision spot size maintaining consistent standoff distance for Tantalum processing."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Quality Verification",
+        "text": "Inspect cleaned Tantalum surface using optical microscopy to verify contaminant removal and material integrity preservation."
+      }
+    ]
+  },
+  "mentions": [
+    "aerospace",
+    "electronics",
+    "components",
+    "manufacturing"
+  ],
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Z-Beam Laser Processing Guide",
+    "url": "https://z-beam.com/tantalum-laser-cleaning"
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Materials",
+        "item": "https://z-beam.com/tantalum-laser-cleaning"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Metal",
+        "item": "https://z-beam.com/tantalum-laser-cleaning"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Tantalum",
+        "item": "https://z-beam.com/tantalum-laser-cleaning"
+      }
+    ]
+  },
+  "potentialAction": {
+    "@type": "ReadAction",
+    "target": "https://z-beam.com/tantalum-laser-cleaning"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Z-Beam",
+    "url": "https://z-beam.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://z-beam.com/images/site/logo/logo_.png"
+    },
+    "sameAs": [
+      "https://linkedin.com/company/z-beam"
+    ]
+  }
+}

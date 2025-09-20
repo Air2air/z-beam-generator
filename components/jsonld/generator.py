@@ -32,6 +32,7 @@ class JsonldComponentGenerator(HybridComponentGenerator):
         super().__init__("jsonld")
         self._material_data = None
         self._author_info = None
+        self.file_extension = ".json"  # JSON-LD files should use .json extension
 
     def generate(
         self,
@@ -93,11 +94,11 @@ class JsonldComponentGenerator(HybridComponentGenerator):
             material_data=self._material_data
         )
         
-        # Convert to YAML format
-        import yaml
-        yaml_content = yaml.dump({"jsonld": jsonld_data}, default_flow_style=False, allow_unicode=True)
+        # Convert to JSON format (proper JSON-LD format)
+        import json
+        json_content = json.dumps(jsonld_data, indent=2, ensure_ascii=False)
         
-        return yaml_content
+        return json_content
 
     def _load_example_structure(self) -> Dict:
         """Load example JSON-LD structure from template file"""
@@ -324,6 +325,11 @@ Category: {material_data.get('category', 'material')}
         
         # Enhance author information with comprehensive frontmatter data
         if author_obj:
+            # Get author image, ensuring absolute URL
+            author_image = author_obj.get("image", "")
+            if author_image and not author_image.startswith('http'):
+                author_image = f"https://z-beam.com{author_image}"
+            
             enhanced["author"] = {
                 "@type": "Person",
                 "name": author_obj.get("name", enhanced.get("author", {}).get("name", "")),
@@ -337,7 +343,7 @@ Category: {material_data.get('category', 'material')}
                     f"{material_name_title} Surface Engineering",
                     author_obj.get("expertise", "Industrial Laser Applications")
                 ],
-                "image": author_obj.get("image", ""),
+                "image": author_image,
                 "nationality": author_obj.get("country", "")
             }
         
@@ -346,7 +352,7 @@ Category: {material_data.get('category', 'material')}
         if images.get("hero"):
             enhanced_images.append({
                 "@type": "ImageObject",
-                "url": images["hero"].get("url", f"/images/{material_slug}-laser-cleaning-hero.jpg"),
+                "url": images["hero"].get("url", f"https://z-beam.com/images/{material_slug}-laser-cleaning-hero.jpg"),
                 "name": f"{material_name_title} Laser Cleaning Before/After Comparison",
                 "caption": images["hero"].get("alt", f"{material_name_title} surface undergoing laser cleaning"),
                 "description": f"High-resolution demonstration of {material_name_title} component processed with {tech_specs.get('wavelength', '1064nm')} wavelength at {tech_specs.get('fluenceRange', 'optimized fluence')}, showing complete contamination removal while preserving material integrity",
@@ -359,7 +365,7 @@ Category: {material_data.get('category', 'material')}
         if images.get("micro"):
             enhanced_images.append({
                 "@type": "ImageObject",
-                "url": images["micro"].get("url", f"/images/{material_slug}-laser-cleaning-micro.jpg"),
+                "url": images["micro"].get("url", f"https://z-beam.com/images/{material_slug}-laser-cleaning-micro.jpg"),
                 "name": f"{material_name_title} Surface Microstructure Analysis",
                 "caption": images["micro"].get("alt", f"Microscopic view of {material_name_title} surface after laser cleaning"),
                 "description": f"Scanning electron micrographs of {material_name_title} surface processed with {tech_specs.get('wavelength', '1064nm')} wavelength, verified at high magnification showing detailed surface structure",
@@ -703,6 +709,11 @@ Category: {material_data.get('category', 'material')}
             elif key == "author":
                 # Enhanced author information from frontmatter author_object
                 if author_obj:
+                    # Get author image, ensuring absolute URL
+                    author_image = author_obj.get("image", "")
+                    if author_image and not author_image.startswith('http'):
+                        author_image = f"https://z-beam.com{author_image}"
+                    
                     result[key] = {
                         "@type": "Person",
                         "name": author_obj.get("name", ""),
@@ -716,7 +727,7 @@ Category: {material_data.get('category', 'material')}
                             f"{material_name_title} Surface Engineering",
                             author_obj.get("expertise", "Industrial Laser Applications")
                         ],
-                        "image": author_obj.get("image", ""),
+                        "image": author_image,
                         "nationality": author_obj.get("country", "")
                     }
                 else:
@@ -743,9 +754,16 @@ Category: {material_data.get('category', 'material')}
                 
                 # Microscopic image from frontmatter with absolute URL
                 if images.get("micro"):
+                    # Get URL from images, ensuring absolute path in fallback
+                    micro_url = images['micro'].get('url')
+                    if not micro_url:
+                        micro_url = f"https://z-beam.com/images/{material_slug}-laser-cleaning-micro.jpg"
+                    elif not micro_url.startswith('http'):
+                        micro_url = f"https://z-beam.com{micro_url}"
+                    
                     micro_img = {
                         "@type": "ImageObject",
-                        "url": f"https://z-beam.com{images['micro'].get('url', f'/images/{material_slug}-laser-cleaning-micro.jpg')}",
+                        "url": micro_url,
                         "name": f"{material_name_title} Surface Microstructure Analysis",
                         "caption": images["micro"].get("alt", f"Microscopic view of {material_name_title} surface after laser cleaning"),
                         "description": f"Scanning electron micrographs of {material_name_title} surface processed with {tech_specs.get('wavelength', '1064nm')} wavelength, verified at high magnification showing detailed surface structure",
@@ -844,7 +862,7 @@ Category: {material_data.get('category', 'material')}
                         "url": "https://z-beam.com/images/site/logo/logo_.png"
                     },
                     "sameAs": [
-                        "https://www.linkedin.com/company/z-beam"
+                        "https://linkedin.com/company/z-beam"
                     ]
                 }
             elif key == "publisher":
@@ -858,7 +876,7 @@ Category: {material_data.get('category', 'material')}
                         "url": "https://z-beam.com/images/site/logo/logo_.png"
                     },
                     "sameAs": [
-                        "https://www.linkedin.com/company/z-beam"
+                        "https://linkedin.com/company/z-beam"
                     ]
                 }
             elif key in ["datePublished", "dateModified"]:
@@ -929,7 +947,7 @@ Category: {material_data.get('category', 'material')}
                     "url": "https://z-beam.com/images/site/logo/logo_.png"
                 },
                 "sameAs": [
-                    "https://www.linkedin.com/company/z-beam"
+                    "https://linkedin.com/company/z-beam"
                 ]
             }
 
@@ -1048,7 +1066,7 @@ Category: {material_data.get('category', 'material')}
                 result[key] = []
                 for item in example_value:
                     if "linkedin.com" in str(item):
-                        result[key].append("https://www.linkedin.com/company/z-beam")
+                        result[key].append("https://linkedin.com/company/z-beam")
                     else:
                         result[key].append(item)
             elif key == "name" and parent_key in ["copyrightHolder", "isPartOf"]:
@@ -1243,6 +1261,18 @@ Category: {material_data.get('category', 'material')}
             "Thermal Expansion Range": ["thermalExpansionMin", "thermalExpansionMax"], 
             "Specific Heat Range": ["specificHeatMin", "specificHeatMax"],
         }
+        
+        # Extract properties section from frontmatter
+        props = frontmatter_data.get("properties", {})
+        
+        # Add basic material properties to the array
+        for prop_name, prop_value in material_properties.items():
+            if prop_value and str(prop_value).strip():
+                properties.append({
+                    "@type": "PropertyValue",
+                    "name": prop_name,
+                    "value": str(prop_value)
+                })
         
         for prop_name, field_names in thermal_properties.items():
             for field in field_names:

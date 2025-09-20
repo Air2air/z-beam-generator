@@ -54,12 +54,13 @@ class CaptionComponentGenerator(StaticComponentGenerator):
         self._frontmatter_cache = {}
         
     def _load_category_ranges(self) -> Dict:
-        """Load category ranges data for material property context"""
+        """Load category ranges data from materials.yaml for material property context"""
         if self._category_ranges is None:
             try:
-                ranges_path = Path(__file__).parents[3] / "data" / "category_ranges.yaml"
-                if ranges_path.exists():
-                    self._category_ranges = load_yaml_config(str(ranges_path), "caption")
+                materials_path = Path(__file__).parents[3] / "data" / "materials.yaml"
+                if materials_path.exists():
+                    materials_data = load_yaml_config(str(materials_path), "caption")
+                    self._category_ranges = materials_data.get('category_ranges', {})
                 else:
                     self._category_ranges = {}
             except Exception:

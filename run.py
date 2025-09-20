@@ -580,7 +580,8 @@ def main():
                     material=args.material,
                     component_type=component_type,
                     api_client=api_client,
-                    frontmatter_data=frontmatter_data
+                    frontmatter_data=frontmatter_data,
+                    material_data=material_info
                 )
                 
                 if result.success:
@@ -693,7 +694,8 @@ def main():
                             material=material_name,
                             component_type=component_type,
                             api_client=api_client,
-                            frontmatter_data=frontmatter_data
+                            frontmatter_data=frontmatter_data,
+                            material_data=material_info
                         )
                         
                         if result.success:

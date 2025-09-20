@@ -1,3 +1,277 @@
+category_ranges:
+  metal:
+    density:
+      min: "0.5 g/cm³"    # Lithium
+      max: "22.6 g/cm³"   # Osmium
+    tensileStrength:
+      min: "70 MPa"       # Lead
+      max: "2000 MPa"     # High-strength steel alloys
+    thermalConductivity:
+      min: "8 W/m·K"      # Stainless steel
+      max: "429 W/m·K"    # Silver
+    meltingPoint:
+      min: "-39°C"        # Mercury
+      max: "3422°C"       # Tungsten
+    hardness:
+      min: "5 HB"         # Lead
+      max: "500 HV"       # Hardened steel
+    youngsModulus:
+      min: "70 GPa"       # Aluminum
+      max: "411 GPa"      # Tungsten
+    laserAbsorption:
+      min: "0.02 cm⁻¹"    # Highly polished aluminum/silver
+      max: "100 cm⁻¹"     # Oxidized/dark metals
+    laserReflectivity:
+      min: "5%"           # Oxidized steel, dark metals
+      max: "98%"          # Polished silver, aluminum
+    thermalDiffusivity:
+      min: "4 mm²/s"      # Stainless steel
+      max: "174 mm²/s"    # Silver
+    thermalExpansion:
+      min: "0.5 µm/m·K"   # Invar alloys
+      max: "29 µm/m·K"    # Aluminum
+    specificHeat:
+      min: "0.13 J/g·K"   # Lead
+      max: "0.90 J/g·K"   # Aluminum
+  ceramic:
+    density:
+      min: "1.8 g/cm³"    # Porous ceramics
+      max: "6.0 g/cm³"    # Dense technical ceramics
+    tensileStrength:
+      min: "50 MPa"       # Traditional ceramics
+      max: "1000 MPa"     # Advanced technical ceramics
+    thermalConductivity:
+      min: "0.5 W/m·K"    # Insulating ceramics
+      max: "200 W/m·K"    # Silicon carbide
+    meltingPoint:
+      min: "1200°C"       # Low-fire ceramics
+      max: "2800°C"       # Refractory ceramics (alumina)
+    hardness:
+      min: "500 HV"       # Soft ceramics
+      max: "2500 HV"      # Silicon carbide, alumina
+    youngsModulus:
+      min: "150 GPa"      # Porous ceramics
+      max: "400 GPa"      # Dense technical ceramics
+    laserAbsorption:
+      min: "0.1 cm⁻¹"     # Transparent ceramics (alumina)
+      max: "50 cm⁻¹"      # Dark ceramics (silicon carbide)
+    laserReflectivity:
+      min: "8%"           # Dark ceramics
+      max: "25%"          # Light-colored ceramics
+    thermalDiffusivity:
+      min: "0.5 mm²/s"    # Insulating ceramics
+      max: "80 mm²/s"     # Silicon carbide
+    thermalExpansion:
+      min: "0.5 µm/m·K"   # Quartz ceramics
+      max: "8 µm/m·K"     # Alumina
+    specificHeat:
+      min: "0.4 J/g·K"    # Dense ceramics
+      max: "1.2 J/g·K"    # Porous ceramics
+  composite:
+    density:
+      min: "0.9 g/cm³"    # Foam composites
+      max: "2.2 g/cm³"    # Dense fiber composites
+    tensileStrength:
+      min: "100 MPa"      # Basic composites
+      max: "7000 MPa"     # Carbon fiber reinforced
+    thermalConductivity:
+      min: "0.1 W/m·K"    # Insulating composites
+      max: "60 W/m·K"     # Conductive composites
+    meltingPoint:
+      min: "150°C"        # Thermoplastic composites
+      max: "400°C"        # High-temp thermosets
+    hardness:
+      min: "10 HB"        # Soft composites
+      max: "80 HRC"       # Carbon fiber composites
+    youngsModulus:
+      min: "1 GPa"        # Foam composites
+      max: "300 GPa"      # Carbon fiber composites
+    laserAbsorption:
+      min: "1 cm⁻¹"       # Clear resin composites
+      max: "80 cm⁻¹"      # Carbon-filled composites
+    laserReflectivity:
+      min: "3%"           # Dark carbon composites
+      max: "15%"          # Light fiberglass composites
+    thermalDiffusivity:
+      min: "0.1 mm²/s"    # Insulating foam composites
+      max: "20 mm²/s"     # Carbon fiber composites
+    thermalExpansion:
+      min: "1 µm/m·K"     # Carbon fiber (longitudinal)
+      max: "60 µm/m·K"    # Thermoplastic composites
+    specificHeat:
+      min: "0.8 J/g·K"    # Dense composites
+      max: "2.0 J/g·K"    # Foam composites
+  glass:
+    density:
+      min: "2.2 g/cm³"    # Soda-lime glass
+      max: "8.0 g/cm³"    # Lead crystal glass
+    tensileStrength:
+      min: "30 MPa"       # Standard window glass
+      max: "200 MPa"      # Tempered glass
+    thermalConductivity:
+      min: "0.5 W/m·K"    # Low thermal conductivity glass
+      max: "2.0 W/m·K"    # Standard glass
+    meltingPoint:
+      min: "573°C"        # Soda-lime softening
+      max: "1700°C"       # Borosilicate melting
+    hardness:
+      min: "450 HV"       # Soft glass
+      max: "750 HV"       # Hard borosilicate
+    youngsModulus:
+      min: "50 GPa"       # Soft glass
+      max: "90 GPa"       # Hard glass
+    laserAbsorption:
+      min: "0.01 cm⁻¹"    # Pure fused silica
+      max: "10 cm⁻¹"      # Colored/doped glass
+    laserReflectivity:
+      min: "4%"           # Standard glass at 1064nm
+      max: "15%"          # Coated/specialized glass
+    thermalDiffusivity:
+      min: "0.4 mm²/s"    # Heavy lead glass
+      max: "1.4 mm²/s"    # Fused silica
+    thermalExpansion:
+      min: "0.5 µm/m·K"   # Fused silica
+      max: "9 µm/m·K"     # Soda-lime glass
+    specificHeat:
+      min: "0.7 J/g·K"    # Lead glass
+      max: "1.0 J/g·K"    # Borosilicate glass
+  stone:
+    density:
+      min: "1.5 g/cm³"    # Pumice
+      max: "3.2 g/cm³"    # Basalt
+    tensileStrength:
+      min: "2 MPa"        # Soft sedimentary
+      max: "300 MPa"      # Hard igneous
+    thermalConductivity:
+      min: "0.2 W/m·K"    # Insulating stone
+      max: "5.0 W/m·K"    # Dense granite
+    meltingPoint:
+      min: "1200°C"       # Limestone decomposition
+      max: "1700°C"       # Granite melting
+    hardness:
+      min: "100 HV"       # Soft limestone
+      max: "800 HV"       # Hard granite
+    youngsModulus:
+      min: "10 GPa"       # Soft sandstone
+      max: "100 GPa"      # Hard granite
+    laserAbsorption:
+      min: "0.5 cm⁻¹"     # Light-colored marble
+      max: "30 cm⁻¹"      # Dark basalt
+    laserReflectivity:
+      min: "10%"          # Dark stone
+      max: "40%"          # Light marble
+    thermalDiffusivity:
+      min: "0.5 mm²/s"    # Porous limestone
+      max: "3 mm²/s"      # Dense granite
+    thermalExpansion:
+      min: "3 µm/m·K"     # Quartzite
+      max: "12 µm/m·K"    # Marble
+    specificHeat:
+      min: "0.7 J/g·K"    # Dense stone
+      max: "1.0 J/g·K"    # Porous stone
+  masonry:
+    density:
+      min: "1.2 g/cm³"    # Lightweight concrete
+      max: "2.8 g/cm³"    # Dense concrete
+    tensileStrength:
+      min: "1 MPa"        # Basic mortar
+      max: "50 MPa"       # High-strength concrete
+    thermalConductivity:
+      min: "0.1 W/m·K"    # Insulating concrete
+      max: "2.0 W/m·K"    # Dense masonry
+    meltingPoint:
+      min: "1450°C"       # Cement clinker formation
+      max: "2000°C"       # Refractory brick melting
+    hardness:
+      min: "20 HV"        # Soft mortar
+      max: "300 HV"       # High-strength concrete
+    youngsModulus:
+      min: "15 GPa"       # Lightweight concrete
+      max: "50 GPa"       # High-strength concrete
+    laserAbsorption:
+      min: "0.8 cm⁻¹"     # Light concrete
+      max: "50 cm⁻¹"      # Dark brick
+    laserReflectivity:
+      min: "8%"           # Dark brick
+      max: "35%"          # Light concrete
+    thermalDiffusivity:
+      min: "0.3 mm²/s"    # Lightweight concrete
+      max: "1.5 mm²/s"    # Dense masonry
+    thermalExpansion:
+      min: "6 µm/m·K"     # Dense concrete
+      max: "15 µm/m·K"    # Clay brick
+    specificHeat:
+      min: "0.8 J/g·K"    # Dense materials
+      max: "1.1 J/g·K"    # Porous materials
+  wood:
+    density:
+      min: "0.1 g/cm³"    # Balsa
+      max: "1.3 g/cm³"    # Lignum vitae
+    tensileStrength:
+      min: "20 MPa"       # Soft woods
+      max: "200 MPa"      # Hardwoods along grain
+    thermalConductivity:
+      min: "0.04 W/m·K"   # Low-density wood
+      max: "0.4 W/m·K"    # Dense hardwood
+    meltingPoint:
+      min: "250°C"        # Wood decomposition start
+      max: "500°C"        # Complete pyrolysis
+    hardness:
+      min: "1 HB"         # Balsa wood
+      max: "4000 HB"      # Lignum vitae
+    youngsModulus:
+      min: "4 GPa"        # Balsa wood
+      max: "20 GPa"       # Dense hardwoods
+    laserAbsorption:
+      min: "5 cm⁻¹"       # Light woods (pine, birch)
+      max: "100 cm⁻¹"     # Dark woods (ebony, walnut)
+    laserReflectivity:
+      min: "5%"           # Dark hardwoods
+      max: "25%"          # Light softwoods
+    thermalDiffusivity:
+      min: "0.1 mm²/s"    # Dense hardwoods (across grain)
+      max: "0.4 mm²/s"    # Light woods (along grain)
+    thermalExpansion:
+      min: "2 µm/m·K"     # Along grain
+      max: "50 µm/m·K"    # Across grain (radial/tangential)
+    specificHeat:
+      min: "1.2 J/g·K"    # Dry wood
+      max: "2.5 J/g·K"    # Green/wet wood
+  semiconductor:
+    density:
+      min: "2.3 g/cm³"    # Silicon
+      max: "5.3 g/cm³"    # Gallium arsenide
+    tensileStrength:
+      min: "100 MPa"      # Basic semiconductors
+      max: "400 MPa"      # Silicon carbide
+    thermalConductivity:
+      min: "1.5 W/m·K"    # Low-conductivity semiconductors
+      max: "490 W/m·K"    # Silicon carbide
+    meltingPoint:
+      min: "937°C"        # Gallium arsenide
+      max: "2830°C"       # Silicon carbide
+    hardness:
+      min: "900 HV"       # Silicon
+      max: "2800 HV"      # Silicon carbide
+    youngsModulus:
+      min: "130 GPa"      # Silicon
+      max: "450 GPa"      # Silicon carbide
+    laserAbsorption:
+      min: "0.1 cm⁻¹"     # Wide bandgap semiconductors (below bandgap)
+      max: "1000 cm⁻¹"    # Direct bandgap absorption (above bandgap)
+    laserReflectivity:
+      min: "15%"          # Silicon (infrared)
+      max: "45%"          # Gallium arsenide
+    thermalDiffusivity:
+      min: "0.5 mm²/s"    # Low-mobility semiconductors
+      max: "150 mm²/s"    # Silicon carbide
+    thermalExpansion:
+      min: "2 µm/m·K"     # Silicon carbide
+      max: "6 µm/m·K"     # Silicon
+    specificHeat:
+      min: "0.3 J/g·K"    # Heavy semiconductors (GaAs)
+      max: "0.7 J/g·K"    # Silicon
+
 parameter_templates:
   standard_fiber_laser:
     fluence_threshold: 0.5–5 J/cm²
@@ -394,7 +668,16 @@ materials:
       difficulty_score: 4
       category: ceramic
       formula: Al2O3
-      symbol: Al2O3
+      symbol: Al-O
+      density: 3.95-4.1 g/cm³
+      melting_point: 2072°C
+      thermal_conductivity: 35 W/(m·K)
+      hardness: 9.0 Mohs
+      compressive_strength: 2000-4000 MPa
+      flexural_strength: 300-400 MPa
+      thermal_expansion: 8.1×10⁻⁶/K
+      dielectric_constant: 9.8
+      electrical_resistivity: 1×10¹⁴ Ω·cm
       laser_parameters:
         fluence_threshold: 1.0–10 J/cm²
         pulse_duration: 10-200ns
@@ -406,16 +689,20 @@ materials:
       applications:
       - 'Aerospace: Removal of coatings and surface contaminants from alumina components'
       - 'Semiconductor: Cleaning of alumina substrates for integrated circuits'
+      - 'Medical: Biocompatible ceramic implant cleaning'
+      - 'Industrial: Refractory component maintenance'
       industry_tags:
       - Semiconductor
       - Aerospace
+      - Medical
+      - Refractory
     - name: Porcelain
       author_id: 3
       complexity: medium
       difficulty_score: 3
       category: ceramic
       formula: Al2O3·2SiO2·2H2O
-      symbol: Porcelain
+      symbol: Al-Si-O
       laser_parameters_template: standard_fiber_laser
       applications:
       - 'Ceramics Manufacturing: Cleaning of porcelain surfaces for improved adhesion
@@ -431,7 +718,14 @@ materials:
       difficulty_score: 4
       category: ceramic
       formula: Si3N4
-      symbol: Si3N4
+      symbol: Si-N
+      density: 3.17-3.44 g/cm³
+      melting_point: 1900°C (decomposes)
+      thermal_conductivity: 15-85 W/(m·K)
+      hardness: 9.0 Mohs
+      flexural_strength: 700-1000 MPa
+      thermal_expansion: 2.5×10⁻⁶/K
+      dielectric_constant: 7.5
       laser_parameters:
         fluence_threshold: 0.5–5 J/cm²
         pulse_duration: 10-100ns
@@ -443,9 +737,13 @@ materials:
       applications:
       - 'Semiconductor: Wafer cleaning and surface preparation'
       - 'Automotive: Cleaning of ceramic engine components'
+      - 'Cutting Tools: Silicon nitride cutting insert maintenance'
+      - 'Ball Bearings: High-temperature bearing component cleaning'
       industry_tags:
       - Automotive
       - Semiconductor
+      - Tooling
+      - Bearings
     - name: Stoneware
       author_id: 4
       complexity: medium
@@ -478,7 +776,7 @@ materials:
     items:
     - name: Carbon Fiber Reinforced Polymer
       author_id: 1
-      complexity: very_high
+      complexity: high
       difficulty_score: 5
       category: composite
       laser_parameters_template: high_precision_fiber_laser
@@ -658,7 +956,7 @@ materials:
       - Aerospace
     - name: Metal Matrix Composites MMCs
       author_id: 4
-      complexity: very_high
+      complexity: high
       difficulty_score: 5
       category: composite
       laser_parameters_template: high_precision_fiber_laser
@@ -670,7 +968,7 @@ materials:
       - Aerospace
     - name: Ceramic Matrix Composites CMCs
       author_id: 4
-      complexity: very_high
+      complexity: high
       difficulty_score: 5
       category: composite
       laser_parameters:
@@ -992,6 +1290,8 @@ materials:
       complexity: medium
       difficulty_score: 3
       category: metal
+      symbol: Be
+      formula: Be
       laser_parameters:
         fluence_threshold: 1.0–10 J/cm²
         pulse_duration: 10-50ns
@@ -1012,31 +1312,65 @@ materials:
       difficulty_score: 3
       category: metal
       formula: Cu-Zn
+      density: 8.4-8.73 g/cm³
+      melting_point: 900-940°C
+      thermal_conductivity: 109-125 W/(m·K)
+      composition: "Typically 60-70% Cu, 30-40% Zn"
+      common_alloys: "Cartridge brass (70/30), Naval brass (60/39/1% Sn)"
+      corrosion_resistance: good
+      antimicrobial_properties: yes
+      machinability: excellent
       laser_parameters_template: standard_fiber_laser
       applications:
       - 'Automotive: Cleaning of brass components for surface preparation and restoration'
       - 'Electronics: Precision cleaning of brass connectors and contacts'
+      - 'Marine: Brass fitting and propeller maintenance'
+      - 'Plumbing: Valve and fitting restoration'
       industry_tags:
       - Automotive
       - Electronics
+      - Marine
+      - Plumbing
     - name: Bronze
       author_id: 3
       complexity: medium
       difficulty_score: 3
       category: metal
       formula: Cu-Sn
+      density: 8.9 g/cm³
+      melting_point: 950°C (varies by composition)
+      thermal_conductivity: 26 W/(m·K)
+      composition: "Typically 88% Cu, 12% Sn"
+      common_alloys: "Aluminum bronze, Phosphor bronze, Bell metal (77/23)"
+      corrosion_resistance: superior to steel
+      strength: "10% denser than steel"
+      color: "Reddish-brown to golden"
       laser_parameters_template: standard_fiber_laser
       applications:
       - 'Manufacturing: Removal of rust and corrosion from bronze surfaces'
       - 'Restoration: Cleaning of bronze sculptures and artifacts'
+      - 'Marine: Propeller and bearing component cleaning'
+      - 'Musical Instruments: Bell and cymbal restoration'
       industry_tags:
       - Manufacturing
       - Restoration
+      - Marine
+      - Musical Instruments
     - name: Cobalt
       author_id: 2
       complexity: medium
       difficulty_score: 3
       category: metal
+      symbol: Co
+      formula: Co
+      density: 8.9 g/cm³
+      melting_point: 1495°C
+      thermal_conductivity: 100 W/(m·K)
+      curie_temperature: 1115°C
+      magnetic_properties: ferromagnetic
+      crystal_structure: hexagonal close-packed
+      tensile_strength: 1043 MPa
+      yield_strength: 470-3000 MPa
       laser_parameters:
         fluence_threshold: 1.0–3.0 J/cm²
         pulse_duration: 10-50ns
@@ -1050,9 +1384,13 @@ materials:
         and corrosion'
       - 'Electronics: Precise cleaning of circuit boards and connectors to remove
         residues and contaminants'
+      - 'Medical: Cobalt-chromium alloy implant cleaning'
+      - 'Permanent Magnets: Alnico and samarium-cobalt magnet maintenance'
       industry_tags:
       - Aerospace
       - Electronics
+      - Medical
+      - Magnetics
     - name: Copper
       author_id: 4
       complexity: medium
@@ -1092,6 +1430,7 @@ materials:
       complexity: medium
       difficulty_score: 3
       category: metal
+      symbol: Au
       formula: Au
       laser_parameters_template: standard_fiber_laser
       applications:
@@ -1103,7 +1442,7 @@ materials:
       - Electronics
     - name: Hafnium
       author_id: 4
-      complexity: very_high
+      complexity: high
       difficulty_score: 5
       category: metal
       laser_parameters_template: high_power_fiber_laser
@@ -1190,6 +1529,7 @@ materials:
       complexity: low
       difficulty_score: 2
       category: metal
+      symbol: Fe
       formula: Fe
       laser_parameters:
         fluence_threshold: 1.0–10 J/cm²
@@ -1210,6 +1550,7 @@ materials:
       complexity: medium
       difficulty_score: 3
       category: metal
+      symbol: Pb
       formula: Pb
       laser_parameters:
         fluence_threshold: 1.0–10 J/cm²
@@ -1230,6 +1571,7 @@ materials:
       complexity: medium
       difficulty_score: 3
       category: metal
+      symbol: Mg
       formula: Mg
       laser_parameters_template: standard_fiber_laser
       applications:
@@ -1258,13 +1600,28 @@ materials:
       complexity: medium
       difficulty_score: 3
       category: metal
+      symbol: Ni
+      formula: Ni
+      density: 8.91 g/cm³
+      melting_point: 1455°C
+      thermal_conductivity: 90.9 W/(m·K)
+      curie_temperature: 355°C
+      magnetic_properties: ferromagnetic
+      crystal_structure: face-centered cubic
+      tensile_strength: 667-1600 MPa
+      yield_strength: 638 MPa
+      electrical_resistivity: 69.3 nΩ·m
       laser_parameters_template: standard_fiber_laser
       applications:
       - 'Automotive: Removal of rust and corrosion from nickel-plated parts'
       - 'Electronics: Cleaning of nickel surfaces for improved conductivity and soldering'
+      - 'Aerospace: Nickel-based superalloy component cleaning'
+      - 'Chemical Processing: Catalyst recovery and regeneration'
       industry_tags:
       - Automotive
       - Electronics
+      - Aerospace
+      - Chemical Processing
     - name: Niobium
       author_id: 4
       complexity: medium
@@ -1309,6 +1666,7 @@ materials:
       complexity: medium
       difficulty_score: 3
       category: metal
+      symbol: Pt
       formula: Pt
       laser_parameters:
         fluence_threshold: 1.0–10 J/cm²
@@ -1326,7 +1684,7 @@ materials:
       - Aerospace
     - name: Rhenium
       author_id: 1
-      complexity: very_high
+      complexity: high
       difficulty_score: 5
       category: metal
       laser_parameters:
@@ -1380,6 +1738,7 @@ materials:
       complexity: medium
       difficulty_score: 3
       category: metal
+      symbol: Ag
       formula: Ag
       laser_parameters_template: standard_fiber_laser_alt
       applications:
@@ -1395,14 +1754,30 @@ materials:
       complexity: high
       difficulty_score: 4
       category: metal
+      symbol: SS
       formula: Fe-Cr-Ni
+      density: 7.5-8.0 g/cm³
+      melting_point: 1325-1530°C
+      thermal_conductivity: 16.2 W/(m·K)
+      corrosion_resistance: excellent
+      chromium_content: 11-30%
+      nickel_content: 0-37%
+      grades: "304, 316, 321, 347, 410, 420, 430"
+      magnetic_properties: varies by grade
+      tensile_strength: 515-827 MPa
       laser_parameters_template: high_precision_fiber_laser
       applications:
       - 'Automotive: Removal of rust, oil, and paint from stainless steel parts'
       - 'Aerospace: Precision cleaning of intricate stainless steel components'
+      - 'Food Processing: Sanitary cleaning of processing equipment'
+      - 'Medical: Surgical instrument and implant cleaning'
+      - 'Chemical Processing: Heat exchanger and vessel maintenance'
       industry_tags:
       - Automotive
       - Aerospace
+      - Food Processing
+      - Medical
+      - Chemical Processing
     - name: Steel
       author_id: 3
       complexity: low
@@ -1459,10 +1834,19 @@ materials:
       - Electronics
     - name: Titanium
       author_id: 4
-      complexity: very_high
+      complexity: high
       difficulty_score: 5
       category: metal
       formula: Ti
+      symbol: Ti
+      density: 4.51 g/cm³
+      melting_point: 1668°C
+      thermal_conductivity: 21.9 W/(m·K)
+      tensile_strength: 434-3420 MPa
+      yield_strength: 716-2770 MPa
+      crystal_structure: hexagonal close-packed
+      corrosion_resistance: excellent
+      biocompatibility: excellent
       laser_parameters:
         fluence_threshold: 1.0–10 J/cm²
         pulse_duration: 10-100ns
@@ -1474,18 +1858,34 @@ materials:
       applications:
       - 'Aerospace: Removal of oxidation and surface contaminants from titanium components'
       - 'Medical: Cleaning of titanium implants and surgical instruments'
+      - 'Marine: Corrosion-resistant components for ships and offshore platforms'
+      - 'Chemical Processing: Heat exchangers and pressure vessels'
       industry_tags:
       - Medical
       - Aerospace
+      - Marine
+      - Chemical Processing
     - name: Tungsten
       author_id: 2
       complexity: medium
       difficulty_score: 3
       category: metal
+      symbol: W
       formula: W
+      density: 19.25 g/cm³
+      melting_point: 3422°C
+      thermal_conductivity: 173 W/(m·K)
+      tensile_strength: 3430-4600 MPa
+      yield_strength: 2000-4000 MPa
+      crystal_structure: body-centered cubic
+      thermal_expansion: 4.42×10⁻⁶/K
+      electrical_resistivity: 52.8 nΩ·m
       laser_parameters_template: high_power_fiber_laser
       applications:
       - 'Aerospace: Cleaning of turbine blades and engine components'
+      - 'Electronics: Filament cleaning in incandescent bulbs and vacuum tubes'
+      - 'Industrial: Tungsten carbide cutting tool maintenance'
+      - 'Military: Kinetic energy penetrator component cleaning'
       - 'Semiconductor: Removal of surface contaminants from tungsten parts'
       industry_tags:
       - Semiconductor
@@ -1507,6 +1907,7 @@ materials:
       complexity: medium
       difficulty_score: 3
       category: metal
+      symbol: Zn
       formula: Zn
       laser_parameters_template: high_power_fiber_laser
       applications:
@@ -1604,15 +2005,15 @@ materials:
       category: semiconductor
       documentation_status: pending
       laser_parameters:
-        fluence_threshold: TBD
-        pulse_duration: TBD
-        wavelength_optimal: TBD
+        fluence_threshold: 0.1-1.0 J/cm²
+        pulse_duration: 1-50ns
+        wavelength_optimal: 1064nm
       applications:
-      - TBD
-      surface_treatments:
-      - TBD
+      - 'Semiconductor: Precision cleaning of silicon germanium wafers'
+      - 'Electronics: Removal of organic contaminants from semiconductor surfaces'
       industry_tags:
-      - TBD
+      - Semiconductor
+      - Electronics
   stone:
     description: Stone materials for laser cleaning applications
     article_type: material

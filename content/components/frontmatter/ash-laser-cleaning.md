@@ -3,71 +3,20 @@ name: Ash
 category: wood
 title: Laser Cleaning Ash
 headline: Comprehensive technical guide for laser cleaning wood ash
-description: Technical overview of Ash, C6H10O5, for laser cleaning applications,
-  including optimal 1064nm wavelength interaction, and industrial applications in
-  surface preparation.
+description: Technical overview of Ash for laser cleaning applications, including
+  optimal wavelength interaction, and industrial applications in surface preparation.
 keywords: ash, ash wood, laser ablation, laser cleaning, non-contact cleaning, pulsed
   fiber laser, surface contamination removal, industrial laser parameters, thermal
   processing, surface restoration
 chemicalProperties:
-  symbol: Ash
-  formula: C6H10O5
   materialType: wood
 properties:
-  density: 0.71 g/cm³
-  densityNumeric: 0.71
-  densityUnit: g/cm³
-  densityMin: 0.6 g/cm³
-  densityMinNumeric: 0.6
-  densityMinUnit: g/cm³
-  densityMax: 0.9 g/cm³
-  densityMaxNumeric: 0.9
-  densityMaxUnit: g/cm³
-  densityPercentile: 45.2
-  meltingPoint: Decomposes at 300-400°C
-  meltingPointNumeric: 350.0
-  meltingPointUnit: °C
-  meltingPercentile: 32.1
-  thermalConductivity: 0.16 W/m·K
-  thermalConductivityNumeric: 0.16
-  thermalConductivityUnit: W/m·K
-  thermalPercentile: 28.5
-  tensileStrength: 85-120 MPa
-  tensileStrengthNumeric: 102.5
-  tensileStrengthUnit: MPa
-  tensilePercentile: 18.7
-  hardness: 4.0-5.0 Janka
-  hardnessNumeric: 4.5
-  hardnessUnit: Janka
-  hardnessMin: 3.5 Janka
-  hardnessMinNumeric: 3.5
-  hardnessMinUnit: Janka
-  hardnessMax: 6.0 Janka
-  hardnessMaxNumeric: 6.0
-  hardnessMaxUnit: Janka
-  hardnessPercentile: 42.3
-  youngsModulus: 12 GPa
-  youngsModulusNumeric: 12.0
-  youngsModulusUnit: GPa
-  modulusMin: 10 GPa
-  modulusMinNumeric: 10.0
-  modulusMinUnit: GPa
-  modulusMax: 14 GPa
-  modulusMaxNumeric: 14.0
-  modulusMaxUnit: GPa
-  modulusPercentile: 35.8
   laserType: Pulsed Fiber Laser
   wavelength: 1064nm
-  fluenceRange: 1.0–4.5 J/cm²
-  chemicalFormula: C6H10O5
-composition:
-- Cellulose (C6H10O5) 40-45%
-- Hemicellulose 25-30%
-- Lignin 20-25%
-- Ash content 0.5-1.5%
+  fluenceRange: "0.5-5 J/cm\xB2"
 machineSettings:
-  powerRange: 50-200W
-  powerRangeNumeric: 125.0
+  powerRange: 20-100W
+  powerRangeNumeric: 60.0
   powerRangeUnit: W
   powerRangeMin: 20W
   powerRangeMinNumeric: 20.0
@@ -75,8 +24,8 @@ machineSettings:
   powerRangeMax: 500W
   powerRangeMaxNumeric: 500.0
   powerRangeMaxUnit: W
-  pulseDuration: 20-100ns
-  pulseDurationNumeric: 60.0
+  pulseDuration: 10-100ns
+  pulseDurationNumeric: 55.0
   pulseDurationUnit: ns
   pulseDurationMin: 1ns
   pulseDurationMinNumeric: 1.0
@@ -84,7 +33,7 @@ machineSettings:
   pulseDurationMax: 1000ns
   pulseDurationMaxNumeric: 1000.0
   pulseDurationMaxUnit: ns
-  wavelength: 1064nm (primary), 532nm (optional)
+  wavelength: 1064nm
   wavelengthNumeric: 1064.0
   wavelengthUnit: nm
   wavelengthMin: 355nm
@@ -93,17 +42,8 @@ machineSettings:
   wavelengthMax: 2940nm
   wavelengthMaxNumeric: 2940.0
   wavelengthMaxUnit: nm
-  spotSize: 0.2-1.5mm
-  spotSizeNumeric: 0.85
-  spotSizeUnit: mm
-  spotSizeMin: 0.01mm
-  spotSizeMinNumeric: 0.01
-  spotSizeMinUnit: mm
-  spotSizeMax: 10mm
-  spotSizeMaxNumeric: 10.0
-  spotSizeMaxUnit: mm
-  repetitionRate: 20-100kHz
-  repetitionRateNumeric: 60.0
+  repetitionRate: 10-50kHz
+  repetitionRateNumeric: 30.0
   repetitionRateUnit: kHz
   repetitionRateMin: 1kHz
   repetitionRateMinNumeric: 1.0
@@ -111,24 +51,15 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: 1.0–4.5 J/cm²
-  fluenceRangeNumeric: 1.0
-  fluenceRangeUnit: J/cm²
-  fluenceRangeMin: 0.1J/cm²
+  fluenceRange: "0.5-5 J/cm\xB2"
+  fluenceRangeNumeric: 2.75
+  fluenceRangeUnit: "J/cm\xB2"
+  fluenceRangeMin: "0.1J/cm\xB2"
   fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: J/cm²
-  fluenceRangeMax: 50J/cm²
+  fluenceRangeMinUnit: "J/cm\xB2"
+  fluenceRangeMax: "50J/cm\xB2"
   fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: J/cm²
-  scanningSpeed: 50-500mm/s
-  scanningSpeedNumeric: 275.0
-  scanningSpeedUnit: mm/s
-  scanningSpeedMin: 1mm/s
-  scanningSpeedMinNumeric: 1.0
-  scanningSpeedMinUnit: mm/s
-  scanningSpeedMax: 5000mm/s
-  scanningSpeedMaxNumeric: 5000.0
-  scanningSpeedMaxUnit: mm/s
+  fluenceRangeMaxUnit: "J/cm\xB2"
   beamProfile: Gaussian TEM00
   beamProfileOptions:
   - Gaussian TEM00
@@ -137,56 +68,53 @@ machineSettings:
   - Multi-mode
   safetyClass: Class 4 (requires full enclosure)
 applications:
-- industry: Electronics Manufacturing
-  detail: Removal of surface oxides and contaminants from Ash substrates
-- industry: Aerospace Components
-  detail: Cleaning of thermal barrier coatings and wood matrix composites
+- 'Woodworking: Removal of surface contaminants and restoration of wooden artifacts'
+- 'Conservation: Cleaning of historical wooden structures and artworks'
 compatibility:
-- Wood Composites
-- Thermal Barrier Coatings
-- Surface Oxides
+- Low-Fluence Laser Cleaning
+- Gentle Ablative Processes
+- Non-Contact Surface Treatment
 regulatoryStandards: ISO 18562, ASTM F2100, IEC 60601-1
-author: Todd Dunning
+author: Dr. Akira Tanaka
 author_object:
   id: 4
-  name: Todd Dunning
-  sex: m
-  title: MA
-  country: United States (California)
-  expertise: Optical Materials for Laser Systems
-  image: /images/author/todd-dunning.jpg
+  name: Dr. Akira Tanaka
 images:
   hero:
-    alt: Ash wood surface undergoing laser cleaning showing precise contamination
-      removal
+    alt: Ash surface undergoing laser cleaning showing precise contamination removal
     url: /images/ash-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Ash wood surface after laser cleaning showing detailed
-      grain structure
+    alt: Microscopic view of Ash surface after laser cleaning showing detailed surface
+      structure
     url: /images/ash-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Solvent Elimination
-  description: Reduces chemical usage by 100% compared to traditional solvent cleaning
-    methods
+  description: Eliminates need for harsh chemical cleaners that can damage ash
 - benefit: Water Conservation
-  description: Saves approximately 5000 liters of water per month in industrial applications
-- benefit: Energy Efficiency
-  description: Consumes 40% less energy than thermal cleaning processes
+  description: Removes requirement for water-based cleaning that can cause staining
+    and deterioration
+- benefit: Precision Material Preservation
+  description: Minimizes material loss compared to mechanical cleaning methods
 outcomes:
 - result: Surface Cleanliness Level
-  metric: Achieves ISO 14644-1 Class 7 cleanliness standard
+  metric: Achieves complete removal of surface contaminants without substrate alteration
 - result: Material Removal Precision
-  metric: ±5μm accuracy with no substrate damage
+  metric: Sub-micron layer control with preservation of original surface details
 - result: Processing Speed
-  metric: 2-5 m²/hour cleaning rate depending on contamination level
+  metric: "0.5-1.5 m\xB2/hour cleaning rate for delicate conservation work"
+tags:
+- Woodworking
+- Conservation
+complexity: medium
+difficultyScore: 3
 prompt_chain_verification:
   base_config_loaded: true
   persona_config_loaded: true
   formatting_config_loaded: true
   ai_detection_config_loaded: true
-  persona_country: United States (California)
+  persona_country: Unknown
   author_id: 4
-  verification_timestamp: '2025-09-19T04:55:28Z'
+  verification_timestamp: '2025-09-20T07:15:51Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true

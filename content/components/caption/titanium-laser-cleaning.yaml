@@ -11,17 +11,17 @@ after_text: |
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064nm (primary), 532nm (optional)
+  wavelength: 1064nm
   power: 50-200W
-  pulse_duration: 20-100ns
-  spot_size: 0.2-1.5mm
+  pulse_duration: 10-100ns
+  spot_size: 0.1-1.0mm
   frequency: 20-100kHz
-  energy_density: 1.0–4.5 J/cm²
-  scanning_speed: "50-500mm/s"
+  energy_density: 1.0–10 J/cm²
+  scanning_speed: "None"
   beam_profile: "Gaussian TEM00"
 
 # Material Information
-material: "Titanium"
+material: "titanium"
 
 # Data Source and Quality Information
 data_completeness:
@@ -31,7 +31,7 @@ data_completeness:
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-19T16:55:25.753834Z"
+  generated: "2025-09-19T23:32:08.752575Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
@@ -40,8 +40,8 @@ metadata:
   image_resolution: "3840x2160"
 
 # Enhanced SEO Frontmatter
-title: "Titanium Surface Laser Cleaning Analysis - Industrial Contamination Removal"
-description: "Comprehensive microscopic analysis of titanium surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
+title: "titanium Surface Laser Cleaning Analysis - Industrial Contamination Removal"
+description: "Comprehensive microscopic analysis of titanium surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -56,7 +56,7 @@ keywords:
   - "contamination analysis"
   - "titanium metal"
   - "non-contact cleaning"
-  - "electronics manufacturing applications"
+  - "aerospace applications"
   - "metal surface treatment"
   - "corrosion removal"
   - "oxide layer removal"
@@ -76,18 +76,18 @@ author_object:
 
 # Technical Specifications for SEO
 technicalSpecifications:
-  wavelength: "1064nm (primary), 532nm (optional)"
+  wavelength: "1064nm"
   power: "50-200W"
-  pulse_duration: "20-100ns"
-  scanning_speed: "50-500mm/s"
-  material: "Titanium"
+  pulse_duration: "10-100ns"
+  scanning_speed: "None"
+  material: "titanium"
   beam_delivery: "fiber optic"
-  focus_diameter: "0.2-1.5mm"
+  focus_diameter: "0.1-1.0mm"
   processing_atmosphere: "ambient air"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Titanium (Ti) 99.6%, Trace elements (Si, Fe, Na, Mg)"
+  composition: "Ti 99.0-99.9%, Trace elements (Si, Fe, Cu, Mn, Mg, Zn, Ti)"
   surface_treatment: "laser cleaning"
   contamination_type: "oxidation and metallic deposits"
   materialType: "metal"
@@ -108,12 +108,12 @@ images:
 # Additional SEO Metadata
 seo_data:
   canonical_url: "/titanium-laser-cleaning"
-  og_title: "Titanium Laser Cleaning Analysis - Surface Restoration"
+  og_title: "titanium Laser Cleaning Analysis - Surface Restoration"
   og_description: "Professional microscopic analysis of precision laser cleaning on titanium, achieving complete contamination removal with preserved substrate integrity."
   og_image: "/images/titanium-laser-cleaning-micro.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-19T16:55:25.753834Z"
+  last_modified: "2025-09-19T23:32:08.752575Z"
 
 # Quality Metrics
 quality_metrics:
@@ -131,7 +131,7 @@ accessibility:
 ---
 Material: "titanium"
 Component: caption
-Generated: 2025-09-19T16:55:25.753834Z
+Generated: 2025-09-19T23:32:08.752575Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

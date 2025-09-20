@@ -1,7 +1,7 @@
 # Basic Content Structure
 before_text: |
-  Initial surface examination reveals significant contamination deposits across the copper Technical overview of Steel, Fe, for laser cleaning applications, including optimal 1064nm wavelength interaction, and industrial applications in surface preparation.. 
-  Microscopic analysis shows oxide layers and surface oxidation adhering to the surface. The copper exhibits the characteristic density profile typical of metal materials.
+  Initial surface examination reveals significant contamination deposits across the copper Technical overview of Copper, Cu, for laser cleaning applications, including optimal 1064nm wavelength interaction, and industrial applications in surface preparation.. 
+  Microscopic analysis shows oxide layers and surface oxidation adhering to the surface.
   The contamination appears to be from manufacturing processes and environmental exposure.
 
 after_text: |
@@ -11,17 +11,17 @@ after_text: |
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064nm (primary), 532nm (optional)
-  power: 50-200W
-  pulse_duration: 20-100ns
-  spot_size: 0.2-1.5mm
-  frequency: 20-100kHz
-  energy_density: 1.0–4.5 J/cm²
+  wavelength: 1064nm
+  power: 20-100W
+  pulse_duration: 10-100ns
+  spot_size: 0.1-2.0mm
+  frequency: 10-50kHz
+  energy_density: 0.5-5 J/cm²
   scanning_speed: "None"
-  beam_profile: "None"
+  beam_profile: "Gaussian TEM00"
 
 # Material Information
-material: "Copper"
+material: "copper"
 
 # Data Source and Quality Information
 data_completeness:
@@ -31,7 +31,7 @@ data_completeness:
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-19T16:55:25.395047Z"
+  generated: "2025-09-19T23:32:59.991687Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
@@ -40,8 +40,8 @@ metadata:
   image_resolution: "3840x2160"
 
 # Enhanced SEO Frontmatter
-title: "Copper Surface Laser Cleaning Analysis - Industrial Contamination Removal"
-description: "Comprehensive microscopic analysis of copper surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
+title: "copper Surface Laser Cleaning Analysis - Industrial Contamination Removal"
+description: "Comprehensive microscopic analysis of copper surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -54,44 +54,44 @@ keywords:
   - "laser ablation"
   - "copper"
   - "contamination analysis"
-  - "steel"
-  - "steel metal"
+  - "copper metal"
   - "non-contact cleaning"
-  - "electronics manufacturing applications"
+  - "manufacturing applications"
   - "metal surface treatment"
   - "corrosion removal"
+  - "oxide layer removal"
 
 # Author Information with SEO Enhancement
-author: "Dr. Sarah Chen"
+author: "Todd Dunning"
 author_object:
-  name: "Dr. Sarah Chen"
-  email: "dr..sarah.chen@materials-lab.com"
+  name: "Todd Dunning"
+  email: "todd.dunning@materials-lab.com"
   affiliation: "Advanced Materials Processing Laboratory"
-  title: "Materials Scientist Laser Materials Processing"
+  title: "MA Optical Materials for Laser Systems"
   expertise:
     - "Laser Materials Processing"
     - "Surface Analysis"
     - "Materials Science"
-    - "Laser Materials Processing"
+    - "Optical Materials for Laser Systems"
 
 # Technical Specifications for SEO
 technicalSpecifications:
-  wavelength: "1064nm (primary), 532nm (optional)"
-  power: "50-200W"
-  pulse_duration: "20-100ns"
+  wavelength: "1064nm"
+  power: "20-100W"
+  pulse_duration: "10-100ns"
   scanning_speed: "None"
-  material: "Copper"
+  material: "copper"
   beam_delivery: "fiber optic"
-  focus_diameter: "0.2-1.5mm"
+  focus_diameter: "0.1-2.0mm"
   processing_atmosphere: "ambient air"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Steel (Fe) 99.6%, Trace elements (Si, Fe, Na, Mg)"
+  composition: "Cu 99.0-99.9%, Trace elements (Si, Fe, Cu, Mn, Mg, Zn, Ti)"
   surface_treatment: "laser cleaning"
   contamination_type: "oxidation and metallic deposits"
   materialType: "metal"
-  formula: "Fe"
+  formula: "Cu"
   surface_finish: "Ra < 0.6 μm (post-cleaning)"
   corrosion_resistance: "excellent"
 
@@ -108,17 +108,17 @@ images:
 # Additional SEO Metadata
 seo_data:
   canonical_url: "/copper-laser-cleaning"
-  og_title: "Copper Laser Cleaning Analysis - Surface Restoration"
+  og_title: "copper Laser Cleaning Analysis - Surface Restoration"
   og_description: "Professional microscopic analysis of precision laser cleaning on copper, achieving complete contamination removal with preserved substrate integrity."
   og_image: "/images/copper-laser-cleaning-micro.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-19T16:55:25.395047Z"
+  last_modified: "2025-09-19T23:32:59.991687Z"
 
 # Quality Metrics
 quality_metrics:
-  surface_roughness_before: "Ra 2.5 μm"
-  surface_roughness_after: "Ra 0.8 μm"
+  surface_roughness_before: "Ra 3.2 μm"
+  surface_roughness_after: "Ra 0.6 μm"
   substrate_integrity: "100% preserved"
 
 # Accessibility Information
@@ -131,7 +131,7 @@ accessibility:
 ---
 Material: "copper"
 Component: caption
-Generated: 2025-09-19T16:55:25.395047Z
+Generated: 2025-09-19T23:32:59.991687Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

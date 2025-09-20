@@ -1,42 +1,61 @@
 ---
 name: Breccia
 category: stone
-title: Laser Cleaning Breccia
+title: Breccia Laser Cleaning
 headline: Comprehensive technical guide for laser cleaning stone breccia
-description: Technical overview of Breccia, None, for laser cleaning applications,
-  including optimal 1064nm wavelength interaction, and industrial applications in
-  surface preparation.
+description: Breccia laser cleaning utilizes precise pulsed laser ablation to remove
+  surface contaminants from the composite stone matrix. The process exploits differential
+  absorption between contaminants and the calcium carbonate/quartz substrate, enabling
+  selective removal without mechanical or chemical damage to the fragile stone surface.
 keywords: breccia, breccia stone, laser ablation, laser cleaning, non-contact cleaning,
   pulsed fiber laser, surface contamination removal, industrial laser parameters,
   thermal processing, surface restoration
 chemicalProperties:
-  symbol: None
-  formula: None
-  materialType: stone
+  symbol: N/A (composite stone)
+  formula: "Variable (primarily CaCO\u2083 + SiO\u2082)"
+  materialType: sedimentary rock
 properties:
-  density: 2.6 g/cm³
-  densityNumeric: 2.6
-  densityUnit: g/cm³
-  densityMin: 1.8 g/cm³
+  density: "2.5-2.8 g/cm\xB3 (varies with clast composition)"
+  densityNumeric: 2.65
+  densityUnit: "g/cm\xB3"
+  densityMin: "1.8 g/cm\xB3"
   densityMinNumeric: 1.8
-  densityMinUnit: g/cm³
-  densityMax: 3.0 g/cm³
-  densityMaxNumeric: 3.0
-  densityMaxUnit: g/cm³
-  densityPercentile: 60.0
-  meltingPoint: 1200-1400°C
+  densityMinUnit: "g/cm\xB3"
+  densityMax: "6.0 g/cm\xB3"
+  densityMaxNumeric: 6.0
+  densityMaxUnit: "g/cm\xB3"
+  densityPercentile: 20.2
+  meltingPoint: "~1250-1350\xB0C (decomposition of calcium carbonate component)"
   meltingPointNumeric: 1300.0
-  meltingPointUnit: °C
-  meltingPercentile: 45.0
-  thermalConductivity: 2.5 W/m·K
+  meltingPointUnit: "\xB0C"
+  meltingPointMin: "1200\xB0C"
+  meltingPointMinNumeric: 1200.0
+  meltingPointMinUnit: "\xB0C"
+  meltingPointMax: "2800\xB0C"
+  meltingPointMaxNumeric: 2800.0
+  meltingPointMaxUnit: "\xB0C"
+  meltingPercentile: 6.2
+  thermalConductivity: "2.0-3.0 W/(m\xB7K) (depending on mineral composition)"
   thermalConductivityNumeric: 2.5
-  thermalConductivityUnit: W/m·K
-  thermalPercentile: 50.0
-  tensileStrength: 10-30 MPa
-  tensileStrengthNumeric: 20.0
+  thermalConductivityUnit: W/
+  thermalConductivityMin: "0.5 W/m\xB7K"
+  thermalConductivityMinNumeric: 0.5
+  thermalConductivityMinUnit: "W/m\xB7K"
+  thermalConductivityMax: "200 W/m\xB7K"
+  thermalConductivityMaxNumeric: 200.0
+  thermalConductivityMaxUnit: "W/m\xB7K"
+  thermalPercentile: 1.0
+  tensileStrength: 5-15 MPa (highly anisotropic depending on cementation)
+  tensileStrengthNumeric: 10.0
   tensileStrengthUnit: MPa
-  tensilePercentile: 25.0
-  hardness: 3-6 Mohs
+  tensileStrengthMin: 50 MPa
+  tensileStrengthMinNumeric: 50.0
+  tensileStrengthMinUnit: MPa
+  tensileStrengthMax: 1000 MPa
+  tensileStrengthMaxNumeric: 1000.0
+  tensileStrengthMaxUnit: MPa
+  tensilePercentile: 0.0
+  hardness: 3-6 Mohs (varies with clast hardness and cement type)
   hardnessNumeric: 4.5
   hardnessUnit: Mohs
   hardnessMin: 1 Mohs
@@ -45,24 +64,27 @@ properties:
   hardnessMax: 10 Mohs
   hardnessMaxNumeric: 10.0
   hardnessMaxUnit: Mohs
-  hardnessPercentile: 40.0
-  youngsModulus: 50 GPa
-  youngsModulusNumeric: 50.0
+  hardnessPercentile: 38.9
+  youngsModulus: 10-40 GPa (highly variable based on porosity and cementation)
+  youngsModulusNumeric: 25.0
   youngsModulusUnit: GPa
-  modulusMin: 20 GPa
-  modulusMinNumeric: 20.0
-  modulusMinUnit: GPa
-  modulusMax: 80 GPa
-  modulusMaxNumeric: 80.0
-  modulusMaxUnit: GPa
-  modulusPercentile: 50.0
-  laserType: Pulsed Fiber Laser
+  youngsModulusMin: 20 GPa
+  youngsModulusMinNumeric: 20.0
+  youngsModulusMinUnit: GPa
+  youngsModulusMax: 80 GPa
+  youngsModulusMaxNumeric: 80.0
+  youngsModulusMaxUnit: GPa
+  modulusPercentile: 8.3
+  laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: 1.0–4.5 J/cm²
-  chemicalFormula: None
+  fluenceRange: "1.0-10 J/cm\xB2"
+  chemicalFormula: "Variable composite (primarily CaCO\u2083 + SiO\u2082 + various\
+    \ mineral clasts)"
 composition:
-- Breccia (None) 99.6%
-- Trace elements (Si, Fe, Na, Mg)
+- "Calcium carbonate (CaCO\u2083) matrix: 40-70% (as calcite cement)"
+- "Quartz (SiO\u2082) clasts: 20-50% (angular fragments)"
+- 'Feldspar, mica, and other mineral fragments: 5-20%'
+- 'Iron oxides and clay minerals: 2-10% (coloring agents)'
 machineSettings:
   powerRange: 50-200W
   powerRangeNumeric: 125.0
@@ -73,8 +95,8 @@ machineSettings:
   powerRangeMax: 500W
   powerRangeMaxNumeric: 500.0
   powerRangeMaxUnit: W
-  pulseDuration: 20-100ns
-  pulseDurationNumeric: 60.0
+  pulseDuration: 10-50ns
+  pulseDurationNumeric: 30.0
   pulseDurationUnit: ns
   pulseDurationMin: 1ns
   pulseDurationMinNumeric: 1.0
@@ -91,8 +113,8 @@ machineSettings:
   wavelengthMax: 2940nm
   wavelengthMaxNumeric: 2940.0
   wavelengthMaxUnit: nm
-  spotSize: 0.2-1.5mm
-  spotSizeNumeric: 0.85
+  spotSize: 0.1-1.0mm
+  spotSizeNumeric: 0.55
   spotSizeUnit: mm
   spotSizeMin: 0.01mm
   spotSizeMinNumeric: 0.01
@@ -109,15 +131,15 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: 1.0–4.5 J/cm²
-  fluenceRangeNumeric: 1.0
-  fluenceRangeUnit: J/cm²
-  fluenceRangeMin: 0.1J/cm²
+  fluenceRange: "1.0-10 J/cm\xB2"
+  fluenceRangeNumeric: 5.5
+  fluenceRangeUnit: "J/cm\xB2"
+  fluenceRangeMin: "0.1J/cm\xB2"
   fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: J/cm²
-  fluenceRangeMax: 50J/cm²
+  fluenceRangeMinUnit: "J/cm\xB2"
+  fluenceRangeMax: "50J/cm\xB2"
   fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: J/cm²
+  fluenceRangeMaxUnit: "J/cm\xB2"
   scanningSpeed: 50-500mm/s
   scanningSpeedNumeric: 275.0
   scanningSpeedUnit: mm/s
@@ -135,15 +157,15 @@ machineSettings:
   - Multi-mode
   safetyClass: Class 4 (requires full enclosure)
 applications:
-- industry: Electronics Manufacturing
-  detail: Removal of surface oxides and contaminants from Breccia substrates
-- industry: Aerospace Components
-  detail: Cleaning of thermal barrier coatings and stone matrix composites
+- 'Construction: Restoration of historic buildings and monuments'
+- 'Art and Restoration: Cleaning and surface preparation of sculptures and artworks'
 compatibility:
-- Stainless Steel
-- Titanium Alloys
-- Nickel-based Superalloys
-regulatoryStandards: ISO 18562, ASTM F2100, IEC 60601-1
+- Marble and limestone (similar calcium carbonate composition)
+- Sandstone (similar silica content and porosity characteristics)
+- Terracotta and fired clay products (similar thermal response)
+regulatoryStandards: EN 15898:2019 (Conservation of cultural heritage - Main general
+  terms and definitions), EN 15886:2010 (Conservation of cultural property - Test
+  methods - Color measurement of surfaces)
 author: Yi-Chun Lin
 author_object:
   id: 1
@@ -162,20 +184,29 @@ images:
       surface structure
     url: /images/breccia-laser-cleaning-micro.jpg
 environmentalImpact:
-- benefit: Chemical Solvent Elimination
-  description: Reduces chemical usage by 100% compared to traditional solvent cleaning
-    methods
-- benefit: Water Conservation
-  description: Saves approximately 5000 liters of water per month in industrial applications
-- benefit: Energy Efficiency
-  description: Consumes 40% less energy than thermal cleaning processes
+- benefit: Zero chemical waste generation
+  description: "Eliminates use of acidic cleaners, solvents, and chemical poultices\
+    \ that produce hazardous waste streams of 50-100 liters per m\xB2 in traditional\
+    \ cleaning"
+- benefit: 95% reduction in water consumption
+  description: "Dry process eliminates the 200-500 liters/m\xB2 water usage required\
+    \ for chemical rinsing and poultice removal in traditional methods"
 outcomes:
-- result: Surface Cleanliness Level
-  metric: Achieves ISO 14644-1 Class 7 cleanliness standard
-- result: Material Removal Precision
-  metric: ±5μm accuracy with no substrate damage
-- result: Processing Speed
-  metric: 2-5 m²/hour cleaning rate depending on contamination level
+- result: Surface contamination removal precision
+  metric: "Selective removal to within 50-100 \u03BCm depth control without substrate\
+    \ damage"
+- result: Processing efficiency
+  metric: "0.5-2.0 m\xB2/hour cleaning rate depending on contamination severity and\
+    \ laser parameters"
+technicalSpecifications:
+  powerRange: 50-200 W (average power for pulsed fiber lasers)
+  pulseDuration: 10-50 ns
+  wavelength: 1064 nm (primary), 532 nm (optional for selective absorption)
+  spotSize: 0.1-1.0 mm
+  repetitionRate: 20-100 kHz
+  fluenceRange: "1.0-10 J/cm\xB2 (ablation threshold varies with breccia composition)"
+  safetyClass: Class 4 laser safety requirements with fume extraction for particulate
+    matter
 prompt_chain_verification:
   base_config_loaded: true
   persona_config_loaded: true
@@ -183,8 +214,21 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Taiwan
   author_id: 1
-  verification_timestamp: '2025-09-19T05:04:20Z'
+  verification_timestamp: '2025-09-20T07:59:17Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
+laser_parameters:
+  fluence_threshold: "1.0-10 J/cm\xB2"
+  pulse_duration: 10-50ns
+  wavelength_optimal: 1064nm
+  power_range: 50-200W
+  repetition_rate: 20-100kHz
+  spot_size: 0.1-1.0mm
+  laser_type: Pulsed fiber laser
+tags:
+- Construction
+- Art and Restoration
+complexity: medium
+difficultyScore: 3
 ---

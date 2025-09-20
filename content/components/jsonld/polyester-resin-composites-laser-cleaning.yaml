@@ -1,196 +1,239 @@
-jsonld:
-  '@context': https://schema.org
-  '@type': Article
-  about:
-  - '@type': Material
-    additionalProperty:
-    - '@type': PropertyValue
-      name: Density
-      value: 1.2-1.5 g/cm³
-    - '@type': PropertyValue
-      name: Melting Point
-      value: 120-180°C
-    - '@type': PropertyValue
-      name: Thermal Conductivity
-      value: 0.2-0.3 W/m·K
-    - '@type': PropertyValue
-      name: Tensile Strength
-      value: 30-100 MPa
-    - '@type': PropertyValue
-      name: Young's Modulus
-      value: 2-4 GPa
-    - '@type': PropertyValue
-      name: Hardness
-      value: 80-90 Shore D
-    - '@type': PropertyValue
-      name: Chemical Formula
-      value: Polyester-Fiber
-    - '@type': PropertyValue
-      name: Material Type
-      value: composite
-    - '@type': PropertyValue
-      name: Chemical Symbol
-      value: PRC
-    - '@type': PropertyValue
-      name: Chemical Composition
-      value: Polyester Resin Matrix 60-70%, Glass/Carbon Fiber Reinforcement 30-40%,
-        Additives and Fillers 1-5%
-    - '@type': PropertyValue
-      name: Material Compatibility
-      value: Glass Fiber, Carbon Fiber, Polymer Matrix Composites
-    - '@type': PropertyValue
-      name: Regulatory Standards
-      value: ISO 14125, ASTM D790, IEC 60825-1
-    alternateName:
-    - Polyester-Fiber
-    - PRC
-    category: composite
-    description: Technical overview of Polyester Resin Composites, Polyester-Fiber,
-      for laser cleaning applications, including optimal 1064nm wavelength interaction,
-      and industrial applications in surface preparation.
-    identifier: PRC
-    name: Polyester Resin Composites
-  - '@type': Process
-    description: Non-contact surface treatment process optimized for Polyester Resin
-      Composites materials
-    name: Laser Cleaning
-  abstract: 'Advanced laser cleaning techniques for Polyester Resin Composites using
-    1064nm wavelength at optimized fluence with nanosecond pulses and controlled power
-    for Electronics Manufacturing and Aerospace Components. Material properties: 1.2-1.5
-    g/cm³ density, 0.2-0.3 W/m·K thermal conductivity.'
-  alternativeHeadline: Advanced Laser Ablation Techniques for Electronics Manufacturing
-    using Polyester Resin Composites
-  articleBody: Technical overview of Polyester Resin Composites, Polyester-Fiber,
-    for laser cleaning applications, including optimal 1064nm wavelength interaction,
-    and industrial applications in surface preparation.
-  articleSection: Materials Processing
-  author:
-    '@type': Person
-    affiliation:
-      '@type': Organization
-      name: Advanced Materials Research Institute - Taiwan
-    image: /images/author/yi-chun-lin.jpg
-    jobTitle: Ph.D. in Laser Materials Processing
-    knowsAbout:
-    - Laser Materials Processing
-    - Polyester Resin Composites Surface Engineering
-    - Laser Materials Processing
-    name: Yi-Chun Lin
-    nationality: Taiwan
-  breadcrumb:
-    '@type': BreadcrumbList
-    itemListElement:
-    - '@type': ListItem
-      item: https://z-beam.com/polyester-resin-composites-laser-cleaning
-      name: Materials
-      position: 1
-    - '@type': ListItem
-      item: https://z-beam.com/polyester-resin-composites-laser-cleaning
-      name: Composite
-      position: 2
-    - '@type': ListItem
-      item: https://z-beam.com/polyester-resin-composites-laser-cleaning
-      name: Polyester Resin Composites
-      position: 3
-  copyrightHolder:
-    '@type': Organization
-    logo:
-      '@type': ImageObject
-      url: https://z-beam.com/images/site/logo/logo_.png
-    name: Z-Beam
-    sameAs:
-    - https://www.linkedin.com/company/z-beam
-    url: https://z-beam.com
-  copyrightYear: 2025
-  dateModified: '2025-09-19T18:22:34Z'
-  datePublished: '2025-09-19T18:22:34Z'
-  description: Comprehensive technical guide covering laser cleaning methodologies
-    for Polyester Resin Composites composite, including laser wavelength optimization,
-    industrial applications, and surface treatment benefits with detailed material
-    properties.
-  headline: Polyester Resin Composites Laser Cleaning
-  image:
-  - '@type': ImageObject
-    caption: Polyester resin composite surface undergoing laser cleaning showing precise
-      contamination removal
-    description: High-resolution demonstration of Polyester Resin Composites component
-      processed with 1064nm wavelength at optimized fluence, showing complete contamination
-      removal while preserving material integrity
-    encodingFormat: image/jpeg
-    height: 800
-    name: Polyester Resin Composites Laser Cleaning Before/After Comparison
-    representativeOfPage: true
-    url: https://z-beam.com/images/polyester-resin-composites-laser-cleaning-hero.jpg
-    width: 1200
-  - '@type': ImageObject
-    caption: Microscopic view of polyester resin composite surface after laser cleaning
-      showing detailed fiber structure
-    description: Scanning electron micrographs of Polyester Resin Composites surface
-      processed with 1064nm wavelength, verified at high magnification showing detailed
-      surface structure
-    encodingFormat: image/jpeg
-    height: 600
-    name: Polyester Resin Composites Surface Microstructure Analysis
-    url: https://z-beam.com/images/polyester-resin-composites-laser-cleaning-micro.jpg
-    width: 800
-  inLanguage: en-US
-  isAccessibleForFree: true
-  isPartOf:
-    '@type': WebSite
-    name: Z-Beam Laser Processing Guide
-    url: https://z-beam.com/polyester-resin-composites-laser-cleaning
-  keywords:
-  - polyester resin composites
-  - polyester resin composites laser cleaning
-  - laser ablation
-  - non-contact cleaning
-  - surface treatment
-  - polyester resin composites composite
-  - composite laser processing
-  - electronics-manufacturing-laser-cleaning
-  - aerospace-components-laser-cleaning
-  - Polyester-Fiber-laser-processing
-  - eco-friendly-cleaning
-  - sustainable-processing
-  license: https://creativecommons.org/licenses/by/4.0/
-  mainEntity:
-    '@type': HowTo
-    description: Step-by-step process for laser cleaning Polyester Resin Composites
-      materials using optimized parameters
-    name: How to Laser Clean Polyester Resin Composites
-    step:
-    - '@type': HowToStep
-      name: Material Preparation
-      text: Secure Polyester Resin Composites component in laser processing fixture
-        ensuring stable positioning and adequate ventilation for industrial safety
-        operation.
-    - '@type': HowToStep
-      name: Parameter Configuration
-      text: 'Configure laser parameters: 1064nm wavelength, optimized fluence, nanosecond
-        pulse duration, optimized repetition rate.'
-    - '@type': HowToStep
-      name: Surface Treatment
-      text: Execute systematic scanning pattern with precision spot size maintaining
-        consistent standoff distance for Polyester Resin Composites processing.
-    - '@type': HowToStep
-      name: Quality Verification
-      text: Inspect cleaned Polyester Resin Composites surface using optical microscopy
-        to verify contaminant removal and material integrity preservation.
-  mentions:
-  - electronics
-  - manufacturing
-  - aerospace
-  - components
-  potentialAction:
-    '@type': ReadAction
-    target: https://z-beam.com/polyester-resin-composites-laser-cleaning
-  publisher:
-    '@type': Organization
-    logo:
-      '@type': ImageObject
-      url: https://z-beam.com/images/site/logo/logo_.png
-    name: Z-Beam
-    sameAs:
-    - https://www.linkedin.com/company/z-beam
-    url: https://z-beam.com
-  wordCount: 22
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Polyester Resin Composites Laser Cleaning",
+  "alternativeHeadline": "Advanced Laser Ablation Techniques for Electronics Manufacturing using Polyester Resin Composites",
+  "description": "Comprehensive technical guide covering laser cleaning methodologies for Polyester Resin Composites composite, including laser wavelength optimization, industrial applications, and surface treatment benefits with detailed material properties.",
+  "abstract": "Advanced laser cleaning techniques for Polyester Resin Composites using 1064nm wavelength at optimized fluence with nanosecond pulses and controlled power for Electronics Manufacturing and Aerospace Components. Material properties: 1.2-1.5 g/cm³ density, 0.2-0.3 W/m·K thermal conductivity.",
+  "keywords": [
+    "polyester resin composites",
+    "polyester resin composites laser cleaning",
+    "laser ablation",
+    "non-contact cleaning",
+    "surface treatment",
+    "polyester resin composites composite",
+    "composite laser processing",
+    "electronics-manufacturing-laser-cleaning",
+    "aerospace-components-laser-cleaning",
+    "Polyester-Fiber-laser-processing",
+    "eco-friendly-cleaning",
+    "sustainable-processing"
+  ],
+  "articleBody": "Technical overview of Polyester Resin Composites, Polyester-Fiber, for laser cleaning applications, including optimal 1064nm wavelength interaction, and industrial applications in surface preparation.",
+  "wordCount": 22,
+  "articleSection": "Materials Processing",
+  "inLanguage": "en-US",
+  "isAccessibleForFree": true,
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "copyrightHolder": {
+    "@type": "Organization",
+    "name": "Z-Beam",
+    "url": "https://z-beam.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://z-beam.com/images/site/logo/logo_.png"
+    },
+    "sameAs": [
+      "https://linkedin.com/company/z-beam"
+    ]
+  },
+  "copyrightYear": 2025,
+  "author": {
+    "@type": "Person",
+    "name": "Yi-Chun Lin",
+    "jobTitle": "Ph.D. in Laser Materials Processing",
+    "affiliation": {
+      "@type": "Organization",
+      "name": "Advanced Materials Research Institute - Taiwan"
+    },
+    "knowsAbout": [
+      "Laser Materials Processing",
+      "Polyester Resin Composites Surface Engineering",
+      "Laser Materials Processing"
+    ],
+    "image": "https://z-beam.com/images/author/yi-chun-lin.jpg",
+    "nationality": "Taiwan"
+  },
+  "datePublished": "2025-09-19T18:38:08Z",
+  "dateModified": "2025-09-19T18:38:08Z",
+  "image": [
+    {
+      "@type": "ImageObject",
+      "url": "https://z-beam.com/images/polyester-resin-composites-laser-cleaning-hero.jpg",
+      "name": "Polyester Resin Composites Laser Cleaning Before/After Comparison",
+      "caption": "Polyester resin composite surface undergoing laser cleaning showing precise contamination removal",
+      "description": "High-resolution demonstration of Polyester Resin Composites component processed with 1064nm wavelength at optimized fluence, showing complete contamination removal while preserving material integrity",
+      "width": 1200,
+      "height": 800,
+      "encodingFormat": "image/jpeg",
+      "representativeOfPage": true
+    },
+    {
+      "@type": "ImageObject",
+      "url": "https://z-beam.com/images/polyester-resin-composites-laser-cleaning-micro.jpg",
+      "name": "Polyester Resin Composites Surface Microstructure Analysis",
+      "caption": "Microscopic view of polyester resin composite surface after laser cleaning showing detailed fiber structure",
+      "description": "Scanning electron micrographs of Polyester Resin Composites surface processed with 1064nm wavelength, verified at high magnification showing detailed surface structure",
+      "width": 800,
+      "height": 600,
+      "encodingFormat": "image/jpeg"
+    }
+  ],
+  "about": [
+    {
+      "@type": "Material",
+      "name": "Polyester Resin Composites",
+      "alternateName": [
+        "Polyester-Fiber",
+        "PRC"
+      ],
+      "identifier": "PRC",
+      "category": "composite",
+      "description": "Technical overview of Polyester Resin Composites, Polyester-Fiber, for laser cleaning applications, including optimal 1064nm wavelength interaction, and industrial applications in surface preparation.",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Density",
+          "value": "1.2-1.5 g/cm³"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Melting Point",
+          "value": "120-180°C"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Thermal Conductivity",
+          "value": "0.2-0.3 W/m·K"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Tensile Strength",
+          "value": "30-100 MPa"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Young's Modulus",
+          "value": "2-4 GPa"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Hardness",
+          "value": "80-90 Shore D"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Chemical Formula",
+          "value": "Polyester-Fiber"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Material Type",
+          "value": "composite"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Chemical Symbol",
+          "value": "PRC"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Chemical Composition",
+          "value": "Polyester Resin Matrix 60-70%, Glass/Carbon Fiber Reinforcement 30-40%, Additives and Fillers 1-5%"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Material Compatibility",
+          "value": "Glass Fiber, Carbon Fiber, Polymer Matrix Composites"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Regulatory Standards",
+          "value": "ISO 14125, ASTM D790, IEC 60825-1"
+        }
+      ]
+    },
+    {
+      "@type": "Process",
+      "name": "Laser Cleaning",
+      "description": "Non-contact surface treatment process optimized for Polyester Resin Composites materials"
+    }
+  ],
+  "mainEntity": {
+    "@type": "HowTo",
+    "name": "How to Laser Clean Polyester Resin Composites",
+    "description": "Step-by-step process for laser cleaning Polyester Resin Composites materials using optimized parameters",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "name": "Material Preparation",
+        "text": "Secure Polyester Resin Composites component in laser processing fixture ensuring stable positioning and adequate ventilation for industrial safety operation."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Parameter Configuration",
+        "text": "Configure laser parameters: 1064nm wavelength, optimized fluence, nanosecond pulse duration, optimized repetition rate."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Surface Treatment",
+        "text": "Execute systematic scanning pattern with precision spot size maintaining consistent standoff distance for Polyester Resin Composites processing."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Quality Verification",
+        "text": "Inspect cleaned Polyester Resin Composites surface using optical microscopy to verify contaminant removal and material integrity preservation."
+      }
+    ]
+  },
+  "mentions": [
+    "aerospace",
+    "electronics",
+    "components",
+    "manufacturing"
+  ],
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Z-Beam Laser Processing Guide",
+    "url": "https://z-beam.com/polyester-resin-composites-laser-cleaning"
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Materials",
+        "item": "https://z-beam.com/polyester-resin-composites-laser-cleaning"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Composite",
+        "item": "https://z-beam.com/polyester-resin-composites-laser-cleaning"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Polyester Resin Composites",
+        "item": "https://z-beam.com/polyester-resin-composites-laser-cleaning"
+      }
+    ]
+  },
+  "potentialAction": {
+    "@type": "ReadAction",
+    "target": "https://z-beam.com/polyester-resin-composites-laser-cleaning"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Z-Beam",
+    "url": "https://z-beam.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://z-beam.com/images/site/logo/logo_.png"
+    },
+    "sameAs": [
+      "https://linkedin.com/company/z-beam"
+    ]
+  }
+}

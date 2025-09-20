@@ -123,7 +123,7 @@ class CaptionComponentGenerator:
 
 ### Data Integration
 - **Frontmatter Files**: `components/frontmatter/[material-name].yaml`
-- **Category Ranges**: `data/category_ranges.yaml`
+- **Category Ranges**: `data/materials.yaml` (category_ranges section)
 - **Materials Database**: `data/materials.yaml`
 
 ### Standardized Microscopy Parameters
@@ -207,7 +207,7 @@ python3 -m pytest components/caption/testing/test_caption.py --cov=components.ca
 ```python
 # Ensure proper data file access
 frontmatter_path = "components/frontmatter/{material-name}.yaml"
-category_ranges_path = "data/category_ranges.yaml"
+category_ranges_path = "data/materials.yaml"  # category_ranges section
 materials_path = "data/materials.yaml"
 ```
 

@@ -1,149 +1,80 @@
 ---
 name: Bluestone
 category: stone
-title: Laser Cleaning Bluestone
+title: Bluestone Laser Cleaning
 headline: Comprehensive technical guide for laser cleaning stone bluestone
-description: Technical overview of Bluestone, SiO2·Al2O3, for laser cleaning applications,
-  including optimal 1064nm wavelength interaction, and industrial applications in
-  surface preparation.
+description: Technical overview of Bluestone for laser cleaning applications, including
+  optimal 1064nm wavelength interaction, and industrial applications in surface preparation.
 keywords: bluestone, bluestone stone, laser ablation, laser cleaning, non-contact
   cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters,
   thermal processing, surface restoration
 chemicalProperties:
   symbol: Bluestone
-  formula: SiO2·Al2O3
+  formula: C6H10O5
   materialType: stone
 properties:
-  density: 2.6-2.8 g/cm³
-  densityNumeric: 2.7
-  densityUnit: g/cm³
-  densityMin: 2.0 g/cm³
-  densityMinNumeric: 2.0
-  densityMinUnit: g/cm³
-  densityMax: 3.5 g/cm³
-  densityMaxNumeric: 3.5
-  densityMaxUnit: g/cm³
-  densityPercentile: 62.4
-  meltingPoint: 1650-1750°C
-  meltingPointNumeric: 1700.0
-  meltingPointUnit: °C
-  meltingPercentile: 68.2
-  thermalConductivity: 1.3-1.5 W/m·K
-  thermalConductivityNumeric: 1.4
-  thermalConductivityUnit: W/m·K
-  thermalPercentile: 0.8
-  tensileStrength: 8-15 MPa
-  tensileStrengthNumeric: 11.5
-  tensileStrengthUnit: MPa
-  tensilePercentile: 0.3
-  hardness: 6-7 Mohs
-  hardnessNumeric: 6.5
-  hardnessUnit: Mohs
-  hardnessMin: 1 Mohs
-  hardnessMinNumeric: 1.0
-  hardnessMinUnit: Mohs
-  hardnessMax: 10 Mohs
-  hardnessMaxNumeric: 10.0
-  hardnessMaxUnit: Mohs
-  hardnessPercentile: 75.0
-  youngsModulus: 50-70 GPa
-  youngsModulusNumeric: 60.0
-  youngsModulusUnit: GPa
-  modulusMin: 1 GPa
-  modulusMinNumeric: 1.0
-  modulusMinUnit: GPa
+  density: "7.85 g/cm\xB3"
+  densityMin: "1.8 g/cm\xB3"
+  densityMinNumeric: null
+  densityMinUnit: null
+  densityMax: "6.0 g/cm\xB3"
+  densityMaxNumeric: null
+  densityMaxUnit: null
+  densityPercentile: 51.2
+  meltingPoint: "1370-1530\xB0C"
+  meltingMin: "1200\xB0C"
+  meltingMinNumeric: null
+  meltingMinUnit: null
+  meltingMax: "2800\xB0C"
+  meltingMaxNumeric: null
+  meltingMaxUnit: null
+  meltingPercentile: 54.5
+  thermalConductivity: "50.2 W/m\xB7K"
+  thermalMin: "0.5 W/m\xB7K"
+  thermalMinNumeric: null
+  thermalMinUnit: null
+  thermalMax: "200 W/m\xB7K"
+  thermalMaxNumeric: null
+  thermalMaxUnit: null
+  thermalPercentile: 14.8
+  tensileStrength: 400-600 MPa
+  tensileMin: 50 MPa
+  tensileMinNumeric: null
+  tensileMinUnit: null
+  tensileMax: 1000 MPa
+  tensileMaxNumeric: null
+  tensileMaxUnit: null
+  tensilePercentile: 26.3
+  hardness: 150-250 HB
+  hardnessMin: 500 HV
+  hardnessMinNumeric: null
+  hardnessMinUnit: null
+  hardnessMax: 2500 HV
+  hardnessMaxNumeric: null
+  hardnessMaxUnit: null
+  hardnessPercentile: 0.0
+  youngsModulus: 200 GPa
+  modulusMin: 150 GPa
+  modulusMinNumeric: null
+  modulusMinUnit: null
   modulusMax: 400 GPa
-  modulusMaxNumeric: 400.0
-  modulusMaxUnit: GPa
-  modulusPercentile: 42.5
+  modulusMaxNumeric: null
+  modulusMaxUnit: null
+  modulusPercentile: 92.0
   laserType: Pulsed Fiber Laser
   wavelength: 1064nm
-  fluenceRange: 1.0–4.5 J/cm²
-  chemicalFormula: SiO2·Al2O3
+  fluenceRange: "0.5\u20133.0 J/cm\xB2"
+  chemicalFormula: C6H10O5
 composition:
-- Silica (SiO2) 60-70%
-- Alumina (Al2O3) 25-35%
-- Trace minerals (Fe, Ca, Mg, K)
-machineSettings:
-  powerRange: 50-200W
-  powerRangeNumeric: 125.0
-  powerRangeUnit: W
-  powerRangeMin: 20W
-  powerRangeMinNumeric: 20.0
-  powerRangeMinUnit: W
-  powerRangeMax: 500W
-  powerRangeMaxNumeric: 500.0
-  powerRangeMaxUnit: W
-  pulseDuration: 20-100ns
-  pulseDurationNumeric: 60.0
-  pulseDurationUnit: ns
-  pulseDurationMin: 1ns
-  pulseDurationMinNumeric: 1.0
-  pulseDurationMinUnit: ns
-  pulseDurationMax: 1000ns
-  pulseDurationMaxNumeric: 1000.0
-  pulseDurationMaxUnit: ns
-  wavelength: 1064nm (primary), 532nm (optional)
-  wavelengthNumeric: 1064.0
-  wavelengthUnit: nm
-  wavelengthMin: 355nm
-  wavelengthMinNumeric: 355.0
-  wavelengthMinUnit: nm
-  wavelengthMax: 2940nm
-  wavelengthMaxNumeric: 2940.0
-  wavelengthMaxUnit: nm
-  spotSize: 0.2-1.5mm
-  spotSizeNumeric: 0.85
-  spotSizeUnit: mm
-  spotSizeMin: 0.01mm
-  spotSizeMinNumeric: 0.01
-  spotSizeMinUnit: mm
-  spotSizeMax: 10mm
-  spotSizeMaxNumeric: 10.0
-  spotSizeMaxUnit: mm
-  repetitionRate: 20-100kHz
-  repetitionRateNumeric: 60.0
-  repetitionRateUnit: kHz
-  repetitionRateMin: 1kHz
-  repetitionRateMinNumeric: 1.0
-  repetitionRateMinUnit: kHz
-  repetitionRateMax: 1000kHz
-  repetitionRateMaxNumeric: 1000.0
-  repetitionRateMaxUnit: kHz
-  fluenceRange: 1.0–4.5 J/cm²
-  fluenceRangeNumeric: 1.0
-  fluenceRangeUnit: J/cm²
-  fluenceRangeMin: 0.1J/cm²
-  fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: J/cm²
-  fluenceRangeMax: 50J/cm²
-  fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: J/cm²
-  scanningSpeed: 50-500mm/s
-  scanningSpeedNumeric: 275.0
-  scanningSpeedUnit: mm/s
-  scanningSpeedMin: 1mm/s
-  scanningSpeedMinNumeric: 1.0
-  scanningSpeedMinUnit: mm/s
-  scanningSpeedMax: 5000mm/s
-  scanningSpeedMaxNumeric: 5000.0
-  scanningSpeedMaxUnit: mm/s
-  beamProfile: Gaussian TEM00
-  beamProfileOptions:
-  - Gaussian TEM00
-  - Top-hat
-  - Donut
-  - Multi-mode
-  safetyClass: Class 4 (requires full enclosure)
+- Bluestone (C6H10O5) 99.6%
+- Trace elements (Si, Fe, Na, Mg)
 applications:
-- industry: Electronics Manufacturing
-  detail: Removal of surface oxides and contaminants from Bluestone substrates
-- industry: Aerospace Components
-  detail: Cleaning of thermal barrier coatings and stone matrix composites
+- 'Construction: Removal of surface contaminants and weathering from Bluestone facades'
+- 'Restoration: Precision cleaning of Bluestone sculptures and historical artifacts'
 compatibility:
-- Stone Substrates
-- Ceramic Coatings
-- Mineral Composites
+- Stainless Steel
+- Titanium Alloys
+- Nickel-based Superalloys
 regulatoryStandards: ISO 18562, ASTM F2100, IEC 60601-1
 author: Alessandro Moretti
 author_object:
@@ -168,17 +99,24 @@ environmentalImpact:
   description: Reduces chemical usage by 100% compared to traditional solvent cleaning
     methods
 - benefit: Water Conservation
-  description: Saves approximately 3000 liters of water per month in stone processing
-    applications
+  description: Saves approximately 5000 liters of water per month in industrial applications
 - benefit: Energy Efficiency
-  description: Consumes 35% less energy than abrasive cleaning processes
+  description: Consumes 40% less energy than thermal cleaning processes
 outcomes:
 - result: Surface Cleanliness Level
-  metric: Achieves ISO 14644-1 Class 8 cleanliness standard
+  metric: Achieves ISO 14644-1 Class 7 cleanliness standard
 - result: Material Removal Precision
-  metric: ±10μm accuracy with minimal substrate impact
+  metric: "\xB15\u03BCm accuracy with no substrate damage"
 - result: Processing Speed
-  metric: 1.5-3 m²/hour cleaning rate depending on contamination level
+  metric: "2-5 m\xB2/hour cleaning rate depending on contamination level"
+technicalSpecifications:
+  powerRange: 20-100W
+  pulseDuration: 10-50ns
+  wavelength: 1064nm (optimal)
+  spotSize: 0.1-1.0mm
+  repetitionRate: 20-100kHz
+  fluenceRange: "0.5\u20133.0 J/cm\xB2"
+  safetyClass: Class 4 (requires full enclosure)
 prompt_chain_verification:
   base_config_loaded: true
   persona_config_loaded: true
@@ -186,8 +124,21 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Italy
   author_id: 2
-  verification_timestamp: '2025-09-19T05:00:40Z'
+  verification_timestamp: '2025-09-20T07:37:27Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
+laser_parameters:
+  fluence_threshold: "0.5-3.0 J/cm\xB2"
+  pulse_duration: 10-50ns
+  wavelength_optimal: 1064nm
+  power_range: 20-100W
+  repetition_rate: 20-100kHz
+  spot_size: 0.1-1.0mm
+  laser_type: Pulsed fiber laser
+tags:
+- Construction
+- Restoration
+complexity: medium
+difficultyScore: 3
 ---

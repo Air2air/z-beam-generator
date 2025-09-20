@@ -31,7 +31,8 @@ def expand_optimized_materials(data):
     """Expand optimized materials format to original structure for compatibility."""
     expanded = {
         'materials': {},
-        'metadata': data.get('metadata', {})
+        'metadata': data.get('metadata', {}),
+        'material_index': data.get('material_index', {})  # Preserve material_index
     }
     
     parameter_templates = data.get('parameter_templates', {})

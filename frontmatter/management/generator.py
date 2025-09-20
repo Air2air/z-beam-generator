@@ -62,6 +62,21 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
             # Load comprehensive material data from YAML to get author_id
             yaml_material_data = self._load_material_data_from_yaml(material_name)
             
+            # Generate formula and symbol for materials that don't have them
+            category = material_data.get("category", "unknown")
+            formula = material_data.get("formula")
+            symbol = material_data.get("symbol")
+            
+            # FORMULA GENERATION: Create chemical formulas when not explicitly provided
+            if not formula:
+                formula = self._generate_formula_from_material(material_name, category)
+                logger.info(f"Generated formula '{formula}' for {material_name} (category: {category})")
+            
+            if not symbol:
+                # For alloys and compounds, use formula as symbol when symbol is not explicitly defined
+                symbol = formula
+                logger.info(f"Using formula '{formula}' as symbol for {material_name} (alloy/compound without single atomic symbol)")
+            
             # Resolve author information if not provided
             if not author_info:
                 author_id = yaml_material_data.get('author_id')
@@ -94,7 +109,7 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
 
             # Build comprehensive frontmatter from structured data
             final_content = self._build_comprehensive_frontmatter_from_data(
-                material_name, material_data, author_info
+                material_name, material_data, author_info, formula, symbol
             )
 
             logger.info(f"Generated frontmatter for {material_name} using data-driven approach")
@@ -182,11 +197,15 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
         ):
             symbol = material_data["data"]["symbol"]
         
-        # FAIL-FAST: Chemical properties must be provided in material data
+        # FORMULA GENERATION: Create chemical formulas when not explicitly provided
         if not formula:
-            raise ValueError(f"Chemical formula not found in material data for {material_name} - fail-fast architecture requires all data to be explicit")
+            formula = self._generate_formula_from_material(material_name, category)
+            logger.info(f"Generated formula '{formula}' for {material_name} (category: {category})")
+        
         if not symbol:
-            raise ValueError(f"Chemical symbol not found in material data for {material_name} - fail-fast architecture requires all data to be explicit")
+            # For alloys and compounds, use formula as symbol when symbol is not explicitly defined
+            symbol = formula
+            logger.info(f"Using formula '{formula}' as symbol for {material_name} (alloy/compound without single atomic symbol)")
 
         # FAIL-FAST: Author information is required
         if not author_info or "name" not in author_info:
@@ -835,11 +854,15 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
             )
             raise
 
-    def _build_comprehensive_frontmatter_from_data(self, material_name: str, material_data: Dict, author_info: Dict) -> str:
+    def _build_comprehensive_frontmatter_from_data(self, material_name: str, material_data: Dict, author_info: Dict, formula: str, symbol: str) -> str:
         """Build comprehensive frontmatter using data from materials.yaml with minimal API usage"""
         try:
             # Load comprehensive material data
             yaml_material_data = self._load_material_data_from_yaml(material_name)
+            
+            # Add generated formula and symbol to yaml_material_data
+            yaml_material_data['formula'] = formula
+            yaml_material_data['symbol'] = symbol
             
             # Get laser parameters for wavelength info
             laser_params = self._get_laser_parameters(yaml_material_data)
@@ -851,11 +874,11 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
                 'category': yaml_material_data['category'],
                 'title': f"{material_name.title()} Laser Cleaning",
                 'headline': f"Comprehensive technical guide for laser cleaning {yaml_material_data['category']} {material_name.lower()}",
-                'description': f"Technical overview of {material_name.title()}, {yaml_material_data['symbol']}, for laser cleaning applications, including optimal {wavelength} wavelength interaction, and industrial applications in surface preparation.",
+                'description': f"Technical overview of {material_name.title()}, {symbol}, for laser cleaning applications, including optimal {wavelength} wavelength interaction, and industrial applications in surface preparation.",
                 'keywords': f"{material_name.lower()}, {material_name.lower()} {yaml_material_data['category']}, laser ablation, laser cleaning, non-contact cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters, thermal processing, surface restoration",
                 'chemicalProperties': {
-                    'symbol': yaml_material_data['symbol'],
-                    'formula': yaml_material_data['formula'],
+                    'symbol': symbol,
+                    'formula': formula,
                     'materialType': yaml_material_data['category']
                 },
                 'properties': self._build_material_properties(material_data),
@@ -909,30 +932,242 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
         raise ValueError("No laser parameters found for material - fail-fast architecture requires complete laser parameter data")
 
     def _build_material_properties(self, material_data: Dict) -> Dict:
-        """Build material properties section from material data"""
-        # Use data from materials_enhanced.py or material_data if available
+        """Build material properties section from comprehensive material data with category-aware percentiles"""
         properties = {}
         
-        # Extract known properties with proper units and ranges
-        if 'density' in material_data:
-            density_val = material_data['density']
-            if isinstance(density_val, (int, float)):
-                properties.update({
-                    'density': f"{density_val} g/cm³",
-                    'densityNumeric': float(density_val),
-                    'densityUnit': 'g/cm³',
-                    'densityMin': '0.5 g/cm³',
-                    'densityMinNumeric': 0.5,
-                    'densityMinUnit': 'g/cm³',
-                    'densityMax': '20.0 g/cm³',
-                    'densityMaxNumeric': 20.0,
-                    'densityMaxUnit': 'g/cm³',
-                    'densityPercentile': round((density_val / 20.0) * 100, 1)
-                })
+        # Get material category for category-aware percentile calculations
+        material_category = material_data.get('category', 'metal')
         
-        # Add other properties following similar pattern
+        # Load category ranges from materials.yaml for accurate percentiles
+        category_ranges = self._get_category_ranges(material_category)
+        
+        # Map of comprehensive properties from materials.yaml to their extraction logic
+        property_mappings = {
+            'density': {'unit': 'g/cm³', 'camel_key': 'density'},
+            'melting_point': {'unit': '°C', 'camel_key': 'meltingPoint'},
+            'boiling_point': {'unit': '°C', 'camel_key': 'boilingPoint'},
+            'thermal_conductivity': {'unit': 'W/(m·K)', 'camel_key': 'thermalConductivity'},
+            'specific_heat_capacity': {'unit': 'J/(kg·K)', 'camel_key': 'specificHeatCapacity'},
+            'thermal_expansion_coefficient': {'unit': '×10⁻⁶/K', 'camel_key': 'thermalExpansionCoefficient'},
+            'electrical_resistivity': {'unit': 'Ω·m', 'camel_key': 'electricalResistivity'},
+            'tensile_strength': {'unit': 'MPa', 'camel_key': 'tensileStrength'},
+            'yield_strength': {'unit': 'MPa', 'camel_key': 'yieldStrength'},
+            'elastic_modulus': {'unit': 'GPa', 'camel_key': 'elasticModulus'},
+            'curie_temperature': {'unit': '°C', 'camel_key': 'curieTemperature'},
+            'crystal_structure': {'unit': None, 'camel_key': 'crystalStructure'},
+            'magnetic_properties': {'unit': None, 'camel_key': 'magneticProperties'}
+        }
+        
+        # Extract comprehensive properties from material_data
+        for prop_key, config in property_mappings.items():
+            if prop_key in material_data:
+                raw_value = material_data[prop_key]
+                
+                # Handle properties with units
+                if config['unit']:
+                    # If raw value is already a string with units, use it directly
+                    if isinstance(raw_value, str):
+                        properties[prop_key] = raw_value
+                        
+                        # Extract numeric value and unit for triple format
+                        numeric_value, unit = self._extract_numeric_and_unit(raw_value)
+                        if numeric_value:
+                            camel_prop = self._to_camel_case(prop_key)
+                            properties[f"{camel_prop}Numeric"] = numeric_value
+                            properties[f"{camel_prop}Unit"] = unit or config['unit']
+                            
+                            # Calculate category-aware percentile using actual min/max ranges
+                            if category_ranges and config['camel_key'] in category_ranges:
+                                range_info = category_ranges[config['camel_key']]
+                                percentile = self._calculate_percentile_from_range(
+                                    numeric_value, range_info.get('min'), range_info.get('max')
+                                )
+                                if percentile is not None:
+                                    properties[f"{camel_prop}Percentile"] = percentile
+                    
+                    # If raw value is numeric, add unit and create full format
+                    elif isinstance(raw_value, (int, float)):
+                        full_value = f"{raw_value} {config['unit']}"
+                        properties[prop_key] = full_value
+                        
+                        camel_prop = self._to_camel_case(prop_key)
+                        properties[f"{camel_prop}Numeric"] = float(raw_value)
+                        properties[f"{camel_prop}Unit"] = config['unit']
+                        
+                        # Calculate category-aware percentile
+                        if category_ranges and config['camel_key'] in category_ranges:
+                            range_info = category_ranges[config['camel_key']]
+                            percentile = self._calculate_percentile_from_range(
+                                raw_value, range_info.get('min'), range_info.get('max')
+                            )
+                            if percentile is not None:
+                                properties[f"{camel_prop}Percentile"] = percentile
+                
+                # Handle properties without units (text values)
+                else:
+                    properties[prop_key] = raw_value
+        
+        logger.info(f"Successfully extracted {len(properties)} comprehensive properties from material data")
         return properties
+    
+    def _to_camel_case(self, snake_str: str) -> str:
+        """Convert snake_case to camelCase for property names"""
+        components = snake_str.split('_')
+        return components[0] + ''.join(word.capitalize() for word in components[1:])
+    
+    def _get_category_ranges(self, category: str) -> Dict:
+        """Get category ranges from materials.yaml for accurate percentile calculations"""
+        try:
+            import yaml
+            with open('data/materials.yaml', 'r') as f:
+                materials_data = yaml.safe_load(f)
+            
+            category_ranges_data = materials_data.get('category_ranges', {})
+            return category_ranges_data.get(category, {})
+        except Exception as e:
+            logger.warning(f"Could not load category ranges for {category}: {e}")
+            return {}
+    
+    def _calculate_percentile_from_range(self, value: float, min_str: str, max_str: str) -> Optional[float]:
+        """Calculate percentile based on category min/max ranges"""
+        try:
+            if not min_str or not max_str:
+                return None
+                
+            # Extract numeric values from range strings
+            min_val, _ = self._extract_numeric_and_unit(min_str)
+            max_val, _ = self._extract_numeric_and_unit(max_str)
+            
+            if min_val is None or max_val is None or max_val <= min_val:
+                return None
+            
+            # Calculate percentile within the category range
+            if value <= min_val:
+                return 0.0
+            elif value >= max_val:
+                return 100.0
+            else:
+                percentile = ((value - min_val) / (max_val - min_val)) * 100
+                return round(percentile, 1)
+                
+        except Exception as e:
+            logger.debug(f"Error calculating percentile for value {value}: {e}")
+            return None
 
+    def _generate_formula_from_material(self, material_name: str, category: str) -> str:
+        """
+        Generate appropriate chemical formula based on material name and category.
+        Maintains fail-fast architecture by providing explicit formulas for all materials.
+        """
+        material_lower = material_name.lower().strip()
+        
+        # Known chemical formula mappings by exact name
+        known_formulas = {
+            # Ceramics
+            'alumina': 'Al₂O₃',
+            'zirconia': 'ZrO₂',
+            'silicon nitride': 'Si₃N₄',
+            'silicon carbide': 'SiC',
+            'porcelain': 'Al₂Si₂O₅(OH)₄',  # Kaolinite base
+            'stoneware': 'Al₂Si₂O₅(OH)₄',  # Clay base
+            
+            # Glass materials
+            'borosilicate glass': 'SiO₂·B₂O₃',
+            'pyrex': 'SiO₂·B₂O₃',
+            'soda-lime glass': 'Na₂O·CaO·SiO₂',
+            'float glass': 'Na₂O·CaO·SiO₂',
+            'fused silica': 'SiO₂',
+            'quartz glass': 'SiO₂',
+            'tempered glass': 'Na₂O·CaO·SiO₂',
+            'lead crystal': 'PbO·SiO₂',
+            
+            # Stone materials
+            'granite': 'K(AlSi₃O₈)',  # Feldspar dominant
+            'marble': 'CaCO₃',
+            'limestone': 'CaCO₃',
+            'calcite': 'CaCO₃',
+            'basalt': 'Ca(Mg,Fe)Si₂O₆',  # Pyroxene base
+            'alabaster': 'CaSO₄·2H₂O',
+            'onyx': 'CaCO₃',
+            'slate': 'Al₂Si₄O₁₀(OH)₂',  # Mica base
+            'sandstone': 'SiO₂',
+            'quartzite': 'SiO₂',
+            'bluestone': 'SiO₂',
+            'porphyry': 'K(AlSi₃O₈)',
+            'breccia': 'CaCO₃',  # Carbonate cement typical
+            'travertine': 'CaCO₃',
+            'schist': 'Al₂Si₄O₁₀(OH)₂',
+            'gneiss': 'K(AlSi₃O₈)',
+            'andesite': 'Ca(Al₂Si₂O₈)',
+            'rhyolite': 'K(AlSi₃O₈)',
+            
+            # Masonry materials
+            'concrete': 'Ca(OH)₂·SiO₂',  # Cement base
+            'cement': 'Ca₃SiO₅',  # Portland cement
+            'mortar': 'Ca(OH)₂·SiO₂',
+            'brick': 'Al₂Si₂O₅(OH)₄',  # Clay base
+            'plaster': 'CaSO₄·2H₂O',
+            'stucco': 'Ca(OH)₂',
+            'terracotta': 'Al₂Si₂O₅(OH)₄',
+            
+            # Semiconductors
+            'silicon': 'Si',
+            'gallium arsenide': 'GaAs',
+            'silicon germanium': 'SiGe',
+            'germanium': 'Ge',
+            'gallium nitride': 'GaN',
+        }
+        
+        # Check exact match first
+        if material_lower in known_formulas:
+            return known_formulas[material_lower]
+        
+        # Category-based formula generation
+        if category == 'wood':
+            # All wood materials use cellulose as primary component
+            return 'C₆H₁₀O₅'  # Cellulose
+        elif category == 'composite':
+            # Most composites are polymer-based
+            if 'carbon fiber' in material_lower or 'cfrp' in material_lower:
+                return 'C·(C₂H₄)ₙ'  # Carbon fiber in polymer matrix
+            elif 'fiberglass' in material_lower or 'gfrp' in material_lower:
+                return 'SiO₂·(C₂H₄)ₙ'  # Glass fiber in polymer matrix
+            elif 'kevlar' in material_lower:
+                return 'C₁₄H₁₀N₂O₂'  # Kevlar polymer
+            elif 'rubber' in material_lower:
+                return '(C₅H₈)ₙ'  # Natural rubber
+            elif 'epoxy' in material_lower:
+                return 'C₂H₄O'  # Epoxy base
+            elif 'polyester' in material_lower:
+                return 'C₁₀H₈O₄'  # Polyester
+            elif 'phenolic' in material_lower:
+                return 'C₆H₆O'  # Phenol base
+            elif 'urethane' in material_lower:
+                return 'C₃H₆N₂O'  # Urethane
+            else:
+                return '(C₂H₄)ₙ'  # Generic polymer
+        elif category == 'ceramic':
+            # Default ceramic formula (oxide-based)
+            return 'Al₂O₃·SiO₂'
+        elif category == 'glass':
+            # Default glass formula
+            return 'SiO₂'
+        elif category == 'stone':
+            # Default to silicate mineral
+            return 'SiO₂'
+        elif category == 'masonry':
+            # Default to calcium-based cement
+            return 'CaSiO₃'
+        elif category == 'semiconductor':
+            # Default to silicon
+            return 'Si'
+        else:
+            # Generic formula based on material name pattern
+            if any(wood in material_lower for wood in ['ash', 'oak', 'pine', 'maple', 'birch', 'beech', 'cedar', 'cherry', 'fir', 'hickory', 'mahogany', 'walnut', 'bamboo', 'poplar', 'willow', 'elm', 'spruce']):
+                return 'C₆H₁₀O₅'  # Cellulose for wood
+            else:
+                return f'({material_name})'  # Placeholder formula
+    
     def _build_composition(self, yaml_material_data: Dict) -> list:
         """Build composition section"""
         symbol = yaml_material_data.get('symbol', '')

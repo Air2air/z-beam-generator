@@ -1,188 +1,233 @@
-jsonld:
-  '@context': https://schema.org
-  '@type': Article
-  about:
-  - '@type': Material
-    additionalProperty:
-    - '@type': PropertyValue
-      name: Density
-      value: 0.35-0.60 g/cm³
-    - '@type': PropertyValue
-      name: Thermal Conductivity
-      value: 0.12 W/m·K
-    - '@type': PropertyValue
-      name: Tensile Strength
-      value: 40-90 MPa
-    - '@type': PropertyValue
-      name: Young's Modulus
-      value: 8-12 GPa
-    - '@type': PropertyValue
-      name: Hardness
-      value: 1-3 HB
-    - '@type': PropertyValue
-      name: Chemical Formula
-      value: C6H10O5
-    - '@type': PropertyValue
-      name: Material Type
-      value: wood
-    - '@type': PropertyValue
-      name: Chemical Symbol
-      value: Pine
-    - '@type': PropertyValue
-      name: Chemical Composition
-      value: Cellulose (C6H10O5) 40-45%, Lignin 25-30%, Hemicellulose 20-25%, Extractives
-        5-10%
-    - '@type': PropertyValue
-      name: Material Compatibility
-      value: Softwoods, Hardwoods, Wood Composites
-    - '@type': PropertyValue
-      name: Regulatory Standards
-      value: ISO 13061, ASTM D143, EN 350
-    alternateName:
-    - C6H10O5
-    category: wood
-    description: Technical overview of Pine wood for laser cleaning applications,
-      including optimal 1064nm wavelength interaction with cellulose structure, and
-      applications in wood surface restoration.
-    identifier: Pine
-    name: Pine
-  - '@type': Process
-    description: Non-contact surface treatment process optimized for Pine materials
-    name: Laser Cleaning
-  abstract: 'Advanced laser cleaning techniques for Pine using 1064nm wavelength at
-    optimized fluence with nanosecond pulses and controlled power for Wood Manufacturing
-    and Restoration & Conservation. Material properties: 0.35-0.60 g/cm³ density,
-    0.12 W/m·K thermal conductivity.'
-  alternativeHeadline: Advanced Laser Ablation Techniques for Wood Manufacturing using
-    Pine
-  articleBody: Technical overview of Pine wood for laser cleaning applications, including
-    optimal 1064nm wavelength interaction with cellulose structure, and applications
-    in wood surface restoration.
-  articleSection: Materials Processing
-  author:
-    '@type': Person
-    affiliation:
-      '@type': Organization
-      name: Advanced Materials Research Institute - Taiwan
-    image: /images/author/yi-chun-lin.jpg
-    jobTitle: Ph.D. in Laser Materials Processing
-    knowsAbout:
-    - Laser Materials Processing
-    - Pine Surface Engineering
-    - Laser Materials Processing
-    name: Yi-Chun Lin
-    nationality: Taiwan
-  breadcrumb:
-    '@type': BreadcrumbList
-    itemListElement:
-    - '@type': ListItem
-      item: https://z-beam.com/pine-laser-cleaning
-      name: Materials
-      position: 1
-    - '@type': ListItem
-      item: https://z-beam.com/pine-laser-cleaning
-      name: Wood
-      position: 2
-    - '@type': ListItem
-      item: https://z-beam.com/pine-laser-cleaning
-      name: Pine
-      position: 3
-  copyrightHolder:
-    '@type': Organization
-    logo:
-      '@type': ImageObject
-      url: https://z-beam.com/images/site/logo/logo_.png
-    name: Z-Beam
-    sameAs:
-    - https://www.linkedin.com/company/z-beam
-    url: https://z-beam.com
-  copyrightYear: 2025
-  dateModified: '2025-09-19T18:22:36Z'
-  datePublished: '2025-09-19T18:22:36Z'
-  description: Comprehensive technical guide covering laser cleaning methodologies
-    for Pine wood, including laser wavelength optimization, industrial applications,
-    and surface treatment benefits with detailed material properties.
-  headline: Pine Laser Cleaning
-  image:
-  - '@type': ImageObject
-    caption: Pine wood surface undergoing laser cleaning showing precise contamination
-      removal
-    description: High-resolution demonstration of Pine component processed with 1064nm
-      wavelength at optimized fluence, showing complete contamination removal while
-      preserving material integrity
-    encodingFormat: image/jpeg
-    height: 800
-    name: Pine Laser Cleaning Before/After Comparison
-    representativeOfPage: true
-    url: https://z-beam.com/images/pine-laser-cleaning-hero.jpg
-    width: 1200
-  - '@type': ImageObject
-    caption: Microscopic view of pine wood surface after laser cleaning showing detailed
-      grain structure
-    description: Scanning electron micrographs of Pine surface processed with 1064nm
-      wavelength, verified at high magnification showing detailed surface structure
-    encodingFormat: image/jpeg
-    height: 600
-    name: Pine Surface Microstructure Analysis
-    url: https://z-beam.com/images/pine-laser-cleaning-micro.jpg
-    width: 800
-  inLanguage: en-US
-  isAccessibleForFree: true
-  isPartOf:
-    '@type': WebSite
-    name: Z-Beam Laser Processing Guide
-    url: https://z-beam.com/pine-laser-cleaning
-  keywords:
-  - pine
-  - pine laser cleaning
-  - laser ablation
-  - non-contact cleaning
-  - surface treatment
-  - pine wood
-  - wood laser processing
-  - wood-manufacturing-laser-cleaning
-  - restoration-conservation-laser-cleaning
-  - C6H10O5-laser-processing
-  - eco-friendly-cleaning
-  - sustainable-processing
-  license: https://creativecommons.org/licenses/by/4.0/
-  mainEntity:
-    '@type': HowTo
-    description: Step-by-step process for laser cleaning Pine materials using optimized
-      parameters
-    name: How to Laser Clean Pine
-    step:
-    - '@type': HowToStep
-      name: Material Preparation
-      text: Secure Pine component in laser processing fixture ensuring stable positioning
-        and adequate ventilation for industrial safety operation.
-    - '@type': HowToStep
-      name: Parameter Configuration
-      text: 'Configure laser parameters: 1064nm wavelength, optimized fluence, nanosecond
-        pulse duration, optimized repetition rate.'
-    - '@type': HowToStep
-      name: Surface Treatment
-      text: Execute systematic scanning pattern with precision spot size maintaining
-        consistent standoff distance for Pine processing.
-    - '@type': HowToStep
-      name: Quality Verification
-      text: Inspect cleaned Pine surface using optical microscopy to verify contaminant
-        removal and material integrity preservation.
-  mentions:
-  - manufacturing
-  - wood
-  - '&'
-  - restoration
-  potentialAction:
-    '@type': ReadAction
-    target: https://z-beam.com/pine-laser-cleaning
-  publisher:
-    '@type': Organization
-    logo:
-      '@type': ImageObject
-      url: https://z-beam.com/images/site/logo/logo_.png
-    name: Z-Beam
-    sameAs:
-    - https://www.linkedin.com/company/z-beam
-    url: https://z-beam.com
-  wordCount: 23
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Pine Laser Cleaning",
+  "alternativeHeadline": "Advanced Laser Ablation Techniques for Wood Manufacturing using Pine",
+  "description": "Comprehensive technical guide covering laser cleaning methodologies for Pine wood, including laser wavelength optimization, industrial applications, and surface treatment benefits with detailed material properties.",
+  "abstract": "Advanced laser cleaning techniques for Pine using 1064nm wavelength at optimized fluence with nanosecond pulses and controlled power for Wood Manufacturing and Restoration & Conservation. Material properties: 0.35-0.60 g/cm³ density, 0.12 W/m·K thermal conductivity.",
+  "keywords": [
+    "pine",
+    "pine laser cleaning",
+    "laser ablation",
+    "non-contact cleaning",
+    "surface treatment",
+    "pine wood",
+    "wood laser processing",
+    "wood-manufacturing-laser-cleaning",
+    "restoration-conservation-laser-cleaning",
+    "C6H10O5-laser-processing",
+    "eco-friendly-cleaning",
+    "sustainable-processing"
+  ],
+  "articleBody": "Technical overview of Pine wood for laser cleaning applications, including optimal 1064nm wavelength interaction with cellulose structure, and applications in wood surface restoration.",
+  "wordCount": 23,
+  "articleSection": "Materials Processing",
+  "inLanguage": "en-US",
+  "isAccessibleForFree": true,
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "copyrightHolder": {
+    "@type": "Organization",
+    "name": "Z-Beam",
+    "url": "https://z-beam.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://z-beam.com/images/site/logo/logo_.png"
+    },
+    "sameAs": [
+      "https://linkedin.com/company/z-beam"
+    ]
+  },
+  "copyrightYear": 2025,
+  "author": {
+    "@type": "Person",
+    "name": "Yi-Chun Lin",
+    "jobTitle": "Ph.D. in Laser Materials Processing",
+    "affiliation": {
+      "@type": "Organization",
+      "name": "Advanced Materials Research Institute - Taiwan"
+    },
+    "knowsAbout": [
+      "Laser Materials Processing",
+      "Pine Surface Engineering",
+      "Laser Materials Processing"
+    ],
+    "image": "https://z-beam.com/images/author/yi-chun-lin.jpg",
+    "nationality": "Taiwan"
+  },
+  "datePublished": "2025-09-19T18:38:10Z",
+  "dateModified": "2025-09-19T18:38:10Z",
+  "image": [
+    {
+      "@type": "ImageObject",
+      "url": "https://z-beam.com/images/pine-laser-cleaning-hero.jpg",
+      "name": "Pine Laser Cleaning Before/After Comparison",
+      "caption": "Pine wood surface undergoing laser cleaning showing precise contamination removal",
+      "description": "High-resolution demonstration of Pine component processed with 1064nm wavelength at optimized fluence, showing complete contamination removal while preserving material integrity",
+      "width": 1200,
+      "height": 800,
+      "encodingFormat": "image/jpeg",
+      "representativeOfPage": true
+    },
+    {
+      "@type": "ImageObject",
+      "url": "https://z-beam.com/images/pine-laser-cleaning-micro.jpg",
+      "name": "Pine Surface Microstructure Analysis",
+      "caption": "Microscopic view of pine wood surface after laser cleaning showing detailed grain structure",
+      "description": "Scanning electron micrographs of Pine surface processed with 1064nm wavelength, verified at high magnification showing detailed surface structure",
+      "width": 800,
+      "height": 600,
+      "encodingFormat": "image/jpeg"
+    }
+  ],
+  "about": [
+    {
+      "@type": "Material",
+      "name": "Pine",
+      "alternateName": [
+        "C6H10O5"
+      ],
+      "identifier": "Pine",
+      "category": "wood",
+      "description": "Technical overview of Pine wood for laser cleaning applications, including optimal 1064nm wavelength interaction with cellulose structure, and applications in wood surface restoration.",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Density",
+          "value": "0.35-0.60 g/cm³"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Thermal Conductivity",
+          "value": "0.12 W/m·K"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Tensile Strength",
+          "value": "40-90 MPa"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Young's Modulus",
+          "value": "8-12 GPa"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Hardness",
+          "value": "1-3 HB"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Chemical Formula",
+          "value": "C6H10O5"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Material Type",
+          "value": "wood"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Chemical Symbol",
+          "value": "Pine"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Chemical Composition",
+          "value": "Cellulose (C6H10O5) 40-45%, Lignin 25-30%, Hemicellulose 20-25%, Extractives 5-10%"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Material Compatibility",
+          "value": "Softwoods, Hardwoods, Wood Composites"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Regulatory Standards",
+          "value": "ISO 13061, ASTM D143, EN 350"
+        }
+      ]
+    },
+    {
+      "@type": "Process",
+      "name": "Laser Cleaning",
+      "description": "Non-contact surface treatment process optimized for Pine materials"
+    }
+  ],
+  "mainEntity": {
+    "@type": "HowTo",
+    "name": "How to Laser Clean Pine",
+    "description": "Step-by-step process for laser cleaning Pine materials using optimized parameters",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "name": "Material Preparation",
+        "text": "Secure Pine component in laser processing fixture ensuring stable positioning and adequate ventilation for industrial safety operation."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Parameter Configuration",
+        "text": "Configure laser parameters: 1064nm wavelength, optimized fluence, nanosecond pulse duration, optimized repetition rate."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Surface Treatment",
+        "text": "Execute systematic scanning pattern with precision spot size maintaining consistent standoff distance for Pine processing."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Quality Verification",
+        "text": "Inspect cleaned Pine surface using optical microscopy to verify contaminant removal and material integrity preservation."
+      }
+    ]
+  },
+  "mentions": [
+    "&",
+    "wood",
+    "restoration",
+    "manufacturing"
+  ],
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Z-Beam Laser Processing Guide",
+    "url": "https://z-beam.com/pine-laser-cleaning"
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Materials",
+        "item": "https://z-beam.com/pine-laser-cleaning"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Wood",
+        "item": "https://z-beam.com/pine-laser-cleaning"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Pine",
+        "item": "https://z-beam.com/pine-laser-cleaning"
+      }
+    ]
+  },
+  "potentialAction": {
+    "@type": "ReadAction",
+    "target": "https://z-beam.com/pine-laser-cleaning"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Z-Beam",
+    "url": "https://z-beam.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://z-beam.com/images/site/logo/logo_.png"
+    },
+    "sameAs": [
+      "https://linkedin.com/company/z-beam"
+    ]
+  }
+}
