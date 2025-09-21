@@ -1,7 +1,7 @@
 # Basic Content Structure
 before_text: |
-  Initial surface examination reveals significant contamination deposits across the schist Technical overview of Schist, None, for laser cleaning applications, including optimal 1064nm wavelength interaction, and industrial applications in surface preparation.. 
-  Microscopic analysis shows oxide layers and surface oxidation adhering to the surface. The schist exhibits the characteristic density profile typical of stone materials.
+  Initial surface examination reveals significant contamination deposits across the schist Laser cleaning of schist leverages the differential absorption of laser energy between contaminants and the complex silicate mineral matrix. The optimal parameters are tuned to avoid thermal shock and delamination of the foliated structure, which is rich in micas. The process is highly selective for removing surface deposits while preserving the historical and structural integrity of the stone.. 
+  Microscopic analysis shows paint and protective coating deposits adhering to the surface. The schist exhibits the characteristic density profile typical of stone materials.
   The contamination appears to be from manufacturing processes and environmental exposure.
 
 after_text: |
@@ -11,14 +11,14 @@ after_text: |
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064nm (primary), 532nm (optional)
-  power: 50-200W
-  pulse_duration: 20-100ns
-  spot_size: 0.2-1.5mm
-  frequency: 20-100kHz
-  energy_density: 1.0–4.5 J/cm²
-  scanning_speed: "50-500mm/s"
-  beam_profile: "Gaussian TEM00"
+  wavelength: 1064 nm (Nd:YAG fundamental), 532 nm (Nd:YAG second harmonic)
+  power: 20-100 W (average power for pulsed lasers)
+  pulse_duration: 10-150 ns
+  spot_size: 0.2-0.8 mm
+  frequency: 10-50 kHz
+  energy_density: 0.8-2.5 J/cm² (for safe removal of contaminants without substrate damage)
+  scanning_speed: "500-2000 mm/s"
+  beam_profile: "Top-hat (flat-top)"
 
 # Material Information
 material: "Schist"
@@ -31,7 +31,7 @@ data_completeness:
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-19T16:55:26.091875Z"
+  generated: "2025-09-20T22:48:51.039689Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
@@ -41,7 +41,7 @@ metadata:
 
 # Enhanced SEO Frontmatter
 title: "Schist Surface Laser Cleaning Analysis - Heritage Conservation Cleaning"
-description: "Comprehensive microscopic analysis of schist surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of schist surface before and after precision laser cleaning, achieving optimal surface restoration using 1064 nm (Nd:YAG fundamental), 532 nm (Nd:YAG second harmonic) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -56,7 +56,7 @@ keywords:
   - "contamination analysis"
   - "schist stone"
   - "non-contact cleaning"
-  - "electronics manufacturing applications"
+  - "construction applications"
   - "stone conservation"
   - "heritage preservation"
   - "architectural restoration"
@@ -76,22 +76,22 @@ author_object:
 
 # Technical Specifications for SEO
 technicalSpecifications:
-  wavelength: "1064nm (primary), 532nm (optional)"
-  power: "50-200W"
-  pulse_duration: "20-100ns"
-  scanning_speed: "50-500mm/s"
+  wavelength: "1064 nm (Nd:YAG fundamental), 532 nm (Nd:YAG second harmonic)"
+  power: "20-100 W (average power for pulsed lasers)"
+  pulse_duration: "10-150 ns"
+  scanning_speed: "500-2000 mm/s"
   material: "Schist"
   beam_delivery: "fiber optic"
-  focus_diameter: "0.2-1.5mm"
+  focus_diameter: "0.2-0.8 mm"
   processing_atmosphere: "ambient air"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Quartz (SiO₂) 40-60%, Mica (Muscovite/Biotite) 20-40%, Feldspar 10-20%"
+  composition: "Quartz (SiO₂): 20-60%, Mica [Muscovite: KAl₂(AlSi₃O₁₀)(OH)₂; Biotite: K(Fe,Mg)₃(AlSi₃O₁₀)(OH)₂]: 20-70%, Other minerals (Chlorite, Garnet, Feldspar, Graphite): 5-30%"
   surface_treatment: "laser cleaning"
   contamination_type: "weathering and biological deposits"
-  materialType: "stone"
-  formula: "None"
+  materialType: "Metamorphic Rock"
+  formula: "Variable; primarily (K,Na)(Al,Fe,Mg)₂(Al,Si)₄O₁₀(OH)₂ (Mica) + SiO₂ (Quartz)"
   surface_finish: "Ra < 0.6 μm (post-cleaning)"
   corrosion_resistance: "good"
 
@@ -113,7 +113,7 @@ seo_data:
   og_image: "/images/schist-laser-cleaning-micro.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-19T16:55:26.091875Z"
+  last_modified: "2025-09-20T22:48:51.039689Z"
 
 # Quality Metrics
 quality_metrics:
@@ -131,7 +131,7 @@ accessibility:
 ---
 Material: "schist"
 Component: caption
-Generated: 2025-09-19T16:55:26.091875Z
+Generated: 2025-09-20T22:48:51.039689Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

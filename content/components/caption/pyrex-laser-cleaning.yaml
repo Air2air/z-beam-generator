@@ -1,7 +1,7 @@
 # Basic Content Structure
 before_text: |
-  Initial surface examination reveals significant contamination deposits across the pyrex Technical overview of Pyrex, SiO2·B2O3, for laser cleaning applications, including optimal 1064nm wavelength interaction, and industrial applications in surface preparation.. 
-  Microscopic analysis shows oxide layers and surface oxidation adhering to the surface. The pyrex exhibits the characteristic density profile typical of glass materials.
+  Initial surface examination reveals significant contamination deposits across the pyrex Pyrex (borosilicate glass) laser cleaning utilizes precise pulsed fiber laser parameters to remove surface contaminants while leveraging Pyrex's low thermal expansion coefficient (3.3 × 10⁻⁶/°C) to prevent thermal stress cracking. The process selectively ablates contaminants without damaging the underlying glass substrate.. 
+  Microscopic analysis shows optical contamination and surface films adhering to the surface. The pyrex exhibits the characteristic density profile typical of glass materials.
   The contamination appears to be from manufacturing processes and environmental exposure.
 
 after_text: |
@@ -11,14 +11,14 @@ after_text: |
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064nm (primary), 532nm (optional)
-  power: 50-200W
-  pulse_duration: 20-100ns
-  spot_size: 0.2-1.5mm
-  frequency: 20-100kHz
-  energy_density: 1.0–4.5 J/cm²
-  scanning_speed: "50-500mm/s"
-  beam_profile: "Gaussian TEM00"
+  wavelength: 1064 nm (primary), 532 nm (for higher precision applications)
+  power: 20-100 W (average power for pulsed fiber lasers)
+  pulse_duration: 10-100 ns
+  spot_size: 0.1-2.0 mm (adjustable based on contamination type)
+  frequency: 10-50 kHz
+  energy_density: 0.5-5 J/cm² (below the 8-10 J/cm² ablation threshold for pristine Pyrex)
+  scanning_speed: "100-1000 mm/s (depending on contamination thickness)"
+  beam_profile: "Top-hat or Gaussian (depending on application requirements)"
 
 # Material Information
 material: "Pyrex"
@@ -31,7 +31,7 @@ data_completeness:
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-19T16:55:25.154986Z"
+  generated: "2025-09-20T22:48:48.151770Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
@@ -41,7 +41,7 @@ metadata:
 
 # Enhanced SEO Frontmatter
 title: "Pyrex Surface Laser Cleaning Analysis - Optical Surface Cleaning"
-description: "Comprehensive microscopic analysis of pyrex surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of pyrex surface before and after precision laser cleaning, achieving optimal surface restoration using 1064 nm (primary), 532 nm (for higher precision applications) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -56,7 +56,7 @@ keywords:
   - "contamination analysis"
   - "pyrex glass"
   - "non-contact cleaning"
-  - "electronics manufacturing applications"
+  - "automotive applications"
   - "optical cleaning"
   - "glass surface treatment"
   - "transparent materials"
@@ -76,22 +76,22 @@ author_object:
 
 # Technical Specifications for SEO
 technicalSpecifications:
-  wavelength: "1064nm (primary), 532nm (optional)"
-  power: "50-200W"
-  pulse_duration: "20-100ns"
-  scanning_speed: "50-500mm/s"
+  wavelength: "1064 nm (primary), 532 nm (for higher precision applications)"
+  power: "20-100 W (average power for pulsed fiber lasers)"
+  pulse_duration: "10-100 ns"
+  scanning_speed: "100-1000 mm/s (depending on contamination thickness)"
   material: "Pyrex"
   beam_delivery: "fiber optic"
-  focus_diameter: "0.2-1.5mm"
+  focus_diameter: "0.1-2.0 mm (adjustable based on contamination type)"
   processing_atmosphere: "ambient air"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Silicon Dioxide (SiO2) 80.6%, Boron Trioxide (B2O3) 12.9%, Sodium Oxide (Na2O) 4.0%"
+  composition: "Silicon dioxide (SiO₂): 80.6%, Boron trioxide (B₂O₃): 12.6%, Sodium oxide (Na₂O): 4.2%"
   surface_treatment: "laser cleaning"
   contamination_type: "optical contamination and surface films"
-  materialType: "glass"
-  formula: "SiO2·B2O3"
+  materialType: "borosilicate glass"
+  formula: "Approx. 80.6% SiO₂, 12.6% B₂O₃, 4.2% Na₂O, 2.2% Al₂O₃, 0.04% Fe₂O₃, 0.1% CaO, 0.05% MgO, 0.01% K₂O"
   surface_finish: "Ra < 0.6 μm (post-cleaning)"
   corrosion_resistance: "excellent"
 
@@ -113,7 +113,7 @@ seo_data:
   og_image: "/images/pyrex-laser-cleaning-micro.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-19T16:55:25.154986Z"
+  last_modified: "2025-09-20T22:48:48.151770Z"
 
 # Quality Metrics
 quality_metrics:
@@ -131,7 +131,7 @@ accessibility:
 ---
 Material: "pyrex"
 Component: caption
-Generated: 2025-09-19T16:55:25.154986Z
+Generated: 2025-09-20T22:48:48.151770Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

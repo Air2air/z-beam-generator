@@ -3,65 +3,57 @@ materialTables:
   - header: '## Chemical Properties'
     rows:
     - property: Chemical Formula
-      value: Aramid-Polymer
+      value: (C₁₄H₁₀N₂O₂)ₙ + Polymer Matrix (typically epoxy)
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded
-        text-sm">Chemical</span>
+      category: Chemical
     - property: Chemical Symbol
       value: KRP
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded
-        text-sm">Chemical</span>
+      category: Chemical
     - property: Material Type
       value: Composite
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-purple-100 text-purple-800 rounded
-        text-sm">Classification</span>
+      category: Classification
     - property: Composition
-      value: Kevlar fibers 60%, Polymer matrix 40%, Trace additives <0.5%
+      value: 'Poly(p-phenylene terephthalamide) fibers (Kevlar): 50-70%, Epoxy resin matrix: 30-50%, Additives (fillers, curing agents): 0-5%'
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-green-100 text-green-800 rounded
-        text-sm">Composition</span>
+      category: Composition
   - header: '## Physical & Mechanical Properties'
     rows:
     - property: Density
-      value: "1.44 g/cm\xB3"
-      unit: "g/cm\xB3"
-      min: '1.2'
-      max: '1.6'
-      percentile: 48.7
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 59%"></div></div><p class="text-xs text-center">Value
-        at 59% of range</p>'
-    - property: Melting Point
-      value: "500-600\xB0C"
-      unit: "\xB0C"
-      percentile: 62.3
-      htmlVisualization: <span class="text-gray-500">-</span>
-    - property: Thermal Conductivity
-      value: "0.04 W/m\xB7K"
-      unit: "W/m\xB7K"
-      percentile: 33.1
-      htmlVisualization: <span class="text-gray-500">-</span>
-    - property: Tensile Strength
-      value: 3000-4000 MPa
-      unit: MPa
-      percentile: 85.6
-      htmlVisualization: <span class="text-gray-500">-</span>
-    - property: Hardness
-      value: N/A HB
-      unit: ''
+      value: 1.44-1.45 g/cm³
+      unit: g/cm³
+      min: '1.8'
+      max: '6.0'
       percentile: 0.0
-      htmlVisualization: <span class="text-gray-500">-</span>
+      numeric: 1.44
+    - property: Melting Point
+      value: 500-600°C (decomposition)
+      unit: °C
+      percentile: 0.0
+      numeric: 550.0
+    - property: Thermal Conductivity
+      value: 0.04-0.05 W/m·K (transverse), 0.8-1.0 W/m·K (longitudinal)
+      unit: W/m·K
+      percentile: 0.0
+      numeric: 0.04
+    - property: Tensile Strength
+      value: 2900-3620 MPa (fiber), 70-100 MPa (composite)
+      unit: MPa
+      percentile: 100.0
+      numeric: 3260.0
+    - property: Hardness
+      value: Rockwell M90-M100
+      unit: M
+      min: '1.0'
+      max: '10.0'
+      percentile: 100.0
+      numeric: 95.0
     - property: Young's Modulus
-      value: 124 GPa
+      value: 70-112 GPa (fiber), 15-30 GPa (composite)
       unit: GPa
-      min: '100.0'
-      max: '150.0'
-      percentile: 68.9
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 48%"></div></div><p class="text-xs text-center">Value
-        at 48% of range</p>'
+      percentile: 100.0
+      numeric: 91.0
   - header: '## Laser Processing Parameters'
     rows:
     - property: Power Range
@@ -69,127 +61,75 @@ materialTables:
       unit: W
       min: '20.0'
       max: '500.0'
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 21%"></div></div><p class="text-xs text-center">Value
-        at 21% of range</p>'
+      numeric: 125.0
     - property: Pulse Duration
-      value: 20-100ns
+      value: 10-50ns
       unit: ns
       min: '1.0'
       max: '1000.0'
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 5%"></div></div><p class="text-xs text-center">Value
-        at 5% of range</p>'
+      numeric: 30.0
     - property: Wavelength
       value: 1064nm (primary), 532nm (optional)
       unit: nm
       min: '355.0'
       max: '2940.0'
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 27%"></div></div><p class="text-xs text-center">Value
-        at 27% of range</p>'
+      numeric: 1064.0
     - property: Spot Size
-      value: 0.2-1.5mm
+      value: 0.1-1.0mm
       unit: mm
       min: '0.01'
       max: '10.0'
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 8%"></div></div><p class="text-xs text-center">Value
-        at 8% of range</p>'
+      numeric: 0.55
     - property: Repetition Rate
       value: 20-100kHz
       unit: kHz
       min: '1.0'
       max: '1000.0'
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 5%"></div></div><p class="text-xs text-center">Value
-        at 5% of range</p>'
+      numeric: 60.0
     - property: Fluence Range
-      value: "1.0\u20134.5 J/cm\xB2"
-      unit: "J/cm\xB2"
+      value: 1.0–10 J/cm²
+      unit: J/cm²
       min: '0.1'
       max: '50.0'
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 1%"></div></div><p class="text-xs text-center">Value
-        at 1% of range</p>'
-    - property: Scanning Speed
-      value: 50-500mm/s
-      unit: mm/s
-      min: '1.0'
-      max: '5000.0'
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 5%"></div></div><p class="text-xs text-center">Value
-        at 5% of range</p>'
-    - property: Beam Profile
-      value: Gaussian TEM00
-      unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-gray-100 text-gray-800 rounded
-        text-sm">System</span>
-    - property: Safety Class
-      value: Class 4 (requires full enclosure)
-      unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-red-100 text-red-800 rounded text-sm">Safety</span>
+      numeric: 1.0
   - header: '## Applications & Industries'
     rows:
-    - property: Electronics Manufacturing
-      value: Removal of surface oxides and contaminants from Kevlar-Reinforced Polymer
-        substrates
+    - property: Aerospace
+      value: Removal of surface contaminants from aircraft components
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-indigo-100 text-indigo-800 rounded
-        text-sm">Application</span>
-    - property: Aerospace Components
-      value: Cleaning of thermal barrier coatings and composite matrix composites
+      category: Application
+    - property: Automotive
+      value: Cleaning of composite parts for improved bonding and painting
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-indigo-100 text-indigo-800 rounded
-        text-sm">Application</span>
+      category: Application
   - header: '## Performance Metrics'
     rows:
-    - property: Surface Cleanliness Level
-      value: Achieves ISO 14644-1 Class 7 cleanliness standard
+    - property: Surface contamination removal efficiency
+      value: '>99.5% removal of release agents, oils, and particulate contaminants'
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-green-100 text-green-800 rounded
-        text-sm">Performance</span>
-    - property: Material Removal Precision
-      value: "\xB15\u03BCm accuracy with no substrate damage"
+      category: Performance
+    - property: Processing speed
+      value: 0.5-2.0 m²/hour depending on contamination level and required precision
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-green-100 text-green-800 rounded
-        text-sm">Performance</span>
-    - property: Processing Speed
-      value: "2-5 m\xB2/hour cleaning rate depending on contamination level"
-      unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-green-100 text-green-800 rounded
-        text-sm">Performance</span>
+      category: Performance
   - header: '## Environmental Impact'
     rows:
-    - property: Chemical Solvent Elimination
-      value: Reduces chemical usage by 100% compared to traditional solvent cleaning
-        methods
+    - property: Zero chemical solvent consumption
+      value: Eliminates 100% of solvent use compared to traditional chemical cleaning methods (typically 5-10 L/m²)
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-emerald-100 text-emerald-800 rounded
-        text-sm">Environmental</span>
-    - property: Water Conservation
-      value: Saves approximately 5000 liters of water per month in industrial applications
+      category: Environmental
+    - property: Reduced waste generation
+      value: Produces 95% less waste material compared to mechanical abrasion methods, with collected debris being 99.8% pure contaminant
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-emerald-100 text-emerald-800 rounded
-        text-sm">Environmental</span>
-    - property: Energy Efficiency
-      value: Consumes 40% less energy than thermal cleaning processes
-      unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-emerald-100 text-emerald-800 rounded
-        text-sm">Environmental</span>
+      category: Environmental
   - header: '## Compatibility & Standards'
     rows:
     - property: Material Compatibility
-      value: Epoxy Resins, Polymer Composites, Carbon Fiber Structures
+      value: Carbon fiber reinforced polymers (similar processing parameters), Glass fiber reinforced polymers (adjusted parameters), Thermoset polymer matrices (epoxy, polyester, vinyl ester)
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-cyan-100 text-cyan-800 rounded
-        text-sm">Compatibility</span>
+      category: Compatibility
     - property: Regulatory Standards
-      value: ISO 18562, ASTM F2100, IEC 60601-1
+      value: 'ISO 11553: Safety of machinery - Laser processing machines, IEC 60825-1: Radiation safety of laser products'
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-violet-100 text-violet-800 rounded
-        text-sm">Compliance</span>
-renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with
-  <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile
-  ? percentile + ''%'' : ''N/A''}</td><td dangerouslySetInnerHTML={{__html: htmlVisualization}}
-  /></tr>. Use MDX for headers.'
+      category: Compliance
+renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. Pure data structure optimized for performance.'

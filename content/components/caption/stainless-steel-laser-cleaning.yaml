@@ -1,7 +1,7 @@
 # Basic Content Structure
 before_text: |
-  Initial surface examination reveals significant contamination deposits across the stainless steel Technical overview of Stainless Steel, Fe-Cr-Ni, for laser cleaning applications, including optimal 1064nm wavelength interaction, and industrial applications in surface preparation.. 
-  Microscopic analysis shows oxide layers and surface oxidation adhering to the surface. The stainless steel exhibits the characteristic density profile typical of metal materials.
+  Initial surface examination reveals significant contamination deposits across the stainless steel Laser cleaning of stainless steel utilizes precise laser-material interaction to remove contaminants while preserving the passive chromium oxide layer. The process is particularly effective for 300-series austenitic stainless steels where maintaining corrosion resistance is critical. Optimal parameters are tuned to the specific alloy composition and surface condition.. 
+  Microscopic analysis shows industrial lubricants and oil residues adhering to the surface. The stainless steel exhibits the characteristic density profile typical of metal materials.
   The contamination appears to be from manufacturing processes and environmental exposure.
 
 after_text: |
@@ -11,14 +11,14 @@ after_text: |
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064nm (primary), 532nm (optional)
-  power: 50-200W
-  pulse_duration: 20-100ns
-  spot_size: 0.2-1.5mm
-  frequency: 20-100kHz
-  energy_density: 1.0–4.5 J/cm²
-  scanning_speed: "50-500mm/s"
-  beam_profile: "Gaussian TEM00"
+  wavelength: 1064 nm (primary), 532 nm (for higher absorption on specific surface finishes)
+  power: 50-500W (pulsed fiber lasers), 100-1000W (continuous wave for heavy oxidation)
+  pulse_duration: 10-200 ns (for precise contamination removal), 100-500 ns (for thicker oxide layers)
+  spot_size: 50-200 μm (precision cleaning), 1-5 mm (large area processing)
+  frequency: 20-200 kHz (optimized for oxide layer removal without substrate damage)
+  energy_density: 1.5-12 J/cm² (depending on surface condition and stainless steel grade)
+  scanning_speed: "100-2000 mm/s (optimized for 304/316 stainless steel with 100-500W power)"
+  beam_profile: "Top-hat (for uniform energy distribution and consistent cleaning results)"
 
 # Material Information
 material: "Stainless Steel"
@@ -31,7 +31,7 @@ data_completeness:
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-19T16:55:25.698626Z"
+  generated: "2025-09-20T22:48:50.136663Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
@@ -41,7 +41,7 @@ metadata:
 
 # Enhanced SEO Frontmatter
 title: "Stainless Steel Surface Laser Cleaning Analysis - Industrial Contamination Removal"
-description: "Comprehensive microscopic analysis of stainless steel surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of stainless steel surface before and after precision laser cleaning, achieving optimal surface restoration using 1064 nm (primary), 532 nm (for higher absorption on specific surface finishes) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -56,7 +56,7 @@ keywords:
   - "contamination analysis"
   - "stainless steel metal"
   - "non-contact cleaning"
-  - "electronics manufacturing applications"
+  - "automotive applications"
   - "metal surface treatment"
   - "corrosion removal"
   - "oxide layer removal"
@@ -76,18 +76,18 @@ author_object:
 
 # Technical Specifications for SEO
 technicalSpecifications:
-  wavelength: "1064nm (primary), 532nm (optional)"
-  power: "50-200W"
-  pulse_duration: "20-100ns"
-  scanning_speed: "50-500mm/s"
+  wavelength: "1064 nm (primary), 532 nm (for higher absorption on specific surface finishes)"
+  power: "50-500W (pulsed fiber lasers), 100-1000W (continuous wave for heavy oxidation)"
+  pulse_duration: "10-200 ns (for precise contamination removal), 100-500 ns (for thicker oxide layers)"
+  scanning_speed: "100-2000 mm/s (optimized for 304/316 stainless steel with 100-500W power)"
   material: "Stainless Steel"
   beam_delivery: "fiber optic"
-  focus_diameter: "0.2-1.5mm"
+  focus_diameter: "50-200 μm (precision cleaning), 1-5 mm (large area processing)"
   processing_atmosphere: "ambient air"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Stainless Steel (Fe-Cr-Ni) 99.6%, Trace elements (Si, Fe, Na, Mg)"
+  composition: "Iron (Fe): 66.5-74%, Chromium (Cr): 16-26%, Nickel (Ni): 6-12%"
   surface_treatment: "laser cleaning"
   contamination_type: "oxidation and metallic deposits"
   materialType: "metal"
@@ -113,7 +113,7 @@ seo_data:
   og_image: "/images/stainless-steel-laser-cleaning-micro.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-19T16:55:25.698626Z"
+  last_modified: "2025-09-20T22:48:50.136663Z"
 
 # Quality Metrics
 quality_metrics:
@@ -131,7 +131,7 @@ accessibility:
 ---
 Material: "stainless steel"
 Component: caption
-Generated: 2025-09-19T16:55:25.698626Z
+Generated: 2025-09-20T22:48:50.136663Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

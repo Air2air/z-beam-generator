@@ -1,7 +1,7 @@
 # Basic Content Structure
 before_text: |
-  Initial surface examination reveals significant contamination deposits across the porphyry Technical overview of Porphyry, None, for laser cleaning applications, including optimal 1064nm wavelength interaction, and industrial applications in surface preparation.. 
-  Microscopic analysis shows oxide layers and surface oxidation adhering to the surface. The porphyry exhibits the characteristic density profile typical of stone materials.
+  Initial surface examination reveals significant contamination deposits across the porphyry Porphyry laser cleaning utilizes precise pulsed laser ablation to remove surface contaminants while preserving the complex mineralogical structure of this imperial stone. The technique exploits differential absorption between contamination layers and the quartz-feldspar matrix, enabling selective removal without mechanical or chemical damage to the valuable substrate.. 
+  Microscopic analysis shows weathering and biological deposits adhering to the surface. The porphyry exhibits the characteristic density profile typical of stone materials.
   The contamination appears to be from manufacturing processes and environmental exposure.
 
 after_text: |
@@ -11,14 +11,14 @@ after_text: |
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064nm (primary), 532nm (optional)
-  power: 50-200W
-  pulse_duration: 20-100ns
-  spot_size: 0.2-1.5mm
-  frequency: 20-100kHz
-  energy_density: 1.0–4.5 J/cm²
-  scanning_speed: "50-500mm/s"
-  beam_profile: "Gaussian TEM00"
+  wavelength: 1064 nm (fundamental), 532 nm (second harmonic for selective absorption)
+  power: 20-100 W (average power for Q-switched systems)
+  pulse_duration: 5-30 ns (Q-switched Nd:YAG optimal for thermal control)
+  spot_size: 0.1-0.8 mm (diameter for precision work on heterogeneous mineral structure)
+  frequency: 10-50 kHz (optimized for thermal relaxation between pulses)
+  energy_density: 0.8-4.5 J/cm² (below feldspar ablation threshold of ~5 J/cm²)
+  scanning_speed: "200-800 mm/s (with 50% overlap for uniform cleaning)"
+  beam_profile: "Top-hat (flat-top) for uniform energy distribution across heterogeneous mineral phases"
 
 # Material Information
 material: "Porphyry"
@@ -31,7 +31,7 @@ data_completeness:
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-19T16:55:26.000978Z"
+  generated: "2025-09-20T22:48:50.860549Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
@@ -41,7 +41,7 @@ metadata:
 
 # Enhanced SEO Frontmatter
 title: "Porphyry Surface Laser Cleaning Analysis - Heritage Conservation Cleaning"
-description: "Comprehensive microscopic analysis of porphyry surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of porphyry surface before and after precision laser cleaning, achieving optimal surface restoration using 1064 nm (fundamental), 532 nm (second harmonic for selective absorption) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -56,7 +56,7 @@ keywords:
   - "contamination analysis"
   - "porphyry stone"
   - "non-contact cleaning"
-  - "electronics manufacturing applications"
+  - "construction applications"
   - "stone conservation"
   - "heritage preservation"
   - "architectural restoration"
@@ -76,22 +76,22 @@ author_object:
 
 # Technical Specifications for SEO
 technicalSpecifications:
-  wavelength: "1064nm (primary), 532nm (optional)"
-  power: "50-200W"
-  pulse_duration: "20-100ns"
-  scanning_speed: "50-500mm/s"
+  wavelength: "1064 nm (fundamental), 532 nm (second harmonic for selective absorption)"
+  power: "20-100 W (average power for Q-switched systems)"
+  pulse_duration: "5-30 ns (Q-switched Nd:YAG optimal for thermal control)"
+  scanning_speed: "200-800 mm/s (with 50% overlap for uniform cleaning)"
   material: "Porphyry"
   beam_delivery: "fiber optic"
-  focus_diameter: "0.2-1.5mm"
+  focus_diameter: "0.1-0.8 mm (diameter for precision work on heterogeneous mineral structure)"
   processing_atmosphere: "ambient air"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Feldspar (KAlSi₃O₈ - NaAlSi₃O₈ - CaAl₂Si₂O₈) 60-70%, Quartz (SiO₂) 20-30%, Biotite/Amphibole (Fe/Mg silicates) 5-15%"
+  composition: "Quartz (SiO₂): 40-70% (primary crystalline phase), Alkali Feldspar (KAlSi₃O₈/NaAlSi₃O₈): 20-40% (matrix material), Plagioclase Feldspar (CaAl₂Si₂O₈): 5-20%"
   surface_treatment: "laser cleaning"
   contamination_type: "weathering and biological deposits"
-  materialType: "stone"
-  formula: "None"
+  materialType: "igneous rock"
+  formula: "Variable (primarily SiO₂ + KAlSi₃O₈ + NaAlSi₃O₈ + CaAl₂Si₂O₈)"
   surface_finish: "Ra < 0.6 μm (post-cleaning)"
   corrosion_resistance: "good"
 
@@ -113,7 +113,7 @@ seo_data:
   og_image: "/images/porphyry-laser-cleaning-micro.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-19T16:55:26.000978Z"
+  last_modified: "2025-09-20T22:48:50.860549Z"
 
 # Quality Metrics
 quality_metrics:
@@ -131,7 +131,7 @@ accessibility:
 ---
 Material: "porphyry"
 Component: caption
-Generated: 2025-09-19T16:55:26.000978Z
+Generated: 2025-09-20T22:48:50.860549Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

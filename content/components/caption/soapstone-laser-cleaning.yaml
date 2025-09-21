@@ -1,7 +1,7 @@
 # Basic Content Structure
 before_text: |
-  Initial surface examination reveals significant contamination deposits across the soapstone Technical overview of Soapstone, None, for laser cleaning applications, including optimal 1064nm wavelength interaction, and industrial applications in surface preparation.. 
-  Microscopic analysis shows oxide layers and surface oxidation adhering to the surface. The soapstone exhibits the characteristic density profile typical of stone materials.
+  Initial surface examination reveals significant contamination deposits across the soapstone Laser cleaning of soapstone utilizes precise Nd:YAG laser parameters to selectively ablate surface contaminants while preserving the talc-rich mineral matrix. The low thermal conductivity (6.4 W/m·K) and specific heat capacity allow controlled energy deposition without thermal damage to the substrate.. 
+  Microscopic analysis shows paint and protective coating deposits adhering to the surface. The soapstone exhibits the characteristic density profile typical of stone materials.
   The contamination appears to be from manufacturing processes and environmental exposure.
 
 after_text: |
@@ -11,14 +11,14 @@ after_text: |
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064nm (primary), 532nm (optional)
-  power: 50-200W
-  pulse_duration: 20-100ns
-  spot_size: 0.2-1.5mm
-  frequency: 20-100kHz
-  energy_density: 1.0–4.5 J/cm²
-  scanning_speed: "50-500mm/s"
-  beam_profile: "Gaussian TEM00"
+  wavelength: 1064 nm
+  power: 20-100 W
+  pulse_duration: 10-150 ns
+  spot_size: 0.2-2.0 mm
+  frequency: 10-50 kHz
+  energy_density: 0.8-3.5 J/cm²
+  scanning_speed: "500-2000 mm/s"
+  beam_profile: "Top-hat"
 
 # Material Information
 material: "Soapstone"
@@ -31,7 +31,7 @@ data_completeness:
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-19T16:55:26.160738Z"
+  generated: "2025-09-20T22:48:51.243916Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
@@ -41,7 +41,7 @@ metadata:
 
 # Enhanced SEO Frontmatter
 title: "Soapstone Surface Laser Cleaning Analysis - Heritage Conservation Cleaning"
-description: "Comprehensive microscopic analysis of soapstone surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of soapstone surface before and after precision laser cleaning, achieving optimal surface restoration using 1064 nm wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -56,7 +56,7 @@ keywords:
   - "contamination analysis"
   - "soapstone stone"
   - "non-contact cleaning"
-  - "electronics manufacturing applications"
+  - "construction applications"
   - "stone conservation"
   - "heritage preservation"
   - "architectural restoration"
@@ -76,22 +76,22 @@ author_object:
 
 # Technical Specifications for SEO
 technicalSpecifications:
-  wavelength: "1064nm (primary), 532nm (optional)"
-  power: "50-200W"
-  pulse_duration: "20-100ns"
-  scanning_speed: "50-500mm/s"
+  wavelength: "1064 nm"
+  power: "20-100 W"
+  pulse_duration: "10-150 ns"
+  scanning_speed: "500-2000 mm/s"
   material: "Soapstone"
   beam_delivery: "fiber optic"
-  focus_diameter: "0.2-1.5mm"
+  focus_diameter: "0.2-2.0 mm"
   processing_atmosphere: "ambient air"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Talc (Mg₃Si₄O₁₀(OH)₂) 40-60%, Magnesite (MgCO₃) 20-40%, Chlorite (Mg,Fe)₆(Si,Al)₄O₁₀(OH)₈) 5-15%"
+  composition: "Talc (Mg₃Si₄O₁₀(OH)₂): 40-80%, Magnesite (MgCO₃): 10-40%, Chlorite: 5-15%"
   surface_treatment: "laser cleaning"
   contamination_type: "weathering and biological deposits"
-  materialType: "stone"
-  formula: "None"
+  materialType: "metamorphic rock"
+  formula: "Mg₃Si₄O₁₀(OH)₂"
   surface_finish: "Ra < 0.6 μm (post-cleaning)"
   corrosion_resistance: "good"
 
@@ -113,7 +113,7 @@ seo_data:
   og_image: "/images/soapstone-laser-cleaning-micro.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-19T16:55:26.160738Z"
+  last_modified: "2025-09-20T22:48:51.243916Z"
 
 # Quality Metrics
 quality_metrics:
@@ -131,7 +131,7 @@ accessibility:
 ---
 Material: "soapstone"
 Component: caption
-Generated: 2025-09-19T16:55:26.160738Z
+Generated: 2025-09-20T22:48:51.243916Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

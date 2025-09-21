@@ -1,6 +1,6 @@
 # Basic Content Structure
 before_text: |
-  Initial surface examination reveals significant contamination deposits across the lead Technical overview of Lead, Pb, for laser cleaning applications, including optimal 1064nm wavelength interaction, and industrial applications in surface preparation.. 
+  Initial surface examination reveals significant contamination deposits across the lead Lead laser cleaning utilizes precise pulsed fiber laser parameters optimized for lead's low melting point (327°C) and high absorption at 1064nm. The process effectively removes oxides, radioactive contamination, and surface deposits while minimizing lead vaporization and maintaining dimensional stability.. 
   Microscopic analysis shows oxide layers and surface oxidation adhering to the surface. The lead exhibits the characteristic density profile typical of metal materials.
   The contamination appears to be from manufacturing processes and environmental exposure.
 
@@ -11,14 +11,14 @@ after_text: |
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064nm (primary), 532nm (optional)
-  power: 50-200W
-  pulse_duration: 20-100ns
-  spot_size: 0.2-1.5mm
-  frequency: 20-100kHz
-  energy_density: 1.0–4.5 J/cm²
-  scanning_speed: "50-500mm/s"
-  beam_profile: "Gaussian TEM00"
+  wavelength: 1064nm (primary), 532nm (for selective oxidation removal)
+  power: 20-100W
+  pulse_duration: 10-100ns
+  spot_size: 0.1-0.5mm
+  frequency: 20-80kHz
+  energy_density: 1.5-3.0 J/cm² (ablation threshold), 0.8-1.2 J/cm² (oxide removal)
+  scanning_speed: "500-2000 mm/s"
+  beam_profile: "Top-hat (flat-top)"
 
 # Material Information
 material: "Lead"
@@ -31,7 +31,7 @@ data_completeness:
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-19T16:55:25.533317Z"
+  generated: "2025-09-20T22:48:49.302042Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
@@ -41,7 +41,7 @@ metadata:
 
 # Enhanced SEO Frontmatter
 title: "Lead Surface Laser Cleaning Analysis - Industrial Contamination Removal"
-description: "Comprehensive microscopic analysis of lead surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of lead surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (for selective oxidation removal) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -56,7 +56,7 @@ keywords:
   - "contamination analysis"
   - "lead metal"
   - "non-contact cleaning"
-  - "electronics manufacturing applications"
+  - "automotive applications"
   - "metal surface treatment"
   - "corrosion removal"
   - "oxide layer removal"
@@ -76,18 +76,18 @@ author_object:
 
 # Technical Specifications for SEO
 technicalSpecifications:
-  wavelength: "1064nm (primary), 532nm (optional)"
-  power: "50-200W"
-  pulse_duration: "20-100ns"
-  scanning_speed: "50-500mm/s"
+  wavelength: "1064nm (primary), 532nm (for selective oxidation removal)"
+  power: "20-100W"
+  pulse_duration: "10-100ns"
+  scanning_speed: "500-2000 mm/s"
   material: "Lead"
   beam_delivery: "fiber optic"
-  focus_diameter: "0.2-1.5mm"
+  focus_diameter: "0.1-0.5mm"
   processing_atmosphere: "ambient air"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Lead (Pb) 99.6%, Trace elements (Si, Fe, Na, Mg)"
+  composition: "Lead (Pb): 99.9-99.99% (commercial purity), Trace elements: <0.1% (typically Sb, As, Bi, Cu, Ag)"
   surface_treatment: "laser cleaning"
   contamination_type: "oxidation and metallic deposits"
   materialType: "metal"
@@ -113,12 +113,12 @@ seo_data:
   og_image: "/images/lead-laser-cleaning-micro.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-19T16:55:25.533317Z"
+  last_modified: "2025-09-20T22:48:49.302042Z"
 
 # Quality Metrics
 quality_metrics:
-  surface_roughness_before: "Ra 5.0 μm"
-  surface_roughness_after: "Ra 1.5 μm"
+  surface_roughness_before: "Ra 3.2 μm"
+  surface_roughness_after: "Ra 0.6 μm"
   substrate_integrity: "100% preserved"
 
 # Accessibility Information
@@ -131,7 +131,7 @@ accessibility:
 ---
 Material: "lead"
 Component: caption
-Generated: 2025-09-19T16:55:25.533317Z
+Generated: 2025-09-20T22:48:49.302042Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

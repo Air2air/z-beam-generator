@@ -1,6 +1,6 @@
 # Basic Content Structure
 before_text: |
-  Initial surface examination reveals significant contamination deposits across the iron Technical overview of Iron, Fe, for laser cleaning applications, including optimal 1064nm wavelength interaction, and industrial applications in surface preparation.. 
+  Initial surface examination reveals significant contamination deposits across the iron Iron laser cleaning utilizes precise laser ablation to remove surface contaminants while preserving the base material. The 1064nm wavelength provides optimal absorption in iron oxides, enabling selective removal of rust layers at fluences of 1-10 J/cm² without damaging the underlying pure iron substrate.. 
   Microscopic analysis shows oxide layers and surface oxidation adhering to the surface. The iron exhibits the characteristic density profile typical of metal materials.
   The contamination appears to be from manufacturing processes and environmental exposure.
 
@@ -11,14 +11,14 @@ after_text: |
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064nm (primary), 532nm (optional)
-  power: 50-200W
-  pulse_duration: 20-100ns
-  spot_size: 0.2-1.5mm
-  frequency: 20-100kHz
-  energy_density: 1.0–4.5 J/cm²
-  scanning_speed: "50-500mm/s"
-  beam_profile: "Gaussian TEM00"
+  wavelength: 1064 nm (primary), 532 nm (for selective removal)
+  power: 50-500W (pulsed)
+  pulse_duration: 10-200 ns
+  spot_size: 0.1-1.0 mm
+  frequency: 20-100 kHz
+  energy_density: 1.0-10 J/cm²
+  scanning_speed: "100-2000 mm/s"
+  beam_profile: "Top-hat (uniform intensity)"
 
 # Material Information
 material: "Iron"
@@ -31,7 +31,7 @@ data_completeness:
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-19T16:55:25.517220Z"
+  generated: "2025-09-20T22:48:49.223584Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
@@ -41,7 +41,7 @@ metadata:
 
 # Enhanced SEO Frontmatter
 title: "Iron Surface Laser Cleaning Analysis - Industrial Contamination Removal"
-description: "Comprehensive microscopic analysis of iron surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of iron surface before and after precision laser cleaning, achieving optimal surface restoration using 1064 nm (primary), 532 nm (for selective removal) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -56,7 +56,7 @@ keywords:
   - "contamination analysis"
   - "iron metal"
   - "non-contact cleaning"
-  - "electronics manufacturing applications"
+  - "automotive applications"
   - "metal surface treatment"
   - "corrosion removal"
   - "oxide layer removal"
@@ -76,18 +76,18 @@ author_object:
 
 # Technical Specifications for SEO
 technicalSpecifications:
-  wavelength: "1064nm (primary), 532nm (optional)"
-  power: "50-200W"
-  pulse_duration: "20-100ns"
-  scanning_speed: "50-500mm/s"
+  wavelength: "1064 nm (primary), 532 nm (for selective removal)"
+  power: "50-500W (pulsed)"
+  pulse_duration: "10-200 ns"
+  scanning_speed: "100-2000 mm/s"
   material: "Iron"
   beam_delivery: "fiber optic"
-  focus_diameter: "0.2-1.5mm"
+  focus_diameter: "0.1-1.0 mm"
   processing_atmosphere: "ambient air"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Iron (Fe) 99.6%, Trace elements (Si, Fe, Na, Mg)"
+  composition: "Iron (Fe): 99.5-99.9% (commercial purity), Carbon (C): 0.02-0.1%, Manganese (Mn): 0.3-0.7%, Silicon (Si): 0.15-0.35%"
   surface_treatment: "laser cleaning"
   contamination_type: "oxidation and metallic deposits"
   materialType: "metal"
@@ -113,7 +113,7 @@ seo_data:
   og_image: "/images/iron-laser-cleaning-micro.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-19T16:55:25.517220Z"
+  last_modified: "2025-09-20T22:48:49.223584Z"
 
 # Quality Metrics
 quality_metrics:
@@ -131,7 +131,7 @@ accessibility:
 ---
 Material: "iron"
 Component: caption
-Generated: 2025-09-19T16:55:25.517220Z
+Generated: 2025-09-20T22:48:49.223584Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

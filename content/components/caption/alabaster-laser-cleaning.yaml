@@ -1,7 +1,7 @@
 # Basic Content Structure
 before_text: |
-  Initial surface examination reveals significant contamination deposits across the alabaster Technical overview of Alabaster, CaSO4·2H2O, for laser cleaning applications, including optimal 1064nm wavelength interaction, and industrial applications in surface preparation.. 
-  Microscopic analysis shows biological growth and organic deposits adhering to the surface. The alabaster exhibits the characteristic density profile typical of stone materials.
+  Initial surface examination reveals significant contamination deposits across the alabaster Laser cleaning of alabaster utilizes precise pulsed laser ablation to remove surface contaminants while preserving the delicate dihydrate gypsum structure. The process exploits the differential absorption between contaminants and the alabaster substrate, typically using IR wavelengths for crust removal and visible wavelengths for finer work on sensitive surfaces.. 
+  Microscopic analysis shows weathering and biological deposits adhering to the surface. The alabaster exhibits the characteristic density profile typical of stone materials.
   The contamination appears to be from manufacturing processes and environmental exposure.
 
 after_text: |
@@ -11,14 +11,14 @@ after_text: |
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064nm (primary), 532nm (optional)
-  power: 10-50W
-  pulse_duration: 10-50ns
-  spot_size: 0.1-0.8mm
-  frequency: 10-50kHz
-  energy_density: 0.5–2.0 J/cm²
-  scanning_speed: "50-500mm/s"
-  beam_profile: "Gaussian TEM00"
+  wavelength: 1064 nm (IR), 532 nm (green) for enhanced control on delicate surfaces
+  power: 10-50 W (average power for pulsed lasers)
+  pulse_duration: 10-150 ns
+  spot_size: 0.05-2.0 mm (adjustable for precision work vs. larger area cleaning)
+  frequency: 10-100 kHz
+  energy_density: 0.3-2.5 J/cm² (below the ablation threshold of pure alabaster ~3.0 J/cm²)
+  scanning_speed: "100-2000 mm/s"
+  beam_profile: "Top-hat (flat-top) preferred for uniform energy distribution"
 
 # Material Information
 material: "Alabaster"
@@ -31,7 +31,7 @@ data_completeness:
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-19T16:55:25.889970Z"
+  generated: "2025-09-20T22:48:50.609048Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
@@ -41,7 +41,7 @@ metadata:
 
 # Enhanced SEO Frontmatter
 title: "Alabaster Surface Laser Cleaning Analysis - Heritage Conservation Cleaning"
-description: "Comprehensive microscopic analysis of alabaster surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of alabaster surface before and after precision laser cleaning, achieving optimal surface restoration using 1064 nm (IR), 532 nm (green) for enhanced control on delicate surfaces wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -76,18 +76,18 @@ author_object:
 
 # Technical Specifications for SEO
 technicalSpecifications:
-  wavelength: "1064nm (primary), 532nm (optional)"
-  power: "10-50W"
-  pulse_duration: "10-50ns"
-  scanning_speed: "50-500mm/s"
+  wavelength: "1064 nm (IR), 532 nm (green) for enhanced control on delicate surfaces"
+  power: "10-50 W (average power for pulsed lasers)"
+  pulse_duration: "10-150 ns"
+  scanning_speed: "100-2000 mm/s"
   material: "Alabaster"
   beam_delivery: "fiber optic"
-  focus_diameter: "0.1-0.8mm"
+  focus_diameter: "0.05-2.0 mm (adjustable for precision work vs. larger area cleaning)"
   processing_atmosphere: "ambient air"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Calcium Sulfate Dihydrate (CaSO4·2H2O) 95-99%, Calcite (CaCO3) 1-5%, Trace minerals and impurities"
+  composition: "Calcium sulfate dihydrate (CaSO4·2H2O): 90-99%, Calcium carbonate (CaCO3): 0.5-5%, Silica (SiO2) and other mineral impurities: 0.1-3%"
   surface_treatment: "laser cleaning"
   contamination_type: "weathering and biological deposits"
   materialType: "stone"
@@ -113,7 +113,7 @@ seo_data:
   og_image: "/images/alabaster-laser-cleaning-micro.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-19T16:55:25.889970Z"
+  last_modified: "2025-09-20T22:48:50.609048Z"
 
 # Quality Metrics
 quality_metrics:
@@ -131,7 +131,7 @@ accessibility:
 ---
 Material: "alabaster"
 Component: caption
-Generated: 2025-09-19T16:55:25.889970Z
+Generated: 2025-09-20T22:48:50.609048Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

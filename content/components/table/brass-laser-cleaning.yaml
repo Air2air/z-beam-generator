@@ -7,7 +7,7 @@ materialTables:
       unit: '-'
       category: Chemical
     - property: Chemical Symbol
-      value: Brass
+      value: Cu-Zn
       unit: '-'
       category: Chemical
     - property: Material Type
@@ -21,55 +21,53 @@ materialTables:
   - header: '## Physical & Mechanical Properties'
     rows:
     - property: Density
-      value: 8.4-8.7 g/cm³
+      value: 8.4-8.73 g/cm³
       unit: g/cm³
       min: '1.8'
       max: '6.0'
-      percentile: 51.2
-      numeric: 8.55
+      percentile: 100.0
+      numeric: 8.57
     - property: Melting Point
       value: 900-940°C
       unit: °C
-      percentile: 54.5
+      percentile: 0.0
       numeric: 920.0
     - property: Thermal Conductivity
-      value: 109-125 W/m·K
-      unit: W/m·K
-      percentile: 14.8
+      value: 109-125 W/(m·K)
+      unit: W/
+      percentile: 58.4
       numeric: 117.0
     - property: Tensile Strength
-      value: 340-500 MPa
+      value: 338-469 MPa
       unit: MPa
-      percentile: 26.3
-      numeric: 420.0
+      percentile: 37.2
+      numeric: 403.5
     - property: Hardness
-      value: 55-95 HRB
-      unit: HRB
-      min: '500.0'
-      max: '2500.0'
-      percentile: 0.0
-      numeric: 75.0
+      value: 60-100 HV (Vickers)
+      unit: HV
+      min: '1.0'
+      max: '10.0'
+      percentile: 100.0
+      numeric: 80.0
     - property: Young's Modulus
       value: 97-110 GPa
       unit: GPa
-      min: '150.0'
-      max: '400.0'
-      percentile: 92.0
+      percentile: 100.0
       numeric: 103.5
   - header: '## Laser Processing Parameters'
     rows:
     - property: Power Range
-      value: 50-200W
+      value: 20-100W
       unit: W
       min: '20.0'
       max: '500.0'
-      numeric: 125.0
+      numeric: 60.0
     - property: Pulse Duration
-      value: 20-100ns
+      value: 10-100ns
       unit: ns
       min: '1.0'
       max: '1000.0'
-      numeric: 60.0
+      numeric: 55.0
     - property: Wavelength
       value: 1064nm (primary), 532nm (optional)
       unit: nm
@@ -77,83 +75,69 @@ materialTables:
       max: '2940.0'
       numeric: 1064.0
     - property: Spot Size
-      value: 0.2-1.5mm
+      value: 0.1-2.0mm
       unit: mm
       min: '0.01'
       max: '10.0'
-      numeric: 0.85
+      numeric: 1.05
     - property: Repetition Rate
-      value: 20-100kHz
+      value: 10-50kHz
       unit: kHz
       min: '1.0'
       max: '1000.0'
-      numeric: 60.0
+      numeric: 30.0
     - property: Fluence Range
-      value: 1.0–4.5 J/cm²
+      value: 0.5–5 J/cm²
       unit: J/cm²
       min: '0.1'
       max: '50.0'
-      numeric: 1.0
-    - property: Scanning Speed
-      value: 50-500mm/s
-      unit: mm/s
-      min: '1.0'
-      max: '5000.0'
-      numeric: 275.0
-    - property: Beam Profile
-      value: Gaussian TEM00
-      unit: '-'
-      category: System
-    - property: Safety Class
-      value: Class 4 (requires full enclosure)
-      unit: '-'
-      category: Safety
+      numeric: 0.5
   - header: '## Applications & Industries'
     rows:
-    - property: Electronics Manufacturing
-      value: Removal of surface oxides and contaminants from Brass substrates
+    - property: Automotive
+      value: Cleaning of brass components for surface preparation and restoration
       unit: '-'
       category: Application
-    - property: Aerospace Components
-      value: Cleaning of thermal barrier coatings and metal matrix composites
+    - property: Electronics
+      value: Precision cleaning of brass connectors and contacts
+      unit: '-'
+      category: Application
+    - property: Marine
+      value: Brass fitting and propeller maintenance
+      unit: '-'
+      category: Application
+    - property: Plumbing
+      value: Valve and fitting restoration
       unit: '-'
       category: Application
   - header: '## Performance Metrics'
     rows:
-    - property: Surface Cleanliness Level
-      value: Achieves ISO 14644-1 Class 7 cleanliness standard
+    - property: Surface cleanliness to Sa 2.5 (ISO 8501-1)
+      value: Achievable surface profile with <5 µm roughness change (Ra) and zero substrate damage.
       unit: '-'
       category: Performance
-    - property: Material Removal Precision
-      value: ±5μm accuracy with no substrate damage
-      unit: '-'
-      category: Performance
-    - property: Processing Speed
-      value: 2-5 m²/hour cleaning rate depending on contamination level
+    - property: Processing rates of 0.5-2.0 m²/hour
+      value: For removal of light-moderate tarnish layers at 100W average power and 500 mm/s scan speed.
       unit: '-'
       category: Performance
   - header: '## Environmental Impact'
     rows:
-    - property: Chemical Solvent Elimination
-      value: Reduces chemical usage by 100% compared to traditional solvent cleaning methods
+    - property: Zero chemical waste generation
+      value: Eliminates use of acidic tarnish removers (e.g., hydrochloric acid baths) and associated neutralization waste streams, reducing hazardous waste by 100% compared to chemical methods.
       unit: '-'
       category: Environmental
-    - property: Water Conservation
-      value: Saves approximately 5000 liters of water per month in industrial applications
-      unit: '-'
-      category: Environmental
-    - property: Energy Efficiency
-      value: Consumes 40% less energy than thermal cleaning processes
+    - property: '>90% reduction in water consumption'
+      value: Dry process eliminates water usage required for rinsing and high-pressure water jet cleaning, conserving approximately 500-1000 liters per cleaning cycle for large marine components.
       unit: '-'
       category: Environmental
   - header: '## Compatibility & Standards'
     rows:
     - property: Material Compatibility
-      value: Stainless Steel, Titanium Alloys, Nickel-based Superalloys
+      value: Stainless Steel (for system components), Aluminum (for fixtures and mounts), Fused Silica (for protective windows)
       unit: '-'
       category: Compatibility
     - property: Regulatory Standards
-      value: ISO 18562, ASTM F2100, IEC 60601-1
+      value: ISO 9013:2017 (Thermal cutting classification), IEC 60825-1 (Laser safety), OSHA 29 CFR 1910.133 (Eye and face protection)
       unit: '-'
       category: Compliance
-renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. No HTML visualizations included - pure data only.'
+renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. Pure data structure optimized for performance.'

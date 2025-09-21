@@ -3,70 +3,57 @@ materialTables:
   - header: '## Chemical Properties'
     rows:
     - property: Chemical Formula
-      value: Metal-Ceramic
+      value: Variable (typically Al/SiC, Al/Al₂O₃, Ti/SiC)
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded
-        text-sm">Chemical</span>
+      category: Chemical
     - property: Chemical Symbol
       value: MMC
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded
-        text-sm">Chemical</span>
+      category: Chemical
     - property: Material Type
       value: Composite
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-purple-100 text-purple-800 rounded
-        text-sm">Classification</span>
+      category: Classification
     - property: Composition
-      value: Metal Matrix Composites MMCs (Metal-Ceramic) 99.6%, Trace elements (Si,
-        Fe, Na, Mg)
+      value: Aluminum matrix (60-85%) with silicon carbide reinforcement (15-40%), Titanium matrix (70-90%) with silicon carbide or boron carbide reinforcement (10-30%)
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-green-100 text-green-800 rounded
-        text-sm">Composition</span>
+      category: Composition
   - header: '## Physical & Mechanical Properties'
     rows:
     - property: Density
-      value: "7.85 g/cm\xB3"
-      unit: "g/cm\xB3"
+      value: 2.7-4.5 g/cm³ (Al-based MMCs); 4.4-4.8 g/cm³ (Ti-based MMCs)
+      unit: g/cm³
       min: '1.8'
       max: '6.0'
-      percentile: 51.2
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 100%"></div></div><p class="text-xs text-center">Value
-        at 100% of range</p>'
+      percentile: 42.9
+      numeric: 3.6
     - property: Melting Point
-      value: "1370-1530\xB0C"
-      unit: "\xB0C"
-      percentile: 54.5
-      htmlVisualization: <span class="text-gray-500">-</span>
-    - property: Thermal Conductivity
-      value: "50.2 W/m\xB7K"
-      unit: "W/m\xB7K"
-      percentile: 14.8
-      htmlVisualization: <span class="text-gray-500">-</span>
-    - property: Tensile Strength
-      value: 400-600 MPa
-      unit: MPa
-      percentile: 26.3
-      htmlVisualization: <span class="text-gray-500">-</span>
-    - property: Hardness
-      value: 150-250 HB
-      unit: HB
-      min: '500.0'
-      max: '2500.0'
+      value: 580-660°C (Al matrix); 1660°C (Ti matrix) - composite dependent
+      unit: °C
       percentile: 0.0
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 0%"></div></div><p class="text-xs text-center">Value
-        at 0% of range</p>'
+      numeric: 620.0
+    - property: Thermal Conductivity
+      value: 120-200 W/m·K (Al/SiC); 5-7 W/m·K (Al/Al₂O₃)
+      unit: W/m·K
+      percentile: 79.9
+      numeric: 160.0
+    - property: Tensile Strength
+      value: 300-600 MPa (Al/SiC); 150-300 MPa (Al/Al₂O₃)
+      unit: MPa
+      percentile: 42.1
+      numeric: 450.0
+    - property: Hardness
+      value: 80-120 HV (Al/SiC); 60-90 HV (Al/Al₂O₃)
+      unit: HV
+      min: '1.0'
+      max: '10.0'
+      percentile: 100.0
+      numeric: 100.0
     - property: Young's Modulus
-      value: 200 GPa
+      value: 90-120 GPa (Al/SiC); 80-100 GPa (Al/Al₂O₃)
       unit: GPa
-      min: '150.0'
-      max: '400.0'
-      percentile: 92.0
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 20%"></div></div><p class="text-xs text-center">Value
-        at 20% of range</p>'
+      percentile: 100.0
+      numeric: 105.0
   - header: '## Laser Processing Parameters'
     rows:
     - property: Power Range
@@ -74,127 +61,75 @@ materialTables:
       unit: W
       min: '20.0'
       max: '500.0'
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 21%"></div></div><p class="text-xs text-center">Value
-        at 21% of range</p>'
+      numeric: 125.0
     - property: Pulse Duration
-      value: 20-100ns
+      value: 10-200ns
       unit: ns
       min: '1.0'
       max: '1000.0'
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 5%"></div></div><p class="text-xs text-center">Value
-        at 5% of range</p>'
+      numeric: 105.0
     - property: Wavelength
       value: 1064nm (primary), 532nm (optional)
       unit: nm
       min: '355.0'
       max: '2940.0'
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 27%"></div></div><p class="text-xs text-center">Value
-        at 27% of range</p>'
+      numeric: 1064.0
     - property: Spot Size
-      value: 0.2-1.5mm
+      value: 0.05-1.0mm
       unit: mm
       min: '0.01'
       max: '10.0'
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 8%"></div></div><p class="text-xs text-center">Value
-        at 8% of range</p>'
+      numeric: 0.525
     - property: Repetition Rate
       value: 20-100kHz
       unit: kHz
       min: '1.0'
       max: '1000.0'
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 5%"></div></div><p class="text-xs text-center">Value
-        at 5% of range</p>'
+      numeric: 60.0
     - property: Fluence Range
-      value: "1.0\u20134.5 J/cm\xB2"
-      unit: "J/cm\xB2"
+      value: 1.0–10 J/cm²
+      unit: J/cm²
       min: '0.1'
       max: '50.0'
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 1%"></div></div><p class="text-xs text-center">Value
-        at 1% of range</p>'
-    - property: Scanning Speed
-      value: 50-500mm/s
-      unit: mm/s
-      min: '1.0'
-      max: '5000.0'
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 5%"></div></div><p class="text-xs text-center">Value
-        at 5% of range</p>'
-    - property: Beam Profile
-      value: Gaussian TEM00
-      unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-gray-100 text-gray-800 rounded
-        text-sm">System</span>
-    - property: Safety Class
-      value: Class 4 (requires full enclosure)
-      unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-red-100 text-red-800 rounded text-sm">Safety</span>
+      numeric: 1.0
   - header: '## Applications & Industries'
     rows:
-    - property: Electronics Manufacturing
-      value: Removal of surface oxides and contaminants from Metal Matrix Composites
-        MMCs substrates
+    - property: Aerospace
+      value: Cleaning of turbine blades and engine components
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-indigo-100 text-indigo-800 rounded
-        text-sm">Application</span>
-    - property: Aerospace Components
-      value: Cleaning of thermal barrier coatings and composite matrix composites
+      category: Application
+    - property: Automotive
+      value: Removal of coatings and contaminants from brake systems
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-indigo-100 text-indigo-800 rounded
-        text-sm">Application</span>
+      category: Application
   - header: '## Performance Metrics'
     rows:
-    - property: Surface Cleanliness Level
-      value: Achieves ISO 14644-1 Class 7 cleanliness standard
+    - property: Surface contamination removal >99.5%
+      value: Measured via SEM-EDS analysis showing complete oxide and contaminant removal
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-green-100 text-green-800 rounded
-        text-sm">Performance</span>
-    - property: Material Removal Precision
-      value: "\xB15\u03BCm accuracy with no substrate damage"
+      category: Performance
+    - property: Processing speeds up to 2 m²/hour
+      value: Achievable cleaning rates for industrial-scale MMC component processing
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-green-100 text-green-800 rounded
-        text-sm">Performance</span>
-    - property: Processing Speed
-      value: "2-5 m\xB2/hour cleaning rate depending on contamination level"
-      unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-green-100 text-green-800 rounded
-        text-sm">Performance</span>
+      category: Performance
   - header: '## Environmental Impact'
     rows:
-    - property: Chemical Solvent Elimination
-      value: Reduces chemical usage by 100% compared to traditional solvent cleaning
-        methods
+    - property: 97% reduction in chemical waste
+      value: Elimination of chemical solvents and abrasive media typically used in MMC cleaning processes
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-emerald-100 text-emerald-800 rounded
-        text-sm">Environmental</span>
-    - property: Water Conservation
-      value: Saves approximately 5000 liters of water per month in industrial applications
+      category: Environmental
+    - property: 85% energy reduction compared to traditional methods
+      value: Precise energy delivery reduces overall power consumption versus mechanical or chemical cleaning
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-emerald-100 text-emerald-800 rounded
-        text-sm">Environmental</span>
-    - property: Energy Efficiency
-      value: Consumes 40% less energy than thermal cleaning processes
-      unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-emerald-100 text-emerald-800 rounded
-        text-sm">Environmental</span>
+      category: Environmental
   - header: '## Compatibility & Standards'
     rows:
     - property: Material Compatibility
-      value: Stainless Steel, Titanium Alloys, Nickel-based Superalloys
+      value: Aluminum, titanium, magnesium matrices with ceramic reinforcements (SiC, Al₂O₃, B₄C), Stainless steel fixtures and handling systems
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-cyan-100 text-cyan-800 rounded
-        text-sm">Compatibility</span>
+      category: Compatibility
     - property: Regulatory Standards
-      value: ISO 18562, ASTM F2100, IEC 60601-1
+      value: ISO 9013:2017 (Thermal cutting classification), ASTM E2930 (Laser cleaning standards), NADCAP AC7117 (Aerospace laser processing)
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-violet-100 text-violet-800 rounded
-        text-sm">Compliance</span>
-renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with
-  <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile
-  ? percentile + ''%'' : ''N/A''}</td><td dangerouslySetInnerHTML={{__html: htmlVisualization}}
-  /></tr>. Use MDX for headers.'
+      category: Compliance
+renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. Pure data structure optimized for performance.'

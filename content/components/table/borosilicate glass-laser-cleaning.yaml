@@ -92,16 +92,6 @@ materialTables:
       min: '0.1'
       max: '50.0'
       numeric: 0.5
-  - header: '## Applications & Industries'
-    rows:
-    - property: Semiconductor
-      value: Cleaning of semiconductor substrates and wafers
-      unit: '-'
-      category: Application
-    - property: Pharmaceutical
-      value: Decontamination and sterilization of glass vials and ampoules
-      unit: '-'
-      category: Application
   - header: '## Performance Metrics'
     rows:
     - property: Surface cleanliness < 5 particles/cm² (>0.3μm)
@@ -132,4 +122,4 @@ materialTables:
       value: IEC 60825-1 (Laser safety), ISO 11553 (Safety of laser processing machines), FDA 21 CFR Part 211 (Pharmaceutical glass container standards)
       unit: '-'
       category: Compliance
-renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. Pure data structure optimized for performance.'
+renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. No HTML visualizations included - pure data only.'

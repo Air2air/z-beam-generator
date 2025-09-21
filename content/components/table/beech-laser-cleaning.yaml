@@ -3,200 +3,133 @@ materialTables:
   - header: '## Chemical Properties'
     rows:
     - property: Chemical Formula
-      value: C6H10O5
+      value: C₆H₁₀O₅ (cellulose base)
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded
-        text-sm">Chemical</span>
+      category: Chemical
     - property: Chemical Symbol
-      value: Beech
+      value: N/A
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded
-        text-sm">Chemical</span>
+      category: Chemical
     - property: Material Type
-      value: Hardwood
+      value: Wood
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-purple-100 text-purple-800 rounded
-        text-sm">Classification</span>
+      category: Classification
     - property: Composition
-      value: Cellulose (C6H10O5) 45%, Hemicellulose 30%, Lignin 22%, Extractives 3%
+      value: 'Cellulose: 40-45%, Hemicellulose: 25-35%, Lignin: 20-25%, Extractives: 2-5%'
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-green-100 text-green-800 rounded
-        text-sm">Composition</span>
+      category: Composition
   - header: '## Physical & Mechanical Properties'
     rows:
     - property: Density
-      value: "0.72 g/cm\xB3"
-      unit: "g/cm\xB3"
-      min: '0.65'
-      max: '0.9'
-      percentile: 42.8
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 27%"></div></div><p class="text-xs text-center">Value
-        at 27% of range</p>'
+      value: 720 kg/m³ (air-dry)
+      unit: kg/m³
+      min: '1.8'
+      max: '6.0'
+      percentile: 100.0
+      numeric: 720.0
     - property: Melting Point
-      value: "280-350\xB0C"
-      unit: "\xB0C"
-      percentile: 18.3
-      htmlVisualization: <span class="text-gray-500">-</span>
+      value: Decomposes at ~200-300°C (no true melting point)
+      unit: °C
+      percentile: 0.0
+      numeric: 250.0
     - property: Thermal Conductivity
-      value: "0.16 W/m\xB7K"
-      unit: "W/m\xB7K"
-      percentile: 25.6
-      htmlVisualization: <span class="text-gray-500">-</span>
+      value: 0.16-0.18 W/(m·K) (radial direction)
+      unit: W/
+      percentile: 0.0
+      numeric: 0.17
     - property: Tensile Strength
-      value: 120-150 MPa
+      value: 120-135 MPa (parallel to grain)
       unit: MPa
-      percentile: 12.7
-      htmlVisualization: <span class="text-gray-500">-</span>
+      percentile: 8.2
+      numeric: 127.5
     - property: Hardness
-      value: 3.8-4.2 HB
-      unit: HB
-      min: '3.5'
-      max: '4.5'
-      percentile: 35.2
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 50%"></div></div><p class="text-xs text-center">Value
-        at 50% of range</p>'
+      value: 3.8-4.2 kN (Janka hardness scale)
+      unit: kN
+      min: '1.0'
+      max: '10.0'
+      percentile: 33.3
+      numeric: 4.0
     - property: Young's Modulus
-      value: 14.0 GPa
+      value: 14-16 GPa (parallel to grain)
       unit: GPa
-      min: '12.0'
-      max: '16.0'
-      percentile: 28.5
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 50%"></div></div><p class="text-xs text-center">Value
-        at 50% of range</p>'
+      percentile: 0.0
+      numeric: 15.0
   - header: '## Laser Processing Parameters'
     rows:
     - property: Power Range
-      value: 10-100W
+      value: 20-100W
       unit: W
       min: '20.0'
       max: '500.0'
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 7%"></div></div><p class="text-xs text-center">Value
-        at 7% of range</p>'
+      numeric: 60.0
     - property: Pulse Duration
-      value: 50-200ns
+      value: 10-50ns
       unit: ns
       min: '1.0'
       max: '1000.0'
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 12%"></div></div><p class="text-xs text-center">Value
-        at 12% of range</p>'
+      numeric: 30.0
     - property: Wavelength
       value: 1064nm (primary), 532nm (optional)
       unit: nm
       min: '355.0'
       max: '2940.0'
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 27%"></div></div><p class="text-xs text-center">Value
-        at 27% of range</p>'
+      numeric: 1064.0
     - property: Spot Size
-      value: 0.5-3.0mm
+      value: 0.1-1.0mm
       unit: mm
       min: '0.01'
       max: '10.0'
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 17%"></div></div><p class="text-xs text-center">Value
-        at 17% of range</p>'
+      numeric: 0.55
     - property: Repetition Rate
-      value: 10-50kHz
+      value: 20-100kHz
       unit: kHz
       min: '1.0'
       max: '1000.0'
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 2%"></div></div><p class="text-xs text-center">Value
-        at 2% of range</p>'
+      numeric: 60.0
     - property: Fluence Range
-      value: "0.5\u20132.0 J/cm\xB2"
-      unit: "J/cm\xB2"
+      value: 0.5–3.0 J/cm²
+      unit: J/cm²
       min: '0.1'
       max: '50.0'
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 0%"></div></div><p class="text-xs text-center">Value
-        at 0% of range</p>'
-    - property: Scanning Speed
-      value: 50-500mm/s
-      unit: mm/s
-      min: '1.0'
-      max: '5000.0'
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 5%"></div></div><p class="text-xs text-center">Value
-        at 5% of range</p>'
-    - property: Beam Profile
-      value: Gaussian TEM00
-      unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-gray-100 text-gray-800 rounded
-        text-sm">System</span>
-    - property: Safety Class
-      value: Class 4 (requires full enclosure)
-      unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-red-100 text-red-800 rounded text-sm">Safety</span>
+      numeric: 0.5
   - header: '## Applications & Industries'
     rows:
-    - property: Woodworking & Furniture
-      value: Removal of surface contaminants, old finishes, and oxidation from beech
-        wood surfaces
+    - property: Woodworking
+      value: Removing surface contaminants and old finishes from Beech wood furniture
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-indigo-100 text-indigo-800 rounded
-        text-sm">Application</span>
-    - property: Cultural Heritage Restoration
-      value: Gentle cleaning of historical beech wood artifacts and furniture without
-        damaging the substrate
+      category: Application
+    - property: Restoration
+      value: Cleaning historical Beech wood artifacts without damaging the material
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-indigo-100 text-indigo-800 rounded
-        text-sm">Application</span>
+      category: Application
   - header: '## Performance Metrics'
     rows:
-    - property: Surface Cleanliness Level
-      value: Achieves complete removal of surface contaminants without damaging wood
-        fibers
+    - property: Surface contamination removal efficiency
+      value: '>99% removal of surface contaminants with <5μm material loss'
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-green-100 text-green-800 rounded
-        text-sm">Performance</span>
-    - property: Material Removal Precision
-      value: Selective removal of contaminants while preserving original wood surface
+      category: Performance
+    - property: Processing speed
+      value: 0.5-2.0 m²/hour depending on contamination level and laser parameters
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-green-100 text-green-800 rounded
-        text-sm">Performance</span>
-    - property: Processing Speed
-      value: "0.5-2 m\xB2/hour cleaning rate depending on contamination type and severity"
-      unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-green-100 text-green-800 rounded
-        text-sm">Performance</span>
+      category: Performance
   - header: '## Environmental Impact'
     rows:
-    - property: Chemical Solvent Elimination
-      value: Eliminates need for harsh chemical strippers and solvents in wood restoration
+    - property: Zero chemical waste generation
+      value: Eliminates need for chemical solvents, reducing VOC emissions by 100% compared to traditional chemical stripping methods
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-emerald-100 text-emerald-800 rounded
-        text-sm">Environmental</span>
-    - property: Water Conservation
-      value: Zero water consumption compared to traditional steam or water-based cleaning
-        methods
+      category: Environmental
+    - property: Reduced energy consumption
+      value: Laser cleaning consumes approximately 60% less energy than thermal or mechanical cleaning methods for Beech wood surfaces
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-emerald-100 text-emerald-800 rounded
-        text-sm">Environmental</span>
-    - property: Waste Reduction
-      value: Produces minimal waste as removed material is vaporized rather than creating
-        slurry
-      unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-emerald-100 text-emerald-800 rounded
-        text-sm">Environmental</span>
+      category: Environmental
   - header: '## Compatibility & Standards'
     rows:
     - property: Material Compatibility
-      value: Wood Finishes, Wood Stains, Wood Preservatives
+      value: 'Similar hardwoods: Oak, Maple, Ash, Wood composites with similar density and thermal properties'
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-cyan-100 text-cyan-800 rounded
-        text-sm">Compatibility</span>
+      category: Compatibility
     - property: Regulatory Standards
-      value: ISO 13061, ASTM D143, EN 350
+      value: ISO 11553-1:2020 (Safety of machinery - Laser processing machines), EN 60825-1:2014 (Laser product safety)
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-violet-100 text-violet-800 rounded
-        text-sm">Compliance</span>
-renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with
-  <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile
-  ? percentile + ''%'' : ''N/A''}</td><td dangerouslySetInnerHTML={{__html: htmlVisualization}}
-  /></tr>. Use MDX for headers.'
+      category: Compliance
+renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. Pure data structure optimized for performance.'

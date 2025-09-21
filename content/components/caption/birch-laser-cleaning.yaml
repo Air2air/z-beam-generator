@@ -1,7 +1,7 @@
 # Basic Content Structure
 before_text: |
-  Initial surface examination reveals significant contamination deposits across the birch Technical overview of Birch wood for laser cleaning applications, including optimal 1064nm wavelength interaction with cellulose structure, and industrial applications in wood surface restoration.. 
-  Microscopic analysis shows old finishes and surface coatings adhering to the surface. The birch exhibits the characteristic density profile typical of wood materials.
+  Initial surface examination reveals significant contamination deposits across the birch Birch wood responds optimally to near-infrared laser cleaning due to its cellulose and lignin composition. The 1064 nm wavelength provides effective absorption for controlled ablation of surface contaminants while preserving the underlying wood structure through precise thermal management.. 
+  Microscopic analysis shows surface contaminants and particulate matter adhering to the surface.
   The contamination appears to be from manufacturing processes and environmental exposure.
 
 after_text: |
@@ -11,14 +11,14 @@ after_text: |
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064nm (primary), 355nm (optional)
-  power: 10-100W
-  pulse_duration: 50-200ns
-  spot_size: 0.5-3.0mm
-  frequency: 20-80kHz
-  energy_density: 0.5–2.5 J/cm²
-  scanning_speed: "50-500mm/s"
-  beam_profile: "Gaussian TEM00"
+  wavelength: 1064 nm (primary), 532 nm (optional for finer detail)
+  power: 20-100 W
+  pulse_duration: 10-100 ns
+  spot_size: 0.1-2.0 mm
+  frequency: 10-50 kHz
+  energy_density: 0.5-5 J/cm²
+  scanning_speed: "100-1000 mm/s"
+  beam_profile: "Top-hat (flat-top)"
 
 # Material Information
 material: "Birch"
@@ -31,7 +31,7 @@ data_completeness:
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-19T16:55:26.256922Z"
+  generated: "2025-09-20T22:48:51.696538Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
@@ -41,7 +41,7 @@ metadata:
 
 # Enhanced SEO Frontmatter
 title: "Birch Surface Laser Cleaning Analysis - Wood Surface Restoration"
-description: "Comprehensive microscopic analysis of birch surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 355nm (optional) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of birch surface before and after precision laser cleaning, achieving optimal surface restoration using 1064 nm (primary), 532 nm (optional for finer detail) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -55,8 +55,9 @@ keywords:
   - "birch"
   - "contamination analysis"
   - "birch wood"
+  - "non-contact cleaning"
+  - "woodworking applications"
   - "wood restoration"
-  - "woodworking and furniture applications"
   - "organic material cleaning"
   - "forestry applications"
 
@@ -75,22 +76,22 @@ author_object:
 
 # Technical Specifications for SEO
 technicalSpecifications:
-  wavelength: "1064nm (primary), 355nm (optional)"
-  power: "10-100W"
-  pulse_duration: "50-200ns"
-  scanning_speed: "50-500mm/s"
+  wavelength: "1064 nm (primary), 532 nm (optional for finer detail)"
+  power: "20-100 W"
+  pulse_duration: "10-100 ns"
+  scanning_speed: "100-1000 mm/s"
   material: "Birch"
   beam_delivery: "fiber optic"
-  focus_diameter: "0.5-3.0mm"
+  focus_diameter: "0.1-2.0 mm"
   processing_atmosphere: "ambient air"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Cellulose (C6H10O5) 40-45%, Hemicellulose 25-35%, Lignin 18-25%"
+  composition: "Cellulose: 40-45%, Hemicellulose: 25-30%, Lignin: 20-25%"
   surface_treatment: "laser cleaning"
   contamination_type: "organic decay and biological contamination"
   materialType: "wood"
-  formula: "C6H10O5"
+  formula: "Complex organic polymer (primarily cellulose C₆H₁₀O₅, lignin C₉H₁₀O₂, hemicellulose)"
   surface_finish: "Ra < 0.6 μm (post-cleaning)"
   corrosion_resistance: "moderate"
 
@@ -112,12 +113,12 @@ seo_data:
   og_image: "/images/birch-laser-cleaning-micro.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-19T16:55:26.256922Z"
+  last_modified: "2025-09-20T22:48:51.696538Z"
 
 # Quality Metrics
 quality_metrics:
-  surface_roughness_before: "Ra 5.0 μm"
-  surface_roughness_after: "Ra 1.5 μm"
+  surface_roughness_before: "Ra 3.2 μm"
+  surface_roughness_after: "Ra 0.6 μm"
   substrate_integrity: "100% preserved"
 
 # Accessibility Information
@@ -130,7 +131,7 @@ accessibility:
 ---
 Material: "birch"
 Component: caption
-Generated: 2025-09-19T16:55:26.256922Z
+Generated: 2025-09-20T22:48:51.696538Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

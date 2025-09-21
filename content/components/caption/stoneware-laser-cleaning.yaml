@@ -1,7 +1,7 @@
 # Basic Content Structure
 before_text: |
-  Initial surface examination reveals significant contamination deposits across the stoneware Technical overview of Stoneware, Al2O3·SiO2, for laser cleaning applications, including optimal 1064nm wavelength interaction, and industrial applications in surface preparation.. 
-  Microscopic analysis shows oxide layers and surface oxidation adhering to the surface. The stoneware exhibits the characteristic density profile typical of ceramic materials.
+  Initial surface examination reveals significant contamination deposits across the stoneware Stoneware laser cleaning utilizes precise pulsed fiber laser parameters to remove surface contaminants while preserving the vitrified ceramic body. The process exploits the differential absorption between contaminants and the stoneware matrix, achieving selective ablation without mechanical contact or chemical residues.. 
+  Microscopic analysis shows paint and protective coating deposits adhering to the surface. The stoneware exhibits the characteristic density profile typical of ceramic materials.
   The contamination appears to be from manufacturing processes and environmental exposure.
 
 after_text: |
@@ -11,14 +11,14 @@ after_text: |
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064nm (primary), 532nm (optional)
-  power: 50-200W
-  pulse_duration: 20-100ns
-  spot_size: 0.2-1.5mm
-  frequency: 20-100kHz
-  energy_density: 1.0–4.5 J/cm²
-  scanning_speed: "50-500mm/s"
-  beam_profile: "Gaussian TEM00"
+  wavelength: 1064 nm (primary), 532 nm (optional for finer detail)
+  power: 50-200 W
+  pulse_duration: 10-200 ns
+  spot_size: 0.1-1.0 mm
+  frequency: 20-100 kHz
+  energy_density: 1.0–10 J/cm²
+  scanning_speed: "100-2000 mm/s"
+  beam_profile: "Top-hat (flat-top)"
 
 # Material Information
 material: "Stoneware"
@@ -31,7 +31,7 @@ data_completeness:
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-19T16:55:24.887318Z"
+  generated: "2025-09-20T22:48:47.481680Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
@@ -41,7 +41,7 @@ metadata:
 
 # Enhanced SEO Frontmatter
 title: "Stoneware Surface Laser Cleaning Analysis - Ceramic Surface Restoration"
-description: "Comprehensive microscopic analysis of stoneware surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of stoneware surface before and after precision laser cleaning, achieving optimal surface restoration using 1064 nm (primary), 532 nm (optional for finer detail) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -56,7 +56,7 @@ keywords:
   - "contamination analysis"
   - "stoneware ceramic"
   - "non-contact cleaning"
-  - "electronics manufacturing applications"
+  - "ceramics manufacturing applications"
   - "ceramic cleaning"
   - "ceramic surface modification"
   - "thermal processing"
@@ -76,22 +76,22 @@ author_object:
 
 # Technical Specifications for SEO
 technicalSpecifications:
-  wavelength: "1064nm (primary), 532nm (optional)"
-  power: "50-200W"
-  pulse_duration: "20-100ns"
-  scanning_speed: "50-500mm/s"
+  wavelength: "1064 nm (primary), 532 nm (optional for finer detail)"
+  power: "50-200 W"
+  pulse_duration: "10-200 ns"
+  scanning_speed: "100-2000 mm/s"
   material: "Stoneware"
   beam_delivery: "fiber optic"
-  focus_diameter: "0.2-1.5mm"
+  focus_diameter: "0.1-1.0 mm"
   processing_atmosphere: "ambient air"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Alumina (Al2O3) 25-40%, Silica (SiO2) 50-70%, Fluxes (Feldspar, Iron Oxide) 5-15%"
+  composition: "Silicon Dioxide (SiO₂): 60-70%, Aluminum Oxide (Al₂O₃): 20-30%, Potassium Oxide (K₂O): 3-5%"
   surface_treatment: "laser cleaning"
   contamination_type: "ceramic dust and firing residues"
   materialType: "ceramic"
-  formula: "Al2O3·SiO2"
+  formula: "Variable composition (primarily SiO₂-Al₂O₃-K₂O-Na₂O-CaO system)"
   surface_finish: "Ra < 0.6 μm (post-cleaning)"
   corrosion_resistance: "excellent"
 
@@ -113,7 +113,7 @@ seo_data:
   og_image: "/images/stoneware-laser-cleaning-micro.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-19T16:55:24.887318Z"
+  last_modified: "2025-09-20T22:48:47.481680Z"
 
 # Quality Metrics
 quality_metrics:
@@ -131,7 +131,7 @@ accessibility:
 ---
 Material: "stoneware"
 Component: caption
-Generated: 2025-09-19T16:55:24.887318Z
+Generated: 2025-09-20T22:48:47.481680Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

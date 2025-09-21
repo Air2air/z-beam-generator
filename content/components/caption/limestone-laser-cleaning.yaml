@@ -1,7 +1,7 @@
 # Basic Content Structure
 before_text: |
-  Initial surface examination reveals significant contamination deposits across the limestone Technical overview of Limestone, CaCO3, for laser cleaning applications, including optimal 1064nm wavelength interaction, and industrial applications in surface preparation.. 
-  Microscopic analysis shows biological growth and organic deposits adhering to the surface. The limestone exhibits the characteristic density profile typical of stone materials.
+  Initial surface examination reveals significant contamination deposits across the limestone Laser cleaning of limestone (calcium carbonate) utilizes precise pulsed laser ablation to remove surface contaminants while preserving the delicate stone substrate. The process exploits the differential absorption between contaminants and the limestone matrix, typically using near-infrared wavelengths that are well-absorbed by dark surface deposits but less absorbed by the lighter mineral substrate.. 
+  Microscopic analysis shows weathering and biological deposits adhering to the surface. The limestone exhibits the characteristic density profile typical of stone materials.
   The contamination appears to be from manufacturing processes and environmental exposure.
 
 after_text: |
@@ -11,14 +11,14 @@ after_text: |
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064nm (primary), 355nm (optional)
-  power: 20-100W
-  pulse_duration: 10-50ns
-  spot_size: 0.1-2.0mm
-  frequency: 10-50kHz
-  energy_density: 0.5–2.5 J/cm²
-  scanning_speed: "50-500mm/s"
-  beam_profile: "Gaussian TEM00"
+  wavelength: 1064 nm (fundamental), 532 nm (second harmonic for enhanced absorption)
+  power: 20-100 W (average power for pulsed Nd:YAG systems)
+  pulse_duration: 10-100 ns
+  spot_size: 0.1-2.0 mm (adjustable based on contamination type and surface geometry)
+  frequency: 10-50 kHz
+  energy_density: 0.5-5 J/cm² (depending on contamination type and limestone porosity)
+  scanning_speed: "100-2000 mm/s (optimized for specific contamination removal rates)"
+  beam_profile: "Top-hat (flat-top) profile preferred for uniform energy distribution"
 
 # Material Information
 material: "Limestone"
@@ -31,7 +31,7 @@ data_completeness:
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-19T16:55:25.979824Z"
+  generated: "2025-09-20T22:48:50.824876Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
@@ -41,7 +41,7 @@ metadata:
 
 # Enhanced SEO Frontmatter
 title: "Limestone Surface Laser Cleaning Analysis - Heritage Conservation Cleaning"
-description: "Comprehensive microscopic analysis of limestone surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 355nm (optional) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of limestone surface before and after precision laser cleaning, achieving optimal surface restoration using 1064 nm (fundamental), 532 nm (second harmonic for enhanced absorption) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -54,9 +54,9 @@ keywords:
   - "laser ablation"
   - "limestone"
   - "contamination analysis"
-  - "calcium carbonate"
+  - "limestone stone"
   - "non-contact cleaning"
-  - "heritage restoration applications"
+  - "construction applications"
   - "stone conservation"
   - "heritage preservation"
   - "architectural restoration"
@@ -76,18 +76,18 @@ author_object:
 
 # Technical Specifications for SEO
 technicalSpecifications:
-  wavelength: "1064nm (primary), 355nm (optional)"
-  power: "20-100W"
-  pulse_duration: "10-50ns"
-  scanning_speed: "50-500mm/s"
+  wavelength: "1064 nm (fundamental), 532 nm (second harmonic for enhanced absorption)"
+  power: "20-100 W (average power for pulsed Nd:YAG systems)"
+  pulse_duration: "10-100 ns"
+  scanning_speed: "100-2000 mm/s (optimized for specific contamination removal rates)"
   material: "Limestone"
   beam_delivery: "fiber optic"
-  focus_diameter: "0.1-2.0mm"
+  focus_diameter: "0.1-2.0 mm (adjustable based on contamination type and surface geometry)"
   processing_atmosphere: "ambient air"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Calcium Carbonate (CaCO3) 95-99%, Clay minerals, quartz, feldspar, iron oxides"
+  composition: "Calcium carbonate (CaCO3): 90-99%, Clay minerals: 1-5%, Quartz (SiO2): 0.5-2%"
   surface_treatment: "laser cleaning"
   contamination_type: "weathering and biological deposits"
   materialType: "sedimentary rock"
@@ -113,7 +113,7 @@ seo_data:
   og_image: "/images/limestone-laser-cleaning-micro.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-19T16:55:25.979824Z"
+  last_modified: "2025-09-20T22:48:50.824876Z"
 
 # Quality Metrics
 quality_metrics:
@@ -131,7 +131,7 @@ accessibility:
 ---
 Material: "limestone"
 Component: caption
-Generated: 2025-09-19T16:55:25.979824Z
+Generated: 2025-09-20T22:48:50.824876Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

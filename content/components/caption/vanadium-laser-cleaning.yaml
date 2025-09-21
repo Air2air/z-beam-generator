@@ -1,7 +1,7 @@
 # Basic Content Structure
 before_text: |
-  Initial surface examination reveals significant contamination deposits across the vanadium Technical overview of Vanadium, None, for laser cleaning applications, including optimal 1064nm wavelength interaction, and industrial applications in surface preparation.. 
-  Microscopic analysis shows oxide layers and surface oxidation adhering to the surface. The vanadium exhibits the characteristic density profile typical of metal materials.
+  Initial surface examination reveals significant contamination deposits across the vanadium Vanadium laser cleaning utilizes pulsed fiber lasers at 1064nm wavelength to selectively ablate surface contaminants and oxides from vanadium and its alloys. The process leverages vanadium's moderate thermal conductivity (30.7 W/m·K) and specific absorption characteristics at near-IR wavelengths for precise, non-contact cleaning without altering the base metal's metallurgical properties.. 
+  Microscopic analysis shows surface contaminants and particulate matter adhering to the surface. The vanadium exhibits the characteristic density profile typical of metal materials.
   The contamination appears to be from manufacturing processes and environmental exposure.
 
 after_text: |
@@ -11,14 +11,14 @@ after_text: |
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064nm (primary), 532nm (optional)
-  power: 50-200W
-  pulse_duration: 20-100ns
-  spot_size: 0.2-1.5mm
-  frequency: 20-100kHz
-  energy_density: 1.0–4.5 J/cm²
-  scanning_speed: "50-500mm/s"
-  beam_profile: "Gaussian TEM00"
+  wavelength: 1064 nm (primary), 532 nm (optional for higher absorption)
+  power: 20-100 W
+  pulse_duration: 10-100 ns
+  spot_size: 0.1-2.0 mm
+  frequency: 10-50 kHz
+  energy_density: 0.5–5 J/cm²
+  scanning_speed: "100-1000 mm/s"
+  beam_profile: "Top-hat (flat-top)"
 
 # Material Information
 material: "Vanadium"
@@ -31,7 +31,7 @@ data_completeness:
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-19T16:55:25.784674Z"
+  generated: "2025-09-20T22:48:50.366124Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
@@ -41,7 +41,7 @@ metadata:
 
 # Enhanced SEO Frontmatter
 title: "Vanadium Surface Laser Cleaning Analysis - Industrial Contamination Removal"
-description: "Comprehensive microscopic analysis of vanadium surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of vanadium surface before and after precision laser cleaning, achieving optimal surface restoration using 1064 nm (primary), 532 nm (optional for higher absorption) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -56,7 +56,7 @@ keywords:
   - "contamination analysis"
   - "vanadium metal"
   - "non-contact cleaning"
-  - "electronics manufacturing applications"
+  - "aerospace applications"
   - "metal surface treatment"
   - "corrosion removal"
   - "oxide layer removal"
@@ -76,18 +76,18 @@ author_object:
 
 # Technical Specifications for SEO
 technicalSpecifications:
-  wavelength: "1064nm (primary), 532nm (optional)"
-  power: "50-200W"
-  pulse_duration: "20-100ns"
-  scanning_speed: "50-500mm/s"
+  wavelength: "1064 nm (primary), 532 nm (optional for higher absorption)"
+  power: "20-100 W"
+  pulse_duration: "10-100 ns"
+  scanning_speed: "100-1000 mm/s"
   material: "Vanadium"
   beam_delivery: "fiber optic"
-  focus_diameter: "0.2-1.5mm"
+  focus_diameter: "0.1-2.0 mm"
   processing_atmosphere: "ambient air"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Vanadium (V) 99.6%, Trace elements (Si, Fe, Na, Mg)"
+  composition: "Vanadium: 99.9% (high purity grade), Iron: <0.05%, Silicon: <0.02%, Carbon: <0.01%, Oxygen: <0.01% (typical impurities)"
   surface_treatment: "laser cleaning"
   contamination_type: "oxidation and metallic deposits"
   materialType: "metal"
@@ -113,7 +113,7 @@ seo_data:
   og_image: "/images/vanadium-laser-cleaning-micro.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-19T16:55:25.784674Z"
+  last_modified: "2025-09-20T22:48:50.366124Z"
 
 # Quality Metrics
 quality_metrics:
@@ -131,7 +131,7 @@ accessibility:
 ---
 Material: "vanadium"
 Component: caption
-Generated: 2025-09-19T16:55:25.784674Z
+Generated: 2025-09-20T22:48:50.366124Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

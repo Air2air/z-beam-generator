@@ -363,14 +363,24 @@ Format: YAML v2.0
         # First try to get industry-specific contamination from frontmatter applications
         industry_contamination = []
         for app in frontmatter_data['applications']:
-            if 'detail' not in app:
-                continue  # Skip applications without detail
-            detail = app['detail'].lower()
+            # Handle new string format: "Industry: Detail"
+            if isinstance(app, str):
+                # Parse "Industry: Detail" format
+                if ':' in app:
+                    industry, detail = app.split(':', 1)
+                    detail = detail.strip().lower()
+                else:
+                    detail = app.lower()
+            else:
+                # Handle legacy object format
+                if 'detail' not in app:
+                    continue  # Skip applications without detail
+                detail = app['detail'].lower()
             
             # Extract contamination types from application details
             if 'lubricant' in detail or 'oil' in detail:
                 industry_contamination.append('industrial lubricants and oil residues')
-            elif 'oxide' in detail or 'oxidation' in detail:
+            elif 'oxide' in detail or 'oxidation' in detail or 'rust' in detail:
                 industry_contamination.append('oxide layers and surface oxidation')
             elif 'paint' in detail or 'coating' in detail:
                 industry_contamination.append('paint and protective coating deposits')
@@ -388,12 +398,27 @@ Format: YAML v2.0
                 industry_contamination.append('old finishes and surface coatings')
             elif 'contaminant' in detail:
                 industry_contamination.append('surface contaminants and particulate matter')
+            elif 'grease' in detail:
+                industry_contamination.append('industrial grease and processing residues')
+            elif 'dust' in detail or 'debris' in detail:
+                industry_contamination.append('dust and debris accumulation')
         
         if industry_contamination:
             return industry_contamination[0]  # Use first specific contamination type
         
-        # FAIL-FAST: If no specific contamination found in applications, fail
-        raise ValueError(f"No specific contamination type found in frontmatter applications for {material_category}")
+        # Fallback: Use generic contamination based on material category
+        category_contamination = {
+            'metal': 'oxide layers and surface oxidation',
+            'ceramic': 'ceramic dust and firing residues',
+            'glass': 'optical contamination and surface films',
+            'stone': 'weathering and biological deposits',
+            'wood': 'organic decay and biological contamination',
+            'composite': 'matrix degradation and environmental aging',
+            'masonry': 'construction residues and atmospheric deposits',
+            'semiconductor': 'organic contamination and processing residues'
+        }
+        
+        return category_contamination.get(material_category, 'surface contaminants and environmental deposits')
 
     def _get_analysis_details(self) -> Dict[str, str]:
         """Generate standardized analysis method details"""
@@ -469,7 +494,7 @@ Format: YAML v2.0
                     technical_context = f" The {material_name.lower()} exhibits the characteristic density profile typical of {material_category} materials."
         
         # Intelligent mapping: Derive contamination source from available data
-        tech_specs = frontmatter_data.get('technicalSpecifications', {})
+        tech_specs = frontmatter_data.get('technicalSpecifications', frontmatter_data.get('machineSettings', {}))
         
         # Smart field mapping: Use contaminationSource if available, otherwise derive from applications
         if 'contaminationSource' in tech_specs:
@@ -507,7 +532,7 @@ Format: YAML v2.0
         result = 'remarkable surface restoration'  # Use consistent result description
         
         # Intelligent mapping: Derive thermal effect from available data
-        tech_specs = frontmatter_data.get('technicalSpecifications', {})
+        tech_specs = frontmatter_data.get('technicalSpecifications', frontmatter_data.get('machineSettings', {}))
         
         # Smart field mapping: Use thermalEffect if available, otherwise derive from material category and laser params
         if 'thermalEffect' in tech_specs:
@@ -644,7 +669,18 @@ Format: YAML v2.0
         # Add industry-specific keywords from applications
         if frontmatter_data and 'applications' in frontmatter_data:
             for app in frontmatter_data['applications']:
-                industry = app.get('industry', '').lower()
+                # Handle new string format: "Industry: Detail"
+                if isinstance(app, str):
+                    # Parse "Industry: Detail" format
+                    if ':' in app:
+                        industry, _ = app.split(':', 1)
+                        industry = industry.strip().lower()
+                    else:
+                        industry = app.lower()
+                else:
+                    # Handle legacy object format
+                    industry = app.get('industry', '').lower()
+                
                 if industry and len(base_keywords) < 15:
                     base_keywords.append(f'{industry.replace(" ", " ").replace("&", "and")} applications')
         

@@ -1,7 +1,7 @@
 # Basic Content Structure
 before_text: |
-  Initial surface examination reveals significant contamination deposits across the serpentine Technical overview of Serpentine, Sn, for laser cleaning applications, including optimal 1064nm wavelength interaction, and industrial applications in surface preparation.. 
-  Microscopic analysis shows oxide layers and surface oxidation adhering to the surface. The serpentine exhibits the characteristic density profile typical of stone materials.
+  Initial surface examination reveals significant contamination deposits across the serpentine Laser cleaning of serpentine-group minerals (Mg₃Si₂O₅(OH)₄) utilizes selective photothermal ablation where contaminants absorb laser energy more efficiently than the hydrated magnesium silicate substrate, enabling precise removal without mechanical or chemical damage to the valuable stone surface.. 
+  Microscopic analysis shows weathering and biological deposits adhering to the surface. The serpentine exhibits the characteristic density profile typical of stone materials.
   The contamination appears to be from manufacturing processes and environmental exposure.
 
 after_text: |
@@ -11,14 +11,14 @@ after_text: |
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064nm (primary), 532nm (optional)
-  power: 50-200W
-  pulse_duration: 20-100ns
-  spot_size: 0.2-1.5mm
-  frequency: 20-100kHz
-  energy_density: 1.0–4.5 J/cm²
-  scanning_speed: "50-500mm/s"
-  beam_profile: "Gaussian TEM00"
+  wavelength: 1064 nm (fundamental Nd:YAG/fiber), 532 nm (frequency-doubled for finer control)
+  power: 20-100 W (average power for pulsed fiber lasers)
+  pulse_duration: 10-100 ns
+  spot_size: 100-500 μm
+  frequency: 10-50 kHz
+  energy_density: 0.8-2.5 J/cm² (ablation threshold for serpentine group minerals)
+  scanning_speed: "500-2000 mm/s"
+  beam_profile: "Top-hat (flat-top) for uniform energy distribution"
 
 # Material Information
 material: "Serpentine"
@@ -31,7 +31,7 @@ data_completeness:
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-19T16:55:26.110677Z"
+  generated: "2025-09-20T22:48:51.087348Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
@@ -41,7 +41,7 @@ metadata:
 
 # Enhanced SEO Frontmatter
 title: "Serpentine Surface Laser Cleaning Analysis - Heritage Conservation Cleaning"
-description: "Comprehensive microscopic analysis of serpentine surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of serpentine surface before and after precision laser cleaning, achieving optimal surface restoration using 1064 nm (fundamental Nd:YAG/fiber), 532 nm (frequency-doubled for finer control) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -56,7 +56,7 @@ keywords:
   - "contamination analysis"
   - "serpentine stone"
   - "non-contact cleaning"
-  - "electronics manufacturing applications"
+  - "construction applications"
   - "stone conservation"
   - "heritage preservation"
   - "architectural restoration"
@@ -76,22 +76,22 @@ author_object:
 
 # Technical Specifications for SEO
 technicalSpecifications:
-  wavelength: "1064nm (primary), 532nm (optional)"
-  power: "50-200W"
-  pulse_duration: "20-100ns"
-  scanning_speed: "50-500mm/s"
+  wavelength: "1064 nm (fundamental Nd:YAG/fiber), 532 nm (frequency-doubled for finer control)"
+  power: "20-100 W (average power for pulsed fiber lasers)"
+  pulse_duration: "10-100 ns"
+  scanning_speed: "500-2000 mm/s"
   material: "Serpentine"
   beam_delivery: "fiber optic"
-  focus_diameter: "0.2-1.5mm"
+  focus_diameter: "100-500 μm"
   processing_atmosphere: "ambient air"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Magnesium Silicate Hydroxide (Mg₃Si₂O₅(OH)₄) 85-95%, Trace elements (Fe, Cr, Ni, Al)"
+  composition: "Magnesium oxide (MgO): 43-44%, Silicon dioxide (SiO₂): 43-44%, Water (H₂O): 12-13%"
   surface_treatment: "laser cleaning"
   contamination_type: "weathering and biological deposits"
-  materialType: "stone"
-  formula: "Sn"
+  materialType: "phyllosilicate mineral"
+  formula: "Mg₃Si₂O₅(OH)₄"
   surface_finish: "Ra < 0.6 μm (post-cleaning)"
   corrosion_resistance: "good"
 
@@ -113,7 +113,7 @@ seo_data:
   og_image: "/images/serpentine-laser-cleaning-micro.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-19T16:55:26.110677Z"
+  last_modified: "2025-09-20T22:48:51.087348Z"
 
 # Quality Metrics
 quality_metrics:
@@ -131,7 +131,7 @@ accessibility:
 ---
 Material: "serpentine"
 Component: caption
-Generated: 2025-09-19T16:55:26.110677Z
+Generated: 2025-09-20T22:48:51.087348Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

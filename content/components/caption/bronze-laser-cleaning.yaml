@@ -1,6 +1,6 @@
 # Basic Content Structure
 before_text: |
-  Initial surface examination reveals significant contamination deposits across the bronze Technical overview of Bronze, Cu-Sn, for laser cleaning applications, including optimal 1064nm wavelength interaction, and industrial applications in surface preparation.. 
+  Initial surface examination reveals significant contamination deposits across the bronze Laser cleaning of bronze (Cu-Sn alloy) utilizes precise pulsed laser ablation to remove surface oxides, corrosion, and contaminants while preserving the base metal. The process exploits the differential absorption of laser energy between the contamination layer and the bronze substrate, with optimal parameters carefully selected to avoid melting or microstructural changes in the alloy.. 
   Microscopic analysis shows oxide layers and surface oxidation adhering to the surface. The bronze exhibits the characteristic density profile typical of metal materials.
   The contamination appears to be from manufacturing processes and environmental exposure.
 
@@ -11,14 +11,14 @@ after_text: |
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064nm (primary), 532nm (optional)
-  power: 50-200W
-  pulse_duration: 20-100ns
-  spot_size: 0.2-1.5mm
-  frequency: 20-100kHz
-  energy_density: 1.0–4.5 J/cm²
-  scanning_speed: "50-500mm/s"
-  beam_profile: "Gaussian TEM00"
+  wavelength: 1064 nm (primary), 532 nm (optional for higher precision on delicate surfaces)
+  power: 20-100 W (average power for pulsed fiber lasers)
+  pulse_duration: 10-100 ns (nanosecond pulses standard for efficient ablation with minimal HAZ)
+  spot_size: 0.1-2.0 mm (adjustable based on contamination layer thickness and required precision)
+  frequency: 10-50 kHz (optimized for thermal relaxation between pulses)
+  energy_density: 0.5–5 J/cm² (above ablation threshold for common bronze contaminants, below substrate damage threshold)
+  scanning_speed: "100-2000 mm/s (dependent on laser power and contamination type)"
+  beam_profile: "Top-hat (flat-top) profile preferred for uniform energy distribution and consistent cleaning results"
 
 # Material Information
 material: "Bronze"
@@ -31,7 +31,7 @@ data_completeness:
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-19T16:55:25.369331Z"
+  generated: "2025-09-20T22:48:48.635360Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
@@ -41,7 +41,7 @@ metadata:
 
 # Enhanced SEO Frontmatter
 title: "Bronze Surface Laser Cleaning Analysis - Industrial Contamination Removal"
-description: "Comprehensive microscopic analysis of bronze surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of bronze surface before and after precision laser cleaning, achieving optimal surface restoration using 1064 nm (primary), 532 nm (optional for higher precision on delicate surfaces) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -56,7 +56,7 @@ keywords:
   - "contamination analysis"
   - "bronze metal"
   - "non-contact cleaning"
-  - "electronics manufacturing applications"
+  - "manufacturing applications"
   - "metal surface treatment"
   - "corrosion removal"
   - "oxide layer removal"
@@ -76,18 +76,18 @@ author_object:
 
 # Technical Specifications for SEO
 technicalSpecifications:
-  wavelength: "1064nm (primary), 532nm (optional)"
-  power: "50-200W"
-  pulse_duration: "20-100ns"
-  scanning_speed: "50-500mm/s"
+  wavelength: "1064 nm (primary), 532 nm (optional for higher precision on delicate surfaces)"
+  power: "20-100 W (average power for pulsed fiber lasers)"
+  pulse_duration: "10-100 ns (nanosecond pulses standard for efficient ablation with minimal HAZ)"
+  scanning_speed: "100-2000 mm/s (dependent on laser power and contamination type)"
   material: "Bronze"
   beam_delivery: "fiber optic"
-  focus_diameter: "0.2-1.5mm"
+  focus_diameter: "0.1-2.0 mm (adjustable based on contamination layer thickness and required precision)"
   processing_atmosphere: "ambient air"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Copper (Cu) 88-95%, Tin (Sn) 5-12%, Trace elements (Zn, Pb, P, Al)"
+  composition: "Typically 88% Cu, 12% Sn"
   surface_treatment: "laser cleaning"
   contamination_type: "oxidation and metallic deposits"
   materialType: "metal"
@@ -113,7 +113,7 @@ seo_data:
   og_image: "/images/bronze-laser-cleaning-micro.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-19T16:55:25.369331Z"
+  last_modified: "2025-09-20T22:48:48.635360Z"
 
 # Quality Metrics
 quality_metrics:
@@ -131,7 +131,7 @@ accessibility:
 ---
 Material: "bronze"
 Component: caption
-Generated: 2025-09-19T16:55:25.369331Z
+Generated: 2025-09-20T22:48:48.635360Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

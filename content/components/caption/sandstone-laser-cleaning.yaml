@@ -1,7 +1,7 @@
 # Basic Content Structure
 before_text: |
-  Initial surface examination reveals significant contamination deposits across the sandstone Technical overview of Sandstone, SiO2, for laser cleaning applications, including optimal 1064nm wavelength interaction, and industrial applications in surface preparation.. 
-  Microscopic analysis shows biological growth and organic deposits adhering to the surface. The sandstone exhibits the characteristic density profile typical of stone materials.
+  Initial surface examination reveals significant contamination deposits across the sandstone Laser cleaning of sandstone utilizes selective photothermal ablation where contaminants absorb laser energy more efficiently than the quartz-rich substrate. Optimal parameters prevent thermal damage to the calcium carbonate cement while effectively removing sulfation crusts and biological matter.. 
+  Microscopic analysis shows weathering and biological deposits adhering to the surface. The sandstone exhibits the characteristic density profile typical of stone materials.
   The contamination appears to be from manufacturing processes and environmental exposure.
 
 after_text: |
@@ -11,14 +11,14 @@ after_text: |
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064nm (primary), 532nm (optional)
-  power: 10-100W
-  pulse_duration: 30-150ns
-  spot_size: 0.5-2.0mm
-  frequency: 10-50kHz
-  energy_density: 0.5–2.5 J/cm²
-  scanning_speed: "50-500mm/s"
-  beam_profile: "Gaussian TEM00"
+  wavelength: 1064 nm (primary), 532 nm (optional for specific contamination)
+  power: 20-100 W (average power for pulsed fiber lasers)
+  pulse_duration: 10-100 ns
+  spot_size: 0.1-2.0 mm
+  frequency: 10-50 kHz
+  energy_density: 0.5-5 J/cm² (below sandstone ablation threshold of ~6-8 J/cm²)
+  scanning_speed: "100-500 mm/s"
+  beam_profile: "Top-hat (flat-top) for uniform energy distribution"
 
 # Material Information
 material: "Sandstone"
@@ -31,7 +31,7 @@ data_completeness:
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-19T16:55:26.071683Z"
+  generated: "2025-09-20T22:48:51.004082Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
@@ -41,7 +41,7 @@ metadata:
 
 # Enhanced SEO Frontmatter
 title: "Sandstone Surface Laser Cleaning Analysis - Heritage Conservation Cleaning"
-description: "Comprehensive microscopic analysis of sandstone surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of sandstone surface before and after precision laser cleaning, achieving optimal surface restoration using 1064 nm (primary), 532 nm (optional for specific contamination) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -56,7 +56,7 @@ keywords:
   - "contamination analysis"
   - "sandstone stone"
   - "non-contact cleaning"
-  - "heritage restoration applications"
+  - "construction applications"
   - "stone conservation"
   - "heritage preservation"
   - "architectural restoration"
@@ -76,22 +76,22 @@ author_object:
 
 # Technical Specifications for SEO
 technicalSpecifications:
-  wavelength: "1064nm (primary), 532nm (optional)"
-  power: "10-100W"
-  pulse_duration: "30-150ns"
-  scanning_speed: "50-500mm/s"
+  wavelength: "1064 nm (primary), 532 nm (optional for specific contamination)"
+  power: "20-100 W (average power for pulsed fiber lasers)"
+  pulse_duration: "10-100 ns"
+  scanning_speed: "100-500 mm/s"
   material: "Sandstone"
   beam_delivery: "fiber optic"
-  focus_diameter: "0.5-2.0mm"
+  focus_diameter: "0.1-2.0 mm"
   processing_atmosphere: "ambient air"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Quartz (SiO2) 60-90%, Feldspar 5-25%, Rock fragments and cementing materials 5-15%"
+  composition: "Quartz (SiO₂): 60-90%, Calcium carbonate (CaCO₃): 5-20% (cement), Iron oxides (Fe₂O₃): 1-5%"
   surface_treatment: "laser cleaning"
   contamination_type: "weathering and biological deposits"
-  materialType: "stone"
-  formula: "SiO2"
+  materialType: "sedimentary rock"
+  formula: "Variable (primarily SiO₂ + CaCO₃ + Fe₂O₃ + Al₂O₃)"
   surface_finish: "Ra < 0.6 μm (post-cleaning)"
   corrosion_resistance: "good"
 
@@ -113,7 +113,7 @@ seo_data:
   og_image: "/images/sandstone-laser-cleaning-micro.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-19T16:55:26.071683Z"
+  last_modified: "2025-09-20T22:48:51.004082Z"
 
 # Quality Metrics
 quality_metrics:
@@ -131,7 +131,7 @@ accessibility:
 ---
 Material: "sandstone"
 Component: caption
-Generated: 2025-09-19T16:55:26.071683Z
+Generated: 2025-09-20T22:48:51.004082Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

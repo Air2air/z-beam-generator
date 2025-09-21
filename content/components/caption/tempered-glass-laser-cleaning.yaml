@@ -1,7 +1,7 @@
 # Basic Content Structure
 before_text: |
-  Initial surface examination reveals significant contamination deposits across the tempered glass Technical overview of Tempered Glass, Na2O·CaO·6SiO2, for laser cleaning applications, including optimal 1064nm wavelength interaction, and industrial applications in surface preparation.. 
-  Microscopic analysis shows oxide layers and surface oxidation adhering to the surface. The tempered glass exhibits the characteristic density profile typical of glass materials.
+  Initial surface examination reveals significant contamination deposits across the tempered glass Laser cleaning of tempered glass utilizes precise pulsed fiber lasers to remove surface contaminants without damaging the compressive stress layer. The process selectively ablates contaminants while preserving the glass substrate integrity through controlled thermal interaction.. 
+  Microscopic analysis shows surface contaminants and particulate matter adhering to the surface.
   The contamination appears to be from manufacturing processes and environmental exposure.
 
 after_text: |
@@ -11,14 +11,14 @@ after_text: |
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064nm (primary), 532nm (optional)
-  power: 50-200W
-  pulse_duration: 20-100ns
-  spot_size: 0.2-1.5mm
-  frequency: 20-100kHz
-  energy_density: 1.0–4.5 J/cm²
-  scanning_speed: "50-500mm/s"
-  beam_profile: "Gaussian TEM00"
+  wavelength: 1064 nm (primary), 532 nm (optional for finer features)
+  power: 20-100 W
+  pulse_duration: 10-100 ns
+  spot_size: 0.1-2.0 mm
+  frequency: 10-50 kHz
+  energy_density: 0.5-5 J/cm²
+  scanning_speed: "100-1000 mm/s"
+  beam_profile: "Top-hat or Gaussian"
 
 # Material Information
 material: "Tempered Glass"
@@ -31,7 +31,7 @@ data_completeness:
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-19T16:55:25.199788Z"
+  generated: "2025-09-20T22:48:48.253680Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
@@ -41,7 +41,7 @@ metadata:
 
 # Enhanced SEO Frontmatter
 title: "Tempered Glass Surface Laser Cleaning Analysis - Optical Surface Cleaning"
-description: "Comprehensive microscopic analysis of tempered glass surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of tempered glass surface before and after precision laser cleaning, achieving optimal surface restoration using 1064 nm (primary), 532 nm (optional for finer features) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -56,7 +56,7 @@ keywords:
   - "contamination analysis"
   - "tempered glass glass"
   - "non-contact cleaning"
-  - "electronics manufacturing applications"
+  - "automotive applications"
   - "optical cleaning"
   - "glass surface treatment"
   - "transparent materials"
@@ -76,22 +76,22 @@ author_object:
 
 # Technical Specifications for SEO
 technicalSpecifications:
-  wavelength: "1064nm (primary), 532nm (optional)"
-  power: "50-200W"
-  pulse_duration: "20-100ns"
-  scanning_speed: "50-500mm/s"
+  wavelength: "1064 nm (primary), 532 nm (optional for finer features)"
+  power: "20-100 W"
+  pulse_duration: "10-100 ns"
+  scanning_speed: "100-1000 mm/s"
   material: "Tempered Glass"
   beam_delivery: "fiber optic"
-  focus_diameter: "0.2-1.5mm"
+  focus_diameter: "0.1-2.0 mm"
   processing_atmosphere: "ambient air"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Silica (SiO2) 70-75%, Sodium Oxide (Na2O) 12-16%, Calcium Oxide (CaO) 8-12%"
+  composition: "Silicon Dioxide (SiO₂): 70-75%, Sodium Oxide (Na₂O): 12-16%, Calcium Oxide (CaO): 8-12%"
   surface_treatment: "laser cleaning"
   contamination_type: "optical contamination and surface films"
   materialType: "glass"
-  formula: "Na2O·CaO·6SiO2"
+  formula: "SiO₂ (70-75%), Na₂O (12-16%), CaO (8-12%), MgO (1-4%), Al₂O₃ (0.5-2%)"
   surface_finish: "Ra < 0.6 μm (post-cleaning)"
   corrosion_resistance: "excellent"
 
@@ -113,7 +113,7 @@ seo_data:
   og_image: "/images/tempered-glass-laser-cleaning-micro.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-19T16:55:25.199788Z"
+  last_modified: "2025-09-20T22:48:48.253680Z"
 
 # Quality Metrics
 quality_metrics:
@@ -131,7 +131,7 @@ accessibility:
 ---
 Material: "tempered glass"
 Component: caption
-Generated: 2025-09-19T16:55:25.199788Z
+Generated: 2025-09-20T22:48:48.253680Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

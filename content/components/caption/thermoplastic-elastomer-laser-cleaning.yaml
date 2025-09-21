@@ -1,7 +1,7 @@
 # Basic Content Structure
 before_text: |
-  Initial surface examination reveals significant contamination deposits across the thermoplastic elastomer Technical overview of Thermoplastic Elastomer, TPE-Polymer, for laser cleaning applications, including optimal 1064nm wavelength interaction, and industrial applications in surface preparation.. 
-  Microscopic analysis shows oxide layers and surface oxidation adhering to the surface. The thermoplastic elastomer exhibits the characteristic density profile typical of composite materials.
+  Initial surface examination reveals significant contamination deposits across the thermoplastic elastomer Laser cleaning of TPE utilizes precise nanosecond pulsed fiber lasers to selectively ablate surface contaminants while preserving the underlying polymer matrix. The process exploits differential absorption between contaminants and the TPE substrate, achieving non-contact cleaning with micron-level precision and no solvent waste.. 
+  Microscopic analysis shows surface contaminants and particulate matter adhering to the surface. The thermoplastic elastomer exhibits the characteristic density profile typical of composite materials.
   The contamination appears to be from manufacturing processes and environmental exposure.
 
 after_text: |
@@ -11,14 +11,14 @@ after_text: |
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064nm (primary), 532nm (optional)
-  power: 50-200W
-  pulse_duration: 20-100ns
-  spot_size: 0.2-1.5mm
-  frequency: 20-100kHz
-  energy_density: 1.0–4.5 J/cm²
-  scanning_speed: "50-500mm/s"
-  beam_profile: "Gaussian TEM00"
+  wavelength: 1064 nm (primary), 532 nm (optional for specific contaminants)
+  power: 20-100 W (average power for pulsed fiber lasers)
+  pulse_duration: 10-100 ns (nanosecond pulses for controlled ablation)
+  spot_size: 0.1-2.0 mm (adjustable for precision or area cleaning)
+  frequency: 10-50 kHz (optimized for thermal management)
+  energy_density: 0.5–5 J/cm² (ablation threshold to material damage threshold)
+  scanning_speed: "100-2000 mm/s (dependent on contamination layer thickness)"
+  beam_profile: "Top-hat (preferred for uniform energy distribution)"
 
 # Material Information
 material: "Thermoplastic Elastomer"
@@ -31,7 +31,7 @@ data_completeness:
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-19T16:55:25.010104Z"
+  generated: "2025-09-20T22:48:47.815518Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
@@ -41,7 +41,7 @@ metadata:
 
 # Enhanced SEO Frontmatter
 title: "Thermoplastic Elastomer Surface Laser Cleaning Analysis - Advanced Material Processing"
-description: "Comprehensive microscopic analysis of thermoplastic elastomer surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of thermoplastic elastomer surface before and after precision laser cleaning, achieving optimal surface restoration using 1064 nm (primary), 532 nm (optional for specific contaminants) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -56,7 +56,7 @@ keywords:
   - "contamination analysis"
   - "thermoplastic elastomer composite"
   - "non-contact cleaning"
-  - "electronics manufacturing applications"
+  - "automotive applications"
   - "composite processing"
   - "advanced materials"
   - "polymer matrix cleaning"
@@ -76,22 +76,22 @@ author_object:
 
 # Technical Specifications for SEO
 technicalSpecifications:
-  wavelength: "1064nm (primary), 532nm (optional)"
-  power: "50-200W"
-  pulse_duration: "20-100ns"
-  scanning_speed: "50-500mm/s"
+  wavelength: "1064 nm (primary), 532 nm (optional for specific contaminants)"
+  power: "20-100 W (average power for pulsed fiber lasers)"
+  pulse_duration: "10-100 ns (nanosecond pulses for controlled ablation)"
+  scanning_speed: "100-2000 mm/s (dependent on contamination layer thickness)"
   material: "Thermoplastic Elastomer"
   beam_delivery: "fiber optic"
-  focus_diameter: "0.2-1.5mm"
+  focus_diameter: "0.1-2.0 mm (adjustable for precision or area cleaning)"
   processing_atmosphere: "ambient air"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Thermoplastic Elastomer (TPE-Polymer) 85-95%, Fillers and additives 5-15%"
+  composition: "Polystyrene hard segments: 15-40%, Polyethylene/butylene rubber soft segments: 60-85%, Additives (mineral oils, fillers, stabilizers): 0-15%"
   surface_treatment: "laser cleaning"
   contamination_type: "matrix degradation and environmental aging"
   materialType: "composite"
-  formula: "TPE-Polymer"
+  formula: "Variable (Block copolymer: (C4H8)x-(C5H8)y-(C8H8)z)"
   surface_finish: "Ra < 0.6 μm (post-cleaning)"
   corrosion_resistance: "excellent"
 
@@ -113,7 +113,7 @@ seo_data:
   og_image: "/images/thermoplastic-elastomer-laser-cleaning-micro.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-19T16:55:25.010104Z"
+  last_modified: "2025-09-20T22:48:47.815518Z"
 
 # Quality Metrics
 quality_metrics:
@@ -131,7 +131,7 @@ accessibility:
 ---
 Material: "thermoplastic elastomer"
 Component: caption
-Generated: 2025-09-19T16:55:25.010104Z
+Generated: 2025-09-20T22:48:47.815518Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

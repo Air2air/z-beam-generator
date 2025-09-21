@@ -1,6 +1,6 @@
 # Basic Content Structure
 before_text: |
-  Initial surface examination reveals significant contamination deposits across the zinc Technical overview of Zinc, Zn, for laser cleaning applications, including optimal 1064nm wavelength interaction, and industrial applications in surface preparation.. 
+  Initial surface examination reveals significant contamination deposits across the zinc Zinc laser cleaning utilizes precise laser ablation to remove surface contaminants without damaging the underlying zinc substrate. The process exploits zinc's relatively low melting point (419.5°C) and high thermal conductivity (116 W/m·K) for efficient contaminant removal while minimizing heat-affected zones. Optimal results are achieved with 1064nm wavelength due to zinc's high absorption coefficient at near-IR wavelengths.. 
   Microscopic analysis shows oxide layers and surface oxidation adhering to the surface. The zinc exhibits the characteristic density profile typical of metal materials.
   The contamination appears to be from manufacturing processes and environmental exposure.
 
@@ -11,14 +11,14 @@ after_text: |
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064nm (primary), 532nm (optional)
-  power: 50-200W
-  pulse_duration: 20-100ns
-  spot_size: 0.2-1.5mm
+  wavelength: 1064nm (primary), 532nm (for higher precision)
+  power: 20-200W (pulsed)
+  pulse_duration: 10-200ns
+  spot_size: 0.1-1.0mm
   frequency: 20-100kHz
-  energy_density: 1.0–4.5 J/cm²
-  scanning_speed: "50-500mm/s"
-  beam_profile: "Gaussian TEM00"
+  energy_density: 1.0-10 J/cm² (ablation threshold ~1.0 J/cm²)
+  scanning_speed: "500-5000 mm/s"
+  beam_profile: "Top-hat (flat-top)"
 
 # Material Information
 material: "Zinc"
@@ -31,7 +31,7 @@ data_completeness:
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-19T16:55:25.799894Z"
+  generated: "2025-09-20T22:48:50.402099Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
@@ -41,7 +41,7 @@ metadata:
 
 # Enhanced SEO Frontmatter
 title: "Zinc Surface Laser Cleaning Analysis - Industrial Contamination Removal"
-description: "Comprehensive microscopic analysis of zinc surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of zinc surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (for higher precision) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -56,7 +56,7 @@ keywords:
   - "contamination analysis"
   - "zinc metal"
   - "non-contact cleaning"
-  - "electronics manufacturing applications"
+  - "automotive applications"
   - "metal surface treatment"
   - "corrosion removal"
   - "oxide layer removal"
@@ -76,18 +76,18 @@ author_object:
 
 # Technical Specifications for SEO
 technicalSpecifications:
-  wavelength: "1064nm (primary), 532nm (optional)"
-  power: "50-200W"
-  pulse_duration: "20-100ns"
-  scanning_speed: "50-500mm/s"
+  wavelength: "1064nm (primary), 532nm (for higher precision)"
+  power: "20-200W (pulsed)"
+  pulse_duration: "10-200ns"
+  scanning_speed: "500-5000 mm/s"
   material: "Zinc"
   beam_delivery: "fiber optic"
-  focus_diameter: "0.2-1.5mm"
+  focus_diameter: "0.1-1.0mm"
   processing_atmosphere: "ambient air"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Zinc (Zn) 99.6%, Trace elements (Si, Fe, Na, Mg)"
+  composition: "Zinc (99.995+%) - High purity zinc for industrial applications, Lead (≤0.003%), Cadmium (≤0.003%), Iron (≤0.002%) - Common trace impurities"
   surface_treatment: "laser cleaning"
   contamination_type: "oxidation and metallic deposits"
   materialType: "metal"
@@ -113,7 +113,7 @@ seo_data:
   og_image: "/images/zinc-laser-cleaning-micro.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-19T16:55:25.799894Z"
+  last_modified: "2025-09-20T22:48:50.402099Z"
 
 # Quality Metrics
 quality_metrics:
@@ -131,7 +131,7 @@ accessibility:
 ---
 Material: "zinc"
 Component: caption
-Generated: 2025-09-19T16:55:25.799894Z
+Generated: 2025-09-20T22:48:50.402099Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

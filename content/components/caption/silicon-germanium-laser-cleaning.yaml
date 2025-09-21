@@ -1,7 +1,7 @@
 # Basic Content Structure
 before_text: |
-  Initial surface examination reveals significant contamination deposits across the silicon germanium Technical overview of Silicon Germanium, SiGe, for laser cleaning applications, including optimal 1064nm wavelength interaction, and industrial applications in surface preparation.. 
-  Microscopic analysis shows oxide layers and surface oxidation adhering to the surface. The silicon germanium exhibits the characteristic density profile typical of semiconductor materials.
+  Initial surface examination reveals significant contamination deposits across the silicon germanium Laser cleaning of Silicon Germanium (SiGe) alloys utilizes precise wavelength absorption characteristics at 1064nm where SiGe exhibits strong absorption coefficients of 10³-10⁴ cm⁻¹. The process enables selective removal of surface contaminants while preserving the crystalline structure and electrical properties of the SiGe substrate, critical for semiconductor applications where surface integrity determines device performance.. 
+  Microscopic analysis shows surface contaminants and particulate matter adhering to the surface. The silicon germanium exhibits the characteristic density profile typical of semiconductor materials.
   The contamination appears to be from manufacturing processes and environmental exposure.
 
 after_text: |
@@ -11,14 +11,14 @@ after_text: |
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064nm (primary), 532nm (optional)
-  power: 50-200W
-  pulse_duration: 20-100ns
-  spot_size: 0.2-1.5mm
-  frequency: 20-100kHz
-  energy_density: 1.0–4.5 J/cm²
-  scanning_speed: "50-500mm/s"
-  beam_profile: "Gaussian TEM00"
+  wavelength: 1064 nm (primary), 532 nm (secondary for finer features)
+  power: 10-100 W (average power for nanosecond pulsed fiber lasers)
+  pulse_duration: 10-100 ns (nanosecond range for controlled ablation)
+  spot_size: 20-200 μm (adjustable based on contamination type and precision requirements)
+  frequency: 20-100 kHz (optimized for thermal relaxation and processing speed)
+  energy_density: 0.2-2.5 J/cm² (depending on SiGe composition and contamination type)
+  scanning_speed: "100-1000 mm/s (optimized for throughput and overlap requirements)"
+  beam_profile: "Top-hat (preferred for uniform energy distribution)"
 
 # Material Information
 material: "Silicon Germanium"
@@ -31,7 +31,7 @@ data_completeness:
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-19T16:55:25.875014Z"
+  generated: "2025-09-20T22:48:50.573895Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
@@ -41,7 +41,7 @@ metadata:
 
 # Enhanced SEO Frontmatter
 title: "Silicon Germanium Surface Laser Cleaning Analysis - Precision Wafer Cleaning"
-description: "Comprehensive microscopic analysis of silicon germanium surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of silicon germanium surface before and after precision laser cleaning, achieving optimal surface restoration using 1064 nm (primary), 532 nm (secondary for finer features) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -56,7 +56,7 @@ keywords:
   - "contamination analysis"
   - "silicon germanium semiconductor"
   - "non-contact cleaning"
-  - "electronics manufacturing applications"
+  - "semiconductor applications"
   - "wafer cleaning"
   - "semiconductor processing"
   - "microelectronics"
@@ -76,21 +76,21 @@ author_object:
 
 # Technical Specifications for SEO
 technicalSpecifications:
-  wavelength: "1064nm (primary), 532nm (optional)"
-  power: "50-200W"
-  pulse_duration: "20-100ns"
-  scanning_speed: "50-500mm/s"
+  wavelength: "1064 nm (primary), 532 nm (secondary for finer features)"
+  power: "10-100 W (average power for nanosecond pulsed fiber lasers)"
+  pulse_duration: "10-100 ns (nanosecond range for controlled ablation)"
+  scanning_speed: "100-1000 mm/s (optimized for throughput and overlap requirements)"
   material: "Silicon Germanium"
   beam_delivery: "fiber optic"
-  focus_diameter: "0.2-1.5mm"
+  focus_diameter: "20-200 μm (adjustable based on contamination type and precision requirements)"
   processing_atmosphere: "ambient air"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Silicon (Si) 70-95%, Germanium (Ge) 5-30%, Trace elements (B, P, As, Sb)"
+  composition: "Silicon: 70-95% (typical semiconductor compositions), Germanium: 5-30% (typical alloying percentages for electronic applications)"
   surface_treatment: "laser cleaning"
   contamination_type: "organic contamination and processing residues"
-  materialType: "semiconductor"
+  materialType: "semiconductor alloy"
   formula: "Si₁₋ₓGeₓ"
   surface_finish: "Ra < 0.6 μm (post-cleaning)"
   corrosion_resistance: "excellent"
@@ -113,12 +113,12 @@ seo_data:
   og_image: "/images/silicon-germanium-laser-cleaning-micro.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-19T16:55:25.875014Z"
+  last_modified: "2025-09-20T22:48:50.573895Z"
 
 # Quality Metrics
 quality_metrics:
-  surface_roughness_before: "Ra 0.8 μm"
-  surface_roughness_after: "Ra 0.2 μm"
+  surface_roughness_before: "Ra 3.2 μm"
+  surface_roughness_after: "Ra 0.6 μm"
   substrate_integrity: "100% preserved"
 
 # Accessibility Information
@@ -131,7 +131,7 @@ accessibility:
 ---
 Material: "silicon germanium"
 Component: caption
-Generated: 2025-09-19T16:55:25.875014Z
+Generated: 2025-09-20T22:48:50.573895Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

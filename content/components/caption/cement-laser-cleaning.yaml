@@ -1,7 +1,7 @@
 # Basic Content Structure
 before_text: |
-  Initial surface examination reveals significant contamination deposits across the cement Technical overview of cement, CaO·SiO2·Al2O3, for laser cleaning applications, including optimal 1064nm wavelength interaction, and industrial applications in surface preparation.. 
-  Microscopic analysis shows biological growth and organic deposits adhering to the surface. The cement exhibits the characteristic density profile typical of masonry materials.
+  Initial surface examination reveals significant contamination deposits across the cement Laser cleaning of cement utilizes precise thermal ablation to remove surface contaminants while preserving the underlying cement matrix. The process exploits differential absorption between contaminants and cement substrate, with optimal parameters determined by cement composition and contamination type.. 
+  Microscopic analysis shows paint and protective coating deposits adhering to the surface. The cement exhibits the characteristic density profile typical of masonry materials.
   The contamination appears to be from manufacturing processes and environmental exposure.
 
 after_text: |
@@ -11,14 +11,14 @@ after_text: |
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064nm (primary), 355nm (optional)
-  power: 20-100W
-  pulse_duration: 50-200ns
-  spot_size: 0.5-2.0mm
-  frequency: 10-50kHz
-  energy_density: 0.5–2.0 J/cm²
-  scanning_speed: "50-500mm/s"
-  beam_profile: "Gaussian TEM00"
+  wavelength: 1064nm (primary), 532nm (enhanced absorption for specific contaminants)
+  power: 50-300W (pulsed fiber lasers), 20-100W (Nd:YAG)
+  pulse_duration: 10-200ns (optimal for controlled ablation)
+  spot_size: 0.1-1.5mm (adjustable based on contamination type)
+  frequency: 20-100kHz (optimized for thermal management)
+  energy_density: 1.0-15 J/cm² (depending on cement composition and contamination)
+  scanning_speed: "500-5000 mm/s (optimized for removal efficiency)"
+  beam_profile: "Top-hat (preferred for uniform energy distribution)"
 
 # Material Information
 material: "Cement"
@@ -31,7 +31,7 @@ data_completeness:
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-19T16:55:25.230147Z"
+  generated: "2025-09-20T22:48:48.322627Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
@@ -41,7 +41,7 @@ metadata:
 
 # Enhanced SEO Frontmatter
 title: "Cement Surface Laser Cleaning Analysis - Masonry Surface Restoration"
-description: "Comprehensive microscopic analysis of cement surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 355nm (optional) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of cement surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (enhanced absorption for specific contaminants) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -54,9 +54,9 @@ keywords:
   - "laser ablation"
   - "cement"
   - "contamination analysis"
-  - "concrete"
-  - "masonry"
-  - "construction and restoration applications"
+  - "cement masonry"
+  - "non-contact cleaning"
+  - "construction applications"
   - "masonry restoration"
   - "building conservation"
   - "construction cleaning"
@@ -76,22 +76,22 @@ author_object:
 
 # Technical Specifications for SEO
 technicalSpecifications:
-  wavelength: "1064nm (primary), 355nm (optional)"
-  power: "20-100W"
-  pulse_duration: "50-200ns"
-  scanning_speed: "50-500mm/s"
+  wavelength: "1064nm (primary), 532nm (enhanced absorption for specific contaminants)"
+  power: "50-300W (pulsed fiber lasers), 20-100W (Nd:YAG)"
+  pulse_duration: "10-200ns (optimal for controlled ablation)"
+  scanning_speed: "500-5000 mm/s (optimized for removal efficiency)"
   material: "Cement"
   beam_delivery: "fiber optic"
-  focus_diameter: "0.5-2.0mm"
+  focus_diameter: "0.1-1.5mm (adjustable based on contamination type)"
   processing_atmosphere: "ambient air"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Calcium Oxide (CaO) 60-67%, Silicon Dioxide (SiO2) 17-25%, Aluminum Oxide (Al2O3) 3-8%"
+  composition: "Tricalcium silicate (3CaO·SiO₂): 45-60%, Dicalcium silicate (2CaO·SiO₂): 15-30%, Tricalcium aluminate (3CaO·Al₂O₃): 6-12%"
   surface_treatment: "laser cleaning"
   contamination_type: "construction residues and atmospheric deposits"
   materialType: "masonry"
-  formula: "CaO·SiO2·Al2O3"
+  formula: "Complex calcium silicates and aluminates (3CaO·SiO₂, 2CaO·SiO₂, 3CaO·Al₂O₃)"
   surface_finish: "Ra < 0.6 μm (post-cleaning)"
   corrosion_resistance: "good"
 
@@ -113,7 +113,7 @@ seo_data:
   og_image: "/images/cement-laser-cleaning-micro.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-19T16:55:25.230147Z"
+  last_modified: "2025-09-20T22:48:48.322627Z"
 
 # Quality Metrics
 quality_metrics:
@@ -131,7 +131,7 @@ accessibility:
 ---
 Material: "cement"
 Component: caption
-Generated: 2025-09-19T16:55:25.230147Z
+Generated: 2025-09-20T22:48:48.322627Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

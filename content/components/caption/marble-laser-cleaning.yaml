@@ -1,7 +1,7 @@
 # Basic Content Structure
 before_text: |
-  Initial surface examination reveals significant contamination deposits across the marble Technical overview of marble, CaCO3, for laser cleaning applications, including optimal 1064nm wavelength interaction, and applications in cultural heritage and architectural restoration.. 
-  Microscopic analysis shows biological growth and organic deposits adhering to the surface. The marble exhibits the characteristic density profile typical of stone materials.
+  Initial surface examination reveals significant contamination deposits across the marble Laser cleaning of marble (CaCO3) utilizes precise nanosecond pulsed fiber lasers at 1064nm wavelength to selectively remove surface contaminants through photomechanical and photothermal ablation mechanisms while preserving the original calcite matrix and surface patina.. 
+  Microscopic analysis shows weathering and biological deposits adhering to the surface. The marble exhibits the characteristic density profile typical of stone materials.
   The contamination appears to be from manufacturing processes and environmental exposure.
 
 after_text: |
@@ -11,14 +11,14 @@ after_text: |
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064nm (primary), 355nm (optional)
-  power: 10-100W
-  pulse_duration: 10-200ns
-  spot_size: 0.1-2.0mm
-  frequency: 10-100kHz
-  energy_density: 0.5–3.0 J/cm²
-  scanning_speed: "50-500mm/s"
-  beam_profile: "Gaussian TEM00"
+  wavelength: 1064 nm (primary), 532 nm (optional for specific contaminants)
+  power: 20-100 W (average power for pulsed fiber lasers)
+  pulse_duration: 10-100 ns (nanosecond range for controlled ablation)
+  spot_size: 0.1-2.0 mm (adjustable based on contamination type and surface detail)
+  frequency: 10-50 kHz (optimized for marble thermal relaxation)
+  energy_density: 0.5-5 J/cm² (below marble ablation threshold of ~6 J/cm²)
+  scanning_speed: "100-2000 mm/s (depending on contamination thickness and laser parameters)"
+  beam_profile: "Top-hat or flat-top profile"
 
 # Material Information
 material: "Marble"
@@ -31,7 +31,7 @@ data_completeness:
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-19T16:55:26.018423Z"
+  generated: "2025-09-20T22:48:50.901031Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
@@ -41,7 +41,7 @@ metadata:
 
 # Enhanced SEO Frontmatter
 title: "Marble Surface Laser Cleaning Analysis - Heritage Conservation Cleaning"
-description: "Comprehensive microscopic analysis of marble surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 355nm (optional) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of marble surface before and after precision laser cleaning, achieving optimal surface restoration using 1064 nm (primary), 532 nm (optional for specific contaminants) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -56,7 +56,7 @@ keywords:
   - "contamination analysis"
   - "marble stone"
   - "non-contact cleaning"
-  - "restoration and conservation applications"
+  - "construction applications"
   - "stone conservation"
   - "heritage preservation"
   - "architectural restoration"
@@ -76,18 +76,18 @@ author_object:
 
 # Technical Specifications for SEO
 technicalSpecifications:
-  wavelength: "1064nm (primary), 355nm (optional)"
-  power: "10-100W"
-  pulse_duration: "10-200ns"
-  scanning_speed: "50-500mm/s"
+  wavelength: "1064 nm (primary), 532 nm (optional for specific contaminants)"
+  power: "20-100 W (average power for pulsed fiber lasers)"
+  pulse_duration: "10-100 ns (nanosecond range for controlled ablation)"
+  scanning_speed: "100-2000 mm/s (depending on contamination thickness and laser parameters)"
   material: "Marble"
   beam_delivery: "fiber optic"
-  focus_diameter: "0.1-2.0mm"
+  focus_diameter: "0.1-2.0 mm (adjustable based on contamination type and surface detail)"
   processing_atmosphere: "ambient air"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Calcium Carbonate (CaCO3) 90-99%, Dolomite (CaMg(CO3)2) 1-10%, Trace minerals (quartz, mica, clay minerals)"
+  composition: "Calcite (CaCO3): 90-99%, Dolomite (CaMg(CO3)2): 1-5%, Quartz (SiO2): 0.5-2%"
   surface_treatment: "laser cleaning"
   contamination_type: "weathering and biological deposits"
   materialType: "stone"
@@ -113,7 +113,7 @@ seo_data:
   og_image: "/images/marble-laser-cleaning-micro.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-19T16:55:26.018423Z"
+  last_modified: "2025-09-20T22:48:50.901031Z"
 
 # Quality Metrics
 quality_metrics:
@@ -131,7 +131,7 @@ accessibility:
 ---
 Material: "marble"
 Component: caption
-Generated: 2025-09-19T16:55:26.018423Z
+Generated: 2025-09-20T22:48:50.901031Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

@@ -1,7 +1,7 @@
 # Basic Content Structure
 before_text: |
-  Initial surface examination reveals significant contamination deposits across the porcelain Technical overview of Porcelain, Al2O3·2SiO2·2H2O, for laser cleaning applications, including optimal 1064nm wavelength interaction, and industrial applications in surface preparation.. 
-  Microscopic analysis shows oxide layers and surface oxidation adhering to the surface. The porcelain exhibits the characteristic density profile typical of ceramic materials.
+  Initial surface examination reveals significant contamination deposits across the porcelain Porcelain laser cleaning utilizes precise pulsed fiber lasers to remove surface contaminants through selective ablation, leveraging the material's high thermal stability (1350°C melting point) and mechanical hardness (7 Mohs). The process preserves the underlying ceramic structure while removing organic and inorganic surface layers.. 
+  Microscopic analysis shows ceramic dust and firing residues adhering to the surface. The porcelain exhibits the characteristic density profile typical of ceramic materials.
   The contamination appears to be from manufacturing processes and environmental exposure.
 
 after_text: |
@@ -11,14 +11,14 @@ after_text: |
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064nm (primary), 532nm (optional)
-  power: 50-200W
-  pulse_duration: 20-100ns
-  spot_size: 0.2-1.5mm
-  frequency: 20-100kHz
-  energy_density: 1.0–4.5 J/cm²
-  scanning_speed: "50-500mm/s"
-  beam_profile: "Gaussian TEM00"
+  wavelength: 1064 nm (primary), 532 nm (optional for finer control)
+  power: 20-100 W (pulsed)
+  pulse_duration: 10-100 ns
+  spot_size: 0.1-2.0 mm
+  frequency: 10-50 kHz
+  energy_density: 0.5-5 J/cm²
+  scanning_speed: "100-1000 mm/s"
+  beam_profile: "Top-hat or Gaussian"
 
 # Material Information
 material: "Porcelain"
@@ -31,7 +31,7 @@ data_completeness:
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-19T16:55:24.858124Z"
+  generated: "2025-09-20T22:48:47.413281Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
@@ -41,7 +41,7 @@ metadata:
 
 # Enhanced SEO Frontmatter
 title: "Porcelain Surface Laser Cleaning Analysis - Ceramic Surface Restoration"
-description: "Comprehensive microscopic analysis of porcelain surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of porcelain surface before and after precision laser cleaning, achieving optimal surface restoration using 1064 nm (primary), 532 nm (optional for finer control) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -56,7 +56,7 @@ keywords:
   - "contamination analysis"
   - "porcelain ceramic"
   - "non-contact cleaning"
-  - "electronics manufacturing applications"
+  - "ceramics manufacturing applications"
   - "ceramic cleaning"
   - "ceramic surface modification"
   - "thermal processing"
@@ -76,18 +76,18 @@ author_object:
 
 # Technical Specifications for SEO
 technicalSpecifications:
-  wavelength: "1064nm (primary), 532nm (optional)"
-  power: "50-200W"
-  pulse_duration: "20-100ns"
-  scanning_speed: "50-500mm/s"
+  wavelength: "1064 nm (primary), 532 nm (optional for finer control)"
+  power: "20-100 W (pulsed)"
+  pulse_duration: "10-100 ns"
+  scanning_speed: "100-1000 mm/s"
   material: "Porcelain"
   beam_delivery: "fiber optic"
-  focus_diameter: "0.2-1.5mm"
+  focus_diameter: "0.1-2.0 mm"
   processing_atmosphere: "ambient air"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Porcelain (Al2O3·2SiO2·2H2O) 99.6%, Trace elements (Si, Fe, Na, Mg)"
+  composition: "Kaolinite (Al2Si2O5(OH)4): 50-60%, Quartz (SiO2): 20-30%, Feldspar (KAlSi3O8): 15-25%"
   surface_treatment: "laser cleaning"
   contamination_type: "ceramic dust and firing residues"
   materialType: "ceramic"
@@ -113,12 +113,12 @@ seo_data:
   og_image: "/images/porcelain-laser-cleaning-micro.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-19T16:55:24.858124Z"
+  last_modified: "2025-09-20T22:48:47.413281Z"
 
 # Quality Metrics
 quality_metrics:
-  surface_roughness_before: "Ra 3.2 μm"
-  surface_roughness_after: "Ra 0.6 μm"
+  surface_roughness_before: "Ra 5.0 μm"
+  surface_roughness_after: "Ra 1.5 μm"
   substrate_integrity: "100% preserved"
 
 # Accessibility Information
@@ -131,7 +131,7 @@ accessibility:
 ---
 Material: "porcelain"
 Component: caption
-Generated: 2025-09-19T16:55:24.858124Z
+Generated: 2025-09-20T22:48:47.413281Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

@@ -1,7 +1,7 @@
 # Basic Content Structure
 before_text: |
-  Initial surface examination reveals significant contamination deposits across the mortar Technical overview of Mortar, a masonry composite of cement, lime, sand, and water, for laser cleaning applications, including optimal 1064nm wavelength interaction, and industrial applications in surface restoration.. 
-  Microscopic analysis shows industrial lubricants and oil residues adhering to the surface. The mortar exhibits the characteristic density profile typical of masonry materials.
+  Initial surface examination reveals significant contamination deposits across the mortar Laser cleaning of mortar utilizes short pulsed Nd:YAG lasers to achieve selective photomechanical and photothermal ablation of surface contaminants. The process is highly effective due to the differential absorption between the contamination layer (e.g., sulfates, carbon deposits) and the calcium carbonate/silicate-based mortar matrix, allowing for precise, non-contact, and non-abrasive removal.. 
+  Microscopic analysis shows construction residues and atmospheric deposits adhering to the surface.
   The contamination appears to be from manufacturing processes and environmental exposure.
 
 after_text: |
@@ -11,14 +11,14 @@ after_text: |
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064nm (primary), 532nm (optional)
-  power: 20-100W
-  pulse_duration: 50-200ns
-  spot_size: 0.5-2.0mm
-  frequency: 10-50kHz
-  energy_density: 0.5–2.0 J/cm²
-  scanning_speed: "50-500mm/s"
-  beam_profile: "Gaussian TEM00"
+  wavelength: 1064 nm (primary), 532 nm (optional for enhanced absorption on specific contaminants)
+  power: 50-200 W
+  pulse_duration: 10-200 ns
+  spot_size: 0.1-1.0 mm
+  frequency: 20-100 kHz
+  energy_density: 1.0–10 J/cm²
+  scanning_speed: "100-2000 mm/s"
+  beam_profile: "Top-hat (flat-top)"
 
 # Material Information
 material: "Mortar"
@@ -31,7 +31,7 @@ data_completeness:
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-19T16:55:25.261167Z"
+  generated: "2025-09-20T22:48:48.389365Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
@@ -41,7 +41,7 @@ metadata:
 
 # Enhanced SEO Frontmatter
 title: "Mortar Surface Laser Cleaning Analysis - Masonry Surface Restoration"
-description: "Comprehensive microscopic analysis of mortar surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of mortar surface before and after precision laser cleaning, achieving optimal surface restoration using 1064 nm (primary), 532 nm (optional for enhanced absorption on specific contaminants) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -54,9 +54,9 @@ keywords:
   - "laser ablation"
   - "mortar"
   - "contamination analysis"
-  - "masonry mortar"
+  - "mortar masonry"
   - "non-contact cleaning"
-  - "construction and restoration applications"
+  - "construction applications"
   - "masonry restoration"
   - "building conservation"
   - "construction cleaning"
@@ -76,22 +76,22 @@ author_object:
 
 # Technical Specifications for SEO
 technicalSpecifications:
-  wavelength: "1064nm (primary), 532nm (optional)"
-  power: "20-100W"
-  pulse_duration: "50-200ns"
-  scanning_speed: "50-500mm/s"
+  wavelength: "1064 nm (primary), 532 nm (optional for enhanced absorption on specific contaminants)"
+  power: "50-200 W"
+  pulse_duration: "10-200 ns"
+  scanning_speed: "100-2000 mm/s"
   material: "Mortar"
   beam_delivery: "fiber optic"
-  focus_diameter: "0.5-2.0mm"
+  focus_diameter: "0.1-1.0 mm"
   processing_atmosphere: "ambient air"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Portland Cement 20-30%, Hydrated Lime 5-15%, Sand 55-75%"
+  composition: "Calcium carbonate (CaCO₃): 60-80% (in carbonated lime mortar), Hydrated calcium silicates (CSH gel): 50-70% (in Portland cement mortar); Sand (SiO₂): 20-40%; Water (H₂O): chemically bound"
   surface_treatment: "laser cleaning"
   contamination_type: "construction residues and atmospheric deposits"
   materialType: "masonry"
-  formula: "Cement + Lime + Sand + Water"
+  formula: "Variable; primarily CaCO₃ (carbonated) or Ca(OH)₂ (non-carbonated) in lime mortar; CaO·SiO₂·H₂O (CSH gel) in cement mortar"
   surface_finish: "Ra < 0.6 μm (post-cleaning)"
   corrosion_resistance: "good"
 
@@ -113,7 +113,7 @@ seo_data:
   og_image: "/images/mortar-laser-cleaning-micro.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-19T16:55:25.261167Z"
+  last_modified: "2025-09-20T22:48:48.389365Z"
 
 # Quality Metrics
 quality_metrics:
@@ -131,7 +131,7 @@ accessibility:
 ---
 Material: "mortar"
 Component: caption
-Generated: 2025-09-19T16:55:25.261167Z
+Generated: 2025-09-20T22:48:48.389365Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

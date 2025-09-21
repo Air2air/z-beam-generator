@@ -3,200 +3,133 @@ materialTables:
   - header: '## Chemical Properties'
     rows:
     - property: Chemical Formula
-      value: "CaSO4\xB72H2O"
+      value: CaSO4·2H2O
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded
-        text-sm">Chemical</span>
+      category: Chemical
     - property: Chemical Symbol
-      value: Alabaster
+      value: CaSO4·2H2O
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded
-        text-sm">Chemical</span>
+      category: Chemical
     - property: Material Type
       value: Stone
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-purple-100 text-purple-800 rounded
-        text-sm">Classification</span>
+      category: Classification
     - property: Composition
-      value: "Calcium Sulfate Dihydrate (CaSO4\xB72H2O) 95-99%, Calcite (CaCO3) 1-5%,\
-        \ Trace minerals and impurities"
+      value: 'Calcium sulfate dihydrate (CaSO4·2H2O): 90-99%, Calcium carbonate (CaCO3): 0.5-5%, Silica (SiO2) and other mineral impurities: 0.1-3%'
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-green-100 text-green-800 rounded
-        text-sm">Composition</span>
+      category: Composition
   - header: '## Physical & Mechanical Properties'
     rows:
     - property: Density
-      value: "2.3 g/cm\xB3"
-      unit: "g/cm\xB3"
+      value: 2.30-2.33 g/cm³
+      unit: g/cm³
       min: '1.8'
       max: '6.0'
-      percentile: 12.5
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 11%"></div></div><p class="text-xs text-center">Value
-        at 11% of range</p>'
+      percentile: 12.1
+      numeric: 2.31
     - property: Melting Point
-      value: "1450\xB0C"
-      unit: "\xB0C"
-      percentile: 25.0
-      htmlVisualization: <span class="text-gray-500">-</span>
+      value: 128-163°C (dehydration begins)
+      unit: °C
+      percentile: 0.0
+      numeric: 145.5
     - property: Thermal Conductivity
-      value: "1.3 W/m\xB7K"
-      unit: "W/m\xB7K"
-      percentile: 0.5
-      htmlVisualization: <span class="text-gray-500">-</span>
+      value: 1.26-1.33 W/(m·K)
+      unit: W/
+      percentile: 0.4
+      numeric: 1.29
     - property: Tensile Strength
-      value: 15 MPa
+      value: 2-4 MPa
       unit: MPa
       percentile: 0.0
-      htmlVisualization: <span class="text-gray-500">-</span>
+      numeric: 3.0
     - property: Hardness
-      value: 2.0 Mohs
+      value: 1.5-2.0 Mohs
       unit: Mohs
-      min: '500.0'
-      max: '2500.0'
-      percentile: 0.0
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 0%"></div></div><p class="text-xs text-center">Value
-        at 0% of range</p>'
+      min: '1.0'
+      max: '10.0'
+      percentile: 8.3
+      numeric: 1.75
     - property: Young's Modulus
-      value: 20 GPa
+      value: 18-25 GPa
       unit: GPa
-      min: '150.0'
-      max: '400.0'
-      percentile: 0.0
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 0%"></div></div><p class="text-xs text-center">Value
-        at 0% of range</p>'
+      percentile: 2.5
+      numeric: 21.5
   - header: '## Laser Processing Parameters'
     rows:
     - property: Power Range
-      value: 10-50W
+      value: 20-100W
       unit: W
       min: '20.0'
       max: '500.0'
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 2%"></div></div><p class="text-xs text-center">Value
-        at 2% of range</p>'
+      numeric: 60.0
     - property: Pulse Duration
-      value: 10-50ns
+      value: 10-100ns
       unit: ns
       min: '1.0'
       max: '1000.0'
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 2%"></div></div><p class="text-xs text-center">Value
-        at 2% of range</p>'
+      numeric: 55.0
     - property: Wavelength
       value: 1064nm (primary), 532nm (optional)
       unit: nm
       min: '355.0'
       max: '2940.0'
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 27%"></div></div><p class="text-xs text-center">Value
-        at 27% of range</p>'
+      numeric: 1064.0
     - property: Spot Size
-      value: 0.1-0.8mm
+      value: 0.1-2.0mm
       unit: mm
       min: '0.01'
       max: '10.0'
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 4%"></div></div><p class="text-xs text-center">Value
-        at 4% of range</p>'
+      numeric: 1.05
     - property: Repetition Rate
       value: 10-50kHz
       unit: kHz
       min: '1.0'
       max: '1000.0'
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 2%"></div></div><p class="text-xs text-center">Value
-        at 2% of range</p>'
+      numeric: 30.0
     - property: Fluence Range
-      value: "0.5\u20132.0 J/cm\xB2"
-      unit: "J/cm\xB2"
+      value: 0.5-5 J/cm²
+      unit: J/cm²
       min: '0.1'
       max: '50.0'
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 0%"></div></div><p class="text-xs text-center">Value
-        at 0% of range</p>'
-    - property: Scanning Speed
-      value: 50-500mm/s
-      unit: mm/s
-      min: '1.0'
-      max: '5000.0'
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 5%"></div></div><p class="text-xs text-center">Value
-        at 5% of range</p>'
-    - property: Beam Profile
-      value: Gaussian TEM00
-      unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-gray-100 text-gray-800 rounded
-        text-sm">System</span>
-    - property: Safety Class
-      value: Class 4 (requires full enclosure)
-      unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-red-100 text-red-800 rounded text-sm">Safety</span>
+      numeric: 2.75
   - header: '## Applications & Industries'
     rows:
     - property: Art Restoration
-      value: Gentle removal of surface dirt, soot, and biological growth from delicate
-        alabaster sculptures and artifacts
+      value: Cleaning and restoration of alabaster sculptures and artifacts
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-indigo-100 text-indigo-800 rounded
-        text-sm">Application</span>
-    - property: Architectural Conservation
-      value: Cleaning of historical alabaster facades, monuments, and interior decorative
-        elements
+      category: Application
+    - property: Construction
+      value: Surface preparation and cleaning of alabaster architectural elements
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-indigo-100 text-indigo-800 rounded
-        text-sm">Application</span>
+      category: Application
   - header: '## Performance Metrics'
     rows:
-    - property: Surface Cleanliness Level
-      value: Achieves complete removal of surface contaminants without substrate alteration
+    - property: Sub-micron precision contaminant removal
+      value: '>99% contaminant removal with <5µm substrate loss'
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-green-100 text-green-800 rounded
-        text-sm">Performance</span>
-    - property: Material Removal Precision
-      value: Sub-micron layer control with preservation of original surface details
+      category: Performance
+    - property: Non-contact processing
+      value: Zero mechanical abrasion, enabling treatment of fragile surfaces with 50-2000 mm/s processing speeds
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-green-100 text-green-800 rounded
-        text-sm">Performance</span>
-    - property: Processing Speed
-      value: "0.5-1.5 m\xB2/hour cleaning rate for delicate conservation work"
-      unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-green-100 text-green-800 rounded
-        text-sm">Performance</span>
+      category: Performance
   - header: '## Environmental Impact'
     rows:
-    - property: Chemical Solvent Elimination
-      value: Eliminates need for harsh chemical cleaners that can damage porous alabaster
+    - property: Zero chemical waste generation
+      value: Eliminates use of ammonium carbonate compresses, EDTA, and other chemical cleaners that require hazardous waste disposal
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-emerald-100 text-emerald-800 rounded
-        text-sm">Environmental</span>
-    - property: Water Conservation
-      value: Removes requirement for water-based cleaning that can cause staining
-        and deterioration
+      category: Environmental
+    - property: 95% reduction in water consumption
+      value: Traditional cleaning methods consume 5-10 liters of water per square meter compared to dry laser process
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-emerald-100 text-emerald-800 rounded
-        text-sm">Environmental</span>
-    - property: Precision Material Preservation
-      value: Minimizes material loss compared to mechanical cleaning methods
-      unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-emerald-100 text-emerald-800 rounded
-        text-sm">Environmental</span>
+      category: Environmental
   - header: '## Compatibility & Standards'
     rows:
     - property: Material Compatibility
-      value: Low-Fluence Laser Cleaning, Gentle Ablative Processes, Non-Contact Surface
-        Treatment
+      value: Marble (calcium carbonate-based stones), Limestone, Sandstone (with appropriate parameter adjustment)
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-cyan-100 text-cyan-800 rounded
-        text-sm">Compatibility</span>
+      category: Compatibility
     - property: Regulatory Standards
-      value: ISO 18562, ASTM F2100, IEC 60601-1
+      value: EN 15898:2019 (Conservation of cultural heritage - Main general terms and definitions), EN 15886:2010 (Conservation of cultural property - Test methods - Color measurement of surfaces)
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-violet-100 text-violet-800 rounded
-        text-sm">Compliance</span>
-renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with
-  <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile
-  ? percentile + ''%'' : ''N/A''}</td><td dangerouslySetInnerHTML={{__html: htmlVisualization}}
-  /></tr>. Use MDX for headers.'
+      category: Compliance
+renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. Pure data structure optimized for performance.'

@@ -1,7 +1,7 @@
 # Basic Content Structure
 before_text: |
-  Initial surface examination reveals significant contamination deposits across the aluminum Technical overview of Steel, Fe, for laser cleaning applications, including optimal 1064nm wavelength interaction, and industrial applications in surface preparation.. 
-  Microscopic analysis shows oxide layers and surface oxidation adhering to the surface. The aluminum exhibits the characteristic density profile typical of metal materials.
+  Initial surface examination reveals significant contamination deposits across the aluminum Laser cleaning of aluminum utilizes short pulses (ns-range) from fiber lasers at 1064 nm wavelength. The process relies on the rapid thermal expansion of surface contaminants, which have a lower vaporization threshold than the underlying aluminum substrate (melting point ~660°C). This allows for selective removal of oxides, paints, and oils while preserving the base material's integrity and preventing heat-affected zones (HAZ) when parameters are correctly optimized.. 
+  Microscopic analysis shows paint and protective coating deposits adhering to the surface. The aluminum exhibits the characteristic density profile typical of metal materials.
   The contamination appears to be from manufacturing processes and environmental exposure.
 
 after_text: |
@@ -11,14 +11,14 @@ after_text: |
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064nm (primary), 532nm (optional)
-  power: 50-200W
-  pulse_duration: 20-100ns
-  spot_size: 0.2-1.5mm
-  frequency: 20-100kHz
-  energy_density: 1.0–4.5 J/cm²
-  scanning_speed: "None"
-  beam_profile: "None"
+  wavelength: 1064 nm (primary), 532 nm (for higher absorption on specific oxides)
+  power: 50 W to 500 W (pulsed fiber lasers)
+  pulse_duration: 4 ns to 200 ns
+  spot_size: 50 µm to 200 µm (for precision cleaning)
+  frequency: 20 kHz to 300 kHz
+  energy_density: 1.5 J/cm² to 8.0 J/cm² (above ablation threshold, below damage threshold)
+  scanning_speed: "1000 mm/s to 10000 mm/s"
+  beam_profile: "Top-hat (flat-top) for uniform energy distribution and consistent cleaning"
 
 # Material Information
 material: "Aluminum"
@@ -31,7 +31,7 @@ data_completeness:
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-19T16:55:25.318845Z"
+  generated: "2025-09-20T22:48:48.527662Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
@@ -41,7 +41,7 @@ metadata:
 
 # Enhanced SEO Frontmatter
 title: "Aluminum Surface Laser Cleaning Analysis - Industrial Contamination Removal"
-description: "Comprehensive microscopic analysis of aluminum surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of aluminum surface before and after precision laser cleaning, achieving optimal surface restoration using 1064 nm (primary), 532 nm (for higher absorption on specific oxides) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -54,44 +54,44 @@ keywords:
   - "laser ablation"
   - "aluminum"
   - "contamination analysis"
-  - "steel"
-  - "steel metal"
+  - "aluminum metal"
   - "non-contact cleaning"
-  - "electronics manufacturing applications"
+  - "automotive applications"
   - "metal surface treatment"
   - "corrosion removal"
+  - "oxide layer removal"
 
 # Author Information with SEO Enhancement
-author: "Dr. Sarah Chen"
+author: "Ikmanda Roswati"
 author_object:
-  name: "Dr. Sarah Chen"
-  email: "dr..sarah.chen@materials-lab.com"
+  name: "Ikmanda Roswati"
+  email: "ikmanda.roswati@materials-lab.com"
   affiliation: "Advanced Materials Processing Laboratory"
-  title: "Materials Scientist Laser Materials Processing"
+  title: "Ph.D. Ultrafast Laser Physics and Material Interactions"
   expertise:
     - "Laser Materials Processing"
     - "Surface Analysis"
     - "Materials Science"
-    - "Laser Materials Processing"
+    - "Ultrafast Laser Physics and Material Interactions"
 
 # Technical Specifications for SEO
 technicalSpecifications:
-  wavelength: "1064nm (primary), 532nm (optional)"
-  power: "50-200W"
-  pulse_duration: "20-100ns"
-  scanning_speed: "None"
+  wavelength: "1064 nm (primary), 532 nm (for higher absorption on specific oxides)"
+  power: "50 W to 500 W (pulsed fiber lasers)"
+  pulse_duration: "4 ns to 200 ns"
+  scanning_speed: "1000 mm/s to 10000 mm/s"
   material: "Aluminum"
   beam_delivery: "fiber optic"
-  focus_diameter: "0.2-1.5mm"
+  focus_diameter: "50 µm to 200 µm (for precision cleaning)"
   processing_atmosphere: "ambient air"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Steel (Fe) 99.6%, Trace elements (Si, Fe, Na, Mg)"
+  composition: "Aluminum (Al): 87.0% to 99.9% (alloy-dependent), Copper (Cu): 0.1% to 6.0%, Silicon (Si): 0.1% to 18.0%, Magnesium (Mg): 0.1% to 6.0%, Manganese (Mn): 0.1% to 2.0% (common alloying elements)"
   surface_treatment: "laser cleaning"
   contamination_type: "oxidation and metallic deposits"
   materialType: "metal"
-  formula: "Fe"
+  formula: "Al"
   surface_finish: "Ra < 0.6 μm (post-cleaning)"
   corrosion_resistance: "excellent"
 
@@ -113,12 +113,12 @@ seo_data:
   og_image: "/images/aluminum-laser-cleaning-micro.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-19T16:55:25.318845Z"
+  last_modified: "2025-09-20T22:48:48.527662Z"
 
 # Quality Metrics
 quality_metrics:
-  surface_roughness_before: "Ra 2.5 μm"
-  surface_roughness_after: "Ra 0.8 μm"
+  surface_roughness_before: "Ra 5.0 μm"
+  surface_roughness_after: "Ra 1.5 μm"
   substrate_integrity: "100% preserved"
 
 # Accessibility Information
@@ -131,7 +131,7 @@ accessibility:
 ---
 Material: "aluminum"
 Component: caption
-Generated: 2025-09-19T16:55:25.318845Z
+Generated: 2025-09-20T22:48:48.527662Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

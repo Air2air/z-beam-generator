@@ -1,6 +1,6 @@
 # Basic Content Structure
 before_text: |
-  Initial surface examination reveals significant contamination deposits across the beryllium Technical overview of Beryllium, Be, for laser cleaning applications, including optimal 1064nm wavelength interaction, and industrial applications in surface preparation.. 
+  Initial surface examination reveals significant contamination deposits across the beryllium Beryllium laser cleaning utilizes precise pulsed fiber laser parameters to remove surface contaminants and oxides while preserving the substrate's unique thermal and mechanical properties. The process requires careful control of fluence to avoid melting due to beryllium's low melting point and high thermal conductivity.. 
   Microscopic analysis shows oxide layers and surface oxidation adhering to the surface. The beryllium exhibits the characteristic density profile typical of metal materials.
   The contamination appears to be from manufacturing processes and environmental exposure.
 
@@ -11,14 +11,14 @@ after_text: |
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064nm (primary), 532nm (optional)
-  power: 50-200W
-  pulse_duration: 20-100ns
-  spot_size: 0.2-1.5mm
+  wavelength: 1064nm (primary), 532nm (for higher precision)
+  power: 50-200W (pulsed)
+  pulse_duration: 10-100ns
+  spot_size: 50-500μm
   frequency: 20-100kHz
-  energy_density: 1.0–4.5 J/cm²
-  scanning_speed: "50-500mm/s"
-  beam_profile: "Gaussian TEM00"
+  energy_density: 1.0-10 J/cm² (depending on contamination type)
+  scanning_speed: "100-2000 mm/s"
+  beam_profile: "Top-hat or flat-top"
 
 # Material Information
 material: "Beryllium"
@@ -31,7 +31,7 @@ data_completeness:
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-19T16:55:25.339853Z"
+  generated: "2025-09-20T22:48:48.562865Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
@@ -41,7 +41,7 @@ metadata:
 
 # Enhanced SEO Frontmatter
 title: "Beryllium Surface Laser Cleaning Analysis - Industrial Contamination Removal"
-description: "Comprehensive microscopic analysis of beryllium surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of beryllium surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (for higher precision) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -56,7 +56,7 @@ keywords:
   - "contamination analysis"
   - "beryllium metal"
   - "non-contact cleaning"
-  - "electronics manufacturing applications"
+  - "aerospace applications"
   - "metal surface treatment"
   - "corrosion removal"
   - "oxide layer removal"
@@ -76,18 +76,18 @@ author_object:
 
 # Technical Specifications for SEO
 technicalSpecifications:
-  wavelength: "1064nm (primary), 532nm (optional)"
-  power: "50-200W"
-  pulse_duration: "20-100ns"
-  scanning_speed: "50-500mm/s"
+  wavelength: "1064nm (primary), 532nm (for higher precision)"
+  power: "50-200W (pulsed)"
+  pulse_duration: "10-100ns"
+  scanning_speed: "100-2000 mm/s"
   material: "Beryllium"
   beam_delivery: "fiber optic"
-  focus_diameter: "0.2-1.5mm"
+  focus_diameter: "50-500μm"
   processing_atmosphere: "ambient air"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Beryllium (Be) 99.6%, Trace elements (Si, Fe, Na, Mg)"
+  composition: "Beryllium (Be): 98.0-99.5%, Beryllium Oxide (BeO): 0.5-2.0% (surface layer), Trace elements: Fe, Al, Si, Mg (<0.1% total)"
   surface_treatment: "laser cleaning"
   contamination_type: "oxidation and metallic deposits"
   materialType: "metal"
@@ -113,7 +113,7 @@ seo_data:
   og_image: "/images/beryllium-laser-cleaning-micro.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-19T16:55:25.339853Z"
+  last_modified: "2025-09-20T22:48:48.562865Z"
 
 # Quality Metrics
 quality_metrics:
@@ -131,7 +131,7 @@ accessibility:
 ---
 Material: "beryllium"
 Component: caption
-Generated: 2025-09-19T16:55:25.339853Z
+Generated: 2025-09-20T22:48:48.562865Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

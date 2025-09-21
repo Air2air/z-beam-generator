@@ -15,7 +15,7 @@ materialTables:
       unit: '-'
       category: Classification
     - property: Composition
-      value: Titanium (Ti) 99.6%, Trace elements (Si, Fe, Na, Mg)
+      value: Titanium (99.0-99.5%) - Grade 1 commercial pure, Oxygen (0.18%), Iron (0.20%), Carbon (0.08%), Nitrogen (0.03%) - typical impurities
       unit: '-'
       category: Composition
   - header: '## Physical & Mechanical Properties'
@@ -25,37 +25,35 @@ materialTables:
       unit: g/cm³
       min: '1.8'
       max: '6.0'
-      percentile: 67.8
+      percentile: 64.5
       numeric: 4.51
     - property: Melting Point
       value: 1668°C
       unit: °C
-      percentile: 58.9
+      percentile: 29.2
       numeric: 1668.0
     - property: Thermal Conductivity
-      value: 21.9 W/m·K
-      unit: W/m·K
+      value: 21.9 W/(m·K)
+      unit: W/
       percentile: 10.7
       numeric: 21.9
     - property: Tensile Strength
-      value: 240-550 MPa
+      value: 434-3420 MPa
       unit: MPa
-      percentile: 19.5
-      numeric: 395.0
+      percentile: 100.0
+      numeric: 1927.0
     - property: Hardness
-      value: 70-74 HRB
+      value: 70-74 HRB (commercial pure), 36-40 HRC (Ti-6Al-4V)
       unit: HRB
-      min: '500.0'
-      max: '2500.0'
-      percentile: 0.0
+      min: '1.0'
+      max: '10.0'
+      percentile: 100.0
       numeric: 72.0
     - property: Young's Modulus
-      value: 116 GPa
+      value: 110 GPa
       unit: GPa
-      min: '150.0'
-      max: '400.0'
-      percentile: 0.0
-      numeric: 116.0
+      percentile: 100.0
+      numeric: 110.0
   - header: '## Laser Processing Parameters'
     rows:
     - property: Power Range
@@ -65,11 +63,11 @@ materialTables:
       max: '500.0'
       numeric: 125.0
     - property: Pulse Duration
-      value: 20-100ns
+      value: 10-100ns
       unit: ns
       min: '1.0'
       max: '1000.0'
-      numeric: 60.0
+      numeric: 55.0
     - property: Wavelength
       value: 1064nm (primary), 532nm (optional)
       unit: nm
@@ -77,11 +75,11 @@ materialTables:
       max: '2940.0'
       numeric: 1064.0
     - property: Spot Size
-      value: 0.2-1.5mm
+      value: 0.1-1.0mm
       unit: mm
       min: '0.01'
       max: '10.0'
-      numeric: 0.85
+      numeric: 0.55
     - property: Repetition Rate
       value: 20-100kHz
       unit: kHz
@@ -89,71 +87,57 @@ materialTables:
       max: '1000.0'
       numeric: 60.0
     - property: Fluence Range
-      value: 1.0–4.5 J/cm²
+      value: 1.0–10 J/cm²
       unit: J/cm²
       min: '0.1'
       max: '50.0'
       numeric: 1.0
-    - property: Scanning Speed
-      value: 50-500mm/s
-      unit: mm/s
-      min: '1.0'
-      max: '5000.0'
-      numeric: 275.0
-    - property: Beam Profile
-      value: Gaussian TEM00
-      unit: '-'
-      category: System
-    - property: Safety Class
-      value: Class 4 (requires full enclosure)
-      unit: '-'
-      category: Safety
   - header: '## Applications & Industries'
     rows:
-    - property: Electronics Manufacturing
-      value: Removal of surface oxides and contaminants from Titanium substrates
+    - property: Aerospace
+      value: Removal of oxidation and surface contaminants from titanium components
       unit: '-'
       category: Application
-    - property: Aerospace Components
-      value: Cleaning of thermal barrier coatings and metal matrix composites
+    - property: Medical
+      value: Cleaning of titanium implants and surgical instruments
+      unit: '-'
+      category: Application
+    - property: Marine
+      value: Corrosion-resistant components for ships and offshore platforms
+      unit: '-'
+      category: Application
+    - property: Chemical Processing
+      value: Heat exchangers and pressure vessels
       unit: '-'
       category: Application
   - header: '## Performance Metrics'
     rows:
-    - property: Surface Cleanliness Level
-      value: Achieves ISO 14644-1 Class 7 cleanliness standard
+    - property: Surface roughness Ra < 0.8 μm
+      value: Achievable surface finish after laser cleaning with 1064nm pulsed laser
       unit: '-'
       category: Performance
-    - property: Material Removal Precision
-      value: ±5μm accuracy with no substrate damage
-      unit: '-'
-      category: Performance
-    - property: Processing Speed
-      value: 2-5 m²/hour cleaning rate depending on contamination level
+    - property: Contamination removal rate of 2-5 m²/hour
+      value: Processing speed for oxide layer removal from titanium surfaces
       unit: '-'
       category: Performance
   - header: '## Environmental Impact'
     rows:
-    - property: Chemical Solvent Elimination
-      value: Reduces chemical usage by 100% compared to traditional solvent cleaning methods
+    - property: Zero chemical waste generation
+      value: Eliminates 100% of chemical solvents and abrasive media typically used in traditional titanium cleaning processes
       unit: '-'
       category: Environmental
-    - property: Water Conservation
-      value: Saves approximately 5000 liters of water per month in industrial applications
-      unit: '-'
-      category: Environmental
-    - property: Energy Efficiency
-      value: Consumes 40% less energy than thermal cleaning processes
+    - property: 97% reduction in water consumption
+      value: Dry process eliminates water usage compared to chemical rinsing and abrasive water jet methods
       unit: '-'
       category: Environmental
   - header: '## Compatibility & Standards'
     rows:
     - property: Material Compatibility
-      value: Stainless Steel, Titanium Alloys, Nickel-based Superalloys
+      value: Stainless steel 316L (similar thermal processing parameters), Aluminum alloys (complementary aerospace applications), Nickel-based superalloys (similar high-temperature applications)
       unit: '-'
       category: Compatibility
     - property: Regulatory Standards
-      value: ISO 18562, ASTM F2100, IEC 60601-1
+      value: ISO 9013:2017 (Thermal cutting classification), ASTM B265 (Titanium Strip, Sheet, and Plate), FDA 21 CFR 872.3640 (Medical Device Cleaning)
       unit: '-'
       category: Compliance
-renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. No HTML visualizations included - pure data only.'
+renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. Pure data structure optimized for performance.'

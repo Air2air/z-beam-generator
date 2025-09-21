@@ -1,7 +1,7 @@
 # Basic Content Structure
 before_text: |
-  Initial surface examination reveals significant contamination deposits across the teak Technical overview of Teak wood for laser cleaning applications, including optimal 1064nm wavelength interaction with natural wood fibers, and industrial applications in surface restoration.. 
-  Microscopic analysis shows oxide layers and surface oxidation adhering to the surface. The teak exhibits the characteristic density profile typical of wood materials.
+  Initial surface examination reveals significant contamination deposits across the teak Laser cleaning of teak (Tectona grandis) utilizes pulsed near-infrared radiation to ablate surface contaminants via photomechanical and photothermal effects. The process is highly selective due to the significant difference in ablation thresholds between contaminants (e.g., mildew, salt, old finishes) and the underlying lignocellulosic teak substrate, enabling precise surface restoration without mechanical damage or media embedding.. 
+  Microscopic analysis shows surface contaminants and particulate matter adhering to the surface.
   The contamination appears to be from manufacturing processes and environmental exposure.
 
 after_text: |
@@ -11,14 +11,14 @@ after_text: |
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064nm (primary), 355nm (optional)
-  power: 20-100W
-  pulse_duration: 50-200ns
-  spot_size: 0.5-2.0mm
-  frequency: 10-50kHz
-  energy_density: 0.5–2.0 J/cm²
-  scanning_speed: "50-500mm/s"
-  beam_profile: "Gaussian TEM00"
+  wavelength: 1064 nm (primary), 532 nm (optional for finer control)
+  power: 20–100 W (average power for pulsed fiber lasers)
+  pulse_duration: 10–100 ns
+  spot_size: 0.1–2.0 mm
+  frequency: 10–50 kHz
+  energy_density: 0.5–5 J/cm²
+  scanning_speed: "500–2000 mm/s"
+  beam_profile: "Top-hat (flat-top)"
 
 # Material Information
 material: "Teak"
@@ -31,7 +31,7 @@ data_completeness:
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-19T16:55:26.480222Z"
+  generated: "2025-09-20T22:48:52.242078Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
@@ -41,7 +41,7 @@ metadata:
 
 # Enhanced SEO Frontmatter
 title: "Teak Surface Laser Cleaning Analysis - Wood Surface Restoration"
-description: "Comprehensive microscopic analysis of teak surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 355nm (optional) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of teak surface before and after precision laser cleaning, achieving optimal surface restoration using 1064 nm (primary), 532 nm (optional for finer control) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -56,7 +56,7 @@ keywords:
   - "contamination analysis"
   - "teak wood"
   - "non-contact cleaning"
-  - "woodworking and restoration applications"
+  - "woodworking applications"
   - "wood restoration"
   - "organic material cleaning"
   - "forestry applications"
@@ -76,22 +76,22 @@ author_object:
 
 # Technical Specifications for SEO
 technicalSpecifications:
-  wavelength: "1064nm (primary), 355nm (optional)"
-  power: "20-100W"
-  pulse_duration: "50-200ns"
-  scanning_speed: "50-500mm/s"
+  wavelength: "1064 nm (primary), 532 nm (optional for finer control)"
+  power: "20–100 W (average power for pulsed fiber lasers)"
+  pulse_duration: "10–100 ns"
+  scanning_speed: "500–2000 mm/s"
   material: "Teak"
   beam_delivery: "fiber optic"
-  focus_diameter: "0.5-2.0mm"
+  focus_diameter: "0.1–2.0 mm"
   processing_atmosphere: "ambient air"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Cellulose (C6H10O5) 45-50%, Lignin 25-30%, Hemicellulose 15-20%"
+  composition: "Cellulose (C₆H₁₀O₅)ₙ: 40–50%, Lignin (Complex polyphenolic): 30–40%, Hemicellulose: 15–20%"
   surface_treatment: "laser cleaning"
   contamination_type: "organic decay and biological contamination"
   materialType: "wood"
-  formula: "C6H10O5"
+  formula: "Complex Lignocellulosic Matrix (C₆H₁₀O₅)ₙ, Lignin, Extractives"
   surface_finish: "Ra < 0.6 μm (post-cleaning)"
   corrosion_resistance: "moderate"
 
@@ -113,12 +113,12 @@ seo_data:
   og_image: "/images/teak-laser-cleaning-micro.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-19T16:55:26.480222Z"
+  last_modified: "2025-09-20T22:48:52.242078Z"
 
 # Quality Metrics
 quality_metrics:
-  surface_roughness_before: "Ra 5.0 μm"
-  surface_roughness_after: "Ra 1.5 μm"
+  surface_roughness_before: "Ra 3.2 μm"
+  surface_roughness_after: "Ra 0.6 μm"
   substrate_integrity: "100% preserved"
 
 # Accessibility Information
@@ -131,7 +131,7 @@ accessibility:
 ---
 Material: "teak"
 Component: caption
-Generated: 2025-09-19T16:55:26.480222Z
+Generated: 2025-09-20T22:48:52.242078Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

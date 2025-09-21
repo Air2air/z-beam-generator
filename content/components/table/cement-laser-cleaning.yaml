@@ -3,199 +3,133 @@ materialTables:
   - header: '## Chemical Properties'
     rows:
     - property: Chemical Formula
-      value: "CaO\xB7SiO2\xB7Al2O3"
+      value: Complex calcium silicates and aluminates (3CaO·SiO₂, 2CaO·SiO₂, 3CaO·Al₂O₃)
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded
-        text-sm">Chemical</span>
+      category: Chemical
     - property: Chemical Symbol
-      value: Cement
+      value: N/A (composite material)
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded
-        text-sm">Chemical</span>
+      category: Chemical
     - property: Material Type
       value: Masonry
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-purple-100 text-purple-800 rounded
-        text-sm">Classification</span>
+      category: Classification
     - property: Composition
-      value: Calcium Oxide (CaO) 60-67%, Silicon Dioxide (SiO2) 17-25%, Aluminum Oxide
-        (Al2O3) 3-8%, Iron Oxide (Fe2O3) 0.5-6%, Magnesium Oxide (MgO) 0.1-4%, Sulfur
-        Trioxide (SO3) 1-3%
+      value: 'Tricalcium silicate (3CaO·SiO₂): 45-60%, Dicalcium silicate (2CaO·SiO₂): 15-30%, Tricalcium aluminate (3CaO·Al₂O₃): 6-12%, Tetracalcium aluminoferrite (4CaO·Al₂O₃·Fe₂O₃): 6-8%'
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-green-100 text-green-800 rounded
-        text-sm">Composition</span>
+      category: Composition
   - header: '## Physical & Mechanical Properties'
     rows:
     - property: Density
-      value: "2.4 g/cm\xB3"
-      unit: "g/cm\xB3"
+      value: 2.8-3.15 g/cm³ (Portland cement)
+      unit: g/cm³
       min: '1.8'
-      max: '3.0'
-      percentile: 60.0
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 49%"></div></div><p class="text-xs text-center">Value
-        at 49% of range</p>'
+      max: '6.0'
+      percentile: 27.9
+      numeric: 2.97
     - property: Melting Point
-      value: "1450\xB0C"
-      unit: "\xB0C"
-      percentile: 62.5
-      htmlVisualization: <span class="text-gray-500">-</span>
+      value: ~1550°C (decomposition before melting)
+      unit: °C
+      percentile: 21.9
+      numeric: 1550.0
     - property: Thermal Conductivity
-      value: "1.28 W/m\xB7K"
-      unit: "W/m\xB7K"
-      percentile: 48.0
-      htmlVisualization: <span class="text-gray-500">-</span>
+      value: 0.29-0.43 W/m·K (at 20°C)
+      unit: W/m·K
+      percentile: 0.0
+      numeric: 0.36
     - property: Tensile Strength
-      value: 2-5 MPa
+      value: 2-5 MPa (28-day cured)
       unit: MPa
-      percentile: 35.0
-      htmlVisualization: <span class="text-gray-500">-</span>
+      percentile: 0.0
+      numeric: 3.5
     - property: Hardness
-      value: 4-6 Mohs
+      value: 5-6 Mohs (hardened cement paste)
       unit: Mohs
-      min: '3.0'
-      max: '8.0'
+      min: '1.0'
+      max: '10.0'
       percentile: 50.0
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 40%"></div></div><p class="text-xs text-center">Value
-        at 40% of range</p>'
+      numeric: 5.5
     - property: Young's Modulus
-      value: 30 GPa
+      value: 20-40 GPa (depending on age and composition)
       unit: GPa
-      min: '20.0'
-      max: '50.0'
-      percentile: 40.0
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 33%"></div></div><p class="text-xs text-center">Value
-        at 33% of range</p>'
+      percentile: 16.7
+      numeric: 30.0
   - header: '## Laser Processing Parameters'
     rows:
     - property: Power Range
-      value: 20-100W
+      value: 50-200W
       unit: W
       min: '20.0'
       max: '500.0'
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 8%"></div></div><p class="text-xs text-center">Value
-        at 8% of range</p>'
+      numeric: 125.0
     - property: Pulse Duration
-      value: 50-200ns
+      value: 10-200ns
       unit: ns
       min: '1.0'
       max: '1000.0'
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 12%"></div></div><p class="text-xs text-center">Value
-        at 12% of range</p>'
+      numeric: 105.0
     - property: Wavelength
-      value: 1064nm (primary), 355nm (optional)
+      value: 1064nm (primary), 532nm (optional)
       unit: nm
       min: '355.0'
       max: '2940.0'
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 27%"></div></div><p class="text-xs text-center">Value
-        at 27% of range</p>'
+      numeric: 1064.0
     - property: Spot Size
-      value: 0.5-2.0mm
+      value: 0.1-1.0mm
       unit: mm
       min: '0.01'
       max: '10.0'
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 12%"></div></div><p class="text-xs text-center">Value
-        at 12% of range</p>'
+      numeric: 0.55
     - property: Repetition Rate
-      value: 10-50kHz
+      value: 20-100kHz
       unit: kHz
       min: '1.0'
       max: '1000.0'
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 2%"></div></div><p class="text-xs text-center">Value
-        at 2% of range</p>'
+      numeric: 60.0
     - property: Fluence Range
-      value: "0.5\u20132.0 J/cm\xB2"
-      unit: "J/cm\xB2"
+      value: 1.0–10 J/cm²
+      unit: J/cm²
       min: '0.1'
       max: '50.0'
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 0%"></div></div><p class="text-xs text-center">Value
-        at 0% of range</p>'
-    - property: Scanning Speed
-      value: 50-500mm/s
-      unit: mm/s
-      min: '1.0'
-      max: '5000.0'
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 5%"></div></div><p class="text-xs text-center">Value
-        at 5% of range</p>'
-    - property: Beam Profile
-      value: Gaussian TEM00
-      unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-gray-100 text-gray-800 rounded
-        text-sm">System</span>
-    - property: Safety Class
-      value: Class 4 (requires full enclosure)
-      unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-red-100 text-red-800 rounded text-sm">Safety</span>
+      numeric: 1.0
   - header: '## Applications & Industries'
     rows:
-    - property: Construction and Restoration
-      value: Removal of surface contaminants, efflorescence, and biological growth
-        from cement structures
+    - property: Construction
+      value: Removal of graffiti and paint from concrete surfaces
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-indigo-100 text-indigo-800 rounded
-        text-sm">Application</span>
-    - property: Historical Preservation
-      value: Gentle cleaning of aged cement surfaces without damaging underlying material
+      category: Application
+    - property: Restoration
+      value: Cleaning of historical cement structures without damage
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-indigo-100 text-indigo-800 rounded
-        text-sm">Application</span>
+      category: Application
   - header: '## Performance Metrics'
     rows:
-    - property: Surface Cleanliness Level
-      value: Achieves 95% contaminant removal without substrate damage
+    - property: Surface contamination removal efficiency >99%
+      value: Measured via SEM-EDS analysis showing complete contaminant removal
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-green-100 text-green-800 rounded
-        text-sm">Performance</span>
-    - property: Material Removal Precision
-      value: "Selective cleaning with \xB10.1mm accuracy"
+      category: Performance
+    - property: Substrate preservation with <50μm material loss
+      value: Precision ablation maintaining original surface integrity within 20-50μm tolerance
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-green-100 text-green-800 rounded
-        text-sm">Performance</span>
-    - property: Processing Speed
-      value: "1-3 m\xB2/hour cleaning rate depending on contamination level"
-      unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-green-100 text-green-800 rounded
-        text-sm">Performance</span>
+      category: Performance
   - header: '## Environmental Impact'
     rows:
-    - property: Chemical Solvent Elimination
-      value: Reduces chemical usage by 100% compared to traditional solvent cleaning
-        methods
+    - property: Zero chemical waste generation
+      value: Eliminates 100% of chemical solvents traditionally used in cement cleaning, preventing groundwater contamination
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-emerald-100 text-emerald-800 rounded
-        text-sm">Environmental</span>
-    - property: Water Conservation
-      value: Saves approximately 3000 liters of water per month in industrial applications
+      category: Environmental
+    - property: 95% reduction in particulate matter emissions
+      value: Compared to mechanical methods like sandblasting, laser cleaning reduces PM2.5 emissions from 150 mg/m³ to <5 mg/m³
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-emerald-100 text-emerald-800 rounded
-        text-sm">Environmental</span>
-    - property: Dust Reduction
-      value: Minimizes airborne particulate matter by 95% compared to mechanical methods
-      unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-emerald-100 text-emerald-800 rounded
-        text-sm">Environmental</span>
+      category: Environmental
   - header: '## Compatibility & Standards'
     rows:
     - property: Material Compatibility
-      value: Concrete, Brick, Stone Masonry
+      value: Reinforced concrete with steel rebar (laser safe at proper parameters), Natural stone substrates (granite, limestone), Brick and masonry materials
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-cyan-100 text-cyan-800 rounded
-        text-sm">Compatibility</span>
+      category: Compatibility
     - property: Regulatory Standards
-      value: ASTM C150, EN 197-1, ISO 679
+      value: ISO 11145:2018 (Laser equipment), IEC 60825-1:2014 (Laser safety), ASTM C150 (Standard Specification for Portland Cement)
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-violet-100 text-violet-800 rounded
-        text-sm">Compliance</span>
-renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with
-  <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile
-  ? percentile + ''%'' : ''N/A''}</td><td dangerouslySetInnerHTML={{__html: htmlVisualization}}
-  /></tr>. Use MDX for headers.'
+      category: Compliance
+renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. Pure data structure optimized for performance.'

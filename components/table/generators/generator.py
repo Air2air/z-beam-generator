@@ -139,7 +139,7 @@ class TableComponentGenerator(StaticComponentGenerator):
                 "<tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td>"
                 "<td>{percentile ? percentile + '%' : 'N/A'}</td>"
                 "<td>{category}</td></tr>. "
-                "Use MDX for headers. No HTML visualizations included - pure data only."
+                "Use MDX for headers. Pure data structure optimized for performance."
             )
         }
         
@@ -477,7 +477,29 @@ class TableComponentGenerator(StaticComponentGenerator):
         
         applications = frontmatter_data.get("applications", [])
         for i, app in enumerate(applications):
-            if isinstance(app, dict) and app.get("industry") and app.get("detail"):
+            # Handle new string format: "Industry: Detail"
+            if isinstance(app, str):
+                # Parse "Industry: Detail" format
+                if ':' in app:
+                    industry, detail = app.split(':', 1)
+                    industry = industry.strip()
+                    detail = detail.strip()
+                    rows.append(self._create_simple_property_row(
+                        industry,
+                        detail,
+                        '-',
+                        'Application'
+                    ))
+                else:
+                    # Handle single-part applications
+                    rows.append(self._create_simple_property_row(
+                        f"Application {i+1}",
+                        app,
+                        '-',
+                        'Application'
+                    ))
+            elif isinstance(app, dict) and app.get("industry") and app.get("detail"):
+                # Handle legacy object format
                 rows.append(self._create_simple_property_row(
                     app["industry"],
                     app["detail"],

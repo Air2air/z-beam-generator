@@ -1,7 +1,7 @@
 # Basic Content Structure
 before_text: |
-  Initial surface examination reveals significant contamination deposits across the brick Technical overview of brick masonry for laser cleaning applications, including optimal 1064nm wavelength interaction with clay-based materials, and industrial applications in surface restoration.. 
-  Microscopic analysis shows biological growth and organic deposits adhering to the surface. The brick exhibits the characteristic density profile typical of masonry materials.
+  Initial surface examination reveals significant contamination deposits across the brick Laser cleaning of brick utilizes precise thermal ablation where contaminants absorb laser energy more efficiently than the brick substrate, enabling selective removal without damaging the clay-based masonry material. Optimal parameters prevent thermal stress and preserve historical surfaces.. 
+  Microscopic analysis shows surface contaminants and particulate matter adhering to the surface.
   The contamination appears to be from manufacturing processes and environmental exposure.
 
 after_text: |
@@ -11,14 +11,14 @@ after_text: |
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064nm (primary), 532nm (optional)
-  power: 20-100W
-  pulse_duration: 50-200ns
-  spot_size: 0.5-3.0mm
-  frequency: 10-50kHz
-  energy_density: 0.5–2.0 J/cm²
-  scanning_speed: "50-500mm/s"
-  beam_profile: "Gaussian TEM00"
+  wavelength: 1064 nm (primary), 532 nm (optional for selective removal)
+  power: 50-200 W
+  pulse_duration: 10-50 ns
+  spot_size: 0.5-3.0 mm
+  frequency: 20-100 kHz
+  energy_density: 1.0-10 J/cm²
+  scanning_speed: "100-500 mm/s"
+  beam_profile: "Top-hat (flat-top)"
 
 # Material Information
 material: "Brick"
@@ -31,7 +31,7 @@ data_completeness:
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-19T16:55:25.214701Z"
+  generated: "2025-09-20T22:48:48.287429Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
@@ -41,7 +41,7 @@ metadata:
 
 # Enhanced SEO Frontmatter
 title: "Brick Surface Laser Cleaning Analysis - Masonry Surface Restoration"
-description: "Comprehensive microscopic analysis of brick surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of brick surface before and after precision laser cleaning, achieving optimal surface restoration using 1064 nm (primary), 532 nm (optional for selective removal) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -56,7 +56,7 @@ keywords:
   - "contamination analysis"
   - "brick masonry"
   - "non-contact cleaning"
-  - "construction restoration applications"
+  - "construction applications"
   - "masonry restoration"
   - "building conservation"
   - "construction cleaning"
@@ -76,22 +76,22 @@ author_object:
 
 # Technical Specifications for SEO
 technicalSpecifications:
-  wavelength: "1064nm (primary), 532nm (optional)"
-  power: "20-100W"
-  pulse_duration: "50-200ns"
-  scanning_speed: "50-500mm/s"
+  wavelength: "1064 nm (primary), 532 nm (optional for selective removal)"
+  power: "50-200 W"
+  pulse_duration: "10-50 ns"
+  scanning_speed: "100-500 mm/s"
   material: "Brick"
   beam_delivery: "fiber optic"
-  focus_diameter: "0.5-3.0mm"
+  focus_diameter: "0.5-3.0 mm"
   processing_atmosphere: "ambient air"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Silica (SiO₂) 50-60%, Alumina (Al₂O₃) 20-30%, Iron Oxide (Fe₂O₃) 5-10%"
+  composition: "Silica (SiO₂): 50-60%, Alumina (Al₂O₃): 20-30%, Iron oxide (Fe₂O₃): 5-8%"
   surface_treatment: "laser cleaning"
   contamination_type: "construction residues and atmospheric deposits"
-  materialType: "ceramic masonry"
-  formula: "SiO₂·Al₂O₃·Fe₂O₃·CaO·MgO"
+  materialType: "masonry"
+  formula: "Variable composition (primarily SiO₂, Al₂O₃, Fe₂O₃, CaO)"
   surface_finish: "Ra < 0.6 μm (post-cleaning)"
   corrosion_resistance: "good"
 
@@ -113,7 +113,7 @@ seo_data:
   og_image: "/images/brick-laser-cleaning-micro.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-19T16:55:25.214701Z"
+  last_modified: "2025-09-20T22:48:48.287429Z"
 
 # Quality Metrics
 quality_metrics:
@@ -131,7 +131,7 @@ accessibility:
 ---
 Material: "brick"
 Component: caption
-Generated: 2025-09-19T16:55:25.214701Z
+Generated: 2025-09-20T22:48:48.287429Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

@@ -1,7 +1,7 @@
 # Basic Content Structure
 before_text: |
-  Initial surface examination reveals significant contamination deposits across the urethane composites Technical overview of Urethane Composites, Urethane-Fiber, for laser cleaning applications, including optimal 1064nm wavelength interaction, and industrial applications in surface preparation.. 
-  Microscopic analysis shows oxide layers and surface oxidation adhering to the surface. The urethane composites exhibits the characteristic density profile typical of composite materials.
+  Initial surface examination reveals significant contamination deposits across the urethane composites Laser cleaning of polyurethane composites utilizes precise pulsed fiber laser parameters to selectively remove surface contaminants without damaging the composite matrix. The 1064nm wavelength provides optimal absorption in polyurethane while minimizing thermal damage to reinforcing fibers.. 
+  Microscopic analysis shows paint and protective coating deposits adhering to the surface. The urethane composites exhibits the characteristic density profile typical of composite materials.
   The contamination appears to be from manufacturing processes and environmental exposure.
 
 after_text: |
@@ -11,14 +11,14 @@ after_text: |
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064nm (primary), 532nm (optional)
-  power: 50-200W
-  pulse_duration: 20-100ns
-  spot_size: 0.2-1.5mm
-  frequency: 20-100kHz
-  energy_density: 1.0–4.5 J/cm²
-  scanning_speed: "50-500mm/s"
-  beam_profile: "Gaussian TEM00"
+  wavelength: 1064 nm (primary), 532 nm (optional)
+  power: 50-200 W
+  pulse_duration: 20-200 ns
+  spot_size: 0.2-1.5 mm
+  frequency: 20-100 kHz
+  energy_density: 1.0-10 J/cm²
+  scanning_speed: "500-2000 mm/s"
+  beam_profile: "Top-hat (flat-top)"
 
 # Material Information
 material: "Urethane Composites"
@@ -31,7 +31,7 @@ data_completeness:
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-19T16:55:25.023355Z"
+  generated: "2025-09-20T22:48:47.853903Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
@@ -41,7 +41,7 @@ metadata:
 
 # Enhanced SEO Frontmatter
 title: "Urethane Composites Surface Laser Cleaning Analysis - Advanced Material Processing"
-description: "Comprehensive microscopic analysis of urethane composites surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of urethane composites surface before and after precision laser cleaning, achieving optimal surface restoration using 1064 nm (primary), 532 nm (optional) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -54,9 +54,9 @@ keywords:
   - "laser ablation"
   - "urethane composites"
   - "contamination analysis"
-  - "urethane composites composite"
+  - "polyurethane composite"
   - "non-contact cleaning"
-  - "electronics manufacturing applications"
+  - "automotive applications"
   - "composite processing"
   - "advanced materials"
   - "polymer matrix cleaning"
@@ -76,22 +76,22 @@ author_object:
 
 # Technical Specifications for SEO
 technicalSpecifications:
-  wavelength: "1064nm (primary), 532nm (optional)"
-  power: "50-200W"
-  pulse_duration: "20-100ns"
-  scanning_speed: "50-500mm/s"
+  wavelength: "1064 nm (primary), 532 nm (optional)"
+  power: "50-200 W"
+  pulse_duration: "20-200 ns"
+  scanning_speed: "500-2000 mm/s"
   material: "Urethane Composites"
   beam_delivery: "fiber optic"
-  focus_diameter: "0.2-1.5mm"
+  focus_diameter: "0.2-1.5 mm"
   processing_atmosphere: "ambient air"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Polyurethane Matrix 60-70%, Glass/Carbon Fiber Reinforcement 30-40%, Additives and Fillers 2-5%"
+  composition: "Polyurethane matrix: 60-80%, Glass/carbon fiber reinforcement: 20-40%, Fillers/additives: 0-10%"
   surface_treatment: "laser cleaning"
   contamination_type: "matrix degradation and environmental aging"
   materialType: "composite"
-  formula: "Urethane-Fiber"
+  formula: "(C₁₀H₈N₂O₂C₆H₁₄O₃)ₙ (polyurethane matrix with various reinforcements)"
   surface_finish: "Ra < 0.6 μm (post-cleaning)"
   corrosion_resistance: "excellent"
 
@@ -113,7 +113,7 @@ seo_data:
   og_image: "/images/urethane-composites-laser-cleaning-micro.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-19T16:55:25.023355Z"
+  last_modified: "2025-09-20T22:48:47.853903Z"
 
 # Quality Metrics
 quality_metrics:
@@ -131,7 +131,7 @@ accessibility:
 ---
 Material: "urethane composites"
 Component: caption
-Generated: 2025-09-19T16:55:25.023355Z
+Generated: 2025-09-20T22:48:47.853903Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

@@ -15,49 +15,83 @@ materialTables:
       unit: '-'
       category: Classification
     - property: Composition
-      value: Cu 99.0-99.9%, Trace elements (Si, Fe, Cu, Mn, Mg, Zn, Ti)
+      value: 'Copper (Cu): 99.90-99.99% (electrolytic tough pitch copper), Oxygen: 0.02-0.04%, Other trace elements: <0.01% (Ag, As, Bi, Fe, Pb, Sb, etc.)'
       unit: '-'
       category: Composition
+  - header: '## Physical & Mechanical Properties'
+    rows:
+    - property: Density
+      value: 8.96 g/cm³
+      unit: g/cm³
+      min: '1.8'
+      max: '6.0'
+      percentile: 100.0
+      numeric: 8.96
+    - property: Melting Point
+      value: 1085°C
+      unit: °C
+      percentile: 0.0
+      numeric: 1085.0
+    - property: Thermal Conductivity
+      value: 401 W/m·K
+      unit: W/m·K
+      percentile: 100.0
+      numeric: 401.0
+    - property: Tensile Strength
+      value: 210-220 MPa (annealed copper)
+      unit: MPa
+      percentile: 17.4
+      numeric: 215.0
+    - property: Hardness
+      value: 35-45 HV (Vickers hardness)
+      unit: HV
+      min: '1.0'
+      max: '10.0'
+      percentile: 100.0
+      numeric: 40.0
+    - property: Young's Modulus
+      value: 110-128 GPa
+      unit: GPa
+      percentile: 100.0
+      numeric: 119.0
   - header: '## Laser Processing Parameters'
     rows:
     - property: Power Range
       value: 20-100W
       unit: W
       min: '20.0'
-      max: '100.0'
+      max: '500.0'
       numeric: 60.0
     - property: Pulse Duration
       value: 10-100ns
       unit: ns
-      category: Standard
+      min: '1.0'
+      max: '1000.0'
+      numeric: 55.0
     - property: Wavelength
-      value: 1064nm
+      value: 1064nm (primary), 532nm (optional)
       unit: nm
-      category: Optimal
+      min: '355.0'
+      max: '2940.0'
+      numeric: 1064.0
     - property: Spot Size
       value: 0.1-2.0mm
       unit: mm
-      category: Configurable
+      min: '0.01'
+      max: '10.0'
+      numeric: 1.05
     - property: Repetition Rate
       value: 10-50kHz
       unit: kHz
-      category: Variable
+      min: '1.0'
+      max: '1000.0'
+      numeric: 30.0
     - property: Fluence Range
       value: 0.5-5 J/cm²
       unit: J/cm²
-      category: Range
-    - property: Laser Type
-      value: Pulsed fiber laser
-      unit: '-'
-      category: System
-    - property: Beam Profile
-      value: Gaussian TEM00
-      unit: '-'
-      category: System
-    - property: Safety Class
-      value: Class 4 (requires full enclosure)
-      unit: '-'
-      category: Safety
+      min: '0.1'
+      max: '50.0'
+      numeric: 2.75
   - header: '## Applications & Industries'
     rows:
     - property: Manufacturing
@@ -70,40 +104,32 @@ materialTables:
       category: Application
   - header: '## Performance Metrics'
     rows:
-    - property: Surface Cleanliness Level
-      value: Achieves ISO 14644-1 Class 7 cleanliness standard
+    - property: Surface cleanliness achieving Sa 0.8-1.2 μm roughness
+      value: ISO 8501-1 cleanliness standard compliance for adhesion preparation
       unit: '-'
       category: Performance
-    - property: Material Removal Precision
-      value: ±5μm accuracy with no substrate damage
-      unit: '-'
-      category: Performance
-    - property: Processing Speed
-      value: 2-5 m²/hour cleaning rate depending on contamination level
+    - property: Processing speeds of 0.5-2.0 m²/hour
+      value: For typical oxide removal applications with 100W laser systems
       unit: '-'
       category: Performance
   - header: '## Environmental Impact'
     rows:
-    - property: Chemical Solvent Elimination
-      value: Reduces chemical usage by 100% compared to traditional solvent cleaning methods
+    - property: Zero chemical waste generation
+      value: Eliminates use of acidic cleaners (nitric acid, sulfuric acid) and solvents traditionally used for copper cleaning, reducing hazardous waste by 100%
       unit: '-'
       category: Environmental
-    - property: Water Conservation
-      value: Saves approximately 5000 liters of water per month in industrial applications
-      unit: '-'
-      category: Environmental
-    - property: Energy Efficiency
-      value: Consumes 40% less energy than thermal cleaning processes
+    - property: Reduced energy consumption
+      value: Laser cleaning consumes 60-70% less energy compared to chemical bath processes with heating and ventilation requirements
       unit: '-'
       category: Environmental
   - header: '## Compatibility & Standards'
     rows:
     - property: Material Compatibility
-      value: Stainless Steel, Titanium Alloys, Copper Alloys
+      value: Stainless steel (commonly processed alongside copper components), Brass and bronze (similar laser processing parameters), Aluminum (compatible with copper cleaning systems)
       unit: '-'
       category: Compatibility
     - property: Regulatory Standards
-      value: ISO 18562, ASTM F2100, IEC 60601-1
+      value: ISO 9013:2017 (Thermal cutting classification), EN 60825-1 (Laser safety), OSHA 29 CFR 1910.133 (Eye and face protection)
       unit: '-'
       category: Compliance
-renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. No HTML visualizations included - pure data only.'
+renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. Pure data structure optimized for performance.'

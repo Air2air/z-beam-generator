@@ -1,7 +1,7 @@
 # Basic Content Structure
 before_text: |
-  Initial surface examination reveals significant contamination deposits across the quartzite Technical overview of Quartzite, SiO2, for laser cleaning applications, including optimal 1064nm wavelength interaction, and industrial applications in surface preparation.. 
-  Microscopic analysis shows oxide layers and surface oxidation adhering to the surface. The quartzite exhibits the characteristic density profile typical of stone materials.
+  Initial surface examination reveals significant contamination deposits across the quartzite Quartzite laser cleaning utilizes precise laser ablation to remove surface contaminants from this metamorphic rock composed primarily of quartz. The process exploits the differential absorption characteristics between contaminants and the quartzite substrate, enabling selective removal without mechanical or chemical damage to the underlying stone.. 
+  Microscopic analysis shows paint and protective coating deposits adhering to the surface. The quartzite exhibits the characteristic density profile typical of stone materials.
   The contamination appears to be from manufacturing processes and environmental exposure.
 
 after_text: |
@@ -11,14 +11,14 @@ after_text: |
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064nm (primary), 532nm (optional)
-  power: 50-200W
-  pulse_duration: 20-100ns
-  spot_size: 0.2-1.5mm
-  frequency: 20-100kHz
-  energy_density: 1.0–4.5 J/cm²
-  scanning_speed: "50-500mm/s"
-  beam_profile: "Gaussian TEM00"
+  wavelength: 1064 nm (primary), 532 nm (optional for enhanced absorption)
+  power: 50-200 W (average power for pulsed fiber lasers)
+  pulse_duration: 10-50 ns (nanosecond pulses for controlled ablation)
+  spot_size: 0.1-1.0 mm (adjustable for precision cleaning or larger area coverage)
+  frequency: 20-100 kHz (optimized for thermal management and cleaning efficiency)
+  energy_density: 1.0–10 J/cm² (above ablation threshold of ~1.0 J/cm² for quartzite)
+  scanning_speed: "100-2000 mm/s (depending on contamination type and thickness)"
+  beam_profile: "Top-hat or Gaussian (depending on application requirements)"
 
 # Material Information
 material: "Quartzite"
@@ -31,7 +31,7 @@ data_completeness:
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-19T16:55:26.055720Z"
+  generated: "2025-09-20T22:48:50.969447Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
@@ -41,7 +41,7 @@ metadata:
 
 # Enhanced SEO Frontmatter
 title: "Quartzite Surface Laser Cleaning Analysis - Heritage Conservation Cleaning"
-description: "Comprehensive microscopic analysis of quartzite surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of quartzite surface before and after precision laser cleaning, achieving optimal surface restoration using 1064 nm (primary), 532 nm (optional for enhanced absorption) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -56,7 +56,7 @@ keywords:
   - "contamination analysis"
   - "quartzite stone"
   - "non-contact cleaning"
-  - "electronics manufacturing applications"
+  - "construction applications"
   - "stone conservation"
   - "heritage preservation"
   - "architectural restoration"
@@ -76,21 +76,21 @@ author_object:
 
 # Technical Specifications for SEO
 technicalSpecifications:
-  wavelength: "1064nm (primary), 532nm (optional)"
-  power: "50-200W"
-  pulse_duration: "20-100ns"
-  scanning_speed: "50-500mm/s"
+  wavelength: "1064 nm (primary), 532 nm (optional for enhanced absorption)"
+  power: "50-200 W (average power for pulsed fiber lasers)"
+  pulse_duration: "10-50 ns (nanosecond pulses for controlled ablation)"
+  scanning_speed: "100-2000 mm/s (depending on contamination type and thickness)"
   material: "Quartzite"
   beam_delivery: "fiber optic"
-  focus_diameter: "0.2-1.5mm"
+  focus_diameter: "0.1-1.0 mm (adjustable for precision cleaning or larger area coverage)"
   processing_atmosphere: "ambient air"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Quartzite (SiO2) 99.6%, Trace elements (Si, Fe, Na, Mg)"
+  composition: "Quartz (SiO₂): 90-99%, Feldspar, mica, iron oxides, and other minerals: 1-10%"
   surface_treatment: "laser cleaning"
   contamination_type: "weathering and biological deposits"
-  materialType: "stone"
+  materialType: "metamorphic rock"
   formula: "SiO2"
   surface_finish: "Ra < 0.6 μm (post-cleaning)"
   corrosion_resistance: "good"
@@ -113,7 +113,7 @@ seo_data:
   og_image: "/images/quartzite-laser-cleaning-micro.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-19T16:55:26.055720Z"
+  last_modified: "2025-09-20T22:48:50.969447Z"
 
 # Quality Metrics
 quality_metrics:
@@ -131,7 +131,7 @@ accessibility:
 ---
 Material: "quartzite"
 Component: caption
-Generated: 2025-09-19T16:55:26.055720Z
+Generated: 2025-09-20T22:48:50.969447Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

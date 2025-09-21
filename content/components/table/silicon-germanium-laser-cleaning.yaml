@@ -3,197 +3,115 @@ materialTables:
   - header: '## Chemical Properties'
     rows:
     - property: Chemical Formula
-      value: "Si\u2081\u208B\u2093Ge\u2093"
+      value: Si₁₋ₓGeₓ
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded
-        text-sm">Chemical</span>
+      category: Chemical
     - property: Chemical Symbol
       value: SiGe
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded
-        text-sm">Chemical</span>
+      category: Chemical
     - property: Material Type
-      value: Semiconductor
+      value: Semiconductor Alloy
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-purple-100 text-purple-800 rounded
-        text-sm">Classification</span>
+      category: Classification
     - property: Composition
-      value: Silicon (Si) 70-95%, Germanium (Ge) 5-30%, Trace elements (B, P, As,
-        Sb)
+      value: 'Silicon: 70-95% (typical semiconductor compositions), Germanium: 5-30% (typical alloying percentages for electronic applications)'
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-green-100 text-green-800 rounded
-        text-sm">Composition</span>
+      category: Composition
   - header: '## Physical & Mechanical Properties'
     rows:
     - property: Density
-      value: "5.32 g/cm\xB3"
-      unit: "g/cm\xB3"
-      min: '2.3'
-      max: '7.9'
-      percentile: 48.7
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 53%"></div></div><p class="text-xs text-center">Value
-        at 53% of range</p>'
+      value: '2.33-5.32 g/cm³ (varies with Ge content: 0-100%)'
+      unit: g/cm³
+      min: '1.8'
+      max: '6.0'
+      percentile: 48.3
+      numeric: 3.83
     - property: Melting Point
-      value: "1210-1410\xB0C"
-      unit: "\xB0C"
-      percentile: 42.1
-      htmlVisualization: <span class="text-gray-500">-</span>
+      value: 1210-938°C (decreases with increasing Ge content)
+      unit: °C
+      percentile: 0.0
+      numeric: 1074.0
     - property: Thermal Conductivity
-      value: "45-90 W/m\xB7K"
-      unit: "W/m\xB7K"
-      percentile: 32.5
-      htmlVisualization: <span class="text-gray-500">-</span>
+      value: 149-60 W/m·K (Si-rich to Ge-rich compositions)
+      unit: W/m·K
+      percentile: 52.1
+      numeric: 104.5
     - property: Tensile Strength
-      value: 150-300 MPa
+      value: 100-200 MPa (dependent on crystal orientation and doping)
       unit: MPa
-      percentile: 18.9
-      htmlVisualization: <span class="text-gray-500">-</span>
+      percentile: 10.5
+      numeric: 150.0
     - property: Hardness
-      value: 800-1200 HV
-      unit: HV
-      min: '100.0'
-      max: '3000.0'
-      percentile: 65.3
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 31%"></div></div><p class="text-xs text-center">Value
-        at 31% of range</p>'
+      value: 7-9 Mohs (silicon-rich compositions)
+      unit: Mohs
+      min: '1.0'
+      max: '10.0'
+      percentile: 77.8
+      numeric: 8.0
     - property: Young's Modulus
-      value: 130-160 GPa
+      value: 130-103 GPa (decreases with increasing Ge content)
       unit: GPa
-      min: '70.0'
-      max: '400.0'
-      percentile: 45.8
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 22%"></div></div><p class="text-xs text-center">Value
-        at 22% of range</p>'
+      percentile: 100.0
+      numeric: 116.5
   - header: '## Laser Processing Parameters'
     rows:
-    - property: Power Range
-      value: 50-200W
-      unit: W
-      min: '20.0'
-      max: '500.0'
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 21%"></div></div><p class="text-xs text-center">Value
-        at 21% of range</p>'
     - property: Pulse Duration
-      value: 20-100ns
+      value: 1-50ns
       unit: ns
       min: '1.0'
       max: '1000.0'
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 5%"></div></div><p class="text-xs text-center">Value
-        at 5% of range</p>'
+      numeric: 25.5
     - property: Wavelength
       value: 1064nm (primary), 532nm (optional)
       unit: nm
       min: '355.0'
       max: '2940.0'
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 27%"></div></div><p class="text-xs text-center">Value
-        at 27% of range</p>'
-    - property: Spot Size
-      value: 0.2-1.5mm
-      unit: mm
-      min: '0.01'
-      max: '10.0'
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 8%"></div></div><p class="text-xs text-center">Value
-        at 8% of range</p>'
-    - property: Repetition Rate
-      value: 20-100kHz
-      unit: kHz
-      min: '1.0'
-      max: '1000.0'
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 5%"></div></div><p class="text-xs text-center">Value
-        at 5% of range</p>'
+      numeric: 1064.0
     - property: Fluence Range
-      value: "1.0\u20134.5 J/cm\xB2"
-      unit: "J/cm\xB2"
+      value: 0.1-1.0 J/cm²
+      unit: J/cm²
       min: '0.1'
       max: '50.0'
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 1%"></div></div><p class="text-xs text-center">Value
-        at 1% of range</p>'
-    - property: Scanning Speed
-      value: 50-500mm/s
-      unit: mm/s
-      min: '1.0'
-      max: '5000.0'
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 5%"></div></div><p class="text-xs text-center">Value
-        at 5% of range</p>'
-    - property: Beam Profile
-      value: Gaussian TEM00
-      unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-gray-100 text-gray-800 rounded
-        text-sm">System</span>
-    - property: Safety Class
-      value: Class 4 (requires full enclosure)
-      unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-red-100 text-red-800 rounded text-sm">Safety</span>
+      numeric: 0.55
   - header: '## Applications & Industries'
     rows:
-    - property: Electronics Manufacturing
-      value: Removal of surface oxides and contaminants from Silicon Germanium substrates
+    - property: Semiconductor
+      value: Precision cleaning of silicon germanium wafers
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-indigo-100 text-indigo-800 rounded
-        text-sm">Application</span>
-    - property: Aerospace Components
-      value: Cleaning of thermal barrier coatings and semiconductor matrix composites
+      category: Application
+    - property: Electronics
+      value: Removal of organic contaminants from semiconductor surfaces
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-indigo-100 text-indigo-800 rounded
-        text-sm">Application</span>
+      category: Application
   - header: '## Performance Metrics'
     rows:
-    - property: Surface Cleanliness Level
-      value: Achieves ISO 14644-1 Class 7 cleanliness standard
+    - property: Surface contamination reduction
+      value: '>99.9% removal of organic contaminants with <0.1% substrate damage'
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-green-100 text-green-800 rounded
-        text-sm">Performance</span>
-    - property: Material Removal Precision
-      value: "\xB15\u03BCm accuracy with no substrate damage"
+      category: Performance
+    - property: Processing throughput
+      value: 200-500 wafers/hour (150mm wafers) with automated laser systems
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-green-100 text-green-800 rounded
-        text-sm">Performance</span>
-    - property: Processing Speed
-      value: "2-5 m\xB2/hour cleaning rate depending on contamination level"
-      unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-green-100 text-green-800 rounded
-        text-sm">Performance</span>
+      category: Performance
   - header: '## Environmental Impact'
     rows:
-    - property: Chemical Solvent Elimination
-      value: Reduces chemical usage by 100% compared to traditional solvent cleaning
-        methods
+    - property: Elimination of chemical solvents
+      value: Reduces VOC emissions by 95% compared to traditional acetone and isopropyl alcohol cleaning methods
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-emerald-100 text-emerald-800 rounded
-        text-sm">Environmental</span>
-    - property: Water Conservation
-      value: Saves approximately 5000 liters of water per month in industrial applications
+      category: Environmental
+    - property: Reduced water consumption
+      value: Eliminates 100% of deionized water usage required for rinse steps in wet chemical cleaning processes
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-emerald-100 text-emerald-800 rounded
-        text-sm">Environmental</span>
-    - property: Energy Efficiency
-      value: Consumes 40% less energy than thermal cleaning processes
-      unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-emerald-100 text-emerald-800 rounded
-        text-sm">Environmental</span>
+      category: Environmental
   - header: '## Compatibility & Standards'
     rows:
     - property: Material Compatibility
-      value: Silicon, Germanium, Gallium Arsenide, Silicon Carbide
+      value: Silicon substrates and SiO₂ layers, Gallium Arsenide and III-V semiconductors with similar thermal properties
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-cyan-100 text-cyan-800 rounded
-        text-sm">Compatibility</span>
+      category: Compatibility
     - property: Regulatory Standards
-      value: ISO 14644-1, SEMI S2, IEC 60825-1
+      value: IEC 60825-1 (Laser Safety), SEMI S2/S8 (Semiconductor Equipment Safety), ISO 14001 (Environmental Management)
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-violet-100 text-violet-800 rounded
-        text-sm">Compliance</span>
-renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with
-  <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile
-  ? percentile + ''%'' : ''N/A''}</td><td dangerouslySetInnerHTML={{__html: htmlVisualization}}
-  /></tr>. Use MDX for headers.'
+      category: Compliance
+renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. Pure data structure optimized for performance.'

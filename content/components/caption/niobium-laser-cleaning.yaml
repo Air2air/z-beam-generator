@@ -1,6 +1,6 @@
 # Basic Content Structure
 before_text: |
-  Initial surface examination reveals significant contamination deposits across the niobium Technical overview of Niobium, Nb, for laser cleaning applications, including optimal 1064nm wavelength interaction, and industrial applications in surface preparation.. 
+  Initial surface examination reveals significant contamination deposits across the niobium Laser cleaning of niobium utilizes pulsed fiber lasers to selectively ablate surface contaminants (oxides, oils, particulates) without damaging the underlying substrate. Its high melting point and thermal conductivity require precise control of fluence to avoid surface melting or micro-cracking, making it ideal for preparing superconducting surfaces and high-performance aerospace alloys.. 
   Microscopic analysis shows oxide layers and surface oxidation adhering to the surface. The niobium exhibits the characteristic density profile typical of metal materials.
   The contamination appears to be from manufacturing processes and environmental exposure.
 
@@ -11,14 +11,14 @@ after_text: |
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064nm (primary), 532nm (optional)
-  power: 50-200W
-  pulse_duration: 20-100ns
-  spot_size: 0.2-1.5mm
-  frequency: 20-100kHz
-  energy_density: 1.0–4.5 J/cm²
-  scanning_speed: "50-500mm/s"
-  beam_profile: "Gaussian TEM00"
+  wavelength: 1064 nm (primary), 532 nm (for higher precision)
+  power: 50-200 W (pulsed)
+  pulse_duration: 10-50 ns
+  spot_size: 0.1-1.0 mm
+  frequency: 20-100 kHz
+  energy_density: 1.0–10 J/cm²
+  scanning_speed: "500-5000 mm/s"
+  beam_profile: "Top-hat (flat-top)"
 
 # Material Information
 material: "Niobium"
@@ -31,7 +31,7 @@ data_completeness:
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-19T16:55:25.592997Z"
+  generated: "2025-09-20T22:48:49.621206Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
@@ -41,7 +41,7 @@ metadata:
 
 # Enhanced SEO Frontmatter
 title: "Niobium Surface Laser Cleaning Analysis - Industrial Contamination Removal"
-description: "Comprehensive microscopic analysis of niobium surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of niobium surface before and after precision laser cleaning, achieving optimal surface restoration using 1064 nm (primary), 532 nm (for higher precision) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -56,7 +56,7 @@ keywords:
   - "contamination analysis"
   - "niobium metal"
   - "non-contact cleaning"
-  - "electronics manufacturing applications"
+  - "aerospace applications"
   - "metal surface treatment"
   - "corrosion removal"
   - "oxide layer removal"
@@ -76,18 +76,18 @@ author_object:
 
 # Technical Specifications for SEO
 technicalSpecifications:
-  wavelength: "1064nm (primary), 532nm (optional)"
-  power: "50-200W"
-  pulse_duration: "20-100ns"
-  scanning_speed: "50-500mm/s"
+  wavelength: "1064 nm (primary), 532 nm (for higher precision)"
+  power: "50-200 W (pulsed)"
+  pulse_duration: "10-50 ns"
+  scanning_speed: "500-5000 mm/s"
   material: "Niobium"
   beam_delivery: "fiber optic"
-  focus_diameter: "0.2-1.5mm"
+  focus_diameter: "0.1-1.0 mm"
   processing_atmosphere: "ambient air"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Niobium (Nb) 99.6%, Trace elements (Si, Fe, Na, Mg)"
+  composition: "Niobium (Nb): > 99.9% (Reactor Grade), Tantalum (Ta): < 0.1%, Zirconium (Zr): < 0.01%, other trace elements"
   surface_treatment: "laser cleaning"
   contamination_type: "oxidation and metallic deposits"
   materialType: "metal"
@@ -113,7 +113,7 @@ seo_data:
   og_image: "/images/niobium-laser-cleaning-micro.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-19T16:55:25.592997Z"
+  last_modified: "2025-09-20T22:48:49.621206Z"
 
 # Quality Metrics
 quality_metrics:
@@ -131,7 +131,7 @@ accessibility:
 ---
 Material: "niobium"
 Component: caption
-Generated: 2025-09-19T16:55:25.592997Z
+Generated: 2025-09-20T22:48:49.621206Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

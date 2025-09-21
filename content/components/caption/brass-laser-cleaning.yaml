@@ -1,6 +1,6 @@
 # Basic Content Structure
 before_text: |
-  Initial surface examination reveals significant contamination deposits across the brass Technical overview of Brass, Cu-Zn, for laser cleaning applications, including optimal 1064nm wavelength interaction, and industrial applications in surface preparation.. 
+  Initial surface examination reveals significant contamination deposits across the brass Laser cleaning of brass (Cu-Zn alloy) exploits the high absorption of near-IR wavelengths by zinc oxide tarnish layers. The process utilizes short pulses to selectively ablate contaminants while the high thermal conductivity of brass (109-125 W/m·K) rapidly dissipates heat, preventing melting or zinc depletion at the surface.. 
   Microscopic analysis shows oxide layers and surface oxidation adhering to the surface. The brass exhibits the characteristic density profile typical of metal materials.
   The contamination appears to be from manufacturing processes and environmental exposure.
 
@@ -11,14 +11,14 @@ after_text: |
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064nm (primary), 532nm (optional)
-  power: 50-200W
-  pulse_duration: 20-100ns
-  spot_size: 0.2-1.5mm
-  frequency: 20-100kHz
-  energy_density: 1.0–4.5 J/cm²
-  scanning_speed: "50-500mm/s"
-  beam_profile: "Gaussian TEM00"
+  wavelength: 1064 nm (primary), 532 nm (for high-precision work)
+  power: 20-100 W (pulsed)
+  pulse_duration: 10-100 ns
+  spot_size: 50-200 µm
+  frequency: 20-100 kHz
+  energy_density: 0.5-5 J/cm²
+  scanning_speed: "100-2000 mm/s"
+  beam_profile: "Top-hat (flat-top)"
 
 # Material Information
 material: "Brass"
@@ -31,7 +31,7 @@ data_completeness:
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-19T16:55:25.354160Z"
+  generated: "2025-09-20T22:48:48.599114Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
@@ -41,7 +41,7 @@ metadata:
 
 # Enhanced SEO Frontmatter
 title: "Brass Surface Laser Cleaning Analysis - Industrial Contamination Removal"
-description: "Comprehensive microscopic analysis of brass surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of brass surface before and after precision laser cleaning, achieving optimal surface restoration using 1064 nm (primary), 532 nm (for high-precision work) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -56,7 +56,7 @@ keywords:
   - "contamination analysis"
   - "brass metal"
   - "non-contact cleaning"
-  - "electronics manufacturing applications"
+  - "automotive applications"
   - "metal surface treatment"
   - "corrosion removal"
   - "oxide layer removal"
@@ -76,13 +76,13 @@ author_object:
 
 # Technical Specifications for SEO
 technicalSpecifications:
-  wavelength: "1064nm (primary), 532nm (optional)"
-  power: "50-200W"
-  pulse_duration: "20-100ns"
-  scanning_speed: "50-500mm/s"
+  wavelength: "1064 nm (primary), 532 nm (for high-precision work)"
+  power: "20-100 W (pulsed)"
+  pulse_duration: "10-100 ns"
+  scanning_speed: "100-2000 mm/s"
   material: "Brass"
   beam_delivery: "fiber optic"
-  focus_diameter: "0.2-1.5mm"
+  focus_diameter: "50-200 µm"
   processing_atmosphere: "ambient air"
 
 # Chemical Properties for Enhanced SEO
@@ -113,12 +113,12 @@ seo_data:
   og_image: "/images/brass-laser-cleaning-micro.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-19T16:55:25.354160Z"
+  last_modified: "2025-09-20T22:48:48.599114Z"
 
 # Quality Metrics
 quality_metrics:
-  surface_roughness_before: "Ra 3.2 μm"
-  surface_roughness_after: "Ra 0.6 μm"
+  surface_roughness_before: "Ra 5.0 μm"
+  surface_roughness_after: "Ra 1.5 μm"
   substrate_integrity: "100% preserved"
 
 # Accessibility Information
@@ -131,7 +131,7 @@ accessibility:
 ---
 Material: "brass"
 Component: caption
-Generated: 2025-09-19T16:55:25.354160Z
+Generated: 2025-09-20T22:48:48.599114Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

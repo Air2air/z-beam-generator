@@ -1,7 +1,7 @@
 # Basic Content Structure
 before_text: |
-  Initial surface examination reveals significant contamination deposits across the carbon fiber reinforced polymer Technical overview of Carbon Fiber Reinforced Polymer, C-Polymer, for laser cleaning applications, including optimal 1064nm wavelength interaction, and industrial applications in surface preparation.. 
-  Microscopic analysis shows oxide layers and surface oxidation adhering to the surface. The carbon fiber reinforced polymer exhibits the characteristic density profile typical of composite materials.
+  Initial surface examination reveals significant contamination deposits across the carbon fiber reinforced polymer Laser cleaning of CFRP utilizes precise pulsed laser ablation to remove surface contaminants while preserving the structural integrity of the carbon fiber and epoxy matrix. The process exploits differential absorption characteristics between contaminants and the composite substrate, with optimal parameters carefully balanced to avoid matrix degradation (>300°C) or fiber damage.. 
+  Microscopic analysis shows surface contaminants and particulate matter adhering to the surface. The carbon fiber reinforced polymer exhibits the characteristic density profile typical of composite materials.
   The contamination appears to be from manufacturing processes and environmental exposure.
 
 after_text: |
@@ -11,14 +11,14 @@ after_text: |
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064nm (primary), 532nm (optional)
-  power: 50-200W
-  pulse_duration: 20-100ns
-  spot_size: 0.2-1.5mm
-  frequency: 20-100kHz
-  energy_density: 1.0–4.5 J/cm²
-  scanning_speed: "50-500mm/s"
-  beam_profile: "Gaussian TEM00"
+  wavelength: 1064 nm (primary), 532 nm (optional for precise matrix removal)
+  power: 50-200 W (average power for pulsed fiber lasers)
+  pulse_duration: 10-200 ns
+  spot_size: 50-1000 µm (adjustable based on contamination type and area)
+  frequency: 20-100 kHz
+  energy_density: 1.0-10 J/cm² (above epoxy matrix ablation threshold of ~1.5 J/cm² at 1064nm)
+  scanning_speed: "100-2000 mm/s"
+  beam_profile: "Top-hat (flat-top) preferred for uniform energy distribution"
 
 # Material Information
 material: "Carbon Fiber Reinforced Polymer"
@@ -31,7 +31,7 @@ data_completeness:
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-19T16:55:24.915230Z"
+  generated: "2025-09-20T22:48:47.566229Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
@@ -41,7 +41,7 @@ metadata:
 
 # Enhanced SEO Frontmatter
 title: "Carbon Fiber Reinforced Polymer Surface Laser Cleaning Analysis - Advanced Material Processing"
-description: "Comprehensive microscopic analysis of carbon fiber reinforced polymer surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of carbon fiber reinforced polymer surface before and after precision laser cleaning, achieving optimal surface restoration using 1064 nm (primary), 532 nm (optional for precise matrix removal) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -54,9 +54,9 @@ keywords:
   - "laser ablation"
   - "carbon fiber reinforced polymer"
   - "contamination analysis"
-  - "carbon fiber reinforced polymer composite"
+  - "CFRP"
   - "non-contact cleaning"
-  - "electronics manufacturing applications"
+  - "aerospace applications"
   - "composite processing"
   - "advanced materials"
   - "polymer matrix cleaning"
@@ -76,22 +76,22 @@ author_object:
 
 # Technical Specifications for SEO
 technicalSpecifications:
-  wavelength: "1064nm (primary), 532nm (optional)"
-  power: "50-200W"
-  pulse_duration: "20-100ns"
-  scanning_speed: "50-500mm/s"
+  wavelength: "1064 nm (primary), 532 nm (optional for precise matrix removal)"
+  power: "50-200 W (average power for pulsed fiber lasers)"
+  pulse_duration: "10-200 ns"
+  scanning_speed: "100-2000 mm/s"
   material: "Carbon Fiber Reinforced Polymer"
   beam_delivery: "fiber optic"
-  focus_diameter: "0.2-1.5mm"
+  focus_diameter: "50-1000 µm (adjustable based on contamination type and area)"
   processing_atmosphere: "ambient air"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Carbon Fiber 50-70%, Polymer Matrix (Epoxy, Vinyl Ester, or Polyester) 30-50%, Additives and Fillers <5%"
+  composition: "Carbon fiber: 50-70% (by volume), Epoxy resin matrix: 30-50% (typically DGEBA-based with hardeners), Additives: <5% (release agents, fillers, catalysts)"
   surface_treatment: "laser cleaning"
   contamination_type: "matrix degradation and environmental aging"
   materialType: "composite"
-  formula: "C-Polymer"
+  formula: "Cₙ/(C₂₁H₂₅ClO₅)ₙ (Carbon fiber/Epoxy matrix representative composition)"
   surface_finish: "Ra < 0.6 μm (post-cleaning)"
   corrosion_resistance: "excellent"
 
@@ -113,7 +113,7 @@ seo_data:
   og_image: "/images/carbon-fiber-reinforced-polymer-laser-cleaning-micro.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-19T16:55:24.915230Z"
+  last_modified: "2025-09-20T22:48:47.566229Z"
 
 # Quality Metrics
 quality_metrics:
@@ -131,7 +131,7 @@ accessibility:
 ---
 Material: "carbon fiber reinforced polymer"
 Component: caption
-Generated: 2025-09-19T16:55:24.915230Z
+Generated: 2025-09-20T22:48:47.566229Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

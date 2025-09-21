@@ -1,7 +1,7 @@
 # Basic Content Structure
 before_text: |
-  Initial surface examination reveals significant contamination deposits across the silicon nitride Technical overview of Silicon Nitride, Si3N4, for laser cleaning applications, including optimal 1064nm wavelength interaction, and industrial applications in surface preparation.. 
-  Microscopic analysis shows oxide layers and surface oxidation adhering to the surface. The silicon nitride exhibits the characteristic density profile typical of ceramic materials.
+  Initial surface examination reveals significant contamination deposits across the silicon nitride Silicon nitride laser cleaning utilizes precise pulsed laser ablation to remove surface contaminants from Si3N4 ceramics without chemical solvents or mechanical contact. The process leverages the material's high thermal stability and specific absorption characteristics at near-IR wavelengths for selective contaminant removal while preserving the substrate integrity.. 
+  Microscopic analysis shows ceramic dust and firing residues adhering to the surface. The silicon nitride exhibits the characteristic density profile typical of ceramic materials.
   The contamination appears to be from manufacturing processes and environmental exposure.
 
 after_text: |
@@ -11,14 +11,14 @@ after_text: |
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064nm (primary), 532nm (optional)
-  power: 50-200W
-  pulse_duration: 20-100ns
-  spot_size: 0.2-1.5mm
-  frequency: 20-100kHz
-  energy_density: 1.0–4.5 J/cm²
-  scanning_speed: "50-500mm/s"
-  beam_profile: "Gaussian TEM00"
+  wavelength: 1064 nm (primary), 532 nm (for higher precision applications)
+  power: 20-100 W (average power for pulsed fiber lasers)
+  pulse_duration: 10-100 ns
+  spot_size: 0.1-2.0 mm (depending on contamination type and area)
+  frequency: 10-50 kHz
+  energy_density: 0.5-5 J/cm² (ablation threshold to damage threshold)
+  scanning_speed: "100-2000 mm/s (optimized for contamination removal without substrate damage)"
+  beam_profile: "Top-hat or Gaussian (depending on application requirements)"
 
 # Material Information
 material: "Silicon Nitride"
@@ -31,7 +31,7 @@ data_completeness:
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-19T16:55:24.872588Z"
+  generated: "2025-09-20T22:48:47.447791Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
@@ -41,7 +41,7 @@ metadata:
 
 # Enhanced SEO Frontmatter
 title: "Silicon Nitride Surface Laser Cleaning Analysis - Ceramic Surface Restoration"
-description: "Comprehensive microscopic analysis of silicon nitride surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of silicon nitride surface before and after precision laser cleaning, achieving optimal surface restoration using 1064 nm (primary), 532 nm (for higher precision applications) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -56,7 +56,7 @@ keywords:
   - "contamination analysis"
   - "silicon nitride ceramic"
   - "non-contact cleaning"
-  - "electronics manufacturing applications"
+  - "semiconductor applications"
   - "ceramic cleaning"
   - "ceramic surface modification"
   - "thermal processing"
@@ -76,18 +76,18 @@ author_object:
 
 # Technical Specifications for SEO
 technicalSpecifications:
-  wavelength: "1064nm (primary), 532nm (optional)"
-  power: "50-200W"
-  pulse_duration: "20-100ns"
-  scanning_speed: "50-500mm/s"
+  wavelength: "1064 nm (primary), 532 nm (for higher precision applications)"
+  power: "20-100 W (average power for pulsed fiber lasers)"
+  pulse_duration: "10-100 ns"
+  scanning_speed: "100-2000 mm/s (optimized for contamination removal without substrate damage)"
   material: "Silicon Nitride"
   beam_delivery: "fiber optic"
-  focus_diameter: "0.2-1.5mm"
+  focus_diameter: "0.1-2.0 mm (depending on contamination type and area)"
   processing_atmosphere: "ambient air"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Silicon Nitride (Si3N4) 99.6%, Trace elements (Si, Fe, Na, Mg)"
+  composition: "Silicon (Si): 60.06%, Nitrogen (N): 39.94%, Trace sintering additives: Y2O3, Al2O3, MgO (typically 5-10% total)"
   surface_treatment: "laser cleaning"
   contamination_type: "ceramic dust and firing residues"
   materialType: "ceramic"
@@ -113,12 +113,12 @@ seo_data:
   og_image: "/images/silicon-nitride-laser-cleaning-micro.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-19T16:55:24.872588Z"
+  last_modified: "2025-09-20T22:48:47.447791Z"
 
 # Quality Metrics
 quality_metrics:
-  surface_roughness_before: "Ra 0.8 μm"
-  surface_roughness_after: "Ra 0.2 μm"
+  surface_roughness_before: "Ra 3.2 μm"
+  surface_roughness_after: "Ra 0.6 μm"
   substrate_integrity: "100% preserved"
 
 # Accessibility Information
@@ -131,7 +131,7 @@ accessibility:
 ---
 Material: "silicon nitride"
 Component: caption
-Generated: 2025-09-19T16:55:24.872588Z
+Generated: 2025-09-20T22:48:47.447791Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

@@ -3,129 +3,133 @@ materialTables:
   - header: '## Chemical Properties'
     rows:
     - property: Chemical Formula
-      value: Fe
+      value: Fe-C
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded
-        text-sm">Chemical</span>
+      category: Chemical
     - property: Chemical Symbol
       value: Fe
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded
-        text-sm">Chemical</span>
+      category: Chemical
     - property: Material Type
       value: Metal
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-purple-100 text-purple-800 rounded
-        text-sm">Classification</span>
+      category: Classification
     - property: Composition
-      value: Steel (Fe) 99.6%, Trace elements (Si, Fe, Na, Mg)
+      value: 'Iron (Fe): 97-99.5% (base material), Carbon (C): 0.02-2.1% (primary alloying element), Manganese (Mn): 0.3-2.0%, Silicon (Si): 0.15-0.35%, Phosphorus (P): <0.05%, Sulfur (S): <0.05%'
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-green-100 text-green-800 rounded
-        text-sm">Composition</span>
+      category: Composition
   - header: '## Physical & Mechanical Properties'
     rows:
     - property: Density
-      value: "7.85 g/cm\xB3"
-      unit: "g/cm\xB3"
+      value: 7.85 g/cm³ (for carbon steel)
+      unit: g/cm³
       min: '1.8'
       max: '6.0'
-      percentile: 51.2
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 100%"></div></div><p class="text-xs text-center">Value
-        at 100% of range</p>'
+      percentile: 100.0
+      numeric: 7.85
     - property: Melting Point
-      value: "1370-1530\xB0C"
-      unit: "\xB0C"
-      percentile: 54.5
-      htmlVisualization: <span class="text-gray-500">-</span>
+      value: 1370-1510°C (depending on carbon content)
+      unit: °C
+      percentile: 15.0
+      numeric: 1440.0
     - property: Thermal Conductivity
-      value: "50.2 W/m\xB7K"
-      unit: "W/m\xB7K"
-      percentile: 14.8
-      htmlVisualization: <span class="text-gray-500">-</span>
+      value: 45-65 W/m·K (for carbon steel at 20°C)
+      unit: W/m·K
+      percentile: 27.3
+      numeric: 55.0
     - property: Tensile Strength
-      value: 400-600 MPa
+      value: 400-550 MPa (for structural steel), up to 2000 MPa (for high-strength alloys)
       unit: MPa
-      percentile: 26.3
-      htmlVisualization: <span class="text-gray-500">-</span>
+      percentile: 44.7
+      numeric: 475.0
     - property: Hardness
-      value: 150-250 HB
+      value: 120-250 HB (Brinell hardness for structural steel)
       unit: HB
-      min: '500.0'
-      max: '2500.0'
-      percentile: 0.0
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 0%"></div></div><p class="text-xs text-center">Value
-        at 0% of range</p>'
+      min: '1.0'
+      max: '10.0'
+      percentile: 100.0
+      numeric: 185.0
     - property: Young's Modulus
-      value: 200 GPa
+      value: 200 GPa (typical for most steel grades)
       unit: GPa
-      min: '150.0'
-      max: '400.0'
-      percentile: 92.0
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 20%"></div></div><p class="text-xs text-center">Value
-        at 20% of range</p>'
+      percentile: 100.0
+      numeric: 200.0
+  - header: '## Laser Processing Parameters'
+    rows:
+    - property: Power Range
+      value: 50-200W
+      unit: W
+      min: '20.0'
+      max: '500.0'
+      numeric: 125.0
+    - property: Pulse Duration
+      value: 10-200ns
+      unit: ns
+      min: '1.0'
+      max: '1000.0'
+      numeric: 105.0
+    - property: Wavelength
+      value: 1064nm (primary), 532nm (optional)
+      unit: nm
+      min: '355.0'
+      max: '2940.0'
+      numeric: 1064.0
+    - property: Spot Size
+      value: 0.1-1.0mm
+      unit: mm
+      min: '0.01'
+      max: '10.0'
+      numeric: 0.55
+    - property: Repetition Rate
+      value: 20-100kHz
+      unit: kHz
+      min: '1.0'
+      max: '1000.0'
+      numeric: 60.0
+    - property: Fluence Range
+      value: 1.0–10 J/cm²
+      unit: J/cm²
+      min: '0.1'
+      max: '50.0'
+      numeric: 1.0
   - header: '## Applications & Industries'
     rows:
-    - property: Electronics Manufacturing
-      value: Removal of surface oxides and contaminants from Steel substrates
+    - property: Automotive
+      value: Rust and paint removal from steel car bodies
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-indigo-100 text-indigo-800 rounded
-        text-sm">Application</span>
-    - property: Aerospace Components
-      value: Cleaning of thermal barrier coatings and metal matrix composites
+      category: Application
+    - property: Manufacturing
+      value: Removal of oil, grease, and oxide layers from steel surfaces
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-indigo-100 text-indigo-800 rounded
-        text-sm">Application</span>
+      category: Application
   - header: '## Performance Metrics'
     rows:
-    - property: Surface Cleanliness Level
-      value: Achieves ISO 14644-1 Class 7 cleanliness standard
+    - property: Surface cleanliness to SA 2.5 standard
+      value: Achieves >99% contamination removal without substrate damage
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-green-100 text-green-800 rounded
-        text-sm">Performance</span>
-    - property: Material Removal Precision
-      value: "\xB15\u03BCm accuracy with no substrate damage"
+      category: Performance
+    - property: Processing speeds up to 5 m²/hour
+      value: Efficient removal of rust, paint, and oxides from steel surfaces
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-green-100 text-green-800 rounded
-        text-sm">Performance</span>
-    - property: Processing Speed
-      value: "2-5 m\xB2/hour cleaning rate depending on contamination level"
-      unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-green-100 text-green-800 rounded
-        text-sm">Performance</span>
+      category: Performance
   - header: '## Environmental Impact'
     rows:
-    - property: Chemical Solvent Elimination
-      value: Reduces chemical usage by 100% compared to traditional solvent cleaning
-        methods
+    - property: Zero chemical waste generation
+      value: Eliminates 100% of chemical solvents and abrasive media typically used in traditional steel cleaning methods
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-emerald-100 text-emerald-800 rounded
-        text-sm">Environmental</span>
-    - property: Water Conservation
-      value: Saves approximately 5000 liters of water per month in industrial applications
+      category: Environmental
+    - property: Reduced energy consumption
+      value: 60-80% lower energy consumption compared to abrasive blasting or chemical cleaning methods for steel surfaces
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-emerald-100 text-emerald-800 rounded
-        text-sm">Environmental</span>
-    - property: Energy Efficiency
-      value: Consumes 40% less energy than thermal cleaning processes
-      unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-emerald-100 text-emerald-800 rounded
-        text-sm">Environmental</span>
+      category: Environmental
   - header: '## Compatibility & Standards'
     rows:
     - property: Material Compatibility
-      value: Stainless Steel, Titanium Alloys, Nickel-based Superalloys
+      value: Stainless steel (similar processing parameters), Cast iron (compatible with adjusted parameters), Carbon steel alloys (various grades)
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-cyan-100 text-cyan-800 rounded
-        text-sm">Compatibility</span>
+      category: Compatibility
     - property: Regulatory Standards
-      value: ISO 18562, ASTM F2100, IEC 60601-1
+      value: 'ISO 11553: Safety of machinery - Laser processing machines, IEC 60825: Laser product safety, OSHA 29 CFR 1910.97: Laser hazard standard'
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-violet-100 text-violet-800 rounded
-        text-sm">Compliance</span>
-renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with
-  <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile
-  ? percentile + ''%'' : ''N/A''}</td><td dangerouslySetInnerHTML={{__html: htmlVisualization}}
-  /></tr>. Use MDX for headers.'
+      category: Compliance
+renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. Pure data structure optimized for performance.'

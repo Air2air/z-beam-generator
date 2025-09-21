@@ -5,67 +5,55 @@ materialTables:
     - property: Chemical Formula
       value: GaAs
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded
-        text-sm">Chemical</span>
+      category: Chemical
     - property: Chemical Symbol
       value: GaAs
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded
-        text-sm">Chemical</span>
+      category: Chemical
     - property: Material Type
-      value: Semiconductor
+      value: Iii-V Semiconductor
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-purple-100 text-purple-800 rounded
-        text-sm">Classification</span>
+      category: Classification
     - property: Composition
-      value: Gallium Arsenide (GaAs) 99.6%, Trace elements (Si, Fe, Na, Mg)
+      value: 'Gallium: 48.2%, Arsenic: 51.8%'
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-green-100 text-green-800 rounded
-        text-sm">Composition</span>
+      category: Composition
   - header: '## Physical & Mechanical Properties'
     rows:
     - property: Density
-      value: "5.32 g/cm\xB3"
-      unit: "g/cm\xB3"
+      value: 5.3176 g/cm³
+      unit: g/cm³
       min: '1.8'
       max: '6.0'
-      percentile: 51.2
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 83%"></div></div><p class="text-xs text-center">Value
-        at 83% of range</p>'
+      percentile: 83.8
+      numeric: 5.3176
     - property: Melting Point
-      value: "1238\xB0C"
-      unit: "\xB0C"
-      percentile: 54.5
-      htmlVisualization: <span class="text-gray-500">-</span>
+      value: 1238 °C
+      unit: °C
+      percentile: 2.4
+      numeric: 1238.0
     - property: Thermal Conductivity
-      value: "55 W/m\xB7K"
-      unit: "W/m\xB7K"
-      percentile: 14.8
-      htmlVisualization: <span class="text-gray-500">-</span>
+      value: 55 W/(m·K) @ 300 K
+      unit: W/
+      percentile: 27.3
+      numeric: 55.0
     - property: Tensile Strength
-      value: 400-600 MPa
+      value: 66 MPa
       unit: MPa
-      percentile: 26.3
-      htmlVisualization: <span class="text-gray-500">-</span>
+      percentile: 1.7
+      numeric: 66.0
     - property: Hardness
-      value: 750 HV
-      unit: HV
-      min: '500.0'
-      max: '2500.0'
-      percentile: 0.0
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 12%"></div></div><p class="text-xs text-center">Value
-        at 12% of range</p>'
+      value: 750 HK (Knoop Hardness)
+      unit: HK
+      min: '1.0'
+      max: '10.0'
+      percentile: 100.0
+      numeric: 750.0
     - property: Young's Modulus
-      value: 85 GPa
+      value: 85.5 GPa
       unit: GPa
-      min: '150.0'
-      max: '400.0'
-      percentile: 92.0
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 0%"></div></div><p class="text-xs text-center">Value
-        at 0% of range</p>'
+      percentile: 100.0
+      numeric: 85.5
   - header: '## Laser Processing Parameters'
     rows:
     - property: Power Range
@@ -73,126 +61,75 @@ materialTables:
       unit: W
       min: '20.0'
       max: '500.0'
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 21%"></div></div><p class="text-xs text-center">Value
-        at 21% of range</p>'
+      numeric: 125.0
     - property: Pulse Duration
-      value: 20-100ns
+      value: 10-50ns
       unit: ns
       min: '1.0'
       max: '1000.0'
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 5%"></div></div><p class="text-xs text-center">Value
-        at 5% of range</p>'
+      numeric: 30.0
     - property: Wavelength
       value: 1064nm (primary), 532nm (optional)
       unit: nm
       min: '355.0'
       max: '2940.0'
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 27%"></div></div><p class="text-xs text-center">Value
-        at 27% of range</p>'
+      numeric: 1064.0
     - property: Spot Size
-      value: 0.2-1.5mm
+      value: 0.05-1.0mm
       unit: mm
       min: '0.01'
       max: '10.0'
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 8%"></div></div><p class="text-xs text-center">Value
-        at 8% of range</p>'
+      numeric: 0.525
     - property: Repetition Rate
       value: 20-100kHz
       unit: kHz
       min: '1.0'
       max: '1000.0'
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 5%"></div></div><p class="text-xs text-center">Value
-        at 5% of range</p>'
+      numeric: 60.0
     - property: Fluence Range
-      value: "1.0\u20134.5 J/cm\xB2"
-      unit: "J/cm\xB2"
+      value: 1.0–10 J/cm²
+      unit: J/cm²
       min: '0.1'
       max: '50.0'
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 1%"></div></div><p class="text-xs text-center">Value
-        at 1% of range</p>'
-    - property: Scanning Speed
-      value: 50-500mm/s
-      unit: mm/s
-      min: '1.0'
-      max: '5000.0'
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 5%"></div></div><p class="text-xs text-center">Value
-        at 5% of range</p>'
-    - property: Beam Profile
-      value: Gaussian TEM00
-      unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-gray-100 text-gray-800 rounded
-        text-sm">System</span>
-    - property: Safety Class
-      value: Class 4 (requires full enclosure)
-      unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-red-100 text-red-800 rounded text-sm">Safety</span>
+      numeric: 1.0
   - header: '## Applications & Industries'
     rows:
-    - property: Electronics Manufacturing
-      value: Removal of surface oxides and contaminants from Gallium Arsenide substrates
+    - property: Semiconductor Manufacturing
+      value: Removal of surface contaminants from Gallium Arsenide wafers
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-indigo-100 text-indigo-800 rounded
-        text-sm">Application</span>
-    - property: Aerospace Components
-      value: Cleaning of thermal barrier coatings and semiconductor matrix composites
+      category: Application
+    - property: Optoelectronics
+      value: Precision cleaning of Gallium Arsenide substrates for LED and laser diode production
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-indigo-100 text-indigo-800 rounded
-        text-sm">Application</span>
+      category: Application
   - header: '## Performance Metrics'
     rows:
-    - property: Surface Cleanliness Level
-      value: Achieves ISO 14644-1 Class 7 cleanliness standard
+    - property: Surface Contaminant Removal >99.9%
+      value: Measured via XPS and Auger Electron Spectroscopy (AES) analysis
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-green-100 text-green-800 rounded
-        text-sm">Performance</span>
-    - property: Material Removal Precision
-      value: "\xB15\u03BCm accuracy with no substrate damage"
+      category: Performance
+    - property: Sub-surface Damage < 50 nm
+      value: Processing speeds of 100-2000 mm/s with feature accuracy of ±5 µm
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-green-100 text-green-800 rounded
-        text-sm">Performance</span>
-    - property: Processing Speed
-      value: "2-5 m\xB2/hour cleaning rate depending on contamination level"
-      unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-green-100 text-green-800 rounded
-        text-sm">Performance</span>
+      category: Performance
   - header: '## Environmental Impact'
     rows:
-    - property: Chemical Solvent Elimination
-      value: Reduces chemical usage by 100% compared to traditional solvent cleaning
-        methods
+    - property: Elimination of Hazardous Chemical Waste
+      value: Replaces solvent-based cleaning (e.g., acetone, isopropanol) and acid-based etching, eliminating the generation, handling, and disposal of toxic and carcinogenic arsenic-containing waste streams.
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-emerald-100 text-emerald-800 rounded
-        text-sm">Environmental</span>
-    - property: Water Conservation
-      value: Saves approximately 5000 liters of water per month in industrial applications
+      category: Environmental
+    - property: Reduced Water Consumption
+      value: Eliminates the need for ultra-pure water (UPW) rinsing steps, saving approximately 5-10 liters of water per wafer cleaning cycle compared to traditional wet bench methods.
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-emerald-100 text-emerald-800 rounded
-        text-sm">Environmental</span>
-    - property: Energy Efficiency
-      value: Consumes 40% less energy than thermal cleaning processes
-      unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-emerald-100 text-emerald-800 rounded
-        text-sm">Environmental</span>
+      category: Environmental
   - header: '## Compatibility & Standards'
     rows:
     - property: Material Compatibility
-      value: Stainless Steel, Titanium Alloys, Nickel-based Superalloys
+      value: Indium Phosphide (InP), Gallium Nitride (GaN)
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-cyan-100 text-cyan-800 rounded
-        text-sm">Compatibility</span>
+      category: Compatibility
     - property: Regulatory Standards
-      value: ISO 18562, ASTM F2100, IEC 60601-1
+      value: IEC 60825-1 (Laser Safety), SEMI S2/S8 (Environmental, Health, and Safety for Semiconductor Manufacturing Equipment)
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-violet-100 text-violet-800 rounded
-        text-sm">Compliance</span>
-renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with
-  <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile
-  ? percentile + ''%'' : ''N/A''}</td><td dangerouslySetInnerHTML={{__html: htmlVisualization}}
-  /></tr>. Use MDX for headers.'
+      category: Compliance
+renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. Pure data structure optimized for performance.'

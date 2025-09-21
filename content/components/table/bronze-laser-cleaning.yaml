@@ -5,194 +5,139 @@ materialTables:
     - property: Chemical Formula
       value: Cu-Sn
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded
-        text-sm">Chemical</span>
+      category: Chemical
     - property: Chemical Symbol
-      value: Bronze
+      value: Cu-Sn
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded
-        text-sm">Chemical</span>
+      category: Chemical
     - property: Material Type
       value: Metal
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-purple-100 text-purple-800 rounded
-        text-sm">Classification</span>
+      category: Classification
     - property: Composition
-      value: Copper (Cu) 88-95%, Tin (Sn) 5-12%, Trace elements (Zn, Pb, P, Al)
+      value: Typically 88% Cu, 12% Sn
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-green-100 text-green-800 rounded
-        text-sm">Composition</span>
+      category: Composition
   - header: '## Physical & Mechanical Properties'
     rows:
     - property: Density
-      value: "8.8 g/cm\xB3"
-      unit: "g/cm\xB3"
+      value: 8.9 g/cm³
+      unit: g/cm³
       min: '1.8'
-      max: '22.6'
-      percentile: 42.1
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 33%"></div></div><p class="text-xs text-center">Value
-        at 33% of range</p>'
+      max: '6.0'
+      percentile: 100.0
+      numeric: 8.9
     - property: Melting Point
-      value: "950-1050\xB0C"
-      unit: "\xB0C"
-      percentile: 32.8
-      htmlVisualization: <span class="text-gray-500">-</span>
-    - property: Thermal Conductivity
-      value: "42-50 W/m\xB7K"
-      unit: "W/m\xB7K"
-      percentile: 12.3
-      htmlVisualization: <span class="text-gray-500">-</span>
-    - property: Tensile Strength
-      value: 350-700 MPa
-      unit: MPa
-      percentile: 35.2
-      htmlVisualization: <span class="text-gray-500">-</span>
-    - property: Hardness
-      value: 60-200 HB
-      unit: HB
-      min: '500.0'
-      max: '2500.0'
+      value: 950°C (varies by composition)
+      unit: °C
       percentile: 0.0
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 0%"></div></div><p class="text-xs text-center">Value
-        at 0% of range</p>'
+      numeric: 950.0
+    - property: Thermal Conductivity
+      value: 26 W/(m·K)
+      unit: W/
+      percentile: 12.8
+      numeric: 26.0
+    - property: Tensile Strength
+      value: 350-700 MPa (depending on alloy composition and temper)
+      unit: MPa
+      percentile: 50.0
+      numeric: 525.0
+    - property: Hardness
+      value: 60-200 HB (Brinell hardness, varies with composition and work hardening)
+      unit: HB
+      min: '1.0'
+      max: '10.0'
+      percentile: 100.0
+      numeric: 130.0
     - property: Young's Modulus
-      value: 110-125 GPa
+      value: 110 GPa (typical for bronze alloys)
       unit: GPa
-      min: '150.0'
-      max: '400.0'
-      percentile: 78.5
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 0%"></div></div><p class="text-xs text-center">Value
-        at 0% of range</p>'
+      percentile: 100.0
+      numeric: 110.0
   - header: '## Laser Processing Parameters'
     rows:
     - property: Power Range
-      value: 50-200W
+      value: 20-100W
       unit: W
       min: '20.0'
       max: '500.0'
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 21%"></div></div><p class="text-xs text-center">Value
-        at 21% of range</p>'
+      numeric: 60.0
     - property: Pulse Duration
-      value: 20-100ns
+      value: 10-100ns
       unit: ns
       min: '1.0'
       max: '1000.0'
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 5%"></div></div><p class="text-xs text-center">Value
-        at 5% of range</p>'
+      numeric: 55.0
     - property: Wavelength
       value: 1064nm (primary), 532nm (optional)
       unit: nm
       min: '355.0'
       max: '2940.0'
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 27%"></div></div><p class="text-xs text-center">Value
-        at 27% of range</p>'
+      numeric: 1064.0
     - property: Spot Size
-      value: 0.2-1.5mm
+      value: 0.1-2.0mm
       unit: mm
       min: '0.01'
       max: '10.0'
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 8%"></div></div><p class="text-xs text-center">Value
-        at 8% of range</p>'
+      numeric: 1.05
     - property: Repetition Rate
-      value: 20-100kHz
+      value: 10-50kHz
       unit: kHz
       min: '1.0'
       max: '1000.0'
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 5%"></div></div><p class="text-xs text-center">Value
-        at 5% of range</p>'
+      numeric: 30.0
     - property: Fluence Range
-      value: "1.0\u20134.5 J/cm\xB2"
-      unit: "J/cm\xB2"
+      value: 0.5–5 J/cm²
+      unit: J/cm²
       min: '0.1'
       max: '50.0'
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 1%"></div></div><p class="text-xs text-center">Value
-        at 1% of range</p>'
-    - property: Scanning Speed
-      value: 50-500mm/s
-      unit: mm/s
-      min: '1.0'
-      max: '5000.0'
-      htmlVisualization: '<div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-600
-        h-2 rounded-full" style="width: 5%"></div></div><p class="text-xs text-center">Value
-        at 5% of range</p>'
-    - property: Beam Profile
-      value: Gaussian TEM00
-      unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-gray-100 text-gray-800 rounded
-        text-sm">System</span>
-    - property: Safety Class
-      value: Class 4 (requires full enclosure)
-      unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-red-100 text-red-800 rounded text-sm">Safety</span>
+      numeric: 0.5
   - header: '## Applications & Industries'
     rows:
-    - property: Electronics Manufacturing
-      value: Removal of surface oxides and contaminants from Bronze substrates
+    - property: Manufacturing
+      value: Removal of rust and corrosion from bronze surfaces
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-indigo-100 text-indigo-800 rounded
-        text-sm">Application</span>
-    - property: Aerospace Components
-      value: Cleaning of thermal barrier coatings and metal matrix composites
+      category: Application
+    - property: Restoration
+      value: Cleaning of bronze sculptures and artifacts
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-indigo-100 text-indigo-800 rounded
-        text-sm">Application</span>
+      category: Application
+    - property: Marine
+      value: Propeller and bearing component cleaning
+      unit: '-'
+      category: Application
+    - property: Musical Instruments
+      value: Bell and cymbal restoration
+      unit: '-'
+      category: Application
   - header: '## Performance Metrics'
     rows:
-    - property: Surface Cleanliness Level
-      value: Achieves ISO 14644-1 Class 7 cleanliness standard
+    - property: Surface contamination removal efficiency >99%
+      value: Measured via SEM-EDS analysis showing complete removal of chloride and sulfate corrosion products
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-green-100 text-green-800 rounded
-        text-sm">Performance</span>
-    - property: Material Removal Precision
-      value: "\xB15\u03BCm accuracy with no substrate damage"
+      category: Performance
+    - property: Substrate preservation with <5µm HAZ
+      value: Microhardness testing confirms no alteration to base metal properties beyond superficial layer
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-green-100 text-green-800 rounded
-        text-sm">Performance</span>
-    - property: Processing Speed
-      value: "2-5 m\xB2/hour cleaning rate depending on contamination level"
-      unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-green-100 text-green-800 rounded
-        text-sm">Performance</span>
+      category: Performance
   - header: '## Environmental Impact'
     rows:
-    - property: Chemical Solvent Elimination
-      value: Reduces chemical usage by 100% compared to traditional solvent cleaning
-        methods
+    - property: Zero chemical waste generation
+      value: Eliminates use of hazardous chemical cleaners (acids, solvents) and associated disposal requirements, reducing environmental contamination risk by 100% compared to traditional methods
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-emerald-100 text-emerald-800 rounded
-        text-sm">Environmental</span>
-    - property: Water Conservation
-      value: Saves approximately 5000 liters of water per month in industrial applications
+      category: Environmental
+    - property: Reduced energy consumption
+      value: Laser cleaning consumes approximately 60-70% less energy than abrasive blasting or chemical cleaning processes for equivalent surface area treatment
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-emerald-100 text-emerald-800 rounded
-        text-sm">Environmental</span>
-    - property: Energy Efficiency
-      value: Consumes 40% less energy than thermal cleaning processes
-      unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-emerald-100 text-emerald-800 rounded
-        text-sm">Environmental</span>
+      category: Environmental
   - header: '## Compatibility & Standards'
     rows:
     - property: Material Compatibility
-      value: Stainless Steel, Titanium Alloys, Nickel-based Superalloys
+      value: Stainless steel fixtures (for mounting bronze components during processing), Aluminum shielding (for laser safety enclosures and fume extraction systems)
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-cyan-100 text-cyan-800 rounded
-        text-sm">Compatibility</span>
+      category: Compatibility
     - property: Regulatory Standards
-      value: ISO 18562, ASTM F2100, IEC 60601-1
+      value: IEC 60825-1 (Laser product safety), ISO 11553 (Safety of laser processing machines), EN 1011-4 (Welding recommendations for copper and copper alloys)
       unit: '-'
-      htmlVisualization: <span class="px-2 py-1 bg-violet-100 text-violet-800 rounded
-        text-sm">Compliance</span>
-renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with
-  <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile
-  ? percentile + ''%'' : ''N/A''}</td><td dangerouslySetInnerHTML={{__html: htmlVisualization}}
-  /></tr>. Use MDX for headers.'
+      category: Compliance
+renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. Pure data structure optimized for performance.'

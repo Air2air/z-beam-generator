@@ -1,6 +1,6 @@
 # Basic Content Structure
 before_text: |
-  Initial surface examination reveals significant contamination deposits across the steel Technical overview of Steel, Fe, for laser cleaning applications, including optimal 1064nm wavelength interaction, and industrial applications in surface preparation.. 
+  Initial surface examination reveals significant contamination deposits across the steel Steel laser cleaning utilizes high-intensity pulsed laser radiation at 1064nm wavelength to selectively remove surface contaminants through rapid thermal expansion and ablation processes. The process effectively removes rust, paint, oxides, oils, and other surface contaminants while preserving the underlying steel substrate due to differential absorption characteristics.. 
   Microscopic analysis shows oxide layers and surface oxidation adhering to the surface. The steel exhibits the characteristic density profile typical of metal materials.
   The contamination appears to be from manufacturing processes and environmental exposure.
 
@@ -11,14 +11,14 @@ after_text: |
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064nm (primary), 532nm (optional)
-  power: 50-200W
-  pulse_duration: 20-100ns
-  spot_size: 0.2-1.5mm
-  frequency: 20-100kHz
-  energy_density: 1.0–4.5 J/cm²
-  scanning_speed: "None"
-  beam_profile: "None"
+  wavelength: 1064nm (primary), 532nm (optional for specific applications)
+  power: 50-1000W (typically 100-500W for most industrial applications)
+  pulse_duration: 10-200ns (nanosecond pulsed fiber lasers most common)
+  spot_size: 0.1-1.0mm (adjustable based on contamination type and removal requirements)
+  frequency: 20-100kHz (standard for industrial fiber laser systems)
+  energy_density: 1.0–10 J/cm² (depending on surface contamination and steel grade)
+  scanning_speed: "100-5000 mm/s (optimized for specific removal requirements)"
+  beam_profile: "Top-hat or Gaussian (depending on application requirements)"
 
 # Material Information
 material: "Steel"
@@ -31,7 +31,7 @@ data_completeness:
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-19T16:55:25.708031Z"
+  generated: "2025-09-20T22:48:50.172788Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
@@ -41,7 +41,7 @@ metadata:
 
 # Enhanced SEO Frontmatter
 title: "Steel Surface Laser Cleaning Analysis - Industrial Contamination Removal"
-description: "Comprehensive microscopic analysis of steel surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of steel surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional for specific applications) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -56,42 +56,42 @@ keywords:
   - "contamination analysis"
   - "steel metal"
   - "non-contact cleaning"
-  - "electronics manufacturing applications"
+  - "automotive applications"
   - "metal surface treatment"
   - "corrosion removal"
   - "oxide layer removal"
 
 # Author Information with SEO Enhancement
-author: "Dr. Sarah Chen"
+author: "Ikmanda Roswati"
 author_object:
-  name: "Dr. Sarah Chen"
-  email: "dr..sarah.chen@materials-lab.com"
+  name: "Ikmanda Roswati"
+  email: "ikmanda.roswati@materials-lab.com"
   affiliation: "Advanced Materials Processing Laboratory"
-  title: "Materials Scientist Laser Materials Processing"
+  title: "Ph.D. Ultrafast Laser Physics and Material Interactions"
   expertise:
     - "Laser Materials Processing"
     - "Surface Analysis"
     - "Materials Science"
-    - "Laser Materials Processing"
+    - "Ultrafast Laser Physics and Material Interactions"
 
 # Technical Specifications for SEO
 technicalSpecifications:
-  wavelength: "1064nm (primary), 532nm (optional)"
-  power: "50-200W"
-  pulse_duration: "20-100ns"
-  scanning_speed: "None"
+  wavelength: "1064nm (primary), 532nm (optional for specific applications)"
+  power: "50-1000W (typically 100-500W for most industrial applications)"
+  pulse_duration: "10-200ns (nanosecond pulsed fiber lasers most common)"
+  scanning_speed: "100-5000 mm/s (optimized for specific removal requirements)"
   material: "Steel"
   beam_delivery: "fiber optic"
-  focus_diameter: "0.2-1.5mm"
+  focus_diameter: "0.1-1.0mm (adjustable based on contamination type and removal requirements)"
   processing_atmosphere: "ambient air"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Steel (Fe) 99.6%, Trace elements (Si, Fe, Na, Mg)"
+  composition: "Iron (Fe): 97-99.5% (base material), Carbon (C): 0.02-2.1% (primary alloying element), Manganese (Mn): 0.3-2.0%"
   surface_treatment: "laser cleaning"
   contamination_type: "oxidation and metallic deposits"
   materialType: "metal"
-  formula: "Fe"
+  formula: "Fe-C"
   surface_finish: "Ra < 0.6 μm (post-cleaning)"
   corrosion_resistance: "excellent"
 
@@ -113,7 +113,7 @@ seo_data:
   og_image: "/images/steel-laser-cleaning-micro.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-19T16:55:25.708031Z"
+  last_modified: "2025-09-20T22:48:50.172788Z"
 
 # Quality Metrics
 quality_metrics:
@@ -131,7 +131,7 @@ accessibility:
 ---
 Material: "steel"
 Component: caption
-Generated: 2025-09-19T16:55:25.708031Z
+Generated: 2025-09-20T22:48:50.172788Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

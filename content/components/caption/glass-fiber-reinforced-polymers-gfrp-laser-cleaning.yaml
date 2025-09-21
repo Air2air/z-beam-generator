@@ -1,7 +1,7 @@
 # Basic Content Structure
 before_text: |
-  Initial surface examination reveals significant contamination deposits across the glass fiber reinforced polymers gfrp Technical overview of Glass Fiber Reinforced Polymers GFRP composite materials for laser cleaning applications, including optimal wavelength interaction and industrial applications in surface preparation.. 
-  Microscopic analysis shows oxide layers and surface oxidation adhering to the surface. The glass fiber reinforced polymers gfrp exhibits the characteristic density profile typical of composite materials.
+  Initial surface examination reveals significant contamination deposits across the glass fiber reinforced polymers gfrp Laser cleaning of GFRP utilizes precise pulsed fiber laser parameters to selectively ablate surface contaminants while preserving the integrity of the glass fiber reinforcement and polymer matrix. The process operates below the ablation threshold of the composite material (typically 0.5-1.5 J/cm² for epoxy-based GFRP) to ensure non-destructive removal of coatings and contaminants.. 
+  Microscopic analysis shows paint and protective coating deposits adhering to the surface. The glass fiber reinforced polymers gfrp exhibits the characteristic density profile typical of composite materials.
   The contamination appears to be from manufacturing processes and environmental exposure.
 
 after_text: |
@@ -11,14 +11,14 @@ after_text: |
 
 # YAML v2.0 Laser Parameters
 laser_parameters:
-  wavelength: 1064nm (primary), 355nm (optional)
-  power: 20-100W
-  pulse_duration: 10-50ns
-  spot_size: 0.1-0.8mm
-  frequency: 20-80kHz
-  energy_density: 0.5–2.5 J/cm²
-  scanning_speed: "50-500mm/s"
-  beam_profile: "Gaussian TEM00"
+  wavelength: 1064 nm (primary), 532 nm (optional for selective processing)
+  power: 20-100 W
+  pulse_duration: 10-100 ns
+  spot_size: 0.1-2.0 mm
+  frequency: 10-50 kHz
+  energy_density: 0.5–5 J/cm²
+  scanning_speed: "100-2000 mm/s"
+  beam_profile: "Top-hat (flat-top)"
 
 # Material Information
 material: "Glass Fiber Reinforced Polymers GFRP"
@@ -31,7 +31,7 @@ data_completeness:
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-19T16:55:25.037306Z"
+  generated: "2025-09-20T22:48:47.886931Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
@@ -41,7 +41,7 @@ metadata:
 
 # Enhanced SEO Frontmatter
 title: "Glass Fiber Reinforced Polymers GFRP Surface Laser Cleaning Analysis - Advanced Material Processing"
-description: "Comprehensive microscopic analysis of glass fiber reinforced polymers gfrp surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 355nm (optional) wavelength laser processing with advanced laser processing techniques."
+description: "Comprehensive microscopic analysis of glass fiber reinforced polymers gfrp surface before and after precision laser cleaning, achieving optimal surface restoration using 1064 nm (primary), 532 nm (optional for selective processing) wavelength laser processing with advanced laser processing techniques."
 
 # SEO Keywords
 keywords:
@@ -54,9 +54,9 @@ keywords:
   - "laser ablation"
   - "glass fiber reinforced polymers gfrp"
   - "contamination analysis"
-  - "gfrp composite"
+  - "glass fiber reinforced polymers gfrp composite"
   - "non-contact cleaning"
-  - "electronics manufacturing applications"
+  - "aerospace applications"
   - "composite processing"
   - "advanced materials"
   - "polymer matrix cleaning"
@@ -76,22 +76,22 @@ author_object:
 
 # Technical Specifications for SEO
 technicalSpecifications:
-  wavelength: "1064nm (primary), 355nm (optional)"
-  power: "20-100W"
-  pulse_duration: "10-50ns"
-  scanning_speed: "50-500mm/s"
+  wavelength: "1064 nm (primary), 532 nm (optional for selective processing)"
+  power: "20-100 W"
+  pulse_duration: "10-100 ns"
+  scanning_speed: "100-2000 mm/s"
   material: "Glass Fiber Reinforced Polymers GFRP"
   beam_delivery: "fiber optic"
-  focus_diameter: "0.1-0.8mm"
+  focus_diameter: "0.1-2.0 mm"
   processing_atmosphere: "ambient air"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
-  composition: "Glass fibers (SiO2) 60-70%, Polymer matrix (epoxy/polyester) 30-40%, Additives and coupling agents 1-5%"
+  composition: "E-glass fibers: 50-70% by weight, Polymer matrix (epoxy, polyester, or vinyl ester): 30-50% by weight, Additives (fillers, pigments, flame retardants): 0-10%"
   surface_treatment: "laser cleaning"
   contamination_type: "matrix degradation and environmental aging"
   materialType: "composite"
-  formula: "SiO2-Polymer"
+  formula: "Variable (typically SiO₂ fibers + polymer matrix)"
   surface_finish: "Ra < 0.6 μm (post-cleaning)"
   corrosion_resistance: "excellent"
 
@@ -113,12 +113,12 @@ seo_data:
   og_image: "/images/glass-fiber-reinforced-polymers-gfrp-laser-cleaning-micro.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-19T16:55:25.037306Z"
+  last_modified: "2025-09-20T22:48:47.886931Z"
 
 # Quality Metrics
 quality_metrics:
-  surface_roughness_before: "Ra 5.0 μm"
-  surface_roughness_after: "Ra 1.5 μm"
+  surface_roughness_before: "Ra 3.2 μm"
+  surface_roughness_after: "Ra 0.6 μm"
   substrate_integrity: "100% preserved"
 
 # Accessibility Information
@@ -131,7 +131,7 @@ accessibility:
 ---
 Material: "glass fiber reinforced polymers gfrp"
 Component: caption
-Generated: 2025-09-19T16:55:25.037306Z
+Generated: 2025-09-20T22:48:47.886931Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---
