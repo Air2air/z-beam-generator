@@ -9,29 +9,17 @@ after_text: |
   The plaster substrate now exhibits pristine surface characteristics with minimal thermal effects.
   Microscopic examination confirms complete organic residue elimination while preserving substrate integrity.
 
-# YAML v2.0 Laser Parameters
-laser_parameters:
-  wavelength: 1064 nm (IR), 532 nm (SHG)
-  power: 10-100 W (average power for pulsed Nd:YAG)
-  pulse_duration: 5-150 ns
-  spot_size: 0.2-1.5 mm
-  frequency: 10-100 kHz
-  energy_density: 0.8-2.5 J/cm²
-  scanning_speed: "100-2000 mm/s"
-  beam_profile: "Top-hat (flat-top)"
-
 # Material Information
 material: "Plaster"
 
 # Data Source and Quality Information
 data_completeness:
-  laser_parameters_source: "frontmatter"
   frontmatter_available: true
   note: "Fail-fast component - requires complete frontmatter data"
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-20T22:48:48.422081Z"
+  generated: "2025-09-20T23:45:20.945194Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
@@ -74,17 +62,6 @@ author_object:
     - "Materials Science"
     - "Laser-Based Additive Manufacturing"
 
-# Technical Specifications for SEO
-technicalSpecifications:
-  wavelength: "1064 nm (IR), 532 nm (SHG)"
-  power: "10-100 W (average power for pulsed Nd:YAG)"
-  pulse_duration: "5-150 ns"
-  scanning_speed: "100-2000 mm/s"
-  material: "Plaster"
-  beam_delivery: "fiber optic"
-  focus_diameter: "0.2-1.5 mm"
-  processing_atmosphere: "ambient air"
-
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
   composition: "Calcium sulfate dihydrate (CaSO4·2H2O): 95-98%, Calcium carbonate (CaCO3): 1-3%, Silica (SiO2): 0.5-1.5%"
@@ -113,7 +90,7 @@ seo_data:
   og_image: "/images/plaster-laser-cleaning-micro.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-20T22:48:48.422081Z"
+  last_modified: "2025-09-20T23:45:20.945194Z"
 
 # Quality Metrics
 quality_metrics:
@@ -131,7 +108,7 @@ accessibility:
 ---
 Material: "plaster"
 Component: caption
-Generated: 2025-09-20T22:48:48.422081Z
+Generated: 2025-09-20T23:45:20.945194Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

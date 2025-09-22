@@ -9,29 +9,17 @@ after_text: |
   The steel substrate now exhibits pristine surface characteristics with minimal thermal effects.
   Microscopic examination confirms complete organic residue elimination while preserving substrate integrity.
 
-# YAML v2.0 Laser Parameters
-laser_parameters:
-  wavelength: 1064nm (primary), 532nm (optional for specific applications)
-  power: 50-1000W (typically 100-500W for most industrial applications)
-  pulse_duration: 10-200ns (nanosecond pulsed fiber lasers most common)
-  spot_size: 0.1-1.0mm (adjustable based on contamination type and removal requirements)
-  frequency: 20-100kHz (standard for industrial fiber laser systems)
-  energy_density: 1.0–10 J/cm² (depending on surface contamination and steel grade)
-  scanning_speed: "100-5000 mm/s (optimized for specific removal requirements)"
-  beam_profile: "Top-hat or Gaussian (depending on application requirements)"
-
 # Material Information
 material: "Steel"
 
 # Data Source and Quality Information
 data_completeness:
-  laser_parameters_source: "frontmatter"
   frontmatter_available: true
   note: "Fail-fast component - requires complete frontmatter data"
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-20T22:48:50.172788Z"
+  generated: "2025-09-20T23:45:21.912115Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
@@ -74,17 +62,6 @@ author_object:
     - "Materials Science"
     - "Ultrafast Laser Physics and Material Interactions"
 
-# Technical Specifications for SEO
-technicalSpecifications:
-  wavelength: "1064nm (primary), 532nm (optional for specific applications)"
-  power: "50-1000W (typically 100-500W for most industrial applications)"
-  pulse_duration: "10-200ns (nanosecond pulsed fiber lasers most common)"
-  scanning_speed: "100-5000 mm/s (optimized for specific removal requirements)"
-  material: "Steel"
-  beam_delivery: "fiber optic"
-  focus_diameter: "0.1-1.0mm (adjustable based on contamination type and removal requirements)"
-  processing_atmosphere: "ambient air"
-
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
   composition: "Iron (Fe): 97-99.5% (base material), Carbon (C): 0.02-2.1% (primary alloying element), Manganese (Mn): 0.3-2.0%"
@@ -113,7 +90,7 @@ seo_data:
   og_image: "/images/steel-laser-cleaning-micro.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-20T22:48:50.172788Z"
+  last_modified: "2025-09-20T23:45:21.912115Z"
 
 # Quality Metrics
 quality_metrics:
@@ -131,7 +108,7 @@ accessibility:
 ---
 Material: "steel"
 Component: caption
-Generated: 2025-09-20T22:48:50.172788Z
+Generated: 2025-09-20T23:45:21.912115Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

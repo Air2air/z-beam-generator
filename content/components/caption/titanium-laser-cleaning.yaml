@@ -9,29 +9,17 @@ after_text: |
   The titanium substrate now exhibits pristine surface characteristics with minimal thermal effects.
   Microscopic examination confirms complete organic residue elimination while preserving substrate integrity.
 
-# YAML v2.0 Laser Parameters
-laser_parameters:
-  wavelength: 1064 nm (primary), 532 nm (for higher precision)
-  power: 50-200 W (pulsed fiber laser)
-  pulse_duration: 10-100 ns
-  spot_size: 0.1-1.0 mm
-  frequency: 20-100 kHz
-  energy_density: 1.0-10 J/cm² (ablation threshold ~1.0 J/cm²)
-  scanning_speed: "500-2000 mm/s"
-  beam_profile: "Top-hat (preferred for uniform cleaning)"
-
 # Material Information
 material: "Titanium"
 
 # Data Source and Quality Information
 data_completeness:
-  laser_parameters_source: "frontmatter"
   frontmatter_available: true
   note: "Fail-fast component - requires complete frontmatter data"
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-20T22:48:50.292746Z"
+  generated: "2025-09-20T23:45:22.011257Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
@@ -74,17 +62,6 @@ author_object:
     - "Materials Science"
     - "Optical Materials for Laser Systems"
 
-# Technical Specifications for SEO
-technicalSpecifications:
-  wavelength: "1064 nm (primary), 532 nm (for higher precision)"
-  power: "50-200 W (pulsed fiber laser)"
-  pulse_duration: "10-100 ns"
-  scanning_speed: "500-2000 mm/s"
-  material: "Titanium"
-  beam_delivery: "fiber optic"
-  focus_diameter: "0.1-1.0 mm"
-  processing_atmosphere: "ambient air"
-
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
   composition: "Titanium (99.0-99.5%) - Grade 1 commercial pure, Oxygen (0.18%), Iron (0.20%), Carbon (0.08%), Nitrogen (0.03%) - typical impurities"
@@ -113,7 +90,7 @@ seo_data:
   og_image: "/images/titanium-laser-cleaning-micro.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-20T22:48:50.292746Z"
+  last_modified: "2025-09-20T23:45:22.011257Z"
 
 # Quality Metrics
 quality_metrics:
@@ -131,7 +108,7 @@ accessibility:
 ---
 Material: "titanium"
 Component: caption
-Generated: 2025-09-20T22:48:50.292746Z
+Generated: 2025-09-20T23:45:22.011257Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

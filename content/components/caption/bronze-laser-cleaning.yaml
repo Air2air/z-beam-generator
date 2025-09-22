@@ -9,29 +9,17 @@ after_text: |
   The bronze substrate now exhibits pristine surface characteristics with minimal thermal effects.
   Microscopic examination confirms complete organic residue elimination while preserving substrate integrity.
 
-# YAML v2.0 Laser Parameters
-laser_parameters:
-  wavelength: 1064 nm (primary), 532 nm (optional for higher precision on delicate surfaces)
-  power: 20-100 W (average power for pulsed fiber lasers)
-  pulse_duration: 10-100 ns (nanosecond pulses standard for efficient ablation with minimal HAZ)
-  spot_size: 0.1-2.0 mm (adjustable based on contamination layer thickness and required precision)
-  frequency: 10-50 kHz (optimized for thermal relaxation between pulses)
-  energy_density: 0.5–5 J/cm² (above ablation threshold for common bronze contaminants, below substrate damage threshold)
-  scanning_speed: "100-2000 mm/s (dependent on laser power and contamination type)"
-  beam_profile: "Top-hat (flat-top) profile preferred for uniform energy distribution and consistent cleaning results"
-
 # Material Information
 material: "Bronze"
 
 # Data Source and Quality Information
 data_completeness:
-  laser_parameters_source: "frontmatter"
   frontmatter_available: true
   note: "Fail-fast component - requires complete frontmatter data"
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-20T22:48:48.635360Z"
+  generated: "2025-09-20T23:45:21.149376Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
@@ -74,17 +62,6 @@ author_object:
     - "Materials Science"
     - "Ultrafast Laser Physics and Material Interactions"
 
-# Technical Specifications for SEO
-technicalSpecifications:
-  wavelength: "1064 nm (primary), 532 nm (optional for higher precision on delicate surfaces)"
-  power: "20-100 W (average power for pulsed fiber lasers)"
-  pulse_duration: "10-100 ns (nanosecond pulses standard for efficient ablation with minimal HAZ)"
-  scanning_speed: "100-2000 mm/s (dependent on laser power and contamination type)"
-  material: "Bronze"
-  beam_delivery: "fiber optic"
-  focus_diameter: "0.1-2.0 mm (adjustable based on contamination layer thickness and required precision)"
-  processing_atmosphere: "ambient air"
-
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
   composition: "Typically 88% Cu, 12% Sn"
@@ -113,7 +90,7 @@ seo_data:
   og_image: "/images/bronze-laser-cleaning-micro.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-20T22:48:48.635360Z"
+  last_modified: "2025-09-20T23:45:21.149376Z"
 
 # Quality Metrics
 quality_metrics:
@@ -131,7 +108,7 @@ accessibility:
 ---
 Material: "bronze"
 Component: caption
-Generated: 2025-09-20T22:48:48.635360Z
+Generated: 2025-09-20T23:45:21.149376Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

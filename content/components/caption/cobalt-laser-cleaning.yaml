@@ -9,29 +9,17 @@ after_text: |
   The cobalt substrate now exhibits pristine surface characteristics with minimal thermal effects.
   Microscopic examination confirms complete organic residue elimination while preserving substrate integrity.
 
-# YAML v2.0 Laser Parameters
-laser_parameters:
-  wavelength: 1064 nm (primary), 532 nm (for higher precision applications)
-  power: 50-150W (pulsed fiber laser)
-  pulse_duration: 10-100 ns
-  spot_size: 50-200 μm
-  frequency: 20-200 kHz
-  energy_density: 1.0-3.5 J/cm²
-  scanning_speed: "500-2000 mm/s"
-  beam_profile: "Top-hat (flat-top) profile for uniform energy distribution"
-
 # Material Information
 material: "Cobalt"
 
 # Data Source and Quality Information
 data_completeness:
-  laser_parameters_source: "frontmatter"
   frontmatter_available: true
   note: "Fail-fast component - requires complete frontmatter data"
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-20T22:48:48.670715Z"
+  generated: "2025-09-20T23:45:21.183943Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
@@ -74,17 +62,6 @@ author_object:
     - "Materials Science"
     - "Laser-Based Additive Manufacturing"
 
-# Technical Specifications for SEO
-technicalSpecifications:
-  wavelength: "1064 nm (primary), 532 nm (for higher precision applications)"
-  power: "50-150W (pulsed fiber laser)"
-  pulse_duration: "10-100 ns"
-  scanning_speed: "500-2000 mm/s"
-  material: "Cobalt"
-  beam_delivery: "fiber optic"
-  focus_diameter: "50-200 μm"
-  processing_atmosphere: "ambient air"
-
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
   composition: "Cobalt (Co): 99.8% minimum (commercial purity), Nickel (Ni): 0.05-0.15%, Carbon (C): 0.01-0.03%"
@@ -113,7 +90,7 @@ seo_data:
   og_image: "/images/cobalt-laser-cleaning-micro.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-20T22:48:48.670715Z"
+  last_modified: "2025-09-20T23:45:21.183943Z"
 
 # Quality Metrics
 quality_metrics:
@@ -131,7 +108,7 @@ accessibility:
 ---
 Material: "cobalt"
 Component: caption
-Generated: 2025-09-20T22:48:48.670715Z
+Generated: 2025-09-20T23:45:21.183943Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

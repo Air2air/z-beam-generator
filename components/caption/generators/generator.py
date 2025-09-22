@@ -152,8 +152,6 @@ class CaptionComponentGenerator(StaticComponentGenerator):
         if not material_category:
             raise ValueError("Material category is required from frontmatter")
             
-        laser_params = self._get_material_laser_params(material_data)
-        
         # Generate contamination and analysis details
         contamination_type = self._get_material_contamination(material_category, frontmatter_data)
         analysis_details = self._get_analysis_details()
@@ -161,7 +159,7 @@ class CaptionComponentGenerator(StaticComponentGenerator):
         
         # Create before and after text descriptions
         before_text = self._generate_before_text(material_name, contamination_type, material_category, frontmatter_data)
-        after_text = self._generate_after_text(material_name, laser_params, quality_metrics, frontmatter_data)
+        after_text = self._generate_after_text(material_name, quality_metrics, frontmatter_data)
         
         # Generate comprehensive metadata
         timestamp = datetime.datetime.now().isoformat() + "Z"
@@ -171,7 +169,6 @@ class CaptionComponentGenerator(StaticComponentGenerator):
         
         # Generate SEO and technical metadata
         seo_data = self._generate_seo_metadata(material_name, material_category, quality_metrics, frontmatter_data)
-        tech_specs = self._generate_technical_specifications(laser_params, material_name, frontmatter_data)
         chemical_props = self._generate_chemical_properties(material_name, material_formula, material_category, frontmatter_data)
         
         yaml_content = f"""# Basic Content Structure
@@ -181,23 +178,11 @@ before_text: |
 after_text: |
   {after_text}
 
-# YAML v2.0 Laser Parameters
-laser_parameters:
-  wavelength: {laser_params['wavelength']}
-  power: {laser_params['power']}
-  pulse_duration: {laser_params['pulse_duration']}
-  spot_size: {laser_params['spot_size']}
-  frequency: {laser_params['frequency']}
-  energy_density: {laser_params['energy_density']}
-  scanning_speed: "{laser_params['scanning_speed']}"
-  beam_profile: "{laser_params['beam_profile']}"
-
 # Material Information
 material: "{material_name}"
 
 # Data Source and Quality Information
 data_completeness:
-  laser_parameters_source: "{laser_params.get('_data_source', 'frontmatter')}"
   frontmatter_available: {str(bool(frontmatter_data)).lower()}
   note: "Fail-fast component - requires complete frontmatter data"
 
@@ -228,17 +213,6 @@ author_object:
   title: "{author_info['title']}"
   expertise:
 {self._format_expertise_list(author_info['expertise'])}
-
-# Technical Specifications for SEO
-technicalSpecifications:
-  wavelength: "{tech_specs['wavelength']}"
-  power: "{tech_specs['power']}"
-  pulse_duration: "{tech_specs['pulse_duration']}"
-  scanning_speed: "{tech_specs['scanning_speed']}"
-  material: "{tech_specs['material']}"
-  beam_delivery: "{tech_specs['beam_delivery']}"
-  focus_diameter: "{tech_specs['focus_diameter']}"
-  processing_atmosphere: "{tech_specs['processing_atmosphere']}"
 
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
@@ -292,66 +266,6 @@ Format: YAML v2.0
 ---"""
         
         return yaml_content
-
-    def _get_material_laser_params(self, material_data: Dict) -> Dict[str, Any]:
-        """Get laser parameters from frontmatter data with fail-fast validation"""
-        
-        # FAIL-FAST: Require frontmatter data 
-        if not hasattr(self, '_current_frontmatter_data') or not self._current_frontmatter_data:
-            raise ValueError("Frontmatter data is required for caption generation - no fallbacks allowed")
-        
-        frontmatter_data = self._current_frontmatter_data
-        
-        # Intelligent mapping: Get technical specifications with fallbacks
-        tech_specs = frontmatter_data.get('technicalSpecifications', frontmatter_data.get('machineSettings', {}))
-        
-        # If no tech specs exist, use properties field or create defaults
-        if not tech_specs:
-            properties = frontmatter_data.get('properties', {})
-            # Extract laser-related fields from properties
-            tech_specs = {
-                'wavelength': properties.get('wavelength', '1064nm'),
-                'powerRange': properties.get('powerRange', '50-200W'),
-                'pulseDuration': properties.get('pulseDuration', '20-100ns'),
-                'spotSize': properties.get('spotSize', '0.2-1.5mm'),
-                'repetitionRate': properties.get('repetitionRate', '20-100kHz'),
-                'fluenceRange': properties.get('fluenceRange', '1.0-4.5 J/cm²')
-            }
-        
-        # Intelligent parameter mapping: fill in missing required parameters with smart defaults
-        required_params = ['wavelength', 'powerRange', 'pulseDuration', 'spotSize', 'repetitionRate']
-        for param in required_params:
-            if param not in tech_specs or tech_specs[param] is None:
-                # Smart defaults based on material category
-                material_category = frontmatter_data.get('category', 'metal').lower()
-                defaults = {
-                    'wavelength': '1064nm',
-                    'powerRange': '50-200W',
-                    'pulseDuration': '20-100ns',
-                    'spotSize': '0.2-1.5mm',
-                    'repetitionRate': '20-100kHz'
-                }
-                tech_specs[param] = defaults[param]
-        # Map frontmatter technicalSpecifications to laser_parameters format
-        laser_params = {
-            'wavelength': tech_specs['wavelength'],
-            'power': tech_specs['powerRange'],
-            'pulse_duration': tech_specs['pulseDuration'],
-            'spot_size': tech_specs['spotSize'],
-            'frequency': tech_specs['repetitionRate'],
-            'energy_density': tech_specs.get('fluenceRange', tech_specs.get('energy_density')),
-            'scanning_speed': tech_specs.get('scanningSpeed', tech_specs.get('scanning_speed')),
-            'beam_profile': tech_specs.get('beamProfile', tech_specs.get('beam_profile')),
-            '_data_source': 'frontmatter'
-        }
-        
-        # FAIL-FAST: Validate critical parameters are not None
-        critical_params = ['wavelength', 'power', 'pulse_duration', 'spot_size', 'frequency']
-        for param in critical_params:
-            if laser_params[param] is None:
-                raise ValueError(f"Critical laser parameter '{param}' is None in frontmatter data")
-        
-        return laser_params
 
     def _get_material_contamination(self, material_category: str, frontmatter_data: Dict = None) -> str:
         """Get contamination type with fail-fast validation"""
@@ -524,7 +438,7 @@ Format: YAML v2.0
   Microscopic analysis shows {contamination_type} adhering to the surface.{technical_context}
   The contamination appears to be from {source}."""
 
-    def _generate_after_text(self, material_name: str, laser_params: Dict, quality_metrics: Dict, frontmatter_data: Dict = None) -> str:
+    def _generate_after_text(self, material_name: str, quality_metrics: Dict, frontmatter_data: Dict = None) -> str:
         """Generate detailed after text description using material-specific outcomes"""
         
         analysis = 'Post-laser cleaning analysis'  # Use consistent analysis type
@@ -718,32 +632,6 @@ Format: YAML v2.0
             'image_caption': image_caption,
             'accessibility_alt': accessibility_alt,
             'visual_description': visual_description
-        }
-
-    def _generate_technical_specifications(self, laser_params: Dict, material_name: str, frontmatter_data: Dict = None) -> Dict[str, str]:
-        """Generate technical specifications with fail-fast validation"""
-        
-        # FAIL-FAST: Require frontmatter data with technical specifications
-        if not frontmatter_data or ('technicalSpecifications' not in frontmatter_data and 'machineSettings' not in frontmatter_data):
-            raise ValueError("Frontmatter data with technicalSpecifications or machineSettings is required")
-        
-        tech_specs = frontmatter_data.get('technicalSpecifications', frontmatter_data.get('machineSettings', {}))
-        
-        # FAIL-FAST: Validate all required fields are present
-        required_fields = ['wavelength', 'powerRange', 'pulseDuration', 'spotSize']
-        missing_fields = [field for field in required_fields if field not in tech_specs]
-        if missing_fields:
-            raise ValueError(f"Required technical specification fields missing: {missing_fields}")
-        
-        return {
-            'wavelength': str(tech_specs['wavelength']),
-            'power': str(tech_specs['powerRange']),
-            'pulse_duration': str(tech_specs['pulseDuration']),
-            'scanning_speed': laser_params.get('scanning_speed', tech_specs.get('scanningSpeed')),
-            'material': material_name,
-            'beam_delivery': 'fiber optic',  # Standard beam delivery method
-            'focus_diameter': str(tech_specs['spotSize']),
-            'processing_atmosphere': 'ambient air'  # Standard processing atmosphere
         }
 
     def _generate_chemical_properties(self, material_name: str, material_formula: str, material_category: str, frontmatter_data: Dict = None) -> Dict[str, str]:

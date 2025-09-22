@@ -9,29 +9,17 @@ after_text: |
   The alabaster substrate now exhibits pristine surface characteristics with minimal thermal effects.
   Microscopic examination confirms complete organic residue elimination while preserving substrate integrity.
 
-# YAML v2.0 Laser Parameters
-laser_parameters:
-  wavelength: 1064 nm (IR), 532 nm (green) for enhanced control on delicate surfaces
-  power: 10-50 W (average power for pulsed lasers)
-  pulse_duration: 10-150 ns
-  spot_size: 0.05-2.0 mm (adjustable for precision work vs. larger area cleaning)
-  frequency: 10-100 kHz
-  energy_density: 0.3-2.5 J/cm² (below the ablation threshold of pure alabaster ~3.0 J/cm²)
-  scanning_speed: "100-2000 mm/s"
-  beam_profile: "Top-hat (flat-top) preferred for uniform energy distribution"
-
 # Material Information
 material: "Alabaster"
 
 # Data Source and Quality Information
 data_completeness:
-  laser_parameters_source: "frontmatter"
   frontmatter_available: true
   note: "Fail-fast component - requires complete frontmatter data"
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-20T22:48:50.609048Z"
+  generated: "2025-09-20T23:45:22.310676Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
@@ -74,17 +62,6 @@ author_object:
     - "Materials Science"
     - "Laser Materials Processing"
 
-# Technical Specifications for SEO
-technicalSpecifications:
-  wavelength: "1064 nm (IR), 532 nm (green) for enhanced control on delicate surfaces"
-  power: "10-50 W (average power for pulsed lasers)"
-  pulse_duration: "10-150 ns"
-  scanning_speed: "100-2000 mm/s"
-  material: "Alabaster"
-  beam_delivery: "fiber optic"
-  focus_diameter: "0.05-2.0 mm (adjustable for precision work vs. larger area cleaning)"
-  processing_atmosphere: "ambient air"
-
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
   composition: "Calcium sulfate dihydrate (CaSO4·2H2O): 90-99%, Calcium carbonate (CaCO3): 0.5-5%, Silica (SiO2) and other mineral impurities: 0.1-3%"
@@ -113,7 +90,7 @@ seo_data:
   og_image: "/images/alabaster-laser-cleaning-micro.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-20T22:48:50.609048Z"
+  last_modified: "2025-09-20T23:45:22.310676Z"
 
 # Quality Metrics
 quality_metrics:
@@ -131,7 +108,7 @@ accessibility:
 ---
 Material: "alabaster"
 Component: caption
-Generated: 2025-09-20T22:48:50.609048Z
+Generated: 2025-09-20T23:45:22.310676Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

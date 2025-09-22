@@ -1,12 +1,12 @@
-# Caption Component - Enhanced YAML v2.0 Format
+# Caption Component - Enhanced YAML v2.0 Format (Machine Settings Removed)
 
-The Caption Component generates comprehensive, research-based image captions for laser cleaning demonstrations with material-specific data integration and standardized microscopy parameters.
+The Caption Component generates comprehensive, research-based image captions for laser cleaning demonstrations with material-specific data integration and standardized microscopy parameters. **Machine settings have been extracted to a dedicated Settings component.**
 
 ## Features
 
 ### 🔬 **Comprehensive Content Format**
 - **YAML v2.0 Structure**: Complete metadata with before/after descriptions
-- **File Size**: 4.7-5.0KB per caption (enhanced from original ~700 bytes)
+- **File Size**: 3.5-4.0KB per caption (reduced from 4.7-5.0KB after machine settings extraction)
 - **Standardized Parameters**: 1000x magnification and 200 μm field of view
 - **Research-Based**: Material-specific contamination and property analysis
 
@@ -16,37 +16,32 @@ The Caption Component generates comprehensive, research-based image captions for
 - **Expert Authors**: Category-matched authors with regional expertise
 - **Contamination Analysis**: Material-specific contamination types and levels
 
-### 📊 **Complete Metadata Structure**
-- **Laser Parameters**: 9 comprehensive laser settings with real values
-- **Technical Specifications**: Detailed microscopy and analysis parameters
+### 📊 **Complete Metadata Structure (No Machine Settings)**
+- **Content Structure**: Before/after text descriptions with material analysis
+- **Technical Metadata**: Detailed microscopy and analysis parameters
 - **Chemical Properties**: Material-specific chemical composition data
 - **Quality Metrics**: 6-dimensional quality assessment scores
 - **SEO Optimization**: Complete SEO metadata and schema markup
 - **Accessibility**: Full accessibility information and descriptions
 
+### ⚠️ **Removed Components**
+- **Laser Parameters**: Moved to dedicated Settings component
+- **Technical Specifications**: Machine settings now in Settings component
+- **Machine Configuration**: All hardware specs moved to Settings component
+
 ## Generated Content Structure
 
 ```yaml
-# YAML v2.0 Format - Enhanced Caption Content
+# YAML v2.0 Format - Enhanced Caption Content (Machine Settings Removed)
 before_text: "Detailed analysis of contaminated surface..."
 after_text: "Post-cleaning analysis showing pristine surface..."
 
-laser_parameters:
-  wavelength: "1064 nm"
-  power: "850 W"
-  pulse_duration: "5 ns"
-  spot_size: "0.8 mm"
-  frequency: "20 kHz"
-  energy_density: "12.5 J/cm²"
-  scanning_speed: "150 mm/s"
-  beam_profile: "Gaussian"
-  pulse_overlap: "65%"
+material: "Material Name"
 
-material:
-  name: "Material Name"
-  category: "metal/ceramic/composite/polymer"
-  contamination_types: ["specific", "contamination", "types"]
-  cleaning_effectiveness: "95.2%"
+# Data Source and Quality Information
+data_completeness:
+  frontmatter_available: true
+  note: "Fail-fast component - requires complete frontmatter data"
 
 metadata:
   version: "2.0"
@@ -58,8 +53,28 @@ metadata:
   image_resolution: "3840x2160"
 
 # SEO and Accessibility sections...
-# Quality metrics and technical specifications...
+# Quality metrics and chemical properties...
+# Author information...
 ```
+
+## Component Separation
+
+### Caption Component Responsibilities
+- ✅ Image description content (before/after text)
+- ✅ Material identification and metadata
+- ✅ SEO optimization and keywords
+- ✅ Author information and expertise
+- ✅ Chemical properties and composition
+- ✅ Quality metrics and analysis results
+- ✅ Accessibility information
+
+### Settings Component Responsibilities (Extracted)
+- ❌ Laser parameters (wavelength, power, pulse duration)
+- ❌ Processing parameters (scanning speed, spot size)
+- ❌ Technical specifications (beam delivery, focus settings)
+- ❌ Machine configuration data
+
+**Note**: For machine settings, use the dedicated Settings component: `python3 run.py --material "steel" --components "settings"`
 
 ## File Organization
 

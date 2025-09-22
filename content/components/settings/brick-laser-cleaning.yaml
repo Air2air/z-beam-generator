@@ -1,0 +1,74 @@
+machineSettings:
+  settings:
+  - header: '## Laser System Configuration'
+    rows:
+    - parameter: Power Range
+      value: 50-200W
+      range: 20W - 500W
+      category: Laser Power
+    - parameter: Wavelength
+      value: 1064nm (primary), 532nm (optional)
+      range: 355nm - 2940nm
+      category: Optical
+    - parameter: Pulse Duration
+      value: 10-50ns
+      range: 1ns - 1000ns
+      category: Temporal
+    - parameter: Repetition Rate
+      value: 20-100kHz
+      range: 1kHz - 1000kHz
+      category: Timing
+  - header: '## Processing Parameters'
+    rows:
+    - parameter: Fluence Range
+      value: 1.0–10 J/cm²
+      range: 0.1J/cm² - 50J/cm²
+      category: Energy Density
+    - parameter: Spot Size
+      value: 0.5-3.0mm
+      range: 0.01mm - 10mm
+      category: Beam Geometry
+    - parameter: Scanning Speed
+      value: 50-200mm/s
+      range: 10mm/s - 1000mm/s
+      category: Motion Control
+    - parameter: Working Distance
+      value: 100-300mm
+      range: 50mm - 500mm
+      category: Positioning
+  - header: '## Safety Parameters'
+    rows:
+    - parameter: Safety Class
+      value: Class 4
+      range: Class 1 - Class 4
+      category: Laser Safety
+    - parameter: Beam Enclosure
+      value: Required
+      range: Required - Optional
+      category: Safety Equipment
+    - parameter: Ventilation Rate
+      value: 200-500 CFM
+      range: 100CFM - 1000CFM
+      category: Environmental Safety
+    - parameter: Emergency Stop
+      value: Required
+      range: Required - Required
+      category: Safety Controls
+  - header: '## Quality Control Settings'
+    rows:
+    - parameter: Surface Roughness Target
+      value: Ra 0.1-0.5μm
+      range: Ra 0.05μm - Ra 2.0μm
+      category: Surface Quality
+    - parameter: Cleaning Depth Control
+      value: 1-10μm
+      range: 0.1μm - 50μm
+      category: Material Removal
+    - parameter: Process Monitoring
+      value: Real-time optical
+      range: Manual - Real-time
+      category: Quality Assurance
+    - parameter: Repeatability
+      value: ±5%
+      range: ±1% - ±10%
+      category: Process Control

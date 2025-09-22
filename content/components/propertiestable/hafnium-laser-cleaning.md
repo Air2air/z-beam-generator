@@ -1,0 +1,21 @@
+| Property | Value |
+|----------|-------|
+| Material density | 13.31 g/cm³ |
+| Melting point | 2233°C |
+| Thermal conductivity | 23.0 W/m·K |
+| Laser type for cleaning | Pulsed Fiber Laser |
+| Laser wavelength | 1064nm |
+| Fluence range | 1.0–4.5 J/cm² |
+| Chemical formula or scientific symbol | Hf |
+
+
+---
+Version Log - Generated: 2025-09-21T20:26:30.163866
+Material: Unknown
+Component: propertiestable
+Generator: Z-Beam v1.0.0
+Component Version: 2.0.0
+Author: AI Assistant
+Platform: Darwin (3.12.4)
+Operation: generation
+---

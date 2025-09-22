@@ -49,6 +49,13 @@ is_valid, errors = frontmatter_manager.validate_material("Steel")
 ### "Winston.ai scoring technical content as 0%" / "AI detector shows poor results"
 **→ Immediate Response**: ✅ **SOLVED** - Winston.ai Composite Scoring Auto-Applied September 15, 2025
 **→ Quick Fix**: Use working command: `python3 run.py --material "copper" --components "text"`
+
+### "Settings files inconsistent" / "Missing machine settings sections"
+**→ Immediate Response**: ✅ **NORMALIZED** - 4-Section Structure Applied September 21, 2025
+**→ Quick Fix**: All 109 materials now have standardized settings structure
+**→ Structure**: Laser System Configuration, Processing Parameters, Safety Parameters, Quality Control Settings
+**→ Documentation**: [Settings Normalization Architecture](components/settings/docs/NORMALIZATION_ARCHITECTURE.md)
+**→ Testing**: `python3 components/settings/testing/test_settings_normalized.py`
 **→ Expected Output**: `🔧 [AI DETECTOR] Applying composite scoring for technical content...`
 **→ Results**: 0.0% → 59.5% automatic improvement for technical content
 **→ Documentation**: [Winston Composite Scoring](WINSTON_COMPOSITE_SCORING_INTEGRATION.md)

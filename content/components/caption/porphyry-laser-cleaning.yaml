@@ -9,29 +9,17 @@ after_text: |
   The porphyry substrate now exhibits pristine surface characteristics with minimal thermal effects.
   Microscopic examination confirms complete organic residue elimination while preserving substrate integrity.
 
-# YAML v2.0 Laser Parameters
-laser_parameters:
-  wavelength: 1064 nm (fundamental), 532 nm (second harmonic for selective absorption)
-  power: 20-100 W (average power for Q-switched systems)
-  pulse_duration: 5-30 ns (Q-switched Nd:YAG optimal for thermal control)
-  spot_size: 0.1-0.8 mm (diameter for precision work on heterogeneous mineral structure)
-  frequency: 10-50 kHz (optimized for thermal relaxation between pulses)
-  energy_density: 0.8-4.5 J/cm² (below feldspar ablation threshold of ~5 J/cm²)
-  scanning_speed: "200-800 mm/s (with 50% overlap for uniform cleaning)"
-  beam_profile: "Top-hat (flat-top) for uniform energy distribution across heterogeneous mineral phases"
-
 # Material Information
 material: "Porphyry"
 
 # Data Source and Quality Information
 data_completeness:
-  laser_parameters_source: "frontmatter"
   frontmatter_available: true
   note: "Fail-fast component - requires complete frontmatter data"
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-20T22:48:50.860549Z"
+  generated: "2025-09-20T23:45:22.548048Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
@@ -74,17 +62,6 @@ author_object:
     - "Materials Science"
     - "Optical Materials for Laser Systems"
 
-# Technical Specifications for SEO
-technicalSpecifications:
-  wavelength: "1064 nm (fundamental), 532 nm (second harmonic for selective absorption)"
-  power: "20-100 W (average power for Q-switched systems)"
-  pulse_duration: "5-30 ns (Q-switched Nd:YAG optimal for thermal control)"
-  scanning_speed: "200-800 mm/s (with 50% overlap for uniform cleaning)"
-  material: "Porphyry"
-  beam_delivery: "fiber optic"
-  focus_diameter: "0.1-0.8 mm (diameter for precision work on heterogeneous mineral structure)"
-  processing_atmosphere: "ambient air"
-
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
   composition: "Quartz (SiO₂): 40-70% (primary crystalline phase), Alkali Feldspar (KAlSi₃O₈/NaAlSi₃O₈): 20-40% (matrix material), Plagioclase Feldspar (CaAl₂Si₂O₈): 5-20%"
@@ -113,7 +90,7 @@ seo_data:
   og_image: "/images/porphyry-laser-cleaning-micro.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-20T22:48:50.860549Z"
+  last_modified: "2025-09-20T23:45:22.548048Z"
 
 # Quality Metrics
 quality_metrics:
@@ -131,7 +108,7 @@ accessibility:
 ---
 Material: "porphyry"
 Component: caption
-Generated: 2025-09-20T22:48:50.860549Z
+Generated: 2025-09-20T23:45:22.548048Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

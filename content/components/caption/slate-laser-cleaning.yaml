@@ -9,29 +9,17 @@ after_text: |
   The slate substrate now exhibits pristine surface characteristics with minimal thermal effects.
   Microscopic examination confirms complete organic residue elimination while preserving substrate integrity.
 
-# YAML v2.0 Laser Parameters
-laser_parameters:
-  wavelength: 1064 nm (primary), 532 nm (optional for specific contaminant types)
-  power: 20-100 W (average power for pulsed fiber lasers)
-  pulse_duration: 10-100 ns (nanosecond pulses optimal for controlled ablation)
-  spot_size: 0.1-2.0 mm (adjustable based on contamination type and area)
-  frequency: 10-50 kHz (optimized for thermal relaxation between pulses)
-  energy_density: 0.5-5 J/cm² (below slate ablation threshold of ~6 J/cm²)
-  scanning_speed: "100-2000 mm/s (variable based on contamination thickness)"
-  beam_profile: "Top-hat (flat-top) profile for uniform energy distribution"
-
 # Material Information
 material: "Slate"
 
 # Data Source and Quality Information
 data_completeness:
-  laser_parameters_source: "frontmatter"
   frontmatter_available: true
   note: "Fail-fast component - requires complete frontmatter data"
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-20T22:48:51.205579Z"
+  generated: "2025-09-20T23:45:22.825738Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
@@ -74,17 +62,6 @@ author_object:
     - "Materials Science"
     - "Ultrafast Laser Physics and Material Interactions"
 
-# Technical Specifications for SEO
-technicalSpecifications:
-  wavelength: "1064 nm (primary), 532 nm (optional for specific contaminant types)"
-  power: "20-100 W (average power for pulsed fiber lasers)"
-  pulse_duration: "10-100 ns (nanosecond pulses optimal for controlled ablation)"
-  scanning_speed: "100-2000 mm/s (variable based on contamination thickness)"
-  material: "Slate"
-  beam_delivery: "fiber optic"
-  focus_diameter: "0.1-2.0 mm (adjustable based on contamination type and area)"
-  processing_atmosphere: "ambient air"
-
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
   composition: "Quartz (SiO₂): 20-40%, Muscovite/Illite (KAl₂(AlSi₃O₁₀)(OH)₂): 30-50%, Chlorite ((Mg,Fe)₃(Si,Al)₄O₁₀(OH)₂·(Mg,Fe)₃(OH)₆): 10-25%"
@@ -113,7 +90,7 @@ seo_data:
   og_image: "/images/slate-laser-cleaning-micro.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-20T22:48:51.205579Z"
+  last_modified: "2025-09-20T23:45:22.825738Z"
 
 # Quality Metrics
 quality_metrics:
@@ -131,7 +108,7 @@ accessibility:
 ---
 Material: "slate"
 Component: caption
-Generated: 2025-09-20T22:48:51.205579Z
+Generated: 2025-09-20T23:45:22.825738Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

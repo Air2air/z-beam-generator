@@ -9,29 +9,17 @@ after_text: |
   The carbon fiber reinforced polymer substrate now exhibits pristine surface characteristics with minimal thermal damage.
   Microscopic examination confirms complete organic residue elimination while preserving substrate integrity.
 
-# YAML v2.0 Laser Parameters
-laser_parameters:
-  wavelength: 1064 nm (primary), 532 nm (optional for precise matrix removal)
-  power: 50-200 W (average power for pulsed fiber lasers)
-  pulse_duration: 10-200 ns
-  spot_size: 50-1000 µm (adjustable based on contamination type and area)
-  frequency: 20-100 kHz
-  energy_density: 1.0-10 J/cm² (above epoxy matrix ablation threshold of ~1.5 J/cm² at 1064nm)
-  scanning_speed: "100-2000 mm/s"
-  beam_profile: "Top-hat (flat-top) preferred for uniform energy distribution"
-
 # Material Information
 material: "Carbon Fiber Reinforced Polymer"
 
 # Data Source and Quality Information
 data_completeness:
-  laser_parameters_source: "frontmatter"
   frontmatter_available: true
   note: "Fail-fast component - requires complete frontmatter data"
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-20T22:48:47.566229Z"
+  generated: "2025-09-20T23:45:20.091439Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
@@ -74,17 +62,6 @@ author_object:
     - "Materials Science"
     - "Laser Materials Processing"
 
-# Technical Specifications for SEO
-technicalSpecifications:
-  wavelength: "1064 nm (primary), 532 nm (optional for precise matrix removal)"
-  power: "50-200 W (average power for pulsed fiber lasers)"
-  pulse_duration: "10-200 ns"
-  scanning_speed: "100-2000 mm/s"
-  material: "Carbon Fiber Reinforced Polymer"
-  beam_delivery: "fiber optic"
-  focus_diameter: "50-1000 µm (adjustable based on contamination type and area)"
-  processing_atmosphere: "ambient air"
-
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
   composition: "Carbon fiber: 50-70% (by volume), Epoxy resin matrix: 30-50% (typically DGEBA-based with hardeners), Additives: <5% (release agents, fillers, catalysts)"
@@ -113,7 +90,7 @@ seo_data:
   og_image: "/images/carbon-fiber-reinforced-polymer-laser-cleaning-micro.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-20T22:48:47.566229Z"
+  last_modified: "2025-09-20T23:45:20.091439Z"
 
 # Quality Metrics
 quality_metrics:
@@ -131,7 +108,7 @@ accessibility:
 ---
 Material: "carbon fiber reinforced polymer"
 Component: caption
-Generated: 2025-09-20T22:48:47.566229Z
+Generated: 2025-09-20T23:45:20.091439Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

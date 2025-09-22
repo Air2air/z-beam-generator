@@ -9,29 +9,17 @@ after_text: |
   The pyrex substrate now exhibits pristine surface characteristics with minimal heat-affected zone.
   Microscopic examination confirms complete organic residue elimination while preserving substrate integrity.
 
-# YAML v2.0 Laser Parameters
-laser_parameters:
-  wavelength: 1064 nm (primary), 532 nm (for higher precision applications)
-  power: 20-100 W (average power for pulsed fiber lasers)
-  pulse_duration: 10-100 ns
-  spot_size: 0.1-2.0 mm (adjustable based on contamination type)
-  frequency: 10-50 kHz
-  energy_density: 0.5-5 J/cm² (below the 8-10 J/cm² ablation threshold for pristine Pyrex)
-  scanning_speed: "100-1000 mm/s (depending on contamination thickness)"
-  beam_profile: "Top-hat or Gaussian (depending on application requirements)"
-
 # Material Information
 material: "Pyrex"
 
 # Data Source and Quality Information
 data_completeness:
-  laser_parameters_source: "frontmatter"
   frontmatter_available: true
   note: "Fail-fast component - requires complete frontmatter data"
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-20T22:48:48.151770Z"
+  generated: "2025-09-20T23:45:20.673604Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
@@ -74,17 +62,6 @@ author_object:
     - "Materials Science"
     - "Laser Materials Processing"
 
-# Technical Specifications for SEO
-technicalSpecifications:
-  wavelength: "1064 nm (primary), 532 nm (for higher precision applications)"
-  power: "20-100 W (average power for pulsed fiber lasers)"
-  pulse_duration: "10-100 ns"
-  scanning_speed: "100-1000 mm/s (depending on contamination thickness)"
-  material: "Pyrex"
-  beam_delivery: "fiber optic"
-  focus_diameter: "0.1-2.0 mm (adjustable based on contamination type)"
-  processing_atmosphere: "ambient air"
-
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
   composition: "Silicon dioxide (SiO₂): 80.6%, Boron trioxide (B₂O₃): 12.6%, Sodium oxide (Na₂O): 4.2%"
@@ -113,7 +90,7 @@ seo_data:
   og_image: "/images/pyrex-laser-cleaning-micro.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-20T22:48:48.151770Z"
+  last_modified: "2025-09-20T23:45:20.673604Z"
 
 # Quality Metrics
 quality_metrics:
@@ -131,7 +108,7 @@ accessibility:
 ---
 Material: "pyrex"
 Component: caption
-Generated: 2025-09-20T22:48:48.151770Z
+Generated: 2025-09-20T23:45:20.673604Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

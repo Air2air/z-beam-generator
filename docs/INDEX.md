@@ -49,6 +49,7 @@ Individual component documentation and guides
 - [**frontmatter/**](components/frontmatter/) - YAML frontmatter generation
 - [**bullets/**](components/bullets/) - Bullet point generation
 - [**table/**](components/table/) - Table generation
+- [**settings/**](components/settings/) - Machine settings with normalized 4-section structure *(September 2025 - NORMALIZED)*
 - [**metatags/**](components/metatags/) - HTML meta tag generation
 - [**jsonld/**](components/jsonld/) - JSON-LD structured data
 - [**frontmatter/**](components/frontmatter/) - Enhanced frontmatter management system *(September 2025 - DEPLOYED)*

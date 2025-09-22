@@ -9,29 +9,17 @@ after_text: |
   The zinc substrate now exhibits pristine surface characteristics with minimal thermal effects.
   Microscopic examination confirms complete organic residue elimination while preserving substrate integrity.
 
-# YAML v2.0 Laser Parameters
-laser_parameters:
-  wavelength: 1064nm (primary), 532nm (for higher precision)
-  power: 20-200W (pulsed)
-  pulse_duration: 10-200ns
-  spot_size: 0.1-1.0mm
-  frequency: 20-100kHz
-  energy_density: 1.0-10 J/cm² (ablation threshold ~1.0 J/cm²)
-  scanning_speed: "500-5000 mm/s"
-  beam_profile: "Top-hat (flat-top)"
-
 # Material Information
 material: "Zinc"
 
 # Data Source and Quality Information
 data_completeness:
-  laser_parameters_source: "frontmatter"
   frontmatter_available: true
   note: "Fail-fast component - requires complete frontmatter data"
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-20T22:48:50.402099Z"
+  generated: "2025-09-20T23:45:22.112887Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
@@ -74,17 +62,6 @@ author_object:
     - "Materials Science"
     - "Ultrafast Laser Physics and Material Interactions"
 
-# Technical Specifications for SEO
-technicalSpecifications:
-  wavelength: "1064nm (primary), 532nm (for higher precision)"
-  power: "20-200W (pulsed)"
-  pulse_duration: "10-200ns"
-  scanning_speed: "500-5000 mm/s"
-  material: "Zinc"
-  beam_delivery: "fiber optic"
-  focus_diameter: "0.1-1.0mm"
-  processing_atmosphere: "ambient air"
-
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
   composition: "Zinc (99.995+%) - High purity zinc for industrial applications, Lead (≤0.003%), Cadmium (≤0.003%), Iron (≤0.002%) - Common trace impurities"
@@ -113,7 +90,7 @@ seo_data:
   og_image: "/images/zinc-laser-cleaning-micro.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-20T22:48:50.402099Z"
+  last_modified: "2025-09-20T23:45:22.112887Z"
 
 # Quality Metrics
 quality_metrics:
@@ -131,7 +108,7 @@ accessibility:
 ---
 Material: "zinc"
 Component: caption
-Generated: 2025-09-20T22:48:50.402099Z
+Generated: 2025-09-20T23:45:22.112887Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

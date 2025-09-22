@@ -9,29 +9,17 @@ after_text: |
   The rosewood substrate now exhibits pristine surface characteristics with minimal char formation.
   Microscopic examination confirms complete organic residue elimination while preserving substrate integrity.
 
-# YAML v2.0 Laser Parameters
-laser_parameters:
-  wavelength: 1064 nm (primary for deep penetration), 532 nm (optional for finer surface work)
-  power: 20-100 W (average power for pulsed fiber lasers)
-  pulse_duration: 10-100 ns (nanosecond pulses standard for controlled ablation)
-  spot_size: 0.1-2.0 mm (adjustable for area coverage vs. precision)
-  frequency: 10-50 kHz (standard for efficient scanning)
-  energy_density: 0.5-5 J/cm² (operating range above ablation threshold but below charring threshold)
-  scanning_speed: "500-5000 mm/s (optimized for contamination type and desired removal rate)"
-  beam_profile: "Top-hat (flat-top) profile preferred for uniform energy distribution and consistent cleaning results."
-
 # Material Information
 material: "Rosewood"
 
 # Data Source and Quality Information
 data_completeness:
-  laser_parameters_source: "frontmatter"
   frontmatter_available: true
   note: "Fail-fast component - requires complete frontmatter data"
 
 # Technical Metadata
 metadata:
-  generated: "2025-09-20T22:48:52.208224Z"
+  generated: "2025-09-20T23:45:23.468213Z"
   format: "yaml"
   version: "2.0"
   analysis_method: "scanning_electron_microscopy"
@@ -74,17 +62,6 @@ author_object:
     - "Materials Science"
     - "Ultrafast Laser Physics and Material Interactions"
 
-# Technical Specifications for SEO
-technicalSpecifications:
-  wavelength: "1064 nm (primary for deep penetration), 532 nm (optional for finer surface work)"
-  power: "20-100 W (average power for pulsed fiber lasers)"
-  pulse_duration: "10-100 ns (nanosecond pulses standard for controlled ablation)"
-  scanning_speed: "500-5000 mm/s (optimized for contamination type and desired removal rate)"
-  material: "Rosewood"
-  beam_delivery: "fiber optic"
-  focus_diameter: "0.1-2.0 mm (adjustable for area coverage vs. precision)"
-  processing_atmosphere: "ambient air"
-
 # Chemical Properties for Enhanced SEO
 chemicalProperties:
   composition: "Cellulose: 40-50%, Lignin: 20-30%, Hemicellulose: 15-25%"
@@ -113,7 +90,7 @@ seo_data:
   og_image: "/images/rosewood-laser-cleaning-micro.jpg"
   twitter_card: "summary_large_image"
   schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-20T22:48:52.208224Z"
+  last_modified: "2025-09-20T23:45:23.468213Z"
 
 # Quality Metrics
 quality_metrics:
@@ -131,7 +108,7 @@ accessibility:
 ---
 Material: "rosewood"
 Component: caption
-Generated: 2025-09-20T22:48:52.208224Z
+Generated: 2025-09-20T23:45:23.468213Z
 Generator: Z-Beam v1.0.0
 Format: YAML v2.0
 ---

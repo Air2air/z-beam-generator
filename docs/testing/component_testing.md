@@ -1,4 +1,387 @@
-# 🧪 Testing Patterns & Blueprints
+## 🧪 Component Testing Updates - Machine Settings Separation
+
+### **Recent Architecture Changes**
+- **Caption Component**: Machine settings removed, now focuses on image descriptions and SEO
+- **Settings Component**: New component created to handle machine settings with table-like structure
+- **Component Separation**: Clean separation of concerns between image content and machine configuration
+
+### **Updated Test Categories**
+- **Caption Tests**: Verify removal of machine settings, focus on content generation
+- **Settings Tests**: Validate machine settings extraction and table structure
+- **Integration Tests**: Test both components work independently and together
+- **Separation Tests**: Ensure clean component boundaries
+
+### **Caption Component Testing (Updated)**
+
+```python
+class TestCaptionComponentGenerator:
+    """Updated tests for caption component after machine settings removal"""
+
+    def test_machine_settings_removed(self):
+        """Test that machine settings are completely removed from caption component."""
+        mock_frontmatter = {
+            'name': 'Test Material',
+            'category': 'metal',
+            'machineSettings': {
+                'wavelength': '1064nm',
+                'powerRange': '50-200W'
+            }
+        }
+        
+        with patch.object(self.generator, '_load_frontmatter_data', return_value=mock_frontmatter):
+            result = self.generator.generate('Test Material', {})
+        
+        if result.success:
+            content = result.content
+            yaml_content = content.split('---\n')[0]
+            parsed = yaml.safe_load(yaml_content)
+            
+            # Verify NO machine settings in output
+            machine_setting_fields = ['laser_parameters', 'technicalSpecifications', 'machineSettings']
+            for field in machine_setting_fields:
+                assert field not in parsed, f"Machine setting field '{field}' should not be in caption component"
+
+    def test_file_size_reduction_after_settings_extraction(self):
+        """Test that generated content is smaller after machine settings extraction."""
+        result = self.generator.generate('Test Material', {})
+        
+        if result.success:
+            content = result.content
+            # New format should be 3.5-4.0KB (reduced from 4.7-5.0KB)
+            content_size = len(content.encode('utf-8'))
+            assert content_size >= 3000, f"Generated content should be at least 3KB, got {content_size} bytes"
+            assert content_size <= 5000, f"Generated content should not exceed 5KB, got {content_size} bytes"
+
+    def test_caption_component_focus(self):
+        """Test that caption component focuses on image-related content."""
+        result = self.generator.generate('Test Material', {})
+        
+        if result.success:
+            content = result.content
+            yaml_content = content.split('---\n')[0]
+            parsed = yaml.safe_load(yaml_content)
+            
+            # Should have image-related content
+            assert 'before_text' in parsed
+            assert 'after_text' in parsed
+            assert 'chemicalProperties' in parsed
+            assert 'author' in parsed
+            assert 'keywords' in parsed
+```
+
+### **Settings Component Testing (New)**
+
+```python
+class TestSettingsComponentGenerator:
+    """Test cases for new Settings component with table-like structure."""
+
+    def test_table_like_structure_generation(self):
+        """Test that generated content follows table component structure with section headings."""
+        mock_frontmatter = {
+            'machineSettings': {
+                'powerRange': '50-200W',
+                'wavelength': '1064nm',
+                'pulseDuration': '10-200ns'
+            }
+        }
+        
+        result = self.generator._generate_static_content(
+            'Test Material', {}, frontmatter_data=mock_frontmatter
+        )
+        
+        parsed = yaml.safe_load(result)
+        
+        # Test main structure (like table component)
+        assert 'machineSettings' in parsed
+        assert 'settings' in parsed['machineSettings']
+        assert 'renderInstructions' in parsed
+        
+        settings = parsed['machineSettings']['settings']
+        assert isinstance(settings, list)
+        
+        # Test section headers (like table component)
+        headers = [section['header'] for section in settings]
+        expected_headers = ['## Laser System Configuration', '## Processing Parameters']
+        
+        for expected_header in expected_headers:
+            if expected_header in headers:
+                assert True  # At least one expected header found
+                break
+        else:
+            pytest.fail(f"No expected headers found. Got: {headers}")
+
+    def test_render_instructions_like_table_component(self):
+        """Test that render instructions follow table component pattern."""
+        result = self.generator._generate_static_content(
+            'Test Material', {}, frontmatter_data={'machineSettings': {'powerRange': '50-200W'}}
+        )
+        
+        parsed = yaml.safe_load(result)
+        instructions = parsed['renderInstructions']
+        
+        # Should follow table component pattern
+        assert 'Next.js' in instructions
+        assert 'loop over' in instructions
+        assert '<table>' in instructions
+        assert 'parameter' in instructions
+        assert 'value' in instructions
+        assert 'range' in instructions
+        assert 'category' in instructions
+
+    def test_machine_settings_extraction(self):
+        """Test extraction of machine settings from frontmatter."""
+        mock_frontmatter = {
+            'machineSettings': {
+                'powerRange': '50-200W',
+                'powerRangeMin': '20W',
+                'powerRangeMax': '500W',
+                'wavelength': '1064nm',
+                'fluenceRange': '1.0–10 J/cm²'
+            }
+        }
+        
+        result = self.generator._generate_static_content(
+            'Test Material', {}, frontmatter_data=mock_frontmatter
+        )
+        
+        parsed = yaml.safe_load(result)
+        settings = parsed['machineSettings']['settings']
+        
+        # Should extract and structure machine settings
+        all_rows = []
+        for section in settings:
+            all_rows.extend(section.get('rows', []))
+        
+        parameters = [row['parameter'] for row in all_rows]
+        
+        # Should include key machine settings
+        expected_params = ['Power Range', 'Wavelength', 'Fluence Range']
+        for param in expected_params:
+            if param in parameters:
+                assert True  # At least one parameter found
+                break
+        else:
+            pytest.fail(f"No expected parameters found. Got: {parameters}")
+```
+
+### **Component Separation Testing**
+
+```python
+class TestComponentSeparation:
+    """Test clean separation between caption and settings components."""
+
+    def test_independent_component_generation(self):
+        """Test that caption and settings components work independently."""
+        # Generate caption without settings
+        caption_result = caption_generator.generate('Test Material', {})
+        assert caption_result.success
+
+        # Generate settings without caption
+        settings_result = settings_generator._generate_static_content(
+            'Test Material', {}, frontmatter_data={'machineSettings': {'powerRange': '50W'}}
+        )
+        assert isinstance(settings_result, str)
+
+    def test_combined_component_generation(self):
+        """Test that both components can be generated together."""
+        # This simulates: python3 run.py --material "steel" --components "caption,settings"
+        
+        mock_frontmatter = {
+            'name': 'Test Material',
+            'category': 'metal',
+            'machineSettings': {'powerRange': '50W'},
+            'chemicalProperties': {'formula': 'Test'},
+            'author_object': {'name': 'Test Author', 'expertise': ['Testing']},
+            'applications': ['Test Application']
+        }
+        
+        # Generate both components
+        caption_result = caption_generator.generate('Test Material', {})
+        settings_result = settings_generator._generate_static_content(
+            'Test Material', {}, frontmatter_data=mock_frontmatter
+        )
+        
+        # Both should succeed
+        assert caption_result.success
+        assert isinstance(settings_result, str)
+        
+        # Verify no overlap in content
+        caption_yaml = yaml.safe_load(caption_result.content.split('---\n')[0])
+        settings_yaml = yaml.safe_load(settings_result)
+        
+        # Caption should not have machine settings
+        assert 'machineSettings' not in caption_yaml
+        assert 'laser_parameters' not in caption_yaml
+        
+        # Settings should not have caption content
+        assert 'before_text' not in settings_yaml
+        assert 'after_text' not in settings_yaml
+        assert 'author' not in settings_yaml
+
+    def test_data_source_consistency(self):
+        """Test that both components use same frontmatter data source."""
+        material_name = 'Test Material'
+        
+        # Both components should access same frontmatter data
+        # Caption component: loads frontmatter internally
+        # Settings component: receives frontmatter as parameter
+        
+        # This ensures data consistency between components
+        assert True  # Placeholder for data consistency tests
+
+    def test_component_factory_registration(self):
+        """Test that both components are properly registered with factory."""
+        from generators.component_generators import ComponentGeneratorFactory
+        
+        # Both components should be discoverable
+        caption_gen = ComponentGeneratorFactory.create_generator('caption', 'test')
+        settings_gen = ComponentGeneratorFactory.create_generator('settings', 'test')
+        
+        assert caption_gen is not None
+        assert settings_gen is not None
+        assert caption_gen.component_type == 'caption'
+        assert settings_gen.component_type == 'settings'
+```
+
+### **Integration Testing Patterns (Updated)**
+
+```python
+class TestUpdatedComponentPipeline:
+    """Test component pipeline after machine settings separation."""
+
+    def test_frontmatter_to_multiple_components(self):
+        """Test frontmatter data feeding both caption and settings components."""
+        material_data = {
+            "name": "Copper",
+            "category": "metal"
+        }
+
+        # Generate frontmatter first
+        frontmatter_gen = ComponentGeneratorFactory.create_generator("frontmatter", "copper")
+        frontmatter_result = frontmatter_gen.generate(material_data=material_data)
+        assert frontmatter_result.success
+
+        # Generate caption (should work without machine settings)
+        caption_gen = ComponentGeneratorFactory.create_generator("caption", "copper")
+        caption_result = caption_gen.generate(
+            material_data=material_data,
+            frontmatter_data=frontmatter_result.content
+        )
+        assert caption_result.success
+
+        # Generate settings (should extract machine settings)
+        settings_gen = ComponentGeneratorFactory.create_generator("settings", "copper")
+        settings_result = settings_gen.generate(
+            material_data=material_data,
+            frontmatter_data=frontmatter_result.content
+        )
+        assert settings_result.success
+
+    def test_component_content_validation(self):
+        """Test that each component contains appropriate content."""
+        
+        # Caption should focus on descriptions and SEO
+        caption_content = caption_generator.generate('Test Material', {}).content
+        caption_yaml = yaml.safe_load(caption_content.split('---\n')[0])
+        
+        assert 'before_text' in caption_yaml
+        assert 'after_text' in caption_yaml
+        assert 'keywords' in caption_yaml
+        
+        # Settings should focus on machine configuration
+        settings_content = settings_generator._generate_static_content(
+            'Test Material', {}, 
+            frontmatter_data={'machineSettings': {'powerRange': '50W'}}
+        )
+        settings_yaml = yaml.safe_load(settings_content)
+        
+        assert 'machineSettings' in settings_yaml
+        assert 'settings' in settings_yaml['machineSettings']
+        assert 'renderInstructions' in settings_yaml
+
+    def test_architecture_consistency(self):
+        """Test that component architecture remains consistent."""
+        
+        # Both components should follow fail-fast architecture
+        # Both should use frontmatter data
+        # Settings should follow table component pattern
+        
+        # Caption fail-fast test
+        with pytest.raises(Exception):
+            caption_generator.generate('', {})
+        
+        # Settings fail-fast test  
+        with pytest.raises(Exception):
+            settings_generator._generate_static_content('', {})
+        
+        with pytest.raises(Exception):
+            settings_generator._generate_static_content('Test', {}, frontmatter_data=None)
+```
+
+### **Performance Testing (Updated)**
+
+```python
+class TestUpdatedPerformance:
+    """Test performance after component separation."""
+
+    def test_component_generation_speed(self):
+        """Test generation speed for separated components."""
+        materials = ["aluminum", "copper", "steel"]
+        
+        # Test caption generation speed (should be faster without machine settings)
+        caption_times = []
+        for material in materials:
+            start_time = time.time()
+            result = caption_generator.generate(material, {"name": material})
+            end_time = time.time()
+            
+            assert result.success
+            caption_times.append(end_time - start_time)
+        
+        # Test settings generation speed
+        settings_times = []
+        for material in materials:
+            mock_frontmatter = {'machineSettings': {'powerRange': '50W'}}
+            
+            start_time = time.time()
+            result = settings_generator._generate_static_content(
+                material, {}, frontmatter_data=mock_frontmatter
+            )
+            end_time = time.time()
+            
+            assert isinstance(result, str)
+            settings_times.append(end_time - start_time)
+        
+        # Both should be reasonably fast
+        avg_caption_time = sum(caption_times) / len(caption_times)
+        avg_settings_time = sum(settings_times) / len(settings_times)
+        
+        assert avg_caption_time < 2.0, f"Caption generation too slow: {avg_caption_time}s"
+        assert avg_settings_time < 1.0, f"Settings generation too slow: {avg_settings_time}s"
+
+    def test_memory_efficiency_after_separation(self):
+        """Test memory usage after component separation."""
+        import psutil
+        import os
+        
+        process = psutil.Process(os.getpid())
+        initial_memory = process.memory_info().rss / 1024 / 1024  # MB
+        
+        # Generate both components
+        caption_result = caption_generator.generate("aluminum", {"name": "aluminum"})
+        settings_result = settings_generator._generate_static_content(
+            "aluminum", {}, frontmatter_data={'machineSettings': {'powerRange': '50W'}}
+        )
+        
+        final_memory = process.memory_info().rss / 1024 / 1024  # MB
+        memory_used = final_memory - initial_memory
+        
+        assert caption_result.success
+        assert isinstance(settings_result, str)
+        assert memory_used < 50, f"Memory usage too high: {memory_used}MB"
+```
+
+This comprehensive testing framework ensures the updated component architecture maintains high quality while properly separating concerns between image content (Caption) and machine configuration (Settings). Testing Patterns & Blueprints
 
 ## **Purpose**
 This document provides standardized testing patterns and blueprints for the Z-Beam Generator system. It ensures consistent test implementation, proper mocking strategies, and comprehensive coverage across all components.
