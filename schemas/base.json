@@ -82,10 +82,10 @@
             "description": "Author or organization name",
             "example": "Laser Technology Institute"
           },
-          "credentials": {
+          "appellation": {
             "type": "string",
             "required": true,
-            "description": "Author credentials for E-A-T",
+            "description": "Author appellation for E-A-T",
             "example": "Industry Leader in Laser Cleaning Technology"
           }
         }
@@ -320,7 +320,7 @@
         "description": "description",
         "website": "url",
         "author.name": "author.name",
-        "author.credentials": "author.description",
+        "author.appellation": "author.description",
         "keywords": "keywords",
         "tags": "about.category",
         "applications": "hasPart",

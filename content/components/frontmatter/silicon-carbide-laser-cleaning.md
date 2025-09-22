@@ -3,12 +3,7 @@ name: Silicon Carbide
 category: semiconductor
 title: Silicon Carbide Laser Cleaning
 headline: Comprehensive technical guide for laser cleaning semiconductor silicon carbide
-description: "Laser cleaning of Silicon Carbide utilizes precise pulsed laser ablation\
-  \ to remove surface contaminants without damaging the underlying substrate. The\
-  \ high thermal conductivity (490 W/m\xB7K) and extreme hardness (Mohs 9.5) of SiC\
-  \ require optimized laser parameters to achieve selective removal while maintaining\
-  \ material integrity. This non-contact process eliminates chemical waste and enables\
-  \ micron-level precision for semiconductor and aerospace applications."
+description: "Laser cleaning of Silicon Carbide utilizes precise pulsed laser ablation to remove surface contaminants without damaging the underlying substrate. The high thermal conductivity (490 W/m·K) and extreme hardness (Mohs 9.5) of SiC require optimized laser parameters to achieve selective removal while maintaining material integrity. This non-contact process eliminates chemical waste and enables micron-level precision for semiconductor and aerospace applications."
 keywords: silicon carbide, silicon carbide semiconductor, laser ablation, laser cleaning,
   non-contact cleaning, pulsed fiber laser, surface contamination removal, industrial
   laser parameters, thermal processing, surface restoration
@@ -17,35 +12,35 @@ chemicalProperties:
   formula: SiC
   materialType: semiconductor
 properties:
-  density: "3.21 g/cm\xB3"
+  density: "3.21 g/cm³"
   densityNumeric: 3.21
-  densityUnit: "g/cm\xB3"
-  densityMin: "1.8 g/cm\xB3"
+  densityUnit: "g/cm³"
+  densityMin: "1.8 g/cm³"
   densityMinNumeric: 1.8
-  densityMinUnit: "g/cm\xB3"
-  densityMax: "6.0 g/cm\xB3"
+  densityMinUnit: "g/cm³"
+  densityMax: "6.0 g/cm³"
   densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm\xB3"
+  densityMaxUnit: "g/cm³"
   densityPercentile: 33.6
-  meltingPoint: "2730\xB0C"
+  meltingPoint: "2730°C"
   meltingPointNumeric: 2730
-  meltingPointUnit: "\xB0C"
-  meltingPointMin: "1200\xB0C"
+  meltingPointUnit: "°C"
+  meltingPointMin: "1200°C"
   meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "\xB0C"
-  meltingPointMax: "2800\xB0C"
+  meltingPointMinUnit: "°C"
+  meltingPointMax: "2800°C"
   meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "\xB0C"
+  meltingPointMaxUnit: "°C"
   meltingPercentile: 95.6
-  thermalConductivity: "490 W/m\xB7K (at room temperature)"
+  thermalConductivity: "490 W/m·K (at room temperature)"
   thermalConductivityNumeric: 490.0
-  thermalConductivityUnit: "W/m\xB7K"
-  thermalConductivityMin: "0.5 W/m\xB7K"
+  thermalConductivityUnit: "W/m·K"
+  thermalConductivityMin: "0.5 W/m·K"
   thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m\xB7K"
-  thermalConductivityMax: "200 W/m\xB7K"
+  thermalConductivityMinUnit: "W/m·K"
+  thermalConductivityMax: "200 W/m·K"
   thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m\xB7K"
+  thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 100.0
   tensileStrength: 390 MPa (sintered alpha-SiC)
   tensileStrengthNumeric: 390.0
@@ -57,9 +52,9 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 35.8
-  hardness: "9.5 Mohs (2800-3200 kg/mm\xB2 Vickers)"
+  hardness: "9.5 Mohs (2800-3200 kg/mm² Vickers)"
   hardnessNumeric: 3000.0
-  hardnessUnit: "kg/mm\xB2"
+  hardnessUnit: "kg/mm²"
   hardnessMin: 1 Mohs
   hardnessMinNumeric: 1.0
   hardnessMinUnit: Mohs
@@ -79,7 +74,7 @@ properties:
   modulusPercentile: 100.0
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "1.0\u201310 J/cm\xB2"
+  fluenceRange: "1.0\u201310 J/cm²"
   chemicalFormula: SiC
   thermalBehaviorType: melting
 composition:
@@ -131,15 +126,15 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0\u201310 J/cm\xB2"
+  fluenceRange: "1.0\u201310 J/cm²"
   fluenceRangeNumeric: 1.0
-  fluenceRangeUnit: "J/cm\xB2"
-  fluenceRangeMin: "0.1J/cm\xB2"
+  fluenceRangeUnit: "J/cm²"
+  fluenceRangeMin: "0.1J/cm²"
   fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm\xB2"
-  fluenceRangeMax: "50J/cm\xB2"
+  fluenceRangeMinUnit: "J/cm²"
+  fluenceRangeMax: "50J/cm²"
   fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm\xB2"
+  fluenceRangeMaxUnit: "J/cm²"
 applications:
 - 'Semiconductor Manufacturing: Removal of surface contaminants for improved semiconductor
   performance'
@@ -179,10 +174,9 @@ environmentalImpact:
     consumption of 3-5 kWh per cleaning cycle
 outcomes:
 - result: Surface contamination removal efficiency
-  metric: ">99.9% removal of sub-micron particles and organic residues with surface\
-    \ roughness maintained below 0.5 \u03BCm Ra"
+  metric: ">99.9% removal of sub-micron particles and organic residues with surface roughness maintained below 0.5 \u03BCm Ra"
 - result: Processing throughput
-  metric: "50-200 cm\xB2/min cleaning rate with positioning accuracy of \xB15 \u03BC\
+  metric: "50-200 cm²/min cleaning rate with positioning accuracy of ±5 \u03BC"
     m for semiconductor-grade SiC wafers"
 technicalSpecifications:
   powerRange: 50-200 W (average power for pulsed fiber lasers)
@@ -190,7 +184,7 @@ technicalSpecifications:
   wavelength: 1064 nm (primary), 532 nm (frequency-doubled for higher precision)
   spotSize: "50-500 \u03BCm (adjustable based on contamination type and area)"
   repetitionRate: 20-100 kHz (optimized for thermal management and removal efficiency)
-  fluenceRange: "2.5-8.0 J/cm\xB2 (above ablation threshold for SiC)"
+  fluenceRange: "2.5-8.0 J/cm² (above ablation threshold for SiC)"
   scanningSpeed: 100-2000 mm/s (dependent on contamination thickness and laser parameters)
   beamProfile: Top-hat or flat-top profile for uniform energy distribution
   beamProfileOptions: Gaussian, Top-hat, Multimode
@@ -208,7 +202,7 @@ prompt_chain_verification:
   cultural_adaptation_applied: true
 chemicalFormula: SiC
 laser_parameters:
-  fluence_threshold: "1.0\u201310 J/cm\xB2"
+  fluence_threshold: "1.0\u201310 J/cm²"
   pulse_duration: 10-50ns
   wavelength_optimal: 1064nm
   power_range: 50-200W

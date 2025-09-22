@@ -18,32 +18,32 @@ chemicalProperties:
   formula: C10H8O4 (Base resin repeat unit) + SiO2 (Glass fiber)
   materialType: composite
 properties:
-  density: "1.2-2.0 g/cm\xB3 (Varies with glass fiber content)"
+  density: "1.2-2.0 g/cm³ (Varies with glass fiber content)"
   densityNumeric: 1.6
-  densityUnit: "g/cm\xB3"
-  densityMin: "1.8 g/cm\xB3"
+  densityUnit: "g/cm³"
+  densityMin: "1.8 g/cm³"
   densityMinNumeric: 1.8
-  densityMinUnit: "g/cm\xB3"
-  densityMax: "6.0 g/cm\xB3"
+  densityMinUnit: "g/cm³"
+  densityMax: "6.0 g/cm³"
   densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm\xB3"
+  densityMaxUnit: "g/cm³"
   densityPercentile: 0.0
-  meltingPointMin: "1200\xB0C"
+  meltingPointMin: "1200°C"
   meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "\xB0C"
-  meltingPointMax: "2800\xB0C"
+  meltingPointMinUnit: "°C"
+  meltingPointMax: "2800°C"
   meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "\xB0C"
+  meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "0.17-0.25 W/(m\xB7K)"
+  thermalConductivity: "0.17-0.25 W/(m·K)"
   thermalConductivityNumeric: 0.21
   thermalConductivityUnit: W/
-  thermalConductivityMin: "0.5 W/m\xB7K"
+  thermalConductivityMin: "0.5 W/m·K"
   thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m\xB7K"
-  thermalConductivityMax: "200 W/m\xB7K"
+  thermalConductivityMinUnit: "W/m·K"
+  thermalConductivityMax: "200 W/m·K"
   thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m\xB7K"
+  thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.0
   tensileStrength: 30-150 MPa (Varies with fiber orientation and content)
   tensileStrengthNumeric: 90.0
@@ -77,12 +77,12 @@ properties:
   modulusPercentile: 0.0
   laserType: Pulsed Fiber Laser
   wavelength: 1064 nm
-  fluenceRange: "0.5-5 J/cm\xB2"
+  fluenceRange: "0.5-5 J/cm²"
   chemicalFormula: N/A (Composite Material)
   thermalBehaviorType: decomposition
-  decompositionPoint: "220\xB0C"
+  decompositionPoint: "220°C"
   decompositionPointNumeric: 220
-  decompositionPointUnit: "\xB0C"
+  decompositionPointUnit: "°C"
 composition:
 - Unsaturated Polyester Resin (30-50%)
 - E-glass or S-glass fibers (50-70%)
@@ -134,15 +134,15 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "0.5-5 J/cm\xB2"
+  fluenceRange: "0.5-5 J/cm²"
   fluenceRangeNumeric: 2.75
-  fluenceRangeUnit: "J/cm\xB2"
-  fluenceRangeMin: "0.1J/cm\xB2"
+  fluenceRangeUnit: "J/cm²"
+  fluenceRangeMin: "0.1J/cm²"
   fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm\xB2"
-  fluenceRangeMax: "50J/cm\xB2"
+  fluenceRangeMinUnit: "J/cm²"
+  fluenceRangeMax: "50J/cm²"
   fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm\xB2"
+  fluenceRangeMaxUnit: "J/cm²"
 applications:
 - 'Automotive: Surface preparation for painting and bonding'
 - 'Aerospace: Cleaning and restoration of composite parts'
@@ -179,18 +179,16 @@ environmentalImpact:
     overall energy use by ~40% compared to abrasive blasting.
 outcomes:
 - result: Contaminant Removal Efficiency
-  metric: ">99% removal of paints, oils, and release agents with a surface roughness\
-    \ (Ra) change of <5 \xB5m."
+  metric: ">99% removal of paints, oils, and release agents with a surface roughness (Ra) change of <5 µm."
 - result: Processing Throughput
-  metric: "Achieves cleaning rates of 2-10 m\xB2/hour depending on contaminant type\
-    \ and laser parameters."
+  metric: "Achieves cleaning rates of 2-10 m²/hour depending on contaminant type and laser parameters."
 technicalSpecifications:
   powerRange: 20-100 W
   pulseDuration: 10-100 ns
   wavelength: 1064 nm (primary), 532 nm (optional for finer control)
   spotSize: 0.1-2.0 mm
   repetitionRate: 10-50 kHz
-  fluenceRange: "0.5-5 J/cm\xB2"
+  fluenceRange: "0.5-5 J/cm²"
   scanningSpeed: 100-2000 mm/s
   beamProfile: Top-hat (flat-top)
   beamProfileOptions: Top-hat, Gaussian, Multi-mode
@@ -207,7 +205,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "0.5-5 J/cm\xB2"
+  fluence_threshold: "0.5-5 J/cm²"
   pulse_duration: 10-100ns
   wavelength_optimal: 1064 nm
   power_range: 20-100W

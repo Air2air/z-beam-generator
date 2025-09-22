@@ -16,35 +16,35 @@ chemicalProperties:
   formula: CaCO3
   materialType: sedimentary rock
 properties:
-  density: "2.3-2.7 g/cm\xB3 (varies with porosity and composition)"
+  density: "2.3-2.7 g/cm³ (varies with porosity and composition)"
   densityNumeric: 2.5
-  densityUnit: "g/cm\xB3"
-  densityMin: "1.8 g/cm\xB3"
+  densityUnit: "g/cm³"
+  densityMin: "1.8 g/cm³"
   densityMinNumeric: 1.8
-  densityMinUnit: "g/cm\xB3"
-  densityMax: "6.0 g/cm\xB3"
+  densityMinUnit: "g/cm³"
+  densityMax: "6.0 g/cm³"
   densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm\xB3"
+  densityMaxUnit: "g/cm³"
   densityPercentile: 16.7
-  meltingPoint: "825\xB0C"
+  meltingPoint: "825°C"
   meltingPointNumeric: 825.0
-  meltingPointUnit: "\xB0C"
-  meltingPointMin: "1200\xB0C"
+  meltingPointUnit: "°C"
+  meltingPointMin: "1200°C"
   meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "\xB0C"
-  meltingPointMax: "2800\xB0C"
+  meltingPointMinUnit: "°C"
+  meltingPointMax: "2800°C"
   meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "\xB0C"
+  meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "1.26-1.33 W/(m\xB7K) at 20\xB0C"
+  thermalConductivity: "1.26-1.33 W/(m·K) at 20°C"
   thermalConductivityNumeric: 1.29
   thermalConductivityUnit: W/
-  thermalConductivityMin: "0.5 W/m\xB7K"
+  thermalConductivityMin: "0.5 W/m·K"
   thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m\xB7K"
-  thermalConductivityMax: "200 W/m\xB7K"
+  thermalConductivityMinUnit: "W/m·K"
+  thermalConductivityMax: "200 W/m·K"
   thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m\xB7K"
+  thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.4
   tensileStrength: 3-10 MPa (highly variable based on porosity and structure)
   tensileStrengthNumeric: 6.5
@@ -78,7 +78,7 @@ properties:
   modulusPercentile: 33.3
   laserType: Nd:YAG
   wavelength: 1064nm
-  fluenceRange: "0.5\u20135 J/cm\xB2"
+  fluenceRange: "0.5\u20135 J/cm²"
   chemicalFormula: CaCO3
   thermalBehaviorType: melting
 composition:
@@ -133,15 +133,15 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "0.5\u20135 J/cm\xB2"
+  fluenceRange: "0.5\u20135 J/cm²"
   fluenceRangeNumeric: 0.5
-  fluenceRangeUnit: "J/cm\xB2"
-  fluenceRangeMin: "0.1J/cm\xB2"
+  fluenceRangeUnit: "J/cm²"
+  fluenceRangeMin: "0.1J/cm²"
   fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm\xB2"
-  fluenceRangeMax: "50J/cm\xB2"
+  fluenceRangeMinUnit: "J/cm²"
+  fluenceRangeMax: "50J/cm²"
   fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm\xB2"
+  fluenceRangeMaxUnit: "J/cm²"
 applications:
 - 'Construction: Cleaning of limestone facades and sculptures for restoration'
 - 'Heritage Conservation: Non-destructive cleaning of historical limestone monuments'
@@ -181,18 +181,16 @@ environmentalImpact:
     facade restoration project
 outcomes:
 - result: Surface contamination removal efficiency
-  metric: ">95% removal of black crusts and biological patinas with substrate preservation\
-    \ accuracy of \xB150 microns"
+  metric: ">95% removal of black crusts and biological patinas with substrate preservation accuracy of ±50 microns"
 - result: Processing speed
-  metric: "0.5-2.0 m\xB2/hour depending on contamination thickness and complexity,\
-    \ with repeatability of \xB12% across large surfaces"
+  metric: "0.5-2.0 m²/hour depending on contamination thickness and complexity, with repeatability of ±2% across large surfaces"
 technicalSpecifications:
   powerRange: 20-100 W (average power for pulsed Nd:YAG systems)
   pulseDuration: 10-100 ns
   wavelength: 1064 nm (fundamental), 532 nm (second harmonic for enhanced absorption)
   spotSize: 0.1-2.0 mm (adjustable based on contamination type and surface geometry)
   repetitionRate: 10-50 kHz
-  fluenceRange: "0.5-5 J/cm\xB2 (depending on contamination type and limestone porosity)"
+  fluenceRange: "0.5-5 J/cm² (depending on contamination type and limestone porosity)"
   scanningSpeed: 100-2000 mm/s (optimized for specific contamination removal rates)
   beamProfile: Top-hat (flat-top) profile preferred for uniform energy distribution
   beamProfileOptions: Top-hat, Gaussian, Multimode
@@ -210,7 +208,7 @@ prompt_chain_verification:
   cultural_adaptation_applied: true
 chemicalFormula: CaCO3
 laser_parameters:
-  fluence_threshold: "0.5\u20135 J/cm\xB2"
+  fluence_threshold: "0.5\u20135 J/cm²"
   pulse_duration: 10-100ns
   wavelength_optimal: 1064nm
   power_range: 20-100W

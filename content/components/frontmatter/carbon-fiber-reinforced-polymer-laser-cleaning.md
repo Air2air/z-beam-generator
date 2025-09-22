@@ -4,46 +4,41 @@ category: composite
 title: Carbon Fiber Reinforced Polymer Laser Cleaning
 headline: Comprehensive technical guide for laser cleaning composite carbon fiber
   reinforced polymer
-description: "Laser cleaning of CFRP utilizes precise pulsed laser ablation to remove\
-  \ surface contaminants while preserving the structural integrity of the carbon fiber\
-  \ and epoxy matrix. The process exploits differential absorption characteristics\
-  \ between contaminants and the composite substrate, with optimal parameters carefully\
-  \ balanced to avoid matrix degradation (>300\xB0C) or fiber damage."
+description: "Laser cleaning of CFRP utilizes precise pulsed laser ablation to remove surface contaminants while preserving the structural integrity of the carbon fiber and epoxy matrix. The process exploits differential absorption characteristics between contaminants and the composite substrate, with optimal parameters carefully balanced to avoid matrix degradation (>300°C) or fiber damage."
 keywords: carbon fiber reinforced polymer, CFRP, laser ablation, laser cleaning, non-contact
   cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters,
   thermal processing, surface restoration
 chemicalProperties:
   symbol: CFRP
-  formula: "C\u2099/(C\u2082\u2081H\u2082\u2085ClO\u2085)\u2099 (Carbon fiber/Epoxy\
-    \ matrix representative composition)"
+  formula: "C\u2099/(C\u2082\u2081H\u2082\u2085ClO\u2085)\u2099 (Carbon fiber/Epoxy matrix representative composition)"
   materialType: composite
 properties:
-  density: "1.5-1.6 g/cm\xB3 (typical for aerospace-grade CFRP)"
+  density: "1.5-1.6 g/cm³ (typical for aerospace-grade CFRP)"
   densityNumeric: 1.55
-  densityUnit: "g/cm\xB3"
-  densityMin: "1.8 g/cm\xB3"
+  densityUnit: "g/cm³"
+  densityMin: "1.8 g/cm³"
   densityMinNumeric: 1.8
-  densityMinUnit: "g/cm\xB3"
-  densityMax: "6.0 g/cm\xB3"
+  densityMinUnit: "g/cm³"
+  densityMax: "6.0 g/cm³"
   densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm\xB3"
+  densityMaxUnit: "g/cm³"
   densityPercentile: 0.0
-  meltingPointMin: "1200\xB0C"
+  meltingPointMin: "1200°C"
   meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "\xB0C"
-  meltingPointMax: "2800\xB0C"
+  meltingPointMinUnit: "°C"
+  meltingPointMax: "2800°C"
   meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "\xB0C"
+  meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "0.8-1.1 W/(m\xB7K) (through-thickness), 5-7 W/(m\xB7K) (in-plane)"
+  thermalConductivity: "0.8-1.1 W/(m·K) (through-thickness), 5-7 W/(m·K) (in-plane)"
   thermalConductivityNumeric: 0.95
   thermalConductivityUnit: W/
-  thermalConductivityMin: "0.5 W/m\xB7K"
+  thermalConductivityMin: "0.5 W/m·K"
   thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m\xB7K"
-  thermalConductivityMax: "200 W/m\xB7K"
+  thermalConductivityMinUnit: "W/m·K"
+  thermalConductivityMax: "200 W/m·K"
   thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m\xB7K"
+  thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.2
   tensileStrength: 1500-3500 MPa (fiber direction)
   tensileStrengthNumeric: 2500.0
@@ -77,7 +72,7 @@ properties:
   modulusPercentile: 100.0
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "1.0\u201310 J/cm\xB2"
+  fluenceRange: "1.0\u201310 J/cm²"
   chemicalFormula: "C\u2099/(C\u2082\u2081H\u2082\u2085ClO\u2085)\u2099"
   thermalBehaviorType: decomposition
 composition:
@@ -130,15 +125,15 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0\u201310 J/cm\xB2"
+  fluenceRange: "1.0\u201310 J/cm²"
   fluenceRangeNumeric: 1.0
-  fluenceRangeUnit: "J/cm\xB2"
-  fluenceRangeMin: "0.1J/cm\xB2"
+  fluenceRangeUnit: "J/cm²"
+  fluenceRangeMin: "0.1J/cm²"
   fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm\xB2"
-  fluenceRangeMax: "50J/cm\xB2"
+  fluenceRangeMinUnit: "J/cm²"
+  fluenceRangeMax: "50J/cm²"
   fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm\xB2"
+  fluenceRangeMaxUnit: "J/cm²"
 applications:
 - 'Aerospace: Removal of release agents and surface contaminants from CFRP parts'
 - 'Automotive: Cleaning of CFRP components for improved bonding and painting'
@@ -175,18 +170,16 @@ environmentalImpact:
     processed) versus chemical waste streams from traditional cleaning methods
 outcomes:
 - result: Surface cleanliness Level A per SAE AIR 4844
-  metric: "Contact angle reduction to <40\xB0 for improved adhesion, surface energy\
-    \ >55 mN/m"
+  metric: "Contact angle reduction to <40° for improved adhesion, surface energy >55 mN/m"
 - result: Selective contamination removal
-  metric: "Matrix removal depth control <5\xB5m with >95% contamination removal efficiency"
+  metric: "Matrix removal depth control <5µm with >95% contamination removal efficiency"
 technicalSpecifications:
   powerRange: 50-200 W (average power for pulsed fiber lasers)
   pulseDuration: 10-200 ns
   wavelength: 1064 nm (primary), 532 nm (optional for precise matrix removal)
-  spotSize: "50-1000 \xB5m (adjustable based on contamination type and area)"
+  spotSize: "50-1000 µm (adjustable based on contamination type and area)"
   repetitionRate: 20-100 kHz
-  fluenceRange: "1.0-10 J/cm\xB2 (above epoxy matrix ablation threshold of ~1.5 J/cm\xB2\
-    \ at 1064nm)"
+  fluenceRange: "1.0-10 J/cm² (above epoxy matrix ablation threshold of ~1.5 J/cm² at 1064nm)"
   scanningSpeed: 100-2000 mm/s
   beamProfile: Top-hat (flat-top) preferred for uniform energy distribution
   beamProfileOptions: Top-hat, Gaussian, Multimode
@@ -203,7 +196,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "1.0\u201310 J/cm\xB2"
+  fluence_threshold: "1.0\u201310 J/cm²"
   pulse_duration: 10-200ns
   wavelength_optimal: 1064nm
   power_range: 50-200W

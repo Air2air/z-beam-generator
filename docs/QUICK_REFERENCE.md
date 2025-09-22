@@ -53,7 +53,7 @@ is_valid, errors = frontmatter_manager.validate_material("Steel")
 ### "Settings files inconsistent" / "Missing machine settings sections"
 **→ Immediate Response**: ✅ **NORMALIZED** - 4-Section Structure Applied September 21, 2025
 **→ Quick Fix**: All 109 materials now have standardized settings structure
-**→ Structure**: Laser System Configuration, Processing Parameters, Safety Parameters, Quality Control Settings
+**→ Structure**: Machine Configuration, Processing Parameters, Safety Parameters, Quality Control Settings
 **→ Documentation**: [Settings Normalization Architecture](components/settings/docs/NORMALIZATION_ARCHITECTURE.md)
 **→ Testing**: `python3 components/settings/testing/test_settings_normalized.py`
 **→ Expected Output**: `🔧 [AI DETECTOR] Applying composite scoring for technical content...`

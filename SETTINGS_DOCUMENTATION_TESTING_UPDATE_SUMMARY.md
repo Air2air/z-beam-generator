@@ -80,7 +80,7 @@ Following the successful normalization of the Settings Component to a standardiz
 
 #### Test Coverage:
 1. **Normalized 4-Section Structure** - Validates exactly 4 sections with correct headers
-2. **Laser System Configuration Section** - Tests required parameters and structure
+2. **Machine Configuration Section** - Tests required parameters and structure
 3. **Processing Parameters Section** - Validates processing parameter requirements
 4. **Safety Parameters Section** - Tests safety-specific parameters and categories
 5. **Quality Control Settings Section** - Validates quality control parameters

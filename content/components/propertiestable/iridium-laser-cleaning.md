@@ -2,15 +2,12 @@
 |----------|-------|
 | Density | 22.56 g/cm³ |
 | Melting Point | 2466°C |
-| Thermal Cond. | 147 W/m·K |
-| Laser Type | Pulsed Fiber Laser |
-| Wavelength | 1064nm |
-| Fluence Range | 1.0–4.5 J/cm² |
+| Conductivity | 147 W/m·K |
 | Formula | Ir |
 
 
 ---
-Version Log - Generated: 2025-09-21T20:52:21.943507
+Version Log - Generated: 2025-09-21T22:01:14.639350
 Material: Unknown
 Component: propertiestable
 Generator: Z-Beam v1.0.0

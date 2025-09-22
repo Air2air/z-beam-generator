@@ -17,35 +17,35 @@ chemicalProperties:
   formula: Variable (composite rock)
   materialType: sedimentary rock
 properties:
-  density: "2.5-2.8 g/cm\xB3 (varies with composition)"
+  density: "2.5-2.8 g/cm³ (varies with composition)"
   densityNumeric: 2.65
-  densityUnit: "g/cm\xB3"
-  densityMin: "1.8 g/cm\xB3"
+  densityUnit: "g/cm³"
+  densityMin: "1.8 g/cm³"
   densityMinNumeric: 1.8
-  densityMinUnit: "g/cm\xB3"
-  densityMax: "6.0 g/cm\xB3"
+  densityMinUnit: "g/cm³"
+  densityMax: "6.0 g/cm³"
   densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm\xB3"
+  densityMaxUnit: "g/cm³"
   densityPercentile: 20.2
-  meltingPoint: "1400\xB0C"
+  meltingPoint: "1400°C"
   meltingPointNumeric: 1400
-  meltingPointUnit: "\xB0C"
-  meltingPointMin: "1200\xB0C"
+  meltingPointUnit: "°C"
+  meltingPointMin: "1200°C"
   meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "\xB0C"
-  meltingPointMax: "2800\xB0C"
+  meltingPointMinUnit: "°C"
+  meltingPointMax: "2800°C"
   meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "\xB0C"
+  meltingPointMaxUnit: "°C"
   meltingPercentile: 6.2
-  thermalConductivity: "2.0-3.5 W/(m\xB7K)"
+  thermalConductivity: "2.0-3.5 W/(m·K)"
   thermalConductivityNumeric: 2.75
   thermalConductivityUnit: W/
-  thermalConductivityMin: "0.5 W/m\xB7K"
+  thermalConductivityMin: "0.5 W/m·K"
   thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m\xB7K"
-  thermalConductivityMax: "200 W/m\xB7K"
+  thermalConductivityMinUnit: "W/m·K"
+  thermalConductivityMax: "200 W/m·K"
   thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m\xB7K"
+  thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 1.1
   tensileStrength: 4-10 MPa
   tensileStrengthNumeric: 7.0
@@ -79,7 +79,7 @@ properties:
   modulusPercentile: 8.3
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "1.0-10 J/cm\xB2"
+  fluenceRange: "1.0-10 J/cm²"
   chemicalFormula: "Variable composite (typically CaCO\u2083, SiO\u2082, various silicates)"
   thermalBehaviorType: melting
 composition:
@@ -132,15 +132,15 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0-10 J/cm\xB2"
+  fluenceRange: "1.0-10 J/cm²"
   fluenceRangeNumeric: 5.5
-  fluenceRangeUnit: "J/cm\xB2"
-  fluenceRangeMin: "0.1J/cm\xB2"
+  fluenceRangeUnit: "J/cm²"
+  fluenceRangeMin: "0.1J/cm²"
   fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm\xB2"
-  fluenceRangeMax: "50J/cm\xB2"
+  fluenceRangeMinUnit: "J/cm²"
+  fluenceRangeMax: "50J/cm²"
   fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm\xB2"
+  fluenceRangeMaxUnit: "J/cm²"
 applications:
 - 'Construction: Restoration of historic buildings and monuments'
 - 'Art and Restoration: Cleaning and surface preparation of sculptures and artworks'
@@ -180,16 +180,14 @@ outcomes:
   metric: '>95% contaminant removal with <2% substrate loss, preserving original surface
     morphology and patina'
 - result: Non-contact processing
-  metric: "Zero mechanical damage to fragile surfaces, achieving surface roughness\
-    \ preservation within \xB15% of original state"
+  metric: "Zero mechanical damage to fragile surfaces, achieving surface roughness preservation within ±5% of original state"
 technicalSpecifications:
   powerRange: 50-200 W (average power for pulsed fiber lasers)
   pulseDuration: 10-50 ns
   wavelength: 1064 nm (primary), 532 nm (optional for specific contaminant targeting)
   spotSize: 0.1-1.0 mm
   repetitionRate: 20-100 kHz
-  fluenceRange: "1.0-10 J/cm\xB2 (ablation threshold varies with breccia composition\
-    \ and contamination type)"
+  fluenceRange: "1.0-10 J/cm² (ablation threshold varies with breccia composition and contamination type)"
   scanningSpeed: 500-5000 mm/s
   beamProfile: Top-hat (flat-top) for uniform energy distribution and controlled ablation
     depth
@@ -208,7 +206,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "1.0-10 J/cm\xB2"
+  fluence_threshold: "1.0-10 J/cm²"
   pulse_duration: 10-50ns
   wavelength_optimal: 1064nm
   power_range: 50-200W

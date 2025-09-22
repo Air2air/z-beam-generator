@@ -3,11 +3,7 @@ name: Alumina
 category: ceramic
 title: Alumina Laser Cleaning
 headline: Comprehensive technical guide for laser cleaning ceramic alumina
-description: "Laser cleaning of alumina (Al\u2082O\u2083) utilizes precise pulsed\
-  \ fiber lasers to selectively remove surface contaminants through ablation while\
-  \ preserving the ceramic substrate's structural integrity. The process exploits\
-  \ alumina's high thermal stability and absorption characteristics at specific wavelengths\
-  \ for non-contact, chemical-free cleaning."
+description: "Laser cleaning of alumina (Al\u2082O\u2083) utilizes precise pulsed fiber lasers to selectively remove surface contaminants through ablation while preserving the ceramic substrate's structural integrity. The process exploits alumina's high thermal stability and absorption characteristics at specific wavelengths for non-contact, chemical-free cleaning."
 keywords: alumina, alumina ceramic, laser ablation, laser cleaning, non-contact cleaning,
   pulsed fiber laser, surface contamination removal, industrial laser parameters,
   thermal processing, surface restoration
@@ -16,35 +12,35 @@ chemicalProperties:
   formula: "Al\u2082O\u2083"
   materialType: ceramic
 properties:
-  density: "3.95-4.1 g/cm\xB3"
+  density: "3.95-4.1 g/cm³"
   densityNumeric: 4.03
-  densityUnit: "g/cm\xB3"
-  densityMin: "1.8 g/cm\xB3"
+  densityUnit: "g/cm³"
+  densityMin: "1.8 g/cm³"
   densityMinNumeric: 1.8
-  densityMinUnit: "g/cm\xB3"
-  densityMax: "6.0 g/cm\xB3"
+  densityMinUnit: "g/cm³"
+  densityMax: "6.0 g/cm³"
   densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm\xB3"
+  densityMaxUnit: "g/cm³"
   densityPercentile: 53.1
-  meltingPoint: "2072\xB0C"
+  meltingPoint: "2072°C"
   meltingPointNumeric: 2072.0
-  meltingPointUnit: "\xB0C"
-  meltingPointMin: "1200\xB0C"
+  meltingPointUnit: "°C"
+  meltingPointMin: "1200°C"
   meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "\xB0C"
-  meltingPointMax: "2800\xB0C"
+  meltingPointMinUnit: "°C"
+  meltingPointMax: "2800°C"
   meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "\xB0C"
+  meltingPointMaxUnit: "°C"
   meltingPercentile: 54.5
-  thermalConductivity: "35 W/(m\xB7K)"
+  thermalConductivity: "35 W/(m·K)"
   thermalConductivityNumeric: 35.0
   thermalConductivityUnit: W/
-  thermalConductivityMin: "0.5 W/m\xB7K"
+  thermalConductivityMin: "0.5 W/m·K"
   thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m\xB7K"
-  thermalConductivityMax: "200 W/m\xB7K"
+  thermalConductivityMinUnit: "W/m·K"
+  thermalConductivityMax: "200 W/m·K"
   thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m\xB7K"
+  thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 17.3
   tensileStrength: 210-310 MPa
   tensileStrengthNumeric: 260.0
@@ -78,7 +74,7 @@ properties:
   modulusPercentile: 100.0
   laserType: Pulsed fiber laser
   wavelength: 1064 nm
-  fluenceRange: "1.0\u201310 J/cm\xB2"
+  fluenceRange: "1.0\u201310 J/cm²"
   chemicalFormula: Al2O3
   thermalBehaviorType: melting
 composition:
@@ -132,15 +128,15 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0\u201310 J/cm\xB2"
+  fluenceRange: "1.0\u201310 J/cm²"
   fluenceRangeNumeric: 1.0
-  fluenceRangeUnit: "J/cm\xB2"
-  fluenceRangeMin: "0.1J/cm\xB2"
+  fluenceRangeUnit: "J/cm²"
+  fluenceRangeMin: "0.1J/cm²"
   fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm\xB2"
-  fluenceRangeMax: "50J/cm\xB2"
+  fluenceRangeMinUnit: "J/cm²"
+  fluenceRangeMax: "50J/cm²"
   fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm\xB2"
+  fluenceRangeMaxUnit: "J/cm²"
 applications:
 - 'Aerospace: Removal of coatings and surface contaminants from alumina components'
 - 'Semiconductor: Cleaning of alumina substrates for integrated circuits'
@@ -175,23 +171,20 @@ environmentalImpact:
     cleaners) and associated disposal requirements, reducing chemical waste by 100%
     compared to traditional methods
 - benefit: Reduced energy consumption
-  description: "Laser cleaning consumes 60-70% less energy compared to thermal cleaning\
-    \ methods requiring furnace operation at 1000-1500\xB0C for alumina component\
-    \ refurbishment"
+  description: "Laser cleaning consumes 60-70% less energy compared to thermal cleaning methods requiring furnace operation at 1000-1500°C for alumina component refurbishment"
 outcomes:
 - result: Surface contamination removal efficiency
   metric: '>99.9% removal of surface contaminants while maintaining <0.1% substrate
     material loss'
 - result: Processing precision
-  metric: "Achieves cleaning accuracy of \xB110 \u03BCm with processing speeds of\
-    \ 0.5-2.0 m\xB2/hour depending on contamination level"
+  metric: "Achieves cleaning accuracy of ±10 \u03BCm with processing speeds of 0.5-2.0 m²/hour depending on contamination level"
 technicalSpecifications:
   powerRange: 50-200 W (pulsed)
   pulseDuration: 10-200 ns
   wavelength: 1064 nm (primary), 532 nm (for higher absorption)
   spotSize: "50-1000 \u03BCm"
   repetitionRate: 20-100 kHz
-  fluenceRange: "1.0-10 J/cm\xB2 (ablation threshold ~1.0 J/cm\xB2 at 1064 nm)"
+  fluenceRange: "1.0-10 J/cm² (ablation threshold ~1.0 J/cm² at 1064 nm)"
   scanningSpeed: 100-2000 mm/s
   beamProfile: Top-hat (flat-top)
   beamProfileOptions: Top-hat, Gaussian, Multimode
@@ -210,7 +203,7 @@ prompt_chain_verification:
 chemicalFormula: Al2O3
 symbol: Al-O
 laser_parameters:
-  fluence_threshold: "1.0\u201310 J/cm\xB2"
+  fluence_threshold: "1.0\u201310 J/cm²"
   pulse_duration: 10-200ns
   wavelength_optimal: 1064 nm
   power_range: 50-200W

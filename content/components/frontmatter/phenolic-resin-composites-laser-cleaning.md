@@ -12,36 +12,36 @@ keywords: phenolic resin composites, phenolic resin composites composite, laser 
   laser cleaning, non-contact cleaning, pulsed fiber laser, surface contamination
   removal, industrial laser parameters, thermal processing, surface restoration
 chemicalProperties:
-  symbol: "C7H6O2\xB7C6H6O (base resin)"
-  formula: "(C7H6O2\xB7C6H6O)n + reinforcing fibers (glass/carbon)"
+  symbol: "C7H6O2·C6H6O (base resin)"
+  formula: "(C7H6O2·C6H6O)n + reinforcing fibers (glass/carbon)"
   materialType: composite
 properties:
-  density: "1.25-1.90 g/cm\xB3 (varies with reinforcement)"
+  density: "1.25-1.90 g/cm³ (varies with reinforcement)"
   densityNumeric: 1.57
-  densityUnit: "g/cm\xB3"
-  densityMin: "1.8 g/cm\xB3"
+  densityUnit: "g/cm³"
+  densityMin: "1.8 g/cm³"
   densityMinNumeric: 1.8
-  densityMinUnit: "g/cm\xB3"
-  densityMax: "6.0 g/cm\xB3"
+  densityMinUnit: "g/cm³"
+  densityMax: "6.0 g/cm³"
   densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm\xB3"
+  densityMaxUnit: "g/cm³"
   densityPercentile: 0.0
-  meltingPointMin: "1200\xB0C"
+  meltingPointMin: "1200°C"
   meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "\xB0C"
-  meltingPointMax: "2800\xB0C"
+  meltingPointMinUnit: "°C"
+  meltingPointMax: "2800°C"
   meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "\xB0C"
+  meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "0.15-0.35 W/m\xB7K"
+  thermalConductivity: "0.15-0.35 W/m·K"
   thermalConductivityNumeric: 0.25
-  thermalConductivityUnit: "W/m\xB7K"
-  thermalConductivityMin: "0.5 W/m\xB7K"
+  thermalConductivityUnit: "W/m·K"
+  thermalConductivityMin: "0.5 W/m·K"
   thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m\xB7K"
-  thermalConductivityMax: "200 W/m\xB7K"
+  thermalConductivityMinUnit: "W/m·K"
+  thermalConductivityMax: "200 W/m·K"
   thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m\xB7K"
+  thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.0
   tensileStrength: 30-100 MPa
   tensileStrengthNumeric: 65.0
@@ -75,12 +75,12 @@ properties:
   modulusPercentile: 0.0
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "1.0\u201310 J/cm\xB2"
-  chemicalFormula: "(C7H6O2\xB7C6H6O)n + filler/reinforcement"
+  fluenceRange: "1.0\u201310 J/cm²"
+  chemicalFormula: "(C7H6O2·C6H6O)n + filler/reinforcement"
   thermalBehaviorType: decomposition
-  decompositionPoint: "300\xB0C"
+  decompositionPoint: "300°C"
   decompositionPointNumeric: 300
-  decompositionPointUnit: "\xB0C"
+  decompositionPointUnit: "°C"
 composition:
 - 'Phenolic resin matrix: 40-60%'
 - 'Glass fiber reinforcement: 30-50%'
@@ -132,15 +132,15 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0\u201310 J/cm\xB2"
+  fluenceRange: "1.0\u201310 J/cm²"
   fluenceRangeNumeric: 1.0
-  fluenceRangeUnit: "J/cm\xB2"
-  fluenceRangeMin: "0.1J/cm\xB2"
+  fluenceRangeUnit: "J/cm²"
+  fluenceRangeMin: "0.1J/cm²"
   fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm\xB2"
-  fluenceRangeMax: "50J/cm\xB2"
+  fluenceRangeMinUnit: "J/cm²"
+  fluenceRangeMax: "50J/cm²"
   fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm\xB2"
+  fluenceRangeMaxUnit: "J/cm²"
 applications:
 - 'Aerospace: Removal of surface contaminants from composite parts'
 - 'Automotive: Cleaning of phenolic resin components for enhanced bonding'
@@ -178,7 +178,7 @@ outcomes:
 - result: Surface contamination removal >99%
   metric: Verified via SEM/EDS analysis showing complete contaminant removal without
     substrate damage
-- result: "Processing speed 2-5 m\xB2/hour"
+- result: "Processing speed 2-5 m²/hour"
   metric: Achievable cleaning rates for typical aerospace composite components with
     100-500 mm/s scanning speeds
 technicalSpecifications:
@@ -187,7 +187,7 @@ technicalSpecifications:
   wavelength: 1064 nm (primary), 532 nm (optional for selective removal)
   spotSize: 0.05-1.0 mm
   repetitionRate: 20-100 kHz
-  fluenceRange: "1.0-10 J/cm\xB2"
+  fluenceRange: "1.0-10 J/cm²"
   scanningSpeed: 100-2000 mm/s
   beamProfile: Top-hat or flat-top
   beamProfileOptions: Top-hat, flat-top, Gaussian (with caution)
@@ -204,7 +204,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "1.0\u201310 J/cm\xB2"
+  fluence_threshold: "1.0\u201310 J/cm²"
   pulse_duration: 20-200ns
   wavelength_optimal: 1064nm
   power_range: 50-200W

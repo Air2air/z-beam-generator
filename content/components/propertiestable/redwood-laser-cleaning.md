@@ -2,15 +2,12 @@
 |----------|-------|
 | Density | 0.38 g/cm³ |
 | Melting Point | 300-500°C (decomposition) |
-| Thermal Cond. | 0.12 W/m·K |
-| Laser Type | Pulsed Fiber Laser |
-| Wavelength | 1064nm |
-| Fluence Range | 0.5–2.5 J/cm² |
+| Conductivity | 0.12 W/m·K |
 | Formula | C6H10O5 |
 
 
 ---
-Version Log - Generated: 2025-09-21T20:52:22.955663
+Version Log - Generated: 2025-09-21T22:01:15.769760
 Material: Unknown
 Component: propertiestable
 Generator: Z-Beam v1.0.0

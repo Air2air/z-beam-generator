@@ -13,39 +13,39 @@ keywords: terracotta, terracotta masonry, laser ablation, laser cleaning, non-co
   thermal processing, surface restoration
 chemicalProperties:
   symbol: N/A (composite material)
-  formula: "Variable composition (primarily SiO\u2082, Al\u2082O\u2083, Fe\u2082O\u2083\
+  formula: "Variable composition (primarily SiO\u2082, Al\u2082O\u2083, Fe\u2082O\u2083"
     )"
   materialType: masonry
 properties:
-  density: "1.8-2.2 g/cm\xB3"
+  density: "1.8-2.2 g/cm³"
   densityNumeric: 2.0
-  densityUnit: "g/cm\xB3"
-  densityMin: "1.8 g/cm\xB3"
+  densityUnit: "g/cm³"
+  densityMin: "1.8 g/cm³"
   densityMinNumeric: 1.8
-  densityMinUnit: "g/cm\xB3"
-  densityMax: "6.0 g/cm\xB3"
+  densityMinUnit: "g/cm³"
+  densityMax: "6.0 g/cm³"
   densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm\xB3"
+  densityMaxUnit: "g/cm³"
   densityPercentile: 4.8
-  meltingPoint: "1250\xB0C"
+  meltingPoint: "1250°C"
   meltingPointNumeric: 1250
-  meltingPointUnit: "\xB0C"
-  meltingPointMin: "1200\xB0C"
+  meltingPointUnit: "°C"
+  meltingPointMin: "1200°C"
   meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "\xB0C"
-  meltingPointMax: "2800\xB0C"
+  meltingPointMinUnit: "°C"
+  meltingPointMax: "2800°C"
   meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "\xB0C"
+  meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "0.8-1.2 W/(m\xB7K)"
+  thermalConductivity: "0.8-1.2 W/(m·K)"
   thermalConductivityNumeric: 1.0
   thermalConductivityUnit: W/
-  thermalConductivityMin: "0.5 W/m\xB7K"
+  thermalConductivityMin: "0.5 W/m·K"
   thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m\xB7K"
-  thermalConductivityMax: "200 W/m\xB7K"
+  thermalConductivityMinUnit: "W/m·K"
+  thermalConductivityMax: "200 W/m·K"
   thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m\xB7K"
+  thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.3
   tensileStrength: 3-8 MPa
   tensileStrengthNumeric: 5.5
@@ -79,7 +79,7 @@ properties:
   modulusPercentile: 0.0
   laserType: Nd:YAG laser
   wavelength: 1064nm
-  fluenceRange: "0.5\u20135 J/cm\xB2"
+  fluenceRange: "0.5\u20135 J/cm²"
   chemicalFormula: Variable (primarily hydrated aluminum silicates with iron oxides)
   thermalBehaviorType: melting
 composition:
@@ -135,15 +135,15 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "0.5\u20135 J/cm\xB2"
+  fluenceRange: "0.5\u20135 J/cm²"
   fluenceRangeNumeric: 0.5
-  fluenceRangeUnit: "J/cm\xB2"
-  fluenceRangeMin: "0.1J/cm\xB2"
+  fluenceRangeUnit: "J/cm²"
+  fluenceRangeMin: "0.1J/cm²"
   fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm\xB2"
-  fluenceRangeMax: "50J/cm\xB2"
+  fluenceRangeMinUnit: "J/cm²"
+  fluenceRangeMax: "50J/cm²"
   fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm\xB2"
+  fluenceRangeMaxUnit: "J/cm²"
 applications:
 - 'Cultural Heritage: Restoration of historical terracotta sculptures and facades'
 - 'Construction: Cleaning and restoration of terracotta cladding on buildings'
@@ -183,14 +183,14 @@ outcomes:
 - result: Surface contamination removal efficiency
   metric: '>95% removal of black crusts and biological growth with <2% substrate loss'
 - result: Processing speed
-  metric: "0.2-0.8 m\xB2/hour depending on contamination type and laser parameters"
+  metric: "0.2-0.8 m²/hour depending on contamination type and laser parameters"
 technicalSpecifications:
   powerRange: 10-50 W average power
   pulseDuration: 5-150 ns
   wavelength: 1064 nm (IR), 532 nm (green)
   spotSize: 0.2-2.0 mm
   repetitionRate: 10-100 kHz
-  fluenceRange: "0.3-4.0 J/cm\xB2"
+  fluenceRange: "0.3-4.0 J/cm²"
   scanningSpeed: 100-2000 mm/s
   beamProfile: Top-hat or flat-top
   beamProfileOptions: Top-hat, Gaussian, flat-top
@@ -207,7 +207,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "0.5\u20135 J/cm\xB2"
+  fluence_threshold: "0.5\u20135 J/cm²"
   pulse_duration: 10-100ns
   wavelength_optimal: 1064nm
   power_range: 20-100W

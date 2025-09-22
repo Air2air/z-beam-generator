@@ -16,35 +16,35 @@ chemicalProperties:
   formula: Nb
   materialType: metal
 properties:
-  density: "8.57 g/cm\xB3"
+  density: "8.57 g/cm³"
   densityNumeric: 8.57
-  densityUnit: "g/cm\xB3"
-  densityMin: "1.8 g/cm\xB3"
+  densityUnit: "g/cm³"
+  densityMin: "1.8 g/cm³"
   densityMinNumeric: 1.8
-  densityMinUnit: "g/cm\xB3"
-  densityMax: "6.0 g/cm\xB3"
+  densityMinUnit: "g/cm³"
+  densityMax: "6.0 g/cm³"
   densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm\xB3"
+  densityMaxUnit: "g/cm³"
   densityPercentile: 100.0
-  meltingPoint: "2477\xB0C"
+  meltingPoint: "2477°C"
   meltingPointNumeric: 2477
-  meltingPointUnit: "\xB0C"
-  meltingPointMin: "1200\xB0C"
+  meltingPointUnit: "°C"
+  meltingPointMin: "1200°C"
   meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "\xB0C"
-  meltingPointMax: "2800\xB0C"
+  meltingPointMinUnit: "°C"
+  meltingPointMax: "2800°C"
   meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "\xB0C"
+  meltingPointMaxUnit: "°C"
   meltingPercentile: 79.8
-  thermalConductivity: "53.7 W/(m\xB7K)"
+  thermalConductivity: "53.7 W/(m·K)"
   thermalConductivityNumeric: 53.7
   thermalConductivityUnit: W/
-  thermalConductivityMin: "0.5 W/m\xB7K"
+  thermalConductivityMin: "0.5 W/m·K"
   thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m\xB7K"
-  thermalConductivityMax: "200 W/m\xB7K"
+  thermalConductivityMinUnit: "W/m·K"
+  thermalConductivityMax: "200 W/m·K"
   thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m\xB7K"
+  thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 26.7
   tensileStrength: 275 MPa (annealed pure Nb)
   tensileStrengthNumeric: 275.0
@@ -78,7 +78,7 @@ properties:
   modulusPercentile: 100.0
   laserType: pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "1.0\u201310 J/cm\xB2"
+  fluenceRange: "1.0\u201310 J/cm²"
   chemicalFormula: Nb
   thermalBehaviorType: melting
 composition:
@@ -130,15 +130,15 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0\u201310 J/cm\xB2"
+  fluenceRange: "1.0\u201310 J/cm²"
   fluenceRangeNumeric: 1.0
-  fluenceRangeUnit: "J/cm\xB2"
-  fluenceRangeMin: "0.1J/cm\xB2"
+  fluenceRangeUnit: "J/cm²"
+  fluenceRangeMin: "0.1J/cm²"
   fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm\xB2"
-  fluenceRangeMax: "50J/cm\xB2"
+  fluenceRangeMinUnit: "J/cm²"
+  fluenceRangeMax: "50J/cm²"
   fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm\xB2"
+  fluenceRangeMaxUnit: "J/cm²"
 applications:
 - 'Aerospace: Cleaning of niobium components for jet engine parts'
 - 'Electronics: Surface preparation of niobium for superconducting applications'
@@ -178,15 +178,14 @@ outcomes:
   metric: Hydrocarbon removal > 99.9%, achieving surface conditions necessary for
     high-performance superconducting applications (Q0 > 1x10^10).
 - result: Processing Speed
-  metric: "Achievable cleaning rates of 0.5 - 2.0 m\xB2/hour depending on contamination\
-    \ level and required surface finish."
+  metric: "Achievable cleaning rates of 0.5 - 2.0 m²/hour depending on contamination level and required surface finish."
 technicalSpecifications:
   powerRange: 50-200 W (pulsed)
   pulseDuration: 10-50 ns
   wavelength: 1064 nm (primary), 532 nm (for higher precision)
   spotSize: 0.1-1.0 mm
   repetitionRate: 20-100 kHz
-  fluenceRange: "1.0\u201310 J/cm\xB2"
+  fluenceRange: "1.0\u201310 J/cm²"
   scanningSpeed: 500-5000 mm/s
   beamProfile: Top-hat (flat-top)
   beamProfileOptions: Top-hat, Gaussian (adjustable)
@@ -203,7 +202,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "1.0\u201310 J/cm\xB2"
+  fluence_threshold: "1.0\u201310 J/cm²"
   pulse_duration: 10-50ns
   wavelength_optimal: 1064nm
   power_range: 50-200W

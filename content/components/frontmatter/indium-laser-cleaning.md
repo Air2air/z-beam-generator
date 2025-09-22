@@ -3,11 +3,7 @@ name: Indium
 category: metal
 title: Indium Laser Cleaning
 headline: Comprehensive technical guide for laser cleaning metal indium
-description: "Laser cleaning of indium requires precise control due to its low melting\
-  \ point (156.6\xB0C) and softness. Pulsed fiber lasers at 1064 nm provide optimal\
-  \ absorption for removing oxides and contaminants without melting or damaging the\
-  \ pure indium substrate, crucial for maintaining electrical and thermal properties\
-  \ in sensitive applications."
+description: "Laser cleaning of indium requires precise control due to its low melting point (156.6°C) and softness. Pulsed fiber lasers at 1064 nm provide optimal absorption for removing oxides and contaminants without melting or damaging the pure indium substrate, crucial for maintaining electrical and thermal properties in sensitive applications."
 keywords: indium, indium metal, laser ablation, laser cleaning, non-contact cleaning,
   pulsed fiber laser, surface contamination removal, industrial laser parameters,
   thermal processing, surface restoration
@@ -16,35 +12,35 @@ chemicalProperties:
   formula: In
   materialType: metal
 properties:
-  density: "7.31 g/cm\xB3"
+  density: "7.31 g/cm³"
   densityNumeric: 7.31
-  densityUnit: "g/cm\xB3"
-  densityMin: "1.8 g/cm\xB3"
+  densityUnit: "g/cm³"
+  densityMin: "1.8 g/cm³"
   densityMinNumeric: 1.8
-  densityMinUnit: "g/cm\xB3"
-  densityMax: "6.0 g/cm\xB3"
+  densityMinUnit: "g/cm³"
+  densityMax: "6.0 g/cm³"
   densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm\xB3"
+  densityMaxUnit: "g/cm³"
   densityPercentile: 100.0
-  meltingPoint: "156\xB0C"
+  meltingPoint: "156°C"
   meltingPointNumeric: 156
-  meltingPointUnit: "\xB0C"
-  meltingPointMin: "1200\xB0C"
+  meltingPointUnit: "°C"
+  meltingPointMin: "1200°C"
   meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "\xB0C"
-  meltingPointMax: "2800\xB0C"
+  meltingPointMinUnit: "°C"
+  meltingPointMax: "2800°C"
   meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "\xB0C"
+  meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "81.8 W/(m\xB7K)"
+  thermalConductivity: "81.8 W/(m·K)"
   thermalConductivityNumeric: 81.8
   thermalConductivityUnit: W/
-  thermalConductivityMin: "0.5 W/m\xB7K"
+  thermalConductivityMin: "0.5 W/m·K"
   thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m\xB7K"
-  thermalConductivityMax: "200 W/m\xB7K"
+  thermalConductivityMinUnit: "W/m·K"
+  thermalConductivityMax: "200 W/m·K"
   thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m\xB7K"
+  thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 40.8
   tensileStrength: 2.5-4 MPa
   tensileStrengthNumeric: 3.25
@@ -78,7 +74,7 @@ properties:
   modulusPercentile: 0.0
   laserType: Pulsed fiber laser
   wavelength: 1064 nm
-  fluenceRange: "0.5-5 J/cm\xB2"
+  fluenceRange: "0.5-5 J/cm²"
   chemicalFormula: In
   thermalBehaviorType: melting
 composition:
@@ -130,15 +126,15 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "0.5-5 J/cm\xB2"
+  fluenceRange: "0.5-5 J/cm²"
   fluenceRangeNumeric: 2.75
-  fluenceRangeUnit: "J/cm\xB2"
-  fluenceRangeMin: "0.1J/cm\xB2"
+  fluenceRangeUnit: "J/cm²"
+  fluenceRangeMin: "0.1J/cm²"
   fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm\xB2"
-  fluenceRangeMax: "50J/cm\xB2"
+  fluenceRangeMinUnit: "J/cm²"
+  fluenceRangeMax: "50J/cm²"
   fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm\xB2"
+  fluenceRangeMaxUnit: "J/cm²"
 applications:
 - 'Electronics: Surface cleaning of Indium used in soldering and semiconductor applications'
 - 'Aerospace: Precision cleaning of Indium coatings on satellite components'
@@ -167,16 +163,14 @@ images:
     url: /images/indium-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Zero chemical waste generation
-  description: "Eliminates use of acidic cleaners (HCl, HNO\u2083) and solvents traditionally\
-    \ used for indium oxide removal, preventing 100+ kg/year of hazardous waste per\
-    \ production line"
+  description: "Eliminates use of acidic cleaners (HCl, HNO\u2083) and solvents traditionally used for indium oxide removal, preventing 100+ kg/year of hazardous waste per production line"
 - benefit: Reduced energy consumption
   description: Laser cleaning consumes 60-70% less energy compared to ultrasonic cleaning
     with heated chemical baths for indium components
 outcomes:
 - result: "Surface roughness <0.1 \u03BCm Ra"
   metric: Maintains surface quality while removing 99.9% of oxides and contaminants
-- result: "Processing speed 50-200 cm\xB2/min"
+- result: "Processing speed 50-200 cm²/min"
   metric: Achieves complete surface cleaning without thermal damage to underlying
     indium
 technicalSpecifications:
@@ -185,7 +179,7 @@ technicalSpecifications:
   wavelength: 1064 nm (primary), 532 nm (optional for finer control)
   spotSize: 0.1-2.0 mm
   repetitionRate: 10-50 kHz
-  fluenceRange: "0.5-5 J/cm\xB2"
+  fluenceRange: "0.5-5 J/cm²"
   scanningSpeed: 100-1000 mm/s
   beamProfile: Top-hat (flat-top)
   beamProfileOptions: Top-hat, Gaussian, Donut
@@ -202,7 +196,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "0.5-5 J/cm\xB2"
+  fluence_threshold: "0.5-5 J/cm²"
   pulse_duration: 10-100ns
   wavelength_optimal: 1064 nm
   power_range: 20-100W

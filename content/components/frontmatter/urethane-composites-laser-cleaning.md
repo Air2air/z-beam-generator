@@ -12,36 +12,35 @@ keywords: urethane composites, polyurethane composite, laser ablation, laser cle
   laser parameters, thermal processing, surface restoration
 chemicalProperties:
   symbol: PU
-  formula: "(C\u2081\u2080H\u2088N\u2082O\u2082C\u2086H\u2081\u2084O\u2083)\u2099\
-    \ (polyurethane matrix with various reinforcements)"
+  formula: "(C\u2081\u2080H\u2088N\u2082O\u2082C\u2086H\u2081\u2084O\u2083)\u2099 (polyurethane matrix with various reinforcements)"
   materialType: composite
 properties:
-  density: "1.05-1.25 g/cm\xB3 (varies with reinforcement content)"
+  density: "1.05-1.25 g/cm³ (varies with reinforcement content)"
   densityNumeric: 1.15
-  densityUnit: "g/cm\xB3"
-  densityMin: "1.8 g/cm\xB3"
+  densityUnit: "g/cm³"
+  densityMin: "1.8 g/cm³"
   densityMinNumeric: 1.8
-  densityMinUnit: "g/cm\xB3"
-  densityMax: "6.0 g/cm\xB3"
+  densityMinUnit: "g/cm³"
+  densityMax: "6.0 g/cm³"
   densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm\xB3"
+  densityMaxUnit: "g/cm³"
   densityPercentile: 0.0
-  meltingPointMin: "1200\xB0C"
+  meltingPointMin: "1200°C"
   meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "\xB0C"
-  meltingPointMax: "2800\xB0C"
+  meltingPointMinUnit: "°C"
+  meltingPointMax: "2800°C"
   meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "\xB0C"
+  meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "0.19-0.25 W/m\xB7K"
+  thermalConductivity: "0.19-0.25 W/m·K"
   thermalConductivityNumeric: 0.22
-  thermalConductivityUnit: "W/m\xB7K"
-  thermalConductivityMin: "0.5 W/m\xB7K"
+  thermalConductivityUnit: "W/m·K"
+  thermalConductivityMin: "0.5 W/m·K"
   thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m\xB7K"
-  thermalConductivityMax: "200 W/m\xB7K"
+  thermalConductivityMinUnit: "W/m·K"
+  thermalConductivityMax: "200 W/m·K"
   thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m\xB7K"
+  thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.0
   tensileStrength: 30-70 MPa (depending on reinforcement)
   tensileStrengthNumeric: 50.0
@@ -75,13 +74,13 @@ properties:
   modulusPercentile: 0.0
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "1.0\u201310 J/cm\xB2"
+  fluenceRange: "1.0\u201310 J/cm²"
   chemicalFormula: Varies by formulation; typically polyol + diisocyanate + chain
     extender
   thermalBehaviorType: decomposition
-  decompositionPoint: "220\xB0C"
+  decompositionPoint: "220°C"
   decompositionPointNumeric: 220
-  decompositionPointUnit: "\xB0C"
+  decompositionPointUnit: "°C"
 composition:
 - 'Polyurethane matrix: 60-80%'
 - 'Glass/carbon fiber reinforcement: 20-40%'
@@ -132,15 +131,15 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0\u201310 J/cm\xB2"
+  fluenceRange: "1.0\u201310 J/cm²"
   fluenceRangeNumeric: 1.0
-  fluenceRangeUnit: "J/cm\xB2"
-  fluenceRangeMin: "0.1J/cm\xB2"
+  fluenceRangeUnit: "J/cm²"
+  fluenceRangeMin: "0.1J/cm²"
   fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm\xB2"
-  fluenceRangeMax: "50J/cm\xB2"
+  fluenceRangeMinUnit: "J/cm²"
+  fluenceRangeMax: "50J/cm²"
   fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm\xB2"
+  fluenceRangeMaxUnit: "J/cm²"
 applications:
 - 'Automotive: Cleaning of urethane composite parts for surface preparation before
   painting'
@@ -180,7 +179,7 @@ environmentalImpact:
 outcomes:
 - result: Surface contamination removal >99.5%
   metric: Measured via FTIR spectroscopy and contact angle analysis
-- result: "Processing speed 2-5 m\xB2/hour"
+- result: "Processing speed 2-5 m²/hour"
   metric: For typical automotive bumper cleaning applications at 100W laser power
 technicalSpecifications:
   powerRange: 50-200 W
@@ -188,7 +187,7 @@ technicalSpecifications:
   wavelength: 1064 nm (primary), 532 nm (optional)
   spotSize: 0.2-1.5 mm
   repetitionRate: 20-100 kHz
-  fluenceRange: "1.0-10 J/cm\xB2"
+  fluenceRange: "1.0-10 J/cm²"
   scanningSpeed: 500-2000 mm/s
   beamProfile: Top-hat (flat-top)
   beamProfileOptions: Top-hat, Gaussian, Multimode
@@ -205,7 +204,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "1.0\u201310 J/cm\xB2"
+  fluence_threshold: "1.0\u201310 J/cm²"
   pulse_duration: 20-200ns
   wavelength_optimal: 1064nm
   power_range: 50-200W

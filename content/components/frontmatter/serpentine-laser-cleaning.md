@@ -3,7 +3,7 @@ name: Serpentine
 category: stone
 title: Serpentine Laser Cleaning
 headline: Comprehensive technical guide for laser cleaning stone serpentine
-description: "Laser cleaning of serpentine-group minerals (Mg\u2083Si\u2082O\u2085\
+description: "Laser cleaning of serpentine-group minerals (Mg\u2083Si\u2082O\u2085"
   (OH)\u2084) utilizes selective photothermal ablation where contaminants absorb laser\
   \ energy more efficiently than the hydrated magnesium silicate substrate, enabling\
   \ precise removal without mechanical or chemical damage to the valuable stone surface."
@@ -15,35 +15,35 @@ chemicalProperties:
   formula: "Mg\u2083Si\u2082O\u2085(OH)\u2084"
   materialType: phyllosilicate mineral
 properties:
-  density: "2.5-2.6 g/cm\xB3"
+  density: "2.5-2.6 g/cm³"
   densityNumeric: 2.55
-  densityUnit: "g/cm\xB3"
-  densityMin: "1.8 g/cm\xB3"
+  densityUnit: "g/cm³"
+  densityMin: "1.8 g/cm³"
   densityMinNumeric: 1.8
-  densityMinUnit: "g/cm\xB3"
-  densityMax: "6.0 g/cm\xB3"
+  densityMinUnit: "g/cm³"
+  densityMax: "6.0 g/cm³"
   densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm\xB3"
+  densityMaxUnit: "g/cm³"
   densityPercentile: 17.9
-  meltingPoint: "700\xB0C"
+  meltingPoint: "700°C"
   meltingPointNumeric: 700
-  meltingPointUnit: "\xB0C"
-  meltingPointMin: "1200\xB0C"
+  meltingPointUnit: "°C"
+  meltingPointMin: "1200°C"
   meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "\xB0C"
-  meltingPointMax: "2800\xB0C"
+  meltingPointMinUnit: "°C"
+  meltingPointMax: "2800°C"
   meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "\xB0C"
+  meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "1.3-2.5 W/(m\xB7K)"
+  thermalConductivity: "1.3-2.5 W/(m·K)"
   thermalConductivityNumeric: 1.9
   thermalConductivityUnit: W/
-  thermalConductivityMin: "0.5 W/m\xB7K"
+  thermalConductivityMin: "0.5 W/m·K"
   thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m\xB7K"
-  thermalConductivityMax: "200 W/m\xB7K"
+  thermalConductivityMinUnit: "W/m·K"
+  thermalConductivityMax: "200 W/m·K"
   thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m\xB7K"
+  thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.7
   tensileStrength: 10-15 MPa
   tensileStrengthNumeric: 12.5
@@ -77,7 +77,7 @@ properties:
   modulusPercentile: 75.0
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "1.0\u201310 J/cm\xB2"
+  fluenceRange: "1.0\u201310 J/cm²"
   chemicalFormula: "Mg\u2083Si\u2082O\u2085(OH)\u2084"
   thermalBehaviorType: melting
 composition:
@@ -131,15 +131,15 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0\u201310 J/cm\xB2"
+  fluenceRange: "1.0\u201310 J/cm²"
   fluenceRangeNumeric: 1.0
-  fluenceRangeUnit: "J/cm\xB2"
-  fluenceRangeMin: "0.1J/cm\xB2"
+  fluenceRangeUnit: "J/cm²"
+  fluenceRangeMin: "0.1J/cm²"
   fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm\xB2"
-  fluenceRangeMax: "50J/cm\xB2"
+  fluenceRangeMinUnit: "J/cm²"
+  fluenceRangeMax: "50J/cm²"
   fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm\xB2"
+  fluenceRangeMaxUnit: "J/cm²"
 applications:
 - 'Construction: Cleaning of serpentine stone surfaces for restoration and maintenance'
 - 'Jewelry: Precision cleaning of serpentine gemstones for enhanced appearance'
@@ -176,10 +176,9 @@ environmentalImpact:
     negligible airborne particles through controlled ablation process
 outcomes:
 - result: Sub-micron precision contamination removal
-  metric: "Selective removal of 10-50 \u03BCm thick crusts with <5 \u03BCm substrate\
-    \ loss"
+  metric: "Selective removal of 10-50 \u03BCm thick crusts with <5 \u03BCm substrate loss"
 - result: Non-contact processing capability
-  metric: "Processing speeds of 0.5-2.0 m\xB2/hour depending on contamination level"
+  metric: "Processing speeds of 0.5-2.0 m²/hour depending on contamination level"
 technicalSpecifications:
   powerRange: 20-100 W (average power for pulsed fiber lasers)
   pulseDuration: 10-100 ns
@@ -187,7 +186,7 @@ technicalSpecifications:
     control)
   spotSize: "100-500 \u03BCm"
   repetitionRate: 10-50 kHz
-  fluenceRange: "0.8-2.5 J/cm\xB2 (ablation threshold for serpentine group minerals)"
+  fluenceRange: "0.8-2.5 J/cm² (ablation threshold for serpentine group minerals)"
   scanningSpeed: 500-2000 mm/s
   beamProfile: Top-hat (flat-top) for uniform energy distribution
   beamProfileOptions: Top-hat, Gaussian, Multimode
@@ -204,7 +203,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "1.0\u201310 J/cm\xB2"
+  fluence_threshold: "1.0\u201310 J/cm²"
   pulse_duration: 10-50ns
   wavelength_optimal: 1064nm
   power_range: 50-200W

@@ -13,39 +13,38 @@ keywords: schist, schist stone, laser ablation, laser cleaning, non-contact clea
   thermal processing, surface restoration
 chemicalProperties:
   symbol: N/A (Complex Silicate Rock)
-  formula: "Variable; primarily (K,Na)(Al,Fe,Mg)\u2082(Al,Si)\u2084O\u2081\u2080(OH)\u2082\
-    \ (Mica) + SiO\u2082 (Quartz)"
+  formula: "Variable; primarily (K,Na)(Al,Fe,Mg)\u2082(Al,Si)\u2084O\u2081\u2080(OH)\u2082 (Mica) + SiO\u2082 (Quartz)"
   materialType: Metamorphic Rock
 properties:
-  density: "2.6-2.9 g/cm\xB3"
+  density: "2.6-2.9 g/cm³"
   densityNumeric: 2.75
-  densityUnit: "g/cm\xB3"
-  densityMin: "1.8 g/cm\xB3"
+  densityUnit: "g/cm³"
+  densityMin: "1.8 g/cm³"
   densityMinNumeric: 1.8
-  densityMinUnit: "g/cm\xB3"
-  densityMax: "6.0 g/cm\xB3"
+  densityMinUnit: "g/cm³"
+  densityMax: "6.0 g/cm³"
   densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm\xB3"
+  densityMaxUnit: "g/cm³"
   densityPercentile: 22.6
-  meltingPoint: "1400\xB0C"
+  meltingPoint: "1400°C"
   meltingPointNumeric: 1400
-  meltingPointUnit: "\xB0C"
-  meltingPointMin: "1200\xB0C"
+  meltingPointUnit: "°C"
+  meltingPointMin: "1200°C"
   meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "\xB0C"
-  meltingPointMax: "2800\xB0C"
+  meltingPointMinUnit: "°C"
+  meltingPointMax: "2800°C"
   meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "\xB0C"
+  meltingPointMaxUnit: "°C"
   meltingPercentile: 6.2
-  thermalConductivity: "2.0-3.5 W/(m\xB7K)"
+  thermalConductivity: "2.0-3.5 W/(m·K)"
   thermalConductivityNumeric: 2.75
   thermalConductivityUnit: W/
-  thermalConductivityMin: "0.5 W/m\xB7K"
+  thermalConductivityMin: "0.5 W/m·K"
   thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m\xB7K"
-  thermalConductivityMax: "200 W/m\xB7K"
+  thermalConductivityMinUnit: "W/m·K"
+  thermalConductivityMax: "200 W/m·K"
   thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m\xB7K"
+  thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 1.1
   tensileStrength: 5-15 MPa (perpendicular to foliation)
   tensileStrengthNumeric: 10.0
@@ -79,7 +78,7 @@ properties:
   modulusPercentile: 33.3
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "1.0-10 J/cm\xB2"
+  fluenceRange: "1.0-10 J/cm²"
   chemicalFormula: N/A (Complex mixture of silicates)
   thermalBehaviorType: melting
 composition:
@@ -133,15 +132,15 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0-10 J/cm\xB2"
+  fluenceRange: "1.0-10 J/cm²"
   fluenceRangeNumeric: 5.5
-  fluenceRangeUnit: "J/cm\xB2"
-  fluenceRangeMin: "0.1J/cm\xB2"
+  fluenceRangeUnit: "J/cm²"
+  fluenceRangeMin: "0.1J/cm²"
   fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm\xB2"
-  fluenceRangeMax: "50J/cm\xB2"
+  fluenceRangeMinUnit: "J/cm²"
+  fluenceRangeMax: "50J/cm²"
   fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm\xB2"
+  fluenceRangeMaxUnit: "J/cm²"
 applications:
 - 'Construction: Removal of dirt and coatings from schist surfaces for restoration'
 - 'Heritage Conservation: Non-destructive cleaning of schist artifacts and monuments'
@@ -179,8 +178,7 @@ environmentalImpact:
     improving air quality on-site.
 outcomes:
 - result: Non-destructive surface cleaning
-  metric: ">95% contaminant removal with <5 \xB5m substrate loss, preserving historical\
-    \ value and structural integrity."
+  metric: ">95% contaminant removal with <5 µm substrate loss, preserving historical value and structural integrity."
 - result: High precision selective cleaning
   metric: Achievable cleaning accuracy of <0.1 mm, allowing for the removal of specific
     stains without affecting adjacent original material.
@@ -190,8 +188,7 @@ technicalSpecifications:
   wavelength: 1064 nm (Nd:YAG fundamental), 532 nm (Nd:YAG second harmonic)
   spotSize: 0.2-0.8 mm
   repetitionRate: 10-50 kHz
-  fluenceRange: "0.8-2.5 J/cm\xB2 (for safe removal of contaminants without substrate\
-    \ damage)"
+  fluenceRange: "0.8-2.5 J/cm² (for safe removal of contaminants without substrate damage)"
   scanningSpeed: 500-2000 mm/s
   beamProfile: Top-hat (flat-top)
   beamProfileOptions: Top-hat, Gaussian, Multimode
@@ -208,7 +205,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "1.0-10 J/cm\xB2"
+  fluence_threshold: "1.0-10 J/cm²"
   pulse_duration: 10-200ns
   wavelength_optimal: 1064nm
   power_range: 50-200W

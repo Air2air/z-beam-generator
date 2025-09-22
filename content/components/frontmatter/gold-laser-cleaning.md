@@ -3,11 +3,7 @@ name: Gold
 category: metal
 title: Gold Laser Cleaning
 headline: Comprehensive technical guide for laser cleaning metal gold
-description: "Gold laser cleaning utilizes precise pulsed fiber lasers to selectively\
-  \ remove surface contaminants from gold surfaces without damaging the substrate.\
-  \ The process leverages gold's high thermal conductivity (318 W/m\xB7K) and reflectivity,\
-  \ requiring optimized parameters to overcome reflectivity challenges while preventing\
-  \ melting or ablation of the precious metal."
+description: "Gold laser cleaning utilizes precise pulsed fiber lasers to selectively remove surface contaminants from gold surfaces without damaging the substrate. The process leverages gold's high thermal conductivity (318 W/m·K) and reflectivity, requiring optimized parameters to overcome reflectivity challenges while preventing melting or ablation of the precious metal."
 keywords: gold, gold metal, laser ablation, laser cleaning, non-contact cleaning,
   pulsed fiber laser, surface contamination removal, industrial laser parameters,
   thermal processing, surface restoration
@@ -16,35 +12,35 @@ chemicalProperties:
   formula: Au
   materialType: metal
 properties:
-  density: "19.32 g/cm\xB3"
+  density: "19.32 g/cm³"
   densityNumeric: 19.32
-  densityUnit: "g/cm\xB3"
-  densityMin: "1.8 g/cm\xB3"
+  densityUnit: "g/cm³"
+  densityMin: "1.8 g/cm³"
   densityMinNumeric: 1.8
-  densityMinUnit: "g/cm\xB3"
-  densityMax: "6.0 g/cm\xB3"
+  densityMinUnit: "g/cm³"
+  densityMax: "6.0 g/cm³"
   densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm\xB3"
+  densityMaxUnit: "g/cm³"
   densityPercentile: 100.0
-  meltingPoint: "1064\xB0C"
+  meltingPoint: "1064°C"
   meltingPointNumeric: 1064.0
-  meltingPointUnit: "\xB0C"
-  meltingPointMin: "1200\xB0C"
+  meltingPointUnit: "°C"
+  meltingPointMin: "1200°C"
   meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "\xB0C"
-  meltingPointMax: "2800\xB0C"
+  meltingPointMinUnit: "°C"
+  meltingPointMax: "2800°C"
   meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "\xB0C"
+  meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "318 W/m\xB7K"
+  thermalConductivity: "318 W/m·K"
   thermalConductivityNumeric: 318.0
-  thermalConductivityUnit: "W/m\xB7K"
-  thermalConductivityMin: "0.5 W/m\xB7K"
+  thermalConductivityUnit: "W/m·K"
+  thermalConductivityMin: "0.5 W/m·K"
   thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m\xB7K"
-  thermalConductivityMax: "200 W/m\xB7K"
+  thermalConductivityMinUnit: "W/m·K"
+  thermalConductivityMax: "200 W/m·K"
   thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m\xB7K"
+  thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 100.0
   tensileStrength: 120 MPa (annealed)
   tensileStrengthNumeric: 120.0
@@ -78,7 +74,7 @@ properties:
   modulusPercentile: 98.3
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "0.5\u20135 J/cm\xB2"
+  fluenceRange: "0.5\u20135 J/cm²"
   chemicalFormula: Au
   thermalBehaviorType: melting
 composition:
@@ -130,15 +126,15 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "0.5\u20135 J/cm\xB2"
+  fluenceRange: "0.5\u20135 J/cm²"
   fluenceRangeNumeric: 0.5
-  fluenceRangeUnit: "J/cm\xB2"
-  fluenceRangeMin: "0.1J/cm\xB2"
+  fluenceRangeUnit: "J/cm²"
+  fluenceRangeMin: "0.1J/cm²"
   fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm\xB2"
-  fluenceRangeMax: "50J/cm\xB2"
+  fluenceRangeMinUnit: "J/cm²"
+  fluenceRangeMax: "50J/cm²"
   fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm\xB2"
+  fluenceRangeMaxUnit: "J/cm²"
 applications:
 - 'Electronics: Removal of oxide layers and contaminants from gold-plated circuit
   boards'
@@ -176,15 +172,14 @@ outcomes:
 - result: Surface contamination removal efficiency
   metric: '>99.9% removal of organic contaminants and oxides without substrate damage'
 - result: Processing precision
-  metric: "Sub-micron layer control with material removal rates of 0.1-5 \u03BCm per\
-    \ pass"
+  metric: "Sub-micron layer control with material removal rates of 0.1-5 \u03BCm per pass"
 technicalSpecifications:
   powerRange: 20-100 W
   pulseDuration: 10-100 ns
   wavelength: 1064 nm (primary), 532 nm (for higher precision)
   spotSize: 0.1-2.0 mm
   repetitionRate: 10-50 kHz
-  fluenceRange: "0.5-5 J/cm\xB2"
+  fluenceRange: "0.5-5 J/cm²"
   scanningSpeed: 100-1000 mm/s
   beamProfile: Top-hat or Gaussian
   beamProfileOptions: Top-hat, Gaussian, Flat-top
@@ -203,7 +198,7 @@ prompt_chain_verification:
 chemicalFormula: Au
 symbol: Au
 laser_parameters:
-  fluence_threshold: "0.5\u20135 J/cm\xB2"
+  fluence_threshold: "0.5\u20135 J/cm²"
   pulse_duration: 10-100ns
   wavelength_optimal: 1064nm
   power_range: 20-100W

@@ -41,13 +41,13 @@ This guide covers the migration from the original settings component to the norm
 #### Unchanged Sections
 ```yaml
 # SAME - These sections remained
-- header: '## Laser System Configuration'
+- header: '## Machine Configuration'
 - header: '## Processing Parameters'
 ```
 
 ### Parameter Changes
 
-#### Laser System Configuration (Unchanged)
+#### Machine Configuration (Unchanged)
 - Power Range ✅
 - Wavelength ✅  
 - Pulse Duration ✅
@@ -82,7 +82,7 @@ def _generate_static_content(self, material: str, material_data: Dict, frontmatt
     sections = []
     
     if laser_settings:
-        sections.append({'header': '## Laser System Configuration', 'rows': laser_settings})
+        sections.append({'header': '## Machine Configuration', 'rows': laser_settings})
     
     if processing_settings:
         sections.append({'header': '## Processing Parameters', 'rows': processing_settings})
@@ -110,7 +110,7 @@ def _generate_static_content(self, material: str, material_data: Dict, frontmatt
     structure = {
         'machineSettings': {
             'settings': [
-                {'header': '## Laser System Configuration', 'rows': laser_settings},
+                {'header': '## Machine Configuration', 'rows': laser_settings},
                 {'header': '## Processing Parameters', 'rows': processing_settings},
                 {'header': '## Safety Parameters', 'rows': safety_settings},
                 {'header': '## Quality Control Settings', 'rows': quality_settings}
@@ -208,7 +208,7 @@ def test_section_generation(self):
     
     # Test conditional headers
     headers = [section['header'] for section in sections]
-    self.assertIn('## Laser System Configuration', headers)
+    self.assertIn('## Machine Configuration', headers)
     # Other sections optional
 ```
 
@@ -220,7 +220,7 @@ def test_normalized_4_section_structure(self):
     
     # Test mandatory headers
     expected_headers = [
-        '## Laser System Configuration',
+        '## Machine Configuration',
         '## Processing Parameters',
         '## Safety Parameters',
         '## Quality Control Settings'
@@ -247,7 +247,7 @@ python3 components/settings/testing/test_settings_normalized.py
 ```yaml
 machineSettings:
   settings:
-  - header: '## Laser System Configuration'
+  - header: '## Machine Configuration'
     rows:
     - parameter: Power Range
       value: 50-200W
@@ -263,7 +263,7 @@ renderInstructions: In Next.js, loop over settings[].rows...
 ```yaml
 machineSettings:
   settings:
-  - header: '## Laser System Configuration'
+  - header: '## Machine Configuration'
     rows:
     - parameter: Power Range
       value: 50-200W
@@ -348,7 +348,7 @@ interface SettingsData {
 }
 
 interface SettingsSection {
-  header: '## Laser System Configuration' | 
+  header: '## Machine Configuration' | 
           '## Processing Parameters' | 
           '## Safety Parameters' | 
           '## Quality Control Settings';
@@ -372,7 +372,7 @@ def validate_normalized_file(file_path: str) -> bool:
     
     # Check headers
     expected_headers = [
-        '## Laser System Configuration',
+        '## Machine Configuration',
         '## Processing Parameters',
         '## Safety Parameters',
         '## Quality Control Settings'

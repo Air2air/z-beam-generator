@@ -3,47 +3,44 @@ name: Plaster
 category: masonry
 title: Plaster Laser Cleaning
 headline: Comprehensive technical guide for laser cleaning masonry plaster
-description: "Laser cleaning of plaster (calcium sulfate dihydrate) utilizes precise\
-  \ ablation thresholds to remove contaminants while preserving the hydrated gypsum\
-  \ structure. Optimal parameters avoid dehydration to bassanite (CaSO4\xB70.5H2O)\
-  \ or anhydrite (CaSO4)."
+description: "Laser cleaning of plaster (calcium sulfate dihydrate) utilizes precise ablation thresholds to remove contaminants while preserving the hydrated gypsum structure. Optimal parameters avoid dehydration to bassanite (CaSO4·0.5H2O) or anhydrite (CaSO4)."
 keywords: plaster, plaster masonry, laser ablation, laser cleaning, non-contact cleaning,
   pulsed fiber laser, surface contamination removal, industrial laser parameters,
   thermal processing, surface restoration
 chemicalProperties:
-  symbol: "CaSO4\xB72H2O"
-  formula: "CaSO4\xB72H2O"
+  symbol: "CaSO4·2H2O"
+  formula: "CaSO4·2H2O"
   materialType: masonry
 properties:
-  density: "2.32 g/cm\xB3"
+  density: "2.32 g/cm³"
   densityNumeric: 2.32
-  densityUnit: "g/cm\xB3"
-  densityMin: "1.8 g/cm\xB3"
+  densityUnit: "g/cm³"
+  densityMin: "1.8 g/cm³"
   densityMinNumeric: 1.8
-  densityMinUnit: "g/cm\xB3"
-  densityMax: "6.0 g/cm\xB3"
+  densityMinUnit: "g/cm³"
+  densityMax: "6.0 g/cm³"
   densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm\xB3"
+  densityMaxUnit: "g/cm³"
   densityPercentile: 12.4
-  meltingPoint: "128\xB0C"
+  meltingPoint: "128°C"
   meltingPointNumeric: 128
-  meltingPointUnit: "\xB0C"
-  meltingPointMin: "1200\xB0C"
+  meltingPointUnit: "°C"
+  meltingPointMin: "1200°C"
   meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "\xB0C"
-  meltingPointMax: "2800\xB0C"
+  meltingPointMinUnit: "°C"
+  meltingPointMax: "2800°C"
   meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "\xB0C"
+  meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "0.43 W/(m\xB7K) at 20\xB0C"
+  thermalConductivity: "0.43 W/(m·K) at 20°C"
   thermalConductivityNumeric: 0.43
   thermalConductivityUnit: W/
-  thermalConductivityMin: "0.5 W/m\xB7K"
+  thermalConductivityMin: "0.5 W/m·K"
   thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m\xB7K"
-  thermalConductivityMax: "200 W/m\xB7K"
+  thermalConductivityMinUnit: "W/m·K"
+  thermalConductivityMax: "200 W/m·K"
   thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m\xB7K"
+  thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.0
   tensileStrength: 2.0 MPa
   tensileStrengthNumeric: 2.0
@@ -77,11 +74,11 @@ properties:
   modulusPercentile: 0.0
   laserType: Nd:YAG
   wavelength: 1064nm
-  fluenceRange: "1.0\u20133.0 J/cm\xB2"
-  chemicalFormula: "CaSO4\xB72H2O"
+  fluenceRange: "1.0\u20133.0 J/cm²"
+  chemicalFormula: "CaSO4·2H2O"
   thermalBehaviorType: melting
 composition:
-- "Calcium sulfate dihydrate (CaSO4\xB72H2O): 95-98%"
+- "Calcium sulfate dihydrate (CaSO4·2H2O): 95-98%"
 - 'Calcium carbonate (CaCO3): 1-3%'
 - 'Silica (SiO2): 0.5-1.5%'
 - 'Other impurities: <1%'
@@ -131,15 +128,15 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0\u20133.0 J/cm\xB2"
+  fluenceRange: "1.0\u20133.0 J/cm²"
   fluenceRangeNumeric: 1.0
-  fluenceRangeUnit: "J/cm\xB2"
-  fluenceRangeMin: "0.1J/cm\xB2"
+  fluenceRangeUnit: "J/cm²"
+  fluenceRangeMin: "0.1J/cm²"
   fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm\xB2"
-  fluenceRangeMax: "50J/cm\xB2"
+  fluenceRangeMinUnit: "J/cm²"
+  fluenceRangeMax: "50J/cm²"
   fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm\xB2"
+  fluenceRangeMaxUnit: "J/cm²"
 applications:
 - 'Construction: Restoration of historical plaster surfaces'
 - 'Cultural Heritage: Cleaning of plaster sculptures and artifacts'
@@ -172,20 +169,19 @@ environmentalImpact:
   description: Eliminates disposal of hazardous solvents and chemical cleaners, reducing
     environmental contamination risk by 100%
 - benefit: Reduced water consumption
-  description: "Eliminates water usage compared to traditional wet cleaning methods,\
-    \ saving approximately 50-200 liters per m\xB2 of treated surface"
+  description: "Eliminates water usage compared to traditional wet cleaning methods, saving approximately 50-200 liters per m² of treated surface"
 outcomes:
 - result: Surface contamination removal efficiency
   metric: '>95% removal of pollution crusts with <5% substrate loss'
 - result: Processing speed
-  metric: "0.5-2.0 m\xB2/hour depending on contamination level and laser parameters"
+  metric: "0.5-2.0 m²/hour depending on contamination level and laser parameters"
 technicalSpecifications:
   powerRange: 10-100 W (average power for pulsed Nd:YAG)
   pulseDuration: 5-150 ns
   wavelength: 1064 nm (IR), 532 nm (SHG)
   spotSize: 0.2-1.5 mm
   repetitionRate: 10-100 kHz
-  fluenceRange: "0.8-2.5 J/cm\xB2"
+  fluenceRange: "0.8-2.5 J/cm²"
   scanningSpeed: 100-2000 mm/s
   beamProfile: Top-hat (flat-top)
   beamProfileOptions: Top-hat, Gaussian, Multimode
@@ -201,9 +197,9 @@ prompt_chain_verification:
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
-chemicalFormula: "CaSO4\xB72H2O"
+chemicalFormula: "CaSO4·2H2O"
 laser_parameters:
-  fluence_threshold: "1.0\u20133.0 J/cm\xB2"
+  fluence_threshold: "1.0\u20133.0 J/cm²"
   pulse_duration: 10-50ns
   wavelength_optimal: 1064nm
   power_range: 50-200W

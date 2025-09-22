@@ -3,10 +3,7 @@ name: Stucco
 category: masonry
 title: Stucco Laser Cleaning
 headline: Comprehensive technical guide for laser cleaning masonry stucco
-description: "Laser cleaning of stucco utilizes precise pulsed fiber laser parameters\
-  \ to selectively remove contaminants while preserving the calcium carbonate and\
-  \ cementitious matrix. The process operates below the ablation threshold of stucco\
-  \ (0.5 J/cm\xB2) while effectively removing organic and inorganic surface deposits."
+description: "Laser cleaning of stucco utilizes precise pulsed fiber laser parameters to selectively remove contaminants while preserving the calcium carbonate and cementitious matrix. The process operates below the ablation threshold of stucco (0.5 J/cm²) while effectively removing organic and inorganic surface deposits."
 keywords: stucco, stucco masonry, laser ablation, laser cleaning, non-contact cleaning,
   pulsed fiber laser, surface contamination removal, industrial laser parameters,
   thermal processing, surface restoration
@@ -15,35 +12,35 @@ chemicalProperties:
   formula: "Primarily CaCO\u2083 (calcium carbonate) with cementitious binders"
   materialType: masonry
 properties:
-  density: "1.6-1.8 g/cm\xB3"
+  density: "1.6-1.8 g/cm³"
   densityNumeric: 1.7
-  densityUnit: "g/cm\xB3"
-  densityMin: "1.8 g/cm\xB3"
+  densityUnit: "g/cm³"
+  densityMin: "1.8 g/cm³"
   densityMinNumeric: 1.8
-  densityMinUnit: "g/cm\xB3"
-  densityMax: "6.0 g/cm\xB3"
+  densityMinUnit: "g/cm³"
+  densityMax: "6.0 g/cm³"
   densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm\xB3"
+  densityMaxUnit: "g/cm³"
   densityPercentile: 0.0
-  meltingPoint: "1339\xB0C"
+  meltingPoint: "1339°C"
   meltingPointNumeric: 1339.0
-  meltingPointUnit: "\xB0C"
-  meltingPointMin: "1200\xB0C"
+  meltingPointUnit: "°C"
+  meltingPointMin: "1200°C"
   meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "\xB0C"
-  meltingPointMax: "2800\xB0C"
+  meltingPointMinUnit: "°C"
+  meltingPointMax: "2800°C"
   meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "\xB0C"
+  meltingPointMaxUnit: "°C"
   meltingPercentile: 8.7
-  thermalConductivity: "0.8-1.2 W/m\xB7K"
+  thermalConductivity: "0.8-1.2 W/m·K"
   thermalConductivityNumeric: 1.0
-  thermalConductivityUnit: "W/m\xB7K"
-  thermalConductivityMin: "0.5 W/m\xB7K"
+  thermalConductivityUnit: "W/m·K"
+  thermalConductivityMin: "0.5 W/m·K"
   thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m\xB7K"
-  thermalConductivityMax: "200 W/m\xB7K"
+  thermalConductivityMinUnit: "W/m·K"
+  thermalConductivityMax: "200 W/m·K"
   thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m\xB7K"
+  thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.3
   tensileStrength: 0.7-1.2 MPa
   tensileStrengthNumeric: 0.95
@@ -77,7 +74,7 @@ properties:
   modulusPercentile: 0.0
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "0.5\u20135 J/cm\xB2"
+  fluenceRange: "0.5\u20135 J/cm²"
   chemicalFormula: "CaCO\u2083 (primary), Ca(OH)\u2082, SiO\u2082, Al\u2082O\u2083"
   thermalBehaviorType: melting
 composition:
@@ -131,15 +128,15 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "0.5\u20135 J/cm\xB2"
+  fluenceRange: "0.5\u20135 J/cm²"
   fluenceRangeNumeric: 0.5
-  fluenceRangeUnit: "J/cm\xB2"
-  fluenceRangeMin: "0.1J/cm\xB2"
+  fluenceRangeUnit: "J/cm²"
+  fluenceRangeMin: "0.1J/cm²"
   fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm\xB2"
-  fluenceRangeMax: "50J/cm\xB2"
+  fluenceRangeMinUnit: "J/cm²"
+  fluenceRangeMax: "50J/cm²"
   fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm\xB2"
+  fluenceRangeMaxUnit: "J/cm²"
 applications:
 - 'Construction: Cleaning of stucco facades and surfaces'
 - 'Restoration: Restoration of historical stucco structures'
@@ -178,14 +175,14 @@ outcomes:
   metric: '>98% removal of biological growth and pollutants while preserving 100%
     of original stucco substrate'
 - result: Processing speed
-  metric: "2-5 m\xB2/hour depending on contamination level with 50\u03BCm precision"
+  metric: "2-5 m²/hour depending on contamination level with 50\u03BCm precision"
 technicalSpecifications:
   powerRange: 20-100 W
   pulseDuration: 10-100 ns
   wavelength: 1064 nm (primary), 532 nm (optional for delicate work)
   spotSize: 0.1-2.0 mm
   repetitionRate: 10-50 kHz
-  fluenceRange: "0.5-5 J/cm\xB2"
+  fluenceRange: "0.5-5 J/cm²"
   scanningSpeed: 100-500 mm/s
   beamProfile: Top-hat (flat-top)
   beamProfileOptions: Top-hat, Gaussian, Multi-spot
@@ -202,7 +199,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "0.5\u20135 J/cm\xB2"
+  fluence_threshold: "0.5\u20135 J/cm²"
   pulse_duration: 10-100ns
   wavelength_optimal: 1064nm
   power_range: 20-100W

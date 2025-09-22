@@ -101,7 +101,7 @@ class TestSettingsComponentGenerator:
         
         # Test section headers (like table component)
         headers = [section['header'] for section in settings]
-        expected_headers = ['## Laser System Configuration', '## Processing Parameters']
+        expected_headers = ['## Machine Configuration', '## Processing Parameters']
         
         for expected_header in expected_headers:
             if expected_header in headers:

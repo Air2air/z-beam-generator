@@ -185,7 +185,7 @@ All blueprint documents follow this structure:
 ### **By Component Type**
 - **Content Generation**: Text, frontmatter, bullets, caption
 - **Metadata**: Author, badgesymbol, tags, metatags
-- **Structure**: Table, propertiestable, jsonld
+- **Structure**: Table, propertiestable (4-field), jsonld
 - **Presentation**: Formatting, themes, layouts
 
 ### **By Technology**
@@ -369,7 +369,7 @@ This documentation hub ensures the Z-Beam Generator system remains maintainable,
 | `tags` | ✅ Working | ❌ Disabled | deepseek | ❌ |
 | `author` | ✅ Working | ❌ Disabled | none | ❌ |
 | `badgesymbol` | ✅ Working | ❌ Disabled | none | ❌ |
-| `propertiestable` | ✅ Working | ❌ Disabled | none | ❌ |
+| `propertiestable` | ✅ Working | ✅ Enabled | 4-field | ✅ |
 | `metatags` | ✅ Working | ❌ Disabled | none | ❌ |
 | `jsonld` | ✅ Working | ❌ Disabled | none | ❌ |
 

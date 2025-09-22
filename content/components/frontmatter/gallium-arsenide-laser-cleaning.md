@@ -15,35 +15,35 @@ chemicalProperties:
   formula: GaAs
   materialType: III-V Semiconductor
 properties:
-  density: "5.3176 g/cm\xB3"
+  density: "5.3176 g/cm³"
   densityNumeric: 5.3176
-  densityUnit: "g/cm\xB3"
-  densityMin: "1.8 g/cm\xB3"
+  densityUnit: "g/cm³"
+  densityMin: "1.8 g/cm³"
   densityMinNumeric: 1.8
-  densityMinUnit: "g/cm\xB3"
-  densityMax: "6.0 g/cm\xB3"
+  densityMinUnit: "g/cm³"
+  densityMax: "6.0 g/cm³"
   densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm\xB3"
+  densityMaxUnit: "g/cm³"
   densityPercentile: 83.8
-  meltingPoint: "1238\xB0C"
+  meltingPoint: "1238°C"
   meltingPointNumeric: 1238
-  meltingPointUnit: "\xB0C"
-  meltingPointMin: "1200\xB0C"
+  meltingPointUnit: "°C"
+  meltingPointMin: "1200°C"
   meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "\xB0C"
-  meltingPointMax: "2800\xB0C"
+  meltingPointMinUnit: "°C"
+  meltingPointMax: "2800°C"
   meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "\xB0C"
+  meltingPointMaxUnit: "°C"
   meltingPercentile: 2.4
-  thermalConductivity: "55 W/(m\xB7K) @ 300 K"
+  thermalConductivity: "55 W/(m·K) @ 300 K"
   thermalConductivityNumeric: 55.0
   thermalConductivityUnit: W/
-  thermalConductivityMin: "0.5 W/m\xB7K"
+  thermalConductivityMin: "0.5 W/m·K"
   thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m\xB7K"
-  thermalConductivityMax: "200 W/m\xB7K"
+  thermalConductivityMinUnit: "W/m·K"
+  thermalConductivityMax: "200 W/m·K"
   thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m\xB7K"
+  thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 27.3
   tensileStrength: 66 MPa
   tensileStrengthNumeric: 66.0
@@ -77,7 +77,7 @@ properties:
   modulusPercentile: 100.0
   laserType: Pulsed Fiber Laser
   wavelength: 1064nm
-  fluenceRange: "1.0\u201310 J/cm\xB2"
+  fluenceRange: "1.0\u201310 J/cm²"
   chemicalFormula: GaAs
   thermalBehaviorType: melting
 composition:
@@ -129,15 +129,15 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0\u201310 J/cm\xB2"
+  fluenceRange: "1.0\u201310 J/cm²"
   fluenceRangeNumeric: 1.0
-  fluenceRangeUnit: "J/cm\xB2"
-  fluenceRangeMin: "0.1J/cm\xB2"
+  fluenceRangeUnit: "J/cm²"
+  fluenceRangeMin: "0.1J/cm²"
   fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm\xB2"
-  fluenceRangeMax: "50J/cm\xB2"
+  fluenceRangeMinUnit: "J/cm²"
+  fluenceRangeMax: "50J/cm²"
   fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm\xB2"
+  fluenceRangeMaxUnit: "J/cm²"
 applications:
 - 'Semiconductor Manufacturing: Removal of surface contaminants from Gallium Arsenide
   wafers'
@@ -179,14 +179,14 @@ outcomes:
 - result: Surface Contaminant Removal >99.9%
   metric: Measured via XPS and Auger Electron Spectroscopy (AES) analysis
 - result: Sub-surface Damage < 50 nm
-  metric: "Processing speeds of 100-2000 mm/s with feature accuracy of \xB15 \xB5m"
+  metric: "Processing speeds of 100-2000 mm/s with feature accuracy of ±5 µm"
 technicalSpecifications:
   powerRange: 50-200 W
   pulseDuration: 10-100 ns
   wavelength: 1064 nm (primary), 532 nm (optional for finer features)
-  spotSize: "50-1000 \xB5m"
+  spotSize: "50-1000 µm"
   repetitionRate: 20-100 kHz
-  fluenceRange: "1.0\u201310 J/cm\xB2"
+  fluenceRange: "1.0\u201310 J/cm²"
   scanningSpeed: 100-2000 mm/s
   beamProfile: Top-hat (flat-top) for uniform energy distribution
   beamProfileOptions: Top-hat, Gaussian, Donut
@@ -204,7 +204,7 @@ prompt_chain_verification:
   cultural_adaptation_applied: true
 chemicalFormula: GaAs
 laser_parameters:
-  fluence_threshold: "1.0\u201310 J/cm\xB2"
+  fluence_threshold: "1.0\u201310 J/cm²"
   pulse_duration: 10-50ns
   wavelength_optimal: 1064nm
   power_range: 50-200W

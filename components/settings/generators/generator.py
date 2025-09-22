@@ -52,10 +52,10 @@ class SettingsComponentGenerator(StaticComponentGenerator):
             # Build categorized settings with normalized structure - 4 required sections
             categorized_settings = []
 
-            # 1. Laser System Configuration
+            # 1. Machine Configuration
             laser_props = self._extract_laser_settings(machine_settings)
             categorized_settings.append({
-                'header': '## Laser System Configuration',
+                'header': '## Machine Configuration',
                 'rows': laser_props
             })
 

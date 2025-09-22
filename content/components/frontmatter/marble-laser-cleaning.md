@@ -15,35 +15,35 @@ chemicalProperties:
   formula: CaCO3
   materialType: stone
 properties:
-  density: "2.6-2.8 g/cm\xB3 (varies by marble type)"
+  density: "2.6-2.8 g/cm³ (varies by marble type)"
   densityNumeric: 2.7
-  densityUnit: "g/cm\xB3"
-  densityMin: "1.8 g/cm\xB3"
+  densityUnit: "g/cm³"
+  densityMin: "1.8 g/cm³"
   densityMinNumeric: 1.8
-  densityMinUnit: "g/cm\xB3"
-  densityMax: "6.0 g/cm\xB3"
+  densityMinUnit: "g/cm³"
+  densityMax: "6.0 g/cm³"
   densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm\xB3"
+  densityMaxUnit: "g/cm³"
   densityPercentile: 21.4
-  meltingPoint: "825\xB0C"
+  meltingPoint: "825°C"
   meltingPointNumeric: 825.0
-  meltingPointUnit: "\xB0C"
-  meltingPointMin: "1200\xB0C"
+  meltingPointUnit: "°C"
+  meltingPointMin: "1200°C"
   meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "\xB0C"
-  meltingPointMax: "2800\xB0C"
+  meltingPointMinUnit: "°C"
+  meltingPointMax: "2800°C"
   meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "\xB0C"
+  meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "2.5-2.9 W/(m\xB7K) at 20\xB0C"
+  thermalConductivity: "2.5-2.9 W/(m·K) at 20°C"
   thermalConductivityNumeric: 2.7
   thermalConductivityUnit: W/
-  thermalConductivityMin: "0.5 W/m\xB7K"
+  thermalConductivityMin: "0.5 W/m·K"
   thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m\xB7K"
-  thermalConductivityMax: "200 W/m\xB7K"
+  thermalConductivityMinUnit: "W/m·K"
+  thermalConductivityMax: "200 W/m·K"
   thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m\xB7K"
+  thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 1.1
   tensileStrength: 8-15 MPa (across grain)
   tensileStrengthNumeric: 11.5
@@ -77,7 +77,7 @@ properties:
   modulusPercentile: 66.7
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "0.5-5 J/cm\xB2"
+  fluenceRange: "0.5-5 J/cm²"
   chemicalFormula: CaCO3
   thermalBehaviorType: melting
 composition:
@@ -131,15 +131,15 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "0.5-5 J/cm\xB2"
+  fluenceRange: "0.5-5 J/cm²"
   fluenceRangeNumeric: 2.75
-  fluenceRangeUnit: "J/cm\xB2"
-  fluenceRangeMin: "0.1J/cm\xB2"
+  fluenceRangeUnit: "J/cm²"
+  fluenceRangeMin: "0.1J/cm²"
   fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm\xB2"
-  fluenceRangeMax: "50J/cm\xB2"
+  fluenceRangeMinUnit: "J/cm²"
+  fluenceRangeMax: "50J/cm²"
   fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm\xB2"
+  fluenceRangeMaxUnit: "J/cm²"
 applications:
 - 'Construction: Removing stains and graffiti from marble surfaces'
 - 'Restoration: Cleaning and restoring historical marble sculptures and buildings'
@@ -173,23 +173,20 @@ environmentalImpact:
     and associated wastewater contamination, reducing environmental impact by 95%
     compared to traditional chemical cleaning methods
 - benefit: Reduced water consumption
-  description: "Eliminates water usage entirely (traditional methods use 5-20 liters\
-    \ per square meter), conserving approximately 10,000 liters of water per 1000m\xB2\
-    \ of cleaned surface"
+  description: "Eliminates water usage entirely (traditional methods use 5-20 liters per square meter), conserving approximately 10,000 liters of water per 1000m² of cleaned surface"
 outcomes:
 - result: Surface contamination removal efficiency
-  metric: ">98% removal of biological crusts and pollutants while preserving <2\u03BC\
+  metric: ">98% removal of biological crusts and pollutants while preserving <2\u03BC"
     m of original substrate"
 - result: Processing speed
-  metric: "0.5-2.0 m\xB2/hour depending on contamination type and laser parameters\
-    \ with sub-millimeter precision"
+  metric: "0.5-2.0 m²/hour depending on contamination type and laser parameters with sub-millimeter precision"
 technicalSpecifications:
   powerRange: 20-100 W (average power for pulsed fiber lasers)
   pulseDuration: 10-100 ns (nanosecond range for controlled ablation)
   wavelength: 1064 nm (primary), 532 nm (optional for specific contaminants)
   spotSize: 0.1-2.0 mm (adjustable based on contamination type and surface detail)
   repetitionRate: 10-50 kHz (optimized for marble thermal relaxation)
-  fluenceRange: "0.5-5 J/cm\xB2 (below marble ablation threshold of ~6 J/cm\xB2)"
+  fluenceRange: "0.5-5 J/cm² (below marble ablation threshold of ~6 J/cm²)"
   scanningSpeed: 100-2000 mm/s (depending on contamination thickness and laser parameters)
   beamProfile: Top-hat or flat-top profile
   beamProfileOptions: Top-hat, Gaussian, Multi-spot
@@ -208,7 +205,7 @@ prompt_chain_verification:
   cultural_adaptation_applied: true
 chemicalFormula: CaCO3
 laser_parameters:
-  fluence_threshold: "0.5-5 J/cm\xB2"
+  fluence_threshold: "0.5-5 J/cm²"
   pulse_duration: 10-100ns
   wavelength_optimal: 1064nm
   power_range: 20-100W

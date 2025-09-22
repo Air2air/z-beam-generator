@@ -3,48 +3,44 @@ name: Porcelain
 category: ceramic
 title: Porcelain Laser Cleaning
 headline: Comprehensive technical guide for laser cleaning ceramic porcelain
-description: "Porcelain laser cleaning utilizes precise pulsed fiber lasers to remove\
-  \ surface contaminants through selective ablation, leveraging the material's high\
-  \ thermal stability (1350\xB0C melting point) and mechanical hardness (7 Mohs).\
-  \ The process preserves the underlying ceramic structure while removing organic\
-  \ and inorganic surface layers."
+description: "Porcelain laser cleaning utilizes precise pulsed fiber lasers to remove surface contaminants through selective ablation, leveraging the material's high thermal stability (1350°C melting point) and mechanical hardness (7 Mohs). The process preserves the underlying ceramic structure while removing organic and inorganic surface layers."
 keywords: porcelain, porcelain ceramic, laser ablation, laser cleaning, non-contact
   cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters,
   thermal processing, surface restoration
 chemicalProperties:
   symbol: Al-Si-O
-  formula: "Al2O3\xB72SiO2\xB72H2O"
+  formula: "Al2O3·2SiO2·2H2O"
   materialType: ceramic
 properties:
-  density: "2.3-2.5 g/cm\xB3"
+  density: "2.3-2.5 g/cm³"
   densityNumeric: 2.4
-  densityUnit: "g/cm\xB3"
-  densityMin: "1.8 g/cm\xB3"
+  densityUnit: "g/cm³"
+  densityMin: "1.8 g/cm³"
   densityMinNumeric: 1.8
-  densityMinUnit: "g/cm\xB3"
-  densityMax: "6.0 g/cm\xB3"
+  densityMinUnit: "g/cm³"
+  densityMax: "6.0 g/cm³"
   densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm\xB3"
+  densityMaxUnit: "g/cm³"
   densityPercentile: 14.3
-  meltingPoint: "1650\xB0C"
+  meltingPoint: "1650°C"
   meltingPointNumeric: 1650
-  meltingPointUnit: "\xB0C"
-  meltingPointMin: "1200\xB0C"
+  meltingPointUnit: "°C"
+  meltingPointMin: "1200°C"
   meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "\xB0C"
-  meltingPointMax: "2800\xB0C"
+  meltingPointMinUnit: "°C"
+  meltingPointMax: "2800°C"
   meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "\xB0C"
+  meltingPointMaxUnit: "°C"
   meltingPercentile: 18.8
-  thermalConductivity: "1.5 W/(m\xB7K)"
+  thermalConductivity: "1.5 W/(m·K)"
   thermalConductivityNumeric: 1.5
   thermalConductivityUnit: W/
-  thermalConductivityMin: "0.5 W/m\xB7K"
+  thermalConductivityMin: "0.5 W/m·K"
   thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m\xB7K"
-  thermalConductivityMax: "200 W/m\xB7K"
+  thermalConductivityMinUnit: "W/m·K"
+  thermalConductivityMax: "200 W/m·K"
   thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m\xB7K"
+  thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.5
   tensileStrength: 30-50 MPa
   tensileStrengthNumeric: 40.0
@@ -78,8 +74,8 @@ properties:
   modulusPercentile: 100.0
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "0.5\u20135 J/cm\xB2"
-  chemicalFormula: "Al2O3\xB72SiO2\xB72H2O"
+  fluenceRange: "0.5\u20135 J/cm²"
+  chemicalFormula: "Al2O3·2SiO2·2H2O"
   thermalBehaviorType: melting
 composition:
 - 'Kaolinite (Al2Si2O5(OH)4): 50-60%'
@@ -132,15 +128,15 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "0.5\u20135 J/cm\xB2"
+  fluenceRange: "0.5\u20135 J/cm²"
   fluenceRangeNumeric: 0.5
-  fluenceRangeUnit: "J/cm\xB2"
-  fluenceRangeMin: "0.1J/cm\xB2"
+  fluenceRangeUnit: "J/cm²"
+  fluenceRangeMin: "0.1J/cm²"
   fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm\xB2"
-  fluenceRangeMax: "50J/cm\xB2"
+  fluenceRangeMinUnit: "J/cm²"
+  fluenceRangeMax: "50J/cm²"
   fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm\xB2"
+  fluenceRangeMaxUnit: "J/cm²"
 applications:
 - 'Ceramics Manufacturing: Cleaning of porcelain surfaces for improved adhesion in
   glazing processes'
@@ -180,14 +176,14 @@ outcomes:
 - result: Surface contamination removal efficiency
   metric: '>99% removal of organic contaminants without substrate damage'
 - result: Processing speed
-  metric: "0.5-2.0 m\xB2/hour depending on contamination level and laser parameters"
+  metric: "0.5-2.0 m²/hour depending on contamination level and laser parameters"
 technicalSpecifications:
   powerRange: 20-100 W (pulsed)
   pulseDuration: 10-100 ns
   wavelength: 1064 nm (primary), 532 nm (optional for finer control)
   spotSize: 0.1-2.0 mm
   repetitionRate: 10-50 kHz
-  fluenceRange: "0.5-5 J/cm\xB2"
+  fluenceRange: "0.5-5 J/cm²"
   scanningSpeed: 100-1000 mm/s
   beamProfile: Top-hat or Gaussian
   beamProfileOptions: Top-hat for uniform cleaning, Gaussian for precision work
@@ -203,10 +199,10 @@ prompt_chain_verification:
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
-chemicalFormula: "Al2O3\xB72SiO2\xB72H2O"
+chemicalFormula: "Al2O3·2SiO2·2H2O"
 symbol: Al-Si-O
 laser_parameters:
-  fluence_threshold: "0.5\u20135 J/cm\xB2"
+  fluence_threshold: "0.5\u20135 J/cm²"
   pulse_duration: 10-100ns
   wavelength_optimal: 1064nm
   power_range: 20-100W

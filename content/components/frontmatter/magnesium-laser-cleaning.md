@@ -3,10 +3,7 @@ name: Magnesium
 category: metal
 title: Magnesium Laser Cleaning
 headline: Comprehensive technical guide for laser cleaning metal magnesium
-description: "Laser cleaning of magnesium requires precise parameter control due to\
-  \ its low melting point (650\xB0C) and high reactivity. Pulsed fiber lasers at 1064nm\
-  \ wavelength provide optimal absorption for removing oxides and contaminants without\
-  \ melting the substrate."
+description: "Laser cleaning of magnesium requires precise parameter control due to its low melting point (650°C) and high reactivity. Pulsed fiber lasers at 1064nm wavelength provide optimal absorption for removing oxides and contaminants without melting the substrate."
 keywords: magnesium, magnesium metal, laser ablation, laser cleaning, non-contact
   cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters,
   thermal processing, surface restoration
@@ -15,35 +12,35 @@ chemicalProperties:
   formula: Mg
   materialType: metal
 properties:
-  density: "1.738 g/cm\xB3"
+  density: "1.738 g/cm³"
   densityNumeric: 1.738
-  densityUnit: "g/cm\xB3"
-  densityMin: "1.8 g/cm\xB3"
+  densityUnit: "g/cm³"
+  densityMin: "1.8 g/cm³"
   densityMinNumeric: 1.8
-  densityMinUnit: "g/cm\xB3"
-  densityMax: "6.0 g/cm\xB3"
+  densityMinUnit: "g/cm³"
+  densityMax: "6.0 g/cm³"
   densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm\xB3"
+  densityMaxUnit: "g/cm³"
   densityPercentile: 0.0
-  meltingPoint: "650\xB0C"
+  meltingPoint: "650°C"
   meltingPointNumeric: 650.0
-  meltingPointUnit: "\xB0C"
-  meltingPointMin: "1200\xB0C"
+  meltingPointUnit: "°C"
+  meltingPointMin: "1200°C"
   meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "\xB0C"
-  meltingPointMax: "2800\xB0C"
+  meltingPointMinUnit: "°C"
+  meltingPointMax: "2800°C"
   meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "\xB0C"
+  meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "156 W/(m\xB7K)"
+  thermalConductivity: "156 W/(m·K)"
   thermalConductivityNumeric: 156.0
   thermalConductivityUnit: W/
-  thermalConductivityMin: "0.5 W/m\xB7K"
+  thermalConductivityMin: "0.5 W/m·K"
   thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m\xB7K"
-  thermalConductivityMax: "200 W/m\xB7K"
+  thermalConductivityMinUnit: "W/m·K"
+  thermalConductivityMax: "200 W/m·K"
   thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m\xB7K"
+  thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 77.9
   tensileStrength: 160-240 MPa (pure Mg), 275-380 MPa (alloys)
   tensileStrengthNumeric: 200.0
@@ -77,7 +74,7 @@ properties:
   modulusPercentile: 41.7
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "0.5\u20135 J/cm\xB2"
+  fluenceRange: "0.5\u20135 J/cm²"
   chemicalFormula: Mg
   thermalBehaviorType: melting
 composition:
@@ -129,15 +126,15 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "0.5\u20135 J/cm\xB2"
+  fluenceRange: "0.5\u20135 J/cm²"
   fluenceRangeNumeric: 0.5
-  fluenceRangeUnit: "J/cm\xB2"
-  fluenceRangeMin: "0.1J/cm\xB2"
+  fluenceRangeUnit: "J/cm²"
+  fluenceRangeMin: "0.1J/cm²"
   fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm\xB2"
-  fluenceRangeMax: "50J/cm\xB2"
+  fluenceRangeMinUnit: "J/cm²"
+  fluenceRangeMax: "50J/cm²"
   fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm\xB2"
+  fluenceRangeMaxUnit: "J/cm²"
 applications:
 - 'Aerospace: Removal of oxidation and contaminants from magnesium alloy components'
 - 'Automotive: Cleaning of magnesium engine parts for improved performance and longevity'
@@ -175,14 +172,14 @@ outcomes:
 - result: Surface contamination removal efficiency
   metric: '>99.5% removal of oxides and contaminants without substrate damage'
 - result: Processing speed
-  metric: "0.5-2.0 m\xB2/hour depending on contamination level and laser parameters"
+  metric: "0.5-2.0 m²/hour depending on contamination level and laser parameters"
 technicalSpecifications:
   powerRange: 20-100 W (pulsed fiber laser)
   pulseDuration: 10-100 ns
   wavelength: 1064 nm (primary), 532 nm (optional for finer processing)
   spotSize: 0.1-2.0 mm
   repetitionRate: 10-50 kHz
-  fluenceRange: "0.5\u20135 J/cm\xB2"
+  fluenceRange: "0.5\u20135 J/cm²"
   scanningSpeed: 100-2000 mm/s
   beamProfile: Top-hat or Gaussian (depending on contamination type)
   beamProfileOptions: Top-hat for uniform cleaning, Gaussian for precision ablation
@@ -201,7 +198,7 @@ prompt_chain_verification:
 chemicalFormula: Mg
 symbol: Mg
 laser_parameters:
-  fluence_threshold: "0.5\u20135 J/cm\xB2"
+  fluence_threshold: "0.5\u20135 J/cm²"
   pulse_duration: 10-100ns
   wavelength_optimal: 1064nm
   power_range: 20-100W

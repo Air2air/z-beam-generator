@@ -3,11 +3,7 @@ name: Nickel
 category: metal
 title: Nickel Laser Cleaning
 headline: Comprehensive technical guide for laser cleaning metal nickel
-description: "Nickel laser cleaning utilizes precise laser ablation to remove surface\
-  \ contaminants, oxides, and coatings without damaging the underlying substrate.\
-  \ The process leverages nickel's high thermal conductivity (90.9 W/m\xB7K) and melting\
-  \ point (1455\xB0C) for controlled material removal, making it ideal for precision\
-  \ industrial applications where chemical cleaning is prohibited or impractical."
+description: "Nickel laser cleaning utilizes precise laser ablation to remove surface contaminants, oxides, and coatings without damaging the underlying substrate. The process leverages nickel's high thermal conductivity (90.9 W/m·K) and melting point (1455°C) for controlled material removal, making it ideal for precision industrial applications where chemical cleaning is prohibited or impractical."
 keywords: nickel, nickel metal, laser ablation, laser cleaning, non-contact cleaning,
   pulsed fiber laser, surface contamination removal, industrial laser parameters,
   thermal processing, surface restoration
@@ -16,35 +12,35 @@ chemicalProperties:
   formula: Ni
   materialType: metal
 properties:
-  density: "8.91 g/cm\xB3"
+  density: "8.91 g/cm³"
   densityNumeric: 8.91
-  densityUnit: "g/cm\xB3"
-  densityMin: "1.8 g/cm\xB3"
+  densityUnit: "g/cm³"
+  densityMin: "1.8 g/cm³"
   densityMinNumeric: 1.8
-  densityMinUnit: "g/cm\xB3"
-  densityMax: "6.0 g/cm\xB3"
+  densityMinUnit: "g/cm³"
+  densityMax: "6.0 g/cm³"
   densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm\xB3"
+  densityMaxUnit: "g/cm³"
   densityPercentile: 100.0
-  meltingPoint: "1455\xB0C"
+  meltingPoint: "1455°C"
   meltingPointNumeric: 1455.0
-  meltingPointUnit: "\xB0C"
-  meltingPointMin: "1200\xB0C"
+  meltingPointUnit: "°C"
+  meltingPointMin: "1200°C"
   meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "\xB0C"
-  meltingPointMax: "2800\xB0C"
+  meltingPointMinUnit: "°C"
+  meltingPointMax: "2800°C"
   meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "\xB0C"
+  meltingPointMaxUnit: "°C"
   meltingPercentile: 15.9
-  thermalConductivity: "90.9 W/(m\xB7K)"
+  thermalConductivity: "90.9 W/(m·K)"
   thermalConductivityNumeric: 90.9
   thermalConductivityUnit: W/
-  thermalConductivityMin: "0.5 W/m\xB7K"
+  thermalConductivityMin: "0.5 W/m·K"
   thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m\xB7K"
-  thermalConductivityMax: "200 W/m\xB7K"
+  thermalConductivityMinUnit: "W/m·K"
+  thermalConductivityMax: "200 W/m·K"
   thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m\xB7K"
+  thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 45.3
   tensileStrength: 667-1600 MPa
   tensileStrengthNumeric: 1133.5
@@ -78,7 +74,7 @@ properties:
   modulusPercentile: 100.0
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "0.5\u20135 J/cm\xB2"
+  fluenceRange: "0.5\u20135 J/cm²"
   chemicalFormula: Ni
   thermalBehaviorType: melting
 composition:
@@ -130,15 +126,15 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "0.5\u20135 J/cm\xB2"
+  fluenceRange: "0.5\u20135 J/cm²"
   fluenceRangeNumeric: 0.5
-  fluenceRangeUnit: "J/cm\xB2"
-  fluenceRangeMin: "0.1J/cm\xB2"
+  fluenceRangeUnit: "J/cm²"
+  fluenceRangeMin: "0.1J/cm²"
   fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm\xB2"
-  fluenceRangeMax: "50J/cm\xB2"
+  fluenceRangeMinUnit: "J/cm²"
+  fluenceRangeMax: "50J/cm²"
   fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm\xB2"
+  fluenceRangeMaxUnit: "J/cm²"
 applications:
 - 'Automotive: Removal of rust and corrosion from nickel-plated parts'
 - 'Electronics: Cleaning of nickel surfaces for improved conductivity and soldering'
@@ -178,17 +174,17 @@ environmentalImpact:
     or abrasive cleaning methods for nickel components
 outcomes:
 - result: Surface contamination removal efficiency
-  metric: ">99.9% removal of oxides and contaminants with substrate damage <5 \u03BC\
+  metric: ">99.9% removal of oxides and contaminants with substrate damage <5 \u03BC"
     m"
 - result: Processing throughput
-  metric: "0.5-2.0 m\xB2/hour depending on contamination level and laser parameters"
+  metric: "0.5-2.0 m²/hour depending on contamination level and laser parameters"
 technicalSpecifications:
   powerRange: 20-200 W (pulsed)
   pulseDuration: 10-200 ns
   wavelength: 1064 nm (primary), 532 nm (for higher precision)
   spotSize: "50-500 \u03BCm"
   repetitionRate: 20-100 kHz
-  fluenceRange: "0.5-8 J/cm\xB2"
+  fluenceRange: "0.5-8 J/cm²"
   scanningSpeed: 100-2000 mm/s
   beamProfile: Top-hat or Gaussian
   beamProfileOptions: Top-hat for uniform cleaning, Gaussian for precision ablation
@@ -207,7 +203,7 @@ prompt_chain_verification:
 chemicalFormula: Ni
 symbol: Ni
 laser_parameters:
-  fluence_threshold: "0.5\u20135 J/cm\xB2"
+  fluence_threshold: "0.5\u20135 J/cm²"
   pulse_duration: 10-100ns
   wavelength_optimal: 1064nm
   power_range: 20-100W

@@ -15,35 +15,35 @@ chemicalProperties:
   formula: "CaCO\u2083 (primary), with FeS\u2082, SiO\u2082, Al\u2082O\u2083 impurities"
   materialType: sedimentary rock
 properties:
-  density: "2.6-2.8 g/cm\xB3 (varies with mineral composition)"
+  density: "2.6-2.8 g/cm³ (varies with mineral composition)"
   densityNumeric: 2.7
-  densityUnit: "g/cm\xB3"
-  densityMin: "1.8 g/cm\xB3"
+  densityUnit: "g/cm³"
+  densityMin: "1.8 g/cm³"
   densityMinNumeric: 1.8
-  densityMinUnit: "g/cm\xB3"
-  densityMax: "6.0 g/cm\xB3"
+  densityMinUnit: "g/cm³"
+  densityMax: "6.0 g/cm³"
   densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm\xB3"
+  densityMaxUnit: "g/cm³"
   densityPercentile: 21.4
-  meltingPoint: "825\xB0C"
+  meltingPoint: "825°C"
   meltingPointNumeric: 825.0
-  meltingPointUnit: "\xB0C"
-  meltingPointMin: "1200\xB0C"
+  meltingPointUnit: "°C"
+  meltingPointMin: "1200°C"
   meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "\xB0C"
-  meltingPointMax: "2800\xB0C"
+  meltingPointMinUnit: "°C"
+  meltingPointMax: "2800°C"
   meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "\xB0C"
+  meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "2.5-3.0 W/m\xB7K (at 20\xB0C)"
+  thermalConductivity: "2.5-3.0 W/m·K (at 20°C)"
   thermalConductivityNumeric: 2.75
-  thermalConductivityUnit: "W/m\xB7K"
-  thermalConductivityMin: "0.5 W/m\xB7K"
+  thermalConductivityUnit: "W/m·K"
+  thermalConductivityMin: "0.5 W/m·K"
   thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m\xB7K"
-  thermalConductivityMax: "200 W/m\xB7K"
+  thermalConductivityMinUnit: "W/m·K"
+  thermalConductivityMax: "200 W/m·K"
   thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m\xB7K"
+  thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 1.1
   tensileStrength: 8-15 MPa (varies with bedding plane orientation)
   tensileStrengthNumeric: 11.5
@@ -77,14 +77,14 @@ properties:
   modulusPercentile: 66.7
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "0.5-3.0 J/cm\xB2"
+  fluenceRange: "0.5-3.0 J/cm²"
   chemicalFormula: "CaCO\u2083 (calcium carbonate)"
   thermalBehaviorType: melting
 composition:
 - "Calcium carbonate (CaCO\u2083): 85-95%"
 - "Quartz (SiO\u2082): 3-8%"
 - "Pyrite (FeS\u2082): 1-3%"
-- "Clay minerals (Al\u2082O\u2083\xB72SiO\u2082\xB72H\u2082O): 1-4%"
+- "Clay minerals (Al\u2082O\u2083·2SiO\u2082·2H\u2082O): 1-4%"
 machineSettings:
   powerRange: 20-100W
   powerRangeNumeric: 60.0
@@ -131,15 +131,15 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "0.5-3.0 J/cm\xB2"
+  fluenceRange: "0.5-3.0 J/cm²"
   fluenceRangeNumeric: 1.75
-  fluenceRangeUnit: "J/cm\xB2"
-  fluenceRangeMin: "0.1J/cm\xB2"
+  fluenceRangeUnit: "J/cm²"
+  fluenceRangeMin: "0.1J/cm²"
   fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm\xB2"
-  fluenceRangeMax: "50J/cm\xB2"
+  fluenceRangeMinUnit: "J/cm²"
+  fluenceRangeMax: "50J/cm²"
   fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm\xB2"
+  fluenceRangeMaxUnit: "J/cm²"
 applications:
 - 'Construction: Removal of surface contaminants and weathering from Bluestone facades'
 - 'Restoration: Precision cleaning of Bluestone sculptures and historical artifacts'
@@ -176,17 +176,17 @@ environmentalImpact:
     methods
 outcomes:
 - result: Surface contamination removal efficiency
-  metric: ">98% removal of black crusts and biological growth while preserving <5\u03BC\
+  metric: ">98% removal of black crusts and biological growth while preserving <5\u03BC"
     m of original stone"
 - result: Processing speed for historical restoration
-  metric: "0.1-0.5 m\xB2/hour depending on contamination severity and required precision"
+  metric: "0.1-0.5 m²/hour depending on contamination severity and required precision"
 technicalSpecifications:
   powerRange: 20-100 W (average power for pulsed fiber lasers)
   pulseDuration: 10-50 ns (short pulse for precise ablation)
   wavelength: 1064 nm (primary), 532 nm (optional for specific contaminants)
   spotSize: 0.1-1.0 mm (adjustable for precision work vs area coverage)
   repetitionRate: 20-100 kHz (optimized for thermal management)
-  fluenceRange: "0.5-3.0 J/cm\xB2 (ablation threshold range for Bluestone)"
+  fluenceRange: "0.5-3.0 J/cm² (ablation threshold range for Bluestone)"
   scanningSpeed: 100-1000 mm/s (dependent on contamination type and laser parameters)
   beamProfile: Top-hat (for uniform energy distribution and consistent cleaning)
   beamProfileOptions: Top-hat, Gaussian, Flat-top (configurable based on application)
@@ -203,7 +203,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "0.5-3.0 J/cm\xB2"
+  fluence_threshold: "0.5-3.0 J/cm²"
   pulse_duration: 10-50ns
   wavelength_optimal: 1064nm
   power_range: 20-100W

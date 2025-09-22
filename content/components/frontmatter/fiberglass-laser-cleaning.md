@@ -16,32 +16,32 @@ chemicalProperties:
   formula: "SiO\u2082 (60-70%) + Polymer Matrix (30-40%)"
   materialType: composite
 properties:
-  density: "1.8-2.5 g/cm\xB3"
+  density: "1.8-2.5 g/cm³"
   densityNumeric: 2.15
-  densityUnit: "g/cm\xB3"
-  densityMin: "1.8 g/cm\xB3"
+  densityUnit: "g/cm³"
+  densityMin: "1.8 g/cm³"
   densityMinNumeric: 1.8
-  densityMinUnit: "g/cm\xB3"
-  densityMax: "6.0 g/cm\xB3"
+  densityMinUnit: "g/cm³"
+  densityMax: "6.0 g/cm³"
   densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm\xB3"
+  densityMaxUnit: "g/cm³"
   densityPercentile: 8.3
-  meltingPointMin: "1200\xB0C"
+  meltingPointMin: "1200°C"
   meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "\xB0C"
-  meltingPointMax: "2800\xB0C"
+  meltingPointMinUnit: "°C"
+  meltingPointMax: "2800°C"
   meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "\xB0C"
+  meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "0.3-0.5 W/m\xB7K"
+  thermalConductivity: "0.3-0.5 W/m·K"
   thermalConductivityNumeric: 0.4
-  thermalConductivityUnit: "W/m\xB7K"
-  thermalConductivityMin: "0.5 W/m\xB7K"
+  thermalConductivityUnit: "W/m·K"
+  thermalConductivityMin: "0.5 W/m·K"
   thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m\xB7K"
-  thermalConductivityMax: "200 W/m\xB7K"
+  thermalConductivityMinUnit: "W/m·K"
+  thermalConductivityMax: "200 W/m·K"
   thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m\xB7K"
+  thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.0
   tensileStrength: 310-690 MPa (E-glass)
   tensileStrengthNumeric: 500.0
@@ -75,12 +75,12 @@ properties:
   modulusPercentile: 86.7
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "0.5-3 J/cm\xB2"
+  fluenceRange: "0.5-3 J/cm²"
   chemicalFormula: "SiO\u2082 (primary constituent)"
   thermalBehaviorType: decomposition
-  decompositionPoint: "1200\xB0C"
+  decompositionPoint: "1200°C"
   decompositionPointNumeric: 1200
-  decompositionPointUnit: "\xB0C"
+  decompositionPointUnit: "°C"
 composition:
 - "Silica glass (SiO\u2082) 60-70%"
 - Epoxy/Polyester resin 30-40%
@@ -131,15 +131,15 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "0.5-3 J/cm\xB2"
+  fluenceRange: "0.5-3 J/cm²"
   fluenceRangeNumeric: 1.75
-  fluenceRangeUnit: "J/cm\xB2"
-  fluenceRangeMin: "0.1J/cm\xB2"
+  fluenceRangeUnit: "J/cm²"
+  fluenceRangeMin: "0.1J/cm²"
   fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm\xB2"
-  fluenceRangeMax: "50J/cm\xB2"
+  fluenceRangeMinUnit: "J/cm²"
+  fluenceRangeMax: "50J/cm²"
   fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm\xB2"
+  fluenceRangeMaxUnit: "J/cm²"
 applications:
 - 'Aerospace: Cleaning composite surfaces for aircraft components'
 - 'Automotive: Removing contaminants from fiberglass body parts'
@@ -179,14 +179,14 @@ outcomes:
   metric: '>99% removal of paints, coatings, and contaminants with <0.1% substrate
     damage'
 - result: Processing speed
-  metric: "0.5-2.0 m\xB2/hour depending on contamination type and thickness"
+  metric: "0.5-2.0 m²/hour depending on contamination type and thickness"
 technicalSpecifications:
   powerRange: 20-100 W (pulsed)
   pulseDuration: 10-50 ns
   wavelength: 1064 nm (primary), 532 nm (optional for selective removal)
   spotSize: 0.1-1.0 mm
   repetitionRate: 20-100 kHz
-  fluenceRange: "0.5-3.0 J/cm\xB2"
+  fluenceRange: "0.5-3.0 J/cm²"
   scanningSpeed: 500-5000 mm/s
   beamProfile: Top-hat (flat-top)
   beamProfileOptions: Top-hat, Gaussian, Donut
@@ -203,7 +203,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "0.5-3 J/cm\xB2"
+  fluence_threshold: "0.5-3 J/cm²"
   pulse_duration: 10-50ns
   wavelength_optimal: 1064nm
   power_range: 20-100W

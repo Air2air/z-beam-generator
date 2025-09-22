@@ -2,15 +2,12 @@
 |----------|-------|
 | Density | 1.44 g/cm³ |
 | Melting Point | 500-600°C |
-| Thermal Cond. | 0.04 W/m·K |
-| Laser Type | Pulsed Fiber Laser |
-| Wavelength | 1064nm |
-| Fluence Range | 1.0–4.5 J/cm² |
+| Conductivity | 0.04 W/m·K |
 | Formula | Aramid-Polymer |
 
 
 ---
-Version Log - Generated: 2025-09-21T20:52:21.298432
+Version Log - Generated: 2025-09-21T22:01:13.953960
 Material: Unknown
 Component: propertiestable
 Generator: Z-Beam v1.0.0

@@ -12,39 +12,39 @@ keywords: stoneware, stoneware ceramic, laser ablation, laser cleaning, non-cont
   thermal processing, surface restoration
 chemicalProperties:
   symbol: N/A (composite material)
-  formula: "Variable composition (primarily SiO\u2082-Al\u2082O\u2083-K\u2082O-Na\u2082\
+  formula: "Variable composition (primarily SiO\u2082-Al\u2082O\u2083-K\u2082O-Na\u2082"
     O-CaO system)"
   materialType: ceramic
 properties:
-  density: "2.3-2.5 g/cm\xB3"
+  density: "2.3-2.5 g/cm³"
   densityNumeric: 2.4
-  densityUnit: "g/cm\xB3"
-  densityMin: "1.8 g/cm\xB3"
+  densityUnit: "g/cm³"
+  densityMin: "1.8 g/cm³"
   densityMinNumeric: 1.8
-  densityMinUnit: "g/cm\xB3"
-  densityMax: "6.0 g/cm\xB3"
+  densityMinUnit: "g/cm³"
+  densityMax: "6.0 g/cm³"
   densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm\xB3"
+  densityMaxUnit: "g/cm³"
   densityPercentile: 14.3
-  meltingPoint: "1300\xB0C"
+  meltingPoint: "1300°C"
   meltingPointNumeric: 1300
-  meltingPointUnit: "\xB0C"
-  meltingPointMin: "1200\xB0C"
+  meltingPointUnit: "°C"
+  meltingPointMin: "1200°C"
   meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "\xB0C"
-  meltingPointMax: "2800\xB0C"
+  meltingPointMinUnit: "°C"
+  meltingPointMax: "2800°C"
   meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "\xB0C"
+  meltingPointMaxUnit: "°C"
   meltingPercentile: 3.1
-  thermalConductivity: "1.5-2.0 W/(m\xB7K)"
+  thermalConductivity: "1.5-2.0 W/(m·K)"
   thermalConductivityNumeric: 1.75
   thermalConductivityUnit: W/
-  thermalConductivityMin: "0.5 W/m\xB7K"
+  thermalConductivityMin: "0.5 W/m·K"
   thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m\xB7K"
-  thermalConductivityMax: "200 W/m\xB7K"
+  thermalConductivityMinUnit: "W/m·K"
+  thermalConductivityMax: "200 W/m·K"
   thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m\xB7K"
+  thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.6
   tensileStrength: 20-40 MPa
   tensileStrengthNumeric: 30.0
@@ -78,9 +78,8 @@ properties:
   modulusPercentile: 75.0
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "1.0\u201310 J/cm\xB2"
-  chemicalFormula: "Variable (SiO\u2082 60-70%, Al\u2082O\u2083 20-30%, flux oxides\
-    \ 5-10%)"
+  fluenceRange: "1.0\u201310 J/cm²"
+  chemicalFormula: "Variable (SiO\u2082 60-70%, Al\u2082O\u2083 20-30%, flux oxides 5-10%)"
   thermalBehaviorType: melting
 composition:
 - "Silicon Dioxide (SiO\u2082): 60-70%"
@@ -135,15 +134,15 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0\u201310 J/cm\xB2"
+  fluenceRange: "1.0\u201310 J/cm²"
   fluenceRangeNumeric: 1.0
-  fluenceRangeUnit: "J/cm\xB2"
-  fluenceRangeMin: "0.1J/cm\xB2"
+  fluenceRangeUnit: "J/cm²"
+  fluenceRangeMin: "0.1J/cm²"
   fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm\xB2"
-  fluenceRangeMax: "50J/cm\xB2"
+  fluenceRangeMinUnit: "J/cm²"
+  fluenceRangeMax: "50J/cm²"
   fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm\xB2"
+  fluenceRangeMaxUnit: "J/cm²"
 applications:
 - 'Ceramics Manufacturing: Removing surface contaminants and coatings'
 - 'Restoration and Conservation: Cleaning historical stoneware artifacts'
@@ -183,14 +182,14 @@ outcomes:
   metric: '>99% removal of organic contaminants and surface deposits without substrate
     damage'
 - result: Processing speed
-  metric: "0.5-2.0 m\xB2/hour depending on contamination level and required precision"
+  metric: "0.5-2.0 m²/hour depending on contamination level and required precision"
 technicalSpecifications:
   powerRange: 50-200 W
   pulseDuration: 10-200 ns
   wavelength: 1064 nm (primary), 532 nm (optional for finer detail)
   spotSize: 0.1-1.0 mm
   repetitionRate: 20-100 kHz
-  fluenceRange: "1.0\u201310 J/cm\xB2"
+  fluenceRange: "1.0\u201310 J/cm²"
   scanningSpeed: 100-2000 mm/s
   beamProfile: Top-hat (flat-top)
   beamProfileOptions: Top-hat, Gaussian, Multi-spot
@@ -207,7 +206,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "1.0\u201310 J/cm\xB2"
+  fluence_threshold: "1.0\u201310 J/cm²"
   pulse_duration: 10-200ns
   wavelength_optimal: 1064nm
   power_range: 50-200W

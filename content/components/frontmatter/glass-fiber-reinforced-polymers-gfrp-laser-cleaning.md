@@ -4,11 +4,7 @@ category: composite
 title: Glass Fiber Reinforced Polymers GFRP Laser Cleaning
 headline: Comprehensive technical guide for laser cleaning composite glass fiber reinforced
   polymers gfrp
-description: "Laser cleaning of GFRP utilizes precise pulsed fiber laser parameters\
-  \ to selectively ablate surface contaminants while preserving the integrity of the\
-  \ glass fiber reinforcement and polymer matrix. The process operates below the ablation\
-  \ threshold of the composite material (typically 0.5-1.5 J/cm\xB2 for epoxy-based\
-  \ GFRP) to ensure non-destructive removal of coatings and contaminants."
+description: "Laser cleaning of GFRP utilizes precise pulsed fiber laser parameters to selectively ablate surface contaminants while preserving the integrity of the glass fiber reinforcement and polymer matrix. The process operates below the ablation threshold of the composite material (typically 0.5-1.5 J/cm² for epoxy-based GFRP) to ensure non-destructive removal of coatings and contaminants."
 keywords: glass fiber reinforced polymers gfrp, glass fiber reinforced polymers gfrp
   composite, laser ablation, laser cleaning, non-contact cleaning, pulsed fiber laser,
   surface contamination removal, industrial laser parameters, thermal processing,
@@ -18,35 +14,35 @@ chemicalProperties:
   formula: "Variable (typically SiO\u2082 fibers + polymer matrix)"
   materialType: composite
 properties:
-  density: "1.8-2.1 g/cm\xB3"
+  density: "1.8-2.1 g/cm³"
   densityNumeric: 1.95
-  densityUnit: "g/cm\xB3"
-  densityMin: "1.8 g/cm\xB3"
+  densityUnit: "g/cm³"
+  densityMin: "1.8 g/cm³"
   densityMinNumeric: 1.8
-  densityMinUnit: "g/cm\xB3"
-  densityMax: "6.0 g/cm\xB3"
+  densityMinUnit: "g/cm³"
+  densityMax: "6.0 g/cm³"
   densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm\xB3"
+  densityMaxUnit: "g/cm³"
   densityPercentile: 3.6
-  meltingPoint: "120-180\xB0C; >1000\xB0C"
+  meltingPoint: "120-180°C; >1000°C"
   meltingPointNumeric: 150.0
-  meltingPointUnit: "\xB0C"
-  meltingPointMin: "1200\xB0C"
+  meltingPointUnit: "°C"
+  meltingPointMin: "1200°C"
   meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "\xB0C"
-  meltingPointMax: "2800\xB0C"
+  meltingPointMinUnit: "°C"
+  meltingPointMax: "2800°C"
   meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "\xB0C"
+  meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "0.3-0.5 W/m\xB7K (through thickness)"
+  thermalConductivity: "0.3-0.5 W/m·K (through thickness)"
   thermalConductivityNumeric: 0.4
-  thermalConductivityUnit: "W/m\xB7K"
-  thermalConductivityMin: "0.5 W/m\xB7K"
+  thermalConductivityUnit: "W/m·K"
+  thermalConductivityMin: "0.5 W/m·K"
   thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m\xB7K"
-  thermalConductivityMax: "200 W/m\xB7K"
+  thermalConductivityMinUnit: "W/m·K"
+  thermalConductivityMax: "200 W/m·K"
   thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m\xB7K"
+  thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.0
   tensileStrength: 300-500 MPa (fiber direction)
   tensileStrengthNumeric: 400.0
@@ -80,7 +76,7 @@ properties:
   modulusPercentile: 16.7
   laserType: Pulsed Fiber Laser
   wavelength: 1064 nm
-  fluenceRange: "0.5\u20135 J/cm\xB2"
+  fluenceRange: "0.5\u20135 J/cm²"
   chemicalFormula: Variable composition (typically E-glass fibers + epoxy/polyester
     resin)
 composition:
@@ -133,15 +129,15 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "0.5\u20135 J/cm\xB2"
+  fluenceRange: "0.5\u20135 J/cm²"
   fluenceRangeNumeric: 0.5
-  fluenceRangeUnit: "J/cm\xB2"
-  fluenceRangeMin: "0.1J/cm\xB2"
+  fluenceRangeUnit: "J/cm²"
+  fluenceRangeMin: "0.1J/cm²"
   fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm\xB2"
-  fluenceRangeMax: "50J/cm\xB2"
+  fluenceRangeMinUnit: "J/cm²"
+  fluenceRangeMax: "50J/cm²"
   fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm\xB2"
+  fluenceRangeMaxUnit: "J/cm²"
 applications:
 - 'Aerospace: Removal of surface contaminants and coatings from GFRP components'
 - 'Automotive: Cleaning of GFRP parts for repair and restoration'
@@ -180,14 +176,14 @@ outcomes:
 - result: Surface contamination removal efficiency
   metric: '>99% removal of coatings and contaminants with <2% material loss'
 - result: Processing speed
-  metric: "0.5-2.0 m\xB2/hour depending on contamination type and laser parameters"
+  metric: "0.5-2.0 m²/hour depending on contamination type and laser parameters"
 technicalSpecifications:
   powerRange: 20-100 W
   pulseDuration: 10-100 ns
   wavelength: 1064 nm (primary), 532 nm (optional for selective processing)
   spotSize: 0.1-2.0 mm
   repetitionRate: 10-50 kHz
-  fluenceRange: "0.5\u20135 J/cm\xB2"
+  fluenceRange: "0.5\u20135 J/cm²"
   scanningSpeed: 100-2000 mm/s
   beamProfile: Top-hat (flat-top)
   beamProfileOptions: Top-hat, Gaussian, Multimode
@@ -204,7 +200,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "0.5\u20135 J/cm\xB2"
+  fluence_threshold: "0.5\u20135 J/cm²"
   pulse_duration: 10-100ns
   wavelength_optimal: 1064 nm
   power_range: 20-100W

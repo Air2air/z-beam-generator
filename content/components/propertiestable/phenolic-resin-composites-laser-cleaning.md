@@ -2,15 +2,12 @@
 |----------|-------|
 | Density | 1.3-1.9 g/cm³ |
 | Melting Point | 150-200°C |
-| Thermal Cond. | 0.15-0.25 W/m·K |
-| Laser Type | Pulsed Fiber Laser |
-| Wavelength | 1064nm |
-| Fluence Range | 0.5–3.0 J/cm² |
+| Conductivity | 0.15-0.25 W/m·K |
 | Formula | Phenolic-Fiber |
 
 
 ---
-Version Log - Generated: 2025-09-21T20:52:21.315151
+Version Log - Generated: 2025-09-21T22:01:13.971697
 Material: Unknown
 Component: propertiestable
 Generator: Z-Beam v1.0.0

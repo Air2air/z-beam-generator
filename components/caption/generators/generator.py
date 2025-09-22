@@ -91,12 +91,15 @@ class CaptionComponentGenerator(StaticComponentGenerator):
                         content = f.read()
                         # Extract YAML frontmatter
                         if content.startswith('---'):
+                            # Handle both cases: with and without closing ---
                             yaml_end = content.find('---', 3)
                             if yaml_end != -1:
+                                # Traditional frontmatter with closing ---
                                 yaml_content = content[3:yaml_end].strip()
-                                self._frontmatter_cache[cache_key] = yaml.safe_load(yaml_content)
                             else:
-                                self._frontmatter_cache[cache_key] = {}
+                                # Pure YAML file without closing --- (our current format)
+                                yaml_content = content[4:].strip()  # Skip opening ---\n
+                            self._frontmatter_cache[cache_key] = yaml.safe_load(yaml_content)
                         else:
                             self._frontmatter_cache[cache_key] = {}
                 else:
@@ -246,8 +249,8 @@ seo_data:
 
 # Quality Metrics
 quality_metrics:
-  surface_roughness_before: "{quality_metrics['surface_roughness_before']}"
-  surface_roughness_after: "{quality_metrics['surface_roughness_after']}"
+  surface_before: "{quality_metrics['surface_before']}"
+  surface_after: "{quality_metrics['surface_after']}"
   substrate_integrity: "{quality_metrics['substrate_integrity']}"
 
 # Accessibility Information
@@ -344,47 +347,29 @@ Format: YAML v2.0
         }
 
     def _generate_quality_metrics(self, frontmatter_data: Dict = None) -> Dict[str, str]:
-        """Generate realistic quality metrics based on material properties"""
+        """Generate realistic quality metrics based on frontmatter data"""
         
-        # Get material-specific surface roughness from frontmatter if available
-        surface_roughness_context = None
-        if frontmatter_data and 'properties' in frontmatter_data:
-            props = frontmatter_data['properties']
-            # Use material hardness to estimate surface roughness improvement
-            if 'hardness' in str(props):
-                hardness_str = str(props.get('hardness', ''))
-                if 'HB' in hardness_str or 'HV' in hardness_str:
-                    # Extract numeric value
-                    import re
-                    numbers = re.findall(r'\d+', hardness_str)
-                    if numbers:
-                        hardness_val = int(numbers[0])
-                        # Harder materials generally have lower achievable surface roughness
-                        if hardness_val > 300:  # Very hard materials
-                            surface_roughness_context = ('low', 0.2, 0.8)  # Low before, very low after
-                        elif hardness_val > 100:  # Medium hard materials
-                            surface_roughness_context = ('medium', 1.0, 2.5)
-                        else:  # Softer materials
-                            surface_roughness_context = ('high', 2.0, 5.0)
+        # Extract surface roughness from frontmatter using standardized variable names
+        surface_before = "Ra 3.2 μm"  # Default fallback
+        surface_after = "Ra 0.6 μm"   # Default fallback
         
-        # Generate surface roughness based on material hardness
-        if surface_roughness_context:
-            level, min_before, max_before = surface_roughness_context
-            before_roughness = f"Ra {max_before:.1f} μm"  # Use max value consistently
-            # After cleaning is typically 70% improvement (consistent value)
-            improvement_factor = 0.3
-            after_val = max_before * improvement_factor
-            after_roughness = f"Ra {after_val:.1f} μm"
-        else:
-            before_roughness = "Ra 3.2 μm"  # Standard baseline value
-            after_roughness = "Ra 0.6 μm"  # Standard improved value
+        if frontmatter_data:
+            # Check for standardized variable names in outcomes section
+            if 'outcomes' in frontmatter_data:
+                outcomes = frontmatter_data['outcomes']
+                if isinstance(outcomes, dict):
+                    # Direct access to standardized field names
+                    if 'surface_roughness_before' in outcomes:
+                        surface_before = f"Ra {outcomes['surface_roughness_before']} μm"
+                    if 'surface_roughness_after' in outcomes:
+                        surface_after = f"Ra {outcomes['surface_roughness_after']} μm"
         
         # Substrate integrity - use most conservative professional value
         substrate_integrity = '100% preserved'
         
         return {
-            'surface_roughness_before': before_roughness,
-            'surface_roughness_after': after_roughness,
+            'surface_before': surface_before,
+            'surface_after': surface_after,
             'substrate_integrity': substrate_integrity
         }
 

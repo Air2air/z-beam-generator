@@ -13,38 +13,38 @@ keywords: concrete, concrete masonry, laser ablation, laser cleaning, non-contac
   thermal processing, surface restoration
 chemicalProperties:
   symbol: N/A (Composite)
-  formula: "CaO\xB7SiO\u2082\xB7H\u2082O (C-S-H gel primary phase)"
+  formula: "CaO·SiO\u2082·H\u2082O (C-S-H gel primary phase)"
   materialType: masonry
 properties:
-  density: "2300\u20132500 kg/m\xB3"
+  density: "2300\u20132500 kg/m³"
   densityNumeric: 2300.0
-  densityUnit: "kg/m\xB3"
-  densityMin: "1.8 g/cm\xB3"
+  densityUnit: "kg/m³"
+  densityMin: "1.8 g/cm³"
   densityMinNumeric: 1.8
-  densityMinUnit: "g/cm\xB3"
-  densityMax: "6.0 g/cm\xB3"
+  densityMinUnit: "g/cm³"
+  densityMax: "6.0 g/cm³"
   densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm\xB3"
+  densityMaxUnit: "g/cm³"
   densityPercentile: 100.0
-  meltingPoint: "1400\xB0C"
+  meltingPoint: "1400°C"
   meltingPointNumeric: 1400
-  meltingPointUnit: "\xB0C"
-  meltingPointMin: "1200\xB0C"
+  meltingPointUnit: "°C"
+  meltingPointMin: "1200°C"
   meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "\xB0C"
-  meltingPointMax: "2800\xB0C"
+  meltingPointMinUnit: "°C"
+  meltingPointMax: "2800°C"
   meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "\xB0C"
+  meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "0.8\u20131.3 W/(m\xB7K)"
+  thermalConductivity: "0.8\u20131.3 W/(m·K)"
   thermalConductivityNumeric: 0.8
   thermalConductivityUnit: W/
-  thermalConductivityMin: "0.5 W/m\xB7K"
+  thermalConductivityMin: "0.5 W/m·K"
   thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m\xB7K"
-  thermalConductivityMax: "200 W/m\xB7K"
+  thermalConductivityMinUnit: "W/m·K"
+  thermalConductivityMax: "200 W/m·K"
   thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m\xB7K"
+  thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.2
   tensileStrength: "2\u20135 MPa"
   tensileStrengthNumeric: 2.0
@@ -78,8 +78,8 @@ properties:
   modulusPercentile: 0.0
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "1.0\u201310 J/cm\xB2"
-  chemicalFormula: "Complex composite (primarily CaO\xB7SiO\u2082\xB7H\u2082O)"
+  fluenceRange: "1.0\u201310 J/cm²"
+  chemicalFormula: "Complex composite (primarily CaO·SiO\u2082·H\u2082O)"
   thermalBehaviorType: melting
 composition:
 - "Portland cement (10\u201315%): Calcium silicates (C3S, C2S), calcium aluminates"
@@ -132,15 +132,15 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0\u201310 J/cm\xB2"
+  fluenceRange: "1.0\u201310 J/cm²"
   fluenceRangeNumeric: 1.0
-  fluenceRangeUnit: "J/cm\xB2"
-  fluenceRangeMin: "0.1J/cm\xB2"
+  fluenceRangeUnit: "J/cm²"
+  fluenceRangeMin: "0.1J/cm²"
   fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm\xB2"
-  fluenceRangeMax: "50J/cm\xB2"
+  fluenceRangeMinUnit: "J/cm²"
+  fluenceRangeMax: "50J/cm²"
   fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm\xB2"
+  fluenceRangeMaxUnit: "J/cm²"
 applications:
 - 'Construction: Removal of paint, graffiti, and other surface contaminants from concrete
   structures'
@@ -177,22 +177,20 @@ environmentalImpact:
     groundwater contamination and hazardous waste disposal (100% reduction in chemical
     waste streams)
 - benefit: Reduced particulate matter emissions
-  description: "Generates 85\u201395% less airborne particulate matter compared to\
-    \ abrasive blasting methods, with effective filtration systems capturing >99%\
-    \ of generated particles"
+  description: "Generates 85\u201395% less airborne particulate matter compared to abrasive blasting methods, with effective filtration systems capturing >99% of generated particles"
 outcomes:
 - result: Surface contamination removal efficiency
   metric: '>95% removal of paint, graffiti, and biological growth with <0.1 mm substrate
     loss'
 - result: Processing throughput
-  metric: "2\u201310 m\xB2/hour depending on contamination type and laser parameters"
+  metric: "2\u201310 m²/hour depending on contamination type and laser parameters"
 technicalSpecifications:
   powerRange: "50\u2013200 W"
   pulseDuration: "10\u2013100 ns"
   wavelength: 1064 nm (primary), 532 nm (optional for selective removal)
   spotSize: "0.1\u20131.0 mm"
   repetitionRate: "20\u2013100 kHz"
-  fluenceRange: "1.0\u201310 J/cm\xB2"
+  fluenceRange: "1.0\u201310 J/cm²"
   scanningSpeed: "100\u20135000 mm/s"
   beamProfile: Top-hat (flat-top)
   beamProfileOptions: Top-hat, Gaussian, Multimode
@@ -209,7 +207,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "1.0\u201310 J/cm\xB2"
+  fluence_threshold: "1.0\u201310 J/cm²"
   pulse_duration: 10-100ns
   wavelength_optimal: 1064nm
   power_range: 50-200W

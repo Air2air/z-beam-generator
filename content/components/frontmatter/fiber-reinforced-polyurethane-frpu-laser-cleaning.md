@@ -17,35 +17,35 @@ chemicalProperties:
   formula: (C27H36N2O10)n + Fiber Reinforcement
   materialType: composite
 properties:
-  density: "1.15-1.25 g/cm\xB3"
+  density: "1.15-1.25 g/cm³"
   densityNumeric: 1.2
-  densityUnit: "g/cm\xB3"
-  densityMin: "1.8 g/cm\xB3"
+  densityUnit: "g/cm³"
+  densityMin: "1.8 g/cm³"
   densityMinNumeric: 1.8
-  densityMinUnit: "g/cm\xB3"
-  densityMax: "6.0 g/cm\xB3"
+  densityMinUnit: "g/cm³"
+  densityMax: "6.0 g/cm³"
   densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm\xB3"
+  densityMaxUnit: "g/cm³"
   densityPercentile: 0.0
-  meltingPoint: "180-220\xB0C"
+  meltingPoint: "180-220°C"
   meltingPointNumeric: 200.0
-  meltingPointUnit: "\xB0C"
-  meltingPointMin: "1200\xB0C"
+  meltingPointUnit: "°C"
+  meltingPointMin: "1200°C"
   meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "\xB0C"
-  meltingPointMax: "2800\xB0C"
+  meltingPointMinUnit: "°C"
+  meltingPointMax: "2800°C"
   meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "\xB0C"
+  meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "0.2-0.3 W/m\xB7K"
+  thermalConductivity: "0.2-0.3 W/m·K"
   thermalConductivityNumeric: 0.25
-  thermalConductivityUnit: "W/m\xB7K"
-  thermalConductivityMin: "0.5 W/m\xB7K"
+  thermalConductivityUnit: "W/m·K"
+  thermalConductivityMin: "0.5 W/m·K"
   thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m\xB7K"
-  thermalConductivityMax: "200 W/m\xB7K"
+  thermalConductivityMinUnit: "W/m·K"
+  thermalConductivityMax: "200 W/m·K"
   thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m\xB7K"
+  thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.0
   tensileStrength: 45-75 MPa
   tensileStrengthNumeric: 60.0
@@ -79,7 +79,7 @@ properties:
   modulusPercentile: 0.0
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "1.0\u201310 J/cm\xB2"
+  fluenceRange: "1.0\u201310 J/cm²"
   chemicalFormula: (C27H36N2O10)n + Fiber Reinforcement
 composition:
 - 'Polyurethane matrix: 60-70%'
@@ -131,15 +131,15 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0\u201310 J/cm\xB2"
+  fluenceRange: "1.0\u201310 J/cm²"
   fluenceRangeNumeric: 1.0
-  fluenceRangeUnit: "J/cm\xB2"
-  fluenceRangeMin: "0.1J/cm\xB2"
+  fluenceRangeUnit: "J/cm²"
+  fluenceRangeMin: "0.1J/cm²"
   fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm\xB2"
-  fluenceRangeMax: "50J/cm\xB2"
+  fluenceRangeMinUnit: "J/cm²"
+  fluenceRangeMax: "50J/cm²"
   fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm\xB2"
+  fluenceRangeMaxUnit: "J/cm²"
 applications:
 - 'Automotive: Removal of surface contaminants and coatings from FRPU automotive parts'
 - 'Aerospace: Precision cleaning of FRPU components for aircraft interiors and exteriors'
@@ -169,8 +169,7 @@ images:
     url: /images/fiber-reinforced-polyurethane-frpu-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Zero chemical waste generation
-  description: "Eliminates 100% of solvent consumption compared to traditional chemical\
-    \ cleaning methods (typically 5-10 L/m\xB2)"
+  description: "Eliminates 100% of solvent consumption compared to traditional chemical cleaning methods (typically 5-10 L/m²)"
 - benefit: Reduced energy consumption
   description: 60-70% lower energy usage compared to thermal or abrasive cleaning
     methods for FRPU composites
@@ -178,14 +177,14 @@ outcomes:
 - result: Surface contamination removal efficiency
   metric: '>99.5% removal of mold release agents and surface contaminants'
 - result: Processing speed
-  metric: "0.5-2.0 m\xB2/hour depending on contamination level and required precision"
+  metric: "0.5-2.0 m²/hour depending on contamination level and required precision"
 technicalSpecifications:
   powerRange: 50-200 W
   pulseDuration: 10-200 ns
   wavelength: 1064 nm (primary), 532 nm (optional)
   spotSize: 0.1-1.0 mm
   repetitionRate: 20-100 kHz
-  fluenceRange: "1.0-10 J/cm\xB2"
+  fluenceRange: "1.0-10 J/cm²"
   scanningSpeed: 100-2000 mm/s
   beamProfile: Top-hat or flat-top
   beamProfileOptions: Top-hat, flat-top, Gaussian
@@ -202,7 +201,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "1.0\u201310 J/cm\xB2"
+  fluence_threshold: "1.0\u201310 J/cm²"
   pulse_duration: 10-200ns
   wavelength_optimal: 1064nm
   power_range: 50-200W

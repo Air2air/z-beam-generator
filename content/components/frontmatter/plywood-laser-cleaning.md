@@ -16,32 +16,32 @@ chemicalProperties:
   formula: "(C\u2086H\u2081\u2080O\u2085)\u2099"
   materialType: wood
 properties:
-  density: "500-700 kg/m\xB3 (varies by wood species and adhesive content)"
+  density: "500-700 kg/m³ (varies by wood species and adhesive content)"
   densityNumeric: 600.0
-  densityUnit: "kg/m\xB3"
-  densityMin: "1.8 g/cm\xB3"
+  densityUnit: "kg/m³"
+  densityMin: "1.8 g/cm³"
   densityMinNumeric: 1.8
-  densityMinUnit: "g/cm\xB3"
-  densityMax: "6.0 g/cm\xB3"
+  densityMinUnit: "g/cm³"
+  densityMax: "6.0 g/cm³"
   densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm\xB3"
+  densityMaxUnit: "g/cm³"
   densityPercentile: 100.0
-  meltingPointMin: "1200\xB0C"
+  meltingPointMin: "1200°C"
   meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "\xB0C"
-  meltingPointMax: "2800\xB0C"
+  meltingPointMinUnit: "°C"
+  meltingPointMax: "2800°C"
   meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "\xB0C"
+  meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "0.12-0.17 W/m\xB7K (across grain)"
+  thermalConductivity: "0.12-0.17 W/m·K (across grain)"
   thermalConductivityNumeric: 0.15
-  thermalConductivityUnit: "W/m\xB7K"
-  thermalConductivityMin: "0.5 W/m\xB7K"
+  thermalConductivityUnit: "W/m·K"
+  thermalConductivityMin: "0.5 W/m·K"
   thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m\xB7K"
-  thermalConductivityMax: "200 W/m\xB7K"
+  thermalConductivityMinUnit: "W/m·K"
+  thermalConductivityMax: "200 W/m·K"
   thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m\xB7K"
+  thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.0
   tensileStrength: 30-70 MPa (parallel to grain), 2-5 MPa (perpendicular to grain)
   tensileStrengthNumeric: 50.0
@@ -75,12 +75,12 @@ properties:
   modulusPercentile: 0.0
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "0.5\u20135 J/cm\xB2"
+  fluenceRange: "0.5\u20135 J/cm²"
   chemicalFormula: "(C\u2086H\u2081\u2080O\u2085)\u2099"
   thermalBehaviorType: decomposition
-  decompositionPoint: "300\xB0C"
+  decompositionPoint: "300°C"
   decompositionPointNumeric: 300
-  decompositionPointUnit: "\xB0C"
+  decompositionPointUnit: "°C"
 composition:
 - Wood veneer layers (40-60% cellulose, 15-25% hemicellulose, 20-30% lignin)
 - Phenol-formaldehyde or urea-formaldehyde adhesive (5-10%)
@@ -131,15 +131,15 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "0.5\u20135 J/cm\xB2"
+  fluenceRange: "0.5\u20135 J/cm²"
   fluenceRangeNumeric: 0.5
-  fluenceRangeUnit: "J/cm\xB2"
-  fluenceRangeMin: "0.1J/cm\xB2"
+  fluenceRangeUnit: "J/cm²"
+  fluenceRangeMin: "0.1J/cm²"
   fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm\xB2"
-  fluenceRangeMax: "50J/cm\xB2"
+  fluenceRangeMinUnit: "J/cm²"
+  fluenceRangeMax: "50J/cm²"
   fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm\xB2"
+  fluenceRangeMaxUnit: "J/cm²"
 applications:
 - 'Woodworking: Removing surface contaminants and old finishes'
 - 'Construction: Cleaning and preparing plywood surfaces for painting or bonding'
@@ -177,14 +177,14 @@ outcomes:
   metric: '>99% removal of paints, adhesives, and surface oxidation without substrate
     damage'
 - result: Processing speed
-  metric: "0.5-2.0 m\xB2/hour depending on contamination type and laser parameters"
+  metric: "0.5-2.0 m²/hour depending on contamination type and laser parameters"
 technicalSpecifications:
   powerRange: 20-100 W
   pulseDuration: 10-100 ns
   wavelength: 1064 nm (primary), 532 nm (optional for finer work)
   spotSize: 0.1-2.0 mm
   repetitionRate: 10-50 kHz
-  fluenceRange: "0.5-5 J/cm\xB2"
+  fluenceRange: "0.5-5 J/cm²"
   scanningSpeed: 500-5000 mm/s
   beamProfile: Top-hat or flat-top
   beamProfileOptions: Top-hat, Gaussian, flat-top
@@ -201,7 +201,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "0.5\u20135 J/cm\xB2"
+  fluence_threshold: "0.5\u20135 J/cm²"
   pulse_duration: 10-100ns
   wavelength_optimal: 1064nm
   power_range: 20-100W

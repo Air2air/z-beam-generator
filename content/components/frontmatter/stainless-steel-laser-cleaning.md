@@ -16,35 +16,35 @@ chemicalProperties:
   formula: Fe-Cr-Ni
   materialType: metal
 properties:
-  density: "7.5-8.0 g/cm\xB3"
+  density: "7.5-8.0 g/cm³"
   densityNumeric: 7.75
-  densityUnit: "g/cm\xB3"
-  densityMin: "1.8 g/cm\xB3"
+  densityUnit: "g/cm³"
+  densityMin: "1.8 g/cm³"
   densityMinNumeric: 1.8
-  densityMinUnit: "g/cm\xB3"
-  densityMax: "6.0 g/cm\xB3"
+  densityMinUnit: "g/cm³"
+  densityMax: "6.0 g/cm³"
   densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm\xB3"
+  densityMaxUnit: "g/cm³"
   densityPercentile: 100.0
-  meltingPoint: "1530\xB0C"
+  meltingPoint: "1530°C"
   meltingPointNumeric: 1530
-  meltingPointUnit: "\xB0C"
-  meltingPointMin: "1200\xB0C"
+  meltingPointUnit: "°C"
+  meltingPointMin: "1200°C"
   meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "\xB0C"
-  meltingPointMax: "2800\xB0C"
+  meltingPointMinUnit: "°C"
+  meltingPointMax: "2800°C"
   meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "\xB0C"
+  meltingPointMaxUnit: "°C"
   meltingPercentile: 14.2
-  thermalConductivity: "16.2 W/(m\xB7K)"
+  thermalConductivity: "16.2 W/(m·K)"
   thermalConductivityNumeric: 16.2
   thermalConductivityUnit: W/
-  thermalConductivityMin: "0.5 W/m\xB7K"
+  thermalConductivityMin: "0.5 W/m·K"
   thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m\xB7K"
-  thermalConductivityMax: "200 W/m\xB7K"
+  thermalConductivityMinUnit: "W/m·K"
+  thermalConductivityMax: "200 W/m·K"
   thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m\xB7K"
+  thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 7.9
   tensileStrength: 515-827 MPa
   tensileStrengthNumeric: 671.0
@@ -78,7 +78,7 @@ properties:
   modulusPercentile: 100.0
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "1.0\u201310 J/cm\xB2"
+  fluenceRange: "1.0\u201310 J/cm²"
   chemicalFormula: Fe-Cr-Ni
   thermalBehaviorType: melting
 composition:
@@ -135,15 +135,15 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0\u201310 J/cm\xB2"
+  fluenceRange: "1.0\u201310 J/cm²"
   fluenceRangeNumeric: 1.0
-  fluenceRangeUnit: "J/cm\xB2"
-  fluenceRangeMin: "0.1J/cm\xB2"
+  fluenceRangeUnit: "J/cm²"
+  fluenceRangeMin: "0.1J/cm²"
   fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm\xB2"
-  fluenceRangeMax: "50J/cm\xB2"
+  fluenceRangeMinUnit: "J/cm²"
+  fluenceRangeMax: "50J/cm²"
   fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm\xB2"
+  fluenceRangeMaxUnit: "J/cm²"
 applications:
 - 'Automotive: Removal of rust, oil, and paint from stainless steel parts'
 - 'Aerospace: Precision cleaning of intricate stainless steel components'
@@ -185,7 +185,7 @@ environmentalImpact:
 outcomes:
 - result: "Surface roughness maintained at Ra 0.8-1.6 \u03BCm"
   metric: Preserves original surface finish while removing 99.9% of contaminants
-- result: "Processing rates of 2-10 m\xB2/hour"
+- result: "Processing rates of 2-10 m²/hour"
   metric: Achievable with 500W fiber laser systems on industrial-scale components
 technicalSpecifications:
   powerRange: 50-500W (pulsed fiber lasers), 100-1000W (continuous wave for heavy
@@ -197,8 +197,7 @@ technicalSpecifications:
   spotSize: "50-200 \u03BCm (precision cleaning), 1-5 mm (large area processing)"
   repetitionRate: 20-200 kHz (optimized for oxide layer removal without substrate
     damage)
-  fluenceRange: "1.5-12 J/cm\xB2 (depending on surface condition and stainless steel\
-    \ grade)"
+  fluenceRange: "1.5-12 J/cm² (depending on surface condition and stainless steel grade)"
   scanningSpeed: 100-2000 mm/s (optimized for 304/316 stainless steel with 100-500W
     power)
   beamProfile: Top-hat (for uniform energy distribution and consistent cleaning results)
@@ -220,7 +219,7 @@ prompt_chain_verification:
 chemicalFormula: Fe-Cr-Ni
 symbol: SS
 laser_parameters:
-  fluence_threshold: "1.0\u201310 J/cm\xB2"
+  fluence_threshold: "1.0\u201310 J/cm²"
   pulse_duration: 10-200ns
   wavelength_optimal: 1064nm
   power_range: 50-200W

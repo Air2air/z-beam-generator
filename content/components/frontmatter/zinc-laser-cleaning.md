@@ -3,12 +3,7 @@ name: Zinc
 category: metal
 title: Zinc Laser Cleaning
 headline: Comprehensive technical guide for laser cleaning metal zinc
-description: "Zinc laser cleaning utilizes precise laser ablation to remove surface\
-  \ contaminants without damaging the underlying zinc substrate. The process exploits\
-  \ zinc's relatively low melting point (419.5\xB0C) and high thermal conductivity\
-  \ (116 W/m\xB7K) for efficient contaminant removal while minimizing heat-affected\
-  \ zones. Optimal results are achieved with 1064nm wavelength due to zinc's high\
-  \ absorption coefficient at near-IR wavelengths."
+description: "Zinc laser cleaning utilizes precise laser ablation to remove surface contaminants without damaging the underlying zinc substrate. The process exploits zinc's relatively low melting point (419.5°C) and high thermal conductivity (116 W/m·K) for efficient contaminant removal while minimizing heat-affected zones. Optimal results are achieved with 1064nm wavelength due to zinc's high absorption coefficient at near-IR wavelengths."
 keywords: zinc, zinc metal, laser ablation, laser cleaning, non-contact cleaning,
   pulsed fiber laser, surface contamination removal, industrial laser parameters,
   thermal processing, surface restoration
@@ -17,35 +12,35 @@ chemicalProperties:
   formula: Zn
   materialType: metal
 properties:
-  density: "7.14 g/cm\xB3"
+  density: "7.14 g/cm³"
   densityNumeric: 7.14
-  densityUnit: "g/cm\xB3"
-  densityMin: "1.8 g/cm\xB3"
+  densityUnit: "g/cm³"
+  densityMin: "1.8 g/cm³"
   densityMinNumeric: 1.8
-  densityMinUnit: "g/cm\xB3"
-  densityMax: "6.0 g/cm\xB3"
+  densityMinUnit: "g/cm³"
+  densityMax: "6.0 g/cm³"
   densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm\xB3"
+  densityMaxUnit: "g/cm³"
   densityPercentile: 100.0
-  meltingPoint: "419\xB0C"
+  meltingPoint: "419°C"
   meltingPointNumeric: 419
-  meltingPointUnit: "\xB0C"
-  meltingPointMin: "1200\xB0C"
+  meltingPointUnit: "°C"
+  meltingPointMin: "1200°C"
   meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "\xB0C"
-  meltingPointMax: "2800\xB0C"
+  meltingPointMinUnit: "°C"
+  meltingPointMax: "2800°C"
   meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "\xB0C"
+  meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "116 W/m\xB7K"
+  thermalConductivity: "116 W/m·K"
   thermalConductivityNumeric: 116.0
-  thermalConductivityUnit: "W/m\xB7K"
-  thermalConductivityMin: "0.5 W/m\xB7K"
+  thermalConductivityUnit: "W/m·K"
+  thermalConductivityMin: "0.5 W/m·K"
   thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m\xB7K"
-  thermalConductivityMax: "200 W/m\xB7K"
+  thermalConductivityMinUnit: "W/m·K"
+  thermalConductivityMax: "200 W/m·K"
   thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m\xB7K"
+  thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 57.9
   tensileStrength: 110 MPa (cast zinc), 200-400 MPa (rolled zinc)
   tensileStrengthNumeric: 300.0
@@ -79,7 +74,7 @@ properties:
   modulusPercentile: 100.0
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "1.0\u201310 J/cm\xB2"
+  fluenceRange: "1.0\u201310 J/cm²"
   chemicalFormula: Zn
   thermalBehaviorType: melting
 composition:
@@ -132,15 +127,15 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0\u201310 J/cm\xB2"
+  fluenceRange: "1.0\u201310 J/cm²"
   fluenceRangeNumeric: 1.0
-  fluenceRangeUnit: "J/cm\xB2"
-  fluenceRangeMin: "0.1J/cm\xB2"
+  fluenceRangeUnit: "J/cm²"
+  fluenceRangeMin: "0.1J/cm²"
   fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm\xB2"
-  fluenceRangeMax: "50J/cm\xB2"
+  fluenceRangeMinUnit: "J/cm²"
+  fluenceRangeMax: "50J/cm²"
   fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm\xB2"
+  fluenceRangeMaxUnit: "J/cm²"
 applications:
 - 'Automotive: Rust and corrosion removal from zinc-coated parts'
 - 'Electronics: Precision cleaning of zinc components in circuit boards'
@@ -173,12 +168,11 @@ environmentalImpact:
   description: Reduces VOC emissions by 95% compared to chemical cleaning methods,
     eliminating hazardous waste disposal
 - benefit: Reduced water consumption
-  description: "Zero water usage compared to high-pressure water jet cleaning (saving\
-    \ ~50 liters per m\xB2 processed)"
+  description: "Zero water usage compared to high-pressure water jet cleaning (saving ~50 liters per m² processed)"
 outcomes:
 - result: Surface cleanliness to Sa 2.5 standard
   metric: ISO 8501-1 visual assessment standard for surface preparation
-- result: "Processing speed up to 5 m\xB2/hour"
+- result: "Processing speed up to 5 m²/hour"
   metric: For moderate contamination levels at 200W laser power
 technicalSpecifications:
   powerRange: 20-200W (pulsed)
@@ -186,7 +180,7 @@ technicalSpecifications:
   wavelength: 1064nm (primary), 532nm (for higher precision)
   spotSize: 0.1-1.0mm
   repetitionRate: 20-100kHz
-  fluenceRange: "1.0-10 J/cm\xB2 (ablation threshold ~1.0 J/cm\xB2)"
+  fluenceRange: "1.0-10 J/cm² (ablation threshold ~1.0 J/cm²)"
   scanningSpeed: 500-5000 mm/s
   beamProfile: Top-hat (flat-top)
   beamProfileOptions: Top-hat, Gaussian, Multi-spot
@@ -205,7 +199,7 @@ prompt_chain_verification:
 chemicalFormula: Zn
 symbol: Zn
 laser_parameters:
-  fluence_threshold: "1.0\u201310 J/cm\xB2"
+  fluence_threshold: "1.0\u201310 J/cm²"
   pulse_duration: 10-200ns
   wavelength_optimal: 1064nm
   power_range: 50-200W

@@ -4,12 +4,7 @@ category: composite
 title: Ceramic Matrix Composites CMCs Laser Cleaning
 headline: Comprehensive technical guide for laser cleaning composite ceramic matrix
   composites cmcs
-description: "Laser cleaning of CMCs utilizes precise pulsed fiber laser ablation\
-  \ to remove surface contaminants while preserving the integrity of the ceramic matrix\
-  \ and reinforcing fibers. The process exploits differential absorption between contaminants\
-  \ and the CMC substrate, with parameters carefully controlled to stay below the\
-  \ ablation threshold of the SiC matrix (~10 J/cm\xB2) while effectively removing\
-  \ oxides, carbon deposits, and other surface layers."
+description: "Laser cleaning of CMCs utilizes precise pulsed fiber laser ablation to remove surface contaminants while preserving the integrity of the ceramic matrix and reinforcing fibers. The process exploits differential absorption between contaminants and the CMC substrate, with parameters carefully controlled to stay below the ablation threshold of the SiC matrix (~10 J/cm²) while effectively removing oxides, carbon deposits, and other surface layers."
 keywords: ceramic matrix composites cmcs, ceramic matrix composites cmcs composite,
   laser ablation, laser cleaning, non-contact cleaning, pulsed fiber laser, surface
   contamination removal, industrial laser parameters, thermal processing, surface
@@ -19,35 +14,35 @@ chemicalProperties:
   formula: SiC (matrix) + C or SiC (fibers)
   materialType: composite
 properties:
-  density: "2.7-3.2 g/cm\xB3 (SiC/SiC)"
+  density: "2.7-3.2 g/cm³ (SiC/SiC)"
   densityNumeric: 2.95
-  densityUnit: "g/cm\xB3"
-  densityMin: "1.8 g/cm\xB3"
+  densityUnit: "g/cm³"
+  densityMin: "1.8 g/cm³"
   densityMinNumeric: 1.8
-  densityMinUnit: "g/cm\xB3"
-  densityMax: "6.0 g/cm\xB3"
+  densityMinUnit: "g/cm³"
+  densityMax: "6.0 g/cm³"
   densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm\xB3"
+  densityMaxUnit: "g/cm³"
   densityPercentile: 27.4
-  meltingPoint: "2700\xB0C"
+  meltingPoint: "2700°C"
   meltingPointNumeric: 2700.0
-  meltingPointUnit: "\xB0C"
-  meltingPointMin: "1200\xB0C"
+  meltingPointUnit: "°C"
+  meltingPointMin: "1200°C"
   meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "\xB0C"
-  meltingPointMax: "2800\xB0C"
+  meltingPointMinUnit: "°C"
+  meltingPointMax: "2800°C"
   meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "\xB0C"
+  meltingPointMaxUnit: "°C"
   meltingPercentile: 93.8
-  thermalConductivity: "15-25 W/m\xB7K (SiC/SiC at room temperature)"
+  thermalConductivity: "15-25 W/m·K (SiC/SiC at room temperature)"
   thermalConductivityNumeric: 20.0
-  thermalConductivityUnit: "W/m\xB7K"
-  thermalConductivityMin: "0.5 W/m\xB7K"
+  thermalConductivityUnit: "W/m·K"
+  thermalConductivityMin: "0.5 W/m·K"
   thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m\xB7K"
-  thermalConductivityMax: "200 W/m\xB7K"
+  thermalConductivityMinUnit: "W/m·K"
+  thermalConductivityMax: "200 W/m·K"
   thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m\xB7K"
+  thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 9.8
   tensileStrength: 200-400 MPa (SiC/SiC)
   tensileStrengthNumeric: 300.0
@@ -81,7 +76,7 @@ properties:
   modulusPercentile: 100.0
   laserType: Pulsed Fiber Laser
   wavelength: 1064nm
-  fluenceRange: "1.0\u201310 J/cm\xB2"
+  fluenceRange: "1.0\u201310 J/cm²"
   chemicalFormula: SiC (primary matrix), C or SiC (fiber reinforcement)
 composition:
 - 'Silicon Carbide (SiC) Matrix: 60-70%'
@@ -133,15 +128,15 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0\u201310 J/cm\xB2"
+  fluenceRange: "1.0\u201310 J/cm²"
   fluenceRangeNumeric: 1.0
-  fluenceRangeUnit: "J/cm\xB2"
-  fluenceRangeMin: "0.1J/cm\xB2"
+  fluenceRangeUnit: "J/cm²"
+  fluenceRangeMin: "0.1J/cm²"
   fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm\xB2"
-  fluenceRangeMax: "50J/cm\xB2"
+  fluenceRangeMinUnit: "J/cm²"
+  fluenceRangeMax: "50J/cm²"
   fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm\xB2"
+  fluenceRangeMaxUnit: "J/cm²"
 applications:
 - 'Aerospace: Cleaning of turbine engine components to remove surface contaminants'
 - 'Power Generation: Surface preparation of gas turbine parts for repair and maintenance'
@@ -175,22 +170,20 @@ environmentalImpact:
   description: Eliminates use of hazardous chemical solvents and abrasive media, reducing
     hazardous waste by 100% compared to traditional chemical cleaning methods
 - benefit: Reduced energy consumption
-  description: "Laser cleaning consumes 60-70% less energy than thermal cleaning methods\
-    \ (furnace heating to 800-1000\xB0C) for CMC component refurbishment"
+  description: "Laser cleaning consumes 60-70% less energy than thermal cleaning methods (furnace heating to 800-1000°C) for CMC component refurbishment"
 outcomes:
 - result: Surface contamination removal efficiency
   metric: '>99% removal of oxides, carbon deposits, and surface contaminants with
     <0.1% substrate damage'
 - result: Processing speed
-  metric: "100-500 cm\xB2/hour cleaning rate with 50-100 \u03BCm precision for complex\
-    \ CMC geometries"
+  metric: "100-500 cm²/hour cleaning rate with 50-100 \u03BCm precision for complex CMC geometries"
 technicalSpecifications:
   powerRange: 50-200 W
   pulseDuration: 10-50 ns
   wavelength: 1064 nm (primary), 532 nm (optional for selective absorption)
   spotSize: 0.1-1.0 mm
   repetitionRate: 20-100 kHz
-  fluenceRange: "1.0\u201310 J/cm\xB2"
+  fluenceRange: "1.0\u201310 J/cm²"
   scanningSpeed: 100-2000 mm/s
   beamProfile: Top-hat (flat-top)
   beamProfileOptions: Top-hat, Gaussian, Multimode
@@ -207,7 +200,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "1.0\u201310 J/cm\xB2"
+  fluence_threshold: "1.0\u201310 J/cm²"
   pulse_duration: 10-50ns
   wavelength_optimal: 1064nm
   power_range: 50-200W

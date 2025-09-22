@@ -15,32 +15,32 @@ chemicalProperties:
   formula: Complex organic polymer (primarily cellulose, hemicellulose, lignin)
   materialType: wood
 properties:
-  density: "620-750 kg/m\xB3 (varies by species and moisture content)"
+  density: "620-750 kg/m³ (varies by species and moisture content)"
   densityNumeric: 685.0
-  densityUnit: "kg/m\xB3"
-  densityMin: "1.8 g/cm\xB3"
+  densityUnit: "kg/m³"
+  densityMin: "1.8 g/cm³"
   densityMinNumeric: 1.8
-  densityMinUnit: "g/cm\xB3"
-  densityMax: "6.0 g/cm\xB3"
+  densityMinUnit: "g/cm³"
+  densityMax: "6.0 g/cm³"
   densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm\xB3"
+  densityMaxUnit: "g/cm³"
   densityPercentile: 100.0
-  meltingPointMin: "1200\xB0C"
+  meltingPointMin: "1200°C"
   meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "\xB0C"
-  meltingPointMax: "2800\xB0C"
+  meltingPointMinUnit: "°C"
+  meltingPointMax: "2800°C"
   meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "\xB0C"
+  meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "0.12-0.17 W/m\xB7K (radial direction)"
+  thermalConductivity: "0.12-0.17 W/m·K (radial direction)"
   thermalConductivityNumeric: 0.15
-  thermalConductivityUnit: "W/m\xB7K"
-  thermalConductivityMin: "0.5 W/m\xB7K"
+  thermalConductivityUnit: "W/m·K"
+  thermalConductivityMin: "0.5 W/m·K"
   thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m\xB7K"
-  thermalConductivityMax: "200 W/m\xB7K"
+  thermalConductivityMinUnit: "W/m·K"
+  thermalConductivityMax: "200 W/m·K"
   thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m\xB7K"
+  thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.0
   tensileStrength: 70-120 MPa (parallel to grain)
   tensileStrengthNumeric: 95.0
@@ -74,13 +74,13 @@ properties:
   modulusPercentile: 0.0
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "0.5-3.0 J/cm\xB2"
+  fluenceRange: "0.5-3.0 J/cm²"
   chemicalFormula: Complex organic composition (C6H10O5)n cellulose, (C5H8O4)n hemicellulose,
     (C9H10O2(OCH3)0.9-1.7)n lignin
   thermalBehaviorType: decomposition
-  decompositionPoint: "300\xB0C"
+  decompositionPoint: "300°C"
   decompositionPointNumeric: 300
-  decompositionPointUnit: "\xB0C"
+  decompositionPointUnit: "°C"
 composition:
 - 'Cellulose: 40-50%'
 - 'Hemicellulose: 20-30%'
@@ -132,15 +132,15 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "0.5-3.0 J/cm\xB2"
+  fluenceRange: "0.5-3.0 J/cm²"
   fluenceRangeNumeric: 1.75
-  fluenceRangeUnit: "J/cm\xB2"
-  fluenceRangeMin: "0.1J/cm\xB2"
+  fluenceRangeUnit: "J/cm²"
+  fluenceRangeMin: "0.1J/cm²"
   fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm\xB2"
-  fluenceRangeMax: "50J/cm\xB2"
+  fluenceRangeMinUnit: "J/cm²"
+  fluenceRangeMax: "50J/cm²"
   fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm\xB2"
+  fluenceRangeMaxUnit: "J/cm²"
 applications:
 - 'Woodworking: Removing surface contaminants and residues from Maple wood products'
 - 'Restoration: Cleaning and restoring antique Maple furniture and artifacts'
@@ -168,24 +168,22 @@ images:
     url: /images/maple-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Zero chemical waste generation
-  description: "Eliminates 100% of solvent-based cleaning chemicals typically used\
-    \ in wood processing (average 5-10L chemical waste per m\xB2 avoided)"
+  description: "Eliminates 100% of solvent-based cleaning chemicals typically used in wood processing (average 5-10L chemical waste per m² avoided)"
 - benefit: Reduced energy consumption
   description: Laser cleaning consumes approximately 60-70% less energy compared to
     traditional sanding and chemical cleaning methods for Maple surfaces
 outcomes:
 - result: Surface contamination removal efficiency
-  metric: ">95% removal of surface contaminants with <5\xB5m substrate removal depth"
+  metric: ">95% removal of surface contaminants with <5µm substrate removal depth"
 - result: Processing speed and accuracy
-  metric: "100-1000 mm/s scanning speed with \xB150\xB5m precision, achieving 2-5\
-    \ m\xB2/hour cleaning rate"
+  metric: "100-1000 mm/s scanning speed with ±50µm precision, achieving 2-5 m²/hour cleaning rate"
 technicalSpecifications:
   powerRange: 20-100 W
   pulseDuration: 10-50 ns
   wavelength: 1064 nm (primary), 532 nm (optional for finer control)
   spotSize: 0.1-1.0 mm
   repetitionRate: 20-100 kHz
-  fluenceRange: "0.5-3.0 J/cm\xB2"
+  fluenceRange: "0.5-3.0 J/cm²"
   scanningSpeed: 100-1000 mm/s
   beamProfile: Top-hat (flat-top) profile
   beamProfileOptions: Top-hat, Gaussian, Multi-spot
@@ -203,7 +201,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "0.5-3.0 J/cm\xB2"
+  fluence_threshold: "0.5-3.0 J/cm²"
   pulse_duration: 10-50ns
   wavelength_optimal: 1064nm
   power_range: 20-100W

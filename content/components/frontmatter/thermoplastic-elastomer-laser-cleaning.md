@@ -17,32 +17,32 @@ chemicalProperties:
   formula: 'Variable (Block copolymer: (C4H8)x-(C5H8)y-(C8H8)z)'
   materialType: composite
 properties:
-  density: "0.90-1.25 g/cm\xB3 (material dependent)"
+  density: "0.90-1.25 g/cm³ (material dependent)"
   densityNumeric: 1.07
-  densityUnit: "g/cm\xB3"
-  densityMin: "1.8 g/cm\xB3"
+  densityUnit: "g/cm³"
+  densityMin: "1.8 g/cm³"
   densityMinNumeric: 1.8
-  densityMinUnit: "g/cm\xB3"
-  densityMax: "6.0 g/cm\xB3"
+  densityMinUnit: "g/cm³"
+  densityMax: "6.0 g/cm³"
   densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm\xB3"
+  densityMaxUnit: "g/cm³"
   densityPercentile: 0.0
-  meltingPointMin: "1200\xB0C"
+  meltingPointMin: "1200°C"
   meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "\xB0C"
-  meltingPointMax: "2800\xB0C"
+  meltingPointMinUnit: "°C"
+  meltingPointMax: "2800°C"
   meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "\xB0C"
+  meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "0.15-0.35 W/(m\xB7K)"
+  thermalConductivity: "0.15-0.35 W/(m·K)"
   thermalConductivityNumeric: 0.25
   thermalConductivityUnit: W/
-  thermalConductivityMin: "0.5 W/m\xB7K"
+  thermalConductivityMin: "0.5 W/m·K"
   thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m\xB7K"
-  thermalConductivityMax: "200 W/m\xB7K"
+  thermalConductivityMinUnit: "W/m·K"
+  thermalConductivityMax: "200 W/m·K"
   thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m\xB7K"
+  thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.0
   tensileStrength: 5-50 MPa (material dependent)
   tensileStrengthNumeric: 27.5
@@ -76,13 +76,13 @@ properties:
   modulusPercentile: 100.0
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "0.5\u20135 J/cm\xB2"
+  fluenceRange: "0.5\u20135 J/cm²"
   chemicalFormula: Variable composition (typically styrene-ethylene/butylene-styrene
     block copolymer)
   thermalBehaviorType: decomposition
-  decompositionPoint: "220\xB0C"
+  decompositionPoint: "220°C"
   decompositionPointNumeric: 220
-  decompositionPointUnit: "\xB0C"
+  decompositionPointUnit: "°C"
 composition:
 - 'Polystyrene hard segments: 15-40%'
 - 'Polyethylene/butylene rubber soft segments: 60-85%'
@@ -133,15 +133,15 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "0.5\u20135 J/cm\xB2"
+  fluenceRange: "0.5\u20135 J/cm²"
   fluenceRangeNumeric: 0.5
-  fluenceRangeUnit: "J/cm\xB2"
-  fluenceRangeMin: "0.1J/cm\xB2"
+  fluenceRangeUnit: "J/cm²"
+  fluenceRangeMin: "0.1J/cm²"
   fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm\xB2"
-  fluenceRangeMax: "50J/cm\xB2"
+  fluenceRangeMinUnit: "J/cm²"
+  fluenceRangeMax: "50J/cm²"
   fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm\xB2"
+  fluenceRangeMaxUnit: "J/cm²"
 applications:
 - 'Automotive: Cleaning of automotive parts made from Thermoplastic Elastomer to remove
   mold release agents and surface contaminants'
@@ -181,7 +181,7 @@ environmentalImpact:
 outcomes:
 - result: Contaminant removal efficiency >99.5%
   metric: Measured via FTIR spectroscopy and contact angle analysis
-- result: "Substrate damage <5 \xB5m depth"
+- result: "Substrate damage <5 µm depth"
   metric: Controlled ablation with surface profilometry confirmation
 technicalSpecifications:
   powerRange: 20-100 W (average power for pulsed fiber lasers)
@@ -189,7 +189,7 @@ technicalSpecifications:
   wavelength: 1064 nm (primary), 532 nm (optional for specific contaminants)
   spotSize: 0.1-2.0 mm (adjustable for precision or area cleaning)
   repetitionRate: 10-50 kHz (optimized for thermal management)
-  fluenceRange: "0.5\u20135 J/cm\xB2 (ablation threshold to material damage threshold)"
+  fluenceRange: "0.5\u20135 J/cm² (ablation threshold to material damage threshold)"
   scanningSpeed: 100-2000 mm/s (dependent on contamination layer thickness)
   beamProfile: Top-hat (preferred for uniform energy distribution)
   beamProfileOptions: Top-hat, Gaussian, Multi-spot
@@ -206,7 +206,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "0.5\u20135 J/cm\xB2"
+  fluence_threshold: "0.5\u20135 J/cm²"
   pulse_duration: 10-100ns
   wavelength_optimal: 1064nm
   power_range: 20-100W

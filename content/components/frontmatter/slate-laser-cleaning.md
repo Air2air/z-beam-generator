@@ -13,39 +13,38 @@ keywords: slate, slate stone, laser ablation, laser cleaning, non-contact cleani
   thermal processing, surface restoration
 chemicalProperties:
   symbol: N/A (complex mineral composite)
-  formula: "Variable composition (primarily SiO\u2082, Al\u2082O\u2083, K\u2082O,\
-    \ Fe\u2082O\u2083, MgO)"
+  formula: "Variable composition (primarily SiO\u2082, Al\u2082O\u2083, K\u2082O, Fe\u2082O\u2083, MgO)"
   materialType: metamorphic rock
 properties:
-  density: "2.6-2.9 g/cm\xB3"
+  density: "2.6-2.9 g/cm³"
   densityNumeric: 2.75
-  densityUnit: "g/cm\xB3"
-  densityMin: "1.8 g/cm\xB3"
+  densityUnit: "g/cm³"
+  densityMin: "1.8 g/cm³"
   densityMinNumeric: 1.8
-  densityMinUnit: "g/cm\xB3"
-  densityMax: "6.0 g/cm\xB3"
+  densityMinUnit: "g/cm³"
+  densityMax: "6.0 g/cm³"
   densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm\xB3"
+  densityMaxUnit: "g/cm³"
   densityPercentile: 22.6
-  meltingPoint: "1400\xB0C"
+  meltingPoint: "1400°C"
   meltingPointNumeric: 1400
-  meltingPointUnit: "\xB0C"
-  meltingPointMin: "1200\xB0C"
+  meltingPointUnit: "°C"
+  meltingPointMin: "1200°C"
   meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "\xB0C"
-  meltingPointMax: "2800\xB0C"
+  meltingPointMinUnit: "°C"
+  meltingPointMax: "2800°C"
   meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "\xB0C"
+  meltingPointMaxUnit: "°C"
   meltingPercentile: 6.2
-  thermalConductivity: "2.0-2.5 W/(m\xB7K) (anisotropic - higher parallel to cleavage)"
+  thermalConductivity: "2.0-2.5 W/(m·K) (anisotropic - higher parallel to cleavage)"
   thermalConductivityNumeric: 2.25
   thermalConductivityUnit: W/
-  thermalConductivityMin: "0.5 W/m\xB7K"
+  thermalConductivityMin: "0.5 W/m·K"
   thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m\xB7K"
-  thermalConductivityMax: "200 W/m\xB7K"
+  thermalConductivityMinUnit: "W/m·K"
+  thermalConductivityMax: "200 W/m·K"
   thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m\xB7K"
+  thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.9
   tensileStrength: 15-30 MPa (perpendicular to cleavage plane)
   tensileStrengthNumeric: 22.5
@@ -79,13 +78,13 @@ properties:
   modulusPercentile: 58.3
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "0.5-5 J/cm\xB2"
+  fluenceRange: "0.5-5 J/cm²"
   chemicalFormula: Complex silicate composition (no single formula)
   thermalBehaviorType: melting
 composition:
 - "Quartz (SiO\u2082): 20-40%"
 - "Muscovite/Illite (KAl\u2082(AlSi\u2083O\u2081\u2080)(OH)\u2082): 30-50%"
-- "Chlorite ((Mg,Fe)\u2083(Si,Al)\u2084O\u2081\u2080(OH)\u2082\xB7(Mg,Fe)\u2083(OH)\u2086\
+- "Chlorite ((Mg,Fe)\u2083(Si,Al)\u2084O\u2081\u2080(OH)\u2082·(Mg,Fe)\u2083(OH)\u2086\
   ): 10-25%"
 - "Iron oxides (Fe\u2082O\u2083/FeO): 3-15%"
 - 'Accessory minerals: Carbonates, feldspars, pyrite (1-5%)'
@@ -135,15 +134,15 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "0.5-5 J/cm\xB2"
+  fluenceRange: "0.5-5 J/cm²"
   fluenceRangeNumeric: 2.75
-  fluenceRangeUnit: "J/cm\xB2"
-  fluenceRangeMin: "0.1J/cm\xB2"
+  fluenceRangeUnit: "J/cm²"
+  fluenceRangeMin: "0.1J/cm²"
   fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm\xB2"
-  fluenceRangeMax: "50J/cm\xB2"
+  fluenceRangeMinUnit: "J/cm²"
+  fluenceRangeMax: "50J/cm²"
   fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm\xB2"
+  fluenceRangeMaxUnit: "J/cm²"
 applications:
 - 'Construction: Removal of graffiti and paint from slate building facades'
 - 'Restoration: Cleaning of historical slate monuments and gravestones'
@@ -182,14 +181,14 @@ outcomes:
 - result: Surface contamination removal efficiency
   metric: '>95% removal of biological growth and pollution crusts with substrate preservation'
 - result: Processing speed
-  metric: "0.5-2.0 m\xB2/hour depending on contamination type and laser parameters"
+  metric: "0.5-2.0 m²/hour depending on contamination type and laser parameters"
 technicalSpecifications:
   powerRange: 20-100 W (average power for pulsed fiber lasers)
   pulseDuration: 10-100 ns (nanosecond pulses optimal for controlled ablation)
   wavelength: 1064 nm (primary), 532 nm (optional for specific contaminant types)
   spotSize: 0.1-2.0 mm (adjustable based on contamination type and area)
   repetitionRate: 10-50 kHz (optimized for thermal relaxation between pulses)
-  fluenceRange: "0.5-5 J/cm\xB2 (below slate ablation threshold of ~6 J/cm\xB2)"
+  fluenceRange: "0.5-5 J/cm² (below slate ablation threshold of ~6 J/cm²)"
   scanningSpeed: 100-2000 mm/s (variable based on contamination thickness)
   beamProfile: Top-hat (flat-top) profile for uniform energy distribution
   beamProfileOptions: Top-hat, Gaussian, Multi-spot
@@ -207,7 +206,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "0.5-5 J/cm\xB2"
+  fluence_threshold: "0.5-5 J/cm²"
   pulse_duration: 10-100ns
   wavelength_optimal: 1064nm
   power_range: 20-100W

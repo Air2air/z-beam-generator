@@ -13,7 +13,7 @@ Every settings file must contain exactly 4 sections regardless of available data
 ```yaml
 machineSettings:
   settings:
-  - header: '## Laser System Configuration'
+  - header: '## Machine Configuration'
     rows: [...]
   - header: '## Processing Parameters'
     rows: [...]
@@ -26,7 +26,7 @@ machineSettings:
 ### 2. Standardized Section Headers
 
 Section headers are fixed and cannot vary:
-- `'## Laser System Configuration'`
+- `'## Machine Configuration'`
 - `'## Processing Parameters'`
 - `'## Safety Parameters'`
 - `'## Quality Control Settings'`
@@ -35,7 +35,7 @@ Section headers are fixed and cannot vary:
 
 Each section has exactly 4 required parameters:
 
-#### Laser System Configuration
+#### Machine Configuration
 1. **Power Range** (category: Laser Power)
 2. **Wavelength** (category: Optical)
 3. **Pulse Duration** (category: Temporal)
@@ -81,7 +81,7 @@ class SettingsComponentGenerator:
         structure = {
             'machineSettings': {
                 'settings': [
-                    {'header': '## Laser System Configuration', 'rows': laser_settings},
+                    {'header': '## Machine Configuration', 'rows': laser_settings},
                     {'header': '## Processing Parameters', 'rows': processing_settings},
                     {'header': '## Safety Parameters', 'rows': safety_settings},
                     {'header': '## Quality Control Settings', 'rows': quality_settings}
@@ -141,7 +141,7 @@ When frontmatter data is incomplete, the generator provides reasonable fallback 
 
 ### Fallback Values by Section
 
-#### Laser System Configuration
+#### Machine Configuration
 - **Power Range**: "20-100W" (range: "20W - 500W")
 - **Wavelength**: "1064nm (primary), 532nm (optional)" (range: "355nm - 2940nm")
 - **Pulse Duration**: "10-100ns" (range: "1ns - 1000ns")
@@ -210,7 +210,7 @@ def validate_normalized_structure(parsed_yaml: Dict) -> bool:
     
     # 3. Header validation
     expected_headers = [
-        '## Laser System Configuration',
+        '## Machine Configuration',
         '## Processing Parameters',
         '## Safety Parameters',
         '## Quality Control Settings'
@@ -243,7 +243,7 @@ def validate_section_parameters(section_header: str, rows: List[Dict]) -> bool:
     """Validate parameters for specific section"""
     
     parameter_requirements = {
-        '## Laser System Configuration': [
+        '## Machine Configuration': [
             'Power Range', 'Wavelength', 'Pulse Duration', 'Repetition Rate'
         ],
         '## Processing Parameters': [
@@ -279,7 +279,7 @@ def validate_section_parameters(section_header: str, rows: List[Dict]) -> bool:
 # Optimized structure (no renderInstructions)
 machineSettings:
   settings:
-  - header: '## Laser System Configuration'
+  - header: '## Machine Configuration'
     rows:
     - parameter: Power Range
       value: 50-200W

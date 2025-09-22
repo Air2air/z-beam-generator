@@ -16,32 +16,32 @@ chemicalProperties:
   formula: "C\u2086H\u2081\u2080O\u2085 (cellulose base)"
   materialType: hardwood
 properties:
-  density: "815-930 kg/m\xB3 (air-dried)"
+  density: "815-930 kg/m³ (air-dried)"
   densityNumeric: 872.5
-  densityUnit: "kg/m\xB3"
-  densityMin: "1.8 g/cm\xB3"
+  densityUnit: "kg/m³"
+  densityMin: "1.8 g/cm³"
   densityMinNumeric: 1.8
-  densityMinUnit: "g/cm\xB3"
-  densityMax: "6.0 g/cm\xB3"
+  densityMinUnit: "g/cm³"
+  densityMax: "6.0 g/cm³"
   densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm\xB3"
+  densityMaxUnit: "g/cm³"
   densityPercentile: 100.0
-  meltingPointMin: "1200\xB0C"
+  meltingPointMin: "1200°C"
   meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "\xB0C"
-  meltingPointMax: "2800\xB0C"
+  meltingPointMinUnit: "°C"
+  meltingPointMax: "2800°C"
   meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "\xB0C"
+  meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "0.12-0.16 W/m\xB7K (radial direction)"
+  thermalConductivity: "0.12-0.16 W/m·K (radial direction)"
   thermalConductivityNumeric: 0.14
-  thermalConductivityUnit: "W/m\xB7K"
-  thermalConductivityMin: "0.5 W/m\xB7K"
+  thermalConductivityUnit: "W/m·K"
+  thermalConductivityMin: "0.5 W/m·K"
   thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m\xB7K"
-  thermalConductivityMax: "200 W/m\xB7K"
+  thermalConductivityMinUnit: "W/m·K"
+  thermalConductivityMax: "200 W/m·K"
   thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m\xB7K"
+  thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.0
   tensileStrength: 100-140 MPa (parallel to grain)
   tensileStrengthNumeric: 120.0
@@ -75,12 +75,12 @@ properties:
   modulusPercentile: 0.0
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "0.5-3.0 J/cm\xB2"
+  fluenceRange: "0.5-3.0 J/cm²"
   chemicalFormula: Complex lignocellulosic composite
   thermalBehaviorType: decomposition
-  decompositionPoint: "300\xB0C"
+  decompositionPoint: "300°C"
   decompositionPointNumeric: 300
-  decompositionPointUnit: "\xB0C"
+  decompositionPointUnit: "°C"
 composition:
 - 'Cellulose: 45-50%'
 - 'Lignin: 20-25%'
@@ -132,15 +132,15 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "0.5-3.0 J/cm\xB2"
+  fluenceRange: "0.5-3.0 J/cm²"
   fluenceRangeNumeric: 1.75
-  fluenceRangeUnit: "J/cm\xB2"
-  fluenceRangeMin: "0.1J/cm\xB2"
+  fluenceRangeUnit: "J/cm²"
+  fluenceRangeMin: "0.1J/cm²"
   fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm\xB2"
-  fluenceRangeMax: "50J/cm\xB2"
+  fluenceRangeMinUnit: "J/cm²"
+  fluenceRangeMax: "50J/cm²"
   fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm\xB2"
+  fluenceRangeMaxUnit: "J/cm²"
 applications:
 - 'Woodworking: Removing old finishes and stains from hickory wood surfaces'
 - 'Restoration: Cleaning and restoring antique hickory furniture'
@@ -177,14 +177,14 @@ outcomes:
 - result: Surface contamination removal efficiency
   metric: ">95% removal of finishes and contaminants with <5 \u03BCm surface alteration"
 - result: Processing speed
-  metric: "2-5 m\xB2/hour depending on contamination level and required precision"
+  metric: "2-5 m²/hour depending on contamination level and required precision"
 technicalSpecifications:
   powerRange: 20-100 W
   pulseDuration: 10-50 ns
   wavelength: 1064 nm (primary), 532 nm (optional for finer control)
   spotSize: 0.1-1.0 mm
   repetitionRate: 20-100 kHz
-  fluenceRange: "0.5-3.0 J/cm\xB2"
+  fluenceRange: "0.5-3.0 J/cm²"
   scanningSpeed: 500-2000 mm/s
   beamProfile: Top-hat (flat-top)
   beamProfileOptions: Top-hat, Gaussian, Multi-spot
@@ -201,7 +201,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "0.5-3.0 J/cm\xB2"
+  fluence_threshold: "0.5-3.0 J/cm²"
   pulse_duration: 10-50ns
   wavelength_optimal: 1064nm
   power_range: 20-100W

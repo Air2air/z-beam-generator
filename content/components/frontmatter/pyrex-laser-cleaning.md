@@ -3,49 +3,45 @@ name: Pyrex
 category: glass
 title: Pyrex Laser Cleaning
 headline: Comprehensive technical guide for laser cleaning glass pyrex
-description: "Pyrex (borosilicate glass) laser cleaning utilizes precise pulsed fiber\
-  \ laser parameters to remove surface contaminants while leveraging Pyrex's low thermal\
-  \ expansion coefficient (3.3 \xD7 10\u207B\u2076/\xB0C) to prevent thermal stress\
-  \ cracking. The process selectively ablates contaminants without damaging the underlying\
-  \ glass substrate."
+description: "Pyrex (borosilicate glass) laser cleaning utilizes precise pulsed fiber laser parameters to remove surface contaminants while leveraging Pyrex's low thermal expansion coefficient (3.3 × 10\u207B\u2076/°C) to prevent thermal stress cracking. The process selectively ablates contaminants without damaging the underlying glass substrate."
 keywords: pyrex, pyrex glass, laser ablation, laser cleaning, non-contact cleaning,
   pulsed fiber laser, surface contamination removal, industrial laser parameters,
   thermal processing, surface restoration
 chemicalProperties:
   symbol: N/A (glass composition)
-  formula: "Approx. 80.6% SiO\u2082, 12.6% B\u2082O\u2083, 4.2% Na\u2082O, 2.2% Al\u2082\
+  formula: "Approx. 80.6% SiO\u2082, 12.6% B\u2082O\u2083, 4.2% Na\u2082O, 2.2% Al\u2082"
     O\u2083, 0.04% Fe\u2082O\u2083, 0.1% CaO, 0.05% MgO, 0.01% K\u2082O"
   materialType: borosilicate glass
 properties:
-  density: "2.23 g/cm\xB3"
+  density: "2.23 g/cm³"
   densityNumeric: 2.23
-  densityUnit: "g/cm\xB3"
-  densityMin: "1.8 g/cm\xB3"
+  densityUnit: "g/cm³"
+  densityMin: "1.8 g/cm³"
   densityMinNumeric: 1.8
-  densityMinUnit: "g/cm\xB3"
-  densityMax: "6.0 g/cm\xB3"
+  densityMinUnit: "g/cm³"
+  densityMax: "6.0 g/cm³"
   densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm\xB3"
+  densityMaxUnit: "g/cm³"
   densityPercentile: 10.2
-  meltingPoint: "820\xB0C"
+  meltingPoint: "820°C"
   meltingPointNumeric: 820.0
-  meltingPointUnit: "\xB0C"
-  meltingPointMin: "1200\xB0C"
+  meltingPointUnit: "°C"
+  meltingPointMin: "1200°C"
   meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "\xB0C"
-  meltingPointMax: "2800\xB0C"
+  meltingPointMinUnit: "°C"
+  meltingPointMax: "2800°C"
   meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "\xB0C"
+  meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "1.2 W/(m\xB7K) at 20\xB0C"
+  thermalConductivity: "1.2 W/(m·K) at 20°C"
   thermalConductivityNumeric: 1.2
   thermalConductivityUnit: W/
-  thermalConductivityMin: "0.5 W/m\xB7K"
+  thermalConductivityMin: "0.5 W/m·K"
   thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m\xB7K"
-  thermalConductivityMax: "200 W/m\xB7K"
+  thermalConductivityMinUnit: "W/m·K"
+  thermalConductivityMax: "200 W/m·K"
   thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m\xB7K"
+  thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.4
   tensileStrength: 28-70 MPa
   tensileStrengthNumeric: 49.0
@@ -79,8 +75,8 @@ properties:
   modulusPercentile: 70.0
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "0.5\u20135 J/cm\xB2"
-  chemicalFormula: "Complex oxide mixture (primarily SiO\u2082-B\u2082O\u2083-Na\u2082\
+  fluenceRange: "0.5\u20135 J/cm²"
+  chemicalFormula: "Complex oxide mixture (primarily SiO\u2082-B\u2082O\u2083-Na\u2082"
     O)"
   thermalBehaviorType: melting
 composition:
@@ -135,15 +131,15 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "0.5\u20135 J/cm\xB2"
+  fluenceRange: "0.5\u20135 J/cm²"
   fluenceRangeNumeric: 0.5
-  fluenceRangeUnit: "J/cm\xB2"
-  fluenceRangeMin: "0.1J/cm\xB2"
+  fluenceRangeUnit: "J/cm²"
+  fluenceRangeMin: "0.1J/cm²"
   fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm\xB2"
-  fluenceRangeMax: "50J/cm\xB2"
+  fluenceRangeMinUnit: "J/cm²"
+  fluenceRangeMax: "50J/cm²"
   fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm\xB2"
+  fluenceRangeMaxUnit: "J/cm²"
 applications:
 - 'Automotive: Cleaning of Pyrex glass components for headlights'
 - 'Aerospace: Decontamination of Pyrex windows and optical components'
@@ -172,26 +168,22 @@ images:
     url: /images/pyrex-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Zero chemical waste generation
-  description: "Eliminates 100% of solvent consumption compared to traditional chemical\
-    \ cleaning methods (typically 5-10 L solvents per m\xB2 cleaned)"
+  description: "Eliminates 100% of solvent consumption compared to traditional chemical cleaning methods (typically 5-10 L solvents per m² cleaned)"
 - benefit: 95% reduction in energy consumption
-  description: "Laser cleaning consumes approximately 0.5-2 kWh/m\xB2 compared to\
-    \ 10-40 kWh/m\xB2 for ultrasonic or chemical bath cleaning with drying cycles"
+  description: "Laser cleaning consumes approximately 0.5-2 kWh/m² compared to 10-40 kWh/m² for ultrasonic or chemical bath cleaning with drying cycles"
 outcomes:
 - result: '>99.9% contaminant removal efficiency'
   metric: Measured via SEM-EDS analysis showing complete removal of organic residues
     and particulate matter
 - result: Sub-micron precision cleaning
-  metric: "Achieves 0.1-0.5 \u03BCm feature resolution without substrate damage at\
-    \ optimal parameters"
+  metric: "Achieves 0.1-0.5 \u03BCm feature resolution without substrate damage at optimal parameters"
 technicalSpecifications:
   powerRange: 20-100 W (average power for pulsed fiber lasers)
   pulseDuration: 10-100 ns
   wavelength: 1064 nm (primary), 532 nm (for higher precision applications)
   spotSize: 0.1-2.0 mm (adjustable based on contamination type)
   repetitionRate: 10-50 kHz
-  fluenceRange: "0.5-5 J/cm\xB2 (below the 8-10 J/cm\xB2 ablation threshold for pristine\
-    \ Pyrex)"
+  fluenceRange: "0.5-5 J/cm² (below the 8-10 J/cm² ablation threshold for pristine Pyrex)"
   scanningSpeed: 100-1000 mm/s (depending on contamination thickness)
   beamProfile: Top-hat or Gaussian (depending on application requirements)
   beamProfileOptions: Top-hat for uniform cleaning, Gaussian for precision spot cleaning
@@ -208,7 +200,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "0.5\u20135 J/cm\xB2"
+  fluence_threshold: "0.5\u20135 J/cm²"
   pulse_duration: 10-100ns
   wavelength_optimal: 1064nm
   power_range: 20-100W

@@ -2,15 +2,12 @@
 |----------|-------|
 | Density | 2.5 g/cm³ |
 | Melting Point | 600-700°C |
-| Thermal Cond. | 1.0 W/m·K |
-| Laser Type | Pulsed Fiber Laser |
-| Wavelength | 1064nm |
-| Fluence Range | 1.0–4.5 J/cm² |
+| Conductivity | 1.0 W/m·K |
 | Formula | Na2O·CaO·6SiO2 |
 
 
 ---
-Version Log - Generated: 2025-09-21T20:52:21.586515
+Version Log - Generated: 2025-09-21T22:01:14.268813
 Material: Unknown
 Component: propertiestable
 Generator: Z-Beam v1.0.0

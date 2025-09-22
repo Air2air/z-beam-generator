@@ -13,39 +13,38 @@ keywords: porphyry, porphyry stone, laser ablation, laser cleaning, non-contact 
   thermal processing, surface restoration
 chemicalProperties:
   symbol: N/A (complex mineral composite)
-  formula: "Variable (primarily SiO\u2082 + KAlSi\u2083O\u2088 + NaAlSi\u2083O\u2088\
-    \ + CaAl\u2082Si\u2082O\u2088)"
+  formula: "Variable (primarily SiO\u2082 + KAlSi\u2083O\u2088 + NaAlSi\u2083O\u2088 + CaAl\u2082Si\u2082O\u2088)"
   materialType: igneous rock
 properties:
-  density: "2.6-2.9 g/cm\xB3 (varies with mineral composition)"
+  density: "2.6-2.9 g/cm³ (varies with mineral composition)"
   densityNumeric: 2.75
-  densityUnit: "g/cm\xB3"
-  densityMin: "1.8 g/cm\xB3"
+  densityUnit: "g/cm³"
+  densityMin: "1.8 g/cm³"
   densityMinNumeric: 1.8
-  densityMinUnit: "g/cm\xB3"
-  densityMax: "6.0 g/cm\xB3"
+  densityMinUnit: "g/cm³"
+  densityMax: "6.0 g/cm³"
   densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm\xB3"
+  densityMaxUnit: "g/cm³"
   densityPercentile: 22.6
-  meltingPoint: "1450\xB0C"
+  meltingPoint: "1450°C"
   meltingPointNumeric: 1450
-  meltingPointUnit: "\xB0C"
-  meltingPointMin: "1200\xB0C"
+  meltingPointUnit: "°C"
+  meltingPointMin: "1200°C"
   meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "\xB0C"
-  meltingPointMax: "2800\xB0C"
+  meltingPointMinUnit: "°C"
+  meltingPointMax: "2800°C"
   meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "\xB0C"
+  meltingPointMaxUnit: "°C"
   meltingPercentile: 9.4
-  thermalConductivity: "2.5-3.5 W/(m\xB7K) (anisotropic due to crystalline structure)"
+  thermalConductivity: "2.5-3.5 W/(m·K) (anisotropic due to crystalline structure)"
   thermalConductivityNumeric: 3.0
   thermalConductivityUnit: W/
-  thermalConductivityMin: "0.5 W/m\xB7K"
+  thermalConductivityMin: "0.5 W/m·K"
   thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m\xB7K"
-  thermalConductivityMax: "200 W/m\xB7K"
+  thermalConductivityMinUnit: "W/m·K"
+  thermalConductivityMax: "200 W/m·K"
   thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m\xB7K"
+  thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 1.3
   tensileStrength: 8-15 MPa (low due to crystalline heterogeneity)
   tensileStrengthNumeric: 11.5
@@ -79,9 +78,8 @@ properties:
   modulusPercentile: 75.0
   laserType: Nd:YAG or fiber laser
   wavelength: 1064nm
-  fluenceRange: "1.0\u201310 J/cm\xB2"
-  chemicalFormula: "Complex silicate mixture (SiO\u2082 40-70%, Feldspars 20-50%,\
-    \ Biotite 5-15%)"
+  fluenceRange: "1.0\u201310 J/cm²"
+  chemicalFormula: "Complex silicate mixture (SiO\u2082 40-70%, Feldspars 20-50%, Biotite 5-15%)"
   thermalBehaviorType: melting
 composition:
 - "Quartz (SiO\u2082): 40-70% (primary crystalline phase)"
@@ -135,15 +133,15 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0\u201310 J/cm\xB2"
+  fluenceRange: "1.0\u201310 J/cm²"
   fluenceRangeNumeric: 1.0
-  fluenceRangeUnit: "J/cm\xB2"
-  fluenceRangeMin: "0.1J/cm\xB2"
+  fluenceRangeUnit: "J/cm²"
+  fluenceRangeMin: "0.1J/cm²"
   fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm\xB2"
-  fluenceRangeMax: "50J/cm\xB2"
+  fluenceRangeMinUnit: "J/cm²"
+  fluenceRangeMax: "50J/cm²"
   fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm\xB2"
+  fluenceRangeMaxUnit: "J/cm²"
 applications:
 - 'Construction: Cleaning and restoration of historical porphyry structures'
 - 'Art and Restoration: Precision cleaning of porphyry sculptures and artifacts'
@@ -182,8 +180,7 @@ environmentalImpact:
     silica dust
 outcomes:
 - result: Sub-micron precision contaminant removal
-  metric: "Selective removal to within 5\u03BCm depth accuracy without mineral phase\
-    \ damage"
+  metric: "Selective removal to within 5\u03BCm depth accuracy without mineral phase damage"
 - result: Non-contact processing of delicate surfaces
   metric: Zero mechanical pressure applied during cleaning of historical artifacts
     with complex geometries
@@ -193,7 +190,7 @@ technicalSpecifications:
   wavelength: 1064 nm (fundamental), 532 nm (second harmonic for selective absorption)
   spotSize: 0.1-0.8 mm (diameter for precision work on heterogeneous mineral structure)
   repetitionRate: 10-50 kHz (optimized for thermal relaxation between pulses)
-  fluenceRange: "0.8-4.5 J/cm\xB2 (below feldspar ablation threshold of ~5 J/cm\xB2\
+  fluenceRange: "0.8-4.5 J/cm² (below feldspar ablation threshold of ~5 J/cm²"
     )"
   scanningSpeed: 200-800 mm/s (with 50% overlap for uniform cleaning)
   beamProfile: Top-hat (flat-top) for uniform energy distribution across heterogeneous
@@ -213,7 +210,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "1.0\u201310 J/cm\xB2"
+  fluence_threshold: "1.0\u201310 J/cm²"
   pulse_duration: 10-50ns
   wavelength_optimal: 1064nm
   power_range: 50-200W

@@ -3,11 +3,7 @@ name: Molybdenum
 category: metal
 title: Molybdenum Laser Cleaning
 headline: Comprehensive technical guide for laser cleaning metal molybdenum
-description: "Molybdenum laser cleaning utilizes pulsed fiber lasers to selectively\
-  \ remove surface contaminants without damaging the underlying substrate. The process\
-  \ leverages Molybdenum's high melting point (2623\xB0C) and thermal conductivity\
-  \ (138 W/m\xB7K) to achieve precise ablation of oxides and contaminants while preserving\
-  \ base material integrity."
+description: "Molybdenum laser cleaning utilizes pulsed fiber lasers to selectively remove surface contaminants without damaging the underlying substrate. The process leverages Molybdenum's high melting point (2623°C) and thermal conductivity (138 W/m·K) to achieve precise ablation of oxides and contaminants while preserving base material integrity."
 keywords: molybdenum, molybdenum metal, laser ablation, laser cleaning, non-contact
   cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters,
   thermal processing, surface restoration
@@ -16,35 +12,35 @@ chemicalProperties:
   formula: Mo
   materialType: metal
 properties:
-  density: "10.28 g/cm\xB3"
+  density: "10.28 g/cm³"
   densityNumeric: 10.28
-  densityUnit: "g/cm\xB3"
-  densityMin: "1.8 g/cm\xB3"
+  densityUnit: "g/cm³"
+  densityMin: "1.8 g/cm³"
   densityMinNumeric: 1.8
-  densityMinUnit: "g/cm\xB3"
-  densityMax: "6.0 g/cm\xB3"
+  densityMinUnit: "g/cm³"
+  densityMax: "6.0 g/cm³"
   densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm\xB3"
+  densityMaxUnit: "g/cm³"
   densityPercentile: 100.0
-  meltingPoint: "2623\xB0C"
+  meltingPoint: "2623°C"
   meltingPointNumeric: 2623.0
-  meltingPointUnit: "\xB0C"
-  meltingPointMin: "1200\xB0C"
+  meltingPointUnit: "°C"
+  meltingPointMin: "1200°C"
   meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "\xB0C"
-  meltingPointMax: "2800\xB0C"
+  meltingPointMinUnit: "°C"
+  meltingPointMax: "2800°C"
   meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "\xB0C"
+  meltingPointMaxUnit: "°C"
   meltingPercentile: 88.9
-  thermalConductivity: "138 W/m\xB7K"
+  thermalConductivity: "138 W/m·K"
   thermalConductivityNumeric: 138.0
-  thermalConductivityUnit: "W/m\xB7K"
-  thermalConductivityMin: "0.5 W/m\xB7K"
+  thermalConductivityUnit: "W/m·K"
+  thermalConductivityMin: "0.5 W/m·K"
   thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m\xB7K"
-  thermalConductivityMax: "200 W/m\xB7K"
+  thermalConductivityMinUnit: "W/m·K"
+  thermalConductivityMax: "200 W/m·K"
   thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m\xB7K"
+  thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 68.9
   tensileStrength: 324 MPa (annealed), 620 MPa (work hardened)
   tensileStrengthNumeric: 324.0
@@ -78,7 +74,7 @@ properties:
   modulusPercentile: 100.0
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "1.0\u201310 J/cm\xB2"
+  fluenceRange: "1.0\u201310 J/cm²"
   chemicalFormula: Mo
   thermalBehaviorType: melting
 composition:
@@ -130,15 +126,15 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0\u201310 J/cm\xB2"
+  fluenceRange: "1.0\u201310 J/cm²"
   fluenceRangeNumeric: 1.0
-  fluenceRangeUnit: "J/cm\xB2"
-  fluenceRangeMin: "0.1J/cm\xB2"
+  fluenceRangeUnit: "J/cm²"
+  fluenceRangeMin: "0.1J/cm²"
   fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm\xB2"
-  fluenceRangeMax: "50J/cm\xB2"
+  fluenceRangeMinUnit: "J/cm²"
+  fluenceRangeMax: "50J/cm²"
   fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm\xB2"
+  fluenceRangeMaxUnit: "J/cm²"
 applications:
 - 'Aerospace: Removal of oxidation and surface contaminants from Molybdenum components'
 - 'Semiconductor: Precision cleaning of Molybdenum surfaces in microelectronics manufacturing'
@@ -173,9 +169,9 @@ environmentalImpact:
   description: Laser cleaning consumes approximately 60-70% less energy compared to
     chemical bath processes and thermal treatment methods for Molybdenum components
 outcomes:
-- result: "Surface cleanliness achieving <5 \u03BCg/cm\xB2 contamination levels"
+- result: "Surface cleanliness achieving <5 \u03BCg/cm² contamination levels"
   metric: ISO 8502-3 cleanliness standard compliance
-- result: "Processing speeds up to 0.5 m\xB2/hour for oxide removal"
+- result: "Processing speeds up to 0.5 m²/hour for oxide removal"
   metric: Achievable cleaning rates with 100W pulsed fiber laser systems
 technicalSpecifications:
   powerRange: 50-200 W (pulsed fiber laser)
@@ -183,7 +179,7 @@ technicalSpecifications:
   wavelength: 1064 nm (primary), 532 nm (for higher precision applications)
   spotSize: 0.05-1.0 mm
   repetitionRate: 20-100 kHz
-  fluenceRange: "1.0-10 J/cm\xB2 (ablation threshold ~1.0 J/cm\xB2 for 100 ns pulses)"
+  fluenceRange: "1.0-10 J/cm² (ablation threshold ~1.0 J/cm² for 100 ns pulses)"
   scanningSpeed: 500-5000 mm/s
   beamProfile: Top-hat (flat-top) profile for uniform energy distribution
   beamProfileOptions: Top-hat, Gaussian, Multimode
@@ -200,7 +196,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "1.0\u201310 J/cm\xB2"
+  fluence_threshold: "1.0\u201310 J/cm²"
   pulse_duration: 10-200ns
   wavelength_optimal: 1064nm
   power_range: 50-200W

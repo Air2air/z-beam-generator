@@ -12,39 +12,39 @@ keywords: sandstone, sandstone stone, laser ablation, laser cleaning, non-contac
   thermal processing, surface restoration
 chemicalProperties:
   symbol: N/A (composite material)
-  formula: "Variable (primarily SiO\u2082 + CaCO\u2083 + Fe\u2082O\u2083 + Al\u2082\
+  formula: "Variable (primarily SiO\u2082 + CaCO\u2083 + Fe\u2082O\u2083 + Al\u2082"
     O\u2083)"
   materialType: sedimentary rock
 properties:
-  density: "2.0-2.6 g/cm\xB3"
+  density: "2.0-2.6 g/cm³"
   densityNumeric: 2.3
-  densityUnit: "g/cm\xB3"
-  densityMin: "1.8 g/cm\xB3"
+  densityUnit: "g/cm³"
+  densityMin: "1.8 g/cm³"
   densityMinNumeric: 1.8
-  densityMinUnit: "g/cm\xB3"
-  densityMax: "6.0 g/cm\xB3"
+  densityMinUnit: "g/cm³"
+  densityMax: "6.0 g/cm³"
   densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm\xB3"
+  densityMaxUnit: "g/cm³"
   densityPercentile: 11.9
-  meltingPoint: "1700\xB0C"
+  meltingPoint: "1700°C"
   meltingPointNumeric: 1700.0
-  meltingPointUnit: "\xB0C"
-  meltingPointMin: "1200\xB0C"
+  meltingPointUnit: "°C"
+  meltingPointMin: "1200°C"
   meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "\xB0C"
-  meltingPointMax: "2800\xB0C"
+  meltingPointMinUnit: "°C"
+  meltingPointMax: "2800°C"
   meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "\xB0C"
+  meltingPointMaxUnit: "°C"
   meltingPercentile: 31.2
-  thermalConductivity: "1.7-3.3 W/(m\xB7K)"
+  thermalConductivity: "1.7-3.3 W/(m·K)"
   thermalConductivityNumeric: 2.5
   thermalConductivityUnit: W/
-  thermalConductivityMin: "0.5 W/m\xB7K"
+  thermalConductivityMin: "0.5 W/m·K"
   thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m\xB7K"
-  thermalConductivityMax: "200 W/m\xB7K"
+  thermalConductivityMinUnit: "W/m·K"
+  thermalConductivityMax: "200 W/m·K"
   thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m\xB7K"
+  thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 1.0
   tensileStrength: 4-25 MPa
   tensileStrengthNumeric: 14.5
@@ -78,7 +78,7 @@ properties:
   modulusPercentile: 8.3
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "0.5-5 J/cm\xB2"
+  fluenceRange: "0.5-5 J/cm²"
   chemicalFormula: Variable composition
   thermalBehaviorType: melting
 composition:
@@ -133,15 +133,15 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "0.5-5 J/cm\xB2"
+  fluenceRange: "0.5-5 J/cm²"
   fluenceRangeNumeric: 2.75
-  fluenceRangeUnit: "J/cm\xB2"
-  fluenceRangeMin: "0.1J/cm\xB2"
+  fluenceRangeUnit: "J/cm²"
+  fluenceRangeMin: "0.1J/cm²"
   fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm\xB2"
-  fluenceRangeMax: "50J/cm\xB2"
+  fluenceRangeMinUnit: "J/cm²"
+  fluenceRangeMax: "50J/cm²"
   fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm\xB2"
+  fluenceRangeMaxUnit: "J/cm²"
 applications:
 - 'Construction: Cleaning of sandstone facades and sculptures'
 - 'Heritage Conservation: Restoration of historical sandstone structures'
@@ -172,8 +172,7 @@ images:
     url: /images/sandstone-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Water conservation
-  description: "Eliminates 100% water usage compared to traditional hydro-cleaning\
-    \ methods (saving ~50-100 liters per m\xB2)"
+  description: "Eliminates 100% water usage compared to traditional hydro-cleaning methods (saving ~50-100 liters per m²)"
 - benefit: Chemical-free process
   description: Removes need for harsh chemical cleaners (acids, bases) that can damage
     sandstone and contaminate groundwater
@@ -182,14 +181,14 @@ outcomes:
   metric: '>95% removal efficiency of black crusts and biological growth with substrate
     preservation'
 - result: Processing speed
-  metric: "0.5-2.0 m\xB2/hour depending on contamination level and laser parameters"
+  metric: "0.5-2.0 m²/hour depending on contamination level and laser parameters"
 technicalSpecifications:
   powerRange: 20-100 W (average power for pulsed fiber lasers)
   pulseDuration: 10-100 ns
   wavelength: 1064 nm (primary), 532 nm (optional for specific contamination)
   spotSize: 0.1-2.0 mm
   repetitionRate: 10-50 kHz
-  fluenceRange: "0.5-5 J/cm\xB2 (below sandstone ablation threshold of ~6-8 J/cm\xB2\
+  fluenceRange: "0.5-5 J/cm² (below sandstone ablation threshold of ~6-8 J/cm²"
     )"
   scanningSpeed: 100-500 mm/s
   beamProfile: Top-hat (flat-top) for uniform energy distribution
@@ -207,7 +206,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "0.5-5 J/cm\xB2"
+  fluence_threshold: "0.5-5 J/cm²"
   pulse_duration: 10-100ns
   wavelength_optimal: 1064nm
   power_range: 20-100W

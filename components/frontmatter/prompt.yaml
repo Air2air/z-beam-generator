@@ -90,6 +90,10 @@ template: |
     metric: "[RESEARCH: Specific measured outcome for {subject}]"
   - result: "[RESEARCH: Processing capability for {subject}]"
     metric: "[RESEARCH: Actual processing speeds/accuracy for {subject}]"
+  - result: "Surface roughness before treatment"
+    metric: "[RESEARCH: Use material-specific manufacturing surface roughness for {subject} only. Do not include other materials.]"
+  - result: "Surface roughness after treatment"
+    metric: "[RESEARCH: Use material-specific post-laser cleaning surface roughness for {subject} only. Do not include other materials.]"
   prompt_chain_verification:
     base_config_loaded: true
     persona_config_loaded: true
@@ -102,6 +106,13 @@ template: |
     human_authenticity_focus: true
     cultural_adaptation_applied: true
   ---
+
+  CRITICAL SURFACE ROUGHNESS RESEARCH:
+  - Research actual manufacturing surface roughness for {subject}
+  - Research published laser cleaning studies for {subject}  
+  - Use format: "Ra X.X μm" (value and unit only, no descriptions)
+  - Manufacturing baseline: Aluminum Ra 6.3 μm, Steel Ra 4.0 μm, Copper Ra 3.2 μm, Titanium Ra 2.5 μm, Brass Ra 3.5 μm
+  - Post-cleaning targets: Aluminum Ra 1.5 μm, Steel Ra 0.8 μm, Copper Ra 0.6 μm, Titanium Ra 0.5 μm, Brass Ra 0.7 μm
 
   CRITICAL VALIDATION:
   - Every technical value must be researched and specific to {subject}

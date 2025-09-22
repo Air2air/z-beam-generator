@@ -16,33 +16,33 @@ chemicalProperties:
   formula: "Variable (Primarily C\u2086H\u2081\u2080O\u2085 for cellulose)"
   materialType: Hardwood
 properties:
-  density: "800-880 kg/m\xB3 (varies by species, e.g., Brazilian Rosewood ~880 kg/m\xB3\
+  density: "800-880 kg/m³ (varies by species, e.g., Brazilian Rosewood ~880 kg/m³"
     )"
   densityNumeric: 840.0
-  densityUnit: "kg/m\xB3"
-  densityMin: "1.8 g/cm\xB3"
+  densityUnit: "kg/m³"
+  densityMin: "1.8 g/cm³"
   densityMinNumeric: 1.8
-  densityMinUnit: "g/cm\xB3"
-  densityMax: "6.0 g/cm\xB3"
+  densityMinUnit: "g/cm³"
+  densityMax: "6.0 g/cm³"
   densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm\xB3"
+  densityMaxUnit: "g/cm³"
   densityPercentile: 100.0
-  meltingPointMin: "1200\xB0C"
+  meltingPointMin: "1200°C"
   meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "\xB0C"
-  meltingPointMax: "2800\xB0C"
+  meltingPointMinUnit: "°C"
+  meltingPointMax: "2800°C"
   meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "\xB0C"
+  meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "0.12-0.17 W/(m\xB7K) (radial direction)"
+  thermalConductivity: "0.12-0.17 W/(m·K) (radial direction)"
   thermalConductivityNumeric: 0.15
   thermalConductivityUnit: W/
-  thermalConductivityMin: "0.5 W/m\xB7K"
+  thermalConductivityMin: "0.5 W/m·K"
   thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m\xB7K"
-  thermalConductivityMax: "200 W/m\xB7K"
+  thermalConductivityMinUnit: "W/m·K"
+  thermalConductivityMax: "200 W/m·K"
   thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m\xB7K"
+  thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.0
   tensileStrength: ~100 MPa (approximately, parallel to grain)
   tensileStrengthNumeric: 100.0
@@ -76,15 +76,15 @@ properties:
   modulusPercentile: 0.0
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "0.5-5 J/cm\xB2"
-  chemicalFormula: "Complex organic composite; primarily cellulose (C\u2086H\u2081\
+  fluenceRange: "0.5-5 J/cm²"
+  chemicalFormula: "Complex organic composite; primarily cellulose (C\u2086H\u2081"
     \u2080O\u2085), lignin (C\u2089H\u2081\u2080O\u2083, C\u2081\u2080H\u2081\u2082\
     O\u2083, C\u2081\u2081H\u2081\u2084O\u2084), hemicellulose, and extractives (e.g.,\
     \ dalbergione)."
   thermalBehaviorType: decomposition
-  decompositionPoint: "280\xB0C"
+  decompositionPoint: "280°C"
   decompositionPointNumeric: 280
-  decompositionPointUnit: "\xB0C"
+  decompositionPointUnit: "°C"
 composition:
 - 'Cellulose: 40-50%'
 - 'Lignin: 20-30%'
@@ -136,15 +136,15 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "0.5-5 J/cm\xB2"
+  fluenceRange: "0.5-5 J/cm²"
   fluenceRangeNumeric: 2.75
-  fluenceRangeUnit: "J/cm\xB2"
-  fluenceRangeMin: "0.1J/cm\xB2"
+  fluenceRangeUnit: "J/cm²"
+  fluenceRangeMin: "0.1J/cm²"
   fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm\xB2"
-  fluenceRangeMax: "50J/cm\xB2"
+  fluenceRangeMinUnit: "J/cm²"
+  fluenceRangeMax: "50J/cm²"
   fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm\xB2"
+  fluenceRangeMaxUnit: "J/cm²"
 applications:
 - 'Furniture Manufacturing: Removing old finishes and stains from Rosewood furniture'
 - 'Restoration: Cleaning and restoring antique Rosewood artifacts'
@@ -183,10 +183,9 @@ environmentalImpact:
     significant wood substrate.
 outcomes:
 - result: Surface Contaminant Removal
-  metric: ">99% removal of target surface layers (varnish, dirt) with substrate loss\
-    \ of <10 \xB5m"
+  metric: ">99% removal of target surface layers (varnish, dirt) with substrate loss of <10 µm"
 - result: Processing Speed
-  metric: "0.5 - 2.0 m\xB2/hour depending on contamination type and laser parameters"
+  metric: "0.5 - 2.0 m²/hour depending on contamination type and laser parameters"
 technicalSpecifications:
   powerRange: 20-100 W (average power for pulsed fiber lasers)
   pulseDuration: 10-100 ns (nanosecond pulses standard for controlled ablation)
@@ -194,8 +193,7 @@ technicalSpecifications:
     work)
   spotSize: 0.1-2.0 mm (adjustable for area coverage vs. precision)
   repetitionRate: 10-50 kHz (standard for efficient scanning)
-  fluenceRange: "0.5-5 J/cm\xB2 (operating range above ablation threshold but below\
-    \ charring threshold)"
+  fluenceRange: "0.5-5 J/cm² (operating range above ablation threshold but below charring threshold)"
   scanningSpeed: 500-5000 mm/s (optimized for contamination type and desired removal
     rate)
   beamProfile: Top-hat (flat-top) profile preferred for uniform energy distribution
@@ -215,7 +213,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "0.5-5 J/cm\xB2"
+  fluence_threshold: "0.5-5 J/cm²"
   pulse_duration: 10-100ns
   wavelength_optimal: 1064nm
   power_range: 20-100W

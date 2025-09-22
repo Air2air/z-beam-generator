@@ -152,7 +152,7 @@ All generated captions use consistent parameters:
 
 The component generates six-dimensional quality assessments:
 1. **Contamination Removal**: Material-specific removal effectiveness
-2. **Surface Roughness**: Before/after surface texture measurements
+2. **Surface Quality**: Before/after surface texture measurements
 3. **Thermal Damage**: Heat-affected zone assessment
 4. **Substrate Integrity**: Material preservation evaluation
 5. **Processing Efficiency**: Time and energy utilization metrics

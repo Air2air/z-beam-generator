@@ -16,35 +16,35 @@ chemicalProperties:
   formula: Fe-C
   materialType: metal
 properties:
-  density: "7.85 g/cm\xB3 (for carbon steel)"
+  density: "7.85 g/cm³ (for carbon steel)"
   densityNumeric: 7.85
-  densityUnit: "g/cm\xB3"
-  densityMin: "1.8 g/cm\xB3"
+  densityUnit: "g/cm³"
+  densityMin: "1.8 g/cm³"
   densityMinNumeric: 1.8
-  densityMinUnit: "g/cm\xB3"
-  densityMax: "6.0 g/cm\xB3"
+  densityMinUnit: "g/cm³"
+  densityMax: "6.0 g/cm³"
   densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm\xB3"
+  densityMaxUnit: "g/cm³"
   densityPercentile: 100.0
-  meltingPoint: "1510\xB0C"
+  meltingPoint: "1510°C"
   meltingPointNumeric: 1510
-  meltingPointUnit: "\xB0C"
-  meltingPointMin: "1200\xB0C"
+  meltingPointUnit: "°C"
+  meltingPointMin: "1200°C"
   meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "\xB0C"
-  meltingPointMax: "2800\xB0C"
+  meltingPointMinUnit: "°C"
+  meltingPointMax: "2800°C"
   meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "\xB0C"
+  meltingPointMaxUnit: "°C"
   meltingPercentile: 15.0
-  thermalConductivity: "45-65 W/m\xB7K (for carbon steel at 20\xB0C)"
+  thermalConductivity: "45-65 W/m·K (for carbon steel at 20°C)"
   thermalConductivityNumeric: 55.0
-  thermalConductivityUnit: "W/m\xB7K"
-  thermalConductivityMin: "0.5 W/m\xB7K"
+  thermalConductivityUnit: "W/m·K"
+  thermalConductivityMin: "0.5 W/m·K"
   thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m\xB7K"
-  thermalConductivityMax: "200 W/m\xB7K"
+  thermalConductivityMinUnit: "W/m·K"
+  thermalConductivityMax: "200 W/m·K"
   thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m\xB7K"
+  thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 27.3
   tensileStrength: 400-550 MPa (for structural steel), up to 2000 MPa (for high-strength
     alloys)
@@ -79,7 +79,7 @@ properties:
   modulusPercentile: 100.0
   laserType: Fiber laser
   wavelength: 1064nm
-  fluenceRange: "1.0\u201310 J/cm\xB2"
+  fluenceRange: "1.0\u201310 J/cm²"
   chemicalFormula: Fe-C
   thermalBehaviorType: melting
 composition:
@@ -135,15 +135,15 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0\u201310 J/cm\xB2"
+  fluenceRange: "1.0\u201310 J/cm²"
   fluenceRangeNumeric: 1.0
-  fluenceRangeUnit: "J/cm\xB2"
-  fluenceRangeMin: "0.1J/cm\xB2"
+  fluenceRangeUnit: "J/cm²"
+  fluenceRangeMin: "0.1J/cm²"
   fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm\xB2"
-  fluenceRangeMax: "50J/cm\xB2"
+  fluenceRangeMinUnit: "J/cm²"
+  fluenceRangeMax: "50J/cm²"
   fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm\xB2"
+  fluenceRangeMaxUnit: "J/cm²"
 applications:
 - 'Automotive: Rust and paint removal from steel car bodies'
 - 'Manufacturing: Removal of oil, grease, and oxide layers from steel surfaces'
@@ -180,7 +180,7 @@ environmentalImpact:
 outcomes:
 - result: Surface cleanliness to SA 2.5 standard
   metric: Achieves >99% contamination removal without substrate damage
-- result: "Processing speeds up to 5 m\xB2/hour"
+- result: "Processing speeds up to 5 m²/hour"
   metric: Efficient removal of rust, paint, and oxides from steel surfaces
 technicalSpecifications:
   powerRange: 50-1000W (typically 100-500W for most industrial applications)
@@ -188,8 +188,7 @@ technicalSpecifications:
   wavelength: 1064nm (primary), 532nm (optional for specific applications)
   spotSize: 0.1-1.0mm (adjustable based on contamination type and removal requirements)
   repetitionRate: 20-100kHz (standard for industrial fiber laser systems)
-  fluenceRange: "1.0\u201310 J/cm\xB2 (depending on surface contamination and steel\
-    \ grade)"
+  fluenceRange: "1.0\u201310 J/cm² (depending on surface contamination and steel grade)"
   scanningSpeed: 100-5000 mm/s (optimized for specific removal requirements)
   beamProfile: Top-hat or Gaussian (depending on application requirements)
   beamProfileOptions: Top-hat, Gaussian, Flat-top, Multi-mode
@@ -209,7 +208,7 @@ prompt_chain_verification:
 chemicalFormula: Fe-C
 symbol: Fe
 laser_parameters:
-  fluence_threshold: "1.0\u201310 J/cm\xB2"
+  fluence_threshold: "1.0\u201310 J/cm²"
   pulse_duration: 10-200ns
   wavelength_optimal: 1064nm
   power_range: 50-200W

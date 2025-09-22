@@ -15,7 +15,7 @@ The Settings Component generates normalized machine configuration settings for l
 - **Fallback Values**: Reasonable defaults provided when data is missing
 
 ### 📊 **Required Section Organization**
-1. **Laser System Configuration**: Power Range, Wavelength, Pulse Duration, Repetition Rate
+1. **Machine Configuration**: Power Range, Wavelength, Pulse Duration, Repetition Rate
 2. **Processing Parameters**: Fluence Range, Spot Size, Scanning Speed, Working Distance
 3. **Safety Parameters**: Safety Class, Beam Enclosure, Ventilation Rate, Emergency Stop
 4. **Quality Control Settings**: Surface Roughness Target, Cleaning Depth Control, Process Monitoring, Repeatability
@@ -31,7 +31,7 @@ The Settings Component generates normalized machine configuration settings for l
 ```yaml
 machineSettings:
   settings:
-  - header: '## Laser System Configuration'
+  - header: '## Machine Configuration'
     rows:
     - parameter: Power Range
       value: 50-200W

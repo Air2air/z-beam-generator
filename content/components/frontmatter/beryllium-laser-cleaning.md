@@ -15,35 +15,35 @@ chemicalProperties:
   formula: Be
   materialType: metal
 properties:
-  density: "1.85 g/cm\xB3"
+  density: "1.85 g/cm³"
   densityNumeric: 1.85
-  densityUnit: "g/cm\xB3"
-  densityMin: "1.8 g/cm\xB3"
+  densityUnit: "g/cm³"
+  densityMin: "1.8 g/cm³"
   densityMinNumeric: 1.8
-  densityMinUnit: "g/cm\xB3"
-  densityMax: "6.0 g/cm\xB3"
+  densityMinUnit: "g/cm³"
+  densityMax: "6.0 g/cm³"
   densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm\xB3"
+  densityMaxUnit: "g/cm³"
   densityPercentile: 1.2
-  meltingPoint: "1287\xB0C"
+  meltingPoint: "1287°C"
   meltingPointNumeric: 1287.0
-  meltingPointUnit: "\xB0C"
-  meltingPointMin: "1200\xB0C"
+  meltingPointUnit: "°C"
+  meltingPointMin: "1200°C"
   meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "\xB0C"
-  meltingPointMax: "2800\xB0C"
+  meltingPointMinUnit: "°C"
+  meltingPointMax: "2800°C"
   meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "\xB0C"
+  meltingPointMaxUnit: "°C"
   meltingPercentile: 5.4
-  thermalConductivity: "200 W/(m\xB7K) at 20\xB0C"
+  thermalConductivity: "200 W/(m·K) at 20°C"
   thermalConductivityNumeric: 200.0
   thermalConductivityUnit: W/
-  thermalConductivityMin: "0.5 W/m\xB7K"
+  thermalConductivityMin: "0.5 W/m·K"
   thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m\xB7K"
-  thermalConductivityMax: "200 W/m\xB7K"
+  thermalConductivityMinUnit: "W/m·K"
+  thermalConductivityMax: "200 W/m·K"
   thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m\xB7K"
+  thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 100.0
   tensileStrength: 345-600 MPa (depending on purity and processing)
   tensileStrengthNumeric: 472.5
@@ -77,7 +77,7 @@ properties:
   modulusPercentile: 100.0
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "1.0\u201310 J/cm\xB2"
+  fluenceRange: "1.0\u201310 J/cm²"
   chemicalFormula: Be
   thermalBehaviorType: melting
 composition:
@@ -130,15 +130,15 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0\u201310 J/cm\xB2"
+  fluenceRange: "1.0\u201310 J/cm²"
   fluenceRangeNumeric: 1.0
-  fluenceRangeUnit: "J/cm\xB2"
-  fluenceRangeMin: "0.1J/cm\xB2"
+  fluenceRangeUnit: "J/cm²"
+  fluenceRangeMin: "0.1J/cm²"
   fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm\xB2"
-  fluenceRangeMax: "50J/cm\xB2"
+  fluenceRangeMinUnit: "J/cm²"
+  fluenceRangeMax: "50J/cm²"
   fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm\xB2"
+  fluenceRangeMaxUnit: "J/cm²"
 applications:
 - 'Aerospace: Removal of oxidation and contaminants from beryllium components'
 - 'Nuclear: Cleaning of beryllium surfaces in nuclear reactors'
@@ -177,14 +177,14 @@ outcomes:
 - result: Surface contamination removal efficiency
   metric: ">99.9% removal of oxides and contaminants with <0.1\u03BCm substrate loss"
 - result: Processing speed for large components
-  metric: "2-5 m\xB2/hour cleaning rate for typical aerospace components"
+  metric: "2-5 m²/hour cleaning rate for typical aerospace components"
 technicalSpecifications:
   powerRange: 50-200W (pulsed)
   pulseDuration: 10-100ns
   wavelength: 1064nm (primary), 532nm (for higher precision)
   spotSize: "50-500\u03BCm"
   repetitionRate: 20-100kHz
-  fluenceRange: "1.0-10 J/cm\xB2 (depending on contamination type)"
+  fluenceRange: "1.0-10 J/cm² (depending on contamination type)"
   scanningSpeed: 100-2000 mm/s
   beamProfile: Top-hat or flat-top
   beamProfileOptions: Gaussian, Top-hat, Flat-top
@@ -204,7 +204,7 @@ prompt_chain_verification:
 chemicalFormula: Be
 symbol: Be
 laser_parameters:
-  fluence_threshold: "1.0\u201310 J/cm\xB2"
+  fluence_threshold: "1.0\u201310 J/cm²"
   pulse_duration: 10-50ns
   wavelength_optimal: 1064nm
   power_range: 50-200W

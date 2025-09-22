@@ -12,39 +12,39 @@ keywords: cement, cement masonry, laser ablation, laser cleaning, non-contact cl
   thermal processing, surface restoration
 chemicalProperties:
   symbol: N/A (composite material)
-  formula: "Complex calcium silicates and aluminates (3CaO\xB7SiO\u2082, 2CaO\xB7\
-    SiO\u2082, 3CaO\xB7Al\u2082O\u2083)"
+  formula: "Complex calcium silicates and aluminates (3CaO·SiO\u2082, 2CaO·"
+    SiO\u2082, 3CaO·Al\u2082O\u2083)"
   materialType: masonry
 properties:
-  density: "2.8-3.15 g/cm\xB3 (Portland cement)"
+  density: "2.8-3.15 g/cm³ (Portland cement)"
   densityNumeric: 2.97
-  densityUnit: "g/cm\xB3"
-  densityMin: "1.8 g/cm\xB3"
+  densityUnit: "g/cm³"
+  densityMin: "1.8 g/cm³"
   densityMinNumeric: 1.8
-  densityMinUnit: "g/cm\xB3"
-  densityMax: "6.0 g/cm\xB3"
+  densityMinUnit: "g/cm³"
+  densityMax: "6.0 g/cm³"
   densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm\xB3"
+  densityMaxUnit: "g/cm³"
   densityPercentile: 27.9
-  meltingPoint: "1550\xB0C"
+  meltingPoint: "1550°C"
   meltingPointNumeric: 1550.0
-  meltingPointUnit: "\xB0C"
-  meltingPointMin: "1200\xB0C"
+  meltingPointUnit: "°C"
+  meltingPointMin: "1200°C"
   meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "\xB0C"
-  meltingPointMax: "2800\xB0C"
+  meltingPointMinUnit: "°C"
+  meltingPointMax: "2800°C"
   meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "\xB0C"
+  meltingPointMaxUnit: "°C"
   meltingPercentile: 21.9
-  thermalConductivity: "0.29-0.43 W/m\xB7K (at 20\xB0C)"
+  thermalConductivity: "0.29-0.43 W/m·K (at 20°C)"
   thermalConductivityNumeric: 0.36
-  thermalConductivityUnit: "W/m\xB7K"
-  thermalConductivityMin: "0.5 W/m\xB7K"
+  thermalConductivityUnit: "W/m·K"
+  thermalConductivityMin: "0.5 W/m·K"
   thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m\xB7K"
-  thermalConductivityMax: "200 W/m\xB7K"
+  thermalConductivityMinUnit: "W/m·K"
+  thermalConductivityMax: "200 W/m·K"
   thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m\xB7K"
+  thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.0
   tensileStrength: 2-5 MPa (28-day cured)
   tensileStrengthNumeric: 3.5
@@ -78,15 +78,15 @@ properties:
   modulusPercentile: 16.7
   laserType: Nd:YAG laser
   wavelength: 1064nm
-  fluenceRange: "1.0\u201310 J/cm\xB2"
-  chemicalFormula: "Complex mixture primarily CaO (60-67%), SiO\u2082 (17-25%), Al\u2082\
+  fluenceRange: "1.0\u201310 J/cm²"
+  chemicalFormula: "Complex mixture primarily CaO (60-67%), SiO\u2082 (17-25%), Al\u2082"
     O\u2083 (3-8%), Fe\u2082O\u2083 (0.5-6%)"
   thermalBehaviorType: melting
 composition:
-- "Tricalcium silicate (3CaO\xB7SiO\u2082): 45-60%"
-- "Dicalcium silicate (2CaO\xB7SiO\u2082): 15-30%"
-- "Tricalcium aluminate (3CaO\xB7Al\u2082O\u2083): 6-12%"
-- "Tetracalcium aluminoferrite (4CaO\xB7Al\u2082O\u2083\xB7Fe\u2082O\u2083): 6-8%"
+- "Tricalcium silicate (3CaO·SiO\u2082): 45-60%"
+- "Dicalcium silicate (2CaO·SiO\u2082): 15-30%"
+- "Tricalcium aluminate (3CaO·Al\u2082O\u2083): 6-12%"
+- "Tetracalcium aluminoferrite (4CaO·Al\u2082O\u2083·Fe\u2082O\u2083): 6-8%"
 machineSettings:
   powerRange: 50-200W
   powerRangeNumeric: 125.0
@@ -133,15 +133,15 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0\u201310 J/cm\xB2"
+  fluenceRange: "1.0\u201310 J/cm²"
   fluenceRangeNumeric: 1.0
-  fluenceRangeUnit: "J/cm\xB2"
-  fluenceRangeMin: "0.1J/cm\xB2"
+  fluenceRangeUnit: "J/cm²"
+  fluenceRangeMin: "0.1J/cm²"
   fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm\xB2"
-  fluenceRangeMax: "50J/cm\xB2"
+  fluenceRangeMinUnit: "J/cm²"
+  fluenceRangeMax: "50J/cm²"
   fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm\xB2"
+  fluenceRangeMaxUnit: "J/cm²"
 applications:
 - 'Construction: Removal of graffiti and paint from concrete surfaces'
 - 'Restoration: Cleaning of historical cement structures without damage'
@@ -173,13 +173,12 @@ environmentalImpact:
   description: Eliminates 100% of chemical solvents traditionally used in cement cleaning,
     preventing groundwater contamination
 - benefit: 95% reduction in particulate matter emissions
-  description: "Compared to mechanical methods like sandblasting, laser cleaning reduces\
-    \ PM2.5 emissions from 150 mg/m\xB3 to <5 mg/m\xB3"
+  description: "Compared to mechanical methods like sandblasting, laser cleaning reduces PM2.5 emissions from 150 mg/m³ to <5 mg/m³"
 outcomes:
 - result: Surface contamination removal efficiency >99%
   metric: Measured via SEM-EDS analysis showing complete contaminant removal
 - result: "Substrate preservation with <50\u03BCm material loss"
-  metric: "Precision ablation maintaining original surface integrity within 20-50\u03BC\
+  metric: "Precision ablation maintaining original surface integrity within 20-50\u03BC"
     m tolerance"
 technicalSpecifications:
   powerRange: 50-300W (pulsed fiber lasers), 20-100W (Nd:YAG)
@@ -187,7 +186,7 @@ technicalSpecifications:
   wavelength: 1064nm (primary), 532nm (enhanced absorption for specific contaminants)
   spotSize: 0.1-1.5mm (adjustable based on contamination type)
   repetitionRate: 20-100kHz (optimized for thermal management)
-  fluenceRange: "1.0-15 J/cm\xB2 (depending on cement composition and contamination)"
+  fluenceRange: "1.0-15 J/cm² (depending on cement composition and contamination)"
   scanningSpeed: 500-5000 mm/s (optimized for removal efficiency)
   beamProfile: Top-hat (preferred for uniform energy distribution)
   beamProfileOptions: Top-hat, Gaussian, Flat-top
@@ -204,7 +203,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "1.0\u201310 J/cm\xB2"
+  fluence_threshold: "1.0\u201310 J/cm²"
   pulse_duration: 10-200ns
   wavelength_optimal: 1064nm
   power_range: 50-200W

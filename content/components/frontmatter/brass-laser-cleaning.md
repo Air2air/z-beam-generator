@@ -3,11 +3,7 @@ name: Brass
 category: metal
 title: Brass Laser Cleaning
 headline: Comprehensive technical guide for laser cleaning metal brass
-description: "Laser cleaning of brass (Cu-Zn alloy) exploits the high absorption of\
-  \ near-IR wavelengths by zinc oxide tarnish layers. The process utilizes short pulses\
-  \ to selectively ablate contaminants while the high thermal conductivity of brass\
-  \ (109-125 W/m\xB7K) rapidly dissipates heat, preventing melting or zinc depletion\
-  \ at the surface."
+description: "Laser cleaning of brass (Cu-Zn alloy) exploits the high absorption of near-IR wavelengths by zinc oxide tarnish layers. The process utilizes short pulses to selectively ablate contaminants while the high thermal conductivity of brass (109-125 W/m·K) rapidly dissipates heat, preventing melting or zinc depletion at the surface."
 keywords: brass, brass metal, laser ablation, laser cleaning, non-contact cleaning,
   pulsed fiber laser, surface contamination removal, industrial laser parameters,
   thermal processing, surface restoration
@@ -16,35 +12,35 @@ chemicalProperties:
   formula: Cu-Zn
   materialType: metal
 properties:
-  density: "8.4-8.73 g/cm\xB3"
+  density: "8.4-8.73 g/cm³"
   densityNumeric: 8.57
-  densityUnit: "g/cm\xB3"
-  densityMin: "1.8 g/cm\xB3"
+  densityUnit: "g/cm³"
+  densityMin: "1.8 g/cm³"
   densityMinNumeric: 1.8
-  densityMinUnit: "g/cm\xB3"
-  densityMax: "6.0 g/cm\xB3"
+  densityMinUnit: "g/cm³"
+  densityMax: "6.0 g/cm³"
   densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm\xB3"
+  densityMaxUnit: "g/cm³"
   densityPercentile: 100.0
-  meltingPoint: "940\xB0C"
+  meltingPoint: "940°C"
   meltingPointNumeric: 940
-  meltingPointUnit: "\xB0C"
-  meltingPointMin: "1200\xB0C"
+  meltingPointUnit: "°C"
+  meltingPointMin: "1200°C"
   meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "\xB0C"
-  meltingPointMax: "2800\xB0C"
+  meltingPointMinUnit: "°C"
+  meltingPointMax: "2800°C"
   meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "\xB0C"
+  meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "109-125 W/(m\xB7K)"
+  thermalConductivity: "109-125 W/(m·K)"
   thermalConductivityNumeric: 117.0
   thermalConductivityUnit: W/
-  thermalConductivityMin: "0.5 W/m\xB7K"
+  thermalConductivityMin: "0.5 W/m·K"
   thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m\xB7K"
-  thermalConductivityMax: "200 W/m\xB7K"
+  thermalConductivityMinUnit: "W/m·K"
+  thermalConductivityMax: "200 W/m·K"
   thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m\xB7K"
+  thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 58.4
   tensileStrength: 338-469 MPa
   tensileStrengthNumeric: 403.5
@@ -78,7 +74,7 @@ properties:
   modulusPercentile: 100.0
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "0.5\u20135 J/cm\xB2"
+  fluenceRange: "0.5\u20135 J/cm²"
   chemicalFormula: Cu-Zn
   thermalBehaviorType: melting
 composition:
@@ -131,15 +127,15 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "0.5\u20135 J/cm\xB2"
+  fluenceRange: "0.5\u20135 J/cm²"
   fluenceRangeNumeric: 0.5
-  fluenceRangeUnit: "J/cm\xB2"
-  fluenceRangeMin: "0.1J/cm\xB2"
+  fluenceRangeUnit: "J/cm²"
+  fluenceRangeMin: "0.1J/cm²"
   fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm\xB2"
-  fluenceRangeMax: "50J/cm\xB2"
+  fluenceRangeMinUnit: "J/cm²"
+  fluenceRangeMax: "50J/cm²"
   fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm\xB2"
+  fluenceRangeMaxUnit: "J/cm²"
 applications:
 - 'Automotive: Cleaning of brass components for surface preparation and restoration'
 - 'Electronics: Precision cleaning of brass connectors and contacts'
@@ -179,18 +175,17 @@ environmentalImpact:
     for large marine components.
 outcomes:
 - result: Surface cleanliness to Sa 2.5 (ISO 8501-1)
-  metric: "Achievable surface profile with <5 \xB5m roughness change (Ra) and zero\
-    \ substrate damage."
-- result: "Processing rates of 0.5-2.0 m\xB2/hour"
+  metric: "Achievable surface profile with <5 µm roughness change (Ra) and zero substrate damage."
+- result: "Processing rates of 0.5-2.0 m²/hour"
   metric: For removal of light-moderate tarnish layers at 100W average power and 500
     mm/s scan speed.
 technicalSpecifications:
   powerRange: 20-100 W (pulsed)
   pulseDuration: 10-100 ns
   wavelength: 1064 nm (primary), 532 nm (for high-precision work)
-  spotSize: "50-200 \xB5m"
+  spotSize: "50-200 µm"
   repetitionRate: 20-100 kHz
-  fluenceRange: "0.5-5 J/cm\xB2"
+  fluenceRange: "0.5-5 J/cm²"
   scanningSpeed: 100-2000 mm/s
   beamProfile: Top-hat (flat-top)
   beamProfileOptions: Top-hat, Gaussian, Donut
@@ -208,7 +203,7 @@ prompt_chain_verification:
   cultural_adaptation_applied: true
 chemicalFormula: Cu-Zn
 laser_parameters:
-  fluence_threshold: "0.5\u20135 J/cm\xB2"
+  fluence_threshold: "0.5\u20135 J/cm²"
   pulse_duration: 10-100ns
   wavelength_optimal: 1064nm
   power_range: 20-100W

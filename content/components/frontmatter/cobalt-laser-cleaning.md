@@ -3,11 +3,7 @@ name: Cobalt
 category: metal
 title: Cobalt Laser Cleaning
 headline: Comprehensive technical guide for laser cleaning metal cobalt
-description: "Cobalt laser cleaning utilizes precise pulsed fiber laser parameters\
-  \ to remove surface contaminants while preserving the base material properties.\
-  \ The process leverages cobalt's high thermal conductivity (100 W/m\xB7K) and melting\
-  \ point (1495\xB0C) to enable controlled ablation without metallurgical changes\
-  \ to the substrate."
+description: "Cobalt laser cleaning utilizes precise pulsed fiber laser parameters to remove surface contaminants while preserving the base material properties. The process leverages cobalt's high thermal conductivity (100 W/m·K) and melting point (1495°C) to enable controlled ablation without metallurgical changes to the substrate."
 keywords: cobalt, cobalt metal, laser ablation, laser cleaning, non-contact cleaning,
   pulsed fiber laser, surface contamination removal, industrial laser parameters,
   thermal processing, surface restoration
@@ -16,35 +12,35 @@ chemicalProperties:
   formula: Co
   materialType: metal
 properties:
-  density: "8.9 g/cm\xB3"
+  density: "8.9 g/cm³"
   densityNumeric: 8.9
-  densityUnit: "g/cm\xB3"
-  densityMin: "1.8 g/cm\xB3"
+  densityUnit: "g/cm³"
+  densityMin: "1.8 g/cm³"
   densityMinNumeric: 1.8
-  densityMinUnit: "g/cm\xB3"
-  densityMax: "6.0 g/cm\xB3"
+  densityMinUnit: "g/cm³"
+  densityMax: "6.0 g/cm³"
   densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm\xB3"
+  densityMaxUnit: "g/cm³"
   densityPercentile: 100.0
-  meltingPoint: "1495\xB0C"
+  meltingPoint: "1495°C"
   meltingPointNumeric: 1495.0
-  meltingPointUnit: "\xB0C"
-  meltingPointMin: "1200\xB0C"
+  meltingPointUnit: "°C"
+  meltingPointMin: "1200°C"
   meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "\xB0C"
-  meltingPointMax: "2800\xB0C"
+  meltingPointMinUnit: "°C"
+  meltingPointMax: "2800°C"
   meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "\xB0C"
+  meltingPointMaxUnit: "°C"
   meltingPercentile: 18.4
-  thermalConductivity: "100 W/(m\xB7K)"
+  thermalConductivity: "100 W/(m·K)"
   thermalConductivityNumeric: 100.0
   thermalConductivityUnit: W/
-  thermalConductivityMin: "0.5 W/m\xB7K"
+  thermalConductivityMin: "0.5 W/m·K"
   thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m\xB7K"
-  thermalConductivityMax: "200 W/m\xB7K"
+  thermalConductivityMinUnit: "W/m·K"
+  thermalConductivityMax: "200 W/m·K"
   thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m\xB7K"
+  thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 49.9
   tensileStrength: 1043 MPa
   tensileStrengthNumeric: 1043.0
@@ -78,7 +74,7 @@ properties:
   modulusPercentile: 100.0
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "1.0\u20133.0 J/cm\xB2"
+  fluenceRange: "1.0\u20133.0 J/cm²"
   chemicalFormula: Co
   thermalBehaviorType: melting
 composition:
@@ -133,15 +129,15 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0\u20133.0 J/cm\xB2"
+  fluenceRange: "1.0\u20133.0 J/cm²"
   fluenceRangeNumeric: 1.0
-  fluenceRangeUnit: "J/cm\xB2"
-  fluenceRangeMin: "0.1J/cm\xB2"
+  fluenceRangeUnit: "J/cm²"
+  fluenceRangeMin: "0.1J/cm²"
   fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm\xB2"
-  fluenceRangeMax: "50J/cm\xB2"
+  fluenceRangeMinUnit: "J/cm²"
+  fluenceRangeMax: "50J/cm²"
   fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm\xB2"
+  fluenceRangeMaxUnit: "J/cm²"
 applications:
 - 'Aerospace: Cleaning of turbine blades and engine components to remove oxidation
   and corrosion'
@@ -183,9 +179,8 @@ environmentalImpact:
     of cobalt components cleaned compared to chemical methods
 outcomes:
 - result: "Surface roughness Ra < 0.8 \u03BCm"
-  metric: "Achievable surface finish after laser cleaning with 1064 nm wavelength\
-    \ at 2.5 J/cm\xB2 fluence"
-- result: "Contamination removal rate of 0.5-2.0 m\xB2/hour"
+  metric: "Achievable surface finish after laser cleaning with 1064 nm wavelength at 2.5 J/cm² fluence"
+- result: "Contamination removal rate of 0.5-2.0 m²/hour"
   metric: Processing speed for oxidation layer removal from cobalt alloy surfaces
     using 100W pulsed fiber laser
 technicalSpecifications:
@@ -194,7 +189,7 @@ technicalSpecifications:
   wavelength: 1064 nm (primary), 532 nm (for higher precision applications)
   spotSize: "50-200 \u03BCm"
   repetitionRate: 20-200 kHz
-  fluenceRange: "1.0-3.5 J/cm\xB2"
+  fluenceRange: "1.0-3.5 J/cm²"
   scanningSpeed: 500-2000 mm/s
   beamProfile: Top-hat (flat-top) profile for uniform energy distribution
   beamProfileOptions: Top-hat, Gaussian, Multi-spot
@@ -214,7 +209,7 @@ prompt_chain_verification:
 chemicalFormula: Co
 symbol: Co
 laser_parameters:
-  fluence_threshold: "1.0\u20133.0 J/cm\xB2"
+  fluence_threshold: "1.0\u20133.0 J/cm²"
   pulse_duration: 10-50ns
   wavelength_optimal: 1064nm
   power_range: 50-100W

@@ -16,35 +16,35 @@ chemicalProperties:
   formula: "~72% SiO\u2082, ~13% Na\u2082O, ~10% CaO, ~4% MgO, ~1% Al\u2082O\u2083"
   materialType: Soda-lime-silica glass
 properties:
-  density: "2500 kg/m\xB3"
+  density: "2500 kg/m³"
   densityNumeric: 2500.0
-  densityUnit: "kg/m\xB3"
-  densityMin: "1.8 g/cm\xB3"
+  densityUnit: "kg/m³"
+  densityMin: "1.8 g/cm³"
   densityMinNumeric: 1.8
-  densityMinUnit: "g/cm\xB3"
-  densityMax: "6.0 g/cm\xB3"
+  densityMinUnit: "g/cm³"
+  densityMax: "6.0 g/cm³"
   densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm\xB3"
+  densityMaxUnit: "g/cm³"
   densityPercentile: 100.0
-  meltingPoint: "1500\xB0C"
+  meltingPoint: "1500°C"
   meltingPointNumeric: 1500
-  meltingPointUnit: "\xB0C"
-  meltingPointMin: "1200\xB0C"
+  meltingPointUnit: "°C"
+  meltingPointMin: "1200°C"
   meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "\xB0C"
-  meltingPointMax: "2800\xB0C"
+  meltingPointMinUnit: "°C"
+  meltingPointMax: "2800°C"
   meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "\xB0C"
+  meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "0.8\u20131.0 W/(m\xB7K)"
+  thermalConductivity: "0.8\u20131.0 W/(m·K)"
   thermalConductivityNumeric: 0.8
   thermalConductivityUnit: W/
-  thermalConductivityMin: "0.5 W/m\xB7K"
+  thermalConductivityMin: "0.5 W/m·K"
   thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m\xB7K"
-  thermalConductivityMax: "200 W/m\xB7K"
+  thermalConductivityMinUnit: "W/m·K"
+  thermalConductivityMax: "200 W/m·K"
   thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m\xB7K"
+  thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.2
   tensileStrength: "30\u201390 MPa"
   tensileStrengthNumeric: 30.0
@@ -78,7 +78,7 @@ properties:
   modulusPercentile: 83.3
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "0.5\u20135 J/cm\xB2"
+  fluenceRange: "0.5\u20135 J/cm²"
   chemicalFormula: N/A (Amorphous mixture of oxides)
   thermalBehaviorType: melting
 composition:
@@ -133,15 +133,15 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "0.5\u20135 J/cm\xB2"
+  fluenceRange: "0.5\u20135 J/cm²"
   fluenceRangeNumeric: 0.5
-  fluenceRangeUnit: "J/cm\xB2"
-  fluenceRangeMin: "0.1J/cm\xB2"
+  fluenceRangeUnit: "J/cm²"
+  fluenceRangeMin: "0.1J/cm²"
   fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm\xB2"
-  fluenceRangeMax: "50J/cm\xB2"
+  fluenceRangeMinUnit: "J/cm²"
+  fluenceRangeMax: "50J/cm²"
   fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm\xB2"
+  fluenceRangeMaxUnit: "J/cm²"
 applications:
 - 'Automotive: Cleaning of automotive glass surfaces for improved visibility and aesthetics'
 - 'Architectural: Restoration and cleaning of glass facades and windows'
@@ -175,23 +175,20 @@ environmentalImpact:
     acidic/alkaline cleaners, reducing hazardous waste generation by 100% for the
     cleaning process itself.
 - benefit: Reduced Water Consumption
-  description: "Eliminates water usage for rinsing, saving an estimated 5\u201310\
-    \ liters of water per square meter of glass cleaned compared to traditional wet\
-    \ methods."
+  description: "Eliminates water usage for rinsing, saving an estimated 5\u201310 liters of water per square meter of glass cleaned compared to traditional wet methods."
 outcomes:
 - result: Contaminant Removal Efficiency
   metric: '>99.5% removal of sub-micron particles and organic films without substrate
     damage'
 - result: Processing Throughput
-  metric: "100\u2013500 cm\xB2/min cleaning rate, depending on contamination level\
-    \ and laser parameters"
+  metric: "100\u2013500 cm²/min cleaning rate, depending on contamination level and laser parameters"
 technicalSpecifications:
   powerRange: "20\u2013100 W"
   pulseDuration: "10\u2013100 ns"
   wavelength: 1064 nm (primary), 532 nm (optional for finer features)
   spotSize: "0.1\u20132.0 mm"
   repetitionRate: "10\u201350 kHz"
-  fluenceRange: "0.5\u20135 J/cm\xB2"
+  fluenceRange: "0.5\u20135 J/cm²"
   scanningSpeed: "100\u20132000 mm/s"
   beamProfile: Top-hat (flat-top)
   beamProfileOptions: Top-hat, Gaussian (for selective ablation)
@@ -208,7 +205,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "0.5\u20135 J/cm\xB2"
+  fluence_threshold: "0.5\u20135 J/cm²"
   pulse_duration: 10-100ns
   wavelength_optimal: 1064nm
   power_range: 20-100W

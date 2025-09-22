@@ -2,15 +2,12 @@
 |----------|-------|
 | Density | 0.9-1.2 g/cm³ |
 | Melting Point | 120-220°C |
-| Thermal Cond. | 0.2-0.4 W/m·K |
-| Laser Type | Pulsed Fiber Laser |
-| Wavelength | 1064nm |
-| Fluence Range | 1.0–4.5 J/cm² |
+| Conductivity | 0.2-0.4 W/m·K |
 | Formula | TPE-Polymer |
 
 
 ---
-Version Log - Generated: 2025-09-21T20:52:21.365867
+Version Log - Generated: 2025-09-21T22:01:14.027681
 Material: Unknown
 Component: propertiestable
 Generator: Z-Beam v1.0.0

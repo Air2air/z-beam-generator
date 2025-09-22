@@ -2,12 +2,12 @@
 |----------|-------|
 | Density | 7.85 g/cm³ |
 | Melting Point | 1370-1530°C |
-| Thermal Cond. | 50.2 W/m·K |
+| Conductivity | 50.2 W/m·K |
 | Formula | Fe-C |
 
 
 ---
-Version Log - Generated: 2025-09-21T21:01:44.795800
+Version Log - Generated: 2025-09-21T22:01:14.905856
 Material: Unknown
 Component: propertiestable
 Generator: Z-Beam v1.0.0

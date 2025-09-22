@@ -16,35 +16,35 @@ chemicalProperties:
   formula: SiO2-Al2O3-K2O
   materialType: igneous rock
 properties:
-  density: "2.65-2.75 g/cm\xB3"
+  density: "2.65-2.75 g/cm³"
   densityNumeric: 2.7
-  densityUnit: "g/cm\xB3"
-  densityMin: "1.8 g/cm\xB3"
+  densityUnit: "g/cm³"
+  densityMin: "1.8 g/cm³"
   densityMinNumeric: 1.8
-  densityMinUnit: "g/cm\xB3"
-  densityMax: "6.0 g/cm\xB3"
+  densityMinUnit: "g/cm³"
+  densityMax: "6.0 g/cm³"
   densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm\xB3"
+  densityMaxUnit: "g/cm³"
   densityPercentile: 21.4
-  meltingPoint: "1260\xB0C"
+  meltingPoint: "1260°C"
   meltingPointNumeric: 1260
-  meltingPointUnit: "\xB0C"
-  meltingPointMin: "1200\xB0C"
+  meltingPointUnit: "°C"
+  meltingPointMin: "1200°C"
   meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "\xB0C"
-  meltingPointMax: "2800\xB0C"
+  meltingPointMinUnit: "°C"
+  meltingPointMax: "2800°C"
   meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "\xB0C"
+  meltingPointMaxUnit: "°C"
   meltingPercentile: 2.3
-  thermalConductivity: "1.7-4.0 W/m\xB7K"
+  thermalConductivity: "1.7-4.0 W/m·K"
   thermalConductivityNumeric: 2.85
-  thermalConductivityUnit: "W/m\xB7K"
-  thermalConductivityMin: "0.5 W/m\xB7K"
+  thermalConductivityUnit: "W/m·K"
+  thermalConductivityMin: "0.5 W/m·K"
   thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m\xB7K"
-  thermalConductivityMax: "200 W/m\xB7K"
+  thermalConductivityMinUnit: "W/m·K"
+  thermalConductivityMax: "200 W/m·K"
   thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m\xB7K"
+  thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 1.2
   tensileStrength: 7-25 MPa
   tensileStrengthNumeric: 16.0
@@ -78,7 +78,7 @@ properties:
   modulusPercentile: 33.3
   laserType: Nd:YAG or fiber laser
   wavelength: 1064nm
-  fluenceRange: "1.0-10 J/cm\xB2"
+  fluenceRange: "1.0-10 J/cm²"
   chemicalFormula: SiO2-Al2O3-K2O
   thermalBehaviorType: melting
 composition:
@@ -133,15 +133,15 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0-10 J/cm\xB2"
+  fluenceRange: "1.0-10 J/cm²"
   fluenceRangeNumeric: 5.5
-  fluenceRangeUnit: "J/cm\xB2"
-  fluenceRangeMin: "0.1J/cm\xB2"
+  fluenceRangeUnit: "J/cm²"
+  fluenceRangeMin: "0.1J/cm²"
   fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm\xB2"
-  fluenceRangeMax: "50J/cm\xB2"
+  fluenceRangeMinUnit: "J/cm²"
+  fluenceRangeMax: "50J/cm²"
   fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm\xB2"
+  fluenceRangeMaxUnit: "J/cm²"
 applications:
 - 'Construction: Removal of paint and coatings from granite surfaces'
 - 'Restoration: Cleaning historical granite structures and monuments'
@@ -181,14 +181,14 @@ outcomes:
   metric: '>95% removal of biological patina and atmospheric deposits with <2% substrate
     damage'
 - result: Processing speed
-  metric: "0.5-2.0 m\xB2/hour depending on contamination type and laser parameters"
+  metric: "0.5-2.0 m²/hour depending on contamination type and laser parameters"
 technicalSpecifications:
   powerRange: 50-200 W (average power for pulsed fiber lasers)
   pulseDuration: 10-100 ns
   wavelength: 1064 nm (primary), 532 nm (for specific pigment removal)
   spotSize: 0.1-1.0 mm
   repetitionRate: 20-100 kHz
-  fluenceRange: "1.0-10 J/cm\xB2 (ablation threshold varies with mineral composition)"
+  fluenceRange: "1.0-10 J/cm² (ablation threshold varies with mineral composition)"
   scanningSpeed: 100-2000 mm/s
   beamProfile: Top-hat (flat-top)
   beamProfileOptions: Top-hat, Gaussian, Donut
@@ -206,7 +206,7 @@ prompt_chain_verification:
   cultural_adaptation_applied: true
 chemicalFormula: SiO2-Al2O3-K2O
 laser_parameters:
-  fluence_threshold: "1.0-10 J/cm\xB2"
+  fluence_threshold: "1.0-10 J/cm²"
   pulse_duration: 10-50ns
   wavelength_optimal: 1064nm
   power_range: 50-200W

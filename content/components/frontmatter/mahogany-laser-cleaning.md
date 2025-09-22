@@ -15,32 +15,32 @@ chemicalProperties:
   formula: "C\u2086H\u2081\u2080O\u2085 (Cellulose base)"
   materialType: wood
 properties:
-  density: "545-705 kg/m\xB3 (varies by species)"
+  density: "545-705 kg/m³ (varies by species)"
   densityNumeric: 625.0
-  densityUnit: "kg/m\xB3"
-  densityMin: "1.8 g/cm\xB3"
+  densityUnit: "kg/m³"
+  densityMin: "1.8 g/cm³"
   densityMinNumeric: 1.8
-  densityMinUnit: "g/cm\xB3"
-  densityMax: "6.0 g/cm\xB3"
+  densityMinUnit: "g/cm³"
+  densityMax: "6.0 g/cm³"
   densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm\xB3"
+  densityMaxUnit: "g/cm³"
   densityPercentile: 100.0
-  meltingPointMin: "1200\xB0C"
+  meltingPointMin: "1200°C"
   meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "\xB0C"
-  meltingPointMax: "2800\xB0C"
+  meltingPointMinUnit: "°C"
+  meltingPointMax: "2800°C"
   meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "\xB0C"
+  meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "0.12-0.17 W/(m\xB7K) (radial)"
+  thermalConductivity: "0.12-0.17 W/(m·K) (radial)"
   thermalConductivityNumeric: 0.15
   thermalConductivityUnit: W/
-  thermalConductivityMin: "0.5 W/m\xB7K"
+  thermalConductivityMin: "0.5 W/m·K"
   thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m\xB7K"
-  thermalConductivityMax: "200 W/m\xB7K"
+  thermalConductivityMinUnit: "W/m·K"
+  thermalConductivityMax: "200 W/m·K"
   thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m\xB7K"
+  thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.0
   tensileStrength: 80-120 MPa (parallel to grain)
   tensileStrengthNumeric: 100.0
@@ -74,12 +74,12 @@ properties:
   modulusPercentile: 0.0
   laserType: Nd:YAG laser
   wavelength: 1064nm
-  fluenceRange: "0.5-3.0 J/cm\xB2"
+  fluenceRange: "0.5-3.0 J/cm²"
   chemicalFormula: ~50% Cellulose, ~28% Hemicellulose, ~22% Lignin (approx. composition)
   thermalBehaviorType: decomposition
-  decompositionPoint: "270\xB0C"
+  decompositionPoint: "270°C"
   decompositionPointNumeric: 270
-  decompositionPointUnit: "\xB0C"
+  decompositionPointUnit: "°C"
 composition:
 - Cellulose (40-50%)
 - Hemicellulose (20-28%)
@@ -131,15 +131,15 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "0.5-3.0 J/cm\xB2"
+  fluenceRange: "0.5-3.0 J/cm²"
   fluenceRangeNumeric: 1.75
-  fluenceRangeUnit: "J/cm\xB2"
-  fluenceRangeMin: "0.1J/cm\xB2"
+  fluenceRangeUnit: "J/cm²"
+  fluenceRangeMin: "0.1J/cm²"
   fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm\xB2"
-  fluenceRangeMax: "50J/cm\xB2"
+  fluenceRangeMinUnit: "J/cm²"
+  fluenceRangeMax: "50J/cm²"
   fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm\xB2"
+  fluenceRangeMaxUnit: "J/cm²"
 applications:
 - 'Furniture Manufacturing: Removing old finishes and stains from Mahogany furniture
   surfaces'
@@ -178,18 +178,16 @@ environmentalImpact:
     per square meter than thermal or abrasive blasting techniques.
 outcomes:
 - result: Non-destructive substrate preservation
-  metric: "Achieves >99% contaminant removal with <5 \xB5m substrate loss, preserving\
-    \ patina and historical value."
+  metric: "Achieves >99% contaminant removal with <5 µm substrate loss, preserving patina and historical value."
 - result: High processing speed
-  metric: "Effective cleaning rates of 2-5 m\xB2/hour achievable, depending on contamination\
-    \ type and laser parameters."
+  metric: "Effective cleaning rates of 2-5 m²/hour achievable, depending on contamination type and laser parameters."
 technicalSpecifications:
   powerRange: 20-100 W
   pulseDuration: 10-50 ns
   wavelength: 1064 nm (primary), 532 nm (optional for finer detail)
   spotSize: 0.1-1.0 mm
   repetitionRate: 20-100 kHz
-  fluenceRange: "0.5-3.0 J/cm\xB2"
+  fluenceRange: "0.5-3.0 J/cm²"
   scanningSpeed: 500-5000 mm/s
   beamProfile: Top-hat (flat-top)
   beamProfileOptions: Top-hat, Gaussian (for detailed work)
@@ -206,7 +204,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "0.5-3.0 J/cm\xB2"
+  fluence_threshold: "0.5-3.0 J/cm²"
   pulse_duration: 10-50ns
   wavelength_optimal: 1064nm
   power_range: 20-100W

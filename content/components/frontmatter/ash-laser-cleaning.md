@@ -15,32 +15,32 @@ chemicalProperties:
   formula: Variable organic composition (cellulose, lignin, hemicellulose)
   materialType: wood
 properties:
-  density: "680-710 kg/m\xB3 (air-dried)"
+  density: "680-710 kg/m³ (air-dried)"
   densityNumeric: 695.0
-  densityUnit: "kg/m\xB3"
-  densityMin: "1.8 g/cm\xB3"
+  densityUnit: "kg/m³"
+  densityMin: "1.8 g/cm³"
   densityMinNumeric: 1.8
-  densityMinUnit: "g/cm\xB3"
-  densityMax: "6.0 g/cm\xB3"
+  densityMinUnit: "g/cm³"
+  densityMax: "6.0 g/cm³"
   densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm\xB3"
+  densityMaxUnit: "g/cm³"
   densityPercentile: 100.0
-  meltingPointMin: "1200\xB0C"
+  meltingPointMin: "1200°C"
   meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "\xB0C"
-  meltingPointMax: "2800\xB0C"
+  meltingPointMinUnit: "°C"
+  meltingPointMax: "2800°C"
   meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "\xB0C"
+  meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "0.12-0.17 W/(m\xB7K) (radial direction)"
+  thermalConductivity: "0.12-0.17 W/(m·K) (radial direction)"
   thermalConductivityNumeric: 0.15
   thermalConductivityUnit: W/
-  thermalConductivityMin: "0.5 W/m\xB7K"
+  thermalConductivityMin: "0.5 W/m·K"
   thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m\xB7K"
-  thermalConductivityMax: "200 W/m\xB7K"
+  thermalConductivityMinUnit: "W/m·K"
+  thermalConductivityMax: "200 W/m·K"
   thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m\xB7K"
+  thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.0
   tensileStrength: 85-125 MPa (parallel to grain)
   tensileStrengthNumeric: 105.0
@@ -74,13 +74,13 @@ properties:
   modulusPercentile: 0.0
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "0.5-5 J/cm\xB2"
+  fluenceRange: "0.5-5 J/cm²"
   chemicalFormula: Complex organic polymer (C6H10O5)n cellulose + C9H10O2(OCH3)0.9-1.7
     lignin
   thermalBehaviorType: decomposition
-  decompositionPoint: "300\xB0C"
+  decompositionPoint: "300°C"
   decompositionPointNumeric: 300
-  decompositionPointUnit: "\xB0C"
+  decompositionPointUnit: "°C"
 composition:
 - 'Cellulose: 40-45%'
 - 'Lignin: 22-27%'
@@ -132,15 +132,15 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "0.5-5 J/cm\xB2"
+  fluenceRange: "0.5-5 J/cm²"
   fluenceRangeNumeric: 2.75
-  fluenceRangeUnit: "J/cm\xB2"
-  fluenceRangeMin: "0.1J/cm\xB2"
+  fluenceRangeUnit: "J/cm²"
+  fluenceRangeMin: "0.1J/cm²"
   fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm\xB2"
-  fluenceRangeMax: "50J/cm\xB2"
+  fluenceRangeMinUnit: "J/cm²"
+  fluenceRangeMax: "50J/cm²"
   fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm\xB2"
+  fluenceRangeMaxUnit: "J/cm²"
 applications:
 - 'Woodworking: Removal of surface contaminants and restoration of wooden artifacts'
 - 'Conservation: Cleaning of historical wooden structures and artworks'
@@ -168,23 +168,22 @@ images:
     url: /images/ash-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Zero chemical waste generation
-  description: "Eliminates solvent use (typically 5-10 L/m\xB2 in traditional cleaning)\
-    \ and associated VOC emissions"
+  description: "Eliminates solvent use (typically 5-10 L/m² in traditional cleaning) and associated VOC emissions"
 - benefit: Reduced energy consumption
   description: 60-70% lower energy usage compared to thermal or chemical cleaning
     methods for wood surfaces
 outcomes:
 - result: Surface contamination removal efficiency
-  metric: ">95% removal of surface contaminants with <5\xB5m substrate damage"
+  metric: ">95% removal of surface contaminants with <5µm substrate damage"
 - result: Processing speed
-  metric: "0.5-2.0 m\xB2/hour depending on contamination level and required precision"
+  metric: "0.5-2.0 m²/hour depending on contamination level and required precision"
 technicalSpecifications:
   powerRange: 20-100 W
   pulseDuration: 10-100 ns
   wavelength: 1064 nm (primary), 532 nm (optional for finer detail)
   spotSize: 0.1-2.0 mm
   repetitionRate: 10-50 kHz
-  fluenceRange: "0.5-5 J/cm\xB2"
+  fluenceRange: "0.5-5 J/cm²"
   scanningSpeed: 100-2000 mm/s
   beamProfile: Top-hat or Gaussian
   beamProfileOptions: Top-hat, Gaussian, Flat-top
@@ -201,7 +200,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "0.5-5 J/cm\xB2"
+  fluence_threshold: "0.5-5 J/cm²"
   pulse_duration: 10-100ns
   wavelength_optimal: 1064nm
   power_range: 20-100W

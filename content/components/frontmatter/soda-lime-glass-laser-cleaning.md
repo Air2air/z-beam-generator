@@ -3,11 +3,7 @@ name: Soda-Lime Glass
 category: glass
 title: Soda-Lime Glass Laser Cleaning
 headline: Comprehensive technical guide for laser cleaning glass soda-lime glass
-description: "Laser cleaning of soda-lime glass utilizes pulsed near-infrared radiation\
-  \ to selectively ablate surface contaminants without damaging the underlying substrate.\
-  \ The process relies on the differential absorption between the contaminant layer\
-  \ and the glass, with careful control of fluence to remain below the damage threshold\
-  \ of the bulk material (~5-10 J/cm\xB2)."
+description: "Laser cleaning of soda-lime glass utilizes pulsed near-infrared radiation to selectively ablate surface contaminants without damaging the underlying substrate. The process relies on the differential absorption between the contaminant layer and the glass, with careful control of fluence to remain below the damage threshold of the bulk material (~5-10 J/cm²)."
 keywords: soda-lime glass, soda-lime glass glass, laser ablation, laser cleaning,
   non-contact cleaning, pulsed fiber laser, surface contamination removal, industrial
   laser parameters, thermal processing, surface restoration
@@ -16,35 +12,35 @@ chemicalProperties:
   formula: "~72% SiO\u2082, ~14% Na\u2082O, ~9% CaO, ~4% MgO, ~0.5% Al\u2082O\u2083"
   materialType: glass
 properties:
-  density: "2.5 g/cm\xB3"
+  density: "2.5 g/cm³"
   densityNumeric: 2.5
-  densityUnit: "g/cm\xB3"
-  densityMin: "1.8 g/cm\xB3"
+  densityUnit: "g/cm³"
+  densityMin: "1.8 g/cm³"
   densityMinNumeric: 1.8
-  densityMinUnit: "g/cm\xB3"
-  densityMax: "6.0 g/cm\xB3"
+  densityMinUnit: "g/cm³"
+  densityMax: "6.0 g/cm³"
   densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm\xB3"
+  densityMaxUnit: "g/cm³"
   densityPercentile: 16.7
-  meltingPoint: "1000 \xB0C"
+  meltingPoint: "1000 °C"
   meltingPointNumeric: 1000.0
-  meltingPointUnit: "\xB0C"
-  meltingPointMin: "1200\xB0C"
+  meltingPointUnit: "°C"
+  meltingPointMin: "1200°C"
   meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "\xB0C"
-  meltingPointMax: "2800\xB0C"
+  meltingPointMinUnit: "°C"
+  meltingPointMax: "2800°C"
   meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "\xB0C"
+  meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "0.8-1.0 W/(m\xB7K)"
+  thermalConductivity: "0.8-1.0 W/(m·K)"
   thermalConductivityNumeric: 0.9
   thermalConductivityUnit: W/
-  thermalConductivityMin: "0.5 W/m\xB7K"
+  thermalConductivityMin: "0.5 W/m·K"
   thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m\xB7K"
-  thermalConductivityMax: "200 W/m\xB7K"
+  thermalConductivityMinUnit: "W/m·K"
+  thermalConductivityMax: "200 W/m·K"
   thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m\xB7K"
+  thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.2
   tensileStrength: 30-90 MPa
   tensileStrengthNumeric: 60.0
@@ -78,7 +74,7 @@ properties:
   modulusPercentile: 87.5
   laserType: pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "0.5-5 J/cm\xB2"
+  fluenceRange: "0.5-5 J/cm²"
   chemicalFormula: "Amorphous network of SiO\u2082 modified by Na\u2082O and CaO"
 composition:
 - "Silicon Dioxide (SiO\u2082): 70-75%"
@@ -132,15 +128,15 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "0.5-5 J/cm\xB2"
+  fluenceRange: "0.5-5 J/cm²"
   fluenceRangeNumeric: 2.75
-  fluenceRangeUnit: "J/cm\xB2"
-  fluenceRangeMin: "0.1J/cm\xB2"
+  fluenceRangeUnit: "J/cm²"
+  fluenceRangeMin: "0.1J/cm²"
   fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm\xB2"
-  fluenceRangeMax: "50J/cm\xB2"
+  fluenceRangeMinUnit: "J/cm²"
+  fluenceRangeMax: "50J/cm²"
   fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm\xB2"
+  fluenceRangeMaxUnit: "J/cm²"
 applications:
 - 'Automotive: Cleaning of glass surfaces for improved optical clarity'
 - 'Electronics: Surface preparation for better adhesion in PCB manufacturing'
@@ -181,16 +177,14 @@ outcomes:
   metric: Achieves >99.9% removal efficiency of sub-micron particles and organic films
     without substrate damage.
 - result: High-Speed, Automated Processing
-  metric: "Enables cleaning speeds of 1-2 m\xB2 per hour with positioning accuracy\
-    \ of \xB110 \xB5m, suitable for inline manufacturing."
+  metric: "Enables cleaning speeds of 1-2 m² per hour with positioning accuracy of ±10 µm, suitable for inline manufacturing."
 technicalSpecifications:
   powerRange: 20-100 W (average power for pulsed fiber lasers)
   pulseDuration: 10-100 ns
   wavelength: 1064 nm (primary), 532 nm (optional for finer control)
   spotSize: 0.1-2.0 mm
   repetitionRate: 10-50 kHz
-  fluenceRange: "0.5-5 J/cm\xB2 (above the ablation threshold of ~0.3 J/cm\xB2 for\
-    \ contaminants)"
+  fluenceRange: "0.5-5 J/cm² (above the ablation threshold of ~0.3 J/cm² for contaminants)"
   scanningSpeed: 100-2000 mm/s
   beamProfile: Top-hat (flat-top) profile for uniform energy distribution and to prevent
     localized thermal stress.
@@ -209,7 +203,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "0.5-5 J/cm\xB2"
+  fluence_threshold: "0.5-5 J/cm²"
   pulse_duration: 10-100ns
   wavelength_optimal: 1064nm
   power_range: 20-100W
