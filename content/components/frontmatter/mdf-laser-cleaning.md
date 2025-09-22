@@ -174,7 +174,7 @@ environmentalImpact:
     thermal or abrasive cleaning methods for MDF surfaces
 outcomes:
 - result: Surface contamination removal efficiency
-  metric: ">99% removal of paints, adhesives, and surface contaminants with <5\u03BC"
+  metric: ">99% removal of paints, adhesives, and surface contaminants with <5μ"
     m substrate damage"
 - result: Processing speed
   metric: "0.5-2.0 m²/hour depending on contamination type and laser parameters"

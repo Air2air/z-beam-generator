@@ -172,7 +172,7 @@ outcomes:
 - result: Surface contamination removal efficiency
   metric: '>99.9% removal of oxides and carbon deposits without substrate damage'
 - result: Processing precision
-  metric: "Sub-micron layer control with ±5 \u03BCm positional accuracy"
+  metric: "Sub-micron layer control with ±5 μm positional accuracy"
 technicalSpecifications:
   powerRange: 50-200 W
   pulseDuration: 10-100 ns

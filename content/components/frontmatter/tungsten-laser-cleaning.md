@@ -76,7 +76,7 @@ properties:
   modulusPercentile: 100.0
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "1.0\u201310 J/cm²"
+  fluenceRange: "1.0–10 J/cm²"
   chemicalFormula: W
   thermalBehaviorType: melting
 composition:
@@ -128,7 +128,7 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0\u201310 J/cm²"
+  fluenceRange: "1.0–10 J/cm²"
   fluenceRangeNumeric: 1.0
   fluenceRangeUnit: "J/cm²"
   fluenceRangeMin: "0.1J/cm²"
@@ -169,7 +169,7 @@ images:
     url: /images/tungsten-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Zero chemical waste
-  description: "Eliminates use of hazardous chemical solvents (HF, HNO\u2083) traditionally used for tungsten cleaning"
+  description: "Eliminates use of hazardous chemical solvents (HF, HNO₃) traditionally used for tungsten cleaning"
 - benefit: Reduced energy consumption
   description: 80% lower energy consumption compared to thermal plasma cleaning methods
     for tungsten components
@@ -203,7 +203,7 @@ prompt_chain_verification:
 chemicalFormula: W
 symbol: W
 laser_parameters:
-  fluence_threshold: "1.0\u201310 J/cm²"
+  fluence_threshold: "1.0–10 J/cm²"
   pulse_duration: 10-200ns
   wavelength_optimal: 1064nm
   power_range: 50-200W

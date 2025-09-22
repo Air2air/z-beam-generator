@@ -13,7 +13,7 @@ keywords: cherry, cherry wood, laser ablation, laser cleaning, non-contact clean
   thermal processing, surface restoration
 chemicalProperties:
   symbol: N/A (organic composite)
-  formula: "C\u2086H\u2081\u2080O\u2085 (cellulose base)"
+  formula: "C₆H₁₀O₅ (cellulose base)"
   materialType: wood
 properties:
   density: "560-630 kg/m³"
@@ -76,7 +76,7 @@ properties:
   laserType: Pulsed fiber laser
   wavelength: 1064 nm
   fluenceRange: "0.5-3.0 J/cm²"
-  chemicalFormula: "C\u2086H\u2081\u2080O\u2085 (cellulose base with lignin and hemicellulose)"
+  chemicalFormula: "C₆H₁₀O₅ (cellulose base with lignin and hemicellulose)"
   thermalBehaviorType: decomposition
   decompositionPoint: "300°C"
   decompositionPointNumeric: 300
@@ -175,7 +175,7 @@ environmentalImpact:
   description: Produces 95% less waste material compared to mechanical sanding methods
 outcomes:
 - result: Surface contamination removal
-  metric: "99.8% removal efficiency with <5\u03BCm surface alteration"
+  metric: "99.8% removal efficiency with <5μm surface alteration"
 - result: Processing speed
   metric: "0.5-2.0 m²/hour depending on contamination level and laser parameters"
 technicalSpecifications:

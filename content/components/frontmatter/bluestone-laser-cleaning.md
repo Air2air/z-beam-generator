@@ -11,8 +11,8 @@ keywords: bluestone, bluestone stone, laser ablation, laser cleaning, non-contac
   cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters,
   thermal processing, surface restoration
 chemicalProperties:
-  symbol: "CaCO\u2083"
-  formula: "CaCO\u2083 (primary), with FeS\u2082, SiO\u2082, Al\u2082O\u2083 impurities"
+  symbol: "CaCO₃"
+  formula: "CaCO₃ (primary), with FeS₂, SiO₂, Al₂O₃ impurities"
   materialType: sedimentary rock
 properties:
   density: "2.6-2.8 g/cm³ (varies with mineral composition)"
@@ -78,13 +78,13 @@ properties:
   laserType: Pulsed fiber laser
   wavelength: 1064nm
   fluenceRange: "0.5-3.0 J/cm²"
-  chemicalFormula: "CaCO\u2083 (calcium carbonate)"
+  chemicalFormula: "CaCO₃ (calcium carbonate)"
   thermalBehaviorType: melting
 composition:
-- "Calcium carbonate (CaCO\u2083): 85-95%"
-- "Quartz (SiO\u2082): 3-8%"
-- "Pyrite (FeS\u2082): 1-3%"
-- "Clay minerals (Al\u2082O\u2083·2SiO\u2082·2H\u2082O): 1-4%"
+- "Calcium carbonate (CaCO₃): 85-95%"
+- "Quartz (SiO₂): 3-8%"
+- "Pyrite (FeS₂): 1-3%"
+- "Clay minerals (Al₂O₃·2SiO₂·2H₂O): 1-4%"
 machineSettings:
   powerRange: 20-100W
   powerRangeNumeric: 60.0
@@ -176,7 +176,7 @@ environmentalImpact:
     methods
 outcomes:
 - result: Surface contamination removal efficiency
-  metric: ">98% removal of black crusts and biological growth while preserving <5\u03BC"
+  metric: ">98% removal of black crusts and biological growth while preserving <5μ"
     m of original stone"
 - result: Processing speed for historical restoration
   metric: "0.1-0.5 m²/hour depending on contamination severity and required precision"

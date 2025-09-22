@@ -78,7 +78,7 @@ properties:
   modulusPercentile: 91.7
   laserType: Pulsed Nd:YAG
   wavelength: 1064nm
-  fluenceRange: "1.0\u201310 J/cm²"
+  fluenceRange: "1.0–10 J/cm²"
   chemicalFormula: CaCO3
   thermalBehaviorType: melting
 composition:
@@ -130,7 +130,7 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0\u201310 J/cm²"
+  fluenceRange: "1.0–10 J/cm²"
   fluenceRangeNumeric: 1.0
   fluenceRangeUnit: "J/cm²"
   fluenceRangeMin: "0.1J/cm²"
@@ -186,7 +186,7 @@ technicalSpecifications:
     calcite absorption)
   spotSize: 0.1-1.0 mm
   repetitionRate: 20-100 kHz
-  fluenceRange: "1.0\u201310 J/cm² (ablation threshold range for calcite)"
+  fluenceRange: "1.0–10 J/cm² (ablation threshold range for calcite)"
   scanningSpeed: 100-2000 mm/s (optimized for contamination layer removal without
     substrate damage)
   beamProfile: Top-hat (flat-top) profile preferred for uniform energy distribution
@@ -205,7 +205,7 @@ prompt_chain_verification:
   cultural_adaptation_applied: true
 chemicalFormula: CaCO3
 laser_parameters:
-  fluence_threshold: "1.0\u201310 J/cm²"
+  fluence_threshold: "1.0–10 J/cm²"
   pulse_duration: 10-50ns
   wavelength_optimal: 1064nm
   power_range: 50-200W

@@ -74,7 +74,7 @@ properties:
   modulusPercentile: 0.0
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "1.0\u201310 J/cm²"
+  fluenceRange: "1.0–10 J/cm²"
   chemicalFormula: Ga
   thermalBehaviorType: melting
 composition:
@@ -126,7 +126,7 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0\u201310 J/cm²"
+  fluenceRange: "1.0–10 J/cm²"
   fluenceRangeNumeric: 1.0
   fluenceRangeUnit: "J/cm²"
   fluenceRangeMin: "0.1J/cm²"
@@ -170,7 +170,7 @@ environmentalImpact:
     and ultrasonic cleaning methods for gallium surface preparation
 outcomes:
 - result: Surface oxide removal efficiency
-  metric: ">99.9% oxide removal with surface roughness maintained below 0.5 \u03BC"
+  metric: ">99.9% oxide removal with surface roughness maintained below 0.5 μ"
     m Ra"
 - result: Processing speed
   metric: "50-200 cm²/min cleaning rate with sub-micron precision control"
@@ -197,7 +197,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "1.0\u201310 J/cm²"
+  fluence_threshold: "1.0–10 J/cm²"
   pulse_duration: 10-50ns
   wavelength_optimal: 1064nm
   power_range: 50-200W

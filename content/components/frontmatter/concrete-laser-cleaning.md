@@ -13,10 +13,10 @@ keywords: concrete, concrete masonry, laser ablation, laser cleaning, non-contac
   thermal processing, surface restoration
 chemicalProperties:
   symbol: N/A (Composite)
-  formula: "CaO·SiO\u2082·H\u2082O (C-S-H gel primary phase)"
+  formula: "CaO·SiO₂·H₂O (C-S-H gel primary phase)"
   materialType: masonry
 properties:
-  density: "2300\u20132500 kg/m³"
+  density: "2300–2500 kg/m³"
   densityNumeric: 2300.0
   densityUnit: "kg/m³"
   densityMin: "1.8 g/cm³"
@@ -36,7 +36,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "0.8\u20131.3 W/(m·K)"
+  thermalConductivity: "0.8–1.3 W/(m·K)"
   thermalConductivityNumeric: 0.8
   thermalConductivityUnit: W/
   thermalConductivityMin: "0.5 W/m·K"
@@ -46,7 +46,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.2
-  tensileStrength: "2\u20135 MPa"
+  tensileStrength: "2–5 MPa"
   tensileStrengthNumeric: 2.0
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -56,7 +56,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 0.0
-  hardness: "5\u20137 Mohs (aggregate dependent)"
+  hardness: "5–7 Mohs (aggregate dependent)"
   hardnessNumeric: 5.0
   hardnessUnit: Mohs
   hardnessMin: 1 Mohs
@@ -66,7 +66,7 @@ properties:
   hardnessMaxNumeric: 10.0
   hardnessMaxUnit: Mohs
   hardnessPercentile: 44.4
-  youngsModulus: "20\u201340 GPa"
+  youngsModulus: "20–40 GPa"
   youngsModulusNumeric: 20.0
   youngsModulusUnit: GPa
   youngsModulusMin: 20 GPa
@@ -78,14 +78,14 @@ properties:
   modulusPercentile: 0.0
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "1.0\u201310 J/cm²"
-  chemicalFormula: "Complex composite (primarily CaO·SiO\u2082·H\u2082O)"
+  fluenceRange: "1.0–10 J/cm²"
+  chemicalFormula: "Complex composite (primarily CaO·SiO₂·H₂O)"
   thermalBehaviorType: melting
 composition:
-- "Portland cement (10\u201315%): Calcium silicates (C3S, C2S), calcium aluminates"
-- "Aggregate (60\u201375%): Silica (SiO\u2082), limestone, gravel"
-- "Water (15\u201320%): H\u2082O for hydration"
-- "Air voids (1\u20138%): Entrained or entrapped air"
+- "Portland cement (10–15%): Calcium silicates (C3S, C2S), calcium aluminates"
+- "Aggregate (60–75%): Silica (SiO₂), limestone, gravel"
+- "Water (15–20%): H₂O for hydration"
+- "Air voids (1–8%): Entrained or entrapped air"
 machineSettings:
   powerRange: 50-200W
   powerRangeNumeric: 125.0
@@ -132,7 +132,7 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0\u201310 J/cm²"
+  fluenceRange: "1.0–10 J/cm²"
   fluenceRangeNumeric: 1.0
   fluenceRangeUnit: "J/cm²"
   fluenceRangeMin: "0.1J/cm²"
@@ -177,21 +177,21 @@ environmentalImpact:
     groundwater contamination and hazardous waste disposal (100% reduction in chemical
     waste streams)
 - benefit: Reduced particulate matter emissions
-  description: "Generates 85\u201395% less airborne particulate matter compared to abrasive blasting methods, with effective filtration systems capturing >99% of generated particles"
+  description: "Generates 85–95% less airborne particulate matter compared to abrasive blasting methods, with effective filtration systems capturing >99% of generated particles"
 outcomes:
 - result: Surface contamination removal efficiency
   metric: '>95% removal of paint, graffiti, and biological growth with <0.1 mm substrate
     loss'
 - result: Processing throughput
-  metric: "2\u201310 m²/hour depending on contamination type and laser parameters"
+  metric: "2–10 m²/hour depending on contamination type and laser parameters"
 technicalSpecifications:
-  powerRange: "50\u2013200 W"
-  pulseDuration: "10\u2013100 ns"
+  powerRange: "50–200 W"
+  pulseDuration: "10–100 ns"
   wavelength: 1064 nm (primary), 532 nm (optional for selective removal)
-  spotSize: "0.1\u20131.0 mm"
-  repetitionRate: "20\u2013100 kHz"
-  fluenceRange: "1.0\u201310 J/cm²"
-  scanningSpeed: "100\u20135000 mm/s"
+  spotSize: "0.1–1.0 mm"
+  repetitionRate: "20–100 kHz"
+  fluenceRange: "1.0–10 J/cm²"
+  scanningSpeed: "100–5000 mm/s"
   beamProfile: Top-hat (flat-top)
   beamProfileOptions: Top-hat, Gaussian, Multimode
   safetyClass: Class 4
@@ -207,7 +207,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "1.0\u201310 J/cm²"
+  fluence_threshold: "1.0–10 J/cm²"
   pulse_duration: 10-100ns
   wavelength_optimal: 1064nm
   power_range: 50-200W

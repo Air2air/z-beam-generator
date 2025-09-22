@@ -12,7 +12,7 @@ keywords: stoneware, stoneware ceramic, laser ablation, laser cleaning, non-cont
   thermal processing, surface restoration
 chemicalProperties:
   symbol: N/A (composite material)
-  formula: "Variable composition (primarily SiO\u2082-Al\u2082O\u2083-K\u2082O-Na\u2082"
+  formula: "Variable composition (primarily SiO₂-Al₂O₃-K₂O-Na₂"
     O-CaO system)"
   materialType: ceramic
 properties:
@@ -78,16 +78,16 @@ properties:
   modulusPercentile: 75.0
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "1.0\u201310 J/cm²"
-  chemicalFormula: "Variable (SiO\u2082 60-70%, Al\u2082O\u2083 20-30%, flux oxides 5-10%)"
+  fluenceRange: "1.0–10 J/cm²"
+  chemicalFormula: "Variable (SiO₂ 60-70%, Al₂O₃ 20-30%, flux oxides 5-10%)"
   thermalBehaviorType: melting
 composition:
-- "Silicon Dioxide (SiO\u2082): 60-70%"
-- "Aluminum Oxide (Al\u2082O\u2083): 20-30%"
-- "Potassium Oxide (K\u2082O): 3-5%"
-- "Sodium Oxide (Na\u2082O): 1-3%"
+- "Silicon Dioxide (SiO₂): 60-70%"
+- "Aluminum Oxide (Al₂O₃): 20-30%"
+- "Potassium Oxide (K₂O): 3-5%"
+- "Sodium Oxide (Na₂O): 1-3%"
 - 'Calcium Oxide (CaO): 1-2%'
-- "Iron Oxide (Fe\u2082O\u2083): 1-2%"
+- "Iron Oxide (Fe₂O₃): 1-2%"
 machineSettings:
   powerRange: 50-200W
   powerRangeNumeric: 125.0
@@ -134,7 +134,7 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0\u201310 J/cm²"
+  fluenceRange: "1.0–10 J/cm²"
   fluenceRangeNumeric: 1.0
   fluenceRangeUnit: "J/cm²"
   fluenceRangeMin: "0.1J/cm²"
@@ -189,7 +189,7 @@ technicalSpecifications:
   wavelength: 1064 nm (primary), 532 nm (optional for finer detail)
   spotSize: 0.1-1.0 mm
   repetitionRate: 20-100 kHz
-  fluenceRange: "1.0\u201310 J/cm²"
+  fluenceRange: "1.0–10 J/cm²"
   scanningSpeed: 100-2000 mm/s
   beamProfile: Top-hat (flat-top)
   beamProfileOptions: Top-hat, Gaussian, Multi-spot
@@ -206,7 +206,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "1.0\u201310 J/cm²"
+  fluence_threshold: "1.0–10 J/cm²"
   pulse_duration: 10-200ns
   wavelength_optimal: 1064nm
   power_range: 50-200W

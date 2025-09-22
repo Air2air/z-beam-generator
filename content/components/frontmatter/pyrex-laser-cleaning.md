@@ -9,8 +9,8 @@ keywords: pyrex, pyrex glass, laser ablation, laser cleaning, non-contact cleani
   thermal processing, surface restoration
 chemicalProperties:
   symbol: N/A (glass composition)
-  formula: "Approx. 80.6% SiO\u2082, 12.6% B\u2082O\u2083, 4.2% Na\u2082O, 2.2% Al\u2082"
-    O\u2083, 0.04% Fe\u2082O\u2083, 0.1% CaO, 0.05% MgO, 0.01% K\u2082O"
+  formula: "Approx. 80.6% SiO₂, 12.6% B₂O₃, 4.2% Na₂O, 2.2% Al₂"
+    O₃, 0.04% Fe₂O₃, 0.1% CaO, 0.05% MgO, 0.01% K₂O"
   materialType: borosilicate glass
 properties:
   density: "2.23 g/cm³"
@@ -75,16 +75,16 @@ properties:
   modulusPercentile: 70.0
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "0.5\u20135 J/cm²"
-  chemicalFormula: "Complex oxide mixture (primarily SiO\u2082-B\u2082O\u2083-Na\u2082"
+  fluenceRange: "0.5–5 J/cm²"
+  chemicalFormula: "Complex oxide mixture (primarily SiO₂-B₂O₃-Na₂"
     O)"
   thermalBehaviorType: melting
 composition:
-- "Silicon dioxide (SiO\u2082): 80.6%"
-- "Boron trioxide (B\u2082O\u2083): 12.6%"
-- "Sodium oxide (Na\u2082O): 4.2%"
-- "Aluminum oxide (Al\u2082O\u2083): 2.2%"
-- "Other oxides (Fe\u2082O\u2083, CaO, MgO, K\u2082O): <0.2%"
+- "Silicon dioxide (SiO₂): 80.6%"
+- "Boron trioxide (B₂O₃): 12.6%"
+- "Sodium oxide (Na₂O): 4.2%"
+- "Aluminum oxide (Al₂O₃): 2.2%"
+- "Other oxides (Fe₂O₃, CaO, MgO, K₂O): <0.2%"
 machineSettings:
   powerRange: 20-100W
   powerRangeNumeric: 60.0
@@ -131,7 +131,7 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "0.5\u20135 J/cm²"
+  fluenceRange: "0.5–5 J/cm²"
   fluenceRangeNumeric: 0.5
   fluenceRangeUnit: "J/cm²"
   fluenceRangeMin: "0.1J/cm²"
@@ -176,7 +176,7 @@ outcomes:
   metric: Measured via SEM-EDS analysis showing complete removal of organic residues
     and particulate matter
 - result: Sub-micron precision cleaning
-  metric: "Achieves 0.1-0.5 \u03BCm feature resolution without substrate damage at optimal parameters"
+  metric: "Achieves 0.1-0.5 μm feature resolution without substrate damage at optimal parameters"
 technicalSpecifications:
   powerRange: 20-100 W (average power for pulsed fiber lasers)
   pulseDuration: 10-100 ns
@@ -200,7 +200,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "0.5\u20135 J/cm²"
+  fluence_threshold: "0.5–5 J/cm²"
   pulse_duration: 10-100ns
   wavelength_optimal: 1064nm
   power_range: 20-100W

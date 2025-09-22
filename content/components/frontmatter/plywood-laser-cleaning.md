@@ -12,8 +12,8 @@ keywords: plywood, plywood wood, laser ablation, laser cleaning, non-contact cle
   pulsed fiber laser, surface contamination removal, industrial laser parameters,
   thermal processing, surface restoration
 chemicalProperties:
-  symbol: "C\u2086H\u2081\u2080O\u2085"
-  formula: "(C\u2086H\u2081\u2080O\u2085)\u2099"
+  symbol: "C₆H₁₀O₅"
+  formula: "(C₆H₁₀O₅)\u2099"
   materialType: wood
 properties:
   density: "500-700 kg/m³ (varies by wood species and adhesive content)"
@@ -75,8 +75,8 @@ properties:
   modulusPercentile: 0.0
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "0.5\u20135 J/cm²"
-  chemicalFormula: "(C\u2086H\u2081\u2080O\u2085)\u2099"
+  fluenceRange: "0.5–5 J/cm²"
+  chemicalFormula: "(C₆H₁₀O₅)\u2099"
   thermalBehaviorType: decomposition
   decompositionPoint: "300°C"
   decompositionPointNumeric: 300
@@ -131,7 +131,7 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "0.5\u20135 J/cm²"
+  fluenceRange: "0.5–5 J/cm²"
   fluenceRangeNumeric: 0.5
   fluenceRangeUnit: "J/cm²"
   fluenceRangeMin: "0.1J/cm²"
@@ -201,7 +201,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "0.5\u20135 J/cm²"
+  fluence_threshold: "0.5–5 J/cm²"
   pulse_duration: 10-100ns
   wavelength_optimal: 1064nm
   power_range: 20-100W

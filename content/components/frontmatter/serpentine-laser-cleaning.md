@@ -3,16 +3,16 @@ name: Serpentine
 category: stone
 title: Serpentine Laser Cleaning
 headline: Comprehensive technical guide for laser cleaning stone serpentine
-description: "Laser cleaning of serpentine-group minerals (Mg\u2083Si\u2082O\u2085"
-  (OH)\u2084) utilizes selective photothermal ablation where contaminants absorb laser\
+description: "Laser cleaning of serpentine-group minerals (Mg₃Si₂O₅"
+  (OH)₄) utilizes selective photothermal ablation where contaminants absorb laser\
   \ energy more efficiently than the hydrated magnesium silicate substrate, enabling\
   \ precise removal without mechanical or chemical damage to the valuable stone surface."
 keywords: serpentine, serpentine stone, laser ablation, laser cleaning, non-contact
   cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters,
   thermal processing, surface restoration
 chemicalProperties:
-  symbol: "Mg\u2083Si\u2082O\u2085(OH)\u2084"
-  formula: "Mg\u2083Si\u2082O\u2085(OH)\u2084"
+  symbol: "Mg₃Si₂O₅(OH)₄"
+  formula: "Mg₃Si₂O₅(OH)₄"
   materialType: phyllosilicate mineral
 properties:
   density: "2.5-2.6 g/cm³"
@@ -77,13 +77,13 @@ properties:
   modulusPercentile: 75.0
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "1.0\u201310 J/cm²"
-  chemicalFormula: "Mg\u2083Si\u2082O\u2085(OH)\u2084"
+  fluenceRange: "1.0–10 J/cm²"
+  chemicalFormula: "Mg₃Si₂O₅(OH)₄"
   thermalBehaviorType: melting
 composition:
 - 'Magnesium oxide (MgO): 43-44%'
-- "Silicon dioxide (SiO\u2082): 43-44%"
-- "Water (H\u2082O): 12-13%"
+- "Silicon dioxide (SiO₂): 43-44%"
+- "Water (H₂O): 12-13%"
 - 'Trace elements: Fe, Ni, Cr, Mn'
 machineSettings:
   powerRange: 50-200W
@@ -131,7 +131,7 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0\u201310 J/cm²"
+  fluenceRange: "1.0–10 J/cm²"
   fluenceRangeNumeric: 1.0
   fluenceRangeUnit: "J/cm²"
   fluenceRangeMin: "0.1J/cm²"
@@ -176,7 +176,7 @@ environmentalImpact:
     negligible airborne particles through controlled ablation process
 outcomes:
 - result: Sub-micron precision contamination removal
-  metric: "Selective removal of 10-50 \u03BCm thick crusts with <5 \u03BCm substrate loss"
+  metric: "Selective removal of 10-50 μm thick crusts with <5 μm substrate loss"
 - result: Non-contact processing capability
   metric: "Processing speeds of 0.5-2.0 m²/hour depending on contamination level"
 technicalSpecifications:
@@ -184,7 +184,7 @@ technicalSpecifications:
   pulseDuration: 10-100 ns
   wavelength: 1064 nm (fundamental Nd:YAG/fiber), 532 nm (frequency-doubled for finer
     control)
-  spotSize: "100-500 \u03BCm"
+  spotSize: "100-500 μm"
   repetitionRate: 10-50 kHz
   fluenceRange: "0.8-2.5 J/cm² (ablation threshold for serpentine group minerals)"
   scanningSpeed: 500-2000 mm/s
@@ -203,7 +203,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "1.0\u201310 J/cm²"
+  fluence_threshold: "1.0–10 J/cm²"
   pulse_duration: 10-50ns
   wavelength_optimal: 1064nm
   power_range: 50-200W

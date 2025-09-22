@@ -13,7 +13,7 @@ keywords: schist, schist stone, laser ablation, laser cleaning, non-contact clea
   thermal processing, surface restoration
 chemicalProperties:
   symbol: N/A (Complex Silicate Rock)
-  formula: "Variable; primarily (K,Na)(Al,Fe,Mg)\u2082(Al,Si)\u2084O\u2081\u2080(OH)\u2082 (Mica) + SiO\u2082 (Quartz)"
+  formula: "Variable; primarily (K,Na)(Al,Fe,Mg)₂(Al,Si)₄O₁₀(OH)₂ (Mica) + SiO₂ (Quartz)"
   materialType: Metamorphic Rock
 properties:
   density: "2.6-2.9 g/cm³"
@@ -82,9 +82,9 @@ properties:
   chemicalFormula: N/A (Complex mixture of silicates)
   thermalBehaviorType: melting
 composition:
-- "Quartz (SiO\u2082): 20-60%"
-- "Mica [Muscovite: KAl\u2082(AlSi\u2083O\u2081\u2080)(OH)\u2082; Biotite: K(Fe,Mg)\u2083\
-  (AlSi\u2083O\u2081\u2080)(OH)\u2082]: 20-70%"
+- "Quartz (SiO₂): 20-60%"
+- "Mica [Muscovite: KAl₂(AlSi₃O₁₀)(OH)₂; Biotite: K(Fe,Mg)₃\
+  (AlSi₃O₁₀)(OH)₂]: 20-70%"
 - 'Other minerals (Chlorite, Garnet, Feldspar, Graphite): 5-30%'
 machineSettings:
   powerRange: 50-200W

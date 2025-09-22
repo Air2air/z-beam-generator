@@ -12,7 +12,7 @@ keywords: lead crystal, lead crystal glass, laser ablation, laser cleaning, non-
   thermal processing, surface restoration
 chemicalProperties:
   symbol: Pb
-  formula: "24% PbO, 75% SiO\u2082, 1% K\u2082O (typical)"
+  formula: "24% PbO, 75% SiO₂, 1% K₂O (typical)"
   materialType: glass
 properties:
   density: "3.1-3.5 g/cm³"
@@ -77,14 +77,14 @@ properties:
   modulusPercentile: 58.3
   laserType: Nd:YAG laser
   wavelength: 1064nm
-  fluenceRange: "0.5\u20135 J/cm²"
-  chemicalFormula: "24% PbO, 75% SiO\u2082, 1% K\u2082O"
+  fluenceRange: "0.5–5 J/cm²"
+  chemicalFormula: "24% PbO, 75% SiO₂, 1% K₂O"
   thermalBehaviorType: melting
 composition:
-- "Silicon Dioxide (SiO\u2082): 55-75%"
+- "Silicon Dioxide (SiO₂): 55-75%"
 - 'Lead Oxide (PbO): 24-32%'
-- "Potassium Oxide (K\u2082O): 0.5-1.5%"
-- "Other oxides (Na\u2082O, CaO): <1%"
+- "Potassium Oxide (K₂O): 0.5-1.5%"
+- "Other oxides (Na₂O, CaO): <1%"
 machineSettings:
   powerRange: 20-100W
   powerRangeNumeric: 60.0
@@ -131,7 +131,7 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "0.5\u20135 J/cm²"
+  fluenceRange: "0.5–5 J/cm²"
   fluenceRangeNumeric: 0.5
   fluenceRangeUnit: "J/cm²"
   fluenceRangeMin: "0.1J/cm²"
@@ -186,7 +186,7 @@ technicalSpecifications:
   wavelength: 1064 nm (primary), 532 nm (optional for finer control)
   spotSize: 0.1-2.0 mm
   repetitionRate: 10-50 kHz
-  fluenceRange: "0.5\u20135 J/cm²"
+  fluenceRange: "0.5–5 J/cm²"
   scanningSpeed: 100-1000 mm/s
   beamProfile: Top-hat (flat-top)
   beamProfileOptions: Top-hat, Gaussian, Donut
@@ -203,7 +203,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "0.5\u20135 J/cm²"
+  fluence_threshold: "0.5–5 J/cm²"
   pulse_duration: 10-100ns
   wavelength_optimal: 1064nm
   power_range: 20-100W

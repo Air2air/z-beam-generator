@@ -78,7 +78,7 @@ properties:
   modulusPercentile: 100.0
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "1.0\u201310 J/cm²"
+  fluenceRange: "1.0–10 J/cm²"
   chemicalFormula: Fe-Cr-Ni
   thermalBehaviorType: melting
 composition:
@@ -135,7 +135,7 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0\u201310 J/cm²"
+  fluenceRange: "1.0–10 J/cm²"
   fluenceRangeNumeric: 1.0
   fluenceRangeUnit: "J/cm²"
   fluenceRangeMin: "0.1J/cm²"
@@ -183,7 +183,7 @@ environmentalImpact:
   description: Compared to high-pressure water jet cleaning methods for large stainless
     steel structures
 outcomes:
-- result: "Surface roughness maintained at Ra 0.8-1.6 \u03BCm"
+- result: "Surface roughness maintained at Ra 0.8-1.6 μm"
   metric: Preserves original surface finish while removing 99.9% of contaminants
 - result: "Processing rates of 2-10 m²/hour"
   metric: Achievable with 500W fiber laser systems on industrial-scale components
@@ -194,7 +194,7 @@ technicalSpecifications:
     oxide layers)
   wavelength: 1064 nm (primary), 532 nm (for higher absorption on specific surface
     finishes)
-  spotSize: "50-200 \u03BCm (precision cleaning), 1-5 mm (large area processing)"
+  spotSize: "50-200 μm (precision cleaning), 1-5 mm (large area processing)"
   repetitionRate: 20-200 kHz (optimized for oxide layer removal without substrate
     damage)
   fluenceRange: "1.5-12 J/cm² (depending on surface condition and stainless steel grade)"
@@ -219,7 +219,7 @@ prompt_chain_verification:
 chemicalFormula: Fe-Cr-Ni
 symbol: SS
 laser_parameters:
-  fluence_threshold: "1.0\u201310 J/cm²"
+  fluence_threshold: "1.0–10 J/cm²"
   pulse_duration: 10-200ns
   wavelength_optimal: 1064nm
   power_range: 50-200W

@@ -12,7 +12,7 @@ keywords: quartz glass, fused silica, laser ablation, laser cleaning, non-contac
   cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters,
   thermal processing, surface restoration
 chemicalProperties:
-  symbol: "SiO\u2082"
+  symbol: "SiO₂"
   formula: SiO2
   materialType: glass
 properties:
@@ -78,11 +78,11 @@ properties:
   modulusPercentile: 86.7
   laserType: Pulsed Fiber Laser
   wavelength: 1064 nm
-  fluenceRange: "0.5\u20135 J/cm²"
+  fluenceRange: "0.5–5 J/cm²"
   chemicalFormula: SiO2
   thermalBehaviorType: melting
 composition:
-- "Silicon Dioxide (SiO\u2082): 99.9-99.99%"
+- "Silicon Dioxide (SiO₂): 99.9-99.99%"
 - 'Trace impurities: <1000 ppm (typically Al, Na, K, Fe, OH)'
 machineSettings:
   powerRange: 20-100W
@@ -130,7 +130,7 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "0.5\u20135 J/cm²"
+  fluenceRange: "0.5–5 J/cm²"
   fluenceRangeNumeric: 0.5
   fluenceRangeUnit: "J/cm²"
   fluenceRangeMin: "0.1J/cm²"
@@ -175,7 +175,7 @@ environmentalImpact:
   description: Laser cleaning consumes approximately 60% less energy than thermal
     or chemical cleaning processes for quartz components
 outcomes:
-- result: "Surface cleanliness < 0.1 particles/cm² > 0.3 \u03BCm"
+- result: "Surface cleanliness < 0.1 particles/cm² > 0.3 μm"
   metric: Achieves Class 10 cleanroom standards for semiconductor applications
 - result: Surface roughness preservation < 0.5 nm Ra change
   metric: "Maintains optical quality with processing speeds of 0.1-0.5 m²/hour"
@@ -203,7 +203,7 @@ prompt_chain_verification:
   cultural_adaptation_applied: true
 chemicalFormula: SiO2
 laser_parameters:
-  fluence_threshold: "0.5\u20135 J/cm²"
+  fluence_threshold: "0.5–5 J/cm²"
   pulse_duration: 10-100ns
   wavelength_optimal: 1064 nm
   power_range: 20-100W

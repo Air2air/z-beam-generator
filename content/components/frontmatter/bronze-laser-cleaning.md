@@ -78,7 +78,7 @@ properties:
   modulusPercentile: 100.0
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "0.5\u20135 J/cm²"
+  fluenceRange: "0.5–5 J/cm²"
   chemicalFormula: Cu-Sn
   thermalBehaviorType: melting
 composition:
@@ -129,7 +129,7 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "0.5\u20135 J/cm²"
+  fluenceRange: "0.5–5 J/cm²"
   fluenceRangeNumeric: 0.5
   fluenceRangeUnit: "J/cm²"
   fluenceRangeMin: "0.1J/cm²"
@@ -189,7 +189,7 @@ technicalSpecifications:
   spotSize: 0.1-2.0 mm (adjustable based on contamination layer thickness and required
     precision)
   repetitionRate: 10-50 kHz (optimized for thermal relaxation between pulses)
-  fluenceRange: "0.5\u20135 J/cm² (above ablation threshold for common bronze contaminants, below substrate damage threshold)"
+  fluenceRange: "0.5–5 J/cm² (above ablation threshold for common bronze contaminants, below substrate damage threshold)"
   scanningSpeed: 100-2000 mm/s (dependent on laser power and contamination type)
   beamProfile: Top-hat (flat-top) profile preferred for uniform energy distribution
     and consistent cleaning results
@@ -209,7 +209,7 @@ prompt_chain_verification:
   cultural_adaptation_applied: true
 chemicalFormula: Cu-Sn
 laser_parameters:
-  fluence_threshold: "0.5\u20135 J/cm²"
+  fluence_threshold: "0.5–5 J/cm²"
   pulse_duration: 10-100ns
   wavelength_optimal: 1064nm
   power_range: 20-100W

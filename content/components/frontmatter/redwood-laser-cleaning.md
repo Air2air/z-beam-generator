@@ -11,7 +11,7 @@ keywords: redwood, redwood wood, laser ablation, laser cleaning, non-contact cle
   pulsed fiber laser, surface contamination removal, industrial laser parameters,
   thermal processing, surface restoration
 chemicalProperties:
-  symbol: "C\u2086H\u2081\u2080O\u2085 (cellulose base)"
+  symbol: "C₆H₁₀O₅ (cellulose base)"
   formula: Variable organic composition (primarily cellulose, lignin, hemicellulose)
   materialType: wood
 properties:
@@ -74,8 +74,8 @@ properties:
   modulusPercentile: 0.0
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "1.0\u201310 J/cm²"
-  chemicalFormula: "Complex organic polymer (C\u2086H\u2081\u2080O\u2085)\u2099 cellulose base"
+  fluenceRange: "1.0–10 J/cm²"
+  chemicalFormula: "Complex organic polymer (C₆H₁₀O₅)\u2099 cellulose base"
   thermalBehaviorType: decomposition
   decompositionPoint: "300°C"
   decompositionPointNumeric: 300
@@ -131,7 +131,7 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0\u201310 J/cm²"
+  fluenceRange: "1.0–10 J/cm²"
   fluenceRangeNumeric: 1.0
   fluenceRangeUnit: "J/cm²"
   fluenceRangeMin: "0.1J/cm²"
@@ -200,7 +200,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "1.0\u201310 J/cm²"
+  fluence_threshold: "1.0–10 J/cm²"
   pulse_duration: 10-50ns
   wavelength_optimal: 1064nm
   power_range: 50-200W

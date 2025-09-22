@@ -11,7 +11,7 @@ keywords: fir, fir wood, laser ablation, laser cleaning, non-contact cleaning, p
   fiber laser, surface contamination removal, industrial laser parameters, thermal
   processing, surface restoration
 chemicalProperties:
-  symbol: "C\u2086H\u2081\u2080O\u2085 (cellulose)"
+  symbol: "C₆H₁₀O₅ (cellulose)"
   formula: Variable organic composition (primarily cellulose, lignin, hemicellulose)
   materialType: wood
 properties:
@@ -75,7 +75,7 @@ properties:
   laserType: Pulsed fiber laser
   wavelength: 1064nm
   fluenceRange: "0.5-5 J/cm²"
-  chemicalFormula: "Complex organic mixture (C\u2086H\u2081\u2080O\u2085)n cellulose + C\u2089H\u2081\u2080O\u2083 lignin + C\u2085H\u2088O\u2084 hemicellulose"
+  chemicalFormula: "Complex organic mixture (C₆H₁₀O₅)n cellulose + C₉H₁₀O₃ lignin + C₅H₈O₄ hemicellulose"
   thermalBehaviorType: decomposition
   decompositionPoint: "300°C"
   decompositionPointNumeric: 300

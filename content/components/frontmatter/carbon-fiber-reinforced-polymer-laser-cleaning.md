@@ -10,7 +10,7 @@ keywords: carbon fiber reinforced polymer, CFRP, laser ablation, laser cleaning,
   thermal processing, surface restoration
 chemicalProperties:
   symbol: CFRP
-  formula: "C\u2099/(C\u2082\u2081H\u2082\u2085ClO\u2085)\u2099 (Carbon fiber/Epoxy matrix representative composition)"
+  formula: "C\u2099/(C₂₁H₂₅ClO₅)\u2099 (Carbon fiber/Epoxy matrix representative composition)"
   materialType: composite
 properties:
   density: "1.5-1.6 g/cm³ (typical for aerospace-grade CFRP)"
@@ -72,8 +72,8 @@ properties:
   modulusPercentile: 100.0
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "1.0\u201310 J/cm²"
-  chemicalFormula: "C\u2099/(C\u2082\u2081H\u2082\u2085ClO\u2085)\u2099"
+  fluenceRange: "1.0–10 J/cm²"
+  chemicalFormula: "C\u2099/(C₂₁H₂₅ClO₅)\u2099"
   thermalBehaviorType: decomposition
 composition:
 - 'Carbon fiber: 50-70% (by volume)'
@@ -125,7 +125,7 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0\u201310 J/cm²"
+  fluenceRange: "1.0–10 J/cm²"
   fluenceRangeNumeric: 1.0
   fluenceRangeUnit: "J/cm²"
   fluenceRangeMin: "0.1J/cm²"
@@ -196,7 +196,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "1.0\u201310 J/cm²"
+  fluence_threshold: "1.0–10 J/cm²"
   pulse_duration: 10-200ns
   wavelength_optimal: 1064nm
   power_range: 50-200W

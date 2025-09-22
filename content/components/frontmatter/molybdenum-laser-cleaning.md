@@ -74,7 +74,7 @@ properties:
   modulusPercentile: 100.0
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "1.0\u201310 J/cm²"
+  fluenceRange: "1.0–10 J/cm²"
   chemicalFormula: Mo
   thermalBehaviorType: melting
 composition:
@@ -126,7 +126,7 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0\u201310 J/cm²"
+  fluenceRange: "1.0–10 J/cm²"
   fluenceRangeNumeric: 1.0
   fluenceRangeUnit: "J/cm²"
   fluenceRangeMin: "0.1J/cm²"
@@ -169,7 +169,7 @@ environmentalImpact:
   description: Laser cleaning consumes approximately 60-70% less energy compared to
     chemical bath processes and thermal treatment methods for Molybdenum components
 outcomes:
-- result: "Surface cleanliness achieving <5 \u03BCg/cm² contamination levels"
+- result: "Surface cleanliness achieving <5 μg/cm² contamination levels"
   metric: ISO 8502-3 cleanliness standard compliance
 - result: "Processing speeds up to 0.5 m²/hour for oxide removal"
   metric: Achievable cleaning rates with 100W pulsed fiber laser systems
@@ -196,7 +196,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "1.0\u201310 J/cm²"
+  fluence_threshold: "1.0–10 J/cm²"
   pulse_duration: 10-200ns
   wavelength_optimal: 1064nm
   power_range: 50-200W

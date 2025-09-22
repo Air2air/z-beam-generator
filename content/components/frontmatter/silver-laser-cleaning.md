@@ -171,7 +171,7 @@ outcomes:
 - result: Surface contamination removal >99.9%
   metric: Measured via SEM-EDS analysis showing complete sulfide and oxide removal
 - result: Sub-micron precision cleaning
-  metric: "Achieves 0.1-0.5 \u03BCm layer removal control without substrate damage"
+  metric: "Achieves 0.1-0.5 μm layer removal control without substrate damage"
 technicalSpecifications:
   powerRange: 20-100 W (pulsed)
   pulseDuration: 10-100 ns

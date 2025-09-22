@@ -77,7 +77,7 @@ properties:
   modulusPercentile: 100.0
   laserType: Pulsed Fiber Laser
   wavelength: 1064 nm
-  fluenceRange: "0.5\u20135 J/cm²"
+  fluenceRange: "0.5–5 J/cm²"
   chemicalFormula: Pd
   thermalBehaviorType: melting
 composition:
@@ -129,7 +129,7 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "0.5\u20135 J/cm²"
+  fluenceRange: "0.5–5 J/cm²"
   fluenceRangeNumeric: 0.5
   fluenceRangeUnit: "J/cm²"
   fluenceRangeMin: "0.1J/cm²"
@@ -201,7 +201,7 @@ prompt_chain_verification:
   cultural_adaptation_applied: true
 chemicalFormula: Pd
 laser_parameters:
-  fluence_threshold: "0.5\u20135 J/cm²"
+  fluence_threshold: "0.5–5 J/cm²"
   pulse_duration: 10-100ns
   wavelength_optimal: 1064 nm
   power_range: 20-100W

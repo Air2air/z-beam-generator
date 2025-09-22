@@ -11,9 +11,9 @@ keywords: tempered glass, tempered glass glass, laser ablation, laser cleaning, 
   cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters,
   thermal processing, surface restoration
 chemicalProperties:
-  symbol: "SiO\u2082-based"
-  formula: "SiO\u2082 (70-75%), Na\u2082O (12-16%), CaO (8-12%), MgO (1-4%), Al\u2082"
-    O\u2083 (0.5-2%)"
+  symbol: "SiO₂-based"
+  formula: "SiO₂ (70-75%), Na₂O (12-16%), CaO (8-12%), MgO (1-4%), Al₂"
+    O₃ (0.5-2%)"
   materialType: glass
 properties:
   density: "2500 kg/m³"
@@ -78,15 +78,15 @@ properties:
   modulusPercentile: 91.7
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "0.5\u20135 J/cm²"
-  chemicalFormula: "SiO\u2082-based amorphous solid"
+  fluenceRange: "0.5–5 J/cm²"
+  chemicalFormula: "SiO₂-based amorphous solid"
   thermalBehaviorType: melting
 composition:
-- "Silicon Dioxide (SiO\u2082): 70-75%"
-- "Sodium Oxide (Na\u2082O): 12-16%"
+- "Silicon Dioxide (SiO₂): 70-75%"
+- "Sodium Oxide (Na₂O): 12-16%"
 - 'Calcium Oxide (CaO): 8-12%'
 - 'Magnesium Oxide (MgO): 1-4%'
-- "Aluminum Oxide (Al\u2082O\u2083): 0.5-2%"
+- "Aluminum Oxide (Al₂O₃): 0.5-2%"
 machineSettings:
   powerRange: 20-100W
   powerRangeNumeric: 60.0
@@ -133,7 +133,7 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "0.5\u20135 J/cm²"
+  fluenceRange: "0.5–5 J/cm²"
   fluenceRangeNumeric: 0.5
   fluenceRangeUnit: "J/cm²"
   fluenceRangeMin: "0.1J/cm²"
@@ -177,7 +177,7 @@ environmentalImpact:
   description: Laser cleaning consumes 60-70% less energy than thermal or chemical
     cleaning processes for tempered glass surfaces
 outcomes:
-- result: "Surface cleanliness < 10 particles/cm² > 0.3\u03BCm"
+- result: "Surface cleanliness < 10 particles/cm² > 0.3μm"
   metric: ISO Class 5 cleanliness standard achievable
 - result: "Processing speeds up to 1 m²/hour"
   metric: "Throughput of 0.5-1.0 m²/hour for typical automotive glass applications"
@@ -204,7 +204,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "0.5\u20135 J/cm²"
+  fluence_threshold: "0.5–5 J/cm²"
   pulse_duration: 10-100ns
   wavelength_optimal: 1064nm
   power_range: 20-100W

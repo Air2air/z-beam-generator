@@ -12,7 +12,7 @@ keywords: brick, brick masonry, laser ablation, laser cleaning, non-contact clea
   thermal processing, surface restoration
 chemicalProperties:
   symbol: N/A (composite material)
-  formula: "Variable composition (primarily SiO\u2082, Al\u2082O\u2083, Fe\u2082O\u2083"
+  formula: "Variable composition (primarily SiO₂, Al₂O₃, Fe₂O₃"
     , CaO)"
   materialType: masonry
 properties:
@@ -78,16 +78,16 @@ properties:
   modulusPercentile: 0.0
   laserType: Nd:YAG laser
   wavelength: 1064nm
-  fluenceRange: "1.0\u201310 J/cm²"
+  fluenceRange: "1.0–10 J/cm²"
   chemicalFormula: Variable (clay-based ceramic composite)
   thermalBehaviorType: melting
 composition:
-- "Silica (SiO\u2082): 50-60%"
-- "Alumina (Al\u2082O\u2083): 20-30%"
-- "Iron oxide (Fe\u2082O\u2083): 5-8%"
+- "Silica (SiO₂): 50-60%"
+- "Alumina (Al₂O₃): 20-30%"
+- "Iron oxide (Fe₂O₃): 5-8%"
 - 'Calcium oxide (CaO): 1-5%'
 - 'Magnesium oxide (MgO): 1-3%'
-- "Alkali oxides (K\u2082O, Na\u2082O): 1-3%"
+- "Alkali oxides (K₂O, Na₂O): 1-3%"
 machineSettings:
   powerRange: 50-200W
   powerRangeNumeric: 125.0
@@ -134,7 +134,7 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0\u201310 J/cm²"
+  fluenceRange: "1.0–10 J/cm²"
   fluenceRangeNumeric: 1.0
   fluenceRangeUnit: "J/cm²"
   fluenceRangeMin: "0.1J/cm²"
@@ -206,7 +206,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "1.0\u201310 J/cm²"
+  fluence_threshold: "1.0–10 J/cm²"
   pulse_duration: 10-50ns
   wavelength_optimal: 1064nm
   power_range: 50-200W

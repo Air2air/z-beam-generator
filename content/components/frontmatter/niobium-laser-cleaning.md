@@ -78,7 +78,7 @@ properties:
   modulusPercentile: 100.0
   laserType: pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "1.0\u201310 J/cm²"
+  fluenceRange: "1.0–10 J/cm²"
   chemicalFormula: Nb
   thermalBehaviorType: melting
 composition:
@@ -130,7 +130,7 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0\u201310 J/cm²"
+  fluenceRange: "1.0–10 J/cm²"
   fluenceRangeNumeric: 1.0
   fluenceRangeUnit: "J/cm²"
   fluenceRangeMin: "0.1J/cm²"
@@ -185,7 +185,7 @@ technicalSpecifications:
   wavelength: 1064 nm (primary), 532 nm (for higher precision)
   spotSize: 0.1-1.0 mm
   repetitionRate: 20-100 kHz
-  fluenceRange: "1.0\u201310 J/cm²"
+  fluenceRange: "1.0–10 J/cm²"
   scanningSpeed: 500-5000 mm/s
   beamProfile: Top-hat (flat-top)
   beamProfileOptions: Top-hat, Gaussian (adjustable)
@@ -202,7 +202,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "1.0\u201310 J/cm²"
+  fluence_threshold: "1.0–10 J/cm²"
   pulse_duration: 10-50ns
   wavelength_optimal: 1064nm
   power_range: 50-200W

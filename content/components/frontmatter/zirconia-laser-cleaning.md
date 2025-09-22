@@ -78,7 +78,7 @@ properties:
   modulusPercentile: 100.0
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "0.5\u20135 J/cm²"
+  fluenceRange: "0.5–5 J/cm²"
   chemicalFormula: ZrO2
   thermalBehaviorType: melting
 composition:
@@ -131,7 +131,7 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "0.5\u20135 J/cm²"
+  fluenceRange: "0.5–5 J/cm²"
   fluenceRangeNumeric: 0.5
   fluenceRangeUnit: "J/cm²"
   fluenceRangeMin: "0.1J/cm²"
@@ -179,8 +179,8 @@ outcomes:
 - result: Surface contamination removal >99.9%
   metric: Measured via SEM-EDS analysis showing complete removal of organic and inorganic
     contaminants
-- result: "Substrate damage <5\u03BCm"
-  metric: "Precision cleaning with material removal limited to 2-5\u03BCm depth, preserving critical dimensional tolerances"
+- result: "Substrate damage <5μm"
+  metric: "Precision cleaning with material removal limited to 2-5μm depth, preserving critical dimensional tolerances"
 technicalSpecifications:
   powerRange: 20-100 W
   pulseDuration: 10-100 ns
@@ -205,7 +205,7 @@ prompt_chain_verification:
   cultural_adaptation_applied: true
 chemicalFormula: ZrO2
 laser_parameters:
-  fluence_threshold: "0.5\u20135 J/cm²"
+  fluence_threshold: "0.5–5 J/cm²"
   pulse_duration: 10-100ns
   wavelength_optimal: 1064nm
   power_range: 20-100W

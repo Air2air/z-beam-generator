@@ -11,8 +11,8 @@ keywords: onyx, onyx stone, laser ablation, laser cleaning, non-contact cleaning
   pulsed fiber laser, surface contamination removal, industrial laser parameters,
   thermal processing, surface restoration
 chemicalProperties:
-  symbol: "CaCO\u2083"
-  formula: "CaCO\u2083"
+  symbol: "CaCO₃"
+  formula: "CaCO₃"
   materialType: stone
 properties:
   density: "2.65-2.80 g/cm³"
@@ -77,12 +77,12 @@ properties:
   modulusPercentile: 66.7
   laserType: Nd:YAG laser
   wavelength: 1064nm
-  fluenceRange: "1.0\u201310 J/cm²"
-  chemicalFormula: "CaCO\u2083"
+  fluenceRange: "1.0–10 J/cm²"
+  chemicalFormula: "CaCO₃"
   thermalBehaviorType: melting
 composition:
-- "Calcium carbonate (CaCO\u2083): 90-99%"
-- "Silicon dioxide (SiO\u2082): 0.5-5%"
+- "Calcium carbonate (CaCO₃): 90-99%"
+- "Silicon dioxide (SiO₂): 0.5-5%"
 - 'Iron oxides, aluminum oxides, and other trace minerals: 0.5-3%'
 machineSettings:
   powerRange: 50-200W
@@ -130,7 +130,7 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0\u201310 J/cm²"
+  fluenceRange: "1.0–10 J/cm²"
   fluenceRangeNumeric: 1.0
   fluenceRangeUnit: "J/cm²"
   fluenceRangeMin: "0.1J/cm²"
@@ -176,14 +176,14 @@ outcomes:
   metric: '>99% removal of biological and atmospheric contaminants without substrate
     damage'
 - result: Processing precision
-  metric: "±10 \u03BCm layer control with preservation of original surface morphology"
+  metric: "±10 μm layer control with preservation of original surface morphology"
 technicalSpecifications:
   powerRange: 50-200W (pulsed)
   pulseDuration: 5-50 ns
   wavelength: 1064 nm (primary), 532 nm (optional for selective absorption)
   spotSize: 0.05-1.0 mm
   repetitionRate: 20-100 kHz
-  fluenceRange: "1.0\u201310 J/cm²"
+  fluenceRange: "1.0–10 J/cm²"
   scanningSpeed: 100-2000 mm/s
   beamProfile: Top-hat (flat-top)
   beamProfileOptions: Top-hat, Gaussian, Multi-spot
@@ -200,7 +200,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "1.0\u201310 J/cm²"
+  fluence_threshold: "1.0–10 J/cm²"
   pulse_duration: 5-50ns
   wavelength_optimal: 1064nm
   power_range: 50-200W

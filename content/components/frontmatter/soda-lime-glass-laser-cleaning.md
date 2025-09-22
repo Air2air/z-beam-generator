@@ -9,7 +9,7 @@ keywords: soda-lime glass, soda-lime glass glass, laser ablation, laser cleaning
   laser parameters, thermal processing, surface restoration
 chemicalProperties:
   symbol: N/A (Amorphous Solid)
-  formula: "~72% SiO\u2082, ~14% Na\u2082O, ~9% CaO, ~4% MgO, ~0.5% Al\u2082O\u2083"
+  formula: "~72% SiO₂, ~14% Na₂O, ~9% CaO, ~4% MgO, ~0.5% Al₂O₃"
   materialType: glass
 properties:
   density: "2.5 g/cm³"
@@ -75,13 +75,13 @@ properties:
   laserType: pulsed fiber laser
   wavelength: 1064nm
   fluenceRange: "0.5-5 J/cm²"
-  chemicalFormula: "Amorphous network of SiO\u2082 modified by Na\u2082O and CaO"
+  chemicalFormula: "Amorphous network of SiO₂ modified by Na₂O and CaO"
 composition:
-- "Silicon Dioxide (SiO\u2082): 70-75%"
-- "Sodium Oxide (Na\u2082O): 12-16%"
+- "Silicon Dioxide (SiO₂): 70-75%"
+- "Sodium Oxide (Na₂O): 12-16%"
 - 'Calcium Oxide (CaO): 8-12%'
 - 'Magnesium Oxide (MgO): 1-4%'
-- "Aluminum Oxide (Al\u2082O\u2083): 0.5-1.5%"
+- "Aluminum Oxide (Al₂O₃): 0.5-1.5%"
 machineSettings:
   powerRange: 20-100W
   powerRangeNumeric: 60.0
@@ -142,7 +142,7 @@ applications:
 - 'Electronics: Surface preparation for better adhesion in PCB manufacturing'
 compatibility:
 - Stainless Steel (for fixturing and handling systems)
-- "Aluminum Oxide (Al\u2082O\u2083) ceramics (for nozzle materials)"
+- "Aluminum Oxide (Al₂O₃) ceramics (for nozzle materials)"
 - PTFE (Polytetrafluoroethylene) and other high-temperature polymers
 regulatoryStandards: IEC 60825-1 (Safety of Laser Products), ANSI Z136.1 (Safe Use
   of Lasers), ISO 11553 (Safety requirements for laser processing machines)

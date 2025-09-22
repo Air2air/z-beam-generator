@@ -74,7 +74,7 @@ properties:
   modulusPercentile: 100.0
   laserType: Nd:YAG or fiber laser
   wavelength: 1064nm
-  fluenceRange: "1.0\u201310 J/cm²"
+  fluenceRange: "1.0–10 J/cm²"
   chemicalFormula: Pt
   thermalBehaviorType: melting
 composition:
@@ -126,7 +126,7 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0\u201310 J/cm²"
+  fluenceRange: "1.0–10 J/cm²"
   fluenceRangeNumeric: 1.0
   fluenceRangeUnit: "J/cm²"
   fluenceRangeMin: "0.1J/cm²"
@@ -170,7 +170,7 @@ environmentalImpact:
   description: Dry process eliminates need for rinsing and water-based cleaning solutions
     compared to traditional methods
 outcomes:
-- result: "Surface roughness < 0.1 \u03BCm Ra"
+- result: "Surface roughness < 0.1 μm Ra"
   metric: Achievable surface finish measured by profilometry
 - result: "Contamination removal rate: 0.5-2.0 m²/h"
   metric: Processing speed for oxide layer removal on Platinum surfaces
@@ -180,7 +180,7 @@ technicalSpecifications:
   wavelength: 1064nm (primary), 532nm (for higher precision)
   spotSize: 0.05-1.0mm
   repetitionRate: 20-100kHz
-  fluenceRange: "1.0\u201310 J/cm²"
+  fluenceRange: "1.0–10 J/cm²"
   scanningSpeed: 100-2000 mm/s
   beamProfile: Top-hat (flat-top)
   beamProfileOptions: Top-hat, Gaussian, Multimode
@@ -199,7 +199,7 @@ prompt_chain_verification:
 chemicalFormula: Pt
 symbol: Pt
 laser_parameters:
-  fluence_threshold: "1.0\u201310 J/cm²"
+  fluence_threshold: "1.0–10 J/cm²"
   pulse_duration: 10-50ns
   wavelength_optimal: 1064nm
   power_range: 50-200W

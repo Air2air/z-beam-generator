@@ -171,7 +171,7 @@ environmentalImpact:
   description: Laser cleaning consumes 60-70% less energy compared to chemical bath
     processes with heating and ventilation requirements
 outcomes:
-- result: "Surface cleanliness achieving Sa 0.8-1.2 \u03BCm roughness"
+- result: "Surface cleanliness achieving Sa 0.8-1.2 μm roughness"
   metric: ISO 8501-1 cleanliness standard compliance for adhesion preparation
 - result: "Processing speeds of 0.5-2.0 m²/hour"
   metric: For typical oxide removal applications with 100W laser systems

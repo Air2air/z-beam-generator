@@ -8,8 +8,8 @@ keywords: soapstone, soapstone stone, laser ablation, laser cleaning, non-contac
   cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters,
   thermal processing, surface restoration
 chemicalProperties:
-  symbol: "Mg\u2083Si\u2084O\u2081\u2080(OH)\u2082"
-  formula: "Mg\u2083Si\u2084O\u2081\u2080(OH)\u2082"
+  symbol: "Mg₃Si₄O₁₀(OH)₂"
+  formula: "Mg₃Si₄O₁₀(OH)₂"
   materialType: metamorphic rock
 properties:
   density: "2.7-2.8 g/cm³"
@@ -74,12 +74,12 @@ properties:
   modulusPercentile: 58.3
   laserType: Nd:YAG laser
   wavelength: 1064nm
-  fluenceRange: "1.0\u201310 J/cm²"
-  chemicalFormula: "Mg\u2083Si\u2084O\u2081\u2080(OH)\u2082"
+  fluenceRange: "1.0–10 J/cm²"
+  chemicalFormula: "Mg₃Si₄O₁₀(OH)₂"
   thermalBehaviorType: melting
 composition:
-- "Talc (Mg\u2083Si\u2084O\u2081\u2080(OH)\u2082): 40-80%"
-- "Magnesite (MgCO\u2083): 10-40%"
+- "Talc (Mg₃Si₄O₁₀(OH)₂): 40-80%"
+- "Magnesite (MgCO₃): 10-40%"
 - 'Chlorite: 5-15%'
 - 'Amphiboles: 1-5%'
 machineSettings:
@@ -128,7 +128,7 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0\u201310 J/cm²"
+  fluenceRange: "1.0–10 J/cm²"
   fluenceRangeNumeric: 1.0
   fluenceRangeUnit: "J/cm²"
   fluenceRangeMin: "0.1J/cm²"
@@ -172,9 +172,9 @@ environmentalImpact:
     compared to dry abrasive methods
 outcomes:
 - result: Surface contamination removal to 99.8% purity
-  metric: "0.2 \u03BCm maximum residual contamination layer measured by SEM-EDS analysis"
+  metric: "0.2 μm maximum residual contamination layer measured by SEM-EDS analysis"
 - result: Sub-micron precision material removal
-  metric: "0.1-0.5 \u03BCm layer removal control with ±5% accuracy across surface"
+  metric: "0.1-0.5 μm layer removal control with ±5% accuracy across surface"
 technicalSpecifications:
   powerRange: 20-100 W
   pulseDuration: 10-150 ns
@@ -198,7 +198,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "1.0\u201310 J/cm²"
+  fluence_threshold: "1.0–10 J/cm²"
   pulse_duration: 5-50ns
   wavelength_optimal: 1064nm
   power_range: 50-200W

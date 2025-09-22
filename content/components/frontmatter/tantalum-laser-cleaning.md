@@ -77,7 +77,7 @@ properties:
   modulusPercentile: 100.0
   laserType: Pulsed fiber laser
   wavelength: 1064 nm
-  fluenceRange: "1.0\u201310 J/cm²"
+  fluenceRange: "1.0–10 J/cm²"
   chemicalFormula: Ta
   thermalBehaviorType: melting
 composition:
@@ -129,7 +129,7 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0\u201310 J/cm²"
+  fluenceRange: "1.0–10 J/cm²"
   fluenceRangeNumeric: 1.0
   fluenceRangeUnit: "J/cm²"
   fluenceRangeMin: "0.1J/cm²"
@@ -175,7 +175,7 @@ outcomes:
 - result: Surface contamination removal efficiency
   metric: '>99.9% removal of oxides and organic contaminants without substrate damage'
 - result: Processing precision
-  metric: "±5 \u03BCm accuracy with surface roughness maintained at Ra < 0.8 \u03BC"
+  metric: "±5 μm accuracy with surface roughness maintained at Ra < 0.8 μ"
     m"
 technicalSpecifications:
   powerRange: 50-200 W
@@ -183,7 +183,7 @@ technicalSpecifications:
   wavelength: 1064 nm (primary), 532 nm (for finer precision)
   spotSize: 0.1-1.0 mm
   repetitionRate: 20-100 kHz
-  fluenceRange: "1.0\u201310 J/cm²"
+  fluenceRange: "1.0–10 J/cm²"
   scanningSpeed: 500-2000 mm/s
   beamProfile: Top-hat (flat-top)
   beamProfileOptions: Top-hat, Gaussian, Multi-spot
@@ -200,7 +200,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "1.0\u201310 J/cm²"
+  fluence_threshold: "1.0–10 J/cm²"
   pulse_duration: 10-100ns
   wavelength_optimal: 1064 nm
   power_range: 50-200W

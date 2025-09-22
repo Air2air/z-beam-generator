@@ -74,7 +74,7 @@ properties:
   modulusPercentile: 100.0
   laserType: pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "1.0\u201310 J/cm²"
+  fluenceRange: "1.0–10 J/cm²"
   chemicalFormula: Fe
   thermalBehaviorType: melting
 composition:
@@ -126,7 +126,7 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0\u201310 J/cm²"
+  fluenceRange: "1.0–10 J/cm²"
   fluenceRangeNumeric: 1.0
   fluenceRangeUnit: "J/cm²"
   fluenceRangeMin: "0.1J/cm²"
@@ -167,10 +167,10 @@ environmentalImpact:
 - benefit: 97% reduction in energy consumption
   description: "Laser cleaning consumes 0.3-0.5 kWh/m² compared to 15-20 kWh/m² for abrasive blasting methods"
 outcomes:
-- result: "Surface cleanliness Sa 0.8-1.2 \u03BCm"
+- result: "Surface cleanliness Sa 0.8-1.2 μm"
   metric: Achieves ISO 8501-1 Sa 2.5 standard for surface preparation
 - result: "Processing speed 2-5 m²/hour"
-  metric: "Removal rates of 0.5-2.0 m²/hour for heavy rust layers (200-500 \u03BC"
+  metric: "Removal rates of 0.5-2.0 m²/hour for heavy rust layers (200-500 μ"
     m thickness)"
 technicalSpecifications:
   powerRange: 50-500W (pulsed)
@@ -197,7 +197,7 @@ prompt_chain_verification:
 chemicalFormula: Fe
 symbol: Fe
 laser_parameters:
-  fluence_threshold: "1.0\u201310 J/cm²"
+  fluence_threshold: "1.0–10 J/cm²"
   pulse_duration: 10-200ns
   wavelength_optimal: 1064nm
   power_range: 50-200W

@@ -13,7 +13,7 @@ keywords: kevlar-reinforced polymer, kevlar-reinforced polymer composite, laser 
   removal, industrial laser parameters, thermal processing, surface restoration
 chemicalProperties:
   symbol: KRP
-  formula: "(C\u2081\u2084H\u2081\u2080N\u2082O\u2082)\u2099 + Polymer Matrix (typically epoxy)"
+  formula: "(C₁₄H₁₀N₂O₂)\u2099 + Polymer Matrix (typically epoxy)"
   materialType: composite
 properties:
   density: "1.44-1.45 g/cm³"
@@ -78,8 +78,8 @@ properties:
   modulusPercentile: 100.0
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "1.0\u201310 J/cm²"
-  chemicalFormula: "(C\u2081\u2084H\u2081\u2080N\u2082O\u2082)\u2099"
+  fluenceRange: "1.0–10 J/cm²"
+  chemicalFormula: "(C₁₄H₁₀N₂O₂)\u2099"
 composition:
 - 'Poly(p-phenylene terephthalamide) fibers (Kevlar): 50-70%'
 - 'Epoxy resin matrix: 30-50%'
@@ -130,7 +130,7 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0\u201310 J/cm²"
+  fluenceRange: "1.0–10 J/cm²"
   fluenceRangeNumeric: 1.0
   fluenceRangeUnit: "J/cm²"
   fluenceRangeMin: "0.1J/cm²"
@@ -200,7 +200,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "1.0\u201310 J/cm²"
+  fluence_threshold: "1.0–10 J/cm²"
   pulse_duration: 10-50ns
   wavelength_optimal: 1064nm
   power_range: 50-200W

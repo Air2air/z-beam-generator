@@ -12,7 +12,7 @@ keywords: fused silica, fused silica glass, laser ablation, laser cleaning, non-
   cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters,
   thermal processing, surface restoration
 chemicalProperties:
-  symbol: "SiO\u2082"
+  symbol: "SiO₂"
   formula: SiO2
   materialType: glass
 properties:
@@ -78,11 +78,11 @@ properties:
   modulusPercentile: 86.7
   laserType: Pulsed Fiber Laser
   wavelength: 1064nm
-  fluenceRange: "0.5\u20135 J/cm²"
+  fluenceRange: "0.5–5 J/cm²"
   chemicalFormula: SiO2
   thermalBehaviorType: melting
 composition:
-- "Silicon Dioxide (SiO\u2082): 99.9-99.999%"
+- "Silicon Dioxide (SiO₂): 99.9-99.999%"
 - 'Trace impurities: <0.1% (typically OH groups, metallic impurities)'
 machineSettings:
   powerRange: 20-100W
@@ -130,7 +130,7 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "0.5\u20135 J/cm²"
+  fluenceRange: "0.5–5 J/cm²"
   fluenceRangeNumeric: 0.5
   fluenceRangeUnit: "J/cm²"
   fluenceRangeMin: "0.1J/cm²"
@@ -204,7 +204,7 @@ prompt_chain_verification:
   cultural_adaptation_applied: true
 chemicalFormula: SiO2
 laser_parameters:
-  fluence_threshold: "0.5\u20135 J/cm²"
+  fluence_threshold: "0.5–5 J/cm²"
   pulse_duration: 10-100ns
   wavelength_optimal: 1064nm
   power_range: 20-100W

@@ -82,11 +82,11 @@ properties:
   chemicalFormula: SiO2-Al2O3-K2O
   thermalBehaviorType: melting
 composition:
-- "Silica (SiO\u2082): 70-77%"
-- "Alumina (Al\u2082O\u2083): 11-14%"
-- "Potassium oxide (K\u2082O): 3-5%"
-- "Sodium oxide (Na\u2082O): 3-5%"
-- "Other oxides (CaO, FeO, Fe\u2082O\u2083, MgO): 1-3%"
+- "Silica (SiO₂): 70-77%"
+- "Alumina (Al₂O₃): 11-14%"
+- "Potassium oxide (K₂O): 3-5%"
+- "Sodium oxide (Na₂O): 3-5%"
+- "Other oxides (CaO, FeO, Fe₂O₃, MgO): 1-3%"
 machineSettings:
   powerRange: 50-200W
   powerRangeNumeric: 125.0

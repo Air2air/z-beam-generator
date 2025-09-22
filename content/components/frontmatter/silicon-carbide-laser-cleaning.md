@@ -74,7 +74,7 @@ properties:
   modulusPercentile: 100.0
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "1.0\u201310 J/cm²"
+  fluenceRange: "1.0–10 J/cm²"
   chemicalFormula: SiC
   thermalBehaviorType: melting
 composition:
@@ -126,7 +126,7 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0\u201310 J/cm²"
+  fluenceRange: "1.0–10 J/cm²"
   fluenceRangeNumeric: 1.0
   fluenceRangeUnit: "J/cm²"
   fluenceRangeMin: "0.1J/cm²"
@@ -140,8 +140,8 @@ applications:
   performance'
 - 'Aerospace: Cleaning of Silicon Carbide components for high-temperature applications'
 compatibility:
-- "Aluminum oxide (Al\u2082O\u2083) - similar thermal and mechanical properties"
-- "Silicon nitride (Si\u2083N\u2084) - comparable laser processing parameters"
+- "Aluminum oxide (Al₂O₃) - similar thermal and mechanical properties"
+- "Silicon nitride (Si₃N₄) - comparable laser processing parameters"
 - Tungsten carbide (WC) - similar hardness and ablation characteristics
 regulatoryStandards: IEC 60825-1 (Laser Safety), ISO 11551 (Laser Ablation Testing),
   SEMI S2 (Semiconductor Equipment Safety)
@@ -174,15 +174,15 @@ environmentalImpact:
     consumption of 3-5 kWh per cleaning cycle
 outcomes:
 - result: Surface contamination removal efficiency
-  metric: ">99.9% removal of sub-micron particles and organic residues with surface roughness maintained below 0.5 \u03BCm Ra"
+  metric: ">99.9% removal of sub-micron particles and organic residues with surface roughness maintained below 0.5 μm Ra"
 - result: Processing throughput
-  metric: "50-200 cm²/min cleaning rate with positioning accuracy of ±5 \u03BC"
+  metric: "50-200 cm²/min cleaning rate with positioning accuracy of ±5 μ"
     m for semiconductor-grade SiC wafers"
 technicalSpecifications:
   powerRange: 50-200 W (average power for pulsed fiber lasers)
   pulseDuration: 10-100 ns (nanosecond range for controlled ablation)
   wavelength: 1064 nm (primary), 532 nm (frequency-doubled for higher precision)
-  spotSize: "50-500 \u03BCm (adjustable based on contamination type and area)"
+  spotSize: "50-500 μm (adjustable based on contamination type and area)"
   repetitionRate: 20-100 kHz (optimized for thermal management and removal efficiency)
   fluenceRange: "2.5-8.0 J/cm² (above ablation threshold for SiC)"
   scanningSpeed: 100-2000 mm/s (dependent on contamination thickness and laser parameters)
@@ -202,7 +202,7 @@ prompt_chain_verification:
   cultural_adaptation_applied: true
 chemicalFormula: SiC
 laser_parameters:
-  fluence_threshold: "1.0\u201310 J/cm²"
+  fluence_threshold: "1.0–10 J/cm²"
   pulse_duration: 10-50ns
   wavelength_optimal: 1064nm
   power_range: 50-200W

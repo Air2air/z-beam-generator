@@ -74,7 +74,7 @@ properties:
   modulusPercentile: 98.3
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "0.5\u20135 J/cm²"
+  fluenceRange: "0.5–5 J/cm²"
   chemicalFormula: Au
   thermalBehaviorType: melting
 composition:
@@ -126,7 +126,7 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "0.5\u20135 J/cm²"
+  fluenceRange: "0.5–5 J/cm²"
   fluenceRangeNumeric: 0.5
   fluenceRangeUnit: "J/cm²"
   fluenceRangeMin: "0.1J/cm²"
@@ -172,7 +172,7 @@ outcomes:
 - result: Surface contamination removal efficiency
   metric: '>99.9% removal of organic contaminants and oxides without substrate damage'
 - result: Processing precision
-  metric: "Sub-micron layer control with material removal rates of 0.1-5 \u03BCm per pass"
+  metric: "Sub-micron layer control with material removal rates of 0.1-5 μm per pass"
 technicalSpecifications:
   powerRange: 20-100 W
   pulseDuration: 10-100 ns
@@ -198,7 +198,7 @@ prompt_chain_verification:
 chemicalFormula: Au
 symbol: Au
 laser_parameters:
-  fluence_threshold: "0.5\u20135 J/cm²"
+  fluence_threshold: "0.5–5 J/cm²"
   pulse_duration: 10-100ns
   wavelength_optimal: 1064nm
   power_range: 20-100W

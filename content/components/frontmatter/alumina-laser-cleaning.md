@@ -3,13 +3,13 @@ name: Alumina
 category: ceramic
 title: Alumina Laser Cleaning
 headline: Comprehensive technical guide for laser cleaning ceramic alumina
-description: "Laser cleaning of alumina (Al\u2082O\u2083) utilizes precise pulsed fiber lasers to selectively remove surface contaminants through ablation while preserving the ceramic substrate's structural integrity. The process exploits alumina's high thermal stability and absorption characteristics at specific wavelengths for non-contact, chemical-free cleaning."
+description: "Laser cleaning of alumina (Al₂O₃) utilizes precise pulsed fiber lasers to selectively remove surface contaminants through ablation while preserving the ceramic substrate's structural integrity. The process exploits alumina's high thermal stability and absorption characteristics at specific wavelengths for non-contact, chemical-free cleaning."
 keywords: alumina, alumina ceramic, laser ablation, laser cleaning, non-contact cleaning,
   pulsed fiber laser, surface contamination removal, industrial laser parameters,
   thermal processing, surface restoration
 chemicalProperties:
   symbol: Al-O
-  formula: "Al\u2082O\u2083"
+  formula: "Al₂O₃"
   materialType: ceramic
 properties:
   density: "3.95-4.1 g/cm³"
@@ -74,14 +74,14 @@ properties:
   modulusPercentile: 100.0
   laserType: Pulsed fiber laser
   wavelength: 1064 nm
-  fluenceRange: "1.0\u201310 J/cm²"
+  fluenceRange: "1.0–10 J/cm²"
   chemicalFormula: Al2O3
   thermalBehaviorType: melting
 composition:
-- "Aluminum Oxide (Al\u2082O\u2083): 99.5-99.9%"
-- "Silicon Dioxide (SiO\u2082): 0.05-0.3%"
-- "Iron Oxide (Fe\u2082O\u2083): 0.02-0.1%"
-- "Sodium Oxide (Na\u2082O): 0.1-0.3%"
+- "Aluminum Oxide (Al₂O₃): 99.5-99.9%"
+- "Silicon Dioxide (SiO₂): 0.05-0.3%"
+- "Iron Oxide (Fe₂O₃): 0.02-0.1%"
+- "Sodium Oxide (Na₂O): 0.1-0.3%"
 machineSettings:
   powerRange: 50-200W
   powerRangeNumeric: 125.0
@@ -128,7 +128,7 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0\u201310 J/cm²"
+  fluenceRange: "1.0–10 J/cm²"
   fluenceRangeNumeric: 1.0
   fluenceRangeUnit: "J/cm²"
   fluenceRangeMin: "0.1J/cm²"
@@ -177,12 +177,12 @@ outcomes:
   metric: '>99.9% removal of surface contaminants while maintaining <0.1% substrate
     material loss'
 - result: Processing precision
-  metric: "Achieves cleaning accuracy of ±10 \u03BCm with processing speeds of 0.5-2.0 m²/hour depending on contamination level"
+  metric: "Achieves cleaning accuracy of ±10 μm with processing speeds of 0.5-2.0 m²/hour depending on contamination level"
 technicalSpecifications:
   powerRange: 50-200 W (pulsed)
   pulseDuration: 10-200 ns
   wavelength: 1064 nm (primary), 532 nm (for higher absorption)
-  spotSize: "50-1000 \u03BCm"
+  spotSize: "50-1000 μm"
   repetitionRate: 20-100 kHz
   fluenceRange: "1.0-10 J/cm² (ablation threshold ~1.0 J/cm² at 1064 nm)"
   scanningSpeed: 100-2000 mm/s
@@ -203,7 +203,7 @@ prompt_chain_verification:
 chemicalFormula: Al2O3
 symbol: Al-O
 laser_parameters:
-  fluence_threshold: "1.0\u201310 J/cm²"
+  fluence_threshold: "1.0–10 J/cm²"
   pulse_duration: 10-200ns
   wavelength_optimal: 1064 nm
   power_range: 50-200W

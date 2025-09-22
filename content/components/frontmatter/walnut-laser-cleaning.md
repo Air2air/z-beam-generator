@@ -13,7 +13,7 @@ keywords: walnut, walnut wood, laser ablation, laser cleaning, non-contact clean
   thermal processing, surface restoration
 chemicalProperties:
   symbol: N/A (Biological Composite)
-  formula: "C\u2086H\u2081\u2080O\u2085\u2099 (Cellulose primary component)"
+  formula: "C₆H₁₀O₅\u2099 (Cellulose primary component)"
   materialType: wood
 properties:
   density: "640-700 kg/m³ (Juglans nigra)"
@@ -75,10 +75,10 @@ properties:
   modulusPercentile: 0.0
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "0.5\u20133.0 J/cm²"
-  chemicalFormula: "Complex biological composite; primarily cellulose (C\u2086H\u2081"
-    \u2080O\u2085)\u2099, lignin [C\u2089H\u2081\u2080O\u2083(OCH\u2083)\u2080.\u2089\
-    \u208B\u2081.\u2087]\u2099, hemicellulose"
+  fluenceRange: "0.5–3.0 J/cm²"
+  chemicalFormula: "Complex biological composite; primarily cellulose (C₆H₁"
+    ₀O₅)\u2099, lignin [C₉H₁₀O₃(OCH₃)₀.₉\
+    \u208B₁.₇]\u2099, hemicellulose"
   thermalBehaviorType: decomposition
   decompositionPoint: "280°C"
   decompositionPointNumeric: 280
@@ -134,7 +134,7 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "0.5\u20133.0 J/cm²"
+  fluenceRange: "0.5–3.0 J/cm²"
   fluenceRangeNumeric: 0.5
   fluenceRangeUnit: "J/cm²"
   fluenceRangeMin: "0.1J/cm²"
@@ -189,7 +189,7 @@ technicalSpecifications:
   wavelength: 1064 nm (primary), 532 nm (optional for finer detail)
   spotSize: 0.1-1.0 mm
   repetitionRate: 20-100 kHz
-  fluenceRange: "0.5\u20133.0 J/cm²"
+  fluenceRange: "0.5–3.0 J/cm²"
   scanningSpeed: 100-2000 mm/s
   beamProfile: Top-hat (flat-top)
   beamProfileOptions: Top-hat, Gaussian
@@ -206,7 +206,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "0.5\u20133.0 J/cm²"
+  fluence_threshold: "0.5–3.0 J/cm²"
   pulse_duration: 10-50ns
   wavelength_optimal: 1064nm
   power_range: 20-100W

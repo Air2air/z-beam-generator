@@ -74,7 +74,7 @@ properties:
   modulusPercentile: 0.0
   laserType: Nd:YAG
   wavelength: 1064nm
-  fluenceRange: "1.0\u20133.0 J/cm²"
+  fluenceRange: "1.0–3.0 J/cm²"
   chemicalFormula: "CaSO4·2H2O"
   thermalBehaviorType: melting
 composition:
@@ -128,7 +128,7 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0\u20133.0 J/cm²"
+  fluenceRange: "1.0–3.0 J/cm²"
   fluenceRangeNumeric: 1.0
   fluenceRangeUnit: "J/cm²"
   fluenceRangeMin: "0.1J/cm²"
@@ -199,7 +199,7 @@ prompt_chain_verification:
   cultural_adaptation_applied: true
 chemicalFormula: "CaSO4·2H2O"
 laser_parameters:
-  fluence_threshold: "1.0\u20133.0 J/cm²"
+  fluence_threshold: "1.0–3.0 J/cm²"
   pulse_duration: 10-50ns
   wavelength_optimal: 1064nm
   power_range: 50-200W

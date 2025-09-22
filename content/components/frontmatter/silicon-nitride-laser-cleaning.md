@@ -78,7 +78,7 @@ properties:
   modulusPercentile: 100.0
   laserType: Pulsed Fiber Laser
   wavelength: 1064 nm
-  fluenceRange: "0.5\u20135 J/cm²"
+  fluenceRange: "0.5–5 J/cm²"
   chemicalFormula: Si3N4
   thermalBehaviorType: melting
 composition:
@@ -131,7 +131,7 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "0.5\u20135 J/cm²"
+  fluenceRange: "0.5–5 J/cm²"
   fluenceRangeNumeric: 0.5
   fluenceRangeUnit: "J/cm²"
   fluenceRangeMin: "0.1J/cm²"
@@ -181,7 +181,7 @@ outcomes:
 - result: Surface contamination removal efficiency
   metric: '>99.9% particulate removal with <0.1% substrate damage'
 - result: Processing speed and precision
-  metric: "1-10 cm²/min cleaning rate with ±10 \u03BCm precision, depending on contamination type and laser parameters"
+  metric: "1-10 cm²/min cleaning rate with ±10 μm precision, depending on contamination type and laser parameters"
 technicalSpecifications:
   powerRange: 20-100 W (average power for pulsed fiber lasers)
   pulseDuration: 10-100 ns
@@ -208,7 +208,7 @@ prompt_chain_verification:
 chemicalFormula: Si3N4
 symbol: Si-N
 laser_parameters:
-  fluence_threshold: "0.5\u20135 J/cm²"
+  fluence_threshold: "0.5–5 J/cm²"
   pulse_duration: 10-100ns
   wavelength_optimal: 1064 nm
   power_range: 20-100W

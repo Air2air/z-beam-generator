@@ -79,7 +79,7 @@ properties:
   modulusPercentile: 100.0
   laserType: Fiber laser
   wavelength: 1064nm
-  fluenceRange: "1.0\u201310 J/cm²"
+  fluenceRange: "1.0–10 J/cm²"
   chemicalFormula: Fe-C
   thermalBehaviorType: melting
 composition:
@@ -135,7 +135,7 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0\u201310 J/cm²"
+  fluenceRange: "1.0–10 J/cm²"
   fluenceRangeNumeric: 1.0
   fluenceRangeUnit: "J/cm²"
   fluenceRangeMin: "0.1J/cm²"
@@ -188,7 +188,7 @@ technicalSpecifications:
   wavelength: 1064nm (primary), 532nm (optional for specific applications)
   spotSize: 0.1-1.0mm (adjustable based on contamination type and removal requirements)
   repetitionRate: 20-100kHz (standard for industrial fiber laser systems)
-  fluenceRange: "1.0\u201310 J/cm² (depending on surface contamination and steel grade)"
+  fluenceRange: "1.0–10 J/cm² (depending on surface contamination and steel grade)"
   scanningSpeed: 100-5000 mm/s (optimized for specific removal requirements)
   beamProfile: Top-hat or Gaussian (depending on application requirements)
   beamProfileOptions: Top-hat, Gaussian, Flat-top, Multi-mode
@@ -208,7 +208,7 @@ prompt_chain_verification:
 chemicalFormula: Fe-C
 symbol: Fe
 laser_parameters:
-  fluence_threshold: "1.0\u201310 J/cm²"
+  fluence_threshold: "1.0–10 J/cm²"
   pulse_duration: 10-200ns
   wavelength_optimal: 1064nm
   power_range: 50-200W

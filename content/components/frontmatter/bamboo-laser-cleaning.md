@@ -12,7 +12,7 @@ keywords: bamboo, bamboo wood, laser ablation, laser cleaning, non-contact clean
   thermal processing, surface restoration
 chemicalProperties:
   symbol: N/A (organic composite)
-  formula: "C\u2086H\u2081\u2080O\u2085 (cellulose base)"
+  formula: "C₆H₁₀O₅ (cellulose base)"
   materialType: lignocellulosic composite
 properties:
   density: "0.6-0.8 g/cm³ (species dependent)"
@@ -75,7 +75,7 @@ properties:
   laserType: Pulsed fiber laser
   wavelength: 1064nm
   fluenceRange: "0.5-3.0 J/cm²"
-  chemicalFormula: "Complex organic composite (C\u2086H\u2081\u2080O\u2085)n cellulose base"
+  chemicalFormula: "Complex organic composite (C₆H₁₀O₅)n cellulose base"
   thermalBehaviorType: decomposition
   decompositionPoint: "250°C"
   decompositionPointNumeric: 250
@@ -176,7 +176,7 @@ outcomes:
 - result: Surface contamination removal efficiency
   metric: '>98% removal of biological growth and surface contaminants'
 - result: Material preservation accuracy
-  metric: "<5\u03BCm surface layer removal with complete substrate preservation"
+  metric: "<5μm surface layer removal with complete substrate preservation"
 technicalSpecifications:
   powerRange: 20-100W (pulsed)
   pulseDuration: 10-50ns

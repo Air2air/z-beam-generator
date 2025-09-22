@@ -11,7 +11,7 @@ keywords: pine, pine wood, laser ablation, laser cleaning, non-contact cleaning,
   processing, surface restoration
 chemicalProperties:
   symbol: N/A
-  formula: "C\u2086H\u2081\u2080O\u2085 (cellulose base)"
+  formula: "C₆H₁₀O₅ (cellulose base)"
   materialType: wood
 properties:
   density: "370-600 kg/m³ (varies by species and moisture content)"

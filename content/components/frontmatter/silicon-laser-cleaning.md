@@ -143,8 +143,8 @@ applications:
   fabrication'
 - 'Photovoltaics: Cleaning of solar cell surfaces to enhance efficiency and performance'
 compatibility:
-- "Silicon dioxide (SiO\u2082) - native oxide layer"
-- "Silicon nitride (Si\u2083N\u2084) - passivation layers"
+- "Silicon dioxide (SiO₂) - native oxide layer"
+- "Silicon nitride (Si₃N₄) - passivation layers"
 - Aluminum - metallization layers
 regulatoryStandards: SEMI S2-0315 (Environmental, Health, and Safety Guideline for
   Semiconductor Manufacturing Equipment), IEC 60825-1 (Laser Product Safety)
@@ -175,7 +175,7 @@ environmentalImpact:
     requiring multiple rinse cycles
 outcomes:
 - result: Surface contamination removal efficiency
-  metric: ">99.9% removal of organic contaminants and particles >0.1 \u03BCm"
+  metric: ">99.9% removal of organic contaminants and particles >0.1 μm"
 - result: Processing throughput
   metric: 100-500 wafers/hour (200mm wafers) with sub-micron precision
 technicalSpecifications:

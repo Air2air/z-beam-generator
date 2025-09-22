@@ -74,7 +74,7 @@ properties:
   modulusPercentile: 96.7
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "1.0\u201310 J/cm²"
+  fluenceRange: "1.0–10 J/cm²"
   chemicalFormula: Hf
   thermalBehaviorType: melting
 composition:
@@ -126,7 +126,7 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0\u201310 J/cm²"
+  fluenceRange: "1.0–10 J/cm²"
   fluenceRangeNumeric: 1.0
   fluenceRangeUnit: "J/cm²"
   fluenceRangeMin: "0.1J/cm²"
@@ -172,7 +172,7 @@ outcomes:
 - result: Surface contamination removal efficiency
   metric: '>99.9% removal of oxides and contaminants with <0.1% substrate loss'
 - result: Processing precision
-  metric: "±5 \u03BCm accuracy with surface roughness maintained at Ra < 0.8 \u03BC"
+  metric: "±5 μm accuracy with surface roughness maintained at Ra < 0.8 μ"
     m"
 technicalSpecifications:
   powerRange: 50-200 W
@@ -197,7 +197,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "1.0\u201310 J/cm²"
+  fluence_threshold: "1.0–10 J/cm²"
   pulse_duration: 10-200ns
   wavelength_optimal: 1064nm
   power_range: 50-200W

@@ -13,7 +13,7 @@ keywords: hickory, hickory wood, laser ablation, laser cleaning, non-contact cle
   thermal processing, surface restoration
 chemicalProperties:
   symbol: N/A (organic composite)
-  formula: "C\u2086H\u2081\u2080O\u2085 (cellulose base)"
+  formula: "C₆H₁₀O₅ (cellulose base)"
   materialType: hardwood
 properties:
   density: "815-930 kg/m³ (air-dried)"
@@ -175,7 +175,7 @@ environmentalImpact:
     chemical stripping methods for hickory surface preparation
 outcomes:
 - result: Surface contamination removal efficiency
-  metric: ">95% removal of finishes and contaminants with <5 \u03BCm surface alteration"
+  metric: ">95% removal of finishes and contaminants with <5 μm surface alteration"
 - result: Processing speed
   metric: "2-5 m²/hour depending on contamination level and required precision"
 technicalSpecifications:

@@ -13,7 +13,7 @@ keywords: terracotta, terracotta masonry, laser ablation, laser cleaning, non-co
   thermal processing, surface restoration
 chemicalProperties:
   symbol: N/A (composite material)
-  formula: "Variable composition (primarily SiO\u2082, Al\u2082O\u2083, Fe\u2082O\u2083"
+  formula: "Variable composition (primarily SiO₂, Al₂O₃, Fe₂O₃"
     )"
   materialType: masonry
 properties:
@@ -79,14 +79,14 @@ properties:
   modulusPercentile: 0.0
   laserType: Nd:YAG laser
   wavelength: 1064nm
-  fluenceRange: "0.5\u20135 J/cm²"
+  fluenceRange: "0.5–5 J/cm²"
   chemicalFormula: Variable (primarily hydrated aluminum silicates with iron oxides)
   thermalBehaviorType: melting
 composition:
-- "SiO\u2082: 45-60%"
-- "Al\u2082O\u2083: 15-25%"
-- "Fe\u2082O\u2083: 5-15%"
-- "K\u2082O + Na\u2082O: 3-7%"
+- "SiO₂: 45-60%"
+- "Al₂O₃: 15-25%"
+- "Fe₂O₃: 5-15%"
+- "K₂O + Na₂O: 3-7%"
 - 'CaO + MgO: 1-5%'
 - 'LOI (Loss on Ignition): 5-10%'
 machineSettings:
@@ -135,7 +135,7 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "0.5\u20135 J/cm²"
+  fluenceRange: "0.5–5 J/cm²"
   fluenceRangeNumeric: 0.5
   fluenceRangeUnit: "J/cm²"
   fluenceRangeMin: "0.1J/cm²"
@@ -207,7 +207,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "0.5\u20135 J/cm²"
+  fluence_threshold: "0.5–5 J/cm²"
   pulse_duration: 10-100ns
   wavelength_optimal: 1064nm
   power_range: 20-100W

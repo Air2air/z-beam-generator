@@ -12,8 +12,8 @@ keywords: cement, cement masonry, laser ablation, laser cleaning, non-contact cl
   thermal processing, surface restoration
 chemicalProperties:
   symbol: N/A (composite material)
-  formula: "Complex calcium silicates and aluminates (3CaO·SiO\u2082, 2CaO·"
-    SiO\u2082, 3CaO·Al\u2082O\u2083)"
+  formula: "Complex calcium silicates and aluminates (3CaO·SiO₂, 2CaO·"
+    SiO₂, 3CaO·Al₂O₃)"
   materialType: masonry
 properties:
   density: "2.8-3.15 g/cm³ (Portland cement)"
@@ -78,15 +78,15 @@ properties:
   modulusPercentile: 16.7
   laserType: Nd:YAG laser
   wavelength: 1064nm
-  fluenceRange: "1.0\u201310 J/cm²"
-  chemicalFormula: "Complex mixture primarily CaO (60-67%), SiO\u2082 (17-25%), Al\u2082"
-    O\u2083 (3-8%), Fe\u2082O\u2083 (0.5-6%)"
+  fluenceRange: "1.0–10 J/cm²"
+  chemicalFormula: "Complex mixture primarily CaO (60-67%), SiO₂ (17-25%), Al₂"
+    O₃ (3-8%), Fe₂O₃ (0.5-6%)"
   thermalBehaviorType: melting
 composition:
-- "Tricalcium silicate (3CaO·SiO\u2082): 45-60%"
-- "Dicalcium silicate (2CaO·SiO\u2082): 15-30%"
-- "Tricalcium aluminate (3CaO·Al\u2082O\u2083): 6-12%"
-- "Tetracalcium aluminoferrite (4CaO·Al\u2082O\u2083·Fe\u2082O\u2083): 6-8%"
+- "Tricalcium silicate (3CaO·SiO₂): 45-60%"
+- "Dicalcium silicate (2CaO·SiO₂): 15-30%"
+- "Tricalcium aluminate (3CaO·Al₂O₃): 6-12%"
+- "Tetracalcium aluminoferrite (4CaO·Al₂O₃·Fe₂O₃): 6-8%"
 machineSettings:
   powerRange: 50-200W
   powerRangeNumeric: 125.0
@@ -133,7 +133,7 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0\u201310 J/cm²"
+  fluenceRange: "1.0–10 J/cm²"
   fluenceRangeNumeric: 1.0
   fluenceRangeUnit: "J/cm²"
   fluenceRangeMin: "0.1J/cm²"
@@ -177,8 +177,8 @@ environmentalImpact:
 outcomes:
 - result: Surface contamination removal efficiency >99%
   metric: Measured via SEM-EDS analysis showing complete contaminant removal
-- result: "Substrate preservation with <50\u03BCm material loss"
-  metric: "Precision ablation maintaining original surface integrity within 20-50\u03BC"
+- result: "Substrate preservation with <50μm material loss"
+  metric: "Precision ablation maintaining original surface integrity within 20-50μ"
     m tolerance"
 technicalSpecifications:
   powerRange: 50-300W (pulsed fiber lasers), 20-100W (Nd:YAG)
@@ -203,7 +203,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "1.0\u201310 J/cm²"
+  fluence_threshold: "1.0–10 J/cm²"
   pulse_duration: 10-200ns
   wavelength_optimal: 1064nm
   power_range: 50-200W

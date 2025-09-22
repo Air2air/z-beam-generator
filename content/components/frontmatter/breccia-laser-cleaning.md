@@ -80,7 +80,7 @@ properties:
   laserType: Pulsed fiber laser
   wavelength: 1064nm
   fluenceRange: "1.0-10 J/cm²"
-  chemicalFormula: "Variable composite (typically CaCO\u2083, SiO\u2082, various silicates)"
+  chemicalFormula: "Variable composite (typically CaCO₃, SiO₂, various silicates)"
   thermalBehaviorType: melting
 composition:
 - 'Angular rock fragments (clasts): 50-70% (limestone, chert, quartzite, other sedimentary

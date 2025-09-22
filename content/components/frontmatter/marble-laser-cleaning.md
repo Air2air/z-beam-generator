@@ -176,7 +176,7 @@ environmentalImpact:
   description: "Eliminates water usage entirely (traditional methods use 5-20 liters per square meter), conserving approximately 10,000 liters of water per 1000m² of cleaned surface"
 outcomes:
 - result: Surface contamination removal efficiency
-  metric: ">98% removal of biological crusts and pollutants while preserving <2\u03BC"
+  metric: ">98% removal of biological crusts and pollutants while preserving <2μ"
     m of original substrate"
 - result: Processing speed
   metric: "0.5-2.0 m²/hour depending on contamination type and laser parameters with sub-millimeter precision"

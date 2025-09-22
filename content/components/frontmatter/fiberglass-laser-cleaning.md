@@ -13,7 +13,7 @@ keywords: fiberglass, fiberglass composite, laser ablation, laser cleaning, non-
   thermal processing, surface restoration
 chemicalProperties:
   symbol: N/A (composite)
-  formula: "SiO\u2082 (60-70%) + Polymer Matrix (30-40%)"
+  formula: "SiO₂ (60-70%) + Polymer Matrix (30-40%)"
   materialType: composite
 properties:
   density: "1.8-2.5 g/cm³"
@@ -76,13 +76,13 @@ properties:
   laserType: Pulsed fiber laser
   wavelength: 1064nm
   fluenceRange: "0.5-3 J/cm²"
-  chemicalFormula: "SiO\u2082 (primary constituent)"
+  chemicalFormula: "SiO₂ (primary constituent)"
   thermalBehaviorType: decomposition
   decompositionPoint: "1200°C"
   decompositionPointNumeric: 1200
   decompositionPointUnit: "°C"
 composition:
-- "Silica glass (SiO\u2082) 60-70%"
+- "Silica glass (SiO₂) 60-70%"
 - Epoxy/Polyester resin 30-40%
 - Additives (fillers, coupling agents) 1-5%
 machineSettings:

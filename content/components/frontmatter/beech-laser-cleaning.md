@@ -12,7 +12,7 @@ keywords: beech, beech wood, laser ablation, laser cleaning, non-contact cleanin
   thermal processing, surface restoration
 chemicalProperties:
   symbol: N/A
-  formula: "C\u2086H\u2081\u2080O\u2085 (cellulose base)"
+  formula: "C₆H₁₀O₅ (cellulose base)"
   materialType: wood
 properties:
   density: "720 kg/m³ (air-dry)"
@@ -74,8 +74,8 @@ properties:
   modulusPercentile: 0.0
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "0.5\u20133.0 J/cm²"
-  chemicalFormula: "C\u2086H\u2081\u2080O\u2085 (cellulose base)"
+  fluenceRange: "0.5–3.0 J/cm²"
+  chemicalFormula: "C₆H₁₀O₅ (cellulose base)"
   thermalBehaviorType: decomposition
   decompositionPoint: "300°C"
   decompositionPointNumeric: 300
@@ -131,7 +131,7 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "0.5\u20133.0 J/cm²"
+  fluenceRange: "0.5–3.0 J/cm²"
   fluenceRangeNumeric: 0.5
   fluenceRangeUnit: "J/cm²"
   fluenceRangeMin: "0.1J/cm²"
@@ -174,7 +174,7 @@ environmentalImpact:
     or mechanical cleaning methods for Beech wood surfaces
 outcomes:
 - result: Surface contamination removal efficiency
-  metric: ">99% removal of surface contaminants with <5\u03BCm material loss"
+  metric: ">99% removal of surface contaminants with <5μm material loss"
 - result: Processing speed
   metric: "0.5-2.0 m²/hour depending on contamination level and laser parameters"
 technicalSpecifications:
@@ -200,7 +200,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "0.5\u20133.0 J/cm²"
+  fluence_threshold: "0.5–3.0 J/cm²"
   pulse_duration: 10-50ns
   wavelength_optimal: 1064nm
   power_range: 20-100W

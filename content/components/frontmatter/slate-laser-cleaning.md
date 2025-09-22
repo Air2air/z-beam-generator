@@ -13,7 +13,7 @@ keywords: slate, slate stone, laser ablation, laser cleaning, non-contact cleani
   thermal processing, surface restoration
 chemicalProperties:
   symbol: N/A (complex mineral composite)
-  formula: "Variable composition (primarily SiO\u2082, Al\u2082O\u2083, K\u2082O, Fe\u2082O\u2083, MgO)"
+  formula: "Variable composition (primarily SiO₂, Al₂O₃, K₂O, Fe₂O₃, MgO)"
   materialType: metamorphic rock
 properties:
   density: "2.6-2.9 g/cm³"
@@ -82,11 +82,11 @@ properties:
   chemicalFormula: Complex silicate composition (no single formula)
   thermalBehaviorType: melting
 composition:
-- "Quartz (SiO\u2082): 20-40%"
-- "Muscovite/Illite (KAl\u2082(AlSi\u2083O\u2081\u2080)(OH)\u2082): 30-50%"
-- "Chlorite ((Mg,Fe)\u2083(Si,Al)\u2084O\u2081\u2080(OH)\u2082·(Mg,Fe)\u2083(OH)\u2086\
+- "Quartz (SiO₂): 20-40%"
+- "Muscovite/Illite (KAl₂(AlSi₃O₁₀)(OH)₂): 30-50%"
+- "Chlorite ((Mg,Fe)₃(Si,Al)₄O₁₀(OH)₂·(Mg,Fe)₃(OH)₆\
   ): 10-25%"
-- "Iron oxides (Fe\u2082O\u2083/FeO): 3-15%"
+- "Iron oxides (Fe₂O₃/FeO): 3-15%"
 - 'Accessory minerals: Carbonates, feldspars, pyrite (1-5%)'
 machineSettings:
   powerRange: 20-100W

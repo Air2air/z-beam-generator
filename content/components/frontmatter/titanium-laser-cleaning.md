@@ -78,7 +78,7 @@ properties:
   modulusPercentile: 100.0
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "1.0\u201310 J/cm²"
+  fluenceRange: "1.0–10 J/cm²"
   chemicalFormula: Ti
   thermalBehaviorType: melting
 composition:
@@ -130,7 +130,7 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0\u201310 J/cm²"
+  fluenceRange: "1.0–10 J/cm²"
   fluenceRangeNumeric: 1.0
   fluenceRangeUnit: "J/cm²"
   fluenceRangeMin: "0.1J/cm²"
@@ -176,7 +176,7 @@ environmentalImpact:
   description: Dry process eliminates water usage compared to chemical rinsing and
     abrasive water jet methods
 outcomes:
-- result: "Surface roughness Ra < 0.8 \u03BCm"
+- result: "Surface roughness Ra < 0.8 μm"
   metric: Achievable surface finish after laser cleaning with 1064nm pulsed laser
 - result: "Contamination removal rate of 2-5 m²/hour"
   metric: Processing speed for oxide layer removal from titanium surfaces
@@ -205,7 +205,7 @@ prompt_chain_verification:
 chemicalFormula: Ti
 symbol: Ti
 laser_parameters:
-  fluence_threshold: "1.0\u201310 J/cm²"
+  fluence_threshold: "1.0–10 J/cm²"
   pulse_duration: 10-100ns
   wavelength_optimal: 1064nm
   power_range: 50-200W

@@ -14,10 +14,10 @@ keywords: teak, teak wood, laser ablation, laser cleaning, non-contact cleaning,
   processing, surface restoration
 chemicalProperties:
   symbol: N/A (Organic Composite)
-  formula: "Complex Lignocellulosic Matrix (C\u2086H\u2081\u2080O\u2085)\u2099, Lignin, Extractives"
+  formula: "Complex Lignocellulosic Matrix (C₆H₁₀O₅)\u2099, Lignin, Extractives"
   materialType: wood
 properties:
-  density: "630\u2013750 kg/m³ (air-dry)"
+  density: "630–750 kg/m³ (air-dry)"
   densityNumeric: 690.0
   densityUnit: "kg/m³"
   densityMin: "1.8 g/cm³"
@@ -34,7 +34,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "0.12\u20130.18 W/(m·K) (radial)"
+  thermalConductivity: "0.12–0.18 W/(m·K) (radial)"
   thermalConductivityNumeric: 0.12
   thermalConductivityUnit: W/
   thermalConductivityMin: "0.5 W/m·K"
@@ -44,7 +44,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.0
-  tensileStrength: "100\u2013135 MPa (parallel to grain)"
+  tensileStrength: "100–135 MPa (parallel to grain)"
   tensileStrengthNumeric: 100.0
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -54,7 +54,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 5.3
-  hardness: "2.3\u20134.0 kN (Janka Hardness)"
+  hardness: "2.3–4.0 kN (Janka Hardness)"
   hardnessNumeric: 2.3
   hardnessUnit: kN
   hardnessMin: 1 Mohs
@@ -64,7 +64,7 @@ properties:
   hardnessMaxNumeric: 10.0
   hardnessMaxUnit: Mohs
   hardnessPercentile: 14.4
-  youngsModulus: "10.0\u201314.5 GPa"
+  youngsModulus: "10.0–14.5 GPa"
   youngsModulusNumeric: 10.0
   youngsModulusUnit: GPa
   youngsModulusMin: 20 GPa
@@ -76,7 +76,7 @@ properties:
   modulusPercentile: 0.0
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "0.5\u20135 J/cm²"
+  fluenceRange: "0.5–5 J/cm²"
   chemicalFormula: Complex Organic Composite (Cellulose ~45%, Lignin ~35%, Hemicellulose
     ~15%, Extractives ~5%)
   thermalBehaviorType: decomposition
@@ -84,10 +84,10 @@ properties:
   decompositionPointNumeric: 300
   decompositionPointUnit: "°C"
 composition:
-- "Cellulose (C\u2086H\u2081\u2080O\u2085)\u2099: 40\u201350%"
-- "Lignin (Complex polyphenolic): 30\u201340%"
-- "Hemicellulose: 15\u201320%"
-- "Extractives (tectoquinone, lapachol, oils, resins): 3\u20135%"
+- "Cellulose (C₆H₁₀O₅)\u2099: 40–50%"
+- "Lignin (Complex polyphenolic): 30–40%"
+- "Hemicellulose: 15–20%"
+- "Extractives (tectoquinone, lapachol, oils, resins): 3–5%"
 machineSettings:
   powerRange: 20-100W
   powerRangeNumeric: 60.0
@@ -134,7 +134,7 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "0.5\u20135 J/cm²"
+  fluenceRange: "0.5–5 J/cm²"
   fluenceRangeNumeric: 0.5
   fluenceRangeUnit: "J/cm²"
   fluenceRangeMin: "0.1J/cm²"
@@ -181,17 +181,17 @@ outcomes:
 - result: Surface contaminant removal efficiency >99%
   metric: Verified via SEM-EDS analysis showing elimination of biological and salt
     contaminants without substrate damage.
-- result: "Processing rate of 5\u201315 m²/hour"
+- result: "Processing rate of 5–15 m²/hour"
   metric: Achievable for standard surface contamination on teak decking using a 100W
     laser system with a 2000 mm/s scan speed.
 technicalSpecifications:
-  powerRange: "20\u2013100 W (average power for pulsed fiber lasers)"
-  pulseDuration: "10\u2013100 ns"
+  powerRange: "20–100 W (average power for pulsed fiber lasers)"
+  pulseDuration: "10–100 ns"
   wavelength: 1064 nm (primary), 532 nm (optional for finer control)
-  spotSize: "0.1\u20132.0 mm"
-  repetitionRate: "10\u201350 kHz"
-  fluenceRange: "0.5\u20135 J/cm²"
-  scanningSpeed: "500\u20132000 mm/s"
+  spotSize: "0.1–2.0 mm"
+  repetitionRate: "10–50 kHz"
+  fluenceRange: "0.5–5 J/cm²"
+  scanningSpeed: "500–2000 mm/s"
   beamProfile: Top-hat (flat-top)
   beamProfileOptions: Top-hat (flat-top), Gaussian
   safetyClass: Class 4
@@ -207,7 +207,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "0.5\u20135 J/cm²"
+  fluence_threshold: "0.5–5 J/cm²"
   pulse_duration: 10-100ns
   wavelength_optimal: 1064nm
   power_range: 20-100W

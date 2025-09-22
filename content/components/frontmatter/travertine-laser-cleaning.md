@@ -11,8 +11,8 @@ keywords: travertine, travertine stone, laser ablation, laser cleaning, non-cont
   cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters,
   thermal processing, surface restoration
 chemicalProperties:
-  symbol: "CaCO\u2083"
-  formula: "CaCO\u2083"
+  symbol: "CaCO₃"
+  formula: "CaCO₃"
   materialType: stone
 properties:
   density: "2.3-2.7 g/cm³"
@@ -78,10 +78,10 @@ properties:
   laserType: Pulsed fiber laser
   wavelength: 1064 nm
   fluenceRange: "0.5-5 J/cm²"
-  chemicalFormula: "CaCO\u2083"
+  chemicalFormula: "CaCO₃"
   thermalBehaviorType: melting
 composition:
-- "Calcium carbonate (CaCO\u2083): 95-99%"
+- "Calcium carbonate (CaCO₃): 95-99%"
 - 'Iron oxides, clay minerals, organic matter: 1-5%'
 machineSettings:
   powerRange: 20-100W

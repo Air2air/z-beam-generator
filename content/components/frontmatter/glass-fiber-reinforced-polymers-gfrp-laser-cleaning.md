@@ -11,7 +11,7 @@ keywords: glass fiber reinforced polymers gfrp, glass fiber reinforced polymers 
   surface restoration
 chemicalProperties:
   symbol: GFRP
-  formula: "Variable (typically SiO\u2082 fibers + polymer matrix)"
+  formula: "Variable (typically SiO₂ fibers + polymer matrix)"
   materialType: composite
 properties:
   density: "1.8-2.1 g/cm³"
@@ -76,7 +76,7 @@ properties:
   modulusPercentile: 16.7
   laserType: Pulsed Fiber Laser
   wavelength: 1064 nm
-  fluenceRange: "0.5\u20135 J/cm²"
+  fluenceRange: "0.5–5 J/cm²"
   chemicalFormula: Variable composition (typically E-glass fibers + epoxy/polyester
     resin)
 composition:
@@ -129,7 +129,7 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "0.5\u20135 J/cm²"
+  fluenceRange: "0.5–5 J/cm²"
   fluenceRangeNumeric: 0.5
   fluenceRangeUnit: "J/cm²"
   fluenceRangeMin: "0.1J/cm²"
@@ -183,7 +183,7 @@ technicalSpecifications:
   wavelength: 1064 nm (primary), 532 nm (optional for selective processing)
   spotSize: 0.1-2.0 mm
   repetitionRate: 10-50 kHz
-  fluenceRange: "0.5\u20135 J/cm²"
+  fluenceRange: "0.5–5 J/cm²"
   scanningSpeed: 100-2000 mm/s
   beamProfile: Top-hat (flat-top)
   beamProfileOptions: Top-hat, Gaussian, Multimode
@@ -200,7 +200,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "0.5\u20135 J/cm²"
+  fluence_threshold: "0.5–5 J/cm²"
   pulse_duration: 10-100ns
   wavelength_optimal: 1064 nm
   power_range: 20-100W

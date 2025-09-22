@@ -13,7 +13,7 @@ keywords: porphyry, porphyry stone, laser ablation, laser cleaning, non-contact 
   thermal processing, surface restoration
 chemicalProperties:
   symbol: N/A (complex mineral composite)
-  formula: "Variable (primarily SiO\u2082 + KAlSi\u2083O\u2088 + NaAlSi\u2083O\u2088 + CaAl\u2082Si\u2082O\u2088)"
+  formula: "Variable (primarily SiO₂ + KAlSi₃O₈ + NaAlSi₃O₈ + CaAl₂Si₂O₈)"
   materialType: igneous rock
 properties:
   density: "2.6-2.9 g/cm³ (varies with mineral composition)"
@@ -78,14 +78,14 @@ properties:
   modulusPercentile: 75.0
   laserType: Nd:YAG or fiber laser
   wavelength: 1064nm
-  fluenceRange: "1.0\u201310 J/cm²"
-  chemicalFormula: "Complex silicate mixture (SiO\u2082 40-70%, Feldspars 20-50%, Biotite 5-15%)"
+  fluenceRange: "1.0–10 J/cm²"
+  chemicalFormula: "Complex silicate mixture (SiO₂ 40-70%, Feldspars 20-50%, Biotite 5-15%)"
   thermalBehaviorType: melting
 composition:
-- "Quartz (SiO\u2082): 40-70% (primary crystalline phase)"
-- "Alkali Feldspar (KAlSi\u2083O\u2088/NaAlSi\u2083O\u2088): 20-40% (matrix material)"
-- "Plagioclase Feldspar (CaAl\u2082Si\u2082O\u2088): 5-20%"
-- "Biotite/Biotite Mica (K(Mg,Fe)\u2083AlSi\u2083O\u2081\u2080(F,OH)\u2082): 5-15%"
+- "Quartz (SiO₂): 40-70% (primary crystalline phase)"
+- "Alkali Feldspar (KAlSi₃O₈/NaAlSi₃O₈): 20-40% (matrix material)"
+- "Plagioclase Feldspar (CaAl₂Si₂O₈): 5-20%"
+- "Biotite/Biotite Mica (K(Mg,Fe)₃AlSi₃O₁₀(F,OH)₂): 5-15%"
 - 'Accessory minerals (apatite, zircon, oxides): 1-5%'
 machineSettings:
   powerRange: 50-200W
@@ -133,7 +133,7 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0\u201310 J/cm²"
+  fluenceRange: "1.0–10 J/cm²"
   fluenceRangeNumeric: 1.0
   fluenceRangeUnit: "J/cm²"
   fluenceRangeMin: "0.1J/cm²"
@@ -180,7 +180,7 @@ environmentalImpact:
     silica dust
 outcomes:
 - result: Sub-micron precision contaminant removal
-  metric: "Selective removal to within 5\u03BCm depth accuracy without mineral phase damage"
+  metric: "Selective removal to within 5μm depth accuracy without mineral phase damage"
 - result: Non-contact processing of delicate surfaces
   metric: Zero mechanical pressure applied during cleaning of historical artifacts
     with complex geometries
@@ -210,7 +210,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "1.0\u201310 J/cm²"
+  fluence_threshold: "1.0–10 J/cm²"
   pulse_duration: 10-50ns
   wavelength_optimal: 1064nm
   power_range: 50-200W

@@ -13,7 +13,7 @@ keywords: rosewood, rosewood wood, laser ablation, laser cleaning, non-contact c
   thermal processing, surface restoration, Dalbergia
 chemicalProperties:
   symbol: N/A (Organic Composite)
-  formula: "Variable (Primarily C\u2086H\u2081\u2080O\u2085 for cellulose)"
+  formula: "Variable (Primarily C₆H₁₀O₅ for cellulose)"
   materialType: Hardwood
 properties:
   density: "800-880 kg/m³ (varies by species, e.g., Brazilian Rosewood ~880 kg/m³"
@@ -77,9 +77,9 @@ properties:
   laserType: Pulsed fiber laser
   wavelength: 1064nm
   fluenceRange: "0.5-5 J/cm²"
-  chemicalFormula: "Complex organic composite; primarily cellulose (C\u2086H\u2081"
-    \u2080O\u2085), lignin (C\u2089H\u2081\u2080O\u2083, C\u2081\u2080H\u2081\u2082\
-    O\u2083, C\u2081\u2081H\u2081\u2084O\u2084), hemicellulose, and extractives (e.g.,\
+  chemicalFormula: "Complex organic composite; primarily cellulose (C₆H₁"
+    ₀O₅), lignin (C₉H₁₀O₃, C₁₀H₁₂\
+    O₃, C₁₁H₁₄O₄), hemicellulose, and extractives (e.g.,\
     \ dalbergione)."
   thermalBehaviorType: decomposition
   decompositionPoint: "280°C"

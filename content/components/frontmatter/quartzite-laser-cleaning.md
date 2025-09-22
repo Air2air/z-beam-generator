@@ -12,7 +12,7 @@ keywords: quartzite, quartzite stone, laser ablation, laser cleaning, non-contac
   cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters,
   thermal processing, surface restoration
 chemicalProperties:
-  symbol: "SiO\u2082"
+  symbol: "SiO₂"
   formula: SiO2
   materialType: metamorphic rock
 properties:
@@ -78,11 +78,11 @@ properties:
   modulusPercentile: 100.0
   laserType: pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "1.0\u201310 J/cm²"
+  fluenceRange: "1.0–10 J/cm²"
   chemicalFormula: SiO2
   thermalBehaviorType: melting
 composition:
-- "Quartz (SiO\u2082): 90-99%"
+- "Quartz (SiO₂): 90-99%"
 - 'Feldspar, mica, iron oxides, and other minerals: 1-10%'
 machineSettings:
   powerRange: 50-200W
@@ -130,7 +130,7 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0\u201310 J/cm²"
+  fluenceRange: "1.0–10 J/cm²"
   fluenceRangeNumeric: 1.0
   fluenceRangeUnit: "J/cm²"
   fluenceRangeMin: "0.1J/cm²"
@@ -185,7 +185,7 @@ technicalSpecifications:
   wavelength: 1064 nm (primary), 532 nm (optional for enhanced absorption)
   spotSize: 0.1-1.0 mm (adjustable for precision cleaning or larger area coverage)
   repetitionRate: 20-100 kHz (optimized for thermal management and cleaning efficiency)
-  fluenceRange: "1.0\u201310 J/cm² (above ablation threshold of ~1.0 J/cm² for quartzite)"
+  fluenceRange: "1.0–10 J/cm² (above ablation threshold of ~1.0 J/cm² for quartzite)"
   scanningSpeed: 100-2000 mm/s (depending on contamination type and thickness)
   beamProfile: Top-hat or Gaussian (depending on application requirements)
   beamProfileOptions: Top-hat, Gaussian, Flat-top
@@ -204,7 +204,7 @@ prompt_chain_verification:
   cultural_adaptation_applied: true
 chemicalFormula: SiO2
 laser_parameters:
-  fluence_threshold: "1.0\u201310 J/cm²"
+  fluence_threshold: "1.0–10 J/cm²"
   pulse_duration: 10-50ns
   wavelength_optimal: 1064nm
   power_range: 50-200W

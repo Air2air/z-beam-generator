@@ -74,12 +74,12 @@ properties:
   modulusPercentile: 100.0
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "1.0\u201310 J/cm²"
+  fluenceRange: "1.0–10 J/cm²"
   chemicalFormula: Zn
   thermalBehaviorType: melting
 composition:
 - Zinc (99.995+%) - High purity zinc for industrial applications
-- "Lead (\u22640.003%), Cadmium (\u22640.003%), Iron (\u22640.002%) - Common trace\
+- "Lead (≤0.003%), Cadmium (≤0.003%), Iron (≤0.002%) - Common trace\
   \ impurities"
 machineSettings:
   powerRange: 50-200W
@@ -127,7 +127,7 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0\u201310 J/cm²"
+  fluenceRange: "1.0–10 J/cm²"
   fluenceRangeNumeric: 1.0
   fluenceRangeUnit: "J/cm²"
   fluenceRangeMin: "0.1J/cm²"
@@ -199,7 +199,7 @@ prompt_chain_verification:
 chemicalFormula: Zn
 symbol: Zn
 laser_parameters:
-  fluence_threshold: "1.0\u201310 J/cm²"
+  fluence_threshold: "1.0–10 J/cm²"
   pulse_duration: 10-200ns
   wavelength_optimal: 1064nm
   power_range: 50-200W

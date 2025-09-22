@@ -12,7 +12,7 @@ keywords: oak, oak wood, laser ablation, laser cleaning, non-contact cleaning, p
   fiber laser, surface contamination removal, industrial laser parameters, thermal
   processing, surface restoration
 chemicalProperties:
-  symbol: "C\u2086H\u2081\u2080O\u2085 (cellulose base)"
+  symbol: "C₆H₁₀O₅ (cellulose base)"
   formula: Variable (40-50% cellulose, 20-30% lignin, 15-25% hemicellulose)
   materialType: wood
 properties:

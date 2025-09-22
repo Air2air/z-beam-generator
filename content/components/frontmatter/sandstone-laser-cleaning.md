@@ -12,8 +12,8 @@ keywords: sandstone, sandstone stone, laser ablation, laser cleaning, non-contac
   thermal processing, surface restoration
 chemicalProperties:
   symbol: N/A (composite material)
-  formula: "Variable (primarily SiO\u2082 + CaCO\u2083 + Fe\u2082O\u2083 + Al\u2082"
-    O\u2083)"
+  formula: "Variable (primarily SiO₂ + CaCO₃ + Fe₂O₃ + Al₂"
+    O₃)"
   materialType: sedimentary rock
 properties:
   density: "2.0-2.6 g/cm³"
@@ -82,10 +82,10 @@ properties:
   chemicalFormula: Variable composition
   thermalBehaviorType: melting
 composition:
-- "Quartz (SiO\u2082): 60-90%"
-- "Calcium carbonate (CaCO\u2083): 5-20% (cement)"
-- "Iron oxides (Fe\u2082O\u2083): 1-5%"
-- "Aluminum oxides (Al\u2082O\u2083): 1-5%"
+- "Quartz (SiO₂): 60-90%"
+- "Calcium carbonate (CaCO₃): 5-20% (cement)"
+- "Iron oxides (Fe₂O₃): 1-5%"
+- "Aluminum oxides (Al₂O₃): 1-5%"
 - 'Clay minerals: 1-10%'
 machineSettings:
   powerRange: 20-100W

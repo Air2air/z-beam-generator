@@ -78,14 +78,14 @@ properties:
   modulusPercentile: 73.3
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "0.5\u20135 J/cm²"
+  fluenceRange: "0.5–5 J/cm²"
   chemicalFormula: B2O3-SiO2
   thermalBehaviorType: melting
 composition:
-- "Silicon dioxide (SiO\u2082): 70-85%"
-- "Boron trioxide (B\u2082O\u2083): 7-15%"
-- "Sodium oxide (Na\u2082O): 3-8%"
-- "Aluminum oxide (Al\u2082O\u2083): 0-5%"
+- "Silicon dioxide (SiO₂): 70-85%"
+- "Boron trioxide (B₂O₃): 7-15%"
+- "Sodium oxide (Na₂O): 3-8%"
+- "Aluminum oxide (Al₂O₃): 0-5%"
 machineSettings:
   powerRange: 20-100W
   powerRangeNumeric: 60.0
@@ -132,7 +132,7 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "0.5\u20135 J/cm²"
+  fluenceRange: "0.5–5 J/cm²"
   fluenceRangeNumeric: 0.5
   fluenceRangeUnit: "J/cm²"
   fluenceRangeMin: "0.1J/cm²"
@@ -176,7 +176,7 @@ environmentalImpact:
   description: Dry laser process eliminates need for DI water rinsing and reduces
     wastewater treatment requirements
 outcomes:
-- result: "Surface cleanliness < 5 particles/cm² (>0.3\u03BCm)"
+- result: "Surface cleanliness < 5 particles/cm² (>0.3μm)"
   metric: Achievable particulate contamination levels meeting ISO Class 5 cleanroom
     standards
 - result: "Processing speeds up to 0.5 m²/hour"
@@ -205,7 +205,7 @@ prompt_chain_verification:
   cultural_adaptation_applied: true
 chemicalFormula: B2O3-SiO2
 laser_parameters:
-  fluence_threshold: "0.5\u20135 J/cm²"
+  fluence_threshold: "0.5–5 J/cm²"
   pulse_duration: 10-100ns
   wavelength_optimal: 1064nm
   power_range: 20-100W

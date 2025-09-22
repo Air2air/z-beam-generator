@@ -77,7 +77,7 @@ properties:
   modulusPercentile: 100.0
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "1.0\u201310 J/cm²"
+  fluenceRange: "1.0–10 J/cm²"
   chemicalFormula: Be
   thermalBehaviorType: melting
 composition:
@@ -130,7 +130,7 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0\u201310 J/cm²"
+  fluenceRange: "1.0–10 J/cm²"
   fluenceRangeNumeric: 1.0
   fluenceRangeUnit: "J/cm²"
   fluenceRangeMin: "0.1J/cm²"
@@ -175,14 +175,14 @@ environmentalImpact:
     to mechanical methods, significantly reducing occupational exposure risks
 outcomes:
 - result: Surface contamination removal efficiency
-  metric: ">99.9% removal of oxides and contaminants with <0.1\u03BCm substrate loss"
+  metric: ">99.9% removal of oxides and contaminants with <0.1μm substrate loss"
 - result: Processing speed for large components
   metric: "2-5 m²/hour cleaning rate for typical aerospace components"
 technicalSpecifications:
   powerRange: 50-200W (pulsed)
   pulseDuration: 10-100ns
   wavelength: 1064nm (primary), 532nm (for higher precision)
-  spotSize: "50-500\u03BCm"
+  spotSize: "50-500μm"
   repetitionRate: 20-100kHz
   fluenceRange: "1.0-10 J/cm² (depending on contamination type)"
   scanningSpeed: 100-2000 mm/s
@@ -204,7 +204,7 @@ prompt_chain_verification:
 chemicalFormula: Be
 symbol: Be
 laser_parameters:
-  fluence_threshold: "1.0\u201310 J/cm²"
+  fluence_threshold: "1.0–10 J/cm²"
   pulse_duration: 10-50ns
   wavelength_optimal: 1064nm
   power_range: 50-200W

@@ -8,8 +8,8 @@ keywords: stucco, stucco masonry, laser ablation, laser cleaning, non-contact cl
   pulsed fiber laser, surface contamination removal, industrial laser parameters,
   thermal processing, surface restoration
 chemicalProperties:
-  symbol: "CaCO\u2083/Ca(OH)\u2082"
-  formula: "Primarily CaCO\u2083 (calcium carbonate) with cementitious binders"
+  symbol: "CaCO₃/Ca(OH)₂"
+  formula: "Primarily CaCO₃ (calcium carbonate) with cementitious binders"
   materialType: masonry
 properties:
   density: "1.6-1.8 g/cm³"
@@ -74,14 +74,14 @@ properties:
   modulusPercentile: 0.0
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "0.5\u20135 J/cm²"
-  chemicalFormula: "CaCO\u2083 (primary), Ca(OH)\u2082, SiO\u2082, Al\u2082O\u2083"
+  fluenceRange: "0.5–5 J/cm²"
+  chemicalFormula: "CaCO₃ (primary), Ca(OH)₂, SiO₂, Al₂O₃"
   thermalBehaviorType: melting
 composition:
-- "Calcium carbonate (CaCO\u2083): 70-80%"
+- "Calcium carbonate (CaCO₃): 70-80%"
 - 'Portland cement: 15-20%'
-- "Sand (SiO\u2082): 5-10%"
-- "Hydrated lime (Ca(OH)\u2082): 3-5%"
+- "Sand (SiO₂): 5-10%"
+- "Hydrated lime (Ca(OH)₂): 3-5%"
 machineSettings:
   powerRange: 20-100W
   powerRangeNumeric: 60.0
@@ -128,7 +128,7 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "0.5\u20135 J/cm²"
+  fluenceRange: "0.5–5 J/cm²"
   fluenceRangeNumeric: 0.5
   fluenceRangeUnit: "J/cm²"
   fluenceRangeMin: "0.1J/cm²"
@@ -175,7 +175,7 @@ outcomes:
   metric: '>98% removal of biological growth and pollutants while preserving 100%
     of original stucco substrate'
 - result: Processing speed
-  metric: "2-5 m²/hour depending on contamination level with 50\u03BCm precision"
+  metric: "2-5 m²/hour depending on contamination level with 50μm precision"
 technicalSpecifications:
   powerRange: 20-100 W
   pulseDuration: 10-100 ns
@@ -199,7 +199,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "0.5\u20135 J/cm²"
+  fluence_threshold: "0.5–5 J/cm²"
   pulse_duration: 10-100ns
   wavelength_optimal: 1064nm
   power_range: 20-100W

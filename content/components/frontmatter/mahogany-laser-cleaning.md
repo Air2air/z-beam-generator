@@ -12,7 +12,7 @@ keywords: mahogany, mahogany wood, laser ablation, laser cleaning, non-contact c
   thermal processing, surface restoration
 chemicalProperties:
   symbol: N/A (Organic Composite)
-  formula: "C\u2086H\u2081\u2080O\u2085 (Cellulose base)"
+  formula: "C₆H₁₀O₅ (Cellulose base)"
   materialType: wood
 properties:
   density: "545-705 kg/m³ (varies by species)"

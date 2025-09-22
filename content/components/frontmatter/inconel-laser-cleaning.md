@@ -77,7 +77,7 @@ properties:
   modulusPercentile: 100.0
   laserType: pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "1.0\u201310 J/cm²"
+  fluenceRange: "1.0–10 J/cm²"
   chemicalFormula: Ni-Cr-Fe-Mo-Nb (varies by grade)
   thermalBehaviorType: melting
 composition:
@@ -131,7 +131,7 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0\u201310 J/cm²"
+  fluenceRange: "1.0–10 J/cm²"
   fluenceRangeNumeric: 1.0
   fluenceRangeUnit: "J/cm²"
   fluenceRangeMin: "0.1J/cm²"
@@ -182,7 +182,7 @@ technicalSpecifications:
   powerRange: 50-500 W (pulsed fiber laser)
   pulseDuration: 10-200 ns
   wavelength: 1064 nm (primary), 532 nm (optional for finer features)
-  spotSize: "50-200 \u03BCm"
+  spotSize: "50-200 μm"
   repetitionRate: 20-300 kHz
   fluenceRange: "2.0-15 J/cm²"
   scanningSpeed: 100-2000 mm/s
@@ -201,7 +201,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "1.0\u201310 J/cm²"
+  fluence_threshold: "1.0–10 J/cm²"
   pulse_duration: 10-200ns
   wavelength_optimal: 1064nm
   power_range: 50-200W

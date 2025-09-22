@@ -76,7 +76,7 @@ properties:
   modulusPercentile: 100.0
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "0.5\u20135 J/cm²"
+  fluenceRange: "0.5–5 J/cm²"
   chemicalFormula: Ru
   thermalBehaviorType: melting
 composition:
@@ -128,7 +128,7 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "0.5\u20135 J/cm²"
+  fluenceRange: "0.5–5 J/cm²"
   fluenceRangeNumeric: 0.5
   fluenceRangeUnit: "J/cm²"
   fluenceRangeMin: "0.1J/cm²"
@@ -174,7 +174,7 @@ outcomes:
 - result: Surface contamination removal to <10 nm residual layer
   metric: Achieves ISO 14644-1 Class 5 cleanliness standards
 - result: Sub-micron precision material removal
-  metric: "±0.5 \u03BCm dimensional tolerance maintained during cleaning process"
+  metric: "±0.5 μm dimensional tolerance maintained during cleaning process"
 technicalSpecifications:
   powerRange: 20-100 W
   pulseDuration: 10-100 ns
@@ -198,7 +198,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "0.5\u20135 J/cm²"
+  fluence_threshold: "0.5–5 J/cm²"
   pulse_duration: 10-100ns
   wavelength_optimal: 1064nm
   power_range: 20-100W

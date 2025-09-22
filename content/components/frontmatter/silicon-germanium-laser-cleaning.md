@@ -9,7 +9,7 @@ keywords: silicon germanium, silicon germanium semiconductor, laser ablation, la
   industrial laser parameters, thermal processing, surface restoration
 chemicalProperties:
   symbol: SiGe
-  formula: "Si\u2081\u208B\u2093Ge\u2093"
+  formula: "Si₁\u208B\u2093Ge\u2093"
   materialType: semiconductor alloy
 properties:
   density: "2.33-5.32 g/cm³ (varies with Ge content: 0-100%)"
@@ -75,7 +75,7 @@ properties:
   laserType: Pulsed Fiber Laser (nanosecond domain)
   wavelength: 1064nm
   fluenceRange: "0.1-1.0 J/cm²"
-  chemicalFormula: "Si\u2081\u208B\u2093Ge\u2093"
+  chemicalFormula: "Si₁\u208B\u2093Ge\u2093"
   thermalBehaviorType: melting
 composition:
 - 'Silicon: 70-95% (typical semiconductor compositions)'
@@ -112,7 +112,7 @@ applications:
 - 'Semiconductor: Precision cleaning of silicon germanium wafers'
 - 'Electronics: Removal of organic contaminants from semiconductor surfaces'
 compatibility:
-- "Silicon substrates and SiO\u2082 layers"
+- "Silicon substrates and SiO₂ layers"
 - Gallium Arsenide and III-V semiconductors with similar thermal properties
 regulatoryStandards: IEC 60825-1 (Laser Safety), SEMI S2/S8 (Semiconductor Equipment
   Safety), ISO 14001 (Environmental Management)
@@ -150,7 +150,7 @@ technicalSpecifications:
   powerRange: 10-100 W (average power for nanosecond pulsed fiber lasers)
   pulseDuration: 10-100 ns (nanosecond range for controlled ablation)
   wavelength: 1064 nm (primary), 532 nm (secondary for finer features)
-  spotSize: "20-200 \u03BCm (adjustable based on contamination type and precision requirements)"
+  spotSize: "20-200 μm (adjustable based on contamination type and precision requirements)"
   repetitionRate: 20-100 kHz (optimized for thermal relaxation and processing speed)
   fluenceRange: "0.2-2.5 J/cm² (depending on SiGe composition and contamination type)"
   scanningSpeed: 100-1000 mm/s (optimized for throughput and overlap requirements)

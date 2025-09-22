@@ -13,8 +13,8 @@ keywords: shale, shale stone, laser ablation, laser cleaning, non-contact cleani
   thermal processing, surface restoration
 chemicalProperties:
   symbol: N/A (complex mineral composite)
-  formula: "Variable composition: primarily (K,H\u2083O)(Al,Mg,Fe)\u2082(Si,Al)\u2084"
-    O\u2081\u2080[(OH)\u2082,(H\u2082O)] for clay minerals"
+  formula: "Variable composition: primarily (K,H₃O)(Al,Mg,Fe)₂(Si,Al)₄"
+    O₁₀[(OH)₂,(H₂O)] for clay minerals"
   materialType: sedimentary rock
 properties:
   density: "2.0-2.7 g/cm³"
@@ -79,7 +79,7 @@ properties:
   modulusPercentile: 33.3
   laserType: Pulsed fiber laser
   wavelength: 1064nm
-  fluenceRange: "1.0\u201310 J/cm²"
+  fluenceRange: "1.0–10 J/cm²"
   chemicalFormula: 'Variable: primarily clay minerals (illite, kaolinite, smectite)
     + quartz + feldspar'
   thermalBehaviorType: melting
@@ -134,7 +134,7 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0\u201310 J/cm²"
+  fluenceRange: "1.0–10 J/cm²"
   fluenceRangeNumeric: 1.0
   fluenceRangeUnit: "J/cm²"
   fluenceRangeMin: "0.1J/cm²"
@@ -204,7 +204,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "1.0\u201310 J/cm²"
+  fluence_threshold: "1.0–10 J/cm²"
   pulse_duration: 5-50ns
   wavelength_optimal: 1064nm
   power_range: 50-200W

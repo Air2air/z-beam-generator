@@ -11,9 +11,9 @@ keywords: birch, birch wood, laser ablation, laser cleaning, non-contact cleanin
   pulsed fiber laser, surface contamination removal, industrial laser parameters,
   thermal processing, surface restoration
 chemicalProperties:
-  symbol: "C\u2086H\u2081\u2080O\u2085 (cellulose base)"
-  formula: "Complex organic polymer (primarily cellulose C\u2086H\u2081\u2080O\u2085"
-    , lignin C\u2089H\u2081\u2080O\u2082, hemicellulose)"
+  symbol: "C₆H₁₀O₅ (cellulose base)"
+  formula: "Complex organic polymer (primarily cellulose C₆H₁₀O₅"
+    , lignin C₉H₁₀O₂, hemicellulose)"
   materialType: wood
 properties:
   density: "670 kg/m³ (average for European birch)"
@@ -75,9 +75,9 @@ properties:
   modulusPercentile: 0.0
   laserType: Pulsed fiber laser
   wavelength: 1064 nm
-  fluenceRange: "0.5\u20135 J/cm²"
-  chemicalFormula: "Complex organic polymer (cellulose C\u2086H\u2081\u2080O\u2085"
-    , lignin C\u2089H\u2081\u2080O\u2082, hemicellulose)"
+  fluenceRange: "0.5–5 J/cm²"
+  chemicalFormula: "Complex organic polymer (cellulose C₆H₁₀O₅"
+    , lignin C₉H₁₀O₂, hemicellulose)"
   thermalBehaviorType: decomposition
   decompositionPoint: "280°C"
   decompositionPointNumeric: 280
@@ -133,7 +133,7 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "0.5\u20135 J/cm²"
+  fluenceRange: "0.5–5 J/cm²"
   fluenceRangeNumeric: 0.5
   fluenceRangeUnit: "J/cm²"
   fluenceRangeMin: "0.1J/cm²"
@@ -202,7 +202,7 @@ prompt_chain_verification:
   human_authenticity_focus: true
   cultural_adaptation_applied: true
 laser_parameters:
-  fluence_threshold: "0.5\u20135 J/cm²"
+  fluence_threshold: "0.5–5 J/cm²"
   pulse_duration: 10-100ns
   wavelength_optimal: 1064 nm
   power_range: 20-100W

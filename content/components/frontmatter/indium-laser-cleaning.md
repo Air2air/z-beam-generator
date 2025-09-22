@@ -163,12 +163,12 @@ images:
     url: /images/indium-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Zero chemical waste generation
-  description: "Eliminates use of acidic cleaners (HCl, HNO\u2083) and solvents traditionally used for indium oxide removal, preventing 100+ kg/year of hazardous waste per production line"
+  description: "Eliminates use of acidic cleaners (HCl, HNO₃) and solvents traditionally used for indium oxide removal, preventing 100+ kg/year of hazardous waste per production line"
 - benefit: Reduced energy consumption
   description: Laser cleaning consumes 60-70% less energy compared to ultrasonic cleaning
     with heated chemical baths for indium components
 outcomes:
-- result: "Surface roughness <0.1 \u03BCm Ra"
+- result: "Surface roughness <0.1 μm Ra"
   metric: Maintains surface quality while removing 99.9% of oxides and contaminants
 - result: "Processing speed 50-200 cm²/min"
   metric: Achieves complete surface cleaning without thermal damage to underlying
