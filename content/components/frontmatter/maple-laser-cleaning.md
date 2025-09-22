@@ -215,4 +215,5 @@ tags:
 - Restoration
 complexity: medium
 difficultyScore: 3
----
+surface_roughness_before: 38.8
+surface_roughness_after: 15.5

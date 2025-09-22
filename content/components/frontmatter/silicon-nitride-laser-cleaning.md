@@ -223,4 +223,5 @@ tags:
 - Bearings
 complexity: high
 difficultyScore: 4
----
+surface_roughness_before: 2.8
+surface_roughness_after: 0.7

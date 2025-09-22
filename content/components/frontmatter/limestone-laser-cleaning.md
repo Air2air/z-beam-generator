@@ -222,4 +222,5 @@ tags:
 - Heritage Conservation
 complexity: medium
 difficultyScore: 3
----
+surface_roughness_before: 22.8
+surface_roughness_after: 7.8

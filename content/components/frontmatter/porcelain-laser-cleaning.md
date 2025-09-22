@@ -218,4 +218,5 @@ tags:
 - Restoration and Conservation
 complexity: medium
 difficultyScore: 3
----
+surface_roughness_before: 8.5
+surface_roughness_after: 2.2

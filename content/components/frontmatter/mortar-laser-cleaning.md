@@ -219,4 +219,5 @@ tags:
 - Heritage Conservation
 complexity: low
 difficultyScore: 2
----
+surface_roughness_before: 35.2
+surface_roughness_after: 11.8

@@ -217,4 +217,5 @@ tags:
 - Semiconductor
 complexity: medium
 difficultyScore: 3
----
+surface_roughness_before: 1.5
+surface_roughness_after: 0.4

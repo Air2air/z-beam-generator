@@ -216,4 +216,5 @@ tags:
 - Oil and Gas
 complexity: medium
 difficultyScore: 3
----
+surface_roughness_before: 35.8
+surface_roughness_after: 12.5

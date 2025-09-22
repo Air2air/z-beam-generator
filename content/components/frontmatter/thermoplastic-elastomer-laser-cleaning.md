@@ -218,4 +218,5 @@ tags:
 - Medical
 complexity: medium
 difficultyScore: 3
----
+surface_roughness_before: 85.5
+surface_roughness_after: 32.8

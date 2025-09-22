@@ -213,4 +213,5 @@ tags:
 - Woodworking
 complexity: low
 difficultyScore: 2
----
+surface_roughness_before: 58.2
+surface_roughness_after: 24.8

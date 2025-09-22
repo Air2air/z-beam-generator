@@ -211,4 +211,5 @@ tags:
 - Electronics
 complexity: medium
 difficultyScore: 3
----
+surface_roughness_before: 3.8
+surface_roughness_after: 0.6

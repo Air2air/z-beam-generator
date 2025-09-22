@@ -220,4 +220,5 @@ tags:
 - Aerospace
 complexity: high
 difficultyScore: 4
----
+surface_roughness_before: 2.2
+surface_roughness_after: 0.6

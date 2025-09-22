@@ -228,4 +228,5 @@ tags:
 - Magnetics
 complexity: medium
 difficultyScore: 3
----
+surface_roughness_before: 6.8
+surface_roughness_after: 1.4

@@ -215,4 +215,5 @@ tags:
 - Optics and Photonics
 complexity: medium
 difficultyScore: 3
----
+surface_roughness_before: 0.8
+surface_roughness_after: 0.2

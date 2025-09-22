@@ -213,4 +213,5 @@ tags:
 - Manufacturing
 complexity: medium
 difficultyScore: 3
----
+surface_roughness_before: 125.8
+surface_roughness_after: 48.2

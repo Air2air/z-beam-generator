@@ -212,4 +212,5 @@ tags:
 - Jewelry
 complexity: medium
 difficultyScore: 3
----
+surface_roughness_before: 18.5
+surface_roughness_after: 6.5

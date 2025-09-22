@@ -220,4 +220,5 @@ tags:
 - Marine
 complexity: medium
 difficultyScore: 3
----
+surface_roughness_before: 38.2
+surface_roughness_after: 15.8

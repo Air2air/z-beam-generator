@@ -213,4 +213,5 @@ tags:
 - Manufacturing
 complexity: low
 difficultyScore: 2
----
+surface_roughness_before: 18.5
+surface_roughness_after: 2.2

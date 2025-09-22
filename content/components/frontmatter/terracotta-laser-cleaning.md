@@ -219,4 +219,5 @@ tags:
 - Cultural Heritage
 complexity: medium
 difficultyScore: 3
----
+surface_roughness_before: 25.8
+surface_roughness_after: 8.5

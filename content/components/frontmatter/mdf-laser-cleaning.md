@@ -213,4 +213,5 @@ tags:
 - Furniture Manufacturing
 complexity: low
 difficultyScore: 2
----
+surface_roughness_before: 65.8
+surface_roughness_after: 28.5

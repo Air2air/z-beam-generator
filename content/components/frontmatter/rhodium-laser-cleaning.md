@@ -212,4 +212,5 @@ tags:
 - Aerospace
 complexity: medium
 difficultyScore: 3
----
+surface_roughness_before: 2.8
+surface_roughness_after: 0.6

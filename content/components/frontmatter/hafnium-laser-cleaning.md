@@ -212,4 +212,5 @@ tags:
 - Electronics
 complexity: high
 difficultyScore: 5
----
+surface_roughness_before: 5.1
+surface_roughness_after: 1.3

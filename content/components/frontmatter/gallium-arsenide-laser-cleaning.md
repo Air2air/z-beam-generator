@@ -216,4 +216,5 @@ tags:
 - Semiconductor Manufacturing
 complexity: high
 difficultyScore: 4
----
+surface_roughness_before: 1.5
+surface_roughness_after: 0.3

@@ -216,4 +216,5 @@ tags:
 - Nuclear
 complexity: medium
 difficultyScore: 3
----
+surface_roughness_before: 3.2
+surface_roughness_after: 0.8

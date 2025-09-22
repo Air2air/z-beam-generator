@@ -219,4 +219,5 @@ tags:
 - Chemical Processing
 complexity: high
 difficultyScore: 5
----
+surface_roughness_before: 4.5
+surface_roughness_after: 0.6

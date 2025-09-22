@@ -220,4 +220,5 @@ tags:
 - Art and Restoration
 complexity: medium
 difficultyScore: 3
----
+surface_roughness_before: 26.2
+surface_roughness_after: 9.1
