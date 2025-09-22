@@ -27,7 +27,7 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 10.2
-  meltingPoint: "820\xB0C (softening point)"
+  meltingPoint: "820\xB0C"
   meltingPointNumeric: 820.0
   meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"
@@ -82,6 +82,7 @@ properties:
   fluenceRange: "0.5\u20135 J/cm\xB2"
   chemicalFormula: "Complex oxide mixture (primarily SiO\u2082-B\u2082O\u2083-Na\u2082\
     O)"
+  thermalBehaviorType: melting
 composition:
 - "Silicon dioxide (SiO\u2082): 80.6%"
 - "Boron trioxide (B\u2082O\u2083): 12.6%"

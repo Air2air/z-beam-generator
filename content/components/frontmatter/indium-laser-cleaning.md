@@ -26,8 +26,8 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 100.0
-  meltingPoint: "156.6 \xB0C"
-  meltingPointNumeric: 156.6
+  meltingPoint: "156\xB0C"
+  meltingPointNumeric: 156
   meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"
   meltingPointMinNumeric: 1200.0
@@ -80,6 +80,7 @@ properties:
   wavelength: 1064 nm
   fluenceRange: "0.5-5 J/cm\xB2"
   chemicalFormula: In
+  thermalBehaviorType: melting
 composition:
 - Indium 99.99% (4N purity typical for industrial applications)
 - 'Trace elements: Iron <10 ppm, Copper <5 ppm, Zinc <5 ppm, Tin <5 ppm'

@@ -26,8 +26,8 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 14.3
-  meltingPoint: "1350-1650\xB0C"
-  meltingPointNumeric: 1500.0
+  meltingPoint: "1650\xB0C"
+  meltingPointNumeric: 1650
   meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"
   meltingPointMinNumeric: 1200.0
@@ -80,6 +80,7 @@ properties:
   wavelength: 1064nm
   fluenceRange: "0.5\u20135 J/cm\xB2"
   chemicalFormula: "Al2O3\xB72SiO2\xB72H2O"
+  thermalBehaviorType: melting
 composition:
 - 'Kaolinite (Al2Si2O5(OH)4): 50-60%'
 - 'Quartz (SiO2): 20-30%'

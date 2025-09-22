@@ -26,8 +26,8 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 100.0
-  meltingPoint: "900-940\xB0C"
-  meltingPointNumeric: 920.0
+  meltingPoint: "940\xB0C"
+  meltingPointNumeric: 940
   meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"
   meltingPointMinNumeric: 1200.0
@@ -80,6 +80,7 @@ properties:
   wavelength: 1064nm
   fluenceRange: "0.5\u20135 J/cm\xB2"
   chemicalFormula: Cu-Zn
+  thermalBehaviorType: melting
 composition:
 - Copper (Cu) 60-90%
 - Zinc (Zn) 10-40%

@@ -25,8 +25,8 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 12.4
-  meltingPoint: "128\xB0C (dehydration begins), 1450\xB0C (anhydrous melting)"
-  meltingPointNumeric: 128.0
+  meltingPoint: "128\xB0C"
+  meltingPointNumeric: 128
   meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"
   meltingPointMinNumeric: 1200.0
@@ -79,6 +79,7 @@ properties:
   wavelength: 1064nm
   fluenceRange: "1.0\u20133.0 J/cm\xB2"
   chemicalFormula: "CaSO4\xB72H2O"
+  thermalBehaviorType: melting
 composition:
 - "Calcium sulfate dihydrate (CaSO4\xB72H2O): 95-98%"
 - 'Calcium carbonate (CaCO3): 1-3%'

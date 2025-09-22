@@ -25,8 +25,8 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 100.0
-  meltingPoint: "3017 \xB0C"
-  meltingPointNumeric: 3017.0
+  meltingPoint: "3017\xB0C"
+  meltingPointNumeric: 3017
   meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"
   meltingPointMinNumeric: 1200.0
@@ -79,6 +79,7 @@ properties:
   wavelength: 1064 nm
   fluenceRange: "1.0\u201310 J/cm\xB2"
   chemicalFormula: Ta
+  thermalBehaviorType: melting
 composition:
 - 'Tantalum (Ta): 99.9-99.99%'
 - 'Niobium (Nb): <0.1%, Carbon (C): <0.01%, Oxygen (O): <0.015%'

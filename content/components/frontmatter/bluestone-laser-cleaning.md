@@ -25,7 +25,7 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 21.4
-  meltingPoint: "825\xB0C (decomposition temperature of calcium carbonate)"
+  meltingPoint: "825\xB0C"
   meltingPointNumeric: 825.0
   meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"
@@ -79,6 +79,7 @@ properties:
   wavelength: 1064nm
   fluenceRange: "0.5-3.0 J/cm\xB2"
   chemicalFormula: "CaCO\u2083 (calcium carbonate)"
+  thermalBehaviorType: melting
 composition:
 - "Calcium carbonate (CaCO\u2083): 85-95%"
 - "Quartz (SiO\u2082): 3-8%"

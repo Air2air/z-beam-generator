@@ -26,7 +26,7 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 11.9
-  meltingPoint: "~1700\xB0C (silica component)"
+  meltingPoint: "1700\xB0C"
   meltingPointNumeric: 1700.0
   meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"
@@ -80,6 +80,7 @@ properties:
   wavelength: 1064nm
   fluenceRange: "0.5-5 J/cm\xB2"
   chemicalFormula: Variable composition
+  thermalBehaviorType: melting
 composition:
 - "Quartz (SiO\u2082): 60-90%"
 - "Calcium carbonate (CaCO\u2083): 5-20% (cement)"

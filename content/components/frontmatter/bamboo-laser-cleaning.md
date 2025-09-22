@@ -25,9 +25,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 0.0
-  meltingPoint: "Decomposes at 200-250\xB0C (no true melting point)"
-  meltingPointNumeric: 225.0
-  meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"
   meltingPointMinNumeric: 1200.0
   meltingPointMinUnit: "\xB0C"
@@ -80,6 +77,10 @@ properties:
   fluenceRange: "0.5-3.0 J/cm\xB2"
   chemicalFormula: "Complex organic composite (C\u2086H\u2081\u2080O\u2085)n cellulose\
     \ base"
+  thermalBehaviorType: decomposition
+  decompositionPoint: "250\xB0C"
+  decompositionPointNumeric: 250
+  decompositionPointUnit: "\xB0C"
 composition:
 - 'Cellulose: 40-50%'
 - 'Hemicellulose: 20-30%'

@@ -172,6 +172,7 @@ class PropertyEnhancementService:
             unit_defaults = {
                 "density": "g/cm³",
                 "meltingPoint": "°C", 
+                "decompositionPoint": "°C",
                 "thermalConductivity": "W/m·K",
                 "tensileStrength": "MPa",
                 "hardness": "Mohs",
@@ -194,6 +195,9 @@ class PropertyEnhancementService:
                 min_str, max_str = f"{min_val} {unit}", f"{max_val} {unit}"
             elif base_prop == "meltingPoint":
                 min_val, max_val = 1200, 2800
+                min_str, max_str = f"{min_val}{unit}", f"{max_val}{unit}"
+            elif base_prop == "decompositionPoint":
+                min_val, max_val = 250, 500
                 min_str, max_str = f"{min_val}{unit}", f"{max_val}{unit}"
             elif base_prop == "thermalConductivity":
                 min_val, max_val = 0.5, 200

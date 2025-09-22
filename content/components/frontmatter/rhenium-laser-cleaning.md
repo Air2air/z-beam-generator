@@ -24,8 +24,8 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 100.0
-  meltingPoint: "3186 \xB0C"
-  meltingPointNumeric: 3186.0
+  meltingPoint: "3186\xB0C"
+  meltingPointNumeric: 3186
   meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"
   meltingPointMinNumeric: 1200.0
@@ -78,6 +78,7 @@ properties:
   wavelength: 1064nm
   fluenceRange: "1.0-10 J/cm\xB2"
   chemicalFormula: Re
+  thermalBehaviorType: melting
 composition:
 - 'Rhenium: 99.99% (high purity commercial grade)'
 - 'Trace elements: <0.01% (typically tungsten, molybdenum, iron)'

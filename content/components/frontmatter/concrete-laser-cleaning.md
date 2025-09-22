@@ -26,8 +26,8 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 100.0
-  meltingPoint: "~1200\u20131400\xB0C (decomposition begins at ~500\xB0C)"
-  meltingPointNumeric: 1200.0
+  meltingPoint: "1400\xB0C"
+  meltingPointNumeric: 1400
   meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"
   meltingPointMinNumeric: 1200.0
@@ -80,6 +80,7 @@ properties:
   wavelength: 1064nm
   fluenceRange: "1.0\u201310 J/cm\xB2"
   chemicalFormula: "Complex composite (primarily CaO\xB7SiO\u2082\xB7H\u2082O)"
+  thermalBehaviorType: melting
 composition:
 - "Portland cement (10\u201315%): Calcium silicates (C3S, C2S), calcium aluminates"
 - "Aggregate (60\u201375%): Silica (SiO\u2082), limestone, gravel"

@@ -1,16 +1,16 @@
 | Property | Value |
 |----------|-------|
-| Material density | 1.74 g/cm³ |
-| Melting point | 650°C |
-| Thermal conductivity | 156 W/m·K |
-| Laser type for cleaning | Pulsed Fiber Laser |
-| Laser wavelength | 1064nm |
-| Fluence range | 1.0–4.5 J/cm² |
-| Chemical formula or scientific symbol | Mg |
+| Density | 1.74 g/cm³ |
+| Melting Point | 650°C |
+| Thermal Cond. | 156 W/m·K |
+| Laser Type | Pulsed Fiber Laser |
+| Wavelength | 1064nm |
+| Fluence Range | 1.0–4.5 J/cm² |
+| Formula | Mg |
 
 
 ---
-Version Log - Generated: 2025-09-21T20:26:30.304988
+Version Log - Generated: 2025-09-21T20:52:22.000103
 Material: Unknown
 Component: propertiestable
 Generator: Z-Beam v1.0.0

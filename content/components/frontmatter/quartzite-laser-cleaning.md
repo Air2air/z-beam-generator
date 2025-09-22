@@ -26,8 +26,8 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 20.2
-  meltingPoint: "1670\xB0C (pure quartz), 1650\xB150\xB0C (quartzite)"
-  meltingPointNumeric: 1670.0
+  meltingPoint: "1670\xB0C"
+  meltingPointNumeric: 1670
   meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"
   meltingPointMinNumeric: 1200.0
@@ -81,6 +81,7 @@ properties:
   wavelength: 1064nm
   fluenceRange: "1.0\u201310 J/cm\xB2"
   chemicalFormula: SiO2
+  thermalBehaviorType: melting
 composition:
 - "Quartz (SiO\u2082): 90-99%"
 - 'Feldspar, mica, iron oxides, and other minerals: 1-10%'

@@ -80,6 +80,7 @@ properties:
   wavelength: 1064nm
   fluenceRange: "1.0\u20133.0 J/cm\xB2"
   chemicalFormula: Co
+  thermalBehaviorType: melting
 composition:
 - 'Cobalt (Co): 99.8% minimum (commercial purity)'
 - 'Nickel (Ni): 0.05-0.15%'

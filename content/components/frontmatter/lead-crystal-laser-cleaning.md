@@ -25,8 +25,8 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 35.7
-  meltingPoint: "~800-1000\xB0C"
-  meltingPointNumeric: 900.0
+  meltingPoint: "1000\xB0C"
+  meltingPointNumeric: 1000
   meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"
   meltingPointMinNumeric: 1200.0
@@ -79,6 +79,7 @@ properties:
   wavelength: 1064nm
   fluenceRange: "0.5\u20135 J/cm\xB2"
   chemicalFormula: "24% PbO, 75% SiO\u2082, 1% K\u2082O"
+  thermalBehaviorType: melting
 composition:
 - "Silicon Dioxide (SiO\u2082): 55-75%"
 - 'Lead Oxide (PbO): 24-32%'

@@ -208,8 +208,20 @@ class TableComponentGenerator(StaticComponentGenerator):
                 properties.get("densityUnit", "g/cm³")
             ))
         
-        # Melting Point
-        if properties.get("meltingPoint"):
+        # Thermal Property - Handle both melting and decomposition
+        thermal_behavior = properties.get("thermalBehaviorType", "melting")
+        
+        if thermal_behavior == "decomposition" and properties.get("decompositionPoint"):
+            rows.append(self._create_property_row(
+                'Decomposition Point',
+                properties["decompositionPoint"],
+                None,  # No min/max for decomposition point typically
+                None,
+                properties.get("decompositionPointNumeric"),
+                None,  # No percentile for decomposition
+                properties.get("decompositionPointUnit", "°C")
+            ))
+        elif thermal_behavior == "melting" and properties.get("meltingPoint"):
             rows.append(self._create_property_row(
                 'Melting Point',
                 properties["meltingPoint"],

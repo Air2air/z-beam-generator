@@ -79,6 +79,7 @@ properties:
   wavelength: 1064nm
   fluenceRange: "1.0\u201310 J/cm\xB2"
   chemicalFormula: Hf
+  thermalBehaviorType: melting
 composition:
 - 'Hafnium (Hf): 97.0-99.9%'
 - 'Zirconium (Zr): 1.0-3.0% (naturally occurring impurity)'

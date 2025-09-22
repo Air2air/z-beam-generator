@@ -26,8 +26,8 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 21.4
-  meltingPoint: "1215-1260 \xB0C (varies by composition)"
-  meltingPointNumeric: 1237.5
+  meltingPoint: "1260\xB0C"
+  meltingPointNumeric: 1260
   meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"
   meltingPointMinNumeric: 1200.0
@@ -80,6 +80,7 @@ properties:
   wavelength: 1064nm
   fluenceRange: "1.0-10 J/cm\xB2"
   chemicalFormula: SiO2-Al2O3-K2O
+  thermalBehaviorType: melting
 composition:
 - "Silica (SiO\u2082): 70-77%"
 - "Alumina (Al\u2082O\u2083): 11-14%"

@@ -26,8 +26,8 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 100.0
-  meltingPoint: "~1000\u20131500 \xB0C (softening point ~720 \xB0C)"
-  meltingPointNumeric: 1000.0
+  meltingPoint: "1500\xB0C"
+  meltingPointNumeric: 1500
   meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"
   meltingPointMinNumeric: 1200.0
@@ -80,6 +80,7 @@ properties:
   wavelength: 1064nm
   fluenceRange: "0.5\u20135 J/cm\xB2"
   chemicalFormula: N/A (Amorphous mixture of oxides)
+  thermalBehaviorType: melting
 composition:
 - "Silicon Dioxide (SiO\u2082): 70\u201374%"
 - "Sodium Oxide (Na\u2082O): 12\u201314%"

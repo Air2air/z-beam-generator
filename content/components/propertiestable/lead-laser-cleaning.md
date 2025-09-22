@@ -1,16 +1,16 @@
 | Property | Value |
 |----------|-------|
-| Material density | 11.34 g/cm³ |
-| Melting point | 327.5°C |
-| Thermal conductivity | 35.3 W/m·K |
-| Laser type for cleaning | Pulsed Fiber Laser |
-| Laser wavelength | 1064nm |
-| Fluence range | 1.0–4.5 J/cm² |
-| Chemical formula or scientific symbol | Pb |
+| Density | 11.34 g/cm³ |
+| Melting Point | 327.5°C |
+| Thermal Cond. | 35.3 W/m·K |
+| Laser Type | Pulsed Fiber Laser |
+| Wavelength | 1064nm |
+| Fluence Range | 1.0–4.5 J/cm² |
+| Formula | Pb |
 
 
 ---
-Version Log - Generated: 2025-09-21T20:26:30.285714
+Version Log - Generated: 2025-09-21T20:52:21.980535
 Material: Unknown
 Component: propertiestable
 Generator: Z-Beam v1.0.0

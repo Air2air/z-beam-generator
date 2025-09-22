@@ -28,7 +28,7 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 3.6
-  meltingPoint: "120-180\xB0C (polymer matrix dependent); >1000\xB0C (glass fibers)"
+  meltingPoint: "120-180\xB0C; >1000\xB0C"
   meltingPointNumeric: 150.0
   meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"

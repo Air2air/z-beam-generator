@@ -26,7 +26,7 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 35.7
-  meltingPoint: "1900\xB0C (decomposes)"
+  meltingPoint: "1900\xB0C"
   meltingPointNumeric: 1900.0
   meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"
@@ -80,6 +80,7 @@ properties:
   wavelength: 1064 nm
   fluenceRange: "0.5\u20135 J/cm\xB2"
   chemicalFormula: Si3N4
+  thermalBehaviorType: melting
 composition:
 - 'Silicon (Si): 60.06%'
 - 'Nitrogen (N): 39.94%'

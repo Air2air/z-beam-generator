@@ -25,8 +25,8 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 100.0
-  meltingPoint: "1855 \xB0C"
-  meltingPointNumeric: 1855.0
+  meltingPoint: "1855\xB0C"
+  meltingPointNumeric: 1855
   meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"
   meltingPointMinNumeric: 1200.0
@@ -79,6 +79,7 @@ properties:
   wavelength: 1064nm
   fluenceRange: "0.5\u20135 J/cm\xB2"
   chemicalFormula: Zr
+  thermalBehaviorType: melting
 composition:
 - 'Zirconium (Zr): 97.5-99.2%'
 - 'Hafnium (Hf): 1-2.5% (naturally occurring)'

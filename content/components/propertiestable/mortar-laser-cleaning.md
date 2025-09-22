@@ -1,16 +1,16 @@
 | Property | Value |
 |----------|-------|
-| Material density | 2.1 g/cm³ |
-| Melting point | N/A (decomposes) °C |
-| Thermal conductivity | 1.5 W/m·K |
-| Laser type for cleaning | Pulsed Fiber Laser |
-| Laser wavelength | 1064nm |
-| Fluence range | 0.5–2.0 J/cm² |
-| Chemical formula or scientific symbol | Cement + Lime + Sand + Water |
+| Density | 2.1 g/cm³ |
+| Melting Point | N/A (decomposes) °C |
+| Thermal Cond. | 1.5 W/m·K |
+| Laser Type | Pulsed Fiber Laser |
+| Wavelength | 1064nm |
+| Fluence Range | 0.5–2.0 J/cm² |
+| Formula | Cement + Lime + Sand + Water |
 
 
 ---
-Version Log - Generated: 2025-09-21T20:26:29.945775
+Version Log - Generated: 2025-09-21T20:52:21.658814
 Material: Unknown
 Component: propertiestable
 Generator: Z-Beam v1.0.0

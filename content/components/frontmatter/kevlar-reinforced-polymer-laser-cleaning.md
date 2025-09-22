@@ -27,7 +27,7 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 0.0
-  meltingPoint: "500-600\xB0C (decomposition)"
+  meltingPoint: "500-600\xB0C"
   meltingPointNumeric: 550.0
   meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"

@@ -25,8 +25,8 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 100.0
-  meltingPoint: "1768.3\xB0C"
-  meltingPointNumeric: 1768.3
+  meltingPoint: "1768\xB0C"
+  meltingPointNumeric: 1768
   meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"
   meltingPointMinNumeric: 1200.0
@@ -79,6 +79,7 @@ properties:
   wavelength: 1064nm
   fluenceRange: "1.0\u201310 J/cm\xB2"
   chemicalFormula: Pt
+  thermalBehaviorType: melting
 composition:
 - 'Platinum (Pt): 95-99.95%'
 - 'Iridium (Ir): 0-5%, Rhodium (Rh): 0-3%, Ruthenium (Ru): 0-2% (common alloying elements)'

@@ -80,6 +80,7 @@ properties:
   wavelength: 1064nm
   fluenceRange: "0.5\u20135 J/cm\xB2"
   chemicalFormula: Ni
+  thermalBehaviorType: melting
 composition:
 - 'Nickel (Ni): 99.9+% (commercially pure)'
 - 'Iron (Fe): <0.07%, Manganese (Mn): <0.35%, Copper (Cu): <0.25%, Carbon (C): <0.15%'

@@ -26,9 +26,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 0.0
-  meltingPoint: "180-220\xB0C (thermal decomposition begins)"
-  meltingPointNumeric: 200.0
-  meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"
   meltingPointMinNumeric: 1200.0
   meltingPointMinUnit: "\xB0C"
@@ -81,6 +78,10 @@ properties:
   fluenceRange: "1.0\u201310 J/cm\xB2"
   chemicalFormula: Varies by formulation; typically polyol + diisocyanate + chain
     extender
+  thermalBehaviorType: decomposition
+  decompositionPoint: "220\xB0C"
+  decompositionPointNumeric: 220
+  decompositionPointUnit: "\xB0C"
 composition:
 - 'Polyurethane matrix: 60-80%'
 - 'Glass/carbon fiber reinforcement: 20-40%'

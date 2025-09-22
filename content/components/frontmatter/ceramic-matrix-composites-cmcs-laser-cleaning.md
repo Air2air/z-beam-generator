@@ -29,7 +29,7 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 27.4
-  meltingPoint: "2700\xB0C (SiC decomposition)"
+  meltingPoint: "2700\xB0C"
   meltingPointNumeric: 2700.0
   meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"

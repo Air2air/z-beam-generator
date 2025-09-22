@@ -26,8 +26,8 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 100.0
-  meltingPoint: "1325-1530\xB0C"
-  meltingPointNumeric: 1427.5
+  meltingPoint: "1530\xB0C"
+  meltingPointNumeric: 1530
   meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"
   meltingPointMinNumeric: 1200.0
@@ -80,6 +80,7 @@ properties:
   wavelength: 1064nm
   fluenceRange: "1.0\u201310 J/cm\xB2"
   chemicalFormula: Fe-Cr-Ni
+  thermalBehaviorType: melting
 composition:
 - 'Iron (Fe): 66.5-74%'
 - 'Chromium (Cr): 16-26%'

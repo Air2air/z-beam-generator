@@ -26,9 +26,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 100.0
-  meltingPoint: "Decomposes at ~200-275\xB0C (charring)"
-  meltingPointNumeric: 237.5
-  meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"
   meltingPointMinNumeric: 1200.0
   meltingPointMinUnit: "\xB0C"
@@ -80,6 +77,10 @@ properties:
   wavelength: 1064nm
   fluenceRange: "0.5\u20135 J/cm\xB2"
   chemicalFormula: Complex Lignocellulosic Composite
+  thermalBehaviorType: decomposition
+  decompositionPoint: "275\xB0C"
+  decompositionPointNumeric: 275
+  decompositionPointUnit: "\xB0C"
 composition:
 - 'Cellulose: 40-45%'
 - 'Hemicellulose: 20-25%'

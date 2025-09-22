@@ -78,6 +78,7 @@ properties:
   wavelength: 1064nm
   fluenceRange: "0.5\u20135 J/cm\xB2"
   chemicalFormula: Ru
+  thermalBehaviorType: melting
 composition:
 - Ruthenium (99.9% pure)
 - Platinum group trace elements (<0.1%)

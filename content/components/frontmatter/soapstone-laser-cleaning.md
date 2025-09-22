@@ -25,8 +25,8 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 22.6
-  meltingPoint: "1200-1300 \xB0C"
-  meltingPointNumeric: 1250.0
+  meltingPoint: "1300\xB0C"
+  meltingPointNumeric: 1300
   meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"
   meltingPointMinNumeric: 1200.0
@@ -79,6 +79,7 @@ properties:
   wavelength: 1064nm
   fluenceRange: "1.0\u201310 J/cm\xB2"
   chemicalFormula: "Mg\u2083Si\u2084O\u2081\u2080(OH)\u2082"
+  thermalBehaviorType: melting
 composition:
 - "Talc (Mg\u2083Si\u2084O\u2081\u2080(OH)\u2082): 40-80%"
 - "Magnesite (MgCO\u2083): 10-40%"

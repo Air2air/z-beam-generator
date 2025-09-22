@@ -26,7 +26,7 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 21.7
-  meltingPoint: "1339\xB0C (decomposes to CaO and CO2)"
+  meltingPoint: "1339\xB0C"
   meltingPointNumeric: 1339.0
   meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"
@@ -80,6 +80,7 @@ properties:
   wavelength: 1064nm
   fluenceRange: "1.0\u201310 J/cm\xB2"
   chemicalFormula: CaCO3
+  thermalBehaviorType: melting
 composition:
 - 'Calcium carbonate (CaCO3): 95-99%'
 - 'Impurities (Mg, Fe, Sr, Mn, clay minerals): 1-5%'

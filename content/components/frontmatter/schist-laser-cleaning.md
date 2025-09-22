@@ -27,8 +27,8 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 22.6
-  meltingPoint: "~1200-1400 \xB0C (decomposition rather than clear melting)"
-  meltingPointNumeric: 1300.0
+  meltingPoint: "1400\xB0C"
+  meltingPointNumeric: 1400
   meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"
   meltingPointMinNumeric: 1200.0
@@ -81,6 +81,7 @@ properties:
   wavelength: 1064nm
   fluenceRange: "1.0-10 J/cm\xB2"
   chemicalFormula: N/A (Complex mixture of silicates)
+  thermalBehaviorType: melting
 composition:
 - "Quartz (SiO\u2082): 20-60%"
 - "Mica [Muscovite: KAl\u2082(AlSi\u2083O\u2081\u2080)(OH)\u2082; Biotite: K(Fe,Mg)\u2083\

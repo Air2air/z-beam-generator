@@ -1,16 +1,16 @@
 | Property | Value |
 |----------|-------|
-| Material density | 0.64 g/cm³ |
-| Melting point | 250-350°C |
-| Thermal conductivity | 0.12 W/m·K |
-| Laser type for cleaning | Pulsed Fiber Laser |
-| Laser wavelength | 1064nm |
-| Fluence range | 0.5–2.0 J/cm² |
-| Chemical formula or scientific symbol | C6H10O5 (cellulose) |
+| Density | 0.64 g/cm³ |
+| Melting Point | 250-350°C |
+| Thermal Cond. | 0.12 W/m·K |
+| Laser Type | Pulsed Fiber Laser |
+| Wavelength | 1064nm |
+| Fluence Range | 0.5–2.0 J/cm² |
+| Formula | C6H10O5 (cellulose) |
 
 
 ---
-Version Log - Generated: 2025-09-21T20:26:32.111706
+Version Log - Generated: 2025-09-21T20:52:23.007807
 Material: Unknown
 Component: propertiestable
 Generator: Z-Beam v1.0.0

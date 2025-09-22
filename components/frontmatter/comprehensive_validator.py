@@ -257,7 +257,13 @@ class ComprehensiveFrontmatterValidator:
             if "properties" in frontmatter_data:
                 props = frontmatter_data["properties"]
                 if isinstance(props, dict):
-                    critical_properties = ["density", "meltingPoint", "thermalConductivity"]
+                    # Check for thermal behavior type to determine required thermal property
+                    thermal_behavior = frontmatter_data.get("thermalBehaviorType", "melting")
+                    if thermal_behavior == "decomposition":
+                        critical_properties = ["density", "decompositionPoint", "thermalConductivity"]
+                    else:
+                        critical_properties = ["density", "meltingPoint", "thermalConductivity"]
+                    
                     missing_props = [prop for prop in critical_properties if prop not in props]
                     if missing_props:
                         issues.extend([f"Missing critical property: {prop}" for prop in missing_props])
@@ -305,11 +311,20 @@ class ComprehensiveFrontmatterValidator:
             if not prompt_template:
                 return self._create_warning_result("material_properties", "Validation template not found")
 
+            # Build comprehensive validation prompt with thermal behavior support
+            thermal_behavior = frontmatter_data.get("thermalBehaviorType", "melting")
+            if thermal_behavior == "decomposition":
+                thermal_property = props.get("decompositionPoint", "N/A")
+                thermal_property_name = "decomposition_point"
+            else:
+                thermal_property = props.get("meltingPoint", "N/A")
+                thermal_property_name = "melting_point"
+
             prompt = prompt_template.format(
                 material_name=material_name,
                 category=category,
                 density=props.get("density", "N/A"),
-                melting_point=props.get("meltingPoint", "N/A"),
+                melting_point=thermal_property,
                 thermal_conductivity=props.get("thermalConductivity", "N/A"),
                 chemical_formula=chemical_props.get("formula", props.get("chemicalFormula", "N/A"))
             )

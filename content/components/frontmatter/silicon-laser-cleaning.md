@@ -25,8 +25,8 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 12.6
-  meltingPoint: "1414 \xB0C"
-  meltingPointNumeric: 1414.0
+  meltingPoint: "1414\xB0C"
+  meltingPointNumeric: 1414
   meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"
   meltingPointMinNumeric: 1200.0
@@ -79,6 +79,7 @@ properties:
   wavelength: 1064nm
   fluenceRange: "0.5-5 J/cm\xB2"
   chemicalFormula: Si
+  thermalBehaviorType: melting
 composition:
 - 'Silicon: 99.9999999% (electronic grade)'
 - 'Trace elements: Oxygen (<1 ppb), Carbon (<0.1 ppb), Boron (<0.1 ppb)'

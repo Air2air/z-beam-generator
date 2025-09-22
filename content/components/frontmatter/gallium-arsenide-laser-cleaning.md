@@ -25,8 +25,8 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 83.8
-  meltingPoint: "1238 \xB0C"
-  meltingPointNumeric: 1238.0
+  meltingPoint: "1238\xB0C"
+  meltingPointNumeric: 1238
   meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"
   meltingPointMinNumeric: 1200.0
@@ -79,6 +79,7 @@ properties:
   wavelength: 1064nm
   fluenceRange: "1.0\u201310 J/cm\xB2"
   chemicalFormula: GaAs
+  thermalBehaviorType: melting
 composition:
 - 'Gallium: 48.2%'
 - 'Arsenic: 51.8%'

@@ -26,8 +26,8 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 100.0
-  meltingPoint: "2477 \xB0C"
-  meltingPointNumeric: 2477.0
+  meltingPoint: "2477\xB0C"
+  meltingPointNumeric: 2477
   meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"
   meltingPointMinNumeric: 1200.0
@@ -80,6 +80,7 @@ properties:
   wavelength: 1064nm
   fluenceRange: "1.0\u201310 J/cm\xB2"
   chemicalFormula: Nb
+  thermalBehaviorType: melting
 composition:
 - 'Niobium (Nb): > 99.9% (Reactor Grade)'
 - 'Tantalum (Ta): < 0.1%, Zirconium (Zr): < 0.01%, other trace elements'

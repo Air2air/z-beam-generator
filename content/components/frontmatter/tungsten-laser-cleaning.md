@@ -80,6 +80,7 @@ properties:
   wavelength: 1064nm
   fluenceRange: "1.0\u201310 J/cm\xB2"
   chemicalFormula: W
+  thermalBehaviorType: melting
 composition:
 - 'Tungsten: 99.95% (commercially pure)'
 - 'Carbon: <0.01%, Oxygen: <0.005%, Metallic impurities: <0.04%'

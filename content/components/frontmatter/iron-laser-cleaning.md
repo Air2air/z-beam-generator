@@ -25,8 +25,8 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 100.0
-  meltingPoint: "1538 \xB0C"
-  meltingPointNumeric: 1538.0
+  meltingPoint: "1538\xB0C"
+  meltingPointNumeric: 1538
   meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"
   meltingPointMinNumeric: 1200.0
@@ -79,6 +79,7 @@ properties:
   wavelength: 1064nm
   fluenceRange: "1.0\u201310 J/cm\xB2"
   chemicalFormula: Fe
+  thermalBehaviorType: melting
 composition:
 - 'Iron (Fe): 99.5-99.9% (commercial purity)'
 - 'Carbon (C): 0.02-0.1%, Manganese (Mn): 0.3-0.7%, Silicon (Si): 0.15-0.35%'

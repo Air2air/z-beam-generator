@@ -149,6 +149,7 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
         property_mappings = {
             'density': 'density',
             'melting_point': 'meltingPoint', 
+            'decomposition_point': 'decompositionPoint',
             'thermal_conductivity': 'thermalConductivity',
             'tensile_strength': 'tensileStrength',
             'hardness': 'hardness',

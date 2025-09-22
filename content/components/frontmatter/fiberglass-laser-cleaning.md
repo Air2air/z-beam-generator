@@ -26,9 +26,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 8.3
-  meltingPoint: "~1200\xB0C (glass fibers), 100-200\xB0C (polymer matrix degradation)"
-  meltingPointNumeric: 150.0
-  meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"
   meltingPointMinNumeric: 1200.0
   meltingPointMinUnit: "\xB0C"
@@ -80,6 +77,10 @@ properties:
   wavelength: 1064nm
   fluenceRange: "0.5-3 J/cm\xB2"
   chemicalFormula: "SiO\u2082 (primary constituent)"
+  thermalBehaviorType: decomposition
+  decompositionPoint: "1200\xB0C"
+  decompositionPointNumeric: 1200
+  decompositionPointUnit: "\xB0C"
 composition:
 - "Silica glass (SiO\u2082) 60-70%"
 - Epoxy/Polyester resin 30-40%

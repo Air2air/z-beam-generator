@@ -26,9 +26,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 100.0
-  meltingPoint: "~280 \xB0C (onset of pyrolysis/decomposition)"
-  meltingPointNumeric: 280.0
-  meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"
   meltingPointMinNumeric: 1200.0
   meltingPointMinUnit: "\xB0C"
@@ -82,6 +79,10 @@ properties:
   chemicalFormula: "Complex biological composite; primarily cellulose (C\u2086H\u2081\
     \u2080O\u2085)\u2099, lignin [C\u2089H\u2081\u2080O\u2083(OCH\u2083)\u2080.\u2089\
     \u208B\u2081.\u2087]\u2099, hemicellulose"
+  thermalBehaviorType: decomposition
+  decompositionPoint: "280\xB0C"
+  decompositionPointNumeric: 280
+  decompositionPointUnit: "\xB0C"
 composition:
 - 'Cellulose: 40-50%'
 - 'Lignin: 20-30%'

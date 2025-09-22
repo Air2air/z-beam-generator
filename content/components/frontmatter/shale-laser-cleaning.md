@@ -27,8 +27,8 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 13.1
-  meltingPoint: "1200-1600\xB0C (varies with mineral composition)"
-  meltingPointNumeric: 1400.0
+  meltingPoint: "1600\xB0C"
+  meltingPointNumeric: 1600
   meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"
   meltingPointMinNumeric: 1200.0
@@ -82,6 +82,7 @@ properties:
   fluenceRange: "1.0\u201310 J/cm\xB2"
   chemicalFormula: 'Variable: primarily clay minerals (illite, kaolinite, smectite)
     + quartz + feldspar'
+  thermalBehaviorType: melting
 composition:
 - 'Clay minerals (illite, kaolinite, smectite): 40-70%'
 - 'Quartz: 20-40%'

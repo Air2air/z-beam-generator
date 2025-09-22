@@ -26,7 +26,7 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 9.5
-  meltingPoint: "1713\xB0C (3115\xB0F)"
+  meltingPoint: "1713\xB0C"
   meltingPointNumeric: 1713.0
   meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"
@@ -80,6 +80,7 @@ properties:
   wavelength: 1064nm
   fluenceRange: "0.5\u20135 J/cm\xB2"
   chemicalFormula: SiO2
+  thermalBehaviorType: melting
 composition:
 - "Silicon Dioxide (SiO\u2082): 99.9-99.999%"
 - 'Trace impurities: <0.1% (typically OH groups, metallic impurities)'

@@ -26,7 +26,7 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 27.9
-  meltingPoint: "~1550\xB0C (decomposition before melting)"
+  meltingPoint: "1550\xB0C"
   meltingPointNumeric: 1550.0
   meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"
@@ -81,6 +81,7 @@ properties:
   fluenceRange: "1.0\u201310 J/cm\xB2"
   chemicalFormula: "Complex mixture primarily CaO (60-67%), SiO\u2082 (17-25%), Al\u2082\
     O\u2083 (3-8%), Fe\u2082O\u2083 (0.5-6%)"
+  thermalBehaviorType: melting
 composition:
 - "Tricalcium silicate (3CaO\xB7SiO\u2082): 45-60%"
 - "Dicalcium silicate (2CaO\xB7SiO\u2082): 15-30%"

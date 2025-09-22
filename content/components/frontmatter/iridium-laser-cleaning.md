@@ -79,6 +79,7 @@ properties:
   wavelength: 1064nm
   fluenceRange: "1.0\u201310 J/cm\xB2"
   chemicalFormula: Ir
+  thermalBehaviorType: melting
 composition:
 - 'Iridium: 99.9% (primary component)'
 - 'Platinum: 0.1% (typical trace element)'

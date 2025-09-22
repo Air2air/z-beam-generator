@@ -112,9 +112,9 @@ class FieldOrderingService:
         """Order properties with grouped organization following the standard pattern"""
         ordered_properties = {}
         
-        # Property groups in order
+        # Property groups in order - include both thermal property types
         property_groups = [
-            "density", "meltingPoint", "thermalConductivity", 
+            "density", "meltingPoint", "decompositionPoint", "thermalConductivity", 
             "tensileStrength", "hardness", "youngsModulus"
         ]
         
@@ -135,6 +135,10 @@ class FieldOrderingService:
                     ordered_properties["meltingMin"] = properties["meltingMin"]
                     ordered_properties["meltingMinNumeric"] = properties.get("meltingMinNumeric")
                     ordered_properties["meltingMinUnit"] = properties.get("meltingMinUnit")
+                elif "decompositionMin" in properties and prop == "decompositionPoint":
+                    ordered_properties["decompositionMin"] = properties["decompositionMin"]
+                    ordered_properties["decompositionMinNumeric"] = properties.get("decompositionMinNumeric")
+                    ordered_properties["decompositionMinUnit"] = properties.get("decompositionMinUnit")
                 elif f"{prop}Min" in properties:
                     ordered_properties[f"{prop}Min"] = properties[f"{prop}Min"]
                     ordered_properties[f"{prop}MinNumeric"] = properties.get(f"{prop}MinNumeric")
@@ -161,6 +165,10 @@ class FieldOrderingService:
                     ordered_properties["meltingMax"] = properties["meltingMax"]
                     ordered_properties["meltingMaxNumeric"] = properties.get("meltingMaxNumeric")
                     ordered_properties["meltingMaxUnit"] = properties.get("meltingMaxUnit")
+                elif "decompositionMax" in properties and prop == "decompositionPoint":
+                    ordered_properties["decompositionMax"] = properties["decompositionMax"]
+                    ordered_properties["decompositionMaxNumeric"] = properties.get("decompositionMaxNumeric")
+                    ordered_properties["decompositionMaxUnit"] = properties.get("decompositionMaxUnit")
                 elif f"{prop}Max" in properties:
                     ordered_properties[f"{prop}Max"] = properties[f"{prop}Max"]
                     ordered_properties[f"{prop}MaxNumeric"] = properties.get(f"{prop}MaxNumeric")
@@ -187,6 +195,8 @@ class FieldOrderingService:
                     ordered_properties[f"{prop}Percentile"] = properties[f"{prop}Percentile"]
                 elif "meltingPercentile" in properties and prop == "meltingPoint":
                     ordered_properties["meltingPercentile"] = properties["meltingPercentile"]
+                elif "decompositionPercentile" in properties and prop == "decompositionPoint":
+                    ordered_properties["decompositionPercentile"] = properties["decompositionPercentile"]
                 elif "thermalPercentile" in properties and prop == "thermalConductivity":
                     ordered_properties["thermalPercentile"] = properties["thermalPercentile"]
                 elif "tensilePercentile" in properties and prop == "tensileStrength":

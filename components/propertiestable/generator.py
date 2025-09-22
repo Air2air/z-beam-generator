@@ -76,7 +76,7 @@ class PropertiestableComponentGenerator(HybridComponentGenerator):
                     "description", prop_key.replace("_", " ").title()
                 )
                 # Fix: Add full path for properties that should be under 'properties' key
-                if prop_key in ["density", "meltingPoint", "thermalConductivity", "laserType", "wavelength", "fluenceRange"]:
+                if prop_key in ["density", "meltingPoint", "decompositionPoint", "thermalConductivity"]:
                     full_key = f"properties.{prop_key}"
                 elif prop_key == "chemicalFormula":
                     full_key = "chemicalProperties.formula"
@@ -139,14 +139,18 @@ class PropertiestableComponentGenerator(HybridComponentGenerator):
         name_mappings = {
             "Formula": "chemicalProperties.formula",
             "Symbol": "chemicalProperties.symbol",
+            "Type": "chemicalProperties.materialType",
             "Category": "category",
             "Density": "properties.density",
             "Tensile": "properties.tensileStrength",
-            "Thermal": "properties.thermalConductivity",
+            "Conductivity": "properties.thermalConductivity",
             "Chemical Formula": "chemicalProperties.formula",
             "Material Symbol": "chemicalProperties.symbol",
             "Material Type": "chemicalProperties.materialType",
             "Melting Point": "properties.meltingPoint",
+            "Decomposition": "properties.decompositionPoint",
+            "Thermal Conductivity": "properties.thermalConductivity",
+            "Tensile Strength": "properties.tensileStrength",
         }
 
         return name_mappings.get(display_name, display_name.lower().replace(" ", "_"))
@@ -161,11 +165,11 @@ class PropertiestableComponentGenerator(HybridComponentGenerator):
         chem_props = frontmatter_data.get("chemicalProperties", {})
         if chem_props:
             if "formula" in chem_props:
-                properties.append(("chemicalProperties.formula", "Chemical Formula"))
+                properties.append(("chemicalProperties.formula", "Formula"))
             if "symbol" in chem_props:
-                properties.append(("chemicalProperties.symbol", "Material Symbol"))
+                properties.append(("chemicalProperties.symbol", "Symbol"))
             if "materialType" in chem_props:
-                properties.append(("chemicalProperties.materialType", "Material Type"))
+                properties.append(("chemicalProperties.materialType", "Type"))
 
         # Physical properties
         props = frontmatter_data.get("properties", {})
@@ -173,13 +177,26 @@ class PropertiestableComponentGenerator(HybridComponentGenerator):
             prop_mappings = {
                 "density": "Density",
                 "meltingPoint": "Melting Point",
-                "thermalConductivity": "Thermal Conductivity",
-                "tensileStrength": "Tensile Strength",
+                "decompositionPoint": "Decomposition", 
+                "thermalConductivity": "Conductivity",
+                "tensileStrength": "Tensile",
             }
 
             for key, display_name in prop_mappings.items():
                 if key in props:
                     properties.append((f"properties.{key}", display_name))
+            
+            # Handle thermal behavior - show appropriate thermal property
+            thermal_behavior = props.get("thermalBehaviorType", "melting")
+            if thermal_behavior == "decomposition" and "decompositionPoint" in props:
+                # Replace melting point with decomposition point for decomposing materials
+                properties = [(k, v) for k, v in properties if not k.endswith("meltingPoint")]
+                if ("properties.decompositionPoint", "Decomposition") not in properties:
+                    properties.append(("properties.decompositionPoint", "Decomposition"))
+            elif thermal_behavior == "melting" and "meltingPoint" in props:
+                # Ensure melting point is included for melting materials
+                if ("properties.meltingPoint", "Melting Point") not in properties:
+                    properties.append(("properties.meltingPoint", "Melting Point"))
 
         # Category
         if "category" in frontmatter_data:

@@ -27,8 +27,8 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 22.6
-  meltingPoint: "1250-1450\xB0C (dependent on feldspar/quartz ratio)"
-  meltingPointNumeric: 1350.0
+  meltingPoint: "1450\xB0C"
+  meltingPointNumeric: 1450
   meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"
   meltingPointMinNumeric: 1200.0
@@ -82,6 +82,7 @@ properties:
   fluenceRange: "1.0\u201310 J/cm\xB2"
   chemicalFormula: "Complex silicate mixture (SiO\u2082 40-70%, Feldspars 20-50%,\
     \ Biotite 5-15%)"
+  thermalBehaviorType: melting
 composition:
 - "Quartz (SiO\u2082): 40-70% (primary crystalline phase)"
 - "Alkali Feldspar (KAlSi\u2083O\u2088/NaAlSi\u2083O\u2088): 20-40% (matrix material)"

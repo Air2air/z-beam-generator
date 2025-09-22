@@ -80,6 +80,7 @@ properties:
   wavelength: 1064nm
   fluenceRange: "0.5\u20135 J/cm\xB2"
   chemicalFormula: Au
+  thermalBehaviorType: melting
 composition:
 - 'Gold (Au): 99.95-99.99% (industrial grade)'
 - 'Silver, copper, or other alloying elements: 0.01-0.05% (trace elements)'

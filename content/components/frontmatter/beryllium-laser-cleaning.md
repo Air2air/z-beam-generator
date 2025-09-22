@@ -79,6 +79,7 @@ properties:
   wavelength: 1064nm
   fluenceRange: "1.0\u201310 J/cm\xB2"
   chemicalFormula: Be
+  thermalBehaviorType: melting
 composition:
 - 'Beryllium (Be): 98.0-99.5%'
 - 'Beryllium Oxide (BeO): 0.5-2.0% (surface layer)'

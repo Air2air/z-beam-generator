@@ -25,8 +25,8 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 100.0
-  meltingPoint: "961.8 \xB0C"
-  meltingPointNumeric: 961.8
+  meltingPoint: "961\xB0C"
+  meltingPointNumeric: 961
   meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"
   meltingPointMinNumeric: 1200.0
@@ -79,6 +79,7 @@ properties:
   wavelength: 1064nm
   fluenceRange: "0.5-5 J/cm\xB2"
   chemicalFormula: Ag
+  thermalBehaviorType: melting
 composition:
 - 'Silver (Ag): 99.9-99.99% (commercial pure)'
 - 'Copper: 0.01-0.1% (common trace element)'

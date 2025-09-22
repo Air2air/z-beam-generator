@@ -25,9 +25,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 100.0
-  meltingPoint: "~300\xB0C (thermal decomposition begins)"
-  meltingPointNumeric: 300.0
-  meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"
   meltingPointMinNumeric: 1200.0
   meltingPointMinUnit: "\xB0C"
@@ -80,6 +77,10 @@ properties:
   fluenceRange: "1.0\u201310 J/cm\xB2"
   chemicalFormula: "Complex organic polymer (C\u2086H\u2081\u2080O\u2085)\u2099 cellulose\
     \ base"
+  thermalBehaviorType: decomposition
+  decompositionPoint: "300\xB0C"
+  decompositionPointNumeric: 300
+  decompositionPointUnit: "\xB0C"
 composition:
 - 'Cellulose: 40-45%'
 - 'Lignin: 26-34%'

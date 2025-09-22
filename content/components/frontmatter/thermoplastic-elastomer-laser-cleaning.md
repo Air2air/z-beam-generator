@@ -27,9 +27,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 0.0
-  meltingPoint: "120-220\xB0C (material dependent)"
-  meltingPointNumeric: 170.0
-  meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"
   meltingPointMinNumeric: 1200.0
   meltingPointMinUnit: "\xB0C"
@@ -82,6 +79,10 @@ properties:
   fluenceRange: "0.5\u20135 J/cm\xB2"
   chemicalFormula: Variable composition (typically styrene-ethylene/butylene-styrene
     block copolymer)
+  thermalBehaviorType: decomposition
+  decompositionPoint: "220\xB0C"
+  decompositionPointNumeric: 220
+  decompositionPointUnit: "\xB0C"
 composition:
 - 'Polystyrene hard segments: 15-40%'
 - 'Polyethylene/butylene rubber soft segments: 60-85%'

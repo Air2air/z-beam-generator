@@ -213,9 +213,10 @@ category_ranges:
     thermalConductivity:
       min: "0.04 W/m·K"   # Low-density wood
       max: "0.4 W/m·K"    # Dense hardwood
-    meltingPoint:
+    decompositionPoint:
       min: "250°C"        # Wood decomposition start
       max: "500°C"        # Complete pyrolysis
+    thermalBehaviorType: "decomposition"
     hardness:
       min: "1 HB"         # Balsa wood
       max: "4000 HB"      # Lignum vitae

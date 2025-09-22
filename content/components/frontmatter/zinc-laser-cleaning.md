@@ -27,8 +27,8 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 100.0
-  meltingPoint: "419.5\xB0C"
-  meltingPointNumeric: 419.5
+  meltingPoint: "419\xB0C"
+  meltingPointNumeric: 419
   meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"
   meltingPointMinNumeric: 1200.0
@@ -81,6 +81,7 @@ properties:
   wavelength: 1064nm
   fluenceRange: "1.0\u201310 J/cm\xB2"
   chemicalFormula: Zn
+  thermalBehaviorType: melting
 composition:
 - Zinc (99.995+%) - High purity zinc for industrial applications
 - "Lead (\u22640.003%), Cadmium (\u22640.003%), Iron (\u22640.002%) - Common trace\

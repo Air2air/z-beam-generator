@@ -28,9 +28,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 0.0
-  meltingPoint: "120-220 \xB0C (Resin decomposition occurs before clear melting)"
-  meltingPointNumeric: 170.0
-  meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"
   meltingPointMinNumeric: 1200.0
   meltingPointMinUnit: "\xB0C"
@@ -82,6 +79,10 @@ properties:
   wavelength: 1064 nm
   fluenceRange: "0.5-5 J/cm\xB2"
   chemicalFormula: N/A (Composite Material)
+  thermalBehaviorType: decomposition
+  decompositionPoint: "220\xB0C"
+  decompositionPointNumeric: 220
+  decompositionPointUnit: "\xB0C"
 composition:
 - Unsaturated Polyester Resin (30-50%)
 - E-glass or S-glass fibers (50-70%)

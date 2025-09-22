@@ -25,9 +25,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 0.0
-  meltingPoint: "Decomposes at 150-200\xB0C (does not melt, thermoset polymer)"
-  meltingPointNumeric: 175.0
-  meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"
   meltingPointMinNumeric: 1200.0
   meltingPointMinUnit: "\xB0C"
@@ -82,6 +79,10 @@ properties:
   fluenceRange: "1.0\u201310 J/cm\xB2"
   chemicalFormula: Variable composition; typically bisphenol-A diglycidyl ether (DGEBA)
     based
+  thermalBehaviorType: decomposition
+  decompositionPoint: "200\xB0C"
+  decompositionPointNumeric: 200
+  decompositionPointUnit: "\xB0C"
 composition:
 - 'Epoxy resin matrix: 40-60%'
 - 'Carbon/glass fiber reinforcement: 40-60%'

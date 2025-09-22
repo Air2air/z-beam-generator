@@ -1,16 +1,16 @@
 | Property | Value |
 |----------|-------|
-| Material density | 0.9-1.2 g/cm³ |
-| Melting point | 120-220°C |
-| Thermal conductivity | 0.2-0.4 W/m·K |
-| Laser type for cleaning | Pulsed Fiber Laser |
-| Laser wavelength | 1064nm |
-| Fluence range | 1.0–4.5 J/cm² |
-| Chemical formula or scientific symbol | TPE-Polymer |
+| Density | 0.9-1.2 g/cm³ |
+| Melting Point | 120-220°C |
+| Thermal Cond. | 0.2-0.4 W/m·K |
+| Laser Type | Pulsed Fiber Laser |
+| Wavelength | 1064nm |
+| Fluence Range | 1.0–4.5 J/cm² |
+| Formula | TPE-Polymer |
 
 
 ---
-Version Log - Generated: 2025-09-21T20:26:29.653907
+Version Log - Generated: 2025-09-21T20:52:21.365867
 Material: Unknown
 Component: propertiestable
 Generator: Z-Beam v1.0.0

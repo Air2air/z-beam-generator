@@ -25,8 +25,8 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 97.9
-  meltingPoint: "29.76\xB0C"
-  meltingPointNumeric: 29.76
+  meltingPoint: "29\xB0C"
+  meltingPointNumeric: 29
   meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"
   meltingPointMinNumeric: 1200.0
@@ -79,6 +79,7 @@ properties:
   wavelength: 1064nm
   fluenceRange: "1.0\u201310 J/cm\xB2"
   chemicalFormula: Ga
+  thermalBehaviorType: melting
 composition:
 - Gallium-69 (60.11%)
 - Gallium-71 (39.89%)

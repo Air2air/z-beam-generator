@@ -25,8 +25,8 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 100.0
-  meltingPoint: "1350-1400 \xB0C"
-  meltingPointNumeric: 1375.0
+  meltingPoint: "1400\xB0C"
+  meltingPointNumeric: 1400
   meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"
   meltingPointMinNumeric: 1200.0
@@ -79,6 +79,7 @@ properties:
   wavelength: 1064nm
   fluenceRange: "1.0\u201310 J/cm\xB2"
   chemicalFormula: Ni-Cr-Fe-Mo-Nb (varies by grade)
+  thermalBehaviorType: melting
 composition:
 - 'Nickel (Ni): 58.0 min % (Inconel 625)'
 - 'Chromium (Cr): 20.0-23.0%, Molybdenum (Mo): 8.0-10.0%, Niobium (Nb): 3.15-4.15%,

@@ -80,6 +80,7 @@ properties:
   wavelength: 1064nm
   fluenceRange: "0.5-5 J/cm\xB2"
   chemicalFormula: Cu
+  thermalBehaviorType: melting
 composition:
 - 'Copper (Cu): 99.90-99.99% (electrolytic tough pitch copper)'
 - 'Oxygen: 0.02-0.04%'

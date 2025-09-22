@@ -1,16 +1,16 @@
 | Property | Value |
 |----------|-------|
-| Material density | 2.5 g/cm³ |
-| Melting point | 1700-2000°C |
-| Thermal conductivity | 15.0 W/m·K |
-| Laser type for cleaning | Pulsed Fiber Laser |
-| Laser wavelength | 1064nm |
-| Fluence range | 1.0–4.5 J/cm² |
-| Chemical formula or scientific symbol | Ceramic-Fiber |
+| Density | 2.5 g/cm³ |
+| Melting Point | 1700-2000°C |
+| Thermal Cond. | 15.0 W/m·K |
+| Laser Type | Pulsed Fiber Laser |
+| Wavelength | 1064nm |
+| Fluence Range | 1.0–4.5 J/cm² |
+| Formula | Ceramic-Fiber |
 
 
 ---
-Version Log - Generated: 2025-09-21T20:26:29.737584
+Version Log - Generated: 2025-09-21T20:52:21.449218
 Material: Unknown
 Component: propertiestable
 Generator: Z-Beam v1.0.0

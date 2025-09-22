@@ -27,8 +27,8 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 48.3
-  meltingPoint: "1210-938\xB0C (decreases with increasing Ge content)"
-  meltingPointNumeric: 1074.0
+  meltingPoint: "938\xB0C"
+  meltingPointNumeric: 938
   meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"
   meltingPointMinNumeric: 1200.0
@@ -81,6 +81,7 @@ properties:
   wavelength: 1064nm
   fluenceRange: "0.1-1.0 J/cm\xB2"
   chemicalFormula: "Si\u2081\u208B\u2093Ge\u2093"
+  thermalBehaviorType: melting
 composition:
 - 'Silicon: 70-95% (typical semiconductor compositions)'
 - 'Germanium: 5-30% (typical alloying percentages for electronic applications)'

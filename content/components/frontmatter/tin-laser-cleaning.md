@@ -25,8 +25,8 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 100.0
-  meltingPoint: "231.93\xB0C"
-  meltingPointNumeric: 231.93
+  meltingPoint: "231\xB0C"
+  meltingPointNumeric: 231
   meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"
   meltingPointMinNumeric: 1200.0
@@ -79,6 +79,7 @@ properties:
   wavelength: 1064nm
   fluenceRange: "0.5-5 J/cm\xB2"
   chemicalFormula: Sn
+  thermalBehaviorType: melting
 composition:
 - 'Tin (Sn): 99.85-99.9% (commercial grade)'
 - 'Impurities: <0.15% (typically lead, copper, iron, bismuth)'

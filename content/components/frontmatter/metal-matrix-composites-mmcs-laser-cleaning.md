@@ -25,7 +25,7 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 42.9
-  meltingPoint: "580-660\xB0C (Al matrix); 1660\xB0C (Ti matrix) - composite dependent"
+  meltingPoint: "580-660\xB0C; 1660\xB0C - composite dependent"
   meltingPointNumeric: 620.0
   meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"

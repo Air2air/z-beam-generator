@@ -25,7 +25,7 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 21.9
-  meltingPoint: "825\xB0C (decomposition)"
+  meltingPoint: "825\xB0C"
   meltingPointNumeric: 825.0
   meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"
@@ -79,6 +79,7 @@ properties:
   wavelength: 1064nm
   fluenceRange: "1.0\u201310 J/cm\xB2"
   chemicalFormula: "CaCO\u2083"
+  thermalBehaviorType: melting
 composition:
 - "Calcium carbonate (CaCO\u2083): 90-99%"
 - "Silicon dioxide (SiO\u2082): 0.5-5%"

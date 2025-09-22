@@ -27,9 +27,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 100.0
-  meltingPoint: "~280 \xB0C (onset of pyrolysis and thermal decomposition)"
-  meltingPointNumeric: 280.0
-  meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"
   meltingPointMinNumeric: 1200.0
   meltingPointMinUnit: "\xB0C"
@@ -84,6 +81,10 @@ properties:
     \u2080O\u2085), lignin (C\u2089H\u2081\u2080O\u2083, C\u2081\u2080H\u2081\u2082\
     O\u2083, C\u2081\u2081H\u2081\u2084O\u2084), hemicellulose, and extractives (e.g.,\
     \ dalbergione)."
+  thermalBehaviorType: decomposition
+  decompositionPoint: "280\xB0C"
+  decompositionPointNumeric: 280
+  decompositionPointUnit: "\xB0C"
 composition:
 - 'Cellulose: 40-50%'
 - 'Lignin: 20-30%'

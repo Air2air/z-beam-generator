@@ -26,8 +26,8 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 14.3
-  meltingPoint: "1200-1300 \xB0C"
-  meltingPointNumeric: 1250.0
+  meltingPoint: "1300\xB0C"
+  meltingPointNumeric: 1300
   meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"
   meltingPointMinNumeric: 1200.0
@@ -81,6 +81,7 @@ properties:
   fluenceRange: "1.0\u201310 J/cm\xB2"
   chemicalFormula: "Variable (SiO\u2082 60-70%, Al\u2082O\u2083 20-30%, flux oxides\
     \ 5-10%)"
+  thermalBehaviorType: melting
 composition:
 - "Silicon Dioxide (SiO\u2082): 60-70%"
 - "Aluminum Oxide (Al\u2082O\u2083): 20-30%"

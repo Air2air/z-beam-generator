@@ -26,8 +26,8 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 100.0
-  meltingPoint: "1200-1450 \xB0C"
-  meltingPointNumeric: 1325.0
+  meltingPoint: "1450\xB0C"
+  meltingPointNumeric: 1450
   meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"
   meltingPointMinNumeric: 1200.0
@@ -80,6 +80,7 @@ properties:
   wavelength: 1064nm
   fluenceRange: "1.0\u201310 J/cm\xB2"
   chemicalFormula: Variable (clay-based ceramic composite)
+  thermalBehaviorType: melting
 composition:
 - "Silica (SiO\u2082): 50-60%"
 - "Alumina (Al\u2082O\u2083): 20-30%"

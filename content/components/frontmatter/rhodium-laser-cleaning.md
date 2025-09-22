@@ -25,8 +25,8 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 100.0
-  meltingPoint: "1964 \xB0C"
-  meltingPointNumeric: 1964.0
+  meltingPoint: "1964\xB0C"
+  meltingPointNumeric: 1964
   meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"
   meltingPointMinNumeric: 1200.0
@@ -79,6 +79,7 @@ properties:
   wavelength: 1064 nm
   fluenceRange: "0.5\u20135 J/cm\xB2"
   chemicalFormula: Rh
+  thermalBehaviorType: melting
 composition:
 - 'Rhodium (Rh): 99.9-99.99% (commercial grade)'
 - 'Trace impurities: <0.1% (typically Ir, Pt, Pd, Fe)'

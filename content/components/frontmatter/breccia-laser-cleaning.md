@@ -27,9 +27,8 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 20.2
-  meltingPoint: "~1200-1400\xB0C (decomposition of carbonate components begins at\
-    \ lower temperatures)"
-  meltingPointNumeric: 1300.0
+  meltingPoint: "1400\xB0C"
+  meltingPointNumeric: 1400
   meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"
   meltingPointMinNumeric: 1200.0
@@ -82,6 +81,7 @@ properties:
   wavelength: 1064nm
   fluenceRange: "1.0-10 J/cm\xB2"
   chemicalFormula: "Variable composite (typically CaCO\u2083, SiO\u2082, various silicates)"
+  thermalBehaviorType: melting
 composition:
 - 'Angular rock fragments (clasts): 50-70% (limestone, chert, quartzite, other sedimentary
   rocks)'

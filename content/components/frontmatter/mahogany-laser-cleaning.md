@@ -25,9 +25,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 100.0
-  meltingPoint: "Decomposes at ~270 \xB0C (does not melt)"
-  meltingPointNumeric: 270.0
-  meltingPointUnit: Decomposes
   meltingPointMin: "1200\xB0C"
   meltingPointMinNumeric: 1200.0
   meltingPointMinUnit: "\xB0C"
@@ -79,6 +76,10 @@ properties:
   wavelength: 1064nm
   fluenceRange: "0.5-3.0 J/cm\xB2"
   chemicalFormula: ~50% Cellulose, ~28% Hemicellulose, ~22% Lignin (approx. composition)
+  thermalBehaviorType: decomposition
+  decompositionPoint: "270\xB0C"
+  decompositionPointNumeric: 270
+  decompositionPointUnit: "\xB0C"
 composition:
 - Cellulose (40-50%)
 - Hemicellulose (20-28%)

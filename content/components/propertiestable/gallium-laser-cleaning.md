@@ -1,16 +1,16 @@
 | Property | Value |
 |----------|-------|
-| Material density | 5.91 g/cm³ |
-| Melting point | 29.76°C |
-| Thermal conductivity | 40.6 W/m·K |
-| Laser type for cleaning | Pulsed Fiber Laser |
-| Laser wavelength | 1064nm |
-| Fluence range | 0.5–2.0 J/cm² |
-| Chemical formula or scientific symbol | Ga |
+| Density | 5.91 g/cm³ |
+| Melting Point | 29.76°C |
+| Thermal Cond. | 40.6 W/m·K |
+| Laser Type | Pulsed Fiber Laser |
+| Wavelength | 1064nm |
+| Fluence Range | 0.5–2.0 J/cm² |
+| Formula | Ga |
 
 
 ---
-Version Log - Generated: 2025-09-21T20:26:30.125155
+Version Log - Generated: 2025-09-21T20:52:21.834499
 Material: Unknown
 Component: propertiestable
 Generator: Z-Beam v1.0.0

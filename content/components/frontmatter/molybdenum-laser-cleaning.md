@@ -80,6 +80,7 @@ properties:
   wavelength: 1064nm
   fluenceRange: "1.0\u201310 J/cm\xB2"
   chemicalFormula: Mo
+  thermalBehaviorType: melting
 composition:
 - 'Molybdenum (Mo): 99.95-99.99%'
 - 'Impurities: <0.05% (typically carbon, oxygen, iron, nickel)'

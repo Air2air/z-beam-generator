@@ -1,16 +1,13 @@
 | Property | Value |
 |----------|-------|
-| Material density | 2.70 g/cm³ |
-| Melting point | 660.3°C |
-| Thermal conductivity | 237 W/m·K |
-| Laser type for cleaning | Pulsed Fiber Laser |
-| Laser wavelength | 1064nm |
-| Fluence range | 1.0–4.5 J/cm² |
-| Chemical formula or scientific symbol | Al |
+| Density | 2.70 g/cm³ |
+| Melting Point | 660.3°C |
+| Thermal Cond. | 237 W/m·K |
+| Formula | Al |
 
 
 ---
-Version Log - Generated: 2025-09-21T20:26:30.015412
+Version Log - Generated: 2025-09-21T20:56:28.562466
 Material: Unknown
 Component: propertiestable
 Generator: Z-Beam v1.0.0

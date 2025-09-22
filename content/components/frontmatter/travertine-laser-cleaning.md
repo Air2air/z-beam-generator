@@ -25,7 +25,7 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 16.7
-  meltingPoint: "825\xB0C (decomposition)"
+  meltingPoint: "825\xB0C"
   meltingPointNumeric: 825.0
   meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"
@@ -79,6 +79,7 @@ properties:
   wavelength: 1064 nm
   fluenceRange: "0.5-5 J/cm\xB2"
   chemicalFormula: "CaCO\u2083"
+  thermalBehaviorType: melting
 composition:
 - "Calcium carbonate (CaCO\u2083): 95-99%"
 - 'Iron oxides, clay minerals, organic matter: 1-5%'

@@ -80,6 +80,7 @@ properties:
   wavelength: 1064nm
   fluenceRange: "0.5\u20135 J/cm\xB2"
   chemicalFormula: ZrO2
+  thermalBehaviorType: melting
 composition:
 - 'Zirconium dioxide (ZrO2): 94-97%'
 - 'Yttria (Y2O3): 3-6% (for YSZ stabilization)'

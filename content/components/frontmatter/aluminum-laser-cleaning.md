@@ -27,8 +27,8 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 21.4
-  meltingPoint: "660.32 \xB0C"
-  meltingPointNumeric: 660.32
+  meltingPoint: "660\xB0C"
+  meltingPointNumeric: 660
   meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"
   meltingPointMinNumeric: 1200.0
@@ -81,6 +81,7 @@ properties:
   wavelength: 1064nm
   fluenceRange: "1.0\u201310 J/cm\xB2"
   chemicalFormula: Al
+  thermalBehaviorType: melting
 composition:
 - 'Aluminum (Al): 87.0% to 99.9% (alloy-dependent)'
 - 'Copper (Cu): 0.1% to 6.0%, Silicon (Si): 0.1% to 18.0%, Magnesium (Mg): 0.1% to

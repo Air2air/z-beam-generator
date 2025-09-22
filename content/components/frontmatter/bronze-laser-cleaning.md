@@ -26,7 +26,7 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 100.0
-  meltingPoint: "950\xB0C (varies by composition)"
+  meltingPoint: "950\xB0C"
   meltingPointNumeric: 950.0
   meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"
@@ -80,6 +80,7 @@ properties:
   wavelength: 1064nm
   fluenceRange: "0.5\u20135 J/cm\xB2"
   chemicalFormula: Cu-Sn
+  thermalBehaviorType: melting
 composition:
 - Typically 88% Cu, 12% Sn
 machineSettings:

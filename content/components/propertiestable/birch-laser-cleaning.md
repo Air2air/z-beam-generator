@@ -1,16 +1,13 @@
 | Property | Value |
 |----------|-------|
-| Material density | 0.65 g/cm³ |
-| Melting point | 280-350°C |
-| Thermal conductivity | 0.14 W/m·K |
-| Laser type for cleaning | Pulsed Fiber Laser |
-| Laser wavelength | 1064nm |
-| Fluence range | 0.5–2.5 J/cm² |
-| Chemical formula or scientific symbol | C6H10O5 |
+| Density | 0.65 g/cm³ |
+| Melting Point | 280-350°C |
+| Thermal Cond. | 0.14 W/m·K |
+| Formula | C6H10O5 |
 
 
 ---
-Version Log - Generated: 2025-09-21T20:26:31.633033
+Version Log - Generated: 2025-09-21T21:19:30.315332
 Material: Unknown
 Component: propertiestable
 Generator: Z-Beam v1.0.0

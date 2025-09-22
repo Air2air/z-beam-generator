@@ -80,6 +80,7 @@ properties:
   wavelength: 1064nm
   fluenceRange: "1.0\u201310 J/cm\xB2"
   chemicalFormula: Ti
+  thermalBehaviorType: melting
 composition:
 - Titanium (99.0-99.5%) - Grade 1 commercial pure
 - Oxygen (0.18%), Iron (0.20%), Carbon (0.08%), Nitrogen (0.03%) - typical impurities

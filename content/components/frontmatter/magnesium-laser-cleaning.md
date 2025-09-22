@@ -79,6 +79,7 @@ properties:
   wavelength: 1064nm
   fluenceRange: "0.5\u20135 J/cm\xB2"
   chemicalFormula: Mg
+  thermalBehaviorType: melting
 composition:
 - 'Magnesium: 90-99.8% (primary component)'
 - 'Aluminum: 3-9% (common alloying element), Zinc: 0.5-1.5%, Manganese: 0.15-0.5%'

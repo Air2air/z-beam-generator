@@ -26,8 +26,8 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 100.0
-  meltingPoint: "1370-1510\xB0C (depending on carbon content)"
-  meltingPointNumeric: 1440.0
+  meltingPoint: "1510\xB0C"
+  meltingPointNumeric: 1510
   meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"
   meltingPointMinNumeric: 1200.0
@@ -81,6 +81,7 @@ properties:
   wavelength: 1064nm
   fluenceRange: "1.0\u201310 J/cm\xB2"
   chemicalFormula: Fe-C
+  thermalBehaviorType: melting
 composition:
 - 'Iron (Fe): 97-99.5% (base material)'
 - 'Carbon (C): 0.02-2.1% (primary alloying element)'

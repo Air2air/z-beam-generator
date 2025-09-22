@@ -25,7 +25,7 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 0.0
-  meltingPoint: "1339\xB0C (calcium carbonate decomposition)"
+  meltingPoint: "1339\xB0C"
   meltingPointNumeric: 1339.0
   meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"
@@ -79,6 +79,7 @@ properties:
   wavelength: 1064nm
   fluenceRange: "0.5\u20135 J/cm\xB2"
   chemicalFormula: "CaCO\u2083 (primary), Ca(OH)\u2082, SiO\u2082, Al\u2082O\u2083"
+  thermalBehaviorType: melting
 composition:
 - "Calcium carbonate (CaCO\u2083): 70-80%"
 - 'Portland cement: 15-20%'

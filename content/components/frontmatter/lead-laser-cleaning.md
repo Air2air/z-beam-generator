@@ -25,8 +25,8 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 100.0
-  meltingPoint: "327.5\xB0C"
-  meltingPointNumeric: 327.5
+  meltingPoint: "327\xB0C"
+  meltingPointNumeric: 327
   meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"
   meltingPointMinNumeric: 1200.0
@@ -79,6 +79,7 @@ properties:
   wavelength: 1064nm
   fluenceRange: "1.0\u201310 J/cm\xB2"
   chemicalFormula: Pb
+  thermalBehaviorType: melting
 composition:
 - 'Lead (Pb): 99.9-99.99% (commercial purity)'
 - 'Trace elements: <0.1% (typically Sb, As, Bi, Cu, Ag)'

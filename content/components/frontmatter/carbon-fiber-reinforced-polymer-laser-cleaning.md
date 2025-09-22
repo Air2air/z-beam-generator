@@ -28,9 +28,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 0.0
-  meltingPoint: "N/A (decomposes at 300-400\xB0C)"
-  meltingPointNumeric: 350.0
-  meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"
   meltingPointMinNumeric: 1200.0
   meltingPointMinUnit: "\xB0C"
@@ -82,6 +79,7 @@ properties:
   wavelength: 1064nm
   fluenceRange: "1.0\u201310 J/cm\xB2"
   chemicalFormula: "C\u2099/(C\u2082\u2081H\u2082\u2085ClO\u2085)\u2099"
+  thermalBehaviorType: decomposition
 composition:
 - 'Carbon fiber: 50-70% (by volume)'
 - 'Epoxy resin matrix: 30-50% (typically DGEBA-based with hardeners)'

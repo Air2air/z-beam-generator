@@ -80,6 +80,7 @@ properties:
   wavelength: 1064 nm
   fluenceRange: "1.0\u201310 J/cm\xB2"
   chemicalFormula: Al2O3
+  thermalBehaviorType: melting
 composition:
 - "Aluminum Oxide (Al\u2082O\u2083): 99.5-99.9%"
 - "Silicon Dioxide (SiO\u2082): 0.05-0.3%"

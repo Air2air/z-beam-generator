@@ -28,9 +28,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 100.0
-  meltingPoint: "Decomposes at ~270\u2013300 \xB0C (charring)"
-  meltingPointNumeric: 270.0
-  meltingPointUnit: Decomposes
   meltingPointMin: "1200\xB0C"
   meltingPointMinNumeric: 1200.0
   meltingPointMinUnit: "\xB0C"
@@ -83,6 +80,10 @@ properties:
   fluenceRange: "0.5\u20135 J/cm\xB2"
   chemicalFormula: Complex Organic Composite (Cellulose ~45%, Lignin ~35%, Hemicellulose
     ~15%, Extractives ~5%)
+  thermalBehaviorType: decomposition
+  decompositionPoint: "300\xB0C"
+  decompositionPointNumeric: 300
+  decompositionPointUnit: "\xB0C"
 composition:
 - "Cellulose (C\u2086H\u2081\u2080O\u2085)\u2099: 40\u201350%"
 - "Lignin (Complex polyphenolic): 30\u201340%"

@@ -1,16 +1,16 @@
 | Property | Value |
 |----------|-------|
-| Material density | 1.8-6.0 g/cm³ |
-| Melting point | 1200-2800°C |
-| Thermal conductivity | 0.5-1.0 W/m·K |
-| Laser type for cleaning | Pulsed Fiber Laser |
-| Laser wavelength | 1064nm |
-| Fluence range | 1.0–4.5 J/cm² |
-| Chemical formula or scientific symbol | SiO2-Polymer |
+| Density | 1.8-6.0 g/cm³ |
+| Melting Point | 1200-2800°C |
+| Thermal Cond. | 0.5-1.0 W/m·K |
+| Laser Type | Pulsed Fiber Laser |
+| Wavelength | 1064nm |
+| Fluence Range | 1.0–4.5 J/cm² |
+| Formula | SiO2-Polymer |
 
 
 ---
-Version Log - Generated: 2025-09-21T20:26:29.570463
+Version Log - Generated: 2025-09-21T20:52:21.281856
 Material: Unknown
 Component: propertiestable
 Generator: Z-Beam v1.0.0

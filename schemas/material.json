@@ -67,6 +67,28 @@
             "description": "Unit of measurement for melting point values", 
             "example": "°C"
           },
+          "thermalBehaviorType": {
+            "type": "string",
+            "description": "Type of thermal behavior: melting, decomposition, or sublimation",
+            "enum": ["melting", "decomposition", "sublimation"],
+            "example": "melting"
+          },
+          "decompositionPoint": {
+            "type": "string",
+            "description": "Decomposition",
+            "example": "280°C"
+          },
+          "decompositionPointNumeric": {
+            "type": "number",
+            "description": "Decomposition temperature without units for calculations (Celsius)",
+            "example": 280
+          },
+          "decompositionPointUnit": {
+            "type": "string",
+            "description": "Unit for decomposition temperature",
+            "enum": ["°C", "°F", "K"],
+            "example": "°C"
+          },
           "thermalConductivityUnit": {
             "type": "string",
             "description": "Unit of measurement for thermal conductivity values",
@@ -317,37 +339,23 @@
         "properties": {
           "density": {
             "type": "string",
-            "description": "Material density",
+            "description": "Density",
             "example": "2.7 g/cm³"
           },
           "meltingPoint": {
             "type": "string",
-            "description": "Melting point",
+            "description": "Melting Point",
             "example": "660°C"
           },
           "thermalConductivity": {
             "type": "string",
-            "description": "Thermal conductivity",
+            "description": "Conductivity",
             "example": "237 W/m·K"
           },
-          "laserType": {
-            "type": "string",
-            "description": "Laser type for cleaning",
-            "example": "Hafnium-doped fiber"
-          },
-          "wavelength": {
-            "type": "string",
-            "description": "Laser wavelength",
-            "example": "1064nm ±2nm"
-          },
-          "fluenceRange": {
-            "type": "string",
-            "description": "Fluence range",
-            "example": "0.1–15 J/cm²"
-          },
+
           "chemicalFormula": {
             "type": "string",
-            "description": "Chemical formula or scientific symbol",
+            "description": "Formula",
             "example": "Al₂O₃"
           },
           "densityMin": {

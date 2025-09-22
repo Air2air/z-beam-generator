@@ -25,8 +25,8 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 17.9
-  meltingPoint: "600-700\xB0C (dehydroxylation begins)"
-  meltingPointNumeric: 650.0
+  meltingPoint: "700\xB0C"
+  meltingPointNumeric: 700
   meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"
   meltingPointMinNumeric: 1200.0
@@ -79,6 +79,7 @@ properties:
   wavelength: 1064nm
   fluenceRange: "1.0\u201310 J/cm\xB2"
   chemicalFormula: "Mg\u2083Si\u2082O\u2085(OH)\u2084"
+  thermalBehaviorType: melting
 composition:
 - 'Magnesium oxide (MgO): 43-44%'
 - "Silicon dioxide (SiO\u2082): 43-44%"

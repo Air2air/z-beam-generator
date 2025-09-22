@@ -26,8 +26,8 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm\xB3"
   densityPercentile: 100.0
-  meltingPoint: "1910 \xB0C"
-  meltingPointNumeric: 1910.0
+  meltingPoint: "1910\xB0C"
+  meltingPointNumeric: 1910
   meltingPointUnit: "\xB0C"
   meltingPointMin: "1200\xB0C"
   meltingPointMinNumeric: 1200.0
@@ -80,6 +80,7 @@ properties:
   wavelength: 1064nm
   fluenceRange: "0.5\u20135 J/cm\xB2"
   chemicalFormula: V
+  thermalBehaviorType: melting
 composition:
 - 'Vanadium: 99.9% (high purity grade)'
 - 'Iron: <0.05%, Silicon: <0.02%, Carbon: <0.01%, Oxygen: <0.01% (typical impurities)'
