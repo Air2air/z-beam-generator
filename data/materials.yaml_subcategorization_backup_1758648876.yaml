@@ -2354,294 +2354,285 @@ materials:
       - Medical
       - Aerospace
   composite:
-    advanced_composites:
-      description: High-performance fiber-reinforced and matrix composites
-      items:
-      - name: Carbon Fiber Reinforced Polymer
-        author_id: 1
-        complexity: high
-        difficultyScore: 5
-        category: composite
-        laser_parameters_template: high_precision_fiber_laser
-        applications:
-        - 'Aerospace: Removal of release agents and surface contaminants from CFRP
-          parts'
-        - 'Automotive: Cleaning of CFRP components for improved bonding and painting'
-        industryTags:
-        - Automotive
-        - Aerospace
-        density: 1.6 g/cm³
-        thermalDestructionPoint: 300°C
-        thermalDestructionType: decomposition
-        thermalConductivity: 1.7 W/(m·K)
-        formula: Carbon fiber + polymer matrix
-      - name: Kevlar-Reinforced Polymer
-        author_id: 3
-        complexity: medium
-        difficultyScore: 3
-        category: composite
-        laser_parameters_template: ultra_precision_fiber_laser
-        applications:
-        - 'Aerospace: Removal of surface contaminants from aircraft components'
-        - 'Automotive: Cleaning of composite parts for improved bonding and painting'
-        industryTags:
-        - Automotive
-        - Aerospace
-        density: 1.44 g/cm³
-        thermalDestructionPoint: 400°C
-        thermalDestructionType: decomposition
-        thermalConductivity: 0.04 W/(m·K)
-        formula: Aramid fiber + polymer
-      - name: Glass Fiber Reinforced Polymers GFRP
-        author_id: 1
-        complexity: medium
-        difficultyScore: 3
-        category: composite
-        laserParameters:
-          fluenceThreshold: 0.5–5 J/cm²
-          pulseDuration: 55.0ns
-          wavelengthOptimal: 1064 nm
-          powerRange: 60.0W
-          repetitionRate: 30.0kHz
-          spotSize: 1.05mm
-          laserType: Pulsed Fiber Laser
-        applications:
-        - 'Aerospace: Removal of surface contaminants and coatings from GFRP components'
-        - 'Automotive: Cleaning of GFRP parts for repair and restoration'
-        industryTags:
-        - Automotive
-        - Aerospace
-        density: 2.0 g/cm³
-        thermalDestructionPoint: 240°C
-        thermalDestructionType: decomposition
-        thermalConductivity: 0.3 W/(m·K)
-        formula: Glass fiber + polymer
-      - name: Fiber Reinforced Polyurethane FRPU
-        author_id: 2
-        complexity: medium
-        difficultyScore: 3
-        category: composite
-        laser_parameters_template: high_power_fiber_laser
-        applications:
-        - 'Automotive: Removal of surface contaminants and coatings from FRPU automotive
-          parts'
-        - 'Aerospace: Precision cleaning of FRPU components for aircraft interiors
-          and exteriors'
-        industryTags:
-        - Automotive
-        - Aerospace
-        density: 1.4 g/cm³
-        thermalDestructionPoint: 210°C
-        thermalDestructionType: decomposition
-        thermalConductivity: 0.22 W/(m·K)
-        formula: Fiber + polyurethane
-      - name: Metal Matrix Composites MMCs
-        author_id: 4
-        complexity: high
-        difficultyScore: 5
-        category: composite
-        laser_parameters_template: high_precision_fiber_laser
-        applications:
-        - 'Aerospace: Cleaning of turbine blades and engine components'
-        - 'Automotive: Removal of coatings and contaminants from brake systems'
-        industryTags:
-        - Automotive
-        - Aerospace
-        density: 3.2 g/cm³
-        thermalDestructionPoint: 600°C
-        thermalDestructionType: decomposition
-        thermalConductivity: 120 W/(m·K)
-        formula: Metal + ceramic/carbon
-      - name: Ceramic Matrix Composites CMCs
-        author_id: 4
-        complexity: high
-        difficultyScore: 5
-        category: composite
-        laserParameters:
-          fluenceThreshold: 1–10 J/cm²
-          pulseDuration: 30.0ns
-          wavelengthOptimal: 1064nm
-          powerRange: 125.0W
-          repetitionRate: 60.0kHz
-          spotSize: 0.55mm
-          laserType: Pulsed Fiber Laser
-        applications:
-        - 'Aerospace: Cleaning of turbine engine components to remove surface contaminants'
-        - 'Power Generation: Surface preparation of gas turbine parts for repair and
-          maintenance'
-        industryTags:
-        - Power Generation
-        - Aerospace
-        density: 2.8 g/cm³
-        thermalDestructionPoint: 1200°C
-        thermalDestructionType: melting
-        thermalConductivity: 25 W/(m·K)
-        formula: Ceramic + fiber
-    polymer_composites:
-      description: Resin-matrix composite materials
-      items:
-      - name: Epoxy Resin Composites
-        author_id: 1
-        complexity: medium
-        difficultyScore: 3
-        category: composite
-        laserParameters:
-          fluenceThreshold: 1–10 J/cm²
-          pulseDuration: 110.0ns
-          wavelengthOptimal: 1064nm
-          powerRange: 125.0W
-          repetitionRate: 60.0kHz
-          spotSize: 0.55mm
-          laserType: Pulsed fiber laser
-        applications:
-        - 'Aerospace: Removal of surface contaminants from composite aircraft parts'
-        - 'Automotive: Cleaning of epoxy resin components for improved bonding and
-          painting'
-        industryTags:
-        - Automotive
-        - Aerospace
-        density: 1.8 g/cm³
-        thermalDestructionPoint: 180°C
-        thermalDestructionType: decomposition
-        thermalConductivity: 0.2 W/(m·K)
-        formula: Epoxy + reinforcement
-      - name: Phenolic Resin Composites
-        author_id: 4
-        complexity: medium
-        difficultyScore: 3
-        category: composite
-        laserParameters:
-          fluenceThreshold: 1–10 J/cm²
-          pulseDuration: 110.0ns
-          wavelengthOptimal: 1064nm
-          powerRange: 125.0W
-          repetitionRate: 60.0kHz
-          spotSize: 0.53mm
-          laserType: Pulsed fiber laser
-        applications:
-        - 'Aerospace: Removal of surface contaminants from composite parts'
-        - 'Automotive: Cleaning of phenolic resin components for enhanced bonding'
-        industryTags:
-        - Automotive
-        - Aerospace
-        density: 1.3 g/cm³
-        thermalDestructionPoint: 200°C
-        thermalDestructionType: decomposition
-        thermalConductivity: 0.25 W/(m·K)
-        formula: Phenolic resin + filler
-      - name: Polyester Resin Composites
-        author_id: 1
-        complexity: medium
-        difficultyScore: 3
-        category: composite
-        laserParameters:
-          fluenceThreshold: 2.75J/cm²
-          pulseDuration: 55.0ns
-          wavelengthOptimal: 1064 nm
-          powerRange: 60.0W
-          repetitionRate: 30.0kHz
-          spotSize: 1.05mm
-          laserType: Pulsed Fiber Laser
-        applications:
-        - 'Automotive: Surface preparation for painting and bonding'
-        - 'Aerospace: Cleaning and restoration of composite parts'
-        industryTags:
-        - Automotive
-        - Aerospace
-        density: 1.5 g/cm³
-        thermalDestructionPoint: 160°C
-        thermalDestructionType: decomposition
-        thermalConductivity: 0.18 W/(m·K)
-        formula: Polyester + reinforcement
-    basic_composites:
-      description: Basic composite materials and elastomers
-      items:
-      - name: Fiberglass
-        author_id: 3
-        complexity: medium
-        difficultyScore: 3
-        category: composite
-        laserParameters:
-          fluenceThreshold: 1.75J/cm²
-          pulseDuration: 30.0ns
-          wavelengthOptimal: 1064nm
-          powerRange: 60.0W
-          repetitionRate: 60.0kHz
-          spotSize: 0.55mm
-          laserType: Pulsed fiber laser
-        applications:
-        - 'Aerospace: Cleaning composite surfaces for aircraft components'
-        - 'Automotive: Removing contaminants from fiberglass body parts'
-        industryTags:
-        - Automotive
-        - Aerospace
-        density: 2.1 g/cm³
-        thermalDestructionPoint: 250°C
-        thermalDestructionType: decomposition
-        thermalConductivity: 0.35 W/(m·K)
-        formula: Glass fiber + resin
-      - name: Rubber
-        author_id: 4
-        complexity: medium
-        difficultyScore: 3
-        category: composite
-        laser_parameters_template: standard_fiber_laser
-        applications:
-        - 'Automotive: Cleaning rubber gaskets and seals for improved assembly precision'
-        - 'Manufacturing: Surface preparation of rubber components prior to bonding
-          or coating'
-        industryTags:
-        - Automotive
-        - Manufacturing
-        density: 1.2 g/cm³
-        thermalDestructionPoint: 200°C
-        thermalDestructionType: decomposition
-        thermalConductivity: 0.13 W/(m·K)
-        formula: Elastomer polymer
-      - name: Thermoplastic Elastomer
-        author_id: 2
-        complexity: medium
-        difficultyScore: 3
-        category: composite
-        laser_parameters_template: standard_fiber_laser
-        applications:
-        - 'Automotive: Cleaning of automotive parts made from Thermoplastic Elastomer
-          to remove mold release agents and surface contaminants'
-        - 'Medical: Precision cleaning of Thermoplastic Elastomer components used
-          in medical devices for sterilization and surface preparation'
-        industryTags:
-        - Automotive
-        - Medical
-        density: 1.1 g/cm³
-        thermalDestructionPoint: 220°C
-        thermalDestructionType: decomposition
-        thermalConductivity: 0.15 W/(m·K)
-        formula: TPE polymer
-      - name: Urethane Composites
-        author_id: 3
-        complexity: medium
-        difficultyScore: 3
-        category: composite
-        laserParameters:
-          fluenceThreshold: 1–10 J/cm²
-          pulseDuration: 110.0ns
-          wavelengthOptimal: 1064nm
-          powerRange: 125.0W
-          repetitionRate: 60.0kHz
-          spotSize: 0.85mm
-          laserType: Pulsed fiber laser
-        applications:
-        - 'Automotive: Cleaning of urethane composite parts for surface preparation
-          before painting'
-        - 'Aerospace: Removal of contaminants from urethane composite aircraft components'
-        industryTags:
-        - Automotive
-        - Aerospace
-        density: 1.25 g/cm³
-        thermalDestructionPoint: 190°C
-        thermalDestructionType: decomposition
-        thermalConductivity: 0.2 W/(m·K)
-        formula: Urethane + reinforcement
+    description: Composite materials
+    items:
+    - name: Carbon Fiber Reinforced Polymer
+      author_id: 1
+      complexity: high
+      difficultyScore: 5
+      category: composite
+      laser_parameters_template: high_precision_fiber_laser
+      applications:
+      - 'Aerospace: Removal of release agents and surface contaminants from CFRP parts'
+      - 'Automotive: Cleaning of CFRP components for improved bonding and painting'
+      industryTags:
+      - Automotive
+      - Aerospace
+      density: 1.6 g/cm³
+      thermalDestructionPoint: 300°C
+      thermalDestructionType: decomposition
+      thermalConductivity: 1.7 W/(m·K)
+      formula: Carbon fiber + polymer matrix
+    - name: Epoxy Resin Composites
+      author_id: 1
+      complexity: medium
+      difficultyScore: 3
+      category: composite
+      laserParameters:
+        fluenceThreshold: 1–10 J/cm²
+        pulseDuration: 110.0ns
+        wavelengthOptimal: 1064nm
+        powerRange: 125.0W
+        repetitionRate: 60.0kHz
+        spotSize: 0.55mm
+        laserType: Pulsed fiber laser
+      applications:
+      - 'Aerospace: Removal of surface contaminants from composite aircraft parts'
+      - 'Automotive: Cleaning of epoxy resin components for improved bonding and painting'
+      industryTags:
+      - Automotive
+      - Aerospace
+      density: 1.8 g/cm³
+      thermalDestructionPoint: 180°C
+      thermalDestructionType: decomposition
+      thermalConductivity: 0.2 W/(m·K)
+      formula: Epoxy + reinforcement
+    - name: Fiberglass
+      author_id: 3
+      complexity: medium
+      difficultyScore: 3
+      category: composite
+      laserParameters:
+        fluenceThreshold: 1.75J/cm²
+        pulseDuration: 30.0ns
+        wavelengthOptimal: 1064nm
+        powerRange: 60.0W
+        repetitionRate: 60.0kHz
+        spotSize: 0.55mm
+        laserType: Pulsed fiber laser
+      applications:
+      - 'Aerospace: Cleaning composite surfaces for aircraft components'
+      - 'Automotive: Removing contaminants from fiberglass body parts'
+      industryTags:
+      - Automotive
+      - Aerospace
+      density: 2.1 g/cm³
+      thermalDestructionPoint: 250°C
+      thermalDestructionType: decomposition
+      thermalConductivity: 0.35 W/(m·K)
+      formula: Glass fiber + resin
+    - name: Kevlar-Reinforced Polymer
+      author_id: 3
+      complexity: medium
+      difficultyScore: 3
+      category: composite
+      laser_parameters_template: ultra_precision_fiber_laser
+      applications:
+      - 'Aerospace: Removal of surface contaminants from aircraft components'
+      - 'Automotive: Cleaning of composite parts for improved bonding and painting'
+      industryTags:
+      - Automotive
+      - Aerospace
+      density: 1.44 g/cm³
+      thermalDestructionPoint: 400°C
+      thermalDestructionType: decomposition
+      thermalConductivity: 0.04 W/(m·K)
+      formula: Aramid fiber + polymer
+    - name: Phenolic Resin Composites
+      author_id: 4
+      complexity: medium
+      difficultyScore: 3
+      category: composite
+      laserParameters:
+        fluenceThreshold: 1–10 J/cm²
+        pulseDuration: 110.0ns
+        wavelengthOptimal: 1064nm
+        powerRange: 125.0W
+        repetitionRate: 60.0kHz
+        spotSize: 0.53mm
+        laserType: Pulsed fiber laser
+      applications:
+      - 'Aerospace: Removal of surface contaminants from composite parts'
+      - 'Automotive: Cleaning of phenolic resin components for enhanced bonding'
+      industryTags:
+      - Automotive
+      - Aerospace
+      density: 1.3 g/cm³
+      thermalDestructionPoint: 200°C
+      thermalDestructionType: decomposition
+      thermalConductivity: 0.25 W/(m·K)
+      formula: Phenolic resin + filler
+    - name: Polyester Resin Composites
+      author_id: 1
+      complexity: medium
+      difficultyScore: 3
+      category: composite
+      laserParameters:
+        fluenceThreshold: 2.75J/cm²
+        pulseDuration: 55.0ns
+        wavelengthOptimal: 1064 nm
+        powerRange: 60.0W
+        repetitionRate: 30.0kHz
+        spotSize: 1.05mm
+        laserType: Pulsed Fiber Laser
+      applications:
+      - 'Automotive: Surface preparation for painting and bonding'
+      - 'Aerospace: Cleaning and restoration of composite parts'
+      industryTags:
+      - Automotive
+      - Aerospace
+      density: 1.5 g/cm³
+      thermalDestructionPoint: 160°C
+      thermalDestructionType: decomposition
+      thermalConductivity: 0.18 W/(m·K)
+      formula: Polyester + reinforcement
+    - name: Rubber
+      author_id: 4
+      complexity: medium
+      difficultyScore: 3
+      category: composite
+      laser_parameters_template: standard_fiber_laser
+      applications:
+      - 'Automotive: Cleaning rubber gaskets and seals for improved assembly precision'
+      - 'Manufacturing: Surface preparation of rubber components prior to bonding
+        or coating'
+      industryTags:
+      - Automotive
+      - Manufacturing
+      density: 1.2 g/cm³
+      thermalDestructionPoint: 200°C
+      thermalDestructionType: decomposition
+      thermalConductivity: 0.13 W/(m·K)
+      formula: Elastomer polymer
+    - name: Thermoplastic Elastomer
+      author_id: 2
+      complexity: medium
+      difficultyScore: 3
+      category: composite
+      laser_parameters_template: standard_fiber_laser
+      applications:
+      - 'Automotive: Cleaning of automotive parts made from Thermoplastic Elastomer
+        to remove mold release agents and surface contaminants'
+      - 'Medical: Precision cleaning of Thermoplastic Elastomer components used in
+        medical devices for sterilization and surface preparation'
+      industryTags:
+      - Automotive
+      - Medical
+      density: 1.1 g/cm³
+      thermalDestructionPoint: 220°C
+      thermalDestructionType: decomposition
+      thermalConductivity: 0.15 W/(m·K)
+      formula: TPE polymer
+    - name: Urethane Composites
+      author_id: 3
+      complexity: medium
+      difficultyScore: 3
+      category: composite
+      laserParameters:
+        fluenceThreshold: 1–10 J/cm²
+        pulseDuration: 110.0ns
+        wavelengthOptimal: 1064nm
+        powerRange: 125.0W
+        repetitionRate: 60.0kHz
+        spotSize: 0.85mm
+        laserType: Pulsed fiber laser
+      applications:
+      - 'Automotive: Cleaning of urethane composite parts for surface preparation
+        before painting'
+      - 'Aerospace: Removal of contaminants from urethane composite aircraft components'
+      industryTags:
+      - Automotive
+      - Aerospace
+      density: 1.25 g/cm³
+      thermalDestructionPoint: 190°C
+      thermalDestructionType: decomposition
+      thermalConductivity: 0.2 W/(m·K)
+      formula: Urethane + reinforcement
+    - name: Glass Fiber Reinforced Polymers GFRP
+      author_id: 1
+      complexity: medium
+      difficultyScore: 3
+      category: composite
+      laserParameters:
+        fluenceThreshold: 0.5–5 J/cm²
+        pulseDuration: 55.0ns
+        wavelengthOptimal: 1064 nm
+        powerRange: 60.0W
+        repetitionRate: 30.0kHz
+        spotSize: 1.05mm
+        laserType: Pulsed Fiber Laser
+      applications:
+      - 'Aerospace: Removal of surface contaminants and coatings from GFRP components'
+      - 'Automotive: Cleaning of GFRP parts for repair and restoration'
+      industryTags:
+      - Automotive
+      - Aerospace
+      density: 2.0 g/cm³
+      thermalDestructionPoint: 240°C
+      thermalDestructionType: decomposition
+      thermalConductivity: 0.3 W/(m·K)
+      formula: Glass fiber + polymer
+    - name: Fiber Reinforced Polyurethane FRPU
+      author_id: 2
+      complexity: medium
+      difficultyScore: 3
+      category: composite
+      laser_parameters_template: high_power_fiber_laser
+      applications:
+      - 'Automotive: Removal of surface contaminants and coatings from FRPU automotive
+        parts'
+      - 'Aerospace: Precision cleaning of FRPU components for aircraft interiors and
+        exteriors'
+      industryTags:
+      - Automotive
+      - Aerospace
+      density: 1.4 g/cm³
+      thermalDestructionPoint: 210°C
+      thermalDestructionType: decomposition
+      thermalConductivity: 0.22 W/(m·K)
+      formula: Fiber + polyurethane
+    - name: Metal Matrix Composites MMCs
+      author_id: 4
+      complexity: high
+      difficultyScore: 5
+      category: composite
+      laser_parameters_template: high_precision_fiber_laser
+      applications:
+      - 'Aerospace: Cleaning of turbine blades and engine components'
+      - 'Automotive: Removal of coatings and contaminants from brake systems'
+      industryTags:
+      - Automotive
+      - Aerospace
+      density: 3.2 g/cm³
+      thermalDestructionPoint: 600°C
+      thermalDestructionType: decomposition
+      thermalConductivity: 120 W/(m·K)
+      formula: Metal + ceramic/carbon
+    - name: Ceramic Matrix Composites CMCs
+      author_id: 4
+      complexity: high
+      difficultyScore: 5
+      category: composite
+      laserParameters:
+        fluenceThreshold: 1–10 J/cm²
+        pulseDuration: 30.0ns
+        wavelengthOptimal: 1064nm
+        powerRange: 125.0W
+        repetitionRate: 60.0kHz
+        spotSize: 0.55mm
+        laserType: Pulsed Fiber Laser
+      applications:
+      - 'Aerospace: Cleaning of turbine engine components to remove surface contaminants'
+      - 'Power Generation: Surface preparation of gas turbine parts for repair and
+        maintenance'
+      industryTags:
+      - Power Generation
+      - Aerospace
+      density: 2.8 g/cm³
+      thermalDestructionPoint: 1200°C
+      thermalDestructionType: melting
+      thermalConductivity: 25 W/(m·K)
+      formula: Ceramic + fiber
   glass:
     description: Glass materials
     items:
@@ -2948,394 +2939,378 @@ materials:
       thermalConductivity: 85 W/(m·K)
       formula: SiGe
   wood:
-    hardwoods:
-      description: Hardwood species - typically denser woods from deciduous trees
-      items:
-      - name: Ash
-        author_id: 4
-        complexity: medium
-        difficultyScore: 3
-        category: wood
-        laser_parameters_template: standard_fiber_laser_alt
-        applications:
-        - 'Woodworking: Removal of surface contaminants and restoration of wooden
-          artifacts'
-        - 'Conservation: Cleaning of historical wooden structures and artworks'
-        industryTags:
-        - Woodworking
-        - Conservation
-        density: 0.68 g/cm³
-        thermalDestructionPoint: 250°C
-        thermalDestructionType: decomposition
-        thermalConductivity: 0.16 W/(m·K)
-        formula: Cellulose composite
-      - name: Beech
-        author_id: 3
-        complexity: medium
-        difficultyScore: 3
-        category: wood
-        laserParameters:
-          fluenceThreshold: 0.5–3.0 J/cm²
-          pulseDuration: 30.0ns
-          wavelengthOptimal: 1064nm
-          powerRange: 60.0W
-          repetitionRate: 60.0kHz
-          spotSize: 0.55mm
-          laserType: Pulsed fiber laser
-        applications:
-        - 'Woodworking: Removing surface contaminants and old finishes from Beech
-          wood furniture'
-        - 'Restoration: Cleaning historical Beech wood artifacts without damaging
-          the material'
-        industryTags:
-        - Woodworking
-        - Restoration
-        density: 0.72 g/cm³
-        thermalDestructionPoint: 260°C
-        thermalDestructionType: decomposition
-        thermalConductivity: 0.17 W/(m·K)
-        formula: Cellulose composite
-      - name: Birch
-        author_id: 1
-        complexity: medium
-        difficultyScore: 3
-        category: wood
-        laserParameters:
-          fluenceThreshold: 0.5–5 J/cm²
-          pulseDuration: 55.0ns
-          wavelengthOptimal: 1064 nm
-          powerRange: 60.0W
-          repetitionRate: 30.0kHz
-          spotSize: 1.05mm
-          laserType: Pulsed fiber laser
-        applications:
-        - 'Woodworking: Laser cleaning for restoring antique birch furniture'
-        - 'Construction: Removing surface contaminants from birch wood panels'
-        industryTags:
-        - Construction
-        - Woodworking
-      - name: Cherry
-        author_id: 1
-        complexity: medium
-        difficultyScore: 3
-        category: wood
-        laserParameters:
-          fluenceThreshold: 1.75J/cm²
-          pulseDuration: 30.0ns
-          wavelengthOptimal: 1064 nm
-          powerRange: 60.0W
-          repetitionRate: 60.0kHz
-          spotSize: 0.55mm
-          laserType: Pulsed fiber laser
-        applications:
-        - 'Furniture Manufacturing: Removing old finishes and stains from Cherry wood
-          surfaces'
-        - 'Restoration and Conservation: Cleaning and restoring antique Cherry wood
-          furniture and artifacts'
-        industryTags:
-        - Restoration and Conservation
-        - Furniture Manufacturing
-        density: 0.63 g/cm³
-        thermalDestructionPoint: 250°C
-        thermalDestructionType: decomposition
-        thermalConductivity: 0.14 W/(m·K)
-        formula: Cellulose composite
-      - name: Hickory
-        author_id: 2
-        complexity: medium
-        difficultyScore: 3
-        category: wood
-        laser_parameters_template: precision_fiber_laser
-        applications:
-        - 'Woodworking: Removing old finishes and stains from hickory wood surfaces'
-        - 'Restoration: Cleaning and restoring antique hickory furniture'
-        industryTags:
-        - Woodworking
-        - Restoration
-      - name: Mahogany
-        author_id: 1
-        complexity: medium
-        difficultyScore: 3
-        category: wood
-        laserParameters:
-          fluenceThreshold: 1.75J/cm²
-          pulseDuration: 30.0ns
-          wavelengthOptimal: 1064nm
-          powerRange: 60.0W
-          repetitionRate: 60.0kHz
-          spotSize: 0.55mm
-          laserType: Nd:YAG laser
-        applications:
-        - 'Furniture Manufacturing: Removing old finishes and stains from Mahogany
-          furniture surfaces'
-        - 'Restoration: Cleaning and restoring historical Mahogany artifacts and structures'
-        industryTags:
-        - Restoration
-        - Furniture Manufacturing
-      - name: Maple
-        author_id: 2
-        complexity: medium
-        difficultyScore: 3
-        category: wood
-        laser_parameters_template: precision_fiber_laser
-        applications:
-        - 'Woodworking: Removing surface contaminants and residues from Maple wood
-          products'
-        - 'Restoration: Cleaning and restoring antique Maple furniture and artifacts'
-        industryTags:
-        - Woodworking
-        - Restoration
-        density: 0.76 g/cm³
-        thermalDestructionPoint: 260°C
-        thermalDestructionType: decomposition
-        thermalConductivity: 0.18 W/(m·K)
-        formula: Cellulose composite
-      - name: Oak
-        author_id: 1
-        complexity: medium
-        difficultyScore: 3
-        category: wood
-        laserParameters:
-          fluenceThreshold: 2.75J/cm²
-          pulseDuration: 55.0ns
-          wavelengthOptimal: 1064 nm
-          powerRange: 60.0W
-          repetitionRate: 30.0kHz
-          spotSize: 1.05mm
-          laserType: Pulsed fiber laser
-        applications:
-        - 'Woodworking: Removing surface contaminants and stains from Oak furniture'
-        - 'Restoration: Cleaning Oak artifacts and historical pieces without damage'
-        industryTags:
-        - Woodworking
-        - Restoration
-        density: 0.75 g/cm³
-        thermalDestructionPoint: 270°C
-        thermalDestructionType: decomposition
-        thermalConductivity: 0.17 W/(m·K)
-        formula: Cellulose composite
-      - name: Poplar
-        author_id: 2
-        complexity: medium
-        difficultyScore: 3
-        category: wood
-        laser_parameters_template: standard_fiber_laser
-        applications:
-        - 'Woodworking: Removal of surface contaminants and coatings from Poplar wood'
-        - 'Restoration: Cleaning and restoration of antique Poplar furniture and artifacts'
-        industryTags:
-        - Woodworking
-        - Restoration
-        density: 0.43 g/cm³
-        thermalDestructionPoint: 235°C
-        thermalDestructionType: decomposition
-        thermalConductivity: 0.1 W/(m·K)
-        formula: Cellulose composite
-      - name: Rosewood
-        author_id: 3
-        complexity: medium
-        difficultyScore: 3
-        category: wood
-        laser_parameters_template: standard_fiber_laser_alt
-        applications:
-        - 'Furniture Manufacturing: Removing old finishes and stains from Rosewood
-          furniture'
-        - 'Restoration: Cleaning and restoring antique Rosewood artifacts'
-        industryTags:
-        - Restoration
-        - Furniture Manufacturing
-        density: 0.85 g/cm³
-        thermalDestructionPoint: 270°C
-        thermalDestructionType: decomposition
-        thermalConductivity: 0.19 W/(m·K)
-        formula: Cellulose composite
-      - name: Teak
-        author_id: 3
-        complexity: medium
-        difficultyScore: 3
-        category: wood
-        laser_parameters_template: standard_fiber_laser
-        applications:
-        - 'Woodworking: Removal of surface contaminants and restoration of teak furniture'
-        - 'Marine: Cleaning and maintenance of teak decks on boats and yachts'
-        industryTags:
-        - Woodworking
-        - Marine
-        density: 0.66 g/cm³
-        thermalDestructionPoint: 265°C
-        thermalDestructionType: decomposition
-        thermalConductivity: 0.14 W/(m·K)
-        formula: Cellulose composite
-      - name: Walnut
-        author_id: 1
-        complexity: medium
-        difficultyScore: 3
-        category: wood
-        laserParameters:
-          fluenceThreshold: 0.5–3.0 J/cm²
-          pulseDuration: 30.0ns
-          wavelengthOptimal: 1064nm
-          powerRange: 60.0W
-          repetitionRate: 60.0kHz
-          spotSize: 0.55mm
-          laserType: Pulsed fiber laser
-        applications:
-        - 'Furniture Manufacturing: Removing old finishes and stains from walnut furniture'
-        - 'Art Restoration: Precision cleaning of walnut sculptures and frames'
-        industryTags:
-        - Art Restoration
-        - Furniture Manufacturing
-        density: 0.65 g/cm³
-        thermalDestructionPoint: 255°C
-        thermalDestructionType: decomposition
-        thermalConductivity: 0.14 W/(m·K)
-        formula: Cellulose composite
-      - name: Willow
-        author_id: 2
-        complexity: medium
-        difficultyScore: 3
-        category: wood
-        laser_parameters_template: standard_fiber_laser
-        applications:
-        - 'Woodworking: Removing surface contaminants and old finishes from Willow
-          wood'
-        - 'Restoration: Precision cleaning of Willow artifacts and antiques'
-        industryTags:
-        - Woodworking
-        - Restoration
-        density: 0.5 g/cm³
-        thermalDestructionPoint: 240°C
-        thermalDestructionType: decomposition
-        thermalConductivity: 0.12 W/(m·K)
-        formula: Cellulose composite
-    softwoods:
-      description: Softwood species - typically lighter woods from coniferous trees
-        and bamboo
-      items:
-      - name: Bamboo
-        author_id: 1
-        complexity: medium
-        difficultyScore: 3
-        category: wood
-        laser_parameters_template: precision_fiber_laser
-        applications:
-        - 'Woodworking: Removing mold and mildew from bamboo surfaces'
-        - 'Conservation: Cleaning bamboo artifacts without damaging the material'
-        industryTags:
-        - Woodworking
-        - Conservation
-        density: 0.6 g/cm³
-        thermalDestructionPoint: 230°C
-        thermalDestructionType: decomposition
-        thermalConductivity: 0.17 W/(m·K)
-        formula: Cellulose composite
-      - name: Cedar
-        author_id: 2
-        complexity: medium
-        difficultyScore: 3
-        category: wood
-        laser_parameters_template: standard_fiber_laser
-        applications:
-        - 'Woodworking: Removal of surface contaminants and old finishes on Cedar
-          wood'
-        - 'Restoration: Precision cleaning of historical Cedar structures without
-          damage'
-        industryTags:
-        - Woodworking
-        - Restoration
-        density: 0.38 g/cm³
-        thermalDestructionPoint: 240°C
-        thermalDestructionType: decomposition
-        thermalConductivity: 0.095 W/(m·K)
-        formula: Cellulose composite
-      - name: Fir
-        author_id: 4
-        complexity: medium
-        difficultyScore: 3
-        category: wood
-        laser_parameters_template: standard_fiber_laser_alt
-        applications:
-        - 'Woodworking: Surface preparation for staining and finishing'
-        - 'Restoration: Cleaning and restoring historical wooden structures'
-        industryTags:
-        - Woodworking
-        - Restoration
-        density: 0.45 g/cm³
-        thermalDestructionPoint: 235°C
-        thermalDestructionType: decomposition
-        thermalConductivity: 0.11 W/(m·K)
-        formula: Cellulose composite
-      - name: Pine
-        author_id: 1
-        complexity: low
-        difficultyScore: 2
-        category: wood
-        laser_parameters_template: precision_fiber_laser
-        applications:
-        - 'Woodworking: Removal of surface contaminants and coatings on pine wood
-          products'
-        - 'Restoration: Cleaning and restoration of antique pine furniture and structures'
-        industryTags:
-        - Woodworking
-        - Restoration
-        density: 0.52 g/cm³
-        thermalDestructionPoint: 240°C
-        thermalDestructionType: decomposition
-        thermalConductivity: 0.12 W/(m·K)
-        formula: Cellulose composite
-      - name: Redwood
-        author_id: 4
-        complexity: medium
-        difficultyScore: 3
-        category: wood
-        laser_parameters_template: ultra_precision_fiber_laser
-        applications:
-        - 'Woodworking: Removal of mold and mildew from Redwood surfaces'
-        - 'Restoration: Cleaning of historic Redwood structures'
-        industryTags:
-        - Woodworking
-        - Restoration
-        density: 0.41 g/cm³
-        thermalDestructionPoint: 250°C
-        thermalDestructionType: decomposition
-        thermalConductivity: 0.1 W/(m·K)
-        formula: Cellulose composite
-    engineered_wood:
-      description: Manufactured wood products - MDF, plywood, and other engineered
-        materials
-      items:
-      - name: MDF
-        author_id: 3
-        complexity: low
-        difficultyScore: 2
-        category: wood
-        laser_parameters_template: standard_fiber_laser_alt
-        applications:
-        - 'Furniture Manufacturing: Removal of surface contaminants and coatings for
-          refinishing'
-        - 'Construction: Cleaning of MDF panels before installation or painting'
-        industryTags:
-        - Construction
-        - Furniture Manufacturing
-        density: 0.75 g/cm³
-        thermalDestructionPoint: 220°C
-        thermalDestructionType: decomposition
-        thermalConductivity: 0.15 W/(m·K)
-        formula: Wood fiber + resin
-      - name: Plywood
-        author_id: 4
-        complexity: low
-        difficultyScore: 2
-        category: wood
-        laser_parameters_template: standard_fiber_laser
-        applications:
-        - 'Woodworking: Removing surface contaminants and old finishes'
-        - 'Construction: Cleaning and preparing plywood surfaces for painting or bonding'
-        industryTags:
-        - Construction
-        - Woodworking
-        density: 0.55 g/cm³
-        thermalDestructionPoint: 230°C
-        thermalDestructionType: decomposition
-        thermalConductivity: 0.13 W/(m·K)
-        formula: Wood layers + adhesive
+    description: Wood materials
+    items:
+    - name: Ash
+      author_id: 4
+      complexity: medium
+      difficultyScore: 3
+      category: wood
+      laser_parameters_template: standard_fiber_laser_alt
+      applications:
+      - 'Woodworking: Removal of surface contaminants and restoration of wooden artifacts'
+      - 'Conservation: Cleaning of historical wooden structures and artworks'
+      industryTags:
+      - Woodworking
+      - Conservation
+      density: 0.68 g/cm³
+      thermalDestructionPoint: 250°C
+      thermalDestructionType: decomposition
+      thermalConductivity: 0.16 W/(m·K)
+      formula: Cellulose composite
+    - name: Bamboo
+      author_id: 1
+      complexity: medium
+      difficultyScore: 3
+      category: wood
+      laser_parameters_template: precision_fiber_laser
+      applications:
+      - 'Woodworking: Removing mold and mildew from bamboo surfaces'
+      - 'Conservation: Cleaning bamboo artifacts without damaging the material'
+      industryTags:
+      - Woodworking
+      - Conservation
+      density: 0.6 g/cm³
+      thermalDestructionPoint: 230°C
+      thermalDestructionType: decomposition
+      thermalConductivity: 0.17 W/(m·K)
+      formula: Cellulose composite
+    - name: Beech
+      author_id: 3
+      complexity: medium
+      difficultyScore: 3
+      category: wood
+      laserParameters:
+        fluenceThreshold: 0.5–3.0 J/cm²
+        pulseDuration: 30.0ns
+        wavelengthOptimal: 1064nm
+        powerRange: 60.0W
+        repetitionRate: 60.0kHz
+        spotSize: 0.55mm
+        laserType: Pulsed fiber laser
+      applications:
+      - 'Woodworking: Removing surface contaminants and old finishes from Beech wood
+        furniture'
+      - 'Restoration: Cleaning historical Beech wood artifacts without damaging the
+        material'
+      industryTags:
+      - Woodworking
+      - Restoration
+      density: 0.72 g/cm³
+      thermalDestructionPoint: 260°C
+      thermalDestructionType: decomposition
+      thermalConductivity: 0.17 W/(m·K)
+      formula: Cellulose composite
+    - name: Birch
+      author_id: 1
+      complexity: medium
+      difficultyScore: 3
+      category: wood
+      laserParameters:
+        fluenceThreshold: 0.5–5 J/cm²
+        pulseDuration: 55.0ns
+        wavelengthOptimal: 1064 nm
+        powerRange: 60.0W
+        repetitionRate: 30.0kHz
+        spotSize: 1.05mm
+        laserType: Pulsed fiber laser
+      applications:
+      - 'Woodworking: Laser cleaning for restoring antique birch furniture'
+      - 'Construction: Removing surface contaminants from birch wood panels'
+      industryTags:
+      - Construction
+      - Woodworking
+    - name: Cedar
+      author_id: 2
+      complexity: medium
+      difficultyScore: 3
+      category: wood
+      laser_parameters_template: standard_fiber_laser
+      applications:
+      - 'Woodworking: Removal of surface contaminants and old finishes on Cedar wood'
+      - 'Restoration: Precision cleaning of historical Cedar structures without damage'
+      industryTags:
+      - Woodworking
+      - Restoration
+      density: 0.38 g/cm³
+      thermalDestructionPoint: 240°C
+      thermalDestructionType: decomposition
+      thermalConductivity: 0.095 W/(m·K)
+      formula: Cellulose composite
+    - name: Cherry
+      author_id: 1
+      complexity: medium
+      difficultyScore: 3
+      category: wood
+      laserParameters:
+        fluenceThreshold: 1.75J/cm²
+        pulseDuration: 30.0ns
+        wavelengthOptimal: 1064 nm
+        powerRange: 60.0W
+        repetitionRate: 60.0kHz
+        spotSize: 0.55mm
+        laserType: Pulsed fiber laser
+      applications:
+      - 'Furniture Manufacturing: Removing old finishes and stains from Cherry wood
+        surfaces'
+      - 'Restoration and Conservation: Cleaning and restoring antique Cherry wood
+        furniture and artifacts'
+      industryTags:
+      - Restoration and Conservation
+      - Furniture Manufacturing
+      density: 0.63 g/cm³
+      thermalDestructionPoint: 250°C
+      thermalDestructionType: decomposition
+      thermalConductivity: 0.14 W/(m·K)
+      formula: Cellulose composite
+    - name: Fir
+      author_id: 4
+      complexity: medium
+      difficultyScore: 3
+      category: wood
+      laser_parameters_template: standard_fiber_laser_alt
+      applications:
+      - 'Woodworking: Surface preparation for staining and finishing'
+      - 'Restoration: Cleaning and restoring historical wooden structures'
+      industryTags:
+      - Woodworking
+      - Restoration
+      density: 0.45 g/cm³
+      thermalDestructionPoint: 235°C
+      thermalDestructionType: decomposition
+      thermalConductivity: 0.11 W/(m·K)
+      formula: Cellulose composite
+    - name: Hickory
+      author_id: 2
+      complexity: medium
+      difficultyScore: 3
+      category: wood
+      laser_parameters_template: precision_fiber_laser
+      applications:
+      - 'Woodworking: Removing old finishes and stains from hickory wood surfaces'
+      - 'Restoration: Cleaning and restoring antique hickory furniture'
+      industryTags:
+      - Woodworking
+      - Restoration
+    - name: Mahogany
+      author_id: 1
+      complexity: medium
+      difficultyScore: 3
+      category: wood
+      laserParameters:
+        fluenceThreshold: 1.75J/cm²
+        pulseDuration: 30.0ns
+        wavelengthOptimal: 1064nm
+        powerRange: 60.0W
+        repetitionRate: 60.0kHz
+        spotSize: 0.55mm
+        laserType: Nd:YAG laser
+      applications:
+      - 'Furniture Manufacturing: Removing old finishes and stains from Mahogany furniture
+        surfaces'
+      - 'Restoration: Cleaning and restoring historical Mahogany artifacts and structures'
+      industryTags:
+      - Restoration
+      - Furniture Manufacturing
+    - name: Maple
+      author_id: 2
+      complexity: medium
+      difficultyScore: 3
+      category: wood
+      laser_parameters_template: precision_fiber_laser
+      applications:
+      - 'Woodworking: Removing surface contaminants and residues from Maple wood products'
+      - 'Restoration: Cleaning and restoring antique Maple furniture and artifacts'
+      industryTags:
+      - Woodworking
+      - Restoration
+      density: 0.76 g/cm³
+      thermalDestructionPoint: 260°C
+      thermalDestructionType: decomposition
+      thermalConductivity: 0.18 W/(m·K)
+      formula: Cellulose composite
+    - name: MDF
+      author_id: 3
+      complexity: low
+      difficultyScore: 2
+      category: wood
+      laser_parameters_template: standard_fiber_laser_alt
+      applications:
+      - 'Furniture Manufacturing: Removal of surface contaminants and coatings for
+        refinishing'
+      - 'Construction: Cleaning of MDF panels before installation or painting'
+      industryTags:
+      - Construction
+      - Furniture Manufacturing
+      density: 0.75 g/cm³
+      thermalDestructionPoint: 220°C
+      thermalDestructionType: decomposition
+      thermalConductivity: 0.15 W/(m·K)
+      formula: Wood fiber + resin
+    - name: Oak
+      author_id: 1
+      complexity: medium
+      difficultyScore: 3
+      category: wood
+      laserParameters:
+        fluenceThreshold: 2.75J/cm²
+        pulseDuration: 55.0ns
+        wavelengthOptimal: 1064 nm
+        powerRange: 60.0W
+        repetitionRate: 30.0kHz
+        spotSize: 1.05mm
+        laserType: Pulsed fiber laser
+      applications:
+      - 'Woodworking: Removing surface contaminants and stains from Oak furniture'
+      - 'Restoration: Cleaning Oak artifacts and historical pieces without damage'
+      industryTags:
+      - Woodworking
+      - Restoration
+      density: 0.75 g/cm³
+      thermalDestructionPoint: 270°C
+      thermalDestructionType: decomposition
+      thermalConductivity: 0.17 W/(m·K)
+      formula: Cellulose composite
+    - name: Pine
+      author_id: 1
+      complexity: low
+      difficultyScore: 2
+      category: wood
+      laser_parameters_template: precision_fiber_laser
+      applications:
+      - 'Woodworking: Removal of surface contaminants and coatings on pine wood products'
+      - 'Restoration: Cleaning and restoration of antique pine furniture and structures'
+      industryTags:
+      - Woodworking
+      - Restoration
+      density: 0.52 g/cm³
+      thermalDestructionPoint: 240°C
+      thermalDestructionType: decomposition
+      thermalConductivity: 0.12 W/(m·K)
+      formula: Cellulose composite
+    - name: Plywood
+      author_id: 4
+      complexity: low
+      difficultyScore: 2
+      category: wood
+      laser_parameters_template: standard_fiber_laser
+      applications:
+      - 'Woodworking: Removing surface contaminants and old finishes'
+      - 'Construction: Cleaning and preparing plywood surfaces for painting or bonding'
+      industryTags:
+      - Construction
+      - Woodworking
+      density: 0.55 g/cm³
+      thermalDestructionPoint: 230°C
+      thermalDestructionType: decomposition
+      thermalConductivity: 0.13 W/(m·K)
+      formula: Wood layers + adhesive
+    - name: Poplar
+      author_id: 2
+      complexity: medium
+      difficultyScore: 3
+      category: wood
+      laser_parameters_template: standard_fiber_laser
+      applications:
+      - 'Woodworking: Removal of surface contaminants and coatings from Poplar wood'
+      - 'Restoration: Cleaning and restoration of antique Poplar furniture and artifacts'
+      industryTags:
+      - Woodworking
+      - Restoration
+      density: 0.43 g/cm³
+      thermalDestructionPoint: 235°C
+      thermalDestructionType: decomposition
+      thermalConductivity: 0.1 W/(m·K)
+      formula: Cellulose composite
+    - name: Redwood
+      author_id: 4
+      complexity: medium
+      difficultyScore: 3
+      category: wood
+      laser_parameters_template: ultra_precision_fiber_laser
+      applications:
+      - 'Woodworking: Removal of mold and mildew from Redwood surfaces'
+      - 'Restoration: Cleaning of historic Redwood structures'
+      industryTags:
+      - Woodworking
+      - Restoration
+      density: 0.41 g/cm³
+      thermalDestructionPoint: 250°C
+      thermalDestructionType: decomposition
+      thermalConductivity: 0.1 W/(m·K)
+      formula: Cellulose composite
+    - name: Rosewood
+      author_id: 3
+      complexity: medium
+      difficultyScore: 3
+      category: wood
+      laser_parameters_template: standard_fiber_laser_alt
+      applications:
+      - 'Furniture Manufacturing: Removing old finishes and stains from Rosewood furniture'
+      - 'Restoration: Cleaning and restoring antique Rosewood artifacts'
+      industryTags:
+      - Restoration
+      - Furniture Manufacturing
+      density: 0.85 g/cm³
+      thermalDestructionPoint: 270°C
+      thermalDestructionType: decomposition
+      thermalConductivity: 0.19 W/(m·K)
+      formula: Cellulose composite
+    - name: Teak
+      author_id: 3
+      complexity: medium
+      difficultyScore: 3
+      category: wood
+      laser_parameters_template: standard_fiber_laser
+      applications:
+      - 'Woodworking: Removal of surface contaminants and restoration of teak furniture'
+      - 'Marine: Cleaning and maintenance of teak decks on boats and yachts'
+      industryTags:
+      - Woodworking
+      - Marine
+      density: 0.66 g/cm³
+      thermalDestructionPoint: 265°C
+      thermalDestructionType: decomposition
+      thermalConductivity: 0.14 W/(m·K)
+      formula: Cellulose composite
+    - name: Walnut
+      author_id: 1
+      complexity: medium
+      difficultyScore: 3
+      category: wood
+      laserParameters:
+        fluenceThreshold: 0.5–3.0 J/cm²
+        pulseDuration: 30.0ns
+        wavelengthOptimal: 1064nm
+        powerRange: 60.0W
+        repetitionRate: 60.0kHz
+        spotSize: 0.55mm
+        laserType: Pulsed fiber laser
+      applications:
+      - 'Furniture Manufacturing: Removing old finishes and stains from walnut furniture'
+      - 'Art Restoration: Precision cleaning of walnut sculptures and frames'
+      industryTags:
+      - Art Restoration
+      - Furniture Manufacturing
+      density: 0.65 g/cm³
+      thermalDestructionPoint: 255°C
+      thermalDestructionType: decomposition
+      thermalConductivity: 0.14 W/(m·K)
+      formula: Cellulose composite
+    - name: Willow
+      author_id: 2
+      complexity: medium
+      difficultyScore: 3
+      category: wood
+      laser_parameters_template: standard_fiber_laser
+      applications:
+      - 'Woodworking: Removing surface contaminants and old finishes from Willow wood'
+      - 'Restoration: Precision cleaning of Willow artifacts and antiques'
+      industryTags:
+      - Woodworking
+      - Restoration
+      density: 0.5 g/cm³
+      thermalDestructionPoint: 240°C
+      thermalDestructionType: decomposition
+      thermalConductivity: 0.12 W/(m·K)
+      formula: Cellulose composite
