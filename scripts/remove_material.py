@@ -58,7 +58,6 @@ class MaterialRemover:
             "metatags",
             "jsonld",
             "tags",
-            "bullets",
             "caption",
             "table",
             "propertiestable",

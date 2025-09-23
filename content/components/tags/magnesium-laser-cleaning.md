@@ -1,36 +1,36 @@
 tags:
+  - todd-dunning
+  - metalworking
+  - industrial
   - aerospace
   - automotive
-  - electronics
-  - decoating
+  - decontamination
+  - surface-preparation
   - passivation
-  - restoration
-  - polishing
-  - etching
 material: "magnesium"
 count: 8
 categories:
   industry:
+    - industrial
     - aerospace
     - automotive
-    - electronics
   process:
-    - decoating
+    - decontamination
     - passivation
-    - restoration
-    - polishing
-    - etching
   author:
+    - todd-dunning
+    - surface-preparation
   other:
+    - metalworking
 metadata:
-  generated: "2025-09-17T12:01:59.992172"
+  generated: "2025-09-22T15:57:39.485522"
   format: "yaml"
   version: "2.0"
 
 ---
 Material: "magnesium"
 Component: tags
-Generated: 2025-09-17T12:01:59.992192
-Generator: Z-Beam v1.0.0
+Generated: 2025-09-22T15:57:39.486818
+Generator: Z-Beam v1.0.0 (Frontmatter-Based)
 Format: YAML v2.0
 ---

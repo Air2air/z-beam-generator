@@ -1,36 +1,36 @@
 tags:
-  - aerospace
-  - automotive
-  - electronics
-  - passivation
-  - etching
+  - ikmanda-roswati
+  - ceramics
+  - precision
+  - decontamination
+  - surface-preparation
   - polishing
-  - texturing
-  - ceramic
+  - etching
+  - manufacturing
 material: "porcelain"
 count: 8
 categories:
   industry:
-    - aerospace
-    - automotive
-    - electronics
+    - manufacturing
   process:
-    - passivation
-    - etching
+    - decontamination
     - polishing
-    - texturing
+    - etching
   author:
+    - ikmanda-roswati
+    - surface-preparation
   other:
-    - ceramic
+    - ceramics
+    - precision
 metadata:
-  generated: "2025-09-17T12:03:50.403769"
+  generated: "2025-09-22T15:57:38.809354"
   format: "yaml"
   version: "2.0"
 
 ---
 Material: "porcelain"
 Component: tags
-Generated: 2025-09-17T12:03:50.403821
-Generator: Z-Beam v1.0.0
+Generated: 2025-09-22T15:57:38.810583
+Generator: Z-Beam v1.0.0 (Frontmatter-Based)
 Format: YAML v2.0
 ---

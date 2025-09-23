@@ -1,36 +1,36 @@
 tags:
-  - aerospace
+  - ikmanda-roswati
+  - metalworking
+  - industrial
   - electronics
-  - manufacturing
-  - electroplating
+  - automotive
+  - decontamination
+  - surface-preparation
   - passivation
-  - etching
-  - polishing
-  - texturing
 material: "tin"
 count: 8
 categories:
   industry:
-    - aerospace
+    - industrial
     - electronics
-    - manufacturing
+    - automotive
   process:
+    - decontamination
     - passivation
-    - etching
-    - polishing
-    - texturing
   author:
+    - ikmanda-roswati
+    - surface-preparation
   other:
-    - electroplating
+    - metalworking
 metadata:
-  generated: "2025-09-17T12:06:15.228158"
+  generated: "2025-09-22T15:57:39.683722"
   format: "yaml"
   version: "2.0"
 
 ---
 Material: "tin"
 Component: tags
-Generated: 2025-09-17T12:06:15.228187
-Generator: Z-Beam v1.0.0
+Generated: 2025-09-22T15:57:39.685227
+Generator: Z-Beam v1.0.0 (Frontmatter-Based)
 Format: YAML v2.0
 ---

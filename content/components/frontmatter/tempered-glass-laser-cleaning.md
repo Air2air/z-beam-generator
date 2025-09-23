@@ -17,6 +17,8 @@ chemicalProperties:
   materialType: glass
 properties:
   density: "2500 kg/m³"
+  thermalDestructionPoint: "550°C"
+  thermalDestructionType: melting
   densityNumeric: 2500.0
   densityUnit: "kg/m³"
   densityMin: "1.8 g/cm³"
@@ -26,7 +28,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 100.0
-  meltingPoint: "550°C"
   meltingPointNumeric: 550
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -36,7 +37,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "0.8-1.0 W/(m·K)"
+  thermalConductivity: 0.9W/(m·K)"
   thermalConductivityNumeric: 0.9
   thermalConductivityUnit: W/
   thermalConductivityMin: "0.5 W/m·K"
@@ -46,7 +47,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.2
-  tensileStrength: 65-100 MPa (surface compression 10000-20000 psi)
+  tensileStrength: 82.5MPa
   tensileStrengthNumeric: 82.5
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -56,7 +57,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 3.4
-  hardness: 5.5-6.5 Mohs scale
+  hardness: 6Mohs
   hardnessNumeric: 6.0
   hardnessUnit: Mohs
   hardnessMin: 1 Mohs
@@ -80,7 +81,6 @@ properties:
   wavelength: 1064nm
   fluenceRange: "0.5–5 J/cm²"
   chemicalFormula: "SiO₂-based amorphous solid"
-  thermalBehaviorType: melting
 composition:
 - "Silicon Dioxide (SiO₂): 70-75%"
 - "Sodium Oxide (Na₂O): 12-16%"
@@ -199,7 +199,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: United States (California)
   author_id: 4
-  verification_timestamp: '2025-09-20T20:59:20Z'
+  verification_timestamp: '2025-09-20T20: 59: 20Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -218,3 +218,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 1.9
 surface_roughness_after: 0.5
+---

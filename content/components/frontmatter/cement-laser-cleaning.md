@@ -16,7 +16,9 @@ chemicalProperties:
     SiO₂, 3CaO·Al₂O₃)"
   materialType: masonry
 properties:
-  density: "2.8-3.15 g/cm³ (Portland cement)"
+  density: 3.0g/cm³
+  thermalDestructionPoint: "1550°C"
+  thermalDestructionType: decomposition
   densityNumeric: 2.97
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -26,7 +28,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 27.9
-  meltingPoint: "1550°C"
   meltingPointNumeric: 1550.0
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -36,7 +37,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 21.9
-  thermalConductivity: "0.29-0.43 W/m·K (at 20°C)"
+  thermalConductivity: 0.4W/m·K
   thermalConductivityNumeric: 0.36
   thermalConductivityUnit: "W/m·K"
   thermalConductivityMin: "0.5 W/m·K"
@@ -46,7 +47,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.0
-  tensileStrength: 2-5 MPa (28-day cured)
+  tensileStrength: 3.5MPa
   tensileStrengthNumeric: 3.5
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -56,7 +57,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 0.0
-  hardness: 5-6 Mohs (hardened cement paste)
+  hardness: 5.5Mohs
   hardnessNumeric: 5.5
   hardnessUnit: Mohs
   hardnessMin: 1 Mohs
@@ -76,12 +77,11 @@ properties:
   youngsModulusMaxNumeric: 80.0
   youngsModulusMaxUnit: GPa
   modulusPercentile: 16.7
-  laserType: Nd:YAG laser
+  laserType: "Nd: YAG laser"
   wavelength: 1064nm
   fluenceRange: "1.0–10 J/cm²"
   chemicalFormula: "Complex mixture primarily CaO (60-67%), SiO₂ (17-25%), Al₂"
     O₃ (3-8%), Fe₂O₃ (0.5-6%)"
-  thermalBehaviorType: melting
 composition:
 - "Tricalcium silicate (3CaO·SiO₂): 45-60%"
 - "Dicalcium silicate (2CaO·SiO₂): 15-30%"
@@ -149,7 +149,7 @@ compatibility:
 - Reinforced concrete with steel rebar (laser safe at proper parameters)
 - Natural stone substrates (granite, limestone)
 - Brick and masonry materials
-regulatoryStandards: ISO 11145:2018 (Laser equipment), IEC 60825-1:2014 (Laser safety),
+regulatoryStandards: "ISO 11145: 2018 (Laser equipment), IEC 60825-1: 2014 (Laser safety),"
   ASTM C150 (Standard Specification for Portland Cement)
 author: Ikmanda Roswati
 author_object:
@@ -181,7 +181,7 @@ outcomes:
   metric: "Precision ablation maintaining original surface integrity within 20-50μ"
     m tolerance"
 technicalSpecifications:
-  powerRange: 50-300W (pulsed fiber lasers), 20-100W (Nd:YAG)
+  powerRange: "50-300W (pulsed fiber lasers), 20-100W (Nd: YAG)"
   pulseDuration: 10-200ns (optimal for controlled ablation)
   wavelength: 1064nm (primary), 532nm (enhanced absorption for specific contaminants)
   spotSize: 0.1-1.5mm (adjustable based on contamination type)
@@ -198,7 +198,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Indonesia
   author_id: 3
-  verification_timestamp: '2025-09-20T21:01:03Z'
+  verification_timestamp: '2025-09-20T21: 01: 03Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -209,7 +209,7 @@ laser_parameters:
   power_range: 50-200W
   repetition_rate: 20-100kHz
   spot_size: 0.1-1.0mm
-  laser_type: Nd:YAG laser
+  laser_type: "Nd: YAG laser"
 tags:
 - Construction
 - Restoration
@@ -217,3 +217,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 38.5
 surface_roughness_after: 12.8
+---

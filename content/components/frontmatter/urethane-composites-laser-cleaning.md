@@ -15,7 +15,9 @@ chemicalProperties:
   formula: "(C₁₀H₈N₂O₂C₆H₁₄O₃)\u2099 (polyurethane matrix with various reinforcements)"
   materialType: composite
 properties:
-  density: "1.05-1.25 g/cm³ (varies with reinforcement content)"
+  density: 1.1g/cm³
+  thermalDestructionPoint: "220°C"
+  thermalDestructionType: melting
   densityNumeric: 1.15
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -32,7 +34,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "0.19-0.25 W/m·K"
+  thermalConductivity: 0.2W/m·K"
   thermalConductivityNumeric: 0.22
   thermalConductivityUnit: "W/m·K"
   thermalConductivityMin: "0.5 W/m·K"
@@ -42,7 +44,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.0
-  tensileStrength: 30-70 MPa (depending on reinforcement)
+  tensileStrength: 50MPa
   tensileStrengthNumeric: 50.0
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -52,7 +54,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 0.0
-  hardness: 75-95 Shore A
+  hardness: 85Shore
   hardnessNumeric: 85.0
   hardnessUnit: Shore
   hardnessMin: 1 Mohs
@@ -76,11 +78,7 @@ properties:
   wavelength: 1064nm
   fluenceRange: "1.0–10 J/cm²"
   chemicalFormula: Varies by formulation; typically polyol + diisocyanate + chain
-    extender
-  thermalBehaviorType: decomposition
-  decompositionPoint: "220°C"
-  decompositionPointNumeric: 220
-  decompositionPointUnit: "°C"
+    extender  decompositionPointUnit: "°C"
 composition:
 - 'Polyurethane matrix: 60-80%'
 - 'Glass/carbon fiber reinforcement: 20-40%'
@@ -199,7 +197,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Indonesia
   author_id: 3
-  verification_timestamp: '2025-09-20T20:48:52Z'
+  verification_timestamp: '2025-09-20T20: 48: 52Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -218,3 +216,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 9.8
 surface_roughness_after: 2.8
+---

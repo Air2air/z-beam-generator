@@ -1,36 +1,36 @@
 tags:
-  - aerospace
-  - automotive
-  - electronics
-  - decontamination
+  - todd-dunning
+  - woodworking
   - restoration
-  - etching
-  - passivation
-  - polishing
+  - decontamination
+  - surface-preparation
+  - refinishing
+  - manufacturing
+  - industrial
 material: "fir"
 count: 8
 categories:
   industry:
-    - aerospace
-    - automotive
-    - electronics
+    - manufacturing
+    - industrial
   process:
-    - decontamination
     - restoration
-    - etching
-    - passivation
-    - polishing
+    - decontamination
   author:
+    - todd-dunning
+    - surface-preparation
   other:
+    - woodworking
+    - refinishing
 metadata:
-  generated: "2025-09-17T12:00:36.295660"
+  generated: "2025-09-22T15:57:40.144539"
   format: "yaml"
   version: "2.0"
 
 ---
 Material: "fir"
 Component: tags
-Generated: 2025-09-17T12:00:36.295677
-Generator: Z-Beam v1.0.0
+Generated: 2025-09-22T15:57:40.146046
+Generator: Z-Beam v1.0.0 (Frontmatter-Based)
 Format: YAML v2.0
 ---

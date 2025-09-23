@@ -1,36 +1,36 @@
 tags:
-  - aerospace
-  - automotive
-  - medical
-  - decoating
-  - passivation
+  - yi-chun-lin
+  - woodworking
   - restoration
-  - polishing
-  - texturing
+  - decontamination
+  - surface-preparation
+  - refinishing
+  - manufacturing
+  - industrial
 material: "cherry"
 count: 8
 categories:
   industry:
-    - aerospace
-    - automotive
-    - medical
+    - manufacturing
+    - industrial
   process:
-    - decoating
-    - passivation
     - restoration
-    - polishing
-    - texturing
+    - decontamination
   author:
+    - surface-preparation
   other:
+    - yi-chun-lin
+    - woodworking
+    - refinishing
 metadata:
-  generated: "2025-09-17T12:00:09.001936"
+  generated: "2025-09-22T15:57:40.127155"
   format: "yaml"
   version: "2.0"
 
 ---
 Material: "cherry"
 Component: tags
-Generated: 2025-09-17T12:00:09.001969
-Generator: Z-Beam v1.0.0
+Generated: 2025-09-22T15:57:40.128629
+Generator: Z-Beam v1.0.0 (Frontmatter-Based)
 Format: YAML v2.0
 ---

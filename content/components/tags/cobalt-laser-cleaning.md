@@ -1,36 +1,36 @@
 tags:
+  - alessandro-moretti
+  - metalworking
+  - industrial
   - aerospace
-  - medical
-  - automotive
+  - electronics
   - decontamination
-  - restoration
+  - surface-preparation
   - passivation
-  - polishing
-  - texturing
 material: "cobalt"
 count: 8
 categories:
   industry:
+    - industrial
     - aerospace
-    - medical
-    - automotive
+    - electronics
   process:
     - decontamination
-    - restoration
     - passivation
-    - polishing
-    - texturing
   author:
+    - alessandro-moretti
+    - surface-preparation
   other:
+    - metalworking
 metadata:
-  generated: "2025-09-17T12:00:15.607766"
+  generated: "2025-09-22T15:57:39.323729"
   format: "yaml"
   version: "2.0"
 
 ---
 Material: "cobalt"
 Component: tags
-Generated: 2025-09-17T12:00:15.607783
-Generator: Z-Beam v1.0.0
+Generated: 2025-09-22T15:57:39.324925
+Generator: Z-Beam v1.0.0 (Frontmatter-Based)
 Format: YAML v2.0
 ---

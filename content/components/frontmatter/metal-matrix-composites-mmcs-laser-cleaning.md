@@ -15,7 +15,9 @@ chemicalProperties:
   formula: "Variable (typically Al/SiC, Al/Al₂O₃, Ti/SiC)"
   materialType: composite
 properties:
-  density: "2.7-4.5 g/cm³ (Al-based MMCs); 4.4-4.8 g/cm³ (Ti-based MMCs)"
+  density: 3.6g/cm³
+  thermalDestructionPoint: 620°C;
+  thermalDestructionType: melting
   densityNumeric: 3.6
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -25,7 +27,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 42.9
-  meltingPoint: "580-660°C; 1660°C - composite dependent"
   meltingPointNumeric: 620.0
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -35,7 +36,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "120-200 W/m·K (Al/SiC); 5-7 W/m·K (Al/Al₂O₃"
+  thermalConductivity: 160W/m·K
     )"
   thermalConductivityNumeric: 160.0
   thermalConductivityUnit: "W/m·K"
@@ -46,7 +47,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 79.9
-  tensileStrength: "300-600 MPa (Al/SiC); 150-300 MPa (Al/Al₂O₃)"
+  tensileStrength: 450MPa
   tensileStrengthNumeric: 450.0
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -56,7 +57,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 42.1
-  hardness: "80-120 HV (Al/SiC); 60-90 HV (Al/Al₂O₃)"
+  hardness: 100HV
   hardnessNumeric: 100.0
   hardnessUnit: HV
   hardnessMin: 1 Mohs
@@ -145,7 +146,7 @@ compatibility:
 - "Aluminum, titanium, magnesium matrices with ceramic reinforcements (SiC, Al₂\
   O₃, B₄C)"
 - Stainless steel fixtures and handling systems
-regulatoryStandards: ISO 9013:2017 (Thermal cutting classification), ASTM E2930 (Laser
+regulatoryStandards: "ISO 9013: 2017 (Thermal cutting classification), ASTM E2930 (Laser"
   cleaning standards), NADCAP AC7117 (Aerospace laser processing)
 author: Todd Dunning
 author_object:
@@ -195,7 +196,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: United States (California)
   author_id: 4
-  verification_timestamp: '2025-09-20T20:51:23Z'
+  verification_timestamp: '2025-09-20T20: 51: 23Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -214,3 +215,4 @@ complexity: high
 difficultyScore: 5
 surface_roughness_before: 14.5
 surface_roughness_after: 3.8
+---

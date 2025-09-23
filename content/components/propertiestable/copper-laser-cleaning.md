@@ -1,13 +1,13 @@
 | Property | Value |
 |----------|-------|
-| Density | 8.96 g/cm³ |
-| Melting Point | 1085°C |
-| Conductivity | 401 W/m·K |
+| Density | 7.85 g/cm³ |
+| Conductivity | 50.2 W/m·K |
 | Formula | Cu |
+| Melting Point | 1450.0°C |
 
 
 ---
-Version Log - Generated: 2025-09-21T22:01:14.494448
+Version Log - Generated: 2025-09-22T23:39:31.460907
 Material: Unknown
 Component: propertiestable
 Generator: Z-Beam v1.0.0

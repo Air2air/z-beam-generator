@@ -168,7 +168,7 @@ Generate high-quality, accurate, and professional content that follows industry 
 - Balance broad and specific tags for optimal discoverability
 - Avoid overly generic tags, focus on technical accuracy
 - Include both material-specific and process-specific tags""",
-            "bullets": """
+            "text": """
 - Generate concise, informative bullet points
 - Focus on key technical features and benefits
 - Use parallel structure and consistent formatting

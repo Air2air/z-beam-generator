@@ -1,36 +1,36 @@
 tags:
-  - aerospace
-  - automotive
-  - electronics
-  - decoating
-  - passivation
+  - yi-chun-lin
+  - woodworking
   - restoration
-  - polishing
-  - texturing
+  - conservation
+  - decontamination
+  - surface-preparation
+  - refinishing
+  - manufacturing
 material: "bamboo"
 count: 8
 categories:
   industry:
-    - aerospace
-    - automotive
-    - electronics
+    - manufacturing
   process:
-    - decoating
-    - passivation
     - restoration
-    - polishing
-    - texturing
+    - decontamination
   author:
+    - surface-preparation
   other:
+    - yi-chun-lin
+    - woodworking
+    - conservation
+    - refinishing
 metadata:
-  generated: "2025-09-17T11:58:52.938845"
+  generated: "2025-09-22T15:57:40.077278"
   format: "yaml"
   version: "2.0"
 
 ---
 Material: "bamboo"
 Component: tags
-Generated: 2025-09-17T11:58:52.938887
-Generator: Z-Beam v1.0.0
+Generated: 2025-09-22T15:57:40.078521
+Generator: Z-Beam v1.0.0 (Frontmatter-Based)
 Format: YAML v2.0
 ---

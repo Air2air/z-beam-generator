@@ -16,7 +16,9 @@ chemicalProperties:
   formula: Fe-Cr-Ni
   materialType: metal
 properties:
-  density: "7.5-8.0 g/cm³"
+  density: 7.8g/cm³"
+  thermalDestructionPoint: "1530°C"
+  thermalDestructionType: melting
   densityNumeric: 7.75
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -26,7 +28,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 100.0
-  meltingPoint: "1530°C"
   meltingPointNumeric: 1530
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -46,7 +47,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 7.9
-  tensileStrength: 515-827 MPa
+  tensileStrength: 671MPa
   tensileStrengthNumeric: 671.0
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -56,7 +57,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 65.4
-  hardness: 150-200 HV (304 annealed), 300-400 HV (316 cold worked)
+  hardness: 175HV
   hardnessNumeric: 175.0
   hardnessUnit: HV
   hardnessMin: 1 Mohs
@@ -80,7 +81,6 @@ properties:
   wavelength: 1064nm
   fluenceRange: "1.0–10 J/cm²"
   chemicalFormula: Fe-Cr-Ni
-  thermalBehaviorType: melting
 composition:
 - 'Iron (Fe): 66.5-74%'
 - 'Chromium (Cr): 16-26%'
@@ -154,7 +154,7 @@ compatibility:
 - Aluminum alloys (for multi-material component cleaning)
 - Titanium alloys (similar laser processing parameters)
 - Carbon steel (with parameter adjustment for different absorption)
-regulatoryStandards: ISO 9013:2017 (Thermal cutting classification), ISO 11145:2018
+regulatoryStandards: "ISO 9013: 2017 (Thermal cutting classification), ISO 11145: 2018"
   (Laser equipment vocabulary), ANSI Z136.1 (Safe Use of Lasers), ASME BPE (Bioprocessing
   Equipment standards)
 author: Alessandro Moretti
@@ -212,7 +212,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Italy
   author_id: 2
-  verification_timestamp: '2025-09-20T21:27:49Z'
+  verification_timestamp: '2025-09-20T21: 27: 49Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -236,3 +236,4 @@ complexity: high
 difficultyScore: 4
 surface_roughness_before: 6.8
 surface_roughness_after: 0.8
+---

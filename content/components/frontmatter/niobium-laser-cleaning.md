@@ -17,6 +17,8 @@ chemicalProperties:
   materialType: metal
 properties:
   density: "8.57 g/cm³"
+  thermalDestructionPoint: "2477°C"
+  thermalDestructionType: melting
   densityNumeric: 8.57
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -26,7 +28,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 100.0
-  meltingPoint: "2477°C"
   meltingPointNumeric: 2477
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -80,7 +81,6 @@ properties:
   wavelength: 1064nm
   fluenceRange: "1.0–10 J/cm²"
   chemicalFormula: Nb
-  thermalBehaviorType: melting
 composition:
 - 'Niobium (Nb): > 99.9% (Reactor Grade)'
 - 'Tantalum (Ta): < 0.1%, Zirconium (Zr): < 0.01%, other trace elements'
@@ -197,7 +197,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: United States (California)
   author_id: 4
-  verification_timestamp: '2025-09-20T21:22:19Z'
+  verification_timestamp: '2025-09-20T21: 22: 19Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -216,3 +216,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 4.8
 surface_roughness_after: 1.2
+---

@@ -16,7 +16,9 @@ chemicalProperties:
   formula: C6H10O5 (Cellulose primary constituent)
   materialType: wood composite
 properties:
-  density: "700-800 kg/m³"
+  density: 750kg/m³"
+  thermalDestructionPoint: 225°C"
+  thermalDestructionType: melting
   densityNumeric: 750.0
   densityUnit: "kg/m³"
   densityMin: "1.8 g/cm³"
@@ -26,7 +28,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 100.0
-  meltingPoint: "Decomposes at 200-250°C"
   meltingPointNumeric: 225.0
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -36,7 +37,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "0.07-0.09 W/(m·K)"
+  thermalConductivity: 0.1W/(m·K)"
   thermalConductivityNumeric: 0.08
   thermalConductivityUnit: W/
   thermalConductivityMin: "0.5 W/m·K"
@@ -46,7 +47,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.0
-  tensileStrength: 15-30 MPa (parallel to surface)
+  tensileStrength: 22.5MPa
   tensileStrengthNumeric: 22.5
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -56,7 +57,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 0.0
-  hardness: 60-80 HB (Brinell hardness)
+  hardness: 70HB
   hardnessNumeric: 70.0
   hardnessUnit: HB
   hardnessMin: 1 Mohs
@@ -196,7 +197,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Indonesia
   author_id: 3
-  verification_timestamp: '2025-09-20T22:04:07Z'
+  verification_timestamp: '2025-09-20T22: 04: 07Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -215,3 +216,4 @@ complexity: low
 difficultyScore: 2
 surface_roughness_before: 65.8
 surface_roughness_after: 28.5
+---

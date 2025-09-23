@@ -13,6 +13,8 @@ chemicalProperties:
   materialType: metal
 properties:
   density: "8.9 g/cm³"
+  thermalDestructionPoint: "1495°C"
+  thermalDestructionType: melting
   densityNumeric: 8.9
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -22,7 +24,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 100.0
-  meltingPoint: "1495°C"
   meltingPointNumeric: 1495.0
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -52,7 +53,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 100.0
-  hardness: 125-300 HV (Vickers)
+  hardness: 212.5HV
   hardnessNumeric: 212.5
   hardnessUnit: HV
   hardnessMin: 1 Mohs
@@ -76,7 +77,6 @@ properties:
   wavelength: 1064nm
   fluenceRange: "1.0–3.0 J/cm²"
   chemicalFormula: Co
-  thermalBehaviorType: melting
 composition:
 - 'Cobalt (Co): 99.8% minimum (commercial purity)'
 - 'Nickel (Ni): 0.05-0.15%'
@@ -151,7 +151,7 @@ compatibility:
 - Alnico magnets (Al-Ni-Co)
 - Stainless steel (300 series)
 - Nickel-based superalloys
-regulatoryStandards: ISO 11551:2023 (Laser beam power density measurement), OSHA 29
+regulatoryStandards: "ISO 11551: 2023 (Laser beam power density measurement), OSHA 29"
   CFR 1910.1027 (Cobalt exposure limits), IEC 60825-1 (Laser safety classification)
 author: Alessandro Moretti
 author_object:
@@ -202,7 +202,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Italy
   author_id: 2
-  verification_timestamp: '2025-09-20T21:10:27Z'
+  verification_timestamp: '2025-09-20T21: 10: 27Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -225,3 +225,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 6.8
 surface_roughness_after: 1.4
+---

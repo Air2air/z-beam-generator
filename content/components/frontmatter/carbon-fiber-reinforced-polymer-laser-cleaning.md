@@ -13,7 +13,7 @@ chemicalProperties:
   formula: "C\u2099/(C₂₁H₂₅ClO₅)\u2099 (Carbon fiber/Epoxy matrix representative composition)"
   materialType: composite
 properties:
-  density: "1.5-1.6 g/cm³ (typical for aerospace-grade CFRP)"
+  density: 1.6g/cm³
   densityNumeric: 1.55
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -30,7 +30,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "0.8-1.1 W/(m·K) (through-thickness), 5-7 W/(m·K) (in-plane)"
+  thermalConductivity: 1.0W/(m·K)
   thermalConductivityNumeric: 0.95
   thermalConductivityUnit: W/
   thermalConductivityMin: "0.5 W/m·K"
@@ -40,7 +40,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.2
-  tensileStrength: 1500-3500 MPa (fiber direction)
+  tensileStrength: 2500MPa
   tensileStrengthNumeric: 2500.0
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -50,7 +50,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 100.0
-  hardness: 80-85 Shore D (matrix dependent)
+  hardness: 82.5Shore
   hardnessNumeric: 82.5
   hardnessUnit: Shore
   hardnessMin: 1 Mohs
@@ -74,7 +74,6 @@ properties:
   wavelength: 1064nm
   fluenceRange: "1.0–10 J/cm²"
   chemicalFormula: "C\u2099/(C₂₁H₂₅ClO₅)\u2099"
-  thermalBehaviorType: decomposition
 composition:
 - 'Carbon fiber: 50-70% (by volume)'
 - 'Epoxy resin matrix: 30-50% (typically DGEBA-based with hardeners)'
@@ -191,7 +190,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Taiwan
   author_id: 1
-  verification_timestamp: '2025-09-20T20:41:40Z'
+  verification_timestamp: '2025-09-20T20: 41: 40Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -210,3 +209,4 @@ complexity: high
 difficultyScore: 5
 surface_roughness_before: 8.5
 surface_roughness_after: 2.2
+---

@@ -3,7 +3,7 @@ name: Lead Crystal
 category: glass
 title: Lead Crystal Laser Cleaning
 headline: Comprehensive technical guide for laser cleaning glass lead crystal
-description: Laser cleaning of lead crystal utilizes precise pulsed Nd:YAG laser parameters
+description: "Laser cleaning of lead crystal utilizes precise pulsed Nd: YAG laser parameters"
   to selectively ablate surface contaminants while exploiting the material's high
   thermal expansion coefficient and low thermal conductivity to prevent substrate
   damage.
@@ -15,7 +15,9 @@ chemicalProperties:
   formula: "24% PbO, 75% SiO₂, 1% K₂O (typical)"
   materialType: glass
 properties:
-  density: "3.1-3.5 g/cm³"
+  density: 3.3g/cm³"
+  thermalDestructionPoint: "1000°C"
+  thermalDestructionType: melting
   densityNumeric: 3.3
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -25,7 +27,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 35.7
-  meltingPoint: "1000°C"
   meltingPointNumeric: 1000
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -35,7 +36,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "0.78-0.85 W/(m·K)"
+  thermalConductivity: 0.8W/(m·K)"
   thermalConductivityNumeric: 0.81
   thermalConductivityUnit: W/
   thermalConductivityMin: "0.5 W/m·K"
@@ -45,7 +46,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.2
-  tensileStrength: 30-50 MPa
+  tensileStrength: 40MPa
   tensileStrengthNumeric: 40.0
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -55,7 +56,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 0.0
-  hardness: 350-450 HK (Knoop)
+  hardness: 400HK
   hardnessNumeric: 400.0
   hardnessUnit: HK
   hardnessMin: 1 Mohs
@@ -75,11 +76,10 @@ properties:
   youngsModulusMaxNumeric: 80.0
   youngsModulusMaxUnit: GPa
   modulusPercentile: 58.3
-  laserType: Nd:YAG laser
+  laserType: "Nd: YAG laser"
   wavelength: 1064nm
   fluenceRange: "0.5–5 J/cm²"
   chemicalFormula: "24% PbO, 75% SiO₂, 1% K₂O"
-  thermalBehaviorType: melting
 composition:
 - "Silicon Dioxide (SiO₂): 55-75%"
 - 'Lead Oxide (PbO): 24-32%'
@@ -177,7 +177,7 @@ environmentalImpact:
     liters per hour compared to aqueous cleaning systems
 outcomes:
 - result: Surface contamination removal efficiency
-  metric: '>99.5% removal of organic contaminants and surface coatings'
+  metric: ">99.5% removal of organic contaminants and surface coatings"
 - result: Processing speed
   metric: "0.1-0.5 m²/hour depending on contamination level and required precision"
 technicalSpecifications:
@@ -198,7 +198,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Taiwan
   author_id: 1
-  verification_timestamp: '2025-09-20T20:55:48Z'
+  verification_timestamp: '2025-09-20T20: 55: 48Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -209,7 +209,7 @@ laser_parameters:
   power_range: 20-100W
   repetition_rate: 10-50kHz
   spot_size: 0.1-2.0mm
-  laser_type: Nd:YAG laser
+  laser_type: "Nd: YAG laser"
 tags:
 - Restoration and Conservation
 - Glass Manufacturing
@@ -217,3 +217,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 2.2
 surface_roughness_after: 0.6
+---

@@ -17,7 +17,9 @@ chemicalProperties:
     O₁₀[(OH)₂,(H₂O)] for clay minerals"
   materialType: sedimentary rock
 properties:
-  density: "2.0-2.7 g/cm³"
+  density: 2.4g/cm³"
+  thermalDestructionPoint: "1600°C"
+  thermalDestructionType: melting
   densityNumeric: 2.35
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -27,7 +29,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 13.1
-  meltingPoint: "1600°C"
   meltingPointNumeric: 1600
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -37,7 +38,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 12.5
-  thermalConductivity: "1.5-2.5 W/(m·K)"
+  thermalConductivity: 2W/(m·K)"
   thermalConductivityNumeric: 2.0
   thermalConductivityUnit: W/
   thermalConductivityMin: "0.5 W/m·K"
@@ -47,7 +48,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.8
-  tensileStrength: 3-30 MPa (highly anisotropic)
+  tensileStrength: 16.5MPa
   tensileStrengthNumeric: 16.5
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -57,7 +58,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 0.0
-  hardness: 2-4 Mohs scale
+  hardness: 3Mohs
   hardnessNumeric: 3.0
   hardnessUnit: Mohs
   hardnessMin: 1 Mohs
@@ -82,7 +83,6 @@ properties:
   fluenceRange: "1.0–10 J/cm²"
   chemicalFormula: 'Variable: primarily clay minerals (illite, kaolinite, smectite)
     + quartz + feldspar'
-  thermalBehaviorType: melting
 composition:
 - 'Clay minerals (illite, kaolinite, smectite): 40-70%'
 - 'Quartz: 20-40%'
@@ -150,7 +150,7 @@ compatibility:
 - Stainless steel fixtures and enclosures
 - Aluminum mounting systems
 - Quartz and borosilicate glass viewing windows
-regulatoryStandards: IEC 60825-1:2014 (Laser safety), OSHA 29 CFR 1910.1096 (Ionizing
+regulatoryStandards: "IEC 60825-1: 2014 (Laser safety), OSHA 29 CFR 1910.1096 (Ionizing"
   radiation), NFPA 70E (Electrical safety)
 author: Yi-Chun Lin
 author_object:
@@ -178,7 +178,7 @@ environmentalImpact:
     water or abrasive blasting methods for shale surfaces
 outcomes:
 - result: Surface contamination removal efficiency
-  metric: '>99% removal of organic deposits and mineral scale without substrate damage'
+  metric: ">99% removal of organic deposits and mineral scale without substrate damage"
 - result: Processing speed
   metric: "0.5-2.0 m²/hour depending on contamination level and laser parameters"
 technicalSpecifications:
@@ -199,7 +199,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Taiwan
   author_id: 1
-  verification_timestamp: '2025-09-20T21:52:02Z'
+  verification_timestamp: '2025-09-20T21: 52: 02Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -218,3 +218,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 35.8
 surface_roughness_after: 12.5
+---

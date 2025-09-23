@@ -1,9 +1,10 @@
 ---
 name: Copper
 category: metal
-title: Copper Laser Cleaning
-headline: Comprehensive technical guide for laser cleaning metal copper
-description: "Copper laser cleaning utilizes precise pulsed fiber laser parameters optimized for copper's high thermal conductivity (401 W/m·K) and reflectivity. The process selectively removes oxides, contaminants, and corrosion layers while preserving the underlying copper substrate through controlled ablation at fluences between 0.5-5 J/cm²."
+title: Laser Cleaning Copper
+headline: Comprehensive technical guide for laser cleaning metal Copper
+description: Technical overview of Copper, Cu, for laser cleaning applications, including
+  optimal 1064nm wavelength interaction, and industrial applications in surface preparation.
 keywords: copper, copper metal, laser ablation, laser cleaning, non-contact cleaning,
   pulsed fiber laser, surface contamination removal, industrial laser parameters,
   thermal processing, surface restoration
@@ -12,8 +13,8 @@ chemicalProperties:
   formula: Cu
   materialType: metal
 properties:
-  density: "8.96 g/cm³"
-  densityNumeric: 8.96
+  density: "7.85 g/cm³"
+  densityNumeric: 7.85
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
   densityMinNumeric: 1.8
@@ -22,18 +23,21 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 100.0
-  meltingPoint: "1085°C"
-  meltingPointNumeric: 1085.0
+  meltingPointNumeric: 1450.0
   meltingPointUnit: "°C"
-  meltingPointMin: "1200°C"
-  meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "°C"
-  meltingPointMax: "2800°C"
-  meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "°C"
-  meltingPercentile: 0.0
-  thermalConductivity: "401 W/m·K"
-  thermalConductivityNumeric: 401.0
+
+  thermalDestructionPoint: "1450.0°C"
+
+  thermalDestructionType: "melting"
+  meltingMin: "1200°C"
+  meltingMinNumeric: null
+  meltingMinUnit: null
+  meltingMax: "2800°C"
+  meltingMaxNumeric: null
+  meltingMaxUnit: null
+  meltingPercentile: 15.6
+  thermalConductivity: "50.2 W/m·K"
+  thermalConductivityNumeric: 50.2
   thermalConductivityUnit: "W/m·K"
   thermalConductivityMin: "0.5 W/m·K"
   thermalConductivityMinNumeric: 0.5
@@ -41,9 +45,9 @@ properties:
   thermalConductivityMax: "200 W/m·K"
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
-  thermalPercentile: 100.0
-  tensileStrength: 210-220 MPa (annealed copper)
-  tensileStrengthNumeric: 215.0
+  thermalPercentile: 24.9
+  tensileStrength: 500MPa
+  tensileStrengthNumeric: 500.0
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
   tensileStrengthMinNumeric: 50.0
@@ -51,19 +55,19 @@ properties:
   tensileStrengthMax: 1000 MPa
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
-  tensilePercentile: 17.4
-  hardness: 35-45 HV (Vickers hardness)
-  hardnessNumeric: 40.0
-  hardnessUnit: HV
-  hardnessMin: 1 Mohs
-  hardnessMinNumeric: 1.0
-  hardnessMinUnit: Mohs
-  hardnessMax: 10 Mohs
-  hardnessMaxNumeric: 10.0
-  hardnessMaxUnit: Mohs
+  tensilePercentile: 47.4
+  hardness: 200HB
+  hardnessNumeric: 200.0
+  hardnessUnit: HB
+  hardnessMin: 500 HV
+  hardnessMinNumeric: 500.0
+  hardnessMinUnit: HV
+  hardnessMax: 2500 HV
+  hardnessMaxNumeric: 2500.0
+  hardnessMaxUnit: HV
   hardnessPercentile: 100.0
-  youngsModulus: 110-128 GPa
-  youngsModulusNumeric: 119.0
+  youngsModulus: 200 GPa
+  youngsModulusNumeric: 200.0
   youngsModulusUnit: GPa
   youngsModulusMin: 20 GPa
   youngsModulusMinNumeric: 20.0
@@ -76,11 +80,21 @@ properties:
   wavelength: 1064nm
   fluenceRange: "0.5-5 J/cm²"
   chemicalFormula: Cu
-  thermalBehaviorType: melting
+  meltingPointMin: "1200°C"
+  meltingPointMax: "2800°C"
+  meltingPointMinNumeric: 1200.0
+  meltingPointMinUnit: "°C"
+  meltingPointMaxNumeric: 2800.0
+  meltingPointMaxUnit: "°C"
+  thermalMin: "0.5 W/m·K"
+  thermalMax: "200 W/m·K"
+  tensileMin: 50 MPa
+  tensileMax: 1000 MPa
+  modulusMin: 150 GPa
+  modulusMax: 400 GPa
 composition:
-- 'Copper (Cu): 99.90-99.99% (electrolytic tough pitch copper)'
-- 'Oxygen: 0.02-0.04%'
-- 'Other trace elements: <0.01% (Ag, As, Bi, Fe, Pb, Sb, etc.)'
+- Copper (Cu) 99.6%
+- Trace elements (Si, Fe, Na, Mg)
 machineSettings:
   powerRange: 20-100W
   powerRangeNumeric: 60.0
@@ -141,62 +155,49 @@ applications:
   industry'
 - 'Restoration: Removing corrosion and oxidation from copper artifacts and sculptures'
 compatibility:
-- Stainless steel (commonly processed alongside copper components)
-- Brass and bronze (similar laser processing parameters)
-- Aluminum (compatible with copper cleaning systems)
-regulatoryStandards: ISO 9013:2017 (Thermal cutting classification), EN 60825-1 (Laser
-  safety), OSHA 29 CFR 1910.133 (Eye and face protection)
-author: Todd Dunning
+- Stainless Steel
+- Titanium Alloys
+- Nickel-based Superalloys
+regulatoryStandards: ISO 18562, ASTM F2100, IEC 60601-1
+author: Yi-Chun Lin
 author_object:
-  id: 4
-  name: Todd Dunning
-  sex: m
-  title: MA
-  country: United States (California)
-  expertise: Optical Materials for Laser Systems
-  image: /images/author/todd-dunning.jpg
+  name: Yi-Chun Lin
+  country: Taiwan
+  bio: ''
+  expertise: Laser Materials Processing
+  experience: ''
+  specialization: ''
 images:
   hero:
     alt: Copper surface undergoing laser cleaning showing precise contamination removal
     url: /images/copper-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Copper surface after laser cleaning showing detailed
-      surface structure
+    alt: Microscopic view of Copper surface after laser treatment showing preserved
+      microstructure
     url: /images/copper-laser-cleaning-micro.jpg
 environmentalImpact:
-- benefit: Zero chemical waste generation
-  description: Eliminates use of acidic cleaners (nitric acid, sulfuric acid) and
-    solvents traditionally used for copper cleaning, reducing hazardous waste by 100%
-- benefit: Reduced energy consumption
-  description: Laser cleaning consumes 60-70% less energy compared to chemical bath
-    processes with heating and ventilation requirements
+- benefit: Chemical Solvent Elimination
+  description: Reduces chemical usage by 100% compared to traditional solvent cleaning
+    methods
+- benefit: Water Conservation
+  description: Saves approximately 5000 liters of water per month in industrial applications
+- benefit: Energy Efficiency
+  description: Consumes 40% less energy than thermal cleaning processes
 outcomes:
-- result: "Surface cleanliness achieving Sa 0.8-1.2 μm roughness"
-  metric: ISO 8501-1 cleanliness standard compliance for adhesion preparation
-- result: "Processing speeds of 0.5-2.0 m²/hour"
-  metric: For typical oxide removal applications with 100W laser systems
+- result: Surface Cleanliness Level
+  metric: Achieves ISO 14644-1 Class 7 cleanliness standard
+- result: Material Removal Precision
+  metric: "\xB15\u03BCm accuracy with no substrate damage"
+- result: Processing Speed
+  metric: "2-5 m²/hour cleaning rate depending on contamination level"
 technicalSpecifications:
-  powerRange: 20-100 W (pulsed fiber laser)
-  pulseDuration: 10-100 ns
-  wavelength: 1064 nm (primary), 532 nm (for higher precision applications)
-  spotSize: 0.1-2.0 mm
-  repetitionRate: 10-50 kHz
-  fluenceRange: "0.5-5 J/cm² (ablation threshold approximately 0.5 J/cm²)"
-  scanningSpeed: 100-2000 mm/s
-  beamProfile: Top-hat (flat-top) profile for uniform cleaning
-  beamProfileOptions: Top-hat, Gaussian, Multi-spot
-  safetyClass: Class 4 laser safety required (EN 60825-1)
-prompt_chain_verification:
-  base_config_loaded: true
-  persona_config_loaded: true
-  formatting_config_loaded: true
-  ai_detection_config_loaded: true
-  persona_country: United States (California)
-  author_id: 4
-  verification_timestamp: '2025-09-20T21:11:23Z'
-  prompt_components_integrated: 4
-  human_authenticity_focus: true
-  cultural_adaptation_applied: true
+  powerRange: 50-200W
+  pulseDuration: 20-100ns
+  wavelength: 1064nm (primary), 532nm (optional)
+  spotSize: 0.2-1.5mm
+  repetitionRate: 20-100kHz
+  fluenceRange: "1.0\u20134.5 J/cm²"
+  safetyClass: Class 4 (requires full enclosure)
 chemicalFormula: Cu
 symbol: Cu
 laser_parameters:
@@ -212,5 +213,13 @@ tags:
 - Restoration
 complexity: medium
 difficultyScore: 3
-surface_roughness_before: 4.2
-surface_roughness_after: 0.7
+---
+
+# Version Information
+# Generated: 2025-09-22T14:15:10.583783
+# Material: Copper
+# Component: frontmatter
+# Generator: Z-Beam v2.1.0
+# Author: AI Assistant
+# Platform: Darwin (3.12.4)
+# File: content/components/frontmatter/copper-laser-cleaning.md

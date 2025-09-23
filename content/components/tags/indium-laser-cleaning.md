@@ -1,36 +1,36 @@
 tags:
-  - aerospace
+  - todd-dunning
+  - metalworking
+  - industrial
   - electronics
-  - medical
+  - aerospace
   - decontamination
-  - decoating
+  - surface-preparation
   - passivation
-  - restoration
-  - polishing
 material: "indium"
 count: 8
 categories:
   industry:
-    - aerospace
+    - industrial
     - electronics
-    - medical
+    - aerospace
   process:
     - decontamination
-    - decoating
     - passivation
-    - restoration
-    - polishing
   author:
+    - todd-dunning
+    - surface-preparation
   other:
+    - metalworking
 metadata:
-  generated: "2025-09-17T12:01:32.612103"
+  generated: "2025-09-22T15:57:39.426778"
   format: "yaml"
   version: "2.0"
 
 ---
 Material: "indium"
 Component: tags
-Generated: 2025-09-17T12:01:32.612127
-Generator: Z-Beam v1.0.0
+Generated: 2025-09-22T15:57:39.427979
+Generator: Z-Beam v1.0.0 (Frontmatter-Based)
 Format: YAML v2.0
 ---

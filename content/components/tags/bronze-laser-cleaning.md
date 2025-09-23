@@ -1,36 +1,36 @@
 tags:
-  - aerospace
-  - marine
-  - architecture
-  - decoating
+  - ikmanda-roswati
+  - metalworking
+  - industrial
+  - manufacturing
+  - restoration
+  - decontamination
+  - surface-preparation
   - passivation
-  - polishing
-  - texturing
-  - patination
 material: "bronze"
 count: 8
 categories:
   industry:
-    - aerospace
-    - marine
+    - industrial
+    - manufacturing
   process:
-    - decoating
+    - restoration
+    - decontamination
     - passivation
-    - polishing
-    - texturing
   author:
+    - ikmanda-roswati
+    - surface-preparation
   other:
-    - architecture
-    - patination
+    - metalworking
 metadata:
-  generated: "2025-09-17T11:57:42.217088"
+  generated: "2025-09-22T15:57:39.306072"
   format: "yaml"
   version: "2.0"
 
 ---
 Material: "bronze"
 Component: tags
-Generated: 2025-09-17T11:57:42.217117
-Generator: Z-Beam v1.0.0
+Generated: 2025-09-22T15:57:39.307713
+Generator: Z-Beam v1.0.0 (Frontmatter-Based)
 Format: YAML v2.0
 ---

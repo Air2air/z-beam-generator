@@ -1,36 +1,36 @@
 tags:
+  - yi-chun-lin
+  - metalworking
+  - industrial
   - aerospace
-  - medical
   - nuclear
   - decontamination
+  - surface-preparation
   - passivation
-  - etching
-  - polishing
-  - texturing
 material: "zirconium"
 count: 8
 categories:
   industry:
+    - industrial
     - aerospace
-    - medical
   process:
     - decontamination
     - passivation
-    - etching
-    - polishing
-    - texturing
   author:
+    - surface-preparation
   other:
+    - yi-chun-lin
+    - metalworking
     - nuclear
 metadata:
-  generated: "2025-09-17T12:07:04.689099"
+  generated: "2025-09-22T15:57:39.753376"
   format: "yaml"
   version: "2.0"
 
 ---
 Material: "zirconium"
 Component: tags
-Generated: 2025-09-17T12:07:04.689118
-Generator: Z-Beam v1.0.0
+Generated: 2025-09-22T15:57:39.754633
+Generator: Z-Beam v1.0.0 (Frontmatter-Based)
 Format: YAML v2.0
 ---

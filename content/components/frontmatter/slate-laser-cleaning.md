@@ -16,7 +16,9 @@ chemicalProperties:
   formula: "Variable composition (primarily SiO₂, Al₂O₃, K₂O, Fe₂O₃, MgO)"
   materialType: metamorphic rock
 properties:
-  density: "2.6-2.9 g/cm³"
+  density: 2.8g/cm³"
+  thermalDestructionPoint: "1400°C"
+  thermalDestructionType: melting
   densityNumeric: 2.75
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -26,7 +28,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 22.6
-  meltingPoint: "1400°C"
   meltingPointNumeric: 1400
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -36,7 +37,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 6.2
-  thermalConductivity: "2.0-2.5 W/(m·K) (anisotropic - higher parallel to cleavage)"
+  thermalConductivity: 2.2W/(m·K)
   thermalConductivityNumeric: 2.25
   thermalConductivityUnit: W/
   thermalConductivityMin: "0.5 W/m·K"
@@ -46,7 +47,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.9
-  tensileStrength: 15-30 MPa (perpendicular to cleavage plane)
+  tensileStrength: 22.5MPa
   tensileStrengthNumeric: 22.5
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -56,7 +57,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 0.0
-  hardness: 2.5-4.0 Mohs scale
+  hardness: 3.2Mohs
   hardnessNumeric: 3.25
   hardnessUnit: Mohs
   hardnessMin: 1 Mohs
@@ -80,7 +81,6 @@ properties:
   wavelength: 1064nm
   fluenceRange: "0.5-5 J/cm²"
   chemicalFormula: Complex silicate composition (no single formula)
-  thermalBehaviorType: melting
 composition:
 - "Quartz (SiO₂): 20-40%"
 - "Muscovite/Illite (KAl₂(AlSi₃O₁₀)(OH)₂): 30-50%"
@@ -150,8 +150,8 @@ compatibility:
 - Historical building materials (limestone, sandstone, marble)
 - Metallic substrates (when cleaning adjacent areas)
 - Traditional conservation materials (lime mortars, natural pigments)
-regulatoryStandards: EN 15898:2019 (Conservation of cultural heritage - Main general
-  terms and definitions), EN 17138:2018 (Conservation of cultural heritage - Methods
+regulatoryStandards: "EN 15898: 2019 (Conservation of cultural heritage - Main general"
+  terms and definitions), EN 17138: 2018 (Conservation of cultural heritage - Methods
   and materials for cleaning porous inorganic materials)
 author: Ikmanda Roswati
 author_object:
@@ -179,7 +179,7 @@ environmentalImpact:
     (typically 0.5L/min vs 10L/min for water jets)
 outcomes:
 - result: Surface contamination removal efficiency
-  metric: '>95% removal of biological growth and pollution crusts with substrate preservation'
+  metric: ">95% removal of biological growth and pollution crusts with substrate preservation"
 - result: Processing speed
   metric: "0.5-2.0 m²/hour depending on contamination type and laser parameters"
 technicalSpecifications:
@@ -201,7 +201,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Indonesia
   author_id: 3
-  verification_timestamp: '2025-09-20T21:52:53Z'
+  verification_timestamp: '2025-09-20T21: 52: 53Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -220,3 +220,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 15.5
 surface_roughness_after: 5.2
+---

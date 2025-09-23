@@ -16,7 +16,9 @@ chemicalProperties:
   formula: "(C7H6O2·C6H6O)n + reinforcing fibers (glass/carbon)"
   materialType: composite
 properties:
-  density: "1.25-1.90 g/cm³ (varies with reinforcement)"
+  density: 1.6g/cm³
+  thermalDestructionPoint: "300°C"
+  thermalDestructionType: melting
   densityNumeric: 1.57
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -33,7 +35,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "0.15-0.35 W/m·K"
+  thermalConductivity: 0.2W/m·K"
   thermalConductivityNumeric: 0.25
   thermalConductivityUnit: "W/m·K"
   thermalConductivityMin: "0.5 W/m·K"
@@ -43,7 +45,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.0
-  tensileStrength: 30-100 MPa
+  tensileStrength: 65MPa
   tensileStrengthNumeric: 65.0
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -53,7 +55,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 1.6
-  hardness: 80-120 Barcol (scale 934-1)
+  hardness: 100Barcol
   hardnessNumeric: 100.0
   hardnessUnit: Barcol
   hardnessMin: 1 Mohs
@@ -76,11 +78,7 @@ properties:
   laserType: Pulsed fiber laser
   wavelength: 1064nm
   fluenceRange: "1.0–10 J/cm²"
-  chemicalFormula: "(C7H6O2·C6H6O)n + filler/reinforcement"
-  thermalBehaviorType: decomposition
-  decompositionPoint: "300°C"
-  decompositionPointNumeric: 300
-  decompositionPointUnit: "°C"
+  chemicalFormula: "(C7H6O2·C6H6O)n + filler/reinforcement"  decompositionPointUnit: "°C"
 composition:
 - 'Phenolic resin matrix: 40-60%'
 - 'Glass fiber reinforcement: 30-50%'
@@ -148,7 +146,7 @@ compatibility:
 - Glass fiber reinforced composites
 - Carbon fiber reinforced polymers (with parameter adjustment)
 - Thermoset polymer matrices
-regulatoryStandards: ISO 14001:2015, ANSI Z136.1, IEC 60825-1, OSHA 29 CFR 1910.1096
+regulatoryStandards: "ISO 14001: 2015, ANSI Z136.1, IEC 60825-1, OSHA 29 CFR 1910.1096"
 author: Todd Dunning
 author_object:
   id: 4
@@ -199,7 +197,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: United States (California)
   author_id: 4
-  verification_timestamp: '2025-09-20T20:45:22Z'
+  verification_timestamp: '2025-09-20T20: 45: 22Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -218,3 +216,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 8.8
 surface_roughness_after: 2.4
+---

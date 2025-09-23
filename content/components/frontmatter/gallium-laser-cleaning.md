@@ -13,6 +13,8 @@ chemicalProperties:
   materialType: metal
 properties:
   density: "5.91 g/cm³ at 29.6°C"
+  thermalDestructionPoint: "29°C"
+  thermalDestructionType: melting
   densityNumeric: 5.91
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -22,7 +24,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 97.9
-  meltingPoint: "29°C"
   meltingPointNumeric: 29
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -76,7 +77,6 @@ properties:
   wavelength: 1064nm
   fluenceRange: "1.0–10 J/cm²"
   chemicalFormula: Ga
-  thermalBehaviorType: melting
 composition:
 - Gallium-69 (60.11%)
 - Gallium-71 (39.89%)
@@ -192,7 +192,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Indonesia
   author_id: 3
-  verification_timestamp: '2025-09-20T21:12:18Z'
+  verification_timestamp: '2025-09-20T21: 12: 18Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -211,3 +211,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 3.5
 surface_roughness_after: 0.8
+---

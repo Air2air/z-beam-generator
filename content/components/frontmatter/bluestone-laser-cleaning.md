@@ -15,7 +15,9 @@ chemicalProperties:
   formula: "CaCO₃ (primary), with FeS₂, SiO₂, Al₂O₃ impurities"
   materialType: sedimentary rock
 properties:
-  density: "2.6-2.8 g/cm³ (varies with mineral composition)"
+  density: 2.7g/cm³
+  thermalDestructionPoint: "825°C"
+  thermalDestructionType: melting
   densityNumeric: 2.7
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -25,7 +27,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 21.4
-  meltingPoint: "825°C"
   meltingPointNumeric: 825.0
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -35,7 +36,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "2.5-3.0 W/m·K (at 20°C)"
+  thermalConductivity: 2.8W/m·K
   thermalConductivityNumeric: 2.75
   thermalConductivityUnit: "W/m·K"
   thermalConductivityMin: "0.5 W/m·K"
@@ -45,7 +46,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 1.1
-  tensileStrength: 8-15 MPa (varies with bedding plane orientation)
+  tensileStrength: 11.5MPa
   tensileStrengthNumeric: 11.5
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -55,7 +56,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 0.0
-  hardness: 3-4 Mohs (calcite component)
+  hardness: 3.5Mohs
   hardnessNumeric: 3.5
   hardnessUnit: Mohs
   hardnessMin: 1 Mohs
@@ -79,7 +80,6 @@ properties:
   wavelength: 1064nm
   fluenceRange: "0.5-3.0 J/cm²"
   chemicalFormula: "CaCO₃ (calcium carbonate)"
-  thermalBehaviorType: melting
 composition:
 - "Calcium carbonate (CaCO₃): 85-95%"
 - "Quartz (SiO₂): 3-8%"
@@ -146,8 +146,8 @@ applications:
 compatibility:
 - Marble and limestone (similar calcium carbonate composition)
 - Sandstone (compatible laser parameters for silicate-based stones)
-regulatoryStandards: EN 15898:2019 (Conservation of cultural heritage - Main general
-  terms and definitions), EN 15886:2010 (Conservation of cultural property - Test
+regulatoryStandards: "EN 15898: 2019 (Conservation of cultural heritage - Main general"
+  terms and definitions), EN 15886: 2010 (Conservation of cultural property - Test
   methods - Color measurement of surfaces)
 author: Alessandro Moretti
 author_object:
@@ -198,7 +198,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Italy
   author_id: 2
-  verification_timestamp: '2025-09-20T21:40:56Z'
+  verification_timestamp: '2025-09-20T21: 40: 56Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -217,3 +217,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 24.8
 surface_roughness_after: 8.3
+---

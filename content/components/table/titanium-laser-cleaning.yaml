@@ -15,7 +15,7 @@ materialTables:
       unit: '-'
       category: Classification
     - property: Composition
-      value: Titanium (99.0-99.5%) - Grade 1 commercial pure, Oxygen (0.18%), Iron (0.20%), Carbon (0.08%), Nitrogen (0.03%) - typical impurities
+      value: Titanium (Ti) 99.6%, Trace elements (Si, Fe, Na, Mg)
       unit: '-'
       category: Composition
   - header: '## Physical & Mechanical Properties'
@@ -43,17 +43,17 @@ materialTables:
       percentile: 100.0
       numeric: 1927.0
     - property: Hardness
-      value: 70-74 HRB (commercial pure), 36-40 HRC (Ti-6Al-4V)
-      unit: HRB
-      min: '1.0'
-      max: '10.0'
+      value: 150-250 HB
+      unit: HB
+      min: '500.0'
+      max: '2500.0'
       percentile: 100.0
-      numeric: 72.0
+      numeric: 200.0
     - property: Young's Modulus
-      value: 110 GPa
+      value: 200 GPa
       unit: GPa
       percentile: 100.0
-      numeric: 110.0
+      numeric: 200.0
   - header: '## Laser Processing Parameters'
     rows:
     - property: Power Range
@@ -112,32 +112,40 @@ materialTables:
       category: Application
   - header: '## Performance Metrics'
     rows:
-    - property: Surface roughness Ra < 0.8 μm
-      value: Achievable surface finish after laser cleaning with 1064nm pulsed laser
+    - property: Surface Cleanliness Level
+      value: Achieves ISO 14644-1 Class 7 cleanliness standard
       unit: '-'
       category: Performance
-    - property: Contamination removal rate of 2-5 m²/hour
-      value: Processing speed for oxide layer removal from titanium surfaces
+    - property: Material Removal Precision
+      value: ±5μm accuracy with no substrate damage
+      unit: '-'
+      category: Performance
+    - property: Processing Speed
+      value: 2-5 m²/hour cleaning rate depending on contamination level
       unit: '-'
       category: Performance
   - header: '## Environmental Impact'
     rows:
-    - property: Zero chemical waste generation
-      value: Eliminates 100% of chemical solvents and abrasive media typically used in traditional titanium cleaning processes
+    - property: Chemical Solvent Elimination
+      value: Reduces chemical usage by 100% compared to traditional solvent cleaning methods
       unit: '-'
       category: Environmental
-    - property: 97% reduction in water consumption
-      value: Dry process eliminates water usage compared to chemical rinsing and abrasive water jet methods
+    - property: Water Conservation
+      value: Saves approximately 5000 liters of water per month in industrial applications
+      unit: '-'
+      category: Environmental
+    - property: Energy Efficiency
+      value: Consumes 40% less energy than thermal cleaning processes
       unit: '-'
       category: Environmental
   - header: '## Compatibility & Standards'
     rows:
     - property: Material Compatibility
-      value: Stainless steel 316L (similar thermal processing parameters), Aluminum alloys (complementary aerospace applications), Nickel-based superalloys (similar high-temperature applications)
+      value: Stainless Steel, Titanium Alloys, Nickel-based Superalloys
       unit: '-'
       category: Compatibility
     - property: Regulatory Standards
-      value: ISO 9013:2017 (Thermal cutting classification), ASTM B265 (Titanium Strip, Sheet, and Plate), FDA 21 CFR 872.3640 (Medical Device Cleaning)
+      value: ISO 18562, ASTM F2100, IEC 60601-1
       unit: '-'
       category: Compliance
 renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. Pure data structure optimized for performance.'

@@ -16,7 +16,9 @@ chemicalProperties:
   formula: "SiO₂ (60-70%) + Polymer Matrix (30-40%)"
   materialType: composite
 properties:
-  density: "1.8-2.5 g/cm³"
+  density: 2.1g/cm³"
+  thermalDestructionPoint: "1200°C"
+  thermalDestructionType: melting
   densityNumeric: 2.15
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -33,7 +35,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "0.3-0.5 W/m·K"
+  thermalConductivity: 0.4W/m·K"
   thermalConductivityNumeric: 0.4
   thermalConductivityUnit: "W/m·K"
   thermalConductivityMin: "0.5 W/m·K"
@@ -43,7 +45,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.0
-  tensileStrength: 310-690 MPa (E-glass)
+  tensileStrength: 500MPa
   tensileStrengthNumeric: 500.0
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -53,7 +55,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 47.4
-  hardness: 5-6 Mohs (glass fibers)
+  hardness: 5.5Mohs
   hardnessNumeric: 5.5
   hardnessUnit: Mohs
   hardnessMin: 1 Mohs
@@ -76,11 +78,7 @@ properties:
   laserType: Pulsed fiber laser
   wavelength: 1064nm
   fluenceRange: "0.5-3 J/cm²"
-  chemicalFormula: "SiO₂ (primary constituent)"
-  thermalBehaviorType: decomposition
-  decompositionPoint: "1200°C"
-  decompositionPointNumeric: 1200
-  decompositionPointUnit: "°C"
+  chemicalFormula: "SiO₂ (primary constituent)"  decompositionPointUnit: "°C"
 composition:
 - "Silica glass (SiO₂) 60-70%"
 - Epoxy/Polyester resin 30-40%
@@ -176,8 +174,8 @@ environmentalImpact:
     stripping methods
 outcomes:
 - result: Surface contamination removal efficiency
-  metric: '>99% removal of paints, coatings, and contaminants with <0.1% substrate
-    damage'
+  metric: ">99% removal of paints, coatings, and contaminants with <0.1% substrate
+    damage"
 - result: Processing speed
   metric: "0.5-2.0 m²/hour depending on contamination type and thickness"
 technicalSpecifications:
@@ -198,7 +196,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Indonesia
   author_id: 3
-  verification_timestamp: '2025-09-20T20:43:35Z'
+  verification_timestamp: '2025-09-20T20: 43: 35Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -217,3 +215,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 12.8
 surface_roughness_after: 3.5
+---

@@ -15,7 +15,9 @@ chemicalProperties:
   formula: Variable organic composition (primarily cellulose, lignin, hemicellulose)
   materialType: wood
 properties:
-  density: "380-450 kg/m³ (coast redwood)"
+  density: 415kg/m³
+  thermalDestructionPoint: "300°C"
+  thermalDestructionType: decomposition
   densityNumeric: 415.0
   densityUnit: "kg/m³"
   densityMin: "1.8 g/cm³"
@@ -32,7 +34,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "0.12-0.15 W/(m·K) (radial direction)"
+  thermalConductivity: 0.1W/(m·K)
   thermalConductivityNumeric: 0.14
   thermalConductivityUnit: W/
   thermalConductivityMin: "0.5 W/m·K"
@@ -42,7 +44,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.0
-  tensileStrength: 70-90 MPa (parallel to grain)
+  tensileStrength: 80MPa
   tensileStrengthNumeric: 80.0
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -52,7 +54,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 3.2
-  hardness: 2.1-2.5 kN (Janka hardness scale)
+  hardness: 2.3kN
   hardnessNumeric: 2.3
   hardnessUnit: kN
   hardnessMin: 1 Mohs
@@ -75,11 +77,7 @@ properties:
   laserType: Pulsed fiber laser
   wavelength: 1064nm
   fluenceRange: "1.0–10 J/cm²"
-  chemicalFormula: "Complex organic polymer (C₆H₁₀O₅)\u2099 cellulose base"
-  thermalBehaviorType: decomposition
-  decompositionPoint: "300°C"
-  decompositionPointNumeric: 300
-  decompositionPointUnit: "°C"
+  chemicalFormula: "Complex organic polymer (C₆H₁₀O₅)\u2099 cellulose base"  decompositionPointUnit: "°C"
 composition:
 - 'Cellulose: 40-45%'
 - 'Lignin: 26-34%'
@@ -174,7 +172,7 @@ environmentalImpact:
     equivalent surface area
 outcomes:
 - result: Surface contamination removal efficiency
-  metric: '>99% removal of biological growth and surface contaminants'
+  metric: ">99% removal of biological growth and surface contaminants"
 - result: Material preservation
   metric: <0.1 mm material loss during cleaning process
 technicalSpecifications:
@@ -195,7 +193,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: United States (California)
   author_id: 4
-  verification_timestamp: '2025-09-20T22:08:42Z'
+  verification_timestamp: '2025-09-20T22: 08: 42Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -214,3 +212,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 48.5
 surface_roughness_after: 19.8
+---

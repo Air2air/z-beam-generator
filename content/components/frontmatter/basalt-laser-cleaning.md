@@ -16,7 +16,9 @@ chemicalProperties:
   formula: Complex silicate (See composition)
   materialType: Extrusive igneous rock
 properties:
-  density: "2.8–3.0 g/cm³"
+  density: "2.9 g/cm³"
+  thermalDestructionPoint: "1250°C"
+  thermalDestructionType: melting
   densityNumeric: 2.8
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -26,7 +28,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 23.8
-  meltingPoint: "1250°C"
   meltingPointNumeric: 1250
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -36,7 +37,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "1.3–1.8 W/(m·K)"
+  thermalConductivity: 1.6W/(m·K)"
   thermalConductivityNumeric: 1.3
   thermalConductivityUnit: W/
   thermalConductivityMin: "0.5 W/m·K"
@@ -46,7 +47,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.4
-  tensileStrength: "10–30 MPa"
+  tensileStrength: 20MPa"
   tensileStrengthNumeric: 10.0
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -56,7 +57,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 0.0
-  hardness: "5–6 (Mohs scale)"
+  hardness: 5.5(Mohs
   hardnessNumeric: 5.0
   hardnessUnit: Mohs
   hardnessMin: 1 Mohs
@@ -80,7 +81,6 @@ properties:
   wavelength: 1064nm
   fluenceRange: "1.0–10 J/cm²"
   chemicalFormula: Complex silicate (No single formula)
-  thermalBehaviorType: melting
 composition:
 - "45-55% SiO₂ (Silica)"
 - "10-15% Al₂O₃ (Alumina)"
@@ -144,6 +144,7 @@ machineSettings:
   fluenceRangeMax: "50J/cm²"
   fluenceRangeMaxNumeric: 50.0
   fluenceRangeMaxUnit: "J/cm²"
+---
 applications:
 - 'Construction: Cleaning and restoration of basalt facades and sculptures'
 - 'Manufacturing: Precision cleaning of basalt surfaces in industrial equipment'
@@ -178,7 +179,7 @@ environmentalImpact:
   description: Compared to mechanical methods like sandblasting, laser cleaning produces
     minimal airborne particles
 outcomes:
-- result: '>99% contaminant removal efficiency'
+- result: ">99% contaminant removal efficiency"
   metric: Measured via spectrophotometry and SEM-EDS analysis
 - result: Sub-micron precision cleaning
   metric: "Achieves 10-50 μm feature resolution without substrate damage"

@@ -1,22 +1,19 @@
 ---
 name: Steel
 category: metal
-title: Steel Laser Cleaning
-headline: Comprehensive technical guide for laser cleaning metal steel
-description: Steel laser cleaning utilizes high-intensity pulsed laser radiation at
-  1064nm wavelength to selectively remove surface contaminants through rapid thermal
-  expansion and ablation processes. The process effectively removes rust, paint, oxides,
-  oils, and other surface contaminants while preserving the underlying steel substrate
-  due to differential absorption characteristics.
+title: Laser Cleaning Steel
+headline: Comprehensive technical guide for laser cleaning metal Steel
+description: Technical overview of Steel, Fe, for laser cleaning applications, including
+  optimal 1064nm wavelength interaction, and industrial applications in surface preparation.
 keywords: steel, steel metal, laser ablation, laser cleaning, non-contact cleaning,
   pulsed fiber laser, surface contamination removal, industrial laser parameters,
   thermal processing, surface restoration
 chemicalProperties:
   symbol: Fe
-  formula: Fe-C
+  formula: Fe
   materialType: metal
 properties:
-  density: "7.85 g/cm³ (for carbon steel)"
+  density: "7.85 g/cm³"
   densityNumeric: 7.85
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -26,18 +23,21 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 100.0
-  meltingPoint: "1510°C"
-  meltingPointNumeric: 1510
+  meltingPointNumeric: 1450.0
   meltingPointUnit: "°C"
-  meltingPointMin: "1200°C"
-  meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "°C"
-  meltingPointMax: "2800°C"
-  meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "°C"
-  meltingPercentile: 15.0
-  thermalConductivity: "45-65 W/m·K (for carbon steel at 20°C)"
-  thermalConductivityNumeric: 55.0
+
+  thermalDestructionPoint: "1450.0°C"
+
+  thermalDestructionType: "melting"
+  meltingMin: "1200°C"
+  meltingMinNumeric: null
+  meltingMinUnit: null
+  meltingMax: "2800°C"
+  meltingMaxNumeric: null
+  meltingMaxUnit: null
+  meltingPercentile: 15.6
+  thermalConductivity: "50.2 W/m·K"
+  thermalConductivityNumeric: 50.2
   thermalConductivityUnit: "W/m·K"
   thermalConductivityMin: "0.5 W/m·K"
   thermalConductivityMinNumeric: 0.5
@@ -45,10 +45,9 @@ properties:
   thermalConductivityMax: "200 W/m·K"
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
-  thermalPercentile: 27.3
-  tensileStrength: 400-550 MPa (for structural steel), up to 2000 MPa (for high-strength
-    alloys)
-  tensileStrengthNumeric: 475.0
+  thermalPercentile: 24.9
+  tensileStrength: 500MPa
+  tensileStrengthNumeric: 500.0
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
   tensileStrengthMinNumeric: 50.0
@@ -56,18 +55,18 @@ properties:
   tensileStrengthMax: 1000 MPa
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
-  tensilePercentile: 44.7
-  hardness: 120-250 HB (Brinell hardness for structural steel)
-  hardnessNumeric: 185.0
+  tensilePercentile: 47.4
+  hardness: 200HB
+  hardnessNumeric: 200.0
   hardnessUnit: HB
-  hardnessMin: 1 Mohs
-  hardnessMinNumeric: 1.0
-  hardnessMinUnit: Mohs
-  hardnessMax: 10 Mohs
-  hardnessMaxNumeric: 10.0
-  hardnessMaxUnit: Mohs
+  hardnessMin: 500 HV
+  hardnessMinNumeric: 500.0
+  hardnessMinUnit: HV
+  hardnessMax: 2500 HV
+  hardnessMaxNumeric: 2500.0
+  hardnessMaxUnit: HV
   hardnessPercentile: 100.0
-  youngsModulus: 200 GPa (typical for most steel grades)
+  youngsModulus: 200 GPa
   youngsModulusNumeric: 200.0
   youngsModulusUnit: GPa
   youngsModulusMin: 20 GPa
@@ -79,16 +78,23 @@ properties:
   modulusPercentile: 100.0
   laserType: Fiber laser
   wavelength: 1064nm
-  fluenceRange: "1.0–10 J/cm²"
+  fluenceRange: "1.0\u201310 J/cm²"
   chemicalFormula: Fe-C
-  thermalBehaviorType: melting
+  meltingPointMin: "1200°C"
+  meltingPointMax: "2800°C"
+  meltingPointMinNumeric: 1200.0
+  meltingPointMinUnit: "°C"
+  meltingPointMaxNumeric: 2800.0
+  meltingPointMaxUnit: "°C"
+  thermalMin: "0.5 W/m·K"
+  thermalMax: "200 W/m·K"
+  tensileMin: 50 MPa
+  tensileMax: 1000 MPa
+  modulusMin: 150 GPa
+  modulusMax: 400 GPa
 composition:
-- 'Iron (Fe): 97-99.5% (base material)'
-- 'Carbon (C): 0.02-2.1% (primary alloying element)'
-- 'Manganese (Mn): 0.3-2.0%'
-- 'Silicon (Si): 0.15-0.35%'
-- 'Phosphorus (P): <0.05%'
-- 'Sulfur (S): <0.05%'
+- Steel (Fe) 99.6%
+- Trace elements (Si, Fe, Na, Mg)
 machineSettings:
   powerRange: 50-200W
   powerRangeNumeric: 125.0
@@ -135,7 +141,7 @@ machineSettings:
   repetitionRateMax: 1000kHz
   repetitionRateMaxNumeric: 1000.0
   repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0–10 J/cm²"
+  fluenceRange: "1.0\u201310 J/cm²"
   fluenceRangeNumeric: 1.0
   fluenceRangeUnit: "J/cm²"
   fluenceRangeMin: "0.1J/cm²"
@@ -148,67 +154,50 @@ applications:
 - 'Automotive: Rust and paint removal from steel car bodies'
 - 'Manufacturing: Removal of oil, grease, and oxide layers from steel surfaces'
 compatibility:
-- Stainless steel (similar processing parameters)
-- Cast iron (compatible with adjusted parameters)
-- Carbon steel alloys (various grades)
-regulatoryStandards: 'ISO 11553: Safety of machinery - Laser processing machines,
-  IEC 60825: Laser product safety, OSHA 29 CFR 1910.97: Laser hazard standard'
-author: Ikmanda Roswati
+- Stainless Steel
+- Titanium Alloys
+- Nickel-based Superalloys
+regulatoryStandards: ISO 18562, ASTM F2100, IEC 60601-1
+author: Yi-Chun Lin
 author_object:
-  id: 3
-  name: Ikmanda Roswati
-  sex: m
-  title: Ph.D.
-  country: Indonesia
-  expertise: Ultrafast Laser Physics and Material Interactions
-  image: /images/author/ikmanda-roswati.jpg
+  id: 1
+  name: Yi-Chun Lin
+  country: Taiwan
 images:
   hero:
     alt: Steel surface undergoing laser cleaning showing precise contamination removal
     url: /images/steel-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Steel surface after laser cleaning showing detailed surface
-      structure
+    alt: Microscopic view of Steel surface after laser treatment showing preserved
+      microstructure
     url: /images/steel-laser-cleaning-micro.jpg
 environmentalImpact:
-- benefit: Zero chemical waste generation
-  description: Eliminates 100% of chemical solvents and abrasive media typically used
-    in traditional steel cleaning methods
-- benefit: Reduced energy consumption
-  description: 60-80% lower energy consumption compared to abrasive blasting or chemical
-    cleaning methods for steel surfaces
+- benefit: Chemical Solvent Elimination
+  description: Reduces chemical usage by 100% compared to traditional solvent cleaning
+    methods
+- benefit: Water Conservation
+  description: Saves approximately 5000 liters of water per month in industrial applications
+- benefit: Energy Efficiency
+  description: Consumes 40% less energy than thermal cleaning processes
 outcomes:
-- result: Surface cleanliness to SA 2.5 standard
-  metric: Achieves >99% contamination removal without substrate damage
-- result: "Processing speeds up to 5 m²/hour"
-  metric: Efficient removal of rust, paint, and oxides from steel surfaces
+- result: Surface Cleanliness Level
+  metric: Achieves ISO 14644-1 Class 7 cleanliness standard
+- result: Material Removal Precision
+  metric: "\xB15\u03BCm accuracy with no substrate damage"
+- result: Processing Speed
+  metric: "2-5 m²/hour cleaning rate depending on contamination level"
 technicalSpecifications:
-  powerRange: 50-1000W (typically 100-500W for most industrial applications)
-  pulseDuration: 10-200ns (nanosecond pulsed fiber lasers most common)
-  wavelength: 1064nm (primary), 532nm (optional for specific applications)
-  spotSize: 0.1-1.0mm (adjustable based on contamination type and removal requirements)
-  repetitionRate: 20-100kHz (standard for industrial fiber laser systems)
-  fluenceRange: "1.0–10 J/cm² (depending on surface contamination and steel grade)"
-  scanningSpeed: 100-5000 mm/s (optimized for specific removal requirements)
-  beamProfile: Top-hat or Gaussian (depending on application requirements)
-  beamProfileOptions: Top-hat, Gaussian, Flat-top, Multi-mode
-  safetyClass: Laser Class 4 (requires full engineering controls and personal protective
-    equipment)
-prompt_chain_verification:
-  base_config_loaded: true
-  persona_config_loaded: true
-  formatting_config_loaded: true
-  ai_detection_config_loaded: true
-  persona_country: Indonesia
-  author_id: 3
-  verification_timestamp: '2025-09-20T21:28:50Z'
-  prompt_components_integrated: 4
-  human_authenticity_focus: true
-  cultural_adaptation_applied: true
+  powerRange: 50-200W
+  pulseDuration: 20-100ns
+  wavelength: 1064nm (primary), 532nm (optional)
+  spotSize: 0.2-1.5mm
+  repetitionRate: 20-100kHz
+  fluenceRange: "1.0\u20134.5 J/cm²"
+  safetyClass: Class 4 (requires full enclosure)
 chemicalFormula: Fe-C
 symbol: Fe
 laser_parameters:
-  fluence_threshold: "1.0–10 J/cm²"
+  fluence_threshold: "1.0\u201310 J/cm²"
   pulse_duration: 10-200ns
   wavelength_optimal: 1064nm
   power_range: 50-200W
@@ -220,5 +209,13 @@ tags:
 - Manufacturing
 complexity: low
 difficultyScore: 2
-surface_roughness_before: 15.8
-surface_roughness_after: 1.8
+---
+
+# Version Information
+# Generated: 2025-09-22T14:15:12.545394
+# Material: Steel
+# Component: frontmatter
+# Generator: Z-Beam v2.1.0
+# Author: AI Assistant
+# Platform: Darwin (3.12.4)
+# File: content/components/frontmatter/steel-laser-cleaning.md

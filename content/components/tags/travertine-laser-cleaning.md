@@ -1,36 +1,36 @@
 tags:
+  - yi-chun-lin
+  - masonry
+  - heritage
   - construction
-  - architecture
-  - interior-design
   - restoration
-  - polishing
-  - honing
-  - filling
-  - sealing
+  - decontamination
+  - surface-preparation
+  - conservation
 material: "travertine"
 count: 8
 categories:
   industry:
   process:
     - restoration
-    - polishing
+    - decontamination
   author:
-    - interior-design
+    - surface-preparation
   other:
+    - yi-chun-lin
+    - masonry
+    - heritage
     - construction
-    - architecture
-    - honing
-    - filling
-    - sealing
+    - conservation
 metadata:
-  generated: "2025-09-17T12:06:20.845728"
+  generated: "2025-09-22T15:57:40.044998"
   format: "yaml"
   version: "2.0"
 
 ---
 Material: "travertine"
 Component: tags
-Generated: 2025-09-17T12:06:20.845758
-Generator: Z-Beam v1.0.0
+Generated: 2025-09-22T15:57:40.046172
+Generator: Z-Beam v1.0.0 (Frontmatter-Based)
 Format: YAML v2.0
 ---

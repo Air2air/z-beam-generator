@@ -1,36 +1,36 @@
 tags:
-  - aerospace
-  - marine
-  - medical
-  - decontamination
+  - ikmanda-roswati
+  - woodworking
   - restoration
-  - polishing
-  - texturing
-  - etching
+  - marine
+  - decontamination
+  - surface-preparation
+  - refinishing
+  - manufacturing
 material: "teak"
 count: 8
 categories:
   industry:
-    - aerospace
     - marine
-    - medical
+    - manufacturing
   process:
-    - decontamination
     - restoration
-    - polishing
-    - texturing
-    - etching
+    - decontamination
   author:
+    - ikmanda-roswati
+    - surface-preparation
   other:
+    - woodworking
+    - refinishing
 metadata:
-  generated: "2025-09-17T12:06:00.072493"
+  generated: "2025-09-22T15:57:40.313425"
   format: "yaml"
   version: "2.0"
 
 ---
 Material: "teak"
 Component: tags
-Generated: 2025-09-17T12:06:00.072512
-Generator: Z-Beam v1.0.0
+Generated: 2025-09-22T15:57:40.315102
+Generator: Z-Beam v1.0.0 (Frontmatter-Based)
 Format: YAML v2.0
 ---

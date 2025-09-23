@@ -14,7 +14,9 @@ chemicalProperties:
   formula: SiC (matrix) + C or SiC (fibers)
   materialType: composite
 properties:
-  density: "2.7-3.2 g/cm³ (SiC/SiC)"
+  density: 3.0g/cm³
+  thermalDestructionPoint: "2700°C"
+  thermalDestructionType: melting
   densityNumeric: 2.95
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -24,7 +26,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 27.4
-  meltingPoint: "2700°C"
   meltingPointNumeric: 2700.0
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -34,7 +35,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 93.8
-  thermalConductivity: "15-25 W/m·K (SiC/SiC at room temperature)"
+  thermalConductivity: 20W/m·K
   thermalConductivityNumeric: 20.0
   thermalConductivityUnit: "W/m·K"
   thermalConductivityMin: "0.5 W/m·K"
@@ -44,7 +45,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 9.8
-  tensileStrength: 200-400 MPa (SiC/SiC)
+  tensileStrength: 300MPa
   tensileStrengthNumeric: 300.0
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -54,7 +55,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 26.3
-  hardness: 2500-2800 HV (SiC matrix)
+  hardness: 2650HV
   hardnessNumeric: 2650.0
   hardnessUnit: HV
   hardnessMin: 1 Mohs
@@ -173,8 +174,8 @@ environmentalImpact:
   description: "Laser cleaning consumes 60-70% less energy than thermal cleaning methods (furnace heating to 800-1000°C) for CMC component refurbishment"
 outcomes:
 - result: Surface contamination removal efficiency
-  metric: '>99% removal of oxides, carbon deposits, and surface contaminants with
-    <0.1% substrate damage'
+  metric: ">99% removal of oxides, carbon deposits, and surface contaminants with
+    <0.1% substrate damage"
 - result: Processing speed
   metric: "100-500 cm²/hour cleaning rate with 50-100 μm precision for complex CMC geometries"
 technicalSpecifications:
@@ -195,7 +196,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: United States (California)
   author_id: 4
-  verification_timestamp: '2025-09-20T20:52:18Z'
+  verification_timestamp: '2025-09-20T20: 52: 18Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -214,3 +215,4 @@ complexity: high
 difficultyScore: 5
 surface_roughness_before: 6.2
 surface_roughness_after: 1.8
+---

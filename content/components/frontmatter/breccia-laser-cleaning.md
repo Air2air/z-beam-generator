@@ -17,7 +17,9 @@ chemicalProperties:
   formula: Variable (composite rock)
   materialType: sedimentary rock
 properties:
-  density: "2.5-2.8 g/cm³ (varies with composition)"
+  density: 2.6g/cm³
+  thermalDestructionPoint: "1400°C"
+  thermalDestructionType: melting
   densityNumeric: 2.65
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -27,7 +29,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 20.2
-  meltingPoint: "1400°C"
   meltingPointNumeric: 1400
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -37,7 +38,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 6.2
-  thermalConductivity: "2.0-3.5 W/(m·K)"
+  thermalConductivity: 2.8W/(m·K)"
   thermalConductivityNumeric: 2.75
   thermalConductivityUnit: W/
   thermalConductivityMin: "0.5 W/m·K"
@@ -47,7 +48,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 1.1
-  tensileStrength: 4-10 MPa
+  tensileStrength: 7MPa
   tensileStrengthNumeric: 7.0
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -57,7 +58,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 0.0
-  hardness: 3-6 Mohs (depending on clast composition)
+  hardness: 4.5Mohs
   hardnessNumeric: 4.5
   hardnessUnit: Mohs
   hardnessMin: 1 Mohs
@@ -81,7 +82,6 @@ properties:
   wavelength: 1064nm
   fluenceRange: "1.0-10 J/cm²"
   chemicalFormula: "Variable composite (typically CaCO₃, SiO₂, various silicates)"
-  thermalBehaviorType: melting
 composition:
 - 'Angular rock fragments (clasts): 50-70% (limestone, chert, quartzite, other sedimentary
   rocks)'
@@ -147,8 +147,8 @@ applications:
 compatibility:
 - Compatible with most carbonate-based stones (limestone, marble)
 - Similar processing parameters to other porous sedimentary stones
-regulatoryStandards: EN 15898:2019 (Conservation of cultural heritage - Main general
-  terms and definitions), EN 17138:2018 (Conservation of cultural heritage - Methods
+regulatoryStandards: "EN 15898: 2019 (Conservation of cultural heritage - Main general"
+  terms and definitions), EN 17138: 2018 (Conservation of cultural heritage - Methods
   and materials for cleaning porous inorganic materials)
 author: Yi-Chun Lin
 author_object:
@@ -177,8 +177,8 @@ environmentalImpact:
     methods, saving approximately 50-200 liters per square meter of treated surface
 outcomes:
 - result: Selective contaminant removal
-  metric: '>95% contaminant removal with <2% substrate loss, preserving original surface
-    morphology and patina'
+  metric: ">95% contaminant removal with <2% substrate loss, preserving original surface
+    morphology and patina"
 - result: Non-contact processing
   metric: "Zero mechanical damage to fragile surfaces, achieving surface roughness preservation within ±5% of original state"
 technicalSpecifications:
@@ -201,7 +201,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Taiwan
   author_id: 1
-  verification_timestamp: '2025-09-20T21:41:52Z'
+  verification_timestamp: '2025-09-20T21: 41: 52Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -220,3 +220,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 26.2
 surface_roughness_after: 9.1
+---

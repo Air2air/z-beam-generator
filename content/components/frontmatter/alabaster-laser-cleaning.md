@@ -16,7 +16,9 @@ chemicalProperties:
   formula: "CaSO4·2H2O"
   materialType: stone
 properties:
-  density: "2.30-2.33 g/cm³"
+  density: 2.3g/cm³"
+  thermalDestructionPoint: "163°C"
+  thermalDestructionType: melting
   densityNumeric: 2.31
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -26,7 +28,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 12.1
-  meltingPoint: "163°C"
   meltingPointNumeric: 163
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -36,7 +37,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "1.26-1.33 W/(m·K)"
+  thermalConductivity: 1.3W/(m·K)"
   thermalConductivityNumeric: 1.29
   thermalConductivityUnit: W/
   thermalConductivityMin: "0.5 W/m·K"
@@ -46,7 +47,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.4
-  tensileStrength: 2-4 MPa
+  tensileStrength: 3MPa
   tensileStrengthNumeric: 3.0
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -56,7 +57,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 0.0
-  hardness: 1.5-2.0 Mohs
+  hardness: 1.8Mohs
   hardnessNumeric: 1.75
   hardnessUnit: Mohs
   hardnessMin: 1 Mohs
@@ -80,7 +81,6 @@ properties:
   wavelength: 1064nm
   fluenceRange: "0.5-5 J/cm²"
   chemicalFormula: "CaSO4·2H2O"
-  thermalBehaviorType: melting
 composition:
 - "Calcium sulfate dihydrate (CaSO4·2H2O): 90-99%"
 - 'Calcium carbonate (CaCO3): 0.5-5%'
@@ -147,8 +147,8 @@ compatibility:
 - Marble (calcium carbonate-based stones)
 - Limestone
 - Sandstone (with appropriate parameter adjustment)
-regulatoryStandards: EN 15898:2019 (Conservation of cultural heritage - Main general
-  terms and definitions), EN 15886:2010 (Conservation of cultural property - Test
+regulatoryStandards: "EN 15898: 2019 (Conservation of cultural heritage - Main general"
+  terms and definitions), EN 15886: 2010 (Conservation of cultural property - Test
   methods - Color measurement of surfaces)
 author: Yi-Chun Lin
 author_object:
@@ -199,7 +199,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Taiwan
   author_id: 1
-  verification_timestamp: '2025-09-20T21:39:10Z'
+  verification_timestamp: '2025-09-20T21: 39: 10Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -219,3 +219,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 15.2
 surface_roughness_after: 5.5
+---

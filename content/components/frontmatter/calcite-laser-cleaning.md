@@ -17,6 +17,8 @@ chemicalProperties:
   materialType: stone
 properties:
   density: "2.71 g/cm³"
+  thermalDestructionPoint: "1339°C"
+  thermalDestructionType: melting
   densityNumeric: 2.71
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -26,7 +28,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 21.7
-  meltingPoint: "1339°C"
   meltingPointNumeric: 1339.0
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -36,7 +37,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 8.7
-  thermalConductivity: "3.5-4.0 W/(m·K) at 20°C"
+  thermalConductivity: 3.8W/(m·K)
   thermalConductivityNumeric: 3.75
   thermalConductivityUnit: W/
   thermalConductivityMin: "0.5 W/m·K"
@@ -46,7 +47,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 1.6
-  tensileStrength: 10-30 MPa (varies with crystal structure and impurities)
+  tensileStrength: 20MPa
   tensileStrengthNumeric: 20.0
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -76,11 +77,10 @@ properties:
   youngsModulusMaxNumeric: 80.0
   youngsModulusMaxUnit: GPa
   modulusPercentile: 91.7
-  laserType: Pulsed Nd:YAG
+  laserType: "Pulsed Nd: YAG"
   wavelength: 1064nm
   fluenceRange: "1.0–10 J/cm²"
   chemicalFormula: CaCO3
-  thermalBehaviorType: melting
 composition:
 - 'Calcium carbonate (CaCO3): 95-99%'
 - 'Impurities (Mg, Fe, Sr, Mn, clay minerals): 1-5%'
@@ -180,9 +180,9 @@ outcomes:
 - result: Processing speed for monument restoration
   metric: "0.5-2.0 m²/hour cleaning rate depending on contamination thickness and laser parameters"
 technicalSpecifications:
-  powerRange: 50-200 W (average power for pulsed Nd:YAG systems)
+  powerRange: "50-200 W (average power for pulsed Nd: YAG systems)"
   pulseDuration: 10-50 ns
-  wavelength: 1064 nm (fundamental Nd:YAG), 532 nm (frequency-doubled for enhanced
+  wavelength: "1064 nm (fundamental Nd: YAG), 532 nm (frequency-doubled for enhanced"
     calcite absorption)
   spotSize: 0.1-1.0 mm
   repetitionRate: 20-100 kHz
@@ -199,7 +199,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: United States (California)
   author_id: 4
-  verification_timestamp: '2025-09-20T21:42:48Z'
+  verification_timestamp: '2025-09-20T21: 42: 48Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -211,7 +211,7 @@ laser_parameters:
   power_range: 50-200W
   repetition_rate: 20-100kHz
   spot_size: 0.1-1.0mm
-  laser_type: Pulsed Nd:YAG
+  laser_type: "Pulsed Nd: YAG"
 tags:
 - Construction
 - Restoration
@@ -219,3 +219,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 19.5
 surface_roughness_after: 6.8
+---

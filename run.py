@@ -743,7 +743,7 @@ def main():
                 
                 # Load frontmatter data for components that need it
                 frontmatter_data = None
-                if component_type in ['table', 'author', 'metatags', 'jsonld', 'caption', 'tags', 'settings']:
+                if component_type in ['table', 'author', 'metatags', 'jsonld', 'caption', 'tags', 'settings', 'propertiestable']:
                     # Try to load existing frontmatter
                     frontmatter_path = f"content/components/frontmatter/{args.material.lower().replace(' ', '-').replace('_', '-')}-laser-cleaning.md"
                     if os.path.exists(frontmatter_path):
@@ -865,7 +865,7 @@ def main():
                     try:
                         # Load frontmatter data for components that need it
                         frontmatter_data = None
-                        if component_type in ['table', 'author', 'metatags', 'jsonld', 'caption', 'tags', 'settings']:
+                        if component_type in ['table', 'author', 'metatags', 'jsonld', 'caption', 'tags', 'settings', 'propertiestable']:
                             # Try to load existing frontmatter
                             frontmatter_path = f"content/components/frontmatter/{material_name.lower().replace(' ', '-').replace('_', '-')}-laser-cleaning.md"
                             if os.path.exists(frontmatter_path):

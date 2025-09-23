@@ -15,7 +15,9 @@ chemicalProperties:
   formula: Complex organic polymer (primarily cellulose, hemicellulose, lignin)
   materialType: wood
 properties:
-  density: "620-750 kg/m³ (varies by species and moisture content)"
+  density: 685kg/m³
+  thermalDestructionPoint: "300°C"
+  thermalDestructionType: decomposition
   densityNumeric: 685.0
   densityUnit: "kg/m³"
   densityMin: "1.8 g/cm³"
@@ -32,7 +34,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "0.12-0.17 W/m·K (radial direction)"
+  thermalConductivity: 0.1W/m·K
   thermalConductivityNumeric: 0.15
   thermalConductivityUnit: "W/m·K"
   thermalConductivityMin: "0.5 W/m·K"
@@ -42,7 +44,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.0
-  tensileStrength: 70-120 MPa (parallel to grain)
+  tensileStrength: 95MPa
   tensileStrengthNumeric: 95.0
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -52,7 +54,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 4.7
-  hardness: 1450 N Janka hardness (Rockwell Hardness ~65-75 HRB)
+  hardness: 70HRB)
   hardnessNumeric: 70.0
   hardnessUnit: HRB
   hardnessMin: 1 Mohs
@@ -76,11 +78,7 @@ properties:
   wavelength: 1064nm
   fluenceRange: "0.5-3.0 J/cm²"
   chemicalFormula: Complex organic composition (C6H10O5)n cellulose, (C5H8O4)n hemicellulose,
-    (C9H10O2(OCH3)0.9-1.7)n lignin
-  thermalBehaviorType: decomposition
-  decompositionPoint: "300°C"
-  decompositionPointNumeric: 300
-  decompositionPointUnit: "°C"
+    (C9H10O2(OCH3)0.9-1.7)n lignin  decompositionPointUnit: "°C"
 composition:
 - 'Cellulose: 40-50%'
 - 'Hemicellulose: 20-30%'
@@ -196,7 +194,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Italy
   author_id: 2
-  verification_timestamp: '2025-09-20T22:03:09Z'
+  verification_timestamp: '2025-09-20T22: 03: 09Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -215,3 +213,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 38.8
 surface_roughness_after: 15.5
+---

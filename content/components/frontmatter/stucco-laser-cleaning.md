@@ -12,7 +12,9 @@ chemicalProperties:
   formula: "Primarily CaCO₃ (calcium carbonate) with cementitious binders"
   materialType: masonry
 properties:
-  density: "1.6-1.8 g/cm³"
+  density: 1.7g/cm³"
+  thermalDestructionPoint: "1339°C"
+  thermalDestructionType: decomposition
   densityNumeric: 1.7
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -22,7 +24,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 0.0
-  meltingPoint: "1339°C"
   meltingPointNumeric: 1339.0
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -32,7 +33,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 8.7
-  thermalConductivity: "0.8-1.2 W/m·K"
+  thermalConductivity: 1W/m·K"
   thermalConductivityNumeric: 1.0
   thermalConductivityUnit: "W/m·K"
   thermalConductivityMin: "0.5 W/m·K"
@@ -42,7 +43,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.3
-  tensileStrength: 0.7-1.2 MPa
+  tensileStrength: 0.9MPa
   tensileStrengthNumeric: 0.95
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -52,7 +53,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 0.0
-  hardness: 2-3 Mohs (calcite component)
+  hardness: 2.5Mohs
   hardnessNumeric: 2.5
   hardnessUnit: Mohs
   hardnessMin: 1 Mohs
@@ -76,7 +77,6 @@ properties:
   wavelength: 1064nm
   fluenceRange: "0.5–5 J/cm²"
   chemicalFormula: "CaCO₃ (primary), Ca(OH)₂, SiO₂, Al₂O₃"
-  thermalBehaviorType: melting
 composition:
 - "Calcium carbonate (CaCO₃): 70-80%"
 - 'Portland cement: 15-20%'
@@ -144,7 +144,7 @@ compatibility:
 - Historical masonry substrates
 - Concrete and cementitious materials
 - Natural stone with similar mineral composition
-regulatoryStandards: EN 15898:2019 (Conservation of cultural heritage), OSHA 1926.1153
+regulatoryStandards: "EN 15898: 2019 (Conservation of cultural heritage), OSHA 1926.1153"
   (Respirable crystalline silica)
 author: Yi-Chun Lin
 author_object:
@@ -172,8 +172,8 @@ environmentalImpact:
     microns compared to abrasive methods generating respirable crystalline silica
 outcomes:
 - result: Surface contamination removal efficiency
-  metric: '>98% removal of biological growth and pollutants while preserving 100%
-    of original stucco substrate'
+  metric: ">98% removal of biological growth and pollutants while preserving 100%
+    of original stucco substrate"
 - result: Processing speed
   metric: "2-5 m²/hour depending on contamination level with 50μm precision"
 technicalSpecifications:
@@ -194,7 +194,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Taiwan
   author_id: 1
-  verification_timestamp: '2025-09-20T21:04:46Z'
+  verification_timestamp: '2025-09-20T21: 04: 46Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -213,3 +213,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 32.8
 surface_roughness_after: 11.2
+---

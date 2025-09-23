@@ -15,6 +15,8 @@ chemicalProperties:
   materialType: metal
 properties:
   density: "21.02 g/cm³"
+  thermalDestructionPoint: "3186°C"
+  thermalDestructionType: melting
   densityNumeric: 21.02
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -24,7 +26,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 100.0
-  meltingPoint: "3186°C"
   meltingPointNumeric: 3186
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -78,7 +79,6 @@ properties:
   wavelength: 1064nm
   fluenceRange: "1.0-10 J/cm²"
   chemicalFormula: Re
-  thermalBehaviorType: melting
 composition:
 - 'Rhenium: 99.99% (high purity commercial grade)'
 - 'Trace elements: <0.01% (typically tungsten, molybdenum, iron)'
@@ -170,7 +170,7 @@ environmentalImpact:
     methods for Rhenium components
 outcomes:
 - result: Surface contamination removal efficiency
-  metric: '>99.9% removal of oxides and carbon deposits without substrate damage'
+  metric: ">99.9% removal of oxides and carbon deposits without substrate damage"
 - result: Processing precision
   metric: "Sub-micron layer control with ±5 μm positional accuracy"
 technicalSpecifications:
@@ -191,7 +191,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Taiwan
   author_id: 1
-  verification_timestamp: '2025-09-20T21:24:46Z'
+  verification_timestamp: '2025-09-20T21: 24: 46Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -210,3 +210,4 @@ complexity: high
 difficultyScore: 5
 surface_roughness_before: 5.5
 surface_roughness_after: 1.6
+---

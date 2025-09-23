@@ -12,7 +12,9 @@ chemicalProperties:
   formula: "Al2O3·2SiO2·2H2O"
   materialType: ceramic
 properties:
-  density: "2.3-2.5 g/cm³"
+  density: 2.4g/cm³"
+  thermalDestructionPoint: "1650°C"
+  thermalDestructionType: melting
   densityNumeric: 2.4
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -22,7 +24,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 14.3
-  meltingPoint: "1650°C"
   meltingPointNumeric: 1650
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -42,7 +43,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.5
-  tensileStrength: 30-50 MPa
+  tensileStrength: 40MPa
   tensileStrengthNumeric: 40.0
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -52,7 +53,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 0.0
-  hardness: 7 Mohs (600-800 HV)
+  hardness: 700HV)
   hardnessNumeric: 700.0
   hardnessUnit: HV
   hardnessMin: 1 Mohs
@@ -76,7 +77,6 @@ properties:
   wavelength: 1064nm
   fluenceRange: "0.5–5 J/cm²"
   chemicalFormula: "Al2O3·2SiO2·2H2O"
-  thermalBehaviorType: melting
 composition:
 - 'Kaolinite (Al2Si2O5(OH)4): 50-60%'
 - 'Quartz (SiO2): 20-30%'
@@ -174,7 +174,7 @@ environmentalImpact:
     200-500 liters per square meter of porcelain cleaned
 outcomes:
 - result: Surface contamination removal efficiency
-  metric: '>99% removal of organic contaminants without substrate damage'
+  metric: ">99% removal of organic contaminants without substrate damage"
 - result: Processing speed
   metric: "0.5-2.0 m²/hour depending on contamination level and laser parameters"
 technicalSpecifications:
@@ -195,7 +195,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Indonesia
   author_id: 3
-  verification_timestamp: '2025-09-20T20:38:16Z'
+  verification_timestamp: '2025-09-20T20: 38: 16Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -216,3 +216,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 8.5
 surface_roughness_after: 2.2
+---

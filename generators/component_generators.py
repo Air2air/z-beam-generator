@@ -305,10 +305,6 @@ class ComponentGeneratorFactory:
                 )
 
                 return FrontmatterComponentGenerator()
-            elif component_type == "bullets":
-                from components.bullets.generator import BulletsComponentGenerator
-
-                return BulletsComponentGenerator()
             elif component_type == "author":
                 from components.author.generator import AuthorComponentGenerator
 

@@ -1,36 +1,36 @@
 tags:
+  - todd-dunning
+  - metalworking
+  - industrial
   - aerospace
   - automotive
-  - medical
   - decontamination
+  - surface-preparation
   - passivation
-  - etching
-  - polishing
-  - texturing
 material: "vanadium"
 count: 8
 categories:
   industry:
+    - industrial
     - aerospace
     - automotive
-    - medical
   process:
     - decontamination
     - passivation
-    - etching
-    - polishing
-    - texturing
   author:
+    - todd-dunning
+    - surface-preparation
   other:
+    - metalworking
 metadata:
-  generated: "2025-09-17T12:06:35.346665"
+  generated: "2025-09-22T15:57:39.720079"
   format: "yaml"
   version: "2.0"
 
 ---
 Material: "vanadium"
 Component: tags
-Generated: 2025-09-17T12:06:35.346697
-Generator: Z-Beam v1.0.0
+Generated: 2025-09-22T15:57:39.721494
+Generator: Z-Beam v1.0.0 (Frontmatter-Based)
 Format: YAML v2.0
 ---

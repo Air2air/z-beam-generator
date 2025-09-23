@@ -16,7 +16,9 @@ chemicalProperties:
   formula: "C₆H₁₀O₅\u2099 (Cellulose primary component)"
   materialType: wood
 properties:
-  density: "640-700 kg/m³ (Juglans nigra)"
+  density: 670kg/m³
+  thermalDestructionPoint: "280°C"
+  thermalDestructionType: decomposition
   densityNumeric: 670.0
   densityUnit: "kg/m³"
   densityMin: "1.8 g/cm³"
@@ -33,7 +35,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "0.12-0.17 W/(m·K) (radial)"
+  thermalConductivity: 0.1W/(m·K)
   thermalConductivityNumeric: 0.15
   thermalConductivityUnit: W/
   thermalConductivityMin: "0.5 W/m·K"
@@ -78,11 +80,7 @@ properties:
   fluenceRange: "0.5–3.0 J/cm²"
   chemicalFormula: "Complex biological composite; primarily cellulose (C₆H₁"
     ₀O₅)\u2099, lignin [C₉H₁₀O₃(OCH₃)₀.₉\
-    \u208B₁.₇]\u2099, hemicellulose"
-  thermalBehaviorType: decomposition
-  decompositionPoint: "280°C"
-  decompositionPointNumeric: 280
-  decompositionPointUnit: "°C"
+    \u208B₁.₇]\u2099, hemicellulose"  decompositionPointUnit: "°C"
 composition:
 - 'Cellulose: 40-50%'
 - 'Lignin: 20-30%'
@@ -201,7 +199,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Taiwan
   author_id: 1
-  verification_timestamp: '2025-09-20T22:43:13Z'
+  verification_timestamp: '2025-09-20T22: 43: 13Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -220,3 +218,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 44.8
 surface_roughness_after: 17.8
+---

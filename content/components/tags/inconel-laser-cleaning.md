@@ -1,36 +1,36 @@
 tags:
+  - ikmanda-roswati
+  - metalworking
+  - industrial
   - aerospace
-  - automotive
-  - medical
+  - oil-and-gas
   - decontamination
+  - surface-preparation
   - passivation
-  - decoating
-  - restoration
-  - polishing
 material: "inconel"
 count: 8
 categories:
   industry:
+    - industrial
     - aerospace
-    - automotive
-    - medical
   process:
     - decontamination
     - passivation
-    - decoating
-    - restoration
-    - polishing
   author:
+    - ikmanda-roswati
+    - surface-preparation
   other:
+    - metalworking
+    - oil-and-gas
 metadata:
-  generated: "2025-09-17T12:01:26.262780"
+  generated: "2025-09-22T15:57:39.408679"
   format: "yaml"
   version: "2.0"
 
 ---
 Material: "inconel"
 Component: tags
-Generated: 2025-09-17T12:01:26.262809
-Generator: Z-Beam v1.0.0
+Generated: 2025-09-22T15:57:39.410058
+Generator: Z-Beam v1.0.0 (Frontmatter-Based)
 Format: YAML v2.0
 ---

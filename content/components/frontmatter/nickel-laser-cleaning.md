@@ -13,6 +13,8 @@ chemicalProperties:
   materialType: metal
 properties:
   density: "8.91 g/cm³"
+  thermalDestructionPoint: "1455°C"
+  thermalDestructionType: melting
   densityNumeric: 8.91
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -22,7 +24,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 100.0
-  meltingPoint: "1455°C"
   meltingPointNumeric: 1455.0
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -42,7 +43,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 45.3
-  tensileStrength: 667-1600 MPa
+  tensileStrength: 1133.5MPa
   tensileStrengthNumeric: 1133.5
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -52,7 +53,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 100.0
-  hardness: 80-150 HV (Vickers)
+  hardness: 115HV
   hardnessNumeric: 115.0
   hardnessUnit: HV
   hardnessMin: 1 Mohs
@@ -76,7 +77,6 @@ properties:
   wavelength: 1064nm
   fluenceRange: "0.5–5 J/cm²"
   chemicalFormula: Ni
-  thermalBehaviorType: melting
 composition:
 - 'Nickel (Ni): 99.9+% (commercially pure)'
 - 'Iron (Fe): <0.07%, Manganese (Mn): <0.35%, Copper (Cu): <0.25%, Carbon (C): <0.15%'
@@ -196,7 +196,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Indonesia
   author_id: 3
-  verification_timestamp: '2025-09-20T21:21:28Z'
+  verification_timestamp: '2025-09-20T21: 21: 28Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -219,3 +219,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 5.5
 surface_roughness_after: 1.0
+---

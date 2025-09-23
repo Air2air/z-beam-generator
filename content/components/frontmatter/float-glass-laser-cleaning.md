@@ -17,6 +17,8 @@ chemicalProperties:
   materialType: Soda-lime-silica glass
 properties:
   density: "2500 kg/m³"
+  thermalDestructionPoint: "1500°C"
+  thermalDestructionType: melting
   densityNumeric: 2500.0
   densityUnit: "kg/m³"
   densityMin: "1.8 g/cm³"
@@ -26,7 +28,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 100.0
-  meltingPoint: "1500°C"
   meltingPointNumeric: 1500
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -36,7 +37,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "0.8–1.0 W/(m·K)"
+  thermalConductivity: 0.9W/(m·K)"
   thermalConductivityNumeric: 0.8
   thermalConductivityUnit: W/
   thermalConductivityMin: "0.5 W/m·K"
@@ -46,7 +47,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.2
-  tensileStrength: "30–90 MPa"
+  tensileStrength: 60MPa"
   tensileStrengthNumeric: 30.0
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -80,7 +81,6 @@ properties:
   wavelength: 1064nm
   fluenceRange: "0.5–5 J/cm²"
   chemicalFormula: N/A (Amorphous mixture of oxides)
-  thermalBehaviorType: melting
 composition:
 - "Silicon Dioxide (SiO₂): 70–74%"
 - "Sodium Oxide (Na₂O): 12–14%"
@@ -178,8 +178,8 @@ environmentalImpact:
   description: "Eliminates water usage for rinsing, saving an estimated 5–10 liters of water per square meter of glass cleaned compared to traditional wet methods."
 outcomes:
 - result: Contaminant Removal Efficiency
-  metric: '>99.5% removal of sub-micron particles and organic films without substrate
-    damage'
+  metric: ">99.5% removal of sub-micron particles and organic films without substrate
+    damage"
 - result: Processing Throughput
   metric: "100–500 cm²/min cleaning rate, depending on contamination level and laser parameters"
 technicalSpecifications:
@@ -200,7 +200,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Taiwan
   author_id: 1
-  verification_timestamp: '2025-09-20T20:54:06Z'
+  verification_timestamp: '2025-09-20T20: 54: 06Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -219,3 +219,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 1.8
 surface_roughness_after: 0.5
+---

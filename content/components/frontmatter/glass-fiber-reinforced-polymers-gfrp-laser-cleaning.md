@@ -14,7 +14,9 @@ chemicalProperties:
   formula: "Variable (typically SiO₂ fibers + polymer matrix)"
   materialType: composite
 properties:
-  density: "1.8-2.1 g/cm³"
+  density: 2.0g/cm³"
+  thermalDestructionPoint: 150°C;
+  thermalDestructionType: melting
   densityNumeric: 1.95
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -24,7 +26,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 3.6
-  meltingPoint: "120-180°C; >1000°C"
   meltingPointNumeric: 150.0
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -34,7 +35,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "0.3-0.5 W/m·K (through thickness)"
+  thermalConductivity: 0.4W/m·K
   thermalConductivityNumeric: 0.4
   thermalConductivityUnit: "W/m·K"
   thermalConductivityMin: "0.5 W/m·K"
@@ -44,7 +45,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.0
-  tensileStrength: 300-500 MPa (fiber direction)
+  tensileStrength: 400MPa
   tensileStrengthNumeric: 400.0
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -54,7 +55,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 36.8
-  hardness: 80-90 Shore D
+  hardness: 85Shore
   hardnessNumeric: 85.0
   hardnessUnit: Shore
   hardnessMin: 1 Mohs
@@ -174,7 +175,7 @@ environmentalImpact:
     methods for GFRP surface preparation
 outcomes:
 - result: Surface contamination removal efficiency
-  metric: '>99% removal of coatings and contaminants with <2% material loss'
+  metric: ">99% removal of coatings and contaminants with <2% material loss"
 - result: Processing speed
   metric: "0.5-2.0 m²/hour depending on contamination type and laser parameters"
 technicalSpecifications:
@@ -195,7 +196,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Taiwan
   author_id: 1
-  verification_timestamp: '2025-09-20T20:49:42Z'
+  verification_timestamp: '2025-09-20T20: 49: 42Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -214,3 +215,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 12.8
 surface_roughness_after: 3.5
+---

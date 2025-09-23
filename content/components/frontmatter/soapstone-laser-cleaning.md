@@ -3,7 +3,7 @@ name: Soapstone
 category: stone
 title: Soapstone Laser Cleaning
 headline: Comprehensive technical guide for laser cleaning stone soapstone
-description: "Laser cleaning of soapstone utilizes precise Nd:YAG laser parameters to selectively ablate surface contaminants while preserving the talc-rich mineral matrix. The low thermal conductivity (6.4 W/m·K) and specific heat capacity allow controlled energy deposition without thermal damage to the substrate."
+description: "Laser cleaning of soapstone utilizes precise Nd: YAG laser parameters to selectively ablate surface contaminants while preserving the talc-rich mineral matrix. The low thermal conductivity (6.4 W/m·K) and specific heat capacity allow controlled energy deposition without thermal damage to the substrate."
 keywords: soapstone, soapstone stone, laser ablation, laser cleaning, non-contact
   cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters,
   thermal processing, surface restoration
@@ -12,7 +12,9 @@ chemicalProperties:
   formula: "Mg₃Si₄O₁₀(OH)₂"
   materialType: metamorphic rock
 properties:
-  density: "2.7-2.8 g/cm³"
+  density: 2.8g/cm³"
+  thermalDestructionPoint: "1300°C"
+  thermalDestructionType: melting
   densityNumeric: 2.75
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -22,7 +24,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 22.6
-  meltingPoint: "1300°C"
   meltingPointNumeric: 1300
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -42,7 +43,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 3.0
-  tensileStrength: 15-20 MPa
+  tensileStrength: 17.5MPa
   tensileStrengthNumeric: 17.5
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -52,7 +53,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 0.0
-  hardness: 1-1.5 Mohs
+  hardness: 1.2Mohs
   hardnessNumeric: 1.25
   hardnessUnit: Mohs
   hardnessMin: 1 Mohs
@@ -72,11 +73,10 @@ properties:
   youngsModulusMaxNumeric: 80.0
   youngsModulusMaxUnit: GPa
   modulusPercentile: 58.3
-  laserType: Nd:YAG laser
+  laserType: "Nd: YAG laser"
   wavelength: 1064nm
   fluenceRange: "1.0–10 J/cm²"
   chemicalFormula: "Mg₃Si₄O₁₀(OH)₂"
-  thermalBehaviorType: melting
 composition:
 - "Talc (Mg₃Si₄O₁₀(OH)₂): 40-80%"
 - "Magnesite (MgCO₃): 10-40%"
@@ -193,7 +193,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: United States (California)
   author_id: 4
-  verification_timestamp: '2025-09-20T21:53:55Z'
+  verification_timestamp: '2025-09-20T21: 53: 55Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -204,7 +204,7 @@ laser_parameters:
   power_range: 50-200W
   repetition_rate: 20-100kHz
   spot_size: 0.1-1.0mm
-  laser_type: Nd:YAG laser
+  laser_type: "Nd: YAG laser"
 tags:
 - Construction
 - Restoration
@@ -212,3 +212,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 28.2
 surface_roughness_after: 9.9
+---

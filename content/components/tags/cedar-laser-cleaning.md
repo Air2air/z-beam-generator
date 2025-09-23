@@ -1,36 +1,36 @@
 tags:
-  - aerospace
-  - automotive
-  - manufacturing
-  - decoating
-  - decontamination
+  - alessandro-moretti
+  - woodworking
   - restoration
-  - etching
-  - passivation
+  - decontamination
+  - surface-preparation
+  - refinishing
+  - manufacturing
+  - industrial
 material: "cedar"
 count: 8
 categories:
   industry:
-    - aerospace
-    - automotive
     - manufacturing
+    - industrial
   process:
-    - decoating
-    - decontamination
     - restoration
-    - etching
-    - passivation
+    - decontamination
   author:
+    - alessandro-moretti
+    - surface-preparation
   other:
+    - woodworking
+    - refinishing
 metadata:
-  generated: "2025-09-17T11:59:54.785742"
+  generated: "2025-09-22T15:57:40.110249"
   format: "yaml"
   version: "2.0"
 
 ---
 Material: "cedar"
 Component: tags
-Generated: 2025-09-17T11:59:54.785756
-Generator: Z-Beam v1.0.0
+Generated: 2025-09-22T15:57:40.112068
+Generator: Z-Beam v1.0.0 (Frontmatter-Based)
 Format: YAML v2.0
 ---

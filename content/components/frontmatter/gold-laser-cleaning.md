@@ -13,6 +13,8 @@ chemicalProperties:
   materialType: metal
 properties:
   density: "19.32 g/cm³"
+  thermalDestructionPoint: "1064°C"
+  thermalDestructionType: melting
   densityNumeric: 19.32
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -22,7 +24,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 100.0
-  meltingPoint: "1064°C"
   meltingPointNumeric: 1064.0
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -76,7 +77,6 @@ properties:
   wavelength: 1064nm
   fluenceRange: "0.5–5 J/cm²"
   chemicalFormula: Au
-  thermalBehaviorType: melting
 composition:
 - 'Gold (Au): 99.95-99.99% (industrial grade)'
 - 'Silver, copper, or other alloying elements: 0.01-0.05% (trace elements)'
@@ -170,7 +170,7 @@ environmentalImpact:
     liters per kilogram of gold processed compared to traditional aqueous methods
 outcomes:
 - result: Surface contamination removal efficiency
-  metric: '>99.9% removal of organic contaminants and oxides without substrate damage'
+  metric: ">99.9% removal of organic contaminants and oxides without substrate damage"
 - result: Processing precision
   metric: "Sub-micron layer control with material removal rates of 0.1-5 μm per pass"
 technicalSpecifications:
@@ -191,7 +191,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Italy
   author_id: 2
-  verification_timestamp: '2025-09-20T21:13:07Z'
+  verification_timestamp: '2025-09-20T21: 13: 07Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -212,3 +212,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 2.1
 surface_roughness_after: 0.4
+---

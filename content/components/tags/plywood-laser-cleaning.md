@@ -1,36 +1,36 @@
 tags:
-  - furniture
-  - cabinetry
-  - construction
-  - marine
+  - todd-dunning
+  - woodworking
   - restoration
+  - construction
+  - decontamination
+  - surface-preparation
   - refinishing
-  - sanding
-  - sealing
+  - manufacturing
 material: "plywood"
 count: 8
 categories:
   industry:
-    - marine
+    - manufacturing
   process:
     - restoration
+    - decontamination
   author:
+    - todd-dunning
+    - surface-preparation
   other:
-    - furniture
-    - cabinetry
+    - woodworking
     - construction
     - refinishing
-    - sanding
-    - sealing
 metadata:
-  generated: "2025-09-17T12:03:36.308940"
+  generated: "2025-09-22T15:57:40.260930"
   format: "yaml"
   version: "2.0"
 
 ---
 Material: "plywood"
 Component: tags
-Generated: 2025-09-17T12:03:36.309005
-Generator: Z-Beam v1.0.0
+Generated: 2025-09-22T15:57:40.262348
+Generator: Z-Beam v1.0.0 (Frontmatter-Based)
 Format: YAML v2.0
 ---

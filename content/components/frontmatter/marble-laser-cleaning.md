@@ -15,7 +15,9 @@ chemicalProperties:
   formula: CaCO3
   materialType: stone
 properties:
-  density: "2.6-2.8 g/cm³ (varies by marble type)"
+  density: 2.7g/cm³
+  thermalDestructionPoint: "825°C"
+  thermalDestructionType: melting
   densityNumeric: 2.7
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -25,7 +27,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 21.4
-  meltingPoint: "825°C"
   meltingPointNumeric: 825.0
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -35,7 +36,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "2.5-2.9 W/(m·K) at 20°C"
+  thermalConductivity: 2.7W/(m·K)
   thermalConductivityNumeric: 2.7
   thermalConductivityUnit: W/
   thermalConductivityMin: "0.5 W/m·K"
@@ -45,7 +46,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 1.1
-  tensileStrength: 8-15 MPa (across grain)
+  tensileStrength: 11.5MPa
   tensileStrengthNumeric: 11.5
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -55,7 +56,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 0.0
-  hardness: 3-4 Mohs scale
+  hardness: 3.5Mohs
   hardnessNumeric: 3.5
   hardnessUnit: Mohs
   hardnessMin: 1 Mohs
@@ -79,7 +80,6 @@ properties:
   wavelength: 1064nm
   fluenceRange: "0.5-5 J/cm²"
   chemicalFormula: CaCO3
-  thermalBehaviorType: melting
 composition:
 - 'Calcite (CaCO3): 90-99%'
 - 'Dolomite (CaMg(CO3)2): 1-5%'
@@ -145,10 +145,10 @@ applications:
 - 'Restoration: Cleaning and restoring historical marble sculptures and buildings'
 compatibility:
 - Pulsed fiber lasers with nanosecond pulse durations
-- Q-switched Nd:YAG lasers at 1064nm and 532nm
+- Q-switched Nd: YAG lasers at 1064nm and 532nm
 - Robotic scanning systems with precision motion control
-regulatoryStandards: EN 15898:2019 (Conservation of cultural heritage - Main general
-  terms and definitions), EN 15886:2010 (Conservation of cultural property - Test
+regulatoryStandards: "EN 15898: 2019 (Conservation of cultural heritage - Main general"
+  terms and definitions), EN 15886: 2010 (Conservation of cultural property - Test
   methods - Measurement of colour of surfaces)
 author: Ikmanda Roswati
 author_object:
@@ -199,7 +199,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Indonesia
   author_id: 3
-  verification_timestamp: '2025-09-20T21:46:37Z'
+  verification_timestamp: '2025-09-20T21: 46: 37Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -219,3 +219,4 @@ complexity: high
 difficultyScore: 4
 surface_roughness_before: 18.2
 surface_roughness_after: 6.2
+---

@@ -13,6 +13,8 @@ chemicalProperties:
   materialType: metal
 properties:
   density: "7.14 g/cm³"
+  thermalDestructionPoint: "419°C"
+  thermalDestructionType: melting
   densityNumeric: 7.14
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -22,7 +24,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 100.0
-  meltingPoint: "419°C"
   meltingPointNumeric: 419
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -42,7 +43,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 57.9
-  tensileStrength: 110 MPa (cast zinc), 200-400 MPa (rolled zinc)
+  tensileStrength: 300MPa
   tensileStrengthNumeric: 300.0
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -52,7 +53,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 26.3
-  hardness: 30-42 HB (Brinell hardness)
+  hardness: 36HB
   hardnessNumeric: 36.0
   hardnessUnit: HB
   hardnessMin: 1 Mohs
@@ -76,7 +77,6 @@ properties:
   wavelength: 1064nm
   fluenceRange: "1.0–10 J/cm²"
   chemicalFormula: Zn
-  thermalBehaviorType: melting
 composition:
 - Zinc (99.995+%) - High purity zinc for industrial applications
 - "Lead (≤0.003%), Cadmium (≤0.003%), Iron (≤0.002%) - Common trace\
@@ -192,7 +192,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Indonesia
   author_id: 3
-  verification_timestamp: '2025-09-20T21:33:57Z'
+  verification_timestamp: '2025-09-20T21: 33: 57Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -213,3 +213,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 8.2
 surface_roughness_after: 1.8
+---

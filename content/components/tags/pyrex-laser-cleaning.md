@@ -1,36 +1,36 @@
 tags:
+  - yi-chun-lin
+  - ceramics
+  - precision
+  - automotive
   - aerospace
-  - medical
-  - electronics
   - decontamination
-  - restoration
+  - surface-preparation
   - polishing
-  - texturing
-  - etching
 material: "pyrex"
 count: 8
 categories:
   industry:
+    - automotive
     - aerospace
-    - medical
-    - electronics
   process:
     - decontamination
-    - restoration
     - polishing
-    - texturing
-    - etching
   author:
+    - surface-preparation
   other:
+    - yi-chun-lin
+    - ceramics
+    - precision
 metadata:
-  generated: "2025-09-17T12:04:03.385785"
+  generated: "2025-09-22T15:57:39.123931"
   format: "yaml"
   version: "2.0"
 
 ---
 Material: "pyrex"
 Component: tags
-Generated: 2025-09-17T12:04:03.385806
-Generator: Z-Beam v1.0.0
+Generated: 2025-09-22T15:57:39.125337
+Generator: Z-Beam v1.0.0 (Frontmatter-Based)
 Format: YAML v2.0
 ---

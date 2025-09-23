@@ -1,36 +1,36 @@
 tags:
-  - aerospace
-  - automotive
-  - manufacturing
-  - decoating
-  - decontamination
+  - yi-chun-lin
+  - woodworking
   - restoration
-  - etching
-  - passivation
+  - decontamination
+  - surface-preparation
+  - refinishing
+  - manufacturing
+  - industrial
 material: "pine"
 count: 8
 categories:
   industry:
-    - aerospace
-    - automotive
     - manufacturing
+    - industrial
   process:
-    - decoating
-    - decontamination
     - restoration
-    - etching
-    - passivation
+    - decontamination
   author:
+    - surface-preparation
   other:
+    - yi-chun-lin
+    - woodworking
+    - refinishing
 metadata:
-  generated: "2025-09-17T12:03:17.519470"
+  generated: "2025-09-22T15:57:40.244170"
   format: "yaml"
   version: "2.0"
 
 ---
 Material: "pine"
 Component: tags
-Generated: 2025-09-17T12:03:17.519501
-Generator: Z-Beam v1.0.0
+Generated: 2025-09-22T15:57:40.245369
+Generator: Z-Beam v1.0.0 (Frontmatter-Based)
 Format: YAML v2.0
 ---

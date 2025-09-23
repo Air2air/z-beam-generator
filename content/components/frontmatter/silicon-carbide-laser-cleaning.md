@@ -13,6 +13,8 @@ chemicalProperties:
   materialType: semiconductor
 properties:
   density: "3.21 g/cm³"
+  thermalDestructionPoint: "2730°C"
+  thermalDestructionType: melting
   densityNumeric: 3.21
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -22,7 +24,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 33.6
-  meltingPoint: "2730°C"
   meltingPointNumeric: 2730
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -52,7 +53,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 35.8
-  hardness: "9.5 Mohs (2800-3200 kg/mm² Vickers)"
+  hardness: 3000kg/mm²
   hardnessNumeric: 3000.0
   hardnessUnit: "kg/mm²"
   hardnessMin: 1 Mohs
@@ -76,7 +77,6 @@ properties:
   wavelength: 1064nm
   fluenceRange: "1.0–10 J/cm²"
   chemicalFormula: SiC
-  thermalBehaviorType: melting
 composition:
 - 'Silicon: 70.05% (by weight)'
 - 'Carbon: 29.95% (by weight)'
@@ -196,7 +196,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Indonesia
   author_id: 3
-  verification_timestamp: '2025-09-20T21:37:16Z'
+  verification_timestamp: '2025-09-20T21: 37: 16Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -216,3 +216,4 @@ complexity: high
 difficultyScore: 4
 surface_roughness_before: 2.2
 surface_roughness_after: 0.6
+---

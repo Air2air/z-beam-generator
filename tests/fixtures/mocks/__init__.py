@@ -6,43 +6,9 @@ This module provides reusable mock classes and fixtures for testing,
 preventing import issues and providing consistent test infrastructure.
 """
 
-import unittest.mock as mock
-from typing import Dict, Any, Optional, List
-from unittest.mock import MagicMock, Mock
+from typing import Dict, Any, Optional
 
-
-class MockAPIClient:
-    """Mock API client for testing component generators."""
-
-    def __init__(self, responses: Optional[Dict[str, Any]] = None):
-        self.responses = responses or {}
-        self.call_history: List[Dict[str, Any]] = []
-
-    def generate_content(self, prompt: str) -> Dict[str, Any]:
-        """Mock generate_content method."""
-        self.call_history.append({
-            'method': 'generate_content',
-            'prompt': prompt,
-            'timestamp': mock.Mock()
-        })
-
-        # Return a default successful response
-        return self.responses.get('generate_content', {
-            'success': True,
-            'content': f"Mock response for: {prompt[:50]}...",
-            'usage': {'tokens': 100}
-        })
-
-    def get_status(self) -> Dict[str, Any]:
-        """Mock get_status method."""
-        return self.responses.get('get_status', {
-            'status': 'ready',
-            'model': 'mock-model'
-        })
-
-    def reset_statistics(self):
-        """Reset call statistics."""
-        self.call_history = []
+from .simple_mock_client import MockAPIClient
 
 
 class MockComponentGenerator:
@@ -210,19 +176,6 @@ class MockTagsComponentGenerator(MockComponentGenerator):
         return result
 
 
-class MockBulletsComponentGenerator(MockComponentGenerator):
-    """Mock bullets component generator."""
-
-    def __init__(self):
-        super().__init__("bullets")
-
-    def generate(self, material_name: str, material_data: Dict[str, Any],
-                 api_client=None, **kwargs) -> Dict[str, Any]:
-        result = super().generate(material_name, material_data, api_client, **kwargs)
-        result['content'] = f"- Mock bullet point for {material_name}\n- Another bullet point"
-        return result
-
-
 class MockCaptionComponentGenerator(MockComponentGenerator):
     """Mock caption component generator."""
 
@@ -261,7 +214,6 @@ def create_mock_generator(component_type: str) -> MockComponentGenerator:
         'metatags': MockMetatagsComponentGenerator,
         'propertiestable': MockPropertiestableComponentGenerator,
         'tags': MockTagsComponentGenerator,
-        'bullets': MockBulletsComponentGenerator,
         'caption': MockCaptionComponentGenerator,
         'text': MockTextComponentGenerator,
     }
@@ -310,7 +262,6 @@ __all__ = [
     'MockMetatagsComponentGenerator',
     'MockPropertiestableComponentGenerator',
     'MockTagsComponentGenerator',
-    'MockBulletsComponentGenerator',
     'MockCaptionComponentGenerator',
     'MockTextComponentGenerator',
     'create_mock_generator',

@@ -15,7 +15,9 @@ chemicalProperties:
   formula: "Mg₃Si₂O₅(OH)₄"
   materialType: phyllosilicate mineral
 properties:
-  density: "2.5-2.6 g/cm³"
+  density: 2.5g/cm³"
+  thermalDestructionPoint: "700°C"
+  thermalDestructionType: melting
   densityNumeric: 2.55
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -25,7 +27,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 17.9
-  meltingPoint: "700°C"
   meltingPointNumeric: 700
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -35,7 +36,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "1.3-2.5 W/(m·K)"
+  thermalConductivity: 1.9W/(m·K)"
   thermalConductivityNumeric: 1.9
   thermalConductivityUnit: W/
   thermalConductivityMin: "0.5 W/m·K"
@@ -45,7 +46,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.7
-  tensileStrength: 10-15 MPa
+  tensileStrength: 12.5MPa
   tensileStrengthNumeric: 12.5
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -55,7 +56,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 0.0
-  hardness: 2.5-4.0 Mohs
+  hardness: 3.2Mohs
   hardnessNumeric: 3.25
   hardnessUnit: Mohs
   hardnessMin: 1 Mohs
@@ -79,7 +80,6 @@ properties:
   wavelength: 1064nm
   fluenceRange: "1.0–10 J/cm²"
   chemicalFormula: "Mg₃Si₂O₅(OH)₄"
-  thermalBehaviorType: melting
 composition:
 - 'Magnesium oxide (MgO): 43-44%'
 - "Silicon dioxide (SiO₂): 43-44%"
@@ -146,8 +146,8 @@ applications:
 compatibility:
 - Historical building materials (marble, limestone, granite)
 - Other magnesium silicate minerals (talc, olivine)
-regulatoryStandards: EN 15898:2019 (Conservation of cultural heritage - Main general
-  terms and definitions), EN 17138:2018 (Conservation of cultural heritage - Methods
+regulatoryStandards: "EN 15898: 2019 (Conservation of cultural heritage - Main general"
+  terms and definitions), EN 17138: 2018 (Conservation of cultural heritage - Methods
   and materials for cleaning porous inorganic materials)
 author: Todd Dunning
 author_object:
@@ -182,7 +182,7 @@ outcomes:
 technicalSpecifications:
   powerRange: 20-100 W (average power for pulsed fiber lasers)
   pulseDuration: 10-100 ns
-  wavelength: 1064 nm (fundamental Nd:YAG/fiber), 532 nm (frequency-doubled for finer
+  wavelength: "1064 nm (fundamental Nd: YAG/fiber), 532 nm (frequency-doubled for finer"
     control)
   spotSize: "100-500 μm"
   repetitionRate: 10-50 kHz
@@ -198,7 +198,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: United States (California)
   author_id: 4
-  verification_timestamp: '2025-09-20T21:51:08Z'
+  verification_timestamp: '2025-09-20T21: 51: 08Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -217,3 +217,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 32.8
 surface_roughness_after: 11.5
+---

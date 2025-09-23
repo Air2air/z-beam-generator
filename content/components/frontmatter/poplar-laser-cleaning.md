@@ -16,7 +16,9 @@ chemicalProperties:
   formula: "C₆H₁₀O₅\u2099 (Cellulose base)"
   materialType: Hardwood (Lignocellulosic Biomaterial)
 properties:
-  density: "350-500 kg/m³ (varies by species and moisture content)"
+  density: 425kg/m³
+  thermalDestructionPoint: "280°C"
+  thermalDestructionType: decomposition
   densityNumeric: 425.0
   densityUnit: "kg/m³"
   densityMin: "1.8 g/cm³"
@@ -33,7 +35,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "0.09-0.12 W/(m·K) (radial direction)"
+  thermalConductivity: 0.1W/(m·K)
   thermalConductivityNumeric: 0.1
   thermalConductivityUnit: W/
   thermalConductivityMin: "0.5 W/m·K"
@@ -43,7 +45,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.0
-  tensileStrength: 70-100 MPa (parallel to grain)
+  tensileStrength: 85MPa
   tensileStrengthNumeric: 85.0
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -53,7 +55,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 3.7
-  hardness: 400-500 N (Janka Hardness scale)
+  hardness: 450N
   hardnessNumeric: 450.0
   hardnessUnit: N
   hardnessMin: 1 Mohs
@@ -76,11 +78,7 @@ properties:
   laserType: Pulsed fiber laser
   wavelength: 1064nm
   fluenceRange: "0.5–5 J/cm²"
-  chemicalFormula: 'N/A (Composite: ~50% Cellulose, ~25% Hemicellulose, ~20% Lignin)'
-  thermalBehaviorType: decomposition
-  decompositionPoint: "280°C"
-  decompositionPointNumeric: 280
-  decompositionPointUnit: "°C"
+  chemicalFormula: 'N/A (Composite: ~50% Cellulose, ~25% Hemicellulose, ~20% Lignin)'  decompositionPointUnit: "°C"
 composition:
 - 'Cellulose: 48-52%'
 - 'Hemicellulose: 25-28%'
@@ -199,7 +197,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Italy
   author_id: 2
-  verification_timestamp: '2025-09-20T22:07:41Z'
+  verification_timestamp: '2025-09-20T22: 07: 41Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -218,3 +216,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 48.8
 surface_roughness_after: 19.2
+---

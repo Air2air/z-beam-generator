@@ -16,6 +16,8 @@ chemicalProperties:
   materialType: metal
 properties:
   density: "12.02 g/cm³"
+  thermalDestructionPoint: "1554°C"
+  thermalDestructionType: melting
   densityNumeric: 12.02
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -25,7 +27,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 100.0
-  meltingPoint: "1554°C"
   meltingPointNumeric: 1554
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -45,7 +46,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 35.7
-  tensileStrength: 180-190 MPa (annealed)
+  tensileStrength: 185MPa
   tensileStrengthNumeric: 185.0
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -55,7 +56,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 14.2
-  hardness: 40-42 HV (Vickers)
+  hardness: 41HV
   hardnessNumeric: 41.0
   hardnessUnit: HV
   hardnessMin: 1 Mohs
@@ -79,7 +80,6 @@ properties:
   wavelength: 1064 nm
   fluenceRange: "0.5–5 J/cm²"
   chemicalFormula: Pd
-  thermalBehaviorType: melting
 composition:
 - Palladium 99.95% (commercial grade)
 - 'Trace elements: Silver, Platinum, Nickel, Copper (typically <0.05% total)'
@@ -174,7 +174,7 @@ environmentalImpact:
     by 95% compared to traditional chemical cleaning methods
 outcomes:
 - result: Surface contamination removal efficiency
-  metric: '>99.9% removal of oxides and organic contaminants'
+  metric: ">99.9% removal of oxides and organic contaminants"
 - result: Processing speed
   metric: "100-500 cm²/min depending on contamination level and required precision"
 technicalSpecifications:
@@ -195,7 +195,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Indonesia
   author_id: 3
-  verification_timestamp: '2025-09-20T21:23:11Z'
+  verification_timestamp: '2025-09-20T21: 23: 11Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -215,3 +215,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 3.1
 surface_roughness_after: 0.7
+---

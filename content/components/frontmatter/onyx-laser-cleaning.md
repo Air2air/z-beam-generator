@@ -3,7 +3,7 @@ name: Onyx
 category: stone
 title: Onyx Laser Cleaning
 headline: Comprehensive technical guide for laser cleaning stone onyx
-description: Laser cleaning of onyx utilizes precise pulsed Nd:YAG laser parameters
+description: "Laser cleaning of onyx utilizes precise pulsed Nd: YAG laser parameters"
   to achieve controlled ablation of surface contaminants while preserving the delicate
   microcrystalline structure of the stone. The process exploits the differential absorption
   between contaminants and the calcium carbonate matrix.
@@ -15,7 +15,9 @@ chemicalProperties:
   formula: "CaCO₃"
   materialType: stone
 properties:
-  density: "2.65-2.80 g/cm³"
+  density: 2.7g/cm³"
+  thermalDestructionPoint: "825°C"
+  thermalDestructionType: melting
   densityNumeric: 2.72
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -25,7 +27,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 21.9
-  meltingPoint: "825°C"
   meltingPointNumeric: 825.0
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -35,7 +36,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "1.26-1.33 W/(m·K)"
+  thermalConductivity: 1.3W/(m·K)"
   thermalConductivityNumeric: 1.29
   thermalConductivityUnit: W/
   thermalConductivityMin: "0.5 W/m·K"
@@ -45,7 +46,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.4
-  tensileStrength: 10-15 MPa
+  tensileStrength: 12.5MPa
   tensileStrengthNumeric: 12.5
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -55,7 +56,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 0.0
-  hardness: 6.5-7.0 Mohs
+  hardness: 6.8Mohs
   hardnessNumeric: 6.75
   hardnessUnit: Mohs
   hardnessMin: 1 Mohs
@@ -75,11 +76,10 @@ properties:
   youngsModulusMaxNumeric: 80.0
   youngsModulusMaxUnit: GPa
   modulusPercentile: 66.7
-  laserType: Nd:YAG laser
+  laserType: "Nd: YAG laser"
   wavelength: 1064nm
   fluenceRange: "1.0–10 J/cm²"
   chemicalFormula: "CaCO₃"
-  thermalBehaviorType: melting
 composition:
 - "Calcium carbonate (CaCO₃): 90-99%"
 - "Silicon dioxide (SiO₂): 0.5-5%"
@@ -145,7 +145,7 @@ applications:
 compatibility:
 - Marble and other calcareous stones
 - Granite and silicate-based stones (with parameter adjustment)
-regulatoryStandards: EN 60825-1:2014 (Laser product safety), EN 15898:2019 (Conservation
+regulatoryStandards: "EN 60825-1: 2014 (Laser product safety), EN 15898: 2019 (Conservation"
   of cultural property)
 author: Alessandro Moretti
 author_object:
@@ -173,8 +173,8 @@ environmentalImpact:
     abrasive cleaning methods
 outcomes:
 - result: Surface contamination removal efficiency
-  metric: '>99% removal of biological and atmospheric contaminants without substrate
-    damage'
+  metric: ">99% removal of biological and atmospheric contaminants without substrate
+    damage"
 - result: Processing precision
   metric: "±10 μm layer control with preservation of original surface morphology"
 technicalSpecifications:
@@ -195,7 +195,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Italy
   author_id: 2
-  verification_timestamp: '2025-09-20T21:47:33Z'
+  verification_timestamp: '2025-09-20T21: 47: 33Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -206,7 +206,7 @@ laser_parameters:
   power_range: 50-200W
   repetition_rate: 20-100kHz
   spot_size: 0.05-1.0mm
-  laser_type: Nd:YAG laser
+  laser_type: "Nd: YAG laser"
 tags:
 - Construction
 - Jewelry
@@ -214,3 +214,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 18.5
 surface_roughness_after: 6.5
+---

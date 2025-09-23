@@ -1,36 +1,36 @@
 tags:
-  - aerospace
+  - alessandro-moretti
+  - metalworking
+  - industrial
   - electronics
-  - medical
   - jewelry
-  - plating
-  - electroplating
-  - anodizing
+  - decontamination
+  - surface-preparation
   - passivation
 material: "gold"
 count: 8
 categories:
   industry:
-    - aerospace
+    - industrial
     - electronics
-    - medical
   process:
-    - anodizing
+    - decontamination
     - passivation
   author:
+    - alessandro-moretti
+    - surface-preparation
   other:
+    - metalworking
     - jewelry
-    - plating
-    - electroplating
 metadata:
-  generated: "2025-09-17T12:00:55.442004"
+  generated: "2025-09-22T15:57:39.366689"
   format: "yaml"
   version: "2.0"
 
 ---
 Material: "gold"
 Component: tags
-Generated: 2025-09-17T12:00:55.442032
-Generator: Z-Beam v1.0.0
+Generated: 2025-09-22T15:57:39.367883
+Generator: Z-Beam v1.0.0 (Frontmatter-Based)
 Format: YAML v2.0
 ---

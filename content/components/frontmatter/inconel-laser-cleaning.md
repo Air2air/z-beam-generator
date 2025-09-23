@@ -16,6 +16,8 @@ chemicalProperties:
   materialType: nickel-chromium superalloy
 properties:
   density: "8.44 g/cm³ (Inconel 625)"
+  thermalDestructionPoint: "1400°C"
+  thermalDestructionType: melting
   densityNumeric: 8.44
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -25,7 +27,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 100.0
-  meltingPoint: "1400°C"
   meltingPointNumeric: 1400
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -55,7 +56,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 92.6
-  hardness: 150-360 HB (Brinell, varies by grade)
+  hardness: 255HB
   hardnessNumeric: 255.0
   hardnessUnit: HB
   hardnessMin: 1 Mohs
@@ -79,7 +80,6 @@ properties:
   wavelength: 1064nm
   fluenceRange: "1.0–10 J/cm²"
   chemicalFormula: Ni-Cr-Fe-Mo-Nb (varies by grade)
-  thermalBehaviorType: melting
 composition:
 - 'Nickel (Ni): 58.0 min % (Inconel 625)'
 - 'Chromium (Cr): 20.0-23.0%, Molybdenum (Mo): 8.0-10.0%, Niobium (Nb): 3.15-4.15%,
@@ -147,7 +147,7 @@ compatibility:
 - Stainless Steel 316L
 - Hastelloy
 - Titanium alloys
-regulatoryStandards: ISO 9013:2017 (Thermal cutting classification), ASTM E2930 (Laser
+regulatoryStandards: "ISO 9013: 2017 (Thermal cutting classification), ASTM E2930 (Laser"
   Ablation-Inductively Coupled Plasma Mass Spectrometry)
 author: Ikmanda Roswati
 author_object:
@@ -196,7 +196,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Indonesia
   author_id: 3
-  verification_timestamp: '2025-09-20T21:15:37Z'
+  verification_timestamp: '2025-09-20T21: 15: 37Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -215,3 +215,4 @@ complexity: high
 difficultyScore: 4
 surface_roughness_before: 7.8
 surface_roughness_after: 1.5
+---

@@ -1,46 +1,36 @@
 tags:
-  - laser-cleaning
+  - yi-chun-lin
+  - metalworking
+  - industrial
+  - automotive
+  - manufacturing
+  - decontamination
   - surface-preparation
-  - industrial-technology
-  - manufacturing-processes
-  - contamination-removal
-  - material-processing
-  - quality-control
-  - precision-cleaning
+  - passivation
 material: "steel"
 count: 8
 categories:
   industry:
+    - industrial
+    - automotive
+    - manufacturing
   process:
+    - decontamination
+    - passivation
   author:
-    - laser-cleaning
     - surface-preparation
-    - industrial-technology
-    - manufacturing-processes
-    - contamination-removal
-    - material-processing
-    - quality-control
-    - precision-cleaning
   other:
+    - yi-chun-lin
+    - metalworking
 metadata:
-  generated: "2025-09-19T16:58:43.121928"
+  generated: "2025-09-22T15:57:39.651601"
   format: "yaml"
   version: "2.0"
 
 ---
 Material: "steel"
 Component: tags
-Generated: 2025-09-19T16:58:43.121939
-Generator: Z-Beam v1.0.0
+Generated: 2025-09-22T15:57:39.653068
+Generator: Z-Beam v1.0.0 (Frontmatter-Based)
 Format: YAML v2.0
----
-
----
-Version Log - Generated: 2025-09-19T16:58:43.122068
-Material: Steel
-Component: tags
-Generator: Z-Beam v2.1.0
-Author: AI Assistant
-Platform: Darwin (3.12.4)
-File: content/components/tags/steel-laser-cleaning.md
 ---

@@ -1,0 +1,12 @@
+Silicon Nitride, or Si3N4, it is very hard ceramic material, excellent for many industrial application. Material property, it is very important for laser cleaning. This means laser can remove contamination without damage the substrate, because contaminant usually have much lower vaporization temperature. Silicon Nitride, or Si3N4, it is very hard ceramic material, excellent for many industrial application, and this means laser can remove contamination without damage the substrate, because contaminant usually have much lower vaporization temperature. It help to spread heat away from laser spot, prevent local overheating and cracking. For example, melting point is high, about 1900°C. Thermal conductivity is 30 W/m·K, this is good, very good. Notably, must control laser parameter carefully, very carefully. For laser cleaning, **wavelength 1064nm is primary choice**. Pulse duration, we use 20 to 100 nanosecond. Field experience shows short pulse is good for avoid heat transfer to ceramic. It help to spread heat away from laser spot, prevent local overheating and cracking, which hardness is 1500 hv, so surface is durable, but also can be brittle. This wavelength, silicon nitride have good absorbtion, but not too strong, while it allow energy to go into contaminant layer first, lift it off. Industrial applications demonstrate in electronics, silicon nitride substrate need very clean surface for circuit, and success indicator is surface roughness remain same, and no contaminant left. Hardness is 1500 HV, so surface is durable, but also can be brittle. Interestingly, fluence range, it should be between 1.0 and 4.5 j/cm². This wavelength, silicon nitride have good absorbtion, but not too strong. This is typically important, very important. Interestingly, it allow energy to go into contaminant layer first, lift it off. Meanwhile, in electronics, silicon nitride substrate need very clean surface for circuit. Industrial applications demonstrate success indicator is surface roughness remain same, and no contaminant left. Maybe, I think, it is the future for cleaning high-performance ceramic like silicon nitride.
+
+---
+Version Log - Generated: 2025-09-22T14:51:51.921459
+Material: Silicon Nitride
+Component: text
+Generator: Z-Beam v1.0.0
+Component Version: 3.0.0
+Author: Yi-Chun Lin
+Platform: Darwin (3.12.4)
+Operation: generation
+---

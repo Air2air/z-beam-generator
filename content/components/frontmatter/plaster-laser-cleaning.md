@@ -13,6 +13,8 @@ chemicalProperties:
   materialType: masonry
 properties:
   density: "2.32 g/cm³"
+  thermalDestructionPoint: "128°C"
+  thermalDestructionType: decomposition
   densityNumeric: 2.32
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -22,7 +24,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 12.4
-  meltingPoint: "128°C"
   meltingPointNumeric: 128
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -52,7 +53,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 0.0
-  hardness: 1.5-2.0 Mohs
+  hardness: 1.8Mohs
   hardnessNumeric: 1.75
   hardnessUnit: Mohs
   hardnessMin: 1 Mohs
@@ -72,11 +73,10 @@ properties:
   youngsModulusMaxNumeric: 80.0
   youngsModulusMaxUnit: GPa
   modulusPercentile: 0.0
-  laserType: Nd:YAG
+  laserType: "Nd: YAG"
   wavelength: 1064nm
   fluenceRange: "1.0–3.0 J/cm²"
   chemicalFormula: "CaSO4·2H2O"
-  thermalBehaviorType: melting
 composition:
 - "Calcium sulfate dihydrate (CaSO4·2H2O): 95-98%"
 - 'Calcium carbonate (CaCO3): 1-3%'
@@ -144,8 +144,8 @@ compatibility:
 - Historical building materials (stone, brick, wood)
 - Pigments and paints (when properly parameterized)
 - Metal reinforcements (at appropriate wavelengths)
-regulatoryStandards: EN 15898:2019 (Conservation of cultural heritage - Main general
-  terms and definitions), EN 15886:2010 (Conservation of cultural property - Test
+regulatoryStandards: "EN 15898: 2019 (Conservation of cultural heritage - Main general"
+  terms and definitions), EN 15886: 2010 (Conservation of cultural property - Test
   methods - Colour measurement of surfaces)
 author: Alessandro Moretti
 author_object:
@@ -172,11 +172,11 @@ environmentalImpact:
   description: "Eliminates water usage compared to traditional wet cleaning methods, saving approximately 50-200 liters per m² of treated surface"
 outcomes:
 - result: Surface contamination removal efficiency
-  metric: '>95% removal of pollution crusts with <5% substrate loss'
+  metric: ">95% removal of pollution crusts with <5% substrate loss"
 - result: Processing speed
   metric: "0.5-2.0 m²/hour depending on contamination level and laser parameters"
 technicalSpecifications:
-  powerRange: 10-100 W (average power for pulsed Nd:YAG)
+  powerRange: "10-100 W (average power for pulsed Nd: YAG)"
   pulseDuration: 5-150 ns
   wavelength: 1064 nm (IR), 532 nm (SHG)
   spotSize: 0.2-1.5 mm
@@ -193,7 +193,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Italy
   author_id: 2
-  verification_timestamp: '2025-09-20T21:03:53Z'
+  verification_timestamp: '2025-09-20T21: 03: 53Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -205,7 +205,7 @@ laser_parameters:
   power_range: 50-200W
   repetition_rate: 20-100kHz
   spot_size: 0.2-1.0mm
-  laser_type: Nd:YAG
+  laser_type: "Nd: YAG"
 tags:
 - Construction
 - Cultural Heritage
@@ -213,3 +213,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 28.5
 surface_roughness_after: 9.5
+---

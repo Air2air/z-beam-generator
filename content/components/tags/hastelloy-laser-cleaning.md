@@ -1,36 +1,36 @@
 tags:
+  - yi-chun-lin
+  - metalworking
+  - industrial
   - aerospace
   - chemical-processing
-  - marine
+  - decontamination
+  - surface-preparation
   - passivation
-  - pickling
-  - electropolishing
-  - etching
-  - descaling
 material: "hastelloy"
 count: 8
 categories:
   industry:
+    - industrial
     - aerospace
-    - marine
   process:
+    - decontamination
     - passivation
-    - etching
   author:
     - chemical-processing
+    - surface-preparation
   other:
-    - pickling
-    - electropolishing
-    - descaling
+    - yi-chun-lin
+    - metalworking
 metadata:
-  generated: "2025-09-17T12:01:14.401207"
+  generated: "2025-09-22T15:57:39.392649"
   format: "yaml"
   version: "2.0"
 
 ---
 Material: "hastelloy"
 Component: tags
-Generated: 2025-09-17T12:01:14.401235
-Generator: Z-Beam v1.0.0
+Generated: 2025-09-22T15:57:39.393846
+Generator: Z-Beam v1.0.0 (Frontmatter-Based)
 Format: YAML v2.0
 ---

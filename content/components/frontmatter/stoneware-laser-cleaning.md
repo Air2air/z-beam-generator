@@ -12,11 +12,12 @@ keywords: stoneware, stoneware ceramic, laser ablation, laser cleaning, non-cont
   thermal processing, surface restoration
 chemicalProperties:
   symbol: N/A (composite material)
-  formula: "Variable composition (primarily SiO₂-Al₂O₃-K₂O-Na₂"
-    O-CaO system)"
+  formula: "Variable composition (primarily SiO₂-Al₂O₃-K₂O-Na₂O-CaO system)"
   materialType: ceramic
 properties:
-  density: "2.3-2.5 g/cm³"
+  density: 2.4g/cm³"
+  thermalDestructionPoint: "1300°C"
+  thermalDestructionType: melting
   densityNumeric: 2.4
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -26,7 +27,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 14.3
-  meltingPoint: "1300°C"
   meltingPointNumeric: 1300
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -36,7 +36,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 3.1
-  thermalConductivity: "1.5-2.0 W/(m·K)"
+  thermalConductivity: 1.8W/(m·K)"
   thermalConductivityNumeric: 1.75
   thermalConductivityUnit: W/
   thermalConductivityMin: "0.5 W/m·K"
@@ -46,7 +46,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.6
-  tensileStrength: 20-40 MPa
+  tensileStrength: 30MPa
   tensileStrengthNumeric: 30.0
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -56,7 +56,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 0.0
-  hardness: 6-7 Mohs
+  hardness: 6.5Mohs
   hardnessNumeric: 6.5
   hardnessUnit: Mohs
   hardnessMin: 1 Mohs
@@ -80,7 +80,6 @@ properties:
   wavelength: 1064nm
   fluenceRange: "1.0–10 J/cm²"
   chemicalFormula: "Variable (SiO₂ 60-70%, Al₂O₃ 20-30%, flux oxides 5-10%)"
-  thermalBehaviorType: melting
 composition:
 - "Silicon Dioxide (SiO₂): 60-70%"
 - "Aluminum Oxide (Al₂O₃): 20-30%"
@@ -179,8 +178,8 @@ environmentalImpact:
     saving approximately 5-10 liters per square meter of cleaned surface
 outcomes:
 - result: Surface contamination removal efficiency
-  metric: '>99% removal of organic contaminants and surface deposits without substrate
-    damage'
+  metric: ">99% removal of organic contaminants and surface deposits without substrate
+    damage"
 - result: Processing speed
   metric: "0.5-2.0 m²/hour depending on contamination level and required precision"
 technicalSpecifications:
@@ -201,7 +200,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: United States (California)
   author_id: 4
-  verification_timestamp: '2025-09-20T20:39:59Z'
+  verification_timestamp: '2025-09-20T20: 39: 59Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -220,3 +219,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 12.5
 surface_roughness_after: 3.8
+---

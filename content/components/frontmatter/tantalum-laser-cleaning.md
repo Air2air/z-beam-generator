@@ -16,6 +16,8 @@ chemicalProperties:
   materialType: metal
 properties:
   density: "16.69 g/cm³"
+  thermalDestructionPoint: "3017°C"
+  thermalDestructionType: melting
   densityNumeric: 16.69
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -25,7 +27,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 100.0
-  meltingPoint: "3017°C"
   meltingPointNumeric: 3017
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -55,7 +56,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 27.4
-  hardness: 800-1200 HV (Vickers)
+  hardness: 1000HV
   hardnessNumeric: 1000.0
   hardnessUnit: HV
   hardnessMin: 1 Mohs
@@ -79,7 +80,6 @@ properties:
   wavelength: 1064 nm
   fluenceRange: "1.0–10 J/cm²"
   chemicalFormula: Ta
-  thermalBehaviorType: melting
 composition:
 - 'Tantalum (Ta): 99.9-99.99%'
 - 'Niobium (Nb): <0.1%, Carbon (C): <0.01%, Oxygen (O): <0.015%'
@@ -173,7 +173,7 @@ environmentalImpact:
     bath processes with heating requirements
 outcomes:
 - result: Surface contamination removal efficiency
-  metric: '>99.9% removal of oxides and organic contaminants without substrate damage'
+  metric: ">99.9% removal of oxides and organic contaminants without substrate damage"
 - result: Processing precision
   metric: "±5 μm accuracy with surface roughness maintained at Ra < 0.8 μ"
     m"
@@ -195,7 +195,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Italy
   author_id: 2
-  verification_timestamp: '2025-09-20T21:29:48Z'
+  verification_timestamp: '2025-09-20T21: 29: 48Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -214,3 +214,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 5.2
 surface_roughness_after: 1.3
+---

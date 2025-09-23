@@ -13,6 +13,8 @@ chemicalProperties:
   materialType: metal
 properties:
   density: "6.11 g/cm³"
+  thermalDestructionPoint: "1910°C"
+  thermalDestructionType: melting
   densityNumeric: 6.11
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -22,7 +24,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 100.0
-  meltingPoint: "1910°C"
   meltingPointNumeric: 1910
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -76,7 +77,6 @@ properties:
   wavelength: 1064nm
   fluenceRange: "0.5–5 J/cm²"
   chemicalFormula: V
-  thermalBehaviorType: melting
 composition:
 - 'Vanadium: 99.9% (high purity grade)'
 - 'Iron: <0.05%, Silicon: <0.02%, Carbon: <0.01%, Oxygen: <0.01% (typical impurities)'
@@ -171,7 +171,7 @@ environmentalImpact:
     chemical bath or abrasive blasting methods for vanadium components
 outcomes:
 - result: Surface contamination removal efficiency
-  metric: '>99.5% removal of oxides and contaminants with substrate preservation'
+  metric: ">99.5% removal of oxides and contaminants with substrate preservation"
 - result: Processing speed
   metric: "0.1-0.5 m²/hour depending on contamination level and laser parameters"
 technicalSpecifications:
@@ -192,7 +192,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: United States (California)
   author_id: 4
-  verification_timestamp: '2025-09-20T21:33:07Z'
+  verification_timestamp: '2025-09-20T21: 33: 07Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -211,3 +211,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 7.2
 surface_roughness_after: 1.9
+---

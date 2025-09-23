@@ -16,7 +16,9 @@ chemicalProperties:
   formula: "C₆H₁₀O₅ (cellulose base)"
   materialType: wood
 properties:
-  density: "560-630 kg/m³"
+  density: 595kg/m³"
+  thermalDestructionPoint: "300°C"
+  thermalDestructionType: decomposition
   densityNumeric: 595.0
   densityUnit: "kg/m³"
   densityMin: "1.8 g/cm³"
@@ -33,7 +35,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "0.12-0.16 W/m·K (radial direction)"
+  thermalConductivity: 0.1W/m·K
   thermalConductivityNumeric: 0.14
   thermalConductivityUnit: "W/m·K"
   thermalConductivityMin: "0.5 W/m·K"
@@ -43,7 +45,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.0
-  tensileStrength: 85-105 MPa (parallel to grain)
+  tensileStrength: 95MPa
   tensileStrengthNumeric: 95.0
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -76,11 +78,7 @@ properties:
   laserType: Pulsed fiber laser
   wavelength: 1064 nm
   fluenceRange: "0.5-3.0 J/cm²"
-  chemicalFormula: "C₆H₁₀O₅ (cellulose base with lignin and hemicellulose)"
-  thermalBehaviorType: decomposition
-  decompositionPoint: "300°C"
-  decompositionPointNumeric: 300
-  decompositionPointUnit: "°C"
+  chemicalFormula: "C₆H₁₀O₅ (cellulose base with lignin and hemicellulose)"  decompositionPointUnit: "°C"
 composition:
 - 'Cellulose: 40-45%'
 - 'Lignin: 25-30%'
@@ -196,7 +194,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Taiwan
   author_id: 1
-  verification_timestamp: '2025-09-20T21:59:39Z'
+  verification_timestamp: '2025-09-20T21: 59: 39Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -215,3 +213,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 42.2
 surface_roughness_after: 16.8
+---

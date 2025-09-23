@@ -12,7 +12,9 @@ chemicalProperties:
   formula: Cu-Zn
   materialType: metal
 properties:
-  density: "8.4-8.73 g/cm³"
+  density: 8.6g/cm³"
+  thermalDestructionPoint: "940°C"
+  thermalDestructionType: melting
   densityNumeric: 8.57
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -22,7 +24,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 100.0
-  meltingPoint: "940°C"
   meltingPointNumeric: 940
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -32,7 +33,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "109-125 W/(m·K)"
+  thermalConductivity: 117W/(m·K)"
   thermalConductivityNumeric: 117.0
   thermalConductivityUnit: W/
   thermalConductivityMin: "0.5 W/m·K"
@@ -42,7 +43,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 58.4
-  tensileStrength: 338-469 MPa
+  tensileStrength: 403.5MPa
   tensileStrengthNumeric: 403.5
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -52,7 +53,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 37.2
-  hardness: 60-100 HV (Vickers)
+  hardness: 80HV
   hardnessNumeric: 80.0
   hardnessUnit: HV
   hardnessMin: 1 Mohs
@@ -76,7 +77,6 @@ properties:
   wavelength: 1064nm
   fluenceRange: "0.5–5 J/cm²"
   chemicalFormula: Cu-Zn
-  thermalBehaviorType: melting
 composition:
 - Copper (Cu) 60-90%
 - Zinc (Zn) 10-40%
@@ -145,7 +145,7 @@ compatibility:
 - Stainless Steel (for system components)
 - Aluminum (for fixtures and mounts)
 - Fused Silica (for protective windows)
-regulatoryStandards: ISO 9013:2017 (Thermal cutting classification), IEC 60825-1 (Laser
+regulatoryStandards: "ISO 9013: 2017 (Thermal cutting classification), IEC 60825-1 (Laser"
   safety), OSHA 29 CFR 1910.133 (Eye and face protection)
 author: Todd Dunning
 author_object:
@@ -197,7 +197,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: United States (California)
   author_id: 4
-  verification_timestamp: '2025-09-20T21:08:31Z'
+  verification_timestamp: '2025-09-20T21: 08: 31Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -219,3 +219,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 5.8
 surface_roughness_after: 1.2
+---

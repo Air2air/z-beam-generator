@@ -17,7 +17,9 @@ chemicalProperties:
   formula: "Complex Lignocellulosic Matrix (C₆H₁₀O₅)\u2099, Lignin, Extractives"
   materialType: wood
 properties:
-  density: "630–750 kg/m³ (air-dry)"
+  density: 690kg/m³
+  thermalDestructionPoint: "300°C"
+  thermalDestructionType: decomposition
   densityNumeric: 690.0
   densityUnit: "kg/m³"
   densityMin: "1.8 g/cm³"
@@ -34,7 +36,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "0.12–0.18 W/(m·K) (radial)"
+  thermalConductivity: 0.1W/(m·K)
   thermalConductivityNumeric: 0.12
   thermalConductivityUnit: W/
   thermalConductivityMin: "0.5 W/m·K"
@@ -44,7 +46,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.0
-  tensileStrength: "100–135 MPa (parallel to grain)"
+  tensileStrength: 117.5MPa
   tensileStrengthNumeric: 100.0
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -54,7 +56,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 5.3
-  hardness: "2.3–4.0 kN (Janka Hardness)"
+  hardness: 3.1kN
   hardnessNumeric: 2.3
   hardnessUnit: kN
   hardnessMin: 1 Mohs
@@ -78,11 +80,7 @@ properties:
   wavelength: 1064nm
   fluenceRange: "0.5–5 J/cm²"
   chemicalFormula: Complex Organic Composite (Cellulose ~45%, Lignin ~35%, Hemicellulose
-    ~15%, Extractives ~5%)
-  thermalBehaviorType: decomposition
-  decompositionPoint: "300°C"
-  decompositionPointNumeric: 300
-  decompositionPointUnit: "°C"
+    ~15%, Extractives ~5%)  decompositionPointUnit: "°C"
 composition:
 - "Cellulose (C₆H₁₀O₅)\u2099: 40–50%"
 - "Lignin (Complex polyphenolic): 30–40%"
@@ -202,7 +200,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Indonesia
   author_id: 3
-  verification_timestamp: '2025-09-20T22:42:11Z'
+  verification_timestamp: '2025-09-20T22: 42: 11Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -221,3 +219,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 38.2
 surface_roughness_after: 15.8
+---

@@ -16,6 +16,8 @@ chemicalProperties:
   materialType: metal
 properties:
   density: "1.85 g/cm³"
+  thermalDestructionPoint: "1287°C"
+  thermalDestructionType: melting
   densityNumeric: 1.85
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -25,7 +27,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 1.2
-  meltingPoint: "1287°C"
   meltingPointNumeric: 1287.0
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -45,7 +46,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 100.0
-  tensileStrength: 345-600 MPa (depending on purity and processing)
+  tensileStrength: 472.5MPa
   tensileStrengthNumeric: 472.5
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -55,7 +56,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 44.5
-  hardness: 150-180 HV (Vickers)
+  hardness: 165HV
   hardnessNumeric: 165.0
   hardnessUnit: HV
   hardnessMin: 1 Mohs
@@ -79,7 +80,6 @@ properties:
   wavelength: 1064nm
   fluenceRange: "1.0–10 J/cm²"
   chemicalFormula: Be
-  thermalBehaviorType: melting
 composition:
 - 'Beryllium (Be): 98.0-99.5%'
 - 'Beryllium Oxide (BeO): 0.5-2.0% (surface layer)'
@@ -197,7 +197,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: United States (California)
   author_id: 4
-  verification_timestamp: '2025-09-20T21:07:35Z'
+  verification_timestamp: '2025-09-20T21: 07: 35Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -218,3 +218,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 3.2
 surface_roughness_after: 0.8
+---

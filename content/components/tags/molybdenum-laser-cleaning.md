@@ -1,36 +1,36 @@
 tags:
+  - yi-chun-lin
+  - metalworking
+  - industrial
   - aerospace
-  - automotive
-  - electronics
+  - semiconductor
   - decontamination
+  - surface-preparation
   - passivation
-  - decoating
-  - restoration
-  - polishing
 material: "molybdenum"
 count: 8
 categories:
   industry:
+    - industrial
     - aerospace
-    - automotive
-    - electronics
   process:
     - decontamination
     - passivation
-    - decoating
-    - restoration
-    - polishing
   author:
+    - surface-preparation
   other:
+    - yi-chun-lin
+    - metalworking
+    - semiconductor
 metadata:
-  generated: "2025-09-17T12:02:31.181868"
+  generated: "2025-09-22T15:57:39.500837"
   format: "yaml"
   version: "2.0"
 
 ---
 Material: "molybdenum"
 Component: tags
-Generated: 2025-09-17T12:02:31.181885
-Generator: Z-Beam v1.0.0
+Generated: 2025-09-22T15:57:39.502380
+Generator: Z-Beam v1.0.0 (Frontmatter-Based)
 Format: YAML v2.0
 ---

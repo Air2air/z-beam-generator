@@ -16,7 +16,9 @@ chemicalProperties:
   formula: "(C₁₄H₁₀N₂O₂)\u2099 + Polymer Matrix (typically epoxy)"
   materialType: composite
 properties:
-  density: "1.44-1.45 g/cm³"
+  density: 1.4g/cm³"
+  thermalDestructionPoint: 550°C"
+  thermalDestructionType: melting
   densityNumeric: 1.44
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -26,7 +28,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 0.0
-  meltingPoint: "500-600°C"
   meltingPointNumeric: 550.0
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -36,7 +37,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "0.04-0.05 W/m·K (transverse), 0.8-1.0 W/m·K (longitudinal)"
+  thermalConductivity: 0.0W/m·K
   thermalConductivityNumeric: 0.04
   thermalConductivityUnit: "W/m·K"
   thermalConductivityMin: "0.5 W/m·K"
@@ -46,7 +47,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.0
-  tensileStrength: 2900-3620 MPa (fiber), 70-100 MPa (composite)
+  tensileStrength: 3260MPa
   tensileStrengthNumeric: 3260.0
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -174,7 +175,7 @@ environmentalImpact:
     with collected debris being 99.8% pure contaminant
 outcomes:
 - result: Surface contamination removal efficiency
-  metric: '>99.5% removal of release agents, oils, and particulate contaminants'
+  metric: ">99.5% removal of release agents, oils, and particulate contaminants"
 - result: Processing speed
   metric: "0.5-2.0 m²/hour depending on contamination level and required precision"
 technicalSpecifications:
@@ -195,7 +196,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Indonesia
   author_id: 3
-  verification_timestamp: '2025-09-20T20:44:28Z'
+  verification_timestamp: '2025-09-20T20: 44: 28Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -214,3 +215,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 15.2
 surface_roughness_after: 4.8
+---

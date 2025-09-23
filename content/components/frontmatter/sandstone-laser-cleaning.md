@@ -16,7 +16,9 @@ chemicalProperties:
     O₃)"
   materialType: sedimentary rock
 properties:
-  density: "2.0-2.6 g/cm³"
+  density: 2.3g/cm³"
+  thermalDestructionPoint: "1700°C"
+  thermalDestructionType: melting
   densityNumeric: 2.3
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -26,7 +28,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 11.9
-  meltingPoint: "1700°C"
   meltingPointNumeric: 1700.0
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -36,7 +37,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 31.2
-  thermalConductivity: "1.7-3.3 W/(m·K)"
+  thermalConductivity: 2.5W/(m·K)"
   thermalConductivityNumeric: 2.5
   thermalConductivityUnit: W/
   thermalConductivityMin: "0.5 W/m·K"
@@ -46,7 +47,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 1.0
-  tensileStrength: 4-25 MPa
+  tensileStrength: 14.5MPa
   tensileStrengthNumeric: 14.5
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -56,7 +57,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 0.0
-  hardness: 6-7 Mohs (quartz grains)
+  hardness: 6.5Mohs
   hardnessNumeric: 6.5
   hardnessUnit: Mohs
   hardnessMin: 1 Mohs
@@ -80,7 +81,6 @@ properties:
   wavelength: 1064nm
   fluenceRange: "0.5-5 J/cm²"
   chemicalFormula: Variable composition
-  thermalBehaviorType: melting
 composition:
 - "Quartz (SiO₂): 60-90%"
 - "Calcium carbonate (CaCO₃): 5-20% (cement)"
@@ -147,10 +147,10 @@ applications:
 - 'Heritage Conservation: Restoration of historical sandstone structures'
 compatibility:
 - Pulsed fiber lasers (1064 nm)
-- Q-switched Nd:YAG lasers
+- Q-switched Nd: YAG lasers
 - Heritage conservation materials (lime-based mortars, traditional pigments)
-regulatoryStandards: EN 15898:2019 (Conservation of cultural heritage - Main general
-  terms and definitions), EN 17138:2018 (Conservation of cultural heritage - Methods
+regulatoryStandards: "EN 15898: 2019 (Conservation of cultural heritage - Main general"
+  terms and definitions), EN 17138: 2018 (Conservation of cultural heritage - Methods
   and materials for cleaning porous inorganic materials)
 author: Alessandro Moretti
 author_object:
@@ -178,8 +178,8 @@ environmentalImpact:
     sandstone and contaminate groundwater
 outcomes:
 - result: Surface contamination removal
-  metric: '>95% removal efficiency of black crusts and biological growth with substrate
-    preservation'
+  metric: ">95% removal efficiency of black crusts and biological growth with substrate
+    preservation"
 - result: Processing speed
   metric: "0.5-2.0 m²/hour depending on contamination level and laser parameters"
 technicalSpecifications:
@@ -201,7 +201,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Italy
   author_id: 2
-  verification_timestamp: '2025-09-20T21:49:15Z'
+  verification_timestamp: '2025-09-20T21: 49: 15Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -220,3 +220,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 28.5
 surface_roughness_after: 9.5
+---

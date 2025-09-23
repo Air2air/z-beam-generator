@@ -137,6 +137,20 @@ class PropertyEnhancementService:
         logger.debug("Reorganized machine settings with grouped numeric/unit components")
 
     @staticmethod
+    def _extract_unit_from_range(property_config: Dict) -> str:
+        """Extract unit from materials.yaml range configuration."""
+        min_val = property_config.get("min", "")
+        max_val = property_config.get("max", "")
+        
+        # Extract unit from min value first, then max
+        for val in [min_val, max_val]:
+            if val:
+                _, unit = PropertyEnhancementService._extract_numeric_and_unit(str(val))
+                if unit:
+                    return unit
+        return ""
+
+    @staticmethod
     def _add_complete_property_breakdown(new_properties: Dict, base_prop: str, value_str: str, config: Dict = None) -> None:
         """
         Add complete property breakdown with calculated numeric variants, min/max, and percentiles.
@@ -168,54 +182,20 @@ class PropertyEnhancementService:
         if config and not unit:
             unit = config["unit"]
         elif not unit:
-            # Default units based on property type
-            unit_defaults = {
-                "density": "g/cm³",
-                "meltingPoint": "°C", 
-                "decompositionPoint": "°C",
-                "thermalConductivity": "W/m·K",
-                "tensileStrength": "MPa",
-                "hardness": "Mohs",
-                "youngsModulus": "GPa"
-            }
-            unit = unit_defaults.get(base_prop, "")
+            # FAIL-FAST: No unit defaults allowed
+            raise ValueError(f"Unit not provided for {base_prop} and no unit in existing value: {value_str}")
         
         # Add numeric breakdown
         new_properties[f"{base_prop}Numeric"] = numeric_value
         new_properties[f"{base_prop}Unit"] = unit
         
-        # Add Min/Max ranges - use config if available, otherwise calculate reasonable ranges
+        # Add Min/Max ranges - FAIL-FAST: Require config data  
         if config:
             min_str = config["min"]
             max_str = config["max"]
         else:
-            # Calculate reasonable min/max based on typical material property ranges
-            if base_prop == "density":
-                min_val, max_val = 1.8, 6.0
-                min_str, max_str = f"{min_val} {unit}", f"{max_val} {unit}"
-            elif base_prop == "meltingPoint":
-                min_val, max_val = 1200, 2800
-                min_str, max_str = f"{min_val}{unit}", f"{max_val}{unit}"
-            elif base_prop == "decompositionPoint":
-                min_val, max_val = 250, 500
-                min_str, max_str = f"{min_val}{unit}", f"{max_val}{unit}"
-            elif base_prop == "thermalConductivity":
-                min_val, max_val = 0.5, 200
-                min_str, max_str = f"{min_val} {unit}", f"{max_val} {unit}"
-            elif base_prop == "tensileStrength":
-                min_val, max_val = 50, 1000
-                min_str, max_str = f"{min_val} {unit}", f"{max_val} {unit}"
-            elif base_prop == "hardness":
-                min_val, max_val = 1, 10
-                min_str, max_str = f"{min_val} {unit}", f"{max_val} {unit}"
-            elif base_prop == "youngsModulus":
-                min_val, max_val = 20, 80
-                min_str, max_str = f"{min_val} {unit}", f"{max_val} {unit}"
-            else:
-                # Generic range
-                min_val = max(0.1, numeric_value * 0.1)
-                max_val = numeric_value * 5
-                min_str, max_str = f"{min_val} {unit}", f"{max_val} {unit}"
+            # FAIL-FAST: No hardcoded min/max ranges allowed
+            raise ValueError(f"No configuration found for {base_prop} min/max ranges - data must be provided in materials.yaml")
         
         # Add Min/Max properties
         new_properties[f"{base_prop}Min"] = min_str
@@ -285,41 +265,42 @@ class PropertyEnhancementService:
         # Create new ordered properties dict
         new_properties = {}
         
-        # Properties that need complete numeric breakdown with industry-standard ranges
-        property_configs = {
-            "density": {
-                "unit": "g/cm³", 
-                "min": "1.8 g/cm³", "max": "6.0 g/cm³",
-                "percentile_base": 50.0
-            },
-            "meltingPoint": {
-                "unit": "°C",
-                "min": "1200°C", "max": "2800°C", 
-                "percentile_base": 45.0
-            },
-            "thermalConductivity": {
-                "unit": "W/m·K",
-                "min": "0.5 W/m·K", "max": "200 W/m·K",
-                "percentile_base": 50.0
-            },
-            "tensileStrength": {
-                "unit": "MPa",
-                "min": "50 MPa", "max": "1000 MPa",
-                "percentile_base": 25.0
-            },
-            "hardness": {
-                "unit": "Mohs", 
-                "min": "1 Mohs", "max": "10 Mohs",
-                "percentile_base": 40.0
-            },
-            "youngsModulus": {
-                "unit": "GPa",
-                "min": "20 GPa", "max": "80 GPa", 
-                "percentile_base": 50.0
-            }
-        }        # Process properties in order for comprehensive numeric breakdown
+        # Get material configuration from materials.yaml
+        # FAIL-FAST: No hardcoded defaults - require proper material configuration
+        material_name = frontmatter_data.get("title", "").strip()
+        if not material_name:
+            logger.error("Material name (title) is required for property enhancement")
+            return
+            
+        # Import materials.yaml configuration
+        try:
+            import yaml
+            import os
+            materials_yaml_path = os.path.join(os.path.dirname(__file__), "../../../data/materials.yaml")
+            with open(materials_yaml_path, 'r') as f:
+                materials_config = yaml.safe_load(f)
+        except Exception as e:
+            logger.error(f"Failed to load materials.yaml configuration: {e}")
+            return
+            
+        # Find material category and configuration
+        material_category = None
+        # Look for material in material_index section
+        material_index = materials_config.get("material_index", {})
+        if material_name in material_index:
+            material_category = material_index[material_name].get("category")
+        
+        if not material_category:
+            logger.error(f"Material '{material_name}' not found in materials.yaml configuration")
+            return
+            
+        # Get category-based property ranges
+        category_config = materials_config.get("category_ranges", {}).get(material_category, {})
+        if not category_config:
+            logger.error(f"Category '{material_category}' configuration not found in materials.yaml")
+            return        # Process properties in order for comprehensive numeric breakdown
         property_order = [
-            "density", "meltingPoint", "thermalConductivity", 
+            "density", "thermalConductivity", "thermalDestructionPoint",
             "tensileStrength", "hardness", "youngsModulus"
         ]
         
@@ -329,10 +310,22 @@ class PropertyEnhancementService:
                 value_str = str(properties[base_prop])
                 new_properties[base_prop] = properties[base_prop]
                 
-                # Calculate comprehensive numeric breakdown
-                PropertyEnhancementService._add_complete_property_breakdown(
-                    new_properties, base_prop, value_str, property_configs.get(base_prop)
-                )
+                # Calculate comprehensive numeric breakdown using category configuration
+                property_config = category_config.get(base_prop, {})
+                if property_config:
+                    # Convert materials.yaml format to expected config format
+                    formatted_config = {
+                        "min": property_config.get("min", ""),
+                        "max": property_config.get("max", ""),
+                        "unit": PropertyEnhancementService._extract_unit_from_range(property_config)
+                    }
+                    PropertyEnhancementService._add_complete_property_breakdown(
+                        new_properties, base_prop, value_str, formatted_config
+                    )
+                else:
+                    logger.warning(f"Property '{base_prop}' not configured for category '{material_category}'")
+                    # FAIL-FAST: No fallback - just add the base property without enhancement
+                    new_properties[base_prop] = properties[base_prop]
             
             # Also handle existing Min/Max properties if they exist
             for suffix in ["Min", "Max"]:

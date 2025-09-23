@@ -15,7 +15,9 @@ chemicalProperties:
   formula: Variable organic composition (cellulose, lignin, hemicellulose)
   materialType: wood
 properties:
-  density: "680-710 kg/m³ (air-dried)"
+  density: 695kg/m³
+  thermalDestructionPoint: "300°C"
+  thermalDestructionType: decomposition
   densityNumeric: 695.0
   densityUnit: "kg/m³"
   densityMin: "1.8 g/cm³"
@@ -32,7 +34,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "0.12-0.17 W/(m·K) (radial direction)"
+  thermalConductivity: 0.1W/(m·K)
   thermalConductivityNumeric: 0.15
   thermalConductivityUnit: W/
   thermalConductivityMin: "0.5 W/m·K"
@@ -42,7 +44,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.0
-  tensileStrength: 85-125 MPa (parallel to grain)
+  tensileStrength: 105MPa
   tensileStrengthNumeric: 105.0
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -76,11 +78,7 @@ properties:
   wavelength: 1064nm
   fluenceRange: "0.5-5 J/cm²"
   chemicalFormula: Complex organic polymer (C6H10O5)n cellulose + C9H10O2(OCH3)0.9-1.7
-    lignin
-  thermalBehaviorType: decomposition
-  decompositionPoint: "300°C"
-  decompositionPointNumeric: 300
-  decompositionPointUnit: "°C"
+    lignin  decompositionPointUnit: "°C"
 composition:
 - 'Cellulose: 40-45%'
 - 'Lignin: 22-27%'
@@ -195,7 +193,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: United States (California)
   author_id: 4
-  verification_timestamp: '2025-09-20T21:55:31Z'
+  verification_timestamp: '2025-09-20T21: 55: 31Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -214,3 +212,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 46.8
 surface_roughness_after: 18.8
+---

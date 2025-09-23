@@ -1,36 +1,36 @@
 tags:
+  - yi-chun-lin
   - woodworking
-  - furniture
-  - marine
   - restoration
-  - stripping
+  - decontamination
+  - surface-preparation
   - refinishing
-  - polishing
-  - finishing
+  - manufacturing
+  - industrial
 material: "mahogany"
 count: 8
 categories:
   industry:
-    - marine
+    - manufacturing
+    - industrial
   process:
     - restoration
-    - polishing
+    - decontamination
   author:
+    - surface-preparation
   other:
+    - yi-chun-lin
     - woodworking
-    - furniture
-    - stripping
     - refinishing
-    - finishing
 metadata:
-  generated: "2025-09-17T12:02:05.908319"
+  generated: "2025-09-22T15:57:40.180055"
   format: "yaml"
   version: "2.0"
 
 ---
 Material: "mahogany"
 Component: tags
-Generated: 2025-09-17T12:02:05.908333
-Generator: Z-Beam v1.0.0
+Generated: 2025-09-22T15:57:40.181506
+Generator: Z-Beam v1.0.0 (Frontmatter-Based)
 Format: YAML v2.0
 ---

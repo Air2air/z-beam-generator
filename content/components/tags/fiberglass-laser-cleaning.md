@@ -1,36 +1,36 @@
 tags:
+  - ikmanda-roswati
+  - polymer
+  - manufacturing
   - aerospace
-  - marine
   - automotive
   - decontamination
-  - restoration
-  - polishing
+  - surface-preparation
   - texturing
-  - etching
 material: "fiberglass"
 count: 8
 categories:
   industry:
+    - manufacturing
     - aerospace
-    - marine
     - automotive
   process:
     - decontamination
-    - restoration
-    - polishing
     - texturing
-    - etching
   author:
+    - ikmanda-roswati
+    - surface-preparation
   other:
+    - polymer
 metadata:
-  generated: "2025-09-17T12:00:30.448505"
+  generated: "2025-09-22T15:57:38.902653"
   format: "yaml"
   version: "2.0"
 
 ---
 Material: "fiberglass"
 Component: tags
-Generated: 2025-09-17T12:00:30.448525
-Generator: Z-Beam v1.0.0
+Generated: 2025-09-22T15:57:38.903874
+Generator: Z-Beam v1.0.0 (Frontmatter-Based)
 Format: YAML v2.0
 ---

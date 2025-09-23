@@ -13,6 +13,8 @@ chemicalProperties:
   materialType: metal
 properties:
   density: "7.31 g/cm³"
+  thermalDestructionPoint: "156°C"
+  thermalDestructionType: melting
   densityNumeric: 7.31
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -22,7 +24,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 100.0
-  meltingPoint: "156°C"
   meltingPointNumeric: 156
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -42,7 +43,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 40.8
-  tensileStrength: 2.5-4 MPa
+  tensileStrength: 3.2MPa
   tensileStrengthNumeric: 3.25
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -52,7 +53,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 0.0
-  hardness: 0.9-1.0 HB (Brinell)
+  hardness: 0.9HB
   hardnessNumeric: 0.95
   hardnessUnit: HB
   hardnessMin: 1 Mohs
@@ -76,7 +77,6 @@ properties:
   wavelength: 1064 nm
   fluenceRange: "0.5-5 J/cm²"
   chemicalFormula: In
-  thermalBehaviorType: melting
 composition:
 - Indium 99.99% (4N purity typical for industrial applications)
 - 'Trace elements: Iron <10 ppm, Copper <5 ppm, Zinc <5 ppm, Tin <5 ppm'
@@ -191,7 +191,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: United States (California)
   author_id: 4
-  verification_timestamp: '2025-09-20T21:16:35Z'
+  verification_timestamp: '2025-09-20T21: 16: 35Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -210,3 +210,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 4.2
 surface_roughness_after: 1.0
+---

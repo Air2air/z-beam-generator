@@ -16,7 +16,9 @@ chemicalProperties:
   formula: SiO2-Al2O3-K2O
   materialType: igneous rock
 properties:
-  density: "2.65-2.75 g/cm³"
+  density: 2.7g/cm³"
+  thermalDestructionPoint: "1260°C"
+  thermalDestructionType: melting
   densityNumeric: 2.7
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -26,7 +28,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 21.4
-  meltingPoint: "1260°C"
   meltingPointNumeric: 1260
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -36,7 +37,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 2.3
-  thermalConductivity: "1.7-4.0 W/m·K"
+  thermalConductivity: 2.9W/m·K"
   thermalConductivityNumeric: 2.85
   thermalConductivityUnit: "W/m·K"
   thermalConductivityMin: "0.5 W/m·K"
@@ -46,7 +47,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 1.2
-  tensileStrength: 7-25 MPa
+  tensileStrength: 16MPa
   tensileStrengthNumeric: 16.0
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -56,7 +57,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 0.0
-  hardness: 6-7 Mohs
+  hardness: 6.5Mohs
   hardnessNumeric: 6.5
   hardnessUnit: Mohs
   hardnessMin: 1 Mohs
@@ -76,11 +77,10 @@ properties:
   youngsModulusMaxNumeric: 80.0
   youngsModulusMaxUnit: GPa
   modulusPercentile: 33.3
-  laserType: Nd:YAG or fiber laser
+  laserType: "Nd: YAG or fiber laser"
   wavelength: 1064nm
   fluenceRange: "1.0-10 J/cm²"
   chemicalFormula: SiO2-Al2O3-K2O
-  thermalBehaviorType: melting
 composition:
 - "Silica (SiO₂): 70-77%"
 - "Alumina (Al₂O₃): 11-14%"
@@ -149,7 +149,7 @@ compatibility:
 - Quartz-based stones (sandstone, quartzite)
 - Feldspar-rich materials
 - Marble (with adjusted parameters)
-regulatoryStandards: EN 15898:2019 (Conservation of cultural heritage), ISO 18452:2017
+regulatoryStandards: "EN 15898: 2019 (Conservation of cultural heritage), ISO 18452: 2017"
   (Laser cleaning of hard stones)
 author: Ikmanda Roswati
 author_object:
@@ -178,8 +178,8 @@ environmentalImpact:
     square meter compared to hydro-cleaning methods
 outcomes:
 - result: Surface contamination removal efficiency
-  metric: '>95% removal of biological patina and atmospheric deposits with <2% substrate
-    damage'
+  metric: ">95% removal of biological patina and atmospheric deposits with <2% substrate
+    damage"
 - result: Processing speed
   metric: "0.5-2.0 m²/hour depending on contamination type and laser parameters"
 technicalSpecifications:
@@ -200,7 +200,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Indonesia
   author_id: 3
-  verification_timestamp: '2025-09-20T21:43:42Z'
+  verification_timestamp: '2025-09-20T21: 43: 42Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -212,7 +212,7 @@ laser_parameters:
   power_range: 50-200W
   repetition_rate: 20-100kHz
   spot_size: 0.1-1.0mm
-  laser_type: Nd:YAG or fiber laser
+  laser_type: "Nd: YAG or fiber laser"
 tags:
 - Construction
 - Restoration
@@ -220,3 +220,4 @@ complexity: high
 difficultyScore: 4
 surface_roughness_before: 25.5
 surface_roughness_after: 8.5
+---

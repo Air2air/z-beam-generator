@@ -1,36 +1,36 @@
 tags:
-  - aerospace
+  - todd-dunning
+  - metalworking
+  - industrial
   - automotive
   - electronics
+  - decontamination
+  - surface-preparation
   - passivation
-  - polishing
-  - texturing
-  - metal
-  - industrial
 material: "brass"
 count: 8
 categories:
   industry:
-    - aerospace
+    - industrial
     - automotive
     - electronics
-    - industrial
   process:
+    - decontamination
     - passivation
-    - polishing
-    - texturing
   author:
+    - todd-dunning
+    - surface-preparation
   other:
-    - metal
+    - metalworking
 metadata:
-  generated: "2025-09-17T11:57:29.724239"
+  generated: "2025-09-22T15:57:39.289406"
   format: "yaml"
   version: "2.0"
 
 ---
 Material: "brass"
 Component: tags
-Generated: 2025-09-17T11:57:29.724261
-Generator: Z-Beam v1.0.0
+Generated: 2025-09-22T15:57:39.290741
+Generator: Z-Beam v1.0.0 (Frontmatter-Based)
 Format: YAML v2.0
 ---

@@ -16,7 +16,9 @@ chemicalProperties:
   formula: Si3N4
   materialType: ceramic
 properties:
-  density: "3.17-3.44 g/cm³"
+  density: 3.3g/cm³"
+  thermalDestructionPoint: "1900°C"
+  thermalDestructionType: melting
   densityNumeric: 3.3
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -26,7 +28,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 35.7
-  meltingPoint: "1900°C"
   meltingPointNumeric: 1900.0
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -36,7 +37,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 43.8
-  thermalConductivity: "15-85 W/(m·K)"
+  thermalConductivity: 50W/(m·K)"
   thermalConductivityNumeric: 50.0
   thermalConductivityUnit: W/
   thermalConductivityMin: "0.5 W/m·K"
@@ -46,7 +47,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 24.8
-  tensileStrength: 300-1000 MPa
+  tensileStrength: 650MPa
   tensileStrengthNumeric: 650.0
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -80,7 +81,6 @@ properties:
   wavelength: 1064 nm
   fluenceRange: "0.5–5 J/cm²"
   chemicalFormula: Si3N4
-  thermalBehaviorType: melting
 composition:
 - 'Silicon (Si): 60.06%'
 - 'Nitrogen (N): 39.94%'
@@ -179,7 +179,7 @@ environmentalImpact:
     generation requiring treatment
 outcomes:
 - result: Surface contamination removal efficiency
-  metric: '>99.9% particulate removal with <0.1% substrate damage'
+  metric: ">99.9% particulate removal with <0.1% substrate damage"
 - result: Processing speed and precision
   metric: "1-10 cm²/min cleaning rate with ±10 μm precision, depending on contamination type and laser parameters"
 technicalSpecifications:
@@ -201,7 +201,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Taiwan
   author_id: 1
-  verification_timestamp: '2025-09-20T20:39:05Z'
+  verification_timestamp: '2025-09-20T20: 39: 05Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -224,3 +224,4 @@ complexity: high
 difficultyScore: 4
 surface_roughness_before: 2.8
 surface_roughness_after: 0.7
+---

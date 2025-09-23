@@ -1,36 +1,36 @@
 tags:
+  - todd-dunning
+  - metalworking
+  - industrial
   - aerospace
-  - defense
-  - medical
+  - nuclear
   - decontamination
-  - decoating
+  - surface-preparation
   - passivation
-  - etching
-  - polishing
 material: "beryllium"
 count: 8
 categories:
   industry:
+    - industrial
     - aerospace
-    - medical
   process:
     - decontamination
-    - decoating
     - passivation
-    - etching
-    - polishing
   author:
+    - todd-dunning
+    - surface-preparation
   other:
-    - defense
+    - metalworking
+    - nuclear
 metadata:
-  generated: "2025-09-17T11:59:12.174804"
+  generated: "2025-09-22T15:57:39.271787"
   format: "yaml"
   version: "2.0"
 
 ---
 Material: "beryllium"
 Component: tags
-Generated: 2025-09-17T11:59:12.174822
-Generator: Z-Beam v1.0.0
+Generated: 2025-09-22T15:57:39.273279
+Generator: Z-Beam v1.0.0 (Frontmatter-Based)
 Format: YAML v2.0
 ---

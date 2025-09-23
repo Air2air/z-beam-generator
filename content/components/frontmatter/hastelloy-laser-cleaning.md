@@ -16,6 +16,8 @@ chemicalProperties:
   materialType: metal
 properties:
   density: "8.89 g/cm³ (Hastelloy C-276)"
+  thermalDestructionPoint: "1371°C"
+  thermalDestructionType: melting
   densityNumeric: 142.445
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -25,7 +27,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 100.0
-  meltingPoint: "1371°C"
   meltingPointNumeric: 1371
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -79,11 +80,10 @@ properties:
   wavelength: 1064nm
   fluenceRange: "1.0–10 J/cm²"
   chemicalFormula: Ni-based (Ni-Cr-Mo-W-Fe)
-  thermalBehaviorType: melting
 composition:
 - 'Nickel: 57% (Hastelloy C-276)'
 - 'Chromium: 15.5%, Molybdenum: 16%, Tungsten: 3.75%, Iron: 5.5%, Cobalt: 2.5% max,
-  Manganese: 1% max, Vanadium: 0.35% max, Silicon: 0.08% max, Carbon: 0.01% max, Phosphorus:
+  Manganese: "1% max, Vanadium: 0.35% max, Silicon: 0.08% max, Carbon: 0.01% max, Phosphorus: "
   0.04% max, Sulfur: 0.03% max'
 machineSettings:
   powerRange: 50-200W
@@ -175,7 +175,7 @@ environmentalImpact:
     or chemical bath processes for Hastelloy components
 outcomes:
 - result: Surface contamination removal efficiency
-  metric: '>99.5% removal of oxides and contaminants without substrate damage'
+  metric: ">99.5% removal of oxides and contaminants without substrate damage"
 - result: Processing speed
   metric: "0.5-2.0 m²/hour depending on contamination level and laser parameters"
 technicalSpecifications:
@@ -196,7 +196,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Taiwan
   author_id: 1
-  verification_timestamp: '2025-09-20T21:14:42Z'
+  verification_timestamp: '2025-09-20T21: 14: 42Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -215,3 +215,4 @@ complexity: high
 difficultyScore: 4
 surface_roughness_before: 8.5
 surface_roughness_after: 1.6
+---

@@ -1,36 +1,36 @@
 tags:
+  - todd-dunning
+  - metalworking
+  - industrial
   - aerospace
-  - medical
   - electronics
+  - decontamination
+  - surface-preparation
   - passivation
-  - etching
-  - polishing
-  - texturing
-  - decoating
 material: "niobium"
 count: 8
 categories:
   industry:
+    - industrial
     - aerospace
-    - medical
     - electronics
   process:
+    - decontamination
     - passivation
-    - etching
-    - polishing
-    - texturing
-    - decoating
   author:
+    - todd-dunning
+    - surface-preparation
   other:
+    - metalworking
 metadata:
-  generated: "2025-09-17T12:02:51.254196"
+  generated: "2025-09-22T15:57:39.530991"
   format: "yaml"
   version: "2.0"
 
 ---
 Material: "niobium"
 Component: tags
-Generated: 2025-09-17T12:02:51.254228
-Generator: Z-Beam v1.0.0
+Generated: 2025-09-22T15:57:39.532195
+Generator: Z-Beam v1.0.0 (Frontmatter-Based)
 Format: YAML v2.0
 ---

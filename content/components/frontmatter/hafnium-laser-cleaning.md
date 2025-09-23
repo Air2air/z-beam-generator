@@ -13,6 +13,8 @@ chemicalProperties:
   materialType: metal
 properties:
   density: "13.31 g/cm³"
+  thermalDestructionPoint: "2233°C"
+  thermalDestructionType: melting
   densityNumeric: 13.31
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -22,7 +24,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 100.0
-  meltingPoint: "2233°C"
   meltingPointNumeric: 2233.0
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -42,7 +43,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 11.3
-  tensileStrength: 380-550 MPa
+  tensileStrength: 465MPa
   tensileStrengthNumeric: 465.0
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -52,7 +53,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 43.7
-  hardness: 1700-2100 MPa (Vickers)
+  hardness: 1900MPa
   hardnessNumeric: 1900.0
   hardnessUnit: MPa
   hardnessMin: 1 Mohs
@@ -76,7 +77,6 @@ properties:
   wavelength: 1064nm
   fluenceRange: "1.0–10 J/cm²"
   chemicalFormula: Hf
-  thermalBehaviorType: melting
 composition:
 - 'Hafnium (Hf): 97.0-99.9%'
 - 'Zirconium (Zr): 1.0-3.0% (naturally occurring impurity)'
@@ -170,7 +170,7 @@ environmentalImpact:
     chemical and mechanical cleaning methods for hafnium
 outcomes:
 - result: Surface contamination removal efficiency
-  metric: '>99.9% removal of oxides and contaminants with <0.1% substrate loss'
+  metric: ">99.9% removal of oxides and contaminants with <0.1% substrate loss"
 - result: Processing precision
   metric: "±5 μm accuracy with surface roughness maintained at Ra < 0.8 μ"
     m"
@@ -192,7 +192,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: United States (California)
   author_id: 4
-  verification_timestamp: '2025-09-20T21:13:55Z'
+  verification_timestamp: '2025-09-20T21: 13: 55Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -211,3 +211,4 @@ complexity: high
 difficultyScore: 5
 surface_roughness_before: 5.1
 surface_roughness_after: 1.3
+---

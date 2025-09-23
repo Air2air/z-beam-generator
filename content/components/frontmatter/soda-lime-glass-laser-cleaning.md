@@ -13,6 +13,8 @@ chemicalProperties:
   materialType: glass
 properties:
   density: "2.5 g/cm³"
+  thermalDestructionPoint: "1000 °C"
+  thermalDestructionType: melting
   densityNumeric: 2.5
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -22,7 +24,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 16.7
-  meltingPoint: "1000 °C"
   meltingPointNumeric: 1000.0
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -32,7 +33,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "0.8-1.0 W/(m·K)"
+  thermalConductivity: 0.9W/(m·K)"
   thermalConductivityNumeric: 0.9
   thermalConductivityUnit: W/
   thermalConductivityMin: "0.5 W/m·K"
@@ -42,7 +43,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.2
-  tensileStrength: 30-90 MPa
+  tensileStrength: 60MPa
   tensileStrengthNumeric: 60.0
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -52,7 +53,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 1.1
-  hardness: ~6 Mohs, 470-670 HK (Knoop)
+  hardness: 570HK
   hardnessNumeric: 570.0
   hardnessUnit: HK
   hardnessMin: 1 Mohs
@@ -198,7 +199,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Taiwan
   author_id: 1
-  verification_timestamp: '2025-09-20T20:58:21Z'
+  verification_timestamp: '2025-09-20T20: 58: 21Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -217,3 +218,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 1.6
 surface_roughness_after: 0.45
+---

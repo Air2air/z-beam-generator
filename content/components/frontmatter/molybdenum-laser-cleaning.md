@@ -13,6 +13,8 @@ chemicalProperties:
   materialType: metal
 properties:
   density: "10.28 g/cm³"
+  thermalDestructionPoint: "2623°C"
+  thermalDestructionType: melting
   densityNumeric: 10.28
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -22,7 +24,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 100.0
-  meltingPoint: "2623°C"
   meltingPointNumeric: 2623.0
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -76,7 +77,6 @@ properties:
   wavelength: 1064nm
   fluenceRange: "1.0–10 J/cm²"
   chemicalFormula: Mo
-  thermalBehaviorType: melting
 composition:
 - 'Molybdenum (Mo): 99.95-99.99%'
 - 'Impurities: <0.05% (typically carbon, oxygen, iron, nickel)'
@@ -141,7 +141,7 @@ applications:
 compatibility:
 - Tungsten (similar thermal properties and laser processing parameters)
 - Stainless steel 316L (commonly processed with similar laser systems)
-regulatoryStandards: ISO 9013:2017 (Thermal cutting classification), EN 60825-1 (Laser
+regulatoryStandards: "ISO 9013: 2017 (Thermal cutting classification), EN 60825-1 (Laser"
   safety), OSHA 29 CFR 1910.1096 (Ionizing radiation standards for industrial lasers)
 author: Yi-Chun Lin
 author_object:
@@ -191,7 +191,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Taiwan
   author_id: 1
-  verification_timestamp: '2025-09-20T21:20:38Z'
+  verification_timestamp: '2025-09-20T21: 20: 38Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -210,3 +210,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 5.8
 surface_roughness_after: 1.5
+---

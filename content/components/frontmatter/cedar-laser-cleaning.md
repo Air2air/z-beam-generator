@@ -15,7 +15,9 @@ chemicalProperties:
   formula: "C₆H₁₀O₅ (cellulose base) + complex organic compounds"
   materialType: wood
 properties:
-  density: "370-420 kg/m³ (Eastern Red Cedar)"
+  density: 395kg/m³
+  thermalDestructionPoint: "300°C"
+  thermalDestructionType: decomposition
   densityNumeric: 395.0
   densityUnit: "kg/m³"
   densityMin: "1.8 g/cm³"
@@ -42,7 +44,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.0
-  tensileStrength: 40-60 MPa (parallel to grain)
+  tensileStrength: 50MPa
   tensileStrengthNumeric: 50.0
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -52,7 +54,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 0.0
-  hardness: 320-450 N (Janka hardness scale)
+  hardness: 385N
   hardnessNumeric: 385.0
   hardnessUnit: N
   hardnessMin: 1 Mohs
@@ -75,11 +77,7 @@ properties:
   laserType: Pulsed fiber laser
   wavelength: 1064nm
   fluenceRange: "0.5–5 J/cm²"
-  chemicalFormula: "Complex organic composite (C₆H₁₀O₅)n + resins + terpenes"
-  thermalBehaviorType: decomposition
-  decompositionPoint: "300°C"
-  decompositionPointNumeric: 300
-  decompositionPointUnit: "°C"
+  chemicalFormula: "Complex organic composite (C₆H₁₀O₅)n + resins + terpenes"  decompositionPointUnit: "°C"
 composition:
 - 'Cellulose: 40-45%'
 - 'Lignin: 25-30%'
@@ -174,8 +172,8 @@ environmentalImpact:
     methods for Cedar
 outcomes:
 - result: Surface contamination removal efficiency
-  metric: '>95% removal of biological growth and surface deposits with <5% substrate
-    loss'
+  metric: ">95% removal of biological growth and surface deposits with <5% substrate
+    loss"
 - result: Processing speed for large Cedar surfaces
   metric: "0.5-2.0 m²/hour depending on contamination level and laser parameters"
 technicalSpecifications:
@@ -196,7 +194,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Italy
   author_id: 2
-  verification_timestamp: '2025-09-20T21:58:50Z'
+  verification_timestamp: '2025-09-20T21: 58: 50Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -215,3 +213,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 55.8
 surface_roughness_after: 23.2
+---

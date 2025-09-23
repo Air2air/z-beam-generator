@@ -15,7 +15,9 @@ chemicalProperties:
   formula: Variable organic composition (primarily cellulose, lignin, hemicellulose)
   materialType: wood
 properties:
-  density: "450-550 kg/m³ (varies by species and moisture content)"
+  density: 500kg/m³
+  thermalDestructionPoint: "300°C"
+  thermalDestructionType: decomposition
   densityNumeric: 500.0
   densityUnit: "kg/m³"
   densityMin: "1.8 g/cm³"
@@ -32,7 +34,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "0.12-0.17 W/m·K (radial direction)"
+  thermalConductivity: 0.1W/m·K
   thermalConductivityNumeric: 0.15
   thermalConductivityUnit: "W/m·K"
   thermalConductivityMin: "0.5 W/m·K"
@@ -42,7 +44,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.0
-  tensileStrength: 70-110 MPa (parallel to grain)
+  tensileStrength: 90MPa
   tensileStrengthNumeric: 90.0
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -52,7 +54,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 4.2
-  hardness: 2.5-3.5 kN (Janka hardness scale)
+  hardness: 3kN
   hardnessNumeric: 3.0
   hardnessUnit: kN
   hardnessMin: 1 Mohs
@@ -75,11 +77,7 @@ properties:
   laserType: Pulsed fiber laser
   wavelength: 1064nm
   fluenceRange: "0.5-5 J/cm²"
-  chemicalFormula: "Complex organic mixture (C₆H₁₀O₅)n cellulose + C₉H₁₀O₃ lignin + C₅H₈O₄ hemicellulose"
-  thermalBehaviorType: decomposition
-  decompositionPoint: "300°C"
-  decompositionPointNumeric: 300
-  decompositionPointUnit: "°C"
+  chemicalFormula: "Complex organic mixture (C₆H₁₀O₅)n cellulose + C₉H₁₀O₃ lignin + C₅H₈O₄ hemicellulose"  decompositionPointUnit: "°C"
 composition:
 - 'Cellulose: 40-50%'
 - 'Lignin: 25-35%'
@@ -195,7 +193,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: United States (California)
   author_id: 4
-  verification_timestamp: '2025-09-20T22:00:28Z'
+  verification_timestamp: '2025-09-20T22: 00: 28Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -214,3 +212,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 48.2
 surface_roughness_after: 19.8
+---

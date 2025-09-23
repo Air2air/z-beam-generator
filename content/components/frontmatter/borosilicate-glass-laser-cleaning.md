@@ -17,6 +17,8 @@ chemicalProperties:
   materialType: glass
 properties:
   density: "2.23 g/cm³"
+  thermalDestructionPoint: "820°C"
+  thermalDestructionType: melting
   densityNumeric: 2.23
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -26,7 +28,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 10.2
-  meltingPoint: "820°C"
   meltingPointNumeric: 820
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -46,7 +47,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.4
-  tensileStrength: 30-70 MPa
+  tensileStrength: 50MPa
   tensileStrengthNumeric: 50.0
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -56,7 +57,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 0.0
-  hardness: 400-480 HK0.1/20 (Knoop hardness)
+  hardness: 440HK
   hardnessNumeric: 440.0
   hardnessUnit: HK
   hardnessMin: 1 Mohs
@@ -80,7 +81,6 @@ properties:
   wavelength: 1064nm
   fluenceRange: "0.5–5 J/cm²"
   chemicalFormula: B2O3-SiO2
-  thermalBehaviorType: melting
 composition:
 - "Silicon dioxide (SiO₂): 70-85%"
 - "Boron trioxide (B₂O₃): 7-15%"
@@ -199,7 +199,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Indonesia
   author_id: 3
-  verification_timestamp: '2025-09-20T20:53:13Z'
+  verification_timestamp: '2025-09-20T20: 53: 13Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -219,3 +219,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 1.5
 surface_roughness_after: 0.4
+---

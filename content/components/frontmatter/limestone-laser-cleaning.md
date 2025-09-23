@@ -16,7 +16,9 @@ chemicalProperties:
   formula: CaCO3
   materialType: sedimentary rock
 properties:
-  density: "2.3-2.7 g/cm³ (varies with porosity and composition)"
+  density: 2.5g/cm³
+  thermalDestructionPoint: "825°C"
+  thermalDestructionType: melting
   densityNumeric: 2.5
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -26,7 +28,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 16.7
-  meltingPoint: "825°C"
   meltingPointNumeric: 825.0
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -36,7 +37,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "1.26-1.33 W/(m·K) at 20°C"
+  thermalConductivity: 1.3W/(m·K)
   thermalConductivityNumeric: 1.29
   thermalConductivityUnit: W/
   thermalConductivityMin: "0.5 W/m·K"
@@ -46,7 +47,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.4
-  tensileStrength: 3-10 MPa (highly variable based on porosity and structure)
+  tensileStrength: 6.5MPa
   tensileStrengthNumeric: 6.5
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -56,7 +57,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 0.0
-  hardness: 3-4 Mohs scale
+  hardness: 3.5Mohs
   hardnessNumeric: 3.5
   hardnessUnit: Mohs
   hardnessMin: 1 Mohs
@@ -76,11 +77,10 @@ properties:
   youngsModulusMaxNumeric: 80.0
   youngsModulusMaxUnit: GPa
   modulusPercentile: 33.3
-  laserType: Nd:YAG
+  laserType: "Nd: YAG"
   wavelength: 1064nm
   fluenceRange: "0.5–5 J/cm²"
   chemicalFormula: CaCO3
-  thermalBehaviorType: melting
 composition:
 - 'Calcium carbonate (CaCO3): 90-99%'
 - 'Clay minerals: 1-5%'
@@ -149,8 +149,8 @@ compatibility:
 - Marble (similar calcium carbonate composition)
 - Sandstone (similar porosity and laser interaction characteristics)
 - Terracotta (compatible laser parameters for ceramic materials)
-regulatoryStandards: EN 15898:2019 (Conservation of cultural heritage - Main general
-  terms and definitions), EN 15886:2010 (Conservation of cultural property - Test
+regulatoryStandards: "EN 15898: 2019 (Conservation of cultural heritage - Main general"
+  terms and definitions), EN 15886: 2010 (Conservation of cultural property - Test
   methods - Colour measurement of surfaces)
 author: Alessandro Moretti
 author_object:
@@ -185,7 +185,7 @@ outcomes:
 - result: Processing speed
   metric: "0.5-2.0 m²/hour depending on contamination thickness and complexity, with repeatability of ±2% across large surfaces"
 technicalSpecifications:
-  powerRange: 20-100 W (average power for pulsed Nd:YAG systems)
+  powerRange: "20-100 W (average power for pulsed Nd: YAG systems)"
   pulseDuration: 10-100 ns
   wavelength: 1064 nm (fundamental), 532 nm (second harmonic for enhanced absorption)
   spotSize: 0.1-2.0 mm (adjustable based on contamination type and surface geometry)
@@ -202,7 +202,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Italy
   author_id: 2
-  verification_timestamp: '2025-09-20T21:44:35Z'
+  verification_timestamp: '2025-09-20T21: 44: 35Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -214,7 +214,7 @@ laser_parameters:
   power_range: 20-100W
   repetition_rate: 10-50kHz
   spot_size: 0.1-2.0mm
-  laser_type: Nd:YAG
+  laser_type: "Nd: YAG"
 tags:
 - Construction
 - Heritage Conservation
@@ -222,3 +222,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 22.8
 surface_roughness_after: 7.8
+---

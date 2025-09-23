@@ -1,36 +1,36 @@
 tags:
-  - aerospace
+  - todd-dunning
+  - polymer
+  - manufacturing
   - automotive
-  - medical
   - decontamination
-  - restoration
-  - polishing
+  - surface-preparation
   - texturing
-  - etching
+  - preparation
 material: "rubber"
 count: 8
 categories:
   industry:
-    - aerospace
+    - manufacturing
     - automotive
-    - medical
   process:
     - decontamination
-    - restoration
-    - polishing
     - texturing
-    - etching
   author:
+    - todd-dunning
+    - surface-preparation
   other:
+    - polymer
+    - preparation
 metadata:
-  generated: "2025-09-17T12:04:42.346112"
+  generated: "2025-09-22T15:57:38.964520"
   format: "yaml"
   version: "2.0"
 
 ---
 Material: "rubber"
 Component: tags
-Generated: 2025-09-17T12:04:42.346141
-Generator: Z-Beam v1.0.0
+Generated: 2025-09-22T15:57:38.965695
+Generator: Z-Beam v1.0.0 (Frontmatter-Based)
 Format: YAML v2.0
 ---

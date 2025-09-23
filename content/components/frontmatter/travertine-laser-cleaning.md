@@ -15,7 +15,9 @@ chemicalProperties:
   formula: "CaCO₃"
   materialType: stone
 properties:
-  density: "2.3-2.7 g/cm³"
+  density: 2.5g/cm³"
+  thermalDestructionPoint: "825°C"
+  thermalDestructionType: melting
   densityNumeric: 2.5
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -25,7 +27,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 16.7
-  meltingPoint: "825°C"
   meltingPointNumeric: 825.0
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -35,7 +36,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "1.26-1.33 W/(m·K)"
+  thermalConductivity: 1.3W/(m·K)"
   thermalConductivityNumeric: 1.29
   thermalConductivityUnit: W/
   thermalConductivityMin: "0.5 W/m·K"
@@ -45,7 +46,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.4
-  tensileStrength: 3-8 MPa
+  tensileStrength: 5.5MPa
   tensileStrengthNumeric: 5.5
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -55,7 +56,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 0.0
-  hardness: 3-4 Mohs
+  hardness: 3.5Mohs
   hardnessNumeric: 3.5
   hardnessUnit: Mohs
   hardnessMin: 1 Mohs
@@ -79,7 +80,6 @@ properties:
   wavelength: 1064 nm
   fluenceRange: "0.5-5 J/cm²"
   chemicalFormula: "CaCO₃"
-  thermalBehaviorType: melting
 composition:
 - "Calcium carbonate (CaCO₃): 95-99%"
 - 'Iron oxides, clay minerals, organic matter: 1-5%'
@@ -146,8 +146,8 @@ applications:
 compatibility:
 - Marble and limestone (similar calcium carbonate composition)
 - Sandstone with calcareous cement
-regulatoryStandards: EN 15898:2019 (Conservation of cultural heritage - Main general
-  terms and definitions), UNI 11421:2015 (Cultural heritage - Laser cleaning of stone
+regulatoryStandards: "EN 15898: 2019 (Conservation of cultural heritage - Main general"
+  terms and definitions), UNI 11421: 2015 (Cultural heritage - Laser cleaning of stone
   surfaces)
 author: Yi-Chun Lin
 author_object:
@@ -176,7 +176,7 @@ environmentalImpact:
     washing and chemical rinsing methods
 outcomes:
 - result: Surface contamination removal efficiency
-  metric: '>98% removal of biological patina and black crusts with <2% substrate loss'
+  metric: ">98% removal of biological patina and black crusts with <2% substrate loss"
 - result: Processing speed
   metric: "0.5-2.0 m²/hour depending on contamination level and laser parameters"
 technicalSpecifications:
@@ -197,7 +197,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Taiwan
   author_id: 1
-  verification_timestamp: '2025-09-20T21:54:44Z'
+  verification_timestamp: '2025-09-20T21: 54: 44Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -216,3 +216,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 28.5
 surface_roughness_after: 9.8
+---

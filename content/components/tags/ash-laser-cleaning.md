@@ -1,36 +1,36 @@
 tags:
-  - aerospace
-  - automotive
-  - electronics
-  - decoating
-  - passivation
+  - todd-dunning
+  - woodworking
   - restoration
-  - polishing
-  - texturing
+  - conservation
+  - decontamination
+  - surface-preparation
+  - refinishing
+  - manufacturing
 material: "ash"
 count: 8
 categories:
   industry:
-    - aerospace
-    - automotive
-    - electronics
+    - manufacturing
   process:
-    - decoating
-    - passivation
     - restoration
-    - polishing
-    - texturing
+    - decontamination
   author:
+    - todd-dunning
+    - surface-preparation
   other:
+    - woodworking
+    - conservation
+    - refinishing
 metadata:
-  generated: "2025-09-17T11:58:46.420151"
+  generated: "2025-09-22T15:57:40.061546"
   format: "yaml"
   version: "2.0"
 
 ---
 Material: "ash"
 Component: tags
-Generated: 2025-09-17T11:58:46.420173
-Generator: Z-Beam v1.0.0
+Generated: 2025-09-22T15:57:40.062839
+Generator: Z-Beam v1.0.0 (Frontmatter-Based)
 Format: YAML v2.0
 ---

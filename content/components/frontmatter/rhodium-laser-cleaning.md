@@ -16,6 +16,8 @@ chemicalProperties:
   materialType: metal
 properties:
   density: "12.41 g/cm³"
+  thermalDestructionPoint: "1964°C"
+  thermalDestructionType: melting
   densityNumeric: 12.41
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -25,7 +27,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 100.0
-  meltingPoint: "1964°C"
   meltingPointNumeric: 1964
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -79,7 +80,6 @@ properties:
   wavelength: 1064 nm
   fluenceRange: "0.5–5 J/cm²"
   chemicalFormula: Rh
-  thermalBehaviorType: melting
 composition:
 - 'Rhodium (Rh): 99.9-99.99% (commercial grade)'
 - 'Trace impurities: <0.1% (typically Ir, Pt, Pd, Fe)'
@@ -195,7 +195,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Italy
   author_id: 2
-  verification_timestamp: '2025-09-20T21:25:29Z'
+  verification_timestamp: '2025-09-20T21: 25: 29Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -214,3 +214,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 2.8
 surface_roughness_after: 0.6
+---

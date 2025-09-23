@@ -17,7 +17,9 @@ chemicalProperties:
     )"
   materialType: masonry
 properties:
-  density: "1.8-2.2 g/cm³"
+  density: 2g/cm³"
+  thermalDestructionPoint: "1250°C"
+  thermalDestructionType: decomposition
   densityNumeric: 2.0
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -27,7 +29,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 4.8
-  meltingPoint: "1250°C"
   meltingPointNumeric: 1250
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -37,7 +38,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "0.8-1.2 W/(m·K)"
+  thermalConductivity: 1W/(m·K)"
   thermalConductivityNumeric: 1.0
   thermalConductivityUnit: W/
   thermalConductivityMin: "0.5 W/m·K"
@@ -47,7 +48,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.3
-  tensileStrength: 3-8 MPa
+  tensileStrength: 5.5MPa
   tensileStrengthNumeric: 5.5
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -57,7 +58,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 0.0
-  hardness: 3-4 Mohs scale
+  hardness: 3.5Mohs
   hardnessNumeric: 3.5
   hardnessUnit: Mohs
   hardnessMin: 1 Mohs
@@ -77,11 +78,10 @@ properties:
   youngsModulusMaxNumeric: 80.0
   youngsModulusMaxUnit: GPa
   modulusPercentile: 0.0
-  laserType: Nd:YAG laser
+  laserType: "Nd: YAG laser"
   wavelength: 1064nm
   fluenceRange: "0.5–5 J/cm²"
   chemicalFormula: Variable (primarily hydrated aluminum silicates with iron oxides)
-  thermalBehaviorType: melting
 composition:
 - "SiO₂: 45-60%"
 - "Al₂O₃: 15-25%"
@@ -151,7 +151,7 @@ compatibility:
 - Historical terracotta with original glazes
 - Unglazed architectural terracotta
 - Terracotta with mineral-based contamination
-regulatoryStandards: EN 15898:2019 (Conservation of cultural heritage), EN 17138:2018
+regulatoryStandards: "EN 15898: 2019 (Conservation of cultural heritage), EN 17138: 2018"
   (Conservation process), ASTM E2017-17 (Standard Guide for Conducting Visual Assessments)
 author: Yi-Chun Lin
 author_object:
@@ -181,7 +181,7 @@ environmentalImpact:
     projects
 outcomes:
 - result: Surface contamination removal efficiency
-  metric: '>95% removal of black crusts and biological growth with <2% substrate loss'
+  metric: ">95% removal of black crusts and biological growth with <2% substrate loss"
 - result: Processing speed
   metric: "0.2-0.8 m²/hour depending on contamination type and laser parameters"
 technicalSpecifications:
@@ -202,7 +202,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Taiwan
   author_id: 1
-  verification_timestamp: '2025-09-20T21:05:39Z'
+  verification_timestamp: '2025-09-20T21: 05: 39Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -213,7 +213,7 @@ laser_parameters:
   power_range: 20-100W
   repetition_rate: 10-50kHz
   spot_size: 0.1-2.0mm
-  laser_type: Nd:YAG laser
+  laser_type: "Nd: YAG laser"
 tags:
 - Construction
 - Cultural Heritage
@@ -221,3 +221,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 25.8
 surface_roughness_after: 8.5
+---

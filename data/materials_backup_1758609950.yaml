@@ -1,0 +1,3069 @@
+category_ranges:
+  metal:
+    density:
+      min: 0.5 g/cm³
+      max: 22.6 g/cm³
+    tensileStrength:
+      min: 70 MPa
+      max: 2000 MPa
+    thermalConductivity:
+      min: 8 W/m·K
+      max: 429 W/m·K
+    thermalDestructionPoint:
+      min: -39°C
+      max: 3422°C
+    thermalDestructionType: melting
+    hardness:
+      min: 5 HB
+      max: 500 HV
+    youngsModulus:
+      min: 70 GPa
+      max: 411 GPa
+    laserAbsorption:
+      min: 0.02 cm⁻¹
+      max: 100 cm⁻¹
+    laserReflectivity:
+      min: 5%
+      max: 98%
+    thermalDiffusivity:
+      min: 4 mm²/s
+      max: 174 mm²/s
+    thermalExpansion:
+      min: 0.5 µm/m·K
+      max: 29 µm/m·K
+    specificHeat:
+      min: 0.13 J/g·K
+      max: 0.90 J/g·K
+  ceramic:
+    density:
+      min: 1.8 g/cm³
+      max: 6.0 g/cm³
+    tensileStrength:
+      min: 50 MPa
+      max: 1000 MPa
+    thermalConductivity:
+      min: 0.5 W/m·K
+      max: 200 W/m·K
+    thermalDestructionPoint:
+      min: 1200°C
+      max: 2800°C
+    thermalDestructionType: melting
+    hardness:
+      min: 500 HV
+      max: 2500 HV
+    youngsModulus:
+      min: 150 GPa
+      max: 400 GPa
+    laserAbsorption:
+      min: 0.1 cm⁻¹
+      max: 50 cm⁻¹
+    laserReflectivity:
+      min: 8%
+      max: 25%
+    thermalDiffusivity:
+      min: 0.5 mm²/s
+      max: 80 mm²/s
+    thermalExpansion:
+      min: 0.5 µm/m·K
+      max: 8 µm/m·K
+    specificHeat:
+      min: 0.4 J/g·K
+      max: 1.2 J/g·K
+  composite:
+    density:
+      min: 0.9 g/cm³
+      max: 2.2 g/cm³
+    tensileStrength:
+      min: 100 MPa
+      max: 7000 MPa
+    thermalConductivity:
+      min: 0.1 W/m·K
+      max: 60 W/m·K
+    thermalDestructionPoint:
+      min: 150°C
+      max: 400°C
+    thermalDestructionType: melting
+    hardness:
+      min: 10 HB
+      max: 80 HRC
+    youngsModulus:
+      min: 1 GPa
+      max: 300 GPa
+    laserAbsorption:
+      min: 1 cm⁻¹
+      max: 80 cm⁻¹
+    laserReflectivity:
+      min: 3%
+      max: 15%
+    thermalDiffusivity:
+      min: 0.1 mm²/s
+      max: 20 mm²/s
+    thermalExpansion:
+      min: 1 µm/m·K
+      max: 60 µm/m·K
+    specificHeat:
+      min: 0.8 J/g·K
+      max: 2.0 J/g·K
+  glass:
+    density:
+      min: 2.2 g/cm³
+      max: 8.0 g/cm³
+    tensileStrength:
+      min: 30 MPa
+      max: 200 MPa
+    thermalConductivity:
+      min: 0.5 W/m·K
+      max: 2.0 W/m·K
+    thermalDestructionPoint:
+      min: 573°C
+      max: 1700°C
+    thermalDestructionType: melting
+    hardness:
+      min: 450 HV
+      max: 750 HV
+    youngsModulus:
+      min: 50 GPa
+      max: 90 GPa
+    laserAbsorption:
+      min: 0.01 cm⁻¹
+      max: 10 cm⁻¹
+    laserReflectivity:
+      min: 4%
+      max: 15%
+    thermalDiffusivity:
+      min: 0.4 mm²/s
+      max: 1.4 mm²/s
+    thermalExpansion:
+      min: 0.5 µm/m·K
+      max: 9 µm/m·K
+    specificHeat:
+      min: 0.7 J/g·K
+      max: 1.0 J/g·K
+  stone:
+    density:
+      min: 1.5 g/cm³
+      max: 3.2 g/cm³
+    tensileStrength:
+      min: 2 MPa
+      max: 300 MPa
+    thermalConductivity:
+      min: 0.2 W/m·K
+      max: 5.0 W/m·K
+    thermalDestructionPoint:
+      min: 1200°C
+      max: 1700°C
+    thermalDestructionType: melting
+    hardness:
+      min: 100 HV
+      max: 800 HV
+    youngsModulus:
+      min: 10 GPa
+      max: 100 GPa
+    laserAbsorption:
+      min: 0.5 cm⁻¹
+      max: 30 cm⁻¹
+    laserReflectivity:
+      min: 10%
+      max: 40%
+    thermalDiffusivity:
+      min: 0.5 mm²/s
+      max: 3 mm²/s
+    thermalExpansion:
+      min: 3 µm/m·K
+      max: 12 µm/m·K
+    specificHeat:
+      min: 0.7 J/g·K
+      max: 1.0 J/g·K
+  masonry:
+    density:
+      min: 1.2 g/cm³
+      max: 2.8 g/cm³
+    tensileStrength:
+      min: 1 MPa
+      max: 50 MPa
+    thermalConductivity:
+      min: 0.1 W/m·K
+      max: 2.0 W/m·K
+    thermalDestructionPoint:
+      min: 1450°C
+      max: 1750°C
+    thermalDestructionType: decomposition
+    hardness:
+      min: 20 HV
+      max: 300 HV
+    youngsModulus:
+      min: 15 GPa
+      max: 50 GPa
+    laserAbsorption:
+      min: 0.8 cm⁻¹
+      max: 50 cm⁻¹
+    laserReflectivity:
+      min: 8%
+      max: 35%
+    thermalDiffusivity:
+      min: 0.3 mm²/s
+      max: 1.5 mm²/s
+    thermalExpansion:
+      min: 6 µm/m·K
+      max: 15 µm/m·K
+    specificHeat:
+      min: 0.8 J/g·K
+      max: 1.1 J/g·K
+  wood:
+    density:
+      min: 0.1 g/cm³
+      max: 1.3 g/cm³
+    tensileStrength:
+      min: 20 MPa
+      max: 200 MPa
+    thermalConductivity:
+      min: 0.04 W/m·K
+      max: 0.4 W/m·K
+    thermalDestructionPoint:
+      min: 250°C
+      max: 500°C
+    thermalDestructionType: decomposition
+    hardness:
+      min: 1 HB
+      max: 4000 HB
+    youngsModulus:
+      min: 4 GPa
+      max: 20 GPa
+    laserAbsorption:
+      min: 5 cm⁻¹
+      max: 100 cm⁻¹
+    laserReflectivity:
+      min: 5%
+      max: 25%
+    thermalDiffusivity:
+      min: 0.1 mm²/s
+      max: 0.4 mm²/s
+    thermalExpansion:
+      min: 2 µm/m·K
+      max: 50 µm/m·K
+    specificHeat:
+      min: 1.2 J/g·K
+      max: 2.5 J/g·K
+  semiconductor:
+    density:
+      min: 2.3 g/cm³
+      max: 5.3 g/cm³
+    tensileStrength:
+      min: 100 MPa
+      max: 400 MPa
+    thermalConductivity:
+      min: 1.5 W/m·K
+      max: 490 W/m·K
+    thermalDestructionPoint:
+      min: 937°C
+      max: 2830°C
+    thermalDestructionType: melting
+    hardness:
+      min: 900 HV
+      max: 2800 HV
+    youngsModulus:
+      min: 130 GPa
+      max: 450 GPa
+    laserAbsorption:
+      min: 0.1 cm⁻¹
+      max: 1000 cm⁻¹
+    laserReflectivity:
+      min: 15%
+      max: 45%
+    thermalDiffusivity:
+      min: 0.5 mm²/s
+      max: 150 mm²/s
+    thermalExpansion:
+      min: 2 µm/m·K
+      max: 6 µm/m·K
+    specificHeat:
+      min: 0.3 J/g·K
+      max: 0.7 J/g·K
+parameter_templates:
+  standard_fiber_laser:
+    fluence_threshold: 0.5–5 J/cm²
+    pulse_duration: 10-100ns
+    wavelength_optimal: 1064nm
+    power_range: 20-100W
+    repetition_rate: 10-50kHz
+    spot_size: 0.1-2.0mm
+    laser_type: Pulsed fiber laser
+  standard_fiber_laser_alt:
+    fluence_threshold: 0.5-5 J/cm²
+    pulse_duration: 10-100ns
+    wavelength_optimal: 1064nm
+    power_range: 20-100W
+    repetition_rate: 10-50kHz
+    spot_size: 0.1-2.0mm
+    laser_type: Pulsed fiber laser
+  high_power_fiber_laser:
+    fluence_threshold: 1.0–10 J/cm²
+    pulse_duration: 10-200ns
+    wavelength_optimal: 1064nm
+    power_range: 50-200W
+    repetition_rate: 20-100kHz
+    spot_size: 0.1-1.0mm
+    laser_type: Pulsed fiber laser
+  precision_fiber_laser:
+    fluence_threshold: 0.5-3.0 J/cm²
+    pulse_duration: 10-50ns
+    wavelength_optimal: 1064nm
+    power_range: 20-100W
+    repetition_rate: 20-100kHz
+    spot_size: 0.1-1.0mm
+    laser_type: Pulsed fiber laser
+  high_precision_fiber_laser:
+    fluence_threshold: 1.0–10 J/cm²
+    pulse_duration: 10-200ns
+    wavelength_optimal: 1064nm
+    power_range: 50-200W
+    repetition_rate: 20-100kHz
+    spot_size: 0.05-1.0mm
+    laser_type: Pulsed fiber laser
+  ultra_precision_fiber_laser:
+    fluence_threshold: 1.0–10 J/cm²
+    pulse_duration: 10-50ns
+    wavelength_optimal: 1064nm
+    power_range: 50-200W
+    repetition_rate: 20-100kHz
+    spot_size: 0.1-1.0mm
+    laser_type: Pulsed fiber laser
+defaults:
+  surface_treatments:
+  - Laser Ablation
+  - Laser Cleaning
+  - Non-Contact Cleaning
+  documentation_status: generated_frontmatter
+  last_updated: '2025-08-31'
+material_index:
+  Alumina:
+    category: ceramic
+    index: 0
+  Porcelain:
+    category: ceramic
+    index: 1
+  Silicon Nitride:
+    category: ceramic
+    index: 2
+  Stoneware:
+    category: ceramic
+    index: 3
+  Zirconia:
+    category: ceramic
+    index: 4
+  Carbon Fiber Reinforced Polymer:
+    category: composite
+    index: 0
+  Epoxy Resin Composites:
+    category: composite
+    index: 1
+  Fiberglass:
+    category: composite
+    index: 2
+  Kevlar-Reinforced Polymer:
+    category: composite
+    index: 3
+  Phenolic Resin Composites:
+    category: composite
+    index: 4
+  Polyester Resin Composites:
+    category: composite
+    index: 5
+  Rubber:
+    category: composite
+    index: 6
+  Thermoplastic Elastomer:
+    category: composite
+    index: 7
+  Urethane Composites:
+    category: composite
+    index: 8
+  Glass Fiber Reinforced Polymers GFRP:
+    category: composite
+    index: 9
+  Fiber Reinforced Polyurethane FRPU:
+    category: composite
+    index: 10
+  Metal Matrix Composites MMCs:
+    category: composite
+    index: 11
+  Ceramic Matrix Composites CMCs:
+    category: composite
+    index: 12
+  Borosilicate Glass:
+    category: glass
+    index: 0
+  Float Glass:
+    category: glass
+    index: 1
+  Fused Silica:
+    category: glass
+    index: 2
+  Lead Crystal:
+    category: glass
+    index: 3
+  Pyrex:
+    category: glass
+    index: 4
+  Quartz Glass:
+    category: glass
+    index: 5
+  Soda-Lime Glass:
+    category: glass
+    index: 6
+  Tempered Glass:
+    category: glass
+    index: 7
+  Brick:
+    category: masonry
+    index: 0
+  Cement:
+    category: masonry
+    index: 1
+  Concrete:
+    category: masonry
+    index: 2
+  Mortar:
+    category: masonry
+    index: 3
+  Plaster:
+    category: masonry
+    index: 4
+  Stucco:
+    category: masonry
+    index: 5
+  Terracotta:
+    category: masonry
+    index: 6
+  Aluminum:
+    category: metal
+    index: 0
+  Beryllium:
+    category: metal
+    index: 1
+  Brass:
+    category: metal
+    index: 2
+  Bronze:
+    category: metal
+    index: 3
+  Cobalt:
+    category: metal
+    index: 4
+  Copper:
+    category: metal
+    index: 5
+  Gallium:
+    category: metal
+    index: 6
+  Gold:
+    category: metal
+    index: 7
+  Hafnium:
+    category: metal
+    index: 8
+  Hastelloy:
+    category: metal
+    index: 9
+  Inconel:
+    category: metal
+    index: 10
+  Indium:
+    category: metal
+    index: 11
+  Iridium:
+    category: metal
+    index: 12
+  Iron:
+    category: metal
+    index: 13
+  Lead:
+    category: metal
+    index: 14
+  Magnesium:
+    category: metal
+    index: 15
+  Molybdenum:
+    category: metal
+    index: 16
+  Nickel:
+    category: metal
+    index: 17
+  Niobium:
+    category: metal
+    index: 18
+  Palladium:
+    category: metal
+    index: 19
+  Platinum:
+    category: metal
+    index: 20
+  Rhenium:
+    category: metal
+    index: 21
+  Rhodium:
+    category: metal
+    index: 22
+  Ruthenium:
+    category: metal
+    index: 23
+  Silver:
+    category: metal
+    index: 24
+  Stainless Steel:
+    category: metal
+    index: 25
+  Steel:
+    category: metal
+    index: 26
+  Tantalum:
+    category: metal
+    index: 27
+  Tin:
+    category: metal
+    index: 28
+  Titanium:
+    category: metal
+    index: 29
+  Tungsten:
+    category: metal
+    index: 30
+  Vanadium:
+    category: metal
+    index: 31
+  Zinc:
+    category: metal
+    index: 32
+  Zirconium:
+    category: metal
+    index: 33
+  Gallium Arsenide:
+    category: semiconductor
+    index: 0
+  Silicon:
+    category: semiconductor
+    index: 1
+  Silicon Carbide:
+    category: semiconductor
+    index: 2
+  Silicon Germanium:
+    category: semiconductor
+    index: 3
+  Alabaster:
+    category: stone
+    index: 0
+  Basalt:
+    category: stone
+    index: 1
+  Bluestone:
+    category: stone
+    index: 2
+  Breccia:
+    category: stone
+    index: 3
+  Calcite:
+    category: stone
+    index: 4
+  Granite:
+    category: stone
+    index: 5
+  Limestone:
+    category: stone
+    index: 6
+  Porphyry:
+    category: stone
+    index: 7
+  Marble:
+    category: stone
+    index: 8
+  Onyx:
+    category: stone
+    index: 9
+  Quartzite:
+    category: stone
+    index: 10
+  Sandstone:
+    category: stone
+    index: 11
+  Schist:
+    category: stone
+    index: 12
+  Serpentine:
+    category: stone
+    index: 13
+  Shale:
+    category: stone
+    index: 14
+  Slate:
+    category: stone
+    index: 15
+  Soapstone:
+    category: stone
+    index: 16
+  Travertine:
+    category: stone
+    index: 17
+  Ash:
+    category: wood
+    index: 0
+  Bamboo:
+    category: wood
+    index: 1
+  Beech:
+    category: wood
+    index: 2
+  Birch:
+    category: wood
+    index: 3
+  Cedar:
+    category: wood
+    index: 4
+  Cherry:
+    category: wood
+    index: 5
+  Fir:
+    category: wood
+    index: 6
+  Hickory:
+    category: wood
+    index: 7
+  Mahogany:
+    category: wood
+    index: 8
+  Maple:
+    category: wood
+    index: 9
+  MDF:
+    category: wood
+    index: 10
+  Oak:
+    category: wood
+    index: 11
+  Pine:
+    category: wood
+    index: 12
+  Plywood:
+    category: wood
+    index: 13
+  Poplar:
+    category: wood
+    index: 14
+  Redwood:
+    category: wood
+    index: 15
+  Rosewood:
+    category: wood
+    index: 16
+  Teak:
+    category: wood
+    index: 17
+  Walnut:
+    category: wood
+    index: 18
+  Willow:
+    category: wood
+    index: 19
+materials:
+  ceramic:
+    description: Ceramic materials for laser cleaning applications
+    article_type: material
+    processing_priority: medium
+    items:
+    - name: Alumina
+      author_id: 2
+      complexity: high
+      difficulty_score: 4
+      category: ceramic
+      formula: Al2O3
+      symbol: Al-O
+      density: 3.95-4.1 g/cm³
+      melting_point: 2072°C
+      thermal_conductivity: 35 W/(m·K)
+      hardness: 9.0 Mohs
+      compressive_strength: 2000-4000 MPa
+      flexural_strength: 300-400 MPa
+      thermal_expansion: 8.1×10⁻⁶/K
+      dielectric_constant: 9.8
+      electrical_resistivity: 1×10¹⁴ Ω·cm
+      laser_parameters:
+        fluence_threshold: 1.0–10 J/cm²
+        pulse_duration: 10-200ns
+        wavelength_optimal: 1064 nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.05-1.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Aerospace: Removal of coatings and surface contaminants from alumina components'
+      - 'Semiconductor: Cleaning of alumina substrates for integrated circuits'
+      - 'Medical: Biocompatible ceramic implant cleaning'
+      - 'Industrial: Refractory component maintenance'
+      industry_tags:
+      - Semiconductor
+      - Aerospace
+      - Medical
+      - Refractory
+    - name: Porcelain
+      author_id: 3
+      complexity: medium
+      difficulty_score: 3
+      category: ceramic
+      formula: Al2O3·2SiO2·2H2O
+      symbol: Al-Si-O
+      laser_parameters_template: standard_fiber_laser
+      applications:
+      - 'Ceramics Manufacturing: Cleaning of porcelain surfaces for improved adhesion
+        in glazing processes'
+      - 'Restoration and Conservation: Non-destructive cleaning of historical porcelain
+        artifacts'
+      industry_tags:
+      - Ceramics Manufacturing
+      - Restoration and Conservation
+    - name: Silicon Nitride
+      author_id: 1
+      complexity: high
+      difficulty_score: 4
+      category: ceramic
+      formula: Si3N4
+      symbol: Si-N
+      density: 3.17-3.44 g/cm³
+      melting_point: 1900°C (decomposes)
+      thermal_conductivity: 15-85 W/(m·K)
+      hardness: 9.0 Mohs
+      flexural_strength: 700-1000 MPa
+      thermal_expansion: 2.5×10⁻⁶/K
+      dielectric_constant: 7.5
+      laser_parameters:
+        fluence_threshold: 0.5–5 J/cm²
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064 nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: Pulsed Fiber Laser
+      applications:
+      - 'Semiconductor: Wafer cleaning and surface preparation'
+      - 'Automotive: Cleaning of ceramic engine components'
+      - 'Cutting Tools: Silicon nitride cutting insert maintenance'
+      - 'Ball Bearings: High-temperature bearing component cleaning'
+      industry_tags:
+      - Automotive
+      - Semiconductor
+      - Tooling
+      - Bearings
+    - name: Stoneware
+      author_id: 4
+      complexity: medium
+      difficulty_score: 3
+      category: ceramic
+      laser_parameters_template: high_power_fiber_laser
+      applications:
+      - 'Ceramics Manufacturing: Removing surface contaminants and coatings'
+      - 'Restoration and Conservation: Cleaning historical stoneware artifacts'
+      industry_tags:
+      - Ceramics Manufacturing
+      - Restoration and Conservation
+    - name: Zirconia
+      author_id: 4
+      complexity: high
+      difficulty_score: 4
+      category: ceramic
+      formula: ZrO2
+      laser_parameters_template: standard_fiber_laser
+      applications:
+      - 'Aerospace: Removing contaminants from turbine blades and engine components'
+      - 'Medical: Cleaning and sterilizing dental implants and prosthetics'
+      industry_tags:
+      - Medical
+      - Aerospace
+  composite:
+    description: Composite materials for laser cleaning applications
+    article_type: material
+    processing_priority: medium
+    items:
+    - name: Carbon Fiber Reinforced Polymer
+      author_id: 1
+      complexity: high
+      difficulty_score: 5
+      category: composite
+      laser_parameters_template: high_precision_fiber_laser
+      applications:
+      - 'Aerospace: Removal of release agents and surface contaminants from CFRP parts'
+      - 'Automotive: Cleaning of CFRP components for improved bonding and painting'
+      industry_tags:
+      - Automotive
+      - Aerospace
+    - name: Epoxy Resin Composites
+      author_id: 1
+      complexity: medium
+      difficulty_score: 3
+      category: composite
+      laser_parameters:
+        fluence_threshold: 1.0–10 J/cm²
+        pulse_duration: 20-200ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Aerospace: Removal of surface contaminants from composite aircraft parts'
+      - 'Automotive: Cleaning of epoxy resin components for improved bonding and painting'
+      industry_tags:
+      - Automotive
+      - Aerospace
+    - name: Fiberglass
+      author_id: 3
+      complexity: medium
+      difficulty_score: 3
+      category: composite
+      laser_parameters:
+        fluence_threshold: 0.5-3 J/cm²
+        pulse_duration: 10-50ns
+        wavelength_optimal: 1064nm
+        power_range: 20-100W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Aerospace: Cleaning composite surfaces for aircraft components'
+      - 'Automotive: Removing contaminants from fiberglass body parts'
+      industry_tags:
+      - Automotive
+      - Aerospace
+    - name: Kevlar-Reinforced Polymer
+      author_id: 3
+      complexity: medium
+      difficulty_score: 3
+      category: composite
+      laser_parameters_template: ultra_precision_fiber_laser
+      applications:
+      - 'Aerospace: Removal of surface contaminants from aircraft components'
+      - 'Automotive: Cleaning of composite parts for improved bonding and painting'
+      industry_tags:
+      - Automotive
+      - Aerospace
+    - name: Phenolic Resin Composites
+      author_id: 4
+      complexity: medium
+      difficulty_score: 3
+      category: composite
+      laser_parameters:
+        fluence_threshold: 1.0–10 J/cm²
+        pulse_duration: 20-200ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.05-1.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Aerospace: Removal of surface contaminants from composite parts'
+      - 'Automotive: Cleaning of phenolic resin components for enhanced bonding'
+      industry_tags:
+      - Automotive
+      - Aerospace
+    - name: Polyester Resin Composites
+      author_id: 1
+      complexity: medium
+      difficulty_score: 3
+      category: composite
+      laser_parameters:
+        fluence_threshold: 0.5-5 J/cm²
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064 nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: Pulsed Fiber Laser
+      applications:
+      - 'Automotive: Surface preparation for painting and bonding'
+      - 'Aerospace: Cleaning and restoration of composite parts'
+      industry_tags:
+      - Automotive
+      - Aerospace
+    - name: Rubber
+      author_id: 4
+      complexity: medium
+      difficulty_score: 3
+      category: composite
+      laser_parameters_template: standard_fiber_laser
+      applications:
+      - 'Automotive: Cleaning rubber gaskets and seals for improved assembly precision'
+      - 'Manufacturing: Surface preparation of rubber components prior to bonding
+        or coating'
+      industry_tags:
+      - Automotive
+      - Manufacturing
+    - name: Thermoplastic Elastomer
+      author_id: 2
+      complexity: medium
+      difficulty_score: 3
+      category: composite
+      laser_parameters_template: standard_fiber_laser
+      applications:
+      - 'Automotive: Cleaning of automotive parts made from Thermoplastic Elastomer
+        to remove mold release agents and surface contaminants'
+      - 'Medical: Precision cleaning of Thermoplastic Elastomer components used in
+        medical devices for sterilization and surface preparation'
+      industry_tags:
+      - Automotive
+      - Medical
+    - name: Urethane Composites
+      author_id: 3
+      complexity: medium
+      difficulty_score: 3
+      category: composite
+      laser_parameters:
+        fluence_threshold: 1.0–10 J/cm²
+        pulse_duration: 20-200ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.2-1.5mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Automotive: Cleaning of urethane composite parts for surface preparation
+        before painting'
+      - 'Aerospace: Removal of contaminants from urethane composite aircraft components'
+      industry_tags:
+      - Automotive
+      - Aerospace
+    - name: Glass Fiber Reinforced Polymers GFRP
+      author_id: 1
+      complexity: medium
+      difficulty_score: 3
+      category: composite
+      laser_parameters:
+        fluence_threshold: 0.5–5 J/cm²
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064 nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: Pulsed Fiber Laser
+      applications:
+      - 'Aerospace: Removal of surface contaminants and coatings from GFRP components'
+      - 'Automotive: Cleaning of GFRP parts for repair and restoration'
+      industry_tags:
+      - Automotive
+      - Aerospace
+    - name: Fiber Reinforced Polyurethane FRPU
+      author_id: 2
+      complexity: medium
+      difficulty_score: 3
+      category: composite
+      laser_parameters_template: high_power_fiber_laser
+      applications:
+      - 'Automotive: Removal of surface contaminants and coatings from FRPU automotive
+        parts'
+      - 'Aerospace: Precision cleaning of FRPU components for aircraft interiors and
+        exteriors'
+      industry_tags:
+      - Automotive
+      - Aerospace
+    - name: Metal Matrix Composites MMCs
+      author_id: 4
+      complexity: high
+      difficulty_score: 5
+      category: composite
+      laser_parameters_template: high_precision_fiber_laser
+      applications:
+      - 'Aerospace: Cleaning of turbine blades and engine components'
+      - 'Automotive: Removal of coatings and contaminants from brake systems'
+      industry_tags:
+      - Automotive
+      - Aerospace
+    - name: Ceramic Matrix Composites CMCs
+      author_id: 4
+      complexity: high
+      difficulty_score: 5
+      category: composite
+      laser_parameters:
+        fluence_threshold: 1.0–10 J/cm²
+        pulse_duration: 10-50ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: Pulsed Fiber Laser
+      applications:
+      - 'Aerospace: Cleaning of turbine engine components to remove surface contaminants'
+      - 'Power Generation: Surface preparation of gas turbine parts for repair and
+        maintenance'
+      industry_tags:
+      - Power Generation
+      - Aerospace
+  glass:
+    description: Glass materials for laser cleaning applications
+    article_type: material
+    processing_priority: medium
+    items:
+    - name: Borosilicate Glass
+      author_id: 3
+      complexity: medium
+      difficulty_score: 3
+      category: glass
+      formula: B2O3-SiO2
+      density: 2.23 g/cm³
+      melting_point: 820°C
+      thermal_conductivity: 1.2 W/(m·K)
+      thermal_expansion: 3.3×10⁻⁶/K
+      tensile_strength: 50 MPa
+      compressive_strength: 500 MPa
+      thermal_shock_resistance: excellent
+      chemical_resistance: excellent
+      laser_parameters_template: standard_fiber_laser
+      applications:
+      - 'Semiconductor: Cleaning of semiconductor substrates and wafers'
+      - 'Pharmaceutical: Decontamination and sterilization of glass vials and ampoules'
+      industry_tags:
+      - Pharmaceutical
+      - Semiconductor
+    - name: Float Glass
+      author_id: 1
+      complexity: medium
+      difficulty_score: 3
+      category: glass
+      density: 2.5 g/cm³
+      melting_point: 1000°C
+      thermal_conductivity: 1.0 W/(m·K)
+      thermal_expansion: 9.0×10⁻⁶/K
+      tensile_strength: 50 MPa
+      compressive_strength: 1000 MPa
+      hardness: 5.5 Mohs
+      laser_parameters_template: standard_fiber_laser
+      applications:
+      - 'Automotive: Cleaning of automotive glass surfaces for improved visibility
+        and aesthetics'
+      - 'Architectural: Restoration and cleaning of glass facades and windows'
+      industry_tags:
+      - Automotive
+      - Architectural
+    - name: Fused Silica
+      author_id: 2
+      complexity: medium
+      difficulty_score: 3
+      category: glass
+      formula: SiO2
+      density: 2.20 g/cm³
+      melting_point: 1713°C
+      thermal_conductivity: 1.38 W/(m·K)
+      thermal_expansion: 0.52×10⁻⁶/K
+      tensile_strength: 50 MPa
+      compressive_strength: 1100 MPa
+      refractive_index: 1.458
+      optical_transmission: excellent (UV to IR)
+      purity: '>99.999%'
+      laser_parameters:
+        fluence_threshold: 0.5–5 J/cm²
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: Pulsed Fiber Laser
+      applications:
+      - 'Semiconductor Manufacturing: Cleaning of photomask substrates for precision
+        in lithography'
+      - 'Optics and Photonics: Removal of surface contaminants on optical components'
+      industry_tags:
+      - Semiconductor Manufacturing
+      - Optics and Photonics
+    - name: Lead Crystal
+      author_id: 1
+      complexity: medium
+      difficulty_score: 3
+      category: glass
+      density: 3.1 g/cm³
+      melting_point: 630°C
+      thermal_conductivity: 0.7 W/(m·K)
+      thermal_expansion: 8.5×10⁻⁶/K
+      tensile_strength: 30 MPa
+      compressive_strength: 300 MPa
+      refractive_index: 1.545
+      lead_content: 24-32%
+      laser_parameters:
+        fluence_threshold: 0.5–5 J/cm²
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: Nd:YAG laser
+      applications:
+      - 'Glass Manufacturing: Removal of surface contaminants and coatings from lead
+        crystal glassware'
+      - 'Restoration and Conservation: Precision cleaning of historic lead crystal
+        artifacts'
+      industry_tags:
+      - Restoration and Conservation
+      - Glass Manufacturing
+    - name: Pyrex
+      author_id: 1
+      complexity: medium
+      difficulty_score: 3
+      category: glass
+      density: 2.23 g/cm³
+      melting_point: 821°C
+      thermal_conductivity: 1.14 W/(m·K)
+      thermal_expansion: 3.25×10⁻⁶/K
+      tensile_strength: 50 MPa
+      compressive_strength: 1000 MPa
+      thermal_shock_resistance: excellent
+      chemical_resistance: excellent
+      laser_parameters_template: standard_fiber_laser
+      applications:
+      - 'Automotive: Cleaning of Pyrex glass components for headlights'
+      - 'Aerospace: Decontamination of Pyrex windows and optical components'
+      industry_tags:
+      - Automotive
+      - Aerospace
+    - name: Quartz Glass
+      author_id: 2
+      complexity: medium
+      difficulty_score: 3
+      category: glass
+      formula: SiO2
+      density: 2.65 g/cm³
+      melting_point: 1713°C
+      thermal_conductivity: 1.38 W/(m·K)
+      thermal_expansion: 0.54×10⁻⁶/K
+      tensile_strength: 50 MPa
+      compressive_strength: 1100 MPa
+      refractive_index: 1.458
+      optical_transmission: excellent (UV to IR)
+      laser_parameters:
+        fluence_threshold: 0.5–5 J/cm²
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064 nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: Pulsed Fiber Laser
+      applications:
+      - 'Semiconductor Manufacturing: Cleaning of quartz glass components used in
+        photolithography processes'
+      - 'Optics and Photonics: Precision cleaning of optical surfaces for laser systems
+        and telescopes'
+      industry_tags:
+      - Semiconductor Manufacturing
+      - Optics and Photonics
+    - name: Soda-Lime Glass
+      author_id: 1
+      complexity: medium
+      difficulty_score: 3
+      category: glass
+      density: 2.52 g/cm³
+      melting_point: 1000°C
+      thermal_conductivity: 1.05 W/(m·K)
+      thermal_expansion: 9.0×10⁻⁶/K
+      tensile_strength: 50 MPa
+      compressive_strength: 1000 MPa
+      refractive_index: 1.52
+      composition: Na2O-CaO-SiO2
+      laser_parameters:
+        fluence_threshold: 0.5-5 J/cm²
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: pulsed fiber laser
+      applications:
+      - 'Automotive: Cleaning of glass surfaces for improved optical clarity'
+      - 'Electronics: Surface preparation for better adhesion in PCB manufacturing'
+      industry_tags:
+      - Automotive
+      - Electronics
+    - name: Tempered Glass
+      author_id: 4
+      complexity: medium
+      difficulty_score: 3
+      category: glass
+      density: 2.52 g/cm³
+      melting_point: 1000°C
+      thermal_conductivity: 1.05 W/(m·K)
+      thermal_expansion: 9.0×10⁻⁶/K
+      tensile_strength: 120 MPa
+      compressive_strength: 1000 MPa
+      surface_compression: 690 MPa
+      thermal_tempering: true
+      laser_parameters_template: standard_fiber_laser
+      applications:
+      - 'Automotive: Removal of contaminants from car windows and windshields'
+      - 'Electronics: Cleaning of glass surfaces in display manufacturing'
+      industry_tags:
+      - Automotive
+      - Electronics
+  masonry:
+    description: Masonry materials for laser cleaning applications
+    article_type: material
+    processing_priority: medium
+    items:
+    - name: Brick
+      author_id: 2
+      complexity: low
+      difficulty_score: 2
+      category: masonry
+      laser_parameters:
+        fluence_threshold: 1.0–10 J/cm²
+        pulse_duration: 10-50ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.5-3.0mm
+        laser_type: Nd:YAG laser
+      applications:
+      - 'Construction: Removal of surface contaminants and efflorescence from brick
+        facades'
+      - 'Restoration: Cleaning historical brick structures without damaging the material'
+      industry_tags:
+      - Construction
+      - Restoration
+    - name: Cement
+      author_id: 3
+      complexity: medium
+      difficulty_score: 3
+      category: masonry
+      laser_parameters:
+        fluence_threshold: 1.0–10 J/cm²
+        pulse_duration: 10-200ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: Nd:YAG laser
+      applications:
+      - 'Construction: Removal of graffiti and paint from concrete surfaces'
+      - 'Restoration: Cleaning of historical cement structures without damage'
+      industry_tags:
+      - Construction
+      - Restoration
+    - name: Concrete
+      author_id: 3
+      complexity: low
+      difficulty_score: 2
+      category: masonry
+      density: 2.3-2.4 g/cm³
+      compressive_strength: 20-100 MPa
+      thermal_conductivity: 1.6-2.0 W/(m·K)
+      thermal_expansion: 10-12×10⁻⁶/K
+      tensile_strength: 2-5 MPa
+      cement_content: 10-15%
+      aggregate_type: sand, gravel, crushed stone
+      laser_parameters:
+        fluence_threshold: 1.0–10 J/cm²
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Construction: Removal of paint, graffiti, and other surface contaminants
+        from concrete structures'
+      - 'Restoration: Cleaning historical concrete buildings and monuments without
+        damaging the material'
+      industry_tags:
+      - Construction
+      - Restoration
+    - name: Mortar
+      author_id: 2
+      complexity: low
+      difficulty_score: 2
+      category: masonry
+      laser_parameters:
+        fluence_threshold: 1.0–10 J/cm²
+        pulse_duration: 10-200ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: Nd:YAG laser
+      applications:
+      - 'Construction: Restoration of historic buildings and monuments'
+      - 'Heritage Conservation: Cleaning and preservation of ancient masonry structures'
+      industry_tags:
+      - Construction
+      - Heritage Conservation
+    - name: Plaster
+      author_id: 2
+      complexity: medium
+      difficulty_score: 3
+      category: masonry
+      formula: CaSO4·2H2O
+      laser_parameters:
+        fluence_threshold: 1.0–3.0 J/cm²
+        pulse_duration: 10-50ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.2-1.0mm
+        laser_type: Nd:YAG
+      applications:
+      - 'Construction: Restoration of historical plaster surfaces'
+      - 'Cultural Heritage: Cleaning of plaster sculptures and artifacts'
+      industry_tags:
+      - Construction
+      - Cultural Heritage
+    - name: Stucco
+      author_id: 1
+      complexity: medium
+      difficulty_score: 3
+      category: masonry
+      laser_parameters_template: standard_fiber_laser
+      applications:
+      - 'Construction: Cleaning of stucco facades and surfaces'
+      - 'Restoration: Restoration of historical stucco structures'
+      industry_tags:
+      - Construction
+      - Restoration
+    - name: Terracotta
+      author_id: 1
+      complexity: medium
+      difficulty_score: 3
+      category: masonry
+      laser_parameters:
+        fluence_threshold: 0.5–5 J/cm²
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: Nd:YAG laser
+      applications:
+      - 'Cultural Heritage: Restoration of historical terracotta sculptures and facades'
+      - 'Construction: Cleaning and restoration of terracotta cladding on buildings'
+      industry_tags:
+      - Construction
+      - Cultural Heritage
+  metal:
+    description: Metal materials for laser cleaning applications
+    article_type: material
+    processing_priority: medium
+    items:
+    - name: Aluminum
+      author_id: 3
+      complexity: medium
+      difficulty_score: 3
+      category: metal
+      formula: Al
+      symbol: Al
+      density: 2.70 g/cm³
+      melting_point: 660.3°C
+      thermal_conductivity: 237 W/(m·K)
+      tensile_strength: 90-690 MPa
+      yield_strength: 35-503 MPa
+      thermal_expansion: 23.1×10⁻⁶/K
+      electrical_resistivity: 26.5 nΩ·m
+      corrosion_resistance: good (with protective oxide layer)
+      laser_parameters:
+        fluence_threshold: 1.0–10 J/cm²
+        pulse_duration: 10-200ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: Fiber laser
+      applications:
+      - 'Automotive: Removing paint and corrosion from aluminum car parts'
+      - 'Aerospace: Cleaning aluminum aircraft components for surface preparation'
+      industry_tags:
+      - Automotive
+      - Aerospace
+    - name: Beryllium
+      author_id: 4
+      complexity: medium
+      difficulty_score: 3
+      category: metal
+      symbol: Be
+      formula: Be
+      density: 1.85 g/cm³
+      melting_point: 1287°C
+      thermal_conductivity: 200 W/(m·K)
+      tensile_strength: 380-620 MPa
+      yield_strength: 240-380 MPa
+      thermal_expansion: 11.3×10⁻⁶/K
+      electrical_resistivity: 36.0 nΩ·m
+      crystal_structure: hexagonal close-packed
+      toxicity: toxic (carcinogenic)
+      laser_parameters:
+        fluence_threshold: 1.0–10 J/cm²
+        pulse_duration: 10-50ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.05-1.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Aerospace: Removal of oxidation and contaminants from beryllium components'
+      - 'Nuclear: Cleaning of beryllium surfaces in nuclear reactors'
+      industry_tags:
+      - Aerospace
+      - Nuclear
+    - name: Brass
+      author_id: 4
+      complexity: medium
+      difficulty_score: 3
+      category: metal
+      formula: Cu-Zn
+      density: 8.4-8.73 g/cm³
+      melting_point: 900-940°C
+      thermal_conductivity: 109-125 W/(m·K)
+      composition: Typically 60-70% Cu, 30-40% Zn
+      common_alloys: Cartridge brass (70/30), Naval brass (60/39/1% Sn)
+      corrosion_resistance: good
+      antimicrobial_properties: true
+      machinability: excellent
+      laser_parameters_template: standard_fiber_laser
+      applications:
+      - 'Automotive: Cleaning of brass components for surface preparation and restoration'
+      - 'Electronics: Precision cleaning of brass connectors and contacts'
+      - 'Marine: Brass fitting and propeller maintenance'
+      - 'Plumbing: Valve and fitting restoration'
+      industry_tags:
+      - Automotive
+      - Electronics
+      - Marine
+      - Plumbing
+    - name: Bronze
+      author_id: 3
+      complexity: medium
+      difficulty_score: 3
+      category: metal
+      formula: Cu-Sn
+      density: 8.9 g/cm³
+      melting_point: 950°C (varies by composition)
+      thermal_conductivity: 26 W/(m·K)
+      composition: Typically 88% Cu, 12% Sn
+      common_alloys: Aluminum bronze, Phosphor bronze, Bell metal (77/23)
+      corrosion_resistance: superior to steel
+      strength: 10% denser than steel
+      color: Reddish-brown to golden
+      laser_parameters_template: standard_fiber_laser
+      applications:
+      - 'Manufacturing: Removal of rust and corrosion from bronze surfaces'
+      - 'Restoration: Cleaning of bronze sculptures and artifacts'
+      - 'Marine: Propeller and bearing component cleaning'
+      - 'Musical Instruments: Bell and cymbal restoration'
+      industry_tags:
+      - Manufacturing
+      - Restoration
+      - Marine
+      - Musical Instruments
+    - name: Cobalt
+      author_id: 2
+      complexity: medium
+      difficulty_score: 3
+      category: metal
+      symbol: Co
+      formula: Co
+      density: 8.9 g/cm³
+      melting_point: 1495°C
+      thermal_conductivity: 100 W/(m·K)
+      curie_temperature: 1115°C
+      magnetic_properties: ferromagnetic
+      crystal_structure: hexagonal close-packed
+      tensile_strength: 1043 MPa
+      yield_strength: 470-3000 MPa
+      laser_parameters:
+        fluence_threshold: 1.0–3.0 J/cm²
+        pulse_duration: 10-50ns
+        wavelength_optimal: 1064nm
+        power_range: 50-100W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Aerospace: Cleaning of turbine blades and engine components to remove oxidation
+        and corrosion'
+      - 'Electronics: Precise cleaning of circuit boards and connectors to remove
+        residues and contaminants'
+      - 'Medical: Cobalt-chromium alloy implant cleaning'
+      - 'Permanent Magnets: Alnico and samarium-cobalt magnet maintenance'
+      industry_tags:
+      - Aerospace
+      - Electronics
+      - Medical
+      - Magnetics
+    - name: Copper
+      author_id: 4
+      complexity: medium
+      difficulty_score: 3
+      category: metal
+      formula: Cu
+      symbol: Cu
+      density: 8.96 g/cm³
+      melting_point: 1085°C
+      thermal_conductivity: 401 W/(m·K)
+      tensile_strength: 210-370 MPa
+      yield_strength: 33-365 MPa
+      thermal_expansion: 16.5×10⁻⁶/K
+      electrical_resistivity: 16.78 nΩ·m
+      corrosion_resistance: good (patina formation)
+      laser_parameters_template: standard_fiber_laser_alt
+      applications:
+      - 'Manufacturing: Cleaning copper surfaces for improved adhesion in the electronics
+        industry'
+      - 'Restoration: Removing corrosion and oxidation from copper artifacts and sculptures'
+      industry_tags:
+      - Manufacturing
+      - Restoration
+    - name: Gallium
+      author_id: 3
+      complexity: medium
+      difficulty_score: 3
+      category: metal
+      laser_parameters:
+        fluence_threshold: 1.0–10 J/cm²
+        pulse_duration: 10-50ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.05-1.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Electronics: Removing oxide layers from gallium-based components'
+      - 'Semiconductor: Cleaning gallium arsenide wafers for improved performance'
+      industry_tags:
+      - Semiconductor
+      - Electronics
+    - name: Gold
+      author_id: 2
+      complexity: medium
+      difficulty_score: 3
+      category: metal
+      symbol: Au
+      formula: Au
+      density: 19.32 g/cm³
+      melting_point: 1064°C
+      thermal_conductivity: 318 W/(m·K)
+      tensile_strength: 100-220 MPa
+      yield_strength: 120-140 MPa
+      thermal_expansion: 14.2×10⁻⁶/K
+      electrical_resistivity: 22.14 nΩ·m
+      corrosion_resistance: excellent (chemically inert)
+      crystal_structure: face-centered cubic
+      laser_parameters_template: standard_fiber_laser
+      applications:
+      - 'Electronics: Removal of oxide layers and contaminants from gold-plated circuit
+        boards'
+      - 'Jewelry: Cleaning and restoration of gold jewelry surfaces'
+      industry_tags:
+      - Jewelry
+      - Electronics
+    - name: Hafnium
+      author_id: 4
+      complexity: high
+      difficulty_score: 5
+      category: metal
+      laser_parameters_template: high_power_fiber_laser
+      applications:
+      - 'Aerospace: Removal of oxidation and contaminants from turbine blades'
+      - 'Electronics: Cleaning of hafnium-based components in semiconductor manufacturing'
+      industry_tags:
+      - Aerospace
+      - Electronics
+    - name: Hastelloy
+      author_id: 1
+      complexity: high
+      difficulty_score: 4
+      category: metal
+      laser_parameters_template: ultra_precision_fiber_laser
+      applications:
+      - 'Aerospace: Removal of oxidation and corrosion from turbine components'
+      - 'Chemical Processing: Cleaning of reaction vessels and piping systems'
+      industry_tags:
+      - Chemical Processing
+      - Aerospace
+    - name: Inconel
+      author_id: 3
+      complexity: high
+      difficulty_score: 4
+      category: metal
+      laser_parameters:
+        fluence_threshold: 1.0–10 J/cm²
+        pulse_duration: 10-200ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: pulsed fiber laser
+      applications:
+      - 'Aerospace: Removal of coatings and surface contaminants on turbine blades'
+      - 'Oil and Gas: Cleaning of corrosion and scale from piping and valves'
+      industry_tags:
+      - Oil and Gas
+      - Aerospace
+    - name: Indium
+      author_id: 4
+      complexity: medium
+      difficulty_score: 3
+      category: metal
+      laser_parameters:
+        fluence_threshold: 0.5-5 J/cm²
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064 nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Electronics: Surface cleaning of Indium used in soldering and semiconductor
+        applications'
+      - 'Aerospace: Precision cleaning of Indium coatings on satellite components'
+      industry_tags:
+      - Aerospace
+      - Electronics
+    - name: Iridium
+      author_id: 1
+      complexity: medium
+      difficulty_score: 3
+      category: metal
+      formula: Ir
+      laser_parameters:
+        fluence_threshold: 1.0–10 J/cm²
+        pulse_duration: 1-100ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.05-1.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Aerospace: Removal of oxidation and contaminants from iridium components
+        in rocket engines'
+      - 'Electronics: Cleaning iridium contacts and connectors for improved conductivity'
+      industry_tags:
+      - Aerospace
+      - Electronics
+    - name: Iron
+      author_id: 2
+      complexity: low
+      difficulty_score: 2
+      category: metal
+      symbol: Fe
+      formula: Fe
+      density: 7.87 g/cm³
+      melting_point: 1538°C
+      thermal_conductivity: 80.4 W/(m·K)
+      tensile_strength: 540 MPa
+      yield_strength: 250 MPa
+      thermal_expansion: 11.8×10⁻⁶/K
+      electrical_resistivity: 96.1 nΩ·m
+      magnetic_properties: ferromagnetic
+      crystal_structure: body-centered cubic
+      laser_parameters:
+        fluence_threshold: 1.0–10 J/cm²
+        pulse_duration: 10-200ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: pulsed fiber laser
+      applications:
+      - 'Automotive: Removing rust and corrosion from iron components'
+      - 'Manufacturing: Cleaning iron molds and dies for improved surface quality'
+      industry_tags:
+      - Automotive
+      - Manufacturing
+    - name: Lead
+      author_id: 4
+      complexity: medium
+      difficulty_score: 3
+      category: metal
+      symbol: Pb
+      formula: Pb
+      density: 11.34 g/cm³
+      melting_point: 327°C
+      thermal_conductivity: 35.3 W/(m·K)
+      tensile_strength: 12-17 MPa
+      yield_strength: 8-12 MPa
+      thermal_expansion: 28.9×10⁻⁶/K
+      electrical_resistivity: 208 nΩ·m
+      toxicity: toxic (neurotoxin)
+      radiation_shielding: excellent
+      laser_parameters:
+        fluence_threshold: 1.0–10 J/cm²
+        pulse_duration: 10-200ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: pulsed fiber laser
+      applications:
+      - 'Automotive: Removal of rust and corrosion from lead components'
+      - 'Electronics: Cleaning of lead-based solder residues'
+      industry_tags:
+      - Automotive
+      - Electronics
+    - name: Magnesium
+      author_id: 4
+      complexity: medium
+      difficulty_score: 3
+      category: metal
+      symbol: Mg
+      formula: Mg
+      density: 1.74 g/cm³
+      melting_point: 650°C
+      thermal_conductivity: 156 W/(m·K)
+      tensile_strength: 90-350 MPa
+      yield_strength: 65-300 MPa
+      thermal_expansion: 24.8×10⁻⁶/K
+      electrical_resistivity: 43.9 nΩ·m
+      crystal_structure: hexagonal close-packed
+      corrosion_resistance: poor (requires protection)
+      laser_parameters_template: standard_fiber_laser
+      applications:
+      - 'Aerospace: Removal of oxidation and contaminants from magnesium alloy components'
+      - 'Automotive: Cleaning of magnesium engine parts for improved performance and
+        longevity'
+      industry_tags:
+      - Automotive
+      - Aerospace
+    - name: Molybdenum
+      author_id: 1
+      complexity: medium
+      difficulty_score: 3
+      category: metal
+      laser_parameters_template: high_precision_fiber_laser
+      applications:
+      - 'Aerospace: Removal of oxidation and surface contaminants from Molybdenum
+        components'
+      - 'Semiconductor: Precision cleaning of Molybdenum surfaces in microelectronics
+        manufacturing'
+      industry_tags:
+      - Semiconductor
+      - Aerospace
+    - name: Nickel
+      author_id: 3
+      complexity: medium
+      difficulty_score: 3
+      category: metal
+      symbol: Ni
+      formula: Ni
+      density: 8.91 g/cm³
+      melting_point: 1455°C
+      thermal_conductivity: 90.9 W/(m·K)
+      curie_temperature: 355°C
+      magnetic_properties: ferromagnetic
+      crystal_structure: face-centered cubic
+      tensile_strength: 667-1600 MPa
+      yield_strength: 638 MPa
+      electrical_resistivity: 69.3 nΩ·m
+      laser_parameters_template: standard_fiber_laser
+      applications:
+      - 'Automotive: Removal of rust and corrosion from nickel-plated parts'
+      - 'Electronics: Cleaning of nickel surfaces for improved conductivity and soldering'
+      - 'Aerospace: Nickel-based superalloy component cleaning'
+      - 'Chemical Processing: Catalyst recovery and regeneration'
+      industry_tags:
+      - Automotive
+      - Electronics
+      - Aerospace
+      - Chemical Processing
+    - name: Niobium
+      author_id: 4
+      complexity: medium
+      difficulty_score: 3
+      category: metal
+      laser_parameters:
+        fluence_threshold: 1.0–10 J/cm²
+        pulse_duration: 10-50ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: pulsed fiber laser
+      applications:
+      - 'Aerospace: Cleaning of niobium components for jet engine parts'
+      - 'Electronics: Surface preparation of niobium for superconducting applications'
+      industry_tags:
+      - Aerospace
+      - Electronics
+    - name: Palladium
+      author_id: 3
+      complexity: medium
+      difficulty_score: 3
+      category: metal
+      formula: Pd
+      laser_parameters:
+        fluence_threshold: 0.5–5 J/cm²
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064 nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: Pulsed Fiber Laser
+      applications:
+      - 'Automotive: Removal of rust and corrosion from Palladium catalytic converters'
+      - 'Electronics: Cleaning Palladium contacts and connectors for improved conductivity'
+      industry_tags:
+      - Automotive
+      - Electronics
+    - name: Platinum
+      author_id: 3
+      complexity: medium
+      difficulty_score: 3
+      category: metal
+      symbol: Pt
+      formula: Pt
+      density: 21.45 g/cm³
+      melting_point: 1768°C
+      thermal_conductivity: 71.6 W/(m·K)
+      tensile_strength: 125-240 MPa
+      yield_strength: 60-140 MPa
+      thermal_expansion: 8.8×10⁻⁶/K
+      electrical_resistivity: 105 nΩ·m
+      corrosion_resistance: excellent (chemically inert)
+      catalyst_properties: excellent
+      laser_parameters:
+        fluence_threshold: 1.0–10 J/cm²
+        pulse_duration: 10-50ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.05-1.0mm
+        laser_type: Nd:YAG or fiber laser
+      applications:
+      - 'Aerospace: Removal of surface contaminants on turbine blades'
+      - 'Jewelry: Precision cleaning of intricate Platinum jewelry pieces'
+      industry_tags:
+      - Jewelry
+      - Aerospace
+    - name: Rhenium
+      author_id: 1
+      complexity: high
+      difficulty_score: 5
+      category: metal
+      laser_parameters:
+        fluence_threshold: 1.0-10 J/cm²
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Aerospace: Removing oxidation and contaminants from turbine blades'
+      - 'Semiconductor: Precision cleaning of Rhenium contacts and components'
+      industry_tags:
+      - Semiconductor
+      - Aerospace
+    - name: Rhodium
+      author_id: 2
+      complexity: medium
+      difficulty_score: 3
+      category: metal
+      laser_parameters:
+        fluence_threshold: 0.5–5 J/cm²
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064 nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: pulsed fiber laser
+      applications:
+      - 'Aerospace: Removing oxidation and coatings from turbine blades'
+      - 'Jewelry: Cleaning and restoring rhodium-plated surfaces'
+      industry_tags:
+      - Jewelry
+      - Aerospace
+    - name: Ruthenium
+      author_id: 1
+      complexity: medium
+      difficulty_score: 3
+      category: metal
+      laser_parameters_template: standard_fiber_laser
+      applications:
+      - 'Electronics: Removal of oxide layers and surface contaminants from Ruthenium
+        contacts'
+      - 'Aerospace: Precision cleaning of Ruthenium coatings on turbine blades'
+      industry_tags:
+      - Aerospace
+      - Electronics
+    - name: Silver
+      author_id: 2
+      complexity: medium
+      difficulty_score: 3
+      category: metal
+      symbol: Ag
+      formula: Ag
+      density: 10.49 g/cm³
+      melting_point: 962°C
+      thermal_conductivity: 429 W/(m·K)
+      tensile_strength: 170-310 MPa
+      yield_strength: 55-280 MPa
+      thermal_expansion: 18.9×10⁻⁶/K
+      electrical_resistivity: 15.87 nΩ·m
+      corrosion_resistance: good (tarnishes in air)
+      crystal_structure: face-centered cubic
+      laser_parameters_template: standard_fiber_laser_alt
+      applications:
+      - 'Electronics: Removal of oxides and contaminants from silver contacts and
+        connectors'
+      - 'Jewelry: Cleaning and restoration of silver jewelry without damaging delicate
+        surfaces'
+      industry_tags:
+      - Jewelry
+      - Electronics
+    - name: Stainless Steel
+      author_id: 2
+      complexity: high
+      difficulty_score: 4
+      category: metal
+      symbol: SS
+      formula: Fe-Cr-Ni
+      density: 7.5-8.0 g/cm³
+      melting_point: 1325-1530°C
+      thermal_conductivity: 16.2 W/(m·K)
+      corrosion_resistance: excellent
+      chromium_content: 11-30%
+      nickel_content: 0-37%
+      grades: 304, 316, 321, 347, 410, 420, 430
+      magnetic_properties: varies by grade
+      tensile_strength: 515-827 MPa
+      laser_parameters_template: high_precision_fiber_laser
+      applications:
+      - 'Automotive: Removal of rust, oil, and paint from stainless steel parts'
+      - 'Aerospace: Precision cleaning of intricate stainless steel components'
+      - 'Food Processing: Sanitary cleaning of processing equipment'
+      - 'Medical: Surgical instrument and implant cleaning'
+      - 'Chemical Processing: Heat exchanger and vessel maintenance'
+      industry_tags:
+      - Automotive
+      - Aerospace
+      - Food Processing
+      - Medical
+      - Chemical Processing
+    - name: Steel
+      author_id: 3
+      complexity: low
+      difficulty_score: 2
+      category: metal
+      formula: Fe-C
+      symbol: Fe
+      density: 7.85 g/cm³
+      melting_point: 1370-1520°C
+      thermal_conductivity: 50.2 W/(m·K)
+      tensile_strength: 400-2500 MPa
+      yield_strength: 250-1800 MPa
+      thermal_expansion: 11-13×10⁻⁶/K
+      electrical_resistivity: 143-200 nΩ·m
+      carbon_content: 0.02-2.1%
+      corrosion_resistance: poor (requires protection)
+      laser_parameters:
+        fluence_threshold: 1.0–10 J/cm²
+        pulse_duration: 10-200ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: Fiber laser
+      applications:
+      - 'Automotive: Rust and paint removal from steel car bodies'
+      - 'Manufacturing: Removal of oil, grease, and oxide layers from steel surfaces'
+      industry_tags:
+      - Automotive
+      - Manufacturing
+    - name: Tantalum
+      author_id: 2
+      complexity: medium
+      difficulty_score: 3
+      category: metal
+      laser_parameters:
+        fluence_threshold: 1.0–10 J/cm²
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064 nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Electronics: Removing oxidation and surface contaminants from Tantalum capacitors'
+      - 'Aerospace: Cleaning Tantalum components for high-temperature applications'
+      industry_tags:
+      - Aerospace
+      - Electronics
+    - name: Tin
+      author_id: 3
+      complexity: medium
+      difficulty_score: 3
+      category: metal
+      formula: Sn
+      density: 7.27 g/cm³
+      melting_point: 232°C
+      thermal_conductivity: 66.8 W/(m·K)
+      tensile_strength: 15-200 MPa
+      yield_strength: 9-150 MPa
+      thermal_expansion: 22.0×10⁻⁶/K
+      electrical_resistivity: 109 nΩ·m
+      crystal_structure: body-centered tetragonal
+      laser_parameters_template: standard_fiber_laser_alt
+      applications:
+      - 'Electronics: Removal of oxidation and contamination from tin-plated surfaces'
+      - 'Automotive: Cleaning of tin-coated components for improved adhesion and corrosion
+        resistance'
+      industry_tags:
+      - Automotive
+      - Electronics
+    - name: Titanium
+      author_id: 4
+      complexity: high
+      difficulty_score: 5
+      category: metal
+      formula: Ti
+      symbol: Ti
+      density: 4.51 g/cm³
+      melting_point: 1668°C
+      thermal_conductivity: 21.9 W/(m·K)
+      tensile_strength: 434-3420 MPa
+      yield_strength: 716-2770 MPa
+      crystal_structure: hexagonal close-packed
+      corrosion_resistance: excellent
+      biocompatibility: excellent
+      laser_parameters:
+        fluence_threshold: 1.0–10 J/cm²
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Aerospace: Removal of oxidation and surface contaminants from titanium components'
+      - 'Medical: Cleaning of titanium implants and surgical instruments'
+      - 'Marine: Corrosion-resistant components for ships and offshore platforms'
+      - 'Chemical Processing: Heat exchangers and pressure vessels'
+      industry_tags:
+      - Medical
+      - Aerospace
+      - Marine
+      - Chemical Processing
+    - name: Tungsten
+      author_id: 2
+      complexity: medium
+      difficulty_score: 3
+      category: metal
+      symbol: W
+      formula: W
+      density: 19.25 g/cm³
+      melting_point: 3422°C
+      thermal_conductivity: 173 W/(m·K)
+      tensile_strength: 3430-4600 MPa
+      yield_strength: 2000-4000 MPa
+      crystal_structure: body-centered cubic
+      thermal_expansion: 4.42×10⁻⁶/K
+      electrical_resistivity: 52.8 nΩ·m
+      laser_parameters_template: high_power_fiber_laser
+      applications:
+      - 'Aerospace: Cleaning of turbine blades and engine components'
+      - 'Electronics: Filament cleaning in incandescent bulbs and vacuum tubes'
+      - 'Industrial: Tungsten carbide cutting tool maintenance'
+      - 'Military: Kinetic energy penetrator component cleaning'
+      - 'Semiconductor: Removal of surface contaminants from tungsten parts'
+      industry_tags:
+      - Semiconductor
+      - Aerospace
+    - name: Vanadium
+      author_id: 4
+      complexity: medium
+      difficulty_score: 3
+      category: metal
+      laser_parameters_template: standard_fiber_laser
+      applications:
+      - 'Aerospace: Removal of surface contaminants from vanadium alloy components'
+      - 'Automotive: Cleaning of vanadium steel parts for enhanced surface quality'
+      industry_tags:
+      - Automotive
+      - Aerospace
+    - name: Zinc
+      author_id: 3
+      complexity: medium
+      difficulty_score: 3
+      category: metal
+      symbol: Zn
+      formula: Zn
+      density: 7.14 g/cm³
+      melting_point: 420°C
+      thermal_conductivity: 116 W/(m·K)
+      tensile_strength: 200-400 MPa
+      yield_strength: 140-350 MPa
+      thermal_expansion: 30.2×10⁻⁶/K
+      electrical_resistivity: 59.0 nΩ·m
+      crystal_structure: hexagonal close-packed
+      corrosion_resistance: good (forms protective oxide)
+      laser_parameters_template: high_power_fiber_laser
+      applications:
+      - 'Automotive: Rust and corrosion removal from zinc-coated parts'
+      - 'Electronics: Precision cleaning of zinc components in circuit boards'
+      industry_tags:
+      - Automotive
+      - Electronics
+    - name: Zirconium
+      author_id: 1
+      complexity: medium
+      difficulty_score: 3
+      category: metal
+      laser_parameters:
+        fluence_threshold: 0.5–5 J/cm²
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: pulsed fiber laser
+      applications:
+      - 'Aerospace: Removal of oxidation and coatings from engine components'
+      - 'Nuclear: Cleaning of zirconium alloy surfaces for reactor applications'
+      industry_tags:
+      - Aerospace
+      - Nuclear
+  semiconductor:
+    description: Semiconductor materials for laser cleaning applications
+    article_type: material
+    processing_priority: medium
+    items:
+    - name: Gallium Arsenide
+      author_id: 4
+      complexity: high
+      difficulty_score: 4
+      category: semiconductor
+      formula: GaAs
+      laser_parameters:
+        fluence_threshold: 1.0–10 J/cm²
+        pulse_duration: 10-50ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.05-1.0mm
+        laser_type: Pulsed Fiber Laser
+      applications:
+      - 'Semiconductor Manufacturing: Removal of surface contaminants from Gallium
+        Arsenide wafers'
+      - 'Optoelectronics: Precision cleaning of Gallium Arsenide substrates for LED
+        and laser diode production'
+      industry_tags:
+      - Optoelectronics
+      - Semiconductor Manufacturing
+    - name: Silicon
+      author_id: 2
+      complexity: medium
+      difficulty_score: 3
+      category: semiconductor
+      formula: Si
+      density: 2.33 g/cm³
+      melting_point: 1414°C
+      thermal_conductivity: 149 W/(m·K)
+      tensile_strength: 7000 MPa
+      yield_strength: 5000-9000 MPa
+      thermal_expansion: 2.6×10⁻⁶/K
+      electrical_resistivity: 1000-100000 Ω·cm
+      crystal_structure: diamond cubic
+      bandgap: 1.12 eV
+      laser_parameters_template: standard_fiber_laser_alt
+      applications:
+      - 'Semiconductor Manufacturing: Wafer cleaning and surface preparation for microchip
+        fabrication'
+      - 'Photovoltaics: Cleaning of solar cell surfaces to enhance efficiency and
+        performance'
+      industry_tags:
+      - Semiconductor Manufacturing
+      - Photovoltaics
+    - name: Silicon Carbide
+      author_id: 3
+      complexity: high
+      difficulty_score: 4
+      category: semiconductor
+      formula: SiC
+      laser_parameters:
+        fluence_threshold: 1.0–10 J/cm²
+        pulse_duration: 10-50ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.05-1.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Semiconductor Manufacturing: Removal of surface contaminants for improved
+        semiconductor performance'
+      - 'Aerospace: Cleaning of Silicon Carbide components for high-temperature applications'
+      industry_tags:
+      - Semiconductor Manufacturing
+      - Aerospace
+    - name: Silicon Germanium
+      author_id: 4
+      complexity: medium
+      difficulty_score: 3
+      category: semiconductor
+      documentation_status: pending
+      laser_parameters:
+        fluence_threshold: 0.1-1.0 J/cm²
+        pulse_duration: 1-50ns
+        wavelength_optimal: 1064nm
+      applications:
+      - 'Semiconductor: Precision cleaning of silicon germanium wafers'
+      - 'Electronics: Removal of organic contaminants from semiconductor surfaces'
+      industry_tags:
+      - Semiconductor
+      - Electronics
+  stone:
+    description: Stone materials for laser cleaning applications
+    article_type: material
+    processing_priority: medium
+    items:
+    - name: Alabaster
+      author_id: 1
+      complexity: medium
+      difficulty_score: 3
+      category: stone
+      formula: CaSO4·2H2O
+      density: 2.3 g/cm³
+      melting_point: 128°C
+      thermal_conductivity: 1.3 W/(m·K)
+      thermal_expansion: 16×10⁻⁶/K
+      compressive_strength: 20 MPa
+      hardness: 2.0 Mohs
+      porosity: 5-15%
+      laser_parameters_template: standard_fiber_laser_alt
+      applications:
+      - 'Art Restoration: Cleaning and restoration of alabaster sculptures and artifacts'
+      - 'Construction: Surface preparation and cleaning of alabaster architectural
+        elements'
+      industry_tags:
+      - Construction
+      - Art Restoration
+    - name: Basalt
+      author_id: 2
+      complexity: medium
+      difficulty_score: 3
+      category: stone
+      density: 2.9 g/cm³
+      melting_point: 1200°C
+      thermal_conductivity: 2.0 W/(m·K)
+      thermal_expansion: 8×10⁻⁶/K
+      compressive_strength: 300 MPa
+      tensile_strength: 15 MPa
+      hardness: 6.0 Mohs
+      composition: Mafic igneous rock
+      laser_parameters_template: high_power_fiber_laser
+      applications:
+      - 'Construction: Cleaning and restoration of basalt facades and sculptures'
+      - 'Manufacturing: Precision cleaning of basalt surfaces in industrial equipment'
+      industry_tags:
+      - Construction
+      - Manufacturing
+    - name: Bluestone
+      author_id: 2
+      complexity: medium
+      difficulty_score: 3
+      category: stone
+      density: 2.6 g/cm³
+      melting_point: 1100°C
+      thermal_conductivity: 2.2 W/(m·K)
+      thermal_expansion: 7×10⁻⁶/K
+      compressive_strength: 170 MPa
+      tensile_strength: 12 MPa
+      hardness: 7.0 Mohs
+      composition: Sandstone/Basalt
+      laser_parameters_template: precision_fiber_laser
+      applications:
+      - 'Construction: Removal of surface contaminants and weathering from Bluestone
+        facades'
+      - 'Restoration: Precision cleaning of Bluestone sculptures and historical artifacts'
+      industry_tags:
+      - Construction
+      - Restoration
+    - name: Breccia
+      author_id: 1
+      complexity: medium
+      difficulty_score: 3
+      category: stone
+      density: 2.6 g/cm³
+      melting_point: 1200°C
+      thermal_conductivity: 2.5 W/(m·K)
+      thermal_expansion: 9×10⁻⁶/K
+      compressive_strength: 150 MPa
+      tensile_strength: 8 MPa
+      hardness: 3-7 Mohs
+      composition: Clastic sedimentary/fault rock
+      laser_parameters:
+        fluence_threshold: 1.0-10 J/cm²
+        pulse_duration: 10-50ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Construction: Restoration of historic buildings and monuments'
+      - 'Art and Restoration: Cleaning and surface preparation of sculptures and artworks'
+      industry_tags:
+      - Construction
+      - Art and Restoration
+    - name: Calcite
+      author_id: 4
+      complexity: medium
+      difficulty_score: 3
+      category: stone
+      formula: CaCO3
+      density: 2.71 g/cm³
+      melting_point: 825°C
+      thermal_conductivity: 3.6 W/(m·K)
+      thermal_expansion: 25×10⁻⁶/K
+      compressive_strength: 100 MPa
+      tensile_strength: 5 MPa
+      hardness: 3.0 Mohs
+      composition: Carbonate mineral
+      laser_parameters:
+        fluence_threshold: 1.0–10 J/cm²
+        pulse_duration: 10-50ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: Pulsed Nd:YAG
+      applications:
+      - 'Construction: Removal of surface contaminants from building facades'
+      - 'Restoration: Cleaning of historical monuments and sculptures'
+      industry_tags:
+      - Construction
+      - Restoration
+    - name: Granite
+      author_id: 3
+      complexity: high
+      difficulty_score: 4
+      category: stone
+      formula: SiO2-Al2O3-K2O
+      density: 2.7 g/cm³
+      melting_point: 1260°C
+      thermal_conductivity: 2.3 W/(m·K)
+      thermal_expansion: 8×10⁻⁶/K
+      compressive_strength: 200 MPa
+      tensile_strength: 15 MPa
+      hardness: 6-7 Mohs
+      composition: Felsic igneous rock
+      laser_parameters:
+        fluence_threshold: 1.0-10 J/cm²
+        pulse_duration: 10-50ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: Nd:YAG or fiber laser
+      applications:
+      - 'Construction: Removal of paint and coatings from granite surfaces'
+      - 'Restoration: Cleaning historical granite structures and monuments'
+      industry_tags:
+      - Construction
+      - Restoration
+    - name: Limestone
+      author_id: 2
+      complexity: medium
+      difficulty_score: 3
+      category: stone
+      formula: CaCO3
+      density: 2.6 g/cm³
+      melting_point: 825°C
+      thermal_conductivity: 1.3 W/(m·K)
+      thermal_expansion: 8×10⁻⁶/K
+      compressive_strength: 100 MPa
+      tensile_strength: 5 MPa
+      hardness: 3-4 Mohs
+      composition: Sedimentary carbonate rock
+      laser_parameters:
+        fluence_threshold: 0.5–5 J/cm²
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: Nd:YAG
+      applications:
+      - 'Construction: Cleaning of limestone facades and sculptures for restoration'
+      - 'Heritage Conservation: Non-destructive cleaning of historical limestone monuments'
+      industry_tags:
+      - Construction
+      - Heritage Conservation
+    - name: Porphyry
+      author_id: 4
+      complexity: medium
+      difficulty_score: 3
+      category: stone
+      laser_parameters:
+        fluence_threshold: 1.0–10 J/cm²
+        pulse_duration: 10-50ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.2-1.0mm
+        laser_type: Nd:YAG or fiber laser
+      applications:
+      - 'Construction: Cleaning and restoration of historical porphyry structures'
+      - 'Art and Restoration: Precision cleaning of porphyry sculptures and artifacts'
+      industry_tags:
+      - Construction
+      - Art and Restoration
+    - name: Marble
+      author_id: 3
+      complexity: high
+      difficulty_score: 4
+      category: stone
+      formula: CaCO3
+      density: 2.7 g/cm³
+      melting_point: 825°C
+      thermal_conductivity: 2.8 W/(m·K)
+      thermal_expansion: 14×10⁻⁶/K
+      compressive_strength: 100 MPa
+      tensile_strength: 7 MPa
+      hardness: 3-4 Mohs
+      composition: Metamorphic calcite/dolomite
+      laser_parameters_template: standard_fiber_laser_alt
+      applications:
+      - 'Construction: Removing stains and graffiti from marble surfaces'
+      - 'Restoration: Cleaning and restoring historical marble sculptures and buildings'
+      industry_tags:
+      - Construction
+      - Restoration
+    - name: Onyx
+      author_id: 2
+      complexity: medium
+      difficulty_score: 3
+      category: stone
+      laser_parameters:
+        fluence_threshold: 1.0–10 J/cm²
+        pulse_duration: 5-50ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.05-1.0mm
+        laser_type: Nd:YAG laser
+      applications:
+      - 'Jewelry: Cleaning and restoration of onyx jewelry pieces'
+      - 'Construction: Surface preparation and cleaning of onyx slabs for building
+        facades'
+      industry_tags:
+      - Construction
+      - Jewelry
+    - name: Quartzite
+      author_id: 3
+      complexity: medium
+      difficulty_score: 3
+      category: stone
+      formula: SiO2
+      density: 2.65 g/cm³
+      melting_point: 1713°C
+      thermal_conductivity: 5.5 W/(m·K)
+      thermal_expansion: 11×10⁻⁶/K
+      compressive_strength: 300 MPa
+      tensile_strength: 25 MPa
+      hardness: 7.0 Mohs
+      composition: Metamorphic quartz-rich rock
+      laser_parameters:
+        fluence_threshold: 1.0–10 J/cm²
+        pulse_duration: 10-50ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: pulsed fiber laser
+      applications:
+      - 'Construction: Removing graffiti and paint from quartzite building facades'
+      - 'Restoration: Cleaning and restoring historical quartzite monuments and sculptures'
+      industry_tags:
+      - Construction
+      - Restoration
+    - name: Sandstone
+      author_id: 2
+      complexity: medium
+      difficulty_score: 3
+      category: stone
+      density: 2.3 g/cm³
+      melting_point: 1710°C
+      thermal_conductivity: 1.8 W/(m·K)
+      thermal_expansion: 12×10⁻⁶/K
+      compressive_strength: 170 MPa
+      tensile_strength: 4 MPa
+      hardness: 6-7 Mohs
+      composition: Clastic sedimentary rock
+      laser_parameters_template: standard_fiber_laser_alt
+      applications:
+      - 'Construction: Cleaning of sandstone facades and sculptures'
+      - 'Heritage Conservation: Restoration of historical sandstone structures'
+      industry_tags:
+      - Construction
+      - Heritage Conservation
+    - name: Schist
+      author_id: 3
+      complexity: medium
+      difficulty_score: 3
+      category: stone
+      density: 2.7 g/cm³
+      melting_point: 1000°C
+      thermal_conductivity: 2.1 W/(m·K)
+      thermal_expansion: 8×10⁻⁶/K
+      compressive_strength: 200 MPa
+      tensile_strength: 10 MPa
+      hardness: 3-6 Mohs
+      composition: Metamorphic foliated rock
+      laser_parameters:
+        fluence_threshold: 1.0-10 J/cm²
+        pulse_duration: 10-200ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Construction: Removal of dirt and coatings from schist surfaces for restoration'
+      - 'Heritage Conservation: Non-destructive cleaning of schist artifacts and monuments'
+      industry_tags:
+      - Construction
+      - Heritage Conservation
+    - name: Serpentine
+      author_id: 4
+      complexity: medium
+      difficulty_score: 3
+      category: stone
+      laser_parameters_template: ultra_precision_fiber_laser
+      applications:
+      - 'Construction: Cleaning of serpentine stone surfaces for restoration and maintenance'
+      - 'Jewelry: Precision cleaning of serpentine gemstones for enhanced appearance'
+      industry_tags:
+      - Construction
+      - Jewelry
+    - name: Shale
+      author_id: 1
+      complexity: medium
+      difficulty_score: 3
+      category: stone
+      laser_parameters:
+        fluence_threshold: 1.0–10 J/cm²
+        pulse_duration: 5-50ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.5-3.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Oil and Gas: Cleaning of shale drill bits and tools'
+      - 'Construction: Restoration of shale surfaces in building exteriors'
+      industry_tags:
+      - Construction
+      - Oil and Gas
+    - name: Slate
+      author_id: 3
+      complexity: medium
+      difficulty_score: 3
+      category: stone
+      density: 2.8 g/cm³
+      melting_point: 1050°C
+      thermal_conductivity: 2.0 W/(m·K)
+      thermal_expansion: 8×10⁻⁶/K
+      compressive_strength: 200 MPa
+      tensile_strength: 15 MPa
+      hardness: 3-4 Mohs
+      composition: Metamorphic fine-grained rock
+      laser_parameters_template: standard_fiber_laser_alt
+      applications:
+      - 'Construction: Removal of graffiti and paint from slate building facades'
+      - 'Restoration: Cleaning of historical slate monuments and gravestones'
+      industry_tags:
+      - Construction
+      - Restoration
+    - name: Soapstone
+      author_id: 4
+      complexity: medium
+      difficulty_score: 3
+      category: stone
+      density: 2.8 g/cm³
+      melting_point: 1000°C
+      thermal_conductivity: 3.3 W/(m·K)
+      thermal_expansion: 9×10⁻⁶/K
+      compressive_strength: 100 MPa
+      tensile_strength: 8 MPa
+      hardness: 1-2 Mohs
+      composition: Talc-rich metamorphic rock
+      laser_parameters:
+        fluence_threshold: 1.0–10 J/cm²
+        pulse_duration: 5-50ns
+        wavelength_optimal: 1064nm
+        power_range: 50-200W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: Nd:YAG laser
+      applications:
+      - 'Construction: Removal of graffiti and paint from soapstone surfaces'
+      - 'Restoration: Cleaning soapstone sculptures and architectural elements'
+      industry_tags:
+      - Construction
+      - Restoration
+    - name: Travertine
+      author_id: 1
+      complexity: medium
+      difficulty_score: 3
+      category: stone
+      laser_parameters:
+        fluence_threshold: 0.5-5 J/cm²
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064 nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Construction: Removal of surface contaminants and efflorescence from travertine
+        tiles and facades'
+      - 'Restoration: Cleaning and restoration of historical travertine sculptures
+        and architectural elements'
+      industry_tags:
+      - Construction
+      - Restoration
+  wood:
+    description: Wood materials for laser cleaning applications
+    article_type: material
+    processing_priority: medium
+    items:
+    - name: Ash
+      author_id: 4
+      complexity: medium
+      difficulty_score: 3
+      category: wood
+      laser_parameters_template: standard_fiber_laser_alt
+      applications:
+      - 'Woodworking: Removal of surface contaminants and restoration of wooden artifacts'
+      - 'Conservation: Cleaning of historical wooden structures and artworks'
+      industry_tags:
+      - Woodworking
+      - Conservation
+    - name: Bamboo
+      author_id: 1
+      complexity: medium
+      difficulty_score: 3
+      category: wood
+      laser_parameters_template: precision_fiber_laser
+      applications:
+      - 'Woodworking: Removing mold and mildew from bamboo surfaces'
+      - 'Conservation: Cleaning bamboo artifacts without damaging the material'
+      industry_tags:
+      - Woodworking
+      - Conservation
+    - name: Beech
+      author_id: 3
+      complexity: medium
+      difficulty_score: 3
+      category: wood
+      laser_parameters:
+        fluence_threshold: 0.5–3.0 J/cm²
+        pulse_duration: 10-50ns
+        wavelength_optimal: 1064nm
+        power_range: 20-100W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Woodworking: Removing surface contaminants and old finishes from Beech wood
+        furniture'
+      - 'Restoration: Cleaning historical Beech wood artifacts without damaging the
+        material'
+      industry_tags:
+      - Woodworking
+      - Restoration
+    - name: Birch
+      author_id: 1
+      complexity: medium
+      difficulty_score: 3
+      category: wood
+      laser_parameters:
+        fluence_threshold: 0.5–5 J/cm²
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064 nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Woodworking: Laser cleaning for restoring antique birch furniture'
+      - 'Construction: Removing surface contaminants from birch wood panels'
+      industry_tags:
+      - Construction
+      - Woodworking
+    - name: Cedar
+      author_id: 2
+      complexity: medium
+      difficulty_score: 3
+      category: wood
+      laser_parameters_template: standard_fiber_laser
+      applications:
+      - 'Woodworking: Removal of surface contaminants and old finishes on Cedar wood'
+      - 'Restoration: Precision cleaning of historical Cedar structures without damage'
+      industry_tags:
+      - Woodworking
+      - Restoration
+    - name: Cherry
+      author_id: 1
+      complexity: medium
+      difficulty_score: 3
+      category: wood
+      laser_parameters:
+        fluence_threshold: 0.5-3.0 J/cm²
+        pulse_duration: 10-50ns
+        wavelength_optimal: 1064 nm
+        power_range: 20-100W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Furniture Manufacturing: Removing old finishes and stains from Cherry wood
+        surfaces'
+      - 'Restoration and Conservation: Cleaning and restoring antique Cherry wood
+        furniture and artifacts'
+      industry_tags:
+      - Restoration and Conservation
+      - Furniture Manufacturing
+    - name: Fir
+      author_id: 4
+      complexity: medium
+      difficulty_score: 3
+      category: wood
+      laser_parameters_template: standard_fiber_laser_alt
+      applications:
+      - 'Woodworking: Surface preparation for staining and finishing'
+      - 'Restoration: Cleaning and restoring historical wooden structures'
+      industry_tags:
+      - Woodworking
+      - Restoration
+    - name: Hickory
+      author_id: 2
+      complexity: medium
+      difficulty_score: 3
+      category: wood
+      laser_parameters_template: precision_fiber_laser
+      applications:
+      - 'Woodworking: Removing old finishes and stains from hickory wood surfaces'
+      - 'Restoration: Cleaning and restoring antique hickory furniture'
+      industry_tags:
+      - Woodworking
+      - Restoration
+    - name: Mahogany
+      author_id: 1
+      complexity: medium
+      difficulty_score: 3
+      category: wood
+      laser_parameters:
+        fluence_threshold: 0.5-3.0 J/cm²
+        pulse_duration: 10-50ns
+        wavelength_optimal: 1064nm
+        power_range: 20-100W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: Nd:YAG laser
+      applications:
+      - 'Furniture Manufacturing: Removing old finishes and stains from Mahogany furniture
+        surfaces'
+      - 'Restoration: Cleaning and restoring historical Mahogany artifacts and structures'
+      industry_tags:
+      - Restoration
+      - Furniture Manufacturing
+    - name: Maple
+      author_id: 2
+      complexity: medium
+      difficulty_score: 3
+      category: wood
+      laser_parameters_template: precision_fiber_laser
+      applications:
+      - 'Woodworking: Removing surface contaminants and residues from Maple wood products'
+      - 'Restoration: Cleaning and restoring antique Maple furniture and artifacts'
+      industry_tags:
+      - Woodworking
+      - Restoration
+    - name: MDF
+      author_id: 3
+      complexity: low
+      difficulty_score: 2
+      category: wood
+      laser_parameters_template: standard_fiber_laser_alt
+      applications:
+      - 'Furniture Manufacturing: Removal of surface contaminants and coatings for
+        refinishing'
+      - 'Construction: Cleaning of MDF panels before installation or painting'
+      industry_tags:
+      - Construction
+      - Furniture Manufacturing
+    - name: Oak
+      author_id: 1
+      complexity: medium
+      difficulty_score: 3
+      category: wood
+      laser_parameters:
+        fluence_threshold: 0.5-5 J/cm²
+        pulse_duration: 10-100ns
+        wavelength_optimal: 1064 nm
+        power_range: 20-100W
+        repetition_rate: 10-50kHz
+        spot_size: 0.1-2.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Woodworking: Removing surface contaminants and stains from Oak furniture'
+      - 'Restoration: Cleaning Oak artifacts and historical pieces without damage'
+      industry_tags:
+      - Woodworking
+      - Restoration
+    - name: Pine
+      author_id: 1
+      complexity: low
+      difficulty_score: 2
+      category: wood
+      laser_parameters_template: precision_fiber_laser
+      applications:
+      - 'Woodworking: Removal of surface contaminants and coatings on pine wood products'
+      - 'Restoration: Cleaning and restoration of antique pine furniture and structures'
+      industry_tags:
+      - Woodworking
+      - Restoration
+    - name: Plywood
+      author_id: 4
+      complexity: low
+      difficulty_score: 2
+      category: wood
+      laser_parameters_template: standard_fiber_laser
+      applications:
+      - 'Woodworking: Removing surface contaminants and old finishes'
+      - 'Construction: Cleaning and preparing plywood surfaces for painting or bonding'
+      industry_tags:
+      - Construction
+      - Woodworking
+    - name: Poplar
+      author_id: 2
+      complexity: medium
+      difficulty_score: 3
+      category: wood
+      laser_parameters_template: standard_fiber_laser
+      applications:
+      - 'Woodworking: Removal of surface contaminants and coatings from Poplar wood'
+      - 'Restoration: Cleaning and restoration of antique Poplar furniture and artifacts'
+      industry_tags:
+      - Woodworking
+      - Restoration
+    - name: Redwood
+      author_id: 4
+      complexity: medium
+      difficulty_score: 3
+      category: wood
+      laser_parameters_template: ultra_precision_fiber_laser
+      applications:
+      - 'Woodworking: Removal of mold and mildew from Redwood surfaces'
+      - 'Restoration: Cleaning of historic Redwood structures'
+      industry_tags:
+      - Woodworking
+      - Restoration
+    - name: Rosewood
+      author_id: 3
+      complexity: medium
+      difficulty_score: 3
+      category: wood
+      laser_parameters_template: standard_fiber_laser_alt
+      applications:
+      - 'Furniture Manufacturing: Removing old finishes and stains from Rosewood furniture'
+      - 'Restoration: Cleaning and restoring antique Rosewood artifacts'
+      industry_tags:
+      - Restoration
+      - Furniture Manufacturing
+    - name: Teak
+      author_id: 3
+      complexity: medium
+      difficulty_score: 3
+      category: wood
+      laser_parameters_template: standard_fiber_laser
+      applications:
+      - 'Woodworking: Removal of surface contaminants and restoration of teak furniture'
+      - 'Marine: Cleaning and maintenance of teak decks on boats and yachts'
+      industry_tags:
+      - Woodworking
+      - Marine
+    - name: Walnut
+      author_id: 1
+      complexity: medium
+      difficulty_score: 3
+      category: wood
+      laser_parameters:
+        fluence_threshold: 0.5–3.0 J/cm²
+        pulse_duration: 10-50ns
+        wavelength_optimal: 1064nm
+        power_range: 20-100W
+        repetition_rate: 20-100kHz
+        spot_size: 0.1-1.0mm
+        laser_type: Pulsed fiber laser
+      applications:
+      - 'Furniture Manufacturing: Removing old finishes and stains from walnut furniture'
+      - 'Art Restoration: Precision cleaning of walnut sculptures and frames'
+      industry_tags:
+      - Art Restoration
+      - Furniture Manufacturing
+    - name: Willow
+      author_id: 2
+      complexity: medium
+      difficulty_score: 3
+      category: wood
+      laser_parameters_template: standard_fiber_laser
+      applications:
+      - 'Woodworking: Removing surface contaminants and old finishes from Willow wood'
+      - 'Restoration: Precision cleaning of Willow artifacts and antiques'
+      industry_tags:
+      - Woodworking
+      - Restoration
+metadata:
+  total_categories: 8
+  total_materials: 109
+  format_version: '2.0'
+  schema_version: enhanced_v1
+  last_updated: '2025-08-31'
+  migration_date: '2025-08-31'
+  author_distribution:
+    '1':
+    - Silicon Nitride
+    - Carbon Fiber Reinforced Polymer
+    - Epoxy Resin Composites
+    - Polyester Resin Composites
+    - Glass Fiber Reinforced Polymers GFRP
+    - Float Glass
+    - Lead Crystal
+    - Pyrex
+    - Soda-Lime Glass
+    - Stucco
+    - Terracotta
+    - Hastelloy
+    - Iridium
+    - Molybdenum
+    - Rhenium
+    - Ruthenium
+    - Zirconium
+    - Alabaster
+    - Breccia
+    - Shale
+    - Travertine
+    - Bamboo
+    - Birch
+    - Cherry
+    - Mahogany
+    - Oak
+    - Pine
+    - Walnut
+    '2':
+    - Alumina
+    - Thermoplastic Elastomer
+    - Fiber Reinforced Polyurethane FRPU
+    - Fused Silica
+    - Quartz Glass
+    - Brick
+    - Mortar
+    - Plaster
+    - Cobalt
+    - Gold
+    - Iron
+    - Rhodium
+    - Silver
+    - Stainless Steel
+    - Tantalum
+    - Tungsten
+    - Silicon
+    - Basalt
+    - Bluestone
+    - Limestone
+    - Onyx
+    - Sandstone
+    - Cedar
+    - Hickory
+    - Maple
+    - Poplar
+    - Willow
+    '3':
+    - Porcelain
+    - Fiberglass
+    - Kevlar-Reinforced Polymer
+    - Urethane Composites
+    - Borosilicate Glass
+    - Cement
+    - Concrete
+    - Aluminum
+    - Bronze
+    - Gallium
+    - Inconel
+    - Nickel
+    - Palladium
+    - Platinum
+    - Steel
+    - Tin
+    - Zinc
+    - Silicon Carbide
+    - Granite
+    - Marble
+    - Quartzite
+    - Schist
+    - Slate
+    - Beech
+    - MDF
+    - Rosewood
+    - Teak
+    '4':
+    - Stoneware
+    - Zirconia
+    - Phenolic Resin Composites
+    - Rubber
+    - Metal Matrix Composites MMCs
+    - Ceramic Matrix Composites CMCs
+    - Tempered Glass
+    - Beryllium
+    - Brass
+    - Copper
+    - Hafnium
+    - Indium
+    - Lead
+    - Magnesium
+    - Niobium
+    - Titanium
+    - Vanadium
+    - Gallium Arsenide
+    - Silicon Germanium
+    - Calcite
+    - Porphyry
+    - Serpentine
+    - Soapstone
+    - Ash
+    - Fir
+    - Plywood
+    - Redwood
+  priority_groups:
+    high:
+    - metal
+    - glass
+    - semiconductor
+    medium:
+    - ceramic
+    - composite
+    - stone
+    low:
+    - wood
+    - masonry
+  complexity_stats:
+    low: 8
+    medium: 85
+    high: 10
+    very_high: 6
+  documentation_coverage: 0
+  validation:
+    schema_valid: true
+    author_ids_valid: true
+    categories_consistent: true
+    round_robin_complete: true
+    formulas_validated: false
+    parameters_calibrated: false
+  last_enhanced: '2025-08-31'
+  enhancement_source: frontmatter_extraction
+  enhanced_materials_count: 108
+  missing_frontmatter_count: 1
+  optimization_version: '1.0'
+  optimization_date: '2025-09-16'
+  optimization_features:
+  - parameter_templates
+  - material_index
+  - default_compression

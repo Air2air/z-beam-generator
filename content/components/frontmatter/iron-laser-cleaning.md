@@ -13,6 +13,8 @@ chemicalProperties:
   materialType: metal
 properties:
   density: "7.87 g/cm³"
+  thermalDestructionPoint: "1538°C"
+  thermalDestructionType: melting
   densityNumeric: 7.87
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -22,7 +24,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 100.0
-  meltingPoint: "1538°C"
   meltingPointNumeric: 1538
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -52,7 +53,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 51.6
-  hardness: 50-90 HB (Brinell scale)
+  hardness: 70HB
   hardnessNumeric: 70.0
   hardnessUnit: HB
   hardnessMin: 1 Mohs
@@ -76,7 +77,6 @@ properties:
   wavelength: 1064nm
   fluenceRange: "1.0–10 J/cm²"
   chemicalFormula: Fe
-  thermalBehaviorType: melting
 composition:
 - 'Iron (Fe): 99.5-99.9% (commercial purity)'
 - 'Carbon (C): 0.02-0.1%, Manganese (Mn): 0.3-0.7%, Silicon (Si): 0.15-0.35%'
@@ -190,7 +190,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Italy
   author_id: 2
-  verification_timestamp: '2025-09-20T21:18:09Z'
+  verification_timestamp: '2025-09-20T21: 18: 09Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -211,3 +211,4 @@ complexity: low
 difficultyScore: 2
 surface_roughness_before: 18.5
 surface_roughness_after: 2.2
+---

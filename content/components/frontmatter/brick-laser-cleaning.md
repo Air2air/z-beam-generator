@@ -16,7 +16,9 @@ chemicalProperties:
     , CaO)"
   materialType: masonry
 properties:
-  density: "1600-2000 kg/m³"
+  density: 1800kg/m³"
+  thermalDestructionPoint: "1450°C"
+  thermalDestructionType: decomposition
   densityNumeric: 1800.0
   densityUnit: "kg/m³"
   densityMin: "1.8 g/cm³"
@@ -26,7 +28,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 100.0
-  meltingPoint: "1450°C"
   meltingPointNumeric: 1450
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -36,7 +37,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 7.8
-  thermalConductivity: "0.6-1.0 W/(m·K)"
+  thermalConductivity: 0.8W/(m·K)"
   thermalConductivityNumeric: 0.8
   thermalConductivityUnit: W/
   thermalConductivityMin: "0.5 W/m·K"
@@ -46,7 +47,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.2
-  tensileStrength: 1.5-3.5 MPa
+  tensileStrength: 2.5MPa
   tensileStrengthNumeric: 2.5
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -56,7 +57,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 0.0
-  hardness: 3-4 Mohs
+  hardness: 3.5Mohs
   hardnessNumeric: 3.5
   hardnessUnit: Mohs
   hardnessMin: 1 Mohs
@@ -76,11 +77,10 @@ properties:
   youngsModulusMaxNumeric: 80.0
   youngsModulusMaxUnit: GPa
   modulusPercentile: 0.0
-  laserType: Nd:YAG laser
+  laserType: "Nd: YAG laser"
   wavelength: 1064nm
   fluenceRange: "1.0–10 J/cm²"
   chemicalFormula: Variable (clay-based ceramic composite)
-  thermalBehaviorType: melting
 composition:
 - "Silica (SiO₂): 50-60%"
 - "Alumina (Al₂O₃): 20-30%"
@@ -150,8 +150,8 @@ compatibility:
 - Terracotta and ceramic materials
 - Natural stone with similar mineral composition
 - Mortar and cementitious materials
-regulatoryStandards: EN 15898:2019 (Conservation of cultural heritage - Main general
-  terms and definitions), EN 17138:2018 (Conservation of cultural heritage - Methods
+regulatoryStandards: "EN 15898: 2019 (Conservation of cultural heritage - Main general"
+  terms and definitions), EN 17138: 2018 (Conservation of cultural heritage - Methods
   and materials for cleaning porous inorganic materials)
 author: Alessandro Moretti
 author_object:
@@ -179,8 +179,8 @@ environmentalImpact:
     consume 20-50 liters per square meter
 outcomes:
 - result: Surface contamination removal efficiency
-  metric: '>95% removal of biological growth, pollutants, and surface deposits without
-    substrate damage'
+  metric: ">95% removal of biological growth, pollutants, and surface deposits without
+    substrate damage"
 - result: Processing speed
   metric: "0.5-2.0 m²/hour depending on contamination type and laser parameters"
 technicalSpecifications:
@@ -201,7 +201,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Italy
   author_id: 2
-  verification_timestamp: '2025-09-20T21:00:10Z'
+  verification_timestamp: '2025-09-20T21: 00: 10Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -212,7 +212,7 @@ laser_parameters:
   power_range: 50-200W
   repetition_rate: 20-100kHz
   spot_size: 0.5-3.0mm
-  laser_type: Nd:YAG laser
+  laser_type: "Nd: YAG laser"
 tags:
 - Construction
 - Restoration
@@ -220,3 +220,4 @@ complexity: low
 difficultyScore: 2
 surface_roughness_before: 45.8
 surface_roughness_after: 15.2
+---

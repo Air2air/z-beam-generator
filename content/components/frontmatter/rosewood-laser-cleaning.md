@@ -16,7 +16,9 @@ chemicalProperties:
   formula: "Variable (Primarily C₆H₁₀O₅ for cellulose)"
   materialType: Hardwood
 properties:
-  density: "800-880 kg/m³ (varies by species, e.g., Brazilian Rosewood ~880 kg/m³"
+  density: 840kg/m³
+  thermalDestructionPoint: "280°C"
+  thermalDestructionType: decomposition
     )"
   densityNumeric: 840.0
   densityUnit: "kg/m³"
@@ -34,7 +36,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "0.12-0.17 W/(m·K) (radial direction)"
+  thermalConductivity: 0.1W/(m·K)
   thermalConductivityNumeric: 0.15
   thermalConductivityUnit: W/
   thermalConductivityMin: "0.5 W/m·K"
@@ -80,11 +82,7 @@ properties:
   chemicalFormula: "Complex organic composite; primarily cellulose (C₆H₁"
     ₀O₅), lignin (C₉H₁₀O₃, C₁₀H₁₂\
     O₃, C₁₁H₁₄O₄), hemicellulose, and extractives (e.g.,\
-    \ dalbergione)."
-  thermalBehaviorType: decomposition
-  decompositionPoint: "280°C"
-  decompositionPointNumeric: 280
-  decompositionPointUnit: "°C"
+    \ dalbergione)."  decompositionPointUnit: "°C"
 composition:
 - 'Cellulose: 40-50%'
 - 'Lignin: 20-30%'
@@ -208,7 +206,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Indonesia
   author_id: 3
-  verification_timestamp: '2025-09-20T22:09:35Z'
+  verification_timestamp: '2025-09-20T22: 09: 35Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -227,3 +225,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 35.8
 surface_roughness_after: 14.2
+---

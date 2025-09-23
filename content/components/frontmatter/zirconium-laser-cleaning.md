@@ -16,6 +16,8 @@ chemicalProperties:
   materialType: metal
 properties:
   density: "6.52 g/cm³"
+  thermalDestructionPoint: "1855°C"
+  thermalDestructionType: melting
   densityNumeric: 6.52
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -25,7 +27,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 100.0
-  meltingPoint: "1855°C"
   meltingPointNumeric: 1855
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -79,7 +80,6 @@ properties:
   wavelength: 1064nm
   fluenceRange: "0.5–5 J/cm²"
   chemicalFormula: Zr
-  thermalBehaviorType: melting
 composition:
 - 'Zirconium (Zr): 97.5-99.2%'
 - 'Hafnium (Hf): 1-2.5% (naturally occurring)'
@@ -175,7 +175,7 @@ environmentalImpact:
     required in traditional methods
 outcomes:
 - result: Surface contamination removal efficiency
-  metric: '>99.8% removal of oxide layers and surface contaminants'
+  metric: ">99.8% removal of oxide layers and surface contaminants"
 - result: Processing speed
   metric: "0.1-0.5 m²/hour depending on contamination level and required precision"
 technicalSpecifications:
@@ -196,7 +196,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Taiwan
   author_id: 1
-  verification_timestamp: '2025-09-20T21:34:50Z'
+  verification_timestamp: '2025-09-20T21: 34: 50Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -215,3 +215,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 4.8
 surface_roughness_after: 1.1
+---

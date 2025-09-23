@@ -1,36 +1,36 @@
 tags:
-  - aerospace
-  - automotive
-  - manufacturing
-  - decoating
+  - ikmanda-roswati
+  - masonry
+  - heritage
+  - construction
   - decontamination
+  - surface-preparation
   - restoration
-  - polishing
-  - texturing
+  - conservation
 material: "schist"
 count: 8
 categories:
   industry:
-    - aerospace
-    - automotive
-    - manufacturing
   process:
-    - decoating
     - decontamination
     - restoration
-    - polishing
-    - texturing
   author:
+    - ikmanda-roswati
+    - surface-preparation
   other:
+    - masonry
+    - heritage
+    - construction
+    - conservation
 metadata:
-  generated: "2025-09-17T12:04:59.461059"
+  generated: "2025-09-22T15:57:39.996825"
   format: "yaml"
   version: "2.0"
 
 ---
 Material: "schist"
 Component: tags
-Generated: 2025-09-17T12:04:59.461080
-Generator: Z-Beam v1.0.0
+Generated: 2025-09-22T15:57:39.998001
+Generator: Z-Beam v1.0.0 (Frontmatter-Based)
 Format: YAML v2.0
 ---

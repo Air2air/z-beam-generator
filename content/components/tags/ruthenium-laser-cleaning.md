@@ -1,36 +1,36 @@
 tags:
-  - aerospace
-  - automotive
+  - yi-chun-lin
+  - metalworking
+  - industrial
   - electronics
+  - aerospace
   - decontamination
+  - surface-preparation
   - passivation
-  - decoating
-  - restoration
-  - polishing
 material: "ruthenium"
 count: 8
 categories:
   industry:
-    - aerospace
-    - automotive
+    - industrial
     - electronics
+    - aerospace
   process:
     - decontamination
     - passivation
-    - decoating
-    - restoration
-    - polishing
   author:
+    - surface-preparation
   other:
+    - yi-chun-lin
+    - metalworking
 metadata:
-  generated: "2025-09-17T12:04:48.073482"
+  generated: "2025-09-22T15:57:39.615383"
   format: "yaml"
   version: "2.0"
 
 ---
 Material: "ruthenium"
 Component: tags
-Generated: 2025-09-17T12:04:48.073504
-Generator: Z-Beam v1.0.0
+Generated: 2025-09-22T15:57:39.616580
+Generator: Z-Beam v1.0.0 (Frontmatter-Based)
 Format: YAML v2.0
 ---

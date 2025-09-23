@@ -13,6 +13,8 @@ chemicalProperties:
   materialType: metal
 properties:
   density: "1.738 g/cm³"
+  thermalDestructionPoint: "650°C"
+  thermalDestructionType: melting
   densityNumeric: 1.738
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -22,7 +24,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 0.0
-  meltingPoint: "650°C"
   meltingPointNumeric: 650.0
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -42,7 +43,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 77.9
-  tensileStrength: 160-240 MPa (pure Mg), 275-380 MPa (alloys)
+  tensileStrength: 200MPa
   tensileStrengthNumeric: 200.0
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -52,7 +53,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 15.8
-  hardness: 45-60 HB (Brinell scale)
+  hardness: 52.5HB
   hardnessNumeric: 52.5
   hardnessUnit: HB
   hardnessMin: 1 Mohs
@@ -76,7 +77,6 @@ properties:
   wavelength: 1064nm
   fluenceRange: "0.5–5 J/cm²"
   chemicalFormula: Mg
-  thermalBehaviorType: melting
 composition:
 - 'Magnesium: 90-99.8% (primary component)'
 - 'Aluminum: 3-9% (common alloying element), Zinc: 0.5-1.5%, Manganese: 0.15-0.5%'
@@ -170,7 +170,7 @@ environmentalImpact:
     processes for magnesium components
 outcomes:
 - result: Surface contamination removal efficiency
-  metric: '>99.5% removal of oxides and contaminants without substrate damage'
+  metric: ">99.5% removal of oxides and contaminants without substrate damage"
 - result: Processing speed
   metric: "0.5-2.0 m²/hour depending on contamination level and laser parameters"
 technicalSpecifications:
@@ -191,7 +191,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: United States (California)
   author_id: 4
-  verification_timestamp: '2025-09-20T21:19:50Z'
+  verification_timestamp: '2025-09-20T21: 19: 50Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -212,3 +212,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 16.5
 surface_roughness_after: 2.5
+---

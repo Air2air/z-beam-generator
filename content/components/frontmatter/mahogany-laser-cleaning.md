@@ -15,7 +15,9 @@ chemicalProperties:
   formula: "C₆H₁₀O₅ (Cellulose base)"
   materialType: wood
 properties:
-  density: "545-705 kg/m³ (varies by species)"
+  density: 625kg/m³
+  thermalDestructionPoint: "270°C"
+  thermalDestructionType: decomposition
   densityNumeric: 625.0
   densityUnit: "kg/m³"
   densityMin: "1.8 g/cm³"
@@ -32,7 +34,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "0.12-0.17 W/(m·K) (radial)"
+  thermalConductivity: 0.1W/(m·K)
   thermalConductivityNumeric: 0.15
   thermalConductivityUnit: W/
   thermalConductivityMin: "0.5 W/m·K"
@@ -42,7 +44,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.0
-  tensileStrength: 80-120 MPa (parallel to grain)
+  tensileStrength: 100MPa
   tensileStrengthNumeric: 100.0
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -52,7 +54,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 5.3
-  hardness: 800-900 lbf (Janka scale, Honduran Mahogany)
+  hardness: 850lbf
   hardnessNumeric: 850.0
   hardnessUnit: lbf
   hardnessMin: 1 Mohs
@@ -72,14 +74,10 @@ properties:
   youngsModulusMaxNumeric: 80.0
   youngsModulusMaxUnit: GPa
   modulusPercentile: 0.0
-  laserType: Nd:YAG laser
+  laserType: "Nd: YAG laser"
   wavelength: 1064nm
   fluenceRange: "0.5-3.0 J/cm²"
-  chemicalFormula: ~50% Cellulose, ~28% Hemicellulose, ~22% Lignin (approx. composition)
-  thermalBehaviorType: decomposition
-  decompositionPoint: "270°C"
-  decompositionPointNumeric: 270
-  decompositionPointUnit: "°C"
+  chemicalFormula: ~50% Cellulose, ~28% Hemicellulose, ~22% Lignin (approx. composition)  decompositionPointUnit: "°C"
 composition:
 - Cellulose (40-50%)
 - Hemicellulose (20-28%)
@@ -199,7 +197,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Taiwan
   author_id: 1
-  verification_timestamp: '2025-09-20T22:02:13Z'
+  verification_timestamp: '2025-09-20T22: 02: 13Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -210,7 +208,7 @@ laser_parameters:
   power_range: 20-100W
   repetition_rate: 20-100kHz
   spot_size: 0.1-1.0mm
-  laser_type: Nd:YAG laser
+  laser_type: "Nd: YAG laser"
 tags:
 - Restoration
 - Furniture Manufacturing
@@ -218,3 +216,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 41.5
 surface_roughness_after: 16.2
+---

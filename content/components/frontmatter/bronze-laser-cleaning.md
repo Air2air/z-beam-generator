@@ -17,6 +17,8 @@ chemicalProperties:
   materialType: metal
 properties:
   density: "8.9 g/cm³"
+  thermalDestructionPoint: "950°C"
+  thermalDestructionType: melting
   densityNumeric: 8.9
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -26,7 +28,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 100.0
-  meltingPoint: "950°C"
   meltingPointNumeric: 950.0
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -46,7 +47,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 12.8
-  tensileStrength: 350-700 MPa (depending on alloy composition and temper)
+  tensileStrength: 525MPa
   tensileStrengthNumeric: 525.0
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -56,7 +57,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 50.0
-  hardness: 60-200 HB (Brinell hardness, varies with composition and work hardening)
+  hardness: 130HB
   hardnessNumeric: 130.0
   hardnessUnit: HB
   hardnessMin: 1 Mohs
@@ -80,7 +81,6 @@ properties:
   wavelength: 1064nm
   fluenceRange: "0.5–5 J/cm²"
   chemicalFormula: Cu-Sn
-  thermalBehaviorType: melting
 composition:
 - Typically 88% Cu, 12% Sn
 machineSettings:
@@ -203,7 +203,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Indonesia
   author_id: 3
-  verification_timestamp: '2025-09-20T21:09:25Z'
+  verification_timestamp: '2025-09-20T21: 09: 25Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -225,3 +225,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 6.2
 surface_roughness_after: 1.4
+---

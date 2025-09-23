@@ -1,36 +1,36 @@
 tags:
-  - aerospace
-  - automotive
-  - medical
-  - decontamination
+  - alessandro-moretti
+  - woodworking
   - restoration
-  - polishing
-  - texturing
-  - etching
+  - decontamination
+  - surface-preparation
+  - refinishing
+  - manufacturing
+  - industrial
 material: "hickory"
 count: 8
 categories:
   industry:
-    - aerospace
-    - automotive
-    - medical
+    - manufacturing
+    - industrial
   process:
-    - decontamination
     - restoration
-    - polishing
-    - texturing
-    - etching
+    - decontamination
   author:
+    - alessandro-moretti
+    - surface-preparation
   other:
+    - woodworking
+    - refinishing
 metadata:
-  generated: "2025-09-17T12:01:20.463488"
+  generated: "2025-09-22T15:57:40.161879"
   format: "yaml"
   version: "2.0"
 
 ---
 Material: "hickory"
 Component: tags
-Generated: 2025-09-17T12:01:20.463506
-Generator: Z-Beam v1.0.0
+Generated: 2025-09-22T15:57:40.163358
+Generator: Z-Beam v1.0.0 (Frontmatter-Based)
 Format: YAML v2.0
 ---

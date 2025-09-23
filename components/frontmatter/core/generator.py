@@ -514,23 +514,86 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
         import yaml
         yaml_content = yaml.dump(ordered_frontmatter, default_flow_style=False, sort_keys=False)
         
-        # Apply final YAML syntax fixes
-        yaml_content = self._fix_yaml_syntax(yaml_content)
+        # Create preliminary frontmatter content
+        preliminary_content = f"---\n{yaml_content}---"
         
-        # Validate the generated YAML
-        try:
-            yaml.safe_load(yaml_content)
-        except yaml.YAMLError as yaml_err:
-            logger.warning(f"Generated YAML has syntax issues for {material_name}: {yaml_err}")
-            # Attempt one more fix
-            yaml_content = self._fix_yaml_syntax_comprehensive(yaml_content)
-            # Apply final aggressive cleanup for stubborn patterns
-            yaml_content = self._final_yaml_cleanup(yaml_content)
+        # Apply integrated YAML sanitization using our dedicated sanitizer
+        final_content = self._apply_integrated_yaml_sanitization(preliminary_content, material_name)
         
-        final_content = f"---\n{yaml_content}---"
-        
-        logger.info(f"📝 Finalized frontmatter: {len(yaml_content)} characters")
+        logger.info(f"📝 Finalized frontmatter: {len(final_content)} characters")
         return final_content
+
+    def _apply_integrated_yaml_sanitization(self, content: str, material_name: str) -> str:
+        """
+        Apply integrated YAML sanitization using the dedicated frontmatter sanitizer.
+        
+        This method uses the FrontmatterYAMLSanitizer for comprehensive YAML cleanup
+        including structural fixes, formatting corrections, and validation.
+        """
+        logger.info(f"🧹 Applying integrated YAML sanitization for {material_name}")
+        
+        try:
+            from components.frontmatter.yaml_sanitizer import FrontmatterYAMLSanitizer
+            
+            # Create sanitizer instance
+            sanitizer = FrontmatterYAMLSanitizer()
+            
+            # Apply sanitization
+            sanitized_content, fixes_applied = sanitizer.sanitize_yaml_content(content)
+            
+            if fixes_applied:
+                logger.info(f"📝 Applied {len(fixes_applied)} YAML fixes for {material_name}: {', '.join(fixes_applied)}")
+            else:
+                logger.debug(f"✅ No YAML fixes needed for {material_name}")
+            
+            # Validate the sanitized YAML
+            try:
+                import yaml
+                # Extract and validate the YAML part
+                if sanitized_content.startswith('---'):
+                    parts = sanitized_content.split('---', 2)
+                    if len(parts) >= 2:
+                        yaml_part = parts[1]
+                        yaml.safe_load(yaml_part)
+                        logger.debug(f"✅ YAML validation passed for {material_name}")
+                
+            except yaml.YAMLError as yaml_err:
+                logger.warning(f"⚠️ YAML validation failed for {material_name}: {yaml_err}")
+                # Try fallback cleanup
+                sanitized_content = self._fallback_yaml_cleanup(sanitized_content, material_name)
+            
+            return sanitized_content
+            
+        except ImportError as e:
+            logger.warning(f"Could not import YAML sanitizer: {e}. Using fallback cleanup.")
+            return self._fallback_yaml_cleanup(content, material_name)
+        except Exception as e:
+            logger.error(f"Error during YAML sanitization for {material_name}: {e}")
+            return self._fallback_yaml_cleanup(content, material_name)
+    
+    def _fallback_yaml_cleanup(self, content: str, material_name: str) -> str:
+        """
+        Fallback YAML cleanup if the dedicated sanitizer is not available.
+        
+        This provides basic cleanup as a safety net.
+        """
+        logger.info(f"🔧 Applying fallback YAML cleanup for {material_name}")
+        
+        # Apply basic fixes from existing methods
+        if content.startswith('---'):
+            parts = content.split('---', 2)
+            if len(parts) >= 2:
+                yaml_content = parts[1]
+                markdown_content = parts[2] if len(parts) > 2 else ""
+                
+                # Apply existing cleanup methods
+                yaml_content = self._fix_yaml_syntax(yaml_content)
+                yaml_content = self._fix_yaml_syntax_comprehensive(yaml_content)
+                yaml_content = self._final_yaml_cleanup(yaml_content)
+                
+                return f"---{yaml_content}---{markdown_content}"
+        
+        return content
 
     def _sanitize_frontmatter_data(self, frontmatter_data: Dict) -> Dict:
         """Sanitize frontmatter data to prevent YAML parsing issues"""
@@ -758,10 +821,10 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
             "subject_lowercase": subject_lowercase,
             "subject_slug": subject_slug,
             "exact-material-name": subject_slug,  # Required for template compatibility
-            "material_formula": formula or "[RESEARCH: Chemical formula required]",
-            "material_symbol": symbol or "[RESEARCH: Chemical symbol required]",
-            "formula": formula or "[RESEARCH: Chemical formula required]",  # For compatibility with chemical fallback tests
-            "symbol": symbol or "[RESEARCH: Chemical symbol required]",   # For compatibility with chemical fallback tests
+            "material_formula": formula,  # FAIL-FAST: Must be researched, no fallbacks
+            "material_symbol": symbol,    # FAIL-FAST: Must be researched, no fallbacks
+            "formula": formula,  # FAIL-FAST: Must be researched, no fallbacks
+            "symbol": symbol,   # FAIL-FAST: Must be researched, no fallbacks
             "material_type": material_data.get("material_type") or category,
             "category": category,
             "author_name": author_name,

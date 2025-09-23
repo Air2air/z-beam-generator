@@ -1,13 +1,12 @@
 | Property | Value |
 |----------|-------|
 | Density | 0.6-0.8 g/cm³ |
-| Melting Point | Decomposes at 200-300°C |
 | Conductivity | 0.15-0.25 W/m·K |
 | Formula | C6H10O5 |
 
 
 ---
-Version Log - Generated: 2025-09-21T22:01:15.483492
+Version Log - Generated: 2025-09-22T22:31:27.374977
 Material: Unknown
 Component: propertiestable
 Generator: Z-Beam v1.0.0

@@ -16,7 +16,9 @@ chemicalProperties:
   formula: "C₆H₁₀O₅\u2099 (Cellulose base)"
   materialType: wood
 properties:
-  density: "450-500 kg/m³ (Salix alba)"
+  density: 475kg/m³
+  thermalDestructionPoint: "275°C"
+  thermalDestructionType: decomposition
   densityNumeric: 475.0
   densityUnit: "kg/m³"
   densityMin: "1.8 g/cm³"
@@ -33,7 +35,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "0.09-0.12 W/(m·K) (radial)"
+  thermalConductivity: 0.1W/(m·K)
   thermalConductivityNumeric: 0.1
   thermalConductivityUnit: W/
   thermalConductivityMin: "0.5 W/m·K"
@@ -43,7 +45,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.0
-  tensileStrength: 70-100 MPa (along grain)
+  tensileStrength: 85MPa
   tensileStrengthNumeric: 85.0
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -53,7 +55,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 3.7
-  hardness: 1.5-2.0 kN (Janka hardness scale)
+  hardness: 1.8kN
   hardnessNumeric: 1.75
   hardnessUnit: kN
   hardnessMin: 1 Mohs
@@ -76,11 +78,7 @@ properties:
   laserType: Pulsed fiber laser
   wavelength: 1064nm
   fluenceRange: "0.5–5 J/cm²"
-  chemicalFormula: Complex Lignocellulosic Composite
-  thermalBehaviorType: decomposition
-  decompositionPoint: "275°C"
-  decompositionPointNumeric: 275
-  decompositionPointUnit: "°C"
+  chemicalFormula: Complex Lignocellulosic Composite  decompositionPointUnit: "°C"
 composition:
 - 'Cellulose: 40-45%'
 - 'Hemicellulose: 20-25%'
@@ -199,7 +197,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Italy
   author_id: 2
-  verification_timestamp: '2025-09-20T22:44:12Z'
+  verification_timestamp: '2025-09-20T22: 44: 12Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -218,3 +216,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 52.2
 surface_roughness_after: 21.5
+---

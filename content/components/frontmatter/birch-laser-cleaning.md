@@ -17,6 +17,8 @@ chemicalProperties:
   materialType: wood
 properties:
   density: "670 kg/m³ (average for European birch)"
+  thermalDestructionPoint: "280°C"
+  thermalDestructionType: decomposition
   densityNumeric: 670.0
   densityUnit: "kg/m³"
   densityMin: "1.8 g/cm³"
@@ -53,7 +55,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 7.4
-  hardness: 3.0-3.5 kN (Janka hardness scale)
+  hardness: 3.2kN
   hardnessNumeric: 3.25
   hardnessUnit: kN
   hardnessMin: 1 Mohs
@@ -77,11 +79,7 @@ properties:
   wavelength: 1064 nm
   fluenceRange: "0.5–5 J/cm²"
   chemicalFormula: "Complex organic polymer (cellulose C₆H₁₀O₅"
-    , lignin C₉H₁₀O₂, hemicellulose)"
-  thermalBehaviorType: decomposition
-  decompositionPoint: "280°C"
-  decompositionPointNumeric: 280
-  decompositionPointUnit: "°C"
+    , lignin C₉H₁₀O₂, hemicellulose)"  decompositionPointUnit: "°C"
 composition:
 - 'Cellulose: 40-45%'
 - 'Hemicellulose: 25-30%'
@@ -148,8 +146,8 @@ applications:
 compatibility:
 - Pulsed fiber lasers with precise thermal control
 - Wood species with similar density and composition (maple, beech)
-regulatoryStandards: ISO 11553-1:2020 (Safety of machinery - Laser processing machines),
-  EN 60825-1:2014 (Laser product safety)
+regulatoryStandards: "ISO 11553-1: 2020 (Safety of machinery - Laser processing machines),"
+  EN 60825-1: 2014 (Laser product safety)
 author: Yi-Chun Lin
 author_object:
   id: 1
@@ -197,7 +195,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Taiwan
   author_id: 1
-  verification_timestamp: '2025-09-20T21:57:59Z'
+  verification_timestamp: '2025-09-20T21: 57: 59Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -216,3 +214,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 38.5
 surface_roughness_after: 15.2
+---

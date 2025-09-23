@@ -16,6 +16,8 @@ chemicalProperties:
   materialType: semiconductor
 properties:
   density: "2.329 g/cm³"
+  thermalDestructionPoint: "1414°C"
+  thermalDestructionType: melting
   densityNumeric: 2.329
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -25,7 +27,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 12.6
-  meltingPoint: "1414°C"
   meltingPointNumeric: 1414
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -45,7 +46,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 74.4
-  tensileStrength: 130-185 MPa
+  tensileStrength: 157.5MPa
   tensileStrengthNumeric: 157.5
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -55,7 +56,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 11.3
-  hardness: 7.0 Mohs (1000-1150 HV)
+  hardness: 1075HV)
   hardnessNumeric: 1075.0
   hardnessUnit: HV
   hardnessMin: 1 Mohs
@@ -79,7 +80,6 @@ properties:
   wavelength: 1064nm
   fluenceRange: "0.5-5 J/cm²"
   chemicalFormula: Si
-  thermalBehaviorType: melting
 composition:
 - 'Silicon: 99.9999999% (electronic grade)'
 - 'Trace elements: Oxygen (<1 ppb), Carbon (<0.1 ppb), Boron (<0.1 ppb)'
@@ -196,7 +196,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Italy
   author_id: 2
-  verification_timestamp: '2025-09-20T21:36:28Z'
+  verification_timestamp: '2025-09-20T21: 36: 28Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -216,3 +216,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 0.8
 surface_roughness_after: 0.15
+---

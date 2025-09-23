@@ -1,36 +1,36 @@
 tags:
-  - stone
-  - gypsum
+  - yi-chun-lin
+  - masonry
+  - heritage
+  - art-restoration
+  - construction
+  - decontamination
+  - surface-preparation
   - restoration
-  - conservation
-  - sculpture
-  - polishing
-  - texturing
-  - architecture
 material: "alabaster"
 count: 8
 categories:
   industry:
   process:
+    - decontamination
     - restoration
-    - polishing
-    - texturing
   author:
+    - art-restoration
+    - surface-preparation
   other:
-    - stone
-    - gypsum
-    - conservation
-    - sculpture
-    - architecture
+    - yi-chun-lin
+    - masonry
+    - heritage
+    - construction
 metadata:
-  generated: "2025-09-17T11:58:34.528554"
+  generated: "2025-09-22T15:57:39.827783"
   format: "yaml"
   version: "2.0"
 
 ---
 Material: "alabaster"
 Component: tags
-Generated: 2025-09-17T11:58:34.528583
-Generator: Z-Beam v1.0.0
+Generated: 2025-09-22T15:57:39.828960
+Generator: Z-Beam v1.0.0 (Frontmatter-Based)
 Format: YAML v2.0
 ---

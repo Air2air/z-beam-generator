@@ -15,6 +15,8 @@ chemicalProperties:
   materialType: metal
 properties:
   density: "12.45 g/cm³"
+  thermalDestructionPoint: "2334°C"
+  thermalDestructionType: melting
   densityNumeric: 12.45
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -24,7 +26,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 100.0
-  meltingPoint: "2334°C"
   meltingPointNumeric: 2334.0
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -78,7 +79,6 @@ properties:
   wavelength: 1064nm
   fluenceRange: "0.5–5 J/cm²"
   chemicalFormula: Ru
-  thermalBehaviorType: melting
 composition:
 - Ruthenium (99.9% pure)
 - Platinum group trace elements (<0.1%)
@@ -193,7 +193,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Taiwan
   author_id: 1
-  verification_timestamp: '2025-09-20T21:26:18Z'
+  verification_timestamp: '2025-09-20T21: 26: 18Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -212,3 +212,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 4.2
 surface_roughness_after: 1.0
+---

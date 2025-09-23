@@ -16,7 +16,9 @@ chemicalProperties:
   formula: "CaO·SiO₂·H₂O (C-S-H gel primary phase)"
   materialType: masonry
 properties:
-  density: "2300–2500 kg/m³"
+  density: 2400kg/m³"
+  thermalDestructionPoint: "1400°C"
+  thermalDestructionType: decomposition
   densityNumeric: 2300.0
   densityUnit: "kg/m³"
   densityMin: "1.8 g/cm³"
@@ -26,7 +28,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 100.0
-  meltingPoint: "1400°C"
   meltingPointNumeric: 1400
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -36,7 +37,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "0.8–1.3 W/(m·K)"
+  thermalConductivity: 1.1W/(m·K)"
   thermalConductivityNumeric: 0.8
   thermalConductivityUnit: W/
   thermalConductivityMin: "0.5 W/m·K"
@@ -46,7 +47,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.2
-  tensileStrength: "2–5 MPa"
+  tensileStrength: 3.5MPa"
   tensileStrengthNumeric: 2.0
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -56,7 +57,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 0.0
-  hardness: "5–7 Mohs (aggregate dependent)"
+  hardness: 6Mohs
   hardnessNumeric: 5.0
   hardnessUnit: Mohs
   hardnessMin: 1 Mohs
@@ -80,7 +81,6 @@ properties:
   wavelength: 1064nm
   fluenceRange: "1.0–10 J/cm²"
   chemicalFormula: "Complex composite (primarily CaO·SiO₂·H₂O)"
-  thermalBehaviorType: melting
 composition:
 - "Portland cement (10–15%): Calcium silicates (C3S, C2S), calcium aluminates"
 - "Aggregate (60–75%): Silica (SiO₂), limestone, gravel"
@@ -151,7 +151,7 @@ compatibility:
 - Natural stone substrates (granite, limestone)
 - Brick and masonry materials
 regulatoryStandards: 'EN 1504-10: Products and systems for protection and repair of
-  concrete structures; ISO 11145:2018 Laser and laser-related equipment - Vocabulary
+  concrete structures; ISO 11145: 2018 Laser and laser-related equipment - Vocabulary
   and symbols'
 author: Ikmanda Roswati
 author_object:
@@ -180,8 +180,8 @@ environmentalImpact:
   description: "Generates 85–95% less airborne particulate matter compared to abrasive blasting methods, with effective filtration systems capturing >99% of generated particles"
 outcomes:
 - result: Surface contamination removal efficiency
-  metric: '>95% removal of paint, graffiti, and biological growth with <0.1 mm substrate
-    loss'
+  metric: ">95% removal of paint, graffiti, and biological growth with <0.1 mm substrate
+    loss"
 - result: Processing throughput
   metric: "2–10 m²/hour depending on contamination type and laser parameters"
 technicalSpecifications:
@@ -202,7 +202,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Indonesia
   author_id: 3
-  verification_timestamp: '2025-09-20T21:02:04Z'
+  verification_timestamp: '2025-09-20T21: 02: 04Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -221,3 +221,4 @@ complexity: low
 difficultyScore: 2
 surface_roughness_before: 42.8
 surface_roughness_after: 14.5
+---

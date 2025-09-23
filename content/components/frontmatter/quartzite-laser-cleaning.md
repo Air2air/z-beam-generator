@@ -17,6 +17,8 @@ chemicalProperties:
   materialType: metamorphic rock
 properties:
   density: "2.65 g/cm³"
+  thermalDestructionPoint: "1670°C"
+  thermalDestructionType: melting
   densityNumeric: 2.65
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -26,7 +28,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 20.2
-  meltingPoint: "1670°C"
   meltingPointNumeric: 1670
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -36,7 +37,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 29.4
-  thermalConductivity: "3-6 W/(m·K) at 20°C (varies with quartz content and structure)"
+  thermalConductivity: 4.5W/(m·K)
   thermalConductivityNumeric: 4.5
   thermalConductivityUnit: W/
   thermalConductivityMin: "0.5 W/m·K"
@@ -46,7 +47,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 2.0
-  tensileStrength: 10-25 MPa (varies with grain orientation and mineral composition)
+  tensileStrength: 17.5MPa
   tensileStrengthNumeric: 17.5
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -80,7 +81,6 @@ properties:
   wavelength: 1064nm
   fluenceRange: "1.0–10 J/cm²"
   chemicalFormula: SiO2
-  thermalBehaviorType: melting
 composition:
 - "Quartz (SiO₂): 90-99%"
 - 'Feldspar, mica, iron oxides, and other minerals: 1-10%'
@@ -145,8 +145,8 @@ applications:
 compatibility:
 - Compatible with most silicate-based stones and ceramics
 - Similar processing parameters to sandstone, granite, and marble with quartz content
-regulatoryStandards: EN 15898:2019 (Conservation of cultural property - Main general
-  terms and definitions), ISO 18473-3:2018 (Functional pigments and extenders for
+regulatoryStandards: "EN 15898: 2019 (Conservation of cultural property - Main general"
+  terms and definitions), ISO 18473-3: 2018 (Functional pigments and extenders for
   special applications)
 author: Ikmanda Roswati
 author_object:
@@ -175,8 +175,8 @@ environmentalImpact:
     methods, saving approximately 500-1000 liters per square meter of cleaned surface
 outcomes:
 - result: Surface contamination removal efficiency
-  metric: '>95% removal of biological growth, paint, and pollutants with substrate
-    preservation'
+  metric: ">95% removal of biological growth, paint, and pollutants with substrate
+    preservation"
 - result: Processing speed and accuracy
   metric: "0.5-2.0 m²/hour cleaning rate with sub-millimeter precision and minimal surface alteration"
 technicalSpecifications:
@@ -198,7 +198,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Indonesia
   author_id: 3
-  verification_timestamp: '2025-09-20T21:48:20Z'
+  verification_timestamp: '2025-09-20T21: 48: 20Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -218,3 +218,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 12.8
 surface_roughness_after: 4.2
+---

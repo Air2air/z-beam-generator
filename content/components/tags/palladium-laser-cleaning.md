@@ -1,36 +1,36 @@
 tags:
-  - electroplating
-  - plating
-  - coating
-  - precious-metal
-  - aerospace
+  - ikmanda-roswati
+  - metalworking
+  - industrial
+  - automotive
   - electronics
-  - medical
+  - decontamination
+  - surface-preparation
   - passivation
 material: "palladium"
 count: 8
 categories:
   industry:
-    - aerospace
+    - industrial
+    - automotive
     - electronics
-    - medical
   process:
+    - decontamination
     - passivation
   author:
-    - precious-metal
+    - ikmanda-roswati
+    - surface-preparation
   other:
-    - electroplating
-    - plating
-    - coating
+    - metalworking
 metadata:
-  generated: "2025-09-17T12:03:10.005152"
+  generated: "2025-09-22T15:57:39.546772"
   format: "yaml"
   version: "2.0"
 
 ---
 Material: "palladium"
 Component: tags
-Generated: 2025-09-17T12:03:10.005181
-Generator: Z-Beam v1.0.0
+Generated: 2025-09-22T15:57:39.547969
+Generator: Z-Beam v1.0.0 (Frontmatter-Based)
 Format: YAML v2.0
 ---

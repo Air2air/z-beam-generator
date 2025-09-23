@@ -15,6 +15,8 @@ chemicalProperties:
   materialType: metal
 properties:
   density: "19.25 g/cm³"
+  thermalDestructionPoint: "3422°C"
+  thermalDestructionType: melting
   densityNumeric: 19.25
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -24,7 +26,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 100.0
-  meltingPoint: "3422°C"
   meltingPointNumeric: 3422.0
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -44,7 +45,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 86.5
-  tensileStrength: 3430-4600 MPa
+  tensileStrength: 4015MPa
   tensileStrengthNumeric: 4015.0
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -78,7 +79,6 @@ properties:
   wavelength: 1064nm
   fluenceRange: "1.0–10 J/cm²"
   chemicalFormula: W
-  thermalBehaviorType: melting
 composition:
 - 'Tungsten: 99.95% (commercially pure)'
 - 'Carbon: <0.01%, Oxygen: <0.005%, Metallic impurities: <0.04%'
@@ -175,7 +175,7 @@ environmentalImpact:
     for tungsten components
 outcomes:
 - result: Surface cleanliness
-  metric: '>99.9% contaminant removal without substrate damage'
+  metric: ">99.9% contaminant removal without substrate damage"
 - result: Processing efficiency
   metric: "Up to 2 m²/hour cleaning rate for large tungsten components"
 technicalSpecifications:
@@ -196,7 +196,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Italy
   author_id: 2
-  verification_timestamp: '2025-09-20T21:32:19Z'
+  verification_timestamp: '2025-09-20T21: 32: 19Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -217,3 +217,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 6.3
 surface_roughness_after: 1.8
+---

@@ -16,6 +16,8 @@ chemicalProperties:
   materialType: III-V Semiconductor
 properties:
   density: "5.3176 g/cm³"
+  thermalDestructionPoint: "1238°C"
+  thermalDestructionType: melting
   densityNumeric: 5.3176
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -25,7 +27,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 83.8
-  meltingPoint: "1238°C"
   meltingPointNumeric: 1238
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -79,7 +80,6 @@ properties:
   wavelength: 1064nm
   fluenceRange: "1.0–10 J/cm²"
   chemicalFormula: GaAs
-  thermalBehaviorType: melting
 composition:
 - 'Gallium: 48.2%'
 - 'Arsenic: 51.8%'
@@ -198,7 +198,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: United States (California)
   author_id: 4
-  verification_timestamp: '2025-09-20T21:35:38Z'
+  verification_timestamp: '2025-09-20T21: 35: 38Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -218,3 +218,4 @@ complexity: high
 difficultyScore: 4
 surface_roughness_before: 1.5
 surface_roughness_after: 0.3
+---

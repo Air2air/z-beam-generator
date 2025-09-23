@@ -1,13 +1,13 @@
 | Property | Value |
 |----------|-------|
 | Density | 7.85 g/cm³ |
-| Melting Point | 1370-1530°C |
 | Conductivity | 50.2 W/m·K |
-| Formula | Fe-C |
+| Formula | Fe |
+| Melting Point | 1450.0°C |
 
 
 ---
-Version Log - Generated: 2025-09-21T22:01:14.905856
+Version Log - Generated: 2025-09-22T23:39:37.044004
 Material: Unknown
 Component: propertiestable
 Generator: Z-Beam v1.0.0

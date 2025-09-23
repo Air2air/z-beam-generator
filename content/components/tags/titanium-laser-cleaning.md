@@ -1,44 +1,36 @@
-<!-- CONTENT START -->
 tags:
-  - titanium
-  - ti
+  - yi-chun-lin
+  - metalworking
+  - industrial
   - aerospace
   - medical
-  - etching
+  - decontamination
+  - surface-preparation
   - passivation
-  - metal
-  - expert
+material: "titanium"
 count: 8
 categories:
   industry:
+    - industrial
     - aerospace
     - medical
   process:
-    - etching
+    - decontamination
     - passivation
+  author:
+    - surface-preparation
   other:
-    - titanium
-    - ti
-    - metal
-    - expert
+    - yi-chun-lin
+    - metalworking
 metadata:
+  generated: "2025-09-22T15:57:39.701554"
   format: "yaml"
   version: "2.0"
-<!-- CONTENT END -->
-
-<!-- METADATA START -->
-material: "titanium"
-  author:
-  generated: "2025-09-17T11:49:36.348446"
 
 ---
-Version Log - Generated: 2025-09-17T11:49:36.369446
 Material: "titanium"
 Component: tags
-Generator: Z-Beam v1.0.0
-Component Version: 1.0.0
-Author: AI Assistant
-Platform: Darwin (3.12.4)
-Operation: generation
+Generated: 2025-09-22T15:57:39.703050
+Generator: Z-Beam v1.0.0 (Frontmatter-Based)
+Format: YAML v2.0
 ---
-<!-- METADATA END -->

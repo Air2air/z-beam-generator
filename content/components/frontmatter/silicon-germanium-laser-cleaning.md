@@ -12,7 +12,9 @@ chemicalProperties:
   formula: "Si₁\u208B\u2093Ge\u2093"
   materialType: semiconductor alloy
 properties:
-  density: "2.33-5.32 g/cm³ (varies with Ge content: 0-100%)"
+  density: 3.8g/cm³
+  thermalDestructionPoint: "938°C"
+  thermalDestructionType: melting
   densityNumeric: 3.83
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -22,7 +24,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 48.3
-  meltingPoint: "938°C"
   meltingPointNumeric: 938
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -32,7 +33,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "149-60 W/m·K (Si-rich to Ge-rich compositions)"
+  thermalConductivity: 104.5W/m·K
   thermalConductivityNumeric: 104.5
   thermalConductivityUnit: "W/m·K"
   thermalConductivityMin: "0.5 W/m·K"
@@ -42,7 +43,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 52.1
-  tensileStrength: 100-200 MPa (dependent on crystal orientation and doping)
+  tensileStrength: 150MPa
   tensileStrengthNumeric: 150.0
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -52,7 +53,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 10.5
-  hardness: 7-9 Mohs (silicon-rich compositions)
+  hardness: 8Mohs
   hardnessNumeric: 8.0
   hardnessUnit: Mohs
   hardnessMin: 1 Mohs
@@ -76,7 +77,6 @@ properties:
   wavelength: 1064nm
   fluenceRange: "0.1-1.0 J/cm²"
   chemicalFormula: "Si₁\u208B\u2093Ge\u2093"
-  thermalBehaviorType: melting
 composition:
 - 'Silicon: 70-95% (typical semiconductor compositions)'
 - 'Germanium: 5-30% (typical alloying percentages for electronic applications)'
@@ -143,7 +143,7 @@ environmentalImpact:
     wet chemical cleaning processes
 outcomes:
 - result: Surface contamination reduction
-  metric: '>99.9% removal of organic contaminants with <0.1% substrate damage'
+  metric: ">99.9% removal of organic contaminants with <0.1% substrate damage"
 - result: Processing throughput
   metric: 200-500 wafers/hour (150mm wafers) with automated laser systems
 technicalSpecifications:
@@ -164,7 +164,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: United States (California)
   author_id: 4
-  verification_timestamp: '2025-09-20T21:38:13Z'
+  verification_timestamp: '2025-09-20T21: 38: 13Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -179,3 +179,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 1.1
 surface_roughness_after: 0.22
+---

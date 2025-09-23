@@ -16,6 +16,8 @@ chemicalProperties:
   materialType: wood
 properties:
   density: "720 kg/m³ (air-dry)"
+  thermalDestructionPoint: "300°C"
+  thermalDestructionType: decomposition
   densityNumeric: 720.0
   densityUnit: "kg/m³"
   densityMin: "1.8 g/cm³"
@@ -32,7 +34,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "0.16-0.18 W/(m·K) (radial direction)"
+  thermalConductivity: 0.2W/(m·K)
   thermalConductivityNumeric: 0.17
   thermalConductivityUnit: W/
   thermalConductivityMin: "0.5 W/m·K"
@@ -42,7 +44,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.0
-  tensileStrength: 120-135 MPa (parallel to grain)
+  tensileStrength: 127.5MPa
   tensileStrengthNumeric: 127.5
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -52,7 +54,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 8.2
-  hardness: 3.8-4.2 kN (Janka hardness scale)
+  hardness: 4kN
   hardnessNumeric: 4.0
   hardnessUnit: kN
   hardnessMin: 1 Mohs
@@ -75,11 +77,7 @@ properties:
   laserType: Pulsed fiber laser
   wavelength: 1064nm
   fluenceRange: "0.5–3.0 J/cm²"
-  chemicalFormula: "C₆H₁₀O₅ (cellulose base)"
-  thermalBehaviorType: decomposition
-  decompositionPoint: "300°C"
-  decompositionPointNumeric: 300
-  decompositionPointUnit: "°C"
+  chemicalFormula: "C₆H₁₀O₅ (cellulose base)"  decompositionPointUnit: "°C"
 composition:
 - 'Cellulose: 40-45%'
 - 'Hemicellulose: 25-35%'
@@ -146,8 +144,8 @@ applications:
 compatibility:
 - 'Similar hardwoods: Oak, Maple, Ash'
 - Wood composites with similar density and thermal properties
-regulatoryStandards: ISO 11553-1:2020 (Safety of machinery - Laser processing machines),
-  EN 60825-1:2014 (Laser product safety)
+regulatoryStandards: "ISO 11553-1: 2020 (Safety of machinery - Laser processing machines),"
+  EN 60825-1: 2014 (Laser product safety)
 author: Ikmanda Roswati
 author_object:
   id: 3
@@ -195,7 +193,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Indonesia
   author_id: 3
-  verification_timestamp: '2025-09-20T21:57:10Z'
+  verification_timestamp: '2025-09-20T21: 57: 10Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -214,3 +212,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 41.2
 surface_roughness_after: 16.5
+---

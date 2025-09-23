@@ -1,36 +1,36 @@
 tags:
+  - alessandro-moretti
+  - metalworking
+  - industrial
   - aerospace
-  - automotive
-  - electronics
-  - plating
-  - electroplating
+  - jewelry
   - decontamination
-  - restoration
-  - polishing
+  - surface-preparation
+  - passivation
 material: "rhodium"
 count: 8
 categories:
   industry:
+    - industrial
     - aerospace
-    - automotive
-    - electronics
   process:
     - decontamination
-    - restoration
-    - polishing
+    - passivation
   author:
+    - alessandro-moretti
+    - surface-preparation
   other:
-    - plating
-    - electroplating
+    - metalworking
+    - jewelry
 metadata:
-  generated: "2025-09-17T12:04:30.579667"
+  generated: "2025-09-22T15:57:39.596291"
   format: "yaml"
   version: "2.0"
 
 ---
 Material: "rhodium"
 Component: tags
-Generated: 2025-09-17T12:04:30.579704
-Generator: Z-Beam v1.0.0
+Generated: 2025-09-22T15:57:39.597483
+Generator: Z-Beam v1.0.0 (Frontmatter-Based)
 Format: YAML v2.0
 ---

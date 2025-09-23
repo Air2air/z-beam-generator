@@ -14,7 +14,9 @@ chemicalProperties:
   formula: "C₆H₁₀O₅ (cellulose base)"
   materialType: wood
 properties:
-  density: "370-600 kg/m³ (varies by species and moisture content)"
+  density: 485kg/m³
+  thermalDestructionPoint: "300°C"
+  thermalDestructionType: decomposition
   densityNumeric: 485.0
   densityUnit: "kg/m³"
   densityMin: "1.8 g/cm³"
@@ -31,7 +33,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "0.12-0.16 W/m·K (radial direction)"
+  thermalConductivity: 0.1W/m·K
   thermalConductivityNumeric: 0.14
   thermalConductivityUnit: "W/m·K"
   thermalConductivityMin: "0.5 W/m·K"
@@ -41,7 +43,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.0
-  tensileStrength: 85-125 MPa (parallel to grain)
+  tensileStrength: 105MPa
   tensileStrengthNumeric: 105.0
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -51,7 +53,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 5.8
-  hardness: 1.6-2.5 kN (Janka hardness scale)
+  hardness: 2.0kN
   hardnessNumeric: 2.05
   hardnessUnit: kN
   hardnessMin: 1 Mohs
@@ -75,11 +77,7 @@ properties:
   wavelength: 1064nm
   fluenceRange: "0.5-3.0 J/cm²"
   chemicalFormula: Complex biopolymer (cellulose 40-45%, lignin 25-30%, hemicellulose
-    20-25%)
-  thermalBehaviorType: decomposition
-  decompositionPoint: "300°C"
-  decompositionPointNumeric: 300
-  decompositionPointUnit: "°C"
+    20-25%)  decompositionPointUnit: "°C"
 composition:
 - 'Cellulose: 40-45% (primary structural component)'
 - 'Lignin: 25-30% (natural polymer providing rigidity)'
@@ -195,7 +193,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Taiwan
   author_id: 1
-  verification_timestamp: '2025-09-20T22:05:55Z'
+  verification_timestamp: '2025-09-20T22: 05: 55Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -214,3 +212,4 @@ complexity: low
 difficultyScore: 2
 surface_roughness_before: 52.5
 surface_roughness_after: 21.8
+---

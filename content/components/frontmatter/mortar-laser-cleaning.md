@@ -3,7 +3,7 @@ name: Mortar
 category: masonry
 title: Mortar Laser Cleaning
 headline: Comprehensive technical guide for laser cleaning masonry mortar
-description: Laser cleaning of mortar utilizes short pulsed Nd:YAG lasers to achieve
+description: "Laser cleaning of mortar utilizes short pulsed Nd: YAG lasers to achieve"
   selective photomechanical and photothermal ablation of surface contaminants. The
   process is highly effective due to the differential absorption between the contamination
   layer (e.g., sulfates, carbon deposits) and the calcium carbonate/silicate-based
@@ -16,7 +16,9 @@ chemicalProperties:
   formula: "Variable; primarily CaCO₃ (carbonated) or Ca(OH)₂ (non-carbonated) in lime mortar; CaO·SiO₂·H₂O (CSH gel) in cement mortar"
   materialType: masonry
 properties:
-  density: "1500-2000 kg/m³"
+  density: 1750kg/m³"
+  thermalDestructionPoint: "1450°C"
+  thermalDestructionType: decomposition
   densityNumeric: 1750.0
   densityUnit: "kg/m³"
   densityMin: "1.8 g/cm³"
@@ -26,7 +28,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 100.0
-  meltingPoint: "1450°C"
   meltingPointNumeric: 1450
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -36,7 +37,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 15.6
-  thermalConductivity: "0.7-1.3 W/(m·K)"
+  thermalConductivity: 1W/(m·K)"
   thermalConductivityNumeric: 1.0
   thermalConductivityUnit: W/
   thermalConductivityMin: "0.5 W/m·K"
@@ -46,7 +47,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.3
-  tensileStrength: 0.5-2.0 MPa
+  tensileStrength: 1.2MPa
   tensileStrengthNumeric: 1.25
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -56,7 +57,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 0.0
-  hardness: 3-4 Mohs
+  hardness: 3.5Mohs
   hardnessNumeric: 3.5
   hardnessUnit: Mohs
   hardnessMin: 1 Mohs
@@ -76,11 +77,10 @@ properties:
   youngsModulusMaxNumeric: 80.0
   youngsModulusMaxUnit: GPa
   modulusPercentile: 0.0
-  laserType: Nd:YAG laser
+  laserType: "Nd: YAG laser"
   wavelength: 1064nm
   fluenceRange: "1.0–10 J/cm²"
   chemicalFormula: Variable composite
-  thermalBehaviorType: melting
 composition:
 - "Calcium carbonate (CaCO₃): 60-80% (in carbonated lime mortar)"
 - "Hydrated calcium silicates (CSH gel): 50-70% (in Portland cement mortar); Sand\
@@ -146,8 +146,8 @@ applications:
 compatibility:
 - Brick, Stone, Terracotta
 - Concrete, Render
-regulatoryStandards: EN 15898:2019 (Conservation of cultural heritage - Main general
-  terms and definitions); EN 17138:2018 (Conservation of cultural heritage - Methods
+regulatoryStandards: "EN 15898: 2019 (Conservation of cultural heritage - Main general"
+  terms and definitions); EN 17138: 2018 (Conservation of cultural heritage - Methods
   and materials for cleaning porous inorganic materials)
 author: Alessandro Moretti
 author_object:
@@ -199,7 +199,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Italy
   author_id: 2
-  verification_timestamp: '2025-09-20T21:02:57Z'
+  verification_timestamp: '2025-09-20T21: 02: 57Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -210,7 +210,7 @@ laser_parameters:
   power_range: 50-200W
   repetition_rate: 20-100kHz
   spot_size: 0.1-1.0mm
-  laser_type: Nd:YAG laser
+  laser_type: "Nd: YAG laser"
 tags:
 - Construction
 - Heritage Conservation
@@ -218,3 +218,4 @@ complexity: low
 difficultyScore: 2
 surface_roughness_before: 35.2
 surface_roughness_after: 11.8
+---

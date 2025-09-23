@@ -16,6 +16,8 @@ chemicalProperties:
   materialType: metal
 properties:
   density: "22.56 g/cm³"
+  thermalDestructionPoint: "2466°C"
+  thermalDestructionType: melting
   densityNumeric: 22.56
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -25,7 +27,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 100.0
-  meltingPoint: "2466°C"
   meltingPointNumeric: 2466.0
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -79,7 +80,6 @@ properties:
   wavelength: 1064nm
   fluenceRange: "1.0–10 J/cm²"
   chemicalFormula: Ir
-  thermalBehaviorType: melting
 composition:
 - 'Iridium: 99.9% (primary component)'
 - 'Platinum: 0.1% (typical trace element)'
@@ -172,7 +172,7 @@ environmentalImpact:
     cleaning methods for iridium components
 outcomes:
 - result: Surface contamination removal efficiency
-  metric: '>99.9% removal of oxides and organic contaminants without substrate damage'
+  metric: ">99.9% removal of oxides and organic contaminants without substrate damage"
 - result: Processing precision
   metric: "±5μm accuracy with processing speeds up to 2000 mm²/min"
 technicalSpecifications:
@@ -193,7 +193,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Taiwan
   author_id: 1
-  verification_timestamp: '2025-09-20T21:17:25Z'
+  verification_timestamp: '2025-09-20T21: 17: 25Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -213,3 +213,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 3.5
 surface_roughness_after: 0.8
+---

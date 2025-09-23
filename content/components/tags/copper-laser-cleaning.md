@@ -1,36 +1,36 @@
 tags:
-  - aerospace
-  - electroplating
-  - passivation
-  - decoating
+  - yi-chun-lin
+  - metalworking
+  - industrial
+  - manufacturing
   - restoration
-  - polishing
-  - etching
-  - metal
+  - decontamination
+  - surface-preparation
+  - passivation
 material: "copper"
 count: 8
 categories:
   industry:
-    - aerospace
+    - industrial
+    - manufacturing
   process:
-    - passivation
-    - decoating
     - restoration
-    - polishing
-    - etching
+    - decontamination
+    - passivation
   author:
+    - surface-preparation
   other:
-    - electroplating
-    - metal
+    - yi-chun-lin
+    - metalworking
 metadata:
-  generated: "2025-09-17T11:54:08.378814"
+  generated: "2025-09-22T15:57:39.339215"
   format: "yaml"
   version: "2.0"
 
 ---
 Material: "copper"
 Component: tags
-Generated: 2025-09-17T11:54:08.378843
-Generator: Z-Beam v1.0.0
+Generated: 2025-09-22T15:57:39.340458
+Generator: Z-Beam v1.0.0 (Frontmatter-Based)
 Format: YAML v2.0
 ---

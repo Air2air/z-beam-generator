@@ -13,6 +13,8 @@ chemicalProperties:
   materialType: metal
 properties:
   density: "7.265 g/cm³ (white tin, 20°C)"
+  thermalDestructionPoint: "231°C"
+  thermalDestructionType: melting
   densityNumeric: 7.265
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -22,7 +24,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 100.0
-  meltingPoint: "231°C"
   meltingPointNumeric: 231
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -42,7 +43,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 33.2
-  tensileStrength: 12-20 MPa (pure tin)
+  tensileStrength: 16MPa
   tensileStrengthNumeric: 16.0
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -76,7 +77,6 @@ properties:
   wavelength: 1064nm
   fluenceRange: "0.5-5 J/cm²"
   chemicalFormula: Sn
-  thermalBehaviorType: melting
 composition:
 - 'Tin (Sn): 99.85-99.9% (commercial grade)'
 - 'Impurities: <0.15% (typically lead, copper, iron, bismuth)'
@@ -171,8 +171,8 @@ environmentalImpact:
   description: "Laser cleaning consumes 60-70% less energy compared to electrochemical cleaning processes for tin surfaces, with typical power consumption of 2-4 kWh/m²"
 outcomes:
 - result: Surface contamination removal efficiency
-  metric: '>99.5% removal of oxides and organic contaminants while preserving >95%
-    of underlying tin thickness'
+  metric: ">99.5% removal of oxides and organic contaminants while preserving >95%
+    of underlying tin thickness"
 - result: Processing speed
   metric: "0.5-2.0 m²/hour depending on contamination level and required surface quality"
 technicalSpecifications:
@@ -193,7 +193,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Indonesia
   author_id: 3
-  verification_timestamp: '2025-09-20T21:30:36Z'
+  verification_timestamp: '2025-09-20T21: 30: 36Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -213,3 +213,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 7.8
 surface_roughness_after: 1.5
+---

@@ -1,36 +1,36 @@
 tags:
-  - aerospace
-  - automotive
-  - manufacturing
-  - decoating
+  - todd-dunning
+  - ceramics
+  - precision
   - decontamination
-  - restoration
+  - surface-preparation
   - polishing
-  - texturing
+  - etching
+  - manufacturing
 material: "stoneware"
 count: 8
 categories:
   industry:
-    - aerospace
-    - automotive
     - manufacturing
   process:
-    - decoating
     - decontamination
-    - restoration
     - polishing
-    - texturing
+    - etching
   author:
+    - todd-dunning
+    - surface-preparation
   other:
+    - ceramics
+    - precision
 metadata:
-  generated: "2025-09-17T12:05:42.358578"
+  generated: "2025-09-22T15:57:38.840990"
   format: "yaml"
   version: "2.0"
 
 ---
 Material: "stoneware"
 Component: tags
-Generated: 2025-09-17T12:05:42.358608
-Generator: Z-Beam v1.0.0
+Generated: 2025-09-22T15:57:38.842243
+Generator: Z-Beam v1.0.0 (Frontmatter-Based)
 Format: YAML v2.0
 ---

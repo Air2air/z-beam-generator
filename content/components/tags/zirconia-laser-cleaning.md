@@ -1,12 +1,12 @@
 tags:
+  - todd-dunning
+  - ceramics
+  - precision
   - aerospace
   - medical
-  - dental
-  - decoating
   - decontamination
-  - restoration
+  - surface-preparation
   - polishing
-  - texturing
 material: "zirconia"
 count: 8
 categories:
@@ -14,23 +14,23 @@ categories:
     - aerospace
     - medical
   process:
-    - decoating
     - decontamination
-    - restoration
     - polishing
-    - texturing
   author:
+    - todd-dunning
+    - surface-preparation
   other:
-    - dental
+    - ceramics
+    - precision
 metadata:
-  generated: "2025-09-17T12:06:58.850225"
+  generated: "2025-09-22T15:57:38.856722"
   format: "yaml"
   version: "2.0"
 
 ---
 Material: "zirconia"
 Component: tags
-Generated: 2025-09-17T12:06:58.850258
-Generator: Z-Beam v1.0.0
+Generated: 2025-09-22T15:57:38.857907
+Generator: Z-Beam v1.0.0 (Frontmatter-Based)
 Format: YAML v2.0
 ---

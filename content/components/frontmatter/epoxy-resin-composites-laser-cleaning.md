@@ -15,7 +15,9 @@ chemicalProperties:
   formula: C_{21}H_{25}ClO_{5} (typical bisphenol-A epoxy resin)
   materialType: composite
 properties:
-  density: "1.1-1.4 g/cm³ (varies with reinforcement content)"
+  density: 1.2g/cm³
+  thermalDestructionPoint: "200°C"
+  thermalDestructionType: melting
   densityNumeric: 1.25
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -32,7 +34,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "0.1-0.5 W/m·K (transverse to fibers), 1-10 W/m·K (parallel to fibers)"
+  thermalConductivity: 0.3W/m·K
   thermalConductivityNumeric: 0.3
   thermalConductivityUnit: "W/m·K"
   thermalConductivityMin: "0.5 W/m·K"
@@ -42,7 +44,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.0
-  tensileStrength: 300-600 MPa (carbon fiber reinforced), 100-200 MPa (glass fiber
+  tensileStrength: 450MPa
     reinforced)
   tensileStrengthNumeric: 450.0
   tensileStrengthUnit: MPa
@@ -53,7 +55,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 42.1
-  hardness: 80-90 Shore D
+  hardness: 85Shore
   hardnessNumeric: 85.0
   hardnessUnit: Shore
   hardnessMin: 1 Mohs
@@ -77,11 +79,7 @@ properties:
   wavelength: 1064nm
   fluenceRange: "1.0–10 J/cm²"
   chemicalFormula: Variable composition; typically bisphenol-A diglycidyl ether (DGEBA)
-    based
-  thermalBehaviorType: decomposition
-  decompositionPoint: "200°C"
-  decompositionPointNumeric: 200
-  decompositionPointUnit: "°C"
+    based  decompositionPointUnit: "°C"
 composition:
 - 'Epoxy resin matrix: 40-60%'
 - 'Carbon/glass fiber reinforcement: 40-60%'
@@ -148,7 +146,7 @@ compatibility:
 - Carbon fiber reinforced polymers (CFRP)
 - Glass fiber reinforced polymers (GFRP)
 - Thermoset polymer composites with similar thermal properties
-regulatoryStandards: ISO 14001:2015 (Environmental Management), IEC 60825-1:2014 (Laser
+regulatoryStandards: "ISO 14001: 2015 (Environmental Management), IEC 60825-1: 2014 (Laser"
   Safety), ASTM E2015-04 (Standard Guide for Preparation of Plastics and Polymeric
   Specimens for Microstructural Examination)
 author: Yi-Chun Lin
@@ -177,7 +175,7 @@ environmentalImpact:
     or chemical cleaning processes for composite materials
 outcomes:
 - result: Surface contamination removal efficiency
-  metric: '>99% removal of coatings and contaminants with <1% substrate damage'
+  metric: ">99% removal of coatings and contaminants with <1% substrate damage"
 - result: Processing speed
   metric: "0.5-2.0 m²/hour depending on contamination type and laser parameters"
 technicalSpecifications:
@@ -199,7 +197,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Taiwan
   author_id: 1
-  verification_timestamp: '2025-09-20T20:42:41Z'
+  verification_timestamp: '2025-09-20T20: 42: 41Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -218,3 +216,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 6.8
 surface_roughness_after: 1.8
+---

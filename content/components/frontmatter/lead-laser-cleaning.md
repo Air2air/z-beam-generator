@@ -13,6 +13,8 @@ chemicalProperties:
   materialType: metal
 properties:
   density: "11.34 g/cm³"
+  thermalDestructionPoint: "327°C"
+  thermalDestructionType: melting
   densityNumeric: 11.34
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -22,7 +24,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 100.0
-  meltingPoint: "327°C"
   meltingPointNumeric: 327
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -42,7 +43,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 17.4
-  tensileStrength: 12-18 MPa
+  tensileStrength: 15MPa
   tensileStrengthNumeric: 15.0
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -52,7 +53,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 0.0
-  hardness: 38-50 MPa (Brinell)
+  hardness: 44MPa
   hardnessNumeric: 44.0
   hardnessUnit: MPa
   hardnessMin: 1 Mohs
@@ -76,7 +77,6 @@ properties:
   wavelength: 1064nm
   fluenceRange: "1.0–10 J/cm²"
   chemicalFormula: Pb
-  thermalBehaviorType: melting
 composition:
 - 'Lead (Pb): 99.9-99.99% (commercial purity)'
 - 'Trace elements: <0.1% (typically Sb, As, Bi, Cu, Ag)'
@@ -189,7 +189,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: United States (California)
   author_id: 4
-  verification_timestamp: '2025-09-20T21:18:58Z'
+  verification_timestamp: '2025-09-20T21: 18: 58Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -210,3 +210,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 12.5
 surface_roughness_after: 3.2
+---

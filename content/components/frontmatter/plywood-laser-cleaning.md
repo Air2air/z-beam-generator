@@ -16,7 +16,9 @@ chemicalProperties:
   formula: "(C₆H₁₀O₅)\u2099"
   materialType: wood
 properties:
-  density: "500-700 kg/m³ (varies by wood species and adhesive content)"
+  density: 600kg/m³
+  thermalDestructionPoint: "300°C"
+  thermalDestructionType: decomposition
   densityNumeric: 600.0
   densityUnit: "kg/m³"
   densityMin: "1.8 g/cm³"
@@ -33,7 +35,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "0.12-0.17 W/m·K (across grain)"
+  thermalConductivity: 0.1W/m·K
   thermalConductivityNumeric: 0.15
   thermalConductivityUnit: "W/m·K"
   thermalConductivityMin: "0.5 W/m·K"
@@ -43,7 +45,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.0
-  tensileStrength: 30-70 MPa (parallel to grain), 2-5 MPa (perpendicular to grain)
+  tensileStrength: 50MPa
   tensileStrengthNumeric: 50.0
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -53,7 +55,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 0.0
-  hardness: 1.5-3.0 kN (Janka hardness scale, varies by wood species)
+  hardness: 2.2kN
   hardnessNumeric: 2.25
   hardnessUnit: kN
   hardnessMin: 1 Mohs
@@ -77,9 +79,6 @@ properties:
   wavelength: 1064nm
   fluenceRange: "0.5–5 J/cm²"
   chemicalFormula: "(C₆H₁₀O₅)\u2099"
-  thermalBehaviorType: decomposition
-  decompositionPoint: "300°C"
-  decompositionPointNumeric: 300
   decompositionPointUnit: "°C"
 composition:
 - Wood veneer layers (40-60% cellulose, 15-25% hemicellulose, 20-30% lignin)
@@ -174,8 +173,8 @@ environmentalImpact:
     with ablated material collected via filtration
 outcomes:
 - result: Surface contamination removal efficiency
-  metric: '>99% removal of paints, adhesives, and surface oxidation without substrate
-    damage'
+  metric: ">99% removal of paints, adhesives, and surface oxidation without substrate
+    damage"
 - result: Processing speed
   metric: "0.5-2.0 m²/hour depending on contamination type and laser parameters"
 technicalSpecifications:
@@ -196,7 +195,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: United States (California)
   author_id: 4
-  verification_timestamp: '2025-09-20T22:06:48Z'
+  verification_timestamp: '2025-09-20T22: 06: 48Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -215,3 +214,4 @@ complexity: low
 difficultyScore: 2
 surface_roughness_before: 58.2
 surface_roughness_after: 24.8
+---

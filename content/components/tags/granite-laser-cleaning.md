@@ -1,36 +1,36 @@
 tags:
-  - decontamination
-  - etching
-  - passivation
-  - polishing
-  - texturing
+  - ikmanda-roswati
+  - masonry
+  - heritage
+  - construction
   - restoration
-  - decoating
-  - manufacturing
+  - decontamination
+  - surface-preparation
+  - conservation
 material: "granite"
 count: 8
 categories:
   industry:
-    - manufacturing
   process:
-    - decontamination
-    - etching
-    - passivation
-    - polishing
-    - texturing
     - restoration
-    - decoating
+    - decontamination
   author:
+    - ikmanda-roswati
+    - surface-preparation
   other:
+    - masonry
+    - heritage
+    - construction
+    - conservation
 metadata:
-  generated: "2025-09-17T12:01:02.139571"
+  generated: "2025-09-22T15:57:39.901900"
   format: "yaml"
   version: "2.0"
 
 ---
 Material: "granite"
 Component: tags
-Generated: 2025-09-17T12:01:02.139591
-Generator: Z-Beam v1.0.0
+Generated: 2025-09-22T15:57:39.903752
+Generator: Z-Beam v1.0.0 (Frontmatter-Based)
 Format: YAML v2.0
 ---

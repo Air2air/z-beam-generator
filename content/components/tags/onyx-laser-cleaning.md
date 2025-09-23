@@ -1,36 +1,36 @@
 tags:
-  - aerospace
-  - automotive
-  - medical
+  - alessandro-moretti
+  - masonry
+  - heritage
+  - jewelry
+  - construction
   - decontamination
+  - surface-preparation
   - restoration
-  - polishing
-  - texturing
-  - etching
 material: "onyx"
 count: 8
 categories:
   industry:
-    - aerospace
-    - automotive
-    - medical
   process:
     - decontamination
     - restoration
-    - polishing
-    - texturing
-    - etching
   author:
+    - alessandro-moretti
+    - surface-preparation
   other:
+    - masonry
+    - heritage
+    - jewelry
+    - construction
 metadata:
-  generated: "2025-09-17T12:03:03.540089"
+  generated: "2025-09-22T15:57:39.963897"
   format: "yaml"
   version: "2.0"
 
 ---
 Material: "onyx"
 Component: tags
-Generated: 2025-09-17T12:03:03.540107
-Generator: Z-Beam v1.0.0
+Generated: 2025-09-22T15:57:39.965080
+Generator: Z-Beam v1.0.0 (Frontmatter-Based)
 Format: YAML v2.0
 ---

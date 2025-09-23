@@ -1,36 +1,36 @@
 tags:
-  - aerospace
-  - automotive
-  - manufacturing
+  - alessandro-moretti
+  - masonry
+  - heritage
+  - construction
   - decontamination
+  - surface-preparation
   - restoration
-  - polishing
-  - texturing
-  - stone
+  - conservation
 material: "limestone"
 count: 8
 categories:
   industry:
-    - aerospace
-    - automotive
-    - manufacturing
   process:
     - decontamination
     - restoration
-    - polishing
-    - texturing
   author:
+    - alessandro-moretti
+    - surface-preparation
   other:
-    - stone
+    - masonry
+    - heritage
+    - construction
+    - conservation
 metadata:
-  generated: "2025-09-17T12:01:53.605621"
+  generated: "2025-09-22T15:57:39.921662"
   format: "yaml"
   version: "2.0"
 
 ---
 Material: "limestone"
 Component: tags
-Generated: 2025-09-17T12:01:53.605647
-Generator: Z-Beam v1.0.0
+Generated: 2025-09-22T15:57:39.923883
+Generator: Z-Beam v1.0.0 (Frontmatter-Based)
 Format: YAML v2.0
 ---

@@ -16,7 +16,9 @@ chemicalProperties:
   formula: ZrO2
   materialType: ceramic
 properties:
-  density: "5.68-6.10 g/cm³ (depending on stabilization)"
+  density: 5.9g/cm³
+  thermalDestructionPoint: "2715°C"
+  thermalDestructionType: melting
   densityNumeric: 5.89
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -26,7 +28,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 97.4
-  meltingPoint: "2715°C"
   meltingPointNumeric: 2715.0
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -36,7 +37,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 94.7
-  thermalConductivity: "2-3 W/m·K (at room temperature)"
+  thermalConductivity: 2.5W/m·K
   thermalConductivityNumeric: 2.5
   thermalConductivityUnit: "W/m·K"
   thermalConductivityMin: "0.5 W/m·K"
@@ -46,7 +47,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 1.0
-  tensileStrength: 800-1500 MPa
+  tensileStrength: 1150MPa
   tensileStrengthNumeric: 1150.0
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -56,7 +57,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 100.0
-  hardness: 1200-1400 HV (Vickers)
+  hardness: 1300HV
   hardnessNumeric: 1300.0
   hardnessUnit: HV
   hardnessMin: 1 Mohs
@@ -80,7 +81,6 @@ properties:
   wavelength: 1064nm
   fluenceRange: "0.5–5 J/cm²"
   chemicalFormula: ZrO2
-  thermalBehaviorType: melting
 composition:
 - 'Zirconium dioxide (ZrO2): 94-97%'
 - 'Yttria (Y2O3): 3-6% (for YSZ stabilization)'
@@ -147,7 +147,7 @@ compatibility:
 - Yttria-stabilized zirconia (YSZ)
 - Alumina (Al2O3) for similar ceramic processing parameters
 - Titanium alloys (common substrate for medical applications)
-regulatoryStandards: ISO 13485:2016 (Medical devices), ASTM F1873 (Standard Practice
+regulatoryStandards: "ISO 13485: 2016 (Medical devices), ASTM F1873 (Standard Practice"
   for Cleaning and Maintaining Medical Devices), FAA AC 33.70-1 (Aerospace Engine
   Cleaning)
 author: Todd Dunning
@@ -199,7 +199,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: United States (California)
   author_id: 4
-  verification_timestamp: '2025-09-20T20:40:50Z'
+  verification_timestamp: '2025-09-20T20: 40: 50Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -219,3 +219,4 @@ complexity: high
 difficultyScore: 4
 surface_roughness_before: 4.2
 surface_roughness_after: 1.0
+---

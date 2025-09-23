@@ -17,7 +17,9 @@ chemicalProperties:
   formula: (C27H36N2O10)n + Fiber Reinforcement
   materialType: composite
 properties:
-  density: "1.15-1.25 g/cm³"
+  density: 1.2g/cm³"
+  thermalDestructionPoint: 200°C"
+  thermalDestructionType: melting
   densityNumeric: 1.2
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -27,7 +29,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 0.0
-  meltingPoint: "180-220°C"
   meltingPointNumeric: 200.0
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -37,7 +38,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "0.2-0.3 W/m·K"
+  thermalConductivity: 0.2W/m·K"
   thermalConductivityNumeric: 0.25
   thermalConductivityUnit: "W/m·K"
   thermalConductivityMin: "0.5 W/m·K"
@@ -47,7 +48,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.0
-  tensileStrength: 45-75 MPa
+  tensileStrength: 60MPa
   tensileStrengthNumeric: 60.0
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -57,7 +58,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 1.1
-  hardness: 75-95 Shore D
+  hardness: 85Shore
   hardnessNumeric: 85.0
   hardnessUnit: Shore
   hardnessMin: 1 Mohs
@@ -175,7 +176,7 @@ environmentalImpact:
     methods for FRPU composites
 outcomes:
 - result: Surface contamination removal efficiency
-  metric: '>99.5% removal of mold release agents and surface contaminants'
+  metric: ">99.5% removal of mold release agents and surface contaminants"
 - result: Processing speed
   metric: "0.5-2.0 m²/hour depending on contamination level and required precision"
 technicalSpecifications:
@@ -196,7 +197,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Italy
   author_id: 2
-  verification_timestamp: '2025-09-20T20:50:35Z'
+  verification_timestamp: '2025-09-20T20: 50: 35Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -215,3 +216,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 9.2
 surface_roughness_after: 2.5
+---

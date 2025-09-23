@@ -13,6 +13,8 @@ chemicalProperties:
   materialType: metal
 properties:
   density: "21.45 g/cm³"
+  thermalDestructionPoint: "1768°C"
+  thermalDestructionType: melting
   densityNumeric: 21.45
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -22,7 +24,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 100.0
-  meltingPoint: "1768°C"
   meltingPointNumeric: 1768
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -42,7 +43,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 35.6
-  tensileStrength: 125-165 MPa (annealed)
+  tensileStrength: 145MPa
   tensileStrengthNumeric: 145.0
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -52,7 +53,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 10.0
-  hardness: 40-42 HV (Vickers)
+  hardness: 41HV
   hardnessNumeric: 41.0
   hardnessUnit: HV
   hardnessMin: 1 Mohs
@@ -72,11 +73,10 @@ properties:
   youngsModulusMaxNumeric: 80.0
   youngsModulusMaxUnit: GPa
   modulusPercentile: 100.0
-  laserType: Nd:YAG or fiber laser
+  laserType: "Nd: YAG or fiber laser"
   wavelength: 1064nm
   fluenceRange: "1.0–10 J/cm²"
   chemicalFormula: Pt
-  thermalBehaviorType: melting
 composition:
 - 'Platinum (Pt): 95-99.95%'
 - 'Iridium (Ir): 0-5%, Rhodium (Rh): 0-3%, Ruthenium (Ru): 0-2% (common alloying elements)'
@@ -142,7 +142,7 @@ compatibility:
 - Platinum-Iridium alloys
 - Platinum-Rhodium thermocouples
 - Platinum-cobalt magnetic alloys
-regulatoryStandards: ISO 11551:2019 (Laser beam power measurement), IEC 60825-1:2014
+regulatoryStandards: "ISO 11551: 2019 (Laser beam power measurement), IEC 60825-1: 2014"
   (Laser product safety), ASTM E384-22 (Microindentation hardness testing)
 author: Ikmanda Roswati
 author_object:
@@ -192,7 +192,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Indonesia
   author_id: 3
-  verification_timestamp: '2025-09-20T21:23:57Z'
+  verification_timestamp: '2025-09-20T21: 23: 57Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -205,7 +205,7 @@ laser_parameters:
   power_range: 50-200W
   repetition_rate: 20-100kHz
   spot_size: 0.05-1.0mm
-  laser_type: Nd:YAG or fiber laser
+  laser_type: "Nd: YAG or fiber laser"
 tags:
 - Jewelry
 - Aerospace
@@ -213,3 +213,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 2.5
 surface_roughness_after: 0.5
+---

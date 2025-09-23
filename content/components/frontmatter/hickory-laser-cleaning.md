@@ -16,7 +16,9 @@ chemicalProperties:
   formula: "C₆H₁₀O₅ (cellulose base)"
   materialType: hardwood
 properties:
-  density: "815-930 kg/m³ (air-dried)"
+  density: 872.5kg/m³
+  thermalDestructionPoint: "300°C"
+  thermalDestructionType: decomposition
   densityNumeric: 872.5
   densityUnit: "kg/m³"
   densityMin: "1.8 g/cm³"
@@ -33,7 +35,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "0.12-0.16 W/m·K (radial direction)"
+  thermalConductivity: 0.1W/m·K
   thermalConductivityNumeric: 0.14
   thermalConductivityUnit: "W/m·K"
   thermalConductivityMin: "0.5 W/m·K"
@@ -43,7 +45,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.0
-  tensileStrength: 100-140 MPa (parallel to grain)
+  tensileStrength: 120MPa
   tensileStrengthNumeric: 120.0
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -53,7 +55,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 7.4
-  hardness: 6.0-7.0 kN (Janka hardness scale)
+  hardness: 6.5kN
   hardnessNumeric: 6.5
   hardnessUnit: kN
   hardnessMin: 1 Mohs
@@ -76,11 +78,7 @@ properties:
   laserType: Pulsed fiber laser
   wavelength: 1064nm
   fluenceRange: "0.5-3.0 J/cm²"
-  chemicalFormula: Complex lignocellulosic composite
-  thermalBehaviorType: decomposition
-  decompositionPoint: "300°C"
-  decompositionPointNumeric: 300
-  decompositionPointUnit: "°C"
+  chemicalFormula: Complex lignocellulosic composite  decompositionPointUnit: "°C"
 composition:
 - 'Cellulose: 45-50%'
 - 'Lignin: 20-25%'
@@ -196,7 +194,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Italy
   author_id: 2
-  verification_timestamp: '2025-09-20T22:01:20Z'
+  verification_timestamp: '2025-09-20T22: 01: 20Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -215,3 +213,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 44.2
 surface_roughness_after: 17.5
+---

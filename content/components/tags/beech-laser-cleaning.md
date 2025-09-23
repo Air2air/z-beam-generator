@@ -1,36 +1,36 @@
 tags:
-  - aerospace
-  - automotive
-  - medical
-  - decontamination
+  - ikmanda-roswati
+  - woodworking
   - restoration
-  - polishing
-  - texturing
-  - etching
+  - decontamination
+  - surface-preparation
+  - refinishing
+  - manufacturing
+  - industrial
 material: "beech"
 count: 8
 categories:
   industry:
-    - aerospace
-    - automotive
-    - medical
+    - manufacturing
+    - industrial
   process:
-    - decontamination
     - restoration
-    - polishing
-    - texturing
-    - etching
+    - decontamination
   author:
+    - ikmanda-roswati
+    - surface-preparation
   other:
+    - woodworking
+    - refinishing
 metadata:
-  generated: "2025-09-17T11:59:06.080861"
+  generated: "2025-09-22T15:57:40.092556"
   format: "yaml"
   version: "2.0"
 
 ---
 Material: "beech"
 Component: tags
-Generated: 2025-09-17T11:59:06.080904
-Generator: Z-Beam v1.0.0
+Generated: 2025-09-22T15:57:40.093756
+Generator: Z-Beam v1.0.0 (Frontmatter-Based)
 Format: YAML v2.0
 ---

@@ -714,7 +714,6 @@ def stamp_component_output(
         "text": "3.0.0",
         "author": "2.0.0",
         "badgesymbol": "2.0.0",
-        "bullets": "1.0.0",
         "caption": "1.0.0",
         "propertiestable": "2.0.0",
         "table": "2.0.0",

@@ -16,7 +16,9 @@ chemicalProperties:
   formula: Variable (40-50% cellulose, 20-30% lignin, 15-25% hemicellulose)
   materialType: wood
 properties:
-  density: "675-755 kg/m³ (European Oak)"
+  density: 715kg/m³
+  thermalDestructionPoint: "300°C"
+  thermalDestructionType: decomposition
   densityNumeric: 715.0
   densityUnit: "kg/m³"
   densityMin: "1.8 g/cm³"
@@ -33,7 +35,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "0.17-0.19 W/m·K (radial direction)"
+  thermalConductivity: 0.2W/m·K
   thermalConductivityNumeric: 0.18
   thermalConductivityUnit: "W/m·K"
   thermalConductivityMin: "0.5 W/m·K"
@@ -43,7 +45,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.0
-  tensileStrength: 90-120 MPa (parallel to grain)
+  tensileStrength: 105MPa
   tensileStrengthNumeric: 105.0
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -53,7 +55,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 5.8
-  hardness: 3.7-4.2 kN (Janka hardness scale)
+  hardness: 4.0kN
   hardnessNumeric: 3.95
   hardnessUnit: kN
   hardnessMin: 1 Mohs
@@ -76,11 +78,7 @@ properties:
   laserType: Pulsed fiber laser
   wavelength: 1064 nm
   fluenceRange: "0.5-5 J/cm²"
-  chemicalFormula: Variable organic composite
-  thermalBehaviorType: decomposition
-  decompositionPoint: "300°C"
-  decompositionPointNumeric: 300
-  decompositionPointUnit: "°C"
+  chemicalFormula: Variable organic composite  decompositionPointUnit: "°C"
 composition:
 - 'Cellulose: 40-50%'
 - 'Lignin: 20-30%'
@@ -148,8 +146,8 @@ compatibility:
 - Pulsed fiber lasers with ns pulse durations
 - Galvo scanning systems with precision motion control
 - Fume extraction systems for organic vapor management
-regulatoryStandards: ISO 11553-1:2020 (Safety of laser processing machines), IEC 60825-1:2014
-  (Laser product safety), EN 60825-4:2006 (Laser guards)
+regulatoryStandards: "ISO 11553-1: 2020 (Safety of laser processing machines), IEC 60825-1: 2014"
+  (Laser product safety), EN 60825-4: 2006 (Laser guards)
 author: Yi-Chun Lin
 author_object:
   id: 1
@@ -196,7 +194,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Taiwan
   author_id: 1
-  verification_timestamp: '2025-09-20T22:05:01Z'
+  verification_timestamp: '2025-09-20T22: 05: 01Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -215,3 +213,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 45.5
 surface_roughness_after: 18.2
+---

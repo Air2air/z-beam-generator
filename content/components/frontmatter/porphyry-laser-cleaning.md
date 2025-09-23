@@ -16,7 +16,9 @@ chemicalProperties:
   formula: "Variable (primarily SiO₂ + KAlSi₃O₈ + NaAlSi₃O₈ + CaAl₂Si₂O₈)"
   materialType: igneous rock
 properties:
-  density: "2.6-2.9 g/cm³ (varies with mineral composition)"
+  density: 2.8g/cm³
+  thermalDestructionPoint: "1450°C"
+  thermalDestructionType: melting
   densityNumeric: 2.75
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -26,7 +28,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 22.6
-  meltingPoint: "1450°C"
   meltingPointNumeric: 1450
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -36,7 +37,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 9.4
-  thermalConductivity: "2.5-3.5 W/(m·K) (anisotropic due to crystalline structure)"
+  thermalConductivity: 3W/(m·K)
   thermalConductivityNumeric: 3.0
   thermalConductivityUnit: W/
   thermalConductivityMin: "0.5 W/m·K"
@@ -46,7 +47,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 1.3
-  tensileStrength: 8-15 MPa (low due to crystalline heterogeneity)
+  tensileStrength: 11.5MPa
   tensileStrengthNumeric: 11.5
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -56,7 +57,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 0.0
-  hardness: 6-7 Mohs (primarily quartz hardness dominant)
+  hardness: 6.5Mohs
   hardnessNumeric: 6.5
   hardnessUnit: Mohs
   hardnessMin: 1 Mohs
@@ -76,11 +77,10 @@ properties:
   youngsModulusMaxNumeric: 80.0
   youngsModulusMaxUnit: GPa
   modulusPercentile: 75.0
-  laserType: Nd:YAG or fiber laser
+  laserType: "Nd: YAG or fiber laser"
   wavelength: 1064nm
   fluenceRange: "1.0–10 J/cm²"
   chemicalFormula: "Complex silicate mixture (SiO₂ 40-70%, Feldspars 20-50%, Biotite 5-15%)"
-  thermalBehaviorType: melting
 composition:
 - "Quartz (SiO₂): 40-70% (primary crystalline phase)"
 - "Alkali Feldspar (KAlSi₃O₈/NaAlSi₃O₈): 20-40% (matrix material)"
@@ -146,11 +146,11 @@ applications:
 - 'Construction: Cleaning and restoration of historical porphyry structures'
 - 'Art and Restoration: Precision cleaning of porphyry sculptures and artifacts'
 compatibility:
-- Q-switched Nd:YAG lasers with wavelength flexibility (1064nm/532nm)
+- Q-switched Nd: YAG lasers with wavelength flexibility (1064nm/532nm)
 - Scanning systems with precise motion control for heterogeneous surfaces
 - Non-contact monitoring systems (LIBS/Raman) for real-time process control
-regulatoryStandards: EN 15898:2019 (Conservation of cultural property - Main general
-  terms and definitions), EN 16096:2012 (Conservation of cultural property - Condition
+regulatoryStandards: "EN 15898: 2019 (Conservation of cultural property - Main general"
+  terms and definitions), EN 16096: 2012 (Conservation of cultural property - Condition
   survey and report of built cultural heritage)
 author: Todd Dunning
 author_object:
@@ -186,7 +186,7 @@ outcomes:
     with complex geometries
 technicalSpecifications:
   powerRange: 20-100 W (average power for Q-switched systems)
-  pulseDuration: 5-30 ns (Q-switched Nd:YAG optimal for thermal control)
+  pulseDuration: "5-30 ns (Q-switched Nd: YAG optimal for thermal control)"
   wavelength: 1064 nm (fundamental), 532 nm (second harmonic for selective absorption)
   spotSize: 0.1-0.8 mm (diameter for precision work on heterogeneous mineral structure)
   repetitionRate: 10-50 kHz (optimized for thermal relaxation between pulses)
@@ -205,7 +205,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: United States (California)
   author_id: 4
-  verification_timestamp: '2025-09-20T21:45:31Z'
+  verification_timestamp: '2025-09-20T21: 45: 31Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -216,7 +216,7 @@ laser_parameters:
   power_range: 50-200W
   repetition_rate: 20-100kHz
   spot_size: 0.2-1.0mm
-  laser_type: Nd:YAG or fiber laser
+  laser_type: "Nd: YAG or fiber laser"
 tags:
 - Construction
 - Art and Restoration
@@ -224,3 +224,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 22.5
 surface_roughness_after: 7.8
+---

@@ -18,7 +18,9 @@ chemicalProperties:
   formula: C10H8O4 (Base resin repeat unit) + SiO2 (Glass fiber)
   materialType: composite
 properties:
-  density: "1.2-2.0 g/cm³ (Varies with glass fiber content)"
+  density: 1.6g/cm³
+  thermalDestructionPoint: "220°C"
+  thermalDestructionType: melting
   densityNumeric: 1.6
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -35,7 +37,7 @@ properties:
   meltingPointMaxNumeric: 2800.0
   meltingPointMaxUnit: "°C"
   meltingPercentile: 0.0
-  thermalConductivity: "0.17-0.25 W/(m·K)"
+  thermalConductivity: 0.2W/(m·K)"
   thermalConductivityNumeric: 0.21
   thermalConductivityUnit: W/
   thermalConductivityMin: "0.5 W/m·K"
@@ -45,7 +47,7 @@ properties:
   thermalConductivityMaxNumeric: 200.0
   thermalConductivityMaxUnit: "W/m·K"
   thermalPercentile: 0.0
-  tensileStrength: 30-150 MPa (Varies with fiber orientation and content)
+  tensileStrength: 90MPa
   tensileStrengthNumeric: 90.0
   tensileStrengthUnit: MPa
   tensileStrengthMin: 50 MPa
@@ -55,7 +57,7 @@ properties:
   tensileStrengthMaxNumeric: 1000.0
   tensileStrengthMaxUnit: MPa
   tensilePercentile: 4.2
-  hardness: 80-95 Barcol (Scale HBa)
+  hardness: 87.5Barcol
   hardnessNumeric: 87.5
   hardnessUnit: Barcol
   hardnessMin: 1 Mohs
@@ -78,11 +80,7 @@ properties:
   laserType: Pulsed Fiber Laser
   wavelength: 1064 nm
   fluenceRange: "0.5-5 J/cm²"
-  chemicalFormula: N/A (Composite Material)
-  thermalBehaviorType: decomposition
-  decompositionPoint: "220°C"
-  decompositionPointNumeric: 220
-  decompositionPointUnit: "°C"
+  chemicalFormula: N/A (Composite Material)  decompositionPointUnit: "°C"
 composition:
 - Unsaturated Polyester Resin (30-50%)
 - E-glass or S-glass fibers (50-70%)
@@ -200,7 +198,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Taiwan
   author_id: 1
-  verification_timestamp: '2025-09-20T20:46:14Z'
+  verification_timestamp: '2025-09-20T20: 46: 14Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -219,3 +217,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 7.5
 surface_roughness_after: 2.1
+---

@@ -17,6 +17,8 @@ chemicalProperties:
   materialType: glass
 properties:
   density: "2.20 g/cm³"
+  thermalDestructionPoint: "75°C"
+  thermalDestructionType: melting
   densityNumeric: 2.2
   densityUnit: "g/cm³"
   densityMin: "1.8 g/cm³"
@@ -26,7 +28,6 @@ properties:
   densityMaxNumeric: 6.0
   densityMaxUnit: "g/cm³"
   densityPercentile: 9.5
-  meltingPoint: "75°C"
   meltingPointNumeric: 75
   meltingPointUnit: "°C"
   meltingPointMin: "1200°C"
@@ -80,7 +81,6 @@ properties:
   wavelength: 1064 nm
   fluenceRange: "0.5–5 J/cm²"
   chemicalFormula: SiO2
-  thermalBehaviorType: melting
 composition:
 - "Silicon Dioxide (SiO₂): 99.9-99.99%"
 - 'Trace impurities: <1000 ppm (typically Al, Na, K, Fe, OH)'
@@ -197,7 +197,7 @@ prompt_chain_verification:
   ai_detection_config_loaded: true
   persona_country: Italy
   author_id: 2
-  verification_timestamp: '2025-09-20T20:57:35Z'
+  verification_timestamp: '2025-09-20T20: 57: 35Z'
   prompt_components_integrated: 4
   human_authenticity_focus: true
   cultural_adaptation_applied: true
@@ -217,3 +217,4 @@ complexity: medium
 difficultyScore: 3
 surface_roughness_before: 0.8
 surface_roughness_after: 0.2
+---

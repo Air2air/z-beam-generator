@@ -27,19 +27,19 @@
             "description": "Maximum density value without units for calculations",
             "example": 22.6
           },
-          "meltingPointNumeric": {
+          "thermalDestructionPointNumeric": {
             "type": "number",
-            "description": "Melting point value without units for calculations (Celsius)",
+            "description": "Thermal destruction point value without units for calculations (Celsius)",
             "example": 660
           },
-          "meltingMinNumeric": {
+          "thermalDestructionMinNumeric": {
             "type": "number", 
-            "description": "Minimum melting point without units for calculations (Celsius)",
+            "description": "Minimum thermal destruction point without units for calculations (Celsius)",
             "example": -39
           },
-          "meltingMaxNumeric": {
+          "thermalDestructionMaxNumeric": {
             "type": "number",
-            "description": "Maximum melting point without units for calculations (Celsius)", 
+            "description": "Maximum thermal destruction point without units for calculations (Celsius)", 
             "example": 3422
           },
           "thermalConductivityNumeric": {
@@ -62,31 +62,9 @@
             "description": "Unit of measurement for density values",
             "example": "g/cm³"
           },
-          "meltingPointUnit": {
+          "thermalDestructionPointUnit": {
             "type": "string",
-            "description": "Unit of measurement for melting point values", 
-            "example": "°C"
-          },
-          "thermalBehaviorType": {
-            "type": "string",
-            "description": "Type of thermal behavior: melting, decomposition, or sublimation",
-            "enum": ["melting", "decomposition", "sublimation"],
-            "example": "melting"
-          },
-          "decompositionPoint": {
-            "type": "string",
-            "description": "Decomposition",
-            "example": "280°C"
-          },
-          "decompositionPointNumeric": {
-            "type": "number",
-            "description": "Decomposition temperature without units for calculations (Celsius)",
-            "example": 280
-          },
-          "decompositionPointUnit": {
-            "type": "string",
-            "description": "Unit for decomposition temperature",
-            "enum": ["°C", "°F", "K"],
+            "description": "Unit of measurement for thermal destruction point values", 
             "example": "°C"
           },
           "thermalConductivityUnit": {
@@ -342,10 +320,16 @@
             "description": "Density",
             "example": "2.7 g/cm³"
           },
-          "meltingPoint": {
+          "thermalDestructionPoint": {
             "type": "string",
-            "description": "Melting Point",
+            "description": "Thermal destruction point (melting or decomposition)",
             "example": "660°C"
+          },
+          "thermalDestructionType": {
+            "type": "string",
+            "description": "Type of thermal destruction behavior",
+            "enum": ["melting", "decomposition"],
+            "example": "melting"
           },
           "thermalConductivity": {
             "type": "string",
@@ -373,19 +357,19 @@
             "description": "Density percentile ranking",
             "example": 10.0
           },
-          "meltingMin": {
+          "thermalDestructionMin": {
             "type": "string",
-            "description": "Minimum melting point range",
+            "description": "Minimum thermal destruction point range",
             "example": "-39°C"
           },
-          "meltingMax": {
+          "thermalDestructionMax": {
             "type": "string",
-            "description": "Maximum melting point range",
+            "description": "Maximum thermal destruction point range",
             "example": "3422°C"
           },
-          "meltingPercentile": {
+          "thermalDestructionPercentile": {
             "type": "number",
-            "description": "Melting point percentile ranking",
+            "description": "Thermal destruction point percentile ranking",
             "example": 18.4
           },
           "thermalMin": {
