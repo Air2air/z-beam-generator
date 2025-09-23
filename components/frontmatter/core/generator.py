@@ -490,6 +490,7 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
         - Property enhancement (numeric/unit separation)
         - Field ordering (hierarchical organization)
         - Technical specifications validation
+        - YAML sanitization to prevent parsing errors
         """
         logger.info(f"🎯 Finalizing frontmatter content for {material_name}")
         
@@ -503,16 +504,216 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
         # Ensure technical specifications are complete
         ValidationHelpers.ensure_technical_specifications(frontmatter_data)
         
+        # Sanitize frontmatter data to prevent YAML parsing issues
+        sanitized_frontmatter = self._sanitize_frontmatter_data(frontmatter_data)
+        
         # Apply field ordering using modular service  
-        ordered_frontmatter = FieldOrderingService.apply_field_ordering(frontmatter_data)
+        ordered_frontmatter = FieldOrderingService.apply_field_ordering(sanitized_frontmatter)
         
         # Convert to YAML format
         import yaml
         yaml_content = yaml.dump(ordered_frontmatter, default_flow_style=False, sort_keys=False)
+        
+        # Apply final YAML syntax fixes
+        yaml_content = self._fix_yaml_syntax(yaml_content)
+        
+        # Validate the generated YAML
+        try:
+            yaml.safe_load(yaml_content)
+        except yaml.YAMLError as yaml_err:
+            logger.warning(f"Generated YAML has syntax issues for {material_name}: {yaml_err}")
+            # Attempt one more fix
+            yaml_content = self._fix_yaml_syntax_comprehensive(yaml_content)
+            # Apply final aggressive cleanup for stubborn patterns
+            yaml_content = self._final_yaml_cleanup(yaml_content)
+        
         final_content = f"---\n{yaml_content}---"
         
         logger.info(f"📝 Finalized frontmatter: {len(yaml_content)} characters")
         return final_content
+
+    def _sanitize_frontmatter_data(self, frontmatter_data: Dict) -> Dict:
+        """Sanitize frontmatter data to prevent YAML parsing issues"""
+        if not frontmatter_data:
+            return frontmatter_data
+        
+        sanitized = {}
+        for key, value in frontmatter_data.items():
+            if isinstance(value, str):
+                # Clean up unicode characters that cause issues
+                value = value.replace('\u2082', '₂').replace('\u2083', '₃').replace('\xB0', '°').replace('\xB3', '³')
+                
+                # Fix over-quoted values
+                if value.startswith("'\"") and value.endswith("\"'"):
+                    value = value[2:-2]
+                elif value.startswith('"\'') and value.endswith('\'"'):
+                    value = value[2:-2]
+                
+                # Quote values that need it (but avoid double-quoting)
+                if (any(char in value for char in ['(', ')', ':', '"', '\n', ',']) and 
+                    not (value.startswith('"') and value.endswith('"'))):
+                    # Escape internal quotes first
+                    value = value.replace('"', '""')
+                    value = f'"{value}"'
+                
+                sanitized[key] = value
+            elif isinstance(value, dict):
+                sanitized[key] = self._sanitize_frontmatter_data(value)
+            elif isinstance(value, list):
+                sanitized[key] = [self._sanitize_frontmatter_data(item) if isinstance(item, dict) else item for item in value]
+            else:
+                sanitized[key] = value
+        
+        return sanitized
+
+    def _fix_yaml_syntax(self, yaml_content: str) -> str:
+        """Fix common YAML syntax issues in generated content"""
+        lines = yaml_content.split('\n')
+        fixed_lines = []
+        
+        for line in lines:
+            # Quote values with special characters
+            if ':' in line and not line.strip().startswith('#'):
+                parts = line.split(':', 1)
+                if len(parts) == 2:
+                    key_part = parts[0]
+                    value_part = parts[1].strip()
+                    
+                    # Quote values that need it
+                    if value_part and not (value_part.startswith('"') and value_part.endswith('"')):
+                        if any(char in value_part for char in ['(', ')', '-', 'µ', '°']):
+                            value_part = f'"{value_part}"'
+                    
+                    line = f"{key_part}: {value_part}"
+            
+            fixed_lines.append(line)
+        
+        return '\n'.join(fixed_lines)
+
+    def _fix_yaml_syntax_comprehensive(self, yaml_content: str) -> str:
+        """Apply comprehensive YAML syntax fixes for complex issues"""
+        import re
+        
+        # First, apply all pattern-based fixes
+        yaml_content = self._apply_comprehensive_yaml_patterns(yaml_content)
+        
+        lines = yaml_content.split('\n')
+        fixed_lines = []
+        i = 0
+        
+        while i < len(lines):
+            line = lines[i]
+            
+            # Fix multi-line values that got broken
+            if ':' in line and '"' in line and line.count('"') == 1:
+                # This might be a broken multi-line value
+                value_lines = [line]
+                j = i + 1
+                
+                # Collect continuation lines
+                while j < len(lines):
+                    next_line = lines[j]
+                    if not next_line.strip():  # Empty line
+                        break
+                    if re.match(r'^\w+:', next_line):  # New field
+                        break
+                    if next_line.strip().startswith('-'):  # Array item
+                        break
+                    
+                    value_lines.append(next_line)
+                    j += 1
+                
+                # If we collected multiple lines, join them
+                if len(value_lines) > 1:
+                    field_match = re.match(r'^(\w+:\s*)(.*)', value_lines[0])
+                    if field_match:
+                        field_prefix = field_match.group(1)
+                        first_value = field_match.group(2)
+                        
+                        # Combine all values
+                        all_values = [first_value] + [vl.strip() for vl in value_lines[1:]]
+                        combined_value = ' '.join(all_values)
+                        
+                        # Clean up quotes
+                        combined_value = combined_value.replace('""', '"').strip('"')
+                        combined_value = f'"{combined_value}"'
+                        
+                        fixed_line = f"{field_prefix}{combined_value}"
+                        fixed_lines.append(fixed_line)
+                        i = j - 1
+                    else:
+                        fixed_lines.append(line)
+                else:
+                    fixed_lines.append(line)
+            else:
+                fixed_lines.append(line)
+            
+            i += 1
+        
+        return '\n'.join(fixed_lines)
+
+    def _apply_comprehensive_yaml_patterns(self, yaml_content: str) -> str:
+        """Apply all discovered YAML syntax patterns from our fix scripts"""
+        import re
+        
+        # Pattern 1: Fix over-quoted patterns like "'"value"'" (including multi-line)
+        yaml_content = re.sub(r':\s*"\'([^"\']*(?:\n[^"\']*)*)\'"', r': "\1"', yaml_content, flags=re.MULTILINE | re.DOTALL)
+        
+        # Pattern 2: Fix patterns like "'value'" (including multi-line)
+        yaml_content = re.sub(r':\s*\'([^\']*(?:\n[^\']*)*?)\'', r': "\1"', yaml_content, flags=re.MULTILINE | re.DOTALL)
+        
+        # Pattern 3: Fix double-quoted patterns like ""value"" (including multi-line)
+        yaml_content = re.sub(r':\s*""([^"]*(?:\n[^"]*)*?)""', r': "\1"', yaml_content, flags=re.MULTILINE | re.DOTALL)
+        
+        # Pattern 4: Fix over-escaped quotes
+        yaml_content = re.sub(r'\\"([^"]+)\\"', r'"\1"', yaml_content)
+        
+        # Pattern 5: Fix patterns like ""\"text\""
+        yaml_content = re.sub(r'""\\"([^"]+)\\""', r'"\1"', yaml_content)
+        
+        # Pattern 6: Fix broken multi-line strings that span multiple lines
+        yaml_content = re.sub(r':\s*"([^"]*)\n\s*([^"]*)"', r': "\1 \2"', yaml_content, flags=re.MULTILINE)
+        
+        # Pattern 7: Fix unicode escape sequences with backslashes
+        yaml_content = re.sub(r'\\([^"]*?)\\', r'\1', yaml_content)
+        
+        # Pattern 8: Fix unicode escape sequences
+        unicode_fixes = {
+            '\\xB0': '°',   # degree symbol
+            '\\xB3': '³',   # superscript 3
+            '\\xB7': '·',   # middle dot
+            '\\u2082': '₂', # subscript 2
+            '\\u2083': '₃', # subscript 3
+            '\\u03BC': 'μ', # mu
+            '\\u2013': '–', # en dash
+            '\\u00B1': '±', # plus-minus
+            '\\u03A9': 'Ω', # omega
+            '\\u03B1': 'α', # alpha
+            '\\u03B2': 'β', # beta
+            '\\u03B3': 'γ', # gamma
+            '\\u03B4': 'δ', # delta
+            '\\u03BB': 'λ', # lambda
+        }
+        
+        for escape_seq, char in unicode_fixes.items():
+            yaml_content = yaml_content.replace(escape_seq, char)
+        
+        # Pattern 9: Fix broken array values that got split
+        yaml_content = re.sub(r'- result: "([^"]*)\n\s*([^"]*)"', r'- result: "\1 \2"', yaml_content, flags=re.MULTILINE)
+        
+        # Pattern 10: Fix formula lines that got broken across multiple lines
+        yaml_content = re.sub(r'formula: "([^"]*)\n\s*([^"]*)"', r'formula: "\1\2"', yaml_content, flags=re.MULTILINE)
+        
+        # Pattern 11: Fix chemical symbols that got broken
+        yaml_content = re.sub(r'symbol: ([^\n]*)\n\s*([A-Z][a-z]*)', r'symbol: "\1\2"', yaml_content, flags=re.MULTILINE)
+        
+        # Pattern 12: Clean up any remaining whitespace and line breaks in quoted strings
+        yaml_content = re.sub(r':\s*"([^"]*)\s*\n\s*([^"]*)"', r': "\1 \2"', yaml_content, flags=re.MULTILINE)
+        
+        # Pattern 13: Fix any remaining line continuations in quoted values
+        yaml_content = re.sub(r'"([^"]*?)\n\s+([^"]*?)"', r'"\1 \2"', yaml_content, flags=re.MULTILINE)
+        
+        return yaml_content
 
     def _create_template_vars(
         self,
@@ -792,3 +993,36 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
         
         logger.info(f"[DEBUG] Populated {len(found_props)} properties from material data: {found_props}")
         logger.debug(f"[DEBUG] Properties section now contains: {properties}")
+
+    def _final_yaml_cleanup(self, yaml_content: str) -> str:
+        """Apply final aggressive cleanup for stubborn YAML patterns"""
+        import re
+        
+        # Fix the most common problematic patterns with simple string replacements
+        yaml_content = yaml_content.replace('""', '"')  # Remove double quotes
+        yaml_content = yaml_content.replace("''", "'")  # Remove double apostrophes
+        yaml_content = re.sub(r'"\'([^"\']*)\'"', r'"\1"', yaml_content)  # Fix "'"value"'"
+        yaml_content = re.sub(r'\'([^\']*?)\'', r'"\1"', yaml_content)  # Convert single quotes to double
+        
+        # Fix broken YAML structure - ensure proper spacing and formatting
+        lines = yaml_content.split('\n')
+        fixed_lines = []
+        
+        for line in lines:
+            # Fix lines that lost their proper YAML structure
+            if ':' in line and not line.strip().startswith('-'):
+                # Ensure there's a space after the colon
+                line = re.sub(r':([^\s])', r': \1', line)
+                
+                # Fix values that lost their quotes
+                if re.match(r'^\s*\w+:\s*[^"\'\s].*[^"\s]$', line):
+                    parts = line.split(':', 1)
+                    if len(parts) == 2:
+                        key = parts[0]
+                        value = parts[1].strip()
+                        if value and not value.startswith('"') and not value.startswith("'") and not value.replace('.', '').isdigit():
+                            line = f'{key}: "{value}"'
+            
+            fixed_lines.append(line)
+        
+        return '\n'.join(fixed_lines)

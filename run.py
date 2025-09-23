@@ -3,7 +3,12 @@
 Z-Beam Generator - User Configuration & Quick Start Guide
 
 This file contains ALL user-configurable settings and instructions.
-The main application logic has been moved to main_runner.py for better organization.
+The main applic        "api_provider": "none",  # ❌ NO API - static/deterministic generation
+        "priority": 3,
+        "enabled": False,  # DISABLED for caption-focused generation
+        "data_provider": "static",  # No API calls needed, deterministic
+    },
+    "text": {has been moved to main_runner.py for better organization.
 
 ═══════════════════════════════════════════════════════════════════════════════
 📋 CONFIGURATION STATUS: ALL HARDCODED CONFIGS REMOVED
@@ -172,16 +177,10 @@ COMPONENT_CONFIG = {
         "enabled": False,  # DISABLED for caption-focused generation
         "data_provider": "static",  # No API calls needed, deterministic
     },
-    "bullets": {
-        "api_provider": "none",  # ❌ NO API - changed from deepseek to none
-        "priority": 4,
-        "enabled": False,  # DISABLED for caption-focused generation
-        "data_provider": "static",  # Changed from hybrid to static - no API needed
-    },
     "caption": {
         "api_provider": "none",  # ❌ NO API - static/deterministic generation
         "priority": 5,
-        "enabled": True,  # ENABLED for caption generation
+        "enabled": False,  # ENABLED for caption generation
         "data_provider": "static",  # Uses frontmatter data only
     },
     "text": {
@@ -197,15 +196,15 @@ COMPONENT_CONFIG = {
         "data_provider": "static",  # No API calls needed, no frontmatter dependency
     },
     "tags": {
-        "api_provider": "none",  # ❌ NO API - changed from deepseek to none
+        "api_provider": "none",  # ✅ NO API - now uses frontmatter data only
         "priority": 8,
-        "enabled": False,  # DISABLED for caption-focused generation
-        "data_provider": "static",  # Changed from hybrid to static - no API needed
+        "enabled": True,  # ENABLED for tags generation
+        "data_provider": "static",  # Uses frontmatter data only
     },
     "jsonld": {
         "api_provider": "none",  # ❌ NO API - uses frontmatter extraction only
         "priority": 9,
-        "enabled": True,  # ENABLED for JSON-LD generation
+        "enabled": False,  # ENABLED for JSON-LD generation
         "data_provider": "static",  # Uses frontmatter data only
     },
     "author": {
@@ -596,6 +595,60 @@ def deploy_to_production():
 
 
 # =================================================================================
+# FRONTMATTER SANITIZATION POST-PROCESSOR
+# =================================================================================
+
+def run_frontmatter_sanitization(specific_file=None):
+    """Run frontmatter YAML sanitization as a post-processor"""
+    try:
+        # Import the sanitizer
+        import sys
+        import os
+        sys.path.append(os.path.join(os.path.dirname(__file__), 'scripts', 'tools'))
+        from sanitize_frontmatter import FrontmatterSanitizer
+        
+        sanitizer = FrontmatterSanitizer()
+        
+        if specific_file:
+            # Sanitize specific file
+            from pathlib import Path
+            file_path = Path(specific_file)
+            if not file_path.exists():
+                print(f"❌ File not found: {specific_file}")
+                return False
+            
+            print(f"🧹 Sanitizing specific file: {file_path.name}")
+            result = sanitizer.sanitize_file(file_path)
+            
+            if result["fixed"]:
+                print(f"✅ File fixed: {result['reason']}")
+            else:
+                print(f"ℹ️  No changes needed: {result['reason']}")
+            
+            return True
+        else:
+            # Sanitize all frontmatter files
+            print("🧹 Running comprehensive frontmatter YAML sanitization...")
+            result = sanitizer.sanitize_all_frontmatter()
+            
+            if result["success"]:
+                if result["fixed"] > 0:
+                    print(f"🎉 Sanitization complete! Fixed {result['fixed']} out of {result['total']} files")
+                else:
+                    print(f"✅ All {result['total']} frontmatter files are already valid!")
+                return True
+            else:
+                print(f"❌ Sanitization failed: {result.get('error', 'Unknown error')}")
+                return False
+    
+    except Exception as e:
+        print(f"❌ Sanitization error: {e}")
+        import traceback
+        traceback.print_exc()
+        return False
+
+
+# =================================================================================
 # MAIN ENTRY POINT
 # =================================================================================
 
@@ -613,12 +666,18 @@ def main():
     parser.add_argument("--all", action="store_true", help="Generate all materials")
     parser.add_argument("--test", action="store_true", help="Run test mode")
     parser.add_argument("--deploy", action="store_true", help="Deploy generated content to Next.js production site")
+    parser.add_argument("--sanitize", action="store_true", help="Sanitize all existing frontmatter files (post-processor)")
+    parser.add_argument("--sanitize-file", help="Sanitize a specific frontmatter file")
     
     args = parser.parse_args()
     
     # Handle deployment to Next.js production site
     if args.deploy:
         return deploy_to_production()
+    
+    # Handle frontmatter sanitization (post-processor)
+    if args.sanitize or args.sanitize_file:
+        return run_frontmatter_sanitization(args.sanitize_file)
     
     if args.test:
         print("🧪 Test mode - basic functionality check")
@@ -684,7 +743,7 @@ def main():
                 
                 # Load frontmatter data for components that need it
                 frontmatter_data = None
-                if component_type in ['table', 'author', 'metatags', 'jsonld', 'bullets', 'caption', 'tags', 'settings']:
+                if component_type in ['table', 'author', 'metatags', 'jsonld', 'caption', 'tags', 'settings']:
                     # Try to load existing frontmatter
                     frontmatter_path = f"content/components/frontmatter/{args.material.lower().replace(' ', '-').replace('_', '-')}-laser-cleaning.md"
                     if os.path.exists(frontmatter_path):
@@ -694,7 +753,15 @@ def main():
                         yaml_start = content.find('---') + 3
                         yaml_end = content.find('---', yaml_start)
                         if yaml_start > 2 and yaml_end > yaml_start:
+                            # Traditional frontmatter with closing ---
                             yaml_content = content[yaml_start:yaml_end].strip()
+                        elif yaml_start > 2:
+                            # Pure YAML file without closing --- (our current format)
+                            yaml_content = content[yaml_start:].strip()
+                        else:
+                            yaml_content = None
+                        
+                        if yaml_content:
                             frontmatter_data = yaml.safe_load(yaml_content)
                     
                     if not frontmatter_data and component_type != 'frontmatter':
@@ -798,7 +865,7 @@ def main():
                     try:
                         # Load frontmatter data for components that need it
                         frontmatter_data = None
-                        if component_type in ['table', 'author', 'metatags', 'jsonld', 'bullets', 'caption', 'tags', 'settings']:
+                        if component_type in ['table', 'author', 'metatags', 'jsonld', 'caption', 'tags', 'settings']:
                             # Try to load existing frontmatter
                             frontmatter_path = f"content/components/frontmatter/{material_name.lower().replace(' ', '-').replace('_', '-')}-laser-cleaning.md"
                             if os.path.exists(frontmatter_path):
@@ -808,7 +875,15 @@ def main():
                                 yaml_start = content.find('---') + 3
                                 yaml_end = content.find('---', yaml_start)
                                 if yaml_start > 2 and yaml_end > yaml_start:
+                                    # Traditional frontmatter with closing ---
                                     yaml_content = content[yaml_start:yaml_end].strip()
+                                elif yaml_start > 2:
+                                    # Pure YAML file without closing --- (our current format)
+                                    yaml_content = content[yaml_start:].strip()
+                                else:
+                                    yaml_content = None
+                                
+                                if yaml_content:
                                     frontmatter_data = yaml.safe_load(yaml_content)
                             
                             if not frontmatter_data and component_type != 'frontmatter':
