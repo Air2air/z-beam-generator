@@ -76,17 +76,14 @@ author_object:
   country: Indonesia
   expertise: Ultrafast Laser Physics and Material Interactions
   image: /images/author/ikmanda-roswati.jpg
+images:
+  hero:
+    alt: Concrete surface undergoing laser cleaning showing precise contamination removal
+    url: /images/concrete-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Concrete surface after laser cleaning showing detailed surface structure
+    url: /images/concrete-laser-cleaning-micro.jpg
 complexity: low
 difficulty_score: 2
 author_id: 3
 ---
-
-
-# Version Information
-# Generated: 2025-09-23T23:19:48.148423
-# Material: Concrete
-# Component: frontmatter
-# Generator: Z-Beam v2.1.0
-# Author: AI Assistant
-# Platform: Darwin (3.12.4)
-# File: content/components/frontmatter/concrete-laser-cleaning.md

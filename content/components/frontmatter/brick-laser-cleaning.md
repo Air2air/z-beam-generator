@@ -76,17 +76,14 @@ author_object:
   country: Italy
   expertise: Laser-Based Additive Manufacturing
   image: /images/author/alessandro-moretti.jpg
+images:
+  hero:
+    alt: Brick surface undergoing laser cleaning showing precise contamination removal
+    url: /images/brick-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Brick surface after laser cleaning showing detailed surface structure
+    url: /images/brick-laser-cleaning-micro.jpg
 complexity: low
 difficulty_score: 2
 author_id: 2
 ---
-
-
-# Version Information
-# Generated: 2025-09-23T23:19:48.104789
-# Material: Brick
-# Component: frontmatter
-# Generator: Z-Beam v2.1.0
-# Author: AI Assistant
-# Platform: Darwin (3.12.4)
-# File: content/components/frontmatter/brick-laser-cleaning.md

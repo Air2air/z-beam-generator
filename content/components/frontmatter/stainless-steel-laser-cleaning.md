@@ -94,17 +94,14 @@ author_object:
   country: Italy
   expertise: Laser-Based Additive Manufacturing
   image: /images/author/alessandro-moretti.jpg
+images:
+  hero:
+    alt: Stainless Steel surface undergoing laser cleaning showing precise contamination removal
+    url: /images/stainless-steel-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Stainless Steel surface after laser cleaning showing detailed surface structure
+    url: /images/stainless-steel-laser-cleaning-micro.jpg
 complexity: high
 difficulty_score: 4
 author_id: 2
 ---
-
-
-# Version Information
-# Generated: 2025-09-23T23:19:48.762446
-# Material: Stainless Steel
-# Component: frontmatter
-# Generator: Z-Beam v2.1.0
-# Author: AI Assistant
-# Platform: Darwin (3.12.4)
-# File: content/components/frontmatter/stainless-steel-laser-cleaning.md

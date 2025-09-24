@@ -55,6 +55,16 @@ class StrictFieldNormalizer:
             'machineSettings': lambda: {},  # Empty dict as N/A equivalent
             'applications': lambda: [],  # Empty list as N/A equivalent
             'compatibility': lambda: {},  # Empty dict as N/A equivalent
+            'images': lambda: {  # Images with N/A structure
+                'hero': {
+                    'alt': f'{material_name} surface laser cleaning (N/A)',
+                    'url': '/images/placeholder-hero.jpg'
+                },
+                'micro': {
+                    'alt': f'Microscopic view of {material_name} surface (N/A)',
+                    'url': '/images/placeholder-micro.jpg'
+                }
+            },
             'author_object': lambda: {  # Minimal structure with N/A values
                 'id': 0,
                 'name': 'N/A',
@@ -118,6 +128,8 @@ class StrictFieldNormalizer:
             return self._normalize_list_field(value)
         elif field_name == 'compatibility':
             return self._normalize_compatibility(value)
+        elif field_name == 'images':
+            return self._normalize_images(value, material_name)
         else:
             # For simple fields, just return as-is (with basic cleanup)
             if isinstance(value, str):
@@ -235,6 +247,41 @@ class StrictFieldNormalizer:
                 normalized_compat[key] = []
         
         return normalized_compat
+    
+    def _normalize_images(self, value: Any, material_name: str) -> Dict:
+        """Normalize images object"""
+        if not isinstance(value, dict):
+            # Return N/A structure
+            return {
+                'hero': {
+                    'alt': f'{material_name} surface laser cleaning (N/A)',
+                    'url': '/images/placeholder-hero.jpg'
+                },
+                'micro': {
+                    'alt': f'Microscopic view of {material_name} surface (N/A)',
+                    'url': '/images/placeholder-micro.jpg'
+                }
+            }
+        
+        normalized_images = {}
+        
+        # Ensure both hero and micro exist with proper structure
+        for image_type in ['hero', 'micro']:
+            if image_type in value and isinstance(value[image_type], dict):
+                image_data = value[image_type]
+                normalized_images[image_type] = {
+                    'alt': image_data.get('alt', f'{material_name} {image_type} image (N/A)'),
+                    'url': image_data.get('url', f'/images/placeholder-{image_type}.jpg')
+                }
+            else:
+                # Create fallback structure
+                alt_text = f'{material_name} surface laser cleaning' if image_type == 'hero' else f'Microscopic view of {material_name} surface'
+                normalized_images[image_type] = {
+                    'alt': f'{alt_text} (N/A)',
+                    'url': f'/images/placeholder-{image_type}.jpg'
+                }
+        
+        return normalized_images
     
     def _ensure_unit_separation(self, frontmatter: Dict, section_name: str):
         """Ensure unit separation in properties/machineSettings"""

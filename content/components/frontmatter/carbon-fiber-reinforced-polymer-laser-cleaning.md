@@ -84,17 +84,14 @@ author_object:
   country: Taiwan
   expertise: Laser Materials Processing
   image: /images/author/yi-chun-lin.jpg
+images:
+  hero:
+    alt: Carbon Fiber Reinforced Polymer surface undergoing laser cleaning showing precise contamination removal
+    url: /images/carbon-fiber-reinforced-polymer-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Carbon Fiber Reinforced Polymer surface after laser cleaning showing detailed surface structure
+    url: /images/carbon-fiber-reinforced-polymer-laser-cleaning-micro.jpg
 complexity: high
 difficulty_score: 5
 author_id: 1
 ---
-
-
-# Version Information
-# Generated: 2025-09-23T23:19:47.737482
-# Material: Carbon Fiber Reinforced Polymer
-# Component: frontmatter
-# Generator: Z-Beam v2.1.0
-# Author: AI Assistant
-# Platform: Darwin (3.12.4)
-# File: content/components/frontmatter/carbon-fiber-reinforced-polymer-laser-cleaning.md

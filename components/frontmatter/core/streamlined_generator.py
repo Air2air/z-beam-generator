@@ -41,6 +41,10 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
     def _load_configurations(self):
         """Load all required configurations with fail-fast behavior"""
         try:
+            # Initialize API client
+            from api.client_factory import APIClientFactory
+            self.api_client = APIClientFactory.create_client()
+            
             # Load materials.yaml data
             materials_yaml_path = os.path.join(os.path.dirname(__file__), "../../../data/materials.yaml")
             with open(materials_yaml_path, "r") as f:
@@ -219,6 +223,9 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
         
         # 7. Author object (required by schema)
         frontmatter.update(self._generate_author_object(material_data))
+        
+        # 8. Images section (hero and micro images)
+        frontmatter['images'] = self._generate_images_section(material_name)
             
         return frontmatter
 
@@ -400,6 +407,11 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             
             # Parse and structure the response
             frontmatter = self._parse_api_response(response, material_name)
+            
+            # Ensure images section is included
+            if 'images' not in frontmatter:
+                frontmatter['images'] = self._generate_images_section(material_name)
+            
             return frontmatter
             
         except Exception as e:
@@ -425,6 +437,36 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
         except Exception as e:
             logger.error(f"Field ordering failed: {e}")
             return frontmatter  # Return unordered if ordering fails
+
+    def _generate_images_section(self, material_name: str) -> Dict:
+        """
+        Generate images section with hero and micro images.
+        
+        Creates proper alt text and URL patterns following schema requirements.
+        
+        Args:
+            material_name: Name of the material
+            
+        Returns:
+            Dict with 'hero' and 'micro' image objects containing 'alt' and 'url'
+        """
+        # Create URL-safe material name
+        url_safe_name = material_name.lower().replace(' ', '-')
+        
+        # Generate descriptive alt text
+        hero_alt = f"{material_name} surface undergoing laser cleaning showing precise contamination removal"
+        micro_alt = f"Microscopic view of {material_name} surface after laser cleaning showing detailed surface structure"
+        
+        return {
+            'hero': {
+                'alt': hero_alt,
+                'url': f'/images/{url_safe_name}-laser-cleaning-hero.jpg'
+            },
+            'micro': {
+                'alt': micro_alt,
+                'url': f'/images/{url_safe_name}-laser-cleaning-micro.jpg'
+            }
+        }
 
     def _validate_frontmatter(self, frontmatter: Dict, material_name: str):
         """Validate generated frontmatter"""

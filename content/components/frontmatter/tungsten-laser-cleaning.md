@@ -94,17 +94,14 @@ author_object:
   country: Italy
   expertise: Laser-Based Additive Manufacturing
   image: /images/author/alessandro-moretti.jpg
+images:
+  hero:
+    alt: Tungsten surface undergoing laser cleaning showing precise contamination removal
+    url: /images/tungsten-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Tungsten surface after laser cleaning showing detailed surface structure
+    url: /images/tungsten-laser-cleaning-micro.jpg
 complexity: medium
 difficulty_score: 3
 author_id: 2
 ---
-
-
-# Version Information
-# Generated: 2025-09-23T23:19:48.858240
-# Material: Tungsten
-# Component: frontmatter
-# Generator: Z-Beam v2.1.0
-# Author: AI Assistant
-# Platform: Darwin (3.12.4)
-# File: content/components/frontmatter/tungsten-laser-cleaning.md

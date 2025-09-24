@@ -51,6 +51,40 @@ Generates machine settings section with parameter ranges.
 #### `_generate_author_object(material_data: dict) -> dict`
 Resolves author information from author_id to complete author object.
 
+#### `_generate_images_section(material_name: str) -> dict`
+Generates images section with hero and micro images for the material.
+
+**Parameters:**
+- `material_name` (str): Name of the material
+
+**Returns:**
+- `dict`: Images section with 'hero' and 'micro' objects containing 'alt' and 'url'
+
+**Example:**
+```python
+images = generator._generate_images_section("Aluminum")
+# Returns:
+# {
+#   'hero': {
+#     'alt': 'Aluminum surface undergoing laser cleaning showing precise contamination removal',
+#     'url': '/images/aluminum-laser-cleaning-hero.jpg'
+#   },
+#   'micro': {
+#     'alt': 'Microscopic view of Aluminum surface after laser cleaning showing detailed surface structure', 
+#     'url': '/images/aluminum-laser-cleaning-micro.jpg'
+#   }
+# }
+```
+
+**Image URL Patterns:**
+- Hero images: `/images/{material-name}-laser-cleaning-hero.jpg`
+- Micro images: `/images/{material-name}-laser-cleaning-micro.jpg`
+- Material names are converted to lowercase and spaces become hyphens
+
+**Alt Text Patterns:**
+- Hero: `"{Material Name} surface undergoing laser cleaning showing precise contamination removal"`
+- Micro: `"Microscopic view of {Material Name} surface after laser cleaning showing detailed surface structure"`
+
 #### `_format_as_yaml(frontmatter_data: dict) -> str`
 Formats frontmatter data as proper YAML with frontmatter delimiters.
 
@@ -94,7 +128,66 @@ Applies complete optimization to frontmatter data.
 #### `remove_redundant_sections(frontmatter: dict) -> dict`
 Removes redundant or duplicate sections from frontmatter.
 
-#### `_extract_numeric_and_unit(value_str: str) -> tuple[float, str]`
+#### `**Returns:**
+- `tuple[float, str]`: Numeric value and unit string
+
+---
+
+## Image Generation
+
+The frontmatter generator automatically creates image sections for all materials following consistent patterns.
+
+### Image Structure
+Each material gets two images with standardized naming and alt text:
+
+```yaml
+images:
+  hero:
+    alt: "{Material} surface undergoing laser cleaning showing precise contamination removal"
+    url: "/images/{material-name}-laser-cleaning-hero.jpg"
+  micro:
+    alt: "Microscopic view of {Material} surface after laser cleaning showing detailed surface structure"
+    url: "/images/{material-name}-laser-cleaning-micro.jpg"
+```
+
+### URL Naming Conventions
+- **Base Pattern**: `/images/{material-name}-laser-cleaning-{type}.jpg`
+- **Material Name Processing**:
+  - Convert to lowercase
+  - Replace spaces with hyphens
+  - Preserve alphanumeric characters and hyphens
+  - Remove special characters
+
+**Examples:**
+- "Aluminum" → `/images/aluminum-laser-cleaning-hero.jpg`
+- "Stainless Steel" → `/images/stainless-steel-laser-cleaning-hero.jpg`
+- "Ti-6Al-4V" → `/images/ti-6al-4v-laser-cleaning-hero.jpg`
+
+### Alt Text Templates
+**Hero Image Alt Text:**
+- Template: `"{Material Name} surface undergoing laser cleaning showing precise contamination removal"`
+- Example: `"Titanium surface undergoing laser cleaning showing precise contamination removal"`
+
+**Micro Image Alt Text:**
+- Template: `"Microscopic view of {Material Name} surface after laser cleaning showing detailed surface structure"`
+- Example: `"Microscopic view of Titanium surface after laser cleaning showing detailed surface structure"`
+
+### N/A Fallback Handling
+When image generation fails, the N/A field normalizer provides fallback structure:
+
+```yaml
+images:
+  hero:
+    alt: "{Material Name} surface laser cleaning (N/A)"
+    url: "/images/placeholder-hero.jpg"
+  micro:
+    alt: "Microscopic view of {Material Name} surface (N/A)"
+    url: "/images/placeholder-micro.jpg"
+```
+
+---
+
+## ValidationHelpers`
 Extracts numeric value and unit from a string.
 
 **Parameters:**

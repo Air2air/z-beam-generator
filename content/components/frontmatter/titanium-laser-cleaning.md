@@ -93,17 +93,14 @@ author_object:
   country: United States (California)
   expertise: Optical Materials for Laser Systems
   image: /images/author/todd-dunning.jpg
+images:
+  hero:
+    alt: Titanium surface undergoing laser cleaning showing precise contamination removal
+    url: /images/titanium-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Titanium surface after laser cleaning showing detailed surface structure
+    url: /images/titanium-laser-cleaning-micro.jpg
 complexity: high
 difficulty_score: 5
 author_id: 4
 ---
-
-
-# Version Information
-# Generated: 2025-09-23T23:19:48.836469
-# Material: Titanium
-# Component: frontmatter
-# Generator: Z-Beam v2.1.0
-# Author: AI Assistant
-# Platform: Darwin (3.12.4)
-# File: content/components/frontmatter/titanium-laser-cleaning.md

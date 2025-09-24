@@ -78,17 +78,14 @@ author_object:
   country: Taiwan
   expertise: Laser Materials Processing
   image: /images/author/yi-chun-lin.jpg
+images:
+  hero:
+    alt: Pine surface undergoing laser cleaning showing precise contamination removal
+    url: /images/pine-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Pine surface after laser cleaning showing detailed surface structure
+    url: /images/pine-laser-cleaning-micro.jpg
 complexity: low
 difficulty_score: 2
 author_id: 1
 ---
-
-
-# Version Information
-# Generated: 2025-09-23T23:19:49.628777
-# Material: Pine
-# Component: frontmatter
-# Generator: Z-Beam v2.1.0
-# Author: AI Assistant
-# Platform: Darwin (3.12.4)
-# File: content/components/frontmatter/pine-laser-cleaning.md

@@ -84,17 +84,14 @@ author_object:
   country: United States (California)
   expertise: Optical Materials for Laser Systems
   image: /images/author/todd-dunning.jpg
+images:
+  hero:
+    alt: Metal Matrix Composites MMCs surface undergoing laser cleaning showing precise contamination removal
+    url: /images/metal-matrix-composites-mmcs-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Metal Matrix Composites MMCs surface after laser cleaning showing detailed surface structure
+    url: /images/metal-matrix-composites-mmcs-laser-cleaning-micro.jpg
 complexity: high
 difficulty_score: 5
 author_id: 4
 ---
-
-
-# Version Information
-# Generated: 2025-09-23T23:19:47.899235
-# Material: Metal Matrix Composites MMCs
-# Component: frontmatter
-# Generator: Z-Beam v2.1.0
-# Author: AI Assistant
-# Platform: Darwin (3.12.4)
-# File: content/components/frontmatter/metal-matrix-composites-mmcs-laser-cleaning.md

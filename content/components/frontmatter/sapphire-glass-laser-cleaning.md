@@ -83,17 +83,14 @@ author_object:
   country: Taiwan
   expertise: Laser Materials Processing
   image: /images/author/yi-chun-lin.jpg
+images:
+  hero:
+    alt: Sapphire Glass surface undergoing laser cleaning showing precise contamination removal
+    url: /images/sapphire-glass-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Sapphire Glass surface after laser cleaning showing detailed surface structure
+    url: /images/sapphire-glass-laser-cleaning-micro.jpg
 complexity: high
 difficulty_score: 4
 author_id: 1
 ---
-
-
-# Version Information
-# Generated: 2025-09-23T23:19:49.878139
-# Material: Sapphire Glass
-# Component: frontmatter
-# Generator: Z-Beam v2.1.0
-# Author: AI Assistant
-# Platform: Darwin (3.12.4)
-# File: content/components/frontmatter/sapphire-glass-laser-cleaning.md

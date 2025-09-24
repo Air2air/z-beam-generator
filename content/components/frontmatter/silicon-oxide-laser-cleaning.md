@@ -83,17 +83,14 @@ author_object:
   country: United States (California)
   expertise: Optical Materials for Laser Systems
   image: /images/author/todd-dunning.jpg
+images:
+  hero:
+    alt: Silicon Oxide surface undergoing laser cleaning showing precise contamination removal
+    url: /images/silicon-oxide-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Silicon Oxide surface after laser cleaning showing detailed surface structure
+    url: /images/silicon-oxide-laser-cleaning-micro.jpg
 complexity: high
 difficulty_score: 4
 author_id: 4
 ---
-
-
-# Version Information
-# Generated: 2025-09-23T23:19:49.861191
-# Material: Silicon Oxide
-# Component: frontmatter
-# Generator: Z-Beam v2.1.0
-# Author: AI Assistant
-# Platform: Darwin (3.12.4)
-# File: content/components/frontmatter/silicon-oxide-laser-cleaning.md

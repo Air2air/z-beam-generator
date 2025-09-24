@@ -84,17 +84,14 @@ author_object:
   country: United States (California)
   expertise: Optical Materials for Laser Systems
   image: /images/author/todd-dunning.jpg
+images:
+  hero:
+    alt: Calcite surface undergoing laser cleaning showing precise contamination removal
+    url: /images/calcite-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Calcite surface after laser cleaning showing detailed surface structure
+    url: /images/calcite-laser-cleaning-micro.jpg
 complexity: medium
 difficulty_score: 3
 author_id: 4
 ---
-
-
-# Version Information
-# Generated: 2025-09-23T23:19:49.110402
-# Material: Calcite
-# Component: frontmatter
-# Generator: Z-Beam v2.1.0
-# Author: AI Assistant
-# Platform: Darwin (3.12.4)
-# File: content/components/frontmatter/calcite-laser-cleaning.md

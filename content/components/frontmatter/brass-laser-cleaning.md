@@ -93,17 +93,14 @@ author_object:
   country: United States (California)
   expertise: Optical Materials for Laser Systems
   image: /images/author/todd-dunning.jpg
+images:
+  hero:
+    alt: Brass surface undergoing laser cleaning showing precise contamination removal
+    url: /images/brass-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Brass surface after laser cleaning showing detailed surface structure
+    url: /images/brass-laser-cleaning-micro.jpg
 complexity: medium
 difficulty_score: 3
 author_id: 4
 ---
-
-
-# Version Information
-# Generated: 2025-09-23T23:19:48.291600
-# Material: Brass
-# Component: frontmatter
-# Generator: Z-Beam v2.1.0
-# Author: AI Assistant
-# Platform: Darwin (3.12.4)
-# File: content/components/frontmatter/brass-laser-cleaning.md

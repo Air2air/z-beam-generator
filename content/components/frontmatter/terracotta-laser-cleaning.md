@@ -76,17 +76,14 @@ author_object:
   country: Taiwan
   expertise: Laser Materials Processing
   image: /images/author/yi-chun-lin.jpg
+images:
+  hero:
+    alt: Terracotta surface undergoing laser cleaning showing precise contamination removal
+    url: /images/terracotta-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Terracotta surface after laser cleaning showing detailed surface structure
+    url: /images/terracotta-laser-cleaning-micro.jpg
 complexity: medium
 difficulty_score: 3
 author_id: 1
 ---
-
-
-# Version Information
-# Generated: 2025-09-23T23:19:48.227961
-# Material: Terracotta
-# Component: frontmatter
-# Generator: Z-Beam v2.1.0
-# Author: AI Assistant
-# Platform: Darwin (3.12.4)
-# File: content/components/frontmatter/terracotta-laser-cleaning.md

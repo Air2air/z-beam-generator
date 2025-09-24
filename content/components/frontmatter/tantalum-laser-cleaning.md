@@ -84,17 +84,14 @@ author_object:
   country: Italy
   expertise: Laser-Based Additive Manufacturing
   image: /images/author/alessandro-moretti.jpg
+images:
+  hero:
+    alt: Tantalum surface undergoing laser cleaning showing precise contamination removal
+    url: /images/tantalum-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Tantalum surface after laser cleaning showing detailed surface structure
+    url: /images/tantalum-laser-cleaning-micro.jpg
 complexity: medium
 difficulty_score: 3
 author_id: 2
 ---
-
-
-# Version Information
-# Generated: 2025-09-23T23:19:48.803098
-# Material: Tantalum
-# Component: frontmatter
-# Generator: Z-Beam v2.1.0
-# Author: AI Assistant
-# Platform: Darwin (3.12.4)
-# File: content/components/frontmatter/tantalum-laser-cleaning.md

@@ -83,17 +83,14 @@ author_object:
   country: Italy
   expertise: Laser-Based Additive Manufacturing
   image: /images/author/alessandro-moretti.jpg
+images:
+  hero:
+    alt: Gorilla Glass surface undergoing laser cleaning showing precise contamination removal
+    url: /images/gorilla-glass-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Gorilla Glass surface after laser cleaning showing detailed surface structure
+    url: /images/gorilla-glass-laser-cleaning-micro.jpg
 complexity: high
 difficulty_score: 4
 author_id: 2
 ---
-
-
-# Version Information
-# Generated: 2025-09-23T23:19:49.899262
-# Material: Gorilla Glass
-# Component: frontmatter
-# Generator: Z-Beam v2.1.0
-# Author: AI Assistant
-# Platform: Darwin (3.12.4)
-# File: content/components/frontmatter/gorilla-glass-laser-cleaning.md

@@ -80,17 +80,14 @@ author_object:
   country: Indonesia
   expertise: Ultrafast Laser Physics and Material Interactions
   image: /images/author/ikmanda-roswati.jpg
+images:
+  hero:
+    alt: Schist surface undergoing laser cleaning showing precise contamination removal
+    url: /images/schist-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Schist surface after laser cleaning showing detailed surface structure
+    url: /images/schist-laser-cleaning-micro.jpg
 complexity: medium
 difficulty_score: 3
 author_id: 3
 ---
-
-
-# Version Information
-# Generated: 2025-09-23T23:19:49.244502
-# Material: Schist
-# Component: frontmatter
-# Generator: Z-Beam v2.1.0
-# Author: AI Assistant
-# Platform: Darwin (3.12.4)
-# File: content/components/frontmatter/schist-laser-cleaning.md

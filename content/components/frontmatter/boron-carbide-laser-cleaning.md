@@ -83,17 +83,14 @@ author_object:
   country: Taiwan
   expertise: Laser Materials Processing
   image: /images/author/yi-chun-lin.jpg
+images:
+  hero:
+    alt: Boron Carbide surface undergoing laser cleaning showing precise contamination removal
+    url: /images/boron-carbide-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Boron Carbide surface after laser cleaning showing detailed surface structure
+    url: /images/boron-carbide-laser-cleaning-micro.jpg
 complexity: high
 difficulty_score: 4
 author_id: 1
 ---
-
-
-# Version Information
-# Generated: 2025-09-23T23:19:49.791944
-# Material: Boron Carbide
-# Component: frontmatter
-# Generator: Z-Beam v2.1.0
-# Author: AI Assistant
-# Platform: Darwin (3.12.4)
-# File: content/components/frontmatter/boron-carbide-laser-cleaning.md

@@ -84,17 +84,14 @@ author_object:
   country: United States (California)
   expertise: Optical Materials for Laser Systems
   image: /images/author/todd-dunning.jpg
+images:
+  hero:
+    alt: Rubber surface undergoing laser cleaning showing precise contamination removal
+    url: /images/rubber-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Rubber surface after laser cleaning showing detailed surface structure
+    url: /images/rubber-laser-cleaning-micro.jpg
 complexity: medium
 difficulty_score: 3
 author_id: 4
 ---
-
-
-# Version Information
-# Generated: 2025-09-23T23:19:47.821733
-# Material: Rubber
-# Component: frontmatter
-# Generator: Z-Beam v2.1.0
-# Author: AI Assistant
-# Platform: Darwin (3.12.4)
-# File: content/components/frontmatter/rubber-laser-cleaning.md

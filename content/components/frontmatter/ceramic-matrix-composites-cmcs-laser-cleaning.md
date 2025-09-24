@@ -84,17 +84,14 @@ author_object:
   country: United States (California)
   expertise: Optical Materials for Laser Systems
   image: /images/author/todd-dunning.jpg
+images:
+  hero:
+    alt: Ceramic Matrix Composites CMCs surface undergoing laser cleaning showing precise contamination removal
+    url: /images/ceramic-matrix-composites-cmcs-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Ceramic Matrix Composites CMCs surface after laser cleaning showing detailed surface structure
+    url: /images/ceramic-matrix-composites-cmcs-laser-cleaning-micro.jpg
 complexity: high
 difficulty_score: 5
 author_id: 4
 ---
-
-
-# Version Information
-# Generated: 2025-09-23T23:19:47.916043
-# Material: Ceramic Matrix Composites CMCs
-# Component: frontmatter
-# Generator: Z-Beam v2.1.0
-# Author: AI Assistant
-# Platform: Darwin (3.12.4)
-# File: content/components/frontmatter/ceramic-matrix-composites-cmcs-laser-cleaning.md

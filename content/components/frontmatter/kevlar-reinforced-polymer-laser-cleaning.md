@@ -84,17 +84,14 @@ author_object:
   country: Indonesia
   expertise: Ultrafast Laser Physics and Material Interactions
   image: /images/author/ikmanda-roswati.jpg
+images:
+  hero:
+    alt: Kevlar-Reinforced Polymer surface undergoing laser cleaning showing precise contamination removal
+    url: /images/kevlar-reinforced-polymer-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Kevlar-Reinforced Polymer surface after laser cleaning showing detailed surface structure
+    url: /images/kevlar-reinforced-polymer-laser-cleaning-micro.jpg
 complexity: medium
 difficulty_score: 3
 author_id: 3
 ---
-
-
-# Version Information
-# Generated: 2025-09-23T23:19:47.782175
-# Material: Kevlar-Reinforced Polymer
-# Component: frontmatter
-# Generator: Z-Beam v2.1.0
-# Author: AI Assistant
-# Platform: Darwin (3.12.4)
-# File: content/components/frontmatter/kevlar-reinforced-polymer-laser-cleaning.md

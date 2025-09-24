@@ -32,6 +32,7 @@ components/frontmatter/
 - **Key Features**:
   - Materials.yaml data processing
   - Author object resolution via `get_author_by_id()`
+  - Image section generation with hero and micro images
   - YAML formatting with proper delimiters
   - Field ordering integration
   - Property enhancement integration
@@ -65,6 +66,8 @@ Material Name Input
 Materials.yaml Loading
        ↓
 Author Resolution (get_author_by_id)
+       ↓
+Image Section Generation
        ↓
 Template Variable Creation
        ↓

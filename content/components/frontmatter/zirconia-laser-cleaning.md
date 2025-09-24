@@ -92,17 +92,14 @@ author_object:
   country: United States (California)
   expertise: Optical Materials for Laser Systems
   image: /images/author/todd-dunning.jpg
+images:
+  hero:
+    alt: Zirconia surface undergoing laser cleaning showing precise contamination removal
+    url: /images/zirconia-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Zirconia surface after laser cleaning showing detailed surface structure
+    url: /images/zirconia-laser-cleaning-micro.jpg
 complexity: high
 difficulty_score: 4
 author_id: 4
 ---
-
-
-# Version Information
-# Generated: 2025-09-23T23:19:47.722038
-# Material: Zirconia
-# Component: frontmatter
-# Generator: Z-Beam v2.1.0
-# Author: AI Assistant
-# Platform: Darwin (3.12.4)
-# File: content/components/frontmatter/zirconia-laser-cleaning.md

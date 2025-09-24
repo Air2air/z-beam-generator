@@ -87,17 +87,14 @@ author_object:
   country: United States (California)
   expertise: Optical Materials for Laser Systems
   image: /images/author/todd-dunning.jpg
+images:
+  hero:
+    alt: Copper surface undergoing laser cleaning showing precise contamination removal
+    url: /images/copper-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Copper surface after laser cleaning showing detailed surface structure
+    url: /images/copper-laser-cleaning-micro.jpg
 complexity: medium
 difficulty_score: 3
 author_id: 4
 ---
-
-
-# Version Information
-# Generated: 2025-09-23T23:19:48.367244
-# Material: Copper
-# Component: frontmatter
-# Generator: Z-Beam v2.1.0
-# Author: AI Assistant
-# Platform: Darwin (3.12.4)
-# File: content/components/frontmatter/copper-laser-cleaning.md

@@ -87,17 +87,14 @@ author_object:
   country: United States (California)
   expertise: Optical Materials for Laser Systems
   image: /images/author/todd-dunning.jpg
+images:
+  hero:
+    alt: Lead surface undergoing laser cleaning showing precise contamination removal
+    url: /images/lead-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Lead surface after laser cleaning showing detailed surface structure
+    url: /images/lead-laser-cleaning-micro.jpg
 complexity: medium
 difficulty_score: 3
 author_id: 4
 ---
-
-
-# Version Information
-# Generated: 2025-09-23T23:19:48.551492
-# Material: Lead
-# Component: frontmatter
-# Generator: Z-Beam v2.1.0
-# Author: AI Assistant
-# Platform: Darwin (3.12.4)
-# File: content/components/frontmatter/lead-laser-cleaning.md

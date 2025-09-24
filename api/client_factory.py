@@ -128,7 +128,7 @@ class APIClientFactory:
     def _create_mock_client(provider: str, **kwargs) -> Any:
         """Create a mock API client"""
         try:
-            from tests.fixtures.mocks.mock_api_client import MockAPIClient
+            from tests.fixtures.mocks.simple_mock_client import MockAPIClient
             return MockAPIClient(provider, **kwargs)
         except ImportError:
             # Fallback if mock client not available

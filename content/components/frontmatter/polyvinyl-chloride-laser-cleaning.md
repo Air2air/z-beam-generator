@@ -80,17 +80,14 @@ author_object:
   country: United States (California)
   expertise: Optical Materials for Laser Systems
   image: /images/author/todd-dunning.jpg
+images:
+  hero:
+    alt: Polyvinyl Chloride surface undergoing laser cleaning showing precise contamination removal
+    url: /images/polyvinyl-chloride-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Polyvinyl Chloride surface after laser cleaning showing detailed surface structure
+    url: /images/polyvinyl-chloride-laser-cleaning-micro.jpg
 complexity: medium
 difficulty_score: 3
 author_id: 4
 ---
-
-
-# Version Information
-# Generated: 2025-09-23T23:19:50.116051
-# Material: Polyvinyl Chloride
-# Component: frontmatter
-# Generator: Z-Beam v2.1.0
-# Author: AI Assistant
-# Platform: Darwin (3.12.4)
-# File: content/components/frontmatter/polyvinyl-chloride-laser-cleaning.md

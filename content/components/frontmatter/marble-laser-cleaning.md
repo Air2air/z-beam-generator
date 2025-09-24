@@ -88,17 +88,14 @@ author_object:
   country: Indonesia
   expertise: Ultrafast Laser Physics and Material Interactions
   image: /images/author/ikmanda-roswati.jpg
+images:
+  hero:
+    alt: Marble surface undergoing laser cleaning showing precise contamination removal
+    url: /images/marble-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Marble surface after laser cleaning showing detailed surface structure
+    url: /images/marble-laser-cleaning-micro.jpg
 complexity: high
 difficulty_score: 4
 author_id: 3
 ---
-
-
-# Version Information
-# Generated: 2025-09-23T23:19:49.179869
-# Material: Marble
-# Component: frontmatter
-# Generator: Z-Beam v2.1.0
-# Author: AI Assistant
-# Platform: Darwin (3.12.4)
-# File: content/components/frontmatter/marble-laser-cleaning.md

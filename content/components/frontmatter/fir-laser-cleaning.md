@@ -68,17 +68,14 @@ author_object:
   country: United States (California)
   expertise: Optical Materials for Laser Systems
   image: /images/author/todd-dunning.jpg
+images:
+  hero:
+    alt: Fir surface undergoing laser cleaning showing precise contamination removal
+    url: /images/fir-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Fir surface after laser cleaning showing detailed surface structure
+    url: /images/fir-laser-cleaning-micro.jpg
 complexity: medium
 difficulty_score: 3
 author_id: 4
 ---
-
-
-# Version Information
-# Generated: 2025-09-23T23:19:49.503459
-# Material: Fir
-# Component: frontmatter
-# Generator: Z-Beam v2.1.0
-# Author: AI Assistant
-# Platform: Darwin (3.12.4)
-# File: content/components/frontmatter/fir-laser-cleaning.md

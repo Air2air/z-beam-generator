@@ -68,17 +68,14 @@ author_object:
   country: Indonesia
   expertise: Ultrafast Laser Physics and Material Interactions
   image: /images/author/ikmanda-roswati.jpg
+images:
+  hero:
+    alt: MDF surface undergoing laser cleaning showing precise contamination removal
+    url: /images/mdf-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of MDF surface after laser cleaning showing detailed surface structure
+    url: /images/mdf-laser-cleaning-micro.jpg
 complexity: low
 difficulty_score: 2
 author_id: 3
 ---
-
-
-# Version Information
-# Generated: 2025-09-23T23:19:49.586304
-# Material: MDF
-# Component: frontmatter
-# Generator: Z-Beam v2.1.0
-# Author: AI Assistant
-# Platform: Darwin (3.12.4)
-# File: content/components/frontmatter/mdf-laser-cleaning.md
