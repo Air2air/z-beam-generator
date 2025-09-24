@@ -67,6 +67,15 @@ is_valid, errors = frontmatter_manager.validate_material("Steel")
 **→ Expected Structure**: `{min}-{max}` column as per render instructions in YAML files
 **→ Files**: All 109 table files in `content/components/table/` contain min/max data
 
+### "Property ranges missing" / "Min/Max values not available"
+**→ Immediate Response**: ✅ **COMPREHENSIVE RANGES SYSTEM** - 107 scientifically-researched ranges available
+**→ Quick Fix**: All material properties and machine settings now include validated min/max ranges
+**→ Coverage**: 9 material categories × 11 properties + 8 machine settings = 107 total ranges
+**→ Source**: Research-backed values from materials engineering literature
+**→ Integration**: FrontmatterComponentGenerator automatically extracts and applies ranges
+**→ Testing**: `python3 -m pytest components/frontmatter/tests/test_comprehensive_ranges.py -v`
+**→ Documentation**: [Frontmatter README v7.0.0](components/frontmatter/README.md#comprehensive-ranges-system)
+
 ### "YAML output format issues" / "Generator format inconsistency"
 **→ Immediate Response**: ✅ **STANDARDIZED September 16, 2025** - All generators now use consistent YAML
 **→ Quick Fix**: Components `table`, `jsonld`, `metatags` output `.yaml` files
@@ -178,6 +187,15 @@ grep -A5 -B5 "METADATA START\|CONTENT START" content/components/text/testmateria
 - `components/[component]/README.md` - Component-specific issues
 
 ## 🎯 Major System Updates (September 2025)
+
+### Comprehensive Property Ranges System ✅ COMPLETE September 2025
+**Update**: Scientifically-researched min/max ranges for all material properties and machine settings
+**Scope**: 9 material categories × 11 properties + 8 machine settings = 107 total ranges
+**Integration**: FrontmatterComponentGenerator automatically extracts category_ranges and machine_settings_ranges from materials.yaml
+**Scientific Backing**: Materials engineering literature sources (e.g., Lithium 0.53 g/cm³ to Osmium 22.59 g/cm³ for metals)
+**Testing**: Comprehensive test suite with 9 validation methods ensuring data integrity
+**Documentation**: Updated to v7.0.0 with architecture details and range extraction examples
+**Files**: `data/materials.yaml`, `components/frontmatter/README.md`, `test_comprehensive_ranges.py`
 
 ### Component Output Format Standardization ✅ COMPLETE September 16, 2025
 **Update**: All generators now use consistent YAML output formats

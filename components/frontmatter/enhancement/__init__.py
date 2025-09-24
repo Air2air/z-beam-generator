@@ -1,4 +1,4 @@
 """Property enhancement services for frontmatter"""
-from .property_enhancement_service import PropertyEnhancementService
+from .unified_property_enhancement_service import UnifiedPropertyEnhancementService
 
-__all__ = ['PropertyEnhancementService']
+__all__ = ['UnifiedPropertyEnhancementService']

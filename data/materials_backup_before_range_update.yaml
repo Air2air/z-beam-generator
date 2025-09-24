@@ -1,3 +1,7 @@
+# yaml-language-server: $schema=../schemas/materials_yaml.json
+# This file is validated against schemas/materials_yaml.json
+# Schema validation ensures data integrity and type consistency
+
 category_ranges:
   # METAL CATEGORY - Based on comprehensive materials engineering data
   metal:
@@ -35,6 +39,7 @@ category_ranges:
     specificHeat:
       min: 0.128 J/g·K  # Lead
       max: 0.904 J/g·K  # Lithium
+
   # CERAMIC CATEGORY - Based on ceramic engineering handbooks
   ceramic:
     density:
@@ -71,6 +76,7 @@ category_ranges:
     specificHeat:
       min: 0.4 J/g·K  # Silicon carbide
       max: 1.1 J/g·K  # Magnesia
+
   # COMPOSITE CATEGORY - Based on composite materials engineering
   composite:
     density:
@@ -107,6 +113,7 @@ category_ranges:
     specificHeat:
       min: 0.5 J/g·K  # Carbon composites
       max: 2.0 J/g·K  # Polymer matrix
+
   # GLASS CATEGORY - Based on glass science and engineering
   glass:
     density:
@@ -143,114 +150,7 @@ category_ranges:
     specificHeat:
       min: 0.5 J/g·K  # Lead glass
       max: 1.0 J/g·K  # Silica glass
-  # STONE CATEGORY - Based on geology and construction materials
-  stone:
-    density:
-      min: 1.5 g/cm³  # Pumice
-      max: 3.4 g/cm³  # Basalt
-    tensileStrength:
-      min: 2 MPa  # Sedimentary rocks
-      max: 25 MPa  # Quartzite
-    thermalConductivity:
-      min: 0.2 W/m·K  # Porous stone
-      max: 5.0 W/m·K  # Dense granite
-    thermalDestructionPoint:
-      min: 600°C  # Limestone decomposition
-      max: 1700°C  # Refractory stone
-    thermalDestructionType: decomposition
-    hardness:
-      min: 1 Mohs  # Talc
-      max: 7 Mohs  # Quartz
-    youngsModulus:
-      min: 10 GPa  # Soft sandstone
-      max: 100 GPa  # Quartzite
-    laserAbsorption:
-      min: 0.1 cm⁻¹  # Light stone
-      max: 20 cm⁻¹  # Dark basalt
-    laserReflectivity:
-      min: 5%  # Dark stone
-      max: 80%  # Light marble
-    thermalDiffusivity:
-      min: 0.2 mm²/s  # Porous stone
-      max: 2.5 mm²/s  # Dense granite
-    thermalExpansion:
-      min: 3 µm/m·K  # Granite
-      max: 16 µm/m·K  # Marble
-    specificHeat:
-      min: 0.7 J/g·K  # Dense stone
-      max: 1.2 J/g·K  # Porous stone
-  # MASONRY CATEGORY - Based on construction and building materials
-  masonry:
-    density:
-      min: 0.6 g/cm³  # Aerated concrete
-      max: 2.8 g/cm³  # Dense concrete
-    tensileStrength:
-      min: 1 MPa  # Concrete
-      max: 15 MPa  # High-strength brick
-    thermalConductivity:
-      min: 0.08 W/m·K  # Insulating blocks
-      max: 2.5 W/m·K  # Dense concrete
-    thermalDestructionPoint:
-      min: 500°C  # Polymer-modified masonry
-      max: 1200°C  # Refractory brick
-    thermalDestructionType: decomposition
-    hardness:
-      min: 2 Mohs  # Soft brick
-      max: 6 Mohs  # Hard concrete
-    youngsModulus:
-      min: 5 GPa  # Aerated concrete
-      max: 50 GPa  # Dense concrete
-    laserAbsorption:
-      min: 0.5 cm⁻¹  # Light concrete
-      max: 15 cm⁻¹  # Dark brick
-    laserReflectivity:
-      min: 10%  # Dark materials
-      max: 70%  # Light concrete
-    thermalDiffusivity:
-      min: 0.1 mm²/s  # Insulating masonry
-      max: 1.0 mm²/s  # Dense concrete
-    thermalExpansion:
-      min: 6 µm/m·K  # Concrete
-      max: 12 µm/m·K  # Clay brick
-    specificHeat:
-      min: 0.8 J/g·K  # Concrete
-      max: 1.1 J/g·K  # Clay materials
-  # WOOD CATEGORY - Based on wood science and forestry engineering
-  wood:
-    density:
-      min: 0.16 g/cm³  # Balsa
-      max: 1.4 g/cm³  # Lignum vitae
-    tensileStrength:
-      min: 20 MPa  # Softwood
-      max: 200 MPa  # High-strength hardwood
-    thermalConductivity:
-      min: 0.04 W/m·K  # Softwoods
-      max: 0.4 W/m·K  # Dense hardwoods
-    thermalDestructionPoint:
-      min: 200°C  # Pyrolysis start
-      max: 500°C  # Complete combustion
-    thermalDestructionType: decomposition
-    hardness:
-      min: 0.4 kN  # Balsa
-      max: 22.2 kN  # Australian Buloke
-    youngsModulus:
-      min: 5 GPa  # Softwood
-      max: 25 GPa  # Dense hardwood
-    laserAbsorption:
-      min: 1 cm⁻¹  # Light wood
-      max: 50 cm⁻¹  # Dark wood
-    laserReflectivity:
-      min: 10%  # Dark wood
-      max: 60%  # Light wood
-    thermalDiffusivity:
-      min: 0.1 mm²/s  # Dense hardwood
-      max: 0.4 mm²/s  # Softwood
-    thermalExpansion:
-      min: 3 µm/m·K  # Along grain
-      max: 60 µm/m·K  # Across grain
-    specificHeat:
-      min: 1.2 J/g·K  # Dry wood
-      max: 4.2 J/g·K  # Green wood
+
   # SEMICONDUCTOR CATEGORY - Based on semiconductor device physics
   semiconductor:
     density:
@@ -287,8 +187,120 @@ category_ranges:
     specificHeat:
       min: 0.3 J/g·K  # Silicon
       max: 1.6 J/g·K  # Organic semiconductors
-  # PLASTIC CATEGORY - Based on polymer science and plastics engineering
-  plastic:
+
+  # STONE CATEGORY - Based on geology and construction materials
+  stone:
+    density:
+      min: 1.5 g/cm³  # Pumice
+      max: 3.4 g/cm³  # Basalt
+    tensileStrength:
+      min: 2 MPa  # Sedimentary rocks
+      max: 25 MPa  # Quartzite
+    thermalConductivity:
+      min: 0.2 W/m·K  # Porous stone
+      max: 5.0 W/m·K  # Dense granite
+    thermalDestructionPoint:
+      min: 600°C  # Limestone decomposition
+      max: 1700°C  # Refractory stone
+    thermalDestructionType: decomposition
+    hardness:
+      min: 1 Mohs  # Talc
+      max: 7 Mohs  # Quartz
+    youngsModulus:
+      min: 10 GPa  # Soft sandstone
+      max: 100 GPa  # Quartzite
+    laserAbsorption:
+      min: 0.1 cm⁻¹  # Light stone
+      max: 20 cm⁻¹  # Dark basalt
+    laserReflectivity:
+      min: 5%  # Dark stone
+      max: 80%  # Light marble
+    thermalDiffusivity:
+      min: 0.2 mm²/s  # Porous stone
+      max: 2.5 mm²/s  # Dense granite
+    thermalExpansion:
+      min: 3 µm/m·K  # Granite
+      max: 16 µm/m·K  # Marble
+    specificHeat:
+      min: 0.7 J/g·K  # Dense stone
+      max: 1.2 J/g·K  # Porous stone
+
+  # MASONRY CATEGORY - Based on construction and building materials
+  masonry:
+    density:
+      min: 0.6 g/cm³  # Aerated concrete
+      max: 2.8 g/cm³  # Dense concrete
+    tensileStrength:
+      min: 1 MPa  # Concrete
+      max: 15 MPa  # High-strength brick
+    thermalConductivity:
+      min: 0.08 W/m·K  # Insulating blocks
+      max: 2.5 W/m·K  # Dense concrete
+    thermalDestructionPoint:
+      min: 500°C  # Polymer-modified masonry
+      max: 1200°C  # Refractory brick
+    thermalDestructionType: decomposition
+    hardness:
+      min: 2 Mohs  # Soft brick
+      max: 6 Mohs  # Hard concrete
+    youngsModulus:
+      min: 5 GPa  # Aerated concrete
+      max: 50 GPa  # Dense concrete
+    laserAbsorption:
+      min: 0.5 cm⁻¹  # Light concrete
+      max: 15 cm⁻¹  # Dark brick
+    laserReflectivity:
+      min: 10%  # Dark materials
+      max: 70%  # Light concrete
+    thermalDiffusivity:
+      min: 0.1 mm²/s  # Insulating masonry
+      max: 1.0 mm²/s  # Dense concrete
+    thermalExpansion:
+      min: 6 µm/m·K  # Concrete
+      max: 12 µm/m·K  # Clay brick
+    specificHeat:
+      min: 0.8 J/g·K  # Concrete
+      max: 1.1 J/g·K  # Clay materials
+
+  # WOOD CATEGORY - Based on wood science and forestry engineering
+  wood:
+    density:
+      min: 0.16 g/cm³  # Balsa
+      max: 1.4 g/cm³  # Lignum vitae
+    tensileStrength:
+      min: 20 MPa  # Softwood
+      max: 200 MPa  # High-strength hardwood
+    thermalConductivity:
+      min: 0.04 W/m·K  # Softwoods
+      max: 0.4 W/m·K  # Dense hardwoods
+    thermalDestructionPoint:
+      min: 200°C  # Pyrolysis start
+      max: 500°C  # Complete combustion
+    thermalDestructionType: combustion
+    hardness:
+      min: 0.4 kN  # Balsa
+      max: 22.2 kN  # Australian Buloke
+    youngsModulus:
+      min: 5 GPa  # Softwood
+      max: 25 GPa  # Dense hardwood
+    laserAbsorption:
+      min: 1 cm⁻¹  # Light wood
+      max: 50 cm⁻¹  # Dark wood
+    laserReflectivity:
+      min: 10%  # Dark wood
+      max: 60%  # Light wood
+    thermalDiffusivity:
+      min: 0.1 mm²/s  # Dense hardwood
+      max: 0.4 mm²/s  # Softwood
+    thermalExpansion:
+      min: 3 µm/m·K  # Along grain
+      max: 60 µm/m·K  # Across grain
+    specificHeat:
+      min: 1.2 J/g·K  # Dry wood
+      max: 4.2 J/g·K  # Green wood
+
+  # POLYMER CATEGORY - Based on polymer science and plastics engineering
+  polymer:
     density:
       min: 0.85 g/cm³  # Polyethylene foam
       max: 2.2 g/cm³  # PTFE
@@ -350,13 +362,189 @@ machine_settings_ranges:
   scanning_speed:
     min: 1 mm/s  # Precision applications
     max: 10000 mm/s  # High-speed processing
-  thermal_damage_threshold:
-    min: 1.7 J/cm²  # Sensitive materials
-    max: 143.9 J/cm²  # Refractory materials
-  processing_speed:
-    min: 8 mm/min  # Precision cleaning
-    max: 120 mm/min  # High-speed processing
 
+# COMPREHENSIVE PROPERTY MAPPING - for frontmatter generation
+property_mappings:
+      min: 1 µm/m·K
+      max: 60 µm/m·K
+    specificHeat:
+      min: 0.8 J/g·K
+      max: 2.0 J/g·K
+  glass:
+    density:
+      min: 2.2 g/cm³
+      max: 8.0 g/cm³
+    tensileStrength:
+      min: 30 MPa
+      max: 200 MPa
+    thermalConductivity:
+      min: 0.5 W/m·K
+      max: 2.0 W/m·K
+    thermalDestructionPoint:
+      min: 573°C
+      max: 1700°C
+    thermalDestructionType: melting
+    hardness:
+      min: 450 HV
+      max: 750 HV
+    youngsModulus:
+      min: 50 GPa
+      max: 90 GPa
+    laserAbsorption:
+      min: 0.01 cm⁻¹
+      max: 10 cm⁻¹
+    laserReflectivity:
+      min: 4%
+      max: 15%
+    thermalDiffusivity:
+      min: 0.4 mm²/s
+      max: 1.4 mm²/s
+    thermalExpansion:
+      min: 0.5 µm/m·K
+      max: 9 µm/m·K
+    specificHeat:
+      min: 0.7 J/g·K
+      max: 1.0 J/g·K
+  stone:
+    density:
+      min: 1.5 g/cm³
+      max: 3.2 g/cm³
+    tensileStrength:
+      min: 2 MPa
+      max: 300 MPa
+    thermalConductivity:
+      min: 0.2 W/m·K
+      max: 5.0 W/m·K
+    thermalDestructionPoint:
+      min: 1200°C
+      max: 1700°C
+    thermalDestructionType: melting
+    hardness:
+      min: 100 HV
+      max: 800 HV
+    youngsModulus:
+      min: 10 GPa
+      max: 100 GPa
+    laserAbsorption:
+      min: 0.5 cm⁻¹
+      max: 30 cm⁻¹
+    laserReflectivity:
+      min: 10%
+      max: 40%
+    thermalDiffusivity:
+      min: 0.5 mm²/s
+      max: 3 mm²/s
+    thermalExpansion:
+      min: 3 µm/m·K
+      max: 12 µm/m·K
+    specificHeat:
+      min: 0.7 J/g·K
+      max: 1.0 J/g·K
+  masonry:
+    density:
+      min: 1.2 g/cm³
+      max: 2.8 g/cm³
+    tensileStrength:
+      min: 1 MPa
+      max: 50 MPa
+    thermalConductivity:
+      min: 0.1 W/m·K
+      max: 2.0 W/m·K
+    thermalDestructionPoint:
+      min: 1450°C
+      max: 1750°C
+    thermalDestructionType: decomposition
+    hardness:
+      min: 20 HV
+      max: 300 HV
+    youngsModulus:
+      min: 15 GPa
+      max: 50 GPa
+    laserAbsorption:
+      min: 0.8 cm⁻¹
+      max: 50 cm⁻¹
+    laserReflectivity:
+      min: 8%
+      max: 35%
+    thermalDiffusivity:
+      min: 0.3 mm²/s
+      max: 1.5 mm²/s
+    thermalExpansion:
+      min: 6 µm/m·K
+      max: 15 µm/m·K
+    specificHeat:
+      min: 0.8 J/g·K
+      max: 1.1 J/g·K
+  wood:
+    density:
+      min: 0.1 g/cm³
+      max: 1.3 g/cm³
+    tensileStrength:
+      min: 20 MPa
+      max: 200 MPa
+    thermalConductivity:
+      min: 0.04 W/m·K
+      max: 0.4 W/m·K
+    thermalDestructionPoint:
+      min: 250°C
+      max: 500°C
+    thermalDestructionType: decomposition
+    hardness:
+      min: 1 HB
+      max: 4000 HB
+    youngsModulus:
+      min: 4 GPa
+      max: 20 GPa
+    laserAbsorption:
+      min: 5 cm⁻¹
+      max: 100 cm⁻¹
+    laserReflectivity:
+      min: 5%
+      max: 25%
+    thermalDiffusivity:
+      min: 0.1 mm²/s
+      max: 0.4 mm²/s
+    thermalExpansion:
+      min: 2 µm/m·K
+      max: 50 µm/m·K
+    specificHeat:
+      min: 1.2 J/g·K
+      max: 2.5 J/g·K
+  semiconductor:
+    density:
+      min: 2.3 g/cm³
+      max: 5.3 g/cm³
+    tensileStrength:
+      min: 100 MPa
+      max: 400 MPa
+    thermalConductivity:
+      min: 1.5 W/m·K
+      max: 490 W/m·K
+    thermalDestructionPoint:
+      min: 937°C
+      max: 2830°C
+    thermalDestructionType: melting
+    hardness:
+      min: 900 HV
+      max: 2800 HV
+    youngsModulus:
+      min: 130 GPa
+      max: 450 GPa
+    laserAbsorption:
+      min: 0.1 cm⁻¹
+      max: 1000 cm⁻¹
+    laserReflectivity:
+      min: 15%
+      max: 45%
+    thermalDiffusivity:
+      min: 0.5 mm²/s
+      max: 150 mm²/s
+    thermalExpansion:
+      min: 2 µm/m·K
+      max: 6 µm/m·K
+    specificHeat:
+      min: 0.3 J/g·K
+      max: 0.7 J/g·K
 parameter_templates:
   standard_fiber_laser:
     fluence_threshold: 0.5–5 J/cm²
@@ -6772,7 +6960,7 @@ materials:
       author_id: 1
       complexity: medium
       difficulty_score: 3
-      category: plastic
+      category: polymer
       formula: PE
       density: 0.91-0.96 g/cm³
       hardness: Shore D 60-70
@@ -6823,7 +7011,7 @@ materials:
       author_id: 2
       complexity: medium
       difficulty_score: 3
-      category: plastic
+      category: polymer
       formula: PP
       density: 0.90-0.91 g/cm³
       hardness: Shore D 65-75
@@ -6874,7 +7062,7 @@ materials:
       author_id: 3
       complexity: medium
       difficulty_score: 3
-      category: plastic
+      category: polymer
       formula: PS
       density: 1.04-1.06 g/cm³
       hardness: Shore D 75-85
@@ -6925,7 +7113,7 @@ materials:
       author_id: 4
       complexity: medium
       difficulty_score: 3
-      category: plastic
+      category: polymer
       formula: PVC
       density: 1.38-1.41 g/cm³
       hardness: Shore D 70-85
@@ -6976,7 +7164,7 @@ materials:
       author_id: 1
       complexity: medium
       difficulty_score: 3
-      category: plastic
+      category: polymer
       formula: PTFE
       density: 2.13-2.19 g/cm³
       hardness: Shore D 50-65
@@ -7027,7 +7215,7 @@ materials:
       author_id: 2
       complexity: medium
       difficulty_score: 3
-      category: plastic
+      category: polymer
       formula: PC
       density: 1.20-1.22 g/cm³
       hardness: Shore D 80-85
@@ -7075,11 +7263,11 @@ materials:
       - Aerospace
       - Consumer Goods
 metadata:
-  total_categories: 9
-  total_materials: 124
+  total_categories: 8
+  total_materials: 109
   format_version: '2.0'
   schema_version: enhanced_v1
-  last_updated: '2025-09-23'
+  last_updated: '2025-08-31'
   migration_date: '2025-08-31'
   author_distribution:
     '1':

@@ -157,8 +157,11 @@ class TextComponentGenerator(APIComponentGenerator):
                 else:
                     raise ValueError("Author information is required for text generation")
 
-            # CRITICAL: Validate localization support before generation
-            author_country = author_info.get('country', 'USA')
+            # FAIL-FAST: Author country must be explicit
+            if not author_info.get('country'):
+                raise ValueError(f"Author country missing for {material_name} - fail-fast requires complete author data")
+            author_country = author_info['country']
+            
             if not validate_localization_support(author_country):
                 error_msg = f"Localization not supported for country '{author_country}'. Localization is mandatory for all text generation."
                 logger.error(f"❌ {error_msg}")

@@ -15,7 +15,8 @@ codebase with better separation of concerns.
 """
 
 # Import the streamlined generator from core module
-from components.frontmatter.core.generator import FrontmatterComponentGenerator
+from components.frontmatter.core.streamlined_generator import StreamlinedFrontmatterGenerator
 
 # Re-export for backward compatibility
+FrontmatterComponentGenerator = StreamlinedFrontmatterGenerator
 __all__ = ['FrontmatterComponentGenerator']

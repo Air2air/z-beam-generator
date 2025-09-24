@@ -34,18 +34,32 @@ class MetatagsComponentGenerator(HybridComponentGenerator):
         """
         Build prompt using both material data and frontmatter data.
         """
-        # Get important details for the prompt
-        category = frontmatter_data.get("category", material_data.get("category", "material")) if frontmatter_data else material_data.get("category", "material")
-        formula = material_data.get("formula", "")
-        formula_str = f" ({formula})" if formula else ""
+        # FAIL-FAST: Category must be present
+        if frontmatter_data:
+            if not frontmatter_data.get("category"):
+                raise ValueError(f"Category missing from frontmatter for {material_name} - fail-fast requires explicit categorization")
+            category = frontmatter_data["category"]
+        elif not material_data.get("category"):
+            raise ValueError(f"Category missing from material data for {material_name} - fail-fast requires explicit categorization")
+        else:
+            category = material_data["category"]
+            
+        # FAIL-FAST: Formula must be researched
+        formula = material_data.get("formula")
+        if not formula:
+            raise ValueError(f"Chemical formula missing for {material_name} - fail-fast requires explicit chemical data")
+        formula_str = f" ({formula})"
+        
         author_name = author_info.get("name", "Z-Beam Engineering Team") if author_info else "Z-Beam Engineering Team"
         
         # Ensure material name is in title case
         material_name_title = material_name.title()
         
-        # Extract technical details if available
+        # FAIL-FAST: Wavelength must be present in laser parameters  
         laser_params = material_data.get("laser_parameters", {})
-        wavelength = laser_params.get("wavelength_optimal", "1064nm") if laser_params else "1064nm"
+        if not laser_params or not laser_params.get("wavelength_optimal"):
+            raise ValueError(f"Wavelength parameters missing for {material_name} - fail-fast requires explicit laser data")
+        wavelength = laser_params["wavelength_optimal"]
         
         # Extract applications if available
         applications = material_data.get("applications", [])
@@ -203,13 +217,22 @@ Include appropriate technical details about laser cleaning parameters, applicati
         
         # Get key metadata from frontmatter
         description = frontmatter_data.get("description", "")
-        category = frontmatter_data.get("category", "material")
+        
+        # FAIL-FAST: Category must be present
+        if not frontmatter_data.get("category"):
+            raise ValueError(f"Category missing from frontmatter for {material_name} - fail-fast requires explicit categorization")
+        category = frontmatter_data["category"]
+        
         author = frontmatter_data.get("author", "")
         keywords = frontmatter_data.get("keywords", "")
         
         # Get properties for technical details
         properties = frontmatter_data.get("properties", {})
-        wavelength = properties.get("wavelength", "1064nm")
+        
+        # FAIL-FAST: Wavelength must be present in properties
+        if not properties.get("wavelength"):
+            raise ValueError(f"Wavelength property missing for {material_name} - fail-fast requires explicit technical data")
+        wavelength = properties["wavelength"]
         
         # Ensure material name is in title case
         material_name_title = material_name.title()
@@ -326,9 +349,16 @@ Include appropriate technical details about laser cleaning parameters, applicati
             raise Exception(f"Failed to parse base metatags content: {e}")
         
         # Prepare category and material info for the API prompt
-        category = frontmatter_data.get("category", "material")
-        formula = material_data.get("formula", "")
-        formula_str = f" ({formula})" if formula else ""
+        # FAIL-FAST: Category must be present
+        if not frontmatter_data.get("category"):
+            raise ValueError(f"Category missing from frontmatter for {material_name} - fail-fast requires explicit categorization")
+        category = frontmatter_data["category"]
+        
+        # FAIL-FAST: Formula must be researched
+        formula = material_data.get("formula")
+        if not formula:
+            raise ValueError(f"Chemical formula missing for {material_name} - fail-fast requires explicit chemical data")
+        formula_str = f" ({formula})"
         
         # Ensure material name is in title case for the API prompt
         material_name_title = material_name.title()

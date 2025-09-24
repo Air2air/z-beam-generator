@@ -7,12 +7,10 @@ Integrated with the modular component architecture.
 """
 
 import json
-import sys
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 from generators.hybrid_generator import HybridComponentGenerator
-from generators.component_generators import ComponentResult
 from versioning import stamp_component_output
 
 
@@ -90,8 +88,11 @@ class PropertiestableComponentGenerator(HybridComponentGenerator):
             if not decomp_exists:
                 properties_to_extract.append(("properties.decompositionPoint", "Decomposition"))
             
-            # Apply thermal behavior logic using unified thermal property
-            thermal_destruction_type = frontmatter_data.get("properties", {}).get("thermalDestructionType", "melting")
+            # FAIL-FAST: Thermal destruction type must be researched
+            thermal_properties = frontmatter_data.get("properties", {})
+            if not thermal_properties.get("thermalDestructionType"):
+                raise ValueError(f"Thermal destruction type missing for {material_name} - fail-fast requires explicit thermal behavior data")
+            thermal_destruction_type = thermal_properties["thermalDestructionType"]
             
             # Remove old thermal properties and add unified one with appropriate label
             properties_to_extract = [(k, v) for k, v in properties_to_extract 
@@ -203,8 +204,10 @@ class PropertiestableComponentGenerator(HybridComponentGenerator):
                 if key in props:
                     properties.append((f"properties.{key}", display_name))
             
-            # Handle unified thermal property with appropriate label
-            thermal_destruction_type = props.get("thermalDestructionType", "melting")
+            # FAIL-FAST: Thermal destruction type must be researched
+            if not props.get("thermalDestructionType"):
+                raise ValueError("Thermal destruction type missing in properties - fail-fast requires explicit thermal behavior data")
+            thermal_destruction_type = props["thermalDestructionType"]
             if "thermalDestructionPoint" in props:
                 # Remove old thermal properties and add unified one
                 properties = [(k, v) for k, v in properties 

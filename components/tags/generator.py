@@ -277,39 +277,42 @@ Format: YAML v2.0
         schema_fields: Optional[Dict] = None,
     ) -> Dict:
         """Create template variables for tags generation"""
-        # Extract data with fallbacks - more flexible approach
-        category = material_data.get("category", "material")
+        # FAIL-FAST: Category must be present and researched
+        if not material_data.get("category"):
+            raise ValueError(f"Category missing for {material_name} - fail-fast requires explicit categorization")
+        category = material_data["category"]
         
-        # Try to get formula and symbol from multiple possible locations
+        # FAIL-FAST: Chemical identifiers must be researched
         formula = material_data.get("formula")
         if not formula and frontmatter_data:
             # Try to extract from frontmatter chemical properties
             chem_props = frontmatter_data.get("chemicalProperties", {})
-            formula = chem_props.get("formula", material_name)
+            formula = chem_props.get("formula")
         if not formula:
-            formula = material_name  # Fallback to material name
+            raise ValueError(f"Chemical formula missing for {material_name} - fail-fast requires explicit chemical data")
             
         symbol = material_data.get("symbol")
         if not symbol and frontmatter_data:
             # Try to extract from frontmatter chemical properties
             chem_props = frontmatter_data.get("chemicalProperties", {})
-            symbol = chem_props.get("symbol", material_name[:2])
+            symbol = chem_props.get("symbol")
         if not symbol:
-            symbol = material_name[:2]  # Fallback to first 2 chars
+            raise ValueError(f"Chemical symbol missing for {material_name} - fail-fast requires explicit chemical data")
         
-        # Extract author info with fallbacks
-        author_name = "expert"
-        author_country = "international"
-        
-        if author_info and author_info.get("name"):
-            author_name = author_info["name"]
-            author_country = author_info.get("country", "international")
-        elif frontmatter_data:
-            # Try to extract from frontmatter
-            author_name = frontmatter_data.get("author", "expert")
+        # FAIL-FAST: Author info must be present
+        if not author_info or not author_info.get("name"):
+            if not frontmatter_data or not frontmatter_data.get("author"):
+                raise ValueError(f"Author information missing for {material_name} - fail-fast requires explicit author data")
+            author_name = frontmatter_data["author"]
             author_obj = frontmatter_data.get("author_object", {})
-            if isinstance(author_obj, dict):
-                author_country = author_obj.get("country", "international")
+            if not isinstance(author_obj, dict) or not author_obj.get("country"):
+                raise ValueError(f"Author country missing for {material_name} - fail-fast requires complete author data")
+            author_country = author_obj["country"]
+        else:
+            author_name = author_info["name"]
+            if not author_info.get("country"):
+                raise ValueError(f"Author country missing for {material_name} - fail-fast requires complete author data")
+            author_country = author_info["country"]
 
         return {
             "material_name": material_name,

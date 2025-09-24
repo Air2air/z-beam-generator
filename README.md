@@ -46,7 +46,47 @@ The system now uses a **frontmatter-first approach** where validated material da
 
 ## 🚀 Recent Updates (September 2025)
 
-### 🔬 Pure AI Research Implementation (v6.0.0) - **LATEST**
+### � Unit/Value Separation Implementation (v6.1.0) - **LATEST**
+
+**Major Enhancement**: Complete implementation of numeric-only value format with clean unit separation.
+
+**Key Achievements:**
+- ✅ **Pure Numeric Values**: All property and machine setting values are now numeric (int/float)
+- ✅ **Clean Unit Separation**: Units stored in dedicated `*Unit` fields (e.g., `densityUnit: "g/cm³"`)
+- ✅ **Min/Max Field Processing**: Fixed UnifiedPropertyEnhancementService to process all Min/Max fields
+- ✅ **Schema Validation**: Updated JSON schema to enforce numeric types for all value fields
+- ✅ **Comprehensive Testing**: Enhanced test suite validates numeric-only format
+- ✅ **Mathematical Processing Ready**: Clean numeric values enable direct calculations
+
+**Before vs After:**
+```yaml
+# Before: Mixed string/numeric with units embedded
+density: "8.9 g/cm³"
+powerRange: "50 W"
+meltingMax: "2800°C"
+
+# After: Clean numeric separation
+density: 8.9
+densityUnit: "g/cm³"
+powerRange: 50.0
+powerRangeUnit: "W" 
+meltingMax: 2800
+meltingPointUnit: "°C"
+```
+
+**Technical Implementation:**
+- **`_extract_numeric_only()` method**: Regex-based numeric extraction from unit strings
+- **Enhanced `_preserve_min_max_properties()`**: Processes Min/Max fields that contain units
+- **Schema Updates**: All Min/Max fields now require `"type": "number"`
+- **Comprehensive Validation**: 30+ numeric values per material file verified
+
+**Verification Results:**
+- **Copper**: 30 numeric values (12 properties + 18 machine settings)
+- **Bronze**: 33 numeric values (15 properties + 18 machine settings)
+- **Schema Validation**: All generated files pass strict numeric validation
+- **Zero String Values**: Complete elimination of units from numeric fields
+
+### 🔬 Pure AI Research Implementation (v6.0.0)
 
 **BREAKING CHANGE**: Complete transformation to pure AI research system with zero fallback defaults.
 

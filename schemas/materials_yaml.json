@@ -1,16 +1,19 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Materials.YAML Schema",
-  "description": "Complete schema for materials.yaml database structure with comprehensive material properties",
+  "description": "Complete schema for materials.yaml database structure with comprehensive material properties. Optimized for GitHub Copilot autocompletion and IntelliSense support.",
   "type": "object",
   "required": ["materials"],
+  "additionalProperties": false,
   "properties": {
     "category_ranges": {
       "type": "object",
-      "description": "Category-specific property ranges for validation and percentile calculations",
+      "description": "Category-specific property ranges for validation and percentile calculations. Used by PropertyEnhancementService for intelligent value normalization.",
+      "additionalProperties": false,
       "patternProperties": {
         "^(metal|ceramic|composite|semiconductor|glass|stone|wood|plastic|masonry)$": {
           "type": "object",
+          "additionalProperties": false,
           "properties": {
             "density": {
               "$ref": "#/definitions/PropertyRange"
@@ -55,10 +58,12 @@
     },
     "material_index": {
       "type": "object",
-      "description": "Quick reference index of all materials",
+      "description": "Quick reference index of all materials. Enables fast material lookups and category-based filtering for component generators.",
+      "additionalProperties": false,
       "patternProperties": {
         ".*": {
           "type": "object",
+          "additionalProperties": false,
           "properties": {
             "category": {
               "type": "string",
@@ -81,12 +86,51 @@
         }
       }
     },
-    "materials": {
+    "machine_settings_ranges": {
       "type": "object",
-      "description": "Hierarchical material database organized by category",
+      "description": "Comprehensive ranges for laser machine settings used in cleaning applications. Provides validation boundaries for all machine parameters.",
+      "additionalProperties": false,
+      "properties": {
+        "fluence_threshold": {
+          "$ref": "#/definitions/PropertyRange"
+        },
+        "pulse_duration": {
+          "$ref": "#/definitions/PropertyRange"
+        },
+        "power_range": {
+          "$ref": "#/definitions/PropertyRange"
+        },
+        "repetition_rate": {
+          "$ref": "#/definitions/PropertyRange"
+        },
+        "spot_size": {
+          "$ref": "#/definitions/PropertyRange"
+        },
+        "wavelength": {
+          "$ref": "#/definitions/PropertyRange"
+        },
+        "ablation_threshold": {
+          "$ref": "#/definitions/PropertyRange"
+        },
+        "scanning_speed": {
+          "$ref": "#/definitions/PropertyRange"
+        },
+        "thermal_damage_threshold": {
+          "$ref": "#/definitions/PropertyRange"
+        },
+        "processing_speed": {
+          "$ref": "#/definitions/PropertyRange"
+        }
+      }
+    },
+    "materials": {
+      "type": "object", 
+      "description": "Hierarchical material database organized by category. Core data structure used by MaterialsYamlFrontmatterMapper and all component generators.",
+      "additionalProperties": false,
       "patternProperties": {
         "^(metal|ceramic|composite|semiconductor|glass|stone|wood|plastic|masonry)$": {
           "type": "object",
+          "additionalProperties": false,
           "properties": {
             "processing_priority": {
               "type": "string",
@@ -107,133 +151,180 @@
   "definitions": {
     "PropertyRange": {
       "type": "object",
+      "description": "Defines min/max range for material properties with units. Used for validation and percentile calculations.",
+      "additionalProperties": false,
       "properties": {
         "min": {
           "type": "string",
-          "description": "Minimum value with units"
+          "description": "Minimum value with units (e.g., '0.5 g/cm³')",
+          "examples": ["0.5 g/cm³", "70 MPa", "8 W/m·K"]
         },
         "max": {
           "type": "string", 
-          "description": "Maximum value with units"
+          "description": "Maximum value with units (e.g., '22.6 g/cm³')",
+          "examples": ["22.6 g/cm³", "2000 MPa", "429 W/m·K"]
         }
       },
       "required": ["min", "max"]
     },
     "Material": {
       "type": "object",
+      "description": "Individual material definition with comprehensive properties for laser cleaning applications",
+      "additionalProperties": false,
       "required": ["name", "author_id", "complexity", "difficulty_score", "category", "formula", "symbol"],
       "properties": {
         "name": {
           "type": "string",
-          "description": "Material name"
+          "description": "Material name (e.g., 'Aluminum', 'Stainless Steel')",
+          "minLength": 1,
+          "examples": ["Aluminum", "Stainless Steel", "Borosilicate Glass"]
         },
         "author_id": {
           "type": "integer",
           "minimum": 1,
           "maximum": 4,
-          "description": "Author ID from authors.json"
+          "description": "Author ID from authors.json (1=Dr. Muhammad Faisal, 2=Dr. Elena Vasquez, 3=Dr. Ikmanda Roswati, 4=Dr. James Mitchell)"
         },
         "complexity": {
           "type": "string",
           "enum": ["low", "medium", "high"],
-          "description": "Processing complexity level"
+          "description": "Processing complexity level for laser cleaning operations"
         },
         "difficulty_score": {
           "type": "integer",
           "minimum": 1,
           "maximum": 5,
-          "description": "Difficulty score for laser cleaning"
+          "description": "Difficulty score for laser cleaning (1=easiest, 5=most challenging)"
         },
         "category": {
           "type": "string",
           "enum": ["metal", "ceramic", "composite", "semiconductor", "glass", "stone", "wood", "plastic", "masonry"],
-          "description": "Material category"
+          "description": "Primary material category for property range validation"
         },
         "formula": {
           "type": "string",
-          "description": "Chemical formula"
+          "description": "Chemical formula or composition (e.g., 'Al', 'SiO₂', 'C₆H₁₀O₄')",
+          "examples": ["Al", "SiO₂", "Fe", "C₆H₁₀O₄"]
         },
         "symbol": {
           "type": "string",
-          "description": "Chemical symbol or abbreviation"
+          "description": "Chemical symbol or abbreviation (e.g., 'Al', 'SS', 'BSG')",
+          "examples": ["Al", "SS", "BSG", "Ti"]
         },
         "title": {
           "type": "string",
-          "description": "SEO title for the material"
+          "description": "SEO-optimized title for the material page",
+          "minLength": 10,
+          "maxLength": 100,
+          "examples": ["Aluminum Laser Cleaning - Complete Technical Guide"]
         },
         "headline": {
-          "type": "string",
-          "description": "Marketing headline"
+          "type": "string", 
+          "description": "Marketing headline with key properties and wavelength",
+          "minLength": 20,
+          "maxLength": 200,
+          "examples": ["Comprehensive laser cleaning guide for aluminum featuring density 2.70 g/cm³, optimized for 1064nm"]
         },
         "description": {
           "type": "string",
-          "description": "Technical description"
+          "description": "Technical meta description for SEO (150-160 characters)",
+          "minLength": 100,
+          "maxLength": 200,
+          "examples": ["Technical overview of aluminum for laser cleaning applications, including optimal 1064nm wavelength interaction and industrial parameters"]
         },
         "keywords": {
           "type": "string",
-          "description": "SEO keywords"
+          "description": "Comma-separated SEO keywords for search optimization",
+          "examples": ["aluminum, laser cleaning, 1064nm wavelength, industrial parameters, surface preparation"]
         },
         "machine_settings": {
           "$ref": "#/definitions/MachineSettings"
         },
         "applications": {
           "type": "array",
+          "description": "List of industrial applications and use cases",
           "items": {
-            "type": "string"
+            "type": "string",
+            "minLength": 5,
+            "examples": ["Electronics Manufacturing", "Aerospace Components", "Automotive Industry"]
           },
-          "description": "List of applications"
+          "minItems": 1,
+          "maxItems": 10
         },
         "industry_tags": {
           "type": "array",
+          "description": "Industry categories for filtering and organization",
           "items": {
-            "type": "string"
+            "type": "string",
+            "enum": ["aerospace", "automotive", "electronics", "medical", "industrial", "construction", "energy", "marine"]
           },
-          "description": "Industry categories"
+          "uniqueItems": true,
+          "maxItems": 5
         },
         "density": {
           "type": "string",
-          "description": "Density with units"
+          "description": "Material density with units (g/cm³ preferred)",
+          "pattern": "^\\d+\\.?\\d* g/cm³$",
+          "examples": ["2.70 g/cm³", "7.85 g/cm³", "0.92 g/cm³"]
         },
         "thermal_conductivity": {
           "type": "string",
-          "description": "Thermal conductivity with units"
+          "description": "Thermal conductivity with units (W/m·K)",
+          "pattern": "^\\d+\\.?\\d* W/m·K$",
+          "examples": ["237 W/m·K", "16.2 W/m·K", "0.2 W/m·K"]
         },
         "thermal_expansion": {
           "type": "string",
-          "description": "Thermal expansion with units"
+          "description": "Thermal expansion coefficient with units (µm/m·K)",
+          "pattern": "^\\d+\\.?\\d* µm/m·K$",
+          "examples": ["23.1 µm/m·K", "11.8 µm/m·K", "3.3 µm/m·K"]
         },
         "tensile_strength": {
           "type": "string",
-          "description": "Tensile strength with units"
+          "description": "Tensile strength with units (MPa)",
+          "pattern": "^\\d+\\.?\\d*(-\\d+\\.?\\d*)? MPa$",
+          "examples": ["310 MPa", "40-50 MPa", "3500 MPa"]
         },
         "youngs_modulus": {
           "type": "string",
-          "description": "Young's modulus with units"
+          "description": "Young's modulus (elastic modulus) with units (GPa)",
+          "pattern": "^\\d+\\.?\\d* GPa$",
+          "examples": ["69 GPa", "200 GPa", "4.1 GPa"]
         },
         "electrical_resistivity": {
           "type": "string",
-          "description": "Electrical resistivity with units"
+          "description": "Electrical resistivity with units (Ω·m)",
+          "examples": ["2.65×10⁻⁸ Ω·m", "1.59×10⁻⁶ Ω·m", "10¹⁶ Ω·m"]
         },
         "regulatory_standards": {
           "type": "array",
+          "description": "Applicable regulatory standards and certifications",
           "items": {
-            "type": "string"
+            "type": "string",
+            "pattern": "^[A-Z]{2,4}[\\s\\-]?\\d+.*$",
+            "examples": ["ISO 18562", "ASTM F2100", "IEC 60601-1", "ANSI Z136.1"]
           },
-          "description": "Applicable regulatory standards"
+          "maxItems": 10,
+          "uniqueItems": true
         },
         "compatibility": {
           "$ref": "#/definitions/Compatibility"
         },
         "compatible_laser_types": {
           "type": "array",
+          "description": "Compatible laser types for processing this material",
           "items": {
-            "type": "string"
+            "type": "string",
+            "enum": ["Nd:YAG", "Fiber Laser", "CO2 Laser", "Excimer Laser", "Femtosecond Laser", "Pulsed Fiber Laser", "CW Fiber Laser"]
           },
-          "description": "Compatible laser types"
+          "uniqueItems": true,
+          "maxItems": 5
         },
         "optimal_wavelength": {
           "type": "string",
-          "description": "Optimal laser wavelength"
+          "description": "Optimal laser wavelength for processing",
+          "pattern": "^\\d+nm(\\s*\\([^)]+\\))?$",
+          "examples": ["1064nm", "532nm (optional)", "10.6μm", "355nm"]
         },
         "absorption_characteristic": {
           "type": "string",
@@ -245,12 +336,18 @@
         },
         "processing_efficiency": {
           "type": "object",
+          "description": "Processing efficiency metrics for laser operations",
+          "additionalProperties": false,
           "properties": {
             "speed": {
-              "type": "string"
+              "type": "string",
+              "description": "Processing speed range (mm/s or m²/h)",
+              "examples": ["50-500 mm/s", "2-5 m²/h"]
             },
             "threshold": {
-              "type": "string"
+              "type": "string", 
+              "description": "Damage or ablation threshold with units",
+              "examples": ["1.2 J/cm²", "0.8 mJ/cm²"]
             }
           }
         }
@@ -258,7 +355,8 @@
     },
     "MachineSettings": {
       "type": "object",
-      "description": "Laser machine settings for material processing",
+      "description": "Laser machine settings for material processing. Used by frontmatter generator for technical specifications.",
+      "additionalProperties": false,
       "properties": {
         "fluence_threshold": {
           "type": "string",

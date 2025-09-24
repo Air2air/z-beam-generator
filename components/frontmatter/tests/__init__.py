@@ -2,24 +2,18 @@
 """
 Frontmatter Tests Package
 
-Modular test suite for the refactored frontmatter component.
-Organized by service responsibility for better maintainability.
+Modular test suite for the frontmatter component.
 """
 
-from .test_core_generator import TestCoreGenerator, TestGeneratorEdgeCases
-from .test_field_ordering import TestFieldOrderingService
-from .test_property_enhancement import TestPropertyEnhancementService, TestPropertyEnhancementEdgeCases
-from .test_validation_helpers import TestValidationHelpers, TestValidationHelpersEdgeCases
-from .test_integration import TestModularIntegration, TestModularArchitectureQuality
+# Import available test modules
+try:
+    from .test_frontmatter_consolidated import *
+except ImportError:
+    pass
 
-__all__ = [
-    'TestCoreGenerator',
-    'TestGeneratorEdgeCases', 
-    'TestFieldOrderingService',
-    'TestPropertyEnhancementService',
-    'TestPropertyEnhancementEdgeCases',
-    'TestValidationHelpers',
-    'TestValidationHelpersEdgeCases',
-    'TestModularIntegration',
-    'TestModularArchitectureQuality'
-]
+try:
+    from .test_schema_validation import *
+except ImportError:
+    pass
+
+__all__ = []
