@@ -23,14 +23,14 @@ categories:
     - yi-chun-lin
     - metalworking
 metadata:
-  generated: "2025-09-22T15:57:39.651601"
+  generated: "2025-09-23T13:41:53.389160"
   format: "yaml"
   version: "2.0"
 
 ---
 Material: "steel"
 Component: tags
-Generated: 2025-09-22T15:57:39.653068
+Generated: 2025-09-23T13:41:53.390663
 Generator: Z-Beam v1.0.0 (Frontmatter-Based)
 Format: YAML v2.0
 ---

@@ -1,149 +1,78 @@
 ---
-name: Basalt
 category: stone
-title: Basalt Laser Cleaning
-headline: Comprehensive technical guide for laser cleaning stone basalt
-description: Laser cleaning of basalt utilizes pulsed fiber lasers to selectively
-  ablate surface contaminants through a thermal-mechanical process. The optimal 1064nm
-  wavelength is well-absorbed by the iron-rich mineral content, allowing for precise
-  removal without causing micro-fracturing or thermal degradation of the silicate
-  matrix.
-keywords: basalt, basalt stone, laser ablation, laser cleaning, non-contact cleaning,
-  pulsed fiber laser, surface contamination removal, industrial laser parameters,
-  thermal processing, surface restoration
 chemicalProperties:
-  symbol: N/A (Rock)
   formula: Complex silicate (See composition)
   materialType: Extrusive igneous rock
-properties:
-  density: "2.9 g/cm³"
-  thermalDestructionPoint: "1250°C"
-  thermalDestructionType: melting
-  densityNumeric: 2.8
-  densityUnit: "g/cm³"
-  densityMin: "1.8 g/cm³"
-  densityMinNumeric: 1.8
-  densityMinUnit: "g/cm³"
-  densityMax: "6.0 g/cm³"
-  densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm³"
-  densityPercentile: 23.8
-  meltingPointNumeric: 1250
-  meltingPointUnit: "°C"
-  meltingPointMin: "1200°C"
-  meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "°C"
-  meltingPointMax: "2800°C"
-  meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "°C"
-  meltingPercentile: 0.0
-  thermalConductivity: 1.6W/(m·K)"
-  thermalConductivityNumeric: 1.3
-  thermalConductivityUnit: W/
-  thermalConductivityMin: "0.5 W/m·K"
-  thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m·K"
-  thermalConductivityMax: "200 W/m·K"
-  thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m·K"
-  thermalPercentile: 0.4
-  tensileStrength: 20MPa"
-  tensileStrengthNumeric: 10.0
-  tensileStrengthUnit: MPa
-  tensileStrengthMin: 50 MPa
-  tensileStrengthMinNumeric: 50.0
-  tensileStrengthMinUnit: MPa
-  tensileStrengthMax: 1000 MPa
-  tensileStrengthMaxNumeric: 1000.0
-  tensileStrengthMaxUnit: MPa
-  tensilePercentile: 0.0
-  hardness: 5.5(Mohs
-  hardnessNumeric: 5.0
-  hardnessUnit: Mohs
-  hardnessMin: 1 Mohs
-  hardnessMinNumeric: 1.0
-  hardnessMinUnit: Mohs
-  hardnessMax: 10 Mohs
-  hardnessMaxNumeric: 10.0
-  hardnessMaxUnit: Mohs
-  hardnessPercentile: 44.4
-  youngsModulus: "60–100 GPa"
-  youngsModulusNumeric: 60.0
-  youngsModulusUnit: GPa
-  youngsModulusMin: 20 GPa
-  youngsModulusMinNumeric: 20.0
-  youngsModulusMinUnit: GPa
-  youngsModulusMax: 80 GPa
-  youngsModulusMaxNumeric: 80.0
-  youngsModulusMaxUnit: GPa
-  modulusPercentile: 66.7
-  laserType: Pulsed fiber laser
-  wavelength: 1064nm
-  fluenceRange: "1.0–10 J/cm²"
-  chemicalFormula: Complex silicate (No single formula)
+  symbol: N/A (Rock)
 composition:
-- "45-55% SiO₂ (Silica)"
-- "10-15% Al₂O₃ (Alumina)"
-- "5-15% FeO + Fe₂O₃ (Iron oxides)"
+- 45-55% SiO₂ (Silica)
+- 10-15% Al₂O₃ (Alumina)
+- 5-15% FeO + Fe₂O₃ (Iron oxides)
 - 5-10% CaO (Calcium oxide)
 - 5% MgO (Magnesium oxide)
-- "3-5% Na₂O + K₂O (Alkali oxides)"
-- "<5% TiO₂ (Titanium dioxide)"
+- 3-5% Na₂O + K₂O (Alkali oxides)
+- <5% TiO₂ (Titanium dioxide)
+description: Laser cleaning of basalt utilizes pulsed fiber lasers to selectively ablate surface contaminants through a thermal-mechanical process. The optimal 1064nm wavelength is well-absorbed by the iron-rich mineral content, allowing for precise removal without causing micro-fracturing or thermal degradation of the silicate matrix.
+headline: Comprehensive technical guide for laser cleaning stone basalt
+keywords: basalt, basalt stone, laser ablation, laser cleaning, non-contact cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters, thermal processing, surface restoration
 machineSettings:
-  powerRange: 50-200W
-  powerRangeNumeric: 125.0
+  fluenceRange: 1.0
+  fluenceRangeMax: 50.0
+  fluenceRangeMin: 0.1
+  fluenceRangeUnit: J/cm²
+  powerRange: 125.0
+  powerRangeMax: 500.0
+  powerRangeMin: 20.0
   powerRangeUnit: W
-  powerRangeMin: 20W
-  powerRangeMinNumeric: 20.0
-  powerRangeMinUnit: W
-  powerRangeMax: 500W
-  powerRangeMaxNumeric: 500.0
-  powerRangeMaxUnit: W
-  pulseDuration: 10-200ns
-  pulseDurationNumeric: 105.0
+  pulseDuration: 105.0
+  pulseDurationMax: 1000.0
+  pulseDurationMin: 1.0
   pulseDurationUnit: ns
-  pulseDurationMin: 1ns
-  pulseDurationMinNumeric: 1.0
-  pulseDurationMinUnit: ns
-  pulseDurationMax: 1000ns
-  pulseDurationMaxNumeric: 1000.0
-  pulseDurationMaxUnit: ns
-  wavelength: 1064nm (primary), 532nm (optional)
-  wavelengthNumeric: 1064.0
-  wavelengthUnit: nm
-  wavelengthMin: 355nm
-  wavelengthMinNumeric: 355.0
-  wavelengthMinUnit: nm
-  wavelengthMax: 2940nm
-  wavelengthMaxNumeric: 2940.0
-  wavelengthMaxUnit: nm
-  spotSize: 0.1-1.0mm
-  spotSizeNumeric: 0.55
-  spotSizeUnit: mm
-  spotSizeMin: 0.01mm
-  spotSizeMinNumeric: 0.01
-  spotSizeMinUnit: mm
-  spotSizeMax: 10mm
-  spotSizeMaxNumeric: 10.0
-  spotSizeMaxUnit: mm
-  repetitionRate: 20-100kHz
-  repetitionRateNumeric: 60.0
+  repetitionRate: 60.0
+  repetitionRateMax: 1000.0
+  repetitionRateMin: 1.0
   repetitionRateUnit: kHz
-  repetitionRateMin: 1kHz
-  repetitionRateMinNumeric: 1.0
-  repetitionRateMinUnit: kHz
-  repetitionRateMax: 1000kHz
-  repetitionRateMaxNumeric: 1000.0
-  repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0–10 J/cm²"
-  fluenceRangeNumeric: 1.0
-  fluenceRangeUnit: "J/cm²"
-  fluenceRangeMin: "0.1J/cm²"
-  fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm²"
-  fluenceRangeMax: "50J/cm²"
-  fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm²"
+  spotSize: 0.55
+  spotSizeMax: 10.0
+  spotSizeMin: 0.01
+  spotSizeUnit: mm
+  wavelength: 1064.0
+  wavelengthMax: 2940.0
+  wavelengthMin: 355.0
+  wavelengthUnit: nm
+name: Basalt
+properties:
+  density: 2.8
+  densityMax: 6.0
+  densityMin: 1.8
+  densityPercentile: 23.8
+  densityUnit: g/cm³
+  hardness: 5.0
+  hardnessMax: 10.0
+  hardnessMin: 1.0
+  hardnessPercentile: 44.4
+  hardnessUnit: Mohs
+  meltingPercentile: 0.0
+  meltingPoint: 1250
+  meltingPointMax: 2800.0
+  meltingPointMin: 1200.0
+  meltingPointUnit: °C
+  modulusPercentile: 66.7
+  tensilePercentile: 0.0
+  tensileStrength: 10.0
+  tensileStrengthMax: 1000.0
+  tensileStrengthMin: 50.0
+  tensileStrengthUnit: MPa
+  thermalConductivity: 1.3
+  thermalConductivityMax: 200.0
+  thermalConductivityMin: 0.5
+  thermalConductivityUnit: W/
+  thermalPercentile: 0.4
+  youngsModulus: 60.0
+  youngsModulusMax: 80.0
+  youngsModulusMin: 20.0
+  youngsModulusUnit: GPa
+title: Basalt Laser Cleaning
 ---
 applications:
 - 'Construction: Cleaning and restoration of basalt facades and sculptures'

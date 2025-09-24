@@ -1,12 +1,12 @@
 tags:
-  - alessandro-moretti
+  - expert
   - industrial
-  - photovoltaics
   - decontamination
   - surface-preparation
   - manufacturing
   - precision
   - quality-control
+  - automation
 material: "silicon"
 count: 8
 categories:
@@ -16,21 +16,21 @@ categories:
   process:
     - decontamination
   author:
-    - alessandro-moretti
     - surface-preparation
     - quality-control
   other:
-    - photovoltaics
+    - expert
     - precision
+    - automation
 metadata:
-  generated: "2025-09-22T15:57:39.785565"
+  generated: "2025-09-23T12:59:42.839701"
   format: "yaml"
   version: "2.0"
 
 ---
 Material: "silicon"
 Component: tags
-Generated: 2025-09-22T15:57:39.786839
+Generated: 2025-09-23T12:59:42.841745
 Generator: Z-Beam v1.0.0 (Frontmatter-Based)
 Format: YAML v2.0
 ---

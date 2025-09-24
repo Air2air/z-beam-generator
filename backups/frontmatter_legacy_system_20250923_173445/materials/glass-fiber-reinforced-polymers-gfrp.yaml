@@ -1,0 +1,219 @@
+name: Glass Fiber Reinforced Polymers GFRP
+category: composite
+title: Laser Cleaning Glass Fiber Reinforced Polymers GFRP
+headline: Comprehensive technical guide for laser cleaning glass fiber reinforced
+  polymers gfrp composites
+description: Technical overview of Glass Fiber Reinforced Polymers GFRP composite
+  materials for laser cleaning applications, including optimal wavelength interaction
+  and industrial applications in surface preparation.
+keywords: glass fiber reinforced polymers gfrp, gfrp composite, laser ablation, laser
+  cleaning, non-contact cleaning, pulsed fiber laser, surface contamination removal,
+  composite material processing, surface restoration
+technicalProperties:
+  density:
+    min: 1.8
+    max: 2.2
+    unit: g/cm³
+  thermalConductivity:
+    min: 0.3
+    max: 0.5
+    unit: W/m·K
+  meltingPoint:
+    min: 1200.0
+    max: 1400.0
+    unit: °C
+  tensileStrength:
+    min: 300.0
+    max: 600.0
+    unit: MPa
+  hardness:
+    min: 80.0
+    max: 120.0
+    unit: HB
+  youngsModulus:
+    min: 40.0
+    max: 70.0
+    unit: GPa
+machineSettings:
+  powerRange:
+    min: 20.0
+    max: 100.0
+    unit: W
+  powerRangeNumeric: 60.0
+  powerRangeUnit: W
+  powerRangeMin: 20W
+  powerRangeMinNumeric: 20.0
+  powerRangeMax: 500W
+  powerRangeMaxNumeric: 500.0
+  pulseDuration:
+    min: 10.0
+    max: 50.0
+    unit: ns
+  pulseDurationNumeric: 30.0
+  pulseDurationUnit: ns
+  pulseDurationMin: 1ns
+  pulseDurationMinNumeric: 1.0
+  pulseDurationMax: 1000ns
+  pulseDurationMaxNumeric: 1000.0
+  wavelength:
+    value: 1064.0
+    unit: nm (primary), 355nm (optional)
+  wavelengthNumeric: 1064.0
+  wavelengthUnit: nm
+  wavelengthMin: 355nm
+  wavelengthMinNumeric: 355.0
+  wavelengthMax: 2940nm
+  wavelengthMaxNumeric: 2940.0
+  spotSize:
+    min: 0.1
+    max: 0.8
+    unit: mm
+  spotSizeNumeric: 0.45
+  spotSizeUnit: mm
+  spotSizeMin: 0.01mm
+  spotSizeMinNumeric: 0.01
+  spotSizeMax: 10mm
+  spotSizeMaxNumeric: 10.0
+  repetitionRate:
+    min: 20.0
+    max: 80.0
+    unit: kHz
+  repetitionRateNumeric: 50.0
+  repetitionRateUnit: kHz
+  repetitionRateMin: 1kHz
+  repetitionRateMinNumeric: 1.0
+  repetitionRateMax: 1000kHz
+  repetitionRateMaxNumeric: 1000.0
+  fluenceRange:
+    min: 0.5
+    max: 2.5
+    unit: J/cm²
+  fluenceRangeNumeric: 0.5
+  fluenceRangeUnit: J/cm²
+  fluenceRangeMin: 0.1J/cm²
+  fluenceRangeMinNumeric: 0.1
+  fluenceRangeMax: 50J/cm²
+  fluenceRangeMaxNumeric: 50.0
+  scanningSpeed:
+    min: 50.0
+    max: 500.0
+    unit: mm/s
+  scanningSpeedNumeric: 275.0
+  scanningSpeedUnit: mm/s
+  scanningSpeedMin: 1mm/s
+  scanningSpeedMinNumeric: 1.0
+  scanningSpeedMax: 5000mm/s
+  scanningSpeedMaxNumeric: 5000.0
+  beamProfile: Gaussian TEM00
+  beamProfileOptions:
+  - Gaussian TEM00
+  - Top-hat
+  - Donut
+  - Multi-mode
+  safetyClass: Class 4 (requires full enclosure)
+chemicalProperties:
+  symbol: GFRP
+  formula: SiO2-Polymer
+  materialType: composite
+applications:
+- industry: Electronics Manufacturing
+  detail: Removal of surface oxides and contaminants from GFRP circuit boards and
+    components
+- industry: Aerospace Components
+  detail: Precision cleaning of GFRP composite structures and thermal protection systems
+compatibility:
+- Epoxy Resins
+- Polyester Resins
+- Composite Adhesives
+composition:
+- Glass fibers (SiO2) 60-70%
+- Polymer matrix (epoxy/polyester) 30-40%
+- Additives and coupling agents 1-5%
+images:
+  hero:
+    alt: Glass Fiber Reinforced Polymers GFRP surface undergoing laser cleaning showing
+      precise contamination removal
+    url: /images/glass-fiber-reinforced-polymers-gfrp-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Glass Fiber Reinforced Polymers GFRP surface after laser
+      cleaning showing detailed fiber-matrix structure
+    url: /images/glass-fiber-reinforced-polymers-gfrp-laser-cleaning-micro.jpg
+environmentalImpact:
+- benefit: Chemical Solvent Elimination
+  description: Eliminates VOC emissions and hazardous chemical waste from traditional
+    cleaning methods
+- benefit: Water Conservation
+  description: Zero water consumption compared to aqueous cleaning processes
+- benefit: Energy Efficiency
+  description: 30% less energy consumption than thermal decomposition cleaning
+outcomes:
+- result: Surface Cleanliness Level
+  metric: Achieves ISO 8501-1 Sa 2.5 cleanliness standard
+- result: Material Removal Precision
+  metric: ±2μm accuracy with no fiber damage
+- result: Processing Speed
+  metric: 1-3 m²/hour cleaning rate depending on contamination level
+author: Todd Dunning
+regulatoryStandards: ISO 14125, ASTM D2584, IEC 60893
+substrateDescription: composite glass fiber reinforced polymers gfrp substrate
+technicalSpecifications:
+  contaminationSource: matrix degradation and surface contamination
+  thermalEffect: minimal thermal damage to matrix structure
+  wavelength: 1064nm (primary), 355nm (optional)
+  powerRange: 20-100W
+  pulseDuration: 10-50ns
+  spotSize: 0.1-0.8mm
+  repetitionRate: 20-80kHz
+migrationInfo:
+  reconciledAt: '2025-09-23T11:51:51.670751'
+  reconciliationVersion: 5.0-numeric-optimized
+  optimizations:
+    properties_reconciled: 6
+    fields_removed: 18
+    machine_settings_reconciled: 7
+    machine_fields_removed: 20
+    reconciliation_info_updated: true
+  structure: numeric-first-unified
+  previousMigrations:
+    reorganizedAt: '2025-09-23T11:45:11.415341'
+    reorganizationVersion: 4.0-optimal
+    optimizations:
+      fields_removed: 1
+      removed_fields:
+      - properties
+      technical_properties_optimized: false
+      machine_settings_optimized: true
+      logical_groupings_applied: true
+      optimal_ordering_applied: true
+      reorganization_info_updated: true
+    structure: content-first-optimized
+    previousMigrations:
+      normalizedAt: '2025-09-23T11:40:45.121104'
+      normalizationVersion: '3.0'
+      changes:
+        encoding_cleaned: true
+        chemical_properties_standardized: true
+        properties_migrated: 6
+        machine_settings_migrated: 7
+        author_standardized: true
+        migration_info_updated: true
+        fields_reordered: true
+author_object:
+  id: 1
+  name: Yi-Chun Lin
+  sex: f
+  title: Ph.D.
+  country: Taiwan
+  expertise: Laser Materials Processing
+  image: /images/author/yi-chun-lin.jpg
+prompt_chain_verification:
+  base_config_loaded: true
+  persona_config_loaded: true
+  formatting_config_loaded: true
+  ai_detection_config_loaded: true
+  persona_country: Taiwan
+  author_id: 1
+  verification_timestamp: '2025-09-19T05:21:59Z'
+  prompt_components_integrated: 4
+  human_authenticity_focus: true
+  cultural_adaptation_applied: true

@@ -1,0 +1,231 @@
+name: Zirconium
+category: metal
+title: Laser Cleaning Zirconium
+headline: Comprehensive technical guide for laser cleaning metal zirconium
+description: Technical overview of Zirconium for laser cleaning applications, including
+  optimal 1064nm wavelength interaction, and industrial applications in surface preparation.
+keywords: zirconium, zirconium metal, laser ablation, laser cleaning, non-contact
+  cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters,
+  thermal processing, surface restoration
+technicalProperties:
+  density:
+    original: 6.52 g/cm³
+    hasRange: false
+    value: 6.52
+    unit: g/cm³
+  thermalConductivity:
+    original: 22.7 W/m·K
+    hasRange: false
+    value: 22.7
+    unit: W/m·K
+  meltingPoint:
+    original: 1855°C
+    hasRange: false
+    value: 1855.0
+    unit: °C
+  tensileStrength:
+    original: 330 MPa
+    hasRange: false
+    value: 330.0
+    unit: MPa
+  hardness:
+    original: 125 HB
+    hasRange: false
+    value: 125.0
+    unit: HB
+  youngsModulus:
+    original: 88 GPa
+    hasRange: false
+    value: 88.0
+    unit: GPa
+machineSettings:
+  powerRange:
+    original: 50-200W
+    hasRange: true
+    min: 50.0
+    max: 200.0
+    unit: W
+    consolidatedValue: 125.0
+  powerRangeNumeric: 125.0
+  powerRangeUnit: W
+  powerRangeMin: 20W
+  powerRangeMinNumeric: 20.0
+  powerRangeMax: 500W
+  powerRangeMaxNumeric: 500.0
+  pulseDuration:
+    original: 20-100ns
+    hasRange: true
+    min: 20.0
+    max: 100.0
+    unit: ns
+    consolidatedValue: 60.0
+  pulseDurationNumeric: 60.0
+  pulseDurationUnit: ns
+  pulseDurationMin: 1ns
+  pulseDurationMinNumeric: 1.0
+  pulseDurationMax: 1000ns
+  pulseDurationMaxNumeric: 1000.0
+  wavelength:
+    original: 1064nm (primary), 532nm (optional)
+    hasRange: false
+    value: 1064.0
+    unit: nm (primary), 532nm (optional)
+  wavelengthNumeric: 1064.0
+  wavelengthUnit: nm
+  wavelengthMin: 355nm
+  wavelengthMinNumeric: 355.0
+  wavelengthMax: 2940nm
+  wavelengthMaxNumeric: 2940.0
+  spotSize:
+    original: 0.2-1.5mm
+    hasRange: true
+    min: 0.2
+    max: 1.5
+    unit: mm
+    consolidatedValue: 0.85
+  spotSizeNumeric: 0.85
+  spotSizeUnit: mm
+  spotSizeMin: 0.01mm
+  spotSizeMinNumeric: 0.01
+  spotSizeMax: 10mm
+  spotSizeMaxNumeric: 10.0
+  repetitionRate:
+    original: 20-100kHz
+    hasRange: true
+    min: 20.0
+    max: 100.0
+    unit: kHz
+    consolidatedValue: 60.0
+  repetitionRateNumeric: 60.0
+  repetitionRateUnit: kHz
+  repetitionRateMin: 1kHz
+  repetitionRateMinNumeric: 1.0
+  repetitionRateMax: 1000kHz
+  repetitionRateMaxNumeric: 1000.0
+  fluenceRange:
+    original: 1.0-4.5 J/cm²
+    hasRange: true
+    min: 1.0
+    max: 4.5
+    unit: J/cm²
+    consolidatedValue: 2.75
+  fluenceRangeNumeric: 1.0
+  fluenceRangeUnit: J/cm²
+  fluenceRangeMin: 0.1J/cm²
+  fluenceRangeMinNumeric: 0.1
+  fluenceRangeMax: 50J/cm²
+  fluenceRangeMaxNumeric: 50.0
+  scanningSpeed:
+    original: 50-500mm/s
+    hasRange: true
+    min: 50.0
+    max: 500.0
+    unit: mm/s
+    consolidatedValue: 275.0
+  scanningSpeedNumeric: 275.0
+  scanningSpeedUnit: mm/s
+  scanningSpeedMin: 1mm/s
+  scanningSpeedMinNumeric: 1.0
+  scanningSpeedMax: 5000mm/s
+  scanningSpeedMaxNumeric: 5000.0
+  beamProfile: Gaussian TEM00
+  beamProfileOptions:
+  - Gaussian TEM00
+  - Top-hat
+  - Donut
+  - Multi-mode
+  safetyClass: Class 4 (requires full enclosure)
+chemicalProperties:
+  symbol: Zr
+  formula: Zr
+  materialType: metal
+applications:
+- industry: Electronics Manufacturing
+  detail: Removal of surface oxides and contaminants from Zirconium substrates
+- industry: Aerospace Components
+  detail: Cleaning of thermal barrier coatings and metal matrix composites
+compatibility:
+- Stainless Steel
+- Titanium Alloys
+- Nickel-based Superalloys
+composition:
+- Zirconium (Zr) 99.6%
+- Trace elements (Si, Fe, Na, Mg)
+images:
+  hero:
+    alt: Zirconium surface undergoing laser cleaning showing precise contamination
+      removal
+    url: /images/zirconium-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Zirconium surface after laser cleaning showing detailed
+      surface structure
+    url: /images/zirconium-laser-cleaning-micro.jpg
+environmentalImpact:
+- benefit: Chemical Solvent Elimination
+  description: Reduces chemical usage by 100% compared to traditional solvent cleaning
+    methods
+- benefit: Water Conservation
+  description: Saves approximately 5000 liters of water per month in industrial applications
+- benefit: Energy Efficiency
+  description: Consumes 40% less energy than thermal cleaning processes
+outcomes:
+- result: Surface Cleanliness Level
+  metric: Achieves ISO 14644-1 Class 7 cleanliness standard
+- result: Material Removal Precision
+  metric: ±5μm accuracy with no substrate damage
+- result: Processing Speed
+  metric: 2-5 m²/hour cleaning rate depending on contamination level
+author: Ikmanda Roswati
+regulatoryStandards: ISO 18562, ASTM F2100, IEC 60601-1
+substrateDescription: metal zirconium substrate
+technicalSpecifications:
+  contaminationSource: oxidation and industrial pollutants
+  thermalEffect: minimal thermal effects with controlled heat input
+  wavelength: 1064nm (primary), 532nm (optional)
+  powerRange: 50-200W
+  pulseDuration: 20-100ns
+  spotSize: 0.2-1.5mm
+  repetitionRate: 20-100kHz
+migrationInfo:
+  reorganizedAt: '2025-09-23T11:45:09.620346'
+  reorganizationVersion: 4.0-optimal
+  optimizations:
+    fields_removed: 1
+    removed_fields:
+    - properties
+    technical_properties_optimized: false
+    machine_settings_optimized: true
+    logical_groupings_applied: true
+    optimal_ordering_applied: true
+    reorganization_info_updated: true
+  structure: content-first-optimized
+  previousMigrations:
+    normalizedAt: '2025-09-23T11:40:43.537962'
+    normalizationVersion: '3.0'
+    changes:
+      encoding_cleaned: true
+      chemical_properties_standardized: true
+      properties_migrated: 6
+      machine_settings_migrated: 7
+      author_standardized: true
+      migration_info_updated: true
+      fields_reordered: true
+author_object:
+  id: 1
+  name: Yi-Chun Lin
+  sex: f
+  title: Ph.D.
+  country: Taiwan
+  expertise: Laser Materials Processing
+  image: /images/author/yi-chun-lin.jpg
+prompt_chain_verification:
+  base_config_loaded: true
+  persona_config_loaded: true
+  formatting_config_loaded: true
+  ai_detection_config_loaded: true
+  persona_country: Taiwan
+  author_id: 1
+  verification_timestamp: '2025-09-19T06:33:13Z'
+  prompt_components_integrated: 4
+  human_authenticity_focus: true
+  cultural_adaptation_applied: true

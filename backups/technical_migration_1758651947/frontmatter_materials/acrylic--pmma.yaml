@@ -1,0 +1,51 @@
+name: Acrylic (PMMA)
+category: polymer
+technicalProperties:
+  density:
+    original: "1.17-1.20 g/cm\xB3"
+    hasRange: true
+    min: 1.17
+    max: 1.2
+    unit: "g/cm\xB3"
+    consolidatedValue: 1.185
+  thermalConductivity:
+    original: "0.17-0.19 W/(m\xB7K)"
+    hasRange: true
+    min: 0.17
+    max: 0.19
+    unit: "W/(m\xB7K)"
+    consolidatedValue: 0.18
+  tensileStrength:
+    original: 65-75 MPa
+    hasRange: true
+    min: 65.0
+    max: 75.0
+    unit: MPa
+    consolidatedValue: 70.0
+  youngsModulus:
+    original: 3.0-3.3 GPa
+    hasRange: true
+    min: 3.0
+    max: 3.3
+    unit: GPa
+    consolidatedValue: 3.15
+  electricalResistivity:
+    original: "10\xB9\u2076 \u03A9\xB7cm"
+    hasRange: false
+    value: 10.0
+    unit: ''
+  thermalExpansion:
+    original: "70-77\xD710\u207B\u2076/K"
+    hasRange: false
+    value: 70.0
+    unit: '-'
+  specificHeat:
+    original: "1.5 J/(g\xB7K)"
+    hasRange: false
+    value: 1.5
+    unit: "J/(g\xB7K)"
+migrationInfo:
+  migratedAt: '2025-09-23T11:19:47.925696'
+  sourceFile: materials.yaml
+  propertiesMigrated: 7
+  migrationVersion: '1.0'

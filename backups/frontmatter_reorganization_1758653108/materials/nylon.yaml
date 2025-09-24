@@ -1,0 +1,116 @@
+name: Nylon
+category: polymer
+title: Laser Cleaning Nylon
+headline: Comprehensive technical guide for laser cleaning polymer nylon
+description: Technical overview of Nylon for laser cleaning applications, including
+  optimal wavelength interaction and industrial applications in surface preparation.
+keywords: nylon, nylon polymer, laser ablation, laser cleaning, non-contact cleaning,
+  pulsed fiber laser, surface contamination removal, industrial laser parameters,
+  thermal processing, surface restoration
+chemicalProperties:
+  symbol: Ny
+  formula: Nylon
+  materialType: polymer
+technicalProperties:
+  density:
+    original: 1.13-1.15 g/cm³
+    hasRange: true
+    min: 1.13
+    max: 1.15
+    unit: g/cm³
+    consolidatedValue: 1.14
+  thermalConductivity:
+    original: 0.23-0.25 W/(m·K)
+    hasRange: true
+    min: 0.23
+    max: 0.25
+    unit: W/(m·K)
+    consolidatedValue: 0.24
+  tensileStrength:
+    original: 75-85 MPa
+    hasRange: true
+    min: 75.0
+    max: 85.0
+    unit: MPa
+    consolidatedValue: 80.0
+  youngsModulus:
+    original: 2.8-3.2 GPa
+    hasRange: true
+    min: 2.8
+    max: 3.2
+    unit: GPa
+    consolidatedValue: 3.0
+  electricalResistivity:
+    original: 10¹³-10¹⁵ Ω·cm
+    hasRange: false
+    value: 10.0
+    unit: ''
+  thermalExpansion:
+    original: 80-90×10⁻⁶/K
+    hasRange: false
+    value: 80.0
+    unit: '-'
+  specificHeat:
+    original: 1.7 J/(g·K)
+    hasRange: false
+    value: 1.7
+    unit: J/(g·K)
+machineSettings:
+  fluenceThreshold:
+    original: 0.3-0.8 J/cm²
+    hasRange: true
+    min: 0.3
+    max: 0.8
+    unit: J/cm²
+    consolidatedValue: 0.55
+  pulseDuration:
+    original: 95ns
+    hasRange: false
+    value: 95.0
+    unit: ns
+  wavelengthOptimal:
+    original: 1064 nm
+    hasRange: false
+    value: 1064.0
+    unit: nm
+  powerRange:
+    original: 75W
+    hasRange: false
+    value: 75.0
+    unit: W
+  repetitionRate:
+    original: 22kHz
+    hasRange: false
+    value: 22.0
+    unit: kHz
+  spotSize:
+    original: 0.5mm
+    hasRange: false
+    value: 0.5
+    unit: mm
+  laserType:
+    original: Pulsed fiber laser
+    hasRange: false
+    value: Pulsed fiber laser
+    unit: ''
+author: Alessandro Moretti
+migrationInfo:
+  normalizedAt: '2025-09-23T11:40:44.892936'
+  normalizationVersion: '3.0'
+  changes:
+    encoding_cleaned: true
+    title_generated: true
+    headline_generated: true
+    description_generated: true
+    keywords_generated: true
+    chemical_properties_standardized: true
+    machine_settings_migrated: 0
+    author_standardized: true
+    migration_info_updated: true
+    fields_reordered: true
+  previousMigrations:
+    migratedAt: '2025-09-23T11:25:48.480177'
+    sourceFile: materials.yaml
+    propertiesMigrated: 7
+    machineSettingsMigrated: 7
+    migrationVersion: '2.0'

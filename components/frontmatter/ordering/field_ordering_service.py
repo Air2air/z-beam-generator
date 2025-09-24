@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-Field Ordering Service
+Optimized Field Ordering Service
 
-Provides field ordering functionality for frontmatter YAML content with hierarchical organization.
-Extracted from the monolithic generator for better separation of concerns.
+Provides clean, logical field ordering for frontmatter YAML content.
+Eliminates scattered organization and creates optimal structure.
 """
 
 import logging
@@ -13,88 +13,74 @@ logger = logging.getLogger(__name__)
 
 
 class FieldOrderingService:
-    """Service for applying standardized field ordering to frontmatter data"""
+    """Service for applying optimized field ordering to frontmatter data"""
 
     @staticmethod
     def apply_field_ordering(frontmatter_data: Dict) -> Dict:
         """
-        Apply the standard field ordering for optimal readability and consistency.
+        Apply optimal field ordering for maximum readability and logical flow.
         
-        Organizes fields according to the proposal:
-        1. Basic Identification
-        2. Content Metadata
-        3. Chemical Classification
-        4. Material Properties (Grouped)
-        5. Material Composition
-        6. Laser Machine Settings (Grouped)
-        7. Applications
-        8. Compatibility
-        9. Regulatory Standards
-        10. Author Information
-        11. Visual Assets
-        12. Impact Metrics
+        Reorganized hierarchy:
+        1. Basic Identification (name, category)
+        2. Content Metadata (title, headline, description, keywords)
+        3. Chemical Properties (symbol, formula, materialType)
+        4. Physical Properties (organized grouping with clean structure)
+        5. Composition & Applications (practical information)
+        6. Machine Settings (laser parameters)
+        7. Standards & Compatibility (regulatory, compatibility)
+        8. Author & Visual Assets (metadata)
+        9. Impact Metrics (environmental, outcomes)
         
         Args:
             frontmatter_data: Dictionary of frontmatter fields to order
             
         Returns:
-            Dictionary with fields ordered according to the hierarchy
+            Dictionary with optimally organized fields
         """
         ordered_data = {}
         
         # === 1. BASIC IDENTIFICATION ===
-        if "name" in frontmatter_data:
-            ordered_data["name"] = frontmatter_data["name"]
-        if "category" in frontmatter_data:
-            ordered_data["category"] = frontmatter_data["category"]
-            
+        for field in ["name", "category"]:
+            if field in frontmatter_data:
+                ordered_data[field] = frontmatter_data[field]
+                
         # === 2. CONTENT METADATA ===
         for field in ["title", "headline", "description", "keywords"]:
             if field in frontmatter_data:
                 ordered_data[field] = frontmatter_data[field]
                 
-        # === 3. CHEMICAL CLASSIFICATION ===
+        # === 3. CHEMICAL PROPERTIES ===
         if "chemicalProperties" in frontmatter_data:
             ordered_data["chemicalProperties"] = frontmatter_data["chemicalProperties"]
             
-        # === 4. MATERIAL PROPERTIES (Grouped) ===
+        # === 4. PHYSICAL PROPERTIES (Clean Structure) ===
         if "properties" in frontmatter_data:
-            ordered_data["properties"] = FieldOrderingService._order_properties_groups(
+            ordered_data["properties"] = FieldOrderingService._create_clean_properties_structure(
                 frontmatter_data["properties"]
             )
             
-        # === 5. MATERIAL COMPOSITION ===
-        if "composition" in frontmatter_data:
-            ordered_data["composition"] = frontmatter_data["composition"]
-            
-        # === 6. LASER MACHINE SETTINGS (Grouped) ===
-        if "machineSettings" in frontmatter_data:
-            ordered_data["machineSettings"] = FieldOrderingService._order_machine_settings_groups(
-                frontmatter_data["machineSettings"]
-            )
-            
-        # === 7. APPLICATIONS ===
-        if "applications" in frontmatter_data:
-            ordered_data["applications"] = frontmatter_data["applications"]
-            
-        # === 8. COMPATIBILITY ===
-        if "compatibility" in frontmatter_data:
-            ordered_data["compatibility"] = frontmatter_data["compatibility"]
-            
-        # === 9. REGULATORY STANDARDS ===
-        if "regulatoryStandards" in frontmatter_data:
-            ordered_data["regulatoryStandards"] = frontmatter_data["regulatoryStandards"]
-            
-        # === 10. AUTHOR INFORMATION ===
-        for field in ["author", "author_object"]:
+        # === 5. COMPOSITION & APPLICATIONS ===
+        for field in ["composition", "applications"]:
             if field in frontmatter_data:
                 ordered_data[field] = frontmatter_data[field]
                 
-        # === 11. VISUAL ASSETS ===
-        if "images" in frontmatter_data:
-            ordered_data["images"] = frontmatter_data["images"]
+        # === 6. MACHINE SETTINGS ===
+        if "machineSettings" in frontmatter_data:
+            ordered_data["machineSettings"] = FieldOrderingService._create_clean_machine_settings_structure(
+                frontmatter_data["machineSettings"]
+            )
             
-        # === 12. IMPACT METRICS ===
+        # === 7. STANDARDS & COMPATIBILITY ===
+        for field in ["compatibility", "regulatoryStandards"]:
+            if field in frontmatter_data:
+                ordered_data[field] = frontmatter_data[field]
+                
+        # === 8. AUTHOR & VISUAL ASSETS ===
+        for field in ["author", "author_object", "images"]:
+            if field in frontmatter_data:
+                ordered_data[field] = frontmatter_data[field]
+                
+        # === 9. IMPACT METRICS ===
         for field in ["environmentalImpact", "outcomes"]:
             if field in frontmatter_data:
                 ordered_data[field] = frontmatter_data[field]
@@ -104,8 +90,66 @@ class FieldOrderingService:
             if key not in ordered_data:
                 ordered_data[key] = value
                 
-        logger.debug(f"Applied field ordering to {len(ordered_data)} fields")
+        logger.debug(f"Applied optimal field ordering to {len(ordered_data)} fields")
         return ordered_data
+
+    @staticmethod
+    def _create_clean_properties_structure(properties: Dict) -> Dict:
+        """Create clean properties structure with logical grouping and proper formatting"""
+        clean_properties = {}
+        
+        # Property groups in logical order
+        property_groups = [
+            "density", "meltingPoint", "thermalConductivity", 
+            "tensileStrength", "hardness", "youngsModulus"
+        ]
+        
+        # Add each property group cleanly with proper spacing
+        for prop in property_groups:
+            if prop in properties:
+                clean_properties[prop] = properties[prop]
+                
+                # Add associated fields in order with proper separation
+                for suffix in ["Unit", "Range", "Percentile"]:
+                    field_name = f"{prop}{suffix}"
+                    if field_name in properties:
+                        clean_properties[field_name] = properties[field_name]
+        
+        # Add any remaining properties
+        for key, value in properties.items():
+            if key not in clean_properties:
+                clean_properties[key] = value
+                
+        return clean_properties
+
+    @staticmethod
+    def _create_clean_machine_settings_structure(machine_settings: Dict) -> Dict:
+        """Create clean machine settings structure with logical grouping"""
+        clean_settings = {}
+        
+        # Machine setting groups in logical order
+        setting_groups = [
+            "powerRange", "wavelength", "pulseDuration", "spotSize",
+            "repetitionRate", "fluenceRange", "scanningSpeed"
+        ]
+        
+        # Add each setting group cleanly
+        for setting in setting_groups:
+            if setting in machine_settings:
+                clean_settings[setting] = machine_settings[setting]
+                
+                # Add associated fields in order
+                for suffix in ["Unit", "Range"]:
+                    field_name = f"{setting}{suffix}"
+                    if field_name in machine_settings:
+                        clean_settings[field_name] = machine_settings[field_name]
+        
+        # Add any remaining settings
+        for key, value in machine_settings.items():
+            if key not in clean_settings:
+                clean_settings[key] = value
+                
+        return clean_settings
 
     @staticmethod
     def _order_properties_groups(properties: Dict) -> Dict:

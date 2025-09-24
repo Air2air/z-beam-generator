@@ -1,0 +1,64 @@
+name: Gallium Nitride
+category: semiconductor
+technicalProperties:
+  density:
+    original: "6.15 g/cm\xB3"
+    hasRange: false
+    value: 6.15
+    unit: "g/cm\xB3"
+    categoryMin: "2.3 g/cm\xB3"
+    categoryMax: "5.3 g/cm\xB3"
+  thermalConductivity:
+    original: "130-230 W/(m\xB7K)"
+    hasRange: true
+    min: 130.0
+    max: 230.0
+    unit: "W/(m\xB7K)"
+    consolidatedValue: 180.0
+    categoryMin: "1.5 W/(m\xB7K)m\xB7K"
+    categoryMax: "490 W/(m\xB7K)m\xB7K"
+  hardness:
+    original: 15-20 GPa
+    hasRange: true
+    min: 15.0
+    max: 20.0
+    unit: GPa
+    consolidatedValue: 17.5
+    categoryMin: 900 HV
+    categoryMax: 2800 HV
+  youngsModulus:
+    original: 295 GPa
+    hasRange: false
+    value: 295.0
+    unit: GPa
+    categoryMin: 130 GPa
+    categoryMax: 450 GPa
+  electricalResistivity:
+    original: "10\u207B\xB2 to 10\xB9\u2070 \u03A9\xB7cm"
+    hasRange: false
+    value: 10.0
+    unit: "\u207B\xB2 to"
+  thermalExpansion:
+    original: "5.6\xD710\u207B\u2076/K"
+    hasRange: false
+    value: 5.6
+    unit: ''
+    categoryMin: "2 \xB5m/m\xB7K"
+    categoryMax: "6 \xB5m/m\xB7K"
+  specificHeat:
+    original: "0.49 J/(g\xB7K)"
+    hasRange: false
+    value: 0.49
+    unit: "J/(g\xB7K)"
+    categoryMin: "0.3 J/g\xB7K"
+    categoryMax: "0.7 J/g\xB7K"
+  dielectricConstant:
+    original: '8.9'
+    hasRange: false
+    value: 8.9
+    unit: ''
+migrationInfo:
+  migratedAt: '2025-09-23T11:19:47.903154'
+  sourceFile: materials.yaml
+  propertiesMigrated: 8
+  migrationVersion: '1.0'

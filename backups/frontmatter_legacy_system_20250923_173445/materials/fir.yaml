@@ -1,0 +1,218 @@
+name: Fir
+category: wood
+title: Laser Cleaning Fir
+headline: Comprehensive technical guide for laser cleaning wood fir
+description: Technical overview of Fir wood for laser cleaning applications, including
+  optimal 1064nm wavelength interaction with cellulose structure, and industrial applications
+  in wood surface preparation.
+keywords: fir, fir wood, laser ablation, laser cleaning, non-contact cleaning, pulsed
+  fiber laser, wood surface cleaning, industrial laser parameters, wood restoration,
+  surface preparation
+technicalProperties:
+  density:
+    min: 0.45
+    max: 0.55
+    unit: g/cm³
+  thermalConductivity:
+    value: 0.12
+    unit: W/m·K
+  meltingPoint:
+    min: 300.0
+    max: 500.0
+    unit: °C (decomposition)
+  tensileStrength:
+    min: 70.0
+    max: 100.0
+    unit: MPa
+  hardness:
+    min: 2.0
+    max: 4.0
+    unit: HB
+  youngsModulus:
+    min: 10.0
+    max: 12.0
+    unit: GPa
+machineSettings:
+  powerRange:
+    min: 10.0
+    max: 50.0
+    unit: W
+  powerRangeNumeric: 30.0
+  powerRangeUnit: W
+  powerRangeMin: 20W
+  powerRangeMinNumeric: 20.0
+  powerRangeMax: 500W
+  powerRangeMaxNumeric: 500.0
+  pulseDuration:
+    min: 50.0
+    max: 200.0
+    unit: ns
+  pulseDurationNumeric: 125.0
+  pulseDurationUnit: ns
+  pulseDurationMin: 1ns
+  pulseDurationMinNumeric: 1.0
+  pulseDurationMax: 1000ns
+  pulseDurationMaxNumeric: 1000.0
+  wavelength:
+    value: 1064.0
+    unit: nm (primary), 355nm (optional)
+  wavelengthNumeric: 1064.0
+  wavelengthUnit: nm
+  wavelengthMin: 355nm
+  wavelengthMinNumeric: 355.0
+  wavelengthMax: 2940nm
+  wavelengthMaxNumeric: 2940.0
+  spotSize:
+    min: 0.5
+    max: 3.0
+    unit: mm
+  spotSizeNumeric: 1.75
+  spotSizeUnit: mm
+  spotSizeMin: 0.01mm
+  spotSizeMinNumeric: 0.01
+  spotSizeMax: 10mm
+  spotSizeMaxNumeric: 10.0
+  repetitionRate:
+    min: 10.0
+    max: 50.0
+    unit: kHz
+  repetitionRateNumeric: 30.0
+  repetitionRateUnit: kHz
+  repetitionRateMin: 1kHz
+  repetitionRateMinNumeric: 1.0
+  repetitionRateMax: 1000kHz
+  repetitionRateMaxNumeric: 1000.0
+  fluenceRange:
+    min: 0.5
+    max: 2.0
+    unit: J/cm²
+  fluenceRangeNumeric: 0.5
+  fluenceRangeUnit: J/cm²
+  fluenceRangeMin: 0.1J/cm²
+  fluenceRangeMinNumeric: 0.1
+  fluenceRangeMax: 50J/cm²
+  fluenceRangeMaxNumeric: 50.0
+  scanningSpeed:
+    min: 50.0
+    max: 500.0
+    unit: mm/s
+  scanningSpeedNumeric: 275.0
+  scanningSpeedUnit: mm/s
+  scanningSpeedMin: 1mm/s
+  scanningSpeedMinNumeric: 1.0
+  scanningSpeedMax: 5000mm/s
+  scanningSpeedMaxNumeric: 5000.0
+  beamProfile: Gaussian TEM00
+  beamProfileOptions:
+  - Gaussian TEM00
+  - Top-hat
+  - Donut
+  - Multi-mode
+  safetyClass: Class 4 (requires full enclosure)
+chemicalProperties:
+  symbol: Fir
+  formula: C6H10O5
+  materialType: wood
+applications:
+- industry: Wood Manufacturing
+  detail: Removal of surface contaminants, resins, and oxidation from fir wood surfaces
+- industry: Restoration & Conservation
+  detail: Gentle cleaning of historical fir wood artifacts and architectural elements
+compatibility:
+- Wood Finishes
+- Wood Preservatives
+- Traditional Wood Adhesives
+composition:
+- Cellulose (C6H10O5) 45-50%
+- Lignin 25-30%
+- Hemicellulose 20-25%
+- Extractives 2-5%
+images:
+  hero:
+    alt: Fir wood surface undergoing laser cleaning showing precise contamination
+      removal
+    url: /images/fir-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of fir wood surface after laser cleaning showing detailed
+      grain structure
+    url: /images/fir-laser-cleaning-micro.jpg
+environmentalImpact:
+- benefit: Chemical Solvent Elimination
+  description: Reduces chemical usage by 100% compared to traditional wood cleaning
+    solvents
+- benefit: Water Conservation
+  description: Eliminates water usage completely in wood cleaning processes
+- benefit: Waste Reduction
+  description: Produces no secondary waste streams from cleaning operations
+outcomes:
+- result: Surface Cleanliness Level
+  metric: Achieves complete removal of surface contaminants without damaging wood
+    fibers
+- result: Material Removal Precision
+  metric: Selective removal of contaminants while preserving original wood surface
+- result: Processing Speed
+  metric: 1-3 m²/hour cleaning rate depending on contamination level and wood density
+author: Alessandro Moretti
+regulatoryStandards: ISO 13061, ASTM D143, EN 350
+substrateDescription: wood fir substrate
+technicalSpecifications:
+  contaminationSource: biological contamination and surface coatings
+  thermalEffect: controlled thermal exposure preventing carbonization
+  wavelength: 1064nm (primary), 355nm (optional)
+  powerRange: 10-50W
+  pulseDuration: 50-200ns
+  spotSize: 0.5-3.0mm
+  repetitionRate: 10-50kHz
+migrationInfo:
+  reconciledAt: '2025-09-23T11:51:49.473723'
+  reconciliationVersion: 5.0-numeric-optimized
+  optimizations:
+    properties_reconciled: 6
+    fields_removed: 17
+    machine_settings_reconciled: 7
+    machine_fields_removed: 20
+    reconciliation_info_updated: true
+  structure: numeric-first-unified
+  previousMigrations:
+    reorganizedAt: '2025-09-23T11:45:08.725795'
+    reorganizationVersion: 4.0-optimal
+    optimizations:
+      fields_removed: 1
+      removed_fields:
+      - properties
+      technical_properties_optimized: false
+      machine_settings_optimized: true
+      logical_groupings_applied: true
+      optimal_ordering_applied: true
+      reorganization_info_updated: true
+    structure: content-first-optimized
+    previousMigrations:
+      normalizedAt: '2025-09-23T11:40:42.736734'
+      normalizationVersion: '3.0'
+      changes:
+        encoding_cleaned: true
+        chemical_properties_standardized: true
+        properties_migrated: 6
+        machine_settings_migrated: 7
+        author_standardized: true
+        migration_info_updated: true
+        fields_reordered: true
+author_object:
+  id: 4
+  name: Todd Dunning
+  sex: m
+  title: MA
+  country: United States (California)
+  expertise: Optical Materials for Laser Systems
+  image: /images/author/todd-dunning.jpg
+prompt_chain_verification:
+  base_config_loaded: true
+  persona_config_loaded: true
+  formatting_config_loaded: true
+  ai_detection_config_loaded: true
+  persona_country: United States (California)
+  author_id: 4
+  verification_timestamp: '2025-09-19T05:17:21Z'
+  prompt_components_integrated: 4
+  human_authenticity_focus: true
+  cultural_adaptation_applied: true

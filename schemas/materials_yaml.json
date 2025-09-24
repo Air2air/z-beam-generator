@@ -1,0 +1,337 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Materials.YAML Schema",
+  "description": "Complete schema for materials.yaml database structure with comprehensive material properties",
+  "type": "object",
+  "required": ["materials"],
+  "properties": {
+    "category_ranges": {
+      "type": "object",
+      "description": "Category-specific property ranges for validation and percentile calculations",
+      "patternProperties": {
+        "^(metal|ceramic|composite|semiconductor|glass|stone|wood|plastic|masonry)$": {
+          "type": "object",
+          "properties": {
+            "density": {
+              "$ref": "#/definitions/PropertyRange"
+            },
+            "tensileStrength": {
+              "$ref": "#/definitions/PropertyRange"
+            },
+            "thermalConductivity": {
+              "$ref": "#/definitions/PropertyRange"
+            },
+            "thermalDestructionPoint": {
+              "$ref": "#/definitions/PropertyRange"
+            },
+            "hardness": {
+              "$ref": "#/definitions/PropertyRange"
+            },
+            "youngsModulus": {
+              "$ref": "#/definitions/PropertyRange"
+            },
+            "thermalExpansion": {
+              "$ref": "#/definitions/PropertyRange"
+            },
+            "specificHeat": {
+              "$ref": "#/definitions/PropertyRange"
+            },
+            "laserAbsorption": {
+              "$ref": "#/definitions/PropertyRange"
+            },
+            "laserReflectivity": {
+              "$ref": "#/definitions/PropertyRange"
+            },
+            "thermalDiffusivity": {
+              "$ref": "#/definitions/PropertyRange"
+            },
+            "thermalDestructionType": {
+              "type": "string",
+              "enum": ["melting", "decomposition"]
+            }
+          }
+        }
+      }
+    },
+    "material_index": {
+      "type": "object",
+      "description": "Quick reference index of all materials",
+      "patternProperties": {
+        ".*": {
+          "type": "object",
+          "properties": {
+            "category": {
+              "type": "string",
+              "enum": ["metal", "ceramic", "composite", "semiconductor", "glass", "stone", "wood", "plastic", "masonry"]
+            },
+            "subcategory": {
+              "type": "string"
+            },
+            "complexity": {
+              "type": "string",
+              "enum": ["low", "medium", "high"]
+            },
+            "author_id": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 4
+            }
+          },
+          "required": ["category", "complexity", "author_id"]
+        }
+      }
+    },
+    "materials": {
+      "type": "object",
+      "description": "Hierarchical material database organized by category",
+      "patternProperties": {
+        "^(metal|ceramic|composite|semiconductor|glass|stone|wood|plastic|masonry)$": {
+          "type": "object",
+          "properties": {
+            "processing_priority": {
+              "type": "string",
+              "enum": ["high", "medium", "low"]
+            },
+            "items": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Material"
+              }
+            }
+          },
+          "required": ["items"]
+        }
+      }
+    }
+  },
+  "definitions": {
+    "PropertyRange": {
+      "type": "object",
+      "properties": {
+        "min": {
+          "type": "string",
+          "description": "Minimum value with units"
+        },
+        "max": {
+          "type": "string", 
+          "description": "Maximum value with units"
+        }
+      },
+      "required": ["min", "max"]
+    },
+    "Material": {
+      "type": "object",
+      "required": ["name", "author_id", "complexity", "difficulty_score", "category", "formula", "symbol"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Material name"
+        },
+        "author_id": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4,
+          "description": "Author ID from authors.json"
+        },
+        "complexity": {
+          "type": "string",
+          "enum": ["low", "medium", "high"],
+          "description": "Processing complexity level"
+        },
+        "difficulty_score": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5,
+          "description": "Difficulty score for laser cleaning"
+        },
+        "category": {
+          "type": "string",
+          "enum": ["metal", "ceramic", "composite", "semiconductor", "glass", "stone", "wood", "plastic", "masonry"],
+          "description": "Material category"
+        },
+        "formula": {
+          "type": "string",
+          "description": "Chemical formula"
+        },
+        "symbol": {
+          "type": "string",
+          "description": "Chemical symbol or abbreviation"
+        },
+        "title": {
+          "type": "string",
+          "description": "SEO title for the material"
+        },
+        "headline": {
+          "type": "string",
+          "description": "Marketing headline"
+        },
+        "description": {
+          "type": "string",
+          "description": "Technical description"
+        },
+        "keywords": {
+          "type": "string",
+          "description": "SEO keywords"
+        },
+        "machine_settings": {
+          "$ref": "#/definitions/MachineSettings"
+        },
+        "applications": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "List of applications"
+        },
+        "industry_tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Industry categories"
+        },
+        "density": {
+          "type": "string",
+          "description": "Density with units"
+        },
+        "thermal_conductivity": {
+          "type": "string",
+          "description": "Thermal conductivity with units"
+        },
+        "thermal_expansion": {
+          "type": "string",
+          "description": "Thermal expansion with units"
+        },
+        "tensile_strength": {
+          "type": "string",
+          "description": "Tensile strength with units"
+        },
+        "youngs_modulus": {
+          "type": "string",
+          "description": "Young's modulus with units"
+        },
+        "electrical_resistivity": {
+          "type": "string",
+          "description": "Electrical resistivity with units"
+        },
+        "regulatory_standards": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Applicable regulatory standards"
+        },
+        "compatibility": {
+          "$ref": "#/definitions/Compatibility"
+        },
+        "compatible_laser_types": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Compatible laser types"
+        },
+        "optimal_wavelength": {
+          "type": "string",
+          "description": "Optimal laser wavelength"
+        },
+        "absorption_characteristic": {
+          "type": "string",
+          "description": "Material absorption characteristics"
+        },
+        "thermal_response": {
+          "type": "string",
+          "description": "Thermal response behavior"
+        },
+        "processing_efficiency": {
+          "type": "object",
+          "properties": {
+            "speed": {
+              "type": "string"
+            },
+            "threshold": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "MachineSettings": {
+      "type": "object",
+      "description": "Laser machine settings for material processing",
+      "properties": {
+        "fluence_threshold": {
+          "type": "string",
+          "description": "Fluence threshold with units"
+        },
+        "pulse_duration": {
+          "type": "string",
+          "description": "Pulse duration range with units"
+        },
+        "wavelength_optimal": {
+          "type": "string",
+          "description": "Optimal wavelength"
+        },
+        "power_range": {
+          "type": "string",
+          "description": "Power range with units"
+        },
+        "repetition_rate": {
+          "type": "string",
+          "description": "Repetition rate range with units"
+        },
+        "spot_size": {
+          "type": "string",
+          "description": "Spot size range with units"
+        },
+        "laser_type": {
+          "type": "string",
+          "description": "Recommended laser type"
+        },
+        "ablation_threshold": {
+          "type": "string",
+          "description": "Ablation threshold with units"
+        },
+        "thermal_damage_threshold": {
+          "type": "string",
+          "description": "Thermal damage threshold with units"
+        },
+        "processing_speed": {
+          "type": "string",
+          "description": "Processing speed range with units"
+        },
+        "surface_roughness_change": {
+          "type": "string",
+          "description": "Surface roughness change"
+        }
+      }
+    },
+    "Compatibility": {
+      "type": "object",
+      "description": "Material compatibility information",
+      "properties": {
+        "laser_types": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Compatible laser types"
+        },
+        "surface_treatments": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Compatible surface treatments"
+        },
+        "incompatible_conditions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Incompatible conditions or limitations"
+        }
+      }
+    }
+  }
+}

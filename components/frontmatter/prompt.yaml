@@ -7,6 +7,15 @@ template: |
 
   REQUIRED OUTPUT FORMAT: Return ONLY the YAML content between --- markers. No additional text before or after.
 
+  CRITICAL YAML FORMATTING RULES:
+  1. Use double quotes for ALL string values containing special characters, spaces, or punctuation
+  2. For multi-line descriptions, use the single-line quoted format: "text content here"
+  3. Keep keywords on a single line within quotes
+  4. Ensure proper indentation (2 spaces per level)
+  5. Never break quoted strings across multiple lines
+  6. Always include proper spacing after colons: "key: value"
+  7. Do NOT include any [RESEARCH:...] placeholder text - provide actual researched values
+
   RESEARCH REQUIREMENTS:
   - Find ACTUAL density, melting point, thermal conductivity, hardness, tensile strength for {subject}
   - Research REAL industrial applications where {subject} laser cleaning is used
@@ -21,22 +30,22 @@ template: |
   ---
   name: "{subject}"
   applications:
-  - industry: "[RESEARCH: Real industry that uses {subject} laser cleaning]"
-    detail: "[RESEARCH: Specific application details for {subject}]"
-  - industry: "[RESEARCH: Another real industry application]"
-    detail: "[RESEARCH: Specific technical process details]"
+  - industry: "Real industry that uses {subject} laser cleaning"
+    detail: "Specific application details for {subject}"
+  - industry: "Another real industry application"
+    detail: "Specific technical process details"
   technicalSpecifications:
-    powerRange: "[RESEARCH: Actual power range for {subject} laser cleaning]"
-    pulseDuration: "[RESEARCH: Actual pulse duration for {subject}]"
-    wavelength: "[RESEARCH: Optimal wavelength(s) for {subject}]"
-    spotSize: "[RESEARCH: Typical spot sizes for {subject} processing]"
-    repetitionRate: "[RESEARCH: Actual rep rates for {subject}]"
-    fluenceRange: "[RESEARCH: Actual fluence threshold for {subject}]"
-    scanningSpeed: "[RESEARCH: Optimal scanning speeds for {subject} laser cleaning]"
-    beamProfile: "[RESEARCH: Optimal beam profile for {subject} processing]"
-    beamProfileOptions: "[RESEARCH: Available beam profiles for {subject} processing]"
-    safetyClass: "[RESEARCH: Required laser safety class for {subject} processing]"
-  description: "[RESEARCH: Technical description specific to {subject} laser cleaning properties and applications]"
+    powerRange: "Actual power range for {subject} laser cleaning"
+    pulseDuration: "Actual pulse duration for {subject}"
+    wavelength: "Optimal wavelength(s) for {subject}"
+    spotSize: "Typical spot sizes for {subject} processing"
+    repetitionRate: "Actual rep rates for {subject}"
+    fluenceRange: "Actual fluence threshold for {subject}"
+    scanningSpeed: "Optimal scanning speeds for {subject} laser cleaning"
+    beamProfile: "Optimal beam profile for {subject} processing"
+    beamProfileOptions: "Available beam profiles for {subject} processing"
+    safetyClass: "Required laser safety class for {subject} processing"
+  description: "Technical description specific to {subject} laser cleaning properties and applications"
   author: "{author_name}"
   author_object:
     id: {author_id}
@@ -53,23 +62,23 @@ template: |
     formula: "{material_formula}"
     materialType: "{material_type}"
   properties:
-    density: "[RESEARCH: Actual density of {subject} with proper units]"
-    meltingPoint: "[RESEARCH: Actual melting point of {subject}]"
-    thermalConductivity: "[RESEARCH: Actual thermal conductivity of {subject}]"
-    tensileStrength: "[RESEARCH: Actual tensile strength of {subject}]"
-    hardness: "[RESEARCH: Actual hardness of {subject} with proper scale]"
-    youngsModulus: "[RESEARCH: Actual Young's modulus of {subject}]"
-    laserType: "[RESEARCH: Optimal laser type for {subject}]"
-    wavelength: "[RESEARCH: Optimal wavelength for {subject} absorption]"
-    fluenceRange: "[RESEARCH: Actual damage/ablation threshold for {subject}]"
+    density: "Actual density of {subject} with proper units"
+    meltingPoint: "Actual melting point of {subject}"
+    thermalConductivity: "Actual thermal conductivity of {subject}"
+    tensileStrength: "Actual tensile strength of {subject}"
+    hardness: "Actual hardness of {subject} with proper scale"
+    youngsModulus: "Actual Young's modulus of {subject}"
+    laserType: "Optimal laser type for {subject}"
+    wavelength: "Optimal wavelength for {subject} absorption"
+    fluenceRange: "Actual damage/ablation threshold for {subject}"
     chemicalFormula: "{material_formula}"
   composition:
-  - "[RESEARCH: Actual primary component of {subject} with percentage]"
-  - "[RESEARCH: Secondary components of {subject} with percentages]"
+  - "Actual primary component of {subject} with percentage"
+  - "Secondary components of {subject} with percentages"
   compatibility:
-  - "[RESEARCH: Materials actually compatible with {subject} in laser processing]"
-  - "[RESEARCH: Materials that process similarly to {subject}]"
-  regulatoryStandards: "[RESEARCH: Actual regulatory standards for {subject} laser processing]"
+  - "Materials actually compatible with {subject} in laser processing"
+  - "Materials that process similarly to {subject}"
+  regulatoryStandards: "Actual regulatory standards for {subject} laser processing"
   # CRITICAL: Use EXACT image format with structured hero/micro layout and standardized naming
   images:
     hero:
@@ -81,19 +90,19 @@ template: |
   title: "{subject} Laser Cleaning"
   headline: "Comprehensive technical guide for laser cleaning {category} {subject_lowercase}"
   environmentalImpact:
-  - benefit: "[RESEARCH: Specific environmental benefit for {subject} laser cleaning]"
-    description: "[RESEARCH: Quantified environmental impact for {subject}]"
-  - benefit: "[RESEARCH: Another environmental benefit specific to {subject}]"
-    description: "[RESEARCH: Specific metrics for {subject} environmental impact]"
+  - benefit: "Specific environmental benefit for {subject} laser cleaning"
+    description: "Quantified environmental impact for {subject}"
+  - benefit: "Another environmental benefit specific to {subject}"
+    description: "Specific metrics for {subject} environmental impact"
   outcomes:
-  - result: "[RESEARCH: Actual achievable result for {subject} laser cleaning]"
-    metric: "[RESEARCH: Specific measured outcome for {subject}]"
-  - result: "[RESEARCH: Processing capability for {subject}]"
-    metric: "[RESEARCH: Actual processing speeds/accuracy for {subject}]"
+  - result: "Actual achievable result for {subject} laser cleaning"
+    metric: "Specific measured outcome for {subject}"
+  - result: "Processing capability for {subject}"
+    metric: "Actual processing speeds/accuracy for {subject}"
   - result: "Surface roughness before treatment"
-    metric: "[RESEARCH: Use material-specific manufacturing surface roughness for {subject} only. Do not include other materials.]"
+    metric: "Use material-specific manufacturing surface roughness for {subject} only"
   - result: "Surface roughness after treatment"
-    metric: "[RESEARCH: Use material-specific post-laser cleaning surface roughness for {subject} only. Do not include other materials.]"
+    metric: "Use material-specific post-laser cleaning surface roughness for {subject} only"
   prompt_chain_verification:
     base_config_loaded: true
     persona_config_loaded: true
@@ -120,6 +129,8 @@ template: |
   - Applications must be real industries using {subject} laser cleaning
   - Laser parameters must be optimized for {subject} material properties
   - Environmental impact must be specific to {subject} vs traditional {subject} cleaning methods
+  - Do NOT include any [RESEARCH:...] text in your output - provide actual values only
+  - All string values must be properly quoted and formatted as valid YAML
 
   CRITICAL IMAGE FORMAT RULES:
   1. {subject_slug} MUST match the filename exactly (without .md extension)

@@ -1,0 +1,276 @@
+name: Plywood
+category: wood
+title: Laser Cleaning Plywood
+headline: Comprehensive technical guide for laser cleaning wood plywood
+description: Technical overview of Plywood, C6H10O5+Adhesive, for laser cleaning applications,
+  including optimal 1064nm wavelength interaction, and industrial applications in
+  surface preparation.
+keywords: plywood, plywood wood, laser ablation, laser cleaning, non-contact cleaning,
+  pulsed fiber laser, surface contamination removal, industrial laser parameters,
+  thermal processing, surface restoration
+chemicalProperties:
+  symbol: Plywood
+  formula: C6H10O5+Adhesive
+  materialType: wood
+properties:
+  density: 0.5-0.7 g/cm³
+  densityNumeric: 0.6
+  densityUnit: g/cm³
+  densityMin: 0.3 g/cm³
+  densityMinNumeric: 0.3
+  densityMax: 0.9 g/cm³
+  densityMaxNumeric: 0.9
+  densityPercentile: 42.1
+  meltingPoint: 180-250°C
+  meltingPointNumeric: 215.0
+  meltingPointUnit: °C
+  meltingPercentile: 18.5
+  thermalConductivity: 0.12 W/m·K
+  thermalConductivityNumeric: 0.12
+  thermalConductivityUnit: W/m·K
+  thermalPercentile: 5.2
+  tensileStrength: 30-50 MPa
+  tensileStrengthNumeric: 40.0
+  tensileStrengthUnit: MPa
+  tensilePercentile: 8.3
+  hardness: 2-4 HB
+  hardnessNumeric: 3.0
+  hardnessUnit: HB
+  hardnessMin: 1 HB
+  hardnessMinNumeric: 1.0
+  hardnessMax: 6 HB
+  hardnessMaxNumeric: 6.0
+  hardnessPercentile: 2.0
+  youngsModulus: 8-12 GPa
+  youngsModulusNumeric: 10.0
+  youngsModulusUnit: GPa
+  modulusMin: 5 GPa
+  modulusMinNumeric: 5.0
+  modulusMinUnit: GPa
+  modulusMax: 15 GPa
+  modulusMaxNumeric: 15.0
+  modulusMaxUnit: GPa
+  modulusPercentile: 12.0
+  laserType: Pulsed Fiber Laser
+  wavelength: 1064nm
+  fluenceRange: 0.5-2.0 J/cm²
+  chemicalFormula: C6H10O5+Adhesive
+technicalProperties:
+  density:
+    original: 0.5-0.7 g/cm³
+    hasRange: true
+    min: 0.5
+    max: 0.7
+    unit: g/cm³
+    consolidatedValue: 0.6
+  thermalConductivity:
+    original: 0.12 W/m·K
+    hasRange: false
+    value: 0.12
+    unit: W/m·K
+  meltingPoint:
+    original: 180-250°C
+    hasRange: true
+    min: 180.0
+    max: 250.0
+    unit: °C
+    consolidatedValue: 215.0
+  tensileStrength:
+    original: 30-50 MPa
+    hasRange: true
+    min: 30.0
+    max: 50.0
+    unit: MPa
+    consolidatedValue: 40.0
+  hardness:
+    original: 2-4 HB
+    hasRange: true
+    min: 2.0
+    max: 4.0
+    unit: HB
+    consolidatedValue: 3.0
+  youngsModulus:
+    original: 8-12 GPa
+    hasRange: true
+    min: 8.0
+    max: 12.0
+    unit: GPa
+    consolidatedValue: 10.0
+composition:
+- Cellulose (C6H10O5) 40-50%
+- Lignin 20-30%
+- Hemicellulose 15-25%
+- Adhesives (urea-formaldehyde, phenol-formaldehyde) 5-10%
+machineSettings:
+  powerRange:
+    original: 20-100W
+    hasRange: true
+    min: 20.0
+    max: 100.0
+    unit: W
+    consolidatedValue: 60.0
+  powerRangeNumeric: 60.0
+  powerRangeUnit: W
+  powerRangeMin: 20W
+  powerRangeMinNumeric: 20.0
+  powerRangeMax: 500W
+  powerRangeMaxNumeric: 500.0
+  pulseDuration:
+    original: 50-200ns
+    hasRange: true
+    min: 50.0
+    max: 200.0
+    unit: ns
+    consolidatedValue: 125.0
+  pulseDurationNumeric: 125.0
+  pulseDurationUnit: ns
+  pulseDurationMin: 1ns
+  pulseDurationMinNumeric: 1.0
+  pulseDurationMax: 1000ns
+  pulseDurationMaxNumeric: 1000.0
+  wavelength:
+    original: 1064nm (primary), 532nm (optional)
+    hasRange: false
+    value: 1064.0
+    unit: nm (primary), 532nm (optional)
+  wavelengthNumeric: 1064.0
+  wavelengthUnit: nm
+  wavelengthMin: 355nm
+  wavelengthMinNumeric: 355.0
+  wavelengthMax: 2940nm
+  wavelengthMaxNumeric: 2940.0
+  spotSize:
+    original: 0.5-3.0mm
+    hasRange: true
+    min: 0.5
+    max: 3.0
+    unit: mm
+    consolidatedValue: 1.75
+  spotSizeNumeric: 1.75
+  spotSizeUnit: mm
+  spotSizeMin: 0.01mm
+  spotSizeMinNumeric: 0.01
+  spotSizeMax: 10mm
+  spotSizeMaxNumeric: 10.0
+  repetitionRate:
+    original: 10-50kHz
+    hasRange: true
+    min: 10.0
+    max: 50.0
+    unit: kHz
+    consolidatedValue: 30.0
+  repetitionRateNumeric: 30.0
+  repetitionRateUnit: kHz
+  repetitionRateMin: 1kHz
+  repetitionRateMinNumeric: 1.0
+  repetitionRateMax: 1000kHz
+  repetitionRateMaxNumeric: 1000.0
+  fluenceRange:
+    original: 0.5-2.0 J/cm²
+    hasRange: true
+    min: 0.5
+    max: 2.0
+    unit: J/cm²
+    consolidatedValue: 1.25
+  fluenceRangeNumeric: 0.5
+  fluenceRangeUnit: J/cm²
+  fluenceRangeMin: 0.1J/cm²
+  fluenceRangeMinNumeric: 0.1
+  fluenceRangeMax: 50J/cm²
+  fluenceRangeMaxNumeric: 50.0
+  scanningSpeed:
+    original: 50-500mm/s
+    hasRange: true
+    min: 50.0
+    max: 500.0
+    unit: mm/s
+    consolidatedValue: 275.0
+  scanningSpeedNumeric: 275.0
+  scanningSpeedUnit: mm/s
+  scanningSpeedMin: 1mm/s
+  scanningSpeedMinNumeric: 1.0
+  scanningSpeedMax: 5000mm/s
+  scanningSpeedMaxNumeric: 5000.0
+  beamProfile: Gaussian TEM00
+  beamProfileOptions:
+  - Gaussian TEM00
+  - Top-hat
+  - Donut
+  - Multi-mode
+  safetyClass: Class 4 (requires full enclosure)
+applications:
+- industry: Woodworking & Furniture
+  detail: Removal of surface contaminants, adhesives, and coatings from plywood substrates
+- industry: Construction Materials
+  detail: Cleaning of mold, stains, and surface imperfections from engineered wood
+    products
+compatibility:
+- Wood Composites
+- Particle Board
+- MDF
+- Solid Wood
+regulatoryStandards: ISO 12460, ASTM D3434, CARB Phase 2
+author: Alessandro Moretti
+images:
+  hero:
+    alt: Plywood surface undergoing laser cleaning showing precise contamination removal
+    url: /images/plywood-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Plywood surface after laser cleaning showing detailed
+      surface structure
+    url: /images/plywood-laser-cleaning-micro.jpg
+environmentalImpact:
+- benefit: Chemical Solvent Elimination
+  description: Reduces formaldehyde and VOC emissions from traditional chemical cleaning
+    methods
+- benefit: Water Conservation
+  description: Eliminates water usage completely compared to wet cleaning processes
+- benefit: Waste Reduction
+  description: Produces minimal waste with 95% less material loss than mechanical
+    methods
+outcomes:
+- result: Surface Cleanliness Level
+  metric: Achieves ISO 8501-1 Sa 2.5 cleanliness standard
+- result: Material Removal Precision
+  metric: ±20μm accuracy with minimal substrate damage
+- result: Processing Speed
+  metric: 1-3 m²/hour cleaning rate depending on contamination level
+substrateDescription: wood plywood substrate
+technicalSpecifications:
+  contaminationSource: biological contamination and surface coatings
+  thermalEffect: controlled thermal exposure preventing carbonization
+  wavelength: 1064nm (primary), 532nm (optional)
+  powerRange: 20-100W
+  pulseDuration: 50-200ns
+  spotSize: 0.5-3.0mm
+  repetitionRate: 10-50kHz
+migrationInfo:
+  normalizedAt: '2025-09-23T11:40:44.371933'
+  normalizationVersion: '3.0'
+  changes:
+    encoding_cleaned: true
+    chemical_properties_standardized: true
+    properties_migrated: 6
+    machine_settings_migrated: 7
+    author_standardized: true
+    migration_info_updated: true
+    fields_reordered: true
+author_object:
+  id: 4
+  name: Todd Dunning
+  sex: m
+  title: MA
+  country: United States (California)
+  expertise: Optical Materials for Laser Systems
+  image: /images/author/todd-dunning.jpg
+prompt_chain_verification:
+  base_config_loaded: true
+  persona_config_loaded: true
+  formatting_config_loaded: true
+  ai_detection_config_loaded: true
+  persona_country: United States (California)
+  author_id: 4
+  verification_timestamp: '2025-09-19T05:55:25Z'
+  prompt_components_integrated: 4
+  human_authenticity_focus: true
+  cultural_adaptation_applied: true

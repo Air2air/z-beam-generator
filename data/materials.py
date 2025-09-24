@@ -32,38 +32,83 @@ def expand_optimized_materials(data):
     expanded = {
         'materials': {},
         'metadata': data.get('metadata', {}),
-        'material_index': data.get('material_index', {})  # Preserve material_index
+        'material_index': data.get('material_index', {}),
+        'category_ranges': data.get('category_ranges', {}),
+        'parameter_templates': data.get('parameter_templates', {}),
+        'defaults': data.get('defaults', {})
     }
     
     parameter_templates = data.get('parameter_templates', {})
     defaults = data.get('defaults', {})
     
     for category, cat_data in data['materials'].items():
-        expanded_items = []
-        
-        for item in cat_data['items']:
-            expanded_item = item.copy()
+        # Handle both simple categories with items and complex categories with subcategories
+        if isinstance(cat_data, dict) and 'items' in cat_data:
+            # Simple category with direct items
+            expanded_items = []
             
-            # Expand parameter template reference
-            if 'laser_parameters_template' in item:
-                template_name = item['laser_parameters_template']
-                if template_name in parameter_templates:
-                    expanded_item['laser_parameters'] = parameter_templates[template_name].copy()
-                del expanded_item['laser_parameters_template']
+            for item in cat_data['items']:
+                expanded_item = item.copy()
+                
+                # Expand parameter template reference
+                if 'laser_parameters_template' in item:
+                    template_name = item['laser_parameters_template']
+                    if template_name in parameter_templates:
+                        expanded_item['laser_parameters'] = parameter_templates[template_name].copy()
+                    del expanded_item['laser_parameters_template']
+                
+                # Apply defaults for missing fields
+                for field, default_value in defaults.items():
+                    if field not in expanded_item:
+                        expanded_item[field] = default_value
+                
+                expanded_items.append(expanded_item)
             
-            # Apply defaults for missing fields
-            for field, default_value in defaults.items():
-                if field not in expanded_item:
-                    expanded_item[field] = default_value
+            expanded['materials'][category] = {
+                'description': cat_data.get('description', f'{category} materials'),
+                'article_type': cat_data.get('article_type', 'material'),
+                'processing_priority': cat_data.get('processing_priority', 'medium'),
+                'items': expanded_items
+            }
+        elif isinstance(cat_data, dict):
+            # Complex category with subcategories - flatten for compatibility
+            all_items = []
             
-            expanded_items.append(expanded_item)
-        
-        expanded['materials'][category] = {
-            'description': cat_data['description'],
-            'article_type': cat_data['article_type'],
-            'processing_priority': cat_data['processing_priority'],
-            'items': expanded_items
-        }
+            for subcat_name, subcat_data in cat_data.items():
+                if isinstance(subcat_data, dict) and 'items' in subcat_data:
+                    for item in subcat_data['items']:
+                        expanded_item = item.copy()
+                        
+                        # Expand parameter template reference
+                        if 'laser_parameters_template' in item:
+                            template_name = item['laser_parameters_template']
+                            if template_name in parameter_templates:
+                                expanded_item['laser_parameters'] = parameter_templates[template_name].copy()
+                            del expanded_item['laser_parameters_template']
+                        
+                        # Apply defaults for missing fields
+                        for field, default_value in defaults.items():
+                            if field not in expanded_item:
+                                expanded_item[field] = default_value
+                        
+                        all_items.append(expanded_item)
+            
+            if all_items:
+                expanded['materials'][category] = {
+                    'description': f'{category} materials',
+                    'article_type': 'material',
+                    'processing_priority': 'medium',
+                    'items': all_items
+                }
+        elif isinstance(cat_data, list):
+            # Handle subcategory list (like metals: ['pure_metals', 'precious_metals', 'alloys'])
+            # This will be handled by the material_index lookup system
+            expanded['materials'][category] = {
+                'description': f'{category} materials',
+                'article_type': 'material', 
+                'processing_priority': 'medium',
+                'items': []  # Will be populated via material_index
+            }
     
     return expanded
 
@@ -79,12 +124,37 @@ def get_material_by_name(material_name, data=None):
         if index_entry:
             category = index_entry['category']
             item_index = index_entry['index']
-            return data['materials'][category]['items'][item_index]
+            
+            # Check if category exists in materials
+            if category in data['materials']:
+                cat_data = data['materials'][category]
+                
+                # Handle direct items structure
+                if 'items' in cat_data and item_index < len(cat_data['items']):
+                    return cat_data['items'][item_index]
+                
+                # Handle subcategory structure - search through all subcategories
+                elif not isinstance(cat_data.get('items'), list):
+                    for subcat_name, subcat_data in cat_data.items():
+                        if isinstance(subcat_data, dict) and 'items' in subcat_data:
+                            if item_index < len(subcat_data['items']):
+                                return subcat_data['items'][item_index]
+                            item_index -= len(subcat_data['items'])
     
-    # Fallback to linear search (original format)
-    for category, cat_data in data['materials'].items():
-        for item in cat_data['items']:
-            if item['name'] == material_name:
-                return item
+    # Fallback to linear search (original format or if index lookup fails)
+    for category, cat_data in data.get('materials', {}).items():
+        if isinstance(cat_data, dict):
+            # Check direct items
+            if 'items' in cat_data:
+                for item in cat_data['items']:
+                    if isinstance(item, dict) and item.get('name') == material_name:
+                        return item
+            
+            # Check subcategories
+            for subcat_name, subcat_data in cat_data.items():
+                if isinstance(subcat_data, dict) and 'items' in subcat_data:
+                    for item in subcat_data['items']:
+                        if isinstance(item, dict) and item.get('name') == material_name:
+                            return item
     
     return None

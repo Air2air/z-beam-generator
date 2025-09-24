@@ -1,0 +1,664 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Frontmatter Schema",
+  "description": "Complete schema for frontmatter YAML structure with all required and optional fields",
+  "type": "object",
+  "required": [
+    "name",
+    "category", 
+    "complexity",
+    "difficulty_score",
+    "author_id",
+    "title",
+    "headline",
+    "description",
+    "keywords",
+    "author",
+    "author_object",
+    "properties",
+    "machineSettings",
+    "chemicalProperties",
+    "applications"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Material name"
+    },
+    "category": {
+      "type": "string",
+      "enum": ["metal", "ceramic", "composite", "semiconductor", "glass", "stone", "wood", "plastic", "masonry"],
+      "description": "Material category"
+    },
+    "complexity": {
+      "type": "string",
+      "enum": ["low", "medium", "high"],
+      "description": "Processing complexity"
+    },
+    "difficulty_score": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 5,
+      "description": "Difficulty score"
+    },
+    "author_id": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 4,
+      "description": "Author ID"
+    },
+    "title": {
+      "type": "string",
+      "description": "SEO-optimized title"
+    },
+    "headline": {
+      "type": "string", 
+      "description": "Marketing headline"
+    },
+    "description": {
+      "type": "string",
+      "description": "Technical description"
+    },
+    "keywords": {
+      "type": "string",
+      "description": "SEO keywords"
+    },
+    "author": {
+      "type": "string",
+      "description": "Author name"
+    },
+    "author_object": {
+      "$ref": "#/definitions/AuthorObject"
+    },
+    "properties": {
+      "$ref": "#/definitions/Properties"
+    },
+    "composition": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Material composition"
+    },
+    "machineSettings": {
+      "$ref": "#/definitions/MachineSettings"
+    },
+    "chemicalProperties": {
+      "$ref": "#/definitions/ChemicalProperties"
+    },
+    "applications": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Application"
+      },
+      "description": "Industrial applications"
+    },
+    "compatibility": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Compatible materials"
+    },
+    "regulatoryStandards": {
+      "type": "string",
+      "description": "Regulatory standards"
+    },
+    "images": {
+      "$ref": "#/definitions/Images"
+    },
+    "environmentalImpact": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/EnvironmentalImpact"
+      },
+      "description": "Environmental benefits"
+    },
+    "outcomes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Outcome"
+      },
+      "description": "Measurable outcomes"
+    },
+    "prompt_chain_verification": {
+      "$ref": "#/definitions/PromptChainVerification"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Material tags"
+    },
+    "surface_roughness_before": {
+      "type": "number",
+      "description": "Surface roughness before cleaning"
+    },
+    "surface_roughness_after": {
+      "type": "number", 
+      "description": "Surface roughness after cleaning"
+    }
+  },
+  "definitions": {
+    "AuthorObject": {
+      "type": "object",
+      "required": ["id", "name", "sex", "title", "country", "expertise", "image"],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4
+        },
+        "name": {
+          "type": "string"
+        },
+        "sex": {
+          "type": "string",
+          "enum": ["m", "f"]
+        },
+        "title": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "expertise": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        }
+      }
+    },
+    "Properties": {
+      "type": "object",
+      "required": [
+        "density", "densityNumeric", "densityUnit",
+        "meltingPoint", "meltingPointNumeric", "meltingPointUnit",
+        "thermalConductivity", "thermalConductivityNumeric", "thermalConductivityUnit",
+        "tensileStrength", "tensileStrengthNumeric", "tensileStrengthUnit",
+        "hardness", "hardnessNumeric", "hardnessUnit",
+        "youngsModulus", "youngsModulusNumeric", "youngsModulusUnit"
+      ],
+      "properties": {
+        "density": {
+          "type": "string"
+        },
+        "densityNumeric": {
+          "type": "number"
+        },
+        "densityUnit": {
+          "type": "string"
+        },
+        "densityMin": {
+          "type": "string"
+        },
+        "densityMinNumeric": {
+          "type": "number"
+        },
+        "densityMinUnit": {
+          "type": "string"
+        },
+        "densityMax": {
+          "type": "string"
+        },
+        "densityMaxNumeric": {
+          "type": "number"
+        },
+        "densityMaxUnit": {
+          "type": "string"
+        },
+        "densityPercentile": {
+          "type": "number"
+        },
+        "meltingPoint": {
+          "type": "string"
+        },
+        "meltingPointNumeric": {
+          "type": "number"
+        },
+        "meltingPointUnit": {
+          "type": "string"
+        },
+        "meltingPercentile": {
+          "type": "number"
+        },
+        "thermalConductivity": {
+          "type": "string"
+        },
+        "thermalConductivityNumeric": {
+          "type": "number"
+        },
+        "thermalConductivityUnit": {
+          "type": "string"
+        },
+        "thermalPercentile": {
+          "type": "number"
+        },
+        "tensileStrength": {
+          "type": "string"
+        },
+        "tensileStrengthNumeric": {
+          "type": "number"
+        },
+        "tensileStrengthUnit": {
+          "type": "string"
+        },
+        "tensilePercentile": {
+          "type": "number"
+        },
+        "hardness": {
+          "type": "string"
+        },
+        "hardnessNumeric": {
+          "type": "number"
+        },
+        "hardnessUnit": {
+          "type": "string"
+        },
+        "hardnessMin": {
+          "type": "string"
+        },
+        "hardnessMinNumeric": {
+          "type": "number"
+        },
+        "hardnessMinUnit": {
+          "type": "string"
+        },
+        "hardnessMax": {
+          "type": "string"
+        },
+        "hardnessMaxNumeric": {
+          "type": "number"
+        },
+        "hardnessMaxUnit": {
+          "type": "string"
+        },
+        "hardnessPercentile": {
+          "type": "number"
+        },
+        "youngsModulus": {
+          "type": "string"
+        },
+        "youngsModulusNumeric": {
+          "type": "number"
+        },
+        "youngsModulusUnit": {
+          "type": "string"
+        },
+        "modulusMin": {
+          "type": "string"
+        },
+        "modulusMinNumeric": {
+          "type": "number"
+        },
+        "modulusMinUnit": {
+          "type": "string"
+        },
+        "modulusMax": {
+          "type": "string"
+        },
+        "modulusMaxNumeric": {
+          "type": "number"
+        },
+        "modulusMaxUnit": {
+          "type": "string"
+        },
+        "modulusPercentile": {
+          "type": "number"
+        },
+        "laserType": {
+          "type": "string"
+        },
+        "wavelength": {
+          "type": "string"
+        },
+        "fluenceRange": {
+          "type": "string"
+        },
+        "chemicalFormula": {
+          "type": "string"
+        }
+      }
+    },
+    "MachineSettings": {
+      "type": "object",
+      "required": [
+        "powerRange", "powerRangeNumeric", "powerRangeUnit",
+        "pulseDuration", "pulseDurationNumeric", "pulseDurationUnit",
+        "wavelength", "wavelengthNumeric", "wavelengthUnit",
+        "spotSize", "spotSizeNumeric", "spotSizeUnit",
+        "repetitionRate", "repetitionRateNumeric", "repetitionRateUnit",
+        "fluenceRange", "fluenceRangeNumeric", "fluenceRangeUnit",
+        "scanningSpeed", "scanningSpeedNumeric", "scanningSpeedUnit",
+        "beamProfile", "beamProfileOptions", "safetyClass"
+      ],
+      "properties": {
+        "powerRange": {
+          "type": "string"
+        },
+        "powerRangeNumeric": {
+          "type": "number"
+        },
+        "powerRangeUnit": {
+          "type": "string"
+        },
+        "powerRangeMin": {
+          "type": "string"
+        },
+        "powerRangeMinNumeric": {
+          "type": "number"
+        },
+        "powerRangeMinUnit": {
+          "type": "string"
+        },
+        "powerRangeMax": {
+          "type": "string"
+        },
+        "powerRangeMaxNumeric": {
+          "type": "number"
+        },
+        "powerRangeMaxUnit": {
+          "type": "string"
+        },
+        "pulseDuration": {
+          "type": "string"
+        },
+        "pulseDurationNumeric": {
+          "type": "number"
+        },
+        "pulseDurationUnit": {
+          "type": "string"
+        },
+        "pulseDurationMin": {
+          "type": "string"
+        },
+        "pulseDurationMinNumeric": {
+          "type": "number"
+        },
+        "pulseDurationMinUnit": {
+          "type": "string"
+        },
+        "pulseDurationMax": {
+          "type": "string"
+        },
+        "pulseDurationMaxNumeric": {
+          "type": "number"
+        },
+        "pulseDurationMaxUnit": {
+          "type": "string"
+        },
+        "wavelength": {
+          "type": "string"
+        },
+        "wavelengthNumeric": {
+          "type": "number"
+        },
+        "wavelengthUnit": {
+          "type": "string"
+        },
+        "wavelengthMin": {
+          "type": "string"
+        },
+        "wavelengthMinNumeric": {
+          "type": "number"
+        },
+        "wavelengthMinUnit": {
+          "type": "string"
+        },
+        "wavelengthMax": {
+          "type": "string"
+        },
+        "wavelengthMaxNumeric": {
+          "type": "number"
+        },
+        "wavelengthMaxUnit": {
+          "type": "string"
+        },
+        "spotSize": {
+          "type": "string"
+        },
+        "spotSizeNumeric": {
+          "type": "number"
+        },
+        "spotSizeUnit": {
+          "type": "string"
+        },
+        "spotSizeMin": {
+          "type": "string"
+        },
+        "spotSizeMinNumeric": {
+          "type": "number"
+        },
+        "spotSizeMinUnit": {
+          "type": "string"
+        },
+        "spotSizeMax": {
+          "type": "string"
+        },
+        "spotSizeMaxNumeric": {
+          "type": "number"
+        },
+        "spotSizeMaxUnit": {
+          "type": "string"
+        },
+        "repetitionRate": {
+          "type": "string"
+        },
+        "repetitionRateNumeric": {
+          "type": "number"
+        },
+        "repetitionRateUnit": {
+          "type": "string"
+        },
+        "repetitionRateMin": {
+          "type": "string"
+        },
+        "repetitionRateMinNumeric": {
+          "type": "number"
+        },
+        "repetitionRateMinUnit": {
+          "type": "string"
+        },
+        "repetitionRateMax": {
+          "type": "string"
+        },
+        "repetitionRateMaxNumeric": {
+          "type": "number"
+        },
+        "repetitionRateMaxUnit": {
+          "type": "string"
+        },
+        "fluenceRange": {
+          "type": "string"
+        },
+        "fluenceRangeNumeric": {
+          "type": "number"
+        },
+        "fluenceRangeUnit": {
+          "type": "string"
+        },
+        "fluenceRangeMin": {
+          "type": "string"
+        },
+        "fluenceRangeMinNumeric": {
+          "type": "number"
+        },
+        "fluenceRangeMinUnit": {
+          "type": "string"
+        },
+        "fluenceRangeMax": {
+          "type": "string"
+        },
+        "fluenceRangeMaxNumeric": {
+          "type": "number"
+        },
+        "fluenceRangeMaxUnit": {
+          "type": "string"
+        },
+        "scanningSpeed": {
+          "type": "string"
+        },
+        "scanningSpeedNumeric": {
+          "type": "number"
+        },
+        "scanningSpeedUnit": {
+          "type": "string"
+        },
+        "scanningSpeedMin": {
+          "type": "string"
+        },
+        "scanningSpeedMinNumeric": {
+          "type": "number"
+        },
+        "scanningSpeedMinUnit": {
+          "type": "string"
+        },
+        "scanningSpeedMax": {
+          "type": "string"
+        },
+        "scanningSpeedMaxNumeric": {
+          "type": "number"
+        },
+        "scanningSpeedMaxUnit": {
+          "type": "string"
+        },
+        "beamProfile": {
+          "type": "string"
+        },
+        "beamProfileOptions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "safetyClass": {
+          "type": "string"
+        }
+      }
+    },
+    "ChemicalProperties": {
+      "type": "object",
+      "required": ["chemicalFormula", "formula", "symbol"],
+      "properties": {
+        "chemicalFormula": {
+          "type": "string"
+        },
+        "formula": {
+          "type": "string"
+        },
+        "symbol": {
+          "type": "string"
+        }
+      }
+    },
+    "Application": {
+      "type": "object",
+      "required": ["industry", "detail"],
+      "properties": {
+        "industry": {
+          "type": "string"
+        },
+        "detail": {
+          "type": "string"
+        }
+      }
+    },
+    "Images": {
+      "type": "object",
+      "required": ["hero", "micro"],
+      "properties": {
+        "hero": {
+          "$ref": "#/definitions/Image"
+        },
+        "micro": {
+          "$ref": "#/definitions/Image"
+        }
+      }
+    },
+    "Image": {
+      "type": "object",
+      "required": ["alt", "url"],
+      "properties": {
+        "alt": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      }
+    },
+    "EnvironmentalImpact": {
+      "type": "object",
+      "required": ["benefit", "description"],
+      "properties": {
+        "benefit": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "Outcome": {
+      "type": "object",
+      "required": ["result", "metric"],
+      "properties": {
+        "result": {
+          "type": "string"
+        },
+        "metric": {
+          "type": "string"
+        }
+      }
+    },
+    "PromptChainVerification": {
+      "type": "object",
+      "required": [
+        "base_config_loaded",
+        "persona_config_loaded", 
+        "formatting_config_loaded",
+        "ai_detection_config_loaded",
+        "persona_country",
+        "author_id",
+        "verification_timestamp",
+        "prompt_components_integrated",
+        "human_authenticity_focus",
+        "cultural_adaptation_applied"
+      ],
+      "properties": {
+        "base_config_loaded": {
+          "type": "boolean"
+        },
+        "persona_config_loaded": {
+          "type": "boolean"
+        },
+        "formatting_config_loaded": {
+          "type": "boolean"
+        },
+        "ai_detection_config_loaded": {
+          "type": "boolean"
+        },
+        "persona_country": {
+          "type": "string"
+        },
+        "author_id": {
+          "type": "integer"
+        },
+        "verification_timestamp": {
+          "type": "string"
+        },
+        "prompt_components_integrated": {
+          "type": "integer"
+        },
+        "human_authenticity_focus": {
+          "type": "boolean"
+        },
+        "cultural_adaptation_applied": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}

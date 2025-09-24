@@ -1,215 +1,112 @@
 ---
-name: Ruthenium
-category: metal
-title: Ruthenium Laser Cleaning
-headline: Comprehensive technical guide for laser cleaning metal ruthenium
-description: Ruthenium laser cleaning utilizes precise pulsed fiber laser parameters
-  to remove surface contaminants without damaging the underlying metal substrate,
-  leveraging its high melting point and thermal conductivity for selective ablation.
-keywords: ruthenium, ruthenium metal, laser ablation, laser cleaning, non-contact
-  cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters,
-  thermal processing, surface restoration
-chemicalProperties:
-  symbol: Ru
-  formula: Ru
-  materialType: metal
-properties:
-  density: "12.45 g/cm³"
-  thermalDestructionPoint: "2334°C"
-  thermalDestructionType: melting
-  densityNumeric: 12.45
-  densityUnit: "g/cm³"
-  densityMin: "1.8 g/cm³"
-  densityMinNumeric: 1.8
-  densityMinUnit: "g/cm³"
-  densityMax: "6.0 g/cm³"
-  densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm³"
-  densityPercentile: 100.0
-  meltingPointNumeric: 2334.0
-  meltingPointUnit: "°C"
-  meltingPointMin: "1200°C"
-  meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "°C"
-  meltingPointMax: "2800°C"
-  meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "°C"
-  meltingPercentile: 70.9
-  thermalConductivity: "117 W/(m·K)"
-  thermalConductivityNumeric: 117.0
-  thermalConductivityUnit: W/
-  thermalConductivityMin: "0.5 W/m·K"
-  thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m·K"
-  thermalConductivityMax: "200 W/m·K"
-  thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m·K"
-  thermalPercentile: 58.4
-  tensileStrength: 370 MPa
-  tensileStrengthNumeric: 370.0
-  tensileStrengthUnit: MPa
-  tensileStrengthMin: 50 MPa
-  tensileStrengthMinNumeric: 50.0
-  tensileStrengthMinUnit: MPa
-  tensileStrengthMax: 1000 MPa
-  tensileStrengthMaxNumeric: 1000.0
-  tensileStrengthMaxUnit: MPa
-  tensilePercentile: 33.7
-  hardness: 6.5 Mohs
-  hardnessNumeric: 6.5
-  hardnessUnit: Mohs
-  hardnessMin: 1 Mohs
-  hardnessMinNumeric: 1.0
-  hardnessMinUnit: Mohs
-  hardnessMax: 10 Mohs
-  hardnessMaxNumeric: 10.0
-  hardnessMaxUnit: Mohs
-  hardnessPercentile: 61.1
-  youngsModulus: 447 GPa
-  youngsModulusNumeric: 447.0
-  youngsModulusUnit: GPa
-  youngsModulusMin: 20 GPa
-  youngsModulusMinNumeric: 20.0
-  youngsModulusMinUnit: GPa
-  youngsModulusMax: 80 GPa
-  youngsModulusMaxNumeric: 80.0
-  youngsModulusMaxUnit: GPa
-  modulusPercentile: 100.0
-  laserType: Pulsed fiber laser
-  wavelength: 1064nm
-  fluenceRange: "0.5–5 J/cm²"
-  chemicalFormula: Ru
-composition:
-- Ruthenium (99.9% pure)
-- Platinum group trace elements (<0.1%)
-machineSettings:
-  powerRange: 20-100W
-  powerRangeNumeric: 60.0
-  powerRangeUnit: W
-  powerRangeMin: 20W
-  powerRangeMinNumeric: 20.0
-  powerRangeMinUnit: W
-  powerRangeMax: 500W
-  powerRangeMaxNumeric: 500.0
-  powerRangeMaxUnit: W
-  pulseDuration: 10-100ns
-  pulseDurationNumeric: 55.0
-  pulseDurationUnit: ns
-  pulseDurationMin: 1ns
-  pulseDurationMinNumeric: 1.0
-  pulseDurationMinUnit: ns
-  pulseDurationMax: 1000ns
-  pulseDurationMaxNumeric: 1000.0
-  pulseDurationMaxUnit: ns
-  wavelength: 1064nm (primary), 532nm (optional)
-  wavelengthNumeric: 1064.0
-  wavelengthUnit: nm
-  wavelengthMin: 355nm
-  wavelengthMinNumeric: 355.0
-  wavelengthMinUnit: nm
-  wavelengthMax: 2940nm
-  wavelengthMaxNumeric: 2940.0
-  wavelengthMaxUnit: nm
-  spotSize: 0.1-2.0mm
-  spotSizeNumeric: 1.05
-  spotSizeUnit: mm
-  spotSizeMin: 0.01mm
-  spotSizeMinNumeric: 0.01
-  spotSizeMinUnit: mm
-  spotSizeMax: 10mm
-  spotSizeMaxNumeric: 10.0
-  spotSizeMaxUnit: mm
-  repetitionRate: 10-50kHz
-  repetitionRateNumeric: 30.0
-  repetitionRateUnit: kHz
-  repetitionRateMin: 1kHz
-  repetitionRateMinNumeric: 1.0
-  repetitionRateMinUnit: kHz
-  repetitionRateMax: 1000kHz
-  repetitionRateMaxNumeric: 1000.0
-  repetitionRateMaxUnit: kHz
-  fluenceRange: "0.5–5 J/cm²"
-  fluenceRangeNumeric: 0.5
-  fluenceRangeUnit: "J/cm²"
-  fluenceRangeMin: "0.1J/cm²"
-  fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm²"
-  fluenceRangeMax: "50J/cm²"
-  fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm²"
 applications:
 - 'Electronics: Removal of oxide layers and surface contaminants from Ruthenium contacts'
 - 'Aerospace: Precision cleaning of Ruthenium coatings on turbine blades'
+author: Yi-Chun Lin
+author_object:
+  country: Taiwan
+  expertise: Laser Materials Processing
+  id: 1
+  image: /images/author/yi-chun-lin.jpg
+  name: Yi-Chun Lin
+  sex: f
+  title: Ph.D.
+category: metal
+chemicalProperties:
+  formula: Ru
+  materialType: metal
+  symbol: Ru
 compatibility:
 - Platinum group metals (Rhodium, Palladium)
 - Nickel-based superalloys
 - Titanium alloys
-regulatoryStandards: IEC 60825-1 (Laser Safety), OSHA 29 CFR 1910.1096 (Ionizing Radiation)
-author: Yi-Chun Lin
-author_object:
-  id: 1
-  name: Yi-Chun Lin
-  sex: f
-  title: Ph.D.
-  country: Taiwan
-  expertise: Laser Materials Processing
-  image: /images/author/yi-chun-lin.jpg
-images:
-  hero:
-    alt: Ruthenium surface undergoing laser cleaning showing precise contamination
-      removal
-    url: /images/ruthenium-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Ruthenium surface after laser cleaning showing detailed
-      surface structure
-    url: /images/ruthenium-laser-cleaning-micro.jpg
+complexity: medium
+composition:
+- Ruthenium (99.9% pure)
+- Platinum group trace elements (<0.1%)
+description: Ruthenium laser cleaning utilizes precise pulsed fiber laser parameters to remove surface contaminants without damaging the underlying metal substrate, leveraging its high melting point and thermal conductivity for selective ablation.
+difficultyScore: 3
 environmentalImpact:
 - benefit: Zero chemical waste generation
-  description: Eliminates use of hazardous chemical solvents traditionally used for
-    Ruthenium surface preparation
+  description: Eliminates use of hazardous chemical solvents traditionally used for Ruthenium surface preparation
 - benefit: 95% reduction in water consumption
-  description: Dry process eliminates need for water-based cleaning and rinsing steps
-    in electronics manufacturing
+  description: Dry process eliminates need for water-based cleaning and rinsing steps in electronics manufacturing
+headline: Comprehensive technical guide for laser cleaning metal ruthenium
+images:
+  hero:
+    alt: Ruthenium surface undergoing laser cleaning showing precise contamination removal
+    url: /images/ruthenium-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Ruthenium surface after laser cleaning showing detailed surface structure
+    url: /images/ruthenium-laser-cleaning-micro.jpg
+keywords: ruthenium, ruthenium metal, laser ablation, laser cleaning, non-contact cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters, thermal processing, surface restoration
+machineSettings:
+  fluenceRange: 0.5
+  fluenceRangeMax: 50.0
+  fluenceRangeMin: 0.1
+  fluenceRangeUnit: J/cm²
+  powerRange: 60.0
+  powerRangeMax: 500.0
+  powerRangeMin: 20.0
+  powerRangeUnit: W
+  pulseDuration: 55.0
+  pulseDurationMax: 1000.0
+  pulseDurationMin: 1.0
+  pulseDurationUnit: ns
+  repetitionRate: 30.0
+  repetitionRateMax: 1000.0
+  repetitionRateMin: 1.0
+  repetitionRateUnit: kHz
+  spotSize: 1.05
+  spotSizeMax: 10.0
+  spotSizeMin: 0.01
+  spotSizeUnit: mm
+  wavelength: 1064.0
+  wavelengthMax: 2940.0
+  wavelengthMin: 355.0
+  wavelengthUnit: nm
+name: Ruthenium
 outcomes:
-- result: Surface contamination removal to <10 nm residual layer
-  metric: Achieves ISO 14644-1 Class 5 cleanliness standards
-- result: Sub-micron precision material removal
-  metric: "±0.5 μm dimensional tolerance maintained during cleaning process"
-technicalSpecifications:
-  powerRange: 20-100 W
-  pulseDuration: 10-100 ns
-  wavelength: 1064 nm (primary), 532 nm (optional for finer features)
-  spotSize: 0.1-2.0 mm
-  repetitionRate: 10-50 kHz
-  fluenceRange: "0.5-5 J/cm²"
-  scanningSpeed: 100-1000 mm/s
-  beamProfile: Top-hat or Gaussian
-  beamProfileOptions: Top-hat, Gaussian, Flat-top
-  safetyClass: Class 4
-prompt_chain_verification:
-  base_config_loaded: true
-  persona_config_loaded: true
-  formatting_config_loaded: true
-  ai_detection_config_loaded: true
-  persona_country: Taiwan
-  author_id: 1
-  verification_timestamp: '2025-09-20T21: 26: 18Z'
-  prompt_components_integrated: 4
-  human_authenticity_focus: true
-  cultural_adaptation_applied: true
-laser_parameters:
-  fluence_threshold: "0.5–5 J/cm²"
-  pulse_duration: 10-100ns
-  wavelength_optimal: 1064nm
-  power_range: 20-100W
-  repetition_rate: 10-50kHz
-  spot_size: 0.1-2.0mm
-  laser_type: Pulsed fiber laser
+- metric: Achieves ISO 14644-1 Class 5 cleanliness standards
+  result: Surface contamination removal to <10 nm residual layer
+- metric: ±0.5 μm dimensional tolerance maintained during cleaning process
+  result: Sub-micron precision material removal
+properties:
+  density: 12.45
+  densityMax: 6.0
+  densityMin: 1.8
+  densityPercentile: 100.0
+  densityUnit: g/cm³
+  hardness: 6.5
+  hardnessMax: 10.0
+  hardnessMin: 1.0
+  hardnessPercentile: 61.1
+  hardnessUnit: Mohs
+  meltingPercentile: 70.9
+  meltingPoint: 2334.0
+  meltingPointMax: 2800.0
+  meltingPointMin: 1200.0
+  meltingPointUnit: °C
+  modulusPercentile: 100.0
+  tensilePercentile: 33.7
+  tensileStrength: 370.0
+  tensileStrengthMax: 1000.0
+  tensileStrengthMin: 50.0
+  tensileStrengthUnit: MPa
+  thermalConductivity: 117.0
+  thermalConductivityMax: 200.0
+  thermalConductivityMin: 0.5
+  thermalConductivityUnit: W/
+  thermalPercentile: 58.4
+  youngsModulus: 447.0
+  youngsModulusMax: 80.0
+  youngsModulusMin: 20.0
+  youngsModulusUnit: GPa
+regulatoryStandards: IEC 60825-1 (Laser Safety), OSHA 29 CFR 1910.1096 (Ionizing Radiation)
+surface_roughness_after: 1.0
+surface_roughness_before: 4.2
 tags:
 - Aerospace
 - Electronics
-complexity: medium
-difficultyScore: 3
-surface_roughness_before: 4.2
-surface_roughness_after: 1.0
+title: Ruthenium Laser Cleaning
 ---

@@ -1,0 +1,90 @@
+name: Polycarbonate (PC)
+category: polymer
+technicalProperties:
+  density:
+    original: "1.20-1.22 g/cm\xB3"
+    hasRange: true
+    min: 1.2
+    max: 1.22
+    unit: "g/cm\xB3"
+    consolidatedValue: 1.21
+  thermalConductivity:
+    original: "0.19-0.22 W/(m\xB7K)"
+    hasRange: true
+    min: 0.19
+    max: 0.22
+    unit: "W/(m\xB7K)"
+    consolidatedValue: 0.20500000000000002
+  tensileStrength:
+    original: 55-75 MPa
+    hasRange: true
+    min: 55.0
+    max: 75.0
+    unit: MPa
+    consolidatedValue: 65.0
+  youngsModulus:
+    original: 2.0-2.4 GPa
+    hasRange: true
+    min: 2.0
+    max: 2.4
+    unit: GPa
+    consolidatedValue: 2.2
+  electricalResistivity:
+    original: "10\xB9\u2076 \u03A9\xB7cm"
+    hasRange: false
+    value: 10.0
+    unit: ''
+  thermalExpansion:
+    original: "65-70\xD710\u207B\u2076/K"
+    hasRange: false
+    value: 65.0
+    unit: '-'
+  specificHeat:
+    original: "1.2 J/(g\xB7K)"
+    hasRange: false
+    value: 1.2
+    unit: "J/(g\xB7K)"
+migrationInfo:
+  migratedAt: '2025-09-23T11:25:48.471655'
+  sourceFile: materials.yaml
+  propertiesMigrated: 7
+  machineSettingsMigrated: 7
+  migrationVersion: '2.0'
+machineSettings:
+  fluenceThreshold:
+    original: "0.2-0.7 J/cm\xB2"
+    hasRange: true
+    min: 0.2
+    max: 0.7
+    unit: "J/cm\xB2"
+    consolidatedValue: 0.44999999999999996
+  pulseDuration:
+    original: 85ns
+    hasRange: false
+    value: 85.0
+    unit: ns
+  wavelengthOptimal:
+    original: 1064 nm
+    hasRange: false
+    value: 1064.0
+    unit: nm
+  powerRange:
+    original: 65W
+    hasRange: false
+    value: 65.0
+    unit: W
+  repetitionRate:
+    original: 20kHz
+    hasRange: false
+    value: 20.0
+    unit: kHz
+  spotSize:
+    original: 0.4mm
+    hasRange: false
+    value: 0.4
+    unit: mm
+  laserType:
+    original: Pulsed fiber laser
+    hasRange: false
+    value: Pulsed fiber laser
+    unit: ''

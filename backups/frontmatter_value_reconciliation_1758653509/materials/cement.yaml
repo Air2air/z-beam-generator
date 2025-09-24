@@ -1,0 +1,241 @@
+name: Cement
+category: masonry
+title: Laser Cleaning Cement
+headline: Comprehensive technical guide for laser cleaning masonry cement
+description: Technical overview of cement, CaO·SiO2·Al2O3, for laser cleaning applications,
+  including optimal 1064nm wavelength interaction, and industrial applications in
+  surface preparation.
+keywords: cement, concrete, masonry, laser ablation, laser cleaning, non-contact cleaning,
+  pulsed fiber laser, surface contamination removal, industrial laser parameters,
+  surface restoration
+technicalProperties:
+  density:
+    original: 2.4 g/cm³
+    hasRange: false
+    value: 2.4
+    unit: g/cm³
+  thermalConductivity:
+    original: 1.28 W/m·K
+    hasRange: false
+    value: 1.28
+    unit: W/m·K
+  meltingPoint:
+    original: 1450°C
+    hasRange: false
+    value: 1450.0
+    unit: °C
+  tensileStrength:
+    original: 2-5 MPa
+    hasRange: true
+    min: 2.0
+    max: 5.0
+    unit: MPa
+    consolidatedValue: 3.5
+  hardness:
+    original: 4-6 Mohs
+    hasRange: true
+    min: 4.0
+    max: 6.0
+    unit: Mohs
+    consolidatedValue: 5.0
+  youngsModulus:
+    original: 30 GPa
+    hasRange: false
+    value: 30.0
+    unit: GPa
+machineSettings:
+  powerRange:
+    original: 20-100W
+    hasRange: true
+    min: 20.0
+    max: 100.0
+    unit: W
+    consolidatedValue: 60.0
+  powerRangeNumeric: 60.0
+  powerRangeUnit: W
+  powerRangeMin: 20W
+  powerRangeMinNumeric: 20.0
+  powerRangeMax: 500W
+  powerRangeMaxNumeric: 500.0
+  pulseDuration:
+    original: 50-200ns
+    hasRange: true
+    min: 50.0
+    max: 200.0
+    unit: ns
+    consolidatedValue: 125.0
+  pulseDurationNumeric: 125.0
+  pulseDurationUnit: ns
+  pulseDurationMin: 1ns
+  pulseDurationMinNumeric: 1.0
+  pulseDurationMax: 1000ns
+  pulseDurationMaxNumeric: 1000.0
+  wavelength:
+    original: 1064nm (primary), 355nm (optional)
+    hasRange: false
+    value: 1064.0
+    unit: nm (primary), 355nm (optional)
+  wavelengthNumeric: 1064.0
+  wavelengthUnit: nm
+  wavelengthMin: 355nm
+  wavelengthMinNumeric: 355.0
+  wavelengthMax: 2940nm
+  wavelengthMaxNumeric: 2940.0
+  spotSize:
+    original: 0.5-2.0mm
+    hasRange: true
+    min: 0.5
+    max: 2.0
+    unit: mm
+    consolidatedValue: 1.25
+  spotSizeNumeric: 1.25
+  spotSizeUnit: mm
+  spotSizeMin: 0.01mm
+  spotSizeMinNumeric: 0.01
+  spotSizeMax: 10mm
+  spotSizeMaxNumeric: 10.0
+  repetitionRate:
+    original: 10-50kHz
+    hasRange: true
+    min: 10.0
+    max: 50.0
+    unit: kHz
+    consolidatedValue: 30.0
+  repetitionRateNumeric: 30.0
+  repetitionRateUnit: kHz
+  repetitionRateMin: 1kHz
+  repetitionRateMinNumeric: 1.0
+  repetitionRateMax: 1000kHz
+  repetitionRateMaxNumeric: 1000.0
+  fluenceRange:
+    original: 0.5-2.0 J/cm²
+    hasRange: true
+    min: 0.5
+    max: 2.0
+    unit: J/cm²
+    consolidatedValue: 1.25
+  fluenceRangeNumeric: 0.5
+  fluenceRangeUnit: J/cm²
+  fluenceRangeMin: 0.1J/cm²
+  fluenceRangeMinNumeric: 0.1
+  fluenceRangeMax: 50J/cm²
+  fluenceRangeMaxNumeric: 50.0
+  scanningSpeed:
+    original: 50-500mm/s
+    hasRange: true
+    min: 50.0
+    max: 500.0
+    unit: mm/s
+    consolidatedValue: 275.0
+  scanningSpeedNumeric: 275.0
+  scanningSpeedUnit: mm/s
+  scanningSpeedMin: 1mm/s
+  scanningSpeedMinNumeric: 1.0
+  scanningSpeedMax: 5000mm/s
+  scanningSpeedMaxNumeric: 5000.0
+  beamProfile: Gaussian TEM00
+  beamProfileOptions:
+  - Gaussian TEM00
+  - Top-hat
+  - Donut
+  - Multi-mode
+  safetyClass: Class 4 (requires full enclosure)
+chemicalProperties:
+  symbol: Cement
+  formula: CaO·SiO2·Al2O3
+  materialType: masonry
+applications:
+- industry: Construction and Restoration
+  detail: Removal of surface contaminants, efflorescence, and biological growth from
+    cement structures
+- industry: Historical Preservation
+  detail: Gentle cleaning of aged cement surfaces without damaging underlying material
+compatibility:
+- Concrete
+- Brick
+- Stone Masonry
+composition:
+- Calcium Oxide (CaO) 60-67%
+- Silicon Dioxide (SiO2) 17-25%
+- Aluminum Oxide (Al2O3) 3-8%
+- Iron Oxide (Fe2O3) 0.5-6%
+- Magnesium Oxide (MgO) 0.1-4%
+- Sulfur Trioxide (SO3) 1-3%
+images:
+  hero:
+    alt: Cement surface undergoing laser cleaning showing precise contamination removal
+    url: /images/cement-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Cement surface after laser cleaning showing detailed
+      surface structure
+    url: /images/cement-laser-cleaning-micro.jpg
+environmentalImpact:
+- benefit: Chemical Solvent Elimination
+  description: Reduces chemical usage by 100% compared to traditional solvent cleaning
+    methods
+- benefit: Water Conservation
+  description: Saves approximately 3000 liters of water per month in industrial applications
+- benefit: Dust Reduction
+  description: Minimizes airborne particulate matter by 95% compared to mechanical
+    methods
+outcomes:
+- result: Surface Cleanliness Level
+  metric: Achieves 95% contaminant removal without substrate damage
+- result: Material Removal Precision
+  metric: Selective cleaning with ±0.1mm accuracy
+- result: Processing Speed
+  metric: 1-3 m²/hour cleaning rate depending on contamination level
+author: Ikmanda Roswati
+regulatoryStandards: ASTM C150, EN 197-1, ISO 679
+substrateDescription: masonry cement substrate
+technicalSpecifications:
+  contaminationSource: weathering and structural deposits
+  thermalEffect: controlled heating preserving structural integrity
+  wavelength: 1064nm (primary), 355nm (optional)
+  powerRange: 20-100W
+  pulseDuration: 50-200ns
+  spotSize: 0.5-2.0mm
+  repetitionRate: 10-50kHz
+migrationInfo:
+  reorganizedAt: '2025-09-23T11:45:11.013864'
+  reorganizationVersion: 4.0-optimal
+  optimizations:
+    fields_removed: 1
+    removed_fields:
+    - properties
+    technical_properties_optimized: false
+    machine_settings_optimized: true
+    logical_groupings_applied: true
+    optimal_ordering_applied: true
+    reorganization_info_updated: true
+  structure: content-first-optimized
+  previousMigrations:
+    normalizedAt: '2025-09-23T11:40:44.760345'
+    normalizationVersion: '3.0'
+    changes:
+      encoding_cleaned: true
+      chemical_properties_standardized: true
+      properties_migrated: 6
+      machine_settings_migrated: 7
+      author_standardized: true
+      migration_info_updated: true
+      fields_reordered: true
+author_object:
+  id: 3
+  name: Ikmanda Roswati
+  sex: m
+  title: Ph.D.
+  country: Indonesia
+  expertise: Ultrafast Laser Physics and Material Interactions
+  image: /images/author/ikmanda-roswati.jpg
+prompt_chain_verification:
+  base_config_loaded: true
+  persona_config_loaded: true
+  formatting_config_loaded: true
+  ai_detection_config_loaded: true
+  persona_country: Indonesia
+  author_id: 3
+  verification_timestamp: '2025-09-19T05:09:29Z'
+  prompt_components_integrated: 4
+  human_authenticity_focus: true
+  cultural_adaptation_applied: true

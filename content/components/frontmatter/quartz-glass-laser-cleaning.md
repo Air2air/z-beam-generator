@@ -1,220 +1,112 @@
 ---
-name: Quartz Glass
-category: glass
-title: Quartz Glass Laser Cleaning
-headline: Comprehensive technical guide for laser cleaning glass quartz glass
-description: Laser cleaning of fused quartz glass utilizes precise pulsed fiber lasers
-  to remove surface contaminants through selective ablation while preserving the substrate's
-  optical properties and surface integrity. The process is particularly effective
-  for removing organic residues, particles, and thin films without chemical residues
-  or mechanical damage.
-keywords: quartz glass, fused silica, laser ablation, laser cleaning, non-contact
-  cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters,
-  thermal processing, surface restoration
-chemicalProperties:
-  symbol: "SiO₂"
-  formula: SiO2
-  materialType: glass
-properties:
-  density: "2.20 g/cm³"
-  thermalDestructionPoint: "75°C"
-  thermalDestructionType: melting
-  densityNumeric: 2.2
-  densityUnit: "g/cm³"
-  densityMin: "1.8 g/cm³"
-  densityMinNumeric: 1.8
-  densityMinUnit: "g/cm³"
-  densityMax: "6.0 g/cm³"
-  densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm³"
-  densityPercentile: 9.5
-  meltingPointNumeric: 75
-  meltingPointUnit: "°C"
-  meltingPointMin: "1200°C"
-  meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "°C"
-  meltingPointMax: "2800°C"
-  meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "°C"
-  meltingPercentile: 28.1
-  thermalConductivity: "1.4 W/(m·K)"
-  thermalConductivityNumeric: 1.4
-  thermalConductivityUnit: W/
-  thermalConductivityMin: "0.5 W/m·K"
-  thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m·K"
-  thermalConductivityMax: "200 W/m·K"
-  thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m·K"
-  thermalPercentile: 0.5
-  tensileStrength: 50 MPa
-  tensileStrengthNumeric: 50.0
-  tensileStrengthUnit: MPa
-  tensileStrengthMin: 50 MPa
-  tensileStrengthMinNumeric: 50.0
-  tensileStrengthMinUnit: MPa
-  tensileStrengthMax: 1000 MPa
-  tensileStrengthMaxNumeric: 1000.0
-  tensileStrengthMaxUnit: MPa
-  tensilePercentile: 0.0
-  hardness: 7.0 Mohs
-  hardnessNumeric: 7.0
-  hardnessUnit: Mohs
-  hardnessMin: 1 Mohs
-  hardnessMinNumeric: 1.0
-  hardnessMinUnit: Mohs
-  hardnessMax: 10 Mohs
-  hardnessMaxNumeric: 10.0
-  hardnessMaxUnit: Mohs
-  hardnessPercentile: 66.7
-  youngsModulus: 72 GPa
-  youngsModulusNumeric: 72.0
-  youngsModulusUnit: GPa
-  youngsModulusMin: 20 GPa
-  youngsModulusMinNumeric: 20.0
-  youngsModulusMinUnit: GPa
-  youngsModulusMax: 80 GPa
-  youngsModulusMaxNumeric: 80.0
-  youngsModulusMaxUnit: GPa
-  modulusPercentile: 86.7
-  laserType: Pulsed Fiber Laser
-  wavelength: 1064 nm
-  fluenceRange: "0.5–5 J/cm²"
-  chemicalFormula: SiO2
-composition:
-- "Silicon Dioxide (SiO₂): 99.9-99.99%"
-- 'Trace impurities: <1000 ppm (typically Al, Na, K, Fe, OH)'
-machineSettings:
-  powerRange: 20-100W
-  powerRangeNumeric: 60.0
-  powerRangeUnit: W
-  powerRangeMin: 20W
-  powerRangeMinNumeric: 20.0
-  powerRangeMinUnit: W
-  powerRangeMax: 500W
-  powerRangeMaxNumeric: 500.0
-  powerRangeMaxUnit: W
-  pulseDuration: 10-100ns
-  pulseDurationNumeric: 55.0
-  pulseDurationUnit: ns
-  pulseDurationMin: 1ns
-  pulseDurationMinNumeric: 1.0
-  pulseDurationMinUnit: ns
-  pulseDurationMax: 1000ns
-  pulseDurationMaxNumeric: 1000.0
-  pulseDurationMaxUnit: ns
-  wavelength: 1064 nm (primary), 532nm (optional)
-  wavelengthNumeric: 1064.0
-  wavelengthUnit: nm
-  wavelengthMin: 355nm
-  wavelengthMinNumeric: 355.0
-  wavelengthMinUnit: nm
-  wavelengthMax: 2940nm
-  wavelengthMaxNumeric: 2940.0
-  wavelengthMaxUnit: nm
-  spotSize: 0.1-2.0mm
-  spotSizeNumeric: 1.05
-  spotSizeUnit: mm
-  spotSizeMin: 0.01mm
-  spotSizeMinNumeric: 0.01
-  spotSizeMinUnit: mm
-  spotSizeMax: 10mm
-  spotSizeMaxNumeric: 10.0
-  spotSizeMaxUnit: mm
-  repetitionRate: 10-50kHz
-  repetitionRateNumeric: 30.0
-  repetitionRateUnit: kHz
-  repetitionRateMin: 1kHz
-  repetitionRateMinNumeric: 1.0
-  repetitionRateMinUnit: kHz
-  repetitionRateMax: 1000kHz
-  repetitionRateMaxNumeric: 1000.0
-  repetitionRateMaxUnit: kHz
-  fluenceRange: "0.5–5 J/cm²"
-  fluenceRangeNumeric: 0.5
-  fluenceRangeUnit: "J/cm²"
-  fluenceRangeMin: "0.1J/cm²"
-  fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm²"
-  fluenceRangeMax: "50J/cm²"
-  fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm²"
 applications:
-- 'Semiconductor Manufacturing: Cleaning of quartz glass components used in photolithography
-  processes'
-- 'Optics and Photonics: Precision cleaning of optical surfaces for laser systems
-  and telescopes'
-compatibility:
-- Compatible with most metallic fixtures and handling systems
-- Similar processing parameters to borosilicate glass and synthetic fused silica
-regulatoryStandards: IEC 60825-1 (Laser Safety), ISO 11551 (Optical components), SEMI
-  Standard F57-0306 (Quartz Specifications)
+- 'Semiconductor Manufacturing: Cleaning of quartz glass components used in photolithography processes'
+- 'Optics and Photonics: Precision cleaning of optical surfaces for laser systems and telescopes'
 author: Alessandro Moretti
 author_object:
+  country: Italy
+  expertise: Laser-Based Additive Manufacturing
   id: 2
+  image: /images/author/alessandro-moretti.jpg
   name: Alessandro Moretti
   sex: m
   title: Ph.D.
-  country: Italy
-  expertise: Laser-Based Additive Manufacturing
-  image: /images/author/alessandro-moretti.jpg
-images:
-  hero:
-    alt: Quartz Glass surface undergoing laser cleaning showing precise contamination
-      removal
-    url: /images/quartz-glass-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Quartz Glass surface after laser cleaning showing detailed
-      surface structure
-    url: /images/quartz-glass-laser-cleaning-micro.jpg
+category: glass
+chemicalFormula: SiO2
+chemicalProperties:
+  formula: SiO2
+  materialType: glass
+  symbol: SiO₂
+compatibility:
+- Compatible with most metallic fixtures and handling systems
+- Similar processing parameters to borosilicate glass and synthetic fused silica
+complexity: medium
+composition:
+- 'Silicon Dioxide (SiO₂): 99.9-99.99%'
+- 'Trace impurities: <1000 ppm (typically Al, Na, K, Fe, OH)'
+description: Laser cleaning of fused quartz glass utilizes precise pulsed fiber lasers to remove surface contaminants through selective ablation while preserving the substrate's optical properties and surface integrity. The process is particularly effective for removing organic residues, particles, and thin films without chemical residues or mechanical damage.
+difficultyScore: 3
 environmentalImpact:
 - benefit: Zero chemical waste generation
-  description: Eliminates use of hazardous solvents like HF acid and reduces water
-    consumption by 95% compared to wet chemical cleaning
+  description: Eliminates use of hazardous solvents like HF acid and reduces water consumption by 95% compared to wet chemical cleaning
 - benefit: Reduced energy consumption
-  description: Laser cleaning consumes approximately 60% less energy than thermal
-    or chemical cleaning processes for quartz components
+  description: Laser cleaning consumes approximately 60% less energy than thermal or chemical cleaning processes for quartz components
+headline: Comprehensive technical guide for laser cleaning glass quartz glass
+images:
+  hero:
+    alt: Quartz Glass surface undergoing laser cleaning showing precise contamination removal
+    url: /images/quartz-glass-laser-cleaning-hero.jpg
+  micro:
+    alt: Microscopic view of Quartz Glass surface after laser cleaning showing detailed surface structure
+    url: /images/quartz-glass-laser-cleaning-micro.jpg
+keywords: quartz glass, fused silica, laser ablation, laser cleaning, non-contact cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters, thermal processing, surface restoration
+machineSettings:
+  fluenceRange: 0.5
+  fluenceRangeMax: 50.0
+  fluenceRangeMin: 0.1
+  fluenceRangeUnit: J/cm²
+  powerRange: 60.0
+  powerRangeMax: 500.0
+  powerRangeMin: 20.0
+  powerRangeUnit: W
+  pulseDuration: 55.0
+  pulseDurationMax: 1000.0
+  pulseDurationMin: 1.0
+  pulseDurationUnit: ns
+  repetitionRate: 30.0
+  repetitionRateMax: 1000.0
+  repetitionRateMin: 1.0
+  repetitionRateUnit: kHz
+  spotSize: 1.05
+  spotSizeMax: 10.0
+  spotSizeMin: 0.01
+  spotSizeUnit: mm
+  wavelength: 1064.0
+  wavelengthMax: 2940.0
+  wavelengthMin: 355.0
+  wavelengthUnit: nm
+name: Quartz Glass
 outcomes:
-- result: "Surface cleanliness < 0.1 particles/cm² > 0.3 μm"
-  metric: Achieves Class 10 cleanroom standards for semiconductor applications
-- result: Surface roughness preservation < 0.5 nm Ra change
-  metric: "Maintains optical quality with processing speeds of 0.1-0.5 m²/hour"
-technicalSpecifications:
-  powerRange: 20-100 W
-  pulseDuration: 10-100 ns
-  wavelength: 1064 nm (primary), 532 nm (optional for finer control)
-  spotSize: 0.1-2.0 mm
-  repetitionRate: 10-50 kHz
-  fluenceRange: "0.5-5 J/cm²"
-  scanningSpeed: 100-2000 mm/s
-  beamProfile: Top-hat or Gaussian
-  beamProfileOptions: Top-hat, Gaussian, Flat-top
-  safetyClass: Class 4
-prompt_chain_verification:
-  base_config_loaded: true
-  persona_config_loaded: true
-  formatting_config_loaded: true
-  ai_detection_config_loaded: true
-  persona_country: Italy
-  author_id: 2
-  verification_timestamp: '2025-09-20T20: 57: 35Z'
-  prompt_components_integrated: 4
-  human_authenticity_focus: true
-  cultural_adaptation_applied: true
-chemicalFormula: SiO2
-laser_parameters:
-  fluence_threshold: "0.5–5 J/cm²"
-  pulse_duration: 10-100ns
-  wavelength_optimal: 1064 nm
-  power_range: 20-100W
-  repetition_rate: 10-50kHz
-  spot_size: 0.1-2.0mm
-  laser_type: Pulsed Fiber Laser
+- metric: Achieves Class 10 cleanroom standards for semiconductor applications
+  result: Surface cleanliness < 0.1 particles/cm² > 0.3 μm
+- metric: Maintains optical quality with processing speeds of 0.1-0.5 m²/hour
+  result: Surface roughness preservation < 0.5 nm Ra change
+properties:
+  density: 2.2
+  densityMax: 6.0
+  densityMin: 1.8
+  densityPercentile: 9.5
+  densityUnit: g/cm³
+  hardness: 7.0
+  hardnessMax: 10.0
+  hardnessMin: 1.0
+  hardnessPercentile: 66.7
+  hardnessUnit: Mohs
+  meltingPercentile: 28.1
+  meltingPoint: 75
+  meltingPointMax: 2800.0
+  meltingPointMin: 1200.0
+  meltingPointUnit: °C
+  modulusPercentile: 86.7
+  tensilePercentile: 0.0
+  tensileStrength: 50.0
+  tensileStrengthMax: 1000.0
+  tensileStrengthMin: 50.0
+  tensileStrengthUnit: MPa
+  thermalConductivity: 1.4
+  thermalConductivityMax: 200.0
+  thermalConductivityMin: 0.5
+  thermalConductivityUnit: W/
+  thermalPercentile: 0.5
+  youngsModulus: 72.0
+  youngsModulusMax: 80.0
+  youngsModulusMin: 20.0
+  youngsModulusUnit: GPa
+regulatoryStandards: IEC 60825-1 (Laser Safety), ISO 11551 (Optical components), SEMI Standard F57-0306 (Quartz Specifications)
+surface_roughness_after: 0.2
+surface_roughness_before: 0.8
 tags:
 - Semiconductor Manufacturing
 - Optics and Photonics
-complexity: medium
-difficultyScore: 3
-surface_roughness_before: 0.8
-surface_roughness_after: 0.2
+title: Quartz Glass Laser Cleaning
 ---
