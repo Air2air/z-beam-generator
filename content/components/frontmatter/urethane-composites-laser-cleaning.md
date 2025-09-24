@@ -1,155 +1,81 @@
 ---
 name: Urethane Composites
 category: composite
-title: Urethane Composites Laser Cleaning
-headline: Comprehensive technical guide for laser cleaning composite urethane composites
-description: Laser cleaning of polyurethane composites utilizes precise pulsed fiber
-  laser parameters to selectively remove surface contaminants without damaging the
-  composite matrix. The 1064nm wavelength provides optimal absorption in polyurethane
-  while minimizing thermal damage to reinforcing fibers.
-keywords: urethane composites, polyurethane composite, laser ablation, laser cleaning,
-  non-contact cleaning, pulsed fiber laser, surface contamination removal, industrial
-  laser parameters, thermal processing, surface restoration
-chemicalProperties:
-  symbol: PU
-  formula: "(C₁₀H₈N₂O₂C₆H₁₄O₃)\u2099 (polyurethane matrix with various reinforcements)"
-  materialType: composite
+title: Laser Cleaning Urethane Composites
+headline: Comprehensive laser cleaning guide for composite urethane composites
+description: Technical overview of Urethane Composites laser cleaning applications and parameters
+keywords:
+- urethane composites
+- urethane composites composite
+- laser ablation
+- laser cleaning
+- non-contact cleaning
+- automotive applications
+- aerospace applications
 properties:
-  density: 1.1g/cm³
-  thermalDestructionPoint: "220°C"
-  thermalDestructionType: melting
-  densityNumeric: 1.15
-  densityUnit: "g/cm³"
-  densityMin: "1.8 g/cm³"
-  densityMinNumeric: 1.8
-  densityMinUnit: "g/cm³"
-  densityMax: "6.0 g/cm³"
-  densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm³"
-  densityPercentile: 0.0
-  meltingPointMin: "1200°C"
-  meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "°C"
-  meltingPointMax: "2800°C"
-  meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "°C"
-  meltingPercentile: 0.0
-  thermalConductivity: 0.2W/m·K"
-  thermalConductivityNumeric: 0.22
-  thermalConductivityUnit: "W/m·K"
-  thermalConductivityMin: "0.5 W/m·K"
-  thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m·K"
-  thermalConductivityMax: "200 W/m·K"
-  thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m·K"
-  thermalPercentile: 0.0
-  tensileStrength: 50MPa
-  tensileStrengthNumeric: 50.0
+  density: 1.2
+  densityUnit: g/cm³
+  thermalConductivity: 0.2
+  thermalConductivityUnit: W/m·K
+  tensileStrength: 100
   tensileStrengthUnit: MPa
-  tensileStrengthMin: 50 MPa
-  tensileStrengthMinNumeric: 50.0
-  tensileStrengthMinUnit: MPa
-  tensileStrengthMax: 1000 MPa
-  tensileStrengthMaxNumeric: 1000.0
-  tensileStrengthMaxUnit: MPa
-  tensilePercentile: 0.0
-  hardness: 85Shore
-  hardnessNumeric: 85.0
-  hardnessUnit: Shore
-  hardnessMin: 1 Mohs
-  hardnessMinNumeric: 1.0
-  hardnessMinUnit: Mohs
-  hardnessMax: 10 Mohs
-  hardnessMaxNumeric: 10.0
-  hardnessMaxUnit: Mohs
-  hardnessPercentile: 100.0
-  youngsModulus: 0.5-3.0 GPa
-  youngsModulusNumeric: 1.75
+  youngsModulus: 10
   youngsModulusUnit: GPa
-  youngsModulusMin: 20 GPa
-  youngsModulusMinNumeric: 20.0
-  youngsModulusMinUnit: GPa
-  youngsModulusMax: 80 GPa
-  youngsModulusMaxNumeric: 80.0
-  youngsModulusMaxUnit: GPa
-  modulusPercentile: 0.0
-  laserType: Pulsed fiber laser
-  wavelength: 1064nm
-  fluenceRange: "1.0–10 J/cm²"
-  chemicalFormula: Varies by formulation; typically polyol + diisocyanate + chain
-    extender  decompositionPointUnit: "°C"
-composition:
-- 'Polyurethane matrix: 60-80%'
-- 'Glass/carbon fiber reinforcement: 20-40%'
-- 'Fillers/additives: 0-10%'
-machineSettings:
-  powerRange: 50-200W
-  powerRangeNumeric: 125.0
-  powerRangeUnit: W
-  powerRangeMin: 20W
-  powerRangeMinNumeric: 20.0
-  powerRangeMinUnit: W
-  powerRangeMax: 500W
-  powerRangeMaxNumeric: 500.0
-  powerRangeMaxUnit: W
-  pulseDuration: 20-200ns
-  pulseDurationNumeric: 110.0
-  pulseDurationUnit: ns
-  pulseDurationMin: 1ns
-  pulseDurationMinNumeric: 1.0
-  pulseDurationMinUnit: ns
-  pulseDurationMax: 1000ns
-  pulseDurationMaxNumeric: 1000.0
-  pulseDurationMaxUnit: ns
-  wavelength: 1064nm (primary), 532nm (optional)
-  wavelengthNumeric: 1064.0
-  wavelengthUnit: nm
-  wavelengthMin: 355nm
-  wavelengthMinNumeric: 355.0
-  wavelengthMinUnit: nm
-  wavelengthMax: 2940nm
-  wavelengthMaxNumeric: 2940.0
-  wavelengthMaxUnit: nm
-  spotSize: 0.2-1.5mm
-  spotSizeNumeric: 0.85
-  spotSizeUnit: mm
-  spotSizeMin: 0.01mm
-  spotSizeMinNumeric: 0.01
-  spotSizeMinUnit: mm
-  spotSizeMax: 10mm
-  spotSizeMaxNumeric: 10.0
-  spotSizeMaxUnit: mm
-  repetitionRate: 20-100kHz
-  repetitionRateNumeric: 60.0
-  repetitionRateUnit: kHz
-  repetitionRateMin: 1kHz
-  repetitionRateMinNumeric: 1.0
-  repetitionRateMinUnit: kHz
-  repetitionRateMax: 1000kHz
-  repetitionRateMaxNumeric: 1000.0
-  repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0–10 J/cm²"
-  fluenceRangeNumeric: 1.0
-  fluenceRangeUnit: "J/cm²"
-  fluenceRangeMin: "0.1J/cm²"
-  fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm²"
-  fluenceRangeMax: "50J/cm²"
-  fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm²"
+  densityMin: 0.5
+  densityMax: 8.0
+  thermalConductivityMin: 0.1
+  thermalConductivityMax: 400
+  tensileStrengthMin: 50
+  tensileStrengthMax: 6000
+  youngsModulusMin: 5
+  youngsModulusMax: 1000
 applications:
-- 'Automotive: Cleaning of urethane composite parts for surface preparation before
-  painting'
+- 'Automotive: Cleaning of urethane composite parts for surface preparation before painting'
 - 'Aerospace: Removal of contaminants from urethane composite aircraft components'
+machineSettings:
+  powerRange: 28.0
+  powerRangeUnit: W
+  wavelength: 355.0
+  wavelengthUnit: nm
+  pulseDuration: 20.0
+  pulseDurationUnit: ns
+  spotSize: 1.5
+  spotSizeUnit: mm
+  repetitionRate: 20.0
+  repetitionRateUnit: kHz
+  fluenceRange: 0.1
+  fluenceRangeUnit: J/cm²
+  powerRangeMin: 20.0
+  powerRangeMax: 500.0
+  pulseDurationMin: 1.0
+  pulseDurationMax: 1000.0
+  wavelengthMin: 355.0
+  wavelengthMax: 2940.0
+  spotSizeMin: 0.01
+  spotSizeMax: 10.0
+  repetitionRateMin: 1.0
+  repetitionRateMax: 1000.0
+  fluenceRangeMin: 0.1
+  fluenceRangeMax: 50.0
+  beamProfile: Gaussian TEM00
+  beamProfileOptions:
+  - Gaussian TEM00
+  - Top-hat
+  - Donut
+  - Multi-mode
+  safetyClass: Class 4 (requires full enclosure)
 compatibility:
-- Carbon fiber reinforced polymers (CFRP)
-- Glass fiber reinforced polymers (GFRP)
-- Thermoplastic polyurethanes (TPU)
-regulatoryStandards: ISO 11553 (Safety of laser processing machines), IEC 60825-1
-  (Laser product safety), ASTM E2015 (Standard guide for preparation of plastics and
-  polymeric specimens)
-author: Ikmanda Roswati
+  laser_types:
+  - Fiber lasers (optimal for most applications)
+  - Nd:YAG lasers (excellent for precision work)
+  - CO2 lasers (moderate effectiveness)
+  surface_treatments:
+  - Natural urethane composites surfaces
+  - Coated urethane composites
+  - Stained or contaminated surfaces
+  incompatible_conditions:
+  - Severely damaged urethane composites requiring structural repair
+  - Extremely thin urethane composites susceptible to thermal damage
 author_object:
   id: 3
   name: Ikmanda Roswati
@@ -158,62 +84,17 @@ author_object:
   country: Indonesia
   expertise: Ultrafast Laser Physics and Material Interactions
   image: /images/author/ikmanda-roswati.jpg
-images:
-  hero:
-    alt: Urethane Composites surface undergoing laser cleaning showing precise contamination
-      removal
-    url: /images/urethane-composites-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Urethane Composites surface after laser cleaning showing
-      detailed surface structure
-    url: /images/urethane-composites-laser-cleaning-micro.jpg
-environmentalImpact:
-- benefit: 97% reduction in chemical solvent usage
-  description: Eliminates need for methyl ethyl ketone (MEK) and other VOC-emitting
-    solvents traditionally used for polyurethane composite cleaning
-- benefit: Zero wastewater generation
-  description: Dry process eliminates contaminated water streams from solvent washing
-    and rinsing operations
-outcomes:
-- result: Surface contamination removal >99.5%
-  metric: Measured via FTIR spectroscopy and contact angle analysis
-- result: "Processing speed 2-5 m²/hour"
-  metric: For typical automotive bumper cleaning applications at 100W laser power
-technicalSpecifications:
-  powerRange: 50-200 W
-  pulseDuration: 20-200 ns
-  wavelength: 1064 nm (primary), 532 nm (optional)
-  spotSize: 0.2-1.5 mm
-  repetitionRate: 20-100 kHz
-  fluenceRange: "1.0-10 J/cm²"
-  scanningSpeed: 500-2000 mm/s
-  beamProfile: Top-hat (flat-top)
-  beamProfileOptions: Top-hat, Gaussian, Multimode
-  safetyClass: Class 4 (IEC 60825-1)
-prompt_chain_verification:
-  base_config_loaded: true
-  persona_config_loaded: true
-  formatting_config_loaded: true
-  ai_detection_config_loaded: true
-  persona_country: Indonesia
-  author_id: 3
-  verification_timestamp: '2025-09-20T20: 48: 52Z'
-  prompt_components_integrated: 4
-  human_authenticity_focus: true
-  cultural_adaptation_applied: true
-laser_parameters:
-  fluence_threshold: "1.0–10 J/cm²"
-  pulse_duration: 20-200ns
-  wavelength_optimal: 1064nm
-  power_range: 50-200W
-  repetition_rate: 20-100kHz
-  spot_size: 0.2-1.5mm
-  laser_type: Pulsed fiber laser
-tags:
-- Automotive
-- Aerospace
 complexity: medium
-difficultyScore: 3
-surface_roughness_before: 9.8
-surface_roughness_after: 2.8
+difficulty_score: 3
+author_id: 3
 ---
+
+
+# Version Information
+# Generated: 2025-09-23T23:19:47.852736
+# Material: Urethane Composites
+# Component: frontmatter
+# Generator: Z-Beam v2.1.0
+# Author: AI Assistant
+# Platform: Darwin (3.12.4)
+# File: content/components/frontmatter/urethane-composites-laser-cleaning.md

@@ -1,10 +1,10 @@
 ---
-symbol: "Teak"
+symbol: "Wd"
 materialType: "wood"
 ---
 
 ---
-Version Log - Generated: 2025-09-22T14:58:39.052667
+Version Log - Generated: 2025-09-23T23:26:49.015023
 Material: Unknown
 Component: badgesymbol
 Generator: Z-Beam v1.0.0

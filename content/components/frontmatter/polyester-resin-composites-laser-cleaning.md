@@ -1,155 +1,81 @@
 ---
 name: Polyester Resin Composites
 category: composite
-title: Polyester Resin Composites Laser Cleaning
-headline: Comprehensive technical guide for laser cleaning composite polyester resin
-  composites
-description: Laser cleaning of polyester resin composites utilizes precise pulsed
-  fiber laser ablation to remove surface contaminants, oxidation, and coatings. The
-  process is governed by the photothermal decomposition of the resin matrix (primarily
-  unsaturated polyester) at fluences above its ablation threshold, enabling selective
-  removal without damaging the glass fiber reinforcement or altering the bulk material
-  properties.
-keywords: polyester resin composites, polyester resin composites composite, laser
-  ablation, laser cleaning, non-contact cleaning, pulsed fiber laser, surface contamination
-  removal, industrial laser parameters, thermal processing, surface restoration
-chemicalProperties:
-  symbol: N/A (Composite)
-  formula: C10H8O4 (Base resin repeat unit) + SiO2 (Glass fiber)
-  materialType: composite
+title: Laser Cleaning Polyester Resin Composites
+headline: Comprehensive laser cleaning guide for composite polyester resin composites
+description: Technical overview of Polyester Resin Composites laser cleaning applications and parameters
+keywords:
+- polyester resin composites
+- polyester resin composites composite
+- laser ablation
+- laser cleaning
+- non-contact cleaning
+- automotive applications
+- aerospace applications
 properties:
-  density: 1.6g/cm³
-  thermalDestructionPoint: "220°C"
-  thermalDestructionType: melting
-  densityNumeric: 1.6
-  densityUnit: "g/cm³"
-  densityMin: "1.8 g/cm³"
-  densityMinNumeric: 1.8
-  densityMinUnit: "g/cm³"
-  densityMax: "6.0 g/cm³"
-  densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm³"
-  densityPercentile: 0.0
-  meltingPointMin: "1200°C"
-  meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "°C"
-  meltingPointMax: "2800°C"
-  meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "°C"
-  meltingPercentile: 0.0
-  thermalConductivity: 0.2W/(m·K)"
-  thermalConductivityNumeric: 0.21
-  thermalConductivityUnit: W/
-  thermalConductivityMin: "0.5 W/m·K"
-  thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m·K"
-  thermalConductivityMax: "200 W/m·K"
-  thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m·K"
-  thermalPercentile: 0.0
-  tensileStrength: 90MPa
-  tensileStrengthNumeric: 90.0
+  density: 1.2
+  densityUnit: g/cm³
+  thermalConductivity: 0.2
+  thermalConductivityUnit: W/m·K
+  tensileStrength: 100
   tensileStrengthUnit: MPa
-  tensileStrengthMin: 50 MPa
-  tensileStrengthMinNumeric: 50.0
-  tensileStrengthMinUnit: MPa
-  tensileStrengthMax: 1000 MPa
-  tensileStrengthMaxNumeric: 1000.0
-  tensileStrengthMaxUnit: MPa
-  tensilePercentile: 4.2
-  hardness: 87.5Barcol
-  hardnessNumeric: 87.5
-  hardnessUnit: Barcol
-  hardnessMin: 1 Mohs
-  hardnessMinNumeric: 1.0
-  hardnessMinUnit: Mohs
-  hardnessMax: 10 Mohs
-  hardnessMaxNumeric: 10.0
-  hardnessMaxUnit: Mohs
-  hardnessPercentile: 100.0
-  youngsModulus: 6-15 GPa
-  youngsModulusNumeric: 10.5
+  youngsModulus: 10
   youngsModulusUnit: GPa
-  youngsModulusMin: 20 GPa
-  youngsModulusMinNumeric: 20.0
-  youngsModulusMinUnit: GPa
-  youngsModulusMax: 80 GPa
-  youngsModulusMaxNumeric: 80.0
-  youngsModulusMaxUnit: GPa
-  modulusPercentile: 0.0
-  laserType: Pulsed Fiber Laser
-  wavelength: 1064 nm
-  fluenceRange: "0.5-5 J/cm²"
-  chemicalFormula: N/A (Composite Material)  decompositionPointUnit: "°C"
-composition:
-- Unsaturated Polyester Resin (30-50%)
-- E-glass or S-glass fibers (50-70%)
-- Calcium Carbonate filler (0-15%)
-- Catalysts (MEKP) and additives (<2%)
-machineSettings:
-  powerRange: 20-100W
-  powerRangeNumeric: 60.0
-  powerRangeUnit: W
-  powerRangeMin: 20W
-  powerRangeMinNumeric: 20.0
-  powerRangeMinUnit: W
-  powerRangeMax: 500W
-  powerRangeMaxNumeric: 500.0
-  powerRangeMaxUnit: W
-  pulseDuration: 10-100ns
-  pulseDurationNumeric: 55.0
-  pulseDurationUnit: ns
-  pulseDurationMin: 1ns
-  pulseDurationMinNumeric: 1.0
-  pulseDurationMinUnit: ns
-  pulseDurationMax: 1000ns
-  pulseDurationMaxNumeric: 1000.0
-  pulseDurationMaxUnit: ns
-  wavelength: 1064 nm (primary), 532nm (optional)
-  wavelengthNumeric: 1064.0
-  wavelengthUnit: nm
-  wavelengthMin: 355nm
-  wavelengthMinNumeric: 355.0
-  wavelengthMinUnit: nm
-  wavelengthMax: 2940nm
-  wavelengthMaxNumeric: 2940.0
-  wavelengthMaxUnit: nm
-  spotSize: 0.1-2.0mm
-  spotSizeNumeric: 1.05
-  spotSizeUnit: mm
-  spotSizeMin: 0.01mm
-  spotSizeMinNumeric: 0.01
-  spotSizeMinUnit: mm
-  spotSizeMax: 10mm
-  spotSizeMaxNumeric: 10.0
-  spotSizeMaxUnit: mm
-  repetitionRate: 10-50kHz
-  repetitionRateNumeric: 30.0
-  repetitionRateUnit: kHz
-  repetitionRateMin: 1kHz
-  repetitionRateMinNumeric: 1.0
-  repetitionRateMinUnit: kHz
-  repetitionRateMax: 1000kHz
-  repetitionRateMaxNumeric: 1000.0
-  repetitionRateMaxUnit: kHz
-  fluenceRange: "0.5-5 J/cm²"
-  fluenceRangeNumeric: 2.75
-  fluenceRangeUnit: "J/cm²"
-  fluenceRangeMin: "0.1J/cm²"
-  fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm²"
-  fluenceRangeMax: "50J/cm²"
-  fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm²"
+  densityMin: 0.5
+  densityMax: 8.0
+  thermalConductivityMin: 0.1
+  thermalConductivityMax: 400
+  tensileStrengthMin: 50
+  tensileStrengthMax: 6000
+  youngsModulusMin: 5
+  youngsModulusMax: 1000
 applications:
 - 'Automotive: Surface preparation for painting and bonding'
 - 'Aerospace: Cleaning and restoration of composite parts'
+machineSettings:
+  powerRange: 22.0
+  powerRangeUnit: W
+  wavelength: 355.0
+  wavelengthUnit: nm
+  pulseDuration: 10.0
+  pulseDurationUnit: ns
+  spotSize: 1.0
+  spotSizeUnit: mm
+  repetitionRate: 10.0
+  repetitionRateUnit: kHz
+  fluenceRange: 0.1
+  fluenceRangeUnit: J/cm²
+  powerRangeMin: 20.0
+  powerRangeMax: 500.0
+  pulseDurationMin: 1.0
+  pulseDurationMax: 1000.0
+  wavelengthMin: 355.0
+  wavelengthMax: 2940.0
+  spotSizeMin: 0.01
+  spotSizeMax: 10.0
+  repetitionRateMin: 1.0
+  repetitionRateMax: 1000.0
+  fluenceRangeMin: 0.1
+  fluenceRangeMax: 50.0
+  beamProfile: Gaussian TEM00
+  beamProfileOptions:
+  - Gaussian TEM00
+  - Top-hat
+  - Donut
+  - Multi-mode
+  safetyClass: Class 4 (requires full enclosure)
 compatibility:
-- Fiber-reinforced plastics (FRP) with similar matrices (e.g., Vinylester)
-- Thermoset polymer composites with high ablation thresholds
-regulatoryStandards: IEC 60825-1 (Laser Safety), ISO 11553 (Safety of Laser Processing
-  Machines), EPA Guidelines for Airborne Particulate Matter
-author: Yi-Chun Lin
+  laser_types:
+  - Fiber lasers (optimal for most applications)
+  - Nd:YAG lasers (excellent for precision work)
+  - CO2 lasers (moderate effectiveness)
+  surface_treatments:
+  - Natural polyester resin composites surfaces
+  - Coated polyester resin composites
+  - Stained or contaminated surfaces
+  incompatible_conditions:
+  - Severely damaged polyester resin composites requiring structural repair
+  - Extremely thin polyester resin composites susceptible to thermal damage
 author_object:
   id: 1
   name: Yi-Chun Lin
@@ -158,63 +84,17 @@ author_object:
   country: Taiwan
   expertise: Laser Materials Processing
   image: /images/author/yi-chun-lin.jpg
-images:
-  hero:
-    alt: Polyester Resin Composites surface undergoing laser cleaning showing precise
-      contamination removal
-    url: /images/polyester-resin-composites-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Polyester Resin Composites surface after laser cleaning
-      showing detailed surface structure
-    url: /images/polyester-resin-composites-laser-cleaning-micro.jpg
-environmentalImpact:
-- benefit: Elimination of Chemical Solvents
-  description: Replaces solvent-based cleaning (e.g., methyl ethyl ketone, acetone),
-    eliminating VOC emissions of up to 95% and reducing hazardous waste generation.
-- benefit: Reduced Waste and Energy Consumption
-  description: Generates minimal solid waste (ablated particulates are captured by
-    filtration) and operates with high electrical-to-optical efficiency (~30%), reducing
-    overall energy use by ~40% compared to abrasive blasting.
-outcomes:
-- result: Contaminant Removal Efficiency
-  metric: ">99% removal of paints, oils, and release agents with a surface roughness (Ra) change of <5 µm."
-- result: Processing Throughput
-  metric: "Achieves cleaning rates of 2-10 m²/hour depending on contaminant type and laser parameters."
-technicalSpecifications:
-  powerRange: 20-100 W
-  pulseDuration: 10-100 ns
-  wavelength: 1064 nm (primary), 532 nm (optional for finer control)
-  spotSize: 0.1-2.0 mm
-  repetitionRate: 10-50 kHz
-  fluenceRange: "0.5-5 J/cm²"
-  scanningSpeed: 100-2000 mm/s
-  beamProfile: Top-hat (flat-top)
-  beamProfileOptions: Top-hat, Gaussian, Multi-mode
-  safetyClass: Class 4
-prompt_chain_verification:
-  base_config_loaded: true
-  persona_config_loaded: true
-  formatting_config_loaded: true
-  ai_detection_config_loaded: true
-  persona_country: Taiwan
-  author_id: 1
-  verification_timestamp: '2025-09-20T20: 46: 14Z'
-  prompt_components_integrated: 4
-  human_authenticity_focus: true
-  cultural_adaptation_applied: true
-laser_parameters:
-  fluence_threshold: "0.5-5 J/cm²"
-  pulse_duration: 10-100ns
-  wavelength_optimal: 1064 nm
-  power_range: 20-100W
-  repetition_rate: 10-50kHz
-  spot_size: 0.1-2.0mm
-  laser_type: Pulsed Fiber Laser
-tags:
-- Automotive
-- Aerospace
 complexity: medium
-difficultyScore: 3
-surface_roughness_before: 7.5
-surface_roughness_after: 2.1
+difficulty_score: 3
+author_id: 1
 ---
+
+
+# Version Information
+# Generated: 2025-09-23T23:19:47.808588
+# Material: Polyester Resin Composites
+# Component: frontmatter
+# Generator: Z-Beam v2.1.0
+# Author: AI Assistant
+# Platform: Darwin (3.12.4)
+# File: content/components/frontmatter/polyester-resin-composites-laser-cleaning.md

@@ -1,10 +1,10 @@
 ---
-symbol: "CACO"
+symbol: "CA"
 materialType: "stone"
 ---
 
 ---
-Version Log - Generated: 2025-09-22T14:58:35.466146
+Version Log - Generated: 2025-09-23T23:26:48.702862
 Material: Unknown
 Component: badgesymbol
 Generator: Z-Beam v1.0.0

@@ -1,10 +1,10 @@
 ---
-symbol: "STON"
+symbol: "AL"
 materialType: "ceramic"
 ---
 
 ---
-Version Log - Generated: 2025-09-22T14:58:25.643557
+Version Log - Generated: 2025-09-23T23:26:47.919528
 Material: Unknown
 Component: badgesymbol
 Generator: Z-Beam v1.0.0

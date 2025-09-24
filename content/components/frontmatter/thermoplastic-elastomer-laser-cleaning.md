@@ -1,91 +1,81 @@
 ---
 name: Thermoplastic Elastomer
 category: composite
-title: Thermoplastic Elastomer Laser Cleaning
-headline: Comprehensive technical guide for laser cleaning composite thermoplastic
-  elastomer
-description: Laser cleaning of TPE utilizes precise nanosecond pulsed fiber lasers
-  to selectively ablate surface contaminants while preserving the underlying polymer
-  matrix. The process exploits differential absorption between contaminants and the
-  TPE substrate, achieving non-contact cleaning with micron-level precision and no
-  solvent waste.
-keywords: thermoplastic elastomer, thermoplastic elastomer composite, laser ablation,
-  laser cleaning, non-contact cleaning, pulsed fiber laser, surface contamination
-  removal, industrial laser parameters, thermal processing, surface restoration
-chemicalProperties:
-  symbol: TPE
-  formula: 'Variable (Block copolymer: (C4H8)x-(C5H8)y-(C8H8)z)'
-  materialType: composite
+title: Laser Cleaning Thermoplastic Elastomer
+headline: Comprehensive laser cleaning guide for composite thermoplastic elastomer
+description: Technical overview of Thermoplastic Elastomer laser cleaning applications and parameters
+keywords:
+- thermoplastic elastomer
+- thermoplastic elastomer composite
+- laser ablation
+- laser cleaning
+- non-contact cleaning
+- automotive applications
+- medical applications
 properties:
-  density: 1.07
-  densityUnit: "g/cm³"
-  densityMin: 1.8
-  densityMax: 6.0
-  densityPercentile: 0.0
-  meltingPointMin: 1200.0
-  meltingPointMax: 2800.0
-  meltingPercentile: 0.0
-  thermalConductivity: 0.25
-  thermalConductivityUnit: "W/(m·K)"
-  thermalConductivityMin: 0.5
-  thermalConductivityMax: 200.0
-  thermalPercentile: 0.0
-  tensileStrength: 27.5
+  density: 1.2
+  densityUnit: g/cm³
+  thermalConductivity: 0.2
+  thermalConductivityUnit: W/m·K
+  tensileStrength: 100
   tensileStrengthUnit: MPa
-  tensileStrengthMin: 50.0
-  tensileStrengthMax: 1000.0
-  tensilePercentile: 0.0
-  hardness: 60.0
-  hardnessUnit: Shore
-  hardnessMin: 1.0
-  hardnessMax: 10.0
-  hardnessPercentile: 100.0
-  youngsModulus: 252.5
-  youngsModulusUnit: MPa
-  youngsModulusMin: 20.0
-  youngsModulusMax: 80.0
-  modulusPercentile: 100.0
-composition:
-- 'Polystyrene hard segments: 15-40%'
-- 'Polyethylene/butylene rubber soft segments: 60-85%'
-- 'Additives (mineral oils, fillers, stabilizers): 0-15%'
+  youngsModulus: 10
+  youngsModulusUnit: GPa
+  densityMin: 0.5
+  densityMax: 8.0
+  thermalConductivityMin: 0.1
+  thermalConductivityMax: 400
+  tensileStrengthMin: 50
+  tensileStrengthMax: 6000
+  youngsModulusMin: 5
+  youngsModulusMax: 1000
+applications:
+- 'Automotive: Cleaning of automotive parts made from Thermoplastic Elastomer to remove mold release agents and surface contaminants'
+- 'Medical: Precision cleaning of Thermoplastic Elastomer components used in medical devices for sterilization and surface preparation'
 machineSettings:
-  powerRange: 60.0
+  powerRange: 50.0
   powerRangeUnit: W
-  powerRangeMin: 20.0
-  powerRangeMax: 500.0
-  pulseDuration: 55.0
-  pulseDurationUnit: ns
-  pulseDurationMin: 1.0
-  pulseDurationMax: 1000.0
   wavelength: 1064.0
   wavelengthUnit: nm
+  pulseDuration: 10.0
+  pulseDurationUnit: ns
+  spotSize: 1.0
+  spotSizeUnit: mm
+  repetitionRate: 20.0
+  repetitionRateUnit: kHz
+  fluenceRange: 0.8
+  fluenceRangeUnit: J/cm²
+  powerRangeMin: 20.0
+  powerRangeMax: 500.0
+  pulseDurationMin: 1.0
+  pulseDurationMax: 1000.0
   wavelengthMin: 355.0
   wavelengthMax: 2940.0
-  spotSize: 1.05
-  spotSizeUnit: mm
   spotSizeMin: 0.01
   spotSizeMax: 10.0
-  repetitionRate: 30.0
-  repetitionRateUnit: kHz
   repetitionRateMin: 1.0
   repetitionRateMax: 1000.0
-  fluenceRange: 0.5
-  fluenceRangeUnit: "J/cm²"
   fluenceRangeMin: 0.1
   fluenceRangeMax: 50.0
-applications:
-- 'Automotive: Cleaning of automotive parts made from Thermoplastic Elastomer to remove
-  mold release agents and surface contaminants'
-- 'Medical: Precision cleaning of Thermoplastic Elastomer components used in medical
-  devices for sterilization and surface preparation'
+  beamProfile: Gaussian TEM00
+  beamProfileOptions:
+  - Gaussian TEM00
+  - Top-hat
+  - Donut
+  - Multi-mode
+  safetyClass: Class 4 (requires full enclosure)
 compatibility:
-- Carbon steel substrates (when cleaning TPE-coated parts)
-- Stainless steel tooling (compatible with laser processing environment)
-- Polypropylene and polyethylene (similar processing parameters)
-regulatoryStandards: 'ISO 11553: Safety of machinery - Laser processing machines,
-  FDA 21 CFR Part 177.2600 (for medical applications), IEC 60825: Laser product safety'
-author: Alessandro Moretti
+  laser_types:
+  - Fiber lasers (optimal for most applications)
+  - Nd:YAG lasers (excellent for precision work)
+  - CO2 lasers (moderate effectiveness)
+  surface_treatments:
+  - Natural thermoplastic elastomer surfaces
+  - Coated thermoplastic elastomer
+  - Stained or contaminated surfaces
+  incompatible_conditions:
+  - Severely damaged thermoplastic elastomer requiring structural repair
+  - Extremely thin thermoplastic elastomer susceptible to thermal damage
 author_object:
   id: 2
   name: Alessandro Moretti
@@ -94,32 +84,17 @@ author_object:
   country: Italy
   expertise: Laser-Based Additive Manufacturing
   image: /images/author/alessandro-moretti.jpg
-images:
-  hero:
-    alt: Thermoplastic Elastomer surface undergoing laser cleaning showing precise
-      contamination removal
-    url: /images/thermoplastic-elastomer-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Thermoplastic Elastomer surface after laser cleaning
-      showing detailed surface structure
-    url: /images/thermoplastic-elastomer-laser-cleaning-micro.jpg
-environmentalImpact:
-- benefit: 100% elimination of solvent waste
-  description: Eliminates 5-20 liters of solvent waste per production shift compared
-    to traditional solvent cleaning methods
-- benefit: 95% reduction in energy consumption
-  description: Laser cleaning consumes 0.5-2.0 kWh compared to 10-50 kWh for thermal
-    or chemical cleaning processes for equivalent parts
-outcomes:
-- result: Contaminant removal efficiency >99.5%
-  metric: Measured via FTIR spectroscopy and contact angle analysis
-- result: "Substrate damage <5 µm depth"
-  metric: Controlled ablation with surface profilometry confirmation
-tags:
-- Automotive
-- Medical
 complexity: medium
-difficultyScore: 3
-surface_roughness_before: 85.5
-surface_roughness_after: 32.8
+difficulty_score: 3
+author_id: 2
 ---
+
+
+# Version Information
+# Generated: 2025-09-23T23:19:47.837092
+# Material: Thermoplastic Elastomer
+# Component: frontmatter
+# Generator: Z-Beam v2.1.0
+# Author: AI Assistant
+# Platform: Darwin (3.12.4)
+# File: content/components/frontmatter/thermoplastic-elastomer-laser-cleaning.md

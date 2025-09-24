@@ -4,7 +4,14 @@ category: metal
 title: Laser Cleaning Copper
 headline: Comprehensive laser cleaning guide for metal copper
 description: Technical overview of Copper laser cleaning applications and parameters
-keywords: copper, copper metal, laser ablation, laser cleaning, non-contact cleaning, manufacturing applications, restoration applications
+keywords:
+- copper
+- copper metal
+- laser ablation
+- laser cleaning
+- non-contact cleaning
+- manufacturing applications
+- restoration applications
 chemicalProperties:
   formula: Cu
   symbol: Cu
@@ -84,3 +91,13 @@ complexity: medium
 difficulty_score: 3
 author_id: 4
 ---
+
+
+# Version Information
+# Generated: 2025-09-23T23:19:48.367244
+# Material: Copper
+# Component: frontmatter
+# Generator: Z-Beam v2.1.0
+# Author: AI Assistant
+# Platform: Darwin (3.12.4)
+# File: content/components/frontmatter/copper-laser-cleaning.md

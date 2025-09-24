@@ -1,10 +1,10 @@
 ---
-symbol: "ZrO2"
+symbol: "ZR"
 materialType: "ceramic"
 ---
 
 ---
-Version Log - Generated: 2025-09-22T14:58:25.715750
+Version Log - Generated: 2025-09-23T23:26:47.929595
 Material: Unknown
 Component: badgesymbol
 Generator: Z-Beam v1.0.0

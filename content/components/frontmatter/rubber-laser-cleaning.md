@@ -1,153 +1,81 @@
 ---
 name: Rubber
 category: composite
-title: Rubber Laser Cleaning
-headline: Comprehensive technical guide for laser cleaning composite rubber
-description: Laser cleaning of rubber utilizes precise pulsed fiber laser parameters
-  to selectively remove contaminants without damaging the underlying rubber substrate.
-  The 1064nm wavelength provides optimal absorption in rubber compounds, enabling
-  controlled ablation of surface contaminants while preserving mechanical properties.
-keywords: rubber, rubber composite, laser ablation, laser cleaning, non-contact cleaning,
-  pulsed fiber laser, surface contamination removal, industrial laser parameters,
-  thermal processing, surface restoration
-chemicalProperties:
-  symbol: N/A (composite)
-  formula: C5H8 (isoprene base) + additives
-  materialType: composite
+title: Laser Cleaning Rubber
+headline: Comprehensive laser cleaning guide for composite rubber
+description: Technical overview of Rubber laser cleaning applications and parameters
+keywords:
+- rubber
+- rubber composite
+- laser ablation
+- laser cleaning
+- non-contact cleaning
+- automotive applications
+- manufacturing applications
 properties:
-  density: 1.1g/cm³"
-  thermalDestructionPoint: "220°C"
-  thermalDestructionType: melting
-  densityNumeric: 1.06
-  densityUnit: "g/cm³"
-  densityMin: "1.8 g/cm³"
-  densityMinNumeric: 1.8
-  densityMinUnit: "g/cm³"
-  densityMax: "6.0 g/cm³"
-  densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm³"
-  densityPercentile: 0.0
-  meltingPointMin: "1200°C"
-  meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "°C"
-  meltingPointMax: "2800°C"
-  meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "°C"
-  meltingPercentile: 0.0
-  thermalConductivity: 0.2W/m·K"
-  thermalConductivityNumeric: 0.19
-  thermalConductivityUnit: "W/m·K"
-  thermalConductivityMin: "0.5 W/m·K"
-  thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m·K"
-  thermalConductivityMax: "200 W/m·K"
-  thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m·K"
-  thermalPercentile: 0.0
-  tensileStrength: 20MPa
-  tensileStrengthNumeric: 20.0
+  density: 1.2
+  densityUnit: g/cm³
+  thermalConductivity: 0.2
+  thermalConductivityUnit: W/m·K
+  tensileStrength: 100
   tensileStrengthUnit: MPa
-  tensileStrengthMin: 50 MPa
-  tensileStrengthMinNumeric: 50.0
-  tensileStrengthMinUnit: MPa
-  tensileStrengthMax: 1000 MPa
-  tensileStrengthMaxNumeric: 1000.0
-  tensileStrengthMaxUnit: MPa
-  tensilePercentile: 0.0
-  hardness: 65Shore
-  hardnessNumeric: 65.0
-  hardnessUnit: Shore
-  hardnessMin: 1 Mohs
-  hardnessMinNumeric: 1.0
-  hardnessMinUnit: Mohs
-  hardnessMax: 10 Mohs
-  hardnessMaxNumeric: 10.0
-  hardnessMaxUnit: Mohs
-  hardnessPercentile: 100.0
-  youngsModulus: 1-10 MPa
-  youngsModulusNumeric: 5.5
-  youngsModulusUnit: MPa
-  youngsModulusMin: 20 GPa
-  youngsModulusMinNumeric: 20.0
-  youngsModulusMinUnit: GPa
-  youngsModulusMax: 80 GPa
-  youngsModulusMaxNumeric: 80.0
-  youngsModulusMaxUnit: GPa
-  modulusPercentile: 0.0
-  laserType: Pulsed fiber laser
-  wavelength: 1064nm
-  fluenceRange: "0.5–5 J/cm²"
-  chemicalFormula: Variable (typically C5H8 base with sulfur, carbon black, and additives)  decompositionPointUnit: "°C"
-composition:
-- 'Natural rubber (polyisoprene): 40-60%'
-- 'Carbon black: 20-30%'
-- 'Sulfur (vulcanizing agent): 1-3%'
-- 'Zinc oxide, stearic acid, accelerators: 5-10%'
-- 'Processing oils and antioxidants: 5-15%'
-machineSettings:
-  powerRange: 20-100W
-  powerRangeNumeric: 60.0
-  powerRangeUnit: W
-  powerRangeMin: 20W
-  powerRangeMinNumeric: 20.0
-  powerRangeMinUnit: W
-  powerRangeMax: 500W
-  powerRangeMaxNumeric: 500.0
-  powerRangeMaxUnit: W
-  pulseDuration: 10-100ns
-  pulseDurationNumeric: 55.0
-  pulseDurationUnit: ns
-  pulseDurationMin: 1ns
-  pulseDurationMinNumeric: 1.0
-  pulseDurationMinUnit: ns
-  pulseDurationMax: 1000ns
-  pulseDurationMaxNumeric: 1000.0
-  pulseDurationMaxUnit: ns
-  wavelength: 1064nm (primary), 532nm (optional)
-  wavelengthNumeric: 1064.0
-  wavelengthUnit: nm
-  wavelengthMin: 355nm
-  wavelengthMinNumeric: 355.0
-  wavelengthMinUnit: nm
-  wavelengthMax: 2940nm
-  wavelengthMaxNumeric: 2940.0
-  wavelengthMaxUnit: nm
-  spotSize: 0.1-2.0mm
-  spotSizeNumeric: 1.05
-  spotSizeUnit: mm
-  spotSizeMin: 0.01mm
-  spotSizeMinNumeric: 0.01
-  spotSizeMinUnit: mm
-  spotSizeMax: 10mm
-  spotSizeMaxNumeric: 10.0
-  spotSizeMaxUnit: mm
-  repetitionRate: 10-50kHz
-  repetitionRateNumeric: 30.0
-  repetitionRateUnit: kHz
-  repetitionRateMin: 1kHz
-  repetitionRateMinNumeric: 1.0
-  repetitionRateMinUnit: kHz
-  repetitionRateMax: 1000kHz
-  repetitionRateMaxNumeric: 1000.0
-  repetitionRateMaxUnit: kHz
-  fluenceRange: "0.5–5 J/cm²"
-  fluenceRangeNumeric: 0.5
-  fluenceRangeUnit: "J/cm²"
-  fluenceRangeMin: "0.1J/cm²"
-  fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm²"
-  fluenceRangeMax: "50J/cm²"
-  fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm²"
+  youngsModulus: 10
+  youngsModulusUnit: GPa
+  densityMin: 0.5
+  densityMax: 8.0
+  thermalConductivityMin: 0.1
+  thermalConductivityMax: 400
+  tensileStrengthMin: 50
+  tensileStrengthMax: 6000
+  youngsModulusMin: 5
+  youngsModulusMax: 1000
 applications:
 - 'Automotive: Cleaning rubber gaskets and seals for improved assembly precision'
 - 'Manufacturing: Surface preparation of rubber components prior to bonding or coating'
+machineSettings:
+  powerRange: 50.0
+  powerRangeUnit: W
+  wavelength: 1064.0
+  wavelengthUnit: nm
+  pulseDuration: 15.0
+  pulseDurationUnit: ns
+  spotSize: 1.0
+  spotSizeUnit: mm
+  repetitionRate: 10.0
+  repetitionRateUnit: kHz
+  fluenceRange: 0.8
+  fluenceRangeUnit: J/cm²
+  powerRangeMin: 20.0
+  powerRangeMax: 500.0
+  pulseDurationMin: 1.0
+  pulseDurationMax: 1000.0
+  wavelengthMin: 355.0
+  wavelengthMax: 2940.0
+  spotSizeMin: 0.01
+  spotSizeMax: 10.0
+  repetitionRateMin: 1.0
+  repetitionRateMax: 1000.0
+  fluenceRangeMin: 0.1
+  fluenceRangeMax: 50.0
+  beamProfile: Gaussian TEM00
+  beamProfileOptions:
+  - Gaussian TEM00
+  - Top-hat
+  - Donut
+  - Multi-mode
+  safetyClass: Class 4 (requires full enclosure)
 compatibility:
-- Stainless steel substrates
-- Aluminum alloys
-- Most metallic surfaces
-regulatoryStandards: ANSI Z136.1, IEC 60825-1, OSHA 29 CFR 1910.1096
-author: Todd Dunning
+  laser_types:
+  - Fiber lasers (optimal for most applications)
+  - Nd:YAG lasers (excellent for precision work)
+  - CO2 lasers (moderate effectiveness)
+  surface_treatments:
+  - Natural rubber surfaces
+  - Coated rubber
+  - Stained or contaminated surfaces
+  incompatible_conditions:
+  - Severely damaged rubber requiring structural repair
+  - Extremely thin rubber susceptible to thermal damage
 author_object:
   id: 4
   name: Todd Dunning
@@ -156,61 +84,17 @@ author_object:
   country: United States (California)
   expertise: Optical Materials for Laser Systems
   image: /images/author/todd-dunning.jpg
-images:
-  hero:
-    alt: Rubber surface undergoing laser cleaning showing precise contamination removal
-    url: /images/rubber-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Rubber surface after laser cleaning showing detailed
-      surface structure
-    url: /images/rubber-laser-cleaning-micro.jpg
-environmentalImpact:
-- benefit: Zero chemical waste generation
-  description: Eliminates use of solvents and chemical cleaners, reducing hazardous
-    waste by 100% compared to traditional methods
-- benefit: Reduced energy consumption
-  description: Laser cleaning consumes 60-70% less energy than thermal or chemical
-    cleaning processes for rubber components
-outcomes:
-- result: Surface contamination removal efficiency
-  metric: ">99% removal of oils, mold release agents, and oxidation layers"
-- result: Processing speed
-  metric: "0.5-2.0 m²/hour depending on contamination level and laser parameters"
-technicalSpecifications:
-  powerRange: 20-100 W
-  pulseDuration: 10-100 ns
-  wavelength: 1064 nm (primary), 532 nm (optional for finer control)
-  spotSize: 0.1-2.0 mm
-  repetitionRate: 10-50 kHz
-  fluenceRange: "0.5-5 J/cm²"
-  scanningSpeed: 100-1000 mm/s
-  beamProfile: Top-hat or Gaussian
-  beamProfileOptions: Top-hat, Gaussian, Flat-top
-  safetyClass: Class 4
-prompt_chain_verification:
-  base_config_loaded: true
-  persona_config_loaded: true
-  formatting_config_loaded: true
-  ai_detection_config_loaded: true
-  persona_country: United States (California)
-  author_id: 4
-  verification_timestamp: '2025-09-20T20: 47: 09Z'
-  prompt_components_integrated: 4
-  human_authenticity_focus: true
-  cultural_adaptation_applied: true
-laser_parameters:
-  fluence_threshold: "0.5–5 J/cm²"
-  pulse_duration: 10-100ns
-  wavelength_optimal: 1064nm
-  power_range: 20-100W
-  repetition_rate: 10-50kHz
-  spot_size: 0.1-2.0mm
-  laser_type: Pulsed fiber laser
-tags:
-- Automotive
-- Manufacturing
 complexity: medium
-difficultyScore: 3
-surface_roughness_before: 125.8
-surface_roughness_after: 48.2
+difficulty_score: 3
+author_id: 4
 ---
+
+
+# Version Information
+# Generated: 2025-09-23T23:19:47.821733
+# Material: Rubber
+# Component: frontmatter
+# Generator: Z-Beam v2.1.0
+# Author: AI Assistant
+# Platform: Darwin (3.12.4)
+# File: content/components/frontmatter/rubber-laser-cleaning.md

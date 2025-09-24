@@ -1,158 +1,77 @@
 ---
 name: Porphyry
 category: stone
-title: Porphyry Laser Cleaning
-headline: Comprehensive technical guide for laser cleaning stone porphyry
-description: Porphyry laser cleaning utilizes precise pulsed laser ablation to remove
-  surface contaminants while preserving the complex mineralogical structure of this
-  imperial stone. The technique exploits differential absorption between contamination
-  layers and the quartz-feldspar matrix, enabling selective removal without mechanical
-  or chemical damage to the valuable substrate.
-keywords: porphyry, porphyry stone, laser ablation, laser cleaning, non-contact cleaning,
-  pulsed fiber laser, surface contamination removal, industrial laser parameters,
-  thermal processing, surface restoration
-chemicalProperties:
-  symbol: N/A (complex mineral composite)
-  formula: "Variable (primarily SiO₂ + KAlSi₃O₈ + NaAlSi₃O₈ + CaAl₂Si₂O₈)"
-  materialType: igneous rock
+title: Laser Cleaning Porphyry
+headline: Comprehensive laser cleaning guide for stone porphyry
+description: Technical overview of Porphyry laser cleaning applications and parameters
+keywords:
+- porphyry
+- porphyry stone
+- laser ablation
+- laser cleaning
+- non-contact cleaning
+- construction applications
+- art and restoration applications
 properties:
-  density: 2.8g/cm³
-  thermalDestructionPoint: "1450°C"
-  thermalDestructionType: melting
-  densityNumeric: 2.75
-  densityUnit: "g/cm³"
-  densityMin: "1.8 g/cm³"
-  densityMinNumeric: 1.8
-  densityMinUnit: "g/cm³"
-  densityMax: "6.0 g/cm³"
-  densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm³"
-  densityPercentile: 22.6
-  meltingPointNumeric: 1450
-  meltingPointUnit: "°C"
-  meltingPointMin: "1200°C"
-  meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "°C"
-  meltingPointMax: "2800°C"
-  meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "°C"
-  meltingPercentile: 9.4
-  thermalConductivity: 3W/(m·K)
-  thermalConductivityNumeric: 3.0
-  thermalConductivityUnit: W/
-  thermalConductivityMin: "0.5 W/m·K"
-  thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m·K"
-  thermalConductivityMax: "200 W/m·K"
-  thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m·K"
-  thermalPercentile: 1.3
-  tensileStrength: 11.5MPa
-  tensileStrengthNumeric: 11.5
-  tensileStrengthUnit: MPa
-  tensileStrengthMin: 50 MPa
-  tensileStrengthMinNumeric: 50.0
-  tensileStrengthMinUnit: MPa
-  tensileStrengthMax: 1000 MPa
-  tensileStrengthMaxNumeric: 1000.0
-  tensileStrengthMaxUnit: MPa
-  tensilePercentile: 0.0
-  hardness: 6.5Mohs
-  hardnessNumeric: 6.5
+  density: 2.5
+  densityUnit: g/cm³
+  thermalConductivity: 1.5
+  thermalConductivityUnit: W/m·K
+  hardness: 6
   hardnessUnit: Mohs
-  hardnessMin: 1 Mohs
-  hardnessMinNumeric: 1.0
-  hardnessMinUnit: Mohs
-  hardnessMax: 10 Mohs
-  hardnessMaxNumeric: 10.0
-  hardnessMaxUnit: Mohs
-  hardnessPercentile: 61.1
-  youngsModulus: 50-80 GPa (high variability based on mineral orientation)
-  youngsModulusNumeric: 65.0
-  youngsModulusUnit: GPa
-  youngsModulusMin: 20 GPa
-  youngsModulusMinNumeric: 20.0
-  youngsModulusMinUnit: GPa
-  youngsModulusMax: 80 GPa
-  youngsModulusMaxNumeric: 80.0
-  youngsModulusMaxUnit: GPa
-  modulusPercentile: 75.0
-  laserType: "Nd: YAG or fiber laser"
-  wavelength: 1064nm
-  fluenceRange: "1.0–10 J/cm²"
-  chemicalFormula: "Complex silicate mixture (SiO₂ 40-70%, Feldspars 20-50%, Biotite 5-15%)"
-composition:
-- "Quartz (SiO₂): 40-70% (primary crystalline phase)"
-- "Alkali Feldspar (KAlSi₃O₈/NaAlSi₃O₈): 20-40% (matrix material)"
-- "Plagioclase Feldspar (CaAl₂Si₂O₈): 5-20%"
-- "Biotite/Biotite Mica (K(Mg,Fe)₃AlSi₃O₁₀(F,OH)₂): 5-15%"
-- 'Accessory minerals (apatite, zircon, oxides): 1-5%'
-machineSettings:
-  powerRange: 50-200W
-  powerRangeNumeric: 125.0
-  powerRangeUnit: W
-  powerRangeMin: 20W
-  powerRangeMinNumeric: 20.0
-  powerRangeMinUnit: W
-  powerRangeMax: 500W
-  powerRangeMaxNumeric: 500.0
-  powerRangeMaxUnit: W
-  pulseDuration: 10-50ns
-  pulseDurationNumeric: 30.0
-  pulseDurationUnit: ns
-  pulseDurationMin: 1ns
-  pulseDurationMinNumeric: 1.0
-  pulseDurationMinUnit: ns
-  pulseDurationMax: 1000ns
-  pulseDurationMaxNumeric: 1000.0
-  pulseDurationMaxUnit: ns
-  wavelength: 1064nm (primary), 532nm (optional)
-  wavelengthNumeric: 1064.0
-  wavelengthUnit: nm
-  wavelengthMin: 355nm
-  wavelengthMinNumeric: 355.0
-  wavelengthMinUnit: nm
-  wavelengthMax: 2940nm
-  wavelengthMaxNumeric: 2940.0
-  wavelengthMaxUnit: nm
-  spotSize: 0.2-1.0mm
-  spotSizeNumeric: 0.6
-  spotSizeUnit: mm
-  spotSizeMin: 0.01mm
-  spotSizeMinNumeric: 0.01
-  spotSizeMinUnit: mm
-  spotSizeMax: 10mm
-  spotSizeMaxNumeric: 10.0
-  spotSizeMaxUnit: mm
-  repetitionRate: 20-100kHz
-  repetitionRateNumeric: 60.0
-  repetitionRateUnit: kHz
-  repetitionRateMin: 1kHz
-  repetitionRateMinNumeric: 1.0
-  repetitionRateMinUnit: kHz
-  repetitionRateMax: 1000kHz
-  repetitionRateMaxNumeric: 1000.0
-  repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0–10 J/cm²"
-  fluenceRangeNumeric: 1.0
-  fluenceRangeUnit: "J/cm²"
-  fluenceRangeMin: "0.1J/cm²"
-  fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm²"
-  fluenceRangeMax: "50J/cm²"
-  fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm²"
+  densityMin: 1.5
+  densityMax: 3.4
+  thermalConductivityMin: 0.2
+  thermalConductivityMax: 5.0
+  hardnessMin: 1
+  hardnessMax: 7
 applications:
 - 'Construction: Cleaning and restoration of historical porphyry structures'
 - 'Art and Restoration: Precision cleaning of porphyry sculptures and artifacts'
+machineSettings:
+  powerRange: 110.0
+  powerRangeUnit: W
+  wavelength: 532.0
+  wavelengthUnit: nm
+  pulseDuration: 20.0
+  pulseDurationUnit: ns
+  spotSize: 2.0
+  spotSizeUnit: mm
+  repetitionRate: 40.0
+  repetitionRateUnit: kHz
+  fluenceRange: 2.3
+  fluenceRangeUnit: J/cm²
+  powerRangeMin: 20.0
+  powerRangeMax: 500.0
+  pulseDurationMin: 1.0
+  pulseDurationMax: 1000.0
+  wavelengthMin: 355.0
+  wavelengthMax: 2940.0
+  spotSizeMin: 0.01
+  spotSizeMax: 10.0
+  repetitionRateMin: 1.0
+  repetitionRateMax: 1000.0
+  fluenceRangeMin: 0.1
+  fluenceRangeMax: 50.0
+  beamProfile: Gaussian TEM00
+  beamProfileOptions:
+  - Gaussian TEM00
+  - Top-hat
+  - Donut
+  - Multi-mode
+  safetyClass: Class 4 (requires full enclosure)
 compatibility:
-- Q-switched Nd: YAG lasers with wavelength flexibility (1064nm/532nm)
-- Scanning systems with precise motion control for heterogeneous surfaces
-- Non-contact monitoring systems (LIBS/Raman) for real-time process control
-regulatoryStandards: "EN 15898: 2019 (Conservation of cultural property - Main general"
-  terms and definitions), EN 16096: 2012 (Conservation of cultural property - Condition
-  survey and report of built cultural heritage)
-author: Todd Dunning
+  laser_types:
+  - Fiber lasers (optimal for most applications)
+  - Nd:YAG lasers (excellent for precision work)
+  - CO2 lasers (moderate effectiveness)
+  surface_treatments:
+  - Natural porphyry surfaces
+  - Coated porphyry
+  - Stained or contaminated surfaces
+  incompatible_conditions:
+  - Severely damaged porphyry requiring structural repair
+  - Extremely thin porphyry susceptible to thermal damage
 author_object:
   id: 4
   name: Todd Dunning
@@ -161,67 +80,17 @@ author_object:
   country: United States (California)
   expertise: Optical Materials for Laser Systems
   image: /images/author/todd-dunning.jpg
-images:
-  hero:
-    alt: Porphyry surface undergoing laser cleaning showing precise contamination
-      removal
-    url: /images/porphyry-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Porphyry surface after laser cleaning showing detailed
-      surface structure
-    url: /images/porphyry-laser-cleaning-micro.jpg
-environmentalImpact:
-- benefit: Zero chemical waste generation
-  description: Eliminates 100% of chemical solvents and acidic cleaners traditionally
-    used in porphyry restoration, preventing groundwater contamination
-- benefit: 97% reduction in particulate matter emissions
-  description: Closed-system laser ablation with integrated filtration captures >97%
-    of ablated contaminants vs. mechanical methods that generate respirable crystalline
-    silica dust
-outcomes:
-- result: Sub-micron precision contaminant removal
-  metric: "Selective removal to within 5μm depth accuracy without mineral phase damage"
-- result: Non-contact processing of delicate surfaces
-  metric: Zero mechanical pressure applied during cleaning of historical artifacts
-    with complex geometries
-technicalSpecifications:
-  powerRange: 20-100 W (average power for Q-switched systems)
-  pulseDuration: "5-30 ns (Q-switched Nd: YAG optimal for thermal control)"
-  wavelength: 1064 nm (fundamental), 532 nm (second harmonic for selective absorption)
-  spotSize: 0.1-0.8 mm (diameter for precision work on heterogeneous mineral structure)
-  repetitionRate: 10-50 kHz (optimized for thermal relaxation between pulses)
-  fluenceRange: "0.8-4.5 J/cm² (below feldspar ablation threshold of ~5 J/cm²"
-    )"
-  scanningSpeed: 200-800 mm/s (with 50% overlap for uniform cleaning)
-  beamProfile: Top-hat (flat-top) for uniform energy distribution across heterogeneous
-    mineral phases
-  beamProfileOptions: Top-hat, Gaussian, Multimode
-  safetyClass: Class 4 (requires full enclosure and interlock systems for industrial
-    applications)
-prompt_chain_verification:
-  base_config_loaded: true
-  persona_config_loaded: true
-  formatting_config_loaded: true
-  ai_detection_config_loaded: true
-  persona_country: United States (California)
-  author_id: 4
-  verification_timestamp: '2025-09-20T21: 45: 31Z'
-  prompt_components_integrated: 4
-  human_authenticity_focus: true
-  cultural_adaptation_applied: true
-laser_parameters:
-  fluence_threshold: "1.0–10 J/cm²"
-  pulse_duration: 10-50ns
-  wavelength_optimal: 1064nm
-  power_range: 50-200W
-  repetition_rate: 20-100kHz
-  spot_size: 0.2-1.0mm
-  laser_type: "Nd: YAG or fiber laser"
-tags:
-- Construction
-- Art and Restoration
 complexity: medium
-difficultyScore: 3
-surface_roughness_before: 22.5
-surface_roughness_after: 7.8
+difficulty_score: 3
+author_id: 4
 ---
+
+
+# Version Information
+# Generated: 2025-09-23T23:19:49.163862
+# Material: Porphyry
+# Component: frontmatter
+# Generator: Z-Beam v2.1.0
+# Author: AI Assistant
+# Platform: Darwin (3.12.4)
+# File: content/components/frontmatter/porphyry-laser-cleaning.md

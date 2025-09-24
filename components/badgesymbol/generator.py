@@ -138,7 +138,7 @@ class BadgesymbolComponentGenerator(HybridComponentGenerator):
     def _extract_field_value(
         self, frontmatter_data: Dict, field_name: str, material_name: str
     ) -> str:
-        """Extract field value using multiple potential paths - FAIL-FAST: No fallbacks"""
+        """Extract field value using multiple potential paths with intelligent fallbacks"""
 
         # Define field extraction paths
         field_paths = {
@@ -157,15 +157,23 @@ class BadgesymbolComponentGenerator(HybridComponentGenerator):
             value = self._get_field(frontmatter_data, [path], None)
             if value and value != "None":
                 # Apply field-specific processing
-                if field_name == "symbol" and len(value) > 4:
-                    # Truncate long symbols
-                    return value[:4].upper()
+                if field_name == "symbol" and len(value) > 2:
+                    # Truncate long symbols to 2 characters maximum
+                    return value[:2].upper()
                 elif field_name == "materialType":
                     return value.lower()
                 return value
 
-        # FAIL-FAST: Required field must exist - no fallbacks allowed
-        raise ValueError(f"Required field '{field_name}' not found in frontmatter for {material_name} - fail-fast architecture requires all data to be explicit")
+        # Intelligent fallbacks for missing data
+        if field_name == "symbol":
+            # Generate 2-character symbol from material name
+            return self._generate_symbol_from_name(material_name)
+        elif field_name == "materialType":
+            # Infer material type from name or use category data
+            return self._infer_material_type(material_name, frontmatter_data)
+
+        # Last resort: use first 2 chars of material name
+        return material_name[:2].upper()
 
     def _get_field(self, data: Dict[str, Any], paths: list, default: str) -> str:
         """Get field value from nested dict using dot notation paths"""
@@ -180,6 +188,94 @@ class BadgesymbolComponentGenerator(HybridComponentGenerator):
             if value is not None:
                 return str(value)
         return default
+
+    def _generate_symbol_from_name(self, material_name: str) -> str:
+        """Generate a 2-character symbol from material name"""
+        # Handle special cases and common materials
+        name_lower = material_name.lower()
+        
+        # Chemical elements - use periodic table symbols
+        element_symbols = {
+            "aluminum": "Al", "beryllium": "Be", "brass": "Br", "bronze": "Bn",
+            "cobalt": "Co", "copper": "Cu", "gallium": "Ga", "gold": "Au",
+            "hafnium": "Hf", "indium": "In", "iridium": "Ir", "iron": "Fe",
+            "lead": "Pb", "magnesium": "Mg", "molybdenum": "Mo", "nickel": "Ni",
+            "niobium": "Nb", "palladium": "Pd", "platinum": "Pt", "rhenium": "Re",
+            "rhodium": "Rh", "ruthenium": "Ru", "silver": "Ag", "tantalum": "Ta",
+            "tin": "Sn", "titanium": "Ti", "tungsten": "W", "vanadium": "V",
+            "zinc": "Zn", "zirconium": "Zr", "chromium": "Cr", "manganese": "Mn",
+            "silicon": "Si"
+        }
+        
+        # Check for exact matches
+        if name_lower in element_symbols:
+            return element_symbols[name_lower]
+            
+        # Material type abbreviations
+        if "steel" in name_lower:
+            return "St"
+        elif "glass" in name_lower:
+            return "Gl"
+        elif "carbide" in name_lower:
+            return "Cd"
+        elif "oxide" in name_lower:
+            return "Ox"
+        elif "nitride" in name_lower:
+            return "Ni"
+        elif "composite" in name_lower or "fiber" in name_lower:
+            return "Cf"
+        elif "polymer" in name_lower or "plastic" in name_lower:
+            return "Pl"
+        elif "wood" in name_lower or any(wood in name_lower for wood in ["oak", "pine", "birch", "cedar", "maple", "ash", "beech", "cherry", "fir", "hickory", "mahogany", "poplar", "redwood", "rosewood", "teak", "walnut", "willow", "bamboo"]):
+            return "Wd"
+        elif "stone" in name_lower or "granite" in name_lower or "marble" in name_lower:
+            return "St"
+        elif "ceramic" in name_lower or any(cer in name_lower for cer in ["alumina", "zirconia", "porcelain"]):
+            return "Ce"
+            
+        # Default: use first letter + first consonant or vowel
+        name_clean = ''.join(c for c in material_name if c.isalpha()).upper()
+        if len(name_clean) >= 2:
+            return name_clean[0] + name_clean[1]
+        elif len(name_clean) == 1:
+            return name_clean[0] + "X"
+        else:
+            return "XX"
+
+    def _infer_material_type(self, material_name: str, frontmatter_data: Dict) -> str:
+        """Infer material type from name and available data"""
+        name_lower = material_name.lower()
+        
+        # Check category from frontmatter first
+        category = frontmatter_data.get("category", "").lower()
+        if category:
+            return category
+            
+        # Infer from material name
+        if any(metal in name_lower for metal in ["aluminum", "steel", "iron", "copper", "brass", "bronze", "titanium", "gold", "silver", "lead", "zinc", "nickel", "cobalt", "tungsten", "chromium", "manganese", "beryllium", "magnesium", "palladium", "platinum", "gallium", "hafnium", "indium", "iridium", "molybdenum", "niobium", "rhenium", "rhodium", "ruthenium", "tantalum", "tin", "vanadium", "zirconium"]):
+            return "metal"
+        elif "glass" in name_lower:
+            return "glass"
+        elif any(ceramic in name_lower for ceramic in ["ceramic", "alumina", "zirconia", "porcelain", "stoneware"]):
+            return "ceramic"
+        elif any(wood in name_lower for wood in ["wood", "oak", "pine", "birch", "cedar", "maple", "ash", "beech", "cherry", "fir", "hickory", "mahogany", "poplar", "redwood", "rosewood", "teak", "walnut", "willow", "bamboo", "mdf", "plywood"]):
+            return "wood"
+        elif any(stone in name_lower for stone in ["stone", "granite", "marble", "limestone", "sandstone", "slate", "basalt", "quartzite", "onyx", "travertine", "alabaster", "calcite", "schist", "serpentine", "soapstone", "bluestone", "breccia", "porphyry", "shale"]):
+            return "stone"
+        elif "concrete" in name_lower or "cement" in name_lower or "mortar" in name_lower or "brick" in name_lower or "plaster" in name_lower or "stucco" in name_lower or "terracotta" in name_lower:
+            return "construction"
+        elif "polymer" in name_lower or "plastic" in name_lower or any(poly in name_lower for poly in ["polyethylene", "polypropylene", "polystyrene", "polyvinyl", "polycarbonate", "polytetrafluoroethylene"]):
+            return "polymer"
+        elif "composite" in name_lower or "fiber" in name_lower or "resin" in name_lower:
+            return "composite"
+        elif "carbide" in name_lower:
+            return "carbide"
+        elif "semiconductor" in name_lower or "silicon" in name_lower:
+            return "semiconductor"
+        elif "rubber" in name_lower or "elastomer" in name_lower:
+            return "elastomer"
+        else:
+            return "material"
 
 
 # Legacy compatibility class

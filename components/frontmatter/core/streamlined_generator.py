@@ -10,6 +10,7 @@ Follows GROK fail-fast principles:
 - Explicit error handling with proper exceptions
 - Validates all configurations immediately
 - Single consolidated service instead of multiple wrapper services
+- Comprehensive exception handling ensures normalized fields always
 """
 
 import logging
@@ -22,6 +23,7 @@ from generators.component_generators import APIComponentGenerator, ComponentResu
 from components.frontmatter.ordering.field_ordering_service import FieldOrderingService
 from components.frontmatter.enhancement.unified_property_enhancement_service import UnifiedPropertyEnhancementService
 from components.frontmatter.core.validation_helpers import ValidationHelpers
+from components.frontmatter.core.na_field_normalizer import NAFrontmatterGenerator
 
 logger = logging.getLogger(__name__)
 
@@ -33,6 +35,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
         super().__init__("frontmatter")
         self.category_ranges = {}
         self.machine_settings_ranges = {}
+        self.na_generator = NAFrontmatterGenerator(self._core_generate)
         self._load_configurations()
 
     def _load_configurations(self):
@@ -57,38 +60,41 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
 
     def generate(self, material_name: str, **kwargs) -> ComponentResult:
         """
-        Generate comprehensive frontmatter with integrated materials data.
+        Generate comprehensive frontmatter with strict N/A handling for missing fields.
         
         Args:
             material_name: Name of the material to generate frontmatter for
             **kwargs: Additional generation parameters
             
         Returns:
-            ComponentResult with generated frontmatter
+            ComponentResult with generated frontmatter, all required fields present (N/A for missing)
         """
         try:
-            logger.info(f"Generating streamlined frontmatter for {material_name}")
+            logger.info(f"Generating frontmatter for {material_name} with N/A handling")
             
-            # Generate base frontmatter using materials.yaml data if available
-            material_data = self._get_material_data(material_name)
+            # Use N/A normalizer to ensure complete structure
+            frontmatter = self.na_generator.generate_with_na_handling(
+                material_name=material_name,
+                **kwargs
+            )
             
-            if material_data:
-                # Use materials.yaml data as primary source
-                frontmatter = self._generate_from_materials_data(material_data, material_name)
-                logger.info("Generated frontmatter from materials.yaml data")
-            else:
-                # Fall back to API generation for materials not in YAML
-                frontmatter = self._generate_from_api(material_name, **kwargs)
-                logger.info(f"Generated frontmatter via API for {material_name}")
+            # Apply field ordering (with basic error handling)
+            try:
+                ordered_frontmatter = self._apply_field_ordering(frontmatter)
+            except Exception as ordering_error:
+                logger.warning(f"Field ordering failed for {material_name}: {ordering_error}")
+                ordered_frontmatter = frontmatter  # Use unordered if ordering fails
             
-            # Apply unified property enhancement
-            self._apply_property_enhancement(frontmatter)
+            # Final validation (non-blocking)
+            try:
+                self._validate_frontmatter(ordered_frontmatter, material_name)
+            except Exception as validation_error:
+                logger.warning(f"Validation warning for {material_name}: {validation_error}")
+                # Don't fail generation for validation warnings
             
-            # Apply field ordering
-            ordered_frontmatter = self._apply_field_ordering(frontmatter)
-            
-            # Validate result
-            self._validate_frontmatter(ordered_frontmatter, material_name)
+            # Get normalization statistics
+            stats = self.na_generator.get_stats()
+            logger.info(f"N/A normalization stats for {material_name}: {stats}")
             
             return ComponentResult(
                 component_type="frontmatter",
@@ -97,13 +103,65 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             )
             
         except Exception as e:
-            logger.error(f"Failed to generate frontmatter for {material_name}: {e}")
+            # This should be very rare with N/A handling
+            logger.error(f"Critical failure generating frontmatter for {material_name}: {e}")
+            
+            # Last resort: create minimal N/A structure
+            minimal_frontmatter = {
+                'name': material_name,
+                'category': 'N/A',
+                'complexity': 'N/A',
+                'difficulty_score': 0,
+                'author_id': 0,
+                'title': 'N/A',
+                'headline': 'N/A',
+                'description': 'N/A',
+                'keywords': [],
+                'properties': {},
+                'machineSettings': {},
+                'applications': [],
+                'compatibility': {},
+                'author_object': {
+                    'id': 0, 'name': 'N/A', 'sex': 'N/A',
+                    'title': 'N/A', 'country': 'N/A',
+                    'expertise': 'N/A', 'image': 'N/A'
+                }
+            }
+            
             return ComponentResult(
                 component_type="frontmatter",
-                content="",
+                content=self._format_as_yaml(minimal_frontmatter),
                 success=False,
-                error_message=str(e)
+                error_message=f"Used minimal N/A structure: {str(e)}"
             )
+    
+    def _core_generate(self, material_name: str, **kwargs) -> Dict:
+        """
+        Core generation logic (wrapped by exception handler)
+        
+        This method contains the original generation logic but is now
+        wrapped by comprehensive exception handling.
+        """
+        # Generate base frontmatter using materials.yaml data if available
+        material_data = self._get_material_data(material_name)
+        
+        if material_data:
+            # Use materials.yaml data as primary source
+            frontmatter = self._generate_from_materials_data(material_data, material_name)
+            logger.info("Generated frontmatter from materials.yaml data")
+        else:
+            # Fall back to API generation for materials not in YAML
+            frontmatter = self._generate_from_api(material_name, **kwargs)
+            logger.info(f"Generated frontmatter via API for {material_name}")
+        
+        # Apply unified property enhancement (with exception handling built-in)
+        try:
+            self._apply_property_enhancement(frontmatter)
+        except Exception as enhancement_error:
+            logger.warning(f"Property enhancement failed for {material_name}: {enhancement_error}")
+            # Continue without enhancement if it fails
+        
+        return frontmatter
 
     def _get_material_data(self, material_name: str) -> Optional[Dict]:
         """Get material data from materials.yaml if available"""

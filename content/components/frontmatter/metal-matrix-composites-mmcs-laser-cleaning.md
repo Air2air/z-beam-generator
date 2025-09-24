@@ -1,154 +1,81 @@
 ---
 name: Metal Matrix Composites MMCs
 category: composite
-title: Metal Matrix Composites MMCs Laser Cleaning
-headline: Comprehensive technical guide for laser cleaning composite metal matrix
-  composites mmcs
-description: Precision laser ablation for MMCs requiring careful control of thermal
-  input to prevent matrix-reinforcement debonding while effectively removing oxides,
-  coatings, and contaminants from complex composite surfaces
-keywords: metal matrix composites mmcs, metal matrix composites mmcs composite, laser
-  ablation, laser cleaning, non-contact cleaning, pulsed fiber laser, surface contamination
-  removal, industrial laser parameters, thermal processing, surface restoration
-chemicalProperties:
-  symbol: MMC
-  formula: "Variable (typically Al/SiC, Al/Al₂O₃, Ti/SiC)"
-  materialType: composite
+title: Laser Cleaning Metal Matrix Composites MMCs
+headline: Comprehensive laser cleaning guide for composite metal matrix composites mmcs
+description: Technical overview of Metal Matrix Composites MMCs laser cleaning applications and parameters
+keywords:
+- metal matrix composites mmcs
+- metal matrix composites mmcs composite
+- laser ablation
+- laser cleaning
+- non-contact cleaning
+- aerospace applications
+- automotive applications
 properties:
-  density: 3.6g/cm³
-  thermalDestructionPoint: 620°C;
-  thermalDestructionType: melting
-  densityNumeric: 3.6
-  densityUnit: "g/cm³"
-  densityMin: "1.8 g/cm³"
-  densityMinNumeric: 1.8
-  densityMinUnit: "g/cm³"
-  densityMax: "6.0 g/cm³"
-  densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm³"
-  densityPercentile: 42.9
-  meltingPointNumeric: 620.0
-  meltingPointUnit: "°C"
-  meltingPointMin: "1200°C"
-  meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "°C"
-  meltingPointMax: "2800°C"
-  meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "°C"
-  meltingPercentile: 0.0
-  thermalConductivity: 160W/m·K
-    )"
-  thermalConductivityNumeric: 160.0
-  thermalConductivityUnit: "W/m·K"
-  thermalConductivityMin: "0.5 W/m·K"
-  thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m·K"
-  thermalConductivityMax: "200 W/m·K"
-  thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m·K"
-  thermalPercentile: 79.9
-  tensileStrength: 450MPa
-  tensileStrengthNumeric: 450.0
+  density: 1.2
+  densityUnit: g/cm³
+  thermalConductivity: 0.2
+  thermalConductivityUnit: W/m·K
+  tensileStrength: 100
   tensileStrengthUnit: MPa
-  tensileStrengthMin: 50 MPa
-  tensileStrengthMinNumeric: 50.0
-  tensileStrengthMinUnit: MPa
-  tensileStrengthMax: 1000 MPa
-  tensileStrengthMaxNumeric: 1000.0
-  tensileStrengthMaxUnit: MPa
-  tensilePercentile: 42.1
-  hardness: 100HV
-  hardnessNumeric: 100.0
-  hardnessUnit: HV
-  hardnessMin: 1 Mohs
-  hardnessMinNumeric: 1.0
-  hardnessMinUnit: Mohs
-  hardnessMax: 10 Mohs
-  hardnessMaxNumeric: 10.0
-  hardnessMaxUnit: Mohs
-  hardnessPercentile: 100.0
-  youngsModulus: "90-120 GPa (Al/SiC); 80-100 GPa (Al/Al₂O₃)"
-  youngsModulusNumeric: 105.0
+  youngsModulus: 10
   youngsModulusUnit: GPa
-  youngsModulusMin: 20 GPa
-  youngsModulusMinNumeric: 20.0
-  youngsModulusMinUnit: GPa
-  youngsModulusMax: 80 GPa
-  youngsModulusMaxNumeric: 80.0
-  youngsModulusMaxUnit: GPa
-  modulusPercentile: 100.0
-  laserType: Pulsed fiber laser
-  wavelength: 1064nm
-  fluenceRange: "1.0–10 J/cm²"
-  chemicalFormula: "Variable composition (e.g., Al-20%SiC, Al-15%Al₂O₃)"
-composition:
-- Aluminum matrix (60-85%) with silicon carbide reinforcement (15-40%)
-- Titanium matrix (70-90%) with silicon carbide or boron carbide reinforcement (10-30%)
-machineSettings:
-  powerRange: 50-200W
-  powerRangeNumeric: 125.0
-  powerRangeUnit: W
-  powerRangeMin: 20W
-  powerRangeMinNumeric: 20.0
-  powerRangeMinUnit: W
-  powerRangeMax: 500W
-  powerRangeMaxNumeric: 500.0
-  powerRangeMaxUnit: W
-  pulseDuration: 10-200ns
-  pulseDurationNumeric: 105.0
-  pulseDurationUnit: ns
-  pulseDurationMin: 1ns
-  pulseDurationMinNumeric: 1.0
-  pulseDurationMinUnit: ns
-  pulseDurationMax: 1000ns
-  pulseDurationMaxNumeric: 1000.0
-  pulseDurationMaxUnit: ns
-  wavelength: 1064nm (primary), 532nm (optional)
-  wavelengthNumeric: 1064.0
-  wavelengthUnit: nm
-  wavelengthMin: 355nm
-  wavelengthMinNumeric: 355.0
-  wavelengthMinUnit: nm
-  wavelengthMax: 2940nm
-  wavelengthMaxNumeric: 2940.0
-  wavelengthMaxUnit: nm
-  spotSize: 0.05-1.0mm
-  spotSizeNumeric: 0.525
-  spotSizeUnit: mm
-  spotSizeMin: 0.01mm
-  spotSizeMinNumeric: 0.01
-  spotSizeMinUnit: mm
-  spotSizeMax: 10mm
-  spotSizeMaxNumeric: 10.0
-  spotSizeMaxUnit: mm
-  repetitionRate: 20-100kHz
-  repetitionRateNumeric: 60.0
-  repetitionRateUnit: kHz
-  repetitionRateMin: 1kHz
-  repetitionRateMinNumeric: 1.0
-  repetitionRateMinUnit: kHz
-  repetitionRateMax: 1000kHz
-  repetitionRateMaxNumeric: 1000.0
-  repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0–10 J/cm²"
-  fluenceRangeNumeric: 1.0
-  fluenceRangeUnit: "J/cm²"
-  fluenceRangeMin: "0.1J/cm²"
-  fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm²"
-  fluenceRangeMax: "50J/cm²"
-  fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm²"
+  densityMin: 0.5
+  densityMax: 8.0
+  thermalConductivityMin: 0.1
+  thermalConductivityMax: 400
+  tensileStrengthMin: 50
+  tensileStrengthMax: 6000
+  youngsModulusMin: 5
+  youngsModulusMax: 1000
 applications:
 - 'Aerospace: Cleaning of turbine blades and engine components'
 - 'Automotive: Removal of coatings and contaminants from brake systems'
+machineSettings:
+  powerRange: 50.0
+  powerRangeUnit: W
+  wavelength: 1064.0
+  wavelengthUnit: nm
+  pulseDuration: 10.0
+  pulseDurationUnit: ns
+  spotSize: 2.0
+  spotSizeUnit: mm
+  repetitionRate: 20.0
+  repetitionRateUnit: kHz
+  fluenceRange: 0.8
+  fluenceRangeUnit: J/cm²
+  powerRangeMin: 20.0
+  powerRangeMax: 500.0
+  pulseDurationMin: 1.0
+  pulseDurationMax: 1000.0
+  wavelengthMin: 355.0
+  wavelengthMax: 2940.0
+  spotSizeMin: 0.01
+  spotSizeMax: 10.0
+  repetitionRateMin: 1.0
+  repetitionRateMax: 1000.0
+  fluenceRangeMin: 0.1
+  fluenceRangeMax: 50.0
+  beamProfile: Gaussian TEM00
+  beamProfileOptions:
+  - Gaussian TEM00
+  - Top-hat
+  - Donut
+  - Multi-mode
+  safetyClass: Class 4 (requires full enclosure)
 compatibility:
-- "Aluminum, titanium, magnesium matrices with ceramic reinforcements (SiC, Al₂\
-  O₃, B₄C)"
-- Stainless steel fixtures and handling systems
-regulatoryStandards: "ISO 9013: 2017 (Thermal cutting classification), ASTM E2930 (Laser"
-  cleaning standards), NADCAP AC7117 (Aerospace laser processing)
-author: Todd Dunning
+  laser_types:
+  - Fiber lasers (optimal for most applications)
+  - Nd:YAG lasers (excellent for precision work)
+  - CO2 lasers (moderate effectiveness)
+  surface_treatments:
+  - Natural metal matrix composites mmcs surfaces
+  - Coated metal matrix composites mmcs
+  - Stained or contaminated surfaces
+  incompatible_conditions:
+  - Severely damaged metal matrix composites mmcs requiring structural repair
+  - Extremely thin metal matrix composites mmcs susceptible to thermal damage
 author_object:
   id: 4
   name: Todd Dunning
@@ -157,62 +84,17 @@ author_object:
   country: United States (California)
   expertise: Optical Materials for Laser Systems
   image: /images/author/todd-dunning.jpg
-images:
-  hero:
-    alt: Metal Matrix Composites MMCs surface undergoing laser cleaning showing precise
-      contamination removal
-    url: /images/metal-matrix-composites-mmcs-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Metal Matrix Composites MMCs surface after laser cleaning
-      showing detailed surface structure
-    url: /images/metal-matrix-composites-mmcs-laser-cleaning-micro.jpg
-environmentalImpact:
-- benefit: 97% reduction in chemical waste
-  description: Elimination of chemical solvents and abrasive media typically used
-    in MMC cleaning processes
-- benefit: 85% energy reduction compared to traditional methods
-  description: Precise energy delivery reduces overall power consumption versus mechanical
-    or chemical cleaning
-outcomes:
-- result: Surface contamination removal >99.5%
-  metric: Measured via SEM-EDS analysis showing complete oxide and contaminant removal
-- result: "Processing speeds up to 2 m²/hour"
-  metric: Achievable cleaning rates for industrial-scale MMC component processing
-technicalSpecifications:
-  powerRange: 50-200 W
-  pulseDuration: 10-200 ns
-  wavelength: 1064 nm (primary), 532 nm (optional for selective ceramic removal)
-  spotSize: 0.05-1.0 mm
-  repetitionRate: 20-100 kHz
-  fluenceRange: "1.0-10 J/cm²"
-  scanningSpeed: 100-2000 mm/s
-  beamProfile: Top-hat (preferred for uniform cleaning)
-  beamProfileOptions: Top-hat, Gaussian, Flat-top
-  safetyClass: Class 4 (IEC 60825-1)
-prompt_chain_verification:
-  base_config_loaded: true
-  persona_config_loaded: true
-  formatting_config_loaded: true
-  ai_detection_config_loaded: true
-  persona_country: United States (California)
-  author_id: 4
-  verification_timestamp: '2025-09-20T20: 51: 23Z'
-  prompt_components_integrated: 4
-  human_authenticity_focus: true
-  cultural_adaptation_applied: true
-laser_parameters:
-  fluence_threshold: "1.0–10 J/cm²"
-  pulse_duration: 10-200ns
-  wavelength_optimal: 1064nm
-  power_range: 50-200W
-  repetition_rate: 20-100kHz
-  spot_size: 0.05-1.0mm
-  laser_type: Pulsed fiber laser
-tags:
-- Automotive
-- Aerospace
 complexity: high
-difficultyScore: 5
-surface_roughness_before: 14.5
-surface_roughness_after: 3.8
+difficulty_score: 5
+author_id: 4
 ---
+
+
+# Version Information
+# Generated: 2025-09-23T23:19:47.899235
+# Material: Metal Matrix Composites MMCs
+# Component: frontmatter
+# Generator: Z-Beam v2.1.0
+# Author: AI Assistant
+# Platform: Darwin (3.12.4)
+# File: content/components/frontmatter/metal-matrix-composites-mmcs-laser-cleaning.md

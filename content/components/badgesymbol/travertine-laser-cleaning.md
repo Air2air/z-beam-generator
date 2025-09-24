@@ -1,10 +1,10 @@
 ---
-symbol: "TRAV"
+symbol: "TR"
 materialType: "stone"
 ---
 
 ---
-Version Log - Generated: 2025-09-22T14:58:36.815710
+Version Log - Generated: 2025-09-23T23:26:48.834102
 Material: Unknown
 Component: badgesymbol
 Generator: Z-Beam v1.0.0

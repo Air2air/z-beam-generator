@@ -4,7 +4,14 @@ category: metal
 title: Laser Cleaning Bronze
 headline: Comprehensive laser cleaning guide for metal bronze
 description: Technical overview of Bronze laser cleaning applications and parameters
-keywords: bronze, bronze metal, laser ablation, laser cleaning, non-contact cleaning, manufacturing applications, restoration applications
+keywords:
+- bronze
+- bronze metal
+- laser ablation
+- laser cleaning
+- non-contact cleaning
+- manufacturing applications
+- restoration applications
 chemicalProperties:
   formula: Cu-Sn
   symbol: Cu-Sn
@@ -90,3 +97,13 @@ complexity: medium
 difficulty_score: 3
 author_id: 3
 ---
+
+
+# Version Information
+# Generated: 2025-09-23T23:19:48.310886
+# Material: Bronze
+# Component: frontmatter
+# Generator: Z-Beam v2.1.0
+# Author: AI Assistant
+# Platform: Darwin (3.12.4)
+# File: content/components/frontmatter/bronze-laser-cleaning.md

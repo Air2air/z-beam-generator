@@ -1,115 +1,103 @@
 ---
+name: Zinc
+category: metal
+title: Laser Cleaning Zinc
+headline: Comprehensive laser cleaning guide for metal zinc
+description: Technical overview of Zinc laser cleaning applications and parameters
+keywords:
+- zinc
+- zinc metal
+- laser ablation
+- laser cleaning
+- non-contact cleaning
+- automotive applications
+- electronics applications
+chemicalProperties:
+  formula: Zn
+  symbol: Zn
+properties:
+  density: 7.8
+  densityUnit: g/cm³
+  thermalConductivity: 15
+  thermalConductivityUnit: W/m·K
+  tensileStrength: 200
+  tensileStrengthUnit: MPa
+  youngsModulus: 200
+  youngsModulusUnit: GPa
+  densityMin: 0.53
+  densityMax: 22.59
+  thermalConductivityMin: 6.3
+  thermalConductivityMax: 429
+  tensileStrengthMin: 70
+  tensileStrengthMax: 2000
+  youngsModulusMin: 70
+  youngsModulusMax: 411
 applications:
 - 'Automotive: Rust and corrosion removal from zinc-coated parts'
 - 'Electronics: Precision cleaning of zinc components in circuit boards'
-author: Ikmanda Roswati
+machineSettings:
+  powerRange: 60.0
+  powerRangeUnit: W
+  wavelength: 355.0
+  wavelengthUnit: nm
+  pulseDuration: 20.0
+  pulseDurationUnit: ns
+  spotSize: 1.5
+  spotSizeUnit: mm
+  repetitionRate: 30.0
+  repetitionRateUnit: kHz
+  fluenceRange: 0.5
+  fluenceRangeUnit: J/cm²
+  powerRangeMin: 20.0
+  powerRangeMax: 500.0
+  pulseDurationMin: 1.0
+  pulseDurationMax: 1000.0
+  wavelengthMin: 355.0
+  wavelengthMax: 2940.0
+  spotSizeMin: 0.01
+  spotSizeMax: 10.0
+  repetitionRateMin: 1.0
+  repetitionRateMax: 1000.0
+  fluenceRangeMin: 0.1
+  fluenceRangeMax: 50.0
+  beamProfile: Gaussian TEM00
+  beamProfileOptions:
+  - Gaussian TEM00
+  - Top-hat
+  - Donut
+  - Multi-mode
+  safetyClass: Class 4 (requires full enclosure)
+compatibility:
+  laser_types:
+  - Fiber lasers (optimal for most applications)
+  - Nd:YAG lasers (excellent for precision work)
+  - CO2 lasers (moderate effectiveness)
+  surface_treatments:
+  - Natural zinc surfaces
+  - Coated zinc
+  - Stained or contaminated surfaces
+  incompatible_conditions:
+  - Severely damaged zinc requiring structural repair
+  - Extremely thin zinc susceptible to thermal damage
 author_object:
-  country: Indonesia
-  expertise: Ultrafast Laser Physics and Material Interactions
   id: 3
-  image: /images/author/ikmanda-roswati.jpg
   name: Ikmanda Roswati
   sex: m
   title: Ph.D.
-category: metal
-chemicalFormula: Zn
-chemicalProperties:
-  formula: Zn
-  materialType: metal
-  symbol: Zn
-compatibility:
-- Galvanized steel (zinc-coated substrates)
-- Brass (copper-zinc alloys)
-- Zinc-aluminum alloys (ZA series)
-- Zinc-nickel electroplated surfaces
+  country: Indonesia
+  expertise: Ultrafast Laser Physics and Material Interactions
+  image: /images/author/ikmanda-roswati.jpg
 complexity: medium
-composition:
-- Zinc (99.995+%) - High purity zinc for industrial applications
-- Lead (≤0.003%), Cadmium (≤0.003%), Iron (≤0.002%) - Common trace impurities
-description: Zinc laser cleaning utilizes precise laser ablation to remove surface contaminants without damaging the underlying zinc substrate. The process exploits zinc's relatively low melting point (419.5°C) and high thermal conductivity (116 W/m·K) for efficient contaminant removal while minimizing heat-affected zones. Optimal results are achieved with 1064nm wavelength due to zinc's high absorption coefficient at near-IR wavelengths.
-difficultyScore: 3
-environmentalImpact:
-- benefit: Elimination of chemical solvents
-  description: Reduces VOC emissions by 95% compared to chemical cleaning methods, eliminating hazardous waste disposal
-- benefit: Reduced water consumption
-  description: Zero water usage compared to high-pressure water jet cleaning (saving ~50 liters per m² processed)
-headline: Comprehensive technical guide for laser cleaning metal zinc
-images:
-  hero:
-    alt: Zinc surface undergoing laser cleaning showing precise contamination removal
-    url: /images/zinc-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Zinc surface after laser cleaning showing detailed surface structure
-    url: /images/zinc-laser-cleaning-micro.jpg
-keywords: zinc, zinc metal, laser ablation, laser cleaning, non-contact cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters, thermal processing, surface restoration
-machineSettings:
-  fluenceRange: 1.0
-  fluenceRangeMax: 50.0
-  fluenceRangeMin: 0.1
-  fluenceRangeUnit: J/cm²
-  powerRange: 125.0
-  powerRangeMax: 500.0
-  powerRangeMin: 20.0
-  powerRangeUnit: W
-  pulseDuration: 105.0
-  pulseDurationMax: 1000.0
-  pulseDurationMin: 1.0
-  pulseDurationUnit: ns
-  repetitionRate: 60.0
-  repetitionRateMax: 1000.0
-  repetitionRateMin: 1.0
-  repetitionRateUnit: kHz
-  spotSize: 0.55
-  spotSizeMax: 10.0
-  spotSizeMin: 0.01
-  spotSizeUnit: mm
-  wavelength: 1064.0
-  wavelengthMax: 2940.0
-  wavelengthMin: 355.0
-  wavelengthUnit: nm
-name: Zinc
-outcomes:
-- metric: ISO 8501-1 visual assessment standard for surface preparation
-  result: Surface cleanliness to Sa 2.5 standard
-- metric: For moderate contamination levels at 200W laser power
-  result: Processing speed up to 5 m²/hour
-properties:
-  density: 7.14
-  densityMax: 6.0
-  densityMin: 1.8
-  densityPercentile: 100.0
-  densityUnit: g/cm³
-  hardness: 36.0
-  hardnessMax: 10.0
-  hardnessMin: 1.0
-  hardnessPercentile: 100.0
-  hardnessUnit: HB
-  meltingPercentile: 0.0
-  meltingPoint: 419
-  meltingPointMax: 2800.0
-  meltingPointMin: 1200.0
-  meltingPointUnit: °C
-  modulusPercentile: 100.0
-  tensilePercentile: 26.3
-  tensileStrength: 300.0
-  tensileStrengthMax: 1000.0
-  tensileStrengthMin: 50.0
-  tensileStrengthUnit: MPa
-  thermalConductivity: 116.0
-  thermalConductivityMax: 200.0
-  thermalConductivityMin: 0.5
-  thermalConductivityUnit: W/m·K
-  thermalPercentile: 57.9
-  youngsModulus: 108.0
-  youngsModulusMax: 80.0
-  youngsModulusMin: 20.0
-  youngsModulusUnit: GPa
-regulatoryStandards: ISO 12944 (corrosion protection of steel structures), IEC 60825-1 (laser safety), EPA guidelines for hazardous waste reduction
-surface_roughness_after: 1.8
-surface_roughness_before: 8.2
-symbol: Zn
-tags:
-- Automotive
-- Electronics
-title: Zinc Laser Cleaning
+difficulty_score: 3
+author_id: 3
 ---
+
+
+# Version Information
+# Generated: 2025-09-23T23:19:48.890628
+# Material: Zinc
+# Component: frontmatter
+# Generator: Z-Beam v2.1.0
+# Author: AI Assistant
+# Platform: Darwin (3.12.4)
+# File: content/components/frontmatter/zinc-laser-cleaning.md

@@ -1,10 +1,10 @@
 ---
-symbol: "STUC"
+symbol: "ST"
 materialType: "masonry"
 ---
 
 ---
-Version Log - Generated: 2025-09-22T14:58:28.940280
+Version Log - Generated: 2025-09-23T23:26:48.232676
 Material: Unknown
 Component: badgesymbol
 Generator: Z-Beam v1.0.0

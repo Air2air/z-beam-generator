@@ -1,10 +1,10 @@
 ---
-symbol: "Fir"
+symbol: "Wd"
 materialType: "wood"
 ---
 
 ---
-Version Log - Generated: 2025-09-22T14:58:37.674797
+Version Log - Generated: 2025-09-23T23:26:48.901861
 Material: Unknown
 Component: badgesymbol
 Generator: Z-Beam v1.0.0

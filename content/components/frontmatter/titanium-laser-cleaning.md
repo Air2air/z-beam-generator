@@ -4,20 +4,27 @@ category: metal
 title: Laser Cleaning Titanium
 headline: Comprehensive laser cleaning guide for metal titanium
 description: Technical overview of Titanium laser cleaning applications and parameters
-keywords: titanium, titanium metal, laser ablation, laser cleaning, non-contact cleaning, aerospace applications, medical applications
+keywords:
+- titanium
+- titanium metal
+- laser ablation
+- laser cleaning
+- non-contact cleaning
+- aerospace applications
+- medical applications
 chemicalProperties:
   formula: Ti
   symbol: Ti
 properties:
   density: 4.51
   densityUnit: g/cm³
-  meltingPoint: 1668.0
+  meltingPoint: 1668
   meltingPointUnit: °C
   thermalConductivity: 21.9
   thermalConductivityUnit: W/m·K
-  tensileStrength: 434.0
+  tensileStrength: 434
   tensileStrengthUnit: MPa
-  youngsModulus: 200.0
+  youngsModulus: 200
   youngsModulusUnit: GPa
   densityMin: 0.53
   densityMax: 22.59
@@ -90,3 +97,13 @@ complexity: high
 difficulty_score: 5
 author_id: 4
 ---
+
+
+# Version Information
+# Generated: 2025-09-23T23:19:48.836469
+# Material: Titanium
+# Component: frontmatter
+# Generator: Z-Beam v2.1.0
+# Author: AI Assistant
+# Platform: Darwin (3.12.4)
+# File: content/components/frontmatter/titanium-laser-cleaning.md

@@ -1,10 +1,10 @@
 ---
-symbol: "GFRP"
+symbol: "Gl"
 materialType: "composite"
 ---
 
 ---
-Version Log - Generated: 2025-09-22T14:58:27.172835
+Version Log - Generated: 2025-09-23T23:26:48.059993
 Material: Unknown
 Component: badgesymbol
 Generator: Z-Beam v1.0.0

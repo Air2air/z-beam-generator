@@ -1,10 +1,10 @@
 ---
-symbol: "SiGe"
+symbol: "SI"
 materialType: "semiconductor"
 ---
 
 ---
-Version Log - Generated: 2025-09-22T14:58:34.846515
+Version Log - Generated: 2025-09-23T23:26:48.656559
 Material: Unknown
 Component: badgesymbol
 Generator: Z-Beam v1.0.0

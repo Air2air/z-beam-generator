@@ -1,38 +1,57 @@
 ---
-name: "Silicon"
-category: "semiconductor"
-title: "Silicon Laser Cleaning"
-headline: "Comprehensive technical guide for laser cleaning semiconductor silicon"
-description: "Laser cleaning of silicon utilizes pulsed laser irradiation to selectively remove contaminants through rapid thermal ablation and vaporization, without damaging the underlying Si substrate. This non-contact process is critical in semiconductor manufacturing for precision cleaning of wafers, solar cells, and MEMS devices. Key technical advantages include superior selectivity, no chemical waste, and the ability to automate for high-throughput production lines."
-keywords: "silicon, silicon semiconductor, laser ablation, laser cleaning, non-contact cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters, thermal processing, surface restoration"
+name: Silicon
+category: semiconductor
+title: Laser Cleaning Silicon
+headline: Comprehensive laser cleaning guide for semiconductor silicon
+description: Technical overview of Silicon laser cleaning applications and parameters
+keywords:
+- silicon
+- silicon semiconductor
+- laser ablation
+- laser cleaning
+- non-contact cleaning
+- semiconductor manufacturing applications
+- photovoltaics applications
 chemicalProperties:
-  symbol: "Si"
-  formula: "Si"
-  materialType: "semiconductor"
+  formula: Si
+  symbol: Si
 properties:
+  density: 2.33
+  densityUnit: g/cm³
+  meltingPoint: 1414
+  meltingPointUnit: °C
+  thermalConductivity: 149
+  thermalConductivityUnit: W/m·K
+  hardness: 6.5
+  hardnessUnit: Mohs
+  densityMin: 2.33
+  densityMax: 7.13
+  meltingPointMin: 100
+  meltingPointMax: 1414
+  thermalConductivityMin: 0.2
+  thermalConductivityMax: 156
+  hardnessMin: 2
+  hardnessMax: 7
 applications:
-- 
-  industry: "Aerospace"
-  detail: "Removal of oxides, paints, and contaminants from aircraft fuselage, engine components, and turbine blades to improve repair quality and adhesion for coatings."
-- 
-  industry: "Semiconductor Manufacturing"
-  detail: "Precision cleaning of silicon wafers to remove microscopic particles, photoresist residues, and oxides before deposition or etching processes, ensuring high yields."
-- 
-  industry: "Nuclear Decommissioning"
-  detail: "Decontamination of metal surfaces and components by removing radioactive particles and layers, reducing waste volume and enabling safer handling or recycling."
+- 'Semiconductor Manufacturing: Wafer cleaning and surface preparation for microchip fabrication'
+- 'Photovoltaics: Cleaning of solar cell surfaces to enhance efficiency and performance'
+- 'MEMS: Micro-electromechanical system component cleaning'
+- 'Electronics: Silicon substrate preparation for device fabrication'
+- 'Optoelectronics: Silicon photonics component surface preparation'
+- 'Research: Laboratory silicon sample preparation and cleaning'
 machineSettings:
-  powerRange: 20.0
-  powerRangeUnit: "W"
+  powerRange: 30.0
+  powerRangeUnit: W
   wavelength: 1064.0
-  wavelengthUnit: "nm"
-  pulseDuration: 10.0
-  pulseDurationUnit: "ns"
-  spotSize: 0.1
-  spotSizeUnit: "mm"
+  wavelengthUnit: nm
+  pulseDuration: 15.0
+  pulseDurationUnit: ns
+  spotSize: 0.3
+  spotSizeUnit: mm
   repetitionRate: 10.0
-  repetitionRateUnit: "kHz"
-  fluenceRange: 0.5
-  fluenceRangeUnit: "J/cm²"
+  repetitionRateUnit: kHz
+  fluenceRange: 0.3
+  fluenceRangeUnit: J/cm²
   powerRangeMin: 20.0
   powerRangeMax: 500.0
   pulseDurationMin: 1.0
@@ -45,18 +64,46 @@ machineSettings:
   repetitionRateMax: 1000.0
   fluenceRangeMin: 0.1
   fluenceRangeMax: 50.0
-chemicalFormula: "Si"
-laser_parameters:
-  fluence_threshold: "0.5-5 J/cm²"
-  pulse_duration: "10-100ns"
-  wavelength_optimal: "1064nm"
-  power_range: "20-100W"
-  repetition_rate: "10-50kHz"
-  spot_size: "0.1-2.0mm"
-  laser_type: "Pulsed fiber laser"
-tags:
-  - "Semiconductor Manufacturing"
-  - "Photovoltaics"
-complexity: "medium"
-difficultyScore: 3
+  beamProfile: Gaussian TEM00
+  beamProfileOptions:
+  - Gaussian TEM00
+  - Top-hat
+  - Donut
+  - Multi-mode
+  safetyClass: Class 4 (requires full enclosure)
+compatibility:
+  laser_types:
+  - Fiber lasers (optimal for silicon processing)
+  - Nd:YAG lasers (excellent for precision work)
+  - Femtosecond lasers (ultra-precision applications)
+  - Excimer lasers (UV processing for specific applications)
+  surface_treatments:
+  - Native oxide silicon surfaces
+  - Thermal oxide (SiO2) layers
+  - Silicon nitride (Si3N4) coated silicon
+  - Contaminated or particle-covered wafers
+  incompatible_conditions:
+  - Cracked or damaged silicon wafers
+  - Extremely thin silicon membranes susceptible to thermal damage
+author_object:
+  id: 2
+  name: Alessandro Moretti
+  sex: m
+  title: Ph.D.
+  country: Italy
+  expertise: Laser-Based Additive Manufacturing
+  image: /images/author/alessandro-moretti.jpg
+complexity: medium
+difficulty_score: 3
+author_id: 2
 ---
+
+
+# Version Information
+# Generated: 2025-09-23T23:19:48.962504
+# Material: Silicon
+# Component: frontmatter
+# Generator: Z-Beam v2.1.0
+# Author: AI Assistant
+# Platform: Darwin (3.12.4)
+# File: content/components/frontmatter/silicon-laser-cleaning.md

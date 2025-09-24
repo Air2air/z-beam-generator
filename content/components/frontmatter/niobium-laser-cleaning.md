@@ -1,111 +1,100 @@
 ---
+name: Niobium
+category: metal
+title: Laser Cleaning Niobium
+headline: Comprehensive laser cleaning guide for metal niobium
+description: Technical overview of Niobium laser cleaning applications and parameters
+keywords:
+- niobium
+- niobium metal
+- laser ablation
+- laser cleaning
+- non-contact cleaning
+- aerospace applications
+- electronics applications
+properties:
+  density: 7.8
+  densityUnit: g/cm³
+  thermalConductivity: 15
+  thermalConductivityUnit: W/m·K
+  tensileStrength: 200
+  tensileStrengthUnit: MPa
+  youngsModulus: 200
+  youngsModulusUnit: GPa
+  densityMin: 0.53
+  densityMax: 22.59
+  thermalConductivityMin: 6.3
+  thermalConductivityMax: 429
+  tensileStrengthMin: 70
+  tensileStrengthMax: 2000
+  youngsModulusMin: 70
+  youngsModulusMax: 411
 applications:
 - 'Aerospace: Cleaning of niobium components for jet engine parts'
 - 'Electronics: Surface preparation of niobium for superconducting applications'
-author: Todd Dunning
+machineSettings:
+  powerRange: 190.0
+  powerRangeUnit: W
+  wavelength: 1064.0
+  wavelengthUnit: nm
+  pulseDuration: 10.0
+  pulseDurationUnit: ns
+  spotSize: 2.0
+  spotSizeUnit: mm
+  repetitionRate: 10.0
+  repetitionRateUnit: kHz
+  fluenceRange: 1.8
+  fluenceRangeUnit: J/cm²
+  powerRangeMin: 20.0
+  powerRangeMax: 500.0
+  pulseDurationMin: 1.0
+  pulseDurationMax: 1000.0
+  wavelengthMin: 355.0
+  wavelengthMax: 2940.0
+  spotSizeMin: 0.01
+  spotSizeMax: 10.0
+  repetitionRateMin: 1.0
+  repetitionRateMax: 1000.0
+  fluenceRangeMin: 0.1
+  fluenceRangeMax: 50.0
+  beamProfile: Gaussian TEM00
+  beamProfileOptions:
+  - Gaussian TEM00
+  - Top-hat
+  - Donut
+  - Multi-mode
+  safetyClass: Class 4 (requires full enclosure)
+compatibility:
+  laser_types:
+  - Fiber lasers (optimal for most applications)
+  - Nd:YAG lasers (excellent for precision work)
+  - CO2 lasers (moderate effectiveness)
+  surface_treatments:
+  - Natural niobium surfaces
+  - Coated niobium
+  - Stained or contaminated surfaces
+  incompatible_conditions:
+  - Severely damaged niobium requiring structural repair
+  - Extremely thin niobium susceptible to thermal damage
 author_object:
-  country: United States (California)
-  expertise: Optical Materials for Laser Systems
   id: 4
-  image: /images/author/todd-dunning.jpg
   name: Todd Dunning
   sex: m
   title: MA
-category: metal
-chemicalProperties:
-  formula: Nb
-  materialType: metal
-  symbol: Nb
-compatibility:
-- Stainless Steel (for fixturing and tooling)
-- Tantalum (processes with similar laser parameters)
+  country: United States (California)
+  expertise: Optical Materials for Laser Systems
+  image: /images/author/todd-dunning.jpg
 complexity: medium
-composition:
-- 'Niobium (Nb): > 99.9% (Reactor Grade)'
-- 'Tantalum (Ta): < 0.1%, Zirconium (Zr): < 0.01%, other trace elements'
-description: Laser cleaning of niobium utilizes pulsed fiber lasers to selectively ablate surface contaminants (oxides, oils, particulates) without damaging the underlying substrate. Its high melting point and thermal conductivity require precise control of fluence to avoid surface melting or micro-cracking, making it ideal for preparing superconducting surfaces and high-performance aerospace alloys.
-difficultyScore: 3
-environmentalImpact:
-- benefit: Elimination of Chemical Solvents
-  description: Replaces hazardous chemical cleaning methods (e.g., acid pickling, BCP/EP) for SRF cavities, eliminating thousands of liters of acidic waste (HF/HNO3/H3PO4) per accelerator project.
-- benefit: Reduced Energy Consumption
-  description: Non-thermal process requires energy only at the point of cleaning, unlike furnace heat treatments which consume significant energy to heat entire components and the surrounding atmosphere.
-headline: Comprehensive technical guide for laser cleaning metal niobium
-images:
-  hero:
-    alt: Niobium surface undergoing laser cleaning showing precise contamination removal
-    url: /images/niobium-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Niobium surface after laser cleaning showing detailed surface structure
-    url: /images/niobium-laser-cleaning-micro.jpg
-keywords: niobium, niobium metal, laser ablation, laser cleaning, non-contact cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters, thermal processing, surface restoration, SRF cavities, C-103 alloy
-machineSettings:
-  fluenceRange: 1.0
-  fluenceRangeMax: 50.0
-  fluenceRangeMin: 0.1
-  fluenceRangeUnit: J/cm²
-  powerRange: 125.0
-  powerRangeMax: 500.0
-  powerRangeMin: 20.0
-  powerRangeUnit: W
-  pulseDuration: 30.0
-  pulseDurationMax: 1000.0
-  pulseDurationMin: 1.0
-  pulseDurationUnit: ns
-  repetitionRate: 60.0
-  repetitionRateMax: 1000.0
-  repetitionRateMin: 1.0
-  repetitionRateUnit: kHz
-  spotSize: 0.55
-  spotSizeMax: 10.0
-  spotSizeMin: 0.01
-  spotSizeUnit: mm
-  wavelength: 1064.0
-  wavelengthMax: 2940.0
-  wavelengthMin: 355.0
-  wavelengthUnit: nm
-name: Niobium
-outcomes:
-- metric: Hydrocarbon removal > 99.9%, achieving surface conditions necessary for high-performance superconducting applications (Q0 > 1x10^10).
-  result: Surface Cleanliness Achieved
-- metric: Achievable cleaning rates of 0.5 - 2.0 m²/hour depending on contamination level and required surface finish.
-  result: Processing Speed
-properties:
-  density: 8.57
-  densityMax: 6.0
-  densityMin: 1.8
-  densityPercentile: 100.0
-  densityUnit: g/cm³
-  hardness: 75.0
-  hardnessMax: 10.0
-  hardnessMin: 1.0
-  hardnessPercentile: 100.0
-  hardnessUnit: HV
-  meltingPercentile: 79.8
-  meltingPoint: 2477
-  meltingPointMax: 2800.0
-  meltingPointMin: 1200.0
-  meltingPointUnit: °C
-  modulusPercentile: 100.0
-  tensilePercentile: 23.7
-  tensileStrength: 275.0
-  tensileStrengthMax: 1000.0
-  tensileStrengthMin: 50.0
-  tensileStrengthUnit: MPa
-  thermalConductivity: 53.7
-  thermalConductivityMax: 200.0
-  thermalConductivityMin: 0.5
-  thermalConductivityUnit: W/
-  thermalPercentile: 26.7
-  youngsModulus: 105.0
-  youngsModulusMax: 80.0
-  youngsModulusMin: 20.0
-  youngsModulusUnit: GPa
-regulatoryStandards: ANSI Z136.1 (Safe Use of Lasers), ISO 11553 (Safety of Laser Processing Machines)
-surface_roughness_after: 1.2
-surface_roughness_before: 4.8
-tags:
-- Aerospace
-- Electronics
-title: Niobium Laser Cleaning
+difficulty_score: 3
+author_id: 4
 ---
+
+
+# Version Information
+# Generated: 2025-09-23T23:19:48.637241
+# Material: Niobium
+# Component: frontmatter
+# Generator: Z-Beam v2.1.0
+# Author: AI Assistant
+# Platform: Darwin (3.12.4)
+# File: content/components/frontmatter/niobium-laser-cleaning.md

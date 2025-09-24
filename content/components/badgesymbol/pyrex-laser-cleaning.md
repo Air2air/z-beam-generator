@@ -1,10 +1,10 @@
 ---
-symbol: "PYRE"
+symbol: "PY"
 materialType: "glass"
 ---
 
 ---
-Version Log - Generated: 2025-09-22T14:58:28.172858
+Version Log - Generated: 2025-09-23T23:26:48.137262
 Material: Unknown
 Component: badgesymbol
 Generator: Z-Beam v1.0.0

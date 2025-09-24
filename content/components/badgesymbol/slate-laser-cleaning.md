@@ -1,10 +1,10 @@
 ---
-symbol: "SLAT"
+symbol: "SL"
 materialType: "stone"
 ---
 
 ---
-Version Log - Generated: 2025-09-22T14:58:36.532344
+Version Log - Generated: 2025-09-23T23:26:48.815025
 Material: Unknown
 Component: badgesymbol
 Generator: Z-Beam v1.0.0

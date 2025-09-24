@@ -1,153 +1,77 @@
 ---
 name: Onyx
 category: stone
-title: Onyx Laser Cleaning
-headline: Comprehensive technical guide for laser cleaning stone onyx
-description: "Laser cleaning of onyx utilizes precise pulsed Nd: YAG laser parameters"
-  to achieve controlled ablation of surface contaminants while preserving the delicate
-  microcrystalline structure of the stone. The process exploits the differential absorption
-  between contaminants and the calcium carbonate matrix.
-keywords: onyx, onyx stone, laser ablation, laser cleaning, non-contact cleaning,
-  pulsed fiber laser, surface contamination removal, industrial laser parameters,
-  thermal processing, surface restoration
-chemicalProperties:
-  symbol: "CaCO₃"
-  formula: "CaCO₃"
-  materialType: stone
+title: Laser Cleaning Onyx
+headline: Comprehensive laser cleaning guide for stone onyx
+description: Technical overview of Onyx laser cleaning applications and parameters
+keywords:
+- onyx
+- onyx stone
+- laser ablation
+- laser cleaning
+- non-contact cleaning
+- jewelry applications
+- construction applications
 properties:
-  density: 2.7g/cm³"
-  thermalDestructionPoint: "825°C"
-  thermalDestructionType: melting
-  densityNumeric: 2.72
-  densityUnit: "g/cm³"
-  densityMin: "1.8 g/cm³"
-  densityMinNumeric: 1.8
-  densityMinUnit: "g/cm³"
-  densityMax: "6.0 g/cm³"
-  densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm³"
-  densityPercentile: 21.9
-  meltingPointNumeric: 825.0
-  meltingPointUnit: "°C"
-  meltingPointMin: "1200°C"
-  meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "°C"
-  meltingPointMax: "2800°C"
-  meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "°C"
-  meltingPercentile: 0.0
-  thermalConductivity: 1.3W/(m·K)"
-  thermalConductivityNumeric: 1.29
-  thermalConductivityUnit: W/
-  thermalConductivityMin: "0.5 W/m·K"
-  thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m·K"
-  thermalConductivityMax: "200 W/m·K"
-  thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m·K"
-  thermalPercentile: 0.4
-  tensileStrength: 12.5MPa
-  tensileStrengthNumeric: 12.5
-  tensileStrengthUnit: MPa
-  tensileStrengthMin: 50 MPa
-  tensileStrengthMinNumeric: 50.0
-  tensileStrengthMinUnit: MPa
-  tensileStrengthMax: 1000 MPa
-  tensileStrengthMaxNumeric: 1000.0
-  tensileStrengthMaxUnit: MPa
-  tensilePercentile: 0.0
-  hardness: 6.8Mohs
-  hardnessNumeric: 6.75
+  density: 2.5
+  densityUnit: g/cm³
+  thermalConductivity: 1.5
+  thermalConductivityUnit: W/m·K
+  hardness: 6
   hardnessUnit: Mohs
-  hardnessMin: 1 Mohs
-  hardnessMinNumeric: 1.0
-  hardnessMinUnit: Mohs
-  hardnessMax: 10 Mohs
-  hardnessMaxNumeric: 10.0
-  hardnessMaxUnit: Mohs
-  hardnessPercentile: 63.9
-  youngsModulus: 40-80 GPa
-  youngsModulusNumeric: 60.0
-  youngsModulusUnit: GPa
-  youngsModulusMin: 20 GPa
-  youngsModulusMinNumeric: 20.0
-  youngsModulusMinUnit: GPa
-  youngsModulusMax: 80 GPa
-  youngsModulusMaxNumeric: 80.0
-  youngsModulusMaxUnit: GPa
-  modulusPercentile: 66.7
-  laserType: "Nd: YAG laser"
-  wavelength: 1064nm
-  fluenceRange: "1.0–10 J/cm²"
-  chemicalFormula: "CaCO₃"
-composition:
-- "Calcium carbonate (CaCO₃): 90-99%"
-- "Silicon dioxide (SiO₂): 0.5-5%"
-- 'Iron oxides, aluminum oxides, and other trace minerals: 0.5-3%'
-machineSettings:
-  powerRange: 50-200W
-  powerRangeNumeric: 125.0
-  powerRangeUnit: W
-  powerRangeMin: 20W
-  powerRangeMinNumeric: 20.0
-  powerRangeMinUnit: W
-  powerRangeMax: 500W
-  powerRangeMaxNumeric: 500.0
-  powerRangeMaxUnit: W
-  pulseDuration: 5-50ns
-  pulseDurationNumeric: 27.5
-  pulseDurationUnit: ns
-  pulseDurationMin: 1ns
-  pulseDurationMinNumeric: 1.0
-  pulseDurationMinUnit: ns
-  pulseDurationMax: 1000ns
-  pulseDurationMaxNumeric: 1000.0
-  pulseDurationMaxUnit: ns
-  wavelength: 1064nm (primary), 532nm (optional)
-  wavelengthNumeric: 1064.0
-  wavelengthUnit: nm
-  wavelengthMin: 355nm
-  wavelengthMinNumeric: 355.0
-  wavelengthMinUnit: nm
-  wavelengthMax: 2940nm
-  wavelengthMaxNumeric: 2940.0
-  wavelengthMaxUnit: nm
-  spotSize: 0.05-1.0mm
-  spotSizeNumeric: 0.525
-  spotSizeUnit: mm
-  spotSizeMin: 0.01mm
-  spotSizeMinNumeric: 0.01
-  spotSizeMinUnit: mm
-  spotSizeMax: 10mm
-  spotSizeMaxNumeric: 10.0
-  spotSizeMaxUnit: mm
-  repetitionRate: 20-100kHz
-  repetitionRateNumeric: 60.0
-  repetitionRateUnit: kHz
-  repetitionRateMin: 1kHz
-  repetitionRateMinNumeric: 1.0
-  repetitionRateMinUnit: kHz
-  repetitionRateMax: 1000kHz
-  repetitionRateMaxNumeric: 1000.0
-  repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0–10 J/cm²"
-  fluenceRangeNumeric: 1.0
-  fluenceRangeUnit: "J/cm²"
-  fluenceRangeMin: "0.1J/cm²"
-  fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm²"
-  fluenceRangeMax: "50J/cm²"
-  fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm²"
+  densityMin: 1.5
+  densityMax: 3.4
+  thermalConductivityMin: 0.2
+  thermalConductivityMax: 5.0
+  hardnessMin: 1
+  hardnessMax: 7
 applications:
 - 'Jewelry: Cleaning and restoration of onyx jewelry pieces'
 - 'Construction: Surface preparation and cleaning of onyx slabs for building facades'
+machineSettings:
+  powerRange: 55.0
+  powerRangeUnit: W
+  wavelength: 532.0
+  wavelengthUnit: nm
+  pulseDuration: 20.0
+  pulseDurationUnit: ns
+  spotSize: 1.5
+  spotSizeUnit: mm
+  repetitionRate: 40.0
+  repetitionRateUnit: kHz
+  fluenceRange: 0.8
+  fluenceRangeUnit: J/cm²
+  powerRangeMin: 20.0
+  powerRangeMax: 500.0
+  pulseDurationMin: 1.0
+  pulseDurationMax: 1000.0
+  wavelengthMin: 355.0
+  wavelengthMax: 2940.0
+  spotSizeMin: 0.01
+  spotSizeMax: 10.0
+  repetitionRateMin: 1.0
+  repetitionRateMax: 1000.0
+  fluenceRangeMin: 0.1
+  fluenceRangeMax: 50.0
+  beamProfile: Gaussian TEM00
+  beamProfileOptions:
+  - Gaussian TEM00
+  - Top-hat
+  - Donut
+  - Multi-mode
+  safetyClass: Class 4 (requires full enclosure)
 compatibility:
-- Marble and other calcareous stones
-- Granite and silicate-based stones (with parameter adjustment)
-regulatoryStandards: "EN 60825-1: 2014 (Laser product safety), EN 15898: 2019 (Conservation"
-  of cultural property)
-author: Alessandro Moretti
+  laser_types:
+  - Fiber lasers (optimal for most applications)
+  - Nd:YAG lasers (excellent for precision work)
+  - CO2 lasers (moderate effectiveness)
+  surface_treatments:
+  - Natural onyx surfaces
+  - Coated onyx
+  - Stained or contaminated surfaces
+  incompatible_conditions:
+  - Severely damaged onyx requiring structural repair
+  - Extremely thin onyx susceptible to thermal damage
 author_object:
   id: 2
   name: Alessandro Moretti
@@ -156,62 +80,17 @@ author_object:
   country: Italy
   expertise: Laser-Based Additive Manufacturing
   image: /images/author/alessandro-moretti.jpg
-images:
-  hero:
-    alt: Onyx surface undergoing laser cleaning showing precise contamination removal
-    url: /images/onyx-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Onyx surface after laser cleaning showing detailed surface
-      structure
-    url: /images/onyx-laser-cleaning-micro.jpg
-environmentalImpact:
-- benefit: Zero chemical waste generation
-  description: Eliminates 100% of chemical solvents traditionally used in onyx cleaning,
-    preventing groundwater contamination
-- benefit: Reduced particulate matter emissions
-  description: Generates 85% less airborne particulate matter compared to mechanical
-    abrasive cleaning methods
-outcomes:
-- result: Surface contamination removal efficiency
-  metric: ">99% removal of biological and atmospheric contaminants without substrate
-    damage"
-- result: Processing precision
-  metric: "±10 μm layer control with preservation of original surface morphology"
-technicalSpecifications:
-  powerRange: 50-200W (pulsed)
-  pulseDuration: 5-50 ns
-  wavelength: 1064 nm (primary), 532 nm (optional for selective absorption)
-  spotSize: 0.05-1.0 mm
-  repetitionRate: 20-100 kHz
-  fluenceRange: "1.0–10 J/cm²"
-  scanningSpeed: 100-2000 mm/s
-  beamProfile: Top-hat (flat-top)
-  beamProfileOptions: Top-hat, Gaussian, Multi-spot
-  safetyClass: Class 4
-prompt_chain_verification:
-  base_config_loaded: true
-  persona_config_loaded: true
-  formatting_config_loaded: true
-  ai_detection_config_loaded: true
-  persona_country: Italy
-  author_id: 2
-  verification_timestamp: '2025-09-20T21: 47: 33Z'
-  prompt_components_integrated: 4
-  human_authenticity_focus: true
-  cultural_adaptation_applied: true
-laser_parameters:
-  fluence_threshold: "1.0–10 J/cm²"
-  pulse_duration: 5-50ns
-  wavelength_optimal: 1064nm
-  power_range: 50-200W
-  repetition_rate: 20-100kHz
-  spot_size: 0.05-1.0mm
-  laser_type: "Nd: YAG laser"
-tags:
-- Construction
-- Jewelry
 complexity: medium
-difficultyScore: 3
-surface_roughness_before: 18.5
-surface_roughness_after: 6.5
+difficulty_score: 3
+author_id: 2
 ---
+
+
+# Version Information
+# Generated: 2025-09-23T23:19:49.194769
+# Material: Onyx
+# Component: frontmatter
+# Generator: Z-Beam v2.1.0
+# Author: AI Assistant
+# Platform: Darwin (3.12.4)
+# File: content/components/frontmatter/onyx-laser-cleaning.md

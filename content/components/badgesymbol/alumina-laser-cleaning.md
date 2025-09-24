@@ -1,10 +1,10 @@
 ---
-symbol: "AL2O"
+symbol: "AL"
 materialType: "ceramic"
 ---
 
 ---
-Version Log - Generated: 2025-09-22T14:58:24.783005
+Version Log - Generated: 2025-09-23T23:26:47.894955
 Material: Unknown
 Component: badgesymbol
 Generator: Z-Beam v1.0.0

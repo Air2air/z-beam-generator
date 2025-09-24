@@ -1,155 +1,84 @@
 ---
 name: Inconel
 category: metal
-title: Inconel Laser Cleaning
-headline: Comprehensive technical guide for laser cleaning metal inconel
-description: Laser cleaning of Inconel requires precise control of fluence to remove
-  surface contaminants (oxides, coatings) while avoiding melting or microcracking
-  of the Ni-Cr base material. The process leverages high peak power pulses for ablation
-  threshold exceedance.
-keywords: inconel, inconel metal, laser ablation, laser cleaning, non-contact cleaning,
-  pulsed fiber laser, surface contamination removal, industrial laser parameters,
-  thermal processing, surface restoration
-chemicalProperties:
-  symbol: Ni-Cr-Fe
-  formula: NiCr15Fe (Inconel 600), NiCr22Mo9Nb (Inconel 625)
-  materialType: nickel-chromium superalloy
+title: Laser Cleaning Inconel
+headline: Comprehensive laser cleaning guide for metal inconel
+description: Technical overview of Inconel laser cleaning applications and parameters
+keywords:
+- inconel
+- inconel metal
+- laser ablation
+- laser cleaning
+- non-contact cleaning
+- aerospace applications
+- oil and gas applications
 properties:
-  density: "8.44 g/cm³ (Inconel 625)"
-  thermalDestructionPoint: "1400°C"
-  thermalDestructionType: melting
-  densityNumeric: 8.44
-  densityUnit: "g/cm³"
-  densityMin: "1.8 g/cm³"
-  densityMinNumeric: 1.8
-  densityMinUnit: "g/cm³"
-  densityMax: "6.0 g/cm³"
-  densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm³"
-  densityPercentile: 100.0
-  meltingPointNumeric: 1400
-  meltingPointUnit: "°C"
-  meltingPointMin: "1200°C"
-  meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "°C"
-  meltingPointMax: "2800°C"
-  meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "°C"
-  meltingPercentile: 10.9
-  thermalConductivity: "9.8 W/m·K (at 100°C for Inconel 625)"
-  thermalConductivityNumeric: 9.8
-  thermalConductivityUnit: "W/m·K"
-  thermalConductivityMin: "0.5 W/m·K"
-  thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m·K"
-  thermalConductivityMax: "200 W/m·K"
-  thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m·K"
-  thermalPercentile: 4.7
-  tensileStrength: 930 MPa (Inconel 625 annealed)
-  tensileStrengthNumeric: 930.0
+  density: 7.8
+  densityUnit: g/cm³
+  thermalConductivity: 15
+  thermalConductivityUnit: W/m·K
+  tensileStrength: 200
   tensileStrengthUnit: MPa
-  tensileStrengthMin: 50 MPa
-  tensileStrengthMinNumeric: 50.0
-  tensileStrengthMinUnit: MPa
-  tensileStrengthMax: 1000 MPa
-  tensileStrengthMaxNumeric: 1000.0
-  tensileStrengthMaxUnit: MPa
-  tensilePercentile: 92.6
-  hardness: 255HB
-  hardnessNumeric: 255.0
-  hardnessUnit: HB
-  hardnessMin: 1 Mohs
-  hardnessMinNumeric: 1.0
-  hardnessMinUnit: Mohs
-  hardnessMax: 10 Mohs
-  hardnessMaxNumeric: 10.0
-  hardnessMaxUnit: Mohs
-  hardnessPercentile: 100.0
-  youngsModulus: 207 GPa
-  youngsModulusNumeric: 207.0
+  youngsModulus: 200
   youngsModulusUnit: GPa
-  youngsModulusMin: 20 GPa
-  youngsModulusMinNumeric: 20.0
-  youngsModulusMinUnit: GPa
-  youngsModulusMax: 80 GPa
-  youngsModulusMaxNumeric: 80.0
-  youngsModulusMaxUnit: GPa
-  modulusPercentile: 100.0
-  laserType: pulsed fiber laser
-  wavelength: 1064nm
-  fluenceRange: "1.0–10 J/cm²"
-  chemicalFormula: Ni-Cr-Fe-Mo-Nb (varies by grade)
-composition:
-- 'Nickel (Ni): 58.0 min % (Inconel 625)'
-- 'Chromium (Cr): 20.0-23.0%, Molybdenum (Mo): 8.0-10.0%, Niobium (Nb): 3.15-4.15%,
-  Iron (Fe): 5.0% max, Titanium (Ti): 0.4% max, Aluminum (Al): 0.4% max, Carbon (C):
-  0.1% max'
-machineSettings:
-  powerRange: 50-200W
-  powerRangeNumeric: 125.0
-  powerRangeUnit: W
-  powerRangeMin: 20W
-  powerRangeMinNumeric: 20.0
-  powerRangeMinUnit: W
-  powerRangeMax: 500W
-  powerRangeMaxNumeric: 500.0
-  powerRangeMaxUnit: W
-  pulseDuration: 10-200ns
-  pulseDurationNumeric: 105.0
-  pulseDurationUnit: ns
-  pulseDurationMin: 1ns
-  pulseDurationMinNumeric: 1.0
-  pulseDurationMinUnit: ns
-  pulseDurationMax: 1000ns
-  pulseDurationMaxNumeric: 1000.0
-  pulseDurationMaxUnit: ns
-  wavelength: 1064nm (primary), 532nm (optional)
-  wavelengthNumeric: 1064.0
-  wavelengthUnit: nm
-  wavelengthMin: 355nm
-  wavelengthMinNumeric: 355.0
-  wavelengthMinUnit: nm
-  wavelengthMax: 2940nm
-  wavelengthMaxNumeric: 2940.0
-  wavelengthMaxUnit: nm
-  spotSize: 0.1-1.0mm
-  spotSizeNumeric: 0.55
-  spotSizeUnit: mm
-  spotSizeMin: 0.01mm
-  spotSizeMinNumeric: 0.01
-  spotSizeMinUnit: mm
-  spotSizeMax: 10mm
-  spotSizeMaxNumeric: 10.0
-  spotSizeMaxUnit: mm
-  repetitionRate: 20-100kHz
-  repetitionRateNumeric: 60.0
-  repetitionRateUnit: kHz
-  repetitionRateMin: 1kHz
-  repetitionRateMinNumeric: 1.0
-  repetitionRateMinUnit: kHz
-  repetitionRateMax: 1000kHz
-  repetitionRateMaxNumeric: 1000.0
-  repetitionRateMaxUnit: kHz
-  fluenceRange: "1.0–10 J/cm²"
-  fluenceRangeNumeric: 1.0
-  fluenceRangeUnit: "J/cm²"
-  fluenceRangeMin: "0.1J/cm²"
-  fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm²"
-  fluenceRangeMax: "50J/cm²"
-  fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm²"
+  densityMin: 0.53
+  densityMax: 22.59
+  thermalConductivityMin: 6.3
+  thermalConductivityMax: 429
+  tensileStrengthMin: 70
+  tensileStrengthMax: 2000
+  youngsModulusMin: 70
+  youngsModulusMax: 411
 applications:
 - 'Aerospace: Removal of coatings and surface contaminants on turbine blades'
 - 'Oil and Gas: Cleaning of corrosion and scale from piping and valves'
+- 'Automotive: Inconel component surface preparation'
+- 'Manufacturing: Inconel equipment cleaning'
+- 'Electronics: Inconel contact and connector cleaning'
+machineSettings:
+  powerRange: 200.0
+  powerRangeUnit: W
+  wavelength: 1064.0
+  wavelengthUnit: nm
+  pulseDuration: 10.0
+  pulseDurationUnit: ns
+  spotSize: 1.0
+  spotSizeUnit: mm
+  repetitionRate: 10.0
+  repetitionRateUnit: kHz
+  fluenceRange: 1.9
+  fluenceRangeUnit: J/cm²
+  powerRangeMin: 20.0
+  powerRangeMax: 500.0
+  pulseDurationMin: 1.0
+  pulseDurationMax: 1000.0
+  wavelengthMin: 355.0
+  wavelengthMax: 2940.0
+  spotSizeMin: 0.01
+  spotSizeMax: 10.0
+  repetitionRateMin: 1.0
+  repetitionRateMax: 1000.0
+  fluenceRangeMin: 0.1
+  fluenceRangeMax: 50.0
+  beamProfile: Gaussian TEM00
+  beamProfileOptions:
+  - Gaussian TEM00
+  - Top-hat
+  - Donut
+  - Multi-mode
+  safetyClass: Class 4 (requires full enclosure)
 compatibility:
-- Stainless Steel 316L
-- Hastelloy
-- Titanium alloys
-regulatoryStandards: "ISO 9013: 2017 (Thermal cutting classification), ASTM E2930 (Laser"
-  Ablation-Inductively Coupled Plasma Mass Spectrometry)
-author: Ikmanda Roswati
+  laser_types:
+  - Fiber lasers (optimal for most applications)
+  - Nd:YAG lasers (excellent for precision work)
+  - CO2 lasers (moderate effectiveness)
+  surface_treatments:
+  - Natural inconel surfaces
+  - Coated inconel
+  - Stained or contaminated surfaces
+  incompatible_conditions:
+  - Severely damaged inconel requiring structural repair
+  - Extremely thin inconel susceptible to thermal damage
 author_object:
   id: 3
   name: Ikmanda Roswati
@@ -158,61 +87,17 @@ author_object:
   country: Indonesia
   expertise: Ultrafast Laser Physics and Material Interactions
   image: /images/author/ikmanda-roswati.jpg
-images:
-  hero:
-    alt: Inconel surface undergoing laser cleaning showing precise contamination removal
-    url: /images/inconel-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Inconel surface after laser cleaning showing detailed
-      surface structure
-    url: /images/inconel-laser-cleaning-micro.jpg
-environmentalImpact:
-- benefit: Zero chemical waste generation
-  description: Eliminates use of hazardous chemical solvents and acids traditionally
-    used for Inconel pickling (HF/HNO3 mixtures)
-- benefit: 97% reduction in water consumption
-  description: Dry process eliminates need for water jetting and subsequent wastewater
-    treatment
-outcomes:
-- result: Surface cleanliness to Sa 2.5 (ISO 8501-1)
-  metric: Complete removal of oxides and contaminants with <0.1% surface alteration
-- result: "Processing rates up to 2 m²/hour"
-  metric: For moderate contamination levels at 200W average power
-technicalSpecifications:
-  powerRange: 50-500 W (pulsed fiber laser)
-  pulseDuration: 10-200 ns
-  wavelength: 1064 nm (primary), 532 nm (optional for finer features)
-  spotSize: "50-200 μm"
-  repetitionRate: 20-300 kHz
-  fluenceRange: "2.0-15 J/cm²"
-  scanningSpeed: 100-2000 mm/s
-  beamProfile: Top-hat (flat-top)
-  beamProfileOptions: Top-hat, Gaussian, Multimode
-  safetyClass: Class 4 (IEC 60825-1)
-prompt_chain_verification:
-  base_config_loaded: true
-  persona_config_loaded: true
-  formatting_config_loaded: true
-  ai_detection_config_loaded: true
-  persona_country: Indonesia
-  author_id: 3
-  verification_timestamp: '2025-09-20T21: 15: 37Z'
-  prompt_components_integrated: 4
-  human_authenticity_focus: true
-  cultural_adaptation_applied: true
-laser_parameters:
-  fluence_threshold: "1.0–10 J/cm²"
-  pulse_duration: 10-200ns
-  wavelength_optimal: 1064nm
-  power_range: 50-200W
-  repetition_rate: 20-100kHz
-  spot_size: 0.1-1.0mm
-  laser_type: pulsed fiber laser
-tags:
-- Oil and Gas
-- Aerospace
 complexity: high
-difficultyScore: 4
-surface_roughness_before: 7.8
-surface_roughness_after: 1.5
+difficulty_score: 4
+author_id: 3
 ---
+
+
+# Version Information
+# Generated: 2025-09-23T23:19:48.469167
+# Material: Inconel
+# Component: frontmatter
+# Generator: Z-Beam v2.1.0
+# Author: AI Assistant
+# Platform: Darwin (3.12.4)
+# File: content/components/frontmatter/inconel-laser-cleaning.md

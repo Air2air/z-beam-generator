@@ -4,27 +4,34 @@ category: metal
 title: Laser Cleaning Aluminum
 headline: Comprehensive laser cleaning guide for metal aluminum
 description: Technical overview of Aluminum laser cleaning applications and parameters
-keywords: aluminum, aluminum metal, laser ablation, laser cleaning, non-contact cleaning, automotive applications, aerospace applications
+keywords:
+- aluminum
+- aluminum metal
+- laser ablation
+- laser cleaning
+- non-contact cleaning
+- automotive applications
+- aerospace applications
 chemicalProperties:
   formula: Al
   symbol: Al
 properties:
   density: 7.8
   densityUnit: g/cm³
-  thermalConductivity: 15.0
+  thermalConductivity: 15
   thermalConductivityUnit: W/m·K
-  tensileStrength: 200.0
+  tensileStrength: 200
   tensileStrengthUnit: MPa
-  youngsModulus: 200.0
+  youngsModulus: 200
   youngsModulusUnit: GPa
-  densityMin: 0.53 g/cm³
-  densityMax: 22.59 g/cm³
-  thermalConductivityMin: 6.3 W/m·K
-  thermalConductivityMax: 429 W/m·K
-  tensileStrengthMin: 70 MPa
-  tensileStrengthMax: 2000 MPa
-  youngsModulusMin: 70 GPa
-  youngsModulusMax: 411 GPa
+  densityMin: 0.53
+  densityMax: 22.59
+  thermalConductivityMin: 6.3
+  thermalConductivityMax: 429
+  tensileStrengthMin: 70
+  tensileStrengthMax: 2000
+  youngsModulusMin: 70
+  youngsModulusMax: 411
 applications:
 - 'Automotive: Removing paint and corrosion from aluminum car parts'
 - 'Aerospace: Cleaning aluminum aircraft components for surface preparation'
@@ -84,3 +91,13 @@ complexity: medium
 difficulty_score: 3
 author_id: 3
 ---
+
+
+# Version Information
+# Generated: 2025-09-23T23:19:48.250753
+# Material: Aluminum
+# Component: frontmatter
+# Generator: Z-Beam v2.1.0
+# Author: AI Assistant
+# Platform: Darwin (3.12.4)
+# File: content/components/frontmatter/aluminum-laser-cleaning.md

@@ -1,116 +1,104 @@
 ---
+name: Stoneware
+category: ceramic
+title: Laser Cleaning Stoneware
+headline: Comprehensive laser cleaning guide for ceramic stoneware
+description: Technical overview of Stoneware laser cleaning applications and parameters
+keywords:
+- stoneware
+- stoneware ceramic
+- laser ablation
+- laser cleaning
+- non-contact cleaning
+- ceramics manufacturing applications
+- restoration and conservation applications
+chemicalProperties:
+  formula: Al2O3·SiO2
+  symbol: Al-Si-O
+properties:
+  density: 2.1
+  densityUnit: g/cm³
+  thermalConductivity: 1.2
+  thermalConductivityUnit: W/m·K
+  hardness: 5
+  hardnessUnit: Mohs
+  densityMin: 1.8
+  densityMax: 15.7
+  thermalConductivityMin: 0.5
+  thermalConductivityMax: 200
+  hardnessMin: 6
+  hardnessMax: 10
 applications:
 - 'Ceramics Manufacturing: Removing surface contaminants and coatings'
 - 'Restoration and Conservation: Cleaning historical stoneware artifacts'
-author: Todd Dunning
+- 'Tableware: Restaurant-grade stoneware maintenance and cleaning'
+- 'Industrial: Chemical processing vessel cleaning'
+- 'Art Conservation: Museum stoneware artifact restoration'
+- 'Food Processing: Sanitary cleaning of stoneware equipment'
+machineSettings:
+  powerRange: 80.0
+  powerRangeUnit: W
+  wavelength: 1064.0
+  wavelengthUnit: nm
+  pulseDuration: 20.0
+  pulseDurationUnit: ns
+  spotSize: 0.5
+  spotSizeUnit: mm
+  repetitionRate: 40.0
+  repetitionRateUnit: kHz
+  fluenceRange: 1.9
+  fluenceRangeUnit: J/cm²
+  powerRangeMin: 20.0
+  powerRangeMax: 500.0
+  pulseDurationMin: 1.0
+  pulseDurationMax: 1000.0
+  wavelengthMin: 355.0
+  wavelengthMax: 2940.0
+  spotSizeMin: 0.01
+  spotSizeMax: 10.0
+  repetitionRateMin: 1.0
+  repetitionRateMax: 1000.0
+  fluenceRangeMin: 0.1
+  fluenceRangeMax: 50.0
+  beamProfile: Gaussian TEM00
+  beamProfileOptions:
+  - Gaussian TEM00
+  - Top-hat
+  - Donut
+  - Multi-mode
+  safetyClass: Class 4 (requires full enclosure)
+compatibility:
+  laser_types:
+  - Fiber lasers (optimal for dense stoneware)
+  - Nd:YAG lasers (excellent for delicate artifacts)
+  - CO2 lasers (moderate effectiveness)
+  surface_treatments:
+  - Glazed stoneware surfaces
+  - Unglazed stoneware pottery
+  - Salt-glazed stoneware
+  - Stained or soiled surfaces
+  incompatible_conditions:
+  - Cracked stoneware requiring structural stabilization
+  - Extremely weathered stoneware with structural damage
 author_object:
-  country: United States (California)
-  expertise: Optical Materials for Laser Systems
   id: 4
-  image: /images/author/todd-dunning.jpg
   name: Todd Dunning
   sex: m
   title: MA
-category: ceramic
-chemicalProperties:
-  formula: Variable composition (primarily SiO₂-Al₂O₃-K₂O-Na₂O-CaO system)
-  materialType: ceramic
-  symbol: N/A (composite material)
-compatibility:
-- Pulsed fiber lasers (1064 nm wavelength)
-- Quartz and ceramic processing optics
-- Stainless steel fixtures and handling systems
+  country: United States (California)
+  expertise: Optical Materials for Laser Systems
+  image: /images/author/todd-dunning.jpg
 complexity: medium
-composition:
-- 'Silicon Dioxide (SiO₂): 60-70%'
-- 'Aluminum Oxide (Al₂O₃): 20-30%'
-- 'Potassium Oxide (K₂O): 3-5%'
-- 'Sodium Oxide (Na₂O): 1-3%'
-- 'Calcium Oxide (CaO): 1-2%'
-- 'Iron Oxide (Fe₂O₃): 1-2%'
-description: Stoneware laser cleaning utilizes precise pulsed fiber laser parameters to remove surface contaminants while preserving the vitrified ceramic body. The process exploits the differential absorption between contaminants and the stoneware matrix, achieving selective ablation without mechanical contact or chemical residues.
-difficultyScore: 3
-environmentalImpact:
-- benefit: Zero chemical waste generation
-  description: Eliminates 100% of chemical solvents and abrasive media typically used in traditional stoneware cleaning processes
-- benefit: Reduced water consumption
-  description: Eliminates water usage compared to traditional wet cleaning methods, saving approximately 5-10 liters per square meter of cleaned surface
-headline: Comprehensive technical guide for laser cleaning ceramic stoneware
-images:
-  hero:
-    alt: Stoneware surface undergoing laser cleaning showing precise contamination removal
-    url: /images/stoneware-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Stoneware surface after laser cleaning showing detailed surface structure
-    url: /images/stoneware-laser-cleaning-micro.jpg
-keywords: stoneware, stoneware ceramic, laser ablation, laser cleaning, non-contact cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters, thermal processing, surface restoration
-machineSettings:
-  fluenceRange: 1.0
-  fluenceRangeMax: 50.0
-  fluenceRangeMin: 0.1
-  fluenceRangeUnit: J/cm²
-  powerRange: 125.0
-  powerRangeMax: 500.0
-  powerRangeMin: 20.0
-  powerRangeUnit: W
-  pulseDuration: 105.0
-  pulseDurationMax: 1000.0
-  pulseDurationMin: 1.0
-  pulseDurationUnit: ns
-  repetitionRate: 60.0
-  repetitionRateMax: 1000.0
-  repetitionRateMin: 1.0
-  repetitionRateUnit: kHz
-  spotSize: 0.55
-  spotSizeMax: 10.0
-  spotSizeMin: 0.01
-  spotSizeUnit: mm
-  wavelength: 1064.0
-  wavelengthMax: 2940.0
-  wavelengthMin: 355.0
-  wavelengthUnit: nm
-name: Stoneware
-outcomes:
-- metric: '>99% removal of organic contaminants and surface deposits without substrate damage'
-  result: Surface contamination removal efficiency
-- metric: 0.5-2.0 m²/hour depending on contamination level and required precision
-  result: Processing speed
-properties:
-  density: 2.4
-  densityMax: 6.0
-  densityMin: 1.8
-  densityPercentile: 14.3
-  densityUnit: g/cm³
-  hardness: 6.5
-  hardnessMax: 10.0
-  hardnessMin: 1.0
-  hardnessPercentile: 61.1
-  hardnessUnit: Mohs
-  meltingPercentile: 3.1
-  meltingPoint: 1300
-  meltingPointMax: 2800.0
-  meltingPointMin: 1200.0
-  meltingPointUnit: °C
-  modulusPercentile: 75.0
-  tensilePercentile: 0.0
-  tensileStrength: 30.0
-  tensileStrengthMax: 1000.0
-  tensileStrengthMin: 50.0
-  tensileStrengthUnit: MPa
-  thermalConductivity: 1.75
-  thermalConductivityMax: 200.0
-  thermalConductivityMin: 0.5
-  thermalConductivityUnit: W/
-  thermalPercentile: 0.6
-  youngsModulus: 65.0
-  youngsModulusMax: 80.0
-  youngsModulusMin: 20.0
-  youngsModulusUnit: GPa
-regulatoryStandards: IEC 60825-1 (Laser Safety), EN 1504 (Products and systems for protection and repair of concrete structures - relevant for restoration)
-surface_roughness_after: 3.8
-surface_roughness_before: 12.5
-tags:
-- Ceramics Manufacturing
-- Restoration and Conservation
-title: Stoneware Laser Cleaning
+difficulty_score: 3
+author_id: 4
 ---
+
+
+# Version Information
+# Generated: 2025-09-23T23:19:47.707471
+# Material: Stoneware
+# Component: frontmatter
+# Generator: Z-Beam v2.1.0
+# Author: AI Assistant
+# Platform: Darwin (3.12.4)
+# File: content/components/frontmatter/stoneware-laser-cleaning.md

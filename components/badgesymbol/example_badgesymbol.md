@@ -1,4 +1,4 @@
 ---
-symbol: "SiO"
+symbol: "Si"
 materialType: "ceramic"
 ---

@@ -1,10 +1,10 @@
 ---
-symbol: "WALN"
-materialType: "hardwood"
+symbol: "Wd"
+materialType: "wood"
 ---
 
 ---
-Version Log - Generated: 2025-09-22T14:58:39.175903
+Version Log - Generated: 2025-09-23T23:26:49.025725
 Material: Unknown
 Component: badgesymbol
 Generator: Z-Beam v1.0.0

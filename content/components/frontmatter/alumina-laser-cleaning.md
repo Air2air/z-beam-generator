@@ -1,30 +1,37 @@
 ---
 name: Alumina
 category: ceramic
-title: Laser Cleaning alumina
+title: Laser Cleaning Alumina
 headline: Comprehensive laser cleaning guide for ceramic alumina
-description: Technical overview of alumina laser cleaning applications and parameters
-keywords: alumina, alumina ceramic, laser ablation, laser cleaning, non-contact cleaning, aerospace applications, semiconductor applications
+description: Technical overview of Alumina laser cleaning applications and parameters
+keywords:
+- alumina
+- alumina ceramic
+- laser ablation
+- laser cleaning
+- non-contact cleaning
+- aerospace applications
+- semiconductor applications
 chemicalProperties:
   formula: Al2O3
   symbol: Al-O
 properties:
   density: 3.95
   densityUnit: g/cm³
-  meltingPoint: 2072.0
+  meltingPoint: 2072
   meltingPointUnit: °C
-  thermalConductivity: 35.0
+  thermalConductivity: 35
   thermalConductivityUnit: W/m·K
   hardness: 9.0
   hardnessUnit: Mohs
-  densityMin: 1.8 g/cm³
-  densityMax: 15.7 g/cm³
-  meltingPointMin: 1000°C
-  meltingPointMax: 3827°C
-  thermalConductivityMin: 0.5 W/m·K
-  thermalConductivityMax: 200 W/m·K
-  hardnessMin: 6 Mohs
-  hardnessMax: 10 Mohs
+  densityMin: 1.8
+  densityMax: 15.7
+  meltingPointMin: 1000
+  meltingPointMax: 3827
+  thermalConductivityMin: 0.5
+  thermalConductivityMax: 200
+  hardnessMin: 6
+  hardnessMax: 10
 applications:
 - 'Aerospace: Removal of coatings and surface contaminants from alumina components'
 - 'Semiconductor: Cleaning of alumina substrates for integrated circuits'
@@ -89,3 +96,13 @@ complexity: high
 difficulty_score: 4
 author_id: 2
 ---
+
+
+# Version Information
+# Generated: 2025-09-23T23:19:47.660862
+# Material: Alumina
+# Component: frontmatter
+# Generator: Z-Beam v2.1.0
+# Author: AI Assistant
+# Platform: Darwin (3.12.4)
+# File: content/components/frontmatter/alumina-laser-cleaning.md

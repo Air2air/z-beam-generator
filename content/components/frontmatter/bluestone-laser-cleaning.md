@@ -1,155 +1,77 @@
 ---
 name: Bluestone
 category: stone
-title: Bluestone Laser Cleaning
-headline: Comprehensive technical guide for laser cleaning stone bluestone
-description: Laser cleaning of Bluestone utilizes precise pulsed fiber laser parameters
-  to selectively remove surface contaminants while preserving the stone's mineral
-  structure. The process exploits differential absorption between contaminants and
-  the calcium carbonate matrix, enabling non-contact, non-abrasive restoration.
-keywords: bluestone, bluestone stone, laser ablation, laser cleaning, non-contact
-  cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters,
-  thermal processing, surface restoration
-chemicalProperties:
-  symbol: "CaCO₃"
-  formula: "CaCO₃ (primary), with FeS₂, SiO₂, Al₂O₃ impurities"
-  materialType: sedimentary rock
+title: Laser Cleaning Bluestone
+headline: Comprehensive laser cleaning guide for stone bluestone
+description: Technical overview of Bluestone laser cleaning applications and parameters
+keywords:
+- bluestone
+- bluestone stone
+- laser ablation
+- laser cleaning
+- non-contact cleaning
+- construction applications
+- restoration applications
 properties:
-  density: 2.7g/cm³
-  thermalDestructionPoint: "825°C"
-  thermalDestructionType: melting
-  densityNumeric: 2.7
-  densityUnit: "g/cm³"
-  densityMin: "1.8 g/cm³"
-  densityMinNumeric: 1.8
-  densityMinUnit: "g/cm³"
-  densityMax: "6.0 g/cm³"
-  densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm³"
-  densityPercentile: 21.4
-  meltingPointNumeric: 825.0
-  meltingPointUnit: "°C"
-  meltingPointMin: "1200°C"
-  meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "°C"
-  meltingPointMax: "2800°C"
-  meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "°C"
-  meltingPercentile: 0.0
-  thermalConductivity: 2.8W/m·K
-  thermalConductivityNumeric: 2.75
-  thermalConductivityUnit: "W/m·K"
-  thermalConductivityMin: "0.5 W/m·K"
-  thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m·K"
-  thermalConductivityMax: "200 W/m·K"
-  thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m·K"
-  thermalPercentile: 1.1
-  tensileStrength: 11.5MPa
-  tensileStrengthNumeric: 11.5
-  tensileStrengthUnit: MPa
-  tensileStrengthMin: 50 MPa
-  tensileStrengthMinNumeric: 50.0
-  tensileStrengthMinUnit: MPa
-  tensileStrengthMax: 1000 MPa
-  tensileStrengthMaxNumeric: 1000.0
-  tensileStrengthMaxUnit: MPa
-  tensilePercentile: 0.0
-  hardness: 3.5Mohs
-  hardnessNumeric: 3.5
+  density: 2.5
+  densityUnit: g/cm³
+  thermalConductivity: 1.5
+  thermalConductivityUnit: W/m·K
+  hardness: 6
   hardnessUnit: Mohs
-  hardnessMin: 1 Mohs
-  hardnessMinNumeric: 1.0
-  hardnessMinUnit: Mohs
-  hardnessMax: 10 Mohs
-  hardnessMaxNumeric: 10.0
-  hardnessMaxUnit: Mohs
-  hardnessPercentile: 27.8
-  youngsModulus: 40-80 GPa (dependent on porosity and mineral content)
-  youngsModulusNumeric: 60.0
-  youngsModulusUnit: GPa
-  youngsModulusMin: 20 GPa
-  youngsModulusMinNumeric: 20.0
-  youngsModulusMinUnit: GPa
-  youngsModulusMax: 80 GPa
-  youngsModulusMaxNumeric: 80.0
-  youngsModulusMaxUnit: GPa
-  modulusPercentile: 66.7
-  laserType: Pulsed fiber laser
-  wavelength: 1064nm
-  fluenceRange: "0.5-3.0 J/cm²"
-  chemicalFormula: "CaCO₃ (calcium carbonate)"
-composition:
-- "Calcium carbonate (CaCO₃): 85-95%"
-- "Quartz (SiO₂): 3-8%"
-- "Pyrite (FeS₂): 1-3%"
-- "Clay minerals (Al₂O₃·2SiO₂·2H₂O): 1-4%"
-machineSettings:
-  powerRange: 20-100W
-  powerRangeNumeric: 60.0
-  powerRangeUnit: W
-  powerRangeMin: 20W
-  powerRangeMinNumeric: 20.0
-  powerRangeMinUnit: W
-  powerRangeMax: 500W
-  powerRangeMaxNumeric: 500.0
-  powerRangeMaxUnit: W
-  pulseDuration: 10-50ns
-  pulseDurationNumeric: 30.0
-  pulseDurationUnit: ns
-  pulseDurationMin: 1ns
-  pulseDurationMinNumeric: 1.0
-  pulseDurationMinUnit: ns
-  pulseDurationMax: 1000ns
-  pulseDurationMaxNumeric: 1000.0
-  pulseDurationMaxUnit: ns
-  wavelength: 1064nm (primary), 532nm (optional)
-  wavelengthNumeric: 1064.0
-  wavelengthUnit: nm
-  wavelengthMin: 355nm
-  wavelengthMinNumeric: 355.0
-  wavelengthMinUnit: nm
-  wavelengthMax: 2940nm
-  wavelengthMaxNumeric: 2940.0
-  wavelengthMaxUnit: nm
-  spotSize: 0.1-1.0mm
-  spotSizeNumeric: 0.55
-  spotSizeUnit: mm
-  spotSizeMin: 0.01mm
-  spotSizeMinNumeric: 0.01
-  spotSizeMinUnit: mm
-  spotSizeMax: 10mm
-  spotSizeMaxNumeric: 10.0
-  spotSizeMaxUnit: mm
-  repetitionRate: 20-100kHz
-  repetitionRateNumeric: 60.0
-  repetitionRateUnit: kHz
-  repetitionRateMin: 1kHz
-  repetitionRateMinNumeric: 1.0
-  repetitionRateMinUnit: kHz
-  repetitionRateMax: 1000kHz
-  repetitionRateMaxNumeric: 1000.0
-  repetitionRateMaxUnit: kHz
-  fluenceRange: "0.5-3.0 J/cm²"
-  fluenceRangeNumeric: 1.75
-  fluenceRangeUnit: "J/cm²"
-  fluenceRangeMin: "0.1J/cm²"
-  fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm²"
-  fluenceRangeMax: "50J/cm²"
-  fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm²"
+  densityMin: 1.5
+  densityMax: 3.4
+  thermalConductivityMin: 0.2
+  thermalConductivityMax: 5.0
+  hardnessMin: 1
+  hardnessMax: 7
 applications:
 - 'Construction: Removal of surface contaminants and weathering from Bluestone facades'
 - 'Restoration: Precision cleaning of Bluestone sculptures and historical artifacts'
+machineSettings:
+  powerRange: 50.0
+  powerRangeUnit: W
+  wavelength: 1064.0
+  wavelengthUnit: nm
+  pulseDuration: 20.0
+  pulseDurationUnit: ns
+  spotSize: 1.5
+  spotSizeUnit: mm
+  repetitionRate: 20.0
+  repetitionRateUnit: kHz
+  fluenceRange: 0.8
+  fluenceRangeUnit: J/cm²
+  powerRangeMin: 20.0
+  powerRangeMax: 500.0
+  pulseDurationMin: 1.0
+  pulseDurationMax: 1000.0
+  wavelengthMin: 355.0
+  wavelengthMax: 2940.0
+  spotSizeMin: 0.01
+  spotSizeMax: 10.0
+  repetitionRateMin: 1.0
+  repetitionRateMax: 1000.0
+  fluenceRangeMin: 0.1
+  fluenceRangeMax: 50.0
+  beamProfile: Gaussian TEM00
+  beamProfileOptions:
+  - Gaussian TEM00
+  - Top-hat
+  - Donut
+  - Multi-mode
+  safetyClass: Class 4 (requires full enclosure)
 compatibility:
-- Marble and limestone (similar calcium carbonate composition)
-- Sandstone (compatible laser parameters for silicate-based stones)
-regulatoryStandards: "EN 15898: 2019 (Conservation of cultural heritage - Main general"
-  terms and definitions), EN 15886: 2010 (Conservation of cultural property - Test
-  methods - Color measurement of surfaces)
-author: Alessandro Moretti
+  laser_types:
+  - Fiber lasers (optimal for most applications)
+  - Nd:YAG lasers (excellent for precision work)
+  - CO2 lasers (moderate effectiveness)
+  surface_treatments:
+  - Natural bluestone surfaces
+  - Coated bluestone
+  - Stained or contaminated surfaces
+  incompatible_conditions:
+  - Severely damaged bluestone requiring structural repair
+  - Extremely thin bluestone susceptible to thermal damage
 author_object:
   id: 2
   name: Alessandro Moretti
@@ -158,63 +80,17 @@ author_object:
   country: Italy
   expertise: Laser-Based Additive Manufacturing
   image: /images/author/alessandro-moretti.jpg
-images:
-  hero:
-    alt: Bluestone surface undergoing laser cleaning showing precise contamination
-      removal
-    url: /images/bluestone-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Bluestone surface after laser cleaning showing detailed
-      surface structure
-    url: /images/bluestone-laser-cleaning-micro.jpg
-environmentalImpact:
-- benefit: Zero chemical waste generation
-  description: Eliminates 100% of chemical solvents and acidic cleaners traditionally
-    used in stone restoration
-- benefit: Reduced water consumption
-  description: Uses 95% less water compared to traditional high-pressure water cleaning
-    methods
-outcomes:
-- result: Surface contamination removal efficiency
-  metric: ">98% removal of black crusts and biological growth while preserving <5μ"
-    m of original stone"
-- result: Processing speed for historical restoration
-  metric: "0.1-0.5 m²/hour depending on contamination severity and required precision"
-technicalSpecifications:
-  powerRange: 20-100 W (average power for pulsed fiber lasers)
-  pulseDuration: 10-50 ns (short pulse for precise ablation)
-  wavelength: 1064 nm (primary), 532 nm (optional for specific contaminants)
-  spotSize: 0.1-1.0 mm (adjustable for precision work vs area coverage)
-  repetitionRate: 20-100 kHz (optimized for thermal management)
-  fluenceRange: "0.5-3.0 J/cm² (ablation threshold range for Bluestone)"
-  scanningSpeed: 100-1000 mm/s (dependent on contamination type and laser parameters)
-  beamProfile: Top-hat (for uniform energy distribution and consistent cleaning)
-  beamProfileOptions: Top-hat, Gaussian, Flat-top (configurable based on application)
-  safetyClass: Class 4 (requires full enclosure and safety interlock systems)
-prompt_chain_verification:
-  base_config_loaded: true
-  persona_config_loaded: true
-  formatting_config_loaded: true
-  ai_detection_config_loaded: true
-  persona_country: Italy
-  author_id: 2
-  verification_timestamp: '2025-09-20T21: 40: 56Z'
-  prompt_components_integrated: 4
-  human_authenticity_focus: true
-  cultural_adaptation_applied: true
-laser_parameters:
-  fluence_threshold: "0.5-3.0 J/cm²"
-  pulse_duration: 10-50ns
-  wavelength_optimal: 1064nm
-  power_range: 20-100W
-  repetition_rate: 20-100kHz
-  spot_size: 0.1-1.0mm
-  laser_type: Pulsed fiber laser
-tags:
-- Construction
-- Restoration
 complexity: medium
-difficultyScore: 3
-surface_roughness_before: 24.8
-surface_roughness_after: 8.3
+difficulty_score: 3
+author_id: 2
 ---
+
+
+# Version Information
+# Generated: 2025-09-23T23:19:49.075472
+# Material: Bluestone
+# Component: frontmatter
+# Generator: Z-Beam v2.1.0
+# Author: AI Assistant
+# Platform: Darwin (3.12.4)
+# File: content/components/frontmatter/bluestone-laser-cleaning.md

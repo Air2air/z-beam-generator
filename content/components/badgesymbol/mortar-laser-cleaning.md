@@ -1,10 +1,10 @@
 ---
-symbol: "MORT"
+symbol: "MO"
 materialType: "masonry"
 ---
 
 ---
-Version Log - Generated: 2025-09-22T14:58:28.703206
+Version Log - Generated: 2025-09-23T23:26:48.217820
 Material: Unknown
 Component: badgesymbol
 Generator: Z-Beam v1.0.0

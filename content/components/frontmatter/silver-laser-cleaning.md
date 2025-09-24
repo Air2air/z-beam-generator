@@ -1,149 +1,84 @@
 ---
 name: Silver
 category: metal
-title: Silver Laser Cleaning
-headline: Comprehensive technical guide for laser cleaning metal silver
-description: "Silver laser cleaning utilizes precise pulsed fiber lasers to selectively remove surface contaminants through ablation while preserving the high-purity silver substrate, leveraging silver's exceptional thermal conductivity (429 W/m·"
-  K) for controlled energy dissipation."
-keywords: silver, silver metal, laser ablation, laser cleaning, non-contact cleaning,
-  pulsed fiber laser, surface contamination removal, industrial laser parameters,
-  thermal processing, surface restoration
+title: Laser Cleaning Silver
+headline: Comprehensive laser cleaning guide for metal silver
+description: Technical overview of Silver laser cleaning applications and parameters
+keywords:
+- silver
+- silver metal
+- laser ablation
+- laser cleaning
+- non-contact cleaning
+- electronics applications
+- jewelry applications
 chemicalProperties:
-  symbol: Ag
   formula: Ag
-  materialType: metal
+  symbol: Ag
 properties:
-  density: "10.49 g/cm³"
-  thermalDestructionPoint: "961°C"
-  thermalDestructionType: melting
-  densityNumeric: 10.49
-  densityUnit: "g/cm³"
-  densityMin: "1.8 g/cm³"
-  densityMinNumeric: 1.8
-  densityMinUnit: "g/cm³"
-  densityMax: "6.0 g/cm³"
-  densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm³"
-  densityPercentile: 100.0
-  meltingPointNumeric: 961
-  meltingPointUnit: "°C"
-  meltingPointMin: "1200°C"
-  meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "°C"
-  meltingPointMax: "2800°C"
-  meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "°C"
-  meltingPercentile: 0.0
-  thermalConductivity: "429 W/m·K"
-  thermalConductivityNumeric: 429.0
-  thermalConductivityUnit: "W/m·K"
-  thermalConductivityMin: "0.5 W/m·K"
-  thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m·K"
-  thermalConductivityMax: "200 W/m·K"
-  thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m·K"
-  thermalPercentile: 100.0
-  tensileStrength: 125 MPa (annealed)
-  tensileStrengthNumeric: 125.0
+  density: 7.8
+  densityUnit: g/cm³
+  thermalConductivity: 15
+  thermalConductivityUnit: W/m·K
+  tensileStrength: 200
   tensileStrengthUnit: MPa
-  tensileStrengthMin: 50 MPa
-  tensileStrengthMinNumeric: 50.0
-  tensileStrengthMinUnit: MPa
-  tensileStrengthMax: 1000 MPa
-  tensileStrengthMaxNumeric: 1000.0
-  tensileStrengthMaxUnit: MPa
-  tensilePercentile: 7.9
-  hardness: 25 HV (pure annealed silver)
-  hardnessNumeric: 25.0
-  hardnessUnit: HV
-  hardnessMin: 1 Mohs
-  hardnessMinNumeric: 1.0
-  hardnessMinUnit: Mohs
-  hardnessMax: 10 Mohs
-  hardnessMaxNumeric: 10.0
-  hardnessMaxUnit: Mohs
-  hardnessPercentile: 100.0
-  youngsModulus: 83 GPa
-  youngsModulusNumeric: 83.0
+  youngsModulus: 200
   youngsModulusUnit: GPa
-  youngsModulusMin: 20 GPa
-  youngsModulusMinNumeric: 20.0
-  youngsModulusMinUnit: GPa
-  youngsModulusMax: 80 GPa
-  youngsModulusMaxNumeric: 80.0
-  youngsModulusMaxUnit: GPa
-  modulusPercentile: 100.0
-  laserType: Pulsed fiber laser
-  wavelength: 1064nm
-  fluenceRange: "0.5-5 J/cm²"
-  chemicalFormula: Ag
-composition:
-- 'Silver (Ag): 99.9-99.99% (commercial pure)'
-- 'Copper: 0.01-0.1% (common trace element)'
-machineSettings:
-  powerRange: 20-100W
-  powerRangeNumeric: 60.0
-  powerRangeUnit: W
-  powerRangeMin: 20W
-  powerRangeMinNumeric: 20.0
-  powerRangeMinUnit: W
-  powerRangeMax: 500W
-  powerRangeMaxNumeric: 500.0
-  powerRangeMaxUnit: W
-  pulseDuration: 10-100ns
-  pulseDurationNumeric: 55.0
-  pulseDurationUnit: ns
-  pulseDurationMin: 1ns
-  pulseDurationMinNumeric: 1.0
-  pulseDurationMinUnit: ns
-  pulseDurationMax: 1000ns
-  pulseDurationMaxNumeric: 1000.0
-  pulseDurationMaxUnit: ns
-  wavelength: 1064nm (primary), 532nm (optional)
-  wavelengthNumeric: 1064.0
-  wavelengthUnit: nm
-  wavelengthMin: 355nm
-  wavelengthMinNumeric: 355.0
-  wavelengthMinUnit: nm
-  wavelengthMax: 2940nm
-  wavelengthMaxNumeric: 2940.0
-  wavelengthMaxUnit: nm
-  spotSize: 0.1-2.0mm
-  spotSizeNumeric: 1.05
-  spotSizeUnit: mm
-  spotSizeMin: 0.01mm
-  spotSizeMinNumeric: 0.01
-  spotSizeMinUnit: mm
-  spotSizeMax: 10mm
-  spotSizeMaxNumeric: 10.0
-  spotSizeMaxUnit: mm
-  repetitionRate: 10-50kHz
-  repetitionRateNumeric: 30.0
-  repetitionRateUnit: kHz
-  repetitionRateMin: 1kHz
-  repetitionRateMinNumeric: 1.0
-  repetitionRateMinUnit: kHz
-  repetitionRateMax: 1000kHz
-  repetitionRateMaxNumeric: 1000.0
-  repetitionRateMaxUnit: kHz
-  fluenceRange: "0.5-5 J/cm²"
-  fluenceRangeNumeric: 2.75
-  fluenceRangeUnit: "J/cm²"
-  fluenceRangeMin: "0.1J/cm²"
-  fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm²"
-  fluenceRangeMax: "50J/cm²"
-  fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm²"
+  densityMin: 0.53
+  densityMax: 22.59
+  thermalConductivityMin: 6.3
+  thermalConductivityMax: 429
+  tensileStrengthMin: 70
+  tensileStrengthMax: 2000
+  youngsModulusMin: 70
+  youngsModulusMax: 411
 applications:
 - 'Electronics: Removal of oxides and contaminants from silver contacts and connectors'
 - 'Jewelry: Cleaning and restoration of silver jewelry without damaging delicate surfaces'
+machineSettings:
+  powerRange: 180.0
+  powerRangeUnit: W
+  wavelength: 355.0
+  wavelengthUnit: nm
+  pulseDuration: 5.0
+  pulseDurationUnit: ns
+  spotSize: 1.0
+  spotSizeUnit: mm
+  repetitionRate: 10.0
+  repetitionRateUnit: kHz
+  fluenceRange: 0.4
+  fluenceRangeUnit: J/cm²
+  powerRangeMin: 20.0
+  powerRangeMax: 500.0
+  pulseDurationMin: 1.0
+  pulseDurationMax: 1000.0
+  wavelengthMin: 355.0
+  wavelengthMax: 2940.0
+  spotSizeMin: 0.01
+  spotSizeMax: 10.0
+  repetitionRateMin: 1.0
+  repetitionRateMax: 1000.0
+  fluenceRangeMin: 0.1
+  fluenceRangeMax: 50.0
+  beamProfile: Gaussian TEM00
+  beamProfileOptions:
+  - Gaussian TEM00
+  - Top-hat
+  - Donut
+  - Multi-mode
+  safetyClass: Class 4 (requires full enclosure)
 compatibility:
-- Copper and copper alloys (similar thermal properties)
-- Gold (compatible processing parameters)
-regulatoryStandards: IEC 60825-1 (Laser Safety), OSHA 29 CFR 1910.1096 (Ionizing Radiation)
-author: Alessandro Moretti
+  laser_types:
+  - Fiber lasers (optimal for most applications)
+  - Nd:YAG lasers (excellent for precision work)
+  - CO2 lasers (moderate effectiveness)
+  surface_treatments:
+  - Natural silver surfaces
+  - Coated silver
+  - Stained or contaminated surfaces
+  incompatible_conditions:
+  - Severely damaged silver requiring structural repair
+  - Extremely thin silver susceptible to thermal damage
 author_object:
   id: 2
   name: Alessandro Moretti
@@ -152,63 +87,17 @@ author_object:
   country: Italy
   expertise: Laser-Based Additive Manufacturing
   image: /images/author/alessandro-moretti.jpg
-images:
-  hero:
-    alt: Silver surface undergoing laser cleaning showing precise contamination removal
-    url: /images/silver-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Silver surface after laser cleaning showing detailed
-      surface structure
-    url: /images/silver-laser-cleaning-micro.jpg
-environmentalImpact:
-- benefit: Zero chemical waste generation
-  description: Eliminates use of toxic chemical cleaners (cyanide-based solutions)
-    and acidic dips traditionally used for silver cleaning
-- benefit: Reduced water consumption
-  description: Eliminates water-intensive rinsing processes, reducing water usage
-    by 100% compared to traditional chemical cleaning methods
-outcomes:
-- result: Surface contamination removal >99.9%
-  metric: Measured via SEM-EDS analysis showing complete sulfide and oxide removal
-- result: Sub-micron precision cleaning
-  metric: "Achieves 0.1-0.5 μm layer removal control without substrate damage"
-technicalSpecifications:
-  powerRange: 20-100 W (pulsed)
-  pulseDuration: 10-100 ns
-  wavelength: 1064 nm (primary), 532 nm (for higher precision)
-  spotSize: 0.1-2.0 mm
-  repetitionRate: 10-50 kHz
-  fluenceRange: "0.5-5 J/cm²"
-  scanningSpeed: 100-1000 mm/s
-  beamProfile: Top-hat (flat-top)
-  beamProfileOptions: Top-hat, Gaussian, Multi-spot
-  safetyClass: Class 4
-prompt_chain_verification:
-  base_config_loaded: true
-  persona_config_loaded: true
-  formatting_config_loaded: true
-  ai_detection_config_loaded: true
-  persona_country: Italy
-  author_id: 2
-  verification_timestamp: '2025-09-20T21: 27: 03Z'
-  prompt_components_integrated: 4
-  human_authenticity_focus: true
-  cultural_adaptation_applied: true
-chemicalFormula: Ag
-symbol: Ag
-laser_parameters:
-  fluence_threshold: "0.5-5 J/cm²"
-  pulse_duration: 10-100ns
-  wavelength_optimal: 1064nm
-  power_range: 20-100W
-  repetition_rate: 10-50kHz
-  spot_size: 0.1-2.0mm
-  laser_type: Pulsed fiber laser
-tags:
-- Jewelry
-- Electronics
 complexity: medium
-difficultyScore: 3
-surface_roughness_before: 3.8
-surface_roughness_after: 0.6
+difficulty_score: 3
+author_id: 2
 ---
+
+
+# Version Information
+# Generated: 2025-09-23T23:19:48.740856
+# Material: Silver
+# Component: frontmatter
+# Generator: Z-Beam v2.1.0
+# Author: AI Assistant
+# Platform: Darwin (3.12.4)
+# File: content/components/frontmatter/silver-laser-cleaning.md

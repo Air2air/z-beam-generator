@@ -1,114 +1,92 @@
 ---
+name: Concrete
+category: masonry
+title: Laser Cleaning Concrete
+headline: Comprehensive laser cleaning guide for masonry concrete
+description: Technical overview of Concrete laser cleaning applications and parameters
+keywords:
+- concrete
+- concrete masonry
+- laser ablation
+- laser cleaning
+- non-contact cleaning
+- construction applications
+- restoration applications
+properties:
+  density: 1.8
+  densityUnit: g/cm³
+  thermalConductivity: 0.5
+  thermalConductivityUnit: W/m·K
+  densityMin: 0.6
+  densityMax: 2.8
+  thermalConductivityMin: 0.08
+  thermalConductivityMax: 2.5
 applications:
 - 'Construction: Removal of paint, graffiti, and other surface contaminants from concrete structures'
 - 'Restoration: Cleaning historical concrete buildings and monuments without damaging the material'
-author: Ikmanda Roswati
+machineSettings:
+  powerRange: 90.0
+  powerRangeUnit: W
+  wavelength: 1064.0
+  wavelengthUnit: nm
+  pulseDuration: 15.0
+  pulseDurationUnit: ns
+  spotSize: 1.0
+  spotSizeUnit: mm
+  repetitionRate: 10.0
+  repetitionRateUnit: kHz
+  fluenceRange: 1.9
+  fluenceRangeUnit: J/cm²
+  powerRangeMin: 20.0
+  powerRangeMax: 500.0
+  pulseDurationMin: 1.0
+  pulseDurationMax: 1000.0
+  wavelengthMin: 355.0
+  wavelengthMax: 2940.0
+  spotSizeMin: 0.01
+  spotSizeMax: 10.0
+  repetitionRateMin: 1.0
+  repetitionRateMax: 1000.0
+  fluenceRangeMin: 0.1
+  fluenceRangeMax: 50.0
+  beamProfile: Gaussian TEM00
+  beamProfileOptions:
+  - Gaussian TEM00
+  - Top-hat
+  - Donut
+  - Multi-mode
+  safetyClass: Class 4 (requires full enclosure)
+compatibility:
+  laser_types:
+  - Fiber lasers (optimal for most applications)
+  - Nd:YAG lasers (excellent for precision work)
+  - CO2 lasers (moderate effectiveness)
+  surface_treatments:
+  - Natural concrete surfaces
+  - Coated concrete
+  - Stained or contaminated surfaces
+  incompatible_conditions:
+  - Severely damaged concrete requiring structural repair
+  - Extremely thin concrete susceptible to thermal damage
 author_object:
-  country: Indonesia
-  expertise: Ultrafast Laser Physics and Material Interactions
   id: 3
-  image: /images/author/ikmanda-roswati.jpg
   name: Ikmanda Roswati
   sex: m
   title: Ph.D.
-category: masonry
-chemicalProperties:
-  formula: CaO·SiO₂·H₂O (C-S-H gel primary phase)
-  materialType: masonry
-  symbol: N/A (Composite)
-compatibility:
-- Steel reinforcement (when properly shielded)
-- Natural stone substrates (granite, limestone)
-- Brick and masonry materials
+  country: Indonesia
+  expertise: Ultrafast Laser Physics and Material Interactions
+  image: /images/author/ikmanda-roswati.jpg
 complexity: low
-composition:
-- 'Portland cement (10–15%): Calcium silicates (C3S, C2S), calcium aluminates'
-- 'Aggregate (60–75%): Silica (SiO₂), limestone, gravel'
-- 'Water (15–20%): H₂O for hydration'
-- 'Air voids (1–8%): Entrained or entrapped air'
-description: Laser cleaning of concrete utilizes pulsed fiber lasers to selectively ablate surface contaminants through rapid thermal expansion and vaporization. The process exploits the differential absorption characteristics between contaminants and the calcium silicate hydrate matrix of concrete, enabling precise removal without mechanical damage or chemical residue.
-difficultyScore: 2
-environmentalImpact:
-- benefit: Zero chemical waste generation
-  description: Eliminates use of chemical solvents and abrasive media, preventing groundwater contamination and hazardous waste disposal (100% reduction in chemical waste streams)
-- benefit: Reduced particulate matter emissions
-  description: Generates 85–95% less airborne particulate matter compared to abrasive blasting methods, with effective filtration systems capturing >99% of generated particles
-headline: Comprehensive technical guide for laser cleaning masonry concrete
-images:
-  hero:
-    alt: Concrete surface undergoing laser cleaning showing precise contamination removal
-    url: /images/concrete-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Concrete surface after laser cleaning showing detailed surface structure
-    url: /images/concrete-laser-cleaning-micro.jpg
-keywords: concrete, concrete masonry, laser ablation, laser cleaning, non-contact cleaning, pulsed fiber laser, surface contamination removal, industrial laser parameters, thermal processing, surface restoration
-machineSettings:
-  fluenceRange: 1.0
-  fluenceRangeMax: 50.0
-  fluenceRangeMin: 0.1
-  fluenceRangeUnit: J/cm²
-  powerRange: 125.0
-  powerRangeMax: 500.0
-  powerRangeMin: 20.0
-  powerRangeUnit: W
-  pulseDuration: 55.0
-  pulseDurationMax: 1000.0
-  pulseDurationMin: 1.0
-  pulseDurationUnit: ns
-  repetitionRate: 60.0
-  repetitionRateMax: 1000.0
-  repetitionRateMin: 1.0
-  repetitionRateUnit: kHz
-  spotSize: 0.55
-  spotSizeMax: 10.0
-  spotSizeMin: 0.01
-  spotSizeUnit: mm
-  wavelength: 1064.0
-  wavelengthMax: 2940.0
-  wavelengthMin: 355.0
-  wavelengthUnit: nm
-name: Concrete
-outcomes:
-- metric: '>95% removal of paint, graffiti, and biological growth with <0.1 mm substrate loss'
-  result: Surface contamination removal efficiency
-- metric: 2–10 m²/hour depending on contamination type and laser parameters
-  result: Processing throughput
-properties:
-  density: 2300.0
-  densityMax: 6.0
-  densityMin: 1.8
-  densityPercentile: 100.0
-  densityUnit: kg/m³
-  hardness: 5.0
-  hardnessMax: 10.0
-  hardnessMin: 1.0
-  hardnessPercentile: 44.4
-  hardnessUnit: Mohs
-  meltingPercentile: 0.0
-  meltingPoint: 1400
-  meltingPointMax: 2800.0
-  meltingPointMin: 1200.0
-  meltingPointUnit: °C
-  modulusPercentile: 0.0
-  tensilePercentile: 0.0
-  tensileStrength: 2.0
-  tensileStrengthMax: 1000.0
-  tensileStrengthMin: 50.0
-  tensileStrengthUnit: MPa
-  thermalConductivity: 0.8
-  thermalConductivityMax: 200.0
-  thermalConductivityMin: 0.5
-  thermalConductivityUnit: W/
-  thermalPercentile: 0.2
-  youngsModulus: 20.0
-  youngsModulusMax: 80.0
-  youngsModulusMin: 20.0
-  youngsModulusUnit: GPa
-regulatoryStandards: 'EN 1504-10: Products and systems for protection and repair of concrete structures; ISO 11145: 2018 Laser and laser-related equipment - Vocabulary and symbols'
-surface_roughness_after: 14.5
-surface_roughness_before: 42.8
-tags:
-- Construction
-- Restoration
-title: Concrete Laser Cleaning
+difficulty_score: 2
+author_id: 3
 ---
+
+
+# Version Information
+# Generated: 2025-09-23T23:19:48.148423
+# Material: Concrete
+# Component: frontmatter
+# Generator: Z-Beam v2.1.0
+# Author: AI Assistant
+# Platform: Darwin (3.12.4)
+# File: content/components/frontmatter/concrete-laser-cleaning.md

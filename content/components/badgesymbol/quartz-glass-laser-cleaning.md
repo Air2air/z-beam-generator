@@ -1,10 +1,10 @@
 ---
-symbol: "QG"
+symbol: "SI"
 materialType: "glass"
 ---
 
 ---
-Version Log - Generated: 2025-09-22T14:58:28.224563
+Version Log - Generated: 2025-09-23T23:26:48.146864
 Material: Unknown
 Component: badgesymbol
 Generator: Z-Beam v1.0.0

@@ -1,10 +1,10 @@
 ---
-symbol: "TC"
+symbol: "TE"
 materialType: "masonry"
 ---
 
 ---
-Version Log - Generated: 2025-09-22T14:58:29.048571
+Version Log - Generated: 2025-09-23T23:26:48.239931
 Material: Unknown
 Component: badgesymbol
 Generator: Z-Beam v1.0.0

@@ -1,155 +1,82 @@
 ---
 name: Teak
 category: wood
-title: Teak Laser Cleaning
-headline: Comprehensive technical guide for laser cleaning wood teak
-description: Laser cleaning of teak (Tectona grandis) utilizes pulsed near-infrared
-  radiation to ablate surface contaminants via photomechanical and photothermal effects.
-  The process is highly selective due to the significant difference in ablation thresholds
-  between contaminants (e.g., mildew, salt, old finishes) and the underlying lignocellulosic
-  teak substrate, enabling precise surface restoration without mechanical damage or
-  media embedding.
-keywords: teak, teak wood, laser ablation, laser cleaning, non-contact cleaning, pulsed
-  fiber laser, surface contamination removal, industrial laser parameters, thermal
-  processing, surface restoration
-chemicalProperties:
-  symbol: N/A (Organic Composite)
-  formula: "Complex Lignocellulosic Matrix (C₆H₁₀O₅)\u2099, Lignin, Extractives"
-  materialType: wood
+title: Laser Cleaning Teak
+headline: Comprehensive laser cleaning guide for wood teak
+description: Technical overview of Teak laser cleaning applications and parameters
+keywords:
+- teak
+- teak wood
+- laser ablation
+- laser cleaning
+- non-contact cleaning
+- woodworking applications
+- marine applications
 properties:
-  density: 690kg/m³
-  thermalDestructionPoint: "300°C"
-  thermalDestructionType: decomposition
-  densityNumeric: 690.0
-  densityUnit: "kg/m³"
-  densityMin: "1.8 g/cm³"
-  densityMinNumeric: 1.8
-  densityMinUnit: "g/cm³"
-  densityMax: "6.0 g/cm³"
-  densityMaxNumeric: 6.0
-  densityMaxUnit: "g/cm³"
-  densityPercentile: 100.0
-  meltingPointMin: "1200°C"
-  meltingPointMinNumeric: 1200.0
-  meltingPointMinUnit: "°C"
-  meltingPointMax: "2800°C"
-  meltingPointMaxNumeric: 2800.0
-  meltingPointMaxUnit: "°C"
-  meltingPercentile: 0.0
-  thermalConductivity: 0.1W/(m·K)
-  thermalConductivityNumeric: 0.12
-  thermalConductivityUnit: W/
-  thermalConductivityMin: "0.5 W/m·K"
-  thermalConductivityMinNumeric: 0.5
-  thermalConductivityMinUnit: "W/m·K"
-  thermalConductivityMax: "200 W/m·K"
-  thermalConductivityMaxNumeric: 200.0
-  thermalConductivityMaxUnit: "W/m·K"
-  thermalPercentile: 0.0
-  tensileStrength: 117.5MPa
-  tensileStrengthNumeric: 100.0
-  tensileStrengthUnit: MPa
-  tensileStrengthMin: 50 MPa
-  tensileStrengthMinNumeric: 50.0
-  tensileStrengthMinUnit: MPa
-  tensileStrengthMax: 1000 MPa
-  tensileStrengthMaxNumeric: 1000.0
-  tensileStrengthMaxUnit: MPa
-  tensilePercentile: 5.3
-  hardness: 3.1kN
-  hardnessNumeric: 2.3
+  density: 0.63
+  densityUnit: g/cm³
+  thermalConductivity: 0.13
+  thermalConductivityUnit: W/m·K
+  hardness: 4.2
   hardnessUnit: kN
-  hardnessMin: 1 Mohs
-  hardnessMinNumeric: 1.0
-  hardnessMinUnit: Mohs
-  hardnessMax: 10 Mohs
-  hardnessMaxNumeric: 10.0
-  hardnessMaxUnit: Mohs
-  hardnessPercentile: 14.4
-  youngsModulus: "10.0–14.5 GPa"
-  youngsModulusNumeric: 10.0
-  youngsModulusUnit: GPa
-  youngsModulusMin: 20 GPa
-  youngsModulusMinNumeric: 20.0
-  youngsModulusMinUnit: GPa
-  youngsModulusMax: 80 GPa
-  youngsModulusMaxNumeric: 80.0
-  youngsModulusMaxUnit: GPa
-  modulusPercentile: 0.0
-  laserType: Pulsed fiber laser
-  wavelength: 1064nm
-  fluenceRange: "0.5–5 J/cm²"
-  chemicalFormula: Complex Organic Composite (Cellulose ~45%, Lignin ~35%, Hemicellulose
-    ~15%, Extractives ~5%)  decompositionPointUnit: "°C"
-composition:
-- "Cellulose (C₆H₁₀O₅)\u2099: 40–50%"
-- "Lignin (Complex polyphenolic): 30–40%"
-- "Hemicellulose: 15–20%"
-- "Extractives (tectoquinone, lapachol, oils, resins): 3–5%"
-machineSettings:
-  powerRange: 20-100W
-  powerRangeNumeric: 60.0
-  powerRangeUnit: W
-  powerRangeMin: 20W
-  powerRangeMinNumeric: 20.0
-  powerRangeMinUnit: W
-  powerRangeMax: 500W
-  powerRangeMaxNumeric: 500.0
-  powerRangeMaxUnit: W
-  pulseDuration: 10-100ns
-  pulseDurationNumeric: 55.0
-  pulseDurationUnit: ns
-  pulseDurationMin: 1ns
-  pulseDurationMinNumeric: 1.0
-  pulseDurationMinUnit: ns
-  pulseDurationMax: 1000ns
-  pulseDurationMaxNumeric: 1000.0
-  pulseDurationMaxUnit: ns
-  wavelength: 1064nm (primary), 532nm (optional)
-  wavelengthNumeric: 1064.0
-  wavelengthUnit: nm
-  wavelengthMin: 355nm
-  wavelengthMinNumeric: 355.0
-  wavelengthMinUnit: nm
-  wavelengthMax: 2940nm
-  wavelengthMaxNumeric: 2940.0
-  wavelengthMaxUnit: nm
-  spotSize: 0.1-2.0mm
-  spotSizeNumeric: 1.05
-  spotSizeUnit: mm
-  spotSizeMin: 0.01mm
-  spotSizeMinNumeric: 0.01
-  spotSizeMinUnit: mm
-  spotSizeMax: 10mm
-  spotSizeMaxNumeric: 10.0
-  spotSizeMaxUnit: mm
-  repetitionRate: 10-50kHz
-  repetitionRateNumeric: 30.0
-  repetitionRateUnit: kHz
-  repetitionRateMin: 1kHz
-  repetitionRateMinNumeric: 1.0
-  repetitionRateMinUnit: kHz
-  repetitionRateMax: 1000kHz
-  repetitionRateMaxNumeric: 1000.0
-  repetitionRateMaxUnit: kHz
-  fluenceRange: "0.5–5 J/cm²"
-  fluenceRangeNumeric: 0.5
-  fluenceRangeUnit: "J/cm²"
-  fluenceRangeMin: "0.1J/cm²"
-  fluenceRangeMinNumeric: 0.1
-  fluenceRangeMinUnit: "J/cm²"
-  fluenceRangeMax: "50J/cm²"
-  fluenceRangeMaxNumeric: 50.0
-  fluenceRangeMaxUnit: "J/cm²"
+  densityMin: 0.16
+  densityMax: 1.4
+  thermalConductivityMin: 0.04
+  thermalConductivityMax: 0.4
+  hardnessMin: 0.4
+  hardnessMax: 22.2
 applications:
 - 'Woodworking: Removal of surface contaminants and restoration of teak furniture'
 - 'Marine: Cleaning and maintenance of teak decks on boats and yachts'
+- 'Outdoor Furniture: Teak patio furniture cleaning and restoration'
+- 'Luxury Interiors: High-end teak paneling and trim maintenance'
+- 'Shipbuilding: Surface preparation of teak marine components'
+- 'Architectural Elements: Cleaning teak doors and window frames'
+machineSettings:
+  powerRange: 50.0
+  powerRangeUnit: W
+  wavelength: 1064.0
+  wavelengthUnit: nm
+  pulseDuration: 10.0
+  pulseDurationUnit: ns
+  spotSize: 1.5
+  spotSizeUnit: mm
+  repetitionRate: 10.0
+  repetitionRateUnit: kHz
+  fluenceRange: 0.8
+  fluenceRangeUnit: J/cm²
+  powerRangeMin: 20.0
+  powerRangeMax: 500.0
+  pulseDurationMin: 1.0
+  pulseDurationMax: 1000.0
+  wavelengthMin: 355.0
+  wavelengthMax: 2940.0
+  spotSizeMin: 0.01
+  spotSizeMax: 10.0
+  repetitionRateMin: 1.0
+  repetitionRateMax: 1000.0
+  fluenceRangeMin: 0.1
+  fluenceRangeMax: 50.0
+  beamProfile: Gaussian TEM00
+  beamProfileOptions:
+  - Gaussian TEM00
+  - Top-hat
+  - Donut
+  - Multi-mode
+  safetyClass: Class 4 (requires full enclosure)
 compatibility:
-- Silicone-based marine caulking (with careful parameter control)
-- Other dense hardwoods (e.g., Iroko, Oak) with similar lignin content
-regulatoryStandards: IEC 60825-1 (Laser Product Safety), ISO 11553 (Safety of laser
-  processing machines), NFPA 70 (National Electrical Code)
-author: Ikmanda Roswati
+  laser_types:
+  - Fiber lasers (optimal)
+  - CO2 lasers (good effectiveness)
+  - Nd:YAG lasers (moderate effectiveness)
+  surface_treatments:
+  - Natural weathered teak
+  - Teak oil finished surfaces
+  - Clear marine varnish on teak
+  - Raw teak marine decking
+  incompatible_conditions:
+  - Extremely oil-saturated teak requiring degreasing
+  - Heavily weathered teak with deep grain checking
 author_object:
   id: 3
   name: Ikmanda Roswati
@@ -158,65 +85,17 @@ author_object:
   country: Indonesia
   expertise: Ultrafast Laser Physics and Material Interactions
   image: /images/author/ikmanda-roswati.jpg
-images:
-  hero:
-    alt: Teak surface undergoing laser cleaning showing precise contamination removal
-    url: /images/teak-laser-cleaning-hero.jpg
-  micro:
-    alt: Microscopic view of Teak surface after laser cleaning showing detailed surface
-      structure
-    url: /images/teak-laser-cleaning-micro.jpg
-environmentalImpact:
-- benefit: Zero secondary waste generation
-  description: Eliminates need for chemical strippers, abrasive media (e.g., sand,
-    plastic beads), and associated containment/disposal, reducing hazardous waste
-    by 100% compared to traditional methods.
-- benefit: Reduced water consumption and pollution
-  description: Process is completely dry, eliminating the thousands of liters of water
-    typically used in pressure washing teak decks and preventing runoff of contaminated
-    water and chemicals into marine environments.
-outcomes:
-- result: Surface contaminant removal efficiency >99%
-  metric: Verified via SEM-EDS analysis showing elimination of biological and salt
-    contaminants without substrate damage.
-- result: "Processing rate of 5–15 m²/hour"
-  metric: Achievable for standard surface contamination on teak decking using a 100W
-    laser system with a 2000 mm/s scan speed.
-technicalSpecifications:
-  powerRange: "20–100 W (average power for pulsed fiber lasers)"
-  pulseDuration: "10–100 ns"
-  wavelength: 1064 nm (primary), 532 nm (optional for finer control)
-  spotSize: "0.1–2.0 mm"
-  repetitionRate: "10–50 kHz"
-  fluenceRange: "0.5–5 J/cm²"
-  scanningSpeed: "500–2000 mm/s"
-  beamProfile: Top-hat (flat-top)
-  beamProfileOptions: Top-hat (flat-top), Gaussian
-  safetyClass: Class 4
-prompt_chain_verification:
-  base_config_loaded: true
-  persona_config_loaded: true
-  formatting_config_loaded: true
-  ai_detection_config_loaded: true
-  persona_country: Indonesia
-  author_id: 3
-  verification_timestamp: '2025-09-20T22: 42: 11Z'
-  prompt_components_integrated: 4
-  human_authenticity_focus: true
-  cultural_adaptation_applied: true
-laser_parameters:
-  fluence_threshold: "0.5–5 J/cm²"
-  pulse_duration: 10-100ns
-  wavelength_optimal: 1064nm
-  power_range: 20-100W
-  repetition_rate: 10-50kHz
-  spot_size: 0.1-2.0mm
-  laser_type: Pulsed fiber laser
-tags:
-- Woodworking
-- Marine
 complexity: medium
-difficultyScore: 3
-surface_roughness_before: 38.2
-surface_roughness_after: 15.8
+difficulty_score: 3
+author_id: 3
 ---
+
+
+# Version Information
+# Generated: 2025-09-23T23:19:49.726791
+# Material: Teak
+# Component: frontmatter
+# Generator: Z-Beam v2.1.0
+# Author: AI Assistant
+# Platform: Darwin (3.12.4)
+# File: content/components/frontmatter/teak-laser-cleaning.md
