@@ -1,6 +1,14 @@
 #!/usr/bin/env python3
 """
-Strict Field Normalization - No Fallbacks, N/A for Missing Fields
+Strict Field Normalization -             'images': lambda: {  # Images with N/A structure - fail-fast, no fallbacks
+                'hero': {
+                    'alt': f'{material_name} surface laser cleaning (N/A)',
+                    'url': 'N/A'
+                },
+                'micro': {
+                    'alt': f'Microscopic view of {material_name} surface (N/A)',
+                    'url': 'N/A'
+                }ks, N/A for Missing Fields
 
 Simple approach that ensures all required fields exist but populates
 missing/invalid fields with "N/A" or equivalent programmatic values.
@@ -44,6 +52,7 @@ class StrictFieldNormalizer:
         required_fields = {
             'name': lambda: material_name,  # Only exception - use material name
             'category': lambda: 'N/A',
+            'subcategory': lambda: 'N/A',  # New subcategory field
             'complexity': lambda: 'N/A', 
             'difficulty_score': lambda: 0,  # Numeric N/A equivalent
             'author_id': lambda: 0,  # Numeric N/A equivalent
@@ -51,18 +60,16 @@ class StrictFieldNormalizer:
             'headline': lambda: 'N/A',
             'description': lambda: 'N/A',
             'keywords': lambda: [],  # Empty list as N/A equivalent
-            'properties': lambda: {},  # Empty dict as N/A equivalent
-            'machineSettings': lambda: {},  # Empty dict as N/A equivalent
             'applications': lambda: [],  # Empty list as N/A equivalent
             'compatibility': lambda: {},  # Empty dict as N/A equivalent
-            'images': lambda: {  # Images with N/A structure
+            'images': lambda: {  # Images with N/A structure - fail-fast, no fallbacks
                 'hero': {
                     'alt': f'{material_name} surface laser cleaning (N/A)',
-                    'url': '/images/placeholder-hero.jpg'
+                    'url': 'N/A'
                 },
                 'micro': {
                     'alt': f'Microscopic view of {material_name} surface (N/A)',
-                    'url': '/images/placeholder-micro.jpg'
+                    'url': 'N/A'
                 }
             },
             'author_object': lambda: {  # Minimal structure with N/A values
@@ -93,14 +100,10 @@ class StrictFieldNormalizer:
                 logger.info(f"Set {field_name} to N/A for {material_name}")
         
         # Handle optional fields (only include if present and valid)
-        optional_fields = ['chemicalProperties', 'subcategory']
+        optional_fields = ['chemicalProperties', 'subcategory', 'properties', 'materialProperties', 'machineSettings']
         for field_name in optional_fields:
             if field_name in frontmatter and self._is_valid_value(frontmatter[field_name]):
                 normalized[field_name] = frontmatter[field_name]
-        
-        # Ensure unit separation for any existing properties/machineSettings
-        self._ensure_unit_separation(normalized, 'properties')
-        self._ensure_unit_separation(normalized, 'machineSettings')
         
         return normalized
     
@@ -121,7 +124,7 @@ class StrictFieldNormalizer:
         if field_name == 'keywords':
             return self._normalize_keywords(value)
         elif field_name in ['properties', 'machineSettings']:
-            return self._normalize_property_section(value, field_name)
+            return self._normalize_hierarchical_section(value, field_name)
         elif field_name == 'author_object':
             return self._normalize_author_object(value)
         elif field_name in ['applications']:
@@ -145,35 +148,14 @@ class StrictFieldNormalizer:
         else:
             return []  # N/A equivalent for keywords
     
-    def _normalize_property_section(self, value: Any, section_name: str) -> Dict:
-        """Normalize properties/machineSettings sections"""
+    def _normalize_hierarchical_section(self, value: Any, section_name: str) -> Dict:
+        """Normalize hierarchical sections like properties and machineSettings"""
         if not isinstance(value, dict):
             return {}  # N/A equivalent
         
-        normalized_section = {}
-        
-        for key, val in value.items():
-            # Extract numeric values and ensure unit separation
-            if not key.endswith(('Unit', 'Min', 'Max')):
-                numeric_value = self._extract_numeric_only(val)
-                if numeric_value is not None:
-                    # Store numeric value
-                    normalized_section[key] = numeric_value
-                    
-                    # Ensure unit field exists
-                    unit_key = f"{key}Unit"
-                    if unit_key in value:
-                        normalized_section[unit_key] = value[unit_key]
-                    else:
-                        normalized_section[unit_key] = 'N/A'  # N/A for missing unit
-                else:
-                    # Keep non-numeric values as-is
-                    normalized_section[key] = val
-            else:
-                # Keep unit/min/max fields as-is
-                normalized_section[key] = val
-        
-        return normalized_section
+        # For hierarchical sections, preserve the structure as-is
+        # since they're already properly organized
+        return value
     
     def _extract_numeric_only(self, value):
         """Extract numeric value from mixed string/number"""
@@ -251,15 +233,15 @@ class StrictFieldNormalizer:
     def _normalize_images(self, value: Any, material_name: str) -> Dict:
         """Normalize images object"""
         if not isinstance(value, dict):
-            # Return N/A structure
+            # Return N/A structure (fail-fast: no placeholder fallbacks)
             return {
                 'hero': {
                     'alt': f'{material_name} surface laser cleaning (N/A)',
-                    'url': '/images/placeholder-hero.jpg'
+                    'url': 'N/A'
                 },
                 'micro': {
                     'alt': f'Microscopic view of {material_name} surface (N/A)',
-                    'url': '/images/placeholder-micro.jpg'
+                    'url': 'N/A'
                 }
             }
         
@@ -271,31 +253,17 @@ class StrictFieldNormalizer:
                 image_data = value[image_type]
                 normalized_images[image_type] = {
                     'alt': image_data.get('alt', f'{material_name} {image_type} image (N/A)'),
-                    'url': image_data.get('url', f'/images/placeholder-{image_type}.jpg')
+                    'url': image_data.get('url', 'N/A')
                 }
             else:
-                # Create fallback structure
+                # Create fail-fast structure (no placeholder fallbacks)
                 alt_text = f'{material_name} surface laser cleaning' if image_type == 'hero' else f'Microscopic view of {material_name} surface'
                 normalized_images[image_type] = {
                     'alt': f'{alt_text} (N/A)',
-                    'url': f'/images/placeholder-{image_type}.jpg'
+                    'url': 'N/A'  # Fail-fast: No placeholder URLs
                 }
         
         return normalized_images
-    
-    def _ensure_unit_separation(self, frontmatter: Dict, section_name: str):
-        """Ensure unit separation in properties/machineSettings"""
-        if section_name not in frontmatter or not isinstance(frontmatter[section_name], dict):
-            return
-        
-        section_data = frontmatter[section_name]
-        
-        # Add missing unit fields for numeric properties
-        for key, value in list(section_data.items()):
-            if not key.endswith(('Unit', 'Min', 'Max')) and isinstance(value, (int, float)):
-                unit_key = f"{key}Unit"
-                if unit_key not in section_data:
-                    section_data[unit_key] = 'N/A'
     
     def get_normalization_stats(self) -> Dict[str, int]:
         """Get normalization statistics"""

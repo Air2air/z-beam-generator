@@ -40,7 +40,7 @@ class FieldOrderingService:
         ordered_data = {}
         
         # === 1. BASIC IDENTIFICATION ===
-        for field in ["name", "category"]:
+        for field in ["name", "category", "subcategory"]:
             if field in frontmatter_data:
                 ordered_data[field] = frontmatter_data[field]
                 
@@ -54,9 +54,9 @@ class FieldOrderingService:
             ordered_data["chemicalProperties"] = frontmatter_data["chemicalProperties"]
             
         # === 4. PHYSICAL PROPERTIES (Clean Structure) ===
-        if "properties" in frontmatter_data:
-            ordered_data["properties"] = FieldOrderingService._create_clean_properties_structure(
-                frontmatter_data["properties"]
+        if "materialProperties" in frontmatter_data:
+            ordered_data["materialProperties"] = FieldOrderingService._create_clean_properties_structure(
+                frontmatter_data["materialProperties"]
             )
             
         # === 5. COMPOSITION & APPLICATIONS ===

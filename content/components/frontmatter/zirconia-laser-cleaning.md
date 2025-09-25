@@ -1,6 +1,7 @@
 ---
 name: Zirconia
 category: ceramic
+subcategory: oxide
 title: Laser Cleaning Zirconia
 headline: Comprehensive laser cleaning guide for ceramic zirconia
 description: Technical overview of Zirconia laser cleaning applications and parameters
@@ -15,23 +16,21 @@ keywords:
 chemicalProperties:
   formula: ZrO2
   symbol: ZrO2
-properties:
+materialProperties:
   density: 5.68
   densityUnit: g/cm³
   meltingPoint: 2715
   meltingPointUnit: °C
-  thermalConductivity: 2.0
+  thermalConductivity: 200.05
   thermalConductivityUnit: W/m·K
   hardness: 8.5
   hardnessUnit: Mohs
-  densityMin: 1.8
-  densityMax: 15.7
-  meltingPointMin: 1000
-  meltingPointMax: 3827
-  thermalConductivityMin: 0.5
-  thermalConductivityMax: 200
-  hardnessMin: 6
-  hardnessMax: 10
+  thermalConductivityMin: 0.1
+  thermalConductivityMax: 400
+  thermal_shock_resistance: 525.0
+  thermal_shock_resistanceMin: 50
+  thermal_shock_resistanceMax: 1000
+  thermal_shock_resistanceUnit: °C
 applications:
 - 'Aerospace: Removing contaminants from turbine blades and engine components'
 - 'Medical: Cleaning and sterilizing dental implants and prosthetics'
@@ -40,50 +39,46 @@ applications:
 - 'Nuclear: Zirconia cladding and containment component cleaning'
 - 'Jewelry: Precision cleaning of zirconia gemstones'
 machineSettings:
-  powerRange: 120.0
+  powerRange: 120
   powerRangeUnit: W
-  wavelength: 1064.0
+  wavelength: 1064
   wavelengthUnit: nm
-  pulseDuration: 20.0
+  pulseDuration: 20
   pulseDurationUnit: ns
   spotSize: 0.8
   spotSizeUnit: mm
-  repetitionRate: 40.0
+  repetitionRate: 40
   repetitionRateUnit: kHz
   fluenceRange: 2.6
   fluenceRangeUnit: J/cm²
-  powerRangeMin: 20.0
-  powerRangeMax: 500.0
-  pulseDurationMin: 1.0
-  pulseDurationMax: 1000.0
-  wavelengthMin: 355.0
-  wavelengthMax: 2940.0
-  spotSizeMin: 0.01
-  spotSizeMax: 10.0
-  repetitionRateMin: 1.0
-  repetitionRateMax: 1000.0
-  fluenceRangeMin: 0.1
-  fluenceRangeMax: 50.0
-  beamProfile: Gaussian TEM00
-  beamProfileOptions:
-  - Gaussian TEM00
-  - Top-hat
-  - Donut
-  - Multi-mode
-  safetyClass: Class 4 (requires full enclosure)
+  powerRangeMin: 120.0
+  powerRangeMax: 420.0
+  pulseDurationMin: 20.0
+  pulseDurationMax: 200.0
+  spotSizeMin: 0.8
+  spotSizeMax: 2.5
+  repetitionRateMin: 40.0
+  repetitionRateMax: 200.0
+  fluenceRangeMin: 2.6
+  fluenceRangeMax: 22.0
+  ablationThreshold: 8.8 J/cm²
+  laserType: Diode-pumped solid-state laser
+  processingSpeed: 15-70 mm/min
+  surfaceRoughnessChange: <2%
+  thermalDamageThreshold: 44.8 J/cm²
 compatibility:
-  laser_types:
+  incompatibleConditions:
+  - Phase-unstable zirconia susceptible to thermal shock
+  - Extremely thin zirconia coatings requiring gentle processing
+  laserTypes:
   - Fiber lasers (optimal for dense zirconia)
   - Nd:YAG lasers (excellent for medical applications)
   - CO2 lasers (limited effectiveness due to thermal properties)
-  surface_treatments:
+  surfaceTreatments:
   - Sintered zirconia components
   - Polished zirconia surfaces
   - Coated zirconia implants
   - As-fired zirconia ceramics
-  incompatible_conditions:
-  - Phase-unstable zirconia susceptible to thermal shock
-  - Extremely thin zirconia coatings requiring gentle processing
 author_object:
   id: 4
   name: Todd Dunning

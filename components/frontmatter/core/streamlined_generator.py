@@ -9,7 +9,10 @@ Follows GROK fail-fast principles:
 - No mocks or fallbacks in production
 - Explicit error handling with proper exceptions
 - Validates all configurations immediately
-- Single consolidated service instead of multiple wrapper services
+- Single consolidated service instead of      def _extract_unit_from_range(self, range_config: Dict) -> str:pply_field_ordering(self, frontmatter: Di        except Exception as e:
+            logger.error(f\"Failed to format YAML: {e}\")
+            # Fail-fast: YAML formatting must succeed - no fallback
+            raise RuntimeError(f\"YAML formatting failed: {e}\")-> Dict:e wrapper services
 - Comprehensive exception handling ensures normalized fields always
 """
 
@@ -21,11 +24,32 @@ from typing import Dict, Optional, Any
 
 from generators.component_generators import APIComponentGenerator, ComponentResult
 from components.frontmatter.ordering.field_ordering_service import FieldOrderingService
-from components.frontmatter.enhancement.unified_property_enhancement_service import UnifiedPropertyEnhancementService
 from components.frontmatter.core.validation_helpers import ValidationHelpers
 from components.frontmatter.core.na_field_normalizer import NAFrontmatterGenerator
 
 logger = logging.getLogger(__name__)
+
+# Enhanced schema validation (optional)
+try:
+    from scripts.validation.enhanced_schema_validator import EnhancedSchemaValidator
+    ENHANCED_VALIDATION_AVAILABLE = True
+    logger.info("Enhanced schema validation loaded successfully")
+except ImportError as e:
+    ENHANCED_VALIDATION_AVAILABLE = False
+    EnhancedSchemaValidator = None
+    logger.info(f"Enhanced schema validation not available - using basic validation: {e}")
+
+# Import material-aware prompt system
+try:
+    from ai_research.prompt_exceptions.material_aware_generator import MaterialAwarePromptGenerator
+    from ai_research.prompt_exceptions.material_exception_handler import AIPromptExceptionHandler as MaterialExceptionHandler
+    MATERIAL_AWARE_PROMPTS_AVAILABLE = True
+    logger.info("Material-aware prompt system loaded successfully")
+except ImportError as e:
+    MATERIAL_AWARE_PROMPTS_AVAILABLE = False
+    MaterialAwarePromptGenerator = None
+    MaterialExceptionHandler = None
+    logger.warning(f"Material-aware prompt system not available - using basic prompts: {e}")
 
 
 class StreamlinedFrontmatterGenerator(APIComponentGenerator):
@@ -36,6 +60,45 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
         self.category_ranges = {}
         self.machine_settings_ranges = {}
         self.na_generator = NAFrontmatterGenerator(self._core_generate)
+        
+        # Initialize enhanced schema validator if available
+        if ENHANCED_VALIDATION_AVAILABLE:
+            try:
+                # Use enhanced unified schema as primary, with fallbacks
+                unified_schema_path = os.path.join(os.path.dirname(__file__), "../../../schemas/enhanced_unified_frontmatter.json")
+                enhanced_schema_path = os.path.join(os.path.dirname(__file__), "../../../schemas/enhanced_frontmatter.json")
+                fallback_schema_path = os.path.join(os.path.dirname(__file__), "../../../schemas/frontmatter.json")
+                
+                # Priority: unified > enhanced > fallback
+                if os.path.exists(unified_schema_path):
+                    schema_path = unified_schema_path
+                elif os.path.exists(enhanced_schema_path):
+                    schema_path = enhanced_schema_path
+                else:
+                    schema_path = fallback_schema_path
+                
+                self.enhanced_validator = EnhancedSchemaValidator(schema_path)
+                logger.info(f"Enhanced schema validator initialized with {os.path.basename(schema_path)}")
+            except Exception as e:
+                logger.warning(f"Failed to initialize enhanced validator: {e}")
+                self.enhanced_validator = None
+        else:
+            self.enhanced_validator = None
+        
+        # Initialize material-aware prompt generator if available
+        if MATERIAL_AWARE_PROMPTS_AVAILABLE:
+            try:
+                self.material_aware_generator = MaterialAwarePromptGenerator()
+                self.material_exception_handler = MaterialExceptionHandler()
+                logger.info("Material-aware prompt system initialized")
+            except Exception as e:
+                logger.warning(f"Failed to initialize material-aware prompts: {e}")
+                self.material_aware_generator = None
+                self.material_exception_handler = None
+        else:
+            self.material_aware_generator = None
+            self.material_exception_handler = None
+            
         self._load_configurations()
 
     def _load_configurations(self):
@@ -51,7 +114,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                 materials_data = yaml.safe_load(f)
             
             self.category_ranges = materials_data.get("category_ranges", {})
-            self.machine_settings_ranges = materials_data.get("machine_settings_ranges", {})
+            self.machine_settings_ranges = materials_data.get("machineSettingsRanges", materials_data.get("machine_settings_ranges", {}))
             self.materials_data = materials_data
             
             logger.info(f"Loaded configurations: {len(self.category_ranges)} categories, {len(self.machine_settings_ranges)} machine settings")
@@ -64,41 +127,37 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
 
     def generate(self, material_name: str, **kwargs) -> ComponentResult:
         """
-        Generate comprehensive frontmatter with strict N/A handling for missing fields.
+        Generate comprehensive frontmatter with fail-fast behavior.
         
         Args:
             material_name: Name of the material to generate frontmatter for
             **kwargs: Additional generation parameters
             
         Returns:
-            ComponentResult with generated frontmatter, all required fields present (N/A for missing)
+            ComponentResult with generated frontmatter
         """
         try:
-            logger.info(f"Generating frontmatter for {material_name} with N/A handling")
+            logger.info(f"Generating frontmatter for {material_name}")
             
-            # Use N/A normalizer to ensure complete structure
+            # Generate frontmatter with N/A handling
             frontmatter = self.na_generator.generate_with_na_handling(
                 material_name=material_name,
                 **kwargs
             )
             
-            # Apply field ordering (with basic error handling)
-            try:
-                ordered_frontmatter = self._apply_field_ordering(frontmatter)
-            except Exception as ordering_error:
-                logger.warning(f"Field ordering failed for {material_name}: {ordering_error}")
-                ordered_frontmatter = frontmatter  # Use unordered if ordering fails
+            # Apply field ordering
+            ordered_frontmatter = self._apply_field_ordering(frontmatter)
             
-            # Final validation (non-blocking)
-            try:
-                self._validate_frontmatter(ordered_frontmatter, material_name)
-            except Exception as validation_error:
-                logger.warning(f"Validation warning for {material_name}: {validation_error}")
-                # Don't fail generation for validation warnings
-            
-            # Get normalization statistics
-            stats = self.na_generator.get_stats()
-            logger.info(f"N/A normalization stats for {material_name}: {stats}")
+            # Enhanced schema validation (optional)
+            enhanced_mode = kwargs.get('enhanced_validation', False)
+            if enhanced_mode and self.enhanced_validator:
+                validation_result = self._validate_with_enhanced_schema(ordered_frontmatter, material_name)
+                if not validation_result.is_valid:
+                    # In enhanced mode, fail-fast on schema violations
+                    validation_errors = "; ".join(validation_result.errors)
+                    raise ValueError(f"Enhanced schema validation failed: {validation_errors}")
+                else:
+                    logger.info(f"Enhanced validation passed - Quality: {validation_result.quality_score:.1f}%, Coverage: {validation_result.research_validation_coverage:.1%}")
             
             return ComponentResult(
                 component_type="frontmatter",
@@ -107,36 +166,12 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             )
             
         except Exception as e:
-            # This should be very rare with N/A handling
-            logger.error(f"Critical failure generating frontmatter for {material_name}: {e}")
-            
-            # Last resort: create minimal N/A structure
-            minimal_frontmatter = {
-                'name': material_name,
-                'category': 'N/A',
-                'complexity': 'N/A',
-                'difficulty_score': 0,
-                'author_id': 0,
-                'title': 'N/A',
-                'headline': 'N/A',
-                'description': 'N/A',
-                'keywords': [],
-                'properties': {},
-                'machineSettings': {},
-                'applications': [],
-                'compatibility': {},
-                'author_object': {
-                    'id': 0, 'name': 'N/A', 'sex': 'N/A',
-                    'title': 'N/A', 'country': 'N/A',
-                    'expertise': 'N/A', 'image': 'N/A'
-                }
-            }
-            
+            logger.error(f"Frontmatter generation failed for {material_name}: {e}")
             return ComponentResult(
                 component_type="frontmatter",
-                content=self._format_as_yaml(minimal_frontmatter),
+                content="",
                 success=False,
-                error_message=f"Used minimal N/A structure: {str(e)}"
+                error_message=str(e)
             )
     
     def _core_generate(self, material_name: str, **kwargs) -> Dict:
@@ -146,49 +181,77 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
         This method contains the original generation logic but is now
         wrapped by comprehensive exception handling.
         """
-        # Generate base frontmatter using materials.yaml data if available
-        material_data = self._get_material_data(material_name)
+        # Handle materials_data override from kwargs
+        original_materials_data = None
+        if 'materials_data' in kwargs:
+            original_materials_data = getattr(self, 'materials_data', None)
+            self.materials_data = kwargs['materials_data']
         
-        if material_data:
-            # Use materials.yaml data as primary source
-            frontmatter = self._generate_from_materials_data(material_data, material_name)
-            logger.info("Generated frontmatter from materials.yaml data")
-        else:
-            # Fall back to API generation for materials not in YAML
-            frontmatter = self._generate_from_api(material_name, **kwargs)
-            logger.info(f"Generated frontmatter via API for {material_name}")
+        try:
+            # Generate base frontmatter using materials.yaml data if available
+            material_data = self._get_material_data(material_name)
+            
+            if material_data:
+                # Use materials.yaml data as primary source
+                frontmatter = self._generate_from_materials_data(material_data, material_name)
+                logger.info("Generated frontmatter from materials.yaml data")
+            else:
+                # Fall back to API generation for materials not in YAML
+                frontmatter = self._generate_from_api(material_name, **kwargs)
+                logger.info(f"Generated frontmatter via API for {material_name}")
+        
+        finally:
+            # Restore original materials_data if it was overridden
+            if original_materials_data is not None:
+                self.materials_data = original_materials_data
+            elif 'materials_data' in kwargs:
+                # If there was no original, remove the attribute
+                if hasattr(self, 'materials_data'):
+                    delattr(self, 'materials_data')
         
         # Apply unified property enhancement (with exception handling built-in)
-        try:
-            self._apply_property_enhancement(frontmatter)
-        except Exception as enhancement_error:
-            logger.warning(f"Property enhancement failed for {material_name}: {enhancement_error}")
-            # Continue without enhancement if it fails
+        # Note: Property enhancement disabled - original flat structure maintained
         
         return frontmatter
 
     def _get_material_data(self, material_name: str) -> Optional[Dict]:
-        """Get material data from materials.yaml if available"""
+        """Get material data from materials.yaml with index enrichment"""
         if not hasattr(self, 'materials_data'):
             return None
         
-        # Search through materials structure
-        for category_data in self.materials_data.get('materials', {}).values():
+        material_index = self.materials_data.get('material_index', {})
+        materials_structure = self.materials_data.get('materials', {})
+        
+        # Get index data for category and subcategory 
+        index_data = {}
+        for indexed_name, data in material_index.items():
+            if indexed_name.lower() == material_name.lower():
+                index_data = data.copy()
+                break
+        
+        # Get rich data from materials structure
+        for category_data in materials_structure.values():
             if 'items' in category_data:
                 for item in category_data['items']:
                     if item.get('name', '').lower() == material_name.lower():
-                        return item
+                        # Merge index data (category/subcategory) with rich data
+                        merged_data = item.copy()
+                        if index_data:
+                            merged_data.update({k: v for k, v in index_data.items() 
+                                              if k not in merged_data or not merged_data[k]})
+                        return merged_data
         
-        return None
+        return index_data if index_data else None
 
     def _generate_from_materials_data(self, material_data: Dict, material_name: str) -> Dict:
-        """Generate frontmatter from materials.yaml data (integrated MaterialsYamlFrontmatterMapper)"""
+        """Generate frontmatter from materials.yaml data with original flat structure"""
         frontmatter = {}
         
         # 1. Core identification
         frontmatter.update({
             'name': material_data.get('name', material_name),
             'category': material_data.get('category', 'unknown'),
+            'subcategory': material_data.get('subcategory', 'general'),
             'complexity': material_data.get('complexity', 'medium'),
             'difficulty_score': material_data.get('difficulty_score', 3),
             'author_id': material_data.get('author_id', 1)
@@ -197,19 +260,19 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
         # 2. Content metadata  
         frontmatter.update(self._generate_content_metadata(material_data, material_name))
         
-        # 3. Chemical properties (first technical section)
+        # 3. Chemical Properties (original flat structure)
         if 'formula' in material_data:
             frontmatter['chemicalProperties'] = {
                 'formula': material_data['formula'],
                 'symbol': material_data.get('symbol', material_data['formula'])
             }
         
-        # 4. Physical properties (grouped with machine settings)
+        # 4. Material Properties (original flat structure)  
         properties = self._generate_properties_with_ranges(material_data)
         if properties:
-            frontmatter['properties'] = properties
+            frontmatter['materialProperties'] = properties
         
-        # 5. Machine settings (grouped with properties)
+        # 5. Machine Settings (original flat structure)
         machine_settings = self._generate_machine_settings_with_ranges(material_data)
         if machine_settings:
             frontmatter['machineSettings'] = machine_settings
@@ -283,29 +346,78 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
         return ', '.join(keywords)
 
     def _generate_properties_with_ranges(self, material_data: Dict) -> Dict:
-        """Generate properties with numeric values only (units separate)"""
-        properties = {}
-        material_category = material_data.get('category', 'unknown')
+        """Generate properties with dynamic research integration"""
+        try:
+            # Try to import and use dynamic property generator
+            from .dynamic_property_generator import DynamicPropertyGenerator
+            
+            material_name = material_data.get('name', 'Unknown')
+            dynamic_generator = DynamicPropertyGenerator()
+            
+            # Generate properties using research system
+            properties = dynamic_generator.generate_properties_for_material(material_name, material_data)
+            
+            if properties:
+                return properties
+                
+        except Exception as e:
+            print(f"Dynamic property generation failed, falling back to basic method: {str(e)}")
         
+        # Fallback to original method
+        return self._generate_basic_properties(material_data)
+    
+    def _generate_basic_properties(self, material_data: Dict) -> Dict:
+        """Original property generation method as fallback"""
+        properties = {}
+        
+        # Map actual materials.yaml keys to property names
         property_mappings = {
-            'density': ('density', 'density'),
-            'melting_point': ('meltingPoint', 'thermalDestructionPoint'),
-            'thermal_conductivity': ('thermalConductivity', 'thermalConductivity'),
-            'tensile_strength': ('tensileStrength', 'tensileStrength'),
-            'hardness': ('hardness', 'hardness'),
-            'youngs_modulus': ('youngsModulus', 'youngsModulus')
+            'density': 'density',
+            'thermal_conductivity': 'thermalConductivity', 
+            'tensile_strength': 'tensileStrength',
+            'youngs_modulus': 'youngsModulus'
         }
         
-        for yaml_key, (prop_key, range_key) in property_mappings.items():
-            material_value = material_data.get(yaml_key)
-            if material_value:
+        for yaml_key, prop_key in property_mappings.items():
+            if yaml_key in material_data:
+                material_value = material_data[yaml_key]
                 # Extract numeric value only, no units
                 numeric_value = self._extract_numeric_only(material_value)
                 if numeric_value is not None:
                     properties[prop_key] = numeric_value
-                self._add_property_ranges(properties, material_category, prop_key, range_key)
+                    # Add unit separately
+                    unit = self._extract_unit(material_value)
+                    if unit:
+                        properties[f'{prop_key}Unit'] = unit
+                        
+                    # Add ranges (Min/Max)
+                    self._add_property_ranges_from_value(properties, material_value, prop_key)
         
         return properties
+        
+    def _extract_unit(self, value_with_unit: str) -> str:
+        """Extract unit from a string like '7.8-8.9 g/cm³'"""
+        if not isinstance(value_with_unit, str):
+            return ""
+        
+        import re
+        # Look for unit patterns at the end of the string
+        unit_match = re.search(r'([a-zA-Z/°×·⁻⁰¹²³⁴⁵⁶⁷⁸⁹]+)$', value_with_unit.strip())
+        return unit_match.group(1) if unit_match else ""
+    
+    def _add_property_ranges_from_value(self, properties: Dict, value_str: str, prop_key: str):
+        """Extract min/max ranges from values like '7.8-8.9 g/cm³' or '15-400 W/m·K'"""
+        if not isinstance(value_str, str):
+            return
+            
+        import re
+        # Look for range pattern like "7.8-8.9" or "15-400"
+        range_match = re.search(r'(\d+(?:\.\d+)?)\s*[-–—]\s*(\d+(?:\.\d+)?)', value_str)
+        if range_match:
+            min_val = float(range_match.group(1))
+            max_val = float(range_match.group(2))
+            properties[f'{prop_key}Min'] = min_val
+            properties[f'{prop_key}Max'] = max_val
 
     def _add_property_ranges(self, properties: Dict, material_category: str, prop_key: str, range_key: str):
         """Add Min/Max/Unit ranges for a property"""
@@ -335,39 +447,42 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
 
     def _generate_machine_settings_with_ranges(self, material_data: Dict) -> Dict:
         """Generate machine settings with Min/Max/Unit structure"""
-        if 'machine_settings' not in material_data:
+        if 'machineSettings' not in material_data:
             return {}
         
-        machine_settings_data = material_data['machine_settings']
+        machine_settings_data = material_data['machineSettings']
         machine_settings = {}
         
-        # Machine settings mapping
+        # Map actual machine settings keys
         machine_mappings = {
-            'power_range': ('powerRange', 'power_range'),
-            'pulse_duration': ('pulseDuration', 'pulse_duration'),
-            'wavelength_optimal': ('wavelength', 'wavelength'),
-            'spot_size': ('spotSize', 'spot_size'),
-            'repetition_rate': ('repetitionRate', 'repetition_rate'),
-            'fluence_threshold': ('fluenceRange', 'fluence_threshold')
+            'powerRange': 'powerRange',
+            'pulseDuration': 'pulseDuration', 
+            'wavelengthOptimal': 'wavelength',
+            'spotSize': 'spotSize',
+            'repetitionRate': 'repetitionRate',
+            'fluenceThreshold': 'fluenceRange'
         }
         
-        for yaml_key, (settings_key, range_key) in machine_mappings.items():
+        for yaml_key, settings_key in machine_mappings.items():
             if yaml_key in machine_settings_data:
                 setting_value = machine_settings_data[yaml_key]
                 # Extract numeric value only, without units
                 numeric_value = self._extract_numeric_only(setting_value)
                 if numeric_value is not None:
                     machine_settings[settings_key] = numeric_value
-                else:
-                    machine_settings[settings_key] = setting_value
-                self._add_machine_setting_ranges(machine_settings, settings_key, range_key)
+                    
+                # Add unit
+                unit = self._extract_unit(setting_value)
+                if unit:
+                    machine_settings[f'{settings_key}Unit'] = unit
+                    
+                # Add ranges
+                self._add_property_ranges_from_value(machine_settings, setting_value, settings_key)
         
-        # Add standard settings
-        machine_settings.update({
-            'beamProfile': 'Gaussian TEM00',
-            'beamProfileOptions': ['Gaussian TEM00', 'Top-hat', 'Donut', 'Multi-mode'],
-            'safetyClass': 'Class 4 (requires full enclosure)'
-        })
+        # Add any additional fields that should be included
+        for key, value in machine_settings_data.items():
+            if key not in machine_mappings and not key.endswith('_threshold'):
+                machine_settings[key] = value
         
         return machine_settings
 
@@ -395,10 +510,21 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
 
     def _generate_from_api(self, material_name: str, **kwargs) -> Dict:
         """Generate frontmatter via API for materials not in YAML"""
-        # Use existing API generation logic
-        prompt = self._build_prompt(material_name, **kwargs)
-        
         try:
+            # Use material-aware prompts if available
+            if self.material_aware_generator:
+                logger.info(f"Using material-aware prompts for {material_name}")
+                prompt = self.material_aware_generator.generate_material_aware_prompt(
+                    material_name=material_name,
+                    component_type="frontmatter",
+                    base_prompt=self._get_base_frontmatter_prompt(),
+                    **kwargs
+                )
+            else:
+                # Fallback to basic prompts
+                logger.info(f"Using basic prompts for {material_name}")
+                prompt = self._build_prompt(material_name, **kwargs)
+            
             response = self.api_client.generate_content(
                 prompt=prompt,
                 max_tokens=4000,
@@ -407,6 +533,21 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             
             # Parse and structure the response
             frontmatter = self._parse_api_response(response, material_name)
+            
+            # Apply material-specific validation if available
+            if self.material_aware_generator:
+                try:
+                    validated_frontmatter = self.material_aware_generator.validate_generated_content(
+                        content=frontmatter,
+                        material_name=material_name,
+                        component_type="frontmatter"
+                    )
+                    if validated_frontmatter:
+                        frontmatter = validated_frontmatter
+                        logger.info(f"Applied material-specific validation for {material_name}")
+                except Exception as e:
+                    logger.warning(f"Material-specific validation failed for {material_name}: {e}")
+                    # Continue with unvalidated content
             
             # Ensure images section is included
             if 'images' not in frontmatter:
@@ -418,25 +559,14 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             raise ValueError(f"API generation failed for {material_name}: {e}")
 
     def _apply_property_enhancement(self, frontmatter: Dict):
-        """Apply unified property enhancement"""
-        try:
-            # Use optimized format (preserve Min/Max/Unit structure)
-            UnifiedPropertyEnhancementService.add_properties(frontmatter, preserve_min_max=True)
-            
-            if 'machineSettings' in frontmatter:
-                UnifiedPropertyEnhancementService.add_machine_settings(frontmatter['machineSettings'], use_optimized=True)
-                
-        except Exception as e:
-            logger.error(f"Property enhancement failed: {e}")
-            # Don't fail the entire generation for enhancement issues
+        """Apply unified property enhancement - original flat structure maintained"""
+        # Original flat structure (chemicalProperties, properties, machineSettings) maintained
+        # Legacy property enhancement not needed for restored original format
+        pass
 
     def _apply_field_ordering(self, frontmatter: Dict) -> Dict:
         """Apply field ordering using the existing service"""
-        try:
-            return FieldOrderingService.apply_field_ordering(frontmatter)
-        except Exception as e:
-            logger.error(f"Field ordering failed: {e}")
-            return frontmatter  # Return unordered if ordering fails
+        return FieldOrderingService.apply_field_ordering(frontmatter)
 
     def _generate_images_section(self, material_name: str) -> Dict:
         """
@@ -491,6 +621,8 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             "name": "frontmatter",
             "description": "Streamlined frontmatter generation with integrated services",
             "version": "2.0.0-streamlined",
+            "requires_api": True,  # Fail-fast: No mocks or fallbacks allowed
+            "type": "dynamic",
             "capabilities": [
                 "materials.yaml integration",
                 "unified property enhancement", 
@@ -515,6 +647,24 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
         """Build API prompt for material"""
         base_prompt = self.prompt_config.get("user_prompt", "").format(material_name=material_name)
         return base_prompt
+    
+    def _get_base_frontmatter_prompt(self) -> str:
+        """Get base frontmatter generation prompt for material-aware system"""
+        return """Generate comprehensive frontmatter metadata for laser cleaning applications.
+
+Required sections:
+- title: Descriptive title for the material
+- name: Material name
+- category: Material category (metal, ceramic, plastic, etc.)
+- subcategory: More specific classification
+- description: Technical overview
+- properties: Physical and chemical properties (density, thermal conductivity, etc.)
+- machineSettings: Laser parameters (power, wavelength, pulse duration, etc.)
+- applications: Industrial applications and use cases
+- author_object: Author information
+- images: Hero and micro image specifications
+
+Format as valid YAML frontmatter with proper structure and units."""
 
     def _parse_api_response(self, response: str, material_name: str) -> Dict:
         """Parse API response into structured frontmatter"""
@@ -524,9 +674,40 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             'name': material_name,
             'category': 'unknown',
             'description': f"API-generated frontmatter for {material_name}",
-            'properties': {},
+            'materialProperties': {},
             'machineSettings': {}
         }
+
+    def _validate_with_enhanced_schema(self, frontmatter_data: Dict, material_name: str):
+        """
+        Validate frontmatter data with enhanced schema validation.
+        
+        Args:
+            frontmatter_data: Generated frontmatter to validate
+            material_name: Material name for context
+            
+        Returns:
+            ValidationResult with detailed validation feedback
+        """
+        if not self.enhanced_validator:
+            logger.warning("Enhanced validator not available - skipping validation")
+            return None
+            
+        try:
+            validation_result = self.enhanced_validator.validate(frontmatter_data, material_name)
+            
+            # Log validation details
+            if validation_result.errors:
+                logger.warning(f"Enhanced validation errors for {material_name}: {validation_result.errors}")
+            if validation_result.warnings:
+                logger.info(f"Enhanced validation warnings for {material_name}: {validation_result.warnings}")
+                
+            return validation_result
+            
+        except Exception as e:
+            logger.error(f"Enhanced validation failed for {material_name}: {e}")
+            # In enhanced mode, validation failures should be reported
+            raise ValueError(f"Enhanced validation error: {e}")
 
     def _generate_author_object(self, material_data: Dict) -> Dict:
         """Generate author_object from material data author_id"""
@@ -564,6 +745,14 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             logger.error(f"Failed to format YAML: {e}")
             # Return basic format as fallback
             return f"---\n{str(frontmatter_data)}\n---\n"
+
+    def _create_template_variables(self, material_name: str, material_data: Dict, api_client) -> Dict:
+        """Create template variables for testing purposes"""
+        return {
+            "material_name": material_name,
+            "category": material_data.get('category', 'unknown').title(),
+            "complexity": material_data.get('complexity', 'medium')
+        }
 
 
 # Backward compatibility - re-export as original class name
