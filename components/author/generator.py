@@ -11,7 +11,7 @@ from pathlib import Path
 from typing import Dict, Any, Optional
 import yaml
 
-from versioning import stamp_component_output
+
 from generators.component_generators import ComponentResult
 
 

@@ -15,7 +15,7 @@ from generators.hybrid_generator import HybridComponentGenerator
 from generators.component_generators import ComponentResult
 from utils.file_ops.frontmatter_loader import load_frontmatter_data
 from utils.core.material_name_resolver import get_material_name_resolver
-from versioning import stamp_component_output
+
 
 
 class MetatagsComponentGenerator(HybridComponentGenerator):
@@ -324,7 +324,7 @@ Include appropriate technical details about laser cleaning parameters, applicati
         content = f"---\n{yaml_content.strip()}\n---"
         
         # Apply centralized version stamping
-        return stamp_component_output("metatags", content)
+        return content
 
     def _parse_example_yaml(self, example_content: str) -> Dict:
         """Parse example file to extract YAML structure - FAIL-FAST: Must succeed"""
@@ -468,7 +468,7 @@ The output should be a simple comma-separated list with no introductory text."""
             print("✅ DEBUG: Successfully enhanced metatags with API content")
             
             # Apply version stamping to the enhanced content
-            return stamp_component_output("metatags", enhanced_content)
+            return enhanced_content
             
         except Exception as e:
             print(f"⚠️ DEBUG: Error enhancing with API: {e}")

@@ -351,21 +351,11 @@ Format: YAML v2.0
             resolver = get_material_name_resolver()
             materials_data = resolver.get_material_data(material_name)
             if materials_data:
-                # Get all materials for this material to find the actual item data
-                from data.materials import load_materials
-                all_materials = load_materials()
-                category = materials_data.get('category', '')
-                if category and category in all_materials.get('materials', {}):
-                    category_items = all_materials['materials'][category].get('items', [])
-                    # Find the specific material by name
-                    canonical_name = resolver.resolve_canonical_name(material_name)
-                    for item in category_items:
-                        if item.get('name') == canonical_name:
-                            if not formula:
-                                formula = item.get('formula')
-                            if not symbol:
-                                symbol = item.get('symbol')
-                            break
+                # The resolver already provides the material's data directly
+                if not formula:
+                    formula = materials_data.get('formula')
+                if not symbol:
+                    symbol = materials_data.get('symbol')
         
         # Final validation - fail-fast if still missing
         if not formula:

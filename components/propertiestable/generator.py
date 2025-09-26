@@ -11,7 +11,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 from generators.hybrid_generator import HybridComponentGenerator
-from versioning import stamp_component_output
+
 
 
 class PropertiestableComponentGenerator(HybridComponentGenerator):
@@ -144,7 +144,7 @@ class PropertiestableComponentGenerator(HybridComponentGenerator):
             raise ValueError(f"No valid property values found in frontmatter for propertiestable generation for {material_name}")
 
         # Apply centralized version stamping
-        return stamp_component_output("propertiestable", table)
+        return table
 
     def _parse_example_format(self, example_content: str) -> List[tuple]:
         """Parse example file to extract property format"""

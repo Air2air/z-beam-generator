@@ -15,7 +15,7 @@ import yaml
 
 from generators.hybrid_generator import HybridComponentGenerator
 from generators.component_generators import ComponentResult
-from versioning import stamp_component_output
+
 
 
 class BadgesymbolComponentGenerator(HybridComponentGenerator):
@@ -121,7 +121,7 @@ class BadgesymbolComponentGenerator(HybridComponentGenerator):
         content = "\n".join(yaml_lines)
 
         # Apply centralized version stamping
-        return stamp_component_output("badgesymbol", content)
+        return content
 
     def _parse_example_frontmatter(self, example_content: str) -> Dict[str, str]:
         """Parse example file to extract frontmatter fields"""
