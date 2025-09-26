@@ -29,6 +29,27 @@ is_valid, errors = frontmatter_manager.validate_material("Steel")
 **→ Comprehensive Check**: `python3 scripts/tools/frontmatter_integrity_check.py`
 **→ Field Updates**: Use `python3 scripts/tools/update_frontmatter_fields.py --material "MaterialName"`
 
+### "Missing environmental/application sections" / "Categories.yaml outdated"
+**→ Immediate Response**: ✅ **UPDATED to Categories.yaml v2.2.1** - Enhanced with streamlined standardized descriptions
+**→ Quick Fix**: Regenerate frontmatter: `python3 run.py --material "MaterialName" --components "frontmatter"`  
+**→ New Sections**: `environmentalImpact`, `applicationTypes`, `outcomeMetrics` automatically added with reduced verbosity
+**→ Root Cause**: Categories.yaml upgraded with concise templates for cleaner output
+**→ Version Check**: Look for `version: 2.2.1` and `enhancement_notes` mentioning "reduced template verbosity" in Categories.yaml metadata
+
+### "Verbose frontmatter sections" / "Too much template detail"
+**→ Immediate Response**: ✅ **STREAMLINED in v2.2.1** - Verbose template fields removed for cleaner output
+**→ Quick Fix**: Regenerate frontmatter with updated v2.2.1 templates
+**→ Removed Verbose Fields**: `regulatory_advantages`, `typical_savings`, `efficiency_metrics`, `health_benefits`, `workplace_safety`, `preservation_focus`, `specialized_requirements`, `contamination_types`, `effectiveness_metrics`, `quality_metrics`, `measurement_standards`, `acceptance_criteria`, `indicators`, `monitoring_methods`, `control_strategies`
+**→ Essential Information Preserved**: All critical data maintained in concise format
+**→ Performance Improvement**: ~450 character reduction per frontmatter file
+
+### "Verbose machine settings" / "Too many description fields"
+**→ Immediate Response**: ✅ **CLEANED in v6.2.1** - Verbose fields removed for cleaner output
+**→ Quick Fix**: Regenerate frontmatter with updated generator
+**→ Removed Fields**: `standardDescription`, `selectionCriteria`, `optimizationNote`, `typicalRangeGuidance`, `scalingFactors`
+**→ Essential Fields Kept**: `value`, `unit`, `confidence`, `description`, `min`, `max`
+**→ Better Readability**: Clean, focused machine settings without verbose standardized descriptions
+
 ### "Component generation failed" / "Required fields missing"
 **→ Immediate Response**: Enhanced fail-fast validation with specific field requirements
 **→ Quick Fix**: Check component-specific requirements in error message
@@ -159,6 +180,19 @@ grep -A5 -B5 "METADATA START\|CONTENT START" content/components/text/testmateria
 **→ Quick Fix**: Two-stage chain: AI Detection → Localization → Content
 **→ Details**: [Localization System](LOCALIZATION_PROMPT_CHAIN_SYSTEM.md)
 
+### "Frontmatter sections missing information after v2.2.1 update"
+**→ Immediate Response**: Intentional verbosity reduction - essential information preserved
+**→ Quick Check**: Verify streamlined sections contain core data (description, industries, metrics)
+**→ Missing Verbose Fields**: This is expected behavior for cleaner output
+**→ Validation**: `python3 -c "import yaml; data=yaml.safe_load(open('content/components/frontmatter/[material]-laser-cleaning.yaml')); print('✅' if all(len(data.get(s, [])) == 4 for s in ['environmentalImpact', 'applicationTypes', 'outcomeMetrics']) else '❌')"`
+**→ Rollback**: If verbose fields are required, revert to Categories.yaml v2.2.0
+
+### "Test failures after verbosity reduction"
+**→ Immediate Response**: Update test expectations for streamlined templates
+**→ Quick Fix**: Run new TestFrontmatterGenerationV2_2_1 class: `python3 -m pytest tests/test_renamed_files_validation.py::TestFrontmatterGenerationV2_2_1 -v`
+**→ Common Issue**: Tests looking for removed verbose fields like `regulatory_advantages`, `typical_savings`
+**→ Solution**: Update test assertions to expect concise sections with essential data only
+
 ## 📍 File Location Quick Map for AI
 
 ### User needs setup help → Look in:
@@ -191,11 +225,11 @@ grep -A5 -B5 "METADATA START\|CONTENT START" content/components/text/testmateria
 ### Comprehensive Property Ranges System ✅ COMPLETE September 2025
 **Update**: Scientifically-researched min/max ranges for all material properties and machine settings
 **Scope**: 9 material categories × 11 properties + 8 machine settings = 107 total ranges
-**Integration**: FrontmatterComponentGenerator automatically extracts category_ranges and machine_settings_ranges from materials.yaml
+**Integration**: FrontmatterComponentGenerator automatically extracts category_ranges and machine_settings_ranges from Materials.yaml
 **Scientific Backing**: Materials engineering literature sources (e.g., Lithium 0.53 g/cm³ to Osmium 22.59 g/cm³ for metals)
 **Testing**: Comprehensive test suite with 9 validation methods ensuring data integrity
 **Documentation**: Updated to v7.0.0 with architecture details and range extraction examples
-**Files**: `data/materials.yaml`, `components/frontmatter/README.md`, `test_comprehensive_ranges.py`
+**Files**: `data/Materials.yaml`, `components/frontmatter/README.md`, `test_comprehensive_ranges.py`
 
 ### Component Output Format Standardization ✅ COMPLETE September 16, 2025
 **Update**: All generators now use consistent YAML output formats
@@ -203,7 +237,7 @@ grep -A5 -B5 "METADATA START\|CONTENT START" content/components/text/testmateria
 **File Extensions**:
 - `.yaml` files: `table`, `jsonld`, `metatags` components
 - `.md` files: `frontmatter`, `text` components
-**Naming**: All generators use standardized material naming aligned with `materials.yaml`
+**Naming**: All generators use standardized material naming aligned with `Materials.yaml`
 **Benefits**: Consistent frontend integration, easier parsing, unified data structures
 
 ### Table Component Min/Max Verification ✅ COMPLETE September 16, 2025  

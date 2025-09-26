@@ -1,107 +1,107 @@
-name: Aluminum
+name: Steel
 category: Metal
-subcategory: Aluminum
-title: Aluminum Laser Cleaning
-description: Laser cleaning parameters for Aluminum
+subcategory: Steel
+title: Steel Laser Cleaning
+description: Laser cleaning parameters for Steel
 materialProperties:
   density:
-    value: 2.7
+    value: 7.85
     unit: g/cm³
     confidence: 98
-    description: Pure aluminum density at room temperature (99.9% purity)
-    min: 2.65
-    max: 2.75
+    description: Typical density for carbon steel at room temperature
+    min: 7.75
+    max: 7.9
   meltingPoint:
-    value: 660
+    value: 1425
     unit: °C
     confidence: 95
-    description: Melting point of pure aluminum at standard pressure
-    min: 658
-    max: 662
+    description: Average melting point for medium carbon steel
+    min: 1370
+    max: 1510
   thermalConductivity:
-    value: 237
+    value: 50
     unit: W/m·K
     confidence: 92
-    description: Thermal conductivity of pure aluminum at 25°C
-    min: 230
-    max: 240
+    description: Thermal conductivity of carbon steel at 20°C
+    min: 45
+    max: 60
   tensileStrength:
-    value: 90
+    value: 420
     unit: MPa
-    confidence: 88
-    description: Ultimate tensile strength of pure annealed aluminum
-    min: 80
-    max: 100
-  hardness:
-    value: 25
-    unit: HV
     confidence: 85
-    description: Vickers hardness of annealed pure aluminum
-    min: 20
-    max: 30
+    description: Typical tensile strength for mild steel
+    min: 350
+    max: 550
+  hardness:
+    value: 120
+    unit: HB
+    confidence: 85
+    description: Brinell hardness for annealed carbon steel
+    min: 100
+    max: 150
   youngsModulus:
-    value: 69
+    value: 200
     unit: GPa
-    confidence: 90
-    description: Young's modulus of elasticity for pure aluminum
-    min: 67
-    max: 71
+    confidence: 98
+    description: Young's modulus of elasticity for steel
+    min: 190
+    max: 210
   thermalExpansion:
-    value: 23.1
-    unit: μm/m·°C
+    value: 12
+    unit: 10⁻⁶/°C
     confidence: 90
     description: Linear thermal expansion coefficient at 20-100°C
-    min: 22.5
-    max: 23.5
+    min: 11
+    max: 13
   specificHeat:
-    value: 900
+    value: 490
     unit: J/kg·K
     confidence: 88
     description: Specific heat capacity at room temperature
-    min: 880
-    max: 920
-  thermalDiffusivity:
-    value: 97.1
-    unit: mm²/s
-    confidence: 85
-    description: Thermal diffusivity calculated from thermal properties
-    min: 94.0
-    max: 100.0
+    min: 450
+    max: 520
   reflectivity:
-    value: 92
+    value: 55
     unit: '%'
-    confidence: 85
-    description: Optical reflectivity at 1064 nm wavelength (common laser cleaning)
-    min: 88
-    max: 95
+    confidence: 82
+    description: Average reflectivity at 1064 nm wavelength
+    min: 45
+    max: 65
   absorptionCoefficient:
-    value: 10800000.0
-    unit: m⁻¹
+    value: 0.8
+    unit: 10⁶/m
     confidence: 80
-    description: Absorption coefficient at 1064 nm wavelength
-    min: 10000000.0
-    max: 12000000.0
+    description: Optical absorption coefficient at 1064 nm
+    min: 0.6
+    max: 1.0
   ablationThreshold:
     value: 1.2
     unit: J/cm²
-    confidence: 82
-    description: Laser ablation threshold for nanosecond pulses at 1064 nm
+    confidence: 85
+    description: Laser ablation threshold for nanosecond pulses
     min: 0.8
-    max: 1.5
-  crystallineStructure:
-    value: FCC
-    unit: none
-    confidence: 95
-    description: Face-centered cubic crystal structure
-    min: FCC
-    max: FCC
+    max: 1.8
   oxidationResistance:
-    value: High
-    unit: qualitative
-    confidence: 90
-    description: Forms protective Al₂O₃ oxide layer rapidly in air
-    min: Medium
-    max: Very High
+    value: 3
+    unit: rating (1-10)
+    confidence: 88
+    description: Relative oxidation resistance in air at elevated temperatures
+    min: 2
+    max: 4
+  crystallineStructure:
+    value: BCC/FCC
+    unit: crystal system
+    confidence: 95
+    description: Body-centered cubic (BCC) at room temperature, FCC at high temp
+    min: BCC
+    max: FCC
+  surfaceRoughness:
+    value: 0.8
+    unit: μm Ra
+    confidence: 82
+    description: Typical surface roughness for mill-finished steel
+    min: 0.4
+    max: 1.2
 applications:
 - laser cleaning
 - surface preparation
@@ -110,73 +110,72 @@ machineSettings:
     value: 100
     unit: W
     confidence: 92
-    description: Optimal average power for Aluminum oxide removal without substrate
-      damage
+    description: Optimal average power range for Steel surface cleaning
     min: 80
     max: 120
   wavelength:
     value: 1064
     unit: nm
     confidence: 88
-    description: Near-IR wavelength with good Aluminum absorption for oxide removal
+    description: Optimal wavelength for Steel absorption and minimal substrate damage
     min: null
     max: null
   spotSize:
     value: 50
     unit: μm
     confidence: 84
-    description: Beam spot diameter for precise cleaning control
+    description: Optimal beam spot diameter for precision cleaning
     min: 30
     max: 100
   repetitionRate:
     value: 100
     unit: kHz
     confidence: 87
-    description: Optimal repetition rate for efficient cleaning with thermal management
+    description: Optimal repetition rate for continuous cleaning coverage
     min: 50
     max: 200
-  fluenceThreshold:
-    value: 2.5
-    unit: J/cm²
-    confidence: 88
-    description: Threshold fluence for effective Aluminum oxide layer removal
-    min: 1.5
-    max: 4.0
   pulseWidth:
     value: 10
     unit: ns
     confidence: 85
-    description: Optimal pulse duration for controlled ablation of surface contaminants
+    description: Optimal pulse duration for efficient ablation of contaminants
     min: 5
     max: 20
   scanSpeed:
     value: 1000
     unit: mm/s
     confidence: 86
-    description: Optimal scanning speed for uniform surface treatment
+    description: Optimal scanning speed for efficient area coverage
     min: 500
     max: 2000
+  fluenceThreshold:
+    value: 2.5
+    unit: J/cm²
+    confidence: 89
+    description: Minimum fluence required for effective contaminant removal
+    min: 1.5
+    max: 4.0
   overlapRatio:
-    value: 70
+    value: 50
     unit: '%'
     confidence: 83
-    description: Optimal pulse overlap for complete surface coverage
-    min: 50
-    max: 85
+    description: Optimal beam overlap for uniform cleaning results
+    min: 30
+    max: 70
   passCount:
     value: 3
     unit: passes
     confidence: 82
-    description: Recommended number of passes for thorough cleaning
+    description: Typical number of passes required for complete cleaning
     min: 1
     max: 5
-  energyDensity:
-    value: 12.7
-    unit: J/cm²
-    confidence: 85
-    description: Calculated energy density based on power, spot size, and scan parameters
-    min: 8.0
-    max: 20.0
+  laserType:
+    value: Nd:YAG
+    unit: null
+    confidence: 90
+    description: Recommended laser type for Steel cleaning applications
+    min: null
+    max: null
 author_object:
   id: 3
   name: Ikmanda Roswati
@@ -187,13 +186,12 @@ author_object:
   image: /images/author/ikmanda-roswati.jpg
 images:
   hero:
-    alt: Aluminum surface undergoing laser cleaning showing precise contamination
-      removal
-    url: /images/aluminum-laser-cleaning-hero.jpg
+    alt: Steel surface undergoing laser cleaning showing precise contamination removal
+    url: /images/steel-laser-cleaning-hero.jpg
   micro:
-    alt: Microscopic view of Aluminum surface after laser cleaning showing detailed
-      surface structure
-    url: /images/aluminum-laser-cleaning-micro.jpg
+    alt: Microscopic view of Steel surface after laser cleaning showing detailed surface
+      structure
+    url: /images/steel-laser-cleaning-micro.jpg
 environmentalImpact:
 - benefit: Chemical Waste Elimination
   description: Eliminates hazardous chemical waste streams
