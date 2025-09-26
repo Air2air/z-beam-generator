@@ -266,7 +266,7 @@ class TextGenerator:
 # ❌ BAD: Silent default that masks missing configuration
 def load_materials(file_path=None):
     if file_path is None:
-        file_path = "data/materials.yaml"  # Silent default
+        file_path = "data/Materials.yaml"  # Silent default
     
     try:
         with open(file_path, 'r') as f:

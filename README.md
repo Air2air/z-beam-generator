@@ -1,4 +1,34 @@
-# Z-Beam Generator
+# Z-## ✨ Features
+
+- **🏗️ Consolidated Architecture**: Streamlined to 6 active components from original 11
+- **📊 Schema-Driven**: Fully dynamic content generation using JSON schemas
+- **🗂️ Unified Frontmatter**: Single component generating both materialProperties and machineSettings
+- **🤖 AI-Powered**: DeepSeek API integration for frontmatter generation
+- **🔍 PropertyResearcher**: Two-stage property discovery with 85% confidence threshold
+- **🏭 Component Factory**: ComponentGeneratorFactory pattern for clean component management  
+- **🧪 Comprehensive Testing**: Integration test suite covering all 6 components
+- **🔧 Fail-Fast Architecture**: Explicit dependency validation with no fallbacks
+- **💾 122 Materials Ready**: Complete material database with YAML frontmatter
+- **📋 Dependency Validation**: Frontmatter-dependent components with cascading failure prevention
+- **🏷️ Categories.yaml v2.2.0**: Enhanced with standardized descriptions, environmental templates, and application definitions
+
+## 🚀 Categories.yaml v2.2.0 Migration
+
+**Major Enhancement**: Successfully migrated key standardized descriptions from Materials.yaml to Categories.yaml for better consistency and maintainability.
+
+### New Standardized Sections
+- **machineSettingsDescriptions**: Comprehensive parameter descriptions with selection criteria and optimization guidance
+- **materialPropertyDescriptions**: Standardized property definitions with laser cleaning relevance
+- **environmentalImpactTemplates**: Reusable environmental benefit templates (waste elimination, water conservation, etc.)
+- **applicationTypeDefinitions**: Standardized cleaning application categories with quality metrics
+- **standardOutcomeMetrics**: Measurement frameworks for validation and quality assurance
+
+### Frontmatter Generation Enhancements
+- **Clean Machine Settings**: Removed verbose fields, kept essential information (value, unit, confidence, description, min, max)
+- **Environmental Impact**: Automated generation of standardized environmental benefit sections
+- **Application Types**: Consistent application categories with industry mappings
+- **Outcome Metrics**: Quality measurement frameworks for cleaning effectiveness
+- **Reduced Verbosity**: Essential information only, improved readabilityor
 
 A dynamic, schema-driven content generator for laser cleaning technical documentation with enhanced frontmatter management, real-time status updates, and robust fail-fast architecture.
 
@@ -162,11 +192,11 @@ Major improvement in material data handling ensuring consistent access patterns:
 - **Material Not Found Error**: Fixed "Material 'Steel' not found" error in tests despite material existing in data
 - **Batch Generation**: Fixed batch generation mode (`--all` flag) to properly find and process materials
 - **Data Structure Consistency**: Ensured consistent access to the "materials" key in data structure
-- **Test Environment**: Updated tests to use real materials.yaml file instead of mocks for consistency
+- **Test Environment**: Updated tests to use real Materials.yaml file instead of mocks for consistency
 
 #### 🔧 **Key Improvements**
 - **Consistent Data Structure**: Modified `load_materials()` to return complete structure with "materials" key
-- **Unified Data Source**: Removed mock materials in tests to ensure all code uses real data from materials.yaml
+- **Unified Data Source**: Removed mock materials in tests to ensure all code uses real data from Materials.yaml
 - **Batch Generation Fix**: Updated run.py to properly navigate the materials data structure
 - **Comprehensive Testing**: Added new test file specifically for testing material loading functionality
 
@@ -197,7 +227,7 @@ Major architecture improvement with comprehensive API configuration centralizati
 #### ✅ **Verified Functionality**
 - **API Connectivity**: All 3 providers connect successfully
 - **Content Generation**: Frontmatter generation working for Steel material
-- **Data Integration**: Materials loaded from `data/materials.yaml` (109 materials, 8 categories)
+- **Data Integration**: Materials loaded from `data/Materials.yaml` (109 materials, 8 categories)
 - **Large Prompt Support**: Successfully handles 4116+ character prompts
 
 ## �🚀 Quick Start
@@ -504,7 +534,7 @@ python3 tests/test_frontmatter_validation.py
 ## 🏗️ Architecture
 
 ### Core Components
-- **MaterialLoader**: Loads materials from `data/materials.yaml`
+- **MaterialLoader**: Loads materials from `data/Materials.yaml`
 - **ComponentGenerator**: Uses prompts + DeepSeek API
 - **SchemaValidator**: Validates against JSON schemas
 - **ContentWriter**: Saves to `content/` folder
@@ -539,7 +569,7 @@ z-beam-generator/
 │   └── [other components]/
 ├── ai_detection/               # Winston.ai integration
 ├── api/                        # API client management
-├── data/materials.yaml         # Materials database
+├── data/Materials.yaml         # Materials database
 ├── schemas/                    # JSON validation schemas
 ├── test_robustness_improvements.py # Comprehensive robustness tests
 └── content/                    # Generated output
@@ -725,7 +755,7 @@ propertiestable: []
 ## 🛠️ Development
 
 ### Adding New Materials
-Edit `data/materials.yaml`:
+Edit `data/Materials.yaml`:
 ```yaml
 materials:
   metal:

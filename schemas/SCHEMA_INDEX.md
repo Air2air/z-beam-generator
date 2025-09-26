@@ -97,7 +97,7 @@ Specialized schemas moved to archive for organization:
 - **Usage**: 14 references
 - **Status**: 📦 Archived (still accessible)
 
-### materials_yaml.json
+### Materials_yaml.json
 - **Purpose**: Materials.yaml validation schema
 - **Usage**: 29 references
 - **Status**: 📦 Archived (still accessible)

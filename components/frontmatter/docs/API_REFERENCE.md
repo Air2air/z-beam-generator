@@ -45,7 +45,7 @@ Generates complete frontmatter for a material by name with enhanced category and
 
 **Enhanced Features:**
 - Automatic subcategory classification (e.g., precious metals, hardwood, igneous stone)
-- Rich data population from materials.yaml structure
+- Rich data population from Materials.yaml structure
 - Fallback to API generation for materials not in database
 - Comprehensive property, application, and machine settings data
 
@@ -70,10 +70,10 @@ Enhanced material data lookup with comprehensive fallback strategy.
 - None if material not found in any structure
 
 #### `_generate_from_materials_data(material_data: dict, material_name: str) -> dict`
-Internal method for generating frontmatter from materials.yaml data with enhanced field population.
+Internal method for generating frontmatter from Materials.yaml data with enhanced field population.
 
 **Parameters:**
-- `material_data` (dict): Material data from materials.yaml
+- `material_data` (dict): Material data from Materials.yaml
 - `material_name` (str): Name of the material
 
 **Returns:**
@@ -326,13 +326,13 @@ except KeyError as e:
 ## Configuration
 
 ### Environment Variables
-- `MATERIALS_YAML_PATH`: Path to materials.yaml file (default: `data/materials.yaml`)
+- `MATERIALS_YAML_PATH`: Path to Materials.yaml file (default: `data/Materials.yaml`)
 - `AUTHORS_JSON_PATH`: Path to authors.json file (default: `authors.json`)
 
 ### Default Paths
 ```python
 # Materials data
-materials_path = "data/materials.yaml"
+materials_path = "data/Materials.yaml"
 
 # Authors data  
 authors_path = "authors.json"
@@ -362,7 +362,7 @@ logger.setLevel(logging.INFO)
 #### `ValueError`
 - Missing required material data
 - Invalid material name format
-- Missing required fields in materials.yaml
+- Missing required fields in Materials.yaml
 
 #### `KeyError`
 - Missing required keys in material data
@@ -370,12 +370,12 @@ logger.setLevel(logging.INFO)
 - Missing required frontmatter fields
 
 #### `FileNotFoundError`
-- materials.yaml file not found
+- Materials.yaml file not found
 - authors.json file not found
 - Schema file not found
 
 #### `yaml.YAMLError`
-- Invalid YAML syntax in materials.yaml
+- Invalid YAML syntax in Materials.yaml
 - Malformed frontmatter content
 
 ### Error Handling Best Practices

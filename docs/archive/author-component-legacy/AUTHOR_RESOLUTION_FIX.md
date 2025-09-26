@@ -7,7 +7,7 @@ The Z-Beam generator was not correctly resolving author information from materia
 We modified the following files to properly extract and pass material data to the author resolution system:
 
 1. **workflow_manager.py**:
-   - Added code to extract material data directly from materials.yaml
+   - Added code to extract material data directly from Materials.yaml
    - Modified run_material_generation to pass material_data to get_author_info_for_material
    - Ensured proper error handling for missing material data
 
@@ -26,7 +26,7 @@ We created a comprehensive test file at `tests/test_author_resolution.py` that v
 - Author resolution from material data works correctly
 - Author resolution from material_data with nested author_id works
 - Fallback to author_id parameter works
-- All real materials in materials.yaml have valid author_id values that resolve correctly
+- All real materials in Materials.yaml have valid author_id values that resolve correctly
 
 ## Documentation Updates
 We updated the following documentation files to reflect our implementation:
@@ -55,4 +55,4 @@ We updated the following documentation files to reflect our implementation:
 4. Implement more comprehensive logging for the resolution process
 
 ## Summary
-The author resolution fix ensures that frontmatter and other components correctly use the author information associated with each material in the materials.yaml file. This provides consistent attribution and ensures content has the appropriate author expertise for each material type.
+The author resolution fix ensures that frontmatter and other components correctly use the author information associated with each material in the Materials.yaml file. This provides consistent attribution and ensures content has the appropriate author expertise for each material type.

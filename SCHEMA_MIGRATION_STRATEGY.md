@@ -110,7 +110,7 @@ keywords: "keyword1, keyword2, keyword3"
 
 ### Phase 1: Automated Field Renaming
 1. Create migration script to rename all snake_case fields to camelCase
-2. Update all existing materials.yaml entries systematically
+2. Update all existing Materials.yaml entries systematically
 3. Update all frontmatter files with field name changes
 
 ### Phase 2: Data Structure Migration  
@@ -133,11 +133,11 @@ keywords: "keyword1, keyword2, keyword3"
 ```python
 class SchemaMigration:
     def migrate_materials_yaml(self):
-        # 1. Load materials.yaml
+        # 1. Load Materials.yaml
         # 2. Rename snake_case fields to camelCase
         # 3. Add missing required fields to material_index
         # 4. Remove unexpected top-level properties
-        # 5. Save updated materials.yaml
+        # 5. Save updated Materials.yaml
     
     def migrate_frontmatter_files(self):
         # 1. Process each .md file in frontmatter directory
@@ -191,7 +191,7 @@ class SchemaMigration:
 ## Success Criteria
 
 - ✅ All schemas pass JSON syntax validation
-- ✅ Materials.yaml validates against materials_yaml.json (0 errors)
+- ✅ Materials.yaml validates against Materials_yaml.json (0 errors)
 - ✅ All frontmatter files validate against frontmatter.json (0 errors) 
 - ✅ Content generation works with migrated data
 - ✅ No functionality regressions

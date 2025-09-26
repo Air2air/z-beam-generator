@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Materials.yaml Data Completeness Analysis
-Analyzes the materials.yaml file for data completeness and structural integrity.
+Analyzes the Materials.yaml file for data completeness and structural integrity.
 """
 
 import yaml
@@ -10,12 +10,12 @@ from collections import defaultdict, Counter
 from typing import Dict, List, Set, Any
 
 def load_materials(file_path: str) -> Dict[str, Any]:
-    """Load the materials.yaml file."""
+    """Load the Materials.yaml file."""
     try:
         with open(file_path, 'r', encoding='utf-8') as f:
             return yaml.safe_load(f)
     except Exception as e:
-        print(f"Error loading materials.yaml: {e}")
+        print(f"Error loading Materials.yaml: {e}")
         sys.exit(1)
 
 def analyze_material_index(data: Dict[str, Any]) -> Dict[str, Any]:
@@ -171,7 +171,7 @@ def check_index_material_consistency(data: Dict[str, Any]) -> Dict[str, Any]:
 
 def main():
     """Main analysis function."""
-    file_path = "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/data/materials.yaml"
+    file_path = "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/data/Materials.yaml"
     
     print("=" * 80)
     print("MATERIALS.YAML DATA COMPLETENESS ANALYSIS")

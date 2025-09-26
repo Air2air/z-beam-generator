@@ -301,8 +301,29 @@ python3 run.py --test
 
 ### Content Generation (Working Commands Only)
 ```bash
+### Content Generation (Real Working Commands)
+```bash
+# Generate all 123 materials (real batch processing)
+python3 run.py --all
+
 # Generate specific material with components 
 python3 run.py --material "copper" --components "text"
+
+# Generate specific material
+python3 run.py --material "aluminum"
+
+# Generate multiple components for material
+python3 run.py --material "aluminum" --components "text,frontmatter"
+
+# Test system functionality
+python3 run.py --test
+
+# Deploy generated content
+python3 run.py --deploy
+
+# Sanitize existing frontmatter
+python3 run.py --sanitize
+```
 
 # Learning optimizer (gets smarter with each run)
 python3 smart_optimize.py steel

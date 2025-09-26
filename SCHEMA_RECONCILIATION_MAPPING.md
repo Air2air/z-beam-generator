@@ -10,14 +10,14 @@ This document maps field relationships across all four Z-Beam Generator schemas 
 base.json (Foundation)
 ├── material.json (Material Profiles) 
 ├── frontmatter.json (Output Structure)
-└── materials_yaml.json (Database Structure)
+└── Materials_yaml.json (Database Structure)
 ```
 
 ## Field Mapping Analysis
 
 ### 1. Core Identity Fields
 
-| Purpose | base.json | material.json | frontmatter.json | materials_yaml.json |
+| Purpose | base.json | material.json | frontmatter.json | Materials_yaml.json |
 |---------|-----------|---------------|------------------|---------------------|
 | Name | `name` | `profile.category` | `name` | `Material.name` |
 | Category | - | `profile.category` | `category` | `Material.category` |
@@ -30,7 +30,7 @@ base.json (Foundation)
 
 ### 2. Author Information
 
-| Purpose | base.json | material.json | frontmatter.json | materials_yaml.json |
+| Purpose | base.json | material.json | frontmatter.json | Materials_yaml.json |
 |---------|-----------|---------------|------------------|---------------------|
 | Author Object | `author` | `author_object` | `author_object` | - |
 | Author ID | `author.author_id` | `author_object.id` | `author_id` | `Material.author_id` |
@@ -39,11 +39,11 @@ base.json (Foundation)
 
 **Issues:**
 - Different field names (`author_id` vs `id`)
-- Missing author metadata in materials_yaml.json
+- Missing author metadata in Materials_yaml.json
 
 ### 3. Material Properties
 
-| Purpose | base.json | material.json | frontmatter.json | materials_yaml.json |
+| Purpose | base.json | material.json | frontmatter.json | Materials_yaml.json |
 |---------|-----------|---------------|------------------|---------------------|
 | Density | - | `properties.density` | `properties.density` OR `materialProperties.physical.density` | `Material.density` |
 | Thermal Conductivity | - | `properties.thermalConductivity` | `properties.thermalConductivity` OR `materialProperties.thermal.thermalConductivity` | `Material.thermal_conductivity` |
@@ -56,7 +56,7 @@ base.json (Foundation)
 
 ### 4. Laser Processing Settings
 
-| Purpose | base.json | material.json | frontmatter.json | materials_yaml.json |
+| Purpose | base.json | material.json | frontmatter.json | Materials_yaml.json |
 |---------|-----------|---------------|------------------|---------------------|
 | Wavelength | - | `technicalSpecifications.wavelength` | `machineSettings.wavelength` OR `laserProcessing.recommended.wavelength` | `Material.machine_settings.wavelength_optimal` |
 | Power Range | - | `technicalSpecifications.powerRange` | `machineSettings.powerRange` OR `laserProcessing.recommended.powerRange` | `Material.machine_settings.power_range` |
@@ -69,19 +69,19 @@ base.json (Foundation)
 
 ### 5. Applications & Industries
 
-| Purpose | base.json | material.json | frontmatter.json | materials_yaml.json |
+| Purpose | base.json | material.json | frontmatter.json | Materials_yaml.json |
 |---------|-----------|---------------|------------------|---------------------|
 | Applications | `applications` | `applications` | `applications` | `Material.applications` |
 | Industry Tags | - | `industryTags` | `industryTags` | `Material.industry_tags` |
 | Primary Industries | - | `primaryIndustries` | `primaryIndustries` | - |
 
 **Issues:**
-- Missing industry fields in base.json and materials_yaml.json
+- Missing industry fields in base.json and Materials_yaml.json
 - Inconsistent application object structures
 
 ### 6. Regulatory & Compliance
 
-| Purpose | base.json | material.json | frontmatter.json | materials_yaml.json |
+| Purpose | base.json | material.json | frontmatter.json | Materials_yaml.json |
 |---------|-----------|---------------|------------------|---------------------|
 | Standards | `regulatoryStandards` | - | `regulatoryStandards` | `Material.regulatory_standards` |
 
@@ -92,17 +92,17 @@ base.json (Foundation)
 
 ### 7. Environmental Impact
 
-| Purpose | base.json | material.json | frontmatter.json | materials_yaml.json |
+| Purpose | base.json | material.json | frontmatter.json | Materials_yaml.json |
 |---------|-----------|---------------|------------------|---------------------|
 | Environmental Benefits | `environmentalImpact` | `environmentalImpact` | `environmentalImpact` | - |
 
 **Issues:**
-- Missing environmental fields in materials_yaml.json
+- Missing environmental fields in Materials_yaml.json
 - Inconsistent object structures
 
 ### 8. SEO & Content Fields
 
-| Purpose | base.json | material.json | frontmatter.json | materials_yaml.json |
+| Purpose | base.json | material.json | frontmatter.json | Materials_yaml.json |
 |---------|-----------|---------------|------------------|---------------------|
 | Keywords | `keywords` | - | `keywords` | `Material.keywords` |
 | Tags | `tags` | - | `tags` | - |
@@ -117,7 +117,7 @@ base.json (Foundation)
 
 ### 1. **Field Naming Convention Conflicts**
 ```
-thermal_conductivity (materials_yaml.json)
+thermal_conductivity (Materials_yaml.json)
 vs
 thermalConductivity (material.json, frontmatter.json)
 ```
@@ -128,7 +128,7 @@ regulatoryStandards: array of objects (base.json)
 vs
 regulatoryStandards: string or array of strings (frontmatter.json)
 vs  
-regulatory_standards: array of strings (materials_yaml.json)
+regulatory_standards: array of strings (Materials_yaml.json)
 ```
 
 ### 3. **Structure Hierarchy Conflicts**
@@ -140,7 +140,7 @@ Hierarchical: materialProperties.physical.density (new frontmatter.json)
 
 ### 4. **Missing Critical Fields**
 - `category` and `subcategory` missing from base.json and material.json
-- Author information missing from materials_yaml.json
+- Author information missing from Materials_yaml.json
 - Laser processing settings missing from base.json
 
 ## Recommended Reconciliation Strategy
@@ -157,9 +157,9 @@ Hierarchical: materialProperties.physical.density (new frontmatter.json)
 
 ### Phase 3: Complete Field Coverage
 1. Add missing category/subcategory to base.json and material.json
-2. Add author metadata to materials_yaml.json
+2. Add author metadata to Materials_yaml.json
 3. Add laser processing to base.json
-4. Add environmental impact to materials_yaml.json
+4. Add environmental impact to Materials_yaml.json
 
 ### Phase 4: Validation Alignment
 1. Align required/optional field designations

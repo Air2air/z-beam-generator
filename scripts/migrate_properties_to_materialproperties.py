@@ -10,7 +10,7 @@ Migration Scope:
 2. Generator code (Python files that create/access properties)  
 3. Validation code (validators and schema validation logic)
 4. Test files (test data and validation tests)
-5. Configuration files (materials.yaml and other configs)
+5. Configuration files (Materials.yaml and other configs)
 6. Generated content files (existing frontmatter files)
 
 Safety Features:
@@ -124,7 +124,7 @@ class PropertiesToMaterialPropertiesMigrator:
                 self.content_files.append(content_file)
         
         # Configuration files
-        config_patterns = ["materials.yaml", "*.yaml", "*.json"]
+        config_patterns = ["Materials.yaml", "*.yaml", "*.json"]
         for pattern in config_patterns:
             for config_file in self.project_root.rglob(pattern):
                 if ("schemas" not in str(config_file) and 

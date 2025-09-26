@@ -486,16 +486,16 @@ python3 run.py --material "Stainless Steel"  # Not "stainless steel"
 # Validate materials database
 python3 -c "
 import yaml
-with open('data/materials.yaml', 'r') as f:
+with open('data/Materials.yaml', 'r') as f:
     data = yaml.safe_load(f)
 print('Materials database valid')
 "
 
 # Restore from backup if corrupted
-cp data/materials.yaml.backup data/materials.yaml
+cp data/Materials.yaml.backup data/Materials.yaml
 
 # Re-clone repository if needed
-git checkout data/materials.yaml
+git checkout data/Materials.yaml
 ```
 
 ### Component Generation Issues

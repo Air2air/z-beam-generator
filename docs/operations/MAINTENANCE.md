@@ -1081,7 +1081,7 @@ def review_main_configs():
     main_configs = [
         'prod_config.yaml',
         'test_config.yaml',
-        'data/materials.yaml'
+        'data/Materials.yaml'
     ]
     
     for config_file in main_configs:
@@ -1094,7 +1094,7 @@ def review_main_configs():
                 print(f"   ✅ {config_file}: Valid YAML ({len(str(config_data))} chars)")
                 
                 # Check for common configuration issues
-                if config_file == 'data/materials.yaml':
+                if config_file == 'data/Materials.yaml':
                     materials = config_data.get('materials', {})
                     print(f"      Materials defined: {len(materials)}")
                     

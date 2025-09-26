@@ -65,14 +65,14 @@ class CategoryRangeResearcher:
         self.materials_data = load_materials()
         self.property_researcher = MaterialPropertyResearcher()
         
-        # Load existing category ranges from materials.yaml
+        # Load existing category ranges from Materials.yaml
         self.category_ranges = self._load_category_ranges()
         
         # Research-based category ranges for validation
         self.research_ranges = self._initialize_research_ranges()
     
     def _load_category_ranges(self) -> Dict[str, Dict[str, Any]]:
-        """Load existing category ranges from materials.yaml"""
+        """Load existing category ranges from Materials.yaml"""
         return self.materials_data.get('category_ranges', {})
     
     def _initialize_research_ranges(self) -> Dict[str, Dict[str, CategoryRange]]:

@@ -48,7 +48,7 @@ def test_hybrid_component():
     mock_client = get_mock_api_client()
 
     # Use REAL static data source
-    static_data = load_static_data_from_file("materials.yaml")
+    static_data = load_static_data_from_file("Materials.yaml")
 
     result = component.generate(
         material_name="Steel",

@@ -1,21 +1,21 @@
 #!/usr/bin/env python3
 """
 Final Materials Database Verification
-Confirms all materials.yaml issues have been resolved
+Confirms all Materials.yaml issues have been resolved
 """
 
 import yaml
 from pathlib import Path
 
 def verify_materials_database():
-    """Verify materials.yaml is now fully correct and complete"""
-    materials_path = Path("data/materials.yaml")
+    """Verify Materials.yaml is now fully correct and complete"""
+    materials_path = Path("data/Materials.yaml")
     frontmatter_dir = Path("content/components/frontmatter")
     
     print("🔍 FINAL MATERIALS DATABASE VERIFICATION")
     print("=" * 50)
     
-    # Load materials.yaml
+    # Load Materials.yaml
     with open(materials_path, 'r') as f:
         data = yaml.safe_load(f)
     

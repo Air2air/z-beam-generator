@@ -9,7 +9,7 @@ from pathlib import Path
 
 class DataIssuesFixer:
     def __init__(self):
-        self.materials_yaml_path = Path("data/materials.yaml")
+        self.materials_yaml_path = Path("data/Materials.yaml")
         self.frontmatter_dir = Path("content/components/frontmatter")
         
         # Schema-compliant subcategories
@@ -61,8 +61,8 @@ class DataIssuesFixer:
         }
     
     def fix_materials_yaml_subcategories(self):
-        """Fix invalid subcategories in materials.yaml material_index"""
-        print("🔧 Fixing materials.yaml subcategories...")
+        """Fix invalid subcategories in Materials.yaml material_index"""
+        print("🔧 Fixing Materials.yaml subcategories...")
         
         with open(self.materials_yaml_path, 'r') as f:
             data = yaml.safe_load(f)
@@ -89,11 +89,11 @@ class DataIssuesFixer:
                             print(f"  ⚠️  {material_name}: '{current_subcategory}' → '{default_subcategory}' (default)")
                             fixes_applied += 1
         
-        # Save the fixed materials.yaml
+        # Save the fixed Materials.yaml
         with open(self.materials_yaml_path, 'w') as f:
             yaml.dump(data, f, default_flow_style=False, allow_unicode=True, width=120, indent=2)
         
-        print(f"✅ Fixed {fixes_applied} subcategories in materials.yaml")
+        print(f"✅ Fixed {fixes_applied} subcategories in Materials.yaml")
         return fixes_applied
     
     def fix_frontmatter_subcategories(self):
@@ -271,7 +271,7 @@ class DataIssuesFixer:
         
         total_fixes = 0
         
-        # Fix materials.yaml subcategories
+        # Fix Materials.yaml subcategories
         total_fixes += self.fix_materials_yaml_subcategories()
         print()
         

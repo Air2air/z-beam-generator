@@ -121,7 +121,7 @@ except MachineSettingsError:
 
 - **Confidence Minimum**: 80% for production use
 - **Source Validation**: Multi-strategy verification (AI → Database → Physics)
-- **Range Validation**: Results validated against materials.yaml category ranges
+- **Range Validation**: Results validated against Materials.yaml category ranges
 - **No Approximations**: Exact values required, no "close enough" estimates
 
 ## **Example: Aluminum Success Path**

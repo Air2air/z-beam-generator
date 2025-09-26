@@ -55,7 +55,7 @@ class MaterialAwarePromptGenerator:
             component_type: Type of component (metricsproperties, text, etc.)
             material_name: Name of the material
             material_category: Category (metal, wood, ceramic, etc.)
-            material_data: Material property data from materials.yaml
+            material_data: Material property data from Materials.yaml
             base_prompt: Custom base prompt (overrides template)
             **kwargs: Additional template variables
             
@@ -355,7 +355,7 @@ def generate_material_specific_prompt(
         component_type: Component type (metricsproperties, text, etc.)
         material_name: Name of material
         material_category: Material category (metal, wood, etc.)
-        material_data: Material data from materials.yaml
+        material_data: Material data from Materials.yaml
         **kwargs: Additional template variables
         
     Returns:

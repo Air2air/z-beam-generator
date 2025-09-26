@@ -135,7 +135,7 @@ class PathManager:
     @classmethod
     def get_materials_file(cls) -> Path:
         """Get materials YAML file path."""
-        return cls.get_path("data", "materials.yaml")
+        return cls.get_path("data", "Materials.yaml")
 
     @classmethod
     def get_api_keys_file(cls) -> Path:

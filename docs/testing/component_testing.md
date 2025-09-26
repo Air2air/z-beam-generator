@@ -423,7 +423,7 @@ tests/
 │   ├── test_error_handling.py
 │   └── test_circuit_breakers.py
 └── fixtures/                     # Test data and fixtures
-    ├── materials.yaml
+    ├── Materials.yaml
     ├── api_responses.json
     └── mock_data.py
 ```
@@ -1209,7 +1209,7 @@ class TestErrorHandling:
 ### **Test Data Management**
 
 ```python
-# tests/fixtures/materials.yaml
+# tests/fixtures/Materials.yaml
 materials:
   aluminum:
     name: "Aluminum"

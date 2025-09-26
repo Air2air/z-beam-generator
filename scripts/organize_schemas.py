@@ -52,7 +52,7 @@ class SchemaOrganizer:
         self.specialized_schemas = {
             "metricsproperties.json": "Properties component schema",
             "metricsmachinesettings.json": "Machine settings component schema",
-            "materials_yaml.json": "Materials.yaml validation schema",
+            "Materials_yaml.json": "Materials.yaml validation schema",
             "material.json": "Single material structure schema"
         }
         
@@ -387,7 +387,7 @@ The validator searches in this order:
    │   └── ... (component schemas)
    ├── archive/             # Specialized/legacy schemas  
    │   ├── metricsproperties.json
-   │   ├── materials_yaml.json
+   │   ├── Materials_yaml.json
    │   └── ... (archived schemas)
    └── SCHEMA_INDEX.md      # Complete documentation
 

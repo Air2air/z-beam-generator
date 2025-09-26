@@ -5,7 +5,7 @@
 ### Data Flow Problems Identified
 
 #### 1. **Duplicate Data Definitions**
-- **materials.yaml**: Contains comprehensive properties + machine settings
+- **Materials.yaml**: Contains comprehensive properties + machine settings
 - **frontmatter schema**: Defines structure but doesn't enforce data consistency
 - **Generated frontmatter**: Flattens YAML data into schema format
 - **Result**: Same data defined in multiple places with potential inconsistencies
@@ -18,7 +18,7 @@
 
 #### 3. **Data Architecture Confusion**
 ```
-materials.yaml → Frontmatter Generator → Generated Frontmatter
+Materials.yaml → Frontmatter Generator → Generated Frontmatter
      ↓                    ↓                       ↓
 Properties +         Flattens to           Individual fields
 Validation      →   Schema Format    →    (densityUnit, etc.)
@@ -65,11 +65,11 @@ Validation      →   Schema Format    →    (densityUnit, etc.)
 - **Type safety** enforced automatically
 - **Required/optional** fields clearly defined
 
-### 2. **Data Flow Optimization: Eliminate materials.yaml Properties**
+### 2. **Data Flow Optimization: Eliminate Materials.yaml Properties**
 
 #### Current Problem
 ```yaml
-# materials.yaml (REDUNDANT)
+# Materials.yaml (REDUNDANT)
 properties:
   density:
     value: 4.43
@@ -86,7 +86,7 @@ properties:
 
 #### Recommended Solution: **Frontmatter-Only Generation**
 ```yaml
-# materials.yaml (MINIMAL - only metadata)
+# Materials.yaml (MINIMAL - only metadata)
 "aluminum":
   category: metal
   subcategory: aerospace
@@ -127,7 +127,7 @@ properties:
 
 #### Phase 2: Materials.yaml Simplification
 ```yaml
-# NEW materials.yaml structure
+# NEW Materials.yaml structure
 materials:
   "aluminum":
     # Core metadata only
@@ -236,13 +236,13 @@ class SchemaEnforcedGenerator:
 
 #### Migration Strategy:
 ```python
-# BEFORE: materials.yaml contains full properties
+# BEFORE: Materials.yaml contains full properties
 properties:
   density:
     value: 4.43
     unit: "g/cm³"
 
-# AFTER: materials.yaml contains generation metadata only
+# AFTER: Materials.yaml contains generation metadata only
 generation_hints:
   density_target_range: [4.40, 4.45]
   density_validation_required: true
@@ -257,11 +257,11 @@ generation_hints:
 
 #### Week 2: Generator Refactoring  
 - Implement mandatory schema validation in generators
-- Remove property extraction from materials.yaml
+- Remove property extraction from Materials.yaml
 - Add AI-based property generation with schema constraints
 
 #### Week 3: Materials.yaml Cleanup
-- Remove all property definitions from materials.yaml
+- Remove all property definitions from Materials.yaml
 - Keep only core metadata (category, subcategory, etc.)
 - Add generation_hints for AI guidance
 

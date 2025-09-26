@@ -205,7 +205,7 @@ def validate_material_data():
     checks = []
     
     # Check material data file exists
-    materials_file = Path('data/materials.yaml')
+    materials_file = Path('data/Materials.yaml')
     if not materials_file.exists():
         checks.append({
             'name': 'Materials Data File',
@@ -809,7 +809,7 @@ def get_resolution_suggestion(check_name: str) -> str:
         'Package': 'Run: pip install -r requirements.txt',
         'API Key': 'Set environment variable or check API documentation',
         'Directory': 'Check file permissions or disk space',
-        'Materials Data File': 'Ensure data/materials.yaml exists and is valid',
+        'Materials Data File': 'Ensure data/Materials.yaml exists and is valid',
         'Component': 'Check component implementation and imports',
         'API Connectivity': 'Check network connection and API status'
     }

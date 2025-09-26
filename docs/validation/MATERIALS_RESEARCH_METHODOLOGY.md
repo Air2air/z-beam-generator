@@ -2,7 +2,7 @@
 
 ## Overview
 
-This document outlines a systematic approach to research, validate, and verify every value in the `materials.yaml` file against authoritative sources and scientific standards.
+This document outlines a systematic approach to research, validate, and verify every value in the `Materials.yaml` file against authoritative sources and scientific standards.
 
 ## 🎯 Validation Framework
 
@@ -324,6 +324,6 @@ python3 scripts/validation/consistency_checker.py
 - [ ] Quarterly validation cycle implemented
 - [ ] Continuous monitoring system active
 - [ ] Industry partnership for ongoing validation
-- [ ] materials.yaml recognized as authoritative source
+- [ ] Materials.yaml recognized as authoritative source
 
-This comprehensive approach ensures every value in `materials.yaml` is thoroughly researched, validated, and maintained to the highest scientific and industrial standards.
+This comprehensive approach ensures every value in `Materials.yaml` is thoroughly researched, validated, and maintained to the highest scientific and industrial standards.

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Generate research checklist for materials.yaml validation.
+Generate research checklist for Materials.yaml validation.
 """
 
 import yaml
@@ -11,7 +11,7 @@ def generate_research_checklist():
     """Generate comprehensive research checklist for all materials."""
     
     # Load materials data
-    with open('data/materials.yaml', 'r') as f:
+    with open('data/Materials.yaml', 'r') as f:
         data = yaml.safe_load(f)
     
     checklist = []

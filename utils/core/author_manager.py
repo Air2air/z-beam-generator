@@ -98,7 +98,7 @@ def list_authors() -> str:
                 "=" * 50,
                 f"Total: {len(authors)} authors available",
                 "",
-                "Usage: python3 run.py --material 'Steel'  # Author automatically resolved from materials.yaml",
+                "Usage: python3 run.py --material 'Steel'  # Author automatically resolved from Materials.yaml",
             ]
         )
 

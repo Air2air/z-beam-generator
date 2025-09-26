@@ -9,9 +9,9 @@ from pathlib import Path
 
 def clean_duplicate_materials():
     """Remove duplicate materials with different naming conventions"""
-    materials_path = Path("data/materials.yaml")
+    materials_path = Path("data/Materials.yaml")
     
-    # Load materials.yaml
+    # Load Materials.yaml
     with open(materials_path, 'r') as f:
         data = yaml.safe_load(f)
     
@@ -36,7 +36,7 @@ def clean_duplicate_materials():
                 print(f"  ✅ Removed duplicate: {material_name}")
                 materials_removed += 1
     
-    # Save the cleaned materials.yaml
+    # Save the cleaned Materials.yaml
     with open(materials_path, 'w') as f:
         yaml.dump(data, f, default_flow_style=False, allow_unicode=True, width=120, indent=2)
     

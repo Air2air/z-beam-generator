@@ -213,7 +213,7 @@ class TestDataFactory:
 
     @staticmethod
     def create_test_materials(count: int = 3) -> List[Dict[str, Any]]:
-        """Create test material data using real materials from materials.yaml."""
+        """Create test material data using real materials from Materials.yaml."""
         try:
             from data.materials import load_materials
             materials_data = load_materials()

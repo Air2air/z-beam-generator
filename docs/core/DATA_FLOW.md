@@ -40,11 +40,11 @@ graph TB
 ```python
 # Input Sources
 CLI Input: --material "Aluminum"
-Batch Mode: All materials from materials.yaml
+Batch Mode: All materials from Materials.yaml
 Custom List: --materials "Steel,Copper,Aluminum"
 
 # Material Validation Process
-materials.yaml → Material Database Load → Validation → Selection
+Materials.yaml → Material Database Load → Validation → Selection
 ```
 
 **Data Flow**:
@@ -54,7 +54,7 @@ User Input → Argument Parser → Material Validator → Material Object
 
 **Key Files**:
 - `cli/argument_parser.py` - Command line processing
-- `data/materials.yaml` - Material database
+- `data/Materials.yaml` - Material database
 - `data/materials.py` - Material data access layer
 
 #### 1.2 Component Selection & Validation
@@ -305,7 +305,7 @@ graph LR
 
 ### Material Data → Frontmatter
 ```yaml
-# Input: materials.yaml
+# Input: Materials.yaml
 aluminum:
   name: "Aluminum"
   symbol: "Al"
@@ -359,7 +359,7 @@ materialContext:
 
 ### Material Data → Table Component
 ```yaml
-# Input: materials.yaml properties
+# Input: Materials.yaml properties
 properties:
   density: 2.70
   melting_point: 660.3

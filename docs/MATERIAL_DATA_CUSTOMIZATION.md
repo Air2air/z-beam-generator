@@ -9,7 +9,7 @@ This document explains how to work with modified material data in the Z-Beam Gen
 There are two primary ways to use material data in the system:
 
 1. **Standard Workflow via `run_dynamic_generation`**:
-   - Materials are loaded from `data/materials.yaml` via the `load_materials()` function
+   - Materials are loaded from `data/Materials.yaml` via the `load_materials()` function
    - The `DynamicGenerator` looks up materials by name
    - Not suitable for testing with modified material data
 

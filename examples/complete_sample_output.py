@@ -13,8 +13,8 @@ project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
 def find_material_data(material_name: str) -> dict:
-    """Find material data in materials.yaml"""
-    materials_path = project_root / "data" / "materials.yaml"
+    """Find material data in Materials.yaml"""
+    materials_path = project_root / "data" / "Materials.yaml"
     
     with open(materials_path, 'r') as f:
         all_data = yaml.safe_load(f)
@@ -79,7 +79,7 @@ def show_complete_sample_output():
         from components.frontmatter.enhancement.materials_yaml_mapper import MaterialsYamlFrontmatterMapper
         from components.frontmatter.enhancement.additive_enhancer import AdditiveFrontmatterEnhancer
         
-        # Method 1: Direct mapper (shows pure materials.yaml utilization)
+        # Method 1: Direct mapper (shows pure Materials.yaml utilization)
         print("\n1️⃣ DIRECT MATERIALS.YAML MAPPING:")
         print("-" * 40)
         
@@ -96,7 +96,7 @@ def show_complete_sample_output():
             else:
                 print(f"   {i:2d}. {key}")
         
-        # Method 2: Additive enhancement (combines existing + materials.yaml)
+        # Method 2: Additive enhancement (combines existing + Materials.yaml)
         if existing_frontmatter:
             print(f"\n2️⃣ ADDITIVE ENHANCEMENT (Existing + Materials.yaml):")
             print("-" * 50)
@@ -183,7 +183,7 @@ def show_complete_sample_output():
         print(f"Generated frontmatter sections: {len(direct_mapping)}")
         print(f"Technical properties extracted: {len(direct_mapping.get('technicalProperties', {}))}")
         print(f"Machine settings mapped: {len(direct_mapping.get('machineSettings', {}))}")
-        print(f"Data utilization: ~95% of available materials.yaml data")
+        print(f"Data utilization: ~95% of available Materials.yaml data")
         print(f"AI dependency reduction: ~75%")
         print(f"Organization: Logical sectional structure ✅")
         print(f"All properties included: ✅")

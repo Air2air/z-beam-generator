@@ -1,76 +1,50 @@
 materialTables:
   tables:
-  - header: '## Chemical Properties'
-    rows:
-    - property: Chemical Formula
-      value: Al
-      unit: '-'
-      category: Chemical
-    - property: Chemical Symbol
-      value: Al
-      unit: '-'
-      category: Chemical
   - header: '## Physical & Mechanical Properties'
     rows:
     - property: Density
-      value: '7.8'
+      value: '{''value'': 2.7, ''unit'': ''g/cm³'', ''confidence'': 98, ''description'': ''Pure aluminum density at room temperature (99.9% purity)'', ''min'': 2.65, ''max'': 2.75}'
       unit: g/cm³
+    - property: Melting Point
+      value: '{''value'': 660, ''unit'': ''°C'', ''confidence'': 95, ''description'': ''Melting point of pure aluminum at standard pressure'', ''min'': 658, ''max'': 662}'
+      unit: °C
     - property: Thermal Conductivity
-      value: '15'
+      value: '{''value'': 237, ''unit'': ''W/m·K'', ''confidence'': 92, ''description'': ''Thermal conductivity of pure aluminum at 25°C'', ''min'': 230, ''max'': 240}'
       unit: W/m·K
     - property: Tensile Strength
-      value: '200'
+      value: '{''value'': 90, ''unit'': ''MPa'', ''confidence'': 88, ''description'': ''Ultimate tensile strength of pure annealed aluminum'', ''min'': 80, ''max'': 100}'
       unit: MPa
+    - property: Hardness
+      value: '{''value'': 25, ''unit'': ''HV'', ''confidence'': 85, ''description'': ''Vickers hardness of annealed pure aluminum'', ''min'': 20, ''max'': 30}'
+      unit: HRB
     - property: Young's Modulus
-      value: '200'
+      value: '{''value'': 69, ''unit'': ''GPa'', ''confidence'': 95, ''description'': "Young''s modulus of elasticity for pure aluminum", ''min'': 68, ''max'': 70}'
       unit: GPa
   - header: '## Laser Processing Parameters'
     rows:
     - property: Power Range
-      value: '80.0'
+      value: '{''value'': 100, ''unit'': ''W'', ''confidence'': 92, ''description'': ''Optimal average power for aluminum oxide removal without substrate damage'', ''min'': 80, ''max'': 120}'
       unit: W
-    - property: Pulse Duration
-      value: '5.0'
-      unit: ns
-      category: Standard
     - property: Wavelength
-      value: '1064.0'
+      value: '{''value'': 1064, ''unit'': ''nm'', ''confidence'': 88, ''description'': ''Near-IR wavelength with good aluminum absorption for oxide layer removal'', ''min'': 1030, ''max'': 1070}'
       unit: nm
       category: Optimal
     - property: Spot Size
-      value: '2.0'
+      value: '{''value'': 50, ''unit'': ''μm'', ''confidence'': 84, ''description'': ''Optimal spot size for balancing cleaning efficiency and processing speed'', ''min'': 30, ''max'': 100}'
       unit: mm
       category: Configurable
     - property: Repetition Rate
-      value: '30.0'
+      value: '{''value'': 100, ''unit'': ''kHz'', ''confidence'': 87, ''description'': ''High repetition rate for efficient surface coverage while maintaining pulse energy'', ''min'': 50, ''max'': 200}'
       unit: kHz
       category: Variable
-    - property: Fluence Range
-      value: '0.8'
-      unit: J/cm²
-      category: Range
-    - property: Beam Profile
-      value: Gaussian TEM00
-      unit: '-'
-      category: System
-    - property: Safety Class
-      value: Class 4 (requires full enclosure)
-      unit: '-'
-      category: Safety
   - header: '## Applications & Industries'
     rows:
-    - property: Automotive
-      value: Removing paint and corrosion from aluminum car parts
+    - property: Application 1
+      value: laser cleaning
       unit: '-'
       category: Application
-    - property: Aerospace
-      value: Cleaning aluminum aircraft components for surface preparation
+    - property: Application 2
+      value: surface preparation
       unit: '-'
       category: Application
-  - header: '## Compatibility & Standards'
-    rows:
-    - property: Material Compatibility
-      value: laser_types, surface_treatments, incompatible_conditions
-      unit: '-'
-      category: Compatibility
 renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. Pure data structure optimized for performance.'

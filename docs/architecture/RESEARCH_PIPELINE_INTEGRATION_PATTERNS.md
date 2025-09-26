@@ -40,7 +40,7 @@ graph TD
 
 #### Tier 3: Basic Properties (Final Fallback)
 - **Activation**: When all research methods fail
-- **Capability**: Static property extraction from existing materials.yaml data
+- **Capability**: Static property extraction from existing Materials.yaml data
 - **Output Format**: Structured format converted from existing data
 - **Guarantee**: Always provides some output, even if minimal
 

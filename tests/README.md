@@ -145,7 +145,7 @@ def test_hybrid_component_with_mixed_mocking():
     mock_client = get_mock_api_client("deepseek")
 
     # Use REAL static data (no mocking)
-    static_data = load_static_data_from_yaml("materials.yaml")
+    static_data = load_static_data_from_yaml("Materials.yaml")
 
     result = generate_hybrid_component(
         material_name="Steel",

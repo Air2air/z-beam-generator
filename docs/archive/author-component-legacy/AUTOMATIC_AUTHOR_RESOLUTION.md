@@ -6,7 +6,7 @@ The Z-Beam generator implements **automatic author resolution** that eliminates 
 
 ## Architecture Principle
 
-**CRITICAL DESIGN DECISION**: The `--author` flag is **not needed** because author information is automatically resolved from the material data in `data/materials.yaml`. This design ensures:
+**CRITICAL DESIGN DECISION**: The `--author` flag is **not needed** because author information is automatically resolved from the material data in `data/Materials.yaml`. This design ensures:
 
 - **Consistency**: Each material has a predefined author assignment
 - **Reliability**: No manual author selection errors
@@ -17,7 +17,7 @@ The Z-Beam generator implements **automatic author resolution** that eliminates 
 
 ### Material Configuration Structure
 
-Each material in `data/materials.yaml` includes an `author_id` field:
+Each material in `data/Materials.yaml` includes an `author_id` field:
 
 ```yaml
 materials:
@@ -64,7 +64,7 @@ Authors are centrally managed in `components/author/authors.json`:
 
 ```mermaid
 graph TD
-    A[User runs: python3 run.py --material "Aluminum"] --> B[Load material data from materials.yaml]
+    A[User runs: python3 run.py --material "Aluminum"] --> B[Load material data from Materials.yaml]
     B --> C[Extract author_id: 1]
     C --> D[Lookup author in authors.json]
     D --> E[Resolve to: Yi-Chun Lin (Taiwan)]
@@ -83,7 +83,7 @@ def run_material_generation(
 ) -> Dict:
     """Generate content for a material with automatic author resolution."""
 
-    # Extract material data from materials.yaml
+    # Extract material data from Materials.yaml
     material_data = None
     materials_data = generator.materials_data
     if "materials" in materials_data:
@@ -224,7 +224,7 @@ python3 -m pytest tests/e2e/test_material_author_mapping.py -v
 
 ### Material Author Assignment
 
-To assign authors to materials, update `data/materials.yaml`:
+To assign authors to materials, update `data/Materials.yaml`:
 
 ```yaml
 materials:
@@ -258,7 +258,7 @@ Update `components/author/authors.json` to add/modify authors:
 ### Common Issues
 
 1. **"Author not found for material"**
-   - Check that material has `author_id` in `materials.yaml`
+   - Check that material has `author_id` in `Materials.yaml`
    - Verify author exists in `authors.json`
 
 2. **"Invalid author_id"**
@@ -267,7 +267,7 @@ Update `components/author/authors.json` to add/modify authors:
 
 3. **Wrong author assigned**
    - Verify material's author_id matches intended author
-   - Update materials.yaml if needed
+   - Update Materials.yaml if needed
 
 ### Debugging
 

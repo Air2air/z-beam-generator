@@ -12,7 +12,7 @@ The Z-Beam generator implements a robust **fail-fast author resolution system** 
 
 ### Primary Source: Material Configuration
 
-The **preferred source** for author information is the material-specific configuration in `data/materials.yaml`, which contains the author_id:
+The **preferred source** for author information is the material-specific configuration in `data/Materials.yaml`, which contains the author_id:
 
 ```yaml
 materials:
@@ -161,7 +161,7 @@ def run_material_generation(
 
     # Validate material and components...
     
-    # Extract material data from materials.yaml
+    # Extract material data from Materials.yaml
     material_data = None
     materials_data = generator.materials_data
     if "materials" in materials_data:
@@ -269,7 +269,7 @@ Tests validate end-to-end author resolution:
 
 Central registry of all available authors with complete metadata.
 
-### Material Configuration: `data/materials.yaml`
+### Material Configuration: `data/Materials.yaml`
 
 Maps materials to author IDs for fallback resolution:
 
@@ -323,7 +323,7 @@ template: |
 ### For Content Authors
 
 1. **Maintain Author Registry**: Keep `authors.json` current
-2. **Assign Author IDs**: Ensure all materials have `author_id` in `materials.yaml`
+2. **Assign Author IDs**: Ensure all materials have `author_id` in `Materials.yaml`
 3. **Validate Author Data**: Run author resolution tests before deployment
 
 ## Troubleshooting
@@ -357,7 +357,7 @@ template: |
 2. **Validate Material Configuration**:
    ```python
    import yaml
-   with open('data/materials.yaml') as f:
+   with open('data/Materials.yaml') as f:
        materials = yaml.safe_load(f)
    print(f"Aluminum author_id: {materials['materials']['metal']['items'][0]['author_id']}")
    ```

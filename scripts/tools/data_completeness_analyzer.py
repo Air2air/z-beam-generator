@@ -86,7 +86,7 @@ class DataCompletenessAnalyzer:
                 'metricsproperties': 'metricsproperties.json',
                 'metricsmachinesettings': 'metricsmachinesettings.json',
                 'jsonld': 'json-ld.json',
-                'materials_yaml': 'materials_yaml.json'
+                'materials_yaml': 'Materials_yaml.json'
             }
             
             for schema_name, filename in schema_files.items():
@@ -146,10 +146,10 @@ class DataCompletenessAnalyzer:
         return self._analyze_against_schema(data, 'frontmatter', material_name)
     
     def analyze_materials_yaml_completeness(self, material_name: str) -> CompletenessReport:
-        """Analyze materials.yaml entry completeness"""
+        """Analyze Materials.yaml entry completeness"""
         
-        # Load materials.yaml data
-        materials_path = self.project_root / "data" / "materials.yaml"
+        # Load Materials.yaml data
+        materials_path = self.project_root / "data" / "Materials.yaml"
         
         try:
             with open(materials_path, 'r') as f:
@@ -182,13 +182,13 @@ class DataCompletenessAnalyzer:
                     missing_required=[],
                     missing_optional=[],
                     field_analyses=[],
-                    recommendations=["Material not found in materials.yaml"],
+                    recommendations=["Material not found in Materials.yaml"],
                     quality_metrics={},
                     validation_errors=["Material data not found"]
                 )
                 
         except Exception as e:
-            self.logger.error(f"❌ Error loading materials.yaml: {e}")
+            self.logger.error(f"❌ Error loading Materials.yaml: {e}")
             material_data = {}
         
         return self._analyze_against_schema(material_data, 'materials_yaml', material_name)
@@ -432,7 +432,7 @@ class DataCompletenessAnalyzer:
         # Analyze frontmatter
         reports['frontmatter'] = self.analyze_frontmatter_completeness(material_name)
         
-        # Analyze materials.yaml
+        # Analyze Materials.yaml
         reports['materials_yaml'] = self.analyze_materials_yaml_completeness(material_name)
         
         return reports

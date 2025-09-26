@@ -3,7 +3,7 @@ Material Prompting System
 
 AI-powered materials research and population system for laser cleaning applications.
 
-KEY PURPOSE: Research and populate materials.yaml and frontmatter with comprehensive,
+KEY PURPOSE: Research and populate Materials.yaml and frontmatter with comprehensive,
 scientifically accurate material data through intelligent AI-driven analysis.
 
 Core Functions:
@@ -26,7 +26,7 @@ Directory Structure:
 Usage:
     from material_prompting import material_prompting
     
-    # Research and populate materials.yaml
+    # Research and populate Materials.yaml
     update_result = material_prompting.update_materials_yaml(
         target_materials=["Aluminum 6061", "Steel"],
         backup=True

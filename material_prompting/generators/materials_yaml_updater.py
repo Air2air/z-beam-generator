@@ -2,11 +2,11 @@
 """
 Materials.yaml Update Generator
 
-Intelligent system for updating materials.yaml with enhanced material properties and machine settings
+Intelligent system for updating Materials.yaml with enhanced material properties and machine settings
 using the material prompting system for category-aware customization and validation.
 
 This generator provides:
-- Automated gap detection in materials.yaml
+- Automated gap detection in Materials.yaml
 - AI-powered property research and generation
 - Category-aware validation and enhancement
 - Machine settings optimization
@@ -39,7 +39,7 @@ class MaterialUpdate:
 
 @dataclass
 class UpdateResult:
-    """Result of materials.yaml update operation"""
+    """Result of Materials.yaml update operation"""
     success: bool
     materials_updated: int
     properties_added: int
@@ -53,7 +53,7 @@ class MaterialsYamlUpdater:
     """
     Materials Research and Population System
     
-    KEY PURPOSE: Research and populate materials.yaml with comprehensive,
+    KEY PURPOSE: Research and populate Materials.yaml with comprehensive,
     scientifically accurate material data through AI-powered analysis.
     
     MISSION: Ensure every value for each material is fully analyzed, 
@@ -69,12 +69,12 @@ class MaterialsYamlUpdater:
     - Safe backup and recovery
     """
     
-    def __init__(self, materials_yaml_path: str = "data/materials.yaml"):
+    def __init__(self, materials_yaml_path: str = "data/Materials.yaml"):
         """
-        Initialize materials.yaml updater
+        Initialize Materials.yaml updater
         
         Args:
-            materials_yaml_path: Path to materials.yaml file
+            materials_yaml_path: Path to Materials.yaml file
         """
         self.materials_yaml_path = Path(materials_yaml_path)
         self.backup_dir = Path("backups/materials_yaml_updates")
@@ -110,7 +110,7 @@ class MaterialsYamlUpdater:
     
     def analyze_materials_gaps(self) -> Dict[str, List[str]]:
         """
-        Analyze materials.yaml for missing properties and optimization opportunities
+        Analyze Materials.yaml for missing properties and optimization opportunities
         
         Returns:
             Dictionary mapping material names to lists of missing/incomplete data
@@ -203,7 +203,7 @@ class MaterialsYamlUpdater:
         validate_only: bool = False
     ) -> UpdateResult:
         """
-        Update materials.yaml with enhanced properties and optimized settings
+        Update Materials.yaml with enhanced properties and optimized settings
         
         Args:
             target_materials: Specific materials to update (None = all materials)
@@ -289,7 +289,7 @@ class MaterialsYamlUpdater:
                     with open(self.materials_yaml_path, 'w') as f:
                         yaml.safe_dump(materials_data, f, default_flow_style=False, sort_keys=True)
                     
-                    logger.info(f"Updated materials.yaml: {materials_updated} materials, {properties_added} properties")
+                    logger.info(f"Updated Materials.yaml: {materials_updated} materials, {properties_added} properties")
             
             # Generate summary
             update_summary = []
@@ -311,7 +311,7 @@ class MaterialsYamlUpdater:
             )
             
         except Exception as e:
-            logger.error(f"Error updating materials.yaml: {e}")
+            logger.error(f"Error updating Materials.yaml: {e}")
             return UpdateResult(
                 success=False,
                 materials_updated=0,
@@ -408,7 +408,7 @@ class MaterialsYamlUpdater:
         return max(0.0, min(1.0, confidence))
     
     def _create_backup(self) -> Path:
-        """Create backup of current materials.yaml"""
+        """Create backup of current Materials.yaml"""
         
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         backup_path = self.backup_dir / f"materials_backup_{timestamp}.yaml"
@@ -418,7 +418,7 @@ class MaterialsYamlUpdater:
         return backup_path
     
     def restore_from_backup(self, backup_path: str) -> bool:
-        """Restore materials.yaml from backup"""
+        """Restore Materials.yaml from backup"""
         
         try:
             backup_file = Path(backup_path)
@@ -427,7 +427,7 @@ class MaterialsYamlUpdater:
                 return False
             
             shutil.copy2(backup_file, self.materials_yaml_path)
-            logger.info(f"Restored materials.yaml from {backup_path}")
+            logger.info(f"Restored Materials.yaml from {backup_path}")
             return True
             
         except Exception as e:
@@ -455,7 +455,7 @@ class MaterialsYamlUpdater:
 
 
 if __name__ == "__main__":
-    # Test materials.yaml updater
+    # Test Materials.yaml updater
     updater = MaterialsYamlUpdater()
     
     # Analyze gaps
@@ -473,4 +473,4 @@ if __name__ == "__main__":
         print(line)
     
     print(f"\nTotal materials with gaps: {len(gaps)}")
-    print("Ready for intelligent materials.yaml updates!")
+    print("Ready for intelligent Materials.yaml updates!")

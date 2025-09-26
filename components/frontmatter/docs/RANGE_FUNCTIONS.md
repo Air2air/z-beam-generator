@@ -1,13 +1,13 @@
 # Range Functions in Frontmatter Generator
 
 ## Overview
-The range functions in `StreamlinedFrontmatterGenerator` provide **materials science research-based** Min/Max ranges for DataMetrics schema compliance. Instead of generic calculations, they use actual material property data from `materials.yaml`.
+The range functions in `StreamlinedFrontmatterGenerator` provide **materials science research-based** Min/Max ranges for DataMetrics schema compliance. Instead of generic calculations, they use actual material property data from `Materials.yaml`.
 
 ## Architecture
 
 ### Materials Science Research Approach
 Range functions now use comprehensive materials research data:
-- **Material Category Ranges**: Extracted from `materials.yaml` `category_ranges` section
+- **Material Category Ranges**: Extracted from `Materials.yaml` `category_ranges` section
 - **Machine Settings Ranges**: Based on laser equipment specifications in `machineSettingsRanges`
 - **Property-Specific**: Each material category (metal, ceramic, glass, etc.) has scientifically researched ranges
 - **Equipment-Based**: Machine settings use actual laser equipment operational limits
@@ -25,7 +25,7 @@ Every property must include:
 
 #### _generate_properties_with_ranges()
 - **Purpose**: Generate material properties with research-based Min/Max ranges
-- **Data Source**: `materials.yaml` `category_ranges` section
+- **Data Source**: `Materials.yaml` `category_ranges` section
 - **Range Logic**: Uses actual material science data for each category
 - **Material Categories**: metal, ceramic, glass, composite, plastic, etc.
 - **Properties Handled**: 
@@ -36,7 +36,7 @@ Every property must include:
 
 #### _generate_machine_settings_with_ranges() 
 - **Purpose**: Generate machine settings with equipment-based Min/Max ranges
-- **Data Source**: `materials.yaml` `machineSettingsRanges` section
+- **Data Source**: `Materials.yaml` `machineSettingsRanges` section
 - **Range Logic**: Based on actual laser equipment specifications
 - **Settings Handled**:
   - powerRange (1W - 10,000W)

@@ -12,8 +12,8 @@ import yaml
 from pathlib import Path
 
 def load_materials():
-    """Load all materials from materials.yaml"""
-    materials_file = Path(__file__).parent.parent.parent / "data" / "materials.yaml"
+    """Load all materials from Materials.yaml"""
+    materials_file = Path(__file__).parent.parent.parent / "data" / "Materials.yaml"
     with open(materials_file, 'r') as f:
         data = yaml.safe_load(f)
     return data.get('material_index', {})

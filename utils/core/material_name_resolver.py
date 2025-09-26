@@ -3,7 +3,7 @@
 Material Name Resolver for Z-Beam Generator
 
 Provides centralized, consistent material name handling across all components.
-Ensures synchronization between materials.yaml data, component generators, 
+Ensures synchronization between Materials.yaml data, component generators, 
 slug utilities, and frontmatter processing.
 """
 
@@ -51,7 +51,7 @@ class MaterialNameResolver:
     
     @property
     def canonical_names(self) -> Set[str]:
-        """Get set of all canonical material names from materials.yaml"""
+        """Get set of all canonical material names from Materials.yaml"""
         if self._canonical_names is None:
             self._canonical_names = set(self.material_index.keys())
         return self._canonical_names
@@ -92,13 +92,13 @@ class MaterialNameResolver:
     
     def resolve_canonical_name(self, input_name: str) -> Optional[str]:
         """
-        Resolve any name variation to the canonical name from materials.yaml.
+        Resolve any name variation to the canonical name from Materials.yaml.
         
         Args:
             input_name: Name in any format (e.g., "aluminum", "Aluminum", "aluminum-laser-cleaning")
             
         Returns:
-            Canonical name from materials.yaml or None if not found
+            Canonical name from Materials.yaml or None if not found
             
         Examples:
             >>> resolver.resolve_canonical_name("aluminum")
@@ -199,19 +199,19 @@ class MaterialNameResolver:
     
     def validate_material_name(self, input_name: str) -> bool:
         """
-        Check if a material name is valid (exists in materials.yaml).
+        Check if a material name is valid (exists in Materials.yaml).
         
         Args:
             input_name: Name to validate
             
         Returns:
-            True if material exists in materials.yaml
+            True if material exists in Materials.yaml
         """
         return self.resolve_canonical_name(input_name) is not None
     
     def get_material_data(self, input_name: str) -> Optional[Dict]:
         """
-        Get material data from materials.yaml using any name format.
+        Get material data from Materials.yaml using any name format.
         
         Args:
             input_name: Name in any format
@@ -230,7 +230,7 @@ class MaterialNameResolver:
         Get list of all canonical material names.
         
         Returns:
-            Sorted list of all material names from materials.yaml
+            Sorted list of all material names from Materials.yaml
         """
         return sorted(list(self.canonical_names))
     
@@ -310,7 +310,7 @@ def get_material_display_name(input_name: str) -> str:
     return get_material_name_resolver().get_display_name(input_name)
 
 def validate_material(input_name: str) -> bool:
-    """Check if material exists in materials.yaml"""
+    """Check if material exists in Materials.yaml"""
     return get_material_name_resolver().validate_material_name(input_name)
 
 

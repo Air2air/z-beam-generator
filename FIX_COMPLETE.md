@@ -4,7 +4,7 @@
 After successfully consolidating frontmatter/metricsproperties/metricsmachinesettings components, frontmatter generation was missing machineSettings section despite promising it in the frontmatter metadata.
 
 ## Root Cause
-The `_generate_machine_settings_with_ranges()` method was only returning machine settings if they existed in materials.yaml. Since materials.yaml only contains basic metadata, no machine settings were generated.
+The `_generate_machine_settings_with_ranges()` method was only returning machine settings if they existed in Materials.yaml. Since Materials.yaml only contains basic metadata, no machine settings were generated.
 
 ## Solution Implemented
 Added `_generate_machine_settings_from_researcher()` method to `components/frontmatter/core/streamlined_generator.py` that:

@@ -9,7 +9,7 @@ import yaml
 
 def load_materials():
     """Load materials data from YAML file with optimization support."""
-    materials_file = Path(__file__).parent / "materials.yaml"
+    materials_file = Path(__file__).parent / "Materials.yaml"
 
     try:
         with open(materials_file, "r", encoding="utf-8") as f:

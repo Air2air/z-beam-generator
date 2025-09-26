@@ -3,7 +3,7 @@
 Chemical Fallback Generator
 
 Provides category-specific rules for generating chemical formulas and symbols
-for materials that don't have them explicitly defined in materials.yaml.
+for materials that don't have them explicitly defined in Materials.yaml.
 
 This module implements fail-fast architecture with no default fallbacks,
 only scientifically accurate category-based generation rules.

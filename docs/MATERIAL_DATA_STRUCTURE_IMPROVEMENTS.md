@@ -8,7 +8,7 @@ This document outlines the recent improvements made to the material data handlin
 
 1. **Inconsistent Material Data Access**: Different parts of the code were accessing the materials data structure in inconsistent ways, leading to errors like "Material 'Steel' not found" in tests despite the material existing in the data.
 
-2. **Mock vs. Real Data**: The test environment was using mock material data instead of the real `materials.yaml` file, causing discrepancies between test and production environments.
+2. **Mock vs. Real Data**: The test environment was using mock material data instead of the real `Materials.yaml` file, causing discrepancies between test and production environments.
 
 3. **Batch Generation Failure**: The batch generation mode (`--all` flag) was not finding any materials because it wasn't correctly accessing the "materials" key in the data structure.
 
@@ -21,7 +21,7 @@ This document outlines the recent improvements made to the material data handlin
 
 ### 2. Unified Data Source
 
-- Removed mock materials data in test files, ensuring all tests use the real `materials.yaml` file.
+- Removed mock materials data in test files, ensuring all tests use the real `Materials.yaml` file.
 - Updated `TestDataFactory` to use the real materials data instead of creating mock data.
 - This ensures that tests accurately reflect production behavior with real data.
 
@@ -37,7 +37,7 @@ This document outlines the recent improvements made to the material data handlin
 ```python
 def load_materials():
     """Load materials data from YAML file."""
-    materials_file = Path(__file__).parent / "materials.yaml"
+    materials_file = Path(__file__).parent / "Materials.yaml"
 
     try:
         with open(materials_file, "r", encoding="utf-8") as f:
@@ -77,7 +77,7 @@ categories = list(materials_section.keys())
 
 ### Changes to `tests/test_framework.py`
 
-Updated `TestDataFactory.create_test_materials` to use the real materials data from `materials.yaml` instead of creating mock data.
+Updated `TestDataFactory.create_test_materials` to use the real materials data from `Materials.yaml` instead of creating mock data.
 
 ## Benefits
 

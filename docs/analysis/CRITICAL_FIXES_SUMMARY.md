@@ -25,9 +25,9 @@
 
 ### 3. ✅ **Missing Test Data Files**
 **Files Created:**
-- `tests/data/materials.yaml` (comprehensive test materials data)
+- `tests/data/Materials.yaml` (comprehensive test materials data)
 
-**Issue:** Tests looking for `tests/data/materials.yaml` were failing with FileNotFoundError.
+**Issue:** Tests looking for `tests/data/Materials.yaml` were failing with FileNotFoundError.
 
 **Fix:** Created test-specific materials data with Steel, Aluminum, Copper, and test materials.
 

@@ -8,7 +8,7 @@
 
 1. ✅ **Fixed API Errors**: Resolved API timeout issues preventing frontmatter component generation
 2. ✅ **Centralized Configuration**: All API provider configurations now in single location (`run.py`)
-3. ✅ **Data Integration**: Confirmed data flows from `data/materials.yaml` and API sources
+3. ✅ **Data Integration**: Confirmed data flows from `data/Materials.yaml` and API sources
 4. ✅ **Documentation Updated**: Comprehensive documentation of all changes
 5. ✅ **Testing Coverage**: Added comprehensive test suites validating changes
 
@@ -56,7 +56,7 @@
 ### Functional Verification
 - **API Connectivity**: All 3 providers (DeepSeek, Grok, Winston) connect successfully
 - **Content Generation**: Steel material frontmatter generation working (39s response time)
-- **Data Integration**: 109 materials loaded from `data/materials.yaml` across 8 categories
+- **Data Integration**: 109 materials loaded from `data/Materials.yaml` across 8 categories
 - **Large Prompt Handling**: Successfully processes 4116+ character prompts
 - **Configuration Access**: All modules correctly access centralized configuration
 

@@ -66,7 +66,7 @@ class CategoryAwarePromptEnhancer:
         Initialize category-aware prompt enhancer
         
         Args:
-            materials_yaml_path: Path to materials.yaml for range data
+            materials_yaml_path: Path to Materials.yaml for range data
         """
         self.materials_yaml_path = materials_yaml_path
         self.category_contexts = {}

@@ -2,7 +2,7 @@
 
 ## 🎯 **Primary Purpose: Materials Research and Population**
 
-The Material Prompting System is designed with one key objective: **Research and populate materials.yaml and frontmatter with comprehensive, scientifically accurate material data** through AI-powered analysis.
+The Material Prompting System is designed with one key objective: **Research and populate Materials.yaml and frontmatter with comprehensive, scientifically accurate material data** through AI-powered analysis.
 
 ## 🔬 **Materials Research Capabilities**
 
@@ -78,7 +78,7 @@ properties = mp.enhance_material_properties(
 ## 📊 **Research Outputs**
 
 The system produces:
-1. **Enhanced materials.yaml** with comprehensive, research-backed data
+1. **Enhanced Materials.yaml** with comprehensive, research-backed data
 2. **Accurate frontmatter** with validated material metadata
 3. **Scientific prompts** that understand material characteristics
 4. **Quality reports** showing research confidence and validation results
@@ -92,4 +92,4 @@ Transforms manual material data entry into **intelligent, AI-driven materials re
 - Provides quality assurance
 - Scales efficiently across all materials
 
-**Bottom Line**: Automated materials research that produces publication-quality data for materials.yaml and frontmatter components.
+**Bottom Line**: Automated materials research that produces publication-quality data for Materials.yaml and frontmatter components.

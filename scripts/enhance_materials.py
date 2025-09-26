@@ -2,7 +2,7 @@
 """
 Materials Enhancement CLI
 
-Command-line interface for the materials.yaml enhancement pipeline.
+Command-line interface for the Materials.yaml enhancement pipeline.
 Provides easy access to gap analysis and automated research enhancement.
 
 Usage:
@@ -120,7 +120,7 @@ def main():
     subparsers = parser.add_subparsers(dest='command', help='Available commands')
     
     # Gap analysis command
-    analyze_parser = subparsers.add_parser('analyze', help='Analyze gaps in materials.yaml')
+    analyze_parser = subparsers.add_parser('analyze', help='Analyze gaps in Materials.yaml')
     analyze_parser.add_argument('--save-report', action='store_true', 
                                help='Save detailed gap analysis report')
     

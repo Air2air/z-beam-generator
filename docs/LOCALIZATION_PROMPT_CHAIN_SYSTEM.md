@@ -57,7 +57,7 @@ Currently supported countries with full localization:
 
 ### 1. Author Resolution
 When generating content, the system:
-1. Reads the material's `author_id` from `data/materials.yaml`
+1. Reads the material's `author_id` from `data/Materials.yaml`
 2. Resolves the author information from frontmatter `author_object` field
 3. Extracts the author's country
 
@@ -210,7 +210,7 @@ Failure to follow localization requirements will result in content rejection.
 
 2. **Wrong author in final content**
    - Check that `_format_content_with_frontmatter` prioritizes `author_info` over `frontmatter_data`
-   - Verify material's `author_id` in `data/materials.yaml`
+   - Verify material's `author_id` in `data/Materials.yaml`
 
 3. **Localization not being applied**
    - Verify localization prompt is first in the prompt construction
@@ -255,4 +255,4 @@ for author in authors:
 - `optimizer/text_optimization/prompts/personas/` (persona files)
 - `optimizer/text_optimization/prompts/formatting/` (formatting files)
 - Frontmatter data with `author_object` field
-- `data/materials.yaml` (material-author mapping)
+- `data/Materials.yaml` (material-author mapping)

@@ -9,10 +9,10 @@ from pathlib import Path
 
 def find_missing_materials():
     """Find materials that have frontmatter files but no index entries"""
-    materials_path = Path("data/materials.yaml")
+    materials_path = Path("data/Materials.yaml")
     frontmatter_dir = Path("content/components/frontmatter")
     
-    # Load materials.yaml
+    # Load Materials.yaml
     with open(materials_path, 'r') as f:
         data = yaml.safe_load(f)
     

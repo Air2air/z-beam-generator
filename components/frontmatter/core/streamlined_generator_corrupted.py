@@ -117,8 +117,8 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             from api.client_factory import APIClientFactory
             self.api_client = APIClientFactory.create_client()
             
-            # Load materials.yaml data
-            materials_yaml_path = os.path.join(os.path.dirname(__file__), "../../../data/materials.yaml")
+            # Load Materials.yaml data
+            materials_yaml_path = os.path.join(os.path.dirname(__file__), "../../../data/Materials.yaml")
             with open(materials_yaml_path, "r") as f:
                 materials_data = yaml.safe_load(f)
             
@@ -210,7 +210,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             # Materials.yaml only provides basic metadata (category, subcategory, author_id)
             frontmatter = self._generate_from_api(material_name, **kwargs)
             
-            # Overlay basic metadata from materials.yaml if available
+            # Overlay basic metadata from Materials.yaml if available
             material_data = self._get_material_data(material_name)
             if material_data:
                 # Preserve AI-generated technical content, overlay basic metadata only
@@ -236,7 +236,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
         return frontmatter
 
     def _get_material_data(self, material_name: str) -> Optional[Dict]:
-        """Get material data from materials.yaml with index enrichment"""
+        """Get material data from Materials.yaml with index enrichment"""
         if not hasattr(self, 'materials_data'):
             return None
         
@@ -265,7 +265,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
         return index_data if index_data else None
 
     def _generate_from_materials_data(self, material_data: Dict, material_name: str) -> Dict:
-        """Generate frontmatter from materials.yaml data with original flat structure"""
+        """Generate frontmatter from Materials.yaml data with original flat structure"""
         frontmatter = {}
         
         # 1. Core identification
@@ -375,7 +375,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
         """Generate properties with DataMetrics structure including Min/Max ranges"""
         properties = {}
         
-        # Map actual materials.yaml keys to property names
+        # Map actual Materials.yaml keys to property names
         property_mappings = {
             'density': 'density',
             'thermal_conductivity': 'thermalConductivity', 
@@ -685,7 +685,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             "requires_api": True,  # Fail-fast: No mocks or fallbacks allowed
             "type": "dynamic",
             "capabilities": [
-                "materials.yaml integration",
+                "Materials.yaml integration",
                 "unified property enhancement", 
                 "consolidated architecture",
                 "fail-fast validation"

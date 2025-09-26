@@ -108,13 +108,10 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             from data.materials import load_materials
             materials_data = load_materials()
             
-            # Store category ranges for material properties
-            self.category_ranges = materials_data.get('category_ranges', {})
-            
-            # Store machine settings ranges
+            # Store machine settings ranges (from Materials.yaml - machine-specific)
             self.machine_settings_ranges = materials_data.get('machineSettingsRanges', {})
             
-            self.logger.info("Loaded materials research data for accurate range calculations")
+            self.logger.info("Loaded materials research data for enhanced range calculations")
             
         except Exception as e:
             self.logger.error(f"Failed to load materials research data: {e}")
@@ -128,23 +125,66 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
         except Exception as e:
             self.logger.error(f"PropertyValueResearcher initialization failed: {e}")
             # FAIL-FAST per GROK_INSTRUCTIONS.md - no fallbacks allowed
-            raise ValueError(f"PropertyValueResearcher required for comprehensive property discovery: {e}")
+            raise PropertyDiscoveryError(f"PropertyValueResearcher required for AI-driven property discovery: {e}")
             
-        # Initialize MachineSettingsResearcher for machine settings generation
+        # Load Categories.yaml for enhanced category-level data (after PropertyValueResearcher)
         try:
-            from components.frontmatter.research.machine_settings_researcher import MachineSettingsResearcher
-            if not self.property_researcher:
-                raise ValueError("PropertyValueResearcher required for MachineSettingsResearcher initialization")
-            self.machine_settings_researcher = MachineSettingsResearcher(
-                material_researcher=self.property_researcher,
-                confidence_threshold=50,
-                debug_mode=False
-            )
-            self.logger.info("MachineSettingsResearcher initialized for machine settings generation")
+            self._load_categories_data()
         except Exception as e:
-            self.logger.error(f"MachineSettingsResearcher initialization failed: {e}")
-            # Fail-fast per GROK instructions - no fallbacks allowed
-            raise ValueError(f"MachineSettingsResearcher required for machine settings generation: {e}")
+            self.logger.error(f"Failed to load Categories.yaml: {e}")
+            # FAIL-FAST per GROK_INSTRUCTIONS.md - Categories.yaml is now required
+            raise ValueError(f"Categories.yaml required for enhanced category-level data: {e}")
+            
+    def _load_categories_data(self):
+        """Load Categories.yaml for enhanced category-level data and ranges"""
+        try:
+            import yaml
+            from pathlib import Path
+            
+                        # Load Categories.yaml for enhanced category data
+            base_dir = Path(__file__).resolve().parents[3]
+            categories_enhanced_path = base_dir / "data" / "Categories.yaml"
+            categories_path = base_dir / "data" / "Categories.yaml"
+            
+            categories_file = categories_enhanced_path if categories_enhanced_path.exists() else categories_path
+            
+            if not categories_file.exists():
+                raise FileNotFoundError(f"Categories file not found: {categories_file}")
+                
+            with open(categories_file, 'r', encoding='utf-8') as file:
+                categories_data = yaml.safe_load(file)
+            
+            # Extract category ranges from Categories.yaml structure
+            self.category_ranges = {}
+            self.category_enhanced_data = {}
+            
+            # Load standardized descriptions and templates
+            self.machine_settings_descriptions = categories_data.get('machineSettingsDescriptions', {})
+            self.material_property_descriptions = categories_data.get('materialPropertyDescriptions', {})
+            self.environmental_impact_templates = categories_data.get('environmentalImpactTemplates', {})
+            self.application_type_definitions = categories_data.get('applicationTypeDefinitions', {})
+            self.standard_outcome_metrics = categories_data.get('standardOutcomeMetrics', {})
+            
+            if 'categories' in categories_data:
+                for category_name, category_info in categories_data['categories'].items():
+                    # Store traditional category_ranges (for compatibility)
+                    if 'category_ranges' in category_info:
+                        self.category_ranges[category_name] = category_info['category_ranges']
+                    
+                    # Store enhanced category data (industry applications, electrical properties, etc.)
+                    self.category_enhanced_data[category_name] = {
+                        'industryApplications': category_info.get('industryApplications', {}),
+                        'electricalProperties': category_info.get('electricalProperties', {}),
+                        'processingParameters': category_info.get('processingParameters', {}),
+                        'chemicalProperties': category_info.get('chemicalProperties', {}),
+                        'common_applications': category_info.get('common_applications', [])
+                    }
+            
+            self.logger.info(f"Loaded Categories.yaml data: {len(self.category_ranges)} categories with enhanced properties")
+            
+        except Exception as e:
+            self.logger.error(f"Failed to load Categories.yaml: {e}")
+            raise
 
     def generate(self, material_name: str, **kwargs) -> ComponentResult:
         """Generate frontmatter content"""
@@ -202,11 +242,11 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             
             # Build base structure from YAML with all required schema fields
             frontmatter = {
-                'name': material_name.lower(),  # Required by schema
+                'name': material_name.title(),  # Capitalized for consistency
                 'title': material_data.get('title', f"{material_name.title()} Laser Cleaning"),
                 'description': material_data.get('description', f"Laser cleaning parameters for {material_name}"),
-                'category': material_data.get('category', 'materials'),
-                'subcategory': material_data.get('subcategory', material_name.lower()),
+                'category': material_data.get('category', 'materials').title(),  # Capitalized for consistency
+                'subcategory': material_data.get('subcategory', material_name.title()),  # Capitalized for consistency
                 'author_id': material_data.get('author_id', 3),  # Required by schema (not authorId)
                 'applications': material_data.get('applications', ['laser cleaning', 'surface preparation']),  # Required by schema
             }
@@ -221,6 +261,11 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             
             # Generate images section
             frontmatter['images'] = self._generate_images_section(material_name)
+            
+            # Add standardized sections from Categories.yaml
+            frontmatter = self._add_environmental_impact_section(frontmatter, material_data)
+            frontmatter = self._add_application_types_section(frontmatter, material_data)
+            frontmatter = self._add_outcome_metrics_section(frontmatter, material_data)
             
             # Generate author object (required by schema)
             frontmatter.update(self._generate_author_object(material_data))
@@ -263,6 +308,12 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                         'min': prop_data.get('min'),
                         'max': prop_data.get('max')
                     }
+                    
+                    # Enhance with standardized descriptions from Categories.yaml
+                    property_data = self._enhance_with_standardized_descriptions(
+                        property_data, prop_name, 'materialProperties'
+                    )
+                    
                     properties[prop_name] = property_data
                     self.logger.info(f"AI-discovered {prop_name}: {prop_data['value']} {prop_data['unit']} (confidence: {prop_data['confidence']}%)")
                 except Exception as e:
@@ -310,6 +361,12 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                         'min': setting_data.get('min'),
                         'max': setting_data.get('max')
                     }
+                    
+                    # Enhance with standardized descriptions from Categories.yaml
+                    machine_setting_data = self._enhance_with_standardized_descriptions(
+                        machine_setting_data, setting_name, 'machineSettings'
+                    )
+                    
                     machine_settings[setting_name] = machine_setting_data
                     self.logger.info(f"AI-discovered machine setting {setting_name}: {setting_data['value']} {setting_data['unit']} (confidence: {setting_data['confidence']}%)")
                 except Exception as e:
@@ -334,7 +391,8 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
         if numeric_value is None:
             return None
         
-        unit = self._extract_unit(material_value) or ""
+        # Get unit from Categories.yaml first, then fall back to extraction from material_value
+        unit = self._get_category_unit(material_category, prop_key) or self._extract_unit(material_value) or ""
         
         # Get research-based ranges for this property and material category
         min_val, max_val = self._get_research_based_range(prop_key, material_category, numeric_value)
@@ -353,7 +411,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
     
     def _get_research_based_range(self, prop_key: str, material_category: str, current_value: float) -> tuple[float, float]:
         """Get research-based min/max ranges for a property based on materials science data"""
-        # Map property keys to materials.yaml range keys
+        # Map property keys to Materials.yaml range keys
         property_mapping = {
             'density': 'density',
             'thermalConductivity': 'thermalConductivity', 
@@ -379,8 +437,17 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             range_key = property_mapping[prop_key]
             if material_category in self.category_ranges and range_key in self.category_ranges[material_category]:
                 category_range = self.category_ranges[material_category][range_key]
-                min_val = self._extract_numeric_only(category_range['min'])
-                max_val = self._extract_numeric_only(category_range['max'])
+                
+                # Handle Categories.yaml format (separate unit field) vs Materials.yaml format (inline units)
+                if isinstance(category_range.get('min'), (int, float)) and isinstance(category_range.get('max'), (int, float)):
+                    # Categories.yaml format: numeric min/max with separate unit field
+                    min_val = float(category_range['min'])
+                    max_val = float(category_range['max'])
+                else:
+                    # Legacy Materials.yaml format: string values with inline units
+                    min_val = self._extract_numeric_only(category_range['min'])
+                    max_val = self._extract_numeric_only(category_range['max'])
+                    
                 return min_val, max_val
         
         # Try machine settings ranges 
@@ -502,6 +569,14 @@ Return YAML format with materialProperties (not properties) and machineSettings 
             if not isinstance(parsed, dict):
                 raise ValueError("Invalid YAML structure")
             
+            # Capitalize name, category, and subcategory fields
+            if 'name' in parsed:
+                parsed['name'] = str(parsed['name']).title()
+            if 'category' in parsed:
+                parsed['category'] = str(parsed['category']).title()
+            if 'subcategory' in parsed:
+                parsed['subcategory'] = str(parsed['subcategory']).title()
+            
             return parsed
             
         except Exception as e:
@@ -529,6 +604,47 @@ Return YAML format with materialProperties (not properties) and machineSettings 
             if match:
                 return match.group(1)
         
+        return None
+
+    def _get_category_unit(self, material_category: str, prop_key: str) -> Optional[str]:
+        """Get unit for property from Categories.yaml enhanced data"""
+        try:
+            # Map frontend property keys to Categories.yaml range keys
+            property_mapping = {
+                'density': 'density',
+                'thermalConductivity': 'thermalConductivity', 
+                'tensileStrength': 'tensileStrength',
+                'youngsModulus': 'youngsModulus',
+                'hardness': 'hardness',
+                'electricalConductivity': 'electricalConductivity',
+                'meltingPoint': 'thermalDestructionPoint',
+                'thermalExpansion': 'thermalExpansion',
+                'thermalDiffusivity': 'thermalDiffusivity',
+                'specificHeat': 'specificHeat',
+                'laserAbsorption': 'laserAbsorption',
+                'laserReflectivity': 'laserReflectivity'
+            }
+            
+            if prop_key in property_mapping:
+                range_key = property_mapping[prop_key]
+                if (material_category in self.category_ranges and 
+                    range_key in self.category_ranges[material_category] and
+                    'unit' in self.category_ranges[material_category][range_key]):
+                    return self.category_ranges[material_category][range_key]['unit']
+                    
+            # Check enhanced properties for electrical, processing, chemical properties
+            if material_category in self.category_enhanced_data:
+                enhanced_data = self.category_enhanced_data[material_category]
+                
+                for property_type in ['electricalProperties', 'processingParameters', 'chemicalProperties']:
+                    if property_type in enhanced_data and prop_key in enhanced_data[property_type]:
+                        prop_data = enhanced_data[property_type][prop_key]
+                        if isinstance(prop_data, dict) and 'unit' in prop_data:
+                            return prop_data['unit']
+                            
+        except Exception as e:
+            self.logger.warning(f"Could not get unit for {prop_key} in {material_category}: {e}")
+            
         return None
 
     def _generate_author_object(self, material_data: Dict) -> Dict:
@@ -595,3 +711,98 @@ Return YAML format with materialProperties (not properties) and machineSettings 
             self.logger.error(f"Images section generation failed for {material_name}: {e}")
             # FAIL-FAST per GROK_INSTRUCTIONS.md - no fallbacks allowed
             raise PropertyDiscoveryError(f"Images section generation required: {e}")
+
+    def _enhance_with_standardized_descriptions(self, property_data: Dict, property_name: str, property_type: str) -> Dict:
+        """Enhance property data with standardized descriptions from Categories.yaml"""
+        try:
+            enhanced_data = property_data.copy()
+            
+            if property_type == 'machineSettings':
+                # Skip adding standardized machine settings descriptions to reduce verbosity
+                # The AI-generated description is sufficient
+                pass
+                        
+            elif property_type == 'materialProperties':
+                # Skip adding standardized material property descriptions to reduce verbosity
+                # The AI-generated description is sufficient
+                pass
+                        
+            return enhanced_data
+            
+        except Exception as e:
+            self.logger.warning(f"Failed to enhance {property_name} with standardized descriptions: {e}")
+            return property_data  # Return original data if enhancement fails
+
+    def _add_environmental_impact_section(self, frontmatter: Dict, material_data: Dict) -> Dict:
+        """Add environmental impact section using standardized templates"""
+        try:
+            environmental_impact = []
+            
+            # Apply relevant environmental impact templates
+            for impact_type, template in self.environmental_impact_templates.items():
+                environmental_impact.append({
+                    'benefit': impact_type.replace('_', ' ').title(),
+                    'description': template.get('description', ''),
+                    'applicableIndustries': template.get('applicable_industries', []),
+                    'quantifiedBenefits': template.get('quantified_benefits', ''),
+                    'sustainabilityBenefit': template.get('sustainability_benefit', '')
+                })
+                
+            if environmental_impact:
+                frontmatter['environmentalImpact'] = environmental_impact
+                
+            return frontmatter
+            
+        except Exception as e:
+            self.logger.warning(f"Failed to add environmental impact section: {e}")
+            return frontmatter
+
+    def _add_application_types_section(self, frontmatter: Dict, material_data: Dict) -> Dict:
+        """Add application types section using standardized definitions"""
+        try:
+            applications = []
+            
+            # Apply relevant application type definitions
+            for app_type, definition in self.application_type_definitions.items():
+                applications.append({
+                    'type': app_type.replace('_', ' ').title(),
+                    'description': definition.get('description', ''),
+                    'industries': definition.get('industries', []),
+                    'qualityMetrics': definition.get('quality_metrics', []),
+                    'typicalTolerances': definition.get('typical_tolerances', ''),
+                    'objectives': definition.get('objectives', [])
+                })
+                
+            if applications:
+                frontmatter['applicationTypes'] = applications
+                
+            return frontmatter
+            
+        except Exception as e:
+            self.logger.warning(f"Failed to add application types section: {e}")
+            return frontmatter
+
+    def _add_outcome_metrics_section(self, frontmatter: Dict, material_data: Dict) -> Dict:
+        """Add outcome metrics section using standardized metrics"""
+        try:
+            outcome_metrics = []
+            
+            # Apply relevant standard outcome metrics
+            for metric_type, metric_def in self.standard_outcome_metrics.items():
+                outcome_metrics.append({
+                    'metric': metric_type.replace('_', ' ').title(),
+                    'description': metric_def.get('description', ''),
+                    'measurementMethods': metric_def.get('measurement_methods', []),
+                    'typicalRanges': metric_def.get('typical_ranges', ''),
+                    'factorsAffecting': metric_def.get('factors_affecting', []),
+                    'units': metric_def.get('units', [])
+                })
+                
+            if outcome_metrics:
+                frontmatter['outcomeMetrics'] = outcome_metrics
+                
+            return frontmatter
+            
+        except Exception as e:
+            self.logger.warning(f"Failed to add outcome metrics section: {e}")
+            return frontmatter

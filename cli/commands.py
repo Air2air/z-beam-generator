@@ -92,7 +92,7 @@ def list_available_materials():
     except ImportError:
         print("❌ Could not load materials data")
         print(
-            "💡 Make sure data/materials.yaml exists and is properly formatted"
+            "💡 Make sure data/Materials.yaml exists and is properly formatted"
         )
 
 
@@ -370,7 +370,7 @@ def run_content_batch_generation():
                         generator=generator,
                         material=material_name,
                         component_types=enabled_components,
-                        author_info=None,  # Will use material's author_id from materials.yaml
+                        author_info=None,  # Will use material's author_id from Materials.yaml
                     )
 
                     processed_materials += 1
@@ -484,7 +484,7 @@ def run_batch_generation(material_name: Optional[str] = None, components: Option
                 result = run_material_generation(
                     material=material_name,
                     component_types=component_types,
-                    author_id=None,  # Will use material's author_id from materials.yaml
+                    author_id=None,  # Will use material's author_id from Materials.yaml
                 )
 
                 print("✅ Generation completed!")
@@ -617,7 +617,7 @@ def run_batch_generation(material_name: Optional[str] = None, components: Option
                             result = run_material_generation(
                                 material=material_name,
                                 component_types=available_components,
-                                author_id=None,  # Will use material's author_id from materials.yaml
+                                author_id=None,  # Will use material's author_id from Materials.yaml
                             )
 
                             material_time = time.time() - material_start_time

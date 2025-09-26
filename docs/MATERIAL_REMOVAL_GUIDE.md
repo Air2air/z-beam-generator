@@ -13,14 +13,14 @@ The `remove_material.py` script provides comprehensive material removal capabili
 
 ### 🗑️ **Safe Removal**
 - Dry-run mode (default) for safe preview
-- Remove material from materials.yaml
+- Remove material from Materials.yaml
 - Delete all associated component files
 - Comprehensive error handling
 
 ### 🛡️ **Safety Features**
 - Always defaults to dry-run mode
 - Optional confirmation prompts
-- Automatic backup of materials.yaml
+- Automatic backup of Materials.yaml
 - Detailed logging and reporting
 
 ## Usage Examples
@@ -86,8 +86,8 @@ The script will find and remove files from these component directories:
 - Prevents accidental removals in scripts
 
 ### 3. Backup Creation
-- Automatically backs up `materials.yaml` before changes
-- Backup saved as `materials.yaml.backup`
+- Automatically backs up `Materials.yaml` before changes
+- Backup saved as `Materials.yaml.backup`
 
 ### 4. Error Handling
 - Graceful handling of missing files

@@ -7,7 +7,7 @@
 ### 1. How can we ensure the schema is the single source of truth?
 
 **Current Problem**: The system has **three different data representations**:
-- `materials.yaml`: Nested objects with validation metadata
+- `Materials.yaml`: Nested objects with validation metadata
 - `frontmatter.json` schema: Flattened properties (densityUnit, densityConfidenceScore)  
 - Generated frontmatter: Flattened YAML following current schema
 
@@ -107,7 +107,7 @@ The demo revealed a **fundamental mismatch**:
     "type": "string", 
     "enum": [
       "precious", "ferrous", "non-ferrous", "refractory", "reactive", "specialty", "aerospace",
-      // Add missing values found in materials.yaml
+      // Add missing values found in Materials.yaml
     ]
   }
 }
@@ -186,7 +186,7 @@ SCHEMA COMPLIANCE IS MANDATORY - any violations will cause generation failure.
 
 #### 3.1 Remove All Property Data
 ```yaml
-# OLD materials.yaml (REMOVE)
+# OLD Materials.yaml (REMOVE)
 properties:
   density:
     value: 4.43
@@ -194,7 +194,7 @@ properties:
     validation:
       confidence_score: 0.95
 
-# NEW materials.yaml (KEEP ONLY)
+# NEW Materials.yaml (KEEP ONLY)
 "aluminum":
   # Core metadata
   category: metal
@@ -213,9 +213,9 @@ properties:
 #### 3.2 Migration Script
 ```python
 def migrate_materials_yaml():
-    """Migrate from property-rich to metadata-only materials.yaml"""
+    """Migrate from property-rich to metadata-only Materials.yaml"""
     
-    with open("data/materials.yaml", "r") as f:
+    with open("data/Materials.yaml", "r") as f:
         current_data = yaml.safe_load(f)
     
     simplified_data = {}
@@ -239,10 +239,10 @@ def migrate_materials_yaml():
     
     # Backup original
     backup_path = f"backups/materials_pre_schema_migration_{datetime.now().strftime('%Y%m%d_%H%M%S')}.yaml"
-    os.rename("data/materials.yaml", backup_path)
+    os.rename("data/Materials.yaml", backup_path)
     
     # Write simplified version
-    with open("data/materials.yaml", "w") as f:
+    with open("data/Materials.yaml", "w") as f:
         yaml.dump(simplified_data, f, indent=2)
 ```
 
@@ -353,9 +353,9 @@ def generate_with_quality_gates(material_name: str, components: List[str]):
 3. Add mandatory validation pipeline
 
 ### Week 3: Data Migration
-1. Backup current materials.yaml
+1. Backup current Materials.yaml
 2. Migrate to simplified metadata-only structure
-3. Test generation with simplified materials.yaml
+3. Test generation with simplified Materials.yaml
 
 ### Week 4: Quality Integration
 1. Integrate quality gates into generation pipeline

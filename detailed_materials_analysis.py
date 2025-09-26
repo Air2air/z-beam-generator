@@ -8,7 +8,7 @@ import yaml
 from collections import defaultdict
 
 def load_materials(file_path: str):
-    """Load the materials.yaml file."""
+    """Load the Materials.yaml file."""
     with open(file_path, 'r', encoding='utf-8') as f:
         return yaml.safe_load(f)
 
@@ -233,7 +233,7 @@ def check_data_quality_patterns(data):
 
 def main():
     """Main analysis function."""
-    file_path = "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/data/materials.yaml"
+    file_path = "/Users/todddunning/Desktop/Z-Beam/z-beam-generator/data/Materials.yaml"
     
     print("DETAILED MATERIALS.YAML ISSUES ANALYSIS")
     

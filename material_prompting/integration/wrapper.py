@@ -4,7 +4,7 @@ Material Prompting Integration Wrapper
 
 Materials Research and Population System for Z-Beam Generator
 
-KEY PURPOSE: Research and populate materials.yaml and frontmatter with
+KEY PURPOSE: Research and populate Materials.yaml and frontmatter with
 comprehensive, scientifically accurate material data.
 
 Core Research Functions:
@@ -69,7 +69,7 @@ class MaterialPromptingIntegration:
     
     @property
     def materials_updater(self):
-        """Lazy-loaded materials.yaml updater"""
+        """Lazy-loaded Materials.yaml updater"""
         if self._materials_updater is None:
             from ..generators.materials_yaml_updater import MaterialsYamlUpdater
             self._materials_updater = MaterialsYamlUpdater()
@@ -190,7 +190,7 @@ class MaterialPromptingIntegration:
         validate_only: bool = False
     ):
         """
-        Update materials.yaml with enhanced properties and settings
+        Update Materials.yaml with enhanced properties and settings
         
         Args:
             target_materials: Specific materials to update (None = all)
@@ -208,7 +208,7 @@ class MaterialPromptingIntegration:
     
     def analyze_materials_gaps(self) -> Dict[str, list]:
         """
-        Analyze materials.yaml for gaps and optimization opportunities
+        Analyze Materials.yaml for gaps and optimization opportunities
         
         Returns:
             Dictionary mapping material names to lists of missing data
@@ -348,7 +348,7 @@ def optimize_machine_settings(
 
 
 def update_materials_yaml(target_materials: Optional[list] = None):
-    """Update materials.yaml (convenience function)"""
+    """Update Materials.yaml (convenience function)"""
     return material_prompting.update_materials_yaml(target_materials)
 
 

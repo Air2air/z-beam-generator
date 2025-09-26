@@ -188,7 +188,7 @@ else:
 ### Phase 2: Quality Assurance
 1. **Test random sample** of 10-15 files with content generation
 2. **Validate component integration** with fixed frontmatter
-3. **Verify materials.yaml integration** works with normalized files
+3. **Verify Materials.yaml integration** works with normalized files
 4. **Performance testing** on bulk operations
 
 ### Phase 3: Production Readiness

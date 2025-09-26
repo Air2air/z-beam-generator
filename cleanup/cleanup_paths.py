@@ -30,7 +30,7 @@ from utils.slug_utils import create_filename_slug, get_clean_material_mapping
     parser.add_argument(
         "--content-only",
         action="store_true",
-        help="Only process content files, skip materials.yaml",
+        help="Only process content files, skip Materials.yaml",
     )
 
     args = parser.parse_args()
@@ -78,9 +78,9 @@ from utils.slug_utils import create_filename_slug, get_clean_material_mapping
             logger.info(f"  ❌ Failed: {results['failed']}")
             logger.info(f"  ⏭️  Skipped: {results['skipped']}")
 
-    # Update materials.yaml unless content-only flag is set
+    # Update Materials.yaml unless content-only flag is set
     if not args.content_only:
-        logger.info("\n📄 Updating materials.yaml...")
+        logger.info("\n📄 Updating Materials.yaml...")
         logger.info("-" * 40)
         materials_updated = update_materials_yaml(dry_run)
 

@@ -58,11 +58,11 @@ class SchemaMigrator:
         
         self.backup_dir.mkdir(parents=True, exist_ok=True)
         
-        # Backup materials.yaml
-        materials_src = self.data_dir / "materials.yaml"
+        # Backup Materials.yaml
+        materials_src = self.data_dir / "Materials.yaml"
         if materials_src.exists():
-            shutil.copy2(materials_src, self.backup_dir / "materials.yaml")
-            print("  ✅ Backed up materials.yaml")
+            shutil.copy2(materials_src, self.backup_dir / "Materials.yaml")
+            print("  ✅ Backed up Materials.yaml")
         
         # Backup frontmatter directory
         if self.frontmatter_dir.exists():
@@ -88,15 +88,15 @@ class SchemaMigrator:
             return data
 
     def migrate_materials_yaml(self):
-        """Migrate materials.yaml to new schema format"""
-        print("🔧 Migrating materials.yaml...")
+        """Migrate Materials.yaml to new schema format"""
+        print("🔧 Migrating Materials.yaml...")
         
-        materials_path = self.data_dir / "materials.yaml"
+        materials_path = self.data_dir / "Materials.yaml"
         if not materials_path.exists():
-            print("❌ materials.yaml not found")
+            print("❌ Materials.yaml not found")
             return False
         
-        # Load materials.yaml
+        # Load Materials.yaml
         with open(materials_path, 'r') as f:
             data = yaml.safe_load(f)
         
@@ -132,11 +132,11 @@ class SchemaMigrator:
                 migrations_applied += 1
                 print(f"  ✅ Removed unexpected property: {prop}")
         
-        # Save migrated materials.yaml
+        # Save migrated Materials.yaml
         with open(materials_path, 'w') as f:
             yaml.dump(data, f, default_flow_style=False, allow_unicode=True, width=120, indent=2)
         
-        print(f"  ✅ Applied {migrations_applied} migrations to materials.yaml")
+        print(f"  ✅ Applied {migrations_applied} migrations to Materials.yaml")
         return True
 
     def migrate_frontmatter_files(self):
@@ -242,7 +242,7 @@ class SchemaMigrator:
             return False
         print()
         
-        # Step 2: Migrate materials.yaml
+        # Step 2: Migrate Materials.yaml
         materials_success = self.migrate_materials_yaml()
         print()
         

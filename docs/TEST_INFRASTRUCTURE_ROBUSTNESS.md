@@ -52,7 +52,7 @@ components/table/
 - Added `docs/AUTHOR_RESOLUTION_ARCHITECTURE.md` with detailed system documentation
 - Validated the three-tier resolution hierarchy:
   1. Complete author object from frontmatter component
-  2. Fallback to author_id from materials.yaml
+  2. Fallback to author_id from Materials.yaml
   3. Frontmatter author_object extraction
 
 **Impact**: Author resolution is now fully tested and documented, ensuring reliable content generation with proper author attribution.

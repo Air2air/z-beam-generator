@@ -254,7 +254,7 @@ The system now uses strict fail-fast architecture:
 #### **Verified Functionality**
 - ✅ API connectivity test: All 3 providers (DeepSeek, Grok, Winston) connect successfully
 - ✅ Content generation: Frontmatter generation working for Steel material
-- ✅ Data integration: Materials loaded from `data/materials.yaml` (109 materials across 8 categories)
+- ✅ Data integration: Materials loaded from `data/Materials.yaml` (109 materials across 8 categories)
 - ✅ Import dependencies: All files correctly import from centralized location
 
 ### Historical Performance Fixes

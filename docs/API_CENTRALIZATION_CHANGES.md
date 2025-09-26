@@ -179,7 +179,7 @@ python3 run.py --test-api --verbose
 python3 run.py --material "Steel" --verbose
 ```
 **Results**:
-- ✅ Material found: Steel (from materials.yaml)
+- ✅ Material found: Steel (from Materials.yaml)
 - ✅ Frontmatter generated successfully
 - ✅ File saved: `content/components/frontmatter/steel-laser-cleaning.md`
 - ✅ Generation time: 39.0 seconds

@@ -48,7 +48,7 @@ class MaterialRemover:
 
     def __init__(self, project_root: Path = None):
         self.project_root = project_root or Path.cwd()
-        self.materials_file = self.project_root / "data" / "materials.yaml"
+        self.materials_file = self.project_root / "data" / "Materials.yaml"
         self.content_dir = self.project_root / "content"
         self.components_dir = self.content_dir / "components"
 

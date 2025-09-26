@@ -47,7 +47,7 @@ python3 -c "from components.frontmatter.research.property_researcher import Prop
 ```
 
 **Common Solutions:**
-1. **Missing Material Data**: Check `data/materials.yaml` for material entry
+1. **Missing Material Data**: Check `data/Materials.yaml` for material entry
 2. **Research Failure**: Verify PropertyResearcher has necessary data sources
 3. **Schema Validation**: Ensure `schemas/frontmatter.json` is properly configured
 

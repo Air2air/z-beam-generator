@@ -1,0 +1,253 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Categories Database Schema",
+  "description": "Schema for Categories.yaml - Material property ranges organized by category and subcategory",
+  "type": "object",
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$",
+          "description": "Semantic version of the categories database"
+        },
+        "generated_date": {
+          "type": "string",
+          "format": "date-time",
+          "description": "ISO 8601 timestamp of generation"
+        },
+        "source_materials_yaml_hash": {
+          "type": "string",
+          "description": "Hash of source Materials.yaml for tracking changes"
+        },
+        "research_confidence_threshold": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Minimum confidence score for included data"
+        },
+        "total_categories": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "total_subcategories": {
+          "type": "integer", 
+          "minimum": 1
+        }
+      },
+      "required": ["version", "generated_date", "total_categories", "total_subcategories"],
+      "additionalProperties": false
+    },
+    "categories": {
+      "type": "object",
+      "patternProperties": {
+        "^[a-z]+$": {
+          "type": "object",
+          "properties": {
+            "category_ranges": {
+              "$ref": "#/definitions/PropertyRanges",
+              "description": "Category-level property ranges (inherited from Materials.yaml)"
+            },
+            "subcategories": {
+              "type": "object",
+              "patternProperties": {
+                "^[a-z-_]+$": {
+                  "type": "object",
+                  "properties": {
+                    "materialProperties": {
+                      "$ref": "#/definitions/MaterialPropertyRanges"
+                    },
+                    "machineSettings": {
+                      "$ref": "#/definitions/MachineSettingRanges"
+                    },
+                    "specialConsiderations": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "description": "Special handling notes for this subcategory"
+                    },
+                    "research_sources": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/ResearchSource"
+                      }
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "additionalProperties": false
+            },
+            "common_applications": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Typical laser cleaning applications for this category"
+            }
+          },
+          "required": ["category_ranges"],
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "required": ["metadata", "categories"],
+  "additionalProperties": false,
+  "definitions": {
+    "DataMetricValue": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "oneOf": [
+            {"type": "number"},
+            {"type": "string"}
+          ]
+        },
+        "unit": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "description": {
+          "type": "string"
+        },
+        "min": {
+          "oneOf": [
+            {"type": "number"},
+            {"type": "string"},
+            {"type": "null"}
+          ]
+        },
+        "max": {
+          "oneOf": [
+            {"type": "number"},
+            {"type": "string"},
+            {"type": "null"}
+          ]
+        },
+        "typical": {
+          "oneOf": [
+            {"type": "number"},
+            {"type": "string"},
+            {"type": "null"}
+          ]
+        },
+        "wavelength_optimized": {
+          "type": ["number", "null"],
+          "description": "Optimal wavelength for laser properties (nm)"
+        }
+      },
+      "required": ["value", "unit", "confidence"],
+      "additionalProperties": false
+    },
+    "PropertyRanges": {
+      "type": "object",
+      "patternProperties": {
+        "^[a-zA-Z][a-zA-Z0-9_]*$": {
+          "type": "object",
+          "properties": {
+            "min": {
+              "type": "string"
+            },
+            "max": {
+              "type": "string"
+            }
+          },
+          "required": ["min", "max"],
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "MaterialPropertyRanges": {
+      "type": "object",
+      "properties": {
+        "density": {"$ref": "#/definitions/DataMetricValue"},
+        "meltingPoint": {"$ref": "#/definitions/DataMetricValue"},
+        "thermalConductivity": {"$ref": "#/definitions/DataMetricValue"},
+        "tensileStrength": {"$ref": "#/definitions/DataMetricValue"},
+        "hardness": {"$ref": "#/definitions/DataMetricValue"},
+        "youngsModulus": {"$ref": "#/definitions/DataMetricValue"},
+        "thermalExpansion": {"$ref": "#/definitions/DataMetricValue"},
+        "specificHeat": {"$ref": "#/definitions/DataMetricValue"},
+        "thermalDiffusivity": {"$ref": "#/definitions/DataMetricValue"},
+        "reflectivity": {"$ref": "#/definitions/DataMetricValue"},
+        "absorptionCoefficient": {"$ref": "#/definitions/DataMetricValue"},
+        "ablationThreshold": {"$ref": "#/definitions/DataMetricValue"},
+        "oxidationResistance": {"$ref": "#/definitions/DataMetricValue"},
+        "crystallineStructure": {"$ref": "#/definitions/DataMetricValue"}
+      },
+      "additionalProperties": false
+    },
+    "MachineSettingRanges": {
+      "type": "object", 
+      "properties": {
+        "powerRange": {"$ref": "#/definitions/DataMetricValue"},
+        "wavelength": {"$ref": "#/definitions/DataMetricValue"},
+        "spotSize": {"$ref": "#/definitions/DataMetricValue"},
+        "repetitionRate": {"$ref": "#/definitions/DataMetricValue"},
+        "fluenceThreshold": {"$ref": "#/definitions/DataMetricValue"},
+        "pulseWidth": {"$ref": "#/definitions/DataMetricValue"},
+        "scanSpeed": {"$ref": "#/definitions/DataMetricValue"},
+        "overlapRatio": {"$ref": "#/definitions/DataMetricValue"},
+        "passCount": {"$ref": "#/definitions/DataMetricValue"}
+      },
+      "additionalProperties": false
+    },
+    "ResearchSource": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["journal", "handbook", "database", "standard", "manufacturer", "ai_validated"]
+        },
+        "title": {
+          "type": "string"
+        },
+        "authors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "publication": {
+          "type": "string"
+        },
+        "year": {
+          "type": "integer",
+          "minimum": 1900,
+          "maximum": 2030
+        },
+        "doi": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "confidence_contribution": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "How much this source contributes to overall confidence"
+        },
+        "properties_validated": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Which properties this source validates"
+        }
+      },
+      "required": ["type", "title", "confidence_contribution"],
+      "additionalProperties": false
+    }
+  }
+}

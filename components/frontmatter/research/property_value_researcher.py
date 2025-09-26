@@ -306,7 +306,7 @@ class PropertyValueResearcher:
                              material_name: str, 
                              property_name: str,
                              context: ResearchContext) -> Optional[PropertyResult]:
-        """Look up property from materials.yaml data"""
+        """Look up property from Materials.yaml data"""
         try:
             from data.materials import get_material_by_name
             
@@ -326,7 +326,7 @@ class PropertyValueResearcher:
             property_metric = PropertyDataMetric(
                 value=value,
                 unit=unit,
-                confidence=75  # Medium confidence for materials.yaml data
+                confidence=75  # Medium confidence for Materials.yaml data
             )
             
             return PropertyResult(

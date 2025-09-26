@@ -1,319 +1,3 @@
-category_ranges:
-  ceramic:
-    density:
-      max: 15.7 g/cm³
-      min: 1.8 g/cm³
-    hardness:
-      max: 10 Mohs
-      min: 6 Mohs
-    laserAbsorption:
-      max: 50 cm⁻¹
-      min: 0.1 cm⁻¹
-    laserReflectivity:
-      max: 90%
-      min: 5%
-    specificHeat:
-      max: 1.1 J/g·K
-      min: 0.4 J/g·K
-    tensileStrength:
-      max: 1000 MPa
-      min: 50 MPa
-    thermalConductivity:
-      max: 200 W/m·K
-      min: 0.5 W/m·K
-    thermalDestructionPoint:
-      max: 3827°C
-      min: 1000°C
-    thermalDestructionType: melting
-    thermalDiffusivity:
-      max: 120 mm²/s
-      min: 0.3 mm²/s
-    thermalExpansion:
-      max: 14 µm/m·K
-      min: 0.1 µm/m·K
-    youngsModulus:
-      max: 700 GPa
-      min: 150 GPa
-  composite:
-    density:
-      max: 8.0 g/cm³
-      min: 0.5 g/cm³
-    hardness:
-      max: 90 HRC
-      min: 20 Shore D
-    laserAbsorption:
-      max: 200 cm⁻¹
-      min: 0.05 cm⁻¹
-    laserReflectivity:
-      max: 80%
-      min: 2%
-    specificHeat:
-      max: 2.0 J/g·K
-      min: 0.5 J/g·K
-    tensileStrength:
-      max: 6000 MPa
-      min: 50 MPa
-    thermalConductivity:
-      max: 400 W/m·K
-      min: 0.1 W/m·K
-    thermalDestructionPoint:
-      max: 2000°C
-      min: 150°C
-    thermalDestructionType: decomposition
-    thermalDiffusivity:
-      max: 180 mm²/s
-      min: 0.1 mm²/s
-    thermalExpansion:
-      max: 50 µm/m·K
-      min: -1.0 µm/m·K
-    youngsModulus:
-      max: 1000 GPa
-      min: 5 GPa
-  glass:
-    density:
-      max: 7.6 g/cm³
-      min: 1.2 g/cm³
-    hardness:
-      max: 9 Mohs
-      min: 4.5 Mohs
-    laserAbsorption:
-      max: 10 cm⁻¹
-      min: 0.001 cm⁻¹
-    laserReflectivity:
-      max: 92%
-      min: 4%
-    specificHeat:
-      max: 1.0 J/g·K
-      min: 0.5 J/g·K
-    tensileStrength:
-      max: 2000 MPa
-      min: 30 MPa
-    thermalConductivity:
-      max: 4.2 W/m·K
-      min: 0.02 W/m·K
-    thermalDestructionPoint:
-      max: 1723°C
-      min: 500°C
-    thermalDestructionType: melting
-    thermalDiffusivity:
-      max: 1.8 mm²/s
-      min: 0.01 mm²/s
-    thermalExpansion:
-      max: 15 µm/m·K
-      min: 0.1 µm/m·K
-    youngsModulus:
-      max: 95 GPa
-      min: 10 GPa
-  masonry:
-    density:
-      max: 2.8 g/cm³
-      min: 0.6 g/cm³
-    hardness:
-      max: 6 Mohs
-      min: 2 Mohs
-    laserAbsorption:
-      max: 15 cm⁻¹
-      min: 0.5 cm⁻¹
-    laserReflectivity:
-      max: 70%
-      min: 10%
-    specificHeat:
-      max: 1.1 J/g·K
-      min: 0.8 J/g·K
-    tensileStrength:
-      max: 15 MPa
-      min: 1 MPa
-    thermalConductivity:
-      max: 2.5 W/m·K
-      min: 0.08 W/m·K
-    thermalDestructionPoint:
-      max: 1200°C
-      min: 500°C
-    thermalDestructionType: decomposition
-    thermalDiffusivity:
-      max: 1.0 mm²/s
-      min: 0.1 mm²/s
-    thermalExpansion:
-      max: 12 µm/m·K
-      min: 6 µm/m·K
-    youngsModulus:
-      max: 50 GPa
-      min: 5 GPa
-  metal:
-    density:
-      max: 22.59 g/cm³
-      min: 0.53 g/cm³
-    hardness:
-      max: 500 HV
-      min: 5 HB
-    laserAbsorption:
-      max: 100 cm⁻¹
-      min: 0.02 cm⁻¹
-    laserReflectivity:
-      max: 98%
-      min: 5%
-    specificHeat:
-      max: 0.904 J/g·K
-      min: 0.128 J/g·K
-    tensileStrength:
-      max: 2000 MPa
-      min: 70 MPa
-    thermalConductivity:
-      max: 429 W/m·K
-      min: 6.3 W/m·K
-    thermalDestructionPoint:
-      max: 3422°C
-      min: -38.8°C
-    thermalDestructionType: melting
-    thermalDiffusivity:
-      max: 174 mm²/s
-      min: 4.2 mm²/s
-    thermalExpansion:
-      max: 29.1 µm/m·K
-      min: 0.5 µm/m·K
-    youngsModulus:
-      max: 411 GPa
-      min: 70 GPa
-  plastic:
-    density:
-      max: 2.2 g/cm³
-      min: 0.85 g/cm³
-    hardness:
-      max: Shore D 90
-      min: Shore A 10
-    laserAbsorption:
-      max: 100 cm⁻¹
-      min: 0.1 cm⁻¹
-    laserReflectivity:
-      max: 95%
-      min: 5%
-    specificHeat:
-      max: 2.5 J/g·K
-      min: 1.0 J/g·K
-    tensileStrength:
-      max: 400 MPa
-      min: 10 MPa
-    thermalConductivity:
-      max: 3.0 W/m·K
-      min: 0.02 W/m·K
-    thermalDestructionPoint:
-      max: 400°C
-      min: 80°C
-    thermalDestructionType: decomposition
-    thermalDiffusivity:
-      max: 1.0 mm²/s
-      min: 0.05 mm²/s
-    thermalExpansion:
-      max: 200 µm/m·K
-      min: 10 µm/m·K
-    youngsModulus:
-      max: 50 GPa
-      min: 0.01 GPa
-  semiconductor:
-    density:
-      max: 7.13 g/cm³
-      min: 2.33 g/cm³
-    hardness:
-      max: 7 Mohs
-      min: 2 Mohs
-    laserAbsorption:
-      max: 100 cm⁻¹
-      min: 0.01 cm⁻¹
-    laserReflectivity:
-      max: 70%
-      min: 10%
-    specificHeat:
-      max: 1.6 J/g·K
-      min: 0.3 J/g·K
-    tensileStrength:
-      max: 7000 MPa
-      min: 50 MPa
-    thermalConductivity:
-      max: 156 W/m·K
-      min: 0.2 W/m·K
-    thermalDestructionPoint:
-      max: 1414°C
-      min: 100°C
-    thermalDestructionType: melting
-    thermalDiffusivity:
-      max: 90 mm²/s
-      min: 0.1 mm²/s
-    thermalExpansion:
-      max: 19.7 µm/m·K
-      min: 2.6 µm/m·K
-    youngsModulus:
-      max: 190 GPa
-      min: 5 GPa
-  stone:
-    density:
-      max: 3.4 g/cm³
-      min: 1.5 g/cm³
-    hardness:
-      max: 7 Mohs
-      min: 1 Mohs
-    laserAbsorption:
-      max: 20 cm⁻¹
-      min: 0.1 cm⁻¹
-    laserReflectivity:
-      max: 80%
-      min: 5%
-    specificHeat:
-      max: 1.2 J/g·K
-      min: 0.7 J/g·K
-    tensileStrength:
-      max: 25 MPa
-      min: 2 MPa
-    thermalConductivity:
-      max: 5.0 W/m·K
-      min: 0.2 W/m·K
-    thermalDestructionPoint:
-      max: 1700°C
-      min: 600°C
-    thermalDestructionType: decomposition
-    thermalDiffusivity:
-      max: 2.5 mm²/s
-      min: 0.2 mm²/s
-    thermalExpansion:
-      max: 16 µm/m·K
-      min: 3 µm/m·K
-    youngsModulus:
-      max: 100 GPa
-      min: 10 GPa
-  wood:
-    density:
-      max: 1.4 g/cm³
-      min: 0.16 g/cm³
-    hardness:
-      max: 22.2 kN
-      min: 0.4 kN
-    laserAbsorption:
-      max: 50 cm⁻¹
-      min: 1 cm⁻¹
-    laserReflectivity:
-      max: 60%
-      min: 10%
-    specificHeat:
-      max: 4.2 J/g·K
-      min: 1.2 J/g·K
-    tensileStrength:
-      max: 200 MPa
-      min: 20 MPa
-    thermalConductivity:
-      max: 0.4 W/m·K
-      min: 0.04 W/m·K
-    thermalDestructionPoint:
-      max: 500°C
-      min: 200°C
-    thermalDestructionType: decomposition
-    thermalDiffusivity:
-      max: 0.4 mm²/s
-      min: 0.1 mm²/s
-    thermalExpansion:
-      max: 60 µm/m·K
-      min: 3 µm/m·K
-    youngsModulus:
-      max: 25 GPa
-      min: 5 GPa
 machineSettingsRanges:
   ablationThreshold:
     max: 50 J/cm²
@@ -1152,11 +836,13 @@ materials:
     items:
     - author_id: 2
       category: ceramic
-      compressive_strength: 2000-4000 MPa
-      dielectric_constant: 9.8
-      electricalResistivity: 1×10¹⁴ Ω·cm
-      flexural_strength: 300-400 MPa
       hardness: 9.0 Mohs
+      compressive_strength: 2000-4000 MPa
+      thermalConductivity: 35 W/(m·K)
+      thermalExpansion: 8.1×10⁻⁶/K
+      melting_point: 2072°C
+      electricalResistivity: 1×10¹⁴ Ω·cm
+      dielectric_constant: 9.8
       industryTags:
       - Semiconductor
       - Aerospace
@@ -1164,7 +850,6 @@ materials:
       - Refractory
       - Electronics
       - Wear Components
-      melting_point: 2072°C
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - EPA Clean Air Act Compliance
@@ -1173,13 +858,13 @@ materials:
       - IEC 60825 - Safety of Laser Products
       - ASTM C848 - Standard Specification for High Alumina Refractory Brick
       - ISO 23146 - Technical Ceramics
-      thermalConductivity: 35 W/(m·K)
-      thermalExpansion: 8.1×10⁻⁶/K
+      flexural_strength: 300-400 MPa
     - author_id: 3
       category: ceramic
-      compressive_strength: 500-1000 MPa
-      flexural_strength: 50-100 MPa
       hardness: 6-7 Mohs
+      compressive_strength: 500-1000 MPa
+      thermalConductivity: 1.0-1.5 W/(m·K)
+      thermalExpansion: 4.0 × 10⁻⁶ /°C
       industryTags:
       - Ceramics Manufacturing
       - Restoration and Conservation
@@ -1187,23 +872,22 @@ materials:
       - Tableware
       - Electrical
       - Art Conservation
-      porosity: 0-3%
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
       - ASTM C373 - Standard Test Method for Water Absorption of Fired Ceramic Materials
-      thermalConductivity: 1.0-1.5 W/(m·K)
-      thermalExpansion: 4.0 × 10⁻⁶ /°C
+      flexural_strength: 50-100 MPa
+      porosity: 0-3%
     - author_id: 1
       category: ceramic
-      chemical_resistance: excellent
-      compressive_strength: 2000-4000 MPa
-      dielectric_constant: 7.5
-      flexural_strength: 700-1000 MPa
-      fracture_toughness: 4-7 MPa·m^0.5
       hardness: 9.0 Mohs
+      compressive_strength: 2000-4000 MPa
+      thermalConductivity: 15-85 W/(m·K)
+      thermalExpansion: 2.5×10⁻⁶/K
+      melting_point: 1900°C (decomposes)
+      dielectric_constant: 7.5
       industryTags:
       - Automotive
       - Semiconductor
@@ -1211,7 +895,6 @@ materials:
       - Bearings
       - Aerospace
       - Medical
-      melting_point: 1900°C (decomposes)
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
@@ -1219,14 +902,15 @@ materials:
       - IEC 60825 - Safety of Laser Products
       - ASTM F1537 - Standard Specification for Silicon Nitride Bearing Balls
       - ISO 6474 - Implants for Surgery - Ceramic Materials
-      thermalConductivity: 15-85 W/(m·K)
-      thermalExpansion: 2.5×10⁻⁶/K
+      chemical_resistance: excellent
+      flexural_strength: 700-1000 MPa
+      fracture_toughness: 4-7 MPa·m^0.5
     - author_id: 4
       category: ceramic
-      compressive_strength: 200-600 MPa
-      firing_temperature: 1200-1300°C
-      flexural_strength: 30-80 MPa
       hardness: 5-6 Mohs
+      compressive_strength: 200-600 MPa
+      thermalConductivity: 1.2-1.8 W/(m·K)
+      thermalExpansion: 5.5 × 10⁻⁶ /°C
       industryTags:
       - Ceramics Manufacturing
       - Restoration and Conservation
@@ -1234,7 +918,6 @@ materials:
       - Industrial
       - Art Conservation
       - Food Processing
-      porosity: 2-8%
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
@@ -1242,15 +925,17 @@ materials:
       - IEC 60825 - Safety of Laser Products
       - ASTM C373 - Standard Test Method for Water Absorption of Fired Ceramic Materials
       - NSF/ANSI 51 - Food Equipment Materials
-      thermalConductivity: 1.2-1.8 W/(m·K)
-      thermalExpansion: 5.5 × 10⁻⁶ /°C
+      firing_temperature: 1200-1300°C
+      flexural_strength: 30-80 MPa
+      porosity: 2-8%
     - author_id: 4
       category: ceramic
-      compressive_strength: 2000-4000 MPa
-      dielectric_constant: 25
-      flexural_strength: 800-1200 MPa
-      fracture_toughness: 6-10 MPa·m^0.5
       hardness: 8.5 Mohs
+      compressive_strength: 2000-4000 MPa
+      thermalConductivity: 2.0 W/(m·K)
+      thermalExpansion: 10.5×10⁻⁶/K
+      melting_point: 2715°C
+      dielectric_constant: 25
       industryTags:
       - Medical
       - Aerospace
@@ -1258,8 +943,6 @@ materials:
       - Industrial
       - Nuclear
       - Jewelry
-      ionic_conductivity: High at elevated temperatures
-      melting_point: 2715°C
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - EPA Clean Air Act Compliance
@@ -1268,8 +951,9 @@ materials:
       - IEC 60825 - Safety of Laser Products
       - ISO 13356 - Zirconia for Surgical Implants
       - ASTM F1873 - Standard Specification for Zirconia
-      thermalConductivity: 2.0 W/(m·K)
-      thermalExpansion: 10.5×10⁻⁶/K
+      flexural_strength: 800-1200 MPa
+      fracture_toughness: 6-10 MPa·m^0.5
+      ionic_conductivity: High at elevated temperatures
     - author_id: 1
       category: ceramic
       hardness: 9.3 Mohs
@@ -1337,186 +1021,186 @@ materials:
     items:
     - author_id: 1
       category: composite
+      tensileStrength: 100-1500 MPa
+      youngsModulus: 10-150 GPa
+      thermalConductivity: 0.2-50 W/m·K
       industryTags:
       - Automotive
       - Aerospace
-      operating_temperature: -40 to 200°C
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      tensileStrength: 100-1500 MPa
-      thermalConductivity: 0.2-50 W/m·K
-      youngsModulus: 10-150 GPa
+      operating_temperature: -40 to 200°C
     - author_id: 1
       category: composite
+      tensileStrength: 100-1500 MPa
+      youngsModulus: 10-150 GPa
+      thermalConductivity: 0.2-50 W/m·K
       industryTags:
       - Automotive
       - Aerospace
-      operating_temperature: -40 to 200°C
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      tensileStrength: 100-1500 MPa
-      thermalConductivity: 0.2-50 W/m·K
-      youngsModulus: 10-150 GPa
+      operating_temperature: -40 to 200°C
     - author_id: 3
       category: composite
+      tensileStrength: 100-1500 MPa
+      youngsModulus: 10-150 GPa
+      thermalConductivity: 0.2-50 W/m·K
       industryTags:
       - Automotive
       - Aerospace
-      operating_temperature: -40 to 200°C
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      tensileStrength: 100-1500 MPa
-      thermalConductivity: 0.2-50 W/m·K
-      youngsModulus: 10-150 GPa
+      operating_temperature: -40 to 200°C
     - author_id: 3
       category: composite
+      tensileStrength: 100-1500 MPa
+      youngsModulus: 10-150 GPa
+      thermalConductivity: 0.2-50 W/m·K
       industryTags:
       - Automotive
       - Aerospace
-      operating_temperature: -40 to 200°C
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      tensileStrength: 100-1500 MPa
-      thermalConductivity: 0.2-50 W/m·K
-      youngsModulus: 10-150 GPa
+      operating_temperature: -40 to 200°C
     - author_id: 4
       category: composite
+      tensileStrength: 100-1500 MPa
+      youngsModulus: 10-150 GPa
+      thermalConductivity: 0.2-50 W/m·K
       industryTags:
       - Automotive
       - Aerospace
-      operating_temperature: -40 to 200°C
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      tensileStrength: 100-1500 MPa
-      thermalConductivity: 0.2-50 W/m·K
-      youngsModulus: 10-150 GPa
+      operating_temperature: -40 to 200°C
     - author_id: 1
       category: composite
+      tensileStrength: 100-1500 MPa
+      youngsModulus: 10-150 GPa
+      thermalConductivity: 0.2-50 W/m·K
       industryTags:
       - Automotive
       - Aerospace
-      operating_temperature: -40 to 200°C
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      tensileStrength: 100-1500 MPa
-      thermalConductivity: 0.2-50 W/m·K
-      youngsModulus: 10-150 GPa
+      operating_temperature: -40 to 200°C
     - author_id: 4
       category: composite
+      tensileStrength: 100-1500 MPa
+      youngsModulus: 10-150 GPa
+      thermalConductivity: 0.2-50 W/m·K
       industryTags:
       - Automotive
       - Manufacturing
-      operating_temperature: -40 to 200°C
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      tensileStrength: 100-1500 MPa
-      thermalConductivity: 0.2-50 W/m·K
-      youngsModulus: 10-150 GPa
+      operating_temperature: -40 to 200°C
     - author_id: 2
       category: composite
+      tensileStrength: 100-1500 MPa
+      youngsModulus: 10-150 GPa
+      thermalConductivity: 0.2-50 W/m·K
       industryTags:
       - Automotive
       - Medical
-      operating_temperature: -40 to 200°C
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      tensileStrength: 100-1500 MPa
-      thermalConductivity: 0.2-50 W/m·K
-      youngsModulus: 10-150 GPa
+      operating_temperature: -40 to 200°C
     - author_id: 3
       category: composite
+      tensileStrength: 100-1500 MPa
+      youngsModulus: 10-150 GPa
+      thermalConductivity: 0.2-50 W/m·K
       industryTags:
       - Automotive
       - Aerospace
-      operating_temperature: -40 to 200°C
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      tensileStrength: 100-1500 MPa
-      thermalConductivity: 0.2-50 W/m·K
-      youngsModulus: 10-150 GPa
+      operating_temperature: -40 to 200°C
     - author_id: 1
       category: composite
+      tensileStrength: 100-1500 MPa
+      youngsModulus: 10-150 GPa
+      thermalConductivity: 0.2-50 W/m·K
       industryTags:
       - Automotive
       - Aerospace
-      operating_temperature: -40 to 200°C
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      tensileStrength: 100-1500 MPa
-      thermalConductivity: 0.2-50 W/m·K
-      youngsModulus: 10-150 GPa
+      operating_temperature: -40 to 200°C
     - author_id: 2
       category: composite
+      tensileStrength: 100-1500 MPa
+      youngsModulus: 10-150 GPa
+      thermalConductivity: 0.2-50 W/m·K
       industryTags:
       - Automotive
       - Aerospace
-      operating_temperature: -40 to 200°C
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      tensileStrength: 100-1500 MPa
-      thermalConductivity: 0.2-50 W/m·K
-      youngsModulus: 10-150 GPa
+      operating_temperature: -40 to 200°C
     - author_id: 4
       category: composite
+      tensileStrength: 100-1500 MPa
+      youngsModulus: 10-150 GPa
+      thermalConductivity: 0.2-50 W/m·K
       industryTags:
       - Automotive
       - Aerospace
-      operating_temperature: -40 to 200°C
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      tensileStrength: 100-1500 MPa
-      thermalConductivity: 0.2-50 W/m·K
-      youngsModulus: 10-150 GPa
+      operating_temperature: -40 to 200°C
     - author_id: 4
       category: composite
+      tensileStrength: 100-1500 MPa
+      youngsModulus: 10-150 GPa
+      thermalConductivity: 0.2-50 W/m·K
       industryTags:
       - Power Generation
       - Aerospace
-      operating_temperature: -40 to 200°C
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      tensileStrength: 100-1500 MPa
-      thermalConductivity: 0.2-50 W/m·K
-      youngsModulus: 10-150 GPa
+      operating_temperature: -40 to 200°C
     processing_priority: medium
   glass:
     article_type: material
@@ -1525,6 +1209,10 @@ materials:
     - author_id: 3
       category: glass
       hardness: 5.5-6.5 Mohs
+      tensileStrength: 50-100 MPa
+      youngsModulus: 70-90 GPa
+      thermalConductivity: 1.0-1.4 W/m·K
+      thermalExpansion: 9.0 × 10⁻⁶ /°C
       industryTags:
       - Pharmaceutical
       - Semiconductor
@@ -1533,13 +1221,13 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      tensileStrength: 50-100 MPa
-      thermalConductivity: 1.0-1.4 W/m·K
-      thermalExpansion: 9.0 × 10⁻⁶ /°C
-      youngsModulus: 70-90 GPa
     - author_id: 1
       category: glass
       hardness: 5.5-6.5 Mohs
+      tensileStrength: 50-100 MPa
+      youngsModulus: 70-90 GPa
+      thermalConductivity: 1.0-1.4 W/m·K
+      thermalExpansion: 9.0 × 10⁻⁶ /°C
       industryTags:
       - Automotive
       - Architectural
@@ -1548,13 +1236,13 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      tensileStrength: 50-100 MPa
-      thermalConductivity: 1.0-1.4 W/m·K
-      thermalExpansion: 9.0 × 10⁻⁶ /°C
-      youngsModulus: 70-90 GPa
     - author_id: 2
       category: glass
       hardness: 5.5-6.5 Mohs
+      tensileStrength: 50-100 MPa
+      youngsModulus: 70-90 GPa
+      thermalConductivity: 1.0-1.4 W/m·K
+      thermalExpansion: 9.0 × 10⁻⁶ /°C
       industryTags:
       - Semiconductor Manufacturing
       - Optics and Photonics
@@ -1563,13 +1251,13 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      tensileStrength: 50-100 MPa
-      thermalConductivity: 1.0-1.4 W/m·K
-      thermalExpansion: 9.0 × 10⁻⁶ /°C
-      youngsModulus: 70-90 GPa
     - author_id: 1
       category: glass
       hardness: 5.5-6.5 Mohs
+      tensileStrength: 50-100 MPa
+      youngsModulus: 70-90 GPa
+      thermalConductivity: 1.0-1.4 W/m·K
+      thermalExpansion: 9.0 × 10⁻⁶ /°C
       industryTags:
       - Restoration and Conservation
       - Glass Manufacturing
@@ -1578,13 +1266,13 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      tensileStrength: 50-100 MPa
-      thermalConductivity: 1.0-1.4 W/m·K
-      thermalExpansion: 9.0 × 10⁻⁶ /°C
-      youngsModulus: 70-90 GPa
     - author_id: 1
       category: glass
       hardness: 5.5-6.5 Mohs
+      tensileStrength: 50-100 MPa
+      youngsModulus: 70-90 GPa
+      thermalConductivity: 1.0-1.4 W/m·K
+      thermalExpansion: 9.0 × 10⁻⁶ /°C
       industryTags:
       - Automotive
       - Aerospace
@@ -1593,13 +1281,13 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      tensileStrength: 50-100 MPa
-      thermalConductivity: 1.0-1.4 W/m·K
-      thermalExpansion: 9.0 × 10⁻⁶ /°C
-      youngsModulus: 70-90 GPa
     - author_id: 2
       category: glass
       hardness: 5.5-6.5 Mohs
+      tensileStrength: 50-100 MPa
+      youngsModulus: 70-90 GPa
+      thermalConductivity: 1.0-1.4 W/m·K
+      thermalExpansion: 9.0 × 10⁻⁶ /°C
       industryTags:
       - Semiconductor Manufacturing
       - Optics and Photonics
@@ -1608,13 +1296,13 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      tensileStrength: 50-100 MPa
-      thermalConductivity: 1.0-1.4 W/m·K
-      thermalExpansion: 9.0 × 10⁻⁶ /°C
-      youngsModulus: 70-90 GPa
     - author_id: 1
       category: glass
       hardness: 5.5-6.5 Mohs
+      tensileStrength: 50-100 MPa
+      youngsModulus: 70-90 GPa
+      thermalConductivity: 1.0-1.4 W/m·K
+      thermalExpansion: 9.0 × 10⁻⁶ /°C
       industryTags:
       - Automotive
       - Electronics
@@ -1623,13 +1311,13 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      tensileStrength: 50-100 MPa
-      thermalConductivity: 1.0-1.4 W/m·K
-      thermalExpansion: 9.0 × 10⁻⁶ /°C
-      youngsModulus: 70-90 GPa
     - author_id: 4
       category: glass
       hardness: 5.5-6.5 Mohs
+      tensileStrength: 50-100 MPa
+      youngsModulus: 70-90 GPa
+      thermalConductivity: 1.0-1.4 W/m·K
+      thermalExpansion: 9.0 × 10⁻⁶ /°C
       industryTags:
       - Automotive
       - Electronics
@@ -1638,10 +1326,6 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      tensileStrength: 50-100 MPa
-      thermalConductivity: 1.0-1.4 W/m·K
-      thermalExpansion: 9.0 × 10⁻⁶ /°C
-      youngsModulus: 70-90 GPa
     - author_id: 1
       category: glass
       hardness: 9.0 Mohs
@@ -1686,100 +1370,100 @@ materials:
     - author_id: 2
       category: masonry
       compressive_strength: 10-100 MPa
+      thermalConductivity: 0.5-1.5 W/m·K
       industryTags:
       - Construction
       - Restoration
-      porosity: 10-25%
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      thermalConductivity: 0.5-1.5 W/m·K
+      porosity: 10-25%
       water_absorption: 5-20%
     - author_id: 3
       category: masonry
       compressive_strength: 10-100 MPa
+      thermalConductivity: 0.5-1.5 W/m·K
       industryTags:
       - Construction
       - Restoration
-      porosity: 10-25%
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      thermalConductivity: 0.5-1.5 W/m·K
+      porosity: 10-25%
       water_absorption: 5-20%
     - author_id: 3
       category: masonry
       compressive_strength: 10-100 MPa
+      thermalConductivity: 0.5-1.5 W/m·K
       industryTags:
       - Construction
       - Restoration
-      porosity: 10-25%
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      thermalConductivity: 0.5-1.5 W/m·K
+      porosity: 10-25%
       water_absorption: 5-20%
     - author_id: 2
       category: masonry
       compressive_strength: 10-100 MPa
+      thermalConductivity: 0.5-1.5 W/m·K
       industryTags:
       - Construction
       - Heritage Conservation
-      porosity: 10-25%
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      thermalConductivity: 0.5-1.5 W/m·K
+      porosity: 10-25%
       water_absorption: 5-20%
     - author_id: 2
       category: masonry
       compressive_strength: 10-100 MPa
+      thermalConductivity: 0.5-1.5 W/m·K
       industryTags:
       - Construction
       - Cultural Heritage
-      porosity: 10-25%
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      thermalConductivity: 0.5-1.5 W/m·K
+      porosity: 10-25%
       water_absorption: 5-20%
     - author_id: 1
       category: masonry
       compressive_strength: 10-100 MPa
+      thermalConductivity: 0.5-1.5 W/m·K
       industryTags:
       - Construction
       - Restoration
-      porosity: 10-25%
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      thermalConductivity: 0.5-1.5 W/m·K
+      porosity: 10-25%
       water_absorption: 5-20%
     - author_id: 1
       category: masonry
       compressive_strength: 10-100 MPa
+      thermalConductivity: 0.5-1.5 W/m·K
       industryTags:
       - Construction
       - Cultural Heritage
-      porosity: 10-25%
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      thermalConductivity: 0.5-1.5 W/m·K
+      porosity: 10-25%
       water_absorption: 5-20%
     processing_priority: medium
   metal:
@@ -1788,6 +1472,10 @@ materials:
     items:
     - author_id: 3
       category: metal
+      tensileStrength: 200-1200 MPa
+      youngsModulus: 200-250 GPa
+      thermalConductivity: 15-400 W/m·K
+      thermalExpansion: 10-25 × 10⁻⁶ /°C
       electricalResistivity: 10-100 nΩ·m
       industryTags:
       - Automotive
@@ -1797,12 +1485,12 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      tensileStrength: 200-1200 MPa
-      thermalConductivity: 15-400 W/m·K
-      thermalExpansion: 10-25 × 10⁻⁶ /°C
-      youngsModulus: 200-250 GPa
     - author_id: 4
       category: metal
+      tensileStrength: 200-1200 MPa
+      youngsModulus: 200-250 GPa
+      thermalConductivity: 15-400 W/m·K
+      thermalExpansion: 10-25 × 10⁻⁶ /°C
       electricalResistivity: 10-100 nΩ·m
       industryTags:
       - Aerospace
@@ -1812,80 +1500,80 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      tensileStrength: 200-1200 MPa
-      thermalConductivity: 15-400 W/m·K
-      thermalExpansion: 10-25 × 10⁻⁶ /°C
-      youngsModulus: 200-250 GPa
-    - antimicrobial_properties: true
-      author_id: 4
+    - author_id: 4
       category: metal
-      common_alloys: Cartridge brass (70/30), Naval brass (60/39/1% Sn)
-      composition: 63% Cu, 37% Zn (C26000 Cartridge Brass)
-      corrosion_resistance: good
+      tensileStrength: 200-1200 MPa
+      youngsModulus: 200-250 GPa
+      thermalConductivity: 109-125 W/(m·K)
+      thermalExpansion: 10-25 × 10⁻⁶ /°C
+      melting_point: 900-940°C
       electricalResistivity: 10-100 nΩ·m
       industryTags:
       - Automotive
       - Electronics
       - Marine
       - Plumbing
-      machinability: excellent
-      melting_point: 900-940°C
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      tensileStrength: 200-1200 MPa
-      thermalConductivity: 109-125 W/(m·K)
-      thermalExpansion: 10-25 × 10⁻⁶ /°C
-      youngsModulus: 200-250 GPa
+      antimicrobial_properties: true
+      common_alloys: Cartridge brass (70/30), Naval brass (60/39/1% Sn)
+      composition: 63% Cu, 37% Zn (C26000 Cartridge Brass)
+      corrosion_resistance: good
+      machinability: excellent
     - author_id: 3
       category: metal
-      color: Reddish-brown to golden
-      common_alloys: Aluminum bronze, Phosphor bronze, Bell metal (77/23)
-      composition: 88% Cu, 12% Sn (SAE 903 bearing bronze)
-      corrosion_resistance: superior to steel
+      tensileStrength: 200-1200 MPa
+      youngsModulus: 200-250 GPa
+      thermalConductivity: 26 W/(m·K)
+      thermalExpansion: 10-25 × 10⁻⁶ /°C
+      melting_point: 1025°C (88% Cu, 12% Sn phosphor bronze)
       electricalResistivity: 10-100 nΩ·m
       industryTags:
       - Manufacturing
       - Restoration
       - Marine
       - Musical Instruments
-      melting_point: 1025°C (88% Cu, 12% Sn phosphor bronze)
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      color: Reddish-brown to golden
+      common_alloys: Aluminum bronze, Phosphor bronze, Bell metal (77/23)
+      composition: 88% Cu, 12% Sn (SAE 903 bearing bronze)
+      corrosion_resistance: superior to steel
       strength: 10% denser than steel
-      tensileStrength: 200-1200 MPa
-      thermalConductivity: 26 W/(m·K)
-      thermalExpansion: 10-25 × 10⁻⁶ /°C
-      youngsModulus: 200-250 GPa
     - author_id: 2
       category: metal
-      crystal_structure: hexagonal close-packed
-      curie_temperature: 1115°C
+      tensileStrength: 1043 MPa
+      youngsModulus: 200-250 GPa
+      thermalConductivity: 100 W/(m·K)
+      thermalExpansion: 10-25 × 10⁻⁶ /°C
+      melting_point: 1495°C
       electricalResistivity: 10-100 nΩ·m
+      crystal_structure: hexagonal close-packed
       industryTags:
       - Aerospace
       - Electronics
       - Medical
       - Magnetics
-      magnetic_properties: ferromagnetic
-      melting_point: 1495°C
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      tensileStrength: 1043 MPa
-      thermalConductivity: 100 W/(m·K)
-      thermalExpansion: 10-25 × 10⁻⁶ /°C
+      curie_temperature: 1115°C
+      magnetic_properties: ferromagnetic
       yield_strength: 470-3000 MPa
-      youngsModulus: 200-250 GPa
     - author_id: 4
       category: metal
+      tensileStrength: 200-1200 MPa
+      youngsModulus: 200-250 GPa
+      thermalConductivity: 15-400 W/m·K
+      thermalExpansion: 10-25 × 10⁻⁶ /°C
       electricalResistivity: 10-100 nΩ·m
       industryTags:
       - Manufacturing
@@ -1895,12 +1583,12 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      tensileStrength: 200-1200 MPa
-      thermalConductivity: 15-400 W/m·K
-      thermalExpansion: 10-25 × 10⁻⁶ /°C
-      youngsModulus: 200-250 GPa
     - author_id: 3
       category: metal
+      tensileStrength: 200-1200 MPa
+      youngsModulus: 200-250 GPa
+      thermalConductivity: 15-400 W/m·K
+      thermalExpansion: 10-25 × 10⁻⁶ /°C
       electricalResistivity: 10-100 nΩ·m
       industryTags:
       - Semiconductor
@@ -1910,12 +1598,12 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      tensileStrength: 200-1200 MPa
-      thermalConductivity: 15-400 W/m·K
-      thermalExpansion: 10-25 × 10⁻⁶ /°C
-      youngsModulus: 200-250 GPa
     - author_id: 2
       category: metal
+      tensileStrength: 200-1200 MPa
+      youngsModulus: 200-250 GPa
+      thermalConductivity: 15-400 W/m·K
+      thermalExpansion: 10-25 × 10⁻⁶ /°C
       electricalResistivity: 10-100 nΩ·m
       industryTags:
       - Jewelry
@@ -1925,12 +1613,12 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      tensileStrength: 200-1200 MPa
-      thermalConductivity: 15-400 W/m·K
-      thermalExpansion: 10-25 × 10⁻⁶ /°C
-      youngsModulus: 200-250 GPa
     - author_id: 4
       category: metal
+      tensileStrength: 200-1200 MPa
+      youngsModulus: 200-250 GPa
+      thermalConductivity: 15-400 W/m·K
+      thermalExpansion: 10-25 × 10⁻⁶ /°C
       electricalResistivity: 10-100 nΩ·m
       industryTags:
       - Aerospace
@@ -1940,12 +1628,12 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      tensileStrength: 200-1200 MPa
-      thermalConductivity: 15-400 W/m·K
-      thermalExpansion: 10-25 × 10⁻⁶ /°C
-      youngsModulus: 200-250 GPa
     - author_id: 1
       category: metal
+      tensileStrength: 200-1200 MPa
+      youngsModulus: 200-250 GPa
+      thermalConductivity: 15-400 W/m·K
+      thermalExpansion: 10-25 × 10⁻⁶ /°C
       electricalResistivity: 10-100 nΩ·m
       industryTags:
       - Chemical Processing
@@ -1955,12 +1643,12 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      tensileStrength: 200-1200 MPa
-      thermalConductivity: 15-400 W/m·K
-      thermalExpansion: 10-25 × 10⁻⁶ /°C
-      youngsModulus: 200-250 GPa
     - author_id: 3
       category: metal
+      tensileStrength: 200-1200 MPa
+      youngsModulus: 200-250 GPa
+      thermalConductivity: 15-400 W/m·K
+      thermalExpansion: 10-25 × 10⁻⁶ /°C
       electricalResistivity: 10-100 nΩ·m
       industryTags:
       - Oil and Gas
@@ -1970,12 +1658,12 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      tensileStrength: 200-1200 MPa
-      thermalConductivity: 15-400 W/m·K
-      thermalExpansion: 10-25 × 10⁻⁶ /°C
-      youngsModulus: 200-250 GPa
     - author_id: 4
       category: metal
+      tensileStrength: 200-1200 MPa
+      youngsModulus: 200-250 GPa
+      thermalConductivity: 15-400 W/m·K
+      thermalExpansion: 10-25 × 10⁻⁶ /°C
       electricalResistivity: 10-100 nΩ·m
       industryTags:
       - Aerospace
@@ -1985,12 +1673,12 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      tensileStrength: 200-1200 MPa
-      thermalConductivity: 15-400 W/m·K
-      thermalExpansion: 10-25 × 10⁻⁶ /°C
-      youngsModulus: 200-250 GPa
     - author_id: 1
       category: metal
+      tensileStrength: 200-1200 MPa
+      youngsModulus: 200-250 GPa
+      thermalConductivity: 15-400 W/m·K
+      thermalExpansion: 10-25 × 10⁻⁶ /°C
       electricalResistivity: 10-100 nΩ·m
       industryTags:
       - Aerospace
@@ -2000,12 +1688,12 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      tensileStrength: 200-1200 MPa
-      thermalConductivity: 15-400 W/m·K
-      thermalExpansion: 10-25 × 10⁻⁶ /°C
-      youngsModulus: 200-250 GPa
     - author_id: 2
       category: metal
+      tensileStrength: 200-1200 MPa
+      youngsModulus: 200-250 GPa
+      thermalConductivity: 15-400 W/m·K
+      thermalExpansion: 10-25 × 10⁻⁶ /°C
       electricalResistivity: 10-100 nΩ·m
       industryTags:
       - Automotive
@@ -2015,12 +1703,12 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      tensileStrength: 200-1200 MPa
-      thermalConductivity: 15-400 W/m·K
-      thermalExpansion: 10-25 × 10⁻⁶ /°C
-      youngsModulus: 200-250 GPa
     - author_id: 4
       category: metal
+      tensileStrength: 200-1200 MPa
+      youngsModulus: 200-250 GPa
+      thermalConductivity: 15-400 W/m·K
+      thermalExpansion: 10-25 × 10⁻⁶ /°C
       electricalResistivity: 10-100 nΩ·m
       industryTags:
       - Automotive
@@ -2030,12 +1718,12 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      tensileStrength: 200-1200 MPa
-      thermalConductivity: 15-400 W/m·K
-      thermalExpansion: 10-25 × 10⁻⁶ /°C
-      youngsModulus: 200-250 GPa
     - author_id: 4
       category: metal
+      tensileStrength: 200-1200 MPa
+      youngsModulus: 200-250 GPa
+      thermalConductivity: 15-400 W/m·K
+      thermalExpansion: 10-25 × 10⁻⁶ /°C
       electricalResistivity: 10-100 nΩ·m
       industryTags:
       - Automotive
@@ -2045,12 +1733,12 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      tensileStrength: 200-1200 MPa
-      thermalConductivity: 15-400 W/m·K
-      thermalExpansion: 10-25 × 10⁻⁶ /°C
-      youngsModulus: 200-250 GPa
     - author_id: 1
       category: metal
+      tensileStrength: 200-1200 MPa
+      youngsModulus: 200-250 GPa
+      thermalConductivity: 15-400 W/m·K
+      thermalExpansion: 10-25 × 10⁻⁶ /°C
       electricalResistivity: 10-100 nΩ·m
       industryTags:
       - Semiconductor
@@ -2060,34 +1748,34 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      tensileStrength: 200-1200 MPa
-      thermalConductivity: 15-400 W/m·K
-      thermalExpansion: 10-25 × 10⁻⁶ /°C
-      youngsModulus: 200-250 GPa
     - author_id: 3
       category: metal
-      crystal_structure: face-centered cubic
-      curie_temperature: 355°C
+      tensileStrength: 667-1600 MPa
+      youngsModulus: 200-250 GPa
+      thermalConductivity: 90.9 W/(m·K)
+      thermalExpansion: 10-25 × 10⁻⁶ /°C
+      melting_point: 1455°C
       electricalResistivity: 69.3 nΩ·m
+      crystal_structure: face-centered cubic
       industryTags:
       - Automotive
       - Electronics
       - Aerospace
       - Chemical Processing
-      magnetic_properties: ferromagnetic
-      melting_point: 1455°C
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      tensileStrength: 667-1600 MPa
-      thermalConductivity: 90.9 W/(m·K)
-      thermalExpansion: 10-25 × 10⁻⁶ /°C
+      curie_temperature: 355°C
+      magnetic_properties: ferromagnetic
       yield_strength: 638 MPa
-      youngsModulus: 200-250 GPa
     - author_id: 4
       category: metal
+      tensileStrength: 200-1200 MPa
+      youngsModulus: 200-250 GPa
+      thermalConductivity: 15-400 W/m·K
+      thermalExpansion: 10-25 × 10⁻⁶ /°C
       electricalResistivity: 10-100 nΩ·m
       industryTags:
       - Aerospace
@@ -2097,12 +1785,12 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      tensileStrength: 200-1200 MPa
-      thermalConductivity: 15-400 W/m·K
-      thermalExpansion: 10-25 × 10⁻⁶ /°C
-      youngsModulus: 200-250 GPa
     - author_id: 3
       category: metal
+      tensileStrength: 200-1200 MPa
+      youngsModulus: 200-250 GPa
+      thermalConductivity: 15-400 W/m·K
+      thermalExpansion: 10-25 × 10⁻⁶ /°C
       electricalResistivity: 10-100 nΩ·m
       industryTags:
       - Automotive
@@ -2112,12 +1800,12 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      tensileStrength: 200-1200 MPa
-      thermalConductivity: 15-400 W/m·K
-      thermalExpansion: 10-25 × 10⁻⁶ /°C
-      youngsModulus: 200-250 GPa
     - author_id: 3
       category: metal
+      tensileStrength: 200-1200 MPa
+      youngsModulus: 200-250 GPa
+      thermalConductivity: 15-400 W/m·K
+      thermalExpansion: 10-25 × 10⁻⁶ /°C
       electricalResistivity: 10-100 nΩ·m
       industryTags:
       - Jewelry
@@ -2127,12 +1815,12 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      tensileStrength: 200-1200 MPa
-      thermalConductivity: 15-400 W/m·K
-      thermalExpansion: 10-25 × 10⁻⁶ /°C
-      youngsModulus: 200-250 GPa
     - author_id: 1
       category: metal
+      tensileStrength: 200-1200 MPa
+      youngsModulus: 200-250 GPa
+      thermalConductivity: 15-400 W/m·K
+      thermalExpansion: 10-25 × 10⁻⁶ /°C
       electricalResistivity: 10-100 nΩ·m
       industryTags:
       - Semiconductor
@@ -2142,12 +1830,12 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      tensileStrength: 200-1200 MPa
-      thermalConductivity: 15-400 W/m·K
-      thermalExpansion: 10-25 × 10⁻⁶ /°C
-      youngsModulus: 200-250 GPa
     - author_id: 2
       category: metal
+      tensileStrength: 200-1200 MPa
+      youngsModulus: 200-250 GPa
+      thermalConductivity: 15-400 W/m·K
+      thermalExpansion: 10-25 × 10⁻⁶ /°C
       electricalResistivity: 10-100 nΩ·m
       industryTags:
       - Jewelry
@@ -2157,12 +1845,12 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      tensileStrength: 200-1200 MPa
-      thermalConductivity: 15-400 W/m·K
-      thermalExpansion: 10-25 × 10⁻⁶ /°C
-      youngsModulus: 200-250 GPa
     - author_id: 1
       category: metal
+      tensileStrength: 200-1200 MPa
+      youngsModulus: 200-250 GPa
+      thermalConductivity: 15-400 W/m·K
+      thermalExpansion: 10-25 × 10⁻⁶ /°C
       electricalResistivity: 10-100 nΩ·m
       industryTags:
       - Aerospace
@@ -2172,12 +1860,12 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      tensileStrength: 200-1200 MPa
-      thermalConductivity: 15-400 W/m·K
-      thermalExpansion: 10-25 × 10⁻⁶ /°C
-      youngsModulus: 200-250 GPa
     - author_id: 2
       category: metal
+      tensileStrength: 200-1200 MPa
+      youngsModulus: 200-250 GPa
+      thermalConductivity: 15-400 W/m·K
+      thermalExpansion: 10-25 × 10⁻⁶ /°C
       electricalResistivity: 10-100 nΩ·m
       industryTags:
       - Jewelry
@@ -2187,36 +1875,36 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      tensileStrength: 200-1200 MPa
-      thermalConductivity: 15-400 W/m·K
-      thermalExpansion: 10-25 × 10⁻⁶ /°C
-      youngsModulus: 200-250 GPa
     - author_id: 2
       category: metal
-      chromium_content: 11-30%
-      corrosion_resistance: excellent
+      tensileStrength: 515-827 MPa
+      youngsModulus: 200-250 GPa
+      thermalConductivity: 16.2 W/(m·K)
+      thermalExpansion: 10-25 × 10⁻⁶ /°C
+      melting_point: 1325-1530°C
       electricalResistivity: 10-100 nΩ·m
-      grades: 304, 316, 321, 347, 410, 420, 430
       industryTags:
       - Automotive
       - Aerospace
       - Food Processing
       - Medical
       - Chemical Processing
-      magnetic_properties: Non-magnetic (304, 316), Magnetic (410, 420, 430)
-      melting_point: 1325-1530°C
-      nickel_content: 0-37%
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      tensileStrength: 515-827 MPa
-      thermalConductivity: 16.2 W/(m·K)
-      thermalExpansion: 10-25 × 10⁻⁶ /°C
-      youngsModulus: 200-250 GPa
+      chromium_content: 11-30%
+      corrosion_resistance: excellent
+      grades: 304, 316, 321, 347, 410, 420, 430
+      magnetic_properties: Non-magnetic (304, 316), Magnetic (410, 420, 430)
+      nickel_content: 0-37%
     - author_id: 3
       category: metal
+      tensileStrength: 200-1200 MPa
+      youngsModulus: 200-250 GPa
+      thermalConductivity: 15-400 W/m·K
+      thermalExpansion: 10-25 × 10⁻⁶ /°C
       electricalResistivity: 10-100 nΩ·m
       industryTags:
       - Automotive
@@ -2226,12 +1914,12 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      tensileStrength: 200-1200 MPa
-      thermalConductivity: 15-400 W/m·K
-      thermalExpansion: 10-25 × 10⁻⁶ /°C
-      youngsModulus: 200-250 GPa
     - author_id: 2
       category: metal
+      tensileStrength: 200-1200 MPa
+      youngsModulus: 200-250 GPa
+      thermalConductivity: 15-400 W/m·K
+      thermalExpansion: 10-25 × 10⁻⁶ /°C
       electricalResistivity: 10-100 nΩ·m
       industryTags:
       - Aerospace
@@ -2241,12 +1929,12 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      tensileStrength: 200-1200 MPa
-      thermalConductivity: 15-400 W/m·K
-      thermalExpansion: 10-25 × 10⁻⁶ /°C
-      youngsModulus: 200-250 GPa
     - author_id: 3
       category: metal
+      tensileStrength: 200-1200 MPa
+      youngsModulus: 200-250 GPa
+      thermalConductivity: 15-400 W/m·K
+      thermalExpansion: 10-25 × 10⁻⁶ /°C
       electricalResistivity: 10-100 nΩ·m
       industryTags:
       - Automotive
@@ -2256,30 +1944,30 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      tensileStrength: 200-1200 MPa
-      thermalConductivity: 15-400 W/m·K
-      thermalExpansion: 10-25 × 10⁻⁶ /°C
-      youngsModulus: 200-250 GPa
     - author_id: 2
       category: metal
-      crystal_structure: body-centered cubic
+      tensileStrength: 3430-4600 MPa
+      youngsModulus: 200-250 GPa
+      thermalConductivity: 173 W/(m·K)
+      thermalExpansion: 4.42×10⁻⁶/K
+      melting_point: 3422°C
       electricalResistivity: 52.8 nΩ·m
+      crystal_structure: body-centered cubic
       industryTags:
       - Semiconductor
       - Aerospace
-      melting_point: 3422°C
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      tensileStrength: 3430-4600 MPa
-      thermalConductivity: 173 W/(m·K)
-      thermalExpansion: 4.42×10⁻⁶/K
       yield_strength: 2000-4000 MPa
-      youngsModulus: 200-250 GPa
     - author_id: 4
       category: metal
+      tensileStrength: 200-1200 MPa
+      youngsModulus: 200-250 GPa
+      thermalConductivity: 15-400 W/m·K
+      thermalExpansion: 10-25 × 10⁻⁶ /°C
       electricalResistivity: 10-100 nΩ·m
       industryTags:
       - Automotive
@@ -2289,12 +1977,12 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      tensileStrength: 200-1200 MPa
-      thermalConductivity: 15-400 W/m·K
-      thermalExpansion: 10-25 × 10⁻⁶ /°C
-      youngsModulus: 200-250 GPa
     - author_id: 3
       category: metal
+      tensileStrength: 200-1200 MPa
+      youngsModulus: 200-250 GPa
+      thermalConductivity: 15-400 W/m·K
+      thermalExpansion: 10-25 × 10⁻⁶ /°C
       electricalResistivity: 10-100 nΩ·m
       industryTags:
       - Automotive
@@ -2304,12 +1992,12 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      tensileStrength: 200-1200 MPa
-      thermalConductivity: 15-400 W/m·K
-      thermalExpansion: 10-25 × 10⁻⁶ /°C
-      youngsModulus: 200-250 GPa
     - author_id: 1
       category: metal
+      tensileStrength: 200-1200 MPa
+      youngsModulus: 200-250 GPa
+      thermalConductivity: 15-400 W/m·K
+      thermalExpansion: 10-25 × 10⁻⁶ /°C
       electricalResistivity: 10-100 nΩ·m
       industryTags:
       - Aerospace
@@ -2319,10 +2007,6 @@ materials:
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      tensileStrength: 200-1200 MPa
-      thermalConductivity: 15-400 W/m·K
-      thermalExpansion: 10-25 × 10⁻⁶ /°C
-      youngsModulus: 200-250 GPa
     - author_id: 1
       category: metal
       hardness: 8.5 Mohs
@@ -2454,28 +2138,30 @@ materials:
     description: Semiconductor materials for laser cleaning applications
     items:
     - author_id: 4
-      bandgap: 1.42 eV
       category: semiconductor
-      crystal_structure: Zinc blende
+      thermalConductivity: 55 W/(m·K)
+      melting_point: 1238°C
       electricalResistivity: 1×10⁸ Ω·cm
+      crystal_structure: Zinc blende
       industryTags:
       - Optoelectronics
       - Semiconductor Manufacturing
       - Solar
       - RF Electronics
-      melting_point: 1238°C
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      thermalConductivity: 55 W/(m·K)
+      bandgap: 1.42 eV
     - author_id: 2
-      bandgap: 1.12 eV
       category: semiconductor
-      crystal_structure: Diamond cubic
-      electricalResistivity: 1×10³-1×10⁵ Ω·cm
       hardness: 6.5 Mohs
+      thermalConductivity: 149 W/(m·K)
+      thermalExpansion: 2.6×10⁻⁶/K
+      melting_point: 1414°C
+      electricalResistivity: 1×10³-1×10⁵ Ω·cm
+      crystal_structure: Diamond cubic
       industryTags:
       - Semiconductor Manufacturing
       - Photovoltaics
@@ -2483,7 +2169,6 @@ materials:
       - Electronics
       - Optoelectronics
       - Research
-      melting_point: 1414°C
       regulatoryStandards:
       - SEMI M1 - Specification for Polished Single Crystal Silicon Wafers
       - ASTM F1188 - Standard Specification for Single Crystal Silicon
@@ -2491,44 +2176,43 @@ materials:
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
       - ISO 14644 - Cleanroom and Associated Controlled Environments
-      thermalConductivity: 149 W/(m·K)
-      thermalExpansion: 2.6×10⁻⁶/K
+      bandgap: 1.12 eV
     - author_id: 3
-      bandgap: 3.3 eV
       category: semiconductor
-      crystal_structure: Hexagonal (4H-SiC)
-      electricalResistivity: 1×10⁵ Ω·cm
       hardness: 2800 HV
+      thermalConductivity: 490 W/(m·K)
+      melting_point: 2830°C
+      electricalResistivity: 1×10⁵ Ω·cm
+      crystal_structure: Hexagonal (4H-SiC)
       industryTags:
       - Power Electronics
       - Automotive
       - Aerospace
       - Industrial
-      melting_point: 2830°C
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      thermalConductivity: 490 W/(m·K)
+      bandgap: 3.3 eV
     - author_id: 4
-      bandgap: 0.8-1.1 eV
       category: semiconductor
-      crystal_structure: Diamond cubic
-      documentation_status: complete
+      thermalConductivity: 80 W/(m·K)
+      melting_point: 1350°C
       electricalResistivity: 100 Ω·cm
+      crystal_structure: Diamond cubic
       industryTags:
       - High-Speed Electronics
       - RF Communications
       - Automotive
       - Telecommunications
-      melting_point: 1350°C
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      thermalConductivity: 80 W/(m·K)
+      bandgap: 0.8-1.1 eV
+      documentation_status: complete
     processing_priority: medium
   stone:
     article_type: material
@@ -2536,88 +2220,90 @@ materials:
     items:
     - author_id: 1
       category: stone
-      compressive_strength: 50-200 MPa
       hardness: 6-7 Mohs
+      compressive_strength: 50-200 MPa
+      thermalConductivity: 1.5-3.0 W/m·K
+      thermalExpansion: 8.0 × 10⁻⁶ /°C
       industryTags:
       - Construction
       - Art Restoration
-      mineral_composition: {}
-      porosity: 5-15%
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      thermalConductivity: 1.5-3.0 W/m·K
-      thermalExpansion: 8.0 × 10⁻⁶ /°C
+      mineral_composition: {}
+      porosity: 5-15%
     - author_id: 2
       category: stone
-      compressive_strength: 50-200 MPa
       hardness: 6-7 Mohs
+      compressive_strength: 50-200 MPa
+      thermalConductivity: 1.5-3.0 W/m·K
+      thermalExpansion: 8.0 × 10⁻⁶ /°C
       industryTags:
       - Construction
       - Manufacturing
-      mineral_composition: {}
-      porosity: 5-15%
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      thermalConductivity: 1.5-3.0 W/m·K
-      thermalExpansion: 8.0 × 10⁻⁶ /°C
+      mineral_composition: {}
+      porosity: 5-15%
     - author_id: 2
       category: stone
-      compressive_strength: 50-200 MPa
       hardness: 6-7 Mohs
+      compressive_strength: 50-200 MPa
+      thermalConductivity: 1.5-3.0 W/m·K
+      thermalExpansion: 8.0 × 10⁻⁶ /°C
       industryTags:
       - Construction
       - Restoration
-      mineral_composition: {}
-      porosity: 5-15%
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      thermalConductivity: 1.5-3.0 W/m·K
-      thermalExpansion: 8.0 × 10⁻⁶ /°C
+      mineral_composition: {}
+      porosity: 5-15%
     - author_id: 1
       category: stone
-      compressive_strength: 50-200 MPa
       hardness: 6-7 Mohs
+      compressive_strength: 50-200 MPa
+      thermalConductivity: 1.5-3.0 W/m·K
+      thermalExpansion: 8.0 × 10⁻⁶ /°C
       industryTags:
       - Construction
       - Art and Restoration
-      mineral_composition: {}
-      porosity: 5-15%
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      thermalConductivity: 1.5-3.0 W/m·K
-      thermalExpansion: 8.0 × 10⁻⁶ /°C
+      mineral_composition: {}
+      porosity: 5-15%
     - author_id: 4
       category: stone
-      compressive_strength: 50-200 MPa
       hardness: 6-7 Mohs
+      compressive_strength: 50-200 MPa
+      thermalConductivity: 1.5-3.0 W/m·K
+      thermalExpansion: 8.0 × 10⁻⁶ /°C
       industryTags:
       - Construction
       - Restoration
-      mineral_composition: {}
-      porosity: 5-15%
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      thermalConductivity: 1.5-3.0 W/m·K
-      thermalExpansion: 8.0 × 10⁻⁶ /°C
+      mineral_composition: {}
+      porosity: 5-15%
     - author_id: 3
       category: stone
-      compressive_strength: 100-250 MPa
       hardness: 6-7 Mohs
+      compressive_strength: 100-250 MPa
+      thermalConductivity: 2.5-3.5 W/m·K
+      thermalExpansion: 8.0 × 10⁻⁶ /°C
       industryTags:
       - Construction
       - Restoration
@@ -2625,12 +2311,6 @@ materials:
       - Memorials
       - Building Facades
       - Quarrying
-      mineral_composition:
-        feldspar: 10-65%
-        mica: 5-15%
-        other_minerals: 5-10%
-        quartz: 20-60%
-      porosity: 0.4-1.5%
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - EPA Clean Air Act Compliance
@@ -2638,12 +2318,18 @@ materials:
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
       - ASTM C615 - Standard Specification for Granite Dimension Stone
-      thermalConductivity: 2.5-3.5 W/m·K
-      thermalExpansion: 8.0 × 10⁻⁶ /°C
+      mineral_composition:
+        feldspar: 10-65%
+        mica: 5-15%
+        other_minerals: 5-10%
+        quartz: 20-60%
+      porosity: 0.4-1.5%
     - author_id: 2
       category: stone
-      compressive_strength: 30-180 MPa
       hardness: 2-4 Mohs
+      compressive_strength: 30-180 MPa
+      thermalConductivity: 1.0-4.0 W/m·K
+      thermalExpansion: 6.0 × 10⁻⁶ /°C
       industryTags:
       - Construction
       - Heritage Conservation
@@ -2651,12 +2337,6 @@ materials:
       - Quarrying
       - Landscaping
       - Educational Institutions
-      mineral_composition:
-        calcite: 80-99%
-        clay_minerals: 1-15%
-        organic_matter: 0-5%
-        quartz: 0-10%
-      porosity: 5-25%
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - EPA Clean Air Act Compliance
@@ -2664,28 +2344,34 @@ materials:
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
       - ASTM C568 - Standard Specification for Limestone Dimension Stone
-      thermalConductivity: 1.0-4.0 W/m·K
-      thermalExpansion: 6.0 × 10⁻⁶ /°C
+      mineral_composition:
+        calcite: 80-99%
+        clay_minerals: 1-15%
+        organic_matter: 0-5%
+        quartz: 0-10%
+      porosity: 5-25%
     - author_id: 4
       category: stone
-      compressive_strength: 50-200 MPa
       hardness: 6-7 Mohs
+      compressive_strength: 50-200 MPa
+      thermalConductivity: 1.5-3.0 W/m·K
+      thermalExpansion: 8.0 × 10⁻⁶ /°C
       industryTags:
       - Construction
       - Art and Restoration
-      mineral_composition: {}
-      porosity: 5-15%
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      thermalConductivity: 1.5-3.0 W/m·K
-      thermalExpansion: 8.0 × 10⁻⁶ /°C
+      mineral_composition: {}
+      porosity: 5-15%
     - author_id: 3
       category: stone
-      compressive_strength: 70-200 MPa
       hardness: 3-4 Mohs
+      compressive_strength: 70-200 MPa
+      thermalConductivity: 2.0-3.5 W/m·K
+      thermalExpansion: 5.5 × 10⁻⁶ /°C
       industryTags:
       - Construction
       - Restoration
@@ -2693,11 +2379,6 @@ materials:
       - Architecture
       - Countertops
       - Flooring
-      mineral_composition:
-        calcite: 90-99%
-        dolomite: 0-10%
-        impurities: 0-5%
-      porosity: 0.1-2.0%
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - EPA Clean Air Act Compliance
@@ -2706,44 +2387,49 @@ materials:
       - IEC 60825 - Safety of Laser Products
       - ASTM C503 - Standard Specification for Marble Dimension Stone
       - UNESCO Guidelines for Cultural Heritage Conservation
-      thermalConductivity: 2.0-3.5 W/m·K
-      thermalExpansion: 5.5 × 10⁻⁶ /°C
+      mineral_composition:
+        calcite: 90-99%
+        dolomite: 0-10%
+        impurities: 0-5%
+      porosity: 0.1-2.0%
     - author_id: 2
       category: stone
-      compressive_strength: 50-200 MPa
       hardness: 6-7 Mohs
+      compressive_strength: 50-200 MPa
+      thermalConductivity: 1.5-3.0 W/m·K
+      thermalExpansion: 8.0 × 10⁻⁶ /°C
       industryTags:
       - Construction
       - Jewelry
-      mineral_composition: {}
-      porosity: 5-15%
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      thermalConductivity: 1.5-3.0 W/m·K
-      thermalExpansion: 8.0 × 10⁻⁶ /°C
+      mineral_composition: {}
+      porosity: 5-15%
     - author_id: 3
       category: stone
-      compressive_strength: 50-200 MPa
       hardness: 6-7 Mohs
+      compressive_strength: 50-200 MPa
+      thermalConductivity: 1.5-3.0 W/m·K
+      thermalExpansion: 8.0 × 10⁻⁶ /°C
       industryTags:
       - Construction
       - Restoration
-      mineral_composition: {}
-      porosity: 5-15%
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      thermalConductivity: 1.5-3.0 W/m·K
-      thermalExpansion: 8.0 × 10⁻⁶ /°C
+      mineral_composition: {}
+      porosity: 5-15%
     - author_id: 2
       category: stone
-      compressive_strength: 20-170 MPa
       hardness: 6-7 Mohs
+      compressive_strength: 20-170 MPa
+      thermalConductivity: 1.7-5.1 W/m·K
+      thermalExpansion: 11.9 × 10⁻⁶ /°C
       industryTags:
       - Construction
       - Heritage Conservation
@@ -2751,12 +2437,6 @@ materials:
       - Monuments
       - Quarrying
       - Landscaping
-      mineral_composition:
-        clay_matrix: 0-15%
-        feldspar: 0-25%
-        quartz: 65-95%
-        rock_fragments: 0-15%
-      porosity: 10-35%
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - EPA Clean Air Act Compliance
@@ -2764,60 +2444,66 @@ materials:
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
       - ASTM C616 - Standard Specification for Sandstone Dimension Stone
-      thermalConductivity: 1.7-5.1 W/m·K
-      thermalExpansion: 11.9 × 10⁻⁶ /°C
+      mineral_composition:
+        clay_matrix: 0-15%
+        feldspar: 0-25%
+        quartz: 65-95%
+        rock_fragments: 0-15%
+      porosity: 10-35%
     - author_id: 3
       category: stone
-      compressive_strength: 50-200 MPa
       hardness: 6-7 Mohs
+      compressive_strength: 50-200 MPa
+      thermalConductivity: 1.5-3.0 W/m·K
+      thermalExpansion: 8.0 × 10⁻⁶ /°C
       industryTags:
       - Construction
       - Heritage Conservation
-      mineral_composition: {}
-      porosity: 5-15%
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      thermalConductivity: 1.5-3.0 W/m·K
-      thermalExpansion: 8.0 × 10⁻⁶ /°C
+      mineral_composition: {}
+      porosity: 5-15%
     - author_id: 4
       category: stone
-      compressive_strength: 50-200 MPa
       hardness: 6-7 Mohs
+      compressive_strength: 50-200 MPa
+      thermalConductivity: 1.5-3.0 W/m·K
+      thermalExpansion: 8.0 × 10⁻⁶ /°C
       industryTags:
       - Construction
       - Jewelry
-      mineral_composition: {}
-      porosity: 5-15%
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      thermalConductivity: 1.5-3.0 W/m·K
-      thermalExpansion: 8.0 × 10⁻⁶ /°C
+      mineral_composition: {}
+      porosity: 5-15%
     - author_id: 1
       category: stone
-      compressive_strength: 50-200 MPa
       hardness: 6-7 Mohs
+      compressive_strength: 50-200 MPa
+      thermalConductivity: 1.5-3.0 W/m·K
+      thermalExpansion: 8.0 × 10⁻⁶ /°C
       industryTags:
       - Construction
       - Oil and Gas
-      mineral_composition: {}
-      porosity: 5-15%
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      thermalConductivity: 1.5-3.0 W/m·K
-      thermalExpansion: 8.0 × 10⁻⁶ /°C
+      mineral_composition: {}
+      porosity: 5-15%
     - author_id: 3
       category: stone
-      compressive_strength: 100-200 MPa
       hardness: 6-7 Mohs
+      compressive_strength: 100-200 MPa
+      thermalConductivity: 2.0-2.5 W/m·K
+      thermalExpansion: 10.4 × 10⁻⁶ /°C
       industryTags:
       - Construction
       - Restoration
@@ -2825,12 +2511,6 @@ materials:
       - Flooring
       - Memorials
       - Architectural Elements
-      mineral_composition:
-        chlorite: 10-30%
-        feldspar: 5-15%
-        mica: 30-50%
-        quartz: 20-40%
-      porosity: 0.1-3.0%
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - EPA Clean Air Act Compliance
@@ -2838,40 +2518,44 @@ materials:
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
       - ASTM C629 - Standard Specification for Slate Dimension Stone
-      thermalConductivity: 2.0-2.5 W/m·K
-      thermalExpansion: 10.4 × 10⁻⁶ /°C
+      mineral_composition:
+        chlorite: 10-30%
+        feldspar: 5-15%
+        mica: 30-50%
+        quartz: 20-40%
+      porosity: 0.1-3.0%
     - author_id: 4
       category: stone
-      compressive_strength: 50-200 MPa
       hardness: 6-7 Mohs
+      compressive_strength: 50-200 MPa
+      thermalConductivity: 1.5-3.0 W/m·K
+      thermalExpansion: 8.0 × 10⁻⁶ /°C
       industryTags:
       - Construction
       - Restoration
-      mineral_composition: {}
-      porosity: 5-15%
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      thermalConductivity: 1.5-3.0 W/m·K
-      thermalExpansion: 8.0 × 10⁻⁶ /°C
+      mineral_composition: {}
+      porosity: 5-15%
     - author_id: 1
       category: stone
-      compressive_strength: 50-200 MPa
       hardness: 6-7 Mohs
+      compressive_strength: 50-200 MPa
+      thermalConductivity: 1.5-3.0 W/m·K
+      thermalExpansion: 8.0 × 10⁻⁶ /°C
       industryTags:
       - Construction
       - Restoration
-      mineral_composition: {}
-      porosity: 5-15%
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
-      thermalConductivity: 1.5-3.0 W/m·K
-      thermalExpansion: 8.0 × 10⁻⁶ /°C
+      mineral_composition: {}
+      porosity: 5-15%
     processing_priority: medium
   wood:
     article_type: material
@@ -2879,8 +2563,8 @@ materials:
     items:
     - author_id: 4
       category: wood
-      grain_structure_type: Open grain
       hardness: 5.0 Janka
+      thermalConductivity: 0.16 W/m·K
       industryTags:
       - Woodworking
       - Conservation
@@ -2888,22 +2572,21 @@ materials:
       - Musical Instruments
       - Furniture Manufacturing
       - Sports Equipment
-      moisture_content: 6-12%
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - EPA Clean Air Act Compliance
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      grain_structure_type: Open grain
+      moisture_content: 6-12%
       resin_content: Low
       specific_heat: 1.2 kJ/kg·K
       tannin_content: Low
-      thermalConductivity: 0.16 W/m·K
     - author_id: 1
       category: wood
-      grain_structure_type: Straight fiber
-      growth_type: Grass (rapid growth)
       hardness: 1.4 Janka
+      thermalConductivity: 0.11 W/m·K
       industryTags:
       - Woodworking
       - Conservation
@@ -2911,7 +2594,6 @@ materials:
       - Textiles
       - Construction
       - Kitchenware
-      moisture_content: 8-15%
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - EPA Clean Air Act Compliance
@@ -2919,10 +2601,12 @@ materials:
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
       - FSC Sustainable Forestry Standards
+      grain_structure_type: Straight fiber
+      growth_type: Grass (rapid growth)
+      moisture_content: 8-15%
       resin_content: Very low
       specific_heat: 1.3 kJ/kg·K
       tannin_content: Low
-      thermalConductivity: 0.11 W/m·K
     - author_id: 3
       category: wood
       industryTags:
@@ -2935,8 +2619,8 @@ materials:
       - IEC 60825 - Safety of Laser Products
     - author_id: 1
       category: wood
-      grain_structure_type: Closed grain
       hardness: 4.87 Janka
+      thermalConductivity: 0.15 W/m·K
       industryTags:
       - Woodworking
       - Construction
@@ -2944,21 +2628,21 @@ materials:
       - Cabinetry
       - Turning
       - Flooring
-      moisture_content: 6-12%
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - EPA Clean Air Act Compliance
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      grain_structure_type: Closed grain
+      moisture_content: 6-12%
       resin_content: Low
       specific_heat: 1.25 kJ/kg·K
       tannin_content: Low
-      thermalConductivity: 0.15 W/m·K
     - author_id: 2
       category: wood
-      grain_structure_type: Straight grain
       hardness: 1.8 Janka
+      thermalConductivity: 0.10 W/m·K
       industryTags:
       - Woodworking
       - Restoration
@@ -2966,22 +2650,22 @@ materials:
       - Marine Applications
       - Saunas and Spas
       - Roofing
-      moisture_content: 8-15%
-      natural_oils: High content
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - EPA Clean Air Act Compliance
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      grain_structure_type: Straight grain
+      moisture_content: 8-15%
+      natural_oils: High content
       resin_content: High
       specific_heat: 1.4 kJ/kg·K
       tannin_content: Medium
-      thermalConductivity: 0.10 W/m·K
     - author_id: 1
       category: wood
-      grain_structure_type: Closed grain
       hardness: 4.0 Janka
+      thermalConductivity: 0.14 W/m·K
       industryTags:
       - Restoration and Conservation
       - Furniture Manufacturing
@@ -2989,17 +2673,17 @@ materials:
       - Musical Instruments
       - Architectural Millwork
       - Decorative Arts
-      moisture_content: 7-12%
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - EPA Clean Air Act Compliance
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      grain_structure_type: Closed grain
+      moisture_content: 7-12%
       resin_content: Low to medium
       specific_heat: 1.2 kJ/kg·K
       tannin_content: Medium
-      thermalConductivity: 0.14 W/m·K
     - author_id: 4
       category: wood
       industryTags:
@@ -3022,8 +2706,8 @@ materials:
       - IEC 60825 - Safety of Laser Products
     - author_id: 1
       category: wood
-      grain_structure_type: Interlocked grain
       hardness: 2.2 Janka
+      thermalConductivity: 0.13 W/m·K
       industryTags:
       - Furniture Manufacturing
       - Luxury Cabinetry
@@ -3031,7 +2715,6 @@ materials:
       - Musical Instruments
       - Antique Restoration
       - Architectural Elements
-      moisture_content: 6-12%
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - EPA Clean Air Act Compliance
@@ -3039,14 +2722,15 @@ materials:
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
       - CITES Regulations for Sustainable Mahogany Use
+      grain_structure_type: Interlocked grain
+      moisture_content: 6-12%
       resin_content: Low to medium
       specific_heat: 1.25 kJ/kg·K
       tannin_content: Medium
-      thermalConductivity: 0.13 W/m·K
     - author_id: 2
       category: wood
-      grain_structure_type: Closed grain
       hardness: 6.4 Janka
+      thermalConductivity: 0.16 W/m·K
       industryTags:
       - Woodworking
       - Restoration
@@ -3054,7 +2738,6 @@ materials:
       - Cabinetry
       - Sports Equipment
       - Food Service
-      moisture_content: 6-10%
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - EPA Clean Air Act Compliance
@@ -3062,10 +2745,11 @@ materials:
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
       - USDA Food Safety Guidelines (for food-contact surfaces)
+      grain_structure_type: Closed grain
+      moisture_content: 6-10%
       resin_content: Very low
       specific_heat: 1.3 kJ/kg·K
       tannin_content: Low
-      thermalConductivity: 0.16 W/m·K
     - author_id: 3
       category: wood
       industryTags:
@@ -3078,8 +2762,8 @@ materials:
       - IEC 60825 - Safety of Laser Products
     - author_id: 1
       category: wood
-      grain_structure_type: Open grain
       hardness: 5.9 Janka
+      thermalConductivity: 0.17 W/m·K
       industryTags:
       - Woodworking
       - Restoration
@@ -3087,32 +2771,32 @@ materials:
       - Marine
       - Antique Restoration
       - Flooring
-      moisture_content: 8-12%
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - EPA Clean Air Act Compliance
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      grain_structure_type: Open grain
+      moisture_content: 8-12%
       resin_content: Low
       specific_heat: 1.2 kJ/kg·K
       tannin_content: High
-      thermalConductivity: 0.17 W/m·K
     - author_id: 1
       category: wood
-      grain_pattern: Straight grain
       hardness: 2.3 (Janka hardness scale)
       industryTags:
       - Construction
       - Furniture Manufacturing
       - Restoration
       - Marine
-      moisture_content: 10-15%
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      grain_pattern: Straight grain
+      moisture_content: 10-15%
       resin_content: High
     - author_id: 4
       category: wood
@@ -3126,8 +2810,8 @@ materials:
       - IEC 60825 - Safety of Laser Products
     - author_id: 2
       category: wood
-      grain_structure_type: Straight grain
       hardness: 2.3 Janka
+      thermalConductivity: 0.12 W/m·K
       industryTags:
       - Woodworking
       - Restoration
@@ -3135,17 +2819,17 @@ materials:
       - Cabinetry
       - Musical Instruments
       - Craft Industry
-      moisture_content: 8-14%
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - EPA Clean Air Act Compliance
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      grain_structure_type: Straight grain
+      moisture_content: 8-14%
       resin_content: Very low
       specific_heat: 1.35 kJ/kg·K
       tannin_content: Very low
-      thermalConductivity: 0.12 W/m·K
     - author_id: 4
       category: wood
       industryTags:
@@ -3168,8 +2852,8 @@ materials:
       - IEC 60825 - Safety of Laser Products
     - author_id: 3
       category: wood
-      grain_structure_type: Straight to wavy grain
       hardness: 4.2 Janka
+      thermalConductivity: 0.13 W/m·K
       industryTags:
       - Woodworking
       - Marine
@@ -3177,8 +2861,6 @@ materials:
       - Luxury Interiors
       - Shipbuilding
       - Architectural Elements
-      moisture_content: 6-12%
-      natural_oils: Very high content
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - EPA Clean Air Act Compliance
@@ -3186,14 +2868,16 @@ materials:
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
       - IMO Marine Pollution Prevention Standards
+      grain_structure_type: Straight to wavy grain
+      moisture_content: 6-12%
+      natural_oils: Very high content
       resin_content: Low
       specific_heat: 1.2 kJ/kg·K
       tannin_content: High
-      thermalConductivity: 0.13 W/m·K
     - author_id: 1
       category: wood
-      grain_structure_type: Open grain
       hardness: 4.49 Janka
+      thermalConductivity: 0.14 W/m·K
       industryTags:
       - Furniture Manufacturing
       - Art Restoration
@@ -3201,17 +2885,17 @@ materials:
       - Musical Instruments
       - Gunstock Manufacturing
       - Architectural Millwork
-      moisture_content: 7-12%
       regulatoryStandards:
       - OSHA 29 CFR 1926.95 - Personal Protective Equipment
       - EPA Clean Air Act Compliance
       - FDA 21 CFR 1040.10 - Laser Product Performance Standards
       - ANSI Z136.1 - Safe Use of Lasers
       - IEC 60825 - Safety of Laser Products
+      grain_structure_type: Open grain
+      moisture_content: 7-12%
       resin_content: Low
       specific_heat: 1.2 kJ/kg·K
       tannin_content: Medium to high
-      thermalConductivity: 0.14 W/m·K
     - author_id: 2
       category: wood
       industryTags:

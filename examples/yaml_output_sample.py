@@ -13,8 +13,8 @@ project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
 def load_materials_data(material_name: str) -> dict:
-    """Load material data from materials.yaml"""
-    materials_path = project_root / "data" / "materials.yaml"
+    """Load material data from Materials.yaml"""
+    materials_path = project_root / "data" / "Materials.yaml"
     
     if not materials_path.exists():
         return {}

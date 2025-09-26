@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Fix remaining snake_case keys in materials.yaml that were missed in the initial migration
+Fix remaining snake_case keys in Materials.yaml that were missed in the initial migration
 """
 
 import yaml
@@ -8,15 +8,15 @@ import shutil
 from datetime import datetime
 
 def fix_remaining_snake_case():
-    """Fix remaining snake_case keys in materials.yaml"""
+    """Fix remaining snake_case keys in Materials.yaml"""
     
     # Create backup
     backup_path = f"data/materials_backup_fix_snake_case_{int(datetime.now().timestamp())}.yaml"
-    shutil.copy("data/materials.yaml", backup_path)
+    shutil.copy("data/Materials.yaml", backup_path)
     print(f"Created backup: {backup_path}")
     
     # Load materials data
-    with open("data/materials.yaml", 'r') as f:
+    with open("data/Materials.yaml", 'r') as f:
         data = yaml.safe_load(f)
     
     changes_made = 0
@@ -33,7 +33,7 @@ def fix_remaining_snake_case():
                         print(f"Fixed machine_settings -> machineSettings in {material.get('name', 'Unknown')}")
     
     # Save updated data
-    with open("data/materials.yaml", 'w') as f:
+    with open("data/Materials.yaml", 'w') as f:
         yaml.dump(data, f, default_flow_style=False, allow_unicode=True, 
                  sort_keys=False, width=120, indent=2)
     

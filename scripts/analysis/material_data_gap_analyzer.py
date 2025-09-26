@@ -26,7 +26,7 @@ class PropertyGap:
 
 
 class MaterialDataGapAnalyzer:
-    """Analyzes materials.yaml to identify comprehensive data gaps"""
+    """Analyzes Materials.yaml to identify comprehensive data gaps"""
     
     def __init__(self):
         self.materials_data = {}
@@ -66,8 +66,8 @@ class MaterialDataGapAnalyzer:
         }
     
     def load_materials_data(self) -> None:
-        """Load current materials.yaml data"""
-        materials_path = Path(__file__).parent.parent.parent / "data" / "materials.yaml"
+        """Load current Materials.yaml data"""
+        materials_path = Path(__file__).parent.parent.parent / "data" / "Materials.yaml"
         
         with open(materials_path, 'r') as f:
             data = yaml.safe_load(f)

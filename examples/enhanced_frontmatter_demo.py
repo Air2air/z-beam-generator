@@ -2,7 +2,7 @@
 """
 Example Integration: Enhanced Frontmatter Generation
 
-This example demonstrates how to integrate the materials.yaml enhancement
+This example demonstrates how to integrate the Materials.yaml enhancement
 into the existing frontmatter generation workflow additively.
 """
 
@@ -21,7 +21,7 @@ def demonstrate_enhanced_frontmatter_generation():
     print("=" * 50)
     
     # Load materials data
-    materials_file = Path(__file__).parent.parent / "data" / "materials.yaml"
+    materials_file = Path(__file__).parent.parent / "data" / "Materials.yaml"
     with open(materials_file, 'r') as f:
         data = yaml.safe_load(f)
     
@@ -35,7 +35,7 @@ def demonstrate_enhanced_frontmatter_generation():
                     break
     
     if not steel_data:
-        print("❌ Steel material not found in materials.yaml")
+        print("❌ Steel material not found in Materials.yaml")
         return
     
     print(f"📊 Analyzing Steel material with {len(steel_data)} data fields")
@@ -49,7 +49,7 @@ def demonstrate_enhanced_frontmatter_generation():
     print(f"   Generated frontmatter: {len(current_frontmatter)} sections")
     print(f"   AI API calls needed: ~15-20 calls")
     print(f"   Generation time: ~2-3 seconds")
-    print(f"   Data utilization: ~15% of materials.yaml fields")
+    print(f"   Data utilization: ~15% of Materials.yaml fields")
     
     # === NEW APPROACH: Additive Enhancement ===
     print("\n2️⃣ ENHANCED APPROACH (Materials.yaml First)")
@@ -79,12 +79,12 @@ def demonstrate_enhanced_frontmatter_generation():
         print(f"\n   ✅ Enhanced frontmatter: {len(enhanced_frontmatter)} sections")
         print(f"   🤖 AI API calls needed: ~3-5 calls (70% reduction)")
         print(f"   ⚡ Generation time: ~0.8-1.2 seconds (60% faster)")
-        print(f"   📊 Data utilization: ~85% of materials.yaml fields")
+        print(f"   📊 Data utilization: ~85% of Materials.yaml fields")
         
         # Show enhancement details
         if 'enhancement' in enhanced_frontmatter:
             enhancement_info = enhanced_frontmatter['enhancement']
-            print(f"   📝 Fields added from materials.yaml: {enhancement_info.get('fieldsAdded', 0)}")
+            print(f"   📝 Fields added from Materials.yaml: {enhancement_info.get('fieldsAdded', 0)}")
         
         # === COMPARISON: Show Key Differences ===
         print("\n3️⃣ ENHANCEMENT COMPARISON")
@@ -143,7 +143,7 @@ def demonstrate_enhanced_frontmatter_generation():
         if 'description' in enhanced_frontmatter:
             print(f"📄 Description: {enhanced_frontmatter['description'][:100]}...")
         
-        print(f"\n✅ SUCCESS: Enhanced frontmatter generated with materials.yaml prioritization!")
+        print(f"\n✅ SUCCESS: Enhanced frontmatter generated with Materials.yaml prioritization!")
         
     except ImportError as e:
         print(f"❌ Enhancement components not available: {e}")

@@ -1,0 +1,789 @@
+metadata:
+  version: 2.0.0
+  generated_date: '2025-09-26T12:12:47.806216'
+  source_materials_yaml_hash: fc69e9d44790542345aed7d97e63b2ef
+  research_confidence_threshold: 75
+  total_categories: 9
+  total_subcategories: 0
+  enhancement_applied: true
+  additional_field_categories: 4
+categories:
+  ceramic:
+    category_ranges:
+      density:
+        max: 15.7
+        min: 1.8
+        unit: g/cm³
+      hardness:
+        max: 10
+        min: 6
+        unit: Mohs
+      laserAbsorption:
+        max: 50
+        min: 0.1
+        unit: cm⁻¹
+      laserReflectivity:
+        max: 90
+        min: 5
+        unit: '%'
+      specificHeat:
+        max: 1.1
+        min: 0.4
+        unit: J/g·K
+      tensileStrength:
+        max: 1000
+        min: 50
+        unit: MPa
+      thermalConductivity:
+        max: 200
+        min: 0.5
+        unit: W/m·K
+      thermalDestructionPoint:
+        max: 3827
+        min: 1000
+        unit: °C
+      thermalDestructionType: melting
+      thermalDiffusivity:
+        max: 120
+        min: 0.3
+        unit: mm²/s
+      thermalExpansion:
+        max: 14
+        min: 0.1
+        unit: µm/m·K
+      youngsModulus:
+        max: 700
+        min: 150
+        unit: GPa
+    subcategories: {}
+    common_applications:
+    - contamination removal
+    - surface cleaning
+    - restoration
+    industryApplications:
+      common_industries:
+      - Aerospace
+      - Art Conservation
+      - Automotive
+      - Bearings
+      - Ceramics Manufacturing
+      - Dental
+      - Electrical
+      - Electronics
+      - Food Processing
+      - Industrial
+      - Jewelry
+      - Medical
+      - Nuclear
+      - Refractory
+      - Research
+      - Restoration and Conservation
+      - Semiconductor
+      - Tableware
+      - Tooling
+      - Wear Components
+      regulatory_standards:
+      - ANSI Z136.1 - Safe Use of Lasers
+      - ASTM C373 - Standard Test Method for Water Absorption of Fired Ceramic Materials
+      - ASTM C848 - Standard Specification for High Alumina Refractory Brick
+      - ASTM F1537 - Standard Specification for Silicon Nitride Bearing Balls
+      - ASTM F1873 - Standard Specification for Zirconia
+      - EPA Clean Air Act Compliance
+      - FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      - IEC 60825 - Safety of Laser Products
+      - ISO 13356 - Zirconia for Surgical Implants
+      - ISO 23146 - Technical Ceramics
+      - ISO 6474 - Implants for Surgery - Ceramic Materials
+      - NSF/ANSI 51 - Food Equipment Materials
+      - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    electricalProperties:
+      dielectric_constant:
+        min: 7.5
+        max: 25.0
+        unit: null
+        confidence: 75
+        typical: 14.1
+      electricalResistivity:
+        min: 1.0
+        max: 1.0
+        unit: ×10¹⁴ Ω·cm
+        confidence: 65
+        typical: 1.0
+    processingParameters:
+      melting_point:
+        min: 1900.0
+        max: 2715.0
+        unit: °C
+        confidence: 75
+        typical: 2229.0
+    chemicalProperties:
+      porosity:
+        min: 0.0
+        max: 8.0
+        unit: '%'
+        confidence: 70
+        typical: 3.25
+  composite:
+    category_ranges:
+      density:
+        max: 8
+        min: 0.5
+        unit: g/cm³
+      hardness:
+        max: 90
+        min: 20
+        unit: HRC
+      laserAbsorption:
+        max: 200
+        min: 0.05
+        unit: cm⁻¹
+      laserReflectivity:
+        max: 80
+        min: 2
+        unit: '%'
+      specificHeat:
+        max: 2
+        min: 0.5
+        unit: J/g·K
+      tensileStrength:
+        max: 6000
+        min: 50
+        unit: MPa
+      thermalConductivity:
+        max: 400
+        min: 0.1
+        unit: W/m·K
+      thermalDestructionPoint:
+        max: 2000
+        min: 150
+        unit: °C
+      thermalDestructionType: decomposition
+      thermalDiffusivity:
+        max: 180
+        min: 0.1
+        unit: mm²/s
+      thermalExpansion:
+        max: 50
+        min: -1
+        unit: µm/m·K
+      youngsModulus:
+        max: 1000
+        min: 5
+        unit: GPa
+    subcategories: {}
+    common_applications:
+    - surface preparation
+    - contamination removal
+    - bonding preparation
+    industryApplications:
+      common_industries:
+      - Aerospace
+      - Automotive
+      - Manufacturing
+      - Medical
+      - Power Generation
+      regulatory_standards:
+      - ANSI Z136.1 - Safe Use of Lasers
+      - FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      - IEC 60825 - Safety of Laser Products
+      - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  glass:
+    category_ranges:
+      density:
+        max: 7.6
+        min: 1.2
+        unit: g/cm³
+      hardness:
+        max: 9
+        min: 4.5
+        unit: Mohs
+      laserAbsorption:
+        max: 10
+        min: 0.001
+        unit: cm⁻¹
+      laserReflectivity:
+        max: 92
+        min: 4
+        unit: '%'
+      specificHeat:
+        max: 1
+        min: 0.5
+        unit: J/g·K
+      tensileStrength:
+        max: 2000
+        min: 30
+        unit: MPa
+      thermalConductivity:
+        max: 4.2
+        min: 0.02
+        unit: W/m·K
+      thermalDestructionPoint:
+        max: 1723
+        min: 500
+        unit: °C
+      thermalDestructionType: melting
+      thermalDiffusivity:
+        max: 1.8
+        min: 0.01
+        unit: mm²/s
+      thermalExpansion:
+        max: 15
+        min: 0.1
+        unit: µm/m·K
+      youngsModulus:
+        max: 95
+        min: 10
+        unit: GPa
+    subcategories: {}
+    common_applications:
+    - contamination removal
+    - surface preparation
+    - restoration
+    industryApplications:
+      common_industries:
+      - Aerospace
+      - Architectural
+      - Automotive
+      - Electronics
+      - Glass Manufacturing
+      - Industrial
+      - Manufacturing
+      - Optics and Photonics
+      - Pharmaceutical
+      - Research
+      - Restoration and Conservation
+      - Semiconductor
+      - Semiconductor Manufacturing
+      regulatory_standards:
+      - ANSI Z136.1 - Safe Use of Lasers
+      - FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      - IEC 60825 - Safety of Laser Products
+      - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  masonry:
+    category_ranges:
+      density:
+        max: 2.8
+        min: 0.6
+        unit: g/cm³
+      hardness:
+        max: 6
+        min: 2
+        unit: Mohs
+      laserAbsorption:
+        max: 15
+        min: 0.5
+        unit: cm⁻¹
+      laserReflectivity:
+        max: 70
+        min: 10
+        unit: '%'
+      specificHeat:
+        max: 1.1
+        min: 0.8
+        unit: J/g·K
+      tensileStrength:
+        max: 15
+        min: 1
+        unit: MPa
+      thermalConductivity:
+        max: 2.5
+        min: 0.08
+        unit: W/m·K
+      thermalDestructionPoint:
+        max: 1200
+        min: 500
+        unit: °C
+      thermalDestructionType: decomposition
+      thermalDiffusivity:
+        max: 1
+        min: 0.1
+        unit: mm²/s
+      thermalExpansion:
+        max: 12
+        min: 6
+        unit: µm/m·K
+      youngsModulus:
+        max: 50
+        min: 5
+        unit: GPa
+    subcategories: {}
+    common_applications:
+    - laser cleaning
+    - surface preparation
+    industryApplications:
+      common_industries:
+      - Construction
+      - Cultural Heritage
+      - Heritage Conservation
+      - Restoration
+      regulatory_standards:
+      - ANSI Z136.1 - Safe Use of Lasers
+      - FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      - IEC 60825 - Safety of Laser Products
+      - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    chemicalProperties:
+      porosity:
+        min: 10.0
+        max: 25.0
+        unit: '%'
+        confidence: 95
+        typical: 17.5
+  metal:
+    category_ranges:
+      density:
+        max: 22.59
+        min: 0.53
+        unit: g/cm³
+      hardness:
+        max: 500
+        min: 5
+        unit: HB
+      laserAbsorption:
+        max: 100
+        min: 0.02
+        unit: cm⁻¹
+      laserReflectivity:
+        max: 98
+        min: 5
+        unit: '%'
+      specificHeat:
+        max: 0.904
+        min: 0.128
+        unit: J/g·K
+      tensileStrength:
+        max: 2000
+        min: 70
+        unit: MPa
+      thermalConductivity:
+        max: 429
+        min: 6.3
+        unit: W/m·K
+      thermalDestructionPoint:
+        max: 3422
+        min: -38.8
+        unit: °C
+      thermalDestructionType: melting
+      thermalDiffusivity:
+        max: 174
+        min: 4.2
+        unit: mm²/s
+      thermalExpansion:
+        max: 29.1
+        min: 0.5
+        unit: µm/m·K
+      youngsModulus:
+        max: 411
+        min: 70
+        unit: GPa
+    subcategories: {}
+    common_applications:
+    - rust removal
+    - oxide cleaning
+    - surface preparation
+    - paint stripping
+    industryApplications:
+      common_industries:
+      - Aerospace
+      - Automotive
+      - Chemical Processing
+      - Electronics
+      - Food Processing
+      - Industrial
+      - Jewelry
+      - Magnetics
+      - Manufacturing
+      - Marine
+      - Medical
+      - Musical Instruments
+      - Nuclear
+      - Oil and Gas
+      - Plumbing
+      - Restoration
+      - Semiconductor
+      regulatory_standards:
+      - ANSI Z136.1 - Safe Use of Lasers
+      - FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      - IEC 60825 - Safety of Laser Products
+      - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+    electricalProperties:
+      electricalResistivity:
+        min: 10.0
+        max: 100.0
+        unit: nΩ·m
+        confidence: 95
+        typical: 55.36666666666667
+    processingParameters:
+      melting_point:
+        min: 900.0
+        max: 3422.0
+        unit: °C
+        confidence: 90
+        typical: 1624.0833333333333
+      curie_temperature:
+        min: 355.0
+        max: 1115.0
+        unit: °C
+        confidence: 70
+        typical: 735.0
+  plastic:
+    category_ranges:
+      density:
+        max: 2.2
+        min: 0.85
+        unit: g/cm³
+      hardness:
+        max: Shore D 90
+        min: Shore A 10
+      laserAbsorption:
+        max: 100
+        min: 0.1
+        unit: cm⁻¹
+      laserReflectivity:
+        max: 95
+        min: 5
+        unit: '%'
+      specificHeat:
+        max: 2.5
+        min: 1
+        unit: J/g·K
+      tensileStrength:
+        max: 400
+        min: 10
+        unit: MPa
+      thermalConductivity:
+        max: 3
+        min: 0.02
+        unit: W/m·K
+      thermalDestructionPoint:
+        max: 400
+        min: 80
+        unit: °C
+      thermalDestructionType: decomposition
+      thermalDiffusivity:
+        max: 1
+        min: 0.05
+        unit: mm²/s
+      thermalExpansion:
+        max: 200
+        min: 10
+        unit: µm/m·K
+      youngsModulus:
+        max: 50
+        min: 0.01
+        unit: GPa
+    subcategories: {}
+    common_applications:
+    - laser cleaning
+    - surface preparation
+    industryApplications:
+      common_industries:
+      - Aerospace
+      - Automotive
+      - Consumer Goods
+      - Electronics
+      - Medical
+      - Packaging
+      regulatory_standards:
+      - ANSI Z136.1 - Safe Use of Lasers
+      - FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      - IEC 60825 - Safety of Laser Products
+      - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+  semiconductor:
+    category_ranges:
+      density:
+        max: 7.13
+        min: 2.33
+        unit: g/cm³
+      hardness:
+        max: 7
+        min: 2
+        unit: Mohs
+      laserAbsorption:
+        max: 100
+        min: 0.01
+        unit: cm⁻¹
+      laserReflectivity:
+        max: 70
+        min: 10
+        unit: '%'
+      specificHeat:
+        max: 1.6
+        min: 0.3
+        unit: J/g·K
+      tensileStrength:
+        max: 7000
+        min: 50
+        unit: MPa
+      thermalConductivity:
+        max: 156
+        min: 0.2
+        unit: W/m·K
+      thermalDestructionPoint:
+        max: 1414
+        min: 100
+        unit: °C
+      thermalDestructionType: melting
+      thermalDiffusivity:
+        max: 90
+        min: 0.1
+        unit: mm²/s
+      thermalExpansion:
+        max: 19.7
+        min: 2.6
+        unit: µm/m·K
+      youngsModulus:
+        max: 190
+        min: 5
+        unit: GPa
+    subcategories: {}
+    common_applications:
+    - laser cleaning
+    - surface preparation
+    industryApplications:
+      common_industries:
+      - Aerospace
+      - Automotive
+      - Electronics
+      - High-Speed Electronics
+      - Industrial
+      - MEMS
+      - Optoelectronics
+      - Photovoltaics
+      - Power Electronics
+      - RF Communications
+      - RF Electronics
+      - Research
+      - Semiconductor Manufacturing
+      - Solar
+      - Telecommunications
+      regulatory_standards:
+      - ANSI Z136.1 - Safe Use of Lasers
+      - ASTM F1188 - Standard Specification for Single Crystal Silicon
+      - FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      - IEC 60825 - Safety of Laser Products
+      - ISO 14644 - Cleanroom and Associated Controlled Environments
+      - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      - SEMI M1 - Specification for Polished Single Crystal Silicon Wafers
+    electricalProperties:
+      electricalResistivity:
+        min: 1.0
+        max: 100.0
+        unit: ×10⁸ Ω·cm
+        confidence: 80
+        typical: 25.75
+    processingParameters:
+      melting_point:
+        min: 1238.0
+        max: 2830.0
+        unit: °C
+        confidence: 80
+        typical: 1708.0
+  stone:
+    category_ranges:
+      density:
+        max: 3.4
+        min: 1.5
+        unit: g/cm³
+      hardness:
+        max: 7
+        min: 1
+        unit: Mohs
+      laserAbsorption:
+        max: 20
+        min: 0.1
+        unit: cm⁻¹
+      laserReflectivity:
+        max: 80
+        min: 5
+        unit: '%'
+      specificHeat:
+        max: 1.2
+        min: 0.7
+        unit: J/g·K
+      tensileStrength:
+        max: 25
+        min: 2
+        unit: MPa
+      thermalConductivity:
+        max: 5
+        min: 0.2
+        unit: W/m·K
+      thermalDestructionPoint:
+        max: 1700
+        min: 600
+        unit: °C
+      thermalDestructionType: decomposition
+      thermalDiffusivity:
+        max: 2.5
+        min: 0.2
+        unit: mm²/s
+      thermalExpansion:
+        max: 16
+        min: 3
+        unit: µm/m·K
+      youngsModulus:
+        max: 100
+        min: 10
+        unit: GPa
+    subcategories: {}
+    common_applications:
+    - restoration
+    - contamination removal
+    - surface cleaning
+    industryApplications:
+      common_industries:
+      - Architectural Elements
+      - Architecture
+      - Art Conservation
+      - Art Restoration
+      - Art and Restoration
+      - Building Facades
+      - Building Restoration
+      - Construction
+      - Countertops
+      - Educational Institutions
+      - Flooring
+      - Heritage Conservation
+      - Jewelry
+      - Landscaping
+      - Manufacturing
+      - Memorials
+      - Monuments
+      - Oil and Gas
+      - Quarrying
+      - Restoration
+      - Roofing
+      regulatory_standards:
+      - ANSI Z136.1 - Safe Use of Lasers
+      - ASTM C503 - Standard Specification for Marble Dimension Stone
+      - ASTM C568 - Standard Specification for Limestone Dimension Stone
+      - ASTM C615 - Standard Specification for Granite Dimension Stone
+      - ASTM C616 - Standard Specification for Sandstone Dimension Stone
+      - ASTM C629 - Standard Specification for Slate Dimension Stone
+      - EPA Clean Air Act Compliance
+      - FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      - IEC 60825 - Safety of Laser Products
+      - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      - UNESCO Guidelines for Cultural Heritage Conservation
+    chemicalProperties:
+      mineral_composition:
+        common_values:
+        - '{}'
+        - '{''feldspar'': ''10-65%'', ''mica'': ''5-15%'', ''other_minerals'': ''5-10%'',
+          ''quartz'': ''20-60%''}'
+        - '{''calcite'': ''80-99%'', ''clay_minerals'': ''1-15%'', ''organic_matter'':
+          ''0-5%'', ''quartz'': ''0-10%''}'
+        - '{''calcite'': ''90-99%'', ''dolomite'': ''0-10%'', ''impurities'': ''0-5%''}'
+        - '{''clay_matrix'': ''0-15%'', ''feldspar'': ''0-25%'', ''quartz'': ''65-95%'',
+          ''rock_fragments'': ''0-15%''}'
+        total_samples: 18
+        confidence: 80
+      porosity:
+        min: 0.1
+        max: 35.0
+        unit: '%'
+        confidence: 95
+        typical: 9.502777777777778
+  wood:
+    category_ranges:
+      density:
+        max: 1.4
+        min: 0.16
+        unit: g/cm³
+      hardness:
+        max: 22.2
+        min: 0.4
+        unit: kN
+      laserAbsorption:
+        max: 50
+        min: 1
+        unit: cm⁻¹
+      laserReflectivity:
+        max: 60
+        min: 10
+        unit: '%'
+      specificHeat:
+        max: 4.2
+        min: 1.2
+        unit: J/g·K
+      tensileStrength:
+        max: 200
+        min: 20
+        unit: MPa
+      thermalConductivity:
+        max: 0.4
+        min: 0.04
+        unit: W/m·K
+      thermalDestructionPoint:
+        max: 500
+        min: 200
+        unit: °C
+      thermalDestructionType: decomposition
+      thermalDiffusivity:
+        max: 0.4
+        min: 0.1
+        unit: mm²/s
+      thermalExpansion:
+        max: 60
+        min: 3
+        unit: µm/m·K
+      youngsModulus:
+        max: 25
+        min: 5
+        unit: GPa
+    subcategories: {}
+    common_applications:
+    - laser cleaning
+    - surface preparation
+    industryApplications:
+      common_industries:
+      - Antique Restoration
+      - Architectural Elements
+      - Architectural Millwork
+      - Art Restoration
+      - Cabinetry
+      - Conservation
+      - Construction
+      - Craft Industry
+      - Decorative Arts
+      - Flooring
+      - Food Service
+      - Furniture Manufacturing
+      - Gunstock Manufacturing
+      - Kitchenware
+      - Luxury Cabinetry
+      - Luxury Interiors
+      - Marine
+      - Marine Applications
+      - Millwork
+      - Musical Instruments
+      - Outdoor Construction
+      - Outdoor Furniture
+      - Plywood Manufacturing
+      - Restoration
+      - Restoration and Conservation
+      - Roofing
+      - Saunas and Spas
+      - Shipbuilding
+      - Sports Equipment
+      - Textiles
+      - Tool Manufacturing
+      - Turning
+      - Woodworking
+      regulatory_standards:
+      - ANSI Z136.1 - Safe Use of Lasers
+      - CITES Regulations for Sustainable Mahogany Use
+      - EPA Clean Air Act Compliance
+      - FDA 21 CFR 1040.10 - Laser Product Performance Standards
+      - FSC Sustainable Forestry Standards
+      - IEC 60825 - Safety of Laser Products
+      - IMO Marine Pollution Prevention Standards
+      - OSHA 29 CFR 1926.95 - Personal Protective Equipment
+      - USDA Food Safety Guidelines (for food-contact surfaces)
+    chemicalProperties:
+      moisture_content:
+        min: 6.0
+        max: 15.0
+        unit: '%'
+        confidence: 95
+        typical: 9.958333333333334

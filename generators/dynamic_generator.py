@@ -182,7 +182,7 @@ class DynamicGenerator:
                         error_message="No materials data available",
                     )
 
-                # Find material data - materials.yaml has materials -> category -> items structure
+                # Find material data - Materials.yaml has materials -> category -> items structure
                 material_data = None
                 if "materials" in materials_data:
                     materials_section = materials_data["materials"]

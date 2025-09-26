@@ -2,7 +2,7 @@
 
 ## Overview
 
-I have successfully implemented a comprehensive **category-specific rules system** for generating chemical formulas and symbols for materials that don't have them explicitly defined in `materials.yaml`. This system addresses the critical data gaps identified in the materials database (67.9% missing formulas, 94.5% missing symbols).
+I have successfully implemented a comprehensive **category-specific rules system** for generating chemical formulas and symbols for materials that don't have them explicitly defined in `Materials.yaml`. This system addresses the critical data gaps identified in the materials database (67.9% missing formulas, 94.5% missing symbols).
 
 ## Implementation Details
 

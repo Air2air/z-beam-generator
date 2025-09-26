@@ -10,7 +10,7 @@
 
 ### Configuration Sources
 
-1. **Material Data**: `data/materials.yaml` - Material properties and metadata
+1. **Material Data**: `data/Materials.yaml` - Material properties and metadata
 2. **Component Configs**: Individual component configuration files
 3. **API Configuration**: `api/config.py` - API client settings
 4. **Runtime Parameters**: Command-line arguments and environment variables
@@ -545,7 +545,7 @@ class GrokConfig:
 
 ### Material Properties Schema
 
-#### File: `data/materials.yaml`
+#### File: `data/Materials.yaml`
 
 ```yaml
 materials:

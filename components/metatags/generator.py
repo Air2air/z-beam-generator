@@ -59,7 +59,7 @@ class MetatagsComponentGenerator(HybridComponentGenerator):
         # Ensure material name is resolved to canonical form
         canonical_name = resolver.resolve_canonical_name(material_name)
         if not canonical_name:
-            raise ValueError(f"Material '{material_name}' not found in materials.yaml - fail-fast requires valid material names")
+            raise ValueError(f"Material '{material_name}' not found in Materials.yaml - fail-fast requires valid material names")
         
         material_name_title = resolver.get_display_name(material_name)
         material_name_slug = resolver.get_slug(material_name)
@@ -179,27 +179,27 @@ Include appropriate technical details about laser cleaning parameters, applicati
             )
 
     def _apply_standardized_naming(self, material_name_lower: str) -> str:
-        """Apply naming standardization aligned with materials.yaml single source of truth"""
+        """Apply naming standardization aligned with Materials.yaml single source of truth"""
         # Basic kebab-case conversion
         slug = material_name_lower.replace(" ", "-")
         
-        # Apply standardizations aligned with materials.yaml database
+        # Apply standardizations aligned with Materials.yaml database
         naming_mappings = {
             # Hyphenation standardizations
             "terra-cotta": "terracotta",
-            # Composite material naming (align with materials.yaml authority)
+            # Composite material naming (align with Materials.yaml authority)
             "fiber-reinforced-polymer": "fiber-reinforced-polyurethane-frpu",
             "carbon-fiber-reinforced-polymer": "carbon-fiber-reinforced-polymer",
             "glass-fiber-reinforced-polymers": "glass-fiber-reinforced-polymers-gfrp",
             "metal-matrix-composites": "metal-matrix-composites-mmcs",
             "ceramic-matrix-composites": "ceramic-matrix-composites-cmcs",
-            # Wood materials (remove any wood- prefix as materials.yaml defines them without prefix)
+            # Wood materials (remove any wood- prefix as Materials.yaml defines them without prefix)
             "wood-oak": "oak",
             "wood-pine": "pine",
             "wood-maple": "maple",
-            # Steel standardization (materials.yaml has Steel and Stainless Steel)
+            # Steel standardization (Materials.yaml has Steel and Stainless Steel)
             "stainless-steel": "stainless-steel",
-            "carbon-steel": "steel",  # Consolidate to main steel type per materials.yaml
+            "carbon-steel": "steel",  # Consolidate to main steel type per Materials.yaml
             "galvanized-steel": "steel",
             "tool-steel": "steel",
             # Standardize common variants
@@ -210,7 +210,7 @@ Include appropriate technical details about laser cleaning parameters, applicati
         if slug in naming_mappings:
             slug = naming_mappings[slug]
             
-        # Remove wood- prefix (wood materials are defined without prefix in materials.yaml)
+        # Remove wood- prefix (wood materials are defined without prefix in Materials.yaml)
         if slug.startswith("wood-"):
             slug = slug[5:]  # Remove "wood-" prefix
             

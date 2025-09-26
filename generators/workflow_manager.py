@@ -331,7 +331,7 @@ def run_material_generation(
         )
 
     # Get author info - use material data to retrieve material-specific author info
-    # Find material data in materials.yaml
+    # Find material data in Materials.yaml
     material_data = None
     materials_data = generator.materials_data
     if "materials" in materials_data:

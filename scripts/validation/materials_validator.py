@@ -3,7 +3,7 @@
 Comprehensive Materials.yaml Validation Framework
 
 This script systematically validates every field, value, and relationship
-in the materials.yaml file against known standards and scientific data.
+in the Materials.yaml file against known standards and scientific data.
 """
 
 import yaml
@@ -15,7 +15,7 @@ import requests
 import json
 
 class MaterialsValidator:
-    def __init__(self, materials_path: str = "data/materials.yaml"):
+    def __init__(self, materials_path: str = "data/Materials.yaml"):
         self.materials_path = materials_path
         self.data = self._load_materials()
         self.validation_results = {
@@ -32,7 +32,7 @@ class MaterialsValidator:
         self.laser_wavelengths = [355, 532, 1064, 1550, 10600]  # Common nm values
         
     def _load_materials(self) -> Dict:
-        """Load materials.yaml file."""
+        """Load Materials.yaml file."""
         try:
             with open(self.materials_path, 'r', encoding='utf-8') as f:
                 return yaml.safe_load(f)
@@ -504,7 +504,7 @@ class MaterialsValidator:
 
 def main():
     """Run materials validation."""
-    print("🔍 Starting comprehensive materials.yaml validation...")
+    print("🔍 Starting comprehensive Materials.yaml validation...")
     
     validator = MaterialsValidator()
     report = validator.generate_report()

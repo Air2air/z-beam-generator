@@ -33,8 +33,8 @@ class SchemaReconciliationValidator:
             return None
 
     def validate_materials_yaml_schema(self):
-        """Validate materials.yaml against updated materials_yaml.json schema"""
-        print("🔍 Validating materials.yaml against materials_yaml.json schema...")
+        """Validate Materials.yaml against updated Materials_yaml.json schema"""
+        print("🔍 Validating Materials.yaml against Materials_yaml.json schema...")
         
         schema = self.load_schema("materials_yaml")
         if not schema:
@@ -42,8 +42,8 @@ class SchemaReconciliationValidator:
             return False
 
         try:
-            # Load materials.yaml 
-            materials_path = self.data_dir / "materials.yaml"
+            # Load Materials.yaml 
+            materials_path = self.data_dir / "Materials.yaml"
             with open(materials_path, 'r') as f:
                 materials_data = yaml.safe_load(f)
             
@@ -56,7 +56,7 @@ class SchemaReconciliationValidator:
                 self.validation_results["materials_yaml"]["errors"] = [
                     f"{error.json_path}: {error.message}" for error in errors[:10]  # Limit to first 10 errors
                 ]
-                print(f"❌ Found {len(errors)} validation errors in materials.yaml")
+                print(f"❌ Found {len(errors)} validation errors in Materials.yaml")
                 for i, error in enumerate(errors[:5]):  # Show first 5 errors
                     print(f"  {i+1}. {error.json_path}: {error.message}")
                 if len(errors) > 5:
@@ -64,13 +64,13 @@ class SchemaReconciliationValidator:
                 return False
             else:
                 self.validation_results["materials_yaml"]["status"] = "passed"
-                print("✅ materials.yaml validates successfully against materials_yaml.json")
+                print("✅ Materials.yaml validates successfully against Materials_yaml.json")
                 return True
                 
         except Exception as e:
             self.validation_results["materials_yaml"]["status"] = "test_failed"
             self.validation_results["materials_yaml"]["errors"] = [str(e)]
-            print(f"❌ Error validating materials.yaml: {e}")
+            print(f"❌ Error validating Materials.yaml: {e}")
             return False
 
     def validate_frontmatter_samples(self):

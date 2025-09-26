@@ -55,7 +55,7 @@ a warning and continue with generation.
 ## Testing
 
 When testing the frontmatter generator, use the established component creation patterns and testing frameworks.
-There is no need to modify material data directly as the system is designed to work with standardized data from `data/materials.yaml`.
+There is no need to modify material data directly as the system is designed to work with standardized data from `data/Materials.yaml`.
 
 ## Configuration
 

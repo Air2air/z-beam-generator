@@ -346,7 +346,7 @@ Format: YAML v2.0
             chem_props = frontmatter_data.get("chemicalProperties", {})
             symbol = chem_props.get("symbol")
             
-        # If still not found, try to get from materials.yaml via resolver
+        # If still not found, try to get from Materials.yaml via resolver
         if not formula or not symbol:
             resolver = get_material_name_resolver()
             materials_data = resolver.get_material_data(material_name)

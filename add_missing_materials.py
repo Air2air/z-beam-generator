@@ -9,9 +9,9 @@ from pathlib import Path
 
 def add_missing_materials_to_index():
     """Add missing materials to the material_index with proper categorization"""
-    materials_path = Path("data/materials.yaml")
+    materials_path = Path("data/Materials.yaml")
     
-    # Load materials.yaml
+    # Load Materials.yaml
     with open(materials_path, 'r') as f:
         data = yaml.safe_load(f)
     
@@ -48,7 +48,7 @@ def add_missing_materials_to_index():
             print(f"  ✅ Added {material_name}: {material_info['category']}/{material_info['subcategory']}")
             materials_added += 1
     
-    # Save the updated materials.yaml
+    # Save the updated Materials.yaml
     with open(materials_path, 'w') as f:
         yaml.dump(data, f, default_flow_style=False, allow_unicode=True, width=120, indent=2)
     

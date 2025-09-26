@@ -139,7 +139,7 @@ def test_hybrid_component_generation(self):
     # Use mock API for generated content
     with mock_api_calls("deepseek") as mock_client:
         # But use REAL static data source
-        static_data = load_real_static_data("materials.yaml")
+        static_data = load_real_static_data("Materials.yaml")
 
         result = generate_hybrid_component(
             material_name="Steel",

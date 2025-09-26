@@ -5,7 +5,7 @@ Schema-Enforced Frontmatter Generator - Implementation Example
 Demonstrates the recommended schema-as-single-source-of-truth architecture:
 1. Enhanced schema with nested property validation
 2. Mandatory schema compliance in generation
-3. Eliminated data redundancy between materials.yaml and generated content
+3. Eliminated data redundancy between Materials.yaml and generated content
 4. Research validation metadata integration
 
 This is a proof-of-concept showing how the new architecture would work.
@@ -117,7 +117,7 @@ class SchemaEnforcedFrontmatterGenerator:
         Generate schema-compliant frontmatter with mandatory validation.
         
         This demonstrates the new architecture where:
-        1. materials.yaml contains only metadata
+        1. Materials.yaml contains only metadata
         2. All properties are generated fresh with research validation
         3. Schema compliance is mandatory (fail-fast)
         """
@@ -146,9 +146,9 @@ class SchemaEnforcedFrontmatterGenerator:
         return generated_frontmatter
     
     def _load_material_metadata(self, material_id: str) -> Dict[str, Any]:
-        """Load minimal metadata from materials.yaml (new simplified structure)"""
+        """Load minimal metadata from Materials.yaml (new simplified structure)"""
         
-        # Simulated simplified materials.yaml structure
+        # Simulated simplified Materials.yaml structure
         simplified_materials = {
             "aluminum": {
                 "category": "metal",

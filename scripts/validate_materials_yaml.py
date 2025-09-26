@@ -2,7 +2,7 @@
 """
 Materials.yaml Schema Validation Script
 
-This script validates the materials.yaml file against the materials_yaml.json schema.
+This script validates the Materials.yaml file against the Materials_yaml.json schema.
 It ensures data integrity, type consistency, and proper structure.
 
 Usage:
@@ -28,13 +28,13 @@ sys.path.insert(0, str(project_root))
 class MaterialsYamlValidator:
     def __init__(self):
         self.project_root = Path(__file__).parent.parent
-        self.materials_yaml_path = self.project_root / "data" / "materials.yaml"
-        self.schema_path = self.project_root / "schemas" / "materials_yaml.json"
+        self.materials_yaml_path = self.project_root / "data" / "Materials.yaml"
+        self.schema_path = self.project_root / "schemas" / "Materials_yaml.json"
         self.errors = []
         self.warnings = []
         
     def load_schema(self) -> Dict[str, Any]:
-        """Load the materials_yaml.json schema."""
+        """Load the Materials_yaml.json schema."""
         if not self.schema_path.exists():
             raise FileNotFoundError(f"Schema file not found: {self.schema_path}")
             
@@ -42,7 +42,7 @@ class MaterialsYamlValidator:
             return json.load(f)
     
     def load_materials_yaml(self) -> Dict[str, Any]:
-        """Load the materials.yaml file."""
+        """Load the Materials.yaml file."""
         if not self.materials_yaml_path.exists():
             raise FileNotFoundError(f"Materials file not found: {self.materials_yaml_path}")
             
@@ -50,7 +50,7 @@ class MaterialsYamlValidator:
             return yaml.safe_load(f)
     
     def validate_structure(self, verbose: bool = False) -> bool:
-        """Validate materials.yaml against the schema."""
+        """Validate Materials.yaml against the schema."""
         try:
             print("🔍 Loading schema and materials data...")
             schema = self.load_schema()
@@ -61,14 +61,14 @@ class MaterialsYamlValidator:
                 print(f"   Materials loaded from: {self.materials_yaml_path}")
                 print(f"   Total categories in data: {len(materials_data.get('materials', {}))}")
             
-            print("✅ Validating materials.yaml structure...")
+            print("✅ Validating Materials.yaml structure...")
             
             # Create validator with detailed error reporting
             validator = Draft7Validator(schema)
             errors = list(validator.iter_errors(materials_data))
             
             if not errors:
-                print("✅ materials.yaml is valid according to schema!")
+                print("✅ Materials.yaml is valid according to schema!")
                 return True
             else:
                 print(f"❌ Found {len(errors)} validation errors:")
@@ -174,7 +174,7 @@ def main():
     """Main validation function."""
     import argparse
     
-    parser = argparse.ArgumentParser(description='Validate materials.yaml against schema')
+    parser = argparse.ArgumentParser(description='Validate Materials.yaml against schema')
     parser.add_argument('--verbose', '-v', action='store_true', help='Verbose output')
     parser.add_argument('--report', '-r', action='store_true', help='Generate validation report')
     parser.add_argument('--output', '-o', help='Output file for report')
