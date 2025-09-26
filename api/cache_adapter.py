@@ -93,9 +93,5 @@ class APIClientCache:
         if hasattr(CacheImplementation, "cache_info"):
             return CacheImplementation.cache_info()
         else:
-            # Fallback for in-memory cache
-            return {
-                "stats": cls.get_cache_stats(),
-                "cache_type": "in-memory",
-                "persistence_enabled": False,
-            }
+            # No fallbacks allowed
+            raise RuntimeError("CONFIGURATION ERROR: Cache implementation must support cache_info method - no fallbacks allowed in fail-fast architecture")

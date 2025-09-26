@@ -21,7 +21,6 @@ if str(project_root) not in sys.path:
 from tests.test_framework import TestPathManager, TestDataFactory
 from tests.test_utils import mock_api_calls, mock_file_operations
 
-
 @pytest.fixture(scope="session", autouse=True)
 def session_setup():
     """Session-wide setup and environment configuration."""
@@ -41,7 +40,6 @@ def session_setup():
     # Restore original directory
     os.chdir(original_cwd)
 
-
 @pytest.fixture(scope="session")
 def session_temp_dir() -> Generator[Path, None, None]:
     """Session-scoped temporary directory for all tests."""
@@ -55,7 +53,6 @@ def session_temp_dir() -> Generator[Path, None, None]:
     except Exception:
         pass  # Ignore cleanup errors
 
-
 @pytest.fixture(scope="session")
 def session_content_dir(session_temp_dir: Path) -> Path:
     """Session-scoped content directory."""
@@ -63,13 +60,11 @@ def session_content_dir(session_temp_dir: Path) -> Path:
     content_dir.mkdir(parents=True, exist_ok=True)
     return content_dir
 
-
 @pytest.fixture(scope="session")
 def session_test_data() -> Dict[str, Any]:
     """Pre-loaded test data for the entire session."""
     from tests.optimized_test_data import _OPTIMIZED_DATA
     return _OPTIMIZED_DATA
-
 
 @pytest.fixture(scope="session")
 def session_mock_client():
@@ -84,7 +79,6 @@ def session_mock_client():
         from unittest.mock import MagicMock
         return MagicMock()
 
-
 @pytest.fixture
 def fast_mock_context(session_mock_client):
     """Fast mock context using session-scoped client."""
@@ -95,7 +89,6 @@ def fast_mock_context(session_mock_client):
          patch('generators.workflow_manager.get_api_client_for_component', return_value=session_mock_client), \
          patch('generators.dynamic_generator.get_api_client_for_component', return_value=session_mock_client):
         yield session_mock_client
-
 
 @pytest.fixture
 def optimized_file_ops(session_content_dir):
@@ -117,24 +110,20 @@ def optimized_file_ops(session_content_dir):
          patch("generators.workflow_manager.save_component_to_file_original", side_effect=mock_save_component):
         yield
 
-
 @pytest.fixture
 def test_material_data(session_test_data):
     """Quick access to test material data."""
     return session_test_data["materials"][0]  # Default to first material
-
 
 @pytest.fixture
 def test_author_data(session_test_data):
     """Quick access to test author data."""
     return session_test_data["authors"][0]  # Default to first author
 
-
 @pytest.fixture
 def test_component_config(session_test_data):
     """Quick access to test component configurations."""
     return session_test_data["component_configs"]
-
 
 # Performance monitoring fixtures
 @pytest.fixture(scope="session")
@@ -171,7 +160,6 @@ def performance_stats():
         for test_name, duration in stats["slow_tests"][:5]:  # Show top 5
             print(f"  - {test_name}: {duration:.2f}s")
 
-
 @pytest.fixture(autouse=True)
 def track_test_performance(request, performance_stats):
     """Automatically track test performance."""
@@ -188,7 +176,6 @@ def track_test_performance(request, performance_stats):
     if duration > 5.0:  # Track slow tests
         performance_stats["slow_tests"].append((request.node.name, duration))
 
-
 # Parallel execution configuration
 def pytest_configure(config):
     """Configure pytest for optimized execution."""
@@ -202,7 +189,6 @@ def pytest_configure(config):
     config.addinivalue_line("markers", "slow: marks tests as slow (deselect with '-m \"not slow\"')")
     config.addinivalue_line("markers", "parallel: marks tests safe for parallel execution")
 
-
 def pytest_collection_modifyitems(config, items):
     """Modify test collection for optimization."""
     # Mark slow tests
@@ -214,7 +200,6 @@ def pytest_collection_modifyitems(config, items):
         # Mark tests safe for parallel execution (most unit tests)
         if any(keyword in item.keywords for keyword in ['unit', 'smoke']):
             item.add_marker(pytest.mark.parallel)
-
 
 # Custom command line options for performance tuning
 def pytest_addoption(parser):
@@ -233,14 +218,12 @@ def pytest_addoption(parser):
         help="Skip slow tests for faster CI runs"
     )
 
-
 @pytest.fixture(autouse=True)
 def skip_slow_tests(request):
     """Skip slow tests if requested."""
     if request.config.getoption("--skip-slow"):
         if request.node.get_closest_marker("slow"):
             pytest.skip("Skipping slow test")
-
 
 # Optimized test data fixtures for common scenarios
 @pytest.fixture
@@ -253,7 +236,6 @@ def single_material_workflow_data(session_test_data):
         "expected_success_rate": 0.8
     }
 
-
 @pytest.fixture
 def batch_processing_data(session_test_data):
     """Pre-configured data for batch processing tests."""
@@ -263,7 +245,6 @@ def batch_processing_data(session_test_data):
         "author_id": 1,
         "expected_min_components": 6  # 3 materials × 3 components × 0.67 success rate
     }
-
 
 @pytest.fixture
 def performance_test_data(session_test_data):
@@ -277,7 +258,6 @@ def performance_test_data(session_test_data):
         "max_peak_time": 6.0,
         "max_variance": 2.0
     }
-
 
 @pytest.fixture
 def error_recovery_data(session_test_data):

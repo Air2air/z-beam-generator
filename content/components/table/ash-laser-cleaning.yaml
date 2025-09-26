@@ -1,96 +1,49 @@
 materialTables:
   tables:
-  - header: '## Chemical Properties'
-    rows:
-    - property: Chemical Formula
-      value: Variable organic composition (cellulose, lignin, hemicellulose)
-      unit: '-'
-      category: Chemical
-    - property: Chemical Symbol
-      value: C6H10O5 (cellulose)
-      unit: '-'
-      category: Chemical
-    - property: Material Type
-      value: Wood
-      unit: '-'
-      category: Classification
-    - property: Composition
-      value: 'Cellulose: 40-45%, Lignin: 22-27%, Hemicellulose: 25-30%, Extractives: 3-5%'
-      unit: '-'
-      category: Composition
   - header: '## Physical & Mechanical Properties'
     rows:
     - property: Density
-      value: 680-710 kg/m³ (air-dried)
-      unit: kg/m³
-      min: '1.8'
-      max: '6.0'
-      percentile: 100.0
-      numeric: 695.0
-    - property: Decomposition Point
-      value: 300°C
-      unit: °C
-      numeric: 300.0
+      value: '0.67'
+      unit: g/cm³
     - property: Thermal Conductivity
-      value: 0.12-0.17 W/(m·K) (radial direction)
-      unit: W/
-      percentile: 0.0
-      numeric: 0.15
-    - property: Tensile Strength
-      value: 85-125 MPa (parallel to grain)
-      unit: MPa
-      percentile: 5.8
-      numeric: 105.0
+      value: '0.16'
+      unit: W/m·K
     - property: Hardness
-      value: 1320 N (Janka hardness scale)
-      unit: N
-      min: '1.0'
-      max: '10.0'
-      percentile: 100.0
-      numeric: 1320.0
-    - property: Young's Modulus
-      value: 12.0 GPa (modulus of elasticity)
-      unit: GPa
-      percentile: 0.0
-      numeric: 12.0
+      value: '5.0'
+      unit: kN
   - header: '## Laser Processing Parameters'
     rows:
     - property: Power Range
-      value: 20-100W
+      value: '50.0'
       unit: W
-      min: '20.0'
-      max: '500.0'
-      numeric: 60.0
     - property: Pulse Duration
-      value: 10-100ns
+      value: '10.0'
       unit: ns
-      min: '1.0'
-      max: '1000.0'
-      numeric: 55.0
+      category: Standard
     - property: Wavelength
-      value: 1064nm (primary), 532nm (optional)
+      value: '1064.0'
       unit: nm
-      min: '355.0'
-      max: '2940.0'
-      numeric: 1064.0
+      category: Optimal
     - property: Spot Size
-      value: 0.1-2.0mm
+      value: '2.0'
       unit: mm
-      min: '0.01'
-      max: '10.0'
-      numeric: 1.05
+      category: Configurable
     - property: Repetition Rate
-      value: 10-50kHz
+      value: '10.0'
       unit: kHz
-      min: '1.0'
-      max: '1000.0'
-      numeric: 30.0
+      category: Variable
     - property: Fluence Range
-      value: 0.5-5 J/cm²
+      value: '0.8'
       unit: J/cm²
-      min: '0.1'
-      max: '50.0'
-      numeric: 2.75
+      category: Range
+    - property: Beam Profile
+      value: Gaussian TEM00
+      unit: '-'
+      category: System
+    - property: Safety Class
+      value: Class 4 (requires full enclosure)
+      unit: '-'
+      category: Safety
   - header: '## Applications & Industries'
     rows:
     - property: Woodworking
@@ -101,34 +54,26 @@ materialTables:
       value: Cleaning of historical wooden structures and artworks
       unit: '-'
       category: Application
-  - header: '## Performance Metrics'
-    rows:
-    - property: Surface contamination removal efficiency
-      value: '>95% removal of surface contaminants with <5µm substrate damage'
+    - property: Tool Manufacturing
+      value: Surface preparation for ash tool handles and sports equipment
       unit: '-'
-      category: Performance
-    - property: Processing speed
-      value: 0.5-2.0 m²/hour depending on contamination level and required precision
+      category: Application
+    - property: Musical Instruments
+      value: Cleaning ash drum shells and guitar bodies
       unit: '-'
-      category: Performance
-  - header: '## Environmental Impact'
-    rows:
-    - property: Zero chemical waste generation
-      value: Eliminates solvent use (typically 5-10 L/m² in traditional cleaning) and associated VOC emissions
+      category: Application
+    - property: Furniture Manufacturing
+      value: Ash cabinet and furniture component cleaning
       unit: '-'
-      category: Environmental
-    - property: Reduced energy consumption
-      value: 60-70% lower energy usage compared to thermal or chemical cleaning methods for wood surfaces
+      category: Application
+    - property: Sports Equipment
+      value: Baseball bat and hockey stick surface treatment
       unit: '-'
-      category: Environmental
+      category: Application
   - header: '## Compatibility & Standards'
     rows:
     - property: Material Compatibility
-      value: Compatible with most wood species in mixed-material conservation, Similar processing parameters to oak and maple hardwoods
+      value: laser_types, surface_treatments, incompatible_conditions
       unit: '-'
       category: Compatibility
-    - property: Regulatory Standards
-      value: ANSI Z136.1 Safe Use of Lasers, OSHA 29 CFR 1910.1096 Ionizing Radiation, NFPA 70 National Electrical Code
-      unit: '-'
-      category: Compliance
 renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. Pure data structure optimized for performance.'

@@ -1,96 +1,52 @@
 materialTables:
   tables:
-  - header: '## Chemical Properties'
-    rows:
-    - property: Chemical Formula
-      value: C10H8O4 (Base resin repeat unit) + SiO2 (Glass fiber)
-      unit: '-'
-      category: Chemical
-    - property: Chemical Symbol
-      value: N/A (Composite)
-      unit: '-'
-      category: Chemical
-    - property: Material Type
-      value: Composite
-      unit: '-'
-      category: Classification
-    - property: Composition
-      value: Unsaturated Polyester Resin (30-50%), E-glass or S-glass fibers (50-70%), Calcium Carbonate filler (0-15%), Catalysts (MEKP) and additives (<2%)
-      unit: '-'
-      category: Composition
   - header: '## Physical & Mechanical Properties'
     rows:
     - property: Density
-      value: 1.2-2.0 g/cm³ (Varies with glass fiber content)
+      value: '1.2'
       unit: g/cm³
-      min: '1.8'
-      max: '6.0'
-      percentile: 0.0
-      numeric: 1.6
-    - property: Decomposition Point
-      value: 220°C
-      unit: °C
-      numeric: 220.0
     - property: Thermal Conductivity
-      value: 0.17-0.25 W/(m·K)
-      unit: W/
-      percentile: 0.0
-      numeric: 0.21
+      value: '0.2'
+      unit: W/m·K
     - property: Tensile Strength
-      value: 30-150 MPa (Varies with fiber orientation and content)
+      value: '100'
       unit: MPa
-      percentile: 4.2
-      numeric: 90.0
-    - property: Hardness
-      value: 80-95 Barcol (Scale HBa)
-      unit: Barcol
-      min: '1.0'
-      max: '10.0'
-      percentile: 100.0
-      numeric: 87.5
     - property: Young's Modulus
-      value: 6-15 GPa
+      value: '10'
       unit: GPa
-      percentile: 0.0
-      numeric: 10.5
   - header: '## Laser Processing Parameters'
     rows:
     - property: Power Range
-      value: 20-100W
+      value: '22.0'
       unit: W
-      min: '20.0'
-      max: '500.0'
-      numeric: 60.0
     - property: Pulse Duration
-      value: 10-100ns
+      value: '10.0'
       unit: ns
-      min: '1.0'
-      max: '1000.0'
-      numeric: 55.0
+      category: Standard
     - property: Wavelength
-      value: 1064 nm (primary), 532nm (optional)
+      value: '355.0'
       unit: nm
-      min: '355.0'
-      max: '2940.0'
-      numeric: 1064.0
+      category: Optimal
     - property: Spot Size
-      value: 0.1-2.0mm
+      value: '1.0'
       unit: mm
-      min: '0.01'
-      max: '10.0'
-      numeric: 1.05
+      category: Configurable
     - property: Repetition Rate
-      value: 10-50kHz
+      value: '10.0'
       unit: kHz
-      min: '1.0'
-      max: '1000.0'
-      numeric: 30.0
+      category: Variable
     - property: Fluence Range
-      value: 0.5-5 J/cm²
+      value: '0.1'
       unit: J/cm²
-      min: '0.1'
-      max: '50.0'
-      numeric: 2.75
+      category: Range
+    - property: Beam Profile
+      value: Gaussian TEM00
+      unit: '-'
+      category: System
+    - property: Safety Class
+      value: Class 4 (requires full enclosure)
+      unit: '-'
+      category: Safety
   - header: '## Applications & Industries'
     rows:
     - property: Automotive
@@ -101,34 +57,10 @@ materialTables:
       value: Cleaning and restoration of composite parts
       unit: '-'
       category: Application
-  - header: '## Performance Metrics'
-    rows:
-    - property: Contaminant Removal Efficiency
-      value: '>99% removal of paints, oils, and release agents with a surface roughness (Ra) change of <5 µm.'
-      unit: '-'
-      category: Performance
-    - property: Processing Throughput
-      value: Achieves cleaning rates of 2-10 m²/hour depending on contaminant type and laser parameters.
-      unit: '-'
-      category: Performance
-  - header: '## Environmental Impact'
-    rows:
-    - property: Elimination of Chemical Solvents
-      value: Replaces solvent-based cleaning (e.g., methyl ethyl ketone, acetone), eliminating VOC emissions of up to 95% and reducing hazardous waste generation.
-      unit: '-'
-      category: Environmental
-    - property: Reduced Waste and Energy Consumption
-      value: Generates minimal solid waste (ablated particulates are captured by filtration) and operates with high electrical-to-optical efficiency (~30%), reducing overall energy use by ~40% compared to abrasive blasting.
-      unit: '-'
-      category: Environmental
   - header: '## Compatibility & Standards'
     rows:
     - property: Material Compatibility
-      value: Fiber-reinforced plastics (FRP) with similar matrices (e.g., Vinylester), Thermoset polymer composites with high ablation thresholds
+      value: laser_types, surface_treatments, incompatible_conditions
       unit: '-'
       category: Compatibility
-    - property: Regulatory Standards
-      value: IEC 60825-1 (Laser Safety), ISO 11553 (Safety of Laser Processing Machines), EPA Guidelines for Airborne Particulate Matter
-      unit: '-'
-      category: Compliance
 renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. Pure data structure optimized for performance.'

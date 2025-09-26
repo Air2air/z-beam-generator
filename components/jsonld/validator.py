@@ -8,8 +8,6 @@ Component-specific validation logic for JSON-LD components.
 import json
 from typing import Any, Dict, List
 
-from utils.validation import validate_placeholder_content
-
 
 def validate_jsonld_structure(
     content: str, format_rules: Dict[str, Any] = None
@@ -51,10 +49,19 @@ def validate_jsonld_structure(
             return errors
 
         # Check for required JSON-LD fields
-        required_fields = ["@context", "@type"]
-        for field in required_fields:
-            if field not in parsed_json:
-                errors.append(f"Missing required JSON-LD field: {field}")
+        if "@context" not in parsed_json:
+            errors.append("Missing required JSON-LD field: @context")
+        
+        # Check for @type field - can be at root or in @graph items
+        if "@type" not in parsed_json:
+            # If no @type at root, check if using @graph structure
+            if "@graph" in parsed_json and isinstance(parsed_json["@graph"], list):
+                # @graph structure is valid, check if items have @type
+                graph_items_with_type = [item for item in parsed_json["@graph"] if isinstance(item, dict) and "@type" in item]
+                if not graph_items_with_type:
+                    errors.append("No @type found in JSON-LD structure (neither at root nor in @graph items)")
+            else:
+                errors.append("Missing required JSON-LD field: @type")
 
         # Validate @context
         if (
@@ -83,8 +90,12 @@ def validate_jsonld_content(content: str) -> List[str]:
     """
     errors = []
 
-    # Check for placeholder content
-    errors.extend(validate_placeholder_content(content))
+    # Check for specific placeholder patterns (not general brackets since JSON uses them)
+    placeholder_patterns = ["TBD", "TODO", "[INSERT", "[PLACEHOLDER", "{{", "}}", "XXXX"]
+    found_placeholders = [p for p in placeholder_patterns if p in content]
+    
+    if found_placeholders:
+        errors.append(f"Contains placeholder content: {', '.join(found_placeholders)}")
 
     # Basic content validation
     if not content.strip():

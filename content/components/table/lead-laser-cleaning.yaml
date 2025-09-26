@@ -10,88 +10,53 @@ materialTables:
       value: Pb
       unit: '-'
       category: Chemical
-    - property: Material Type
-      value: Metal
-      unit: '-'
-      category: Classification
-    - property: Composition
-      value: 'Lead (Pb): 99.9-99.99% (commercial purity), Trace elements: <0.1% (typically Sb, As, Bi, Cu, Ag)'
-      unit: '-'
-      category: Composition
   - header: '## Physical & Mechanical Properties'
     rows:
     - property: Density
-      value: 11.34 g/cm³
+      value: '7.8'
       unit: g/cm³
-      min: '1.8'
-      max: '6.0'
-      percentile: 100.0
-      numeric: 11.34
-    - property: Melting Point
-      value: 327°C
-      unit: °C
-      percentile: 0.0
-      numeric: 327.0
     - property: Thermal Conductivity
-      value: 35.3 W/(m·K)
-      unit: W/
-      percentile: 17.4
-      numeric: 35.3
+      value: '15'
+      unit: W/m·K
     - property: Tensile Strength
-      value: 12-18 MPa
+      value: '200'
       unit: MPa
-      percentile: 0.0
-      numeric: 15.0
-    - property: Hardness
-      value: 38-50 MPa (Brinell)
-      unit: MPa
-      min: '1.0'
-      max: '10.0'
-      percentile: 100.0
-      numeric: 44.0
     - property: Young's Modulus
-      value: 16 GPa
+      value: '200'
       unit: GPa
-      percentile: 0.0
-      numeric: 16.0
   - header: '## Laser Processing Parameters'
     rows:
     - property: Power Range
-      value: 50-200W
+      value: '40.0'
       unit: W
-      min: '20.0'
-      max: '500.0'
-      numeric: 125.0
     - property: Pulse Duration
-      value: 10-200ns
+      value: '20.0'
       unit: ns
-      min: '1.0'
-      max: '1000.0'
-      numeric: 105.0
+      category: Standard
     - property: Wavelength
-      value: 1064nm (primary), 532nm (optional)
+      value: '1064.0'
       unit: nm
-      min: '355.0'
-      max: '2940.0'
-      numeric: 1064.0
+      category: Optimal
     - property: Spot Size
-      value: 0.1-1.0mm
+      value: '2.0'
       unit: mm
-      min: '0.01'
-      max: '10.0'
-      numeric: 0.55
+      category: Configurable
     - property: Repetition Rate
-      value: 20-100kHz
+      value: '30.0'
       unit: kHz
-      min: '1.0'
-      max: '1000.0'
-      numeric: 60.0
+      category: Variable
     - property: Fluence Range
-      value: 1.0–10 J/cm²
+      value: '0.4'
       unit: J/cm²
-      min: '0.1'
-      max: '50.0'
-      numeric: 1.0
+      category: Range
+    - property: Beam Profile
+      value: Gaussian TEM00
+      unit: '-'
+      category: System
+    - property: Safety Class
+      value: Class 4 (requires full enclosure)
+      unit: '-'
+      category: Safety
   - header: '## Applications & Industries'
     rows:
     - property: Automotive
@@ -102,34 +67,10 @@ materialTables:
       value: Cleaning of lead-based solder residues
       unit: '-'
       category: Application
-  - header: '## Performance Metrics'
-    rows:
-    - property: Surface cleanliness to SA 2.5 standard
-      value: ≤0.1 mg/m² residual contamination measured by XRF
-      unit: '-'
-      category: Performance
-    - property: Processing rates of 2-5 m²/hour
-      value: At 50W power with 0.3mm spot size and 1000 mm/s scanning speed
-      unit: '-'
-      category: Performance
-  - header: '## Environmental Impact'
-    rows:
-    - property: 99.7% reduction in lead waste generation
-      value: Traditional abrasive methods produce 300-500g of contaminated waste per m² vs 1-2g with laser cleaning
-      unit: '-'
-      category: Environmental
-    - property: Zero chemical solvent usage
-      value: Eliminates 100% of solvent consumption compared to chemical cleaning methods requiring 2-5 L/m²
-      unit: '-'
-      category: Environmental
   - header: '## Compatibility & Standards'
     rows:
     - property: Material Compatibility
-      value: Stainless steel (for containment systems), Copper (heat sink materials), Aluminum (enclosure materials)
+      value: laser_types, surface_treatments, incompatible_conditions
       unit: '-'
       category: Compatibility
-    - property: Regulatory Standards
-      value: OSHA 1910.1025, EPA Lead Renovation, Repair and Painting Rule (RRP), IEC 60825-1 (laser safety)
-      unit: '-'
-      category: Compliance
 renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. Pure data structure optimized for performance.'

@@ -1,96 +1,49 @@
 materialTables:
   tables:
-  - header: '## Chemical Properties'
-    rows:
-    - property: Chemical Formula
-      value: C₆H₁₀O₅ (cellulose base)
-      unit: '-'
-      category: Chemical
-    - property: Chemical Symbol
-      value: N/A (organic composite)
-      unit: '-'
-      category: Chemical
-    - property: Material Type
-      value: Lignocellulosic Composite
-      unit: '-'
-      category: Classification
-    - property: Composition
-      value: 'Cellulose: 40-50%, Hemicellulose: 20-30%, Lignin: 20-25%, Ash: 1-3%, Extractives: 2-5%'
-      unit: '-'
-      category: Composition
   - header: '## Physical & Mechanical Properties'
     rows:
     - property: Density
-      value: 0.6-0.8 g/cm³ (species dependent)
+      value: '0.38'
       unit: g/cm³
-      min: '1.8'
-      max: '6.0'
-      percentile: 0.0
-      numeric: 0.7
-    - property: Decomposition Point
-      value: 250°C
-      unit: °C
-      numeric: 250.0
     - property: Thermal Conductivity
-      value: 0.09-0.17 W/m·K (radial direction)
+      value: '0.11'
       unit: W/m·K
-      percentile: 0.0
-      numeric: 0.13
-    - property: Tensile Strength
-      value: 140-280 MPa (longitudinal direction)
-      unit: MPa
-      percentile: 16.8
-      numeric: 210.0
     - property: Hardness
-      value: 4-6 HB (Brinell hardness)
-      unit: HB
-      min: '1.0'
-      max: '10.0'
-      percentile: 44.4
-      numeric: 5.0
-    - property: Young's Modulus
-      value: 10-20 GPa (longitudinal direction)
-      unit: GPa
-      percentile: 0.0
-      numeric: 15.0
+      value: '1.4'
+      unit: kN
   - header: '## Laser Processing Parameters'
     rows:
     - property: Power Range
-      value: 20-100W
+      value: '12.0'
       unit: W
-      min: '20.0'
-      max: '500.0'
-      numeric: 60.0
     - property: Pulse Duration
-      value: 10-50ns
+      value: '10.0'
       unit: ns
-      min: '1.0'
-      max: '1000.0'
-      numeric: 30.0
+      category: Standard
     - property: Wavelength
-      value: 1064nm (primary), 532nm (optional)
+      value: '10600.0'
       unit: nm
-      min: '355.0'
-      max: '2940.0'
-      numeric: 1064.0
+      category: Optimal
     - property: Spot Size
-      value: 0.1-1.0mm
+      value: '2.0'
       unit: mm
-      min: '0.01'
-      max: '10.0'
-      numeric: 0.55
+      category: Configurable
     - property: Repetition Rate
-      value: 20-100kHz
+      value: '20.0'
       unit: kHz
-      min: '1.0'
-      max: '1000.0'
-      numeric: 60.0
+      category: Variable
     - property: Fluence Range
-      value: 0.5-3.0 J/cm²
+      value: '0.1'
       unit: J/cm²
-      min: '0.1'
-      max: '50.0'
-      numeric: 1.75
+      category: Range
+    - property: Beam Profile
+      value: Gaussian TEM00
+      unit: '-'
+      category: System
+    - property: Safety Class
+      value: Class 4 (requires full enclosure)
+      unit: '-'
+      category: Safety
   - header: '## Applications & Industries'
     rows:
     - property: Woodworking
@@ -101,34 +54,26 @@ materialTables:
       value: Cleaning bamboo artifacts without damaging the material
       unit: '-'
       category: Application
-  - header: '## Performance Metrics'
-    rows:
-    - property: Surface contamination removal efficiency
-      value: '>98% removal of biological growth and surface contaminants'
+    - property: Flooring
+      value: Bamboo floor surface preparation and maintenance
       unit: '-'
-      category: Performance
-    - property: Material preservation accuracy
-      value: <5μm surface layer removal with complete substrate preservation
+      category: Application
+    - property: Textiles
+      value: Cleaning bamboo fabric production equipment
       unit: '-'
-      category: Performance
-  - header: '## Environmental Impact'
-    rows:
-    - property: Zero chemical waste generation
-      value: Eliminates solvent use (typically 5-10L/m² in traditional cleaning) and prevents groundwater contamination
+      category: Application
+    - property: Construction
+      value: Surface treatment of bamboo building materials
       unit: '-'
-      category: Environmental
-    - property: 97% reduction in water consumption
-      value: Dry process eliminates water usage compared to traditional washing methods requiring 15-20L/m²
+      category: Application
+    - property: Kitchenware
+      value: Sanitizing bamboo cutting boards and utensils
       unit: '-'
-      category: Environmental
+      category: Application
   - header: '## Compatibility & Standards'
     rows:
     - property: Material Compatibility
-      value: Wood species with similar lignocellulosic composition, Natural fiber composites, Paper and cellulose-based materials
+      value: laser_types, surface_treatments, incompatible_conditions
       unit: '-'
       category: Compatibility
-    - property: Regulatory Standards
-      value: 'ISO 11553: Safety of machinery - Laser processing machines; IEC 60825: Laser product safety'
-      unit: '-'
-      category: Compliance
 renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. Pure data structure optimized for performance.'

@@ -1,97 +1,49 @@
 materialTables:
   tables:
-  - header: '## Chemical Properties'
-    rows:
-    - property: Chemical Formula
-      value: CaCO₃
-      unit: '-'
-      category: Chemical
-    - property: Chemical Symbol
-      value: CaCO₃
-      unit: '-'
-      category: Chemical
-    - property: Material Type
-      value: Stone
-      unit: '-'
-      category: Classification
-    - property: Composition
-      value: 'Calcium carbonate (CaCO₃): 90-99%, Silicon dioxide (SiO₂): 0.5-5%, Iron oxides, aluminum oxides, and other trace minerals: 0.5-3%'
-      unit: '-'
-      category: Composition
   - header: '## Physical & Mechanical Properties'
     rows:
     - property: Density
-      value: 2.65-2.80 g/cm³
+      value: '2.5'
       unit: g/cm³
-      min: '1.8'
-      max: '6.0'
-      percentile: 21.9
-      numeric: 2.72
-    - property: Melting Point
-      value: 825°C
-      unit: °C
-      percentile: 0.0
-      numeric: 825.0
     - property: Thermal Conductivity
-      value: 1.26-1.33 W/(m·K)
-      unit: W/
-      percentile: 0.4
-      numeric: 1.29
-    - property: Tensile Strength
-      value: 10-15 MPa
-      unit: MPa
-      percentile: 0.0
-      numeric: 12.5
+      value: '1.5'
+      unit: W/m·K
     - property: Hardness
-      value: 6.5-7.0 Mohs
+      value: '6'
       unit: Mohs
-      min: '1.0'
-      max: '10.0'
-      percentile: 63.9
-      numeric: 6.75
-    - property: Young's Modulus
-      value: 40-80 GPa
-      unit: GPa
-      percentile: 66.7
-      numeric: 60.0
   - header: '## Laser Processing Parameters'
     rows:
     - property: Power Range
-      value: 50-200W
+      value: '55.0'
       unit: W
-      min: '20.0'
-      max: '500.0'
-      numeric: 125.0
     - property: Pulse Duration
-      value: 5-50ns
+      value: '20.0'
       unit: ns
-      min: '1.0'
-      max: '1000.0'
-      numeric: 27.5
+      category: Standard
     - property: Wavelength
-      value: 1064nm (primary), 532nm (optional)
+      value: '532.0'
       unit: nm
-      min: '355.0'
-      max: '2940.0'
-      numeric: 1064.0
+      category: Optimal
     - property: Spot Size
-      value: 0.05-1.0mm
+      value: '1.5'
       unit: mm
-      min: '0.01'
-      max: '10.0'
-      numeric: 0.525
+      category: Configurable
     - property: Repetition Rate
-      value: 20-100kHz
+      value: '40.0'
       unit: kHz
-      min: '1.0'
-      max: '1000.0'
-      numeric: 60.0
+      category: Variable
     - property: Fluence Range
-      value: 1.0–10 J/cm²
+      value: '0.8'
       unit: J/cm²
-      min: '0.1'
-      max: '50.0'
-      numeric: 1.0
+      category: Range
+    - property: Beam Profile
+      value: Gaussian TEM00
+      unit: '-'
+      category: System
+    - property: Safety Class
+      value: Class 4 (requires full enclosure)
+      unit: '-'
+      category: Safety
   - header: '## Applications & Industries'
     rows:
     - property: Jewelry
@@ -102,34 +54,10 @@ materialTables:
       value: Surface preparation and cleaning of onyx slabs for building facades
       unit: '-'
       category: Application
-  - header: '## Performance Metrics'
-    rows:
-    - property: Surface contamination removal efficiency
-      value: '>99% removal of biological and atmospheric contaminants without substrate damage'
-      unit: '-'
-      category: Performance
-    - property: Processing precision
-      value: ±10 μm layer control with preservation of original surface morphology
-      unit: '-'
-      category: Performance
-  - header: '## Environmental Impact'
-    rows:
-    - property: Zero chemical waste generation
-      value: Eliminates 100% of chemical solvents traditionally used in onyx cleaning, preventing groundwater contamination
-      unit: '-'
-      category: Environmental
-    - property: Reduced particulate matter emissions
-      value: Generates 85% less airborne particulate matter compared to mechanical abrasive cleaning methods
-      unit: '-'
-      category: Environmental
   - header: '## Compatibility & Standards'
     rows:
     - property: Material Compatibility
-      value: Marble and other calcareous stones, Granite and silicate-based stones (with parameter adjustment)
+      value: laser_types, surface_treatments, incompatible_conditions
       unit: '-'
       category: Compatibility
-    - property: Regulatory Standards
-      value: EN 60825-1:2014 (Laser product safety), EN 15898:2019 (Conservation of cultural property)
-      unit: '-'
-      category: Compliance
 renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. Pure data structure optimized for performance.'

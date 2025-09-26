@@ -1,97 +1,49 @@
 materialTables:
   tables:
-  - header: '## Chemical Properties'
-    rows:
-    - property: Chemical Formula
-      value: 'Variable composition: primarily (K,H₃O)(Al,Mg,Fe)₂(Si,Al)₄O₁₀[(OH)₂,(H₂O)] for clay minerals'
-      unit: '-'
-      category: Chemical
-    - property: Chemical Symbol
-      value: N/A (complex mineral composite)
-      unit: '-'
-      category: Chemical
-    - property: Material Type
-      value: Sedimentary Rock
-      unit: '-'
-      category: Classification
-    - property: Composition
-      value: 'Clay minerals (illite, kaolinite, smectite): 40-70%, Quartz: 20-40%, Feldspar: 5-15%, Carbonates, iron oxides, organic matter: 5-15%'
-      unit: '-'
-      category: Composition
   - header: '## Physical & Mechanical Properties'
     rows:
     - property: Density
-      value: 2.0-2.7 g/cm³
+      value: '2.5'
       unit: g/cm³
-      min: '1.8'
-      max: '6.0'
-      percentile: 13.1
-      numeric: 2.35
-    - property: Melting Point
-      value: 1200-1600°C (varies with mineral composition)
-      unit: °C
-      percentile: 12.5
-      numeric: 1400.0
     - property: Thermal Conductivity
-      value: 1.5-2.5 W/(m·K)
-      unit: W/
-      percentile: 0.8
-      numeric: 2.0
-    - property: Tensile Strength
-      value: 3-30 MPa (highly anisotropic)
-      unit: MPa
-      percentile: 0.0
-      numeric: 16.5
+      value: '1.5'
+      unit: W/m·K
     - property: Hardness
-      value: 2-4 Mohs scale
+      value: '6'
       unit: Mohs
-      min: '1.0'
-      max: '10.0'
-      percentile: 22.2
-      numeric: 3.0
-    - property: Young's Modulus
-      value: 10-70 GPa (varies with bedding orientation)
-      unit: GPa
-      percentile: 33.3
-      numeric: 40.0
   - header: '## Laser Processing Parameters'
     rows:
     - property: Power Range
-      value: 50-200W
+      value: '75.0'
       unit: W
-      min: '20.0'
-      max: '500.0'
-      numeric: 125.0
     - property: Pulse Duration
-      value: 5-50ns
+      value: '20.0'
       unit: ns
-      min: '1.0'
-      max: '1000.0'
-      numeric: 27.5
+      category: Standard
     - property: Wavelength
-      value: 1064nm (primary), 532nm (optional)
+      value: '532.0'
       unit: nm
-      min: '355.0'
-      max: '2940.0'
-      numeric: 1064.0
+      category: Optimal
     - property: Spot Size
-      value: 0.5-3.0mm
+      value: '2.0'
       unit: mm
-      min: '0.01'
-      max: '10.0'
-      numeric: 1.75
+      category: Configurable
     - property: Repetition Rate
-      value: 20-100kHz
+      value: '40.0'
       unit: kHz
-      min: '1.0'
-      max: '1000.0'
-      numeric: 60.0
+      category: Variable
     - property: Fluence Range
-      value: 1.0–10 J/cm²
+      value: '1.3'
       unit: J/cm²
-      min: '0.1'
-      max: '50.0'
-      numeric: 1.0
+      category: Range
+    - property: Beam Profile
+      value: Gaussian TEM00
+      unit: '-'
+      category: System
+    - property: Safety Class
+      value: Class 4 (requires full enclosure)
+      unit: '-'
+      category: Safety
   - header: '## Applications & Industries'
     rows:
     - property: Oil and Gas
@@ -102,34 +54,10 @@ materialTables:
       value: Restoration of shale surfaces in building exteriors
       unit: '-'
       category: Application
-  - header: '## Performance Metrics'
-    rows:
-    - property: Surface contamination removal efficiency
-      value: '>99% removal of organic deposits and mineral scale without substrate damage'
-      unit: '-'
-      category: Performance
-    - property: Processing speed
-      value: 0.5-2.0 m²/hour depending on contamination level and laser parameters
-      unit: '-'
-      category: Performance
-  - header: '## Environmental Impact'
-    rows:
-    - property: Zero chemical waste generation
-      value: Eliminates 100% of chemical solvents and abrasive media typically used in traditional shale cleaning methods
-      unit: '-'
-      category: Environmental
-    - property: Reduced energy consumption
-      value: Laser cleaning consumes 60-70% less energy compared to high-pressure water or abrasive blasting methods for shale surfaces
-      unit: '-'
-      category: Environmental
   - header: '## Compatibility & Standards'
     rows:
     - property: Material Compatibility
-      value: Stainless steel fixtures and enclosures, Aluminum mounting systems, Quartz and borosilicate glass viewing windows
+      value: laser_types, surface_treatments, incompatible_conditions
       unit: '-'
       category: Compatibility
-    - property: Regulatory Standards
-      value: IEC 60825-1:2014 (Laser safety), OSHA 29 CFR 1910.1096 (Ionizing radiation), NFPA 70E (Electrical safety)
-      unit: '-'
-      category: Compliance
 renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. Pure data structure optimized for performance.'

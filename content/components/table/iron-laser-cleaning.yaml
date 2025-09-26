@@ -10,88 +10,53 @@ materialTables:
       value: Fe
       unit: '-'
       category: Chemical
-    - property: Material Type
-      value: Metal
-      unit: '-'
-      category: Classification
-    - property: Composition
-      value: 'Iron (Fe): 99.5-99.9% (commercial purity), Carbon (C): 0.02-0.1%, Manganese (Mn): 0.3-0.7%, Silicon (Si): 0.15-0.35%'
-      unit: '-'
-      category: Composition
   - header: '## Physical & Mechanical Properties'
     rows:
     - property: Density
-      value: 7.87 g/cm³
+      value: '7.8'
       unit: g/cm³
-      min: '1.8'
-      max: '6.0'
-      percentile: 100.0
-      numeric: 7.87
-    - property: Melting Point
-      value: 1538 °C
-      unit: °C
-      percentile: 21.1
-      numeric: 1538.0
     - property: Thermal Conductivity
-      value: 80.4 W/(m·K)
-      unit: W/
-      percentile: 40.1
-      numeric: 80.4
+      value: '15'
+      unit: W/m·K
     - property: Tensile Strength
-      value: 540 MPa (structural steel)
+      value: '200'
       unit: MPa
-      percentile: 51.6
-      numeric: 540.0
-    - property: Hardness
-      value: 50-90 HB (Brinell scale)
-      unit: HB
-      min: '1.0'
-      max: '10.0'
-      percentile: 100.0
-      numeric: 70.0
     - property: Young's Modulus
-      value: 211 GPa
+      value: '200'
       unit: GPa
-      percentile: 100.0
-      numeric: 211.0
   - header: '## Laser Processing Parameters'
     rows:
     - property: Power Range
-      value: 50-200W
+      value: '100.0'
       unit: W
-      min: '20.0'
-      max: '500.0'
-      numeric: 125.0
     - property: Pulse Duration
-      value: 10-200ns
+      value: '20.0'
       unit: ns
-      min: '1.0'
-      max: '1000.0'
-      numeric: 105.0
+      category: Standard
     - property: Wavelength
-      value: 1064nm (primary), 532nm (optional)
+      value: '1064.0'
       unit: nm
-      min: '355.0'
-      max: '2940.0'
-      numeric: 1064.0
+      category: Optimal
     - property: Spot Size
-      value: 0.1-1.0mm
+      value: '1.0'
       unit: mm
-      min: '0.01'
-      max: '10.0'
-      numeric: 0.55
+      category: Configurable
     - property: Repetition Rate
-      value: 20-100kHz
+      value: '30.0'
       unit: kHz
-      min: '1.0'
-      max: '1000.0'
-      numeric: 60.0
+      category: Variable
     - property: Fluence Range
-      value: 1.0–10 J/cm²
+      value: '1.2'
       unit: J/cm²
-      min: '0.1'
-      max: '50.0'
-      numeric: 1.0
+      category: Range
+    - property: Beam Profile
+      value: Gaussian TEM00
+      unit: '-'
+      category: System
+    - property: Safety Class
+      value: Class 4 (requires full enclosure)
+      unit: '-'
+      category: Safety
   - header: '## Applications & Industries'
     rows:
     - property: Automotive
@@ -102,34 +67,10 @@ materialTables:
       value: Cleaning iron molds and dies for improved surface quality
       unit: '-'
       category: Application
-  - header: '## Performance Metrics'
-    rows:
-    - property: Surface cleanliness Sa 0.8-1.2 μm
-      value: Achieves ISO 8501-1 Sa 2.5 standard for surface preparation
-      unit: '-'
-      category: Performance
-    - property: Processing speed 2-5 m²/hour
-      value: Removal rates of 0.5-2.0 m²/hour for heavy rust layers (200-500 μm thickness)
-      unit: '-'
-      category: Performance
-  - header: '## Environmental Impact'
-    rows:
-    - property: Zero chemical waste generation
-      value: Eliminates 100% of chemical solvents and abrasive media typically used in traditional iron cleaning processes
-      unit: '-'
-      category: Environmental
-    - property: 97% reduction in energy consumption
-      value: Laser cleaning consumes 0.3-0.5 kWh/m² compared to 15-20 kWh/m² for abrasive blasting methods
-      unit: '-'
-      category: Environmental
   - header: '## Compatibility & Standards'
     rows:
     - property: Material Compatibility
-      value: Stainless steel (similar thermal properties), Carbon steel (comparable ablation thresholds)
+      value: laser_types, surface_treatments, incompatible_conditions
       unit: '-'
       category: Compatibility
-    - property: Regulatory Standards
-      value: ISO 11553 (Safety of laser processing machines), IEC 60825-1 (Laser product safety)
-      unit: '-'
-      category: Compliance
 renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. Pure data structure optimized for performance.'

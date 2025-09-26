@@ -10,88 +10,53 @@ materialTables:
       value: Ag
       unit: '-'
       category: Chemical
-    - property: Material Type
-      value: Metal
-      unit: '-'
-      category: Classification
-    - property: Composition
-      value: 'Silver (Ag): 99.9-99.99% (commercial pure), Copper: 0.01-0.1% (common trace element)'
-      unit: '-'
-      category: Composition
   - header: '## Physical & Mechanical Properties'
     rows:
     - property: Density
-      value: 10.49 g/cm³
+      value: '7.8'
       unit: g/cm³
-      min: '1.8'
-      max: '6.0'
-      percentile: 100.0
-      numeric: 10.49
-    - property: Melting Point
-      value: 961.8 °C
-      unit: °C
-      percentile: 0.0
-      numeric: 961.8
     - property: Thermal Conductivity
-      value: 429 W/m·K
+      value: '15'
       unit: W/m·K
-      percentile: 100.0
-      numeric: 429.0
     - property: Tensile Strength
-      value: 125 MPa (annealed)
+      value: '200'
       unit: MPa
-      percentile: 7.9
-      numeric: 125.0
-    - property: Hardness
-      value: 25 HV (pure annealed silver)
-      unit: HV
-      min: '1.0'
-      max: '10.0'
-      percentile: 100.0
-      numeric: 25.0
     - property: Young's Modulus
-      value: 83 GPa
+      value: '200'
       unit: GPa
-      percentile: 100.0
-      numeric: 83.0
   - header: '## Laser Processing Parameters'
     rows:
     - property: Power Range
-      value: 20-100W
+      value: '180.0'
       unit: W
-      min: '20.0'
-      max: '500.0'
-      numeric: 60.0
     - property: Pulse Duration
-      value: 10-100ns
+      value: '5.0'
       unit: ns
-      min: '1.0'
-      max: '1000.0'
-      numeric: 55.0
+      category: Standard
     - property: Wavelength
-      value: 1064nm (primary), 532nm (optional)
+      value: '355.0'
       unit: nm
-      min: '355.0'
-      max: '2940.0'
-      numeric: 1064.0
+      category: Optimal
     - property: Spot Size
-      value: 0.1-2.0mm
+      value: '1.0'
       unit: mm
-      min: '0.01'
-      max: '10.0'
-      numeric: 1.05
+      category: Configurable
     - property: Repetition Rate
-      value: 10-50kHz
+      value: '10.0'
       unit: kHz
-      min: '1.0'
-      max: '1000.0'
-      numeric: 30.0
+      category: Variable
     - property: Fluence Range
-      value: 0.5-5 J/cm²
+      value: '0.4'
       unit: J/cm²
-      min: '0.1'
-      max: '50.0'
-      numeric: 2.75
+      category: Range
+    - property: Beam Profile
+      value: Gaussian TEM00
+      unit: '-'
+      category: System
+    - property: Safety Class
+      value: Class 4 (requires full enclosure)
+      unit: '-'
+      category: Safety
   - header: '## Applications & Industries'
     rows:
     - property: Electronics
@@ -102,34 +67,10 @@ materialTables:
       value: Cleaning and restoration of silver jewelry without damaging delicate surfaces
       unit: '-'
       category: Application
-  - header: '## Performance Metrics'
-    rows:
-    - property: Surface contamination removal >99.9%
-      value: Measured via SEM-EDS analysis showing complete sulfide and oxide removal
-      unit: '-'
-      category: Performance
-    - property: Sub-micron precision cleaning
-      value: Achieves 0.1-0.5 μm layer removal control without substrate damage
-      unit: '-'
-      category: Performance
-  - header: '## Environmental Impact'
-    rows:
-    - property: Zero chemical waste generation
-      value: Eliminates use of toxic chemical cleaners (cyanide-based solutions) and acidic dips traditionally used for silver cleaning
-      unit: '-'
-      category: Environmental
-    - property: Reduced water consumption
-      value: Eliminates water-intensive rinsing processes, reducing water usage by 100% compared to traditional chemical cleaning methods
-      unit: '-'
-      category: Environmental
   - header: '## Compatibility & Standards'
     rows:
     - property: Material Compatibility
-      value: Copper and copper alloys (similar thermal properties), Gold (compatible processing parameters)
+      value: laser_types, surface_treatments, incompatible_conditions
       unit: '-'
       category: Compatibility
-    - property: Regulatory Standards
-      value: IEC 60825-1 (Laser Safety), OSHA 29 CFR 1910.1096 (Ionizing Radiation)
-      unit: '-'
-      category: Compliance
 renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. Pure data structure optimized for performance.'

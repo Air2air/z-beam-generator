@@ -1,96 +1,38 @@
 materialTables:
   tables:
-  - header: '## Chemical Properties'
-    rows:
-    - property: Chemical Formula
-      value: Variable organic composition (primarily cellulose, lignin, hemicellulose)
-      unit: '-'
-      category: Chemical
-    - property: Chemical Symbol
-      value: C₆H₁₀O₅ (cellulose base)
-      unit: '-'
-      category: Chemical
-    - property: Material Type
-      value: Wood
-      unit: '-'
-      category: Classification
-    - property: Composition
-      value: 'Cellulose: 40-45%, Lignin: 26-34%, Hemicellulose: 20-25%, Extractives: 5-10% (including tannins, polyphenols)'
-      unit: '-'
-      category: Composition
-  - header: '## Physical & Mechanical Properties'
-    rows:
-    - property: Density
-      value: 380-450 kg/m³ (coast redwood)
-      unit: kg/m³
-      min: '1.8'
-      max: '6.0'
-      percentile: 100.0
-      numeric: 415.0
-    - property: Decomposition Point
-      value: 300°C
-      unit: °C
-      numeric: 300.0
-    - property: Thermal Conductivity
-      value: 0.12-0.15 W/(m·K) (radial direction)
-      unit: W/
-      percentile: 0.0
-      numeric: 0.14
-    - property: Tensile Strength
-      value: 70-90 MPa (parallel to grain)
-      unit: MPa
-      percentile: 3.2
-      numeric: 80.0
-    - property: Hardness
-      value: 2.1-2.5 kN (Janka hardness scale)
-      unit: kN
-      min: '1.0'
-      max: '10.0'
-      percentile: 14.4
-      numeric: 2.3
-    - property: Young's Modulus
-      value: 8.0-9.5 GPa (parallel to grain)
-      unit: GPa
-      percentile: 0.0
-      numeric: 8.75
   - header: '## Laser Processing Parameters'
     rows:
     - property: Power Range
-      value: 50-200W
+      value: '50.0'
       unit: W
-      min: '20.0'
-      max: '500.0'
-      numeric: 125.0
     - property: Pulse Duration
-      value: 10-50ns
+      value: '15.0'
       unit: ns
-      min: '1.0'
-      max: '1000.0'
-      numeric: 30.0
+      category: Standard
     - property: Wavelength
-      value: 1064nm (primary), 532nm (optional)
+      value: '1064.0'
       unit: nm
-      min: '355.0'
-      max: '2940.0'
-      numeric: 1064.0
+      category: Optimal
     - property: Spot Size
-      value: 0.1-1.0mm
+      value: '2.0'
       unit: mm
-      min: '0.01'
-      max: '10.0'
-      numeric: 0.55
+      category: Configurable
     - property: Repetition Rate
-      value: 20-100kHz
+      value: '20.0'
       unit: kHz
-      min: '1.0'
-      max: '1000.0'
-      numeric: 60.0
+      category: Variable
     - property: Fluence Range
-      value: 1.0–10 J/cm²
+      value: '0.8'
       unit: J/cm²
-      min: '0.1'
-      max: '50.0'
-      numeric: 1.0
+      category: Range
+    - property: Beam Profile
+      value: Gaussian TEM00
+      unit: '-'
+      category: System
+    - property: Safety Class
+      value: Class 4 (requires full enclosure)
+      unit: '-'
+      category: Safety
   - header: '## Applications & Industries'
     rows:
     - property: Woodworking
@@ -101,34 +43,10 @@ materialTables:
       value: Cleaning of historic Redwood structures
       unit: '-'
       category: Application
-  - header: '## Performance Metrics'
-    rows:
-    - property: Surface contamination removal efficiency
-      value: '>99% removal of biological growth and surface contaminants'
-      unit: '-'
-      category: Performance
-    - property: Material preservation
-      value: <0.1 mm material loss during cleaning process
-      unit: '-'
-      category: Performance
-  - header: '## Environmental Impact'
-    rows:
-    - property: Zero chemical waste generation
-      value: Eliminates 100% of solvent and chemical cleaner usage compared to traditional methods
-      unit: '-'
-      category: Environmental
-    - property: Reduced energy consumption
-      value: Uses 60-70% less energy than thermal or chemical cleaning methods for equivalent surface area
-      unit: '-'
-      category: Environmental
   - header: '## Compatibility & Standards'
     rows:
     - property: Material Compatibility
-      value: Compatible with brass, stainless steel, and ceramic masking materials, Similar processing parameters to other softwoods (cedar, pine)
+      value: laser_types, surface_treatments, incompatible_conditions
       unit: '-'
       category: Compatibility
-    - property: Regulatory Standards
-      value: ANSI Z136.1 (Laser Safety), OSHA 29 CFR 1910.133 (Eye Protection), NFPA 70E (Electrical Safety)
-      unit: '-'
-      category: Compliance
 renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. Pure data structure optimized for performance.'

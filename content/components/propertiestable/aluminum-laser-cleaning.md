@@ -1,13 +1,12 @@
 | Property | Value |
 |----------|-------|
-| Density | 2.70 g/cm³ |
-| Conductivity | "237 W/(m·K)" |
+| Density | 7.8 |
+| Conductivity | 15 |
 | Formula | Al |
-| Melting Point | 660.3°C |
 
 
 ---
-Version Log - Generated: 2025-09-22T23:39:22.877686
+Version Log - Generated: 2025-09-24T14:44:49.282475
 Material: Unknown
 Component: propertiestable
 Generator: Z-Beam v1.0.0

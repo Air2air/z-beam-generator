@@ -1,97 +1,49 @@
 materialTables:
   tables:
-  - header: '## Chemical Properties'
-    rows:
-    - property: Chemical Formula
-      value: Variable composition (primarily SiO₂, Al₂O₃, K₂O, Fe₂O₃, MgO)
-      unit: '-'
-      category: Chemical
-    - property: Chemical Symbol
-      value: N/A (complex mineral composite)
-      unit: '-'
-      category: Chemical
-    - property: Material Type
-      value: Metamorphic Rock
-      unit: '-'
-      category: Classification
-    - property: Composition
-      value: 'Quartz (SiO₂): 20-40%, Muscovite/Illite (KAl₂(AlSi₃O₁₀)(OH)₂): 30-50%, Chlorite ((Mg,Fe)₃(Si,Al)₄O₁₀(OH)₂·(Mg,Fe)₃(OH)₆): 10-25%, Iron oxides (Fe₂O₃/FeO): 3-15%, Accessory minerals: Carbonates, feldspars, pyrite (1-5%)'
-      unit: '-'
-      category: Composition
   - header: '## Physical & Mechanical Properties'
     rows:
     - property: Density
-      value: 2.6-2.9 g/cm³
+      value: '2.7'
       unit: g/cm³
-      min: '1.8'
-      max: '6.0'
-      percentile: 22.6
-      numeric: 2.75
-    - property: Melting Point
-      value: 1400°C
-      unit: °C
-      percentile: 6.2
-      numeric: 1400.0
     - property: Thermal Conductivity
-      value: 2.0-2.5 W/(m·K) (anisotropic - higher parallel to cleavage)
-      unit: W/
-      percentile: 0.9
-      numeric: 2.25
-    - property: Tensile Strength
-      value: 15-30 MPa (perpendicular to cleavage plane)
-      unit: MPa
-      percentile: 0.0
-      numeric: 22.5
+      value: '2.0'
+      unit: W/m·K
     - property: Hardness
-      value: 2.5-4.0 Mohs scale
+      value: '6'
       unit: Mohs
-      min: '1.0'
-      max: '10.0'
-      percentile: 25.0
-      numeric: 3.25
-    - property: Young's Modulus
-      value: 40-70 GPa (varies with orientation and mineral composition)
-      unit: GPa
-      percentile: 58.3
-      numeric: 55.0
   - header: '## Laser Processing Parameters'
     rows:
     - property: Power Range
-      value: 20-100W
+      value: '100.0'
       unit: W
-      min: '20.0'
-      max: '500.0'
-      numeric: 60.0
     - property: Pulse Duration
-      value: 10-100ns
+      value: '20.0'
       unit: ns
-      min: '1.0'
-      max: '1000.0'
-      numeric: 55.0
+      category: Standard
     - property: Wavelength
-      value: 1064nm (primary), 532nm (optional)
+      value: '532.0'
       unit: nm
-      min: '355.0'
-      max: '2940.0'
-      numeric: 1064.0
+      category: Optimal
     - property: Spot Size
-      value: 0.1-2.0mm
+      value: '2.0'
       unit: mm
-      min: '0.01'
-      max: '10.0'
-      numeric: 1.05
+      category: Configurable
     - property: Repetition Rate
-      value: 10-50kHz
+      value: '40.0'
       unit: kHz
-      min: '1.0'
-      max: '1000.0'
-      numeric: 30.0
+      category: Variable
     - property: Fluence Range
-      value: 0.5-5 J/cm²
+      value: '2.0'
       unit: J/cm²
-      min: '0.1'
-      max: '50.0'
-      numeric: 2.75
+      category: Range
+    - property: Beam Profile
+      value: Gaussian TEM00
+      unit: '-'
+      category: System
+    - property: Safety Class
+      value: Class 4 (requires full enclosure)
+      unit: '-'
+      category: Safety
   - header: '## Applications & Industries'
     rows:
     - property: Construction
@@ -102,34 +54,26 @@ materialTables:
       value: Cleaning of historical slate monuments and gravestones
       unit: '-'
       category: Application
-  - header: '## Performance Metrics'
-    rows:
-    - property: Surface contamination removal efficiency
-      value: '>95% removal of biological growth and pollution crusts with substrate preservation'
+    - property: Roofing
+      value: Slate roof tile cleaning and maintenance
       unit: '-'
-      category: Performance
-    - property: Processing speed
-      value: 0.5-2.0 m²/hour depending on contamination type and laser parameters
+      category: Application
+    - property: Flooring
+      value: Slate floor surface restoration and stain removal
       unit: '-'
-      category: Performance
-  - header: '## Environmental Impact'
-    rows:
-    - property: Zero chemical waste generation
-      value: Eliminates 100% of chemical solvents and detergents traditionally used in slate cleaning, preventing groundwater contamination
+      category: Application
+    - property: Memorials
+      value: Precision cleaning of slate headstones and markers
       unit: '-'
-      category: Environmental
-    - property: Reduced water consumption
-      value: Uses 95% less water compared to high-pressure water jet cleaning methods (typically 0.5L/min vs 10L/min for water jets)
+      category: Application
+    - property: Architectural Elements
+      value: Cleaning slate cladding and decorative features
       unit: '-'
-      category: Environmental
+      category: Application
   - header: '## Compatibility & Standards'
     rows:
     - property: Material Compatibility
-      value: Historical building materials (limestone, sandstone, marble), Metallic substrates (when cleaning adjacent areas), Traditional conservation materials (lime mortars, natural pigments)
+      value: laser_types, surface_treatments, incompatible_conditions
       unit: '-'
       category: Compatibility
-    - property: Regulatory Standards
-      value: EN 15898:2019 (Conservation of cultural heritage - Main general terms and definitions), EN 17138:2018 (Conservation of cultural heritage - Methods and materials for cleaning porous inorganic materials)
-      unit: '-'
-      category: Compliance
 renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. Pure data structure optimized for performance.'

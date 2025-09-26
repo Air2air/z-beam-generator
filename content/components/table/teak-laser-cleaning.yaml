@@ -1,96 +1,49 @@
 materialTables:
   tables:
-  - header: '## Chemical Properties'
-    rows:
-    - property: Chemical Formula
-      value: Complex Lignocellulosic Matrix (C₆H₁₀O₅)ₙ, Lignin, Extractives
-      unit: '-'
-      category: Chemical
-    - property: Chemical Symbol
-      value: N/A (Organic Composite)
-      unit: '-'
-      category: Chemical
-    - property: Material Type
-      value: Wood
-      unit: '-'
-      category: Classification
-    - property: Composition
-      value: 'Cellulose (C₆H₁₀O₅)ₙ: 40–50%, Lignin (Complex polyphenolic): 30–40%, Hemicellulose: 15–20%, Extractives (tectoquinone, lapachol, oils, resins): 3–5%'
-      unit: '-'
-      category: Composition
   - header: '## Physical & Mechanical Properties'
     rows:
     - property: Density
-      value: 630–750 kg/m³ (air-dry)
-      unit: kg/m³
-      min: '1.8'
-      max: '6.0'
-      percentile: 100.0
-      numeric: 690.0
-    - property: Decomposition Point
-      value: 300°C
-      unit: °C
-      numeric: 300.0
+      value: '0.63'
+      unit: g/cm³
     - property: Thermal Conductivity
-      value: 0.12–0.18 W/(m·K) (radial)
-      unit: W/
-      percentile: 0.0
-      numeric: 0.12
-    - property: Tensile Strength
-      value: 100–135 MPa (parallel to grain)
-      unit: MPa
-      percentile: 5.3
-      numeric: 100.0
+      value: '0.13'
+      unit: W/m·K
     - property: Hardness
-      value: 2.3–4.0 kN (Janka Hardness)
+      value: '4.2'
       unit: kN
-      min: '1.0'
-      max: '10.0'
-      percentile: 14.4
-      numeric: 2.3
-    - property: Young's Modulus
-      value: 10.0–14.5 GPa
-      unit: GPa
-      percentile: 0.0
-      numeric: 10.0
   - header: '## Laser Processing Parameters'
     rows:
     - property: Power Range
-      value: 20-100W
+      value: '50.0'
       unit: W
-      min: '20.0'
-      max: '500.0'
-      numeric: 60.0
     - property: Pulse Duration
-      value: 10-100ns
+      value: '10.0'
       unit: ns
-      min: '1.0'
-      max: '1000.0'
-      numeric: 55.0
+      category: Standard
     - property: Wavelength
-      value: 1064nm (primary), 532nm (optional)
+      value: '1064.0'
       unit: nm
-      min: '355.0'
-      max: '2940.0'
-      numeric: 1064.0
+      category: Optimal
     - property: Spot Size
-      value: 0.1-2.0mm
+      value: '1.5'
       unit: mm
-      min: '0.01'
-      max: '10.0'
-      numeric: 1.05
+      category: Configurable
     - property: Repetition Rate
-      value: 10-50kHz
+      value: '10.0'
       unit: kHz
-      min: '1.0'
-      max: '1000.0'
-      numeric: 30.0
+      category: Variable
     - property: Fluence Range
-      value: 0.5–5 J/cm²
+      value: '0.8'
       unit: J/cm²
-      min: '0.1'
-      max: '50.0'
-      numeric: 0.5
+      category: Range
+    - property: Beam Profile
+      value: Gaussian TEM00
+      unit: '-'
+      category: System
+    - property: Safety Class
+      value: Class 4 (requires full enclosure)
+      unit: '-'
+      category: Safety
   - header: '## Applications & Industries'
     rows:
     - property: Woodworking
@@ -101,34 +54,26 @@ materialTables:
       value: Cleaning and maintenance of teak decks on boats and yachts
       unit: '-'
       category: Application
-  - header: '## Performance Metrics'
-    rows:
-    - property: Surface contaminant removal efficiency >99%
-      value: Verified via SEM-EDS analysis showing elimination of biological and salt contaminants without substrate damage.
+    - property: Outdoor Furniture
+      value: Teak patio furniture cleaning and restoration
       unit: '-'
-      category: Performance
-    - property: Processing rate of 5–15 m²/hour
-      value: Achievable for standard surface contamination on teak decking using a 100W laser system with a 2000 mm/s scan speed.
+      category: Application
+    - property: Luxury Interiors
+      value: High-end teak paneling and trim maintenance
       unit: '-'
-      category: Performance
-  - header: '## Environmental Impact'
-    rows:
-    - property: Zero secondary waste generation
-      value: Eliminates need for chemical strippers, abrasive media (e.g., sand, plastic beads), and associated containment/disposal, reducing hazardous waste by 100% compared to traditional methods.
+      category: Application
+    - property: Shipbuilding
+      value: Surface preparation of teak marine components
       unit: '-'
-      category: Environmental
-    - property: Reduced water consumption and pollution
-      value: Process is completely dry, eliminating the thousands of liters of water typically used in pressure washing teak decks and preventing runoff of contaminated water and chemicals into marine environments.
+      category: Application
+    - property: Architectural Elements
+      value: Cleaning teak doors and window frames
       unit: '-'
-      category: Environmental
+      category: Application
   - header: '## Compatibility & Standards'
     rows:
     - property: Material Compatibility
-      value: Silicone-based marine caulking (with careful parameter control), Other dense hardwoods (e.g., Iroko, Oak) with similar lignin content
+      value: laser_types, surface_treatments, incompatible_conditions
       unit: '-'
       category: Compatibility
-    - property: Regulatory Standards
-      value: IEC 60825-1 (Laser Product Safety), ISO 11553 (Safety of laser processing machines), NFPA 70 (National Electrical Code)
-      unit: '-'
-      category: Compliance
 renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. Pure data structure optimized for performance.'

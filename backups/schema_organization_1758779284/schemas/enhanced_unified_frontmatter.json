@@ -1,0 +1,635 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Enhanced Frontmatter Schema with Reusable Data Metrics",
+  "description": "Schema-as-single-source-of-truth with reusable DataMetric pattern for consistent property and machine setting definitions",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Material name"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "metal", "ceramic", "composite", "semiconductor", "glass", 
+        "stone", "wood", "plastic", "masonry", "polymer", "fabric", 
+        "biomaterial", "nanomaterial", "crystal", "powder"
+      ],
+      "description": "Material category with expanded classifications"
+    },
+    "subcategory": {
+      "type": "string",
+      "enum": [
+        "precious", "ferrous", "non-ferrous", "refractory", "reactive", "specialty", "aerospace", "automotive", "medical",
+        "oxide", "nitride", "carbide", "silicate", "traditional", "advanced", "structural", "functional",
+        "fiber-reinforced", "matrix", "resin", "elastomeric", "laminate", "hybrid",
+        "borosilicate", "soda-lime", "lead", "specialty-glass", "optical", "safety",
+        "igneous", "metamorphic", "sedimentary", "architectural", "decorative", "industrial",
+        "hardwood", "softwood", "engineered", "bamboo", "cork", "composite-wood",
+        "thermoplastic", "thermoset", "engineering", "biodegradable", "recycled",
+        "intrinsic", "doped", "compound", "quantum", "photonic",
+        "natural", "synthetic", "organic", "woven", "nonwoven", "technical",
+        "tissue", "implant", "drug-delivery", "diagnostic", "scaffold",
+        "carbon", "metallic", "ceramic-nano", "polymer-nano", "quantum-dot",
+        "single", "polycrystalline", "amorphous", "liquid", "quasicrystal",
+        "metal", "ceramic", "polymer", "composite", "specialty-powder"
+      ],
+      "description": "Expanded material subcategory classifications for precise material characterization"
+    },
+    "complexity": {
+      "type": "string",
+      "enum": ["low", "medium", "high", "extreme"],
+      "description": "Processing complexity level"
+    },
+    "difficulty_score": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 10,
+      "description": "Processing difficulty score (1-10 scale)"
+    },
+    "author_id": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 10,
+      "description": "Author ID for content generation"
+    },
+    "title": {
+      "type": "string",
+      "description": "SEO-optimized title"
+    },
+    "headline": {
+      "type": "string", 
+      "description": "Marketing headline"
+    },
+    "description": {
+      "type": "string",
+      "description": "Comprehensive technical description"
+    },
+    "keywords": {
+      "type": "string",
+      "description": "SEO keywords and search terms"
+    },
+    "author_object": {
+      "$ref": "#/definitions/AuthorObject"
+    },
+    "composition": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Material composition elements"
+    },
+    "properties": {
+      "$ref": "#/definitions/MaterialProperties"
+    },
+    "machineSettings": {
+      "$ref": "#/definitions/MachineSettings"
+    },
+    "applications": {
+      "type": "array",
+      "items": {"$ref": "#/definitions/Application"},
+      "description": "Industrial applications with enhanced context"
+    },
+    "processing": {
+      "$ref": "#/definitions/ProcessingGuidelines"
+    },
+    "safety": {
+      "$ref": "#/definitions/SafetyInformation"
+    },
+    "sustainability": {
+      "$ref": "#/definitions/SustainabilityMetrics"
+    },
+    "quality": {
+      "$ref": "#/definitions/QualityMetrics"
+    },
+    "metadata": {
+      "$ref": "#/definitions/SystemMetadata"
+    },
+    "tags": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Categorization tags"
+    },
+    "industryTags": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Industry-specific classification tags"
+    },
+    "compatibility": {
+      "$ref": "#/definitions/CompatibilityMatrix"
+    },
+    "images": {
+      "$ref": "#/definitions/ImageAssets"
+    },
+    "outcomes": {
+      "type": "array",
+      "items": {"$ref": "#/definitions/MeasurableOutcome"},
+      "description": "Quantifiable processing outcomes"
+    },
+    "prompt_chain_verification": {
+      "$ref": "#/definitions/PromptChainVerification"
+    }
+  },
+  
+  "definitions": {
+    "DataMetric": {
+      "type": "object",
+      "description": "Reusable data metric with comprehensive validation and contextual metadata. Field names serve as keys in properties and machineSettings objects.",
+      "additionalProperties": false,
+      "properties": {
+        "value": {
+          "oneOf": [
+            {"type": "number"},
+            {"type": "string"}
+          ],
+          "description": "Primary metric value"
+        },
+        "unit": {
+          "type": "string",
+          "description": "Measurement unit (SI preferred: g/cm³, °C, W, nm, Pa, J/cm², etc.)"
+        },
+        "confidence_score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Direct confidence in this specific data metric (0-1 scale) - duplicated from validation for easy access"
+        },
+        "min": {
+          "type": "number",
+          "description": "Minimum value in operational range"
+        },
+        "max": {
+          "type": "number",
+          "description": "Maximum value in operational range"
+        },
+        "typical": {
+          "type": "number",
+          "description": "Typical/recommended value for standard applications"
+        },
+        "description": {
+          "type": "string",
+          "description": "Technical description and laser processing relevance"
+        },
+        "validation": {
+          "$ref": "#/definitions/ValidationMetadata"
+        },
+        "processing_impact": {
+          "type": "string",
+          "description": "How this metric affects laser cleaning performance (for properties)"
+        },
+        "optimization_notes": {
+          "type": "string",
+          "description": "Parameter optimization guidance and best practices (for machine settings)"
+        },
+        "safety_considerations": {
+          "type": "string",
+          "description": "Safety implications and precautions related to this metric"
+        },
+        "measurement_method": {
+          "type": "string",
+          "description": "Standard measurement or determination method"
+        },
+        "temperature_dependence": {
+          "type": "string",
+          "description": "How this metric varies with temperature"
+        },
+        "environmental_factors": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Environmental factors affecting this metric"
+        },
+        "industry_standards": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Relevant industry standards and specifications"
+        },
+        "alternative_units": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "unit": {"type": "string"},
+              "conversion_factor": {"type": "number"},
+              "usage_context": {"type": "string"}
+            }
+          },
+          "description": "Alternative units and conversion information"
+        }
+      }
+    },
+
+    "ValidationMetadata": {
+      "type": "object",
+      "description": "Comprehensive research validation and data quality metadata",
+      "additionalProperties": false,
+      "properties": {
+        "confidence_score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Statistical confidence in data accuracy (0-1 scale)"
+        },
+        "sources_validated": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of independent sources cross-validated"
+        },
+        "research_sources": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Detailed list of research sources, standards, and references"
+        },
+        "accuracy_class": {
+          "type": "string",
+          "enum": ["estimated", "calculated", "measured", "validated", "verified", "certified"],
+          "description": "Data accuracy and verification classification"
+        },
+        "material_specific": {
+          "type": "boolean",
+          "description": "Whether this validation is material-specific or general"
+        },
+        "last_verified": {
+          "type": "string",
+          "format": "date",
+          "description": "Date of last verification (YYYY-MM-DD)"
+        },
+        "verification_method": {
+          "type": "string",
+          "description": "Methodology used for data verification"
+        },
+        "uncertainty": {
+          "type": "number",
+          "description": "Measurement uncertainty or error margin"
+        },
+        "peer_reviewed": {
+          "type": "boolean",
+          "description": "Whether sources are peer-reviewed"
+        },
+        "experimental_conditions": {
+          "type": "string",
+          "description": "Experimental or measurement conditions"
+        },
+        "data_quality_flags": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["preliminary", "provisional", "conflicting", "interpolated", "extrapolated", "theoretical"]
+          },
+          "description": "Data quality indicators and flags"
+        }
+      }
+    },
+
+    "MaterialProperties": {
+      "type": "object",
+      "description": "Comprehensive material properties using reusable DataMetric structure. Property names (density, meltingPoint, etc.) serve as object keys.",
+      "additionalProperties": false,
+      "patternProperties": {
+        "^(density|meltingPoint|boilingPoint|thermalConductivity|thermalExpansion|specificHeat|thermalDiffusivity|electricalResistivity|electricalConductivity|tensileStrength|compressiveStrength|yieldStrength|ultimateStrength|hardness|youngsModulus|shearModulus|bulkModulus|poissonsRatio|fatigueLimit|toughness|ductility|brittleness|viscosity|surfaceTension|refractivIndex|dielectricConstant|magneticPermeability|absorptivity|reflectivity|emissivity|corrosionRate|oxidationResistance|chemicalStability|biocompatibility|toxicity|flammability|smokeDensity|thermalDecomposition|glassTransition|crystallineStructure|grainSize|porosity|permeability|solubility|diffusivity)$": {
+          "$ref": "#/definitions/DataMetric"
+        }
+      },
+      "properties": {
+        "chemicalFormula": {
+          "type": "string",
+          "description": "Chemical formula or composition"
+        },
+        "casNumber": {
+          "type": "string",
+          "description": "Chemical Abstracts Service registry number"
+        },
+        "phase": {
+          "type": "string",
+          "enum": ["solid", "liquid", "gas", "plasma", "amorphous", "crystalline", "mixed"],
+          "description": "Material phase at standard conditions"
+        },
+        "crystallineSystem": {
+          "type": "string",
+          "enum": ["cubic", "tetragonal", "orthorhombic", "rhombohedral", "hexagonal", "monoclinic", "triclinic", "amorphous"],
+          "description": "Crystal system classification"
+        }
+      }
+    },
+
+    "MachineSettings": {
+      "type": "object", 
+      "description": "Laser processing parameters using reusable DataMetric structure. Parameter names (wavelength, power, fluence, etc.) serve as object keys.",
+      "additionalProperties": false,
+      "patternProperties": {
+        "^(wavelength|power|powerDensity|fluence|pulseEnergy|pulseDuration|pulseWidth|repetitionRate|frequency|scanSpeed|scanningVelocity|spotSize|beamDiameter|focusOffset|workingDistance|assistGas|gasFlowRate|gasPressure|chamberPressure|feedRate|traverseSpeed|passCount|layerThickness|hatchSpacing|overlapRatio|dwellTime|coolingTime|rampRate|modulationFrequency|beamShape|polarization|coherenceLength|beamQuality|divergence|astigmatism|pointStability|powerStability|pulseStability)$": {
+          "$ref": "#/definitions/DataMetric"
+        }
+      }
+    },
+
+    "Application": {
+      "type": "object",
+      "description": "Detailed application with industry context and measurable benefits",
+      "additionalProperties": false,
+      "properties": {
+        "industry": {
+          "type": "string",
+          "description": "Primary industry sector"
+        },
+        "sector": {
+          "type": "string",
+          "description": "Industry sub-sector"
+        },
+        "application_type": {
+          "type": "string",
+          "enum": ["cleaning", "surface_preparation", "coating_removal", "decontamination", "restoration", "maintenance", "manufacturing"],
+          "description": "Type of laser application"
+        },
+        "detail": {
+          "type": "string",
+          "description": "Specific application description"
+        },
+        "use_case": {
+          "type": "string",
+          "description": "Detailed use case scenario"
+        },
+        "benefits": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Key benefits and advantages"
+        },
+        "requirements": {
+          "type": "array", 
+          "items": {"type": "string"},
+          "description": "Technical requirements and constraints"
+        },
+        "success_metrics": {
+          "type": "array",
+          "items": {"$ref": "#/definitions/MeasurableOutcome"},
+          "description": "Quantifiable success indicators"
+        },
+        "market_size": {
+          "type": "string",
+          "description": "Market size and potential"
+        },
+        "regulatory_requirements": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Applicable regulations and standards"
+        }
+      }
+    },
+
+    "ProcessingGuidelines": {
+      "type": "object",
+      "description": "Comprehensive laser processing guidance",
+      "additionalProperties": false,
+      "properties": {
+        "preparation": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Material and surface preparation steps"
+        },
+        "setup": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Equipment setup and calibration"
+        },
+        "processing_sequence": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Step-by-step processing sequence"
+        },
+        "quality_control": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Quality control checkpoints"
+        },
+        "post_processing": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Post-processing requirements"
+        },
+        "troubleshooting": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "issue": {"type": "string"},
+              "cause": {"type": "string"},
+              "solution": {"type": "string"}
+            }
+          },
+          "description": "Common issues and solutions"
+        }
+      }
+    },
+
+    "SafetyInformation": {
+      "type": "object",
+      "description": "Comprehensive safety requirements and hazard information",
+      "additionalProperties": false,
+      "properties": {
+        "laser_class": {
+          "type": "string",
+          "enum": ["1", "1M", "2", "2M", "3R", "3B", "4"],
+          "description": "Laser safety classification"
+        },
+        "ppe_requirements": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Personal protective equipment requirements"
+        },
+        "ventilation_requirements": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Ventilation and extraction requirements"
+        },
+        "chemical_hazards": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Chemical safety considerations"
+        },
+        "fire_hazards": {
+          "type": "array", 
+          "items": {"type": "string"},
+          "description": "Fire and explosion hazards"
+        },
+        "emergency_procedures": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Emergency response procedures"
+        },
+        "training_requirements": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Operator training requirements"
+        },
+        "regulatory_compliance": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Safety regulations and standards"
+        }
+      }
+    },
+
+    "SustainabilityMetrics": {
+      "type": "object",
+      "description": "Environmental impact and sustainability measurements",
+      "additionalProperties": false,
+      "properties": {
+        "carbon_footprint": {"$ref": "#/definitions/DataMetric"},
+        "energy_consumption": {"$ref": "#/definitions/DataMetric"},
+        "waste_reduction": {"$ref": "#/definitions/DataMetric"},
+        "recyclability_index": {"$ref": "#/definitions/DataMetric"},
+        "lifecycle_assessment": {
+          "type": "object",
+          "properties": {
+            "embodied_energy": {"$ref": "#/definitions/DataMetric"},
+            "operational_impact": {"$ref": "#/definitions/DataMetric"},
+            "end_of_life": {"$ref": "#/definitions/DataMetric"}
+          }
+        },
+        "environmental_benefits": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Environmental advantages over alternatives"
+        }
+      }
+    },
+
+    "QualityMetrics": {
+      "type": "object",
+      "description": "Quality assessment and validation metrics",
+      "additionalProperties": false,
+      "properties": {
+        "surface_quality": {"$ref": "#/definitions/DataMetric"},
+        "cleanliness_level": {"$ref": "#/definitions/DataMetric"},
+        "contamination_removal": {"$ref": "#/definitions/DataMetric"},
+        "repeatability": {"$ref": "#/definitions/DataMetric"},
+        "process_capability": {"$ref": "#/definitions/DataMetric"},
+        "quality_standards": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Applicable quality standards and specifications"
+        }
+      }
+    },
+
+    "SystemMetadata": {
+      "type": "object",
+      "description": "System and generation metadata",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "type": "string",
+          "description": "Schema version used"
+        },
+        "generated_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Content generation timestamp"
+        },
+        "generation_model": {
+          "type": "string", 
+          "description": "AI model used for generation"
+        },
+        "data_completeness": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Percentage of fields populated"
+        },
+        "validation_status": {
+          "type": "string",
+          "enum": ["pending", "in_progress", "validated", "rejected"],
+          "description": "Overall validation status"
+        },
+        "last_updated": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last modification timestamp"
+        }
+      }
+    },
+
+    "AuthorObject": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {"type": "integer"},
+        "name": {"type": "string"},
+        "sex": {"type": "string", "enum": ["m", "f"]},
+        "title": {"type": "string"},
+        "country": {"type": "string"},
+        "expertise": {"type": "string"},
+        "image": {"type": "string"}
+      }
+    },
+
+    "CompatibilityMatrix": {
+      "type": "object",
+      "description": "Laser and surface treatment compatibility",
+      "additionalProperties": false,
+      "properties": {
+        "laser_types": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Compatible laser types"
+        },
+        "surface_treatments": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Compatible surface treatments"
+        },
+        "incompatible_conditions": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Incompatible conditions to avoid"
+        }
+      }
+    },
+
+    "ImageAssets": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "hero": {
+          "type": "object",
+          "properties": {
+            "url": {"type": "string"},
+            "alt": {"type": "string"}
+          }
+        },
+        "micro": {
+          "type": "object",
+          "properties": {
+            "url": {"type": "string"},
+            "alt": {"type": "string"}
+          }
+        }
+      }
+    },
+
+    "MeasurableOutcome": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "result": {"type": "string"},
+        "metric": {"type": "string"},
+        "value": {"$ref": "#/definitions/DataMetric"}
+      }
+    },
+
+    "PromptChainVerification": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "base_config_loaded": {"type": "boolean"},
+        "persona_config_loaded": {"type": "boolean"},
+        "formatting_config_loaded": {"type": "boolean"},
+        "ai_detection_config_loaded": {"type": "boolean"},
+        "persona_country": {"type": "string"},
+        "author_id": {"type": "integer"},
+        "verification_timestamp": {"type": "string"},
+        "prompt_components_integrated": {"type": "integer"},
+        "human_authenticity_focus": {"type": "boolean"},
+        "cultural_adaptation_applied": {"type": "boolean"}
+      }
+    }
+  }
+}

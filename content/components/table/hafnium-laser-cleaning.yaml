@@ -1,97 +1,52 @@
 materialTables:
   tables:
-  - header: '## Chemical Properties'
-    rows:
-    - property: Chemical Formula
-      value: Hf
-      unit: '-'
-      category: Chemical
-    - property: Chemical Symbol
-      value: Hf
-      unit: '-'
-      category: Chemical
-    - property: Material Type
-      value: Metal
-      unit: '-'
-      category: Classification
-    - property: Composition
-      value: 'Hafnium (Hf): 97.0-99.9%, Zirconium (Zr): 1.0-3.0% (naturally occurring impurity)'
-      unit: '-'
-      category: Composition
   - header: '## Physical & Mechanical Properties'
     rows:
     - property: Density
-      value: 13.31 g/cm³
+      value: '7.8'
       unit: g/cm³
-      min: '1.8'
-      max: '6.0'
-      percentile: 100.0
-      numeric: 13.31
-    - property: Melting Point
-      value: 2233°C
-      unit: °C
-      percentile: 64.6
-      numeric: 2233.0
     - property: Thermal Conductivity
-      value: 23.0 W/(m·K)
-      unit: W/
-      percentile: 11.3
-      numeric: 23.0
+      value: '15'
+      unit: W/m·K
     - property: Tensile Strength
-      value: 380-550 MPa
+      value: '200'
       unit: MPa
-      percentile: 43.7
-      numeric: 465.0
-    - property: Hardness
-      value: 1700-2100 MPa (Vickers)
-      unit: MPa
-      min: '1.0'
-      max: '10.0'
-      percentile: 100.0
-      numeric: 1900.0
     - property: Young's Modulus
-      value: 78 GPa
+      value: '200'
       unit: GPa
-      percentile: 96.7
-      numeric: 78.0
   - header: '## Laser Processing Parameters'
     rows:
     - property: Power Range
-      value: 50-200W
+      value: '50.0'
       unit: W
-      min: '20.0'
-      max: '500.0'
-      numeric: 125.0
     - property: Pulse Duration
-      value: 10-200ns
+      value: '10.0'
       unit: ns
-      min: '1.0'
-      max: '1000.0'
-      numeric: 105.0
+      category: Standard
     - property: Wavelength
-      value: 1064nm (primary), 532nm (optional)
+      value: '1064.0'
       unit: nm
-      min: '355.0'
-      max: '2940.0'
-      numeric: 1064.0
+      category: Optimal
     - property: Spot Size
-      value: 0.1-1.0mm
+      value: '1.5'
       unit: mm
-      min: '0.01'
-      max: '10.0'
-      numeric: 0.55
+      category: Configurable
     - property: Repetition Rate
-      value: 20-100kHz
+      value: '20.0'
       unit: kHz
-      min: '1.0'
-      max: '1000.0'
-      numeric: 60.0
+      category: Variable
     - property: Fluence Range
-      value: 1.0–10 J/cm²
+      value: '0.8'
       unit: J/cm²
-      min: '0.1'
-      max: '50.0'
-      numeric: 1.0
+      category: Range
+    - property: Beam Profile
+      value: Gaussian TEM00
+      unit: '-'
+      category: System
+    - property: Safety Class
+      value: Class 4 (requires full enclosure)
+      unit: '-'
+      category: Safety
   - header: '## Applications & Industries'
     rows:
     - property: Aerospace
@@ -102,34 +57,10 @@ materialTables:
       value: Cleaning of hafnium-based components in semiconductor manufacturing
       unit: '-'
       category: Application
-  - header: '## Performance Metrics'
-    rows:
-    - property: Surface contamination removal efficiency
-      value: '>99.9% removal of oxides and contaminants with <0.1% substrate loss'
-      unit: '-'
-      category: Performance
-    - property: Processing precision
-      value: ±5 μm accuracy with surface roughness maintained at Ra < 0.8 μm
-      unit: '-'
-      category: Performance
-  - header: '## Environmental Impact'
-    rows:
-    - property: Zero chemical waste generation
-      value: Eliminates use of hazardous chemical solvents and acids traditionally used for hafnium surface preparation
-      unit: '-'
-      category: Environmental
-    - property: Reduced energy consumption
-      value: Laser cleaning consumes 60-70% less energy compared to traditional chemical and mechanical cleaning methods for hafnium
-      unit: '-'
-      category: Environmental
   - header: '## Compatibility & Standards'
     rows:
     - property: Material Compatibility
-      value: Titanium alloys, Zirconium alloys, Nickel-based superalloys
+      value: laser_types, surface_treatments, incompatible_conditions
       unit: '-'
       category: Compatibility
-    - property: Regulatory Standards
-      value: ANSI Z136.1, ISO 11553-1, NRC Regulatory Guide 1.189 (for nuclear applications)
-      unit: '-'
-      category: Compliance
 renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. Pure data structure optimized for performance.'

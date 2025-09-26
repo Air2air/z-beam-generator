@@ -26,7 +26,7 @@ The main applic        "api_provider": "none",  # ❌ NO API - static/determinis
 🚫 REMOVED HARDCODED CONFIGS FROM:
   • api/enhanced_client.py - Now uses GLOBAL_OPERATIONAL_CONFIG
   • api/config.py - Now uses centralized fallbacks
-  • api/circuit_breaker.py - Now uses centralized config
+
   • scripts/batch_*.py - Now uses centralized timeouts
   • generate_all_*.py - Now uses centralized timeouts
 
@@ -55,7 +55,7 @@ The main applic        "api_provider": "none",  # ❌ NO API - static/determinis
   python3 run.py --clean                   # Clean generated content
 
 🚀 OPTIMIZATION:
-  python3 run.py --optimize text           # Optimize specific component
+  python3 run.py --optimize frontmatter     # Optimize specific component
 
 💡 For complete command reference: python3 run.py --help
 
@@ -91,22 +91,9 @@ GLOBAL_OPERATIONAL_CONFIG = {
         "jitter_factor": 0.1,         # Add randomness to prevent thundering herd
     },
     
-    # Circuit Breaker Configuration
-    "circuit_breaker": {
-        "failure_threshold": 3,       # Number of failures before opening circuit
-        "recovery_timeout": 60,       # Seconds before attempting recovery
-        "half_open_max_calls": 5,     # Max calls in half-open state
-    },
+    # No circuit breaker fallbacks allowed in fail-fast architecture
     
-    # API Config Fallback Values (should rarely be used with proper run.py config)
-    "api_config_fallbacks": {
-        "max_tokens": 4000,
-        "temperature": 0.7,
-        "timeout_connect": 10,
-        "timeout_read": 30,
-        "max_retries": 3,
-        "retry_delay": 1.0,
-    }
+    # No API config fallbacks allowed in fail-fast architecture
 }
 
 # API Provider Configuration - USER SETTABLE
@@ -162,7 +149,7 @@ COMPONENT_CONFIG = {
     "frontmatter": {
         "api_provider": "deepseek",  # ✅ API-BASED COMPONENT
         "priority": 1,
-        "enabled": False,  # DISABLED for caption-focused generation
+        "enabled": True,  # ENABLED - for comprehensive discovery testing
         "data_provider": "hybrid",  # Uses frontmatter data + AI generation
     },
     "metatags": {
@@ -242,10 +229,6 @@ OPTIMIZER_CONFIG = {
                     "enabled": True,
                     "target_score": 70.0,
                     "max_iterations": 5,
-                },
-                "mock": {
-                    "type": "mock",
-                    "enabled": False,  # Only for testing
                 }
             },
             # Global AI detection settings
@@ -256,7 +239,6 @@ OPTIMIZER_CONFIG = {
             "max_workers": 4,
             "detection_threshold": 0.7,
             "confidence_threshold": 0.8,
-            "allow_mocks_for_testing": False,  # Production: False
         }
     },
 
@@ -366,7 +348,9 @@ OPTIMIZER_CONFIG = {
 def get_optimizer_config(service_name: str = None):
     """Get optimizer configuration for a specific service or all services."""
     if service_name:
-        return OPTIMIZER_CONFIG.get(service_name, {})
+        if service_name not in OPTIMIZER_CONFIG:
+            raise KeyError(f"Service '{service_name}' not found in OPTIMIZER_CONFIG - no fallback allowed")
+        return OPTIMIZER_CONFIG[service_name]
     return OPTIMIZER_CONFIG
 
 
@@ -377,7 +361,9 @@ def get_global_operational_config():
 
 def get_batch_timeout(operation_type: str = "default_per_material"):
     """Get timeout for batch operations."""
-    return GLOBAL_OPERATIONAL_CONFIG["batch_timeouts"].get(operation_type, 120)
+    if operation_type not in GLOBAL_OPERATIONAL_CONFIG["batch_timeouts"]:
+        raise KeyError(f"Operation type '{operation_type}' not found in batch_timeouts - no fallback allowed")
+    return GLOBAL_OPERATIONAL_CONFIG["batch_timeouts"][operation_type]
 
 
 def get_enhanced_client_config():
@@ -385,9 +371,7 @@ def get_enhanced_client_config():
     return GLOBAL_OPERATIONAL_CONFIG["enhanced_client_defaults"]
 
 
-def get_circuit_breaker_config():
-    """Get circuit breaker configuration."""
-    return GLOBAL_OPERATIONAL_CONFIG["circuit_breaker"]
+# Circuit breaker configuration removed - fail-fast architecture
 
 
 def get_api_config_fallbacks():
@@ -419,13 +403,18 @@ def get_persona_config(country: str = None):
     """Get persona configuration for a specific country or all personas."""
     personas = get_optimizer_config("personas")
     if country:
-        return personas.get(country.lower(), {})
+        country_key = country.lower()
+        if country_key not in personas:
+            raise KeyError(f"Country '{country}' not found in personas config - no fallback allowed")
+        return personas[country_key]
     return personas
 
 
 def get_dynamic_config_for_component(component_type: str, material_data: dict = None):
     """Get dynamic configuration for content generation."""
-    base_config = COMPONENT_CONFIG.get(component_type, {})
+    if component_type not in COMPONENT_CONFIG:
+        raise KeyError(f"Component type '{component_type}' not found in COMPONENT_CONFIG - no fallback allowed")
+    base_config = COMPONENT_CONFIG[component_type]
 
     if material_data:
         # Apply material-specific optimizations
@@ -702,16 +691,10 @@ def main():
         try:
             # Load materials data
             materials_data_dict = load_materials()
-            material_info = None
             
-            # Search through all categories and items for the material
-            for category, category_data in materials_data_dict.get('materials', {}).items():
-                for item in category_data.get('items', []):
-                    if item.get('name', '').lower() == args.material.lower():
-                        material_info = item
-                        break
-                if material_info:
-                    break
+            # Use the optimized material lookup function
+            from data.materials import get_material_by_name
+            material_info = get_material_by_name(args.material, materials_data_dict)
             
             if not material_info:
                 print(f"❌ Material '{args.material}' not found")
@@ -780,7 +763,7 @@ def main():
                     # Save the result
                     output_dir = f"content/components/{component_type}"
                     os.makedirs(output_dir, exist_ok=True)
-                    output_file = f"{output_dir}/{args.material.lower()}-laser-cleaning.json" if component_type == 'jsonld' else f"{output_dir}/{args.material.lower()}-laser-cleaning.yaml" if component_type in ['table', 'metatags', 'author', 'caption', 'settings'] else f"{output_dir}/{args.material.lower()}-laser-cleaning.md"
+                    output_file = f"{output_dir}/{args.material.lower()}-laser-cleaning.json" if component_type == 'jsonld' else f"{output_dir}/{args.material.lower()}-laser-cleaning.yaml" if component_type in ['frontmatter', 'table', 'metatags', 'author', 'caption', 'settings'] else f"{output_dir}/{args.material.lower()}-laser-cleaning.md"
                     
                     with open(output_file, 'w') as f:
                         f.write(result.content)

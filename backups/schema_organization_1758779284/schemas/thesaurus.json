@@ -1,0 +1,101 @@
+{
+  "thesaurusProfile": {
+    "name": "thesaurus",
+    "version": "1.5",
+    "generatorConfig": {
+      "jsonld": {
+        "schemaType": "DefinedTerm"
+      },
+      "contentGeneration": {
+        "dynamicSectionsFromFrontmatter": true,
+        "fieldContentMapping": {
+          "definition": "Provide a detailed technical definition of {subject} in the context of laser cleaning",
+          "relatedTerms": "Explain how {subject} relates to other key terms and concepts in laser technology",
+          "applications": "Describe the practical applications where {subject} is relevant in laser cleaning processes",
+          "scientificPrinciples": "Detail the underlying scientific principles of {subject} in laser-material interactions",
+          "historicalDevelopment": "Trace the development and evolution of {subject} in laser cleaning technology"
+        },
+        "introductionPrompt": "Provide a comprehensive technical explanation of the term {subject} in laser cleaning technology"
+      }
+    },
+    "profile": {
+      "definition": {
+        "type": "string",
+        "required": true,
+        "description": "Technical term (e.g., 'Fluence')",
+        "example": "{subject}"
+      },
+      "etymology": {
+        "type": "string",
+        "required": true,
+        "description": "Word origin and history",
+        "example": "Derived from Latin 'etymologia'"
+      },
+      "relatedTerms": {
+        "type": "array",
+        "required": true,
+        "items": {
+          "type": "object",
+          "properties": {
+            "term": {
+              "type": "string",
+              "required": true,
+              "description": "Related term",
+              "example": "Ablation Threshold"
+            },
+            "description": {
+              "type": "string",
+              "required": true,
+              "description": "Term description (50–75 words)",
+              "example": "Minimum energy density required for material removal..."
+            }
+          }
+        },
+        "description": "2–3 related terms"
+      },
+      "scientificPrinciples": {
+        "type": "string",
+        "required": true,
+        "description": "Underlying scientific principles",
+        "example": "Involves photon absorption, electron excitation..."
+      },
+      "images": {
+        "type": "object",
+        "required": true,
+        "properties": {
+          "hero": {
+            "type": "object",
+            "properties": {
+              "alt": {
+                "type": "string",
+                "required": true,
+                "description": "Alt text for hero image",
+                "example": "Visual representation of laser fluence affecting material surface in laser cleaning process"
+              }
+            }
+          },
+          "micro": {
+            "type": "object",
+            "properties": {
+              "alt": {
+                "type": "string",
+                "required": true,
+                "description": "Alt text for micro image",
+                "example": "Microscopic view of material interaction with laser at specific fluence levels"
+              }
+            }
+          }
+        },
+        "description": "Image descriptions for article visuals"
+      }
+    },
+    "validation": {
+      "frontmatter": {
+        "requiredFields": [
+          "name", "description", "author", "keywords",
+          "definition", "relatedTerms", "images"
+        ]
+      }
+    }
+  }
+}

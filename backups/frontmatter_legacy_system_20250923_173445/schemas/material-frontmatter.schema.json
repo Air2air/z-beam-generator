@@ -6,10 +6,10 @@
   "type": "object",
   "required": [
     "name",
-    "category", 
+    "category",
     "title",
     "description",
-    "properties",
+    "materialProperties",
     "machineSettings",
     "technicalSpecifications",
     "substrateDescription",
@@ -24,7 +24,16 @@
     },
     "category": {
       "type": "string",
-      "enum": ["metal", "ceramic", "glass", "stone", "wood", "composite", "masonry", "semiconductor"],
+      "enum": [
+        "metal",
+        "ceramic",
+        "glass",
+        "stone",
+        "wood",
+        "composite",
+        "masonry",
+        "semiconductor"
+      ],
       "description": "Material category for classification"
     },
     "title": {
@@ -54,43 +63,79 @@
     },
     "chemicalProperties": {
       "type": "object",
-      "required": ["symbol", "formula", "materialType"],
+      "required": [
+        "symbol",
+        "formula",
+        "materialType"
+      ],
       "properties": {
-        "symbol": {"type": "string"},
-        "formula": {"type": "string"},
-        "materialType": {"type": "string"}
-      }
-    },
-    "properties": {
-      "type": "object",
-      "required": ["density", "thermalConductivity"],
-      "properties": {
-        "density": {"type": "string", "pattern": "^[0-9.-]+\\s*g/cm³$"},
-        "densityNumeric": {"type": "number", "minimum": 0},
-        "meltingPoint": {"type": "string"},
-        "meltingPointNumeric": {"type": "number"},
-        "thermalConductivity": {"type": "string"},
-        "thermalConductivityNumeric": {"type": "number", "minimum": 0}
+        "symbol": {
+          "type": "string"
+        },
+        "formula": {
+          "type": "string"
+        },
+        "materialType": {
+          "type": "string"
+        }
       }
     },
     "machineSettings": {
       "type": "object",
-      "required": ["powerRange", "pulseDuration", "wavelength", "spotSize", "repetitionRate"],
+      "required": [
+        "powerRange",
+        "pulseDuration",
+        "wavelength",
+        "spotSize",
+        "repetitionRate"
+      ],
       "properties": {
-        "powerRange": {"type": "string", "pattern": "^[0-9]+-[0-9]+W$"},
-        "powerRangeNumeric": {"type": "number", "minimum": 0},
-        "pulseDuration": {"type": "string", "pattern": "^[0-9]+-[0-9]+ns$"},
-        "pulseDurationNumeric": {"type": "number", "minimum": 0},
-        "wavelength": {"type": "string"},
-        "wavelengthNumeric": {"type": "number", "minimum": 0},
-        "spotSize": {"type": "string"},
-        "spotSizeNumeric": {"type": "number", "minimum": 0},
-        "repetitionRate": {"type": "string"}
+        "powerRange": {
+          "type": "string",
+          "pattern": "^[0-9]+-[0-9]+W$"
+        },
+        "powerRangeNumeric": {
+          "type": "number",
+          "minimum": 0
+        },
+        "pulseDuration": {
+          "type": "string",
+          "pattern": "^[0-9]+-[0-9]+ns$"
+        },
+        "pulseDurationNumeric": {
+          "type": "number",
+          "minimum": 0
+        },
+        "wavelength": {
+          "type": "string"
+        },
+        "wavelengthNumeric": {
+          "type": "number",
+          "minimum": 0
+        },
+        "spotSize": {
+          "type": "string"
+        },
+        "spotSizeNumeric": {
+          "type": "number",
+          "minimum": 0
+        },
+        "repetitionRate": {
+          "type": "string"
+        }
       }
     },
     "technicalSpecifications": {
       "type": "object",
-      "required": ["contaminationSource", "thermalEffect", "wavelength", "powerRange", "pulseDuration", "spotSize", "repetitionRate"],
+      "required": [
+        "contaminationSource",
+        "thermalEffect",
+        "wavelength",
+        "powerRange",
+        "pulseDuration",
+        "spotSize",
+        "repetitionRate"
+      ],
       "properties": {
         "contaminationSource": {
           "type": "string",
@@ -98,20 +143,32 @@
           "description": "Material-specific contamination source description"
         },
         "thermalEffect": {
-          "type": "string", 
+          "type": "string",
           "minLength": 10,
           "description": "Material-specific thermal effects description"
         },
-        "wavelength": {"type": "string"},
-        "powerRange": {"type": "string"},
-        "pulseDuration": {"type": "string"},
-        "spotSize": {"type": "string"},
-        "repetitionRate": {"type": "string"}
+        "wavelength": {
+          "type": "string"
+        },
+        "powerRange": {
+          "type": "string"
+        },
+        "pulseDuration": {
+          "type": "string"
+        },
+        "spotSize": {
+          "type": "string"
+        },
+        "repetitionRate": {
+          "type": "string"
+        }
       }
     },
     "composition": {
       "type": "array",
-      "items": {"type": "string"},
+      "items": {
+        "type": "string"
+      },
       "minItems": 1,
       "description": "Material composition list"
     },
@@ -120,16 +177,27 @@
       "minItems": 1,
       "items": {
         "type": "object",
-        "required": ["industry", "detail"],
+        "required": [
+          "industry",
+          "detail"
+        ],
         "properties": {
-          "industry": {"type": "string", "minLength": 3},
-          "detail": {"type": "string", "minLength": 20}
+          "industry": {
+            "type": "string",
+            "minLength": 3
+          },
+          "detail": {
+            "type": "string",
+            "minLength": 20
+          }
         }
       }
     },
     "compatibility": {
       "type": "array",
-      "items": {"type": "string"},
+      "items": {
+        "type": "string"
+      },
       "minItems": 1
     },
     "regulatoryStandards": {
@@ -142,35 +210,86 @@
     },
     "author_object": {
       "type": "object",
-      "required": ["id", "name", "sex", "title", "country", "expertise"],
+      "required": [
+        "id",
+        "name",
+        "sex",
+        "title",
+        "country",
+        "expertise"
+      ],
       "properties": {
-        "id": {"type": "integer", "minimum": 1},
-        "name": {"type": "string", "minLength": 3},
-        "sex": {"type": "string", "enum": ["m", "f"]},
-        "title": {"type": "string"},
-        "country": {"type": "string", "minLength": 3},
-        "expertise": {"type": "string", "minLength": 10},
-        "image": {"type": "string", "pattern": "^/images/author/.+\\.(jpg|png)$"}
+        "id": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "name": {
+          "type": "string",
+          "minLength": 3
+        },
+        "sex": {
+          "type": "string",
+          "enum": [
+            "m",
+            "f"
+          ]
+        },
+        "title": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string",
+          "minLength": 3
+        },
+        "expertise": {
+          "type": "string",
+          "minLength": 10
+        },
+        "image": {
+          "type": "string",
+          "pattern": "^/images/author/.+\\.(jpg|png)$"
+        }
       }
     },
     "images": {
       "type": "object",
-      "required": ["hero", "micro"],
+      "required": [
+        "hero",
+        "micro"
+      ],
       "properties": {
         "hero": {
           "type": "object",
-          "required": ["alt", "url"],
+          "required": [
+            "alt",
+            "url"
+          ],
           "properties": {
-            "alt": {"type": "string", "minLength": 20},
-            "url": {"type": "string", "pattern": "^/images/.+\\.(jpg|png)$"}
+            "alt": {
+              "type": "string",
+              "minLength": 20
+            },
+            "url": {
+              "type": "string",
+              "pattern": "^/images/.+\\.(jpg|png)$"
+            }
           }
         },
         "micro": {
-          "type": "object", 
-          "required": ["alt", "url"],
+          "type": "object",
+          "required": [
+            "alt",
+            "url"
+          ],
           "properties": {
-            "alt": {"type": "string", "minLength": 20},
-            "url": {"type": "string", "pattern": "^/images/.+\\.(jpg|png)$"}
+            "alt": {
+              "type": "string",
+              "minLength": 20
+            },
+            "url": {
+              "type": "string",
+              "pattern": "^/images/.+\\.(jpg|png)$"
+            }
           }
         }
       }
@@ -179,10 +298,18 @@
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["benefit", "description"],
+        "required": [
+          "benefit",
+          "description"
+        ],
         "properties": {
-          "benefit": {"type": "string"},
-          "description": {"type": "string", "minLength": 30}
+          "benefit": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string",
+            "minLength": 30
+          }
         }
       }
     },
@@ -190,10 +317,48 @@
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["result", "metric"],
+        "required": [
+          "result",
+          "metric"
+        ],
         "properties": {
-          "result": {"type": "string"},
-          "metric": {"type": "string", "minLength": 15}
+          "result": {
+            "type": "string"
+          },
+          "metric": {
+            "type": "string",
+            "minLength": 15
+          }
+        }
+      }
+    },
+    "materialProperties": {
+      "type": "object",
+      "required": [
+        "density",
+        "thermalConductivity"
+      ],
+      "properties": {
+        "density": {
+          "type": "string",
+          "pattern": "^[0-9.-]+\\s*g/cm\u00b3$"
+        },
+        "densityNumeric": {
+          "type": "number",
+          "minimum": 0
+        },
+        "meltingPoint": {
+          "type": "string"
+        },
+        "meltingPointNumeric": {
+          "type": "number"
+        },
+        "thermalConductivity": {
+          "type": "string"
+        },
+        "thermalConductivityNumeric": {
+          "type": "number",
+          "minimum": 0
         }
       }
     }

@@ -10,88 +10,53 @@ materialTables:
       value: Be
       unit: '-'
       category: Chemical
-    - property: Material Type
-      value: Metal
-      unit: '-'
-      category: Classification
-    - property: Composition
-      value: 'Beryllium (Be): 98.0-99.5%, Beryllium Oxide (BeO): 0.5-2.0% (surface layer), Trace elements: Fe, Al, Si, Mg (<0.1% total)'
-      unit: '-'
-      category: Composition
   - header: '## Physical & Mechanical Properties'
     rows:
     - property: Density
-      value: 1.85 g/cm³
+      value: '7.8'
       unit: g/cm³
-      min: '1.8'
-      max: '6.0'
-      percentile: 1.2
-      numeric: 1.85
-    - property: Melting Point
-      value: 1287°C
-      unit: °C
-      percentile: 5.4
-      numeric: 1287.0
     - property: Thermal Conductivity
-      value: 200 W/(m·K) at 20°C
-      unit: W/
-      percentile: 100.0
-      numeric: 200.0
+      value: '15'
+      unit: W/m·K
     - property: Tensile Strength
-      value: 345-600 MPa (depending on purity and processing)
+      value: '200'
       unit: MPa
-      percentile: 44.5
-      numeric: 472.5
-    - property: Hardness
-      value: 150-180 HV (Vickers)
-      unit: HV
-      min: '1.0'
-      max: '10.0'
-      percentile: 100.0
-      numeric: 165.0
     - property: Young's Modulus
-      value: 287 GPa
+      value: '200'
       unit: GPa
-      percentile: 100.0
-      numeric: 287.0
   - header: '## Laser Processing Parameters'
     rows:
     - property: Power Range
-      value: 50-200W
+      value: '70.0'
       unit: W
-      min: '20.0'
-      max: '500.0'
-      numeric: 125.0
     - property: Pulse Duration
-      value: 10-50ns
+      value: '20.0'
       unit: ns
-      min: '1.0'
-      max: '1000.0'
-      numeric: 30.0
+      category: Standard
     - property: Wavelength
-      value: 1064nm (primary), 532nm (optional)
+      value: '355.0'
       unit: nm
-      min: '355.0'
-      max: '2940.0'
-      numeric: 1064.0
+      category: Optimal
     - property: Spot Size
-      value: 0.05-1.0mm
+      value: '1.5'
       unit: mm
-      min: '0.01'
-      max: '10.0'
-      numeric: 0.525
+      category: Configurable
     - property: Repetition Rate
-      value: 20-100kHz
+      value: '30.0'
       unit: kHz
-      min: '1.0'
-      max: '1000.0'
-      numeric: 60.0
+      category: Variable
     - property: Fluence Range
-      value: 1.0–10 J/cm²
+      value: '0.7'
       unit: J/cm²
-      min: '0.1'
-      max: '50.0'
-      numeric: 1.0
+      category: Range
+    - property: Beam Profile
+      value: Gaussian TEM00
+      unit: '-'
+      category: System
+    - property: Safety Class
+      value: Class 4 (requires full enclosure)
+      unit: '-'
+      category: Safety
   - header: '## Applications & Industries'
     rows:
     - property: Aerospace
@@ -102,34 +67,10 @@ materialTables:
       value: Cleaning of beryllium surfaces in nuclear reactors
       unit: '-'
       category: Application
-  - header: '## Performance Metrics'
-    rows:
-    - property: Surface contamination removal efficiency
-      value: '>99.9% removal of oxides and contaminants with <0.1μm substrate loss'
-      unit: '-'
-      category: Performance
-    - property: Processing speed for large components
-      value: 2-5 m²/hour cleaning rate for typical aerospace components
-      unit: '-'
-      category: Performance
-  - header: '## Environmental Impact'
-    rows:
-    - property: Elimination of chemical solvents and acids
-      value: Removes need for hazardous chemicals like nitric acid and chromic acid solutions traditionally used for beryllium cleaning, reducing toxic waste by 95%
-      unit: '-'
-      category: Environmental
-    - property: Dramatic reduction of beryllium particulate generation
-      value: Laser ablation produces 99.7% less airborne beryllium particulate compared to mechanical methods, significantly reducing occupational exposure risks
-      unit: '-'
-      category: Environmental
   - header: '## Compatibility & Standards'
     rows:
     - property: Material Compatibility
-      value: Stainless steel fixtures and handling tools, Aluminum and titanium for multi-material components, Copper-based heat sink materials
+      value: laser_types, surface_treatments, incompatible_conditions
       unit: '-'
       category: Compatibility
-    - property: Regulatory Standards
-      value: OSHA 29 CFR 1910.1024 (Beryllium Standard), DOE STD-1190-2011 (Beryllium Safety), ANSI Z136.1 (Laser Safety)
-      unit: '-'
-      category: Compliance
 renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. Pure data structure optimized for performance.'

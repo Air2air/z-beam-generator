@@ -1,47 +1,99 @@
 # Frontmatter Component
 
-The frontmatter component generates YAML frontmatter for laser cleaning materials with a **numeric-only value format** and clean unit separation.
+The frontmatter component generates YAML frontmatter for laser cleaning materials with a **hierarchical structure** and clean unit separation.
 
-## 🔢 Unit/Value Separation Architecture
+## 🏗️ Hierarchical Architecture
 
 ### Core Principle
-All property and machine setting values are **pure numeric types** (int/float), with units stored in separate `*Unit` fields.
+Frontmatter uses a **hierarchical structure** with `materialProperties` and `laserProcessing` instead of flat `properties`/`machineSettings`.
 
 ### Format Example
 ```yaml
-properties:
-  density: 8.9                    # Pure numeric (float)
-  densityUnit: "g/cm³"           # Unit in separate field
-  densityMin: 0.53               # Min range numeric
-  densityMax: 22.59              # Max range numeric
-  meltingPoint: 1025             # Pure numeric (int)
-  meltingPointUnit: "°C"         # Unit in separate field
+# Modern Hierarchical Structure
+materialProperties:
+  chemical:
+    formula: "Al"                    # Chemical composition
+    symbol: "Al"                     # Chemical symbol
+    chemicalFormula: "Al"            # Alternative notation
+  physical:
+    density: 2.7                     # Pure numeric (float)
+    densityUnit: "g/cm³"            # Unit in separate field
+    densityMin: 0.53                # Min range numeric
+    densityMax: 22.59               # Max range numeric
+  mechanical:
+    tensileStrength: 310            # Pure numeric (int)
+    tensileStrengthUnit: "MPa"      # Unit in separate field
+    tensileStrengthMin: 70          # Min range numeric
+    tensileStrengthMax: 2000        # Max range numeric
+  thermal:
+    thermalConductivity: 237        # Pure numeric (int)
+    thermalConductivityUnit: "W/m·K" # Unit in separate field
 
-machineSettings:
-  powerRange: 150.0              # Pure numeric (float)
-  powerRangeUnit: "W"            # Unit in separate field
-  powerRangeMin: 20.0            # Min range numeric
-  powerRangeMax: 500.0           # Max range numeric
-  wavelength: 1064.0             # Pure numeric (float)
-  wavelengthUnit: "nm"           # Unit in separate field
+laserProcessing:
+  recommended:
+    powerRange: 150.0               # Pure numeric (float)
+    powerRangeUnit: "W"             # Unit in separate field
+    powerRangeMin: 20.0             # Min range numeric
+    powerRangeMax: 500.0            # Max range numeric
+    wavelength: 1064.0              # Pure numeric (float)
+    wavelengthUnit: "nm"            # Unit in separate field
+    beamProfile: "Gaussian TEM00"   # Standard settings
+    beamProfileOptions: 
+      - "Gaussian TEM00"
+      - "Top-hat"
+      - "Donut"
+      - "Multi-mode"
+    safetyClass: "Class 4 (requires full enclosure)"
 ```
 
 ## 🏗️ Key Components
 
 ### StreamlinedFrontmatterGenerator
-Core generator with numeric extraction capabilities:
+
+**Shared Generation Architecture**: Both `materialProperties` and `machineSettings` are generated using reusable, shared methods. The key distinction is their respective data categories:
+
+- **materialProperties**: Uses material-specific category (e.g., 'metal', 'ceramic', 'polymer') for **fully dynamic property research** - no fallbacks or defaults allowed
+- **machineSettings**: Uses 'machine' category for **AI-calculated laser parameter research** based on material properties - no fallbacks or defaults allowed
+
+### Core Generation Methods
+
+1. **`_generate_properties_with_ranges(material_data)`** → materialProperties
+   - Calls shared `_create_datametrics_property()` with material category
+   - Uses PropertyValueResearcher for AI-researched values
+   - **100% Dynamic Property Discovery**: AI-powered MaterialPropertyResearchSystem determines which properties to research
+   - **No Fallbacks**: System fails fast if property research is unavailable - no defaults or hardcoded lists
+   - **Material Category Validation**: Properties validated against category-specific ranges from materials.yaml
+
+2. **`_generate_machine_settings_with_ranges(material_data)`** → machineSettings  
+   - Calls shared `_create_datametrics_property()` with 'machine' category
+   - **Material-Based Calculations**: Uses researched material properties to calculate optimal laser parameters
+   - **No Fallbacks**: System fails fast if material properties unavailable - no defaults or estimations
+   - **Physics-Based Research**: AI calculates powerRange, wavelength based on material density, thermal properties
+   - Settings optimized for specific material properties
+
+3. **`_create_datametrics_property(value, prop_key, category)`** → Shared DataMetrics structure
+   - **Reusable core method** used by both property types
+   - Creates consistent structure: `{value, unit, confidence, min, max, description}`
+   - Category parameter determines research methodology and ranges
+Core generator with hierarchical structure and numeric extraction:
 
 ```python
 from components.frontmatter.core.streamlined_generator import StreamlinedFrontmatterGenerator
 
 generator = StreamlinedFrontmatterGenerator()
-result = generator.generate("Copper", use_api=False)
+result = generator.generate("Aluminum")
 ```
 
 **Key Methods:**
-- `_extract_numeric_only()`: Extracts numeric values from strings with units
-- `_generate_properties_with_ranges()`: Creates properties with Min/Max/Unit structure
-- `_generate_machine_settings_with_ranges()`: Creates machine settings with ranges
+- `_extract_property_data()`: Unified extraction for values, ranges, and units
+- `_generate_from_materials_data()`: Creates hierarchical materialProperties/laserProcessing structure
+- `generate()`: Main entry point returning ComponentResult with YAML content
+
+### Hierarchical Structure Benefits
+- **Organized**: Properties grouped by category (chemical, physical, mechanical, thermal)
+- **Extensible**: Easy to add new property categories or laser processing sections
+- **Clear**: Logical separation between material properties and processing parameters
+- **Schema-compliant**: Matches modern frontmatter.json schema requirements
 
 ### UnifiedPropertyEnhancementService
 Processes and enhances properties while preserving numeric format:
@@ -107,7 +159,7 @@ materials:
       - name: "Copper"
         density: 8.96
         melting_point: 1085
-        thermal_conductivity: 401
+        thermalConductivity: 401
         # ... more properties
 ```
 
@@ -159,7 +211,7 @@ print("✅ Schema validation passed!")
 
 ### Check Numeric Format
 ```python
-properties = frontmatter_data.get('properties', {})
+properties = frontmatter_data.get('materialProperties', {})
 machine_settings = frontmatter_data.get('machineSettings', {})
 
 # Count numeric values

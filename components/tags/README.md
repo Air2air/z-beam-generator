@@ -193,7 +193,7 @@ tags_result = generator.generate_component("aluminum", "tags")
 if tags_result.success:
     import yaml
     tags_data = yaml.safe_load(tags_result.content.split('\n---\n')[0])
-    industry_tags = tags_data['tags']['industry']
+    industryTags = tags_data['tags']['industry']
     process_tags = tags_data['tags']['process']
     # Use categorized tags for content organization, SEO, etc.
 ```

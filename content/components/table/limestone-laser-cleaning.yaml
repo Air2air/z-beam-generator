@@ -10,88 +10,50 @@ materialTables:
       value: CaCO3
       unit: '-'
       category: Chemical
-    - property: Material Type
-      value: Sedimentary Rock
-      unit: '-'
-      category: Classification
-    - property: Composition
-      value: 'Calcium carbonate (CaCO3): 90-99%, Clay minerals: 1-5%, Quartz (SiO2): 0.5-2%, Iron oxides: 0.1-1%, Other impurities: <1%'
-      unit: '-'
-      category: Composition
   - header: '## Physical & Mechanical Properties'
     rows:
     - property: Density
-      value: 2.3-2.7 g/cm³ (varies with porosity and composition)
+      value: '2.6'
       unit: g/cm³
-      min: '1.8'
-      max: '6.0'
-      percentile: 16.7
-      numeric: 2.5
-    - property: Melting Point
-      value: 825°C
-      unit: °C
-      percentile: 0.0
-      numeric: 825.0
     - property: Thermal Conductivity
-      value: 1.26-1.33 W/(m·K) at 20°C
-      unit: W/
-      percentile: 0.4
-      numeric: 1.29
-    - property: Tensile Strength
-      value: 3-10 MPa (highly variable based on porosity and structure)
-      unit: MPa
-      percentile: 0.0
-      numeric: 6.5
+      value: '1.0'
+      unit: W/m·K
     - property: Hardness
-      value: 3-4 Mohs scale
+      value: '2'
       unit: Mohs
-      min: '1.0'
-      max: '10.0'
-      percentile: 27.8
-      numeric: 3.5
-    - property: Young's Modulus
-      value: 10-70 GPa (highly dependent on porosity and anisotropy)
-      unit: GPa
-      percentile: 33.3
-      numeric: 40.0
   - header: '## Laser Processing Parameters'
     rows:
     - property: Power Range
-      value: 20-100W
+      value: '70.0'
       unit: W
-      min: '20.0'
-      max: '500.0'
-      numeric: 60.0
     - property: Pulse Duration
-      value: 10-100ns
+      value: '20.0'
       unit: ns
-      min: '1.0'
-      max: '1000.0'
-      numeric: 55.0
+      category: Standard
     - property: Wavelength
-      value: 1064nm (primary), 532nm (optional)
+      value: '1064.0'
       unit: nm
-      min: '355.0'
-      max: '2940.0'
-      numeric: 1064.0
+      category: Optimal
     - property: Spot Size
-      value: 0.1-2.0mm
+      value: '1.5'
       unit: mm
-      min: '0.01'
-      max: '10.0'
-      numeric: 1.05
+      category: Configurable
     - property: Repetition Rate
-      value: 10-50kHz
+      value: '30.0'
       unit: kHz
-      min: '1.0'
-      max: '1000.0'
-      numeric: 30.0
+      category: Variable
     - property: Fluence Range
-      value: 0.5–5 J/cm²
+      value: '1.1'
       unit: J/cm²
-      min: '0.1'
-      max: '50.0'
-      numeric: 0.5
+      category: Range
+    - property: Beam Profile
+      value: Gaussian TEM00
+      unit: '-'
+      category: System
+    - property: Safety Class
+      value: Class 4 (requires full enclosure)
+      unit: '-'
+      category: Safety
   - header: '## Applications & Industries'
     rows:
     - property: Construction
@@ -102,34 +64,26 @@ materialTables:
       value: Non-destructive cleaning of historical limestone monuments
       unit: '-'
       category: Application
-  - header: '## Performance Metrics'
-    rows:
-    - property: Surface contamination removal efficiency
-      value: '>95% removal of black crusts and biological patinas with substrate preservation accuracy of ±50 microns'
+    - property: Building Restoration
+      value: Limestone church and cathedral exterior cleaning
       unit: '-'
-      category: Performance
-    - property: Processing speed
-      value: 0.5-2.0 m²/hour depending on contamination thickness and complexity, with repeatability of ±2% across large surfaces
+      category: Application
+    - property: Quarrying
+      value: Surface preparation of limestone blocks and architectural elements
       unit: '-'
-      category: Performance
-  - header: '## Environmental Impact'
-    rows:
-    - property: Zero chemical waste generation
-      value: Eliminates need for chemical solvents and acidic cleaners that produce hazardous runoff, reducing environmental contamination by 100% compared to traditional chemical methods
+      category: Application
+    - property: Landscaping
+      value: Cleaning limestone garden features and decorative elements
       unit: '-'
-      category: Environmental
-    - property: Reduced water consumption
-      value: Eliminates water usage entirely (traditional methods use 5-20 liters per square meter), conserving approximately 15,000 liters of water per average facade restoration project
+      category: Application
+    - property: Educational Institutions
+      value: Maintenance of limestone campus buildings
       unit: '-'
-      category: Environmental
+      category: Application
   - header: '## Compatibility & Standards'
     rows:
     - property: Material Compatibility
-      value: Marble (similar calcium carbonate composition), Sandstone (similar porosity and laser interaction characteristics), Terracotta (compatible laser parameters for ceramic materials)
+      value: laser_types, surface_treatments, incompatible_conditions
       unit: '-'
       category: Compatibility
-    - property: Regulatory Standards
-      value: EN 15898:2019 (Conservation of cultural heritage - Main general terms and definitions), EN 15886:2010 (Conservation of cultural property - Test methods - Colour measurement of surfaces)
-      unit: '-'
-      category: Compliance
 renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. Pure data structure optimized for performance.'

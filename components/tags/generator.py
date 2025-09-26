@@ -7,6 +7,7 @@ import logging
 from typing import Dict, Optional, Any
 
 from generators.component_generators import APIComponentGenerator, ComponentResult
+from utils.core.material_name_resolver import get_material_name_resolver
 
 logger = logging.getLogger(__name__)
 
@@ -157,8 +158,11 @@ Format: YAML v2.0
         author_slug = template_vars['author_name'].lower().replace(' ', '-')
         tags.append(author_slug)
         
-        # 2. Add material category
+        # 2. Add material category AND subcategory tags
         category = template_vars['material_category'].lower()
+        subcategory = template_vars.get('material_subcategory', '').lower()
+        
+        # Add category-specific tags
         if category in ['metal', 'alloy']:
             tags.extend(['metalworking', 'industrial'])
         elif category in ['ceramic', 'glass']:
@@ -171,6 +175,56 @@ Format: YAML v2.0
             tags.extend(['masonry', 'heritage'])
         else:
             tags.append('industrial')
+        
+        # Add subcategory-specific tags
+        if subcategory:
+            subcategory_tags = {
+                # Metal subcategories
+                'precious': ['precious-metals', 'high-value'],
+                'ferrous': ['steel-processing', 'heavy-industry'],
+                'non-ferrous': ['light-metals', 'corrosion-resistant'],
+                'refractory': ['high-temperature', 'aerospace'],
+                'reactive': ['specialized-handling', 'aerospace'],
+                'specialty': ['advanced-alloys', 'high-performance'],
+                
+                # Ceramic subcategories  
+                'oxide': ['advanced-ceramics', 'high-temperature'],
+                'nitride': ['technical-ceramics', 'wear-resistant'],
+                'carbide': ['cutting-tools', 'wear-resistant'],
+                'traditional': ['architectural', 'decorative'],
+                
+                # Composite subcategories
+                'fiber-reinforced': ['advanced-composites', 'lightweight'],
+                'matrix': ['engineered-materials', 'high-performance'],
+                'resin': ['thermoset', 'structural'],
+                'elastomeric': ['flexible', 'sealing'],
+                'structural': ['load-bearing', 'construction'],
+                
+                # Glass subcategories
+                'borosilicate': ['laboratory', 'thermal-shock'],
+                'silicate': ['architectural', 'commercial'],
+                'crystal': ['decorative', 'optical'],
+                'treated': ['safety', 'tempered'],
+                
+                # Stone subcategories
+                'igneous': ['natural-stone', 'construction'],
+                'metamorphic': ['decorative', 'architectural'],
+                'sedimentary': ['building-materials', 'construction'],
+                'soft': ['carving', 'decorative'],
+                'mineral': ['crystalline', 'specialty'],
+                
+                # Wood subcategories
+                'hardwood': ['furniture', 'flooring'],
+                'softwood': ['construction', 'framing'],
+                'engineered': ['manufactured', 'composite'],
+                'flexible': ['specialty', 'crafts']
+            }
+            
+            if subcategory in subcategory_tags:
+                # Add up to 2 subcategory tags
+                for tag in subcategory_tags[subcategory][:2]:
+                    if tag not in tags and len(tags) < 6:
+                        tags.append(tag)
         
         # 3. Extract industry applications from frontmatter
         if frontmatter_data:
@@ -215,13 +269,11 @@ Format: YAML v2.0
             if process_tag not in tags:
                 tags.append(process_tag)
         
-        # 5. Ensure we have exactly 8 tags
-        default_tags = ['manufacturing', 'industrial', 'precision', 'quality-control', 'automation', 'technology']
-        for default_tag in default_tags:
-            if len(tags) >= 8:
-                break
-            if default_tag not in tags:
-                tags.append(default_tag)
+        # 5. Fail-fast: Must have at least some tags from content - no fallback defaults
+        if len(tags) < 2:
+            raise ValueError(f"Insufficient tag content extracted from material data - need minimum 2 tags, got {len(tags)}")
+        
+        # Return available tags up to 8 - no default padding
         
         return tags[:8]  # Always return exactly 8 tags
 
@@ -284,18 +336,40 @@ Format: YAML v2.0
         
         # FAIL-FAST: Chemical identifiers must be researched
         formula = material_data.get("formula")
+        symbol = material_data.get("symbol")
+        
+        # If not provided in material_data, try frontmatter
         if not formula and frontmatter_data:
-            # Try to extract from frontmatter chemical properties
             chem_props = frontmatter_data.get("chemicalProperties", {})
             formula = chem_props.get("formula")
-        if not formula:
-            raise ValueError(f"Chemical formula missing for {material_name} - fail-fast requires explicit chemical data")
-            
-        symbol = material_data.get("symbol")
         if not symbol and frontmatter_data:
-            # Try to extract from frontmatter chemical properties
             chem_props = frontmatter_data.get("chemicalProperties", {})
             symbol = chem_props.get("symbol")
+            
+        # If still not found, try to get from materials.yaml via resolver
+        if not formula or not symbol:
+            resolver = get_material_name_resolver()
+            materials_data = resolver.get_material_data(material_name)
+            if materials_data:
+                # Get all materials for this material to find the actual item data
+                from data.materials import load_materials
+                all_materials = load_materials()
+                category = materials_data.get('category', '')
+                if category and category in all_materials.get('materials', {}):
+                    category_items = all_materials['materials'][category].get('items', [])
+                    # Find the specific material by name
+                    canonical_name = resolver.resolve_canonical_name(material_name)
+                    for item in category_items:
+                        if item.get('name') == canonical_name:
+                            if not formula:
+                                formula = item.get('formula')
+                            if not symbol:
+                                symbol = item.get('symbol')
+                            break
+        
+        # Final validation - fail-fast if still missing
+        if not formula:
+            raise ValueError(f"Chemical formula missing for {material_name} - fail-fast requires explicit chemical data")
         if not symbol:
             raise ValueError(f"Chemical symbol missing for {material_name} - fail-fast requires explicit chemical data")
         
@@ -317,6 +391,7 @@ Format: YAML v2.0
         return {
             "material_name": material_name,
             "material_category": category,
+            "material_subcategory": material_data.get("subcategory", "general"),
             "material_formula": formula,
             "material_symbol": symbol,
             "author_name": author_name,

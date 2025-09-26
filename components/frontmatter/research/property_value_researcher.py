@@ -23,6 +23,9 @@ from typing import Dict, List, Optional, Any
 from dataclasses import dataclass, field
 from pathlib import Path
 
+# Import GenerationError for fail-fast behavior
+from generators.component_generators import GenerationError
+
 # Add project root to path for imports
 project_root = Path(__file__).parent.parent.parent.parent
 sys.path.insert(0, str(project_root))
@@ -126,15 +129,22 @@ class PropertyValueResearcher:
     """
     
     def __init__(self, 
+                 api_client,  # REQUIRED per GROK - no fallbacks allowed
                  min_confidence_threshold: int = 50,
                  debug_mode: bool = False):
         """
-        Initialize Property Value Researcher.
+        Initialize Property Value Researcher with required API client (GROK compliant - no fallbacks).
         
         Args:
+            api_client: AI API client for property research (REQUIRED)
             min_confidence_threshold: Minimum confidence for valid results
             debug_mode: Enable debug logging
         """
+        if api_client is None:
+            # FAIL-FAST per GROK_INSTRUCTIONS.md - no fallbacks allowed
+            raise ValueError("API client is required for PropertyValueResearcher - no fallbacks allowed")
+        
+        self.api_client = api_client
         self.min_confidence_threshold = min_confidence_threshold
         self.debug_mode = debug_mode
         
@@ -168,8 +178,9 @@ class PropertyValueResearcher:
             'cache_hits': 0
         }
         
-        # Known property database (high-confidence exact values)
-        self.property_database = self._load_property_database()
+                # Initialize LRU caches for performance
+        self.research_cache = {}
+        self.cache_stats = {'hits': 0, 'misses': 0}
     
     def research_property_value(self, 
                               material_name: str, 
@@ -255,7 +266,6 @@ class PropertyValueResearcher:
         """Execute property research strategies in priority order"""
         
         strategies = [
-            ('database_lookup', self._database_lookup),
             ('materials_yaml_lookup', self._materials_yaml_lookup),
             ('web_research', self._web_research),
             ('literature_research', self._literature_research),
@@ -291,43 +301,7 @@ class PropertyValueResearcher:
             research_method="all_strategies_failed",
             error_message="All research strategies failed to find valid property value"
         )
-    
-    def _database_lookup(self, 
-                        material_name: str, 
-                        property_name: str,
-                        context: ResearchContext) -> Optional[PropertyResult]:
-        """
-        Look up property value from high-confidence database.
-        
-        This provides exact values for well-known materials like Zirconia.
-        """
-        material_key = material_name.lower()
-        
-        if material_key in self.property_database:
-            material_data = self.property_database[material_key]
-            
-            if property_name in material_data:
-                prop_data = material_data[property_name]
-                
-                property_metric = PropertyDataMetric(
-                    value=prop_data['value'],
-                    unit=prop_data['unit'],
-                    confidence=prop_data['confidence'],
-                    min=prop_data.get('min'),
-                    max=prop_data.get('max'),
-                    description=prop_data.get('description')
-                )
-                
-                return PropertyResult(
-                    material_name=material_name,
-                    property_name=property_name,
-                    property_data=property_metric,
-                    confidence=prop_data['confidence'],
-                    source='database_lookup'
-                )
-                
-        return None
-    
+
     def _materials_yaml_lookup(self, 
                              material_name: str, 
                              property_name: str,
@@ -579,6 +553,218 @@ class PropertyValueResearcher:
         for key in self.research_stats:
             if isinstance(self.research_stats[key], (int, float)):
                 self.research_stats[key] = 0
+    
+    def discover_all_material_properties(self, material_name: str, material_category: str = None) -> Dict[str, Dict[str, Any]]:
+        """
+        GROK-COMPLIANT: Comprehensive AI-driven material property discovery with NO FALLBACKS
+        
+        Uses advanced AI prompts to discover ALL relevant material properties for laser cleaning.
+        Fails fast if discovery system unavailable per GROK_INSTRUCTIONS.md
+        
+        Args:
+            material_name: Name of material to research
+            material_category: Material category (metal, ceramic, etc.)
+            
+        Returns:
+            Dict of ALL discovered properties with complete data (value, unit, confidence, etc.)
+            
+        Raises:
+            PropertyDiscoveryError: If AI discovery unavailable or fails (no fallbacks)
+        """
+        if not hasattr(self, 'api_client') or not self.api_client:
+            raise GenerationError(f"API client required for comprehensive property discovery - cannot research {material_name}")
+        
+        try:
+            from .comprehensive_discovery_prompts import MATERIAL_PROPERTY_DISCOVERY_PROMPT
+            
+            # Format comprehensive discovery prompt  
+            prompt = MATERIAL_PROPERTY_DISCOVERY_PROMPT.format(
+                material_name=material_name,
+                material_category=material_category or 'unknown'
+            )
+            
+            # Execute AI research
+            response = self.api_client.generate_simple(
+                prompt=prompt,
+                max_tokens=1500,
+                temperature=0.3  # Lower temperature for consistent research
+            )
+            
+            # Parse AI response for discovered properties
+            import json
+            try:
+                # Handle APIResponse object - use response.content
+                response_content = response.content if hasattr(response, 'content') else str(response)
+                
+                # Clean markdown code blocks if present (AI often wraps JSON in ```json ... ```)
+                cleaned_content = response_content.strip()
+                if cleaned_content.startswith('```json'):
+                    # Remove ```json at start and ``` at end
+                    cleaned_content = cleaned_content[7:]  # Remove ```json
+                    if cleaned_content.endswith('```'):
+                        cleaned_content = cleaned_content[:-3]  # Remove ```
+                elif cleaned_content.startswith('```'):
+                    # Remove ``` at start and end
+                    cleaned_content = cleaned_content[3:]
+                    if cleaned_content.endswith('```'):
+                        cleaned_content = cleaned_content[:-3]
+                        
+                result = json.loads(cleaned_content.strip())
+                discovered_properties = result.get('discovered_properties', {})
+                
+                if not discovered_properties:
+                    raise GenerationError(f"AI discovery returned no properties for {material_name}")
+                    
+                if len(discovered_properties) < 6:  # Minimum comprehensive threshold
+                    raise GenerationError(f"Insufficient properties discovered for {material_name}: {len(discovered_properties)} < 6 minimum")
+                
+                self.logger.info(f"🔬 AI discovered {len(discovered_properties)} properties for {material_name}")
+                return discovered_properties
+                
+            except json.JSONDecodeError as e:
+                raise GenerationError(f"Failed to parse AI discovery response for {material_name}: {e}")
+                
+        except Exception as e:
+            # FAIL-FAST: No fallbacks allowed per GROK_INSTRUCTIONS.md
+            raise GenerationError(f"Comprehensive property discovery failed for {material_name}: {e}")
+    
+    def discover_all_machine_settings(self, material_name: str, material_category: str = None) -> Dict[str, Dict[str, Any]]:
+        """
+        GROK-COMPLIANT: Comprehensive AI-driven machine settings discovery with NO FALLBACKS
+        
+        Uses advanced AI prompts to discover ALL relevant laser machine settings.
+        Fails fast if discovery system unavailable per GROK_INSTRUCTIONS.md
+        
+        Args:
+            material_name: Name of material to research settings for
+            material_category: Material category for context
+            
+        Returns:
+            Dict of ALL discovered machine settings with complete data
+            
+        Raises:
+            GenerationError: If AI discovery unavailable or fails (no fallbacks)
+        """
+        if not hasattr(self, 'api_client') or not self.api_client:
+            raise GenerationError(f"API client required for machine settings discovery - cannot research {material_name}")
+            
+        try:
+            from .comprehensive_discovery_prompts import MACHINE_SETTINGS_DISCOVERY_PROMPT
+            
+            # Format comprehensive machine settings prompt
+            prompt = MACHINE_SETTINGS_DISCOVERY_PROMPT.format(
+                material_name=material_name,
+                material_category=material_category or 'unknown'
+            )
+            
+            # Execute AI research
+            response = self.api_client.generate_simple(
+                prompt=prompt,
+                max_tokens=1200,
+                temperature=0.3
+            )
+            
+            # Parse AI response for discovered settings
+            import json
+            try:
+                # Handle APIResponse object - use response.content
+                response_content = response.content if hasattr(response, 'content') else str(response)
+                
+                # Clean markdown code blocks if present (AI often wraps JSON in ```json ... ```)
+                cleaned_content = response_content.strip()
+                if cleaned_content.startswith('```json'):
+                    # Remove ```json at start and ``` at end
+                    cleaned_content = cleaned_content[7:]  # Remove ```json
+                    if cleaned_content.endswith('```'):
+                        cleaned_content = cleaned_content[:-3]  # Remove ```
+                elif cleaned_content.startswith('```'):
+                    # Remove ``` at start and end
+                    cleaned_content = cleaned_content[3:]
+                    if cleaned_content.endswith('```'):
+                        cleaned_content = cleaned_content[:-3]
+                        
+                result = json.loads(cleaned_content.strip())
+                discovered_settings = result.get('discovered_settings', {})
+                
+                if not discovered_settings:
+                    raise GenerationError(f"AI discovery returned no machine settings for {material_name}")
+                
+                if len(discovered_settings) < 4:  # Minimum settings threshold
+                    raise GenerationError(f"Insufficient machine settings discovered for {material_name}: {len(discovered_settings)} < 4 minimum")
+                
+                self.logger.info(f"🔧 AI discovered {len(discovered_settings)} machine settings for {material_name}")
+                return discovered_settings
+                
+            except json.JSONDecodeError as e:
+                raise GenerationError(f"Failed to parse machine settings discovery for {material_name}: {e}")
+                
+        except Exception as e:
+            # FAIL-FAST: No fallbacks allowed per GROK_INSTRUCTIONS.md
+            raise GenerationError(f"Machine settings discovery failed for {material_name}: {e}")
+
+    def _convert_to_camel_case(self, snake_str: str) -> str:
+        """Convert snake_case or space-separated to camelCase"""
+        # Handle both snake_case and space-separated strings
+        snake_str = snake_str.replace(' ', '_').replace('-', '_')
+        components = snake_str.split('_')
+        return components[0].lower() + ''.join(word.capitalize() for word in components[1:])
+        
+    def _map_discovered_property_name(self, discovered_name: str) -> str:
+        """
+        Map AI-discovered property names to database property names
+        
+        The AI discovery returns lowercase compound names like 'meltingpoint',
+        but the database expects camelCase names like 'meltingPoint'.
+        """
+        # Direct mapping for known compound properties
+        property_mapping = {
+            'meltingpoint': 'meltingPoint',
+            'thermalconductivity': 'thermalConductivity',
+            'thermalexpansion': 'thermalExpansion',
+            'thermaldiffusivity': 'thermalDiffusivity', 
+            'specificheat': 'specificHeat',
+            'absorptioncoefficient': 'absorptionCoefficient',
+            'refractiveindex': 'refractiveIndex',
+            'ablationthreshold': 'ablationThreshold',
+            'laserdamagethreshold': 'laserDamageThreshold',
+            'oxidationresistance': 'oxidationResistance',
+            'crystallinestructure': 'crystallineStructure',
+            'surfaceroughness': 'surfaceRoughness',
+            'youngsmodulus': 'youngsModulus',
+            'grainsize': 'grainSize'
+        }
+        
+        # Return mapped name if available, otherwise original
+        return property_mapping.get(discovered_name.lower(), discovered_name)
+        
+    def _map_discovered_setting_name(self, discovered_name: str) -> str:
+        """
+        Map AI-discovered machine setting names to database setting names
+        """
+        # Direct mapping for known compound settings
+        setting_mapping = {
+            'powerrange': 'powerRange',
+            'fluencethreshold': 'fluenceThreshold', 
+            'energydensity': 'energyDensity',
+            'pulseduration': 'pulseDuration',
+            'pulsewidth': 'pulseWidth',
+            'repetitionrate': 'repetitionRate',
+            'spotsize': 'spotSize',
+            'beamdiameter': 'beamDiameter',
+            'scanspeed': 'scanSpeed',
+            'passcount': 'passCount',
+            'overlapratio': 'overlapRatio',
+            'dwelltime': 'dwellTime',
+            'beamquality': 'beamQuality',
+            'pulseenergy': 'pulseEnergy',
+            'peakpower': 'peakPower',
+            'focusposition': 'focusPosition',
+            'assistgas': 'assistGas',
+            'scanpattern': 'scanPattern'
+        }
+        
+        # Return mapped name if available, otherwise original
+        return setting_mapping.get(discovered_name.lower(), discovered_name)
 
 
 # Make PropertyValueResearcher available for backwards compatibility

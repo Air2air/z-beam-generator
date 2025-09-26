@@ -1,97 +1,49 @@
 materialTables:
   tables:
-  - header: '## Chemical Properties'
-    rows:
-    - property: Chemical Formula
-      value: Mg₃Si₄O₁₀(OH)₂
-      unit: '-'
-      category: Chemical
-    - property: Chemical Symbol
-      value: Mg₃Si₄O₁₀(OH)₂
-      unit: '-'
-      category: Chemical
-    - property: Material Type
-      value: Metamorphic Rock
-      unit: '-'
-      category: Classification
-    - property: Composition
-      value: 'Talc (Mg₃Si₄O₁₀(OH)₂): 40-80%, Magnesite (MgCO₃): 10-40%, Chlorite: 5-15%, Amphiboles: 1-5%'
-      unit: '-'
-      category: Composition
   - header: '## Physical & Mechanical Properties'
     rows:
     - property: Density
-      value: 2.7-2.8 g/cm³
+      value: '2.5'
       unit: g/cm³
-      min: '1.8'
-      max: '6.0'
-      percentile: 22.6
-      numeric: 2.75
-    - property: Melting Point
-      value: 1300°C
-      unit: °C
-      percentile: 3.1
-      numeric: 1300.0
     - property: Thermal Conductivity
-      value: 6.4 W/m·K
+      value: '1.5'
       unit: W/m·K
-      percentile: 3.0
-      numeric: 6.4
-    - property: Tensile Strength
-      value: 15-20 MPa
-      unit: MPa
-      percentile: 0.0
-      numeric: 17.5
     - property: Hardness
-      value: 1-1.5 Mohs
+      value: '6'
       unit: Mohs
-      min: '1.0'
-      max: '10.0'
-      percentile: 2.8
-      numeric: 1.25
-    - property: Young's Modulus
-      value: 50-60 GPa
-      unit: GPa
-      percentile: 58.3
-      numeric: 55.0
   - header: '## Laser Processing Parameters'
     rows:
     - property: Power Range
-      value: 50-200W
+      value: '85.0'
       unit: W
-      min: '20.0'
-      max: '500.0'
-      numeric: 125.0
     - property: Pulse Duration
-      value: 5-50ns
+      value: '20.0'
       unit: ns
-      min: '1.0'
-      max: '1000.0'
-      numeric: 27.5
+      category: Standard
     - property: Wavelength
-      value: 1064nm (primary), 532nm (optional)
+      value: '1064.0'
       unit: nm
-      min: '355.0'
-      max: '2940.0'
-      numeric: 1064.0
+      category: Optimal
     - property: Spot Size
-      value: 0.1-1.0mm
+      value: '1.0'
       unit: mm
-      min: '0.01'
-      max: '10.0'
-      numeric: 0.55
+      category: Configurable
     - property: Repetition Rate
-      value: 20-100kHz
+      value: '20.0'
       unit: kHz
-      min: '1.0'
-      max: '1000.0'
-      numeric: 60.0
+      category: Variable
     - property: Fluence Range
-      value: 1.0–10 J/cm²
+      value: '1.4'
       unit: J/cm²
-      min: '0.1'
-      max: '50.0'
-      numeric: 1.0
+      category: Range
+    - property: Beam Profile
+      value: Gaussian TEM00
+      unit: '-'
+      category: System
+    - property: Safety Class
+      value: Class 4 (requires full enclosure)
+      unit: '-'
+      category: Safety
   - header: '## Applications & Industries'
     rows:
     - property: Construction
@@ -102,34 +54,10 @@ materialTables:
       value: Cleaning soapstone sculptures and architectural elements
       unit: '-'
       category: Application
-  - header: '## Performance Metrics'
-    rows:
-    - property: Surface contamination removal to 99.8% purity
-      value: 0.2 μm maximum residual contamination layer measured by SEM-EDS analysis
-      unit: '-'
-      category: Performance
-    - property: Sub-micron precision material removal
-      value: 0.1-0.5 μm layer removal control with ±5% accuracy across surface
-      unit: '-'
-      category: Performance
-  - header: '## Environmental Impact'
-    rows:
-    - property: Zero chemical waste generation
-      value: Eliminates 100% of chemical solvents traditionally used in soapstone cleaning, preventing groundwater contamination
-      unit: '-'
-      category: Environmental
-    - property: 97% reduction in particulate emissions
-      value: Closed-system laser ablation with HEPA filtration captures 97% of particulates compared to dry abrasive methods
-      unit: '-'
-      category: Environmental
   - header: '## Compatibility & Standards'
     rows:
     - property: Material Compatibility
-      value: Marble and limestone (similar carbonate content), Sandstone (comparable porosity and thermal properties)
+      value: laser_types, surface_treatments, incompatible_conditions
       unit: '-'
       category: Compatibility
-    - property: Regulatory Standards
-      value: ANSI Z136.1 Safe Use of Lasers, OSHA 29 CFR 1910.1096 Ionizing Radiation
-      unit: '-'
-      category: Compliance
 renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. Pure data structure optimized for performance.'

@@ -10,7 +10,6 @@ from typing import Dict, Any, Optional
 
 from .simple_mock_client import MockAPIClient
 
-
 class MockComponentGenerator:
     """Base mock component generator for testing."""
 
@@ -28,7 +27,6 @@ class MockComponentGenerator:
             'call_count': self.call_count
         }
 
-
 class MockAuthorComponentGenerator(MockComponentGenerator):
     """Mock author component generator."""
 
@@ -41,7 +39,6 @@ class MockAuthorComponentGenerator(MockComponentGenerator):
         result['content'] = f"Mock author content for {material_name}"
         return result
 
-
 class MockTableComponentGenerator(MockComponentGenerator):
     """Mock table component generator."""
 
@@ -53,7 +50,6 @@ class MockTableComponentGenerator(MockComponentGenerator):
         result = super().generate(material_name, material_data, api_client, **kwargs)
         result['content'] = f"| Property | Value |\n|----------|-------|\n| Mock | Data |"
         return result
-
 
 class MockFrontmatterComponentGenerator(MockComponentGenerator):
     """Mock frontmatter component generator."""
@@ -110,7 +106,6 @@ headline: "Comprehensive technical guide for laser cleaning {material_name.lower
         result['content'] = mock_yaml
         return result
 
-
 class MockBadgesymbolComponentGenerator(MockComponentGenerator):
     """Mock badgesymbol component generator."""
 
@@ -122,7 +117,6 @@ class MockBadgesymbolComponentGenerator(MockComponentGenerator):
         result = super().generate(material_name, material_data, api_client, **kwargs)
         result['content'] = f"🏷️ {material_name.upper()}"
         return result
-
 
 class MockJsonldComponentGenerator(MockComponentGenerator):
     """Mock JSON-LD component generator."""
@@ -136,7 +130,6 @@ class MockJsonldComponentGenerator(MockComponentGenerator):
         result['content'] = f'{{"@type": "Material", "name": "{material_name}"}}'
         return result
 
-
 class MockMetatagsComponentGenerator(MockComponentGenerator):
     """Mock metatags component generator."""
 
@@ -148,7 +141,6 @@ class MockMetatagsComponentGenerator(MockComponentGenerator):
         result = super().generate(material_name, material_data, api_client, **kwargs)
         result['content'] = f'<meta name="description" content="About {material_name}">'
         return result
-
 
 class MockPropertiestableComponentGenerator(MockComponentGenerator):
     """Mock propertiestable component generator."""
@@ -162,7 +154,6 @@ class MockPropertiestableComponentGenerator(MockComponentGenerator):
         result['content'] = f"| Property | Value |\n|----------|-------|\n| Density | Mock |"
         return result
 
-
 class MockTagsComponentGenerator(MockComponentGenerator):
     """Mock tags component generator."""
 
@@ -174,7 +165,6 @@ class MockTagsComponentGenerator(MockComponentGenerator):
         result = super().generate(material_name, material_data, api_client, **kwargs)
         result['content'] = f"laser-cleaning, {material_name.lower()}, material"
         return result
-
 
 class MockCaptionComponentGenerator(MockComponentGenerator):
     """Mock caption component generator."""
@@ -188,7 +178,6 @@ class MockCaptionComponentGenerator(MockComponentGenerator):
         result['content'] = f"Mock caption for {material_name}"
         return result
 
-
 class MockTextComponentGenerator(MockComponentGenerator):
     """Mock text component generator."""
 
@@ -200,7 +189,6 @@ class MockTextComponentGenerator(MockComponentGenerator):
         result = super().generate(material_name, material_data, api_client, **kwargs)
         result['content'] = f"Mock detailed content about {material_name} for laser cleaning applications."
         return result
-
 
 # Factory function for creating mock generators
 def create_mock_generator(component_type: str) -> MockComponentGenerator:
@@ -221,7 +209,6 @@ def create_mock_generator(component_type: str) -> MockComponentGenerator:
     generator_class = mock_generators.get(component_type, MockComponentGenerator)
     return generator_class()
 
-
 # Utility functions for testing
 def mock_api_response(success: bool = True, content: str = "Mock content",
                      error: Optional[str] = None) -> Dict[str, Any]:
@@ -232,7 +219,6 @@ def mock_api_response(success: bool = True, content: str = "Mock content",
         'error': error,
         'usage': {'tokens': 100} if success else None
     }
-
 
 def create_mock_material_data(material_name: str = "Aluminum") -> Dict[str, Any]:
     """Create mock material data for testing."""
@@ -248,7 +234,6 @@ def create_mock_material_data(material_name: str = "Aluminum") -> Dict[str, Any]
             'symbol': 'Al'
         }
     }
-
 
 # Export all mock classes
 __all__ = [

@@ -2,7 +2,28 @@
 
 ## StreamlinedFrontmatterGenerator
 
-Main class for frontmatter generation with consolidated architecture.
+Main class for frontmatter generation with **shared generation architecture**.
+
+### 🏗️ Shared Generation Architecture
+
+**Core Principle**: Both `materialProperties` and `machineSettings` are generated using **identical, reusable methods**. The implementation differs only in data category parameters, making the system highly maintainable and consistent.
+
+```python
+# Shared generation flow:
+materialProperties = _generate_properties_with_ranges(material_data)    # Uses material category
+machineSettings = _generate_machine_settings_with_ranges(material_data) # Uses 'machine' category
+
+# Both call the same core method:
+_create_datametrics_property(value, prop_key, category) → DataMetrics structure
+```
+
+### 🔄 Method Reusability
+
+| Method | Purpose | Category Parameter | Output Structure |
+|--------|---------|-------------------|------------------|
+| `_generate_properties_with_ranges()` | materialProperties | material type ('metal', 'ceramic') | DataMetrics |
+| `_generate_machine_settings_with_ranges()` | machineSettings | 'machine' | DataMetrics |
+| `_create_datametrics_property()` | **Shared core** | varies by caller | `{value, unit, confidence, min, max, description}` |
 
 ### Constructor
 ```python
@@ -13,24 +34,43 @@ No configuration required - uses embedded services and validation.
 ### Methods
 
 #### `generate_from_material_name(material_name: str, api_client=None) -> ComponentResult`
-Generates complete frontmatter for a material by name.
+Generates complete frontmatter for a material by name with enhanced category and subcategory classification.
 
 **Parameters:**
 - `material_name` (str): Name of the material to generate frontmatter for
 - `api_client` (optional): API client for content generation
 
 **Returns:**
-- `ComponentResult`: Object containing generated frontmatter content and metadata
+- `ComponentResult`: Object containing generated frontmatter content with category, subcategory, and enriched material data
+
+**Enhanced Features:**
+- Automatic subcategory classification (e.g., precious metals, hardwood, igneous stone)
+- Rich data population from materials.yaml structure
+- Fallback to API generation for materials not in database
+- Comprehensive property, application, and machine settings data
 
 **Example:**
 ```python
 generator = StreamlinedFrontmatterGenerator()
 result = generator.generate_from_material_name("Titanium")
-print(result.content)  # YAML frontmatter content
+print(result.content)  # YAML frontmatter with category: metal, subcategory: refractory
 ```
 
+#### `_get_material_data(material_name: str) -> Optional[Dict]`
+Enhanced material data lookup with comprehensive fallback strategy.
+
+**Lookup Strategy:**
+1. Search material_index for category and subcategory information
+2. Search materials.{category}.items[] for rich data (properties, applications, machine settings)
+3. Merge index data with detailed item data for complete material profile
+4. Case-insensitive matching for robust material identification
+
+**Returns:**
+- Complete material data dictionary with properties, applications, machine settings
+- None if material not found in any structure
+
 #### `_generate_from_materials_data(material_data: dict, material_name: str) -> dict`
-Internal method for generating frontmatter from materials.yaml data.
+Internal method for generating frontmatter from materials.yaml data with enhanced field population.
 
 **Parameters:**
 - `material_data` (dict): Material data from materials.yaml
@@ -112,7 +152,7 @@ UnifiedPropertyEnhancementService.add_properties(frontmatter, preserve_min_max=T
 Enhances machine settings with parameter data.
 
 **Parameters:**
-- `machine_settings` (dict): Machine settings data to enhance
+- `machineSettings` (dict): Machine settings data to enhance
 - `use_optimized` (bool): Whether to use optimized format
 
 #### `apply_full_optimization(frontmatter: dict, use_optimized: bool = True) -> dict`
@@ -128,117 +168,30 @@ Applies complete optimization to frontmatter data.
 #### `remove_redundant_sections(frontmatter: dict) -> dict`
 Removes redundant or duplicate sections from frontmatter.
 
-#### `**Returns:**
-- `tuple[float, str]`: Numeric value and unit string
+#### `---
 
----
+## ValidationHelpers
 
-## Image Generation
-
-The frontmatter generator automatically creates image sections for all materials following consistent patterns.
-
-### Image Structure
-Each material gets two images with standardized naming and alt text:
-
-```yaml
-images:
-  hero:
-    alt: "{Material} surface undergoing laser cleaning showing precise contamination removal"
-    url: "/images/{material-name}-laser-cleaning-hero.jpg"
-  micro:
-    alt: "Microscopic view of {Material} surface after laser cleaning showing detailed surface structure"
-    url: "/images/{material-name}-laser-cleaning-micro.jpg"
-```
-
-### URL Naming Conventions
-- **Base Pattern**: `/images/{material-name}-laser-cleaning-{type}.jpg`
-- **Material Name Processing**:
-  - Convert to lowercase
-  - Replace spaces with hyphens
-  - Preserve alphanumeric characters and hyphens
-  - Remove special characters
-
-**Examples:**
-- "Aluminum" → `/images/aluminum-laser-cleaning-hero.jpg`
-- "Stainless Steel" → `/images/stainless-steel-laser-cleaning-hero.jpg`
-- "Ti-6Al-4V" → `/images/ti-6al-4v-laser-cleaning-hero.jpg`
-
-### Alt Text Templates
-**Hero Image Alt Text:**
-- Template: `"{Material Name} surface undergoing laser cleaning showing precise contamination removal"`
-- Example: `"Titanium surface undergoing laser cleaning showing precise contamination removal"`
-
-**Micro Image Alt Text:**
-- Template: `"Microscopic view of {Material Name} surface after laser cleaning showing detailed surface structure"`
-- Example: `"Microscopic view of Titanium surface after laser cleaning showing detailed surface structure"`
-
-### N/A Fallback Handling
-When image generation fails, the N/A field normalizer provides fallback structure:
-
-```yaml
-images:
-  hero:
-    alt: "{Material Name} surface laser cleaning (N/A)"
-    url: "/images/placeholder-hero.jpg"
-  micro:
-    alt: "Microscopic view of {Material Name} surface (N/A)"
-    url: "/images/placeholder-micro.jpg"
-```
-
----
-
-## ValidationHelpers`
-Extracts numeric value and unit from a string.
-
-**Parameters:**
-- `value_str` (str): String containing numeric value with unit (e.g., "7.85 g/cm³")
-
-**Returns:**
-- `tuple`: (numeric_value, unit_string)
-
-**Example:**
-```python
-value, unit = UnifiedPropertyEnhancementService._extract_numeric_and_unit("7.85 g/cm³")
-# Returns: (7.85, "g/cm³")
-```
-
----
-
-## FieldOrderingService
-
-Service for consistent field ordering in frontmatter.
+GROK-compliant validation helpers for content validation.
 
 ### Static Methods
 
-#### `apply_field_ordering(frontmatter_data: dict) -> dict`
-Applies standardized field ordering to frontmatter data.
+#### `validate_and_enhance_content(content: str, material_data: dict, api_client) -> tuple[str, dict]`
+Validates and enhances frontmatter content.
 
 **Parameters:**
-- `frontmatter_data` (dict): Frontmatter data to order
+- `content` (str): Raw frontmatter content
+- `material_data` (dict): Material data for validation
+- `api_client`: API client for enhancement
 
 **Returns:**
-- `dict`: Frontmatter data with standardized field ordering
+- `tuple`: (validated_content, validation_report)
 
-**Field Order:**
-1. Basic Identification (name, category)
-2. Content Metadata (title, headline, description, keywords)
-3. Chemical Properties (chemicalProperties)
-4. Physical Properties (properties)
-5. Composition & Applications (composition, applications)
-6. Machine Settings (machineSettings)
-7. Standards & Compatibility (compatibility, regulatoryStandards)
-8. Author & Visual Assets (author_object)
-9. Impact Metrics (environmentalImpact)
+#### `extract_yaml_from_content(content: str) -> dict`
+Extracts YAML frontmatter from content string.
 
-#### `_create_clean_properties_structure(properties: dict) -> dict`
-Creates clean, organized structure for properties section.
-
-#### `_create_clean_machine_settings_structure(machine_settings: dict) -> dict`
-Creates clean, organized structure for machine settings section.
-
----
-
-## ValidationHelpers
+#### `validate_required_fields(frontmatter_data: dict) -> list`
+Validates presence of required frontmatter fields.
 
 GROK-compliant validation helpers for content validation.
 

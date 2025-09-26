@@ -29,12 +29,14 @@ _create_datametrics_property(value, prop_key, category) → {value, unit, confid
 
 ### materialProperties
 - **Category**: Material-specific ('metal', 'ceramic', 'polymer', 'glass', 'composite')  
-- **Research**: Uses PropertyValueResearcher with material context
+- **Research**: Uses PropertyValueResearcher with material context - **FULLY DYNAMIC, NO FALLBACKS**
+- **Selection**: 100% AI-driven property discovery based on material analysis
 - **Examples**: density, thermalConductivity, tensileStrength, youngsModulus
 
 ### machineSettings  
 - **Category**: 'machine' (universal for all laser parameters)
-- **Research**: Uses MachineSettingsResearcher with laser context
+- **Research**: Uses MachineSettingsResearcher with laser context - **FULLY DYNAMIC, NO FALLBACKS**
+- **Selection**: Calculated from researched material properties, no defaults allowed
 - **Examples**: powerRange, pulseDuration, wavelength, scanSpeed
 
 ## Consistent DataMetrics Structure

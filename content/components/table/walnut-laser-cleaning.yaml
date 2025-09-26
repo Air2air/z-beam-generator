@@ -1,97 +1,49 @@
 materialTables:
   tables:
-  - header: '## Chemical Properties'
-    rows:
-    - property: Chemical Formula
-      value: C₆H₁₀O₅ₙ (Cellulose primary component)
-      unit: '-'
-      category: Chemical
-    - property: Chemical Symbol
-      value: N/A (Biological Composite)
-      unit: '-'
-      category: Chemical
-    - property: Material Type
-      value: Wood
-      unit: '-'
-      category: Classification
-    - property: Composition
-      value: 'Cellulose: 40-50%, Lignin: 20-30%, Hemicellulose: 23-30%, Extractives (tannins, juglone): 4-8%'
-      unit: '-'
-      category: Composition
   - header: '## Physical & Mechanical Properties'
     rows:
     - property: Density
-      value: 640-700 kg/m³ (Juglans nigra)
-      unit: kg/m³
-      min: '1.8'
-      max: '6.0'
-      percentile: 100.0
-      numeric: 670.0
-    - property: Melting Point
-      value: ~280 °C (onset of pyrolysis/decomposition)
-      unit: °C
-      percentile: 0.0
-      numeric: 280.0
+      value: '0.65'
+      unit: g/cm³
     - property: Thermal Conductivity
-      value: 0.12-0.17 W/(m·K) (radial)
-      unit: W/
-      percentile: 0.0
-      numeric: 0.15
-    - property: Tensile Strength
-      value: 101 MPa (Juglans regia, parallel to grain)
-      unit: MPa
-      percentile: 5.4
-      numeric: 101.0
+      value: '0.14'
+      unit: W/m·K
     - property: Hardness
-      value: 4.49 kN (Janka Hardness for Juglans nigra)
+      value: '4.49'
       unit: kN
-      min: '1.0'
-      max: '10.0'
-      percentile: 38.8
-      numeric: 4.49
-    - property: Young's Modulus
-      value: 11.59 GPa (Juglans regia, parallel to grain)
-      unit: GPa
-      percentile: 0.0
-      numeric: 11.59
   - header: '## Laser Processing Parameters'
     rows:
     - property: Power Range
-      value: 20-100W
+      value: '20.0'
       unit: W
-      min: '20.0'
-      max: '500.0'
-      numeric: 60.0
     - property: Pulse Duration
-      value: 10-50ns
+      value: '10.0'
       unit: ns
-      min: '1.0'
-      max: '1000.0'
-      numeric: 30.0
+      category: Standard
     - property: Wavelength
-      value: 1064nm (primary), 532nm (optional)
+      value: '10600.0'
       unit: nm
-      min: '355.0'
-      max: '2940.0'
-      numeric: 1064.0
+      category: Optimal
     - property: Spot Size
-      value: 0.1-1.0mm
+      value: '1.0'
       unit: mm
-      min: '0.01'
-      max: '10.0'
-      numeric: 0.55
+      category: Configurable
     - property: Repetition Rate
-      value: 20-100kHz
+      value: '10.0'
       unit: kHz
-      min: '1.0'
-      max: '1000.0'
-      numeric: 60.0
+      category: Variable
     - property: Fluence Range
-      value: 0.5–3.0 J/cm²
+      value: '0.2'
       unit: J/cm²
-      min: '0.1'
-      max: '50.0'
-      numeric: 0.5
+      category: Range
+    - property: Beam Profile
+      value: Gaussian TEM00
+      unit: '-'
+      category: System
+    - property: Safety Class
+      value: Class 4 (requires full enclosure)
+      unit: '-'
+      category: Safety
   - header: '## Applications & Industries'
     rows:
     - property: Furniture Manufacturing
@@ -102,34 +54,26 @@ materialTables:
       value: Precision cleaning of walnut sculptures and frames
       unit: '-'
       category: Application
-  - header: '## Performance Metrics'
-    rows:
-    - property: Contaminant removal with substrate preservation
-      value: Achieves >95% contaminant removal while preserving >99% of the original walnut substrate integrity.
+    - property: Cabinetry
+      value: High-end walnut kitchen and bathroom cabinet refinishing
       unit: '-'
-      category: Performance
-    - property: Processing speed
-      value: Effective cleaning rates of 0.5 - 2.0 m²/hour depending on contamination layer thickness and laser parameters.
+      category: Application
+    - property: Musical Instruments
+      value: Cleaning walnut guitar bodies and piano cases
       unit: '-'
-      category: Performance
-  - header: '## Environmental Impact'
-    rows:
-    - property: Elimination of chemical solvents
-      value: Replaces traditional solvent-based stripping, eliminating VOC emissions and hazardous waste generation associated with methylene chloride or N-methyl-2-pyrrolidone (NMP) based paint strippers.
+      category: Application
+    - property: Gunstock Manufacturing
+      value: Surface preparation for walnut rifle stocks
       unit: '-'
-      category: Environmental
-    - property: Reduced waste and material consumption
-      value: Non-abrasive process generates only vaporized contaminant waste, significantly reducing solid waste compared to sanding or media blasting; no consumable media required.
+      category: Application
+    - property: Architectural Millwork
+      value: Cleaning walnut trim and decorative elements
       unit: '-'
-      category: Environmental
+      category: Application
   - header: '## Compatibility & Standards'
     rows:
     - property: Material Compatibility
-      value: Pulsed fiber lasers with nanosecond pulse durations, Other hardwoods with similar density and lignin content (e.g., Oak, Maple)
+      value: laser_types, surface_treatments, incompatible_conditions
       unit: '-'
       category: Compatibility
-    - property: Regulatory Standards
-      value: ANSI Z136.1 (Safe Use of Lasers), IEC 60825-1 (Laser Product Safety)
-      unit: '-'
-      category: Compliance
 renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. Pure data structure optimized for performance.'

@@ -10,88 +10,53 @@ materialTables:
       value: Si-N
       unit: '-'
       category: Chemical
-    - property: Material Type
-      value: Ceramic
-      unit: '-'
-      category: Classification
-    - property: Composition
-      value: 'Silicon (Si): 60.06%, Nitrogen (N): 39.94%, Trace sintering additives: Y2O3, Al2O3, MgO (typically 5-10% total)'
-      unit: '-'
-      category: Composition
   - header: '## Physical & Mechanical Properties'
     rows:
     - property: Density
-      value: 3.17-3.44 g/cm³
+      value: '3.17'
       unit: g/cm³
-      min: '1.8'
-      max: '6.0'
-      percentile: 35.7
-      numeric: 3.3
     - property: Melting Point
-      value: 1900°C
+      value: '1900'
       unit: °C
-      percentile: 43.8
-      numeric: 1900.0
     - property: Thermal Conductivity
-      value: 15-85 W/(m·K)
-      unit: W/
-      percentile: 24.8
-      numeric: 50.0
-    - property: Tensile Strength
-      value: 300-1000 MPa
-      unit: MPa
-      percentile: 63.2
-      numeric: 650.0
+      value: '15'
+      unit: W/m·K
     - property: Hardness
-      value: 9.0 Mohs
+      value: '9.0'
       unit: Mohs
-      min: '1.0'
-      max: '10.0'
-      percentile: 88.9
-      numeric: 9.0
-    - property: Young's Modulus
-      value: 280-320 GPa
-      unit: GPa
-      percentile: 100.0
-      numeric: 300.0
   - header: '## Laser Processing Parameters'
     rows:
     - property: Power Range
-      value: 20-100W
+      value: '180.0'
       unit: W
-      min: '20.0'
-      max: '500.0'
-      numeric: 60.0
     - property: Pulse Duration
-      value: 10-100ns
+      value: '20.0'
       unit: ns
-      min: '1.0'
-      max: '1000.0'
-      numeric: 55.0
+      category: Standard
     - property: Wavelength
-      value: 1064 nm (primary), 532nm (optional)
+      value: '532.0'
       unit: nm
-      min: '355.0'
-      max: '2940.0'
-      numeric: 1064.0
+      category: Optimal
     - property: Spot Size
-      value: 0.1-2.0mm
+      value: '1.0'
       unit: mm
-      min: '0.01'
-      max: '10.0'
-      numeric: 1.05
+      category: Configurable
     - property: Repetition Rate
-      value: 10-50kHz
+      value: '20.0'
       unit: kHz
-      min: '1.0'
-      max: '1000.0'
-      numeric: 30.0
+      category: Variable
     - property: Fluence Range
-      value: 0.5–5 J/cm²
+      value: '4.6'
       unit: J/cm²
-      min: '0.1'
-      max: '50.0'
-      numeric: 0.5
+      category: Range
+    - property: Beam Profile
+      value: Gaussian TEM00
+      unit: '-'
+      category: System
+    - property: Safety Class
+      value: Class 4 (requires full enclosure)
+      unit: '-'
+      category: Safety
   - header: '## Applications & Industries'
     rows:
     - property: Semiconductor
@@ -110,34 +75,18 @@ materialTables:
       value: High-temperature bearing component cleaning
       unit: '-'
       category: Application
-  - header: '## Performance Metrics'
-    rows:
-    - property: Surface contamination removal efficiency
-      value: '>99.9% particulate removal with <0.1% substrate damage'
+    - property: Aerospace
+      value: Turbine engine component cleaning
       unit: '-'
-      category: Performance
-    - property: Processing speed and precision
-      value: 1-10 cm²/min cleaning rate with ±10 μm precision, depending on contamination type and laser parameters
+      category: Application
+    - property: Medical
+      value: Biocompatible implant surface preparation
       unit: '-'
-      category: Performance
-  - header: '## Environmental Impact'
-    rows:
-    - property: Elimination of chemical solvents and abrasive media
-      value: Reduces hazardous chemical usage by 100% compared to traditional solvent cleaning methods, eliminating VOC emissions and chemical waste disposal
-      unit: '-'
-      category: Environmental
-    - property: Significant reduction in water consumption
-      value: Uses 95% less water than ultrasonic cleaning methods, with no wastewater generation requiring treatment
-      unit: '-'
-      category: Environmental
+      category: Application
   - header: '## Compatibility & Standards'
     rows:
     - property: Material Compatibility
-      value: Compatible with aluminum oxide, zirconia, and other technical ceramics in multi-material assemblies, Processes similarly to other advanced ceramics with high thermal stability and mechanical strength
+      value: laser_types, surface_treatments, incompatible_conditions
       unit: '-'
       category: Compatibility
-    - property: Regulatory Standards
-      value: IEC 60825-1 (Laser Safety), ISO 11551 (Laser Beam Power/Energy Measurement), ISO 13694 (Laser Beam Power Density Distribution)
-      unit: '-'
-      category: Compliance
 renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. Pure data structure optimized for performance.'

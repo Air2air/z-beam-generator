@@ -1,134 +1,79 @@
 materialTables:
   tables:
-  - header: '## Chemical Properties'
-    rows:
-    - property: Chemical Formula
-      value: C₆H₁₀O₅ (Cellulose base)
-      unit: '-'
-      category: Chemical
-    - property: Chemical Symbol
-      value: N/A (Organic Composite)
-      unit: '-'
-      category: Chemical
-    - property: Material Type
-      value: Wood
-      unit: '-'
-      category: Classification
-    - property: Composition
-      value: Cellulose (40-50%), Hemicellulose (20-28%), Lignin (22-28%), Extractives (3-5%)
-      unit: '-'
-      category: Composition
   - header: '## Physical & Mechanical Properties'
     rows:
     - property: Density
-      value: 545-705 kg/m³ (varies by species)
-      unit: kg/m³
-      min: '1.8'
-      max: '6.0'
-      percentile: 100.0
-      numeric: 625.0
-    - property: Decomposition Point
-      value: 270°C
-      unit: °C
-      numeric: 270.0
+      value: '0.55'
+      unit: g/cm³
     - property: Thermal Conductivity
-      value: 0.12-0.17 W/(m·K) (radial)
-      unit: W/
-      percentile: 0.0
-      numeric: 0.15
-    - property: Tensile Strength
-      value: 80-120 MPa (parallel to grain)
-      unit: MPa
-      percentile: 5.3
-      numeric: 100.0
+      value: '0.13'
+      unit: W/m·K
     - property: Hardness
-      value: 800-900 lbf (Janka scale, Honduran Mahogany)
-      unit: lbf
-      min: '1.0'
-      max: '10.0'
-      percentile: 100.0
-      numeric: 850.0
-    - property: Young's Modulus
-      value: 9.7-10.3 GPa
-      unit: GPa
-      percentile: 0.0
-      numeric: 10.0
+      value: '2.2'
+      unit: kN
   - header: '## Laser Processing Parameters'
     rows:
     - property: Power Range
-      value: 20-100W
+      value: '19.0'
       unit: W
-      min: '20.0'
-      max: '500.0'
-      numeric: 60.0
     - property: Pulse Duration
-      value: 10-50ns
+      value: '10.0'
       unit: ns
-      min: '1.0'
-      max: '1000.0'
-      numeric: 30.0
+      category: Standard
     - property: Wavelength
-      value: 1064nm (primary), 532nm (optional)
+      value: '10600.0'
       unit: nm
-      min: '355.0'
-      max: '2940.0'
-      numeric: 1064.0
+      category: Optimal
     - property: Spot Size
-      value: 0.1-1.0mm
+      value: '1.5'
       unit: mm
-      min: '0.01'
-      max: '10.0'
-      numeric: 0.55
+      category: Configurable
     - property: Repetition Rate
-      value: 20-100kHz
+      value: '10.0'
       unit: kHz
-      min: '1.0'
-      max: '1000.0'
-      numeric: 60.0
+      category: Variable
     - property: Fluence Range
-      value: 0.5-3.0 J/cm²
+      value: '0.2'
       unit: J/cm²
-      min: '0.1'
-      max: '50.0'
-      numeric: 1.75
+      category: Range
+    - property: Beam Profile
+      value: Gaussian TEM00
+      unit: '-'
+      category: System
+    - property: Safety Class
+      value: Class 4 (requires full enclosure)
+      unit: '-'
+      category: Safety
   - header: '## Applications & Industries'
     rows:
     - property: Furniture Manufacturing
       value: Removing old finishes and stains from Mahogany furniture surfaces
       unit: '-'
       category: Application
-    - property: Restoration
-      value: Cleaning and restoring historical Mahogany artifacts and structures
+    - property: Luxury Cabinetry
+      value: High-end mahogany kitchen and office cabinet refinishing
       unit: '-'
       category: Application
-  - header: '## Performance Metrics'
-    rows:
-    - property: Non-destructive substrate preservation
-      value: Achieves >99% contaminant removal with <5 µm substrate loss, preserving patina and historical value.
+    - property: Marine Applications
+      value: Cleaning mahogany yacht interiors and boat trim
       unit: '-'
-      category: Performance
-    - property: High processing speed
-      value: Effective cleaning rates of 2-5 m²/hour achievable, depending on contamination type and laser parameters.
+      category: Application
+    - property: Musical Instruments
+      value: Precision cleaning of mahogany guitar bodies and piano cases
       unit: '-'
-      category: Performance
-  - header: '## Environmental Impact'
-    rows:
-    - property: Zero chemical waste generation
-      value: Eliminates the use and disposal of toxic chemical strippers (e.g., methylene chloride, methanol), reducing hazardous waste by 100% compared to traditional methods.
+      category: Application
+    - property: Antique Restoration
+      value: Delicate cleaning of valuable mahogany antiques
       unit: '-'
-      category: Environmental
-    - property: Reduced energy consumption
-      value: Operates with high electrical-to-optical efficiency (>30%) and targets only the contamination layer, leading to an estimated 60-70% lower energy use per square meter than thermal or abrasive blasting techniques.
+      category: Application
+    - property: Architectural Elements
+      value: Cleaning mahogany doors, trim, and millwork
       unit: '-'
-      category: Environmental
+      category: Application
   - header: '## Compatibility & Standards'
     rows:
     - property: Material Compatibility
-      value: Other hardwoods with similar density and lignin content (e.g., Oak, Teak), Materials processed with similar near-IR laser parameters
+      value: laser_types, surface_treatments, incompatible_conditions
       unit: '-'
       category: Compatibility
-    - property: Regulatory Standards
-      value: ANSI Z136.1 (Safe Use of Lasers), IEC 60825-1 (Laser Product Safety)
-      unit: '-'
-      category: Compliance
 renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. Pure data structure optimized for performance.'

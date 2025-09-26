@@ -1,97 +1,49 @@
 materialTables:
   tables:
-  - header: '## Chemical Properties'
-    rows:
-    - property: Chemical Formula
-      value: CaCO₃
-      unit: '-'
-      category: Chemical
-    - property: Chemical Symbol
-      value: CaCO₃
-      unit: '-'
-      category: Chemical
-    - property: Material Type
-      value: Stone
-      unit: '-'
-      category: Classification
-    - property: Composition
-      value: 'Calcium carbonate (CaCO₃): 95-99%, Iron oxides, clay minerals, organic matter: 1-5%'
-      unit: '-'
-      category: Composition
   - header: '## Physical & Mechanical Properties'
     rows:
     - property: Density
-      value: 2.3-2.7 g/cm³
+      value: '2.5'
       unit: g/cm³
-      min: '1.8'
-      max: '6.0'
-      percentile: 16.7
-      numeric: 2.5
-    - property: Melting Point
-      value: 825°C
-      unit: °C
-      percentile: 0.0
-      numeric: 825.0
     - property: Thermal Conductivity
-      value: 1.26-1.33 W/(m·K)
-      unit: W/
-      percentile: 0.4
-      numeric: 1.29
-    - property: Tensile Strength
-      value: 3-8 MPa
-      unit: MPa
-      percentile: 0.0
-      numeric: 5.5
+      value: '1.5'
+      unit: W/m·K
     - property: Hardness
-      value: 3-4 Mohs
+      value: '6'
       unit: Mohs
-      min: '1.0'
-      max: '10.0'
-      percentile: 27.8
-      numeric: 3.5
-    - property: Young's Modulus
-      value: 10-40 GPa
-      unit: GPa
-      percentile: 8.3
-      numeric: 25.0
   - header: '## Laser Processing Parameters'
     rows:
     - property: Power Range
-      value: 20-100W
+      value: '65.0'
       unit: W
-      min: '20.0'
-      max: '500.0'
-      numeric: 60.0
     - property: Pulse Duration
-      value: 10-100ns
+      value: '20.0'
       unit: ns
-      min: '1.0'
-      max: '1000.0'
-      numeric: 55.0
+      category: Standard
     - property: Wavelength
-      value: 1064 nm (primary), 532nm (optional)
+      value: '1064.0'
       unit: nm
-      min: '355.0'
-      max: '2940.0'
-      numeric: 1064.0
+      category: Optimal
     - property: Spot Size
-      value: 0.1-2.0mm
+      value: '1.5'
       unit: mm
-      min: '0.01'
-      max: '10.0'
-      numeric: 1.05
+      category: Configurable
     - property: Repetition Rate
-      value: 10-50kHz
+      value: '20.0'
       unit: kHz
-      min: '1.0'
-      max: '1000.0'
-      numeric: 30.0
+      category: Variable
     - property: Fluence Range
-      value: 0.5-5 J/cm²
+      value: '1.0'
       unit: J/cm²
-      min: '0.1'
-      max: '50.0'
-      numeric: 2.75
+      category: Range
+    - property: Beam Profile
+      value: Gaussian TEM00
+      unit: '-'
+      category: System
+    - property: Safety Class
+      value: Class 4 (requires full enclosure)
+      unit: '-'
+      category: Safety
   - header: '## Applications & Industries'
     rows:
     - property: Construction
@@ -102,34 +54,10 @@ materialTables:
       value: Cleaning and restoration of historical travertine sculptures and architectural elements
       unit: '-'
       category: Application
-  - header: '## Performance Metrics'
-    rows:
-    - property: Surface contamination removal efficiency
-      value: '>98% removal of biological patina and black crusts with <2% substrate loss'
-      unit: '-'
-      category: Performance
-    - property: Processing speed
-      value: 0.5-2.0 m²/hour depending on contamination level and laser parameters
-      unit: '-'
-      category: Performance
-  - header: '## Environmental Impact'
-    rows:
-    - property: Zero chemical waste generation
-      value: Eliminates 100% of chemical solvents and acidic cleaners traditionally used in travertine restoration
-      unit: '-'
-      category: Environmental
-    - property: 95% reduction in water consumption
-      value: Dry process eliminates water usage compared to traditional pressure washing and chemical rinsing methods
-      unit: '-'
-      category: Environmental
   - header: '## Compatibility & Standards'
     rows:
     - property: Material Compatibility
-      value: Marble and limestone (similar calcium carbonate composition), Sandstone with calcareous cement
+      value: laser_types, surface_treatments, incompatible_conditions
       unit: '-'
       category: Compatibility
-    - property: Regulatory Standards
-      value: EN 15898:2019 (Conservation of cultural heritage - Main general terms and definitions), UNI 11421:2015 (Cultural heritage - Laser cleaning of stone surfaces)
-      unit: '-'
-      category: Compliance
 renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. Pure data structure optimized for performance.'

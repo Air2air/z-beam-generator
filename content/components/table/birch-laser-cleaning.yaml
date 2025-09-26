@@ -1,97 +1,49 @@
 materialTables:
   tables:
-  - header: '## Chemical Properties'
-    rows:
-    - property: Chemical Formula
-      value: Complex organic polymer (primarily cellulose C₆H₁₀O₅, lignin C₉H₁₀O₂, hemicellulose)
-      unit: '-'
-      category: Chemical
-    - property: Chemical Symbol
-      value: C₆H₁₀O₅ (cellulose base)
-      unit: '-'
-      category: Chemical
-    - property: Material Type
-      value: Wood
-      unit: '-'
-      category: Classification
-    - property: Composition
-      value: 'Cellulose: 40-45%, Hemicellulose: 25-30%, Lignin: 20-25%, Extractives: 3-5%'
-      unit: '-'
-      category: Composition
   - header: '## Physical & Mechanical Properties'
     rows:
     - property: Density
-      value: 670 kg/m³ (average for European birch)
-      unit: kg/m³
-      min: '1.8'
-      max: '6.0'
-      percentile: 100.0
-      numeric: 670.0
-    - property: Melting Point
-      value: Decomposes at ~280°C (does not melt, undergoes pyrolysis)
-      unit: Decomposes
-      percentile: 0.0
-      numeric: 280.0
+      value: '0.64'
+      unit: g/cm³
     - property: Thermal Conductivity
-      value: 0.14 W/(m·K) (radial direction)
-      unit: W/
-      percentile: 0.0
-      numeric: 0.14
-    - property: Tensile Strength
-      value: 120 MPa (parallel to grain)
-      unit: MPa
-      percentile: 7.4
-      numeric: 120.0
+      value: '0.15'
+      unit: W/m·K
     - property: Hardness
-      value: 3.0-3.5 kN (Janka hardness scale)
+      value: '4.87'
       unit: kN
-      min: '1.0'
-      max: '10.0'
-      percentile: 25.0
-      numeric: 3.25
-    - property: Young's Modulus
-      value: 14.1 GPa (parallel to grain)
-      unit: GPa
-      percentile: 0.0
-      numeric: 14.1
   - header: '## Laser Processing Parameters'
     rows:
     - property: Power Range
-      value: 20-100W
+      value: '17.0'
       unit: W
-      min: '20.0'
-      max: '500.0'
-      numeric: 60.0
     - property: Pulse Duration
-      value: 10-100ns
+      value: '10.0'
       unit: ns
-      min: '1.0'
-      max: '1000.0'
-      numeric: 55.0
+      category: Standard
     - property: Wavelength
-      value: 1064 nm (primary), 532nm (optional)
+      value: '10600.0'
       unit: nm
-      min: '355.0'
-      max: '2940.0'
-      numeric: 1064.0
+      category: Optimal
     - property: Spot Size
-      value: 0.1-2.0mm
+      value: '1.0'
       unit: mm
-      min: '0.01'
-      max: '10.0'
-      numeric: 1.05
+      category: Configurable
     - property: Repetition Rate
-      value: 10-50kHz
+      value: '25.0'
       unit: kHz
-      min: '1.0'
-      max: '1000.0'
-      numeric: 30.0
+      category: Variable
     - property: Fluence Range
-      value: 0.5–5 J/cm²
+      value: '0.2'
       unit: J/cm²
-      min: '0.1'
-      max: '50.0'
-      numeric: 0.5
+      category: Range
+    - property: Beam Profile
+      value: Gaussian TEM00
+      unit: '-'
+      category: System
+    - property: Safety Class
+      value: Class 4 (requires full enclosure)
+      unit: '-'
+      category: Safety
   - header: '## Applications & Industries'
     rows:
     - property: Woodworking
@@ -102,34 +54,26 @@ materialTables:
       value: Removing surface contaminants from birch wood panels
       unit: '-'
       category: Application
-  - header: '## Performance Metrics'
-    rows:
-    - property: Surface contamination removal efficiency
-      value: '>95% removal of surface contaminants with <5 µm substrate damage'
+    - property: Plywood Manufacturing
+      value: Surface preparation for birch plywood veneers
       unit: '-'
-      category: Performance
-    - property: Processing speed for large surfaces
-      value: 0.5-2.0 m²/hour depending on contamination level and laser parameters
+      category: Application
+    - property: Cabinetry
+      value: Cleaning birch cabinet surfaces for refinishing
       unit: '-'
-      category: Performance
-  - header: '## Environmental Impact'
-    rows:
-    - property: Zero chemical waste generation
-      value: Eliminates need for chemical strippers and solvents, reducing hazardous waste by 100% compared to traditional chemical cleaning methods
+      category: Application
+    - property: Turning
+      value: Surface treatment for birch bowls and decorative items
       unit: '-'
-      category: Environmental
-    - property: Reduced energy consumption
-      value: Laser cleaning consumes approximately 60% less energy than sandblasting or thermal cleaning methods for birch wood surface preparation
+      category: Application
+    - property: Flooring
+      value: Preparation of birch hardwood flooring surfaces
       unit: '-'
-      category: Environmental
+      category: Application
   - header: '## Compatibility & Standards'
     rows:
     - property: Material Compatibility
-      value: Pulsed fiber lasers with precise thermal control, Wood species with similar density and composition (maple, beech)
+      value: laser_types, surface_treatments, incompatible_conditions
       unit: '-'
       category: Compatibility
-    - property: Regulatory Standards
-      value: ISO 11553-1:2020 (Safety of machinery - Laser processing machines), EN 60825-1:2014 (Laser product safety)
-      unit: '-'
-      category: Compliance
 renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. Pure data structure optimized for performance.'

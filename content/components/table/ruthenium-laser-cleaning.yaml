@@ -1,97 +1,52 @@
 materialTables:
   tables:
-  - header: '## Chemical Properties'
-    rows:
-    - property: Chemical Formula
-      value: Ru
-      unit: '-'
-      category: Chemical
-    - property: Chemical Symbol
-      value: Ru
-      unit: '-'
-      category: Chemical
-    - property: Material Type
-      value: Metal
-      unit: '-'
-      category: Classification
-    - property: Composition
-      value: Ruthenium (99.9% pure), Platinum group trace elements (<0.1%)
-      unit: '-'
-      category: Composition
   - header: '## Physical & Mechanical Properties'
     rows:
     - property: Density
-      value: 12.45 g/cm³
+      value: '7.8'
       unit: g/cm³
-      min: '1.8'
-      max: '6.0'
-      percentile: 100.0
-      numeric: 12.45
-    - property: Melting Point
-      value: 2334°C
-      unit: °C
-      percentile: 70.9
-      numeric: 2334.0
     - property: Thermal Conductivity
-      value: 117 W/(m·K)
-      unit: W/
-      percentile: 58.4
-      numeric: 117.0
+      value: '15'
+      unit: W/m·K
     - property: Tensile Strength
-      value: 370 MPa
+      value: '200'
       unit: MPa
-      percentile: 33.7
-      numeric: 370.0
-    - property: Hardness
-      value: 6.5 Mohs
-      unit: Mohs
-      min: '1.0'
-      max: '10.0'
-      percentile: 61.1
-      numeric: 6.5
     - property: Young's Modulus
-      value: 447 GPa
+      value: '200'
       unit: GPa
-      percentile: 100.0
-      numeric: 447.0
   - header: '## Laser Processing Parameters'
     rows:
     - property: Power Range
-      value: 20-100W
+      value: '50.0'
       unit: W
-      min: '20.0'
-      max: '500.0'
-      numeric: 60.0
     - property: Pulse Duration
-      value: 10-100ns
+      value: '20.0'
       unit: ns
-      min: '1.0'
-      max: '1000.0'
-      numeric: 55.0
+      category: Standard
     - property: Wavelength
-      value: 1064nm (primary), 532nm (optional)
+      value: '1064.0'
       unit: nm
-      min: '355.0'
-      max: '2940.0'
-      numeric: 1064.0
+      category: Optimal
     - property: Spot Size
-      value: 0.1-2.0mm
+      value: '1.0'
       unit: mm
-      min: '0.01'
-      max: '10.0'
-      numeric: 1.05
+      category: Configurable
     - property: Repetition Rate
-      value: 10-50kHz
+      value: '30.0'
       unit: kHz
-      min: '1.0'
-      max: '1000.0'
-      numeric: 30.0
+      category: Variable
     - property: Fluence Range
-      value: 0.5–5 J/cm²
+      value: '0.8'
       unit: J/cm²
-      min: '0.1'
-      max: '50.0'
-      numeric: 0.5
+      category: Range
+    - property: Beam Profile
+      value: Gaussian TEM00
+      unit: '-'
+      category: System
+    - property: Safety Class
+      value: Class 4 (requires full enclosure)
+      unit: '-'
+      category: Safety
   - header: '## Applications & Industries'
     rows:
     - property: Electronics
@@ -102,34 +57,10 @@ materialTables:
       value: Precision cleaning of Ruthenium coatings on turbine blades
       unit: '-'
       category: Application
-  - header: '## Performance Metrics'
-    rows:
-    - property: Surface contamination removal to <10 nm residual layer
-      value: Achieves ISO 14644-1 Class 5 cleanliness standards
-      unit: '-'
-      category: Performance
-    - property: Sub-micron precision material removal
-      value: ±0.5 μm dimensional tolerance maintained during cleaning process
-      unit: '-'
-      category: Performance
-  - header: '## Environmental Impact'
-    rows:
-    - property: Zero chemical waste generation
-      value: Eliminates use of hazardous chemical solvents traditionally used for Ruthenium surface preparation
-      unit: '-'
-      category: Environmental
-    - property: 95% reduction in water consumption
-      value: Dry process eliminates need for water-based cleaning and rinsing steps in electronics manufacturing
-      unit: '-'
-      category: Environmental
   - header: '## Compatibility & Standards'
     rows:
     - property: Material Compatibility
-      value: Platinum group metals (Rhodium, Palladium), Nickel-based superalloys, Titanium alloys
+      value: laser_types, surface_treatments, incompatible_conditions
       unit: '-'
       category: Compatibility
-    - property: Regulatory Standards
-      value: IEC 60825-1 (Laser Safety), OSHA 29 CFR 1910.1096 (Ionizing Radiation)
-      unit: '-'
-      category: Compliance
 renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. Pure data structure optimized for performance.'

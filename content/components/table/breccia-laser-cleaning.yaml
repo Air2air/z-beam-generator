@@ -1,97 +1,49 @@
 materialTables:
   tables:
-  - header: '## Chemical Properties'
-    rows:
-    - property: Chemical Formula
-      value: Variable (composite rock)
-      unit: '-'
-      category: Chemical
-    - property: Chemical Symbol
-      value: N/A (composite rock)
-      unit: '-'
-      category: Chemical
-    - property: Material Type
-      value: Sedimentary Rock
-      unit: '-'
-      category: Classification
-    - property: Composition
-      value: 'Angular rock fragments (clasts): 50-70% (limestone, chert, quartzite, other sedimentary rocks), Fine-grained matrix: 30-50% (calcite, silica, iron oxides, clay minerals)'
-      unit: '-'
-      category: Composition
   - header: '## Physical & Mechanical Properties'
     rows:
     - property: Density
-      value: 2.5-2.8 g/cm³ (varies with composition)
+      value: '2.5'
       unit: g/cm³
-      min: '1.8'
-      max: '6.0'
-      percentile: 20.2
-      numeric: 2.65
-    - property: Melting Point
-      value: 1400°C
-      unit: °C
-      percentile: 6.2
-      numeric: 1400.0
     - property: Thermal Conductivity
-      value: 2.0-3.5 W/(m·K)
-      unit: W/
-      percentile: 1.1
-      numeric: 2.75
-    - property: Tensile Strength
-      value: 4-10 MPa
-      unit: MPa
-      percentile: 0.0
-      numeric: 7.0
+      value: '1.5'
+      unit: W/m·K
     - property: Hardness
-      value: 3-6 Mohs (depending on clast composition)
+      value: '6'
       unit: Mohs
-      min: '1.0'
-      max: '10.0'
-      percentile: 38.9
-      numeric: 4.5
-    - property: Young's Modulus
-      value: 10-40 GPa
-      unit: GPa
-      percentile: 8.3
-      numeric: 25.0
   - header: '## Laser Processing Parameters'
     rows:
     - property: Power Range
-      value: 50-200W
+      value: '95.0'
       unit: W
-      min: '20.0'
-      max: '500.0'
-      numeric: 125.0
     - property: Pulse Duration
-      value: 10-50ns
+      value: '20.0'
       unit: ns
-      min: '1.0'
-      max: '1000.0'
-      numeric: 30.0
+      category: Standard
     - property: Wavelength
-      value: 1064nm (primary), 532nm (optional)
+      value: '1064.0'
       unit: nm
-      min: '355.0'
-      max: '2940.0'
-      numeric: 1064.0
+      category: Optimal
     - property: Spot Size
-      value: 0.1-1.0mm
+      value: '1.0'
       unit: mm
-      min: '0.01'
-      max: '10.0'
-      numeric: 0.55
+      category: Configurable
     - property: Repetition Rate
-      value: 20-100kHz
+      value: '20.0'
       unit: kHz
-      min: '1.0'
-      max: '1000.0'
-      numeric: 60.0
+      category: Variable
     - property: Fluence Range
-      value: 1.0-10 J/cm²
+      value: '1.9'
       unit: J/cm²
-      min: '0.1'
-      max: '50.0'
-      numeric: 5.5
+      category: Range
+    - property: Beam Profile
+      value: Gaussian TEM00
+      unit: '-'
+      category: System
+    - property: Safety Class
+      value: Class 4 (requires full enclosure)
+      unit: '-'
+      category: Safety
   - header: '## Applications & Industries'
     rows:
     - property: Construction
@@ -102,34 +54,14 @@ materialTables:
       value: Cleaning and surface preparation of sculptures and artworks
       unit: '-'
       category: Application
-  - header: '## Performance Metrics'
-    rows:
-    - property: Selective contaminant removal
-      value: '>95% contaminant removal with <2% substrate loss, preserving original surface morphology and patina'
+    - property: Landscaping
+      value: Breccia garden feature cleaning
       unit: '-'
-      category: Performance
-    - property: Non-contact processing
-      value: Zero mechanical damage to fragile surfaces, achieving surface roughness preservation within ±5% of original state
-      unit: '-'
-      category: Performance
-  - header: '## Environmental Impact'
-    rows:
-    - property: Zero chemical waste generation
-      value: Eliminates use of hazardous chemicals (acids, solvents) and associated disposal requirements, reducing environmental contamination risk by 100% compared to chemical methods
-      unit: '-'
-      category: Environmental
-    - property: Significantly reduced water consumption
-      value: Uses no water compared to traditional high-pressure water cleaning methods, saving approximately 50-200 liters per square meter of treated surface
-      unit: '-'
-      category: Environmental
+      category: Application
   - header: '## Compatibility & Standards'
     rows:
     - property: Material Compatibility
-      value: Compatible with most carbonate-based stones (limestone, marble), Similar processing parameters to other porous sedimentary stones
+      value: laser_types, surface_treatments, incompatible_conditions
       unit: '-'
       category: Compatibility
-    - property: Regulatory Standards
-      value: EN 15898:2019 (Conservation of cultural heritage - Main general terms and definitions), EN 17138:2018 (Conservation of cultural heritage - Methods and materials for cleaning porous inorganic materials)
-      unit: '-'
-      category: Compliance
 renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. Pure data structure optimized for performance.'

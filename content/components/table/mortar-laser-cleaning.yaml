@@ -1,97 +1,46 @@
 materialTables:
   tables:
-  - header: '## Chemical Properties'
-    rows:
-    - property: Chemical Formula
-      value: Variable; primarily CaCO₃ (carbonated) or Ca(OH)₂ (non-carbonated) in lime mortar; CaO·SiO₂·H₂O (CSH gel) in cement mortar
-      unit: '-'
-      category: Chemical
-    - property: Chemical Symbol
-      value: N/A (Composite Material)
-      unit: '-'
-      category: Chemical
-    - property: Material Type
-      value: Masonry
-      unit: '-'
-      category: Classification
-    - property: Composition
-      value: 'Calcium carbonate (CaCO₃): 60-80% (in carbonated lime mortar), Hydrated calcium silicates (CSH gel): 50-70% (in Portland cement mortar); Sand (SiO₂): 20-40%; Water (H₂O): chemically bound'
-      unit: '-'
-      category: Composition
   - header: '## Physical & Mechanical Properties'
     rows:
     - property: Density
-      value: 1500-2000 kg/m³
-      unit: kg/m³
-      min: '1.8'
-      max: '6.0'
-      percentile: 100.0
-      numeric: 1750.0
-    - property: Melting Point
-      value: ~1450 °C (for decomposition of primary components)
-      unit: °C
-      percentile: 15.6
-      numeric: 1450.0
+      value: '1.8'
+      unit: g/cm³
     - property: Thermal Conductivity
-      value: 0.7-1.3 W/(m·K)
-      unit: W/
-      percentile: 0.3
-      numeric: 1.0
-    - property: Tensile Strength
-      value: 0.5-2.0 MPa
-      unit: MPa
-      percentile: 0.0
-      numeric: 1.25
-    - property: Hardness
-      value: 3-4 Mohs
-      unit: Mohs
-      min: '1.0'
-      max: '10.0'
-      percentile: 27.8
-      numeric: 3.5
-    - property: Young's Modulus
-      value: 10-25 GPa
-      unit: GPa
-      percentile: 0.0
-      numeric: 17.5
+      value: '0.5'
+      unit: W/m·K
   - header: '## Laser Processing Parameters'
     rows:
     - property: Power Range
-      value: 50-200W
+      value: '65.0'
       unit: W
-      min: '20.0'
-      max: '500.0'
-      numeric: 125.0
     - property: Pulse Duration
-      value: 10-200ns
+      value: '10.0'
       unit: ns
-      min: '1.0'
-      max: '1000.0'
-      numeric: 105.0
+      category: Standard
     - property: Wavelength
-      value: 1064nm (primary), 532nm (optional)
+      value: '1064.0'
       unit: nm
-      min: '355.0'
-      max: '2940.0'
-      numeric: 1064.0
+      category: Optimal
     - property: Spot Size
-      value: 0.1-1.0mm
+      value: '1.5'
       unit: mm
-      min: '0.01'
-      max: '10.0'
-      numeric: 0.55
+      category: Configurable
     - property: Repetition Rate
-      value: 20-100kHz
+      value: '20.0'
       unit: kHz
-      min: '1.0'
-      max: '1000.0'
-      numeric: 60.0
+      category: Variable
     - property: Fluence Range
-      value: 1.0–10 J/cm²
+      value: '1.1'
       unit: J/cm²
-      min: '0.1'
-      max: '50.0'
-      numeric: 1.0
+      category: Range
+    - property: Beam Profile
+      value: Gaussian TEM00
+      unit: '-'
+      category: System
+    - property: Safety Class
+      value: Class 4 (requires full enclosure)
+      unit: '-'
+      category: Safety
   - header: '## Applications & Industries'
     rows:
     - property: Construction
@@ -102,34 +51,10 @@ materialTables:
       value: Cleaning and preservation of ancient masonry structures
       unit: '-'
       category: Application
-  - header: '## Performance Metrics'
-    rows:
-    - property: Non-destructive surface cleaning
-      value: Achieves >99% contaminant removal with <0.1 mm substrate loss, preserving original surface morphology and historic value.
-      unit: '-'
-      category: Performance
-    - property: High processing speed and accuracy
-      value: Cleaning rates of 2-5 m²/hour with positional accuracy of ±50 µm, enabling precise work on intricate details and carvings.
-      unit: '-'
-      category: Performance
-  - header: '## Environmental Impact'
-    rows:
-    - property: Zero secondary waste generation
-      value: Eliminates slurry and chemical runoff associated with abrasive blasting and poultice cleaning, reducing water consumption by 100% and hazardous waste by >95%.
-      unit: '-'
-      category: Environmental
-    - property: Significantly reduced energy consumption
-      value: Laser process consumes approximately 0.5-1.5 kWh/m² compared to 3-5 kWh/m² for traditional methods, achieving a 60-70% reduction in energy use.
-      unit: '-'
-      category: Environmental
   - header: '## Compatibility & Standards'
     rows:
     - property: Material Compatibility
-      value: Brick, Stone, Terracotta, Concrete, Render
+      value: laser_types, surface_treatments, incompatible_conditions
       unit: '-'
       category: Compatibility
-    - property: Regulatory Standards
-      value: EN 15898:2019 (Conservation of cultural heritage - Main general terms and definitions); EN 17138:2018 (Conservation of cultural heritage - Methods and materials for cleaning porous inorganic materials)
-      unit: '-'
-      category: Compliance
 renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. Pure data structure optimized for performance.'

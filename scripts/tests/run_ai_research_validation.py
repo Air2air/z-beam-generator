@@ -85,7 +85,7 @@ def main():
                 "cmd": ["python3", "-c", """
 import sys
 sys.path.append('.')
-from components.frontmatter.core.generator import FrontmatterComponentGenerator
+from components.frontmatter.core.streamlined_generator import StreamlinedFrontmatterGenerator
 from components.frontmatter.enhancement.property_enhancement_service import PropertyEnhancementService
 
 # Test imports work
@@ -102,7 +102,7 @@ for pattern in forbidden:
 print('✅ PropertyEnhancementService validation passed')
 
 # Test generator has no fallback patterns
-source = inspect.getsource(FrontmatterComponentGenerator)
+source = inspect.getsource(StreamlinedFrontmatterGenerator)
 forbidden_patterns = ['or "Unknown"', 'or "N/A"', 'or "TBD"']
 for pattern in forbidden_patterns:
     if pattern in source:

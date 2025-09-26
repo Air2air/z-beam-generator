@@ -2,12 +2,12 @@
 """
 JSON-LD Component Generator
 
-Generates JSON-LD structured data using ONLY frontmatter data.
-Simplified approach for reliable generation.
+Generates comprehensive JSON-LD structured data with dynamic frontmatter substitution.
+Uses enhanced multi-schema approach with Article, Product, HowTo, BreadcrumbList, WebPage, Website, and FAQPage.
 """
 
-# Import the simplified generator and use it as the main generator
-from .simple_generator import SimpleJsonldGenerator
+# Import the enhanced generator and use it as the main generator
+from .enhanced_generator import EnhancedJsonldGenerator
 
-# Use the simple generator as the main JSON-LD generator
-JsonldComponentGenerator = SimpleJsonldGenerator
+# Use the enhanced generator as the main JSON-LD generator
+JsonldComponentGenerator = EnhancedJsonldGenerator

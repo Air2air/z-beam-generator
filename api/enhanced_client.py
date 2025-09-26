@@ -326,8 +326,9 @@ class EnhancedAPIClient:
         try:
             error_data = response.json()
             error_msg = error_data.get("error", {}).get("message", "Unknown error")
-        except:
-            error_msg = response.text or f"HTTP {response.status_code}"
+        except Exception as e:
+            # Fail-fast: JSON parsing must succeed for proper error handling
+            raise RuntimeError(f"Failed to parse API error response: {e}")
 
         return {
             "success": False,

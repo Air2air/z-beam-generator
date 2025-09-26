@@ -8,42 +8,197 @@ materialProperties:
     value: 2.7
     unit: g/cm³
     confidence: 98
-    description: Pure aluminum density at room temperature
+    description: Pure aluminum density at room temperature (99.9% purity)
     min: 2.65
     max: 2.75
-  meltingPoint: &id003
+  meltingPoint: &id002
     value: 660
     unit: °C
     confidence: 95
-    description: Melting point of pure aluminum
-    min: null
-    max: null
-  thermalConductivity: &id002
+    description: Melting point of pure aluminum at standard pressure
+    min: 658
+    max: 662
+  thermalConductivity: &id003
     value: 237
     unit: W/m·K
     confidence: 92
-    description: Thermal conductivity of pure aluminum
+    description: Thermal conductivity of pure aluminum at 25°C
     min: 230
     max: 240
+  tensileStrength: &id012
+    value: 90
+    unit: MPa
+    confidence: 90
+    description: Ultimate tensile strength of pure annealed aluminum
+    min: 80
+    max: 100
+  hardness: &id011
+    value: 25
+    unit: HV
+    confidence: 88
+    description: Vickers hardness of annealed pure aluminum
+    min: 20
+    max: 30
+  youngsModulus: &id010
+    value: 69
+    unit: GPa
+    confidence: 95
+    description: Young's modulus of elasticity for pure aluminum
+    min: 68
+    max: 70
+  thermalExpansion: &id004
+    value: 23.1
+    unit: μm/m·°C
+    confidence: 90
+    description: Linear thermal expansion coefficient at 20-100°C
+    min: 22.5
+    max: 23.5
+  specificHeat: &id005
+    value: 900
+    unit: J/kg·K
+    confidence: 88
+    description: Specific heat capacity at room temperature
+    min: 880
+    max: 920
+  thermalDiffusivity: &id006
+    value: 97.1
+    unit: mm²/s
+    confidence: 85
+    description: Thermal diffusivity calculated from thermal properties
+    min: 94
+    max: 100
+  reflectivity: &id007
+    value: 92
+    unit: '%'
+    confidence: 90
+    description: Optical reflectivity at 1064 nm wavelength (common laser cleaning)
+    min: 90
+    max: 95
+  absorptionCoefficient: &id008
+    value: 12000000.0
+    unit: m⁻¹
+    confidence: 85
+    description: Absorption coefficient for near-infrared wavelengths
+    min: 10000000.0
+    max: 14000000.0
+  ablationThreshold: &id009
+    value: 0.5
+    unit: J/cm²
+    confidence: 80
+    description: Laser ablation threshold for nanosecond pulses at 1064 nm
+    min: 0.3
+    max: 0.8
+  crystallineStructure: &id013
+    value: FCC
+    unit: crystal system
+    confidence: 98
+    description: Face-centered cubic crystal structure
+    min: null
+    max: null
+  electricalConductivity: &id014
+    value: 37.7
+    unit: MS/m
+    confidence: 92
+    description: Electrical conductivity of pure aluminum (IACS 61%)
+    min: 36
+    max: 38
+  oxideLayerThickness: &id015
+    value: 4
+    unit: nm
+    confidence: 85
+    description: Natural aluminum oxide (Al₂O₃) layer thickness in air
+    min: 2
+    max: 10
+  oxideMeltingPoint: &id016
+    value: 2072
+    unit: °C
+    confidence: 90
+    description: Melting point of aluminum oxide (critical for laser cleaning)
+    min: 2050
+    max: 2100
 applications:
 - laser cleaning
 - surface preparation
 machineSettings:
   powerRange:
-    value: 110
+    value: 100
     unit: W
-    confidence: 95
-    description: Calculated for metal material using density, melting point, and cleaning
-      application
-    min: 66
-    max: 154
+    confidence: 92
+    description: Optimal average power range for aluminum oxide removal without substrate
+      damage
+    min: 80
+    max: 120
   wavelength:
     value: 1064
     unit: nm
+    confidence: 88
+    description: Near-infrared wavelength with good aluminum absorption for oxide
+      layer removal
+    min: 1030
+    max: 1070
+  spotSize:
+    value: 50
+    unit: μm
+    confidence: 84
+    description: Optimal spot diameter for balancing cleaning efficiency and processing
+      speed
+    min: 30
+    max: 100
+  repetitionRate:
+    value: 100
+    unit: kHz
+    confidence: 87
+    description: High repetition rate for efficient cleaning coverage while maintaining
+      thermal control
+    min: 50
+    max: 200
+  pulseWidth:
+    value: 10
+    unit: ns
     confidence: 85
-    description: Optimal wavelength for metal cleaning
-    min: null
-    max: null
+    description: Nanosecond pulse duration for efficient oxide ablation with minimal
+      heat diffusion
+    min: 5
+    max: 20
+  scanSpeed:
+    value: 1000
+    unit: mm/s
+    confidence: 86
+    description: Optimal scanning speed for uniform oxide removal without substrate
+      melting
+    min: 500
+    max: 2000
+  fluenceThreshold:
+    value: 2.5
+    unit: J/cm²
+    confidence: 89
+    description: Threshold fluence for aluminum oxide ablation while preserving base
+      material
+    min: 1.5
+    max: 4.0
+  overlapRatio:
+    value: 70
+    unit: '%'
+    confidence: 83
+    description: Optimal overlap percentage between adjacent scan lines for complete
+      coverage
+    min: 50
+    max: 85
+  passCount:
+    value: 3
+    unit: passes
+    confidence: 82
+    description: Typical number of passes required for complete oxide layer removal
+    min: 1
+    max: 5
+  energyDensity:
+    value: 5.1
+    unit: J/cm²
+    confidence: 85
+    description: Effective energy density for aluminum oxide removal accounting for
+      overlap effects
+    min: 3.0
+    max: 8.0
 author_object:
   id: 3
   name: Ikmanda Roswati
@@ -55,5 +210,18 @@ author_object:
 author_id: 3
 properties:
   density: *id001
-  thermalConductivity: *id002
-  meltingPoint: *id003
+  meltingPoint: *id002
+  thermalConductivity: *id003
+  thermalExpansion: *id004
+  specificHeat: *id005
+  thermalDiffusivity: *id006
+  reflectivity: *id007
+  absorptionCoefficient: *id008
+  ablationThreshold: *id009
+  youngsModulus: *id010
+  hardness: *id011
+  tensileStrength: *id012
+  crystallineStructure: *id013
+  electricalConductivity: *id014
+  oxideLayerThickness: *id015
+  oxideMeltingPoint: *id016

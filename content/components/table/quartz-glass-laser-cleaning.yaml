@@ -7,91 +7,59 @@ materialTables:
       unit: '-'
       category: Chemical
     - property: Chemical Symbol
-      value: SiO₂
+      value: SiO2
       unit: '-'
       category: Chemical
-    - property: Material Type
-      value: Glass
-      unit: '-'
-      category: Classification
-    - property: Composition
-      value: 'Silicon Dioxide (SiO₂): 99.9-99.99%, Trace impurities: <1000 ppm (typically Al, Na, K, Fe, OH)'
-      unit: '-'
-      category: Composition
   - header: '## Physical & Mechanical Properties'
     rows:
     - property: Density
-      value: 2.20 g/cm³
+      value: '2.4'
       unit: g/cm³
-      min: '1.8'
-      max: '6.0'
-      percentile: 9.5
-      numeric: 2.2
-    - property: Melting Point
-      value: 75°C
-      unit: °C
-      percentile: 28.1
-      numeric: 75.0
     - property: Thermal Conductivity
-      value: 1.4 W/(m·K)
-      unit: W/
-      percentile: 0.5
-      numeric: 1.4
+      value: '1.0'
+      unit: W/m·K
     - property: Tensile Strength
-      value: 50 MPa
+      value: '50'
       unit: MPa
-      percentile: 0.0
-      numeric: 50.0
     - property: Hardness
-      value: 7.0 Mohs
+      value: '5.5'
       unit: Mohs
-      min: '1.0'
-      max: '10.0'
-      percentile: 66.7
-      numeric: 7.0
     - property: Young's Modulus
-      value: 72 GPa
+      value: '70'
       unit: GPa
-      percentile: 86.7
-      numeric: 72.0
   - header: '## Laser Processing Parameters'
     rows:
     - property: Power Range
-      value: 20-100W
+      value: '45.0'
       unit: W
-      min: '20.0'
-      max: '500.0'
-      numeric: 60.0
     - property: Pulse Duration
-      value: 10-100ns
+      value: '10.0'
       unit: ns
-      min: '1.0'
-      max: '1000.0'
-      numeric: 55.0
+      category: Standard
     - property: Wavelength
-      value: 1064 nm (primary), 532nm (optional)
+      value: '266.0'
       unit: nm
-      min: '355.0'
-      max: '2940.0'
-      numeric: 1064.0
+      category: Optimal
     - property: Spot Size
-      value: 0.1-2.0mm
+      value: '1.0'
       unit: mm
-      min: '0.01'
-      max: '10.0'
-      numeric: 1.05
+      category: Configurable
     - property: Repetition Rate
-      value: 10-50kHz
+      value: '25.0'
       unit: kHz
-      min: '1.0'
-      max: '1000.0'
-      numeric: 30.0
+      category: Variable
     - property: Fluence Range
-      value: 0.5–5 J/cm²
+      value: '0.9'
       unit: J/cm²
-      min: '0.1'
-      max: '50.0'
-      numeric: 0.5
+      category: Range
+    - property: Beam Profile
+      value: Gaussian TEM00
+      unit: '-'
+      category: System
+    - property: Safety Class
+      value: Class 4 (requires full enclosure)
+      unit: '-'
+      category: Safety
   - header: '## Applications & Industries'
     rows:
     - property: Semiconductor Manufacturing
@@ -102,34 +70,10 @@ materialTables:
       value: Precision cleaning of optical surfaces for laser systems and telescopes
       unit: '-'
       category: Application
-  - header: '## Performance Metrics'
-    rows:
-    - property: Surface cleanliness < 0.1 particles/cm² > 0.3 μm
-      value: Achieves Class 10 cleanroom standards for semiconductor applications
-      unit: '-'
-      category: Performance
-    - property: Surface roughness preservation < 0.5 nm Ra change
-      value: Maintains optical quality with processing speeds of 0.1-0.5 m²/hour
-      unit: '-'
-      category: Performance
-  - header: '## Environmental Impact'
-    rows:
-    - property: Zero chemical waste generation
-      value: Eliminates use of hazardous solvents like HF acid and reduces water consumption by 95% compared to wet chemical cleaning
-      unit: '-'
-      category: Environmental
-    - property: Reduced energy consumption
-      value: Laser cleaning consumes approximately 60% less energy than thermal or chemical cleaning processes for quartz components
-      unit: '-'
-      category: Environmental
   - header: '## Compatibility & Standards'
     rows:
     - property: Material Compatibility
-      value: Compatible with most metallic fixtures and handling systems, Similar processing parameters to borosilicate glass and synthetic fused silica
+      value: laser_types, surface_treatments, incompatible_conditions
       unit: '-'
       category: Compatibility
-    - property: Regulatory Standards
-      value: IEC 60825-1 (Laser Safety), ISO 11551 (Optical components), SEMI Standard F57-0306 (Quartz Specifications)
-      unit: '-'
-      category: Compliance
 renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. Pure data structure optimized for performance.'

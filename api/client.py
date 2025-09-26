@@ -138,7 +138,7 @@ class APIClient:
             env_var = self.config["env_var"]
             api_key = os.getenv(env_var)
         else:
-            # Fallback to direct api_key field or environment
+            # No fallbacks - explicit API key required
             api_key = getattr(self.config, "api_key", None) or (
                 self.config.get("api_key") if hasattr(self.config, "get") else None
             )
@@ -209,15 +209,19 @@ class APIClient:
         self.stats["total_requests"] += 1
         start_time = time.time()
 
-        # Get max_retries with fallback for both object attributes and dict keys
+        # Get max_retries - no fallbacks allowed
         max_retries = getattr(self.config, "max_retries", None) or (
-            self.config.get("max_retries") if hasattr(self.config, "get") else 2
+            self.config.get("max_retries") if hasattr(self.config, "get") else None
         )
+        if max_retries is None:
+            raise RuntimeError("CONFIGURATION ERROR: max_retries not defined in run.py API_PROVIDERS")
 
-        # Get retry_delay with fallback
+        # Get retry_delay - no fallbacks allowed
         retry_delay = getattr(self.config, "retry_delay", None) or (
-            self.config.get("retry_delay") if hasattr(self.config, "get") else 1.0
+            self.config.get("retry_delay") if hasattr(self.config, "get") else None
         )
+        if retry_delay is None:
+            raise RuntimeError("CONFIGURATION ERROR: retry_delay not defined in run.py API_PROVIDERS")
 
         for attempt in range(max_retries + 1):
             try:
@@ -536,26 +540,17 @@ class APIClient:
     ) -> APIResponse:
         """Simplified generation method for backward compatibility"""
 
-        # Get config values with sensible defaults (maintains fail-fast for critical config)
-        default_max_tokens = getattr(self.config, "max_tokens", None) or (
-            self.config.get("max_tokens") if hasattr(self.config, "get") else None
-        )
-        if default_max_tokens is None:
-            raise RuntimeError("CONFIGURATION ERROR: max_tokens not defined in run.py API_PROVIDERS")
-
-        default_temperature = getattr(self.config, "temperature", None) or (
-            self.config.get("temperature") if hasattr(self.config, "get") else None
-        )
-        if default_temperature is None:
-            raise RuntimeError("CONFIGURATION ERROR: temperature not defined in run.py API_PROVIDERS")
+        # No defaults allowed - all parameters must be explicitly provided
+        if max_tokens is None:
+            raise RuntimeError("CONFIGURATION ERROR: max_tokens must be explicitly provided - no defaults allowed in fail-fast architecture")
+        if temperature is None:
+            raise RuntimeError("CONFIGURATION ERROR: temperature must be explicitly provided - no defaults allowed in fail-fast architecture")
 
         request = GenerationRequest(
             prompt=prompt,
             system_prompt=system_prompt,
-            max_tokens=max_tokens or default_max_tokens,
-            temperature=temperature
-            if temperature is not None
-            else default_temperature,
+            max_tokens=max_tokens,
+            temperature=temperature,
         )
 
         return self.generate(request)
@@ -668,38 +663,4 @@ class APIClient:
             "timestamp": time.time()
         }
 
-
-class MockAPIClient:
-    """Mock API client for testing without real API calls - FAIL-FAST: No mock content allowed"""
-
-    def __init__(self, *args, **kwargs):
-        # FAIL-FAST: Mock clients are not permitted in fail-fast architecture
-        raise Exception(
-            "MockAPIClient is not allowed in fail-fast architecture - use real API clients only"
-        )
-
-    def test_connection(self) -> bool:
-        """Mock connection test - FAIL-FAST: Not permitted"""
-        raise Exception("MockAPIClient methods not permitted in fail-fast architecture")
-
-    def generate(self, request: GenerationRequest) -> APIResponse:
-        """Generate mock content - FAIL-FAST: Not permitted"""
-        raise Exception("MockAPIClient methods not permitted in fail-fast architecture")
-
-    def generate_simple(
-        self,
-        prompt: str,
-        system_prompt: Optional[str] = None,
-        max_tokens: int = None,
-        temperature: float = None,
-    ) -> APIResponse:
-        """Simplified mock generation - FAIL-FAST: Not permitted"""
-        raise Exception("MockAPIClient methods not permitted in fail-fast architecture")
-
-    def get_statistics(self) -> Dict[str, Any]:
-        """Get mock statistics - FAIL-FAST: Not permitted"""
-        raise Exception("MockAPIClient methods not permitted in fail-fast architecture")
-
-    def reset_statistics(self):
-        """Reset mock statistics - FAIL-FAST: Not permitted"""
-        raise Exception("MockAPIClient methods not permitted in fail-fast architecture")
+# End of production API client code

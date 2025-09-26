@@ -1,97 +1,52 @@
 materialTables:
   tables:
-  - header: '## Chemical Properties'
-    rows:
-    - property: Chemical Formula
-      value: Ni-based superalloy (varies by grade)
-      unit: '-'
-      category: Chemical
-    - property: Chemical Symbol
-      value: Ni-Cr-Mo
-      unit: '-'
-      category: Chemical
-    - property: Material Type
-      value: Metal
-      unit: '-'
-      category: Classification
-    - property: Composition
-      value: 'Nickel: 57% (Hastelloy C-276), Chromium: 15.5%, Molybdenum: 16%, Tungsten: 3.75%, Iron: 5.5%, Cobalt: 2.5% max, Manganese: 1% max, Vanadium: 0.35% max, Silicon: 0.08% max, Carbon: 0.01% max, Phosphorus: 0.04% max, Sulfur: 0.03% max'
-      unit: '-'
-      category: Composition
   - header: '## Physical & Mechanical Properties'
     rows:
     - property: Density
-      value: 8.89 g/cm³ (Hastelloy C-276)
+      value: '7.8'
       unit: g/cm³
-      min: '1.8'
-      max: '6.0'
-      percentile: 100.0
-      numeric: 142.445
-    - property: Melting Point
-      value: 1371°C
-      unit: °C
-      percentile: 9.2
-      numeric: 1371.0
     - property: Thermal Conductivity
-      value: 9.8 W/m·K at 100°C (Hastelloy C-276)
+      value: '15'
       unit: W/m·K
-      percentile: 71.4
-      numeric: 142.9
     - property: Tensile Strength
-      value: 690 MPa min (Hastelloy C-276 annealed)
-      unit: annealed
-      percentile: 45.6
-      numeric: 483.0
-    - property: Hardness
-      value: 90 HRB (Hastelloy C-276 annealed)
-      unit: annealed
-      min: '1.0'
-      max: '10.0'
-      percentile: 100.0
-      numeric: 183.0
+      value: '200'
+      unit: MPa
     - property: Young's Modulus
-      value: 205 GPa (Hastelloy C-276)
+      value: '200'
       unit: GPa
-      percentile: 100.0
-      numeric: 240.5
   - header: '## Laser Processing Parameters'
     rows:
     - property: Power Range
-      value: 50-200W
+      value: '50.0'
       unit: W
-      min: '20.0'
-      max: '500.0'
-      numeric: 125.0
     - property: Pulse Duration
-      value: 10-50ns
+      value: '10.0'
       unit: ns
-      min: '1.0'
-      max: '1000.0'
-      numeric: 30.0
+      category: Standard
     - property: Wavelength
-      value: 1064nm (primary), 532nm (optional)
+      value: '1064.0'
       unit: nm
-      min: '355.0'
-      max: '2940.0'
-      numeric: 1064.0
+      category: Optimal
     - property: Spot Size
-      value: 0.1-1.0mm
+      value: '1.0'
       unit: mm
-      min: '0.01'
-      max: '10.0'
-      numeric: 0.55
+      category: Configurable
     - property: Repetition Rate
-      value: 20-100kHz
+      value: '20.0'
       unit: kHz
-      min: '1.0'
-      max: '1000.0'
-      numeric: 60.0
+      category: Variable
     - property: Fluence Range
-      value: 1.0–10 J/cm²
+      value: '0.8'
       unit: J/cm²
-      min: '0.1'
-      max: '50.0'
-      numeric: 1.0
+      category: Range
+    - property: Beam Profile
+      value: Gaussian TEM00
+      unit: '-'
+      category: System
+    - property: Safety Class
+      value: Class 4 (requires full enclosure)
+      unit: '-'
+      category: Safety
   - header: '## Applications & Industries'
     rows:
     - property: Aerospace
@@ -102,34 +57,18 @@ materialTables:
       value: Cleaning of reaction vessels and piping systems
       unit: '-'
       category: Application
-  - header: '## Performance Metrics'
-    rows:
-    - property: Surface contamination removal efficiency
-      value: '>99.5% removal of oxides and contaminants without substrate damage'
+    - property: Manufacturing
+      value: Hastelloy equipment cleaning
       unit: '-'
-      category: Performance
-    - property: Processing speed
-      value: 0.5-2.0 m²/hour depending on contamination level and laser parameters
+      category: Application
+    - property: Electronics
+      value: Hastelloy contact and connector cleaning
       unit: '-'
-      category: Performance
-  - header: '## Environmental Impact'
-    rows:
-    - property: Zero chemical waste generation
-      value: Eliminates need for hazardous chemical solvents and acids, reducing chemical disposal by 100% compared to traditional chemical cleaning methods
-      unit: '-'
-      category: Environmental
-    - property: Reduced energy consumption
-      value: Laser cleaning consumes 60-70% less energy compared to abrasive blasting or chemical bath processes for Hastelloy components
-      unit: '-'
-      category: Environmental
+      category: Application
   - header: '## Compatibility & Standards'
     rows:
     - property: Material Compatibility
-      value: Stainless steel fixtures and workholding, Inconel and other nickel-based superalloys
+      value: laser_types, surface_treatments, incompatible_conditions
       unit: '-'
       category: Compatibility
-    - property: Regulatory Standards
-      value: 'ISO 11553: Safety of machinery - Laser processing machines, ANSI Z136.1: Safe Use of Lasers, OSHA 29 CFR 1910.1096: Ionizing Radiation'
-      unit: '-'
-      category: Compliance
 renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. Pure data structure optimized for performance.'

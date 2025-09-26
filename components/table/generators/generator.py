@@ -46,7 +46,7 @@ class TableComponentGenerator(StaticComponentGenerator):
             # Check if frontmatter has any extractable data sections
             has_data = any([
                 frontmatter_data.get('chemicalProperties'),
-                frontmatter_data.get('properties') and isinstance(frontmatter_data.get('properties'), dict) and frontmatter_data.get('properties'),
+                frontmatter_data.get('materialProperties') and isinstance(frontmatter_data.get('materialProperties'), dict) and frontmatter_data.get('materialProperties'),
                 frontmatter_data.get('machineSettings'),
                 frontmatter_data.get('applications'),
                 frontmatter_data.get('outcomes'),
@@ -192,7 +192,7 @@ class TableComponentGenerator(StaticComponentGenerator):
         """Extract physical and mechanical properties from the properties section"""
         rows = []
         
-        properties = frontmatter_data.get("properties", {})
+        properties = frontmatter_data.get("materialProperties", {})
         if not properties or not isinstance(properties, dict):
             return rows  # Return empty if no properties or if properties is empty dict
         
@@ -631,8 +631,9 @@ class TableComponentGenerator(StaticComponentGenerator):
             return max(0, min(100, int(percentage)))
             
         except Exception as e:
-            logger.warning(f"Percentage calculation failed for value '{value}' in range '{min_val}'-'{max_val}': {e}")
-            return 50  # Default to middle
+            logger.error(f"Percentage calculation failed for value '{value}' in range '{min_val}'-'{max_val}': {e}")
+            # Fail-fast: Percentage calculation must succeed - no fallback defaults
+            raise ValueError(f"Invalid percentage calculation: value='{value}', range='{min_val}'-'{max_val}'")
 
     def _extract_table_categories(self, frontmatter_data: Dict) -> list:
         """Get list of categories that would be generated from available frontmatter data"""
@@ -703,7 +704,7 @@ if __name__ == "__main__":
     # Test the generator with mock frontmatter data
     generator = TableGenerator()
     mock_frontmatter = {
-        'properties': {
+        'materialProperties': {
             'density': '8.96 g/cm³',
             'densityMin': '0.9 g/cm³', 
             'densityMax': '22 g/cm³',

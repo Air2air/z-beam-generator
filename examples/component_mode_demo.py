@@ -57,26 +57,22 @@ def demo_component_modes(material_name: str, component_types: Optional[List[str]
         api = config.get("api_provider", "none")
         print(f"   {i}. {component} - Mode: {mode}, API: {api}")
     
-    print("\n🔄 Simulated Generation Process:")
+    print("\n🔄 Production Mode: Component Analysis")
     print("=" * 60)
     
-    # Mock API clients (for demo purposes)
-    mock_clients = {
-        "deepseek": "DeepSeek API Client",
-        "grok": "Grok API Client",
-        "none": None
-    }
+    # Production note: Real API clients would be created here based on configuration
+    # No mock clients allowed in production or demo code
     
     for component in optimized_order:
         config = COMPONENT_CONFIG.get(component, {})
         api_provider = config.get("api_provider", "none")
         
-        # Get mock API client
-        api_client = mock_clients.get(api_provider)
+        # In production, real API clients would be instantiated here
+        has_real_api = api_provider != "none"
         
         # Get component mode
-        mode = get_component_mode(component, api_client)
-        should_use_api_result = should_use_api(component, api_client)
+        mode = get_component_mode(component, has_real_api)  # Modified to use boolean
+        should_use_api_result = should_use_api(component, has_real_api)  # Modified to use boolean
         
         print(f"\n🔧 Processing: {component}")
         print(f"   📋 Configuration:")
@@ -85,7 +81,7 @@ def demo_component_modes(material_name: str, component_types: Optional[List[str]
         print(f"   🔍 Decision:")
         print(f"      • Mode: {mode}")
         print(f"      • Use API: {'Yes' if should_use_api_result else 'No'}")
-        print(f"      • API Client: {'Available' if api_client else 'Not Available'}")
+        print(f"      • API Available: {'Yes' if has_real_api else 'No'}")
         
         # Show what would happen in the real generation process
         if should_use_api_result:

@@ -1,97 +1,52 @@
 materialTables:
   tables:
-  - header: '## Chemical Properties'
-    rows:
-    - property: Chemical Formula
-      value: Zr
-      unit: '-'
-      category: Chemical
-    - property: Chemical Symbol
-      value: Zr
-      unit: '-'
-      category: Chemical
-    - property: Material Type
-      value: Metal
-      unit: '-'
-      category: Classification
-    - property: Composition
-      value: 'Zirconium (Zr): 97.5-99.2%, Hafnium (Hf): 1-2.5% (naturally occurring), Iron (Fe): ≤0.2%, Chromium (Cr): ≤0.1%, Nickel (Ni): ≤0.05% (in Zircaloy alloys)'
-      unit: '-'
-      category: Composition
   - header: '## Physical & Mechanical Properties'
     rows:
     - property: Density
-      value: 6.52 g/cm³
+      value: '7.8'
       unit: g/cm³
-      min: '1.8'
-      max: '6.0'
-      percentile: 100.0
-      numeric: 6.52
-    - property: Melting Point
-      value: 1855°C
-      unit: °C
-      percentile: 40.9
-      numeric: 1855.0
     - property: Thermal Conductivity
-      value: 22.7 W/(m·K)
-      unit: W/
-      percentile: 11.1
-      numeric: 22.7
+      value: '15'
+      unit: W/m·K
     - property: Tensile Strength
-      value: 330 MPa (annealed)
+      value: '200'
       unit: MPa
-      percentile: 29.5
-      numeric: 330.0
-    - property: Hardness
-      value: 125 HV (Vickers)
-      unit: HV
-      min: '1.0'
-      max: '10.0'
-      percentile: 100.0
-      numeric: 125.0
     - property: Young's Modulus
-      value: 88 GPa
+      value: '200'
       unit: GPa
-      percentile: 100.0
-      numeric: 88.0
   - header: '## Laser Processing Parameters'
     rows:
     - property: Power Range
-      value: 20-100W
+      value: '160.0'
       unit: W
-      min: '20.0'
-      max: '500.0'
-      numeric: 60.0
     - property: Pulse Duration
-      value: 10-100ns
+      value: '10.0'
       unit: ns
-      min: '1.0'
-      max: '1000.0'
-      numeric: 55.0
+      category: Standard
     - property: Wavelength
-      value: 1064nm (primary), 532nm (optional)
+      value: '532.0'
       unit: nm
-      min: '355.0'
-      max: '2940.0'
-      numeric: 1064.0
+      category: Optimal
     - property: Spot Size
-      value: 0.1-2.0mm
+      value: '1.0'
       unit: mm
-      min: '0.01'
-      max: '10.0'
-      numeric: 1.05
+      category: Configurable
     - property: Repetition Rate
-      value: 10-50kHz
+      value: '30.0'
       unit: kHz
-      min: '1.0'
-      max: '1000.0'
-      numeric: 30.0
+      category: Variable
     - property: Fluence Range
-      value: 0.5–5 J/cm²
+      value: '1.5'
       unit: J/cm²
-      min: '0.1'
-      max: '50.0'
-      numeric: 0.5
+      category: Range
+    - property: Beam Profile
+      value: Gaussian TEM00
+      unit: '-'
+      category: System
+    - property: Safety Class
+      value: Class 4 (requires full enclosure)
+      unit: '-'
+      category: Safety
   - header: '## Applications & Industries'
     rows:
     - property: Aerospace
@@ -102,34 +57,10 @@ materialTables:
       value: Cleaning of zirconium alloy surfaces for reactor applications
       unit: '-'
       category: Application
-  - header: '## Performance Metrics'
-    rows:
-    - property: Surface contamination removal efficiency
-      value: '>99.8% removal of oxide layers and surface contaminants'
-      unit: '-'
-      category: Performance
-    - property: Processing speed
-      value: 0.1-0.5 m²/hour depending on contamination level and required precision
-      unit: '-'
-      category: Performance
-  - header: '## Environmental Impact'
-    rows:
-    - property: Zero chemical waste generation
-      value: Eliminates use of hazardous chemical cleaning agents like hydrofluoric acid traditionally used for zirconium surface treatment
-      unit: '-'
-      category: Environmental
-    - property: 97% reduction in water consumption
-      value: Dry process eliminates need for water-based cleaning and rinsing cycles required in traditional methods
-      unit: '-'
-      category: Environmental
   - header: '## Compatibility & Standards'
     rows:
     - property: Material Compatibility
-      value: Zircaloy-2, Zircaloy-4, Zr-2.5Nb alloys, Titanium, Hafnium (similar laser processing parameters)
+      value: laser_types, surface_treatments, incompatible_conditions
       unit: '-'
       category: Compatibility
-    - property: Regulatory Standards
-      value: ANSI Z136.1 (Laser Safety), ASTM E2015 (Standard Guide for Laser Cleaning), ISO 11145 (Optics and photonics - Lasers and laser-related equipment)
-      unit: '-'
-      category: Compliance
 renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. Pure data structure optimized for performance.'

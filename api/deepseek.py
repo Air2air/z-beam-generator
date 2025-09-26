@@ -9,7 +9,7 @@ and DeepSeek-specific features.
 import logging
 
 from .client import APIClient, APIResponse, GenerationRequest
-from .config import get_default_config
+# No default configs allowed in fail-fast architecture
 
 logger = logging.getLogger(__name__)
 
@@ -18,15 +18,16 @@ class DeepSeekClient(APIClient):
     """DeepSeek-specific API client with optimized configuration"""
 
     def __init__(self, api_key=None, **kwargs):
-        """Initialize DeepSeek client with optimized defaults"""
+        """Initialize DeepSeek client - no defaults allowed"""
 
-        # Load DeepSeek-specific configuration
-        config = get_default_config()
+        # No default configuration allowed
+        if 'config' not in kwargs:
+            raise RuntimeError("CONFIGURATION ERROR: DeepSeek client configuration must be explicitly provided - no defaults allowed in fail-fast architecture")
+        config = kwargs['config']
 
-        # If no API key provided, get it using standardized key manager
+        # API key must be explicitly provided
         if api_key is None:
-            from api.key_manager import get_api_key
-            api_key = get_api_key("deepseek")
+            raise RuntimeError("CONFIGURATION ERROR: API key must be explicitly provided - no defaults allowed in fail-fast architecture")
 
         # Override with any provided parameters
         for key, value in kwargs.items():
@@ -46,7 +47,7 @@ class DeepSeekClient(APIClient):
             "max_context_length": 32000,
             "supports_function_calling": True,
             "supports_json_mode": True,
-            "optimal_temperature": 0.1,  # Default only - use component configs
+            # No default temperatures - must be configured explicitly
             "optimal_top_p": 0.95,
         }
 
@@ -119,11 +120,7 @@ class DeepSeekClient(APIClient):
                         "presence_penalty": params.get("presence_penalty", 0.0),
                     }
         except Exception as e:
-            logger.warning(f"Could not load prompt.yaml config for {component_type}: {e}")
-
-        # Fallback to component-specific defaults only if prompt.yaml not found
-        logger.info(f"Using fallback defaults for {component_type}")
-        return {"max_tokens": 4000, "temperature": 0.1, "top_p": 0.95}
+            raise RuntimeError(f"CONFIGURATION ERROR: Could not load prompt.yaml config for {component_type}: {e}. No fallbacks allowed in fail-fast architecture.")
 
     def _build_component_system_prompt(self, component_type: str, material: str) -> str:
         """Build component-specific system prompts for DeepSeek"""

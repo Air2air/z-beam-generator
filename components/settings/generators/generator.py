@@ -80,11 +80,17 @@ class SettingsComponentGenerator(StaticComponentGenerator):
                 'rows': quality_props
             })
 
-            # Build final normalized YAML structure (no renderInstructions)
+            # Build final normalized YAML structure
             yaml_data = {
                 'machineSettings': {
                     'settings': categorized_settings
-                }
+                },
+                'renderInstructions': (
+                    "In Next.js, loop over settings[].rows and render as structured sections with "
+                    "<h2>{header}</h2><table><tr><th>Category</th><th>Parameter</th><th>Value</th><th>Range</th></tr>"
+                    "<tr><td>{category}</td><td>{parameter}</td><td>{value}</td><td>{range}</td></tr>. "
+                    "Use MDX for headers. Pure data structure optimized for performance and standardized machine settings display."
+                )
             }
 
             return yaml.dump(yaml_data, default_flow_style=False, sort_keys=False, allow_unicode=True, width=1000)
@@ -96,12 +102,10 @@ class SettingsComponentGenerator(StaticComponentGenerator):
         """Extract laser system configuration settings"""
         rows = []
         
-        # Power Range - check multiple field names
-        power_range = (
-            machine_settings.get("powerRange") or 
-            machine_settings.get("power_range") or
-            "20-100W"  # Default fallback
-        )
+        # Power Range - explicit configuration required
+        if not machine_settings.get("powerRange") and not machine_settings.get("power_range"):
+            raise ValueError("Machine settings must provide powerRange or power_range - no defaults allowed")
+        power_range = machine_settings.get("powerRange") or machine_settings.get("power_range")
         rows.append(self._create_settings_row(
             'Power Range', 
             power_range,
@@ -109,12 +113,10 @@ class SettingsComponentGenerator(StaticComponentGenerator):
             'Laser Power'
         ))
         
-        # Wavelength - check multiple field names  
-        wavelength = (
-            machine_settings.get("wavelength") or
-            machine_settings.get("wavelength_optimal") or
-            "1064nm (primary), 532nm (optional)"  # Default fallback
-        )
+        # Wavelength - explicit configuration required
+        if not machine_settings.get("wavelength") and not machine_settings.get("wavelength_optimal"):
+            raise ValueError("Machine settings must provide wavelength or wavelength_optimal - no defaults allowed")
+        wavelength = machine_settings.get("wavelength") or machine_settings.get("wavelength_optimal")
         rows.append(self._create_settings_row(
             'Wavelength',
             wavelength,
@@ -122,12 +124,10 @@ class SettingsComponentGenerator(StaticComponentGenerator):
             'Optical'
         ))
         
-        # Pulse Duration - check multiple field names
-        pulse_duration = (
-            machine_settings.get("pulseDuration") or
-            machine_settings.get("pulse_duration") or
-            "10-100ns"  # Default fallback
-        )
+        # Pulse Duration - explicit configuration required
+        if not machine_settings.get("pulseDuration") and not machine_settings.get("pulse_duration"):
+            raise ValueError("Machine settings must provide pulseDuration or pulse_duration - no defaults allowed")
+        pulse_duration = machine_settings.get("pulseDuration") or machine_settings.get("pulse_duration")
         rows.append(self._create_settings_row(
             'Pulse Duration',
             pulse_duration,
@@ -135,12 +135,10 @@ class SettingsComponentGenerator(StaticComponentGenerator):
             'Temporal'
         ))
         
-        # Repetition Rate - check multiple field names
-        rep_rate = (
-            machine_settings.get("repetitionRate") or
-            machine_settings.get("repetition_rate") or
-            "20-100kHz"  # Default fallback
-        )
+        # Repetition Rate - explicit configuration required
+        if not machine_settings.get("repetitionRate") and not machine_settings.get("repetition_rate"):
+            raise ValueError("Machine settings must provide repetitionRate or repetition_rate - no defaults allowed")
+        rep_rate = machine_settings.get("repetitionRate") or machine_settings.get("repetition_rate")
         rows.append(self._create_settings_row(
             'Repetition Rate',
             rep_rate,
@@ -154,12 +152,10 @@ class SettingsComponentGenerator(StaticComponentGenerator):
         """Extract processing parameter settings"""
         rows = []
         
-        # Fluence Range - check multiple field names
-        fluence = (
-            machine_settings.get("fluenceRange") or
-            machine_settings.get("fluence_threshold") or
-            "0.5-5.0 J/cm²"  # Default fallback
-        )
+        # Fluence Range - explicit configuration required
+        if not machine_settings.get("fluenceRange") and not machine_settings.get("fluence_threshold"):
+            raise ValueError("Machine settings must provide fluenceRange or fluence_threshold - no defaults allowed")
+        fluence = machine_settings.get("fluenceRange") or machine_settings.get("fluence_threshold")
         rows.append(self._create_settings_row(
             'Fluence Range',
             fluence,
@@ -167,12 +163,10 @@ class SettingsComponentGenerator(StaticComponentGenerator):
             'Energy Density'
         ))
         
-        # Spot Size - check multiple field names
-        spot_size = (
-            machine_settings.get("spotSize") or
-            machine_settings.get("spot_size") or
-            "0.1-2.0mm"  # Default fallback
-        )
+        # Spot Size - explicit configuration required
+        if not machine_settings.get("spotSize") and not machine_settings.get("spot_size"):
+            raise ValueError("Machine settings must provide spotSize or spot_size - no defaults allowed")
+        spot_size = machine_settings.get("spotSize") or machine_settings.get("spot_size")
         rows.append(self._create_settings_row(
             'Spot Size',
             spot_size,
@@ -180,12 +174,10 @@ class SettingsComponentGenerator(StaticComponentGenerator):
             'Beam Geometry'
         ))
         
-        # Scanning Speed - check multiple field names
-        scanning_speed = (
-            machine_settings.get("scanningSpeed") or
-            machine_settings.get("scanning_speed") or
-            "50-200mm/s"  # Default fallback
-        )
+        # Scanning Speed - explicit configuration required
+        if not machine_settings.get("scanningSpeed") and not machine_settings.get("scanning_speed"):
+            raise ValueError("Machine settings must provide scanningSpeed or scanning_speed - no defaults allowed")
+        scanning_speed = machine_settings.get("scanningSpeed") or machine_settings.get("scanning_speed")
         rows.append(self._create_settings_row(
             'Scanning Speed',
             scanning_speed,
@@ -193,11 +185,10 @@ class SettingsComponentGenerator(StaticComponentGenerator):
             'Motion Control'
         ))
         
-        # Working Distance
-        working_distance = (
-            machine_settings.get("workingDistance") or
-            "100-300mm"  # Default fallback
-        )
+        # Working Distance - explicit configuration required
+        if not machine_settings.get("workingDistance"):
+            raise ValueError("Machine settings must provide workingDistance - no defaults allowed")
+        working_distance = machine_settings.get("workingDistance")
         rows.append(self._create_settings_row(
             'Working Distance',
             working_distance,
@@ -211,12 +202,10 @@ class SettingsComponentGenerator(StaticComponentGenerator):
         """Extract safety parameter settings"""
         rows = []
         
-        # Safety Class
-        safety_class = (
-            machine_settings.get("safetyClass") or
-            machine_settings.get("safety_class") or
-            "Class 4"  # Default fallback
-        )
+        # Safety Class - explicit configuration required
+        if not machine_settings.get("safetyClass") and not machine_settings.get("safety_class"):
+            raise ValueError("Machine settings must provide safetyClass or safety_class - no defaults allowed")
+        safety_class = machine_settings.get("safetyClass") or machine_settings.get("safety_class")
         rows.append(self._create_settings_row(
             'Safety Class',
             safety_class,
@@ -232,11 +221,10 @@ class SettingsComponentGenerator(StaticComponentGenerator):
             'Safety Equipment'
         ))
         
-        # Ventilation Rate
-        ventilation = (
-            machine_settings.get("ventilationRate") or
-            "200-500 CFM"  # Default fallback
-        )
+        # Ventilation Rate - explicit configuration required
+        if not machine_settings.get("ventilationRate"):
+            raise ValueError("Machine settings must provide ventilationRate - no defaults allowed")
+        ventilation = machine_settings.get("ventilationRate")
         rows.append(self._create_settings_row(
             'Ventilation Rate',
             ventilation,
@@ -258,11 +246,10 @@ class SettingsComponentGenerator(StaticComponentGenerator):
         """Extract quality control settings"""
         rows = []
         
-        # Surface Roughness Target
-        surface_roughness = (
-            machine_settings.get("surfaceRoughness") or
-            "Ra 0.1-0.5μm"  # Default fallback
-        )
+        # Surface Roughness Target - explicit configuration required
+        if not machine_settings.get("surfaceRoughness"):
+            raise ValueError("Machine settings must provide surfaceRoughness - no defaults allowed")
+        surface_roughness = machine_settings.get("surfaceRoughness")
         rows.append(self._create_settings_row(
             'Surface Roughness Target',
             surface_roughness,
@@ -270,11 +257,10 @@ class SettingsComponentGenerator(StaticComponentGenerator):
             'Surface Quality'
         ))
         
-        # Cleaning Depth Control
-        cleaning_depth = (
-            machine_settings.get("cleaningDepth") or
-            "1-10μm"  # Default fallback
-        )
+        # Cleaning Depth Control - explicit configuration required
+        if not machine_settings.get("cleaningDepth"):
+            raise ValueError("Machine settings must provide cleaningDepth - no defaults allowed")
+        cleaning_depth = machine_settings.get("cleaningDepth")
         rows.append(self._create_settings_row(
             'Cleaning Depth Control',
             cleaning_depth,
@@ -282,11 +268,10 @@ class SettingsComponentGenerator(StaticComponentGenerator):
             'Material Removal'
         ))
         
-        # Process Monitoring
-        monitoring = (
-            machine_settings.get("processMonitoring") or
-            "Real-time optical"  # Default fallback
-        )
+        # Process Monitoring - explicit configuration required
+        if not machine_settings.get("processMonitoring"):
+            raise ValueError("Machine settings must provide processMonitoring - no defaults allowed")
+        monitoring = machine_settings.get("processMonitoring")
         rows.append(self._create_settings_row(
             'Process Monitoring',
             monitoring,
@@ -294,16 +279,70 @@ class SettingsComponentGenerator(StaticComponentGenerator):
             'Quality Assurance'
         ))
         
-        # Repeatability
-        repeatability = (
-            machine_settings.get("repeatability") or
-            "±5%"  # Default fallback
-        )
+        # Repeatability - explicit configuration required
+        if not machine_settings.get("repeatability"):
+            raise ValueError("Machine settings must provide repeatability - no defaults allowed")
+        repeatability = machine_settings.get("repeatability")
         rows.append(self._create_settings_row(
             'Repeatability',
             repeatability,
             "±1% - ±10%",
             'Process Control'
+        ))
+        
+        return rows
+
+    def _extract_beam_settings(self, machine_settings: Dict) -> list:
+        """Extract beam configuration settings"""
+        rows = []
+        
+        # Beam Profile - explicit configuration required
+        if not machine_settings.get('beamProfile') and not machine_settings.get('beam_profile'):
+            raise ValueError("Machine settings must provide beamProfile or beam_profile - no defaults allowed")
+        beam_profile = machine_settings.get('beamProfile') or machine_settings.get('beam_profile')
+        rows.append(self._create_settings_row(
+            'Beam Profile',
+            beam_profile,
+            "Gaussian - Top-hat",
+            'Beam Geometry'
+        ))
+        
+        # Laser Type - explicit configuration required
+        if (not machine_settings.get('laserType') and not machine_settings.get('laser_type') and 
+            not machine_settings.get('wavelengthOptimal')):
+            raise ValueError("Machine settings must provide laserType, laser_type, or wavelengthOptimal - no defaults allowed")
+        laser_type = (machine_settings.get('laserType') or machine_settings.get('laser_type') or 
+                     machine_settings.get('wavelengthOptimal'))
+        rows.append(self._create_settings_row(
+            'Laser Type',
+            laser_type,
+            "Fiber - Nd:YAG - CO2",
+            'Laser Configuration'
+        ))
+        
+        # Beam Quality
+        beam_quality = (
+            machine_settings.get('beamQuality', '') or
+            machine_settings.get('beam_quality', '') or
+            "M² < 1.3"  # Default beam quality
+        )
+        rows.append(self._create_settings_row(
+            'Beam Quality',
+            beam_quality,
+            "M² 1.1 - M² 2.0",
+            'Beam Performance'
+        ))
+        
+        # Polarization
+        polarization = (
+            machine_settings.get('polarization', '') or
+            "Linear"  # Default polarization
+        )
+        rows.append(self._create_settings_row(
+            'Polarization',
+            polarization,
+            "Linear - Circular - Random",
+            'Beam Characteristics'
         ))
         
         return rows

@@ -14,6 +14,7 @@ import yaml
 from generators.hybrid_generator import HybridComponentGenerator
 from generators.component_generators import ComponentResult
 from utils.file_ops.frontmatter_loader import load_frontmatter_data
+from utils.core.material_name_resolver import get_material_name_resolver
 from versioning import stamp_component_output
 
 
@@ -52,14 +53,28 @@ class MetatagsComponentGenerator(HybridComponentGenerator):
         
         author_name = author_info.get("name", "Z-Beam Engineering Team") if author_info else "Z-Beam Engineering Team"
         
-        # Ensure material name is in title case
-        material_name_title = material_name.title()
+        # Get material name resolver for consistent name handling
+        resolver = get_material_name_resolver()
         
-        # FAIL-FAST: Wavelength must be present in laser parameters  
-        laser_params = material_data.get("laser_parameters", {})
-        if not laser_params or not laser_params.get("wavelength_optimal"):
-            raise ValueError(f"Wavelength parameters missing for {material_name} - fail-fast requires explicit laser data")
-        wavelength = laser_params["wavelength_optimal"]
+        # Ensure material name is resolved to canonical form
+        canonical_name = resolver.resolve_canonical_name(material_name)
+        if not canonical_name:
+            raise ValueError(f"Material '{material_name}' not found in materials.yaml - fail-fast requires valid material names")
+        
+        material_name_title = resolver.get_display_name(material_name)
+        material_name_slug = resolver.get_slug(material_name)
+        
+        # FAIL-FAST: Wavelength must be present in machine settings  
+        machine_settings = material_data.get("machineSettings", {})
+        if not machine_settings or not machine_settings.get("wavelength"):
+            # Try frontmatter data if material_data doesn't have machine settings
+            if frontmatter_data:
+                machine_settings = frontmatter_data.get("machineSettings", {})
+                if not machine_settings or not machine_settings.get("wavelength"):
+                    raise ValueError(f"Wavelength parameters missing for {material_name} - fail-fast requires explicit laser data")
+            else:
+                raise ValueError(f"Wavelength parameters missing for {material_name} - fail-fast requires explicit laser data")
+        wavelength = machine_settings["wavelength"]
         
         # Extract applications if available
         applications = material_data.get("applications", [])
@@ -87,7 +102,7 @@ Your output must follow this exact structure:
    - author, category, robots, etc.
 3. An opengraph list with og:title, og:description, og:image, etc.
 4. A twitter list with twitter:card, twitter:title, twitter:description, etc.
-5. A canonical URL: https://z-beam.com/{material_name.lower()}-laser-cleaning
+5. A canonical URL: https://z-beam.com/{material_name_slug}-laser-cleaning
 6. An alternate section with hreflang tags
 
 Your output should be STRICTLY in YAML format with proper frontmatter delimiters (---).
@@ -226,13 +241,14 @@ Include appropriate technical details about laser cleaning parameters, applicati
         author = frontmatter_data.get("author", "")
         keywords = frontmatter_data.get("keywords", "")
         
-        # Get properties for technical details
-        properties = frontmatter_data.get("properties", {})
+        # Get machine settings for technical details
+        machine_settings = frontmatter_data.get("machineSettings", {})
         
-        # FAIL-FAST: Wavelength must be present in properties
-        if not properties.get("wavelength"):
+        # FAIL-FAST: Wavelength must be present in machine settings
+        if not machine_settings.get("wavelength"):
             raise ValueError(f"Wavelength property missing for {material_name} - fail-fast requires explicit technical data")
-        wavelength = properties["wavelength"]
+        wavelength = machine_settings["wavelength"]
+        wavelength_unit = machine_settings.get("wavelengthUnit", "nm")
         
         # Ensure material name is in title case
         material_name_title = material_name.title()
@@ -255,7 +271,7 @@ Include appropriate technical details about laser cleaning parameters, applicati
         meta_tags.append({"name": "theme-color", "content": "#2563eb"})
         meta_tags.append({"name": "color-scheme", "content": "light dark"})
         meta_tags.append({"name": "material:category", "content": category})
-        meta_tags.append({"name": "laser:wavelength", "content": wavelength})
+        meta_tags.append({"name": "laser:wavelength", "content": f"{wavelength} {wavelength_unit}"})
         meta_tags.append({"name": "application-name", "content": "Z-Beam Laser Processing Guide"})
         meta_tags.append({"name": "msapplication-TileColor", "content": "#2563eb"})
         meta_tags.append({"name": "msapplication-config", "content": "https://z-beam.com/browserconfig.xml"})

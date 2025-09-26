@@ -59,19 +59,13 @@ class APIClientFactory:
             ValueError: If provider is not supported
         """
         print(f"🏭 [CLIENT FACTORY] Creating API client for provider: {provider}")
-
-        # Auto-detect test mode
-        is_test = APIClientFactory.is_test_mode()
-
-        # Determine if we should use mocks
-        should_use_mock = use_mock if use_mock is not None else is_test
-
-        if should_use_mock:
-            print("🎭 [CLIENT FACTORY] Using mock client (test mode)")
-            return APIClientFactory._create_mock_client(provider, **kwargs)
-        else:
-            print("🔧 [CLIENT FACTORY] Using real API client")
-            return APIClientFactory._create_real_client(provider, **kwargs)
+        
+        # Fail-fast: Only real API clients allowed
+        if use_mock is True:
+            raise RuntimeError("Mock clients are not allowed in fail-fast architecture - use real API clients only")
+            
+        print("🔧 [CLIENT FACTORY] Using real API client")
+        return APIClientFactory._create_real_client(provider, **kwargs)
 
     @staticmethod
     def _create_real_client(provider: str, **kwargs) -> APIClient:
@@ -124,30 +118,20 @@ class APIClientFactory:
         print("✅ [CLIENT FACTORY] API client created successfully")
         return client
 
-    @staticmethod
-    def _create_mock_client(provider: str, **kwargs) -> Any:
-        """Create a mock API client"""
-        try:
-            from tests.fixtures.mocks.simple_mock_client import MockAPIClient
-            return MockAPIClient(provider, **kwargs)
-        except ImportError:
-            # Fallback if mock client not available
-            raise RuntimeError("Mock client not available - install test dependencies")
+
 
     @staticmethod
     def create_client_for_component(
         component_type: str,
-        use_mock: Optional[bool] = None,
         **kwargs
     ) -> APIClient:
         """
         Create an API client optimized for a specific component type.
-
+        
         Args:
-            component_type: Component type (frontmatter, text, etc.)
-            use_mock: Force mock usage
+            component_type: The component type (e.g., 'text', 'frontmatter')
             **kwargs: Additional client configuration
-
+            
         Returns:
             APIClient instance configured for the component
         """
@@ -161,7 +145,7 @@ class APIClientFactory:
         except ImportError:
             raise ValueError(f"COMPONENT_CONFIG must be available for component '{component_type}' - no defaults allowed in fail-fast architecture")
 
-        return APIClientFactory.create_client(provider, use_mock, **kwargs)
+        return APIClientFactory.create_client(provider, **kwargs)
 
     @staticmethod
     def validate_configuration() -> Dict[str, Any]:
@@ -183,7 +167,7 @@ class APIClientFactory:
                 "configured": is_configured,
                 "env_var": config["env_var"],
                 "base_url": config["base_url"],
-                "model": config.get("model", config.get("default_model", "unknown"))
+                "model": config.get("model") or config.get("default_model")
             }
 
             if not is_configured:

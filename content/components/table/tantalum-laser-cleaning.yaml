@@ -1,97 +1,52 @@
 materialTables:
   tables:
-  - header: '## Chemical Properties'
-    rows:
-    - property: Chemical Formula
-      value: Ta
-      unit: '-'
-      category: Chemical
-    - property: Chemical Symbol
-      value: Ta
-      unit: '-'
-      category: Chemical
-    - property: Material Type
-      value: Metal
-      unit: '-'
-      category: Classification
-    - property: Composition
-      value: 'Tantalum (Ta): 99.9-99.99%, Niobium (Nb): <0.1%, Carbon (C): <0.01%, Oxygen (O): <0.015%'
-      unit: '-'
-      category: Composition
   - header: '## Physical & Mechanical Properties'
     rows:
     - property: Density
-      value: 16.69 g/cm³
+      value: '7.8'
       unit: g/cm³
-      min: '1.8'
-      max: '6.0'
-      percentile: 100.0
-      numeric: 16.69
-    - property: Melting Point
-      value: 3017 °C
-      unit: °C
-      percentile: 100.0
-      numeric: 3017.0
     - property: Thermal Conductivity
-      value: 57.5 W/(m·K)
-      unit: W/
-      percentile: 28.6
-      numeric: 57.5
+      value: '15'
+      unit: W/m·K
     - property: Tensile Strength
-      value: 310 MPa (annealed)
+      value: '200'
       unit: MPa
-      percentile: 27.4
-      numeric: 310.0
-    - property: Hardness
-      value: 800-1200 HV (Vickers)
-      unit: HV
-      min: '1.0'
-      max: '10.0'
-      percentile: 100.0
-      numeric: 1000.0
     - property: Young's Modulus
-      value: 186 GPa
+      value: '200'
       unit: GPa
-      percentile: 100.0
-      numeric: 186.0
   - header: '## Laser Processing Parameters'
     rows:
     - property: Power Range
-      value: 50-200W
+      value: '250.0'
       unit: W
-      min: '20.0'
-      max: '500.0'
-      numeric: 125.0
     - property: Pulse Duration
-      value: 10-100ns
+      value: '20.0'
       unit: ns
-      min: '1.0'
-      max: '1000.0'
-      numeric: 55.0
+      category: Standard
     - property: Wavelength
-      value: 1064 nm (primary), 532nm (optional)
+      value: '1064.0'
       unit: nm
-      min: '355.0'
-      max: '2940.0'
-      numeric: 1064.0
+      category: Optimal
     - property: Spot Size
-      value: 0.1-1.0mm
+      value: '2.0'
       unit: mm
-      min: '0.01'
-      max: '10.0'
-      numeric: 0.55
+      category: Configurable
     - property: Repetition Rate
-      value: 20-100kHz
+      value: '30.0'
       unit: kHz
-      min: '1.0'
-      max: '1000.0'
-      numeric: 60.0
+      category: Variable
     - property: Fluence Range
-      value: 1.0–10 J/cm²
+      value: '2.0'
       unit: J/cm²
-      min: '0.1'
-      max: '50.0'
-      numeric: 1.0
+      category: Range
+    - property: Beam Profile
+      value: Gaussian TEM00
+      unit: '-'
+      category: System
+    - property: Safety Class
+      value: Class 4 (requires full enclosure)
+      unit: '-'
+      category: Safety
   - header: '## Applications & Industries'
     rows:
     - property: Electronics
@@ -102,34 +57,10 @@ materialTables:
       value: Cleaning Tantalum components for high-temperature applications
       unit: '-'
       category: Application
-  - header: '## Performance Metrics'
-    rows:
-    - property: Surface contamination removal efficiency
-      value: '>99.9% removal of oxides and organic contaminants without substrate damage'
-      unit: '-'
-      category: Performance
-    - property: Processing precision
-      value: ±5 μm accuracy with surface roughness maintained at Ra < 0.8 μm
-      unit: '-'
-      category: Performance
-  - header: '## Environmental Impact'
-    rows:
-    - property: Elimination of hazardous chemical solvents
-      value: Replaces HF acid and other aggressive chemicals traditionally used for Tantalum surface preparation, reducing toxic waste by 95%
-      unit: '-'
-      category: Environmental
-    - property: Reduced energy consumption
-      value: Laser cleaning consumes approximately 60% less energy compared to chemical bath processes with heating requirements
-      unit: '-'
-      category: Environmental
   - header: '## Compatibility & Standards'
     rows:
     - property: Material Compatibility
-      value: Compatible with stainless steel fixtures and copper cooling elements, Similar processing parameters to Niobium and Molybdenum
+      value: laser_types, surface_treatments, incompatible_conditions
       unit: '-'
       category: Compatibility
-    - property: Regulatory Standards
-      value: IEC 60825-1 (Laser Safety), ISO 9013 (Thermal cutting classification), ASTM B708 (Tantalum and Tantalum Alloy Sheet, Strip, and Plate)
-      unit: '-'
-      category: Compliance
 renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. Pure data structure optimized for performance.'

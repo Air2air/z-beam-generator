@@ -1,96 +1,38 @@
 materialTables:
   tables:
-  - header: '## Chemical Properties'
-    rows:
-    - property: Chemical Formula
-      value: C₆H₁₀O₅ₙ (Cellulose base)
-      unit: '-'
-      category: Chemical
-    - property: Chemical Symbol
-      value: N/A (Organic Composite)
-      unit: '-'
-      category: Chemical
-    - property: Material Type
-      value: Wood
-      unit: '-'
-      category: Classification
-    - property: Composition
-      value: 'Cellulose: 40-45%, Hemicellulose: 20-25%, Lignin: 20-25%, Extractives and Ash: 5-10%'
-      unit: '-'
-      category: Composition
-  - header: '## Physical & Mechanical Properties'
-    rows:
-    - property: Density
-      value: 450-500 kg/m³ (Salix alba)
-      unit: kg/m³
-      min: '1.8'
-      max: '6.0'
-      percentile: 100.0
-      numeric: 475.0
-    - property: Decomposition Point
-      value: 275°C
-      unit: °C
-      numeric: 275.0
-    - property: Thermal Conductivity
-      value: 0.09-0.12 W/(m·K) (radial)
-      unit: W/
-      percentile: 0.0
-      numeric: 0.1
-    - property: Tensile Strength
-      value: 70-100 MPa (along grain)
-      unit: MPa
-      percentile: 3.7
-      numeric: 85.0
-    - property: Hardness
-      value: 1.5-2.0 kN (Janka hardness scale)
-      unit: kN
-      min: '1.0'
-      max: '10.0'
-      percentile: 8.3
-      numeric: 1.75
-    - property: Young's Modulus
-      value: 8-10 GPa (along grain)
-      unit: GPa
-      percentile: 0.0
-      numeric: 9.0
   - header: '## Laser Processing Parameters'
     rows:
     - property: Power Range
-      value: 20-100W
+      value: '50.0'
       unit: W
-      min: '20.0'
-      max: '500.0'
-      numeric: 60.0
     - property: Pulse Duration
-      value: 10-100ns
+      value: '15.0'
       unit: ns
-      min: '1.0'
-      max: '1000.0'
-      numeric: 55.0
+      category: Standard
     - property: Wavelength
-      value: 1064nm (primary), 532nm (optional)
+      value: '1064.0'
       unit: nm
-      min: '355.0'
-      max: '2940.0'
-      numeric: 1064.0
+      category: Optimal
     - property: Spot Size
-      value: 0.1-2.0mm
+      value: '1.5'
       unit: mm
-      min: '0.01'
-      max: '10.0'
-      numeric: 1.05
+      category: Configurable
     - property: Repetition Rate
-      value: 10-50kHz
+      value: '20.0'
       unit: kHz
-      min: '1.0'
-      max: '1000.0'
-      numeric: 30.0
+      category: Variable
     - property: Fluence Range
-      value: 0.5–5 J/cm²
+      value: '0.8'
       unit: J/cm²
-      min: '0.1'
-      max: '50.0'
-      numeric: 0.5
+      category: Range
+    - property: Beam Profile
+      value: Gaussian TEM00
+      unit: '-'
+      category: System
+    - property: Safety Class
+      value: Class 4 (requires full enclosure)
+      unit: '-'
+      category: Safety
   - header: '## Applications & Industries'
     rows:
     - property: Woodworking
@@ -101,34 +43,10 @@ materialTables:
       value: Precision cleaning of Willow artifacts and antiques
       unit: '-'
       category: Application
-  - header: '## Performance Metrics'
-    rows:
-    - property: Contaminant removal efficiency >99%
-      value: Measured via SEM-EDS analysis showing complete removal of surface layers without substrate damage.
-      unit: '-'
-      category: Performance
-    - property: Substrate preservation
-      value: Achieves cleaning with material removal of less than 50 µm depth, preserving original wood surface integrity.
-      unit: '-'
-      category: Performance
-  - header: '## Environmental Impact'
-    rows:
-    - property: Zero chemical waste generation
-      value: Eliminates use and disposal of chemical solvents, reducing hazardous waste by 100% compared to traditional chemical stripping methods.
-      unit: '-'
-      category: Environmental
-    - property: Reduced energy consumption
-      value: Laser process consumes approximately 60% less energy than thermal or sandblasting techniques for equivalent surface area cleaning.
-      unit: '-'
-      category: Environmental
   - header: '## Compatibility & Standards'
     rows:
     - property: Material Compatibility
-      value: Compatible with other low-density hardwoods (e.g., Basswood, Poplar) for similar laser processing parameters, Requires parameter adjustment for woods with significantly different density or resin content
+      value: laser_types, surface_treatments, incompatible_conditions
       unit: '-'
       category: Compatibility
-    - property: Regulatory Standards
-      value: IEC 60825-1 (Laser Safety), EN 15898 (Conservation of Cultural Property - Main general terms and definitions)
-      unit: '-'
-      category: Compliance
 renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. Pure data structure optimized for performance.'

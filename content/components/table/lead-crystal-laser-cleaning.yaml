@@ -1,97 +1,55 @@
 materialTables:
   tables:
-  - header: '## Chemical Properties'
-    rows:
-    - property: Chemical Formula
-      value: 24% PbO, 75% SiO₂, 1% K₂O (typical)
-      unit: '-'
-      category: Chemical
-    - property: Chemical Symbol
-      value: Pb
-      unit: '-'
-      category: Chemical
-    - property: Material Type
-      value: Glass
-      unit: '-'
-      category: Classification
-    - property: Composition
-      value: 'Silicon Dioxide (SiO₂): 55-75%, Lead Oxide (PbO): 24-32%, Potassium Oxide (K₂O): 0.5-1.5%, Other oxides (Na₂O, CaO): <1%'
-      unit: '-'
-      category: Composition
   - header: '## Physical & Mechanical Properties'
     rows:
     - property: Density
-      value: 3.1-3.5 g/cm³
+      value: '2.4'
       unit: g/cm³
-      min: '1.8'
-      max: '6.0'
-      percentile: 35.7
-      numeric: 3.3
-    - property: Melting Point
-      value: 1000°C
-      unit: °C
-      percentile: 0.0
-      numeric: 1000.0
     - property: Thermal Conductivity
-      value: 0.78-0.85 W/(m·K)
-      unit: W/
-      percentile: 0.2
-      numeric: 0.81
+      value: '1.0'
+      unit: W/m·K
     - property: Tensile Strength
-      value: 30-50 MPa
+      value: '50'
       unit: MPa
-      percentile: 0.0
-      numeric: 40.0
     - property: Hardness
-      value: 350-450 HK (Knoop)
-      unit: HK
-      min: '1.0'
-      max: '10.0'
-      percentile: 100.0
-      numeric: 400.0
+      value: '5.5'
+      unit: Mohs
     - property: Young's Modulus
-      value: 50-60 GPa
+      value: '70'
       unit: GPa
-      percentile: 58.3
-      numeric: 55.0
   - header: '## Laser Processing Parameters'
     rows:
     - property: Power Range
-      value: 20-100W
+      value: '25.0'
       unit: W
-      min: '20.0'
-      max: '500.0'
-      numeric: 60.0
     - property: Pulse Duration
-      value: 10-100ns
+      value: '20.0'
       unit: ns
-      min: '1.0'
-      max: '1000.0'
-      numeric: 55.0
+      category: Standard
     - property: Wavelength
-      value: 1064nm (primary), 532nm (optional)
+      value: '355.0'
       unit: nm
-      min: '355.0'
-      max: '2940.0'
-      numeric: 1064.0
+      category: Optimal
     - property: Spot Size
-      value: 0.1-2.0mm
+      value: '1.0'
       unit: mm
-      min: '0.01'
-      max: '10.0'
-      numeric: 1.05
+      category: Configurable
     - property: Repetition Rate
-      value: 10-50kHz
+      value: '25.0'
       unit: kHz
-      min: '1.0'
-      max: '1000.0'
-      numeric: 30.0
+      category: Variable
     - property: Fluence Range
-      value: 0.5–5 J/cm²
+      value: '0.4'
       unit: J/cm²
-      min: '0.1'
-      max: '50.0'
-      numeric: 0.5
+      category: Range
+    - property: Beam Profile
+      value: Gaussian TEM00
+      unit: '-'
+      category: System
+    - property: Safety Class
+      value: Class 4 (requires full enclosure)
+      unit: '-'
+      category: Safety
   - header: '## Applications & Industries'
     rows:
     - property: Glass Manufacturing
@@ -102,34 +60,10 @@ materialTables:
       value: Precision cleaning of historic lead crystal artifacts
       unit: '-'
       category: Application
-  - header: '## Performance Metrics'
-    rows:
-    - property: Surface contamination removal efficiency
-      value: '>99.5% removal of organic contaminants and surface coatings'
-      unit: '-'
-      category: Performance
-    - property: Processing speed
-      value: 0.1-0.5 m²/hour depending on contamination level and required precision
-      unit: '-'
-      category: Performance
-  - header: '## Environmental Impact'
-    rows:
-    - property: Elimination of chemical solvents
-      value: Removes need for hazardous chemical cleaners like hydrofluoric acid, reducing toxic waste by 100% compared to traditional methods
-      unit: '-'
-      category: Environmental
-    - property: Reduced water consumption
-      value: Eliminates water usage in cleaning process, saving approximately 500-1000 liters per hour compared to aqueous cleaning systems
-      unit: '-'
-      category: Environmental
   - header: '## Compatibility & Standards'
     rows:
     - property: Material Compatibility
-      value: Stainless steel fixtures and handling systems, Quartz and borosilicate glass optical components, Aluminum and copper heat sinks
+      value: laser_types, surface_treatments, incompatible_conditions
       unit: '-'
       category: Compatibility
-    - property: Regulatory Standards
-      value: IEC 60825-1 (Laser Safety), OSHA 29 CFR 1910.1096 (Ionizing Radiation), EU Directive 2011/65/EU (RoHS) for lead content
-      unit: '-'
-      category: Compliance
 renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. Pure data structure optimized for performance.'

@@ -276,12 +276,9 @@ def parse_yaml_frontmatter(content: str) -> Optional[Dict[str, Any]]:
                 logger.error(f"YAML parsing error in code block: {e}")
                 return None
     
-    # Try parsing entire content as YAML (fallback)
-    try:
-        return yaml.safe_load(content)
-    except yaml.YAMLError as e:
-        logger.error(f"YAML parsing error: {e}")
-        return None
+    # Fail-fast: YAML content must be parseable - no fallback
+    logger.error("No valid YAML content found in response")
+    raise ValueError("YAML content parsing failed - no valid YAML found")
 
 
 def safe_yaml_load(file_path: str) -> Optional[Dict[str, Any]]:

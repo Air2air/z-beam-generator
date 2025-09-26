@@ -12,7 +12,6 @@ from pathlib import Path
 # Add project root to path
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
-
 def run_frontmatter_tests():
     """Run all frontmatter-related tests."""
     print("🧪 Frontmatter Test Suite Runner")
@@ -143,7 +142,6 @@ def run_frontmatter_tests():
         print("⚠️ Some frontmatter tests failed. Check details above.")
         return False
 
-
 def check_system_readiness():
     """Check if the frontmatter system is ready for use."""
     print("🔍 Checking Frontmatter System Readiness...")
@@ -212,7 +210,6 @@ def check_system_readiness():
         print("📋 System status: Not ready - setup required")
     
     return results
-
 
 if __name__ == "__main__":
     success = run_frontmatter_tests()

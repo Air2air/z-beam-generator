@@ -1,12 +1,11 @@
 | Property | Value |
 |----------|-------|
-| Density | 0.75 g/cm³ |
-| Conductivity | 0.17 W/m·K |
-| Formula | C6H10O5 |
+| Density | 0.75 |
+| Conductivity | 0.17 |
 
 
 ---
-Version Log - Generated: 2025-09-22T23:28:22.639907
+Version Log - Generated: 2025-09-24T14:45:07.243890
 Material: Unknown
 Component: propertiestable
 Generator: Z-Beam v1.0.0

@@ -517,7 +517,7 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
         - densityMinNumeric: 1.8
         - densityMinUnit: g/cm³
         """
-        properties = frontmatter_data.get("properties", {})
+        properties = frontmatter_data.get("materialProperties", {})
         if not properties:
             return
         
@@ -1393,7 +1393,7 @@ class FrontmatterComponentGenerator(APIComponentGenerator):
             
         # === 4. MATERIAL PROPERTIES (Grouped) ===
         if "properties" in frontmatter_data:
-            ordered_data["properties"] = self._order_properties_groups(frontmatter_data["properties"])
+            ordered_data["properties"] = self._order_properties_groups(frontmatter_data["materialProperties"])
             
         # === 5. MATERIAL COMPOSITION ===
         if "composition" in frontmatter_data:

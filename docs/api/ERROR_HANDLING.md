@@ -4,7 +4,28 @@
 
 ---
 
-## Overview
+## Z-Beam Generator Architecture Context
+
+### Current Component Architecture (September 2025)
+The Z-Beam Generator now uses a **consolidated 6-component architecture**:
+
+#### **Active Components**
+1. **frontmatter** - Unified material properties and machine settings
+2. **author** - Expert persona attribution with linguistic authenticity
+3. **badgesymbol** - Category-specific visual identifiers
+4. **metatags** - SEO and metadata optimization
+5. **jsonld** - Structured data for search engines
+6. **propertiestable** - Formatted property tables
+
+#### **Archived Components (No Longer Supported)**
+- ~~text~~ - Consolidated into frontmatter
+- ~~bullets~~ - Functionality distributed across other components
+- ~~caption~~ - Integrated into frontmatter
+- ~~tags~~ - Replaced by metatags
+- ~~settings~~ - Consolidated into frontmatter
+- ~~table~~ - Replaced by propertiestable
+
+### API Usage in Consolidated System
 
 This document consolidates all API error handling procedures, emphasizing the **critical requirement** to read terminal output for accurate diagnostics. API response objects often contain insufficient error information (`success: false`, `error: None`), while terminal output reveals the actual failure details.
 

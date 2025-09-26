@@ -1,66 +1,324 @@
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "Quartz Glass Laser Cleaning",
-  "alternativeHeadline": "Advanced Laser Ablation Techniques for Quartz Glass",
-  "description": "Laser cleaning of fused quartz glass utilizes precise pulsed fiber lasers to remove surface contaminants through selective ablation while preserving the substrate's optical properties and surface inte...",
-  "keywords": [
-    "glass laser cleaning",
-    "optics and photonics laser cleaning",
-    "fused silica",
-    "semiconductor manufacturing laser cleaning",
-    "thermal processing",
-    "surface restoration",
-    "quartz glass laser cleaning",
-    "laser ablation",
-    "non-contact cleaning",
-    "pulsed fiber laser",
-    "surface contamination removal",
-    "industrial laser parameters",
-    "industrial laser",
-    "surface treatment",
-    "quartz glass"
-  ],
-  "articleSection": "Materials Processing",
-  "inLanguage": "en-US",
-  "isAccessibleForFree": true,
-  "author": {
-    "@type": "Person",
-    "name": "Alessandro Moretti"
-  },
-  "about": {
-    "@type": "Material",
-    "name": "Quartz Glass",
-    "category": "glass",
-    "density": "2.20 g/cm³",
-    "description": "Quartz Glass material for laser cleaning applications"
-  },
-  "mainEntity": {
-    "@type": "HowTo",
-    "name": "How to Laser Clean Quartz Glass",
-    "description": "Process for laser cleaning Quartz Glass using 1064 nm (primary), 532 nm (optional for finer control) wavelength",
-    "step": [
-      {
-        "@type": "HowToStep",
-        "name": "Material Preparation",
-        "text": "Secure Quartz Glass component in laser processing fixture"
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://z-beam.com/quartz-glass#article",
+      "headline": "Quartz Glass Laser Cleaning Guide",
+      "name": "Quartz Glass Laser Cleaning Guide",
+      "description": "Technical overview of Quartz Glass laser cleaning applications and parameters",
+      "url": "https://z-beam.com/quartz-glass",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://z-beam.com/quartz-glass"
       },
-      {
-        "@type": "HowToStep",
-        "name": "Parameter Configuration",
-        "text": "Configure laser parameters: 1064 nm (primary), 532 nm (optional for finer control) wavelength"
+      "author": {
+        "@type": "Person",
+        "name": "Alessandro Moretti",
+        "description": "Industrial laser cleaning specialist with expertise in material science and precision manufacturing",
+        "knowsAbout": [
+          "Laser Technology",
+          "Material Science",
+          "Industrial Cleaning",
+          "Surface Treatment",
+          "Non-contact Processing"
+        ]
       },
-      {
-        "@type": "HowToStep",
-        "name": "Surface Treatment",
-        "text": "Execute systematic scanning pattern for Quartz Glass processing"
+      "publisher": {
+        "@type": "Organization",
+        "name": "Z-Beam",
+        "url": "https://z-beam.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://z-beam.com/logo.png",
+          "width": 512,
+          "height": 512
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "Customer Service",
+          "availableLanguage": "English"
+        }
+      },
+      "datePublished": "2025-09-24",
+      "dateModified": "2025-09-24",
+      "keywords": "laser ablation, quartz glass, industrial cleaning, surface treatment, quartz glass laser cleaning",
+      "articleSection": "Laser Cleaning",
+      "wordCount": "850",
+      "inLanguage": "en-US",
+      "about": {
+        "@type": "Thing",
+        "name": "Quartz Glass Laser Cleaning",
+        "description": "Industrial laser cleaning applications and parameters for Quartz Glass"
+      },
+      "mentions": [
+        {
+          "@type": "Technology",
+          "name": "Fiber Laser Technology",
+          "description": "High-precision industrial laser systems for non-contact cleaning"
+        },
+        {
+          "@type": "Process",
+          "name": "Laser Ablation",
+          "description": "Controlled removal of surface contaminants using focused laser energy"
+        }
+      ],
+      "isPartOf": {
+        "@type": "Website",
+        "@id": "https://z-beam.com#website"
       }
-    ]
-  },
-  "datePublished": "2025-09-20",
-  "dateModified": "2025-09-20",
-  "publisher": {
-    "@type": "Organization",
-    "name": "Z-Beam"
-  }
+    },
+    {
+      "@type": "Product",
+      "@id": "https://z-beam.com/quartz-glass#material",
+      "name": "Quartz Glass",
+      "description": "Industrial-grade Quartz Glass for precision laser cleaning applications",
+      "category": "glass",
+      "brand": {
+        "@type": "Brand",
+        "name": "Industrial Materials"
+      },
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Density",
+          "value": "2.4 g/cm³",
+          "unitCode": "GRM"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Thermal Conductivity",
+          "value": "N/A W/m·K",
+          "unitCode": "WMK"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Melting Point",
+          "value": "N/A °C",
+          "unitCode": "CEL"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Material Type",
+          "value": "glass"
+        }
+      ],
+      "applicationCategory": [
+        "Industrial Cleaning",
+        "Surface Treatment",
+        "Cleaning Of Quartz Glass Components Used In Photolithography Processes",
+        "Precision Cleaning Of Optical Surfaces For Laser Systems And Telescopes"
+      ],
+      "mainEntityOfPage": "https://z-beam.com/quartz-glass"
+    },
+    {
+      "@type": "HowTo",
+      "@id": "https://z-beam.com/quartz-glass#howto",
+      "name": "How to Clean Quartz Glass with Laser Technology",
+      "description": "Professional step-by-step process for laser cleaning Quartz Glass materials",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://z-beam.com/images/quartz-glass/hero.jpg",
+        "width": 1200,
+        "height": 630
+      },
+      "totalTime": "PT15M",
+      "prepTime": "PT5M",
+      "performTime": "PT10M",
+      "estimatedCost": {
+        "@type": "MonetaryAmount",
+        "currency": "USD",
+        "value": "Variable based on surface area"
+      },
+      "supply": [
+        {
+          "@type": "HowToSupply",
+          "name": "Industrial Laser Cleaning System",
+          "requiredQuantity": "1"
+        },
+        {
+          "@type": "HowToSupply",
+          "name": "Personal Protective Equipment",
+          "requiredQuantity": "1 set"
+        },
+        {
+          "@type": "HowToSupply",
+          "name": "Ventilation System",
+          "requiredQuantity": "1"
+        }
+      ],
+      "tool": [
+        {
+          "@type": "HowToTool",
+          "name": "Fiber Laser Laser System",
+          "description": "100W industrial laser cleaning equipment"
+        },
+        {
+          "@type": "HowToTool",
+          "name": "Safety Equipment",
+          "description": "Laser safety glasses, fume extraction, barriers"
+        }
+      ],
+      "step": [
+        {
+          "@type": "HowToStep",
+          "name": "Surface Assessment",
+          "text": "Evaluate Quartz Glass surface condition, contamination type, and thickness requirements",
+          "position": 1,
+          "url": "https://z-beam.com/quartz-glass#step-1"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Safety Setup",
+          "text": "Install laser safety barriers, ensure proper ventilation, and verify protective equipment",
+          "position": 2,
+          "url": "https://z-beam.com/quartz-glass#step-2"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Parameter Configuration",
+          "text": "Set laser parameters: 1064nm wavelength, 100W power, optimized for Quartz Glass",
+          "position": 3,
+          "url": "https://z-beam.com/quartz-glass#step-3"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Test Area Processing",
+          "text": "Perform test cleaning on small area to validate parameters and cleaning effectiveness",
+          "position": 4,
+          "url": "https://z-beam.com/quartz-glass#step-4"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Full Surface Processing",
+          "text": "Execute systematic laser cleaning with consistent scan speed and overlap patterns",
+          "position": 5,
+          "url": "https://z-beam.com/quartz-glass#step-5"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Quality Inspection",
+          "text": "Inspect cleaned surface for uniformity, completeness, and substrate integrity",
+          "position": 6,
+          "url": "https://z-beam.com/quartz-glass#step-6"
+        }
+      ],
+      "author": {
+        "@id": "https://z-beam.com/quartz-glass#article"
+      },
+      "mainEntityOfPage": "https://z-beam.com/quartz-glass"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://z-beam.com/quartz-glass#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://z-beam.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Materials",
+          "item": "https://z-beam.com/materials"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Glass",
+          "item": "https://z-beam.com/category/glass"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Quartz Glass Laser Cleaning Guide",
+          "item": "https://z-beam.com/quartz-glass"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://z-beam.com/quartz-glass",
+      "url": "https://z-beam.com/quartz-glass",
+      "name": "Quartz Glass Laser Cleaning Guide",
+      "description": "Technical overview of Quartz Glass laser cleaning applications and parameters",
+      "inLanguage": "en-US",
+      "isPartOf": {
+        "@id": "https://z-beam.com#website"
+      },
+      "breadcrumb": {
+        "@id": "https://z-beam.com/quartz-glass#breadcrumb"
+      },
+      "mainEntity": {
+        "@id": "https://z-beam.com/quartz-glass#article"
+      },
+      "about": [
+        {
+          "@id": "https://z-beam.com/quartz-glass#material"
+        },
+        {
+          "@type": "Topic",
+          "name": "Laser Cleaning Technology",
+          "description": "Non-contact surface treatment using focused laser energy"
+        }
+      ],
+      "lastReviewed": "2025-09-24",
+      "reviewedBy": {
+        "@type": "Person",
+        "name": "Z-Beam Technical Team"
+      }
+    },
+    {
+      "@type": "Website",
+      "@id": "https://z-beam.com#website",
+      "url": "https://z-beam.com",
+      "name": "Z-Beam",
+      "description": "Industrial laser cleaning solutions and surface treatment technology",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Z-Beam",
+        "url": "https://z-beam.com"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://z-beam.com/search?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://z-beam.com/quartz-glass#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What laser parameters are optimal for Quartz Glass?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For Quartz Glass, we recommend 1064nm wavelength at 100W power with controlled pulse duration for optimal cleaning without substrate damage."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is laser cleaning safe for Quartz Glass?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, laser cleaning is a non-contact process that preserves the integrity of Quartz Glass substrates while effectively removing surface contaminants."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What applications benefit from Quartz Glass laser cleaning?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Quartz Glass laser cleaning is ideal for Cleaning Of Quartz Glass Components Used In Photolithography Processes, Precision Cleaning Of Optical Surfaces For Laser Systems And Telescopes, and other precision manufacturing applications requiring contamination-free surfaces."
+          }
+        }
+      ]
+    }
+  ]
 }

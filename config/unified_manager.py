@@ -141,8 +141,8 @@ class UnifiedConfigManager:
             from run import COMPONENT_CONFIG
             self._component_config = COMPONENT_CONFIG
         except ImportError:
-            # This is optional, so provide empty fallback
-            self._component_config = {}
+            # Fail-fast: Component config must be available - no fallback
+            raise RuntimeError("COMPONENT_CONFIG must be defined in run.py - no fallback allowed")
     
     # API Key Management Interface (consolidates config/api_keys.py)
     def get_api_key(self, provider: str, config: Optional[Dict[str, Any]] = None) -> str:

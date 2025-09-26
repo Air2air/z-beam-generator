@@ -3,115 +3,79 @@ materialTables:
   - header: '## Chemical Properties'
     rows:
     - property: Chemical Formula
-      value: Si₁₋ₓGeₓ
-      unit: '-'
-      category: Chemical
-    - property: Chemical Symbol
       value: SiGe
       unit: '-'
       category: Chemical
-    - property: Material Type
-      value: Semiconductor Alloy
+    - property: Chemical Symbol
+      value: Si-Ge
       unit: '-'
-      category: Classification
-    - property: Composition
-      value: 'Silicon: 70-95% (typical semiconductor compositions), Germanium: 5-30% (typical alloying percentages for electronic applications)'
-      unit: '-'
-      category: Composition
+      category: Chemical
   - header: '## Physical & Mechanical Properties'
     rows:
     - property: Density
-      value: '2.33-5.32 g/cm³ (varies with Ge content: 0-100%)'
+      value: '3.5'
       unit: g/cm³
-      min: '1.8'
-      max: '6.0'
-      percentile: 48.3
-      numeric: 3.83
     - property: Melting Point
-      value: 938°C
+      value: '1350'
       unit: °C
-      percentile: 0.0
-      numeric: 938.0
     - property: Thermal Conductivity
-      value: 149-60 W/m·K (Si-rich to Ge-rich compositions)
+      value: '80'
       unit: W/m·K
-      percentile: 52.1
-      numeric: 104.5
-    - property: Tensile Strength
-      value: 100-200 MPa (dependent on crystal orientation and doping)
-      unit: MPa
-      percentile: 10.5
-      numeric: 150.0
-    - property: Hardness
-      value: 7-9 Mohs (silicon-rich compositions)
-      unit: Mohs
-      min: '1.0'
-      max: '10.0'
-      percentile: 77.8
-      numeric: 8.0
-    - property: Young's Modulus
-      value: 130-103 GPa (decreases with increasing Ge content)
-      unit: GPa
-      percentile: 100.0
-      numeric: 116.5
   - header: '## Laser Processing Parameters'
     rows:
+    - property: Power Range
+      value: '35.0'
+      unit: W
     - property: Pulse Duration
-      value: 1-50ns
+      value: '10.0'
       unit: ns
-      min: '1.0'
-      max: '1000.0'
-      numeric: 25.5
+      category: Standard
     - property: Wavelength
-      value: 1064nm (primary), 532nm (optional)
+      value: '1064.0'
       unit: nm
-      min: '355.0'
-      max: '2940.0'
-      numeric: 1064.0
+      category: Optimal
+    - property: Spot Size
+      value: '0.2'
+      unit: mm
+      category: Configurable
+    - property: Repetition Rate
+      value: '25.0'
+      unit: kHz
+      category: Variable
     - property: Fluence Range
-      value: 0.1-1.0 J/cm²
+      value: '0.1'
       unit: J/cm²
-      min: '0.1'
-      max: '50.0'
-      numeric: 0.55
+      category: Range
+    - property: Beam Profile
+      value: Gaussian TEM00
+      unit: '-'
+      category: System
+    - property: Safety Class
+      value: Class 4 (requires full enclosure)
+      unit: '-'
+      category: Safety
   - header: '## Applications & Industries'
     rows:
-    - property: Semiconductor
-      value: Precision cleaning of silicon germanium wafers
+    - property: High-Speed Electronics
+      value: Precision cleaning of SiGe heterojunction bipolar transistors
       unit: '-'
       category: Application
-    - property: Electronics
-      value: Removal of organic contaminants from semiconductor surfaces
+    - property: RF Communications
+      value: Cleaning SiGe components for wireless communication devices
       unit: '-'
       category: Application
-  - header: '## Performance Metrics'
-    rows:
-    - property: Surface contamination reduction
-      value: '>99.9% removal of organic contaminants with <0.1% substrate damage'
+    - property: Automotive
+      value: Advanced driver assistance system sensor cleaning
       unit: '-'
-      category: Performance
-    - property: Processing throughput
-      value: 200-500 wafers/hour (150mm wafers) with automated laser systems
+      category: Application
+    - property: Telecommunications
+      value: Fiber optic component surface preparation
       unit: '-'
-      category: Performance
-  - header: '## Environmental Impact'
-    rows:
-    - property: Elimination of chemical solvents
-      value: Reduces VOC emissions by 95% compared to traditional acetone and isopropyl alcohol cleaning methods
-      unit: '-'
-      category: Environmental
-    - property: Reduced water consumption
-      value: Eliminates 100% of deionized water usage required for rinse steps in wet chemical cleaning processes
-      unit: '-'
-      category: Environmental
+      category: Application
   - header: '## Compatibility & Standards'
     rows:
     - property: Material Compatibility
-      value: Silicon substrates and SiO₂ layers, Gallium Arsenide and III-V semiconductors with similar thermal properties
+      value: laser_types, surface_treatments, incompatible_conditions
       unit: '-'
       category: Compatibility
-    - property: Regulatory Standards
-      value: IEC 60825-1 (Laser Safety), SEMI S2/S8 (Semiconductor Equipment Safety), ISO 14001 (Environmental Management)
-      unit: '-'
-      category: Compliance
 renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. Pure data structure optimized for performance.'

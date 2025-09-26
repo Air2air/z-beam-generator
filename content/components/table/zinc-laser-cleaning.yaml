@@ -10,88 +10,53 @@ materialTables:
       value: Zn
       unit: '-'
       category: Chemical
-    - property: Material Type
-      value: Metal
-      unit: '-'
-      category: Classification
-    - property: Composition
-      value: Zinc (99.995+%) - High purity zinc for industrial applications, Lead (≤0.003%), Cadmium (≤0.003%), Iron (≤0.002%) - Common trace impurities
-      unit: '-'
-      category: Composition
   - header: '## Physical & Mechanical Properties'
     rows:
     - property: Density
-      value: 7.14 g/cm³
+      value: '7.8'
       unit: g/cm³
-      min: '1.8'
-      max: '6.0'
-      percentile: 100.0
-      numeric: 7.14
-    - property: Melting Point
-      value: 419°C
-      unit: °C
-      percentile: 0.0
-      numeric: 419.0
     - property: Thermal Conductivity
-      value: 116 W/m·K
+      value: '15'
       unit: W/m·K
-      percentile: 57.9
-      numeric: 116.0
     - property: Tensile Strength
-      value: 110 MPa (cast zinc), 200-400 MPa (rolled zinc)
+      value: '200'
       unit: MPa
-      percentile: 26.3
-      numeric: 300.0
-    - property: Hardness
-      value: 30-42 HB (Brinell hardness)
-      unit: HB
-      min: '1.0'
-      max: '10.0'
-      percentile: 100.0
-      numeric: 36.0
     - property: Young's Modulus
-      value: 108 GPa
+      value: '200'
       unit: GPa
-      percentile: 100.0
-      numeric: 108.0
   - header: '## Laser Processing Parameters'
     rows:
     - property: Power Range
-      value: 50-200W
+      value: '60.0'
       unit: W
-      min: '20.0'
-      max: '500.0'
-      numeric: 125.0
     - property: Pulse Duration
-      value: 10-200ns
+      value: '20.0'
       unit: ns
-      min: '1.0'
-      max: '1000.0'
-      numeric: 105.0
+      category: Standard
     - property: Wavelength
-      value: 1064nm (primary), 532nm (optional)
+      value: '355.0'
       unit: nm
-      min: '355.0'
-      max: '2940.0'
-      numeric: 1064.0
+      category: Optimal
     - property: Spot Size
-      value: 0.1-1.0mm
+      value: '1.5'
       unit: mm
-      min: '0.01'
-      max: '10.0'
-      numeric: 0.55
+      category: Configurable
     - property: Repetition Rate
-      value: 20-100kHz
+      value: '30.0'
       unit: kHz
-      min: '1.0'
-      max: '1000.0'
-      numeric: 60.0
+      category: Variable
     - property: Fluence Range
-      value: 1.0–10 J/cm²
+      value: '0.5'
       unit: J/cm²
-      min: '0.1'
-      max: '50.0'
-      numeric: 1.0
+      category: Range
+    - property: Beam Profile
+      value: Gaussian TEM00
+      unit: '-'
+      category: System
+    - property: Safety Class
+      value: Class 4 (requires full enclosure)
+      unit: '-'
+      category: Safety
   - header: '## Applications & Industries'
     rows:
     - property: Automotive
@@ -102,34 +67,10 @@ materialTables:
       value: Precision cleaning of zinc components in circuit boards
       unit: '-'
       category: Application
-  - header: '## Performance Metrics'
-    rows:
-    - property: Surface cleanliness to Sa 2.5 standard
-      value: ISO 8501-1 visual assessment standard for surface preparation
-      unit: '-'
-      category: Performance
-    - property: Processing speed up to 5 m²/hour
-      value: For moderate contamination levels at 200W laser power
-      unit: '-'
-      category: Performance
-  - header: '## Environmental Impact'
-    rows:
-    - property: Elimination of chemical solvents
-      value: Reduces VOC emissions by 95% compared to chemical cleaning methods, eliminating hazardous waste disposal
-      unit: '-'
-      category: Environmental
-    - property: Reduced water consumption
-      value: Zero water usage compared to high-pressure water jet cleaning (saving ~50 liters per m² processed)
-      unit: '-'
-      category: Environmental
   - header: '## Compatibility & Standards'
     rows:
     - property: Material Compatibility
-      value: Galvanized steel (zinc-coated substrates), Brass (copper-zinc alloys), Zinc-aluminum alloys (ZA series), Zinc-nickel electroplated surfaces
+      value: laser_types, surface_treatments, incompatible_conditions
       unit: '-'
       category: Compatibility
-    - property: Regulatory Standards
-      value: ISO 12944 (corrosion protection of steel structures), IEC 60825-1 (laser safety), EPA guidelines for hazardous waste reduction
-      unit: '-'
-      category: Compliance
 renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. Pure data structure optimized for performance.'

@@ -5,7 +5,6 @@ Mock materials data for testing.
 This module provides mock materials data for tests to avoid dependency on real data files.
 """
 
-
 def mock_load_materials():
     """Mock implementation that returns test materials data."""
     return {
@@ -35,7 +34,6 @@ def mock_load_materials():
             }
         }
     }
-
 
 def get_mock_materials_list():
     """Get a list of all mock material names."""

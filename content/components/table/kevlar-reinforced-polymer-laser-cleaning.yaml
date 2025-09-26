@@ -1,97 +1,52 @@
 materialTables:
   tables:
-  - header: '## Chemical Properties'
-    rows:
-    - property: Chemical Formula
-      value: (C₁₄H₁₀N₂O₂)ₙ + Polymer Matrix (typically epoxy)
-      unit: '-'
-      category: Chemical
-    - property: Chemical Symbol
-      value: KRP
-      unit: '-'
-      category: Chemical
-    - property: Material Type
-      value: Composite
-      unit: '-'
-      category: Classification
-    - property: Composition
-      value: 'Poly(p-phenylene terephthalamide) fibers (Kevlar): 50-70%, Epoxy resin matrix: 30-50%, Additives (fillers, curing agents): 0-5%'
-      unit: '-'
-      category: Composition
   - header: '## Physical & Mechanical Properties'
     rows:
     - property: Density
-      value: 1.44-1.45 g/cm³
+      value: '1.2'
       unit: g/cm³
-      min: '1.8'
-      max: '6.0'
-      percentile: 0.0
-      numeric: 1.44
-    - property: Melting Point
-      value: 500-600°C
-      unit: °C
-      percentile: 0.0
-      numeric: 550.0
     - property: Thermal Conductivity
-      value: 0.04-0.05 W/m·K (transverse), 0.8-1.0 W/m·K (longitudinal)
+      value: '0.2'
       unit: W/m·K
-      percentile: 0.0
-      numeric: 0.04
     - property: Tensile Strength
-      value: 2900-3620 MPa (fiber), 70-100 MPa (composite)
+      value: '100'
       unit: MPa
-      percentile: 100.0
-      numeric: 3260.0
-    - property: Hardness
-      value: Rockwell M90-M100
-      unit: M
-      min: '1.0'
-      max: '10.0'
-      percentile: 100.0
-      numeric: 95.0
     - property: Young's Modulus
-      value: 70-112 GPa (fiber), 15-30 GPa (composite)
+      value: '10'
       unit: GPa
-      percentile: 100.0
-      numeric: 91.0
   - header: '## Laser Processing Parameters'
     rows:
     - property: Power Range
-      value: 50-200W
+      value: '50.0'
       unit: W
-      min: '20.0'
-      max: '500.0'
-      numeric: 125.0
     - property: Pulse Duration
-      value: 10-50ns
+      value: '10.0'
       unit: ns
-      min: '1.0'
-      max: '1000.0'
-      numeric: 30.0
+      category: Standard
     - property: Wavelength
-      value: 1064nm (primary), 532nm (optional)
+      value: '1064.0'
       unit: nm
-      min: '355.0'
-      max: '2940.0'
-      numeric: 1064.0
+      category: Optimal
     - property: Spot Size
-      value: 0.1-1.0mm
+      value: '2.0'
       unit: mm
-      min: '0.01'
-      max: '10.0'
-      numeric: 0.55
+      category: Configurable
     - property: Repetition Rate
-      value: 20-100kHz
+      value: '10.0'
       unit: kHz
-      min: '1.0'
-      max: '1000.0'
-      numeric: 60.0
+      category: Variable
     - property: Fluence Range
-      value: 1.0–10 J/cm²
+      value: '0.8'
       unit: J/cm²
-      min: '0.1'
-      max: '50.0'
-      numeric: 1.0
+      category: Range
+    - property: Beam Profile
+      value: Gaussian TEM00
+      unit: '-'
+      category: System
+    - property: Safety Class
+      value: Class 4 (requires full enclosure)
+      unit: '-'
+      category: Safety
   - header: '## Applications & Industries'
     rows:
     - property: Aerospace
@@ -102,34 +57,10 @@ materialTables:
       value: Cleaning of composite parts for improved bonding and painting
       unit: '-'
       category: Application
-  - header: '## Performance Metrics'
-    rows:
-    - property: Surface contamination removal efficiency
-      value: '>99.5% removal of release agents, oils, and particulate contaminants'
-      unit: '-'
-      category: Performance
-    - property: Processing speed
-      value: 0.5-2.0 m²/hour depending on contamination level and required precision
-      unit: '-'
-      category: Performance
-  - header: '## Environmental Impact'
-    rows:
-    - property: Zero chemical solvent consumption
-      value: Eliminates 100% of solvent use compared to traditional chemical cleaning methods (typically 5-10 L/m²)
-      unit: '-'
-      category: Environmental
-    - property: Reduced waste generation
-      value: Produces 95% less waste material compared to mechanical abrasion methods, with collected debris being 99.8% pure contaminant
-      unit: '-'
-      category: Environmental
   - header: '## Compatibility & Standards'
     rows:
     - property: Material Compatibility
-      value: Carbon fiber reinforced polymers (similar processing parameters), Glass fiber reinforced polymers (adjusted parameters), Thermoset polymer matrices (epoxy, polyester, vinyl ester)
+      value: laser_types, surface_treatments, incompatible_conditions
       unit: '-'
       category: Compatibility
-    - property: Regulatory Standards
-      value: 'ISO 11553: Safety of machinery - Laser processing machines, IEC 60825-1: Radiation safety of laser products'
-      unit: '-'
-      category: Compliance
 renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. Pure data structure optimized for performance.'

@@ -10,88 +10,56 @@ materialTables:
       value: Ni
       unit: '-'
       category: Chemical
-    - property: Material Type
-      value: Metal
-      unit: '-'
-      category: Classification
-    - property: Composition
-      value: 'Nickel (Ni): 99.9+% (commercially pure), Iron (Fe): <0.07%, Manganese (Mn): <0.35%, Copper (Cu): <0.25%, Carbon (C): <0.15%'
-      unit: '-'
-      category: Composition
   - header: '## Physical & Mechanical Properties'
     rows:
     - property: Density
-      value: 8.91 g/cm³
+      value: '8.91'
       unit: g/cm³
-      min: '1.8'
-      max: '6.0'
-      percentile: 100.0
-      numeric: 8.91
     - property: Melting Point
-      value: 1455°C
+      value: '1455'
       unit: °C
-      percentile: 15.9
-      numeric: 1455.0
     - property: Thermal Conductivity
-      value: 90.9 W/(m·K)
-      unit: W/
-      percentile: 45.3
-      numeric: 90.9
+      value: '90.9'
+      unit: W/m·K
     - property: Tensile Strength
-      value: 667-1600 MPa
+      value: '667'
       unit: MPa
-      percentile: 100.0
-      numeric: 1133.5
-    - property: Hardness
-      value: 80-150 HV (Vickers)
-      unit: HV
-      min: '1.0'
-      max: '10.0'
-      percentile: 100.0
-      numeric: 115.0
     - property: Young's Modulus
-      value: 200 GPa
+      value: '200'
       unit: GPa
-      percentile: 100.0
-      numeric: 200.0
   - header: '## Laser Processing Parameters'
     rows:
     - property: Power Range
-      value: 20-100W
+      value: '95.0'
       unit: W
-      min: '20.0'
-      max: '500.0'
-      numeric: 60.0
     - property: Pulse Duration
-      value: 10-100ns
+      value: '20.0'
       unit: ns
-      min: '1.0'
-      max: '1000.0'
-      numeric: 55.0
+      category: Standard
     - property: Wavelength
-      value: 1064nm (primary), 532nm (optional)
+      value: '1064.0'
       unit: nm
-      min: '355.0'
-      max: '2940.0'
-      numeric: 1064.0
+      category: Optimal
     - property: Spot Size
-      value: 0.1-2.0mm
+      value: '1.5'
       unit: mm
-      min: '0.01'
-      max: '10.0'
-      numeric: 1.05
+      category: Configurable
     - property: Repetition Rate
-      value: 10-50kHz
+      value: '30.0'
       unit: kHz
-      min: '1.0'
-      max: '1000.0'
-      numeric: 30.0
+      category: Variable
     - property: Fluence Range
-      value: 0.5–5 J/cm²
+      value: '1.0'
       unit: J/cm²
-      min: '0.1'
-      max: '50.0'
-      numeric: 0.5
+      category: Range
+    - property: Beam Profile
+      value: Gaussian TEM00
+      unit: '-'
+      category: System
+    - property: Safety Class
+      value: Class 4 (requires full enclosure)
+      unit: '-'
+      category: Safety
   - header: '## Applications & Industries'
     rows:
     - property: Automotive
@@ -110,34 +78,10 @@ materialTables:
       value: Catalyst recovery and regeneration
       unit: '-'
       category: Application
-  - header: '## Performance Metrics'
-    rows:
-    - property: Surface contamination removal efficiency
-      value: '>99.9% removal of oxides and contaminants with substrate damage <5 μm'
-      unit: '-'
-      category: Performance
-    - property: Processing throughput
-      value: 0.5-2.0 m²/hour depending on contamination level and laser parameters
-      unit: '-'
-      category: Performance
-  - header: '## Environmental Impact'
-    rows:
-    - property: Zero chemical waste generation
-      value: Eliminates 100% of chemical solvents and acids traditionally used for nickel cleaning, preventing hazardous waste streams of 50-200 liters per cleaning cycle
-      unit: '-'
-      category: Environmental
-    - property: Reduced energy consumption
-      value: Laser cleaning consumes 60-80% less energy compared to electrochemical or abrasive cleaning methods for nickel components
-      unit: '-'
-      category: Environmental
   - header: '## Compatibility & Standards'
     rows:
     - property: Material Compatibility
-      value: Stainless steel (300 series), Copper and copper alloys, Titanium alloys, Nickel-based superalloys (Inconel, Hastelloy)
+      value: laser_types, surface_treatments, incompatible_conditions
       unit: '-'
       category: Compatibility
-    - property: Regulatory Standards
-      value: ISO 11553 (Safety of machinery - Laser processing machines), IEC 60825 (Laser product safety), OSHA 29 CFR 1910.1096 (Ionizing radiation)
-      unit: '-'
-      category: Compliance
 renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. Pure data structure optimized for performance.'

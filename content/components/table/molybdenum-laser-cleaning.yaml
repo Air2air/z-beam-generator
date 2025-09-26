@@ -1,97 +1,52 @@
 materialTables:
   tables:
-  - header: '## Chemical Properties'
-    rows:
-    - property: Chemical Formula
-      value: Mo
-      unit: '-'
-      category: Chemical
-    - property: Chemical Symbol
-      value: Mo
-      unit: '-'
-      category: Chemical
-    - property: Material Type
-      value: Metal
-      unit: '-'
-      category: Classification
-    - property: Composition
-      value: 'Molybdenum (Mo): 99.95-99.99%, Impurities: <0.05% (typically carbon, oxygen, iron, nickel)'
-      unit: '-'
-      category: Composition
   - header: '## Physical & Mechanical Properties'
     rows:
     - property: Density
-      value: 10.28 g/cm³
+      value: '7.8'
       unit: g/cm³
-      min: '1.8'
-      max: '6.0'
-      percentile: 100.0
-      numeric: 10.28
-    - property: Melting Point
-      value: 2623°C
-      unit: °C
-      percentile: 88.9
-      numeric: 2623.0
     - property: Thermal Conductivity
-      value: 138 W/m·K
+      value: '15'
       unit: W/m·K
-      percentile: 68.9
-      numeric: 138.0
     - property: Tensile Strength
-      value: 324 MPa (annealed), 620 MPa (work hardened)
+      value: '200'
       unit: MPa
-      percentile: 28.8
-      numeric: 324.0
-    - property: Hardness
-      value: 153 HV (Vickers hardness)
-      unit: HV
-      min: '1.0'
-      max: '10.0'
-      percentile: 100.0
-      numeric: 153.0
     - property: Young's Modulus
-      value: 329 GPa
+      value: '200'
       unit: GPa
-      percentile: 100.0
-      numeric: 329.0
   - header: '## Laser Processing Parameters'
     rows:
     - property: Power Range
-      value: 50-200W
+      value: '220.0'
       unit: W
-      min: '20.0'
-      max: '500.0'
-      numeric: 125.0
     - property: Pulse Duration
-      value: 10-200ns
+      value: '10.0'
       unit: ns
-      min: '1.0'
-      max: '1000.0'
-      numeric: 105.0
+      category: Standard
     - property: Wavelength
-      value: 1064nm (primary), 532nm (optional)
+      value: '1064.0'
       unit: nm
-      min: '355.0'
-      max: '2940.0'
-      numeric: 1064.0
+      category: Optimal
     - property: Spot Size
-      value: 0.05-1.0mm
+      value: '1.5'
       unit: mm
-      min: '0.01'
-      max: '10.0'
-      numeric: 0.525
+      category: Configurable
     - property: Repetition Rate
-      value: 20-100kHz
+      value: '30.0'
       unit: kHz
-      min: '1.0'
-      max: '1000.0'
-      numeric: 60.0
+      category: Variable
     - property: Fluence Range
-      value: 1.0–10 J/cm²
+      value: '2.2'
       unit: J/cm²
-      min: '0.1'
-      max: '50.0'
-      numeric: 1.0
+      category: Range
+    - property: Beam Profile
+      value: Gaussian TEM00
+      unit: '-'
+      category: System
+    - property: Safety Class
+      value: Class 4 (requires full enclosure)
+      unit: '-'
+      category: Safety
   - header: '## Applications & Industries'
     rows:
     - property: Aerospace
@@ -102,34 +57,10 @@ materialTables:
       value: Precision cleaning of Molybdenum surfaces in microelectronics manufacturing
       unit: '-'
       category: Application
-  - header: '## Performance Metrics'
-    rows:
-    - property: Surface cleanliness achieving <5 μg/cm² contamination levels
-      value: ISO 8502-3 cleanliness standard compliance
-      unit: '-'
-      category: Performance
-    - property: Processing speeds up to 0.5 m²/hour for oxide removal
-      value: Achievable cleaning rates with 100W pulsed fiber laser systems
-      unit: '-'
-      category: Performance
-  - header: '## Environmental Impact'
-    rows:
-    - property: Zero chemical waste generation
-      value: Eliminates use of hazardous chemical solvents and acids traditionally used for Molybdenum surface preparation, reducing chemical disposal by 100%
-      unit: '-'
-      category: Environmental
-    - property: Reduced energy consumption
-      value: Laser cleaning consumes approximately 60-70% less energy compared to chemical bath processes and thermal treatment methods for Molybdenum components
-      unit: '-'
-      category: Environmental
   - header: '## Compatibility & Standards'
     rows:
     - property: Material Compatibility
-      value: Tungsten (similar thermal properties and laser processing parameters), Stainless steel 316L (commonly processed with similar laser systems)
+      value: laser_types, surface_treatments, incompatible_conditions
       unit: '-'
       category: Compatibility
-    - property: Regulatory Standards
-      value: ISO 9013:2017 (Thermal cutting classification), EN 60825-1 (Laser safety), OSHA 29 CFR 1910.1096 (Ionizing radiation standards for industrial lasers)
-      unit: '-'
-      category: Compliance
 renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. Pure data structure optimized for performance.'

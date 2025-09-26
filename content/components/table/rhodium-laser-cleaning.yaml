@@ -1,97 +1,52 @@
 materialTables:
   tables:
-  - header: '## Chemical Properties'
-    rows:
-    - property: Chemical Formula
-      value: Rh
-      unit: '-'
-      category: Chemical
-    - property: Chemical Symbol
-      value: Rh
-      unit: '-'
-      category: Chemical
-    - property: Material Type
-      value: Metal
-      unit: '-'
-      category: Classification
-    - property: Composition
-      value: 'Rhodium (Rh): 99.9-99.99% (commercial grade), Trace impurities: <0.1% (typically Ir, Pt, Pd, Fe)'
-      unit: '-'
-      category: Composition
   - header: '## Physical & Mechanical Properties'
     rows:
     - property: Density
-      value: 12.41 g/cm³
+      value: '7.8'
       unit: g/cm³
-      min: '1.8'
-      max: '6.0'
-      percentile: 100.0
-      numeric: 12.41
-    - property: Melting Point
-      value: 1964°C
-      unit: °C
-      percentile: 47.8
-      numeric: 1964.0
     - property: Thermal Conductivity
-      value: 150 W/(m·K)
-      unit: W/
-      percentile: 74.9
-      numeric: 150.0
+      value: '15'
+      unit: W/m·K
     - property: Tensile Strength
-      value: 950 MPa (annealed)
+      value: '200'
       unit: MPa
-      percentile: 94.7
-      numeric: 950.0
-    - property: Hardness
-      value: 1100 MPa (Vickers)
-      unit: MPa
-      min: '1.0'
-      max: '10.0'
-      percentile: 100.0
-      numeric: 1100.0
     - property: Young's Modulus
-      value: 380 GPa
+      value: '200'
       unit: GPa
-      percentile: 100.0
-      numeric: 380.0
   - header: '## Laser Processing Parameters'
     rows:
     - property: Power Range
-      value: 20-100W
+      value: '170.0'
       unit: W
-      min: '20.0'
-      max: '500.0'
-      numeric: 60.0
     - property: Pulse Duration
-      value: 10-100ns
+      value: '20.0'
       unit: ns
-      min: '1.0'
-      max: '1000.0'
-      numeric: 55.0
+      category: Standard
     - property: Wavelength
-      value: 1064 nm (primary), 532nm (optional)
+      value: '532.0'
       unit: nm
-      min: '355.0'
-      max: '2940.0'
-      numeric: 1064.0
+      category: Optimal
     - property: Spot Size
-      value: 0.1-2.0mm
+      value: '1.5'
       unit: mm
-      min: '0.01'
-      max: '10.0'
-      numeric: 1.05
+      category: Configurable
     - property: Repetition Rate
-      value: 10-50kHz
+      value: '20.0'
       unit: kHz
-      min: '1.0'
-      max: '1000.0'
-      numeric: 30.0
+      category: Variable
     - property: Fluence Range
-      value: 0.5–5 J/cm²
+      value: '1.1'
       unit: J/cm²
-      min: '0.1'
-      max: '50.0'
-      numeric: 0.5
+      category: Range
+    - property: Beam Profile
+      value: Gaussian TEM00
+      unit: '-'
+      category: System
+    - property: Safety Class
+      value: Class 4 (requires full enclosure)
+      unit: '-'
+      category: Safety
   - header: '## Applications & Industries'
     rows:
     - property: Aerospace
@@ -102,34 +57,10 @@ materialTables:
       value: Cleaning and restoring rhodium-plated surfaces
       unit: '-'
       category: Application
-  - header: '## Performance Metrics'
-    rows:
-    - property: Surface contamination removal >99.9%
-      value: Achieved via SEM-EDS analysis with no measurable substrate damage
-      unit: '-'
-      category: Performance
-    - property: Processing speed up to 0.5 m²/hour
-      value: For oxidation removal from rhodium-plated aerospace components at 50W average power
-      unit: '-'
-      category: Performance
-  - header: '## Environmental Impact'
-    rows:
-    - property: Zero chemical waste generation
-      value: Eliminates use of nitric acid, cyanide-based, and sulfuric acid baths traditionally used for rhodium cleaning, preventing hazardous waste streams.
-      unit: '-'
-      category: Environmental
-    - property: '>95% reduction in water consumption'
-      value: Dry process eliminates need for rinsing and water-intensive purification steps compared to electrochemical cleaning methods.
-      unit: '-'
-      category: Environmental
   - header: '## Compatibility & Standards'
     rows:
     - property: Material Compatibility
-      value: Platinum group metals (Platinum, Palladium), High-temperature superalloys (Inconel, Hastelloy), Stainless steel substrates
+      value: laser_types, surface_treatments, incompatible_conditions
       unit: '-'
       category: Compatibility
-    - property: Regulatory Standards
-      value: IEC 60825-1 (Laser Product Safety), OSHA 29 CFR 1910.1096 (Ionizing Radiation), ISO 11553 (Safety of Laser Processing Machines)
-      unit: '-'
-      category: Compliance
 renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. Pure data structure optimized for performance.'

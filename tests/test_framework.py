@@ -146,7 +146,6 @@ class TestPathManager:
         test_content_dir.mkdir(parents=True, exist_ok=True)
         return test_content_dir
 
-
 class RobustTestCase(unittest.TestCase):
     """
     Base test case class with essential test utilities and anti-hang protection.
@@ -173,7 +172,7 @@ class RobustTestCase(unittest.TestCase):
         # Common test data
         self.test_content_dir = TestPathManager.get_test_content_dir()
         self.test_material = "Steel"
-        self.test_components = ["frontmatter", "text", "table"]
+        self.test_components = ["frontmatter", "table"]
         self.test_author_info = {
             "id": 1,
             "name": "Test Author",
@@ -202,11 +201,10 @@ class RobustTestCase(unittest.TestCase):
     def create_mock_client(self, provider: str = "grok", **kwargs):
         """Create a mock API client."""
         try:
-            from tests.fixtures.mocks.mock_api_client import MockAPIClient
+            from tests.fixtures.mocks.simple_mock_client import MockAPIClient
             return MockAPIClient(provider, **kwargs)
         except ImportError:
             return MagicMock()
-
 
 class TestDataFactory:
     """
@@ -295,7 +293,6 @@ class TestDataFactory:
         }
         return configs.get(component, {})
 
-
 class TestValidator:
     """
     Validates test results.
@@ -368,7 +365,6 @@ class TestValidator:
         validation["total_files"] = total_files
         return validation
 
-
 def patch_file_operations():
     """Patch file operations to use test directories."""
     test_content_dir = TestPathManager.get_test_content_dir()
@@ -388,7 +384,6 @@ def patch_file_operations():
         "utils.file_operations.save_component_to_file_original",
         side_effect=mock_save_component_to_file_original,
     )
-
 
 # Pytest integration for anti-hang protections
 def pytest_configure(config):
@@ -469,7 +464,7 @@ def mock_api_clients():
     logger.info("🎭 Setting up mock API clients")
 
     # Import mock client
-    from tests.fixtures.mocks.mock_api_client import MockAPIClient
+    from tests.fixtures.mocks.simple_mock_client import MockAPIClient
 
     # Mock the API client creation functions
     with patch('api.client_manager.create_api_client') as mock_create, \
@@ -525,7 +520,7 @@ def fast_mock_responses():
     logger.info("⚡ Configuring fast mock responses")
 
     # Import MockAPIClient locally
-    from tests.fixtures.mocks.mock_api_client import MockAPIClient
+    from tests.fixtures.mocks.simple_mock_client import MockAPIClient
 
     # Set very fast response times for mocks
     with patch.object(MockAPIClient, 'response_delay', 0.001):

@@ -1,97 +1,55 @@
 materialTables:
   tables:
-  - header: '## Chemical Properties'
-    rows:
-    - property: Chemical Formula
-      value: ~72% SiO₂, ~13% Na₂O, ~10% CaO, ~4% MgO, ~1% Al₂O₃
-      unit: '-'
-      category: Chemical
-    - property: Chemical Symbol
-      value: N/A (Amorphous Solid)
-      unit: '-'
-      category: Chemical
-    - property: Material Type
-      value: Soda-Lime-Silica Glass
-      unit: '-'
-      category: Classification
-    - property: Composition
-      value: 'Silicon Dioxide (SiO₂): 70–74%, Sodium Oxide (Na₂O): 12–14%, Calcium Oxide (CaO): 8–10%, Magnesium Oxide (MgO): 2–4%, Aluminum Oxide (Al₂O₃): 0.5–1.5%'
-      unit: '-'
-      category: Composition
   - header: '## Physical & Mechanical Properties'
     rows:
     - property: Density
-      value: 2500 kg/m³
-      unit: kg/m³
-      min: '1.8'
-      max: '6.0'
-      percentile: 100.0
-      numeric: 2500.0
-    - property: Melting Point
-      value: 1500°C
-      unit: °C
-      percentile: 0.0
-      numeric: 1500.0
+      value: '2.4'
+      unit: g/cm³
     - property: Thermal Conductivity
-      value: 0.8–1.0 W/(m·K)
-      unit: W/
-      percentile: 0.2
-      numeric: 0.8
+      value: '1.0'
+      unit: W/m·K
     - property: Tensile Strength
-      value: 30–90 MPa
+      value: '50'
       unit: MPa
-      percentile: 0.0
-      numeric: 30.0
     - property: Hardness
-      value: ~6 Mohs
+      value: '5.5'
       unit: Mohs
-      min: '1.0'
-      max: '10.0'
-      percentile: 55.6
-      numeric: 6.0
     - property: Young's Modulus
-      value: 70–75 GPa
+      value: '70'
       unit: GPa
-      percentile: 83.3
-      numeric: 70.0
   - header: '## Laser Processing Parameters'
     rows:
     - property: Power Range
-      value: 20-100W
+      value: '50.0'
       unit: W
-      min: '20.0'
-      max: '500.0'
-      numeric: 60.0
     - property: Pulse Duration
-      value: 10-100ns
+      value: '10.0'
       unit: ns
-      min: '1.0'
-      max: '1000.0'
-      numeric: 55.0
+      category: Standard
     - property: Wavelength
-      value: 1064nm (primary), 532nm (optional)
+      value: '1064.0'
       unit: nm
-      min: '355.0'
-      max: '2940.0'
-      numeric: 1064.0
+      category: Optimal
     - property: Spot Size
-      value: 0.1-2.0mm
+      value: '1.0'
       unit: mm
-      min: '0.01'
-      max: '10.0'
-      numeric: 1.05
+      category: Configurable
     - property: Repetition Rate
-      value: 10-50kHz
+      value: '20.0'
       unit: kHz
-      min: '1.0'
-      max: '1000.0'
-      numeric: 30.0
+      category: Variable
     - property: Fluence Range
-      value: 0.5–5 J/cm²
+      value: '0.8'
       unit: J/cm²
-      min: '0.1'
-      max: '50.0'
-      numeric: 0.5
+      category: Range
+    - property: Beam Profile
+      value: Gaussian TEM00
+      unit: '-'
+      category: System
+    - property: Safety Class
+      value: Class 4 (requires full enclosure)
+      unit: '-'
+      category: Safety
   - header: '## Applications & Industries'
     rows:
     - property: Automotive
@@ -102,34 +60,10 @@ materialTables:
       value: Restoration and cleaning of glass facades and windows
       unit: '-'
       category: Application
-  - header: '## Performance Metrics'
-    rows:
-    - property: Contaminant Removal Efficiency
-      value: '>99.5% removal of sub-micron particles and organic films without substrate damage'
-      unit: '-'
-      category: Performance
-    - property: Processing Throughput
-      value: 100–500 cm²/min cleaning rate, depending on contamination level and laser parameters
-      unit: '-'
-      category: Performance
-  - header: '## Environmental Impact'
-    rows:
-    - property: Elimination of Chemical Solvents
-      value: Removes need for volatile organic compound (VOC)-based solvents and acidic/alkaline cleaners, reducing hazardous waste generation by 100% for the cleaning process itself.
-      unit: '-'
-      category: Environmental
-    - property: Reduced Water Consumption
-      value: Eliminates water usage for rinsing, saving an estimated 5–10 liters of water per square meter of glass cleaned compared to traditional wet methods.
-      unit: '-'
-      category: Environmental
   - header: '## Compatibility & Standards'
     rows:
     - property: Material Compatibility
-      value: Stainless steel fixtures for minimal particulate generation, Anodized aluminum mounting systems
+      value: laser_types, surface_treatments, incompatible_conditions
       unit: '-'
       category: Compatibility
-    - property: Regulatory Standards
-      value: IEC 60825-1 (Safety of Laser Products), ISO 11553 (Safety of Machinery - Laser Processing Machines), EN 16237 (Cleanliness of surfaces using laser-induced breakdown spectroscopy)
-      unit: '-'
-      category: Compliance
 renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. Pure data structure optimized for performance.'

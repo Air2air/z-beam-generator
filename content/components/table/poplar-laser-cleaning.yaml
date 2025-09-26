@@ -1,96 +1,49 @@
 materialTables:
   tables:
-  - header: '## Chemical Properties'
-    rows:
-    - property: Chemical Formula
-      value: C₆H₁₀O₅ₙ (Cellulose base)
-      unit: '-'
-      category: Chemical
-    - property: Chemical Symbol
-      value: N/A (Organic Composite)
-      unit: '-'
-      category: Chemical
-    - property: Material Type
-      value: Hardwood (Lignocellulosic Biomaterial)
-      unit: '-'
-      category: Classification
-    - property: Composition
-      value: 'Cellulose: 48-52%, Hemicellulose: 25-28%, Lignin: 20-22%, Extractives and Ash: 1-3%'
-      unit: '-'
-      category: Composition
   - header: '## Physical & Mechanical Properties'
     rows:
     - property: Density
-      value: 350-500 kg/m³ (varies by species and moisture content)
-      unit: kg/m³
-      min: '1.8'
-      max: '6.0'
-      percentile: 100.0
-      numeric: 425.0
-    - property: Decomposition Point
-      value: 280°C
-      unit: °C
-      numeric: 280.0
+      value: '0.43'
+      unit: g/cm³
     - property: Thermal Conductivity
-      value: 0.09-0.12 W/(m·K) (radial direction)
-      unit: W/
-      percentile: 0.0
-      numeric: 0.1
-    - property: Tensile Strength
-      value: 70-100 MPa (parallel to grain)
-      unit: MPa
-      percentile: 3.7
-      numeric: 85.0
+      value: '0.12'
+      unit: W/m·K
     - property: Hardness
-      value: 400-500 N (Janka Hardness scale)
-      unit: N
-      min: '1.0'
-      max: '10.0'
-      percentile: 100.0
-      numeric: 450.0
-    - property: Young's Modulus
-      value: 8-10 GPa (parallel to grain)
-      unit: GPa
-      percentile: 0.0
-      numeric: 9.0
+      value: '2.3'
+      unit: kN
   - header: '## Laser Processing Parameters'
     rows:
     - property: Power Range
-      value: 20-100W
+      value: '14.0'
       unit: W
-      min: '20.0'
-      max: '500.0'
-      numeric: 60.0
     - property: Pulse Duration
-      value: 10-100ns
+      value: '10.0'
       unit: ns
-      min: '1.0'
-      max: '1000.0'
-      numeric: 55.0
+      category: Standard
     - property: Wavelength
-      value: 1064nm (primary), 532nm (optional)
+      value: '10600.0'
       unit: nm
-      min: '355.0'
-      max: '2940.0'
-      numeric: 1064.0
+      category: Optimal
     - property: Spot Size
-      value: 0.1-2.0mm
+      value: '1.5'
       unit: mm
-      min: '0.01'
-      max: '10.0'
-      numeric: 1.05
+      category: Configurable
     - property: Repetition Rate
-      value: 10-50kHz
+      value: '10.0'
       unit: kHz
-      min: '1.0'
-      max: '1000.0'
-      numeric: 30.0
+      category: Variable
     - property: Fluence Range
-      value: 0.5–5 J/cm²
+      value: '0.1'
       unit: J/cm²
-      min: '0.1'
-      max: '50.0'
-      numeric: 0.5
+      category: Range
+    - property: Beam Profile
+      value: Gaussian TEM00
+      unit: '-'
+      category: System
+    - property: Safety Class
+      value: Class 4 (requires full enclosure)
+      unit: '-'
+      category: Safety
   - header: '## Applications & Industries'
     rows:
     - property: Woodworking
@@ -101,34 +54,26 @@ materialTables:
       value: Cleaning and restoration of antique Poplar furniture and artifacts
       unit: '-'
       category: Application
-  - header: '## Performance Metrics'
-    rows:
-    - property: Surface Contaminant Removal >99%
-      value: Achieved via SEM-EDS analysis, with no measurable substrate damage at optimal parameters.
+    - property: Millwork
+      value: Surface preparation of poplar trim and molding
       unit: '-'
-      category: Performance
-    - property: Processing Speed of 0.5-2.0 m²/h
-      value: Dependent on contamination type and thickness, with a positioning accuracy of ±50 µm.
+      category: Application
+    - property: Cabinetry
+      value: Cleaning poplar cabinet components for painting
       unit: '-'
-      category: Performance
-  - header: '## Environmental Impact'
-    rows:
-    - property: Elimination of Chemical Waste
-      value: Removes need for solvent-based strippers (e.g., methylene chloride), preventing an estimated 5-10 kg of hazardous waste per square meter of cleaned surface compared to traditional methods.
+      category: Application
+    - property: Musical Instruments
+      value: Surface treatment of poplar guitar bodies
       unit: '-'
-      category: Environmental
-    - property: Reduced Energy Consumption
-      value: Laser process is highly localized, consuming approximately 0.5-1.0 kWh per square meter, compared to 3-5 kWh for sanding or thermal stripping methods.
+      category: Application
+    - property: Craft Industry
+      value: Cleaning poplar craft wood and hobby materials
       unit: '-'
-      category: Environmental
+      category: Application
   - header: '## Compatibility & Standards'
     rows:
     - property: Material Compatibility
-      value: Compatible with laser processing alongside other low-density hardwoods (e.g., Basswood, Willow), Processes similarly to other lignocellulosic materials with comparable lignin content
+      value: laser_types, surface_treatments, incompatible_conditions
       unit: '-'
       category: Compatibility
-    - property: Regulatory Standards
-      value: IEC 60825-1 (Laser Product Safety), ISO 11553 (Safety of machinery - Laser processing machines)
-      unit: '-'
-      category: Compliance
 renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. Pure data structure optimized for performance.'

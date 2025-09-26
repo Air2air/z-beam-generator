@@ -1,97 +1,46 @@
 materialTables:
   tables:
-  - header: '## Chemical Properties'
-    rows:
-    - property: Chemical Formula
-      value: Variable composition (primarily SiO₂, Al₂O₃, Fe₂O₃, CaO)
-      unit: '-'
-      category: Chemical
-    - property: Chemical Symbol
-      value: N/A (composite material)
-      unit: '-'
-      category: Chemical
-    - property: Material Type
-      value: Masonry
-      unit: '-'
-      category: Classification
-    - property: Composition
-      value: 'Silica (SiO₂): 50-60%, Alumina (Al₂O₃): 20-30%, Iron oxide (Fe₂O₃): 5-8%, Calcium oxide (CaO): 1-5%, Magnesium oxide (MgO): 1-3%, Alkali oxides (K₂O, Na₂O): 1-3%'
-      unit: '-'
-      category: Composition
   - header: '## Physical & Mechanical Properties'
     rows:
     - property: Density
-      value: 1600-2000 kg/m³
-      unit: kg/m³
-      min: '1.8'
-      max: '6.0'
-      percentile: 100.0
-      numeric: 1800.0
-    - property: Melting Point
-      value: 1200-1450 °C
-      unit: °C
-      percentile: 7.8
-      numeric: 1325.0
+      value: '1.8'
+      unit: g/cm³
     - property: Thermal Conductivity
-      value: 0.6-1.0 W/(m·K)
-      unit: W/
-      percentile: 0.2
-      numeric: 0.8
-    - property: Tensile Strength
-      value: 1.5-3.5 MPa
-      unit: MPa
-      percentile: 0.0
-      numeric: 2.5
-    - property: Hardness
-      value: 3-4 Mohs
-      unit: Mohs
-      min: '1.0'
-      max: '10.0'
-      percentile: 27.8
-      numeric: 3.5
-    - property: Young's Modulus
-      value: 10-20 GPa
-      unit: GPa
-      percentile: 0.0
-      numeric: 15.0
+      value: '0.5'
+      unit: W/m·K
   - header: '## Laser Processing Parameters'
     rows:
     - property: Power Range
-      value: 50-200W
+      value: '85.0'
       unit: W
-      min: '20.0'
-      max: '500.0'
-      numeric: 125.0
     - property: Pulse Duration
-      value: 10-50ns
+      value: '10.0'
       unit: ns
-      min: '1.0'
-      max: '1000.0'
-      numeric: 30.0
+      category: Standard
     - property: Wavelength
-      value: 1064nm (primary), 532nm (optional)
+      value: '1064.0'
       unit: nm
-      min: '355.0'
-      max: '2940.0'
-      numeric: 1064.0
+      category: Optimal
     - property: Spot Size
-      value: 0.5-3.0mm
+      value: '1.0'
       unit: mm
-      min: '0.01'
-      max: '10.0'
-      numeric: 1.75
+      category: Configurable
     - property: Repetition Rate
-      value: 20-100kHz
+      value: '10.0'
       unit: kHz
-      min: '1.0'
-      max: '1000.0'
-      numeric: 60.0
+      category: Variable
     - property: Fluence Range
-      value: 1.0–10 J/cm²
+      value: '1.7'
       unit: J/cm²
-      min: '0.1'
-      max: '50.0'
-      numeric: 1.0
+      category: Range
+    - property: Beam Profile
+      value: Gaussian TEM00
+      unit: '-'
+      category: System
+    - property: Safety Class
+      value: Class 4 (requires full enclosure)
+      unit: '-'
+      category: Safety
   - header: '## Applications & Industries'
     rows:
     - property: Construction
@@ -102,34 +51,10 @@ materialTables:
       value: Cleaning historical brick structures without damaging the material
       unit: '-'
       category: Application
-  - header: '## Performance Metrics'
-    rows:
-    - property: Surface contamination removal efficiency
-      value: '>95% removal of biological growth, pollutants, and surface deposits without substrate damage'
-      unit: '-'
-      category: Performance
-    - property: Processing speed
-      value: 0.5-2.0 m²/hour depending on contamination type and laser parameters
-      unit: '-'
-      category: Performance
-  - header: '## Environmental Impact'
-    rows:
-    - property: Zero chemical waste generation
-      value: Eliminates 100% of chemical solvents and abrasive media typically used in traditional brick cleaning methods
-      unit: '-'
-      category: Environmental
-    - property: Reduced water consumption
-      value: Uses no water compared to high-pressure water cleaning methods that consume 20-50 liters per square meter
-      unit: '-'
-      category: Environmental
   - header: '## Compatibility & Standards'
     rows:
     - property: Material Compatibility
-      value: Terracotta and ceramic materials, Natural stone with similar mineral composition, Mortar and cementitious materials
+      value: laser_types, surface_treatments, incompatible_conditions
       unit: '-'
       category: Compatibility
-    - property: Regulatory Standards
-      value: EN 15898:2019 (Conservation of cultural heritage - Main general terms and definitions), EN 17138:2018 (Conservation of cultural heritage - Methods and materials for cleaning porous inorganic materials)
-      unit: '-'
-      category: Compliance
 renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. Pure data structure optimized for performance.'

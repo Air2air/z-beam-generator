@@ -1,97 +1,46 @@
 materialTables:
   tables:
-  - header: '## Chemical Properties'
-    rows:
-    - property: Chemical Formula
-      value: Variable composition (primarily SiO₂, Al₂O₃, Fe₂O₃)
-      unit: '-'
-      category: Chemical
-    - property: Chemical Symbol
-      value: N/A (composite material)
-      unit: '-'
-      category: Chemical
-    - property: Material Type
-      value: Masonry
-      unit: '-'
-      category: Classification
-    - property: Composition
-      value: 'SiO₂: 45-60%, Al₂O₃: 15-25%, Fe₂O₃: 5-15%, K₂O + Na₂O: 3-7%, CaO + MgO: 1-5%, LOI (Loss on Ignition): 5-10%'
-      unit: '-'
-      category: Composition
   - header: '## Physical & Mechanical Properties'
     rows:
     - property: Density
-      value: 1.8-2.2 g/cm³
+      value: '1.8'
       unit: g/cm³
-      min: '1.8'
-      max: '6.0'
-      percentile: 4.8
-      numeric: 2.0
-    - property: Melting Point
-      value: ~1150-1250°C (vitrification range)
-      unit: °C
-      percentile: 0.0
-      numeric: 1200.0
     - property: Thermal Conductivity
-      value: 0.8-1.2 W/(m·K)
-      unit: W/
-      percentile: 0.3
-      numeric: 1.0
-    - property: Tensile Strength
-      value: 3-8 MPa
-      unit: MPa
-      percentile: 0.0
-      numeric: 5.5
-    - property: Hardness
-      value: 3-4 Mohs scale
-      unit: Mohs
-      min: '1.0'
-      max: '10.0'
-      percentile: 27.8
-      numeric: 3.5
-    - property: Young's Modulus
-      value: 10-20 GPa
-      unit: GPa
-      percentile: 0.0
-      numeric: 15.0
+      value: '0.5'
+      unit: W/m·K
   - header: '## Laser Processing Parameters'
     rows:
     - property: Power Range
-      value: 20-100W
+      value: '80.0'
       unit: W
-      min: '20.0'
-      max: '500.0'
-      numeric: 60.0
     - property: Pulse Duration
-      value: 10-100ns
+      value: '10.0'
       unit: ns
-      min: '1.0'
-      max: '1000.0'
-      numeric: 55.0
+      category: Standard
     - property: Wavelength
-      value: 1064nm (primary), 532nm (optional)
+      value: '1064.0'
       unit: nm
-      min: '355.0'
-      max: '2940.0'
-      numeric: 1064.0
+      category: Optimal
     - property: Spot Size
-      value: 0.1-2.0mm
+      value: '1.0'
       unit: mm
-      min: '0.01'
-      max: '10.0'
-      numeric: 1.05
+      category: Configurable
     - property: Repetition Rate
-      value: 10-50kHz
+      value: '20.0'
       unit: kHz
-      min: '1.0'
-      max: '1000.0'
-      numeric: 30.0
+      category: Variable
     - property: Fluence Range
-      value: 0.5–5 J/cm²
+      value: '1.6'
       unit: J/cm²
-      min: '0.1'
-      max: '50.0'
-      numeric: 0.5
+      category: Range
+    - property: Beam Profile
+      value: Gaussian TEM00
+      unit: '-'
+      category: System
+    - property: Safety Class
+      value: Class 4 (requires full enclosure)
+      unit: '-'
+      category: Safety
   - header: '## Applications & Industries'
     rows:
     - property: Cultural Heritage
@@ -102,34 +51,10 @@ materialTables:
       value: Cleaning and restoration of terracotta cladding on buildings
       unit: '-'
       category: Application
-  - header: '## Performance Metrics'
-    rows:
-    - property: Surface contamination removal efficiency
-      value: '>95% removal of black crusts and biological growth with <2% substrate loss'
-      unit: '-'
-      category: Performance
-    - property: Processing speed
-      value: 0.2-0.8 m²/hour depending on contamination type and laser parameters
-      unit: '-'
-      category: Performance
-  - header: '## Environmental Impact'
-    rows:
-    - property: Zero chemical waste generation
-      value: Eliminates need for chemical poultices and solvents, preventing groundwater contamination and reducing hazardous waste by 100% compared to chemical methods
-      unit: '-'
-      category: Environmental
-    - property: Reduced water consumption
-      value: Eliminates water usage entirely (traditional methods use 5-20 liters per square meter), conserving approximately 95% water resources in restoration projects
-      unit: '-'
-      category: Environmental
   - header: '## Compatibility & Standards'
     rows:
     - property: Material Compatibility
-      value: Historical terracotta with original glazes, Unglazed architectural terracotta, Terracotta with mineral-based contamination
+      value: laser_types, surface_treatments, incompatible_conditions
       unit: '-'
       category: Compatibility
-    - property: Regulatory Standards
-      value: EN 15898:2019 (Conservation of cultural heritage), EN 17138:2018 (Conservation process), ASTM E2017-17 (Standard Guide for Conducting Visual Assessments)
-      unit: '-'
-      category: Compliance
 renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. Pure data structure optimized for performance.'

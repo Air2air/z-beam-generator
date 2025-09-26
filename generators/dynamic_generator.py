@@ -114,7 +114,7 @@ class DynamicGenerator:
 
                 # Generate component
                 factory = ComponentGeneratorFactory()
-                generator = factory.create_generator(component_type)
+                generator = factory.create_generator(component_type, api_client=api_client)
 
                 if not generator:
                     results[component_type] = {
@@ -220,7 +220,7 @@ class DynamicGenerator:
 
             # Use ComponentGeneratorFactory to create the appropriate generator
             factory = ComponentGeneratorFactory()
-            generator = factory.create_generator(component_type)
+            generator = factory.create_generator(component_type, api_client=api_client)
 
             if not generator:
                 return ComponentResult(

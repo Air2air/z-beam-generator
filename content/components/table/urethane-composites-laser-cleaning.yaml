@@ -1,96 +1,52 @@
 materialTables:
   tables:
-  - header: '## Chemical Properties'
-    rows:
-    - property: Chemical Formula
-      value: (C₁₀H₈N₂O₂C₆H₁₄O₃)ₙ (polyurethane matrix with various reinforcements)
-      unit: '-'
-      category: Chemical
-    - property: Chemical Symbol
-      value: PU
-      unit: '-'
-      category: Chemical
-    - property: Material Type
-      value: Composite
-      unit: '-'
-      category: Classification
-    - property: Composition
-      value: 'Polyurethane matrix: 60-80%, Glass/carbon fiber reinforcement: 20-40%, Fillers/additives: 0-10%'
-      unit: '-'
-      category: Composition
   - header: '## Physical & Mechanical Properties'
     rows:
     - property: Density
-      value: 1.05-1.25 g/cm³ (varies with reinforcement content)
+      value: '1.2'
       unit: g/cm³
-      min: '1.8'
-      max: '6.0'
-      percentile: 0.0
-      numeric: 1.15
-    - property: Decomposition Point
-      value: 220°C
-      unit: °C
-      numeric: 220.0
     - property: Thermal Conductivity
-      value: 0.19-0.25 W/m·K
+      value: '0.2'
       unit: W/m·K
-      percentile: 0.0
-      numeric: 0.22
     - property: Tensile Strength
-      value: 30-70 MPa (depending on reinforcement)
+      value: '100'
       unit: MPa
-      percentile: 0.0
-      numeric: 50.0
-    - property: Hardness
-      value: 75-95 Shore A
-      unit: Shore
-      min: '1.0'
-      max: '10.0'
-      percentile: 100.0
-      numeric: 85.0
     - property: Young's Modulus
-      value: 0.5-3.0 GPa
+      value: '10'
       unit: GPa
-      percentile: 0.0
-      numeric: 1.75
   - header: '## Laser Processing Parameters'
     rows:
     - property: Power Range
-      value: 50-200W
+      value: '28.0'
       unit: W
-      min: '20.0'
-      max: '500.0'
-      numeric: 125.0
     - property: Pulse Duration
-      value: 20-200ns
+      value: '20.0'
       unit: ns
-      min: '1.0'
-      max: '1000.0'
-      numeric: 110.0
+      category: Standard
     - property: Wavelength
-      value: 1064nm (primary), 532nm (optional)
+      value: '355.0'
       unit: nm
-      min: '355.0'
-      max: '2940.0'
-      numeric: 1064.0
+      category: Optimal
     - property: Spot Size
-      value: 0.2-1.5mm
+      value: '1.5'
       unit: mm
-      min: '0.01'
-      max: '10.0'
-      numeric: 0.85
+      category: Configurable
     - property: Repetition Rate
-      value: 20-100kHz
+      value: '20.0'
       unit: kHz
-      min: '1.0'
-      max: '1000.0'
-      numeric: 60.0
+      category: Variable
     - property: Fluence Range
-      value: 1.0–10 J/cm²
+      value: '0.1'
       unit: J/cm²
-      min: '0.1'
-      max: '50.0'
-      numeric: 1.0
+      category: Range
+    - property: Beam Profile
+      value: Gaussian TEM00
+      unit: '-'
+      category: System
+    - property: Safety Class
+      value: Class 4 (requires full enclosure)
+      unit: '-'
+      category: Safety
   - header: '## Applications & Industries'
     rows:
     - property: Automotive
@@ -101,34 +57,10 @@ materialTables:
       value: Removal of contaminants from urethane composite aircraft components
       unit: '-'
       category: Application
-  - header: '## Performance Metrics'
-    rows:
-    - property: Surface contamination removal >99.5%
-      value: Measured via FTIR spectroscopy and contact angle analysis
-      unit: '-'
-      category: Performance
-    - property: Processing speed 2-5 m²/hour
-      value: For typical automotive bumper cleaning applications at 100W laser power
-      unit: '-'
-      category: Performance
-  - header: '## Environmental Impact'
-    rows:
-    - property: 97% reduction in chemical solvent usage
-      value: Eliminates need for methyl ethyl ketone (MEK) and other VOC-emitting solvents traditionally used for polyurethane composite cleaning
-      unit: '-'
-      category: Environmental
-    - property: Zero wastewater generation
-      value: Dry process eliminates contaminated water streams from solvent washing and rinsing operations
-      unit: '-'
-      category: Environmental
   - header: '## Compatibility & Standards'
     rows:
     - property: Material Compatibility
-      value: Carbon fiber reinforced polymers (CFRP), Glass fiber reinforced polymers (GFRP), Thermoplastic polyurethanes (TPU)
+      value: laser_types, surface_treatments, incompatible_conditions
       unit: '-'
       category: Compatibility
-    - property: Regulatory Standards
-      value: ISO 11553 (Safety of laser processing machines), IEC 60825-1 (Laser product safety), ASTM E2015 (Standard guide for preparation of plastics and polymeric specimens)
-      unit: '-'
-      category: Compliance
 renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. Pure data structure optimized for performance.'

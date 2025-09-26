@@ -14,15 +14,19 @@ Follows GROK fail-fast principles:
 """
 
 import logging
-import os
 import re
 import yaml
-from typing import Dict, Optional, Any, List
+from typing import Dict, Optional
 
 from generators.component_generators import APIComponentGenerator, ComponentResult, GenerationError
 from components.frontmatter.ordering.field_ordering_service import FieldOrderingService
 from components.frontmatter.core.validation_helpers import ValidationHelpers
 from components.frontmatter.research.property_value_researcher import PropertyValueResearcher
+
+
+class PropertyDiscoveryError(Exception):
+    """Raised when property discovery fails - no fallbacks allowed per GROK_INSTRUCTIONS.md"""
+    pass
 
 logger = logging.getLogger(__name__)
 
@@ -84,7 +88,7 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
         self.material_aware_generator = None
         if MATERIAL_AWARE_PROMPTS_AVAILABLE:
             try:
-                self.material_aware_generator = MaterialAwarePromptGenerator(api_client=api_client)
+                self.material_aware_generator = MaterialAwarePromptGenerator()
                 self.logger.info("Material-aware prompt system initialized")
             except Exception as e:
                 self.logger.warning(f"Material-aware prompt system setup failed: {e}")
@@ -108,13 +112,14 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             # Fail-fast: Materials research data is required for accurate ranges
             raise ValueError(f"Materials research data required for accurate property ranges: {e}")
             
-        # Initialize PropertyValueResearcher for dynamic property selection
+        # Initialize PropertyValueResearcher for comprehensive property discovery (NO FALLBACKS per GROK)
         try:
-            self.property_researcher = PropertyValueResearcher(debug_mode=False)
-            self.logger.info("PropertyValueResearcher initialized for dynamic property selection")
+            self.property_researcher = PropertyValueResearcher(api_client=self.api_client, debug_mode=False)
+            self.logger.info("PropertyValueResearcher initialized for comprehensive property discovery (GROK compliant - no fallbacks)")
         except Exception as e:
             self.logger.error(f"PropertyValueResearcher initialization failed: {e}")
-            self.property_researcher = None
+            # FAIL-FAST per GROK_INSTRUCTIONS.md - no fallbacks allowed
+            raise ValueError(f"PropertyValueResearcher required for comprehensive property discovery: {e}")
             
         # Initialize MachineSettingsResearcher for machine settings generation
         try:
@@ -222,151 +227,93 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
         return self._generate_basic_properties(material_data, material_name)
 
     def _generate_basic_properties(self, material_data: Dict, material_name: str) -> Dict:
-        """Generate properties with DataMetrics structure including Min/Max ranges using dynamic property selection"""
+        """Generate properties with DataMetrics structure using comprehensive AI discovery (GROK compliant - no fallbacks)"""
         properties = {}
         
-        # Determine material category and use passed material name
-        material_category = material_data.get('category', 'metal')
-        # Use the passed material_name parameter instead of trying to get it from material_data
-        
-        # Use PropertyValueResearcher to discover material-specific properties
+        # Use PropertyValueResearcher for comprehensive material property discovery
+        if not self.property_researcher:
+            # FAIL-FAST per GROK_INSTRUCTIONS.md - no fallbacks allowed
+            raise PropertyDiscoveryError("PropertyValueResearcher required for comprehensive property discovery")
+            
         try:
-            # Get dynamic property list based on material type
-            from research.material_property_research_system import MaterialPropertyResearchSystem
-            property_system = MaterialPropertyResearchSystem()
+            # Use comprehensive AI discovery to get ALL relevant properties with complete data
+            discovered_properties = self.property_researcher.discover_all_material_properties(material_name)
             
-            # Try multiple case variations to handle case-insensitive matching
-            material_variations = [
-                material_name.capitalize(),  # Aluminum
-                material_name.upper(),       # ALUMINUM
-                material_name.lower(),       # aluminum
-                material_name               # Original case
-            ]
+            self.logger.info(f"Comprehensive AI discovery found {len(discovered_properties)} properties for {material_name}")
             
-            recommendations = None
-            successful_material_name = None
-            
-            for variant in material_variations:
-                test_recommendations = property_system.get_recommended_properties_for_material(variant)
-                if 'error' not in test_recommendations:
-                    recommendations = test_recommendations
-                    successful_material_name = variant
-                    break
-            
-            if recommendations and 'error' not in recommendations:
-                # Use recommended properties from research system
-                recommended_properties = recommendations.get('recommended_properties', [])
-                dynamic_property_list = [prop['name'] for prop in recommended_properties]
-                
-                logger.info(f"Dynamic property selection for {successful_material_name or material_name}: {dynamic_property_list}")
-            else:
-                # Fallback to category-based properties
-                dynamic_property_list = self._get_fallback_properties(material_category)
-                logger.info(f"Using fallback properties for {material_name} ({material_category}): {dynamic_property_list}")
-                
-        except Exception as e:
-            logger.warning(f"Dynamic property selection failed for {material_name}: {e}")
-            # Fallback to category-based properties
-            dynamic_property_list = self._get_fallback_properties(material_category)
-        
-        # Convert snake_case research system properties to camelCase for consistency
-        def snake_to_camel_case(snake_str: str) -> str:
-            """Convert snake_case to camelCase"""
-            components = snake_str.split('_')
-            return components[0] + ''.join(word.capitalize() for word in components[1:])
-        
-        def _camel_to_snake_case(camel_str: str) -> str:
-            """Convert camelCase to snake_case for research system compatibility"""
-            import re
-            return re.sub(r'(?<!^)(?=[A-Z])', '_', camel_str).lower()
-        
-        # Make it accessible as instance method
-        self._camel_to_snake_case = _camel_to_snake_case
-        
-        # Normalize dynamic property list to camelCase to match materials.yaml naming
-        normalized_dynamic_properties = [snake_to_camel_case(prop) for prop in dynamic_property_list]
-        
-        logger.info(f"Normalized dynamic properties to camelCase: {normalized_dynamic_properties}")
-        
-        # Materials.yaml data is ignored - we use AI-researched values only
-        # Only process properties that are recommended by the dynamic property selection system
-        for camel_case_property in normalized_dynamic_properties:
-            # Use PropertyValueResearcher to get AI-researched values
-            if self.property_researcher:
+            # Use discovered properties directly (no need for additional research)
+            for prop_name, prop_data in discovered_properties.items():
                 try:
-                    # Use camelCase property names directly (research system expects camelCase)
-                    research_result = self.property_researcher.research_property_value(
-                        material_name.lower(), camel_case_property  # Use lowercase material name
-                    )
-                    if research_result and research_result.success:
-                        # Create property data from AI research
-                        property_data = {
-                            'value': research_result.property_data.value,
-                            'unit': research_result.property_data.unit,
-                            'confidence': research_result.confidence,
-                            'description': research_result.property_data.description,
-                            'min': research_result.property_data.min,
-                            'max': research_result.property_data.max
-                        }
-                        properties[camel_case_property] = property_data
-                        logger.info(f"AI-researched {camel_case_property}: {research_result.property_data.value} {research_result.property_data.unit} (confidence: {research_result.confidence}%)")
+                    # Property data already complete from AI discovery
+                    property_data = {
+                        'value': prop_data['value'],
+                        'unit': prop_data['unit'],
+                        'confidence': prop_data['confidence'],
+                        'description': prop_data['description'],
+                        'min': prop_data.get('min'),
+                        'max': prop_data.get('max')
+                    }
+                    properties[prop_name] = property_data
+                    self.logger.info(f"AI-discovered {prop_name}: {prop_data['value']} {prop_data['unit']} (confidence: {prop_data['confidence']}%)")
                 except Exception as e:
-                    logger.warning(f"AI research failed for {camel_case_property}: {e}")
-            
-            # Fallback: if AI research fails, skip this property (no fallbacks allowed for AI-only mode)
+                    self.logger.warning(f"Error processing discovered property {prop_name}: {e}")
+                        
+                except Exception as e:
+                    self.logger.warning(f"Property research failed for {prop_name}: {e}")
+                    # Continue with other properties - don't fail entire generation for one property
+                    
+        except Exception as e:
+            self.logger.error(f"Comprehensive property discovery failed for {material_name}: {e}")
+            # FAIL-FAST per GROK_INSTRUCTIONS.md - no fallbacks allowed
+            raise PropertyDiscoveryError(f"Cannot generate materialProperties without comprehensive discovery for {material_name}: {e}")
+        
+        if not properties:
+            # FAIL-FAST - must have at least some properties for valid frontmatter
+            raise PropertyDiscoveryError(f"No properties discovered for {material_name} - comprehensive discovery required")
                         
         return properties
-        
-    def _get_fallback_properties(self, material_category: str) -> List[str]:
-        """Get fallback property list when dynamic selection is unavailable (using camelCase)"""
-        fallback_properties = {
-            'metal': ['density', 'thermalConductivity', 'meltingPoint', 'tensileStrength', 'youngsModulus', 'hardness'],
-            'ceramic': ['density', 'meltingPoint', 'hardness', 'thermalConductivity', 'thermalExpansion'],
-            'polymer': ['density', 'meltingPoint', 'tensileStrength', 'elasticModulus', 'thermalExpansion'],
-            'glass': ['density', 'meltingPoint', 'hardness', 'thermalConductivity'],
-            'composite': ['density', 'tensileStrength', 'youngsModulus', 'thermalConductivity']
-        }
-        
-        return fallback_properties.get(material_category, ['density', 'meltingPoint', 'thermalConductivity'])
 
     def _generate_machine_settings_with_ranges(self, material_data: Dict, material_name: str) -> Dict:
-        """Generate machine settings with DataMetrics structure using MachineSettingsResearcher - shared architecture with materialProperties"""
+        """Generate machine settings with DataMetrics structure using comprehensive AI discovery (GROK compliant - no fallbacks)"""
         machine_settings = {}
         
-        # Use dedicated MachineSettingsResearcher (fail-fast per GROK - no fallbacks)
-        # MachineSettingsResearcher should be initialized in __init__, if not present this will fail-fast
-        
-        # Machine settings properties for laser cleaning
-        machine_property_list = [
-            'powerRange',           # Laser power settings
-            'wavelength',          # Optimal wavelength for material
-            'pulseWidth',          # Pulse duration settings  
-            'repetitionRate',      # Laser repetition rate
-            'scanSpeed',           # Processing/scanning speed
-            'fluenceThreshold'     # Energy density threshold
-        ]
-        
-        # Generate machine settings using MachineSettingsResearcher (shared architecture principle)
-        for machine_property in machine_property_list:
-            try:
-                # Use dedicated machine settings researcher
-                research_result = self.machine_settings_researcher.research_machine_setting(
-                    material_name.lower(), machine_property  # Same interface pattern as materialProperties
-                )
-                if research_result and research_result.is_valid():
-                    # Create machine setting data using shared DataMetrics structure
-                    property_data = {
-                        'value': research_result.value,
-                        'unit': research_result.unit, 
-                        'confidence': research_result.confidence,
-                        'description': research_result.calculation_notes or f"AI-researched {machine_property} for {material_name}",
-                        'min': research_result.min_range,
-                        'max': research_result.max_range
+        # Use PropertyValueResearcher for comprehensive machine settings discovery
+        if not self.property_researcher:
+            # FAIL-FAST per GROK_INSTRUCTIONS.md - no fallbacks allowed
+            raise PropertyDiscoveryError("PropertyValueResearcher required for comprehensive machine settings discovery")
+            
+        try:
+            # Use comprehensive AI discovery to find ALL relevant machine settings
+            discovered_settings = self.property_researcher.discover_all_machine_settings(material_name)
+            
+            self.logger.info(f"Comprehensive AI discovery found {len(discovered_settings)} machine settings for {material_name}")
+            
+            # Use discovered settings directly (no need for additional research)
+            for setting_name, setting_data in discovered_settings.items():
+                try:
+                    # Machine setting data already complete from AI discovery
+                    machine_setting_data = {
+                        'value': setting_data['value'],
+                        'unit': setting_data['unit'],
+                        'confidence': setting_data['confidence'],
+                        'description': setting_data['description'],
+                        'min': setting_data.get('min'),
+                        'max': setting_data.get('max')
                     }
-                    machine_settings[machine_property] = property_data
-                    self.logger.info(f"AI-researched machine setting {machine_property}: {research_result.value} {research_result.unit} (confidence: {research_result.confidence}%)")
-            except Exception as e:
-                self.logger.warning(f"Machine settings research failed for {machine_property}: {e}")
+                    machine_settings[setting_name] = machine_setting_data
+                    self.logger.info(f"AI-discovered machine setting {setting_name}: {setting_data['value']} {setting_data['unit']} (confidence: {setting_data['confidence']}%)")
+                except Exception as e:
+                    self.logger.warning(f"Error processing discovered machine setting {setting_name}: {e}")
+                    # Continue with other settings - don't fail entire generation for one setting
+                    
+        except Exception as e:
+            self.logger.error(f"Comprehensive machine settings discovery failed for {material_name}: {e}")
+            # FAIL-FAST per GROK_INSTRUCTIONS.md - no fallbacks allowed
+            raise PropertyDiscoveryError(f"Cannot generate machineSettings without comprehensive discovery for {material_name}: {e}")
+        
+        if not machine_settings:
+            # FAIL-FAST - must have at least some machine settings for valid frontmatter
+            raise PropertyDiscoveryError(f"No machine settings discovered for {material_name} - comprehensive discovery required")
         
         return machine_settings
 
@@ -435,9 +382,8 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                 max_val = self._extract_numeric_only(machine_range['max'])
                 return min_val, max_val
         
-        # Fallback to calculated ranges if no research data available
-        self.logger.warning(f"No research data for {prop_key} in {material_category}, using calculated range")
-        return round(current_value * 0.8, 2), round(current_value * 1.2, 2)
+        # FAIL-FAST per GROK_INSTRUCTIONS.md - no fallbacks allowed, must have research data
+        raise PropertyDiscoveryError(f"No research data available for {prop_key} in {material_category} - comprehensive AI discovery required")
 
     def _generate_from_api(self, material_name: str, material_data: Dict) -> Dict:
         """Generate frontmatter content using AI with fallback to range functions for Min/Max"""
@@ -578,28 +524,14 @@ Return YAML format with materialProperties (not properties) and machineSettings 
             author_info = get_author_by_id(author_id)
             
             if not author_info:
-                # Fallback author object if not found
-                return {
-                    'author_object': {
-                        'id': author_id,
-                        'name': 'Default Author',
-                        'bio': 'Materials science expert',
-                        'email': 'author@example.com'
-                    }
-                }
+                # FAIL-FAST per GROK_INSTRUCTIONS.md - no fallbacks allowed
+                raise PropertyDiscoveryError(f"Author with ID {author_id} not found - author system required for content generation")
             
             return {
                 'author_object': author_info
             }
             
         except Exception as e:
-            self.logger.warning(f"Author object generation failed: {e}")
-            # Return fallback author object
-            return {
-                'author_object': {
-                    'id': 3,
-                    'name': 'Default Author', 
-                    'bio': 'Materials science expert',
-                    'email': 'author@example.com'
-                }
-            }
+            self.logger.error(f"Author object generation failed: {e}")
+            # FAIL-FAST per GROK_INSTRUCTIONS.md - no fallbacks allowed
+            raise PropertyDiscoveryError(f"Author system required for content generation: {e}")

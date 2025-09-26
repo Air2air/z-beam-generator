@@ -79,7 +79,7 @@ class BadgesymbolComponentGenerator(HybridComponentGenerator):
                         schema.get("materialProfile", {})
                         .get("profile", {})
                         .get("chemicalProperties", {})
-                        .get("properties", {})
+                        .get("materialProperties", {})
                     )
                     if chem_props:
                         schema_fields = {

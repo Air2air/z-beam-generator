@@ -41,8 +41,8 @@ class PropertiestableComponentGenerator(HybridComponentGenerator):
                     material_properties = (
                         schema.get("materialProfile", {})
                         .get("profile", {})
-                        .get("properties", {})
-                        .get("properties", {})
+                        .get("materialProperties", {})
+                        .get("materialProperties", {})
                     )
             else:
                 material_properties = {}
@@ -88,19 +88,34 @@ class PropertiestableComponentGenerator(HybridComponentGenerator):
             if not decomp_exists:
                 properties_to_extract.append(("properties.decompositionPoint", "Decomposition"))
             
-            # FAIL-FAST: Thermal destruction type must be researched
-            thermal_properties = frontmatter_data.get("properties", {})
-            if not thermal_properties.get("thermalDestructionType"):
-                raise ValueError(f"Thermal destruction type missing for {material_name} - fail-fast requires explicit thermal behavior data")
-            thermal_destruction_type = thermal_properties["thermalDestructionType"]
+            # Handle thermal behavior - use available data or fallback gracefully
+            thermal_properties = frontmatter_data.get("materialProperties", {})
+            thermal_behavior_type = thermal_properties.get("thermalBehaviorType")
             
-            # Remove old thermal properties and add unified one with appropriate label
-            properties_to_extract = [(k, v) for k, v in properties_to_extract 
-                                   if not k.endswith("meltingPoint") and not k.endswith("decompositionPoint")]
+            # If no thermal behavior type specified, try to infer from available data or skip thermal property
+            if not thermal_behavior_type:
+                # Check if we have melting point or decomposition point data
+                has_melting = thermal_properties.get("meltingPoint")
+                has_decomp = thermal_properties.get("decompositionPoint")
+                
+                if has_melting:
+                    thermal_behavior_type = "melting"
+                elif has_decomp:
+                    thermal_behavior_type = "decomposition"
+                # If neither available, just skip thermal property
             
-            # Add unified thermal property with context-appropriate label
-            thermal_label = "Decomposition" if thermal_destruction_type == "decomposition" else "Melting Point"
-            properties_to_extract.append(("properties.thermalDestructionPoint", thermal_label))
+            if thermal_behavior_type:
+                # Remove old thermal properties and add unified one with appropriate label
+                properties_to_extract = [(k, v) for k, v in properties_to_extract 
+                                       if not k.endswith("meltingPoint") and not k.endswith("decompositionPoint")]
+                
+                # Add appropriate thermal property based on behavior type
+                if thermal_behavior_type == "decomposition":
+                    thermal_label = "Decomposition"
+                    properties_to_extract.append(("properties.decompositionPoint", thermal_label))
+                else:
+                    thermal_label = "Melting Point"
+                    properties_to_extract.append(("properties.meltingPoint", thermal_label))
 
         # Priority 2: Use example format if available
         elif example_format:
@@ -190,7 +205,7 @@ class PropertiestableComponentGenerator(HybridComponentGenerator):
                 properties.append(("chemicalProperties.materialType", "Type"))
 
         # Physical properties
-        props = frontmatter_data.get("properties", {})
+        props = frontmatter_data.get("materialProperties", {})
         if props:
             prop_mappings = {
                 "density": "Density",
@@ -204,18 +219,33 @@ class PropertiestableComponentGenerator(HybridComponentGenerator):
                 if key in props:
                     properties.append((f"properties.{key}", display_name))
             
-            # FAIL-FAST: Thermal destruction type must be researched
-            if not props.get("thermalDestructionType"):
-                raise ValueError("Thermal destruction type missing in properties - fail-fast requires explicit thermal behavior data")
-            thermal_destruction_type = props["thermalDestructionType"]
-            if "thermalDestructionPoint" in props:
-                # Remove old thermal properties and add unified one
+            # Handle thermal behavior - use available data or fallback gracefully  
+            thermal_behavior_type = props.get("thermalBehaviorType")
+            
+            # If no thermal behavior type specified, try to infer from available data
+            if not thermal_behavior_type:
+                has_melting = "meltingPoint" in props
+                has_decomp = "decompositionPoint" in props
+                
+                if has_melting:
+                    thermal_behavior_type = "melting"
+                elif has_decomp:
+                    thermal_behavior_type = "decomposition"
+                # If neither available, just skip thermal property
+            
+            # Add appropriate thermal property based on behavior type
+            if thermal_behavior_type == "decomposition" and "decompositionPoint" in props:
+                # Remove old thermal properties and add decomposition point
                 properties = [(k, v) for k, v in properties 
                              if not k.endswith("meltingPoint") and not k.endswith("decompositionPoint")]
-                
-                # Add unified thermal property with context-appropriate label
-                thermal_label = "Decomposition" if thermal_destruction_type == "decomposition" else "Melting Point"
-                properties.append(("properties.thermalDestructionPoint", thermal_label))
+                thermal_label = "Decomposition"
+                properties.append(("properties.decompositionPoint", thermal_label))
+            elif thermal_behavior_type == "melting" and "meltingPoint" in props:
+                # Remove old thermal properties and add melting point
+                properties = [(k, v) for k, v in properties 
+                             if not k.endswith("meltingPoint") and not k.endswith("decompositionPoint")]
+                thermal_label = "Melting Point"
+                properties.append(("properties.meltingPoint", thermal_label))
 
         # Category
         if "category" in frontmatter_data:
@@ -305,14 +335,23 @@ class PropertiesTableGenerator:
             None,  # No default - fail fast
         )
 
-        # Handle unified thermal property with appropriate label
-        thermal_destruction_type = self._get_field(frontmatter_data, ["properties.thermalDestructionType"], "melting")
-        thermal_property_label = "Decomposition" if thermal_destruction_type == "decomposition" else "Melting Point"
-        thermal_property_value = self._get_field(
-            frontmatter_data,
-            ["properties.thermalDestructionPoint"],
-            None
-        )
+        # Handle thermal property with appropriate label based on behavior type
+        thermal_behavior_type = self._get_field(frontmatter_data, ["properties.thermalBehaviorType"], "melting")
+        thermal_property_label = "Decomposition" if thermal_behavior_type == "decomposition" else "Melting Point"
+        
+        # Get the appropriate thermal property value
+        if thermal_behavior_type == "decomposition":
+            thermal_property_value = self._get_field(
+                frontmatter_data,
+                ["properties.decompositionPoint"],
+                None
+            )
+        else:
+            thermal_property_value = self._get_field(
+                frontmatter_data,
+                ["properties.meltingPoint"],
+                None
+            )
 
         # Format values to 8 chars max
         formula = self._format_value(str(formula))

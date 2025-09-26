@@ -1,96 +1,49 @@
 materialTables:
   tables:
-  - header: '## Chemical Properties'
-    rows:
-    - property: Chemical Formula
-      value: C₆H₁₀O₅ (cellulose base) + complex organic compounds
-      unit: '-'
-      category: Chemical
-    - property: Chemical Symbol
-      value: Organic composite
-      unit: '-'
-      category: Chemical
-    - property: Material Type
-      value: Wood
-      unit: '-'
-      category: Classification
-    - property: Composition
-      value: 'Cellulose: 40-45%, Lignin: 25-30%, Hemicellulose: 20-25%, Extractives (cedrol, thujopsene): 2-5%'
-      unit: '-'
-      category: Composition
   - header: '## Physical & Mechanical Properties'
     rows:
     - property: Density
-      value: 370-420 kg/m³ (Eastern Red Cedar)
-      unit: kg/m³
-      min: '1.8'
-      max: '6.0'
-      percentile: 100.0
-      numeric: 395.0
-    - property: Decomposition Point
-      value: 300°C
-      unit: °C
-      numeric: 300.0
+      value: '0.35'
+      unit: g/cm³
     - property: Thermal Conductivity
-      value: 0.12 W/m·K (radial direction)
+      value: '0.1'
       unit: W/m·K
-      percentile: 0.0
-      numeric: 0.12
-    - property: Tensile Strength
-      value: 40-60 MPa (parallel to grain)
-      unit: MPa
-      percentile: 0.0
-      numeric: 50.0
     - property: Hardness
-      value: 320-450 N (Janka hardness scale)
-      unit: N
-      min: '1.0'
-      max: '10.0'
-      percentile: 100.0
-      numeric: 385.0
-    - property: Young's Modulus
-      value: 6.0-8.5 GPa (parallel to grain)
-      unit: GPa
-      percentile: 0.0
-      numeric: 7.25
+      value: '1.8'
+      unit: kN
   - header: '## Laser Processing Parameters'
     rows:
     - property: Power Range
-      value: 20-100W
+      value: '16.0'
       unit: W
-      min: '20.0'
-      max: '500.0'
-      numeric: 60.0
     - property: Pulse Duration
-      value: 10-100ns
+      value: '10.0'
       unit: ns
-      min: '1.0'
-      max: '1000.0'
-      numeric: 55.0
+      category: Standard
     - property: Wavelength
-      value: 1064nm (primary), 532nm (optional)
+      value: '10600.0'
       unit: nm
-      min: '355.0'
-      max: '2940.0'
-      numeric: 1064.0
+      category: Optimal
     - property: Spot Size
-      value: 0.1-2.0mm
+      value: '1.5'
       unit: mm
-      min: '0.01'
-      max: '10.0'
-      numeric: 1.05
+      category: Configurable
     - property: Repetition Rate
-      value: 10-50kHz
+      value: '25.0'
       unit: kHz
-      min: '1.0'
-      max: '1000.0'
-      numeric: 30.0
+      category: Variable
     - property: Fluence Range
-      value: 0.5–5 J/cm²
+      value: '0.1'
       unit: J/cm²
-      min: '0.1'
-      max: '50.0'
-      numeric: 0.5
+      category: Range
+    - property: Beam Profile
+      value: Gaussian TEM00
+      unit: '-'
+      category: System
+    - property: Safety Class
+      value: Class 4 (requires full enclosure)
+      unit: '-'
+      category: Safety
   - header: '## Applications & Industries'
     rows:
     - property: Woodworking
@@ -101,34 +54,26 @@ materialTables:
       value: Precision cleaning of historical Cedar structures without damage
       unit: '-'
       category: Application
-  - header: '## Performance Metrics'
-    rows:
-    - property: Surface contamination removal efficiency
-      value: '>95% removal of biological growth and surface deposits with <5% substrate loss'
+    - property: Outdoor Construction
+      value: Cleaning cedar decking and siding for refinishing
       unit: '-'
-      category: Performance
-    - property: Processing speed for large Cedar surfaces
-      value: 0.5-2.0 m²/hour depending on contamination level and laser parameters
+      category: Application
+    - property: Marine Applications
+      value: Surface preparation of cedar boat hulls and planking
       unit: '-'
-      category: Performance
-  - header: '## Environmental Impact'
-    rows:
-    - property: Zero chemical waste generation
-      value: Eliminates solvent use (reduces VOC emissions by 100% compared to chemical cleaning)
+      category: Application
+    - property: Saunas and Spas
+      value: Cleaning cedar sauna benches and interior surfaces
       unit: '-'
-      category: Environmental
-    - property: Reduced energy consumption
-      value: 60-70% lower energy usage compared to thermal or abrasive cleaning methods for Cedar
+      category: Application
+    - property: Roofing
+      value: Cedar shingle cleaning and maintenance
       unit: '-'
-      category: Environmental
+      category: Application
   - header: '## Compatibility & Standards'
     rows:
     - property: Material Compatibility
-      value: Compatible with most wood species in mixed-material artifacts, Similar processing parameters to pine and other softwoods
+      value: laser_types, surface_treatments, incompatible_conditions
       unit: '-'
       category: Compatibility
-    - property: Regulatory Standards
-      value: ANSI Z136.1 (Laser Safety), OSHA wood dust standards (29 CFR 1910.1000), NFPA 664 (Wood Processing and Woodworking Facilities)
-      unit: '-'
-      category: Compliance
 renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. Pure data structure optimized for performance.'

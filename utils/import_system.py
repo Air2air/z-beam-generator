@@ -40,7 +40,7 @@ class UnifiedImportManager:
         self.project_root = project_root or Path(__file__).parent.parent
         self._import_cache: Dict[str, Any] = {}
         self._failed_imports: Dict[str, str] = {}
-        self._fallbacks: Dict[str, Any] = {}
+        # No fallbacks allowed - fail-fast import system
         self.issues: List[Dict[str, str]] = []
         self.checked_modules: Set[str] = set()
         

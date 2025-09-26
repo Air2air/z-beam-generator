@@ -10,88 +10,56 @@ materialTables:
       value: Cu-Sn
       unit: '-'
       category: Chemical
-    - property: Material Type
-      value: Metal
-      unit: '-'
-      category: Classification
-    - property: Composition
-      value: Typically 88% Cu, 12% Sn
-      unit: '-'
-      category: Composition
   - header: '## Physical & Mechanical Properties'
     rows:
     - property: Density
-      value: 8.9 g/cm³
+      value: '8.9'
       unit: g/cm³
-      min: '1.8'
-      max: '6.0'
-      percentile: 100.0
-      numeric: 8.9
     - property: Melting Point
-      value: 950°C
+      value: '1025'
       unit: °C
-      percentile: 0.0
-      numeric: 950.0
     - property: Thermal Conductivity
-      value: 26 W/(m·K)
-      unit: W/
-      percentile: 12.8
-      numeric: 26.0
+      value: '26'
+      unit: W/m·K
     - property: Tensile Strength
-      value: 350-700 MPa (depending on alloy composition and temper)
+      value: '200'
       unit: MPa
-      percentile: 50.0
-      numeric: 525.0
-    - property: Hardness
-      value: 60-200 HB (Brinell hardness, varies with composition and work hardening)
-      unit: HB
-      min: '1.0'
-      max: '10.0'
-      percentile: 100.0
-      numeric: 130.0
     - property: Young's Modulus
-      value: 110 GPa (typical for bronze alloys)
+      value: '200'
       unit: GPa
-      percentile: 100.0
-      numeric: 110.0
   - header: '## Laser Processing Parameters'
     rows:
     - property: Power Range
-      value: 20-100W
+      value: '50.0'
       unit: W
-      min: '20.0'
-      max: '500.0'
-      numeric: 60.0
     - property: Pulse Duration
-      value: 10-100ns
+      value: '20.0'
       unit: ns
-      min: '1.0'
-      max: '1000.0'
-      numeric: 55.0
+      category: Standard
     - property: Wavelength
-      value: 1064nm (primary), 532nm (optional)
+      value: '1064.0'
       unit: nm
-      min: '355.0'
-      max: '2940.0'
-      numeric: 1064.0
+      category: Optimal
     - property: Spot Size
-      value: 0.1-2.0mm
+      value: '2.0'
       unit: mm
-      min: '0.01'
-      max: '10.0'
-      numeric: 1.05
+      category: Configurable
     - property: Repetition Rate
-      value: 10-50kHz
+      value: '10.0'
       unit: kHz
-      min: '1.0'
-      max: '1000.0'
-      numeric: 30.0
+      category: Variable
     - property: Fluence Range
-      value: 0.5–5 J/cm²
+      value: '0.8'
       unit: J/cm²
-      min: '0.1'
-      max: '50.0'
-      numeric: 0.5
+      category: Range
+    - property: Beam Profile
+      value: Gaussian TEM00
+      unit: '-'
+      category: System
+    - property: Safety Class
+      value: Class 4 (requires full enclosure)
+      unit: '-'
+      category: Safety
   - header: '## Applications & Industries'
     rows:
     - property: Manufacturing
@@ -110,34 +78,10 @@ materialTables:
       value: Bell and cymbal restoration
       unit: '-'
       category: Application
-  - header: '## Performance Metrics'
-    rows:
-    - property: Surface contamination removal efficiency >99%
-      value: Measured via SEM-EDS analysis showing complete removal of chloride and sulfate corrosion products
-      unit: '-'
-      category: Performance
-    - property: Substrate preservation with <5µm HAZ
-      value: Microhardness testing confirms no alteration to base metal properties beyond superficial layer
-      unit: '-'
-      category: Performance
-  - header: '## Environmental Impact'
-    rows:
-    - property: Zero chemical waste generation
-      value: Eliminates use of hazardous chemical cleaners (acids, solvents) and associated disposal requirements, reducing environmental contamination risk by 100% compared to traditional methods
-      unit: '-'
-      category: Environmental
-    - property: Reduced energy consumption
-      value: Laser cleaning consumes approximately 60-70% less energy than abrasive blasting or chemical cleaning processes for equivalent surface area treatment
-      unit: '-'
-      category: Environmental
   - header: '## Compatibility & Standards'
     rows:
     - property: Material Compatibility
-      value: Stainless steel fixtures (for mounting bronze components during processing), Aluminum shielding (for laser safety enclosures and fume extraction systems)
+      value: laser_types, surface_treatments, incompatible_conditions
       unit: '-'
       category: Compatibility
-    - property: Regulatory Standards
-      value: IEC 60825-1 (Laser product safety), ISO 11553 (Safety of laser processing machines), EN 1011-4 (Welding recommendations for copper and copper alloys)
-      unit: '-'
-      category: Compliance
 renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. Pure data structure optimized for performance.'

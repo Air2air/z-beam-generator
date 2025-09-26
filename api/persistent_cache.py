@@ -286,8 +286,9 @@ class PersistentAPIClientCache:
         try:
             cache_info = cls._load_cache_info()
             disk_instances = len(cache_info["clients"])
-        except:
-            disk_instances = 0
+        except Exception as e:
+            # Fail-fast: Cache info loading must succeed for accurate statistics
+            raise RuntimeError(f"Failed to load cache statistics: {e}")
         
         return {
             "cache_hits": cls._cache_hits,

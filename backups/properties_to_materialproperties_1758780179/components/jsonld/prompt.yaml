@@ -1,0 +1,281 @@
+name: "JSON-LD Generator"
+description: "Generates structured data content for laser cleaning articles using Python calculator optimization."
+version: "5.0.0"
+
+template: |
+  Generate comprehensive JSON-LD structured data for {article_type} "{subject}" laser cleaning using Python-calculated values to minimize API requests.
+
+  PYTHON OPTIMIZATION APPROACH:
+  - Use built-in Python calculations for all computed values
+  - Extract real data from frontmatter properties and technical specifications
+  - Generate SEO keywords algorithmically based on material properties
+  - Calculate technical content using frontmatter data instead of placeholders
+  - Minimize API dependency by leveraging local data resources
+
+  FORMATTING REFERENCE:
+  - MANDATORY: Follow the comprehensive structure shown in components/jsonld/example_jsonld.md
+  - Generate ONLY the HTML script tag containing advanced JSON-LD
+  - Use Python-calculated article body (100-150 words) with real technical data
+  - Include algorithmically generated keywords from material properties
+
+  CALCULATED CONTENT REQUIREMENTS:
+  Use the following Python-calculated approach:
+
+  1. KEYWORDS: Generate from material properties + applications + technical specs
+  2. ARTICLE BODY: Calculate using density + wavelength + fluence + applications data
+  3. IMAGE DESCRIPTIONS: Generate using technical specifications and contamination types
+  4. HOW-TO STEPS: Calculate using wavelength, fluence, safety class, and spot size
+  5. MATERIAL PROPERTIES: Extract and format from frontmatter.properties
+  6. BREADCRUMBS: Generate using category hierarchy and URL slug calculation
+  7. CITATIONS: Calculate based on material type and primary applications
+  8. CONTAMINATION TYPES: Map from applications to specific contamination categories
+
+  TECHNICAL DATA EXTRACTION:
+  - Properties: density, thermalConductivity, meltingPoint from frontmatter.properties
+  - Laser Parameters: wavelength, fluenceRange, powerRange from frontmatter.technicalSpecifications
+  - Applications: industry, detail from frontmatter.applications[]
+  - Chemical Data: formula, symbol from frontmatter.chemicalProperties
+  - Author: Use frontmatter.author or calculate from generation context
+
+  Generate the complete script tag using CALCULATED DATA from frontmatter:
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Laser Cleaning of {subject} Materials",
+    "alternativeHeadline": "Advanced Laser Ablation Techniques for {subject} Surface Treatment",
+    "description": "Comprehensive technical guide covering laser cleaning methodologies for {subject} {category} materials, including optimal parameters, industrial applications, and surface treatment benefits.",
+    "abstract": "Advanced laser cleaning techniques for {subject} materials using {wavelength} wavelength at {fluence_range} fluence for {primary_applications}.",
+    "keywords": {frontmatter_keywords_array},
+    "articleBody": "Generate 100-150 word technical overview using: {subject} is a {material_type} material with {density} density extensively used in {applications_list}. Laser cleaning utilizes {wavelength} wavelength at {fluence_range} fluence and {pulse_duration} pulse duration to remove {contamination_types} while preserving {material_properties}. Key applications include {industry_applications}. Technical specifications: {power_range} power, {spot_size} spot size, {repetition_rate} repetition rate.",
+    "wordCount": 120,
+    "articleSection": "Materials Processing",
+    "inLanguage": "en-US",
+    "isAccessibleForFree": true,
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "copyrightHolder": {
+      "@type": "Organization",
+      "name": "Z-Beam Technologies"
+    },
+    "copyrightYear": 2025,
+    "author": {
+      "@type": "Person",
+      "name": "{author_name}",
+      "jobTitle": "Senior Laser Processing Engineer",
+      "affiliation": {
+        "@type": "Organization",
+        "name": "Advanced Materials Research Institute"
+      },
+      "knowsAbout": [
+        "Laser Materials Processing",
+        "{subject} Surface Engineering",
+        "Industrial Laser Applications"
+      ]
+    },
+    "reviewedBy": {
+      "@type": "Person",
+      "name": "Dr. {reviewer_name}",
+      "jobTitle": "Materials Science Director"
+    },
+    "datePublished": "2025-08-08T10:00:00Z",
+    "dateModified": "2025-08-08T14:30:00Z",
+    "image": [
+      {
+        "@type": "ImageObject",
+        "url": "/images/{subject_slug}-laser-cleaning-hero.jpg",
+        "name": "{subject} Laser Cleaning Workbench Before/After Comparison",
+        "caption": "Split-view workbench photograph displaying {subject} {component_type} before and after laser cleaning treatment",
+        "description": "High-resolution dual-panel photograph showing a {subject} component processed with {wavelength} wavelength, {fluence} J/cm² fluence, demonstrating complete contamination removal while preserving material integrity",
+        "keywords": "{subject} laser cleaning, before after comparison, {wavelength} processing, {category} restoration",
+        "width": 1200,
+        "height": 800,
+        "encodingFormat": "image/jpeg",
+        "representativeOfPage": true,
+        "license": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      {
+        "@type": "ImageObject",
+        "url": "/images/{subject_slug}-laser-cleaning-micro.jpg",
+        "name": "{subject} Surface Microstructure Analysis",
+        "caption": "SEM images showing {subject} surface quality before and after {wavelength} laser treatment",
+        "description": "Comparative scanning electron micrographs displaying surface microstructure processed with {wavelength} wavelength, {fluence} J/cm² fluence, {pulse_duration} pulse duration, verified at {magnification}x magnification",
+        "keywords": "{subject} microscopy, SEM analysis, {wavelength} processing, laser parameters",
+        "width": 800,
+        "height": 600,
+        "encodingFormat": "image/jpeg",
+        "about": {
+          "@type": "Thing",
+          "name": "Laser Surface Analysis",
+          "description": "Microscopic evaluation of {wavelength} laser cleaning effectiveness on {category} surfaces"
+        }
+      }
+    ],
+    "video": {
+      "@type": "VideoObject",
+      "name": "{subject} Laser Cleaning Process Demonstration",
+      "description": "Real-time demonstration of {wavelength} laser cleaning process on {subject} {category} components",
+      "thumbnailUrl": "/images/{subject_slug}-laser-cleaning-hero.jpg",
+      "uploadDate": "2025-08-08T12:00:00Z",
+      "duration": "PT3M45S",
+      "contentUrl": "/videos/{subject_slug}-laser-cleaning-demo.mp4"
+    },
+    "about": [
+      {
+        "@type": "Material",
+        "name": "{subject}",
+        "identifier": "{material_symbol}",
+        "category": "{category}",
+        "description": "{frontmatter_description}",
+        "additionalProperty": [
+          {
+            "@type": "PropertyValue",
+            "name": "Density",
+            "value": "{density_value}",
+            "unitCode": "{density_unit}"
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "Optimal Wavelength",
+            "value": "{wavelength_value}",
+            "unitCode": "NMT"
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "Fluence Range",
+            "value": "{fluence_range}",
+            "unitCode": "J/cm²"
+          }
+        ]
+      },
+      {
+        "@type": "Process",
+        "name": "Laser Cleaning",
+        "description": "Non-contact surface treatment using {wavelength} laser energy to remove contaminants",
+        "category": "Industrial Process",
+        "additionalProperty": [
+          {
+            "@type": "PropertyValue",
+            "name": "Wavelength",
+            "value": "{wavelength_value}",
+            "unitCode": "NMT"
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "Power Range",
+            "value": "{power_range}",
+            "unitCode": "W"
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "Pulse Duration",
+            "value": "{pulse_duration}",
+            "unitCode": "NS"
+          }
+        ]
+      }
+    ],
+    "mainEntity": {
+      "@type": "HowTo",
+      "name": "Laser Cleaning Process for {subject} {category_title}",
+      "description": "Step-by-step methodology for cleaning {subject} {category} surfaces using {wavelength} laser ablation",
+      "totalTime": "PT15M",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "name": "Material Preparation",
+          "text": "Secure {subject} component in laser processing fixture ensuring stable positioning and adequate ventilation for {safety_class} operation."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Parameter Configuration",
+          "text": "Configure laser parameters: {wavelength} wavelength, {fluence} J/cm² fluence, {pulse_duration} pulse duration, {repetition_rate} repetition rate."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Surface Treatment",
+          "text": "Execute systematic scanning pattern with {spot_size} spot size maintaining consistent standoff distance for {category} processing."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Quality Verification",
+          "text": "Inspect cleaned surface using optical microscopy to verify contaminant removal and {subject} material integrity."
+        }
+      ]
+    },
+    "mentions": {industry_organizations_from_applications},
+    "citation": [
+      {
+        "@type": "ScholarlyArticle",
+        "name": "Laser Processing of {category_title} Materials",
+        "author": "Journal of Materials Processing Technology"
+      }
+    ],
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Z-Beam Laser Processing Guide",
+      "url": "https://z-beam.example.com"
+    },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Materials",
+          "item": "/materials"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "{category_title}",
+          "item": "/materials/{category}"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "{subject}",
+          "item": "/materials/{category}/{subject_slug}"
+        }
+      ]
+    },
+    "potentialAction": {
+      "@type": "ReadAction",
+      "target": "/materials/{category}/{subject_slug}/laser-cleaning"
+    }
+  }
+  </script>
+
+  CRITICAL REQUIREMENTS:
+  - EXTRACT ALL VALUES from frontmatter data - don't use placeholders
+  - Use frontmatter.properties.density for density_value
+  - Use frontmatter.technicalSpecifications.wavelength for wavelength_value
+  - Use frontmatter.technicalSpecifications.fluenceRange for fluence_range
+  - Use frontmatter.applications[] for industry_organizations
+  - Use frontmatter.keywords for keywords array
+  - Use frontmatter.description for descriptions
+  - Generate concise 100-150 word articleBody using actual technical data
+  - Include ALL technical specifications from frontmatter
+  - Make content material-specific using real properties data
+
+  REQUIREMENTS:
+  - Fill in ALL template fields with comprehensive technical content
+  - articleBody should be 250-350 words of detailed technical content
+  - Include 10 relevant keywords covering technical and application terms
+  - CRITICAL: Use EXACTLY this author name: {author_name}
+  - Ensure all chemical and material data is accurate
+  - Focus on laser cleaning applications and benefits
+  - Output ONLY valid JSON-LD format - no markdown, no code fences, no extra text
+  - Create specific image captions that describe before/after laser cleaning results
+  - Use ImageObject format for enhanced SEO and accessibility
+  - Include technical specifications (wavelength, fluence, pulse duration, spot size)
+  - Describe material-specific contamination types and removal benefits
+  - Reference specific industrial applications relevant to the material
+
+  AVAILABLE BASE COMPONENT DATA:
+  Subject: {subject}
+  Article Type: {article_type}
+  Material Formula: {material_formula}
+  Material Symbol: {material_symbol}
+  Material Type: {material_type}
+  Category: {category}

@@ -38,7 +38,7 @@ def validate_api_environment() -> dict:
             "env_var": config["env_var"],
             "configured": is_provider_available(provider_id),
             "base_url": config["base_url"],
-            "model": config.get("model", config.get("default_model", "unknown")),
+            "model": config.get("model") or config.get("default_model"),
         }
 
     return results

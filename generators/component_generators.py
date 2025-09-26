@@ -12,7 +12,45 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Dict, List, Optional
 
+# Import material-aware prompt system
+try:
+    from ai_research.prompt_exceptions.material_aware_generator import MaterialAwarePromptGenerator
+    from ai_research.prompt_exceptions.material_exception_handler import MaterialExceptionHandler
+    MATERIAL_AWARE_PROMPTS_AVAILABLE = True
+except ImportError:
+    MATERIAL_AWARE_PROMPTS_AVAILABLE = False
+    MaterialAwarePromptGenerator = None
+    MaterialExceptionHandler = None
+
 logger = logging.getLogger(__name__)
+
+# Global material-aware prompt system (initialized once)
+_material_aware_generator = None
+_material_exception_handler = None
+
+
+def get_material_aware_generator():
+    """Get global material-aware prompt generator (lazy initialization)"""
+    global _material_aware_generator
+    if _material_aware_generator is None and MATERIAL_AWARE_PROMPTS_AVAILABLE:
+        try:
+            _material_aware_generator = MaterialAwarePromptGenerator()
+            logger.info("Initialized global material-aware prompt generator")
+        except Exception as e:
+            logger.warning(f"Failed to initialize material-aware generator: {e}")
+    return _material_aware_generator
+
+
+def get_material_exception_handler():
+    """Get global material exception handler (lazy initialization)"""
+    global _material_exception_handler
+    if _material_exception_handler is None and MATERIAL_AWARE_PROMPTS_AVAILABLE:
+        try:
+            _material_exception_handler = MaterialExceptionHandler()
+            logger.info("Initialized global material exception handler")
+        except Exception as e:
+            logger.warning(f"Failed to initialize material exception handler: {e}")
+    return _material_exception_handler
 
 
 @dataclass
@@ -210,13 +248,71 @@ class APIComponentGenerator(BaseComponentGenerator):
         frontmatter_data: Optional[Dict] = None,
         schema_fields: Optional[Dict] = None,
     ) -> str:
-        """Build simple prompt for this component"""
+        """Build prompt for this component with material-aware enhancements"""
+        
+        # Try to use material-aware prompts if available
+        material_aware_gen = get_material_aware_generator()
+        if material_aware_gen:
+            try:
+                # Get base prompt for this component type
+                base_prompt = self._get_base_component_prompt()
+                
+                # Generate material-aware prompt
+                enhanced_prompt = material_aware_gen.generate_material_aware_prompt(
+                    material_name=material_name,
+                    component_type=self.component_type,
+                    base_prompt=base_prompt,
+                    material_data=material_data,
+                    author_info=author_info,
+                    frontmatter_data=frontmatter_data,
+                    schema_fields=schema_fields
+                )
+                
+                logger.debug(f"Using material-aware prompt for {self.component_type} - {material_name}")
+                return enhanced_prompt
+                
+            except Exception as e:
+                logger.warning(f"Material-aware prompt generation failed for {self.component_type}: {e}")
+                # Fall back to basic prompt
+        
+        # Fallback to basic prompt generation
+        return self._get_basic_prompt(material_name, material_data, author_info, frontmatter_data, schema_fields)
+    
+    def _get_base_component_prompt(self) -> str:
+        """Get base prompt template for this component type - override in subclasses"""
+        return f"Generate high-quality {self.component_type} content for the specified material. Follow component requirements and maintain consistency with material properties."
+    
+    def _get_basic_prompt(self, material_name: str, material_data: Dict, 
+                         author_info: Optional[Dict] = None, 
+                         frontmatter_data: Optional[Dict] = None,
+                         schema_fields: Optional[Dict] = None) -> str:
+        """Generate basic prompt without material-aware enhancements"""
         return f"Generate {self.component_type} content for {material_name}"
 
     def _post_process_content(
         self, content: str, material_name: str, material_data: Dict
     ) -> str:
-        """Post-process generated content"""
+        """Post-process generated content with material-aware validation"""
+        
+        # Apply material-aware validation if available
+        material_aware_gen = get_material_aware_generator()
+        if material_aware_gen:
+            try:
+                validated_content = material_aware_gen.validate_generated_content(
+                    content=content,
+                    material_name=material_name,
+                    component_type=self.component_type,
+                    material_data=material_data
+                )
+                
+                if validated_content and validated_content != content:
+                    logger.info(f"Applied material-aware validation for {self.component_type} - {material_name}")
+                    content = validated_content
+                    
+            except Exception as e:
+                logger.warning(f"Material-aware validation failed for {self.component_type}: {e}")
+                # Continue with unvalidated content
+        
         # Special handling for frontmatter enhancement
         if self.component_type == "frontmatter":
             try:
@@ -239,62 +335,11 @@ class APIComponentGenerator(BaseComponentGenerator):
 
 # Component generator factory
 
-
-class FrontmatterComponentGenerator(BaseComponentGenerator):
-    """Base class for components that extract data from frontmatter without API calls"""
-
-    def __init__(self, component_type: str):
-        super().__init__(component_type)
-        self.component_info = {
-            "name": f"{component_type.title()} Component",
-            "description": f"Generates {component_type} from frontmatter data",
-            "version": "2.0.0",
-            "type": "frontmatter_extraction",
-        }
-
-    def generate(
-        self,
-        material_name: str,
-        material_data: Dict,
-        api_client=None,
-        author_info: Optional[Dict] = None,
-        frontmatter_data: Optional[Dict] = None,
-        schema_fields: Optional[Dict] = None,
-    ) -> ComponentResult:
-        """Generate component from frontmatter data - NO API calls required"""
-        try:
-            if frontmatter_data is None:
-                return ComponentResult(
-                    component_type=self.component_type,
-                    content="",
-                    success=False,
-                    error_message="No frontmatter data available",
-                )
-
-            content = self._extract_from_frontmatter(material_name, frontmatter_data)
-            return ComponentResult(
-                component_type=self.component_type, content=content, success=True
-            )
-        except Exception as e:
-            return ComponentResult(
-                component_type=self.component_type,
-                content="",
-                success=False,
-                error_message=str(e),
-            )
-
-    def _extract_from_frontmatter(
-        self, material_name: str, frontmatter_data: Dict
-    ) -> str:
-        """Override this method in subclasses to implement specific extraction logic"""
-        raise NotImplementedError("Subclasses must implement _extract_from_frontmatter")
-
-
 class ComponentGeneratorFactory:
     """Factory for creating component generators - API ONLY"""
 
     @staticmethod
-    def create_generator(component_type: str, ai_detection_service=None):
+    def create_generator(component_type: str, ai_detection_service=None, api_client=None):
         """Create appropriate generator for component type"""
 
         try:
@@ -304,7 +349,7 @@ class ComponentGeneratorFactory:
                     StreamlinedFrontmatterGenerator,
                 )
 
-                return StreamlinedFrontmatterGenerator()
+                return StreamlinedFrontmatterGenerator(api_client=api_client)
             elif component_type == "author":
                 from components.author.generator import AuthorComponentGenerator
 
@@ -322,7 +367,7 @@ class ComponentGeneratorFactory:
                         try:
                             module = __import__(
                                 module_path,
-                                fromlist=[f"{component_type.title()}ComponentGenerator"],
+                                fromlist=[f"{component_type.title().replace('s', 'S')}ComponentGenerator"],
                             )
                             generator_class = getattr(
                                 module, f"{component_type.title()}ComponentGenerator"
@@ -353,11 +398,8 @@ class ComponentGeneratorFactory:
                         )
                         logger.info(f"Got generator class: {generator_class}")
 
-                        # Pass AI detection service to text generator
-                        if component_type == "text":
-                            return generator_class()
-                        else:
-                            return generator_class()
+                        # Return generator instance
+                        return generator_class()
                     except (ImportError, AttributeError) as e:
                         logger.debug(f"Failed to import from {module_path}: {e}")
                         continue

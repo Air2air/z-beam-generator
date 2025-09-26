@@ -1,97 +1,38 @@
 materialTables:
   tables:
-  - header: '## Chemical Properties'
-    rows:
-    - property: Chemical Formula
-      value: C6H10O5 (Cellulose primary constituent)
-      unit: '-'
-      category: Chemical
-    - property: Chemical Symbol
-      value: N/A (Composite)
-      unit: '-'
-      category: Chemical
-    - property: Material Type
-      value: Wood Composite
-      unit: '-'
-      category: Classification
-    - property: Composition
-      value: 'Wood fibers: 82-85%, Urea-formaldehyde resin: 10-12%, Paraffin wax: 1-2%, Water: 5-8%'
-      unit: '-'
-      category: Composition
-  - header: '## Physical & Mechanical Properties'
-    rows:
-    - property: Density
-      value: 700-800 kg/m³
-      unit: kg/m³
-      min: '1.8'
-      max: '6.0'
-      percentile: 100.0
-      numeric: 750.0
-    - property: Melting Point
-      value: Decomposes at ~200-250°C (no true melting point)
-      unit: °C
-      percentile: 0.0
-      numeric: 225.0
-    - property: Thermal Conductivity
-      value: 0.07-0.09 W/(m·K)
-      unit: W/
-      percentile: 0.0
-      numeric: 0.08
-    - property: Tensile Strength
-      value: 15-30 MPa (parallel to surface)
-      unit: MPa
-      percentile: 0.0
-      numeric: 22.5
-    - property: Hardness
-      value: 60-80 HB (Brinell hardness)
-      unit: HB
-      min: '1.0'
-      max: '10.0'
-      percentile: 100.0
-      numeric: 70.0
-    - property: Young's Modulus
-      value: 3.0-4.0 GPa
-      unit: GPa
-      percentile: 0.0
-      numeric: 3.5
   - header: '## Laser Processing Parameters'
     rows:
     - property: Power Range
-      value: 20-100W
+      value: '50.0'
       unit: W
-      min: '20.0'
-      max: '500.0'
-      numeric: 60.0
     - property: Pulse Duration
-      value: 10-100ns
+      value: '10.0'
       unit: ns
-      min: '1.0'
-      max: '1000.0'
-      numeric: 55.0
+      category: Standard
     - property: Wavelength
-      value: 1064nm (primary), 532nm (optional)
+      value: '1064.0'
       unit: nm
-      min: '355.0'
-      max: '2940.0'
-      numeric: 1064.0
+      category: Optimal
     - property: Spot Size
-      value: 0.1-2.0mm
+      value: '1.0'
       unit: mm
-      min: '0.01'
-      max: '10.0'
-      numeric: 1.05
+      category: Configurable
     - property: Repetition Rate
-      value: 10-50kHz
+      value: '10.0'
       unit: kHz
-      min: '1.0'
-      max: '1000.0'
-      numeric: 30.0
+      category: Variable
     - property: Fluence Range
-      value: 0.5-5 J/cm²
+      value: '0.8'
       unit: J/cm²
-      min: '0.1'
-      max: '50.0'
-      numeric: 2.75
+      category: Range
+    - property: Beam Profile
+      value: Gaussian TEM00
+      unit: '-'
+      category: System
+    - property: Safety Class
+      value: Class 4 (requires full enclosure)
+      unit: '-'
+      category: Safety
   - header: '## Applications & Industries'
     rows:
     - property: Furniture Manufacturing
@@ -102,34 +43,10 @@ materialTables:
       value: Cleaning of MDF panels before installation or painting
       unit: '-'
       category: Application
-  - header: '## Performance Metrics'
-    rows:
-    - property: Surface contamination removal efficiency
-      value: '>99% removal of paints, adhesives, and surface contaminants with <5μm substrate damage'
-      unit: '-'
-      category: Performance
-    - property: Processing speed
-      value: 0.5-2.0 m²/hour depending on contamination type and laser parameters
-      unit: '-'
-      category: Performance
-  - header: '## Environmental Impact'
-    rows:
-    - property: Zero chemical solvent usage
-      value: Eliminates VOC emissions and hazardous waste disposal associated with traditional chemical stripping methods for MDF
-      unit: '-'
-      category: Environmental
-    - property: Reduced energy consumption
-      value: Laser cleaning consumes approximately 60-70% less energy compared to thermal or abrasive cleaning methods for MDF surfaces
-      unit: '-'
-      category: Environmental
   - header: '## Compatibility & Standards'
     rows:
     - property: Material Compatibility
-      value: Other wood composites (particle board, HDF), Natural wood species with similar resin content
+      value: laser_types, surface_treatments, incompatible_conditions
       unit: '-'
       category: Compatibility
-    - property: Regulatory Standards
-      value: IEC 60825-1 (Laser Safety), OSHA 29 CFR 1910.1096 (Ionizing Radiation), NFPA 70 (National Electrical Code)
-      unit: '-'
-      category: Compliance
 renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. Pure data structure optimized for performance.'

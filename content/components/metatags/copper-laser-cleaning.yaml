@@ -2,15 +2,18 @@
 title: Copper Laser Cleaning
 meta_tags:
 - name: description
-  content: Technical overview of Copper, Cu, for laser cleaning applications, including
-    optimal 1064nm wavelength interaction, and industrial applications in surface
-    preparation.
+  content: Technical overview of Copper laser cleaning applications and parameters
 - name: keywords
-  content: copper, copper metal, laser ablation, laser cleaning, non-contact cleaning,
-    pulsed fiber laser, surface contamination removal, industrial laser parameters,
-    thermal processing, surface restoration
+  content:
+  - copper
+  - copper metal
+  - laser ablation
+  - laser cleaning
+  - non-contact cleaning
+  - manufacturing applications
+  - restoration applications
 - name: author
-  content: Yi-Chun Lin
+  content: ''
 - name: category
   content: metal
 - name: robots
@@ -28,7 +31,13 @@ meta_tags:
 - name: material:category
   content: metal
 - name: laser:wavelength
-  content: 1064nm
+  content: '{''value'': 532, ''unit'': ''nm'', ''min'': 355, ''max'': 1064, ''description'':
+    ''Wavelength property relevant to laser cleaning applications'', ''validation'':
+    {''confidence_score'': 0.75, ''sources_validated'': 1, ''research_sources'': [''ai_research''],
+    ''accuracy_class'': ''validated'', ''material_specific'': True}, ''processing_impact'':
+    ''Influences laser cleaning effectiveness and parameter optimization for wavelength'',
+    ''optimization_notes'': ''Optimize laser parameters based on wavelength value
+    for best cleaning results''} nm'
 - name: application-name
   content: Z-Beam Laser Processing Guide
 - name: msapplication-TileColor
@@ -39,9 +48,7 @@ opengraph:
 - property: og:title
   content: Copper Laser Cleaning
 - property: og:description
-  content: Technical overview of Copper, Cu, for laser cleaning applications, including
-    optimal 1064nm wavelength interaction, and industrial applications in surface
-    preparation.
+  content: Technical overview of Copper laser cleaning applications and parameters
 - property: og:type
   content: article
 - property: og:image
@@ -60,7 +67,7 @@ opengraph:
 - property: og:locale
   content: en_US
 - property: article:author
-  content: Yi-Chun Lin
+  content: ''
 - property: article:section
   content: Copper Processing
 - property: article:tag
@@ -71,9 +78,7 @@ twitter:
 - name: twitter:title
   content: Copper Laser Cleaning
 - name: twitter:description
-  content: Technical overview of Copper, Cu, for laser cleaning applications, including
-    optimal 1064nm wavelength interaction, and industrial applications in surface
-    preparation.
+  content: Technical overview of Copper laser cleaning applications and parameters
 - name: twitter:image
   content: https://z-beam.com/images/copper-laser-cleaning-hero.jpg
 - name: twitter:image:alt
@@ -89,7 +94,7 @@ alternate:
 ---
 
 ---
-Version Log - Generated: 2025-09-22T14:58:29.788042
+Version Log - Generated: 2025-09-25T14:16:53.525156
 Material: Unknown
 Component: metatags
 Generator: Z-Beam v1.0.0

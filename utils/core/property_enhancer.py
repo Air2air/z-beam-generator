@@ -124,14 +124,16 @@ def load_category_ranges() -> Dict[str, Any]:
     try:
         materials_path = Path("data/materials.yaml")
         if not materials_path.exists():
-            logger.warning(f"Materials file not found: {materials_path}")
-            return {}
+            logger.error(f"Materials file not found: {materials_path}")
+            raise FileNotFoundError(f"Materials file required: {materials_path} - no fallback allowed")
 
         with open(materials_path, "r", encoding="utf-8") as f:
             data = yaml.safe_load(f)
 
         # Return the 'category_ranges' section which contains the actual range data
-        return data.get("category_ranges", {})
+        if "category_ranges" not in data:
+            raise KeyError("category_ranges section missing from materials.yaml - no fallback allowed")
+        return data["category_ranges"]
 
     except Exception as e:
         logger.error(f"Error loading category ranges: {e}")

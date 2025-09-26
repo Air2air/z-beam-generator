@@ -1,96 +1,38 @@
 materialTables:
   tables:
-  - header: '## Chemical Properties'
-    rows:
-    - property: Chemical Formula
-      value: C₆H₁₀O₅ (cellulose base)
-      unit: '-'
-      category: Chemical
-    - property: Chemical Symbol
-      value: N/A (organic composite)
-      unit: '-'
-      category: Chemical
-    - property: Material Type
-      value: Hardwood
-      unit: '-'
-      category: Classification
-    - property: Composition
-      value: 'Cellulose: 45-50%, Lignin: 20-25%, Hemicellulose: 15-20%, Extractives: 2-5%'
-      unit: '-'
-      category: Composition
-  - header: '## Physical & Mechanical Properties'
-    rows:
-    - property: Density
-      value: 815-930 kg/m³ (air-dried)
-      unit: kg/m³
-      min: '1.8'
-      max: '6.0'
-      percentile: 100.0
-      numeric: 872.5
-    - property: Decomposition Point
-      value: 300°C
-      unit: °C
-      numeric: 300.0
-    - property: Thermal Conductivity
-      value: 0.12-0.16 W/m·K (radial direction)
-      unit: W/m·K
-      percentile: 0.0
-      numeric: 0.14
-    - property: Tensile Strength
-      value: 100-140 MPa (parallel to grain)
-      unit: MPa
-      percentile: 7.4
-      numeric: 120.0
-    - property: Hardness
-      value: 6.0-7.0 kN (Janka hardness scale)
-      unit: kN
-      min: '1.0'
-      max: '10.0'
-      percentile: 61.1
-      numeric: 6.5
-    - property: Young's Modulus
-      value: 14.9-16.6 GPa (parallel to grain)
-      unit: GPa
-      percentile: 0.0
-      numeric: 15.75
   - header: '## Laser Processing Parameters'
     rows:
     - property: Power Range
-      value: 20-100W
+      value: '50.0'
       unit: W
-      min: '20.0'
-      max: '500.0'
-      numeric: 60.0
     - property: Pulse Duration
-      value: 10-50ns
+      value: '10.0'
       unit: ns
-      min: '1.0'
-      max: '1000.0'
-      numeric: 30.0
+      category: Standard
     - property: Wavelength
-      value: 1064nm (primary), 532nm (optional)
+      value: '1064.0'
       unit: nm
-      min: '355.0'
-      max: '2940.0'
-      numeric: 1064.0
+      category: Optimal
     - property: Spot Size
-      value: 0.1-1.0mm
+      value: '1.0'
       unit: mm
-      min: '0.01'
-      max: '10.0'
-      numeric: 0.55
+      category: Configurable
     - property: Repetition Rate
-      value: 20-100kHz
+      value: '25.0'
       unit: kHz
-      min: '1.0'
-      max: '1000.0'
-      numeric: 60.0
+      category: Variable
     - property: Fluence Range
-      value: 0.5-3.0 J/cm²
+      value: '0.8'
       unit: J/cm²
-      min: '0.1'
-      max: '50.0'
-      numeric: 1.75
+      category: Range
+    - property: Beam Profile
+      value: Gaussian TEM00
+      unit: '-'
+      category: System
+    - property: Safety Class
+      value: Class 4 (requires full enclosure)
+      unit: '-'
+      category: Safety
   - header: '## Applications & Industries'
     rows:
     - property: Woodworking
@@ -101,34 +43,10 @@ materialTables:
       value: Cleaning and restoring antique hickory furniture
       unit: '-'
       category: Application
-  - header: '## Performance Metrics'
-    rows:
-    - property: Surface contamination removal efficiency
-      value: '>95% removal of finishes and contaminants with <5 μm surface alteration'
-      unit: '-'
-      category: Performance
-    - property: Processing speed
-      value: 2-5 m²/hour depending on contamination level and required precision
-      unit: '-'
-      category: Performance
-  - header: '## Environmental Impact'
-    rows:
-    - property: Zero chemical waste generation
-      value: Eliminates 100% of solvent-based cleaning chemicals typically used in wood restoration (average 5-10 L per furniture piece)
-      unit: '-'
-      category: Environmental
-    - property: Reduced energy consumption
-      value: 60-70% lower energy consumption compared to traditional sanding and chemical stripping methods for hickory surface preparation
-      unit: '-'
-      category: Environmental
   - header: '## Compatibility & Standards'
     rows:
     - property: Material Compatibility
-      value: Hardwoods with similar density (maple, oak, ash), Composite wood materials with similar thermal properties
+      value: laser_types, surface_treatments, incompatible_conditions
       unit: '-'
       category: Compatibility
-    - property: Regulatory Standards
-      value: ANSI Z136.1, IEC 60825-1 (Laser Safety), OSHA 29 CFR 1910.133 (Eye Protection)
-      unit: '-'
-      category: Compliance
 renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. Pure data structure optimized for performance.'

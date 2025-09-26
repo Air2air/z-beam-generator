@@ -14,12 +14,10 @@ import pytest
 
 from tests.test_framework import TestDataFactory, TestPathManager, TestValidator
 
-
 @pytest.fixture(scope="session")
 def project_root() -> Path:
     """Get the project root directory."""
     return TestPathManager.get_project_root()
-
 
 @pytest.fixture(scope="session")
 def test_temp_dir() -> Generator[Path, None, None]:
@@ -27,14 +25,12 @@ def test_temp_dir() -> Generator[Path, None, None]:
     temp_dir = TestPathManager.get_test_temp_dir()
     yield temp_dir
 
-
 @pytest.fixture
 def test_content_dir(test_temp_dir: Path) -> Path:
     """Provide a test content directory."""
     content_dir = test_temp_dir / "content" / "components"
     content_dir.mkdir(parents=True, exist_ok=True)
     return content_dir
-
 
 @pytest.fixture
 def mock_api_client():
@@ -48,18 +44,15 @@ def mock_api_client():
 
         return MagicMock()
 
-
 @pytest.fixture
 def sample_materials() -> List[Dict[str, Any]]:
     """Provide sample material data."""
     return TestDataFactory.create_test_materials(3)
 
-
 @pytest.fixture
 def sample_author_info() -> Dict[str, Any]:
     """Provide sample author information."""
     return TestDataFactory.create_test_author_info(1)
-
 
 @contextlib.contextmanager
 def mock_file_operations():
@@ -85,7 +78,6 @@ def mock_file_operations():
         side_effect=mock_save_component_to_file_original,
     ):
         yield
-
 
 @contextlib.contextmanager
 def mock_api_calls(provider: str = "grok", error_rate: float = 0.0):
@@ -118,23 +110,19 @@ def mock_api_calls(provider: str = "grok", error_rate: float = 0.0):
     ):
         yield mock_client
 
-
 def create_test_component_config(component: str) -> Dict[str, Any]:
     """Create test component configuration."""
     return TestDataFactory.create_test_component_config(component)
 
-
 def validate_generation_result(result: Dict[str, Any]) -> Dict[str, Any]:
     """Validate a generation result."""
     return TestValidator.validate_generation_result(result)
-
 
 def validate_file_structure(
     content_dir: Path, expected_components: List[str]
 ) -> Dict[str, Any]:
     """Validate file structure after generation."""
     return TestValidator.validate_file_structure(content_dir, expected_components)
-
 
 def assert_test_files_exist(content_dir: Path, components: List[str]):
     """Assert that test files exist for given components."""
@@ -144,7 +132,6 @@ def assert_test_files_exist(content_dir: Path, components: List[str]):
 
         files = list(component_dir.glob("*.md"))
         assert len(files) > 0, f"No files found in {component} directory"
-
 
 def assert_content_quality(content: str, component_type: str, material: str):
     """Assert that content meets quality standards."""
@@ -163,7 +150,6 @@ def assert_content_quality(content: str, component_type: str, material: str):
     elif component_type == "table":
         assert "|" in content, "Table content must contain table markup"
 
-
 class TestHelper:
     """
     Helper class for common test operations.
@@ -178,7 +164,6 @@ class TestHelper:
             "author_info": TestDataFactory.create_test_author_info(1),
             "config": TestDataFactory.create_test_component_config(component_type)
         }
-
 
 # Test data constants
 try:
@@ -214,7 +199,6 @@ __all__ = [
     'TEST_COMPONENTS',
     'TEST_AUTHORS',
 ]
-
 
 # Test data constants
 try:

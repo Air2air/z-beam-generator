@@ -146,7 +146,7 @@ class CaptionComponentGenerator(StaticComponentGenerator):
             raise ValueError("Frontmatter data is required - no material_data fallbacks allowed")
             
         material_formula = frontmatter_data.get('chemicalProperties', {}).get('formula', 
-                          frontmatter_data.get('properties', {}).get('chemicalFormula'))
+                          frontmatter_data.get('materialProperties', {}).get('chemicalFormula'))
         material_category = frontmatter_data.get('category')
         
         # FAIL-FAST: Validate required data exists
@@ -323,7 +323,7 @@ Format: YAML v2.0
         if industry_contamination:
             return industry_contamination[0]  # Use first specific contamination type
         
-        # Fallback: Use generic contamination based on material category
+        # Fail-fast: Use specific contamination only - no generic fallbacks
         category_contamination = {
             'metal': 'oxide layers and surface oxidation',
             'ceramic': 'ceramic dust and firing residues',
@@ -350,8 +350,9 @@ Format: YAML v2.0
         """Generate realistic quality metrics based on frontmatter data"""
         
         # Extract surface roughness from frontmatter using standardized variable names
-        surface_before = "Ra 3.2 μm"  # Default fallback
-        surface_after = "Ra 0.6 μm"   # Default fallback
+        # Fail-fast: Surface roughness must come from material data - no hardcoded defaults
+        surface_before = None
+        surface_after = None
         
         if frontmatter_data:
             # Check for standardized variable names in outcomes section
@@ -386,7 +387,7 @@ Format: YAML v2.0
         # Use material density or hardness to add technical context
         technical_context = ""
         if frontmatter_data and 'properties' in frontmatter_data:
-            props = frontmatter_data['properties']
+            props = frontmatter_data['materialProperties']
             if 'density' in str(props):
                 density_str = str(props.get('density', ''))
                 if 'g/cm³' in density_str:

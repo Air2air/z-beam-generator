@@ -41,7 +41,6 @@ except ImportError:
 from components.frontmatter.tests.test_validation_helpers import TestValidationHelpers, TestValidationHelpersEdgeCases
 from components.frontmatter.tests.test_integration import TestFrontmatterIntegration, TestPropertyEnhancementIntegration
 
-
 def create_test_suite(test_categories=None):
     """Create test suite based on requested categories"""
     suite = unittest.TestSuite()
@@ -68,7 +67,6 @@ def create_test_suite(test_categories=None):
     
     return suite
 
-
 def print_test_summary():
     """Print summary of streamlined test architecture"""
     print("🧪 FRONTMATTER STREAMLINED TEST SUITE")
@@ -92,7 +90,6 @@ def print_test_summary():
     print("⚡ Focused on GROK-compliant fail-fast architecture")
     print("✅ Testing 90% bloat reduction while preserving functionality")
     print()
-
 
 def run_tests(test_categories=None, verbosity=1):
     """Run the test suite with specified parameters"""
@@ -125,7 +122,6 @@ def run_tests(test_categories=None, verbosity=1):
         print("🔧 Review failed tests to ensure streamlined architecture integrity")
     
     return result.wasSuccessful()
-
 
 def main():
     """Main test runner entry point"""
@@ -160,7 +156,6 @@ def main():
     
     success = run_tests(test_categories, verbosity)
     sys.exit(0 if success else 1)
-
 
 if __name__ == '__main__':
     main()

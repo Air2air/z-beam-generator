@@ -10,88 +10,56 @@ materialTables:
       value: SS
       unit: '-'
       category: Chemical
-    - property: Material Type
-      value: Metal
-      unit: '-'
-      category: Classification
-    - property: Composition
-      value: 'Iron (Fe): 66.5-74%, Chromium (Cr): 16-26%, Nickel (Ni): 6-12%, Molybdenum (Mo): 2-3% (316 series), Manganese (Mn): 2% max, Silicon (Si): 0.75% max, Carbon (C): 0.08% max'
-      unit: '-'
-      category: Composition
   - header: '## Physical & Mechanical Properties'
     rows:
     - property: Density
-      value: 7.5-8.0 g/cm³
+      value: '7.5'
       unit: g/cm³
-      min: '1.8'
-      max: '6.0'
-      percentile: 100.0
-      numeric: 7.75
     - property: Melting Point
-      value: 1530°C
+      value: '1325'
       unit: °C
-      percentile: 14.2
-      numeric: 1530.0
     - property: Thermal Conductivity
-      value: 16.2 W/(m·K)
-      unit: W/
-      percentile: 7.9
-      numeric: 16.2
+      value: '16.2'
+      unit: W/m·K
     - property: Tensile Strength
-      value: 515-827 MPa
+      value: '515'
       unit: MPa
-      percentile: 65.4
-      numeric: 671.0
-    - property: Hardness
-      value: 150-200 HV (304 annealed), 300-400 HV (316 cold worked)
-      unit: HV
-      min: '1.0'
-      max: '10.0'
-      percentile: 100.0
-      numeric: 175.0
     - property: Young's Modulus
-      value: 193-200 GPa (austenitic stainless steels)
+      value: '200'
       unit: GPa
-      percentile: 100.0
-      numeric: 196.5
   - header: '## Laser Processing Parameters'
     rows:
     - property: Power Range
-      value: 50-200W
+      value: '120.0'
       unit: W
-      min: '20.0'
-      max: '500.0'
-      numeric: 125.0
     - property: Pulse Duration
-      value: 10-200ns
+      value: '10.0'
       unit: ns
-      min: '1.0'
-      max: '1000.0'
-      numeric: 105.0
+      category: Standard
     - property: Wavelength
-      value: 1064nm (primary), 532nm (optional)
+      value: '1064.0'
       unit: nm
-      min: '355.0'
-      max: '2940.0'
-      numeric: 1064.0
+      category: Optimal
     - property: Spot Size
-      value: 0.05-1.0mm
+      value: '1.5'
       unit: mm
-      min: '0.01'
-      max: '10.0'
-      numeric: 0.525
+      category: Configurable
     - property: Repetition Rate
-      value: 20-100kHz
+      value: '30.0'
       unit: kHz
-      min: '1.0'
-      max: '1000.0'
-      numeric: 60.0
+      category: Variable
     - property: Fluence Range
-      value: 1.0–10 J/cm²
+      value: '1.4'
       unit: J/cm²
-      min: '0.1'
-      max: '50.0'
-      numeric: 1.0
+      category: Range
+    - property: Beam Profile
+      value: Gaussian TEM00
+      unit: '-'
+      category: System
+    - property: Safety Class
+      value: Class 4 (requires full enclosure)
+      unit: '-'
+      category: Safety
   - header: '## Applications & Industries'
     rows:
     - property: Automotive
@@ -114,34 +82,10 @@ materialTables:
       value: Heat exchanger and vessel maintenance
       unit: '-'
       category: Application
-  - header: '## Performance Metrics'
-    rows:
-    - property: Surface roughness maintained at Ra 0.8-1.6 μm
-      value: Preserves original surface finish while removing 99.9% of contaminants
-      unit: '-'
-      category: Performance
-    - property: Processing rates of 2-10 m²/hour
-      value: Achievable with 500W fiber laser systems on industrial-scale components
-      unit: '-'
-      category: Performance
-  - header: '## Environmental Impact'
-    rows:
-    - property: Zero chemical waste generation
-      value: Eliminates 100% of chemical solvents traditionally used for stainless steel degreasing and passivation
-      unit: '-'
-      category: Environmental
-    - property: 97% reduction in water consumption
-      value: Compared to high-pressure water jet cleaning methods for large stainless steel structures
-      unit: '-'
-      category: Environmental
   - header: '## Compatibility & Standards'
     rows:
     - property: Material Compatibility
-      value: Aluminum alloys (for multi-material component cleaning), Titanium alloys (similar laser processing parameters), Carbon steel (with parameter adjustment for different absorption)
+      value: laser_types, surface_treatments, incompatible_conditions
       unit: '-'
       category: Compatibility
-    - property: Regulatory Standards
-      value: ISO 9013:2017 (Thermal cutting classification), ISO 11145:2018 (Laser equipment vocabulary), ANSI Z136.1 (Safe Use of Lasers), ASME BPE (Bioprocessing Equipment standards)
-      unit: '-'
-      category: Compliance
 renderInstructions: 'In Next.js, loop over tables[].rows and render as <table> with <tr><td>{property}</td><td>{value} ({unit})</td><td>{min}-{max}</td><td>{percentile ? percentile + ''%'' : ''N/A''}</td><td>{category}</td></tr>. Use MDX for headers. Pure data structure optimized for performance.'
