@@ -583,11 +583,17 @@ class PropertyValueResearcher:
                 material_category=material_category or 'unknown'
             )
             
+            # Get research configuration from run.py - FAIL FAST if unavailable
+            from run import get_research_config
+            research_config = get_research_config("property_value_researcher")
+            comprehensive_max_tokens = research_config["comprehensive_max_tokens"]
+            comprehensive_temperature = research_config["comprehensive_temperature"]
+            
             # Execute AI research
             response = self.api_client.generate_simple(
                 prompt=prompt,
-                max_tokens=1500,
-                temperature=0.3  # Lower temperature for consistent research
+                max_tokens=comprehensive_max_tokens,
+                temperature=comprehensive_temperature  # Lower temperature for consistent research
             )
             
             # Parse AI response for discovered properties
@@ -657,11 +663,17 @@ class PropertyValueResearcher:
                 material_category=material_category or 'unknown'
             )
             
+            # Get research configuration from run.py - FAIL FAST if unavailable
+            from run import get_research_config
+            research_config = get_research_config("property_value_researcher")
+            validation_max_tokens = research_config["validation_max_tokens"]
+            validation_temperature = research_config["validation_temperature"]
+            
             # Execute AI research
             response = self.api_client.generate_simple(
                 prompt=prompt,
-                max_tokens=1200,
-                temperature=0.3
+                max_tokens=validation_max_tokens,
+                temperature=validation_temperature
             )
             
             # Parse AI response for discovered settings

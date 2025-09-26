@@ -171,7 +171,12 @@ class APIClient:
         logger.info("Testing API connection...")
 
         try:
-            test_request = GenerationRequest(prompt="Test connection - respond with 'OK'", max_tokens=10)
+            # Get test configuration from run.py - FAIL FAST if unavailable
+            from run import get_component_generation_config
+            test_config = get_component_generation_config("test_connection")
+            test_max_tokens = test_config["max_tokens"]
+            
+            test_request = GenerationRequest(prompt="Test connection - respond with 'OK'", max_tokens=test_max_tokens)
             start_time = time.time()
             response = self.generate(test_request)
             test_time = time.time() - start_time

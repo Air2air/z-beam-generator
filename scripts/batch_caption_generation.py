@@ -39,11 +39,9 @@ def run_caption_generation(material):
         ]
         
         # Get timeout from centralized configuration
-        try:
-            from run import get_batch_timeout
-            timeout = get_batch_timeout("caption_generation")
-        except ImportError:
-            timeout = 60  # Fallback if run.py not available
+        # Get timeout from centralized configuration - FAIL FAST
+        from run import get_batch_timeout
+        timeout = get_batch_timeout("caption_generation")
         
         result = subprocess.run(
             cmd, 

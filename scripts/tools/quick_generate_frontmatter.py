@@ -28,11 +28,9 @@ def run_frontmatter_generation(material_name: str) -> bool:
         ]
         
         # Get timeout from centralized configuration
-        try:
-            from run import get_batch_timeout
-            timeout = get_batch_timeout("frontmatter_generation")
-        except ImportError:
-            timeout = 60  # Fallback if run.py not available
+        # Get timeout from centralized configuration - FAIL FAST
+        from run import get_batch_timeout
+        timeout = get_batch_timeout("frontmatter_generation")
         
         result = subprocess.run(
             cmd, 

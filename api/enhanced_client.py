@@ -25,26 +25,16 @@ class TimeoutConfig:
     """Advanced timeout configuration with intelligent defaults from run.py"""
 
     def __init__(self):
-        # Get defaults from centralized configuration
-        try:
-            from run import get_enhanced_client_config
-            config = get_enhanced_client_config()
-            self.connect_timeout = config["connect_timeout"]
-            self.read_timeout = config["read_timeout"]
-            self.total_timeout = config["total_timeout"]
-            self.max_retries = config["max_retries"]
-            self.base_retry_delay = config["base_retry_delay"]
-            self.max_retry_delay = config["max_retry_delay"]
-            self.jitter_factor = config["jitter_factor"]
-        except ImportError:
-            # Fallback values if run.py not available (should not happen in production)
-            self.connect_timeout = 15.0
-            self.read_timeout = 90.0
-            self.total_timeout = 120.0
-            self.max_retries = 5
-            self.base_retry_delay = 2.0
-            self.max_retry_delay = 30.0
-            self.jitter_factor = 0.1
+        # Import configuration from run.py - FAIL FAST if unavailable
+        from run import get_enhanced_client_config
+        config = get_enhanced_client_config()
+        self.connect_timeout = config["connect_timeout"]
+        self.read_timeout = config["read_timeout"]
+        self.total_timeout = config["total_timeout"]
+        self.max_retries = config["max_retries"]
+        self.base_retry_delay = config["base_retry_delay"]
+        self.max_retry_delay = config["max_retry_delay"]
+        self.jitter_factor = config["jitter_factor"]
 
 
 class EnhancedAPIClient:
@@ -452,16 +442,5 @@ def create_enhanced_client(provider: str = "deepseek") -> EnhancedAPIClient:
     )
 
 
-# Import API_PROVIDERS from centralized location
-try:
-    from run import get_api_providers
-except ImportError:
-    # Fallback for when run module is not available
-    def get_api_providers():
-        return {
-            "deepseek": {
-                "model": "deepseek-chat",
-                "base_url": "https://api.deepseek.com",
-                "timeout": 30
-            }
-        }
+# Import API_PROVIDERS from centralized location - FAIL FAST
+from run import get_api_providers

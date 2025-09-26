@@ -9,7 +9,16 @@ Follows GROK fail-fast principles:
 - No mocks or fallbacks in production
 - Explicit error handling with proper exceptions  
 - Validates all configurations immediately
-- Single consolidated service instead of wrapper services
+            if 'machineSettings' in parsed_content:
+                range_machine_settings = self._generate_machine_settings_with_ranges(material_data, material_name)
+                parsed_content['machineSettings'] = self._merge_with_ranges(parsed_content['machineSettings'], range_machine_settings)
+            
+            # Ensure images section is included if not provided by AI
+            if 'images' not in parsed_content:
+                parsed_content['images'] = self._generate_images_section(material_name)
+                
+            self.logger.info(f"Successfully generated frontmatter for {material_name} with Min/Max ranges")
+            return parsed_contentle consolidated service instead of wrapper services
 - Comprehensive exception handling ensures normalized fields always
 """
 
@@ -200,17 +209,18 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
                 'subcategory': material_data.get('subcategory', material_name.lower()),
                 'author_id': material_data.get('author_id', 3),  # Required by schema (not authorId)
                 'applications': material_data.get('applications', ['laser cleaning', 'surface preparation']),  # Required by schema
-                'properties': {},  # Required by schema - will be populated below
             }
             
             # Generate properties with Min/Max ranges
             if 'materialProperties' in material_data or any(key in material_data for key in ['density', 'thermalConductivity', 'tensileStrength', 'youngsModulus']):
                 generated_properties = self._generate_properties_with_ranges(material_data, material_name)
-                frontmatter['materialProperties'] = generated_properties  # Our enhanced structure  
-                frontmatter['properties'] = generated_properties  # Required by schema
+                frontmatter['materialProperties'] = generated_properties  # Our enhanced structure
             
             # Generate machine settings with Min/Max ranges (always generate for shared architecture)
             frontmatter['machineSettings'] = self._generate_machine_settings_with_ranges(material_data, material_name)
+            
+            # Generate images section
+            frontmatter['images'] = self._generate_images_section(material_name)
             
             # Generate author object (required by schema)
             frontmatter.update(self._generate_author_object(material_data))
@@ -444,10 +454,16 @@ class StreamlinedFrontmatterGenerator(APIComponentGenerator):
             # Build material-aware prompt
             prompt = self._build_material_prompt(material_name, material_data)
             
+            # Get generation configuration from run.py - FAIL FAST if unavailable
+            from run import get_component_generation_config
+            gen_config = get_component_generation_config("frontmatter")
+            max_tokens = gen_config["max_tokens"]
+            temperature = gen_config["temperature"]
+            
             response = self.api_client.generate_simple(
                 prompt=prompt,
-                max_tokens=4000,
-                temperature=0.3
+                max_tokens=max_tokens,
+                temperature=temperature
             )
             
             return response
@@ -535,3 +551,47 @@ Return YAML format with materialProperties (not properties) and machineSettings 
             self.logger.error(f"Author object generation failed: {e}")
             # FAIL-FAST per GROK_INSTRUCTIONS.md - no fallbacks allowed
             raise PropertyDiscoveryError(f"Author system required for content generation: {e}")
+
+    def _generate_images_section(self, material_name: str) -> Dict:
+        """
+        Generate images section with material-specific URLs and alt text
+        
+        Creates proper alt text and URL patterns following schema requirements.
+        Handles special characters, multi-word names, and URL normalization.
+        
+        Args:
+            material_name: Name of the material
+            
+        Returns:
+            Dict with 'hero' and 'micro' image objects containing 'alt' and 'url'
+        """
+        try:
+            import re
+            
+            # Create URL-safe material name (lowercase, hyphens, handle special chars)
+            material_slug = material_name.lower()
+            material_slug = re.sub(r'[^a-z0-9\s-]', '', material_slug)  # Remove special chars except spaces and hyphens
+            material_slug = re.sub(r'\s+', '-', material_slug)  # Replace spaces with hyphens
+            material_slug = re.sub(r'-+', '-', material_slug)  # Collapse multiple hyphens
+            material_slug = material_slug.strip('-')  # Remove leading/trailing hyphens
+            
+            # Generate descriptive alt text with proper capitalization
+            material_title = material_name.title()
+            hero_alt = f'{material_title} surface undergoing laser cleaning showing precise contamination removal'
+            micro_alt = f'Microscopic view of {material_title} surface after laser cleaning showing detailed surface structure'
+            
+            return {
+                'hero': {
+                    'alt': hero_alt,
+                    'url': f'/images/{material_slug}-laser-cleaning-hero.jpg'
+                },
+                'micro': {
+                    'alt': micro_alt,
+                    'url': f'/images/{material_slug}-laser-cleaning-micro.jpg'
+                }
+            }
+            
+        except Exception as e:
+            self.logger.error(f"Images section generation failed for {material_name}: {e}")
+            # FAIL-FAST per GROK_INSTRUCTIONS.md - no fallbacks allowed
+            raise PropertyDiscoveryError(f"Images section generation required: {e}")

@@ -151,28 +151,16 @@ class ConfigAdapter:
 
 
 def _get_fallback(key: str):
-    """Get fallback value from centralized configuration"""
-    try:
-        from run import get_api_config_fallbacks
-        return get_api_config_fallbacks().get(key, {
-            "max_tokens": 4000,
-            "temperature": 0.7, 
-            "timeout_connect": 10,
-            "timeout_read": 30,
-            "max_retries": 3,
-            "retry_delay": 1.0,
-        }.get(key))
-    except ImportError:
-        # Ultimate fallback if run.py not available
-        fallbacks = {
-            "max_tokens": 4000,
-            "temperature": 0.7,
-            "timeout_connect": 10,
-            "timeout_read": 30,
-            "max_retries": 3,
-            "retry_delay": 1.0,
-        }
-        return fallbacks.get(key)
+    """Get configuration value from centralized run.py - FAIL FAST"""
+    from run import get_api_config_fallbacks
+    return get_api_config_fallbacks().get(key, {
+        "max_tokens": 4000,
+        "temperature": 0.7, 
+        "timeout_connect": 10,
+        "timeout_read": 30,
+        "max_retries": 3,
+        "retry_delay": 1.0,
+    }.get(key))
 
 # Backward compatibility exports
 __all__ = ['APIConfig', 'get_api_providers', 'get_default_config', 'ConfigAdapter', '_get_fallback']

@@ -323,7 +323,11 @@ class LayerCircuitBreaker:
     def __init__(self):
         self.layer_failures = {"base": 0, "persona": 0, "formatting": 0}
         self.failure_threshold = 3
-        self.recovery_timeout = 300  # 5 minutes
+        
+        # Get timeout configuration from run.py - FAIL FAST if unavailable
+        from run import get_validation_config
+        validation_config = get_validation_config()
+        self.recovery_timeout = validation_config["layer_validator_recovery_timeout"]
 
     def can_proceed_with_layer(self, layer_name: str) -> bool:
         """Check if layer can be used"""

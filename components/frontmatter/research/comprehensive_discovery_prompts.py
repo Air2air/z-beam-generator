@@ -25,7 +25,7 @@ ANALYSIS REQUIREMENTS:
 6. **Chemical Properties**: oxidationResistance, chemicalStability, corrosionResistance
 7. **Structural Properties**: crystallineStructure, grainSize, porosity, surfaceRoughness
 
-RESPONSE FORMAT (JSON - provide COMPLETE property data):
+RESPONSE FORMAT (JSON - provide COMPLETE property data without YAML anchors):
 {{
     "material_name": "{material_name}",
     "category": "{material_category}",

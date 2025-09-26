@@ -36,7 +36,11 @@ class AIDetectionCircuitBreaker:
     def __init__(self):
         self.service_failures = {"winston": 0, "gptzero": 0}
         self.failure_threshold = 5
-        self.recovery_timeout = 600  # 10 minutes
+        
+        # Get timeout configuration from run.py - FAIL FAST if unavailable
+        from run import get_validation_config
+        validation_config = get_validation_config()
+        self.recovery_timeout = validation_config["quality_validator_recovery_timeout"]
         self.fallback_chain = ["winston", "gptzero"]
 
     def get_available_service(self) -> Optional[str]:
@@ -151,7 +155,11 @@ class ComponentFactoryCircuitBreaker:
     def __init__(self):
         self.component_failures = {}
         self.failure_threshold = 3
-        self.recovery_timeout = 300
+        
+        # Get timeout configuration from run.py - FAIL FAST if unavailable
+        from run import get_validation_config
+        validation_config = get_validation_config()
+        self.recovery_timeout = validation_config["quality_validator_short_timeout"]
 
     def can_create_component(self, component_type: str) -> bool:
         """Check if component can be created"""

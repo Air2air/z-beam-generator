@@ -91,9 +91,40 @@ GLOBAL_OPERATIONAL_CONFIG = {
         "jitter_factor": 0.1,         # Add randomness to prevent thundering herd
     },
     
-    # No circuit breaker fallbacks allowed in fail-fast architecture
+    # Research component API settings
+    "research_defaults": {
+        "property_researcher": {
+            "api_timeout": 30,
+            "max_tokens": 500,
+            "temperature": 0.1,       # Low temperature for factual accuracy
+        },
+        "property_value_researcher": {
+            "comprehensive_max_tokens": 1500,
+            "comprehensive_temperature": 0.3,  # Lower temperature for consistent research
+            "validation_max_tokens": 1200,
+            "validation_temperature": 0.3,
+        }
+    },
     
-    # No API config fallbacks allowed in fail-fast architecture
+    # Component-specific generation settings
+    "component_generation": {
+        "frontmatter": {
+            "max_tokens": 4000,
+            "temperature": 0.3,
+        },
+        "test_connection": {
+            "max_tokens": 10,           # Test requests
+        }
+    },
+    
+    # Validation and utility settings
+    "validation": {
+        "layer_validator_recovery_timeout": 300,   # 5 minutes
+        "quality_validator_recovery_timeout": 600, # 10 minutes
+        "quality_validator_short_timeout": 300,    # 5 minutes
+    },
+    
+    # No circuit breaker fallbacks allowed in fail-fast architecture
 }
 
 # API Provider Configuration - USER SETTABLE
@@ -371,10 +402,49 @@ def get_enhanced_client_config():
     return GLOBAL_OPERATIONAL_CONFIG["enhanced_client_defaults"]
 
 
-# Circuit breaker configuration removed - fail-fast architecture
+def get_research_config(component_name: str = None):
+    """Get research component configuration."""
+    if component_name:
+        if component_name not in GLOBAL_OPERATIONAL_CONFIG["research_defaults"]:
+            raise KeyError(f"Research component '{component_name}' not found in configuration - no fallback allowed")
+        return GLOBAL_OPERATIONAL_CONFIG["research_defaults"][component_name]
+    return GLOBAL_OPERATIONAL_CONFIG["research_defaults"]
+
+
+def get_component_generation_config(component_name: str = None):
+    """Get component generation configuration."""
+    if component_name:
+        if component_name not in GLOBAL_OPERATIONAL_CONFIG["component_generation"]:
+            raise KeyError(f"Component '{component_name}' not found in generation configuration - no fallback allowed")
+        return GLOBAL_OPERATIONAL_CONFIG["component_generation"][component_name]
+    return GLOBAL_OPERATIONAL_CONFIG["component_generation"]
+
+
+def get_validation_config():
+    """Get validation configuration."""
+    return GLOBAL_OPERATIONAL_CONFIG["validation"]
+
+
+def get_api_providers():
+    """Get API providers configuration."""
+    return API_PROVIDERS
 
 
 def get_api_config_fallbacks():
+    """Get API configuration fallback values (deprecated - will be removed)."""
+    # This function exists for backward compatibility only
+    # All configurations should now use the centralized approach
+    return {
+        "max_tokens": 4000,
+        "temperature": 0.7, 
+        "timeout_connect": 10,
+        "timeout_read": 30,
+        "max_retries": 3,
+        "retry_delay": 1.0,
+    }
+
+
+# Circuit breaker configuration removed - fail-fast architecture
     """Get API configuration fallback values."""
     return GLOBAL_OPERATIONAL_CONFIG["api_config_fallbacks"]
 
