@@ -151,7 +151,7 @@ Files >1000 lines (modularization candidates):
 ├── components/jsonld/generator.py: 1,360 lines (JSON-LD schema generation)
 ├── components/frontmatter/generator.py: 1,076 lines (frontmatter orchestration) 
 ├── tests/fixtures/mocks/mock_api_client.py: 1,034 lines (test infrastructure)
-└── versioning/generator.py: 801 lines (version management)
+└── [removed] versioning/generator.py: 801 lines (version management - eliminated for simplicity)
 ```
 
 **GROK Assessment**: 

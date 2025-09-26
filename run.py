@@ -797,25 +797,47 @@ def main():
                 # Load frontmatter data for components that need it
                 frontmatter_data = None
                 if component_type in ['table', 'author', 'metatags', 'jsonld', 'caption', 'tags', 'settings', 'propertiestable']:
-                    # Try to load existing frontmatter
-                    frontmatter_path = f"content/components/frontmatter/{args.material.lower().replace(' ', '-').replace('_', '-')}-laser-cleaning.md"
-                    if os.path.exists(frontmatter_path):
-                        import yaml
-                        with open(frontmatter_path, 'r') as f:
-                            content = f.read()
-                        yaml_start = content.find('---') + 3
-                        yaml_end = content.find('---', yaml_start)
-                        if yaml_start > 2 and yaml_end > yaml_start:
-                            # Traditional frontmatter with closing ---
-                            yaml_content = content[yaml_start:yaml_end].strip()
-                        elif yaml_start > 2:
-                            # Pure YAML file without closing --- (our current format)
-                            yaml_content = content[yaml_start:].strip()
-                        else:
-                            yaml_content = None
-                        
-                        if yaml_content:
-                            frontmatter_data = yaml.safe_load(yaml_content)
+                    # Try to load existing frontmatter - check both .md and .yaml formats
+                    base_name = args.material.lower().replace(' ', '-').replace('_', '-')
+                    frontmatter_paths = [
+                        f"content/components/frontmatter/{base_name}-laser-cleaning.md",
+                        f"content/components/frontmatter/{base_name}-laser-cleaning.yaml",
+                        f"content/components/frontmatter/{base_name}.yaml"
+                    ]
+                    
+                    for frontmatter_path in frontmatter_paths:
+                        if os.path.exists(frontmatter_path):
+                            import yaml
+                            try:
+                                if frontmatter_path.endswith('.yaml'):
+                                    # Direct YAML file
+                                    with open(frontmatter_path, 'r') as f:
+                                        frontmatter_data = yaml.safe_load(f)
+                                else:
+                                    # Markdown file with frontmatter
+                                    with open(frontmatter_path, 'r') as f:
+                                        content = f.read()
+                                    yaml_start = content.find('---') + 3
+                                    yaml_end = content.find('---', yaml_start)
+                                    if yaml_start > 2 and yaml_end > yaml_start:
+                                        # Traditional frontmatter with closing ---
+                                        yaml_content = content[yaml_start:yaml_end].strip()
+                                    elif yaml_start > 2:
+                                        # Pure YAML file without closing --- (our current format)
+                                        yaml_content = content[yaml_start:].strip()
+                                    else:
+                                        yaml_content = None
+                                        
+                                    if yaml_content:
+                                        frontmatter_data = yaml.safe_load(yaml_content)
+                                
+                                if frontmatter_data:
+                                    print(f"✅ Loaded frontmatter data from {frontmatter_path}")
+                                    break
+                                    
+                            except Exception as e:
+                                print(f"Warning: Could not load frontmatter from {frontmatter_path}: {e}")
+                                continue
                     
                     if not frontmatter_data and component_type != 'frontmatter':
                         print(f"❌ No frontmatter data found for {args.material} - {component_type} component requires frontmatter")

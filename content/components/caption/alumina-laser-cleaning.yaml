@@ -1,114 +1,28 @@
-# Basic Content Structure
+---
 before_text: |
-  Initial surface examination reveals significant contamination deposits across the alumina Laser cleaning of alumina (Al₂O₃) utilizes precise pulsed fiber lasers to selectively remove surface contaminants through ablation while preserving the ceramic substrate's structural integrity. The process exploits alumina's high thermal stability and absorption characteristics at specific wavelengths for non-contact, chemical-free cleaning.. 
-  Microscopic analysis shows paint and protective coating deposits adhering to the surface. The alumina exhibits the characteristic density profile typical of ceramic materials.
-  The contamination appears to be from manufacturing processes and environmental exposure.
+  Initial surface examination reveals significant contamination deposits across the alumina substrate. Microscopic analysis shows surface oxidation and environmental deposits requiring precision laser treatment.
 
 after_text: |
-  Post-laser cleaning analysis demonstrates remarkable surface restoration through comprehensive laser processing.
-  The alumina substrate now exhibits pristine surface characteristics with controlled thermal processing.
-  Microscopic examination confirms complete organic residue elimination while preserving substrate integrity.
+  Post-laser cleaning analysis demonstrates remarkable surface restoration through comprehensive laser processing. The alumina substrate now exhibits pristine surface characteristics with minimal thermal effects.
 
-# Material Information
-material: "Alumina"
+processing:
+  frontmatter_available: True
 
-# Data Source and Quality Information
-data_completeness:
-  frontmatter_available: true
-  note: "Fail-fast component - requires complete frontmatter data"
+generation:
+  generated: "2025-09-26T11:30:21.094872Z"
 
-# Technical Metadata
-metadata:
-  generated: "2025-09-22T14:58:24.826033Z"
-  format: "yaml"
-  version: "2.0"
-  analysis_method: "scanning_electron_microscopy"
-  magnification: "1000x"
-  field_of_view: "200 μm"
-  image_resolution: "3840x2160"
-
-# Enhanced SEO Frontmatter
-title: "Alumina Surface Laser Cleaning Analysis - Ceramic Surface Restoration"
-description: "Comprehensive microscopic analysis of alumina surface before and after precision laser cleaning, achieving optimal surface restoration using 1064 nm (primary), 532 nm (for higher absorption) wavelength laser processing with advanced laser processing techniques."
-
-# SEO Keywords
-keywords:
-  - "laser cleaning"
-  - "alumina surface treatment"
-  - "microscopic surface analysis"
-  - "materials processing"
-  - "precision cleaning"
-  - "surface topography"
-  - "laser ablation"
-  - "alumina"
-  - "contamination analysis"
-  - "alumina ceramic"
-  - "non-contact cleaning"
-  - "aerospace applications"
-  - "ceramic cleaning"
-  - "ceramic surface modification"
-  - "thermal processing"
-
-# Author Information with SEO Enhancement
 author: "Alessandro Moretti"
-author_object:
-  name: "Alessandro Moretti"
-  email: "alessandro.moretti@materials-lab.com"
-  affiliation: "Advanced Materials Processing Laboratory"
-  title: "Ph.D. Laser-Based Additive Manufacturing"
-  expertise:
-    - "Laser Materials Processing"
-    - "Surface Analysis"
-    - "Materials Science"
-    - "Laser-Based Additive Manufacturing"
 
-# Chemical Properties for Enhanced SEO
-chemicalProperties:
-  composition: "Aluminum Oxide (Al₂O₃): 99.5-99.9%, Silicon Dioxide (SiO₂): 0.05-0.3%, Iron Oxide (Fe₂O₃): 0.02-0.1%"
-  surface_treatment: "laser cleaning"
-  contamination_type: "ceramic dust and firing residues"
+seo:
+  title: "Alumina Surface Laser Cleaning Analysis"
+  description: "Microscopic analysis of alumina surface before and after precision laser cleaning"
+
+chemical_properties:
   materialType: "ceramic"
-  formula: "Al₂O₃"
-  surface_finish: "Ra < 0.6 μm (post-cleaning)"
-  corrosion_resistance: "excellent"
-
-# Image Metadata for SEO
-images:
-  micro:
-    url: "/images/alumina-laser-cleaning-micro.jpg"
-    alt: "Microscopic comparison of alumina surface before and after laser cleaning showing complete contamination removal"
-    width: 800
-    height: 450
-    format: "JPEG"
-    caption: "High-resolution microscopic analysis demonstrating precision laser cleaning effectiveness on alumina"
-
-# Additional SEO Metadata
-seo_data:
-  canonical_url: "/alumina-laser-cleaning"
-  og_title: "Alumina Laser Cleaning Analysis - Surface Restoration"
-  og_description: "Professional microscopic analysis of precision laser cleaning on alumina, achieving complete contamination removal with preserved substrate integrity."
-  og_image: "/images/alumina-laser-cleaning-micro.jpg"
-  twitter_card: "summary_large_image"
-  schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-22T14:58:24.826033Z"
-
-# Quality Metrics
-quality_metrics:
-  surface_before: "Ra 3.2 μm"
-  surface_after: "Ra 0.6 μm"
-  substrate_integrity: "100% preserved"
-
-# Accessibility Information
-accessibility:
-  alt_text_detailed: "Split-screen microscopic image showing alumina surface before laser cleaning (left) with visible contamination deposits and after cleaning (right) with pristine surface finish"
-  caption_language: "en"
-  technical_level: "professional"
-  visual_description: "High-contrast microscopic imagery clearly showing alumina surface transformation through laser cleaning"
 
 ---
 Material: "alumina"
 Component: caption
-Generated: 2025-09-22T14:58:24.826033Z
+Generated: 2025-09-26T11:30:21.094872Z
 Generator: Z-Beam v1.0.0
-Format: YAML v2.0
 ---

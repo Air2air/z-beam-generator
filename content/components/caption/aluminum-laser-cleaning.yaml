@@ -1,114 +1,28 @@
-# Basic Content Structure
+---
 before_text: |
-  Initial surface examination reveals significant contamination deposits across the aluminum Technical overview of Aluminum, Al, for laser cleaning applications, including optimal 1064nm wavelength interaction, and industrial applications in surface preparation.. 
-  Microscopic analysis shows paint and protective coating deposits adhering to the surface. The aluminum exhibits the characteristic density profile typical of metal materials.
-  The contamination appears to be from manufacturing processes and environmental exposure.
+  Initial surface examination reveals significant contamination deposits across the aluminum substrate. Microscopic analysis shows surface oxidation and environmental deposits requiring precision laser treatment.
 
 after_text: |
-  Post-laser cleaning analysis demonstrates remarkable surface restoration through comprehensive laser processing.
-  The aluminum substrate now exhibits pristine surface characteristics with minimal thermal effects.
-  Microscopic examination confirms complete organic residue elimination while preserving substrate integrity.
+  Post-laser cleaning analysis demonstrates remarkable surface restoration through comprehensive laser processing. The aluminum substrate now exhibits pristine surface characteristics with minimal thermal effects.
 
-# Material Information
-material: "Aluminum"
+processing:
+  frontmatter_available: True
 
-# Data Source and Quality Information
-data_completeness:
-  frontmatter_available: true
-  note: "Fail-fast component - requires complete frontmatter data"
+generation:
+  generated: "2025-09-26T11:29:50.533294Z"
 
-# Technical Metadata
-metadata:
-  generated: "2025-09-22T14:58:29.132884Z"
-  format: "yaml"
-  version: "2.0"
-  analysis_method: "scanning_electron_microscopy"
-  magnification: "1000x"
-  field_of_view: "200 μm"
-  image_resolution: "3840x2160"
+author: "Ikmanda Roswati"
 
-# Enhanced SEO Frontmatter
-title: "Aluminum Surface Laser Cleaning Analysis - Industrial Contamination Removal"
-description: "Comprehensive microscopic analysis of aluminum surface before and after precision laser cleaning, achieving optimal surface restoration using 1064nm (primary), 532nm (optional) wavelength laser processing with advanced laser processing techniques."
+seo:
+  title: "Aluminum Surface Laser Cleaning Analysis"
+  description: "Microscopic analysis of aluminum surface before and after precision laser cleaning"
 
-# SEO Keywords
-keywords:
-  - "laser cleaning"
-  - "aluminum surface treatment"
-  - "microscopic surface analysis"
-  - "materials processing"
-  - "precision cleaning"
-  - "surface topography"
-  - "laser ablation"
-  - "aluminum"
-  - "contamination analysis"
-  - "aluminum metal"
-  - "non-contact cleaning"
-  - "automotive applications"
-  - "metal surface treatment"
-  - "corrosion removal"
-  - "oxide layer removal"
-
-# Author Information with SEO Enhancement
-author: "Yi-Chun Lin"
-author_object:
-  name: "Yi-Chun Lin"
-  email: "yi-chun.lin@materials-lab.com"
-  affiliation: "Advanced Materials Processing Laboratory"
-  title: "Ph.D. Laser Materials Processing"
-  expertise:
-    - "Laser Materials Processing"
-    - "Surface Analysis"
-    - "Materials Science"
-    - "Laser Materials Processing"
-
-# Chemical Properties for Enhanced SEO
-chemicalProperties:
-  composition: "Aluminum (Al) 99.6%, Trace elements (Si, Fe, Na, Mg)"
-  surface_treatment: "laser cleaning"
-  contamination_type: "oxidation and metallic deposits"
+chemical_properties:
   materialType: "metal"
-  formula: "Al"
-  surface_finish: "Ra < 0.6 μm (post-cleaning)"
-  corrosion_resistance: "excellent"
-
-# Image Metadata for SEO
-images:
-  micro:
-    url: "/images/aluminum-laser-cleaning-micro.jpg"
-    alt: "Microscopic comparison of aluminum surface before and after laser cleaning showing complete contamination removal"
-    width: 800
-    height: 450
-    format: "JPEG"
-    caption: "High-resolution microscopic analysis demonstrating precision laser cleaning effectiveness on aluminum"
-
-# Additional SEO Metadata
-seo_data:
-  canonical_url: "/aluminum-laser-cleaning"
-  og_title: "Aluminum Laser Cleaning Analysis - Surface Restoration"
-  og_description: "Professional microscopic analysis of precision laser cleaning on aluminum, achieving complete contamination removal with preserved substrate integrity."
-  og_image: "/images/aluminum-laser-cleaning-micro.jpg"
-  twitter_card: "summary_large_image"
-  schema_type: "AnalysisNewsArticle"
-  last_modified: "2025-09-22T14:58:29.132884Z"
-
-# Quality Metrics
-quality_metrics:
-  surface_before: "Ra 3.2 μm"
-  surface_after: "Ra 0.6 μm"
-  substrate_integrity: "100% preserved"
-
-# Accessibility Information
-accessibility:
-  alt_text_detailed: "Split-screen microscopic image showing aluminum surface before laser cleaning (left) with visible contamination deposits and after cleaning (right) with pristine surface finish"
-  caption_language: "en"
-  technical_level: "professional"
-  visual_description: "High-contrast microscopic imagery clearly showing aluminum surface transformation through laser cleaning"
 
 ---
 Material: "aluminum"
 Component: caption
-Generated: 2025-09-22T14:58:29.132884Z
+Generated: 2025-09-26T11:29:50.533294Z
 Generator: Z-Beam v1.0.0
-Format: YAML v2.0
 ---
