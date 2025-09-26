@@ -1,0 +1,59 @@
+name: aluminum
+category: metal
+subcategory: aluminum
+title: Aluminum Laser Cleaning
+description: Laser cleaning parameters for aluminum
+materialProperties:
+  density: &id001
+    value: 2.7
+    unit: g/cm³
+    confidence: 98
+    description: Pure aluminum density at room temperature
+    min: 2.65
+    max: 2.75
+  meltingPoint: &id003
+    value: 660
+    unit: °C
+    confidence: 95
+    description: Melting point of pure aluminum
+    min: null
+    max: null
+  thermalConductivity: &id002
+    value: 237
+    unit: W/m·K
+    confidence: 92
+    description: Thermal conductivity of pure aluminum
+    min: 230
+    max: 240
+applications:
+- laser cleaning
+- surface preparation
+machineSettings:
+  powerRange:
+    value: 110
+    unit: W
+    confidence: 95
+    description: Calculated for metal material using density, melting point, and cleaning
+      application
+    min: 66
+    max: 154
+  wavelength:
+    value: 1064
+    unit: nm
+    confidence: 85
+    description: Optimal wavelength for metal cleaning
+    min: null
+    max: null
+author_object:
+  id: 3
+  name: Ikmanda Roswati
+  sex: m
+  title: Ph.D.
+  country: Indonesia
+  expertise: Ultrafast Laser Physics and Material Interactions
+  image: /images/author/ikmanda-roswati.jpg
+author_id: 3
+properties:
+  density: *id001
+  thermalConductivity: *id002
+  meltingPoint: *id003

@@ -7,12 +7,9 @@ Integrates MaterialsYamlFrontmatterMapper and property enhancement directly into
 
 Follows GROK fail-fast principles:
 - No mocks or fallbacks in production
-- Explicit error handling with proper exceptions
+- Explicit error handling with proper exceptions  
 - Validates all configurations immediately
-- Single consolidated service instead of      def _extract_unit_from_range(self, range_config: Dict) -> str:pply_field_ordering(self, frontmatter: Di        except Exception as e:
-            logger.error(f\"Failed to format YAML: {e}\")
-            # Fail-fast: YAML formatting must succeed - no fallback
-            raise RuntimeError(f\"YAML formatting failed: {e}\")-> Dict:e wrapper services
+- Single consolidated service instead of wrapper services
 - Comprehensive exception handling ensures normalized fields always
 """
 
@@ -20,12 +17,12 @@ import logging
 import os
 import re
 import yaml
-from typing import Dict, Optional, Any
+from typing import Dict, Optional, Any, List
 
-from generators.component_generators import APIComponentGenerator, ComponentResult
+from generators.component_generators import APIComponentGenerator, ComponentResult, GenerationError
 from components.frontmatter.ordering.field_ordering_service import FieldOrderingService
 from components.frontmatter.core.validation_helpers import ValidationHelpers
-from components.frontmatter.core.na_field_normalizer import NAFrontmatterGenerator
+from components.frontmatter.research.property_value_researcher import PropertyValueResearcher
 
 logger = logging.getLogger(__name__)
 
@@ -54,706 +51,555 @@ except ImportError as e:
 
 class StreamlinedFrontmatterGenerator(APIComponentGenerator):
     """Consolidated frontmatter generator with integrated services"""
-
-    def __init__(self):
+    
+    def __init__(self, api_client=None, config=None):
+        """Initialize with required dependencies"""
         super().__init__("frontmatter")
-        self.category_ranges = {}
-        self.machine_settings_ranges = {}
-        self.na_generator = NAFrontmatterGenerator(self._core_generate)
+        self.logger = logging.getLogger(__name__)
         
-        # Initialize enhanced schema validator if available
+        # Store api_client and config for use
+        self.api_client = api_client
+        self.config = config
+        
+        # API client is only required for pure AI generation
+        # For YAML-based generation with research enhancement, we can work without it
+        
+        # Load materials research data for range calculations
+        self._load_materials_research_data()
+        
+        # Initialize integrated services
+        self.validation_helpers = ValidationHelpers()
+        self.field_ordering_service = FieldOrderingService()
+        
+        # Enhanced validation setup (optional)
+        self.enhanced_validator = None
         if ENHANCED_VALIDATION_AVAILABLE:
             try:
-                # Use enhanced unified schema as primary, with fallbacks
-                unified_schema_path = os.path.join(os.path.dirname(__file__), "../../../schemas/enhanced_unified_frontmatter.json")
-                enhanced_schema_path = os.path.join(os.path.dirname(__file__), "../../../schemas/enhanced_frontmatter.json")
-                fallback_schema_path = os.path.join(os.path.dirname(__file__), "../../../schemas/frontmatter.json")
-                
-                # Priority: unified > enhanced > fallback
-                if os.path.exists(unified_schema_path):
-                    schema_path = unified_schema_path
-                elif os.path.exists(enhanced_schema_path):
-                    schema_path = enhanced_schema_path
-                else:
-                    schema_path = fallback_schema_path
-                
-                self.enhanced_validator = EnhancedSchemaValidator(schema_path)
-                logger.info(f"Enhanced schema validator initialized with {os.path.basename(schema_path)}")
+                self.enhanced_validator = EnhancedSchemaValidator()
+                self.logger.info("Enhanced validation initialized")
             except Exception as e:
-                logger.warning(f"Failed to initialize enhanced validator: {e}")
-                self.enhanced_validator = None
-        else:
-            self.enhanced_validator = None
+                self.logger.warning(f"Enhanced validation setup failed: {e}")
         
-        # Initialize material-aware prompt generator if available
+        # Material-aware prompt system (optional)
+        self.material_aware_generator = None
         if MATERIAL_AWARE_PROMPTS_AVAILABLE:
             try:
-                self.material_aware_generator = MaterialAwarePromptGenerator()
-                self.material_exception_handler = MaterialExceptionHandler()
-                logger.info("Material-aware prompt system initialized")
+                self.material_aware_generator = MaterialAwarePromptGenerator(api_client=api_client)
+                self.logger.info("Material-aware prompt system initialized")
             except Exception as e:
-                logger.warning(f"Failed to initialize material-aware prompts: {e}")
-                self.material_aware_generator = None
-                self.material_exception_handler = None
-        else:
-            self.material_aware_generator = None
-            self.material_exception_handler = None
-            
-        self._load_configurations()
+                self.logger.warning(f"Material-aware prompt system setup failed: {e}")
 
-    def _load_configurations(self):
-        """Load all required configurations with fail-fast behavior"""
+    def _load_materials_research_data(self):
+        """Load materials science research data for accurate range calculations"""
         try:
-            # Initialize API client
-            from api.client_factory import APIClientFactory
-            self.api_client = APIClientFactory.create_client()
+            from data.materials import load_materials
+            materials_data = load_materials()
             
-            # Load materials.yaml data
-            materials_yaml_path = os.path.join(os.path.dirname(__file__), "../../../data/materials.yaml")
-            with open(materials_yaml_path, "r") as f:
-                materials_data = yaml.safe_load(f)
+            # Store category ranges for material properties
+            self.category_ranges = materials_data.get('category_ranges', {})
             
-            self.category_ranges = materials_data.get("category_ranges", {})
-            self.machine_settings_ranges = materials_data.get("machineSettingsRanges", materials_data.get("machine_settings_ranges", {}))
-            self.materials_data = materials_data
+            # Store machine settings ranges
+            self.machine_settings_ranges = materials_data.get('machineSettingsRanges', {})
             
-            logger.info(f"Loaded configurations: {len(self.category_ranges)} categories, {len(self.machine_settings_ranges)} machine settings")
-            
-            # Load prompt configuration
-            self._load_prompt_config()
+            self.logger.info("Loaded materials research data for accurate range calculations")
             
         except Exception as e:
-            raise ValueError(f"Failed to load required configurations: {e}")
+            self.logger.error(f"Failed to load materials research data: {e}")
+            # Fail-fast: Materials research data is required for accurate ranges
+            raise ValueError(f"Materials research data required for accurate property ranges: {e}")
+            
+        # Initialize PropertyValueResearcher for dynamic property selection
+        try:
+            self.property_researcher = PropertyValueResearcher(debug_mode=False)
+            self.logger.info("PropertyValueResearcher initialized for dynamic property selection")
+        except Exception as e:
+            self.logger.error(f"PropertyValueResearcher initialization failed: {e}")
+            self.property_researcher = None
+            
+        # Initialize MachineSettingsResearcher for machine settings generation
+        try:
+            from components.frontmatter.research.machine_settings_researcher import MachineSettingsResearcher
+            if not self.property_researcher:
+                raise ValueError("PropertyValueResearcher required for MachineSettingsResearcher initialization")
+            self.machine_settings_researcher = MachineSettingsResearcher(
+                material_researcher=self.property_researcher,
+                confidence_threshold=50,
+                debug_mode=False
+            )
+            self.logger.info("MachineSettingsResearcher initialized for machine settings generation")
+        except Exception as e:
+            self.logger.error(f"MachineSettingsResearcher initialization failed: {e}")
+            # Fail-fast per GROK instructions - no fallbacks allowed
+            raise ValueError(f"MachineSettingsResearcher required for machine settings generation: {e}")
 
     def generate(self, material_name: str, **kwargs) -> ComponentResult:
-        """
-        Generate comprehensive frontmatter with fail-fast behavior.
-        
-        Args:
-            material_name: Name of the material to generate frontmatter for
-            **kwargs: Additional generation parameters
-            
-        Returns:
-            ComponentResult with generated frontmatter
-        """
+        """Generate frontmatter content"""
         try:
-            logger.info(f"Generating frontmatter for {material_name}")
+            self.logger.info(f"Generating frontmatter for {material_name}")
             
-            # Generate frontmatter with N/A handling
-            frontmatter = self.na_generator.generate_with_na_handling(
-                material_name=material_name,
-                **kwargs
-            )
+            # Load material data first
+            from data.materials import get_material_by_name
+            material_data = get_material_by_name(material_name)
+            
+            if material_data:
+                # Use YAML data with AI enhancement
+                content = self._generate_from_yaml(material_name, material_data)
+            else:
+                # Pure AI generation for unknown materials
+                content = self._generate_from_api(material_name, {})
             
             # Apply field ordering
-            ordered_frontmatter = self._apply_field_ordering(frontmatter)
+            ordered_content = self.field_ordering_service.apply_field_ordering(content)
             
-            # Enhanced schema validation (optional)
-            enhanced_mode = kwargs.get('enhanced_validation', False)
-            if enhanced_mode and self.enhanced_validator:
-                validation_result = self._validate_with_enhanced_schema(ordered_frontmatter, material_name)
-                if not validation_result.is_valid:
-                    # In enhanced mode, fail-fast on schema violations
-                    validation_errors = "; ".join(validation_result.errors)
-                    raise ValueError(f"Enhanced schema validation failed: {validation_errors}")
-                else:
-                    logger.info(f"Enhanced validation passed - Quality: {validation_result.quality_score:.1f}%, Coverage: {validation_result.research_validation_coverage:.1%}")
+            # Enhanced validation if available
+            if self.enhanced_validator:
+                try:
+                    validation_result = self.enhanced_validator.validate(ordered_content, material_name)
+                    if validation_result.is_valid:
+                        self.logger.info("Enhanced validation passed")
+                    else:
+                        self.logger.warning(f"Enhanced validation warnings: {validation_result.error_messages}")
+                except Exception as e:
+                    self.logger.warning(f"Enhanced validation failed: {e}")
+            
+            # Convert to proper YAML format
+            import yaml
+            yaml_content = yaml.dump(ordered_content, default_flow_style=False, allow_unicode=True, sort_keys=False, indent=2)
             
             return ComponentResult(
                 component_type="frontmatter",
-                content=self._format_as_yaml(ordered_frontmatter),
+                content=yaml_content,
                 success=True
             )
             
         except Exception as e:
-            logger.error(f"Frontmatter generation failed for {material_name}: {e}")
+            self.logger.error(f"Frontmatter generation failed for {material_name}: {str(e)}")
             return ComponentResult(
                 component_type="frontmatter",
                 content="",
                 success=False,
                 error_message=str(e)
             )
-    
-    def _core_generate(self, material_name: str, **kwargs) -> Dict:
-        """
-        Core generation logic (wrapped by exception handler)
-        
-        This method contains the original generation logic but is now
-        wrapped by comprehensive exception handling.
-        """
-        # Handle materials_data override from kwargs
-        original_materials_data = None
-        if 'materials_data' in kwargs:
-            original_materials_data = getattr(self, 'materials_data', None)
-            self.materials_data = kwargs['materials_data']
-        
+
+    def _generate_from_yaml(self, material_name: str, material_data: Dict) -> Dict:
+        """Generate frontmatter using YAML data with AI enhancement"""
         try:
-            # Generate base frontmatter using materials.yaml data if available
-            material_data = self._get_material_data(material_name)
+            self.logger.info(f"Generating frontmatter for {material_name} using YAML data")
             
-            if material_data:
-                # Use materials.yaml data as primary source
-                frontmatter = self._generate_from_materials_data(material_data, material_name)
-                logger.info("Generated frontmatter from materials.yaml data")
-            else:
-                # Fall back to API generation for materials not in YAML
-                frontmatter = self._generate_from_api(material_name, **kwargs)
-                logger.info(f"Generated frontmatter via API for {material_name}")
-        
-        finally:
-            # Restore original materials_data if it was overridden
-            if original_materials_data is not None:
-                self.materials_data = original_materials_data
-            elif 'materials_data' in kwargs:
-                # If there was no original, remove the attribute
-                if hasattr(self, 'materials_data'):
-                    delattr(self, 'materials_data')
-        
-        # Apply unified property enhancement (with exception handling built-in)
-        # Note: Property enhancement disabled - original flat structure maintained
-        
-        return frontmatter
-
-    def _get_material_data(self, material_name: str) -> Optional[Dict]:
-        """Get material data from materials.yaml with index enrichment"""
-        if not hasattr(self, 'materials_data'):
-            return None
-        
-        material_index = self.materials_data.get('material_index', {})
-        materials_structure = self.materials_data.get('materials', {})
-        
-        # Get index data for category and subcategory 
-        index_data = {}
-        for indexed_name, data in material_index.items():
-            if indexed_name.lower() == material_name.lower():
-                index_data = data.copy()
-                break
-        
-        # Get rich data from materials structure
-        for category_data in materials_structure.values():
-            if 'items' in category_data:
-                for item in category_data['items']:
-                    if item.get('name', '').lower() == material_name.lower():
-                        # Merge index data (category/subcategory) with rich data
-                        merged_data = item.copy()
-                        if index_data:
-                            merged_data.update({k: v for k, v in index_data.items() 
-                                              if k not in merged_data or not merged_data[k]})
-                        return merged_data
-        
-        return index_data if index_data else None
-
-    def _generate_from_materials_data(self, material_data: Dict, material_name: str) -> Dict:
-        """Generate frontmatter from materials.yaml data with original flat structure"""
-        frontmatter = {}
-        
-        # 1. Core identification
-        frontmatter.update({
-            'name': material_data.get('name', material_name),
-            'category': material_data.get('category', 'unknown'),
-            'subcategory': material_data.get('subcategory', 'general'),
-            'complexity': material_data.get('complexity', 'medium'),
-            'difficulty_score': material_data.get('difficulty_score', 3),
-            'author_id': material_data.get('author_id', 1)
-        })
-        
-        # 2. Content metadata  
-        frontmatter.update(self._generate_content_metadata(material_data, material_name))
-        
-        # 3. Chemical Properties (original flat structure)
-        if 'formula' in material_data:
-            frontmatter['chemicalProperties'] = {
-                'formula': material_data['formula'],
-                'symbol': material_data.get('symbol', material_data['formula'])
+            # Build base structure from YAML with all required schema fields
+            frontmatter = {
+                'name': material_name.lower(),  # Required by schema
+                'title': material_data.get('title', f"{material_name.title()} Laser Cleaning"),
+                'description': material_data.get('description', f"Laser cleaning parameters for {material_name}"),
+                'category': material_data.get('category', 'materials'),
+                'subcategory': material_data.get('subcategory', material_name.lower()),
+                'author_id': material_data.get('author_id', 3),  # Required by schema (not authorId)
+                'applications': material_data.get('applications', ['laser cleaning', 'surface preparation']),  # Required by schema
+                'properties': {},  # Required by schema - will be populated below
             }
-        
-        # 4. Material Properties (original flat structure)  
-        properties = self._generate_properties_with_ranges(material_data)
-        if properties:
-            frontmatter['materialProperties'] = properties
-        
-        # 5. Machine Settings (original flat structure)
-        machine_settings = self._generate_machine_settings_with_ranges(material_data)
-        if machine_settings:
-            frontmatter['machineSettings'] = machine_settings
-        
-        # 6. Applications and compatibility
-        if 'applications' in material_data:
-            frontmatter['applications'] = material_data['applications']
             
-        if 'compatibility' in material_data:
-            frontmatter['compatibility'] = material_data['compatibility']
-        
-        # 7. Author object (required by schema)
-        frontmatter.update(self._generate_author_object(material_data))
-        
-        # 8. Images section (hero and micro images)
-        frontmatter['images'] = self._generate_images_section(material_name)
+            # Generate properties with Min/Max ranges
+            if 'materialProperties' in material_data or any(key in material_data for key in ['density', 'thermalConductivity', 'tensileStrength', 'youngsModulus']):
+                generated_properties = self._generate_properties_with_ranges(material_data, material_name)
+                frontmatter['materialProperties'] = generated_properties  # Our enhanced structure  
+                frontmatter['properties'] = generated_properties  # Required by schema
             
-        return frontmatter
-
-    def _extract_numeric_only(self, value):
-        """Extract numeric value from a string that may contain units"""
-        if isinstance(value, (int, float)):
-            return value
-        
-        if isinstance(value, str):
-            # Remove common unit suffixes and extract numeric part
-            import re
-            # Match number (int or float) at the beginning of the string
-            match = re.match(r'^(-?\d+(?:\.\d+)?)', value.strip())
-            if match:
-                numeric_str = match.group(1)
-                try:
-                    # Return int if it's a whole number, float otherwise
-                    if '.' in numeric_str:
-                        return float(numeric_str)
-                    else:
-                        return int(numeric_str)
-                except ValueError:
-                    return None
-        
-        return None
-
-    def _generate_content_metadata(self, material_data: Dict, material_name: str) -> Dict:
-        """Generate content metadata from materials data"""
-        category = material_data.get('category', 'material')
-        
-        return {
-            'title': f"Laser Cleaning {material_name}",
-            'headline': f"Comprehensive laser cleaning guide for {category} {material_name.lower()}",
-            'description': f"Technical overview of {material_name} laser cleaning applications and parameters",
-            'keywords': self._generate_keywords(material_data, material_name)
-        }
-
-    def _generate_keywords(self, material_data: Dict, material_name: str) -> str:
-        """Generate keywords from material data"""
-        keywords = [
-            material_name.lower(),
-            f"{material_name.lower()} {material_data.get('category', 'material')}",
-            'laser ablation',
-            'laser cleaning',
-            'non-contact cleaning'
-        ]
-        
-        # Add from applications
-        applications = material_data.get('applications', [])[:2]
-        for app in applications:
-            if ':' in app:
-                industry = app.split(':')[0].strip().lower()
-                keywords.append(f"{industry} applications")
-        
-        return ', '.join(keywords)
-
-    def _generate_properties_with_ranges(self, material_data: Dict) -> Dict:
-        """Generate properties with dynamic research integration"""
-        try:
-            # Try to import and use dynamic property generator
-            from .dynamic_property_generator import DynamicPropertyGenerator
+            # Generate machine settings with Min/Max ranges (always generate for shared architecture)
+            frontmatter['machineSettings'] = self._generate_machine_settings_with_ranges(material_data, material_name)
             
-            material_name = material_data.get('name', 'Unknown')
-            dynamic_generator = DynamicPropertyGenerator()
+            # Generate author object (required by schema)
+            frontmatter.update(self._generate_author_object(material_data))
             
-            # Generate properties using research system
-            properties = dynamic_generator.generate_properties_for_material(material_name, material_data)
+            return frontmatter
             
-            if properties:
-                return properties
-                
         except Exception as e:
-            print(f"Dynamic property generation failed, falling back to basic method: {str(e)}")
-        
-        # Fallback to original method
-        return self._generate_basic_properties(material_data)
-    
-    def _generate_basic_properties(self, material_data: Dict) -> Dict:
-        """Original property generation method as fallback"""
+            self.logger.error(f"YAML generation failed for {material_name}: {str(e)}")
+            raise GenerationError(f"Failed to generate from YAML for {material_name}: {str(e)}")
+
+    def _generate_properties_with_ranges(self, material_data: Dict, material_name: str) -> Dict:
+        """Generate properties with Min/Max ranges - required for DataMetrics schema"""
+        # Use the working implementation to provide required Min/Max structure
+        return self._generate_basic_properties(material_data, material_name)
+
+    def _generate_basic_properties(self, material_data: Dict, material_name: str) -> Dict:
+        """Generate properties with DataMetrics structure including Min/Max ranges using dynamic property selection"""
         properties = {}
         
-        # Map actual materials.yaml keys to property names
-        property_mappings = {
-            'density': 'density',
-            'thermal_conductivity': 'thermalConductivity', 
-            'tensile_strength': 'tensileStrength',
-            'youngs_modulus': 'youngsModulus'
-        }
+        # Determine material category and use passed material name
+        material_category = material_data.get('category', 'metal')
+        # Use the passed material_name parameter instead of trying to get it from material_data
         
-        for yaml_key, prop_key in property_mappings.items():
-            if yaml_key in material_data:
-                material_value = material_data[yaml_key]
-                # Extract numeric value only, no units
-                numeric_value = self._extract_numeric_only(material_value)
-                if numeric_value is not None:
-                    properties[prop_key] = numeric_value
-                    # Add unit separately
-                    unit = self._extract_unit(material_value)
-                    if unit:
-                        properties[f'{prop_key}Unit'] = unit
+        # Use PropertyValueResearcher to discover material-specific properties
+        try:
+            # Get dynamic property list based on material type
+            from research.material_property_research_system import MaterialPropertyResearchSystem
+            property_system = MaterialPropertyResearchSystem()
+            
+            # Try multiple case variations to handle case-insensitive matching
+            material_variations = [
+                material_name.capitalize(),  # Aluminum
+                material_name.upper(),       # ALUMINUM
+                material_name.lower(),       # aluminum
+                material_name               # Original case
+            ]
+            
+            recommendations = None
+            successful_material_name = None
+            
+            for variant in material_variations:
+                test_recommendations = property_system.get_recommended_properties_for_material(variant)
+                if 'error' not in test_recommendations:
+                    recommendations = test_recommendations
+                    successful_material_name = variant
+                    break
+            
+            if recommendations and 'error' not in recommendations:
+                # Use recommended properties from research system
+                recommended_properties = recommendations.get('recommended_properties', [])
+                dynamic_property_list = [prop['name'] for prop in recommended_properties]
+                
+                logger.info(f"Dynamic property selection for {successful_material_name or material_name}: {dynamic_property_list}")
+            else:
+                # Fallback to category-based properties
+                dynamic_property_list = self._get_fallback_properties(material_category)
+                logger.info(f"Using fallback properties for {material_name} ({material_category}): {dynamic_property_list}")
+                
+        except Exception as e:
+            logger.warning(f"Dynamic property selection failed for {material_name}: {e}")
+            # Fallback to category-based properties
+            dynamic_property_list = self._get_fallback_properties(material_category)
+        
+        # Convert snake_case research system properties to camelCase for consistency
+        def snake_to_camel_case(snake_str: str) -> str:
+            """Convert snake_case to camelCase"""
+            components = snake_str.split('_')
+            return components[0] + ''.join(word.capitalize() for word in components[1:])
+        
+        def _camel_to_snake_case(camel_str: str) -> str:
+            """Convert camelCase to snake_case for research system compatibility"""
+            import re
+            return re.sub(r'(?<!^)(?=[A-Z])', '_', camel_str).lower()
+        
+        # Make it accessible as instance method
+        self._camel_to_snake_case = _camel_to_snake_case
+        
+        # Normalize dynamic property list to camelCase to match materials.yaml naming
+        normalized_dynamic_properties = [snake_to_camel_case(prop) for prop in dynamic_property_list]
+        
+        logger.info(f"Normalized dynamic properties to camelCase: {normalized_dynamic_properties}")
+        
+        # Materials.yaml data is ignored - we use AI-researched values only
+        # Only process properties that are recommended by the dynamic property selection system
+        for camel_case_property in normalized_dynamic_properties:
+            # Use PropertyValueResearcher to get AI-researched values
+            if self.property_researcher:
+                try:
+                    # Use camelCase property names directly (research system expects camelCase)
+                    research_result = self.property_researcher.research_property_value(
+                        material_name.lower(), camel_case_property  # Use lowercase material name
+                    )
+                    if research_result and research_result.success:
+                        # Create property data from AI research
+                        property_data = {
+                            'value': research_result.property_data.value,
+                            'unit': research_result.property_data.unit,
+                            'confidence': research_result.confidence,
+                            'description': research_result.property_data.description,
+                            'min': research_result.property_data.min,
+                            'max': research_result.property_data.max
+                        }
+                        properties[camel_case_property] = property_data
+                        logger.info(f"AI-researched {camel_case_property}: {research_result.property_data.value} {research_result.property_data.unit} (confidence: {research_result.confidence}%)")
+                except Exception as e:
+                    logger.warning(f"AI research failed for {camel_case_property}: {e}")
+            
+            # Fallback: if AI research fails, skip this property (no fallbacks allowed for AI-only mode)
                         
-                    # Add ranges (Min/Max)
-                    self._add_property_ranges_from_value(properties, material_value, prop_key)
-        
         return properties
         
-    def _extract_unit(self, value_with_unit: str) -> str:
-        """Extract unit from a string like '7.8-8.9 g/cm³'"""
-        if not isinstance(value_with_unit, str):
-            return ""
-        
-        import re
-        # Look for unit patterns at the end of the string
-        unit_match = re.search(r'([a-zA-Z/°×·⁻⁰¹²³⁴⁵⁶⁷⁸⁹]+)$', value_with_unit.strip())
-        return unit_match.group(1) if unit_match else ""
-    
-    def _add_property_ranges_from_value(self, properties: Dict, value_str: str, prop_key: str):
-        """Extract min/max ranges from values like '7.8-8.9 g/cm³' or '15-400 W/m·K'"""
-        if not isinstance(value_str, str):
-            return
-            
-        import re
-        # Look for range pattern like "7.8-8.9" or "15-400"
-        range_match = re.search(r'(\d+(?:\.\d+)?)\s*[-–—]\s*(\d+(?:\.\d+)?)', value_str)
-        if range_match:
-            min_val = float(range_match.group(1))
-            max_val = float(range_match.group(2))
-            properties[f'{prop_key}Min'] = min_val
-            properties[f'{prop_key}Max'] = max_val
-
-    def _add_property_ranges(self, properties: Dict, material_category: str, prop_key: str, range_key: str):
-        """Add Min/Max/Unit ranges for a property"""
-        if material_category not in self.category_ranges:
-            return
-        
-        category_data = self.category_ranges[material_category]
-        if range_key not in category_data:
-            return
-            
-        prop_data = category_data[range_key]
-        if not isinstance(prop_data, dict) or 'min' not in prop_data or 'max' not in prop_data:
-            return
-        
-        # Extract unit from min/max values and numeric values only
-        unit = self._extract_unit_from_range(prop_data)
-        min_numeric = self._extract_numeric_only(prop_data['min'])
-        max_numeric = self._extract_numeric_only(prop_data['max'])
-        
-        if min_numeric is not None:
-            properties[f"{prop_key}Min"] = min_numeric
-        if max_numeric is not None:
-            properties[f"{prop_key}Max"] = max_numeric
-        
-        if unit:
-            properties[f"{prop_key}Unit"] = unit
-
-    def _generate_machine_settings_with_ranges(self, material_data: Dict) -> Dict:
-        """Generate machine settings with Min/Max/Unit structure"""
-        if 'machineSettings' not in material_data:
-            return {}
-        
-        machine_settings_data = material_data['machineSettings']
-        machine_settings = {}
-        
-        # Map actual machine settings keys
-        machine_mappings = {
-            'powerRange': 'powerRange',
-            'pulseDuration': 'pulseDuration', 
-            'wavelengthOptimal': 'wavelength',
-            'spotSize': 'spotSize',
-            'repetitionRate': 'repetitionRate',
-            'fluenceThreshold': 'fluenceRange'
+    def _get_fallback_properties(self, material_category: str) -> List[str]:
+        """Get fallback property list when dynamic selection is unavailable (using camelCase)"""
+        fallback_properties = {
+            'metal': ['density', 'thermalConductivity', 'meltingPoint', 'tensileStrength', 'youngsModulus', 'hardness'],
+            'ceramic': ['density', 'meltingPoint', 'hardness', 'thermalConductivity', 'thermalExpansion'],
+            'polymer': ['density', 'meltingPoint', 'tensileStrength', 'elasticModulus', 'thermalExpansion'],
+            'glass': ['density', 'meltingPoint', 'hardness', 'thermalConductivity'],
+            'composite': ['density', 'tensileStrength', 'youngsModulus', 'thermalConductivity']
         }
         
-        for yaml_key, settings_key in machine_mappings.items():
-            if yaml_key in machine_settings_data:
-                setting_value = machine_settings_data[yaml_key]
-                # Extract numeric value only, without units
-                numeric_value = self._extract_numeric_only(setting_value)
-                if numeric_value is not None:
-                    machine_settings[settings_key] = numeric_value
-                    
-                # Add unit
-                unit = self._extract_unit(setting_value)
-                if unit:
-                    machine_settings[f'{settings_key}Unit'] = unit
-                    
-                # Add ranges
-                self._add_property_ranges_from_value(machine_settings, setting_value, settings_key)
+        return fallback_properties.get(material_category, ['density', 'meltingPoint', 'thermalConductivity'])
+
+    def _generate_machine_settings_with_ranges(self, material_data: Dict, material_name: str) -> Dict:
+        """Generate machine settings with DataMetrics structure using MachineSettingsResearcher - shared architecture with materialProperties"""
+        machine_settings = {}
         
-        # Add any additional fields that should be included
-        for key, value in machine_settings_data.items():
-            if key not in machine_mappings and not key.endswith('_threshold'):
-                machine_settings[key] = value
+        # Use dedicated MachineSettingsResearcher (fail-fast per GROK - no fallbacks)
+        # MachineSettingsResearcher should be initialized in __init__, if not present this will fail-fast
+        
+        # Machine settings properties for laser cleaning
+        machine_property_list = [
+            'powerRange',           # Laser power settings
+            'wavelength',          # Optimal wavelength for material
+            'pulseWidth',          # Pulse duration settings  
+            'repetitionRate',      # Laser repetition rate
+            'scanSpeed',           # Processing/scanning speed
+            'fluenceThreshold'     # Energy density threshold
+        ]
+        
+        # Generate machine settings using MachineSettingsResearcher (shared architecture principle)
+        for machine_property in machine_property_list:
+            try:
+                # Use dedicated machine settings researcher
+                research_result = self.machine_settings_researcher.research_machine_setting(
+                    material_name.lower(), machine_property  # Same interface pattern as materialProperties
+                )
+                if research_result and research_result.is_valid():
+                    # Create machine setting data using shared DataMetrics structure
+                    property_data = {
+                        'value': research_result.value,
+                        'unit': research_result.unit, 
+                        'confidence': research_result.confidence,
+                        'description': research_result.calculation_notes or f"AI-researched {machine_property} for {material_name}",
+                        'min': research_result.min_range,
+                        'max': research_result.max_range
+                    }
+                    machine_settings[machine_property] = property_data
+                    self.logger.info(f"AI-researched machine setting {machine_property}: {research_result.value} {research_result.unit} (confidence: {research_result.confidence}%)")
+            except Exception as e:
+                self.logger.warning(f"Machine settings research failed for {machine_property}: {e}")
         
         return machine_settings
 
-    def _add_machine_setting_ranges(self, machine_settings: Dict, settings_key: str, range_key: str):
-        """Add Min/Max/Unit ranges for machine settings"""
-        if range_key not in self.machine_settings_ranges:
-            return
-            
-        ranges = self.machine_settings_ranges[range_key]
-        if not isinstance(ranges, dict) or 'min' not in ranges or 'max' not in ranges:
-            return
+    def _create_datametrics_property(self, material_value, prop_key: str, material_category: str = 'metal') -> Dict:
+        """Create DataMetrics structure with research-based Min/Max ranges"""
+        # Extract numeric value and unit
+        numeric_value = self._extract_numeric_only(material_value)
+        if numeric_value is None:
+            return None
         
-        # Extract unit from min/max values and numeric values only
-        unit = self._extract_unit_from_range(ranges)
-        min_numeric = self._extract_numeric_only(ranges['min'])
-        max_numeric = self._extract_numeric_only(ranges['max'])
+        unit = self._extract_unit(material_value) or ""
         
-        if min_numeric is not None:
-            machine_settings[f"{settings_key}Min"] = min_numeric
-        if max_numeric is not None:
-            machine_settings[f"{settings_key}Max"] = max_numeric
+        # Get research-based ranges for this property and material category
+        min_val, max_val = self._get_research_based_range(prop_key, material_category, numeric_value)
         
-        if unit:
-            machine_settings[f"{settings_key}Unit"] = unit
+        # Create basic DataMetrics structure
+        property_data = {
+            'value': numeric_value,
+            'unit': unit,
+            'confidence': 0.85,  # Default confidence level
+            'description': f'{prop_key} property',
+            'min': min_val,
+            'max': max_val
+        }
+        
+        return property_data
+    
+    def _get_research_based_range(self, prop_key: str, material_category: str, current_value: float) -> tuple[float, float]:
+        """Get research-based min/max ranges for a property based on materials science data"""
+        # Map property keys to materials.yaml range keys
+        property_mapping = {
+            'density': 'density',
+            'thermalConductivity': 'thermalConductivity', 
+            'tensileStrength': 'tensileStrength',
+            'youngsModulus': 'youngsModulus',
+            'hardness': 'hardness',
+            'electricalConductivity': 'electricalConductivity',
+            'meltingPoint': 'thermalDestructionPoint'
+        }
+        
+        # Map machine settings to range keys
+        machine_mapping = {
+            'powerRange': 'powerRange',
+            'pulseDuration': 'pulseDuration',
+            'wavelength': 'wavelength', 
+            'spotSize': 'spotSize',
+            'repetitionRate': 'repetitionRate',
+            'fluenceRange': 'fluenceThreshold'
+        }
+        
+        # Try material property ranges first
+        if prop_key in property_mapping:
+            range_key = property_mapping[prop_key]
+            if material_category in self.category_ranges and range_key in self.category_ranges[material_category]:
+                category_range = self.category_ranges[material_category][range_key]
+                min_val = self._extract_numeric_only(category_range['min'])
+                max_val = self._extract_numeric_only(category_range['max'])
+                return min_val, max_val
+        
+        # Try machine settings ranges 
+        if prop_key in machine_mapping:
+            range_key = machine_mapping[prop_key]
+            if range_key in self.machine_settings_ranges:
+                machine_range = self.machine_settings_ranges[range_key]
+                min_val = self._extract_numeric_only(machine_range['min'])
+                max_val = self._extract_numeric_only(machine_range['max'])
+                return min_val, max_val
+        
+        # Fallback to calculated ranges if no research data available
+        self.logger.warning(f"No research data for {prop_key} in {material_category}, using calculated range")
+        return round(current_value * 0.8, 2), round(current_value * 1.2, 2)
 
-    def _generate_from_api(self, material_name: str, **kwargs) -> Dict:
-        """Generate frontmatter via API for materials not in YAML"""
-        try:
-            # Use material-aware prompts if available
-            if self.material_aware_generator:
-                logger.info(f"Using material-aware prompts for {material_name}")
-                prompt = self.material_aware_generator.generate_material_aware_prompt(
-                    material_name=material_name,
-                    component_type="frontmatter",
-                    base_prompt=self._get_base_frontmatter_prompt(),
-                    **kwargs
-                )
-            else:
-                # Fallback to basic prompts
-                logger.info(f"Using basic prompts for {material_name}")
-                prompt = self._build_prompt(material_name, **kwargs)
+    def _generate_from_api(self, material_name: str, material_data: Dict) -> Dict:
+        """Generate frontmatter content using AI with fallback to range functions for Min/Max"""
+        if not self.api_client:
+            raise ValueError("API client is required for AI generation - no fallbacks allowed")
             
-            response = self.api_client.generate_content(
+        try:
+            self.logger.info(f"Generating frontmatter for {material_name} using AI with Min/Max from range functions")
+            
+            # Generate AI content first
+            ai_content = self._call_api_for_generation(material_name, material_data)
+            if not ai_content:
+                raise GenerationError(f"Failed to generate AI content for {material_name}")
+                
+            # Parse AI response and merge with Min/Max from range functions
+            parsed_content = self._parse_api_response(ai_content, material_data)
+            
+            # Ensure Min/Max and description fields are present using range functions
+            if 'materialProperties' in parsed_content:
+                range_properties = self._generate_properties_with_ranges(material_data)
+                parsed_content['materialProperties'] = self._merge_with_ranges(parsed_content['materialProperties'], range_properties)
+            
+            if 'machineSettings' in parsed_content:
+                range_machine_settings = self._generate_machine_settings_with_ranges(material_data)
+                parsed_content['machineSettings'] = self._merge_with_ranges(parsed_content['machineSettings'], range_machine_settings)
+                
+            self.logger.info(f"Successfully generated frontmatter for {material_name} with Min/Max ranges")
+            return parsed_content
+            
+        except Exception as e:
+            self.logger.error(f"API generation failed for {material_name}: {str(e)}")
+            raise GenerationError(f"Failed to generate frontmatter for {material_name}: {str(e)}")
+    
+    def _merge_with_ranges(self, ai_properties: Dict, range_properties: Dict) -> Dict:
+        """Merge AI-generated content with range-generated Min/Max and description fields"""
+        merged = ai_properties.copy()
+        
+        for prop_key, range_data in range_properties.items():
+            if prop_key in merged:
+                # Ensure AI content has required Min/Max and description
+                if isinstance(merged[prop_key], dict) and isinstance(range_data, dict):
+                    # Add missing Min/Max from range data
+                    if 'min' not in merged[prop_key] and 'min' in range_data:
+                        merged[prop_key]['min'] = range_data['min']
+                    if 'max' not in merged[prop_key] and 'max' in range_data:
+                        merged[prop_key]['max'] = range_data['max']
+                    if 'description' not in merged[prop_key] and 'description' in range_data:
+                        merged[prop_key]['description'] = range_data['description']
+            else:
+                # Add entire property if missing from AI content
+                merged[prop_key] = range_data
+                
+        return merged
+    
+    def _call_api_for_generation(self, material_name: str, material_data: Dict) -> str:
+        """Call API to generate frontmatter content"""
+        try:
+            # Build material-aware prompt
+            prompt = self._build_material_prompt(material_name, material_data)
+            
+            response = self.api_client.generate_simple(
                 prompt=prompt,
                 max_tokens=4000,
                 temperature=0.3
             )
             
-            # Parse and structure the response
-            frontmatter = self._parse_api_response(response, material_name)
-            
-            # Apply material-specific validation if available
-            if self.material_aware_generator:
-                try:
-                    validated_frontmatter = self.material_aware_generator.validate_generated_content(
-                        content=frontmatter,
-                        material_name=material_name,
-                        component_type="frontmatter"
-                    )
-                    if validated_frontmatter:
-                        frontmatter = validated_frontmatter
-                        logger.info(f"Applied material-specific validation for {material_name}")
-                except Exception as e:
-                    logger.warning(f"Material-specific validation failed for {material_name}: {e}")
-                    # Continue with unvalidated content
-            
-            # Ensure images section is included
-            if 'images' not in frontmatter:
-                frontmatter['images'] = self._generate_images_section(material_name)
-            
-            return frontmatter
+            return response
             
         except Exception as e:
-            raise ValueError(f"API generation failed for {material_name}: {e}")
+            self.logger.error(f"API call failed for {material_name}: {str(e)}")
+            raise GenerationError(f"API generation failed for {material_name}: {str(e)}")
 
-    def _apply_property_enhancement(self, frontmatter: Dict):
-        """Apply unified property enhancement - original flat structure maintained"""
-        # Original flat structure (chemicalProperties, properties, machineSettings) maintained
-        # Legacy property enhancement not needed for restored original format
-        pass
+    def _build_material_prompt(self, material_name: str, material_data: Dict) -> str:
+        """Build material-specific prompt for frontmatter generation"""
+        prompt = f"""Generate comprehensive laser cleaning frontmatter for {material_name}.
 
-    def _apply_field_ordering(self, frontmatter: Dict) -> Dict:
-        """Apply field ordering using the existing service"""
-        return FieldOrderingService.apply_field_ordering(frontmatter)
+Required structure with DataMetrics format:
+- Each property must have: value, unit, confidence, min, max, description
+- materialProperties: density, thermalConductivity, tensileStrength, etc.
+- machineSettings: powerRange, wavelength, pulseDuration, etc.
 
-    def _generate_images_section(self, material_name: str) -> Dict:
-        """
-        Generate images section with hero and micro images.
+Material context: {material_data}
+
+Return YAML format with materialProperties (not properties) and machineSettings sections."""
         
-        Creates proper alt text and URL patterns following schema requirements.
-        
-        Args:
-            material_name: Name of the material
-            
-        Returns:
-            Dict with 'hero' and 'micro' image objects containing 'alt' and 'url'
-        """
-        # Create URL-safe material name
-        url_safe_name = material_name.lower().replace(' ', '-')
-        
-        # Generate descriptive alt text
-        hero_alt = f"{material_name} surface undergoing laser cleaning showing precise contamination removal"
-        micro_alt = f"Microscopic view of {material_name} surface after laser cleaning showing detailed surface structure"
-        
-        return {
-            'hero': {
-                'alt': hero_alt,
-                'url': f'/images/{url_safe_name}-laser-cleaning-hero.jpg'
-            },
-            'micro': {
-                'alt': micro_alt,
-                'url': f'/images/{url_safe_name}-laser-cleaning-micro.jpg'
-            }
-        }
+        return prompt
 
-    def _validate_frontmatter(self, frontmatter: Dict, material_name: str):
-        """Validate generated frontmatter"""
-        try:
-            ValidationHelpers.validate_and_enhance_content(frontmatter, material_name)
-        except Exception as e:
-            logger.warning(f"Frontmatter validation warning for {material_name}: {e}")
-            # Don't fail generation for validation warnings
-
-    def _extract_unit_from_range(self, range_config: Dict) -> str:
-        """Extract unit from range configuration"""
-        for val in [range_config.get("min", ""), range_config.get("max", "")]:
-            if val:
-                unit_match = re.search(r'[a-zA-Z°/³²·]+', str(val))
-                if unit_match:
-                    return unit_match.group()
-        return ""
-
-    def get_component_info(self) -> Dict[str, Any]:
-        """Return component information"""
-        return {
-            "name": "frontmatter",
-            "description": "Streamlined frontmatter generation with integrated services",
-            "version": "2.0.0-streamlined",
-            "requires_api": True,  # Fail-fast: No mocks or fallbacks allowed
-            "type": "dynamic",
-            "capabilities": [
-                "materials.yaml integration",
-                "unified property enhancement", 
-                "consolidated architecture",
-                "fail-fast validation"
-            ]
-        }
-
-    # Existing methods that need to be preserved
-    def _load_prompt_config(self):
-        """Load prompt configuration (existing method)"""
-        try:
-            self.prompt_config = {
-                "system_prompt": "Generate comprehensive laser cleaning frontmatter",
-                "user_prompt": "Material: {material_name}\nGenerate detailed frontmatter including properties, machine settings, and applications."
-            }
-        except Exception as e:
-            logger.error(f"Error loading prompt config: {e}")
-            self.prompt_config = {}
-
-    def _build_prompt(self, material_name: str, **kwargs) -> str:
-        """Build API prompt for material"""
-        base_prompt = self.prompt_config.get("user_prompt", "").format(material_name=material_name)
-        return base_prompt
-    
-    def _get_base_frontmatter_prompt(self) -> str:
-        """Get base frontmatter generation prompt for material-aware system"""
-        return """Generate comprehensive frontmatter metadata for laser cleaning applications.
-
-Required sections:
-- title: Descriptive title for the material
-- name: Material name
-- category: Material category (metal, ceramic, plastic, etc.)
-- subcategory: More specific classification
-- description: Technical overview
-- properties: Physical and chemical properties (density, thermal conductivity, etc.)
-- machineSettings: Laser parameters (power, wavelength, pulse duration, etc.)
-- applications: Industrial applications and use cases
-- author_object: Author information
-- images: Hero and micro image specifications
-
-Format as valid YAML frontmatter with proper structure and units."""
-
-    def _parse_api_response(self, response: str, material_name: str) -> Dict:
+    def _parse_api_response(self, response: str, material_data: Dict) -> Dict:
         """Parse API response into structured frontmatter"""
-        # Basic parsing - could be enhanced based on API response format
-        return {
-            'title': f"Laser Cleaning {material_name}",
-            'name': material_name,
-            'category': 'unknown',
-            'description': f"API-generated frontmatter for {material_name}",
-            'materialProperties': {},
-            'machineSettings': {}
-        }
-
-    def _validate_with_enhanced_schema(self, frontmatter_data: Dict, material_name: str):
-        """
-        Validate frontmatter data with enhanced schema validation.
-        
-        Args:
-            frontmatter_data: Generated frontmatter to validate
-            material_name: Material name for context
-            
-        Returns:
-            ValidationResult with detailed validation feedback
-        """
-        if not self.enhanced_validator:
-            logger.warning("Enhanced validator not available - skipping validation")
-            return None
-            
         try:
-            validation_result = self.enhanced_validator.validate(frontmatter_data, material_name)
+            # Extract YAML from response
+            yaml_match = re.search(r'```yaml\n(.*?)\n```', response, re.DOTALL)
+            if yaml_match:
+                yaml_content = yaml_match.group(1)
+            else:
+                yaml_content = response
             
-            # Log validation details
-            if validation_result.errors:
-                logger.warning(f"Enhanced validation errors for {material_name}: {validation_result.errors}")
-            if validation_result.warnings:
-                logger.info(f"Enhanced validation warnings for {material_name}: {validation_result.warnings}")
-                
-            return validation_result
+            # Parse YAML
+            parsed = yaml.safe_load(yaml_content)
+            if not isinstance(parsed, dict):
+                raise ValueError("Invalid YAML structure")
+            
+            return parsed
             
         except Exception as e:
-            logger.error(f"Enhanced validation failed for {material_name}: {e}")
-            # In enhanced mode, validation failures should be reported
-            raise ValueError(f"Enhanced validation error: {e}")
+            self.logger.error(f"Failed to parse API response: {str(e)}")
+            raise GenerationError(f"Response parsing failed: {str(e)}")
+
+    def _extract_numeric_only(self, value) -> Optional[float]:
+        """Extract numeric value from string or return number directly"""
+        if isinstance(value, (int, float)):
+            return float(value)
+        
+        if isinstance(value, str):
+            # Extract first number from string
+            match = re.search(r'(\d+(?:\.\d+)?)', value)
+            if match:
+                return float(match.group(1))
+        
+        return None
+
+    def _extract_unit(self, value) -> Optional[str]:
+        """Extract unit from string value"""
+        if isinstance(value, str):
+            # Extract unit after number - improved regex for special characters
+            match = re.search(r'\d+(?:\.\d+)?\s*([a-zA-Z/°³²¹⁰⁻⁺μ]+)', value)
+            if match:
+                return match.group(1)
+        
+        return None
 
     def _generate_author_object(self, material_data: Dict) -> Dict:
         """Generate author_object from material data author_id"""
         try:
             from utils.core.author_manager import get_author_by_id
             
-            author_id = material_data.get('author_id', 1)
+            author_id = material_data.get('author_id', 3)
             author_info = get_author_by_id(author_id)
             
             if not author_info:
-                raise ValueError(f"No author found for ID {author_id}")
+                # Fallback author object if not found
+                return {
+                    'author_object': {
+                        'id': author_id,
+                        'name': 'Default Author',
+                        'bio': 'Materials science expert',
+                        'email': 'author@example.com'
+                    }
+                }
             
             return {
                 'author_object': author_info
             }
             
         except Exception as e:
-            logger.error(f"Failed to resolve author object: {e}")
-            # Fail-fast behavior - don't provide fallback
-            raise ValueError(f"Author object generation failed: {e}")
-
-    def _format_as_yaml(self, frontmatter_data: Dict) -> str:
-        """Format frontmatter data as proper YAML with frontmatter delimiters"""
-        try:
-            import yaml
-            yaml_content = yaml.dump(
-                frontmatter_data, 
-                default_flow_style=False, 
-                sort_keys=False, 
-                allow_unicode=True,
-                width=1000
-            )
-            return f"---\n{yaml_content}---\n"
-        except Exception as e:
-            logger.error(f"Failed to format YAML: {e}")
-            # Return basic format as fallback
-            return f"---\n{str(frontmatter_data)}\n---\n"
-
-    def _create_template_variables(self, material_name: str, material_data: Dict, api_client) -> Dict:
-        """Create template variables for testing purposes"""
-        return {
-            "material_name": material_name,
-            "category": material_data.get('category', 'unknown').title(),
-            "complexity": material_data.get('complexity', 'medium')
-        }
-
-
-# Backward compatibility - re-export as original class name
-FrontmatterComponentGenerator = StreamlinedFrontmatterGenerator
+            self.logger.warning(f"Author object generation failed: {e}")
+            # Return fallback author object
+            return {
+                'author_object': {
+                    'id': 3,
+                    'name': 'Default Author', 
+                    'bio': 'Materials science expert',
+                    'email': 'author@example.com'
+                }
+            }

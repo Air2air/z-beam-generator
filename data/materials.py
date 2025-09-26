@@ -35,11 +35,11 @@ def expand_optimized_materials(data):
         'material_index': data.get('material_index', {}),
         'category_ranges': data.get('category_ranges', {}),
         'parameter_templates': data.get('parameter_templates', {}),
-        'defaults': data.get('defaults', {})
+        # No defaults allowed - fail-fast architecture requires complete material data
     }
     
     parameter_templates = data.get('parameter_templates', {})
-    defaults = data.get('defaults', {})
+    # No defaults variable - fail-fast architecture
     
     for category, cat_data in data['materials'].items():
         # Handle both simple categories with items and complex categories with subcategories
@@ -57,10 +57,7 @@ def expand_optimized_materials(data):
                         expanded_item['laser_parameters'] = parameter_templates[template_name].copy()
                     del expanded_item['laser_parameters_template']
                 
-                # Apply defaults for missing fields
-                for field, default_value in defaults.items():
-                    if field not in expanded_item:
-                        expanded_item[field] = default_value
+                # Fail-fast: No defaults applied - all material fields must be explicit
                 
                 expanded_items.append(expanded_item)
             
@@ -86,10 +83,7 @@ def expand_optimized_materials(data):
                                 expanded_item['laser_parameters'] = parameter_templates[template_name].copy()
                             del expanded_item['laser_parameters_template']
                         
-                        # Apply defaults for missing fields
-                        for field, default_value in defaults.items():
-                            if field not in expanded_item:
-                                expanded_item[field] = default_value
+                        # Fail-fast: No defaults applied - all material fields must be explicit
                         
                         all_items.append(expanded_item)
             
@@ -114,13 +108,24 @@ def expand_optimized_materials(data):
 
 
 def get_material_by_name(material_name, data=None):
-    """Fast O(1) material lookup using material index."""
+    """Fast O(1) material lookup using material index with case-insensitive matching."""
     if data is None:
         data = load_materials()
     
     # Use material index if available (optimized format)
     if 'material_index' in data:
+        # Try exact match first (for performance)
         index_entry = data['material_index'].get(material_name)
+        
+        # If no exact match, try case-insensitive search
+        if not index_entry:
+            material_name_lower = material_name.lower()
+            for key, value in data['material_index'].items():
+                if key.lower() == material_name_lower:
+                    index_entry = value
+                    material_name = key  # Use the correct case from index
+                    break
+        
         if index_entry:
             category = index_entry['category']
             item_index = index_entry['index']
@@ -141,20 +146,7 @@ def get_material_by_name(material_name, data=None):
                                 return subcat_data['items'][item_index]
                             item_index -= len(subcat_data['items'])
     
-    # Fallback to linear search (original format or if index lookup fails)
-    for category, cat_data in data.get('materials', {}).items():
-        if isinstance(cat_data, dict):
-            # Check direct items
-            if 'items' in cat_data:
-                for item in cat_data['items']:
-                    if isinstance(item, dict) and item.get('name') == material_name:
-                        return item
-            
-            # Check subcategories
-            for subcat_name, subcat_data in cat_data.items():
-                if isinstance(subcat_data, dict) and 'items' in subcat_data:
-                    for item in subcat_data['items']:
-                        if isinstance(item, dict) and item.get('name') == material_name:
-                            return item
+    # Fail-fast: Index lookup failed - no fallback search allowed
+    raise ValueError(f"Material '{material_name}' not found in material index - index system must be complete")
     
     return None
